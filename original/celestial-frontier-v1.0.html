@@ -948,39 +948,6 @@
 <script>
 (() => {
 'use strict';
-
-/* ====================================================================
-   ARCHITECTURE — Celestial Frontier v1.0, restructured on SOLID lines
-
-   One file, one IIFE, three strata:
-
-   1. DOMAIN MODULES — banner "at-module <name>", domain layer — pure &
-      deterministic; every output derives from seeds. No DOM, no clock,
-      no nondeterminism. Revealing-module IIFEs with frozen public APIs:
-        Rand → PlanetGen / Naming / WorldConfig / StarCatalog → WorldGen
-        SurveyPhrases / SpeciesTraits → Genome → Genetics → Ecology
-        EncUtil → Descriptors → CombatCore
-   2. ART & SERVICE MODULES — app layer — deterministic canvas/SVG art
-      and self-contained services:
-        ThumbArt, GalaxyArt, SpeciesArt, Fx, SaveSystem, Renderer
-   3. APP SECTIONS — banner "at-section" — UI, input, shared state and
-      wiring. Shared cross-section state stays in plain script scope (a
-      module may not own a binding another section reassigns).
-
-   Module banners name each unit's responsibility (SRP), dependencies
-   (DIP — wired top-down, domain never reaches into UI), and exported
-   API (ISP — everything else is module-private). Extension points are
-   data registries (OCP): trait tables, ABILITY_THEMES, GRADE_TIERS,
-   REGIONS, SIGS, ACH, EVENT_DEFS, MODE_PAINTERS.
-
-   Hard rule unchanged from v1.0: NEVER let Math.random()/Date.now()
-   feed anything in stratum 1, or share codes and cross-device
-   determinism break. See CLAUDE.md / HANDOFF.md.
-   ==================================================================== */
-/* ----------------------------------------------------------------
-   @section ui-dom [app] — cached DOM element handles
-   Owns: cv, ctx, trailEl, ctxEl, panelEl, hintEl, logEl, logBtn, logCountEl, codexBtn, …
-   ---------------------------------------------------------------- */
 const cv = document.getElementById('cosmos');
 const ctx = cv.getContext('2d');
 const trailEl = document.getElementById('trail');
@@ -996,10 +963,6 @@ const codexCountEl = document.getElementById('codexcount');
 const revealEl = document.getElementById('reveal');
 
 /* breadcrumb trail: array of strings, last is current */
-/* ----------------------------------------------------------------
-   @section ui-hud [app] — trail breadcrumb, hover hints & pick/lock view state
-   Owns: _trailKey, setTrail, TOUCH, HINTS, _hintMode, setHint, picks, mouse, _lastMode, locked
-   ---------------------------------------------------------------- */
 let _trailKey='';
 function setTrail(segs){
   const key=segs.join('|');
@@ -1031,10 +994,6 @@ let picks=[];                      // hoverable objects rebuilt each frame
 let mouse={x:null,y:null};         // cursor in screen pixels
 let _lastMode=null;
 let locked=null;                   // click-locked object: {data, sx, sy} — panel stays put & clickable
-/* ----------------------------------------------------------------
-   @section viewport [app] — canvas sizing, DPR cap (3) & topbar height sync (--topbar-h/--row1-h)
-   Owns: W, H, DPR, minWH, resize, syncTopbarH
-   ---------------------------------------------------------------- */
 let W, H, DPR, minWH;
 function resize(){
   DPR = Math.min(window.devicePixelRatio||1, 3);
@@ -1060,12 +1019,6 @@ window.addEventListener('load', syncTopbarH);
 window.addEventListener('orientationchange', ()=>{ syncTopbarH(); setTimeout(syncTopbarH,250); });
 if(window.ResizeObserver){ try{ const _tbo=document.getElementById('topbar'); if(_tbo) new ResizeObserver(()=>syncTopbarH()).observe(_tbo); }catch(_){} }
 
-/* ================================================================
-   @module Rand [domain] — deterministic PRNG, hashing & noise — the root of all generation
-   Deps: none
-   API:  mulberry32, clamp, mix, makeNoise, TAU, hashInt, cellRng
-   ================================================================ */
-const Rand=(()=>{
 /* ---------------- deterministic randomness ---------------- */
 const TAU = Math.PI*2;
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
@@ -1100,17 +1053,7 @@ function makeNoise(seed){
     return a/(1-Math.pow(0.5,oct||4));
   };
 }
-return Object.freeze({mulberry32, clamp, mix, makeNoise, TAU, hashInt, cellRng});
-})();
-const {mulberry32, clamp, mix, makeNoise, TAU, hashInt, cellRng}=Rand;
-/* @end Rand */
 
-/* ================================================================
-   @module PlanetGen [domain] — planet archetypes & surface color synthesis
-   Deps: Rand
-   API:  surfaceColor, planetParams
-   ================================================================ */
-const PlanetGen=(()=>{
 /* ---------------- planet archetypes & surfaces ---------------- */
 function planetParams(seed){
   const r = mulberry32(seed);
@@ -1228,17 +1171,7 @@ function surfaceColor(P, u, lat, fbm){
   }
   return mix([84,80,76],[164,158,150], e);
 }
-return Object.freeze({surfaceColor, planetParams});
-})();
-const {surfaceColor, planetParams}=PlanetGen;
-/* @end PlanetGen */
 
-/* ================================================================
-   @module ThumbArt [app] — canvas sprites & thumbnails for planets, stars, moons, comets
-   Deps: Rand, PlanetGen, EncUtil, GalaxyArt
-   API:  planetThumb, starThumb, galaxyThumb, moonThumb, cometThumb, beltThumb, getPlanetSprite
-   ================================================================ */
-const ThumbArt=(()=>{
 /* planet sprite cache */
 const P_PX=512;
 const spriteCache=new Map();
@@ -1397,17 +1330,7 @@ function beltThumb(){
   }
   const url=c.toDataURL(); thumbCache.set(key,url); return url;
 }
-return Object.freeze({planetThumb, starThumb, galaxyThumb, moonThumb, cometThumb, beltThumb, getPlanetSprite});
-})();
-const {planetThumb, starThumb, galaxyThumb, moonThumb, cometThumb, beltThumb, getPlanetSprite}=ThumbArt;
-/* @end ThumbArt */
 
-/* ================================================================
-   @module GalaxyArt [app] — pre-rendered galaxy sprites (16 archetypes)
-   Deps: Rand
-   API:  GAL_SPRITES, GAL_KIND
-   ================================================================ */
-const GalaxyArt=(()=>{
 /* ---------------- galaxy sprites ---------------- */
 const G_PX=512;
 function makeGalaxySprite(seed){
@@ -1562,17 +1485,7 @@ const GAL_SPRITE_SEEDS=[9000,9004,9006,9007,9009,9010, 9016,9017,9024, 9018,9026
 const GAL_SPRITES=GAL_SPRITE_SEEDS.map(makeGalaxySprite);
 function galSpriteKind(seed){ const r=mulberry32(seed); const k=r(); return k<0.42?'spiral':(k<0.60?'barred':(k<0.72?'lenticular':(k<0.87?'elliptical':'irregular'))); }
 const GAL_KIND=GAL_SPRITE_SEEDS.map(galSpriteKind);
-return Object.freeze({GAL_SPRITES, GAL_KIND});
-})();
-const {GAL_SPRITES, GAL_KIND}=GalaxyArt;
-/* @end GalaxyArt */
 
-/* ================================================================
-   @module Naming [domain] — procedural proper names for galaxies, stars & species
-   Deps: Rand, WorldConfig
-   API:  properName, starName, galaxyName
-   ================================================================ */
-const Naming=(()=>{
 /* ---------------- naming ---------------- */
 const SYL=['an','dro','vel','tar','ka','ri','os','um','ze','phy','lon','ae','cy','gn','ur','sa','or','ion','per','sei'];
 function properName(seed, parts){
@@ -1583,17 +1496,7 @@ function properName(seed, parts){
 }
 function galaxyName(seed){ return seed===HOME_GAL_SEED ? 'Milky Way' : properName(seed,3)+' Galaxy'; }
 function starName(seed){ return seed===SOL_SEED ? 'Sun (Sol)' : 'Star '+properName(seed,2)+'-'+(hashInt(seed,7,7)%900+100); }
-return Object.freeze({properName, starName, galaxyName});
-})();
-const {properName, starName, galaxyName}=Naming;
-/* @end Naming */
 
-/* ================================================================
-   @module WorldConfig [domain] — universe anchors & scale constants (seeds, radii, home)
-   Deps: none
-   API:  HOME_GAL_SEED, SOL_SEED, UCELL, HOME_POS, GR, GCELL, SOL_POS, SYS_R, OBS_R
-   ================================================================ */
-const WorldConfig=(()=>{
 /* ---------------- constants ---------------- */
 const UCELL=400;
 const OBS_R=5200;
@@ -1604,17 +1507,7 @@ const GCELL=42;
 const SOL_SEED=424242;
 const SOL_POS={x:560,y:170};
 const SYS_R=320;
-return Object.freeze({HOME_GAL_SEED, SOL_SEED, UCELL, HOME_POS, GR, GCELL, SOL_POS, SYS_R, OBS_R});
-})();
-const {HOME_GAL_SEED, SOL_SEED, UCELL, HOME_POS, GR, GCELL, SOL_POS, SYS_R, OBS_R}=WorldConfig;
-/* @end WorldConfig */
 
-/* ================================================================
-   @module StarCatalog [domain] — stellar classification & the hand-authored Sol system
-   Deps: WorldConfig, Rand
-   API:  starClass, SOL_PLANETS, KIND_DESC
-   ================================================================ */
-const StarCatalog=(()=>{
 /* ---------------- stellar census — shared by galaxy & system views ---------------- */
 function starClass(seed){
   if(seed===SOL_SEED) return {kind:'G', col:'#fff4d8', r:26};
@@ -1659,16 +1552,6 @@ const SOL_PLANETS=[
   {name:'Uranus', orb:272,P:{type:'ice',   seed:137, sizeMul:1.3, ring:true, moons:4}},
   {name:'Neptune',orb:300,P:{type:'gas',   seed:138, hue:222, spot:true, spotHue:230, sizeMul:1.3, ring:false, moons:4}},
 ];
-return Object.freeze({starClass, SOL_PLANETS, KIND_DESC});
-})();
-const {starClass, SOL_PLANETS, KIND_DESC}=StarCatalog;
-/* @end StarCatalog */
-/* ================================================================
-   @module WorldGen [domain] — cell-based, on-demand universe generation (galaxies, stars, systems)
-   Deps: Rand, WorldConfig, GalaxyArt, StarCatalog, Naming, PlanetGen
-   API:  systemFor, galaxiesInCell, galaxyWormhole, galaxyProfile, starsInCell, FCELL, fineStarsInCell, UNOISE, galaxyHaze, supernovaSites
-   ================================================================ */
-const WorldGen=(()=>{
 function genRocks(r, beltR){
   const rocks=[];
   for(let i=0;i<110;i++) rocks.push({a:r()*TAU, rr:beltR+(r()-0.5)*10, s:0.4+r()*0.8, sp:0.04+r()*0.05});
@@ -2043,17 +1926,7 @@ function _systemFor(starSeed){
   if(HZB && HZB*0.82<SYS_R-12) sys.hz=[HZB*0.82, Math.min(HZB*1.32, SYS_R-6)];
   return sys;
 }
-return Object.freeze({systemFor, galaxiesInCell, galaxyWormhole, galaxyProfile, starsInCell, FCELL, fineStarsInCell, UNOISE, galaxyHaze, supernovaSites});
-})();
-const {systemFor, galaxiesInCell, galaxyWormhole, galaxyProfile, starsInCell, FCELL, fineStarsInCell, UNOISE, galaxyHaze, supernovaSites}=WorldGen;
-/* @end WorldGen */
 
-/* ================================================================
-   @module SurveyPhrases [domain] — survey-card phrase builders (atmosphere, climate, water, gravity)
-   Deps: none
-   API:  climateBand, COMP, atmosphereText, climateText, waterText, gravityText, TYPE_LABEL
-   ================================================================ */
-const SurveyPhrases=(()=>{
 /* ---------------- procedural "planetary survey": what is it made of, what lives there ---------------- */
 const TYPE_LABEL={rocky:'Rocky world', terran:'Terran (Earth-like) world', ocean:'Ocean world',
   ice:'Ice world', desert:'Desert world', gas:'Gas giant', venus:'Venusian hothouse', lava:'Molten world'};
@@ -2120,21 +1993,11 @@ function climateBand(P, sys, orb){
   return 'cold';
 }
 function pick1(r,a){ return a[Math.floor(r()*a.length)]; }
-return Object.freeze({climateBand, COMP, atmosphereText, climateText, waterText, gravityText, TYPE_LABEL});
-})();
-const {climateBand, COMP, atmosphereText, climateText, waterText, gravityText, TYPE_LABEL}=SurveyPhrases;
-/* @end SurveyPhrases */
 /* ---------------- procedural species engine ----------------
    A species is grown from a genome: a small set of trait indices hashed from
    (planet seed, biome, slot). Crossbreeding mixes two genomes; evolution nudges
    one trait per "era". Everything stays deterministic — the same world always
    yields the same wildlife. */
-/* ================================================================
-   @module SpeciesTraits [domain] — trait tables, rarity grades & spectral anomalies
-   Deps: Rand
-   API:  SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, rarityRoll
-   ================================================================ */
-const SpeciesTraits=(()=>{
 const SP_KINGDOM=['flora','fungi','microbe','fauna'];
 const SP_COLOR=['emerald','crimson','violet','golden','turquoise','indigo','amber','rust-red',
   'silver-blue','obsidian-black','bone-white','magenta','teal','ochre','jade','bruise-purple','glass-clear'];
@@ -2304,16 +2167,6 @@ function speciesName(seed){
   const r=mulberry32((seed^0x5eed5)>>>0);
   return SP_NAME_A[(r()*SP_NAME_A.length)|0]+SP_NAME_B[(r()*SP_NAME_B.length)|0]+SP_NAME_C[(r()*SP_NAME_C.length)|0];
 }
-return Object.freeze({SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, rarityRoll});
-})();
-const {SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, rarityRoll}=SpeciesTraits;
-/* @end SpeciesTraits */
-/* ================================================================
-   @module Genome [domain] — genome synthesis, classification & species description
-   Deps: Rand, SpeciesTraits
-   API:  describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade
-   ================================================================ */
-const Genome=(()=>{
 /* the genome: indices into the trait tables. kingdom decides which tables apply. */
 function makeGenome(seed, kingdom, biomeHeat){
   const r=mulberry32((seed^0x9e3b)>>>0);
@@ -2500,18 +2353,8 @@ function faunaDesc(g){
     diet, anatomy:anat, pattern, temper, sense, repro, life, metab, habitat, behavior,
     detail};
 }
-return Object.freeze({describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade});
-})();
-const {describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade}=Genome;
-/* @end Genome */
 /* Unicode-safe base64 for SVG data URIs — native btoa throws on chars > U+00FF
    (e.g. the '·' and '—' in specimen labels), which was breaking creature images. */
-/* ================================================================
-   @module EncUtil [domain] — base64/UTF-8, SVG data-URI & color shade utilities
-   Deps: none
-   API:  shade, svgURI, b64encUtf8, b64decUtf8
-   ================================================================ */
-const EncUtil=(()=>{
 function b64encUtf8(s){
   const bytes=new TextEncoder().encode(s);
   let bin=''; for(let i=0;i<bytes.length;i++) bin+=String.fromCharCode(bytes[i]);
@@ -2536,16 +2379,6 @@ function shade(hex, f){
   else { r*=1+f; g*=1+f; b*=1+f; }
   return '#'+[r,g,b].map(v=>Math.max(0,Math.min(255,v|0)).toString(16).padStart(2,'0')).join('');
 }
-return Object.freeze({shade, svgURI, b64encUtf8, b64decUtf8});
-})();
-const {shade, svgURI, b64encUtf8, b64decUtf8}=EncUtil;
-/* @end EncUtil */
-/* ================================================================
-   @module SpeciesArt [app] — per-kingdom SVG portraits & specimen cards (cache capped 1,200)
-   Deps: SpeciesTraits, Rand, EncUtil, input, Genome, player-state, viewport
-   API:  speciesPortrait
-   ================================================================ */
-const SpeciesArt=(()=>{
 const speciesArtCache=new Map();
 const speciesArtRaw=new Map();
 function speciesPortrait(g){
@@ -2765,19 +2598,9 @@ function specimenCard(g){
   specimenCache.set(key,url);
   return url;
 }
-return Object.freeze({speciesPortrait});
-})();
-const {speciesPortrait}=SpeciesArt;
-/* @end SpeciesArt */
 
 /* evolution: advance a genome through N epochs, each nudging one trait.
    Deterministic, so a world at a given cosmic age always shows the same evolved forms. */
-/* ================================================================
-   @module Genetics [domain] — genome evolution & cross-breeding
-   Deps: Rand
-   API:  evolveGenome, crossGenome
-   ================================================================ */
-const Genetics=(()=>{
 function evolveGenome(g, epochs){
   if(!epochs) return g;
   let cur={...g};
@@ -2822,16 +2645,6 @@ function crossGenome(a, b){
   if(r()<0.2) g.lumin=!g.lumin;
   return g;
 }
-return Object.freeze({evolveGenome, crossGenome});
-})();
-const {evolveGenome, crossGenome}=Genetics;
-/* @end Genetics */
-/* ================================================================
-   @module Ecology [domain] — biospheres, species rosters & civilizations per world
-   Deps: compendium, Rand, Genetics, Genome, viewport, Naming
-   API:  biosphere, civilization, planetSpecies
-   ================================================================ */
-const Ecology=(()=>{
 /* the wildlife roster of a world: a deterministic set of species filling its niches */
 const _speciesMemo=new Map();
 function planetSpecies(P, sys, band, level){
@@ -2974,17 +2787,7 @@ function civilization(P, sys, band, bio, r){
   return {civ:true, name:'The '+civName+(r()<0.5?'i':'an')+' people', era, year,
     yearLabel:'Local year ~'+year.toLocaleString(), pop:pop};
 }
-return Object.freeze({biosphere, civilization, planetSpecies});
-})();
-const {biosphere, civilization, planetSpecies}=Ecology;
-/* @end Ecology */
 
-/* ================================================================
-   @module Descriptors [domain] — survey-card descriptors for every object kind
-   Deps: Rand, SurveyPhrases, Ecology, Genome, SpeciesTraits, state-camera, prime, ThumbArt, StarCatalog, WorldGen, WorldConfig, Naming, GalaxyArt, player-state
-   API:  galaxyStats, fmtBig, roman, describePick, slimGal, starDescriptor, planetDescriptor, moonDescriptor, galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor, kuiperDescriptor, visitorDescriptor, beltDescriptor
-   ================================================================ */
-const Descriptors=(()=>{
 function magnetText(P){
   if(P.seed===133) return 'A protective magnetic field shields the surface from radiation';
   const fr=mulberry32((P.seed^0xBEEF)>>>0)();
@@ -3416,16 +3219,8 @@ function describePick(p){
   }
   return d;
 }
-return Object.freeze({galaxyStats, fmtBig, roman, describePick, slimGal, starDescriptor, planetDescriptor, moonDescriptor, galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor, kuiperDescriptor, visitorDescriptor, beltDescriptor});
-})();
-const {galaxyStats, fmtBig, roman, describePick, slimGal, starDescriptor, planetDescriptor, moonDescriptor, galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor, kuiperDescriptor, visitorDescriptor, beltDescriptor}=Descriptors;
-/* @end Descriptors */
 
 
-/* ----------------------------------------------------------------
-   @section art-tiles [app] — surface-mode terrain tile cache (per-frame render budget)
-   Owns: tileCache, tileBudget, getTile
-   ---------------------------------------------------------------- */
 const tileCache=new Map();
 let tileBudget=0;
 function getTile(P, fbm, L, tx, ty){
@@ -3495,10 +3290,6 @@ function getTile(P, fbm, L, tx, ty){
 }
 
 /* ---------------- state ---------------- */
-/* ----------------------------------------------------------------
-   @section state-camera [app] — THE shared view state `st` + camera accessor & zoom limits
-   Owns: st, curCam, zoomLimits
-   ---------------------------------------------------------------- */
 const st = {
   mode:'universe',
   ucam:{x:HOME_POS.x, y:HOME_POS.y, z:1.2},
@@ -3518,10 +3309,6 @@ function zoomLimits(){
 }
 
 /* ---------------- input ---------------- */
-/* ----------------------------------------------------------------
-   @section input [app] — pointer/touch/wheel input — drag, pinch zoom, double-tap, hover
-   Owns: dragging, lx, ly, downX, downY, downT, moved, pinching, lastTapT, lastTapX, …
-   ---------------------------------------------------------------- */
 let dragging=false, lx=0, ly=0;
 let downX=0, downY=0, downT=0, moved=0;
 let pinching=false, lastTapT=0, lastTapX=0, lastTapY=0, activeTouches=0, pinchEndT=0;
@@ -3628,10 +3415,6 @@ document.addEventListener('keydown', e=>{
 });
 
 /* ---------------- transitions ---------------- */
-/* ----------------------------------------------------------------
-   @section transitions [app] — zoom-driven mode transitions (universe ⇄ galaxy ⇄ system ⇄ surface)
-   Owns: checkTransitions
-   ---------------------------------------------------------------- */
 function checkTransitions(){
   if(st.mode==='universe'){
     const c=st.ucam;
@@ -3745,12 +3528,6 @@ function checkTransitions(){
   }
 }
 
-/* ================================================================
-   @module Renderer [app] — the four zoom-mode draw passes + backdrop
-   Deps: Rand, ui-dom, viewport, state-camera, WorldConfig, ui-hud, WorldGen, GalaxyArt, Naming, prime, compendium, Descriptors, ThumbArt, StarCatalog, art-tiles, PlanetGen, SurveyPhrases
-   API:  perfTime, t0, drawUniverse, drawGalaxy, drawSystem, drawSurface
-   ================================================================ */
-const Renderer=(()=>{
 /* ---------------- drawing ---------------- */
 let t0=performance.now();
 function perfTime(){ return (performance.now()-t0)*0.001; }
@@ -4648,16 +4425,8 @@ function drawSurface(time){
   if(auroraOn) parts.push('auroras overhead');
   ctxEl.textContent=(TYPE_DESC[P.type]||'')+' · '+parts.join(' · ');
 }
-return Object.freeze({perfTime, t0, drawUniverse, drawGalaxy, drawSystem, drawSurface});
-})();
-const {perfTime, t0, drawUniverse, drawGalaxy, drawSystem, drawSurface}=Renderer;
-/* @end Renderer */
 
 /* ---------------- survey panel + scan log ---------------- */
-/* ----------------------------------------------------------------
-   @section ui-panel [app] — survey-card panel — render, lock, bookmark row, actions
-   Owns: _lastDesc, _panelKey, panelRect, stickyPick, _spExpanded, _frozenFor, _frozenPos, _autoScanned, renderPanel
-   ---------------------------------------------------------------- */
 let _lastDesc=null, _panelKey=null, panelRect=null, stickyPick=null, _spExpanded=null, _frozenFor=null, _frozenPos=null, _autoScanned=null;
 function renderPanel(p, isLocked){
   if(!p){ panelEl.style.display='none'; panelEl.classList.remove('locked'); _lastDesc=null; _panelKey=null; panelRect=null; _frozenFor=null; return; }
@@ -4834,10 +4603,6 @@ panelEl.addEventListener('click', e=>{
 });
 
 /* scan log: your personal catalogue — click an entry to travel there */
-/* ----------------------------------------------------------------
-   @section atlas [app] — Star Atlas — bookmarks, favorites & the home marker
-   Owns: logMap, logOpen, homeId, logFilter, addToLog, renderLog
-   ---------------------------------------------------------------- */
 const logMap=new Map();
 let logOpen=false;
 let homeId=null;       /* the one location you've marked home */
@@ -4932,10 +4697,6 @@ logBtn.addEventListener('click', ()=>{
 });
 
 /* ---------------- the Codex: every species you discover, plus a crossbreeding lab ---------------- */
-/* ----------------------------------------------------------------
-   @section compendium [app] — Compendium — discovered-species catalogue, reveal queue, cosmic epoch
-   Owns: COSMIC_EPOCH, codex, codexOpen, KIND_ICON, codexId, _storeSpecies, autoScanWorld, discoverSpecies, speciesDetails, pendingReveals, …
-   ---------------------------------------------------------------- */
 let COSMIC_EPOCH=0;            /* the universe's biological clock — advances slowly as you explore */
 const codex=new Map();         /* id -> {id, name, kind, desc, diet, gen, genome, from} */
 let codexOpen=false;
@@ -5240,10 +5001,6 @@ codexBtn.addEventListener('click', ()=>{
 });
 
 /* teleport to a logged object: galaxy, star, or planet */
-/* ----------------------------------------------------------------
-   @section nav [app] — goTo() — travel to any saved, searched or shared location
-   Owns: goTo
-   ---------------------------------------------------------------- */
 function goTo(w){
   stickyPick=null; locked=null;
   logOpen=false; logEl.style.display='none';
@@ -5281,10 +5038,6 @@ function goTo(w){
 /* A fresh expedition begins at home: zoomed into our own solar system, with Earth —
    humanity's cradle — already charted and under your flag. The rest of Sol is lifeless,
    so the pull to leave home and find life out among the stars is immediate. */
-/* ----------------------------------------------------------------
-   @section newgame [app] — new-expedition setup (the Sol/Earth opening)
-   Owns: startNewGame
-   ---------------------------------------------------------------- */
 function startNewGame(){
   const solStar={x:SOL_POS.x, y:SOL_POS.y, c:'#fff4d8', s:1.1, seed:SOL_SEED, sol:true};
   const homeGal={x:HOME_POS.x, y:HOME_POS.y, size:78, sp:0, tilt:0.62, rot:0.5, seed:HOME_GAL_SEED, home:true};
@@ -5311,10 +5064,6 @@ function startNewGame(){
    everything below is YOUR layer on top of it: what you've found,
    what you've named, how far you've ranked. Saved locally.
    ================================================================ */
-/* ----------------------------------------------------------------
-   @section player-state [app] — shared expedition state — custom names, seen-sets, counters, flags
-   Owns: toastEl, rankEl, statsEl, dailyBtn, searchIn, searchRes, customNames, cleanName, surveyedSet, galSeen, …
-   ---------------------------------------------------------------- */
 const toastEl=document.getElementById('toast');
 const rankEl=document.getElementById('rank');
 const statsEl=document.getElementById('stats');
@@ -5340,10 +5089,6 @@ let EPOCH_BASE=0;                /* cosmic clock resumes where you left off */
 let _loading=false;              /* true while restoring a save — mutes fanfare */
 
 /* ---- toasts ---- */
-/* ----------------------------------------------------------------
-   @section notify [app] — toasts + the bell notification tray (capped at 60)
-   Owns: notifOn, toast, notifications, _notifSeq, trayOpen, bellEl, bellCt, trayEl, trayList, pushNotif, …
-   ---------------------------------------------------------------- */
 let notifOn=true;
 function toast(title, msg){
   if(notifOn){
@@ -5414,10 +5159,6 @@ document.addEventListener('pointerdown', e=>{
 });
 
 /* ---- rarity sting: a chime that climbs with the tier (WebAudio, no assets) ---- */
-/* ----------------------------------------------------------------
-   @section audio [app] — Web Audio stings & tones; sound/effects/shake settings flags
-   Owns: AC, sndOn, fxOn, shakeOn, ac, playRaritySting
-   ---------------------------------------------------------------- */
 let AC=null;
 let sndOn=true;
 let fxOn=true;
@@ -5487,10 +5228,6 @@ function playRaritySting(tier){
 }
 
 /* ---- explorer rank: ten named tiers, then endless ✦ prestige levels ---- */
-/* ----------------------------------------------------------------
-   @section progression [app] — ranks & achievements
-   Owns: RANKS, rankInfo, _lastRankName, renderRank, kindsOwned, tiersOwned, ACH, noteSurvey, unlock, checkAch, …
-   ---------------------------------------------------------------- */
 const RANKS=[[0,'Cadet'],[30,'Scout'],[90,'Pathfinder'],[220,'Voyager'],[460,'Pioneer'],
   [900,'Star Cartographer'],[1700,'Mythic Wayfarer'],[3000,'Void Sovereign'],
   [5200,'Cosmic Luminary'],[8200,'Eternal Frontier']];
@@ -5645,12 +5382,6 @@ function onSpeciesStored(entry){
   checkAch(); renderRank(); queueSave();
 }
 
-/* ================================================================
-   @module SaveSystem [app] — debounced save, hardened load, reset & wipe (cfcc_save_v1)
-   Deps: player-state, atlas, compendium, bootstrap, player, settings, audio, notify, naming-ui, economy, events, prime, guide, Rand, ui-dom, progression, ui-stats, newgame
-   API:  queueSave, wipeSaveAndReload, loadSave, SAVE_KEY
-   ================================================================ */
-const SaveSystem=(()=>{
 /* ---- save / load (local only — the universe needs no saving, it's math) ---- */
 const SAVE_KEY='cfcc_save_v1';
 let _saveT=0, _wiping=false;
@@ -5794,19 +5525,11 @@ function wipeSaveAndReload(){
 window.addEventListener('beforeunload', doSave);
 window.addEventListener('pageshow', e=>{ if(e && e.persisted) location.reload(); });
 document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') doSave(); });
-return Object.freeze({queueSave, wipeSaveAndReload, loadSave, SAVE_KEY});
-})();
-const {queueSave, wipeSaveAndReload, loadSave, SAVE_KEY}=SaveSystem;
-/* @end SaveSystem */
 
 /* ---- share codes: a pointer into the one shared universe ----
    No server. The code carries the deterministic address (and your name
    for the world, if you gave it one); a friend's copy regenerates the
    identical world from the same seeds. */
-/* ----------------------------------------------------------------
-   @section share [app] — CF1- share codes, the share box & renaming
-   Owns: _r2, encodeWhere, decodeWhere, shareBox, shareLink, copyFromInput, shareWhere, travelToCode, renameObj
-   ---------------------------------------------------------------- */
 function _r2(n){ return Math.round(n*100)/100; }
 function encodeWhere(w, name){
   const g=w.gal;
@@ -5903,10 +5626,6 @@ function renameObj(d){
 }
 
 /* ---- search: your finds, your names, or a pasted code ---- */
-/* ----------------------------------------------------------------
-   @section search [app] — search box — discoveries and pasted CF1-/CFB- codes
-   Owns: _srOut, runSearch
-   ---------------------------------------------------------------- */
 let _srOut=[];
 function runSearch(qRaw){
   const q=String(qRaw).trim().toLowerCase();
@@ -5959,10 +5678,6 @@ document.addEventListener('pointerdown', e=>{
 });
 
 /* ---- traveler's beacon: a fresh random destination every 5 minutes ---- */
-/* ----------------------------------------------------------------
-   @section beacon [app] — Traveler's Beacon — a fresh random destination every 5 minutes
-   Owns: dailyWhere
-   ---------------------------------------------------------------- */
 function dailyWhere(){
   const key=Math.floor(Date.now()/1000/300);   /* 5-minute beacon cycle */
   const r=mulberry32(hashInt(777, key|0, 42)>>>0);
@@ -6003,12 +5718,6 @@ dailyBtn.addEventListener('click', ()=>{
    bounded by rarity, shaped by size, diet and kingdom. Share a creature
    code (CFB-) and duel a friend's champion; same code, same creature,
    same outcome on every device. */
-/* ================================================================
-   @module CombatCore [domain] — battle stats, biome abilities, deterministic duels & creature codes
-   Deps: Rand, EncUtil, player, naming-ui, Genome, viewport, player-state
-   API:  abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED
-   ================================================================ */
-const CombatCore=(()=>{
 const STAT_NAMES=['Vitality','Ferocity','Resilience','Agility','Instinct'];
 const STAT_HUES=['#7fe6a0','#ff8a72','#8fb4ff','#ffd96a','#c79fff'];
 /* every creature is born with one combat ability, rolled from its genome */
@@ -6244,14 +5953,6 @@ function runDuel(mine, theirs){
   const winner = (hpA<=0&&hpB<=0)?null : hpA<=0?'B' : hpB<=0?'A' : (hpA/maxA>=hpB/maxB?'A':'B');
   return {A, B, log, winner, hpA, hpB, maxA, maxB};
 }
-return Object.freeze({abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED});
-})();
-const {abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED}=CombatCore;
-/* @end CombatCore */
-/* ----------------------------------------------------------------
-   @section duel-ui [app] — duel UI — code loader, side cards & fight flow (CFB- codes)
-   Owns: duelBox, statLines, statBars, fightNow, _duelMine, _duelTheirs, duelSetup, duelFightBtn, duelErr, duelSideCard, …
-   ---------------------------------------------------------------- */
 const duelBox=document.getElementById('duelbox');
 function statLines(S){
   return STAT_NAMES.map((n,i)=>{
@@ -6368,10 +6069,6 @@ function shareCreature(entry){
    ("brood") with permanently higher stats. Flora can be fed to fauna for
    permanent gains, but a toxic reaction kills the beast. Stardust from
    settled worlds passively improves your breeding odds. */
-/* ----------------------------------------------------------------
-   @section economy [app] — stardust economy — conquered-worlds map, essence, breeding odds
-   Owns: conquered, essence, stardustBonus, breedOdds, playFailTone
-   ---------------------------------------------------------------- */
 const conquered=new Map();       /* pseed → {t:lastHarvestMs, tier} */
 let essence=0;                   /* ☄ Stardust — harvested from settled worlds */
 function stardustBonus(){ return Math.min(0.15, Math.floor((stats.essenceEarned||0)/50)*0.01); }
@@ -6394,12 +6091,6 @@ function playFailTone(){
     });
   }catch(_){}
 }
-/* ================================================================
-   @module Fx [app] — celebration FX — DOM particle bursts, screen shake, fanfares
-   Deps: audio, Renderer
-   API:  fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud, fxShake, FX_RED
-   ================================================================ */
-const Fx=(()=>{
 /* ---- celebration & impact FX: confetti bursts for wins, a screen shake for hits ---- */
 const fxLayer=document.createElement('div'); fxLayer.id='fxlayer'; document.body.appendChild(fxLayer);
 const FX_GOLD=['#f2d27f','#ffd96a','#fff3c4','#e0a84a'];
@@ -6457,14 +6148,6 @@ function playThud(){
     o.connect(g); g.connect(a.destination); o.start(t); o.stop(t+0.75);
   }catch(_){}
 }
-return Object.freeze({fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud, fxShake, FX_RED});
-})();
-const {fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud, fxShake, FX_RED}=Fx;
-/* @end Fx */
-/* ----------------------------------------------------------------
-   @section husbandry [app] — breeding & feeding rules (both parents consumed; feeding is fauna-only)
-   Owns: removeFromCodex, breedPair, faunaTastes, FEED_EVENTS, feedPair
-   ---------------------------------------------------------------- */
 function removeFromCodex(id){
   codex.delete(id);
   codexCountEl.textContent=codex.size;
@@ -6533,10 +6216,6 @@ function feedPair(faunaEntry, floraEntry, roll){
   return {ok:true, pois, pref, ftype, ev, delta, gut:S.ab.gutsy};
 }
 /* ---- the picker dialog drives both flows ---- */
-/* ----------------------------------------------------------------
-   @section ui-picker [app] — breed/feed/heal specimen picker modal
-   Owns: pickBox, pickList, _pickMode, _pickBase, openPicker
-   ---------------------------------------------------------------- */
 const pickBox=document.getElementById('pickbox');
 const pickList=document.getElementById('pick-list');
 let _pickMode=null, _pickBase=null;
@@ -6652,10 +6331,6 @@ pickBox.addEventListener('click', e=>{ if(e.target===pickBox) pickBox.style.disp
    The frontier bites back. Scanning life on hostile worlds can wound you;
    at 0 HP your expedition ends and the universe starts over. Flora heals —
    but the most potent medicine is also the most likely to poison you. */
-/* ----------------------------------------------------------------
-   @section player [app] — player battle stats (pstats), HP pool, eating flora, death
-   Owns: STAT_KEYS, STAT_META, pstats, hpMaxFromVit, floraStat, HP_MAX, hp, recomputeHPMax, hazardFlavor, dangerOf, …
-   ---------------------------------------------------------------- */
 const STAT_KEYS=['vit','fer','res','agi','ins'];
 const STAT_META={
   vit:{name:'Vitality',   col:'#7fe6a0', d:'Your life pool — sets your max HP and how much punishment you can take.'},
@@ -6751,10 +6426,6 @@ function showDeath(why){
   db.style.display='flex';
 }
 /* ---- Pathfinder's Primer wiring ---- */
-/* ----------------------------------------------------------------
-   @section guide [app] — Pathfinder's Primer (help) wiring
-   Owns: seenGuide, _nameInitial, openGuide
-   ---------------------------------------------------------------- */
 let seenGuide=false, _nameInitial=false;
 function openGuide(){ const g=document.getElementById('guidebox'); if(g) g.style.display='flex'; }
 (function(){
@@ -6782,7 +6453,7 @@ function openGuide(){ const g=document.getElementById('guidebox'); if(g) g.style
     const f=primeFill[slot.dataset.pgo];
     if(f && f.where){ pb.style.display='none'; goTo(f.where); }
   });
-  const fr=document.getElementById('prime-frontier'); if(fr) fr.addEventListener('click', ()=>openFrontier());
+  const fr=document.getElementById('prime-frontier'); if(fr) fr.addEventListener('click', openFrontier);
   const list=document.getElementById('ending-list');
   if(list) list.addEventListener('click', e=>{ const b=e.target.closest('[data-end]'); if(b) chooseEnding(b.dataset.end); });
   if(eb) eb.addEventListener('click', e=>{ if(e.target===eb && frontierEnding) eb.style.display='none'; });
@@ -6794,10 +6465,6 @@ document.getElementById('deathok').addEventListener('click', wipeSaveAndReload);
    Tame fauna by scanning worlds, then send your three strongest against a
    world's three strongest natives. Win the series and the world is settled —
    harvest ☄ Stardust from it every hour. */
-/* ----------------------------------------------------------------
-   @section conquest [app] — planetary conquest & the hourly stardust harvest
-   Owns: HARVEST_CD, apexNative, winEstimate, _conquerTarget, _conquerNative, conquerPlanet, openConquestPicker, runConquestBattle, doHarvest
-   ---------------------------------------------------------------- */
 const HARVEST_CD=3600e3;
 /* the single toughest native fauna — the champion you must beat to take the world */
 function apexNative(d){
@@ -6903,10 +6570,6 @@ function doHarvest(d){
    The campaign win condition. Document one worthy example of each of the nine
    legendary Signatures to complete the master survey the Pathfinders never could,
    then reach the Celestial Frontier. The infinite galaxy stays open afterward. */
-/* ----------------------------------------------------------------
-   @section prime [app] — Prime Codex — 9 Signatures, frontier regions & endings
-   Owns: SIGS, SIG_IDS, primeFill, frontierUnlocked, frontierEnding, primeCount, REGIONS, currentRegion, reachRadius, withinReach, …
-   ---------------------------------------------------------------- */
 const SIGS=[
   {id:'stone', icon:'\ud83e\udea8', name:'Stone Signature', verb:'Conquer', hint:'a rare rocky, metal or mineral world'},
   {id:'ocean', icon:'\ud83c\udf0a', name:'Ocean Signature', verb:'Conquer', hint:'a living ocean world'},
@@ -7093,10 +6756,6 @@ function openFrontier(){
   eb.style.display='flex';
 }
 /* ================= EXPLORER IDENTITY ================= */
-/* ----------------------------------------------------------------
-   @section naming-ui [app] — explorer & species naming modal
-   Owns: explorerName, nameBox, nameIn, _renameTarget, askExplorerName, askRenameSpecies, commitExplorerName
-   ---------------------------------------------------------------- */
 let explorerName='';
 const nameBox=document.getElementById('namebox');
 const nameIn=document.getElementById('namein');
@@ -7153,10 +6812,6 @@ nameIn.addEventListener('keydown', e=>{ if(e.key==='Enter' && nameIn.value.trim(
 nameIn.addEventListener('input', ()=>{ const ok=document.getElementById('nameok'); if(ok) ok.disabled=!nameIn.value.trim(); });
 
 /* ================= SETTINGS ================= */
-/* ----------------------------------------------------------------
-   @section settings [app] — settings panel — text size, sound, effects, shake, notifications, reset
-   Owns: fsMode, applyFs, setPanel, resetSettingsView
-   ---------------------------------------------------------------- */
 let fsMode='';
 function applyFs(){
   try{
@@ -7244,10 +6899,6 @@ document.getElementById('hpheart').addEventListener('click', ()=>openPicker('hea
    deterministic, every explorer sees the SAME events at the same moment.
    Seconds: somewhere a star is always dying (the galaxies show it).
    Then: minute · hour · day · week · month · year · 2 years · decade. */
-/* ----------------------------------------------------------------
-   @section events [app] — Cosmic Events — timed rare-event feed
-   Owns: EVENT_DEFS, _evWhereCache, eventWhere, fmtRemain, eventsBtn, eventsEl, eventsOpen, _evTimer, LIVE_WINDOW, renderEvents, …
-   ---------------------------------------------------------------- */
 const EVENT_DEFS=[
   {id:'flare',  per:60,        ic:'☀️', title:'Stellar Flare',      desc:'A flare star erupts — gone in a minute', planet:false},
   {id:'nova',   per:3600,      ic:'💥', title:'Supernova',          desc:'A massive star detonates this hour', planet:false},
@@ -7380,10 +7031,6 @@ document.addEventListener('pointerdown', e=>{
 });
 
 /* ---- expedition stats panel (tap your rank) ---- */
-/* ----------------------------------------------------------------
-   @section ui-stats [app] — expedition stats panel
-   Owns: statsOpen, renderStats, _agOpen
-   ---------------------------------------------------------------- */
 let statsOpen=false;
 function renderStats(){
   const r=rankInfo();
@@ -7471,10 +7118,6 @@ document.addEventListener('pointerdown', e=>{
 
 /* ---- view persistence: a browser tab-discard or reload returns you
         exactly where you were instead of dumping you at the universe view ---- */
-/* ----------------------------------------------------------------
-   @section bootstrap [app] — boot — restore the save (or open the intro) and start the frame loop
-   Owns: whereOfView, _savedView, _hadSave, frameInner, _frameErrs, frame
-   ---------------------------------------------------------------- */
 function whereOfView(){
   try{
     if(st.mode==='galaxy' && st.gal) return {type:'galaxy', gal:slimGal(st.gal)};
@@ -7505,8 +7148,6 @@ if(location.hash && /cf1-/i.test(location.hash)){
 }
 
 /* ---------------- main loop ---------------- */
-/* one draw pass per zoom mode — adding a mode means registering a painter */
-const MODE_PAINTERS=Object.freeze({universe:drawUniverse, galaxy:drawGalaxy, system:drawSystem, surface:drawSurface});
 function frameInner(){
   ctx.setTransform(DPR,0,0,DPR,0,0);
   const time=perfTime();
@@ -7529,7 +7170,10 @@ function frameInner(){
   picks.length=0;
   checkTransitions();
   if(st.mode!==_lastMode){ _lastMode=st.mode; locked=null; _autoScanned=null; _frozenFor=null; }
-  (MODE_PAINTERS[st.mode]||drawSurface)(time);
+  if(st.mode==='universe') drawUniverse(time);
+  else if(st.mode==='galaxy') drawGalaxy(time);
+  else if(st.mode==='system') drawSystem(time);
+  else drawSurface(time);
   if(st.fade>0.02){
     ctx.fillStyle=`rgba(2,2,8,${st.fade})`;
     ctx.fillRect(0,0,W,H);

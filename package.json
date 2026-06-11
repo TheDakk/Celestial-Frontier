@@ -1,0 +1,18 @@
+{
+  "name": "celestial-frontier",
+  "version": "1.0.0",
+  "description": "Verification toolkit for the Celestial Frontier single-file game",
+  "scripts": {
+    "extract": "node tools/extract.js",
+    "validate": "node tools/validate.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "acorn": "^8.17.0",
+    "jsdom": "^29.1.1"
+  },
+  "private": true
+}

@@ -32,20 +32,23 @@ find + a deep Compendium). The universe remains open and playable after winning.
 
 | File | Purpose |
 |---|---|
-| `celestial-frontier.html` | **The entire game.** ~7,225 lines, ~404 KB. Single file: `<style>` + markup + one big `<script>` (starts ~line 948, ~6,275 lines of JS). |
-| `celestial-frontier-prime-codex-design.md` | Original design doc. |
+| `celestial-frontier.html` | **The entire game.** ~7,580 lines, ~420 KB. Single file: `<style>` + markup + one big `<script>` (starts ~line 948, ~6,630 lines of JS organized into SOLID modules — see §3). |
+| `original/celestial-frontier-v1.0.html` | Pristine pre-refactor v1.0 build (source of the determinism baseline). |
+| `tools/` | Verification toolkit (`npm install` once; see `tools/README.md`). |
 | `celestial-frontier-codebase-reference.md` | **This file.** |
 
 ### Working method (important for future edits)
-Edits are applied with **Python scripts using exact-string replacement** against a
-working copy, then validated before shipping. The canonical loop:
+Edit the extracted script, not the html in place, and validate before shipping:
 
-1. Edit `/home/claude/work/celestial-frontier.html` via a Python `rep(old,new,count,label)`
-   helper that **fails loudly and aborts before writing** if the match count is wrong
-   (so a bad match never corrupts the file).
-2. Extract the `<script>` block to `main.js` and run `node --check main.js`.
-3. Run **all test suites** (see §12) + a CSS brace-balance check + a duplicate-element-id check.
-4. `cp` to `/mnt/user-data/outputs/celestial-frontier.html` and present it.
+1. `node tools/extract.js` — pulls the `<script>` body out to `main.js`.
+2. Edit `main.js` via exact, unique string matches (a bad match must never
+   silently corrupt the file).
+3. `node tools/validate.js` — reassembles the html from `main.js`, then runs
+   `node --check`, CSS brace balance, duplicate-id check, the
+   no-`Math.random`/`Date.now`-in-domain-modules grep, a headless **jsdom boot**
+   (zero errors required), and a **49-probe determinism fingerprint** that must
+   match the v1.0 baseline (`tools/baseline.json`) byte for byte.
+4. Ship the updated `celestial-frontier.html` only when everything passes.
 
 **Encoding caution:** the source mixes encodings — some unicode is stored as literal
 backslash-u escape *text* in JS strings (renders at runtime), some as real UTF-8 chars
@@ -57,12 +60,43 @@ avoid escape-text rendering bugs. Use `cat -A` to see true bytes before matching
 
 ## 3. Core architecture
 
+### Module structure (SOLID restructure, June 2026)
+The script is one strict-mode IIFE organized into three strata (full map in the
+`ARCHITECTURE` comment at the top of the script):
+
+1. **Domain modules** — banner `@module <Name> [domain]` — pure, deterministic,
+   no DOM/clock/`Math.random()`. Each is a revealing-module IIFE that returns a
+   frozen API object, destructured back into script scope so call sites keep
+   their original names (`const {mulberry32,…}=Rand;`). In dependency order:
+   `Rand` (PRNG/hash/noise) → `PlanetGen`, `Naming`, `WorldConfig` (anchors),
+   `StarCatalog` → `WorldGen` (cell-based generation) → `SurveyPhrases`,
+   `SpeciesTraits` → `Genome` → `EncUtil` (b64/SVG-URI) → `Genetics`
+   (evolve/cross) → `Ecology` (biospheres/civs) → `Descriptors` →
+   `CombatCore` (battle stats, abilities, duels, CFB-codes).
+2. **Art & service modules** — `@module <Name> [app]` — deterministic canvas/SVG
+   art and self-contained services: `ThumbArt`, `GalaxyArt`, `SpeciesArt`,
+   `Fx` (bursts/shake/fanfares), `SaveSystem` (save/load/reset/wipe),
+   `Renderer` (the four `draw*` passes).
+3. **App sections** — `@section <name>` — UI panels, input, progression wiring
+   and shared mutable state. Cross-section mutable bindings (e.g. `essence`,
+   `hp`, `pstats`, settings flags) deliberately live in plain script scope: a
+   destructured module export would not propagate reassignment, so a module may
+   only own a `let` that no other section reassigns.
+
+Names not in a module's `API:` list are module-private (interface segregation).
+To export another name, extend all three: the banner `API:` line, the
+`Object.freeze({...})` return, and the destructuring line after the IIFE.
+Extension points are data registries (open/closed): trait tables,
+`ABILITY_THEMES`, `GRADE_TIERS`, `REGIONS`, `SIGS`, `ACH`, `EVENT_DEFS`,
+`MODE_PAINTERS` (mode → draw pass).
+
 ### Rendering
 - **Canvas2D** full-screen (`#cosmos`), redrawn every frame via `requestAnimationFrame`
   (`frame` → `frameInner`). `DPR = Math.min(devicePixelRatio||1, 3)` caps mobile GPU cost.
 - Four zoom **modes** held in `st.mode`: `'universe'` → `'galaxy'` → `'system'` → `'surface'`.
   Each has its own draw function: `drawUniverse`, `drawGalaxy`, `drawSystem`, `drawSurface`
-  (plus `drawBackdrop`). `checkTransitions` handles zoom-driven mode changes; pinch/scroll
+  (plus `drawBackdrop`), dispatched per frame via the frozen `MODE_PAINTERS` registry.
+  `checkTransitions` handles zoom-driven mode changes; pinch/scroll
   zoom via `zoomAt` / `zoomLimits`.
 
 ### Determinism (the heart of the game)
@@ -331,22 +365,18 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-Node-based assertion suites in the work dir; run each with `node <name>.js`. They mostly
-regex-assert structural/behavioral properties of the extracted `main.js` / full HTML:
+The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost
+with the previous working environment. They are superseded by `tools/validate.js`
+(see §2 and `tools/README.md`): syntax check, CSS brace balance, duplicate-id check,
+domain-determinism grep, headless jsdom boot with zero errors, and a 49-probe
+fingerprint over the deterministic core (world-gen, descriptors, genomes, duels,
+share codes) that must match the v1.0 baseline byte for byte.
 
-```
-phaseAtest  phaseBtest  phaseCtest
-feedback1test  feedback5test  feedback6test  feedback7test  feedback8test  feedback9test
-feedback10test feedback11test feedback12test feedback13test feedback14test feedback15test
-feedback16test feedback17test feedback18test feedback19test
-primetest  atlastest  realmtest  finaltest  esc_check
-```
-
-Plus invariant checks: `node --check main.js`, CSS brace balance, no duplicate element ids.
-When an edit intentionally changes a string/structure a suite asserts, **update the stale
-assertion** (don't weaken the intent). A browser smoke test (Playwright) exercises every
-panel, all four settings toggles, Escape, search, the heal picker, and the reset flow with
-zero console errors.
+When an edit intentionally changes behavior a probe captures, regenerate the baseline
+**deliberately and say so** (don't weaken the intent of a check). A browser smoke test
+(Playwright) exercising every panel, the settings toggles, Escape handling, search, the
+heal picker and the reset flow remains the highest-value addition if sustained work
+resumes — the jsdom boot covers load-time wiring, not interaction flows.
 
 ---
 
