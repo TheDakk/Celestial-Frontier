@@ -1,0 +1,1941 @@
+{
+ "ui-dom": {
+  "layer": "app",
+  "ranges": [
+   [
+    4,
+    18
+   ]
+  ],
+  "decls": [
+   "cv",
+   "ctx",
+   "trailEl",
+   "ctxEl",
+   "panelEl",
+   "hintEl",
+   "logEl",
+   "logBtn",
+   "logCountEl",
+   "codexBtn",
+   "codexEl",
+   "codexCountEl",
+   "revealEl"
+  ],
+  "exports": [
+   "trailEl",
+   "hintEl",
+   "cv",
+   "ctx",
+   "ctxEl",
+   "panelEl",
+   "codexBtn",
+   "logCountEl",
+   "logEl",
+   "logBtn",
+   "codexEl",
+   "codexCountEl",
+   "revealEl"
+  ],
+  "deps": []
+ },
+ "ui-hud": {
+  "layer": "app",
+  "ranges": [
+   [
+    19,
+    49
+   ]
+  ],
+  "decls": [
+   "_trailKey",
+   "setTrail",
+   "TOUCH",
+   "HINTS",
+   "_hintMode",
+   "setHint",
+   "picks",
+   "mouse",
+   "_lastMode",
+   "locked"
+  ],
+  "exports": [
+   "mouse",
+   "TOUCH",
+   "picks",
+   "locked",
+   "setTrail",
+   "setHint",
+   "_lastMode"
+  ],
+  "deps": [
+   "ui-dom"
+  ]
+ },
+ "viewport": {
+  "layer": "app",
+  "ranges": [
+   [
+    50,
+    75
+   ]
+  ],
+  "decls": [
+   "W",
+   "H",
+   "DPR",
+   "minWH",
+   "resize",
+   "syncTopbarH"
+  ],
+  "exports": [
+   "W",
+   "H",
+   "minWH",
+   "DPR",
+   "syncTopbarH"
+  ],
+  "deps": [
+   "ui-dom"
+  ]
+ },
+ "rng": {
+  "layer": "domain",
+  "ranges": [
+   [
+    76,
+    110
+   ]
+  ],
+  "decls": [
+   "TAU",
+   "mulberry32",
+   "hashInt",
+   "cellRng",
+   "clamp",
+   "mix",
+   "makeNoise"
+  ],
+  "exports": [
+   "mulberry32",
+   "clamp",
+   "mix",
+   "makeNoise",
+   "TAU",
+   "hashInt",
+   "cellRng"
+  ],
+  "deps": [],
+  "wrapped": true
+ },
+ "planetgen": {
+  "layer": "domain",
+  "ranges": [
+   [
+    111,
+    228
+   ]
+  ],
+  "decls": [
+   "planetParams",
+   "hsl",
+   "gasPalette",
+   "surfaceColor"
+  ],
+  "exports": [
+   "surfaceColor",
+   "planetParams"
+  ],
+  "deps": [
+   "rng"
+  ],
+  "wrapped": true
+ },
+ "art-thumbs": {
+  "layer": "app",
+  "ranges": [
+   [
+    229,
+    387
+   ]
+  ],
+  "decls": [
+   "P_PX",
+   "spriteCache",
+   "renderPlanetSprite",
+   "getPlanetSprite",
+   "thumbCache",
+   "planetThumb",
+   "starThumb",
+   "galaxyThumb",
+   "moonThumb",
+   "cometThumb",
+   "beltThumb"
+  ],
+  "exports": [
+   "planetThumb",
+   "starThumb",
+   "galaxyThumb",
+   "moonThumb",
+   "cometThumb",
+   "beltThumb",
+   "getPlanetSprite"
+  ],
+  "deps": [
+   "rng",
+   "planetgen",
+   "codec-util",
+   "art-galaxy"
+  ],
+  "wrapped": true
+ },
+ "art-galaxy": {
+  "layer": "app",
+  "ranges": [
+   [
+    388,
+    542
+   ]
+  ],
+  "decls": [
+   "G_PX",
+   "makeGalaxySprite",
+   "GAL_SPRITE_SEEDS",
+   "GAL_SPRITES",
+   "galSpriteKind",
+   "GAL_KIND"
+  ],
+  "exports": [
+   "GAL_SPRITES",
+   "GAL_KIND"
+  ],
+  "deps": [
+   "rng"
+  ],
+  "wrapped": true
+ },
+ "naming": {
+  "layer": "domain",
+  "ranges": [
+   [
+    543,
+    553
+   ]
+  ],
+  "decls": [
+   "SYL",
+   "properName",
+   "galaxyName",
+   "starName"
+  ],
+  "exports": [
+   "properName",
+   "starName",
+   "galaxyName"
+  ],
+  "deps": [
+   "rng",
+   "config"
+  ],
+  "wrapped": true
+ },
+ "config": {
+  "layer": "domain",
+  "ranges": [
+   [
+    554,
+    564
+   ]
+  ],
+  "decls": [
+   "UCELL",
+   "OBS_R",
+   "HOME_GAL_SEED",
+   "HOME_POS",
+   "GR",
+   "GCELL",
+   "SOL_SEED",
+   "SOL_POS",
+   "SYS_R"
+  ],
+  "exports": [
+   "HOME_GAL_SEED",
+   "SOL_SEED",
+   "UCELL",
+   "HOME_POS",
+   "GR",
+   "GCELL",
+   "SOL_POS",
+   "SYS_R",
+   "OBS_R"
+  ],
+  "deps": [],
+  "wrapped": true
+ },
+ "stars": {
+  "layer": "domain",
+  "ranges": [
+   [
+    565,
+    607
+   ]
+  ],
+  "decls": [
+   "starClass",
+   "KIND_DESC",
+   "SOL_PLANETS"
+  ],
+  "exports": [
+   "starClass",
+   "SOL_PLANETS",
+   "KIND_DESC"
+  ],
+  "deps": [
+   "config",
+   "rng"
+  ],
+  "wrapped": true
+ },
+ "worldgen": {
+  "layer": "domain",
+  "ranges": [
+   [
+    608,
+    983
+   ]
+  ],
+  "decls": [
+   "genRocks",
+   "UNOISE",
+   "ugCache",
+   "galaxiesInCell",
+   "galaxyProfile",
+   "_wormCache",
+   "galaxyWormhole",
+   "starCache",
+   "_snovaCache",
+   "supernovaSites",
+   "FCELL",
+   "fineCache",
+   "hazeCache",
+   "galaxyHaze",
+   "fineStarsInCell",
+   "starsInCell",
+   "_sysCache",
+   "systemFor",
+   "_systemFor"
+  ],
+  "exports": [
+   "systemFor",
+   "galaxiesInCell",
+   "galaxyWormhole",
+   "galaxyProfile",
+   "starsInCell",
+   "FCELL",
+   "fineStarsInCell",
+   "UNOISE",
+   "galaxyHaze",
+   "supernovaSites"
+  ],
+  "deps": [
+   "rng",
+   "config",
+   "art-galaxy",
+   "stars",
+   "naming",
+   "planetgen"
+  ],
+  "wrapped": true
+ },
+ "desc-helpers": {
+  "layer": "domain",
+  "ranges": [
+   [
+    984,
+    1053
+   ]
+  ],
+  "decls": [
+   "TYPE_LABEL",
+   "COMP",
+   "atmosphereText",
+   "climateText",
+   "waterText",
+   "gravityText",
+   "climateBand",
+   "pick1"
+  ],
+  "exports": [
+   "climateBand",
+   "COMP",
+   "atmosphereText",
+   "climateText",
+   "waterText",
+   "gravityText",
+   "TYPE_LABEL"
+  ],
+  "deps": [],
+  "wrapped": true
+ },
+ "species-data": {
+  "layer": "domain",
+  "ranges": [
+   [
+    1054,
+    1223
+   ]
+  ],
+  "decls": [
+   "SP_KINGDOM",
+   "SP_COLOR",
+   "SP_HEX",
+   "GRADE_TIERS",
+   "HUE_FAMILY",
+   "rarityRoll",
+   "colorGrade",
+   "SPECTRA",
+   "spectral",
+   "FLORA_FORM",
+   "FUNGI_FORM",
+   "MICROBE_FORM",
+   "FA_BODY",
+   "FA_LOCO",
+   "FA_TRAIT",
+   "FA_SIZE",
+   "FA_SIZE_M",
+   "FA_DIET",
+   "FA_HEAD",
+   "FA_LIMBS",
+   "FA_SKIN",
+   "FA_TAIL",
+   "FA_PATTERN",
+   "FA_EYES",
+   "FA_BEHAVIOR",
+   "FA_HABITAT",
+   "FA_TEMPER",
+   "FA_SENSE",
+   "FA_REPRO",
+   "FA_LIFE",
+   "FA_METAB",
+   "FLORA_DETAIL",
+   "SP_NAME_A",
+   "SP_NAME_B",
+   "SP_NAME_C",
+   "speciesName"
+  ],
+  "exports": [
+   "SP_COLOR",
+   "FA_BODY",
+   "FA_LOCO",
+   "FA_TRAIT",
+   "FA_SIZE",
+   "FA_DIET",
+   "FA_HEAD",
+   "FA_LIMBS",
+   "FA_SKIN",
+   "FA_TAIL",
+   "FA_PATTERN",
+   "FA_EYES",
+   "FA_BEHAVIOR",
+   "FA_HABITAT",
+   "FLORA_DETAIL",
+   "FA_TEMPER",
+   "FA_SENSE",
+   "FA_REPRO",
+   "FA_LIFE",
+   "FA_METAB",
+   "FLORA_FORM",
+   "FUNGI_FORM",
+   "MICROBE_FORM",
+   "speciesName",
+   "colorGrade",
+   "SP_HEX",
+   "FA_SIZE_M",
+   "SPECTRA",
+   "spectral",
+   "GRADE_TIERS"
+  ],
+  "deps": [
+   "rng"
+  ],
+  "wrapped": true
+ },
+ "genome": {
+  "layer": "domain",
+  "ranges": [
+   [
+    1224,
+    1410
+   ]
+  ],
+  "decls": [
+   "makeGenome",
+   "REALM_ORDER",
+   "REALM_ICON",
+   "SAP_LABEL",
+   "sapienceTier",
+   "realmBiome",
+   "classifyRealm",
+   "ecologyRole",
+   "realmModifiers",
+   "describeSpecies",
+   "speciesGrade",
+   "faunaDesc"
+  ],
+  "exports": [
+   "describeSpecies",
+   "makeGenome",
+   "sapienceTier",
+   "classifyRealm",
+   "ecologyRole",
+   "realmBiome",
+   "realmModifiers",
+   "REALM_ICON",
+   "REALM_ORDER"
+  ],
+  "deps": [
+   "rng",
+   "species-data"
+  ],
+  "wrapped": true
+ },
+ "codec-util": {
+  "layer": "domain",
+  "ranges": [
+   [
+    1411,
+    1434
+   ]
+  ],
+  "decls": [
+   "b64encUtf8",
+   "b64decUtf8",
+   "svgURI",
+   "shade"
+  ],
+  "exports": [
+   "shade",
+   "svgURI",
+   "b64encUtf8",
+   "b64decUtf8"
+  ],
+  "deps": [],
+  "wrapped": true
+ },
+ "art-species": {
+  "layer": "app",
+  "ranges": [
+   [
+    1435,
+    1656
+   ]
+  ],
+  "decls": [
+   "speciesArtCache",
+   "speciesArtRaw",
+   "speciesPortrait",
+   "specimenCache",
+   "specimenCard"
+  ],
+  "exports": [
+   "speciesPortrait"
+  ],
+  "deps": [
+   "species-data",
+   "rng",
+   "codec-util",
+   "input",
+   "genome",
+   "player-state",
+   "viewport"
+  ],
+  "wrapped": true
+ },
+ "genetics": {
+  "layer": "domain",
+  "ranges": [
+   [
+    1657,
+    1701
+   ]
+  ],
+  "decls": [
+   "evolveGenome",
+   "crossGenome"
+  ],
+  "exports": [
+   "evolveGenome",
+   "crossGenome"
+  ],
+  "deps": [
+   "rng"
+  ],
+  "wrapped": true
+ },
+ "ecology": {
+  "layer": "domain",
+  "ranges": [
+   [
+    1702,
+    1843
+   ]
+  ],
+  "decls": [
+   "_speciesMemo",
+   "planetSpecies",
+   "biosphere",
+   "ERAS",
+   "civilization"
+  ],
+  "exports": [
+   "biosphere",
+   "civilization",
+   "planetSpecies"
+  ],
+  "deps": [
+   "compendium",
+   "rng",
+   "genetics",
+   "genome",
+   "viewport",
+   "naming"
+  ],
+  "wrapped": true
+ },
+ "descriptors": {
+  "layer": "domain",
+  "ranges": [
+   [
+    1844,
+    2276
+   ]
+  ],
+  "decls": [
+   "magnetText",
+   "seasonText",
+   "weatherText",
+   "planetDescriptor",
+   "STAR_INFO",
+   "starDescriptor",
+   "fmtBig",
+   "galaxyStats",
+   "GAL_KL",
+   "galaxyDescriptor",
+   "quasarDescriptor",
+   "MOON_TYPES",
+   "roman",
+   "SOL_MOONS",
+   "moonDescriptor",
+   "cometDescriptor",
+   "beltDescriptor",
+   "decoDescriptor",
+   "dwarfDescriptor",
+   "kuiperDescriptor",
+   "oortDescriptor",
+   "visitorDescriptor",
+   "wormholeDescriptor",
+   "radioDescriptor",
+   "supernovaDescriptor",
+   "protostarDescriptor",
+   "cmbDescriptor",
+   "slimGal",
+   "describePick"
+  ],
+  "exports": [
+   "galaxyStats",
+   "fmtBig",
+   "roman",
+   "describePick",
+   "slimGal"
+  ],
+  "deps": [
+   "rng",
+   "desc-helpers",
+   "ecology",
+   "genome",
+   "species-data",
+   "state-camera",
+   "prime",
+   "art-thumbs",
+   "stars",
+   "worldgen",
+   "config",
+   "naming",
+   "art-galaxy",
+   "player-state"
+  ],
+  "wrapped": true
+ },
+ "art-tiles": {
+  "layer": "app",
+  "ranges": [
+   [
+    2277,
+    2345
+   ]
+  ],
+  "decls": [
+   "tileCache",
+   "tileBudget",
+   "getTile"
+  ],
+  "exports": [
+   "tileBudget",
+   "getTile"
+  ],
+  "deps": [
+   "rng",
+   "planetgen"
+  ]
+ },
+ "state-camera": {
+  "layer": "app",
+  "ranges": [
+   [
+    2346,
+    2364
+   ]
+  ],
+  "decls": [
+   "st",
+   "curCam",
+   "zoomLimits"
+  ],
+  "exports": [
+   "st",
+   "curCam",
+   "zoomLimits"
+  ],
+  "deps": [
+   "config",
+   "viewport"
+  ]
+ },
+ "input": {
+  "layer": "app",
+  "ranges": [
+   [
+    2365,
+    2470
+   ]
+  ],
+  "decls": [
+   "dragging",
+   "lx",
+   "ly",
+   "downX",
+   "downY",
+   "downT",
+   "moved",
+   "pinching",
+   "lastTapT",
+   "lastTapX",
+   "lastTapY",
+   "activeTouches",
+   "pinchEndT",
+   "mouseOverUI",
+   "zoomAt",
+   "pinch"
+  ],
+  "exports": [
+   "ly",
+   "lx",
+   "dragging",
+   "mouseOverUI"
+  ],
+  "deps": [
+   "ui-dom",
+   "ui-hud",
+   "state-camera",
+   "ui-panel",
+   "rng",
+   "viewport",
+   "compendium"
+  ]
+ },
+ "transitions": {
+  "layer": "app",
+  "ranges": [
+   [
+    2471,
+    2584
+   ]
+  ],
+  "decls": [
+   "checkTransitions"
+  ],
+  "exports": [
+   "checkTransitions"
+  ],
+  "deps": [
+   "state-camera",
+   "config",
+   "worldgen",
+   "viewport",
+   "prime",
+   "rng",
+   "progression",
+   "render"
+  ]
+ },
+ "render": {
+  "layer": "app",
+  "ranges": [
+   [
+    2585,
+    3482
+   ]
+  ],
+  "decls": [
+   "t0",
+   "perfTime",
+   "bgStars",
+   "drawBackdrop",
+   "WEB_BLOB",
+   "FOG_BLOB",
+   "drawUniverse",
+   "drawGalaxy",
+   "drawSystem",
+   "drawSurface"
+  ],
+  "exports": [
+   "perfTime",
+   "t0",
+   "drawUniverse",
+   "drawGalaxy",
+   "drawSystem",
+   "drawSurface"
+  ],
+  "deps": [
+   "rng",
+   "ui-dom",
+   "viewport",
+   "state-camera",
+   "config",
+   "ui-hud",
+   "worldgen",
+   "art-galaxy",
+   "naming",
+   "prime",
+   "compendium",
+   "descriptors",
+   "art-thumbs",
+   "stars",
+   "art-tiles",
+   "planetgen",
+   "desc-helpers"
+  ],
+  "wrapped": true
+ },
+ "ui-panel": {
+  "layer": "app",
+  "ranges": [
+   [
+    3483,
+    3658
+   ]
+  ],
+  "decls": [
+   "_lastDesc",
+   "_panelKey",
+   "panelRect",
+   "stickyPick",
+   "_spExpanded",
+   "_frozenFor",
+   "_frozenPos",
+   "_autoScanned",
+   "renderPanel"
+  ],
+  "exports": [
+   "panelRect",
+   "_panelKey",
+   "stickyPick",
+   "_autoScanned",
+   "_frozenFor",
+   "renderPanel"
+  ],
+  "deps": [
+   "ui-dom",
+   "descriptors",
+   "prime",
+   "compendium",
+   "art-species",
+   "atlas",
+   "economy",
+   "state-camera",
+   "conquest",
+   "player-state",
+   "progression",
+   "player",
+   "viewport",
+   "rng",
+   "share",
+   "persistence"
+  ]
+ },
+ "atlas": {
+  "layer": "app",
+  "ranges": [
+   [
+    3659,
+    3752
+   ]
+  ],
+  "decls": [
+   "logMap",
+   "logOpen",
+   "homeId",
+   "logFilter",
+   "addToLog",
+   "renderLog"
+  ],
+  "exports": [
+   "logMap",
+   "homeId",
+   "addToLog",
+   "logOpen",
+   "renderLog"
+  ],
+  "deps": [
+   "ui-dom",
+   "persistence",
+   "nav",
+   "notify",
+   "ui-panel",
+   "compendium"
+  ]
+ },
+ "compendium": {
+  "layer": "app",
+  "ranges": [
+   [
+    3753,
+    4056
+   ]
+  ],
+  "decls": [
+   "COSMIC_EPOCH",
+   "codex",
+   "codexOpen",
+   "KIND_ICON",
+   "codexId",
+   "_storeSpecies",
+   "autoScanWorld",
+   "discoverSpecies",
+   "speciesDetails",
+   "pendingReveals",
+   "passiveDrift",
+   "showReveal",
+   "_revEntry",
+   "_flashT",
+   "flashCodex",
+   "renderCodex",
+   "_cdxOpen"
+  ],
+  "exports": [
+   "COSMIC_EPOCH",
+   "pendingReveals",
+   "codexOpen",
+   "renderCodex",
+   "codex",
+   "codexId",
+   "autoScanWorld",
+   "_storeSpecies",
+   "showReveal",
+   "_revEntry",
+   "passiveDrift"
+  ],
+  "deps": [
+   "genome",
+   "art-species",
+   "player-state",
+   "ui-dom",
+   "progression",
+   "prime",
+   "persistence",
+   "audio",
+   "fx",
+   "economy",
+   "notify",
+   "rng",
+   "genetics",
+   "species-data",
+   "combat-core",
+   "player",
+   "husbandry",
+   "duel-ui",
+   "ui-picker",
+   "naming-ui",
+   "nav",
+   "atlas"
+  ]
+ },
+ "nav": {
+  "layer": "app",
+  "ranges": [
+   [
+    4057,
+    4093
+   ]
+  ],
+  "decls": [
+   "goTo"
+  ],
+  "exports": [
+   "goTo"
+  ],
+  "deps": [
+   "ui-panel",
+   "ui-hud",
+   "atlas",
+   "ui-dom",
+   "state-camera",
+   "viewport",
+   "config",
+   "worldgen",
+   "render",
+   "rng"
+  ]
+ },
+ "newgame": {
+  "layer": "app",
+  "ranges": [
+   [
+    4094,
+    4119
+   ]
+  ],
+  "decls": [
+   "startNewGame"
+  ],
+  "exports": [
+   "startNewGame"
+  ],
+  "deps": [
+   "config",
+   "nav",
+   "state-camera",
+   "economy",
+   "descriptors",
+   "atlas",
+   "art-thumbs",
+   "ui-dom",
+   "persistence"
+  ]
+ },
+ "player-state": {
+  "layer": "app",
+  "ranges": [
+   [
+    4120,
+    4144
+   ]
+  ],
+  "decls": [
+   "toastEl",
+   "rankEl",
+   "statsEl",
+   "dailyBtn",
+   "searchIn",
+   "searchRes",
+   "customNames",
+   "cleanName",
+   "surveyedSet",
+   "galSeen",
+   "surfSeen",
+   "starKindsSeen",
+   "ptypesSeen",
+   "eventKeysSeen",
+   "unlocked",
+   "stats",
+   "lastAnomKey",
+   "EPOCH_BASE",
+   "_loading"
+  ],
+  "exports": [
+   "stats",
+   "customNames",
+   "surveyedSet",
+   "toastEl",
+   "unlocked",
+   "galSeen",
+   "rankEl",
+   "_loading",
+   "ptypesSeen",
+   "surfSeen",
+   "starKindsSeen",
+   "lastAnomKey",
+   "eventKeysSeen",
+   "EPOCH_BASE",
+   "cleanName",
+   "statsEl",
+   "searchRes",
+   "searchIn",
+   "dailyBtn"
+  ],
+  "deps": []
+ },
+ "notify": {
+  "layer": "app",
+  "ranges": [
+   [
+    4145,
+    4214
+   ]
+  ],
+  "decls": [
+   "notifOn",
+   "toast",
+   "notifications",
+   "_notifSeq",
+   "trayOpen",
+   "bellEl",
+   "bellCt",
+   "trayEl",
+   "trayList",
+   "pushNotif",
+   "timeAgo",
+   "renderBell",
+   "renderTray"
+  ],
+  "exports": [
+   "toast",
+   "pushNotif",
+   "notifOn",
+   "notifications",
+   "_notifSeq",
+   "renderBell"
+  ],
+  "deps": [
+   "player-state",
+   "persistence"
+  ]
+ },
+ "audio": {
+  "layer": "app",
+  "ranges": [
+   [
+    4215,
+    4283
+   ]
+  ],
+  "decls": [
+   "AC",
+   "sndOn",
+   "fxOn",
+   "shakeOn",
+   "ac",
+   "playRaritySting"
+  ],
+  "exports": [
+   "playRaritySting",
+   "sndOn",
+   "fxOn",
+   "shakeOn",
+   "ac"
+  ],
+  "deps": [
+   "render"
+  ]
+ },
+ "progression": {
+  "layer": "app",
+  "ranges": [
+   [
+    4284,
+    4438
+   ]
+  ],
+  "decls": [
+   "RANKS",
+   "rankInfo",
+   "_lastRankName",
+   "renderRank",
+   "kindsOwned",
+   "tiersOwned",
+   "ACH",
+   "noteSurvey",
+   "unlock",
+   "checkAch",
+   "onSpeciesStored"
+  ],
+  "exports": [
+   "unlock",
+   "noteSurvey",
+   "checkAch",
+   "onSpeciesStored",
+   "renderRank",
+   "rankInfo",
+   "ACH"
+  ],
+  "deps": [
+   "player-state",
+   "compendium",
+   "naming-ui",
+   "notify",
+   "audio",
+   "fx",
+   "viewport",
+   "economy",
+   "config",
+   "persistence"
+  ]
+ },
+ "persistence": {
+  "layer": "app",
+  "ranges": [
+   [
+    4439,
+    4585
+   ]
+  ],
+  "decls": [
+   "SAVE_KEY",
+   "_saveT",
+   "_wiping",
+   "_saveFailWarned",
+   "queueSave",
+   "doSave",
+   "loadSave",
+   "resetMemoryState",
+   "wipeSaveAndReload"
+  ],
+  "exports": [
+   "queueSave",
+   "wipeSaveAndReload",
+   "loadSave"
+  ],
+  "deps": [
+   "player-state",
+   "atlas",
+   "compendium",
+   "bootstrap",
+   "player",
+   "settings",
+   "audio",
+   "notify",
+   "naming-ui",
+   "economy",
+   "events",
+   "prime",
+   "guide",
+   "rng",
+   "ui-dom",
+   "progression",
+   "ui-stats",
+   "newgame"
+  ],
+  "wrapped": true
+ },
+ "share": {
+  "layer": "app",
+  "ranges": [
+   [
+    4586,
+    4681
+   ]
+  ],
+  "decls": [
+   "_r2",
+   "encodeWhere",
+   "decodeWhere",
+   "shareBox",
+   "shareLink",
+   "copyFromInput",
+   "shareWhere",
+   "travelToCode",
+   "renameObj"
+  ],
+  "exports": [
+   "shareWhere",
+   "travelToCode",
+   "shareBox",
+   "shareLink",
+   "copyFromInput"
+  ],
+  "deps": [
+   "codec-util",
+   "player-state",
+   "progression",
+   "persistence",
+   "notify",
+   "prime",
+   "nav",
+   "atlas",
+   "ui-panel"
+  ]
+ },
+ "search": {
+  "layer": "app",
+  "ranges": [
+   [
+    4682,
+    4733
+   ]
+  ],
+  "decls": [
+   "_srOut",
+   "runSearch"
+  ],
+  "exports": [],
+  "deps": [
+   "player-state",
+   "atlas",
+   "compendium",
+   "share",
+   "nav"
+  ]
+ },
+ "beacon": {
+  "layer": "app",
+  "ranges": [
+   [
+    4734,
+    4773
+   ]
+  ],
+  "decls": [
+   "dailyWhere"
+  ],
+  "exports": [],
+  "deps": [
+   "rng",
+   "worldgen",
+   "config",
+   "descriptors",
+   "player-state",
+   "notify",
+   "nav",
+   "progression",
+   "persistence"
+  ]
+ },
+ "combat-core": {
+  "layer": "domain",
+  "ranges": [
+   [
+    4774,
+    5008
+   ]
+  ],
+  "decls": [
+   "STAT_NAMES",
+   "STAT_HUES",
+   "ABILITY_THEMES",
+   "HAB_THEME",
+   "abilityTheme",
+   "abilityOf",
+   "_playerAvatarURL",
+   "playerAvatar",
+   "PLAYER_SEED",
+   "playerBattleStats",
+   "_statOpen",
+   "statBlockHTML",
+   "playerCombatant",
+   "battleStats",
+   "encodeCreature",
+   "normGenome",
+   "decodeCreature",
+   "runDuel"
+  ],
+  "exports": [
+   "abilityOf",
+   "battleStats",
+   "STAT_NAMES",
+   "STAT_HUES",
+   "runDuel",
+   "decodeCreature",
+   "encodeCreature",
+   "playerCombatant",
+   "statBlockHTML",
+   "_statOpen"
+  ],
+  "deps": [
+   "rng",
+   "codec-util",
+   "player",
+   "naming-ui",
+   "genome",
+   "viewport",
+   "player-state"
+  ],
+  "wrapped": true
+ },
+ "duel-ui": {
+  "layer": "app",
+  "ranges": [
+   [
+    5009,
+    5124
+   ]
+  ],
+  "decls": [
+   "duelBox",
+   "statLines",
+   "statBars",
+   "fightNow",
+   "_duelMine",
+   "_duelTheirs",
+   "duelSetup",
+   "duelFightBtn",
+   "duelErr",
+   "duelSideCard",
+   "startDuelWithCode",
+   "shareCreature"
+  ],
+  "exports": [
+   "shareCreature",
+   "startDuelWithCode",
+   "duelSetup",
+   "duelFightBtn",
+   "duelErr",
+   "fightNow"
+  ],
+  "deps": [
+   "combat-core",
+   "art-species",
+   "player-state",
+   "audio",
+   "progression",
+   "persistence",
+   "ui-dom",
+   "share"
+  ]
+ },
+ "economy": {
+  "layer": "app",
+  "ranges": [
+   [
+    5125,
+    5147
+   ]
+  ],
+  "decls": [
+   "conquered",
+   "essence",
+   "stardustBonus",
+   "breedOdds",
+   "playFailTone"
+  ],
+  "exports": [
+   "conquered",
+   "essence",
+   "breedOdds",
+   "stardustBonus",
+   "playFailTone"
+  ],
+  "deps": [
+   "player-state",
+   "rng",
+   "audio"
+  ]
+ },
+ "fx": {
+  "layer": "app",
+  "ranges": [
+   [
+    5148,
+    5203
+   ]
+  ],
+  "decls": [
+   "fxLayer",
+   "FX_GOLD",
+   "FX_GREEN",
+   "FX_PURP",
+   "FX_RED",
+   "fxBurst",
+   "fxShake",
+   "playFanfare",
+   "playThud"
+  ],
+  "exports": [
+   "fxBurst",
+   "FX_GOLD",
+   "FX_GREEN",
+   "playFanfare",
+   "FX_PURP",
+   "playThud",
+   "fxShake",
+   "FX_RED"
+  ],
+  "deps": [
+   "audio",
+   "render"
+  ],
+  "wrapped": true
+ },
+ "husbandry": {
+  "layer": "app",
+  "ranges": [
+   [
+    5204,
+    5271
+   ]
+  ],
+  "decls": [
+   "removeFromCodex",
+   "breedPair",
+   "faunaTastes",
+   "FEED_EVENTS",
+   "feedPair"
+  ],
+  "exports": [
+   "faunaTastes",
+   "breedPair",
+   "feedPair",
+   "removeFromCodex"
+  ],
+  "deps": [
+   "compendium",
+   "ui-dom",
+   "economy",
+   "genetics",
+   "progression",
+   "rng",
+   "player",
+   "combat-core"
+  ]
+ },
+ "ui-picker": {
+  "layer": "app",
+  "ranges": [
+   [
+    5272,
+    5386
+   ]
+  ],
+  "decls": [
+   "pickBox",
+   "pickList",
+   "_pickMode",
+   "_pickBase",
+   "openPicker"
+  ],
+  "exports": [
+   "openPicker",
+   "_pickMode",
+   "_pickBase",
+   "pickList",
+   "pickBox"
+  ],
+  "deps": [
+   "compendium",
+   "player",
+   "economy",
+   "rng",
+   "combat-core",
+   "conquest",
+   "audio",
+   "fx",
+   "progression",
+   "persistence",
+   "husbandry",
+   "player-state",
+   "ui-dom"
+  ]
+ },
+ "player": {
+  "layer": "app",
+  "ranges": [
+   [
+    5387,
+    5481
+   ]
+  ],
+  "decls": [
+   "STAT_KEYS",
+   "STAT_META",
+   "pstats",
+   "hpMaxFromVit",
+   "floraStat",
+   "HP_MAX",
+   "hp",
+   "recomputeHPMax",
+   "hazardFlavor",
+   "dangerOf",
+   "renderHP",
+   "damageExplorer",
+   "healExplorer",
+   "showDeath"
+  ],
+  "exports": [
+   "dangerOf",
+   "damageExplorer",
+   "hazardFlavor",
+   "STAT_META",
+   "floraStat",
+   "hp",
+   "pstats",
+   "STAT_KEYS",
+   "HP_MAX",
+   "hpMaxFromVit",
+   "renderHP",
+   "healExplorer"
+  ],
+  "deps": [
+   "rng",
+   "combat-core",
+   "economy",
+   "persistence",
+   "fx",
+   "progression",
+   "notify",
+   "husbandry",
+   "naming-ui",
+   "player-state",
+   "compendium"
+  ]
+ },
+ "guide": {
+  "layer": "app",
+  "ranges": [
+   [
+    5482,
+    5520
+   ]
+  ],
+  "decls": [
+   "seenGuide",
+   "_nameInitial",
+   "openGuide"
+  ],
+  "exports": [
+   "seenGuide",
+   "_nameInitial",
+   "openGuide"
+  ],
+  "deps": [
+   "persistence",
+   "prime",
+   "nav"
+  ]
+ },
+ "conquest": {
+  "layer": "app",
+  "ranges": [
+   [
+    5521,
+    5625
+   ]
+  ],
+  "decls": [
+   "HARVEST_CD",
+   "apexNative",
+   "winEstimate",
+   "_conquerTarget",
+   "_conquerNative",
+   "conquerPlanet",
+   "openConquestPicker",
+   "runConquestBattle",
+   "doHarvest"
+  ],
+  "exports": [
+   "HARVEST_CD",
+   "conquerPlanet",
+   "doHarvest",
+   "_conquerTarget",
+   "_conquerNative",
+   "runConquestBattle"
+  ],
+  "deps": [
+   "combat-core",
+   "state-camera",
+   "prime",
+   "genome",
+   "rng",
+   "notify",
+   "economy",
+   "ui-picker",
+   "compendium",
+   "art-species",
+   "duel-ui",
+   "player-state",
+   "progression",
+   "audio",
+   "fx",
+   "ui-panel",
+   "player",
+   "husbandry",
+   "persistence",
+   "events"
+  ]
+ },
+ "prime": {
+  "layer": "app",
+  "ranges": [
+   [
+    5626,
+    5811
+   ]
+  ],
+  "decls": [
+   "SIGS",
+   "SIG_IDS",
+   "primeFill",
+   "frontierUnlocked",
+   "frontierEnding",
+   "primeCount",
+   "REGIONS",
+   "currentRegion",
+   "reachRadius",
+   "withinReach",
+   "regionAt",
+   "_charterToastT",
+   "charterBlock",
+   "pathfinderRank",
+   "speciesSignatures",
+   "worldSignature",
+   "claimSignature",
+   "primeCheckSpecies",
+   "primeCheckWorld",
+   "checkFrontier",
+   "renderPrime",
+   "updatePrimeBtn",
+   "ENDINGS",
+   "balanceUnlocked",
+   "renderEnding",
+   "chooseEnding",
+   "openFrontier"
+  ],
+  "exports": [
+   "regionAt",
+   "withinReach",
+   "charterBlock",
+   "reachRadius",
+   "currentRegion",
+   "primeCheckWorld",
+   "primeCheckSpecies",
+   "primeFill",
+   "frontierUnlocked",
+   "frontierEnding",
+   "SIG_IDS",
+   "primeCount",
+   "renderPrime",
+   "updatePrimeBtn",
+   "openFrontier",
+   "chooseEnding"
+  ],
+  "deps": [
+   "config",
+   "notify",
+   "audio",
+   "fx",
+   "persistence",
+   "player-state",
+   "economy",
+   "compendium",
+   "naming-ui"
+  ]
+ },
+ "naming-ui": {
+  "layer": "app",
+  "ranges": [
+   [
+    5812,
+    5867
+   ]
+  ],
+  "decls": [
+   "explorerName",
+   "nameBox",
+   "nameIn",
+   "_renameTarget",
+   "askExplorerName",
+   "askRenameSpecies",
+   "commitExplorerName"
+  ],
+  "exports": [
+   "askRenameSpecies",
+   "explorerName",
+   "askExplorerName"
+  ],
+  "deps": [
+   "guide",
+   "player-state",
+   "progression",
+   "compendium",
+   "persistence",
+   "notify"
+  ]
+ },
+ "settings": {
+  "layer": "app",
+  "ranges": [
+   [
+    5868,
+    5954
+   ]
+  ],
+  "decls": [
+   "fsMode",
+   "applyFs",
+   "setPanel",
+   "resetSettingsView"
+  ],
+  "exports": [
+   "fsMode",
+   "applyFs",
+   "setPanel"
+  ],
+  "deps": [
+   "audio",
+   "notify",
+   "persistence",
+   "ui-picker"
+  ]
+ },
+ "events": {
+  "layer": "app",
+  "ranges": [
+   [
+    5955,
+    6086
+   ]
+  ],
+  "decls": [
+   "EVENT_DEFS",
+   "_evWhereCache",
+   "eventWhere",
+   "fmtRemain",
+   "eventsBtn",
+   "eventsEl",
+   "eventsOpen",
+   "_evTimer",
+   "LIVE_WINDOW",
+   "renderEvents",
+   "_evAnnounced",
+   "announceRareEvents"
+  ],
+  "exports": [
+   "_evAnnounced",
+   "eventsOpen",
+   "eventsEl",
+   "_evTimer",
+   "fmtRemain"
+  ],
+  "deps": [
+   "rng",
+   "worldgen",
+   "descriptors",
+   "config",
+   "notify",
+   "audio",
+   "ui-stats",
+   "player-state",
+   "nav",
+   "progression",
+   "persistence",
+   "compendium",
+   "ui-dom",
+   "atlas"
+  ]
+ },
+ "ui-stats": {
+  "layer": "app",
+  "ranges": [
+   [
+    6087,
+    6173
+   ]
+  ],
+  "decls": [
+   "statsOpen",
+   "renderStats",
+   "_agOpen"
+  ],
+  "exports": [
+   "statsOpen"
+  ],
+  "deps": [
+   "progression",
+   "rng",
+   "species-data",
+   "compendium",
+   "naming-ui",
+   "combat-core",
+   "player-state",
+   "economy",
+   "events"
+  ]
+ },
+ "bootstrap": {
+  "layer": "app",
+  "ranges": [
+   [
+    6174,
+    6276
+   ]
+  ],
+  "decls": [
+   "whereOfView",
+   "_savedView",
+   "_hadSave",
+   "frameInner",
+   "_frameErrs",
+   "frame"
+  ],
+  "exports": [
+   "whereOfView",
+   "_savedView"
+  ],
+  "deps": [
+   "state-camera",
+   "descriptors",
+   "persistence",
+   "naming-ui",
+   "progression",
+   "player",
+   "prime",
+   "share",
+   "nav",
+   "newgame",
+   "ui-dom",
+   "viewport",
+   "render",
+   "player-state",
+   "compendium",
+   "ui-hud",
+   "transitions",
+   "ui-panel",
+   "input"
+  ]
+ },
+ "__h2__": [
+  "stats",
+  "locked",
+  "tileBudget",
+  "homeId",
+  "_panelKey",
+  "codexOpen",
+  "essence",
+  "logOpen",
+  "stickyPick",
+  "_loading",
+  "EPOCH_BASE",
+  "COSMIC_EPOCH",
+  "lastAnomKey",
+  "explorerName",
+  "_savedView",
+  "HP_MAX",
+  "hp",
+  "fsMode",
+  "sndOn",
+  "fxOn",
+  "shakeOn",
+  "notifOn",
+  "_notifSeq",
+  "frontierUnlocked",
+  "frontierEnding",
+  "seenGuide",
+  "pstats",
+  "statsOpen",
+  "eventsOpen",
+  "_pickMode",
+  "_pickBase",
+  "_nameInitial",
+  "_lastMode",
+  "_autoScanned",
+  "_frozenFor"
+ ]
+}

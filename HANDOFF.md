@@ -58,6 +58,13 @@ The source **mixes encodings**: some unicode lives as literal `\uXXXX` escape *t
 
 ## 4. Testing — important caveat
 
+> **Update (June 2026, SOLID restructure):** a replacement toolkit now lives in
+> `tools/` — `node tools/validate.js` runs the invariant checks below **plus** a
+> headless jsdom boot and a 49-probe determinism fingerprint pinned to the v1.0
+> baseline. See `tools/README.md`. The pristine v1.0 build is kept at
+> `original/celestial-frontier-v1.0.html`. The rest of this section is the
+> original v1.0 context.
+
 v1.0 was validated by ~25 Node assertion suites (`phaseAtest` … `feedback19test`, `primetest`, `atlastest`, `realmtest`, `finaltest`, `esc_check`) plus the invariant checks above and a Playwright smoke test (every panel, all four settings toggles, Escape handling, search, heal picker, reset flow — zero console errors).
 
 **Those test scripts lived in the previous working environment and are *not* included in this package** — only the game and its reference survived. Practical implications:

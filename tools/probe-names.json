@@ -1,0 +1,17 @@
+[
+  "mulberry32", "hashInt", "cellRng", "makeNoise",
+  "properName", "galaxyName", "starName", "speciesName", "roman",
+  "planetParams", "starClass", "galaxiesInCell", "slimGal", "galaxyProfile",
+  "galaxyWormhole", "starsInCell", "fineStarsInCell", "systemFor", "supernovaSites",
+  "starDescriptor", "planetDescriptor", "moonDescriptor", "galaxyDescriptor",
+  "wormholeDescriptor", "cmbDescriptor", "oortDescriptor", "kuiperDescriptor",
+  "visitorDescriptor", "beltDescriptor", "climateBand",
+  "makeGenome", "crossGenome", "evolveGenome", "describeSpecies", "faunaDesc",
+  "speciesGrade", "rarityRoll", "colorGrade", "spectral", "sapienceTier",
+  "realmBiome", "classifyRealm", "ecologyRole", "planetSpecies", "speciesPortrait",
+  "battleStats", "abilityOf", "abilityTheme", "floraStat", "runDuel", "winEstimate",
+  "encodeWhere", "decodeWhere", "encodeCreature", "decodeCreature", "cleanName", "normGenome",
+  "RANKS", "REGIONS", "SIGS", "GRADE_TIERS",
+  "UCELL", "OBS_R", "GR", "SYS_R", "HOME_GAL_SEED", "HOME_POS", "SOL_SEED",
+  "PLAYER_SEED", "HARVEST_CD", "SAVE_KEY"
+]

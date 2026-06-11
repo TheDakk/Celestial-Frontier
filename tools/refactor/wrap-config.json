@@ -1,0 +1,22 @@
+{
+  "rng":          { "alias": "Rand",         "title": "deterministic PRNG, hashing & noise — the root of all generation" },
+  "planetgen":    { "alias": "PlanetGen",    "title": "planet archetypes & surface color synthesis" },
+  "naming":       { "alias": "Naming",       "title": "procedural proper names for galaxies, stars & species" },
+  "config":       { "alias": "WorldConfig",  "title": "universe anchors & scale constants (seeds, radii, home)" },
+  "stars":        { "alias": "StarCatalog",  "title": "stellar classification & the hand-authored Sol system" },
+  "worldgen":     { "alias": "WorldGen",     "title": "cell-based, on-demand universe generation (galaxies, stars, systems)" },
+  "desc-helpers": { "alias": "SurveyPhrases","title": "survey-card phrase builders (atmosphere, climate, water, gravity)" },
+  "species-data": { "alias": "SpeciesTraits","title": "trait tables, rarity grades & spectral anomalies" },
+  "genome":       { "alias": "Genome",       "title": "genome synthesis, classification & species description" },
+  "codec-util":   { "alias": "EncUtil",      "title": "base64/UTF-8, SVG data-URI & color shade utilities" },
+  "art-species":  { "alias": "SpeciesArt",   "title": "per-kingdom SVG portraits & specimen cards (cache capped 1,200)" },
+  "genetics":     { "alias": "Genetics",     "title": "genome evolution & cross-breeding" },
+  "ecology":      { "alias": "Ecology",      "title": "biospheres, species rosters & civilizations per world" },
+  "descriptors":  { "alias": "Descriptors",  "title": "survey-card descriptors for every object kind" },
+  "combat-core":  { "alias": "CombatCore",   "title": "battle stats, biome abilities, deterministic duels & creature codes" },
+  "art-thumbs":   { "alias": "ThumbArt",     "title": "canvas sprites & thumbnails for planets, stars, moons, comets" },
+  "art-galaxy":   { "alias": "GalaxyArt",    "title": "pre-rendered galaxy sprites (16 archetypes)" },
+  "fx":           { "alias": "Fx",           "title": "celebration FX — DOM particle bursts, screen shake, fanfares" },
+  "persistence":  { "alias": "SaveSystem",   "title": "debounced save, hardened load, reset & wipe (cfcc_save_v1)" },
+  "render":       { "alias": "Renderer",     "title": "the four zoom-mode draw passes + backdrop" }
+}
