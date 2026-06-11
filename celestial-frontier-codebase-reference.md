@@ -325,9 +325,18 @@ Outside-tap closes Compendium / Star Atlas / Cosmic Events / Settings.
   (title/keyword/body), category drill-down, topic cross-links via
   `<span data-gt="id">`, and a deep-link API `openGuideTopic(id)`.
 - **Tooltips** (`@section tooltips`): any `[data-tip]` element shows a one-line
-  bubble — hover/focus on desktop, **long-press on touch** (the long-press
-  suppresses the following tap action). `data-guide="topic"` adds a "Guide ›"
-  deep link. Gated by `tipsOn` (Settings toggle, saved as `tips`).
+  text-only bubble (`pointer-events:none`) — hover (650 ms) / focus on desktop,
+  **long-press (600 ms) on touch**; the long-press suppresses the following tap
+  action. Gated by `tipsOn` (Settings toggle, saved as `tips`). `data-guide`
+  attributes remain in the DOM but are currently unused (the in-bubble Guide
+  link was removed — not tappable on touch).
+- **Release notes** (`@section release-notes`): `GAME_VERSION` + `RELEASES`
+  (newest first; categorized sections). Returning saves whose `rn` field ≠
+  `GAME_VERSION` get a one-time "latest" popup (`#relbox`, styled like the
+  intro card) ~900 ms after boot; dismissing marks it seen. The Guide footer
+  credit (`#gcredit`) is the permanent link to the **cumulative** history.
+  **House rule: `GAME_VERSION` bumps only when Dakk says so** — but every
+  player-visible change is appended to `RELEASES[0]` as it is built.
 - **Field Training** (`@section tutorial`): an 18-step, event-gated tutorial for
   brand-new expeditions only (`tut` save field; absent = veteran, never shown;
   reset → training again; reload mid-training restarts it). Game systems report
@@ -370,8 +379,9 @@ tut, codex (array of {g:genome, f:from, w:where})
 ```
 
 v1.1 additions are **optional & backward compatible**: `tips` (tooltips toggle;
-absent = on) and `tut` (Field Training complete; **absent = treated as done**,
-so pre-tutorial saves never see training).
+absent = on), `tut` (Field Training complete; **absent = treated as done**, so
+pre-tutorial saves never see training), and `rn` (last release-notes version
+seen; **absent = '1.0'**, so updated saves get the bulletin exactly once).
 
 `loadSave` restores all of the above. **Hardened against tampering/corruption** (v1):
 names re-sanitized via `cleanName`, every counter coerced to a finite number, `essence`
@@ -449,7 +459,14 @@ resumes — the jsdom boot covers load-time wiring, not interaction flows.
   on touch); **Field Training** — an 18-step, event-gated, fully sandboxed new-player
   tutorial (Earth charting, training cache, feed/breed/duel/heal practice, scripted
   hazard, cleanup that restores the record). New optional save fields `tips`, `tut`.
-  jsdom smoke suite drives the entire tutorial end-to-end (64 checks).
+  jsdom smoke suite drives the entire tutorial end-to-end.
+- **v1.1 continued:** **Release Notes system** (one-time update bulletin via save
+  field `rn`; cumulative history behind the Guide footer version line; content in
+  `RELEASES`, version bumps only on Dakk's call); tutorial card moved top-center
+  with **focus lockdown** (per-step `allow` lists; capture-phase gate on
+  pointerdown/click/touchstart/wheel; open dialogs always usable); tooltips made
+  text-only with longer delays (650 ms hover / 600 ms long-press). Smoke suite:
+  72 checks.
 
 ---
 

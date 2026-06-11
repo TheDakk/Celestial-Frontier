@@ -241,6 +241,35 @@
   #namebox #nameok:hover{box-shadow:0 0 26px rgba(240,200,110,0.65), inset 0 1px 0 rgba(255,255,255,0.5)}
   #namebox #nameok:disabled{opacity:0.4;cursor:not-allowed;box-shadow:none;filter:saturate(0.5)}
 
+  /* ---- release notes: the expedition bulletin ---- */
+  #relbox{position:fixed;inset:0;z-index:42;display:none;align-items:center;justify-content:center;
+    background:rgba(4,5,10,0.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:16px}
+  #relbox .card{width:min(440px,calc(100vw - 32px));max-height:calc(100vh - 32px);overflow-y:auto;
+    text-align:center;background:radial-gradient(135% 95% at 50% -15%, rgba(96,90,210,0.26), transparent 58%), radial-gradient(120% 70% at 85% 116%, rgba(255,207,138,0.13), transparent 55%), linear-gradient(180deg, rgba(15,17,33,0.97), rgba(8,9,18,0.98));
+    border:1px solid rgba(255,207,138,0.45);border-radius:18px;padding:24px 20px;
+    box-shadow:0 0 60px rgba(255,207,138,0.12), 0 26px 80px rgba(0,0,0,0.7)}
+  #relbox .rb-mark{width:64px;height:64px;filter:drop-shadow(0 0 16px rgba(255,217,106,0.45))}
+  #relbox h3{font:700 26px var(--ui);letter-spacing:.02em;margin:10px 0 3px;background:linear-gradient(180deg,#ffffff,#f4d79e 52%,#e0a84a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 0 18px rgba(240,200,110,0.4))}
+  #relbox .rb-sub{font:600 10px var(--ui);letter-spacing:.18em;text-transform:uppercase;color:var(--plasma);margin:0 0 14px}
+  #relbox .rb-rel{text-align:left;margin:0 0 14px;padding:14px 15px;border-radius:12px;
+    background:rgba(5,6,12,0.5);border:1px solid rgba(255,207,138,0.18)}
+  #relbox .rb-vh{display:flex;align-items:baseline;gap:9px;margin-bottom:3px}
+  #relbox .rb-vpill{font:700 10.5px var(--ui);letter-spacing:.06em;color:#1a1206;padding:2px 9px;border-radius:8px;
+    background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a)}
+  #relbox .rb-vt{font:700 13.5px var(--ui);color:#f0cf8a}
+  #relbox .rb-date{margin-left:auto;font:500 10px var(--ui);color:var(--faint)}
+  #relbox .rb-cat{font:700 10px var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--plasma);margin:11px 0 4px}
+  #relbox ul{margin:0;padding-left:17px}
+  #relbox li{font:12px/1.6 var(--ui);color:var(--dim);margin:3px 0}
+  #relbox li b{color:var(--ink)}
+  #relbox #relok{width:100%;margin-top:4px;padding:11px 0;font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;
+    color:#1a1206;cursor:pointer;border:1px solid rgba(255,220,150,0.9);border-radius:11px;
+    background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a);
+    box-shadow:0 0 18px rgba(240,200,110,0.4), inset 0 1px 0 rgba(255,255,255,0.5)}
+  #relbox #relok:hover{box-shadow:0 0 26px rgba(240,200,110,0.65), inset 0 1px 0 rgba(255,255,255,0.5)}
+  .gcredit-link{cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .gcredit-link:hover{color:var(--ink)}
+
   /* ---- share dialog: the link is always visible & selectable, copy is a bonus ---- */
   #sharebox{position:fixed;inset:0;z-index:34;display:none;align-items:center;justify-content:center;
     background:rgba(4,5,10,0.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
@@ -589,19 +618,18 @@
   #guidebody .gsee span{color:var(--plasma);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
   #tipbubble{position:fixed;z-index:70;max-width:248px;padding:8px 10px;border-radius:10px;display:none;
     background:rgba(10,12,22,0.97);border:1px solid rgba(143,180,255,0.4);box-shadow:0 10px 30px rgba(0,0,0,0.6);
-    font:500 10.5px var(--ui);line-height:1.55;color:var(--dim);pointer-events:auto}
+    font:500 10.5px var(--ui);line-height:1.55;color:var(--dim);pointer-events:none}
   #tipbubble b{color:var(--ink)}
-  #tipbubble .tiplink{display:inline-block;margin-top:5px;padding:2px 8px;cursor:pointer;border-radius:7px;
-    font:600 9.5px var(--ui);letter-spacing:.05em;color:var(--plasma);
-    background:rgba(143,180,255,0.1);border:1px solid rgba(143,180,255,0.3)}
-  #tipbubble .tiplink:hover{color:var(--ink);border-color:rgba(143,180,255,0.55)}
   #tutspot{position:fixed;z-index:49;display:none;pointer-events:none;border:2px solid rgba(255,217,106,0.95);
     border-radius:14px;box-shadow:0 0 0 4px rgba(255,217,106,0.22),0 0 26px rgba(255,217,106,0.5);
     transition:left .25s ease,top .25s ease,width .25s ease,height .25s ease}
-  #tutbox{position:fixed;z-index:50;display:none;left:50%;transform:translateX(-50%);bottom:62px;
+  #tutbox{position:fixed;z-index:50;display:none;left:50%;transform:translateX(-50%);
+    top:calc(var(--topbar-h, 96px) + 12px);
     width:min(380px,calc(100vw - 24px));background:rgba(10,12,22,0.97);border:1px solid rgba(255,217,106,0.55);
     border-radius:16px;padding:13px 16px;box-shadow:0 14px 50px rgba(0,0,0,0.7),0 0 30px rgba(255,217,106,0.12);
     font:500 12px var(--ui);color:var(--dim);line-height:1.6}
+  #tutbox.nudge{animation:tutnudge .38s ease}
+  @keyframes tutnudge{0%{transform:translateX(-50%) scale(1)}35%{transform:translateX(-50%) scale(1.045)}100%{transform:translateX(-50%) scale(1)}}
   #tutbox .tt{font:700 9.5px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:#ffd96a;
     margin-bottom:6px;display:flex;justify-content:space-between}
   #tutbox .tx b{color:var(--ink)}
@@ -937,6 +965,32 @@
   <button id="nameok" type="button" disabled>Begin the expedition</button>
 </div></div>
 
+<div id="relbox"><div class="card">
+  <svg viewBox="0 0 80 80" aria-hidden="true" class="rb-mark">
+    <defs>
+      <radialGradient id="rbP" cx="38%" cy="32%" r="78%">
+        <stop offset="0" stop-color="#ffffff"/><stop offset="0.30" stop-color="#ffe9c0"/>
+        <stop offset="0.64" stop-color="#d8a04a"/><stop offset="1" stop-color="#402a14"/>
+      </radialGradient>
+      <radialGradient id="rbGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="rgba(255,217,106,0.5)"/><stop offset="1" stop-color="rgba(255,217,106,0)"/>
+      </radialGradient>
+    </defs>
+    <circle cx="40" cy="40" r="31" fill="url(#rbGlow)"/>
+    <circle cx="14" cy="18" r="1" fill="#ffffff" opacity="0.85"/>
+    <circle cx="66" cy="24" r="0.8" fill="#ffe9c0" opacity="0.75"/>
+    <circle cx="62" cy="62" r="0.9" fill="#ffffff" opacity="0.6"/>
+    <circle cx="20" cy="60" r="0.7" fill="#ffe9c0" opacity="0.6"/>
+    <path d="M40 14 l3.4 8.6 9 1.3 -6.5 6.3 1.6 9 -7.5-4.2 -7.5 4.2 1.6-9 -6.5-6.3 9-1.3 Z" fill="url(#rbP)"/>
+    <circle cx="40" cy="58" r="8" fill="url(#rbP)" opacity="0.85"/>
+    <ellipse cx="37" cy="55" rx="2.5" ry="1.8" fill="rgba(255,255,255,0.35)"/>
+  </svg>
+  <h3>Celestial Frontier</h3>
+  <div class="rb-sub" id="rel-sub"></div>
+  <div id="rel-body"></div>
+  <button id="relok" type="button">Continue</button>
+</div></div>
+
 <div id="sharebox"><div class="card">
   <h3>Share this discovery</h3>
   <p class="who"></p>
@@ -978,7 +1032,7 @@
   <input id="guidesearch" type="text" placeholder="Search the guide&hellip; breeding, stardust, signatures&hellip;" spellcheck="false" autocomplete="off">
   <div id="guidebody"></div>
   <button id="guideok" type="button">Continue</button>
-  <div class="gcredit">Celestial Frontier &middot; v1.1 &middot; Developed by Dakk</div>
+  <div class="gcredit" id="gcredit" data-tip="Tap for the release notes — everything that has changed, version by version.">Celestial Frontier &middot; v1.1 &middot; Developed by Dakk</div>
 </div></div>
 <div id="reveal"><div class="card">
   <div class="rt" id="rev-t">New species discovered</div>
@@ -5744,7 +5798,7 @@ function doSave(){
       evann:[..._evAnnounced].slice(-60),
       ach:[...unlocked],
       log, home:homeId,
-      prime:primeFill, frontier:frontierUnlocked?1:0, ending:frontierEnding, guide:seenGuide?1:0, tut:tutDone?1:0,
+      prime:primeFill, frontier:frontierUnlocked?1:0, ending:frontierEnding, guide:seenGuide?1:0, tut:tutDone?1:0, rn:_rnSeen,
       codex:[...codex.values()].map(e=>({g:e.genome, f:e.from, w:e.where||null})),
     }));
   }catch(_){
@@ -5807,6 +5861,7 @@ function loadSave(){
     frontierUnlocked=!!data.frontier; frontierEnding=data.ending||null;
     seenGuide=!!data.guide;
     tutDone = data.tut===undefined ? true : !!data.tut;   /* pre-tutorial saves are veterans */
+    _rnSeen = typeof data.rn==='string' ? data.rn.slice(0,12) : '1.0';   /* pre-notes saves get the update bulletin once */
     /* retroactive: signatures your existing Codex already deserves, claimed quietly */
     if(primeCount()<9) for(const e of codex.values()) primeCheckSpecies(e, true);
     renderPrime(); updatePrimeBtn();
@@ -5827,7 +5882,7 @@ function resetMemoryState(){
     _evAnnounced.clear(); unlocked.clear(); customNames.clear();
     if(typeof notifications!=='undefined' && notifications.length) notifications.length=0;
     for(const k in primeFill) delete primeFill[k];
-    homeId=null; frontierUnlocked=false; frontierEnding=null; seenGuide=false; tutDone=false;
+    homeId=null; frontierUnlocked=false; frontierEnding=null; seenGuide=false; tutDone=false; _rnSeen=GAME_VERSION;
     explorerName=''; essence=0; pstats={vit:50,fer:50,res:50,agi:50,ins:50}; HP_MAX=hpMaxFromVit(); hp=HP_MAX;
     for(const k in stats) if(typeof stats[k]==='number') stats[k]=0;
     if(codexCountEl) codexCountEl.textContent='0';
@@ -6981,8 +7036,8 @@ function openGuideTopic(id){
 
 /* ----------------------------------------------------------------
    @section tooltips [app] — short hints on any [data-tip] element; hover/focus on
-   desktop, long-press on touch. data-guide="topic" adds a Guide › deep link.
-   Toggled in Settings (tipsOn, persisted). Full explanations live in the Guide.
+   desktop, long-press on touch. Pure display (no interaction) — the depth lives
+   in the Guide. Toggled in Settings (tipsOn, persisted).
    Owns: tipsOn, tipEl, showTip, hideTip
    ---------------------------------------------------------------- */
 let tipsOn=true;
@@ -6991,8 +7046,7 @@ let _tipFor=null, _tipHoverT=0, _tipPressT=0, _tipSuppressClick=false;
 function showTip(target){
   if(!tipsOn || !target) return;
   const txt=target.dataset.tip; if(!txt) return;
-  const gt=target.dataset.guide;
-  tipEl.innerHTML=txt.replace(/[<>]/g,'')+(gt&&_guideTopic(gt)?'<br><span class="tiplink" data-tipgo="'+gt+'">Guide ›</span>':'');
+  tipEl.innerHTML=txt.replace(/[<>]/g,'');
   tipEl.style.display='block';
   const r=target.getBoundingClientRect();
   const bw=tipEl.offsetWidth, bh=tipEl.offsetHeight;
@@ -7003,10 +7057,6 @@ function showTip(target){
   _tipFor=target;
 }
 function hideTip(){ tipEl.style.display='none'; _tipFor=null; clearTimeout(_tipHoverT); clearTimeout(_tipPressT); }
-tipEl.addEventListener('click', e=>{
-  const go=e.target.closest('[data-tipgo]');
-  if(go){ const id=go.dataset.tipgo; hideTip(); openGuideTopic(id); }
-});
 if(!TOUCH){
   /* desktop: hover & keyboard focus */
   document.addEventListener('mouseover', e=>{
@@ -7014,7 +7064,7 @@ if(!TOUCH){
     if(!t){ if(_tipFor && !(e.target.closest&&e.target.closest('#tipbubble'))) hideTip(); return; }
     if(t===_tipFor) return;
     clearTimeout(_tipHoverT);
-    _tipHoverT=setTimeout(()=>showTip(t), 320);
+    _tipHoverT=setTimeout(()=>showTip(t), 650);
   });
   document.addEventListener('mouseout', e=>{
     const t=e.target.closest ? e.target.closest('[data-tip]') : null;
@@ -7033,7 +7083,7 @@ if(!TOUCH){
     if(!t) return;
     _pTarget=t; _px=e.clientX; _py=e.clientY;
     clearTimeout(_tipPressT);
-    _tipPressT=setTimeout(()=>{ showTip(t); _tipSuppressClick=true; }, 450);
+    _tipPressT=setTimeout(()=>{ showTip(t); _tipSuppressClick=true; }, 600);
   }, true);
   document.addEventListener('pointermove', e=>{
     if(_pTarget && Math.hypot(e.clientX-_px, e.clientY-_py)>12){ clearTimeout(_tipPressT); _pTarget=null; }
@@ -7053,6 +7103,100 @@ document.addEventListener('focusin', e=>{
   if(t) showTip(t);
 });
 document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
+
+/* ================= RELEASE NOTES =================
+   The expedition bulletin. Returning explorers see the LATEST version's notes
+   once after an update (save field `rn` remembers the last version seen);
+   the full history lives behind the version line in the Guide's footer.
+   HOUSE RULE: GAME_VERSION bumps only when Dakk says so. Every player-visible
+   change lands as a bullet in RELEASES[0] as it is built, so the notes are
+   always ready to ship. */
+/* ----------------------------------------------------------------
+   @section release-notes [app] — versioned release notes, update popup + history
+   Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
+   ---------------------------------------------------------------- */
+const GAME_VERSION='1.1';
+/* newest first; categories appear in the order listed */
+const RELEASES=[
+{v:'1.1', title:'The Pathfinder Update', date:'June 2026', sections:[
+ ['✦ New Features & Systems', [
+  '<b>Field Training</b> — every new expedition opens with an interactive, fully sandboxed tutorial: chart Earth, train with a loaned cache of creatures, feed, breed, duel, take a scratch and heal. Nothing you lose in training follows you out. Skippable for veterans.',
+  '<b>Guide to the Universe</b> — the ? button now opens a searchable, browsable manual covering every system in the game, from breeding odds to the nine Signatures.',
+  '<b>Tooltips</b> — short hints across the whole interface: hover on desktop, long-press on touch. Toggle them in Settings once you’re fluent.',
+  '<b>Release Notes</b> — this bulletin. It appears once after each update; the full history is always behind the version line at the bottom of the Guide.',
+ ]],
+ ['◈ UI Enhancements', [
+  'Survey-card and specimen-card buttons explain themselves — including a live danger % on Discover Life.',
+  'The training guidance card sits top-center with a golden spotlight on each target, and menus lock to the current lesson so nothing pulls focus.',
+  'Tooltip timing tuned for comfort.',
+ ]],
+ ['⚙ Under the Hood', [
+  'The engine was reorganized into clean, testable modules — with the universe verified <b>byte-identical</b> to v1.0. Your worlds, creatures and share codes are untouched.',
+  'An automated test fleet now plays the game (including all of Field Training) before every release.',
+ ]],
+]},
+{v:'1.0', title:'The Master Survey', date:'June 2026', sections:[
+ ['✦ New Features & Systems', [
+  'An <b>infinite, deterministic universe</b> — every galaxy, star and world generated from seeds, identical for every explorer, no server needed.',
+  'Four seamless zoom scales: universe → galaxy → star system → planet surface. Everything you can see, you can visit.',
+  '<b>Survey cards</b> for every object: atmosphere, climate, water, gravity, seasons, hazards and life — plus quasars, wormholes, supernovae, black holes and the CMB.',
+  '<b>Life cataloguing</b>: four kingdoms (Microbe, Flora, Fauna, Fungi) across eight rarity grades from Common to Unique, with per-species SVG portraits.',
+  'The <b>Compendium</b> — a living collection that interbreeds and evolves on its own as the cosmos ages.',
+  '<b>Breeding & feeding</b> — forge hybrid bloodlines (both parents consumed!), learn each beast’s tastes, risk the poison.',
+  '<b>Creature duels</b> — five battle stats, eleven biome-themed ability families, outcomes identical on every device. Share creatures as CFB codes.',
+  '<b>Planetary conquest</b> — send a champion (or yourself) against a world’s apex native; settled worlds scan safely and pay spoils.',
+  'The <b>☄ Stardust economy</b> — hourly harvests, conquest spoils and rare-find bonuses that raise your breeding odds.',
+  'The <b>✦ Prime Codex</b> — nine legendary Signatures, a frontier that expands as you claim them, and multiple endings at the Celestial Frontier.',
+  '<b>Star Atlas</b> bookmarks with favorites and a home marker; CF1 share codes; search; the Traveler’s Beacon; Cosmic Events on every timescale.',
+  'Ten explorer ranks (Cadet → Eternal Frontier) and dozens of achievements.',
+ ]],
+ ['♟ Gameplay', [
+  'Your five battle stats grow permanently by eating flora — and the deadliest medicine heals hardest.',
+  'The frontier bites: hostile bioscans, toxic meals and champion duty all cost HP. At zero, the expedition ends.',
+ ]],
+ ['◈ UI', [
+  'A single-file, offline-capable, mobile-first game: unified topbar, notification tray, search, settings, celebration FX.',
+ ]],
+]},
+];
+let _rnSeen=GAME_VERSION;   /* loadSave overrides; absent in old saves = '1.0' */
+function _relHtml(rel){
+  return '<div class="rb-rel"><div class="rb-vh"><span class="rb-vpill">v'+rel.v+'</span>'+
+    '<span class="rb-vt">'+rel.title+'</span><span class="rb-date">'+rel.date+'</span></div>'+
+    rel.sections.map(s=>'<div class="rb-cat">'+s[0]+'</div><ul>'+
+      s[1].map(li=>'<li>'+li+'</li>').join('')+'</ul>').join('')+
+    '</div>';
+}
+function openReleaseNotes(mode){
+  const box=document.getElementById('relbox'); if(!box) return;
+  const sub=document.getElementById('rel-sub');
+  const body=document.getElementById('rel-body');
+  const ok=document.getElementById('relok');
+  if(mode==='latest'){
+    if(sub) sub.textContent='The expedition has been upgraded';
+    if(body) body.innerHTML=_relHtml(RELEASES[0]);
+    if(ok) ok.textContent='Continue';
+  } else {
+    if(sub) sub.textContent='Release notes — the story of the build';
+    if(body) body.innerHTML=RELEASES.map(_relHtml).join('');
+    if(ok) ok.textContent='Close';
+  }
+  box.style.display='flex';
+}
+(function(){
+  const box=document.getElementById('relbox');
+  const ok=document.getElementById('relok');
+  const close=()=>{ box.style.display='none';
+    if(_rnSeen!==GAME_VERSION){ _rnSeen=GAME_VERSION; queueSave(); } };
+  if(ok) ok.addEventListener('click', close);
+  /* the version line in the Guide footer is the permanent door to the history */
+  const gc=document.getElementById('gcredit');
+  if(gc){
+    gc.classList.add('gcredit-link');
+    gc.innerHTML='Celestial Frontier &middot; v'+GAME_VERSION+' &middot; Developed by Dakk';
+    gc.addEventListener('click', ()=>openReleaseNotes('all'));
+  }
+})();
 
 /* ---- Prime Codex wiring ---- */
 (function(){
@@ -7463,29 +7607,29 @@ function gameEvent(type, detail){ try{ if(_tutHook) _tutHook(type, detail||{}); 
 const TUT_STEPS=[
  {id:'welcome', btn:'Begin Training',
   text:()=>'Welcome to <b>Sol</b>, '+(explorerName||'Explorer')+' — humanity’s cradle and your first charter. Before the infinite opens, the order asks one thing of every new Pathfinder: <b>field training</b>.<br>Everything ahead is real practice — and nothing you lose in training follows you out.'},
- {id:'find-earth',
+ {id:'find-earth', allow:['#cosmos','#panel'],
   text:()=>'First, find home. <b>Drag and zoom to Earth</b> — the blue world, third from the Sun — and <b>tap it</b> to open its survey card.',
   when:(t,d)=>t==='survey'&&d.planetSeed===133},
- {id:'survey-tour', spot:'#panel', btn:'Got It',
+ {id:'survey-tour', spot:'#panel', btn:'Got It', allow:['#panel'],
   text:()=>'This is a <b>survey card</b> — every world, star and galaxy has one, generated from pure math: atmosphere, climate, life, hazards. Every explorer in existence reads exactly this card at Earth.'},
- {id:'atlas-add', spot:'#panel [data-act="add"]',
+ {id:'atlas-add', spot:'#panel [data-act="add"]', allow:['#panel'],
   text:()=>'Chart it. Tap <b>+ Add to Star Atlas</b> on Earth’s card — the Atlas is how you find your way back across the infinite.',
   when:(t,d)=>t==='atlas-add'&&d.id==='p133'},
- {id:'atlas-open', spot:'#logbtn',
+ {id:'atlas-open', spot:'#logbtn', allow:['#logbtn','#log'],
   text:()=>'Earth is charted — your Atlas’ first entry. Open the <b>Star Atlas</b> (right rail). Tapping any entry travels there instantly; ☆ favorites and the ⌂ home mark live there too.',
   when:(t,d)=>t==='atlas-open'&&!!d.open},
- {id:'cache', spot:'#codexbtn', enter:()=>_tutGrant(),
+ {id:'cache', spot:'#codexbtn', allow:['#codexbtn'], enter:()=>_tutGrant(),
   text:()=>'A <b>training cache</b> just arrived: three Earth beasts and three Earth flora, on loan from the order. Open your <b>Compendium</b> to meet them.',
   when:(t,d)=>t==='codex-open'&&!!d.open},
- {id:'specimen', spot:'#codex',
+ {id:'specimen', spot:'#codex', allow:['#codex'],
   text:()=>'Fighters, breeders and medicine all live here, shelved by realm. <b>Tap any specimen</b> to open its card.',
   when:(t)=>t==='specimen'},
  {id:'card-tour', spot:'#reveal .card', btn:'Got It',
   text:()=>'Read it like a Pathfinder: <b>five stat bars</b> and total Power; its <b>✧ ability</b>; its <b>rarity grade</b> tinting the card. Rarer life fights harder, breeds stronger, heals — or poisons — more. Beasts also list flora flavours they <b>♥ love</b> and <b>⊘ dislike</b>.'},
- {id:'feed', enter:()=>{ _tutRig={feed:0.62}; },
+ {id:'feed', allow:['#codex','#codexbtn'], enter:()=>{ _tutRig={feed:0.62}; },
   text:()=>'Time for a meal. Open a <b>🐾 beast</b> in the Compendium, tap <b>🌿 Feed</b>, and pick a plant. The plant is always consumed — a welcome meal grows the beast’s bloodline <b>permanently</b>.',
   when:(t)=>t==='fed'},
- {id:'breed', enter:()=>{ _tutRig={breed:0.001}; },
+ {id:'breed', allow:['#codex','#codexbtn'], enter:()=>{ _tutRig={breed:0.001}; },
   text:()=>'Now forge a bloodline. Open a <b>🐾 beast</b>, tap <b>🧬 Breed</b>, and choose a mate. <b>Both parents are always consumed by the union</b> — but tonight, the stars favor you.',
   when:(t)=>t==='bred'},
  {id:'duel', btn:'⚔ Begin Training Duel', stay:true,
@@ -7494,16 +7638,16 @@ const TUT_STEPS=[
  {id:'hazard', spot:'#hpwrap', btn:'Ouch — Got It',
   enter:()=>{ setTimeout(()=>{ try{ if(hp>20) damageExplorer(Math.min(15, hp-5), 'Your training rival got a parting nip in.'); }catch(_){} }, 400); },
   text:()=>'…and your rival got a <b>parting nip</b> in. That bar up top is <b>your HP</b>. The frontier bites: hostile bioscans, toxic meals and championing your own conquests all wound you — and at 0 HP, the expedition ends.'},
- {id:'heal', spot:'#hpheart', enter:()=>{ _tutRig={heal:0.95}; },
+ {id:'heal', spot:'#hpheart', allow:['#hpwrap'], enter:()=>{ _tutRig={heal:0.95}; },
   text:()=>'Heal up. Tap the <b>❤ heart</b> by your HP bar and eat a flora. Medicine restores HP <b>and permanently grows one of your five battle stats</b> — the deadliest medicine heals hardest.',
   when:(t,d)=>t==='healed'&&d.ok},
- {id:'tray', spot:'#bell',
+ {id:'tray', spot:'#bell', allow:['#bell','#tray'],
   text:()=>'Everything that happens is remembered. Open the <b>🔔 notification tray</b> — your expedition’s running story, even when popups are silenced.',
   when:(t,d)=>t==='tray'&&!!d.open},
- {id:'search', spot:'#searchin',
+ {id:'search', spot:'#searchin', allow:['#searchwrap','#searchin','#searchres'],
   text:()=>'The infinite is searchable. Type <b>earth</b> in the search box — it finds anything you’ve discovered, and pasted CF1/CFB codes travel to worlds or summon creatures.',
   when:(t,d)=>t==='searched'&&(d.q||'').toLowerCase().indexOf('ear')>=0&&d.n>0},
- {id:'sheet', spot:'#rank',
+ {id:'sheet', spot:'#rank', allow:['#rank','#stats'],
   text:()=>'One last thing: <b>tap your nameplate</b> to open your character sheet — your five stats, rank, expedition statistics and achievements.',
   when:(t,d)=>t==='stats-open'&&!!d.open},
  {id:'horizon', spot:'#pcdxbtn', btn:'Got It',
@@ -7514,6 +7658,23 @@ const TUT_STEPS=[
 
 const tutEl=document.createElement('div'); tutEl.id='tutbox'; document.body.appendChild(tutEl);
 const tutSpotEl=document.createElement('div'); tutSpotEl.id='tutspot'; document.body.appendChild(tutSpotEl);
+
+/* focus lockdown: while training, only the current lesson's surfaces accept
+   input. The card and any open dialog stay usable so nobody gets stuck. */
+const TUT_ALWAYS=['#tutbox','#pickbox','#reveal','#duelbox','#namebox','#deathbox'];
+const TUT_GATE_EVTS=['pointerdown','click','touchstart','wheel'];
+function _tutGate(e){
+  if(!_tutHook) return;
+  const s=TUT_STEPS[_tutStep]; if(!s) return;
+  const t=e.target;
+  if(t && t.closest && t.closest(TUT_ALWAYS.concat(s.allow||[]).join(','))) return;
+  e.stopPropagation(); e.preventDefault();
+  if(e.type==='pointerdown'){   /* a gentle nudge back to the lesson */
+    tutEl.classList.remove('nudge'); void tutEl.offsetWidth; tutEl.classList.add('nudge');
+  }
+}
+function _tutGateOn(){ for(const ev of TUT_GATE_EVTS) document.addEventListener(ev, _tutGate, {capture:true, passive:false}); }
+function _tutGateOff(){ for(const ev of TUT_GATE_EVTS) document.removeEventListener(ev, _tutGate, {capture:true}); }
 
 function _tutShow(){
   const s=TUT_STEPS[_tutStep]; if(!s){ tutEl.style.display='none'; return; }
@@ -7615,6 +7776,7 @@ function _tutEnsureEarth(){
 }
 function _tutFinish(){
   clearInterval(_tutTimer); _tutTimer=0;
+  _tutGateOff();
   tutEl.style.display='none'; tutSpotEl.style.display='none';
   _tutHook=null; _tutStep=-1; _tutRig=null;
   if(!tutDone){
@@ -7626,6 +7788,7 @@ function _tutFinish(){
 function tutAbort(){
   /* a reset mid-training: tear the overlay down without touching fresh state */
   clearInterval(_tutTimer); _tutTimer=0;
+  _tutGateOff();
   tutEl.style.display='none'; tutSpotEl.style.display='none';
   _tutHook=null; _tutStep=-1; _tutRig=null; _tutSnap=null; _tutPreIds=null;
 }
@@ -7643,6 +7806,7 @@ function startTutorial(){
   _tutStep=-1;
   _tutAdvance();
   _tutTimer=setInterval(_tutSpot, 350);
+  _tutGateOn();
   queueSave();
 }
 tutEl.addEventListener('click', e=>{
@@ -8028,6 +8192,10 @@ if(location.hash && /cf1-/i.test(location.hash)){
 /* a reload mid-training restarts field training from the top */
 if(_hadSave && !tutDone && explorerName && explorerName!=='Explorer'){
   setTimeout(()=>{ try{ startTutorial(); }catch(_){} }, 800);
+}
+/* a returning explorer whose game was updated gets the bulletin, once */
+if(_hadSave && tutDone && _rnSeen!==GAME_VERSION){
+  setTimeout(()=>{ try{ openReleaseNotes('latest'); }catch(_){} }, 900);
 }
 
 /* ---------------- main loop ---------------- */

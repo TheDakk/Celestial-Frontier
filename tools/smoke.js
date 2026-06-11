@@ -91,6 +91,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     check('tutorial opens at step 1', await until(() => tutAt(1), 4000, 'step1'));
     check('Earth NOT pre-charted during training', doc.getElementById('logcount').textContent === '0');
+    check('no release notes popup on a fresh expedition', !visible(doc.getElementById('relbox')));
+
+    // focus lockdown: off-lesson surfaces are inert during training
+    click(doc.getElementById('codexbtn'));
+    check('lockdown: Compendium blocked during welcome', !visible(doc.getElementById('codex')));
+    click(doc.getElementById('helpbtn'));
+    check('lockdown: Guide blocked during welcome', !visible(doc.getElementById('guidebox')));
+    click(doc.getElementById('logbtn'));
+    check('lockdown: Atlas blocked during welcome', !visible(doc.getElementById('log')));
+
     tutAct();                                                       // welcome -> find-earth
     check('step 2: find Earth', tutAt(2));
 
@@ -170,6 +180,10 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('cleanup: Atlas keeps only Earth', doc.getElementById('logcount').textContent === '1' && H.logMap.has('p133'));
     tutAct();                                                       // begin the expedition
     check('tutorial closes', await until(() => !visible(doc.getElementById('tutbox')), 2000, 'tut close'));
+    const cdxWasOpen = visible(doc.getElementById('codex'));
+    click(doc.getElementById('codexbtn'));
+    check('lockdown lifted after training', visible(doc.getElementById('codex')) !== cdxWasOpen);
+    if (visible(doc.getElementById('codex'))) click(doc.getElementById('codexbtn'));
 
     // ============ GUIDE TO THE UNIVERSE ============
     click(doc.getElementById('helpbtn'));
@@ -191,6 +205,19 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('search hit opens topic', !!doc.querySelector('#guidebody .gtopic'));
     type(doc.getElementById('guidesearch'), 'zzzznothing');
     check('no-results message', !!doc.querySelector('#guidebody .gnores'));
+
+    // release notes: the version line in the footer opens the full history
+    const gc = doc.getElementById('gcredit');
+    check('guide footer shows version link', gc && gc.textContent.includes('v1.1') && gc.classList.contains('gcredit-link'));
+    click(gc);
+    const relbox = doc.getElementById('relbox');
+    check('footer opens cumulative release notes', visible(relbox)
+      && relbox.textContent.includes('The Pathfinder Update')
+      && relbox.textContent.includes('The Master Survey')
+      && doc.getElementById('relok').textContent === 'Close');
+    click(doc.getElementById('relok'));
+    check('release notes close', !visible(relbox));
+
     click(doc.getElementById('guideok'));
     check('guide closes via Continue', !visible(gbox));
 
@@ -200,11 +227,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     await sleep(420);
     const bubble = doc.getElementById('tipbubble');
     check('tooltip shows on focus', visible(bubble) && bubble.textContent.includes('rank'));
-    const tl = bubble.querySelector('[data-tipgo]');
-    check('tooltip carries Guide link', !!tl);
-    if (tl) click(tl);
-    check('tooltip Guide link deep-opens topic', visible(gbox) && !!doc.querySelector('#guidebody .gtopic h4'));
-    click(doc.getElementById('guideok'));
+    check('tooltip is pure text (no link)', !bubble.querySelector('span,button,a'));
+    doc.getElementById('searchin').dispatchEvent(new w.FocusEvent('focusout', { bubbles: true }));
     click(doc.getElementById('setbtn'));
     const tp = doc.getElementById('tipsopt');
     check('settings shows Tooltips toggle (On)', tp && tp.textContent === 'On');
@@ -226,6 +250,13 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     await sleep(1600);
     check('veteran: no name prompt', !visible(vet.doc.getElementById('namebox')));
     check('veteran: tutorial never starts', !visible(vet.doc.getElementById('tutbox')));
+    const vrel = vet.doc.getElementById('relbox');
+    check('veteran: update bulletin pops once', visible(vrel)
+      && vrel.textContent.includes('The Pathfinder Update')
+      && !vrel.textContent.includes('The Master Survey')
+      && vet.doc.getElementById('relok').textContent === 'Continue');
+    click2(vet.doc.getElementById('relok'), vet.w);
+    check('veteran: bulletin closes via Continue', !visible(vrel));
     check('veteran: boots clean', vet.errors.length === 0, vet.errors.slice(0, 2).join(' | '));
     vet.w.close();
 
