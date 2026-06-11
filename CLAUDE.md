@@ -1,6 +1,8 @@
 # CLAUDE.md — Celestial Frontier
 
-Single-file HTML/Canvas game. **Read `HANDOFF.md` first**, then consult
+Single-file HTML/Canvas game. **Read `ROADMAP.md` first** (current state,
+what's awaiting feedback, what's next — and update it at the end of every
+work batch), then `HANDOFF.md`, then consult
 `celestial-frontier-codebase-reference.md` for deep detail (architecture §3,
 combat math §6, save format §10). If the source and the reference disagree,
 the source wins — then update the reference.
