@@ -337,6 +337,13 @@ Outside-tap closes Compendium / Star Atlas / Cosmic Events / Settings.
   credit (`#gcredit`) is the permanent link to the **cumulative** history.
   **House rule: `GAME_VERSION` bumps only when Dakk says so** — but every
   player-visible change is appended to `RELEASES[0]` as it is built.
+- **Update watch** (same section): `tools/deploy.js` stamps `BUILD_ID` with the
+  git sha and publishes `version.json` beside the game. Live sessions poll it
+  every 10 min and on `visibilitychange` (iOS Safari resurrects stale tabs);
+  a newer build shows a gold **⬆ refresh pill** (`#updatepill`) + toast —
+  deferred while Field Training is active. Refresh is safe (`beforeunload`
+  saves). Inert for `dev` builds, `file://`, or offline — the game stays
+  fully offline-capable.
 - **Field Training** (`@section tutorial`): an 18-step, event-gated tutorial for
   brand-new expeditions only (`tut` save field; absent = veteran, never shown;
   reset → training again; reload mid-training restarts it). Game systems report
