@@ -216,7 +216,7 @@
   /* ---- explorer welcome / rename dialog ---- */
   #namebox{position:fixed;inset:0;z-index:38;display:none;align-items:center;justify-content:center;
     background:rgba(4,5,10,0.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-  #namebox .card{width:min(400px,calc(100vw - 36px));max-height:calc(100vh - 28px);overflow-y:auto;
+  #namebox .card{width:min(400px,calc(100vw - 36px));max-height:calc(100vh - 90px);max-height:calc(100dvh - 40px);overflow-y:auto;
     text-align:center;background:radial-gradient(135% 95% at 50% -15%, rgba(96,90,210,0.26), transparent 58%), radial-gradient(120% 70% at 85% 116%, rgba(255,207,138,0.13), transparent 55%), linear-gradient(180deg, rgba(15,17,33,0.97), rgba(8,9,18,0.98));
     border:1px solid rgba(255,207,138,0.45);border-radius:18px;padding:26px 22px;
     box-shadow:0 0 60px rgba(255,207,138,0.12), 0 26px 80px rgba(0,0,0,0.7)}
@@ -243,12 +243,20 @@
 
   /* ---- release notes: the expedition bulletin ---- */
   #relbox{position:fixed;inset:0;z-index:42;display:none;align-items:center;justify-content:center;
-    background:rgba(4,5,10,0.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:16px}
-  #relbox .card{width:min(440px,calc(100vw - 32px));max-height:calc(100vh - 32px);overflow-y:auto;
+    background:rgba(4,5,10,0.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    padding:14px 16px calc(14px + env(safe-area-inset-bottom, 0px))}
+  /* flex column: emblem, title and Continue stay PINNED and tappable; only the
+     notes body scrolls. dvh keeps the card inside iOS Safari's VISIBLE viewport
+     (100vh extends behind the bottom toolbar, which was eating the button). */
+  #relbox .card{width:min(440px,calc(100vw - 32px));
+    max-height:calc(100vh - 96px);max-height:calc(100dvh - 48px);
+    display:flex;flex-direction:column;overflow:hidden;
     text-align:center;background:radial-gradient(135% 95% at 50% -15%, rgba(96,90,210,0.26), transparent 58%), radial-gradient(120% 70% at 85% 116%, rgba(255,207,138,0.13), transparent 55%), linear-gradient(180deg, rgba(15,17,33,0.97), rgba(8,9,18,0.98));
-    border:1px solid rgba(255,207,138,0.45);border-radius:18px;padding:24px 20px;
+    border:1px solid rgba(255,207,138,0.45);border-radius:18px;padding:18px 20px 16px;
     box-shadow:0 0 60px rgba(255,207,138,0.12), 0 26px 80px rgba(0,0,0,0.7)}
-  #relbox .rb-mark{width:64px;height:64px;filter:drop-shadow(0 0 16px rgba(255,217,106,0.45))}
+  #relbox .rb-mark,#relbox h3,#relbox .rb-sub,#relbox #relok{flex:none}
+  #rel-body{overflow-y:auto;min-height:0;flex:1 1 auto;-webkit-overflow-scrolling:touch}
+  #relbox .rb-mark{width:56px;height:56px;margin:0 auto;filter:drop-shadow(0 0 16px rgba(255,217,106,0.45))}
   #relbox h3{font:700 26px var(--ui);letter-spacing:.02em;margin:10px 0 3px;background:linear-gradient(180deg,#ffffff,#f4d79e 52%,#e0a84a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 0 18px rgba(240,200,110,0.4))}
   #relbox .rb-sub{font:600 10px var(--ui);letter-spacing:.18em;text-transform:uppercase;color:var(--plasma);margin:0 0 14px}
   #relbox .rb-rel{text-align:left;margin:0 0 14px;padding:14px 15px;border-radius:12px;
@@ -262,7 +270,7 @@
   #relbox ul{margin:0;padding-left:17px}
   #relbox li{font:12px/1.6 var(--ui);color:var(--dim);margin:3px 0}
   #relbox li b{color:var(--ink)}
-  #relbox #relok{width:100%;margin-top:4px;padding:11px 0;font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;
+  #relbox #relok{width:100%;margin-top:12px;padding:12px 0;font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;
     color:#1a1206;cursor:pointer;border:1px solid rgba(255,220,150,0.9);border-radius:11px;
     background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a);
     box-shadow:0 0 18px rgba(240,200,110,0.4), inset 0 1px 0 rgba(255,255,255,0.5)}
@@ -602,7 +610,7 @@
   /* ---- Pathfinder's Primer (new-player guide) ---- */
   #guidebox{position:fixed;inset:0;z-index:41;display:none;align-items:center;justify-content:center;
     background:rgba(4,5,10,0.8);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:18px}
-  #guidebox .card{width:min(440px,calc(100vw - 28px));max-height:calc(100vh - 36px);overflow-y:auto;
+  #guidebox .card{width:min(440px,calc(100vw - 28px));max-height:calc(100vh - 90px);max-height:calc(100dvh - 40px);overflow-y:auto;
     background:var(--glass);border:1px solid rgba(143,180,255,0.4);border-radius:20px;padding:24px 22px;
     box-shadow:0 0 60px rgba(143,180,255,0.12),0 26px 80px rgba(0,0,0,0.7)}
   #guidebox .gh{font:700 17px var(--ui);letter-spacing:.05em;color:var(--ink);text-align:center}
@@ -7305,6 +7313,7 @@ const RELEASES=[
   'Galaxies rotate on cosmic time — barely perceptible, as the universe intended.',
  ]],
  ['🐞 Bug Fixes', [
+  'On iPhone, the release-notes Continue button could hide behind Safari’s toolbar — the notes now scroll inside the card while Continue stays pinned and tappable.',
   'Field training always begins at Sol — reloading a half-finished training no longer strands you in deep space hunting for Earth.',
   'Sound reliably recovers after the tab is backgrounded — every tap quietly re-arms suspended audio.',
   'Desktop mouse-hover no longer counts as surveying: survey credit, achievements and find-Signatures require a deliberate tap.',
@@ -7917,7 +7926,7 @@ const tutSpotEl=document.createElement('div'); tutSpotEl.id='tutspot'; document.
 
 /* focus lockdown: while training, only the current lesson's surfaces accept
    input. The card and any open dialog stay usable so nobody gets stuck. */
-const TUT_ALWAYS=['#tutbox','#pickbox','#reveal','#duelbox','#namebox','#deathbox','#setbtn','#setpanel'];
+const TUT_ALWAYS=['#tutbox','#pickbox','#reveal','#duelbox','#namebox','#deathbox','#setbtn','#setpanel','#relbox'];
 const TUT_GATE_EVTS=['pointerdown','click','touchstart','wheel'];
 function _tutGate(e){
   if(!_tutHook) return;
