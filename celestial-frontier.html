@@ -425,7 +425,7 @@
   /* ---- toasts (achievements, share confirmations) ---- */
   #toast{position:fixed;right:18px;bottom:54px;z-index:40;display:flex;flex-direction:column;gap:8px;pointer-events:none;max-width:min(320px,86vw)}
   #toast .tst{background:var(--glass);border:1px solid rgba(255,207,138,0.4);border-radius:12px;padding:10px 14px;
-    font:12px/1.45 var(--body);color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,0.5);
+    font:12px/1.45 var(--body);color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,0.5);cursor:pointer;
     backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:tin .3s ease}
   #toast .tst .tt{font-family:var(--ui);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--plasma);margin-bottom:2px}
   @keyframes tin{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
@@ -5485,12 +5485,30 @@ let _loading=false;              /* true while restoring a save — mutes fanfar
    Owns: notifOn, toast, notifications, _notifSeq, trayOpen, bellEl, bellCt, trayEl, trayList, pushNotif, …
    ---------------------------------------------------------------- */
 let notifOn=true;
+const _toastQ=[];   /* toasts held while the title / explorer-name screen is up */
+function _introUp(){
+  try{ const nb=document.getElementById('namebox'); return !!(nb && nb.style.display==='flex'); }catch(_){ return false; }
+}
+function _showToast(title, msg){
+  const el=document.createElement('div'); el.className='tst';
+  el.innerHTML='<div class="tt">'+title+'</div>'+msg;
+  /* linger long enough to actually read: ~reading speed, 4.2s—9s */
+  const hold=Math.min(9000, 4200 + String(title+msg).replace(/<[^>]*>/g,'').length*38);
+  let _gone=false;
+  const dismiss=()=>{ if(_gone) return; _gone=true;
+    el.style.transition='opacity .4s'; el.style.opacity='0'; setTimeout(()=>el.remove(),420); };
+  el.addEventListener('click', dismiss);          /* tap to dismiss early */
+  toastEl.appendChild(el);
+  setTimeout(dismiss, hold);
+}
+function flushToasts(){
+  let i=0;
+  while(_toastQ.length){ const [t,m]=_toastQ.shift(); setTimeout(()=>_showToast(t,m), 400+i*1100); i++; }
+}
 function toast(title, msg){
   if(notifOn){
-    const el=document.createElement('div'); el.className='tst';
-    el.innerHTML='<div class="tt">'+title+'</div>'+msg;
-    toastEl.appendChild(el);
-    setTimeout(()=>{ el.style.transition='opacity .4s'; el.style.opacity='0'; setTimeout(()=>el.remove(),420); }, 3800);
+    if(_introUp()) _toastQ.push([title, msg]);    /* the title screen stays quiet */
+    else _showToast(title, msg);
   }
   pushNotif(title, msg);   /* always logged to the bell tray, even when popups are off */
 }
@@ -7165,6 +7183,7 @@ const RELEASES=[
   'Survey-card and specimen-card buttons explain themselves — including a live danger % on Discover Life.',
   'The training guidance card sits top-center with a golden spotlight on each target, and menus lock to the current lesson so nothing pulls focus — Settings stays available throughout.',
   'Tooltip timing tuned for comfort.',
+  'Notifications linger long enough to read (timing scales with length), can be tapped away, and politely hold their tongue until you’re past the title screen.',
  ]],
  ['♟ Gameplay', [
   'Specimen cards now state <b>battle HP</b> and condition — wounds never linger between duels, but a champion lost in conquest is gone forever.',
@@ -7661,6 +7680,7 @@ function commitExplorerName(){
   explorerName=nm||'Explorer';
   nameBox.style.display='none';
   renderRank(); queueSave();
+  flushToasts();   /* anything held back while the title screen was up */
   toast('Welcome, '+explorerName, 'The frontier is yours. Your name rides on everything you discover and share.');
   if(_nameInitial){
     _nameInitial=false;
