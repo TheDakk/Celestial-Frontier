@@ -36,6 +36,17 @@
 - Settings (`#setbtn`/`#setpanel`) usable during training lockdown.
 - Skip-training unlock covered by regression checks.
 
+## Recently fixed (2026-06-11, boot-noise + desktop pass)
+
+- Phantom "Rank Up — Cadet" after reset / training cleanup: rank fanfare now
+  requires a genuine promotion (floor increase); trackers reset on wipe.
+- Desktop training card: 470px, larger type, more breathing room under the
+  topbar. Dakk wants a broader "mobile-first that translates to PC" review —
+  the desktop topbar spreads to corners while the card floats center; consider
+  a fuller desktop HUD alignment pass if it still reads as off.
+- ("Survey the Sun" on boot in Dakk's screenshot = the hover-survey bug, fixed
+  in f143ed8; screenshots predated that build.)
+
 ## Recently fixed (2026-06-11, v1.0-feedback round)
 
 - Moon orbits now Kepler-ish (outer moons slower; gas giants stately).
