@@ -5,16 +5,23 @@
 > batch, keep everything committed and pushed. The chat is disposable; this
 > file and the repo are not.
 
-## Current state (updated 2026-06-11)
+## Current state (updated 2026-06-11, end of day)
 
 - **Version: v1.1** (in-game `GAME_VERSION`) — bumps only on Dakk's say-so;
   every shipped change gets a bullet in `RELEASES[0]` (see CLAUDE.md rule 7).
-- **Live:** https://celestialfrontier.github.io/ — build-stamped; live sessions detect
-  new deploys and offer a one-tap refresh.
+  **A v1.2 bump offer is on the table** — large unreleased pile; bump also
+  makes the refresh-pill flow end in a fresh bulletin.
+- **Live:** https://celestialfrontier.github.io/ (org user site; old
+  thedakk.github.io deleted; dev repo TheDakk/Celestial-Frontier is PRIVATE).
 - Shipped in v1.1 so far: SOLID restructure + test toolkit, Guide to the
-  Universe, tooltip system, Field Training tutorial (top-center card, focus
-  lockdown, sandboxed), release-notes system (update bulletin + cumulative
-  history), update watch.
+  Universe, tooltip system (text-only, 650/600ms), Field Training (lockdown,
+  Sol-start, Settings allowed, dialogs yield below card, desktop high-riding
+  card), release-notes system (bulletin-first welcome: name → notes →
+  training; once-per-update for returners; cumulative via Guide footer),
+  update watch (BUILD_ID + version.json + refresh pill), toast pacing
+  (read-length, tap-dismiss, title-screen hold), v1.0-feedback fixes (Kepler
+  moons, slow galaxies, sound resume, hover-survey, % labels, HP/condition
+  line, no phantom Rank Up).
 
 ## Awaiting Dakk's playtest feedback
 
