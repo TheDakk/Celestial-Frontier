@@ -11,6 +11,12 @@ the Prime Codex.
 Open `celestial-frontier.html` in any modern browser. No build, no server,
 no dependencies. Saves live in `localStorage`.
 
+New expeditions begin with **Field Training** — an 18-step, fully sandboxed
+tutorial that teaches every system by playing it (skippable). The **? Guide
+to the Universe** is a searchable manual of every mechanic, and short
+tooltips (long-press on touch, hover on desktop) link into it everywhere —
+toggle them in Settings.
+
 ## Code
 
 The whole game is one `<script>` inside the html, organized on SOLID lines into

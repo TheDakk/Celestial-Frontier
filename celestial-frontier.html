@@ -595,6 +595,24 @@
     font:600 9.5px var(--ui);letter-spacing:.05em;color:var(--plasma);
     background:rgba(143,180,255,0.1);border:1px solid rgba(143,180,255,0.3)}
   #tipbubble .tiplink:hover{color:var(--ink);border-color:rgba(143,180,255,0.55)}
+  #tutspot{position:fixed;z-index:49;display:none;pointer-events:none;border:2px solid rgba(255,217,106,0.95);
+    border-radius:14px;box-shadow:0 0 0 4px rgba(255,217,106,0.22),0 0 26px rgba(255,217,106,0.5);
+    transition:left .25s ease,top .25s ease,width .25s ease,height .25s ease}
+  #tutbox{position:fixed;z-index:50;display:none;left:50%;transform:translateX(-50%);bottom:62px;
+    width:min(380px,calc(100vw - 24px));background:rgba(10,12,22,0.97);border:1px solid rgba(255,217,106,0.55);
+    border-radius:16px;padding:13px 16px;box-shadow:0 14px 50px rgba(0,0,0,0.7),0 0 30px rgba(255,217,106,0.12);
+    font:500 12px var(--ui);color:var(--dim);line-height:1.6}
+  #tutbox .tt{font:700 9.5px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:#ffd96a;
+    margin-bottom:6px;display:flex;justify-content:space-between}
+  #tutbox .tx b{color:var(--ink)}
+  #tutbox .tx em{color:var(--plasma);font-style:normal}
+  #tutbox .tbtns{display:flex;gap:8px;margin-top:11px;align-items:center}
+  #tutbox #tut-act,#tutbox #tut-skip-yes{flex:1;padding:9px 0;font:700 11px var(--ui);letter-spacing:.08em;
+    text-transform:uppercase;cursor:pointer;color:#1a1206;border:1px solid rgba(255,220,150,0.9);
+    border-radius:10px;background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a)}
+  #tutbox #tut-skip,#tutbox #tut-skip-no{margin-left:auto;padding:6px 10px;font:600 10px var(--ui);cursor:pointer;
+    color:var(--faint);background:none;border:none;text-decoration:underline;text-underline-offset:2px}
+  #tutbox #tut-skip:hover,#tutbox #tut-skip-no:hover{color:var(--ink)}
   #guideok{width:100%;margin-top:16px;padding:12px 0;font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;
     color:#1a1206;cursor:pointer;border:1px solid rgba(255,220,150,0.9);border-radius:12px;
     background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a);box-shadow:0 0 18px rgba(240,200,110,0.4)}
@@ -4715,6 +4733,7 @@ function renderPanel(p, isLocked){
   if(key!==_panelKey){               /* rebuild content only when it actually changes */
     _panelKey=key;
     noteSurvey(d);
+    gameEvent('survey', {logId:d.logId, planetSeed:d.planetSeed});
     const thumb = d.thumb ? '<img class="thumb'+(d.thumbSq?' sq':'')+'" src="'+d.thumb+'" alt="">' : '';
     let rows='';
     const spRows=d.rows.filter(row=>row[3]&&row[3].startsWith('sp:'));
@@ -4882,6 +4901,7 @@ function addToLog(d){
     badge:d.badge, star:(d.grade?d.grade.star:''), where:d.where, t:Date.now()});
   logCountEl.textContent=logMap.size;
   if(logOpen) renderLog();
+  gameEvent('atlas-add', {id:d.logId});
   queueSave();
 }
 function renderLog(){
@@ -4963,6 +4983,7 @@ logBtn.addEventListener('click', ()=>{
   logOpen=!logOpen;
   logEl.style.display=logOpen?'block':'none';
   if(logOpen){ codexOpen=false; codexEl.style.display='none'; renderLog(); }
+  gameEvent('atlas-open', {open:logOpen});
 });
 
 /* ---------------- the Codex: every species you discover, plus a crossbreeding lab ---------------- */
@@ -5166,6 +5187,7 @@ function showReveal(entry, isHybrid){
     _revEntry=entry.genome?entry:null;
   }
   revealEl.style.display='flex';
+  gameEvent('specimen', {id:entry.id||null});
 }
 let _revEntry=null;
 revealEl.addEventListener('click', (e)=>{
@@ -5271,6 +5293,7 @@ codexBtn.addEventListener('click', ()=>{
   codexOpen=!codexOpen;
   codexEl.style.display=codexOpen?'block':'none';
   if(codexOpen){ logOpen=false; logEl.style.display='none'; renderCodex(); }
+  gameEvent('codex-open', {open:codexOpen});
 });
 
 /* teleport to a logged object: galaxy, star, or planet */
@@ -5327,13 +5350,17 @@ function startNewGame(){
     const earth=(st.sys&&st.sys.planets)?st.sys.planets.find(p=>p.P&&p.P.seed===133):null;
     if(earth){
       conquered.set(133, {t:0, tier:5});                 /* Earth flies your flag from the start */
-      const where={type:'planet', gal:slimGal(st.gal), star:{x:solStar.x,y:solStar.y,seed:SOL_SEED}, pseed:133};
-      if(!logMap.has('p133')){
-        logMap.set('p133', {id:'p133', title:'Earth', sub:'Terran World', thumb:planetThumb(earth.P), sq:null,
-          badge:'Home', star:'', where, t:Date.now()});
-        logCountEl.textContent=logMap.size;
+      /* during field training, charting Earth is the player's own first act —
+         the tutorial walks them through adding it; tutAbort/finale backstop it */
+      if(tutDone){
+        const where={type:'planet', gal:slimGal(st.gal), star:{x:solStar.x,y:solStar.y,seed:SOL_SEED}, pseed:133};
+        if(!logMap.has('p133')){
+          logMap.set('p133', {id:'p133', title:'Earth', sub:'Terran World', thumb:planetThumb(earth.P), sq:null,
+            badge:'Home', star:'', where, t:Date.now()});
+          logCountEl.textContent=logMap.size;
+        }
+        homeId='p133';                                   /* Earth is your Star Atlas home */
       }
-      homeId='p133';                                     /* Earth is your Star Atlas home */
     }
   }catch(_){}
   queueSave();
@@ -5428,6 +5455,7 @@ bellEl.addEventListener('click', ()=>{
   trayOpen=!trayOpen;
   trayEl.style.display=trayOpen?'block':'none';
   if(trayOpen) renderTray();
+  gameEvent('tray', {open:trayOpen});
 });
 trayList.addEventListener('click', e=>{
   const it=e.target.closest('[data-nt]'); if(!it) return;
@@ -5716,7 +5744,7 @@ function doSave(){
       evann:[..._evAnnounced].slice(-60),
       ach:[...unlocked],
       log, home:homeId,
-      prime:primeFill, frontier:frontierUnlocked?1:0, ending:frontierEnding, guide:seenGuide?1:0,
+      prime:primeFill, frontier:frontierUnlocked?1:0, ending:frontierEnding, guide:seenGuide?1:0, tut:tutDone?1:0,
       codex:[...codex.values()].map(e=>({g:e.genome, f:e.from, w:e.where||null})),
     }));
   }catch(_){
@@ -5778,6 +5806,7 @@ function loadSave(){
     if(data.prime && typeof data.prime==='object'){ for(const k in data.prime) if(SIG_IDS.includes(k)) primeFill[k]=data.prime[k]; }
     frontierUnlocked=!!data.frontier; frontierEnding=data.ending||null;
     seenGuide=!!data.guide;
+    tutDone = data.tut===undefined ? true : !!data.tut;   /* pre-tutorial saves are veterans */
     /* retroactive: signatures your existing Codex already deserves, claimed quietly */
     if(primeCount()<9) for(const e of codex.values()) primeCheckSpecies(e, true);
     renderPrime(); updatePrimeBtn();
@@ -5798,7 +5827,7 @@ function resetMemoryState(){
     _evAnnounced.clear(); unlocked.clear(); customNames.clear();
     if(typeof notifications!=='undefined' && notifications.length) notifications.length=0;
     for(const k in primeFill) delete primeFill[k];
-    homeId=null; frontierUnlocked=false; frontierEnding=null; seenGuide=false;
+    homeId=null; frontierUnlocked=false; frontierEnding=null; seenGuide=false; tutDone=false;
     explorerName=''; essence=0; pstats={vit:50,fer:50,res:50,agi:50,ins:50}; HP_MAX=hpMaxFromVit(); hp=HP_MAX;
     for(const k in stats) if(typeof stats[k]==='number') stats[k]=0;
     if(codexCountEl) codexCountEl.textContent='0';
@@ -5809,6 +5838,8 @@ function resetMemoryState(){
 function wipeSaveAndReload(){
   _wiping=false;                      /* the rebuilt fresh game should save normally */
   clearTimeout(_saveT);
+  try{ tutAbort(); }catch(_){}
+
   try{ localStorage.removeItem(SAVE_KEY); }catch(_){}
   resetMemoryState();                 /* clear every container of live progress */
   /* drop any shared-link hash without depending on a full page navigation */
@@ -5972,6 +6003,7 @@ function runSearch(qRaw){
       '<div class="m"><div class="nm">'+o.nm+'</div><div class="ds">'+o.ds+'</div></div></div>').join('');
   }
   searchRes.style.display='block';
+  gameEvent('searched', {q:String(qRaw||''), n:_srOut.length});
 }
 searchIn.addEventListener('input', ()=>runSearch(searchIn.value));
 searchIn.addEventListener('keydown', e=>{
@@ -6332,6 +6364,7 @@ function fightNow(mine, theirs, opts){
         playRaritySting(res.winner==='A'?5:2);
         checkAch(); renderRank(); queueSave();
       }
+      gameEvent('duel-done', {winner:res.winner});
       return;
     }
     const L=res.log[i++];
@@ -6630,7 +6663,8 @@ pickList.addEventListener('click', e=>{
   const other=codex.get(c.dataset.pk); if(!other) return;
   const resEl=document.getElementById('pick-result');
   if(_pickMode==='heal'){
-    const r=healExplorer(other, Math.random());
+    const r=healExplorer(other, (_tutRig&&_tutRig.heal!=null)?_tutRig.heal:Math.random());
+    gameEvent('healed', {ok:!!r.ok});
     const sm=STAT_META[r.stat]||{name:'',col:'#9fb6d6'};
     if(r.ok){
       playRaritySting(3); fxBurst(FX_GREEN,16);
@@ -6644,8 +6678,9 @@ pickList.addEventListener('click', e=>{
     return;
   }
   if(_pickMode==='breed'){
-    const r=breedPair(_pickBase, other, Math.random());
+    const r=breedPair(_pickBase, other, (_tutRig&&_tutRig.breed!=null)?_tutRig.breed:Math.random());
     stats.breeds=(stats.breeds||0)+1;
+    gameEvent('bred', {ok:!!r.ok});
     if(r.ok){
       playRaritySting(Math.min(7, (r.born&&r.born.grade?r.born.grade.tier:3)+1)); playFanfare(); fxBurst(FX_GREEN.concat(FX_PURP),46);
       resEl.innerHTML='\ud83c\udf89 <span style="color:#7fe6a0">A new bloodline is born!</span> '+(r.born?r.born.name:'A new creature')+' joins your Compendium with boosted stats. Both parents gave themselves to the union.';
@@ -6659,8 +6694,9 @@ pickList.addEventListener('click', e=>{
       revealEl.style.display='none';
     }
   } else {
-    const r=feedPair(_pickBase, other, Math.random());
+    const r=feedPair(_pickBase, other, (_tutRig&&_tutRig.feed!=null)?_tutRig.feed:Math.random());
     stats.feeds=(stats.feeds||0)+1;
+    gameEvent('fed', {ok:!!r.ok});
     const _fcol={loved:'#7fe6a0', neutral:'#cfd6f2', disliked:'#ffd96a'};
     if(r.ok){
       const pc=_fcol[r.pref]||'#cfd6f2';
@@ -7398,11 +7434,234 @@ function commitExplorerName(){
   nameBox.style.display='none';
   renderRank(); queueSave();
   toast('Welcome, '+explorerName, 'The frontier is yours. Your name rides on everything you discover and share.');
-  if(_nameInitial && !seenGuide){ _nameInitial=false; setTimeout(openGuide, 450); }
+  if(_nameInitial){
+    _nameInitial=false;
+    if(!tutDone) setTimeout(()=>{ try{ startTutorial(); }catch(_){} }, 500);
+    else if(!seenGuide) setTimeout(openGuide, 450);
+  }
 }
 document.getElementById('nameok').addEventListener('click', commitExplorerName);
 nameIn.addEventListener('keydown', e=>{ if(e.key==='Enter' && nameIn.value.trim()) commitExplorerName(); });
 nameIn.addEventListener('input', ()=>{ const ok=document.getElementById('nameok'); if(ok) ok.disabled=!nameIn.value.trim(); });
+
+/* ================= FIELD TRAINING =================
+   A new explorer's first two minutes: a step-gated walkthrough of every core
+   system, played inside the real game. Each step completes only when the real
+   action happens (the game emits events; the tutorial listens). Training is a
+   sandbox: practice specimens vanish at the end, wounds are mended, counters
+   and achievements are restored — only Earth in the Atlas remains. */
+/* ----------------------------------------------------------------
+   @section tutorial [app] — event-gated new-player field training (sandboxed)
+   Owns: tutDone, _tutRig, gameEvent, TUT_STEPS, startTutorial, tutAbort
+   ---------------------------------------------------------------- */
+let tutDone=false;            /* saved as `tut`; absent in old saves = veteran */
+let _tutRig=null;             /* while training, key rolls are rigged kind: {heal,breed,feed} */
+let _tutHook=null, _tutStep=-1, _tutSnap=null, _tutPreIds=null, _tutTimer=0;
+/* the one funnel game systems report through; free when no tutorial listens */
+function gameEvent(type, detail){ try{ if(_tutHook) _tutHook(type, detail||{}); }catch(_){} }
+
+const TUT_STEPS=[
+ {id:'welcome', btn:'Begin Training',
+  text:()=>'Welcome to <b>Sol</b>, '+(explorerName||'Explorer')+' — humanity’s cradle and your first charter. Before the infinite opens, the order asks one thing of every new Pathfinder: <b>field training</b>.<br>Everything ahead is real practice — and nothing you lose in training follows you out.'},
+ {id:'find-earth',
+  text:()=>'First, find home. <b>Drag and zoom to Earth</b> — the blue world, third from the Sun — and <b>tap it</b> to open its survey card.',
+  when:(t,d)=>t==='survey'&&d.planetSeed===133},
+ {id:'survey-tour', spot:'#panel', btn:'Got It',
+  text:()=>'This is a <b>survey card</b> — every world, star and galaxy has one, generated from pure math: atmosphere, climate, life, hazards. Every explorer in existence reads exactly this card at Earth.'},
+ {id:'atlas-add', spot:'#panel [data-act="add"]',
+  text:()=>'Chart it. Tap <b>+ Add to Star Atlas</b> on Earth’s card — the Atlas is how you find your way back across the infinite.',
+  when:(t,d)=>t==='atlas-add'&&d.id==='p133'},
+ {id:'atlas-open', spot:'#logbtn',
+  text:()=>'Earth is charted — your Atlas’ first entry. Open the <b>Star Atlas</b> (right rail). Tapping any entry travels there instantly; ☆ favorites and the ⌂ home mark live there too.',
+  when:(t,d)=>t==='atlas-open'&&!!d.open},
+ {id:'cache', spot:'#codexbtn', enter:()=>_tutGrant(),
+  text:()=>'A <b>training cache</b> just arrived: three Earth beasts and three Earth flora, on loan from the order. Open your <b>Compendium</b> to meet them.',
+  when:(t,d)=>t==='codex-open'&&!!d.open},
+ {id:'specimen', spot:'#codex',
+  text:()=>'Fighters, breeders and medicine all live here, shelved by realm. <b>Tap any specimen</b> to open its card.',
+  when:(t)=>t==='specimen'},
+ {id:'card-tour', spot:'#reveal .card', btn:'Got It',
+  text:()=>'Read it like a Pathfinder: <b>five stat bars</b> and total Power; its <b>✧ ability</b>; its <b>rarity grade</b> tinting the card. Rarer life fights harder, breeds stronger, heals — or poisons — more. Beasts also list flora flavours they <b>♥ love</b> and <b>⊘ dislike</b>.'},
+ {id:'feed', enter:()=>{ _tutRig={feed:0.62}; },
+  text:()=>'Time for a meal. Open a <b>🐾 beast</b> in the Compendium, tap <b>🌿 Feed</b>, and pick a plant. The plant is always consumed — a welcome meal grows the beast’s bloodline <b>permanently</b>.',
+  when:(t)=>t==='fed'},
+ {id:'breed', enter:()=>{ _tutRig={breed:0.001}; },
+  text:()=>'Now forge a bloodline. Open a <b>🐾 beast</b>, tap <b>🧬 Breed</b>, and choose a mate. <b>Both parents are always consumed by the union</b> — but tonight, the stars favor you.',
+  when:(t)=>t==='bred'},
+ {id:'duel', btn:'⚔ Begin Training Duel', stay:true,
+  text:()=>'A new creature, born of two! Let’s see it fight. Duels run round by round on the five stats and abilities — and the same matchup plays out <b>identically on every device</b>. Press the button when ready.',
+  when:(t)=>t==='duel-done'},
+ {id:'hazard', spot:'#hpwrap', btn:'Ouch — Got It',
+  enter:()=>{ setTimeout(()=>{ try{ if(hp>20) damageExplorer(Math.min(15, hp-5), 'Your training rival got a parting nip in.'); }catch(_){} }, 400); },
+  text:()=>'…and your rival got a <b>parting nip</b> in. That bar up top is <b>your HP</b>. The frontier bites: hostile bioscans, toxic meals and championing your own conquests all wound you — and at 0 HP, the expedition ends.'},
+ {id:'heal', spot:'#hpheart', enter:()=>{ _tutRig={heal:0.95}; },
+  text:()=>'Heal up. Tap the <b>❤ heart</b> by your HP bar and eat a flora. Medicine restores HP <b>and permanently grows one of your five battle stats</b> — the deadliest medicine heals hardest.',
+  when:(t,d)=>t==='healed'&&d.ok},
+ {id:'tray', spot:'#bell',
+  text:()=>'Everything that happens is remembered. Open the <b>🔔 notification tray</b> — your expedition’s running story, even when popups are silenced.',
+  when:(t,d)=>t==='tray'&&!!d.open},
+ {id:'search', spot:'#searchin',
+  text:()=>'The infinite is searchable. Type <b>earth</b> in the search box — it finds anything you’ve discovered, and pasted CF1/CFB codes travel to worlds or summon creatures.',
+  when:(t,d)=>t==='searched'&&(d.q||'').toLowerCase().indexOf('ear')>=0&&d.n>0},
+ {id:'sheet', spot:'#rank',
+  text:()=>'One last thing: <b>tap your nameplate</b> to open your character sheet — your five stats, rank, expedition statistics and achievements.',
+  when:(t,d)=>t==='stats-open'&&!!d.open},
+ {id:'horizon', spot:'#pcdxbtn', btn:'Got It',
+  text:()=>'You’re ready. Out there wait <b>living worlds</b> to scan (mind the danger %), worlds to <b>⚔ conquer</b>, hourly ☄ <b>Stardust harvests</b> — and the nine <b>✦ Signatures</b> of the Prime Codex, the road to the Celestial Frontier. The <b>? Guide</b> (bottom right) explains every system, any time.'},
+ {id:'finale', btn:'✦ Begin the Expedition', enter:()=>_tutCleanup(),
+  text:()=>'Field training complete, <b>'+(explorerName||'Explorer')+'</b>. The cache returns to the order — your Compendium stands empty, your wounds are mended, and <b>Earth shines in your Star Atlas</b>. Everything from here on is real.<br><br><em>Master the infinite.</em>'},
+];
+
+const tutEl=document.createElement('div'); tutEl.id='tutbox'; document.body.appendChild(tutEl);
+const tutSpotEl=document.createElement('div'); tutSpotEl.id='tutspot'; document.body.appendChild(tutSpotEl);
+
+function _tutShow(){
+  const s=TUT_STEPS[_tutStep]; if(!s){ tutEl.style.display='none'; return; }
+  tutEl.innerHTML='<div class="tt"><span>🧭 Field Training</span><span>'+(_tutStep+1)+' / '+TUT_STEPS.length+'</span></div>'+
+    '<div class="tx">'+s.text()+'</div>'+
+    '<div class="tbtns">'+
+      (s.btn?'<button id="tut-act" type="button">'+s.btn+'</button>':'')+
+      (_tutStep<TUT_STEPS.length-1?'<button id="tut-skip" type="button">Skip training</button>':'')+
+    '</div>';
+  tutEl.style.display='block';
+  _tutSpot();
+}
+function _tutSpot(){
+  const s=(_tutStep>=0)?TUT_STEPS[_tutStep]:null;
+  const el=s&&s.spot?document.querySelector(s.spot):null;
+  let r=null;
+  if(el){
+    const rect=el.getBoundingClientRect();
+    if(rect.width>2&&rect.height>2&&rect.bottom>0&&rect.top<H) r=rect;
+  }
+  if(!r){ tutSpotEl.style.display='none'; return; }
+  tutSpotEl.style.display='block';
+  tutSpotEl.style.left=Math.round(r.left-6)+'px';
+  tutSpotEl.style.top=Math.round(r.top-6)+'px';
+  tutSpotEl.style.width=Math.round(r.width+12)+'px';
+  tutSpotEl.style.height=Math.round(r.height+12)+'px';
+}
+function _tutAdvance(){
+  _tutRig=null;
+  _tutStep++;
+  if(_tutStep>=TUT_STEPS.length){ _tutFinish(); return; }
+  const s=TUT_STEPS[_tutStep];
+  if(s.enter){ try{ s.enter(); }catch(_){} }
+  _tutShow();
+}
+/* practice specimens: three random Earth beasts, three random Earth flora.
+   Random on purpose — every recruit trains a different menagerie. */
+function _tutGrant(){
+  for(const id of [...codex.keys()]){ const e=codex.get(id); if(e && e.from==='Training Cache') removeFromCodex(id); }
+  const mk=(kingdom)=>{
+    let g=null, guard=0;
+    do{ g=makeGenome((Math.random()*0xFFFFFFFF)>>>0, kingdom, 0.3+Math.random()*0.35); }
+    while(codex.has(codexId(g)) && ++guard<25);
+    return g;
+  };
+  for(let i=0;i<3;i++) _storeSpecies(mk('fauna'), 'Training Cache', null);
+  for(let i=0;i<3;i++) _storeSpecies(mk('flora'), 'Training Cache', null);
+  flashCodex();
+  if(codexOpen) renderCodex();
+  toast('📦 Training Cache', 'Six Earth specimens on loan — three beasts, three flora. They return to the order when training ends.');
+}
+function _tutDuel(){
+  const beasts=[...codex.values()].filter(e=>e.kind==='Fauna')
+    .sort((a,b)=>battleStats(b.genome).total-battleStats(a.genome).total);
+  const mine=beasts[0];
+  if(!mine){ _tutAdvance(); return; }   /* nothing left to fight with — move on */
+  const rg=makeGenome((Math.random()*0xFFFFFFFF)>>>0, 'fauna', 0.5);
+  duelSetup.style.display='none'; duelFightBtn.style.display='none'; duelErr.textContent='';
+  fightNow({name:mine.name, genome:mine.genome, art:mine.art},
+           {name:describeSpecies(rg).name+' (Training Rival)', genome:rg},
+           {intro:'Training duel — '+mine.name+' squares up…'});
+}
+/* the sandbox dissolves: practice life vanishes, the record is restored */
+function _tutCleanup(){
+  try{
+    _tutRig=null;
+    pendingReveals.length=0; revealEl.style.display='none';
+    pickBox.style.display='none'; duelBox.style.display='none';
+    for(const id of [...codex.keys()]) if(!_tutPreIds || !_tutPreIds.has(id)) removeFromCodex(id);
+    if(_tutSnap){
+      for(const k in _tutSnap.stats) stats[k]=_tutSnap.stats[k];
+      pstats={..._tutSnap.pstats};
+      unlocked.clear(); for(const a of _tutSnap.ach) unlocked.add(a);
+      essence=_tutSnap.essence;
+    }
+    HP_MAX=hpMaxFromVit(); hp=HP_MAX;
+    _tutEnsureEarth();
+    renderHP(); renderRank(); renderBell();
+    if(codexOpen) renderCodex();
+    if(logOpen) renderLog();
+  }catch(_){}
+}
+/* Earth in the Atlas, flagged home — however training ended */
+function _tutEnsureEarth(){
+  try{
+    conquered.set(133, conquered.get(133)||{t:0, tier:5});
+    if(!logMap.has('p133')){
+      const sys=systemFor(SOL_SEED);
+      const earth=(sys&&sys.planets)?sys.planets.find(p=>p.P&&p.P.seed===133):null;
+      const gal={x:HOME_POS.x, y:HOME_POS.y, size:78, sp:0, tilt:0.62, rot:0.5, seed:HOME_GAL_SEED, home:true};
+      const where={type:'planet', gal, star:{x:SOL_POS.x, y:SOL_POS.y, seed:SOL_SEED}, pseed:133};
+      logMap.set('p133', {id:'p133', title:'Earth', sub:'Terran World', thumb:earth?planetThumb(earth.P):null, sq:null,
+        badge:'Home', star:'', where, t:Date.now()});
+    }
+    homeId='p133';
+    logCountEl.textContent=logMap.size;
+    if(logOpen) renderLog();
+  }catch(_){}
+}
+function _tutFinish(){
+  clearInterval(_tutTimer); _tutTimer=0;
+  tutEl.style.display='none'; tutSpotEl.style.display='none';
+  _tutHook=null; _tutStep=-1; _tutRig=null;
+  if(!tutDone){
+    tutDone=true;
+    toast('✦ Welcome to the Frontier', 'Training complete. Fly far, '+(explorerName||'Explorer')+' — the Guide (?) is always at hand.');
+  }
+  queueSave();
+}
+function tutAbort(){
+  /* a reset mid-training: tear the overlay down without touching fresh state */
+  clearInterval(_tutTimer); _tutTimer=0;
+  tutEl.style.display='none'; tutSpotEl.style.display='none';
+  _tutHook=null; _tutStep=-1; _tutRig=null; _tutSnap=null; _tutPreIds=null;
+}
+function startTutorial(){
+  if(_tutHook || tutDone) return;
+  seenGuide=true;                       /* training replaces the old primer pop-up */
+  /* a resumed half-finished training leaves only practice debris — clear it */
+  for(const id of [...codex.keys()]) removeFromCodex(id);
+  _tutSnap={stats:{...stats}, pstats:{...pstats}, ach:[...unlocked], essence:essence};
+  _tutPreIds=new Set(codex.keys());
+  _tutHook=(type,detail)=>{
+    const s=TUT_STEPS[_tutStep];
+    if(s && s.when && s.when(type, detail||{})) _tutAdvance();
+  };
+  _tutStep=-1;
+  _tutAdvance();
+  _tutTimer=setInterval(_tutSpot, 350);
+  queueSave();
+}
+tutEl.addEventListener('click', e=>{
+  const id=e.target&&e.target.id;
+  if(id==='tut-act'){
+    const s=TUT_STEPS[_tutStep];
+    if(s&&s.id==='duel'){ _tutDuel(); return; }     /* gated on duel-done, button re-pressable */
+    _tutAdvance();
+    return;
+  }
+  if(id==='tut-skip'){
+    tutEl.innerHTML='<div class="tt"><span>🧭 Field Training</span></div>'+
+      '<div class="tx">Skip training? You can always learn from the <b>? Guide</b> instead. Practice specimens return to the order; Earth stays charted in your Atlas.</div>'+
+      '<div class="tbtns"><button id="tut-skip-yes" type="button">Skip — I’ve Flown Before</button><button id="tut-skip-no" type="button">Keep Training</button></div>';
+    return;
+  }
+  if(id==='tut-skip-yes'){ _tutCleanup(); _tutFinish(); return; }
+  if(id==='tut-skip-no'){ _tutShow(); return; }
+});
 
 /* ================= SETTINGS ================= */
 /* ----------------------------------------------------------------
@@ -7724,6 +7983,7 @@ rankEl.addEventListener('click', ()=>{
     renderStats();
     eventsOpen=false; eventsEl.style.display='none'; clearInterval(_evTimer);
   }
+  gameEvent('stats-open', {open:statsOpen});
 });
 document.addEventListener('pointerdown', e=>{
   if(statsOpen && !e.target.closest('#stats') && !e.target.closest('#rank')){
@@ -7764,6 +8024,10 @@ if(location.hash && /cf1-/i.test(location.hash)){
 } else if(!_hadSave){
   /* a brand-new expedition opens at home, inside our own solar system */
   setTimeout(()=>{ try{ startNewGame(); }catch(_){} }, 120);
+}
+/* a reload mid-training restarts field training from the top */
+if(_hadSave && !tutDone && explorerName && explorerName!=='Explorer'){
+  setTimeout(()=>{ try{ startTutorial(); }catch(_){} }, 800);
 }
 
 /* ---------------- main loop ---------------- */
