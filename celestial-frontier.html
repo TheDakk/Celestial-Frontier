@@ -269,6 +269,14 @@
   #relbox #relok:hover{box-shadow:0 0 26px rgba(240,200,110,0.65), inset 0 1px 0 rgba(255,255,255,0.5)}
   .gcredit-link{cursor:pointer;text-decoration:underline;text-underline-offset:3px}
   .gcredit-link:hover{color:var(--ink)}
+  #updatepill{position:fixed;z-index:45;display:none;left:50%;transform:translateX(-50%);bottom:60px;
+    padding:9px 16px;border-radius:999px;cursor:pointer;font:700 11px var(--ui);letter-spacing:.06em;
+    color:#1a1206;border:1px solid rgba(255,220,150,0.9);
+    background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a);
+    box-shadow:0 8px 30px rgba(0,0,0,0.55), 0 0 22px rgba(240,200,110,0.5);
+    animation:updpulse 2.4s ease infinite}
+  @keyframes updpulse{0%,100%{box-shadow:0 8px 30px rgba(0,0,0,0.55), 0 0 14px rgba(240,200,110,0.35)}
+    50%{box-shadow:0 8px 30px rgba(0,0,0,0.55), 0 0 30px rgba(240,200,110,0.7)}}
 
   /* ---- share dialog: the link is always visible & selectable, copy is a bonus ---- */
   #sharebox{position:fixed;inset:0;z-index:34;display:none;align-items:center;justify-content:center;
@@ -7133,6 +7141,7 @@ const RELEASES=[
  ['⚙ Under the Hood', [
   'The engine was reorganized into clean, testable modules — with the universe verified <b>byte-identical</b> to v1.0. Your worlds, creatures and share codes are untouched.',
   'An automated test fleet now plays the game (including all of Field Training) before every release.',
+  'Live sessions now notice when a newer build ships and offer a one-tap refresh — your expedition saves first.',
  ]],
 ]},
 {v:'1.0', title:'The Master Survey', date:'June 2026', sections:[
@@ -7197,6 +7206,39 @@ function openReleaseNotes(mode){
     gc.addEventListener('click', ()=>openReleaseNotes('all'));
   }
 })();
+
+/* ---- update watch ----
+   A live session learns when a newer build ships: tools/deploy.js stamps
+   BUILD_ID with the git sha and publishes version.json next to the game.
+   We check every 10 minutes and whenever the tab becomes visible again
+   (iOS Safari resurrects days-old tabs). Offline or local play ('dev'
+   build, file://, no fetch): the watcher never arms — the game stays
+   fully offline-capable. Refreshing is safe: beforeunload saves first. */
+const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
+let _updSeen=false;
+function _updOffer(j){
+  if(_tutHook){ setTimeout(()=>_updOffer(j), 60e3); return; }   /* never interrupt training */
+  let pill=document.getElementById('updatepill');
+  if(!pill){ pill=document.createElement('div'); pill.id='updatepill'; document.body.appendChild(pill);
+    pill.addEventListener('click', ()=>{ try{ location.reload(); }catch(_){} }); }
+  const vTxt=(j && j.v && j.v!==GAME_VERSION) ? 'v'+j.v+' is here' : 'A new build is live';
+  pill.textContent='⬆ '+vTxt+' — tap to refresh';
+  pill.style.display='block';
+  toast('⬆ Update Available', vTxt+'. Tap the gold pill to refresh — your expedition saves first.');
+}
+function _updCheck(){
+  if(_updSeen || BUILD_ID==='dev') return;
+  if(typeof fetch!=='function' || !/^https?:$/.test(location.protocol)) return;
+  fetch('version.json?cb='+Date.now(), {cache:'no-store'})
+    .then(r=>r&&r.ok?r.json():null)
+    .then(j=>{ if(j && j.build && j.build!==BUILD_ID){ _updSeen=true; _updOffer(j); } })
+    .catch(()=>{});
+}
+if(BUILD_ID!=='dev'){
+  setTimeout(_updCheck, 45e3);
+  setInterval(_updCheck, 600e3);
+  document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='visible') _updCheck(); });
+}
 
 /* ---- Prime Codex wiring ---- */
 (function(){
