@@ -4043,7 +4043,7 @@ function drawUniverse(time){
         }
       }
       ctx.save(); ctx.translate(g.x,g.y);
-      ctx.rotate(g.rot + time*0.008);
+      ctx.rotate(g.rot + time*0.0012);   /* galaxies turn on cosmic time — barely perceptible */
       ctx.scale(1,g.tilt);
       ctx.drawImage(GAL_SPRITES[g.sp], -sz, -sz, sz*2, sz*2);
       ctx.restore();
@@ -4493,8 +4493,11 @@ function drawSystem(time){
       ctx.restore();
     }
     for(let m=0;m<pl.P.moons;m++){
-      const ma=time*(0.9+m*0.5)+m*2;
-      const mdist=pr*(1.7+m*0.48);
+      /* Kepler-ish: outer moons drift slower (ω ∝ r^-1.5), so big planets'
+         moon systems turn stately instead of frantic */
+      const morb=1.7+m*0.48;
+      const ma=time*(0.55/Math.pow(morb,1.5))+m*2.4;
+      const mdist=pr*morb;
       const mx=Math.cos(ma)*mdist, my=Math.sin(ma)*mdist*0.4;
       const mrad=Math.max(0.5,pr*0.12);
       ctx.fillStyle='#c8ccd8';
@@ -4782,7 +4785,6 @@ function renderPanel(p, isLocked){
   const d=describePick(p);
   if(!d){ panelEl.style.display='none'; panelEl.classList.remove('locked'); _lastDesc=null; _panelKey=null; panelRect=null; _frozenFor=null; return; }
   _lastDesc=d;
-  primeCheckWorld(d);
   /* life is NOT catalogued on sight — you must click the Life forms row to scan.
      A world whose roster is already fully in your Compendium shows expanded. */
   const lifeScanned = d.species && d.species.length && d.species.every(g=>codex.has(codexId(g)));
@@ -4798,8 +4800,14 @@ function renderPanel(p, isLocked){
   panelEl.classList.toggle('locked', !!isLocked);
   if(key!==_panelKey){               /* rebuild content only when it actually changes */
     _panelKey=key;
-    noteSurvey(d);
-    gameEvent('survey', {logId:d.logId, planetSeed:d.planetSeed});
+    /* surveying is a deliberate act: only a tapped/locked card (or standing on
+       the world) earns survey credit, achievements and find-Signatures —
+       desktop hover is just a preview */
+    if(isLocked || st.mode==='surface'){
+      noteSurvey(d);
+      primeCheckWorld(d);
+      gameEvent('survey', {logId:d.logId, planetSeed:d.planetSeed});
+    }
     const thumb = d.thumb ? '<img class="thumb'+(d.thumbSq?' sq':'')+'" src="'+d.thumb+'" alt="">' : '';
     let rows='';
     const spRows=d.rows.filter(row=>row[3]&&row[3].startsWith('sp:'));
@@ -5227,7 +5235,9 @@ function showReveal(entry, isHybrid){
       '<div class="sb"><span class="k">'+n+'</span><div class="bar"><i style="width:'+
       Math.min(100,Math.round(vals[i]/110*100))+'%;background:'+STAT_HUES[i]+'"></i></div><span class="n">'+vals[i]+'</span></div>').join('')+
       '<div class="sb"><span class="k" style="color:'+(gr?gr.hex:'')+'">Power</span><div class="bar"><i style="width:'+
-      Math.min(100,Math.round(S.total/420*100))+'%;background:'+(gr?gr.hex:'#9fb6d6')+'"></i></div><span class="n">'+S.total+'</span></div>';
+      Math.min(100,Math.round(S.total/420*100))+'%;background:'+(gr?gr.hex:'#9fb6d6')+'"></i></div><span class="n">'+S.total+'</span></div>'+
+      '<div class="abil">❤ <b>'+(S.vit*3)+' HP</b> in battle · Condition: <b style="color:#7fe6a0">Healthy</b> — '+
+      'wounds never linger; every duel begins at full strength. But a champion that falls in conquest is <b>lost forever</b>.</div>';
     if(entry.kind==='Flora'){
       const _fs=floraStat(entry.genome), _m=STAT_META[_fs]||{name:'a stat',col:'#7fe6a0'};
       stEl.innerHTML+='<div class="abil"><span style="color:'+_m.col+'">🌿 Nourishes <b>'+_m.name+'</b></span> — eat it, or feed it to a beast that loves it, to grow that stat'+(entry.grade?' (+'+(1+entry.grade.tier)+')':'')+'.'+((entry.genome.brood)?'<br>♞ Bred line: gen '+(entry.genome.gen||0):'')+'</div>';
@@ -5556,7 +5566,15 @@ function ac(){
   if(AC && AC.state==='suspended'){ AC.resume().catch(()=>{}); }
   return AC;
 }
-['pointerdown','touchstart','click','keydown'].forEach(ev=>window.addEventListener(ev, ()=>ac(), {once:true, passive:true}));
+/* keep these PERSISTENT (not once): iOS suspends the AudioContext whenever the
+   tab backgrounds, and resume() only sticks inside a user gesture — so every
+   tap quietly re-arms the audio if it was suspended */
+['pointerdown','touchstart','click','keydown'].forEach(ev=>window.addEventListener(ev, ()=>{
+  if(sndOn && (!AC || AC.state!=='running')) ac();
+}, {passive:true}));
+document.addEventListener('visibilitychange', ()=>{
+  if(document.visibilityState==='visible' && AC && AC.state!=='running' && sndOn){ try{ AC.resume().catch(()=>{}); }catch(_){} }
+});
 function playRaritySting(tier){
   /* celestial tones: soft detuned sine pairs climbing a pentatonic ladder,
      airy harmonics above, and a deep drone beneath the rarest finds.
@@ -6698,15 +6716,15 @@ function openPicker(mode, base){
       const t=(e.grade?e.grade.tier:0);
       let oddsTxt, oddsCol;
       if(isBreed){
-        const o=breedOdds(base,e); oddsTxt=Math.round(o*100)+'%'; oddsCol=o>0.6?'#7fe6a0':(o>0.3?'#ffd96a':'#ff8a72');
+        const o=breedOdds(base,e); oddsTxt=Math.round(o*100)+'% success'; oddsCol=o>0.6?'#7fe6a0':(o>0.3?'#ffd96a':'#ff8a72');
       } else if(isHeal){
         const p=clamp(0.08+t*0.07,0.05,0.6);
         const h=Math.round(12+t*9+p*30);
-        oddsTxt='+'+h+' HP · ☠'+Math.round(p*100)+'%'; oddsCol=p<0.2?'#7fe6a0':(p<0.38?'#ffd96a':'#ff8a72');
+        oddsTxt='+'+h+' HP · ☠'+Math.round(p*100)+'% poison'; oddsCol=p<0.2?'#7fe6a0':(p<0.38?'#ffd96a':'#ff8a72');
       } else {
         const S=battleStats(base.genome);
         const p=S.ab.gutsy?0:clamp(0.10+t*0.06-S.res/700,0.04,0.55);
-        oddsTxt='+'+(1+t)+' ☠'+Math.round(p*100)+'%'; oddsCol=p<0.15?'#7fe6a0':(p<0.3?'#ffd96a':'#ff8a72');
+        oddsTxt='+'+(1+t)+' growth · ☠'+Math.round(p*100)+'% poison'; oddsCol=p<0.15?'#7fe6a0':(p<0.3?'#ffd96a':'#ff8a72');
       }
       return '<div class="cand" data-pk="'+e.id+'"><img src="'+e.art+'" alt="">'+
         '<div class="m"><div class="nm" style="color:'+(e.grade?e.grade.hex:'')+'">'+e.name+'</div>'+
@@ -7142,8 +7160,18 @@ const RELEASES=[
   'The training guidance card sits top-center with a golden spotlight on each target, and menus lock to the current lesson so nothing pulls focus — Settings stays available throughout.',
   'Tooltip timing tuned for comfort.',
  ]],
+ ['♟ Gameplay', [
+  'Specimen cards now state <b>battle HP</b> and condition — wounds never linger between duels, but a champion lost in conquest is gone forever.',
+ ]],
+ ['⚖ Balancing', [
+  'Moons obey Kepler now — outer moons drift slower, so the moon systems of giant planets turn stately instead of frantic.',
+  'Galaxies rotate on cosmic time — barely perceptible, as the universe intended.',
+ ]],
  ['🐞 Bug Fixes', [
   'Field training now always begins at Sol — reloading a half-finished training no longer strands you in deep space hunting for Earth.',
+  'Sound reliably recovers after the tab is backgrounded — the browser quietly suspends audio; every tap now re-arms it.',
+  'Desktop mouse-hover no longer counts as surveying: survey credit, achievements and find-Signatures require a deliberate tap on the card.',
+  'Every risk number now says what it is — breeding shows <b>% success</b>; feeding and eating show <b>% poison</b>.',
  ]],
  ['⚙ Under the Hood', [
   'The engine was reorganized into clean, testable modules — with the universe verified <b>byte-identical</b> to v1.0. Your worlds, creatures and share codes are untouched.',

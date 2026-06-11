@@ -36,7 +36,29 @@
 - Settings (`#setbtn`/`#setpanel`) usable during training lockdown.
 - Skip-training unlock covered by regression checks.
 
+## Recently fixed (2026-06-11, v1.0-feedback round)
+
+- Moon orbits now Kepler-ish (outer moons slower; gas giants stately).
+- Galaxy rotation slowed ~7x (cosmic-time realism, per Dakk).
+- Sound recovery: persistent gesture listeners + visibilitychange re-arm the
+  suspended AudioContext (iOS backgrounding bug).
+- Hover no longer surveys: credit/achievements/find-Signatures need a tap.
+- Breeding/feeding/eating percentages labeled (% success / % poison).
+- Specimen cards show battle HP + Healthy condition line.
+
+## Design decisions (made with Dakk, revisit only if it chafes)
+
+- **Discover Life risks the explorer, conquest risks the champion** — kept
+  as-is (2026-06-11). The asymmetry is the design: scanning is push-your-luck
+  with your own HP; "send the animals instead" already exists as the
+  conquer-first-then-scan-safely strategy.
+
 ## Next (v1.2 candidates — "memorable moments" theme, Dakk's stated direction)
+
+- Persistent creature injury/condition system? (Dakk asked about health
+  states — injured/critical. Today creatures are binary alive/lost; cards now
+  display HP + Healthy. A real injury system = gameplay change, needs Dakk's
+  call on scope.)
 
 - Rare-find spectacle: make Legendary/Anomalous/Unique discoveries feel like
   events (bigger reveal moments, unique stings/FX, maybe a "first discovery"
