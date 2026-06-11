@@ -7191,6 +7191,7 @@ const RELEASES=[
   'Tooltip timing tuned for comfort.',
   'Notifications linger long enough to read (timing scales with length), can be tapped away, and politely hold their tongue until you’re past the title screen.',
   'Training layout polish: the guidance card rides high on desktop (hanging from the search row) and snugger on mobile — and specimen/picker dialogs now open <b>below</b> the card instead of underneath it.',
+  'Every fresh expedition now opens with the latest release notes before training begins — and returning explorers still get them once after each update.',
  ]],
  ['♟ Gameplay', [
   'Specimen cards now state <b>battle HP</b> and condition — wounds never linger between duels, but a champion lost in conquest is gone forever.',
@@ -7244,13 +7245,15 @@ function _relHtml(rel){
       s[1].map(li=>'<li>'+li+'</li>').join('')+'</ul>').join('')+
     '</div>';
 }
-function openReleaseNotes(mode){
+let _relThen=null;   /* ran once when the bulletin is dismissed (e.g. start training) */
+function openReleaseNotes(mode, then){
   const box=document.getElementById('relbox'); if(!box) return;
+  _relThen=(typeof then==='function')?then:null;
   const sub=document.getElementById('rel-sub');
   const body=document.getElementById('rel-body');
   const ok=document.getElementById('relok');
   if(mode==='latest'){
-    if(sub) sub.textContent='The expedition has been upgraded';
+    if(sub) sub.textContent='What’s new in this release';
     if(body) body.innerHTML=_relHtml(RELEASES[0]);
     if(ok) ok.textContent='Continue';
   } else {
@@ -7264,7 +7267,9 @@ function openReleaseNotes(mode){
   const box=document.getElementById('relbox');
   const ok=document.getElementById('relok');
   const close=()=>{ box.style.display='none';
-    if(_rnSeen!==GAME_VERSION){ _rnSeen=GAME_VERSION; queueSave(); } };
+    if(_rnSeen!==GAME_VERSION){ _rnSeen=GAME_VERSION; queueSave(); }
+    const fn=_relThen; _relThen=null;
+    if(fn){ setTimeout(()=>{ try{ fn(); }catch(_){} }, 200); } };
   if(ok) ok.addEventListener('click', close);
   /* the version line in the Guide footer is the permanent door to the history */
   const gc=document.getElementById('gcredit');
@@ -7691,7 +7696,8 @@ function commitExplorerName(){
   toast('Welcome, '+explorerName, 'The frontier is yours. Your name rides on everything you discover and share.');
   if(_nameInitial){
     _nameInitial=false;
-    if(!tutDone) setTimeout(()=>{ try{ startTutorial(); }catch(_){} }, 500);
+    /* every fresh expedition reads the latest bulletin, THEN trains */
+    if(!tutDone) setTimeout(()=>{ try{ openReleaseNotes('latest', startTutorial); }catch(_){ try{ startTutorial(); }catch(__){} } }, 450);
     else if(!seenGuide) setTimeout(openGuide, 450);
   }
 }

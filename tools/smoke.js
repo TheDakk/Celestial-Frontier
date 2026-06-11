@@ -89,9 +89,14 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.getElementById('nameok'));
     check('name accepted, intro closed', !visible(doc.getElementById('namebox')));
 
-    check('tutorial opens at step 1', await until(() => tutAt(1), 4000, 'step1'));
+    // fresh expedition: latest bulletin FIRST, then training
+    const relFresh = doc.getElementById('relbox');
+    check('fresh expedition: latest bulletin shows before training', await until(() =>
+      visible(relFresh) && relFresh.textContent.includes('The Pathfinder Update') && !relFresh.textContent.includes('The Master Survey'), 4000, 'fresh bulletin'));
+    check('training has not started yet', !visible(doc.getElementById('tutbox')));
+    click(doc.getElementById('relok'));
+    check('bulletin closes into training (step 1)', await until(() => tutAt(1), 4000, 'step1'));
     check('Earth NOT pre-charted during training', doc.getElementById('logcount').textContent === '0');
-    check('no release notes popup on a fresh expedition', !visible(doc.getElementById('relbox')));
 
     // focus lockdown: off-lesson surfaces are inert during training
     click(doc.getElementById('codexbtn'));
@@ -268,6 +273,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     await sleep(700);
     type(sk.doc.getElementById('namein'), 'Skipper', sk.w);
     click2(sk.doc.getElementById('nameok'), sk.w);
+    await until(() => visible(sk.doc.getElementById('relbox')), 4000, 'skip: bulletin');
+    click2(sk.doc.getElementById('relok'), sk.w);
     await until(() => visible(sk.doc.getElementById('tutbox')), 4000, 'skip: tutbox');
     click2(sk.doc.getElementById('tut-skip'), sk.w);
     check('skip shows confirm', sk.doc.getElementById('tutbox').textContent.includes('Skip training?'));
