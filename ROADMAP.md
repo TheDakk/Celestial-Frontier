@@ -21,7 +21,20 @@
 - Tooltip timing (now 650 ms hover / 600 ms long-press) — eager or sluggish?
 - Tutorial pacing & copy on iPhone — any step that drags or confuses?
 - Release-notes bulletin readability on phone; bullet length.
-- Top-center tutorial card vs thumb zone.
+- Desktop training card: widened to 440px / nudged down 20px under the topbar
+  (2026-06-11) — Dakk had a screenshot showing it could be "more centered up
+  top" on PC; screenshot never surfaced on disk, so confirm the new placement
+  matches what he meant.
+- Update pill: first real-world test = the deploy after build 8fe599c (any
+  session left open should show the gold refresh pill).
+
+## Recently fixed (2026-06-11, second batch)
+
+- Training always starts at Sol (reload mid-training used to restore the saved
+  camera anywhere in the universe → "find Earth" unwinnable). `startTutorial`
+  snaps home; `_savedView` restore now requires `tutDone`.
+- Settings (`#setbtn`/`#setpanel`) usable during training lockdown.
+- Skip-training unlock covered by regression checks.
 
 ## Next (v1.2 candidates — "memorable moments" theme, Dakk's stated direction)
 

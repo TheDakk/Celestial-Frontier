@@ -100,6 +100,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('lockdown: Guide blocked during welcome', !visible(doc.getElementById('guidebox')));
     click(doc.getElementById('logbtn'));
     check('lockdown: Atlas blocked during welcome', !visible(doc.getElementById('log')));
+    click(doc.getElementById('setbtn'));
+    check('lockdown: Settings STAYS available during training', doc.getElementById('setpanel').style.display === 'block');
+    click(doc.getElementById('setbtn'));
 
     tutAct();                                                       // welcome -> find-earth
     check('step 2: find Earth', tutAt(2));
@@ -275,8 +278,27 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('skip closes tutorial', !visible(sk.doc.getElementById('tutbox')));
     check('skip: Earth charted in Atlas', sk.doc.getElementById('logcount').textContent === '1');
     check('skip: Compendium empty', sk.doc.getElementById('codexcount').textContent === '0');
+    click2(sk.doc.getElementById('codexbtn'), sk.w);
+    check('skip: everything unlocked (Compendium opens)', visible(sk.doc.getElementById('codex')));
+    click2(sk.doc.getElementById('helpbtn'), sk.w);
+    check('skip: everything unlocked (Guide opens)', visible(sk.doc.getElementById('guidebox')));
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
     sk.w.close();
+
+    // ============ BOOT 4: half-finished training saved in deep space resumes AT SOL ============
+    const ds = boot((win) => {
+      win.localStorage.setItem('cfcc_save_v1', JSON.stringify({
+        v: 4, me: 'Wanderer', guide: 1, tut: 0, rn: '1.1',
+        view: { type: 'galaxy', gal: { x: -3000, y: 2400, size: 60, sp: 3, tilt: 0.4, rot: 1.2, seed: 777777 } },
+      }));
+    });
+    await sleep(1800);
+    const dsH = ds.w.__PROBE_HOOK__;
+    check('deep-space resume: training restarts', visible(ds.doc.getElementById('tutbox')));
+    check('deep-space resume: camera snapped home to Sol system', dsH && dsH.st.mode === 'system' && dsH.st.star && dsH.st.star.seed === 424242,
+      dsH ? (dsH.st.mode + '/' + (dsH.st.star && dsH.st.star.seed)) : 'no hook');
+    check('deep-space resume: boots clean', ds.errors.length === 0, ds.errors.slice(0, 2).join(' | '));
+    ds.w.close();
   } catch (e) {
     check('smoke script crashed', false, e.stack && e.stack.split('\n').slice(0, 2).join(' '));
   }

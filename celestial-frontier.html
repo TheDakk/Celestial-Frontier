@@ -638,6 +638,10 @@
     font:500 12px var(--ui);color:var(--dim);line-height:1.6}
   #tutbox.nudge{animation:tutnudge .38s ease}
   @keyframes tutnudge{0%{transform:translateX(-50%) scale(1)}35%{transform:translateX(-50%) scale(1.045)}100%{transform:translateX(-50%) scale(1)}}
+  @media (min-width:701px){
+    #tutbox{width:min(440px,calc(100vw - 24px));top:calc(var(--topbar-h, 64px) + 20px);
+      padding:15px 19px;font-size:12.5px}
+  }
   #tutbox .tt{font:700 9.5px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:#ffd96a;
     margin-bottom:6px;display:flex;justify-content:space-between}
   #tutbox .tx b{color:var(--ink)}
@@ -7135,8 +7139,11 @@ const RELEASES=[
  ]],
  ['◈ UI Enhancements', [
   'Survey-card and specimen-card buttons explain themselves — including a live danger % on Discover Life.',
-  'The training guidance card sits top-center with a golden spotlight on each target, and menus lock to the current lesson so nothing pulls focus.',
+  'The training guidance card sits top-center with a golden spotlight on each target, and menus lock to the current lesson so nothing pulls focus — Settings stays available throughout.',
   'Tooltip timing tuned for comfort.',
+ ]],
+ ['🐞 Bug Fixes', [
+  'Field training now always begins at Sol — reloading a half-finished training no longer strands you in deep space hunting for Earth.',
  ]],
  ['⚙ Under the Hood', [
   'The engine was reorganized into clean, testable modules — with the universe verified <b>byte-identical</b> to v1.0. Your worlds, creatures and share codes are untouched.',
@@ -7703,7 +7710,7 @@ const tutSpotEl=document.createElement('div'); tutSpotEl.id='tutspot'; document.
 
 /* focus lockdown: while training, only the current lesson's surfaces accept
    input. The card and any open dialog stay usable so nobody gets stuck. */
-const TUT_ALWAYS=['#tutbox','#pickbox','#reveal','#duelbox','#namebox','#deathbox'];
+const TUT_ALWAYS=['#tutbox','#pickbox','#reveal','#duelbox','#namebox','#deathbox','#setbtn','#setpanel'];
 const TUT_GATE_EVTS=['pointerdown','click','touchstart','wheel'];
 function _tutGate(e){
   if(!_tutHook) return;
@@ -7837,6 +7844,13 @@ function tutAbort(){
 function startTutorial(){
   if(_tutHook || tutDone) return;
   seenGuide=true;                       /* training replaces the old primer pop-up */
+  /* training ALWAYS begins at Sol — a resumed half-finished session may have
+     been saved anywhere in the universe, and "find Earth" must be winnable */
+  try{
+    goTo({type:'star',
+      gal:{x:HOME_POS.x, y:HOME_POS.y, size:78, sp:0, tilt:0.62, rot:0.5, seed:HOME_GAL_SEED, home:true},
+      star:{x:SOL_POS.x, y:SOL_POS.y, c:'#fff4d8', s:1.1, seed:SOL_SEED, sol:true}});
+  }catch(_){}
   /* a resumed half-finished training leaves only practice debris — clear it */
   for(const id of [...codex.keys()]) removeFromCodex(id);
   _tutSnap={stats:{...stats}, pstats:{...pstats}, ach:[...unlocked], essence:essence};
@@ -8224,8 +8238,9 @@ updatePrimeBtn(); renderPrime();
 if(location.hash && /cf1-/i.test(location.hash)){
   const h=decodeURIComponent(location.hash.slice(1));
   setTimeout(()=>travelToCode(h), 350);
-} else if(_savedView && _savedView.gal){
-  /* resume where you left off — even after the browser quietly reloaded the tab */
+} else if(_savedView && _savedView.gal && tutDone){
+  /* resume where you left off — even after the browser quietly reloaded the tab.
+     (Unfinished training skips this: startTutorial snaps the view home to Sol.) */
   setTimeout(()=>{ try{ goTo(_savedView); }catch(_){} }, 350);
 } else if(!_hadSave){
   /* a brand-new expedition opens at home, inside our own solar system */
