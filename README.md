@@ -36,11 +36,11 @@ node tools/validate.js     # main.js -> html, then all checks:
                            #   49-probe fingerprint vs the v1.0 baseline
 node tools/smoke.js        # jsdom interaction suite (64 checks incl.
                            #   the full Field Training tutorial)
-node tools/deploy.js       # copy the build into ../thedakk.github.io
-                           #   and push -> live at https://thedakk.github.io/
+node tools/deploy.js       # copy the build into ../celestialfrontier.github.io
+                           #   and push -> live at https://celestialfrontier.github.io/
 ```
 
-**Play it live:** https://thedakk.github.io/ — this repo is the source of
+**Play it live:** https://celestialfrontier.github.io/ — this repo is the source of
 truth; the user-site repo is just the deploy target.
 
 `original/celestial-frontier-v1.0.html` is the pristine pre-refactor build the
