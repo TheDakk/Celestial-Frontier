@@ -32,7 +32,7 @@ find + a deep Compendium). The universe remains open and playable after winning.
 
 | File | Purpose |
 |---|---|
-| `celestial-frontier.html` | **The entire game.** ~7,580 lines, ~420 KB. Single file: `<style>` + markup + one big `<script>` (starts ~line 948, ~6,630 lines of JS organized into SOLID modules — see §3). |
+| `celestial-frontier.html` | **The entire game.** ~8,000 lines, ~462 KB. Single file: `<style>` + markup + one big `<script>` (starts ~line 948, ~7,050 lines of JS organized into SOLID modules — see §3). |
 | `original/celestial-frontier-v1.0.html` | Pristine pre-refactor v1.0 build (source of the determinism baseline). |
 | `tools/` | Verification toolkit (`npm install` once; see `tools/README.md`). |
 | `celestial-frontier-codebase-reference.md` | **This file.** |
@@ -296,7 +296,9 @@ live by `syncTopbarH` + ResizeObserver):
 | `#tray` / `#bell` | **Notifications** tray (z-index 40, above rail; 66vh tall). |
 | `#searchin` / `#searchres` | Search ("Search discoveries or paste code"); results z-index 40. |
 | `#setpanel` / `#setbtn` | **Settings** (see below). |
-| `#guidebox` / `#helpbtn` | **Pathfinder's Primer** (help) + credit footer "Celestial Frontier · v1.0 · Developed by Dakk". |
+| `#guidebox` / `#helpbtn` | **Guide to the Universe** — searchable, browsable manual of every system (see "Guide, tooltips & Field Training" below) + credit footer "Celestial Frontier · v1.1 · Developed by Dakk". |
+| `#tipbubble` (JS-created) | Tooltip bubble for `[data-tip]` elements. |
+| `#tutbox` / `#tutspot` (JS-created) | Field Training instruction card + spotlight ring. |
 | `#namebox` | **Intro / name prompt** ("Celestial Frontier" title, ringed-planet icon, **BEGIN THE EXPEDITION**). |
 | `#duelbox`, `#pickbox`, `#sharebox`, `#reveal`, `#endingbox` | Duel loader, breed/feed picker, share-code, reveal card queue, ending screen. |
 
@@ -317,6 +319,35 @@ Global **Escape** closes the topmost dismissible overlay (reveal → pickbox →
 sharebox → primebox → guidebox → setpanel). All modals also close on backdrop click.
 Outside-tap closes Compendium / Star Atlas / Cosmic Events / Settings.
 
+### Guide, tooltips & Field Training (v1.1)
+- **Guide to the Universe** (`?` button, `@section guide`): a data-driven manual —
+  `GUIDE` holds 9 categories × 26 topics `{id, t, k, body}` with live search
+  (title/keyword/body), category drill-down, topic cross-links via
+  `<span data-gt="id">`, and a deep-link API `openGuideTopic(id)`.
+- **Tooltips** (`@section tooltips`): any `[data-tip]` element shows a one-line
+  bubble — hover/focus on desktop, **long-press on touch** (the long-press
+  suppresses the following tap action). `data-guide="topic"` adds a "Guide ›"
+  deep link. Gated by `tipsOn` (Settings toggle, saved as `tips`).
+- **Field Training** (`@section tutorial`): an 18-step, event-gated tutorial for
+  brand-new expeditions only (`tut` save field; absent = veteran, never shown;
+  reset → training again; reload mid-training restarts it). Game systems report
+  through one funnel — `gameEvent(type, detail)` (no-op unless training is
+  active) — emitted from: survey render, `addToLog`, Atlas/Compendium/tray/
+  character-sheet toggles, `showReveal`, feed/breed/heal picker outcomes,
+  `fightNow` resolution, and `runSearch`. Each step's `when(type, detail)`
+  matcher gates advancement, so the player really performs each action:
+  find & survey Earth → chart it (this is how Earth enters the Atlas now —
+  `startNewGame` pre-charts it only for veterans) → open Atlas → receive a
+  **training cache** (3 random fauna + 3 random flora, `from:'Training Cache'`)
+  → open Compendium → specimen card → feed → breed → training duel → scripted
+  hazard nip → heal → tray → search → character sheet → horizons → finale.
+  **The whole thing is a sandbox**: key rolls are rigged for smoothness
+  (`_tutRig`: guaranteed breed/heal success, safe feed), and the finale
+  restores a snapshot (stats counters, pstats, achievements, essence), removes
+  every species catalogued during training, refills HP, and guarantees Earth
+  charted + home (`_tutEnsureEarth`). Skippable with confirm; `tutAbort()` on
+  game reset.
+
 ---
 
 ## 9. Audio
@@ -331,12 +362,16 @@ pointerdown/touchstart/click/keydown). `playRaritySting(tier)`, `playFailTone()`
 Written by `doSave` (debounced via `queueSave`, 900 ms). Fields (v1):
 
 ```
-v, epoch, view, hp, pstats, fs, snd, fx, shake, notif, notifs, me, essence,
+v, epoch, view, hp, pstats, fs, snd, fx, shake, notif, tips, notifs, me, essence,
 conq, breeds, breedwins, feeds, feedfails, harvests, essenceEarned, names,
 shares, jumps, anomalies, anomKey, events, duels, duelwins, surveyed, gals,
 surf, starK, ptypes, evts, evann, ach, home, prime, frontier, ending, guide,
-codex (array of {g:genome, f:from, w:where})
+tut, codex (array of {g:genome, f:from, w:where})
 ```
+
+v1.1 additions are **optional & backward compatible**: `tips` (tooltips toggle;
+absent = on) and `tut` (Field Training complete; **absent = treated as done**,
+so pre-tutorial saves never see training).
 
 `loadSave` restores all of the above. **Hardened against tampering/corruption** (v1):
 names re-sanitized via `cleanName`, every counter coerced to a finite number, `essence`
@@ -407,6 +442,14 @@ resumes — the jsdom boot covers load-time wiring, not interaction flows.
 - **v1.0 hardening (round 19):** save-restore sanitization/coercion/clamps; Prime Codex
   backdrop close; global **Escape** closes overlays; full security/perf audit.
 - **Final:** intro button → **BEGIN THE EXPEDITION** ("Survey" kept as the game's verb).
+- **SOLID restructure (June 2026):** script reorganized into domain/app modules with
+  a verification toolkit (`tools/`) — behavior identical, 49-probe fingerprint pinned.
+- **v1.1 (June 2026):** **Guide to the Universe** (searchable 26-topic manual replaces
+  the Primer); **tooltip system** (`data-tip`/`data-guide`, Settings toggle, long-press
+  on touch); **Field Training** — an 18-step, event-gated, fully sandboxed new-player
+  tutorial (Earth charting, training cache, feed/breed/duel/heal practice, scripted
+  hazard, cleanup that restores the record). New optional save fields `tips`, `tut`.
+  jsdom smoke suite drives the entire tutorial end-to-end (64 checks).
 
 ---
 
