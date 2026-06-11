@@ -106,7 +106,36 @@ setTimeout(() => {
     click(doc.getElementById('guideok'));
     check('guide closes via Continue', !visible(gbox));
 
-    check('no errors after interactions', errors.length === 0, errors.slice(0, 3).join(' | '));
+    // ---- tooltips (focus path works for both input types; jsdom acts touch-like) ----
+    const tipTarget = doc.getElementById('rank');
+    tipTarget.dispatchEvent(new w.FocusEvent('focusin', { bubbles: true }));
+    setTimeout(() => {
+      const bubble = doc.getElementById('tipbubble');
+      check('tooltip shows on focus', visible(bubble) && bubble.textContent.includes('rank'));
+      const tl = bubble.querySelector('[data-tipgo]');
+      check('tooltip carries Guide link', !!tl);
+      if (tl) click(tl);
+      check('tooltip Guide link deep-opens topic', visible(gbox) && !!doc.querySelector('#guidebody .gtopic h4'));
+      click(doc.getElementById('guideok'));
+
+      // settings toggle turns tooltips off
+      click(doc.getElementById('setbtn'));
+      const tp = doc.getElementById('tipsopt');
+      check('settings shows Tooltips toggle (On)', tp && tp.textContent === 'On');
+      click(tp);
+      check('tooltips toggle to Off', tp.textContent === 'Off');
+      tipTarget.dispatchEvent(new w.FocusEvent('focusin', { bubbles: true }));
+      setTimeout(() => {
+        check('no tooltip while disabled', !visible(doc.getElementById('tipbubble')));
+        click(tp);
+        check('tooltips back On', tp.textContent === 'On');
+
+        check('no errors after interactions', errors.length === 0, errors.slice(0, 3).join(' | '));
+        w.close();
+        process.exit(failed ? 1 : 0);
+      }, 450);
+    }, 450);
+    return; // async tail above owns process exit
   } catch (e) {
     check('smoke script crashed', false, e.stack && e.stack.split('\n')[0]);
   }
