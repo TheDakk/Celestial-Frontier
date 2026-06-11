@@ -587,6 +587,14 @@
   #guidebody .gnores{padding:14px;text-align:center;font-size:11px;color:var(--faint)}
   #guidebody .gsee{margin-top:10px;font-size:10.5px;color:var(--faint)}
   #guidebody .gsee span{color:var(--plasma);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+  #tipbubble{position:fixed;z-index:70;max-width:248px;padding:8px 10px;border-radius:10px;display:none;
+    background:rgba(10,12,22,0.97);border:1px solid rgba(143,180,255,0.4);box-shadow:0 10px 30px rgba(0,0,0,0.6);
+    font:500 10.5px var(--ui);line-height:1.55;color:var(--dim);pointer-events:auto}
+  #tipbubble b{color:var(--ink)}
+  #tipbubble .tiplink{display:inline-block;margin-top:5px;padding:2px 8px;cursor:pointer;border-radius:7px;
+    font:600 9.5px var(--ui);letter-spacing:.05em;color:var(--plasma);
+    background:rgba(143,180,255,0.1);border:1px solid rgba(143,180,255,0.3)}
+  #tipbubble .tiplink:hover{color:var(--ink);border-color:rgba(143,180,255,0.55)}
   #guideok{width:100%;margin-top:16px;padding:12px 0;font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;
     color:#1a1206;cursor:pointer;border:1px solid rgba(255,220,150,0.9);border-radius:12px;
     background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a);box-shadow:0 0 18px rgba(240,200,110,0.4)}
@@ -787,20 +795,20 @@
     <div class="txt"><h1>Celestial Frontier</h1><p>Cosmic Codex</p></div>
   </div>
   <div id="hud-center">
-    <div id="rank" role="button" tabindex="0" title="Your explorer rank — tap for expedition stats"></div>
+    <div id="rank" role="button" tabindex="0" data-tip="Your rank and expedition score — tap for your character sheet." data-guide="rank"></div>
     <div id="trail"></div>
-    <div id="hpwrap" title="Your hitpoints — hostile worlds bite. Click ❤ to heal with flora from your Compendium.">
+    <div id="hpwrap" data-tip="Your hitpoints — hostile worlds bite. Max HP = Vitality × 2. Tap the ❤ to heal with flora." data-guide="hp">
       <span id="hpheart" role="button" tabindex="0" aria-label="Heal with flora from your Compendium">❤</span><div id="hpbar"><i id="hpfill"></i></div><span id="hptext"></span>
     </div>
   </div>
   <div id="hud-right">
-    <div id="pcdxbtn" role="button" tabindex="0" title="The Prime Codex — your path to first Celestial Pathfinder"><span class="dot pc"></span><span class="lbl">Prime Codex</span> <span class="n" id="pcdxcount">0/9</span></div>
+    <div id="pcdxbtn" role="button" tabindex="0" data-tip="The Prime Codex — claim all nine Signatures to reach the Celestial Frontier." data-guide="signatures"><span class="dot pc"></span><span class="lbl">Prime Codex</span> <span class="n" id="pcdxcount">0/9</span></div>
     <div id="searchwrap">
       <input id="searchin" type="text" placeholder="Search discoveries or paste code" autocomplete="off" spellcheck="false">
       <div id="searchres"></div>
     </div>
     <div id="bellwrap">
-      <div id="bell" role="button" tabindex="0" title="Notifications">🔔<span id="bellct"></span></div>
+      <div id="bell" role="button" tabindex="0" data-tip="Every toast lands here too — nothing is missed." data-guide="settings">🔔<span id="bellct"></span></div>
       <div id="tray">
         <div class="thead"><span>Notifications</span>
           <span class="tacts"><span id="trayread">mark all read</span> · <span id="trayclear">clear all</span></span></div>
@@ -820,7 +828,7 @@
   <button id="deathok" type="button">Begin a new expedition</button>
 </div></div>
 
-<div id="setbtn" role="button" tabindex="0" title="Settings">⚙</div>
+<div id="setbtn" role="button" tabindex="0" data-tip="Settings — text size, sound, effects, tooltips, reset.">⚙</div>
 <div id="setpanel">
   <div class="shead">Settings</div>
   <div class="srow2"><span>Text size</span>
@@ -833,6 +841,8 @@
     <span class="opts"><span id="shakeopt" class="fsopt on">On</span></span></div>
   <div class="srow2"><span>Notifications</span>
     <span class="opts"><span id="notifopt" class="fsopt on">On</span></span></div>
+  <div class="srow2"><span>Tooltips</span>
+    <span class="opts"><span id="tipsopt" class="fsopt on">On</span></span></div>
   <div class="sdiv"></div>
   <button id="resetbtn" type="button">↺ Reset Game</button>
   <div id="resetconfirm">
@@ -841,10 +851,10 @@
   </div>
 </div>
 
-<div id="dailybtn" role="button" tabindex="0" title="A random destination, somewhere out there — a new beacon every 5 minutes"><span class="dot"></span>Traveler’s Beacon</div>
+<div id="dailybtn" role="button" tabindex="0" data-tip="A fresh destination every 5 minutes — the same beacon for every explorer." data-guide="beacon"><span class="dot"></span>Traveler’s Beacon</div>
 <div id="stats"></div>
 <div id="toast"></div>
-<div id="eventsbtn" role="button" tabindex="0" title="Cosmic events — the universe is alive on every timescale, the same for all explorers"><span class="dot"></span>Cosmic Events</div>
+<div id="eventsbtn" role="button" tabindex="0" data-tip="Live cosmic events — every explorer sees the same sky at the same moment." data-guide="events"><span class="dot"></span>Cosmic Events</div>
 <div id="events"></div>
 
 <div id="pickbox"><div class="card">
@@ -917,9 +927,9 @@
   <p class="note">Same universe on every device — anyone who opens this link lands on this exact world.</p>
 </div></div>
 
-<div id="logbtn" role="button" tabindex="0"><span class="dot"></span>Star Atlas <span class="n" id="logcount">0</span></div>
+<div id="logbtn" role="button" tabindex="0" data-tip="Your bookmarked places — tap any entry to travel there." data-guide="atlas"><span class="dot"></span>Star Atlas <span class="n" id="logcount">0</span></div>
 <div id="log"></div>
-<div id="codexbtn" role="button" tabindex="0"><span class="dot bio"></span>Compendium <span class="n" id="codexcount">0</span></div>
+<div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="dot bio"></span>Compendium <span class="n" id="codexcount">0</span></div>
 <div id="codex"></div>
 <div id="primebox"><div class="card">
   <button id="primeclose" class="pxclose" type="button">&times;</button>
@@ -943,7 +953,7 @@
     <button id="ending-continue" type="button">Continue exploring the infinite</button>
   </div>
 </div></div>
-<div id="helpbtn" role="button" tabindex="0" title="Guide to the Universe — every system explained">?</div>
+<div id="helpbtn" role="button" tabindex="0" data-tip="Guide to the Universe — every system explained.">?</div>
 <div id="guidebox"><div class="card">
   <div class="gh">🧭 Guide to the Universe</div>
   <div class="gsub">Every system explained — search anything, or browse by topic.</div>
@@ -4718,7 +4728,7 @@ function renderPanel(p, isLocked){
       /* collapsed: life is detected, not yet catalogued — scanning is a deliberate act */
       const dz=dangerOf(d);
       const dzTxt=dz.pct<=0 ? '' : ' · <b style="color:'+(dz.pct<0.18?'#ffd96a':'#ff8a72')+'">⚠ '+Math.round(dz.pct*100)+'% danger</b>';
-      rows+='<div class="row sp scanlife" data-scanlife="1" title="'+(dz.pct>0
+      rows+='<div class="row sp scanlife" data-scanlife="1" data-guide="discover" data-tip="'+(dz.pct>0
         ? 'Hostile wildlife may wound you for '+dz.dmg+' HP — conquer the world first to discover life safely'
         : 'Discover &amp; catalogue this world\u2019s species')+'">'+
         '<span class="thumbmini" style="background:rgba(127,230,160,0.14)"></span>'+
@@ -4754,22 +4764,22 @@ function renderPanel(p, isLocked){
     if(d.planetSeed!=null && d.species && d.species.some(g=>g.kingdom==='fauna')){
       const c=conquered.get(d.planetSeed);
       if(!c){
-        conqBtn='<button class="act" data-act="conq" title="Choose a champion — you or a codex creature — and battle this world\u2019s apex native">⚔ Conquer Planet</button>';
+        conqBtn='<button class="act" data-act="conq" data-guide="conquest" data-tip="Choose a champion — you or a codex creature — and battle this world\u2019s apex native">⚔ Conquer Planet</button>';
       } else {
         const ready=Date.now()-c.t>=HARVEST_CD;
-        conqBtn='<button class="act'+(ready?'':' in')+'" data-act="harv">'+
+        conqBtn='<button class="act'+(ready?'':' in')+'" data-act="harv" data-guide="harvest" data-tip="Settled worlds yield ☄ Stardust once an hour — and their bioscans are always safe.">'+
           (ready?'⛏ Harvest ☄ Stardust — ready':'🏴 Settled — replenishing')+'</button>';
       }
     }
     const atlasRow =
       '<div class="atlasrow">'+
-        '<button class="act'+(inLog?' in':'')+'" data-act="'+(inLog?'del':'add')+'" title="'+(inLog?'Remove from your Star Atlas':'Bookmark this place in your Star Atlas')+'">'+
+        '<button class="act'+(inLog?' in':'')+'" data-act="'+(inLog?'del':'add')+'" data-guide="atlas" data-tip="'+(inLog?'Remove from your Star Atlas.':'Bookmark this place — travel back anytime from the Star Atlas.')+'">'+
           (inLog?'\u2713 In Star Atlas':'+ Add to Star Atlas')+'</button>'+
-        '<button class="aico lfav'+(_favOn?' on':'')+'" data-act="fav" title="'+(_favOn?'Remove favorite':'Favorite \u2014 also saves to your Star Atlas')+'">'+(_favOn?'\u2605':'\u2606')+'</button>'+
-        '<button class="aico lhome'+(_homeOn?' on':'')+'" data-act="home" title="'+(_homeOn?'Clear home':'Set as home \u2014 also saves to your Star Atlas')+'">\u2302</button>'+
+        '<button class="aico lfav'+(_favOn?' on':'')+'" data-act="fav" data-guide="atlas" data-tip="'+(_favOn?'Remove favorite':'Favorite \u2014 also saves to your Star Atlas')+'">'+(_favOn?'\u2605':'\u2606')+'</button>'+
+        '<button class="aico lhome'+(_homeOn?' on':'')+'" data-act="home" data-guide="atlas" data-tip="'+(_homeOn?'Clear home':'Set as home \u2014 also saves to your Star Atlas')+'">\u2302</button>'+
       '</div>';
     const btn = atlasRow + conqBtn +
-      (d.where ? '<button class="act" data-act="share" title="Copy a code — friends land on this exact world">⇪ Share this discovery</button>' : '');
+      (d.where ? '<button class="act" data-act="share" data-guide="codes" data-tip="Copy a code — friends land on this exact world">⇪ Share this discovery</button>' : '');
     panelEl.innerHTML =
       '<div class="head">'+thumb+'<div class="htxt"><h3>'+d.title+'</h3><div class="sub">'+d.sub+'</div></div></div>'+
       '<div class="body">'+rows+btn+
@@ -5144,11 +5154,11 @@ function showReveal(entry, isHybrid){
     }
     if(acts){
       acts.style.display='flex';
-      acts.innerHTML='<button id="rev-share" type="button">⇪ Code</button>'+
-        '<button id="rev-duel" type="button">⚔ Duel</button>'+
-        (codex.has(entry.id) ? '<button id="rev-breed" type="button">🧬 Breed</button>' : '')+
-        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button">🌿 Feed</button>' : '')+
-        (codex.has(entry.id) ? '<button id="rev-rename" type="button">✎ Rename</button>' : '');
+      acts.innerHTML='<button id="rev-share" type="button" data-guide="codes" data-tip="Copy a CFB code — the identical creature, stats and all, on any device.">⇪ Code</button>'+
+        '<button id="rev-duel" type="button" data-guide="duels" data-tip="A friendly duel — sport only, nothing is lost.">⚔ Duel</button>'+
+        (codex.has(entry.id) ? '<button id="rev-breed" type="button" data-guide="breeding" data-tip="Forge a new bloodline — both parents are consumed, win or lose.">🧬 Breed</button>' : '')+
+        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A good meal grows its bloodline permanently — a toxic one kills it.">🌿 Feed</button>' : '')+
+        (codex.has(entry.id) ? '<button id="rev-rename" type="button" data-tip="Your name rides inside its creature code too.">✎ Rename</button>' : '');
     }
   } else {
     if(stEl) stEl.innerHTML='';
@@ -5687,7 +5697,7 @@ function doSave(){
     localStorage.setItem(SAVE_KEY, JSON.stringify({
       v:4, epoch:COSMIC_EPOCH,
       view:whereOfView(),
-      hp:hp, pstats:pstats, fs:fsMode, snd:sndOn?1:0, fx:fxOn?1:0, shake:shakeOn?1:0, notif:notifOn?1:0,
+      hp:hp, pstats:pstats, fs:fsMode, snd:sndOn?1:0, fx:fxOn?1:0, shake:shakeOn?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
       notifs:notifications.slice(0,50),
       me:explorerName,
       essence:essence,
@@ -5749,6 +5759,7 @@ function loadSave(){
     fxOn=data.fx!==0;
     shakeOn=data.shake!==0;
     notifOn=data.notif!==0;
+    tipsOn=data.tips!==0;
     for(const n of (data.notifs||[])){ if(n && n.tt!=null && notifications.length<60) notifications.push(n); }
     for(const n of notifications){ if(n.id>=_notifSeq) _notifSeq=n.id+1; }
     renderBell();
@@ -6931,6 +6942,82 @@ function openGuideTopic(id){
   if(hb){ hb.addEventListener('click', openGuide);
     hb.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openGuide(); } }); }
 })();
+
+/* ----------------------------------------------------------------
+   @section tooltips [app] — short hints on any [data-tip] element; hover/focus on
+   desktop, long-press on touch. data-guide="topic" adds a Guide › deep link.
+   Toggled in Settings (tipsOn, persisted). Full explanations live in the Guide.
+   Owns: tipsOn, tipEl, showTip, hideTip
+   ---------------------------------------------------------------- */
+let tipsOn=true;
+const tipEl=document.createElement('div'); tipEl.id='tipbubble'; document.body.appendChild(tipEl);
+let _tipFor=null, _tipHoverT=0, _tipPressT=0, _tipSuppressClick=false;
+function showTip(target){
+  if(!tipsOn || !target) return;
+  const txt=target.dataset.tip; if(!txt) return;
+  const gt=target.dataset.guide;
+  tipEl.innerHTML=txt.replace(/[<>]/g,'')+(gt&&_guideTopic(gt)?'<br><span class="tiplink" data-tipgo="'+gt+'">Guide ›</span>':'');
+  tipEl.style.display='block';
+  const r=target.getBoundingClientRect();
+  const bw=tipEl.offsetWidth, bh=tipEl.offsetHeight;
+  let x=clamp(r.left+r.width/2-bw/2, 8, W-bw-8);
+  let y=r.top-bh-8;
+  if(y<8) y=Math.min(H-bh-8, r.bottom+8);
+  tipEl.style.left=Math.round(x)+'px'; tipEl.style.top=Math.round(y)+'px';
+  _tipFor=target;
+}
+function hideTip(){ tipEl.style.display='none'; _tipFor=null; clearTimeout(_tipHoverT); clearTimeout(_tipPressT); }
+tipEl.addEventListener('click', e=>{
+  const go=e.target.closest('[data-tipgo]');
+  if(go){ const id=go.dataset.tipgo; hideTip(); openGuideTopic(id); }
+});
+if(!TOUCH){
+  /* desktop: hover & keyboard focus */
+  document.addEventListener('mouseover', e=>{
+    const t=e.target.closest ? e.target.closest('[data-tip]') : null;
+    if(!t){ if(_tipFor && !(e.target.closest&&e.target.closest('#tipbubble'))) hideTip(); return; }
+    if(t===_tipFor) return;
+    clearTimeout(_tipHoverT);
+    _tipHoverT=setTimeout(()=>showTip(t), 320);
+  });
+  document.addEventListener('mouseout', e=>{
+    const t=e.target.closest ? e.target.closest('[data-tip]') : null;
+    if(!t) return;
+    const to=e.relatedTarget;
+    if(to && to.closest && (to.closest('#tipbubble') || to.closest('[data-tip]')===t)) return;
+    clearTimeout(_tipHoverT);
+    if(_tipFor===t) hideTip(); else clearTimeout(_tipHoverT);
+  });
+} else {
+  /* touch: long-press to inspect, tap to act */
+  let _px=0, _py=0, _pTarget=null;
+  document.addEventListener('pointerdown', e=>{
+    if(_tipFor && !(e.target.closest && e.target.closest('#tipbubble'))) hideTip();
+    const t=e.target.closest ? e.target.closest('[data-tip]') : null;
+    if(!t) return;
+    _pTarget=t; _px=e.clientX; _py=e.clientY;
+    clearTimeout(_tipPressT);
+    _tipPressT=setTimeout(()=>{ showTip(t); _tipSuppressClick=true; }, 450);
+  }, true);
+  document.addEventListener('pointermove', e=>{
+    if(_pTarget && Math.hypot(e.clientX-_px, e.clientY-_py)>12){ clearTimeout(_tipPressT); _pTarget=null; }
+  }, true);
+  document.addEventListener('pointerup', ()=>{ clearTimeout(_tipPressT); _pTarget=null; }, true);
+  document.addEventListener('pointercancel', ()=>{ clearTimeout(_tipPressT); _pTarget=null; }, true);
+  /* a long-press that showed the tip must not also fire the tap action */
+  document.addEventListener('click', e=>{
+    if(_tipSuppressClick){ _tipSuppressClick=false;
+      if(!(e.target.closest && e.target.closest('#tipbubble'))){ e.stopPropagation(); e.preventDefault(); } }
+  }, true);
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Escape' && _tipFor) hideTip(); }, true);
+window.addEventListener('scroll', hideTip, true);
+document.addEventListener('focusin', e=>{
+  const t=e.target.closest ? e.target.closest('[data-tip]') : null;
+  if(t) showTip(t);
+});
+document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
+
 /* ---- Prime Codex wiring ---- */
 (function(){
   const pb=document.getElementById('primebox'), eb=document.getElementById('endingbox');
@@ -7352,6 +7439,8 @@ document.getElementById('setbtn').addEventListener('click', ()=>{
   if(sho){ sho.classList.toggle('on', shakeOn); sho.textContent=shakeOn?'On':'Off'; }
   const no=document.getElementById('notifopt');
   if(no){ no.classList.toggle('on', notifOn); no.textContent=notifOn?'On':'Off'; }
+  const tp=document.getElementById('tipsopt');
+  if(tp){ tp.classList.toggle('on', tipsOn); tp.textContent=tipsOn?'On':'Off'; }
 });
 setPanel.addEventListener('click', e=>{
   const fo=e.target.closest('.fsopt[data-fs]');
@@ -7381,6 +7470,14 @@ setPanel.addEventListener('click', e=>{
     notifOn=!notifOn;
     e.target.classList.toggle('on', notifOn);
     e.target.textContent=notifOn?'On':'Off';
+    queueSave();
+    return;
+  }
+  if(e.target && e.target.id==='tipsopt'){
+    tipsOn=!tipsOn;
+    if(!tipsOn) hideTip();
+    e.target.classList.toggle('on', tipsOn);
+    e.target.textContent=tipsOn?'On':'Off';
     queueSave();
     return;
   }
