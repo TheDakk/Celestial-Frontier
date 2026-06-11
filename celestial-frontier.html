@@ -278,6 +278,27 @@
   @keyframes updpulse{0%,100%{box-shadow:0 8px 30px rgba(0,0,0,0.55), 0 0 14px rgba(240,200,110,0.35)}
     50%{box-shadow:0 8px 30px rgba(0,0,0,0.55), 0 0 30px rgba(240,200,110,0.7)}}
 
+  /* ---- cinematic celebrations: the universe applauds ---- */
+  #cinema{position:fixed;inset:0;z-index:46;display:flex;align-items:center;justify-content:center;
+    pointer-events:none;opacity:0;transition:opacity .5s ease;
+    background:radial-gradient(90% 70% at 50% 45%, rgba(6,7,14,0.25), rgba(4,5,10,0.84))}
+  #cinema.on{opacity:1;pointer-events:auto;cursor:pointer}
+  #cinema .rays{position:absolute;left:50%;top:45%;width:240vmax;height:240vmax;transform:translate(-50%,-50%);
+    background:repeating-conic-gradient(from 0deg, transparent 0deg 9deg, var(--cine,#ffd96a) 9deg 10.6deg);
+    opacity:0.10;filter:blur(2px);animation:cinespin 26s linear infinite;
+    -webkit-mask-image:radial-gradient(circle, #000 0%, transparent 62%);
+    mask-image:radial-gradient(circle, #000 0%, transparent 62%)}
+  @keyframes cinespin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+  #cinema .core{position:relative;text-align:center;padding:0 22px;animation:cinein .7s cubic-bezier(.16,1,.3,1)}
+  @keyframes cinein{from{transform:scale(.78);opacity:0;letter-spacing:.28em}to{transform:none;opacity:1}}
+  #cinema .kick{font:700 11px var(--ui);letter-spacing:.34em;text-transform:uppercase;color:var(--cine,#ffd96a);
+    text-shadow:0 0 18px var(--cine,#ffd96a);margin-bottom:10px}
+  #cinema .big{font:700 clamp(26px,6vw,44px) var(--ui);letter-spacing:.02em;
+    background:linear-gradient(180deg,#ffffff, var(--cine,#f4d79e));-webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 0 26px var(--cine,#f0c86e))}
+  #cinema .sub{margin-top:10px;font:500 12.5px var(--ui);color:var(--dim);letter-spacing:.04em}
+  #cinema .hint{margin-top:26px;font:600 9px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+
   /* ---- share dialog: the link is always visible & selectable, copy is a bonus ---- */
   #sharebox{position:fixed;inset:0;z-index:34;display:none;align-items:center;justify-content:center;
     background:rgba(4,5,10,0.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
@@ -5120,6 +5141,9 @@ function autoScanWorld(d){
   if(top && top.grade){
     playRaritySting(top.grade.tier);
     if(top.grade.tier>=4) fxBurst([top.grade.hex,'#ffffff'], 24+top.grade.tier*6);
+    if(top.grade.tier>=5) cinematic({kicker:'✦ Rare Find', title:top.name,
+      sub:top.grade.name+(top.grade.star?' '+top.grade.star:'')+' · '+top.kind+' — first ever catalogued',
+      hex:top.grade.hex, tier:top.grade.tier});
   }
   let _sdB=0;
   for(const e of newOnes) if(e.grade && e.grade.tier>=5) _sdB+=(e.grade.tier-3);
@@ -5151,6 +5175,9 @@ function discoverSpecies(g, from){
   if(fresh.grade){
     playRaritySting(fresh.grade.tier);
     if(fresh.grade.tier>=4) fxBurst([fresh.grade.hex,'#ffffff'], 24+fresh.grade.tier*6);
+    if(fresh.grade.tier>=5) cinematic({kicker:'✦ Rare Find', title:fresh.name,
+      sub:fresh.grade.name+(fresh.grade.star?' '+fresh.grade.star:'')+' · '+fresh.kind+' — first ever catalogued',
+      hex:fresh.grade.hex, tier:fresh.grade.tier});
     if(fresh.grade.tier>=5){
       const _b=fresh.grade.tier-3;
       essence+=_b; stats.essenceEarned=(stats.essenceEarned||0)+_b;
@@ -5245,8 +5272,11 @@ function showReveal(entry, isHybrid){
       Math.min(100,Math.round(vals[i]/110*100))+'%;background:'+STAT_HUES[i]+'"></i></div><span class="n">'+vals[i]+'</span></div>').join('')+
       '<div class="sb"><span class="k" style="color:'+(gr?gr.hex:'')+'">Power</span><div class="bar"><i style="width:'+
       Math.min(100,Math.round(S.total/420*100))+'%;background:'+(gr?gr.hex:'#9fb6d6')+'"></i></div><span class="n">'+S.total+'</span></div>'+
-      '<div class="abil">❤ <b>'+(S.vit*3)+' HP</b> in battle · Condition: <b style="color:#7fe6a0">Healthy</b> — '+
-      'wounds never linger; every duel begins at full strength. But a champion that falls in conquest is <b>lost forever</b>.</div>';
+      (function(){ const cc=creatureCondition(entry.genome);
+        return '<div class="abil">❤ <b>'+(S.vit*3)+' HP</b> in battle · Condition: <b style="color:'+cc.col+'">'+cc.label+'</b> — '+
+          (cc.h>0
+            ? 'wounded ('+Math.round(cc.h*100)+'% hurt) and fighting below its strength. <b>Feed it flora it ♥ loves to mend.</b>'
+            : 'friendly duels are sport, but conquest leaves scars and a fallen champion is <b>lost forever</b>.')+'</div>'; })();
     if(entry.kind==='Flora'){
       const _fs=floraStat(entry.genome), _m=STAT_META[_fs]||{name:'a stat',col:'#7fe6a0'};
       stEl.innerHTML+='<div class="abil"><span style="color:'+_m.col+'">🌿 Nourishes <b>'+_m.name+'</b></span> — eat it, or feed it to a beast that loves it, to grow that stat'+(entry.grade?' (+'+(1+entry.grade.tier)+')':'')+'.'+((entry.genome.brood)?'<br>♞ Bred line: gen '+(entry.genome.gen||0):'')+'</div>';
@@ -5263,7 +5293,7 @@ function showReveal(entry, isHybrid){
       acts.innerHTML='<button id="rev-share" type="button" data-guide="codes" data-tip="Copy a CFB code — the identical creature, stats and all, on any device.">⇪ Code</button>'+
         '<button id="rev-duel" type="button" data-guide="duels" data-tip="A friendly duel — sport only, nothing is lost.">⚔ Duel</button>'+
         (codex.has(entry.id) ? '<button id="rev-breed" type="button" data-guide="breeding" data-tip="Forge a new bloodline — both parents are consumed, win or lose.">🧬 Breed</button>' : '')+
-        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A good meal grows its bloodline permanently — a toxic one kills it.">🌿 Feed</button>' : '')+
+        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A welcome meal grows its bloodline and mends its wounds — a toxic one kills.">🌿 Feed</button>' : '')+
         (codex.has(entry.id) ? '<button id="rev-rename" type="button" data-tip="Your name rides inside its creature code too.">✎ Rename</button>' : '');
     }
   } else {
@@ -5325,8 +5355,11 @@ function renderCodex(){
     const sub=[sp.biome, sp.role].filter(Boolean).join(' · ');
     const mods=(sp.mods||[]).slice(0,4);
     const modHtml=mods.length?'<span class="mods">'+mods.map(m=>'<em>'+m+'</em>').join('')+'</span>':'';
+    const ccx=creatureCondition(sp.genome);
     return '<div class="sp" data-pick="'+sp.id+'" style="'+bstyle+'"><img class="art" src="'+sp.art+'" alt="">'+
-      '<div class="info"><div class="nm">'+(REALM_ICON[realm]||KIND_ICON[sp.kind]||'')+' '+sp.name+' '+rar+'</div><div class="ds">'+sp.desc+
+      '<div class="info"><div class="nm">'+(REALM_ICON[realm]||KIND_ICON[sp.kind]||'')+' '+sp.name+' '+rar+
+      (ccx.h>0?' <span style="color:'+ccx.col+';font-size:9px">● '+ccx.label+'</span>':'')+
+      '</div><div class="ds">'+sp.desc+
       (sp.diet?' · '+sp.diet:'')+'</div>'+
       (sub?'<div class="ds" style="color:var(--faint)">'+sub+'</div>':'')+
       modHtml+
@@ -6343,6 +6376,12 @@ function battleStats(g){
   const bonus=(g.brood||0)*22 + (g.fed||0)*10;
   if(bonus){ for(let i=0;i<5;i++) s[i]+=Math.round(bonus/5); }
   if(g._mult && g._mult>1){ for(let i=0;i<5;i++) s[i]=Math.round(s[i]*g._mult); }
+  /* persistent wounds bite: the injured fight below their strength
+     (guarded so unhurt genomes compute byte-identically to v1.0) */
+  if(g.hurt && g.hurt>0){
+    const w=1-Math.min(0.85, +g.hurt)*0.55;
+    for(let i=0;i<5;i++) s[i]=Math.max(4, Math.round(s[i]*w));
+  }
   return {vit:s[0], fer:s[1], res:s[2], agi:s[3], ins:s[4], tier,
     total:s[0]+s[1]+s[2]+s[3]+s[4], hex:(d.grade?d.grade.hex:'#9fb6d6'), name:d.name,
     ab:abilityOf(g)};
@@ -6365,6 +6404,7 @@ function normGenome(g){
   o.fed=Math.min(200, Number.isFinite(+o.fed)?Math.abs((+o.fed)|0):0);
   o.lumin=!!o.lumin;
   delete o.parents;
+  delete o.hurt;          /* imported challengers arrive fresh — injuries don't travel in codes */
   return o;
 }
 function decodeCreature(code){
@@ -6644,9 +6684,50 @@ return Object.freeze({fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud
 })();
 const {fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud, fxShake, FX_RED}=Fx;
 /* @end Fx */
+
+/* ----------------------------------------------------------------
+   @section cinematics [app] — full-screen celebrations for the moments that
+   matter: rare finds, newborn bloodlines, settled worlds, witnessed events.
+   Tier-scaled: the rarer the moment, the longer and louder the show.
+   Queued (never stacks), tap-to-dismiss, gated by the Effects setting.
+   Owns: cinematic
+   ---------------------------------------------------------------- */
+const _cineQ=[];
+let _cineOn=false, _cineEl=null;
+function _cineBox(){
+  if(_cineEl) return _cineEl;
+  _cineEl=document.createElement('div'); _cineEl.id='cinema';
+  document.body.appendChild(_cineEl);
+  _cineEl.addEventListener('click', ()=>{ _cineEl.classList.remove('on'); });
+  return _cineEl;
+}
+function cinematic(o){   /* {kicker, title, sub, hex, tier} */
+  if(!fxOn || !o || !o.title) return;
+  _cineQ.push(o);
+  if(!_cineOn) _cineNext();
+}
+function _cineNext(){
+  const o=_cineQ.shift();
+  if(!o){ _cineOn=false; return; }
+  _cineOn=true;
+  const el=_cineBox();
+  const hex=o.hex||'#ffd96a', tier=Math.max(0, Math.min(8, o.tier|0));
+  el.style.setProperty('--cine', hex);
+  el.innerHTML='<div class="rays"></div><div class="core">'+
+    '<div class="kick">'+(o.kicker||'✦')+'</div>'+
+    '<div class="big">'+o.title+'</div>'+
+    (o.sub?'<div class="sub">'+o.sub+'</div>':'')+
+    '<div class="hint">tap to continue</div></div>';
+  el.classList.add('on');
+  try{ fxBurst([hex,'#ffffff','#ffd96a'], 26+tier*12); }catch(_){}
+  if(tier>=6){ try{ fxShake(); setTimeout(()=>fxBurst([hex,'#ffffff'], 40), 600); }catch(_){} }
+  const hold=2300+tier*420;
+  setTimeout(()=>{ el.classList.remove('on'); setTimeout(_cineNext, 500); }, hold);
+}
+
 /* ----------------------------------------------------------------
    @section husbandry [app] — breeding & feeding rules (both parents consumed; feeding is fauna-only)
-   Owns: removeFromCodex, breedPair, faunaTastes, FEED_EVENTS, feedPair
+   Owns: removeFromCodex, breedPair, faunaTastes, FEED_EVENTS, feedPair, creatureCondition
    ---------------------------------------------------------------- */
 function removeFromCodex(id){
   codex.delete(id);
@@ -6673,6 +6754,14 @@ function faunaTastes(g){
   const ks=STAT_KEYS.slice();
   for(let i=ks.length-1;i>0;i--){ const j=(r()*(i+1))|0; const t=ks[i]; ks[i]=ks[j]; ks[j]=t; }
   return {likes:[ks[0],ks[1]], dislikes:[ks[4]]};
+}
+/* how badly a creature is wounded (genome.hurt 0..0.85, persisted in the save) */
+function creatureCondition(g){
+  const h=(g && +g.hurt)||0;
+  if(h<0.05) return {h:0,  label:'Healthy',  col:'#7fe6a0'};
+  if(h<0.3)  return {h:h, label:'Bruised',  col:'#ffd96a'};
+  if(h<0.6)  return {h:h, label:'Injured',  col:'#ff8a72'};
+  return {h:h, label:'Critical', col:'#ff5a4a'};
 }
 const FEED_EVENTS={
   loved:[
@@ -6713,7 +6802,20 @@ function feedPair(faunaEntry, floraEntry, roll){
   let delta=ev.fed + (pref==='loved' && tF>=4 ? 1 : 0);
   faunaEntry.genome.fed=Math.max(0, before+delta);
   delta=faunaEntry.genome.fed-before;
-  return {ok:true, pois, pref, ftype, ev, delta, gut:S.ab.gutsy};
+  /* meals are medicine: welcome food mends old wounds (loved mends most);
+     a resented meal that goes badly can deal a new one */
+  const g=faunaEntry.genome;
+  const h0=(+g.hurt)||0;
+  let mend=0, wound=0;
+  if(pref==='loved') mend=0.22+tF*0.05;
+  else if(pref==='neutral') mend=0.1;
+  else if(ev.fed<0) wound=0.12+tF*0.05;
+  if(mend>0 && h0>0) g.hurt=Math.max(0, h0-mend);
+  if(wound>0) g.hurt=Math.min(0.85, h0+wound);
+  if(g.hurt===0) delete g.hurt;
+  const h1=(+g.hurt)||0;
+  return {ok:true, pois, pref, ftype, ev, delta, gut:S.ab.gutsy,
+    mended:h1<h0, wounded:h1>h0, cond:creatureCondition(g)};
 }
 /* ---- the picker dialog drives both flows ---- */
 /* ----------------------------------------------------------------
@@ -6798,6 +6900,9 @@ pickList.addEventListener('click', e=>{
     gameEvent('bred', {ok:!!r.ok});
     if(r.ok){
       playRaritySting(Math.min(7, (r.born&&r.born.grade?r.born.grade.tier:3)+1)); playFanfare(); fxBurst(FX_GREEN.concat(FX_PURP),46);
+      if(r.born) cinematic({kicker:'🧬 A New Bloodline', title:r.born.name,
+        sub:_pickBase.name+' × '+other.name+' — generation '+(r.born.gen||1),
+        hex:(r.born.grade?r.born.grade.hex:'#7fe6a0'), tier:Math.max(2,(r.born.grade?r.born.grade.tier:0))});
       resEl.innerHTML='\ud83c\udf89 <span style="color:#7fe6a0">A new bloodline is born!</span> '+(r.born?r.born.name:'A new creature')+' joins your Compendium with boosted stats. Both parents gave themselves to the union.';
       stats.breedwins=(stats.breedwins||0)+1;
       pickList.innerHTML='';
@@ -6818,7 +6923,9 @@ pickList.addEventListener('click', e=>{
       if(r.pref==='loved'){ playFanfare(); fxBurst(FX_GREEN,20); } else if(r.pref==='disliked') playFailTone(); else playRaritySting(3);
       const dtxt = r.delta>0?'<span style="color:#7fe6a0">+'+r.delta+' bloodline</span>':(r.delta<0?'<span style="color:#ff8a72">'+r.delta+' bloodline</span>':'<span style="color:#cfd6f2">no change</span>');
       const prefTxt = r.pref==='loved'?'It <b style="color:#7fe6a0">loves</b> '+STAT_META[r.ftype].name+'-rich flora':(r.pref==='disliked'?'It <b style="color:#ffd96a">dislikes</b> '+STAT_META[r.ftype].name+'-rich flora':'It is indifferent to '+STAT_META[r.ftype].name+'-rich flora');
-      resEl.innerHTML='\ud83c\udf7d <span style="color:'+pc+'">'+_pickBase.name+' '+r.ev.d+'.</span> '+prefTxt+' \u2014 '+dtxt+(r.gut?' \u00b7 Iron Gut shrugs off any toxin':'')+'.';
+      resEl.innerHTML='\ud83c\udf7d <span style="color:'+pc+'">'+_pickBase.name+' '+r.ev.d+'.</span> '+prefTxt+' \u2014 '+dtxt+(r.gut?' \u00b7 Iron Gut shrugs off any toxin':'')+'.'+
+        (r.mended?' <span style="color:#7fe6a0">Its wounds mend \u2014 now <b>'+r.cond.label+'</b>'+(r.cond.h>0?' ('+Math.round(r.cond.h*100)+'% hurt)':'')+'.</span>':'')+
+        (r.wounded?' <span style="color:'+r.cond.col+'">The rough meal left it <b>'+r.cond.label+'</b> ('+Math.round(r.cond.h*100)+'% hurt).</span>':'');
       if(_revEntry===_pickBase) showReveal(_pickBase, _pickBase.hybrid);
       pickBox.style.display='flex';
     } else {
@@ -6968,7 +7075,7 @@ const GUIDE=[
  {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique color', body:
   '<p>Every species rolls one of <b>8 grades</b>: Common, Uncommon, Notable, Rare, Exotic, <b>Legendary, Anomalous, Unique</b>. Rarity tints the card, pitches the discovery chime, and matters mechanically:</p><ul><li>Rarer flora heal more — and poison more. Rarer pairs are harder to breed but forge stronger bloodlines.</li><li>Finding a <b>Legendary-or-better</b> species pays a ☄ Stardust bonus (first discovery only).</li><li>Stars and worlds carry rarity too — their <em>spectral designation</em> — and rare worlds yield richer conquest spoils.</li></ul>'},
  {id:'specimen', t:'Reading a specimen card', k:'specimen card stats power ability bloodline brood fed gen hybrid tastes', body:
-  '<p>Tap any species in the Compendium to open its card:</p><ul><li><b>Five stat bars + Power</b> — its battle strength, rolled deterministically from its genome (see <span data-gt="stats">The five stats</span>).</li><li><b>✧ Ability</b> — its biome-themed combat trick (see <span data-gt="abilities">Abilities</span>).</li><li><b>♥ Favours / ⊘ Dislikes</b> — its feeding tastes (fauna only).</li><li><b>♞ Bloodline</b> — <em>brood</em> (generations bred) and <em>fed</em> (meals taken) both permanently raise its stats.</li><li>Buttons: <b>⇪ Code</b> (share), <b>⚔ Duel</b>, <b>🧬 Breed</b>, <b>🌿 Feed</b>, <b>✎ Rename</b>.</li></ul>'},
+  '<p>Tap any species in the Compendium to open its card:</p><ul><li><b>Five stat bars + Power</b> — its battle strength, rolled deterministically from its genome (see <span data-gt="stats">The five stats</span>).</li><li><b>❤ HP & Condition</b> — its battle pool, and whether it’s Healthy, Bruised, Injured or Critical. Wounds persist and dull every stat — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>✧ Ability</b> — its biome-themed combat trick (see <span data-gt="abilities">Abilities</span>).</li><li><b>♥ Favours / ⊘ Dislikes</b> — its feeding tastes (fauna only).</li><li><b>♞ Bloodline</b> — <em>brood</em> (generations bred) and <em>fed</em> (meals taken) both permanently raise its stats.</li><li>Buttons: <b>⇪ Code</b> (share), <b>⚔ Duel</b>, <b>🧬 Breed</b>, <b>🌿 Feed</b>, <b>✎ Rename</b>.</li></ul>'},
  {id:'drift', t:'Passive evolution', k:'drift evolve hybrid automatic epoch cosmic clock', body:
   '<p>Your Compendium is alive. As the cosmic clock ticks (one epoch ≈ every 4 minutes of play), <b>two of your species quietly drift into a new hybrid</b> on their own — the collection keeps surprising you the more you explore. Drift pauses at 500 species so your save stays healthy.</p>'},
  {id:'sapience', t:'Sapience & civilizations', k:'sapient intelligence civilization advanced eras mind signature', body:
@@ -6977,8 +7084,10 @@ const GUIDE=[
 {icon:'🌿', cat:'Breeding & Feeding', blurb:'Bloodlines, meals, medicine', topics:[
  {id:'breeding', t:'Breeding', k:'breed pair parents consumed odds hybrid bloodline stardust boost union', body:
   '<p>Pick a specimen, press <b>🧬 Breed</b>, choose a same-kingdom mate. <b>Both parents are consumed by the union — win or lose.</b></p><ul><li>The odds shown depend on the pair’s rarity — rare pairs are long shots.</li><li>☄ Stardust you’ve earned passively boosts odds (up to +15%) — see <span data-gt="stardust">Stardust</span>.</li><li>Success forges a <b>new bloodline</b>: a hybrid child with boosted stats (+1 brood). Chain generations for monsters.</li><li>Failure loses both parents. Breed your spares, not your champions.</li></ul>'},
- {id:'feeding', t:'Feeding beasts', k:'feed flora meal tastes loved disliked poison toxic dead bloodline fed', body:
-  '<p>Fauna can be fed flora from your Compendium (<b>🌿 Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavours it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength.</li><li>A disliked meal risks weakening it.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll <b>kills the beast</b>. The Iron Gut ability shrugs toxins off.</li></ul>'},
+ {id:'feeding', t:'Feeding beasts', k:'feed flora meal tastes loved disliked poison toxic dead bloodline fed mend medicine', body:
+  '<p>Fauna can be fed flora from your Compendium (<b>🌿 Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavours it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength.</li><li>Feeding is also <b>medicine</b>: a welcome meal mends a wounded beast, and loved flavours mend most. A disliked meal that goes badly can <b>wound it further</b> — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll <b>kills the beast</b>. The Iron Gut ability shrugs toxins off.</li></ul>'},
+ {id:'injuries', t:'Injuries & recovery', k:'injury wound hurt condition bruised critical mend recover heal scars medicine', body:
+  '<p>Wounds persist. A creature’s condition — <b style="color:#7fe6a0">Healthy</b> → <b style="color:#ffd96a">Bruised</b> → <b style="color:#ff8a72">Injured</b> → <b style="color:#ff5a4a">Critical</b> — lives on its specimen card, and the wounded fight <b>below their strength</b> (nearly half power at the brink).</p><ul><li><b>How they get hurt:</b> winning a conquest by a thread leaves scars, and a disliked meal that goes badly can wound. Friendly duels are still pure sport — no harm done.</li><li><b>How they heal:</b> feed them. A welcome meal mends, the flavours a beast <b>♥ loves</b> mend most, and rarer flora mend deeper. Wounds never fade on their own — medicine is a deliberate act.</li><li>Injuries don’t travel in CFB codes — a shared creature arrives fresh.</li><li>Newborn hybrids are born unhurt, whatever shape their parents were in.</li></ul>'},
  {id:'eating', t:'Eating flora (healing)', k:'heal eat flora hp medicine poison stat growth heart nourish', body:
   '<p>Tap the <b>❤ heart</b> by your HP bar to eat flora yourself. The plant is consumed and two things happen:</p><ul><li><b>You heal.</b> Rarer flora restore more HP — but their poison chance is higher, and a toxic roll wounds you instead. The deadliest medicine heals hardest.</li><li><b>You grow.</b> Each plant nourishes one specific battle stat permanently (shown on its card). Vitality meals also raise your max HP.</li></ul><p>See <span data-gt="stats">The five stats</span>.</p>'},
 ]},
@@ -6998,7 +7107,7 @@ const GUIDE=[
  {id:'abilities', t:'Abilities & biome themes', k:'ability theme fire frost storm tide stone venom void sand chem psionic wild burn regen crit dodge', body:
   '<p>Every creature carries one ability from its habitat’s theme — <em>fire, frost, storm, tide, stone, venom, void, sand, chem, psionic, wild</em> (gliders lean storm, swimmers tide, burrowers stone…). Abilities hook the duel math: burn damage-over-time, regeneration, crit bonuses, dodges, first-strike, ramping fury, Iron Gut toxin immunity and more. The ability is printed on the specimen card.</p>'},
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
-  '<p>Any world with fauna can be conquered. Press <b>⚔ Conquer Planet</b> on its survey card and choose <b>one champion</b> — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Lose with a creature:</b> it is <b>gone forever</b>.</li><li><b>Lose fighting yourself:</b> you take the wound instead.</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
+  '<p>Any world with fauna can be conquered. Press <b>⚔ Conquer Planet</b> on its survey card and choose <b>one champion</b> — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries <b>wounds</b> home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a creature:</b> it is <b>gone forever</b>.</li><li><b>Lose fighting yourself:</b> you take the wound instead.</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
 ]},
 {icon:'☄', cat:'Stardust & Progression', blurb:'Economy, harvests, spoils', topics:[
  {id:'stardust', t:'Stardust', k:'stardust essence currency economy breeding odds boost earn', body:
@@ -7175,9 +7284,36 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.1';
+const GAME_VERSION='1.2';
+const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.2', title:'The Living Frontier', date:'June 2026', sections:[
+ ['✦ New Features & Systems', [
+  '<b>Moments of wonder</b> — the universe now celebrates with you. Legendary-and-rarer discoveries, newborn bloodlines, settled worlds and first-witnessed cosmic events erupt into full-screen spectacle — and the rarer the moment, the grander the show.',
+  '<b>Creature injuries</b> — wounds persist now. A champion carries its scars out of a hard-won conquest, and a meal a beast resents can hurt it. The wounded fight below their strength: <b>Healthy → Bruised → Injured → Critical</b>, shown on every specimen card.',
+  '<b>Field medicine</b> — feeding is healing: a welcome meal mends old wounds, and the flavours a beast <b>♥ loves</b> mend most. A disliked meal risks making things worse. Choose their menu like it matters — it does now.',
+ ]],
+ ['◈ UI Enhancements', [
+  'The release notes open every fresh expedition before training, and the Guide footer shows the exact build you’re playing.',
+  'Notifications linger long enough to read, can be tapped away, and hold their tongue until you’re past the title screen.',
+  'Training layout polish: the guidance card rides high on desktop, snug on mobile — and specimen/picker dialogs open <b>below</b> it instead of underneath.',
+  'Every risk number says what it is — <b>% success</b>, <b>% poison</b>, <b>% win</b>.',
+ ]],
+ ['⚖ Balancing', [
+  'Moons obey Kepler now — outer moons drift slower, so the moon systems of giant planets turn stately instead of frantic.',
+  'Galaxies rotate on cosmic time — barely perceptible, as the universe intended.',
+ ]],
+ ['🐞 Bug Fixes', [
+  'Field training always begins at Sol — reloading a half-finished training no longer strands you in deep space hunting for Earth.',
+  'Sound reliably recovers after the tab is backgrounded — every tap quietly re-arms suspended audio.',
+  'Desktop mouse-hover no longer counts as surveying: survey credit, achievements and find-Signatures require a deliberate tap.',
+  'No more phantom “Rank Up — Cadet” after a reset — rank fanfare fires only on genuine promotions.',
+ ]],
+ ['⚙ Under the Hood', [
+  'The game moved to its own address: <b>celestialfrontier.github.io</b>.',
+ ]],
+]},
 {v:'1.1', title:'The Pathfinder Update', date:'June 2026', sections:[
  ['✦ New Features & Systems', [
   '<b>Field Training</b> — every new expedition opens with an interactive, fully sandboxed tutorial: chart Earth, train with a loaned cache of creatures, feed, breed, duel, take a scratch and heal. Nothing you lose in training follows you out. Skippable for veterans.',
@@ -7188,24 +7324,6 @@ const RELEASES=[
  ['◈ UI Enhancements', [
   'Survey-card and specimen-card buttons explain themselves — including a live danger % on Discover Life.',
   'The training guidance card sits top-center with a golden spotlight on each target, and menus lock to the current lesson so nothing pulls focus — Settings stays available throughout.',
-  'Tooltip timing tuned for comfort.',
-  'Notifications linger long enough to read (timing scales with length), can be tapped away, and politely hold their tongue until you’re past the title screen.',
-  'Training layout polish: the guidance card rides high on desktop (hanging from the search row) and snugger on mobile — and specimen/picker dialogs now open <b>below</b> the card instead of underneath it.',
-  'Every fresh expedition now opens with the latest release notes before training begins — and returning explorers still get them once after each update.',
- ]],
- ['♟ Gameplay', [
-  'Specimen cards now state <b>battle HP</b> and condition — wounds never linger between duels, but a champion lost in conquest is gone forever.',
- ]],
- ['⚖ Balancing', [
-  'Moons obey Kepler now — outer moons drift slower, so the moon systems of giant planets turn stately instead of frantic.',
-  'Galaxies rotate on cosmic time — barely perceptible, as the universe intended.',
- ]],
- ['🐞 Bug Fixes', [
-  'Field training now always begins at Sol — reloading a half-finished training no longer strands you in deep space hunting for Earth.',
-  'Sound reliably recovers after the tab is backgrounded — the browser quietly suspends audio; every tap now re-arms it.',
-  'Desktop mouse-hover no longer counts as surveying: survey credit, achievements and find-Signatures require a deliberate tap on the card.',
-  'Every risk number now says what it is — breeding shows <b>% success</b>; feeding and eating show <b>% poison</b>.',
-  'No more phantom “Rank Up — Cadet” right after a reset (or when training returns your record) — rank fanfare now fires only on genuine promotions.',
  ]],
  ['⚙ Under the Hood', [
   'The engine was reorganized into clean, testable modules — with the universe verified <b>byte-identical</b> to v1.0. Your worlds, creatures and share codes are untouched.',
@@ -7275,7 +7393,9 @@ function openReleaseNotes(mode, then){
   const gc=document.getElementById('gcredit');
   if(gc){
     gc.classList.add('gcredit-link');
-    gc.innerHTML='Celestial Frontier &middot; v'+GAME_VERSION+' &middot; Developed by Dakk';
+    gc.innerHTML='Celestial Frontier &middot; v'+GAME_VERSION+
+      (BUILD_ID!=='dev'?' <span style="opacity:.75">(build '+BUILD_ID+')</span>':' <span style="opacity:.75">(dev)</span>')+
+      ' &middot; Developed by Dakk';
     gc.addEventListener('click', ()=>openReleaseNotes('all'));
   }
 })();
@@ -7287,7 +7407,6 @@ function openReleaseNotes(mode, then){
    (iOS Safari resurrects days-old tabs). Offline or local play ('dev'
    build, file://, no fetch): the watcher never arms — the game stays
    fully offline-capable. Refreshing is safe: beforeunload saves first. */
-const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 let _updSeen=false;
 function _updOffer(j){
   if(_tutHook){ setTimeout(()=>_updOffer(j), 60e3); return; }   /* never interrupt training */
@@ -7386,9 +7505,10 @@ function openConquestPicker(d, native){
     const wc=winEstimate(c, native);
     const col=wc>0.6?'#7fe6a0':(wc>0.38?'#ffd96a':'#ff8a72');
     const pid=c.isPlayer?'__self__':c.id;
+    const cc=(!c.isPlayer&&c.genome)?creatureCondition(c.genome):null;
     return '<div class="cand" data-pk="'+pid+'"><img src="'+(c.art||speciesPortrait(c.genome))+'" alt="">'+
       '<div class="m"><div class="nm" style="color:'+S.hex+'">'+(c.isPlayer?'★ '+c.name+' (you)':c.name)+'</div>'+
-      '<div class="ds">Power '+S.total+' · ✧ '+S.ab.n+'</div></div>'+
+      '<div class="ds">Power '+S.total+' · ✧ '+S.ab.n+(cc&&cc.h>0?' · <span style="color:'+cc.col+'">'+cc.label+'</span>':'')+'</div></div>'+
       '<span class="odds" style="color:'+col+'">'+Math.round(wc*100)+'% win</span></div>';
   }).join('');
   pickBox.style.display='flex';
@@ -7414,6 +7534,25 @@ function runConquestBattle(d, champ, native){
         essence+=sd; stats.essenceEarned=(stats.essenceEarned||0)+sd;
         setTimeout(()=>toast('\u2604 Spoils of Conquest','+'+sd+' Stardust claimed with the world. Total: '+essence+'.'), 1200);
         unlock('settle1'); playRaritySting(6); playFanfare(); fxBurst(FX_GOLD,64); _panelKey=null;
+        cinematic({kicker:'🏴 World Settled', title:(d.title||'A world')+' is yours',
+          sub:champ.name+' overcame '+native.name,
+          hex:'#f2d27f', tier:Math.min(7, ((d.designation&&d.designation.tier)||1)+2)});
+        /* a hard-won fight leaves its mark — champions carry their scars home */
+        try{
+          const last=res.log[res.log.length-1];
+          if(!champ.isPlayer && champ.id && last && res.maxA){
+            const frac=Math.max(0, last.hpA/res.maxA);
+            if(frac<0.55){
+              const en=codex.get(champ.id);
+              if(en){
+                en.genome.hurt=Math.min(0.85, ((+en.genome.hurt)||0)+(0.55-frac)*0.7);
+                const c=creatureCondition(en.genome);
+                setTimeout(()=>toast('⚔ '+champ.name+' Was Wounded',
+                  'The conquest left it <b style="color:'+c.col+'">'+c.label+'</b> ('+Math.round(c.h*100)+'% hurt) — it fights below its strength until mended. Feed it flora it ♥ loves.'), 2400);
+              }
+            }
+          }
+        }catch(_){}
       } else {
         playFailTone(); playThud(); fxShake();
         if(champ.isPlayer){
@@ -8180,7 +8319,11 @@ eventsEl.addEventListener('click', e=>{
   const res=eventWhere(def);
   if(!res.where){ toast(def.title,'The signal is too faint to localize — try again.'); return; }
   goTo(res.where);
-  if(!eventKeysSeen.has(res.key)){ eventKeysSeen.add(res.key); stats.events++; }
+  if(!eventKeysSeen.has(res.key)){ eventKeysSeen.add(res.key); stats.events++;
+    cinematic({kicker:'👁 Witnessed', title:def.title,
+      sub:'Every explorer alive is watching this same sky',
+      hex:'#9fb4ff', tier:def.id==='prism'?7:4});
+  }
   if(def.id==='prism') unlock('decade');
   checkAch(); renderRank(); queueSave();
   toast(def.ic+' '+def.title, def.desc+'. Every explorer watching right now is being sent to this same place.');

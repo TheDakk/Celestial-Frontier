@@ -343,7 +343,26 @@ Outside-tap closes Compendium / Star Atlas / Cosmic Events / Settings.
   a newer build shows a gold **⬆ refresh pill** (`#updatepill`) + toast —
   deferred while Field Training is active. Refresh is safe (`beforeunload`
   saves). Inert for `dev` builds, `file://`, or offline — the game stays
-  fully offline-capable.
+  fully offline-capable. The Guide footer shows `v<GAME_VERSION> (build <sha>)`.
+
+### v1.2 systems (June 2026)
+- **Cinematics** (`@section cinematics`): `cinematic({kicker,title,sub,hex,tier})`
+  — full-screen tier-scaled celebration overlay (`#cinema`: rotating rays,
+  gradient title), queued so shows never stack, tap-to-dismiss, gated by `fxOn`,
+  `fxShake` + double burst at tier ≥ 6. Fired from: tier ≥ 5 discoveries
+  (`autoScanWorld` + `discoverSpecies`), bred newborns (picker), conquest wins
+  (`runConquestBattle`), and first-time event witnessing (events click).
+- **Creature injuries**: `genome.hurt` (0–0.85) persists via the codex save
+  (rides inside the serialized genome — no schema change). Sources: winning a
+  conquest below 55% HP (`hurt += (0.55-frac)*0.7`), a disliked meal whose
+  event has `fed<0` (`hurt += 0.12+tier*0.05`). Healing: feeding — loved mends
+  `0.22+tier*0.05`, neutral `0.1`; wounds never heal on their own. Effects:
+  `battleStats` scales all five stats by `1-min(0.85,hurt)*0.55` — **guarded
+  behind `if(g.hurt)` so unhurt genomes stay byte-identical to the v1.0
+  fingerprint**. `creatureCondition(g)` → Healthy/Bruised/Injured/Critical,
+  shown on specimen cards, Compendium rows and the conquest picker.
+  `normGenome` deletes `hurt` (injuries don't travel in CFB codes); hybrids
+  are born unhurt (crossGenome never copies it). Friendly duels stay harmless.
 - **Field Training** (`@section tutorial`): an 18-step, event-gated tutorial for
   brand-new expeditions only (`tut` save field; absent = veteran, never shown;
   reset → training again; reload mid-training restarts it). Game systems report

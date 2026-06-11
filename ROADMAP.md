@@ -71,20 +71,26 @@
   with your own HP; "send the animals instead" already exists as the
   conquer-first-then-scan-safely strategy.
 
-## Next (v1.2 candidates — "memorable moments" theme, Dakk's stated direction)
+## SHIPPED in v1.2 "The Living Frontier" (2026-06-11)
 
-- Persistent creature injury/condition system? (Dakk asked about health
-  states — injured/critical. Today creatures are binary alive/lost; cards now
-  display HP + Healthy. A real injury system = gameplay change, needs Dakk's
-  call on scope.)
+- Cinematic celebration system: tier-scaled full-screen spectacles for
+  Legendary+ discoveries, newborn bloodlines, conquest wins, first-witnessed
+  events (queued, tap-dismiss, fxOn-gated, shake at tier 6+).
+- Creature injury system: persistent genome.hurt; conquest scars + bad-meal
+  wounds; feeding-as-medicine (loved mends most); conditions on cards/picker;
+  battleStats guarded so the v1.0 fingerprint stays byte-identical.
+- v1.2 bump (everyone's bulletin re-arms), build number in Guide footer,
+  new-URL bullet in notes.
 
-- Rare-find spectacle: make Legendary/Anomalous/Unique discoveries feel like
-  events (bigger reveal moments, unique stings/FX, maybe a "first discovery"
-  record card worth sharing).
-- Crossbreed discovery celebrations — finding new hybrids should be memorable.
-- Ultra-rare monster encounters worth telling stories about.
-- Cosmic events as shared experiences (they're already deterministic and
-  simultaneous for everyone — lean into the "were you there?" feeling).
+## Next (more "memorable moments" runway)
+
+- Ultra-rare monster ENCOUNTERS worth telling stories about (the find is now
+  celebrated; the creature itself could behave specially — guardian fights,
+  unique abilities, named one-of-a-kind spawns?).
+- "First discovery record card" worth sharing (a shareable keepsake image/code
+  for Legendary+ finds).
+- Cosmic events: lean further into "were you there?" — a witness log or
+  commemorative entries.
 
 ## Later / ideas parking lot
 
