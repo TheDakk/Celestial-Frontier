@@ -14,7 +14,7 @@ node tools/extract.js          # html -> main.js (edit main.js, not the html)
 # ...edit main.js...
 node tools/validate.js         # main.js -> html, then ALL checks below
 node tools/smoke.js            # jsdom interaction suite (incl. full tutorial)
-node tools/deploy.js           # ship to https://thedakk.github.io/ — stamps
+node tools/deploy.js           # ship to https://celestialfrontier.github.io/ — stamps
                                #   BUILD_ID with the git sha and publishes
                                #   version.json so live sessions detect updates
 ```

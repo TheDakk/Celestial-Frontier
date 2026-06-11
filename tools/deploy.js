@@ -1,7 +1,10 @@
-// Deploys the built game to the live site (TheDakk/thedakk.github.io).
-// Copies celestial-frontier.html into the user-site repo as BOTH index.html
-// (so https://thedakk.github.io/ plays directly) and celestial-frontier.html
-// (stable deep link), then commits and pushes.
+// Deploys the built game to the live site
+// (CelestialFrontier/celestialfrontier.github.io — the org user site).
+// Copies celestial-frontier.html into the site repo as BOTH index.html
+// (so https://celestialfrontier.github.io/ plays directly) and
+// celestial-frontier.html (stable deep link), stamps BUILD_ID with the git
+// sha, publishes version.json (update watch), then commits and pushes.
+// Clones the site repo automatically if the local copy is missing.
 //
 // Run AFTER tools/validate.js and tools/smoke.js pass.
 //
@@ -11,15 +14,17 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const root = path.join(__dirname, '..');
-const site = process.argv[2] || path.join(root, '..', 'thedakk.github.io');
+const SITE_REPO = 'https://github.com/CelestialFrontier/celestialfrontier.github.io.git';
+const SITE_URL = 'https://celestialfrontier.github.io/';
+const site = process.argv[2] || path.join(root, '..', 'celestialfrontier.github.io');
 
 if (!fs.existsSync(path.join(site, '.git'))) {
-  console.error('site repo not found at ' + site + ' — clone TheDakk/thedakk.github.io there first');
-  process.exit(1);
+  console.log('site repo not found locally — cloning ' + SITE_REPO);
+  execFileSync('git', ['clone', SITE_REPO, site], { stdio: 'inherit' });
 }
 const git = (...args) => execFileSync('git', args, { cwd: site, stdio: 'pipe' }).toString().trim();
 
-git('pull', '--ff-only');
+try { git('pull', '--ff-only'); } catch (e) { /* fresh empty repo has no HEAD yet */ }
 const sha = execFileSync('git', ['rev-parse', '--short', 'HEAD'], { cwd: root }).toString().trim();
 let game = fs.readFileSync(path.join(root, 'celestial-frontier.html'), 'utf8');
 
@@ -41,4 +46,4 @@ if (!dirty) { console.log('site already up to date — nothing to deploy'); proc
 git('add', 'index.html', 'celestial-frontier.html', 'version.json');
 git('commit', '-m', 'Deploy Celestial Frontier v' + version + ' (' + sha + ')');
 git('push', 'origin', 'HEAD');
-console.log('deployed v' + version + ' build ' + sha + ' -> https://thedakk.github.io/');
+console.log('deployed v' + version + ' build ' + sha + ' -> ' + SITE_URL);

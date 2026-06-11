@@ -9,7 +9,7 @@
 
 - **Version: v1.1** (in-game `GAME_VERSION`) — bumps only on Dakk's say-so;
   every shipped change gets a bullet in `RELEASES[0]` (see CLAUDE.md rule 7).
-- **Live:** https://thedakk.github.io/ — build-stamped; live sessions detect
+- **Live:** https://celestialfrontier.github.io/ — build-stamped; live sessions detect
   new deploys and offer a one-tap refresh.
 - Shipped in v1.1 so far: SOLID restructure + test toolkit, Guide to the
   Universe, tooltip system, Field Training tutorial (top-center card, focus
