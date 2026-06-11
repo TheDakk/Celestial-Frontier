@@ -632,19 +632,12 @@
     border-radius:14px;box-shadow:0 0 0 4px rgba(255,217,106,0.22),0 0 26px rgba(255,217,106,0.5);
     transition:left .25s ease,top .25s ease,width .25s ease,height .25s ease}
   #tutbox{position:fixed;z-index:50;display:none;left:50%;transform:translateX(-50%);
-    top:calc(var(--topbar-h, 96px) + 12px);
+    top:calc(var(--topbar-h, 96px) + 6px);
     width:min(380px,calc(100vw - 24px));background:rgba(10,12,22,0.97);border:1px solid rgba(255,217,106,0.55);
     border-radius:16px;padding:13px 16px;box-shadow:0 14px 50px rgba(0,0,0,0.7),0 0 30px rgba(255,217,106,0.12);
     font:500 12px var(--ui);color:var(--dim);line-height:1.6}
   #tutbox.nudge{animation:tutnudge .38s ease}
   @keyframes tutnudge{0%{transform:translateX(-50%) scale(1)}35%{transform:translateX(-50%) scale(1.045)}100%{transform:translateX(-50%) scale(1)}}
-  @media (min-width:701px){
-    #tutbox{width:min(470px,calc(100vw - 24px));top:calc(var(--topbar-h, 64px) + 28px);
-      padding:17px 22px;font-size:13px;line-height:1.7;border-radius:18px}
-    #tutbox .tt{font-size:10.5px;margin-bottom:8px}
-    #tutbox .tbtns{margin-top:13px}
-    #tutbox #tut-act,#tutbox #tut-skip-yes{padding:11px 0;font-size:11.5px}
-  }
   #tutbox .tt{font:700 9.5px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:#ffd96a;
     margin-bottom:6px;display:flex;justify-content:space-between}
   #tutbox .tx b{color:var(--ink)}
@@ -655,6 +648,19 @@
     border-radius:10px;background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a)}
   #tutbox #tut-skip,#tutbox #tut-skip-no{margin-left:auto;padding:6px 10px;font:600 10px var(--ui);cursor:pointer;
     color:var(--faint);background:none;border:none;text-decoration:underline;text-underline-offset:2px}
+  @media (min-width:701px){
+    /* desktop: hang from row 1 (nameplate/search line) — high and centered */
+    #tutbox{width:min(470px,calc(100vw - 24px));top:calc(var(--row1-h, 52px) + 10px);
+      padding:17px 22px;font-size:13px;line-height:1.7;border-radius:18px}
+    #tutbox .tt{font-size:10.5px;margin-bottom:8px}
+    #tutbox .tbtns{margin-top:13px}
+    #tutbox #tut-act,#tutbox #tut-skip-yes{padding:11px 0;font-size:11.5px}
+  }
+  /* while training, dialogs yield the top of the screen to the guidance card
+     instead of centering underneath it (--tut-bot tracks the card's bottom) */
+  body.training #reveal, body.training #pickbox{align-items:flex-start}
+  body.training #reveal .card{margin-top:var(--tut-bot,160px);max-height:calc(100vh - var(--tut-bot,160px) - 14px)}
+  body.training #pickbox .card{margin-top:var(--tut-bot,160px);max-height:calc(100vh - var(--tut-bot,160px) - 14px)}
   #tutbox #tut-skip:hover,#tutbox #tut-skip-no:hover{color:var(--ink)}
   #guideok{width:100%;margin-top:16px;padding:12px 0;font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;
     color:#1a1206;cursor:pointer;border:1px solid rgba(255,220,150,0.9);border-radius:12px;
@@ -7184,6 +7190,7 @@ const RELEASES=[
   'The training guidance card sits top-center with a golden spotlight on each target, and menus lock to the current lesson so nothing pulls focus — Settings stays available throughout.',
   'Tooltip timing tuned for comfort.',
   'Notifications linger long enough to read (timing scales with length), can be tapped away, and politely hold their tongue until you’re past the title screen.',
+  'Training layout polish: the guidance card rides high on desktop (hanging from the search row) and snugger on mobile — and specimen/picker dialogs now open <b>below</b> the card instead of underneath it.',
  ]],
  ['♟ Gameplay', [
   'Specimen cards now state <b>battle HP</b> and condition — wounds never linger between duels, but a champion lost in conquest is gone forever.',
@@ -7792,6 +7799,13 @@ function _tutShow(){
   _tutSpot();
 }
 function _tutSpot(){
+  /* keep --tut-bot current so open dialogs sit below the guidance card */
+  try{
+    if(tutEl.style.display==='block'){
+      const r=tutEl.getBoundingClientRect();
+      document.documentElement.style.setProperty('--tut-bot', Math.round(r.bottom+10)+'px');
+    }
+  }catch(_){}
   const s=(_tutStep>=0)?TUT_STEPS[_tutStep]:null;
   const el=s&&s.spot?document.querySelector(s.spot):null;
   let r=null;
@@ -7881,6 +7895,7 @@ function _tutEnsureEarth(){
 function _tutFinish(){
   clearInterval(_tutTimer); _tutTimer=0;
   _tutGateOff();
+  document.body.classList.remove('training');
   tutEl.style.display='none'; tutSpotEl.style.display='none';
   _tutHook=null; _tutStep=-1; _tutRig=null;
   if(!tutDone){
@@ -7893,6 +7908,7 @@ function tutAbort(){
   /* a reset mid-training: tear the overlay down without touching fresh state */
   clearInterval(_tutTimer); _tutTimer=0;
   _tutGateOff();
+  document.body.classList.remove('training');
   tutEl.style.display='none'; tutSpotEl.style.display='none';
   _tutHook=null; _tutStep=-1; _tutRig=null; _tutSnap=null; _tutPreIds=null;
 }
@@ -7915,6 +7931,7 @@ function startTutorial(){
     if(s && s.when && s.when(type, detail||{})) _tutAdvance();
   };
   _tutStep=-1;
+  document.body.classList.add('training');   /* dialogs yield the top to the card */
   _tutAdvance();
   _tutTimer=setInterval(_tutSpot, 350);
   _tutGateOn();
