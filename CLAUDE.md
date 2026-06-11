@@ -10,6 +10,7 @@ the source wins — then update the reference.
 - The script is organized on SOLID lines (see the ARCHITECTURE comment at its top): `@module … [domain]` blocks are pure/deterministic revealing-module IIFEs (Rand → WorldGen → Genome → Descriptors → CombatCore, …); `@module … [app]` blocks are art/service modules (ThumbArt, GalaxyArt, SpeciesArt, Fx, SaveSystem, Renderer); `@section` blocks are UI/state/wiring. Put new code in the unit that owns the concern. A module's non-exported names are private; to export one more, extend the banner's `API:` line, the `Object.freeze({...})` return, and the destructuring line beneath it (all three list the same names).
 - `celestial-frontier-codebase-reference.md` — full technical reference, keep it in sync with the source.
 - `tools/` — verification toolkit (`npm install` once, then see `tools/README.md`).
+- **Live site:** https://thedakk.github.io/ — deployed from the sibling repo clone at `..\thedakk.github.io` via `node tools/deploy.js` (run only after validate + smoke pass, and only at user-approved milestones). This repo is the source of truth; never edit the site repo directly.
 - `original/celestial-frontier-v1.0.html` — pristine pre-refactor build (the determinism baseline was captured from it).
 
 ## Hard rules
