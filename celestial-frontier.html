@@ -558,6 +558,35 @@
   #guidebox .gstep b{color:var(--ink)}
   #guidebox .gcredit{margin-top:12px;text-align:center;font-size:10px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--faint)}
+  #guidesearch{width:100%;box-sizing:border-box;margin:0 0 12px;padding:9px 12px;font:500 12px var(--ui);color:var(--ink);
+    background:rgba(8,9,16,0.65);border:1px solid var(--glass-brd);border-radius:10px;outline:none}
+  #guidesearch:focus{border-color:rgba(143,180,255,0.55)}
+  #guidebody{text-align:left;min-height:120px}
+  #guidebody .gcat{padding:10px 11px;border-radius:12px;background:rgba(8,9,16,0.5);border:1px solid var(--line);
+    margin-bottom:8px;cursor:pointer;display:flex;gap:11px;align-items:center}
+  #guidebody .gcat:hover{border-color:rgba(143,180,255,0.45)}
+  #guidebody .gcat .gi{flex:none;width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+    font-size:15px;background:rgba(143,180,255,0.12)}
+  #guidebody .gcat .gt{font:600 12px var(--ui);color:var(--ink)}
+  #guidebody .gcat .gd{font-size:10.5px;color:var(--faint);margin-top:2px}
+  #guidebody .gcat .gn{margin-left:auto;color:var(--faint);font-size:13px}
+  #guidebody .gitem{padding:9px 11px;border-radius:10px;border:1px solid transparent;cursor:pointer;
+    font:600 11.5px var(--ui);color:var(--dim);display:flex;align-items:center;gap:8px}
+  #guidebody .gitem:hover{background:rgba(8,9,16,0.5);border-color:var(--line);color:var(--ink)}
+  #guidebody .gitem .gn{margin-left:auto;color:var(--faint)}
+  #guidebody .gback{display:inline-flex;align-items:center;gap:6px;margin-bottom:10px;padding:5px 11px;cursor:pointer;
+    font:600 10.5px var(--ui);letter-spacing:.06em;color:var(--dim);background:rgba(150,162,210,0.1);
+    border:1px solid var(--glass-brd);border-radius:8px}
+  #guidebody .gback:hover{color:var(--ink)}
+  #guidebody .gtopic h4{font:700 13.5px var(--ui);color:var(--ink);margin:2px 0 8px}
+  #guidebody .gtopic{font-size:11.5px;line-height:1.65;color:var(--dim)}
+  #guidebody .gtopic b{color:var(--ink)}
+  #guidebody .gtopic em{color:var(--plasma);font-style:normal}
+  #guidebody .gtopic ul{margin:6px 0;padding-left:18px}
+  #guidebody .gtopic li{margin:4px 0}
+  #guidebody .gnores{padding:14px;text-align:center;font-size:11px;color:var(--faint)}
+  #guidebody .gsee{margin-top:10px;font-size:10.5px;color:var(--faint)}
+  #guidebody .gsee span{color:var(--plasma);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
   #guideok{width:100%;margin-top:16px;padding:12px 0;font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;
     color:#1a1206;cursor:pointer;border:1px solid rgba(255,220,150,0.9);border-radius:12px;
     background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a);box-shadow:0 0 18px rgba(240,200,110,0.4)}
@@ -914,19 +943,14 @@
     <button id="ending-continue" type="button">Continue exploring the infinite</button>
   </div>
 </div></div>
-<div id="helpbtn" role="button" tabindex="0" title="Pathfinder’s Primer — how to play">?</div>
+<div id="helpbtn" role="button" tabindex="0" title="Guide to the Universe — every system explained">?</div>
 <div id="guidebox"><div class="card">
-  <div class="gh">🧭 Pathfinder’s Primer</div>
-  <div class="gsub">Everything you need to begin the survey — one minute, five moves.</div>
-  <div class="gsteps">
-    <div class="gstep"><span class="gi">🖱</span><div><b>Dive In</b> — Pinch or scroll to zoom, drag to pan — from the whole cosmos down to a single galaxy, star or world. Everything you can see, you can visit.</div></div>
-    <div class="gstep"><span class="gi">🔭</span><div><b>Survey Everything</b> — Tap any object to read its survey, then press <b>+ Add to Star Atlas</b> to bookmark it. ☆ Favorite your best finds and set one ⌂ home to jump back anytime.</div></div>
-    <div class="gstep"><span class="gi">🧬</span><div><b>Catalogue &amp; Settle</b> — Living worlds let you <b>🔬 Discover Life</b>, adding each species to your Compendium, then <b>⚔ Conquer Planet</b> — sending a champion (or yourself!) against the apex native to claim the world.</div></div>
-    <div class="gstep"><span class="gi">✦</span><div><b>Earn The Signatures</b> — Nine legendary Signatures complete the Pathfinders’ survey, and you claim them by conquering worlds and their wildlife. Track your progress with the gold <b>✦ Prime Codex</b> button up top — fill all nine to reach the Celestial Frontier.</div></div>
-    <div class="gstep"><span class="gi">❤</span><div><b>Stay Alive</b> — Hostile worlds bite — watch your HP up top and tap the ❤ to heal with flora from your Compendium. The deadliest medicine heals hardest.</div></div>
-  </div>
+  <div class="gh">🧭 Guide to the Universe</div>
+  <div class="gsub">Every system explained — search anything, or browse by topic.</div>
+  <input id="guidesearch" type="text" placeholder="Search the guide&hellip; breeding, stardust, signatures&hellip;" spellcheck="false" autocomplete="off">
+  <div id="guidebody"></div>
   <button id="guideok" type="button">Continue</button>
-  <div class="gcredit">Celestial Frontier &middot; v1.0 &middot; Developed by Dakk</div>
+  <div class="gcredit">Celestial Frontier &middot; v1.1 &middot; Developed by Dakk</div>
 </div></div>
 <div id="reveal"><div class="card">
   <div class="rt" id="rev-t">New species discovered</div>
@@ -6750,18 +6774,159 @@ function showDeath(why){
     codex.size+' species catalogued · '+conquered.size+' worlds settled · rank '+rankInfo().name;
   db.style.display='flex';
 }
-/* ---- Pathfinder's Primer wiring ---- */
+/* ---- Guide to the Universe ---- */
 /* ----------------------------------------------------------------
-   @section guide [app] — Pathfinder's Primer (help) wiring
-   Owns: seenGuide, _nameInitial, openGuide
+   @section guide [app] — Guide to the Universe: searchable, browsable manual of every system
+   Owns: seenGuide, _nameInitial, GUIDE, openGuide, openGuideTopic
    ---------------------------------------------------------------- */
 let seenGuide=false, _nameInitial=false;
-function openGuide(){ const g=document.getElementById('guidebox'); if(g) g.style.display='flex'; }
+/* The full manual. Tooltips give one-liners; THIS is where the depth lives.
+   Each topic: {id, t:title, k:search keywords, body:html}. Cross-link topics
+   with <span data-gt="topicid">…</span>. */
+const GUIDE=[
+{icon:'🚀', cat:'Getting Around', blurb:'Zoom, survey, search, share, travel', topics:[
+ {id:'zoom', t:'Flying the universe', k:'zoom pan pinch scroll drag modes universe galaxy system surface navigate controls', body:
+  '<p>The whole cosmos is one continuous view. <b>Pinch or scroll to zoom, drag to pan.</b> Zooming dives through four scales: <em>universe → galaxy → star system → planet surface</em> — and zooming out climbs back up. Everything you can see, you can visit.</p><ul><li>Tap any object to open its <b>survey card</b>; tap it again (or tap elsewhere) to release.</li><li>On a surface, you walk the world itself — the survey card stays pinned.</li><li>Travel beyond your charted frontier is gated — see <span data-gt="regions">Frontier regions</span>.</li></ul>'},
+ {id:'survey', t:'Survey cards', k:'survey card panel tap inspect atmosphere climate water gravity descriptor lock pin', body:
+  '<p>Tap anything — galaxy, star, planet, moon, comet, even the void between — and its survey card opens: classification, atmosphere, climate, water, gravity, seasons, hazards, life. Every line is generated from the object’s seed, so <b>your survey matches every other explorer’s</b>.</p><ul><li>Tapping <b>locks</b> the card in place so you can press its buttons while the object drifts.</li><li>Worlds with a biosphere show <b>🔬 Discover Life</b> — see <span data-gt="discover">Discovering life</span>.</li><li>The bookmark row saves the place — see <span data-gt="atlas">The Star Atlas</span>.</li></ul>'},
+ {id:'search', t:'Search', k:'search box find discoveries paste code lookup', body:
+  '<p>The search box (top bar) hunts across <b>everything you’ve already discovered</b>: Atlas places, Compendium species, even cosmic events you’ve witnessed. It also accepts pasted codes:</p><ul><li><b>CF1-…</b> world codes — jump straight to a friend’s discovery.</li><li><b>CFB-…</b> creature codes — load a friend’s creature for a duel.</li></ul><p>See <span data-gt="codes">Share codes</span>.</p>'},
+ {id:'codes', t:'Share codes (CF1 / CFB)', k:'share code link friend cf1 cfb copy multiplayer social', body:
+  '<p>There is no server — the universe is mathematics, identical on every device. A share code is just an <b>address into that shared math</b>:</p><ul><li><b>⇪ Share this discovery</b> on a survey card copies a <b>CF1-</b> code/link. Anyone who opens it lands on the exact same world, with your name for it attached.</li><li><b>⇪ Code</b> on a creature card copies a <b>CFB-</b> code carrying the full genome — the identical creature, stats and all, appears on your friend’s device for a duel.</li></ul><p>Codes are sanitized on arrival; a tampered code can’t hurt your save.</p>'},
+ {id:'beacon', t:'Traveler’s Beacon', k:'beacon daily random destination five minutes', body:
+  '<p>The <b>Traveler’s Beacon</b> (left rail) offers a fresh destination every <b>5 minutes</b> — somewhere notable, picked deterministically, so every explorer’s beacon points at the same place at the same moment. An easy way to see something new when the infinite feels too big.</p>'},
+ {id:'atlas', t:'The Star Atlas', k:'atlas bookmark favorite home save place travel star log', body:
+  '<p>Your personal map of the infinite. On any survey card:</p><ul><li><b>+ Add to Star Atlas</b> bookmarks the place.</li><li><b>☆ Favorite</b> marks your best finds (and auto-saves them).</li><li><b>⌂ Home</b> marks one place as home — yours to change anytime.</li></ul><p>Open the <b>Star Atlas</b> (right rail) and tap any entry to travel there instantly. The Atlas keeps your most recent ~120 places.</p>'},
+]},
+{icon:'🧬', cat:'Life & the Compendium', blurb:'Kingdoms, discovery, rarity, specimen cards', topics:[
+ {id:'discover', t:'Discovering life', k:'discover life scan bioscan species danger wound hp catalogue', body:
+  '<p>Living worlds show <b>🔬 Discover Life</b> on their survey card. Scanning is a deliberate act — and on hostile worlds it has teeth: the danger percentage shown is your chance of being <b>wounded by wildlife mid-scan</b> (fiercer apex fauna and furnace worlds are deadlier). The scan always completes — you earned it.</p><ul><li>Every species found lands in your <b>Compendium</b> automatically.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li><b>Conquered worlds scan safely</b> — see <span data-gt="conquest">Conquest</span>.</li></ul>'},
+ {id:'kingdoms', t:'The four kingdoms', k:'kingdom microbe flora fauna fungi realm biome classification', body:
+  '<p>All life belongs to one of four kingdoms — <b>🦠 Microbe, 🌿 Flora, 🍄 Fungi, 🐾 Fauna</b> — and is shelved in the Compendium by realm (Land Fauna, Aquatic Fauna, Colonial Life…). Kingdom decides what a creature can do:</p><ul><li><b>Fauna</b> fight duels, defend worlds, and can be fed.</li><li><b>Flora</b> are medicine and meals — eaten by you or fed to beasts.</li><li>All kingdoms can <b>breed</b> within their own kind.</li></ul>'},
+ {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique color', body:
+  '<p>Every species rolls one of <b>8 grades</b>: Common, Uncommon, Notable, Rare, Exotic, <b>Legendary, Anomalous, Unique</b>. Rarity tints the card, pitches the discovery chime, and matters mechanically:</p><ul><li>Rarer flora heal more — and poison more. Rarer pairs are harder to breed but forge stronger bloodlines.</li><li>Finding a <b>Legendary-or-better</b> species pays a ☄ Stardust bonus (first discovery only).</li><li>Stars and worlds carry rarity too — their <em>spectral designation</em> — and rare worlds yield richer conquest spoils.</li></ul>'},
+ {id:'specimen', t:'Reading a specimen card', k:'specimen card stats power ability bloodline brood fed gen hybrid tastes', body:
+  '<p>Tap any species in the Compendium to open its card:</p><ul><li><b>Five stat bars + Power</b> — its battle strength, rolled deterministically from its genome (see <span data-gt="stats">The five stats</span>).</li><li><b>✧ Ability</b> — its biome-themed combat trick (see <span data-gt="abilities">Abilities</span>).</li><li><b>♥ Favours / ⊘ Dislikes</b> — its feeding tastes (fauna only).</li><li><b>♞ Bloodline</b> — <em>brood</em> (generations bred) and <em>fed</em> (meals taken) both permanently raise its stats.</li><li>Buttons: <b>⇪ Code</b> (share), <b>⚔ Duel</b>, <b>🧬 Breed</b>, <b>🌿 Feed</b>, <b>✎ Rename</b>.</li></ul>'},
+ {id:'drift', t:'Passive evolution', k:'drift evolve hybrid automatic epoch cosmic clock', body:
+  '<p>Your Compendium is alive. As the cosmic clock ticks (one epoch ≈ every 4 minutes of play), <b>two of your species quietly drift into a new hybrid</b> on their own — the collection keeps surprising you the more you explore. Drift pauses at 500 species so your save stays healthy.</p>'},
+ {id:'sapience', t:'Sapience & civilizations', k:'sapient intelligence civilization advanced eras mind signature', body:
+  '<p>Fauna roll an intelligence tier: <em>Instinctive → Social → Tool-curious → Semi-sapient → <b>Sapient</b></em>. Whole worlds can host civilizations from stone-age to starfaring. A conquered world with a <b>sapient native</b> earns the Mind Signature — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
+]},
+{icon:'🌿', cat:'Breeding & Feeding', blurb:'Bloodlines, meals, medicine', topics:[
+ {id:'breeding', t:'Breeding', k:'breed pair parents consumed odds hybrid bloodline stardust boost union', body:
+  '<p>Pick a specimen, press <b>🧬 Breed</b>, choose a same-kingdom mate. <b>Both parents are consumed by the union — win or lose.</b></p><ul><li>The odds shown depend on the pair’s rarity — rare pairs are long shots.</li><li>☄ Stardust you’ve earned passively boosts odds (up to +15%) — see <span data-gt="stardust">Stardust</span>.</li><li>Success forges a <b>new bloodline</b>: a hybrid child with boosted stats (+1 brood). Chain generations for monsters.</li><li>Failure loses both parents. Breed your spares, not your champions.</li></ul>'},
+ {id:'feeding', t:'Feeding beasts', k:'feed flora meal tastes loved disliked poison toxic dead bloodline fed', body:
+  '<p>Fauna can be fed flora from your Compendium (<b>🌿 Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavours it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength.</li><li>A disliked meal risks weakening it.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll <b>kills the beast</b>. The Iron Gut ability shrugs toxins off.</li></ul>'},
+ {id:'eating', t:'Eating flora (healing)', k:'heal eat flora hp medicine poison stat growth heart nourish', body:
+  '<p>Tap the <b>❤ heart</b> by your HP bar to eat flora yourself. The plant is consumed and two things happen:</p><ul><li><b>You heal.</b> Rarer flora restore more HP — but their poison chance is higher, and a toxic roll wounds you instead. The deadliest medicine heals hardest.</li><li><b>You grow.</b> Each plant nourishes one specific battle stat permanently (shown on its card). Vitality meals also raise your max HP.</li></ul><p>See <span data-gt="stats">The five stats</span>.</p>'},
+]},
+{icon:'🧑‍🚀', cat:'You, the Explorer', blurb:'Stats, HP, rank, achievements', topics:[
+ {id:'stats', t:'The five stats', k:'vitality ferocity resilience agility insight stats grow flora character', body:
+  '<p>You fight with five stats, each starting at 50 and grown permanently by eating flora:</p><ul><li><b style="color:#7fe6a0">Vitality</b> — your life pool; sets max HP (×2) and duel toughness.</li><li><b style="color:#ff8a72">Ferocity</b> — attack power.</li><li><b style="color:#9fb4ff">Resilience</b> — blunts incoming damage.</li><li><b style="color:#ffd96a">Agility</b> — initiative; who strikes first.</li><li><b style="color:#d6a0ff">Insight</b> — critical-hit chance.</li></ul><p>Tap your nameplate to open your character sheet and inspect them. Creatures use the same five stats, rolled from their genomes.</p>'},
+ {id:'hp', t:'HP, hazards & death', k:'hp health damage wound hazard death die expedition reset brink', body:
+  '<p>The frontier bites. You can be wounded by <b>scanning hostile worlds</b>, by <b>champion duty</b> (losing a conquest you fought yourself), and by <b>toxic flora</b>.</p><ul><li>Your HP bar lives in the top bar; max HP = Vitality × 2.</li><li>Heal by eating flora — tap the ❤ heart (see <span data-gt="eating">Eating flora</span>).</li><li><b>At 0 HP the expedition ends</b> — the universe is unchanged (it’s math), but your record starts over. Don’t scan furnace worlds at 12 HP.</li></ul>'},
+ {id:'rank', t:'Ranks & expedition score', k:'rank score cadet scout pathfinder voyager pioneer cartographer wayfarer sovereign luminary eternal', body:
+  '<p>Everything you do — surveying, cataloguing, breeding, settling, dueling — feeds your <b>expedition score</b>, and score climbs the ten ranks: <em>Cadet → Scout → Pathfinder → Voyager → Pioneer → Star Cartographer → Mythic Wayfarer → Void Sovereign → Cosmic Luminary → Eternal Frontier</em>. Your rank rides on your nameplate and on everything you share.</p>'},
+ {id:'achievements', t:'Achievements', k:'achievements unlock badges trophies curator survivor', body:
+  '<p>Dozens of achievements track cataloguing, breeding, rarity hunting, conquest, stellar finds and exploration feats. Browse them in your character sheet (tap your nameplate) — each category expands. Many are secret handshakes with the universe: favorite a place, survive the brink, find a black hole…</p>'},
+]},
+{icon:'⚔', cat:'Combat', blurb:'Duels, abilities, conquest', topics:[
+ {id:'duels', t:'Duels', k:'duel fight battle initiative critical rounds deterministic code friend', body:
+  '<p>Duels are round-by-round creature battles. <b>Agility</b> decides who strikes first, <b>Ferocity</b> drives damage, <b>Resilience</b> blunts it, <b>Insight</b> lands criticals, <b>Vitality</b> sets the HP pool — and each side’s ✧ ability bends the rules.</p><ul><li>Duel your own creatures from their cards, or paste a friend’s <b>CFB-</b> code.</li><li>The same matchup <b>always plays out identically</b>, on every device — duels are seeded math, like everything else.</li><li>Friendly duels are sport: nothing is lost. Conquest is another story.</li></ul>'},
+ {id:'abilities', t:'Abilities & biome themes', k:'ability theme fire frost storm tide stone venom void sand chem psionic wild burn regen crit dodge', body:
+  '<p>Every creature carries one ability from its habitat’s theme — <em>fire, frost, storm, tide, stone, venom, void, sand, chem, psionic, wild</em> (gliders lean storm, swimmers tide, burrowers stone…). Abilities hook the duel math: burn damage-over-time, regeneration, crit bonuses, dodges, first-strike, ramping fury, Iron Gut toxin immunity and more. The ability is printed on the specimen card.</p>'},
+ {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
+  '<p>Any world with fauna can be conquered. Press <b>⚔ Conquer Planet</b> on its survey card and choose <b>one champion</b> — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Lose with a creature:</b> it is <b>gone forever</b>.</li><li><b>Lose fighting yourself:</b> you take the wound instead.</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
+]},
+{icon:'☄', cat:'Stardust & Progression', blurb:'Economy, harvests, spoils', topics:[
+ {id:'stardust', t:'Stardust', k:'stardust essence currency economy breeding odds boost earn', body:
+  '<p>☄ Stardust is the expedition’s soft currency. Lifetime Stardust earned <b>passively raises your breeding odds</b> (+1% per 50 earned, up to +15%). Three faucets:</p><ul><li><b>⛏ Harvests</b> from settled worlds — see <span data-gt="harvest">Harvesting</span>.</li><li><b>Spoils of Conquest</b> — every world you settle pays out (rarer worlds pay more).</li><li><b>Rare Find Bonus</b> — first discovery of any Legendary+ species.</li></ul>'},
+ {id:'harvest', t:'Harvesting', k:'harvest hourly cooldown settled world replenish stardust', body:
+  '<p>Every settled world can be <b>⛏ harvested for Stardust once per hour</b> (rarer worlds yield more). The button lives on the world’s survey card — “🏴 Settled — replenishing” means come back later. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
+]},
+{icon:'✦', cat:'The Prime Codex', blurb:'Signatures, the frontier, endings', topics:[
+ {id:'signatures', t:'The nine Signatures', k:'signature prime codex stone ocean flame sky life mind prism star void win', body:
+  '<p>The Pathfinders died one discovery short of completing their master survey. Nine legendary <b>Signatures</b> remain — claim all nine to reach the Celestial Frontier. Seven are claimed by <b>conquering</b> a worthy world; two by <b>finding</b> a worthy object:</p><ul><li><b>Stone</b> — a rare rocky, metal or mineral world (conquer)</li><li><b>Ocean</b> — a living ocean world (conquer)</li><li><b>Flame</b> — an extreme volcanic world (conquer)</li><li><b>Sky</b> — an aerial or gas-giant ecosystem (conquer)</li><li><b>Life</b> — a complex land biosphere (conquer)</li><li><b>Mind</b> — a world with a sapient native (conquer)</li><li><b>Prism</b> — a unique prismatic lifeform’s world (conquer)</li><li><b>Star</b> — an extreme star or stellar remnant (find)</li><li><b>Void</b> — a black hole or galactic anomaly (find)</li></ul><p>Track them with the gold <b>✦ Prime Codex</b> button. Species-borne Signatures require their world to be conquered first.</p>'},
+ {id:'regions', t:'Frontier regions', k:'region reach frontier expand charter solar local cluster near deep outer dark travel gate', body:
+  '<p>You begin charted for the <b>Solar Reach</b>. Each Signature claimed pushes your charter outward — <em>the Local Cluster, the Near Field, the Deep Field, the Outer Dark</em>, and finally <em>the Frontier</em>. Travel beyond your charter is blocked until you’ve earned it, and farther regions field tougher apex defenders with stranger life.</p>'},
+ {id:'endings', t:'Endings & the Celestial Frontier', k:'ending win frontier legacy prismatic complete game finish', body:
+  '<p>Complete all nine Signatures and the <b>Celestial Frontier</b> reveals itself — and asks what kind of Pathfinder you are. Your choice becomes your legacy (some legacies must be earned through deeds beyond the Codex). The universe stays open afterward: you cannot finish the infinite, only master it.</p>'},
+]},
+{icon:'🌌', cat:'The Living Universe', blurb:'Cosmic events, determinism, one shared cosmos', topics:[
+ {id:'events', t:'Cosmic events', k:'events supernova timescale minute hour day week month year decade witness', body:
+  '<p>The universe is alive on every timescale: somewhere a star is always dying, and rarer spectacles cycle by the minute, hour, day, week, month, year and decade. Open <b>Cosmic Events</b> (left rail) to see what’s live and travel to it. Because everything is deterministic, <b>every explorer sees the same event at the same moment</b> — witnessing one is a shared experience.</p>'},
+ {id:'determinism', t:'One universe, no server', k:'deterministic seed offline same universe share procedural infinite math', body:
+  '<p>There is no server and no download — the entire universe is generated from seeds, on your device, on demand. The same coordinates always hold the same galaxy, the same world, the same creature, for everyone, forever. That’s what makes share codes work, duels fair, and events shared. The universe needs no saving; only <em>your</em> story is saved.</p>'},
+]},
+{icon:'⚙', cat:'Settings & Saving', blurb:'Toggles, tooltips, your save', topics:[
+ {id:'settings', t:'Settings', k:'settings text size sound effects shake notifications tooltips toggle options', body:
+  '<p>The ⚙ panel (bottom right): <b>Text size</b> (A/A+/A++), <b>Sound</b>, <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, <b>Notifications</b> (silences popups; the 🔔 tray still logs everything), and <b>Tooltips</b> (the short hints on long-press or hover — turn them off once you’re fluent). All persist with your save.</p>'},
+ {id:'saving', t:'Your save & reset', k:'save localstorage reset erase wipe browser device local', body:
+  '<p>Your expedition saves automatically to this browser on this device — no account, no cloud. Clearing site data clears the expedition, so export your best creatures as CFB codes if you’re attached. <b>↺ Reset Game</b> in Settings erases everything after a confirm — the universe itself is unharmed; it’s math.</p>'},
+]}];
+function _guideTopic(id){ for(const c of GUIDE) for(const t of c.topics) if(t.id===id) return {c,t}; return null; }
+function _guideMenu(){
+  const body=document.getElementById('guidebody'); if(!body) return;
+  body.innerHTML=GUIDE.map((c,i)=>
+    '<div class="gcat" data-gc="'+i+'"><span class="gi">'+c.icon+'</span>'+
+    '<span><div class="gt">'+c.cat+'</div><div class="gd">'+c.blurb+'</div></span><span class="gn">›</span></div>').join('');
+}
+function _guideCat(i){
+  const body=document.getElementById('guidebody'); const c=GUIDE[i]; if(!body||!c) return;
+  body.innerHTML='<div class="gback" data-gb="menu">‹ All topics</div>'+
+    c.topics.map(t=>'<div class="gitem" data-gt="'+t.id+'"><span>'+c.icon+'</span> '+t.t+'<span class="gn">›</span></div>').join('');
+}
+function _guideShow(id){
+  const body=document.getElementById('guidebody'); const hit=_guideTopic(id); if(!body||!hit) return;
+  const others=hit.c.topics.filter(t=>t.id!==id).slice(0,4);
+  body.innerHTML='<div class="gback" data-gb="'+GUIDE.indexOf(hit.c)+'">‹ '+hit.c.cat+'</div>'+
+    '<div class="gtopic"><h4>'+hit.c.icon+' '+hit.t.t+'</h4>'+hit.t.body+
+    (others.length?'<div class="gsee">In '+hit.c.cat+': '+others.map(t=>'<span data-gt="'+t.id+'">'+t.t+'</span>').join(' · ')+'</div>':'')+
+    '</div>';
+}
+function _guideSearch(q){
+  const body=document.getElementById('guidebody'); if(!body) return;
+  q=q.trim().toLowerCase();
+  if(q.length<2){ _guideMenu(); return; }
+  const hits=[];
+  for(const c of GUIDE) for(const t of c.topics){
+    const hay=(t.t+' '+t.k+' '+t.body.replace(/<[^>]*>/g,' ')).toLowerCase();
+    if(hay.includes(q)) hits.push({c,t, rank:(t.t.toLowerCase().includes(q)?0:(t.k.includes(q)?1:2))});
+  }
+  hits.sort((a,b)=>a.rank-b.rank);
+  body.innerHTML = hits.length
+    ? hits.map(h=>'<div class="gitem" data-gt="'+h.t.id+'"><span>'+h.c.icon+'</span> '+h.t.t+
+        '<span class="gn" style="font-size:9.5px">'+h.c.cat+' ›</span></div>').join('')
+    : '<div class="gnores">Nothing in the guide matches “'+q.replace(/[<>&"']/g,'')+'” — try “breeding”, “stardust” or “signatures”.</div>';
+}
+function openGuide(){
+  const g=document.getElementById('guidebox'); if(!g) return;
+  const s=document.getElementById('guidesearch'); if(s) s.value='';
+  _guideMenu();
+  g.style.display='flex';
+}
+/* deep link straight to one topic — used by tooltips and the tutorial */
+function openGuideTopic(id){
+  const g=document.getElementById('guidebox'); if(!g) return;
+  const s=document.getElementById('guidesearch'); if(s) s.value='';
+  _guideShow(id);
+  g.style.display='flex';
+}
 (function(){
   const g=document.getElementById('guidebox');
   const ok=document.getElementById('guideok');
-  if(ok) ok.addEventListener('click', ()=>{ g.style.display='none'; if(!seenGuide){ seenGuide=true; queueSave(); } });
-  if(g) g.addEventListener('click', e=>{ if(e.target===g){ g.style.display='none'; if(!seenGuide){ seenGuide=true; queueSave(); } } });
+  const close=()=>{ g.style.display='none'; if(!seenGuide){ seenGuide=true; queueSave(); } };
+  if(ok) ok.addEventListener('click', close);
+  if(g) g.addEventListener('click', e=>{ if(e.target===g){ close(); return; }
+    const gb=e.target.closest('[data-gb]');
+    if(gb){ if(gb.dataset.gb==='menu') _guideMenu(); else _guideCat(+gb.dataset.gb); return; }
+    const gt=e.target.closest('[data-gt]');
+    if(gt){ _guideShow(gt.dataset.gt); return; }
+    const gc=e.target.closest('[data-gc]');
+    if(gc){ _guideCat(+gc.dataset.gc); return; }
+  });
+  const s=document.getElementById('guidesearch');
+  if(s) s.addEventListener('input', ()=>_guideSearch(s.value));
   const hb=document.getElementById('helpbtn');
   if(hb){ hb.addEventListener('click', openGuide);
     hb.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openGuide(); } }); }
