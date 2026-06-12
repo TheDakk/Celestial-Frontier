@@ -240,9 +240,12 @@ Dakk's direction from the 2026-06-11 late-night session (his words paraphrased):
 ## THE ARC IS v1.3 (Dakk, 2026-06-11 late): "no one else has played yet —
 ## we're keeping this for v1.3, not an expansion"
 
-ALL FOUR PILLARS BELOW SHIP IN v1.3, built across coming sessions BEFORE the
-bump. Suggested build order unchanged: collections + abilities/balance first,
-minerals + cargo second, tech + ships + distance travel third.
+**ALL FOUR PILLARS BUILT 2026-06-11/12 (commits b0cd6dd, d33b92d, + matrix).
+NOT DEPLOYED — Dakk wants the full 1.0 held until his go.** Still open from
+the wider 1.0 list: discovery record card, cosmic-events witness log,
+deeper story threading (SIGS hints/regions), Dakk's on-device contrast
+sweep, then the SHIP steps (collapse RELEASES into the single v1.0
+systems-overview entry, set GAME_VERSION='1.0', validate/smoke, deploy).
 **Design principle added by Dakk: progression must keep players engaged
 without EVER feeling like an eternal grind — pacing over padding; every
 unlock should change what you can do, not just add a number.**
