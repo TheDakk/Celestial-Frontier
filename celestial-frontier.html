@@ -902,6 +902,27 @@
   .plate.lk{opacity:0.22;cursor:default;filter:grayscale(0.7)}
   .plate.irid{background:linear-gradient(100deg,#ff7ae8,#ffc24f,#3fe8c8,#9a8aff,#ff7ae8);background-size:300% 100%;animation:iridslide 3.5s linear infinite}
   .plate.auto{display:flex;align-items:center;justify-content:center;background:rgba(150,162,210,0.18);color:var(--dim);font:700 10px var(--ui)}
+  /* ---- the Binder (1.0): type-collection pages, sets, the Fifty Paragons ---- */
+  .cvtabs{display:flex;gap:6px;margin:0 0 10px}
+  .cvt{flex:1;text-align:center;padding:7px 0;border-radius:9px;cursor:pointer;font:600 11px var(--ui);
+    color:var(--dim);background:rgba(150,162,210,0.08);border:1px solid var(--glass-brd)}
+  .cvt.on{color:#ffcf8a;border-color:rgba(255,207,138,0.6);background:rgba(255,207,138,0.08)}
+  .bind-head{font:500 10.5px/1.55 var(--ui);color:var(--dim);margin:2px 0 10px}
+  .bh{display:flex;justify-content:space-between;align-items:baseline;margin:12px 0 7px}
+  .bcnt{font:600 10px var(--ui);color:var(--faint);letter-spacing:.04em}
+  .bgrid{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:4px}
+  .bslot{font:600 9.5px var(--ui);padding:4px 8px;border-radius:8px;border:1px solid var(--glass-brd);
+    color:var(--ink);background:rgba(5,6,12,0.45);letter-spacing:.02em}
+  .bslot.miss{color:var(--faint);opacity:0.55;border-style:dashed}
+  .bslot.pslot{cursor:pointer}
+  .bslot.pslot.miss:hover{opacity:0.9;border-color:rgba(127,216,255,0.6)}
+  .bset{display:flex;justify-content:space-between;align-items:center;gap:8px;
+    font:500 10.5px/1.5 var(--ui);color:var(--dim);padding:7px 9px;border-radius:9px;
+    border:1px solid var(--line);margin-bottom:6px}
+  .bset.done{border-color:rgba(127,230,160,0.4)}
+  .bclaim{flex:none;padding:5px 10px;border-radius:8px;cursor:pointer;font:700 10px var(--ui);
+    color:#1a1206;background:linear-gradient(135deg,#f2d27f,#e0a84a);border:1px solid rgba(255,220,150,0.9)}
+  .bclaimed{flex:none;font:600 10px var(--ui);color:#7fe6a0}
   /* ---- the iridescent foil treatment (v1.3): grade badges + summit frames ---- */
   .gbadge{display:inline-block;padding:1px 7px;border-radius:8px;border:1px solid currentColor;
     font-weight:700;letter-spacing:.06em;font-size:.92em;vertical-align:baseline}
@@ -2717,6 +2738,8 @@ function speciesGrade(g){
   const dom = g.kingdom==='fauna'?'life':(g.kingdom==='flora'?'forest':(g.kingdom==='fungi'?'fungal':'life'));
   /* apex guardians wear their summit grade outright — forced, never rolled */
   if(g.apex) return colorGrade(dom, g.seed, {salt:0x10F, force:Math.min(TIER_MAX, Math.max(12, g.apex|0))});
+  /* the Fifty Paragons wear forced deep-spectrum grades (8–11) the same way */
+  if(g.par) return colorGrade(dom, g.seed, {salt:0x10F, force:Math.min(11, Math.max(8, g.par|0))});
   let boost=0;
   if((g.size||0)>=4) boost++;
   if((g.size||0)>=5) boost++;
@@ -2743,7 +2766,7 @@ function faunaDesc(g){
   const detail='A '+diet+' of '+habitat+', '+behavior+'. '+anat.charAt(0).toUpperCase()+anat.slice(1)+
     '. It is '+temper+', navigates by '+sense+', and '+repro+'. '+
     (metab.charAt(0).toUpperCase()+metab.slice(1))+', it lives '+life+'.';
-  return {name:speciesName(g.seed)+(g.apex?' '+GUARDIAN_EPITHETS[(g.ep||0)%GUARDIAN_EPITHETS.length]:''),
+  return {name:speciesName(g.seed)+((g.apex||g.par)?' '+GUARDIAN_EPITHETS[(g.ep||0)%GUARDIAN_EPITHETS.length]:''),
     kind:'Fauna', grade:speciesGrade(g),
     desc:size+', '+col+' '+body+' '+loco+' '+trait+(g.lumin && !/glow/.test(trait)?', glowing':''),
     diet, anatomy:anat, pattern, temper, sense, repro, life, metab, habitat, behavior,
@@ -5284,6 +5307,21 @@ function autoScanWorld(d){
     newOnes.length+' new species catalogued'+
     (top && top.grade ? ' — rarest: <span style="color:'+top.grade.hex+'">'+top.grade.name+(top.grade.star?' '+top.grade.star:'')+' '+top.name+'</span>' : '')+
     '. View them in your Compendium.');
+  /* the Fifty Paragons: scanning a legend's home world catalogues the legend itself */
+  if(d.planetSeed!=null && _parSites.has(d.planetSeed)){
+    const pi=_parSites.get(d.planetSeed);
+    const pg=paragonGenome(pi);
+    if(!codex.has(codexId(pg))){
+      const pe=_storeSpecies(pg, 'Paragon site #'+(pi+1), d.where);
+      if(pe){
+        stats.paragons=(stats.paragons||0)+1;
+        playRaritySting(pe.grade?pe.grade.tier:8);
+        cinematic({kicker:'🜲 A Paragon Found', title:pe.name,
+          sub:(pe.grade?pe.grade.name+(pe.grade.star?' '+pe.grade.star:''):'')+' — one of the Fifty',
+          hex:(pe.grade?pe.grade.hex:'#ffd96a'), tier:(pe.grade?pe.grade.tier:8)});
+      }
+    }
+  }
   /* a fresh scan can spark one auto-hybrid from the new arrivals + your existing collection */
   const pool=[...codex.values()];
   if(pool.length>=2){
@@ -5457,8 +5495,9 @@ function flashCodex(){
   _flashT=setTimeout(()=>{ codexBtn.style.borderColor=''; }, 450);
 }
 function renderCodex(){
+  if(codexView==='binder'){ renderBinder(); return; }
   if(codex.size===0){
-    codexEl.innerHTML='<div class="empty">Your Compendium is empty.<br><br>Fly down to any <b>living world</b> and open its survey — every species is catalogued automatically, like a field guide that fills itself.<br><br>Your discoveries then <b>interbreed and evolve on their own</b>, so new hybrids keep appearing the more you explore.</div>';
+    codexEl.innerHTML=_codexTabs()+'<div class="empty">Your Compendium is empty.<br><br>Fly down to any <b>living world</b> and open its survey — every species is catalogued automatically, like a field guide that fills itself.<br><br>Your discoveries then <b>interbreed and evolve on their own</b>, so new hybrids keep appearing the more you explore.</div>';
     return;
   }
   const all=[...codex.values()];
@@ -5468,7 +5507,7 @@ function renderCodex(){
   const counts={};
   for(const e of all){ const t=e.grade?e.grade.name:'—'; counts[t]=(counts[t]||0)+1; }
   const rareLine = rarest&&rarest.grade ? '<span style="color:'+rarest.grade.hex+'">Rarest: '+rarest.grade.name+' '+(rarest.grade.star||'')+' '+rarest.name+'</span>' : '';
-  let html='<div class="lab"><div class="lt">⚗ Compendium</div>'+
+  let html=_codexTabs()+'<div class="lab"><div class="lt">⚗ Compendium</div>'+
     '<div class="labnote">Every world you survey is catalogued automatically. Your discoveries interbreed on their own and keep evolving as the cosmos ages — so the collection is endless. '+
     rareLine+'</div></div>';
   html+='<div class="chead">'+codex.size+' species · '+hybrids+' hybrid'+(hybrids===1?'':'s')+' bred</div>';
@@ -5544,6 +5583,148 @@ codexBtn.addEventListener('click', ()=>{
   codexEl.style.display=codexOpen?'block':'none';
   if(codexOpen){ logOpen=false; logEl.style.display='none'; renderCodex(); }
   gameEvent('codex-open', {open:codexOpen});
+});
+
+/* ================= THE BINDER =================
+   You cannot collect individuals out of infinity — you collect TYPES. Every
+   binder page is a fixed grid of deterministic slots, the same for every
+   explorer; the procedural universe decides WHICH of your specimens fills
+   each. Sets pay stardust once. The Fifty Paragons are named one-of-a-kind
+   deep-spectrum legends at fixed deterministic worlds — silhouettes until
+   their home world is scanned. */
+const PARAGON_N=50;
+function paragonSeed(i){ return hashInt(0x9A7A60, i|0, 61)>>>0; }
+function paragonGenome(i){
+  const g=makeGenome(paragonSeed(i), 'fauna', 1);
+  const r=mulberry32(hashInt(0x9A7A60, i|0, 62)>>>0);
+  g.size=4+((r()*2)|0); g.lumin=true; g.wild=1;
+  g.par=8+((r()*4)|0);                              /* deep-spectrum grade 8–11 */
+  g.ep=hashInt(0x9A7A60, i|0, 63)%GUARDIAN_EPITHETS.length;
+  return g;
+}
+/* a Paragon's home world: the dailyWhere walk, minus the clock — static forever */
+const _parWhere=new Map();
+function paragonWhere(i){
+  if(_parWhere.has(i)) return _parWhere.get(i);
+  const r=mulberry32(hashInt(0x9A7A60, i|0, 64)>>>0);
+  let out=null, gal=null;
+  for(let k=0;k<400 && !gal;k++){
+    const cx=Math.floor((r()*2-1)*2200), cy=Math.floor((r()*2-1)*2200);
+    for(const g of galaxiesInCell(cx,cy)){ if(!g.quasar && !g.dwarf && !g.radio && g.size>30){ gal=g; break; } }
+  }
+  if(gal){
+    const prof=galaxyProfile(gal.seed);
+    const CMAX=Math.floor(GR/GCELL);
+    for(let k=0;k<700 && !out;k++){
+      const cx=Math.floor((r()*2-1)*CMAX*0.6), cy=Math.floor((r()*2-1)*CMAX*0.6);
+      for(const s of starsInCell(gal.seed, prof, cx, cy).stars){
+        const sys=systemFor(s.seed);
+        const pl=(sys.planets||[]).find(p=>p.P.type==='terran'||p.P.type==='ocean');
+        if(pl){ out={type:'planet', gal:slimGal(gal), star:{x:s.x, y:s.y, seed:s.seed}, pseed:pl.P.seed}; break; }
+      }
+    }
+  }
+  _parWhere.set(i, out);
+  return out;
+}
+/* pseed → paragon index, built quietly in idle chunks after boot (each walk is
+   a dailyWhere-sized scan; never block the frame for fifty of them) */
+const _parSites=new Map();
+let _parBuildI=0;
+function _parBuildStep(){
+  if(_parBuildI>=PARAGON_N) return;
+  try{ const w=paragonWhere(_parBuildI); if(w) _parSites.set(w.pseed, _parBuildI); }catch(_){}
+  _parBuildI++;
+  setTimeout(_parBuildStep, 150);
+}
+setTimeout(_parBuildStep, 4000);
+function paragonsOwned(){ let n=0; for(let i=0;i<PARAGON_N;i++) if(codex.has('s'+paragonSeed(i))) n++; return n; }
+function _courtN(){ const s=new Set(); for(const e of codex.values()) if(e.genome && e.genome.apex && e.grade) s.add(e.grade.tier); return s.size; }
+const claimedSets=new Set();
+const BINDER_SETS=[
+ {id:'kingdoms', name:'Four Crowns',        d:'Own all four kingdoms', sd:25,  prog:o=>o.kinds.size+' / 4', done:o=>o.kinds.size>=4},
+ {id:'flavors',  name:'The Five Flavours',  d:'Own a flora of every stat flavour', sd:40, prog:o=>o.flavors.size+' / 5', done:o=>o.flavors.size>=5},
+ {id:'themes',   name:'Master of Arts',     d:'Own a beast of every ability theme', sd:80, prog:o=>o.themes.size+' / '+Object.keys(ABILITY_THEMES).length, done:o=>o.themes.size>=Object.keys(ABILITY_THEMES).length},
+ {id:'bodies',   name:'The Bestiary',       d:'Own every fauna body plan', sd:80, prog:o=>o.bodies.size+' / '+FA_BODY.length, done:o=>o.bodies.size>=FA_BODY.length},
+ {id:'realms',   name:'Warden of Realms',   d:'Own a species from every realm', sd:100, prog:o=>o.realms.size+' / '+REALM_ORDER.length, done:o=>o.realms.size>=REALM_ORDER.length},
+ {id:'court',    name:'The Apex Court',     d:'Claim a guardian of each summit grade', sd:150, prog:()=>_courtN()+' / 3', done:()=>_courtN()>=3},
+ {id:'para10',   name:'Seeker of Legends',  d:'Find 10 of the Fifty Paragons', sd:120, prog:()=>paragonsOwned()+' / 10', done:()=>paragonsOwned()>=10},
+];
+let codexView='list';
+function _codexTabs(){
+  return '<div class="cvtabs"><span class="cvt'+(codexView==='list'?' on':'')+'" data-cvw="list">📖 Species</span>'+
+    '<span class="cvt'+(codexView==='binder'?' on':'')+'" data-cvw="binder">🗂 Binder</span></div>';
+}
+function renderBinder(){
+  const own={tiers:new Set(), realms:new Set(), bodies:new Set(), themes:new Set(), flavors:new Set(), kinds:new Set(), sizes:new Set()};
+  for(const e of codex.values()){
+    if(e.grade) own.tiers.add(e.grade.tier);
+    if(e.realm) own.realms.add(e.realm);
+    if(e.kind) own.kinds.add(e.kind);
+    const g=e.genome||{};
+    if(e.kind==='Fauna'){ own.bodies.add((g.body||0)%FA_BODY.length); own.themes.add(abilityTheme(g)); own.sizes.add((g.size||0)%FA_SIZE.length); }
+    if(e.kind==='Flora') own.flavors.add(floraStat(g));
+  }
+  const pages=[
+    {ic:'🎨', name:'The Spectrum',       slots:GRADE_TIERS.map(T=>({label:T.name, hex:T.hex, have:own.tiers.has(T.t)}))},
+    {ic:'🗺', name:'The Sixteen Realms', slots:REALM_ORDER.map(rm=>({label:rm, hex:'#8fb4ff', have:own.realms.has(rm)}))},
+    {ic:'🦴', name:'Body Plans',         slots:FA_BODY.map((b,i)=>({label:b, hex:'#7fe6a0', have:own.bodies.has(i)}))},
+    {ic:'✧', name:'Ability Themes',      slots:Object.keys(ABILITY_THEMES).map(k=>({label:(ABILITY_THEMES[k].label||k), hex:(ABILITY_THEMES[k].col||'#ffd96a'), have:own.themes.has(k)}))},
+    {ic:'🌿', name:'Flora Flavours',     slots:STAT_KEYS.map(k=>({label:STAT_META[k].name, hex:STAT_META[k].col, have:own.flavors.has(k)}))},
+    {ic:'📏', name:'Size Classes',       slots:FA_SIZE.map((s,i)=>({label:s, hex:'#cfd6f2', have:own.sizes.has(i)}))},
+  ];
+  let html=_codexTabs()+'<div class="bind-head">Collect <b>types</b>, not individuals — the slots are the same for every explorer; <b>your</b> universe decides which specimen fills each.</div>';
+  for(const p of pages){
+    const got=p.slots.filter(s=>s.have).length;
+    html+='<h4 class="bh">'+p.ic+' '+p.name+' <span class="bcnt">'+got+' / '+p.slots.length+'</span></h4><div class="bgrid">'+
+      p.slots.map(s=>'<span class="bslot'+(s.have?'':' miss')+'"'+(s.have?' style="border-color:'+s.hex+';color:'+s.hex+'"':'')+'>'+(s.have?s.label:'?')+'</span>').join('')+'</div>';
+  }
+  const pn=paragonsOwned();
+  html+='<h4 class="bh">🜲 The Fifty Paragons <span class="bcnt">'+pn+' / '+PARAGON_N+'</span></h4>'+
+    '<div class="bind-head">Named one-of-a-kind legends at fixed worlds — the same fifty for every explorer. <b>Tap a silhouette</b> to plot a course to its last-known world, then <b>scan</b> there to catalogue it.</div><div class="bgrid">';
+  for(let i=0;i<PARAGON_N;i++){
+    const have=codex.has('s'+paragonSeed(i));
+    html+='<span class="bslot pslot'+(have?'':' miss')+'" data-par="'+i+'"'+(have?' style="border-color:#3fe8c8;color:#3fe8c8"':'')+'>'+
+      (have?codex.get('s'+paragonSeed(i)).name:'#'+(i+1)+' — ?')+'</span>';
+  }
+  html+='</div><h4 class="bh">🏅 Sets</h4>';
+  for(const s of BINDER_SETS){
+    const done=s.done(own), claimed=claimedSets.has(s.id);
+    html+='<div class="bset'+(done?' done':'')+'"><span><b>'+s.name+'</b> — '+s.d+'</span>'+
+      (claimed?'<span class="bclaimed">claimed ✓</span>'
+        :(done?'<button class="bclaim" data-claimset="'+s.id+'" type="button">Claim ☄ '+s.sd+'</button>'
+              :'<span class="bcnt">'+s.prog(own)+'</span>'))+'</div>';
+  }
+  codexEl.innerHTML=html;
+}
+codexEl.addEventListener('click', e=>{
+  const tab=e.target.closest('[data-cvw]');
+  if(tab){ codexView=tab.dataset.cvw; renderCodex(); return; }
+  const par=e.target.closest('[data-par]');
+  if(par){
+    const i=+par.dataset.par;
+    if(codex.has('s'+paragonSeed(i))){ showReveal(codex.get('s'+paragonSeed(i)), false); return; }
+    const w=paragonWhere(i);
+    if(w){
+      if(w.pseed!=null && !_parSites.has(w.pseed)) _parSites.set(w.pseed, i);
+      codexOpen=false; codexEl.style.display='none';
+      travelTo(w);
+      toast('🜲 Paragon #'+(i+1), 'Last sighting: '+galaxyName(w.gal.seed)+'. Land, survey the living world, and <b>Discover Life</b> to catalogue the legend.');
+    } else toast('🜲 Paragon #'+(i+1), 'The trail is cold — this legend resists the charts. Try again.');
+    return;
+  }
+  const cl=e.target.closest('[data-claimset]');
+  if(cl){
+    const s=BINDER_SETS.find(x=>x.id===cl.dataset.claimset);
+    if(s && !claimedSets.has(s.id)){
+      claimedSets.add(s.id);
+      essence+=s.sd; stats.essenceEarned=(stats.essenceEarned||0)+s.sd;
+      playRaritySting(5); fxBurst(FX_GOLD,30);
+      toast('🏅 Set Complete — '+s.name, '+'+s.sd+' ☄ Stardust claimed. Total: '+essence+'.');
+      renderBinder(); checkAch(); renderRank(); queueSave();
+    }
+    return;
+  }
 });
 
 /* teleport to a logged object: galaxy, star, or planet */
@@ -6110,8 +6291,8 @@ function doSave(){
       breeds:stats.breeds||0, breedwins:stats.breedwins||0,
       feeds:stats.feeds||0, feedfails:stats.feedfails||0,
       harvests:stats.harvests||0, essenceEarned:stats.essenceEarned||0,
-      guardians:stats.guardians||0,
-      nh:nameHue, br:stats.bestRank||0,
+      guardians:stats.guardians||0, paragons:stats.paragons||0,
+      nh:nameHue, br:stats.bestRank||0, setsc:[...claimedSets],
       names:[...customNames],
       shares:stats.shares, jumps:stats.jumps,
       anomalies:stats.anomalies, anomKey:lastAnomKey,
@@ -6158,6 +6339,8 @@ function loadSave(){
     stats.feeds=num(data.feeds); stats.feedfails=num(data.feedfails);
     stats.harvests=num(data.harvests); stats.essenceEarned=num(data.essenceEarned);
     stats.guardians=num(data.guardians);
+    stats.paragons=num(data.paragons);
+    for(const s of (data.setsc||[])) if(BINDER_SETS.some(x=>x.id===s)) claimedSets.add(s);
     nameHue=Number.isFinite(+data.nh)?clamp((+data.nh)|0, -1, RANK_HUES.length-1):-1;
     stats.bestRank=clamp(num(data.br), 0, RANK_HUES.length-1);
     _savedView=data.view||null;
@@ -6641,9 +6824,10 @@ function normGenome(g){
   o.brood=Math.min(200, Number.isFinite(+o.brood)?Math.abs((+o.brood)|0):0);
   o.fed=Math.min(200, Number.isFinite(+o.fed)?Math.abs((+o.fed)|0):0);
   o.lumin=!!o.lumin;
-  /* guardian fields: ep is a display index; apex only honors genuine summit values */
+  /* guardian/paragon fields: ep is a display index; apex/par only honor genuine bands */
   if(o.ep!=null) o.ep=Number.isFinite(+o.ep)?Math.abs((+o.ep)|0):0;
   if(o.apex!=null){ const a=(+o.apex)|0; if(a>=12 && a<=TIER_MAX) o.apex=a; else delete o.apex; }
+  if(o.par!=null){ const a=(+o.par)|0; if(a>=8 && a<=11) o.par=a; else delete o.par; }
   delete o.parents;
   delete o.hurt;          /* imported challengers arrive fresh — injuries don't travel in codes */
   return o;
@@ -7379,6 +7563,8 @@ const GUIDE=[
   '<p>Every creature carries one ability from its habitat’s theme — <em>fire, frost, storm, tide, stone, venom, void, sand, chem, psionic, wild</em> (gliders lean storm, swimmers tide, burrowers stone…). Abilities hook the duel math: burn damage-over-time, regeneration, crit bonuses, dodges, first-strike, ramping fury, Iron Gut toxin immunity and more. The ability is printed on the specimen card.</p>'},
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
   '<p>Any world with fauna can be conquered. Press <b>⚔ Conquer Planet</b> on its survey card and choose <b>one champion</b> — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries <b>wounds</b> home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a creature:</b> it is <b>gone forever</b>.</li><li><b>Lose fighting yourself:</b> you take the wound instead.</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
+ {id:'binder', t:'The Binder & the Fifty Paragons', k:'binder collection sets slots types paragon fifty silhouette claim stardust', body:
+  '<p>Open the Compendium and switch to the <b>🗂 Binder</b> tab. You cannot collect individuals out of an infinite universe — so the Binder collects <b>types</b>: fixed pages of slots (every grade, every realm, every body plan, every ability theme…) that are <b>the same for every explorer</b>; your universe decides which specimen fills each.</p><ul><li><b>Sets</b> are curated collections that pay a one-time ☄ Stardust bounty — claim them in the Binder when complete.</li><li><b>The Fifty Paragons</b> are named, one-of-a-kind deep-spectrum legends living on fixed worlds — the same fifty worlds for every explorer. Tap a silhouette to plot a course to its last-known galaxy, then land and <b>Discover Life</b> to catalogue it. Share the coordinates — your friend hunts the very same legend.</li></ul>'},
  {id:'guardians', t:'Apex Guardians', k:'guardian apex named ruler challenge summit empyrean eternal singular crown titan', body:
   '<p>About one fauna-bearing world in forty is ruled by a <b>👑 named Apex Guardian</b> — a one-of-a-kind luminous titan wearing a <b>summit grade</b>: Empyrean, Eternal or Omnipotent, beyond even Transcendent. The same guardian rules the same world for <b>every explorer</b> — share the coordinates and a friend faces the very same beast.</p><ul><li>A guarded world’s survey card names its ruler, grade and Power, and its conquest becomes a <b>guardian challenge</b>.</li><li><b>Defeat it</b> and the world is settled, the spoils pay a ruler’s ransom, and the guardian itself <b>joins your Compendium</b> — the fighter’s road to the summit grades.</li><li><b>Lose</b> and the usual price is paid: a champion creature is lost forever, or you take the wound.</li><li>The breeder’s road also leads up: size, glow, wild blood and deep hybrid generations can push a bloodline to the summit without ever drawing a blade.</li></ul>'},
 ]},
