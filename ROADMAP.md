@@ -157,9 +157,40 @@ Dakk's direction from the 2026-06-11 late-night session (his words paraphrased):
    (CRLF broke make-probe-build's IIFE anchor) and a node_modules junction.
 3. Tutorial "horizon" step now highlights the conquest champion choice
    (fight as yourself or send a beast) — main/v1.3 only (copy change).
-4. **Release notes discipline** — keep revising RELEASES[0] (v1.3) in place as
+4. ~~Playtest round 2 (2026-06-11 ~9:30 PM)~~ — **FIXED on main**: tutorial
+   spotlight now tracks its target live (200ms interval; was positioned once
+   per step → stale gold rings = the "phantom long HP bar" around #hpwrap and
+   the ring left on the bell) and spots #hpbar not #hpwrap; spotlight is CYAN
+   (gold drowned in the gold topbar); breed cinematic chains the reveal card
+   via new cinematic({then}) — card never slides in mid-spectacle; HP number
+   rides a dark .hpchip; poison ☠ spaced from its % in pickers.
+5. **Nameplate colors (Dakk, round 2)** — the rank pill is static gold today.
+   Build: one color per rank (10 RANKS; Eternal Frontier gets the .irid foil),
+   colors unlock as ranks are reached, player picks any unlocked color in the
+   character sheet (save field e.g. `nameHue`, absent-default = current
+   rank's color). NOT started.
+6. **Full UI color/contrast deep pass, mobile + desktop (Dakk, round 2)** —
+   audit every text-on-fill, gold-on-gold, highlight-vs-chrome collision at
+   all three text sizes. NOT started.
+7. **Story coherence pass — Dakk reconfirmed he wants it IN v1.3**: weave
+   guardians, the deep spectrum/summit and the card-collection identity into
+   the Pathfinders / Prime Codex fiction (intro, SIGS hints, endings, Guide
+   lore, bulletin voice). NOT started.
+8. **Release notes discipline** — keep revising RELEASES[0] (v1.3) in place as
    the version grows; same-version revision is explicitly OK per Dakk.
-5. After the story pass: offer the v1.3 bump + deploy again.
+9. After 5–7: offer the v1.3 bump + deploy again.
+
+## v1.4 runway addition (Dakk, round 2): travel animation
+
+Dakk asked for thoughts on a zoom travel animation between galaxies ("almost
+like you're traveling") — IDEAS ONLY, not implemented. Sketch discussed:
+hyperlane feel built from what the engine already has — camera zoom-lerp
+through the existing universe→galaxy→system scales (the renderer is already
+scale-continuous), plus a brief radial starfield streak (existing star
+positions stretched along motion vector, alpha-faded; no new assets), eased
+S-curve (fast middle, soft arrival), ~600–900ms, fxOn-gated and reduced-motion
+aware, skippable by tap. Atlas/beacon jumps get the full streak; short hops a
+gentler glide. Deterministic — pure presentation, no Math.random in domain.
 
 ## Next version (v1.4 runway, per Dakk)
 
