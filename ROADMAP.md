@@ -180,6 +180,46 @@ Dakk's direction from the 2026-06-11 late-night session (his words paraphrased):
    the version grows; same-version revision is explicitly OK per Dakk.
 9. After 5–7: offer the v1.3 bump + deploy again.
 
+## THE NEXT ARC (Dakk, 2026-06-11 end of session) — staged v1.4 → v1.6
+
+Dakk's four pillars, with the agreed design sketches (details discussed in
+session; designs below are the source of truth for future sessions):
+
+1. **Vast collection system (v1.4)** — collect TYPES, not individuals: a
+   binder of deterministic slots (kingdom × realm × rarity × body plan ×
+   ability theme…) that procedural specimens FILL — same slots for every
+   player, different cards. Plus curated SETS with rewards ("The Five
+   Flavors" = one flora per stat; "The Apex Court" = a guardian of each
+   summit grade) and ~50 named PARAGONS — guardian-style one-of-a-kind
+   creatures at fixed deterministic locations, silhouettes until found.
+2. **Ability expansion + balance harness (v1.4)** — theme (11) × archetype
+   (~16 D&D verbs: DoT, stun/slow, shield, lifesteal, thorns, shred,
+   execute, ramp, cleanse, gamble…) × rarity-scaled magnitude = hundreds of
+   generated abilities ("Emberfang Rebuke III"). Flora get botany
+   PROPERTIES instead: medicinal / toxin / fertilizer (breed-odds boost) /
+   preservative (injury resist) / catalyst (research speed — ties into
+   minerals). Cross-breeding: child inherits one parent's theme, rolls the
+   other's archetype, mutation chance; hybrid magnitudes can exceed natural.
+   BALANCE EMPIRICALLY: runDuel is deterministic — build a node harness
+   that sims archetype×archetype matchups en masse; tune the archetype cost
+   table until win rates sit in 45–55%. Budget law stays 170+tier*38.
+3. **Minerals & elements (v1.5)** — lifeless worlds get deterministic
+   element profiles by type (lava→S/Fe/W, ice→H2O/CH4/He-3, metal→Pt
+   group, gas→H/He), world rarity tier boosts rare yields. ~40 real
+   elements + a few exotics; "all elements" is a binder page. UI: a 🧰
+   Cargo button in the right rail (matches Compendium/Atlas pattern) that
+   only APPEARS after the first harvest — keeps early mobile UI clean.
+4. **Tech tree + ships + travel (v1.6)** — parallel to Prime Codex, never
+   replacing it: Codex = explorer's legend (win track), tech = engineer's
+   capability track. Materials + stardust + catalyst flora → research →
+   scanner/drive/hull ladder as named ship classes (chemical → fusion →
+   antimatter → warp). Distance travel: click far destination → hyperlane
+   animation (the v1.4 sketch below lives HERE), duration = distance ÷
+   drive tier, CAPPED ~3–8s (flavor, never boredom); "too far" = needs a
+   better drive. Gives REGIONS a second axis: Signatures open the frontier,
+   ships make it reachable. CAUTION agreed: free zoom-anywhere is the
+   game's soul — travel friction must never gate looking, only jumping.
+
 ## v1.4 runway addition (Dakk, round 2): travel animation
 
 Dakk asked for thoughts on a zoom travel animation between galaxies ("almost
