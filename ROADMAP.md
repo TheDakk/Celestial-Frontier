@@ -175,30 +175,56 @@ Dakk's direction from the 2026-06-11 late-night session (his words paraphrased):
    teleport hidden mid-tunnel, eased arrival. Deterministic streak tunnel
    (mulberry32(0x7261), 90 additive lines) tinted by destination star color;
    tap skips; fxOn-gated; honors prefers-reduced-motion. Pure presentation.
-7. **Full UI color/contrast deep pass, mobile + desktop (Dakk, round 2)** —
-   audit every text-on-fill, gold-on-gold, highlight-vs-chrome collision at
-   all three text sizes. NOT started.
-8. **Story coherence pass — Dakk reconfirmed he wants it IN v1.3**: weave
-   guardians, the deep spectrum/summit and the card-collection identity into
-   the Pathfinders / Prime Codex fiction (intro, SIGS hints, endings, Guide
-   lore, bulletin voice). NOT started.
+7. **UI color/contrast pass — code-side DONE (2026-06-11 late), on-device
+   sweep REMAINS.** Fixed: HP bar is now continuous green→amber→red by HP
+   fraction (pure green ONLY at 100% — Dakk: "red when below 100%"; the
+   empty track also tints faint red when wounded); HP chip darkened to
+   rgba(6,8,16,0.78) + pure white text (white-on-green failed playtest
+   twice); nameplate text color now luminance-aware (ink on bright plates,
+   near-white on deep ones). Earlier: cyan spotlight, poison spacing.
+   REMAINING: a literal on-device sweep of every panel at A/A+/A++ with
+   Dakk's screenshots — code review can't see rendering.
+8. **Code audit (Dakk: exploits/vulns/optimizations) — DONE 2026-06-11
+   late:** no eval/Function/document.write; the one insertAdjacentHTML
+   (duel log) uses cleanName'd names only; CFB import hardened (normGenome
+   clamps apex 12..TIER_MAX, ep coerced, brood/fed capped 200, hurt
+   stripped); save load coerces+clamps ALL fields incl. new nh/br/
+   guardians; domain Math.random/Date.now ban enforced by validate.js;
+   new intervals/listeners leak-free (spotlight interval cleared on all 3
+   exits; travel frame guard-exits when idle; document listeners are
+   singletons); per-frame cost additions ~zero when idle. Guide verified
+   current: rarity 15 grades, guardians, poison, hyperlane (atlas topic),
+   nameplate colors (rank topic), save warning. No findings requiring
+   behavior change beyond the contrast fixes above.
+9. **Story coherence pass — STARTED (intro + frame), MORE WELCOME**: intro
+   lore now weaves the full arc (Pathfinders' silent beacons → nine
+   Signatures → "colors deeper than Prismatic" → named titans → Celestial
+   Frontier); Prime Codex panel subtitle ties to the unfinished survey;
+   ending text closes the beacon motif. STILL TO DO if Dakk wants more:
+   SIGS hint copy, Guide category blurbs, region-name lore, guardian
+   battle intros (also listed in the arc).
 9. **Release notes discipline** — keep revising RELEASES[0] (v1.3) in place as
    the version grows; same-version revision is explicitly OK per Dakk.
 10. After 7–8: offer the v1.3 bump + deploy again.
 
-## THE NEXT ARC (Dakk, 2026-06-11 end of session) — staged v1.4 → v1.6
+## THE ARC IS v1.3 (Dakk, 2026-06-11 late): "no one else has played yet —
+## we're keeping this for v1.3, not an expansion"
 
-Dakk's four pillars, with the agreed design sketches (details discussed in
-session; designs below are the source of truth for future sessions):
+ALL FOUR PILLARS BELOW SHIP IN v1.3, built across coming sessions BEFORE the
+bump. Suggested build order unchanged: collections + abilities/balance first,
+minerals + cargo second, tech + ships + distance travel third.
+**Design principle added by Dakk: progression must keep players engaged
+without EVER feeling like an eternal grind — pacing over padding; every
+unlock should change what you can do, not just add a number.**
 
-1. **Vast collection system (v1.4)** — collect TYPES, not individuals: a
+1. **Vast collection system** — collect TYPES, not individuals: a
    binder of deterministic slots (kingdom × realm × rarity × body plan ×
    ability theme…) that procedural specimens FILL — same slots for every
    player, different cards. Plus curated SETS with rewards ("The Five
    Flavors" = one flora per stat; "The Apex Court" = a guardian of each
    summit grade) and ~50 named PARAGONS — guardian-style one-of-a-kind
    creatures at fixed deterministic locations, silhouettes until found.
-2. **Ability expansion + balance harness (v1.4)** — theme (11) × archetype
+2. **Ability expansion + balance harness** — theme (11) × archetype
    (~16 D&D verbs: DoT, stun/slow, shield, lifesteal, thorns, shred,
    execute, ramp, cleanse, gamble…) × rarity-scaled magnitude = hundreds of
    generated abilities ("Emberfang Rebuke III"). Flora get botany
@@ -209,36 +235,29 @@ session; designs below are the source of truth for future sessions):
    BALANCE EMPIRICALLY: runDuel is deterministic — build a node harness
    that sims archetype×archetype matchups en masse; tune the archetype cost
    table until win rates sit in 45–55%. Budget law stays 170+tier*38.
-3. **Minerals & elements (v1.5)** — lifeless worlds get deterministic
+3. **Minerals & elements** — lifeless worlds get deterministic
    element profiles by type (lava→S/Fe/W, ice→H2O/CH4/He-3, metal→Pt
    group, gas→H/He), world rarity tier boosts rare yields. ~40 real
    elements + a few exotics; "all elements" is a binder page. UI: a 🧰
    Cargo button in the right rail (matches Compendium/Atlas pattern) that
    only APPEARS after the first harvest — keeps early mobile UI clean.
-4. **Tech tree + ships + travel (v1.6)** — parallel to Prime Codex, never
+4. **Tech tree + ships + travel** — parallel to Prime Codex, never
    replacing it: Codex = explorer's legend (win track), tech = engineer's
    capability track. Materials + stardust + catalyst flora → research →
    scanner/drive/hull ladder as named ship classes (chemical → fusion →
-   antimatter → warp). Distance travel: click far destination → hyperlane
-   animation (the v1.4 sketch below lives HERE), duration = distance ÷
-   drive tier, CAPPED ~3–8s (flavor, never boredom); "too far" = needs a
-   better drive. Gives REGIONS a second axis: Signatures open the frontier,
-   ships make it reachable. CAUTION agreed: free zoom-anywhere is the
-   game's soul — travel friction must never gate looking, only jumping.
+   antimatter → warp). Distance travel: the shipped hyperlane animation is
+   the travel presentation; duration = distance ÷ drive tier, CAPPED ~3–8s
+   (flavor, never boredom); "too far" = needs a better drive. Gives REGIONS
+   a second axis: Signatures open the frontier, ships make it reachable.
+   CAUTION agreed: free zoom-anywhere is the game's soul — travel friction
+   must never gate looking, only jumping. Per Dakk's no-grind principle:
+   research costs tuned so each tier lands while the previous one still
+   feels fresh.
 
-## Next version (v1.4 runway, per Dakk)
-
-- **More animal and planet abilities, with balance** — expand the 11 biome
-  ability families (more variety per theme, possibly guardian-unique
-  abilities) and give planets/worlds active abilities too; explicit balance
-  pass alongside (duel math lives in runDuel/battleStats; budget formula
-  `170+tier*38` now spans tier 0–14, so high-tier power creep needs watching).
-- Guardian-specific battle intros / unique guardian abilities (follow-on from
-  Apex Guardians).
-- "First discovery record card" worth sharing (a shareable keepsake image/code
-  for Legendary+ finds) — pairs naturally with the new foil card styling.
-- Cosmic events: lean further into "were you there?" — a witness log or
-  commemorative entries.
+Also folded into the v1.3 arc (was v1.4 runway): planet/world abilities
+alongside animal ones; guardian-specific battle intros / unique guardian
+abilities; "first discovery record card" share keepsake (pairs with foil
+cards); cosmic-events witness log.
 
 ## Later / ideas parking lot
 

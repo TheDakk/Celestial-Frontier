@@ -67,8 +67,10 @@
      wrap it out of the row (it used to sit beside the bar and broke at A++) */
   #hptext{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     font:800 9.5px var(--ui);letter-spacing:.04em;line-height:1;color:var(--ink);pointer-events:none}
-  /* the dark chip keeps the number readable over the bright fill and the dark track alike */
-  #hptext .hpchip{background:rgba(8,10,20,0.5);padding:1px 7px;border-radius:99px}
+  /* the dark chip keeps the number readable over the bright fill and the dark track alike —
+     heavy alpha on purpose: white-on-green failed Dakk's playtest twice */
+  #hptext .hpchip{background:rgba(6,8,16,0.78);padding:1px 8px;border-radius:99px;
+    text-shadow:0 1px 1px rgba(0,0,0,0.8)}
   #dmgflash{position:fixed;inset:0;z-index:39;pointer-events:none;opacity:0;transition:opacity .5s;
     background:radial-gradient(ellipse at center, transparent 38%, rgba(255,40,30,0.55) 100%)}
   /* ---- death screen ---- */
@@ -1040,8 +1042,8 @@
   </svg>
   <h3>Celestial Frontier</h3>
   <div class="lore">
-    <p>You are not the first to chart this universe. An order of explorers came before you — the <em>Pathfinders</em> — and died one discovery short of completing their master survey.</p>
-    <p>Nine legendary <em>Signatures</em> remain unclaimed. Document a worthy example of each, and the completed Codex will reveal a place no chart has ever shown: the <em>Celestial Frontier</em>.</p>
+    <p>You are not the first to chart this universe. An order of explorers came before you — the <em>Pathfinders</em> — and for an age their beacons mapped the dark. Then, one by one, the beacons went quiet. They died a single discovery short of completing their master survey.</p>
+    <p>What they left behind: nine unclaimed <em>Signatures</em>; field notes that swear the spectrum runs <em>deeper than Prismatic</em>; and scattered warnings of <em>named titans</em> that rule the worlds where it runs deepest. Document a worthy example of every Signature, and the completed Codex will reveal what no chart has ever shown — the <em>Celestial Frontier</em>.</p>
     <p class="creed">Master the infinite — you cannot finish it. But you can become the first <em>Celestial Pathfinder</em>.</p>
   </div>
   <p class="nnote">First, what shall the stars call <em>you</em>?</p>
@@ -1090,7 +1092,7 @@
 <div id="primebox"><div class="card">
   <button id="primeclose" class="pxclose" type="button">&times;</button>
   <div class="ph"><div class="pt">✦ The Prime Codex</div>
-    <div class="psubt">Document one worthy example of each legendary Signature to complete the master survey — then reach the Celestial Frontier.</div></div>
+    <div class="psubt">The Pathfinders’ unfinished master survey. Document one worthy example of each legendary Signature — finish what they began, and the Celestial Frontier will reveal itself.</div></div>
   <div class="pmeter-wrap"><div class="pmeter"><i id="prime-meter"></i></div>
     <div class="pmeta"><span id="prime-count">0 / 9</span><span id="prime-rank">Wanderer</span></div></div>
   <div id="prime-grid" class="pgrid"></div>
@@ -5898,12 +5900,17 @@ function applyNameplate(){
   const hue=RANK_HUES[Math.min(pick, RANK_HUES.length-1)];
   if(hue==='irid'){
     rankEl.classList.add('irid-plate');
-    rankEl.style.background=''; rankEl.style.borderColor=''; rankEl.style.boxShadow='';
+    rankEl.style.background=''; rankEl.style.borderColor=''; rankEl.style.boxShadow=''; rankEl.style.color='';
   } else {
     rankEl.classList.remove('irid-plate');
     rankEl.style.background='linear-gradient(135deg,'+hue+','+_shadeHex(hue,0.74)+' 55%,'+hue+')';
     rankEl.style.borderColor=hue;
     rankEl.style.boxShadow='0 0 14px '+hue+'66, 0 2px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.5)';
+    /* text color by luminance: ink on bright plates, near-white on deep ones */
+    const n=parseInt(hue.slice(1),16);
+    const L=0.299*((n>>16)&255)+0.587*((n>>8)&255)+0.114*(n&255);
+    rankEl.style.color = L>150 ? '#1a1206' : '#f4f8ff';
+    rankEl.style.textShadow = L>150 ? '0 1px 0 rgba(255,255,255,0.35)' : '0 1px 2px rgba(0,0,0,0.6)';
   }
 }
 let _lastRankName=null, _lastRankFloor=-1;
@@ -7226,17 +7233,23 @@ function dangerOf(d){
 }
 function renderHP(){
   const bar=document.getElementById('hpfill');
-  const g = hp>55 ? ['#7fe6a0','#b9f0c8','rgba(127,230,160,0.65)','#bfe6cd']
-          : hp>25 ? ['#ffd96a','#ffe9a8','rgba(255,217,106,0.65)','#ffe6a8']
-                  : ['#ff5a4a','#ff8a72','rgba(255,90,74,0.8)','#ffb3a8'];
+  /* the bar reads your danger at a glance: pure green ONLY at full health —
+     any wound starts the slide toward amber, then red (continuous, by HP
+     fraction, not chunky thresholds) */
+  const f=clamp(hp/Math.max(1,HP_MAX), 0, 1);
+  const hue=Math.round(8 + f*f*128);                  /* 136=green at full → 8=red at empty */
+  const c0='hsl('+hue+',72%,58%)', c1='hsl('+hue+',80%,72%)';
   if(bar){
-    bar.style.width=Math.max(0,Math.round(hp/HP_MAX*100))+'%';
-    bar.style.background='linear-gradient(90deg,'+g[0]+','+g[1]+')';
-    bar.style.boxShadow='0 0 10px '+g[2];
+    bar.style.width=Math.max(0,Math.round(f*100))+'%';
+    bar.style.background='linear-gradient(90deg,'+c0+','+c1+')';
+    bar.style.boxShadow='0 0 10px hsla('+hue+',80%,62%,0.7)';
   }
+  /* a wounded bar shows it in the EMPTY part too — the missing HP glows faintly red */
+  const track=document.getElementById('hpbar');
+  if(track) track.style.background = f<1 ? 'rgba(255,90,74,0.16)' : 'rgba(150,162,210,0.2)';
   const tx=document.getElementById('hptext');
   /* the number rides a dark chip so it reads on the bright fill AND the dark track */
-  if(tx){ tx.innerHTML='<span class="hpchip">'+hp+'/'+HP_MAX+' HP</span>'; tx.style.color=g[3]; }
+  if(tx){ tx.innerHTML='<span class="hpchip">'+hp+'/'+HP_MAX+' HP</span>'; tx.style.color='#fff'; }
 }
 function damageExplorer(amount, why){
   hp=Math.max(0, hp-amount);
@@ -7299,7 +7312,7 @@ const GUIDE=[
  {id:'beacon', t:'Traveler’s Beacon', k:'beacon daily random destination five minutes', body:
   '<p>The <b>Traveler’s Beacon</b> (left rail) offers a fresh destination every <b>5 minutes</b> — somewhere notable, picked deterministically, so every explorer’s beacon points at the same place at the same moment. An easy way to see something new when the infinite feels too big.</p>'},
  {id:'atlas', t:'The Star Atlas', k:'atlas bookmark favorite home save place travel star log', body:
-  '<p>Your personal map of the infinite. On any survey card:</p><ul><li><b>+ Add to Star Atlas</b> bookmarks the place.</li><li><b>☆ Favorite</b> marks your best finds (and auto-saves them).</li><li><b>⌂ Home</b> marks one place as home — yours to change anytime.</li></ul><p>Open the <b>Star Atlas</b> (right rail) and tap any entry to travel there instantly. The Atlas keeps your most recent ~120 places.</p>'},
+  '<p>Your personal map of the infinite. On any survey card:</p><ul><li><b>+ Add to Star Atlas</b> bookmarks the place.</li><li><b>☆ Favorite</b> marks your best finds (and auto-saves them).</li><li><b>⌂ Home</b> marks one place as home — yours to change anytime.</li></ul><p>Open the <b>Star Atlas</b> (right rail) and tap any entry to ride the <b>hyperlane</b> there — the camera dives out, the sky stretches into a streak tunnel <b>tinted by your destination’s light</b>, and you ease in on arrival (tap to skip; obeys your effects toggle). The Atlas keeps your most recent ~120 places.</p>'},
 ]},
 {icon:'🧬', cat:'Life & the Compendium', blurb:'Kingdoms, discovery, rarity, specimen cards', topics:[
  {id:'discover', t:'Discovering life', k:'discover life scan bioscan species danger wound hp catalogue', body:
@@ -7331,7 +7344,7 @@ const GUIDE=[
  {id:'hp', t:'HP, hazards & death', k:'hp health damage wound hazard death die expedition reset brink', body:
   '<p>The frontier bites. You can be wounded by <b>scanning hostile worlds</b>, by <b>champion duty</b> (losing a conquest you fought yourself), and by <b>toxic flora</b>.</p><ul><li>Your HP bar lives in the top bar; max HP = Vitality × 2.</li><li>Heal by eating flora — tap the ❤ heart (see <span data-gt="eating">Eating flora</span>).</li><li><b>At 0 HP the expedition ends</b> — the universe is unchanged (it’s math), but your record starts over. Don’t scan furnace worlds at 12 HP.</li></ul>'},
  {id:'rank', t:'Ranks & expedition score', k:'rank score cadet scout pathfinder voyager pioneer cartographer wayfarer sovereign luminary eternal', body:
-  '<p>Everything you do — surveying, cataloguing, breeding, settling, dueling — feeds your <b>expedition score</b>, and score climbs the ten ranks: <em>Cadet → Scout → Pathfinder → Voyager → Pioneer → Star Cartographer → Mythic Wayfarer → Void Sovereign → Cosmic Luminary → Eternal Frontier</em>. Your rank rides on your nameplate and on everything you share.</p>'},
+  '<p>Everything you do — surveying, cataloguing, breeding, settling, dueling — feeds your <b>expedition score</b>, and score climbs the ten ranks: <em>Cadet → Scout → Pathfinder → Voyager → Pioneer → Star Cartographer → Mythic Wayfarer → Void Sovereign → Cosmic Luminary → Eternal Frontier</em>. Your rank rides on your nameplate and on everything you share.</p><p><b>Nameplate colors:</b> every rank carries its own color, unlocked forever the moment you reach it. Pick any unlocked color from your character sheet (tap your nameplate → Nameplate) — and <b>Eternal Frontier</b> unlocks the iridescent foil.</p>'},
  {id:'achievements', t:'Achievements', k:'achievements unlock badges trophies curator survivor', body:
   '<p>Dozens of achievements track cataloguing, breeding, rarity hunting, conquest, stellar finds and exploration feats. Browse them in your character sheet (tap your nameplate) — each category expands. Many are secret handshakes with the universe: favorite a place, survive the brink, find a black hole…</p>'},
 ]},
@@ -7547,6 +7560,8 @@ const RELEASES=[
   '<b>Collection cards</b> — every specimen card now wears its <b>grade badge</b>, and summit-grade creatures shine in <b>iridescent foil</b>: a shimmering badge and an animated prismatic frame. Catch one and you’ll know.',
   'The high tiers got a vivid new palette: <b>aqua</b> Mythic, <b>starlight</b> Celestial, <b>ember</b> Primordial, <b>white-light</b> Transcendent, <b>dawnfire</b> Empyrean, <b>twilight</b> Eternal — and Omnipotent shimmers through them all.',
   'Your character sheet now tracks the <b>highest grade you’ve ever reached</b> and your <b>guardians felled</b> — the very top of the ladder is chased, not checklisted.',
+  'The HP bar now slides <b>green → amber → red continuously</b> — pure green means untouched, any wound tints the empty track red, and the number rides a high-contrast chip.',
+  'The Pathfinders’ story now runs through the whole expedition: a sharper opening, the Prime Codex framed as <b>their unfinished survey</b>, and an ending that finally answers the silent beacons.',
  ]],
  ['⚖ Balancing', [
   '<b>Poison no longer executes.</b> A toxic meal bites off a chunk of the beast’s condition instead of killing outright — <b>rarer flora bites far deeper</b> — and only a beast whose strength is already spent dies of it. Poison wounds mend the usual way: feed it flora it ♥ loves.',
@@ -8058,7 +8073,7 @@ function chooseEnding(id){
   document.getElementById('ending-choices').style.display='none';
   const r=document.getElementById('ending-result'); r.style.display='block';
   document.getElementById('ending-title').textContent=e.title;
-  document.getElementById('ending-text').innerHTML='You are now <b>'+e.title+'</b>. The Prime Codex is complete \u2014 yet the infinite galaxy remains, endless and open. Explore on, '+(explorerName||'Pathfinder')+'.';
+  document.getElementById('ending-text').innerHTML='You are now <b>'+e.title+'</b>. The master survey is finished \u2014 the first in history. Somewhere out in the dark, a thousand quiet beacons answer at last. The infinite galaxy remains, endless and open. Explore on, '+(explorerName||'Pathfinder')+'.';
   playRaritySting(7);
 }
 function openFrontier(){
