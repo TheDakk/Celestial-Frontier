@@ -108,9 +108,20 @@
   call) and "Apex Guardians felled". New save field `guardians`
   (absent-default 0). Guide topics (rarity + new Apex Guardians), reference,
   HANDOFF updated; settle25 icon ceded 👑 to guard1.
+- **Poison rework (Dakk):** a toxic meal no longer kills a beast outright — it
+  deals condition damage (`feedPair`: dmg = 0.16 + severity*0.22 + tier*0.045,
+  clamped 0.1–0.92; severity = how deep under the poison threshold the roll
+  landed). Death only when cumulative hurt would hit 1.0 ("0 HP"). Survivors
+  show their new condition inline with a mend hint. All "toxic kills" copy
+  (picker note, feed tip, Guide feeding topic, husbandry header) updated.
+  Player eating already worked this way (healExplorer) — untouched.
+- Flora coverage verified: floraStat is uniform across all 5 stats (20.0%
+  each over 1M seeds) and flora rolls the full 15-tier ladder; heal
+  (12+t*9+risk*30), growth (1+t) and mending (0.22+t*0.05) scale uncapped.
 - `tools/baseline.json` intentionally regenerated twice (deep spectrum, then
   summit+guardians): only `gradeTiers` changed plus the NEW `guardians` probe
-  (50 probes now); all rolls/grades/genomes/duels/codes byte-identical.
+  (50 probes now); all rolls/grades/genomes/duels/codes byte-identical. The
+  poison rework needed NO regen — feedPair isn't fingerprinted.
 
 ## SHIPPED in v1.2 "The Living Frontier" (2026-06-11)
 

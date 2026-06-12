@@ -5382,7 +5382,7 @@ function showReveal(entry, isHybrid){
       acts.innerHTML='<button id="rev-share" type="button" data-guide="codes" data-tip="Copy a CFB code — the identical creature, stats and all, on any device.">⇪ Code</button>'+
         '<button id="rev-duel" type="button" data-guide="duels" data-tip="A friendly duel — sport only, nothing is lost.">⚔ Duel</button>'+
         (codex.has(entry.id) ? '<button id="rev-breed" type="button" data-guide="breeding" data-tip="Forge a new bloodline — both parents are consumed, win or lose.">🧬 Breed</button>' : '')+
-        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A welcome meal grows its bloodline and mends its wounds — a toxic one kills.">🌿 Feed</button>' : '')+
+        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A welcome meal grows its bloodline and mends its wounds — a toxic one poisons, and can finish a beast with nothing left.">🌿 Feed</button>' : '')+
         (codex.has(entry.id) ? '<button id="rev-rename" type="button" data-tip="Your name rides inside its creature code too.">✎ Rename</button>' : '');
     }
   } else {
@@ -6692,7 +6692,8 @@ function shareCreature(entry){
    Deliberate breeding is a gamble: the rarer the pair, the worse the odds —
    and a failed pairing destroys BOTH parents. Success forges a bloodline
    ("brood") with permanently higher stats. Flora can be fed to fauna for
-   permanent gains, but a toxic reaction kills the beast. Stardust from
+   permanent gains, but a toxic reaction poisons the beast — costing real
+   condition, and finishing one whose strength is spent. Stardust from
    settled worlds passively improves your breeding odds. */
 /* ----------------------------------------------------------------
    @section economy [app] — stardust economy — conquered-worlds map, essence, breeding odds
@@ -6895,8 +6896,19 @@ function feedPair(faunaEntry, floraEntry, roll){
   const pref = tastes.likes.includes(ftype) ? 'loved' : (tastes.dislikes.includes(ftype) ? 'disliked' : 'neutral');
   const pois = S.ab.gutsy ? 0 : clamp((pref==='disliked'?0.16:0.05) + tF*0.05 - S.res/800, 0.02, 0.5);
   if(roll<pois){
-    removeFromCodex(faunaEntry.id);
-    return {ok:false, pois, pref, ftype, gut:false};
+    /* poison wounds, it doesn't execute: the toxin bites off a chunk of the
+       beast's condition — rarer flora bites far deeper — and only a beast
+       whose HP (condition) hits zero dies of it */
+    const sev=(pois-roll)/Math.max(0.0001,pois);            /* deeper failed rolls bite harder */
+    const dmg=clamp(0.16 + sev*0.22 + tF*0.045, 0.1, 0.92);
+    const h0=Math.max(0, (+faunaEntry.genome.hurt)||0);
+    if(h0+dmg>=1){
+      removeFromCodex(faunaEntry.id);
+      return {ok:false, dead:true, dmg, pois, pref, ftype, gut:false};
+    }
+    faunaEntry.genome.hurt=Math.min(0.95, h0+dmg);
+    return {ok:false, dead:false, dmg, pois, pref, ftype, gut:false,
+      cond:creatureCondition(faunaEntry.genome)};
   }
   const bank=FEED_EVENTS[pref];
   const idx=Math.min(bank.length-1, Math.floor(((roll-pois)/Math.max(0.0001,1-pois))*bank.length));
@@ -6940,7 +6952,7 @@ function openPicker(mode, base){
       (stardustBonus()>0?' ☄ Stardust bonus: +'+Math.round(stardustBonus()*100)+'% odds.':'')
     : isHeal
     ? 'Eat a flora from your Compendium — the plant is always consumed. It also <b>permanently grows one of your battle stats</b> — each plant nourishes a different one. The higher its poison chance, the more it restores; a toxic roll wounds you instead.'
-    : 'Choose a flora to feed it. The plant is always consumed. A good meal grants <b>permanent strength</b> — a toxic one <b>kills the beast</b>. Rarer flora: bigger gains, deadlier risk.';
+    : 'Choose a flora to feed it. The plant is always consumed. A good meal grants <b>permanent strength</b> — a toxic one <b>poisons it</b>, costing real condition; a beast with nothing left to lose <b>dies</b>. Rarer flora: bigger gains, deeper venom.';
   document.getElementById('pick-result').innerHTML='';
   if(!cands.length){
     pickList.innerHTML='<div style="font-size:11px;color:var(--faint);padding:12px;text-align:center">'+
@@ -7034,8 +7046,15 @@ pickList.addEventListener('click', e=>{
     } else {
       playFailTone(); playThud(); fxShake();
       stats.feedfails=(stats.feedfails||0)+1;
-      resEl.innerHTML='\u2620 <span style="color:#ff8a72">Toxic reaction.</span> The '+other.name+' poisoned '+_pickBase.name+(r.pref==='disliked'?' \u2014 it never liked '+STAT_META[r.ftype].name+'-rich flora':'')+'. It did not survive.';
-      revealEl.style.display='none';
+      if(r.dead){
+        resEl.innerHTML='\u2620 <span style="color:#ff8a72">Toxic reaction.</span> The '+other.name+' poisoned '+_pickBase.name+(r.pref==='disliked'?' \u2014 it never liked '+STAT_META[r.ftype].name+'-rich flora':'')+'. With nothing left to give, <b>it did not survive</b>.';
+        revealEl.style.display='none';
+      } else {
+        resEl.innerHTML='\u2620 <span style="color:#ff8a72">Toxic reaction.</span> The '+other.name+' poisoned '+_pickBase.name+(r.pref==='disliked'?' \u2014 it never liked '+STAT_META[r.ftype].name+'-rich flora':'')+'. '+
+          '<span style="color:'+r.cond.col+'">It lost '+Math.round(r.dmg*100)+'% of its strength \u2014 now <b>'+r.cond.label+'</b> ('+Math.round(r.cond.h*100)+'% hurt). Feed it flora it \u2665 loves to mend.</span>';
+        if(_revEntry===_pickBase) showReveal(_pickBase, _pickBase.hybrid);
+        pickBox.style.display='flex';
+      }
     }
     pickList.innerHTML='';
   }
@@ -7188,7 +7207,7 @@ const GUIDE=[
  {id:'breeding', t:'Breeding', k:'breed pair parents consumed odds hybrid bloodline stardust boost union', body:
   '<p>Pick a specimen, press <b>🧬 Breed</b>, choose a same-kingdom mate. <b>Both parents are consumed by the union — win or lose.</b></p><ul><li>The odds shown depend on the pair’s rarity — rare pairs are long shots.</li><li>☄ Stardust you’ve earned passively boosts odds (up to +15%) — see <span data-gt="stardust">Stardust</span>.</li><li>Success forges a <b>new bloodline</b>: a hybrid child with boosted stats (+1 brood). Chain generations for monsters.</li><li>Failure loses both parents. Breed your spares, not your champions.</li></ul>'},
  {id:'feeding', t:'Feeding beasts', k:'feed flora meal tastes loved disliked poison toxic dead bloodline fed mend medicine', body:
-  '<p>Fauna can be fed flora from your Compendium (<b>🌿 Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavours it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength.</li><li>Feeding is also <b>medicine</b>: a welcome meal mends a wounded beast, and loved flavours mend most. A disliked meal that goes badly can <b>wound it further</b> — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll <b>kills the beast</b>. The Iron Gut ability shrugs toxins off.</li></ul>'},
+  '<p>Fauna can be fed flora from your Compendium (<b>🌿 Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavours it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength.</li><li>Feeding is also <b>medicine</b>: a welcome meal mends a wounded beast, and loved flavours mend most. A disliked meal that goes badly can <b>wound it further</b> — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll <b>poisons the beast</b>, biting off a chunk of its condition; <b>rarer flora bites far deeper</b>. Only a beast whose strength is already spent dies of it — at zero, it’s gone. The Iron Gut ability shrugs toxins off.</li></ul>'},
  {id:'injuries', t:'Injuries & recovery', k:'injury wound hurt condition bruised critical mend recover heal scars medicine', body:
   '<p>Wounds persist. A creature’s condition — <b style="color:#7fe6a0">Healthy</b> → <b style="color:#ffd96a">Bruised</b> → <b style="color:#ff8a72">Injured</b> → <b style="color:#ff5a4a">Critical</b> — lives on its specimen card, and the wounded fight <b>below their strength</b> (nearly half power at the brink).</p><ul><li><b>How they get hurt:</b> winning a conquest by a thread leaves scars, and a disliked meal that goes badly can wound. Friendly duels are still pure sport — no harm done.</li><li><b>How they heal:</b> feed them. A welcome meal mends, the flavours a beast <b>♥ loves</b> mend most, and rarer flora mend deeper. Wounds never fade on their own — medicine is a deliberate act.</li><li>Injuries don’t travel in CFB codes — a shared creature arrives fresh.</li><li>Newborn hybrids are born unhurt, whatever shape their parents were in.</li></ul>'},
  {id:'eating', t:'Eating flora (healing)', k:'heal eat flora hp medicine poison stat growth heart nourish', body:
@@ -7405,6 +7424,10 @@ const RELEASES=[
   '<b>Collection cards</b> — every specimen card now wears its <b>grade badge</b>, and summit-grade creatures shine in <b>iridescent foil</b>: a shimmering badge and an animated prismatic frame. Catch one and you’ll know.',
   'The high tiers got a vivid new palette: <b>aqua</b> Mythic, <b>starlight</b> Celestial, <b>ember</b> Primordial, <b>white-light</b> Transcendent, <b>dawnfire</b> Empyrean, <b>twilight</b> Eternal — and Omnipotent shimmers through them all.',
   'Your character sheet now tracks the <b>highest grade you’ve ever reached</b> and your <b>guardians felled</b> — the very top of the ladder is chased, not checklisted.',
+ ]],
+ ['⚖ Balancing', [
+  '<b>Poison no longer executes.</b> A toxic meal bites off a chunk of the beast’s condition instead of killing outright — <b>rarer flora bites far deeper</b> — and only a beast whose strength is already spent dies of it. Poison wounds mend the usual way: feed it flora it ♥ loves.',
+  'Flora pulls its weight all the way up the ladder: every battle stat has flora that nourishes it at every rarity, and healing, growth and mending all keep scaling through the full 15 grades.',
  ]],
  ['🏆 Achievements & Collections', [
   'Eight new achievements: <b>Beyond the Veil</b> (Mythic), <b>One in a Million</b> (Transcendent), <b>Beyond the Million</b> (the summit), <b>The Deep Spectrum</b> (12 rarity tiers), <b>Regicide</b> and <b>Throne Breaker</b> (guardians), and the collector’s pair <b>Realm Ranger</b> and <b>Master of Realms</b> (8 / all 16 realms).',
