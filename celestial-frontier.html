@@ -7166,44 +7166,48 @@ function runDuel(mine, theirs){
     }
     const crit=r()<(att.ins/420 + (att.ab.critB||0));
     const ramp=turnA?rampA:rampB;
+    let fs=false, ex=false, tb=0, ls=0, stp=false;   /* the chronicle remembers everything */
     let dmg=att.fer*(1+ramp)*(0.8+r()*0.5) - def.res*0.45;
     if(att.ab.dmg) dmg*=att.ab.dmg;
     if(def.ab.taken) dmg*=def.ab.taken;
-    if(att.ab.first && (turnA?firstA:firstB)) dmg*=att.ab.first;
+    if(att.ab.first && (turnA?firstA:firstB)){ dmg*=att.ab.first; fs=true; }
     /* the matrix verbs (1.0) — every branch guarded, so legacy ability sets
        consume the identical rng sequence and compute byte-identically */
     if(att.ab.enrage){ const _mf=turnA?(1-hpA/maxA):(1-hpB/maxB); dmg*=1+att.ab.enrage*_mf; }   /* rage: blood for power */
     if(att.ab.gambit) dmg*=(1-att.ab.gambit*0.45)+r()*att.ab.gambit*1.45;   /* roulette: wild swings */
     dmg*=1+(turnA?shredB:shredA);                                            /* rend: torn defenses */
-    if(att.ab.execB && (turnA?(hpB<maxB*0.5):(hpA<maxA*0.5))) dmg*=1+att.ab.execB;  /* reckoning */
+    if(att.ab.execB && (turnA?(hpB<maxB*0.5):(hpA<maxA*0.5))){ dmg*=1+att.ab.execB; ex=true; }  /* reckoning */
     dmg=Math.max(2, Math.round(dmg));
     if(crit) dmg=Math.round(dmg*1.7);
     if(def.ab.cap) dmg=Math.min(dmg, Math.max(3, Math.round((turnA?maxB:maxA)*def.ab.cap)));  /* bulwark */
     if(turnA){ hpB=Math.max(0,hpB-dmg); firstA=false; }
     else { hpA=Math.max(0,hpA-dmg); firstB=false; }
     if(att.ab.shred){ if(turnA) shredB+=att.ab.shred; else shredA+=att.ab.shred; }
-    if(def.ab.thorns){ const tb=Math.max(1,Math.round(dmg*def.ab.thorns));   /* thorns bite back */
+    if(def.ab.thorns){ tb=Math.max(1,Math.round(dmg*def.ab.thorns));         /* thorns bite back */
       if(turnA) hpA=Math.max(0,hpA-tb); else hpB=Math.max(0,hpB-tb); }
-    if(att.ab.stun && r()<att.ab.stun){ if(turnA) skipB=true; else skipA=true; }
+    if(att.ab.stun && r()<att.ab.stun){ if(turnA) skipB=true; else skipA=true; stp=true; }
     if(crit && att.ab.drink){
-      const heal=Math.round(dmg*0.3);
-      if(turnA) hpA=Math.min(maxA,hpA+heal); else hpB=Math.min(maxB,hpB+heal);
+      ls=Math.round(dmg*0.3);
+      if(turnA) hpA=Math.min(maxA,hpA+ls); else hpB=Math.min(maxB,hpB+ls);
     }
-    log.push({an, dn, dmg, crit, hpA, hpB});
+    log.push({an, dn, dmg, crit, fs, ex, tb, ls, stp, side:turnA?'A':'B', hpA, hpB});
   };
   for(let round=0; round<26 && hpA>0 && hpB>0; round++){
     strike();
     /* swift hunter: a second strike */
     const att=turnA?A:B;
     if(hpA>0 && hpB>0 && att.ab.dbl && r()<att.ab.dbl) strike();
-    /* regenerators knit themselves back together */
-    if(hpA>0 && A.ab.regen) hpA=Math.min(maxA, hpA+Math.round(maxA*A.ab.regen*0.5));
-    if(hpB>0 && B.ab.regen) hpB=Math.min(maxB, hpB+Math.round(maxB*B.ab.regen*0.5));
+    /* regenerators knit themselves back together; afflictions burn — and the
+       chronicle keeps the receipts (tick entries for the battle log) */
+    let _rA=0,_rB=0,_bA=0,_bB=0;
+    if(hpA>0 && A.ab.regen){ _rA=Math.round(maxA*A.ab.regen*0.5); hpA=Math.min(maxA, hpA+_rA); }
+    if(hpB>0 && B.ab.regen){ _rB=Math.round(maxB*B.ab.regen*0.5); hpB=Math.min(maxB, hpB+_rB); }
     /* pack howl: fury builds */
     if(A.ab.ramp) rampA+=A.ab.ramp;
     if(B.ab.ramp) rampB+=B.ab.ramp;
-    if(A.ab.burn && hpB>0) hpB=Math.max(0, hpB-Math.max(1,Math.round(maxB*A.ab.burn)));
-    if(B.ab.burn && hpA>0) hpA=Math.max(0, hpA-Math.max(1,Math.round(maxA*B.ab.burn)));
+    if(A.ab.burn && hpB>0){ _bB=Math.max(1,Math.round(maxB*A.ab.burn)); hpB=Math.max(0, hpB-_bB); }
+    if(B.ab.burn && hpA>0){ _bA=Math.max(1,Math.round(maxA*B.ab.burn)); hpA=Math.max(0, hpA-_bA); }
+    if(_rA||_rB||_bA||_bB) log.push({tick:true, rA:_rA, rB:_rB, bA:_bA, bB:_bB, hpA, hpB});
     turnA=!turnA;
   }
   const winner = (hpA<=0&&hpB<=0)?null : hpA<=0?'B' : hpB<=0?'A' : (hpA/maxA>=hpB/maxB?'A':'B');
@@ -7218,6 +7222,18 @@ const {abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, e
    Owns: duelBox, statLines, statBars, fightNow, _duelMine, _duelTheirs, duelSetup, duelFightBtn, duelErr, duelSideCard, …
    ---------------------------------------------------------------- */
 const duelBox=document.getElementById('duelbox');
+let _lastDuelText='';
+document.addEventListener('click', e=>{
+  if(e.target && e.target.id==='duel-share-log' && _lastDuelText){
+    shareBox.querySelector('.who').textContent='⚔ Battle log';
+    shareBox.querySelector('.note').textContent='The whole fight, blow by blow, with the closing ledger — paste it anywhere.';
+    shareLink.value=_lastDuelText;
+    const btn=document.getElementById('sharecopy');
+    btn.textContent='Copy log';
+    shareBox.style.display='flex';
+    copyFromInput(shareLink).then(ok=>{ if(ok) btn.textContent='Copied ✓'; });
+  }
+});
 /* class XP lands only on victories — duels +8, conquests +20, guardians +60 */
 function awardXP(id, n){
   const en=codex.get(id); if(!en || en.kind!=='Fauna') return;
@@ -7256,8 +7272,66 @@ function fightNow(mine, theirs, opts){
   document.getElementById('duel-a').innerHTML=sideHtml(mine.name, mine.art||speciesPortrait(mine.genome), res.A, 'hpA', !!mine.isPlayer);
   document.getElementById('duel-b').innerHTML=sideHtml(theirs.name, theirs.art||speciesPortrait(theirs.genome), res.B, 'hpB', !!theirs.isPlayer);
   const lg=document.getElementById('duel-log');
+  /* ---- THE CHRONICLE (1.0): a duel is a story, not a damage feed. The
+     narrator is seeded by the matchup, so the same fight tells the same tale
+     on every device — and the finished log is shareable like a screenshot. */
+  const nr=mulberry32(hashInt(mine.genome.seed>>>0, theirs.genome.seed>>>0, 0xBA7D)>>>0);
+  const pick=(arr)=>arr[(nr()*arr.length)|0];
+  const VERBS=[
+    ['grazes','nicks','clips the flank of'],
+    ['strikes','slashes across','bites into'],
+    ['hammers','rakes deep into','tears into'],
+    ['savages','crushes','rends'],
+    ['devastates','all but breaks','eviscerates'],
+  ];
+  const _plain=[];
+  const say=(html, plain)=>{ lg.insertAdjacentHTML('beforeend','<div>'+html+'</div>'); _plain.push(plain); lg.scrollTop=lg.scrollHeight; };
+  const abOf=(side)=>side==='A'?res.A.ab:res.B.ab;
+  const narrate=(L)=>{
+    if(L.tick){
+      const bits=[];
+      if(L.bA) bits.push(mine.name+' burns for '+L.bA);
+      if(L.bB) bits.push(theirs.name+' burns for '+L.bB);
+      if(L.rA) bits.push(mine.name+' knits '+L.rA+' back');
+      if(L.rB) bits.push(theirs.name+' knits '+L.rB+' back');
+      say('<span style="opacity:.8">— '+bits.join(' · ')+'</span>', '   ...'+bits.join(' / '));
+      return;
+    }
+    if(L.stun){ say('<b>'+L.an+' is staggered</b> — the strike never comes!', L.an+' is staggered — the strike never comes!'); return; }
+    if(L.dodge){ say(L.an+' lunges — but <b>'+L.dn+' '+pick(['slips aside','melts away','is simply not there'])+'!</b>', L.an+' lunges — but '+L.dn+' evades!'); return; }
+    const defMax=L.side==='A'?res.maxB:res.maxA;
+    const frac=L.dmg/Math.max(1,defMax);
+    const v=pick(VERBS[frac<0.06?0:frac<0.12?1:frac<0.2?2:frac<0.3?3:4]);
+    const ab=abOf(L.side);
+    let h=(L.crit?'<b class="crit">CRITICAL!</b> ':'')+L.an+(L.fs?', striking from '+pick(['ambush','the first breath','nowhere'])+',':'')+
+      ' '+v+' '+L.dn+' with '+(ab.n||'its art')+' for <b'+(L.crit?' class="crit"':'')+'>'+L.dmg+'</b>'+
+      (L.ex?' — <b>punishing the wounded</b>':'')+(L.stp?' — <b>'+L.dn+' reels, staggered</b>':'');
+    let p=(L.crit?'CRITICAL! ':'')+L.an+(L.fs?' (first strike)':'')+' '+v+' '+L.dn+' with '+(ab.n||'its art')+' for '+L.dmg+(L.ex?' (execute)':'')+(L.stp?' (stagger)':'');
+    if(L.tb){ h+=' — thorns bite back for '+L.tb; p+=' — thorns recoil '+L.tb; }
+    if(L.ls){ h+=' — and <b>drinks '+L.ls+' vitality</b>'; p+=' — drains '+L.ls; }
+    say(h+'.', p+'.');
+    const downed=(L.side==='A'&&L.hpB<=0)?theirs.name:(L.side==='B'&&L.hpA<=0)?mine.name:null;
+    if(downed) say('☠ <b>'+downed+' falls</b> — slain by '+L.an+'’s '+(ab.n||'final blow')+'.', '*** '+downed+' falls — slain by '+L.an+'.');
+  };
+  const _statsLines=()=>{
+    const T={A:{hit:0,miss:0,crit:0,big:0,dealt:0,burn:0,thorn:0,heal:0,stun:0},B:{hit:0,miss:0,crit:0,big:0,dealt:0,burn:0,thorn:0,heal:0,stun:0}};
+    for(const L of res.log){
+      if(L.tick){ T.A.burn+=L.bB||0; T.B.burn+=L.bA||0; T.A.heal+=L.rA||0; T.B.heal+=L.rB||0; continue; }
+      if(!L.side){ continue; }
+      const S=T[L.side], O=L.side==='A'?T.B:T.A;
+      if(L.dodge||L.stun){ S.miss++; continue; }
+      S.hit++; S.dealt+=L.dmg; if(L.crit) S.crit++; if(L.dmg>S.big) S.big=L.dmg;
+      if(L.stp) S.stun++; if(L.ls) S.heal+=L.ls; if(L.tb) O.thorn+=L.tb;
+    }
+    const row=(nm,S)=>nm+': '+S.hit+' hits · '+S.crit+' crits · biggest '+S.big+' · '+S.dealt+' dealt'+(S.burn?' · '+S.burn+' burned':'')+(S.heal?' · '+S.heal+' healed':'')+(S.stun?' · '+S.stun+' staggers':'');
+    return [row(mine.name,T.A), row(theirs.name,T.B)];
+  };
   lg.innerHTML='<div style="color:var(--faint)">'+(opts.intro||'The duel begins\u2026')+'</div>';
   document.getElementById('duel-result').textContent='';
+  _plain.length=0; _plain.push('The duel begins.');
+  const _fastA=res.A.agi>=res.B.agi;
+  say('<span style="opacity:.85"><i>Initiative:</i> '+(_fastA?mine.name:theirs.name)+' moves first (AGI '+(_fastA?res.A.agi+' vs '+res.B.agi:res.B.agi+' vs '+res.A.agi)+').</span>',
+      'Initiative: '+(_fastA?mine.name:theirs.name)+' moves first.');
   duelBox.style.display='flex';
   let i=0;
   const step=()=>{
@@ -7267,6 +7341,17 @@ function fightNow(mine, theirs, opts){
       document.getElementById('duel-result').textContent = opts.resultText
         ? opts.resultText(res, win)
         : (win ? '\ud83c\udfc6 '+win+' wins!' : 'A draw — both champions stand.');
+      /* the closing ledger + the share button — fights aren't saved, but a
+         great one can be pasted anywhere, like a screenshot */
+      const SL=_statsLines();
+      say('<span style="color:var(--plasma)">📊 '+SL[0]+'</span>', '-- '+SL[0]);
+      say('<span style="color:var(--plasma)">📊 '+SL[1]+'</span>', '-- '+SL[1]);
+      lg.insertAdjacentHTML('beforeend','<div style="margin-top:6px"><button id="duel-share-log" type="button" class="act" style="width:100%">⇪ Share battle log</button></div>');
+      _lastDuelText='⚔ BATTLE LOG — Celestial Frontier\n'+
+        mine.name+(res.A.cls?' ('+res.A.cls+' Lv'+res.A.lvl+')':'')+' vs '+theirs.name+(res.B.cls?' ('+res.B.cls+' Lv'+res.B.lvl+')':'')+'\n'+
+        'Power '+res.A.total+' vs '+res.B.total+'\n\n'+_plain.join('\n')+'\n\n'+
+        (win?('Winner: '+win):'A draw — both champions stand.');
+      lg.scrollTop=lg.scrollHeight;
       if(opts.onResolve){ opts.onResolve(res); }
       else {
         stats.duels++;
@@ -7278,12 +7363,7 @@ function fightNow(mine, theirs, opts){
       return;
     }
     const L=res.log[i++];
-    lg.insertAdjacentHTML('beforeend', L.stun
-      ? '<div><b>'+L.an+' is staggered</b> — the strike never lands!</div>'
-      : L.dodge
-      ? '<div>'+L.an+' strikes — but <b>'+L.dn+' slips away!</b></div>'
-      : '<div>'+L.an+' strikes '+L.dn+' for <b'+(L.crit?' class="crit"':'')+'>'+L.dmg+(L.crit?' — critical!':'')+'</b></div>');
-    lg.scrollTop=lg.scrollHeight;
+    narrate(L);
     const eA=document.getElementById('hpA'), eB=document.getElementById('hpB');
     if(eA) eA.style.width=Math.round(L.hpA/res.maxA*100)+'%';
     if(eB) eB.style.width=Math.round(L.hpB/res.maxB*100)+'%';
@@ -8153,6 +8233,7 @@ const RELEASES=[
   '<b>📸 Discovery records</b> — Legendary-or-better finds can be copied as a keepsake: flavor, stats and the creature code in one paste. The <b>📜 Witness Log</b> in Cosmic Events remembers every sky you saw with your own eyes.',
   '<b>🎨 Painted portraits &amp; frames</b> — every portrait now stands on a lit stage: an aura behind the subject, a ground shadow beneath it, organic texture, rim light and a deep vignette. Specimen cards wear <b>etched frames with corner glints</b> that escalate by rarity — gold at Legendary, prismatic at Unique, foil at the summit.',
   'The Pathfinders’ story now runs to the very end: each Signature carries <b>their own field notes</b> — and the Prism Signature is revealed as the one discovery they died short of.',
+  '<b>⚔ The Chronicle</b> — duels are stories now, not damage feeds: initiative, named arts, first strikes from ambush, executes, thorn recoils, burn ticks, staggers, and a death line when a champion falls — closing with a <b>statistics ledger</b> (hits, crits, biggest blow, damage dealt, healing). <b>⇪ Share the battle log</b> like a screenshot — fights aren’t saved, but a great one can be pasted anywhere. The same fight tells the same tale on every device.',
  ]],
  ['◈ UI Enhancements', [
   '<b>Nameplate colors</b> — every rank now carries its own color, unlocked forever once you reach it. Pick any unlocked color from your character sheet — and <b>Eternal Frontier</b> unlocks the iridescent foil nameplate.',
