@@ -63,7 +63,7 @@
   #trail{display:none}
   #rank{order:2;margin-right:auto}
   #searchwrap{order:3} #bellwrap{order:4}
-  #hpwrap{order:5;flex:1 1 100%;width:100%;margin-top:2px}
+  #hpwrap{order:5;flex:1 1 100%;width:100%;margin-top:6px}
   #trail{order:6;flex:1 1 100%;width:100%;justify-content:flex-start}
   #hud-center #rank{pointer-events:auto}
   #hud-center #trail{font-size:13px;letter-spacing:.07em}
@@ -559,7 +559,7 @@
   #panel .act.in:hover{background:rgba(255,120,120,0.12);color:#ffb3b3;border-color:rgba(255,120,120,0.3)}
 
   /* ---- scan log ---- */
-  #logbtn{position:fixed;top:calc(var(--row1-h,58px) + 82px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
+  #logbtn{position:fixed;top:calc(var(--row1-h,58px) + 90px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
     font-family:var(--ui);font-size:11px;letter-spacing:.08em;color:var(--dim);
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:999px;padding:7px 14px;
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:7px;
@@ -567,24 +567,24 @@
   #logbtn:hover{color:var(--ink);border-color:rgba(150,162,210,0.4)}
   #logbtn .dot{width:6px;height:6px;border-radius:50%;background:var(--plasma);box-shadow:0 0 8px var(--plasma)}
   #logbtn .n{color:var(--plasma)}
-  #codexbtn{position:fixed;top:calc(var(--row1-h,58px) + 46px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
-    display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:11px;
-    font-family:var(--ui);font-size:11.5px;letter-spacing:.04em;color:var(--dim);
+  #codexbtn{position:fixed;top:calc(var(--row1-h,58px) + 50px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
+    display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;
+    font-family:var(--ui);font-size:11px;letter-spacing:.06em;color:var(--dim);
     background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
     border:1px solid rgba(150,162,210,0.22);transition:color .15s,border-color .15s}
   #codexbtn:hover{color:var(--ink);border-color:rgba(150,162,210,0.4)}
   #codexbtn .dot.bio{width:6px;height:6px;border-radius:50%;background:#7fe6a0;box-shadow:0 0 8px #7fe6a0}
   #codexbtn .n{color:#7fe6a0}
   /* ---- Cargo hold (1.0): appears after your first mine of a dead world ---- */
-  #cargobtn{position:fixed;top:calc(var(--row1-h,58px) + 126px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
-    display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:11px;
-    font-family:var(--ui);font-size:11.5px;letter-spacing:.04em;color:var(--dim);
+  #cargobtn{position:fixed;top:calc(var(--row1-h,58px) + 130px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
+    display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;
+    font-family:var(--ui);font-size:11px;letter-spacing:.06em;color:var(--dim);
     background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
     border:1px solid rgba(150,162,210,0.22);transition:color .15s,border-color .15s}
   #cargobtn:hover{color:var(--ink);border-color:rgba(150,162,210,0.4)}
   #cargobtn .dot.crg{width:6px;height:6px;border-radius:50%;background:#ffcf8a;box-shadow:0 0 8px #ffcf8a}
   #cargobtn .n{color:#ffcf8a}
-  #cargo{position:fixed;top:calc(var(--row1-h,58px) + 164px);right:18px;z-index:12;width:320px;max-height:min(56vh,500px);overflow-y:auto;
+  #cargo{position:fixed;top:calc(var(--row1-h,58px) + 170px);right:18px;z-index:12;width:320px;max-height:min(56vh,500px);overflow-y:auto;
     background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(150,162,210,0.2);border-radius:15px;padding:6px;display:none;
     box-shadow:0 18px 50px rgba(0,0,0,0.5)}
@@ -594,8 +594,8 @@
   #cargo .bset{margin:0 6px 6px}
   /* ---- Prime Codex button ---- */
   #pcdxbtn{cursor:pointer;flex:none;position:fixed;top:calc(var(--row1-h,58px) + 10px);right:18px;z-index:9;
-    display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:11px;
-    font-family:var(--ui);font-size:11.5px;font-weight:600;letter-spacing:.04em;color:#f0cf8a;
+    display:flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;
+    font-family:var(--ui);font-size:11px;font-weight:600;letter-spacing:.06em;color:#f0cf8a;
     background:linear-gradient(135deg,rgba(60,46,18,0.62),rgba(30,24,12,0.55));
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
     border:1px solid rgba(255,207,138,0.35);box-shadow:0 0 18px rgba(255,207,138,0.1);transition:border-color .15s,box-shadow .15s}
@@ -766,7 +766,7 @@
      it used to open underneath it (Dakk's 10:24 PM screenshot) */
   body.training #panel{top:calc(var(--tut-bot,150px) + 8px) !important;
     max-height:calc(100vh - var(--tut-bot,150px) - 120px) !important}
-  #codex{position:fixed;top:calc(var(--row1-h,58px) + 82px);right:18px;z-index:12;width:320px;max-height:min(66vh,600px);overflow-y:auto;
+  #codex{position:fixed;top:calc(var(--row1-h,58px) + 90px);right:18px;z-index:12;width:320px;max-height:min(66vh,600px);overflow-y:auto;
     background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(150,162,210,0.2);border-radius:15px;padding:6px;display:none;
     box-shadow:0 18px 50px rgba(0,0,0,0.5)}
@@ -845,7 +845,7 @@
   #panel .splist .k{flex:none;width:74px;color:#9fe6b4;font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding-top:1px}
   #panel .splist .v{color:#cfe8d6}
   #panel .splist .v em{font-style:normal;color:#7fe6a0;font-size:10px;margin-left:4px}
-  #log{position:fixed;top:calc(var(--row1-h,58px) + 118px);right:18px;z-index:12;width:300px;max-height:min(62vh,540px);overflow-y:auto;
+  #log{position:fixed;top:calc(var(--row1-h,58px) + 130px);right:18px;z-index:12;width:300px;max-height:min(62vh,540px);overflow-y:auto;
     display:none;background:var(--glass);border:1px solid var(--glass-brd);border-radius:16px;padding:6px;
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 16px 50px rgba(0,0,0,0.6)}
   #log::-webkit-scrollbar{width:8px} #log::-webkit-scrollbar-thumb{background:rgba(150,162,210,0.25);border-radius:8px}
@@ -903,7 +903,7 @@
     #trail{display:none}
     #rank{order:1;margin-right:8px;font-size:10px;padding:4px 9px;max-width:44vw;overflow:hidden;text-overflow:ellipsis}
     #searchwrap{order:2;flex:1 1 0;min-width:56px} #bellwrap{order:3;flex:0 0 auto}
-    #hpwrap{order:4;flex:1 1 100%;width:100%;justify-content:flex-start;margin-top:2px}
+    #hpwrap{order:4;flex:1 1 100%;width:100%;justify-content:flex-start;margin-top:6px}
     #searchin{width:100%;min-width:0;font-size:12px}
     #searchres{width:min(290px,calc(100vw - 20px))}
     #bell{font-size:13px;padding:5px 8px}
