@@ -6772,10 +6772,56 @@ function abilityTheme(g){
   else if(lo===1) t='stone';            /* burrowers */
   return t;
 }
+/* ---- the ability matrix (1.0): theme × archetype × magnitude ----
+   The 55 hand-written classics remain; sixteen D&D-style verbs join them,
+   scaled to a creature's rarity magnitude (I–V) and named by theme — "Fire
+   Reckoning III". Constants tuned empirically by tools/balance-sim.js. */
+const ARCH_ROMAN=['I','II','III','IV','V'];
+const ARCHETYPES=[
+ {id:'smite',   n:'Smite',     d:'lands every blow harder',                              mk:m=>({dmg:1.14+m*0.050})},
+ {id:'aegis',   n:'Aegis',     d:'wears a warded hide that takes less damage',           mk:m=>({taken:0.90-m*0.030})},
+ {id:'dot',     n:'Affliction',d:'sears the foe for a share of vitality each round',     mk:m=>({burn:0.015+m*0.0035})},
+ {id:'fury',    n:'Fury',      d:'builds ferocity every round',                          mk:m=>({ramp:0.024+m*0.006})},
+ {id:'ambush',  n:'Ambush',    d:'opens with a savage strike',                           mk:m=>({first:1.60+m*0.15})},
+ {id:'eye',     n:'Eye',       d:'lands criticals far more often',                       mk:m=>({critB:0.190+m*0.038})},
+ {id:'veil',    n:'Veil',      d:'slips entirely aside from blows',                      mk:m=>({dodge:0.100+m*0.022})},
+ {id:'mend',    n:'Mending',   d:'knits its wounds at the end of each round',            mk:m=>({regen:0.030+m*0.006})},
+ {id:'echo',    n:'Echo',      d:'strikes twice in a share of rounds',                   mk:m=>({dbl:0.110+m*0.026})},
+ {id:'thirst',  n:'Thirst',    d:'drinks vitality back on critical hits',                mk:m=>({drink:true, critB:0.070+m*0.018})},
+ {id:'thorns',  n:'Thorns',    d:'bleeds attackers for a share of what they deal',       mk:m=>({thorns:0.08+m*0.025})},
+ {id:'rend',    n:'Rend',      d:'tears defenses open — the foe suffers more as the fight wears on', mk:m=>({shred:0.060+m*0.014})},
+ {id:'reck',    n:'Reckoning', d:'punishes wounded foes below half vitality',            mk:m=>({execB:0.28+m*0.09})},
+ {id:'bulwark', n:'Bulwark',   d:'raises a wall no single blow can breach',              mk:m=>({cap:0.28-m*0.015})},
+ {id:'shock',   n:'Shock',     d:'staggers the foe clean out of its next strike',        mk:m=>({stun:0.095+m*0.024})},
+ {id:'roulette',n:'Roulette',  d:'swings wild — a gambler’s ceiling',                    mk:m=>({gambit:0.45+m*0.10})},
+];
 function abilityOf(g){
   const tk=abilityTheme(g), T=ABILITY_THEMES[tk]||ABILITY_THEMES.wild;
-  const ab=T.list[hashInt(g.seed>>>0, 0xAB1, 5)%T.list.length];
-  return Object.assign({}, ab, {theme:tk, themeLabel:T.label, col:T.col});
+  const tier=speciesGrade(g).tier|0;
+  const m=Math.max(0, Math.min(4, Math.floor(tier/3)));   /* magnitude I–V by rarity band */
+  const POOL=T.list.length+ARCHETYPES.length;
+  let pick=hashInt(g.seed>>>0, 0xAB1, 5)%POOL;
+  /* hybrids: 70% inherit the archetype the OTHER parent's seed selects (theme
+     already flows through inherited habitat/locomotion genes); 30% mutate */
+  if(g.parents && g.parents.length===2){
+    const rr=mulberry32(hashInt(g.seed>>>0, 0xAB2, 9)>>>0)();
+    if(rr<0.7) pick=hashInt(g.parents[1]>>>0, 0xAB1, 5)%POOL;
+  }
+  let ab;
+  if(pick<T.list.length) ab=Object.assign({}, T.list[pick]);
+  else{
+    const ar=ARCHETYPES[pick-T.list.length];
+    ab=Object.assign({id:ar.id+'_'+m, n:T.label+' '+ar.n+' '+ARCH_ROMAN[m],
+      d:'It '+ar.d+'.'}, ar.mk(m));
+  }
+  /* apex guardians fight at full magnitude, wrapped in a sovereign's poise */
+  if(g.apex){
+    const ar=ARCHETYPES[hashInt(g.seed>>>0, 0xAB3, 3)%ARCHETYPES.length];
+    ab=Object.assign({id:'sov_'+ar.id, n:'Sovereign '+T.label+' '+ar.n,
+      d:'A guardian’s art — it '+ar.d+', and its hide turns a tenth of all harm.'}, ar.mk(4));
+    ab.taken=(ab.taken||1)*0.90;
+  }
+  return Object.assign(ab, {theme:tk, themeLabel:T.label, col:T.col});
 }
 /* ---- the explorer as a battler: a gold-helmeted avatar + stats grown from your record ---- */
 let _playerAvatarURL=null;
@@ -6843,6 +6889,12 @@ function battleStats(g){
   const bonus=(g.brood||0)*22 + (g.fed||0)*10;
   if(bonus){ for(let i=0;i<5;i++) s[i]+=Math.round(bonus/5); }
   if(g._mult && g._mult>1){ for(let i=0;i<5;i++) s[i]=Math.round(s[i]*g._mult); }
+  /* world fields: lava sharpens ferocity, ice hardens resilience, gas quickens,
+     oceans deepen vitality, deserts hone insight — defenders only (guarded) */
+  if(g._wf){
+    const F={lava:[0,1.12,0,0,0], ice:[0,0,1.12,0,0], gas:[0,0,0,1.12,0], ocean:[1.10,0,0,0,0], desert:[0,0,0,0,1.12]}[g._wf];
+    if(F){ for(let i=0;i<5;i++) if(F[i]) s[i]=Math.round(s[i]*F[i]); }
+  }
   /* persistent wounds bite: the injured fight below their strength
      (guarded so unhurt genomes compute byte-identically to v1.0) */
   if(g.hurt && g.hurt>0){
@@ -6876,6 +6928,7 @@ function normGenome(g){
   if(o.par!=null){ const a=(+o.par)|0; if(a>=8 && a<=11) o.par=a; else delete o.par; }
   delete o.parents;
   delete o.hurt;          /* imported challengers arrive fresh — injuries don't travel in codes */
+  delete o._mult; delete o._wf;   /* battlefield modifiers never travel in codes */
   return o;
 }
 function decodeCreature(code){
@@ -6894,10 +6947,17 @@ function runDuel(mine, theirs){
   const maxA=A.vit*3, maxB=B.vit*3;
   let hpA=maxA, hpB=maxB, turnA=A.agi>=B.agi;
   let rampA=0, rampB=0, firstA=true, firstB=true;
+  let shredA=0, shredB=0, skipA=false, skipB=false;   /* shredX = bonus damage X SUFFERS; skipX = X's next strike staggered away */
   const log=[];
   const strike=()=>{
     const att=turnA?A:B, def=turnA?B:A;
     const an=turnA?mine.name:theirs.name, dn=turnA?theirs.name:mine.name;
+    /* shock: a staggered fighter loses this strike */
+    if(turnA?skipA:skipB){
+      if(turnA) skipA=false; else skipB=false;
+      log.push({an, dn, stun:true, hpA, hpB});
+      return;
+    }
     /* camouflage: defender slips away */
     if(def.ab.dodge && r()<def.ab.dodge){
       log.push({an, dn, dodge:true, hpA, hpB});
@@ -6909,10 +6969,20 @@ function runDuel(mine, theirs){
     if(att.ab.dmg) dmg*=att.ab.dmg;
     if(def.ab.taken) dmg*=def.ab.taken;
     if(att.ab.first && (turnA?firstA:firstB)) dmg*=att.ab.first;
+    /* the matrix verbs (1.0) — every branch guarded, so legacy ability sets
+       consume the identical rng sequence and compute byte-identically */
+    if(att.ab.gambit) dmg*=(1-att.ab.gambit*0.45)+r()*att.ab.gambit*1.45;   /* roulette: wild swings */
+    dmg*=1+(turnA?shredB:shredA);                                            /* rend: torn defenses */
+    if(att.ab.execB && (turnA?(hpB<maxB*0.5):(hpA<maxA*0.5))) dmg*=1+att.ab.execB;  /* reckoning */
     dmg=Math.max(2, Math.round(dmg));
     if(crit) dmg=Math.round(dmg*1.7);
+    if(def.ab.cap) dmg=Math.min(dmg, Math.max(3, Math.round((turnA?maxB:maxA)*def.ab.cap)));  /* bulwark */
     if(turnA){ hpB=Math.max(0,hpB-dmg); firstA=false; }
     else { hpA=Math.max(0,hpA-dmg); firstB=false; }
+    if(att.ab.shred){ if(turnA) shredB+=att.ab.shred; else shredA+=att.ab.shred; }
+    if(def.ab.thorns){ const tb=Math.max(1,Math.round(dmg*def.ab.thorns));   /* thorns bite back */
+      if(turnA) hpA=Math.max(0,hpA-tb); else hpB=Math.max(0,hpB-tb); }
+    if(att.ab.stun && r()<att.ab.stun){ if(turnA) skipB=true; else skipA=true; }
     if(crit && att.ab.drink){
       const heal=Math.round(dmg*0.3);
       if(turnA) hpA=Math.min(maxA,hpA+heal); else hpB=Math.min(maxB,hpB+heal);
@@ -6994,7 +7064,9 @@ function fightNow(mine, theirs, opts){
       return;
     }
     const L=res.log[i++];
-    lg.insertAdjacentHTML('beforeend', L.dodge
+    lg.insertAdjacentHTML('beforeend', L.stun
+      ? '<div><b>'+L.an+' is staggered</b> — the strike never lands!</div>'
+      : L.dodge
       ? '<div>'+L.an+' strikes — but <b>'+L.dn+' slips away!</b></div>'
       : '<div>'+L.an+' strikes '+L.dn+' for <b'+(L.crit?' class="crit"':'')+'>'+L.dmg+(L.crit?' — critical!':'')+'</b></div>');
     lg.scrollTop=lg.scrollHeight;
@@ -7606,7 +7678,7 @@ const GUIDE=[
  {id:'duels', t:'Duels', k:'duel fight battle initiative critical rounds deterministic code friend', body:
   '<p>Duels are round-by-round creature battles. <b>Agility</b> decides who strikes first, <b>Ferocity</b> drives damage, <b>Resilience</b> blunts it, <b>Insight</b> lands criticals, <b>Vitality</b> sets the HP pool — and each side’s ✧ ability bends the rules.</p><ul><li>Duel your own creatures from their cards, or paste a friend’s <b>CFB-</b> code.</li><li>The same matchup <b>always plays out identically</b>, on every device — duels are seeded math, like everything else.</li><li>Friendly duels are sport: nothing is lost. Conquest is another story.</li></ul>'},
  {id:'abilities', t:'Abilities & biome themes', k:'ability theme fire frost storm tide stone venom void sand chem psionic wild burn regen crit dodge', body:
-  '<p>Every creature carries one ability from its habitat’s theme — <em>fire, frost, storm, tide, stone, venom, void, sand, chem, psionic, wild</em> (gliders lean storm, swimmers tide, burrowers stone…). Abilities hook the duel math: burn damage-over-time, regeneration, crit bonuses, dodges, first-strike, ramping fury, Iron Gut toxin immunity and more. The ability is printed on the specimen card.</p>'},
+  '<p>Every creature carries one ability from its habitat’s theme — <em>fire, frost, storm, tide, stone, venom, void, sand, chem, psionic, wild</em> (gliders lean storm, swimmers tide, burrowers stone…). Beside each theme’s <b>named classics</b> lives the <b>ability matrix</b>: sixteen archetype verbs — Smite, Aegis, Affliction, Fury, Ambush, Eye, Veil, Mending, Echo, Thirst, <b>Thorns, Rend, Reckoning, Bulwark, Shock, Roulette</b> — at five magnitudes (I–V) that climb with rarity: hundreds of abilities in all (“Fire Reckoning III”). <b>Hybrids usually inherit their other parent’s archetype</b>; sometimes they mutate something new. Apex Guardians fight with <b>Sovereign</b> arts at full magnitude. Every verb is balanced empirically — equal-stat win rates pinned near 50%, with honest counters. The ability is printed on the specimen card.</p>'},
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
   '<p>Any world with fauna can be conquered. Press <b>⚔ Conquer Planet</b> on its survey card and choose <b>one champion</b> — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries <b>wounds</b> home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a creature:</b> it is <b>gone forever</b>.</li><li><b>Lose fighting yourself:</b> you take the wound instead.</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
  {id:'binder', t:'The Binder & the Fifty Paragons', k:'binder collection sets slots types paragon fifty silhouette claim stardust', body:
@@ -7818,6 +7890,8 @@ const RELEASES=[
   '<b>🜲 The Fifty Paragons</b> — named, one-of-a-kind deep-spectrum legends on fixed worlds, the same fifty for everyone. Silhouettes in the Binder until found: tap one to plot a course, scan its world to catalogue the legend.',
   '<b>⛏ Mining &amp; the 🧰 Cargo hold</b> — dead worlds finally have a job. Every lifeless planet carries a mineral profile (rarer worlds hide richer veins, up to Voidglass and Prismatium); mine hourly, stock your Cargo, and spend elements at the <b>Research bench</b>.',
   '<b>🛠 Research</b> — the engineer’s track beside the Prime Codex: Deep Scanners, a Reinforced Hull, the Xenobotany Lab, and the <b>drive ladder</b> (Fusion → Antimatter → Warp Fold) that shrinks hyperlane distance to a breath.',
+  '<b>⚔ The ability matrix</b> — sixteen archetype verbs join each theme’s classics at five rarity-scaled magnitudes: <b>Thorns, Rend, Reckoning, Bulwark, Shock, Roulette</b> and more — hundreds of abilities (“Fire Reckoning III”). <b>Hybrids inherit their other parent’s archetype</b> most of the time; Apex Guardians fight with Sovereign arts. Every verb is <b>balanced empirically</b>: thousands of simulated duels per pairing, win rates pinned near 50%.',
+  '<b>World fields</b> — a defending native now fights wrapped in its home world’s element: lava sharpens ferocity, ice hardens resilience, gas quickens, oceans deepen vitality, deserts hone insight.',
  ]],
  ['◈ UI Enhancements', [
   '<b>Nameplate colors</b> — every rank now carries its own color, unlocked forever once you reach it. Pick any unlocked color from your character sheet — and <b>Eternal Frontier</b> unlocks the iridescent foil nameplate.',
@@ -8038,7 +8112,10 @@ function apexNative(d){
   for(const g of fauna){ const t=battleStats(g).total; if(t>bt){ bt=t; best=g; } }
   const _reg=(typeof st!=='undefined'&&st.gal)?regionAt(st.gal.x,st.gal.y):0;
   const _mult=1+_reg*0.14;                       /* outer worlds field tougher apex defenders */
-  const ng=_mult>1?{...best, _mult:_mult}:best;
+  const ng={...best};
+  if(_mult>1) ng._mult=_mult;
+  /* world fields (1.0): a defender fights wrapped in its home world's element */
+  if(d.ptype && (d.ptype==='lava'||d.ptype==='ice'||d.ptype==='gas'||d.ptype==='ocean'||d.ptype==='desert')) ng._wf=d.ptype;
   return {name:describeSpecies(best).name, genome:ng, region:_reg};
 }
 /* rough pre-fight win estimate so you can choose a champion wisely */
@@ -8085,7 +8162,7 @@ function runConquestBattle(d, champ, native){
   pickBox.style.display='none';
   duelSetup.style.display='none'; duelFightBtn.style.display='none'; duelErr.textContent='';
   fightNow(champ, native, {
-    intro:'The conquest begins — '+champ.name+' faces '+native.name+'\u2026',
+    intro:(native.guardian?('👑 '+native.name+' rises. The world itself holds its breath'):('The conquest begins — '+champ.name+' faces '+native.name))+'\u2026',
     resultText:(res,win)=> res.winner==='A'
       ? '\ud83c\udff4 World settled! '+champ.name+' triumphs — bioscans here are safe and ☄ Stardust awaits.'
       : (champ.isPlayer ? '\ud83d\udc80 You were overpowered. The world holds.'
