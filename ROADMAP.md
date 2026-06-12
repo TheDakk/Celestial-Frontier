@@ -310,6 +310,18 @@ pack for fixed entities (Fifty Paragons, class crests, element icons,
 guardian archetypes). First deliverable when Dakk opts in: a one-page
 STYLE BIBLE for his image generations; then assets/ wiring with SVG
 fallback. NOT in 1.0.
+BUILT 2026-06-12 (980a122): **THE CHRONICLE** — D&D duel narration (seeded
+narrator, severity verbs, named arts, first strikes/executes/thorns/burn
+ticks/staggers, death lines), closing per-side statistics ledger, and a
+"Share battle log" button (plain-text chronicle via the share box; fights
+not saved — share-like-a-screenshot per Dakk). runDuel log enriched;
+OUTCOMES byte-identical (rng untouched).
+**OPEN ART DECISION (Dakk leaning, not confirmed): habitat backdrops.**
+Recommended hybrid: procedural habitat vignette (sky tinted by biome heat,
+horizon, 2-3 silhouette terrain layers, props from FA_HABITAT's 19
+habitats + flora/fungi/microbe settings) UNDERNEATH the existing
+stagecraft lighting (shadow grounds the creature IN the scene). Dakk to
+say go; portraits unchanged until then.
 REMAINING before ship: (a) folding the remaining ~60 class-list names into
 the CLASSES table (pure data; needs a baseline regen); (b) element icons
 as real mini-SVGs (colored ◆ glyphs shipped as v1); (c) Dakk's on-device
