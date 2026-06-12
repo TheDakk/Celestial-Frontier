@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --void:#04040c; --ink:#e9edff; --dim:#a0a8cc; --faint:#6d76a2;
+    --void:#04040c; --ink:#e9edff; --dim:#b2bad8; --faint:#828cb6;
     --plasma:#ffcf8a; --accent:#8fb4ff; --line:rgba(150,162,210,0.14);
     --glass:rgba(10,13,26,0.72); --glass-brd:rgba(150,162,210,0.20);
     --ui:'Space Grotesk',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
@@ -336,8 +336,11 @@
   #cinema .hint{margin-top:26px;font:600 9px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
 
   /* ---- share dialog: the link is always visible & selectable, copy is a bonus ---- */
-  #sharebox{position:fixed;inset:0;z-index:34;display:none;align-items:center;justify-content:center;
-    background:rgba(4,5,10,0.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+  /* the share box ALWAYS comes to the front — its dim backdrop fades whatever
+     summoned it (duel, reveal, training) so the thing you opened is the thing
+     you see (Dakk's bring-to-front rule) */
+  #sharebox{position:fixed;inset:0;z-index:71;display:none;align-items:center;justify-content:center;
+    background:rgba(4,5,10,0.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
   #sharebox .card{width:min(420px,calc(100vw - 36px));background:var(--glass);border:1px solid rgba(143,180,255,0.35);
     border-radius:16px;padding:18px;box-shadow:0 24px 70px rgba(0,0,0,0.65)}
   #sharebox h3{font:600 13px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--plasma);margin:0 0 4px}
@@ -568,7 +571,7 @@
   #codexbtn .dot.bio{width:6px;height:6px;border-radius:50%;background:#7fe6a0;box-shadow:0 0 8px #7fe6a0}
   #codexbtn .n{color:#7fe6a0}
   /* ---- Cargo hold (1.0): appears after your first mine of a dead world ---- */
-  #cargobtn{position:fixed;top:calc(var(--row1-h,58px) + 82px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
+  #cargobtn{position:fixed;top:calc(var(--row1-h,58px) + 118px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
     display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:11px;
     font-family:var(--ui);font-size:11.5px;letter-spacing:.04em;color:var(--dim);
     background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
@@ -576,7 +579,7 @@
   #cargobtn:hover{color:var(--ink);border-color:rgba(150,162,210,0.4)}
   #cargobtn .dot.crg{width:6px;height:6px;border-radius:50%;background:#ffcf8a;box-shadow:0 0 8px #ffcf8a}
   #cargobtn .n{color:#ffcf8a}
-  #cargo{position:fixed;top:calc(var(--row1-h,58px) + 118px);right:18px;z-index:12;width:320px;max-height:min(62vh,560px);overflow-y:auto;
+  #cargo{position:fixed;top:calc(var(--row1-h,58px) + 154px);right:18px;z-index:12;width:320px;max-height:min(58vh,520px);overflow-y:auto;
     background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(150,162,210,0.2);border-radius:15px;padding:6px;display:none;
     box-shadow:0 18px 50px rgba(0,0,0,0.5)}
@@ -908,7 +911,8 @@
     body.fs-xl #bell{font-size:14px}
     #hpbar{width:clamp(110px,33vw,188px);height:12px} #hptext{font-size:9px} #hpheart{font-size:14px}
     #pcdxbtn{right:14px;padding:6px 9px;font-size:10.5px;gap:5px} #pcdxbtn .lbl{display:inline}
-    #codexbtn,#logbtn,#codex,#log{right:14px}
+    #codexbtn,#logbtn,#codex,#log,#cargobtn,#cargo{right:14px}
+    #cargo{width:min(300px,calc(100vw - 20px))}
     /* side buttons + panels sit BELOW the two-row topbar — never overlapping it */
     /* float the side rails just below the header, however many rows it wraps to */
     #dailybtn{top:calc(var(--topbar-h,118px) + 8px);font-size:10px;padding:6px 11px}  #stats{top:calc(var(--row1-h,58px) + 6px)}
@@ -8709,7 +8713,11 @@ function buyTech(id){
 const cargoBtn=document.getElementById('cargobtn');
 const cargoEl=document.getElementById('cargo');
 let cargoOpen=false;
-function showCargoBtn(){ if(cargoBtn && (cargo.size>0 || techOwned.size>0)) cargoBtn.style.display='flex'; }
+function showCargoBtn(){
+  if(cargoBtn && (cargo.size>0 || techOwned.size>0)) cargoBtn.style.display='flex';
+  const cc=document.getElementById('cargocount');
+  if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0);   /* count is live even when the panel is closed */
+}
 function renderCargo(){
   if(!cargoEl) return;
   const cc=document.getElementById('cargocount'); if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0);
@@ -8731,7 +8739,12 @@ function renderCargo(){
     const own=techOwned.has(t.id);
     const gated=t.req && !techOwned.has(t.req);
     const afford=_canAfford(t);
-    const costTxt=Object.keys(t.cost).map(k=>t.cost[k]+'× '+k).join(' + ')+' + ☄'+t.sd;
+    /* costs in PLAIN NAMES, each lit green when you hold enough — nobody
+       should need the periodic table to build a drive (Dakk playtest) */
+    const costTxt=Object.keys(t.cost).map(k=>{
+      const have=cargo.get(k)||0, need=t.cost[k];
+      return '<span style="color:'+(have>=need?'#7fe6a0':'#ff8a72')+'">'+need+'× '+(ELEM_NAME[k]||k)+' <span style="opacity:.65">('+have+')</span></span>';
+    }).join(' + ')+' + <span style="color:'+(essence>=t.sd?'#7fe6a0':'#ff8a72')+'">☄'+t.sd+'</span>';
     html+='<div class="bset'+(own?' done':'')+'"><span>'+t.ic+' <b>'+t.name+'</b> — '+t.d+
       (own?'':'<br><span class="bcnt">'+(gated?'requires '+(TECHS.find(x=>x.id===t.req)||{}).name:costTxt)+'</span>')+'</span>'+
       (own?'<span class="bclaimed">built ✓</span>'
@@ -9086,7 +9099,7 @@ const tutSpotEl=document.createElement('div'); tutSpotEl.id='tutspot'; document.
 
 /* focus lockdown: while training, only the current lesson's surfaces accept
    input. The card and any open dialog stay usable so nobody gets stuck. */
-const TUT_ALWAYS=['#tutbox','#pickbox','#reveal','#duelbox','#namebox','#deathbox','#setbtn','#setpanel','#relbox','#helpbtn','#helppop'];
+const TUT_ALWAYS=['#tutbox','#pickbox','#reveal','#duelbox','#namebox','#deathbox','#setbtn','#setpanel','#relbox','#helpbtn','#helppop','#sharebox'];
 const TUT_GATE_EVTS=['pointerdown','click','touchstart','wheel'];
 function _tutGate(e){
   if(!_tutHook) return;
