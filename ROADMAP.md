@@ -189,7 +189,20 @@ Dakk's direction from the 2026-06-11 late-night session (his words paraphrased):
    teleport hidden mid-tunnel, eased arrival. Deterministic streak tunnel
    (mulberry32(0x7261), 90 additive lines) tinted by destination star color;
    tap skips; fxOn-gated; honors prefers-reduced-motion. Pure presentation.
-7. **UI color/contrast pass — code-side DONE (2026-06-11 late), on-device
+7a. **Readability + accessibility (Dakk, ~10 PM round): partially built,
+   audit spec below.** BUILT: default body text brightened (--dim #8b93b8 →
+   #a0a8cc — was blue-on-blue); new **Text tone** setting (Soft/Bright/Max,
+   save field `tone`) lifting text toward white, with <b> emphasis shifting
+   to GOLD via --emph in the bright tones (Dakk's "yellowish emphasis" —
+   `b{color:var(--emph,inherit)}`, default tone unchanged). STILL TO DO —
+   **colorblind audit** for the 1.0 pass: verify every signal has a
+   non-color channel. Current inventory: HP = number + bar length ✓;
+   creature condition = text labels ✓; odds = % numbers ✓; rarity = names +
+   stars + badges ✓; loved/disliked tastes = ♥/⊘ glyphs ✓; RISK: green-vs-
+   red odds coloring and the green/amber/red HP slide are red-green-
+   confusable — consider a "high-visibility palette" toggle later (blue/
+   orange instead of green/red) rather than reworking defaults.
+7b. **UI color/contrast pass — code-side DONE (2026-06-11 late), on-device
    sweep REMAINS.** Fixed: HP bar is now continuous green→amber→red by HP
    fraction (pure green ONLY at 100% — Dakk: "red when below 100%"; the
    empty track also tints faint red when wounded); HP chip darkened to
