@@ -234,15 +234,15 @@
   #stats::-webkit-scrollbar{width:8px} #stats::-webkit-scrollbar-thumb{background:rgba(255,207,138,0.25);border-radius:8px}
   #stats h4{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:var(--plasma);margin:12px 0 6px}
   #stats h4:first-child{margin-top:0}
-  #stats .srow{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:#cfd6f2;margin:4px 0}
-  #stats .srow .k{color:var(--faint)}
+  #stats .srow{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:#e2e7f8;margin:4px 0}
+  #stats .srow .k{color:var(--dim)}
   #stats .bar{height:5px;border-radius:99px;background:rgba(150,162,210,0.15);overflow:hidden;margin-top:5px}
   #stats .bar i{display:block;height:100%;background:linear-gradient(90deg,#8fb4ff,#ffcf8a)}
   #stats .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:5px}
   #stats .tier{border:1px solid;border-radius:8px;padding:5px 3px;text-align:center;font-size:8.5px;letter-spacing:.03em}
   #stats .tier .c{font:600 13px var(--ui)}
-  #stats .ach{display:flex;gap:8px;align-items:baseline;font-size:11px;margin:5px 0;color:#cfd6f2;line-height:1.35}
-  #stats .ach.off{opacity:0.32}
+  #stats .ach{display:flex;gap:8px;align-items:baseline;font-size:11px;margin:5px 0;color:#dde3f5;line-height:1.35}
+  #stats .ach.off{opacity:0.5}
   #stats .ach .ic{flex:none}
   #stats .ach b{font-weight:600;color:var(--ink)}
 
@@ -8109,8 +8109,8 @@ const GUIDE=[
   '<p>Dozens of achievements track cataloguing, breeding, rarity hunting, conquest, stellar finds and exploration feats. Browse them in your character sheet (tap your nameplate) — each category expands. Many are secret handshakes with the universe: favorite a place, survive the brink, find a black hole…</p>'},
 ]},
 {icon:'⚔', cat:'Combat', blurb:'Duels, abilities, conquest', topics:[
- {id:'duels', t:'Duels', k:'duel fight battle initiative critical rounds deterministic code friend', body:
-  '<p>Duels are round-by-round creature battles. <b>Agility</b> decides who strikes first, <b>Ferocity</b> drives damage, <b>Resilience</b> blunts it, <b>Insight</b> lands criticals, <b>Vitality</b> sets the HP pool — and each side’s ✧ ability bends the rules.</p><ul><li>Duel your own creatures from their cards, or paste a friend’s <b>CFB-</b> code.</li><li>The same matchup <b>always plays out identically</b>, on every device — duels are seeded math, like everything else.</li><li>Friendly duels are sport: nothing is lost. Conquest is another story.</li></ul>'},
+ {id:'duels', t:'Duels & the Chronicle', k:'duel fight battle initiative critical rounds deterministic code friend chronicle log share ledger', body:
+  '<p>Duels are round-by-round creature battles. <b>Agility</b> decides who strikes first, <b>Ferocity</b> drives damage, <b>Resilience</b> blunts it, <b>Insight</b> lands criticals, <b>Vitality</b> sets the HP pool — and each side’s ✧ ability and 🛡 class arts bend the rules.</p><ul><li>Every fight is told as <b>the Chronicle</b>: named arts, first strikes, executes, thorn recoils, burn ticks, staggers, a death line — closing with a <b>statistics ledger</b> (hits, crits, biggest blow…).</li><li><b>⇪ Share the battle log</b> at the end of any fight — a plain-text chronicle to paste anywhere, like a screenshot. Fights aren’t saved; legends are retold.</li><li>Duel your own creatures from their cards, or paste a friend’s <b>CFB-</b> code. The same matchup <b>always plays out identically</b>, on every device.</li><li>Friendly duels are sport: nothing is lost — but victories still feed your creature’s <b>XP</b>. Conquest is another story.</li></ul>'},
  {id:'abilities', t:'Abilities & biome themes', k:'ability theme fire frost storm tide stone venom void sand chem psionic wild burn regen crit dodge', body:
   '<p>Every creature carries one ability from its habitat’s theme — <em>fire, frost, storm, tide, stone, venom, void, sand, chem, psionic, wild</em> (gliders lean storm, swimmers tide, burrowers stone…). Beside each theme’s <b>named classics</b> lives the <b>ability matrix</b>: sixteen archetype verbs — Smite, Aegis, Affliction, Fury, Ambush, Eye, Veil, Mending, Echo, Thirst, <b>Thorns, Rend, Reckoning, Bulwark, Shock, Roulette</b> — at five magnitudes (I–V) that climb with rarity: hundreds of abilities in all (“Fire Reckoning III”). <b>Hybrids usually inherit their other parent’s archetype</b>; sometimes they mutate something new. Apex Guardians fight with <b>Sovereign</b> arts at full magnitude. Every verb is balanced empirically — equal-stat win rates pinned near 50%, with honest counters. The ability is printed on the specimen card.</p>'},
  {id:'classes', t:'Classes, XP & levels', k:'class level xp experience innate warrior mage berserker paladin assassin fusion wins', body:
@@ -8142,7 +8142,7 @@ const GUIDE=[
 ]},
 {icon:'🌌', cat:'The Living Universe', blurb:'Cosmic events, determinism, one shared cosmos', topics:[
  {id:'events', t:'Cosmic events', k:'events supernova timescale minute hour day week month year decade witness', body:
-  '<p>The universe is alive on every timescale: somewhere a star is always dying, and rarer spectacles cycle by the minute, hour, day, week, month, year and decade. Open <b>Cosmic Events</b> (left rail) to see what’s live and travel to it. Because everything is deterministic, <b>every explorer sees the same event at the same moment</b> — witnessing one is a shared experience.</p>'},
+  '<p>The universe is alive on every timescale: somewhere a star is always dying, and rarer spectacles cycle by the minute, hour, day, week, month, year and decade. Open <b>Cosmic Events</b> (left rail) to see what’s live and travel to it. Because everything is deterministic, <b>every explorer sees the same event at the same moment</b> — witnessing one is a shared experience. The <b>📜 Witness Log</b> at the top of the panel remembers every sky you saw with your own eyes.</p>'},
  {id:'determinism', t:'One universe, no server', k:'deterministic seed offline same universe share procedural infinite math', body:
   '<p>There is no server and no download — the entire universe is generated from seeds, on your device, on demand. The same coordinates always hold the same galaxy, the same world, the same creature, for everyone, forever. That’s what makes share codes work, duels fair, and events shared. The universe needs no saving; only <em>your</em> story is saved.</p>'},
 ]},
@@ -8348,6 +8348,14 @@ const RELEASES=[
   'A <b>deterministic procedural cosmos</b> — every galaxy, star and world generated from seeds, identical for every explorer, fully offline, no account needed. Four seamless scales: universe → galaxy → star system → planet surface.',
   '<b>Hyperlane travel</b> with real distance — far jumps take longer, and researched drives shrink the void to a breath. The tunnel wears your destination’s light; tap to skip.',
   '<b>Survey cards</b> for everything: worlds, stars, black holes, wormholes, supernovae, the CMB — and spectral designations that wear each object’s rarity as color.',
+  '<b>Frontier regions</b> — your charter begins at the Solar Reach and expands with every Signature claimed: the Local Cluster, the Near Field, the Deep Field, the Outer Dark, and finally the Frontier. Farther regions field tougher defenders and stranger life.',
+  '<b>Cosmic events on every timescale</b> — somewhere a star is always dying, and rarer spectacles cycle by the hour, week, month and year. Every explorer sees the same event at the same moment; the 📜 Witness Log remembers the skies you saw.',
+ ]],
+ ['🧭 The Explorer’s Tools', [
+  '<b>Star Atlas</b> bookmarks with favorites and a home marker; <b>search</b> that finds anything you’ve discovered or named and accepts pasted codes; the <b>Traveler’s Beacon</b> — a fresh shared destination every five minutes.',
+  '<b>Share codes</b> — CF1- codes land friends on your exact world; CFB- codes summon your exact creature for duels; 📸 <b>discovery records</b> turn Legendary+ finds into paste-anywhere keepsakes.',
+  '<b>Field Training</b> — every new expedition opens with a fully sandboxed tutorial: chart Earth, train with a loaned cache, feed, breed, duel, take a scratch and heal. Skippable for veterans; nothing lost in training follows you out.',
+  'A searchable <b>🧭 Guide to the Universe</b> covers every system in the game — tap ? anytime (the version line there opens these notes).',
  ]],
  ['🧬 Life & the Compendium', [
   'Catalogue life across <b>four kingdoms and sixteen realms</b>, drawn by a painterly portrait engine that stages every creature <b>in the habitat where you found it</b>.',
@@ -8355,12 +8363,14 @@ const RELEASES=[
   '<b>Breed</b> hybrids (both parents consumed!), <b>feed</b> for permanent growth and medicine — and mind the poison: rarer flora bites deeper, and only a spent beast dies of it.',
   '<b>👑 Apex Guardians</b> — named one-of-a-kind summit titans ruling rare worlds, the same rulers for every explorer. Defeat one in conquest and it joins your Compendium.',
   '<b>🜲 The Fifty Paragons</b> — legendary deep-spectrum creatures on fixed worlds, silhouettes in your Binder until found. Share the coordinates; your friend hunts the same legend.',
+  '<b>A living collection</b> — your Compendium interbreeds and evolves on its own as the cosmic clock ticks, and worlds re-roll their rosters as the universe ages. Sapience tiers run from Instinctive to fully Sapient; whole worlds host civilizations from stone-age to starfaring.',
  ]],
  ['⚔ Battle', [
   '<b>Classes, XP & levels</b> — every beast is born to one of 180+ classes (Warrior to Worldbreaker; the legendary ones live at the summit) with <b>innate always-on arts</b>. <b>Power is built through wins</b> — duels, conquests, guardians — and levels wake more arts, never raw stats.',
   'An <b>ability matrix</b> of hundreds of arts (“Fire Reckoning III”), every verb balanced across thousands of simulated duels. Hybrids inherit their other parent’s archetype; guardians fight with Sovereign arts.',
   '<b>The Chronicle</b> — duels are narrated blow-by-blow like a tabletop session: initiative, named arts, executes, thorn recoils, burn ticks, death lines — closing with a statistics ledger and a <b>shareable battle log</b>.',
-  '<b>Conquest</b> — champion worlds yourself or send a beast; settled worlds fly your flag, scan safely and pay Stardust. World fields make defenders fight in their element; wounds persist and feeding is medicine.',
+  '<b>Conquest</b> — champion worlds yourself or send a beast; settled worlds fly your flag, scan safely and pay Stardust. World fields make defenders fight in their element.',
+  '<b>Wounds persist</b> — conquest scars and resented meals leave a beast Bruised, Injured or Critical, fighting below its strength until mended. <b>Feeding is medicine</b>: loved flavours mend most, rarer flora mends deeper — and poisons harder. The frontier bites you too: hostile bioscans cost HP, and at zero the expedition ends.',
  ]],
  ['🛠 Progression', [
   '<b>The Prime Codex</b> — nine Signatures to finish the Pathfinders’ unfinished master survey and reach the Celestial Frontier. Each carries their field notes; the Prism Signature is the discovery they died short of. Multiple endings.',
