@@ -33,6 +33,7 @@ const ARCH = {
   bulwark: m => ({cap:0.28-m*0.015}),
   shock:   m => ({stun:0.095+m*0.024}),
   roulette:m => ({gambit:0.45+m*0.10}),
+  enrage:  m => ({enrage:0.16+m*0.05}),
 };
 
 const html = fs.readFileSync(path.join(__dirname, 'probe-build.html'), 'utf8');

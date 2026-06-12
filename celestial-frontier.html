@@ -952,6 +952,9 @@
   .bclaim{flex:none;padding:5px 10px;border-radius:8px;cursor:pointer;font:700 10px var(--ui);
     color:#1a1206;background:linear-gradient(135deg,#f2d27f,#e0a84a);border:1px solid rgba(255,220,150,0.9)}
   .bclaimed{flex:none;font:600 10px var(--ui);color:#7fe6a0}
+  /* class XP bar on specimen cards: wins fill it; levels wake innate arts */
+  .xpbar{height:6px;border-radius:99px;background:rgba(150,162,210,0.16);overflow:hidden;margin:6px 0 3px}
+  .xpbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#7fd0ff,#b06cff)}
   /* ---- the iridescent foil treatment (v1.3): grade badges + summit frames ---- */
   .gbadge{display:inline-block;padding:1px 7px;border-radius:8px;border:1px solid currentColor;
     font-weight:700;letter-spacing:.06em;font-size:.92em;vertical-align:baseline}
@@ -5498,6 +5501,15 @@ function showReveal(entry, isHybrid){
     } else {
       stEl.innerHTML+='<div class="abil"><span style="color:'+(S.ab.col||'#ffd96a')+'">✧ '+(S.ab.themeLabel?'<span style="opacity:.8">['+S.ab.themeLabel+']</span> ':'')+'<b>'+S.ab.n+'</b></span> — '+S.ab.d+
         ((entry.genome.brood||entry.genome.fed)?'<br>♞ Bloodline: brood '+(entry.genome.brood||0)+' · fed '+(entry.genome.fed||0):'')+'</div>';
+      if(entry.kind==='Fauna' && S.cls){
+        const _xp=(+entry.genome.xp)||0, _lv=S.lvl;
+        const _lo=12*_lv*_lv, _hi=12*(_lv+1)*(_lv+1);
+        const _pct=_lv>=9?100:Math.round((_xp-_lo)/Math.max(1,_hi-_lo)*100);
+        stEl.innerHTML+='<div class="abil">🛡 <b>'+S.cls+'</b> · Level '+_lv+(_lv>=9?' · MAX':'')+
+          ' — innate arts, always on ('+(1+(_lv>=3?1:0)+(_lv>=6?1:0))+' of 3 awake)'+
+          '<div class="xpbar"><i style="width:'+Math.max(2,Math.min(100,_pct))+'%"></i></div>'+
+          '<span style="font-size:9px;color:var(--faint)">XP '+_xp+' — victories feed it: duels +8 · conquests +20 · guardians +60</span></div>';
+      }
       if(entry.kind==='Fauna'){
         const _t=faunaTastes(entry.genome);
         stEl.innerHTML+='<div class="abil" style="font-size:9.5px;opacity:.95"><span style="color:#7fe6a0">♥ Favours</span> '+_t.likes.map(k=>STAT_META[k].name).join(', ')+' · <span style="color:#ffd96a">⊘ Dislikes</span> '+STAT_META[_t.dislikes[0]].name+'-rich flora</div>';
@@ -5509,7 +5521,8 @@ function showReveal(entry, isHybrid){
         '<button id="rev-duel" type="button" data-guide="duels" data-tip="A friendly duel — sport only, nothing is lost.">⚔ Duel</button>'+
         (codex.has(entry.id) ? '<button id="rev-breed" type="button" data-guide="breeding" data-tip="Forge a new bloodline — both parents are consumed, win or lose.">🧬 Breed</button>' : '')+
         (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A welcome meal grows its bloodline and mends its wounds — a toxic one poisons, and can finish a beast with nothing left.">🌿 Feed</button>' : '')+
-        (codex.has(entry.id) ? '<button id="rev-rename" type="button" data-tip="Your name rides inside its creature code too.">✎ Rename</button>' : '');
+        (codex.has(entry.id) ? '<button id="rev-rename" type="button" data-tip="Your name rides inside its creature code too.">✎ Rename</button>' : '')+
+        (entry.grade && entry.grade.tier>=5 ? '<button id="rev-record" type="button" data-tip="Copy a keepsake record of this find — flavor, stats and its creature code.">📸 Record</button>' : '');
     }
   } else {
     if(stEl) stEl.innerHTML='';
@@ -5526,6 +5539,7 @@ revealEl.addEventListener('click', (e)=>{
   if(e.target && e.target.id==='rev-breed' && _revEntry){ openPicker('breed', _revEntry); return; }
   if(e.target && e.target.id==='rev-feed' && _revEntry){ openPicker('feed', _revEntry); return; }
   if(e.target && e.target.id==='rev-rename' && _revEntry){ askRenameSpecies(_revEntry); return; }
+  if(e.target && e.target.id==='rev-record' && _revEntry){ recordCreature(_revEntry); return; }
   if(e.target && e.target.id==='rev-x' && pendingReveals.length){
     pendingReveals.length=0;          /* skip all queued reveals */
     revealEl.style.display='none'; if(codexOpen) renderCodex(); return;
@@ -6806,7 +6820,110 @@ const ARCHETYPES=[
  {id:'bulwark', n:'Bulwark',   d:'raises a wall no single blow can breach',              mk:m=>({cap:0.28-m*0.015})},
  {id:'shock',   n:'Shock',     d:'staggers the foe clean out of its next strike',        mk:m=>({stun:0.095+m*0.024})},
  {id:'roulette',n:'Roulette',  d:'swings wild — a gambler’s ceiling',                    mk:m=>({gambit:0.45+m*0.10})},
+ {id:'enrage',  n:'Rage',      d:'grows stronger the more it bleeds',                    mk:m=>({enrage:0.16+m*0.05})},
 ];
+/* ---- creature classes (1.0): innate arts, levels, power through WINS ----
+   Every fauna rolls a CLASS (rarity-gated; world-tier classes live at the
+   summit). A class grants INNATE always-on hook bundles — far more reliable
+   than rolled abilities — and creatures LEVEL by winning (duels, conquests,
+   guardians). Levels unlock MORE innate slots (lv3, lv6), never raw stats:
+   Dakk's law — power is built through wins, not stacking. Full 150-name
+   source list: tools/class-list.txt; this table is the wired first wave. */
+const CLASS_GROUPS={M:'Martial',C:'Caster',S:'Stealth',D:'Divine',N:'Nature',K:'Dark',B:'Beast',T:'Artifice',X:'Mythic'};
+const CLASSES=[
+ ['Warrior','M',0,'smite','aegis','reck'],      ['Fighter','M',0,'aegis','smite','echo'],
+ ['Barbarian','M',0,'fury','smite','enrage'],   ['Berserker','M',2,'enrage','fury','gambit'],
+ ['Knight','M',1,'aegis','bulwark','thorns'],   ['Paladin','D',3,'mend','aegis','smite'],
+ ['Crusader','D',2,'smite','aegis','dot'],      ['Templar','D',3,'bulwark','mend','eye'],
+ ['Monk','M',1,'veil','echo','stun'],           ['Shadow Monk','S',3,'veil','stun','ambush'],
+ ['Samurai','M',2,'ambush','eye','reck'],       ['Ronin','M',1,'gambit','ambush','veil'],
+ ['Duelist','M',1,'eye','veil','reck'],         ['Swashbuckler','M',1,'echo','veil','gambit'],
+ ['Brawler','M',0,'stun','smite','enrage'],     ['Gladiator','M',2,'reck','fury','aegis'],
+ ['Ranger','N',0,'ambush','eye','veil'],        ['Hunter','N',0,'eye','ambush','rend'],
+ ['Archer','M',0,'eye','echo','ambush'],        ['Arcane Archer','C',2,'eye','dot','echo'],
+ ['Scout','S',0,'veil','ambush','echo'],        ['Rogue','S',1,'ambush','eye','veil'],
+ ['Assassin','S',3,'ambush','reck','stun'],     ['Ninja','S',2,'veil','echo','stun'],
+ ['Shadowblade','S',4,'ambush','rend','veil'],  ['Demon Hunter','D',3,'rend','eye','thorns'],
+ ['Monster Slayer','M',2,'rend','reck','aegis'],['Dragon Slayer','M',4,'rend','reck','bulwark'],
+ ['Giant Slayer','M',3,'reck','rend','veil'],   ['Wizard','C',2,'dot','eye','stun'],
+ ['Mage','C',0,'dot','eye','mend'],             ['Sorcerer','C',1,'gambit','dot','fury'],
+ ['Warlock','K',2,'dot','thirst','rend'],       ['Witch','K',1,'rend','dot','veil'],
+ ['Necromancer','K',3,'thirst','dot','mend'],   ['Lich','K',5,'thirst','mend','dot'],
+ ['Elementalist','C',2,'dot','fury','aegis'],   ['Pyromancer','C',1,'dot','smite','fury'],
+ ['Cryomancer','C',1,'stun','aegis','dot'],     ['Stormcaller','C',2,'echo','stun','dot'],
+ ['Geomancer','C',1,'bulwark','thorns','aegis'],['Hydromancer','C',1,'mend','aegis','dot'],
+ ['Chronomancer','C',4,'stun','veil','echo'],   ['Blood Mage','K',3,'thirst','enrage','dot'],
+ ['Psion','C',3,'stun','eye','veil'],           ['Cleric','D',1,'mend','aegis','bulwark'],
+ ['Druid','N',1,'mend','thorns','fury'],        ['Shaman','N',1,'mend','dot','fury'],
+ ['Oracle','D',3,'eye','veil','mend'],          ['Inquisitor','D',2,'reck','eye','aegis'],
+ ['Death Knight','K',4,'thirst','aegis','dot'], ['Dark Knight','K',3,'enrage','thirst','smite'],
+ ['Hexblade','K',3,'rend','gambit','thirst'],   ['Reaper','K',4,'reck','ambush','thirst'],
+ ['Vampire','K',3,'thirst','veil','mend'],      ['Plaguebearer','K',2,'dot','rend','thorns'],
+ ['Beastmaster','B',1,'fury','echo','mend'],    ['Warden','N',2,'thorns','bulwark','mend'],
+ ['Shapeshifter','B',2,'gambit','veil','enrage'],['Alchemist','T',1,'dot','gambit','mend'],
+ ['Artificer','T',2,'bulwark','echo','thorns'], ['Engineer','T',1,'thorns','bulwark','echo'],
+ ['Gunslinger','T',2,'echo','eye','ambush'],    ['Battlemage','C',2,'smite','aegis','dot'],
+ ['Spellsword','C',2,'echo','smite','eye'],     ['Mystic Knight','C',3,'aegis','bulwark','smite'],
+ ['Runeblade','C',3,'rend','smite','bulwark'],  ['Summoner','C',2,'echo','mend','dot'],
+ ['Bard','D',1,'stun','mend','veil'],           ['Sage','C',2,'eye','mend','veil'],
+ ['Strategist','M',2,'eye','rend','aegis'],     ['Amazon','M',2,'echo','ambush','fury'],
+ ['Valkyrie','D',4,'smite','mend','ambush'],    ['Titan','X',5,'bulwark','smite','enrage'],
+ ['Champion','M',3,'smite','aegis','fury'],     ['Guardian','M',2,'bulwark','thorns','mend'],
+ ['Warlord','M',4,'fury','smite','reck'],       ['Spellbreaker','M',3,'stun','aegis','rend'],
+ ['Astral Knight','X',6,'smite','veil','dot'],  ['Void Knight','X',7,'rend','veil','thirst'],
+ ['Phoenix Knight','X',6,'mend','dot','enrage'],['Frost Knight','M',3,'stun','aegis','bulwark'],
+ ['Storm Knight','M',3,'echo','stun','smite'],  ['Holy Beast','B',4,'mend','smite','aegis'],
+ ['Demonic Beast','B',4,'enrage','dot','thirst'],['Elder Beast','B',5,'bulwark','mend','fury'],
+ ['Primal Beast','B',1,'fury','enrage','smite'],['Celestial Beast','X',6,'eye','mend','veil'],
+ ['Abyssal Beast','X',6,'rend','veil','dot'],   ['Spirit Beast','B',3,'veil','mend','stun'],
+ ['Crystal Beast','B',3,'thorns','bulwark','eye'],['Metal Beast','B',2,'aegis','bulwark','smite'],
+ ['Poison Beast','B',1,'dot','thorns','rend'],  ['Venomancer','K',2,'dot','rend','veil'],
+ ['Swarm Lord','B',3,'echo','dot','fury'],      ['Nightstalker','S',2,'ambush','veil','reck'],
+ ['Dawnbringer','D',4,'smite','mend','eye'],    ['Dragonbound','X',5,'dot','smite','aegis'],
+ ['Feybound','N',3,'veil','stun','gambit'],     ['Beastbound','B',2,'fury','smite','mend'],
+ ['Spiritbound','D',3,'veil','mend','eye'],     ['Machinebound','T',3,'bulwark','echo','aegis'],
+ ['Crystalbound','T',3,'thorns','eye','bulwark'],['Godtouched','X',8,'mend','smite','veil'],
+ ['Cursed One','K',4,'gambit','enrage','rend'], ['Mutant','B',2,'gambit','enrage','mend'],
+ ['Eldritch Horror','X',9,'stun','rend','thirst'],['Ancient One','X',9,'bulwark','mend','eye'],
+ ['Worldbreaker','X',11,'smite','reck','enrage'],['Worldhealer','X',11,'mend','bulwark','thorns'],
+ ['Worldeater','X',12,'thirst','rend','dot'],   ['Worldshaper','X',12,'bulwark','stun','smite'],
+ ['Avatar','X',13,'smite','mend','veil'],       ['Chosen One','X',14,'enrage','mend','eye'],
+];
+function classOf(g){
+  const tier=speciesGrade(g).tier|0;
+  let pool=CLASSES.filter(c=>c[2]<=tier);
+  if(!pool.length) pool=CLASSES.slice(0,8);
+  /* breeding fusion: hybrids lean hard toward their parents' class lineages */
+  if(g.parents && g.parents.length===2){
+    const r=mulberry32(hashInt(g.seed>>>0, 0xC1A, 7)>>>0)();
+    if(r<0.6){
+      const gA=CLASSES[hashInt(g.parents[0]>>>0, 0xC1A, 5)%CLASSES.length][1];
+      const gB=CLASSES[hashInt(g.parents[1]>>>0, 0xC1A, 5)%CLASSES.length][1];
+      const fused=pool.filter(c=>c[1]===gA||c[1]===gB);
+      if(fused.length) pool=fused;
+    }
+  }
+  const c=pool[hashInt(g.seed>>>0, 0xC1A, 5)%pool.length];
+  return {name:c[0], group:CLASS_GROUPS[c[1]]||c[1], verbs:[c[3],c[4],c[5]], minTier:c[2]};
+}
+/* levels: pure win-fed XP, quadratic thresholds (early levels land fast).
+   Levels NEVER touch stats — they unlock innate slots at 3 and 6. */
+function levelOf(g){ return Math.min(9, Math.floor(Math.sqrt(Math.max(0,(+g.xp)||0)/12))); }
+function classKit(g){
+  const cls=classOf(g), lvl=levelOf(g);
+  const n=1+(lvl>=3?1:0)+(lvl>=6?1:0);
+  const hooks={};
+  for(let i=0;i<n;i++){
+    const ar=ARCHETYPES.find(a=>a.id===cls.verbs[i]); if(!ar) continue;
+    const h=ar.mk(i);                                /* innate magnitudes: I, II, III by slot */
+    for(const k in h){
+      if(k==='dmg'||k==='taken'||k==='first') hooks[k]=(hooks[k]||1)*h[k];
+      else if(typeof h[k]==='boolean') hooks[k]=hooks[k]||h[k];
+      else hooks[k]=(hooks[k]||0)+h[k];
+    }
+  }
+  return {cls, lvl, slots:n, hooks};
+}
 function abilityOf(g){
   const tk=abilityTheme(g), T=ABILITY_THEMES[tk]||ABILITY_THEMES.wild;
   const tier=speciesGrade(g).tier|0;
@@ -6913,9 +7030,22 @@ function battleStats(g){
     const w=1-Math.min(0.85, +g.hurt)*0.55;
     for(let i=0;i<5;i++) s[i]=Math.max(4, Math.round(s[i]*w));
   }
+  const ab=abilityOf(g);
+  /* class innates ride on top — fauna only; always-on, merged into the hook set.
+     Levels add HOOKS, never stats: power through wins, not stacking. */
+  let _cls=null, _lvl=0;
+  if(g.kingdom==='fauna'){
+    const K=classKit(g);
+    _cls=K.cls.name; _lvl=K.lvl;
+    for(const k in K.hooks){
+      if(k==='dmg'||k==='taken'||k==='first') ab[k]=(ab[k]||1)*K.hooks[k];
+      else if(typeof K.hooks[k]==='boolean') ab[k]=ab[k]||K.hooks[k];
+      else ab[k]=(ab[k]||0)+K.hooks[k];
+    }
+  }
   return {vit:s[0], fer:s[1], res:s[2], agi:s[3], ins:s[4], tier,
     total:s[0]+s[1]+s[2]+s[3]+s[4], hex:(d.grade?d.grade.hex:'#9fb6d6'), name:d.name,
-    ab:abilityOf(g)};
+    cls:_cls, lvl:_lvl, ab};
 }
 function encodeCreature(entry){
   const o={g:entry.genome, n:entry.name};
@@ -6940,6 +7070,7 @@ function normGenome(g){
   if(o.par!=null){ const a=(+o.par)|0; if(a>=8 && a<=11) o.par=a; else delete o.par; }
   delete o.parents;
   delete o.hurt;          /* imported challengers arrive fresh — injuries don't travel in codes */
+  delete o.xp;            /* levels are YOUR creature's story — a shared one starts at 1 */
   delete o._mult; delete o._wf;   /* battlefield modifiers never travel in codes */
   return o;
 }
@@ -6983,6 +7114,7 @@ function runDuel(mine, theirs){
     if(att.ab.first && (turnA?firstA:firstB)) dmg*=att.ab.first;
     /* the matrix verbs (1.0) — every branch guarded, so legacy ability sets
        consume the identical rng sequence and compute byte-identically */
+    if(att.ab.enrage){ const _mf=turnA?(1-hpA/maxA):(1-hpB/maxB); dmg*=1+att.ab.enrage*_mf; }   /* rage: blood for power */
     if(att.ab.gambit) dmg*=(1-att.ab.gambit*0.45)+r()*att.ab.gambit*1.45;   /* roulette: wild swings */
     dmg*=1+(turnA?shredB:shredA);                                            /* rend: torn defenses */
     if(att.ab.execB && (turnA?(hpB<maxB*0.5):(hpA<maxA*0.5))) dmg*=1+att.ab.execB;  /* reckoning */
@@ -7028,6 +7160,18 @@ const {abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, e
    Owns: duelBox, statLines, statBars, fightNow, _duelMine, _duelTheirs, duelSetup, duelFightBtn, duelErr, duelSideCard, …
    ---------------------------------------------------------------- */
 const duelBox=document.getElementById('duelbox');
+/* class XP lands only on victories — duels +8, conquests +20, guardians +60 */
+function awardXP(id, n){
+  const en=codex.get(id); if(!en || en.kind!=='Fauna') return;
+  const g=en.genome, before=levelOf(g);
+  g.xp=Math.min(1e6, ((+g.xp)||0)+n);
+  const after=levelOf(g);
+  if(after>before){
+    playRaritySting(4); fxBurst(FX_GOLD,22);
+    toast('🛡 Level '+after+' — '+en.name, (after===3||after===6)?'A new innate art awakens!':'Its legend grows with every victory.');
+  }
+  queueSave();
+}
 function statLines(S){
   return STAT_NAMES.map((n,i)=>{
     const v=[S.vit,S.fer,S.res,S.agi,S.ins][i];
@@ -7068,7 +7212,7 @@ function fightNow(mine, theirs, opts){
       if(opts.onResolve){ opts.onResolve(res); }
       else {
         stats.duels++;
-        if(res.winner==='A') stats.duelwins++;
+        if(res.winner==='A'){ stats.duelwins++; if(mine && mine.id) awardXP(mine.id, 8); }   /* wins feed the class XP bar */
         playRaritySting(res.winner==='A'?5:2);
         checkAch(); renderRank(); queueSave();
       }
@@ -7136,6 +7280,22 @@ function shareCreature(entry){
   shareLink.value=code;
   const btn=document.getElementById('sharecopy');
   btn.textContent='Copy code';
+  shareBox.style.display='flex';
+  copyFromInput(shareLink).then(ok=>{ if(ok) btn.textContent='Copied \u2713'; });
+}
+/* a keepsake for Legendary-or-better finds: flavor + stats + the code, one paste */
+function recordCreature(entry){
+  const S=battleStats(entry.genome);
+  const code=encodeCreature(entry);
+  const rec='\u2726 DISCOVERY RECORD \u2014 Celestial Frontier\n'+
+    entry.name+' \u2014 '+(entry.grade?entry.grade.name+(entry.grade.star?' '+entry.grade.star:''):'')+'\n'+
+    (S.cls?S.cls+' \u00b7 Level '+S.lvl+' \u00b7 ':'')+'Power '+S.total+' \u00b7 \u2727 '+S.ab.n+'\n'+
+    'Catalogued at '+(entry.from||'an unknown world')+' by '+(explorerName||'an explorer')+'\n'+code;
+  shareBox.querySelector('.who').textContent='\ud83d\udcf8 Discovery record \u2014 '+entry.name;
+  shareBox.querySelector('.note').textContent='A keepsake of the find \u2014 flavor, stats and the creature code in one paste. The code summons the identical creature anywhere.';
+  shareLink.value=rec;
+  const btn=document.getElementById('sharecopy');
+  btn.textContent='Copy record';
   shareBox.style.display='flex';
   copyFromInput(shareLink).then(ok=>{ if(ok) btn.textContent='Copied \u2713'; });
 }
@@ -7691,6 +7851,8 @@ const GUIDE=[
   '<p>Duels are round-by-round creature battles. <b>Agility</b> decides who strikes first, <b>Ferocity</b> drives damage, <b>Resilience</b> blunts it, <b>Insight</b> lands criticals, <b>Vitality</b> sets the HP pool — and each side’s ✧ ability bends the rules.</p><ul><li>Duel your own creatures from their cards, or paste a friend’s <b>CFB-</b> code.</li><li>The same matchup <b>always plays out identically</b>, on every device — duels are seeded math, like everything else.</li><li>Friendly duels are sport: nothing is lost. Conquest is another story.</li></ul>'},
  {id:'abilities', t:'Abilities & biome themes', k:'ability theme fire frost storm tide stone venom void sand chem psionic wild burn regen crit dodge', body:
   '<p>Every creature carries one ability from its habitat’s theme — <em>fire, frost, storm, tide, stone, venom, void, sand, chem, psionic, wild</em> (gliders lean storm, swimmers tide, burrowers stone…). Beside each theme’s <b>named classics</b> lives the <b>ability matrix</b>: sixteen archetype verbs — Smite, Aegis, Affliction, Fury, Ambush, Eye, Veil, Mending, Echo, Thirst, <b>Thorns, Rend, Reckoning, Bulwark, Shock, Roulette</b> — at five magnitudes (I–V) that climb with rarity: hundreds of abilities in all (“Fire Reckoning III”). <b>Hybrids usually inherit their other parent’s archetype</b>; sometimes they mutate something new. Apex Guardians fight with <b>Sovereign</b> arts at full magnitude. Every verb is balanced empirically — equal-stat win rates pinned near 50%, with honest counters. The ability is printed on the specimen card.</p>'},
+ {id:'classes', t:'Classes, XP & levels', k:'class level xp experience innate warrior mage berserker paladin assassin fusion wins', body:
+  '<p>Every beast is born to a <b>class</b> — Warrior, Berserker, Necromancer, Assassin, Druid… over a hundred, with the legendary ones (<b>Titan, Worldbreaker, Avatar, Chosen One</b>) reserved for summit-grade creatures. A class grants <b>innate arts</b>: always-on powers that need no roll, printed on the specimen card.</p><ul><li><b>Power is built through wins.</b> Victories feed the XP bar — duels +8, conquests +20, guardians +60 — and levels wake <b>more innate arts</b> (slots at level 3 and 6), never raw stats.</li><li><b>Breeding fuses bloodlines:</b> a hybrid usually inherits a class from its parents’ lineages — a Caster line crossed with a Martial line breeds toward Spellswords and Battlemages.</li><li>Levels are <em>your</em> creature’s story — a shared code arrives at level 1.</li></ul>'},
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
   '<p>Any world with fauna can be conquered. Press <b>⚔ Conquer Planet</b> on its survey card and choose <b>one champion</b> — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries <b>wounds</b> home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a creature:</b> it is <b>gone forever</b>.</li><li><b>Lose fighting yourself:</b> you take the wound instead.</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
  {id:'binder', t:'The Binder & the Fifty Paragons', k:'binder collection sets slots types paragon fifty silhouette claim stardust', body:
@@ -7929,6 +8091,8 @@ const RELEASES=[
   '<b>🛠 Research</b> — the engineer’s track beside the Prime Codex: Deep Scanners, a Reinforced Hull, the Xenobotany Lab, and the <b>drive ladder</b> (Fusion → Antimatter → Warp Fold) that shrinks hyperlane distance to a breath.',
   '<b>⚔ The ability matrix</b> — sixteen archetype verbs join each theme’s classics at five rarity-scaled magnitudes: <b>Thorns, Rend, Reckoning, Bulwark, Shock, Roulette</b> and more — hundreds of abilities (“Fire Reckoning III”). <b>Hybrids inherit their other parent’s archetype</b> most of the time; Apex Guardians fight with Sovereign arts. Every verb is <b>balanced empirically</b>: thousands of simulated duels per pairing, win rates pinned near 50%.',
   '<b>World fields</b> — a defending native now fights wrapped in its home world’s element: lava sharpens ferocity, ice hardens resilience, gas quickens, oceans deepen vitality, deserts hone insight.',
+  '<b>🛡 Classes, XP &amp; levels</b> — every beast is born to a class (over a hundred, from Warrior to <b>Worldbreaker</b>; the legendary ones live at the summit) with <b>innate always-on arts</b>. <b>Power is built through wins</b>: duels, conquests and guardian kills feed the XP bar, and levels wake more innate arts — never raw stats. Breeding fuses class lineages into hybrids like Spellswords.',
+  '<b>📸 Discovery records</b> — Legendary-or-better finds can be copied as a keepsake: flavor, stats and the creature code in one paste. The <b>📜 Witness Log</b> in Cosmic Events remembers every sky you saw with your own eyes.',
  ]],
  ['◈ UI Enhancements', [
   '<b>Nameplate colors</b> — every rank now carries its own color, unlocked forever once you reach it. Pick any unlocked color from your character sheet — and <b>Eternal Frontier</b> unlocks the iridescent foil nameplate.',
@@ -8208,6 +8372,7 @@ function runConquestBattle(d, champ, native){
       stats.duels++;
       if(res.winner==='A'){
         stats.duelwins++;
+        if(!champ.isPlayer && champ.id) awardXP(champ.id, native.guardian?60:20);
         conquered.set(d.planetSeed, {t:0, tier:(d.designation?d.designation.tier:1)});
         if(native.guardian){
           /* the fallen guardian joins the Compendium — the fighter's road to the summit */
@@ -8375,8 +8540,15 @@ function renderCargo(){
   let html='<div class="chead">🧰 Cargo Hold</div>';
   if(cargo.size===0) html+='<div class="empty">Empty. <b>Lifeless worlds</b> carry the elements — open any dead world’s survey and ⛏ Mine Deposits.</div>';
   else{
+    /* every element wears its family color as a crystal glyph — gold is gold, ices are cyan, exotics shimmer */
+    const EC={Au:'#ffd96a',Ag:'#e2e6f0',Cu:'#e8956a',Pt:'#dfe8fa',Ir:'#cdb8ec',Fe:'#aab2c2',Ni:'#b8c0ce',Ti:'#9fb6d6',W:'#8a96aa',
+      Co:'#7fa8f8',Cr:'#bcd6e6',Mn:'#c2a878',Pb:'#98a2b2',Sn:'#c8d0dc',Zn:'#cdd5e2',Al:'#d2d6dc',Mg:'#e2e2dc',Ca:'#eee8d2',Na:'#ffd96a',
+      Li:'#ff9fb2',U:'#9fe06a',Th:'#bcd66a',S:'#d8c24f',P:'#ffb84f',C:'#8a8a9a',N:'#a8c8ff',O:'#9fdfe8',Cl:'#c0ff5a',
+      H:'#f2c8a2',He:'#ecdfc2',H2O:'#9fdfe8',CH4:'#8fd6ff',NH3:'#b8d2f8',CO2:'#c2ecf2',He3:'#7fd0ff',
+      Nd:'#b58cff',Pm:'#ff9fe0',Vg:'#3fe8c8',Pz:'#ff7ae8'};
     const rows=[...cargo.entries()].filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]);
-    html+='<div class="bgrid" style="padding:0 6px 6px">'+rows.map(e=>'<span class="bslot" style="border-color:rgba(255,207,138,0.4);color:var(--ink)"><b>'+e[1]+'</b>× '+(ELEM_NAME[e[0]]||e[0])+'</span>').join('')+'</div>';
+    html+='<div class="bgrid" style="padding:0 6px 6px">'+rows.map(e=>'<span class="bslot" style="border-color:rgba(255,207,138,0.4);color:var(--ink)">'+
+      '<span style="color:'+(EC[e[0]]||'#c8d0dc')+'">◆</span> <b>'+e[1]+'</b>× '+(ELEM_NAME[e[0]]||e[0])+'</span>').join('')+'</div>';
   }
   html+='<div class="chead">🛠 Research Bench</div>';
   for(const t of TECHS){
@@ -9121,6 +9293,12 @@ function renderEvents(){
   const now=Date.now();
   let html='<div class="ehead">◉ Cosmic Events — happening today</div>'+
     '<div class="ambient">Every second, somewhere, a star is dying. Watch the galaxies — you\u2019ll see them go. Rarer events announce themselves when their time comes.</div>';
+  /* the witness log: "were you there?" — the record of skies you saw with your own eyes */
+  html+='<div class="ehead">📜 Witness Log</div><div class="ambient">'+
+    (stats.events>0
+      ? 'You have been there for <b>'+stats.events+'</b> cosmic event'+(stats.events===1?'':'s')+'. Witnessed: '+
+        (EVENT_DEFS.filter(d=>[...eventKeysSeen].some(k=>String(k).indexOf(d.id)>=0)).map(d=>d.title).join(' · ')||'the record keeps their secret')+'.'
+      : 'Nothing witnessed yet. When a once-a-week supernova or a once-a-year alignment goes <b>LIVE</b>, be looking — every explorer alive shares that same sky.')+'</div>';
   for(const def of EVENT_DEFS){
     const bucket=Math.floor(now/1000/def.per);
     const elapsed=now/1000 - bucket*def.per;
