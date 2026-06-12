@@ -843,12 +843,19 @@
     #hud-center{display:contents}
     #hud-right{display:contents}
     #trail{display:none}
-    #rank{order:1;margin-right:8px;font-size:10px;padding:4px 9px}
-    #searchwrap{order:2;flex:1 1 auto;min-width:0} #bellwrap{order:3}
+    #rank{order:1;margin-right:8px;font-size:10px;padding:4px 9px;max-width:44vw;overflow:hidden;text-overflow:ellipsis}
+    #searchwrap{order:2;flex:1 1 0;min-width:56px} #bellwrap{order:3;flex:0 0 auto}
     #hpwrap{order:4;flex:1 1 100%;width:100%;justify-content:flex-start;margin-top:2px}
     #searchin{width:100%;min-width:0;font-size:12px}
     #searchres{width:min(290px,calc(100vw - 20px))}
     #bell{font-size:13px;padding:5px 8px}
+    /* large text sizes must not balloon the nameplate off row 1 (the global
+       body.fs-* #rank rules outrank the plain #rank above and pushed the
+       bell down a row — Dakk's 9:41 PM screenshot). Mobile caps: */
+    body.fs-lg #rank{font-size:11px;padding:5px 10px}
+    body.fs-xl #rank{font-size:12px;padding:5px 11px}
+    body.fs-lg #bell{font-size:13px}
+    body.fs-xl #bell{font-size:14px}
     #hpbar{width:clamp(110px,33vw,188px);height:12px} #hptext{font-size:9px} #hpheart{font-size:14px}
     #pcdxbtn{right:14px;padding:6px 9px;font-size:10.5px;gap:5px} #pcdxbtn .lbl{display:inline}
     #codexbtn,#logbtn,#codex,#log{right:14px}
