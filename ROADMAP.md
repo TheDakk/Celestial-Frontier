@@ -145,29 +145,21 @@ Dakk's direction from the 2026-06-11 late-night session (his words paraphrased):
    guardians into the Pathfinders story rather than leaving them mechanical.
    Not started — needs a focused pass over intro text, SIGS hints, ending
    text, and Guide category blurbs.
-2. **Mobile playtest fixes (Dakk, 2026-06-11 ~8:40 PM, on live v1.2 iPhone
-   Safari — screenshot was of Sol system view with large text size):**
-   - **Release notes open scrolled to the bottom, not the top.** The Guide
-     also opens at the bottom. Likely ONE global issue: scrollable overlay
-     bodies don't reset `scrollTop=0` (or focus jumps to the last element)
-     when (re)opened. Audit every scrollable panel open path (`relbox`,
-     guide body, codex, stats…) and reset scroll on open.
-   - **Tooltips fire immediately on tap on mobile** — the 600 ms long-press
-     delay isn't gating; taps shouldn't show tooltips at all (tap = action).
-     Check the tooltip pointer handlers (touchstart path) on the live build.
-   - **HP bar layout breaks at large text size on mobile:** the ❤ label and
-     bar misalign and the HP number gets pushed/wrapped (in the screenshot
-     the number is not visible at all next to the bar). Dakk's fix: render
-     the HP number ON the bar (overlaid, centered) instead of beside it,
-     and fix the row's alignment so text-size changes can't break it.
-   - **Local-storage warning:** add a clear message that ALL progress lives
-     in this browser's local storage — clearing site data/cache wipes the
-     save. Surface it somewhere durable (Settings and/or first-run bulletin
-     + Guide saving topic), ideally with a pointer to share codes as the
-     only export today.
-3. **Release notes discipline** — keep revising RELEASES[0] (v1.3) in place as
+2. ~~Mobile playtest fixes~~ — **DONE & DEPLOYED 2026-06-11 ~9 PM** (Dakk
+   approved): shipped to live as **v1.2 hotfix `c3f3830`** (branch
+   `hotfix/v12-mobile` off ffdd3e2; only the 4 fixes — no v1.3 content) and
+   applied identically to main in 6f78e47. The four: overlay scroll-to-top
+   (relbox + all 4 guide views), tap-never-tooltips (focusin gated by recent
+   pointerdown; keyboard focus still shows), HP number ON the bar (absolute
+   centered; per-text-size fonts 9.5/10.5/11.5px), Settings local-storage
+   warning. v1.3 notes carry a 🐞 Bug Fixes section documenting them.
+   Worktree gotchas hit & solved: fresh checkout needed LF normalization
+   (CRLF broke make-probe-build's IIFE anchor) and a node_modules junction.
+3. Tutorial "horizon" step now highlights the conquest champion choice
+   (fight as yourself or send a beast) — main/v1.3 only (copy change).
+4. **Release notes discipline** — keep revising RELEASES[0] (v1.3) in place as
    the version grows; same-version revision is explicitly OK per Dakk.
-4. After all of the above: offer the v1.3 bump + deploy again.
+5. After the story pass: offer the v1.3 bump + deploy again.
 
 ## Next version (v1.4 runway, per Dakk)
 
