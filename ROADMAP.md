@@ -164,21 +164,27 @@ Dakk's direction from the 2026-06-11 late-night session (his words paraphrased):
    (gold drowned in the gold topbar); breed cinematic chains the reveal card
    via new cinematic({then}) — card never slides in mid-spectacle; HP number
    rides a dark .hpchip; poison ☠ spaced from its % in pickers.
-5. **Nameplate colors (Dakk, round 2)** — the rank pill is static gold today.
-   Build: one color per rank (10 RANKS; Eternal Frontier gets the .irid foil),
-   colors unlock as ranks are reached, player picks any unlocked color in the
-   character sheet (save field e.g. `nameHue`, absent-default = current
-   rank's color). NOT started.
-6. **Full UI color/contrast deep pass, mobile + desktop (Dakk, round 2)** —
+5. ~~Nameplate colors~~ — **BUILT (v1.3)**: RANK_HUES (one per rank, Eternal
+   Frontier = .irid foil), unlocks tracked monotonically in stats.bestRank
+   (save `br`), choice in save `nh` (-1 = match current rank), picker dots in
+   the character sheet above the rarity ladder, painted by applyNameplate().
+6. ~~Travel animation~~ — **BUILT (v1.3), moved up from v1.4 per Dakk**:
+   travelTo() wraps goTo for the 8 user jump sites (atlas/home/beacon/search/
+   codex-where/share-code/prime-grid/events). Three phases over ~950ms: dive
+   (camera z ×0.94/frame — real zoom-out through the scale transitions),
+   teleport hidden mid-tunnel, eased arrival. Deterministic streak tunnel
+   (mulberry32(0x7261), 90 additive lines) tinted by destination star color;
+   tap skips; fxOn-gated; honors prefers-reduced-motion. Pure presentation.
+7. **Full UI color/contrast deep pass, mobile + desktop (Dakk, round 2)** —
    audit every text-on-fill, gold-on-gold, highlight-vs-chrome collision at
    all three text sizes. NOT started.
-7. **Story coherence pass — Dakk reconfirmed he wants it IN v1.3**: weave
+8. **Story coherence pass — Dakk reconfirmed he wants it IN v1.3**: weave
    guardians, the deep spectrum/summit and the card-collection identity into
    the Pathfinders / Prime Codex fiction (intro, SIGS hints, endings, Guide
    lore, bulletin voice). NOT started.
-8. **Release notes discipline** — keep revising RELEASES[0] (v1.3) in place as
+9. **Release notes discipline** — keep revising RELEASES[0] (v1.3) in place as
    the version grows; same-version revision is explicitly OK per Dakk.
-9. After 5–7: offer the v1.3 bump + deploy again.
+10. After 7–8: offer the v1.3 bump + deploy again.
 
 ## THE NEXT ARC (Dakk, 2026-06-11 end of session) — staged v1.4 → v1.6
 
@@ -219,18 +225,6 @@ session; designs below are the source of truth for future sessions):
    better drive. Gives REGIONS a second axis: Signatures open the frontier,
    ships make it reachable. CAUTION agreed: free zoom-anywhere is the
    game's soul — travel friction must never gate looking, only jumping.
-
-## v1.4 runway addition (Dakk, round 2): travel animation
-
-Dakk asked for thoughts on a zoom travel animation between galaxies ("almost
-like you're traveling") — IDEAS ONLY, not implemented. Sketch discussed:
-hyperlane feel built from what the engine already has — camera zoom-lerp
-through the existing universe→galaxy→system scales (the renderer is already
-scale-continuous), plus a brief radial starfield streak (existing star
-positions stretched along motion vector, alpha-faded; no new assets), eased
-S-curve (fast middle, soft arrival), ~600–900ms, fxOn-gated and reduced-motion
-aware, skippable by tap. Atlas/beacon jumps get the full streak; short hops a
-gentler glide. Deterministic — pure presentation, no Math.random in domain.
 
 ## Next version (v1.4 runway, per Dakk)
 
