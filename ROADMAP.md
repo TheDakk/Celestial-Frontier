@@ -5,7 +5,47 @@
 > batch, keep everything committed and pushed. The chat is disposable; this
 > file and the repo are not.
 
-## ★ 1.0 IS READY (2026-06-12, commit d3f721e) — AWAITING DAKK'S DEPLOY ★
+## ★★★ v1.0 "THE FRONTIER OPENS" IS LIVE ★★★ (2026-06-12, ~4:30 AM)
+
+SHIPPED: deployed as 0808737, refreshed same-night as **107107a** (live now).
+GAME_VERSION='1.0'; single comprehensive debut bulletin; the version reset
+is complete. **The release-notes pattern now RESUMES the old way: every
+player-visible change lands as a bullet in a NEW RELEASES[0] v1.1 entry as
+it is built; GAME_VERSION bumps only on Dakk's say-so.**
+
+WHAT 1.0 CONTAINS (all verified): deterministic universe · hyperlane travel
+with real distance + drive ladder · 15-grade rarity (deep spectrum + summit,
+Omnipotent at top) · Apex Guardians · the Fifty Paragons · the Binder + Sets
+· ~182 creature classes with innate arts · XP/levels (power through wins,
+levels wake arts, never stats) · ability matrix (17 verbs × 11 themes × 5
+magnitudes, empirically balanced 42–58) · the Chronicle (narrated duels +
+ledger + shareable battle log) · mining/elements/Cargo/research bench ·
+poison-wounds-not-executes · habitat-backdrop painterly portraits + rarity
+card frames · nameplate rank colors · collection-card badges/foil · tabbed
+Settings (Display/Graphics/Audio) · text tone + font options · unified
+right-rail design system · glass-pill HP readout · Pathfinders story from
+intro to Prism Signature to ending · Witness Log · discovery records ·
+field training (all soft-locks fixed) · ? popover (version → full notes).
+
+VERIFICATION TOOLING (run all three on any future change):
+- tools/validate.js — build + invariants + 50-probe determinism fingerprint
+- tools/smoke.js — full jsdom UI walk incl. training
+- tools/balance-sim.js [mag] — 17-verb combat fairness (42–58 band)
+- tools/systems-check.js — 19 functional checks (classes/XP/breeding/
+  imports/guardians/duels). All four GREEN at ship.
+
+POST-1.0 QUEUE (the v1.1 pile, in rough priority):
+1. Dakk's live playtest feedback (the eternal source of truth).
+2. Element icons as real mini-SVG art (colored ◆ glyphs shipped in 1.0).
+3. JOB 2 — the curated AI raster art pack (Paragons/class crests/elements/
+   guardian archetypes): when Dakk opts in, FIRST deliverable is a style
+   bible for his image generations, then assets/ wiring with SVG fallback.
+4. More guardian flavor: unique battle intros per epithet.
+5. Public-player bug reports once anyone else plays.
+HOUSEKEEPING: the hotfix worktree (C:\Projects\cf-hotfix, branch
+hotfix/v12-mobile) is obsolete now that 1.0 collapsed the lines.
+
+## ★ 1.0 WAS READY (2026-06-12, commit d3f721e) — historical ★
 
 Everything built and verified: GAME_VERSION='1.0', single debut bulletin
 "The Frontier Opens", habitat-backdrop portraits, ~182 classes, the
