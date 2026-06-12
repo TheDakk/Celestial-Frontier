@@ -5,6 +5,18 @@
 > batch, keep everything committed and pushed. The chat is disposable; this
 > file and the repo are not.
 
+## ★ 1.0 IS READY (2026-06-12, commit d3f721e) — AWAITING DAKK'S DEPLOY ★
+
+Everything built and verified: GAME_VERSION='1.0', single debut bulletin
+"The Frontier Opens", habitat-backdrop portraits, ~182 classes, the
+Chronicle, all four pillars, all fixes. Fingerprint/smoke/balance green.
+Deploy = `node tools/deploy.js` from the repo root on Dakk's word (the
+hotfix worktree at C:\Projects\cf-hotfix is now obsolete — remove after
+1.0 ships: `git worktree remove C:\Projects\cf-hotfix`).
+POST-1.0 (the v1.1 pile starts fresh): Dakk's on-device review feedback,
+element mini-SVG icons (colored ◆ shipped), Job 2 raster art pack (style
+bible first), public playtest fixes.
+
 ## VERSION RESET (Dakk, 2026-06-11 ~9:45 PM): the staged release SHIPS AS v1.0
 
 - Nobody but Dakk has played yet and every bug was fixed pre-release, so the
