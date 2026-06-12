@@ -15,7 +15,7 @@
     wormholeDescriptor, cmbDescriptor, oortDescriptor, kuiperDescriptor,
     visitorDescriptor, beltDescriptor, climateBand,
     makeGenome, crossGenome, evolveGenome, describeSpecies, faunaDesc,
-    speciesGrade, rarityRoll, colorGrade, spectral, sapienceTier,
+    speciesGrade, rarityRoll, colorGrade, spectral, sapienceTier, guardianFor,
     realmBiome, classifyRealm, ecologyRole, planetSpecies, speciesPortrait,
     battleStats, abilityOf, abilityTheme, floraStat, runDuel, winEstimate,
     encodeWhere, decodeWhere, encodeCreature, decodeCreature, cleanName, normGenome,
@@ -168,6 +168,12 @@
   probe('regions', () => REGIONS);
   probe('sigs', () => SIGS.map((s) => [s.id, s.name || s.label || '', s.verb || '']));
   probe('gradeTiers', () => GRADE_TIERS);
+  probe('guardians', () => {
+    // which of the first 2000 world seeds are guarded, and the first few rulers in full
+    const ruled = [];
+    for (let s = 1; s <= 2000; s++) { const g = guardianFor(s); if (g) ruled.push([s, g.tier, g.name]); }
+    return { count: ruled.length, first: ruled.slice(0, 8) };
+  });
   probe('constants', () => [UCELL, OBS_R, GR, SYS_R, HOME_GAL_SEED, HOME_POS, SOL_SEED, PLAYER_SEED, HARVEST_CD, SAVE_KEY]);
 
   window.__FINGERPRINT__ = FP;

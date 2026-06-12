@@ -19,13 +19,14 @@ function rollOld(seed, salt){
 }
 function rollNew(seed, salt){
   const r=mulberry32((hashInt(seed>>>0, salt|0, 0x9a))>>>0)();
+  if(r>0.99999997) return 14; if(r>0.99999991) return 13; if(r>0.9999997) return 12;
   if(r>0.999999) return 11; if(r>0.999996) return 10; if(r>0.999985) return 9;
   if(r>0.99994) return 8; if(r>0.99976) return 7; if(r>0.992) return 6;
   if(r>0.972) return 5; if(r>0.93) return 4; if(r>0.84) return 3;
   if(r>0.66) return 2; if(r>0.40) return 1; return 0;
 }
-const N=4_000_000, SALTS=[1, 0x10F];
-const counts=new Array(12).fill(0);
+const N=30_000_000, SALTS=[1, 0x10F];
+const counts=new Array(15).fill(0);
 let downgrades=0, upgrades=0;
 for(const salt of SALTS){
   for(let s=1; s<=N; s++){
@@ -39,6 +40,6 @@ const total=N*SALTS.length;
 console.log('seeds checked:', total.toLocaleString());
 console.log('downgrades:', downgrades, downgrades===0 ? '(PASS — no creature loses its grade)' : '(FAIL!)');
 console.log('upgrades (old Uniques climbing into the deep spectrum):', upgrades);
-const NAMES=['Common','Uncommon','Notable','Rare','Exotic','Legendary','Anomalous','Unique','Mythic','Celestial','Primordial','Transcendent'];
-for(let t=7;t<=11;t++) console.log(`  t${t} ${NAMES[t].padEnd(13)} ${counts[t].toString().padStart(7)}  (~1 in ${Math.round(total/Math.max(1,counts[t])).toLocaleString()})`);
+const NAMES=['Common','Uncommon','Notable','Rare','Exotic','Legendary','Anomalous','Unique','Mythic','Celestial','Primordial','Transcendent','Empyrean','Eternal','Singular'];
+for(let t=7;t<=14;t++) console.log(`  t${t} ${NAMES[t].padEnd(13)} ${counts[t].toString().padStart(7)}  (~1 in ${Math.round(total/Math.max(1,counts[t])).toLocaleString()})`);
 process.exit(downgrades===0?0:1);

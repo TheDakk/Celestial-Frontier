@@ -7,7 +7,7 @@
   "wormholeDescriptor", "cmbDescriptor", "oortDescriptor", "kuiperDescriptor",
   "visitorDescriptor", "beltDescriptor", "climateBand",
   "makeGenome", "crossGenome", "evolveGenome", "describeSpecies", "faunaDesc",
-  "speciesGrade", "rarityRoll", "colorGrade", "spectral", "sapienceTier",
+  "speciesGrade", "rarityRoll", "colorGrade", "spectral", "sapienceTier", "guardianFor",
   "realmBiome", "classifyRealm", "ecologyRole", "planetSpecies", "speciesPortrait",
   "battleStats", "abilityOf", "abilityTheme", "floraStat", "runDuel", "winEstimate",
   "encodeWhere", "decodeWhere", "encodeCreature", "decodeCreature", "cleanName", "normGenome",

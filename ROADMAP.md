@@ -76,21 +76,31 @@
 
 ## STAGED for v1.3 "The Deep Spectrum" (2026-06-11, awaiting bump + deploy)
 
-- Rarity ladder extended 8 → 12 tiers: **Mythic (~1/22k), Celestial (~1/91k),
-  Primordial (~1/333k), Transcendent (1/1M)** above Unique. New bands carved
+- Rarity ladder extended 8 → 15 tiers. Deep spectrum: **Mythic (~1/22k),
+  Celestial (~1/91k), Primordial (~1/333k), Transcendent (1/1M)**; summit:
+  **Empyrean (~1/3.3M), Eternal (~1/11M), Singular (~1/33M)**. All bands carved
   out of the TOP of the old unique band so existing grades hold or climb —
-  verified empirically over 8M seeds (0 downgrades; `tools/rarity-sanity.js`).
+  verified over 60M seeds (0 downgrades; `tools/rarity-sanity.js`).
+- **👑 Apex Guardians** (the "ultra-rare encounters" runway item): ~1 in 40
+  fauna-bearing worlds is ruled by a named one-of-a-kind titan wearing a summit
+  grade (`guardianFor`, deterministic — same ruler for every player). Guarded
+  worlds show the ruler on the survey card; conquest becomes a guardian
+  challenge; victory stores the guardian in the Compendium, +40 spoils, 👑
+  cinematic. Guardian-hood never inherits; `normGenome` clamps imported `apex`.
 - Spectral designations past Prismatic fuse tier finish + domain hue
   ("Radiant Fire", "Primordial Black"); `TIER_MAX` replaces hardcoded 7-clamps
   (incl. the loadSave conquered-tier clamp, was 0–9).
-- Boosted bloodlines can now breed past Unique (boost cap raised to TIER_MAX)
-  — endgame chase for breeders; feeds the "ultra-rare encounters" runway item.
-- 3 new Rarity achievements (Beyond the Veil ≥Mythic, One in a Million
-  =Transcendent, The Deep Spectrum =all 12 tiers); Guide topic + reference +
-  HANDOFF updated; smoke assertions updated for the new latest-bulletin.
-- `tools/baseline.json` intentionally regenerated: of 49 probes only
-  `gradeTiers` changed (the new tier defs); all rolls/grades/genomes/duels/
-  codes byte-identical.
+- Boosted bloodlines can now breed past Unique (boost cap raised to TIER_MAX);
+  summit via breeding needs a natural Anomalous+ under max boost — two roads
+  to the top: breeder's and fighter's.
+- 6 new achievements (Beyond the Veil ≥Mythic, One in a Million =Transcendent,
+  Beyond the Million ≥Empyrean, The Deep Spectrum =12 distinct tiers, Regicide
+  / Throne Breaker =1/5 guardians; deliberately NO "all 15 tiers"). New save
+  field `guardians` (absent-default 0). Guide topics (rarity + new Apex
+  Guardians), reference, HANDOFF updated; settle25 icon ceded 👑 to guard1.
+- `tools/baseline.json` intentionally regenerated twice (deep spectrum, then
+  summit+guardians): only `gradeTiers` changed plus the NEW `guardians` probe
+  (50 probes now); all rolls/grades/genomes/duels/codes byte-identical.
 
 ## SHIPPED in v1.2 "The Living Frontier" (2026-06-11)
 
@@ -105,9 +115,9 @@
 
 ## Next (more "memorable moments" runway)
 
-- Ultra-rare monster ENCOUNTERS worth telling stories about (the find is now
-  celebrated; the creature itself could behave specially — guardian fights,
-  unique abilities, named one-of-a-kind spawns?).
+- ~~Ultra-rare monster ENCOUNTERS~~ → shipped as Apex Guardians (staged v1.3).
+  Possible follow-ons: unique guardian abilities (currently they use the
+  standard biome ability of their genome), guardian-specific battle intros.
 - "First discovery record card" worth sharing (a shareable keepsake image/code
   for Legendary+ finds).
 - Cosmic events: lean further into "were you there?" — a witness log or
