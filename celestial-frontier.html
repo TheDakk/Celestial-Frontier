@@ -2288,7 +2288,7 @@ const {climateBand, COMP, atmosphereText, climateText, waterText, gravityText, T
 /* ================================================================
    @module SpeciesTraits [domain] — trait tables, rarity grades & spectral anomalies
    Deps: Rand
-   API:  SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, rarityRoll
+   API:  SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, rarityRoll
    ================================================================ */
 const SpeciesTraits=(()=>{
 const SP_KINGDOM=['flora','fungi','microbe','fauna'];
@@ -2315,7 +2315,14 @@ const GRADE_TIERS=[
   {t:5, name:'Legendary', pre:'Gold',      hex:'#e7b94a', star:'★★★★'},
   {t:6, name:'Anomalous', pre:'Blackened', hex:'#c0494a', star:'★★★★'},
   {t:7, name:'Unique',    pre:'Prismatic', hex:'#d65bb8', star:'✦ ONE-OF-ONE'},
+  /* the deep spectrum — carved out of the top of the roll in v1.3, so every
+     pre-existing grade either held or rose; nothing ever downgrades */
+  {t:8,  name:'Mythic',       pre:'Iridescent',   hex:'#56e8c8', star:'✦✦'},
+  {t:9,  name:'Celestial',    pre:'Radiant',      hex:'#f8e7b0', star:'✦✦✦'},
+  {t:10, name:'Primordial',   pre:'Primordial',   hex:'#ff8a4a', star:'✦✦✦✦'},
+  {t:11, name:'Transcendent', pre:'Transcendent', hex:'#ffffff', star:'✧ ONE IN A MILLION'},
 ];
+const TIER_MAX=GRADE_TIERS.length-1;
 /* hue family per object domain → the base color word */
 const HUE_FAMILY={
   ocean:'Blue', water:'Blue', ice:'Cyan', desert:'Sand', rocky:'Gray', lava:'Red',
@@ -2325,8 +2332,14 @@ const HUE_FAMILY={
   comet:'Ice-White', moon:'Stone', dwarf:'Tan', metal:'Silver', exotic:'Purple', anomaly:'Prismatic',
 };
 function rarityRoll(seed, salt){
-  /* a long-tailed rarity: mostly common, rare spikes, ~1/4096 one-of-one */
+  /* a long-tailed rarity: mostly common, rare spikes, a one-in-a-million summit.
+     The deep-spectrum bands (8–11) were carved out of the old unique band, so a
+     pre-v1.3 roll either keeps its tier or climbs — determinism never downgrades. */
   const r=mulberry32((hashInt(seed>>>0, salt|0, 0x9a))>>>0)();
+  if(r>0.999999) return 11;    // transcendent — one in a million
+  if(r>0.999996) return 10;    // primordial   ~1/333,000
+  if(r>0.999985) return 9;     // celestial    ~1/91,000
+  if(r>0.99994)  return 8;     // mythic       ~1/22,000
   if(r>0.99976) return 7;      // unique
   if(r>0.992)  return 6;       // anomalous
   if(r>0.972)  return 5;       // legendary
@@ -2341,7 +2354,7 @@ function rarityRoll(seed, salt){
 function colorGrade(kindHue, seed, opts){
   opts=opts||{};
   let tier=rarityRoll(seed, opts.salt||1);
-  if(opts.boost) tier=Math.min(7, tier+opts.boost);
+  if(opts.boost) tier=Math.min(TIER_MAX, tier+opts.boost);
   if(opts.force!=null) tier=opts.force;
   const T=GRADE_TIERS[tier];
   const hue=HUE_FAMILY[kindHue]||'Gray';
@@ -2360,7 +2373,10 @@ function colorGrade(kindHue, seed, opts){
    Hue family = what the object is. Shade = how rare/intense.
    Index 0-4: Pale → Light → Standard → Bright → Deep
    Index 5: X-Gold (Legendary) · 6: X-Black (Anomalous) · 7: Prismatic (Unique)
-   "Teal-Gold Ocean World", "Crimson Hypergiant", "Prismatic Black" core. */
+   "Teal-Gold Ocean World", "Crimson Hypergiant", "Prismatic Black" core.
+   Beyond Prismatic the per-domain spectrum runs out: deep-spectrum tiers (8+)
+   fuse the tier's own finish with the domain's hue word — "Radiant Fire",
+   "Primordial Black" — and wear the tier's color (see spectral below). */
 const SPECTRA={
 ocean:   [['Pale Blue','#a9c9ee'],['Sky Blue','#7fb2e8'],['Azure','#4f96e0'],['Sapphire','#3f7ae8'],['Deep Blue','#3a62d2'],['Blue-Gold','#c9b06a'],['Blue-Black','#6a7ab2'],['Prismatic Blue','#cfe0ff']],
 teal:    [['Pale Teal','#a8ded6'],['Aqua','#7fd6c8'],['Teal','#46c2b2'],['Marine Teal','#2fae9e'],['Deep Teal','#2f948e'],['Teal-Gold','#c2b06a'],['Teal-Black','#5f8a8e'],['Prismatic Teal','#c8f0e8']],
@@ -2384,10 +2400,13 @@ anomaly: [['Pale Indigo','#a8aede'],['Indigo','#8a8ed8'],['Deep Indigo','#7a7ad2
 function spectral(domain, seed, opts){
   opts=opts||{};
   let tier=rarityRoll(seed, opts.salt||1);
-  if(opts.boost) tier=Math.min(7, tier+opts.boost);
+  if(opts.boost) tier=Math.min(TIER_MAX, tier+opts.boost);
   if(opts.force!=null) tier=opts.force;
   const lad=SPECTRA[domain]||SPECTRA.rocky;
-  return {tier, label:lad[tier][0], hex:lad[tier][1], name:GRADE_TIERS[tier].name};
+  if(tier<lad.length) return {tier, label:lad[tier][0], hex:lad[tier][1], name:GRADE_TIERS[tier].name};
+  /* deep spectrum: the tier's finish takes over the domain's prismatic hue word */
+  const T=GRADE_TIERS[tier], hue=lad[7][0].replace('Prismatic','').trim();
+  return {tier, label:(T.pre+' '+hue).trim(), hex:T.hex, name:T.name};
 }
 /* flora forms keyed loosely by biome temperament */
 const FLORA_FORM=['fern-analogues','fungal forests','lichen mats','reed thickets','bioluminescent groves',
@@ -2460,9 +2479,9 @@ function speciesName(seed){
   const r=mulberry32((seed^0x5eed5)>>>0);
   return SP_NAME_A[(r()*SP_NAME_A.length)|0]+SP_NAME_B[(r()*SP_NAME_B.length)|0]+SP_NAME_C[(r()*SP_NAME_C.length)|0];
 }
-return Object.freeze({SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, rarityRoll});
+return Object.freeze({SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, rarityRoll});
 })();
-const {SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, rarityRoll}=SpeciesTraits;
+const {SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, rarityRoll}=SpeciesTraits;
 /* @end SpeciesTraits */
 /* ================================================================
    @module Genome [domain] — genome synthesis, classification & species description
@@ -2623,7 +2642,8 @@ function describeSpecies(g){
 }
 function speciesGrade(g){
   /* a creature's rarity rises with size, luminescence, evolution depth and hybrid generation —
-     plus the long-tail roll, so a titanic glowing gen-5 hybrid can hit Legendary/Unique. */
+     plus the long-tail roll, so a titanic glowing gen-5 hybrid can climb past Unique
+     into the deep spectrum (Mythic → Transcendent). */
   const dom = g.kingdom==='fauna'?'life':(g.kingdom==='flora'?'forest':(g.kingdom==='fungi'?'fungal':'life'));
   let boost=0;
   if((g.size||0)>=4) boost++;
@@ -5757,7 +5777,10 @@ const ACH=[
   {id:'rare',    cat:'Rarity', ic:'💠', name:'Deep Find',     d:'Discover something Rare or better', t:()=>stats.best>=3},
   {id:'legend',  cat:'Rarity', ic:'🌟', name:'Gold Rush',     d:'Discover a Legendary', t:()=>stats.best>=5},
   {id:'unique',  cat:'Rarity', ic:'✦',  name:'One of One',    d:'Discover a one-of-one Unique', t:()=>stats.best>=7},
-  {id:'tiers8',  cat:'Rarity', ic:'🎨', name:'Full Spectrum', d:'Own species of all 8 rarity tiers', t:()=>tiersOwned()>=8},
+  {id:'mythic',  cat:'Rarity', ic:'🧿', name:'Beyond the Veil', d:'Discover a Mythic — rarer than one-of-one', t:()=>stats.best>=8},
+  {id:'transc',  cat:'Rarity', ic:'💫', name:'One in a Million', d:'Discover a Transcendent', t:()=>stats.best>=11},
+  {id:'tiers8',  cat:'Rarity', ic:'🎨', name:'Full Spectrum', d:'Own species of 8 different rarity tiers', t:()=>tiersOwned()>=8},
+  {id:'tiers12', cat:'Rarity', ic:'🌈', name:'The Deep Spectrum', d:'Own species of all 12 rarity tiers', t:()=>tiersOwned()>=12},
   /* — Worlds — */
   {id:'survey5',  cat:'Worlds', ic:'🛰', name:'Boots Down',      d:'Survey 5 living worlds', t:()=>stats.surveys>=5},
   {id:'survey25', cat:'Worlds', ic:'🌍', name:'World Walker',    d:'Survey 25 living worlds', t:()=>stats.surveys>=25},
@@ -5927,7 +5950,7 @@ function loadSave(){
     const _nowL=Date.now();
     for(const kv of (data.conq||[])){
       if(!kv || kv[0]==null || !kv[1]) continue;
-      conquered.set(kv[0], {t:clamp(num(kv[1].t), 0, _nowL), tier:clamp(num(kv[1].tier), 0, 9)});
+      conquered.set(kv[0], {t:clamp(num(kv[1].t), 0, _nowL), tier:clamp(num(kv[1].tier), 0, TIER_MAX)});
     }
     stats.breeds=num(data.breeds); stats.breedwins=num(data.breedwins);
     stats.feeds=num(data.feeds); stats.feedfails=num(data.feedfails);
@@ -6340,7 +6363,7 @@ const PLAYER_SEED=0x50A1E5;   /* a stable seed so duels against you are determin
 function playerBattleStats(){
   const p=pstats, total=p.vit+p.fer+p.res+p.agi+p.ins;
   return {vit:p.vit, fer:p.fer, res:p.res, agi:p.agi, ins:p.ins,
-    tier:Math.max(0, Math.min(7, Math.floor((total-250)/130))),
+    tier:Math.max(0, Math.min(TIER_MAX, Math.floor((total-250)/130))),
     total, hex:'#ffcf8a', name:(explorerName||'You'),
     ab:{id:'resolve', n:'Frontier Resolve', d:'Hardened by the void — recovers each round and shrugs off blows', regen:0.04, taken:0.9}};
 }
@@ -6907,7 +6930,7 @@ pickList.addEventListener('click', e=>{
     stats.breeds=(stats.breeds||0)+1;
     gameEvent('bred', {ok:!!r.ok});
     if(r.ok){
-      playRaritySting(Math.min(7, (r.born&&r.born.grade?r.born.grade.tier:3)+1)); playFanfare(); fxBurst(FX_GREEN.concat(FX_PURP),46);
+      playRaritySting(Math.min(TIER_MAX, (r.born&&r.born.grade?r.born.grade.tier:3)+1)); playFanfare(); fxBurst(FX_GREEN.concat(FX_PURP),46);
       if(r.born) cinematic({kicker:'🧬 A New Bloodline', title:r.born.name,
         sub:_pickBase.name+' × '+other.name+' — generation '+(r.born.gen||1),
         hex:(r.born.grade?r.born.grade.hex:'#7fe6a0'), tier:Math.max(2,(r.born.grade?r.born.grade.tier:0))});
@@ -7080,8 +7103,8 @@ const GUIDE=[
   '<p>Living worlds show <b>🔬 Discover Life</b> on their survey card. Scanning is a deliberate act — and on hostile worlds it has teeth: the danger percentage shown is your chance of being <b>wounded by wildlife mid-scan</b> (fiercer apex fauna and furnace worlds are deadlier). The scan always completes — you earned it.</p><ul><li>Every species found lands in your <b>Compendium</b> automatically.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li><b>Conquered worlds scan safely</b> — see <span data-gt="conquest">Conquest</span>.</li></ul>'},
  {id:'kingdoms', t:'The four kingdoms', k:'kingdom microbe flora fauna fungi realm biome classification', body:
   '<p>All life belongs to one of four kingdoms — <b>🦠 Microbe, 🌿 Flora, 🍄 Fungi, 🐾 Fauna</b> — and is shelved in the Compendium by realm (Land Fauna, Aquatic Fauna, Colonial Life…). Kingdom decides what a creature can do:</p><ul><li><b>Fauna</b> fight duels, defend worlds, and can be fed.</li><li><b>Flora</b> are medicine and meals — eaten by you or fed to beasts.</li><li>All kingdoms can <b>breed</b> within their own kind.</li></ul>'},
- {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique color', body:
-  '<p>Every species rolls one of <b>8 grades</b>: Common, Uncommon, Notable, Rare, Exotic, <b>Legendary, Anomalous, Unique</b>. Rarity tints the card, pitches the discovery chime, and matters mechanically:</p><ul><li>Rarer flora heal more — and poison more. Rarer pairs are harder to breed but forge stronger bloodlines.</li><li>Finding a <b>Legendary-or-better</b> species pays a ☄ Stardust bonus (first discovery only).</li><li>Stars and worlds carry rarity too — their <em>spectral designation</em> — and rare worlds yield richer conquest spoils.</li></ul>'},
+ {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique mythic celestial primordial transcendent deep spectrum color', body:
+  '<p>Every species rolls one of <b>12 grades</b>. The first eight — Common, Uncommon, Notable, Rare, Exotic, <b>Legendary, Anomalous, Unique</b> — cover all most expeditions will ever see. Beyond them lies the <b>deep spectrum</b>: <b>Mythic, Celestial, Primordial</b> and <b>Transcendent</b> — the summit a literal one-in-a-million roll. Rarity tints the card, pitches the discovery chime, and matters mechanically:</p><ul><li>Rarer flora heal more — and poison more. Rarer pairs are harder to breed but forge stronger bloodlines.</li><li>Finding a <b>Legendary-or-better</b> species pays a ☄ Stardust bonus (first discovery only).</li><li>Stars and worlds carry rarity too — their <em>spectral designation</em> — and rare worlds yield richer conquest spoils.</li><li>Hunting the deep spectrum? Size, glow, wild apex blood and deep hybrid generations all push a creature’s grade upward — a master bloodline can climb far past what nature rolls.</li></ul>'},
  {id:'specimen', t:'Reading a specimen card', k:'specimen card stats power ability bloodline brood fed gen hybrid tastes', body:
   '<p>Tap any species in the Compendium to open its card:</p><ul><li><b>Five stat bars + Power</b> — its battle strength, rolled deterministically from its genome (see <span data-gt="stats">The five stats</span>).</li><li><b>❤ HP & Condition</b> — its battle pool, and whether it’s Healthy, Bruised, Injured or Critical. Wounds persist and dull every stat — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>✧ Ability</b> — its biome-themed combat trick (see <span data-gt="abilities">Abilities</span>).</li><li><b>♥ Favours / ⊘ Dislikes</b> — its feeding tastes (fauna only).</li><li><b>♞ Bloodline</b> — <em>brood</em> (generations bred) and <em>fed</em> (meals taken) both permanently raise its stats.</li><li>Buttons: <b>⇪ Code</b> (share), <b>⚔ Duel</b>, <b>🧬 Breed</b>, <b>🌿 Feed</b>, <b>✎ Rename</b>.</li></ul>'},
  {id:'drift', t:'Passive evolution', k:'drift evolve hybrid automatic epoch cosmic clock', body:
@@ -7296,6 +7319,14 @@ const GAME_VERSION='1.2';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.3', title:'The Deep Spectrum', date:'June 2026', sections:[
+ ['✦ New Features & Systems', [
+  '<b>The deep spectrum</b> — the rarity ladder now climbs past Unique through four new grades: <b>Mythic</b> (~1 in 22,000), <b>Celestial</b> (~1 in 91,000), <b>Primordial</b> (~1 in 333,000) and <b>Transcendent</b> — a literal one-in-a-million find. Existing creatures keep their grade or rise; no collection got worse.',
+  'Worlds and stars climb too: beyond Prismatic, spectral designations take on the new finishes — <b>Iridescent, Radiant, Primordial, Transcendent</b>.',
+  'Deep-spectrum hunting is a breeder’s game — size, glow, wild apex blood and deep hybrid generations push grades upward, so a master bloodline can climb past what nature rolls.',
+  'Three new Rarity achievements: <b>Beyond the Veil</b>, <b>One in a Million</b> and <b>The Deep Spectrum</b>.',
+ ]],
+]},
 {v:'1.2', title:'The Living Frontier', date:'June 2026', sections:[
  ['✦ New Features & Systems', [
   '<b>Moments of wonder</b> — the universe now celebrates with you. Legendary-and-rarer discoveries, newborn bloodlines, settled worlds and first-witnessed cosmic events erupt into full-screen spectacle — and the rarer the moment, the grander the show.',
@@ -7545,7 +7576,7 @@ function runConquestBattle(d, champ, native){
         unlock('settle1'); playRaritySting(6); playFanfare(); fxBurst(FX_GOLD,64); _panelKey=null;
         cinematic({kicker:'🏴 World Settled', title:(d.title||'A world')+' is yours',
           sub:champ.name+' overcame '+native.name,
-          hex:'#f2d27f', tier:Math.min(7, ((d.designation&&d.designation.tier)||1)+2)});
+          hex:'#f2d27f', tier:Math.min(TIER_MAX, ((d.designation&&d.designation.tier)||1)+2)});
         /* a hard-won fight leaves its mark — champions carry their scars home */
         try{
           const last=res.log[res.log.length-1];

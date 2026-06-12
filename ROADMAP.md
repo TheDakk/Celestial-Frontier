@@ -5,12 +5,15 @@
 > batch, keep everything committed and pushed. The chat is disposable; this
 > file and the repo are not.
 
-## Current state (updated 2026-06-11, end of day)
+## Current state (updated 2026-06-11, late evening)
 
-- **Version: v1.1** (in-game `GAME_VERSION`) — bumps only on Dakk's say-so;
+- **Version: v1.2** (in-game `GAME_VERSION`) — live as build `ffdd3e2`
+  (incl. the iOS 100vh Continue-button hotfix). Bumps only on Dakk's say-so;
   every shipped change gets a bullet in `RELEASES[0]` (see CLAUDE.md rule 7).
-  **A v1.2 bump offer is on the table** — large unreleased pile; bump also
-  makes the refresh-pill flow end in a fresh bulletin.
+- **STAGED, not deployed: v1.3 "The Deep Spectrum"** — rarity ladder extended
+  8 → 12 tiers (see section below). Built, validated, smoke-green; notes
+  staged as `RELEASES[0]`. **Awaiting Dakk: bump `GAME_VERSION` to '1.3' +
+  deploy.**
 - **Live:** https://celestialfrontier.github.io/ (org user site; old
   thedakk.github.io deleted; dev repo TheDakk/Celestial-Frontier is PRIVATE).
 - Shipped in v1.1 so far: SOLID restructure + test toolkit, Guide to the
@@ -70,6 +73,24 @@
   as-is (2026-06-11). The asymmetry is the design: scanning is push-your-luck
   with your own HP; "send the animals instead" already exists as the
   conquer-first-then-scan-safely strategy.
+
+## STAGED for v1.3 "The Deep Spectrum" (2026-06-11, awaiting bump + deploy)
+
+- Rarity ladder extended 8 → 12 tiers: **Mythic (~1/22k), Celestial (~1/91k),
+  Primordial (~1/333k), Transcendent (1/1M)** above Unique. New bands carved
+  out of the TOP of the old unique band so existing grades hold or climb —
+  verified empirically over 8M seeds (0 downgrades; `tools/rarity-sanity.js`).
+- Spectral designations past Prismatic fuse tier finish + domain hue
+  ("Radiant Fire", "Primordial Black"); `TIER_MAX` replaces hardcoded 7-clamps
+  (incl. the loadSave conquered-tier clamp, was 0–9).
+- Boosted bloodlines can now breed past Unique (boost cap raised to TIER_MAX)
+  — endgame chase for breeders; feeds the "ultra-rare encounters" runway item.
+- 3 new Rarity achievements (Beyond the Veil ≥Mythic, One in a Million
+  =Transcendent, The Deep Spectrum =all 12 tiers); Guide topic + reference +
+  HANDOFF updated; smoke assertions updated for the new latest-bulletin.
+- `tools/baseline.json` intentionally regenerated: of 49 probes only
+  `gradeTiers` changed (the new tier defs); all rolls/grades/genomes/duels/
+  codes byte-identical.
 
 ## SHIPPED in v1.2 "The Living Frontier" (2026-06-11)
 

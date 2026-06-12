@@ -169,9 +169,17 @@ stalk+fronds+bloom, fungi = mushrooms, fauna = assembled anatomy). Cached in
 glow** behind the portrait (ability-theme color for fauna, nourished-stat color for flora).
 
 ### Rarity grades
-`GRADE_TIERS` (8 tiers): **Common, Uncommon, Notable, Rare, Exotic, Legendary, Anomalous,
-Unique**. `rarityRoll` / `speciesGrade` / `colorGrade` assign grade; higher tiers play
-bigger stings, tinted FX bursts, and grant stardust bonuses (§9).
+`GRADE_TIERS` (12 tiers, `TIER_MAX = 11`): **Common, Uncommon, Notable, Rare, Exotic,
+Legendary, Anomalous, Unique**, then the **deep spectrum** added in v1.3: **Mythic
+(~1/22k), Celestial (~1/91k), Primordial (~1/333k), Transcendent (1/1M)**. `rarityRoll` /
+`speciesGrade` / `colorGrade` assign grade; higher tiers play bigger stings, tinted FX
+bursts, and grant stardust bonuses (§9). The deep-spectrum bands were **carved out of the
+top of the old Unique band**, so under the same seed a v1.2 grade either holds or climbs —
+determinism never downgrades a creature. Spectral designations beyond Prismatic fuse the
+tier's finish with the domain's hue word (`Iridescent / Radiant / Primordial /
+Transcendent`, e.g. "Radiant Fire") and wear the tier's hex from `GRADE_TIERS`. Boost
+clamps (`colorGrade`, `spectral`) cap at `TIER_MAX`, so heavily boosted bloodlines
+(size + glow + wild + deep generations) can breed past Unique.
 
 ---
 
