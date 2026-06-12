@@ -3042,8 +3042,69 @@ function speciesPortrait(g){
       '<feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="'+(g.seed%97)+'" result="n"/>'+
       '<feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter>'+
     '<filter id="gsh"><feGaussianBlur stdDeviation="3"/></filter>';
-  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">'+defs.replace('</defs>', pfDefs+'</defs>')+
+  /* ---- habitat backdrop (Dakk-approved hybrid): the creature stands IN the
+     place it was discovered — sky tinted by its biome heat, silhouette
+     terrain from its OWN habitat gene — with the stagecraft lighting on
+     top. Field guide meets trading card. Dark, low-contrast silhouettes so
+     the subject still pops. */
+  const _scene=(()=>{
+    const Rs=mulberry32((g.seed^0x5CE7)>>>0);
+    const heat=(g.heat==null)?1:g.heat;
+    const skyTop=heat===2?'#22100c':heat===0?'#0a1322':'#0d1726';
+    const skyHor=heat===2?'#4a2415':heat===0?'#1a2c42':'#1f3048';
+    let s='<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">'+
+      '<stop offset="0%" stop-color="'+skyTop+'"/><stop offset="100%" stop-color="'+skyHor+'"/></linearGradient>';
+    let body='<rect width="120" height="78" fill="url(#sky)" opacity="0.85"/>';
+    if(g.kingdom==='microbe'){
+      /* the microscope field: a lit medium with drifting bokeh */
+      body='<rect width="120" height="120" fill="'+(heat===2?'#190e13':'#0b1120')+'" opacity="0.92"/>';
+      for(let k=0;k<8;k++) body+='<circle cx="'+((Rs()*120)|0)+'" cy="'+((Rs()*120)|0)+'" r="'+((6+Rs()*16)|0)+'" fill="'+skyHor+'" opacity="0.12"/>';
+      return s+'<g>'+body+'</g>';
+    }
+    const hIdx=(g.habitat||0)%FA_HABITAT.length;
+    /* 19 habitats → 10 scene kinds */
+    const kind=[3,1,2,4,4,5,1,6,7,8,7,9,4,4,0,8,1,3,5][hIdx]!==undefined?[3,1,2,4,4,5,1,6,7,8,7,9,4,4,0,8,1,3,5][hIdx]:1;
+    const ground='<rect y="76" width="120" height="44" fill="#05070d" opacity="0.9"/>';
+    const sil=(pts,op)=>'<polygon points="'+pts+'" fill="#070a12" opacity="'+op+'"/>';
+    if(kind===0){ /* high cloud decks */
+      for(let k=0;k<4;k++) body+='<ellipse cx="'+((Rs()*120)|0)+'" cy="'+((30+Rs()*50)|0)+'" rx="'+((18+Rs()*22)|0)+'" ry="'+((4+Rs()*5)|0)+'" fill="'+skyHor+'" opacity="0.35"/>';
+    } else if(kind===1){ /* plains / tundra / salt flats: two soft hills */
+      body+=sil('0,76 0,64 30,58 70,66 120,60 120,76','0.8')+sil('0,76 0,70 50,64 90,70 120,66 120,76','0.95')+ground;
+    } else if(kind===2){ /* highland ridges: jagged peaks */
+      let p='0,76 '; for(let k=0;k<=6;k++) p+=(k*20)+','+((34+Rs()*26)|0)+' '; body+=sil(p+'120,76','0.7');
+      let p2='0,76 '; for(let k=0;k<=5;k++) p2+=(k*24)+','+((52+Rs()*16)|0)+' '; body+=sil(p2+'120,76','0.95')+ground;
+    } else if(kind===3){ /* forest canopy / mangrove: a treeline */
+      body+=sil('0,76 0,60 20,52 40,62 60,50 80,60 100,54 120,62 120,76','0.7');
+      for(let k=0;k<5;k++){ const x=(8+Rs()*104)|0; body+=sil(x+',76 '+(x-5)+',76 '+x+','+((48+Rs()*14)|0)+' '+(x+5)+',76','0.95'); }
+      body+=ground;
+    } else if(kind===4){ /* shores, deltas, strange seas: water bands */
+      body+='<rect y="62" width="120" height="16" fill="'+skyHor+'" opacity="0.5"/>';
+      for(let k=0;k<3;k++) body+='<rect x="'+((Rs()*60)|0)+'" y="'+(64+k*4)+'" width="'+((30+Rs()*50)|0)+'" height="1.2" fill="#9fb6d6" opacity="0.18"/>';
+      body+=ground;
+    } else if(kind===5){ /* caverns & crystal caverns: stalactites + shards */
+      for(let k=0;k<6;k++){ const x=(Rs()*120)|0; body+=sil(x+',0 '+(x-4)+',0 '+x+','+((14+Rs()*22)|0)+' '+(x+4)+',0','0.9'); }
+      if(hIdx===18) for(let k=0;k<4;k++){ const x=(10+Rs()*100)|0; body+='<polygon points="'+x+',76 '+(x-3)+',76 '+(x+1)+','+((52+Rs()*14)|0)+' '+(x+4)+',76" fill="'+shade(base,0.1)+'" opacity="0.35"/>'; }
+      body+=ground;
+    } else if(kind===6){ /* the twilight terminator: half-lit world */
+      body+='<rect width="60" height="78" fill="#02030a" opacity="0.8"/>'+ground;
+    } else if(kind===7){ /* open ocean / reefs / vents: deep bands + motes */
+      body='<rect width="120" height="120" fill="'+(heat===2?'#101620':'#081120')+'" opacity="0.9"/>';
+      for(let k=0;k<3;k++) body+='<rect y="'+(20+k*28)+'" width="120" height="10" fill="'+skyHor+'" opacity="0.18"/>';
+      if(hIdx===15) for(let k=0;k<3;k++){ const x=(15+Rs()*90)|0; body+='<rect x="'+x+'" y="60" width="3" height="40" fill="#ff8a4a" opacity="0.25"/>'; }
+      return s+'<g>'+body+'</g>';
+    } else if(kind===8){ /* volcanic ash fields: cones + embers */
+      body+=sil('10,76 40,44 70,76','0.85')+sil('60,76 92,52 120,76','0.95');
+      for(let k=0;k<5;k++) body+='<circle cx="'+((Rs()*120)|0)+'" cy="'+((30+Rs()*40)|0)+'" r="0.9" fill="#ff8a4a" opacity="0.5"/>';
+      body+=ground;
+    } else { /* desert dunes */
+      body+='<path d="M0,70 Q30,58 60,68 T120,64 L120,76 L0,76 Z" fill="#070a12" opacity="0.8"/>'+
+        '<path d="M0,76 Q40,66 80,74 T120,72 L120,76 Z" fill="#070a12" opacity="0.95"/>'+ground;
+    }
+    return s+'<g>'+body+'</g>';
+  })();
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">'+defs.replace('</defs>', pfDefs+_scene.slice(0, _scene.indexOf('</linearGradient>')+17)+'</defs>')+
     '<rect width="120" height="120" fill="url(#bg)"/>'+
+    _scene.slice(_scene.indexOf('</linearGradient>')+17)+
     '<circle cx="60" cy="50" r="52" fill="url(#aur)"/>'+
     '<ellipse cx="60" cy="103" rx="34" ry="8" fill="#000000" opacity="0.5" filter="url(#gsh)"/>'+
     '<g filter="url(#pf)">'+inner+'</g>'+
@@ -6504,7 +6565,7 @@ function loadSave(){
     frontierUnlocked=!!data.frontier; frontierEnding=data.ending||null;
     seenGuide=!!data.guide;
     tutDone = data.tut===undefined ? true : !!data.tut;   /* pre-tutorial saves are veterans */
-    _rnSeen = typeof data.rn==='string' ? data.rn.slice(0,12) : '1.0';   /* pre-notes saves get the update bulletin once */
+    _rnSeen = typeof data.rn==='string' ? data.rn.slice(0,12) : '0';   /* pre-notes saves get the debut bulletin once */
     /* retroactive: signatures your existing Codex already deserves, claimed quietly */
     if(primeCount()<9) for(const e of codex.values()) primeCheckSpecies(e, true);
     renderPrime(); updatePrimeBtn();
@@ -6946,6 +7007,41 @@ const CLASSES=[
  ['Worldbreaker','X',11,'smite','reck','enrage'],['Worldhealer','X',11,'mend','bulwark','thorns'],
  ['Worldeater','X',12,'thirst','rend','dot'],   ['Worldshaper','X',12,'bulwark','stun','smite'],
  ['Avatar','X',13,'smite','mend','veil'],       ['Chosen One','X',14,'enrage','mend','eye'],
+ /* the second wave — the rest of Dakk's list (tools/class-list.txt) */
+ ['Mystic Monk','M',2,'mend','veil','eye'],     ['Thief','S',0,'veil','ambush','gambit'],
+ ['Undead Hunter','D',2,'reck','dot','aegis'],  ['Mage Hunter','M',2,'stun','rend','veil'],
+ ['Bounty Hunter','S',1,'eye','stun','rend'],   ['Aeromancer','C',1,'veil','echo','stun'],
+ ['Illusionist','C',2,'veil','stun','gambit'],  ['Enchanter','C',2,'stun','mend','eye'],
+ ['Rune Mage','C',3,'bulwark','dot','aegis'],   ['Astral Mage','X',5,'dot','eye','veil'],
+ ['Voidwalker','X',6,'veil','rend','thirst'],   ['Dreamwalker','C',4,'stun','veil','mend'],
+ ['Fateweaver','X',7,'gambit','eye','veil'],    ['Priest','D',0,'mend','aegis','eye'],
+ ['Seer','D',2,'eye','veil','mend'],            ['Exorcist','D',2,'reck','mend','stun'],
+ ['Witch Doctor','K',2,'dot','mend','thorns'],  ['Blood Knight','K',4,'thirst','smite','enrage'],
+ ['Herbalist','N',0,'mend','dot','aegis'],      ['Tinkerer','T',1,'gambit','thorns','echo'],
+ ['Bombardier','T',2,'dot','gambit','smite'],   ['Crossbowman','M',1,'eye','smite','rend'],
+ ['Druidic Warrior','N',2,'thorns','fury','mend'],['Ranger-Mage','N',2,'eye','dot','veil'],
+ ['Conjurer','C',1,'bulwark','echo','mend'],    ['Demonologist','K',4,'dot','thirst','enrage'],
+ ['Necrosummoner','K',4,'thirst','echo','dot'], ['Spirit Caller','D',3,'veil','echo','mend'],
+ ['Golemancer','T',3,'bulwark','aegis','thorns'],['Minstrel','D',0,'mend','veil','stun'],
+ ['Dancer','M',1,'veil','echo','stun'],         ['Tactician','M',1,'eye','aegis','rend'],
+ ['Noble','M',1,'aegis','eye','mend'],          ['Merchant','T',0,'gambit','aegis','mend'],
+ ['Chef','N',0,'mend','enrage','aegis'],        ['Soulbinder','K',3,'mend','thirst','bulwark'],
+ ['Beast Knight','B',3,'smite','fury','aegis'], ['Arcane Beast','B',3,'gambit','dot','veil'],
+ ['Undead Beast','B',3,'thirst','aegis','dot'], ['Elemental Beast','B',2,'dot','aegis','fury'],
+ ['Spore Druid','N',2,'dot','mend','thorns'],   ['Broodmother','B',2,'echo','dot','mend'],
+ ['Webspinner','B',1,'stun','dot','veil'],      ['Bonecaster','K',2,'bulwark','dot','aegis'],
+ ['Gravecaller','K',3,'thirst','stun','dot'],   ['Ashen One','K',4,'dot','mend','enrage'],
+ ['Sun Priest','D',3,'smite','mend','eye'],     ['Moon Priest','D',3,'veil','mend','stun'],
+ ['Star Seer','X',5,'eye','veil','gambit'],     ['Chaos Mage','C',3,'gambit','enrage','dot'],
+ ['Order Mage','C',3,'aegis','bulwark','stun'], ['Gravity Mage','C',4,'stun','bulwark','rend'],
+ ['Magnetist','T',2,'rend','aegis','stun'],     ['Soundweaver','C',2,'stun','echo','veil'],
+ ['Lightweaver','D',2,'eye','veil','mend'],     ['Shadowcaster','K',2,'veil','dot','ambush'],
+ ['Mirror Mage','C',3,'thorns','veil','gambit'],['Sand Mage','C',1,'stun','veil','dot'],
+ ['Lava Mage','C',2,'dot','smite','bulwark'],   ['Tidecaller','C',2,'mend','stun','dot'],
+ ['Frostborn','B',1,'aegis','stun','bulwark'],  ['Flameborn','B',1,'dot','smite','enrage'],
+ ['Stormborn','B',1,'echo','stun','veil'],      ['Earthborn','B',1,'bulwark','thorns','aegis'],
+ ['Hellcaller','K',4,'dot','enrage','thirst'],  ['Angelbound','D',4,'mend','aegis','smite'],
+ ['Demonbound','K',4,'enrage','dot','thirst'],  ['Skinwalker','B',3,'gambit','mend','fury'],
 ];
 function classOf(g){
   const tier=speciesGrade(g).tier|0;
@@ -8211,122 +8307,38 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.2';
+const GAME_VERSION='1.0';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
-{v:'1.3', title:'The Deep Spectrum', date:'June 2026', sections:[
- ['✦ New Features & Systems', [
-  '<b>The deep spectrum</b> — the rarity ladder now climbs past Unique through four new grades: <b>Mythic</b> (~1 in 22,000), <b>Celestial</b> (~1 in 91,000), <b>Primordial</b> (~1 in 333,000) and <b>Transcendent</b> — a literal one-in-a-million find. Existing creatures keep their grade or rise; no collection got worse.',
-  'Worlds and stars climb too: beyond Prismatic, spectral designations take on the new finishes — <b>Iridescent, Radiant, Primordial, Transcendent</b>.',
-  '<b>The summit grades</b> — three more above even Transcendent: <b>Empyrean, Eternal</b> and <b>Omnipotent</b>. Out past one-in-a-million the dice all but give out — the summit belongs to master breeders and to guardian slayers.',
-  '<b>👑 Apex Guardians</b> — about one fauna-bearing world in forty is ruled by a <b>named, one-of-a-kind titan</b> wearing a summit grade. The same guardian rules the same world for every explorer — share the coordinates and a friend faces the very same beast. Defeat it in conquest and the world pays a ruler’s ransom — and <b>the guardian itself joins your Compendium</b>.',
-  'Deep-spectrum hunting is a breeder’s game — size, glow, wild apex blood and deep hybrid generations push grades upward, so a master bloodline can climb past what nature rolls.',
-  '<b>Hyperlane travel</b> — Atlas, beacon, search and shared-code jumps no longer blink you across the void: the camera dives out, the sky stretches into a <b>streak tunnel tinted by your destination star</b>, and you ease in on arrival. <b>Distance is real now</b> — far jumps take longer (never more than a few breaths), and better drives shrink the void. Tap to skip.',
-  '<b>🗂 The Binder</b> — the Compendium’s new collection tab. You can’t collect individuals out of infinity, so the Binder collects <b>types</b>: fixed pages of slots, identical for every explorer — your universe decides which specimen fills each. Curated <b>Sets</b> pay one-time Stardust bounties.',
-  '<b>🜲 The Fifty Paragons</b> — named, one-of-a-kind deep-spectrum legends on fixed worlds, the same fifty for everyone. Silhouettes in the Binder until found: tap one to plot a course, scan its world to catalogue the legend.',
-  '<b>⛏ Mining &amp; the 🧰 Cargo hold</b> — dead worlds finally have a job. Every lifeless planet carries a mineral profile (rarer worlds hide richer veins, up to Voidglass and Prismatium); mine hourly, stock your Cargo, and spend elements at the <b>Research bench</b>.',
-  '<b>🛠 Research</b> — the engineer’s track beside the Prime Codex: Deep Scanners, a Reinforced Hull, the Xenobotany Lab, and the <b>drive ladder</b> (Fusion → Antimatter → Warp Fold) that shrinks hyperlane distance to a breath.',
-  '<b>⚔ The ability matrix</b> — sixteen archetype verbs join each theme’s classics at five rarity-scaled magnitudes: <b>Thorns, Rend, Reckoning, Bulwark, Shock, Roulette</b> and more — hundreds of abilities (“Fire Reckoning III”). <b>Hybrids inherit their other parent’s archetype</b> most of the time; Apex Guardians fight with Sovereign arts. Every verb is <b>balanced empirically</b>: thousands of simulated duels per pairing, win rates pinned near 50%.',
-  '<b>World fields</b> — a defending native now fights wrapped in its home world’s element: lava sharpens ferocity, ice hardens resilience, gas quickens, oceans deepen vitality, deserts hone insight.',
-  '<b>🛡 Classes, XP &amp; levels</b> — every beast is born to a class (over a hundred, from Warrior to <b>Worldbreaker</b>; the legendary ones live at the summit) with <b>innate always-on arts</b>. <b>Power is built through wins</b>: duels, conquests and guardian kills feed the XP bar, and levels wake more innate arts — never raw stats. Breeding fuses class lineages into hybrids like Spellswords.',
-  '<b>📸 Discovery records</b> — Legendary-or-better finds can be copied as a keepsake: flavor, stats and the creature code in one paste. The <b>📜 Witness Log</b> in Cosmic Events remembers every sky you saw with your own eyes.',
-  '<b>🎨 Painted portraits &amp; frames</b> — every portrait now stands on a lit stage: an aura behind the subject, a ground shadow beneath it, organic texture, rim light and a deep vignette. Specimen cards wear <b>etched frames with corner glints</b> that escalate by rarity — gold at Legendary, prismatic at Unique, foil at the summit.',
-  'The Pathfinders’ story now runs to the very end: each Signature carries <b>their own field notes</b> — and the Prism Signature is revealed as the one discovery they died short of.',
-  '<b>⚔ The Chronicle</b> — duels are stories now, not damage feeds: initiative, named arts, first strikes from ambush, executes, thorn recoils, burn ticks, staggers, and a death line when a champion falls — closing with a <b>statistics ledger</b> (hits, crits, biggest blow, damage dealt, healing). <b>⇪ Share the battle log</b> like a screenshot — fights aren’t saved, but a great one can be pasted anywhere. The same fight tells the same tale on every device.',
+{v:'1.0', title:'The Frontier Opens', date:'June 2026', sections:[
+ ['🌌 An Infinite, Shared Universe', [
+  'A <b>deterministic procedural cosmos</b> — every galaxy, star and world generated from seeds, identical for every explorer, fully offline, no account needed. Four seamless scales: universe → galaxy → star system → planet surface.',
+  '<b>Hyperlane travel</b> with real distance — far jumps take longer, and researched drives shrink the void to a breath. The tunnel wears your destination’s light; tap to skip.',
+  '<b>Survey cards</b> for everything: worlds, stars, black holes, wormholes, supernovae, the CMB — and spectral designations that wear each object’s rarity as color.',
  ]],
- ['◈ UI Enhancements', [
-  '<b>Nameplate colors</b> — every rank now carries its own color, unlocked forever once you reach it. Pick any unlocked color from your character sheet — and <b>Eternal Frontier</b> unlocks the iridescent foil nameplate.',
-  '<b>Collection cards</b> — every specimen card now wears its <b>grade badge</b>, and summit-grade creatures shine in <b>iridescent foil</b>: a shimmering badge and an animated prismatic frame. Catch one and you’ll know.',
-  'The high tiers got a vivid new palette: <b>aqua</b> Mythic, <b>starlight</b> Celestial, <b>ember</b> Primordial, <b>white-light</b> Transcendent, <b>dawnfire</b> Empyrean, <b>twilight</b> Eternal — and Omnipotent shimmers through them all.',
-  'Your character sheet now tracks the <b>highest grade you’ve ever reached</b> and your <b>guardians felled</b> — the very top of the ladder is chased, not checklisted.',
-  'The HP bar now slides <b>green → amber → red continuously</b> — pure green means untouched, any wound tints the empty track red, and the number rides a high-contrast chip.',
-  '<b>Readability pass</b>: body text is brighter by default (no more blue-on-blue), and a new <b>Text tone</b> setting (Soft / Bright / Max) lifts it further — in the brighter tones, bold emphasis turns <b>gold</b> so it never vanishes into white text. A <b>Font</b> setting (Grotesk / System / Mono) joins it.',
-  'The Pathfinders’ story now runs through the whole expedition: a sharper opening, the Prime Codex framed as <b>their unfinished survey</b>, and an ending that finally answers the silent beacons.',
+ ['🧬 Life & the Compendium', [
+  'Catalogue life across <b>four kingdoms and sixteen realms</b>, drawn by a painterly portrait engine that stages every creature <b>in the habitat where you found it</b>.',
+  'A <b>15-grade rarity ladder</b> — Common through the deep spectrum to the summit: <b>Empyrean, Eternal, Omnipotent</b>. Foil frames at the top; no creature’s grade ever falls.',
+  '<b>Breed</b> hybrids (both parents consumed!), <b>feed</b> for permanent growth and medicine — and mind the poison: rarer flora bites deeper, and only a spent beast dies of it.',
+  '<b>👑 Apex Guardians</b> — named one-of-a-kind summit titans ruling rare worlds, the same rulers for every explorer. Defeat one in conquest and it joins your Compendium.',
+  '<b>🜲 The Fifty Paragons</b> — legendary deep-spectrum creatures on fixed worlds, silhouettes in your Binder until found. Share the coordinates; your friend hunts the same legend.',
  ]],
- ['⚖ Balancing', [
-  '<b>Poison no longer executes.</b> A toxic meal bites off a chunk of the beast’s condition instead of killing outright — <b>rarer flora bites far deeper</b> — and only a beast whose strength is already spent dies of it. Poison wounds mend the usual way: feed it flora it ♥ loves.',
-  'Flora pulls its weight all the way up the ladder: every battle stat has flora that nourishes it at every rarity, and healing, growth and mending all keep scaling through the full 15 grades.',
+ ['⚔ Battle', [
+  '<b>Classes, XP & levels</b> — every beast is born to one of 180+ classes (Warrior to Worldbreaker; the legendary ones live at the summit) with <b>innate always-on arts</b>. <b>Power is built through wins</b> — duels, conquests, guardians — and levels wake more arts, never raw stats.',
+  'An <b>ability matrix</b> of hundreds of arts (“Fire Reckoning III”), every verb balanced across thousands of simulated duels. Hybrids inherit their other parent’s archetype; guardians fight with Sovereign arts.',
+  '<b>The Chronicle</b> — duels are narrated blow-by-blow like a tabletop session: initiative, named arts, executes, thorn recoils, burn ticks, death lines — closing with a statistics ledger and a <b>shareable battle log</b>.',
+  '<b>Conquest</b> — champion worlds yourself or send a beast; settled worlds fly your flag, scan safely and pay Stardust. World fields make defenders fight in their element; wounds persist and feeding is medicine.',
  ]],
- ['🏆 Achievements & Collections', [
-  'Eight new achievements: <b>Beyond the Veil</b> (Mythic), <b>One in a Million</b> (Transcendent), <b>Beyond the Million</b> (the summit), <b>The Deep Spectrum</b> (12 rarity tiers), <b>Regicide</b> and <b>Throne Breaker</b> (guardians), and the collector’s pair <b>Realm Ranger</b> and <b>Master of Realms</b> (8 / all 16 realms).',
+ ['🛠 Progression', [
+  '<b>The Prime Codex</b> — nine Signatures to finish the Pathfinders’ unfinished master survey and reach the Celestial Frontier. Each carries their field notes; the Prism Signature is the discovery they died short of. Multiple endings.',
+  '<b>Mining & Research</b> — dead worlds carry the elements: stock your 🧰 Cargo and spend it at the bench — scanners, hull, lab, and the drive ladder (Fusion → Antimatter → Warp Fold).',
+  '<b>The Binder</b> — you cannot collect individuals out of infinity, so collect <b>types</b>: fixed pages identical for every explorer, claimable Sets with Stardust bounties.',
+  'Ten explorer ranks with <b>unlockable nameplate colors</b> (foil at Eternal Frontier), dozens of achievements, the Star Atlas, the Traveler’s Beacon, cosmic events with a 📜 Witness Log, 📸 discovery records, and share codes for worlds and creatures alike.',
  ]],
- ['🐞 Bug Fixes', [
-  'Release notes and the Guide now always open <b>at the top</b> — iOS Safari liked to start you at the bottom of the scroll.',
-  'On touch screens a <b>tap acts — it never tooltips</b>. Hints remain on long-press (and on keyboard focus, for keyboard explorers).',
-  'The <b>HP number now lives on the bar itself</b>, centered — larger text sizes used to push it out of the row entirely.',
-  'Settings now carries a plain warning: <b>your save lives in this browser only</b> — clearing site data erases it, so back up favourites as ⇪ creature codes. (The Guide’s “Your save &amp; reset” topic says the same.)',
-  'The training spotlight now <b>tracks its target live</b> and turned <b>cyan</b> — it used to strand a gold ring at stale coordinates when the layout shifted (the “phantom long HP bar”), and gold drowned in the gold topbar.',
-  'A newborn hybrid’s reveal card now <b>waits for the celebration to finish</b> instead of sliding in mid-spectacle.',
-  'The HP number rides a small dark chip on the bar — readable over the bright fill and the dark track alike.',
-  'Breathing room between the poison skull and its percentage in the feed and heal pickers.',
- ]],
-]},
-{v:'1.2', title:'The Living Frontier', date:'June 2026', sections:[
- ['✦ New Features & Systems', [
-  '<b>Moments of wonder</b> — the universe now celebrates with you. Legendary-and-rarer discoveries, newborn bloodlines, settled worlds and first-witnessed cosmic events erupt into full-screen spectacle — and the rarer the moment, the grander the show.',
-  '<b>Creature injuries</b> — wounds persist now. A champion carries its scars out of a hard-won conquest, and a meal a beast resents can hurt it. The wounded fight below their strength: <b>Healthy → Bruised → Injured → Critical</b>, shown on every specimen card.',
-  '<b>Field medicine</b> — feeding is healing: a welcome meal mends old wounds, and the flavours a beast <b>♥ loves</b> mend most. A disliked meal risks making things worse. Choose their menu like it matters — it does now.',
- ]],
- ['◈ UI Enhancements', [
-  'The release notes open every fresh expedition before training, and the Guide footer shows the exact build you’re playing.',
-  'Notifications linger long enough to read, can be tapped away, and hold their tongue until you’re past the title screen.',
-  'Training layout polish: the guidance card rides high on desktop, snug on mobile — and specimen/picker dialogs open <b>below</b> it instead of underneath.',
-  'Every risk number says what it is — <b>% success</b>, <b>% poison</b>, <b>% win</b>.',
- ]],
- ['⚖ Balancing', [
-  'Moons obey Kepler now — outer moons drift slower, so the moon systems of giant planets turn stately instead of frantic.',
-  'Galaxies rotate on cosmic time — barely perceptible, as the universe intended.',
- ]],
- ['🐞 Bug Fixes', [
-  'On iPhone, the release-notes Continue button could hide behind Safari’s toolbar — the notes now scroll inside the card while Continue stays pinned and tappable.',
-  'Field training always begins at Sol — reloading a half-finished training no longer strands you in deep space hunting for Earth.',
-  'Sound reliably recovers after the tab is backgrounded — every tap quietly re-arms suspended audio.',
-  'Desktop mouse-hover no longer counts as surveying: survey credit, achievements and find-Signatures require a deliberate tap.',
-  'No more phantom “Rank Up — Cadet” after a reset — rank fanfare fires only on genuine promotions.',
- ]],
- ['⚙ Under the Hood', [
-  'The game moved to its own address: <b>celestialfrontier.github.io</b>.',
- ]],
-]},
-{v:'1.1', title:'The Pathfinder Update', date:'June 2026', sections:[
- ['✦ New Features & Systems', [
-  '<b>Field Training</b> — every new expedition opens with an interactive, fully sandboxed tutorial: chart Earth, train with a loaned cache of creatures, feed, breed, duel, take a scratch and heal. Nothing you lose in training follows you out. Skippable for veterans.',
-  '<b>Guide to the Universe</b> — the ? button now opens a searchable, browsable manual covering every system in the game, from breeding odds to the nine Signatures.',
-  '<b>Tooltips</b> — short hints across the whole interface: hover on desktop, long-press on touch. Toggle them in Settings once you’re fluent.',
-  '<b>Release Notes</b> — this bulletin. It appears once after each update; the full history is always behind the version line at the bottom of the Guide.',
- ]],
- ['◈ UI Enhancements', [
-  'Survey-card and specimen-card buttons explain themselves — including a live danger % on Discover Life.',
-  'The training guidance card sits top-center with a golden spotlight on each target, and menus lock to the current lesson so nothing pulls focus — Settings stays available throughout.',
- ]],
- ['⚙ Under the Hood', [
-  'The engine was reorganized into clean, testable modules — with the universe verified <b>byte-identical</b> to v1.0. Your worlds, creatures and share codes are untouched.',
-  'An automated test fleet now plays the game (including all of Field Training) before every release.',
-  'Live sessions now notice when a newer build ships and offer a one-tap refresh — your expedition saves first.',
- ]],
-]},
-{v:'1.0', title:'The Master Survey', date:'June 2026', sections:[
- ['✦ New Features & Systems', [
-  'An <b>infinite, deterministic universe</b> — every galaxy, star and world generated from seeds, identical for every explorer, no server needed.',
-  'Four seamless zoom scales: universe → galaxy → star system → planet surface. Everything you can see, you can visit.',
-  '<b>Survey cards</b> for every object: atmosphere, climate, water, gravity, seasons, hazards and life — plus quasars, wormholes, supernovae, black holes and the CMB.',
-  '<b>Life cataloguing</b>: four kingdoms (Microbe, Flora, Fauna, Fungi) across eight rarity grades from Common to Unique, with per-species SVG portraits.',
-  'The <b>Compendium</b> — a living collection that interbreeds and evolves on its own as the cosmos ages.',
-  '<b>Breeding & feeding</b> — forge hybrid bloodlines (both parents consumed!), learn each beast’s tastes, risk the poison.',
-  '<b>Creature duels</b> — five battle stats, eleven biome-themed ability families, outcomes identical on every device. Share creatures as CFB codes.',
-  '<b>Planetary conquest</b> — send a champion (or yourself) against a world’s apex native; settled worlds scan safely and pay spoils.',
-  'The <b>☄ Stardust economy</b> — hourly harvests, conquest spoils and rare-find bonuses that raise your breeding odds.',
-  'The <b>✦ Prime Codex</b> — nine legendary Signatures, a frontier that expands as you claim them, and multiple endings at the Celestial Frontier.',
-  '<b>Star Atlas</b> bookmarks with favorites and a home marker; CF1 share codes; search; the Traveler’s Beacon; Cosmic Events on every timescale.',
-  'Ten explorer ranks (Cadet → Eternal Frontier) and dozens of achievements.',
- ]],
- ['♟ Gameplay', [
-  'Your five battle stats grow permanently by eating flora — and the deadliest medicine heals hardest.',
-  'The frontier bites: hostile bioscans, toxic meals and champion duty all cost HP. At zero, the expedition ends.',
- ]],
- ['◈ UI', [
-  'A single-file, offline-capable, mobile-first game: unified topbar, notification tray, search, settings, celebration FX.',
+ ['⚙ The Craft', [
+  'One file, offline-capable, mobile-first. Deterministic to the byte — the same universe on every device, verified by a 50-probe fingerprint and a full headless test fleet on every build.',
+  'Text size, tone and font settings, sound, effects, tooltips — all persistent. Your save lives in this browser only; back up favourites as ⇪ creature codes.',
  ]],
 ]},
 ];
