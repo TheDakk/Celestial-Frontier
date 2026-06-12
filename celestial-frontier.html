@@ -116,6 +116,16 @@
   #setpanel .fsopt:hover{color:var(--ink)}
   #setpanel .fsopt.on{border-color:rgba(255,207,138,0.7);color:#ffcf8a;background:rgba(255,207,138,0.1)}
   #setpanel .sdiv{height:1px;background:var(--line);margin:10px -12px 9px}
+  /* settings tabs — like a proper game options screen */
+  #setpanel .stabs{display:flex;gap:5px;margin:2px 0 9px}
+  #setpanel .stab{flex:1;text-align:center;padding:6px 0;border-radius:8px;cursor:pointer;
+    font:600 10px var(--ui);letter-spacing:.05em;color:var(--dim);
+    background:rgba(150,162,210,0.07);border:1px solid var(--glass-brd)}
+  #setpanel .stab.on{color:#ffcf8a;border-color:rgba(255,207,138,0.6);background:rgba(255,207,138,0.08)}
+  #setpanel .sgrp{display:none}
+  #setpanel .sgrp.on{display:block}
+  #helppop .hpv{cursor:pointer}
+  #helppop .hpv:hover{color:var(--ink)}
   #setpanel #resetbtn{width:100%;padding:8px 0;font:600 10.5px var(--ui);letter-spacing:.06em;cursor:pointer;
     color:#ff9e8e;background:rgba(255,120,110,0.08);border:1px solid rgba(255,120,110,0.32);border-radius:9px;
     transition:background .15s,color .15s}
@@ -1061,22 +1071,31 @@
 <div id="setbtn" role="button" tabindex="0" data-tip="Settings — text size, sound, effects, tooltips, reset.">⚙</div>
 <div id="setpanel">
   <div class="shead">Settings</div>
-  <div class="srow2"><span>Text size</span>
-    <span class="opts"><span class="fsopt" data-fs="">A</span><span class="fsopt" data-fs="fs-lg">A+</span><span class="fsopt" data-fs="fs-xl">A++</span></span></div>
-  <div class="srow2"><span>Text tone</span>
-    <span class="opts"><span class="fsopt" data-tone="">Soft</span><span class="fsopt" data-tone="tone-bright">Bright</span><span class="fsopt" data-tone="tone-max">Max</span></span></div>
-  <div class="srow2"><span>Font</span>
-    <span class="opts"><span class="fsopt" data-font="">Grotesk</span><span class="fsopt" data-font="font-sys">System</span><span class="fsopt" data-font="font-mono">Mono</span></span></div>
-  <div class="srow2"><span>Sound</span>
-    <span class="opts"><span id="sndopt" class="fsopt on">On</span></span></div>
-  <div class="srow2"><span>Visual effects</span>
-    <span class="opts"><span id="fxopt" class="fsopt on">On</span></span></div>
-  <div class="srow2"><span>Screen shake</span>
-    <span class="opts"><span id="shakeopt" class="fsopt on">On</span></span></div>
-  <div class="srow2"><span>Notifications</span>
-    <span class="opts"><span id="notifopt" class="fsopt on">On</span></span></div>
-  <div class="srow2"><span>Tooltips</span>
-    <span class="opts"><span id="tipsopt" class="fsopt on">On</span></span></div>
+  <div class="stabs">
+    <span class="stab on" data-stab="d">Display</span><span class="stab" data-stab="g">Graphics</span><span class="stab" data-stab="a">Audio</span>
+  </div>
+  <div class="sgrp on" data-sg="d">
+    <div class="srow2"><span>Text size</span>
+      <span class="opts"><span class="fsopt" data-fs="">A</span><span class="fsopt" data-fs="fs-lg">A+</span><span class="fsopt" data-fs="fs-xl">A++</span></span></div>
+    <div class="srow2"><span>Text tone</span>
+      <span class="opts"><span class="fsopt" data-tone="">Soft</span><span class="fsopt" data-tone="tone-bright">Bright</span><span class="fsopt" data-tone="tone-max">Max</span></span></div>
+    <div class="srow2"><span>Font</span>
+      <span class="opts"><span class="fsopt" data-font="">Grotesk</span><span class="fsopt" data-font="font-sys">System</span><span class="fsopt" data-font="font-mono">Mono</span></span></div>
+    <div class="srow2"><span>Tooltips</span>
+      <span class="opts"><span id="tipsopt" class="fsopt on">On</span></span></div>
+  </div>
+  <div class="sgrp" data-sg="g">
+    <div class="srow2"><span>Visual effects</span>
+      <span class="opts"><span id="fxopt" class="fsopt on">On</span></span></div>
+    <div class="srow2"><span>Screen shake</span>
+      <span class="opts"><span id="shakeopt" class="fsopt on">On</span></span></div>
+  </div>
+  <div class="sgrp" data-sg="a">
+    <div class="srow2"><span>Sound</span>
+      <span class="opts"><span id="sndopt" class="fsopt on">On</span></span></div>
+    <div class="srow2"><span>Notifications</span>
+      <span class="opts"><span id="notifopt" class="fsopt on">On</span></span></div>
+  </div>
   <div class="sdiv"></div>
   <div class="rcnote">💾 Your expedition saves <b>only to this browser, on this device</b> — clearing site data erases it. Back up favourites as ⇪ creature codes.</div>
   <button id="resetbtn" type="button">↺ Reset Game</button>
@@ -8200,6 +8219,10 @@ function openGuideTopic(id){
       _hpop=document.createElement('div'); _hpop.id='helppop';
       document.body.appendChild(_hpop);
       _hpop.addEventListener('click', e=>{
+        if(e.target && e.target.closest && e.target.closest('.hpv')){
+          /* tapping the version line opens the full release notes — always */
+          _hpop.style.display='none'; openReleaseNotes('all'); return;
+        }
         if(e.target && e.target.id==='hp-guide'){
           _hpop.style.display='none';
           if(typeof _tutHook!=='undefined' && _tutHook){ toast('🧭 Guide','The Guide unlocks after Field Training — the lessons cover everything you need for now.'); return; }
@@ -8212,8 +8235,8 @@ function openGuideTopic(id){
   function toggleHelp(){
     const p=_helpPop();
     if(p.style.display==='block'){ p.style.display='none'; return; }
-    p.innerHTML='<div class="hpv">Celestial Frontier · v'+GAME_VERSION+
-      (BUILD_ID!=='dev'?' <span>(build '+BUILD_ID+')</span>':' <span>(dev)</span>')+'</div>'+
+    p.innerHTML='<div class="hpv" role="button" tabindex="0" title="Tap for the full release notes">Celestial Frontier · v'+GAME_VERSION+
+      (BUILD_ID!=='dev'?' <span>(build '+BUILD_ID+')</span>':' <span>(dev)</span>')+' <span style="opacity:.6">›</span></div>'+
       '<button id="hp-guide" type="button">🧭 Open the Guide</button>';
     p.style.display='block';
   }
@@ -8338,7 +8361,7 @@ const RELEASES=[
  ]],
  ['⚙ The Craft', [
   'One file, offline-capable, mobile-first. Deterministic to the byte — the same universe on every device, verified by a 50-probe fingerprint and a full headless test fleet on every build.',
-  'Text size, tone and font settings, sound, effects, tooltips — all persistent. Your save lives in this browser only; back up favourites as ⇪ creature codes.',
+  'A proper options screen — <b>Display / Graphics / Audio</b> tabs covering text size, tone, font, tooltips, effects, shake, sound and notifications, all persistent. Tap the version under <b>?</b> for these notes anytime. Your save lives in this browser only; back up favourites as ⇪ creature codes.',
  ]],
 ]},
 ];
@@ -9313,6 +9336,12 @@ document.getElementById('setbtn').addEventListener('click', ()=>{
   if(tp){ tp.classList.toggle('on', tipsOn); tp.textContent=tipsOn?'On':'Off'; }
 });
 setPanel.addEventListener('click', e=>{
+  const tb=e.target.closest('.stab');
+  if(tb){
+    for(const t of setPanel.querySelectorAll('.stab')) t.classList.toggle('on', t===tb);
+    for(const gp of setPanel.querySelectorAll('.sgrp')) gp.classList.toggle('on', gp.dataset.sg===tb.dataset.stab);
+    return;
+  }
   const fo=e.target.closest('.fsopt[data-fs]');
   if(fo){ fsMode=fo.dataset.fs||''; applyFs(); queueSave(); return; }
   const to=e.target.closest('.fsopt[data-tone]');
