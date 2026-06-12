@@ -557,6 +557,23 @@
   #codexbtn:hover{color:var(--ink);border-color:rgba(150,162,210,0.4)}
   #codexbtn .dot.bio{width:6px;height:6px;border-radius:50%;background:#7fe6a0;box-shadow:0 0 8px #7fe6a0}
   #codexbtn .n{color:#7fe6a0}
+  /* ---- Cargo hold (1.0): appears after your first mine of a dead world ---- */
+  #cargobtn{position:fixed;top:calc(var(--row1-h,58px) + 82px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
+    display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:11px;
+    font-family:var(--ui);font-size:11.5px;letter-spacing:.04em;color:var(--dim);
+    background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(150,162,210,0.22);transition:color .15s,border-color .15s}
+  #cargobtn:hover{color:var(--ink);border-color:rgba(150,162,210,0.4)}
+  #cargobtn .dot.crg{width:6px;height:6px;border-radius:50%;background:#ffcf8a;box-shadow:0 0 8px #ffcf8a}
+  #cargobtn .n{color:#ffcf8a}
+  #cargo{position:fixed;top:calc(var(--row1-h,58px) + 118px);right:18px;z-index:12;width:320px;max-height:min(62vh,560px);overflow-y:auto;
+    background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border:1px solid rgba(150,162,210,0.2);border-radius:15px;padding:6px;display:none;
+    box-shadow:0 18px 50px rgba(0,0,0,0.5)}
+  #cargo .empty{padding:18px 14px;font-size:11.5px;color:var(--faint);text-align:center;line-height:1.55}
+  #cargo .chead{padding:9px 11px 7px;font-family:var(--ui);font-size:10px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--faint)}
+  #cargo .bset{margin:0 6px 6px}
   /* ---- Prime Codex button ---- */
   #pcdxbtn{cursor:pointer;flex:none;position:fixed;top:calc(var(--row1-h,58px) + 10px);right:18px;z-index:9;
     display:flex;align-items:center;gap:7px;padding:8px 13px;border-radius:11px;
@@ -1132,6 +1149,8 @@
 <div id="log"></div>
 <div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="dot bio"></span>Compendium <span class="n" id="codexcount">0</span></div>
 <div id="codex"></div>
+<div id="cargobtn" role="button" tabindex="0" style="display:none" data-tip="Mined elements and the research bench — the engineer’s track." data-guide="mining"><span class="dot crg"></span>Cargo <span class="n" id="cargocount">0</span></div>
+<div id="cargo"></div>
 <div id="primebox"><div class="card">
   <button id="primeclose" class="pxclose" type="button">&times;</button>
   <div class="ph"><div class="pt">✦ The Prime Codex</div>
@@ -5046,6 +5065,18 @@ function renderPanel(p, isLocked){
           (ready?'⛏ Harvest ☄ Stardust — ready':'🏴 Settled — replenishing')+'</button>';
       }
     }
+    /* lifeless worlds carry the elements — the dead-world loop */
+    let mineBtn='';
+    if(d.planetSeed!=null && (!d.species || !d.species.length) && d.ptype){
+      const _mt=mined.get(d.planetSeed);
+      const _mReady=!_mt || (Date.now()-_mt>=MINE_CD);
+      if(techOwned.has('scan1')){
+        const _dp=depositsFor(d.planetSeed, d.ptype, d.designation?d.designation.tier:0);
+        rows+='<div class="splabel"><span class="k">⛏ Mineral veins</span><span class="v">'+_dp.map(s=>ELEM_NAME[s]||s).join(' · ')+'</span></div>';
+      }
+      mineBtn='<button class="act'+(_mReady?'':' in')+'" data-act="mine" data-guide="mining" data-tip="Dead worlds carry the elements — mine them hourly to stock your 🧰 Cargo for research.">'+
+        (_mReady?'⛏ Mine Deposits':'⛏ Mined — veins settling')+'</button>';
+    }
     const atlasRow =
       '<div class="atlasrow">'+
         '<button class="act'+(inLog?' in':'')+'" data-act="'+(inLog?'del':'add')+'" data-guide="atlas" data-tip="'+(inLog?'Remove from your Star Atlas.':'Bookmark this place — travel back anytime from the Star Atlas.')+'">'+
@@ -5053,7 +5084,7 @@ function renderPanel(p, isLocked){
         '<button class="aico lfav'+(_favOn?' on':'')+'" data-act="fav" data-guide="atlas" data-tip="'+(_favOn?'Remove favorite':'Favorite \u2014 also saves to your Star Atlas')+'">'+(_favOn?'\u2605':'\u2606')+'</button>'+
         '<button class="aico lhome'+(_homeOn?' on':'')+'" data-act="home" data-guide="atlas" data-tip="'+(_homeOn?'Clear home':'Set as home \u2014 also saves to your Star Atlas')+'">\u2302</button>'+
       '</div>';
-    const btn = atlasRow + conqBtn +
+    const btn = atlasRow + conqBtn + mineBtn +
       (d.where ? '<button class="act" data-act="share" data-guide="codes" data-tip="Copy a code — friends land on this exact world">⇪ Share this discovery</button>' : '');
     panelEl.innerHTML =
       '<div class="head">'+thumb+'<div class="htxt"><h3>'+d.title+'</h3><div class="sub">'+d.sub+'</div></div></div>'+
@@ -5100,7 +5131,8 @@ panelEl.addEventListener('click', e=>{
     const dz=dangerOf(_lastDesc);
     if(dz.pct>0 && Math.random()<dz.pct){
       stats.scanhits=(stats.scanhits||0)+1;
-      const dead=damageExplorer(dz.dmg, hazardFlavor(_lastDesc, null));
+      const _dmg=techOwned.has('hull1')?Math.max(1,Math.round(dz.dmg*0.75)):dz.dmg;   /* reinforced hull bites back */
+      const dead=damageExplorer(_dmg, hazardFlavor(_lastDesc, null));
       unlock('survivor'); checkAch();
       if(dead) return;                 /* the scan still completes — you earned it */
     }
@@ -5122,6 +5154,7 @@ panelEl.addEventListener('click', e=>{
   if(b.dataset.act==='share'){ shareWhere(_lastDesc); return; }
   if(b.dataset.act==='conq'){ conquerPlanet(_lastDesc); return; }
   if(b.dataset.act==='harv'){ doHarvest(_lastDesc); return; }
+  if(b.dataset.act==='mine'){ mineWorld(_lastDesc); return; }
   if(b.dataset.act==='add') addToLog(_lastDesc);
   else if(b.dataset.act==='del'){
     logMap.delete(_lastDesc.logId);
@@ -5777,7 +5810,14 @@ let _trav=null;
 const _REDUCED=(()=>{ try{ return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(_){ return false; } })();
 function travelTo(w){
   if(!w || !w.gal || !fxOn || _REDUCED || _trav){ goTo(w); return; }
-  _trav={t0:performance.now(), dur:950, w, hex:'#cfe0ff', jumped:false, zEnd:0};
+  /* distance matters — and your drive answers it. Duration scales with the
+     gulf you're crossing ÷ drive tier, CAPPED so travel is flavor, never
+     boredom; better drives shrink the cap toward a breath. */
+  const dist=Math.hypot((w.gal.x-st.ucam.x)||0, (w.gal.y-st.ucam.y)||0);
+  const mult=(typeof driveMult==='function')?driveMult():1;
+  const dur=clamp(800+(dist*3)/mult, 800, Math.max(1200, 8000/mult));
+  if(dist>1400 && mult===1) toast('🚀 Long Burn','The old fusion-chemical drive strains across '+Math.round(dist)+' u of void — research better drives at the 🧰 Cargo bench.');
+  _trav={t0:performance.now(), dur, w, hex:'#cfe0ff', jumped:false, zEnd:0};
 }
 function _travelFrame(){
   if(!_trav) return;
@@ -6293,6 +6333,7 @@ function doSave(){
       harvests:stats.harvests||0, essenceEarned:stats.essenceEarned||0,
       guardians:stats.guardians||0, paragons:stats.paragons||0,
       nh:nameHue, br:stats.bestRank||0, setsc:[...claimedSets],
+      cargo:[...cargo], minedw:[...mined], tech:[...techOwned], mines:stats.mines||0,
       names:[...customNames],
       shares:stats.shares, jumps:stats.jumps,
       anomalies:stats.anomalies, anomKey:lastAnomKey,
@@ -6341,6 +6382,11 @@ function loadSave(){
     stats.guardians=num(data.guardians);
     stats.paragons=num(data.paragons);
     for(const s of (data.setsc||[])) if(BINDER_SETS.some(x=>x.id===s)) claimedSets.add(s);
+    for(const kv of (data.cargo||[])){ if(kv && ELEM_NAME[kv[0]]!=null) cargo.set(kv[0], clamp(num(kv[1]), 0, 1e6)); }
+    for(const kv of (data.minedw||[])){ if(kv && kv[0]!=null) mined.set(kv[0], clamp(num(kv[1]), 0, _nowL)); }
+    for(const t of (data.tech||[])) if(TECHS.some(x=>x.id===t)) techOwned.add(t);
+    stats.mines=num(data.mines);
+    showCargoBtn();
     nameHue=Number.isFinite(+data.nh)?clamp((+data.nh)|0, -1, RANK_HUES.length-1):-1;
     stats.bestRank=clamp(num(data.br), 0, RANK_HUES.length-1);
     _savedView=data.view||null;
@@ -7476,7 +7522,7 @@ function healExplorer(floraEntry, roll){
   const pois=clamp(0.08 + tF*0.07, 0.05, 0.6);
   const heal=Math.round(12 + tF*9 + pois*30);
   const stat=floraStat(floraEntry.genome);
-  const gain=1+tF;
+  const gain=1+tF+(techOwned.has('lab1')?1:0);   /* the Xenobotany Lab squeezes one more point from every meal */
   if(roll<pois){
     const dmg=Math.ceil(heal*0.6);
     return {ok:false, pois, heal, dmg, stat, dead:damageExplorer(dmg, 'The '+floraEntry.name+' was toxic.')};
@@ -7573,6 +7619,10 @@ const GUIDE=[
   '<p>☄ Stardust is the expedition’s soft currency. Lifetime Stardust earned <b>passively raises your breeding odds</b> (+1% per 50 earned, up to +15%). Three faucets:</p><ul><li><b>⛏ Harvests</b> from settled worlds — see <span data-gt="harvest">Harvesting</span>.</li><li><b>Spoils of Conquest</b> — every world you settle pays out (rarer worlds pay more).</li><li><b>Rare Find Bonus</b> — first discovery of any Legendary+ species.</li></ul>'},
  {id:'harvest', t:'Harvesting', k:'harvest hourly cooldown settled world replenish stardust', body:
   '<p>Every settled world can be <b>⛏ harvested for Stardust once per hour</b> (rarer worlds yield more). The button lives on the world’s survey card — “🏴 Settled — replenishing” means come back later. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
+ {id:'mining', t:'Mining & the Cargo hold', k:'mine mining elements minerals deposits cargo hold dead lifeless world vein iron gold prismatium', body:
+  '<p><b>Dead worlds carry the elements.</b> Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and <b>rarer worlds hide richer veins</b>, up to exotics like Voidglass and Prismatium.</p><ul><li>Open any lifeless world’s survey and <b>⛏ Mine Deposits</b> — hourly per world, like harvests.</li><li>Everything lands in your <b>🧰 Cargo hold</b> (right rail — it appears after your first mine).</li><li>Spend elements + ☄ Stardust at the <b>Research bench</b> inside the Cargo hold — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
+ {id:'research', t:'Research & ships', k:'research tech technology bench drive ship hull scanner lab fusion antimatter warp travel distance', body:
+  '<p>The engineer’s track, parallel to the Prime Codex: the Codex is your <b>legend</b>, the bench is your <b>capability</b>. Research costs mined elements + ☄ Stardust:</p><ul><li><b>🛰 Deep Scanners</b> — survey cards reveal mineral veins from orbit.</li><li><b>🛡 Reinforced Hull</b> — hostile bioscans wound you 25% lighter.</li><li><b>🧪 Xenobotany Lab</b> — flora meals nourish one extra stat point.</li><li><b>The drive ladder</b> — 🚀 Fusion → ⚛ Antimatter → 🌀 Warp Fold. Hyperlane travel scales with real distance; each drive cuts it, and Warp Fold makes every jump arrive in a breath. Distance is never a wall — only a wait, and only ever a short one.</li></ul>'},
 ]},
 {icon:'✦', cat:'The Prime Codex', blurb:'Signatures, the frontier, endings', topics:[
  {id:'signatures', t:'The nine Signatures', k:'signature prime codex stone ocean flame sky life mind prism star void win', body:
@@ -7763,7 +7813,11 @@ const RELEASES=[
   '<b>The summit grades</b> — three more above even Transcendent: <b>Empyrean, Eternal</b> and <b>Omnipotent</b>. Out past one-in-a-million the dice all but give out — the summit belongs to master breeders and to guardian slayers.',
   '<b>👑 Apex Guardians</b> — about one fauna-bearing world in forty is ruled by a <b>named, one-of-a-kind titan</b> wearing a summit grade. The same guardian rules the same world for every explorer — share the coordinates and a friend faces the very same beast. Defeat it in conquest and the world pays a ruler’s ransom — and <b>the guardian itself joins your Compendium</b>.',
   'Deep-spectrum hunting is a breeder’s game — size, glow, wild apex blood and deep hybrid generations push grades upward, so a master bloodline can climb past what nature rolls.',
-  '<b>Hyperlane travel</b> — Atlas, beacon, search and shared-code jumps no longer blink you across the void: the camera dives out, the sky stretches into a <b>streak tunnel tinted by your destination star</b>, and you ease in on arrival. Tap to skip; honors your effects toggle and reduced-motion.',
+  '<b>Hyperlane travel</b> — Atlas, beacon, search and shared-code jumps no longer blink you across the void: the camera dives out, the sky stretches into a <b>streak tunnel tinted by your destination star</b>, and you ease in on arrival. <b>Distance is real now</b> — far jumps take longer (never more than a few breaths), and better drives shrink the void. Tap to skip.',
+  '<b>🗂 The Binder</b> — the Compendium’s new collection tab. You can’t collect individuals out of infinity, so the Binder collects <b>types</b>: fixed pages of slots, identical for every explorer — your universe decides which specimen fills each. Curated <b>Sets</b> pay one-time Stardust bounties.',
+  '<b>🜲 The Fifty Paragons</b> — named, one-of-a-kind deep-spectrum legends on fixed worlds, the same fifty for everyone. Silhouettes in the Binder until found: tap one to plot a course, scan its world to catalogue the legend.',
+  '<b>⛏ Mining &amp; the 🧰 Cargo hold</b> — dead worlds finally have a job. Every lifeless planet carries a mineral profile (rarer worlds hide richer veins, up to Voidglass and Prismatium); mine hourly, stock your Cargo, and spend elements at the <b>Research bench</b>.',
+  '<b>🛠 Research</b> — the engineer’s track beside the Prime Codex: Deep Scanners, a Reinforced Hull, the Xenobotany Lab, and the <b>drive ladder</b> (Fusion → Antimatter → Warp Fold) that shrinks hyperlane distance to a breath.',
  ]],
  ['◈ UI Enhancements', [
   '<b>Nameplate colors</b> — every rank now carries its own color, unlocked forever once you reach it. Pick any unlocked color from your character sheet — and <b>Eternal Frontier</b> unlocks the iridescent foil nameplate.',
@@ -8106,6 +8160,136 @@ function doHarvest(d){
   toast('⛏ Harvest','+'+yieldN+' ☄ Stardust from '+(d.title||'your world')+'. Total: '+essence+'. Stardust passively raises your breeding odds.');
   _panelKey=null;
   checkAch(); renderRank(); queueSave();
+}
+
+/* ================= MINERALS, CARGO & RESEARCH =================
+   Dead worlds finally have a job. Every lifeless planet carries a
+   deterministic element profile by type — mine it hourly into your 🧰 Cargo,
+   then spend elements + stardust at the research bench: scanners, the drive
+   ladder (faster hyperlanes over real distance), hulls and labs. The
+   engineer's track, parallel to the Prime Codex — capability, not legend. */
+/* ----------------------------------------------------------------
+   @section mining [app] — element deposits, cargo hold, research bench
+   Owns: ELEM_NAME, DEPOSIT_PROFILES, RARE_VEIN, depositsFor, mined, cargo, MINE_CD, mineWorld, TECHS, techOwned, …
+   ---------------------------------------------------------------- */
+const ELEM_NAME={Fe:'Iron',Si:'Silicon',Mg:'Magnesium',Al:'Aluminium',Ca:'Calcium',Na:'Sodium',Ni:'Nickel',Ti:'Titanium',
+  H:'Hydrogen',He:'Helium',C:'Carbon',N:'Nitrogen',O:'Oxygen',S:'Sulfur',P:'Phosphorus',Cl:'Chlorine',
+  H2O:'Water Ice',CH4:'Methane Ice',NH3:'Ammonia Ice',CO2:'Dry Ice',He3:'Helium-3',
+  Cu:'Copper',Zn:'Zinc',Ag:'Silver',Au:'Gold',Pt:'Platinum',Ir:'Iridium',W:'Tungsten',U:'Uranium',Th:'Thorium',
+  Li:'Lithium',Co:'Cobalt',Cr:'Chromium',Mn:'Manganese',Pb:'Lead',Sn:'Tin',
+  Nd:'Neodymium',Pm:'Promethium',Vg:'Voidglass',Pz:'Prismatium'};
+const DEPOSIT_PROFILES={
+  rocky:['Fe','Si','Mg','Al','Ni','Ti','Cu','Cr','Mn','Ca'],
+  metal:['Fe','Ni','Cu','Ag','Au','Pt','Ir','W','Co','Zn'],
+  lava: ['S','Fe','W','Ti','U','Th','Cr','Mn'],
+  ice:  ['H2O','CH4','NH3','CO2','He3','N','O'],
+  desert:['Si','Fe','Al','Na','Cl','Li','Sn','Ca'],
+  gas:  ['H','He','CH4','NH3','He3'],
+  venus:['S','CO2','Cl','P','Pb','Zn'],
+  dwarf:['Si','Ni','Fe','C','H2O','Sn'],
+  moon: ['Si','Al','Ti','Fe','He3','Mg'],
+};
+const RARE_VEIN=['Ag','Au','Pt','Ir','U','Nd','Pm','Vg','Pz'];   /* index climbs with world rarity */
+function depositsFor(seed, type, tier){
+  const prof=DEPOSIT_PROFILES[type]||DEPOSIT_PROFILES.rocky;
+  const r=mulberry32(hashInt(seed>>>0, 0xE1E, 9)>>>0);
+  const n=3+((r()*3)|0);
+  const pool=prof.slice(), picks=[];
+  for(let i=0;i<n && pool.length;i++) picks.push(pool.splice((r()*pool.length)|0, 1)[0]);
+  if(r() < 0.10+(tier||0)*0.05)                       /* a rare vein — richer on rarer worlds */
+    picks.push(RARE_VEIN[Math.min(RARE_VEIN.length-1, (r()*(1+(tier||0)))|0)]);
+  return picks;
+}
+const mined=new Map();         /* pseed → last mine ms */
+const cargo=new Map();         /* element symbol → qty */
+const MINE_CD=HARVEST_CD;      /* the same hourly rhythm as harvests */
+function mineWorld(d){
+  const ps=d.planetSeed; if(ps==null) return;
+  const last=mined.get(ps)||0, now=Date.now();
+  if(now-last<MINE_CD){ toast('⛏ Mining','The veins are settling — ready in '+fmtRemain(MINE_CD-(now-last))+'.'); return; }
+  mined.set(ps, now);
+  const tier=(d.designation?d.designation.tier:0);
+  const deps=depositsFor(ps, d.ptype||'rocky', tier);
+  const r=mulberry32(hashInt(ps>>>0, 0xE1F, (now/3600000)|0)>>>0);
+  const got=[];
+  for(const sym of deps){
+    const q=1+((r()*4)|0)+Math.floor(tier/3);
+    cargo.set(sym, (cargo.get(sym)||0)+q);
+    got.push(q+'× '+(ELEM_NAME[sym]||sym));
+  }
+  stats.mines=(stats.mines||0)+1;
+  playRaritySting(2); fxBurst(FX_GOLD,14);
+  toast('⛏ Deposits Mined', got.join(' · ')+' — stored in your 🧰 Cargo.');
+  showCargoBtn(); if(cargoOpen) renderCargo();
+  _panelKey=null; checkAch(); renderRank(); queueSave();
+}
+/* ---- the research bench: the engineer's ladder ---- */
+const TECHS=[
+ {id:'scan1',  ic:'🛰', name:'Deep Scanners',    d:'Survey cards reveal a world’s mineral veins from orbit', cost:{Fe:6,Si:4}, sd:20},
+ {id:'hull1',  ic:'🛡', name:'Reinforced Hull',  d:'Hostile bioscans wound you 25% lighter', cost:{Ti:5,Fe:8}, sd:40},
+ {id:'lab1',   ic:'🧪', name:'Xenobotany Lab',   d:'Eating flora grows the nourished stat by +1 more', cost:{C:6,P:3,H2O:4}, sd:60},
+ {id:'drive1', ic:'🚀', name:'Fusion Drive',     d:'Hyperlanes run twice as quick', cost:{H:8,He3:2,Fe:4}, sd:40},
+ {id:'drive2', ic:'⚛', name:'Antimatter Drive', d:'Hyperlanes run four times as quick — far jumps stop straining', cost:{He3:6,Pt:2,U:2}, sd:120, req:'drive1'},
+ {id:'drive3', ic:'🌀', name:'Warp Fold',        d:'Distance becomes a rumor — every jump arrives in a breath', cost:{Pz:1,Ir:3,U:4}, sd:300, req:'drive2'},
+];
+const techOwned=new Set();
+function driveMult(){ return techOwned.has('drive3')?8:(techOwned.has('drive2')?4:(techOwned.has('drive1')?2:1)); }
+function _canAfford(t){
+  if(t.req && !techOwned.has(t.req)) return false;
+  if(essence<t.sd) return false;
+  for(const k in t.cost) if((cargo.get(k)||0)<t.cost[k]) return false;
+  return true;
+}
+function buyTech(id){
+  const t=TECHS.find(x=>x.id===id);
+  if(!t || techOwned.has(id) || !_canAfford(t)) return;
+  for(const k in t.cost) cargo.set(k, (cargo.get(k)||0)-t.cost[k]);
+  essence-=t.sd;
+  techOwned.add(id);
+  playRaritySting(5); playFanfare(); fxBurst(FX_GOLD,40);
+  cinematic({kicker:'🛠 Research Complete', title:t.name, sub:t.d, hex:'#ffcf8a', tier:4});
+  renderCargo(); checkAch(); renderRank(); queueSave();
+}
+/* ---- the Cargo panel: hold + bench ---- */
+const cargoBtn=document.getElementById('cargobtn');
+const cargoEl=document.getElementById('cargo');
+let cargoOpen=false;
+function showCargoBtn(){ if(cargoBtn && (cargo.size>0 || techOwned.size>0)) cargoBtn.style.display='flex'; }
+function renderCargo(){
+  if(!cargoEl) return;
+  const cc=document.getElementById('cargocount'); if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0);
+  let html='<div class="chead">🧰 Cargo Hold</div>';
+  if(cargo.size===0) html+='<div class="empty">Empty. <b>Lifeless worlds</b> carry the elements — open any dead world’s survey and ⛏ Mine Deposits.</div>';
+  else{
+    const rows=[...cargo.entries()].filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]);
+    html+='<div class="bgrid" style="padding:0 6px 6px">'+rows.map(e=>'<span class="bslot" style="border-color:rgba(255,207,138,0.4);color:var(--ink)"><b>'+e[1]+'</b>× '+(ELEM_NAME[e[0]]||e[0])+'</span>').join('')+'</div>';
+  }
+  html+='<div class="chead">🛠 Research Bench</div>';
+  for(const t of TECHS){
+    const own=techOwned.has(t.id);
+    const gated=t.req && !techOwned.has(t.req);
+    const afford=_canAfford(t);
+    const costTxt=Object.keys(t.cost).map(k=>t.cost[k]+'× '+k).join(' + ')+' + ☄'+t.sd;
+    html+='<div class="bset'+(own?' done':'')+'"><span>'+t.ic+' <b>'+t.name+'</b> — '+t.d+
+      (own?'':'<br><span class="bcnt">'+(gated?'requires '+(TECHS.find(x=>x.id===t.req)||{}).name:costTxt)+'</span>')+'</span>'+
+      (own?'<span class="bclaimed">built ✓</span>'
+          :(afford?'<button class="bclaim" data-tech="'+t.id+'" type="button">Build</button>':''))+
+      '</div>';
+  }
+  cargoEl.innerHTML=html;
+}
+if(cargoBtn){
+  cargoBtn.addEventListener('click', ()=>{
+    cargoOpen=!cargoOpen;
+    cargoEl.style.display=cargoOpen?'block':'none';
+    if(cargoOpen) renderCargo();
+  });
+}
+if(cargoEl){
+  cargoEl.addEventListener('click', e=>{
+    const t=e.target.closest('[data-tech]');
+    if(t) buyTech(t.dataset.tech);
+  });
 }
 
 /* ================= THE PRIME CODEX =================
