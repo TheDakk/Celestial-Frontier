@@ -21,6 +21,9 @@
   body.tone-bright{--ink:#ffffff;--dim:#c6cde8;--faint:#8e98c0;--emph:#ffd96a}
   body.tone-max{--ink:#ffffff;--dim:#e4e8f8;--faint:#b4bcdc;--emph:#ffe08a}
   b{color:var(--emph,inherit)}
+  /* ---- font choice (1.0): offline-safe system stacks, swapped via the vars ---- */
+  body.font-sys{--ui:system-ui,-apple-system,sans-serif;--body:system-ui,-apple-system,sans-serif}
+  body.font-mono{--ui:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--body:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
   *{margin:0;padding:0;box-sizing:border-box}
   html,body{height:100%;background:var(--void);overflow:hidden;color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;
     touch-action:none;overscroll-behavior:none;
@@ -74,10 +77,11 @@
      wrap it out of the row (it used to sit beside the bar and broke at A++) */
   #hptext{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     font:800 9.5px var(--ui);letter-spacing:.04em;line-height:1;color:var(--ink);pointer-events:none}
-  /* the dark chip keeps the number readable over the bright fill and the dark track alike —
-     heavy alpha on purpose: white-on-green failed Dakk's playtest twice */
-  #hptext .hpchip{background:rgba(6,8,16,0.78);padding:1px 8px;border-radius:99px;
-    text-shadow:0 1px 1px rgba(0,0,0,0.8)}
+  /* the chip keeps the number readable over the bright fill and the dark track alike —
+     translucent smoke, not a black oval (Dakk: "blend in more"); the white text +
+     shadow carry the contrast */
+  #hptext .hpchip{background:rgba(4,6,14,0.38);padding:0 8px;border-radius:99px;
+    text-shadow:0 1px 2px rgba(0,0,0,0.9), 0 0 3px rgba(0,0,0,0.6)}
   #dmgflash{position:fixed;inset:0;z-index:39;pointer-events:none;opacity:0;transition:opacity .5s;
     background:radial-gradient(ellipse at center, transparent 38%, rgba(255,40,30,0.55) 100%)}
   /* ---- death screen ---- */
@@ -980,6 +984,8 @@
     <span class="opts"><span class="fsopt" data-fs="">A</span><span class="fsopt" data-fs="fs-lg">A+</span><span class="fsopt" data-fs="fs-xl">A++</span></span></div>
   <div class="srow2"><span>Text tone</span>
     <span class="opts"><span class="fsopt" data-tone="">Soft</span><span class="fsopt" data-tone="tone-bright">Bright</span><span class="fsopt" data-tone="tone-max">Max</span></span></div>
+  <div class="srow2"><span>Font</span>
+    <span class="opts"><span class="fsopt" data-font="">Grotesk</span><span class="fsopt" data-font="font-sys">System</span><span class="fsopt" data-font="font-mono">Mono</span></span></div>
   <div class="srow2"><span>Sound</span>
     <span class="opts"><span id="sndopt" class="fsopt on">On</span></span></div>
   <div class="srow2"><span>Visual effects</span>
@@ -6096,7 +6102,7 @@ function doSave(){
     localStorage.setItem(SAVE_KEY, JSON.stringify({
       v:4, epoch:COSMIC_EPOCH,
       view:whereOfView(),
-      hp:hp, pstats:pstats, fs:fsMode, tone:toneMode, snd:sndOn?1:0, fx:fxOn?1:0, shake:shakeOn?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
+      hp:hp, pstats:pstats, fs:fsMode, tone:toneMode, font:fontMode, snd:sndOn?1:0, fx:fxOn?1:0, shake:shakeOn?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
       notifs:notifications.slice(0,50),
       me:explorerName,
       essence:essence,
@@ -6160,6 +6166,7 @@ function loadSave(){
     if(typeof data.hp==='number') hp=clamp(data.hp,1,HP_MAX);  /* never load in dead */
     fsMode=data.fs||''; applyFs();
     toneMode=(data.tone==='tone-bright'||data.tone==='tone-max')?data.tone:''; applyTone();
+    fontMode=(data.font==='font-sys'||data.font==='font-mono')?data.font:''; applyFont();
     sndOn=data.snd!==0;
     fxOn=data.fx!==0;
     shakeOn=data.shake!==0;
@@ -7397,7 +7404,7 @@ const GUIDE=[
 ]},
 {icon:'⚙', cat:'Settings & Saving', blurb:'Toggles, tooltips, your save', topics:[
  {id:'settings', t:'Settings', k:'settings text size sound effects shake notifications tooltips toggle options', body:
-  '<p>The ⚙ panel (bottom right): <b>Text size</b> (A/A+/A++), <b>Text tone</b> (Soft / Bright / Max — brighter tones lift all body text toward white and shift bold emphasis to gold so it still stands out), <b>Sound</b>, <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, <b>Notifications</b> (silences popups; the 🔔 tray still logs everything), and <b>Tooltips</b> (the short hints on long-press or hover — turn them off once you’re fluent). All persist with your save.</p>'},
+  '<p>The ⚙ panel (bottom right): <b>Text size</b> (A/A+/A++), <b>Text tone</b> (Soft / Bright / Max — brighter tones lift all body text toward white and shift bold emphasis to gold so it still stands out), <b>Font</b> (Grotesk / System / Mono), <b>Sound</b>, <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, <b>Notifications</b> (silences popups; the 🔔 tray still logs everything), and <b>Tooltips</b> (the short hints on long-press or hover — turn them off once you’re fluent). All persist with your save.</p>'},
  {id:'saving', t:'Your save & reset', k:'save localstorage reset erase wipe browser device local', body:
   '<p>Your expedition saves automatically to this browser on this device — no account, no cloud. Clearing site data clears the expedition, so export your best creatures as CFB codes if you’re attached. <b>↺ Reset Game</b> in Settings erases everything after a confirm — the universe itself is unharmed; it’s math.</p>'},
 ]}];
@@ -7578,7 +7585,7 @@ const RELEASES=[
   'The high tiers got a vivid new palette: <b>aqua</b> Mythic, <b>starlight</b> Celestial, <b>ember</b> Primordial, <b>white-light</b> Transcendent, <b>dawnfire</b> Empyrean, <b>twilight</b> Eternal — and Omnipotent shimmers through them all.',
   'Your character sheet now tracks the <b>highest grade you’ve ever reached</b> and your <b>guardians felled</b> — the very top of the ladder is chased, not checklisted.',
   'The HP bar now slides <b>green → amber → red continuously</b> — pure green means untouched, any wound tints the empty track red, and the number rides a high-contrast chip.',
-  '<b>Readability pass</b>: body text is brighter by default (no more blue-on-blue), and a new <b>Text tone</b> setting (Soft / Bright / Max) lifts it further — in the brighter tones, bold emphasis turns <b>gold</b> so it never vanishes into white text.',
+  '<b>Readability pass</b>: body text is brighter by default (no more blue-on-blue), and a new <b>Text tone</b> setting (Soft / Bright / Max) lifts it further — in the brighter tones, bold emphasis turns <b>gold</b> so it never vanishes into white text. A <b>Font</b> setting (Grotesk / System / Mono) joins it.',
   'The Pathfinders’ story now runs through the whole expedition: a sharper opening, the Prime Codex framed as <b>their unfinished survey</b>, and an ending that finally answers the silent beacons.',
  ]],
  ['⚖ Balancing', [
@@ -8463,6 +8470,18 @@ function applyTone(){
     for(const o of opts) o.classList.toggle('on', (o.dataset.tone||'')===toneMode);
   }catch(_){}
 }
+let fontMode='';   /* '' Grotesk (default) · font-sys · font-mono — offline-safe system stacks */
+function applyFont(){
+  try{
+    const b=document.body;
+    if(b && b.classList){
+      b.classList.remove('font-sys','font-mono');
+      if(fontMode) b.classList.add(fontMode);
+    }
+    const opts=document.querySelectorAll ? document.querySelectorAll('#setpanel .fsopt[data-font]') : [];
+    for(const o of opts) o.classList.toggle('on', (o.dataset.font||'')===fontMode);
+  }catch(_){}
+}
 const setPanel=document.getElementById('setpanel');
 function resetSettingsView(){
   const rc=document.getElementById('resetconfirm'), rb=document.getElementById('resetbtn');
@@ -8472,7 +8491,7 @@ document.getElementById('setbtn').addEventListener('click', ()=>{
   const opening = setPanel.style.display!=='block';
   if(opening) resetSettingsView();
   setPanel.style.display = opening ? 'block' : 'none';
-  applyFs(); applyTone();
+  applyFs(); applyTone(); applyFont();
   const so=document.getElementById('sndopt');
   if(so){ so.classList.toggle('on', sndOn); so.textContent=sndOn?'On':'Off'; }
   const fo2=document.getElementById('fxopt');
@@ -8489,6 +8508,8 @@ setPanel.addEventListener('click', e=>{
   if(fo){ fsMode=fo.dataset.fs||''; applyFs(); queueSave(); return; }
   const to=e.target.closest('.fsopt[data-tone]');
   if(to){ toneMode=to.dataset.tone||''; applyTone(); queueSave(); return; }
+  const fnt=e.target.closest('.fsopt[data-font]');
+  if(fnt){ fontMode=fnt.dataset.font||''; applyFont(); queueSave(); return; }
   if(e.target && e.target.id==='sndopt'){
     sndOn=!sndOn;
     e.target.classList.toggle('on', sndOn);
