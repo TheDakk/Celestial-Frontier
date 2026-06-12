@@ -78,9 +78,15 @@
 
 - Rarity ladder extended 8 → 15 tiers. Deep spectrum: **Mythic (~1/22k),
   Celestial (~1/91k), Primordial (~1/333k), Transcendent (1/1M)**; summit:
-  **Empyrean (~1/3.3M), Eternal (~1/11M), Singular (~1/33M)**. All bands carved
-  out of the TOP of the old unique band so existing grades hold or climb —
-  verified over 60M seeds (0 downgrades; `tools/rarity-sanity.js`).
+  **Empyrean (~1/3.3M), Eternal (~1/11M), Omnipotent (~1/33M)** (was "Singular";
+  Dakk renamed 2026-06-11 — power-fantasy fits the card-collection direction).
+  All bands carved out of the TOP of the old unique band so existing grades
+  hold or climb — verified over 60M seeds (0 downgrades; `tools/rarity-sanity.js`).
+- **Collection-card pass** (Dakk: "like a card collection game"): specimen cards
+  wear a `.gbadge` grade badge; tier 12+ gets the **iridescent foil** treatment
+  (shimmer badge + animated prismatic `.iridframe` ring — CSS at the end of the
+  style block). High-tier palette repainted to pop: aqua/starlight/ember/
+  white-light/dawnfire/twilight/iridescent-magenta.
 - **👑 Apex Guardians** (the "ultra-rare encounters" runway item): ~1 in 40
   fauna-bearing worlds is ruled by a named one-of-a-kind titan wearing a summit
   grade (`guardianFor`, deterministic — same ruler for every player). Guarded
@@ -93,11 +99,15 @@
 - Boosted bloodlines can now breed past Unique (boost cap raised to TIER_MAX);
   summit via breeding needs a natural Anomalous+ under max boost — two roads
   to the top: breeder's and fighter's.
-- 6 new achievements (Beyond the Veil ≥Mythic, One in a Million =Transcendent,
-  Beyond the Million ≥Empyrean, The Deep Spectrum =12 distinct tiers, Regicide
-  / Throne Breaker =1/5 guardians; deliberately NO "all 15 tiers"). New save
-  field `guardians` (absent-default 0). Guide topics (rarity + new Apex
-  Guardians), reference, HANDOFF updated; settle25 icon ceded 👑 to guard1.
+- 8 new achievements (Beyond the Veil ≥Mythic, One in a Million =Transcendent,
+  Beyond the Million ≥Empyrean — the FINAL rarity achievement per Dakk: tier
+  12+ — plus The Deep Spectrum =12 distinct tiers, Regicide / Throne Breaker
+  =1/5 guardians, Realm Ranger / Master of Realms =8/16 realms owned).
+  Deliberately NO achievement for the very top: the character sheet instead
+  shows **"Highest grade ever reached"** (statistic over achievement, Dakk's
+  call) and "Apex Guardians felled". New save field `guardians`
+  (absent-default 0). Guide topics (rarity + new Apex Guardians), reference,
+  HANDOFF updated; settle25 icon ceded 👑 to guard1.
 - `tools/baseline.json` intentionally regenerated twice (deep spectrum, then
   summit+guardians): only `gradeTiers` changed plus the NEW `guardians` probe
   (50 probes now); all rolls/grades/genomes/duels/codes byte-identical.
@@ -113,13 +123,32 @@
 - v1.2 bump (everyone's bulletin re-arms), build number in Guide footer,
   new-URL bullet in notes.
 
-## Next (more "memorable moments" runway)
+## NEXT BATCH for v1.3, before the bump (carry-over for the next session)
 
-- ~~Ultra-rare monster ENCOUNTERS~~ → shipped as Apex Guardians (staged v1.3).
-  Possible follow-ons: unique guardian abilities (currently they use the
-  standard biome ability of their genome), guardian-specific battle intros.
+Dakk's direction from the 2026-06-11 late-night session (his words paraphrased):
+
+1. **Story coherence pass (v1.3)** — revisit the narrative (Prime Codex /
+   Pathfinders fiction, intro, endings, Guide lore) so it's coherent and
+   in line with where the game is going: the deep spectrum, the summit
+   grades, named Apex Guardians, and the card-collection identity. Weave
+   guardians into the Pathfinders story rather than leaving them mechanical.
+   Not started — needs a focused pass over intro text, SIGS hints, ending
+   text, and Guide category blurbs.
+2. **Release notes discipline** — keep revising RELEASES[0] (v1.3) in place as
+   the version grows; same-version revision is explicitly OK per Dakk.
+3. After both: offer the v1.3 bump + deploy again.
+
+## Next version (v1.4 runway, per Dakk)
+
+- **More animal and planet abilities, with balance** — expand the 11 biome
+  ability families (more variety per theme, possibly guardian-unique
+  abilities) and give planets/worlds active abilities too; explicit balance
+  pass alongside (duel math lives in runDuel/battleStats; budget formula
+  `170+tier*38` now spans tier 0–14, so high-tier power creep needs watching).
+- Guardian-specific battle intros / unique guardian abilities (follow-on from
+  Apex Guardians).
 - "First discovery record card" worth sharing (a shareable keepsake image/code
-  for Legendary+ finds).
+  for Legendary+ finds) — pairs naturally with the new foil card styling.
 - Cosmic events: lean further into "were you there?" — a witness log or
   commemorative entries.
 

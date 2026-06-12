@@ -40,6 +40,6 @@ const total=N*SALTS.length;
 console.log('seeds checked:', total.toLocaleString());
 console.log('downgrades:', downgrades, downgrades===0 ? '(PASS — no creature loses its grade)' : '(FAIL!)');
 console.log('upgrades (old Uniques climbing into the deep spectrum):', upgrades);
-const NAMES=['Common','Uncommon','Notable','Rare','Exotic','Legendary','Anomalous','Unique','Mythic','Celestial','Primordial','Transcendent','Empyrean','Eternal','Singular'];
+const NAMES=['Common','Uncommon','Notable','Rare','Exotic','Legendary','Anomalous','Unique','Mythic','Celestial','Primordial','Transcendent','Empyrean','Eternal','Omnipotent'];
 for(let t=7;t<=14;t++) console.log(`  t${t} ${NAMES[t].padEnd(13)} ${counts[t].toString().padStart(7)}  (~1 in ${Math.round(total/Math.max(1,counts[t])).toLocaleString()})`);
 process.exit(downgrades===0?0:1);
