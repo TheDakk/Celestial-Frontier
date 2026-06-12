@@ -66,8 +66,9 @@
   /* the HP number lives ON the bar — centered, so text-size changes can never
      wrap it out of the row (it used to sit beside the bar and broke at A++) */
   #hptext{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-    font:800 9.5px var(--ui);letter-spacing:.04em;line-height:1;color:var(--ink);
-    text-shadow:0 1px 2px rgba(0,0,0,0.85), 0 0 4px rgba(0,0,0,0.6);pointer-events:none}
+    font:800 9.5px var(--ui);letter-spacing:.04em;line-height:1;color:var(--ink);pointer-events:none}
+  /* the dark chip keeps the number readable over the bright fill and the dark track alike */
+  #hptext .hpchip{background:rgba(8,10,20,0.5);padding:1px 7px;border-radius:99px}
   #dmgflash{position:fixed;inset:0;z-index:39;pointer-events:none;opacity:0;transition:opacity .5s;
     background:radial-gradient(ellipse at center, transparent 38%, rgba(255,40,30,0.55) 100%)}
   /* ---- death screen ---- */
@@ -661,8 +662,10 @@
     background:rgba(10,12,22,0.97);border:1px solid rgba(143,180,255,0.4);box-shadow:0 10px 30px rgba(0,0,0,0.6);
     font:500 10.5px var(--ui);line-height:1.55;color:var(--dim);pointer-events:none}
   #tipbubble b{color:var(--ink)}
-  #tutspot{position:fixed;z-index:49;display:none;pointer-events:none;border:2px solid rgba(255,217,106,0.95);
-    border-radius:14px;box-shadow:0 0 0 4px rgba(255,217,106,0.22),0 0 26px rgba(255,217,106,0.5);
+  /* the spotlight is CYAN on purpose — the topbar's nameplate and buttons are
+     gold, and a gold ring drowned in them (Dakk playtest, 2026-06-11) */
+  #tutspot{position:fixed;z-index:49;display:none;pointer-events:none;border:2px solid rgba(127,216,255,0.95);
+    border-radius:14px;box-shadow:0 0 0 4px rgba(127,216,255,0.22),0 0 26px rgba(127,216,255,0.55);
     transition:left .25s ease,top .25s ease,width .25s ease,height .25s ease}
   #tutbox{position:fixed;z-index:50;display:none;left:50%;transform:translateX(-50%);
     top:calc(var(--topbar-h, 96px) + 6px);
@@ -6802,23 +6805,26 @@ const {fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud, fxShake, FX_R
    Owns: cinematic
    ---------------------------------------------------------------- */
 const _cineQ=[];
-let _cineOn=false, _cineEl=null;
+let _cineOn=false, _cineEl=null, _cineCur=null;
+/* a cinematic's `then` runs once when its spectacle ends (tap or timeout) —
+   so a follow-up card never slides in while the rays are still burning */
+function _cineDone(o){ if(o && o.then && !o._thenFired){ o._thenFired=true; try{ o.then(); }catch(_){} } }
 function _cineBox(){
   if(_cineEl) return _cineEl;
   _cineEl=document.createElement('div'); _cineEl.id='cinema';
   document.body.appendChild(_cineEl);
-  _cineEl.addEventListener('click', ()=>{ _cineEl.classList.remove('on'); });
+  _cineEl.addEventListener('click', ()=>{ _cineEl.classList.remove('on'); _cineDone(_cineCur); });
   return _cineEl;
 }
-function cinematic(o){   /* {kicker, title, sub, hex, tier} */
-  if(!fxOn || !o || !o.title) return;
+function cinematic(o){   /* {kicker, title, sub, hex, tier, then} */
+  if(!fxOn || !o || !o.title){ if(o && o.then) setTimeout(o.then, 60); return; }
   _cineQ.push(o);
   if(!_cineOn) _cineNext();
 }
 function _cineNext(){
   const o=_cineQ.shift();
-  if(!o){ _cineOn=false; return; }
-  _cineOn=true;
+  if(!o){ _cineOn=false; _cineCur=null; return; }
+  _cineOn=true; _cineCur=o;
   const el=_cineBox();
   const hex=o.hex||'#ffd96a', tier=Math.max(0, Math.min(8, o.tier|0));
   el.style.setProperty('--cine', hex);
@@ -6831,7 +6837,7 @@ function _cineNext(){
   try{ fxBurst([hex,'#ffffff','#ffd96a'], 26+tier*12); }catch(_){}
   if(tier>=6){ try{ fxShake(); setTimeout(()=>fxBurst([hex,'#ffffff'], 40), 600); }catch(_){} }
   const hold=2300+tier*420;
-  setTimeout(()=>{ el.classList.remove('on'); setTimeout(_cineNext, 500); }, hold);
+  setTimeout(()=>{ el.classList.remove('on'); _cineDone(o); setTimeout(_cineNext, 500); }, hold);
 }
 
 /* ----------------------------------------------------------------
@@ -6972,11 +6978,11 @@ function openPicker(mode, base){
       } else if(isHeal){
         const p=clamp(0.08+t*0.07,0.05,0.6);
         const h=Math.round(12+t*9+p*30);
-        oddsTxt='+'+h+' HP · ☠'+Math.round(p*100)+'% poison'; oddsCol=p<0.2?'#7fe6a0':(p<0.38?'#ffd96a':'#ff8a72');
+        oddsTxt='+'+h+' HP &nbsp;·&nbsp; ☠ '+Math.round(p*100)+'% poison'; oddsCol=p<0.2?'#7fe6a0':(p<0.38?'#ffd96a':'#ff8a72');
       } else {
         const S=battleStats(base.genome);
         const p=S.ab.gutsy?0:clamp(0.10+t*0.06-S.res/700,0.04,0.55);
-        oddsTxt='+'+(1+t)+' growth · ☠'+Math.round(p*100)+'% poison'; oddsCol=p<0.15?'#7fe6a0':(p<0.3?'#ffd96a':'#ff8a72');
+        oddsTxt='+'+(1+t)+' growth &nbsp;·&nbsp; ☠ '+Math.round(p*100)+'% poison'; oddsCol=p<0.15?'#7fe6a0':(p<0.3?'#ffd96a':'#ff8a72');
       }
       return '<div class="cand" data-pk="'+e.id+'"><img src="'+e.art+'" alt="">'+
         '<div class="m"><div class="nm" style="color:'+(e.grade?e.grade.hex:'')+'">'+e.name+'</div>'+
@@ -7022,11 +7028,12 @@ pickList.addEventListener('click', e=>{
       playRaritySting(Math.min(TIER_MAX, (r.born&&r.born.grade?r.born.grade.tier:3)+1)); playFanfare(); fxBurst(FX_GREEN.concat(FX_PURP),46);
       if(r.born) cinematic({kicker:'🧬 A New Bloodline', title:r.born.name,
         sub:_pickBase.name+' × '+other.name+' — generation '+(r.born.gen||1),
-        hex:(r.born.grade?r.born.grade.hex:'#7fe6a0'), tier:Math.max(2,(r.born.grade?r.born.grade.tier:0))});
+        hex:(r.born.grade?r.born.grade.hex:'#7fe6a0'), tier:Math.max(2,(r.born.grade?r.born.grade.tier:0)),
+        /* the card waits its turn — the spectacle finishes before the reveal slides in */
+        then:()=>setTimeout(()=>{ pickBox.style.display='none'; showReveal(r.born, true); }, 350)});
       resEl.innerHTML='\ud83c\udf89 <span style="color:#7fe6a0">A new bloodline is born!</span> '+(r.born?r.born.name:'A new creature')+' joins your Compendium with boosted stats. Both parents gave themselves to the union.';
       stats.breedwins=(stats.breedwins||0)+1;
       pickList.innerHTML='';
-      if(r.born) setTimeout(()=>{ pickBox.style.display='none'; showReveal(r.born, true); }, 1400);
     } else {
       playFailTone(); playThud(); fxShake();
       resEl.innerHTML='\ud83d\udc80 <span style="color:#ff8a72">The pairing failed.</span> Both parents were lost to the attempt \u2014 the odds were only '+Math.round(r.odds*100)+'%.';
@@ -7129,7 +7136,8 @@ function renderHP(){
     bar.style.boxShadow='0 0 10px '+g[2];
   }
   const tx=document.getElementById('hptext');
-  if(tx){ tx.textContent=hp+'/'+HP_MAX+' HP'; tx.style.color=g[3]; }
+  /* the number rides a dark chip so it reads on the bright fill AND the dark track */
+  if(tx){ tx.innerHTML='<span class="hpchip">'+hp+'/'+HP_MAX+' HP</span>'; tx.style.color=g[3]; }
 }
 function damageExplorer(amount, why){
   hp=Math.max(0, hp-amount);
@@ -7451,6 +7459,10 @@ const RELEASES=[
   'On touch screens a <b>tap acts — it never tooltips</b>. Hints remain on long-press (and on keyboard focus, for keyboard explorers).',
   'The <b>HP number now lives on the bar itself</b>, centered — larger text sizes used to push it out of the row entirely.',
   'Settings now carries a plain warning: <b>your save lives in this browser only</b> — clearing site data erases it, so back up favourites as ⇪ creature codes. (The Guide’s “Your save &amp; reset” topic says the same.)',
+  'The training spotlight now <b>tracks its target live</b> and turned <b>cyan</b> — it used to strand a gold ring at stale coordinates when the layout shifted (the “phantom long HP bar”), and gold drowned in the gold topbar.',
+  'A newborn hybrid’s reveal card now <b>waits for the celebration to finish</b> instead of sliding in mid-spectacle.',
+  'The HP number rides a small dark chip on the bar — readable over the bright fill and the dark track alike.',
+  'Breathing room between the poison skull and its percentage in the feed and heal pickers.',
  ]],
 ]},
 {v:'1.2', title:'The Living Frontier', date:'June 2026', sections:[
@@ -8075,7 +8087,7 @@ const TUT_STEPS=[
  {id:'duel', btn:'⚔ Begin Training Duel', stay:true,
   text:()=>'A new creature, born of two! Let’s see it fight. Duels run round by round on the five stats and abilities — and the same matchup plays out <b>identically on every device</b>. Press the button when ready.',
   when:(t)=>t==='duel-done'},
- {id:'hazard', spot:'#hpwrap', btn:'Ouch — Got It',
+ {id:'hazard', spot:'#hpbar', btn:'Ouch — Got It',
   enter:()=>{ setTimeout(()=>{ try{ if(hp>20) damageExplorer(Math.min(15, hp-5), 'Your training rival got a parting nip in.'); }catch(_){} }, 400); },
   text:()=>'…and your rival got a <b>parting nip</b> in. That bar up top is <b>your HP</b>. The frontier bites: hostile bioscans, toxic meals and championing your own conquests all wound you — and at 0 HP, the expedition ends.'},
  {id:'heal', spot:'#hpheart', allow:['#hpwrap'], enter:()=>{ _tutRig={heal:0.95}; },
@@ -8116,8 +8128,11 @@ function _tutGate(e){
 function _tutGateOn(){ for(const ev of TUT_GATE_EVTS) document.addEventListener(ev, _tutGate, {capture:true, passive:false}); }
 function _tutGateOff(){ for(const ev of TUT_GATE_EVTS) document.removeEventListener(ev, _tutGate, {capture:true}); }
 
+let _tutSpotT=0;   /* the spotlight tracks its target LIVE — layouts shift when
+                      dialogs open, text size changes or the topbar reflows, and
+                      a once-per-step ring strands at stale coordinates */
 function _tutShow(){
-  const s=TUT_STEPS[_tutStep]; if(!s){ tutEl.style.display='none'; return; }
+  const s=TUT_STEPS[_tutStep]; if(!s){ tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT); return; }
   tutEl.innerHTML='<div class="tt"><span>🧭 Field Training</span><span>'+(_tutStep+1)+' / '+TUT_STEPS.length+'</span></div>'+
     '<div class="tx">'+s.text()+'</div>'+
     '<div class="tbtns">'+
@@ -8126,6 +8141,7 @@ function _tutShow(){
     '</div>';
   tutEl.style.display='block';
   _tutSpot();
+  clearInterval(_tutSpotT); _tutSpotT=setInterval(()=>{ try{ _tutSpot(); }catch(_){} }, 200);
 }
 function _tutSpot(){
   /* keep --tut-bot current so open dialogs sit below the guidance card */
@@ -8225,7 +8241,7 @@ function _tutFinish(){
   clearInterval(_tutTimer); _tutTimer=0;
   _tutGateOff();
   document.body.classList.remove('training');
-  tutEl.style.display='none'; tutSpotEl.style.display='none';
+  tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT);
   _tutHook=null; _tutStep=-1; _tutRig=null;
   if(!tutDone){
     tutDone=true;
@@ -8238,7 +8254,7 @@ function tutAbort(){
   clearInterval(_tutTimer); _tutTimer=0;
   _tutGateOff();
   document.body.classList.remove('training');
-  tutEl.style.display='none'; tutSpotEl.style.display='none';
+  tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT);
   _tutHook=null; _tutStep=-1; _tutRig=null; _tutSnap=null; _tutPreIds=null;
 }
 function startTutorial(){
