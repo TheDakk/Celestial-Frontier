@@ -1,0 +1,184 @@
+FANTASY CREATURE CLASS LIST — Dakk, 2026-06-11 (verbatim source for the 1.0 class system; see ROADMAP "CLASS SYSTEM + XP/LEVELS")
+
+Warrior — Weapon master creature with powerful melee attacks, heavy armor instincts, battle discipline, cleaving strikes, and battlefield dominance.
+Fighter — Balanced combat creature skilled with many weapons, combos, parries, counters, armor-breaking attacks, and tactical pressure.
+Barbarian — Rage-fueled creature with berserk strength, leap attacks, pain resistance, shockwave slams, and brutal close-range damage.
+Berserker — Unstable fury creature that becomes stronger when injured, attacks faster at low health, ignores pain, and can enter a frenzy state.
+Knight — Armored guardian creature with shield defense, mounted charge potential, taunts, defensive formations, and strong protection abilities.
+Paladin — Holy warrior creature with divine smites, healing aura, holy shield, demon/undead damage, cleansing light, and resurrection powers.
+Crusader — Heavy divine creature with blessed hammer attacks, sacred armor, holy bombardments, divine charge, and anti-corruption powers.
+Templar — Elite holy defender creature with sanctuary fields, angelic protection, radiant spear attacks, oath magic, and guardian abilities.
+Monk — Martial arts creature with high speed, chi energy, pressure-point strikes, dodging, stunning blows, and spirit-based attacks.
+Mystic Monk — Enlightened creature with radiant chi, healing strikes, spirit palms, inner light aura, and calm-based power boosts.
+Shadow Monk — Stealth martial creature with shadow clones, teleport kicks, silent movement, void palm, and darkness-based evasion.
+Samurai — Precision sword creature with instant-draw strikes, perfect counters, honor stance, wind slashes, and duel execution abilities.
+Ronin — Wandering sword creature with unpredictable blade techniques, dirty counters, survival instincts, and lone-wolf damage bonuses.
+Duelist — Agile finesse creature with ripostes, dodges, disarms, critical thrusts, charm, and one-on-one combat mastery.
+Swashbuckler — Flashy agile creature with acrobatic strikes, taunting, momentum attacks, evasive footwork, and stylish finishing moves.
+Brawler — Brutish unarmed creature with grapples, throws, body slams, stun combos, hardened skin, and raw physical dominance.
+Gladiator — Arena-born creature with crowd-fueled buffs, execution attacks, intimidation roars, weapon swapping, and champion stance.
+Ranger — Wilderness hunter creature with tracking, bow attacks, traps, camouflage, beast bonds, and nature-enhanced strikes.
+Hunter — Survival creature specialized in tracking prey, setting traps, exploiting weaknesses, ranged attacks, and monster-specific executions.
+Archer — Precision ranged creature with piercing shots, arrow storms, ricochet attacks, eagle-eye aim, and elemental arrows.
+Arcane Archer — Magical ranged creature with enchanted arrows, portal shots, explosive runes, seeking projectiles, and elemental volleys.
+Scout — Fast exploration creature with ambush tactics, stealth movement, map awareness, evasion, and weakness marking.
+Rogue — Stealth creature with backstabs, poison, lockpicking, traps, evasion, theft, and critical burst damage.
+Thief — Sneaky utility creature with stealing, distraction, trap removal, escape skills, ambush attacks, and treasure detection.
+Assassin — Lethal stealth creature with shadowstep, instant kills on weak targets, venom attacks, marked-for-death, and silent execution.
+Ninja — Agile stealth creature with smoke bombs, shuriken, clones, wall movement, poison blades, and vanish abilities.
+Shadowblade — Rogue-mage creature with shadow teleportation, cursed daggers, darkness clones, void slashes, and dimensional assassinations.
+Demon Hunter — Anti-demon creature with dual crossbows or blades, traps, vengeance form, demon sense, and infernal resistance.
+Monster Slayer — Creature trained to hunt supernatural beasts with oils, signs, traps, tracking, mutations, and trophy-based bonuses.
+Bounty Hunter — Tracker creature with nets, capture tools, marks, traps, interrogation, and reward-scaling damage.
+Dragon Slayer — Anti-dragon creature with fire resistance, scale-piercing attacks, wing clipping, dragon roar counters, and dragon-soul absorption.
+Giant Slayer — Creature specialized in fighting huge enemies with climbing attacks, hamstring strikes, topple moves, armor breaking, and massive crits.
+Undead Hunter — Anti-undead creature with holy weapons, grave seals, turn undead, silver traps, and phylactery destruction.
+Mage Hunter — Anti-magic creature with silence, mana burn, spell interruption, anti-magic fields, and spell reflection.
+Wizard — Arcane caster creature with broad spell knowledge, fireballs, shields, teleportation, summoning, time stop, and reality-warping magic.
+Mage — General magic creature with elemental spells, arcane blasts, barriers, utility magic, teleportation, and spell amplification.
+Sorcerer — Innate magic creature with raw spell power, overcharged casting, wild magic surges, elemental mutation, and mana explosions.
+Warlock — Pact-bound creature with eldritch blasts, curses, soul drain, forbidden magic, patron powers, and dark transformations.
+Witch — Curse-based creature with hexes, potions, familiars, dark rituals, charm magic, and misfortune manipulation.
+Necromancer — Death-magic creature with skeleton summons, corpse explosion, bone armor, life drain, undead armies, and lich transformation.
+Lich — Undead archmage creature with immortality, phylactery, soul magic, death beams, undead command, and forbidden spells.
+Elementalist — Creature that controls fire, ice, lightning, earth, wind, and water through elemental storms, shields, avatars, and summons.
+Pyromancer — Fire creature with flame blasts, burning aura, meteor attacks, lava waves, phoenix rebirth, and inferno fields.
+Cryomancer — Ice creature with freezing blasts, frost armor, blizzards, ice prisons, shatter attacks, and frozen clones.
+Stormcaller — Lightning and wind creature with chain lightning, thunderbolts, tornadoes, storm aura, sky strikes, and thunder god form.
+Geomancer — Earth creature with stone armor, crystal spikes, seismic waves, walls, earthquakes, and mountain golem summons.
+Hydromancer — Water creature with healing waters, tidal waves, water shields, drowning magic, mist form, and ocean summons.
+Aeromancer — Wind creature with flight, slicing gusts, tornadoes, speed boosts, air shields, and pressure blasts.
+Illusionist — Deception creature with invisibility, false armies, mirror images, mind mazes, fear visions, and perception rewriting.
+Enchanter — Control creature with charms, sleep magic, weapon enchantments, mind domination, morale buffs, and enemy manipulation.
+Chronomancer — Time creature with slow fields, haste, time stop, rewind damage, aging attacks, and future-sight counters.
+Blood Mage — Sacrifice caster creature with blood bolts, blood shields, life-drain healing, crimson explosions, and blood puppetry.
+Rune Mage — Symbol caster creature with magic runes, glyph traps, rune armor, spell seals, ancient inscriptions, and stored spells.
+Astral Mage — Cosmic creature with starfall, gravity wells, comet strikes, astral projection, black hole magic, and celestial energy.
+Voidwalker — Void creature with phase shifting, void rifts, matter erasure, anti-reality fields, and dimensional summons.
+Dreamwalker — Dream creature with sleep magic, nightmare summons, dream prisons, illusions, lucid healing, and dream portals.
+Fateweaver — Destiny creature with luck manipulation, rerolls, forced critical hits, curse of fate, death avoidance, and probability bending.
+Psion — Psychic creature with telekinesis, mind crush, psychic shields, telepathy, astral projection, and mass confusion.
+Cleric — Divine caster creature with healing, blessings, holy light, protection spells, undead banishment, and mass resurrection.
+Priest — Support divine creature with healing prayers, shields, cleansing, morale buffs, sanctuary fields, and miracles.
+Druid — Nature creature with shapeshifting, plant control, animal summoning, weather magic, healing, and primal avatar forms.
+Shaman — Spirit creature with totems, ancestral spirits, healing rain, spirit animals, earthquakes, and elemental rituals.
+Oracle — Prophecy creature with foresight, fate reading, divine warnings, unavoidable curses, hidden truth detection, and prediction.
+Seer — Vision-based creature with enemy prediction, future sight, weakness reveal, illusion detection, and destiny warnings.
+Inquisitor — Holy hunter creature with lie detection, anti-magic judgment, corruption purge, holy chains, and execution powers.
+Exorcist — Spirit-banishing creature with sacred seals, possession cleansing, ghost damage, portal closing, and curse removal.
+Witch Doctor — Spirit and poison creature with hexes, plague clouds, spirit swarms, voodoo dolls, zombie pets, and giant spirit summons.
+Death Knight — Undead armored creature with frost aura, soul blade, plague attacks, undead summons, life drain, and unholy resurrection.
+Dark Knight — Cursed warrior creature with shadow armor, pain-to-power conversion, life-draining strikes, cursed swords, and abyssal form.
+Hexblade — Cursed weapon creature with sentient blade powers, curse explosions, soul armor, shadow duels, and pact weapon mastery.
+Reaper — Soul-harvesting creature with scythe attacks, death marks, ghost walk, soul collection, and instant execution of weakened enemies.
+Vampire — Blood-drinking creature with lifesteal, bat swarm, mist form, mind domination, regeneration, and night empowerment.
+Blood Knight — Armored vampire-like creature with blood weapons, crimson shields, lifesteal cleaves, bat charge, and blood frenzy.
+Plaguebearer — Disease creature with rot aura, plague clouds, infection spread, toxic bursts, corpse bloom, and army-wide weakening.
+Beastmaster — Creature commander with animal companions, pack tactics, beast resurrection, alpha predator summons, and beast fusion.
+Warden — Nature tank creature with barkskin, thorn armor, root prisons, guardian tree spirits, and forest fortress powers.
+Skinwalker — Shapeshifting creature with wolf, bear, eagle, serpent, or hybrid monster forms, regeneration, and mimicry.
+Shapeshifter — Form-changing creature with multiple animal or monster forms, adaptive body traits, regeneration, and transformation attacks.
+Alchemist — Potion-based creature with bombs, elixirs, poisons, mutagens, healing flasks, and transmutation effects.
+Herbalist — Nature support creature with healing herbs, poison cures, plant toxins, stamina boosts, and restorative fields.
+Artificer — Magical inventor creature with turrets, enchanted armor, constructs, explosive gadgets, magical drones, and arcane devices.
+Engineer — Machine-building creature with traps, automatons, mines, shield generators, mechanical pets, and siege weapons.
+Tinkerer — Gadget creature with random devices, bombs, clockwork allies, repair skills, traps, and unstable inventions.
+Bombardier — Explosive creature with bombs, cluster blasts, fire traps, demolition charges, smoke fields, and siege explosions.
+Gunslinger — Firearm creature with trick shots, bullet storms, explosive rounds, perfect reloads, ricochets, and duel executions.
+Crossbowman — Heavy ranged creature with armor-piercing bolts, repeating shots, trap bolts, giant-slayer bolts, and siege shots.
+Battlemage — Melee-magic creature with spell armor, elemental weapon strikes, teleport slashes, arcane shields, and magic counterattacks.
+Spellsword — Fast blade-caster creature with enchanted sword combos, blink strikes, spell parries, mana blades, and elemental slashes.
+Mystic Knight — Defensive magic warrior creature with mana shields, gravity sword, spell reflection, enchanted armor, and arcane charge.
+Runeblade — Rune warrior creature with engraved weapons, elemental inscriptions, explosive seals, defensive glyphs, and ancient power unlocks.
+Druidic Warrior — Nature melee creature with thorn armor, root weapons, beast rage, primal strikes, and nature regeneration.
+Ranger-Mage — Hybrid creature with elemental arrows, frost traps, animal spirits, nature teleportation, and magical camouflage.
+Summoner — Creature that calls allies into battle, including beasts, spirits, elementals, demons, undead, or legendary monsters.
+Conjurer — Creation creature with summoned weapons, barriers, portals, constructs, supplies, and battlefield objects.
+Demonologist — Demon-summoning creature with infernal portals, demon pets, sacrifice magic, possession form, and demon lord bindings.
+Necrosummoner — Undead summoner creature with skeleton legions, corpse golems, bone dragons, ghost servants, and death waves.
+Spirit Caller — Spirit summoner creature with ancestral guardians, ghost armies, spirit animals, possession magic, and afterlife portals.
+Golemancer — Construct creature with stone, iron, crystal, bone, or elemental golems, repair magic, and giant guardian summons.
+Bard — Music-magic creature with songs of courage, sonic blasts, charm, healing music, morale buffs, and reality-altering legends.
+Minstrel — Light support creature with healing songs, speed songs, fear songs, distractions, and inspiration buffs.
+Dancer — Movement-based creature with hypnotic dances, dodge fields, rhythm healing, momentum attacks, and battle trance.
+Sage — Knowledge creature with monster identification, weakness detection, ancient lore, spell learning, prediction, and forbidden knowledge.
+Strategist — Commander creature with ally buffs, battlefield repositioning, weakness marking, morale aura, and tactical formations.
+Tactician — Combat-planning creature with traps, commands, coordinated strikes, defense boosts, and enemy debuffs.
+Noble — Command creature with guards, wealth buffs, social influence, hired allies, intimidation, and leadership aura.
+Merchant — Economy creature with item generation, hired mercenaries, bribes, rare gear access, and gold-based powers.
+Chef — Food-support creature with healing meals, stamina boosts, resistance dishes, monster bait, and feast-based party buffs.
+Amazon — Spear and bow creature with lightning javelins, multishot arrows, dodge mastery, spear storms, and Valkyrie summons.
+Valkyrie — Divine warrior creature with winged charges, spear throws, resurrection judgment, battle songs, and choosing-the-slain powers.
+Avatar — Chosen creature that channels divine, elemental, or cosmic powers, gaining multiple forms, destiny aura, and world-level ultimate abilities.
+Chosen One — Legendary creature with prophecy powers, impossible survivability, heroic aura, fate protection, and final-awakening form.
+Titan — Giant-class creature with colossal strength, earth-shaking steps, mountain throws, massive durability, and godlike endurance.
+Champion — Elite creature with enhanced stats, leadership aura, finishing moves, resistance to fear, and heroic battle momentum.
+Guardian — Defensive creature with protection aura, shield walls, damage redirection, taunts, and ally-preserving abilities.
+Warlord — Command creature with army buffs, intimidation, war cries, tactical dominance, and battlefield control.
+Spellbreaker — Anti-magic creature with spell disruption, dispel fields, mana drain, magic reflection, and caster lockdown.
+Soulbinder — Soul-magic creature with soul shields, soul weapons, soul swaps, stored resurrection, and binding spirits to objects.
+Astral Knight — Cosmic warrior creature with star-forged armor, gravity slashes, celestial shields, comet charges, and astral projection.
+Void Knight — Dimensional warrior creature with void armor, phase strikes, teleportation, black blade attacks, and anti-matter cleaves.
+Phoenix Knight — Fire-resurrection creature with flame wings, rebirth, burning sword strikes, healing fire, and phoenix nova.
+Frost Knight — Ice-armored creature with frozen shields, frost blade attacks, slowing aura, ice prison, and glacial charge.
+Storm Knight — Lightning warrior creature with thunder armor, chain strikes, electric dash, storm shield, and skyfall attack.
+Beast Knight — Mounted or beast-bonded creature with primal armor, companion charge, fang-and-blade combos, and beast transformation.
+Holy Beast — Divine animal creature with radiant attacks, healing aura, evil banishment, sacred roar, and celestial transformation.
+Demonic Beast — Infernal animal creature with fire breath, corruption aura, claws of hell, rage form, and demonic regeneration.
+Elder Beast — Ancient creature with primal wisdom, massive durability, nature magic, roar-based control, and ancient instincts.
+Primal Beast — Wild creature with rage, pounce, bleed attacks, pack dominance, survival instincts, and savage regeneration.
+Celestial Beast — Star-touched creature with cosmic aura, gravity movement, radiant attacks, astral shields, and constellation powers.
+Abyssal Beast — Void-corrupted creature with darkness aura, fear effects, void bites, phase movement, and reality distortion.
+Elemental Beast — Creature infused with fire, ice, lightning, earth, wind, water, poison, or shadow, gaining matching attacks and defenses.
+Arcane Beast — Magic-infused creature with mana blasts, spell resistance, teleportation, arcane armor, and unstable magic surges.
+Spirit Beast — Ghostly creature with intangibility, spirit attacks, possession, healing aura, and soul vision.
+Undead Beast — Reanimated creature with disease bites, bone armor, fear aura, death resistance, and necrotic regeneration.
+Crystal Beast — Gemstone creature with reflective armor, crystal spikes, prism beams, hardening, and resonance attacks.
+Metal Beast — Armored creature with iron hide, magnetic attacks, blade limbs, heavy charge, and damage resistance.
+Poison Beast — Toxic creature with venom bites, poison clouds, acid spit, toxic blood, and plague resistance.
+Venomancer — Poison caster creature with venom bolts, toxic clouds, poison armor, plague summons, and infection explosions.
+Spore Druid — Fungus nature creature with spores, poison clouds, mushroom summons, decomposition magic, and fungal resurrection.
+Swarm Lord — Creature that controls insects, rats, bats, spiders, or parasites, using swarm attacks, disease, scouting, and overwhelming numbers.
+Broodmother — Nest-building creature with offspring summons, egg sacs, poison, webbing, and swarm command.
+Webspinner — Spider-class creature with webs, poison, traps, climbing, cocooning, and ambush attacks.
+Bonecaster — Bone-magic creature with bone spikes, bone armor, rib cages, skeletal weapons, and bone prisons.
+Gravecaller — Death creature with grave summons, tomb curses, undead awakening, fear aura, and burial magic.
+Ashen One — Fire-and-death creature with ash magic, ember revival, smoke movement, burning weapons, and cinder storms.
+Sun Priest — Solar divine creature with sunlight beams, healing warmth, blinding flashes, radiant shields, and anti-undead power.
+Moon Priest — Lunar divine creature with moonlight healing, illusion, tides, dreams, silver magic, and night empowerment.
+Star Seer — Cosmic oracle creature with constellation magic, prophecy, astral sight, star shields, and fate warnings.
+Chaos Mage — Unstable magic creature with random spells, mutation, wild surges, probability damage, and chaotic transformation.
+Order Mage — Law-based creature with binding spells, silence, structure fields, anti-chaos damage, and perfect defense patterns.
+Gravity Mage — Force creature with gravity wells, crushing fields, floating movement, mass manipulation, and black-hole attacks.
+Magnetist — Metal-control creature with magnetic pulls, weapon disarms, metal armor, projectile redirection, and iron storms.
+Soundweaver — Sonic creature with sound blasts, silence fields, echo clones, vibration attacks, and music-based control.
+Lightweaver — Light creature with radiant beams, invisibility through refraction, blinding flashes, healing light, and illusions.
+Shadowcaster — Darkness creature with shadow bolts, fear fields, darkness walls, teleportation, and shadow summons.
+Mirror Mage — Reflection creature with mirror clones, spell reflection, illusion copies, duplicate bodies, and reversed attacks.
+Sand Mage — Desert creature with sandstorms, blinding dust, quicksand traps, glass shards, and desert mirages.
+Lava Mage — Molten creature with lava pools, magma armor, eruptions, burning ground, and volcanic summons.
+Tidecaller — Ocean creature with tidal waves, water whips, healing currents, drowning fields, and sea-beast summons.
+Frostborn — Ice-infused creature with cold immunity, frost aura, freezing touch, snowstorm movement, and glacial armor.
+Flameborn — Fire-infused creature with fire immunity, burning aura, flame breath, ember healing, and explosive death.
+Stormborn — Lightning-infused creature with electric movement, shock aura, thunder attacks, chain lightning, and storm flight.
+Earthborn — Stone-infused creature with high defense, seismic attacks, stone skin, rock throws, and terrain control.
+Nightstalker — Predatory stealth creature with darkness movement, ambush damage, fear aura, night vision, and silent kills.
+Dawnbringer — Radiant heroic creature with holy light, morale aura, fire-sun attacks, purification, and anti-darkness power.
+Hellcaller — Infernal summoner creature with fire demons, brimstone magic, curses, hell portals, and demonic bargains.
+Angelbound — Celestial pact creature with angelic wings, radiant armor, healing light, judgment strikes, and divine protection.
+Demonbound — Infernal pact creature with demonic form, claws, fire aura, soul drain, and corruption magic.
+Dragonbound — Dragon-pact creature with breath attacks, scale armor, wing bursts, elemental power, and dragon transformation.
+Feybound — Fey-pact creature with charm, illusions, nature tricks, teleportation, glamour magic, and dreamlike curses.
+Beastbound — Animal-pact creature with heightened senses, claws, pack bond, beast transformation, and primal rage.
+Spiritbound — Spirit-pact creature with ghost allies, possession resistance, spirit attacks, ancestral wisdom, and ethereal movement.
+Machinebound — Construct-linked creature with mechanical limbs, repair systems, armor plating, energy blasts, and drone control.
+Crystalbound — Crystal-linked creature with gem armor, energy refraction, crystal growth, light beams, and resonance shields.
+Godtouched — Divine-enhanced creature with miracle powers, holy aura, fate protection, radiant attacks, and divine transformation.
+Cursed One — Afflicted creature with dark powers, unstable mutations, curse aura, sacrifice abilities, and dangerous transformations.
+Mutant — Altered creature with abnormal limbs, adaptive traits, regeneration, toxin resistance, and unpredictable powers.
+Eldritch Horror — Cosmic creature with madness aura, tentacles, psychic pressure, reality distortion, forbidden knowledge, and fear magic.
+Ancient One — Extremely old creature with forgotten magic, massive wisdom, high resistance, legendary aura, and world-shaping abilities.
+Worldbreaker — Cataclysmic creature with earthquake attacks, mountain-shattering strength, destruction aura, and terrain-changing powers.
+Worldhealer — Restoration creature with mass healing, nature renewal, cleansing, resurrection fields, and life-giving aura.
+Worldeater — Devouring creature with consumption powers, life drain, void stomach, corruption spread, and catastrophic hunger.
+Worldshaper — Creation creature with terrain manipulation, matter shaping, elemental creation, reality editing, and godlike construction.

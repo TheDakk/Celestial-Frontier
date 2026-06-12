@@ -102,6 +102,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.getElementById('codexbtn'));
     check('lockdown: Compendium blocked during welcome', !visible(doc.getElementById('codex')));
     click(doc.getElementById('helpbtn'));
+    check('lockdown: ? popover shows version during welcome', visible(doc.getElementById('helppop'))
+      && doc.getElementById('helppop').textContent.includes('v'));
+    click(doc.getElementById('hp-guide'));
     check('lockdown: Guide blocked during welcome', !visible(doc.getElementById('guidebox')));
     click(doc.getElementById('logbtn'));
     check('lockdown: Atlas blocked during welcome', !visible(doc.getElementById('log')));
@@ -195,6 +198,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     // ============ GUIDE TO THE UNIVERSE ============
     click(doc.getElementById('helpbtn'));
+    check('? popover shows version + guide link', visible(doc.getElementById('helppop')));
+    click(doc.getElementById('hp-guide'));
     const gbox = doc.getElementById('guidebox');
     check('guide opens from ? button', visible(gbox));
     check('guide title renamed', gbox.textContent.includes('Guide to the Universe'));
@@ -291,6 +296,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click2(sk.doc.getElementById('codexbtn'), sk.w);
     check('skip: everything unlocked (Compendium opens)', visible(sk.doc.getElementById('codex')));
     click2(sk.doc.getElementById('helpbtn'), sk.w);
+    click2(sk.doc.getElementById('hp-guide'), sk.w);
     check('skip: everything unlocked (Guide opens)', visible(sk.doc.getElementById('guidebox')));
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
     sk.w.close();

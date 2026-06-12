@@ -240,6 +240,63 @@ Dakk's direction from the 2026-06-11 late-night session (his words paraphrased):
 ## THE ARC IS v1.3 (Dakk, 2026-06-11 late): "no one else has played yet —
 ## we're keeping this for v1.3, not an expansion"
 
+## DAKK'S 1.0 ROUND (2026-06-11 ~10:25 PM) — RECORD FIRST, BUILD NEXT SESSION
+
+1. **Element graphics**: Cargo currently shows TEXT chips (the UI spot is the
+   🧰 Cargo button, right rail, appears after first mine; labeled "Cargo
+   Hold" + "Research Bench"). TODO: per-element ICONS — procedural SVG mini-
+   crystals/ingots/flasks tinted per element family (metals silver/gold,
+   ices cyan, volatiles amber, exotics iridescent) — same recipe style as
+   species portraits; no rasters needed.
+2. **ART DIRECTION (Dakk's vision: D&D Monster Manual / MTG / Pokémon-grade
+   fantasy art, still meshing with the space-exploration look).** Agreed
+   assessment of the technical reality:
+   - Runtime AI generation: impossible (offline, deterministic, no server).
+   - Infinite procedural species can never each have hand/AI raster art.
+   - THE PLAN (3 tracks): (a) **painterly SVG upgrade** for ALL portraits —
+     silhouette-first composition, layered gradients + rim light + SVG
+     turbulence/noise filters, dramatic poses, decorated card frames per
+     rarity (the foil treatment already leads here); (b) **curated raster
+     pack for FIXED entities** — the Fifty Paragons, guardian archetypes,
+     class crests, element icons (~100-250 images, AI-generated OFFLINE by
+     Dakk at his leisure, art-directed to one style bible, shipped as WebP
+     in an assets/ folder next to index.html in the site repo — breaks
+     single-FILE purity but keeps offline via cache manifest; or embedded
+     base64 if total stays <2-3MB); (c) hybrid card design: procedural
+     portrait inside hand-designed painted FRAMES per rarity/class (frames
+     are where MTG-feel mostly lives). Start with (a)+(c), add (b) when
+     Dakk generates the pack.
+3. **CLASS SYSTEM + XP/LEVELS (Dakk pasted a ~150-entry FANTASY CREATURE
+   CLASS LIST — stored verbatim in tools/class-list.txt).** Design agreed:
+   - Every fauna rolls a CLASS (deterministic from genome; rarity-weighted
+     so legendary classes like Worldbreaker/Avatar/Chosen One are summit-
+     band only). Class shows on the specimen card as a crest/badge.
+   - Classes grant INNATE abilities that proc at much higher rates than
+     the matrix verbs; class ability KITS map onto the existing hook
+     vocabulary + matrix verbs (e.g., Berserker = execB-inverted "stronger
+     when hurt" hook; Paladin = mend+aegis kit; Assassin = ambush+stun).
+   - CROSS-BREEDING: hybrid offspring can fuse parent classes into hybrid
+     classes (Spellsword from Mage×Fighter etc.) — fusion table, not free
+     text; mutation chance for off-list surprises.
+   - **XP & LEVELS: power through WINS, not stat stacking** (Dakk's core
+     rule). Creatures gain XP from duels/conquests/guardian fights; levels
+     unlock MORE abilities (multi-ability kits at high level) rather than
+     inflating stats; XP bar on the specimen card. Save: per-creature xp
+     in genome (like brood/fed, capped, travels stripped in CFB? decide:
+     levels are YOUR creature's story — strip on share like injuries).
+   - Then ANOTHER full balance pass: extend tools/balance-sim.js to sim
+     class kits × levels; band 42-58 vs the field; legendary classes may
+     exceed via rarity gating (they're rare, not common-strong).
+4. **Tutorial overlay bug (screenshot 10:24 PM)**: the guidance card sits ON
+   TOP of the survey card; the step target (+ Add to Star Atlas) scrolls
+   under it. FIX: during training, #panel obeys --tut-bot like dialogs do
+   (body.training #panel top override + max-height) so the survey card
+   always opens BELOW the guidance card. (Dakk's alt idea — tap-to-front
+   z-swap — rejected as fiddly; the yield-below pattern already exists.)
+5. **? button → version popover**: tapping ? shows build version + a "Open
+   the Guide" link (Guide stays locked during training; version always
+   visible). Replaces ?-opens-guide-directly.
+
 **ALL FOUR PILLARS BUILT 2026-06-11/12 (commits b0cd6dd, d33b92d, + matrix).
 NOT DEPLOYED — Dakk wants the full 1.0 held until his go.** Still open from
 the wider 1.0 list: discovery record card, cosmic-events witness log,

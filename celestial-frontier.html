@@ -736,6 +736,18 @@
     background:var(--glass);border:1px solid var(--glass-brd);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
     transition:color .15s,border-color .15s}
   #helpbtn:hover{color:var(--ink);border-color:rgba(150,162,210,0.45)}
+  /* ? popover: build version always one tap away — even mid-training */
+  #helppop{position:fixed;right:14px;bottom:60px;z-index:51;display:none;width:230px;
+    background:rgba(10,12,22,0.97);border:1px solid var(--glass-brd);border-radius:13px;padding:11px 12px;
+    box-shadow:0 16px 50px rgba(0,0,0,0.6)}
+  #helppop .hpv{font:600 10.5px var(--ui);letter-spacing:.05em;color:var(--dim);margin-bottom:9px}
+  #helppop .hpv span{opacity:.75}
+  #helppop #hp-guide{width:100%;padding:8px 0;border-radius:9px;cursor:pointer;font:600 11px var(--ui);
+    color:#ffcf8a;background:rgba(255,207,138,0.1);border:1px solid rgba(255,207,138,0.55)}
+  /* training: the survey card yields BELOW the guidance card, like dialogs do —
+     it used to open underneath it (Dakk's 10:24 PM screenshot) */
+  body.training #panel{top:calc(var(--tut-bot,150px) + 8px) !important;
+    max-height:calc(100vh - var(--tut-bot,150px) - 120px) !important}
   #codex{position:fixed;top:calc(var(--row1-h,58px) + 82px);right:18px;z-index:12;width:320px;max-height:min(66vh,600px);overflow-y:auto;
     background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(150,162,210,0.2);border-radius:15px;padding:6px;display:none;
@@ -7783,9 +7795,34 @@ function openGuideTopic(id){
   });
   const s=document.getElementById('guidesearch');
   if(s) s.addEventListener('input', ()=>_guideSearch(s.value));
+  /* the ? button opens a tiny popover: build version first (always visible,
+     even mid-training), Guide behind a link (still locked during training) */
   const hb=document.getElementById('helpbtn');
-  if(hb){ hb.addEventListener('click', openGuide);
-    hb.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openGuide(); } }); }
+  let _hpop=null;
+  function _helpPop(){
+    if(!_hpop){
+      _hpop=document.createElement('div'); _hpop.id='helppop';
+      document.body.appendChild(_hpop);
+      _hpop.addEventListener('click', e=>{
+        if(e.target && e.target.id==='hp-guide'){
+          _hpop.style.display='none';
+          if(typeof _tutHook!=='undefined' && _tutHook){ toast('🧭 Guide','The Guide unlocks after Field Training — the lessons cover everything you need for now.'); return; }
+          openGuide();
+        }
+      });
+    }
+    return _hpop;
+  }
+  function toggleHelp(){
+    const p=_helpPop();
+    if(p.style.display==='block'){ p.style.display='none'; return; }
+    p.innerHTML='<div class="hpv">Celestial Frontier · v'+GAME_VERSION+
+      (BUILD_ID!=='dev'?' <span>(build '+BUILD_ID+')</span>':' <span>(dev)</span>')+'</div>'+
+      '<button id="hp-guide" type="button">🧭 Open the Guide</button>';
+    p.style.display='block';
+  }
+  if(hb){ hb.addEventListener('click', toggleHelp);
+    hb.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleHelp(); } }); }
 })();
 
 /* ----------------------------------------------------------------
@@ -8701,7 +8738,7 @@ const tutSpotEl=document.createElement('div'); tutSpotEl.id='tutspot'; document.
 
 /* focus lockdown: while training, only the current lesson's surfaces accept
    input. The card and any open dialog stay usable so nobody gets stuck. */
-const TUT_ALWAYS=['#tutbox','#pickbox','#reveal','#duelbox','#namebox','#deathbox','#setbtn','#setpanel','#relbox'];
+const TUT_ALWAYS=['#tutbox','#pickbox','#reveal','#duelbox','#namebox','#deathbox','#setbtn','#setpanel','#relbox','#helpbtn','#helppop'];
 const TUT_GATE_EVTS=['pointerdown','click','touchstart','wheel'];
 function _tutGate(e){
   if(!_tutHook) return;
