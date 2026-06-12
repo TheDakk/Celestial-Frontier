@@ -871,6 +871,17 @@
     #hpbar{width:clamp(100px,40vw,172px)}
     #pcdxbtn{font-size:10px;padding:5px 7px}
   }
+  /* ---- nameplate rank colors (v1.3): the pill is painted inline by applyNameplate;
+     the summit rank wears the foil; the picker dots live in the character sheet ---- */
+  #rank.irid-plate{background:linear-gradient(100deg,#ff7ae8,#ffc24f,#3fe8c8,#9a8aff,#ff7ae8) !important;
+    background-size:300% 100% !important;animation:iridslide 3.5s linear infinite;
+    border-color:transparent !important;color:#141228}
+  .plates{display:flex;gap:7px;flex-wrap:wrap;margin:6px 0 10px}
+  .plate{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid rgba(255,255,255,0.25);box-sizing:border-box}
+  .plate.sel{border-color:#fff;box-shadow:0 0 8px rgba(255,255,255,0.6)}
+  .plate.lk{opacity:0.22;cursor:default;filter:grayscale(0.7)}
+  .plate.irid{background:linear-gradient(100deg,#ff7ae8,#ffc24f,#3fe8c8,#9a8aff,#ff7ae8);background-size:300% 100%;animation:iridslide 3.5s linear infinite}
+  .plate.auto{display:flex;align-items:center;justify-content:center;background:rgba(150,162,210,0.18);color:var(--dim);font:700 10px var(--ui)}
   /* ---- the iridescent foil treatment (v1.3): grade badges + summit frames ---- */
   .gbadge{display:inline-block;padding:1px 7px;border-radius:8px;border:1px solid currentColor;
     font-weight:700;letter-spacing:.06em;font-size:.92em;vertical-align:baseline}
@@ -5148,7 +5159,7 @@ logEl.addEventListener('click', e=>{
   const filt=e.target.closest('[data-filt]');
   if(filt){ logFilter=filt.dataset.filt; renderLog(); return; }
   const gh=e.target.closest('[data-gohome]');
-  if(gh){ if(homeId && logMap.has(homeId)){ const en=logMap.get(homeId); if(en && en.where) goTo(en.where); } return; }
+  if(gh){ if(homeId && logMap.has(homeId)){ const en=logMap.get(homeId); if(en && en.where) travelTo(en.where); } return; }
   const fav=e.target.closest('[data-fav]');
   if(fav){ const en=logMap.get(fav.dataset.fav); if(en){ en.fav=!en.fav; renderLog(); queueSave(); } return; }
   const hm=e.target.closest('[data-home]');
@@ -5174,7 +5185,7 @@ logEl.addEventListener('click', e=>{
   const item=e.target.closest('.item');
   if(item){
     const en=logMap.get(item.dataset.id);
-    if(en && en.where) goTo(en.where);
+    if(en && en.where) travelTo(en.where);
   }
 });
 logBtn.addEventListener('click', ()=>{
@@ -5493,7 +5504,7 @@ codexEl.addEventListener('click', e=>{
     const sp=codex.get(go.dataset.go);
     if(sp && sp.where){
       codexOpen=false; codexEl.style.display='none';
-      goTo(sp.where);
+      travelTo(sp.where);
       toast('Course Plotted','Returning to '+sp.from+' — where you first catalogued '+sp.name+'.');
     }
     return;
@@ -5550,6 +5561,65 @@ function goTo(w){
   }
   st.fade=1;
 }
+/* ================= HYPERLANE TRAVEL =================
+   Atlas, beacon, search and share-code jumps no longer hard-teleport: the
+   camera dives out, the sky stretches into a streak tunnel tinted by the
+   destination star, and the arrival eases in — the actual goTo() hides in
+   the middle of the tunnel. Purely presentational: the destination state is
+   byte-identical to what goTo always produced. Tap to skip; fxOn-gated;
+   honors prefers-reduced-motion. */
+let _trav=null;
+const _REDUCED=(()=>{ try{ return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(_){ return false; } })();
+function travelTo(w){
+  if(!w || !w.gal || !fxOn || _REDUCED || _trav){ goTo(w); return; }
+  _trav={t0:performance.now(), dur:950, w, hex:'#cfe0ff', jumped:false, zEnd:0};
+}
+function _travelFrame(){
+  if(!_trav) return;
+  const t=(performance.now()-_trav.t0)/_trav.dur;
+  if(t>=1){ const c=curCam(); if(c&&_trav.zEnd) c.z=_trav.zEnd; _trav=null; return; }
+  const cam=curCam();
+  if(t<0.32){ if(cam) cam.z*=0.94; }                 /* the dive — out through the scales */
+  else if(!_trav.jumped){
+    _trav.jumped=true;
+    goTo(_trav.w);                                   /* the teleport, hidden mid-tunnel */
+    const c2=curCam();
+    if(c2){ _trav.zEnd=c2.z; c2.z=c2.z*0.5; }
+    _trav.hex=(st.star&&st.star.c)||'#cfe0ff';       /* arrival tunnel wears the destination's light */
+  } else {
+    const c2=curCam();
+    if(c2&&_trav.zEnd) c2.z+=(_trav.zEnd-c2.z)*0.14; /* ease into arrival */
+  }
+  st.fade=Math.min(st.fade,0.22);                    /* the tunnel replaces the teleport fade */
+  const cx=W/2, cy=H/2;
+  const v=clamp(t<0.32 ? t/0.32 : (1-t)/0.68, 0, 1);
+  const a=v*0.85;
+  const r0=mulberry32(0x7261);                       /* a stable tunnel that stretches, not boils */
+  ctx.save();
+  ctx.globalCompositeOperation='lighter';
+  ctx.strokeStyle=_trav.hex;
+  for(let i=0;i<90;i++){
+    const ang=r0()*Math.PI*2, rr=36+r0()*(minWH*0.55), wsp=0.5+r0();
+    const len=(18+rr*0.9)*v*wsp;
+    ctx.globalAlpha=a*(0.25+r0()*0.75);
+    ctx.lineWidth=0.6+r0()*1.6;
+    ctx.beginPath();
+    ctx.moveTo(cx+Math.cos(ang)*rr, cy+Math.sin(ang)*rr);
+    ctx.lineTo(cx+Math.cos(ang)*(rr+len), cy+Math.sin(ang)*(rr+len));
+    ctx.stroke();
+  }
+  ctx.globalAlpha=a*0.45;
+  const g=ctx.createRadialGradient(cx,cy,0,cx,cy,minWH*0.42);
+  g.addColorStop(0,_trav.hex); g.addColorStop(1,'rgba(2,2,8,0)');
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+  ctx.restore();
+}
+document.addEventListener('pointerdown', ()=>{       /* tap skips the lane */
+  if(!_trav) return;
+  if(!_trav.jumped) goTo(_trav.w);
+  else { const c=curCam(); if(c&&_trav.zEnd) c.z=_trav.zEnd; }
+  _trav=null;
+}, true);
 /* A fresh expedition begins at home: zoomed into our own solar system, with Earth —
    humanity's cradle — already charted and under your flag. The rest of Sol is lifeless,
    so the pull to leave home and find life out among the stars is immediate. */
@@ -5811,6 +5881,31 @@ function rankInfo(){
   for(let i=0;i<RANKS.length;i++){ if(score>=RANKS[i][0]) cur=RANKS[i]; else { next=RANKS[i]; break; } }
   return {score, name:cur[1], floor:cur[0], next};
 }
+/* ---- nameplate colors: every rank carries one; reaching a rank unlocks it
+   permanently. Pick any unlocked color from the character sheet; the default
+   follows your current rank. Eternal Frontier unlocks the iridescent foil. */
+const RANK_HUES=['#9fb6d6','#7fe6a0','#7fd0ff','#5b8cf0','#46c2b2','#ffd96a','#b06cff','#7a6af0','#ffe9b8','irid'];
+let nameHue=-1;                      /* -1 = match current rank (saved as nh) */
+function rankIdx(floor){ let i=0; for(let k=0;k<RANKS.length;k++) if(floor>=RANKS[k][0]) i=k; return i; }
+function _shadeHex(hex, f){
+  const n=parseInt(hex.slice(1),16);
+  return 'rgb('+Math.round(((n>>16)&255)*f)+','+Math.round(((n>>8)&255)*f)+','+Math.round((n&255)*f)+')';
+}
+function applyNameplate(){
+  const cur=rankIdx(rankInfo().floor);
+  if(cur>(stats.bestRank||0)) stats.bestRank=cur;          /* unlocks never demote */
+  const pick=(nameHue>=0 && nameHue<=(stats.bestRank||0) && nameHue<RANK_HUES.length)?nameHue:cur;
+  const hue=RANK_HUES[Math.min(pick, RANK_HUES.length-1)];
+  if(hue==='irid'){
+    rankEl.classList.add('irid-plate');
+    rankEl.style.background=''; rankEl.style.borderColor=''; rankEl.style.boxShadow='';
+  } else {
+    rankEl.classList.remove('irid-plate');
+    rankEl.style.background='linear-gradient(135deg,'+hue+','+_shadeHex(hue,0.74)+' 55%,'+hue+')';
+    rankEl.style.borderColor=hue;
+    rankEl.style.boxShadow='0 0 14px '+hue+'66, 0 2px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.5)';
+  }
+}
 let _lastRankName=null, _lastRankFloor=-1;
 function renderRank(){
   const r=rankInfo();
@@ -5822,6 +5917,7 @@ function renderRank(){
     playRaritySting(5); fxBurst(FX_GOLD,40);
   }
   _lastRankName=r.name; _lastRankFloor=r.floor;
+  applyNameplate();
   if(typeof syncTopbarH==='function') syncTopbarH();
 }
 
@@ -5986,6 +6082,7 @@ function doSave(){
       feeds:stats.feeds||0, feedfails:stats.feedfails||0,
       harvests:stats.harvests||0, essenceEarned:stats.essenceEarned||0,
       guardians:stats.guardians||0,
+      nh:nameHue, br:stats.bestRank||0,
       names:[...customNames],
       shares:stats.shares, jumps:stats.jumps,
       anomalies:stats.anomalies, anomKey:lastAnomKey,
@@ -6032,6 +6129,8 @@ function loadSave(){
     stats.feeds=num(data.feeds); stats.feedfails=num(data.feedfails);
     stats.harvests=num(data.harvests); stats.essenceEarned=num(data.essenceEarned);
     stats.guardians=num(data.guardians);
+    nameHue=Number.isFinite(+data.nh)?clamp((+data.nh)|0, -1, RANK_HUES.length-1):-1;
+    stats.bestRank=clamp(num(data.br), 0, RANK_HUES.length-1);
     _savedView=data.view||null;
     if(data.pstats && typeof data.pstats==='object'){ for(const _k of STAT_KEYS) if(typeof data.pstats[_k]==='number') pstats[_k]=clamp(Math.round(data.pstats[_k]),1,330); }
     HP_MAX=hpMaxFromVit();
@@ -6201,7 +6300,7 @@ function travelToCode(code){
     return false;
   }
   if(dec.name && dec.where.pseed!=null) customNames.set('p'+dec.where.pseed, dec.name);
-  goTo(dec.where);
+  travelTo(dec.where);
   stats.jumps++; unlock('wayfarer'); queueSave();
   toast('Course Plotted', dec.name?('Arriving at '+dec.name+'.'):'Arriving at the shared coordinates.');
   return true;
@@ -6274,7 +6373,7 @@ searchRes.addEventListener('click', e=>{
   const el=e.target.closest('[data-sri]'); if(!el) return;
   const o=_srOut[+el.dataset.sri]; if(!o) return;
   searchRes.style.display='none'; searchIn.blur();
-  if(o.go.log){ const en=logMap.get(o.go.log); if(en && en.where) goTo(en.where); }
+  if(o.go.log){ const en=logMap.get(o.go.log); if(en && en.where) travelTo(en.where); }
   else if(o.go.sp){ const sp=codex.get(o.go.sp); if(sp) showReveal(sp, sp.hybrid); }
 });
 document.addEventListener('pointerdown', e=>{
@@ -6315,7 +6414,7 @@ function dailyWhere(){
 dailyBtn.addEventListener('click', ()=>{
   const res=dailyWhere();
   if(!res || !res.where){ toast('Traveler\u2019s Beacon','The beacon is faint right now — try again.'); return; }
-  goTo(res.where);
+  travelTo(res.where);
   if(res.key!==lastAnomKey){ lastAnomKey=res.key; stats.anomalies++; }
   unlock('daily'); checkAch(); renderRank(); queueSave();
   toast('Traveler\u2019s Beacon', 'A random destination, somewhere out there. A new beacon lights every 5 minutes — follow as many as you like.');
@@ -7441,8 +7540,10 @@ const RELEASES=[
   '<b>The summit grades</b> — three more above even Transcendent: <b>Empyrean, Eternal</b> and <b>Omnipotent</b>. Out past one-in-a-million the dice all but give out — the summit belongs to master breeders and to guardian slayers.',
   '<b>👑 Apex Guardians</b> — about one fauna-bearing world in forty is ruled by a <b>named, one-of-a-kind titan</b> wearing a summit grade. The same guardian rules the same world for every explorer — share the coordinates and a friend faces the very same beast. Defeat it in conquest and the world pays a ruler’s ransom — and <b>the guardian itself joins your Compendium</b>.',
   'Deep-spectrum hunting is a breeder’s game — size, glow, wild apex blood and deep hybrid generations push grades upward, so a master bloodline can climb past what nature rolls.',
+  '<b>Hyperlane travel</b> — Atlas, beacon, search and shared-code jumps no longer blink you across the void: the camera dives out, the sky stretches into a <b>streak tunnel tinted by your destination star</b>, and you ease in on arrival. Tap to skip; honors your effects toggle and reduced-motion.',
  ]],
  ['◈ UI Enhancements', [
+  '<b>Nameplate colors</b> — every rank now carries its own color, unlocked forever once you reach it. Pick any unlocked color from your character sheet — and <b>Eternal Frontier</b> unlocks the iridescent foil nameplate.',
   '<b>Collection cards</b> — every specimen card now wears its <b>grade badge</b>, and summit-grade creatures shine in <b>iridescent foil</b>: a shimmering badge and an animated prismatic frame. Catch one and you’ll know.',
   'The high tiers got a vivid new palette: <b>aqua</b> Mythic, <b>starlight</b> Celestial, <b>ember</b> Primordial, <b>white-light</b> Transcendent, <b>dawnfire</b> Empyrean, <b>twilight</b> Eternal — and Omnipotent shimmers through them all.',
   'Your character sheet now tracks the <b>highest grade you’ve ever reached</b> and your <b>guardians felled</b> — the very top of the ladder is chased, not checklisted.',
@@ -7625,7 +7726,7 @@ if(BUILD_ID!=='dev'){
   if(grid) grid.addEventListener('click', e=>{
     const slot=e.target.closest('[data-pgo]'); if(!slot) return;
     const f=primeFill[slot.dataset.pgo];
-    if(f && f.where){ pb.style.display='none'; goTo(f.where); }
+    if(f && f.where){ pb.style.display='none'; travelTo(f.where); }
   });
   const fr=document.getElementById('prime-frontier'); if(fr) fr.addEventListener('click', ()=>openFrontier());
   const list=document.getElementById('ending-list');
@@ -8518,7 +8619,7 @@ eventsEl.addEventListener('click', e=>{
   const def=EVENT_DEFS.find(x=>x.id===go.dataset.ev); if(!def) return;
   const res=eventWhere(def);
   if(!res.where){ toast(def.title,'The signal is too faint to localize — try again.'); return; }
-  goTo(res.where);
+  travelTo(res.where);
   if(!eventKeysSeen.has(res.key)){ eventKeysSeen.add(res.key); stats.events++;
     cinematic({kicker:'👁 Witnessed', title:def.title,
       sub:'Every explorer alive is watching this same sky',
@@ -8584,6 +8685,15 @@ function renderStats(){
   html+='<div class="agrp'+(_agOpen.has('__stats')?' open':'')+'" data-ag="__stats">'+
     '<div class="aghead"><span><span class="arr">\u25B8</span>Statistics</span><span class="cnt"></span></div>'+
     '<div class="agbody">'+_statBody+'</div></div>';
+  /* nameplate picker: rank colors unlock as you climb; foil at the summit */
+  html+='<h4>Nameplate</h4><div class="plates">'+
+    '<span class="plate auto'+(nameHue<0?' sel':'')+'" data-plate="-1" title="Match current rank">A</span>'+
+    RANK_HUES.map((h,i)=>{
+      const un=i<=(stats.bestRank||0);
+      return '<span class="plate'+(un?'':' lk')+(nameHue===i?' sel':'')+(h==='irid'?' irid':'')+'"'+
+        (un?' data-plate="'+i+'"':'')+(h!=='irid'?' style="background:'+h+'"':'')+
+        ' title="'+RANKS[i][1]+(un?'':' — reach this rank to unlock')+'"></span>';
+    }).join('')+'</div>';
   html+='<h4>Rarity ladder</h4><div class="tiers">';
   for(const T of GRADE_TIERS){
     const n=tierHave[T.t];
@@ -8612,6 +8722,8 @@ function renderStats(){
 const _agOpen=new Set();
 statsEl.addEventListener('click', e=>{
   if(e.target && e.target.id==='renameme'){ askExplorerName(false); renderStats(); return; }
+  const pl=e.target.closest('.plate');
+  if(pl){ if(pl.dataset.plate!==undefined){ nameHue=+pl.dataset.plate; applyNameplate(); renderStats(); queueSave(); } return; }
   const sr=e.target.closest('.statrow');
   if(sr){ const k=sr.dataset.stat; if(_statOpen.has(k)) _statOpen.delete(k); else _statOpen.add(k); renderStats(); return; }
   const h=e.target.closest('.aghead'); if(!h) return;
@@ -8710,6 +8822,7 @@ function frameInner(){
     ctx.fillRect(0,0,W,H);
     st.fade*=0.86;
   } else st.fade=0;
+  _travelFrame();   /* hyperlane overlay + driven camera, when a jump is in flight */
   let hovered=null;
   if(st.mode==='surface' && st.planet){
     hovered={kind:'planet', data:{P:st.planet.P, sys:st.sys, pl:st.planet}};
