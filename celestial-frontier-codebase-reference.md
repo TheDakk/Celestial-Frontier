@@ -169,17 +169,36 @@ stalk+fronds+bloom, fungi = mushrooms, fauna = assembled anatomy). Cached in
 glow** behind the portrait (ability-theme color for fauna, nourished-stat color for flora).
 
 ### Rarity grades
-`GRADE_TIERS` (12 tiers, `TIER_MAX = 11`): **Common, Uncommon, Notable, Rare, Exotic,
+`GRADE_TIERS` (15 tiers, `TIER_MAX = 14`): **Common, Uncommon, Notable, Rare, Exotic,
 Legendary, Anomalous, Unique**, then the **deep spectrum** added in v1.3: **Mythic
-(~1/22k), Celestial (~1/91k), Primordial (~1/333k), Transcendent (1/1M)**. `rarityRoll` /
-`speciesGrade` / `colorGrade` assign grade; higher tiers play bigger stings, tinted FX
-bursts, and grant stardust bonuses (§9). The deep-spectrum bands were **carved out of the
-top of the old Unique band**, so under the same seed a v1.2 grade either holds or climbs —
-determinism never downgrades a creature. Spectral designations beyond Prismatic fuse the
-tier's finish with the domain's hue word (`Iridescent / Radiant / Primordial /
-Transcendent`, e.g. "Radiant Fire") and wear the tier's hex from `GRADE_TIERS`. Boost
-clamps (`colorGrade`, `spectral`) cap at `TIER_MAX`, so heavily boosted bloodlines
-(size + glow + wild + deep generations) can breed past Unique.
+(~1/22k), Celestial (~1/91k), Primordial (~1/333k), Transcendent (1/1M)**, then the
+**summit grades**: **Empyrean (~1/3.3M), Eternal (~1/11M), Singular (~1/33M)** —
+all but unrollable; in practice they belong to max-boost bloodlines and Apex Guardians.
+`rarityRoll` / `speciesGrade` / `colorGrade` assign grade; higher tiers play bigger
+stings, tinted FX bursts, and grant stardust bonuses (§9). All bands past Unique were
+**carved out of the top of the old Unique band**, so under the same seed a v1.2 grade
+either holds or climbs — determinism never downgrades a creature (verified over 60M
+seeds by `tools/rarity-sanity.js`). Spectral designations beyond Prismatic fuse the
+tier's finish with the domain's hue word ("Radiant Fire", "Primordial Black") and wear
+the tier's hex from `GRADE_TIERS`. Boost clamps (`colorGrade`, `spectral`) cap at
+`TIER_MAX`, so heavily boosted bloodlines (size + glow + wild + deep generations) can
+breed past Unique. No "own all 15 tiers" achievement exists by design — `tiers12`
+(any 12 distinct) is the collection ceiling.
+
+### Apex Guardians (v1.3)
+`guardianFor(pseed)` (Genome module): ~1 in 40 worlds passes the gate
+(`mulberry32(hashInt(pseed, 0x6A2D, 0x11)) < 0.025`); rulers split Empyrean 70% /
+Eternal 25% / Singular 5%. The guardian is a titanic luminous fauna genome with
+`apex:<tier>` (forced grade — `speciesGrade` short-circuits on `g.apex`) and
+`ep` (epithet index into `GUARDIAN_EPITHETS`; `faunaDesc` appends it to the name,
+e.g. "Nyxora the Stormcrowned"). `apexNative` returns the guardian (flag
+`guardian:true`) as the conquest defender of any unconquered fauna-bearing guarded
+world; victory stores the guardian in the codex (`stats.guardians++`, achievements
+`guard1`/`guard5`, +40 stardust spoils, 👑 cinematic). Guardian-hood never inherits:
+`crossGenome` builds an explicit field set (no `apex`/`ep`), and `evolveGenome` only
+ever runs on world-roster or crossbred genomes. `normGenome` clamps imported `apex`
+to genuine summit values (12–`TIER_MAX`) so hand-edited CFB codes can't mint fakes
+beyond what determinism already allows. Probe `guardians` pins the first rulers.
 
 ---
 

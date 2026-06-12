@@ -2321,6 +2321,11 @@ const GRADE_TIERS=[
   {t:9,  name:'Celestial',    pre:'Radiant',      hex:'#f8e7b0', star:'✦✦✦'},
   {t:10, name:'Primordial',   pre:'Primordial',   hex:'#ff8a4a', star:'✦✦✦✦'},
   {t:11, name:'Transcendent', pre:'Transcendent', hex:'#ffffff', star:'✧ ONE IN A MILLION'},
+  /* the summit — past one-in-a-million the dice all but give out; these grades
+     belong to master bloodlines and to Apex Guardians */
+  {t:12, name:'Empyrean', pre:'Empyrean', hex:'#9ad8ff', star:'✧✧'},
+  {t:13, name:'Eternal',  pre:'Eternal',  hex:'#e8c2ff', star:'✧✧✧'},
+  {t:14, name:'Singular', pre:'Singular', hex:'#ffe2f8', star:'❖ SINGULAR'},
 ];
 const TIER_MAX=GRADE_TIERS.length-1;
 /* hue family per object domain → the base color word */
@@ -2336,6 +2341,9 @@ function rarityRoll(seed, salt){
      The deep-spectrum bands (8–11) were carved out of the old unique band, so a
      pre-v1.3 roll either keeps its tier or climbs — determinism never downgrades. */
   const r=mulberry32((hashInt(seed>>>0, salt|0, 0x9a))>>>0)();
+  if(r>0.99999997) return 14;  // singular     ~1/33M — the summit
+  if(r>0.99999991) return 13;  // eternal      ~1/11M
+  if(r>0.9999997)  return 12;  // empyrean     ~1/3.3M
   if(r>0.999999) return 11;    // transcendent — one in a million
   if(r>0.999996) return 10;    // primordial   ~1/333,000
   if(r>0.999985) return 9;     // celestial    ~1/91,000
@@ -2486,7 +2494,7 @@ const {SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS
 /* ================================================================
    @module Genome [domain] — genome synthesis, classification & species description
    Deps: Rand, SpeciesTraits
-   API:  describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade
+   API:  describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade, guardianFor, GUARDIAN_EPITHETS
    ================================================================ */
 const Genome=(()=>{
 /* the genome: indices into the trait tables. kingdom decides which tables apply. */
@@ -2645,6 +2653,8 @@ function speciesGrade(g){
      plus the long-tail roll, so a titanic glowing gen-5 hybrid can climb past Unique
      into the deep spectrum (Mythic → Transcendent). */
   const dom = g.kingdom==='fauna'?'life':(g.kingdom==='flora'?'forest':(g.kingdom==='fungi'?'fungal':'life'));
+  /* apex guardians wear their summit grade outright — forced, never rolled */
+  if(g.apex) return colorGrade(dom, g.seed, {salt:0x10F, force:Math.min(TIER_MAX, Math.max(12, g.apex|0))});
   let boost=0;
   if((g.size||0)>=4) boost++;
   if((g.size||0)>=5) boost++;
@@ -2671,14 +2681,37 @@ function faunaDesc(g){
   const detail='A '+diet+' of '+habitat+', '+behavior+'. '+anat.charAt(0).toUpperCase()+anat.slice(1)+
     '. It is '+temper+', navigates by '+sense+', and '+repro+'. '+
     (metab.charAt(0).toUpperCase()+metab.slice(1))+', it lives '+life+'.';
-  return {name:speciesName(g.seed), kind:'Fauna', grade:speciesGrade(g),
+  return {name:speciesName(g.seed)+(g.apex?' '+GUARDIAN_EPITHETS[(g.ep||0)%GUARDIAN_EPITHETS.length]:''),
+    kind:'Fauna', grade:speciesGrade(g),
     desc:size+', '+col+' '+body+' '+loco+' '+trait+(g.lumin && !/glow/.test(trait)?', glowing':''),
     diet, anatomy:anat, pattern, temper, sense, repro, life, metab, habitat, behavior,
     detail};
 }
-return Object.freeze({describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade});
+/* ================= APEX GUARDIANS =================
+   About one fauna-bearing world in forty is ruled by a named, one-of-a-kind
+   apex wearing a summit grade (Empyrean / Eternal / Singular). Deterministic
+   from the world seed — every explorer meets the same guardian at the same
+   world. It defends the world in conquest; defeat it and it joins the
+   Compendium: the fighter's road to the summit grades. Guardian-hood never
+   inherits — crossGenome builds an explicit field set, so children of a
+   guardian are ordinary (if formidable) bloodlines. */
+const GUARDIAN_EPITHETS=['the Undying','the Worldheart','the Stormcrowned','the Pale Sovereign',
+  'the First Hunger','the Hundred-Eyed','the Last of Its Line','the Skyrender',
+  'the Deep Warden','the Ash Emperor','the Silent Tide','the Star-Eater',
+  'the Crownless','the Dawn Stalker','the Hollow Saint','the Gravemind'];
+function guardianFor(pseed){
+  const r=mulberry32(hashInt(pseed>>>0, 0x6A2D, 0x11)>>>0);
+  if(r()>=0.025) return null;
+  const tr=r(), tier = tr<0.70?12 : (tr<0.95?13:14);   /* Empyrean 70% · Eternal 25% · Singular 5% */
+  const g=makeGenome(hashInt(pseed>>>0, 0x6A2D, 0x22)>>>0, 'fauna', 1);
+  g.size=5; g.lumin=true; g.wild=1;                    /* titanic, burning bright */
+  g.apex=tier;
+  g.ep=hashInt(pseed>>>0, 0x6A2D, 0x44)%GUARDIAN_EPITHETS.length;
+  return {genome:g, tier, name:describeSpecies(g).name};
+}
+return Object.freeze({describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade, guardianFor, GUARDIAN_EPITHETS});
 })();
-const {describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade}=Genome;
+const {describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade, guardianFor, GUARDIAN_EPITHETS}=Genome;
 /* @end Genome */
 /* Unicode-safe base64 for SVG data URIs — native btoa throws on chars > U+00FF
    (e.g. the '·' and '—' in specimen labels), which was breaking creature images. */
@@ -4914,7 +4947,13 @@ function renderPanel(p, isLocked){
     let conqBtn='';
     if(d.planetSeed!=null && d.species && d.species.some(g=>g.kingdom==='fauna')){
       const c=conquered.get(d.planetSeed);
-      if(!c){
+      const _gd=c?null:guardianFor(d.planetSeed);   /* fallen guardians stay fallen — settled worlds show none */
+      if(_gd){
+        const _gS=battleStats(_gd.genome), _gT=GRADE_TIERS[_gS.tier];
+        rows+='<div class="splabel"><span class="k">👑 Apex Guardian</span>'+
+          '<span class="v" style="color:'+_gT.hex+'">'+_gd.name+' — '+_gT.name+' · Power '+_gS.total+'</span></div>';
+        conqBtn='<button class="act" data-act="conq" data-guide="guardians" data-tip="A named, one-of-a-kind summit-grade apex rules this world — defeat it in conquest and it joins your Compendium">👑 Challenge '+_gd.name+'</button>';
+      } else if(!c){
         conqBtn='<button class="act" data-act="conq" data-guide="conquest" data-tip="Choose a champion — you or a codex creature — and battle this world\u2019s apex native">⚔ Conquer Planet</button>';
       } else {
         const ready=Date.now()-c.t>=HARVEST_CD;
@@ -5779,6 +5818,7 @@ const ACH=[
   {id:'unique',  cat:'Rarity', ic:'✦',  name:'One of One',    d:'Discover a one-of-one Unique', t:()=>stats.best>=7},
   {id:'mythic',  cat:'Rarity', ic:'🧿', name:'Beyond the Veil', d:'Discover a Mythic — rarer than one-of-one', t:()=>stats.best>=8},
   {id:'transc',  cat:'Rarity', ic:'💫', name:'One in a Million', d:'Discover a Transcendent', t:()=>stats.best>=11},
+  {id:'summit',  cat:'Rarity', ic:'🗻', name:'Beyond the Million', d:'Own a summit-grade creature (Empyrean or better)', t:()=>stats.best>=12},
   {id:'tiers8',  cat:'Rarity', ic:'🎨', name:'Full Spectrum', d:'Own species of 8 different rarity tiers', t:()=>tiersOwned()>=8},
   {id:'tiers12', cat:'Rarity', ic:'🌈', name:'The Deep Spectrum', d:'Own species of all 12 rarity tiers', t:()=>tiersOwned()>=12},
   /* — Worlds — */
@@ -5823,7 +5863,9 @@ const ACH=[
   /* — Conquest — */
   {id:'settle1', cat:'Conquest', ic:'🏴', name:'Flagplanter',  d:'Conquer and settle a world', t:null},
   {id:'settle5', cat:'Conquest', ic:'🏰', name:'Dominion',     d:'Settle 5 worlds', t:()=>conquered.size>=5},
-  {id:'settle25',cat:'Conquest', ic:'👑', name:'Empire',       d:'Settle 25 worlds', t:()=>conquered.size>=25},
+  {id:'settle25',cat:'Conquest', ic:'🏯', name:'Empire',       d:'Settle 25 worlds', t:()=>conquered.size>=25},
+  {id:'guard1',  cat:'Conquest', ic:'👑', name:'Regicide',     d:'Defeat a named Apex Guardian', t:()=>(stats.guardians||0)>=1},
+  {id:'guard5',  cat:'Conquest', ic:'⚜️', name:'Throne Breaker', d:'Defeat 5 Apex Guardians', t:()=>(stats.guardians||0)>=5},
   {id:'harvest10',cat:'Conquest',ic:'⛏', name:'Quartermaster', d:'Harvest Stardust 10 times', t:()=>(stats.harvests||0)>=10},
   {id:'essence500',cat:'Conquest',ic:'☄', name:'Stockpiler',   d:'Earn 500 Stardust lifetime', t:()=>(stats.essenceEarned||0)>=500},
   /* — Survival — */
@@ -5910,6 +5952,7 @@ function doSave(){
       breeds:stats.breeds||0, breedwins:stats.breedwins||0,
       feeds:stats.feeds||0, feedfails:stats.feedfails||0,
       harvests:stats.harvests||0, essenceEarned:stats.essenceEarned||0,
+      guardians:stats.guardians||0,
       names:[...customNames],
       shares:stats.shares, jumps:stats.jumps,
       anomalies:stats.anomalies, anomKey:lastAnomKey,
@@ -5955,6 +5998,7 @@ function loadSave(){
     stats.breeds=num(data.breeds); stats.breedwins=num(data.breedwins);
     stats.feeds=num(data.feeds); stats.feedfails=num(data.feedfails);
     stats.harvests=num(data.harvests); stats.essenceEarned=num(data.essenceEarned);
+    stats.guardians=num(data.guardians);
     _savedView=data.view||null;
     if(data.pstats && typeof data.pstats==='object'){ for(const _k of STAT_KEYS) if(typeof data.pstats[_k]==='number') pstats[_k]=clamp(Math.round(data.pstats[_k]),1,330); }
     HP_MAX=hpMaxFromVit();
@@ -6434,6 +6478,9 @@ function normGenome(g){
   o.brood=Math.min(200, Number.isFinite(+o.brood)?Math.abs((+o.brood)|0):0);
   o.fed=Math.min(200, Number.isFinite(+o.fed)?Math.abs((+o.fed)|0):0);
   o.lumin=!!o.lumin;
+  /* guardian fields: ep is a display index; apex only honors genuine summit values */
+  if(o.ep!=null) o.ep=Number.isFinite(+o.ep)?Math.abs((+o.ep)|0):0;
+  if(o.apex!=null){ const a=(+o.apex)|0; if(a>=12 && a<=TIER_MAX) o.apex=a; else delete o.apex; }
   delete o.parents;
   delete o.hurt;          /* imported challengers arrive fresh — injuries don't travel in codes */
   return o;
@@ -7103,8 +7150,8 @@ const GUIDE=[
   '<p>Living worlds show <b>🔬 Discover Life</b> on their survey card. Scanning is a deliberate act — and on hostile worlds it has teeth: the danger percentage shown is your chance of being <b>wounded by wildlife mid-scan</b> (fiercer apex fauna and furnace worlds are deadlier). The scan always completes — you earned it.</p><ul><li>Every species found lands in your <b>Compendium</b> automatically.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li><b>Conquered worlds scan safely</b> — see <span data-gt="conquest">Conquest</span>.</li></ul>'},
  {id:'kingdoms', t:'The four kingdoms', k:'kingdom microbe flora fauna fungi realm biome classification', body:
   '<p>All life belongs to one of four kingdoms — <b>🦠 Microbe, 🌿 Flora, 🍄 Fungi, 🐾 Fauna</b> — and is shelved in the Compendium by realm (Land Fauna, Aquatic Fauna, Colonial Life…). Kingdom decides what a creature can do:</p><ul><li><b>Fauna</b> fight duels, defend worlds, and can be fed.</li><li><b>Flora</b> are medicine and meals — eaten by you or fed to beasts.</li><li>All kingdoms can <b>breed</b> within their own kind.</li></ul>'},
- {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique mythic celestial primordial transcendent deep spectrum color', body:
-  '<p>Every species rolls one of <b>12 grades</b>. The first eight — Common, Uncommon, Notable, Rare, Exotic, <b>Legendary, Anomalous, Unique</b> — cover all most expeditions will ever see. Beyond them lies the <b>deep spectrum</b>: <b>Mythic, Celestial, Primordial</b> and <b>Transcendent</b> — the summit a literal one-in-a-million roll. Rarity tints the card, pitches the discovery chime, and matters mechanically:</p><ul><li>Rarer flora heal more — and poison more. Rarer pairs are harder to breed but forge stronger bloodlines.</li><li>Finding a <b>Legendary-or-better</b> species pays a ☄ Stardust bonus (first discovery only).</li><li>Stars and worlds carry rarity too — their <em>spectral designation</em> — and rare worlds yield richer conquest spoils.</li><li>Hunting the deep spectrum? Size, glow, wild apex blood and deep hybrid generations all push a creature’s grade upward — a master bloodline can climb far past what nature rolls.</li></ul>'},
+ {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique mythic celestial primordial transcendent empyrean eternal singular deep spectrum summit color', body:
+  '<p>Every species rolls one of <b>15 grades</b>. The first eight — Common, Uncommon, Notable, Rare, Exotic, <b>Legendary, Anomalous, Unique</b> — cover all most expeditions will ever see. Beyond them lies the <b>deep spectrum</b>: <b>Mythic, Celestial, Primordial</b> and <b>Transcendent</b> — a literal one-in-a-million roll. Past even that wait the three <b>summit grades</b> — <b>Empyrean, Eternal, Singular</b> — all but unrollable, belonging to master bloodlines and to <span data-gt="guardians">Apex Guardians</span>. Rarity tints the card, pitches the discovery chime, and matters mechanically:</p><ul><li>Rarer flora heal more — and poison more. Rarer pairs are harder to breed but forge stronger bloodlines.</li><li>Finding a <b>Legendary-or-better</b> species pays a ☄ Stardust bonus (first discovery only).</li><li>Stars and worlds carry rarity too — their <em>spectral designation</em> — and rare worlds yield richer conquest spoils.</li><li>Hunting the deep spectrum? Size, glow, wild apex blood and deep hybrid generations all push a creature’s grade upward — a master bloodline can climb far past what nature rolls.</li></ul>'},
  {id:'specimen', t:'Reading a specimen card', k:'specimen card stats power ability bloodline brood fed gen hybrid tastes', body:
   '<p>Tap any species in the Compendium to open its card:</p><ul><li><b>Five stat bars + Power</b> — its battle strength, rolled deterministically from its genome (see <span data-gt="stats">The five stats</span>).</li><li><b>❤ HP & Condition</b> — its battle pool, and whether it’s Healthy, Bruised, Injured or Critical. Wounds persist and dull every stat — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>✧ Ability</b> — its biome-themed combat trick (see <span data-gt="abilities">Abilities</span>).</li><li><b>♥ Favours / ⊘ Dislikes</b> — its feeding tastes (fauna only).</li><li><b>♞ Bloodline</b> — <em>brood</em> (generations bred) and <em>fed</em> (meals taken) both permanently raise its stats.</li><li>Buttons: <b>⇪ Code</b> (share), <b>⚔ Duel</b>, <b>🧬 Breed</b>, <b>🌿 Feed</b>, <b>✎ Rename</b>.</li></ul>'},
  {id:'drift', t:'Passive evolution', k:'drift evolve hybrid automatic epoch cosmic clock', body:
@@ -7139,6 +7186,8 @@ const GUIDE=[
   '<p>Every creature carries one ability from its habitat’s theme — <em>fire, frost, storm, tide, stone, venom, void, sand, chem, psionic, wild</em> (gliders lean storm, swimmers tide, burrowers stone…). Abilities hook the duel math: burn damage-over-time, regeneration, crit bonuses, dodges, first-strike, ramping fury, Iron Gut toxin immunity and more. The ability is printed on the specimen card.</p>'},
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
   '<p>Any world with fauna can be conquered. Press <b>⚔ Conquer Planet</b> on its survey card and choose <b>one champion</b> — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries <b>wounds</b> home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a creature:</b> it is <b>gone forever</b>.</li><li><b>Lose fighting yourself:</b> you take the wound instead.</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
+ {id:'guardians', t:'Apex Guardians', k:'guardian apex named ruler challenge summit empyrean eternal singular crown titan', body:
+  '<p>About one fauna-bearing world in forty is ruled by a <b>👑 named Apex Guardian</b> — a one-of-a-kind luminous titan wearing a <b>summit grade</b>: Empyrean, Eternal or Singular, beyond even Transcendent. The same guardian rules the same world for <b>every explorer</b> — share the coordinates and a friend faces the very same beast.</p><ul><li>A guarded world’s survey card names its ruler, grade and Power, and its conquest becomes a <b>guardian challenge</b>.</li><li><b>Defeat it</b> and the world is settled, the spoils pay a ruler’s ransom, and the guardian itself <b>joins your Compendium</b> — the fighter’s road to the summit grades.</li><li><b>Lose</b> and the usual price is paid: a champion creature is lost forever, or you take the wound.</li><li>The breeder’s road also leads up: size, glow, wild blood and deep hybrid generations can push a bloodline to the summit without ever drawing a blade.</li></ul>'},
 ]},
 {icon:'☄', cat:'Stardust & Progression', blurb:'Economy, harvests, spoils', topics:[
  {id:'stardust', t:'Stardust', k:'stardust essence currency economy breeding odds boost earn', body:
@@ -7323,8 +7372,10 @@ const RELEASES=[
  ['✦ New Features & Systems', [
   '<b>The deep spectrum</b> — the rarity ladder now climbs past Unique through four new grades: <b>Mythic</b> (~1 in 22,000), <b>Celestial</b> (~1 in 91,000), <b>Primordial</b> (~1 in 333,000) and <b>Transcendent</b> — a literal one-in-a-million find. Existing creatures keep their grade or rise; no collection got worse.',
   'Worlds and stars climb too: beyond Prismatic, spectral designations take on the new finishes — <b>Iridescent, Radiant, Primordial, Transcendent</b>.',
+  '<b>The summit grades</b> — three more above even Transcendent: <b>Empyrean, Eternal</b> and <b>Singular</b>. Out past one-in-a-million the dice all but give out — the summit belongs to master breeders and to guardian slayers.',
+  '<b>👑 Apex Guardians</b> — about one fauna-bearing world in forty is ruled by a <b>named, one-of-a-kind titan</b> wearing a summit grade. The same guardian rules the same world for every explorer — share the coordinates and a friend faces the very same beast. Defeat it in conquest and the world pays a ruler’s ransom — and <b>the guardian itself joins your Compendium</b>.',
   'Deep-spectrum hunting is a breeder’s game — size, glow, wild apex blood and deep hybrid generations push grades upward, so a master bloodline can climb past what nature rolls.',
-  'Three new Rarity achievements: <b>Beyond the Veil</b>, <b>One in a Million</b> and <b>The Deep Spectrum</b>.',
+  'Six new achievements: <b>Beyond the Veil</b>, <b>One in a Million</b>, <b>Beyond the Million</b>, <b>The Deep Spectrum</b> — and for guardian slayers, <b>Regicide</b> and <b>Throne Breaker</b>.',
  ]],
 ]},
 {v:'1.2', title:'The Living Frontier', date:'June 2026', sections:[
@@ -7509,6 +7560,11 @@ const HARVEST_CD=3600e3;
 function apexNative(d){
   const fauna=(d.species||[]).filter(g=>g.kingdom==='fauna');
   if(!fauna.length) return null;
+  /* a guarded world's defender is its named Apex Guardian — until it falls */
+  if(d.planetSeed!=null && !conquered.has(d.planetSeed)){
+    const gd=guardianFor(d.planetSeed);
+    if(gd) return {name:gd.name, genome:gd.genome, guardian:true, region:0};
+  }
   let best=fauna[0], bt=-1;
   for(const g of fauna){ const t=battleStats(g).total; if(t>bt){ bt=t; best=g; } }
   const _reg=(typeof st!=='undefined'&&st.gal)?regionAt(st.gal.x,st.gal.y):0;
@@ -7535,10 +7591,13 @@ function openConquestPicker(d, native){
   const fauna=[...codex.values()].filter(e=>e.kind==='Fauna')
     .map(e=>({name:e.name, genome:e.genome, art:e.art, id:e.id, grade:e.grade}));
   const champs=[playerCombatant(), ...fauna];
-  document.getElementById('pick-title').textContent='⚔ Conquer '+(d.title||'this world');
+  document.getElementById('pick-title').textContent=(native.guardian?'👑 Challenge ':'⚔ Conquer ')+(d.title||'this world');
   document.getElementById('pick-note').innerHTML='Choose ONE champion to face this world\u2019s apex native, '+
     '<b style="color:'+nS.hex+'">'+native.name+'</b> (Power '+nS.total+'). '+
     'Win and the world is yours to settle. <b>Lose, and a codex creature is lost forever — or if you fight yourself, you take the wound.</b>';
+  if(native.guardian) document.getElementById('pick-note').innerHTML=
+    'This world is ruled by <b style="color:'+nS.hex+'">'+native.name+'</b> — a one-of-a-kind <b style="color:'+nS.hex+'">'+GRADE_TIERS[nS.tier].name+'</b> Apex Guardian (Power '+nS.total+'). '+
+    'Defeat it and the world is yours, <b>and the guardian itself joins your Compendium</b>. <b>Lose, and a codex creature is lost forever — or if you fight yourself, you take the wound.</b>';
   document.getElementById('pick-result').innerHTML='';
   pickList.innerHTML=champs.map(c=>{
     const S=c.stats||battleStats(c.genome);
@@ -7567,10 +7626,19 @@ function runConquestBattle(d, champ, native){
       if(res.winner==='A'){
         stats.duelwins++;
         conquered.set(d.planetSeed, {t:0, tier:(d.designation?d.designation.tier:1)});
+        if(native.guardian){
+          /* the fallen guardian joins the Compendium — the fighter's road to the summit */
+          stats.guardians=(stats.guardians||0)+1;
+          const ge=_storeSpecies(native.genome, 'Apex Guardian of '+(d.title||'a world'), d.where||null);
+          const _gg=ge&&ge.grade;
+          cinematic({kicker:'👑 The Guardian Falls', title:native.name,
+            sub:(_gg?_gg.name+(_gg.star?' '+_gg.star:''):'A summit-grade titan')+' — it joins your Compendium',
+            hex:(_gg?_gg.hex:'#ffd96a'), tier:(_gg?_gg.tier:8)});
+        }
         primeCheckWorld(d);   /* a settled rocky/lava world now yields its Stone/Flame signature */
         for(const e of codex.values()) if(e.where && e.where.pseed===d.planetSeed) primeCheckSpecies(e, false);
         toast('\ud83c\udff4 '+(d.title||'World')+' Settled', champ.name+' overcame '+native.name+'. The world flies your flag \u2014 bioscans here are safe, and you can \u26cf harvest Stardust anytime.');
-        const sd=8+(((d.designation&&d.designation.tier)||1))*5;
+        const sd=8+(((d.designation&&d.designation.tier)||1))*5+(native.guardian?40:0);   /* guarded worlds pay a ruler's ransom */
         essence+=sd; stats.essenceEarned=(stats.essenceEarned||0)+sd;
         setTimeout(()=>toast('\u2604 Spoils of Conquest','+'+sd+' Stardust claimed with the world. Total: '+essence+'.'), 1200);
         unlock('settle1'); playRaritySting(6); playFanfare(); fxBurst(FX_GOLD,64); _panelKey=null;
