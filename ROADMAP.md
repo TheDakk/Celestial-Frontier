@@ -5,6 +5,20 @@
 > batch, keep everything committed and pushed. The chat is disposable; this
 > file and the repo are not.
 
+## VERSION RESET (Dakk, 2026-06-11 ~9:45 PM): the staged release SHIPS AS v1.0
+
+- Nobody but Dakk has played yet and every bug was fixed pre-release, so the
+  release formerly staged as "v1.3" ships as **v1.0 — the public debut**.
+  Everywhere this file says "v1.3", read "the 1.0 release".
+- **Release notes collapse to a SINGLE v1.0 entry**: a high-level overview of
+  every game system and feature to date (an introduction, not a changelog).
+  Written at ship time, replacing the whole RELEASES history in-game (git
+  history keeps the old notes).
+- In-game `GAME_VERSION` resets '1.2' → '1.0' at ship. Dakk's live save has
+  rn='1.2' ≠ '1.0', so the new bulletin pops once for him — expected.
+- AFTER 1.0 ships: resume the old pattern exactly — fixes/additions pile
+  into RELEASES[0] as v1.1 bullets as they're built; bump on Dakk's say-so.
+
 ## Current state (updated 2026-06-11, late evening)
 
 - **Version: v1.2** (in-game `GAME_VERSION`) — live as build `ffdd3e2`
@@ -203,9 +217,12 @@ Dakk's direction from the 2026-06-11 late-night session (his words paraphrased):
    ending text closes the beacon motif. STILL TO DO if Dakk wants more:
    SIGS hint copy, Guide category blurbs, region-name lore, guardian
    battle intros (also listed in the arc).
-9. **Release notes discipline** — keep revising RELEASES[0] (v1.3) in place as
-   the version grows; same-version revision is explicitly OK per Dakk.
-10. After 7–8: offer the v1.3 bump + deploy again.
+9. **Release notes** — keep RELEASES[0] current while building; at SHIP TIME
+   collapse everything into the single v1.0 systems-overview entry (see
+   VERSION RESET at top) and set GAME_VERSION='1.0'.
+10. Ship checklist for 1.0: four pillars built (arc section below) → notes
+    collapse + version set → full validate/smoke/baseline regen as needed →
+    Dakk's go → deploy.
 
 ## THE ARC IS v1.3 (Dakk, 2026-06-11 late): "no one else has played yet —
 ## we're keeping this for v1.3, not an expansion"
