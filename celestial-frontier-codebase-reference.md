@@ -172,8 +172,16 @@ glow** behind the portrait (ability-theme color for fauna, nourished-stat color 
 `GRADE_TIERS` (15 tiers, `TIER_MAX = 14`): **Common, Uncommon, Notable, Rare, Exotic,
 Legendary, Anomalous, Unique**, then the **deep spectrum** added in v1.3: **Mythic
 (~1/22k), Celestial (~1/91k), Primordial (~1/333k), Transcendent (1/1M)**, then the
-**summit grades**: **Empyrean (~1/3.3M), Eternal (~1/11M), Singular (~1/33M)** —
+**summit grades**: **Empyrean (~1/3.3M), Eternal (~1/11M), Omnipotent (~1/33M)** —
 all but unrollable; in practice they belong to max-boost bloodlines and Apex Guardians.
+High-tier palette (v1.3 deep pass): aqua Mythic `#3fe8c8`, starlight Celestial `#a8c8ff`,
+ember Primordial `#ff8a4a`, white-light Transcendent `#f4f8ff`, dawnfire Empyrean
+`#ffc24f`, twilight Eternal `#9a8aff`, Omnipotent `#ff7ae8` (static fallback). Tier ≥ 12
+renders with the **iridescent foil** CSS (`.gbadge.irid` shimmer badge; `.iridframe::after`
+animated prismatic ring on the specimen card — see the style block's v1.3 section).
+Specimen cards (`showReveal`) wear a `.gbadge` grade badge; the character sheet shows
+"Highest grade ever reached" (a statistic, not an achievement — the summit is deliberately
+chased, not checklisted) and "Apex Guardians felled".
 `rarityRoll` / `speciesGrade` / `colorGrade` assign grade; higher tiers play bigger
 stings, tinted FX bursts, and grant stardust bonuses (§9). All bands past Unique were
 **carved out of the top of the old Unique band**, so under the same seed a v1.2 grade
@@ -188,7 +196,7 @@ breed past Unique. No "own all 15 tiers" achievement exists by design — `tiers
 ### Apex Guardians (v1.3)
 `guardianFor(pseed)` (Genome module): ~1 in 40 worlds passes the gate
 (`mulberry32(hashInt(pseed, 0x6A2D, 0x11)) < 0.025`); rulers split Empyrean 70% /
-Eternal 25% / Singular 5%. The guardian is a titanic luminous fauna genome with
+Eternal 25% / Omnipotent 5%. The guardian is a titanic luminous fauna genome with
 `apex:<tier>` (forced grade — `speciesGrade` short-circuits on `g.apex`) and
 `ep` (epithet index into `GUARDIAN_EPITHETS`; `faunaDesc` appends it to the name,
 e.g. "Nyxora the Stormcrowned"). `apexNative` returns the guardian (flag

@@ -864,6 +864,21 @@
     #hpbar{width:clamp(100px,40vw,172px)}
     #pcdxbtn{font-size:10px;padding:5px 7px}
   }
+  /* ---- the iridescent foil treatment (v1.3): grade badges + summit frames ---- */
+  .gbadge{display:inline-block;padding:1px 7px;border-radius:8px;border:1px solid currentColor;
+    font-weight:700;letter-spacing:.06em;font-size:.92em;vertical-align:baseline}
+  .gbadge.irid{border-color:transparent;color:#141228 !important;
+    background:linear-gradient(100deg,#ff7ae8,#ffc24f,#3fe8c8,#9a8aff,#ff7ae8);
+    background-size:300% 100%;animation:iridslide 3.5s linear infinite}
+  @keyframes iridslide{to{background-position:300% 0}}
+  .iridframe{position:relative}
+  .iridframe::after{content:'';position:absolute;inset:-3px;border-radius:inherit;
+    border:2px solid transparent;pointer-events:none;
+    background:linear-gradient(120deg,#ff7ae8,#ffc24f,#3fe8c8,#9a8aff,#ff7ae8) border-box;
+    background-size:300% 100%;animation:iridslide 4s linear infinite;
+    -webkit-mask:linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    mask-composite:exclude}
 </style>
 </head>
 <body>
@@ -2317,15 +2332,19 @@ const GRADE_TIERS=[
   {t:7, name:'Unique',    pre:'Prismatic', hex:'#d65bb8', star:'✦ ONE-OF-ONE'},
   /* the deep spectrum — carved out of the top of the roll in v1.3, so every
      pre-existing grade either held or rose; nothing ever downgrades */
-  {t:8,  name:'Mythic',       pre:'Iridescent',   hex:'#56e8c8', star:'✦✦'},
-  {t:9,  name:'Celestial',    pre:'Radiant',      hex:'#f8e7b0', star:'✦✦✦'},
+  /* the deep spectrum — vivid hues that escalate past nature:
+     aqua myth → starlight → first-fire ember → white light */
+  {t:8,  name:'Mythic',       pre:'Iridescent',   hex:'#3fe8c8', star:'✦✦'},
+  {t:9,  name:'Celestial',    pre:'Radiant',      hex:'#a8c8ff', star:'✦✦✦'},
   {t:10, name:'Primordial',   pre:'Primordial',   hex:'#ff8a4a', star:'✦✦✦✦'},
-  {t:11, name:'Transcendent', pre:'Transcendent', hex:'#ffffff', star:'✧ ONE IN A MILLION'},
+  {t:11, name:'Transcendent', pre:'Transcendent', hex:'#f4f8ff', star:'✧ ONE IN A MILLION'},
   /* the summit — past one-in-a-million the dice all but give out; these grades
-     belong to master bloodlines and to Apex Guardians */
-  {t:12, name:'Empyrean', pre:'Empyrean', hex:'#9ad8ff', star:'✧✧'},
-  {t:13, name:'Eternal',  pre:'Eternal',  hex:'#e8c2ff', star:'✧✧✧'},
-  {t:14, name:'Singular', pre:'Singular', hex:'#ffe2f8', star:'❖ SINGULAR'},
+     belong to master bloodlines and to Apex Guardians. Dawnfire → twilight →
+     the iridescent everything-color. Tier 12+ renders with the .irid foil
+     shimmer in the UI; the hex is the static fallback. */
+  {t:12, name:'Empyrean',   pre:'Empyrean',   hex:'#ffc24f', star:'✧✧'},
+  {t:13, name:'Eternal',    pre:'Eternal',    hex:'#9a8aff', star:'✧✧✧'},
+  {t:14, name:'Omnipotent', pre:'Omnipotent', hex:'#ff7ae8', star:'❖ OMNIPOTENT'},
 ];
 const TIER_MAX=GRADE_TIERS.length-1;
 /* hue family per object domain → the base color word */
@@ -2341,7 +2360,7 @@ function rarityRoll(seed, salt){
      The deep-spectrum bands (8–11) were carved out of the old unique band, so a
      pre-v1.3 roll either keeps its tier or climbs — determinism never downgrades. */
   const r=mulberry32((hashInt(seed>>>0, salt|0, 0x9a))>>>0)();
-  if(r>0.99999997) return 14;  // singular     ~1/33M — the summit
+  if(r>0.99999997) return 14;  // omnipotent   ~1/33M — the summit
   if(r>0.99999991) return 13;  // eternal      ~1/11M
   if(r>0.9999997)  return 12;  // empyrean     ~1/3.3M
   if(r>0.999999) return 11;    // transcendent — one in a million
@@ -2702,7 +2721,7 @@ const GUARDIAN_EPITHETS=['the Undying','the Worldheart','the Stormcrowned','the 
 function guardianFor(pseed){
   const r=mulberry32(hashInt(pseed>>>0, 0x6A2D, 0x11)>>>0);
   if(r()>=0.025) return null;
-  const tr=r(), tier = tr<0.70?12 : (tr<0.95?13:14);   /* Empyrean 70% · Eternal 25% · Singular 5% */
+  const tr=r(), tier = tr<0.70?12 : (tr<0.95?13:14);   /* Empyrean 70% · Eternal 25% · Omnipotent 5% */
   const g=makeGenome(hashInt(pseed>>>0, 0x6A2D, 0x22)>>>0, 'fauna', 1);
   g.size=5; g.lumin=true; g.wild=1;                    /* titanic, burning bright */
   g.apex=tier;
@@ -5315,8 +5334,10 @@ function showReveal(entry, isHybrid){
   const nm=document.getElementById('rev-name');
   nm.textContent = entry.name;
   nm.style.color = gr?gr.hex:'';
-  document.getElementById('rev-kind').textContent =
-    (gr?gr.name+(gr.star?' '+gr.star:'')+' · ':'') +
+  /* the grade badge — every specimen wears its rarity like a collection card;
+     summit grades (12+) get the iridescent foil treatment */
+  document.getElementById('rev-kind').innerHTML =
+    (gr?'<span class="gbadge'+(gr.tier>=12?' irid':'')+'" style="color:'+gr.hex+'">'+gr.name+(gr.star?' '+gr.star:'')+'</span> · ':'') +
     (entry.hybrid?('Hybrid · generation '+entry.gen):((entry.realm||entry.kind)+' · '+entry.from));
   document.getElementById('rev-detail').textContent = entry.detail||'';
   /* the field notes: every trait, readable, below the portrait */
@@ -5326,7 +5347,8 @@ function showReveal(entry, isHybrid){
     : '';
   document.getElementById('rev-meta').textContent='';
   const card=document.querySelector('#reveal .card')||revealEl.firstElementChild;
-  if(card && gr){ card.style.borderColor=gr.hex; card.style.boxShadow='0 0 0 1px '+gr.hex+', 0 0 '+(gr.tier>=5?90:40)+'px '+gr.hex+(gr.tier>=5?'88':'55'); }
+  if(card && gr){ card.style.borderColor=gr.hex; card.style.boxShadow='0 0 0 1px '+gr.hex+', 0 0 '+(gr.tier>=5?90:40)+'px '+gr.hex+(gr.tier>=5?'88':'55'); card.classList.toggle('iridframe', gr.tier>=12); }
+  else if(card){ card.classList.remove('iridframe'); }
   /* battle stats — every creature rolls them from its genome */
   _revEntry=entry;
   const stEl=document.getElementById('rev-stats');
@@ -5798,6 +5820,7 @@ function renderRank(){
 /* ---- achievements: grouped by category, expandable in the stats panel ---- */
 function kindsOwned(){ const s=new Set(); for(const e of codex.values()) if(e.kind) s.add(e.kind); return s.size; }
 function tiersOwned(){ const s=new Set(); for(const e of codex.values()) if(e.grade) s.add(e.grade.tier); return s.size; }
+function realmsOwned(){ const s=new Set(); for(const e of codex.values()) if(e.realm) s.add(e.realm); return s.size; }
 const ACH=[
   /* — Cataloguing — */
   {id:'first',   cat:'Cataloguing', ic:'🧬', name:'First Contact',   d:'Catalogue your first species', t:()=>codex.size>=1},
@@ -5806,6 +5829,8 @@ const ACH=[
   {id:'codex150',cat:'Cataloguing', ic:'📚', name:'Grand Archive',   d:'Catalogue 150 species', t:()=>codex.size>=150},
   {id:'codex300',cat:'Cataloguing', ic:'🌠', name:'Cosmic Library',  d:'Catalogue 300 species', t:()=>codex.size>=300},
   {id:'kingdoms',cat:'Cataloguing', ic:'🌿', name:'Four Kingdoms',   d:'Catalogue flora, fauna, fungi and microbes', t:()=>kindsOwned()>=4},
+  {id:'realms8', cat:'Cataloguing', ic:'🗺', name:'Realm Ranger',    d:'Own species from 8 of the 16 realms', t:()=>realmsOwned()>=8},
+  {id:'realms16',cat:'Cataloguing', ic:'🏆', name:'Master of Realms',d:'Own species from all 16 realms', t:()=>realmsOwned()>=16},
   /* — Breeding — */
   {id:'hybrid',  cat:'Breeding', ic:'🧪', name:'Hybrid Vigor', d:'Your Compendium breeds its first hybrid', t:()=>stats.hybrids>=1},
   {id:'gene10',  cat:'Breeding', ic:'⚗️', name:'Gene Smith',   d:'10 hybrids bred', t:()=>stats.hybrids>=10},
@@ -7150,8 +7175,8 @@ const GUIDE=[
   '<p>Living worlds show <b>🔬 Discover Life</b> on their survey card. Scanning is a deliberate act — and on hostile worlds it has teeth: the danger percentage shown is your chance of being <b>wounded by wildlife mid-scan</b> (fiercer apex fauna and furnace worlds are deadlier). The scan always completes — you earned it.</p><ul><li>Every species found lands in your <b>Compendium</b> automatically.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li><b>Conquered worlds scan safely</b> — see <span data-gt="conquest">Conquest</span>.</li></ul>'},
  {id:'kingdoms', t:'The four kingdoms', k:'kingdom microbe flora fauna fungi realm biome classification', body:
   '<p>All life belongs to one of four kingdoms — <b>🦠 Microbe, 🌿 Flora, 🍄 Fungi, 🐾 Fauna</b> — and is shelved in the Compendium by realm (Land Fauna, Aquatic Fauna, Colonial Life…). Kingdom decides what a creature can do:</p><ul><li><b>Fauna</b> fight duels, defend worlds, and can be fed.</li><li><b>Flora</b> are medicine and meals — eaten by you or fed to beasts.</li><li>All kingdoms can <b>breed</b> within their own kind.</li></ul>'},
- {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique mythic celestial primordial transcendent empyrean eternal singular deep spectrum summit color', body:
-  '<p>Every species rolls one of <b>15 grades</b>. The first eight — Common, Uncommon, Notable, Rare, Exotic, <b>Legendary, Anomalous, Unique</b> — cover all most expeditions will ever see. Beyond them lies the <b>deep spectrum</b>: <b>Mythic, Celestial, Primordial</b> and <b>Transcendent</b> — a literal one-in-a-million roll. Past even that wait the three <b>summit grades</b> — <b>Empyrean, Eternal, Singular</b> — all but unrollable, belonging to master bloodlines and to <span data-gt="guardians">Apex Guardians</span>. Rarity tints the card, pitches the discovery chime, and matters mechanically:</p><ul><li>Rarer flora heal more — and poison more. Rarer pairs are harder to breed but forge stronger bloodlines.</li><li>Finding a <b>Legendary-or-better</b> species pays a ☄ Stardust bonus (first discovery only).</li><li>Stars and worlds carry rarity too — their <em>spectral designation</em> — and rare worlds yield richer conquest spoils.</li><li>Hunting the deep spectrum? Size, glow, wild apex blood and deep hybrid generations all push a creature’s grade upward — a master bloodline can climb far past what nature rolls.</li></ul>'},
+ {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique mythic celestial primordial transcendent empyrean eternal omnipotent deep spectrum summit color', body:
+  '<p>Every species rolls one of <b>15 grades</b>. The first eight — Common, Uncommon, Notable, Rare, Exotic, <b>Legendary, Anomalous, Unique</b> — cover all most expeditions will ever see. Beyond them lies the <b>deep spectrum</b>: <b>Mythic, Celestial, Primordial</b> and <b>Transcendent</b> — a literal one-in-a-million roll. Past even that wait the three <b>summit grades</b> — <b>Empyrean, Eternal, Omnipotent</b> — all but unrollable, belonging to master bloodlines and to <span data-gt="guardians">Apex Guardians</span>. Rarity tints the card, pitches the discovery chime, and matters mechanically:</p><ul><li>Rarer flora heal more — and poison more. Rarer pairs are harder to breed but forge stronger bloodlines.</li><li>Finding a <b>Legendary-or-better</b> species pays a ☄ Stardust bonus (first discovery only).</li><li>Stars and worlds carry rarity too — their <em>spectral designation</em> — and rare worlds yield richer conquest spoils.</li><li>Hunting the deep spectrum? Size, glow, wild apex blood and deep hybrid generations all push a creature’s grade upward — a master bloodline can climb far past what nature rolls.</li></ul>'},
  {id:'specimen', t:'Reading a specimen card', k:'specimen card stats power ability bloodline brood fed gen hybrid tastes', body:
   '<p>Tap any species in the Compendium to open its card:</p><ul><li><b>Five stat bars + Power</b> — its battle strength, rolled deterministically from its genome (see <span data-gt="stats">The five stats</span>).</li><li><b>❤ HP & Condition</b> — its battle pool, and whether it’s Healthy, Bruised, Injured or Critical. Wounds persist and dull every stat — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>✧ Ability</b> — its biome-themed combat trick (see <span data-gt="abilities">Abilities</span>).</li><li><b>♥ Favours / ⊘ Dislikes</b> — its feeding tastes (fauna only).</li><li><b>♞ Bloodline</b> — <em>brood</em> (generations bred) and <em>fed</em> (meals taken) both permanently raise its stats.</li><li>Buttons: <b>⇪ Code</b> (share), <b>⚔ Duel</b>, <b>🧬 Breed</b>, <b>🌿 Feed</b>, <b>✎ Rename</b>.</li></ul>'},
  {id:'drift', t:'Passive evolution', k:'drift evolve hybrid automatic epoch cosmic clock', body:
@@ -7187,7 +7212,7 @@ const GUIDE=[
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
   '<p>Any world with fauna can be conquered. Press <b>⚔ Conquer Planet</b> on its survey card and choose <b>one champion</b> — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries <b>wounds</b> home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a creature:</b> it is <b>gone forever</b>.</li><li><b>Lose fighting yourself:</b> you take the wound instead.</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
  {id:'guardians', t:'Apex Guardians', k:'guardian apex named ruler challenge summit empyrean eternal singular crown titan', body:
-  '<p>About one fauna-bearing world in forty is ruled by a <b>👑 named Apex Guardian</b> — a one-of-a-kind luminous titan wearing a <b>summit grade</b>: Empyrean, Eternal or Singular, beyond even Transcendent. The same guardian rules the same world for <b>every explorer</b> — share the coordinates and a friend faces the very same beast.</p><ul><li>A guarded world’s survey card names its ruler, grade and Power, and its conquest becomes a <b>guardian challenge</b>.</li><li><b>Defeat it</b> and the world is settled, the spoils pay a ruler’s ransom, and the guardian itself <b>joins your Compendium</b> — the fighter’s road to the summit grades.</li><li><b>Lose</b> and the usual price is paid: a champion creature is lost forever, or you take the wound.</li><li>The breeder’s road also leads up: size, glow, wild blood and deep hybrid generations can push a bloodline to the summit without ever drawing a blade.</li></ul>'},
+  '<p>About one fauna-bearing world in forty is ruled by a <b>👑 named Apex Guardian</b> — a one-of-a-kind luminous titan wearing a <b>summit grade</b>: Empyrean, Eternal or Omnipotent, beyond even Transcendent. The same guardian rules the same world for <b>every explorer</b> — share the coordinates and a friend faces the very same beast.</p><ul><li>A guarded world’s survey card names its ruler, grade and Power, and its conquest becomes a <b>guardian challenge</b>.</li><li><b>Defeat it</b> and the world is settled, the spoils pay a ruler’s ransom, and the guardian itself <b>joins your Compendium</b> — the fighter’s road to the summit grades.</li><li><b>Lose</b> and the usual price is paid: a champion creature is lost forever, or you take the wound.</li><li>The breeder’s road also leads up: size, glow, wild blood and deep hybrid generations can push a bloodline to the summit without ever drawing a blade.</li></ul>'},
 ]},
 {icon:'☄', cat:'Stardust & Progression', blurb:'Economy, harvests, spoils', topics:[
  {id:'stardust', t:'Stardust', k:'stardust essence currency economy breeding odds boost earn', body:
@@ -7372,10 +7397,17 @@ const RELEASES=[
  ['✦ New Features & Systems', [
   '<b>The deep spectrum</b> — the rarity ladder now climbs past Unique through four new grades: <b>Mythic</b> (~1 in 22,000), <b>Celestial</b> (~1 in 91,000), <b>Primordial</b> (~1 in 333,000) and <b>Transcendent</b> — a literal one-in-a-million find. Existing creatures keep their grade or rise; no collection got worse.',
   'Worlds and stars climb too: beyond Prismatic, spectral designations take on the new finishes — <b>Iridescent, Radiant, Primordial, Transcendent</b>.',
-  '<b>The summit grades</b> — three more above even Transcendent: <b>Empyrean, Eternal</b> and <b>Singular</b>. Out past one-in-a-million the dice all but give out — the summit belongs to master breeders and to guardian slayers.',
+  '<b>The summit grades</b> — three more above even Transcendent: <b>Empyrean, Eternal</b> and <b>Omnipotent</b>. Out past one-in-a-million the dice all but give out — the summit belongs to master breeders and to guardian slayers.',
   '<b>👑 Apex Guardians</b> — about one fauna-bearing world in forty is ruled by a <b>named, one-of-a-kind titan</b> wearing a summit grade. The same guardian rules the same world for every explorer — share the coordinates and a friend faces the very same beast. Defeat it in conquest and the world pays a ruler’s ransom — and <b>the guardian itself joins your Compendium</b>.',
   'Deep-spectrum hunting is a breeder’s game — size, glow, wild apex blood and deep hybrid generations push grades upward, so a master bloodline can climb past what nature rolls.',
-  'Six new achievements: <b>Beyond the Veil</b>, <b>One in a Million</b>, <b>Beyond the Million</b>, <b>The Deep Spectrum</b> — and for guardian slayers, <b>Regicide</b> and <b>Throne Breaker</b>.',
+ ]],
+ ['◈ UI Enhancements', [
+  '<b>Collection cards</b> — every specimen card now wears its <b>grade badge</b>, and summit-grade creatures shine in <b>iridescent foil</b>: a shimmering badge and an animated prismatic frame. Catch one and you’ll know.',
+  'The high tiers got a vivid new palette: <b>aqua</b> Mythic, <b>starlight</b> Celestial, <b>ember</b> Primordial, <b>white-light</b> Transcendent, <b>dawnfire</b> Empyrean, <b>twilight</b> Eternal — and Omnipotent shimmers through them all.',
+  'Your character sheet now tracks the <b>highest grade you’ve ever reached</b> and your <b>guardians felled</b> — the very top of the ladder is chased, not checklisted.',
+ ]],
+ ['🏆 Achievements & Collections', [
+  'Eight new achievements: <b>Beyond the Veil</b> (Mythic), <b>One in a Million</b> (Transcendent), <b>Beyond the Million</b> (the summit), <b>The Deep Spectrum</b> (12 rarity tiers), <b>Regicide</b> and <b>Throne Breaker</b> (guardians), and the collector’s pair <b>Realm Ranger</b> and <b>Master of Realms</b> (8 / all 16 realms).',
  ]],
 ]},
 {v:'1.2', title:'The Living Frontier', date:'June 2026', sections:[
@@ -8485,7 +8517,10 @@ function renderStats(){
     '<div class="srow"><span class="k">\u2604 Stardust (breed odds +'+Math.round(stardustBonus()*100)+'%)</span><span>'+essence+'</span></div>'+
     '<div class="srow"><span class="k">Stardust harvested</span><span>'+(stats.harvests||0)+'</span></div>'+
     '<div class="srow"><span class="k">Codes shared / followed</span><span>'+stats.shares+' / '+stats.jumps+'</span></div>'+
-    (rarest?'<div class="srow"><span class="k">Rarest find</span><span style="color:'+rarest.grade.hex+'">'+rarest.grade.name+' '+(rarest.grade.star||'')+' '+rarest.name+'</span></div>':'');
+    (rarest?'<div class="srow"><span class="k">Rarest find</span><span style="color:'+rarest.grade.hex+'">'+rarest.grade.name+' '+(rarest.grade.star||'')+' '+rarest.name+'</span></div>':'')+
+    /* the summit is chased, not checklisted: the top of the ladder is a statistic, not an achievement */
+    (stats.best>0?'<div class="srow"><span class="k">Highest grade ever reached</span><span class="gbadge'+(stats.best>=12?' irid':'')+'" style="color:'+GRADE_TIERS[Math.min(stats.best,TIER_MAX)].hex+'">'+GRADE_TIERS[Math.min(stats.best,TIER_MAX)].name+'</span></div>':'')+
+    '<div class="srow"><span class="k">👑 Apex Guardians felled</span><span>'+(stats.guardians||0)+'</span></div>';
   html+='<div class="agrp'+(_agOpen.has('__stats')?' open':'')+'" data-ag="__stats">'+
     '<div class="aghead"><span><span class="arr">\u25B8</span>Statistics</span><span class="cnt"></span></div>'+
     '<div class="agbody">'+_statBody+'</div></div>';
