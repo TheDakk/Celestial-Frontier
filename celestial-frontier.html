@@ -9114,11 +9114,11 @@ function _tutGate(e){
 function _tutGateOn(){ for(const ev of TUT_GATE_EVTS) document.addEventListener(ev, _tutGate, {capture:true, passive:false}); }
 function _tutGateOff(){ for(const ev of TUT_GATE_EVTS) document.removeEventListener(ev, _tutGate, {capture:true}); }
 
-let _tutSpotT=0;   /* the spotlight tracks its target LIVE — layouts shift when
-                      dialogs open, text size changes or the topbar reflows, and
-                      a once-per-step ring strands at stale coordinates */
+let _tutSpotT=0, _tutSpotD=0;   /* the spotlight tracks its target LIVE — layouts
+                      shift when dialogs open, text size changes or the topbar
+                      reflows, and a once-per-step ring strands at stale spots */
 function _tutShow(){
-  const s=TUT_STEPS[_tutStep]; if(!s){ tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT); return; }
+  const s=TUT_STEPS[_tutStep]; if(!s){ tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT); clearTimeout(_tutSpotD); return; }
   tutEl.innerHTML='<div class="tt"><span>🧭 Field Training</span><span>'+(_tutStep+1)+' / '+TUT_STEPS.length+'</span></div>'+
     '<div class="tx">'+s.text()+'</div>'+
     '<div class="tbtns">'+
@@ -9126,8 +9126,15 @@ function _tutShow(){
       (_tutStep<TUT_STEPS.length-1?'<button id="tut-skip" type="button">Skip training</button>':'')+
     '</div>';
   tutEl.style.display='block';
-  _tutSpot();
-  clearInterval(_tutSpotT); _tutSpotT=setInterval(()=>{ try{ _tutSpot(); }catch(_){} }, 200);
+  /* the ring WAITS for the new step's UI to actually exist — repainting it
+     the instant a step advances haloed empty space until the target rendered
+     (Dakk playtest). Hide, give the layout a beat, then track live. */
+  tutSpotEl.style.display='none';
+  clearInterval(_tutSpotT); clearTimeout(_tutSpotD);
+  _tutSpotD=setTimeout(()=>{
+    _tutSpot();
+    _tutSpotT=setInterval(()=>{ try{ _tutSpot(); }catch(_){} }, 200);
+  }, 480);
 }
 function _tutSpot(){
   /* keep --tut-bot current so open dialogs sit below the guidance card */
@@ -9227,7 +9234,7 @@ function _tutFinish(){
   clearInterval(_tutTimer); _tutTimer=0;
   _tutGateOff();
   document.body.classList.remove('training');
-  tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT);
+  tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT); clearTimeout(_tutSpotD);
   _tutHook=null; _tutStep=-1; _tutRig=null;
   if(!tutDone){
     tutDone=true;
@@ -9240,7 +9247,7 @@ function tutAbort(){
   clearInterval(_tutTimer); _tutTimer=0;
   _tutGateOff();
   document.body.classList.remove('training');
-  tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT);
+  tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT); clearTimeout(_tutSpotD);
   _tutHook=null; _tutStep=-1; _tutRig=null; _tutSnap=null; _tutPreIds=null;
 }
 function startTutorial(){
