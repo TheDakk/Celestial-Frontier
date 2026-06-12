@@ -297,12 +297,17 @@ Dakk's direction from the 2026-06-11 late-night session (his words paraphrased):
    the Guide" link (Guide stays locked during training; version always
    visible). Replaces ?-opens-guide-directly.
 
-**ALL FOUR PILLARS BUILT 2026-06-11/12 (commits b0cd6dd, d33b92d, + matrix).
-NOT DEPLOYED — Dakk wants the full 1.0 held until his go.** Still open from
-the wider 1.0 list: discovery record card, cosmic-events witness log,
-deeper story threading (SIGS hints/regions), Dakk's on-device contrast
-sweep, then the SHIP steps (collapse RELEASES into the single v1.0
-systems-overview entry, set GAME_VERSION='1.0', validate/smoke, deploy).
+**ALL FOUR PILLARS BUILT 2026-06-11/12 (b0cd6dd, d33b92d, 091be62) PLUS the
+CLASS/XP SYSTEM, discovery records, witness log, element glyphs (0e5523e).
+NOT DEPLOYED — Dakk wants the full 1.0 held until his go.**
+REMAINING before ship: (a) the painterly SVG portrait pass + decorated
+rarity frames (art-direction item 2 above — biggest open piece; raster
+pack waits on Dakk generating one); (b) element ICONS as real mini-SVGs
+(colored ◆ glyphs shipped as v1); (c) deeper story threading (SIGS hints/
+regions); (d) Dakk's on-device contrast sweep; (e) folding the remaining
+~60 class-list names into the CLASSES table (pure data); then the SHIP
+steps: collapse RELEASES into the single v1.0 systems-overview entry, set
+GAME_VERSION='1.0', full validate/smoke/balance, deploy on Dakk's word.
 **Design principle added by Dakk: progression must keep players engaged
 without EVER feeling like an eternal grind — pacing over padding; every
 unlock should change what you can do, not just add a number.**
