@@ -60,10 +60,14 @@
   #hpwrap{display:flex;align-items:center;gap:6px;pointer-events:auto}
   #hpheart{font-size:15px;cursor:pointer;filter:drop-shadow(0 0 7px rgba(255,90,74,0.8));transition:transform .15s}
   #hpheart:hover{transform:scale(1.25)}
-  #hpbar{width:158px;height:11px;border-radius:99px;background:rgba(150,162,210,0.2);overflow:hidden;
+  #hpbar{position:relative;width:158px;height:13px;border-radius:99px;background:rgba(150,162,210,0.2);overflow:hidden;
     box-shadow:inset 0 1px 2px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05)}
   #hpbar i{display:block;height:100%;width:100%;border-radius:99px;transition:width .35s,box-shadow .35s}
-  #hptext{font:800 12px var(--ui);letter-spacing:.03em;color:var(--ink);text-shadow:0 1px 3px rgba(0,0,0,0.6)}
+  /* the HP number lives ON the bar — centered, so text-size changes can never
+     wrap it out of the row (it used to sit beside the bar and broke at A++) */
+  #hptext{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font:800 9.5px var(--ui);letter-spacing:.04em;line-height:1;color:var(--ink);
+    text-shadow:0 1px 2px rgba(0,0,0,0.85), 0 0 4px rgba(0,0,0,0.6);pointer-events:none}
   #dmgflash{position:fixed;inset:0;z-index:39;pointer-events:none;opacity:0;transition:opacity .5s;
     background:radial-gradient(ellipse at center, transparent 38%, rgba(255,40,30,0.55) 100%)}
   /* ---- death screen ---- */
@@ -116,7 +120,7 @@
   body.fs-lg #codex .sp .nm, body.fs-lg #tray .nt .tt, body.fs-lg #events .ev .tt{font-size:13px}
   body.fs-lg #stats .srow, body.fs-lg #log .item .nm{font-size:13px}
   body.fs-lg #log .item .ds{font-size:11px}
-  body.fs-lg #hptext{font-size:14px}
+  body.fs-lg #hptext{font-size:10.5px}
   body.fs-lg #hpheart{font-size:17px}
   body.fs-lg #hpbar{width:172px;height:13px}
   body.fs-lg #logbtn, body.fs-lg #codexbtn, body.fs-lg #pcdxbtn, body.fs-lg #dailybtn, body.fs-lg #eventsbtn{font-size:13px}
@@ -131,7 +135,7 @@
   body.fs-xl #codex .sp .nm, body.fs-xl #tray .nt .tt, body.fs-xl #events .ev .tt{font-size:15px}
   body.fs-xl #stats .srow, body.fs-xl #log .item .nm{font-size:15px}
   body.fs-xl #log .item .ds{font-size:12.5px}
-  body.fs-xl #hptext{font-size:16px}
+  body.fs-xl #hptext{font-size:11.5px}
   body.fs-xl #hpheart{font-size:19px}
   body.fs-xl #hpbar{width:188px;height:15px}
   body.fs-xl #logbtn, body.fs-xl #codexbtn, body.fs-xl #pcdxbtn, body.fs-xl #dailybtn, body.fs-xl #eventsbtn{font-size:15px}
@@ -840,7 +844,7 @@
     #searchin{width:100%;min-width:0;font-size:12px}
     #searchres{width:min(290px,calc(100vw - 20px))}
     #bell{font-size:13px;padding:5px 8px}
-    #hpbar{width:clamp(110px,33vw,188px);height:10px} #hptext{font-size:12px} #hpheart{font-size:14px}
+    #hpbar{width:clamp(110px,33vw,188px);height:12px} #hptext{font-size:9px} #hpheart{font-size:14px}
     #pcdxbtn{right:14px;padding:6px 9px;font-size:10.5px;gap:5px} #pcdxbtn .lbl{display:inline}
     #codexbtn,#logbtn,#codex,#log{right:14px}
     /* side buttons + panels sit BELOW the two-row topbar — never overlapping it */
@@ -894,7 +898,7 @@
     <div id="rank" role="button" tabindex="0" data-tip="Your rank and expedition score — tap for your character sheet." data-guide="rank"></div>
     <div id="trail"></div>
     <div id="hpwrap" data-tip="Your hitpoints — hostile worlds bite. Max HP = Vitality × 2. Tap the ❤ to heal with flora." data-guide="hp">
-      <span id="hpheart" role="button" tabindex="0" aria-label="Heal with flora from your Compendium">❤</span><div id="hpbar"><i id="hpfill"></i></div><span id="hptext"></span>
+      <span id="hpheart" role="button" tabindex="0" aria-label="Heal with flora from your Compendium">❤</span><div id="hpbar"><i id="hpfill"></i><span id="hptext"></span></div>
     </div>
   </div>
   <div id="hud-right">
@@ -940,6 +944,7 @@
   <div class="srow2"><span>Tooltips</span>
     <span class="opts"><span id="tipsopt" class="fsopt on">On</span></span></div>
   <div class="sdiv"></div>
+  <div class="rcnote">💾 Your expedition saves <b>only to this browser, on this device</b> — clearing site data erases it. Back up favourites as ⇪ creature codes.</div>
   <button id="resetbtn" type="button">↺ Reset Game</button>
   <div id="resetconfirm">
     <div class="rcnote">This erases your whole expedition — Compendium, Prime Codex, Star Atlas, rank and all progress. This cannot be undone.</div>
@@ -7149,11 +7154,13 @@ function _guideMenu(){
   body.innerHTML=GUIDE.map((c,i)=>
     '<div class="gcat" data-gc="'+i+'"><span class="gi">'+c.icon+'</span>'+
     '<span><div class="gt">'+c.cat+'</div><div class="gd">'+c.blurb+'</div></span><span class="gn">›</span></div>').join('');
+  body.scrollTop=0;
 }
 function _guideCat(i){
   const body=document.getElementById('guidebody'); const c=GUIDE[i]; if(!body||!c) return;
   body.innerHTML='<div class="gback" data-gb="menu">‹ All topics</div>'+
     c.topics.map(t=>'<div class="gitem" data-gt="'+t.id+'"><span>'+c.icon+'</span> '+t.t+'<span class="gn">›</span></div>').join('');
+  body.scrollTop=0;
 }
 function _guideShow(id){
   const body=document.getElementById('guidebody'); const hit=_guideTopic(id); if(!body||!hit) return;
@@ -7162,6 +7169,7 @@ function _guideShow(id){
     '<div class="gtopic"><h4>'+hit.c.icon+' '+hit.t.t+'</h4>'+hit.t.body+
     (others.length?'<div class="gsee">In '+hit.c.cat+': '+others.map(t=>'<span data-gt="'+t.id+'">'+t.t+'</span>').join(' · ')+'</div>':'')+
     '</div>';
+  body.scrollTop=0;
 }
 function _guideSearch(q){
   const body=document.getElementById('guidebody'); if(!body) return;
@@ -7177,6 +7185,7 @@ function _guideSearch(q){
     ? hits.map(h=>'<div class="gitem" data-gt="'+h.t.id+'"><span>'+h.c.icon+'</span> '+h.t.t+
         '<span class="gn" style="font-size:9.5px">'+h.c.cat+' ›</span></div>').join('')
     : '<div class="gnores">Nothing in the guide matches “'+q.replace(/[<>&"']/g,'')+'” — try “breeding”, “stardust” or “signatures”.</div>';
+  body.scrollTop=0;
 }
 function openGuide(){
   const g=document.getElementById('guidebox'); if(!g) return;
@@ -7275,9 +7284,14 @@ if(!TOUCH){
 }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape' && _tipFor) hideTip(); }, true);
 window.addEventListener('scroll', hideTip, true);
+/* focus tooltips are for the KEYBOARD only — a tap or click also lands focus
+   (instantly, on iOS), and a tap must act, never tooltip. A recent pointerdown
+   marks the focus as pointer-driven and the tip stays away. */
+let _tipPtrT=-1e9;
+document.addEventListener('pointerdown', ()=>{ _tipPtrT=performance.now(); }, true);
 document.addEventListener('focusin', e=>{
   const t=e.target.closest ? e.target.closest('[data-tip]') : null;
-  if(t) showTip(t);
+  if(t && performance.now()-_tipPtrT>500) showTip(t);
 });
 document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
 
@@ -7388,6 +7402,7 @@ function openReleaseNotes(mode, then){
     if(body) body.innerHTML=RELEASES.map(_relHtml).join('');
     if(ok) ok.textContent='Close';
   }
+  if(body) body.scrollTop=0;   /* always read from the top — iOS likes to anchor at the bottom */
   box.style.display='flex';
 }
 (function(){
