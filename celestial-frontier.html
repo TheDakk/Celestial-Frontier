@@ -955,6 +955,34 @@
   /* class XP bar on specimen cards: wins fill it; levels wake innate arts */
   .xpbar{height:6px;border-radius:99px;background:rgba(150,162,210,0.16);overflow:hidden;margin:6px 0 3px}
   .xpbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#7fd0ff,#b06cff)}
+  /* ---- painted card frames per rarity band (Job 1): inner etched border +
+     corner glints. The frame, not the portrait, is where the trading-card
+     feel mostly lives. Summit keeps its animated foil ring (::after) and
+     gains ornaments (::before) on top. ---- */
+  #reveal .card{position:relative}
+  #reveal .card::before{content:'';position:absolute;inset:7px;border-radius:12px;pointer-events:none;
+    border:1px solid rgba(255,255,255,0.06)}
+  #reveal .card[data-frame="mid"]::before{border-color:rgba(127,208,255,0.22)}
+  #reveal .card[data-frame="gold"]::before{border-color:rgba(240,200,110,0.4);
+    background:radial-gradient(circle at 0 0, rgba(240,200,110,0.28), transparent 30px),
+      radial-gradient(circle at 100% 0, rgba(240,200,110,0.28), transparent 30px),
+      radial-gradient(circle at 0 100%, rgba(240,200,110,0.28), transparent 30px),
+      radial-gradient(circle at 100% 100%, rgba(240,200,110,0.28), transparent 30px)}
+  #reveal .card[data-frame="prism"]::before{border-color:rgba(214,91,184,0.45);
+    background:radial-gradient(circle at 0 0, rgba(214,91,184,0.30), transparent 32px),
+      radial-gradient(circle at 100% 0, rgba(127,208,255,0.26), transparent 32px),
+      radial-gradient(circle at 0 100%, rgba(127,208,255,0.26), transparent 32px),
+      radial-gradient(circle at 100% 100%, rgba(214,91,184,0.30), transparent 32px)}
+  #reveal .card[data-frame="deep"]::before{border-color:rgba(63,232,200,0.4);
+    background:radial-gradient(circle at 0 0, rgba(63,232,200,0.26), transparent 34px),
+      radial-gradient(circle at 100% 0, rgba(168,200,255,0.24), transparent 34px),
+      radial-gradient(circle at 0 100%, rgba(168,200,255,0.24), transparent 34px),
+      radial-gradient(circle at 100% 100%, rgba(63,232,200,0.26), transparent 34px)}
+  #reveal .card[data-frame="summit"]::before{border-color:rgba(255,255,255,0.30);
+    background:radial-gradient(circle at 0 0, rgba(255,122,232,0.30), transparent 36px),
+      radial-gradient(circle at 100% 0, rgba(255,194,79,0.28), transparent 36px),
+      radial-gradient(circle at 0 100%, rgba(63,232,200,0.28), transparent 36px),
+      radial-gradient(circle at 100% 100%, rgba(154,138,255,0.30), transparent 36px)}
   /* ---- the iridescent foil treatment (v1.3): grade badges + summit frames ---- */
   .gbadge{display:inline-block;padding:1px 7px;border-radius:8px;border:1px solid currentColor;
     font-weight:700;letter-spacing:.06em;font-size:.92em;vertical-align:baseline}
@@ -2994,8 +3022,33 @@ function speciesPortrait(g){
       if(!glow) inner+='<circle cx="'+(ex+0.8).toFixed(1)+'" cy="'+(ey-0.8).toFixed(1)+'" r="0.9" fill="#fff" opacity="0.8"/>';
     }
   }
-  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">'+defs+
-    '<rect width="120" height="120" fill="url(#bg)"/>'+inner+'</svg>';
+  /* ---- the painterly pass (1.0): every portrait gets STAGECRAFT — a lit
+     aura behind the subject, a soft ground shadow beneath it, organic
+     texture displacement over the anatomy, a diagonal rim of light and a
+     deep vignette. The anatomy recipes stay; the staging is what turns a
+     diagram into an illustration. Deterministic, asset-free. */
+  const pfDefs='<radialGradient id="aur" cx="50%" cy="40%" r="58%">'+
+      '<stop offset="0%" stop-color="'+shade(base,0.18)+'" stop-opacity="0.34"/>'+
+      '<stop offset="70%" stop-color="'+base+'" stop-opacity="0.10"/>'+
+      '<stop offset="100%" stop-color="#000000" stop-opacity="0"/></radialGradient>'+
+    '<radialGradient id="vig" cx="50%" cy="50%" r="74%">'+
+      '<stop offset="62%" stop-color="#000000" stop-opacity="0"/>'+
+      '<stop offset="100%" stop-color="#01020a" stop-opacity="0.78"/></radialGradient>'+
+    '<linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">'+
+      '<stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>'+
+      '<stop offset="34%" stop-color="#ffffff" stop-opacity="0"/>'+
+      '<stop offset="100%" stop-color="#000000" stop-opacity="0.22"/></linearGradient>'+
+    '<filter id="pf" x="-12%" y="-12%" width="124%" height="124%">'+
+      '<feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="'+(g.seed%97)+'" result="n"/>'+
+      '<feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter>'+
+    '<filter id="gsh"><feGaussianBlur stdDeviation="3"/></filter>';
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">'+defs.replace('</defs>', pfDefs+'</defs>')+
+    '<rect width="120" height="120" fill="url(#bg)"/>'+
+    '<circle cx="60" cy="50" r="52" fill="url(#aur)"/>'+
+    '<ellipse cx="60" cy="103" rx="34" ry="8" fill="#000000" opacity="0.5" filter="url(#gsh)"/>'+
+    '<g filter="url(#pf)">'+inner+'</g>'+
+    '<rect width="120" height="120" fill="url(#rim)"/>'+
+    '<rect width="120" height="120" fill="url(#vig)"/></svg>';
   const url=svgURI(svg);
   speciesArtRaw.set(key, defs+inner);   /* keep the raw guts for the specimen card */
   if(speciesArtCache.size>1200){ const k=speciesArtCache.keys().next().value; speciesArtCache.delete(k); speciesArtRaw.delete(k); }
@@ -5476,8 +5529,13 @@ function showReveal(entry, isHybrid){
     : '';
   document.getElementById('rev-meta').textContent='';
   const card=document.querySelector('#reveal .card')||revealEl.firstElementChild;
-  if(card && gr){ card.style.borderColor=gr.hex; card.style.boxShadow='0 0 0 1px '+gr.hex+', 0 0 '+(gr.tier>=5?90:40)+'px '+gr.hex+(gr.tier>=5?'88':'55'); card.classList.toggle('iridframe', gr.tier>=12); }
-  else if(card){ card.classList.remove('iridframe'); }
+  if(card && gr){
+    card.style.borderColor=gr.hex; card.style.boxShadow='0 0 0 1px '+gr.hex+', 0 0 '+(gr.tier>=5?90:40)+'px '+gr.hex+(gr.tier>=5?'88':'55');
+    card.classList.toggle('iridframe', gr.tier>=12);
+    /* the painted frame band — where the collection-card feel lives */
+    card.dataset.frame = gr.tier>=12?'summit' : gr.tier>=8?'deep' : gr.tier===7?'prism' : gr.tier>=5?'gold' : gr.tier>=2?'mid' : 'low';
+  }
+  else if(card){ card.classList.remove('iridframe'); delete card.dataset.frame; }
   /* battle stats — every creature rolls them from its genome */
   _revEntry=entry;
   const stEl=document.getElementById('rev-stats');
@@ -8093,6 +8151,8 @@ const RELEASES=[
   '<b>World fields</b> — a defending native now fights wrapped in its home world’s element: lava sharpens ferocity, ice hardens resilience, gas quickens, oceans deepen vitality, deserts hone insight.',
   '<b>🛡 Classes, XP &amp; levels</b> — every beast is born to a class (over a hundred, from Warrior to <b>Worldbreaker</b>; the legendary ones live at the summit) with <b>innate always-on arts</b>. <b>Power is built through wins</b>: duels, conquests and guardian kills feed the XP bar, and levels wake more innate arts — never raw stats. Breeding fuses class lineages into hybrids like Spellswords.',
   '<b>📸 Discovery records</b> — Legendary-or-better finds can be copied as a keepsake: flavor, stats and the creature code in one paste. The <b>📜 Witness Log</b> in Cosmic Events remembers every sky you saw with your own eyes.',
+  '<b>🎨 Painted portraits &amp; frames</b> — every portrait now stands on a lit stage: an aura behind the subject, a ground shadow beneath it, organic texture, rim light and a deep vignette. Specimen cards wear <b>etched frames with corner glints</b> that escalate by rarity — gold at Legendary, prismatic at Unique, foil at the summit.',
+  'The Pathfinders’ story now runs to the very end: each Signature carries <b>their own field notes</b> — and the Prism Signature is revealed as the one discovery they died short of.',
  ]],
  ['◈ UI Enhancements', [
   '<b>Nameplate colors</b> — every rank now carries its own color, unlocked forever once you reach it. Pick any unlocked color from your character sheet — and <b>Eternal Frontier</b> unlocks the iridescent foil nameplate.',
@@ -8587,15 +8647,15 @@ if(cargoEl){
    Owns: SIGS, SIG_IDS, primeFill, frontierUnlocked, frontierEnding, primeCount, REGIONS, currentRegion, reachRadius, withinReach, …
    ---------------------------------------------------------------- */
 const SIGS=[
-  {id:'stone', icon:'\ud83e\udea8', name:'Stone Signature', verb:'Conquer', hint:'a rare rocky, metal or mineral world'},
-  {id:'ocean', icon:'\ud83c\udf0a', name:'Ocean Signature', verb:'Conquer', hint:'a living ocean world'},
-  {id:'flame', icon:'\ud83c\udf0b', name:'Flame Signature', verb:'Conquer', hint:'an extreme volcanic world'},
-  {id:'sky',   icon:'\u2601\ufe0f', name:'Sky Signature',  verb:'Conquer', hint:'an aerial or gas-giant ecosystem'},
-  {id:'life',  icon:'\ud83c\udf3f', name:'Life Signature', verb:'Conquer', hint:'a complex land biosphere'},
-  {id:'mind',  icon:'\ud83e\udde0', name:'Mind Signature', verb:'Conquer', hint:'an intelligent natural lifeform \u2014 hunt the signals'},
-  {id:'star',  icon:'\u2734\ufe0f', name:'Star Signature', verb:'Find', hint:'an extreme star or stellar remnant'},
-  {id:'void',  icon:'\ud83d\udd73\ufe0f', name:'Void Signature', verb:'Find', hint:'a black hole, void or galactic anomaly'},
-  {id:'prism', icon:'\ud83d\udd2e', name:'Prism Signature', verb:'Conquer', hint:'a unique prismatic lifeform'},
+  {id:'stone', icon:'\ud83e\udea8', name:'Stone Signature', verb:'Conquer', hint:'a rare world of stone, metal or mineral \u2014 the Pathfinders\u2019 first vow'},
+  {id:'ocean', icon:'\ud83c\udf0a', name:'Ocean Signature', verb:'Conquer', hint:'a living ocean world \u2014 they called them \u201cthe breathing seas\u201d'},
+  {id:'flame', icon:'\ud83c\udf0b', name:'Flame Signature', verb:'Conquer', hint:'an extreme volcanic world, where their third beacon fell'},
+  {id:'sky',   icon:'\u2601\ufe0f', name:'Sky Signature',  verb:'Conquer', hint:'an aerial or gas-giant ecosystem \u2014 life with no ground at all'},
+  {id:'life',  icon:'\ud83c\udf3f', name:'Life Signature', verb:'Conquer', hint:'a complex land biosphere, the kind they crossed the dark to find'},
+  {id:'mind',  icon:'\ud83e\udde0', name:'Mind Signature', verb:'Conquer', hint:'an intelligent natural lifeform \u2014 hunt the signals, as they did'},
+  {id:'star',  icon:'\u2734\ufe0f', name:'Star Signature', verb:'Find', hint:'an extreme star or stellar remnant \u2014 the lights that outlived them'},
+  {id:'void',  icon:'\ud83d\udd73\ufe0f', name:'Void Signature', verb:'Find', hint:'a black hole, void or anomaly \u2014 what swallowed their last beacon'},
+  {id:'prism', icon:'\ud83d\udd2e', name:'Prism Signature', verb:'Conquer', hint:'a unique prismatic lifeform \u2014 the one discovery they died short of'},
 ];
 const SIG_IDS=SIGS.map(s=>s.id);
 const primeFill={};
