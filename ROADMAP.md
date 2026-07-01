@@ -36,6 +36,8 @@ VERIFICATION TOOLING (run all three on any future change):
 
 POST-1.0 QUEUE (the v1.1 pile, in rough priority):
 1. Dakk's live playtest feedback (the eternal source of truth).
+   → FIRST OUTSIDE FEEDBACK ARRIVED: see "EMERSON PLAYTEST" section below —
+   verified against source 2026-07-01, Tier 1 fixes in progress.
 2. Element icons as real mini-SVG art (colored ◆ glyphs shipped in 1.0).
 3. JOB 2 — the curated AI raster art pack (Paragons/class crests/elements/
    guardian archetypes): when Dakk opts in, FIRST deliverable is a style
@@ -44,6 +46,85 @@ POST-1.0 QUEUE (the v1.1 pile, in rough priority):
 5. Public-player bug reports once anyone else plays.
 HOUSEKEEPING: the hotfix worktree (C:\Projects\cf-hotfix, branch
 hotfix/v12-mobile) is obsolete now that 1.0 collapsed the lines.
+
+## EMERSON PLAYTEST (received 2026-06-12; every claim source-verified 2026-07-01)
+
+`celestial-frontier-feedback.md` (committed) — desktop Chrome, fresh profile,
+live v1.0. A 14-agent verification pass checked each claim against HEAD with
+adversarial re-checks. Verdicts: ~60% confirmed, ~25% partial, ~15% wrong.
+
+WRONG (no build needed, keep for the record):
+- "Mobile verbs don't exist" — full touch mapping ships (tap-lock survey,
+  pinch-at-midpoint, double-tap zoom, long-press tips; device-branched HINTS).
+  He extrapolated from desktop copy.
+- "Camera starts at top scale" — fresh expeditions start INSIDE Sol system
+  (startNewGame), one level deeper than his suggested galaxy start.
+- "Player rename impossible" — exists (nameplate → sheet → ✎ rename) but is a
+  9px link, absent from Settings/Guide, and unclickable during training
+  (the sheet step advances synchronously on open) — discoverability is real.
+
+KEY MISDIAGNOSIS (his best find, wrong cause): "tap Earth took 3 attempts" is
+NOT orbital speed (~5px/s, one self-diameter per ~2.4s) — it's the MOON pick
+(10px floor, orbiting 4-11px from Earth's center at default zoom) stealing
+nearest-wins taps; Moon's descriptor has no planetSeed so find-earth silently
+never advances. Labels are also hidden at that zoom, and a Moon mis-tap locks
+a panel that eats the next tap.
+
+TIER 1 (building now, v1.1 bullets as built):
+1. Stale desktop hint copy — hover no longer surveys (2026-06-11 change) but
+   line ~1350 still teaches it. → "Hover to preview · click to survey".
+2. Moon tap-steal: suppress moon picks while sub-~2.5px apparent; raise planet
+   pick floor 14→16px.
+3. Training quiet pass: toasts tray-only while training (mirrors achievements'
+   pushNotif-only pattern); Training Cache toast → tray-only; Rank Up fanfare
+   gated off during training (it celebrates a promotion _tutCleanup silently
+   revokes — a bug regardless); showTip guarded during training (z-70 tip
+   renders over the z-50 card); tutorial wheel-block gets the nudge feedback
+   (today 17/18 steps swallow wheel with zero response).
+4. Player rename surfaced: Settings row wired to askExplorerName(false);
+   Guide sentence; cancel affordance on #namebox (rename mode only).
+5. Stale .krow selectors (CSS lines ~147/162) — survey-card 10px .k labels and
+   9px .tag NEVER scale with A+/A++ (target a class that exists nowhere) AND
+   are the dimmest text (--faint 5.98:1, drops to ~4.06:1 over bright canvas).
+   Fix selectors + new --label color (≥7:1, tone-variant aware).
+6. Survey ping + landing/travel whoosh (hand-rolled Web Audio, asset-free).
+Plus: 'latest' release-notes mode should render the entry matching
+GAME_VERSION, not RELEASES[0] — otherwise the moment a v1.1 entry exists,
+fresh players get a partial changelog instead of the v1.0 systems overview.
+
+TIER 2 (verified, sized, not started): reduced-motion toggle (medium — only
+the travel tunnel honors prefers-reduced-motion today; new save field, safe
+absent-default); landing assist (ease camera center at the size threshold —
+today cursor-anchored zoom on an off-center planet maxes out and never lands,
+silently); touch-target inflation (TOUCH-scaled pick floors + invisible
+hit-padding, preserving the 40px rail rhythm); SFX volume bus + slider
+(4 synths currently hardcode gains, two connect straight to destination);
+keyboard operability for panel content (Settings toggles/Compendium/Atlas/
+Guide items are divs/spans — the Enter/Space shim at ~4083 works free once
+they get role+tabindex).
+
+DESIGN CALLS — AWAITING DAKK (do not build until he picks):
+- New-player bulletin: drop from fresh path (1-line + smoke rewrite) or
+  retitle "Your expedition briefing"? Becomes real patch-notes noise the
+  moment v1.1 bullets exist.
+- Opening fly-in: camera already starts at Sol — the text stack is the real
+  issue; cheaper = trim/defer lore, feed Pathfinders in during play.
+- Tutorial restructure (collapse chrome steps 3-7): medium; heaviest
+  smoke.js rework of anything here. 12/18 steps event-gated, 6 click-through.
+- LAND button on locked planet card: small; zoom-to-land is a deliberate
+  signature, BUT phone double-tap-to-land mostly can't work (first tap locks
+  a full-width card over the tap point) — strengthens the case.
+- Generative music: Tone.js OUT (no-dependency rule); hand-rolled seeded
+  Web Audio engine fits (throwaway mulberry32 presentation instances + iOS
+  resume plumbing already exist). Large; differentiating.
+- 3D/WebGL: park — conflicts with single-file identity; JOB 2 covers the
+  art ambition.
+
+MINOR WARTS LOGGED (fix opportunistically): #sharelink outline:none with no
+:focus style; #namein maxlength=20 vs cleanName cap 24; self-naming "Explorer"
+re-prompts every boot; TOUCH is a load-time constant (mouse-driven touchscreen
+laptop gets touch hints); "Notifications" toggle lives in the Audio tab but
+gates visual toasts.
 
 ## ★ 1.0 WAS READY (2026-06-12, commit d3f721e) — historical ★
 
