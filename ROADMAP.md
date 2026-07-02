@@ -70,27 +70,37 @@ nearest-wins taps; Moon's descriptor has no planetSeed so find-earth silently
 never advances. Labels are also hidden at that zoom, and a Moon mis-tap locks
 a panel that eats the next tap.
 
-TIER 1 (building now, v1.1 bullets as built):
-1. Stale desktop hint copy — hover no longer surveys (2026-06-11 change) but
-   line ~1350 still teaches it. → "Hover to preview · click to survey".
-2. Moon tap-steal: suppress moon picks while sub-~2.5px apparent; raise planet
-   pick floor 14→16px.
-3. Training quiet pass: toasts tray-only while training (mirrors achievements'
-   pushNotif-only pattern); Training Cache toast → tray-only; Rank Up fanfare
-   gated off during training (it celebrates a promotion _tutCleanup silently
-   revokes — a bug regardless); showTip guarded during training (z-70 tip
-   renders over the z-50 card); tutorial wheel-block gets the nudge feedback
-   (today 17/18 steps swallow wheel with zero response).
-4. Player rename surfaced: Settings row wired to askExplorerName(false);
-   Guide sentence; cancel affordance on #namebox (rename mode only).
-5. Stale .krow selectors (CSS lines ~147/162) — survey-card 10px .k labels and
-   9px .tag NEVER scale with A+/A++ (target a class that exists nowhere) AND
-   are the dimmest text (--faint 5.98:1, drops to ~4.06:1 over bright canvas).
-   Fix selectors + new --label color (≥7:1, tone-variant aware).
-6. Survey ping + landing/travel whoosh (hand-rolled Web Audio, asset-free).
-Plus: 'latest' release-notes mode should render the entry matching
-GAME_VERSION, not RELEASES[0] — otherwise the moment a v1.1 entry exists,
-fresh players get a partial changelog instead of the v1.0 systems overview.
+TIER 1 — ★ BUILT & VERIFIED 2026-07-01 (all six + the pinned-bulletin fix),
+committed as the batch after a9fa4ed. RELEASES[0] is now the working v1.1
+"Field Reports" entry (GAME_VERSION stays '1.0' until Dakk's bump; the
+'latest' bulletin is PINNED to the GAME_VERSION entry so unshipped bullets
+never reach players). What shipped:
+1. Desktop hint copy: "Hover to preview · click to survey" (stale since the
+   2026-06-11 hover-survey removal).
+2. Moon tap-steal fixed: below the moon-label zoom a moon's pick is its TRUE
+   apparent size (sub-pixel on phones — can't steal "tap Earth"); the 10px
+   floor returns at label zoom (visible desktop gas-giant moons stay
+   clickable). Planet pick floor 14→16px.
+3. Training quiet pass: toasts tray-only while body.training (achievements
+   pattern); Rank Up fanfare fully gated during training (its promotion is
+   revoked at cleanup — was a bug); tooltips held; wheel-block now nudges the
+   card (was silent on 17/18 steps); flushToasts re-checks the gate at fire
+   time. ONE exception: the locked-Guide message stays a visible pop-up (it
+   IS the ? button's feedback mid-training).
+4. Player rename surfaced: Settings → Display → Explorer name; Guide rank
+   topic documents it; ✎ link enlarged; Cancel button + Escape on the rename
+   dialog (initial naming still mandatory); cancel flushes queued toasts;
+   #namebox joined the body.training yield rules (renders below the card).
+5. Survey-card labels: new --label #9aa4cb (8:1; tone-aware) replaces --faint
+   on .k/.tag, and the stale .krow selectors are fixed so they scale with
+   A+/A++ (they were the ONLY body text that ignored the setting).
+6. playSurveyPing (every tap-lock) + playWhoosh (travelTo + planetfall);
+   travel-skip taps disarmed so the skip can't survey-lock + ping the arrival.
+VERIFICATION: fingerprint byte-identical (50 probes), smoke 91/91 (new checks:
+training-quiet ×3, pinned bulletin, rename flow ×5, locked-Guide feedback),
+plus a 3-lens adversarial review workflow whose 4 confirmed findings were all
+fixed (stranded toast queue, moon dead band, skip-tap ping, namebox overlap).
+Reference doc + CLAUDE.md synced. NOT deployed — awaiting Dakk's word.
 
 TIER 2 (verified, sized, not started): reduced-motion toggle (medium — only
 the travel tunnel honors prefers-reduced-motion today; new save field, safe

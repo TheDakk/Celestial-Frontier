@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --void:#04040c; --ink:#e9edff; --dim:#b2bad8; --faint:#828cb6;
+    --void:#04040c; --ink:#e9edff; --dim:#b2bad8; --faint:#828cb6; --label:#9aa4cb;
     --plasma:#ffcf8a; --accent:#8fb4ff; --line:rgba(150,162,210,0.14);
     --glass:rgba(10,13,26,0.72); --glass-brd:rgba(150,162,210,0.20);
     --ui:'Space Grotesk',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
@@ -18,8 +18,8 @@
      void) — defaults brightened above, and two opt-in tones go further. In the
      brighter tones, body text approaches white, so <b> emphasis shifts to GOLD
      (via --emph) to stay distinct. Default tone leaves emphasis untouched. */
-  body.tone-bright{--ink:#ffffff;--dim:#c6cde8;--faint:#8e98c0;--emph:#ffd96a}
-  body.tone-max{--ink:#ffffff;--dim:#e4e8f8;--faint:#b4bcdc;--emph:#ffe08a}
+  body.tone-bright{--ink:#ffffff;--dim:#c6cde8;--faint:#8e98c0;--label:#aeb7d8;--emph:#ffd96a}
+  body.tone-max{--ink:#ffffff;--dim:#e4e8f8;--faint:#b4bcdc;--label:#c9cfe8;--emph:#ffe08a}
   b{color:var(--emph,inherit)}
   /* ---- font choice (1.0): offline-safe system stacks, swapped via the vars ---- */
   body.font-sys{--ui:system-ui,-apple-system,sans-serif;--body:system-ui,-apple-system,sans-serif}
@@ -144,7 +144,9 @@
   #setpanel #resetyes{color:#fff;background:linear-gradient(135deg,#d6453c,#b8332c);border:1px solid rgba(255,120,110,0.6)}
   #setpanel #resetyes:hover{box-shadow:0 0 14px rgba(214,69,60,0.5)}
   /* ---- larger text modes: scale the reading surfaces ---- */
-  body.fs-lg #panel .row, body.fs-lg #panel .krow .v, body.fs-lg #panel .krow .k{font-size:13px}
+  body.fs-lg #panel .row, body.fs-lg #panel .row .v{font-size:13px}
+  body.fs-lg #panel .row .k{font-size:11px}
+  body.fs-lg #panel .tag{font-size:10.5px}
   body.fs-lg #codex .sp .ds, body.fs-lg #tray .nt .ms, body.fs-lg #events .ev .ds{font-size:12px}
   body.fs-lg #codex .sp .nm, body.fs-lg #tray .nt .tt, body.fs-lg #events .ev .tt{font-size:13px}
   body.fs-lg #stats .srow, body.fs-lg #log .item .nm{font-size:13px}
@@ -159,7 +161,9 @@
   body.fs-lg .tst{font-size:13px}
   body.fs-lg #hint{font-size:13px}
   body.fs-lg #hud-center #trail{font-size:15px}
-  body.fs-xl #panel .row, body.fs-xl #panel .krow .v, body.fs-xl #panel .krow .k{font-size:15px}
+  body.fs-xl #panel .row, body.fs-xl #panel .row .v{font-size:15px}
+  body.fs-xl #panel .row .k{font-size:12.5px}
+  body.fs-xl #panel .tag{font-size:12px}
   body.fs-xl #codex .sp .ds, body.fs-xl #tray .nt .ms, body.fs-xl #events .ev .ds{font-size:13.5px}
   body.fs-xl #codex .sp .nm, body.fs-xl #tray .nt .tt, body.fs-xl #events .ev .tt{font-size:15px}
   body.fs-xl #stats .srow, body.fs-xl #log .item .nm{font-size:15px}
@@ -273,6 +277,9 @@
     box-shadow:0 0 18px rgba(240,200,110,0.4), inset 0 1px 0 rgba(255,255,255,0.5)}
   #namebox #nameok:hover{box-shadow:0 0 26px rgba(240,200,110,0.65), inset 0 1px 0 rgba(255,255,255,0.5)}
   #namebox #nameok:disabled{opacity:0.4;cursor:not-allowed;box-shadow:none;filter:saturate(0.5)}
+  #namebox #namecancel{display:none;width:100%;margin-top:8px;padding:9px 0;font:600 11px var(--ui);letter-spacing:.08em;text-transform:uppercase;
+    color:var(--dim);cursor:pointer;background:rgba(150,162,210,0.10);border:1px solid var(--glass-brd);border-radius:11px}
+  #namebox #namecancel:hover{color:var(--ink);background:rgba(150,162,210,0.18)}
 
   /* ---- release notes: the expedition bulletin ---- */
   #relbox{position:fixed;inset:0;z-index:42;display:none;align-items:center;justify-content:center;
@@ -530,14 +537,14 @@
   #panel .sub{font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--plasma);margin-top:4px}
   #panel .body{padding:11px 14px 13px}
   #panel .row{display:flex;gap:9px;font-size:12px;line-height:1.45;margin:5px 0}
-  #panel .row .k{flex:none;width:74px;color:var(--faint);font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding-top:1px}
+  #panel .row .k{flex:none;width:74px;color:var(--label);font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding-top:1px}
   #panel .row .v{color:#cfd6f2}
   #panel .row.bio .v{color:#bfe6c8}
   #panel .row.grade .v{color:#e7d49a;font-weight:600;letter-spacing:.01em}
   #panel .row.grade .k{color:#b8a45e}
   #panel .row.civ .v{color:#cdbcff}
   #panel .tag{display:inline-block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--faint);margin-top:9px;padding-top:9px;border-top:1px solid var(--line);width:100%}
+    color:var(--label);margin-top:9px;padding-top:9px;border-top:1px solid var(--line);width:100%}
   #panel .act{display:block;width:100%;margin-top:9px;padding:8px 0;font-family:var(--ui);
     font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);
     background:rgba(143,180,255,0.08);border:1px solid rgba(143,180,255,0.25);border-radius:9px;
@@ -745,6 +752,9 @@
   body.training #reveal, body.training #pickbox{align-items:flex-start}
   body.training #reveal .card{margin-top:var(--tut-bot,160px);max-height:calc(100vh - var(--tut-bot,160px) - 14px)}
   body.training #pickbox .card{margin-top:var(--tut-bot,160px);max-height:calc(100vh - var(--tut-bot,160px) - 14px)}
+  /* the rename dialog (Settings → Explorer name) is reachable mid-training too */
+  body.training #namebox{align-items:flex-start}
+  body.training #namebox .card{margin-top:var(--tut-bot,160px);max-height:calc(100vh - var(--tut-bot,160px) - 14px);max-height:calc(100dvh - var(--tut-bot,160px) - 14px)}
   #tutbox #tut-skip:hover,#tutbox #tut-skip-no:hover{color:var(--ink)}
   #guideok{width:100%;margin-top:16px;padding:12px 0;font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;
     color:#1a1206;cursor:pointer;border:1px solid rgba(255,220,150,0.9);border-radius:12px;
@@ -1090,6 +1100,8 @@
       <span class="opts"><span class="fsopt" data-tone="">Soft</span><span class="fsopt" data-tone="tone-bright">Bright</span><span class="fsopt" data-tone="tone-max">Max</span></span></div>
     <div class="srow2"><span>Font</span>
       <span class="opts"><span class="fsopt" data-font="">Grotesk</span><span class="fsopt" data-font="font-sys">System</span><span class="fsopt" data-font="font-mono">Mono</span></span></div>
+    <div class="srow2"><span>Explorer name</span>
+      <span class="opts"><span id="renameopt" class="fsopt" data-tip="Change your explorer name — your progress stays yours.">✎ Change</span></span></div>
     <div class="srow2"><span>Tooltips</span>
       <span class="opts"><span id="tipsopt" class="fsopt on">On</span></span></div>
   </div>
@@ -1180,6 +1192,7 @@
   <p class="nnote">First, what shall the stars call <em>you</em>?</p>
   <input id="namein" type="text" maxlength="20" placeholder="Your explorer name" spellcheck="false" autocomplete="off">
   <button id="nameok" type="button" disabled>Begin the expedition</button>
+  <button id="namecancel" type="button">Cancel</button>
 </div></div>
 
 <div id="relbox"><div class="card">
@@ -1345,9 +1358,10 @@ const HINTS = TOUCH ? {
   system:'<em>Tap</em> a planet to survey it &middot; <em>pinch in</em> to land',
   surface:'<em>Pinch out</em> to leave this world',
 } : {
-  universe:'<em>Hover</em> a galaxy to survey it &middot; <em>scroll</em> to zoom in',
+  /* hover only PREVIEWS a card — survey credit needs a click (2026-06-11 change) */
+  universe:'<em>Hover</em> a galaxy to preview &middot; <em>click</em> to survey &middot; <em>scroll</em> to zoom in',
   galaxy:'<em>Hover</em> any star &middot; <em>scroll</em> toward one to see its planets',
-  system:'<em>Hover</em> a planet to survey it &middot; <em>scroll in</em> to land',
+  system:'<em>Hover</em> a planet to preview &middot; <em>click</em> to survey &middot; <em>scroll in</em> to land',
   surface:'<em>Scroll out</em> to leave this world',
 };
 let _hintMode='';
@@ -4037,6 +4051,7 @@ cv.addEventListener('pointerup', e=>{
     }
     if(hit){
       locked={ data:hit.data, kind:hit.kind, sx:hit.sx, sy:hit.sy };
+      playSurveyPing();                  // the act of surveying answers back
     } else {
       locked=null;                       // tapped empty space → release the lock
     }
@@ -4085,6 +4100,14 @@ document.addEventListener('keydown', e=>{
     e.preventDefault(); e.target.click();
   }
   if(e.key==='Escape'){
+    /* the rename dialog cancels on Escape — but the INITIAL name prompt must
+       still insist on a name (a fresh expedition can't fly anonymous) */
+    const nb=document.getElementById('namebox');
+    if(nb && nb.style.display==='flex' && !_nameInitial){
+      nb.style.display='none'; _renameTarget=null;
+      flushToasts();   /* pop-ups queued behind the dialog must not strand until a future commit */
+      return;
+    }
     /* close the topmost dismissible overlay — one per press */
     for(const id of ['reveal','pickbox','duelbox','sharebox','primebox','guidebox','setpanel']){
       const el=document.getElementById(id);
@@ -4199,6 +4222,7 @@ function checkTransitions(){
         st.pfbm=makeNoise(pl.P.seed);
         st.pcam={x:0,y:0,z:1};
         st.mode='surface'; st.fade=1;
+        playWhoosh();                    /* planetfall */
         break;
       }
     }
@@ -4819,7 +4843,7 @@ function drawSystem(time){
     const px=Math.cos(ang)*pl.orb, py=Math.sin(ang)*pl.orb;
     const pr=6*pl.P.sizeMul;
     const sprite=getPlanetSprite(pl.P);
-    picks.push({sx:(px-c.x)*c.z+W/2, sy:(py-c.y)*c.z+H/2, r:Math.max(pr*c.z,14), kind:'planet', data:{P:pl.P, sys, pl}});
+    picks.push({sx:(px-c.x)*c.z+W/2, sy:(py-c.y)*c.z+H/2, r:Math.max(pr*c.z,16), kind:'planet', data:{P:pl.P, sys, pl}});
     ctx.save(); ctx.translate(px,py);
     if(pl.P.ring){
       ctx.save(); ctx.rotate(0.45); ctx.scale(1,0.32);
@@ -4859,8 +4883,14 @@ function drawSystem(time){
       ctx.fillStyle='rgba(4,6,18,0.55)';
       ctx.beginPath(); ctx.arc(mx+Math.cos(ang)*mrad*0.55, my+Math.sin(ang)*mrad*0.55, mrad*0.95, 0, TAU); ctx.fill();
       ctx.restore();
+      /* a sub-pixel moon must never steal taps aimed at its planet — at the
+         default system view nearest-wins routed "tap Earth" onto the invisible
+         Moon (Emerson playtest). Below the label zoom a moon's target is its
+         TRUE apparent size (sub-pixel on phones, a few px for a visible
+         gas-giant moon on desktop); the generous 10px floor returns once
+         you're close enough that names render. */
       picks.push({sx:((px+mx)-c.x)*c.z+W/2, sy:((py+my)-c.y)*c.z+H/2,
-        r:Math.max(mrad*c.z,10), kind:'moon', data:{pl, m}});
+        r:c.z>minWH/420 ? Math.max(mrad*c.z,10) : mrad*c.z, kind:'moon', data:{pl, m}});
       if(c.z>minWH/420 && m<10){
         const mname=pl.name+' '+roman(m+1);
         ctx.font=`${8.5/c.z}px Georgia,serif`; ctx.textAlign='center';
@@ -5991,6 +6021,7 @@ function travelTo(w){
   const dur=clamp(800+(dist*3)/mult, 800, Math.max(1200, 8000/mult));
   if(dist>1400 && mult===1) toast('🚀 Long Burn','The old fusion-chemical drive strains across '+Math.round(dist)+' u of void — research better drives at the 🧰 Cargo bench.');
   _trav={t0:performance.now(), dur, w, hex:'#cfe0ff', jumped:false, zEnd:0};
+  playWhoosh();                        /* the lane opens */
 }
 function _travelFrame(){
   if(!_trav) return;
@@ -6037,6 +6068,7 @@ document.addEventListener('pointerdown', ()=>{       /* tap skips the lane */
   if(!_trav.jumped) goTo(_trav.w);
   else { const c=curCam(); if(c&&_trav.zEnd) c.z=_trav.zEnd; }
   _trav=null;
+  moved=1e9;   /* disarm the tap: its pointerup must not survey-lock (and ping) whatever the arrival frame parked under the finger */
 }, true);
 /* A fresh expedition begins at home: zoomed into our own solar system, with Earth —
    humanity's cradle — already charted and under your flag. The rest of Sol is lifeless,
@@ -6106,12 +6138,15 @@ let _loading=false;              /* true while restoring a save — mutes fanfar
 /* ---- toasts ---- */
 /* ----------------------------------------------------------------
    @section notify [app] — toasts + the bell notification tray (capped at 60)
-   Owns: notifOn, toast, notifications, _notifSeq, trayOpen, bellEl, bellCt, trayEl, trayList, pushNotif, …
+   Owns: notifOn, toast, _trainingUp, notifications, _notifSeq, trayOpen, bellEl, bellCt, trayEl, trayList, pushNotif, …
    ---------------------------------------------------------------- */
 let notifOn=true;
 const _toastQ=[];   /* toasts held while the title / explorer-name screen is up */
 function _introUp(){
   try{ const nb=document.getElementById('namebox'); return !!(nb && nb.style.display==='flex'); }catch(_){ return false; }
+}
+function _trainingUp(){
+  try{ return document.body.classList.contains('training'); }catch(_){ return false; }
 }
 function _showToast(title, msg){
   const el=document.createElement('div'); el.className='tst';
@@ -6127,10 +6162,15 @@ function _showToast(title, msg){
 }
 function flushToasts(){
   let i=0;
-  while(_toastQ.length){ const [t,m]=_toastQ.shift(); setTimeout(()=>_showToast(t,m), 400+i*1100); i++; }
+  /* re-check the training gate at FIRE time — a queue flushed on the edge of
+     startTutorial must stay quiet (the tray already holds every entry) */
+  while(_toastQ.length){ const [t,m]=_toastQ.shift(); setTimeout(()=>{ if(!_trainingUp()) _showToast(t,m); }, 400+i*1100); i++; }
 }
 function toast(title, msg){
-  if(notifOn){
+  /* training keeps ONE voice — the guidance card. Pop-ups rest in the tray
+     (nothing lost; the tray step's payoff, and the same quiet the
+     achievements always kept). They resume the moment training ends. */
+  if(notifOn && !_trainingUp()){
     if(_introUp()) _toastQ.push([title, msg]);    /* the title screen stays quiet */
     else _showToast(title, msg);
   }
@@ -6199,7 +6239,7 @@ document.addEventListener('pointerdown', e=>{
 /* ---- rarity sting: a chime that climbs with the tier (WebAudio, no assets) ---- */
 /* ----------------------------------------------------------------
    @section audio [app] — Web Audio stings & tones; sound/effects/shake settings flags
-   Owns: AC, sndOn, fxOn, shakeOn, ac, playRaritySting
+   Owns: AC, sndOn, fxOn, shakeOn, ac, playRaritySting, playSurveyPing, playWhoosh
    ---------------------------------------------------------------- */
 let AC=null;
 let sndOn=true;
@@ -6276,6 +6316,46 @@ function playRaritySting(tier){
     }
   }catch(_){}
 }
+function playSurveyPing(){
+  /* the ACT of surveying answers back: one soft sonar blip on every tap-lock.
+     Outcome sounds (discoveries, wins) stay the sting's business. */
+  const a=ac(); if(!a || a.state!=='running') return;
+  try{
+    const t=a.currentTime+0.01;
+    const o=a.createOscillator(), g=a.createGain();
+    o.type='sine';
+    o.frequency.setValueAtTime(740, t);
+    o.frequency.exponentialRampToValueAtTime(988, t+0.07);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.05, t+0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t+0.28);
+    o.connect(g); g.connect(a.destination);
+    o.start(t); o.stop(t+0.3);
+  }catch(_){}
+}
+function playWhoosh(){
+  /* travel & planetfall: a breath of filtered noise falling through a bandpass.
+     Presentation-only, so Math.random here is fine (the domain ban guards
+     GENERATION, not sound) — and no assets, per the single-file rule. */
+  const a=ac(); if(!a || a.state!=='running') return;
+  try{
+    const t=a.currentTime+0.01, dur=0.55;
+    const n=a.createBufferSource();
+    const buf=a.createBuffer(1, Math.ceil(a.sampleRate*dur), a.sampleRate);
+    const ch=buf.getChannelData(0);
+    for(let i=0;i<ch.length;i++) ch[i]=Math.random()*2-1;
+    n.buffer=buf;
+    const f=a.createBiquadFilter(); f.type='bandpass'; f.Q.value=0.9;
+    f.frequency.setValueAtTime(2200, t);
+    f.frequency.exponentialRampToValueAtTime(240, t+dur);
+    const g=a.createGain();
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.09, t+0.12);
+    g.gain.exponentialRampToValueAtTime(0.0001, t+dur);
+    n.connect(f); f.connect(g); g.connect(a.destination);
+    n.start(t); n.stop(t+dur+0.05);
+  }catch(_){}
+}
 
 /* ---- explorer rank: ten named tiers, then endless ✦ prestige levels ---- */
 /* ----------------------------------------------------------------
@@ -6334,8 +6414,10 @@ function renderRank(){
   const r=rankInfo();
   rankEl.textContent='✪ '+(explorerName?explorerName+' — ':'')+r.name;
   /* fanfare only for genuine PROMOTIONS: never the first render, never after
-     a reset, never the demotion when training hands back the real record */
-  if(_lastRankName!==null && r.name!==_lastRankName && r.floor>_lastRankFloor && !_loading){
+     a reset, never the demotion when training hands back the real record —
+     and never DURING training, whose sandbox promotion is revoked at cleanup
+     (the old toast celebrated a rank the recruit didn't keep) */
+  if(_lastRankName!==null && r.name!==_lastRankName && r.floor>_lastRankFloor && !_loading && !_trainingUp()){
     toast('Rank Up — '+r.name, 'Your expedition record speaks for itself, explorer.');
     playRaritySting(5); fxBurst(FX_GOLD,40);
   }
@@ -8103,8 +8185,8 @@ const GUIDE=[
   '<p>You fight with five stats, each starting at 50 and grown permanently by eating flora:</p><ul><li><b style="color:#7fe6a0">Vitality</b> — your life pool; sets max HP (×2) and duel toughness.</li><li><b style="color:#ff8a72">Ferocity</b> — attack power.</li><li><b style="color:#9fb4ff">Resilience</b> — blunts incoming damage.</li><li><b style="color:#ffd96a">Agility</b> — initiative; who strikes first.</li><li><b style="color:#d6a0ff">Insight</b> — critical-hit chance.</li></ul><p>Tap your nameplate to open your character sheet and inspect them. Creatures use the same five stats, rolled from their genomes.</p>'},
  {id:'hp', t:'HP, hazards & death', k:'hp health damage wound hazard death die expedition reset brink', body:
   '<p>The frontier bites. You can be wounded by <b>scanning hostile worlds</b>, by <b>champion duty</b> (losing a conquest you fought yourself), and by <b>toxic flora</b>.</p><ul><li>Your HP bar lives in the top bar; max HP = Vitality × 2.</li><li>Heal by eating flora — tap the ❤ heart (see <span data-gt="eating">Eating flora</span>).</li><li><b>At 0 HP the expedition ends</b> — the universe is unchanged (it’s math), but your record starts over. Don’t scan furnace worlds at 12 HP.</li></ul>'},
- {id:'rank', t:'Ranks & expedition score', k:'rank score cadet scout pathfinder voyager pioneer cartographer wayfarer sovereign luminary eternal', body:
-  '<p>Everything you do — surveying, cataloguing, breeding, settling, dueling — feeds your <b>expedition score</b>, and score climbs the ten ranks: <em>Cadet → Scout → Pathfinder → Voyager → Pioneer → Star Cartographer → Mythic Wayfarer → Void Sovereign → Cosmic Luminary → Eternal Frontier</em>. Your rank rides on your nameplate and on everything you share.</p><p><b>Nameplate colors:</b> every rank carries its own color, unlocked forever the moment you reach it. Pick any unlocked color from your character sheet (tap your nameplate → Nameplate) — and <b>Eternal Frontier</b> unlocks the iridescent foil.</p>'},
+ {id:'rank', t:'Ranks & expedition score', k:'rank score cadet scout pathfinder voyager pioneer cartographer wayfarer sovereign luminary eternal rename name change explorer', body:
+  '<p>Everything you do — surveying, cataloguing, breeding, settling, dueling — feeds your <b>expedition score</b>, and score climbs the ten ranks: <em>Cadet → Scout → Pathfinder → Voyager → Pioneer → Star Cartographer → Mythic Wayfarer → Void Sovereign → Cosmic Luminary → Eternal Frontier</em>. Your rank rides on your nameplate and on everything you share.</p><p><b>Nameplate colors:</b> every rank carries its own color, unlocked forever the moment you reach it. Pick any unlocked color from your character sheet (tap your nameplate → Nameplate) — and <b>Eternal Frontier</b> unlocks the iridescent foil.</p><p><b>Renaming yourself:</b> the ✎ rename link atop your character sheet — or <b>Settings → Display → Explorer name</b> — changes your name anytime. Your record stays; only the name on it changes.</p>'},
  {id:'achievements', t:'Achievements', k:'achievements unlock badges trophies curator survivor', body:
   '<p>Dozens of achievements track cataloguing, breeding, rarity hunting, conquest, stellar finds and exploration feats. Browse them in your character sheet (tap your nameplate) — each category expands. Many are secret handshakes with the universe: favorite a place, survive the brink, find a black hole…</p>'},
 ]},
@@ -8234,7 +8316,14 @@ function openGuideTopic(id){
         }
         if(e.target && e.target.id==='hp-guide'){
           _hpop.style.display='none';
-          if(typeof _tutHook!=='undefined' && _tutHook){ toast('🧭 Guide','The Guide unlocks after Field Training — the lessons cover everything you need for now.'); return; }
+          if(typeof _tutHook!=='undefined' && _tutHook){
+            /* the ONE in-training pop-up: this message IS the button's feedback —
+               the quiet pass would leave "Open the Guide" feeling dead */
+            const _gmsg='The Guide unlocks after Field Training — the lessons cover everything you need for now.';
+            toast('🧭 Guide', _gmsg);                /* tray log (display muted while training) */
+            if(notifOn) _showToast('🧭 Guide', _gmsg);
+            return;
+          }
           openGuide();
         }
       });
@@ -8264,6 +8353,7 @@ const tipEl=document.createElement('div'); tipEl.id='tipbubble'; document.body.a
 let _tipFor=null, _tipHoverT=0, _tipPressT=0, _tipSuppressClick=false;
 function showTip(target){
   if(!tipsOn || !target) return;
+  if(_trainingUp()) return;   /* training keeps a single voice — the guidance card */
   const txt=target.dataset.tip; if(!txt) return;
   tipEl.innerHTML=txt.replace(/[<>]/g,'');
   tipEl.style.display='block';
@@ -8343,6 +8433,25 @@ const GAME_VERSION='1.0';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.1', title:'Field Reports', date:'July 2026', sections:[
+ ['✨ New Features & Systems', [
+  'Core-loop <b>sound effects</b>: a soft sonar ping answers every survey tap, and a rushing whoosh carries hyperlane travel and planetfall.',
+  '<b>Change your explorer name</b> anytime — Settings → Display → Explorer name, or the ✎ link atop your character sheet. Your record stays; only the name changes.',
+ ]],
+ ['🎨 UI Enhancements', [
+  '<b>Quieter Field Training</b> — while training, pop-ups rest in the 🔔 tray (nothing is lost) and tooltips hold, so the guidance card is the one voice. Blocked scrolls now nudge the card instead of failing silently.',
+  'Survey-card labels are <b>brighter</b> and now scale with the A+ / A++ text sizes.',
+  'Desktop hint corrected: hovering <b>previews</b> a card — a <b>click</b> surveys it.',
+ ]],
+ ['🐞 Bug Fixes', [
+  'Tiny moons no longer steal taps aimed at their planet — “tap Earth” now lands on Earth. A moon’s tap target now matches what you can actually see, and the generous grab returns once you’re close; planet tap targets grew a touch, too.',
+  'No more phantom <b>Rank Up</b> during Field Training — the sandbox promotion was quietly returned with the practice cache, so the fanfare now waits for the real thing.',
+  'The rename dialog can be cancelled (Esc or Cancel) instead of demanding a name.',
+ ]],
+ ['🛠 Under the Hood', [
+  'The welcome bulletin is pinned to the shipped version’s notes, so a fresh expedition always reads the game overview — never a work-in-progress changelog.',
+ ]],
+]},
 {v:'1.0', title:'The Frontier Opens', date:'June 2026', sections:[
  ['🌌 An Infinite, Shared Universe', [
   'A <b>deterministic procedural cosmos</b> — every galaxy, star and world generated from seeds, identical for every explorer, fully offline, no account needed. Four seamless scales: universe → galaxy → star system → planet surface.',
@@ -8401,7 +8510,10 @@ function openReleaseNotes(mode, then){
   const ok=document.getElementById('relok');
   if(mode==='latest'){
     if(sub) sub.textContent='What’s new in this release';
-    if(body) body.innerHTML=_relHtml(RELEASES[0]);
+    /* pinned to the SHIPPED version's entry, not RELEASES[0] — while v-next
+       bullets pile up unbumped, fresh players must still read the overview
+       of the build they're actually holding */
+    if(body) body.innerHTML=_relHtml(RELEASES.find(r=>r.v===GAME_VERSION)||RELEASES[0]);
     if(ok) ok.textContent='Continue';
   } else {
     if(sub) sub.textContent='Release notes — the story of the build';
@@ -8995,6 +9107,7 @@ function askExplorerName(initial){
     ? 'First, what shall the stars call <em>you</em>?'
     : 'What shall the stars call <em>you</em>?';
   const ok=document.getElementById('nameok'); if(ok){ ok.textContent=initial?'Begin the expedition':'Save name'; ok.disabled=!nameIn.value.trim(); }
+  const nc=document.getElementById('namecancel'); if(nc) nc.style.display = initial ? 'none' : 'block';   /* only the FIRST naming is mandatory */
   nameBox.style.display='flex';
   try{ nameIn.focus(); }catch(_){}
 }
@@ -9006,6 +9119,7 @@ function askRenameSpecies(entry){
   const lore=nameBox.querySelector('.lore'); if(lore) lore.style.display='none';
   const nn=nameBox.querySelector('.nnote'); if(nn) nn.innerHTML='Give this discovery a name of your own.';
   const ok=document.getElementById('nameok'); if(ok){ ok.textContent='Save name'; ok.disabled=!nameIn.value.trim(); }
+  const nc=document.getElementById('namecancel'); if(nc) nc.style.display='block';
   nameBox.style.display='flex';
   try{ nameIn.focus(); nameIn.select&&nameIn.select(); }catch(_){}
 }
@@ -9038,6 +9152,11 @@ function commitExplorerName(){
   }
 }
 document.getElementById('nameok').addEventListener('click', commitExplorerName);
+(function(){ const nc=document.getElementById('namecancel');
+  if(nc) nc.addEventListener('click', ()=>{ nameBox.style.display='none'; _renameTarget=null;
+    flushToasts();   /* pop-ups queued behind the dialog must not strand until a future commit */
+  });
+})();
 nameIn.addEventListener('keydown', e=>{ if(e.key==='Enter' && nameIn.value.trim()) commitExplorerName(); });
 nameIn.addEventListener('input', ()=>{ const ok=document.getElementById('nameok'); if(ok) ok.disabled=!nameIn.value.trim(); });
 
@@ -9116,14 +9235,21 @@ const tutSpotEl=document.createElement('div'); tutSpotEl.id='tutspot'; document.
    input. The card and any open dialog stay usable so nobody gets stuck. */
 const TUT_ALWAYS=['#tutbox','#pickbox','#reveal','#duelbox','#namebox','#deathbox','#setbtn','#setpanel','#relbox','#helpbtn','#helppop','#sharebox'];
 const TUT_GATE_EVTS=['pointerdown','click','touchstart','wheel'];
+let _tutNudgeT=0;
 function _tutGate(e){
   if(!_tutHook) return;
   const s=TUT_STEPS[_tutStep]; if(!s) return;
   const t=e.target;
   if(t && t.closest && t.closest(TUT_ALWAYS.concat(s.allow||[]).join(','))) return;
   e.stopPropagation(); e.preventDefault();
-  if(e.type==='pointerdown'){   /* a gentle nudge back to the lesson */
-    tutEl.classList.remove('nudge'); void tutEl.offsetWidth; tutEl.classList.add('nudge');
+  /* a gentle nudge back to the lesson — for blocked WHEELS too, which used
+     to be swallowed with zero response ("scroll just feels broken"); wheel
+     streams events, so the replay is throttled */
+  if(e.type==='pointerdown' || e.type==='wheel'){
+    const now=performance.now();
+    if(now-_tutNudgeT>500){ _tutNudgeT=now;
+      tutEl.classList.remove('nudge'); void tutEl.offsetWidth; tutEl.classList.add('nudge');
+    }
   }
 }
 function _tutGateOn(){ for(const ev of TUT_GATE_EVTS) document.addEventListener(ev, _tutGate, {capture:true, passive:false}); }
@@ -9411,6 +9537,11 @@ setPanel.addEventListener('click', e=>{
     queueSave();
     return;
   }
+  if(e.target && e.target.id==='renameopt'){
+    setPanel.style.display='none';
+    askExplorerName(false);
+    return;
+  }
   if(e.target && e.target.id==='tipsopt'){
     tipsOn=!tipsOn;
     if(!tipsOn) hideTip();
@@ -9605,7 +9736,7 @@ function renderStats(){
     if(e.grade){ tierHave[e.grade.tier]++; if(!rarest || e.grade.tier>rarest.grade.tier) rarest=e; }
   }
   let html='<h4>✪ '+(explorerName||'Explorer')+' — '+r.name+
-    ' <span class="cfrom" id="renameme" style="float:right;cursor:pointer;font-size:9px;color:#9fc2ff;text-transform:none;letter-spacing:0">✎ rename</span></h4>'+
+    ' <span class="cfrom" id="renameme" style="float:right;cursor:pointer;font-size:11px;color:#9fc2ff;text-transform:none;letter-spacing:0;padding:2px 6px">✎ rename</span></h4>'+
     '<div class="srow"><span class="k">Expedition score</span><span>'+r.score+(r.next?' / '+r.next[0]+' → '+r.next[1]:' · max rank')+'</span></div>'+
     '<div class="bar"><i style="width:'+pct.toFixed(0)+'%"></i></div>';
   html+=statBlockHTML();
