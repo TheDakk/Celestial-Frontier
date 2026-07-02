@@ -331,17 +331,20 @@ live by `syncTopbarH` + ResizeObserver):
 | `#tray` / `#bell` | **Notifications** tray (z-index 40, above rail; 66vh tall). |
 | `#searchin` / `#searchres` | Search ("Search discoveries or paste code"); results z-index 40. |
 | `#setpanel` / `#setbtn` | **Settings** (see below). |
-| `#guidebox` / `#helpbtn` | **Guide to the Universe** — searchable, browsable manual of every system (see "Guide, tooltips & Field Training" below) + credit footer "Celestial Frontier · v1.1 · Developed by Dakk". |
+| `#guidebox` / `#helpbtn` | **Guide to the Universe** — searchable, browsable manual of every system (see "Guide, tooltips & Field Training" below) + credit footer "Celestial Frontier · v<GAME_VERSION> (build <sha>) · Developed by Dakk". |
 | `#tipbubble` (JS-created) | Tooltip bubble for `[data-tip]` elements. |
 | `#tutbox` / `#tutspot` (JS-created) | Field Training instruction card + spotlight ring. |
-| `#namebox` | **Intro / name prompt** ("Celestial Frontier" title, ringed-planet icon, **BEGIN THE EXPEDITION**). |
+| `#namebox` | **Intro / name prompt** ("Celestial Frontier" title, ringed-planet icon, **BEGIN THE EXPEDITION**). Doubles as the **rename dialog** (explorer via Settings → Display → Explorer name or the character sheet's ✎ link; species via card Rename) — rename modes show a **Cancel** button and dismiss on Escape; only the initial naming is mandatory. |
 | `#duelbox`, `#pickbox`, `#sharebox`, `#reveal`, `#endingbox` | Duel loader, breed/feed picker, share-code, reveal card queue, ending screen. |
 
-### Settings toggles (persisted)
-**Text size** (`fsMode`), **Sound** (`sndOn`), **Visual effects** (`fxOn` — particle
-bursts), **Screen shake** (`shakeOn` — separate from effects), **Notifications**
-(`notifOn` — silences toast *popups* but still logs to the bell tray), plus **Reset Game →
-Erase Everything**.
+### Settings toggles (persisted; Display / Graphics / Audio tabs)
+Display: **Text size** (`fsMode`), **Text tone** (`toneMode`), **Font** (`fontMode`),
+**Explorer name** (`#renameopt` → `askExplorerName(false)` — rename anytime, purely
+cosmetic: the name feeds no seed, hash or code payload), **Tooltips** (`tipsOn`).
+Graphics: **Visual effects** (`fxOn` — particle bursts/cinematics/travel tunnel),
+**Screen shake** (`shakeOn`). Audio: **Sound** (`sndOn`), **Notifications**
+(`notifOn` — silences toast *popups* but still logs to the bell tray). Plus
+**Reset Game → Erase Everything**.
 
 ### FX system (`fxBurst`, `fxShake`)
 DOM-particle confetti bursts (gold/green/purple/red palettes, capped & self-cleaning) and a
@@ -350,9 +353,11 @@ rank-ups, breeding, feeding, eating flora, harvests, rare discoveries (tinted), 
 and death.
 
 ### Escape / dismiss
-Global **Escape** closes the topmost dismissible overlay (reveal → pickbox → duelbox →
-sharebox → primebox → guidebox → setpanel). All modals also close on backdrop click.
-Outside-tap closes Compendium / Star Atlas / Cosmic Events / Settings.
+Global **Escape** first cancels an open rename dialog (`#namebox`, only when
+`!_nameInitial` — the first naming stays mandatory), then closes the topmost
+dismissible overlay (reveal → pickbox → duelbox → sharebox → primebox → guidebox →
+setpanel). All modals also close on backdrop click. Outside-tap closes
+Compendium / Star Atlas / Cosmic Events / Settings.
 
 ### Guide, tooltips & Field Training (v1.1)
 - **Guide to the Universe** (`?` button, `@section guide`): a data-driven manual —
@@ -362,16 +367,20 @@ Outside-tap closes Compendium / Star Atlas / Cosmic Events / Settings.
 - **Tooltips** (`@section tooltips`): any `[data-tip]` element shows a one-line
   text-only bubble (`pointer-events:none`) — hover (650 ms) / focus on desktop,
   **long-press (600 ms) on touch**; the long-press suppresses the following tap
-  action. Gated by `tipsOn` (Settings toggle, saved as `tips`). `data-guide`
+  action. Gated by `tipsOn` (Settings toggle, saved as `tips`) and **suppressed
+  during Field Training** (the guidance card keeps a single voice). `data-guide`
   attributes remain in the DOM but are currently unused (the in-bubble Guide
   link was removed — not tappable on touch).
 - **Release notes** (`@section release-notes`): `GAME_VERSION` + `RELEASES`
   (newest first; categorized sections). Returning saves whose `rn` field ≠
   `GAME_VERSION` get a one-time "latest" popup (`#relbox`, styled like the
-  intro card) ~900 ms after boot; dismissing marks it seen. The Guide footer
-  credit (`#gcredit`) is the permanent link to the **cumulative** history.
-  **House rule: `GAME_VERSION` bumps only when Dakk says so** — but every
-  player-visible change is appended to `RELEASES[0]` as it is built.
+  intro card) ~900 ms after boot; dismissing marks it seen. Fresh expeditions
+  read the same bulletin between naming and Field Training. The "latest" view
+  is **pinned to the entry matching `GAME_VERSION`** (not `RELEASES[0]`), so
+  unshipped v-next bullets piling up on top never reach players early. The
+  Guide footer credit (`#gcredit`) is the permanent link to the **cumulative**
+  history. **House rule: `GAME_VERSION` bumps only when Dakk says so** — but
+  every player-visible change is appended to the v-next entry as it is built.
 - **Update watch** (same section): `tools/deploy.js` stamps `BUILD_ID` with the
   git sha and publishes `version.json` beside the game. Live sessions poll it
   every 10 min and on `visibilitychange` (iOS Safari resurrects stale tabs);
@@ -416,14 +425,25 @@ Outside-tap closes Compendium / Star Atlas / Cosmic Events / Settings.
   restores a snapshot (stats counters, pstats, achievements, essence), removes
   every species catalogued during training, refills HP, and guarantees Earth
   charted + home (`_tutEnsureEarth`). Skippable with confirm; `tutAbort()` on
-  game reset.
+  game reset. **Training is toast-quiet** (v1.1 post-launch): while
+  `body.training` is set, `toast()` logs to the bell tray only (the tray step's
+  payoff), the rank-up fanfare is suppressed (its sandbox promotion is revoked
+  at cleanup anyway), tooltips hold, and the focus-lockdown gate replays its
+  card **nudge** for blocked wheel events (throttled 500 ms) — blocked scrolls
+  used to fail silently.
 
 ---
 
 ## 9. Audio
-Web Audio oscillators. `ac()` resumes the context (unlocked on first
-pointerdown/touchstart/click/keydown). `playRaritySting(tier)`, `playFailTone()`,
-`playFanfare()`, `playThud()`. All gated by `sndOn`.
+Web Audio oscillators — hand-rolled, asset-free. `ac()` resumes the context
+(persistent gesture + visibilitychange re-arm for iOS backgrounding).
+`playRaritySting(tier)` (discoveries & celebrations; pitch/steps/harmonics/
+drone climb with tier), `playFailTone()`, `playFanfare()`, `playThud()`, plus
+the v1.1 core-loop pair: `playSurveyPing()` (one soft sonar blip on every
+canvas tap-lock — the *act* of surveying) and `playWhoosh()` (filtered-noise
+sweep on `travelTo` and the system→surface landing transition). All gated by
+`sndOn`. `Math.random` in the whoosh's noise buffer is fine — audio is
+presentation, the determinism ban covers domain modules only.
 
 ---
 
@@ -528,6 +548,27 @@ resumes — the jsdom boot covers load-time wiring, not interaction flows.
   pointerdown/click/touchstart/wheel; open dialogs always usable); tooltips made
   text-only with longer delays (650 ms hover / 600 ms long-press). Smoke suite:
   72 checks.
+- **v1.1 post-launch, Emerson playtest round (July 2026):** desktop hint copy
+  corrected (hover *previews*, click surveys); planet pick floor 14→16 px and
+  **moon picks gated to `c.z > minWH/420`** (the moon-label zoom) so sub-pixel
+  moons stop stealing nearest-wins taps aimed at their planet; **training
+  quiet pass** (toasts tray-only + no rank-up fanfare + tooltips held during
+  training; wheel-block nudge feedback); **player rename surfaced** (Settings →
+  Display row, Guide mention, larger ✎ link, Cancel/Escape on the rename
+  dialog); survey-card `.k`/`.tag` labels moved to a brighter `--label` color
+  (8:1 on the glass panel; tone-aware) and the stale `.krow` fs-lg/fs-xl
+  selectors fixed so those labels finally scale with A+/A++; new
+  `playSurveyPing`/`playWhoosh` core-loop SFX; release-notes "latest" view
+  pinned to the `GAME_VERSION` entry; `RELEASES` gains the working v1.1
+  "Field Reports" entry. An adversarial review round then hardened the batch:
+  the locked-Guide message stays a visible pop-up during training (the one
+  exception to the quiet pass), rename-cancel flushes queued toasts (and
+  `flushToasts` re-checks the training gate at fire time), moon picks use
+  true-apparent-size targets below the label zoom instead of vanishing (a
+  visible desktop gas-giant moon stays clickable), travel-skip taps are
+  disarmed so they can't survey-lock (and ping) the arrival scene, and
+  `#namebox` joined the `body.training` yield rules. Smoke suite: 91 checks
+  (training-quiet, pinned bulletin, rename flow, locked-Guide feedback).
 
 ---
 

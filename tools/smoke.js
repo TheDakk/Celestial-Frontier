@@ -93,6 +93,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     const relFresh = doc.getElementById('relbox');
     check('fresh expedition: latest bulletin shows before training', await until(() =>
       visible(relFresh) && relFresh.textContent.includes('The Frontier Opens') && relFresh.textContent.includes('v1.0'), 4000, 'fresh bulletin'));
+    check('bulletin is pinned to the SHIPPED version (no work-in-progress notes)',
+      !relFresh.textContent.includes('Field Reports'));
     check('training has not started yet', !visible(doc.getElementById('tutbox')));
     click(doc.getElementById('relok'));
     check('bulletin closes into training (step 1)', await until(() => tutAt(1), 4000, 'step1'));
@@ -106,6 +108,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       && doc.getElementById('helppop').textContent.includes('v'));
     click(doc.getElementById('hp-guide'));
     check('lockdown: Guide blocked during welcome', !visible(doc.getElementById('guidebox')));
+    check('lockdown: locked Guide still answers with a pop-up (the one training exception)',
+      [...doc.querySelectorAll('#toast .tst')].some((t) => t.textContent.includes('Guide unlocks')));
     click(doc.getElementById('logbtn'));
     check('lockdown: Atlas blocked during welcome', !visible(doc.getElementById('log')));
     click(doc.getElementById('setbtn'));
@@ -135,6 +139,12 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.getElementById('logbtn'));
     check('opening Atlas completes step 5', await until(() => tutAt(6), 3000, 'step6'));
     check('training cache granted (6 specimens)', doc.getElementById('codexcount').textContent === '6');
+    // training is toast-quiet: cache + rank-up land in the tray, never as pop-ups
+    const tutToasts = [...doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
+    check('training quiet: no Training Cache pop-up (tray-only)', !tutToasts.includes('Training Cache'), tutToasts);
+    check('training quiet: no Rank Up fanfare mid-training', !tutToasts.includes('Rank Up'), tutToasts);
+    check('training quiet: the bell tray still counts the story', visible(doc.getElementById('bellct'))
+      && doc.getElementById('bellct').textContent !== '0');
     click(doc.getElementById('codexbtn'));
     check('opening Compendium completes step 6', await until(() => tutAt(7), 3000, 'step7'));
 
@@ -251,6 +261,22 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('no tooltip while disabled', !visible(doc.getElementById('tipbubble')));
     click(tp);
     check('tooltips back On', tp.textContent === 'On');
+
+    // ============ PLAYER RENAME (Settings → Display, cancellable) ============
+    click(doc.getElementById('renameopt'));               // settings panel is still open from the tooltip checks
+    const nbox = doc.getElementById('namebox');
+    check('settings rename opens the naming dialog', visible(nbox)
+      && nbox.textContent.includes('Change your explorer name'));
+    check('rename dialog offers Cancel (initial naming never does)', visible(doc.getElementById('namecancel')));
+    doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    check('Escape cancels the rename', !visible(nbox));
+    check('cancel kept the old name', doc.getElementById('rank').textContent.includes('SmokeTester'));
+    click(doc.getElementById('setbtn'));
+    click(doc.getElementById('renameopt'));
+    type(doc.getElementById('namein'), 'RenamedTester');
+    click(doc.getElementById('nameok'));
+    check('rename commits and the nameplate follows', !visible(nbox)
+      && doc.getElementById('rank').textContent.includes('RenamedTester'));
 
     check('no errors after all interactions', errors.length === 0, errors.slice(0, 3).join(' | '));
     w.close();
