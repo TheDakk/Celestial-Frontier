@@ -5,16 +5,19 @@
 > batch, keep everything committed and pushed. The chat is disposable; this
 > file and the repo are not.
 
-## ⚠ REPO IS AHEAD OF LIVE — two held fixes (Nick's call: ship with next deploy)
+## ★ v1.1.1 "SIGNAL & POLISH" IS LIVE ★ (2026-07-15, patch — build c5f1e94)
 
-- b0bcbe8: page identity — <title> is just "Celestial Frontier" +
-  og:/description meta, so shared links stop previewing as "Cosmic Codex".
-  In-game names untouched. Also starts the v1.2 working RELEASES entry
-  ("Signal & Polish", working title — rename at bump); the pinned bulletin
-  keeps it invisible until the next GAME_VERSION bump.
-- 86f544b: Settings rows keep a 12px flex gap — Font/Motion pills were
-  butting against their labels (Nick's screenshots, 2026-07-15).
-Live is still v1.1 build 14ca544; both ride along with whatever deploys next.
+The two held fixes shipped as a patch on Nick's call, repo and live in sync:
+- Page identity: <title> is just "Celestial Frontier" + og:/description
+  meta — shared links stop previewing as "Cosmic Codex" (in-game names
+  untouched; Prime Codex keeps Codex per rule 9).
+- Settings rows keep a 12px flex gap — Font/Motion pills were butting
+  against their labels (Nick's screenshots).
+v1.1 saves see the small Signal & Polish bulletin once. The next working
+RELEASES[0] entry (v1.2) starts fresh when new player-visible work lands.
+NOTE for link previews: services that already cached the old preview
+(Discord/Slack/iMessage etc.) may show "Cosmic Codex" until their cache
+expires or is refreshed — the page itself is correct.
 
 ## ★★ v1.1 "FIELD REPORTS" IS LIVE ★★ (2026-07-15)
 
