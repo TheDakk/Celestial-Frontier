@@ -5,6 +5,15 @@
 > batch, keep everything committed and pushed. The chat is disposable; this
 > file and the repo are not.
 
+## ⚠ REPO IS ONE FIX AHEAD OF LIVE (Nick's call: hold, ship with next deploy)
+
+b0bcbe8 (committed, verified, NOT deployed): page identity fix — <title> is
+now just "Celestial Frontier" + og:/description meta, so shared links stop
+previewing as "Cosmic Codex". In-game names untouched. Also starts the v1.2
+working RELEASES entry ("Signal & Polish", working title — rename at bump);
+the pinned bulletin keeps it invisible until the next GAME_VERSION bump.
+Live is still v1.1 build 14ca544; this rides along with whatever deploys next.
+
 ## ★★ v1.1 "FIELD REPORTS" IS LIVE ★★ (2026-07-15)
 
 SHIPPED: **deployed as build 14ca544** (GAME_VERSION='1.1', Dakk's call
