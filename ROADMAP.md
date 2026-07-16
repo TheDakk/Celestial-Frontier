@@ -5,6 +5,35 @@
 > batch, keep everything committed and pushed. The chat is disposable; this
 > file and the repo are not.
 
+## ⏸ SESSION STATE 2026-07-15 — RESUME HERE
+
+WHERE THINGS STAND: Emerson-playtest Tier 1 (six fixes + adversarial-review
+hardening, full detail in the EMERSON PLAYTEST section below) is BUILT,
+FULLY VERIFIED — fingerprint byte-identical (50 probes), smoke 91/91 — and
+pushed to origin as a9fa4ed + 817412a.
+
+DECISION RESOLVED (Nick, 2026-07-15): the commits STAY — the earlier
+"prepare but don't commit" request is withdrawn; no history rewrite.
+Revert/amend later only if review turns something up.
+
+NOT deployed — the live site still runs v1.0 build 107107a and deploy.js
+only runs on Dakk's word at a milestone.
+
+AWAITING DAKK (unchanged): on-device pass of the new SFX (survey ping /
+whoosh character), label brightness, and moon-tap feel; the design calls
+listed under EMERSON PLAYTEST (bulletin placement, tutorial restructure,
+LAND button, generative music); then the v1.1 bump decision.
+
+NEXT BUILD CANDIDATE: Tier 2 (verified & sized under EMERSON PLAYTEST) —
+reduced-motion toggle, landing assist, touch-target inflation, SFX volume
+bus + slider, keyboard operability for panel content.
+
+NEXT SESSION MECHANICS: `node tools/extract.js` first (main.js is a
+generated artifact, not committed); loop = edit main.js/html → validate.js →
+smoke.js (now 91 checks). RELEASES[0] is the working v1.1 "Field Reports"
+entry — new player-visible work adds bullets there; the 'latest' bulletin is
+pinned to the GAME_VERSION entry so unshipped bullets stay invisible.
+
 ## ★★★ v1.0 "THE FRONTIER OPENS" IS LIVE ★★★ (2026-06-12, ~4:30 AM)
 
 SHIPPED: deployed as 0808737, refreshed same-night as **107107a** (live now).
