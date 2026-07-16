@@ -7,20 +7,9 @@ const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
 const html = fs.readFileSync(path.join(__dirname, 'probe-build.html'), 'utf8');
-function fake2d(){
-  const grad = () => ({ addColorStop(){} });
-  const fake = { createLinearGradient: grad, createRadialGradient: grad, createPattern: () => null,
-    getLineDash: () => [], isPointInPath: () => false, isPointInStroke: () => false,
-    measureText: () => ({ width: 10 }),
-    getImageData: (x,y,w,h) => ({ data: new Uint8ClampedArray((w||1)*(h||1)*4), width: w||1, height: h||1 }) };
-  return new Proxy(fake, { get(t,p){ return p in t ? t[p] : () => undefined; }, set(t,p,v){ t[p]=v; return true; } });
-}
+const { installFakeCanvas } = require('./fake2d.js');
 const dom = new JSDOM(html, { runScripts: 'dangerously', pretendToBeVisual: true,
-  beforeParse(w){
-    const proto = w.HTMLCanvasElement.prototype;
-    proto.getContext = function(k){ if(!this.__f) this.__f = fake2d(); return k==='2d' ? this.__f : null; };
-    proto.toDataURL = function(){ return 'data:image/png;base64,'; };
-  }});
+  beforeParse(w){ installFakeCanvas(w); }});
 setTimeout(() => {
   const H = dom.window.__PROBE_HOOK__;
   if (!H) { console.error('no hook'); process.exit(1); }

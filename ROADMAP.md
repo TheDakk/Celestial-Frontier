@@ -7,30 +7,38 @@
 
 ## ⏸ SESSION STATE 2026-07-15 — RESUME HERE
 
-WHERE THINGS STAND: Emerson-playtest Tier 1 (six fixes + adversarial-review
-hardening, full detail in the EMERSON PLAYTEST section below) is BUILT,
-FULLY VERIFIED — fingerprint byte-identical (50 probes), smoke 91/91 — and
-pushed to origin as a9fa4ed + 817412a.
-
-DECISION RESOLVED (Nick, 2026-07-15): the commits STAY — the earlier
-"prepare but don't commit" request is withdrawn; no history rewrite.
-Revert/amend later only if review turns something up.
+WHERE THINGS STAND: Emerson-playtest **Tier 2 is BUILT & FULLY VERIFIED**
+(same session that resolved the Tier 1 commit question — commits stayed, no
+history rewrite). All five items shipped in one batch (see TIER 2 section
+below for what each became): Motion Auto/Full/Reduced, landing assist,
+touch-target inflation, SFX volume bus + slider, keyboard operability.
+Verification: fingerprint byte-identical (50 probes), smoke 102/102,
+systems-check 19/19, balance PASS. A high-effort adversarial review workflow
+(4 finders / 11 verifiers, 17 verified findings) ran before commit; every
+confirmed correctness finding was fixed in-batch (assist arming, delete-×
+padding exclusion, rm tri-state so the OS preference is never frozen into
+the save, real volume assertion, focus restore after re-renders) plus two
+tooling cleanups (shared tools/fake2d.js, live probe-hook getters).
 
 NOT deployed — the live site still runs v1.0 build 107107a and deploy.js
 only runs on Dakk's word at a milestone.
 
-AWAITING DAKK (unchanged): on-device pass of the new SFX (survey ping /
-whoosh character), label brightness, and moon-tap feel; the design calls
-listed under EMERSON PLAYTEST (bulletin placement, tutorial restructure,
-LAND button, generative music); then the v1.1 bump decision.
+AWAITING DAKK: on-device pass of Tier 1 (survey ping / whoosh character,
+label brightness, moon-tap feel) AND Tier 2 (volume slider feel, Motion
+Reduced on iPhone, landing-assist glide, fatter touch targets); the design
+calls under EMERSON PLAYTEST (bulletin placement, tutorial restructure,
+LAND button, generative music); then the v1.1 bump decision — the
+RELEASES[0] pile now holds Tier 1 + Tier 2 and is starting to feel
+bump-worthy.
 
-NEXT BUILD CANDIDATE: Tier 2 (verified & sized under EMERSON PLAYTEST) —
-reduced-motion toggle, landing assist, touch-target inflation, SFX volume
-bus + slider, keyboard operability for panel content.
+REVIEW LEFTOVERS (logged, deliberately not built): PICK_F is convention-
+applied at 15 pick sites (a future pick site must remember ×PICK_F on its
+floor); body.rmotion CSS is a 7-selector whitelist (a future decorative
+loop must be appended there). Both are documented at their definition sites.
 
 NEXT SESSION MECHANICS: `node tools/extract.js` first (main.js is a
 generated artifact, not committed); loop = edit main.js/html → validate.js →
-smoke.js (now 91 checks). RELEASES[0] is the working v1.1 "Field Reports"
+smoke.js (now 102 checks). RELEASES[0] is the working v1.1 "Field Reports"
 entry — new player-visible work adds bullets there; the 'latest' bulletin is
 pinned to the GAME_VERSION entry so unshipped bullets stay invisible.
 
@@ -131,16 +139,41 @@ plus a 3-lens adversarial review workflow whose 4 confirmed findings were all
 fixed (stranded toast queue, moon dead band, skip-tap ping, namebox overlap).
 Reference doc + CLAUDE.md synced. NOT deployed — awaiting Dakk's word.
 
-TIER 2 (verified, sized, not started): reduced-motion toggle (medium — only
-the travel tunnel honors prefers-reduced-motion today; new save field, safe
-absent-default); landing assist (ease camera center at the size threshold —
-today cursor-anchored zoom on an off-center planet maxes out and never lands,
-silently); touch-target inflation (TOUCH-scaled pick floors + invisible
-hit-padding, preserving the 40px rail rhythm); SFX volume bus + slider
-(4 synths currently hardcode gains, two connect straight to destination);
-keyboard operability for panel content (Settings toggles/Compendium/Atlas/
-Guide items are divs/spans — the Enter/Space shim at ~4083 works free once
-they get role+tabindex).
+TIER 2 — ★ BUILT & VERIFIED 2026-07-15 (all five, plus review-round fixes).
+What each item became:
+1. Motion setting (Settings → Graphics): Auto / Full / Reduced (save `rm`
+   -1/0/1). Auto follows the OS prefers-reduced-motion preference LIVE
+   (matchMedia change listener) and is itself the persisted default, so the
+   OS preference is never frozen into the save (review catch — the first
+   draft wrote 0/1 on every autosave). Reduced gates the travel tunnel,
+   screen shake and confetti in JS and stamps body.rmotion, which stills
+   the decorative CSS loops (update pill, cinema rays, events dot, foil
+   shimmer).
+2. Landing assist: armed ONLY by a zoom-in gesture blocked at the system
+   zoom ceiling (450ms window) — the original always-on glide hijacked
+   moon surveys and off-screen planets (review catch). Glides 0.14/frame
+   toward the dominant landing-size planet; instant step under reduced
+   motion; panning/pinching always wins.
+3. Touch-target inflation: PICK_F (×1.4 on TOUCH) scales every canvas pick
+   FLOOR (15 sites; true-apparent-size parts untouched — the moon lesson);
+   @media(pointer:coarse) invisible ::after hit-padding on Atlas row
+   actions and Settings pills. The destructive Atlas delete × is
+   deliberately EXCLUDED from padding (review catch — an unconfirmed
+   permanent action must never win near-miss taps).
+4. SFX volume bus + slider (Settings → Audio, save `vol` 0-100): all six
+   synths exit through one shared gain (sfxOut), sfxVol² perceptual taper
+   computed only in applySfxGain; the survey ping answers on release at
+   the chosen level.
+5. Keyboard operability: role="button" tabindex="0" on Settings pills/tabs,
+   Compendium tabs/groups/cards, Binder paragon slots, Atlas items, Guide
+   categories/topics/back/cross-links (the existing Enter/Space shim drives
+   them); [role=button]:focus-visible gold ring; refocus() restores focus
+   after innerHTML re-renders (review catch — activation used to dump
+   keyboard users back at <body>).
+TOOLING: shared tools/fake2d.js replaces four drifted fake-canvas copies
+(two lacked createImageData and threw every frame); make-probe-build now
+emits LIVE getters so smoke can assert on scalar state (sfxVol, motionMode
+added to probe-names.json — 80 hooked names); smoke suite 102 checks.
 
 DESIGN CALLS — AWAITING DAKK (do not build until he picks):
 - New-player bulletin: drop from fresh path (1-line + smoke rewrite) or
