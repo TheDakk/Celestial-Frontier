@@ -5,31 +5,34 @@
 > batch, keep everything committed and pushed. The chat is disposable; this
 > file and the repo are not.
 
-## ⏸ SESSION STATE 2026-07-15 — RESUME HERE
+## ★★ v1.1 "FIELD REPORTS" IS LIVE ★★ (2026-07-15)
 
-WHERE THINGS STAND: Emerson-playtest **Tier 2 is BUILT & FULLY VERIFIED**
-(same session that resolved the Tier 1 commit question — commits stayed, no
-history rewrite). All five items shipped in one batch (see TIER 2 section
-below for what each became): Motion Auto/Full/Reduced, landing assist,
-touch-target inflation, SFX volume bus + slider, keyboard operability.
-Verification: fingerprint byte-identical (50 probes), smoke 102/102,
-systems-check 19/19, balance PASS. A high-effort adversarial review workflow
-(4 finders / 11 verifiers, 17 verified findings) ran before commit; every
-confirmed correctness finding was fixed in-batch (assist arming, delete-×
-padding exclusion, rm tri-state so the OS preference is never frozen into
-the save, real volume assertion, focus restore after re-renders) plus two
-tooling cleanups (shared tools/fake2d.js, live probe-hook getters).
+SHIPPED: **deployed as build 14ca544** (GAME_VERSION='1.1', Dakk's call
+2026-07-15). Contains Emerson-playtest Tier 1 (six fixes: hint copy, moon
+tap-steal, training quiet pass, rename surfaced, label contrast, survey
+ping + whoosh) and Tier 2 (Motion Auto/Full/Reduced, landing assist, touch-
+target inflation, SFX volume bus + slider, keyboard operability — full
+detail in the TIER sections below). Live v1.0 saves (rn='1.0') get the
+Field Reports bulletin exactly once; any session left open should show the
+gold refresh pill. The release-notes pattern resumes: new player-visible
+work starts a fresh RELEASES[0] v1.2 entry as it is built; GAME_VERSION
+bumps only on Dakk's say-so.
 
-NOT deployed — the live site still runs v1.0 build 107107a and deploy.js
-only runs on Dakk's word at a milestone.
+VERIFICATION AT SHIP: fingerprint byte-identical (50 probes), smoke
+102/102, systems-check 19/19, balance PASS. Tier 2 was review-hardened
+pre-commit by a high-effort adversarial workflow (4 finders / 11 verifiers,
+17 verified findings — every confirmed correctness finding fixed in-batch:
+assist arming, delete-× padding exclusion, rm tri-state so the OS
+preference is never frozen into the save, real volume assertion, focus
+restore after re-renders) plus two tooling cleanups (shared tools/fake2d.js,
+live probe-hook getters).
 
-AWAITING DAKK: on-device pass of Tier 1 (survey ping / whoosh character,
-label brightness, moon-tap feel) AND Tier 2 (volume slider feel, Motion
-Reduced on iPhone, landing-assist glide, fatter touch targets); the design
-calls under EMERSON PLAYTEST (bulletin placement, tutorial restructure,
-LAND button, generative music); then the v1.1 bump decision — the
-RELEASES[0] pile now holds Tier 1 + Tier 2 and is starting to feel
-bump-worthy.
+AWAITING DAKK: on-device pass of the LIVE v1.1 — Tier 1 feel (survey ping /
+whoosh character, label brightness, moon-tap) and Tier 2 feel (volume
+slider, Motion Reduced on iPhone, landing-assist glide, fatter touch
+targets); the update pill's real-world test (deploy after 14ca544); and the
+design calls under EMERSON PLAYTEST (bulletin placement, tutorial
+restructure, LAND button, generative music).
 
 REVIEW LEFTOVERS (logged, deliberately not built): PICK_F is convention-
 applied at 15 pick sites (a future pick site must remember ×PICK_F on its
