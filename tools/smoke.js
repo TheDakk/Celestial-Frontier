@@ -78,9 +78,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // fresh expedition: latest bulletin FIRST, then training
     const relFresh = doc.getElementById('relbox');
     check('fresh expedition: latest bulletin shows before training', await until(() =>
-      visible(relFresh) && relFresh.textContent.includes('Field Reports') && relFresh.textContent.includes('v1.1'), 4000, 'fresh bulletin'));
+      visible(relFresh) && relFresh.textContent.includes('Signal & Polish') && relFresh.textContent.includes('v1.1.1'), 4000, 'fresh bulletin'));
     check('bulletin is pinned to the SHIPPED version (no other entries leak in)',
-      !relFresh.textContent.includes('The Frontier Opens'));
+      !relFresh.textContent.includes('The Frontier Opens') && !relFresh.textContent.includes('Field Reports'));
     check('training has not started yet', !visible(doc.getElementById('tutbox')));
     click(doc.getElementById('relok'));
     check('bulletin closes into training (step 1)', await until(() => tutAt(1), 4000, 'step1'));
@@ -227,7 +227,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     // release notes: the version line in the footer opens the full history
     const gc = doc.getElementById('gcredit');
-    check('guide footer shows version + build', gc && gc.textContent.includes('v1.1') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
+    check('guide footer shows version + build', gc && gc.textContent.includes('v1.1.1') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
     click(gc);
     const relbox = doc.getElementById('relbox');
     check('footer opens cumulative release notes (all versions)', visible(relbox)
@@ -306,7 +306,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('veteran: tutorial never starts', !visible(vet.doc.getElementById('tutbox')));
     const vrel = vet.doc.getElementById('relbox');
     check('veteran: update bulletin pops once', visible(vrel)
-      && vrel.textContent.includes('Field Reports')
+      && vrel.textContent.includes('Signal & Polish')
       && vet.doc.getElementById('relok').textContent === 'Continue');
     click2(vet.doc.getElementById('relok'), vet.w);
     check('veteran: bulletin closes via Continue', !visible(vrel));
@@ -344,7 +344,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // ============ BOOT 4: half-finished training saved in deep space resumes AT SOL ============
     const ds = boot((win) => {
       win.localStorage.setItem('cfcc_save_v1', JSON.stringify({
-        v: 4, me: 'Wanderer', guide: 1, tut: 0, rn: '1.1', vol: 40, rm: 1,
+        v: 4, me: 'Wanderer', guide: 1, tut: 0, rn: '1.1.1', vol: 40, rm: 1,
         view: { type: 'galaxy', gal: { x: -3000, y: 2400, size: 60, sp: 3, tilt: 0.4, rot: 1.2, seed: 777777 } },
       }));
     });

@@ -8546,14 +8546,11 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.1';
+const GAME_VERSION='1.1.1';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
-/* v1.2 is the WORKING entry — bullets pile up here as they are built and stay
-   invisible until Dakk bumps GAME_VERSION (the 'latest' bulletin is pinned).
-   The title is a working name; rename at bump time. */
-{v:'1.2', title:'Signal & Polish', date:'July 2026', sections:[
+{v:'1.1.1', title:'Signal & Polish', date:'July 2026', sections:[
  ['🎨 UI Enhancements', [
   'Settings rows breathe — option pills keep a clean gap from their labels instead of crowding them (Font and Motion were touching).',
  ]],
