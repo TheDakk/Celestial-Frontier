@@ -5,6 +5,23 @@
 > batch, keep everything committed and pushed. The chat is disposable; this
 > file and the repo are not.
 
+## ▶ NEXT SESSION AGENDA (agreed with Nick, 2026-07-15)
+
+1. Nick's on-device pass of LIVE v1.1.1 — Tier 1 feel (ping/whoosh, labels,
+   moon-tap) + Tier 2 feel (volume, Motion Reduced, landing glide, touch
+   targets). Feedback reshapes everything below.
+2. Build (no decisions needed): ELEMENT MINI-SVG ICONS — procedural
+   crystals/ingots/flasks tinted per element family (metals silver/gold,
+   ices cyan, volatiles amber, exotics iridescent), species-portrait recipe
+   style, replacing the colored ◆ glyphs in Cargo/Research.
+3. Design calls if Nick wants to settle any: bulletin placement, tutorial
+   restructure, LAND button, generative music.
+4. Opportunistic warts (list under MINOR WARTS): #sharelink focus,
+   #namein maxlength 20 vs 24, "Explorer" re-prompt, TOUCH constant,
+   Notifications toggle in Audio tab.
+Mechanics reminder: extract.js first; new player-visible work starts the
+fresh v1.2 RELEASES[0] entry.
+
 ## ★ v1.1.1 "SIGNAL & POLISH" IS LIVE ★ (2026-07-15, patch — build c5f1e94)
 
 The two held fixes shipped as a patch on Nick's call, repo and live in sync:
