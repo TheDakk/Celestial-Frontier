@@ -22,21 +22,7 @@ const vc = new VirtualConsole();
 vc.on('jsdomError', (e) => errors.push('jsdomError: ' + (e && e.message)));
 vc.on('error', (...a) => errors.push('console.error: ' + a.map(String).join(' ')));
 
-function makeFake2D(canvas) {
-  const gradient = { addColorStop() {} };
-  const fake = {
-    canvas,
-    measureText: () => ({ width: 10 }),
-    getImageData: (x, y, w, h) => ({ width: w, height: h, data: new Uint8ClampedArray(Math.max(1, w * h * 4)) }),
-    createImageData: (w, h) => ({ width: w, height: h, data: new Uint8ClampedArray(Math.max(1, w * h * 4)) }),
-    createLinearGradient: () => gradient, createRadialGradient: () => gradient, createConicGradient: () => gradient,
-    createPattern: () => null, getLineDash: () => [], isPointInPath: () => false, isPointInStroke: () => false,
-  };
-  return new Proxy(fake, {
-    get(t, p) { if (p in t) return t[p]; return () => undefined; },
-    set(t, p, v) { t[p] = v; return true; },
-  });
-}
+const { makeFake2D } = require('./fake2d.js');
 
 const dom = new JSDOM(html, {
   runScripts: 'dangerously', pretendToBeVisual: true,
@@ -222,6 +208,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('topic view renders body', !!doc.querySelector('#guidebody .gtopic h4'));
     click(doc.querySelector('#guidebody .gback'));
     check('back returns to category', doc.querySelectorAll('#guidebody .gitem').length >= 3);
+    // keyboard operability: panel items carry role+tabindex and the Enter/Space shim drives them
+    const kbItem = doc.querySelector('#guidebody .gitem');
+    check('guide items are keyboard-operable (role="button" + tabindex)',
+      kbItem.getAttribute('role') === 'button' && kbItem.getAttribute('tabindex') === '0');
+    kbItem.focus();                                          // a real keyboard user tabbed here
+    kbItem.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+    check('Enter opens a guide topic (keyboard shim)', !!doc.querySelector('#guidebody .gtopic h4'));
+    check('focus survives the re-render (lands on Back, not <body>)',
+      doc.activeElement && doc.activeElement.classList && doc.activeElement.classList.contains('gback'));
+    click(doc.querySelector('#guidebody .gback'));
     type(doc.getElementById('guidesearch'), 'stardust');
     check('search finds stardust topics', doc.querySelectorAll('#guidebody .gitem').length >= 2);
     click(doc.querySelector('#guidebody .gitem'));
@@ -262,6 +258,26 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(tp);
     check('tooltips back On', tp.textContent === 'On');
 
+    // ============ MOTION TRI-STATE + VOLUME SLIDER (Tier 2) ============
+    const mopts = doc.querySelectorAll('#setpanel .fsopt[data-motion]');
+    check('settings shows Motion Auto/Full/Reduced (Auto on)',
+      mopts.length === 3 && mopts[0].classList.contains('on') && !doc.body.classList.contains('rmotion'));
+    click(mopts[2]);                                        // Reduced
+    check('Motion → Reduced stamps body.rmotion',
+      H.motionMode === 1 && doc.body.classList.contains('rmotion') && mopts[2].classList.contains('on'));
+    click(mopts[1]);                                        // Full
+    check('Motion → Full lifts the class', H.motionMode === 0 && !doc.body.classList.contains('rmotion'));
+    click(mopts[0]);                                        // Auto again (jsdom has no OS preference → full motion)
+    check('Motion → Auto follows the OS preference', H.motionMode === -1 && !doc.body.classList.contains('rmotion'));
+    const vs = doc.getElementById('volslider');
+    check('settings shows Volume slider at full', !!vs && vs.value === '100');
+    vs.value = '40';
+    vs.dispatchEvent(new w.Event('input', { bubbles: true }));
+    check('volume slider drives the SFX level live (sfxVol 0.4)', Math.abs(H.sfxVol - 0.4) < 1e-9, String(H.sfxVol));
+    vs.dispatchEvent(new w.Event('change', { bubbles: true }));
+    // (persistence of vol/rm is asserted on the pre-seeded boots below — this
+    //  window is file:// / opaque-origin, so its localStorage is off limits)
+
     // ============ PLAYER RENAME (Settings → Display, cancellable) ============
     click(doc.getElementById('renameopt'));               // settings panel is still open from the tooltip checks
     const nbox = doc.getElementById('namebox');
@@ -294,6 +310,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       && vet.doc.getElementById('relok').textContent === 'Continue');
     click2(vet.doc.getElementById('relok'), vet.w);
     check('veteran: bulletin closes via Continue', !visible(vrel));
+    check('veteran: absent vol/rm default to full volume + Auto motion',
+      vet.doc.getElementById('volslider').value === '100' && !vet.doc.body.classList.contains('rmotion')
+      && vet.w.__PROBE_HOOK__.motionMode === -1);
     check('veteran: boots clean', vet.errors.length === 0, vet.errors.slice(0, 2).join(' | '));
     vet.w.close();
 
@@ -325,7 +344,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // ============ BOOT 4: half-finished training saved in deep space resumes AT SOL ============
     const ds = boot((win) => {
       win.localStorage.setItem('cfcc_save_v1', JSON.stringify({
-        v: 4, me: 'Wanderer', guide: 1, tut: 0, rn: '1.1',
+        v: 4, me: 'Wanderer', guide: 1, tut: 0, rn: '1.1', vol: 40, rm: 1,
         view: { type: 'galaxy', gal: { x: -3000, y: 2400, size: 60, sp: 3, tilt: 0.4, rot: 1.2, seed: 777777 } },
       }));
     });
@@ -334,6 +353,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('deep-space resume: training restarts', visible(ds.doc.getElementById('tutbox')));
     check('deep-space resume: camera snapped home to Sol system', dsH && dsH.st.mode === 'system' && dsH.st.star && dsH.st.star.seed === 424242,
       dsH ? (dsH.st.mode + '/' + (dsH.st.star && dsH.st.star.seed)) : 'no hook');
+    check('saved vol/rm load and apply (slider 40, explicit Reduced)',
+      ds.doc.getElementById('volslider').value === '40' && ds.doc.body.classList.contains('rmotion')
+      && dsH.motionMode === 1 && Math.abs(dsH.sfxVol - 0.4) < 1e-9);
     check('deep-space resume: boots clean', ds.errors.length === 0, ds.errors.slice(0, 2).join(' | '));
     ds.w.close();
   } catch (e) {

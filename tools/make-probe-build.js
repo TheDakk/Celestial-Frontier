@@ -12,7 +12,10 @@ const input = fs.readFileSync(process.argv[2], 'utf8');
 const CLOSE = '\n})();\n</script>';
 const at = input.lastIndexOf(CLOSE);
 if (at < 0) { console.error('IIFE close not found'); process.exit(1); }
-const hook = '\ntry{ window.__PROBE_HOOK__ = { ' + names.join(', ') + ' }; }' +
+/* live getters, not a snapshot: scalar `let` bindings (sfxVol, motionMode, …)
+   change after boot, and the smoke suite asserts on their CURRENT values */
+const hook = '\ntry{ window.__PROBE_HOOK__ = { ' +
+  names.map(n => 'get ' + n + '(){ return ' + n + '; }').join(', ') + ' }; }' +
   'catch(e){ window.__PROBE_HOOK_ERR__ = String(e); }\n';
 const out = input.slice(0, at) + hook + input.slice(at);
 fs.writeFileSync(process.argv[3], out);

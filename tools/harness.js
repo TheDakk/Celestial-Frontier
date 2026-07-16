@@ -13,38 +13,8 @@ const outPath = process.argv[3];
 if (!htmlPath || !outPath) { console.error('usage: node harness.js <html> <out.json>'); process.exit(2); }
 const html = fs.readFileSync(htmlPath, 'utf8');
 
-// ---- fake 2D context ----------------------------------------------------
-function makeFake2D(canvas) {
-  const gradient = { addColorStop() {} };
-  const fake = {
-    canvas,
-    save() {}, restore() {}, beginPath() {}, closePath() {}, clip() {},
-    moveTo() {}, lineTo() {}, bezierCurveTo() {}, quadraticCurveTo() {},
-    arc() {}, arcTo() {}, ellipse() {}, rect() {}, roundRect() {},
-    fill() {}, stroke() {}, fillRect() {}, strokeRect() {}, clearRect() {},
-    fillText() {}, strokeText() {}, measureText: () => ({ width: 10 }),
-    drawImage() {}, putImageData() {},
-    getImageData: (x, y, w, h) => ({ width: w, height: h, data: new Uint8ClampedArray(Math.max(1, w * h * 4)) }),
-    createImageData: (w, h) => ({ width: w, height: h, data: new Uint8ClampedArray(Math.max(1, w * h * 4)) }),
-    createLinearGradient: () => gradient,
-    createRadialGradient: () => gradient,
-    createConicGradient: () => gradient,
-    createPattern: () => null,
-    setTransform() {}, resetTransform() {}, transform() {},
-    translate() {}, rotate() {}, scale() {},
-    setLineDash() {}, getLineDash: () => [],
-    isPointInPath: () => false, isPointInStroke: () => false,
-    filter: 'none',
-  };
-  // Tolerate any property get/set the game might use (fillStyle, etc.).
-  return new Proxy(fake, {
-    get(t, p) {
-      if (p in t) return t[p];
-      return () => undefined; // unknown method -> no-op
-    },
-    set(t, p, v) { t[p] = v; return true; },
-  });
-}
+// ---- fake 2D context (shared: tools/fake2d.js) ---------------------------
+const { makeFake2D } = require('./fake2d.js');
 
 // ---- probe source (runs as a classic script inside the page realm) ------
 const probeSource = fs.readFileSync(path.join(__dirname, 'probe.js'), 'utf8');

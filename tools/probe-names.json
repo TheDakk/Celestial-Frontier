@@ -14,5 +14,6 @@
   "RANKS", "REGIONS", "SIGS", "GRADE_TIERS",
   "UCELL", "OBS_R", "GR", "SYS_R", "HOME_GAL_SEED", "HOME_POS", "SOL_SEED",
   "PLAYER_SEED", "HARVEST_CD", "SAVE_KEY",
-  "picks", "st", "goTo", "gameEvent", "codex", "logMap"
+  "picks", "st", "goTo", "gameEvent", "codex", "logMap",
+  "sfxVol", "motionMode"
 ]

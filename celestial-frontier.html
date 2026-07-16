@@ -1027,6 +1027,25 @@
     -webkit-mask:linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
     mask-composite:exclude}
+  /* ---- Tier 2 accessibility (Emerson playtest): volume, motion, keyboard, touch ---- */
+  #volslider{width:112px;height:22px;margin:0;padding:0;accent-color:#f0c86e;background:transparent;cursor:pointer}
+  /* keyboard travelers see where they stand — mouse/touch stays outline-free */
+  [role="button"]:focus-visible{outline:1px solid rgba(240,200,110,0.85);outline-offset:2px}
+  /* Motion: Reduced — the decorative loops stand still (the travel tunnel,
+     screen shake and confetti bursts are gated in JS via motionOn) */
+  body.rmotion #updatepill, body.rmotion #cinema .rays, body.rmotion #eventsbtn .dot,
+  body.rmotion #rank.irid-plate, body.rmotion .plate.irid, body.rmotion .gbadge.irid,
+  body.rmotion .iridframe::after{animation:none !important}
+  /* fat fingers get invisible hit-padding — the visible pill sizes and the
+     40px rail rhythm stay exactly as designed */
+  @media (pointer:coarse){
+    #log .item .lacts button{position:relative}
+    /* the delete × keeps its EXACT visible size — an unconfirmed, permanent
+       action must never win taps that were aimed near it, only on it */
+    #log .item .lacts button:not(.del)::after{content:'';position:absolute;inset:-8px -1px}
+    #setpanel .fsopt{position:relative}
+    #setpanel .fsopt::after{content:'';position:absolute;inset:-6px -2px}
+  }
 </style>
 </head>
 <body>
@@ -1091,31 +1110,35 @@
 <div id="setpanel">
   <div class="shead">Settings</div>
   <div class="stabs">
-    <span class="stab on" data-stab="d">Display</span><span class="stab" data-stab="g">Graphics</span><span class="stab" data-stab="a">Audio</span>
+    <span class="stab on" data-stab="d" role="button" tabindex="0">Display</span><span class="stab" data-stab="g" role="button" tabindex="0">Graphics</span><span class="stab" data-stab="a" role="button" tabindex="0">Audio</span>
   </div>
   <div class="sgrp on" data-sg="d">
     <div class="srow2"><span>Text size</span>
-      <span class="opts"><span class="fsopt" data-fs="">A</span><span class="fsopt" data-fs="fs-lg">A+</span><span class="fsopt" data-fs="fs-xl">A++</span></span></div>
+      <span class="opts"><span class="fsopt" data-fs="" role="button" tabindex="0">A</span><span class="fsopt" data-fs="fs-lg" role="button" tabindex="0">A+</span><span class="fsopt" data-fs="fs-xl" role="button" tabindex="0">A++</span></span></div>
     <div class="srow2"><span>Text tone</span>
-      <span class="opts"><span class="fsopt" data-tone="">Soft</span><span class="fsopt" data-tone="tone-bright">Bright</span><span class="fsopt" data-tone="tone-max">Max</span></span></div>
+      <span class="opts"><span class="fsopt" data-tone="" role="button" tabindex="0">Soft</span><span class="fsopt" data-tone="tone-bright" role="button" tabindex="0">Bright</span><span class="fsopt" data-tone="tone-max" role="button" tabindex="0">Max</span></span></div>
     <div class="srow2"><span>Font</span>
-      <span class="opts"><span class="fsopt" data-font="">Grotesk</span><span class="fsopt" data-font="font-sys">System</span><span class="fsopt" data-font="font-mono">Mono</span></span></div>
+      <span class="opts"><span class="fsopt" data-font="" role="button" tabindex="0">Grotesk</span><span class="fsopt" data-font="font-sys" role="button" tabindex="0">System</span><span class="fsopt" data-font="font-mono" role="button" tabindex="0">Mono</span></span></div>
     <div class="srow2"><span>Explorer name</span>
-      <span class="opts"><span id="renameopt" class="fsopt" data-tip="Change your explorer name — your progress stays yours.">✎ Change</span></span></div>
+      <span class="opts"><span id="renameopt" class="fsopt" role="button" tabindex="0" data-tip="Change your explorer name — your progress stays yours.">✎ Change</span></span></div>
     <div class="srow2"><span>Tooltips</span>
-      <span class="opts"><span id="tipsopt" class="fsopt on">On</span></span></div>
+      <span class="opts"><span id="tipsopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
   </div>
   <div class="sgrp" data-sg="g">
     <div class="srow2"><span>Visual effects</span>
-      <span class="opts"><span id="fxopt" class="fsopt on">On</span></span></div>
+      <span class="opts"><span id="fxopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
     <div class="srow2"><span>Screen shake</span>
-      <span class="opts"><span id="shakeopt" class="fsopt on">On</span></span></div>
+      <span class="opts"><span id="shakeopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
+    <div class="srow2"><span>Motion</span>
+      <span class="opts"><span class="fsopt on" data-motion="-1" role="button" tabindex="0" data-tip="Auto follows your device&#8217;s reduce-motion preference. Reduced stills the travel tunnel, shake, confetti and shimmer.">Auto</span><span class="fsopt" data-motion="0" role="button" tabindex="0">Full</span><span class="fsopt" data-motion="1" role="button" tabindex="0">Reduced</span></span></div>
   </div>
   <div class="sgrp" data-sg="a">
     <div class="srow2"><span>Sound</span>
-      <span class="opts"><span id="sndopt" class="fsopt on">On</span></span></div>
+      <span class="opts"><span id="sndopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
+    <div class="srow2"><span>Volume</span>
+      <span class="opts"><input id="volslider" type="range" min="0" max="100" step="5" value="100" aria-label="Sound effects volume"></span></div>
     <div class="srow2"><span>Notifications</span>
-      <span class="opts"><span id="notifopt" class="fsopt on">On</span></span></div>
+      <span class="opts"><span id="notifopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
   </div>
   <div class="sdiv"></div>
   <div class="rcnote">💾 Your expedition saves <b>only to this browser, on this device</b> — clearing site data erases it. Back up favourites as ⇪ creature codes.</div>
@@ -1352,6 +1375,10 @@ function setTrail(segs){
 }
 /* per-mode hint pills — worded for the device actually in hand */
 const TOUCH = (window.matchMedia && matchMedia('(pointer: coarse)').matches) || 'ontouchstart' in window;
+/* fingers are wider than cursors: every canvas pick FLOOR scales up on touch
+   devices (the true-size part of each target is untouched, so nothing can
+   start stealing taps from a bigger neighbor — the Emerson moon lesson) */
+const PICK_F = TOUCH ? 1.4 : 1;
 const HINTS = TOUCH ? {
   universe:'<em>Tap</em> a galaxy to survey it &middot; <em>pinch</em> or <em>double-tap</em> to dive inside',
   galaxy:'<em>Tap</em> any star &middot; <em>pinch-zoom</em> toward one to see its planets',
@@ -4058,10 +4085,16 @@ cv.addEventListener('pointerup', e=>{
   }
 });
 document.documentElement.addEventListener('mouseleave', ()=>{ mouse.x=mouse.y=null; });
+let _assistArm=-1e9;   /* performance.now() of the last blocked zoom-in at the system ceiling */
 function zoomAt(f, sx, sy){
   const c=curCam();
   const [zmin,zmax]=zoomLimits();
   const nz=clamp(c.z*f, zmin, zmax);
+  /* zooming IN against the system-mode ceiling is the one unmistakable
+     "let me land" gesture — it briefly arms the landing assist (transitions
+     section). Anything else near a big planet — surveying its moons, framing
+     its rings, just parking — must never be hijacked by an autopilot. */
+  if(st.mode==='system' && f>1 && nz>=zmax*0.999) _assistArm=performance.now();
   const wx=(sx-W/2)/c.z + c.x, wy=(sy-H/2)/c.z + c.y;
   c.z=nz;
   c.x = wx - (sx-W/2)/c.z;
@@ -4099,6 +4132,22 @@ document.addEventListener('keydown', e=>{
   if((e.key==='Enter'||e.key===' ') && e.target && e.target.getAttribute && e.target.getAttribute('role')==='button'){
     e.preventDefault(); e.target.click();
   }
+});
+/* panels re-render via innerHTML, which destroys the focused item and dumps
+   keyboard users back at <body> — this puts focus somewhere sensible again
+   (only when focus WAS lost; a focused search box is never robbed) */
+function refocus(container, sel){
+  try{
+    const ae=document.activeElement;
+    /* fire only when focus was LOST (fell to <body>, or the focused node was
+       itself destroyed by the re-render) — a focused search box is never robbed */
+    if(!ae || ae===document.body || !ae.isConnected){
+      const el=container.querySelector(sel);
+      if(el) el.focus();
+    }
+  }catch(_){}
+}
+document.addEventListener('keydown', e=>{
   if(e.key==='Escape'){
     /* the rename dialog cancels on Escape — but the INITIAL name prompt must
        still insist on a name (a fresh expedition can't fly anonymous) */
@@ -4211,19 +4260,38 @@ function checkTransitions(){
     }
     const sys = st.sys || (st.sys=systemFor(st.star.seed));
     const tNow=perfTime();
+    let assist=null, assistApp=0;
     for(const pl of sys.planets){
       const ang = pl.orb*0.13 + tNow*0.05/(pl.orb*0.012);
       const px=Math.cos(ang)*pl.orb, py=Math.sin(ang)*pl.orb;
       const pr=(6*pl.P.sizeMul);
       const apparent=pr*c.z;
       const d=Math.hypot(px-c.x, py-c.y)*c.z;
-      if(apparent>0.40*minWH && d<0.5*minWH){
-        st.planet=pl;
-        st.pfbm=makeNoise(pl.P.seed);
-        st.pcam={x:0,y:0,z:1};
-        st.mode='surface'; st.fade=1;
-        playWhoosh();                    /* planetfall */
-        break;
+      if(apparent>0.40*minWH){
+        if(d<0.5*minWH){
+          st.planet=pl;
+          st.pfbm=makeNoise(pl.P.seed);
+          st.pcam={x:0,y:0,z:1};
+          st.mode='surface'; st.fade=1;
+          playWhoosh();                    /* planetfall */
+          return;
+        }
+        /* landing assist: the planet is past landing size but sits off-center
+           (cursor-anchored zoom pins it wherever the pointer was, so zoom
+           maxes out without ever landing). Note it for the glide below. */
+        if(d<1.6*minWH && apparent>assistApp){ assistApp=apparent; assist={px, py}; }
+      }
+    }
+    /* the glide runs only just after a blocked zoom-in at the system ceiling
+       (see zoomAt) — never while the player pans or pinches, and it honors
+       Motion: Reduced by stepping instantly instead of animating */
+    if(assist && !dragging && !pinching && performance.now()-_assistArm<450){
+      if(motionOK()){
+        c.x += (assist.px-c.x)*0.14;
+        c.y += (assist.py-c.y)*0.14;
+      } else {
+        c.x = assist.px;
+        c.y = assist.py;
       }
     }
   } else if(st.mode==='surface'){
@@ -4362,12 +4430,12 @@ function drawUniverse(time){
           ctx.fillStyle = g.quasar ? `rgba(185,215,255,${(0.9*fade).toFixed(3)})`
                                    : `rgba(231,227,250,${((0.45+0.35*Math.min(sz/60,1))*fade).toFixed(3)})`;
           ctx.beginPath(); ctx.arc(g.x, g.y, Math.max(1.05/c.z, sz*0.16), 0, TAU); ctx.fill();
-          picks.push({sx:(g.x-c.x)*c.z+W/2, sy:(g.y-c.y)*c.z+H/2, r:9,
+          picks.push({sx:(g.x-c.x)*c.z+W/2, sy:(g.y-c.y)*c.z+H/2, r:9*PICK_F,
             kind:g.quasar?'quasar':(g.radio?'radio':'galaxy'), data:g});
         }
         continue;
       }
-      picks.push({sx:(g.x-c.x)*c.z+W/2, sy:(g.y-c.y)*c.z+H/2, r:Math.max(sz*c.z,16), kind:g.quasar?'quasar':(g.radio?'radio':'galaxy'), data:g});
+      picks.push({sx:(g.x-c.x)*c.z+W/2, sy:(g.y-c.y)*c.z+H/2, r:Math.max(sz*c.z,16*PICK_F), kind:g.quasar?'quasar':(g.radio?'radio':'galaxy'), data:g});
       if(g.radio){
         ctx.save(); ctx.translate(g.x,g.y); ctx.rotate(g.rot);
         for(const sgn of [-1,1]){
@@ -4508,7 +4576,7 @@ function drawGalaxy(time){
       wg.addColorStop(0,'rgba(20,8,40,0.95)'); wg.addColorStop(0.6,'rgba(120,80,200,0.35)'); wg.addColorStop(1,'transparent');
       ctx.fillStyle=wg; ctx.beginPath(); ctx.arc(0,0,12,0,TAU); ctx.fill();
       ctx.restore();
-      picks.push({sx:(whx-c.x)*c.z+W/2, sy:(why-c.y)*c.z+H/2, r:Math.max(12*c.z,14), kind:'worm', data:{x:whx,y:why}});
+      picks.push({sx:(whx-c.x)*c.z+W/2, sy:(why-c.y)*c.z+H/2, r:Math.max(12*c.z,14*PICK_F), kind:'worm', data:{x:whx,y:why}});
       if(c.z>minWH/900){
         ctx.font=`italic ${11/c.z}px Georgia,serif`; ctx.textAlign='center';
         ctx.fillStyle='rgba(200,170,255,0.85)';
@@ -4567,12 +4635,12 @@ function drawGalaxy(time){
         }
       }
       picks.push({sx:(dc.x-c.x)*c.z+W/2, sy:(dc.y-c.y)*c.z+H/2,
-        r:Math.max((dc.rr||GCELL*0.4)*c.z*0.8,12), kind:'deco', data:dc});
+        r:Math.max((dc.rr||GCELL*0.4)*c.z*0.8,12*PICK_F), kind:'deco', data:dc});
     }
     for(const s of cell.stars){
       ctx.fillStyle=s.c;
       ctx.beginPath(); ctx.arc(s.x, s.y, s.s*baseR*1.6, 0, TAU); ctx.fill();
-      picks.push({sx:(s.x-c.x)*c.z+W/2, sy:(s.y-c.y)*c.z+H/2, r:Math.max(s.s*baseR*1.6*c.z,12), kind:'star', data:s});
+      picks.push({sx:(s.x-c.x)*c.z+W/2, sy:(s.y-c.y)*c.z+H/2, r:Math.max(s.s*baseR*1.6*c.z,12*PICK_F), kind:'star', data:s});
       if(s.sol && c.z>minWH/900){
         ctx.strokeStyle='rgba(255,217,160,0.8)'; ctx.lineWidth=1.2/c.z;
         ctx.beginPath(); ctx.arc(s.x,s.y, 9/c.z, 0, TAU); ctx.stroke();
@@ -4593,7 +4661,7 @@ function drawGalaxy(time){
         ctx.fillStyle=s.c;
         ctx.beginPath(); ctx.arc(s.x, s.y, s.s*baseR*1.5, 0, TAU); ctx.fill();
         picks.push({sx:(s.x-c.x)*c.z+W/2, sy:(s.y-c.y)*c.z+H/2,
-          r:Math.max(s.s*baseR*1.5*c.z,9), kind:'star', data:s});
+          r:Math.max(s.s*baseR*1.5*c.z,9*PICK_F), kind:'star', data:s});
       }
     }
   }
@@ -4630,14 +4698,14 @@ function drawGalaxy(time){
       ctx.beginPath(); ctx.moveTo(-7,0); ctx.lineTo(7,0); ctx.stroke(); ctx.restore();
       ctx.fillStyle='rgba(220,235,255,0.95)'; ctx.beginPath(); ctx.arc(site.x,site.y,Math.max(0.5/c.z,0.7),0,TAU); ctx.fill();
     }
-    picks.push({sx:(site.x-c.x)*c.z+W/2, sy:(site.y-c.y)*c.z+H/2, r:Math.max(16*c.z,13), kind:'snova', data:site});
+    picks.push({sx:(site.x-c.x)*c.z+W/2, sy:(site.y-c.y)*c.z+H/2, r:Math.max(16*c.z,13*PICK_F), kind:'snova', data:site});
     /* the newborn protostars its shockwave is igniting */
     for(const b of site.births){
       const pg=ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,3.4);
       const tw=0.7+0.3*Math.sin(time*3+b.seed%7);
       pg.addColorStop(0,`rgba(255,210,160,${tw.toFixed(2)})`); pg.addColorStop(0.5,'rgba(255,150,80,0.6)'); pg.addColorStop(1,'transparent');
       ctx.fillStyle=pg; ctx.beginPath(); ctx.arc(b.x,b.y,3.4,0,TAU); ctx.fill();
-      picks.push({sx:(b.x-c.x)*c.z+W/2, sy:(b.y-c.y)*c.z+H/2, r:Math.max(3.4*c.z,11), kind:'protostar', data:b});
+      picks.push({sx:(b.x-c.x)*c.z+W/2, sy:(b.y-c.y)*c.z+H/2, r:Math.max(3.4*c.z,11*PICK_F), kind:'protostar', data:b});
     }
     if(c.z>minWH/900){
       ctx.font=`italic ${11/c.z}px Georgia,serif`; ctx.textAlign='center';
@@ -4725,7 +4793,7 @@ function drawSystem(time){
   drawBackdrop();
   const c=st.scam;
   const sys = st.sys || (st.sys=systemFor(st.star.seed));
-  picks.push({sx:(0-c.x)*c.z+W/2, sy:(0-c.y)*c.z+H/2, r:Math.max((sys.starR||20)*c.z,18), kind:'starsys', data:{seed:st.star.seed, sys}});
+  picks.push({sx:(0-c.x)*c.z+W/2, sy:(0-c.y)*c.z+H/2, r:Math.max((sys.starR||20)*c.z,18*PICK_F), kind:'starsys', data:{seed:st.star.seed, sys}});
   ctx.save(); ctx.translate(W/2,H/2); ctx.scale(c.z,c.z); ctx.translate(-c.x,-c.y);
   /* habitable zone — the band where water can stay liquid */
   if(sys.hz){
@@ -4843,7 +4911,7 @@ function drawSystem(time){
     const px=Math.cos(ang)*pl.orb, py=Math.sin(ang)*pl.orb;
     const pr=6*pl.P.sizeMul;
     const sprite=getPlanetSprite(pl.P);
-    picks.push({sx:(px-c.x)*c.z+W/2, sy:(py-c.y)*c.z+H/2, r:Math.max(pr*c.z,16), kind:'planet', data:{P:pl.P, sys, pl}});
+    picks.push({sx:(px-c.x)*c.z+W/2, sy:(py-c.y)*c.z+H/2, r:Math.max(pr*c.z,16*PICK_F), kind:'planet', data:{P:pl.P, sys, pl}});
     ctx.save(); ctx.translate(px,py);
     if(pl.P.ring){
       ctx.save(); ctx.rotate(0.45); ctx.scale(1,0.32);
@@ -4890,7 +4958,7 @@ function drawSystem(time){
          gas-giant moon on desktop); the generous 10px floor returns once
          you're close enough that names render. */
       picks.push({sx:((px+mx)-c.x)*c.z+W/2, sy:((py+my)-c.y)*c.z+H/2,
-        r:c.z>minWH/420 ? Math.max(mrad*c.z,10) : mrad*c.z, kind:'moon', data:{pl, m}});
+        r:c.z>minWH/420 ? Math.max(mrad*c.z,10*PICK_F) : mrad*c.z, kind:'moon', data:{pl, m}});
       if(c.z>minWH/420 && m<10){
         const mname=pl.name+' '+roman(m+1);
         ctx.font=`${8.5/c.z}px Georgia,serif`; ctx.textAlign='center';
@@ -4912,7 +4980,7 @@ function drawSystem(time){
     const ds=2.2;
     ctx.fillStyle='#c2b8a6'; ctx.beginPath(); ctx.arc(dx2,dy2,ds,0,TAU); ctx.fill();
     ctx.fillStyle='rgba(0,0,20,0.4)'; ctx.beginPath(); ctx.arc(dx2+ds*0.3,dy2+ds*0.2,ds*0.7,0,TAU); ctx.fill();
-    picks.push({sx:(dx2-c.x)*c.z+W/2, sy:(dy2-c.y)*c.z+H/2, r:Math.max(ds*c.z,11), kind:'dwarf', data:{dw, sys}});
+    picks.push({sx:(dx2-c.x)*c.z+W/2, sy:(dy2-c.y)*c.z+H/2, r:Math.max(ds*c.z,11*PICK_F), kind:'dwarf', data:{dw, sys}});
     if(c.z>minWH/600){
       ctx.font=`italic ${9/c.z}px Georgia,serif`; ctx.textAlign='center';
       ctx.fillStyle='rgba(214,206,190,0.75)';
@@ -4930,7 +4998,7 @@ function drawSystem(time){
     ctx.save(); ctx.translate(vx,vy); ctx.rotate(v.ang);
     ctx.fillStyle='#d6a684'; ctx.fillRect(-4,-1.1,8,2.2);
     ctx.restore();
-    picks.push({sx:(vx-c.x)*c.z+W/2, sy:(vy-c.y)*c.z+H/2, r:Math.max(4*c.z,12), kind:'visitor', data:{v}});
+    picks.push({sx:(vx-c.x)*c.z+W/2, sy:(vy-c.y)*c.z+H/2, r:Math.max(4*c.z,12*PICK_F), kind:'visitor', data:{v}});
     if(c.z>minWH/650){
       ctx.font=`italic ${9/c.z}px Georgia,serif`; ctx.textAlign='center';
       ctx.fillStyle='rgba(230,190,160,0.8)';
@@ -4947,7 +5015,7 @@ function drawSystem(time){
     const y=Math.sin(cm.tilt)*ox + Math.cos(cm.tilt)*oy;
     const dist=Math.hypot(x,y)||1;
     picks.push({sx:(x-c.x)*c.z+W/2, sy:(y-c.y)*c.z+H/2,
-      r:Math.max(2.2*c.z,13), kind:'comet', data:{cm, ci}});
+      r:Math.max(2.2*c.z,13*PICK_F), kind:'comet', data:{cm, ci}});
     const tailLen=Math.max(0,(SYS_R*0.55-dist))*0.5+8;
     const ux=x/dist, uy=y/dist;
     const tg=ctx.createLinearGradient(x,y,x+ux*tailLen,y+uy*tailLen);
@@ -5409,7 +5477,7 @@ function renderLog(){
     const th = it.thumb ? '<img class="t'+(it.sq?' sq':'')+'" src="'+it.thumb+'" alt="">' : '<span class="t"></span>';
     const star = it.star ? '<span class="rstar">'+it.star+'</span>' : '';
     const badge = (!isHome && it.badge) ? '<span class="badge">'+it.badge+'</span>' : '';
-    html+='<div class="item'+(isHome?' ishome':'')+'" data-id="'+it.id+'" title="Travel to '+it.title.replace(/"/g,'')+'">'+th+
+    html+='<div class="item'+(isHome?' ishome':'')+'" data-id="'+it.id+'" role="button" tabindex="0" title="Travel to '+it.title.replace(/"/g,'')+'">'+th+
       '<div class="meta"><div class="nm">'+(isHome?'<span class="hm">⌂</span>':'')+it.title+star+'</div>'+
         '<div class="ds">'+it.sub+'</div></div>'+
       badge+
@@ -5424,15 +5492,15 @@ function renderLog(){
 }
 logEl.addEventListener('click', e=>{
   const filt=e.target.closest('[data-filt]');
-  if(filt){ logFilter=filt.dataset.filt; renderLog(); return; }
+  if(filt){ logFilter=filt.dataset.filt; renderLog(); refocus(logEl, '[data-filt="'+logFilter+'"]'); return; }
   const gh=e.target.closest('[data-gohome]');
   if(gh){ if(homeId && logMap.has(homeId)){ const en=logMap.get(homeId); if(en && en.where) travelTo(en.where); } return; }
   const fav=e.target.closest('[data-fav]');
-  if(fav){ const en=logMap.get(fav.dataset.fav); if(en){ en.fav=!en.fav; renderLog(); queueSave(); } return; }
+  if(fav){ const en=logMap.get(fav.dataset.fav); if(en){ en.fav=!en.fav; renderLog(); refocus(logEl, '[data-fav="'+fav.dataset.fav+'"]'); queueSave(); } return; }
   const hm=e.target.closest('[data-home]');
   if(hm){
     const id=hm.dataset.home; const was=homeId===id; homeId=was?null:id;
-    renderLog(); queueSave();
+    renderLog(); refocus(logEl, '[data-home="'+id+'"]'); queueSave();
     const t=logMap.get(id);
     toast(was?'Home cleared':'⌂ Home set',
       was?'You can set a new home anytime from the Star Atlas.'
@@ -5446,6 +5514,7 @@ logEl.addEventListener('click', e=>{
     logCountEl.textContent=logMap.size;
     _panelKey=null;
     renderLog();
+    refocus(logEl, '.item');
     queueSave();
     return;
   }
@@ -5763,7 +5832,7 @@ function renderCodex(){
     const mods=(sp.mods||[]).slice(0,4);
     const modHtml=mods.length?'<span class="mods">'+mods.map(m=>'<em>'+m+'</em>').join('')+'</span>':'';
     const ccx=creatureCondition(sp.genome);
-    return '<div class="sp" data-pick="'+sp.id+'" style="'+bstyle+'"><img class="art" src="'+sp.art+'" alt="">'+
+    return '<div class="sp" data-pick="'+sp.id+'" role="button" tabindex="0" style="'+bstyle+'"><img class="art" src="'+sp.art+'" alt="">'+
       '<div class="info"><div class="nm">'+(REALM_ICON[realm]||KIND_ICON[sp.kind]||'')+' '+sp.name+' '+rar+
       (ccx.h>0?' <span style="color:'+ccx.col+';font-size:9px">● '+ccx.label+'</span>':'')+
       '</div><div class="ds">'+sp.desc+
@@ -5783,7 +5852,7 @@ function renderCodex(){
     const open=_cdxOpen.has(rm);
     const hy=group.filter(s=>s.hybrid).length;
     html+='<div class="cgrp'+(open?' open':'')+'" data-cg="'+rm+'">'+
-      '<div class="cgh"><span><span class="arr">▸</span>'+(REALM_ICON[rm]||'')+' '+rm+'</span>'+
+      '<div class="cgh" role="button" tabindex="0"><span><span class="arr">▸</span>'+(REALM_ICON[rm]||'')+' '+rm+'</span>'+
       '<span class="cnt">'+group.length+(hy?' · '+hy+' hybrid':'')+'</span></div>'+
       '<div class="cgb">'+(open?group.map(spCard).join(''):'')+'</div></div>';
   }
@@ -5796,6 +5865,7 @@ codexEl.addEventListener('click', e=>{
   const cat=grp.dataset.cg;
   if(_cdxOpen.has(cat)) _cdxOpen.delete(cat); else _cdxOpen.add(cat);
   renderCodex();   /* re-render: closed groups stay cheap, open ones get their cards */
+  refocus(codexEl, '.cgrp[data-cg="'+cat+'"] .cgh');
 });
 codexEl.addEventListener('click', e=>{
   const go=e.target.closest('[data-go]');
@@ -5888,8 +5958,8 @@ const BINDER_SETS=[
 ];
 let codexView='list';
 function _codexTabs(){
-  return '<div class="cvtabs"><span class="cvt'+(codexView==='list'?' on':'')+'" data-cvw="list">📖 Species</span>'+
-    '<span class="cvt'+(codexView==='binder'?' on':'')+'" data-cvw="binder">🗂 Binder</span></div>';
+  return '<div class="cvtabs"><span class="cvt'+(codexView==='list'?' on':'')+'" data-cvw="list" role="button" tabindex="0">📖 Species</span>'+
+    '<span class="cvt'+(codexView==='binder'?' on':'')+'" data-cvw="binder" role="button" tabindex="0">🗂 Binder</span></div>';
 }
 function renderBinder(){
   const own={tiers:new Set(), realms:new Set(), bodies:new Set(), themes:new Set(), flavors:new Set(), kinds:new Set(), sizes:new Set()};
@@ -5920,7 +5990,7 @@ function renderBinder(){
     '<div class="bind-head">Named one-of-a-kind legends at fixed worlds — the same fifty for every explorer. <b>Tap a silhouette</b> to plot a course to its last-known world, then <b>scan</b> there to catalogue it.</div><div class="bgrid">';
   for(let i=0;i<PARAGON_N;i++){
     const have=codex.has('s'+paragonSeed(i));
-    html+='<span class="bslot pslot'+(have?'':' miss')+'" data-par="'+i+'"'+(have?' style="border-color:#3fe8c8;color:#3fe8c8"':'')+'>'+
+    html+='<span class="bslot pslot'+(have?'':' miss')+'" data-par="'+i+'" role="button" tabindex="0"'+(have?' style="border-color:#3fe8c8;color:#3fe8c8"':'')+'>'+
       (have?codex.get('s'+paragonSeed(i)).name:'#'+(i+1)+' — ?')+'</span>';
   }
   html+='</div><h4 class="bh">🏅 Sets</h4>';
@@ -5935,7 +6005,7 @@ function renderBinder(){
 }
 codexEl.addEventListener('click', e=>{
   const tab=e.target.closest('[data-cvw]');
-  if(tab){ codexView=tab.dataset.cvw; renderCodex(); return; }
+  if(tab){ codexView=tab.dataset.cvw; renderCodex(); refocus(codexEl, '.cvt[data-cvw="'+codexView+'"]'); return; }
   const par=e.target.closest('[data-par]');
   if(par){
     const i=+par.dataset.par;
@@ -6008,11 +6078,15 @@ function goTo(w){
    destination star, and the arrival eases in — the actual goTo() hides in
    the middle of the tunnel. Purely presentational: the destination state is
    byte-identical to what goTo always produced. Tap to skip; fxOn-gated;
-   honors prefers-reduced-motion. */
+   honors the Motion setting (Auto follows the OS prefers-reduced-motion
+   preference live; Full/Reduced are explicit player choices). */
 let _trav=null;
-const _REDUCED=(()=>{ try{ return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(_){ return false; } })();
+let _sysReduced=(()=>{ try{ return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(_){ return false; } })();
+/* the OS preference is honored LIVE while Motion sits on Auto — a player who
+   flips Reduce Motion on mid-session (or mid-save) is heard immediately */
+try{ matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', e=>{ _sysReduced=!!e.matches; applyMotion(); }); }catch(_){}
 function travelTo(w){
-  if(!w || !w.gal || !fxOn || _REDUCED || _trav){ goTo(w); return; }
+  if(!w || !w.gal || !fxOn || !motionOK() || _trav){ goTo(w); return; }
   /* distance matters — and your drive answers it. Duration scales with the
      gulf you're crossing ÷ drive tier, CAPPED so travel is flavor, never
      boredom; better drives shrink the cap toward a breath. */
@@ -6238,13 +6312,39 @@ document.addEventListener('pointerdown', e=>{
 
 /* ---- rarity sting: a chime that climbs with the tier (WebAudio, no assets) ---- */
 /* ----------------------------------------------------------------
-   @section audio [app] — Web Audio stings & tones; sound/effects/shake settings flags
-   Owns: AC, sndOn, fxOn, shakeOn, ac, playRaritySting, playSurveyPing, playWhoosh
+   @section audio [app] — Web Audio stings & tones; sound/effects/shake/motion/volume settings flags
+   Owns: AC, sndOn, fxOn, shakeOn, sfxVol, motionOn, ac, sfxOut, applySfxVol, applyMotion, playRaritySting, playSurveyPing, playWhoosh
    ---------------------------------------------------------------- */
 let AC=null;
 let sndOn=true;
 let fxOn=true;
 let shakeOn=true;
+let sfxVol=1;            /* master SFX level 0..1 — saves without the field play at full, as before */
+let motionMode=-1;       /* -1 Auto (follow the OS reduce-motion preference, live) · 0 Full · 1 Reduced.
+                            Auto is the default AND is what gets saved unless the player explicitly
+                            picks Full/Reduced — so the OS preference is never frozen into the save. */
+let _sfxBus=null;
+function motionOK(){ return motionMode===-1 ? !_sysReduced : motionMode===0; }
+function sfxOut(a){
+  /* every synth exits through one shared gain so a single slider rules them all */
+  if(!_sfxBus){ _sfxBus=a.createGain(); _sfxBus.connect(a.destination); applySfxGain(); }
+  return _sfxBus;
+}
+function applySfxGain(){
+  /* squared taper: the slider tracks how loud it FEELS, not raw amplitude */
+  try{ if(_sfxBus) _sfxBus.gain.setValueAtTime(sfxVol*sfxVol, _sfxBus.context.currentTime); }catch(_){}
+}
+function applySfxVol(){
+  applySfxGain();
+  const s=document.getElementById('volslider');
+  if(s) s.value=String(Math.round(sfxVol*100));
+}
+function applyMotion(){
+  try{ document.body.classList.toggle('rmotion', !motionOK()); }catch(_){}
+  const opts=document.querySelectorAll ? document.querySelectorAll('#setpanel .fsopt[data-motion]') : [];
+  for(const o of opts) o.classList.toggle('on', parseInt(o.dataset.motion,10)===motionMode);
+}
+applyMotion();   /* an OS reduce-motion preference stills the shimmer from first paint */
 function ac(){
   if(!sndOn) return null;
   if(!AC){ try{ AC=new (window.AudioContext||window.webkitAudioContext)(); }catch(_){ return null; } }
@@ -6275,7 +6375,7 @@ function playRaritySting(tier){
     master.gain.setValueAtTime(0.0001, t);
     master.gain.exponentialRampToValueAtTime(0.16, t+0.06);
     master.gain.exponentialRampToValueAtTime(0.0001, t+1.5+tier*0.28);
-    master.connect(a.destination);
+    master.connect(sfxOut(a));
     for(let i=0;i<steps;i++){
       const f=root*Math.pow(2, LADDER[i]/12);
       const t0=t+i*0.095;
@@ -6329,7 +6429,7 @@ function playSurveyPing(){
     g.gain.setValueAtTime(0.0001, t);
     g.gain.exponentialRampToValueAtTime(0.05, t+0.02);
     g.gain.exponentialRampToValueAtTime(0.0001, t+0.28);
-    o.connect(g); g.connect(a.destination);
+    o.connect(g); g.connect(sfxOut(a));
     o.start(t); o.stop(t+0.3);
   }catch(_){}
 }
@@ -6352,7 +6452,7 @@ function playWhoosh(){
     g.gain.setValueAtTime(0.0001, t);
     g.gain.exponentialRampToValueAtTime(0.09, t+0.12);
     g.gain.exponentialRampToValueAtTime(0.0001, t+dur);
-    n.connect(f); f.connect(g); g.connect(a.destination);
+    n.connect(f); f.connect(g); g.connect(sfxOut(a));
     n.start(t); n.stop(t+dur+0.05);
   }catch(_){}
 }
@@ -6579,6 +6679,7 @@ function doSave(){
       v:4, epoch:COSMIC_EPOCH,
       view:whereOfView(),
       hp:hp, pstats:pstats, fs:fsMode, tone:toneMode, font:fontMode, snd:sndOn?1:0, fx:fxOn?1:0, shake:shakeOn?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
+      vol:Math.round(sfxVol*100), rm:motionMode,
       notifs:notifications.slice(0,50),
       me:explorerName,
       essence:essence,
@@ -6656,6 +6757,14 @@ function loadSave(){
     shakeOn=data.shake!==0;
     notifOn=data.notif!==0;
     tipsOn=data.tips!==0;
+    /* vol absent (pre-slider save) ⇒ full volume. rm: only an explicit player
+       choice is honored (0 Full / 1 Reduced); absent or -1 stays Auto, which
+       keeps following the OS reduce-motion preference live */
+    sfxVol=data.vol===undefined ? 1 : clamp(num(data.vol,100),0,100)/100;
+    applySfxVol();
+    const _rmv=num(data.rm,-1);
+    motionMode=_rmv===1 ? 1 : (_rmv===0 ? 0 : -1);
+    applyMotion();
     for(const n of (data.notifs||[])){ if(n && n.tt!=null && notifications.length<60) notifications.push(n); }
     for(const n of notifications){ if(n.id>=_notifSeq) _notifSeq=n.id+1; }
     renderBell();
@@ -7672,7 +7781,7 @@ function playFailTone(){
       g.gain.setValueAtTime(0.0001,t+i*0.28);
       g.gain.exponentialRampToValueAtTime(0.09,t+i*0.28+0.04);
       g.gain.exponentialRampToValueAtTime(0.0001,t+i*0.28+1.1);
-      o.connect(g); g.connect(a.destination);
+      o.connect(g); g.connect(sfxOut(a));
       o.start(t+i*0.28); o.stop(t+i*0.28+1.2);
     });
   }catch(_){}
@@ -7690,7 +7799,7 @@ const FX_GREEN=['#7fe6a0','#bdf7d2','#4ecf86'];
 const FX_PURP=['#d6a0ff','#9fb6ff','#f0d9ff'];
 const FX_RED=['#ff8a72','#d6453c','#ffb8ac'];
 function fxBurst(colors, n, x, y){
-  if(!fxOn) return;
+  if(!fxOn || !motionOK()) return;
   try{
     if(!Array.isArray(colors)) colors=[colors];
     const cx=(x==null? innerWidth/2 : x), cy=(y==null? innerHeight*0.42 : y);
@@ -7712,7 +7821,7 @@ function fxBurst(colors, n, x, y){
   }catch(_){}
 }
 function fxShake(){
-  if(!shakeOn) return;
+  if(!shakeOn || !motionOK()) return;
   try{
     const c=document.getElementById('cosmos'); if(!c) return;
     c.style.animation='none'; void c.offsetWidth; c.style.animation='fxshake .4s';
@@ -7724,7 +7833,7 @@ function playFanfare(){
     const t=a.currentTime+0.02, notes=[392,494,587,784];   /* G major arpeggio up */
     const master=a.createGain(); master.gain.setValueAtTime(0.0001,t);
     master.gain.exponentialRampToValueAtTime(0.18,t+0.05); master.gain.exponentialRampToValueAtTime(0.0001,t+1.7);
-    master.connect(a.destination);
+    master.connect(sfxOut(a));
     notes.forEach((f,i)=>{ const t0=t+i*0.11; for(const det of [-4,5]){ const o=a.createOscillator(),g=a.createGain();
       o.type='triangle'; o.frequency.value=f; o.detune.value=det;
       g.gain.setValueAtTime(0.0001,t0); g.gain.exponentialRampToValueAtTime(0.1,t0+0.03); g.gain.exponentialRampToValueAtTime(0.0001,t0+0.95);
@@ -7737,7 +7846,7 @@ function playThud(){
     const t=a.currentTime+0.02, o=a.createOscillator(), g=a.createGain();
     o.type='sawtooth'; o.frequency.setValueAtTime(150,t); o.frequency.exponentialRampToValueAtTime(46,t+0.5);
     g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(0.16,t+0.03); g.gain.exponentialRampToValueAtTime(0.0001,t+0.7);
-    o.connect(g); g.connect(a.destination); o.start(t); o.stop(t+0.75);
+    o.connect(g); g.connect(sfxOut(a)); o.start(t); o.stop(t+0.75);
   }catch(_){}
 }
 return Object.freeze({fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud, fxShake, FX_RED});
@@ -8238,24 +8347,27 @@ function _guideTopic(id){ for(const c of GUIDE) for(const t of c.topics) if(t.id
 function _guideMenu(){
   const body=document.getElementById('guidebody'); if(!body) return;
   body.innerHTML=GUIDE.map((c,i)=>
-    '<div class="gcat" data-gc="'+i+'"><span class="gi">'+c.icon+'</span>'+
+    '<div class="gcat" data-gc="'+i+'" role="button" tabindex="0"><span class="gi">'+c.icon+'</span>'+
     '<span><div class="gt">'+c.cat+'</div><div class="gd">'+c.blurb+'</div></span><span class="gn">›</span></div>').join('');
   body.scrollTop=0;
+  refocus(body, '.gcat');
 }
 function _guideCat(i){
   const body=document.getElementById('guidebody'); const c=GUIDE[i]; if(!body||!c) return;
-  body.innerHTML='<div class="gback" data-gb="menu">‹ All topics</div>'+
-    c.topics.map(t=>'<div class="gitem" data-gt="'+t.id+'"><span>'+c.icon+'</span> '+t.t+'<span class="gn">›</span></div>').join('');
+  body.innerHTML='<div class="gback" data-gb="menu" role="button" tabindex="0">‹ All topics</div>'+
+    c.topics.map(t=>'<div class="gitem" data-gt="'+t.id+'" role="button" tabindex="0"><span>'+c.icon+'</span> '+t.t+'<span class="gn">›</span></div>').join('');
   body.scrollTop=0;
+  refocus(body, '.gback');
 }
 function _guideShow(id){
   const body=document.getElementById('guidebody'); const hit=_guideTopic(id); if(!body||!hit) return;
   const others=hit.c.topics.filter(t=>t.id!==id).slice(0,4);
-  body.innerHTML='<div class="gback" data-gb="'+GUIDE.indexOf(hit.c)+'">‹ '+hit.c.cat+'</div>'+
+  body.innerHTML='<div class="gback" data-gb="'+GUIDE.indexOf(hit.c)+'" role="button" tabindex="0">‹ '+hit.c.cat+'</div>'+
     '<div class="gtopic"><h4>'+hit.c.icon+' '+hit.t.t+'</h4>'+hit.t.body+
-    (others.length?'<div class="gsee">In '+hit.c.cat+': '+others.map(t=>'<span data-gt="'+t.id+'">'+t.t+'</span>').join(' · ')+'</div>':'')+
+    (others.length?'<div class="gsee">In '+hit.c.cat+': '+others.map(t=>'<span data-gt="'+t.id+'" role="button" tabindex="0">'+t.t+'</span>').join(' · ')+'</div>':'')+
     '</div>';
   body.scrollTop=0;
+  refocus(body, '.gback');
 }
 function _guideSearch(q){
   const body=document.getElementById('guidebody'); if(!body) return;
@@ -8268,7 +8380,7 @@ function _guideSearch(q){
   }
   hits.sort((a,b)=>a.rank-b.rank);
   body.innerHTML = hits.length
-    ? hits.map(h=>'<div class="gitem" data-gt="'+h.t.id+'"><span>'+h.c.icon+'</span> '+h.t.t+
+    ? hits.map(h=>'<div class="gitem" data-gt="'+h.t.id+'" role="button" tabindex="0"><span>'+h.c.icon+'</span> '+h.t.t+
         '<span class="gn" style="font-size:9.5px">'+h.c.cat+' ›</span></div>').join('')
     : '<div class="gnores">Nothing in the guide matches “'+q.replace(/[<>&"']/g,'')+'” — try “breeding”, “stardust” or “signatures”.</div>';
   body.scrollTop=0;
@@ -8436,12 +8548,19 @@ const RELEASES=[
 {v:'1.1', title:'Field Reports', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
   'Core-loop <b>sound effects</b>: a soft sonar ping answers every survey tap, and a rushing whoosh carries hyperlane travel and planetfall.',
+  '<b>Sound volume slider</b> (Settings → Audio) — every effect now rides one master level; set it and the survey ping answers at exactly that loudness.',
+  '<b>Motion setting</b> (Settings → Graphics) — <b>Auto</b> honors your device&#8217;s reduce-motion preference (and keeps listening for it), or pick <b>Full</b> / <b>Reduced</b> yourself. Reduced stills the travel tunnel, screen shake, confetti and foil shimmer.',
   '<b>Change your explorer name</b> anytime — Settings → Display → Explorer name, or the ✎ link atop your character sheet. Your record stays; only the name changes.',
  ]],
  ['🎨 UI Enhancements', [
   '<b>Quieter Field Training</b> — while training, pop-ups rest in the 🔔 tray (nothing is lost) and tooltips hold, so the guidance card is the one voice. Blocked scrolls now nudge the card instead of failing silently.',
   'Survey-card labels are <b>brighter</b> and now scale with the A+ / A++ text sizes.',
   'Desktop hint corrected: hovering <b>previews</b> a card — a <b>click</b> surveys it.',
+  '<b>Bigger touch targets</b> on phones — everything tappable in the sky and the small Atlas/Settings controls now offer a fingertip more grab, with nothing visibly changed.',
+  '<b>Keyboard support</b> throughout the panels — Settings, Compendium, Binder, Star Atlas and Guide entries can all be tabbed to and pressed with Enter or Space, with a visible focus ring.',
+ ]],
+ ['🚀 Gameplay', [
+  '<b>Landing assist</b> — when a planet fills the view but sits off-center, keep zooming: the camera glides the rest of the way and lands instead of silently maxing out. It only ever answers that deliberate zoom-in — panning, pinching and moon-gazing are never hijacked.',
  ]],
  ['🐞 Bug Fixes', [
   'Tiny moons no longer steal taps aimed at their planet — “tap Earth” now lands on Earth. A moon’s tap target now matches what you can actually see, and the generous grab returns once you’re close; planet tap targets grew a touch, too.',
@@ -9495,6 +9614,7 @@ document.getElementById('setbtn').addEventListener('click', ()=>{
   if(no){ no.classList.toggle('on', notifOn); no.textContent=notifOn?'On':'Off'; }
   const tp=document.getElementById('tipsopt');
   if(tp){ tp.classList.toggle('on', tipsOn); tp.textContent=tipsOn?'On':'Off'; }
+  applyMotion(); applySfxVol();
 });
 setPanel.addEventListener('click', e=>{
   const tb=e.target.closest('.stab');
@@ -9527,6 +9647,14 @@ setPanel.addEventListener('click', e=>{
     shakeOn=!shakeOn;
     e.target.classList.toggle('on', shakeOn);
     e.target.textContent=shakeOn?'On':'Off';
+    queueSave();
+    return;
+  }
+  const mop=e.target.closest('.fsopt[data-motion]');
+  if(mop){
+    const v=parseInt(mop.dataset.motion,10);
+    motionMode=(v===0||v===1)?v:-1;
+    applyMotion();
     queueSave();
     return;
   }
@@ -9568,6 +9696,14 @@ setPanel.addEventListener('click', e=>{
 document.addEventListener('pointerdown', e=>{
   if(setPanel.style.display==='block' && !e.target.closest('#setpanel,#setbtn')) setPanel.style.display='none';
 });
+/* the volume slider drives the shared SFX bus live; the ping answers on release
+   so you hear exactly the level you just chose */
+(function(){
+  const vs=document.getElementById('volslider');
+  if(!vs) return;
+  vs.addEventListener('input', ()=>{ sfxVol=clamp((+vs.value||0)/100, 0, 1); applySfxVol(); });
+  vs.addEventListener('change', ()=>{ queueSave(); playSurveyPing(); });
+})();
 document.getElementById('hpheart').addEventListener('click', ()=>openPicker('heal', null));
 
 /* ================= COSMIC EVENTS =================

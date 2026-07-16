@@ -97,7 +97,17 @@ Extension points are data registries (open/closed): trait tables,
   Each has its own draw function: `drawUniverse`, `drawGalaxy`, `drawSystem`, `drawSurface`
   (plus `drawBackdrop`), dispatched per frame via the frozen `MODE_PAINTERS` registry.
   `checkTransitions` handles zoom-driven mode changes; pinch/scroll
-  zoom via `zoomAt` / `zoomLimits`.
+  zoom via `zoomAt` / `zoomLimits`. **Landing assist** (Tier 2): a zoom-IN
+  gesture blocked at the system-mode ceiling (`zoomAt` with `f>1` clamping to
+  `zmax`) arms `_assistArm` for 450 ms — the one unmistakable "let me land"
+  signal. While armed, `checkTransitions` glides the camera toward the largest
+  planet past landing size (`apparent>0.40*minWH`, within `d<1.6*minWH`,
+  `lerp 0.14/frame`; an instant step instead when `!motionOK()`), never while
+  `dragging`/`pinching`, until planetfall fires. Un-armed proximity — surveying
+  moons, framing rings, parking — is never hijacked. Canvas tap targets: every
+  pick's **minimum** radius scales by `PICK_F` (×1.4 on `TOUCH` devices, ×1 on
+  desktop); true-apparent-size components are untouched, so nothing can start
+  stealing taps from a bigger neighbor (the moon lesson).
 
 ### Determinism (the heart of the game)
 Everything is generated from seeds, so the universe is identical on every device and
@@ -342,15 +352,27 @@ Display: **Text size** (`fsMode`), **Text tone** (`toneMode`), **Font** (`fontMo
 **Explorer name** (`#renameopt` → `askExplorerName(false)` — rename anytime, purely
 cosmetic: the name feeds no seed, hash or code payload), **Tooltips** (`tipsOn`).
 Graphics: **Visual effects** (`fxOn` — particle bursts/cinematics/travel tunnel),
-**Screen shake** (`shakeOn`). Audio: **Sound** (`sndOn`), **Notifications**
-(`notifOn` — silences toast *popups* but still logs to the bell tray). Plus
-**Reset Game → Erase Everything**.
+**Screen shake** (`shakeOn`), **Motion** (`motionMode`: −1 Auto / 0 Full /
+1 Reduced, resolved by `motionOK()`. **Auto follows the OS
+`prefers-reduced-motion` preference LIVE** (`_sysReduced` + a matchMedia
+change listener), and because Auto is itself a persisted value, saving never
+freezes the OS preference into the save. Reduced skips the travel tunnel,
+screen shake and confetti in JS and stamps `body.rmotion`, which stills the
+decorative CSS loops: update-pill pulse, cinema rays, events dot, iridescent
+shimmer). Audio: **Sound** (`sndOn`),
+**Volume** (`#volslider` → `sfxVol` 0..1 — every synth exits through one shared
+gain bus `sfxOut(a)`, gain = `sfxVol²`; the survey ping answers on release at
+the chosen level), **Notifications** (`notifOn` — silences toast *popups* but
+still logs to the bell tray). Plus **Reset Game → Erase Everything**.
+All the pill toggles and panel items carry `role="button" tabindex="0"`, so the
+global Enter/Space shim (`@section input`) drives them from the keyboard;
+`[role="button"]:focus-visible` paints a gold focus ring.
 
 ### FX system (`fxBurst`, `fxShake`)
 DOM-particle confetti bursts (gold/green/purple/red palettes, capped & self-cleaning) and a
-CSS screen-shake. Gated by `fxOn`/`shakeOn`. Hooked into conquest wins, signature claims,
-rank-ups, breeding, feeding, eating flora, harvests, rare discoveries (tinted), damage,
-and death.
+CSS screen-shake. Gated by `fxOn`/`shakeOn` and by `motionOK()` (Motion: Reduced stills both).
+Hooked into conquest wins, signature claims, rank-ups, breeding, feeding, eating flora,
+harvests, rare discoveries (tinted), damage, and death.
 
 ### Escape / dismiss
 Global **Escape** first cancels an open rename dialog (`#namebox`, only when
@@ -461,8 +483,12 @@ tut, codex (array of {g:genome, f:from, w:where})
 
 v1.1 additions are **optional & backward compatible**: `tips` (tooltips toggle;
 absent = on), `tut` (Field Training complete; **absent = treated as done**, so
-pre-tutorial saves never see training), and `rn` (last release-notes version
-seen; **absent = '1.0'**, so updated saves get the bulletin exactly once).
+pre-tutorial saves never see training), `rn` (last release-notes version
+seen; **absent = '1.0'**, so updated saves get the bulletin exactly once),
+`vol` (SFX volume 0–100; **absent = 100**, clamped on load) and `rm` (Motion
+setting; −1 = Auto, 0 = Full, 1 = Reduced; **absent or −1 = Auto**, which
+keeps following the OS reduced-motion preference live — only an explicit
+player choice of Full/Reduced ever overrides it).
 
 `loadSave` restores all of the above. **Hardened against tampering/corruption** (v1):
 names re-sanitized via `cleanName`, every counter coerced to a finite number, `essence`
@@ -569,6 +595,27 @@ resumes — the jsdom boot covers load-time wiring, not interaction flows.
   disarmed so they can't survey-lock (and ping) the arrival scene, and
   `#namebox` joined the `body.training` yield rules. Smoke suite: 91 checks
   (training-quiet, pinned bulletin, rename flow, locked-Guide feedback).
+- **2026-07-15 — Emerson-playtest Tier 2 (accessibility & feel):** SFX **volume
+  bus** (`sfxOut(a)` shared gain, `sfxVol²` taper computed only in
+  `applySfxGain`, Settings → Audio slider, save `vol`); **Motion
+  Auto/Full/Reduced** (`motionMode`/`motionOK()`, save `rm` −1/0/1; Auto tracks
+  the OS preference live via a matchMedia listener; gates
+  tunnel/shake/confetti in JS + `body.rmotion` stills the decorative CSS
+  loops); **landing assist** in `checkTransitions`, armed only by a blocked
+  zoom-in at the system ceiling (450 ms window; instant step under reduced
+  motion); **touch pick-floor scaling** (`PICK_F` ×1.4 on TOUCH) + invisible
+  hit-padding on Atlas row actions (delete × deliberately excluded) and
+  Settings pills (`@media (pointer:coarse)` `::after` insets); **keyboard
+  operability** — `role="button" tabindex="0"` on Settings pills/tabs,
+  Compendium tabs/groups/cards, Binder paragon slots, Atlas items, Guide
+  categories/topics/back/cross-links, riding the existing Enter/Space shim,
+  with a `:focus-visible` gold ring and a `refocus()` helper that restores
+  focus after innerHTML re-renders. An adversarial review workflow (17
+  verified findings) drove the arming design, the delete-× exclusion, the rm
+  tri-state (never freeze the OS preference into the save), live probe-hook
+  getters (`make-probe-build` now emits `get name(){}`), and one shared
+  `tools/fake2d.js` replacing four drifted fake-canvas copies. Smoke suite:
+  102 checks.
 
 ---
 
