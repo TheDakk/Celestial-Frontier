@@ -119,7 +119,7 @@
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:13px;padding:10px 12px;
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 14px 40px rgba(0,0,0,0.55)}
   #setpanel .shead{font:600 10px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--plasma);margin-bottom:8px}
-  #setpanel .srow2{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--dim);margin:7px 0}
+  #setpanel .srow2{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:11px;color:var(--dim);margin:7px 0}
   #setpanel .opts{display:flex;gap:5px}
   #setpanel .fsopt{padding:3px 9px;border-radius:7px;cursor:pointer;font:600 10px var(--ui);
     border:1px solid rgba(150,162,210,0.25);color:var(--dim)}
@@ -8554,6 +8554,9 @@ const RELEASES=[
    invisible until Dakk bumps GAME_VERSION (the 'latest' bulletin is pinned).
    The title is a working name; rename at bump time. */
 {v:'1.2', title:'Signal & Polish', date:'July 2026', sections:[
+ ['🎨 UI Enhancements', [
+  'Settings rows breathe — option pills keep a clean gap from their labels instead of crowding them (Font and Motion were touching).',
+ ]],
  ['🛠 Under the Hood', [
   'The game now introduces itself as <b>Celestial Frontier</b> everywhere outside the game too — browser tab, link previews and search results. (The old “Cosmic Codex” page subtitle is retired; the Prime Codex keeps its name.)',
  ]],
