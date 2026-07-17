@@ -650,6 +650,22 @@
   #cargobtn:hover{color:var(--ink);border-color:rgba(150,162,210,0.4)}
   #cargobtn .dot.crg{width:6px;height:6px;border-radius:50%;background:#ffcf8a;box-shadow:0 0 8px #ffcf8a}
   #cargobtn .n{color:#ffcf8a}
+  /* cargo (v1.2.2): Inventory / Research Bench tabs; the inventory is a
+     sandbox-style item grid — icon tiles with corner quantities */
+  #cargo .ctabs{display:flex;gap:5px;margin:2px 6px 9px}
+  #cargo .ctab{flex:1;text-align:center;padding:6px 0;border-radius:8px;cursor:pointer;
+    font:600 10px var(--ui);letter-spacing:.05em;color:var(--dim);
+    background:rgba(150,162,210,0.07);border:1px solid var(--glass-brd)}
+  #cargo .ctab.on{color:#ffcf8a;border-color:rgba(255,207,138,0.6);background:rgba(255,207,138,0.08)}
+  #cargo .inv{display:grid;grid-template-columns:repeat(auto-fill,minmax(50px,1fr));gap:6px;padding:2px 6px 8px}
+  #cargo .slot{position:relative;aspect-ratio:1;border:1px solid rgba(150,162,210,0.28);border-radius:9px;
+    background:linear-gradient(180deg,rgba(150,162,210,0.10),rgba(6,8,16,0.45));
+    display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.05)}
+  #cargo .slot img{width:68%;height:68%}
+  #cargo .slot .qty{position:absolute;right:4px;bottom:2px;font:700 10px var(--ui);color:var(--ink);
+    text-shadow:0 1px 2px rgba(0,0,0,0.9),0 0 3px rgba(0,0,0,0.7)}
+  #cargo .slot.empty2{opacity:0.35}
+  #cargo .bset .ci{width:12px;height:12px;vertical-align:-2px;margin-right:1px}
   #cargo{position:fixed;top:calc(var(--row1-h,58px) + 170px);right:18px;z-index:12;width:320px;max-height:min(56vh,500px);overflow-y:auto;
     background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(150,162,210,0.2);border-radius:15px;padding:6px;display:none;
@@ -4347,6 +4363,7 @@ function checkTransitions(){
           st.pcam={x:0,y:0,z:1};
           st.mode='surface'; st.fade=1;
           noteLanding(pl.P.seed);          /* planetfall = ground survey (v1.2) */
+          _pendingContact=pl.P.seed;       /* inhabited worlds: first contact rides the card render */
           playWhoosh();                    /* planetfall */
           return;
         }
@@ -5349,6 +5366,54 @@ const landed=new Set();
    hits in the explorer's place, through the same injury/mend language as
    poison meals. */
 let _pendingSample=null, scoutId=null;
+/* v1.2.2 first contact: an inhabited world's census opens only after a
+   SUCCESSFUL contact. Landing attempts one automatically — succeed and
+   the census is yours; fail and the wary locals wound you (the field
+   scout takes the hit if one stands). Land again to retry. Conquest and
+   home never need to ask. Save `cont`; absent ⇒ grandfathered from
+   landed+conquered so nobody's known census re-hides. */
+const contacted=new Set();
+let _pendingContact=null;
+function routeHit(dmg, why){
+  /* a strike meant for the explorer: the field scout absorbs it if one
+     stands (same injury language as poison meals); returns true only if
+     the EXPLORER died */
+  const sc=scoutId?codex.get(scoutId):null;
+  if(sc && sc.genome && sc.kind==='Fauna'){
+    const w=clamp(dmg/80, 0.12, 0.6);
+    const h0=(+sc.genome.hurt)||0;
+    if(h0+w>=1){
+      const nm=sc.name;
+      scoutId=null;                 /* before removal — one toast, not two */
+      removeFromCodex(sc.id);
+      if(codexOpen) renderCodex();
+      toast('☠ Scout lost', nm+' took the strike meant for you — and had nothing left. It is gone.');
+    } else {
+      sc.genome.hurt=Math.min(0.95, h0+w);
+      const cc2=creatureCondition(sc.genome);
+      toast('🐾 Scout wounded', sc.name+' took the strike meant for you — now '+cc2.label+' ('+Math.round(cc2.h*100)+'% hurt). Feed it flora it loves to mend.');
+    }
+    playFailTone(); checkAch(); queueSave();
+    return false;
+  }
+  const dead=damageExplorer(dmg, why);
+  unlock('survivor'); checkAch();
+  return dead;
+}
+function attemptContact(d){
+  const seed=d.planetSeed;
+  if(seed==null || seed===133 || contacted.has(seed) || conquered.has(seed)) return;
+  const cvRow=d.rows && d.rows.find(r=>r[0]==='Civilization');
+  if(!cvRow || /^None/.test(cvRow[1])) return;
+  if(Math.random()<0.7){
+    contacted.add(seed);
+    playRaritySting(2);
+    toast('🤝 First contact', 'They meet you at the landing site — the census of '+(d.title||'this world')+' is yours to read.');
+  } else {
+    routeHit(techOwned.has('hull1')?11:14, 'First contact went badly — a wary reception at the landing site. Land again to retry.');
+  }
+  _panelKey=null; queueSave();
+}
 function noteLanding(seed){
   if(seed==null || landed.has(seed)) return;
   /* training landings don't count (except home): the sandbox promise is
@@ -5427,6 +5492,7 @@ function renderPanel(p, isLocked){
   const key=d.logId+'|'+st.mode+'|'+(inLog?1:0)+'|'+(isLocked?'L':'')+'|'+codexStamp+'|'+(lifeOpen?'X':'')+
     '|'+(_cq?('C'+(Date.now()-_cq.t>=HARVEST_CD?'R':'W')):'')+'|'+(d._nameKey?(customNames.get(d._nameKey)||''):'')+'|'+(_favOn?'F':'')+(_homeOn?'H':'')+
     '|'+(d.planetSeed!=null&&(d.planetSeed===133||landed.has(d.planetSeed)||conquered.has(d.planetSeed))?'G':'')+   /* ground-surveyed (v1.2) */
+    '|'+(d.planetSeed!=null&&contacted.has(d.planetSeed)?'K':'')+   /* census known via first contact (v1.2.2) */
     '|cx'+cardExpand;   /* keep cx LAST — the toggle handler patches it in place */
   panelEl.classList.toggle('locked', !!isLocked);
   if(key!==_panelKey){               /* rebuild content only when it actually changes */
@@ -5443,6 +5509,8 @@ function renderPanel(p, isLocked){
       if(st.mode==='surface' && d.planetSeed!=null) noteLanding(d.planetSeed);
       /* first-landing field samples ride the next render of this card */
       if(_pendingSample!=null && _pendingSample===d.planetSeed){ _pendingSample=null; grantFieldSamples(d); }
+      /* so does the first-contact attempt (once per landing; re-land to retry) */
+      if(_pendingContact!=null && _pendingContact===d.planetSeed && tutDone){ _pendingContact=null; attemptContact(d); }
     }
     const thumb = d.thumb ? '<img class="thumb'+(d.thumbSq?' sq':'')+'" src="'+d.thumb+'" alt="">' : '';
     let rows='';
@@ -5468,6 +5536,9 @@ function renderPanel(p, isLocked){
          grandfather rule; review catch) */
       grounded = d.planetSeed===133 || landed.has(d.planetSeed) || conquered.has(d.planetSeed) ||
         (st.mode==='surface' && st.planet && st.planet.P && st.planet.P.seed===d.planetSeed);
+      /* the census needs more than boots — it needs a SUCCESSFUL first
+         contact (or a flag planted, or home) */
+      var known = d.planetSeed===133 || conquered.has(d.planetSeed) || contacted.has(d.planetSeed);
       glance = !isLocked && st.mode!=='surface';
       const ENV_K={'Made of':1,'Atmosphere':1,'Climate':1,'Water':1,'Gravity':1,'Magnetism':1,'Weather':1,'Seasons':1};
       const CIV_K={'Tech era':1,'Local year':1,'Population':1};
@@ -5508,11 +5579,11 @@ function renderPanel(p, isLocked){
             '<span class="chev"></span></div><div class="gbody">'+envRows.map(rowHtml).join('')+'</div></div>';
         }
         if(civHead){
-          if(!grounded && !/^None/.test(civHead[1])){
-            /* orbit knows SOMEONE is down there — the census takes boots on the ground */
+          if(!known && !/^None/.test(civHead[1])){
+            /* orbit knows SOMEONE is down there — the census takes a
+               SUCCESSFUL first contact (land; a wary reception wounds) */
             civHtml='<div class="row civ"><span class="k">'+civHead[0]+'</span>'+
               '<span class="v">Signals from an organized world — <b>land to make contact</b></span></div>';
-            landBtn='<button class="act" data-act="landcta" data-guide="survey" data-tip="Planetfall turns your orbital survey into a ground survey — meet whoever is down there.">Land — make contact</button>';
           } else if(civDet.length){
             const _co=!!(cardExpand&2);
             civHtml='<div class="grp'+(_co?' open':'')+'"><div class="row civ ghead" data-gtoggle="2" role="button" tabindex="0" '+
@@ -5600,7 +5671,7 @@ function renderPanel(p, isLocked){
       mineBtn = grounded
         ? '<button class="act'+(_mReady?'':' in')+'" data-act="mine" data-guide="mining" data-tip="Dead worlds carry the elements — mine them hourly to stock your 🧰 Cargo for research.">'+
           (_mReady?'Mine Deposits':'Mined — veins settling')+'</button>'
-        : '<button class="act" data-act="landcta" data-guide="mining" data-tip="Dead worlds carry the elements — but prospecting takes boots on the ground.">Land to prospect</button>';
+        : '';   /* prospecting takes boots on the ground — the Land button is the way down */
     }
     const atlasRow =
       '<div class="atlasrow">'+
@@ -5609,11 +5680,10 @@ function renderPanel(p, isLocked){
         '<button class="aico lfav'+(_favOn?' on':'')+'" data-act="fav" data-guide="atlas" data-tip="'+(_favOn?'Remove favorite':'Favorite \u2014 also saves to your Star Atlas')+'">'+(_favOn?'\u2605':'\u2606')+'</button>'+
         '<button class="aico lhome'+(_homeOn?' on':'')+'" data-act="home" data-guide="atlas" data-tip="'+(_homeOn?'Clear home':'Set as home \u2014 also saves to your Star Atlas')+'">\u2302</button>'+
       '</div>';
-    /* every world in the sky is landable — tap to land, always (Nick).
-       Unlanded civ/dead worlds keep their story-flavored Land buttons;
-       everything else gets the plain one. Zooming in by hand still works. */
-    if(!glance && d.planetSeed!=null && st.mode!=='surface' && !landBtn && mineBtn.indexOf('landcta')<0){
-      landBtn='<button class="act" data-act="landcta" data-guide="survey" data-tip="Drop out of orbit and stand on this world.">Land</button>';
+    /* every world in the sky is landable — one plain Land button, always
+       (Nick: no flavored labels). Zooming in by hand still works. */
+    if(!glance && d.planetSeed!=null && st.mode!=='surface'){
+      landBtn='<button class="act" data-act="landcta" data-guide="survey" data-tip="Drop out of orbit and stand on this world — ground surveys open a world&#8217;s secrets.">Land</button>';
     }
     const btn = glance ? '' : atlasRow + conqBtn + landBtn + mineBtn +
       (d.where ? '<button class="act" data-act="share" data-guide="codes" data-tip="Copy a code — friends land on this exact world">⇪ Share this discovery</button>' : '');
@@ -5695,30 +5765,8 @@ panelEl.addEventListener('click', e=>{
     if(dz.pct>0 && Math.random()<dz.pct){
       stats.scanhits=(stats.scanhits||0)+1;
       const _dmg=techOwned.has('hull1')?Math.max(1,Math.round(dz.dmg*0.75)):dz.dmg;   /* reinforced hull bites back */
-      const _sc=scoutId?codex.get(scoutId):null;
-      if(_sc && _sc.genome && _sc.kind==='Fauna'){
-        /* the field scout takes the strike meant for you — same injury
-           language as poison meals: wounds accrue, welcome meals mend,
-           and a scout with nothing left is lost forever */
-        const _w=clamp(_dmg/80, 0.12, 0.6);
-        const _h0=(+_sc.genome.hurt)||0;
-        if(_h0+_w>=1){
-          const _nm=_sc.name;
-          scoutId=null;               /* before removal — one toast, not two */
-          removeFromCodex(_sc.id);
-          if(codexOpen) renderCodex();
-          toast('☠ Scout lost', _nm+' took the strike meant for you — and had nothing left. It is gone.');
-        } else {
-          _sc.genome.hurt=Math.min(0.95, _h0+_w);
-          const _cc=creatureCondition(_sc.genome);
-          toast('🐾 Scout wounded', _sc.name+' took the strike meant for you — now '+_cc.label+' ('+Math.round(_cc.h*100)+'% hurt). Feed it flora it loves to mend.');
-        }
-        playFailTone(); checkAch(); queueSave();
-      } else {
-        const dead=damageExplorer(_dmg, hazardFlavor(_lastDesc, null));
-        unlock('survivor'); checkAch();
-        if(dead) return;               /* the scan still completes — you earned it */
-      }
+      /* the field scout absorbs the strike if one stands (routeHit) */
+      if(routeHit(_dmg, hazardFlavor(_lastDesc, null))) return;   /* the scan still completes — you earned it */
     }
     _spExpanded=_lastDesc.logId;       /* the click IS the discovery moment */
     autoScanWorld(_lastDesc);
@@ -7036,6 +7084,7 @@ function doSave(){
         for(const k of mined.keys()) _l.add(k);
         return [..._l].slice(-4000); })(),
       scout:scoutId, landings:stats.landings||0,
+      cont:[...contacted].slice(-4000),
       chs:[...chDone], chw:chWeek, chp:chProg, charters:stats.charters||0,
       notifs:notifications.slice(0,50),
       me:explorerName,
@@ -7162,6 +7211,14 @@ function loadSave(){
          surveyedSet is the veteran's real footprint (review catch) */
       for(const s of surveyedSet) landed.add(s);
     }
+    /* first contact (v1.2.2). cont absent (older save) ⇒ every world the
+       player has stood on or conquered keeps its census — no re-hiding */
+    if(data.cont){
+      for(const s of (data.cont||[])){ const n=+s; if(Number.isFinite(n)) contacted.add(n); }
+    } else {
+      for(const s of landed) contacted.add(s);
+      for(const k of conquered.keys()) contacted.add(k);
+    }
     if(data.prime && typeof data.prime==='object'){ for(const k in data.prime) if(SIG_IDS.includes(k)) primeFill[k]=data.prime[k]; }
     frontierUnlocked=!!data.frontier; frontierEnding=data.ending||null;
     seenGuide=!!data.guide;
@@ -7200,6 +7257,7 @@ function resetMemoryState(){
     for(const k in primeFill) delete primeFill[k];
     homeId=null; frontierUnlocked=false; frontierEnding=null; seenGuide=false; tutDone=false; _rnSeen=GAME_VERSION;
     scoutId=null; _pendingSample=null;
+    contacted.clear(); _pendingContact=null;
     chDone.clear(); chProg={}; chWeek=-1;
     _lastRankName=null; _lastRankFloor=-1;   /* a fresh Cadet is a beginning, not a promotion */
     explorerName=''; essence=0; pstats={vit:50,fer:50,res:50,agi:50,ins:50}; HP_MAX=hpMaxFromVit(); hp=HP_MAX;
@@ -8659,7 +8717,7 @@ const GUIDE=[
  {id:'zoom', t:'Flying the universe', k:'zoom pan pinch scroll drag modes universe galaxy system surface navigate controls', body:
   '<p>The whole cosmos is one continuous view. <b>Pinch or scroll to zoom, drag to pan.</b> Zooming dives through four scales: <em>universe → galaxy → star system → planet surface</em> — and zooming out climbs back up. Everything you can see, you can visit.</p><ul><li>Tap any object to open its <b>survey card</b>; tap it again (or tap elsewhere) to release.</li><li>On a surface, you walk the world itself — the survey card stays pinned.</li><li>Travel beyond your charted frontier is gated — see <span data-gt="regions">Frontier regions</span>.</li></ul>'},
  {id:'survey', t:'Survey cards', k:'survey card panel tap inspect atmosphere climate water gravity descriptor lock pin', body:
-  '<p>Knowing a world comes in three acts. <b>Glance</b>: on a computer, hovering shows the long-range reads — color class, atmosphere, water signatures, whispers of life (on a phone your tap goes straight to the survey). <b>Orbital survey</b>: tap to lock the card and the instruments speak — environment, biosphere, signals. <b>Ground survey</b>: <b>land</b> — press the card&#8217;s Land button or zoom all the way in; planetfall opens the census of any civilization and the mineral veins of dead worlds. Every line is generated from the object’s seed, so <b>your survey matches every other explorer’s</b>.</p><ul><li>Tapping <b>locks</b> the card in place so you can press its buttons while the object drifts.</li><li>A planet&#8217;s card leads with its actions and headlines; the <b>Environment</b> row&#8217;s <b>expand</b> pill unfolds the full readings, and a civilization&#8217;s headline unfolds its census. Cards remember whether you like them open or folded.</li><li>An organized world announces itself from orbit as <b>⟁ signals</b> — but you must land to make contact.</li><li>Worlds with a biosphere show <b>Discover Life</b> — see <span data-gt="discover">Discovering life</span>.</li><li>The bookmark row saves the place — see <span data-gt="atlas">The Star Atlas</span>.</li></ul>'},
+  '<p>Knowing a world comes in three acts. <b>Glance</b>: on a computer, hovering shows the long-range reads — color class, atmosphere, water signatures, whispers of life (on a phone your tap goes straight to the survey). <b>Orbital survey</b>: tap to lock the card and the instruments speak — environment, biosphere, signals. <b>Ground survey</b>: <b>land</b> — press the card&#8217;s Land button or zoom all the way in; planetfall opens the census of any civilization and the mineral veins of dead worlds. Every line is generated from the object’s seed, so <b>your survey matches every other explorer’s</b>.</p><ul><li>Tapping <b>locks</b> the card in place so you can press its buttons while the object drifts.</li><li>A planet&#8217;s card leads with its actions and headlines; the <b>Environment</b> row&#8217;s <b>expand</b> pill unfolds the full readings, and a civilization&#8217;s headline unfolds its census. Cards remember whether you like them open or folded.</li><li>An organized world announces itself from orbit as <b>⟁ signals</b> — land to attempt <b>first contact</b>. Most receptions are warm; a wary one <b>wounds you</b> (a named Field Scout takes the hit instead), and the census stays sealed until a landing goes well. Conquest never needs to ask.</li><li>Worlds with a biosphere show <b>Discover Life</b> — see <span data-gt="discover">Discovering life</span>.</li><li>The bookmark row saves the place — see <span data-gt="atlas">The Star Atlas</span>.</li></ul>'},
  {id:'search', t:'Search', k:'search box find discoveries paste code lookup', body:
   '<p>The search box (top bar) hunts across <b>everything you’ve already discovered</b>: Atlas places, Compendium species, even cosmic events you’ve witnessed. It also accepts pasted codes:</p><ul><li><b>CF1-…</b> world codes — jump straight to a friend’s discovery.</li><li><b>CFB-…</b> creature codes — load a friend’s creature for a duel.</li></ul><p>See <span data-gt="codes">Share codes</span>.</p>'},
  {id:'codes', t:'Share codes (CF1 / CFB)', k:'share code link friend cf1 cfb copy multiplayer social', body:
@@ -8951,9 +9009,13 @@ const GAME_VERSION='1.2.1';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
-{v:'1.2.2', title:'Smooth Landings', date:'July 2026', sections:[
+{v:'1.2.2', title:'First Contact', date:'July 2026', sections:[
+ ['✨ New Features & Systems', [
+  '<b>First contact is an act, not a formality.</b> Landing on an inhabited world attempts contact: most receptions are warm and open the census on the spot — but a wary one <b>wounds you</b> and the census stays sealed. Land again to retry. A named <b>Field Scout</b> takes the hit in your place, and conquest never needs to ask.',
+  '<b>The Cargo hold is a real inventory now</b> — a grid of item tiles, every element with its own icon: ingots for metals, shards for ices, flasks for gases, cut gems for the exotics. The <b>Research Bench</b> lives on its own tab, with the same icons in every recipe.',
+ ]],
  ['🎨 UI Enhancements', [
-  '<b>Every world&#8217;s card now carries a Land button</b> — tap to drop out of orbit and stand anywhere, anytime, including worlds you&#8217;ve already surveyed. Zooming in by hand still works, and the flavored buttons (Land — make contact, Land to prospect) remain on worlds with something to unlock.',
+  '<b>One Land button, everywhere</b> — every world&#8217;s card simply says <b>Land</b>. Tap to drop out of orbit and stand anywhere, anytime; what happens down there depends on the world. Zooming in by hand still works.',
  ]],
  ['🐞 Bug Fixes', [
   'Expanding a survey card&#8217;s Environment fold could push the card off the bottom of the screen with no way to scroll — the card now resizes and repositions the moment it unfolds.',
@@ -9430,23 +9492,68 @@ function showCargoBtn(){
   const cc=document.getElementById('cargocount');
   if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0);   /* count is live even when the panel is closed */
 }
+/* every element wears its family color — gold is gold, ices are cyan, exotics shimmer */
+const EC={Au:'#ffd96a',Ag:'#e2e6f0',Cu:'#e8956a',Pt:'#dfe8fa',Ir:'#cdb8ec',Fe:'#aab2c2',Ni:'#b8c0ce',Ti:'#9fb6d6',W:'#8a96aa',
+  Co:'#7fa8f8',Cr:'#bcd6e6',Mn:'#c2a878',Pb:'#98a2b2',Sn:'#c8d0dc',Zn:'#cdd5e2',Al:'#d2d6dc',Mg:'#e2e2dc',Ca:'#eee8d2',Na:'#ffd96a',
+  Li:'#ff9fb2',U:'#9fe06a',Th:'#bcd66a',S:'#d8c24f',P:'#ffb84f',C:'#8a8a9a',N:'#a8c8ff',O:'#9fdfe8',Cl:'#c0ff5a',
+  H:'#f2c8a2',He:'#ecdfc2',H2O:'#9fdfe8',CH4:'#8fd6ff',NH3:'#b8d2f8',CO2:'#c2ecf2',He3:'#7fd0ff',
+  Nd:'#b58cff',Pm:'#ff9fe0',Vg:'#3fe8c8',Pz:'#ff7ae8'};
+/* element icons (v1.2.2, Nick's "Minecraft component"): tiny procedural
+   sprites — ingots for metals, shards for ices, flasks for gases and
+   volatiles, cut gems for exotics — tinted per element, cached data URIs */
+const ELEM_ICES={H2O:1,CH4:1,NH3:1,CO2:1,He3:1};
+const ELEM_GAS={H:1,He:1,N:1,O:1,Cl:1,S:1,P:1,C:1};
+const ELEM_EXO={Nd:1,Pm:1,Vg:1,Pz:1};
+const _elemIcons=new Map();
+function _eshade(hex,f){
+  const n=parseInt(hex.slice(1),16), r=(n>>16)&255, g=(n>>8)&255, b=n&255;
+  const m=c=>Math.max(0,Math.min(255,Math.round(f>0?c+(255-c)*f:c*(1+f))));
+  return 'rgb('+m(r)+','+m(g)+','+m(b)+')';
+}
+function elemIcon(sym){
+  let u=_elemIcons.get(sym); if(u) return u;
+  const c=EC[sym]||'#c8d0dc', lo=_eshade(c,-0.45), hi=_eshade(c,0.45), gl=_eshade(c,0.72);
+  let body='';
+  if(ELEM_EXO[sym]){
+    body='<polygon points="18,4 30,14 18,32 6,14" fill="'+c+'"/>'+
+         '<polygon points="18,4 30,14 18,18 6,14" fill="'+hi+'"/>'+
+         '<polygon points="18,18 30,14 18,32" fill="'+lo+'"/>'+
+         '<polygon points="12,9 18,4 18,18 9,12.5" fill="'+gl+'" opacity="0.85"/>';
+  } else if(ELEM_ICES[sym]){
+    body='<polygon points="18,3 26,12 23,32 12,30 9,13" fill="'+c+'"/>'+
+         '<polygon points="18,3 26,12 18,16 9,13" fill="'+hi+'"/>'+
+         '<polygon points="18,16 23,32 12,30" fill="'+lo+'"/>'+
+         '<polygon points="13,8 18,3 18,16 11,12" fill="'+gl+'" opacity="0.6"/>';
+  } else if(ELEM_GAS[sym]){
+    body='<path d="M15 5h6v6l6 12a5 5 0 0 1-5 7H14a5 5 0 0 1-5-7l6-12z" fill="rgba(220,228,248,0.18)" stroke="rgba(220,228,248,0.55)" stroke-width="1.4"/>'+
+         '<path d="M12.2 19l-2.4 4.8a3.4 3.4 0 0 0 3.4 4.7h9.6a3.4 3.4 0 0 0 3.4-4.7L23.8 19z" fill="'+c+'" opacity="0.92"/>'+
+         '<rect x="14" y="3.4" width="8" height="3" rx="1" fill="rgba(220,228,248,0.6)"/>';
+  } else {
+    body='<polygon points="5,22 12,15 31,15 24,22" fill="'+hi+'"/>'+
+         '<polygon points="5,22 24,22 24,29 5,29" fill="'+c+'"/>'+
+         '<polygon points="24,22 31,15 31,22 24,29" fill="'+lo+'"/>'+
+         '<polygon points="8,21 13,16.5 20,16.5 15,21" fill="'+gl+'" opacity="0.55"/>';
+  }
+  u='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">'+body+'</svg>');
+  _elemIcons.set(sym,u); return u;
+}
+let cargoView='inv';
 function renderCargo(){
   if(!cargoEl) return;
   const cc=document.getElementById('cargocount'); if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0);
-  let html='<div class="chead">🧰 Cargo Hold</div>';
-  if(cargo.size===0) html+='<div class="empty">Empty. <b>Lifeless worlds</b> carry the elements — open any dead world’s survey and ⛏ Mine Deposits.</div>';
-  else{
-    /* every element wears its family color as a crystal glyph — gold is gold, ices are cyan, exotics shimmer */
-    const EC={Au:'#ffd96a',Ag:'#e2e6f0',Cu:'#e8956a',Pt:'#dfe8fa',Ir:'#cdb8ec',Fe:'#aab2c2',Ni:'#b8c0ce',Ti:'#9fb6d6',W:'#8a96aa',
-      Co:'#7fa8f8',Cr:'#bcd6e6',Mn:'#c2a878',Pb:'#98a2b2',Sn:'#c8d0dc',Zn:'#cdd5e2',Al:'#d2d6dc',Mg:'#e2e2dc',Ca:'#eee8d2',Na:'#ffd96a',
-      Li:'#ff9fb2',U:'#9fe06a',Th:'#bcd66a',S:'#d8c24f',P:'#ffb84f',C:'#8a8a9a',N:'#a8c8ff',O:'#9fdfe8',Cl:'#c0ff5a',
-      H:'#f2c8a2',He:'#ecdfc2',H2O:'#9fdfe8',CH4:'#8fd6ff',NH3:'#b8d2f8',CO2:'#c2ecf2',He3:'#7fd0ff',
-      Nd:'#b58cff',Pm:'#ff9fe0',Vg:'#3fe8c8',Pz:'#ff7ae8'};
+  let html='<div class="chead">🧰 Cargo</div>'+
+    '<div class="ctabs">'+
+    '<span class="ctab'+(cargoView==='inv'?' on':'')+'" data-ct="inv" role="button" tabindex="0">Inventory</span>'+
+    '<span class="ctab'+(cargoView==='bench'?' on':'')+'" data-ct="bench" role="button" tabindex="0">Research Bench</span></div>';
+  if(cargoView==='inv'){
     const rows=[...cargo.entries()].filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]);
-    html+='<div class="bgrid" style="padding:0 6px 6px">'+rows.map(e=>'<span class="bslot" style="border-color:rgba(255,207,138,0.4);color:var(--ink)">'+
-      '<span style="color:'+(EC[e[0]]||'#c8d0dc')+'">◆</span> <b>'+e[1]+'</b>× '+(ELEM_NAME[e[0]]||e[0])+'</span>').join('')+'</div>';
+    if(!rows.length) html+='<div class="empty">The hold is empty. <b>Dead worlds carry the elements</b> — land on one and press Mine Deposits.</div>';
+    else html+='<div class="inv">'+rows.map(e=>'<span class="slot" data-tip="'+(ELEM_NAME[e[0]]||e[0])+'">'+
+      '<img src="'+elemIcon(e[0])+'" alt="'+(ELEM_NAME[e[0]]||e[0])+'"><span class="qty">'+e[1]+'</span></span>').join('')+
+      Array.from({length:Math.max(0, 12-rows.length)}, ()=>'<span class="slot empty2"></span>').join('')+'</div>';
+    cargoEl.innerHTML=html;
+    return;
   }
-  html+='<div class="chead">🛠 Research Bench</div>';
   for(const t of TECHS){
     const own=techOwned.has(t.id);
     const gated=t.req && !techOwned.has(t.req);
@@ -9455,7 +9562,7 @@ function renderCargo(){
        should need the periodic table to build a drive (Dakk playtest) */
     const costTxt=Object.keys(t.cost).map(k=>{
       const have=cargo.get(k)||0, need=t.cost[k];
-      return '<span style="color:'+(have>=need?'#7fe6a0':'#ff8a72')+'">'+need+'× '+(ELEM_NAME[k]||k)+' <span style="opacity:.65">('+have+')</span></span>';
+      return '<span style="color:'+(have>=need?'#7fe6a0':'#ff8a72')+'"><img class="ci" src="'+elemIcon(k)+'" alt="">'+need+'× '+(ELEM_NAME[k]||k)+' <span style="opacity:.65">('+have+')</span></span>';
     }).join(' + ')+' + <span style="color:'+(essence>=t.sd?'#7fe6a0':'#ff8a72')+'">☄'+t.sd+'</span>';
     html+='<div class="bset'+(own?' done':'')+'"><span>'+t.ic+' <b>'+t.name+'</b> — '+t.d+
       (own?'':'<br><span class="bcnt">'+(gated?'requires '+(TECHS.find(x=>x.id===t.req)||{}).name:costTxt)+'</span>')+'</span>'+
@@ -9474,6 +9581,8 @@ if(cargoBtn){
 }
 if(cargoEl){
   cargoEl.addEventListener('click', e=>{
+    const ct=e.target.closest('[data-ct]');
+    if(ct){ cargoView=ct.dataset.ct; renderCargo(); refocus(cargoEl, '[data-ct="'+cargoView+'"]'); return; }
     const t=e.target.closest('[data-tech]');
     if(t) buyTech(t.dataset.tech);
   });

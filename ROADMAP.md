@@ -96,6 +96,44 @@ end-to-end — press button → surface → mine on the spot → samples toast �
 zoom out → card stays Ground-surveyed; venus glance asserts NO
 biosignatures), fingerprint byte-identical, systems 19/19, balance PASS.
 
+## ▶ v1.2.2 "FIRST CONTACT" — BUILT 2026-07-17, AWAITING NICK'S DEPLOY WORD
+
+Nick's asks (Saturn screenshot session) + the staged Smooth Landings fixes,
+all in one entry (fingerprint byte-identical, smoke 146/146, systems 19/19):
+1. STUCK-CARD BUG (heat-pass regression, same-day catch): the fold toggles
+   in place without a rebuild, so the panel kept collapsed measurements
+   and the expanded card hung off-screen, unscrollable. gtoggle now sets
+   _panelDirty → remeasure + reposition on unfold.
+2. ONE LAND BUTTON EVERYWHERE (Nick: no flavored labels): every planet
+   card in system view says just "Land" (works on grounded worlds too —
+   revisits/sightseeing). Flavored variants removed.
+3. FIRST CONTACT (Nick's design): landing on an inhabited world attempts
+   contact — 70% warm reception opens the census; failure wounds
+   (14 HP, 11 with hull1) via new routeHit() (the Field Scout absorbs it,
+   same wound math as bioscans — scanlife refactored onto routeHit).
+   Retry by re-landing (_pendingContact set per planetfall, resolved on
+   card render like samples). contacted:Set, save `cont` (cap 4000);
+   ABSENT ⇒ grandfather landed+conquered (no census re-hides). known
+   (133|conquered|contacted) now gates the census fold instead of
+   grounded; rebuild key gains |K. Guarded by tutDone (no contact rolls
+   in training). Guide survey topic updated.
+4. CARGO INVENTORY (Nick's "Minecraft component"): Cargo panel split into
+   Inventory / Research Bench tabs. Inventory = sandbox item grid: every
+   element gets a procedural SVG icon (ingots=metals, shards=ices,
+   flasks=gases/volatiles, cut gems=exotics; tinted per element via the
+   EC palette, cached data URIs, elemIcon()); tiles wear corner
+   quantities + name tooltips; min 12 slots for the grid feel. Bench
+   recipes show the same icons. This pulls the v1.3 "element mini-SVG
+   icons" item forward in inventory form (Cargo's ◆ glyphs replaced;
+   Research costs iconified).
+SMOKE COVERAGE ADDED: inventory tiles + qty + bench tab, veteran
+contacted-grandfather, Land-button rename intent. NOT smoke-driven: a
+live first-contact roll (no civ world in Sol; noted for a future seeded
+fixture).
+NOT deployed — one word ships it (bump not needed: 1.2.1 line stacking
+means the bulletin shows 1.2.2+1.2.1+1.2... wait: GAME_VERSION must bump
+'1.2.1'→'1.2.2' at ship + smoke version strings).
+
 ## ★ v1.2.1 "THE HUNT BOARD" — LIVE (2026-07-17, build aeb5eb0, Nick:
 ## "Let's deploy it"). Bulletin stacks 1.2.1 + 1.2 for the 1.2 line.
 
