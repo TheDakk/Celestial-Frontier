@@ -1321,7 +1321,7 @@
   <h3>Celestial Frontier</h3>
   <div class="lore">
     <p>You are not the first to chart this universe. An order of explorers came before you — the <em>Pathfinders</em> — and for an age their beacons mapped the dark. Then, one by one, the beacons went quiet. They died a single discovery short of completing their master survey.</p>
-    <p>What they left behind: nine unclaimed <em>Signatures</em>; field notes that swear the spectrum runs <em>deeper than Prismatic</em>; and scattered warnings of <em>named titans</em> that rule the worlds where it runs deepest. Document a worthy example of every Signature, and the completed Codex will reveal what no chart has ever shown — the <em>Celestial Frontier</em>.</p>
+    <p>What they left behind: nine unclaimed <em>Signatures</em>; field notes that swear the spectrum runs <em>deeper than Prismatic</em>; and scattered warnings of <em>named titans</em> that rule the worlds where it runs deepest. Document a worthy example of every Signature, and the completed Prime Codex will reveal what no chart has ever shown — the <em>Celestial Frontier</em>.</p>
     <p class="creed">Master the infinite — you cannot finish it. But you can become the first <em>Celestial Pathfinder</em>.</p>
   </div>
   <p class="nnote">First, what shall the stars call <em>you</em>?</p>
@@ -5683,7 +5683,7 @@ function renderPanel(p, isLocked){
           '<span class="v" style="color:'+_gT.hex+'">'+_gd.name+' — '+_gT.name+' · Power '+_gS.total+'</span></div>';
         conqBtn='<button class="act" data-act="conq" data-guide="guardians" data-tip="A named, one-of-a-kind summit-grade apex rules this world — defeat it in conquest and it joins your Compendium">Challenge '+_gd.name+'</button>';
       } else if(!c){
-        conqBtn='<button class="act" data-act="conq" data-guide="conquest" data-tip="Choose a champion — you or a codex creature — and battle this world\u2019s apex native">Conquer Planet</button>';
+        conqBtn='<button class="act" data-act="conq" data-guide="conquest" data-tip="Choose a champion — you or a Compendium creature — and battle this world\u2019s apex native">Conquer Planet</button>';
       } else {
         const ready=Date.now()-c.t>=HARVEST_CD;
         conqBtn='<button class="act'+(ready?'':' in')+'" data-act="harv" data-guide="harvest" data-tip="Settled worlds yield ☄ Stardust once an hour — and their bioscans are always safe.">'+
@@ -5870,7 +5870,7 @@ function addToLog(d){
 }
 function renderLog(){
   if(logMap.size===0){
-    logEl.innerHTML='<div class="empty">Nothing saved yet.<br>Open any survey and press <b>+ Add to Star Atlas</b>.<br>Star favorites and set a home, then jump between them from here.</div>';
+    logEl.innerHTML='<div class="empty">Nothing saved yet.<br>Open any survey and press <b>+ Add to Star Atlas</b>.<br>Star your favorites and set a home, then jump between them from here.</div>';
     return;
   }
   if(homeId && !logMap.has(homeId)) homeId=null;
@@ -6107,7 +6107,7 @@ function passiveDrift(){
   const a=all[(r()*all.length)|0], b=all[(r()*all.length)|0];
   if(a.id===b.id) return;
   const child=evolveGenome(crossGenome(a.genome, b.genome), 1);
-  const hy=_storeSpecies(child, a.name+' x '+b.name+' (drift)');
+  const hy=_storeSpecies(child, a.name+' × '+b.name+' (drift)');
   if(hy){ flashCodex(); if(codexOpen) renderCodex(); }
 }
 function showReveal(entry, isHybrid){
@@ -6190,7 +6190,7 @@ function showReveal(entry, isHybrid){
         '<button id="rev-duel" type="button" data-guide="duels" data-tip="A friendly duel — sport only, nothing is lost.">Duel</button>'+
         (codex.has(entry.id) ? '<button id="rev-breed" type="button" data-guide="breeding" data-tip="Forge a new bloodline — both parents are consumed, win or lose.">Breed</button>' : '')+
         (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A welcome meal grows its bloodline and mends its wounds — a toxic one poisons, and can finish a beast with nothing left.">Feed</button>' : '')+
-        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-scout" type="button"'+(scoutId===entry.id?' class="on"':'')+' data-guide="discover" data-tip="Your field scout takes the hit when a bioscan turns hostile — wounds and all. A scout with nothing left is lost forever.">'+(scoutId===entry.id?'Scouting ✓':'Scout')+'</button>' : '')+
+        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-scout" type="button"'+(scoutId===entry.id?' class="on"':'')+' data-guide="discover" data-tip="Your Field Scout takes the hit when a bioscan turns hostile — wounds and all. A scout with nothing left is lost forever.">'+(scoutId===entry.id?'Scouting ✓':'Scout')+'</button>' : '')+
         (codex.has(entry.id) ? '<button id="rev-rename" type="button" data-tip="Your name rides inside its creature code too.">✎ Rename</button>' : '')+
         (entry.grade && entry.grade.tier>=5 ? '<button id="rev-record" type="button" data-tip="Copy a keepsake record of this find — flavor, stats and its creature code.">Record</button>' : '');
     }
@@ -6211,7 +6211,7 @@ revealEl.addEventListener('click', (e)=>{
   if(e.target && e.target.id==='rev-scout' && _revEntry){
     scoutId = (scoutId===_revEntry.id) ? null : _revEntry.id;
     if(scoutId) gameEvent('scout-set', {id:scoutId});
-    toast('🐾 Field scout', scoutId
+    toast('🐾 Field Scout', scoutId
       ? _revEntry.name+' now walks point — it takes the hit when a bioscan turns hostile.'
       : _revEntry.name+' stands down. Hostile scans risk your own HP again.');
     showReveal(_revEntry, _revEntry.hybrid);           /* refresh the button state */
@@ -6235,7 +6235,7 @@ function flashCodex(){
 function renderCodex(){
   if(codexView==='binder'){ renderBinder(); return; }
   if(codex.size===0){
-    codexEl.innerHTML=_codexTabs()+'<div class="empty">Your Compendium is empty.<br><br>Fly down to any living world and open its survey — every species is catalogued automatically, like a field guide that fills itself.<br><br>Your discoveries then interbreed and evolve on their own, so new hybrids keep appearing the more you explore.</div>';
+    codexEl.innerHTML=_codexTabs()+'<div class="empty">Your Compendium is empty.<br><br>Find a living world and press Discover Life on its survey card — every species found is catalogued automatically, like a field guide that fills itself.<br><br>Your discoveries then interbreed and evolve on their own, so new hybrids keep appearing the more you explore.</div>';
     return;
   }
   const all=[...codex.values()];
@@ -6246,7 +6246,7 @@ function renderCodex(){
   for(const e of all){ const t=e.grade?e.grade.name:'—'; counts[t]=(counts[t]||0)+1; }
   const rareLine = rarest&&rarest.grade ? '<span style="color:'+rarest.grade.hex+'">Rarest: '+rarest.grade.name+' '+(rarest.grade.star||'')+' '+rarest.name+'</span>' : '';
   let html=_codexTabs()+'<div class="lab"><div class="lt">⚗ Compendium</div>'+
-    '<div class="labnote">Every world you survey is catalogued automatically. Your discoveries interbreed on their own and keep evolving as the cosmos ages — so the collection is endless. '+
+    '<div class="labnote">Every world you scan with Discover Life is catalogued automatically. Your discoveries interbreed on their own and keep evolving as the cosmos ages — so the collection is endless. '+
     rareLine+'</div></div>';
   html+='<div class="chead">'+codex.size+' species · '+hybrids+' hybrid'+(hybrids===1?'':'s')+' bred</div>';
   /* drill-down categories: Fauna first (your fighters), then the rest */
@@ -6527,7 +6527,7 @@ function travelTo(w){
   const dist=Math.hypot((w.gal.x-st.ucam.x)||0, (w.gal.y-st.ucam.y)||0);
   const mult=(typeof driveMult==='function')?driveMult():1;
   const dur=clamp(800+(dist*3)/mult, 800, Math.max(1200, 8000/mult));
-  if(dist>1400 && mult===1) toast('🚀 Long Burn','The old fusion-chemical drive strains across '+Math.round(dist)+' u of void — research better drives at the 🧰 Cargo bench.');
+  if(dist>1400 && mult===1) toast('🚀 Long Burn','The old fusion-chemical drive strains across '+Math.round(dist)+' u of void — research better drives at the Research Bench in your 🧰 Cargo hold.');
   _trav={t0:performance.now(), dur, w, hex:'#cfe0ff', jumped:false, zEnd:0};
   playWhoosh();                        /* the lane opens */
 }
@@ -6977,7 +6977,7 @@ function tiersOwned(){ const s=new Set(); for(const e of codex.values()) if(e.gr
 function realmsOwned(){ const s=new Set(); for(const e of codex.values()) if(e.realm) s.add(e.realm); return s.size; }
 const ACH=[
   /* — Cataloguing — */
-  {id:'first',   cat:'Cataloguing', ic:'🧬', name:'First Contact',   d:'Catalogue your first species', t:()=>codex.size>=1},
+  {id:'first',   cat:'Cataloguing', ic:'🧬', name:'First Specimen',  d:'Catalogue your first species', t:()=>codex.size>=1},
   {id:'field10', cat:'Cataloguing', ic:'📓', name:'Field Biologist', d:'Catalogue 10 species', t:()=>codex.size>=10},
   {id:'field50', cat:'Cataloguing', ic:'🏛', name:'Menagerie',       d:'Catalogue 50 species', t:()=>codex.size>=50},
   {id:'codex150',cat:'Cataloguing', ic:'📚', name:'Grand Archive',   d:'Catalogue 150 species', t:()=>codex.size>=150},
@@ -6999,9 +6999,9 @@ const ACH=[
   {id:'transc',  cat:'Rarity', ic:'💫', name:'One in a Million', d:'Discover a Transcendent', t:()=>stats.best>=11},
   {id:'summit',  cat:'Rarity', ic:'🗻', name:'Beyond the Million', d:'Own a summit-grade creature (Empyrean or better)', t:()=>stats.best>=12},
   {id:'tiers8',  cat:'Rarity', ic:'🎨', name:'Full Spectrum', d:'Own species of 8 different rarity tiers', t:()=>tiersOwned()>=8},
-  {id:'tiers12', cat:'Rarity', ic:'🌈', name:'The Deep Spectrum', d:'Own species of all 12 rarity tiers', t:()=>tiersOwned()>=12},
+  {id:'tiers12', cat:'Rarity', ic:'🌈', name:'The Deep Spectrum', d:'Own species of all 12 rarity tiers through Transcendent through Transcendent', t:()=>tiersOwned()>=12},
   /* — Worlds — */
-  {id:'survey5',  cat:'Worlds', ic:'🛰', name:'Boots Down',      d:'Survey 5 living worlds', t:()=>stats.surveys>=5},
+  {id:'survey5',  cat:'Worlds', ic:'🛰', name:'Eyes Down',       d:'Survey 5 living worlds', t:()=>stats.surveys>=5},
   {id:'survey25', cat:'Worlds', ic:'🌍', name:'World Walker',    d:'Survey 25 living worlds', t:()=>stats.surveys>=25},
   {id:'survey100',cat:'Worlds', ic:'🛸', name:'Centurion',       d:'Survey 100 living worlds', t:()=>stats.surveys>=100},
   {id:'survey250',cat:'Worlds', ic:'🚁', name:'Survey Fleet',    d:'Survey 250 living worlds', t:()=>stats.surveys>=250},
@@ -7051,7 +7051,7 @@ const ACH=[
   {id:'survivor', cat:'Survival', ic:'🩸', name:'Bitten, Not Beaten', d:'Survive a hostile strike in the field — a bioscan gone wrong, or a wary first contact', t:null},
   {id:'brink',    cat:'Survival', ic:'💔', name:'On the Brink',      d:'Drop below 20 HP and live to tell it', t:null},
   {id:'fieldmedic',cat:'Survival',ic:'💚', name:'Field Medic',       d:'Heal yourself with flora', t:null},
-  {id:'gambler',  cat:'Survival', ic:'🎰', name:'Cruel Bargain',     d:'Heal with a flora over 40% poison risk and survive', t:null},
+  {id:'gambler',  cat:'Survival', ic:'🎰', name:'Cruel Bargain',     d:'Heal with flora above 40% poison risk and survive', t:null},
   /* — Husbandry — */
   {id:'bred1',  cat:'Husbandry', ic:'💞', name:'Matchmaker',       d:'Successfully breed a pair', t:()=>(stats.breedwins||0)>=1},
   {id:'bred10', cat:'Husbandry', ic:'🐣', name:'Brood Master',     d:'10 successful breedings', t:()=>(stats.breedwins||0)>=10},
@@ -7423,7 +7423,7 @@ function travelToCode(code){
   const dec=decodeWhere(code);
   if(!dec || !dec.where || !dec.where.gal){ toast('Code Not Recognized','That doesn\u2019t look like a CF1 share code. Codes start with CF1-.'); return false; }
   if(!withinReach(dec.where.gal.x, dec.where.gal.y)){
-    toast('Beyond Your Charter','Those coordinates lie past your reach. Claim more Prime Codex signatures, then plot this course again.');
+    toast('Beyond Your Charter','Those coordinates lie past your reach. Claim more Prime Codex Signatures, then plot this course again.');
     return false;
   }
   if(dec.name && dec.where.pseed!=null) customNames.set('p'+dec.where.pseed, dec.name);
@@ -7464,7 +7464,7 @@ function runSearch(qRaw){
     searchRes.style.display='block'; return;
   }
   if(q.includes('cfb-')){
-    searchRes.innerHTML='<div class="none">That\u2019s a <b>creature code</b> — open any specimen card in your Compendium and press <b>⚔ Duel vs code</b> to battle it.</div>';
+    searchRes.innerHTML='<div class="none">That\u2019s a <b>creature code</b> — open any specimen card in your Compendium and press <b>Duel</b> to battle it.</div>';
     searchRes.style.display='block'; return;
   }
   _srOut=[];
@@ -8239,7 +8239,7 @@ duelFightBtn.addEventListener('click', ()=>{
 function shareCreature(entry){
   const code=encodeCreature(entry);
   shareBox.querySelector('.who').textContent=entry.name+' — battle-ready creature code';
-  shareBox.querySelector('.note').textContent='Your friend opens any specimen card, presses \u201cDuel vs code\u201d, and pastes this. Same code, same creature, same stats — everywhere.';
+  shareBox.querySelector('.note').textContent='Your friend opens any specimen card, presses Duel, and pastes this. Same code, same creature, same stats — everywhere.';
   shareLink.value=code;
   const btn=document.getElementById('sharecopy');
   btn.textContent='Copy code';
@@ -8419,7 +8419,7 @@ function removeFromCodex(id){
      pass through here) */
   if(scoutId===id){
     scoutId=null;
-    toast('Scout stands down','Your field scout is gone from the Compendium — hostile bioscans risk your own HP again.');
+    toast('Scout stands down','Your Field Scout is gone from the Compendium — hostile bioscans risk your own HP again.');
     queueSave();
   }
   codexCountEl.textContent=codex.size;
@@ -8484,7 +8484,7 @@ function feedPair(faunaEntry, floraEntry, roll){
   const pois = S.ab.gutsy ? 0 : clamp((pref==='disliked'?0.16:0.05) + tF*0.05 - S.res/800, 0.02, 0.5);
   if(roll<pois){
     /* poison wounds, it doesn't execute: the toxin bites off a chunk of the
-       beast's condition — rarer flora bites far deeper — and only a beast
+       beast's condition — rarer flora bite far deeper — and only a beast
        whose HP (condition) hits zero dies of it */
     const sev=(pois-roll)/Math.max(0.0001,pois);            /* deeper failed rolls bite harder */
     const dmg=clamp(0.16 + sev*0.22 + tF*0.045, 0.1, 0.92);
@@ -8729,7 +8729,7 @@ function damageExplorer(amount, why){
   playFailTone(); fxShake();
   if(hp<=0){ showDeath(why); return true; }
   if(hp<20) unlock('brink');
-  toast('🩸 \u2212'+amount+' HP', why+' You\u2019re at '+hp+' HP — click the ❤ by your health bar to heal with flora.');
+  toast('🩸 \u2212'+amount+' HP', why+' You\u2019re at '+hp+' HP — tap the ❤ by your HP bar to heal with flora.');
   return false;
 }
 function healExplorer(floraEntry, roll){
@@ -8784,7 +8784,7 @@ const GUIDE=[
  {id:'beacon', t:'Traveler’s Beacon', k:'beacon daily random destination five minutes', body:
   '<p>The <b>Traveler’s Beacon</b> (left rail) offers a fresh destination every <b>5 minutes</b> — somewhere notable, picked deterministically, so every explorer’s beacon points at the same place at the same moment. An easy way to see something new when the infinite feels too big.</p>'},
  {id:'atlas', t:'The Star Atlas', k:'atlas bookmark favorite home save place travel star log', body:
-  '<p>Your personal map of the infinite. On any survey card:</p><ul><li><b>+ Add to Star Atlas</b> bookmarks the place.</li><li><b>☆ Favorite</b> marks your best finds (and auto-saves them).</li><li><b>⌂ Home</b> marks one place as home — yours to change anytime.</li></ul><p>Open the <b>Star Atlas</b> (right rail) and tap any entry to ride the <b>hyperlane</b> there — the camera dives out, the sky stretches into a streak tunnel tinted by your destination’s light, and you ease in on arrival (tap to skip; obeys your effects toggle). The Atlas keeps your most recent ~120 places.</p>'},
+  '<p>Your personal map of the infinite. On any survey card:</p><ul><li><b>+ Add to Star Atlas</b> bookmarks the place.</li><li><b>☆ Favorite</b> marks your best finds (and auto-saves them).</li><li><b>⌂ Home</b> marks one place as home — yours to change anytime.</li></ul><p>Open the <b>Star Atlas</b> (right rail) and tap any entry to ride the <b>hyperlane</b> there — the camera dives out, the sky stretches into a streak tunnel tinted by your destination’s light, and you ease in on arrival (tap to skip; obeys your effects and Motion settings). The Atlas keeps your most recent ~120 places.</p>'},
 ]},
 {icon:'🧬', cat:'Life & the Compendium', blurb:'Kingdoms, discovery, rarity, specimen cards', topics:[
  {id:'discover', t:'Discovering life', k:'discover life scan bioscan species danger wound hp catalogue', body:
@@ -8802,9 +8802,9 @@ const GUIDE=[
 ]},
 {icon:'🌿', cat:'Breeding & Feeding', blurb:'Bloodlines, meals, medicine', topics:[
  {id:'breeding', t:'Breeding', k:'breed pair parents consumed odds hybrid bloodline stardust boost union', body:
-  '<p>Pick a specimen, press <b>🧬 Breed</b>, choose a same-kingdom mate. Both parents are consumed by the union — win or lose.</p><ul><li>The odds shown depend on the pair’s rarity — rare pairs are long shots.</li><li>☄ Stardust you’ve earned passively boosts odds (up to +15%) — see <span data-gt="stardust">Stardust</span>.</li><li>Success forges a <b>new bloodline</b>: a hybrid child with boosted stats (+1 brood). Chain generations for monsters.</li><li>Failure loses both parents. Breed your spares, not your champions.</li></ul>'},
+  '<p>Pick a specimen, press <b>Breed</b>, choose a same-kingdom mate. Both parents are consumed by the union — win or lose.</p><ul><li>The odds shown depend on the pair’s rarity — rare pairs are long shots.</li><li>☄ Stardust you’ve earned passively boosts odds (up to +15%) — see <span data-gt="stardust">Stardust</span>.</li><li>Success forges a <b>new bloodline</b>: a hybrid child with boosted stats (+1 brood). Chain generations for monsters.</li><li>Failure loses both parents. Breed your spares, not your champions.</li></ul>'},
  {id:'feeding', t:'Feeding beasts', k:'feed flora meal tastes loved disliked poison toxic dead bloodline fed mend medicine', body:
-  '<p>Fauna can be fed flora from your Compendium (<b>🌿 Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavours it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength.</li><li>Feeding is also medicine: a welcome meal mends a wounded beast, and loved flavours mend most. A disliked meal that goes badly can wound it further — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll poisons the beast, biting off a chunk of its condition; rarer flora bites far deeper. Only a beast whose strength is already spent dies of it — at zero, it’s gone. The Iron Gut ability shrugs toxins off.</li></ul>'},
+  '<p>Fauna can be fed flora from your Compendium (<b>Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavours it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength.</li><li>Feeding is also medicine: a welcome meal mends a wounded beast, and loved flavours mend most. A disliked meal that goes badly can wound it further — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll poisons the beast, biting off a chunk of its condition; rarer flora bite far deeper. Only a beast whose strength is already spent dies of it — at zero, it’s gone. The Iron Gut ability shrugs toxins off.</li></ul>'},
  {id:'injuries', t:'Injuries & recovery', k:'injury wound hurt condition bruised critical mend recover heal scars medicine', body:
   '<p>Wounds persist. A creature’s condition — <b style="color:#7fe6a0">Healthy</b> → <b style="color:#ffd96a">Bruised</b> → <b style="color:#ff8a72">Injured</b> → <b style="color:#ff5a4a">Critical</b> — lives on its specimen card, and the wounded fight below their strength (nearly half power at the brink).</p><ul><li><b>How they get hurt:</b> winning a conquest by a thread leaves scars, and a disliked meal that goes badly can wound. Friendly duels are still pure sport — no harm done.</li><li><b>How they heal:</b> feed them. A welcome meal mends, the flavours a beast ♥ loves mend most, and rarer flora mend deeper. Wounds never fade on their own — medicine is a deliberate act.</li><li>Injuries don’t travel in CFB codes — a shared creature arrives fresh.</li><li>Newborn hybrids are born unhurt, whatever shape their parents were in.</li></ul>'},
  {id:'eating', t:'Eating flora (healing)', k:'heal eat flora hp medicine poison stat growth heart nourish', body:
@@ -8828,9 +8828,9 @@ const GUIDE=[
  {id:'classes', t:'Classes, XP & levels', k:'class level xp experience innate warrior mage berserker paladin assassin fusion wins', body:
   '<p>Every beast is born to a <b>class</b> — Warrior, Berserker, Necromancer, Assassin, Druid… over a hundred, with the legendary ones (<b>Titan, Worldbreaker, Avatar, Chosen One</b>) reserved for summit-grade creatures. A class grants <b>innate arts</b>: always-on powers that need no roll, printed on the specimen card.</p><ul><li>Power is built through wins. Victories feed the XP bar — duels +8, conquests +20, guardians +60 — and levels wake more innate arts (slots at level 3 and 6), never raw stats.</li><li><b>Breeding fuses bloodlines:</b> a hybrid usually inherits a class from its parents’ lineages — a Caster line crossed with a Martial line breeds toward Spellswords and Battlemages.</li><li>Levels are <em>your</em> creature’s story — a shared code arrives at level 1.</li></ul>'},
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
-  '<p>Any world with fauna can be conquered. Press <b>⚔ Conquer Planet</b> on its survey card and choose one champion — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries wounds home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a creature:</b> it is gone forever.</li><li><b>Lose fighting yourself:</b> you take the wound instead.</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
+  '<p>Any world with fauna can be conquered. Press <b>Conquer Planet</b> on its survey card and choose one champion — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries wounds home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a creature:</b> it is gone forever.</li><li><b>Lose fighting yourself:</b> you take the wound instead.</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
  {id:'binder', t:'The Binder & the Fifty Paragons', k:'binder collection sets slots types paragon fifty silhouette claim stardust', body:
-  '<p>Open the Compendium and switch to the <b>🗂 Binder</b> tab. You cannot collect individuals out of an infinite universe — so the Binder collects types: fixed pages of slots (every grade, every realm, every body plan, every ability theme…) that are the same for every explorer; your universe decides which specimen fills each.</p><ul><li><b>Sets</b> are curated collections that pay a one-time ☄ Stardust bounty — claim them in the Binder when complete.</li><li><b>The Fifty Paragons</b> are named, one-of-a-kind deep-spectrum legends living on fixed worlds — the same fifty worlds for every explorer. Tap a silhouette to plot a course to its last-known galaxy, then land and <b>Discover Life</b> to catalogue it. Share the coordinates — your friend hunts the very same legend.</li></ul>'},
+  '<p>Open the Compendium and switch to the <b>🗂 Binder</b> tab. You cannot collect individuals out of an infinite universe — so the Binder collects types: fixed pages of slots (every grade, every realm, every body plan, every ability theme…) that are the same for every explorer; your universe decides which specimen fills each.</p><ul><li><b>Sets</b> are curated collections that pay a one-time ☄ Stardust bounty — claim them in the Binder when complete.</li><li><b>The Fifty Paragons</b> are named, one-of-a-kind deep-spectrum legends living on fixed worlds — the same fifty worlds for every explorer. Tap a silhouette to plot a course to its last-known world, then land and <b>Discover Life</b> to catalogue it. Share the coordinates — your friend hunts the very same legend.</li></ul>'},
  {id:'guardians', t:'Apex Guardians', k:'guardian apex named ruler challenge summit empyrean eternal singular crown titan', body:
   '<p>About one fauna-bearing world in forty is ruled by a <b>👑 named Apex Guardian</b> — a one-of-a-kind luminous titan wearing a <b>summit grade</b>: Empyrean, Eternal or Omnipotent, beyond even Transcendent. The same guardian rules the same world for every explorer — share the coordinates and a friend faces the very same beast.</p><ul><li>A guarded world’s survey card names its ruler, grade and Power, and its conquest becomes a <b>guardian challenge</b>.</li><li>Defeat it and the world is settled, the spoils pay a ruler’s ransom, and the guardian itself joins your Compendium — the fighter’s road to the summit grades.</li><li><b>Lose</b> and the usual price is paid: a champion creature is lost forever, or you take the wound.</li><li>The breeder’s road also leads up: size, glow, wild blood and deep hybrid generations can push a bloodline to the summit without ever drawing a blade.</li></ul>'},
 ]},
@@ -8840,9 +8840,9 @@ const GUIDE=[
  {id:'harvest', t:'Harvesting', k:'harvest hourly cooldown settled world replenish stardust', body:
   '<p>Every settled world can be harvested for Stardust once per hour (rarer worlds yield more). The button lives on the world’s survey card — “Settled — replenishing” means come back later. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
  {id:'mining', t:'Mining & the Cargo hold', k:'mine mining elements minerals deposits cargo hold dead lifeless world vein iron gold prismatium', body:
-  '<p>Dead worlds carry the elements. Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and rarer worlds hide richer veins, up to exotics like Voidglass and Prismatium.</p><ul><li>Prospecting takes boots on the ground: zoom all the way into a lifeless world to land — planetfall is a <b>ground survey</b>, and the ⛏ Mine Deposits button opens with it. (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li>Mining is hourly per world, like harvests.</li><li>Everything lands in your <b>🧰 Cargo hold</b> (right rail — it appears after your first mine).</li><li>Spend elements + ☄ Stardust at the <b>Research bench</b> inside the Cargo hold — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
+  '<p>Dead worlds carry the elements. Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and rarer worlds hide richer veins, up to exotics like Voidglass and Prismatium.</p><ul><li>Prospecting takes boots on the ground: zoom all the way into a lifeless world to land — planetfall is a <b>ground survey</b>, and the Mine Deposits button opens with it. (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li>Mining is hourly per world, like harvests.</li><li>Everything lands in your <b>🧰 Cargo hold</b> (right rail — it appears after your first mine).</li><li>Spend elements + ☄ Stardust at the <b>Research Bench</b> inside the Cargo hold — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
  {id:'research', t:'Research & ships', k:'research tech technology bench drive ship hull scanner lab fusion antimatter warp travel distance', body:
-  '<p>The engineer’s track, parallel to the Prime Codex: the Codex is your legend, the bench is your capability. Research costs mined elements + ☄ Stardust:</p><ul><li><b>🛰 Deep Scanners</b> — survey cards reveal mineral veins from orbit.</li><li><b>🛡 Reinforced Hull</b> — hostile bioscans wound you 25% lighter.</li><li><b>🧪 Xenobotany Lab</b> — flora meals nourish one extra stat point.</li><li><b>The drive ladder</b> — 🚀 Fusion → ⚛ Antimatter → 🌀 Warp Fold. Hyperlane travel scales with real distance; each drive cuts it, and Warp Fold makes every jump arrive in a breath. Distance is never a wall — only a wait, and only ever a short one.</li></ul>'},
+  '<p>The engineer’s track, parallel to the Prime Codex: the Prime Codex is your legend, the Research Bench is your capability. Research costs mined elements + ☄ Stardust:</p><ul><li><b>🛰 Deep Scanners</b> — survey cards reveal mineral veins from orbit.</li><li><b>🛡 Reinforced Hull</b> — hostile bioscans wound you 25% lighter.</li><li><b>🧪 Xenobotany Lab</b> — flora meals nourish one extra stat point.</li><li><b>The drive ladder</b> — 🚀 Fusion → ⚛ Antimatter → 🌀 Warp Fold. Hyperlane travel scales with real distance; each drive cuts it, and Warp Fold makes every jump arrive in a breath. Distance is never a wall — only a wait, and only ever a short one.</li></ul>'},
 ]},
 {icon:'✦', cat:'The Prime Codex', blurb:'Signatures, the frontier, endings', topics:[
  {id:'signatures', t:'The nine Signatures', k:'signature prime codex stone ocean flame sky life mind prism star void win', body:
@@ -8850,7 +8850,7 @@ const GUIDE=[
  {id:'regions', t:'Frontier regions', k:'region reach frontier expand charter solar local cluster near deep outer dark travel gate', body:
   '<p>You begin charted for the <b>Solar Reach</b>. Each Signature claimed pushes your charter outward — <em>the Local Cluster, the Near Field, the Deep Field, the Outer Dark</em>, and finally <em>the Frontier</em>. Travel beyond your charter is blocked until you’ve earned it, and farther regions field tougher apex defenders with stranger life.</p>'},
  {id:'endings', t:'Endings & the Celestial Frontier', k:'ending win frontier legacy prismatic complete game finish', body:
-  '<p>Complete all nine Signatures and the <b>Celestial Frontier</b> reveals itself — and asks what kind of Pathfinder you are. Your choice becomes your legacy (some legacies must be earned through deeds beyond the Codex). The universe stays open afterward: you cannot finish the infinite, only master it.</p>'},
+  '<p>Complete all nine Signatures and the <b>Celestial Frontier</b> reveals itself — and asks what kind of Pathfinder you are. Your choice becomes your legacy (some legacies must be earned through deeds beyond the Prime Codex). The universe stays open afterward: you cannot finish the infinite, only master it.</p>'},
 ]},
 {icon:'🌌', cat:'The Living Universe', blurb:'Cosmic events, determinism, one shared cosmos', topics:[
  {id:'events', t:'Cosmic events', k:'events supernova timescale minute hour day week month year decade witness', body:
@@ -8860,7 +8860,7 @@ const GUIDE=[
 ]},
 {icon:'⚙', cat:'Settings & Saving', blurb:'Toggles, tooltips, your save', topics:[
  {id:'settings', t:'Settings', k:'settings text size sound effects shake notifications tooltips toggle options', body:
-  '<p>The ⚙ panel (bottom right): <b>Text size</b> (A/A+/A++), <b>Text tone</b> (Soft / Bright / Max — brighter tones lift all body text toward white and shift bold emphasis to gold so it still stands out), <b>Font</b> (Grotesk / System / Mono), <b>Sound</b>, <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, <b>Notifications</b> (silences popups; the 🔔 tray still logs everything), and <b>Tooltips</b> (the short hints on long-press or hover — turn them off once you’re fluent). All persist with your save.</p>'},
+  '<p>The ⚙ panel (bottom right) has three tabs.</p><ul><li><b>Display</b>: <b>Text size</b> (A/A+/A++), <b>Text tone</b> (Soft / Bright / Max — brighter tones lift body text toward white and shift bold to gold), <b>Font</b> (Grotesk / System / Mono), <b>Explorer name</b>, and <b>Tooltips</b> (the short hints on long-press or hover — turn them off once you’re fluent).</li><li><b>Graphics</b>: <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, and <b>Motion</b> (Auto follows your device’s reduce-motion preference; Reduced stills the travel tunnel, shake, confetti and shimmer).</li><li><b>Audio</b>: <b>Sound</b>, the <b>Volume</b> slider, and <b>Notifications</b> (silences pop-ups; the 🔔 tray still logs everything).</li></ul><p>All persist with your save.</p>'},
  {id:'saving', t:'Your save & reset', k:'save localstorage reset erase wipe browser device local', body:
   '<p>Your expedition saves automatically to this browser on this device — no account, no cloud. Clearing site data clears the expedition, so export your best creatures as CFB codes if you’re attached. <b>↺ Reset Game</b> in Settings erases everything after a confirm — the universe itself is unharmed; it’s math.</p>'},
 ]}];
@@ -9070,7 +9070,8 @@ const RELEASES=[
  ['🎨 UI Enhancements', [
   'Calmer reading everywhere: <b>bold now marks only things you can press or proper names</b> — about a hundred stray emphasis words across cards, battles, training and these very notes have relaxed back into plain text. (In the brighter Text tones, gold now always means “this is a thing,” never decoration.)',
   '<b>The Chronicle speaks in color</b>, old-school MUD style: your champion reads cyan and the foe ember on every line, damage in yellow and criticals in gold, misses dim, staggers flash, burns glow orange, mending green, lifesteal violet, thorns lime — and a felled combatant falls in red. The verdict wears its outcome too: victory gold, defeat red. Shared battle logs stay plain text.',
-  'The same color language now runs through the whole expedition: <b>pop-ups and the bell tray</b> tint by event — red for harm and loss, gold for milestones and first contact, green for harvests, samples and mined hauls — and a world&#8217;s long-range glance tints each reading by family: water cyan, life green, signals violet.',
+  'The same color language now runs through the whole expedition: <b>pop-ups and the bell tray</b> tint by event — red for harm and loss, gold for milestones and first contact, green for harvests, samples and mined hauls — and a world&#8217;s long-range glance tints each reading by family: water cyan, life green, signals violet. The <b>Compendium</b> marks your Field Scout in cyan, the <b>Star Atlas</b> tints its badges, and <b>Cosmic Events</b> each wear their nature&#8217;s color.',
+  'A full grammar and clarity pass over every word in the game: stale button names corrected, the settings guide caught up with three tabs of reality, one wandering “Codex” sent home to the Prime Codex, and the First Contact <em>achievement</em> renamed First Specimen so the real first contact could keep its name.',
  ]],
 ]},
 {v:'1.2.5', title:'First Contact', date:'July 2026', sections:[
@@ -9098,7 +9099,7 @@ const RELEASES=[
   'Civilizations must be met, not scanned — from orbit an organized world is only ⟁ signals; land to make contact and read its census: tech era, local calendar, population.',
   'Prospecting takes boots on the ground — a dead world&#8217;s ⛏ Mine Deposits opens once you&#8217;ve landed on it. 🛰 Deep Scanners still read the veins from orbit.',
   'Worlds you&#8217;ve stood on wear a <b>Ground-surveyed</b> mark — and every world you charted, settled or mined before this update counts as ground-surveyed already: nothing you knew is re-hidden.',
-  'Landing pays — your first footfall on any world collects field samples: a pinch of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration now stocks the Research bench all by itself.',
+  'Landing pays — your first footfall on any world collects field samples: a pinch of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration now stocks the Research Bench all by itself.',
   '<b>Field Scouts</b> — name one of your fauna the expedition&#8217;s scout (press <b>Scout</b> on its card) and it takes the hit when a bioscan turns hostile, through the same wounds-and-mending life every creature lives. A scout with nothing left is lost forever. Hunt tougher beasts to scan deadlier worlds.',
  ]],
  ['🛠 Under the Hood', [
@@ -9171,7 +9172,7 @@ const RELEASES=[
  ['🧬 Life & the Compendium', [
   'Catalogue life across <b>four kingdoms and sixteen realms</b>, drawn by a painterly portrait engine that stages every creature <b>in the habitat where you found it</b>.',
   'A <b>15-grade rarity ladder</b> — Common through the deep spectrum to the summit: <b>Empyrean, Eternal, Omnipotent</b>. Foil frames at the top; no creature’s grade ever falls.',
-  '<b>Breed</b> hybrids (both parents consumed!), <b>feed</b> for permanent growth and medicine — and mind the poison: rarer flora bites deeper, and only a spent beast dies of it.',
+  '<b>Breed</b> hybrids (both parents consumed!), <b>feed</b> for permanent growth and medicine — and mind the poison: rarer flora bite deeper, and only a spent beast dies of it.',
   '<b>👑 Apex Guardians</b> — named one-of-a-kind summit titans ruling rare worlds, the same rulers for every explorer. Defeat one in conquest and it joins your Compendium.',
   '<b>🜲 The Fifty Paragons</b> — legendary deep-spectrum creatures on fixed worlds, silhouettes in your Binder until found. Share the coordinates; your friend hunts the same legend.',
   '<b>A living collection</b> — your Compendium interbreeds and evolves on its own as the cosmic clock ticks, and worlds re-roll their rosters as the universe ages. Sapience tiers run from Instinctive to fully Sapient; whole worlds host civilizations from stone-age to starfaring.',
@@ -9181,7 +9182,7 @@ const RELEASES=[
   'An <b>ability matrix</b> of hundreds of arts (“Fire Reckoning III”), every verb balanced across thousands of simulated duels. Hybrids inherit their other parent’s archetype; guardians fight with Sovereign arts.',
   '<b>The Chronicle</b> — duels are narrated blow-by-blow like a tabletop session: initiative, named arts, executes, thorn recoils, burn ticks, death lines — closing with a statistics ledger and a <b>shareable battle log</b>.',
   '<b>Conquest</b> — champion worlds yourself or send a beast; settled worlds fly your flag, scan safely and pay Stardust. World fields make defenders fight in their element.',
-  '<b>Wounds persist</b> — conquest scars and resented meals leave a beast Bruised, Injured or Critical, fighting below its strength until mended. <b>Feeding is medicine</b>: loved flavours mend most, rarer flora mends deeper — and poisons harder. The frontier bites you too: hostile bioscans cost HP, and at zero the expedition ends.',
+  '<b>Wounds persist</b> — conquest scars and resented meals leave a beast Bruised, Injured or Critical, fighting below its strength until mended. <b>Feeding is medicine</b>: loved flavours mend most, rarer flora mend deeper — and poison harder. The frontier bites you too: hostile bioscans cost HP, and at zero the expedition ends.',
  ]],
  ['🛠 Progression', [
   '<b>The Prime Codex</b> — nine Signatures to finish the Pathfinders’ unfinished master survey and reach the Celestial Frontier. Each carries their field notes; the Prism Signature is the discovery they died short of. Multiple endings.',
@@ -9191,7 +9192,7 @@ const RELEASES=[
  ]],
  ['⚙ The Craft', [
   'One file, offline-capable, mobile-first. Deterministic to the byte — the same universe on every device, verified by a 50-probe fingerprint and a full headless test fleet on every build.',
-  'A proper options screen — <b>Display / Graphics / Audio</b> tabs covering text size, tone, font, tooltips, effects, shake, sound and notifications, all persistent. Tap the version under <b>?</b> for these notes anytime. Your save lives in this browser only; back up favourites as ⇪ creature codes.',
+  'A proper options screen — <b>Display / Graphics / Audio</b> tabs covering text size, tone, font, tooltips, effects, shake, sound and notifications, all persistent. Tap the version under <b>?</b> for these notes anytime. Your save lives in this browser only; back up favorites as ⇪ creature codes.',
  ]],
 ]},
 ];
@@ -9357,10 +9358,10 @@ function openConquestPicker(d, native){
   document.getElementById('pick-title').textContent=(native.guardian?'👑 Challenge ':'⚔ Conquer ')+(d.title||'this world');
   document.getElementById('pick-note').innerHTML='Choose ONE champion to face this world\u2019s apex native, '+
     '<b style="color:'+nS.hex+'">'+native.name+'</b> (Power '+nS.total+'). '+
-    'Win and the world is yours to settle. Lose, and a codex creature is lost forever — or if you fight yourself, you take the wound.';
+    'Win and the world is yours to settle. Lose, and a Compendium creature is lost forever — or if you fight yourself, you take the wound.';
   if(native.guardian) document.getElementById('pick-note').innerHTML=
     'This world is ruled by <b style="color:'+nS.hex+'">'+native.name+'</b> — a one-of-a-kind <b style="color:'+nS.hex+'">'+GRADE_TIERS[nS.tier].name+'</b> Apex Guardian (Power '+nS.total+'). '+
-    'Defeat it and the world is yours, and the guardian itself joins your Compendium. Lose, and a codex creature is lost forever — or if you fight yourself, you take the wound.';
+    'Defeat it and the world is yours, and the guardian itself joins your Compendium. Lose, and a Compendium creature is lost forever — or if you fight yourself, you take the wound.';
   document.getElementById('pick-result').innerHTML='';
   pickList.innerHTML=champs.map(c=>{
     const S=c.stats||battleStats(c.genome);
@@ -9402,7 +9403,7 @@ function runConquestBattle(d, champ, native){
         }
         primeCheckWorld(d);   /* a settled rocky/lava world now yields its Stone/Flame signature */
         for(const e of codex.values()) if(e.where && e.where.pseed===d.planetSeed) primeCheckSpecies(e, false);
-        toast('\ud83c\udff4 '+(d.title||'World')+' Settled', champ.name+' overcame '+native.name+'. The world flies your flag \u2014 bioscans here are safe, and you can \u26cf harvest Stardust anytime.');
+        toast('\ud83c\udff4 '+(d.title||'World')+' Settled', champ.name+' overcame '+native.name+'. The world flies your flag \u2014 bioscans here are safe, and you can \u26cf harvest Stardust every hour.');
         const sd=8+(((d.designation&&d.designation.tier)||1))*5+(native.guardian?40:0);   /* guarded worlds pay a ruler's ransom */
         essence+=sd; stats.essenceEarned=(stats.essenceEarned||0)+sd;
         setTimeout(()=>toast('\u2604 Spoils of Conquest','+'+sd+' Stardust claimed with the world. Total: '+essence+'.'), 1200);
@@ -9694,10 +9695,10 @@ let _charterToastT=0;
 function charterBlock(){
   const now=performance.now();
   if(now-_charterToastT>1800){ _charterToastT=now;
-    toast('Beyond Your Charter','That galaxy lies past your reach. Claim more Prime Codex signatures to extend it.'); }
+    toast('Beyond Your Charter','That galaxy lies past your reach. Claim more Prime Codex Signatures to extend it.'); }
 }
 function pathfinderRank(){ const n=primeCount();
-  return n>=9?'Celestial Pathfinder':n>=6?'Pathfinder':n>=4?'Surveyor':n>=2?'Charter':'Wanderer'; }
+  return n>=9?'Celestial Pathfinder':n>=6?'Pathfinder':n>=4?'Surveyor':n>=2?'Chartmaker':'Wanderer'; }
 /* which Signatures a catalogued creature can fill, rarest-first (one creature fills one slot) */
 function speciesSignatures(entry){
   const t=(entry.grade?entry.grade.tier:0)||0, realm=entry.realm||'', out=[];
@@ -9955,7 +9956,7 @@ const CHARTER_POOL=[
  {id:'wk-sp',    ev:'species',  n:5, t:'Grow the Compendium',   d:'Catalogue 5 new species.', sd:25},
  {id:'wk-conq',  ev:'conquest', n:1, t:'Raise a flag',          d:'Conquer a world.', sd:30},
  {id:'wk-feed',  ev:'fed',  filt:x=>x&&x.ok, n:3, t:'Keeper of beasts', d:'Feed your fauna 3 welcome meals.', sd:20},
- {id:'wk-breed', ev:'bred', filt:x=>x&&x.ok, n:1, t:'A new bloodline',  d:'Forge a hybrid at the breeding pool.', sd:30},
+ {id:'wk-breed', ev:'bred', filt:x=>x&&x.ok, n:1, t:'A new bloodline',  d:'Breed any pair into a hybrid.', sd:30},
 ];
 const chDone=new Set();        /* completed starter ids — permanent (save chs) */
 let chWeek=-1;                 /* rotation week (save chw) */
@@ -9995,7 +9996,7 @@ function charterEvent(type, detail){
       stats.charters=(stats.charters||0)+1;
       playRaritySting(2);
       const nxt=CHARTER_STARTERS.find(x=>!chDone.has(x.id));
-      toast('Charter complete', '“'+c.t+'” — +'+c.sd+' ☄ Stardust.'+(c.id[0]==='s'
+      toast('Charter Complete', '“'+c.t+'” — +'+c.sd+' ☄ Stardust.'+(c.id[0]==='s'
         ? (nxt ? ' Next charter: '+nxt.t+'.' : ' The trades are learned — the weekly charter board is open.') : ''));
     }
   }
@@ -10033,7 +10034,7 @@ function gameEvent(type, detail){
 
 const TUT_STEPS=[
  {id:'welcome', btn:'Begin Training',
-  text:()=>'Welcome to <b>Sol</b>, '+(explorerName||'Explorer')+' — humanity’s cradle and your first charter. Before the infinite opens, the order asks one thing of every new Pathfinder: <b>field training</b>.<br>Everything ahead is real practice — and nothing you lose in training follows you out.'},
+  text:()=>'Welcome to <b>Sol</b>, '+(explorerName||'Explorer')+' — humanity’s cradle and your first charter. Before the infinite opens, the order asks one thing of every new Pathfinder: <b>Field Training</b>.<br>Everything ahead is real practice — and nothing you lose in training follows you out.'},
  {id:'find-earth', allow:['#cosmos','#panel'],
   text:()=>'First, find home. <b>Drag and zoom to Earth</b> — the blue world, third from the Sun — and <b>tap it</b> to open its survey card.',
   when:(t,d)=>t==='survey'&&d.planetSeed===133},
@@ -10043,7 +10044,7 @@ const TUT_STEPS=[
   text:()=>'Chart it. Tap <b>+ Add to Star Atlas</b> on Earth’s card — the Atlas is how you find your way back across the infinite.',
   when:(t,d)=>t==='atlas-add'&&d.id==='p133'},
  {id:'atlas-open', spot:'#logbtn', allow:['#logbtn','#log'],
-  text:()=>'Earth is charted — your Atlas’ first entry. Open the <b>Star Atlas</b> (right rail). Tapping any entry travels there instantly; ☆ favorites and the ⌂ home mark live there too.',
+  text:()=>'Earth is charted — your Atlas’s first entry. Open the <b>Star Atlas</b> (right rail). Tapping any entry travels there instantly; ☆ favorites and the ⌂ home mark live there too.',
   when:(t,d)=>t==='atlas-open'&&!!d.open},
  {id:'cache', spot:'#codexbtn', allow:['#codexbtn'], enter:()=>_tutGrant(),
   text:()=>'A <b>training cache</b> just arrived: three Earth beasts and three Earth flora, on loan from the order. Open your <b>Compendium</b> to meet them.',
@@ -10054,10 +10055,10 @@ const TUT_STEPS=[
  {id:'card-tour', spot:'#reveal .card', btn:'Got It',
   text:()=>'Read it like a Pathfinder: <b>five stat bars</b> and total Power; its <b>✧ ability</b>; its <b>rarity grade</b> tinting the card. Rarer life fights harder, breeds stronger, heals — or poisons — more. Beasts also list flora flavours they <b>♥ love</b> and <b>⊘ dislike</b>.'},
  {id:'feed', allow:['#codex','#codexbtn'], enter:()=>{ _tutRig={feed:0.62}; },
-  text:()=>'Time for a meal. Open a 🐾 beast in the Compendium, tap <b>🌿 Feed</b>, and pick a plant. The plant is always consumed — a welcome meal grows the beast’s bloodline permanently.',
+  text:()=>'Time for a meal. Open a 🐾 beast in the Compendium, tap <b>Feed</b>, and pick a plant. The plant is always consumed — a welcome meal grows the beast’s bloodline permanently.',
   when:(t)=>t==='fed'},
  {id:'breed', allow:['#codex','#codexbtn'], enter:()=>{ _tutRig={breed:0.001}; },
-  text:()=>'Now forge a bloodline. Open a 🐾 beast, tap <b>🧬 Breed</b>, and choose a mate. Both parents are always consumed by the union — but tonight, the stars favor you.',
+  text:()=>'Now forge a bloodline. Open a 🐾 beast, tap <b>Breed</b>, and choose a mate. Both parents are always consumed by the union — but tonight, the stars favor you.',
   when:(t)=>t==='bred'},
  {id:'duel', btn:'⚔ Begin Training Duel', stay:true,
   text:()=>'A new creature, born of two! Let’s see it fight. Duels run round by round on the five stats and abilities — and the same matchup plays out identically on every device. Press the button when ready.',
@@ -10524,7 +10525,7 @@ function renderEvents(){
     (stats.events>0
       ? 'You have been there for <b>'+stats.events+'</b> cosmic event'+(stats.events===1?'':'s')+'. Witnessed: '+
         (EVENT_DEFS.filter(d=>[...eventKeysSeen].some(k=>String(k).indexOf(d.id)>=0)).map(d=>d.title).join(' · ')||'the record keeps their secret')+'.'
-      : 'Nothing witnessed yet. When a once-a-week supernova or a once-a-year alignment goes <b>LIVE</b>, be looking — every explorer alive shares that same sky.')+'</div>';
+      : 'Nothing witnessed yet. When a once-a-week galactic collision or a once-a-year alignment goes <b>LIVE</b>, be looking — every explorer alive shares that same sky.')+'</div>';
   for(const def of EVENT_DEFS){
     const bucket=Math.floor(now/1000/def.per);
     const elapsed=now/1000 - bucket*def.per;
