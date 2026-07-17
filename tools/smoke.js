@@ -78,13 +78,13 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // fresh expedition: latest bulletin FIRST, then training
     const relFresh = doc.getElementById('relbox');
     check('fresh expedition: latest bulletin shows before training', await until(() =>
-      visible(relFresh) && relFresh.textContent.includes('Signal & Polish') && relFresh.textContent.includes('v1.1.1'), 4000, 'fresh bulletin'));
+      visible(relFresh) && relFresh.textContent.includes('Clear Signals') && relFresh.textContent.includes('v1.1.2'), 4000, 'fresh bulletin'));
     // the bulletin carries the SHIPPED version's whole minor line (1.1.x),
-    // but unshipped v-next entries and other lines must never leak in
-    check('bulletin stacks the shipped minor line (1.1.1 + 1.1)',
-      relFresh.textContent.includes('Field Reports') && relFresh.textContent.includes('v1.1'));
-    check('bulletin hides unshipped + other-line entries',
-      !relFresh.textContent.includes('The Frontier Opens') && !relFresh.textContent.includes('Clear Signals'));
+    // but entries newer than GAME_VERSION and other lines must never leak in
+    check('bulletin stacks the shipped minor line (1.1.2 + 1.1.1 + 1.1)',
+      relFresh.textContent.includes('Signal & Polish') && relFresh.textContent.includes('Field Reports'));
+    check('bulletin hides other-line entries (no 1.0 debut)',
+      !relFresh.textContent.includes('The Frontier Opens'));
     check('training has not started yet', !visible(doc.getElementById('tutbox')));
     click(doc.getElementById('relok'));
     check('bulletin closes into training (step 1)', await until(() => tutAt(1), 4000, 'step1'));
@@ -123,6 +123,26 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('tapping Earth completes step 2', await until(() => tutAt(3), 5000, 'step3'));
     tutAct();                                                       // survey tour -> atlas-add
     check('step 4: add to Atlas', tutAt(4));
+    // condensed card (1.1.2): actions ride at the top, environment + civ census fold
+    const panelBody = doc.querySelector('#panel .body');
+    check('card actions render at the TOP of the body (atlas row first)',
+      !!panelBody && !!panelBody.firstElementChild && panelBody.firstElementChild.classList.contains('atlasrow'));
+    check('spectral class row stays outside the folds',
+      !![...doc.querySelectorAll('#panel .row.grade')].find(r => !r.closest('.gbody')));
+    const envGrp = doc.querySelector('#panel [data-gtoggle="1"]');
+    check('environment group header present on a planet card', !!envGrp);
+    check('environment group is collapsed by default', !!envGrp && !envGrp.closest('.grp').classList.contains('open'));
+    check('collapsed header carries a digest', !!envGrp && envGrp.querySelector('.gdig').textContent.length > 0);
+    check('atmosphere row lives inside the environment fold',
+      !![...doc.querySelectorAll('#panel .gbody .row .k')].find(k => k.textContent === 'Atmosphere'));
+    const civGrp = doc.querySelector('#panel [data-gtoggle="2"]');
+    check('civilization census folds behind its headline (Earth has one)', !!civGrp
+      && !![...civGrp.closest('.grp').querySelectorAll('.gbody .row .k')].find(k => k.textContent === 'Population'));
+    click(envGrp);
+    check('tapping the chevron unfolds the environment', envGrp.closest('.grp').classList.contains('open'));
+    click(envGrp);
+    check('tapping again folds it back', !envGrp.closest('.grp').classList.contains('open'));
+    check('fold toggling never advances training', tutAt(4));
     click(doc.querySelector('#panel [data-act="add"]'));
     check('adding Earth to Atlas completes step 4', await until(() => tutAt(5), 3000, 'step5'));
     check('Atlas count is 1 (Earth)', doc.getElementById('logcount').textContent === '1');
@@ -231,7 +251,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     // release notes: the version line in the footer opens the full history
     const gc = doc.getElementById('gcredit');
-    check('guide footer shows version + build', gc && gc.textContent.includes('v1.1.1') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
+    check('guide footer shows version + build', gc && gc.textContent.includes('v1.1.2') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
     click(gc);
     const relbox = doc.getElementById('relbox');
     check('footer opens cumulative release notes (all versions)', visible(relbox)
