@@ -416,6 +416,10 @@
   #chpanel .ch .cp{font-size:10px;color:var(--plasma)}
   #chpanel .ch .cr{margin-left:auto;font-size:10px;color:#ffd96a;white-space:nowrap}
   #chpanel .ch .cd{font-size:10.5px;color:var(--dim);line-height:1.5;margin-top:3px}
+  #chpanel .ch .chk{color:#7fe6a0}
+  /* the active Field Scout wears its cyan tag in the Compendium roster */
+  #codex .sp .scouttag{font:600 8px var(--ui);letter-spacing:.09em;color:#6fd3ff;
+    border:1px solid rgba(111,211,255,0.5);border-radius:999px;padding:1px 6px;margin-left:5px;vertical-align:1px;white-space:nowrap}
   #events{position:fixed;top:calc(var(--topbar-h,100px) + 80px);left:18px;z-index:12;width:318px;max-height:min(64vh,560px);overflow-y:auto;display:none;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:11px;
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
@@ -5892,7 +5896,9 @@ function renderLog(){
     const isHome=it.id===homeId;
     const th = it.thumb ? '<img class="t'+(it.sq?' sq':'')+'" src="'+it.thumb+'" alt="">' : '<span class="t"></span>';
     const star = it.star ? '<span class="rstar">'+it.star+'</span>' : '';
-    const badge = (!isHome && it.badge) ? '<span class="badge">'+it.badge+'</span>' : '';
+    /* badges wear the card language: life green, civilization violet, signals lavender */
+    const _bc={Life:'#7fe6a0',Biosphere:'#7fe6a0',Signal:'#cdbcff',Civilized:'#d6a0ff',Advanced:'#d6a0ff'}[it.badge];
+    const badge = (!isHome && it.badge) ? '<span class="badge"'+(_bc?' style="color:'+_bc+';border-color:'+_bc+'66"':'')+'>'+it.badge+'</span>' : '';
     html+='<div class="item'+(isHome?' ishome':'')+'" data-id="'+it.id+'" role="button" tabindex="0" title="Travel to '+it.title.replace(/"/g,'')+'">'+th+
       '<div class="meta"><div class="nm">'+(isHome?'<span class="hm">⌂</span>':'')+it.title+star+'</div>'+
         '<div class="ds">'+it.sub+'</div></div>'+
@@ -6261,6 +6267,7 @@ function renderCodex(){
     const ccx=creatureCondition(sp.genome);
     return '<div class="sp" data-pick="'+sp.id+'" role="button" tabindex="0" style="'+bstyle+'"><img class="art" src="'+sp.art+'" alt="">'+
       '<div class="info"><div class="nm">'+(REALM_ICON[realm]||KIND_ICON[sp.kind]||'')+' '+sp.name+' '+rar+
+      (sp.id===scoutId?'<span class="scouttag">SCOUT</span>':'')+
       (ccx.h>0?' <span style="color:'+ccx.col+';font-size:9px">● '+ccx.label+'</span>':'')+
       '</div><div class="ds">'+sp.desc+
       (sp.diet?' · '+sp.diet:'')+'</div>'+
@@ -10007,7 +10014,7 @@ function renderCharters(){
   if(!starters) h+='<div class="ambient">Three fresh charters every week — the same board for every explorer in the universe.</div>';
   for(const c of list){
     const done=_chDoneOf(c), p=Math.min(chProg[c.id]||0, c.n);
-    h+='<div class="ch'+(done?' done':'')+'"><div class="ct">'+(done?'✓ ':'')+c.t+
+    h+='<div class="ch'+(done?' done':'')+'"><div class="ct">'+(done?'<span class="chk">✓</span> ':'')+c.t+
       (c.n>1?' <span class="cp">'+p+' / '+c.n+'</span>':'')+
       '<span class="cr">+'+c.sd+' ☄</span></div>'+
       (done?'':'<div class="cd">'+c.d+'</div>')+'</div>';
@@ -10448,15 +10455,17 @@ document.getElementById('hpheart').addEventListener('click', ()=>openPicker('hea
    @section events [app] — Cosmic Events — timed rare-event feed
    Owns: EVENT_DEFS, _evWhereCache, eventWhere, fmtRemain, eventsBtn, eventsEl, eventsOpen, _evTimer, LIVE_WINDOW, renderEvents, …
    ---------------------------------------------------------------- */
+/* col: the MUD event language — each sky-event wears its nature's color
+   in the panel (presentation only; the schedule stays pure math) */
 const EVENT_DEFS=[
-  {id:'flare',  per:60,        ic:'☀️', title:'Stellar Flare',      desc:'A flare star erupts — gone in a minute', planet:false},
-  {id:'nova',   per:3600,      ic:'💥', title:'Supernova',          desc:'A massive star detonates this hour', planet:false},
-  {id:'aurora', per:86400,     ic:'✨', title:'Aurora Storm',       desc:'Charged particles set a world\u2019s skies alight today', planet:true},
-  {id:'merger', per:604800,    ic:'🌌', title:'Galactic Collision', desc:'This week\u2019s spotlight: two galaxies grinding into one', planet:false},
-  {id:'quasarup',per:2592000,  ic:'🔆', title:'Quasar Ignition',    desc:'A supermassive black hole flares to life this month', planet:false},
-  {id:'conj',   per:31557600,  ic:'🪐', title:'Great Conjunction',  desc:'The year\u2019s rarest alignment over one chosen world', planet:true},
-  {id:'wander', per:63115200,  ic:'🌠', title:'Rogue Star Flyby',   desc:'A starless wanderer crosses the void — once every two years', planet:false},
-  {id:'prism',  per:315576000, ic:'✦',  title:'The Prismatic Wanderer', desc:'A once-a-decade visitor no one fully understands', planet:true},
+  {id:'flare',  per:60,        ic:'☀️', col:'#ffd96a', title:'Stellar Flare',      desc:'A flare star erupts — gone in a minute', planet:false},
+  {id:'nova',   per:3600,      ic:'💥', col:'#ff8a72', title:'Supernova',          desc:'A massive star detonates this hour', planet:false},
+  {id:'aurora', per:86400,     ic:'✨', col:'#7fe6a0', title:'Aurora Storm',       desc:'Charged particles set a world\u2019s skies alight today', planet:true},
+  {id:'merger', per:604800,    ic:'🌌', col:'#9fb4ff', title:'Galactic Collision', desc:'This week\u2019s spotlight: two galaxies grinding into one', planet:false},
+  {id:'quasarup',per:2592000,  ic:'🔆', col:'#ff9a5a', title:'Quasar Ignition',    desc:'A supermassive black hole flares to life this month', planet:false},
+  {id:'conj',   per:31557600,  ic:'🪐', col:'#e8d27f', title:'Great Conjunction',  desc:'The year\u2019s rarest alignment over one chosen world', planet:true},
+  {id:'wander', per:63115200,  ic:'🌠', col:'#6fd3ff', title:'Rogue Star Flyby',   desc:'A starless wanderer crosses the void — once every two years', planet:false},
+  {id:'prism',  per:315576000, ic:'✦',  col:'#d6a0ff', title:'The Prismatic Wanderer', desc:'A once-a-decade visitor no one fully understands', planet:true},
 ];
 const _evWhereCache=new Map();
 function eventWhere(def){
@@ -10527,7 +10536,7 @@ function renderEvents(){
       ? '<span style="color:#ff8a72">● LIVE — '+fmtRemain((LIVE_WINDOW-elapsed)*1000)+' left to witness</span>'
       : 'next in '+fmtRemain(remain);
     html+='<div class="ev"><span class="ic">'+def.ic+'</span>'+
-      '<div class="m"><div class="tt">'+def.title+(isLong?' <span style="color:#ff8a72;font-size:9px">RARE</span>':'')+'</div><div class="ds">'+def.desc+'</div>'+
+      '<div class="m"><div class="tt"'+(def.col?' style="color:'+def.col+'"':'')+'>'+def.title+(isLong?' <span style="color:#ff8a72;font-size:9px">RARE</span>':'')+'</div><div class="ds">'+def.desc+'</div>'+
       '<div class="tm">'+tm+'</div></div>'+
       '<button class="go" data-ev="'+def.id+'">Go</button></div>';
   }
