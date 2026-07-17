@@ -5,7 +5,31 @@
 > batch, keep everything committed and pushed. The chat is disposable; this
 > file and the repo are not.
 
-## ▶ v1.1.2 IN PROGRESS (Nick's list, 2026-07-16) — GAME_VERSION still '1.1.1'
+## ★ v1.1.2 "CLEAR SIGNALS" — BUILT & SHIPPING (2026-07-16, Nick's go:
+## "let's begin it all now") — GAME_VERSION bumped to '1.1.2'
+
+CARD CONDENSING BUILT & VERIFIED (validate green, fingerprint byte-identical,
+smoke 113/113, systems-check 19/19):
+- Actions (Atlas row / Conquer / Mine / Share) at the TOP of the card body
+  with a divider — fixes the below-the-fold Atlas button that stranded the
+  Safari playtester at training step 4.
+- 🌍 Environment group (Made of, Atmosphere, Climate, Water, Gravity,
+  Magnetism, Weather, Seasons) folds behind a chevron row; collapsed header
+  digest = first clause of Climate + Gravity, ellipsis-clamped.
+- Civilization census (Tech era, Local year, Population) folds behind the
+  Civilization headline row (name stays visible — a civ is a headline
+  discovery). Wilderness worlds keep their single plain row.
+- ⟁ Signal row NEVER folds (discovery hook). Spectral class never folds.
+- Expand state = cardExpand bitmask (bit1 env, bit2 civ), new save field
+  `cx` (absent-default 0 = collapsed), remembered across cards + sessions;
+  toggles flip DOM in place (no rebuild — keyboard focus survives) and
+  patch the panel key's trailing |cx suffix.
+- Grouping is label-driven in renderPanel (app) ONLY — planetDescriptor
+  (domain, fingerprinted) untouched. Guide survey topic + RELEASES bullets
+  updated. Smoke +10 checks (top actions, folds, digest, toggle, training
+  never advanced by fold clicks).
+
+## (superseded planning notes below — kept for the record)
 
 BUILT & VERIFIED 2026-07-16 (validate green, fingerprint byte-identical,
 smoke 103/103; committed, NOT deployed — awaiting the rest of the batch):
