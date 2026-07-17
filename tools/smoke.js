@@ -145,6 +145,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(envGrp);
     check('tapping again folds it back', !envGrp.closest('.grp').classList.contains('open'));
     check('fold toggling never advances training', tutAt(4));
+    check('Earth (a living world) never offers mining',
+      !doc.querySelector('#panel [data-act="mine"]') && !doc.querySelector('#panel [data-act="landcta"]'));
     click(doc.querySelector('#panel [data-act="add"]'));
     check('adding Earth to Atlas completes step 4', await until(() => tutAt(5), 3000, 'step5'));
     check('Atlas count is 1 (Earth)', doc.getElementById('logcount').textContent === '1');
@@ -400,7 +402,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       !!pan3.querySelector('[data-act="landcta"]') && !pan3.querySelector('[data-act="mine"]'));
     // planetfall (the zoom gesture's destination, driven directly)
     skH.noteLanding(dp.data.P.seed);
-    const sawGround = await until(() => pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('⛳ Ground-surveyed'), 4000, 'ground card');
+    const sawGround = await until(() => pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('Ground-surveyed'), 4000, 'ground card');
     check('discovery: landing upgrades the open card — GROUND SURVEY, mining open', sawGround
       && !pan3.querySelector('[data-act="landcta"]'));
     check('discovery: ground survey reveals the mineral veins without Deep Scanners',
