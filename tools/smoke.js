@@ -79,8 +79,12 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     const relFresh = doc.getElementById('relbox');
     check('fresh expedition: latest bulletin shows before training', await until(() =>
       visible(relFresh) && relFresh.textContent.includes('Signal & Polish') && relFresh.textContent.includes('v1.1.1'), 4000, 'fresh bulletin'));
-    check('bulletin is pinned to the SHIPPED version (no other entries leak in)',
-      !relFresh.textContent.includes('The Frontier Opens') && !relFresh.textContent.includes('Field Reports'));
+    // the bulletin carries the SHIPPED version's whole minor line (1.1.x),
+    // but unshipped v-next entries and other lines must never leak in
+    check('bulletin stacks the shipped minor line (1.1.1 + 1.1)',
+      relFresh.textContent.includes('Field Reports') && relFresh.textContent.includes('v1.1'));
+    check('bulletin hides unshipped + other-line entries',
+      !relFresh.textContent.includes('The Frontier Opens') && !relFresh.textContent.includes('Clear Signals'));
     check('training has not started yet', !visible(doc.getElementById('tutbox')));
     click(doc.getElementById('relok'));
     check('bulletin closes into training (step 1)', await until(() => tutAt(1), 4000, 'step1'));
