@@ -4309,6 +4309,7 @@ function checkTransitions(){
           st.pfbm=makeNoise(pl.P.seed);
           st.pcam={x:0,y:0,z:1};
           st.mode='surface'; st.fade=1;
+          noteLanding(pl.P.seed);          /* planetfall = ground survey (v1.2) */
           playWhoosh();                    /* planetfall */
           return;
         }
@@ -5270,6 +5271,21 @@ let _lastDesc=null, _panelKey=null, panelRect=null, stickyPick=null, _spExpanded
    Civilization census open. Remembered across cards AND sessions (save
    field cx, absent-default 0 = collapsed) — set it once, keep your view. */
 let cardExpand=0;
+/* v1.2 discovery arc: the worlds you've stood on. Planetfall turns an
+   orbital survey into a GROUND survey — the census and mineral veins are
+   read from the ground, never from orbit. Earth (133) is home: always
+   known, and landing there never announces itself. Save field `land`;
+   pre-1.2 saves are grandfathered in loadSave (a veteran's charted
+   universe must never re-hide). */
+const landed=new Set();
+function noteLanding(seed){
+  if(seed==null || landed.has(seed)) return;
+  landed.add(seed);
+  _panelKey=null;                      /* an open card upgrades in place */
+  gameEvent('landfall', {planetSeed:seed});
+  if(seed!==133) toast('⛳ Ground survey', 'Boots on the ground — this world’s census and mineral veins are yours to read.');
+  queueSave();
+}
 function renderPanel(p, isLocked){
   if(!p){ panelEl.style.display='none'; panelEl.classList.remove('locked'); _lastDesc=null; _panelKey=null; panelRect=null; _frozenFor=null; return; }
   const d=describePick(p);
@@ -5287,6 +5303,7 @@ function renderPanel(p, isLocked){
   const _cq=d.planetSeed!=null?conquered.get(d.planetSeed):null;
   const key=d.logId+'|'+st.mode+'|'+(inLog?1:0)+'|'+(isLocked?'L':'')+'|'+codexStamp+'|'+(lifeOpen?'X':'')+
     '|'+(_cq?('C'+(Date.now()-_cq.t>=HARVEST_CD?'R':'W')):'')+'|'+(d._nameKey?(customNames.get(d._nameKey)||''):'')+'|'+(_favOn?'F':'')+(_homeOn?'H':'')+
+    '|'+(d.planetSeed!=null&&(d.planetSeed===133||landed.has(d.planetSeed))?'G':'')+   /* ground-surveyed (v1.2) */
     '|cx'+cardExpand;   /* keep cx LAST — the toggle handler patches it in place */
   panelEl.classList.toggle('locked', !!isLocked);
   if(key!==_panelKey){               /* rebuild content only when it actually changes */
@@ -5298,6 +5315,9 @@ function renderPanel(p, isLocked){
       noteSurvey(d);
       primeCheckWorld(d);
       gameEvent('survey', {logId:d.logId, planetSeed:d.planetSeed});
+      /* standing on it counts as landing, whatever road led here (covers a
+         save restored directly onto a surface) */
+      if(st.mode==='surface' && d.planetSeed!=null) noteLanding(d.planetSeed);
     }
     const thumb = d.thumb ? '<img class="thumb'+(d.thumbSq?' sq':'')+'" src="'+d.thumb+'" alt="">' : '';
     let rows='';
@@ -5313,8 +5333,14 @@ function renderPanel(p, isLocked){
        remembered toggles. The ⟁ Signal row never folds: it's a discovery
        hook. Grouping is label-driven UI only; planetDescriptor (domain,
        fingerprinted) is untouched. */
-    let civHtml='';
+    let civHtml='', glance=false, grounded=false;
     if(d.planetSeed!=null){
+      /* v1.2 discovery arc — three tiers of knowing a world:
+         GLANCE (hover) → ORBITAL SURVEY (tap/lock) → GROUND SURVEY (land).
+         grounded gates the census and prospecting; Earth is home, always known. */
+      grounded = d.planetSeed===133 || landed.has(d.planetSeed) ||
+        (st.mode==='surface' && st.planet && st.planet.P && st.planet.P.seed===d.planetSeed);
+      glance = !isLocked && st.mode!=='surface';
       const ENV_K={'Made of':1,'Atmosphere':1,'Climate':1,'Water':1,'Gravity':1,'Magnetism':1,'Weather':1,'Seasons':1};
       const CIV_K={'Tech era':1,'Local year':1,'Population':1};
       const envRows=[], civDet=[]; let civHead=null, sigRow=null;
@@ -5324,36 +5350,54 @@ function renderPanel(p, isLocked){
         else if(CIV_K[row[0]]) civDet.push(row);
         else if(row[0]==='Civilization') civHead=row;
         else if(row[0]==='⟁ Signal') sigRow=row;
-        else rows+=rowHtml(row);                         /* Spectral class, Life, Earth's Flora/Fauna */
+        else if(!glance) rows+=rowHtml(row);             /* Spectral class, Life, Earth's Flora/Fauna */
+        else if(row[2]==='grade') rows+=rowHtml(row);    /* the glance still shows the color language */
       }
-      if(envRows.length){
-        /* the collapsed header still gives the world character: first clause
-           of the climate + the gravity line, ellipsis-clamped to one line */
-        const _cl=((envRows.find(r=>r[0]==='Climate')||['',''])[1]||'').split(/[,—]/)[0].trim();
-        const _gv=(envRows.find(r=>r[0]==='Gravity')||['',''])[1]||'';
-        const _eo=!!(cardExpand&1);
-        rows+='<div class="grp'+(_eo?' open':'')+'"><div class="row ghead" data-gtoggle="1" role="button" tabindex="0" '+
-          'data-tip="The full environmental survey — atmosphere, water, weather and more">'+
-          '<span class="k">🌍 Environment</span><span class="v gdig">'+[_cl,_gv].filter(Boolean).join(' · ')+'</span>'+
-          '<span class="chev">▸</span></div><div class="gbody">'+envRows.map(rowHtml).join('')+'</div></div>';
+      if(glance){
+        /* tier 0: what a telescope sees — coarse reads, no census, no roster */
+        const _val=n=>((d.rows.find(r=>r[0]===n)||['',''])[1]||'');
+        const reads=[];
+        if(_val('Atmosphere') && !/^No atmosphere/i.test(_val('Atmosphere'))) reads.push('☁ atmosphere');
+        if(/liquid|ocean|river|sea/i.test(_val('Water'))) reads.push('🌊 liquid-water signature');
+        if(_val('Life') && !/^(None|Lifeless|Sterile)/i.test(_val('Life'))) reads.push('🧬 biosignatures');
+        if((civHead && !/^None/.test(civHead[1])) || sigRow) reads.push('⟁ structured signals');
+        rows+='<div class="row"><span class="k">🛰 Long-range</span><span class="v">'+
+          (reads.length?reads.join(' · '):'a quiet, dark world')+'</span></div>';
+        rows+='<div class="row"><span class="v" style="color:var(--faint)">'+(TOUCH?'Tap':'Click')+' to run an orbital survey.</span></div>';
+      } else {
+        if(envRows.length){
+          /* the collapsed header still gives the world character: first clause
+             of the climate + the gravity line, ellipsis-clamped to one line */
+          const _cl=((envRows.find(r=>r[0]==='Climate')||['',''])[1]||'').split(/[,—]/)[0].trim();
+          const _gv=(envRows.find(r=>r[0]==='Gravity')||['',''])[1]||'';
+          const _eo=!!(cardExpand&1);
+          rows+='<div class="grp'+(_eo?' open':'')+'"><div class="row ghead" data-gtoggle="1" role="button" tabindex="0" '+
+            'data-tip="The full environmental survey — atmosphere, water, weather and more">'+
+            '<span class="k">🌍 Environment</span><span class="v gdig">'+[_cl,_gv].filter(Boolean).join(' · ')+'</span>'+
+            '<span class="chev">▸</span></div><div class="gbody">'+envRows.map(rowHtml).join('')+'</div></div>';
+        }
+        if(civHead){
+          if(!grounded && !/^None/.test(civHead[1])){
+            /* orbit knows SOMEONE is down there — the census takes boots on the ground */
+            civHtml='<div class="row civ"><span class="k">'+civHead[0]+'</span>'+
+              '<span class="v">Signals from an organized world — <b>land to make contact</b></span></div>';
+          } else if(civDet.length){
+            const _co=!!(cardExpand&2);
+            civHtml='<div class="grp'+(_co?' open':'')+'"><div class="row civ ghead" data-gtoggle="2" role="button" tabindex="0" '+
+              'data-tip="The census — tech era, local calendar and population">'+
+              '<span class="k">'+civHead[0]+'</span><span class="v gdig">'+civHead[1]+'</span>'+
+              '<span class="chev">▸</span></div><div class="gbody">'+civDet.map(rowHtml).join('')+'</div></div>';
+          } else civHtml=rowHtml(civHead);               /* wilderness — one line, nothing to expand */
+        }
+        if(sigRow) civHtml+=rowHtml(sigRow);
       }
-      if(civHead){
-        if(civDet.length){
-          const _co=!!(cardExpand&2);
-          civHtml='<div class="grp'+(_co?' open':'')+'"><div class="row civ ghead" data-gtoggle="2" role="button" tabindex="0" '+
-            'data-tip="The census — tech era, local calendar and population">'+
-            '<span class="k">'+civHead[0]+'</span><span class="v gdig">'+civHead[1]+'</span>'+
-            '<span class="chev">▸</span></div><div class="gbody">'+civDet.map(rowHtml).join('')+'</div></div>';
-        } else civHtml=rowHtml(civHead);                 /* wilderness — one line, nothing to expand */
-      }
-      if(sigRow) civHtml+=rowHtml(sigRow);
     } else {
       for(const row of d.rows){
         if(row[3]&&row[3].startsWith('sp:')) continue;   /* species handled as a group below */
         rows+=rowHtml(row);
       }
     }
-    if(spRows.length && !lifeOpen){
+    if(!glance && spRows.length && !lifeOpen){
       /* collapsed: life is detected, not yet catalogued — scanning is a deliberate act */
       const dz=dangerOf(d);
       const dzTxt=dz.pct<=0 ? '' : ' · <b style="color:'+(dz.pct<0.18?'#ffd96a':'#ff8a72')+'">⚠ '+Math.round(dz.pct*100)+'% danger</b>';
@@ -5362,7 +5406,7 @@ function renderPanel(p, isLocked){
         : 'Discover &amp; catalogue this world\u2019s species')+'">'+
         '<span class="thumbmini" style="background:rgba(127,230,160,0.14)"></span>'+
         '<span class="spk">🔬</span><span class="v"><b>🔬 Discover Life</b> — '+spRows.length+' life forms detected'+dzTxt+'</span></div>';
-    } else if(spRows.length){
+    } else if(!glance && spRows.length){
       /* preview the most notable few inline; the full roster lives in the Codex */
       const ranked=spRows.map(row=>{
         const spId=row[3].slice(3);
@@ -5391,7 +5435,7 @@ function renderPanel(p, isLocked){
     }
     rows+=civHtml;   /* civilization (+ ⟁ Signal) reads below the life roster */
     let conqBtn='';
-    if(d.planetSeed!=null && d.species && d.species.some(g=>g.kingdom==='fauna')){
+    if(!glance && d.planetSeed!=null && d.species && d.species.some(g=>g.kingdom==='fauna')){
       const c=conquered.get(d.planetSeed);
       const _gd=c?null:guardianFor(d.planetSeed);   /* fallen guardians stay fallen — settled worlds show none */
       if(_gd){
@@ -5407,17 +5451,21 @@ function renderPanel(p, isLocked){
           (ready?'⛏ Harvest ☄ Stardust — ready':'🏴 Settled — replenishing')+'</button>';
       }
     }
-    /* lifeless worlds carry the elements — the dead-world loop */
+    /* lifeless worlds carry the elements — the dead-world loop. Prospecting
+       takes boots on the ground (v1.2); the deep scanner (scan1) reads the
+       veins from orbit, but the drills still need a surface under them. */
     let mineBtn='';
-    if(d.planetSeed!=null && (!d.species || !d.species.length) && d.ptype){
+    if(!glance && d.planetSeed!=null && (!d.species || !d.species.length) && d.ptype){
       const _mt=mined.get(d.planetSeed);
       const _mReady=!_mt || (Date.now()-_mt>=MINE_CD);
-      if(techOwned.has('scan1')){
+      if(techOwned.has('scan1') || grounded){
         const _dp=depositsFor(d.planetSeed, d.ptype, d.designation?d.designation.tier:0);
         rows+='<div class="splabel"><span class="k">⛏ Mineral veins</span><span class="v">'+_dp.map(s=>ELEM_NAME[s]||s).join(' · ')+'</span></div>';
       }
-      mineBtn='<button class="act'+(_mReady?'':' in')+'" data-act="mine" data-guide="mining" data-tip="Dead worlds carry the elements — mine them hourly to stock your 🧰 Cargo for research.">'+
-        (_mReady?'⛏ Mine Deposits':'⛏ Mined — veins settling')+'</button>';
+      mineBtn = grounded
+        ? '<button class="act'+(_mReady?'':' in')+'" data-act="mine" data-guide="mining" data-tip="Dead worlds carry the elements — mine them hourly to stock your 🧰 Cargo for research.">'+
+          (_mReady?'⛏ Mine Deposits':'⛏ Mined — veins settling')+'</button>'
+        : '<button class="act in" data-act="landcta" data-guide="mining" data-tip="Dead worlds carry the elements — but prospecting takes boots on the ground. Zoom all the way in to land.">⛳ Land to prospect</button>';
     }
     const atlasRow =
       '<div class="atlasrow">'+
@@ -5426,15 +5474,15 @@ function renderPanel(p, isLocked){
         '<button class="aico lfav'+(_favOn?' on':'')+'" data-act="fav" data-guide="atlas" data-tip="'+(_favOn?'Remove favorite':'Favorite \u2014 also saves to your Star Atlas')+'">'+(_favOn?'\u2605':'\u2606')+'</button>'+
         '<button class="aico lhome'+(_homeOn?' on':'')+'" data-act="home" data-guide="atlas" data-tip="'+(_homeOn?'Clear home':'Set as home \u2014 also saves to your Star Atlas')+'">\u2302</button>'+
       '</div>';
-    const btn = atlasRow + conqBtn + mineBtn +
+    const btn = glance ? '' : atlasRow + conqBtn + mineBtn +
       (d.where ? '<button class="act" data-act="share" data-guide="codes" data-tip="Copy a code — friends land on this exact world">⇪ Share this discovery</button>' : '');
     /* actions live at the TOP of the body (1.1.2): on phones the old
        bottom placement put "+ Add to Star Atlas" below the fold — a
        playtester got stranded at training step 4 because of it */
     panelEl.innerHTML =
       '<div class="head">'+thumb+'<div class="htxt"><h3>'+d.title+'</h3><div class="sub">'+d.sub+'</div></div></div>'+
-      '<div class="body">'+btn+'<div class="bdiv"></div>'+rows+
-      '<span class="tag">'+(st.mode==='surface'?'You are here':'Procedural survey')+'</span></div>';
+      '<div class="body">'+(btn?btn+'<div class="bdiv"></div>':'')+rows+
+      '<span class="tag">'+(st.mode==='surface'?'You are here':(glance?'🛰 Long-range glance':(d.planetSeed!=null&&landed.has(d.planetSeed)?'⛳ Ground-surveyed':'Procedural survey')))+'</span></div>';
     /* the rarity color language: tint the whole card border by spectral designation */
     const gr=d.designation||d.grade;
     if(gr){
@@ -5507,6 +5555,7 @@ panelEl.addEventListener('click', e=>{
   }
   const b=e.target.closest('[data-act]');
   if(!b || !_lastDesc) return;
+  if(b.dataset.act==='landcta'){ toast('⛳ Landing required','Zoom all the way into this world — planetfall turns your orbital survey into a ground survey and opens its veins.'); return; }
   if(b.dataset.act==='share'){ shareWhere(_lastDesc); return; }
   if(b.dataset.act==='conq'){ conquerPlanet(_lastDesc); return; }
   if(b.dataset.act==='harv'){ doHarvest(_lastDesc); return; }
@@ -6781,6 +6830,7 @@ function doSave(){
       view:whereOfView(),
       hp:hp, pstats:pstats, fs:fsMode, tone:toneMode, font:fontMode, snd:sndOn?1:0, fx:fxOn?1:0, shake:shakeOn?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
       vol:Math.round(sfxVol*100), rm:motionMode, cx:cardExpand,
+      land:[...landed].slice(-2000),
       notifs:notifications.slice(0,50),
       me:explorerName,
       essence:essence,
@@ -6883,6 +6933,16 @@ function loadSave(){
     for(const e of (data.codex||[])){ if(e && e.g) _storeSpecies(e.g, e.f, e.w||null); }
     for(const it of (data.log||[])){ if(it && it.id){ it.star=''; logMap.set(it.id, it); } }
     homeId=(data.home && logMap.has(data.home))?data.home:null;
+    /* v1.2 discovery arc. land absent (pre-1.2 save) ⇒ grandfather: every
+       world the veteran has charted, settled or mined counts as ground-
+       surveyed — the arc must never re-hide a known universe. */
+    if(data.land){
+      for(const s of (data.land||[])){ const n=+s; if(Number.isFinite(n)) landed.add(n); }
+    } else {
+      for(const id of logMap.keys()){ if(typeof id==='string' && id[0]==='p'){ const n=+id.slice(1); if(Number.isFinite(n)) landed.add(n); } }
+      for(const k of conquered.keys()) landed.add(k);
+      for(const k of mined.keys()) landed.add(k);
+    }
     if(data.prime && typeof data.prime==='object'){ for(const k in data.prime) if(SIG_IDS.includes(k)) primeFill[k]=data.prime[k]; }
     frontierUnlocked=!!data.frontier; frontierEnding=data.ending||null;
     seenGuide=!!data.guide;
@@ -6902,7 +6962,7 @@ function resetMemoryState(){
   /* belt-and-suspenders: wipe every in-memory container so the game is fresh
      even if the browser soft-navigates instead of doing a hard reload */
   try{
-    codex.clear(); logMap.clear(); conquered.clear();
+    codex.clear(); logMap.clear(); conquered.clear(); landed.clear();
     surveyedSet.clear(); galSeen.clear(); surfSeen.clear();
     starKindsSeen.clear(); ptypesSeen.clear(); eventKeysSeen.clear();
     _evAnnounced.clear(); unlocked.clear(); customNames.clear();
@@ -8358,7 +8418,7 @@ const GUIDE=[
  {id:'zoom', t:'Flying the universe', k:'zoom pan pinch scroll drag modes universe galaxy system surface navigate controls', body:
   '<p>The whole cosmos is one continuous view. <b>Pinch or scroll to zoom, drag to pan.</b> Zooming dives through four scales: <em>universe → galaxy → star system → planet surface</em> — and zooming out climbs back up. Everything you can see, you can visit.</p><ul><li>Tap any object to open its <b>survey card</b>; tap it again (or tap elsewhere) to release.</li><li>On a surface, you walk the world itself — the survey card stays pinned.</li><li>Travel beyond your charted frontier is gated — see <span data-gt="regions">Frontier regions</span>.</li></ul>'},
  {id:'survey', t:'Survey cards', k:'survey card panel tap inspect atmosphere climate water gravity descriptor lock pin', body:
-  '<p>Tap anything — galaxy, star, planet, moon, comet, even the void between — and its survey card opens: classification, atmosphere, climate, water, gravity, seasons, hazards, life. Every line is generated from the object’s seed, so <b>your survey matches every other explorer’s</b>.</p><ul><li>Tapping <b>locks</b> the card in place so you can press its buttons while the object drifts.</li><li>A planet&#8217;s card leads with its actions and headlines; the <b>🌍 Environment</b> chevron unfolds the full readings, and a civilization&#8217;s headline unfolds its census. Cards remember whether you like them open or folded.</li><li>Worlds with a biosphere show <b>🔬 Discover Life</b> — see <span data-gt="discover">Discovering life</span>.</li><li>The bookmark row saves the place — see <span data-gt="atlas">The Star Atlas</span>.</li></ul>'},
+  '<p>Knowing a world comes in three acts. <b>Glance</b>: hover (or approach) and the card shows its long-range reads — color class, atmosphere, water signatures, whispers of life. <b>Orbital survey</b>: tap to lock the card and the instruments speak — environment, biosphere, signals. <b>Ground survey</b>: zoom all the way in and <b>land</b> — planetfall opens the census of any civilization and the mineral veins of dead worlds. Every line is generated from the object’s seed, so <b>your survey matches every other explorer’s</b>.</p><ul><li>Tapping <b>locks</b> the card in place so you can press its buttons while the object drifts.</li><li>A planet&#8217;s card leads with its actions and headlines; the <b>🌍 Environment</b> chevron unfolds the full readings, and a civilization&#8217;s headline unfolds its census. Cards remember whether you like them open or folded.</li><li>An organized world announces itself from orbit as <b>⟁ signals</b> — but you must land to make contact.</li><li>Worlds with a biosphere show <b>🔬 Discover Life</b> — see <span data-gt="discover">Discovering life</span>.</li><li>The bookmark row saves the place — see <span data-gt="atlas">The Star Atlas</span>.</li></ul>'},
  {id:'search', t:'Search', k:'search box find discoveries paste code lookup', body:
   '<p>The search box (top bar) hunts across <b>everything you’ve already discovered</b>: Atlas places, Compendium species, even cosmic events you’ve witnessed. It also accepts pasted codes:</p><ul><li><b>CF1-…</b> world codes — jump straight to a friend’s discovery.</li><li><b>CFB-…</b> creature codes — load a friend’s creature for a duel.</li></ul><p>See <span data-gt="codes">Share codes</span>.</p>'},
  {id:'codes', t:'Share codes (CF1 / CFB)', k:'share code link friend cf1 cfb copy multiplayer social', body:
@@ -8422,7 +8482,7 @@ const GUIDE=[
  {id:'harvest', t:'Harvesting', k:'harvest hourly cooldown settled world replenish stardust', body:
   '<p>Every settled world can be <b>⛏ harvested for Stardust once per hour</b> (rarer worlds yield more). The button lives on the world’s survey card — “🏴 Settled — replenishing” means come back later. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
  {id:'mining', t:'Mining & the Cargo hold', k:'mine mining elements minerals deposits cargo hold dead lifeless world vein iron gold prismatium', body:
-  '<p><b>Dead worlds carry the elements.</b> Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and <b>rarer worlds hide richer veins</b>, up to exotics like Voidglass and Prismatium.</p><ul><li>Open any lifeless world’s survey and <b>⛏ Mine Deposits</b> — hourly per world, like harvests.</li><li>Everything lands in your <b>🧰 Cargo hold</b> (right rail — it appears after your first mine).</li><li>Spend elements + ☄ Stardust at the <b>Research bench</b> inside the Cargo hold — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
+  '<p><b>Dead worlds carry the elements.</b> Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and <b>rarer worlds hide richer veins</b>, up to exotics like Voidglass and Prismatium.</p><ul><li><b>Prospecting takes boots on the ground</b>: zoom all the way into a lifeless world to land — planetfall is a <b>ground survey</b>, and the ⛏ Mine Deposits button opens with it. (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li>Mining is hourly per world, like harvests.</li><li>Everything lands in your <b>🧰 Cargo hold</b> (right rail — it appears after your first mine).</li><li>Spend elements + ☄ Stardust at the <b>Research bench</b> inside the Cargo hold — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
  {id:'research', t:'Research & ships', k:'research tech technology bench drive ship hull scanner lab fusion antimatter warp travel distance', body:
   '<p>The engineer’s track, parallel to the Prime Codex: the Codex is your <b>legend</b>, the bench is your <b>capability</b>. Research costs mined elements + ☄ Stardust:</p><ul><li><b>🛰 Deep Scanners</b> — survey cards reveal mineral veins from orbit.</li><li><b>🛡 Reinforced Hull</b> — hostile bioscans wound you 25% lighter.</li><li><b>🧪 Xenobotany Lab</b> — flora meals nourish one extra stat point.</li><li><b>The drive ladder</b> — 🚀 Fusion → ⚛ Antimatter → 🌀 Warp Fold. Hyperlane travel scales with real distance; each drive cuts it, and Warp Fold makes every jump arrive in a breath. Distance is never a wall — only a wait, and only ever a short one.</li></ul>'},
 ]},
@@ -8648,6 +8708,14 @@ const GAME_VERSION='1.1.2';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.2', title:'The Discovery Arc', date:'July 2026', sections:[
+ ['✨ New Features & Systems', [
+  '<b>Knowing a world now comes in three acts.</b> A <b>glance</b> shows what a telescope sees — color class and long-range reads (☁ atmosphere, 🌊 water signatures, 🧬 biosignatures, ⟁ signals). An <b>orbital survey</b> (tap) reads the environment and biosphere. And <b>planetfall</b> completes the picture: land on a world to run its <b>ground survey</b>.',
+  '<b>Civilizations must be met, not scanned</b> — from orbit an organized world is only ⟁ signals; land to make contact and read its census: tech era, local calendar, population.',
+  '<b>Prospecting takes boots on the ground</b> — a dead world&#8217;s ⛏ Mine Deposits opens once you&#8217;ve landed on it. 🛰 Deep Scanners still read the veins from orbit.',
+  'Worlds you&#8217;ve stood on wear a <b>⛳ Ground-surveyed</b> mark — and every world you charted, settled or mined before this update counts as ground-surveyed already: nothing you knew is re-hidden.',
+ ]],
+]},
 {v:'1.1.2', title:'Clear Signals', date:'July 2026', sections:[
  ['🎨 UI Enhancements', [
   '<b>Survey cards, condensed</b> — a world&#8217;s card now leads with what matters: its actions up top, then its rarity, life and civilization. The full environmental survey (atmosphere, climate, water, gravity and more) folds behind a 🌍 chevron, and a civilization&#8217;s census (tech era, calendar, population) folds behind its headline. Open either once and cards stay open to your taste — the choice is remembered.',
