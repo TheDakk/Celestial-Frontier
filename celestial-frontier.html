@@ -30,6 +30,17 @@
   body.font-sys{--ui:system-ui,-apple-system,sans-serif;--body:system-ui,-apple-system,sans-serif}
   body.font-mono{--ui:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--body:ui-monospace,'SF Mono',Menlo,Consolas,monospace}
   *{margin:0;padding:0;box-sizing:border-box}
+  /* ---- scrollbars (1.1.2): the browser default thumb vanished against the
+     void — a playtester couldn't tell the release-notes card scrolled. Every
+     scrolling panel gets a visible lavender-ink thumb + a faint track that
+     marks the gutter even before you scroll. Both syntaxes on purpose:
+     Chrome/Firefox honor scrollbar-color, Safari the ::-webkit-scrollbar
+     rules — same colors either way. */
+  *{scrollbar-width:thin;scrollbar-color:rgba(178,188,226,0.5) rgba(150,162,210,0.12)}
+  ::-webkit-scrollbar{width:9px;height:9px}
+  ::-webkit-scrollbar-track{background:rgba(150,162,210,0.12);border-radius:9px}
+  ::-webkit-scrollbar-thumb{background:rgba(178,188,226,0.5);border-radius:9px}
+  ::-webkit-scrollbar-thumb:hover{background:rgba(178,188,226,0.75)}
   html,body{height:100%;background:var(--void);overflow:hidden;color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;
     touch-action:none;overscroll-behavior:none;
     -webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}
@@ -115,12 +126,17 @@
     background:var(--glass);border:1px solid var(--glass-brd);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
     transition:transform .3s,color .15s}
   #setbtn:hover{color:var(--ink);transform:rotate(60deg)}
-  #setpanel{position:fixed;right:16px;bottom:58px;z-index:14;width:210px;display:none;
+  /* 236px: the three-pill rows (Font, Motion) need ~215px of content width —
+     at 210px they overflowed the panel's right edge (Nick's phone, 1.1.2) */
+  #setpanel{position:fixed;right:16px;bottom:58px;z-index:14;width:236px;max-width:calc(100vw - 32px);display:none;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:13px;padding:10px 12px;
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 14px 40px rgba(0,0,0,0.55)}
   #setpanel .shead{font:600 10px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--plasma);margin-bottom:8px}
-  #setpanel .srow2{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:11px;color:var(--dim);margin:7px 0}
-  #setpanel .opts{display:flex;gap:5px}
+  /* wrap-safe: pill labels are set in the CHOSEN font (Mono runs wide), so a
+     row that can't fit drops its pills to a second, right-aligned line
+     instead of poking past the panel edge */
+  #setpanel .srow2{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:7px 12px;font-size:11px;color:var(--dim);margin:7px 0}
+  #setpanel .opts{display:flex;gap:5px;margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
   #setpanel .fsopt{padding:3px 9px;border-radius:7px;cursor:pointer;font:600 10px var(--ui);
     border:1px solid rgba(150,162,210,0.25);color:var(--dim)}
   #setpanel .fsopt:hover{color:var(--ink)}
@@ -240,7 +256,8 @@
   #stats{position:fixed;top:calc(var(--row1-h,58px) + 6px);left:18px;z-index:22;width:302px;max-height:min(74vh,640px);overflow-y:auto;display:none;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:13px;
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
-  #stats::-webkit-scrollbar{width:8px} #stats::-webkit-scrollbar-thumb{background:rgba(255,207,138,0.25);border-radius:8px}
+  #stats{scrollbar-color:rgba(255,207,138,0.5) rgba(150,162,210,0.12)}
+  #stats::-webkit-scrollbar{width:8px} #stats::-webkit-scrollbar-thumb{background:rgba(255,207,138,0.5);border-radius:8px}
   #stats h4{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:var(--plasma);margin:12px 0 6px}
   #stats h4:first-child{margin-top:0}
   #stats .srow{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:#e2e7f8;margin:4px 0}
@@ -785,7 +802,8 @@
     background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(150,162,210,0.2);border-radius:15px;padding:6px;display:none;
     box-shadow:0 18px 50px rgba(0,0,0,0.5)}
-  #codex::-webkit-scrollbar{width:8px} #codex::-webkit-scrollbar-thumb{background:rgba(127,230,160,0.25);border-radius:8px}
+  #codex{scrollbar-color:rgba(127,230,160,0.5) rgba(150,162,210,0.12)}
+  #codex::-webkit-scrollbar{width:8px} #codex::-webkit-scrollbar-thumb{background:rgba(127,230,160,0.5);border-radius:8px}
   #codex .empty{padding:18px 14px;font-size:11.5px;color:var(--faint);text-align:center;line-height:1.55}
   #codex .chead{padding:9px 11px 7px;font-family:var(--ui);font-size:10px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--faint)}
@@ -863,7 +881,8 @@
   #log{position:fixed;top:calc(var(--row1-h,58px) + 130px);right:18px;z-index:12;width:300px;max-height:min(62vh,540px);overflow-y:auto;
     display:none;background:var(--glass);border:1px solid var(--glass-brd);border-radius:16px;padding:6px;
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 16px 50px rgba(0,0,0,0.6)}
-  #log::-webkit-scrollbar{width:8px} #log::-webkit-scrollbar-thumb{background:rgba(150,162,210,0.25);border-radius:8px}
+  #log{scrollbar-color:rgba(178,188,226,0.55) rgba(150,162,210,0.12)}
+  #log::-webkit-scrollbar{width:8px} #log::-webkit-scrollbar-thumb{background:rgba(178,188,226,0.55);border-radius:8px}
   #log .empty{padding:18px 14px;font-size:11.5px;color:var(--faint);text-align:center;line-height:1.5}
   #log .item{display:flex;gap:10px;align-items:center;padding:8px 9px;border-radius:11px;cursor:pointer;transition:background .15s}
   #log .item:hover{background:rgba(143,180,255,0.08)}
@@ -8550,6 +8569,13 @@ const GAME_VERSION='1.1.1';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.1.2', title:'Clear Signals', date:'July 2026', sections:[
+ ['🎨 UI Enhancements', [
+  '<b>Scrollbars you can actually see</b> — every scrolling panel (release notes, survey cards, the Guide, Compendium and more) now shows a visible thumb and a faint track, so it&#8217;s always clear there&#8217;s more below the fold. One explorer got stranded mid-training because the old scrollbar vanished into the void.',
+  'The Settings panel is a touch wider and its option pills can never poke past its right edge again, whatever font you&#8217;ve chosen.',
+  'The <b>“What&#8217;s new”</b> bulletin for a patch now carries its whole release line — 1.1.2 shows the 1.1.1 and 1.1 notes beneath it, so nobody lands on a patch note with no context.',
+ ]],
+]},
 {v:'1.1.1', title:'Signal & Polish', date:'July 2026', sections:[
  ['🎨 UI Enhancements', [
   'Settings rows breathe — option pills keep a clean gap from their labels instead of crowding them (Font and Motion were touching).',
@@ -8642,10 +8668,17 @@ function openReleaseNotes(mode, then){
   const ok=document.getElementById('relok');
   if(mode==='latest'){
     if(sub) sub.textContent='What’s new in this release';
-    /* pinned to the SHIPPED version's entry, not RELEASES[0] — while v-next
-       bullets pile up unbumped, fresh players must still read the overview
-       of the build they're actually holding */
-    if(body) body.innerHTML=_relHtml(RELEASES.find(r=>r.v===GAME_VERSION)||RELEASES[0]);
+    /* pinned to the SHIPPED version's minor line, not RELEASES[0] — while
+       v-next bullets pile up unbumped, fresh players must still read the
+       overview of the build they're actually holding. A patch bulletin
+       carries its whole line (1.1.2 shows 1.1.2 + 1.1.1 + 1.1, newest
+       first) so nobody lands on a patch note with no context. */
+    if(body){
+      const _si=RELEASES.findIndex(r=>r.v===GAME_VERSION);
+      const _line=GAME_VERSION.split('.').slice(0,2).join('.');
+      const _mine=RELEASES.filter((r,i)=>i>=(_si<0?0:_si) && (r.v===_line || r.v.startsWith(_line+'.')));
+      body.innerHTML=(_mine.length?_mine:[RELEASES[0]]).map(_relHtml).join('');
+    }
     if(ok) ok.textContent='Continue';
   } else {
     if(sub) sub.textContent='Release notes — the story of the build';

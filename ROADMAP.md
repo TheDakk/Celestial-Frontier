@@ -5,7 +5,46 @@
 > batch, keep everything committed and pushed. The chat is disposable; this
 > file and the repo are not.
 
-## ▶ NEXT SESSION AGENDA (agreed with Nick, 2026-07-15)
+## ▶ v1.1.2 IN PROGRESS (Nick's list, 2026-07-16) — GAME_VERSION still '1.1.1'
+
+BUILT & VERIFIED 2026-07-16 (validate green, fingerprint byte-identical,
+smoke 103/103; committed, NOT deployed — awaiting the rest of the batch):
+1. VISIBLE SCROLLBARS everywhere — global lavender thumb + faint track
+   (both scrollbar-color and ::-webkit-scrollbar syntaxes so Chrome/Firefox/
+   Safari all comply); the #stats/#codex/#log tints kept, brightened
+   0.25→0.5 alpha. Root cause of Nick's friend getting STUCK IN TRAINING
+   on desktop: the release-notes card scrolled but the default thumb
+   vanished into the void. (Friend's screenshot still pending — may reveal
+   a second, separate snag; re-check when it arrives.)
+2. RELEASE-NOTES STACKING — the 'latest' bulletin now shows the shipped
+   version's whole minor line (1.1.2 ⇒ 1.1.2 + 1.1.1 + 1.1, newest first),
+   still hiding unshipped entries newer than GAME_VERSION. Smoke check
+   rewritten to the new intent (stacks the line / never leaks v-next).
+3. SETTINGS OVERFLOW (Nick's phone: pills past the panel's right edge) —
+   real cause: the 3-pill rows (Font ~208px, Motion ~210px) never fit the
+   210px panel. Panel 210→236px + max-width:calc(100vw-32px); .srow2/.opts
+   are now wrap-safe (pills drop to a right-aligned second line — matters
+   because pill labels render in the CHOSEN font and Mono runs wide).
+RELEASES[0] is now the working v1.1.2 "Clear Signals" entry (title = Claude's
+placeholder, Nick may rename). Version bumps to '1.1.2' only on Nick's word.
+
+STILL QUEUED FOR 1.1.2:
+- Training stuck — WAITING on Nick's friend's screenshot (scrollbar fix
+  above is the presumed cause; verify against the screenshot).
+- PLANET CARD CONDENSING — Nick's proposal + Claude's recommended shape
+  (2026-07-16, Nick reviewing): buttons move up but UNDER the header;
+  Spectral class row always visible; "Environment" group (Made of,
+  Atmosphere, Climate, Water, Gravity, Magnetism, Weather, Seasons)
+  collapsed by default behind a one-line digest header; Life/Flora/Fauna
+  stay open (the collection hook); "Civilization" group collapses tech
+  era/local year/population but the header keeps name+era visible; ⟁
+  Signal row stays outside every group; expand state remembered (new save
+  field, absent-default collapsed). Expand states must join the panel
+  rebuild key (the _spExpanded pattern); Field Training's Atlas-button
+  target moves (spotlight tracks live; smoke needs new checks). Biggest
+  1.1.2 item — do NOT start until Nick oks the shape.
+
+## ▶ PREVIOUS SESSION AGENDA (agreed with Nick, 2026-07-15)
 
 1. Nick's on-device pass of LIVE v1.1.1 — Tier 1 feel (ping/whoosh, labels,
    moon-tap) + Tier 2 feel (volume, Motion Reduced, landing glide, touch
