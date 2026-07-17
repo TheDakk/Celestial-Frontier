@@ -458,6 +458,20 @@
   #duelbox #duel-log{margin:10px 0 0;max-height:160px;overflow-y:auto;font-size:10.5px;line-height:1.55;color:#cfd6f2;
     background:rgba(5,6,12,0.55);border:1px solid var(--glass-brd);border-radius:10px;padding:8px 10px}
   #duelbox #duel-log .crit{color:#ffcf8a;font-weight:600}
+  /* MUD-style chronicle (v1.2.6, Nick): color carries the meaning — no bold.
+     Your side cyan, theirs ember; damage yellow, misses dim, staggers gold,
+     burns orange, mends green, lifesteal violet, thorns lime, deaths red. */
+  #duelbox #duel-log .dl-you{color:#6fd3ff}
+  #duelbox #duel-log .dl-foe{color:#ffb08a}
+  #duelbox #duel-log .dl-dmg{color:#e8d27f}
+  #duelbox #duel-log .dl-miss{color:var(--faint);font-style:italic}
+  #duelbox #duel-log .dl-stun{color:#ffd96a}
+  #duelbox #duel-log .dl-burn{color:#ff9a5a}
+  #duelbox #duel-log .dl-heal{color:#7fe6a0}
+  #duelbox #duel-log .dl-ls{color:#d6a0ff}
+  #duelbox #duel-log .dl-tb{color:#a8e87f}
+  #duelbox #duel-log .dl-ex{color:#ff8a72}
+  #duelbox #duel-log .dl-death{color:#ff5a4a}
   #duelbox #duel-result{font:600 13px var(--ui);text-align:center;margin:10px 0 2px;color:var(--ink)}
   #duelbox #duel-setup{margin:10px 0 0}
   #duelbox .dnote{font-size:10.5px;color:var(--faint);line-height:1.55;margin:0 0 8px}
@@ -8057,31 +8071,35 @@ function fightNow(mine, theirs, opts){
   const _plain=[];
   const say=(html, plain)=>{ lg.insertAdjacentHTML('beforeend','<div>'+html+'</div>'); _plain.push(plain); lg.scrollTop=lg.scrollHeight; };
   const abOf=(side)=>side==='A'?res.A.ab:res.B.ab;
+  /* MUD-style chronicle: color carries the meaning (Nick — no bold). Your
+     side reads cyan, theirs ember, so every line says who acted at a
+     glance; the plain-text twin for Share is untouched. */
+  const nmc=(x)=>'<span class="'+(x===mine.name?'dl-you':'dl-foe')+'">'+x+'</span>';
   const narrate=(L)=>{
     if(L.tick){
-      const bits=[];
-      if(L.bA) bits.push(mine.name+' burns for '+L.bA);
-      if(L.bB) bits.push(theirs.name+' burns for '+L.bB);
-      if(L.rA) bits.push(mine.name+' knits '+L.rA+' back');
-      if(L.rB) bits.push(theirs.name+' knits '+L.rB+' back');
-      say('<span style="opacity:.8">— '+bits.join(' · ')+'</span>', '   ...'+bits.join(' / '));
+      const hb=[], pb=[];
+      if(L.bA){ hb.push('<span class="dl-burn">'+nmc(mine.name)+' burns for '+L.bA+'</span>'); pb.push(mine.name+' burns for '+L.bA); }
+      if(L.bB){ hb.push('<span class="dl-burn">'+nmc(theirs.name)+' burns for '+L.bB+'</span>'); pb.push(theirs.name+' burns for '+L.bB); }
+      if(L.rA){ hb.push('<span class="dl-heal">'+nmc(mine.name)+' knits '+L.rA+' back</span>'); pb.push(mine.name+' knits '+L.rA+' back'); }
+      if(L.rB){ hb.push('<span class="dl-heal">'+nmc(theirs.name)+' knits '+L.rB+' back</span>'); pb.push(theirs.name+' knits '+L.rB+' back'); }
+      say('<span style="opacity:.85">— '+hb.join(' · ')+'</span>', '   ...'+pb.join(' / '));
       return;
     }
-    if(L.stun){ say(''+L.an+' is staggered — the strike never comes!', L.an+' is staggered — the strike never comes!'); return; }
-    if(L.dodge){ say(L.an+' lunges — but '+L.dn+' '+pick(['slips aside','melts away','is simply not there'])+'!', L.an+' lunges — but '+L.dn+' evades!'); return; }
+    if(L.stun){ say('<span class="dl-stun">'+nmc(L.an)+' is staggered — the strike never comes!</span>', L.an+' is staggered — the strike never comes!'); return; }
+    if(L.dodge){ say('<span class="dl-miss">'+nmc(L.an)+' lunges — but '+nmc(L.dn)+' '+pick(['slips aside','melts away','is simply not there'])+'!</span>', L.an+' lunges — but '+L.dn+' evades!'); return; }
     const defMax=L.side==='A'?res.maxB:res.maxA;
     const frac=L.dmg/Math.max(1,defMax);
     const v=pick(VERBS[frac<0.06?0:frac<0.12?1:frac<0.2?2:frac<0.3?3:4]);
     const ab=abOf(L.side);
-    let h=(L.crit?'<b class="crit">CRITICAL!</b> ':'')+L.an+(L.fs?', striking from '+pick(['ambush','the first breath','nowhere'])+',':'')+
-      ' '+v+' '+L.dn+' with '+(ab.n||'its art')+' for <b'+(L.crit?' class="crit"':'')+'>'+L.dmg+'</b>'+
-      (L.ex?' — punishing the wounded':'')+(L.stp?' — '+L.dn+' reels, staggered':'');
+    let h=(L.crit?'<span class="crit">CRITICAL!</span> ':'')+nmc(L.an)+(L.fs?', striking from '+pick(['ambush','the first breath','nowhere'])+',':'')+
+      ' '+v+' '+nmc(L.dn)+' with '+(ab.n||'its art')+' for <span class="'+(L.crit?'crit':'dl-dmg')+'">'+L.dmg+'</span>'+
+      (L.ex?'<span class="dl-ex"> — punishing the wounded</span>':'')+(L.stp?'<span class="dl-stun"> — '+L.dn+' reels, staggered</span>':'');
     let p=(L.crit?'CRITICAL! ':'')+L.an+(L.fs?' (first strike)':'')+' '+v+' '+L.dn+' with '+(ab.n||'its art')+' for '+L.dmg+(L.ex?' (execute)':'')+(L.stp?' (stagger)':'');
-    if(L.tb){ h+=' — thorns bite back for '+L.tb; p+=' — thorns recoil '+L.tb; }
-    if(L.ls){ h+=' — and drinks '+L.ls+' vitality'; p+=' — drains '+L.ls; }
+    if(L.tb){ h+='<span class="dl-tb"> — thorns bite back for '+L.tb+'</span>'; p+=' — thorns recoil '+L.tb; }
+    if(L.ls){ h+='<span class="dl-ls"> — and drinks '+L.ls+' vitality</span>'; p+=' — drains '+L.ls; }
     say(h+'.', p+'.');
     const downed=(L.side==='A'&&L.hpB<=0)?theirs.name:(L.side==='B'&&L.hpA<=0)?mine.name:null;
-    if(downed) say('☠ '+downed+' falls — slain by '+L.an+'’s '+(ab.n||'final blow')+'.', '*** '+downed+' falls — slain by '+L.an+'.');
+    if(downed) say('<span class="dl-death">☠ '+downed+' falls — slain by '+L.an+'’s '+(ab.n||'final blow')+'.</span>', '*** '+downed+' falls — slain by '+L.an+'.');
   };
   const _statsLines=()=>{
     const T={A:{hit:0,miss:0,crit:0,big:0,dealt:0,burn:0,thorn:0,heal:0,stun:0},B:{hit:0,miss:0,crit:0,big:0,dealt:0,burn:0,thorn:0,heal:0,stun:0}};
@@ -9014,6 +9032,7 @@ const RELEASES=[
 {v:'1.2.6', title:'Clear Text', date:'July 2026', sections:[
  ['🎨 UI Enhancements', [
   'Calmer reading everywhere: <b>bold now marks only things you can press or proper names</b> — about a hundred stray emphasis words across cards, battles, training and these very notes have relaxed back into plain text. (In the brighter Text tones, gold now always means “this is a thing,” never decoration.)',
+  '<b>The Chronicle speaks in color</b>, old-school MUD style: your champion reads cyan and the foe ember on every line, damage in yellow and criticals in gold, misses dim, staggers flash, burns glow orange, mending green, lifesteal violet, thorns lime — and a felled combatant falls in red. Shared battle logs stay plain text.',
  ]],
 ]},
 {v:'1.2.5', title:'First Contact', date:'July 2026', sections:[
