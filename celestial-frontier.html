@@ -5284,13 +5284,38 @@ let cardExpand=0;
    pre-1.2 saves are grandfathered in loadSave (a veteran's charted
    universe must never re-hide). */
 const landed=new Set();
+/* systems intertwining (v1.2): the first landing on a world PAYS — a small
+   deterministic element + stardust trace (field samples), granted when the
+   card next renders (that's where the descriptor's type/tier live). The
+   chosen field scout (scoutId, a Compendium fauna) takes hostile-bioscan
+   hits in the explorer's place, through the same injury/mend language as
+   poison meals. */
+let _pendingSample=null, scoutId=null;
 function noteLanding(seed){
   if(seed==null || landed.has(seed)) return;
   landed.add(seed);
   _panelKey=null;                      /* an open card upgrades in place */
   gameEvent('landfall', {planetSeed:seed});
-  if(seed!==133) toast('⛳ Ground survey', 'Boots on the ground — this world’s census and mineral veins are yours to read.');
+  if(seed!==133){
+    if(tutDone) _pendingSample=seed;   /* samples arrive with the card render */
+    else toast('⛳ Ground survey', 'Boots on the ground — this world’s census and mineral veins are yours to read.');
+  }
   queueSave();
+}
+function grantFieldSamples(d){
+  /* same deterministic vein recipe as mining, a pinch of it — landing
+     everywhere stays worth doing, dead worlds keep the real yield */
+  const tier=(d.designation?d.designation.tier:0);
+  const deps=depositsFor(d.planetSeed, d.ptype||'rocky', tier).slice(0,2);
+  const got=[];
+  for(const sym of deps){ cargo.set(sym, (cargo.get(sym)||0)+1); got.push('1× '+(ELEM_NAME[sym]||sym)); }
+  const sd=3+tier*2;
+  essence+=sd; stats.essenceEarned=(stats.essenceEarned||0)+sd;
+  stats.landings=(stats.landings||0)+1;
+  playRaritySting(1);
+  toast('⛳ Ground survey', 'Boots on the ground — field samples: '+got.join(' · ')+' · +'+sd+' ☄ Stardust. This world’s census and veins are yours to read.');
+  showCargoBtn(); if(cargoOpen) renderCargo();
+  checkAch(); renderRank(); queueSave();
 }
 function renderPanel(p, isLocked){
   if(!p){ panelEl.style.display='none'; panelEl.classList.remove('locked'); _lastDesc=null; _panelKey=null; panelRect=null; _frozenFor=null; return; }
@@ -5324,6 +5349,8 @@ function renderPanel(p, isLocked){
       /* standing on it counts as landing, whatever road led here (covers a
          save restored directly onto a surface) */
       if(st.mode==='surface' && d.planetSeed!=null) noteLanding(d.planetSeed);
+      /* first-landing field samples ride the next render of this card */
+      if(_pendingSample!=null && _pendingSample===d.planetSeed){ _pendingSample=null; grantFieldSamples(d); }
     }
     const thumb = d.thumb ? '<img class="thumb'+(d.thumbSq?' sq':'')+'" src="'+d.thumb+'" alt="">' : '';
     let rows='';
@@ -5545,9 +5572,29 @@ panelEl.addEventListener('click', e=>{
     if(dz.pct>0 && Math.random()<dz.pct){
       stats.scanhits=(stats.scanhits||0)+1;
       const _dmg=techOwned.has('hull1')?Math.max(1,Math.round(dz.dmg*0.75)):dz.dmg;   /* reinforced hull bites back */
-      const dead=damageExplorer(_dmg, hazardFlavor(_lastDesc, null));
-      unlock('survivor'); checkAch();
-      if(dead) return;                 /* the scan still completes — you earned it */
+      const _sc=scoutId?codex.get(scoutId):null;
+      if(_sc && _sc.genome && _sc.kind==='Fauna'){
+        /* the field scout takes the strike meant for you — same injury
+           language as poison meals: wounds accrue, welcome meals mend,
+           and a scout with nothing left is lost forever */
+        const _w=clamp(_dmg/80, 0.12, 0.6);
+        const _h0=(+_sc.genome.hurt)||0;
+        if(_h0+_w>=1){
+          const _nm=_sc.name;
+          removeFromCodex(_sc.id); scoutId=null;
+          if(codexOpen) renderCodex();
+          toast('☠ Scout lost', _nm+' took the strike meant for you — and had nothing left. It is gone.');
+        } else {
+          _sc.genome.hurt=Math.min(0.95, _h0+_w);
+          const _cc=creatureCondition(_sc.genome);
+          toast('🐾 Scout wounded', _sc.name+' took the strike meant for you — now '+_cc.label+' ('+Math.round(_cc.h*100)+'% hurt). Feed it flora it loves to mend.');
+        }
+        playFailTone(); checkAch(); queueSave();
+      } else {
+        const dead=damageExplorer(_dmg, hazardFlavor(_lastDesc, null));
+        unlock('survivor'); checkAch();
+        if(dead) return;               /* the scan still completes — you earned it */
+      }
     }
     _spExpanded=_lastDesc.logId;       /* the click IS the discovery moment */
     autoScanWorld(_lastDesc);
@@ -5926,6 +5973,7 @@ function showReveal(entry, isHybrid){
         '<button id="rev-duel" type="button" data-guide="duels" data-tip="A friendly duel — sport only, nothing is lost.">⚔ Duel</button>'+
         (codex.has(entry.id) ? '<button id="rev-breed" type="button" data-guide="breeding" data-tip="Forge a new bloodline — both parents are consumed, win or lose.">🧬 Breed</button>' : '')+
         (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A welcome meal grows its bloodline and mends its wounds — a toxic one poisons, and can finish a beast with nothing left.">🌿 Feed</button>' : '')+
+        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-scout" type="button"'+(scoutId===entry.id?' class="on"':'')+' data-guide="discover" data-tip="Your field scout takes the hit when a bioscan turns hostile — wounds and all. A scout with nothing left is lost forever.">'+(scoutId===entry.id?'🐾 Scouting ✓':'🐾 Scout')+'</button>' : '')+
         (codex.has(entry.id) ? '<button id="rev-rename" type="button" data-tip="Your name rides inside its creature code too.">✎ Rename</button>' : '')+
         (entry.grade && entry.grade.tier>=5 ? '<button id="rev-record" type="button" data-tip="Copy a keepsake record of this find — flavor, stats and its creature code.">📸 Record</button>' : '');
     }
@@ -5943,6 +5991,14 @@ revealEl.addEventListener('click', (e)=>{
   if(e.target && e.target.id==='rev-duel' && _revEntry){ startDuelWithCode(_revEntry); return; }
   if(e.target && e.target.id==='rev-breed' && _revEntry){ openPicker('breed', _revEntry); return; }
   if(e.target && e.target.id==='rev-feed' && _revEntry){ openPicker('feed', _revEntry); return; }
+  if(e.target && e.target.id==='rev-scout' && _revEntry){
+    scoutId = (scoutId===_revEntry.id) ? null : _revEntry.id;
+    toast('🐾 Field scout', scoutId
+      ? _revEntry.name+' now walks point — it takes the hit when a bioscan turns hostile.'
+      : _revEntry.name+' stands down. Hostile scans risk your own HP again.');
+    showReveal(_revEntry, _revEntry.hybrid);           /* refresh the button state */
+    queueSave(); return;
+  }
   if(e.target && e.target.id==='rev-rename' && _revEntry){ askRenameSpecies(_revEntry); return; }
   if(e.target && e.target.id==='rev-record' && _revEntry){ recordCreature(_revEntry); return; }
   if(e.target && e.target.id==='rev-x' && pendingReveals.length){
@@ -6839,7 +6895,7 @@ function doSave(){
       view:whereOfView(),
       hp:hp, pstats:pstats, fs:fsMode, tone:toneMode, font:fontMode, snd:sndOn?1:0, fx:fxOn?1:0, shake:shakeOn?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
       vol:Math.round(sfxVol*100), rm:motionMode, cx:cardExpand,
-      land:[...landed].slice(-2000),
+      land:[...landed].slice(-2000), scout:scoutId, landings:stats.landings||0,
       notifs:notifications.slice(0,50),
       me:explorerName,
       essence:essence,
@@ -6940,6 +6996,10 @@ function loadSave(){
     for(const s of (data.evann||[])) _evAnnounced.add(s);
     for(const a of (data.ach||[])) unlocked.add(a);
     for(const e of (data.codex||[])){ if(e && e.g) _storeSpecies(e.g, e.f, e.w||null); }
+    /* the field scout must still exist in the Compendium (it may have been
+       bred away, fed away, or lost) — a stale id silently stands down */
+    scoutId=(typeof data.scout==='string' && codex.has(data.scout)) ? data.scout : null;
+    stats.landings=num(data.landings);
     for(const it of (data.log||[])){ if(it && it.id){ it.star=''; logMap.set(it.id, it); } }
     homeId=(data.home && logMap.has(data.home))?data.home:null;
     /* v1.2 discovery arc. land absent (pre-1.2 save) ⇒ grandfather: every
@@ -6978,6 +7038,7 @@ function resetMemoryState(){
     if(typeof notifications!=='undefined' && notifications.length) notifications.length=0;
     for(const k in primeFill) delete primeFill[k];
     homeId=null; frontierUnlocked=false; frontierEnding=null; seenGuide=false; tutDone=false; _rnSeen=GAME_VERSION;
+    scoutId=null; _pendingSample=null;
     _lastRankName=null; _lastRankFloor=-1;   /* a fresh Cadet is a beginning, not a promotion */
     explorerName=''; essence=0; pstats={vit:50,fer:50,res:50,agi:50,ins:50}; HP_MAX=hpMaxFromVit(); hp=HP_MAX;
     for(const k in stats) if(typeof stats[k]==='number') stats[k]=0;
@@ -8439,7 +8500,7 @@ const GUIDE=[
 ]},
 {icon:'🧬', cat:'Life & the Compendium', blurb:'Kingdoms, discovery, rarity, specimen cards', topics:[
  {id:'discover', t:'Discovering life', k:'discover life scan bioscan species danger wound hp catalogue', body:
-  '<p>Living worlds show <b>🔬 Discover Life</b> on their survey card. Scanning is a deliberate act — and on hostile worlds it has teeth: the danger percentage shown is your chance of being <b>wounded by wildlife mid-scan</b> (fiercer apex fauna and furnace worlds are deadlier). The scan always completes — you earned it.</p><ul><li>Every species found lands in your <b>Compendium</b> automatically.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li><b>Conquered worlds scan safely</b> — see <span data-gt="conquest">Conquest</span>.</li></ul>'},
+  '<p>Living worlds show <b>🔬 Discover Life</b> on their survey card. Scanning is a deliberate act — and on hostile worlds it has teeth: the danger percentage shown is your chance of being <b>wounded by wildlife mid-scan</b> (fiercer apex fauna and furnace worlds are deadlier). The scan always completes — you earned it.</p><ul><li>Every species found lands in your <b>Compendium</b> automatically.</li><li>Or send a beast ahead: name a <b>🐾 Field Scout</b> on any of your fauna&#8217;s cards and it takes the hit in your place — wounds and all, mended the usual way with ♥ loved flora. A scout with nothing left is <b>lost forever</b>.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li><b>Conquered worlds scan safely</b> — see <span data-gt="conquest">Conquest</span>.</li></ul>'},
  {id:'kingdoms', t:'The four kingdoms', k:'kingdom microbe flora fauna fungi realm biome classification', body:
   '<p>All life belongs to one of four kingdoms — <b>🦠 Microbe, 🌿 Flora, 🍄 Fungi, 🐾 Fauna</b> — and is shelved in the Compendium by realm (Land Fauna, Aquatic Fauna, Colonial Life…). Kingdom decides what a creature can do:</p><ul><li><b>Fauna</b> fight duels, defend worlds, and can be fed.</li><li><b>Flora</b> are medicine and meals — eaten by you or fed to beasts.</li><li>All kingdoms can <b>breed</b> within their own kind.</li></ul>'},
  {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique mythic celestial primordial transcendent empyrean eternal omnipotent deep spectrum summit color', body:
@@ -8723,6 +8784,8 @@ const RELEASES=[
   '<b>Civilizations must be met, not scanned</b> — from orbit an organized world is only ⟁ signals; land to make contact and read its census: tech era, local calendar, population.',
   '<b>Prospecting takes boots on the ground</b> — a dead world&#8217;s ⛏ Mine Deposits opens once you&#8217;ve landed on it. 🛰 Deep Scanners still read the veins from orbit.',
   'Worlds you&#8217;ve stood on wear a <b>Ground-surveyed</b> mark — and every world you charted, settled or mined before this update counts as ground-surveyed already: nothing you knew is re-hidden.',
+  '<b>Landing pays</b> — your first footfall on any world collects field samples: a pinch of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration now stocks the Research bench all by itself.',
+  '<b>🐾 Field Scouts</b> — name one of your fauna the expedition&#8217;s scout (its card → 🐾 Scout) and it takes the hit when a bioscan turns hostile, through the same wounds-and-mending life every creature lives. A scout with nothing left is lost forever. Hunt tougher beasts to scan deadlier worlds.',
  ]],
  ['🎨 UI Enhancements', [
   'Survey-card headings dropped their emoji and line up cleanly again; the fold rows now say <b>expand</b> / <b>close</b> instead of a tiny triangle.',

@@ -102,7 +102,36 @@ CARD POLISH BATCH 2 (Nick's screenshot, 2026-07-16 — BUILT, smoke 126/126):
   living world that could be mined). Flagged to Nick — revert if he wants
   Earth minable as a starter resource.
 
-## v1.2 SYSTEMS INTERTWINING — PROPOSED (2026-07-16), AWAITING NICK'S PICK
+## v1.2 SYSTEMS INTERTWINING — APPROVED BY NICK 2026-07-16 ("I like your
+## proposal as a first iteration, let's do it"). B + A BUILT; C NEXT.
+
+BUILT 2026-07-16 (fingerprint byte-identical, smoke 131/131, systems 19/19,
+balance PASS — combat untouched, sim run for safety):
+B. FIELD SAMPLES: first landing on any world grants 1× of up to 2 of its
+   deposit elements (same depositsFor recipe as mining — deterministic) +
+   3+tier*2 ☄. Granted via _pendingSample on the NEXT card render (that's
+   where type/tier live); suppressed during training and on Earth. New
+   stats.landings counter (save field landings). Toast lists the haul;
+   Cargo button appears.
+A. FIELD SCOUT: scoutId (save `scout`, validated against codex on load —
+   stale ids stand down silently). Toggle button on owned fauna reveal
+   cards (🐾 Scout / Scouting ✓). Hostile bioscan damage reroutes to the
+   scout: wound = clamp(dmg/80, .12, .6) onto genome.hurt (hull1 reduction
+   carries over); cumulative >=1 ⇒ removeFromCodex + scout lost toast;
+   else condition toast. Explorer path (incl. 'survivor' unlock) unchanged
+   when no scout. Feeding-as-medicine mends scouts like anything else.
+   Guide discover topic + release bullets updated. probe +scoutId.
+FOLLOW-ON POLISH (logged): scout 🐾 marker in Compendium list rows + feed
+picker; grade-scaled rare-find field bonus for scouts (cut from v1 to keep
+balance untouched).
+NOT BUILT YET — C. EXPEDITION CHARTERS (next batch): 3 rotating epoch-week
+seeded goals, same for every player, paying elements/stardust. Needs: pure
+seeded charter gen, progress tracking off gameEvent stream (survey/landfall/
+scan/mine/conquest already emit), a small UI surface (left rail bulletin?),
+save fields, smoke. ALSO PENDING: LAND button (pulled into v1.2), Nick's
+on-device pass, bump + deploy on his word.
+
+## (original proposal record below)
 
 Nick's direction: systems should play with each other; discovery with self
 OR fauna; addicting hunt for the next best fauna/flora/world; mining feeds
