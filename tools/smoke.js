@@ -85,6 +85,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       relFresh.textContent.includes('Signal & Polish') && relFresh.textContent.includes('Field Reports'));
     check('bulletin hides other-line entries (no 1.0 debut)',
       !relFresh.textContent.includes('The Frontier Opens'));
+    check('bulletin hides unshipped v-next entries (v1.2 stays invisible)',
+      !relFresh.textContent.includes('The Discovery Arc'));
     check('training has not started yet', !visible(doc.getElementById('tutbox')));
     click(doc.getElementById('relok'));
     check('bulletin closes into training (step 1)', await until(() => tutAt(1), 4000, 'step1'));
@@ -323,7 +325,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     // ============ BOOT 2: veteran save (no `tut` field) never sees training ============
     const vet = boot((win) => {
-      win.localStorage.setItem('cfcc_save_v1', JSON.stringify({ v: 4, me: 'Veteran', guide: 1, rn: '1.0' }));
+      win.localStorage.setItem('cfcc_save_v1', JSON.stringify({ v: 4, me: 'Veteran', guide: 1, rn: '1.0',
+        log: [{ id: 'p555', title: 'Old Haunt', sub: 'World', t: 1 }],
+        conq: [[777, { t: 1, tier: 1 }]] }));
     });
     await sleep(1600);
     check('veteran: no name prompt', !visible(vet.doc.getElementById('namebox')));
@@ -337,6 +341,10 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('veteran: absent vol/rm default to full volume + Auto motion',
       vet.doc.getElementById('volslider').value === '100' && !vet.doc.body.classList.contains('rmotion')
       && vet.w.__PROBE_HOOK__.motionMode === -1);
+    // discovery arc (v1.2): a pre-1.2 save has no `land` field — every world
+    // the veteran charted or settled must count as ground-surveyed already
+    check('veteran: pre-1.2 save grandfathers charted + settled worlds as ground-surveyed',
+      vet.w.__PROBE_HOOK__.landed.has(555) && vet.w.__PROBE_HOOK__.landed.has(777));
     check('veteran: boots clean', vet.errors.length === 0, vet.errors.slice(0, 2).join(' | '));
     vet.w.close();
 
@@ -362,6 +370,42 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click2(sk.doc.getElementById('helpbtn'), sk.w);
     click2(sk.doc.getElementById('hp-guide'), sk.w);
     check('skip: everything unlocked (Guide opens)', visible(sk.doc.getElementById('guidebox')));
+
+    // ============ v1.2 DISCOVERY ARC: glance → orbital survey → ground survey ============
+    sk.doc.dispatchEvent(new sk.w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true })); // close the guide
+    const skH = sk.w.__PROBE_HOOK__;
+    check('discovery: a fresh expedition has stood on no worlds', skH.landed.size === 0);
+    // Sol is deterministic: find a lifeless (venus-type) planet pick, hover it
+    const okDead = await until(() => skH.st.mode === 'system'
+      && skH.picks.some((p) => p.data && p.data.P && p.data.P.type === 'venus'), 6000, 'venus pick');
+    check('discovery: system view exposes a lifeless world as a pick', okDead);
+    const dp = skH.picks.find((q) => q.data && q.data.P && q.data.P.type === 'venus');
+    const cv3 = sk.doc.getElementById('cosmos');
+    const dOpts = { bubbles: true, cancelable: true, view: sk.w, clientX: dp.sx, clientY: dp.sy, button: 0 };
+    cv3.dispatchEvent(new sk.w.MouseEvent('pointermove', dOpts));
+    const pan3 = sk.doc.getElementById('panel');
+    const sawGlance = await until(() => pan3.style.display === 'block' && pan3.textContent.includes('Long-range glance'), 4000, 'glance card');
+    check('discovery: hover shows the LONG-RANGE GLANCE, not the survey', sawGlance);
+    check('discovery: the glance offers no buttons and no environment rows',
+      !pan3.querySelector('.atlasrow') && !pan3.querySelector('[data-gtoggle]'));
+    check('discovery: the glance keeps the color language (spectral row)', !!pan3.querySelector('.row.grade'));
+    // tap = orbital survey
+    cv3.dispatchEvent(new sk.w.MouseEvent('pointerdown', dOpts));
+    cv3.dispatchEvent(new sk.w.MouseEvent('pointerup', dOpts));
+    cv3.dispatchEvent(new sk.w.MouseEvent('click', dOpts));
+    const sawOrbital = await until(() => pan3.querySelector('.atlasrow') && pan3.textContent.includes('Procedural survey'), 4000, 'orbital card');
+    check('discovery: tapping locks the ORBITAL SURVEY (buttons + environment fold)', sawOrbital
+      && !!pan3.querySelector('[data-gtoggle="1"]'));
+    check('discovery: an unlanded dead world offers ⛳ Land to prospect, never Mine',
+      !!pan3.querySelector('[data-act="landcta"]') && !pan3.querySelector('[data-act="mine"]'));
+    // planetfall (the zoom gesture's destination, driven directly)
+    skH.noteLanding(dp.data.P.seed);
+    const sawGround = await until(() => pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('⛳ Ground-surveyed'), 4000, 'ground card');
+    check('discovery: landing upgrades the open card — GROUND SURVEY, mining open', sawGround
+      && !pan3.querySelector('[data-act="landcta"]'));
+    check('discovery: ground survey reveals the mineral veins without Deep Scanners',
+      pan3.textContent.includes('Mineral veins'));
+    check('discovery: the world is remembered as landed', skH.landed.has(dp.data.P.seed));
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
     sk.w.close();
 

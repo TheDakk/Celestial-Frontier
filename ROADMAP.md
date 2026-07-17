@@ -60,7 +60,45 @@ STILL QUEUED FOR 1.1.2:
   Safari; the card redesign (buttons up top) removes the trap structurally.
   Consider CLOSED unless Nick's friend hits it again post-deploy.
 
-## DISCOVERY ARC — Nick's direction (2026-07-16), target v1.2 headline
+## ▶ v1.2 "THE DISCOVERY ARC" — CORE BUILT 2026-07-16 (Nick: "begin it all
+## now") — NOT DEPLOYED, GAME_VERSION stays '1.1.2' until Nick's bump
+
+BUILT & VERIFIED (fingerprint byte-identical — all app-layer; smoke 125/125
+incl. 12 new discovery checks driving hover→tap→land on a real Sol pick;
+systems-check 19/19):
+- landed:Set<planetSeed> + noteLanding() (ui-panel section). Hooked at the
+  planetfall transition AND in renderPanel's surface branch (covers saves
+  restored directly onto a surface). Toast on first landing (not Earth).
+- Save field `land` (capped 2000 newest). ABSENT ⇒ grandfather: atlas 'p'
+  ids + conquered keys + mined keys. Earth 133 always grounded. Reset
+  clears. Veteran smoke fixture extended (log p555 + conq 777 → both
+  grandfathered, probe-asserted).
+- Tiers in renderPanel (planets only; stars/moons/galaxies untouched):
+  GLANCE (hover, !locked) = head + spectral row + 🛰 Long-range reads
+  (☁ atmosphere / 🌊 liquid-water / 🧬 biosignatures / ⟁ structured
+  signals, derived from real rows — vague, never wrong) + no buttons;
+  ORBITAL (tap/lock) = 1.1.2 card, but census replaced by "Signals from an
+  organized world — land to make contact" when !grounded; GROUND (landed)
+  = full census fold + veins + ⛳ Ground-surveyed tag.
+- Mining gated on grounded (gas giants ARE landable in this game — no
+  orbital-skim exception needed); scan1 Deep Scanners still show veins
+  from orbit (tech-removes-friction), but the Mine button needs landing;
+  unlanded dead worlds get "⛳ Land to prospect" (tap = explainer toast).
+  Ground survey shows veins WITHOUT scan1.
+- Rebuild key gains |G (grounded) before the trailing |cx. probe-names +3:
+  landed, noteLanding, cardExpand (83 hooked).
+- Guide survey topic rewritten around the three acts; mining topic updated;
+  RELEASES[0] = fresh v1.2 "The Discovery Arc" entry (bulletin-leak smoke
+  check asserts it stays invisible until the bump).
+STILL OPEN FOR v1.2 (design + build):
+- Conquest/Discover Life deliberately NOT landing-gated (no double gates).
+- Possible: landing achievement(s), first-footfall discovery record,
+  training step teaching landing, orbital deep-scan tech tier that reveals
+  the census from orbit (the friction-remover unlock).
+- Nick's on-device pass of 1.1.2 (live) + this build; his call on bump+
+  deploy timing and the "vague vs wrong" estimates read (built as VAGUE).
+
+## DISCOVERY ARC — original direction notes (2026-07-16), superseded above
 
 Nick: survey-card fields shouldn't be viewable until you DISCOVER the
 planet — coarse read from space, land to learn the truth, discovery
