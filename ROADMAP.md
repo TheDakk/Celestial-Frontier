@@ -96,7 +96,8 @@ end-to-end — press button → surface → mine on the spot → samples toast �
 zoom out → card stays Ground-surveyed; venus glance asserts NO
 biosignatures), fingerprint byte-identical, systems 19/19, balance PASS.
 
-## ▶ v1.2.2 "FIRST CONTACT" — BUILT 2026-07-17, AWAITING NICK'S DEPLOY WORD
+## ▶ v1.2.5 "FIRST CONTACT" — BUILT 2026-07-17 (Nick renamed 1.2.2→1.2.5:
+## "more than just bug fixes"), GAME_VERSION bumped — AWAITING DEPLOY WORD
 
 Nick's asks (Saturn screenshot session) + the staged Smooth Landings fixes,
 all in one entry (fingerprint byte-identical, smoke 146/146, systems 19/19):
