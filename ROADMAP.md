@@ -96,7 +96,10 @@ end-to-end — press button → surface → mine on the spot → samples toast �
 zoom out → card stays Ground-surveyed; venus glance asserts NO
 biosignatures), fingerprint byte-identical, systems 19/19, balance PASS.
 
-## ▶ v1.2.5 "FIRST CONTACT" — BUILT 2026-07-17 (Nick renamed 1.2.2→1.2.5:
+## ★ v1.2.5 "FIRST CONTACT" — LIVE (2026-07-17, build 319e5b9). Pre-deploy
+## review: 4 findings (stale _pendingContact from training landings;
+## wk-mine counted re-mines; survivor achievement text; 2 vacuous smoke
+## clauses) — all fixed in-batch. (Nick renamed 1.2.2→1.2.5:
 ## "more than just bug fixes"), GAME_VERSION bumped — AWAITING DEPLOY WORD
 
 Nick's asks (Saturn screenshot session) + the staged Smooth Landings fixes,
