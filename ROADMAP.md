@@ -60,6 +60,48 @@ STILL QUEUED FOR 1.1.2:
   Safari; the card redesign (buttons up top) removes the trap structurally.
   Consider CLOSED unless Nick's friend hits it again post-deploy.
 
+## ★ v1.2 "THE DISCOVERY ARC" — SHIPPED 2026-07-16 (Nick: "it's go time")
+
+PRE-SHIP REVIEW (3 parallel agents: correctness / perf-heat / edge-cases;
+every finding verified against source, all confirmed ones fixed in-batch):
+- CORRECTNESS: glance regexes didn't match real descriptor strings —
+  airless/lifeless worlds (Mercury!) glanced as "atmosphere ·
+  biosignatures". Fixed (^None / ^No known life / liquid|ocean|river).
+- EDGE CASES fixed: scout stand-down on ANY codex removal (breeding, fatal
+  meal, lost conquest, training cleanup) with toast; veteran grandfather
+  now includes surveyedSet (Atlas cap 120 left bioscanned worlds out);
+  conquered counts as grounded (key + check); training landings no longer
+  permanently forfeit field samples; save `land` unions conquered+mined
+  and cap raised to 4000 (eviction can't re-hide a held census); Guide/
+  bulletin copy aligned with emoji-free buttons + glance qualified as
+  desktop-hover.
+- LAND BUTTONS (ship-blocker found by review): the locked card covers the
+  planet on phones and swallowed the landing gesture. flyDown(pseed)
+  places st.scam at landing zoom → real planetfall next frame. Unlanded
+  civ worlds: "Land — make contact"; unlanded dead worlds: "Land to
+  prospect" (both data-act=landcta; toast fallback off-system).
+- HEAT PASS (Nick: "phone runs hot"): descriptor memo (400ms TTL, honors
+  every _panelKey=null invalidation) — descriptors were recomputed 60×/s,
+  worst on surfaces (per-frame forced pick); panel measure/maxHeight only
+  on rebuild/viewport change (was a forced reflow every frame); backdrop
+  (gradient + 900 stars) pre-rendered per resize; ctxEl.textContent
+  write-on-change; universe grain positions cached (~2k closures/frame
+  gone); DPR capped 2 on TOUCH devices (desktop stays 3) — CLAUDE.md rule
+  8 updated; ~55% fewer pixels on iPhone, the single biggest heat lever.
+  REVERT PATH if Nick finds phones soft: TOUCH?2:3 in resize().
+- Deferred (logged by perf agent): picks pooling, galaxy star batching,
+  frame governor, integer cache keys.
+SHIP: GAME_VERSION='1.2', smoke 133/133 (new: Land-button planetfall
+end-to-end — press button → surface → mine on the spot → samples toast →
+zoom out → card stays Ground-surveyed; venus glance asserts NO
+biosignatures), fingerprint byte-identical, systems 19/19, balance PASS.
+
+STILL QUEUED FOR v1.2.x / NEXT: EXPEDITION CHARTERS (approved — fixed
+starter set doubling as training part two, then weekly rotation); scout
+marker in Compendium lists; grade-scaled scout rare-find bonus; Nick's
+on-device pass of heat + DPR feel.
+
+## (pre-ship notes below)
 ## ▶ v1.2 "THE DISCOVERY ARC" — CORE BUILT 2026-07-16 (Nick: "begin it all
 ## now") — NOT DEPLOYED, GAME_VERSION stays '1.1.2' until Nick's bump
 
