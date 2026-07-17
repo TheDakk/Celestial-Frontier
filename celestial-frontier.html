@@ -5390,9 +5390,9 @@ function renderPanel(p, isLocked){
         /* tier 0: what a telescope sees — coarse reads, no census, no roster */
         const _val=n=>((d.rows.find(r=>r[0]===n)||['',''])[1]||'');
         const reads=[];
-        if(_val('Atmosphere') && !/^No atmosphere/i.test(_val('Atmosphere'))) reads.push('☁ atmosphere');
-        if(/liquid|ocean|river|sea/i.test(_val('Water'))) reads.push('🌊 liquid-water signature');
-        if(_val('Life') && !/^(None|Lifeless|Sterile)/i.test(_val('Life'))) reads.push('🧬 biosignatures');
+        if(_val('Atmosphere') && !/^No atmosphere/i.test(_val('Atmosphere'))) reads.push('atmosphere');
+        if(/liquid|ocean|river|sea/i.test(_val('Water'))) reads.push('liquid-water signature');
+        if(_val('Life') && !/^(None|Lifeless|Sterile)/i.test(_val('Life'))) reads.push('biosignatures');
         if((civHead && !/^None/.test(civHead[1])) || sigRow) reads.push('⟁ structured signals');
         rows+='<div class="row"><span class="k">Long-range</span><span class="v">'+
           (reads.length?reads.join(' · '):'a quiet, dark world')+'</span></div>';
@@ -5438,7 +5438,7 @@ function renderPanel(p, isLocked){
         ? 'Hostile wildlife may wound you for '+dz.dmg+' HP — conquer the world first to discover life safely'
         : 'Discover &amp; catalogue this world\u2019s species')+'">'+
         '<span class="thumbmini" style="background:rgba(127,230,160,0.14)"></span>'+
-        '<span class="spk">🔬</span><span class="v"><b>🔬 Discover Life</b> — '+spRows.length+' life forms detected'+dzTxt+'</span></div>';
+        '<span class="spk"></span><span class="v"><b>Discover Life</b> — '+spRows.length+' life forms detected'+dzTxt+'</span></div>';
     } else if(!glance && spRows.length){
       /* preview the most notable few inline; the full roster lives in the Codex */
       const ranked=spRows.map(row=>{
@@ -5475,13 +5475,13 @@ function renderPanel(p, isLocked){
         const _gS=battleStats(_gd.genome), _gT=GRADE_TIERS[_gS.tier];
         rows+='<div class="splabel"><span class="k">Apex Guardian</span>'+
           '<span class="v" style="color:'+_gT.hex+'">'+_gd.name+' — '+_gT.name+' · Power '+_gS.total+'</span></div>';
-        conqBtn='<button class="act" data-act="conq" data-guide="guardians" data-tip="A named, one-of-a-kind summit-grade apex rules this world — defeat it in conquest and it joins your Compendium">👑 Challenge '+_gd.name+'</button>';
+        conqBtn='<button class="act" data-act="conq" data-guide="guardians" data-tip="A named, one-of-a-kind summit-grade apex rules this world — defeat it in conquest and it joins your Compendium">Challenge '+_gd.name+'</button>';
       } else if(!c){
-        conqBtn='<button class="act" data-act="conq" data-guide="conquest" data-tip="Choose a champion — you or a codex creature — and battle this world\u2019s apex native">⚔ Conquer Planet</button>';
+        conqBtn='<button class="act" data-act="conq" data-guide="conquest" data-tip="Choose a champion — you or a codex creature — and battle this world\u2019s apex native">Conquer Planet</button>';
       } else {
         const ready=Date.now()-c.t>=HARVEST_CD;
         conqBtn='<button class="act'+(ready?'':' in')+'" data-act="harv" data-guide="harvest" data-tip="Settled worlds yield ☄ Stardust once an hour — and their bioscans are always safe.">'+
-          (ready?'⛏ Harvest ☄ Stardust — ready':'🏴 Settled — replenishing')+'</button>';
+          (ready?'Harvest Stardust — ready':'Settled — replenishing')+'</button>';
       }
     }
     /* lifeless worlds carry the elements — the dead-world loop. Prospecting
@@ -5500,8 +5500,8 @@ function renderPanel(p, isLocked){
       }
       mineBtn = grounded
         ? '<button class="act'+(_mReady?'':' in')+'" data-act="mine" data-guide="mining" data-tip="Dead worlds carry the elements — mine them hourly to stock your 🧰 Cargo for research.">'+
-          (_mReady?'⛏ Mine Deposits':'⛏ Mined — veins settling')+'</button>'
-        : '<button class="act in" data-act="landcta" data-guide="mining" data-tip="Dead worlds carry the elements — but prospecting takes boots on the ground. Zoom all the way in to land.">⛳ Land to prospect</button>';
+          (_mReady?'Mine Deposits':'Mined — veins settling')+'</button>'
+        : '<button class="act in" data-act="landcta" data-guide="mining" data-tip="Dead worlds carry the elements — but prospecting takes boots on the ground. Zoom all the way in to land.">Land to prospect</button>';
     }
     const atlasRow =
       '<div class="atlasrow">'+
@@ -5943,13 +5943,13 @@ function showReveal(entry, isHybrid){
       '<div class="sb"><span class="k" style="color:'+(gr?gr.hex:'')+'">Power</span><div class="bar"><i style="width:'+
       Math.min(100,Math.round(S.total/420*100))+'%;background:'+(gr?gr.hex:'#9fb6d6')+'"></i></div><span class="n">'+S.total+'</span></div>'+
       (function(){ const cc=creatureCondition(entry.genome);
-        return '<div class="abil">❤ <b>'+(S.vit*3)+' HP</b> in battle · Condition: <b style="color:'+cc.col+'">'+cc.label+'</b> — '+
+        return '<div class="abil"><b>'+(S.vit*3)+' HP</b> in battle · Condition: <b style="color:'+cc.col+'">'+cc.label+'</b> — '+
           (cc.h>0
             ? 'wounded ('+Math.round(cc.h*100)+'% hurt) and fighting below its strength. <b>Feed it flora it ♥ loves to mend.</b>'
             : 'friendly duels are sport, but conquest leaves scars and a fallen champion is <b>lost forever</b>.')+'</div>'; })();
     if(entry.kind==='Flora'){
       const _fs=floraStat(entry.genome), _m=STAT_META[_fs]||{name:'a stat',col:'#7fe6a0'};
-      stEl.innerHTML+='<div class="abil"><span style="color:'+_m.col+'">🌿 Nourishes <b>'+_m.name+'</b></span> — eat it, or feed it to a beast that loves it, to grow that stat'+(entry.grade?' (+'+(1+entry.grade.tier)+')':'')+'.'+((entry.genome.brood)?'<br>♞ Bred line: gen '+(entry.genome.gen||0):'')+'</div>';
+      stEl.innerHTML+='<div class="abil"><span style="color:'+_m.col+'">Nourishes <b>'+_m.name+'</b></span> — eat it, or feed it to a beast that loves it, to grow that stat'+(entry.grade?' (+'+(1+entry.grade.tier)+')':'')+'.'+((entry.genome.brood)?'<br>♞ Bred line: gen '+(entry.genome.gen||0):'')+'</div>';
     } else {
       stEl.innerHTML+='<div class="abil"><span style="color:'+(S.ab.col||'#ffd96a')+'">✧ '+(S.ab.themeLabel?'<span style="opacity:.8">['+S.ab.themeLabel+']</span> ':'')+'<b>'+S.ab.n+'</b></span> — '+S.ab.d+
         ((entry.genome.brood||entry.genome.fed)?'<br>♞ Bloodline: brood '+(entry.genome.brood||0)+' · fed '+(entry.genome.fed||0):'')+'</div>';
@@ -5957,7 +5957,7 @@ function showReveal(entry, isHybrid){
         const _xp=(+entry.genome.xp)||0, _lv=S.lvl;
         const _lo=12*_lv*_lv, _hi=12*(_lv+1)*(_lv+1);
         const _pct=_lv>=9?100:Math.round((_xp-_lo)/Math.max(1,_hi-_lo)*100);
-        stEl.innerHTML+='<div class="abil">🛡 <b>'+S.cls+'</b> · Level '+_lv+(_lv>=9?' · MAX':'')+
+        stEl.innerHTML+='<div class="abil"><b>'+S.cls+'</b> · Level '+_lv+(_lv>=9?' · MAX':'')+
           ' — innate arts, always on ('+(1+(_lv>=3?1:0)+(_lv>=6?1:0))+' of 3 awake)'+
           '<div class="xpbar"><i style="width:'+Math.max(2,Math.min(100,_pct))+'%"></i></div>'+
           '<span style="font-size:9px;color:var(--faint)">XP '+_xp+' — victories feed it: duels +8 · conquests +20 · guardians +60</span></div>';
@@ -5970,12 +5970,12 @@ function showReveal(entry, isHybrid){
     if(acts){
       acts.style.display='flex';
       acts.innerHTML='<button id="rev-share" type="button" data-guide="codes" data-tip="Copy a CFB code — the identical creature, stats and all, on any device.">⇪ Code</button>'+
-        '<button id="rev-duel" type="button" data-guide="duels" data-tip="A friendly duel — sport only, nothing is lost.">⚔ Duel</button>'+
-        (codex.has(entry.id) ? '<button id="rev-breed" type="button" data-guide="breeding" data-tip="Forge a new bloodline — both parents are consumed, win or lose.">🧬 Breed</button>' : '')+
-        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A welcome meal grows its bloodline and mends its wounds — a toxic one poisons, and can finish a beast with nothing left.">🌿 Feed</button>' : '')+
-        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-scout" type="button"'+(scoutId===entry.id?' class="on"':'')+' data-guide="discover" data-tip="Your field scout takes the hit when a bioscan turns hostile — wounds and all. A scout with nothing left is lost forever.">'+(scoutId===entry.id?'🐾 Scouting ✓':'🐾 Scout')+'</button>' : '')+
+        '<button id="rev-duel" type="button" data-guide="duels" data-tip="A friendly duel — sport only, nothing is lost.">Duel</button>'+
+        (codex.has(entry.id) ? '<button id="rev-breed" type="button" data-guide="breeding" data-tip="Forge a new bloodline — both parents are consumed, win or lose.">Breed</button>' : '')+
+        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A welcome meal grows its bloodline and mends its wounds — a toxic one poisons, and can finish a beast with nothing left.">Feed</button>' : '')+
+        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-scout" type="button"'+(scoutId===entry.id?' class="on"':'')+' data-guide="discover" data-tip="Your field scout takes the hit when a bioscan turns hostile — wounds and all. A scout with nothing left is lost forever.">'+(scoutId===entry.id?'Scouting ✓':'Scout')+'</button>' : '')+
         (codex.has(entry.id) ? '<button id="rev-rename" type="button" data-tip="Your name rides inside its creature code too.">✎ Rename</button>' : '')+
-        (entry.grade && entry.grade.tier>=5 ? '<button id="rev-record" type="button" data-tip="Copy a keepsake record of this find — flavor, stats and its creature code.">📸 Record</button>' : '');
+        (entry.grade && entry.grade.tier>=5 ? '<button id="rev-record" type="button" data-tip="Copy a keepsake record of this find — flavor, stats and its creature code.">Record</button>' : '');
     }
   } else {
     if(stEl) stEl.innerHTML='';
@@ -9575,7 +9575,7 @@ const TUT_STEPS=[
   text:()=>'First, find home. <b>Drag and zoom to Earth</b> — the blue world, third from the Sun — and <b>tap it</b> to open its survey card.',
   when:(t,d)=>t==='survey'&&d.planetSeed===133},
  {id:'survey-tour', spot:'#panel', btn:'Got It', allow:['#panel'],
-  text:()=>'This is a <b>survey card</b> — every world, star and galaxy has one, generated from pure math: atmosphere, climate, life, hazards. Every explorer in existence reads exactly this card at Earth.'},
+  text:()=>'This is a <b>survey card</b> — every world, star and galaxy has one, generated from pure math: atmosphere, climate, life, hazards. Every explorer in existence reads exactly this card at Earth. And a card is only the view from orbit — <b>zoom all the way into a world to land on it</b>, and its ground survey opens the rest.'},
  {id:'atlas-add', spot:'#panel [data-act="add"]', allow:['#panel'],
   text:()=>'Chart it. Tap <b>+ Add to Star Atlas</b> on Earth’s card — the Atlas is how you find your way back across the infinite.',
   when:(t,d)=>t==='atlas-add'&&d.id==='p133'},
@@ -10162,13 +10162,13 @@ function renderStats(){
     '<div class="srow"><span class="k">Bioscan close calls</span><span>'+(stats.scanhits||0)+'</span></div>'+
     '<div class="srow"><span class="k">Beacon pilgrimages</span><span>'+stats.anomalies+'</span></div>'+
     '<div class="srow"><span class="k">Cosmic events witnessed</span><span>'+stats.events+'</span></div>'+
-    '<div class="srow"><span class="k">\u2604 Stardust (breed odds +'+Math.round(stardustBonus()*100)+'%)</span><span>'+essence+'</span></div>'+
+    '<div class="srow"><span class="k">Stardust (breed odds +'+Math.round(stardustBonus()*100)+'%)</span><span>'+essence+'</span></div>'+
     '<div class="srow"><span class="k">Stardust harvested</span><span>'+(stats.harvests||0)+'</span></div>'+
     '<div class="srow"><span class="k">Codes shared / followed</span><span>'+stats.shares+' / '+stats.jumps+'</span></div>'+
     (rarest?'<div class="srow"><span class="k">Rarest find</span><span style="color:'+rarest.grade.hex+'">'+rarest.grade.name+' '+(rarest.grade.star||'')+' '+rarest.name+'</span></div>':'')+
     /* the summit is chased, not checklisted: the top of the ladder is a statistic, not an achievement */
     (stats.best>0?'<div class="srow"><span class="k">Highest grade ever reached</span><span class="gbadge'+(stats.best>=12?' irid':'')+'" style="color:'+GRADE_TIERS[Math.min(stats.best,TIER_MAX)].hex+'">'+GRADE_TIERS[Math.min(stats.best,TIER_MAX)].name+'</span></div>':'')+
-    '<div class="srow"><span class="k">👑 Apex Guardians felled</span><span>'+(stats.guardians||0)+'</span></div>';
+    '<div class="srow"><span class="k">Apex Guardians felled</span><span>'+(stats.guardians||0)+'</span></div>';
   html+='<div class="agrp'+(_agOpen.has('__stats')?' open':'')+'" data-ag="__stats">'+
     '<div class="aghead"><span><span class="arr">\u25B8</span>Statistics</span><span class="cnt"></span></div>'+
     '<div class="agbody">'+_statBody+'</div></div>';
