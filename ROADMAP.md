@@ -96,6 +96,13 @@ end-to-end — press button → surface → mine on the spot → samples toast �
 zoom out → card stays Ground-surveyed; venus glance asserts NO
 biosignatures), fingerprint byte-identical, systems 19/19, balance PASS.
 
+## ★ v1.2.6 "INK & EMBER" — LIVE (2026-07-17, build a8a045f): functional-
+## only bold; MUD Chronicle + game-wide event color language (toasts, tray,
+## outcomes, verdicts, glance, Compendium scout tag, Atlas badges, Cosmic
+## Events, charter ticks); 44-fix grammar pass; Guide coverage pass (new
+## "color language" topic, field samples documented, mining topic
+## modernized). Suites green at ship.
+
 ## ★ v1.2.5 "FIRST CONTACT" — LIVE (2026-07-17, build 319e5b9). Pre-deploy
 ## review: 4 findings (stale _pendingContact from training landings;
 ## wk-mine counted re-mines; survivor achievement text; 2 vacuous smoke
