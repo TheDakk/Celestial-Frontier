@@ -438,7 +438,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('charters: Make planetfall completes on landing (paid + ticked)', skH.chDone.has('st-land')
       && chp.textContent.includes('✓ Make planetfall'));
     const chToasts1 = [...sk.doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
-    check('charters: completion announces itself with the next charter', chToasts1.includes('Charter complete')
+    check('charters: completion announces itself with the next charter', chToasts1.includes('Charter Complete')
       && chToasts1.includes('Prospect a dead world'), chToasts1);
     check('MUD events: the charter toast wears the milestone gold tint', !!sk.doc.querySelector('#toast .tst.tk-gold'));
     // mine right here — starter charter 2
