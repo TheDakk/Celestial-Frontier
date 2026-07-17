@@ -5509,8 +5509,10 @@ function renderPanel(p, isLocked){
       if(st.mode==='surface' && d.planetSeed!=null) noteLanding(d.planetSeed);
       /* first-landing field samples ride the next render of this card */
       if(_pendingSample!=null && _pendingSample===d.planetSeed){ _pendingSample=null; grantFieldSamples(d); }
-      /* so does the first-contact attempt (once per landing; re-land to retry) */
-      if(_pendingContact!=null && _pendingContact===d.planetSeed && tutDone){ _pendingContact=null; attemptContact(d); }
+      /* so does the first-contact attempt (once per landing; re-land to
+         retry). The flag clears even during training — a stale seed must
+         never roll a contact later from orbit (review catch) */
+      if(_pendingContact!=null && _pendingContact===d.planetSeed){ _pendingContact=null; if(tutDone) attemptContact(d); }
     }
     const thumb = d.thumb ? '<img class="thumb'+(d.thumbSq?' sq':'')+'" src="'+d.thumb+'" alt="">' : '';
     let rows='';
@@ -6998,7 +7000,7 @@ const ACH=[
   {id:'harvest10',cat:'Conquest',ic:'⛏', name:'Quartermaster', d:'Harvest Stardust 10 times', t:()=>(stats.harvests||0)>=10},
   {id:'essence500',cat:'Conquest',ic:'☄', name:'Stockpiler',   d:'Earn 500 Stardust lifetime', t:()=>(stats.essenceEarned||0)>=500},
   /* — Survival — */
-  {id:'survivor', cat:'Survival', ic:'🩸', name:'Bitten, Not Beaten', d:'Survive a wildlife attack during a bioscan', t:null},
+  {id:'survivor', cat:'Survival', ic:'🩸', name:'Bitten, Not Beaten', d:'Survive a hostile strike in the field — a bioscan gone wrong, or a wary first contact', t:null},
   {id:'brink',    cat:'Survival', ic:'💔', name:'On the Brink',      d:'Drop below 20 HP and live to tell it', t:null},
   {id:'fieldmedic',cat:'Survival',ic:'💚', name:'Field Medic',       d:'Heal yourself with flora', t:null},
   {id:'gambler',  cat:'Survival', ic:'🎰', name:'Cruel Bargain',     d:'Heal with a flora over 40% poison risk and survive', t:null},
@@ -9439,6 +9441,7 @@ function mineWorld(d){
   const ps=d.planetSeed; if(ps==null) return;
   const last=mined.get(ps)||0, now=Date.now();
   if(now-last<MINE_CD){ toast('⛏ Mining','The veins are settling — ready in '+fmtRemain(MINE_CD-(now-last))+'.'); return; }
+  const _firstMine=!mined.has(ps);   /* before the stamp — charters count WORLDS, not re-mines */
   mined.set(ps, now);
   const tier=(d.designation?d.designation.tier:0);
   const deps=depositsFor(ps, d.ptype||'rocky', tier);
@@ -9450,7 +9453,7 @@ function mineWorld(d){
     got.push(q+'× '+(ELEM_NAME[sym]||sym));
   }
   stats.mines=(stats.mines||0)+1;
-  gameEvent('mined', {planetSeed:ps});
+  gameEvent('mined', {planetSeed:ps, first:_firstMine});
   playRaritySting(2); fxBurst(FX_GOLD,14);
   toast('⛏ Deposits Mined', got.join(' · ')+' — stored in your 🧰 Cargo.');
   showCargoBtn(); if(cargoOpen) renderCargo();
@@ -9885,7 +9888,7 @@ const CHARTER_STARTERS=[
 ];
 const CHARTER_POOL=[
  {id:'wk-land',  ev:'landfall', n:3, t:'Boots on three worlds', d:'Make planetfall on 3 worlds you have never stood on.', sd:20},
- {id:'wk-mine',  ev:'mined',    n:3, t:'Deep veins',            d:'Mine deposits on 3 dead worlds.', sd:25},
+ {id:'wk-mine',  ev:'mined', filt:x=>x&&x.first, n:3, t:'Deep veins', d:'Mine deposits on 3 dead worlds you have never mined.', sd:25},
  {id:'wk-scan',  ev:'bioscan',  n:3, t:'Field naturalist',      d:'Discover life on 3 new worlds.', sd:25},
  {id:'wk-sp',    ev:'species',  n:5, t:'Grow the Compendium',   d:'Catalogue 5 new species.', sd:25},
  {id:'wk-conq',  ev:'conquest', n:1, t:'Raise a flag',          d:'Conquer a world.', sd:30},
