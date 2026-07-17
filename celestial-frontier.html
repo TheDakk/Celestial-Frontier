@@ -397,6 +397,25 @@
   #eventsbtn:hover{color:var(--ink);border-color:rgba(255,170,90,0.55)}
   #eventsbtn .dot{width:6px;height:6px;border-radius:50%;background:#ff9a4c;box-shadow:0 0 8px #ff9a4c;animation:evpulse 2.4s infinite}
   @keyframes evpulse{0%,100%{opacity:1}50%{opacity:0.35}}
+  /* ---- expedition charters: the hunt board ---- */
+  #chbtn{position:fixed;top:calc(var(--topbar-h,100px) + 80px);left:18px;z-index:8;pointer-events:auto;cursor:pointer;
+    font-family:var(--ui);font-size:11px;letter-spacing:.08em;color:var(--dim);
+    background:var(--glass);border:1px solid var(--glass-brd);border-radius:999px;padding:7px 14px;
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:7px;
+    transition:color .2s,border-color .2s}
+  #chbtn:hover{color:var(--ink);border-color:rgba(255,217,106,0.55)}
+  #chbtn .dot{width:6px;height:6px;border-radius:50%;background:#ffd96a;box-shadow:0 0 8px #ffd96a;animation:evpulse 2.4s infinite}
+  #chpanel{position:fixed;top:calc(var(--topbar-h,100px) + 116px);left:18px;z-index:12;width:318px;max-height:min(60vh,520px);overflow-y:auto;display:none;
+    background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:11px;
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
+  #chpanel .ehead{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:#ffd96a;margin:0 0 8px}
+  #chpanel .ambient{font-size:10.5px;color:var(--faint);font-style:italic;margin:0 0 9px;line-height:1.5}
+  #chpanel .ch{padding:8px 9px;border-radius:10px;margin:4px 0;border:1px solid rgba(150,162,210,0.14);background:rgba(150,162,210,0.05)}
+  #chpanel .ch.done{opacity:0.55}
+  #chpanel .ch .ct{font:600 11.5px var(--ui);color:var(--ink);display:flex;align-items:baseline;gap:6px}
+  #chpanel .ch .cp{font-size:10px;color:var(--plasma)}
+  #chpanel .ch .cr{margin-left:auto;font-size:10px;color:#ffd96a;white-space:nowrap}
+  #chpanel .ch .cd{font-size:10.5px;color:var(--dim);line-height:1.5;margin-top:3px}
   #events{position:fixed;top:calc(var(--topbar-h,100px) + 80px);left:18px;z-index:12;width:318px;max-height:min(64vh,560px);overflow-y:auto;display:none;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:11px;
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
@@ -974,6 +993,7 @@
     /* float the side rails just below the header, however many rows it wraps to */
     #dailybtn{top:calc(var(--topbar-h,118px) + 8px);font-size:10px;padding:6px 11px}  #stats{top:calc(var(--row1-h,58px) + 6px)}
     #eventsbtn{top:calc(var(--topbar-h,118px) + 44px);font-size:10px;padding:6px 11px} #events{top:calc(var(--topbar-h,118px) + 80px)}
+    #chbtn{top:calc(var(--topbar-h,118px) + 80px);font-size:10px;padding:6px 11px} #chpanel{top:calc(var(--topbar-h,118px) + 116px)}
     #panel{width:min(300px,calc(100vw - 20px))}
     #codex,#log{width:min(300px,calc(100vw - 20px))}
     #stats,#events{width:min(312px,calc(100vw - 20px))}
@@ -1075,7 +1095,7 @@
   [role="button"]:focus-visible{outline:1px solid rgba(240,200,110,0.85);outline-offset:2px}
   /* Motion: Reduced — the decorative loops stand still (the travel tunnel,
      screen shake and confetti bursts are gated in JS via motionOn) */
-  body.rmotion #updatepill, body.rmotion #cinema .rays, body.rmotion #eventsbtn .dot,
+  body.rmotion #updatepill, body.rmotion #cinema .rays, body.rmotion #eventsbtn .dot, body.rmotion #chbtn .dot,
   body.rmotion #rank.irid-plate, body.rmotion .plate.irid, body.rmotion .gbadge.irid,
   body.rmotion .iridframe::after{animation:none !important}
   /* fat fingers get invisible hit-padding — the visible pill sizes and the
@@ -1195,6 +1215,8 @@
 <div id="stats"></div>
 <div id="toast"></div>
 <div id="eventsbtn" role="button" tabindex="0" data-tip="Live cosmic events — every explorer sees the same sky at the same moment." data-guide="events"><span class="dot"></span>Cosmic Events</div>
+<div id="chbtn" role="button" tabindex="0" data-tip="Expedition Charters — your hunt board. Starters teach the expedition&#8217;s trades; then three fresh charters a week, the same for every explorer." data-guide="charters"><span class="dot"></span>Charters</div>
+<div id="chpanel"></div>
 <div id="events"></div>
 
 <div id="pickbox"><div class="card">
@@ -5865,6 +5887,7 @@ function autoScanWorld(d){
   if(d.planetSeed!=null && !surveyedSet.has(d.planetSeed)){
     surveyedSet.add(d.planetSeed);
     stats.surveys=surveyedSet.size;
+    gameEvent('bioscan', {planetSeed:d.planetSeed});
     checkAch(); renderRank(); queueSave();
   }
   if(d.badge==='Civilized'||d.badge==='Advanced') unlock('civ');
@@ -6090,6 +6113,7 @@ revealEl.addEventListener('click', (e)=>{
   if(e.target && e.target.id==='rev-feed' && _revEntry){ openPicker('feed', _revEntry); return; }
   if(e.target && e.target.id==='rev-scout' && _revEntry){
     scoutId = (scoutId===_revEntry.id) ? null : _revEntry.id;
+    if(scoutId) gameEvent('scout-set', {id:scoutId});
     toast('🐾 Field scout', scoutId
       ? _revEntry.name+' now walks point — it takes the hit when a bioscan turns hostile.'
       : _revEntry.name+' stands down. Hostile scans risk your own HP again.');
@@ -6965,6 +6989,7 @@ function checkAch(){ for(const a of ACH){ if(a.t && !unlocked.has(a.id) && a.t()
 
 /* called by _storeSpecies for every new Codex entry */
 function onSpeciesStored(entry){
+  gameEvent('species', {id:entry.id||null});
   if(entry.hybrid) stats.hybrids++;
   if(entry.grade && entry.grade.tier>stats.best) stats.best=entry.grade.tier;
   if((entry.gen||0)>stats.maxGen) stats.maxGen=entry.gen;
@@ -7000,6 +7025,7 @@ function doSave(){
         for(const k of mined.keys()) _l.add(k);
         return [..._l].slice(-4000); })(),
       scout:scoutId, landings:stats.landings||0,
+      chs:[...chDone], chw:chWeek, chp:chProg, charters:stats.charters||0,
       notifs:notifications.slice(0,50),
       me:explorerName,
       essence:essence,
@@ -7104,6 +7130,12 @@ function loadSave(){
        bred away, fed away, or lost) — a stale id silently stands down */
     scoutId=(typeof data.scout==='string' && codex.has(data.scout)) ? data.scout : null;
     stats.landings=num(data.landings);
+    stats.charters=num(data.charters);
+    for(const s of (data.chs||[])) if(CHARTER_STARTERS.some(c=>c.id===s)) chDone.add(s);
+    chWeek=num(data.chw,-1);
+    if(data.chp && typeof data.chp==='object'){
+      for(const k in data.chp){ const v=+data.chp[k]; if(typeof k==='string' && k.length<24 && Number.isFinite(v) && v>=0) chProg[k]=Math.min(v|0, 999); }
+    }
     for(const it of (data.log||[])){ if(it && it.id){ it.star=''; logMap.set(it.id, it); } }
     homeId=(data.home && logMap.has(data.home))?data.home:null;
     /* v1.2 discovery arc. land absent (pre-1.2 save) ⇒ grandfather: every
@@ -7124,6 +7156,17 @@ function loadSave(){
     seenGuide=!!data.guide;
     tutDone = data.tut===undefined ? true : !!data.tut;   /* pre-tutorial saves are veterans */
     _rnSeen = typeof data.rn==='string' ? data.rn.slice(0,12) : '0';   /* pre-notes saves get the debut bulletin once */
+    /* veterans: trades already proven complete their starter charters
+       quietly (no retroactive pay — starters are onboarding, not income) */
+    if(tutDone){
+      if(landed.size>0 || (stats.landings||0)>0) chDone.add('st-land');
+      if((stats.mines||0)>0) chDone.add('st-mine');
+      if(surveyedSet.size>0) chDone.add('st-scan');
+      if(scoutId) chDone.add('st-scout');
+      let _cq2=false; for(const k of conquered.keys()) if(k!==133){ _cq2=true; break; }
+      if(_cq2) chDone.add('st-conq');   /* Earth flies your flag from the start — it doesn't count */
+    }
+    _chBadge();
     /* retroactive: signatures your existing Codex already deserves, claimed quietly */
     if(primeCount()<9) for(const e of codex.values()) primeCheckSpecies(e, true);
     renderPrime(); updatePrimeBtn();
@@ -7146,6 +7189,7 @@ function resetMemoryState(){
     for(const k in primeFill) delete primeFill[k];
     homeId=null; frontierUnlocked=false; frontierEnding=null; seenGuide=false; tutDone=false; _rnSeen=GAME_VERSION;
     scoutId=null; _pendingSample=null;
+    chDone.clear(); chProg={}; chWeek=-1;
     _lastRankName=null; _lastRankFloor=-1;   /* a fresh Cadet is a beginning, not a promotion */
     explorerName=''; essence=0; pstats={vit:50,fer:50,res:50,agi:50,ins:50}; HP_MAX=hpMaxFromVit(); hp=HP_MAX;
     for(const k in stats) if(typeof stats[k]==='number') stats[k]=0;
@@ -8609,6 +8653,8 @@ const GUIDE=[
   '<p>The search box (top bar) hunts across <b>everything you’ve already discovered</b>: Atlas places, Compendium species, even cosmic events you’ve witnessed. It also accepts pasted codes:</p><ul><li><b>CF1-…</b> world codes — jump straight to a friend’s discovery.</li><li><b>CFB-…</b> creature codes — load a friend’s creature for a duel.</li></ul><p>See <span data-gt="codes">Share codes</span>.</p>'},
  {id:'codes', t:'Share codes (CF1 / CFB)', k:'share code link friend cf1 cfb copy multiplayer social', body:
   '<p>There is no server — the universe is mathematics, identical on every device. A share code is just an <b>address into that shared math</b>:</p><ul><li><b>⇪ Share this discovery</b> on a survey card copies a <b>CF1-</b> code/link. Anyone who opens it lands on the exact same world, with your name for it attached.</li><li><b>⇪ Code</b> on a creature card copies a <b>CFB-</b> code carrying the full genome — the identical creature, stats and all, appears on your friend’s device for a duel.</li></ul><p>Codes are sanitized on arrival; a tampered code can’t hurt your save.</p>'},
+ {id:'charters', t:'Expedition Charters', k:'charter charters hunt board weekly goals task starter reward stardust', body:
+  '<p>The <b>Charters</b> board (left rail) always has work for an explorer. Fresh expeditions receive five <b>starter charters</b> — one for each trade, in the order they chain: make planetfall, prospect a dead world, discover life, name a Field Scout, conquer a world. Each pays <b>☄ Stardust</b> the moment it completes.</p><p>Once the trades are learned, the board turns weekly: <b>three charters a week, identical for every explorer in the universe</b> — deterministic, like everything else out here. Compare boards with a friend; they match.</p>'},
  {id:'beacon', t:'Traveler’s Beacon', k:'beacon daily random destination five minutes', body:
   '<p>The <b>Traveler’s Beacon</b> (left rail) offers a fresh destination every <b>5 minutes</b> — somewhere notable, picked deterministically, so every explorer’s beacon points at the same place at the same moment. An easy way to see something new when the infinite feels too big.</p>'},
  {id:'atlas', t:'The Star Atlas', k:'atlas bookmark favorite home save place travel star log', body:
@@ -8894,6 +8940,12 @@ const GAME_VERSION='1.2';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.2.1', title:'The Hunt Board', date:'July 2026', sections:[
+ ['✨ New Features & Systems', [
+  '<b>Expedition Charters</b> — a hunt board joins the left rail. New explorers receive five <b>starter charters</b> that teach the expedition&#8217;s trades in the order they chain — make planetfall, prospect a dead world, discover life, name a Field Scout, conquer a world — each paying ☄ Stardust on the spot. (Veterans: trades you&#8217;ve already proven are quietly marked complete.)',
+  'Once the trades are learned, the board turns weekly: <b>three fresh charters every week, identical for every explorer in the universe</b>. Compare boards with a friend — they match.',
+ ]],
+]},
 {v:'1.2', title:'The Discovery Arc', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
   '<b>Knowing a world now comes in three acts.</b> A <b>glance</b> shows what a telescope sees — color class and long-range reads: atmosphere, water signatures, biosignatures, ⟁ signals (hover, on a computer; on a phone your tap goes straight to the survey). An <b>orbital survey</b> (tap) reads the environment and biosphere. And <b>planetfall</b> completes the picture: land on a world to run its <b>ground survey</b>.',
@@ -9193,6 +9245,7 @@ function runConquestBattle(d, champ, native){
         stats.duelwins++;
         if(!champ.isPlayer && champ.id) awardXP(champ.id, native.guardian?60:20);
         conquered.set(d.planetSeed, {t:0, tier:(d.designation?d.designation.tier:1)});
+        gameEvent('conquest', {planetSeed:d.planetSeed});
         if(native.guardian){
           /* the fallen guardian joins the Compendium — the fighter's road to the summit */
           stats.guardians=(stats.guardians||0)+1;
@@ -9316,6 +9369,7 @@ function mineWorld(d){
     got.push(q+'× '+(ELEM_NAME[sym]||sym));
   }
   stats.mines=(stats.mines||0)+1;
+  gameEvent('mined', {planetSeed:ps});
   playRaritySting(2); fxBurst(FX_GOLD,14);
   toast('⛏ Deposits Mined', got.join(' · ')+' — stored in your 🧰 Cargo.');
   showCargoBtn(); if(cargoOpen) renderCargo();
@@ -9686,7 +9740,103 @@ let tutDone=false;            /* saved as `tut`; absent in old saves = veteran *
 let _tutRig=null;             /* while training, key rolls are rigged kind: {heal,breed,feed} */
 let _tutHook=null, _tutStep=-1, _tutSnap=null, _tutPreIds=null, _tutTimer=0;
 /* the one funnel game systems report through; free when no tutorial listens */
-function gameEvent(type, detail){ try{ if(_tutHook) _tutHook(type, detail||{}); }catch(_){} }
+/* ----------------------------------------------------------------
+   @section charters [app] — Expedition Charters: the hunt board
+   Starters teach the expedition's trades in order (training part two);
+   then three weekly charters, seeded identically for every explorer.
+   Weekly seed = calendar week (Date.now is fine here — app layer, like
+   mining cooldowns; the DOMAIN stays pure).
+   Owns: CHARTER_STARTERS, CHARTER_POOL, chDone, chWeek, chProg, chOpen, charterEvent, renderCharters
+   ---------------------------------------------------------------- */
+const CHARTER_STARTERS=[
+ {id:'st-land',  ev:'landfall',  n:1, t:'Make planetfall',      d:'Land on any world — press Land on its survey card, or zoom all the way in. A first footfall pays field samples.', sd:10},
+ {id:'st-mine',  ev:'mined',     n:1, t:'Prospect a dead world', d:'Land on a lifeless world and press Mine Deposits — the elements stock your Cargo hold for research.', sd:15},
+ {id:'st-scan',  ev:'bioscan',   n:1, t:'Discover life',         d:'Find a living world and press Discover Life on its card — mind the danger percentage, or send a scout.', sd:15},
+ {id:'st-scout', ev:'scout-set', n:1, t:'Name a Field Scout',    d:'Open one of your fauna in the Compendium and press Scout — it takes the hit when a bioscan turns hostile.', sd:15},
+ {id:'st-conq',  ev:'conquest',  n:1, t:'Conquer a world',       d:'Press Conquer Planet on a world with fauna and pick a champion — yourself, or one of your beasts.', sd:25},
+];
+const CHARTER_POOL=[
+ {id:'wk-land',  ev:'landfall', n:3, t:'Boots on three worlds', d:'Make planetfall on 3 worlds you have never stood on.', sd:20},
+ {id:'wk-mine',  ev:'mined',    n:3, t:'Deep veins',            d:'Mine deposits on 3 dead worlds.', sd:25},
+ {id:'wk-scan',  ev:'bioscan',  n:3, t:'Field naturalist',      d:'Discover life on 3 new worlds.', sd:25},
+ {id:'wk-sp',    ev:'species',  n:5, t:'Grow the Compendium',   d:'Catalogue 5 new species.', sd:25},
+ {id:'wk-conq',  ev:'conquest', n:1, t:'Raise a flag',          d:'Conquer a world.', sd:30},
+ {id:'wk-feed',  ev:'fed',  filt:x=>x&&x.ok, n:3, t:'Keeper of beasts', d:'Feed your fauna 3 welcome meals.', sd:20},
+ {id:'wk-breed', ev:'bred', filt:x=>x&&x.ok, n:1, t:'A new bloodline',  d:'Forge a hybrid at the breeding pool.', sd:30},
+];
+const chDone=new Set();        /* completed starter ids — permanent (save chs) */
+let chWeek=-1;                 /* rotation week (save chw) */
+let chProg={};                 /* charter id → count (save chp; weekly keys reset on rollover) */
+let chOpen=false;
+function _chNow(){ return Math.floor(Date.now()/6048e5); }
+function _chRoll(){
+  const wk=_chNow();
+  if(wk!==chWeek){
+    chWeek=wk;
+    for(const k in chProg) if(k[0]==='w') delete chProg[k];
+  }
+}
+function _chWeekly(){
+  const r=mulberry32(hashInt(0xC4A7, chWeek, 7)>>>0);
+  const pool=CHARTER_POOL.slice(), out=[];
+  for(let i=0;i<3 && pool.length;i++) out.push(pool.splice((r()*pool.length)|0,1)[0]);
+  return out;
+}
+function _chActive(){
+  _chRoll();
+  const rem=CHARTER_STARTERS.filter(c=>!chDone.has(c.id));
+  return rem.length ? rem : _chWeekly();   /* all starters listen at once — no lost credit */
+}
+function _chDoneOf(c){ return c.id[0]==='s' ? chDone.has(c.id) : (chProg[c.id]||0)>=c.n; }
+function charterEvent(type, detail){
+  if(!tutDone || _loading) return;
+  let hit=false;
+  for(const c of _chActive()){
+    if(_chDoneOf(c) || c.ev!==type) continue;
+    if(c.filt && !c.filt(detail)) continue;
+    chProg[c.id]=(chProg[c.id]||0)+1;
+    hit=true;
+    if((chProg[c.id]||0)>=c.n){
+      if(c.id[0]==='s') chDone.add(c.id);
+      essence+=c.sd; stats.essenceEarned=(stats.essenceEarned||0)+c.sd;
+      stats.charters=(stats.charters||0)+1;
+      playRaritySting(2);
+      const nxt=CHARTER_STARTERS.find(x=>!chDone.has(x.id));
+      toast('Charter complete', '“'+c.t+'” — +'+c.sd+' ☄ Stardust.'+(c.id[0]==='s'
+        ? (nxt ? ' Next charter: '+nxt.t+'.' : ' The trades are learned — the weekly charter board is open.') : ''));
+    }
+  }
+  if(hit){ if(chOpen) renderCharters(); _chBadge(); checkAch(); renderRank(); queueSave(); }
+}
+const chBtn=document.getElementById('chbtn'), chPanel=document.getElementById('chpanel');
+function _chBadge(){
+  const dot=chBtn&&chBtn.querySelector('.dot');
+  if(dot) dot.style.display=_chActive().some(c=>!_chDoneOf(c))?'':'none';
+}
+function renderCharters(){
+  if(!chPanel) return;
+  const list=_chActive().length && CHARTER_STARTERS.some(c=>!chDone.has(c.id)) ? CHARTER_STARTERS : _chWeekly();
+  const starters=list===CHARTER_STARTERS;
+  let h='<div class="ehead">'+(starters?'Starter charters — learn the trades':'Weekly charters')+'</div>';
+  if(!starters) h+='<div class="ambient">Three fresh charters every week — the same board for every explorer in the universe.</div>';
+  for(const c of list){
+    const done=_chDoneOf(c), p=Math.min(chProg[c.id]||0, c.n);
+    h+='<div class="ch'+(done?' done':'')+'"><div class="ct">'+(done?'✓ ':'')+c.t+
+      (c.n>1?' <span class="cp">'+p+' / '+c.n+'</span>':'')+
+      '<span class="cr">+'+c.sd+' ☄</span></div>'+
+      (done?'':'<div class="cd">'+c.d+'</div>')+'</div>';
+  }
+  chPanel.innerHTML=h;
+}
+if(chBtn) chBtn.addEventListener('click', ()=>{
+  chOpen=!chOpen;
+  chPanel.style.display=chOpen?'block':'none';
+  if(chOpen) renderCharters();
+});
+function gameEvent(type, detail){
+  try{ if(_tutHook) _tutHook(type, detail||{}); }catch(_){}
+  try{ charterEvent(type, detail||{}); }catch(_){}
+}
 
 const TUT_STEPS=[
  {id:'welcome', btn:'Begin Training',
@@ -9892,6 +10042,10 @@ function _tutFinish(){
   if(!tutDone){
     tutDone=true;
     toast('✦ Welcome to the Frontier', 'Training complete. Fly far, '+(explorerName||'Explorer')+' — the Guide (?) is always at hand.');
+    /* the hunt board takes over where training leaves off: five starter
+       charters teach the trades in order, each paid on the spot */
+    pushNotif('Expedition Charters', 'Your hunt board is open (Charters, left rail) — first charter: Make planetfall.');
+    _chBadge();
   }
   queueSave();
 }
@@ -10280,6 +10434,7 @@ function renderStats(){
     '<div class="srow"><span class="k">Beasts fed</span><span>'+(stats.feeds||0)+'</span></div>'+
     '<div class="srow"><span class="k">Duels fought / won</span><span>'+stats.duels+' / '+stats.duelwins+'</span></div>'+
     '<div class="srow"><span class="k">Bioscan close calls</span><span>'+(stats.scanhits||0)+'</span></div>'+
+    '<div class="srow"><span class="k">Charters completed</span><span>'+(stats.charters||0)+'</span></div>'+
     '<div class="srow"><span class="k">Beacon pilgrimages</span><span>'+stats.anomalies+'</span></div>'+
     '<div class="srow"><span class="k">Cosmic events witnessed</span><span>'+stats.events+'</span></div>'+
     '<div class="srow"><span class="k">Stardust (breed odds +'+Math.round(stardustBonus()*100)+'%)</span><span>'+essence+'</span></div>'+

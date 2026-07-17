@@ -84,6 +84,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('bulletin hides other-line entries (no 1.1.x, no 1.0 debut)',
       !relFresh.textContent.includes('Clear Signals') && !relFresh.textContent.includes('Signal & Polish')
       && !relFresh.textContent.includes('The Frontier Opens'));
+    check('bulletin hides unshipped v-next entries (v1.2.1 stays invisible)',
+      !relFresh.textContent.includes('The Hunt Board'));
     check('training has not started yet', !visible(doc.getElementById('tutbox')));
     click(doc.getElementById('relok'));
     check('bulletin closes into training (step 1)', await until(() => tutAt(1), 4000, 'step1'));
@@ -352,6 +354,10 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // the veteran charted or settled must count as ground-surveyed already
     check('veteran: pre-1.2 save grandfathers charted + settled worlds as ground-surveyed',
       vet.w.__PROBE_HOOK__.landed.has(555) && vet.w.__PROBE_HOOK__.landed.has(777));
+    // charters: proven trades complete quietly; unproven ones stay open
+    check('veteran: starter charters auto-complete only for proven trades',
+      vet.w.__PROBE_HOOK__.chDone.has('st-land') && vet.w.__PROBE_HOOK__.chDone.has('st-conq')
+      && !vet.w.__PROBE_HOOK__.chDone.has('st-scan') && !vet.w.__PROBE_HOOK__.chDone.has('st-mine'));
     check('veteran: boots clean', vet.errors.length === 0, vet.errors.slice(0, 2).join(' | '));
     vet.w.close();
 
@@ -382,6 +388,14 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     sk.doc.dispatchEvent(new sk.w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true })); // close the guide
     const skH = sk.w.__PROBE_HOOK__;
     check('discovery: a fresh expedition has stood on no worlds', skH.landed.size === 0);
+    // charters: the hunt board opens after training with the starter list
+    click2(sk.doc.getElementById('chbtn'), sk.w);
+    const chp = sk.doc.getElementById('chpanel');
+    check('charters: the board opens with the starter charters', chp.style.display === 'block'
+      && chp.textContent.includes('Starter charters') && chp.textContent.includes('Make planetfall')
+      && chp.textContent.includes('Conquer a world'));
+    check('charters: nothing is complete on a fresh expedition', skH.chDone.size === 0
+      && !chp.textContent.includes('✓'));
     // Sol is deterministic: find a lifeless (venus-type) planet pick, hover it
     const okDead = await until(() => skH.st.mode === 'system'
       && skH.picks.some((p) => p.data && p.data.P && p.data.P.type === 'venus'), 6000, 'venus pick');
@@ -415,6 +429,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('You are here'), 4000, 'surface mine'));
     check('discovery: ground survey reveals the mineral veins without Deep Scanners',
       pan3.textContent.includes('Mineral veins'));
+    // the landing completed starter charter 1; the open board re-rendered live
+    check('charters: Make planetfall completes on landing (paid + ticked)', skH.chDone.has('st-land')
+      && chp.textContent.includes('✓ Make planetfall'));
+    const chToasts1 = [...sk.doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
+    check('charters: completion announces itself with the next charter', chToasts1.includes('Charter complete')
+      && chToasts1.includes('Prospect a dead world'), chToasts1);
+    // mine right here — starter charter 2
+    click2(pan3.querySelector('[data-act="mine"]'), sk.w);
+    check('charters: Prospect a dead world completes on the first mine', await until(() =>
+      skH.chDone.has('st-mine') && chp.textContent.includes('✓ Prospect a dead world'), 4000, 'charter 2'));
     // landing pays (v1.2): first footfall grants field samples + stardust
     const groundToasts = [...sk.doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
     check('discovery: first landing grants field samples (toast + stardust)',

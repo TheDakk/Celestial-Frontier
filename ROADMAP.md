@@ -96,10 +96,40 @@ end-to-end — press button → surface → mine on the spot → samples toast �
 zoom out → card stays Ground-surveyed; venus glance asserts NO
 biosignatures), fingerprint byte-identical, systems 19/19, balance PASS.
 
-STILL QUEUED FOR v1.2.x / NEXT: EXPEDITION CHARTERS (approved — fixed
-starter set doubling as training part two, then weekly rotation); scout
-marker in Compendium lists; grade-scaled scout rare-find bonus; Nick's
-on-device pass of heat + DPR feel.
+## ▶ v1.2.1 "THE HUNT BOARD" — BUILT 2026-07-17, AWAITING NICK'S BUMP+DEPLOY
+
+EXPEDITION CHARTERS (Nick's onboarding concern: "will new players know
+what to do?"). Built & verified (fingerprint byte-identical, smoke
+140/140, systems 19/19):
+- Charters button + panel, left rail under Cosmic Events (gold dot;
+  rmotion whitelist extended; mobile offsets added).
+- 5 STARTER charters = training part two, in the order the systems chain:
+  Make planetfall → Prospect a dead world → Discover life → Name a Field
+  Scout → Conquer a world. Paid ☄ on the spot; completion toast names the
+  next charter; _tutFinish announces the board when training ends. ALL
+  starters listen simultaneously (no lost credit), panel lists them with
+  ✓ ticks.
+- WEEKLY board after starters: 3 charters from a 7-template pool, seeded
+  by calendar week (hashInt(0xC4A7, week, 7)) — identical for every
+  explorer. Weekly progress resets on rollover; app-layer Date.now (like
+  mining cooldowns; domain untouched).
+- Engine taps gameEvent centrally. New emissions: mined, bioscan (once
+  per world, in autoScanWorld's new-survey branch), scout-set, conquest
+  (victory only), species (onSpeciesStored; _loading-guarded so save
+  restore doesn't count). charterEvent guarded by tutDone + _loading.
+- Save: chs (done starter ids), chw (week), chp (progress), charters
+  stat (character-sheet row added). Reset clears. VETERANS: proven trades
+  auto-complete quietly, no retroactive pay (landed/mines/surveyedSet/
+  scoutId/conquered-beyond-Earth — Earth's preset flag doesn't count).
+- Guide topic 'charters' (data-guide wired); RELEASES[0] = v1.2.1 entry;
+  leak-checked (stays invisible until the bump).
+NOT bumped/deployed — rule 7: version ships on Nick's word only. One
+word ships it: bump GAME_VERSION '1.2'→'1.2.1', update smoke version
+strings (footer + fresh-bulletin checks), validate+smoke, deploy.
+
+STILL QUEUED FOR v1.2.x / NEXT: scout marker in Compendium lists;
+grade-scaled scout rare-find bonus; Nick's on-device pass of heat + DPR
+feel + charters.
 
 ## (pre-ship notes below)
 ## ▶ v1.2 "THE DISCOVERY ARC" — CORE BUILT 2026-07-16 (Nick: "begin it all
