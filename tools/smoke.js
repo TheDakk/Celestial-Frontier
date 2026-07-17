@@ -173,6 +173,14 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     };
     openCard(fauna[0].id);
     check('opening a specimen completes step 7', await until(() => tutAt(8), 3000, 'step8'));
+    // field scout (v1.2): every owned fauna card offers the toggle; it round-trips
+    const scoutBtn = doc.getElementById('rev-scout');
+    check('scout: fauna card offers the Field Scout toggle', !!scoutBtn && scoutBtn.textContent.includes('Scout'));
+    click(scoutBtn);
+    check('scout: toggling names the scout (state + button)',
+      H.scoutId === fauna[0].id && doc.getElementById('rev-scout').textContent.includes('Scouting'));
+    click(doc.getElementById('rev-scout'));
+    check('scout: toggling again stands it down', H.scoutId === null);
     tutAct();                                                       // card tour -> feed
     check('step 9: feed', tutAt(9));
 
@@ -408,6 +416,12 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('discovery: ground survey reveals the mineral veins without Deep Scanners',
       pan3.textContent.includes('Mineral veins'));
     check('discovery: the world is remembered as landed', skH.landed.has(dp.data.P.seed));
+    // landing pays (v1.2): first footfall grants field samples + stardust
+    const groundToasts = [...sk.doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
+    check('discovery: first landing grants field samples (toast + stardust)',
+      groundToasts.includes('Ground survey') && groundToasts.includes('Stardust'), groundToasts);
+    check('discovery: samples reach the Cargo hold (button appears)',
+      sk.doc.getElementById('cargobtn').style.display === 'flex');
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
     sk.w.close();
 
