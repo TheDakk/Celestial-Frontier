@@ -361,6 +361,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('veteran: starter charters auto-complete only for proven trades',
       vet.w.__PROBE_HOOK__.chDone.has('st-land') && vet.w.__PROBE_HOOK__.chDone.has('st-conq')
       && !vet.w.__PROBE_HOOK__.chDone.has('st-scan') && !vet.w.__PROBE_HOOK__.chDone.has('st-mine'));
+    // first contact (v1.2.2): a pre-contact save keeps every census it held
+    check('veteran: contacted grandfathered from landed + conquered',
+      vet.w.__PROBE_HOOK__.contacted.has(555) && vet.w.__PROBE_HOOK__.contacted.has(777));
     check('veteran: boots clean', vet.errors.length === 0, vet.errors.slice(0, 2).join(' | '));
     vet.w.close();
 
@@ -420,7 +423,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     const sawOrbital = await until(() => pan3.querySelector('.atlasrow') && pan3.textContent.includes('Procedural survey'), 4000, 'orbital card');
     check('discovery: tapping locks the ORBITAL SURVEY (buttons + environment fold)', sawOrbital
       && !!pan3.querySelector('[data-gtoggle="1"]'));
-    check('discovery: an unlanded dead world offers Land to prospect, never Mine',
+    check('discovery: an unlanded dead world offers Land, never Mine',
       !!pan3.querySelector('[data-act="landcta"]') && !pan3.querySelector('[data-act="mine"]'));
     check('discovery: the glance never misreads a dead world (no biosignatures on venus-type)',
       !pan3.textContent.includes('biosignatures'));
@@ -442,6 +445,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click2(pan3.querySelector('[data-act="mine"]'), sk.w);
     check('charters: Prospect a dead world completes on the first mine', await until(() =>
       skH.chDone.has('st-mine') && chp.textContent.includes('✓ Prospect a dead world'), 4000, 'charter 2'));
+    // cargo (v1.2.2): the hold is a real inventory — icon tiles + a bench tab
+    click2(sk.doc.getElementById('cargobtn'), sk.w);
+    const cgEl = sk.doc.getElementById('cargo');
+    check('cargo: the Inventory tab shows item tiles with element icons',
+      cgEl.style.display === 'block' && cgEl.querySelectorAll('.slot img').length > 0
+      && cgEl.querySelector('.slot img').src.startsWith('data:image/svg'));
+    check('cargo: tiles carry quantities', !!cgEl.querySelector('.slot .qty'));
+    click2(cgEl.querySelector('[data-ct="bench"]'), sk.w);
+    check('cargo: the Research Bench lives on its own tab', cgEl.textContent.includes('Deep Scanners')
+      && !!cgEl.querySelector('.ctab.on[data-ct="bench"]'));
     // landing pays (v1.2): first footfall grants field samples + stardust
     const groundToasts = [...sk.doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
     check('discovery: first landing grants field samples (toast + stardust)',
