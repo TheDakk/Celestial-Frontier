@@ -5609,6 +5609,12 @@ function renderPanel(p, isLocked){
         '<button class="aico lfav'+(_favOn?' on':'')+'" data-act="fav" data-guide="atlas" data-tip="'+(_favOn?'Remove favorite':'Favorite \u2014 also saves to your Star Atlas')+'">'+(_favOn?'\u2605':'\u2606')+'</button>'+
         '<button class="aico lhome'+(_homeOn?' on':'')+'" data-act="home" data-guide="atlas" data-tip="'+(_homeOn?'Clear home':'Set as home \u2014 also saves to your Star Atlas')+'">\u2302</button>'+
       '</div>';
+    /* every world in the sky is landable — tap to land, always (Nick).
+       Unlanded civ/dead worlds keep their story-flavored Land buttons;
+       everything else gets the plain one. Zooming in by hand still works. */
+    if(!glance && d.planetSeed!=null && st.mode!=='surface' && !landBtn && mineBtn.indexOf('landcta')<0){
+      landBtn='<button class="act" data-act="landcta" data-guide="survey" data-tip="Drop out of orbit and stand on this world.">Land</button>';
+    }
     const btn = glance ? '' : atlasRow + conqBtn + landBtn + mineBtn +
       (d.where ? '<button class="act" data-act="share" data-guide="codes" data-tip="Copy a code — friends land on this exact world">⇪ Share this discovery</button>' : '');
     /* actions live at the TOP of the body (1.1.2): on phones the old
@@ -5673,6 +5679,11 @@ panelEl.addEventListener('click', e=>{
     cardExpand^=bit;
     const g=gt.closest('.grp'); if(g) g.classList.toggle('open', !!(cardExpand&bit));
     if(_panelKey) _panelKey=_panelKey.replace(/\|cx\d+$/, '|cx'+cardExpand);
+    /* the fold changes the card's height WITHOUT a rebuild — remeasure, or
+       the position clamp works from the collapsed height and the expanded
+       card hangs off the bottom of the screen, unscrollable (Nick's Saturn
+       screenshot — a heat-pass regression, same-day catch) */
+    _panelDirty=true;
     queueSave();
     return;
   }
@@ -8940,6 +8951,14 @@ const GAME_VERSION='1.2.1';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.2.2', title:'Smooth Landings', date:'July 2026', sections:[
+ ['🎨 UI Enhancements', [
+  '<b>Every world&#8217;s card now carries a Land button</b> — tap to drop out of orbit and stand anywhere, anytime, including worlds you&#8217;ve already surveyed. Zooming in by hand still works, and the flavored buttons (Land — make contact, Land to prospect) remain on worlds with something to unlock.',
+ ]],
+ ['🐞 Bug Fixes', [
+  'Expanding a survey card&#8217;s Environment fold could push the card off the bottom of the screen with no way to scroll — the card now resizes and repositions the moment it unfolds.',
+ ]],
+]},
 {v:'1.2.1', title:'The Hunt Board', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
   '<b>Expedition Charters</b> — a hunt board joins the left rail. New explorers receive five <b>starter charters</b> that teach the expedition&#8217;s trades in the order they chain — make planetfall, prospect a dead world, discover life, name a Field Scout, conquer a world — each paying ☄ Stardust on the spot. (Veterans: trades you&#8217;ve already proven are quietly marked complete.)',
