@@ -29,8 +29,45 @@ RELEASES[0] is now the working v1.1.2 "Clear Signals" entry (title = Claude's
 placeholder, Nick may rename). Version bumps to '1.1.2' only on Nick's word.
 
 STILL QUEUED FOR 1.1.2:
-- Training stuck — WAITING on Nick's friend's screenshot (scrollbar fix
-  above is the presumed cause; verify against the screenshot).
+- Training stuck — screenshot ARRIVED (2026-07-16), diagnosis CONFIRMED:
+  Safari (overlay scrollbars hidden until scrolled), Earth card at training
+  step 4 cut off mid-sentence with "+ Add to Star Atlas" below the fold and
+  no scroll cue. The shipped scrollbar fix forces a visible thumb+track in
+  Safari; the card redesign (buttons up top) removes the trap structurally.
+  Consider CLOSED unless Nick's friend hits it again post-deploy.
+
+## DISCOVERY ARC — Nick's direction (2026-07-16), target v1.2 headline
+
+Nick: survey-card fields shouldn't be viewable until you DISCOVER the
+planet — coarse read from space, land to learn the truth, discovery
+unlocks mining etc. Agreed shape (Claude's recommendation, Nick to
+confirm):
+- Tier 0 glance (free, always): name, type, spectral class + 2-3 coarse
+  long-range reads derived from real data ("dense atmosphere · liquid-
+  water signature · ⟁ structured signals" — extend the Signal-row
+  language). Looking stays free — friction gates KNOWING, never looking.
+- Tier 1 orbital survey (= the existing tap-lock, unchanged cost):
+  environment block as instrument readings; life as "biosignatures";
+  civilization as signals only. Prime Codex / survey achievements keep
+  keying off the tap exactly as today.
+- Tier 2 ground survey (land once): full civ block (name/era/year/pop),
+  mineral veins + Mine button, geological truth; card gains a permanent
+  "⛳ Ground-surveyed" state.
+- Estimates are VAGUE, never WRONG (a second lying-descriptor system =
+  huge cost + reads as a bug). Parking lot: rare "reads dead from orbit,
+  ground survey finds subterranean life" surprise worlds.
+- Guardrails: Discover Life keeps its own danger loop (landing must NOT
+  become a second gate on it); gas giants need an orbital-skim mining
+  exception (no surface); veterans grandfathered (Atlas/Compendium/
+  conquered/mined ⇒ counts as ground-surveyed; new save field, absent-
+  default = discovered); Earth stays fully known (home + keeps training
+  untouched). Future tech hook: orbital deep-scanner research reveals
+  ground data from space (unlock that REMOVES friction).
+- Sizing: v1.2, NOT 1.1.2 (save schema, mining gating, Guide, training,
+  smoke). The 1.1.2 card condensing becomes the skeleton: collapsed
+  environment group gets a "🛰 Orbital survey" framing the tiers slot into.
+AWAITING NICK: estimates-as-vagueness ok? go/no-go on 1.1.2 card
+condensing.
 - PLANET CARD CONDENSING — Nick's proposal + Claude's recommended shape
   (2026-07-16, Nick reviewing): buttons move up but UNDER the header;
   Spectral class row always visible; "Environment" group (Made of,
