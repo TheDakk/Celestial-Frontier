@@ -440,6 +440,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     const chToasts1 = [...sk.doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
     check('charters: completion announces itself with the next charter', chToasts1.includes('Charter complete')
       && chToasts1.includes('Prospect a dead world'), chToasts1);
+    check('MUD events: the charter toast wears the milestone gold tint', !!sk.doc.querySelector('#toast .tst.tk-gold'));
     // mine right here — starter charter 2
     click2(pan3.querySelector('[data-act="mine"]'), sk.w);
     check('charters: Prospect a dead world completes on the first mine', await until(() =>
@@ -458,6 +459,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     const groundToasts = [...sk.doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
     check('discovery: first landing grants field samples (toast + stardust)',
       groundToasts.includes('Ground survey') && groundToasts.includes('Stardust'), groundToasts);
+    check('MUD events: the samples toast wears the gain tint', !!sk.doc.querySelector('#toast .tst.tk-gain'));
     check('discovery: samples reach the Cargo hold (button appears)',
       sk.doc.getElementById('cargobtn').style.display === 'flex');
     // zoom back out — the ground survey is remembered from orbit

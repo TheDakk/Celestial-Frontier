@@ -555,6 +555,20 @@
     font:12px/1.45 var(--body);color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,0.5);cursor:pointer;
     backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:tin .3s ease}
   #toast .tst .tt{font-family:var(--ui);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--plasma);margin-bottom:2px}
+  /* MUD event language: toasts + tray tinted by event class (edge stripe +
+     title color) — harm red, milestone gold, resource gain green, info calm */
+  #toast .tst.tk-harm{border-left:3px solid #ff5a4a}
+  #toast .tst.tk-harm .tt{color:#ff8a72}
+  #toast .tst.tk-gold{border-left:3px solid #ffd96a}
+  #toast .tst.tk-gain{border-left:3px solid #7fe6a0}
+  #toast .tst.tk-gain .tt{color:#7fe6a0}
+  #toast .tst.tk-info{border-left:3px solid rgba(150,162,210,0.55)}
+  #toast .tst.tk-info .tt{color:#9fc2ff}
+  #tray .nt.tk-harm .dot{background:#ff5a4a;box-shadow:0 0 7px rgba(255,90,74,0.7)}
+  #tray .nt.tk-harm .tt{color:#ff8a72}
+  #tray .nt.tk-gain .dot{background:#7fe6a0;box-shadow:0 0 7px rgba(127,230,160,0.7)}
+  #tray .nt.tk-gain .tt{color:#9fe6b8}
+  #tray .nt.tk-info .dot{background:#9fc2ff;box-shadow:0 0 7px rgba(159,194,255,0.6)}
   @keyframes tin{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
 
   /* ---- panel share / name buttons & life scan row ---- */
@@ -5575,10 +5589,12 @@ function renderPanel(p, isLocked){
         /* prefixes must match the ACTUAL descriptor strings: airless worlds
            say "None — effectively airless", lifeless ones "No known life"
            (v1.2 review catch — Mercury glanced as having both) */
-        if(_val('Atmosphere') && !/^None/i.test(_val('Atmosphere'))) reads.push('atmosphere');
-        if(/liquid|ocean|river/i.test(_val('Water'))) reads.push('liquid-water signature');
-        if(_val('Life') && !/^No known life/i.test(_val('Life'))) reads.push('biosignatures');
-        if((civHead && !/^None/.test(civHead[1])) || sigRow) reads.push('⟁ structured signals');
+        /* each read wears its family color — water cyan, life green,
+           signals violet — matching the card's own row language */
+        if(_val('Atmosphere') && !/^None/i.test(_val('Atmosphere'))) reads.push('<span style="color:#9fdfe8">atmosphere</span>');
+        if(/liquid|ocean|river/i.test(_val('Water'))) reads.push('<span style="color:#6fd3ff">liquid-water signature</span>');
+        if(_val('Life') && !/^No known life/i.test(_val('Life'))) reads.push('<span style="color:#7fe6a0">biosignatures</span>');
+        if((civHead && !/^None/.test(civHead[1])) || sigRow) reads.push('<span style="color:#cdbcff">⟁ structured signals</span>');
         rows+='<div class="row"><span class="k">Long-range</span><span class="v">'+
           (reads.length?reads.join(' · '):'a quiet, dark world')+'</span></div>';
         rows+='<div class="row"><span class="v" style="color:var(--faint)">'+(TOUCH?'Tap':'Click')+' to run an orbital survey.</span></div>';
@@ -6633,8 +6649,19 @@ function _introUp(){
 function _trainingUp(){
   try{ return document.body.classList.contains('training'); }catch(_){ return false; }
 }
+/* the event color language (MUD pass): every toast and tray entry is
+   classified from its title, so all ~50 call sites inherit the tint with
+   no signature change. Words always carry the meaning too — color is the
+   at-a-glance layer, never the only one. */
+function evClass(tt){
+  const t=String(tt);
+  if(/☠|🩸|⚠|lost|wounded|badly|Failed|stands down|Toxic|Poisoned/i.test(t)) return 'harm';
+  if(/Charter complete|Achievement|Rank Up|🏆|👑|✦|🤝|🎉|Bloodline|Rare Find|First contact/i.test(t)) return 'gold';
+  if(/⛏|☄|⛳|Harvest|Mined|Deposits|samples|Ground survey|Cargo/i.test(t)) return 'gain';
+  return 'info';
+}
 function _showToast(title, msg){
-  const el=document.createElement('div'); el.className='tst';
+  const el=document.createElement('div'); el.className='tst tk-'+evClass(title);
   el.innerHTML='<div class="tt">'+title+'</div>'+msg;
   /* linger long enough to actually read: ~reading speed, 4.2s—9s */
   const hold=Math.min(9000, 4200 + String(title+msg).replace(/<[^>]*>/g,'').length*38);
@@ -6693,7 +6720,7 @@ function renderTray(){
     return;
   }
   trayList.innerHTML=notifications.map(n=>
-    '<div class="nt'+(n.read?' read':'')+'" data-nt="'+n.id+'" title="Click to mark '+(n.read?'unread':'read')+'">'+
+    '<div class="nt tk-'+evClass(n.tt)+(n.read?' read':'')+'" data-nt="'+n.id+'" title="Click to mark '+(n.read?'unread':'read')+'">'+
     '<span class="dot"></span><div class="m"><div class="tt">'+n.tt+'</div>'+
     '<div class="ms">'+n.ms+'</div><div class="ago">'+timeAgo(n.t)+'</div></div></div>').join('');
 }
@@ -8126,9 +8153,12 @@ function fightNow(mine, theirs, opts){
     if(duelBox.style.display!=='flex') return;
     if(i>=res.log.length){
       const win=res.winner==='A'?mine.name:(res.winner==='B'?theirs.name:null);
-      document.getElementById('duel-result').textContent = opts.resultText
+      const _drEl=document.getElementById('duel-result');
+      _drEl.textContent = opts.resultText
         ? opts.resultText(res, win)
         : (win ? '\ud83c\udfc6 '+win+' wins!' : 'A draw — both champions stand.');
+      /* the verdict wears the outcome: victory gold, defeat red, draw grey */
+      _drEl.style.color = res.winner==='A' ? '#ffd96a' : (res.winner==='B' ? '#ff5a4a' : 'var(--faint)');
       /* the closing ledger + the share button — fights aren't saved, but a
          great one can be pasted anywhere, like a screenshot */
       const SL=_statsLines();
@@ -8598,7 +8628,7 @@ pickList.addEventListener('click', e=>{
       playFailTone(); playThud(); fxShake();
       stats.feedfails=(stats.feedfails||0)+1;
       if(r.dead){
-        resEl.innerHTML='\u2620 <span style="color:#ff8a72">Toxic reaction.</span> The '+other.name+' poisoned '+_pickBase.name+(r.pref==='disliked'?' \u2014 it never liked '+STAT_META[r.ftype].name+'-rich flora':'')+'. With nothing left to give, it did not survive.';
+        resEl.innerHTML='\u2620 <span style="color:#ff8a72">Toxic reaction.</span> The '+other.name+' poisoned '+_pickBase.name+(r.pref==='disliked'?' \u2014 it never liked '+STAT_META[r.ftype].name+'-rich flora':'')+'. <span style="color:#ff5a4a">With nothing left to give, it did not survive.</span>';
         revealEl.style.display='none';
       } else {
         resEl.innerHTML='\u2620 <span style="color:#ff8a72">Toxic reaction.</span> The '+other.name+' poisoned '+_pickBase.name+(r.pref==='disliked'?' \u2014 it never liked '+STAT_META[r.ftype].name+'-rich flora':'')+'. '+
@@ -9032,7 +9062,8 @@ const RELEASES=[
 {v:'1.2.6', title:'Ink & Ember', date:'July 2026', sections:[
  ['🎨 UI Enhancements', [
   'Calmer reading everywhere: <b>bold now marks only things you can press or proper names</b> — about a hundred stray emphasis words across cards, battles, training and these very notes have relaxed back into plain text. (In the brighter Text tones, gold now always means “this is a thing,” never decoration.)',
-  '<b>The Chronicle speaks in color</b>, old-school MUD style: your champion reads cyan and the foe ember on every line, damage in yellow and criticals in gold, misses dim, staggers flash, burns glow orange, mending green, lifesteal violet, thorns lime — and a felled combatant falls in red. Shared battle logs stay plain text.',
+  '<b>The Chronicle speaks in color</b>, old-school MUD style: your champion reads cyan and the foe ember on every line, damage in yellow and criticals in gold, misses dim, staggers flash, burns glow orange, mending green, lifesteal violet, thorns lime — and a felled combatant falls in red. The verdict wears its outcome too: victory gold, defeat red. Shared battle logs stay plain text.',
+  'The same color language now runs through the whole expedition: <b>pop-ups and the bell tray</b> tint by event — red for harm and loss, gold for milestones and first contact, green for harvests, samples and mined hauls — and a world&#8217;s long-range glance tints each reading by family: water cyan, life green, signals violet.',
  ]],
 ]},
 {v:'1.2.5', title:'First Contact', date:'July 2026', sections:[
