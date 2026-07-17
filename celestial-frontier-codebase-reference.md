@@ -490,6 +490,19 @@ setting; −1 = Auto, 0 = Full, 1 = Reduced; **absent or −1 = Auto**, which
 keeps following the OS reduced-motion preference live — only an explicit
 player choice of Full/Reduced ever overrides it).
 
+v1.1.2 addition: `cx` (survey-card expand bitmask — bit 1 Environment fold
+open, bit 2 Civilization census open; **absent = 0 = collapsed**, clamped
+0–3).
+
+v1.2 addition: `land` (array of planet seeds the player has stood on,
+newest-capped at 2000; drives the discovery arc's ground-survey tier —
+census + mining unlock). **Absent (pre-1.2 save) ⇒ grandfathered**: every
+planet in the Atlas (`p…` log ids) plus all `conquered` and `mined` keys
+counts as landed, so a veteran's known universe is never re-hidden. Earth
+(seed 133) is always treated as grounded without occupying a slot.
+`noteLanding(seed)` (ui-panel section) adds a world at the planetfall
+transition or when a save restores directly onto a surface.
+
 `loadSave` restores all of the above. **Hardened against tampering/corruption** (v1):
 names re-sanitized via `cleanName`, every counter coerced to a finite number, `essence`
 clamped 0–1e9, `conquered` timestamps clamped to "now" (prevents frozen harvest
