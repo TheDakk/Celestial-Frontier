@@ -96,7 +96,10 @@ end-to-end — press button → surface → mine on the spot → samples toast �
 zoom out → card stays Ground-surveyed; venus glance asserts NO
 biosignatures), fingerprint byte-identical, systems 19/19, balance PASS.
 
-## ▶ v1.2.1 "THE HUNT BOARD" — BUILT 2026-07-17, AWAITING NICK'S BUMP+DEPLOY
+## ★ v1.2.1 "THE HUNT BOARD" — LIVE (2026-07-17, build aeb5eb0, Nick:
+## "Let's deploy it"). Bulletin stacks 1.2.1 + 1.2 for the 1.2 line.
+
+## (build notes below)
 
 EXPEDITION CHARTERS (Nick's onboarding concern: "will new players know
 what to do?"). Built & verified (fingerprint byte-identical, smoke
