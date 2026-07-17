@@ -503,6 +503,13 @@ counts as landed, so a veteran's known universe is never re-hidden. Earth
 `noteLanding(seed)` (ui-panel section) adds a world at the planetfall
 transition or when a save restores directly onto a surface.
 
+Further v1.2 additions: `scout` (Compendium id of the Field Scout fauna
+that absorbs hostile-bioscan wounds; validated against the loaded codex —
+a stale id stands down silently) and `landings` (count of first-footfall
+field-sample grants; the samples themselves ride `_pendingSample` →
+`grantFieldSamples(d)` on the next survey-card render, using the same
+deterministic `depositsFor` recipe as mining).
+
 `loadSave` restores all of the above. **Hardened against tampering/corruption** (v1):
 names re-sanitized via `cleanName`, every counter coerced to a finite number, `essence`
 clamped 0–1e9, `conquered` timestamps clamped to "now" (prevents frozen harvest

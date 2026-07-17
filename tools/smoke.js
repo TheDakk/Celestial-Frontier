@@ -78,15 +78,12 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // fresh expedition: latest bulletin FIRST, then training
     const relFresh = doc.getElementById('relbox');
     check('fresh expedition: latest bulletin shows before training', await until(() =>
-      visible(relFresh) && relFresh.textContent.includes('Clear Signals') && relFresh.textContent.includes('v1.1.2'), 4000, 'fresh bulletin'));
-    // the bulletin carries the SHIPPED version's whole minor line (1.1.x),
-    // but entries newer than GAME_VERSION and other lines must never leak in
-    check('bulletin stacks the shipped minor line (1.1.2 + 1.1.1 + 1.1)',
-      relFresh.textContent.includes('Signal & Polish') && relFresh.textContent.includes('Field Reports'));
-    check('bulletin hides other-line entries (no 1.0 debut)',
-      !relFresh.textContent.includes('The Frontier Opens'));
-    check('bulletin hides unshipped v-next entries (v1.2 stays invisible)',
-      !relFresh.textContent.includes('The Discovery Arc'));
+      visible(relFresh) && relFresh.textContent.includes('The Discovery Arc') && relFresh.textContent.includes('v1.2'), 4000, 'fresh bulletin'));
+    // the bulletin carries the SHIPPED version's minor line (v1.2 stands alone),
+    // and other lines must never leak in
+    check('bulletin hides other-line entries (no 1.1.x, no 1.0 debut)',
+      !relFresh.textContent.includes('Clear Signals') && !relFresh.textContent.includes('Signal & Polish')
+      && !relFresh.textContent.includes('The Frontier Opens'));
     check('training has not started yet', !visible(doc.getElementById('tutbox')));
     click(doc.getElementById('relok'));
     check('bulletin closes into training (step 1)', await until(() => tutAt(1), 4000, 'step1'));
@@ -263,7 +260,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     // release notes: the version line in the footer opens the full history
     const gc = doc.getElementById('gcredit');
-    check('guide footer shows version + build', gc && gc.textContent.includes('v1.1.2') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
+    check('guide footer shows version + build', gc && gc.textContent.includes('v1.2') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
     click(gc);
     const relbox = doc.getElementById('relbox');
     check('footer opens cumulative release notes (all versions)', visible(relbox)
@@ -344,7 +341,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('veteran: tutorial never starts', !visible(vet.doc.getElementById('tutbox')));
     const vrel = vet.doc.getElementById('relbox');
     check('veteran: update bulletin pops once', visible(vrel)
-      && vrel.textContent.includes('Signal & Polish')
+      && vrel.textContent.includes('The Discovery Arc')
       && vet.doc.getElementById('relok').textContent === 'Continue');
     click2(vet.doc.getElementById('relok'), vet.w);
     check('veteran: bulletin closes via Continue', !visible(vrel));
@@ -406,22 +403,37 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     const sawOrbital = await until(() => pan3.querySelector('.atlasrow') && pan3.textContent.includes('Procedural survey'), 4000, 'orbital card');
     check('discovery: tapping locks the ORBITAL SURVEY (buttons + environment fold)', sawOrbital
       && !!pan3.querySelector('[data-gtoggle="1"]'));
-    check('discovery: an unlanded dead world offers ⛳ Land to prospect, never Mine',
+    check('discovery: an unlanded dead world offers Land to prospect, never Mine',
       !!pan3.querySelector('[data-act="landcta"]') && !pan3.querySelector('[data-act="mine"]'));
-    // planetfall (the zoom gesture's destination, driven directly)
-    skH.noteLanding(dp.data.P.seed);
-    const sawGround = await until(() => pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('Ground-surveyed'), 4000, 'ground card');
-    check('discovery: landing upgrades the open card — GROUND SURVEY, mining open', sawGround
-      && !pan3.querySelector('[data-act="landcta"]'));
+    check('discovery: the glance never misreads a dead world (no biosignatures on venus-type)',
+      !pan3.textContent.includes('biosignatures'));
+    // press the LAND button — it must fly down and perform real planetfall
+    click2(pan3.querySelector('[data-act="landcta"]'), sk.w);
+    check('discovery: the Land button performs planetfall', await until(() =>
+      skH.st.mode === 'surface' && skH.landed.has(dp.data.P.seed), 5000, 'planetfall'));
+    check('discovery: standing on it, mining is open on the spot', await until(() =>
+      !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('You are here'), 4000, 'surface mine'));
     check('discovery: ground survey reveals the mineral veins without Deep Scanners',
       pan3.textContent.includes('Mineral veins'));
-    check('discovery: the world is remembered as landed', skH.landed.has(dp.data.P.seed));
     // landing pays (v1.2): first footfall grants field samples + stardust
     const groundToasts = [...sk.doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
     check('discovery: first landing grants field samples (toast + stardust)',
       groundToasts.includes('Ground survey') && groundToasts.includes('Stardust'), groundToasts);
     check('discovery: samples reach the Cargo hold (button appears)',
       sk.doc.getElementById('cargobtn').style.display === 'flex');
+    // zoom back out — the ground survey is remembered from orbit
+    skH.st.pcam.z = 0.4;
+    check('discovery: zooming out returns to the system', await until(() => skH.st.mode === 'system', 4000, 'back to system'));
+    const okBack = await until(() => skH.picks.some((p) => p.data && p.data.P && p.data.P.seed === dp.data.P.seed), 5000, 'repick');
+    check('discovery: the landed world is still pickable', okBack);
+    const dp2 = skH.picks.find((q) => q.data && q.data.P && q.data.P.seed === dp.data.P.seed);
+    const dOpts2 = { bubbles: true, cancelable: true, view: sk.w, clientX: dp2.sx, clientY: dp2.sy, button: 0 };
+    cv3.dispatchEvent(new sk.w.MouseEvent('pointerdown', dOpts2));
+    cv3.dispatchEvent(new sk.w.MouseEvent('pointerup', dOpts2));
+    cv3.dispatchEvent(new sk.w.MouseEvent('click', dOpts2));
+    check('discovery: from orbit the card stays GROUND-SURVEYED with mining open', await until(() =>
+      pan3.textContent.includes('Ground-surveyed') && !!pan3.querySelector('[data-act="mine"]')
+      && !pan3.querySelector('[data-act="landcta"]'), 5000, 'ground card from orbit'));
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
     sk.w.close();
 

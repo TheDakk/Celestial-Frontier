@@ -1388,6 +1388,11 @@ const cv = document.getElementById('cosmos');
 const ctx = cv.getContext('2d');
 const trailEl = document.getElementById('trail');
 const ctxEl = document.getElementById('context');
+/* the context line is rewritten by every draw call — skip the DOM write
+   when the text hasn't changed (v1.2 heat pass: per-frame textContent
+   assignments dirty layout even when identical) */
+let _ctxTxt=null;
+function setCtxText(t){ if(t!==_ctxTxt){ _ctxTxt=t; ctxEl.textContent=t; } }
 const panelEl = document.getElementById('panel');
 const hintEl = document.getElementById('hint');
 const logEl = document.getElementById('log');
@@ -1445,7 +1450,11 @@ let locked=null;                   // click-locked object: {data, sx, sy} — pa
    ---------------------------------------------------------------- */
 let W, H, DPR, minWH;
 function resize(){
-  DPR = Math.min(window.devicePixelRatio||1, 3);
+  /* phones cap at DPR 2 (v1.2 heat pass): iPhones report DPR 3 — 2.25× the
+     pixels of DPR 2 for barely-visible extra sharpness, and the single
+     biggest GPU/heat cost in the game. Desktop keeps 3. The surface tile
+     LOD has capped at 2 since 1.0 (same precedent). */
+  DPR = Math.min(window.devicePixelRatio||1, TOUCH?2:3);
   W = window.innerWidth; H = window.innerHeight;
   minWH = Math.min(W,H);
   cv.width = W*DPR; cv.height = H*DPR;
@@ -4362,13 +4371,26 @@ function perfTime(){ return (performance.now()-t0)*0.001; }
 const bgStars=[];
 { const r=mulberry32(5); for(let i=0;i<900;i++) bgStars.push({x:r(),y:r(),s:r()*1.1+0.2,o:r()*0.5+0.15}); }
 
+const _grainPos=new Map();   /* universe-view galaxy grains: seed → 6 cached position pairs */
+/* the backdrop is static per viewport — pre-rendered once per resize
+   (v1.2 heat pass: it used to rebuild a full-screen gradient + 900 star
+   fills EVERY frame in every non-surface mode). Pixel-identical. */
+let _bgCv=null, _bgKey='';
 function drawBackdrop(){
-  const bg=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*0.75);
-  bg.addColorStop(0,'#0a0a1e'); bg.addColorStop(0.6,'#05050f'); bg.addColorStop(1,'#020208');
-  ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
-  ctx.fillStyle='#aab4e0';
-  for(const s of bgStars){ ctx.globalAlpha=s.o*0.5; ctx.fillRect(s.x*W,s.y*H,s.s,s.s); }
-  ctx.globalAlpha=1;
+  const k=W+'|'+H+'|'+DPR;
+  if(_bgKey!==k){
+    _bgKey=k;
+    _bgCv=document.createElement('canvas');
+    _bgCv.width=Math.max(1,Math.round(W*DPR)); _bgCv.height=Math.max(1,Math.round(H*DPR));
+    const g=_bgCv.getContext('2d'); g.scale(DPR,DPR);
+    const bg=g.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)*0.75);
+    bg.addColorStop(0,'#0a0a1e'); bg.addColorStop(0.6,'#05050f'); bg.addColorStop(1,'#020208');
+    g.fillStyle=bg; g.fillRect(0,0,W,H);
+    g.fillStyle='#aab4e0';
+    for(const s of bgStars){ g.globalAlpha=s.o*0.5; g.fillRect(s.x*W,s.y*H,s.s,s.s); }
+    g.globalAlpha=1;
+  }
+  ctx.drawImage(_bgCv,0,0,W,H);
 }
 
 /* a single soft glow sprite — stamped wherever the cosmic web shines, so edges never show */
@@ -4434,13 +4456,22 @@ function drawUniverse(time){
         }
         ctx.globalAlpha=1;
       }
-      /* grains: individual galaxies, too distant to resolve */
+      /* grains: individual galaxies, too distant to resolve. Positions are
+         deterministic per supercell — cached so the universe view stops
+         allocating ~2k PRNG closures per frame (v1.2 heat pass; identical
+         pixels: the cache holds the same first six mulberry32 pairs). */
       const h=hashInt(977,scx,scy);
-      const gr2=mulberry32(h);
       const gn=Math.min(6, Math.floor(web*4 + (h%3)));
+      let gp=_grainPos.get(h);
+      if(!gp){
+        const gr2=mulberry32(h); gp=new Float32Array(12);
+        for(let i=0;i<12;i++) gp[i]=gr2();
+        if(_grainPos.size>4000) _grainPos.clear();
+        _grainPos.set(h, gp);
+      }
       ctx.fillStyle=`rgba(228,224,250,${((0.18+web*0.5)*webA).toFixed(3)})`;
       const ps=Math.max(1.0/c.z, SC*0.008);
-      for(let i=0;i<gn;i++) ctx.fillRect(scx*SC+gr2()*SC, scy*SC+gr2()*SC, ps, ps);
+      for(let i=0;i<gn;i++) ctx.fillRect(scx*SC+gp[i*2]*SC, scy*SC+gp[i*2+1]*SC, ps, ps);
     }
   }
   const showWeb = c.z>zCut;
@@ -4576,11 +4607,11 @@ function drawUniverse(time){
   ctx.restore();
   const dist=Math.hypot(c.x,c.y);
   setTrail(['Intergalactic space']); setHint('universe');
-  ctxEl.textContent = c.z<zCut*0.8
+  setCtxText(c.z<zCut*0.8
     ? 'each grain of light is an entire galaxy — filaments and voids weave the cosmic web, on and on without end'
     : (dist>OBS_R
     ? 'beyond the observable universe — hypothetical space no telescope can ever see'
-    : 'galaxies cluster along the cosmic web, leaving vast dark voids — the orange ring is the edge of the observable universe');
+    : 'galaxies cluster along the cosmic web, leaving vast dark voids — the orange ring is the edge of the observable universe'));
 }
 
 function drawGalaxy(time){
@@ -4829,7 +4860,7 @@ function drawGalaxy(time){
   ctx.restore();
   setTrail(['Cosmos', galaxyName(st.gal.seed)]); setHint('galaxy');
   const gs2=galaxyStats(st.gal);
-  ctxEl.textContent='every dot is one of ~'+fmtBig(gs2.stars)+' stars sharing ~'+fmtBig(gs2.planets)+' worlds — zoom deeper and more keep resolving';
+  setCtxText('every dot is one of ~'+fmtBig(gs2.stars)+' stars sharing ~'+fmtBig(gs2.planets)+' worlds — zoom deeper and more keep resolving');
 }
 
 function drawSystem(time){
@@ -5079,7 +5110,7 @@ function drawSystem(time){
   setTrail([gname, starName(st.star.seed)]); setHint('system');
   const desc=KIND_DESC[sys.kind]||'';
   const extra=sys.binary?' · a binary pair — two suns share this sky':'';
-  ctxEl.textContent= (sys.planets.length
+  setCtxText(sys.planets.length
     ? sys.planets.length+' worlds orbit '+desc+extra+' — zoom into one to land'
     : desc+extra+' — no planets here; zoom out and try another star');
 }
@@ -5260,7 +5291,7 @@ function drawSurface(time){
   if(season) parts.push(season);
   parts.push(env.wx ? WX_NAME[effWx] : 'airless — no weather');
   if(auroraOn) parts.push('auroras overhead');
-  ctxEl.textContent=(TYPE_DESC[P.type]||'')+' · '+parts.join(' · ');
+  setCtxText((TYPE_DESC[P.type]||'')+' · '+parts.join(' · '));
 }
 return Object.freeze({perfTime, t0, drawUniverse, drawGalaxy, drawSystem, drawSurface});
 })();
@@ -5277,6 +5308,11 @@ let _lastDesc=null, _panelKey=null, panelRect=null, stickyPick=null, _spExpanded
    Civilization census open. Remembered across cards AND sessions (save
    field cx, absent-default 0 = collapsed) — set it once, keep your view. */
 let cardExpand=0;
+/* v1.2 heat pass: renderPanel runs every frame — the descriptor memo and
+   the deferred panel measurements keep that loop allocation- and
+   reflow-free while a card is visible */
+const _descMemo={sig:'', t:0, d:null};
+let _panelDirty=true, _panelVP='', _panelTopMin=64, _panelW=300, _panelH=200, _panelAX=null, _panelAY=null;
 /* v1.2 discovery arc: the worlds you've stood on. Planetfall turns an
    orbital survey into a GROUND survey — the census and mineral veins are
    read from the ground, never from orbit. Earth (133) is home: always
@@ -5293,6 +5329,10 @@ const landed=new Set();
 let _pendingSample=null, scoutId=null;
 function noteLanding(seed){
   if(seed==null || landed.has(seed)) return;
+  /* training landings don't count (except home): the sandbox promise is
+     "nothing in training follows you out" — marking a world here would
+     silently forfeit its field samples forever (review catch) */
+  if(!tutDone && seed!==133) return;
   landed.add(seed);
   _panelKey=null;                      /* an open card upgrades in place */
   gameEvent('landfall', {planetSeed:seed});
@@ -5301,6 +5341,22 @@ function noteLanding(seed){
     else toast('⛳ Ground survey', 'Boots on the ground — this world’s census and mineral veins are yours to read.');
   }
   queueSave();
+}
+/* the LAND button's engine: place the system camera on the planet at
+   landing zoom — the very next frame of the zoom handler performs the real
+   planetfall (whoosh, noteLanding, surface). On phones the locked card
+   covers the planet, so pinch-to-land needed a button (review catch). */
+function flyDown(pseed){
+  if(st.mode!=='system' || !st.star || pseed==null) return false;
+  const sys = st.sys || (st.sys=systemFor(st.star.seed));
+  const pl = sys.planets.find(x=>x.P && x.P.seed===pseed);
+  if(!pl) return false;
+  const tNow=perfTime();
+  const ang = pl.orb*0.13 + tNow*0.05/(pl.orb*0.012);
+  st.scam.x=Math.cos(ang)*pl.orb;
+  st.scam.y=Math.sin(ang)*pl.orb;
+  st.scam.z=(0.41*minWH)/(6*(pl.P.sizeMul||1));
+  return true;
 }
 function grantFieldSamples(d){
   /* same deterministic vein recipe as mining, a pinch of it — landing
@@ -5319,7 +5375,21 @@ function grantFieldSamples(d){
 }
 function renderPanel(p, isLocked){
   if(!p){ panelEl.style.display='none'; panelEl.classList.remove('locked'); _lastDesc=null; _panelKey=null; panelRect=null; _frozenFor=null; return; }
-  const d=describePick(p);
+  /* descriptors are expensive (species, civilization, spectral class) and
+     this runs per frame — memoize by pick identity with a short TTL. Every
+     existing _panelKey=null invalidation (rename, landing, conquest,
+     mining, scans) also forces a fresh descriptor. */
+  const _dd=p.data;
+  const _sig=p.kind+'|'+(_dd?(_dd.P?_dd.P.seed:(_dd.pl?_dd.pl.P.seed+':'+_dd.m:(_dd.seed!=null?_dd.seed:(_dd.ci!=null?_dd.ci:(_dd.dw!=null?_dd.dw:''))))):'')+
+    '|'+st.mode+'|'+(st.star?st.star.seed:0)+'|'+(st.gal?st.gal.seed:0);
+  const _nowP=performance.now();
+  let d;
+  if(_panelKey!==null && _descMemo.d && _descMemo.sig===_sig && _nowP-_descMemo.t<400){
+    d=_descMemo.d;
+  } else {
+    d=describePick(p);
+    _descMemo.sig=_sig; _descMemo.t=_nowP; _descMemo.d=d;
+  }
   if(!d){ panelEl.style.display='none'; panelEl.classList.remove('locked'); _lastDesc=null; _panelKey=null; panelRect=null; _frozenFor=null; return; }
   _lastDesc=d;
   /* life is NOT catalogued on sight — you must click the Life forms row to scan.
@@ -5334,7 +5404,7 @@ function renderPanel(p, isLocked){
   const _cq=d.planetSeed!=null?conquered.get(d.planetSeed):null;
   const key=d.logId+'|'+st.mode+'|'+(inLog?1:0)+'|'+(isLocked?'L':'')+'|'+codexStamp+'|'+(lifeOpen?'X':'')+
     '|'+(_cq?('C'+(Date.now()-_cq.t>=HARVEST_CD?'R':'W')):'')+'|'+(d._nameKey?(customNames.get(d._nameKey)||''):'')+'|'+(_favOn?'F':'')+(_homeOn?'H':'')+
-    '|'+(d.planetSeed!=null&&(d.planetSeed===133||landed.has(d.planetSeed))?'G':'')+   /* ground-surveyed (v1.2) */
+    '|'+(d.planetSeed!=null&&(d.planetSeed===133||landed.has(d.planetSeed)||conquered.has(d.planetSeed))?'G':'')+   /* ground-surveyed (v1.2) */
     '|cx'+cardExpand;   /* keep cx LAST — the toggle handler patches it in place */
   panelEl.classList.toggle('locked', !!isLocked);
   if(key!==_panelKey){               /* rebuild content only when it actually changes */
@@ -5366,12 +5436,15 @@ function renderPanel(p, isLocked){
        remembered toggles. The ⟁ Signal row never folds: it's a discovery
        hook. Grouping is label-driven UI only; planetDescriptor (domain,
        fingerprinted) is untouched. */
-    let civHtml='', glance=false, grounded=false;
+    let civHtml='', glance=false, grounded=false, landBtn='';
     if(d.planetSeed!=null){
       /* v1.2 discovery arc — three tiers of knowing a world:
          GLANCE (hover) → ORBITAL SURVEY (tap/lock) → GROUND SURVEY (land).
          grounded gates the census and prospecting; Earth is home, always known. */
-      grounded = d.planetSeed===133 || landed.has(d.planetSeed) ||
+      /* conquered counts as grounded: you rule the world and harvest it —
+         its census was never going to hide from you (matches the veteran
+         grandfather rule; review catch) */
+      grounded = d.planetSeed===133 || landed.has(d.planetSeed) || conquered.has(d.planetSeed) ||
         (st.mode==='surface' && st.planet && st.planet.P && st.planet.P.seed===d.planetSeed);
       glance = !isLocked && st.mode!=='surface';
       const ENV_K={'Made of':1,'Atmosphere':1,'Climate':1,'Water':1,'Gravity':1,'Magnetism':1,'Weather':1,'Seasons':1};
@@ -5390,9 +5463,12 @@ function renderPanel(p, isLocked){
         /* tier 0: what a telescope sees — coarse reads, no census, no roster */
         const _val=n=>((d.rows.find(r=>r[0]===n)||['',''])[1]||'');
         const reads=[];
-        if(_val('Atmosphere') && !/^No atmosphere/i.test(_val('Atmosphere'))) reads.push('atmosphere');
-        if(/liquid|ocean|river|sea/i.test(_val('Water'))) reads.push('liquid-water signature');
-        if(_val('Life') && !/^(None|Lifeless|Sterile)/i.test(_val('Life'))) reads.push('biosignatures');
+        /* prefixes must match the ACTUAL descriptor strings: airless worlds
+           say "None — effectively airless", lifeless ones "No known life"
+           (v1.2 review catch — Mercury glanced as having both) */
+        if(_val('Atmosphere') && !/^None/i.test(_val('Atmosphere'))) reads.push('atmosphere');
+        if(/liquid|ocean|river/i.test(_val('Water'))) reads.push('liquid-water signature');
+        if(_val('Life') && !/^No known life/i.test(_val('Life'))) reads.push('biosignatures');
         if((civHead && !/^None/.test(civHead[1])) || sigRow) reads.push('⟁ structured signals');
         rows+='<div class="row"><span class="k">Long-range</span><span class="v">'+
           (reads.length?reads.join(' · '):'a quiet, dark world')+'</span></div>';
@@ -5414,6 +5490,7 @@ function renderPanel(p, isLocked){
             /* orbit knows SOMEONE is down there — the census takes boots on the ground */
             civHtml='<div class="row civ"><span class="k">'+civHead[0]+'</span>'+
               '<span class="v">Signals from an organized world — <b>land to make contact</b></span></div>';
+            landBtn='<button class="act" data-act="landcta" data-guide="survey" data-tip="Planetfall turns your orbital survey into a ground survey — meet whoever is down there.">Land — make contact</button>';
           } else if(civDet.length){
             const _co=!!(cardExpand&2);
             civHtml='<div class="grp'+(_co?' open':'')+'"><div class="row civ ghead" data-gtoggle="2" role="button" tabindex="0" '+
@@ -5501,7 +5578,7 @@ function renderPanel(p, isLocked){
       mineBtn = grounded
         ? '<button class="act'+(_mReady?'':' in')+'" data-act="mine" data-guide="mining" data-tip="Dead worlds carry the elements — mine them hourly to stock your 🧰 Cargo for research.">'+
           (_mReady?'Mine Deposits':'Mined — veins settling')+'</button>'
-        : '<button class="act in" data-act="landcta" data-guide="mining" data-tip="Dead worlds carry the elements — but prospecting takes boots on the ground. Zoom all the way in to land.">Land to prospect</button>';
+        : '<button class="act" data-act="landcta" data-guide="mining" data-tip="Dead worlds carry the elements — but prospecting takes boots on the ground.">Land to prospect</button>';
     }
     const atlasRow =
       '<div class="atlasrow">'+
@@ -5510,7 +5587,7 @@ function renderPanel(p, isLocked){
         '<button class="aico lfav'+(_favOn?' on':'')+'" data-act="fav" data-guide="atlas" data-tip="'+(_favOn?'Remove favorite':'Favorite \u2014 also saves to your Star Atlas')+'">'+(_favOn?'\u2605':'\u2606')+'</button>'+
         '<button class="aico lhome'+(_homeOn?' on':'')+'" data-act="home" data-guide="atlas" data-tip="'+(_homeOn?'Clear home':'Set as home \u2014 also saves to your Star Atlas')+'">\u2302</button>'+
       '</div>';
-    const btn = glance ? '' : atlasRow + conqBtn + mineBtn +
+    const btn = glance ? '' : atlasRow + conqBtn + landBtn + mineBtn +
       (d.where ? '<button class="act" data-act="share" data-guide="codes" data-tip="Copy a code — friends land on this exact world">⇪ Share this discovery</button>' : '');
     /* actions live at the TOP of the body (1.1.2): on phones the old
        bottom placement put "+ Add to Star Atlas" below the fold — a
@@ -5530,11 +5607,20 @@ function renderPanel(p, isLocked){
       panelEl.style.boxShadow='';
     }
     panelEl.style.display='block';
+    _panelDirty=true;
   }
-  const _tb=document.getElementById('topbar');
-  const _topMin=(W<=700)?(((_tb&&_tb.offsetHeight)||118)+8):64;
-  panelEl.style.maxHeight=Math.max(200, H - _topMin - 14)+'px';
-  const pw=panelEl.offsetWidth, ph=panelEl.offsetHeight;
+  /* measure only when content or viewport changed — the old per-frame
+     maxHeight write + offsetWidth/Height reads forced a synchronous
+     layout every frame a card was visible (v1.2 heat pass) */
+  const _vp=W+'|'+H+'|'+document.body.className;
+  if(_panelDirty || _panelVP!==_vp){
+    _panelDirty=false; _panelVP=_vp;
+    const _tb=document.getElementById('topbar');
+    _panelTopMin=(W<=700)?(((_tb&&_tb.offsetHeight)||118)+8):64;
+    panelEl.style.maxHeight=Math.max(200, H - _panelTopMin - 14)+'px';
+    _panelW=panelEl.offsetWidth; _panelH=panelEl.offsetHeight;
+  }
+  const _topMin=_panelTopMin, pw=_panelW, ph=_panelH;
   let ax, ay;
   if(st.mode==='surface'){ ax=16; ay=_topMin; }
   else if(isLocked && _frozenFor===d.logId && _frozenPos){
@@ -5548,8 +5634,12 @@ function renderPanel(p, isLocked){
     if(isLocked){ _frozenFor=d.logId; _frozenPos={x:ax, y:ay}; }
     else { _frozenFor=null; }
   }
-  panelEl.style.left=ax+'px'; panelEl.style.top=ay+'px';
-  panelRect={x:ax, y:ay, w:pw, h:ph};
+  if(ax!==_panelAX || ay!==_panelAY){
+    _panelAX=ax; _panelAY=ay;
+    panelEl.style.left=ax+'px'; panelEl.style.top=ay+'px';
+  }
+  if(!panelRect) panelRect={x:0,y:0,w:0,h:0};
+  panelRect.x=ax; panelRect.y=ay; panelRect.w=pw; panelRect.h=ph;
 }
 /* add / remove via the panel button */
 panelEl.addEventListener('click', e=>{
@@ -5581,7 +5671,8 @@ panelEl.addEventListener('click', e=>{
         const _h0=(+_sc.genome.hurt)||0;
         if(_h0+_w>=1){
           const _nm=_sc.name;
-          removeFromCodex(_sc.id); scoutId=null;
+          scoutId=null;               /* before removal — one toast, not two */
+          removeFromCodex(_sc.id);
           if(codexOpen) renderCodex();
           toast('☠ Scout lost', _nm+' took the strike meant for you — and had nothing left. It is gone.');
         } else {
@@ -5611,7 +5702,13 @@ panelEl.addEventListener('click', e=>{
   }
   const b=e.target.closest('[data-act]');
   if(!b || !_lastDesc) return;
-  if(b.dataset.act==='landcta'){ toast('⛳ Landing required','Zoom all the way into this world — planetfall turns your orbital survey into a ground survey and opens its veins.'); return; }
+  if(b.dataset.act==='landcta'){
+    /* the button LANDS — the toast is only the fallback when the planet
+       isn't in the current system view (e.g. a card left locked mid-travel) */
+    if(_lastDesc.planetSeed!=null && flyDown(_lastDesc.planetSeed)) return;
+    toast('Landing','Zoom all the way into this world — planetfall turns your orbital survey into a ground survey.');
+    return;
+  }
   if(b.dataset.act==='share'){ shareWhere(_lastDesc); return; }
   if(b.dataset.act==='conq'){ conquerPlanet(_lastDesc); return; }
   if(b.dataset.act==='harv'){ doHarvest(_lastDesc); return; }
@@ -6895,7 +6992,14 @@ function doSave(){
       view:whereOfView(),
       hp:hp, pstats:pstats, fs:fsMode, tone:toneMode, font:fontMode, snd:sndOn?1:0, fx:fxOn?1:0, shake:shakeOn?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
       vol:Math.round(sfxVol*100), rm:motionMode, cx:cardExpand,
-      land:[...landed].slice(-2000), scout:scoutId, landings:stats.landings||0,
+      land:(()=>{ /* union in settled/mined worlds so cap eviction can never
+        re-hide a census you demonstrably hold (review catch); insertion
+        order keeps oldest-first eviction */
+        const _l=new Set(landed);
+        for(const k of conquered.keys()) _l.add(k);
+        for(const k of mined.keys()) _l.add(k);
+        return [..._l].slice(-4000); })(),
+      scout:scoutId, landings:stats.landings||0,
       notifs:notifications.slice(0,50),
       me:explorerName,
       essence:essence,
@@ -7011,6 +7115,9 @@ function loadSave(){
       for(const id of logMap.keys()){ if(typeof id==='string' && id[0]==='p'){ const n=+id.slice(1); if(Number.isFinite(n)) landed.add(n); } }
       for(const k of conquered.keys()) landed.add(k);
       for(const k of mined.keys()) landed.add(k);
+      /* bioscanned worlds too — the saved Atlas is capped at 120, but
+         surveyedSet is the veteran's real footprint (review catch) */
+      for(const s of surveyedSet) landed.add(s);
     }
     if(data.prime && typeof data.prime==='object'){ for(const k in data.prime) if(SIG_IDS.includes(k)) primeFill[k]=data.prime[k]; }
     frontierUnlocked=!!data.frontier; frontierEnding=data.ending||null;
@@ -8136,6 +8243,15 @@ function _cineNext(){
    ---------------------------------------------------------------- */
 function removeFromCodex(id){
   codex.delete(id);
+  /* if the departed was the field scout, say so — a stale "Scouting ✓"
+     while hostile scans quietly hit the player again is a trap (review
+     catch: breeding, fatal meals, lost conquests and training cleanup all
+     pass through here) */
+  if(scoutId===id){
+    scoutId=null;
+    toast('Scout stands down','Your field scout is gone from the Compendium — hostile bioscans risk your own HP again.');
+    queueSave();
+  }
   codexCountEl.textContent=codex.size;
   if(codexOpen) renderCodex();
 }
@@ -8488,7 +8604,7 @@ const GUIDE=[
  {id:'zoom', t:'Flying the universe', k:'zoom pan pinch scroll drag modes universe galaxy system surface navigate controls', body:
   '<p>The whole cosmos is one continuous view. <b>Pinch or scroll to zoom, drag to pan.</b> Zooming dives through four scales: <em>universe → galaxy → star system → planet surface</em> — and zooming out climbs back up. Everything you can see, you can visit.</p><ul><li>Tap any object to open its <b>survey card</b>; tap it again (or tap elsewhere) to release.</li><li>On a surface, you walk the world itself — the survey card stays pinned.</li><li>Travel beyond your charted frontier is gated — see <span data-gt="regions">Frontier regions</span>.</li></ul>'},
  {id:'survey', t:'Survey cards', k:'survey card panel tap inspect atmosphere climate water gravity descriptor lock pin', body:
-  '<p>Knowing a world comes in three acts. <b>Glance</b>: hover (or approach) and the card shows its long-range reads — color class, atmosphere, water signatures, whispers of life. <b>Orbital survey</b>: tap to lock the card and the instruments speak — environment, biosphere, signals. <b>Ground survey</b>: zoom all the way in and <b>land</b> — planetfall opens the census of any civilization and the mineral veins of dead worlds. Every line is generated from the object’s seed, so <b>your survey matches every other explorer’s</b>.</p><ul><li>Tapping <b>locks</b> the card in place so you can press its buttons while the object drifts.</li><li>A planet&#8217;s card leads with its actions and headlines; the <b>🌍 Environment</b> chevron unfolds the full readings, and a civilization&#8217;s headline unfolds its census. Cards remember whether you like them open or folded.</li><li>An organized world announces itself from orbit as <b>⟁ signals</b> — but you must land to make contact.</li><li>Worlds with a biosphere show <b>🔬 Discover Life</b> — see <span data-gt="discover">Discovering life</span>.</li><li>The bookmark row saves the place — see <span data-gt="atlas">The Star Atlas</span>.</li></ul>'},
+  '<p>Knowing a world comes in three acts. <b>Glance</b>: on a computer, hovering shows the long-range reads — color class, atmosphere, water signatures, whispers of life (on a phone your tap goes straight to the survey). <b>Orbital survey</b>: tap to lock the card and the instruments speak — environment, biosphere, signals. <b>Ground survey</b>: <b>land</b> — press the card&#8217;s Land button or zoom all the way in; planetfall opens the census of any civilization and the mineral veins of dead worlds. Every line is generated from the object’s seed, so <b>your survey matches every other explorer’s</b>.</p><ul><li>Tapping <b>locks</b> the card in place so you can press its buttons while the object drifts.</li><li>A planet&#8217;s card leads with its actions and headlines; the <b>Environment</b> row&#8217;s <b>expand</b> pill unfolds the full readings, and a civilization&#8217;s headline unfolds its census. Cards remember whether you like them open or folded.</li><li>An organized world announces itself from orbit as <b>⟁ signals</b> — but you must land to make contact.</li><li>Worlds with a biosphere show <b>Discover Life</b> — see <span data-gt="discover">Discovering life</span>.</li><li>The bookmark row saves the place — see <span data-gt="atlas">The Star Atlas</span>.</li></ul>'},
  {id:'search', t:'Search', k:'search box find discoveries paste code lookup', body:
   '<p>The search box (top bar) hunts across <b>everything you’ve already discovered</b>: Atlas places, Compendium species, even cosmic events you’ve witnessed. It also accepts pasted codes:</p><ul><li><b>CF1-…</b> world codes — jump straight to a friend’s discovery.</li><li><b>CFB-…</b> creature codes — load a friend’s creature for a duel.</li></ul><p>See <span data-gt="codes">Share codes</span>.</p>'},
  {id:'codes', t:'Share codes (CF1 / CFB)', k:'share code link friend cf1 cfb copy multiplayer social', body:
@@ -8500,7 +8616,7 @@ const GUIDE=[
 ]},
 {icon:'🧬', cat:'Life & the Compendium', blurb:'Kingdoms, discovery, rarity, specimen cards', topics:[
  {id:'discover', t:'Discovering life', k:'discover life scan bioscan species danger wound hp catalogue', body:
-  '<p>Living worlds show <b>🔬 Discover Life</b> on their survey card. Scanning is a deliberate act — and on hostile worlds it has teeth: the danger percentage shown is your chance of being <b>wounded by wildlife mid-scan</b> (fiercer apex fauna and furnace worlds are deadlier). The scan always completes — you earned it.</p><ul><li>Every species found lands in your <b>Compendium</b> automatically.</li><li>Or send a beast ahead: name a <b>🐾 Field Scout</b> on any of your fauna&#8217;s cards and it takes the hit in your place — wounds and all, mended the usual way with ♥ loved flora. A scout with nothing left is <b>lost forever</b>.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li><b>Conquered worlds scan safely</b> — see <span data-gt="conquest">Conquest</span>.</li></ul>'},
+  '<p>Living worlds show <b>Discover Life</b> on their survey card. Scanning is a deliberate act — and on hostile worlds it has teeth: the danger percentage shown is your chance of being <b>wounded by wildlife mid-scan</b> (fiercer apex fauna and furnace worlds are deadlier). The scan always completes — you earned it.</p><ul><li>Every species found lands in your <b>Compendium</b> automatically.</li><li>Or send a beast ahead: press <b>Scout</b> on any of your fauna&#8217;s cards to name it your <b>Field Scout</b> — it takes the hit in your place, wounds and all, mended the usual way with ♥ loved flora. A scout with nothing left is <b>lost forever</b>.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li><b>Conquered worlds scan safely</b> — see <span data-gt="conquest">Conquest</span>.</li></ul>'},
  {id:'kingdoms', t:'The four kingdoms', k:'kingdom microbe flora fauna fungi realm biome classification', body:
   '<p>All life belongs to one of four kingdoms — <b>🦠 Microbe, 🌿 Flora, 🍄 Fungi, 🐾 Fauna</b> — and is shelved in the Compendium by realm (Land Fauna, Aquatic Fauna, Colonial Life…). Kingdom decides what a creature can do:</p><ul><li><b>Fauna</b> fight duels, defend worlds, and can be fed.</li><li><b>Flora</b> are medicine and meals — eaten by you or fed to beasts.</li><li>All kingdoms can <b>breed</b> within their own kind.</li></ul>'},
  {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique mythic celestial primordial transcendent empyrean eternal omnipotent deep spectrum summit color', body:
@@ -8550,7 +8666,7 @@ const GUIDE=[
  {id:'stardust', t:'Stardust', k:'stardust essence currency economy breeding odds boost earn', body:
   '<p>☄ Stardust is the expedition’s soft currency. Lifetime Stardust earned <b>passively raises your breeding odds</b> (+1% per 50 earned, up to +15%). Three faucets:</p><ul><li><b>⛏ Harvests</b> from settled worlds — see <span data-gt="harvest">Harvesting</span>.</li><li><b>Spoils of Conquest</b> — every world you settle pays out (rarer worlds pay more).</li><li><b>Rare Find Bonus</b> — first discovery of any Legendary+ species.</li></ul>'},
  {id:'harvest', t:'Harvesting', k:'harvest hourly cooldown settled world replenish stardust', body:
-  '<p>Every settled world can be <b>⛏ harvested for Stardust once per hour</b> (rarer worlds yield more). The button lives on the world’s survey card — “🏴 Settled — replenishing” means come back later. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
+  '<p>Every settled world can be <b>harvested for Stardust once per hour</b> (rarer worlds yield more). The button lives on the world’s survey card — “Settled — replenishing” means come back later. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
  {id:'mining', t:'Mining & the Cargo hold', k:'mine mining elements minerals deposits cargo hold dead lifeless world vein iron gold prismatium', body:
   '<p><b>Dead worlds carry the elements.</b> Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and <b>rarer worlds hide richer veins</b>, up to exotics like Voidglass and Prismatium.</p><ul><li><b>Prospecting takes boots on the ground</b>: zoom all the way into a lifeless world to land — planetfall is a <b>ground survey</b>, and the ⛏ Mine Deposits button opens with it. (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li>Mining is hourly per world, like harvests.</li><li>Everything lands in your <b>🧰 Cargo hold</b> (right rail — it appears after your first mine).</li><li>Spend elements + ☄ Stardust at the <b>Research bench</b> inside the Cargo hold — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
  {id:'research', t:'Research & ships', k:'research tech technology bench drive ship hull scanner lab fusion antimatter warp travel distance', body:
@@ -8774,18 +8890,22 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.1.2';
+const GAME_VERSION='1.2';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
 {v:'1.2', title:'The Discovery Arc', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
-  '<b>Knowing a world now comes in three acts.</b> A <b>glance</b> shows what a telescope sees — color class and long-range reads (☁ atmosphere, 🌊 water signatures, 🧬 biosignatures, ⟁ signals). An <b>orbital survey</b> (tap) reads the environment and biosphere. And <b>planetfall</b> completes the picture: land on a world to run its <b>ground survey</b>.',
+  '<b>Knowing a world now comes in three acts.</b> A <b>glance</b> shows what a telescope sees — color class and long-range reads: atmosphere, water signatures, biosignatures, ⟁ signals (hover, on a computer; on a phone your tap goes straight to the survey). An <b>orbital survey</b> (tap) reads the environment and biosphere. And <b>planetfall</b> completes the picture: land on a world to run its <b>ground survey</b>.',
+  '<b>Land buttons</b> — unlanded worlds now carry one on their card: <b>Land — make contact</b> on civilized worlds, <b>Land to prospect</b> on dead ones. One press flies you down; zooming in by hand still works.',
   '<b>Civilizations must be met, not scanned</b> — from orbit an organized world is only ⟁ signals; land to make contact and read its census: tech era, local calendar, population.',
   '<b>Prospecting takes boots on the ground</b> — a dead world&#8217;s ⛏ Mine Deposits opens once you&#8217;ve landed on it. 🛰 Deep Scanners still read the veins from orbit.',
   'Worlds you&#8217;ve stood on wear a <b>Ground-surveyed</b> mark — and every world you charted, settled or mined before this update counts as ground-surveyed already: nothing you knew is re-hidden.',
   '<b>Landing pays</b> — your first footfall on any world collects field samples: a pinch of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration now stocks the Research bench all by itself.',
-  '<b>🐾 Field Scouts</b> — name one of your fauna the expedition&#8217;s scout (its card → 🐾 Scout) and it takes the hit when a bioscan turns hostile, through the same wounds-and-mending life every creature lives. A scout with nothing left is lost forever. Hunt tougher beasts to scan deadlier worlds.',
+  '<b>Field Scouts</b> — name one of your fauna the expedition&#8217;s scout (press <b>Scout</b> on its card) and it takes the hit when a bioscan turns hostile, through the same wounds-and-mending life every creature lives. A scout with nothing left is lost forever. Hunt tougher beasts to scan deadlier worlds.',
+ ]],
+ ['🛠 Under the Hood', [
+  '<b>A cool-down for hot phones</b>: the star field is painted once instead of every frame, survey readouts stop recomputing sixty times a second, the card layout no longer thrashes, and phones render at a tuned resolution. Same universe, cooler hands, longer batteries.',
  ]],
  ['🎨 UI Enhancements', [
   'Survey-card headings dropped their emoji and line up cleanly again; the fold rows now say <b>expand</b> / <b>close</b> instead of a tiny triangle.',
