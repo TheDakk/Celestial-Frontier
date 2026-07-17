@@ -90,6 +90,51 @@ systems-check 19/19):
 - Guide survey topic rewritten around the three acts; mining topic updated;
   RELEASES[0] = fresh v1.2 "The Discovery Arc" entry (bulletin-leak smoke
   check asserts it stays invisible until the bump).
+CARD POLISH BATCH 2 (Nick's screenshot, 2026-07-16 — BUILT, smoke 126/126):
+- k-column emojis REMOVED (🌍/🛰/⛏/👑 broke the 74px label column
+  alignment); ⟁ Signal keeps its glyph (brand language, monochrome).
+- Fold affordance is now the WORD "expand"/"close" in a tiny pill (CSS
+  ::after swap on .grp.open — in-place toggle needs no rebuild). The bare
+  ▸ triangle read as decoration.
+- BUG FOUND IN NICK'S SCREENSHOT & FIXED: Earth wore a ⛏ Mine Deposits
+  button — seed 133 hardcodes flora/fauna rows without populating
+  d.species, so the lifeless-world test misfired. Now excluded (the only
+  living world that could be mined). Flagged to Nick — revert if he wants
+  Earth minable as a starter resource.
+
+## v1.2 SYSTEMS INTERTWINING — PROPOSED (2026-07-16), AWAITING NICK'S PICK
+
+Nick's direction: systems should play with each other; discovery with self
+OR fauna; addicting hunt for the next best fauna/flora/world; mining feeds
+future shipbuilding. Claude's proposal (three features, build order B→A→C):
+A. SURVEY COMPANION (fauna join discovery): a chosen Compendium creature
+   absorbs hostile-bioscan damage instead of the explorer, using the
+   EXISTING injury/condition/mend systems; its grade adds a small rare-find
+   field bonus. Loop: hunt tougher fauna → scan riskier worlds → rarer
+   finds. (No XP changes in v1 — power stays through wins.)
+B. GROUND-SURVEY YIELD (landing pays): FIRST landing on any world yields a
+   deterministic element/stardust trace scaled by type + spectral tier
+   (living worlds one-time samples; dead worlds keep full mining). Completes
+   the discovery arc's act 3 with a reward; funnels everything into the
+   research/ship track. Must be a pure seeded function — no Math.random.
+C. EXPEDITION CHARTERS (the next-hunt driver): 3 rotating deterministic
+   goals (epoch-week seeded, same for all players) — "ground-survey an ice
+   world in a frontier region", "catalogue a Legendary+ fauna", "mine 3
+   metal worlds" — paying stardust/elements. The compulsion scaffold that
+   points every system at the others.
+PULLED FORWARD RECOMMENDATION: the LAND button design call (was a v1.1
+design call) belongs IN v1.2 — landing now gates content, and phone
+double-tap-to-land remains awkward (first tap locks a card over the point).
+
+## MOVED v1.2 → v1.3 (Nick, 2026-07-16: "move that to v1.3")
+
+Element mini-SVG icons · JOB 2 curated raster art pack (style bible first) ·
+guardian unique battle intros · generative music (hand-rolled seeded Web
+Audio) · tutorial restructure (collapse chrome steps 3-7) · new-player
+bulletin placement call · minor warts list (#sharelink focus, #namein
+maxlength, "Explorer" re-prompt, TOUCH constant, Notifications toggle
+placement). v1.2 stays focused: Discovery Arc + systems intertwining.
+
 STILL OPEN FOR v1.2 (design + build):
 - Conquest/Discover Life deliberately NOT landing-gated (no double gates).
 - Possible: landing achievement(s), first-footfall discovery record,

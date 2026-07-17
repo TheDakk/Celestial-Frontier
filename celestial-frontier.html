@@ -573,8 +573,14 @@
   #panel .ghead:hover .k{color:var(--ink)}
   #panel .ghead .gdig{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #panel .grp.open .ghead .gdig{white-space:normal;overflow:visible}
-  #panel .ghead .chev{flex:none;align-self:center;font-size:9px;color:var(--faint);transition:transform .18s}
-  #panel .grp.open .chev{transform:rotate(90deg)}
+  /* the affordance is a WORD, not an icon — a bare triangle read as decoration
+     (Nick's screenshot); the label swaps to "close" via CSS so the in-place
+     toggle needs no rebuild */
+  #panel .ghead .chev{flex:none;align-self:center;font:600 8.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;
+    color:var(--faint);border:1px solid var(--line);border-radius:999px;padding:2px 8px;white-space:nowrap}
+  #panel .ghead:hover .chev{color:var(--ink);border-color:var(--glass-brd)}
+  #panel .ghead .chev::after{content:'expand'}
+  #panel .grp.open .ghead .chev::after{content:'close'}
   #panel .gbody{display:none;padding-left:7px;border-left:1px solid var(--line);margin:2px 0 8px 2px}
   #panel .grp.open .gbody{display:block}
   #panel .tag{display:inline-block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
@@ -5361,7 +5367,7 @@ function renderPanel(p, isLocked){
         if(/liquid|ocean|river|sea/i.test(_val('Water'))) reads.push('🌊 liquid-water signature');
         if(_val('Life') && !/^(None|Lifeless|Sterile)/i.test(_val('Life'))) reads.push('🧬 biosignatures');
         if((civHead && !/^None/.test(civHead[1])) || sigRow) reads.push('⟁ structured signals');
-        rows+='<div class="row"><span class="k">🛰 Long-range</span><span class="v">'+
+        rows+='<div class="row"><span class="k">Long-range</span><span class="v">'+
           (reads.length?reads.join(' · '):'a quiet, dark world')+'</span></div>';
         rows+='<div class="row"><span class="v" style="color:var(--faint)">'+(TOUCH?'Tap':'Click')+' to run an orbital survey.</span></div>';
       } else {
@@ -5373,8 +5379,8 @@ function renderPanel(p, isLocked){
           const _eo=!!(cardExpand&1);
           rows+='<div class="grp'+(_eo?' open':'')+'"><div class="row ghead" data-gtoggle="1" role="button" tabindex="0" '+
             'data-tip="The full environmental survey — atmosphere, water, weather and more">'+
-            '<span class="k">🌍 Environment</span><span class="v gdig">'+[_cl,_gv].filter(Boolean).join(' · ')+'</span>'+
-            '<span class="chev">▸</span></div><div class="gbody">'+envRows.map(rowHtml).join('')+'</div></div>';
+            '<span class="k">Environment</span><span class="v gdig">'+[_cl,_gv].filter(Boolean).join(' · ')+'</span>'+
+            '<span class="chev"></span></div><div class="gbody">'+envRows.map(rowHtml).join('')+'</div></div>';
         }
         if(civHead){
           if(!grounded && !/^None/.test(civHead[1])){
@@ -5386,7 +5392,7 @@ function renderPanel(p, isLocked){
             civHtml='<div class="grp'+(_co?' open':'')+'"><div class="row civ ghead" data-gtoggle="2" role="button" tabindex="0" '+
               'data-tip="The census — tech era, local calendar and population">'+
               '<span class="k">'+civHead[0]+'</span><span class="v gdig">'+civHead[1]+'</span>'+
-              '<span class="chev">▸</span></div><div class="gbody">'+civDet.map(rowHtml).join('')+'</div></div>';
+              '<span class="chev"></span></div><div class="gbody">'+civDet.map(rowHtml).join('')+'</div></div>';
           } else civHtml=rowHtml(civHead);               /* wilderness — one line, nothing to expand */
         }
         if(sigRow) civHtml+=rowHtml(sigRow);
@@ -5440,7 +5446,7 @@ function renderPanel(p, isLocked){
       const _gd=c?null:guardianFor(d.planetSeed);   /* fallen guardians stay fallen — settled worlds show none */
       if(_gd){
         const _gS=battleStats(_gd.genome), _gT=GRADE_TIERS[_gS.tier];
-        rows+='<div class="splabel"><span class="k">👑 Apex Guardian</span>'+
+        rows+='<div class="splabel"><span class="k">Apex Guardian</span>'+
           '<span class="v" style="color:'+_gT.hex+'">'+_gd.name+' — '+_gT.name+' · Power '+_gS.total+'</span></div>';
         conqBtn='<button class="act" data-act="conq" data-guide="guardians" data-tip="A named, one-of-a-kind summit-grade apex rules this world — defeat it in conquest and it joins your Compendium">👑 Challenge '+_gd.name+'</button>';
       } else if(!c){
@@ -5455,12 +5461,15 @@ function renderPanel(p, isLocked){
        takes boots on the ground (v1.2); the deep scanner (scan1) reads the
        veins from orbit, but the drills still need a surface under them. */
     let mineBtn='';
-    if(!glance && d.planetSeed!=null && (!d.species || !d.species.length) && d.ptype){
+    /* seed 133 excluded: Earth's card hardcodes its flora/fauna rows without
+       populating d.species, so the lifeless test misfired and home wore a
+       Mine button no other living world gets (Nick's screenshot, v1.2) */
+    if(!glance && d.planetSeed!=null && d.planetSeed!==133 && (!d.species || !d.species.length) && d.ptype){
       const _mt=mined.get(d.planetSeed);
       const _mReady=!_mt || (Date.now()-_mt>=MINE_CD);
       if(techOwned.has('scan1') || grounded){
         const _dp=depositsFor(d.planetSeed, d.ptype, d.designation?d.designation.tier:0);
-        rows+='<div class="splabel"><span class="k">⛏ Mineral veins</span><span class="v">'+_dp.map(s=>ELEM_NAME[s]||s).join(' · ')+'</span></div>';
+        rows+='<div class="splabel"><span class="k">Mineral veins</span><span class="v">'+_dp.map(s=>ELEM_NAME[s]||s).join(' · ')+'</span></div>';
       }
       mineBtn = grounded
         ? '<button class="act'+(_mReady?'':' in')+'" data-act="mine" data-guide="mining" data-tip="Dead worlds carry the elements — mine them hourly to stock your 🧰 Cargo for research.">'+
@@ -5482,7 +5491,7 @@ function renderPanel(p, isLocked){
     panelEl.innerHTML =
       '<div class="head">'+thumb+'<div class="htxt"><h3>'+d.title+'</h3><div class="sub">'+d.sub+'</div></div></div>'+
       '<div class="body">'+(btn?btn+'<div class="bdiv"></div>':'')+rows+
-      '<span class="tag">'+(st.mode==='surface'?'You are here':(glance?'🛰 Long-range glance':(d.planetSeed!=null&&landed.has(d.planetSeed)?'⛳ Ground-surveyed':'Procedural survey')))+'</span></div>';
+      '<span class="tag">'+(st.mode==='surface'?'You are here':(glance?'Long-range glance':(d.planetSeed!=null&&landed.has(d.planetSeed)?'Ground-surveyed':'Procedural survey')))+'</span></div>';
     /* the rarity color language: tint the whole card border by spectral designation */
     const gr=d.designation||d.grade;
     if(gr){
@@ -8713,7 +8722,13 @@ const RELEASES=[
   '<b>Knowing a world now comes in three acts.</b> A <b>glance</b> shows what a telescope sees — color class and long-range reads (☁ atmosphere, 🌊 water signatures, 🧬 biosignatures, ⟁ signals). An <b>orbital survey</b> (tap) reads the environment and biosphere. And <b>planetfall</b> completes the picture: land on a world to run its <b>ground survey</b>.',
   '<b>Civilizations must be met, not scanned</b> — from orbit an organized world is only ⟁ signals; land to make contact and read its census: tech era, local calendar, population.',
   '<b>Prospecting takes boots on the ground</b> — a dead world&#8217;s ⛏ Mine Deposits opens once you&#8217;ve landed on it. 🛰 Deep Scanners still read the veins from orbit.',
-  'Worlds you&#8217;ve stood on wear a <b>⛳ Ground-surveyed</b> mark — and every world you charted, settled or mined before this update counts as ground-surveyed already: nothing you knew is re-hidden.',
+  'Worlds you&#8217;ve stood on wear a <b>Ground-surveyed</b> mark — and every world you charted, settled or mined before this update counts as ground-surveyed already: nothing you knew is re-hidden.',
+ ]],
+ ['🎨 UI Enhancements', [
+  'Survey-card headings dropped their emoji and line up cleanly again; the fold rows now say <b>expand</b> / <b>close</b> instead of a tiny triangle.',
+ ]],
+ ['🐞 Bug Fixes', [
+  'Earth no longer offers <b>⛏ Mine Deposits</b> — it was the only living world in the universe you could strip-mine (a quirk of how home&#8217;s card is built). Dead worlds carry the elements; the home of humanity never did.',
  ]],
 ]},
 {v:'1.1.2', title:'Clear Signals', date:'July 2026', sections:[
