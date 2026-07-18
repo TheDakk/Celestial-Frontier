@@ -5929,6 +5929,7 @@ function hdGenesFor(g){
   const horn=(headTxt.includes('horn')||headTxt.includes('crest')||/crystal antlers/.test(trait))
     ?0.7+r()*0.4:(plan===11?1.0:(plan===10?0.5:0));
   return {bulk:clamp(0.62+sizeM*0.30+(S.vit/400)*0.30,0.6,1.7),
+    len:0.82+((g.size||2)%5)*0.09+((g.body||0)%4)*0.05,   /* body length dial */
     neck:0.3+((g.head||0)%5)*0.13,
     horn:horn,
     tail:0.35+((g.tail||0)%7)*0.09,
@@ -5946,12 +5947,15 @@ function hdBeastBare(G,seed){
      segmented crawlers ripple, stilts stand tall, squats hunker */
   const plan=G.plan===undefined?-1:G.plan;
   const serp=plan===4, tent=plan===3, seg=plan===5,
-        winged=plan===7||plan===14, squat=plan===13, stilt=plan===2||plan===12;
+        winged=plan===7||plan===14, squat=plan===13, stilt=plan===2||plan===12,
+        armored=plan===1, shelled=plan===6, crys=plan===8, gel=plan===9,
+        tusked=plan===10, radial=plan===15;
   const S=300,cv=document.createElement('canvas');cv.width=cv.height=S;
   const g=cv.getContext('2d'),r=mulberry32(seed>>>0);
   const sil=document.createElement('canvas');sil.width=sil.height=S;const sg2=sil.getContext('2d');
   sg2.fillStyle='#fff';sg2.strokeStyle='#fff';sg2.lineCap='round';
-  const n=serp?11:(seg?9:7),x0=S*0.24,x1=S*0.70,baseY=S*(squat?0.60:(stilt?0.48:0.56));
+  const L9=G.len||1;
+  const n=serp?11:(seg?9:7),x0=S*(0.47-0.23*L9),x1=S*(0.47+0.23*L9),baseY=S*(squat?0.60:(stilt?0.48:0.56));
   let hips=[0,0],shoulders=[0,0];
   if(winged){ /* membranes first — they take the hide texture with the body */
     for(const sgn of [-1,1]){
@@ -5962,6 +5966,14 @@ function hdBeastBare(G,seed){
       sg2.closePath();sg2.fill();sg2.globalAlpha=1;
     }
   }
+  if(radial){
+    /* radially symmetric: a ring of lobes, no head/tail/legs at all */
+    for(let li3=0;li3<7;li3++){const a3=li3/7*TAU;
+      sg2.beginPath();sg2.ellipse(S*0.5+Math.cos(a3)*S*0.13*G.bulk,baseY-S*0.06+Math.sin(a3)*S*0.10*G.bulk,
+        S*0.075*G.bulk,S*0.05*G.bulk,a3,0,7);sg2.fill();}
+    sg2.beginPath();sg2.arc(S*0.5,baseY-S*0.06,S*0.115*G.bulk,0,7);sg2.fill();
+    hips=[S*0.42,baseY];shoulders=[S*0.58,baseY-S*0.04];
+  } else
   for(let i=0;i<n;i++){const t=i/(n-1);
     const cxp=x0+(x1-x0)*t,
       cyp=baseY-(serp?Math.sin(t*9.4)*S*0.075:Math.sin(t*3.14)*S*0.05),
@@ -5971,7 +5983,20 @@ function hdBeastBare(G,seed){
   if(tent){ /* a rounder mantle over the chain */
     sg2.beginPath();sg2.ellipse(S*0.5,baseY-S*0.06,S*0.17*G.bulk,S*0.13*G.bulk,0,0,7);sg2.fill();
   }
-  const hp={x:x1+S*(0.06+G.neck*0.07),y:baseY-S*(0.10+G.neck*0.12)};
+  if(shelled){ /* the great dome rides the back */
+    sg2.beginPath();sg2.ellipse(S*0.47,baseY-S*0.075,S*0.20*G.bulk*L9,S*0.135*G.bulk,0,Math.PI,0,false);sg2.fill();
+  }
+  if(gel){ /* soft blob swallowing the chain */
+    sg2.beginPath();sg2.ellipse(S*0.47,baseY-S*0.04,S*0.20*G.bulk*L9,S*0.12*G.bulk,0,0,7);sg2.fill();
+  }
+  if(crys){ /* crystal spikes along the spine */
+    for(let cs2=0;cs2<5;cs2++){const cxx=x0+(x1-x0)*(0.16+cs2*0.17);
+      const chh=S*(0.05+((cs2%2)?0.035:0.015))*G.bulk;
+      const cyy=baseY-Math.sin((0.16+cs2*0.17)*3.14)*S*0.05-S*0.055*G.bulk;
+      sg2.beginPath();sg2.moveTo(cxx-S*0.022,cyy);sg2.lineTo(cxx,cyy-chh);sg2.lineTo(cxx+S*0.022,cyy);sg2.closePath();sg2.fill();}
+  }
+  const hp=radial?{x:S*0.5,y:baseY-S*0.06}:{x:x1+S*(0.06+G.neck*0.07),y:baseY-S*(0.10+G.neck*0.12)};
+  if(!radial){
   sg2.beginPath();sg2.moveTo(x1-8,baseY-10);
   sg2.quadraticCurveTo(x1+S*0.05,baseY-S*0.10*G.neck-8,hp.x,hp.y);
   sg2.lineWidth=S*0.05*Math.max(0.7,G.bulk*0.9);sg2.stroke();
@@ -5985,6 +6010,7 @@ function hdBeastBare(G,seed){
   sg2.beginPath();sg2.moveTo(x0+7,baseY+3);
   sg2.quadraticCurveTo(x0-S*0.10,baseY-S*0.02,x0-S*0.14,baseY-S*(0.06+G.tail*0.08));
   sg2.lineWidth=S*0.024;sg2.stroke();
+  }   /* end !radial head/neck/tail */
   let feetMax=0;
   const leg=(sx2,front)=>{const lift=S*((squat?0.11:0.20)+G.leg*(stilt?0.14:0.06));
     const kx=sx2+(front?6:-5)+(r()-0.5)*6,ky=baseY+lift*0.55,fx3=kx+(front?8:-6),fy3=baseY+lift+S*0.03;
@@ -5993,7 +6019,7 @@ function hdBeastBare(G,seed){
     sg2.beginPath();sg2.moveTo(sx2,baseY+S*0.02);sg2.lineTo(kx,ky);sg2.lineTo(fx3,fy3);sg2.stroke();
     sg2.beginPath();sg2.ellipse(sx2,baseY+S*0.03,S*0.03*G.bulk,S*0.042*G.bulk,0,0,7);sg2.fill();
     sg2.beginPath();sg2.ellipse(fx3+2,fy3+2,S*0.024,S*0.01,0,0,7);sg2.fill();};
-  if(serp){ if(baseY+S*0.02>feetMax) feetMax=baseY+S*0.02; }
+  if(serp||radial){ if(baseY+S*0.06>feetMax) feetMax=baseY+S*0.06; }
   else if(tent){ /* hanging arms instead of legs */
     for(let ti2=0;ti2<6;ti2++){
       const txx=S*(0.36+ti2*0.055);
@@ -6027,14 +6053,41 @@ function hdBeastBare(G,seed){
   shade(hips[0],hips[1]+S*0.02,S*0.06,S*0.07,0.35);
   shade(shoulders[0],shoulders[1]+S*0.01,S*0.05,S*0.06,0.3);
   tg.globalCompositeOperation='destination-in';tg.drawImage(sil,0,0);
+  if(gel) g.globalAlpha=0.82;   /* gelatinous bodies read translucent */
   g.drawImage(tex,0,0);
+  g.globalAlpha=1;
   const e=document.createElement('canvas');e.width=e.height=S;const eg=e.getContext('2d');
   eg.drawImage(sil,0,0);eg.globalCompositeOperation='destination-out';eg.drawImage(sil,2,4);
   eg.globalCompositeOperation='source-in';eg.fillStyle=G.rim;eg.fillRect(0,0,S,S);
-  g.save();g.globalCompositeOperation='lighter';g.globalAlpha=0.5;g.drawImage(e,-1,-2);g.restore();
-  g.fillStyle='#0a0c12';g.beginPath();g.arc(hp.x+S*0.012,hp.y-S*0.008,S*0.012,0,7);g.fill();
-  g.fillStyle=G.eye;g.beginPath();g.arc(hp.x+S*0.013,hp.y-S*0.008,S*0.007,0,7);g.fill();
-  g.fillStyle='#fff';g.beginPath();g.arc(hp.x+S*0.016,hp.y-S*0.011,S*0.0026,0,7);g.fill();
+  g.save();g.globalCompositeOperation='lighter';g.globalAlpha=crys?0.75:0.5;g.drawImage(e,-1,-2);g.restore();
+  if(gel) for(let og=0;og<3;og++){ /* organelles adrift inside */
+    g.fillStyle=G.eye;g.globalAlpha=0.4;
+    g.beginPath();g.arc(S*(0.38+og*0.09)+(r()-0.5)*10,baseY-S*0.04+(r()-0.5)*12,S*(0.010+r()*0.008),0,7);g.fill();
+    g.globalAlpha=1;}
+  if(armored){ /* plate seams over the back */
+    g.strokeStyle='rgba(20,14,10,0.5)';g.lineWidth=3;
+    for(let pa=0;pa<4;pa++){const px9=x0+(x1-x0)*(0.18+pa*0.20);
+      g.beginPath();g.arc(px9,baseY-S*0.02,S*0.052*G.bulk,Math.PI*1.12,Math.PI*1.88);g.stroke();}
+  }
+  if(shelled){ /* whorl lines on the dome */
+    g.strokeStyle='rgba(20,14,10,0.45)';g.lineWidth=2;
+    for(let sa=1;sa<4;sa++){g.beginPath();
+      g.arc(S*0.47,baseY-S*0.075,S*0.20*G.bulk*L9*(1-sa*0.22),Math.PI,0);g.stroke();}
+  }
+  if(tusked&&!radial){ /* ivory curves from the jaw */
+    g.strokeStyle='#e8e2d0';g.lineWidth=S*0.012;g.lineCap='round';
+    g.beginPath();g.moveTo(hp.x+S*0.03,hp.y+S*0.02);
+    g.quadraticCurveTo(hp.x+S*0.075,hp.y+S*0.05,hp.x+S*0.092,hp.y+S*0.004);g.stroke();
+  }
+  if(radial){ /* eye-spots around the hub instead of a face */
+    for(let re2=0;re2<3;re2++){const ra3=-0.6+re2*0.6;
+      g.fillStyle='#0a0c12';g.beginPath();g.arc(hp.x+Math.cos(ra3)*S*0.06,hp.y+Math.sin(ra3)*S*0.045,S*0.009,0,7);g.fill();
+      g.fillStyle=G.eye;g.beginPath();g.arc(hp.x+Math.cos(ra3)*S*0.06,hp.y+Math.sin(ra3)*S*0.045,S*0.005,0,7);g.fill();}
+  } else {
+    g.fillStyle='#0a0c12';g.beginPath();g.arc(hp.x+S*0.012,hp.y-S*0.008,S*0.012,0,7);g.fill();
+    g.fillStyle=G.eye;g.beginPath();g.arc(hp.x+S*0.013,hp.y-S*0.008,S*0.007,0,7);g.fill();
+    g.fillStyle='#fff';g.beginPath();g.arc(hp.x+S*0.016,hp.y-S*0.011,S*0.0026,0,7);g.fill();
+  }
   cv._feetY=feetMax/S;
   return cv;
 }
@@ -6116,15 +6169,18 @@ function hdPortraitFauna(g){
   const bg=c2.createRadialGradient(S2*0.5,S2*0.42,20,S2*0.5,S2*0.5,S2*0.62);
   bg.addColorStop(0,HABG[hb]||'#10141c');bg.addColorStop(1,'#06070d');
   c2.fillStyle=bg;c2.fillRect(0,0,S2,S2);
+  if(G.apex||G.par){
+    /* the one-of-a-kinds look it (V12) — a molten aura BEHIND the beast,
+       not a drawn circle (Nick's call on the ring) */
+    c2.save();c2.globalCompositeOperation='lighter';
+    const au=c2.createRadialGradient(S2*0.5,S2*0.52,10,S2*0.5,S2*0.52,S2*0.42);
+    const ac2=G.apex?'255,196,90':'80,232,205';
+    au.addColorStop(0,'rgba('+ac2+',0.30)');au.addColorStop(0.6,'rgba('+ac2+',0.10)');au.addColorStop(1,'rgba('+ac2+',0)');
+    c2.fillStyle=au;c2.fillRect(0,0,S2,S2);c2.restore();
+  }
   const bcv=hdBeastBare(G,(g.seed^0x9A11)>>>0);
   c2.fillStyle='rgba(0,0,0,0.5)';c2.beginPath();c2.ellipse(S2*0.5,S2*0.80,S2*0.30,S2*0.045,0,0,7);c2.fill();
   c2.drawImage(bcv,S2*0.06,S2*0.10,S2*0.88,S2*0.88);
-  if(G.apex||G.par){ /* the one-of-a-kinds look it (V12) */
-    c2.strokeStyle=G.apex?'rgba(255,217,106,0.75)':'rgba(63,232,200,0.7)';
-    c2.lineWidth=2.2;c2.beginPath();c2.arc(S2*0.5,S2*0.5,S2*0.42,0,7);c2.stroke();
-    c2.strokeStyle=G.apex?'rgba(255,176,74,0.45)':'rgba(207,228,255,0.4)';
-    c2.lineWidth=1;c2.beginPath();c2.arc(S2*0.5,S2*0.5,S2*0.45,0,7);c2.stroke();
-  }
   const fg=c2.createLinearGradient(0,S2*0.7,0,S2);
   fg.addColorStop(0,'rgba(6,8,14,0)');fg.addColorStop(1,'rgba(6,8,14,0.55)');
   c2.fillStyle=fg;c2.fillRect(0,S2*0.7,S2,S2*0.3);
@@ -10741,7 +10797,7 @@ const RELEASES=[
  ['✨ New Features & Systems', [
   '<b>HD landing vistas (beta)</b> — Settings → Graphics → <b>Landing view: HD</b>. Planetfall opens a ground-level panorama built entirely from the world&#8217;s card: its biome, its civilization&#8217;s era, the local clock, the weather, auroras over magnetized worlds, and the world&#8217;s own creatures. Classic stays the default while the art grows.',
   '<b>No two worlds are the same painting anymore.</b> Every vista now rolls its own horizon, sun, river course, islands and flora — and every world grows its <b>own plant species</b>, usually chlorophyll-green but sometimes golden, copper, even violet. Rare wonders are out there: <b>rings arcing across the sky</b>, a <b>looming giant moon</b>, <b>bioluminescent shores</b>, aurora veils in colors beyond the green. The universe finally has more sights than any one expedition will see.',
-  '<b>HD creature portraits (beta, same switch)</b> — every body plan in the Compendium finally looks like its card reads: armored backs, stilt-riders, tentacled bells, crystal-faceted hides, gelatinous drifters; fur, scales, feathers and warts; crystal antlers and mirrored eyes where the card says so. <b>Apex Guardians wear a molten-gold ring, Paragons silver-teal.</b> Eyeless things are, at last, eyeless.',
+  '<b>HD creature portraits (beta, same switch)</b> — every body plan in the Compendium finally looks like its card reads: armored backs, stilt-riders, tentacled bells, crystal-faceted hides, gelatinous drifters; fur, scales, feathers and warts; crystal antlers and mirrored eyes where the card says so. <b>Apex Guardians glow inside a molten-gold aura, Paragons a silver-teal one.</b> Eyeless things are, at last, eyeless.',
   '<b>Weather comes in spells</b> — a world&#8217;s Weather row is its climate, not a life sentence. Rain showers pass, dust storms blow through, and the surface readout says <b>clear skies</b> between them. Snow country keeps its snow on the ground either way.',
  ]],
  ['🎨 UI Enhancements', [
