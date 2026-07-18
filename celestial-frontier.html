@@ -4211,10 +4211,17 @@ cv.addEventListener('pointerup', e=>{
       if(p.ringPick){ const rd=Math.abs(Math.hypot(p.sx-e.clientX,p.sy-e.clientY)-p.rr); if(rd<p.band && rd+1e4<bd){bd=rd+1e4; hit=p;} }
       else { const d=Math.hypot(p.sx-e.clientX, p.sy-e.clientY); if(d<p.r && d<bd){bd=d; hit=p;} }
     }
+    if(hit && !tutDone){
+      /* training locks only the lesson's own object (v1.3.9): during
+         find-earth a tap on Venus locked Venus's card, and it rode
+         along into later steps. Same predicate the hover gate uses. */
+      const s9=TUT_STEPS[_tutStep];
+      if(!(s9 && s9.pick && s9.pick(hit))) hit=null;
+    }
     if(hit){
       locked={ data:hit.data, kind:hit.kind, sx:hit.sx, sy:hit.sy };
       playSurveyPing();                  // the act of surveying answers back
-    } else {
+    } else if(tutDone){
       locked=null;                       // tapped empty space → release the lock
     }
   }
@@ -11960,10 +11967,15 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.3.8';
+const GAME_VERSION='1.3.9';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.3.9', title:'Eyes on the Lesson', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  'During Field Training, tapping a world that isn&#8217;t part of the lesson now does nothing — before, a stray tap in the find-Earth step could lock another planet&#8217;s card and carry it through the rest of training. Stray taps also no longer dismiss the lesson&#8217;s own card.'],
+ ],
+]},
 {v:'1.3.8', title:'The View Holds', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
   'Landing never leaves space now. The camera holds at approach framing — the planet hanging in the black — while the landing view tells the ground&#8217;s story. The old flat close-up is gone from the game entirely: mining, the census, samples and first contact all work right from orbit, exactly as before.',
