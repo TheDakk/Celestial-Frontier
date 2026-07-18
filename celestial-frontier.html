@@ -4676,15 +4676,26 @@ function decoSprite(dc){
     g.beginPath();g.arc(C,C,C*0.5,r()*TAU,r()*TAU+2.0);g.stroke();
   } else if(dc.k==='rem'){
     g.globalCompositeOperation='lighter';
-    for(let i=0;i<26;i++){  /* filamentary shell, not a clean circle */
-      const a=r()*TAU, rr2=C*(0.62+(r()-0.5)*0.16);
-      const ln=C*(0.08+r()*0.16);
-      g.strokeStyle='hsla('+(14+r()*26)+',90%,'+(56+r()*14)+'%,'+(0.16+r()*0.22).toFixed(3)+')';
-      g.lineWidth=0.8+r()*1.6;
-      g.beginPath();
-      g.moveTo(C+Math.cos(a)*(rr2-ln/2), C+Math.sin(a)*(rr2-ln/2));
-      g.lineTo(C+Math.cos(a+0.10+r()*0.12)*(rr2+ln/2), C+Math.sin(a+0.10+r()*0.12)*(rr2+ln/2));
-      g.stroke();
+    /* an expanding gas shell — warm puffs crowd a torn, uneven ring, the
+       way real remnants shred. No strokes, no clean circle: Nick's law,
+       everything that dies in space dies as a cloud (v1.3.5). */
+    for(let i=0;i<22;i++){
+      const a=r()*TAU, rr2=C*(0.58+(r()-0.5)*0.24);
+      const bx=C+Math.cos(a)*rr2, by=C+Math.sin(a)*rr2, br=C*(0.10+r()*0.16);
+      const hue=14+r()*26;
+      const ng=g.createRadialGradient(bx,by,0,bx,by,br);
+      ng.addColorStop(0,'hsla('+hue+',88%,'+(56+r()*14)+'%,'+(0.10+r()*0.14).toFixed(3)+')');
+      ng.addColorStop(1,'hsla('+hue+',88%,55%,0)');
+      g.fillStyle=ng;g.beginPath();g.arc(bx,by,br,0,TAU);g.fill();
+    }
+    /* cool wisps drifting free of the shell */
+    for(let i2=0;i2<8;i2++){
+      const a2=r()*TAU, d2=C*(0.28+r()*0.48);
+      const bx2=C+Math.cos(a2)*d2, by2=C+Math.sin(a2)*d2, br2=C*(0.05+r()*0.09);
+      const ng2=g.createRadialGradient(bx2,by2,0,bx2,by2,br2);
+      ng2.addColorStop(0,'hsla('+(200+r()*40)+',70%,72%,'+(0.05+r()*0.07).toFixed(3)+')');
+      ng2.addColorStop(1,'hsla(210,70%,70%,0)');
+      g.fillStyle=ng2;g.beginPath();g.arc(bx2,by2,br2,0,TAU);g.fill();
     }
     const core=g.createRadialGradient(C,C,0,C,C,C*0.12);
     core.addColorStop(0,'rgba(220,235,255,0.95)');core.addColorStop(1,'rgba(220,235,255,0)');
@@ -4692,6 +4703,78 @@ function decoSprite(dc){
   }
   _decoSpr.set(dc,cv);
   return cv;
+}
+/* v1.3.5 space dust — baked sprites for the death family. Everything that
+   dies in space dies as a CLOUD (Nick's law): torn gas shells, soft
+   ripples, no drawn circles. Baking also retires the per-frame gradient
+   allocations the heat pass flagged. */
+const _snSprCache=new Map();
+function snSiteSprite(seed){
+  let sp=_snSprCache.get(seed);
+  if(sp) return sp;
+  if(_snSprCache.size>60) _snSprCache.clear();   /* sites are few; rebuild is cheap */
+  const S=96, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2, r=mulberry32(seed>>>0);
+  g.globalCompositeOperation='lighter';
+  /* the blue breath of shocked gas — small cool wisps, never one disc
+     (a disc reads as a splotch against dark space) */
+  for(let w=0;w<6;w++){
+    const aw=r()*TAU, dw=Math.pow(r(),1.4)*C*0.4;
+    const wx=C+Math.cos(aw)*dw, wy=C+Math.sin(aw)*dw, wr=C*(0.08+r()*0.12);
+    const wg=g.createRadialGradient(wx,wy,0,wx,wy,wr);
+    wg.addColorStop(0,'rgba(120,180,255,'+(0.08+r()*0.08).toFixed(3)+')');
+    wg.addColorStop(1,'rgba(120,180,255,0)');
+    g.fillStyle=wg; g.beginPath(); g.arc(wx,wy,wr,0,TAU); g.fill();
+  }
+  /* the torn shell — warm puffs, uneven, shredding outward */
+  for(let i=0;i<18;i++){
+    const a=r()*TAU, rr=C*(0.52+(r()-0.5)*0.26);
+    const bx=C+Math.cos(a)*rr, by=C+Math.sin(a)*rr, br=C*(0.09+r()*0.15);
+    const hue=14+r()*26;
+    const ng=g.createRadialGradient(bx,by,0,bx,by,br);
+    ng.addColorStop(0,'hsla('+hue+',88%,'+(56+r()*12)+'%,'+(0.10+r()*0.13).toFixed(3)+')');
+    ng.addColorStop(1,'hsla('+hue+',88%,55%,0)');
+    g.fillStyle=ng; g.beginPath(); g.arc(bx,by,br,0,TAU); g.fill();
+  }
+  _snSprCache.set(seed,cv);
+  return cv;
+}
+let _bhDisc=null;
+function _bhDiscSpr(){
+  if(_bhDisc) return _bhDisc;
+  const S=28, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  const ad=g.createRadialGradient(C,C,0,C,C,C);
+  ad.addColorStop(0,'#000'); ad.addColorStop(0.55,'rgba(255,160,60,0.7)'); ad.addColorStop(1,'rgba(255,160,60,0)');
+  g.fillStyle=ad; g.beginPath(); g.arc(C,C,C,0,TAU); g.fill();
+  return (_bhDisc=cv);
+}
+let _proto=null;
+function _protoSpr(){
+  if(_proto) return _proto;
+  const S=24, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  const pg=g.createRadialGradient(C,C,0,C,C,C);
+  pg.addColorStop(0,'rgba(255,210,160,1)'); pg.addColorStop(0.5,'rgba(255,150,80,0.6)'); pg.addColorStop(1,'rgba(255,150,80,0)');
+  g.fillStyle=pg; g.beginPath(); g.arc(C,C,C,0,TAU); g.fill();
+  return (_proto=cv);
+}
+let _gwRipple=null;
+function _gwRippleSpr(){
+  if(_gwRipple) return _gwRipple;
+  const S=128, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  /* spacetime rings out like breath on cold glass — three soft luminous
+     swells, feathered to nothing, never a stroked line */
+  for(let k=0;k<3;k++){
+    const bk=C*(0.30+k*0.26), w=C*0.11, a=0.30-k*0.08;
+    const rg=g.createRadialGradient(C,C,Math.max(0,bk-w*2),C,C,bk+w*2);
+    rg.addColorStop(0,'rgba(180,200,255,0)');
+    rg.addColorStop(0.5,'rgba(180,200,255,'+a.toFixed(2)+')');
+    rg.addColorStop(1,'rgba(180,200,255,0)');
+    g.fillStyle=rg; g.beginPath(); g.arc(C,C,bk+w*2,0,TAU); g.fill();
+  }
+  return (_gwRipple=cv);
 }
 function drawGalaxy(time){
   drawBackdrop();
@@ -4829,20 +4912,16 @@ function drawGalaxy(time){
     ctx.fillStyle=bh; ctx.beginPath(); ctx.arc(0,0,22,0,TAU); ctx.fill();
     ctx.restore();
   }
-  /* ---- supernova aftermath: remnants + the new stars they breed (shared, epoch-anchored) ---- */
+  /* ---- supernova aftermath: remnants + the new stars they breed (shared, epoch-anchored) ----
+     v1.3.5: every death is a CLOUD now, never a drawn circle (Nick's law),
+     and the shells/glows are baked once per site instead of allocating
+     gradients every frame (heat rule). */
   for(const site of supernovaSites(st.gal.seed, COSMIC_EPOCH)){
-    /* the expanding remnant shell of forged heavy elements */
-    const ng=ctx.createRadialGradient(site.x,site.y,0,site.x,site.y,18);
-    ng.addColorStop(0,'rgba(120,180,255,0.14)'); ng.addColorStop(0.55,'rgba(255,140,90,0.12)'); ng.addColorStop(1,'transparent');
-    ctx.fillStyle=ng; ctx.beginPath(); ctx.arc(site.x,site.y,18,0,TAU); ctx.fill();
-    ctx.strokeStyle='rgba(255,150,90,0.40)'; ctx.lineWidth=Math.max(0.5/c.z,0.9);
-    ctx.beginPath(); ctx.arc(site.x,site.y,16,0,TAU); ctx.stroke();
+    ctx.drawImage(snSiteSprite(site.seed), site.x-24, site.y-24, 48, 48);
     /* the core left behind */
     if(site.remnant==='BH'){
       ctx.save(); ctx.translate(site.x,site.y); ctx.rotate(time*0.3); ctx.scale(1,0.5);
-      const ad=ctx.createRadialGradient(0,0,0,0,0,7);
-      ad.addColorStop(0,'#000'); ad.addColorStop(0.55,'rgba(255,160,60,0.7)'); ad.addColorStop(1,'transparent');
-      ctx.fillStyle=ad; ctx.beginPath(); ctx.arc(0,0,7,0,TAU); ctx.fill(); ctx.restore();
+      ctx.drawImage(_bhDiscSpr(), -7, -7, 14, 14); ctx.restore();
       ctx.fillStyle='#000'; ctx.beginPath(); ctx.arc(site.x,site.y,Math.max(0.4/c.z,1.1),0,TAU); ctx.fill();
     } else if(site.remnant==='NS'){
       ctx.save(); ctx.translate(site.x,site.y); ctx.rotate(time*2.2);
@@ -4853,10 +4932,10 @@ function drawGalaxy(time){
     picks.push({sx:(site.x-c.x)*c.z+W/2, sy:(site.y-c.y)*c.z+H/2, r:Math.max(16*c.z,13*PICK_F), kind:'snova', data:site});
     /* the newborn protostars its shockwave is igniting */
     for(const b of site.births){
-      const pg=ctx.createRadialGradient(b.x,b.y,0,b.x,b.y,3.4);
       const tw=0.7+0.3*Math.sin(time*3+b.seed%7);
-      pg.addColorStop(0,`rgba(255,210,160,${tw.toFixed(2)})`); pg.addColorStop(0.5,'rgba(255,150,80,0.6)'); pg.addColorStop(1,'transparent');
-      ctx.fillStyle=pg; ctx.beginPath(); ctx.arc(b.x,b.y,3.4,0,TAU); ctx.fill();
+      ctx.globalAlpha=tw;
+      ctx.drawImage(_protoSpr(), b.x-3.4, b.y-3.4, 6.8, 6.8);
+      ctx.globalAlpha=1;
       picks.push({sx:(b.x-c.x)*c.z+W/2, sy:(b.y-c.y)*c.z+H/2, r:Math.max(3.4*c.z,11*PICK_F), kind:'protostar', data:b});
     }
     if(c.z>minWH/900){
@@ -4878,12 +4957,13 @@ function drawGalaxy(time){
       const alpha=Math.sin(Math.min(1,p01*4)*Math.PI/2)*(1-p01);
       const ev=bucket%4;
       if(ev===2){
-        /* gravitational waves: two black holes spiral together and merge */
-        ctx.strokeStyle=`rgba(180,200,255,${alpha*0.8})`;
-        for(let k=0;k<3;k++){
-          ctx.lineWidth=Math.max(0.5/c.z, 1.2-k*0.3);
-          ctx.beginPath(); ctx.arc(sx,sy,rad*(0.45+k*0.5),0,TAU); ctx.stroke();
-        }
+        /* gravitational waves: two black holes spiral together and merge.
+           v1.3.5: the ripples are soft luminous swells (baked sprite),
+           never stroked circles — spacetime breathes, it isn't drawn */
+        ctx.globalAlpha=alpha*0.9;
+        const gwR=rad*1.55;
+        ctx.drawImage(_gwRippleSpr(), sx-gwR, sy-gwR, gwR*2, gwR*2);
+        ctx.globalAlpha=1;
         const th2=time*9, insp=2.4*(1-p01);
         ctx.fillStyle=`rgba(8,8,18,${alpha})`;
         ctx.strokeStyle=`rgba(255,180,90,${alpha*0.8})`; ctx.lineWidth=0.5;
