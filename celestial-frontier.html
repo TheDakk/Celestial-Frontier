@@ -1172,11 +1172,16 @@
   body.rmotion .iridframe::after{animation:none !important}
   /* v1.3 HD landing vista overlay (flag-gated, iterating) */
   #vistabox{position:fixed;inset:0;z-index:44;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+    opacity:0;transition:opacity .45s;
+    padding:max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));
     background:rgba(2,3,8,0.88);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);cursor:pointer;padding:14px}
-  #vistabox canvas{width:min(94vw,960px);max-height:70vh;object-fit:contain;border-radius:14px;border:1px solid rgba(150,162,210,0.3);
+  #vistabox.on{opacity:1}
+  /* landscape phones: clamp width to the image's own 2.233 aspect so the
+     frame never letterboxes empty bars (graphics overhaul B3) */
+  #vistabox canvas{width:min(94vw,960px,calc(70vh*2.233));max-height:70vh;object-fit:contain;border-radius:16px;border:1px solid var(--glass-brd);
     box-shadow:0 30px 90px rgba(0,0,0,0.7)}
   #vistabox .vh{font:600 11px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--plasma)}
-  #vistabox .vt{font-size:10.5px;letter-spacing:.06em;color:var(--faint)}
+  #vistabox .vt{font:600 9px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
   /* fat fingers get invisible hit-padding — the visible pill sizes and the
      40px rail rhythm stay exactly as designed */
   @media (pointer:coarse){
@@ -6391,9 +6396,21 @@ function hdVista(opts){
   g.fillStyle=vg;g.fillRect(0,0,W,H);
   return cv;
 }
-/* the planetfall overlay */
+/* the planetfall overlay — fades like the cinema, and the art is no
+   longer see-once: the last landing's args are cached so the surface
+   card can reopen it (graphics overhaul B1) */
 const vistaBox=document.createElement('div');vistaBox.id='vistabox';document.body.appendChild(vistaBox);
-vistaBox.addEventListener('click', ()=>{ vistaBox.style.display='none'; });
+let _lastVista=null, _vistaHideT=0;
+vistaBox.addEventListener('click', ()=>{
+  vistaBox.classList.remove('on');
+  clearTimeout(_vistaHideT);
+  _vistaHideT=setTimeout(()=>{ if(!vistaBox.classList.contains('on')) vistaBox.style.display='none'; }, 460);
+});
+function reshowVista(){
+  if(!_lastVista) return;
+  const v=_lastVista;
+  showVistaBox(v.P, v.tod, v.wx, v.era, v.genes, v.aurora, v.flora, v.climSnow, v.water);
+}
 function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water){
   /* the card drives the picture: type → scene, ACTIVE weather token →
      overlay (the Weather row is climate; spells come and go), snow climate
@@ -6430,7 +6447,11 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water){
   const vt=document.createElement('div');vt.className='vt';
   vt.textContent='local '+tod+(wx?' · '+(WXW[wx]||wx):'')+' — tap to continue';
   vistaBox.appendChild(vt);
+  _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
+    flora:flora, climSnow:climSnow, water:water};
+  clearTimeout(_vistaHideT);
   vistaBox.style.display='flex';
+  requestAnimationFrame(()=>vistaBox.classList.add('on'));
 }
 /* ----------------------------------------------------------------
    @section ui-panel [app] — survey-card panel — render, lock, bookmark row, actions
@@ -6588,6 +6609,7 @@ function renderPanel(p, isLocked){
     '|'+(d.planetSeed!=null&&(d.planetSeed===133||landed.has(d.planetSeed)||conquered.has(d.planetSeed))?'G':'')+   /* ground-surveyed (v1.2) */
     '|'+(d.planetSeed!=null&&contacted.has(d.planetSeed)?'K':'')+   /* census known via first contact (v1.2.2) */
     '|'+(tutDone?'':'t')+   /* the ✕ appears only after training */
+    '|'+(st.mode==='surface'&&hdOn&&_lastVista&&_lastVista.P&&_lastVista.P.seed===d.planetSeed?'V':'')+   /* re-view button arrives a frame after planetfall */
     '|cx'+cardExpand;   /* keep cx LAST — the toggle handler patches it in place */
   panelEl.classList.toggle('locked', !!isLocked);
   panelEl.classList.toggle('grab', !!isLocked || st.mode==='surface');   /* draggable by the head */
@@ -6785,7 +6807,13 @@ function renderPanel(p, isLocked){
     if(!glance && d.planetSeed!=null && st.mode!=='surface'){
       landBtn='<button class="act" data-act="landcta" data-guide="survey" data-tip="Drop out of orbit and stand on this world — ground surveys open a world&#8217;s secrets.">Land</button>';
     }
-    const btn = glance ? '' : atlasRow + conqBtn + landBtn + mineBtn +
+    /* the landing panorama is re-viewable from the surface card — the
+       art is no longer see-once (graphics overhaul B1) */
+    let vistaBtn='';
+    if(!glance && st.mode==='surface' && hdOn && _lastVista && _lastVista.P && _lastVista.P.seed===d.planetSeed){
+      vistaBtn='<button class="act" data-act="vista" data-tip="Look out over your landing site again">Landing vista</button>';
+    }
+    const btn = glance ? '' : atlasRow + conqBtn + landBtn + mineBtn + vistaBtn +
       (d.where ? '<button class="act" data-act="share" data-guide="codes" data-tip="Copy a code — friends land on this exact world">⇪ Share this discovery</button>' : '');
     /* actions live at the TOP of the body (1.1.2): on phones the old
        bottom placement put "+ Add to Star Atlas" below the fold — a
@@ -6879,6 +6907,8 @@ panelEl.addEventListener('pointercancel', _pDragEnd);
 panelEl.addEventListener('click', e=>{
   const xc=e.target.closest('[data-act="close"]');
   if(xc){ locked=null; stickyPick=null; return; }
+  const vb=e.target.closest('[data-act="vista"]');
+  if(vb){ reshowVista(); return; }
   const gt=e.target.closest('[data-gtoggle]');
   if(gt){
     /* fold/unfold in place — no rebuild, so keyboard focus stays on the
