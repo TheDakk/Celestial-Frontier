@@ -472,7 +472,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('HD vista: planetfall opens the landing panorama', await until(() =>
       sk.doc.getElementById('vistabox').style.display === 'flex', 5000, 'vista overlay'));
     click2(sk.doc.getElementById('vistabox'), sk.w);
-    check('HD vista: tap dismisses the panorama', sk.doc.getElementById('vistabox').style.display === 'none');
+    check('HD vista: tap dismisses the panorama (fade-out)', await until(() =>
+      sk.doc.getElementById('vistabox').style.display === 'none', 4000, 'vista fade-out'));
+    // B1: the art is no longer see-once — the surface card reopens it
+    check('HD vista: the surface card offers a re-view', await until(() =>
+      !!pan3.querySelector('[data-act="vista"]'), 4000, 'vista button'));
+    click2(pan3.querySelector('[data-act="vista"]'), sk.w);
+    check('HD vista: re-view reopens the panorama', await until(() =>
+      sk.doc.getElementById('vistabox').style.display === 'flex', 4000, 'vista reopen'));
+    click2(sk.doc.getElementById('vistabox'), sk.w);
+    await until(() => sk.doc.getElementById('vistabox').style.display === 'none', 4000, 'vista re-dismiss');
     // v1.3 iteration 2 — every new scene must render a full-size canvas without throwing
     for (const [nm, o] of [
       ['ember volcano + ashfall', { seed: 9001, era: 'none', pal: 'ember', wx: 'ash', moons: 1 }],
