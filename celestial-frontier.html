@@ -758,9 +758,12 @@
   #cargo .ctab.on{color:#ffcf8a;border-color:rgba(255,207,138,0.6);background:rgba(255,207,138,0.08)}
   #cargo .inv{display:grid;grid-template-columns:repeat(auto-fill,minmax(50px,1fr));gap:6px;padding:2px 6px 8px}
   #cargo .slot{position:relative;aspect-ratio:1;border:1px solid rgba(150,162,210,0.28);border-radius:9px;
-    background:linear-gradient(180deg,rgba(150,162,210,0.10),rgba(6,8,16,0.45));
-    display:flex;align-items:center;justify-content:center;box-shadow:inset 0 1px 0 rgba(255,255,255,0.05)}
-  #cargo .slot img{width:68%;height:68%}
+    background:radial-gradient(130% 105% at 50% 0%,rgba(150,162,210,0.14),rgba(5,7,14,0.66));
+    display:flex;align-items:center;justify-content:center;
+    /* carved-slot depth (v1.4 HD pass): top bevel light, inner floor
+       shadow, hairline drop — the tile reads as a recess, not a flat box */
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.09),inset 0 -7px 12px rgba(0,0,0,0.45),0 1px 0 rgba(0,0,0,0.55)}
+  #cargo .slot img{width:70%;height:70%;filter:drop-shadow(0 3px 4px rgba(0,0,0,0.55))}
   #cargo .slot .qty{position:absolute;right:4px;bottom:2px;font:700 10px var(--ui);color:var(--ink);
     text-shadow:0 1px 2px rgba(0,0,0,0.9),0 0 3px rgba(0,0,0,0.7)}
   #cargo .slot.empty2{opacity:0.35}
@@ -774,12 +777,23 @@
   #cargo .bset .ci.big{width:26px;height:26px;vertical-align:-8px;margin-right:4px}
   #cargo .gslot{font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--plasma);
     border:1px solid rgba(150,162,210,0.3);border-radius:999px;padding:1px 6px;margin-left:3px}
-  /* ---- v1.4 EQUIPMENT on the character sheet: five sockets, ARPG-style ---- */
+  /* ---- v1.4 THE PLAYER FRAME: painterly avatar fronting the sheet ---- */
+  #stats .pframe{display:flex;gap:12px;align-items:center;margin:0 0 11px;padding:10px 11px;
+    border:1px solid rgba(255,207,138,0.4);border-radius:14px;
+    background:linear-gradient(160deg,rgba(64,48,18,0.32),rgba(9,11,22,0.62));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),0 6px 20px rgba(0,0,0,0.45),0 0 18px rgba(255,207,138,0.07)}
+  #stats .pframe .pav{width:76px;height:76px;flex:none;border-radius:12px;
+    border:1px solid rgba(255,207,138,0.55);box-shadow:0 0 16px rgba(255,207,138,0.20),inset 0 0 0 1px rgba(0,0,0,0.4)}
+  #stats .pframe .pmeta{min-width:0;flex:1}
+  #stats .pframe .pname{font:600 13px var(--ui);letter-spacing:.04em;color:var(--ink)}
+  #stats .pframe .prank{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#f0cf8a;margin-top:3px}
+  /* ---- v1.4 EQUIPMENT on the character sheet: nine sockets, ARPG-style ---- */
   #stats .eqrow{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:2px 0 6px}
   #stats .eqslot{position:relative;aspect-ratio:0.86;border:1px solid rgba(150,162,210,0.28);border-radius:10px;cursor:pointer;
-    background:linear-gradient(180deg,rgba(150,162,210,0.10),rgba(6,8,16,0.45));
+    background:radial-gradient(130% 105% at 50% 0%,rgba(150,162,210,0.14),rgba(5,7,14,0.66));
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:3px 2px;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,0.05)}
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.09),inset 0 -7px 12px rgba(0,0,0,0.45),0 1px 0 rgba(0,0,0,0.55)}
+  #stats .eqslot img{filter:drop-shadow(0 3px 4px rgba(0,0,0,0.55))}
   #stats .eqslot:hover{border-color:rgba(150,162,210,0.55)}
   #stats .eqslot.sel{border-color:#ffcf8a;box-shadow:0 0 10px rgba(255,207,138,0.25)}
   #stats .eqslot.filled.t1{border-color:rgba(159,182,214,0.55)}
@@ -3432,7 +3446,7 @@ const {shade, svgURI, b64encUtf8, b64decUtf8}=EncUtil;
 var HD_PORTRAITS=true;   /* HD is always on (v1.3 ship decision) */
 
 /* ================================================================
-   @module SpeciesArt [app] — per-kingdom SVG portraits & specimen cards (cache capped 1,200)
+   @module SpeciesArt [app] — per-kingdom painterly canvas portraits & specimen cards (cache capped 1,200; the old SVG set is long gone — banner corrected v1.4)
    Deps: SpeciesTraits, Rand, EncUtil, input, Genome, player-state, viewport
    API:  speciesPortrait
    ================================================================ */
@@ -10721,7 +10735,7 @@ dailyBtn.addEventListener('click', ()=>{
 /* ================================================================
    @module CombatCore [domain] — battle stats, biome abilities, deterministic duels & creature codes
    Deps: Rand, EncUtil, player, naming-ui, Genome, viewport, player-state
-   API:  abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED
+   API:  abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED
    ================================================================ */
 const CombatCore=(()=>{
 const STAT_NAMES=['Vitality','Ferocity','Resilience','Agility','Instinct'];
@@ -11227,9 +11241,9 @@ function runDuel(mine, theirs){
   const winner = (hpA<=0&&hpB<=0)?null : hpA<=0?'B' : hpB<=0?'A' : (hpA/maxA>=hpB/maxB?'A':'B');
   return {A, B, log, winner, hpA, hpB, maxA, maxB};
 }
-return Object.freeze({abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED});
+return Object.freeze({abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED});
 })();
-const {abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED}=CombatCore;
+const {abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED}=CombatCore;
 /* @end CombatCore */
 /* ----------------------------------------------------------------
    @section duel-ui [app] — duel UI — code loader, side cards & fight flow (CFB- codes)
@@ -13051,7 +13065,9 @@ const _ELEM_ICEHD={H2O:1,CH4:1,NH3:1,CO2:1,He3:1};
 function _hdElemIcon(sym){
   const c=EC[sym]||'#c8d0dc';
   const n=parseInt(c.slice(1),16), cr=(n>>16)&255, cg=(n>>8)&255, cb=n&255;
-  const S=96,cv=document.createElement('canvas');cv.width=cv.height=S;
+  /* 144px master (v1.4 HD pass): a 50px inventory tile at DPR 3 samples
+     150 device pixels — 96px masters read soft on OLED phones */
+  const S=144,cv=document.createElement('canvas');cv.width=cv.height=S;
   const g=cv.getContext('2d'), r=mulberry32(hashInt(0xE1E, sym.charCodeAt(0)*31+(sym.charCodeAt(1)||7), sym.length)>>>0);
   const K=(k,a)=>'rgba('+Math.min(255,(cr*k)|0)+','+Math.min(255,(cg*k)|0)+','+Math.min(255,(cb*k)|0)+','+a+')';
   g.fillStyle='rgba(0,0,0,0.35)';g.beginPath();g.ellipse(S*0.5,S*0.84,S*0.30,S*0.055,0,0,7);g.fill();
@@ -13429,7 +13445,7 @@ const _partIcons=new Map();
 function partIcon(id){
   let u=_partIcons.get(id); if(u) return u;
   const it=ITEM_BY.get(id)||{fam:'plate',hue:'#aab2c2'};
-  const S=96, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const S=144, cv=document.createElement('canvas'); cv.width=cv.height=S;   /* 144px master — crisp at DPR 3 (HD pass) */
   const g=cv.getContext('2d');
   const n=parseInt((it.hue||'#aab2c2').slice(1),16), cr=(n>>16)&255, cg=(n>>8)&255, cb=n&255;
   const K=(k,a)=>'rgba('+Math.min(255,(cr*k)|0)+','+Math.min(255,(cg*k)|0)+','+Math.min(255,(cb*k)|0)+','+(a==null?1:a)+')';
@@ -14986,10 +15002,18 @@ function renderStats(){
   for(const e of codex.values()){
     if(e.grade){ tierHave[e.grade.tier]++; if(!rarest || e.grade.tier>rarest.grade.tier) rarest=e; }
   }
-  let html='<h4>✪ '+(explorerName||'Explorer')+' — '+r.name+
-    ' <span class="cfrom" id="renameme" style="float:right;cursor:pointer;font-size:11px;color:#9fc2ff;text-transform:none;letter-spacing:0;padding:2px 6px">✎ rename</span></h4>'+
-    '<div class="srow"><span class="k">Expedition score</span><span>'+r.score+(r.next?' / '+r.next[0]+' → '+r.next[1]:' · max rank')+'</span></div>'+
-    '<div class="bar"><i style="width:'+pct.toFixed(0)+'%"></i></div>';
+  /* THE PLAYER FRAME (v1.4 HD pass, Nick's ask): the painterly explorer
+     portrait — the same gold-visored avatar who fights your duels —
+     finally fronts the character sheet, in a framed header */
+  let html='<div class="pframe">'+
+    '<img class="pav" src="'+playerAvatar()+'" alt="Your explorer">'+
+    '<div class="pmeta">'+
+      '<div class="pname">✪ '+(explorerName||'Explorer')+
+        '<span class="cfrom" id="renameme" style="float:right;cursor:pointer;font-size:11px;color:#9fc2ff;text-transform:none;letter-spacing:0;padding:2px 6px">✎ rename</span></div>'+
+      '<div class="prank">'+r.name+'</div>'+
+      '<div class="srow" style="margin:3px 0 4px"><span class="k">Expedition score</span><span>'+r.score+(r.next?' / '+r.next[0]+' → '+r.next[1]:' · max rank')+'</span></div>'+
+      '<div class="bar"><i style="width:'+pct.toFixed(0)+'%"></i></div>'+
+    '</div></div>';
   html+=statBlockHTML();
   /* ---- EQUIPMENT (v1.4): the ARPG half of the Ascent — five sockets on
      the explorer. Tap a socket to choose among owned gear for it. ---- */
