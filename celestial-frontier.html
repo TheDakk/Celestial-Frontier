@@ -1942,9 +1942,6 @@ function _cardFactsSet(seed, v){
   if(CARD_FACTS.size>6000){ CARD_FACTS.delete(CARD_FACTS.keys().next().value); }
   CARD_FACTS.set(seed, v);
 }
-/* surface tile fallback color, side-cached (was P._fb — a field on a
-   fingerprint-serialized domain object; round-2 audit) */
-const _FB_CACHE=new Map();
 
 /* ================================================================
    @module ThumbArt [app] — canvas sprites & thumbnails for planets, stars, moons, comets
@@ -4183,77 +4180,6 @@ const {galaxyStats, fmtBig, roman, describePick, slimGal, starDescriptor, planet
 /* @end Descriptors */
 
 
-/* ----------------------------------------------------------------
-   @section art-tiles [app] — surface-mode terrain tile cache (per-frame render budget)
-   Owns: tileCache, tileBudget, getTile
-   ---------------------------------------------------------------- */
-const tileCache=new Map();
-let tileBudget=0;
-function getTile(P, fbm, L, tx, ty){
-  const key=P.seed+'_'+L+'_'+tx+'_'+ty;
-  const hit=tileCache.get(key);
-  if(hit) return hit;
-  if(tileBudget<=0) return null;
-  tileBudget--;
-  const T=128;
-  const c=document.createElement('canvas'); c.width=c.height=T;
-  const g=c.getContext('2d');
-  const img=g.createImageData(T,T);
-  const d=img.data;
-  const pow=Math.pow(2,L);
-  const relief = P.type!=='gas' && P.type!=='venus';
-  const gasLike = P.type==='gas' || P.type==='venus';
-  /* zoom depth 0..1 — deeper zoom reveals progressively finer ground detail */
-  const depth=clamp((L+1)/8, 0, 1);
-  for(let y=0;y<T;y++){
-    for(let x=0;x<T;x++){
-      const wx=(tx*T+x)/pow, wy=(ty*T+y)/pow;
-      /* latitude turns over a full 14,000px world — no more mirror-repeat every screen */
-      const u=wx*0.02, lat=Math.sin(wy*TAU/14000);
-      /* domain warp: bend the sampling space so coastlines, bands and biomes
-         meander organically instead of echoing the noise lattice */
-      const wAmp = gasLike ? 0.22 : 0.85;
-      const qx=fbm(u*0.55+37.2, lat*1.4+91.7, 3);
-      const qy=fbm(u*0.55+11.9, lat*1.4+57.3, 3);
-      const u2=u+(qx-0.5)*wAmp, lat2=lat+(qy-0.5)*wAmp*0.4;
-      let col=surfaceColor(P,u2,lat2,fbm,CARD_FACTS.get(P.seed)||null);
-      const isWater=col[2]>col[0]+26 && col[2]>col[1]+8;
-      if(relief){
-        /* true 2-axis hillshade, lit from the northwest */
-        const e0=fbm(u2*1.8+10, lat2*1.8+5, 4);
-        const ex=fbm(u2*1.8+10+0.012, lat2*1.8+5, 4);
-        const ey=fbm(u2*1.8+10, lat2*1.8+5+0.012, 4);
-        const sh=1+(ex-e0)*5.2+(ey-e0)*3.4;
-        col=[col[0]*sh, col[1]*sh, col[2]*sh];
-        /* the closer you fly, the more the ground itself resolves:
-           rock grain, dunes, pack-ice fractures, canopy texture */
-        if(depth>0.18){
-          const m=(fbm(wx*0.085+3, wy*0.085+8, 3)-0.5);
-          const f=(fbm(wx*0.31+17, wy*0.31+4, 2)-0.5);
-          const amp=isWater?0.05:0.16;
-          const k=1+(m*0.6+f*0.4)*amp*2*depth;
-          col=[col[0]*k, col[1]*k, col[2]*k];
-        }
-        /* gentle wave shimmer keeps oceans alive without faking land */
-        if(isWater && depth>0.3){
-          const wv=fbm(wx*0.05+91, wy*0.18+13, 2);
-          if(wv>0.62) col=[col[0]+10, col[1]+14, col[2]+16];
-        }
-        col=[clamp(col[0],0,255),clamp(col[1],0,255),clamp(col[2],0,255)];
-      } else if(depth>0.25){
-        /* even gas giants churn when you dive close */
-        const sw=(fbm(wx*0.06+5, wy*0.06+44, 3)-0.5)*0.12*depth;
-        col=[clamp(col[0]*(1+sw),0,255),clamp(col[1]*(1+sw),0,255),clamp(col[2]*(1+sw),0,255)];
-      }
-      const i=(y*T+x)*4;
-      d[i]=col[0]; d[i+1]=col[1]; d[i+2]=col[2]; d[i+3]=255;
-    }
-  }
-  g.putImageData(img,0,0);
-  if(tileCache.size>180){ const k=tileCache.keys().next().value; tileCache.delete(k); }
-  tileCache.set(key,c);
-  return c;
-}
 
 /* ---------------- state ---------------- */
 /* ----------------------------------------------------------------
@@ -4598,23 +4524,13 @@ function checkTransitions(){
         c.y = assist.py;
       }
     }
-  } else if(st.mode==='surface'){
-    if(st.pcam.z<=0.46){
-      st.mode='system'; st.fade=1;
-      st.scam.z = (0.40*minWH/(6*st.planet.P.sizeMul))*0.7;
-      const tNow=perfTime();
-      const pl=st.planet;
-      const ang = pl.orb*0.13 + tNow*0.05/(pl.orb*0.012);
-      st.scam.x=Math.cos(ang)*pl.orb; st.scam.y=Math.sin(ang)*pl.orb;
-      st.planet=null;
-    }
   }
 }
 
 /* ================================================================
    @module Renderer [app] — the four zoom-mode draw passes + backdrop
    Deps: Rand, ui-dom, viewport, state-camera, WorldConfig, ui-hud, WorldGen, GalaxyArt, Naming, prime, compendium, Descriptors, ThumbArt, StarCatalog, art-tiles, PlanetGen, SurveyPhrases
-   API:  perfTime, t0, drawUniverse, drawGalaxy, drawSystem, drawSurface
+   API:  perfTime, t0, drawUniverse, drawGalaxy, drawSystem
    ================================================================ */
 const Renderer=(()=>{
 /* ---------------- drawing ---------------- */
@@ -5945,261 +5861,9 @@ function drawSystem(time){
     : desc+extra+' — no planets here; zoom out and try another star');
 }
 
-function drawSurface(time){
-  const c=st.pcam;
-  const P=st.planet.P;
-  /* the tiles must know the card's band/life before the FIRST tile is
-     cut, or a hot world's first frames bake temperate oceans (V1) */
-  ensureCardFacts(P, st.sys, st.planet.orb);
-  ctx.fillStyle='#000'; ctx.fillRect(0,0,W,H);
-  const L=clamp(Math.floor(Math.log2(c.z*Math.min(DPR,2))), -1, 10);
-  const pow=Math.pow(2,L);
-  const T=128;
-  const TW=T/pow;
-  tileBudget=3;
-  const x0=c.x-(W/2)/c.z, y0=c.y-(H/2)/c.z, x1=c.x+(W/2)/c.z, y1=c.y+(H/2)/c.z;
-  const tx0=Math.floor(x0/TW), ty0=Math.floor(y0/TW);
-  const tx1=Math.floor(x1/TW), ty1=Math.floor(y1/TW);
-  ctx.save(); ctx.translate(W/2,H/2); ctx.scale(c.z,c.z); ctx.translate(-c.x,-c.y);
-  ctx.imageSmoothingEnabled=true;
-  for(let tx=tx0;tx<=tx1;tx++)for(let ty=ty0;ty<=ty1;ty++){
-    const tile=getTile(P, st.pfbm, L, tx, ty);
-    if(tile) ctx.drawImage(tile, tx*TW, ty*TW, TW+0.5/c.z, TW+0.5/c.z);
-    else {
-      let _fb=_FB_CACHE.get(P.seed);
-      if(!_fb){ const fc=surfaceColor(P, 0.3, 0.25, st.pfbm, CARD_FACTS.get(P.seed)||null); _fb=`rgb(${fc[0]|0},${fc[1]|0},${fc[2]|0})`;
-        if(_FB_CACHE.size>512) _FB_CACHE.delete(_FB_CACHE.keys().next().value);
-        _FB_CACHE.set(P.seed,_fb); }
-      ctx.fillStyle=_fb;
-      ctx.fillRect(tx*TW,ty*TW,TW+0.5/c.z,TW+0.5/c.z);
-    }
-  }
-  ctx.restore();
-  /* ---------- a living world: day & night, seasons, weather ---------- */
-  const pl=st.planet, sys=st.sys;
-  if(!pl._env){
-    const er=mulberry32((P.seed^0xE57)>>>0);
-    const tilt=er()<0.8;
-    const band=climateBand(P, sys, pl.orb||100);
-    const hasAtmo = P.type!=='rocky';
-    const hasField = P.seed===133 || P.type==='gas' ||
-      ((P.type==='terran'||P.type==='ocean') && mulberry32((P.seed^0xBEEF)>>>0)()<0.8);
-    let wx=null;
-    if(P.type==='terran') wx = band==='temperate' ? 'rain' : (band==='hot' ? 'haze' : 'snow');
-    else if(P.type==='ocean') wx='rain';
-    else if(P.type==='ice') wx='snow';
-    else if(P.type==='desert') wx='dust';
-    else if(P.type==='lava') wx='ash';
-    else if(P.type==='venus') wx='haze';
-    pl._env={tilt, band, hasAtmo, hasField, wx, ph:er()*TAU, dayLen:70+er()*50, yearLen:320+er()*260};
-  }
-  const env=pl._env;
-  const m0=(v,n)=>((v%n)+n)%n;
-  /* seasons: a slow year turning beneath you */
-  let season=null, seasonT=0;
-  if(env.tilt && env.hasAtmo && P.type!=='gas' && P.type!=='venus'){
-    const yp=m0(time/env.yearLen + env.ph/TAU, 1);
-    seasonT=Math.sin(yp*TAU);
-    season=['spring','summer','autumn','winter'][Math.floor(yp*4)];
-  }
-  const effWx = (env.wx==='rain' && seasonT<-0.45) ? 'snow' : env.wx;
-  /* the card's Weather row is CLIMATE ("rain showers") — whether anything
-     falls RIGHT NOW is a seeded ~90s spell, same mechanism as the
-     lightning bursts below, so temperate worlds also get clear skies.
-     Surface and vista share this roll. */
-  const WX_ODDS={rain:0.42,snow:0.58,dust:0.48,ash:0.68,haze:0.88};
-  const wxNow = !!effWx && mulberry32((P.seed^0x77EA^Math.floor(time/90))>>>0)() < (WX_ODDS[effWx]||1);
-  /* drifting cloud shadows */
-  if(env.hasAtmo && P.type!=='venus' && P.type!=='gas'){
-    const span=5200;
-    for(let i=0;i<4;i++){
-      const wxs=m0((hashInt(P.seed,i,7)%span) + time*(14+i*5), span);
-      const wys=hashInt(P.seed,i,13)%span;
-      const rx=wxs + Math.round((c.x-wxs)/span)*span;
-      const ry=wys + Math.round((c.y-wys)/span)*span;
-      const sxp=(rx-c.x)*c.z+W/2, syp=(ry-c.y)*c.z+H/2;
-      const rad=(520+i*260)*c.z;
-      if(rad<26||rad>W*1.2) continue;
-      const sg2=ctx.createRadialGradient(sxp,syp,0,sxp,syp,rad);
-      sg2.addColorStop(0,'rgba(8,10,20,0.15)'); sg2.addColorStop(1,'transparent');
-      ctx.fillStyle=sg2; ctx.beginPath(); ctx.arc(sxp,syp,rad,0,TAU); ctx.fill();
-    }
-  }
-  /* weather particles */
-  if(wxNow && effWx!=='haze'){
-    if(effWx==='rain'){
-      ctx.strokeStyle='rgba(185,212,255,0.34)'; ctx.lineWidth=1.1;
-      ctx.beginPath();
-      for(let i=0;i<190;i++){
-        const px2=m0((hashInt(11,i,3)%997)/997*W - time*130, W);
-        const py2=m0((hashInt(13,i,5)%991)/991*H + time*760 + i*7, H);
-        ctx.moveTo(px2,py2); ctx.lineTo(px2-5,py2-15);
-      }
-      ctx.stroke();
-    } else if(effWx==='snow'){
-      ctx.fillStyle='rgba(240,247,255,0.55)';
-      for(let i=0;i<150;i++){
-        const py2=m0((hashInt(13,i,5)%991)/991*H + time*85 + i*5, H);
-        const px2=m0((hashInt(11,i,3)%997)/997*W + Math.sin(time*0.8+i)*16, W);
-        ctx.beginPath(); ctx.arc(px2,py2,0.9+(i%3)*0.6,0,TAU); ctx.fill();
-      }
-    } else if(effWx==='dust'){
-      ctx.strokeStyle='rgba(205,160,105,0.22)'; ctx.lineWidth=1.4;
-      ctx.beginPath();
-      for(let i=0;i<120;i++){
-        const px2=m0((hashInt(11,i,3)%997)/997*W - time*520, W);
-        const py2=m0((hashInt(13,i,5)%991)/991*H + Math.sin(time*1.3+i)*9, H);
-        ctx.moveTo(px2,py2); ctx.lineTo(px2+26,py2+2);
-      }
-      ctx.stroke();
-    } else if(effWx==='ash'){
-      for(let i=0;i<90;i++){
-        const py2=m0((hashInt(13,i,5)%991)/991*H - time*42 - i*3, H);
-        const px2=m0((hashInt(11,i,3)%997)/997*W + Math.sin(time*0.6+i*2)*10, W);
-        const fl=0.25+0.35*Math.abs(Math.sin(time*3+i));
-        ctx.fillStyle = i%4 ? `rgba(255,150,70,${fl.toFixed(2)})` : `rgba(120,116,120,0.3)`;
-        ctx.beginPath(); ctx.arc(px2,py2,0.8+(i%3)*0.7,0,TAU); ctx.fill();
-      }
-    }
-  }
-  if(wxNow && effWx==='haze'){
-    const hcol = P.type==='venus' ? '212,190,90' : '230,200,140';
-    ctx.fillStyle=`rgba(${hcol},${(0.10+0.05*Math.sin(time*0.4)).toFixed(3)})`;
-    ctx.fillRect(0,0,W,H);
-  }
-  /* the terminator: night sweeps across the landscape as the planet turns */
-  const dayPh = time/env.dayLen*TAU + env.ph;
-  const bright=(wxw)=>{ const a=Math.sin(wxw*0.00055 + dayPh); return 0.30+0.70*clamp(a*1.5+0.35,0,1); };
-  const g8=ctx.createLinearGradient(0,0,W,0);
-  let nightC=0;
-  for(let k=0;k<=8;k++){
-    const wxw=c.x+((k/8)*W-W/2)/c.z;
-    const B=bright(wxw);
-    if(k===4) nightC=1-B;
-    g8.addColorStop(k/8, `rgba(3,5,16,${(1-B).toFixed(3)})`);
-  }
-  ctx.fillStyle=g8; ctx.fillRect(0,0,W,H);
-  /* auroras crown magnetized worlds at night */
-  let auroraOn=false;
-  if(env.hasField && nightC>0.35 && P.type!=='gas'){
-    auroraOn=true;
-    const aA=(nightC-0.35);
-    for(const [hue,off,amp] of [[140,0,26],[280,42,38]]){
-      ctx.beginPath();
-      for(let sx2=0;sx2<=W;sx2+=24){
-        const y2=H*0.15+off+Math.sin(sx2*0.012+time*0.7)*amp+Math.sin(sx2*0.004-time*0.3)*amp*0.6;
-        sx2?ctx.lineTo(sx2,y2):ctx.moveTo(sx2,y2);
-      }
-      ctx.strokeStyle=`hsla(${hue},85%,62%,${(aA*0.30).toFixed(3)})`;
-      ctx.lineWidth=26; ctx.lineCap='round'; ctx.stroke();
-      ctx.strokeStyle=`hsla(${hue},90%,78%,${(aA*0.20).toFixed(3)})`;
-      ctx.lineWidth=9; ctx.stroke();
-    }
-  }
-  /* lightning during rainstorms */
-  if(wxNow && effWx==='rain'){
-    const lb=Math.floor(time/8.5);
-    const lr=mulberry32((P.seed^lb)>>>0);
-    if(lr()<0.45){
-      const phs=time-lb*8.5;
-      if(phs<0.22){
-        const a=(0.22-phs)/0.22;
-        ctx.fillStyle=`rgba(220,230,255,${(a*0.12).toFixed(3)})`;
-        ctx.fillRect(0,0,W,H);
-        let bx=lr()*W, by=0;
-        ctx.strokeStyle=`rgba(235,240,255,${(a*0.85).toFixed(3)})`; ctx.lineWidth=2;
-        ctx.beginPath(); ctx.moveTo(bx,by);
-        while(by<H*0.55){ bx+=(lr()-0.5)*46; by+=18+lr()*26; ctx.lineTo(bx,by); }
-        ctx.stroke();
-      }
-    }
-  }
-  /* a whisper of seasonal light */
-  if(seasonT<-0.2){ ctx.fillStyle=`rgba(120,150,235,${((-seasonT-0.2)*0.07).toFixed(3)})`; ctx.fillRect(0,0,W,H); }
-  else if(seasonT>0.2){ ctx.fillStyle=`rgba(255,200,120,${((seasonT-0.2)*0.05).toFixed(3)})`; ctx.fillRect(0,0,W,H); }
-  const TYPE_DESC={gas:'an endless sea of storm bands — no solid ground, only the high deck',
-    terran:'oceans, continents, deserts and ice — a living world',
-    ocean:'a global ocean broken by scattered islands',
-    ice:'a frozen shell scored with pressure cracks',
-    desert:'rust-colored plains and dark basalt',
-    rocky:'bare cratered rock',
-    venus:'thick toxic clouds hide the ground below',
-    lava:'a young molten world veined with glowing magma'};
-  setTrail([starName(st.star.seed), (st.planet.name||'Planet')]); setHint('surface');
-  const Bc=1-nightC;
-  const tod = Bc>0.72?'daytime':(Bc>0.42?'twilight':'night');
-  const WX_NAME={rain:'rain showers',snow:'snowfall',dust:'dust storms',ash:'ash and embers',haze:'thick haze'};
-  const parts=['local '+tod];
-  if(season) parts.push(season);
-  parts.push(env.wx ? (wxNow ? WX_NAME[effWx] : 'clear skies')
-    : (P.type==='gas' ? 'winds beyond any scale' : 'airless — no weather'));
-  /* the showpiece, when one is running (5b-ii) — the status line says so.
-     Cached on the planet's env: biome forever (it's deterministic), the
-     event per 90s spell bucket — this line runs every frame and the heat
-     rules forbid per-frame allocation (pre-ship review catch). */
-  try{
-    if(env._bio===undefined) env._bio=biomeFor(P, env.band)||null;
-    const _evKey=Math.floor(time/90)+'|'+(wxNow?effWx:'');
-    if(env._evKey!==_evKey){
-      env._evKey=_evKey;
-      env._ev=wxEventFor(P, env._bio&&env._bio.k, wxNow?effWx:null);
-    }
-    if(env._ev) parts.push(WX_EVENT_WORD[env._ev]);
-  }catch(_){ }
-  if(auroraOn) parts.push('auroras overhead');
-  setCtxText((TYPE_DESC[P.type]||'')+' · '+parts.join(' · '));
-  /* HD landing vista (v1.3, flag-gated): built here because this is where
-     the card's clock and weather are known; era + roster from the surface
-     descriptor once renderPanel has cached it */
-  if(_vistaPend && hdOn && _lastDesc && _lastDesc.planetSeed===P.seed){
-    _vistaPend=false;
-    try{
-      let era='none';
-      const cvRow=_lastDesc.rows&&_lastDesc.rows.find(rr=>rr[0]==='Civilization');
-      if(cvRow && !/^None/.test(cvRow[1])){
-        const teRow=_lastDesc.rows.find(rr=>rr[0]==='Tech era');
-        era=(teRow && /spacefar|interstellar|post/i.test(teRow[1]))?'space'
-          :((teRow && /industrial|modern/i.test(teRow[1]))?'town':'iron');   /* V6: no castles for railway ages */
-      }
-      /* only fauna that can STAND join the landing party — the card's own
-         locomotion/habitat words (swimmers of the open ocean, drifters of
-         the cloud decks) must never render as a legged beast on the shore */
-      /* the WHOLE roster reaches the scene now, each class in its element
-         (Nick: aerial + aquatic life, scene-appropriate): walkers stand,
-         swimmers break the water, fliers ride the sky */
-      const roster=(_lastDesc.species||[]).filter(gg=>gg.kingdom==='fauna');
-      const clsOf=gg=>{
-        const lc=locoOf(gg), hb=habOf(gg);
-        if(/swim|filter|current/.test(lc)||/open ocean|sea shallows|vent fields/.test(hb)) return 'aqua';   /* current-drifters swim, not fly */
-        if(/glider|floater|drift/.test(lc)||/cloud decks/.test(hb)) return 'air';
-        return 'land';
-      };
-      const standable=roster.filter(gg=>clsOf(gg)==='land');
-      const aquaN=roster.filter(gg=>clsOf(gg)==='aqua').length;
-      const airN=roster.filter(gg=>clsOf(gg)==='air').length;
-      const genes=standable.slice(0,3).map(hdGenesFor);
-      /* the Life row decides whether the vista grows anything at all;
-         the Water row decides the river */
-      const lifeRow=_lastDesc.rows&&_lastDesc.rows.find(rr=>rr[0]==='Life');
-      const floraOk=!lifeRow||!/^(No known life|Microbial|Subsurface|Airborne|Extremophile)/.test(lifeRow[1]);
-      const waterRow=_lastDesc.rows&&_lastDesc.rows.find(rr=>rr[0]==='Water');
-      const waterTxt=waterRow?String(waterRow[1]):'';
-      const waterV=/Liquid|rivers|ocean/i.test(waterTxt)?'liquid':(/Frozen/i.test(waterTxt)?'frozen':(waterRow?'none':'liquid'));
-      const todV=tod==='daytime'?'day':tod;
-      /* a colossal wanderer: the roster's own titanic creature, shown at
-         true scale on a rare roll (5b-ii — the card said titanic) */
-      const _tit=roster.some(gg=>(gg.size||0)>=5) && (mulberry32((P.seed^0x717B)>>>0)()<0.30);
-      showVistaBox(P, todV, (env.wx&&wxNow)?effWx:null, era, genes, env.hasField,
-        floraOk, env.wx&&effWx==='snow', waterV,
-        {ring:P.ring, stc:(st.star&&st.star.c)||null, herd:standable.length,
-         aqua:aquaN, air:airN, titan:_tit, title:_lastDesc.title||null, where:_lastDesc.where||null});
-    }catch(_){}
-  }
-  if(_vistaPend && !hdOn) _vistaPend=false;
-}
-return Object.freeze({perfTime, t0, drawUniverse, drawGalaxy, drawSystem, drawSurface});
+return Object.freeze({perfTime, t0, drawUniverse, drawGalaxy, drawSystem});
 })();
-const {perfTime, t0, drawUniverse, drawGalaxy, drawSystem, drawSurface}=Renderer;
+const {perfTime, t0, drawUniverse, drawGalaxy, drawSystem}=Renderer;
 /* @end Renderer */
 
 /* ================= HD ART (v1.3, iterating — flag-gated) =================
@@ -8228,9 +7892,7 @@ let _panelDirty=true, _panelVP='', _panelTopMin=64, _panelW=300, _panelH=200, _p
 /* v1.2 discovery arc: the worlds you've stood on. Planetfall turns an
    orbital survey into a GROUND survey — the census and mineral veins are
    read from the ground, never from orbit. Earth (133) is home: always
-   known, and landing there never announces itself. Save field `land`;
-   pre-1.2 saves are grandfathered in loadSave (a veteran's charted
-   universe must never re-hide). */
+   known, and landing there never announces itself. Save field `land`. */
 const landed=new Set();
 /* systems intertwining (v1.2): the first landing on a world PAYS — a small
    deterministic element + stardust trace (field samples), granted when the
@@ -8243,8 +7905,7 @@ let _pendingSample=null, scoutId=null;
    SUCCESSFUL contact. Landing attempts one automatically — succeed and
    the census is yours; fail and the wary locals wound you (the field
    scout takes the hit if one stands). Land again to retry. Conquest and
-   home never need to ask. Save `cont`; absent ⇒ grandfathered from
-   landed+conquered so nobody's known census re-hides. */
+   home never need to ask. Save `cont`. */
 const contacted=new Set();
 let _pendingContact=null;
 function routeHit(dmg, why){
@@ -8494,6 +8155,13 @@ function _descRoll(pl){
    samples and the vista - all without ever leaving the system view */
 function _performLanding(pl){
   noteLanding(pl.P.seed);
+  /* stood-on tracking (Groundfall/Trailblazer, the expedition stats row)
+     lived in the dead surface-mode frame loop since 1.3.8 and froze —
+     it rides the landing rite itself now (v1.5 catch). Training landings
+     stay sandboxed, home always counts. */
+  const _ps=pl.P.seed;
+  if(_ps===133) unlock('home');
+  if((tutDone||_ps===133) && !surfSeen.has(_ps)){ surfSeen.add(_ps); checkAch(); queueSave(); }
   _pendingContact=pl.P.seed;         /* inhabited worlds: contact rides the card render */
   if(hdOn){ try{ openLandingVista(pl); }catch(_){ } }
   playWhoosh();
@@ -8721,8 +8389,7 @@ function renderPanel(p, isLocked){
          GLANCE (hover) → ORBITAL SURVEY (tap/lock) → GROUND SURVEY (land).
          grounded gates the census and prospecting; Earth is home, always known. */
       /* conquered counts as grounded: you rule the world and harvest it —
-         its census was never going to hide from you (matches the veteran
-         grandfather rule; review catch) */
+         its census was never going to hide from you (review catch) */
       grounded = d.planetSeed===133 || landed.has(d.planetSeed) || conquered.has(d.planetSeed) ||
         (st.mode==='surface' && st.planet && st.planet.P && st.planet.P.seed===d.planetSeed);
       /* the world's BIOME (v1.3.5) — the sub-label wears it, a row speaks
@@ -9272,9 +8939,8 @@ function artOf(en){ return en.art||(en.art=en.genome?speciesPortrait(en.genome):
    summit. Distance = rarity, the same law as danger = rarity. App-layer
    only (genomes, combat power and portraits never change — POWER IS
    DECOUPLED FROM RARITY); guardians and Paragons keep their forced grades;
-   bred/imported creatures carry no origin and are never capped; and every
-   entry catalogued BEFORE this law (no rc marker in the save) keeps the
-   grade the player was shown — nothing ever downgrades in someone's hands. */
+   bred/imported creatures carry no origin and are never capped. Since the
+   v1.5 fresh start every catalogue lives under the law from its first entry. */
 const RING_SPECTRUM=[
   {cap:5,  n:'the Neighborhood',   note:'up to Legendary'},
   {cap:8,  n:'the home galaxy',    note:'up to Mythic'},
@@ -9302,10 +8968,8 @@ function ringGrade(g, grade, where){
   return colorGrade(dom, g.seed, {salt:0x10F, force:cap});
 }
 /* the ring spectrum for WORLDS AND STARS (Nick: "apply it across the whole
-   board"): spectral designations obey the same distance ladder — but ONLY
-   for expeditions begun under the law (save flag rsw). A veteran's card
-   that once read Prismatic must never re-read Deep (vague-never-wrong). */
-let _ringWorlds=false;
+   board"): spectral designations obey the same distance ladder. Since the
+   v1.5 fresh start every expedition lives under the law — no flag. */
 /* recover a designation's SPECTRA domain from its own label (survey BUG B:
    the first clamp spoke the creature language — every clamped world read
    "Gray-Gold". Worlds wear color, not stars; the label IS the domain). */
@@ -9335,7 +8999,7 @@ function ringDesignation(d){
   /* clamp a descriptor's designation in place, once, by where it lives —
      every downstream reader (card row, border tint, spoils, reserves,
      samples, signatures) then sees ONE coherent tier */
-  if(!_ringWorlds || !d || !d.designation || !d.where || d._ringed) return d;
+  if(!d || !d.designation || !d.where || d._ringed) return d;
   d._ringed=true;
   const cap=gradeCapAt(d.where);
   if(d.designation.tier>cap){
@@ -9349,15 +9013,14 @@ function ringDesignation(d){
   }
   return d;
 }
-function _storeSpecies(g, from, where, deferArt, capExempt){
+function _storeSpecies(g, from, where, deferArt){
   const id=codexId(g);
   if(codex.has(id)) return null;
   const d=describeSpecies(g);
   /* deferArt (save restore): don't paint 300 portraits synchronously at
      boot — consumers go through artOf() and pay per view (ship audit C2) */
   const entry={id, name:d.name, kind:d.kind, desc:d.desc, diet:d.diet||null,
-    detail:d.detail||'', art:deferArt?null:speciesPortrait(g), grade:capExempt?d.grade:ringGrade(g, d.grade, where||null),
-    rc:capExempt?0:1,   /* ring-capped era marker — persists so a veteran's pre-law grades never downgrade */
+    detail:d.detail||'', art:deferArt?null:speciesPortrait(g), grade:ringGrade(g, d.grade, where||null),
     gen:g.gen||0, genome:g, from:from||'Unknown world', where:where||null, hybrid:!!g.parents,
     realm:classifyRealm(g), role:ecologyRole(g), biome:realmBiome(g), mods:realmModifiers(g),
     sapient:sapienceTier(g)};
@@ -10047,7 +9710,6 @@ document.addEventListener('pointerdown', ()=>{       /* tap skips the lane */
    Owns: startNewGame
    ---------------------------------------------------------------- */
 function startNewGame(){
-  _ringWorlds=true;   /* a fresh expedition lives under the ring spectrum, worlds included */
   const solStar={x:SOL_POS.x, y:SOL_POS.y, c:'#fff4d8', s:1.1, seed:SOL_SEED, sol:true};
   const homeGal={x:HOME_POS.x, y:HOME_POS.y, size:78, sp:0, tilt:0.62, rot:0.5, seed:HOME_GAL_SEED, home:true};
   goTo({type:'star', gal:homeGal, star:solStar});
@@ -10582,13 +10244,50 @@ function onSpeciesStored(entry){
 }
 
 /* ================================================================
-   @module SaveSystem [app] — debounced save, hardened load, reset & wipe (cfcc_save_v1)
+   @module SaveSystem [app] — debounced save, hardened load, reset & wipe (cfcc_save_v2)
    Deps: player-state, atlas, compendium, bootstrap, player, settings, audio, notify, naming-ui, economy, events, prime, guide, Rand, ui-dom, progression, ui-stats, newgame
-   API:  queueSave, wipeSaveAndReload, loadSave, SAVE_KEY
+   API:  queueSave, wipeSaveAndReload, loadSave, SAVE_KEY, readLegacySave, legacyFarewell
    ================================================================ */
 const SaveSystem=(()=>{
 /* ---- save / load (local only — the universe needs no saving, it's math) ---- */
-const SAVE_KEY='cfcc_save_v1';
+/* v1.5 FRESH START: the frontier begins anew for everybody. The key bump
+   IS the wipe — cfcc_save_v1 is read once at boot for the farewell card
+   (the old expedition's rarest find gets its send-off), then removed.
+   No migration, nothing grandfathered; the Ascent is every explorer's
+   canon opening now. The universe itself never changed — same seeds,
+   same worlds, same share codes. */
+const SAVE_KEY='cfcc_save_v2';
+const LEGACY_SAVE_KEY='cfcc_save_v1';
+/* the farewell read: mine the OLD save for its rarest catalogued find so
+   the send-off card can honor it, then remove the key. One read, ever. */
+let _farewell=null;
+function readLegacySave(){
+  try{
+    const raw=localStorage.getItem(LEGACY_SAVE_KEY);
+    if(!raw) return;
+    try{
+      const od=JSON.parse(raw);
+      const nm=new Map();
+      for(const kv of (od.names||[])){ if(kv && typeof kv[0]==='string'){ const v=cleanName(kv[1]); if(v) nm.set(kv[0], v); } }
+      let best=null;
+      const list=Array.isArray(od.codex)?od.codex.slice(0,600):[];
+      for(const e of list){
+        if(!e || !e.g) continue;
+        try{
+          const d=describeSpecies(e.g);
+          if(!d || !d.grade) continue;
+          /* the grade the player actually saw: pre-law entries kept their
+             raw roll, post-law entries wore the ring clamp */
+          const grade=e.rc?ringGrade(e.g, d.grade, e.w||null):d.grade;
+          if(!best || grade.tier>best.grade.tier) best={g:e.g, name:nm.get('c'+codexId(e.g))||d.name, kind:d.kind, grade};
+        }catch(_){ }
+      }
+      _farewell={me:cleanName(od.me||'')||'', best, n:list.length};
+    }catch(_){ _farewell={me:'', best:null, n:0}; }
+    localStorage.removeItem(LEGACY_SAVE_KEY);
+  }catch(_){ }
+}
+function legacyFarewell(){ return _farewell; }
 let _saveT=0, _wiping=false;
 let _saveFailWarned=false;
 function queueSave(){ if(_loading||_wiping) return; clearTimeout(_saveT); _saveT=setTimeout(doSave, 900); }
@@ -10626,7 +10325,6 @@ function doSave(){
          anyway, and any eviction silently refills a finite reserve —
          entries are two numbers, the cap bought nothing) */
       at:Date.now(),   /* wall-clock save stamp — anchors offline-accrual clamps on load */
-      rsw:_ringWorlds?1:0,   /* world designations obey the ring spectrum (post-law expeditions only) */
       cargo:[...cargo], minedw:[...mined], mx:[...mineX], tech:[...techOwned], mines:stats.mines||0,
       items:[...items], eq:equip, crafts:stats.crafts||0, minedout:stats.minedout||0,
       asc:ascCh, ascp:ascProg,
@@ -10642,7 +10340,7 @@ function doSave(){
       ach:[...unlocked],
       log, home:homeId,
       prime:primeFill, frontier:frontierUnlocked?1:0, ending:frontierEnding, guide:seenGuide?1:0, tut:tutDone?1:0, rn:_rnSeen,
-      codex:[...codex.values()].map(e=>({g:e.genome, f:e.from, w:e.where||null, rc:e.rc?1:0})),
+      codex:[...codex.values()].map(e=>({g:e.genome, f:e.from, w:e.where||null})),
     }));
   }catch(_){
     /* private mode or quota — session continues unsaved */
@@ -10688,9 +10386,9 @@ function loadSave(){
     const _atL=clamp(num(data.at, _nowL), 0, _nowL);
     const _minT=Math.max(0, _atL-30*6e5);
     for(const kv of (data.minedw||[])){ if(kv && kv[0]!=null) mined.set(kv[0], clamp(num(kv[1]), _minT, _nowL)); }
-    /* v1.4 finite reserves: mx = pulls taken per world. Absent (pre-1.4
-       save) ⇒ every previously-mined world counts one pull — a veteran's
-       reserves stand effectively full. */
+    /* v1.4 finite reserves: mx = pulls taken per world. Absent (edited or
+       truncated save) ⇒ every mined world counts one pull, so a finite
+       reserve can never silently refill. */
     if(Array.isArray(data.mx)){
       for(const kv of data.mx){ if(kv && kv[0]!=null) mineX.set(kv[0], clamp(num(kv[1]), 0, 1e7)|0); }
       /* review catch: mx is capped (deepest-mined kept) while minedw is
@@ -10713,15 +10411,12 @@ function loadSave(){
     }
     stats.crafts=num(data.crafts);
     stats.minedout=num(data.minedout);
-    _ringWorlds=data.rsw===1;   /* absent (pre-law save) ⇒ world cards keep the designations they always showed */
-    /* v1.4 THE ASCENT. asc ABSENT (pre-1.4 save) ⇒ the whole Ascent reads
-       complete — veterans already hold the sky; nothing may re-lock it. */
-    if(data.asc===undefined){ ascCh=ASC_CHAPTERS.length; }
-    else {
-      ascCh=clamp(num(data.asc), 0, ASC_CHAPTERS.length)|0;
-      if(data.ascp && typeof data.ascp==='object'){
-        for(const k in data.ascp){ const v=+data.ascp[k]; if(typeof k==='string' && k.length<24 && Number.isFinite(v) && v>=0) ascProg[k]=Math.min(v|0, 999); }
-      }
+    /* v1.4 THE ASCENT — every v2 expedition climbs it. asc absent (edited
+       save) ⇒ chapter 1: the safe default is the canon opening, and the
+       built ship systems still speak through ascStage either way. */
+    ascCh=clamp(num(data.asc), 0, ASC_CHAPTERS.length)|0;
+    if(data.ascp && typeof data.ascp==='object'){
+      for(const k in data.ascp){ const v=+data.ascp[k]; if(typeof k==='string' && k.length<24 && Number.isFinite(v) && v>=0) ascProg[k]=Math.min(v|0, 999); }
     }
     showCargoBtn();
     nameHue=Number.isFinite(+data.nh)?clamp((+data.nh)|0, -1, RANK_HUES.length-1):-1;
@@ -10764,9 +10459,7 @@ function loadSave(){
     for(const s of (data.evts||[])) eventKeysSeen.add(s);
     for(const s of (data.evann||[])) _evAnnounced.add(s);
     for(const a of (data.ach||[])) unlocked.add(a);
-    /* ring-spectrum grandfather: entries saved WITHOUT the rc marker were
-       catalogued before the law — they keep the grade the player saw */
-    for(const e of (data.codex||[])){ if(e && e.g) _storeSpecies(e.g, e.f, e.w||null, true, !e.rc); }
+    for(const e of (data.codex||[])){ if(e && e.g) _storeSpecies(e.g, e.f, e.w||null, true); }
     /* the field scout must still exist in the Compendium (it may have been
        bred away, fed away, or lost) — a stale id silently stands down */
     scoutId=(typeof data.scout==='string' && codex.has(data.scout)) ? data.scout : null;
@@ -10779,27 +10472,8 @@ function loadSave(){
     }
     for(const it of (data.log||[])){ if(it && it.id){ it.star=''; logMap.set(it.id, it); } }
     homeId=(data.home && logMap.has(data.home))?data.home:null;
-    /* v1.2 discovery arc. land absent (pre-1.2 save) ⇒ grandfather: every
-       world the veteran has charted, settled or mined counts as ground-
-       surveyed — the arc must never re-hide a known universe. */
-    if(data.land){
-      for(const s of (data.land||[])){ const n=+s; if(Number.isFinite(n)) landed.add(n); }
-    } else {
-      for(const id of logMap.keys()){ if(typeof id==='string' && id[0]==='p'){ const n=+id.slice(1); if(Number.isFinite(n)) landed.add(n); } }
-      for(const k of conquered.keys()) landed.add(k);
-      for(const k of mined.keys()) landed.add(k);
-      /* bioscanned worlds too — the saved Atlas is capped at 120, but
-         surveyedSet is the veteran's real footprint (review catch) */
-      for(const s of surveyedSet) landed.add(s);
-    }
-    /* first contact (v1.2.2). cont absent (older save) ⇒ every world the
-       player has stood on or conquered keeps its census — no re-hiding */
-    if(data.cont){
-      for(const s of (data.cont||[])){ const n=+s; if(Number.isFinite(n)) contacted.add(n); }
-    } else {
-      for(const s of landed) contacted.add(s);
-      for(const k of conquered.keys()) contacted.add(k);
-    }
+    for(const s of (data.land||[])){ const n=+s; if(Number.isFinite(n)) landed.add(n); }
+    for(const s of (data.cont||[])){ const n=+s; if(Number.isFinite(n)) contacted.add(n); }
     /* the descent's pity ramp (v1.3.5): wave-off progress survives a
        reload — losing 5 climbs on a 10% world to a refresh would be
        rage-quit fuel. Absent ⇒ empty, capped, clamped. */
@@ -10813,18 +10487,8 @@ function loadSave(){
     if(data.prime && typeof data.prime==='object'){ for(const k in data.prime) if(SIG_IDS.includes(k)) primeFill[k]=data.prime[k]; }
     frontierUnlocked=!!data.frontier; frontierEnding=data.ending||null;
     seenGuide=!!data.guide;
-    tutDone = data.tut===undefined ? true : !!data.tut;   /* pre-tutorial saves are veterans */
+    tutDone = data.tut===undefined ? true : !!data.tut;   /* tut absent (edited save) ⇒ done — never force training on a held run */
     _rnSeen = typeof data.rn==='string' ? data.rn.slice(0,12) : '0';   /* pre-notes saves get the debut bulletin once */
-    /* veterans: trades already proven complete their starter charters
-       quietly (no retroactive pay — starters are onboarding, not income) */
-    if(tutDone){
-      if(landed.size>0 || (stats.landings||0)>0) chDone.add('st-land');
-      if((stats.mines||0)>0) chDone.add('st-mine');
-      if(surveyedSet.size>0) chDone.add('st-scan');
-      if(scoutId) chDone.add('st-scout');
-      let _cq2=false; for(const k of conquered.keys()) if(k!==133){ _cq2=true; break; }
-      if(_cq2) chDone.add('st-conq');   /* Earth flies your flag from the start — it doesn't count */
-    }
     _chBadge();
     /* retroactive: signatures your existing Codex already deserves, claimed quietly */
     if(primeCount()<9) for(const e of codex.values()) primeCheckSpecies(e, true);
@@ -10856,7 +10520,6 @@ function resetMemoryState(){
     mined.clear(); mineX.clear(); cargo.clear(); techOwned.clear();
     items.clear(); for(const k in equip) delete equip[k]; _eqOpen=null;
     ascCh=0; ascProg={};   /* a fresh expedition climbs the Ascent again */
-    _ringWorlds=true;      /* and lives fully under the ring spectrum */
     /* post-deploy audit: the Binder economy survived a reset — claimed
        sets stayed "claimed ✓" into the new run, making their one-time
        bounties permanently unclaimable. Same family: beacon key, paragon
@@ -10910,9 +10573,9 @@ function wipeSaveAndReload(){
 window.addEventListener('beforeunload', doSave);
 window.addEventListener('pageshow', e=>{ if(e && e.persisted) location.reload(); });
 document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') doSave(); });
-return Object.freeze({queueSave, wipeSaveAndReload, loadSave, SAVE_KEY});
+return Object.freeze({queueSave, wipeSaveAndReload, loadSave, SAVE_KEY, readLegacySave, legacyFarewell});
 })();
-const {queueSave, wipeSaveAndReload, loadSave, SAVE_KEY}=SaveSystem;
+const {queueSave, wipeSaveAndReload, loadSave, SAVE_KEY, readLegacySave, legacyFarewell}=SaveSystem;
 /* @end SaveSystem */
 
 /* ---- share codes: a pointer into the one shared universe ----
@@ -13369,7 +13032,7 @@ function biomeVeinFor(seed){
     return (b && BIOME_VEIN[b.k])||null;
   }catch(_){ return null; }
 }
-const mined=new Map();         /* pseed → last mine ms (auto-extractor anchor + veteran grandfather) */
+const mined=new Map();         /* pseed → last mine ms (auto-extractor accrual anchor) */
 const mineX=new Map();         /* pseed → extractions taken so far (save field mx) */
 const cargo=new Map();         /* element symbol → qty */
 /* ---- v1.4 THE ASCENT: mining is a CLICK, not a timer (Nick: "I don't
@@ -14551,7 +14214,7 @@ nameIn.addEventListener('input', ()=>{ const ok=document.getElementById('nameok'
    @section tutorial [app] — event-gated new-player field training (sandboxed)
    Owns: tutDone, _tutRig, gameEvent, TUT_STEPS, startTutorial, tutAbort
    ---------------------------------------------------------------- */
-let tutDone=false;            /* saved as `tut`; absent in old saves = veteran */
+let tutDone=false;            /* saved as `tut`; absent (edited save) reads done */
 let _tutRig=null;             /* while training, key rolls are rigged kind: {heal,breed,feed} */
 let _tutHook=null, _tutStep=-1, _tutSnap=null, _tutPreIds=null, _tutTimer=0;
 /* the one funnel game systems report through; free when no tutorial listens */
@@ -14682,9 +14345,8 @@ if(chBtn) chBtn.addEventListener('click', ()=>{
    The mainline: ordered chapters on the charter machinery. New saves start
    LOCKED TO SOL — the whole sky stays visible and surveyable (gate TRAVEL,
    never CURIOSITY) — and mine → craft their way off the rock. Each chapter's
-   capstone is a SHIP SYSTEM whose existence IS the unlock, so veterans who
-   already hold the capability are grandfathered past the gate by absence of
-   the save field. The ring ladder: Sol → the Neighborhood (a slice of the
+   capstone is a SHIP SYSTEM whose existence IS the unlock — the built
+   drives speak for themselves at every gate. The ring ladder: Sol → the Neighborhood (a slice of the
    home galaxy) → the whole galaxy → the intergalactic frontier (where the
    Prime Codex Signature ladder takes over, as it always did). */
 /* ----------------------------------------------------------------
@@ -14727,8 +14389,7 @@ const ASC_CHAPTERS=[
 let ascCh=0;          /* current chapter index; length ⇒ the Ascent is complete (save asc) */
 let ascProg={};       /* goal id → count (save ascp) */
 function ascStage(){
-  /* the ring you stand on — the built system IS the key, so a veteran with
-     no asc field but no drives still reads complete via ascCh */
+  /* the ring you stand on — the built system IS the key */
   if(ascCh>=ASC_CHAPTERS.length) return 3;
   if(itemCount('igdrive')) return 3;
   if(itemCount('array')) return 2;
@@ -15013,7 +14674,7 @@ function _tutFinish(){
        charters teach the trades in order, each paid on the spot */
     pushNotif('Expedition Charters', 'Your hunt board is open (Charters, left rail) — first charter: Make planetfall.');
     /* v1.4: a NEW expedition starts its Ascent — the mainline announces
-       itself once, right where training ends (veterans read complete) */
+       itself once, right where training ends */
     if(typeof _ascActive==='function' && _ascActive()){
       pushNotif('⬆ The Ascent — '+_ascActive().name, 'Sol is your charter for now. '+_ascActive().intro+' (Pinned atop your Charters board.)');
     }
@@ -15616,15 +15277,48 @@ function whereOfView(){
     if(st.mode==='galaxy' && st.gal) return {type:'galaxy', gal:slimGal(st.gal)};
     if(st.mode==='system' && st.gal && st.star)
       return {type:'star', gal:slimGal(st.gal), star:{x:st.star.x, y:st.star.y, seed:st.star.seed}};
-    if(st.mode==='surface' && st.gal && st.star && st.planet && st.planet.P)
-      return {type:'planet', gal:slimGal(st.gal), star:{x:st.star.x, y:st.star.y, seed:st.star.seed}, pseed:st.planet.P.seed};
   }catch(_){}
   return null;
 }
 let _savedView=null;
 
+/* ---- the farewell card (v1.5 fresh start): the old expedition is
+   honored, the frontier begins anew. Shown once, over everything but
+   death, then never again — the legacy key is already gone. ---- */
+function showFarewell(fw){
+  const box=document.createElement('div');
+  box.id='farewellbox';
+  box.style.cssText='position:fixed;inset:0;z-index:46;display:flex;align-items:center;justify-content:center;background:rgba(4,6,14,0.82);backdrop-filter:blur(6px)';
+  let bestHtml='';
+  if(fw.best){
+    let art='';
+    try{ art=speciesPortrait(fw.best.g)||''; }catch(_){ }
+    const gr=fw.best.grade;
+    bestHtml=
+      '<div style="margin:12px 0 4px;padding:13px 14px;border-radius:12px;background:rgba(20,26,48,0.55);border:1px solid rgba(150,162,210,0.22)">'+
+        (art?'<img src="'+art+'" alt="" style="width:104px;height:104px;border-radius:12px;display:block;margin:0 auto 8px;filter:drop-shadow(0 0 14px '+gr.hex+'66)">':'')+
+        '<div style="font:700 14px var(--ui);color:var(--ink)">'+fw.best.name+'</div>'+
+        '<div style="font:600 10.5px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:'+gr.hex+';margin-top:3px">'+gr.name+'</div>'+
+        '<div style="font:11.5px/1.55 var(--ui);color:var(--dim);margin-top:7px">Your rarest find stands in the old record forever — its world is still out there, wearing the same sky.</div>'+
+      '</div>';
+  }
+  box.innerHTML=
+    '<div class="card" style="width:min(400px,calc(100vw - 36px));max-height:calc(100dvh - 40px);overflow-y:auto;text-align:center;padding:22px 20px;border-radius:16px;background:linear-gradient(180deg,rgba(26,32,58,0.97),rgba(13,17,32,0.97));border:1px solid rgba(170,184,236,0.3);box-shadow:0 20px 70px rgba(0,0,0,0.6)">'+
+      '<div style="font:700 10px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--plasma)">The frontier begins anew</div>'+
+      '<h3 style="font:700 24px var(--ui);margin:9px 0 8px;color:#f0cf8a">Farewell'+(fw.me?', '+fw.me:'')+'</h3>'+
+      '<div style="font:12.5px/1.65 var(--ui);color:var(--dim)">Your old expedition is honored — '+(fw.n?fw.n+' species catalogued, ':'')+'every league of it real. With v1.5 the frontier starts everyone anew on the same footing: one sky, one Ascent, no head starts.</div>'+
+      bestHtml+
+      '<button id="farewellok" style="width:100%;margin-top:13px;padding:12px 0;font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:#1a1206;border:0;border-radius:11px;background:linear-gradient(180deg,#ffe9b0,#e0a84a);cursor:pointer">Begin the new expedition</button>'+
+    '</div>';
+  document.body.appendChild(box);
+  const ok=box.querySelector('#farewellok');
+  if(ok) ok.addEventListener('click', ()=>{ try{ box.remove(); }catch(_){ box.style.display='none'; } });
+}
+
 /* ---- boot: restore your expedition, honor a shared link ---- */
+readLegacySave();   /* v1.5 fresh start — one read of the old key, then gone */
 const _hadSave=loadSave();
+try{ const _fw=legacyFarewell(); if(_fw) showFarewell(_fw); }catch(_){}
 if(!explorerName || explorerName==='Explorer') askExplorerName(true);
 renderRank();
 renderHP();
@@ -15657,7 +15351,7 @@ if(_hadSave && tutDone && _rnSeen!==GAME_VERSION){
 
 /* ---------------- main loop ---------------- */
 /* one draw pass per zoom mode — adding a mode means registering a painter */
-const MODE_PAINTERS=Object.freeze({universe:drawUniverse, galaxy:drawGalaxy, system:drawSystem, surface:drawSurface});
+const MODE_PAINTERS=Object.freeze({universe:drawUniverse, galaxy:drawGalaxy, system:drawSystem});
 function frameInner(){
   ctx.setTransform(DPR,0,0,DPR,0,0);
   const time=perfTime();
@@ -15672,15 +15366,10 @@ function frameInner(){
     if(st.gal.quasar) unlock('quasar');
     if(st.gal.dwarf) unlock('dwarfg');
   }
-  if(st.mode==='surface' && st.planet && st.planet.P){
-    const ps=st.planet.P.seed;
-    if(ps===133) unlock('home');
-    if(!surfSeen.has(ps)){ surfSeen.add(ps); checkAch(); queueSave(); }
-  }
   picks.length=0;
   checkTransitions();
   if(st.mode!==_lastMode){ _lastMode=st.mode; locked=null; _autoScanned=null; _frozenFor=null; }
-  (MODE_PAINTERS[st.mode]||drawSurface)(time);
+  (MODE_PAINTERS[st.mode]||drawUniverse)(time);
   if(st.fade>0.02){
     ctx.fillStyle=`rgba(2,2,8,${st.fade})`;
     ctx.fillRect(0,0,W,H);
@@ -15700,9 +15389,7 @@ function frameInner(){
         (p.kind==='comet' && p.data.ci!=null && p.data.ci===ref.data.ci)
       )))||null;
   };
-  if(st.mode==='surface' && st.planet){
-    hovered={kind:'planet', data:{P:st.planet.P, sys:st.sys, pl:st.planet}};
-  } else {
+  {
     if(mouse.x!=null && !dragging && !mouseOverUI){
       let bd=1e9;
       for(const p of picks){
@@ -15718,7 +15405,7 @@ function frameInner(){
        inspecting. At universe/galaxy scale a fast sweep strobed every
        star's card — taps still open everything, everywhere (the star
        signature hunts depend on them). */
-    if(hovered && st.mode!=='system' && st.mode!=='surface') hovered=null;
+    if(hovered && st.mode!=='system') hovered=null;
     if(hovered && !tutDone){
       /* training shows only the current lesson's card: a cursor sweep
          across Sol must not pop glances over the guidance (Nick's ask).
