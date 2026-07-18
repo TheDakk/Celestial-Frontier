@@ -371,6 +371,21 @@ PHASE 1 — LANDED IN THE GAME (this commit, flag-gated):
 ##   chapter pinned on top); full inventory/bench visual refresh ships
 ##   WITH it (Nick: "make sure craft bench and inventory are completely
 ##   up to date and looking great").
+## - HD MATERIAL ICONS (Nick 2026-07-17, DONE in v1.3 as groundwork):
+##   every minable element renders painterly at 96px behind the hd flag
+##   — faceted gems w/ star glints, translucent ice spears, glowing
+##   glass flasks, brushed beveled ingot stacks (_hdElemIcon). The
+##   inventory IS the bag (Minecraft/Satisfactory is the explicit
+##   reference bar — mine from worlds, build at the bench). v1.4 PART
+##   icons extend this same language (plates/wires/coils/cores), and
+##   the RARITY AURA system (also DONE: grade-scaled spectral glow on
+##   portraits — none <T4, grade-hex glow up the ladder, foil glints
+##   T8+, prismatic shimmer at summit; Pokémon-foil WOW without
+##   swamping the art) sets the bar for how rank reads everywhere.
+## - v1.4 ties it ALL into the progression flow: quests route players
+##   from mining → crafting → travel → BATTLING/collecting (the combat
+##   and Compendium loops become quest goals so players always know
+##   the next step into the fun).
 ## - GUARDRAILS: share codes to unreachable places become a quest hint,
 ##   not a dead tap; reset keeps the Ascent restartable; smoke needs a
 ##   full chapter-1 drive; save schema: quest progress fields with

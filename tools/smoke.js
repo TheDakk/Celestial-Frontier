@@ -494,6 +494,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       ['lifeless ocean — bare beach, no moon glitter', { seed: 9008, era: 'none', pal: 'night', biome: 'island', flora: false, moons: 0 }],
       ['desert with hardy vegetation (V3)', { seed: 9009, era: 'none', pal: 'sand', flora: true }],
       ['industrial-era town, river kept (V6+V7)', { seed: 9010, era: 'town', pal: 'day', moons: 1 }],
+      ['the works: beasts + herd + fliers + swimmers + rings + star tint', { seed: 9011, era: 'none', pal: 'day',
+        genes: [{ bulk: 1.1, neck: 0.5, horn: 0.6, tail: 0.5, leg: 0.5, stripes: 0.5, mottle: 0.7, base: [150, 110, 80], dark: [60, 45, 32], rim: 'rgba(255,220,170,1)', eye: '#7fd6ff', plan: 4, len: 1.1, tier: 5 }],
+        herd: 4, air: 2, aqua: 1, ring: true, stc: '#ff9a6a', moons: 1 }],
+      ['dry world — no river at all (water none)', { seed: 9012, era: 'none', pal: 'day', water: 'none', flora: false }],
+      ['duskized ice world (low sun)', { seed: 9013, era: 'none', pal: 'ice', duskize: true, wx: 'snow' }],
     ]) {
       let cvS = null, err = null;
       try { cvS = skH.hdVista(o); } catch (e) { err = e; }
@@ -519,7 +524,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     const cgEl = sk.doc.getElementById('cargo');
     check('cargo: the Inventory tab shows item tiles with element icons',
       cgEl.style.display === 'block' && cgEl.querySelectorAll('.slot img').length > 0
-      && cgEl.querySelector('.slot img').src.startsWith('data:image/svg'));
+      // procedural data-URI icons — SVG in Classic, canvas PNG in HD (jsdom stubs the latter as 'data:,')
+      && cgEl.querySelector('.slot img').src.startsWith('data:'));
     check('cargo: tiles carry quantities', !!cgEl.querySelector('.slot .qty'));
     click2(cgEl.querySelector('[data-ct="bench"]'), sk.w);
     check('cargo: the Research Bench lives on its own tab', cgEl.textContent.includes('Deep Scanners')

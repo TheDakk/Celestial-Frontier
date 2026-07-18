@@ -1735,8 +1735,11 @@ function surfaceColor(P, u, lat, fbm, fx){
       let c;
       if(e<0.30) c=mix([40,80,104],[96,134,144], e/0.30);      /* brine basins */
       else {
+        /* CONTINUOUS at the waterline (round-2 audit): brine edge → wet
+           salt → dry salt → desert, no hard cut at e=0.30 */
         const dst=mix([206,168,104],[160,122,74], fbm(u*3.1+50, lat*3.1+9, 4));
-        c=mix([192,174,128], dst, sm(e,0.32,0.46));            /* salt flats feather out */
+        c=mix([96,134,144],[192,174,128], sm(e,0.30,0.365));
+        c=mix(c, dst, sm(e,0.35,0.48));
         c=mix(c,[226,222,216], sm(e,0.72,0.95));
       }
       return c;
@@ -1751,7 +1754,7 @@ function surfaceColor(P, u, lat, fbm, fx){
       land=mix(land,[118,102,82], sm(e,0.60,0.74));
       land=mix(land,[228,228,234], sm(e,0.72,0.86));           /* snowline feathers in */
       const aridT=sm(fbm(u*2.6+50, lat*2.6+9, 4),0.50,0.64)*(1-sm(polar,0.30,0.46));
-      land=mix(land, mix([196,164,104],[168,134,82], fbm(u*7,lat*7,3)), aridT);
+      if(aridT>0) land=mix(land, mix([196,164,104],[168,134,82], fbm(u*7,lat*7,3)), aridT);   /* skip the 2nd fbm when moot (heat) */
       c=mix([64,150,185], mix([198,182,134],land, sm(e,0.468,0.535)), sm(e,0.44,0.492));
     }
     const capT=Math.max(sm(polar,0.80-P.iceAmt*0.1,0.95), sm(polar,0.62,0.84)*sm(e,0.52,0.66));
@@ -1760,8 +1763,12 @@ function surfaceColor(P, u, lat, fbm, fx){
   if(t==='ocean'){
     const smO=(v,a,b2)=>{const x2=clamp((v-a)/(b2-a),0,1);return x2*x2*(3-2*x2)};
     let c;
-    if(e<0.62) c=mix([6,30,86],[24,96,164], e/0.62);
-    else c=mix([70,160,190], mix([190,176,130], hsl(P.landHue,35,38), smO(e,0.65,0.80)), smO(e,0.62,0.66));
+    if(e<0.60) c=mix([6,30,86],[24,96,164], e/0.60);
+    else {
+      /* continuous surf line at e=0.60 (round-2 audit) */
+      c=mix([24,96,164],[70,160,190], smO(e,0.60,0.645));
+      c=mix(c, mix([190,176,130], hsl(P.landHue,35,38), smO(e,0.66,0.80)), smO(e,0.625,0.68));
+    }
     return mix(c,[232,242,250], smO(polar,0.80,0.93));   /* feathered pack ice */
   }
   if(t==='ice'){
@@ -1801,6 +1808,15 @@ const {surfaceColor, planetParams}=PlanetGen;
    serializes those objects and new fields would change the baseline
    (graphics overhaul V1/V9/I9) */
 const CARD_FACTS=new Map();   /* P.seed -> {band, lush, civLights} */
+/* house cache convention: cap it (round-2 audit) — regeneration from
+   seed is free, so FIFO eviction is harmless */
+function _cardFactsSet(seed, v){
+  if(CARD_FACTS.size>6000){ CARD_FACTS.delete(CARD_FACTS.keys().next().value); }
+  CARD_FACTS.set(seed, v);
+}
+/* surface tile fallback color, side-cached (was P._fb — a field on a
+   fingerprint-serialized domain object; round-2 audit) */
+const _FB_CACHE=new Map();
 
 /* ================================================================
    @module ThumbArt [app] — canvas sprites & thumbnails for planets, stars, moons, comets
@@ -3205,6 +3221,14 @@ return Object.freeze({shade, svgURI, b64encUtf8, b64decUtf8});
 })();
 const {shade, svgURI, b64encUtf8, b64decUtf8}=EncUtil;
 /* @end EncUtil */
+
+/* HD art switch — assigned by applyHd (hdart section), read by
+   SpeciesArt portraits and the element icons. TOP-LEVEL on purpose:
+   round-2 fallout found the first declaration hiding inside the
+   SpeciesArt IIFE, where the game's own applyHd could never reach it —
+   the flag silently never worked in-game until this hoist. */
+var HD_PORTRAITS=false;
+
 /* ================================================================
    @module SpeciesArt [app] — per-kingdom SVG portraits & specimen cards (cache capped 1,200)
    Deps: SpeciesTraits, Rand, EncUtil, input, Genome, player-state, viewport
@@ -3212,9 +3236,6 @@ const {shade, svgURI, b64encUtf8, b64decUtf8}=EncUtil;
    ================================================================ */
 const SpeciesArt=(()=>{
 const speciesArtCache=new Map();
-/* HD portrait switch — assigned by applyHd (hdart section); a plain var
-   here so SpeciesArt can read it without TDZ concerns at boot */
-var HD_PORTRAITS=false;
 const speciesArtRaw=new Map();
 function speciesPortrait(g){
   /* HD_PORTRAITS rides the hd flag (set by applyHd): the determinism
@@ -3340,161 +3361,7 @@ function speciesPortrait(g){
       inner+='<circle cx="'+ex.toFixed(1)+'" cy="'+ey.toFixed(1)+'" r="'+(2.2+sc).toFixed(1)+'" fill="'+ecol+'"'+(glow?F:'')+'/>';
       if(!glow) inner+='<circle cx="'+(ex+0.8).toFixed(1)+'" cy="'+(ey-0.8).toFixed(1)+'" r="0.9" fill="#fff" opacity="0.8"/>';
     }
-  } else {
-    // ===== FAUNA (HD, flag-gated overhaul V12): the WHOLE genome reaches
-    // the drawing — all 16 body plans, skin texture, locomotion, trait
-    // accents, and rank (Guardian/Paragon) now shape the portrait =====
-    const sc=FA_SIZE_M[(g.size||2)%FA_SIZE_M.length];
-    const cx=60;
-    const bodyShape=g.body%FA_BODY.length;
-    const serp = bodyShape===4, radial = bodyShape===15, segm = bodyShape===5;
-    let bw=30+sc*22, bh=18+sc*16;
-    if(bodyShape===13){ bw*=1.12; bh*=1.30; }              // squat heavy-boned
-    if(bodyShape===12||bodyShape===2){ bw*=0.82; bh*=0.68; } // spindly / stilt-legged
-    const cy=bodyShape===2?50:64;                           // stilts ride high
-    const headTxt=FA_HEAD[g.head%FA_HEAD.length];
-    const skin=FA_SKIN[(g.skin||0)%FA_SKIN.length];
-    const loco=FA_LOCO[(g.loco||0)%FA_LOCO.length];
-    const trait=FA_TRAIT[(g.trait||0)%FA_TRAIT.length];
-    const bodyOp=(bodyShape===9||skin==='translucent'||/translucent/.test(trait))?' opacity="0.74"':'';
-    // tail first (behind)
-    const tail=FA_TAIL[(g.tail||0)%FA_TAIL.length];
-    if(tail!=='none'){
-      const tx=cx-bw*0.9, ty=cy+4;
-      const whip=tail==='whip-like'||/whip-like/.test(trait);
-      if(tail==='finned') inner+='<path d="M'+tx+','+ty+' L'+(tx-22)+','+(ty-12)+' L'+(tx-16)+','+ty+' L'+(tx-22)+','+(ty+12)+' Z" fill="'+shade(base,-0.2)+'"/>';
-      else inner+='<path d="M'+tx+','+ty+' Q'+(tx-26)+','+(ty-6)+' '+(tx-(whip?38:30))+','+(ty+(whip?-20:6))+'" stroke="'+shade(base,-0.15)+'" stroke-width="'+(tail==='plumed'?9:(whip?3.5:5))+'" fill="none" stroke-linecap="round"/>';
-      if(tail==='stinger-tipped'||tail==='spiked') inner+='<circle cx="'+(tx-30)+'" cy="'+(ty+6)+'" r="4" fill="'+acc+'"/>';
-    }
-    // limbs — six-limbed bodies force 6; tentacled/gelatinous have none;
-    // stilts and runners stretch them, burrowers/climbers grow claws
-    let limbs=FA_LIMBS[(g.limbs||0)%FA_LIMBS.length];
-    if(bodyShape===0) limbs=Math.max(limbs,6);
-    if(bodyShape===3||bodyShape===9) limbs=0;
-    const legLen=(bodyShape===2||bodyShape===12)?2.0:(/runners|leapers|pack hunters/.test(loco)?1.35:1);
-    const legW=(bodyShape===13?1.5:((bodyShape===12||bodyShape===2)?0.62:1));
-    const claws=/burrowers|climbers|wall-clingers/.test(loco);
-    for(let i=0;i<limbs;i++){
-      const t=limbs>1?i/(limbs-1):0.5;
-      const lx=cx-bw*0.55+t*bw*1.1;
-      const down=cy+bh*0.6;
-      const foot=down+(14+sc*10*(0.6+R()*0.5))*legLen;
-      const splay=(t-0.5)*16;
-      inner+='<path d="M'+lx.toFixed(1)+','+down.toFixed(1)+' L'+(lx+splay).toFixed(1)+','+foot.toFixed(1)+'" stroke="'+shade(base,-0.2)+'" stroke-width="'+((3+sc*3)*legW).toFixed(1)+'" stroke-linecap="round"/>';
-      if(claws) inner+='<path d="M'+(lx+splay).toFixed(1)+','+foot.toFixed(1)+' l-3,4 m3,-4 l3,4" stroke="'+shade(base,-0.45)+'" stroke-width="1.6" stroke-linecap="round" fill="none"/>';
-    }
-    // wings & membranes: winged bodies, and GLIDERS get their sail
-    if(bodyShape===14||bodyShape===7||/gliders/.test(loco)){
-      const wop=bodyShape===14?0.55:0.42;
-      for(const sgn of [-1,1]) inner+='<path d="M'+cx+','+(cy-2)+' Q'+(cx+sgn*40)+','+(cy-34)+' '+(cx+sgn*52)+','+(cy+6)+' Q'+(cx+sgn*30)+','+(cy+2)+' '+cx+','+(cy+4)+' Z" fill="'+acc+'" opacity="'+wop+'"'+F+'/>';
-      if(bodyShape===14) for(const sgn of [-1,1]) inner+='<path d="M'+cx+','+(cy+4)+' Q'+(cx+sgn*30)+','+(cy+26)+' '+(cx+sgn*44)+','+(cy+18)+' Q'+(cx+sgn*22)+','+(cy+8)+' '+cx+','+(cy+8)+' Z" fill="'+acc+'" opacity="0.4"'+F+'/>';
-    }
-    // body — one silhouette per plan, no more shared ellipse
-    if(serp){
-      let d='M'+(cx-bw)+','+cy+' ';
-      for(let i=1;i<=6;i++){ d+='Q'+(cx-bw+i*bw*0.34)+','+(cy+(i%2?-14:14))+' '+(cx-bw+i*bw*0.34+10)+','+cy+' '; }
-      inner+='<path d="'+d+'" stroke="url(#bd)" stroke-width="'+(12+sc*8)+'" fill="none" stroke-linecap="round"'+F+'/>';
-    } else if(radial){
-      for(let i=0;i<7;i++){ const a=i/7*Math.PI*2; inner+='<ellipse cx="'+(cx+Math.cos(a)*bw*0.5).toFixed(1)+'" cy="'+(cy+Math.sin(a)*bw*0.5).toFixed(1)+'" rx="'+(bw*0.3).toFixed(1)+'" ry="7" transform="rotate('+(a*57.3).toFixed(0)+' '+(cx+Math.cos(a)*bw*0.5).toFixed(1)+' '+(cy+Math.sin(a)*bw*0.5).toFixed(1)+')" fill="url(#bd)"'+F+'/>'; }
-      inner+='<circle cx="'+cx+'" cy="'+cy+'" r="'+(bw*0.42)+'" fill="url(#bd)"'+F+'/>';
-    } else if(bodyShape===5){
-      // many-segmented: a chain of overlapping segments, not one ellipse
-      const nSeg=5;
-      for(let i=nSeg-1;i>=0;i--){
-        const sx2=cx-bw*0.8+i*(bw*1.6/(nSeg-1))*0.8;
-        inner+='<ellipse cx="'+sx2.toFixed(1)+'" cy="'+cy+'" rx="'+(bw*0.30).toFixed(1)+'" ry="'+(bh*0.9).toFixed(1)+'" fill="url(#bd)"'+F+'/>';
-      }
-    } else if(bodyShape===3){
-      // tentacled: a bell with reaching arms
-      inner+='<path d="M'+(cx-bw*0.7)+','+cy+' Q'+cx+','+(cy-bh*1.9)+' '+(cx+bw*0.7)+','+cy+' Z" fill="url(#bd)"'+bodyOp+F+'/>';
-      for(let i=0;i<6;i++){
-        const t=i/5, txx=cx-bw*0.55+t*bw*1.1;
-        inner+='<path d="M'+txx.toFixed(1)+','+cy+' q'+((t-0.5)*18).toFixed(1)+','+(14+R()*10).toFixed(1)+' '+((t-0.5)*30).toFixed(1)+','+(26+R()*12).toFixed(1)+'" stroke="'+shade(base,-0.15)+'" stroke-width="'+(3.5-t*0.5).toFixed(1)+'" fill="none" stroke-linecap="round"/>';
-      }
-    } else if(bodyShape===6){
-      // shelled: a great dome, the animal peeking beneath
-      inner+='<ellipse cx="'+cx+'" cy="'+(cy+bh*0.35)+'" rx="'+(bw*0.72)+'" ry="'+(bh*0.55)+'" fill="'+shade(base,-0.25)+'"/>';
-      inner+='<path d="M'+(cx-bw)+','+(cy+bh*0.3)+' A'+bw+','+(bh*1.5)+' 0 0 1 '+(cx+bw)+','+(cy+bh*0.3)+' Z" fill="url(#bd)"'+F+'/>';
-      for(let i=1;i<4;i++) inner+='<path d="M'+(cx-bw+i*bw*0.5)+','+(cy+bh*0.3)+' A'+(bw-i*bw*0.22)+','+(bh*(1.5-i*0.3))+' 0 0 1 '+(cx+bw-i*bw*0.18)+','+(cy+bh*0.3)+'" stroke="'+shade(base,-0.3)+'" stroke-width="1.6" fill="none" opacity="0.55"/>';
-    } else if(bodyShape===8){
-      // crystalline-plated: faceted, angular
-      inner+='<path d="M'+(cx-bw)+','+cy+' L'+(cx-bw*0.4)+','+(cy-bh)+' L'+(cx+bw*0.3)+','+(cy-bh*0.8)+' L'+(cx+bw)+','+(cy-bh*0.1)+' L'+(cx+bw*0.5)+','+(cy+bh*0.9)+' L'+(cx-bw*0.5)+','+(cy+bh)+' Z" fill="url(#bd)"'+F+'/>';
-      inner+='<path d="M'+(cx-bw*0.4)+','+(cy-bh)+' L'+(cx-bw*0.1)+','+(cy+bh*0.2)+' L'+(cx+bw*0.3)+','+(cy-bh*0.8)+' M'+(cx-bw*0.1)+','+(cy+bh*0.2)+' L'+(cx+bw*0.5)+','+(cy+bh*0.9)+'" stroke="'+shade(base,0.25)+'" stroke-width="1.4" fill="none" opacity="0.8"/>';
-    } else if(bodyShape===9){
-      // gelatinous: a soft blob with organelles adrift inside
-      inner+='<path d="M'+(cx-bw*0.9)+','+(cy+bh*0.5)+' Q'+(cx-bw)+','+(cy-bh*0.8)+' '+(cx-bw*0.2)+','+(cy-bh)+' Q'+(cx+bw*0.6)+','+(cy-bh*1.1)+' '+(cx+bw*0.9)+','+(cy-bh*0.1)+' Q'+(cx+bw)+','+(cy+bh*0.8)+' '+(cx+bw*0.2)+','+(cy+bh*0.9)+' Q'+(cx-bw*0.5)+','+(cy+bh)+' '+(cx-bw*0.9)+','+(cy+bh*0.5)+' Z" fill="url(#bd)" opacity="0.74"'+F+'/>';
-      for(let i=0;i<4;i++) inner+='<circle cx="'+(cx-bw*0.4+R()*bw*0.8).toFixed(1)+'" cy="'+(cy-bh*0.3+R()*bh*0.6).toFixed(1)+'" r="'+(2+R()*3.5).toFixed(1)+'" fill="'+acc+'" opacity="0.5"/>';
-    } else {
-      inner+='<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+bw+'" ry="'+bh+'" fill="url(#bd)"'+bodyOp+F+'/>';
-      if(bodyShape===1) for(let i=0;i<4;i++)  // armored: overlapping back-plates
-        inner+='<path d="M'+(cx-bw*0.8+i*bw*0.42)+','+(cy-bh*0.85)+' q'+(bw*0.2)+',-6 '+(bw*0.4)+',0" stroke="'+shade(base,-0.35)+'" stroke-width="3.4" fill="none" opacity="0.8"/>';
-      if(bodyShape===10) for(const sgn of [-1,1])  // tusked
-        inner+='<path d="M'+(cx+bw*0.72)+','+(cy+bh*0.3)+' q'+(10*sgn+8)+',10 '+(16)+','+(2+6*sgn)+'" stroke="#e8e2d0" stroke-width="3.6" fill="none" stroke-linecap="round"/>';
-      if(bodyShape===11) for(const sgn of [-1,1])  // horned (body-scale horns)
-        inner+='<path d="M'+(cx+bw*0.4*sgn)+','+(cy-bh*0.9)+' Q'+(cx+bw*0.55*sgn)+','+(cy-bh*1.9)+' '+(cx+bw*0.2*sgn)+','+(cy-bh*2.1)+'" stroke="'+acc+'" stroke-width="4" fill="none" stroke-linecap="round"/>';
-    }
-    // SKIN texture — the hide gene finally draws (V12)
-    if(!serp&&!radial){
-      if(skin==='scaled') for(let i=0;i<4;i++)for(let j=0;j<5;j++)
-        inner+='<path d="M'+(cx-bw*0.6+j*bw*0.3+(i%2?bw*0.15:0)).toFixed(1)+','+(cy-bh*0.5+i*bh*0.34).toFixed(1)+' q5,4 10,0" stroke="'+shade(base,-0.28)+'" stroke-width="1.2" fill="none" opacity="0.5"/>';
-      else if(skin==='furred'||skin==='feathered'||/feathered/.test(trait)) for(let i=0;i<14;i++){
-        const fx2=cx-bw*0.7+R()*bw*1.4, fy2=cy-bh*0.9+R()*bh*0.5;
-        inner+='<path d="M'+fx2.toFixed(1)+','+fy2.toFixed(1)+' q'+(skin==='feathered'?3:1.5)+',-'+(3+R()*3).toFixed(1)+' '+(skin==='feathered'?7:3)+',-'+(2+R()*4).toFixed(1)+'" stroke="'+shade(base,skin==='feathered'?0.2:-0.22)+'" stroke-width="1.1" fill="none" opacity="0.6"/>';}
-      else if(skin==='chitinous') inner+='<ellipse cx="'+(cx-bw*0.25)+'" cy="'+(cy-bh*0.45)+'" rx="'+(bw*0.42)+'" ry="'+(bh*0.3)+'" fill="#ffffff" opacity="0.14"/>';
-      else if(skin==='slick and wet') inner+='<ellipse cx="'+(cx-bw*0.3)+'" cy="'+(cy-bh*0.5)+'" rx="'+(bw*0.34)+'" ry="'+(bh*0.22)+'" fill="#ffffff" opacity="0.30"/>';
-      else if(skin==='plated') for(let i=1;i<4;i++)
-        inner+='<line x1="'+(cx-bw*0.9)+'" y1="'+(cy-bh+i*bh*0.5)+'" x2="'+(cx+bw*0.9)+'" y2="'+(cy-bh+i*bh*0.5)+'" stroke="'+shade(base,-0.3)+'" stroke-width="1.6" opacity="0.5"/>';
-      else if(skin==='warty') for(let i=0;i<8;i++)
-        inner+='<circle cx="'+(cx-bw*0.6+R()*bw*1.2).toFixed(1)+'" cy="'+(cy-bh*0.4+R()*bh*0.8).toFixed(1)+'" r="'+(1.2+R()*1.6).toFixed(1)+'" fill="'+shade(base,0.14)+'" opacity="0.7"/>';
-      else if(skin==='crystalline') for(let i=0;i<6;i++){
-        const kx2=cx-bw*0.5+R()*bw, ky2=cy-bh*0.5+R()*bh*0.8;
-        inner+='<path d="M'+kx2.toFixed(1)+','+ky2.toFixed(1)+' l3,-5 l3,5 l-3,5 Z" fill="'+acc+'" opacity="0.55"'+F+'/>';}
-    }
-    // pattern — mottled/plain no longer draw NOTHING
-    const pat=FA_PATTERN[(g.pattern||0)%FA_PATTERN.length];
-    if(pat==='striped') for(let i=0;i<5;i++) inner+='<line x1="'+(cx-bw*0.6+i*bw*0.3)+'" y1="'+(cy-bh*0.7)+'" x2="'+(cx-bw*0.6+i*bw*0.3+6)+'" y2="'+(cy+bh*0.7)+'" stroke="'+shade(base,-0.35)+'" stroke-width="3" opacity="0.55"/>';
-    else if(pat==='spotted'||pat==='eye-spotted') for(let i=0;i<7;i++){ const sx=cx-bw*0.7+R()*bw*1.3, sy=cy-bh*0.5+R()*bh; inner+='<circle cx="'+sx.toFixed(1)+'" cy="'+sy.toFixed(1)+'" r="'+(pat==='eye-spotted'?4:2.5)+'" fill="'+(pat==='eye-spotted'?acc:shade(base,-0.3))+'" opacity="0.6"/>'; }
-    else if(pat==='banded') for(let i=0;i<3;i++) inner+='<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+(bw*(0.4+i*0.25))+'" ry="'+(bh*(0.4+i*0.25))+'" fill="none" stroke="'+shade(base,-0.3)+'" stroke-width="2" opacity="0.4"/>';
-    else if(pat==='iridescent'||pat==='marbled') inner+='<ellipse cx="'+(cx-bw*0.2)+'" cy="'+(cy-bh*0.3)+'" rx="'+(bw*0.5)+'" ry="'+(bh*0.5)+'" fill="'+acc+'" opacity="0.25"/>';
-    else if(pat==='mottled') for(let i=0;i<5;i++){ const mx2=cx-bw*0.6+R()*bw*1.2, my2=cy-bh*0.5+R()*bh;
-      inner+='<ellipse cx="'+mx2.toFixed(1)+'" cy="'+my2.toFixed(1)+'" rx="'+(4+R()*6).toFixed(1)+'" ry="'+(3+R()*4).toFixed(1)+'" fill="'+shade(base,-0.18)+'" opacity="0.45"/>'; }
-    // head
-    const hx=cx+bw*0.78, hy=cy-bh*0.2, hr=(10+sc*8)*(headTxt.includes('domed')?1.25:1);
-    inner+='<circle cx="'+hx.toFixed(1)+'" cy="'+hy.toFixed(1)+'" r="'+hr.toFixed(1)+'" fill="url(#bd)"'+F+'/>';
-    if(headTxt.includes('beak')) inner+='<path d="M'+(hx+hr*0.6)+','+hy+' L'+(hx+hr*1.6)+','+(hy+2)+' L'+(hx+hr*0.6)+','+(hy+6)+' Z" fill="'+acc+'"/>';
-    if(headTxt.includes('horn')||headTxt.includes('crest')) for(const sgn of [-1,1]) inner+='<path d="M'+(hx+sgn*hr*0.4)+','+(hy-hr*0.6)+' L'+(hx+sgn*hr*0.7)+','+(hy-hr*1.8)+'" stroke="'+acc+'" stroke-width="3" stroke-linecap="round"/>';
-    if(headTxt.includes('mandible')||headTxt.includes('fang')) inner+='<path d="M'+(hx+hr*0.5)+','+(hy+hr*0.4)+' l4,7 m4,-7 l-4,7" stroke="'+shade(base,-0.4)+'" stroke-width="2"/>';
-    if(headTxt.includes('tendril')) for(let i=0;i<4;i++) inner+='<path d="M'+(hx+hr*0.5)+','+(hy-2+i*3)+' q10,'+(i%2?-6:6)+' 16,0" stroke="'+acc+'" stroke-width="1.5" fill="none"/>';
-    if(headTxt.includes('frilled')) inner+='<path d="M'+(hx-hr*0.9)+','+(hy-hr*0.5)+' Q'+(hx-hr*1.7)+','+hy+' '+(hx-hr*0.9)+','+(hy+hr*0.6)+'" stroke="'+acc+'" stroke-width="5" fill="none" opacity="0.65" stroke-linecap="round"/>';
-    if(headTxt.includes('blunt')) inner+='<ellipse cx="'+(hx+hr*0.7).toFixed(1)+'" cy="'+(hy+hr*0.15).toFixed(1)+'" rx="'+(hr*0.5).toFixed(1)+'" ry="'+(hr*0.36).toFixed(1)+'" fill="url(#bd)"/>';
-    // trait accents — the card's own words, finally visible (V12)
-    if(/crystal antlers/.test(trait)) for(const sgn of [-1,1])
-      inner+='<path d="M'+(hx+sgn*hr*0.3)+','+(hy-hr*0.7)+' l'+(sgn*4)+',-9 m0,0 l'+(sgn*6)+',-2 m'+(-sgn*6)+',2 l'+(sgn*-2)+',-7" stroke="'+acc+'" stroke-width="2.2" fill="none" stroke-linecap="round"'+F+'/>';
-    if(/echolocating crests|armored crest-plates/.test(trait))
-      inner+='<path d="M'+(hx-hr*0.2)+','+(hy-hr*0.9)+' q'+(hr*0.5)+',-'+(hr*0.9)+' '+(hr*1.0)+',0" stroke="'+shade(base,-0.3)+'" stroke-width="3.4" fill="none"/>';
-    if(/humped backs/.test(trait))
-      inner+='<path d="M'+(cx-bw*0.3)+','+(cy-bh*0.95)+' q'+(bw*0.3)+',-'+(bh*0.7)+' '+(bw*0.62)+',0" stroke="none" fill="url(#bd)"/>';
-    if(/gill-slits/.test(trait)) for(let i=0;i<3;i++)
-      inner+='<path d="M'+(hx-hr*0.5-i*4)+','+(hy+hr*0.2)+' q-2,4 0,8" stroke="'+shade(base,-0.4)+'" stroke-width="1.4" fill="none"/>';
-    if(/iron-hard hide/.test(trait))
-      inner+='<ellipse cx="'+(cx-bw*0.15)+'" cy="'+(cy-bh*0.35)+'" rx="'+(bw*0.55)+'" ry="'+(bh*0.34)+'" fill="#cfd8e6" opacity="0.16"/>';
-    // eyes — an 'eyeless and smooth' head finally IS (V12)
-    const eyes=headTxt.includes('eyeless')?0:FA_EYES[(g.eyes||0)%FA_EYES.length];
-    const mirror=/mirrored eyes/.test(trait);
-    const ecol=mirror?'#e8f2ff':(glow?acc:'#0c0e16');
-    for(let i=0;i<Math.min(eyes,8);i++){
-      const ang=(i/Math.max(eyes,1))*Math.PI - Math.PI/2;
-      const ex=hx+Math.cos(ang)*hr*0.45, ey=hy+Math.sin(ang)*hr*0.5;
-      inner+='<circle cx="'+ex.toFixed(1)+'" cy="'+ey.toFixed(1)+'" r="'+(2.2+sc).toFixed(1)+'" fill="'+ecol+'"'+((glow||mirror)?F:'')+'/>';
-      if(!glow&&!mirror) inner+='<circle cx="'+(ex+0.8).toFixed(1)+'" cy="'+(ey-0.8).toFixed(1)+'" r="0.9" fill="#fff" opacity="0.8"/>';
-    }
-    // rank: an Apex Guardian wears a molten-gold double rim; a Paragon a
-    // silver-teal one — the one-of-a-kinds finally look it (V12)
-    if(g.apex) inner+='<circle cx="'+cx+'" cy="'+cy+'" r="52" fill="none" stroke="#ffd96a" stroke-width="1.6" opacity="0.75"/>'+
-      '<circle cx="'+cx+'" cy="'+cy+'" r="55" fill="none" stroke="#ffb04a" stroke-width="0.8" opacity="0.5"/>';
-    else if(g.par) inner+='<circle cx="'+cx+'" cy="'+cy+'" r="52" fill="none" stroke="#3fe8c8" stroke-width="1.4" opacity="0.7"/>'+
-      '<circle cx="'+cx+'" cy="'+cy+'" r="55" fill="none" stroke="#cfe4ff" stroke-width="0.7" opacity="0.45"/>';
-  }
+  }   /* fauna: HD portraits render painterly via hdPortraitFauna (early return above) */
   /* ---- the painterly pass (1.0): every portrait gets STAGECRAFT — a lit
      aura behind the subject, a soft ground shadow beneath it, organic
      texture displacement over the anatomy, a diagonal rim of light and a
@@ -3942,7 +3809,7 @@ function planetDescriptor(P, sys, pl){
   /* publish the card's presentation facts to the side cache (NOT onto P —
      the fingerprint serializes these objects): the sprite/thumb/tile art
      reads them to honor the card (V1/V9/I9) */
-  CARD_FACTS.set(P.seed,{band:band,
+  _cardFactsSet(P.seed,{band:band,
     lush:/complex|earth|flora|aquatic/.test(bio.key||'')?true:(/none|microbial|subsurface|aerial/.test(bio.key||'')?false:undefined),
     civLights:civ.civ?(/Spacefaring|Interstellar|Post/.test((civ.era&&civ.era.name)||'')?1:(/Industrial|Modern/.test((civ.era&&civ.era.name)||'')?0.5:0.15)):0});
   const rows=[
@@ -5335,7 +5202,7 @@ function ensureCardFacts(P, sys, orb){
   const band=climateBand(P, sys, orb||100);
   const bio=biosphere(P, sys, band, r);
   const civ=civilization(P, sys, band, bio, r);
-  CARD_FACTS.set(P.seed,{band:band,
+  _cardFactsSet(P.seed,{band:band,
     lush:/complex|earth|flora|aquatic/.test(bio.key||'')?true:(/none|microbial|subsurface|aerial/.test(bio.key||'')?false:undefined),
     civLights:civ.civ?(/Spacefaring|Interstellar|Post/.test((civ.era&&civ.era.name)||'')?1:(/Industrial|Modern/.test((civ.era&&civ.era.name)||'')?0.5:0.15)):0});
 }
@@ -5645,8 +5512,11 @@ function drawSurface(time){
     const tile=getTile(P, st.pfbm, L, tx, ty);
     if(tile) ctx.drawImage(tile, tx*TW, ty*TW, TW+0.5/c.z, TW+0.5/c.z);
     else {
-      if(!P._fb){ const fc=surfaceColor(P, 0.3, 0.25, st.pfbm, CARD_FACTS.get(P.seed)||null); P._fb=`rgb(${fc[0]|0},${fc[1]|0},${fc[2]|0})`; }
-      ctx.fillStyle=P._fb;
+      let _fb=_FB_CACHE.get(P.seed);
+      if(!_fb){ const fc=surfaceColor(P, 0.3, 0.25, st.pfbm, CARD_FACTS.get(P.seed)||null); _fb=`rgb(${fc[0]|0},${fc[1]|0},${fc[2]|0})`;
+        if(_FB_CACHE.size>512) _FB_CACHE.delete(_FB_CACHE.keys().next().value);
+        _FB_CACHE.set(P.seed,_fb); }
+      ctx.fillStyle=_fb;
       ctx.fillRect(tx*TW,ty*TW,TW+0.5/c.z,TW+0.5/c.z);
     }
   }
@@ -5832,7 +5702,7 @@ function drawSurface(time){
       const roster=(_lastDesc.species||[]).filter(gg=>gg.kingdom==='fauna');
       const clsOf=gg=>{
         const lc=FA_LOCO[(gg.loco||0)%FA_LOCO.length]||'', hb=FA_HABITAT[(gg.habitat||0)%FA_HABITAT.length]||'';
-        if(/swim|filter/.test(lc)||/open ocean|sea shallows|vent fields/.test(hb)) return 'aqua';
+        if(/swim|filter|current/.test(lc)||/open ocean|sea shallows|vent fields/.test(hb)) return 'aqua';   /* current-drifters swim, not fly */
         if(/glider|floater|drift/.test(lc)||/cloud decks/.test(hb)) return 'air';
         return 'land';
       };
@@ -5875,7 +5745,19 @@ const {perfTime, t0, drawUniverse, drawGalaxy, drawSystem, drawSurface}=Renderer
    ---------------------------------------------------------------- */
 let hdOn=false, _vistaPend=false;
 function applyHd(){
+  const flip=HD_PORTRAITS!==hdOn;
   HD_PORTRAITS=hdOn;   /* the V12 portrait anatomy rides the same flag */
+  if(flip){
+    /* stored art must follow the switch (round-2 audit): codex entries
+       freeze entry.art at discovery time — repaint them in the new mode,
+       and bust the open card's roster thumbs */
+    try{
+      for(const en of codex.values()) if(en&&en.genome) en.art=speciesPortrait(en.genome);
+      if(_lastDesc) _lastDesc._spArt=null;
+      _panelKey=null;
+      if(typeof codexOpen!=='undefined'&&codexOpen) renderCodex();
+    }catch(_){}
+  }
   const opts=document.querySelectorAll?document.querySelectorAll('#setpanel .fsopt[data-hd]'):[];
   for(const o of opts) o.classList.toggle('on',(o.dataset.hd==='1')===hdOn);
 }
@@ -5939,6 +5821,7 @@ function hdGenesFor(g){
     base:base, dark:[base[0]*0.42|0,base[1]*0.42|0,base[2]*0.42|0],
     rim:g.lumin?col:'rgba(255,220,170,1)', eye:col,
     plan:plan, glow:!!g.lumin, apex:!!g.apex, par:!!g.par,
+    tier:S.tier|0,
     heat:(g.habitat||0)%FA_HABITAT.length};
 }
 function hdBeastBare(G,seed){
@@ -6019,7 +5902,8 @@ function hdBeastBare(G,seed){
     sg2.beginPath();sg2.moveTo(sx2,baseY+S*0.02);sg2.lineTo(kx,ky);sg2.lineTo(fx3,fy3);sg2.stroke();
     sg2.beginPath();sg2.ellipse(sx2,baseY+S*0.03,S*0.03*G.bulk,S*0.042*G.bulk,0,0,7);sg2.fill();
     sg2.beginPath();sg2.ellipse(fx3+2,fy3+2,S*0.024,S*0.01,0,0,7);sg2.fill();};
-  if(serp||radial){ if(baseY+S*0.06>feetMax) feetMax=baseY+S*0.06; }
+  if(serp){ if(baseY+S*0.06>feetMax) feetMax=baseY+S*0.06; }
+  else if(radial){ feetMax=Math.max(feetMax, baseY-S*0.06+S*0.155*G.bulk); }   /* lobe bottoms, not a guess */
   else if(tent){ /* hanging arms instead of legs */
     for(let ti2=0;ti2<6;ti2++){
       const txx=S*(0.36+ti2*0.055);
@@ -6160,6 +6044,47 @@ function _hdPlaceBeast(g,bcv,x,groundY,scale,flip,hazeAmt,warm,tuft,hazeCol){
 /* PHASE 2 PORTRAITS: the vista's own painterly renderers, staged like the
    visual-direction artifact — habitat-lit backdrop, ground shadow, deep
    vignette. speciesPortrait routes here when the HD flag is on. */
+/* the RARITY AURA (Nick: "spectral, like the WOW factor of a foil pack,
+   without detracting from the card"): nothing below tier 4; a soft
+   grade-colored glow through the ladder; the deep spectrum adds foil
+   glints; the summit (12+) shimmers prismatic. Guardians burn molten
+   gold, Paragons silver-teal, whatever their tier. */
+function _rankAura(c2,S2,tier,apex,par,seed){
+  tier=tier|0;
+  if(!apex&&!par&&tier<4) return;
+  const r=mulberry32((seed^0x40FA)>>>0);
+  const gt=GRADE_TIERS[clamp(tier,0,TIER_MAX)]||GRADE_TIERS[4];
+  const hn=parseInt((gt.hex||'#8fb4ff').slice(1),16);
+  const col=apex?'255,196,90':(par?'80,232,205':(((hn>>16)&255)+','+((hn>>8)&255)+','+(hn&255)));
+  const k=(apex||par)?0.30:(tier>=12?0.26:(tier>=8?0.20:0.10+(tier-4)*0.02));
+  c2.save();c2.globalCompositeOperation='lighter';
+  if(tier>=12&&!apex&&!par){
+    /* summit foil: three drifting prism hues */
+    const HU=['255,120,220','120,220,255','255,220,120'];
+    for(let i=0;i<3;i++){
+      const a=r()*TAU, d=S2*0.10;
+      const au=c2.createRadialGradient(S2*0.5+Math.cos(a)*d,S2*0.52+Math.sin(a)*d,8,S2*0.5,S2*0.52,S2*0.44);
+      au.addColorStop(0,'rgba('+HU[i]+',0.15)');au.addColorStop(0.6,'rgba('+HU[i]+',0.055)');au.addColorStop(1,'rgba('+HU[i]+',0)');
+      c2.fillStyle=au;c2.fillRect(0,0,S2,S2);
+    }
+  } else {
+    const au=c2.createRadialGradient(S2*0.5,S2*0.52,10,S2*0.5,S2*0.52,S2*0.42);
+    au.addColorStop(0,'rgba('+col+','+k.toFixed(3)+')');
+    au.addColorStop(0.6,'rgba('+col+','+(k*0.35).toFixed(3)+')');
+    au.addColorStop(1,'rgba('+col+',0)');
+    c2.fillStyle=au;c2.fillRect(0,0,S2,S2);
+  }
+  if(tier>=8||apex||par){ /* foil glints, four-point stars */
+    const nG=tier>=12?9:5;
+    for(let i=0;i<nG;i++){
+      const gx=S2*(0.18+r()*0.64), gy=S2*(0.12+r()*0.6), gs=1.5+r()*2.5;
+      c2.fillStyle='rgba(255,255,255,'+(0.28+r()*0.38).toFixed(2)+')';
+      c2.beginPath();c2.moveTo(gx-gs*2,gy);c2.lineTo(gx,gy-gs*0.6);c2.lineTo(gx+gs*2,gy);c2.lineTo(gx,gy+gs*0.6);c2.closePath();c2.fill();
+      c2.beginPath();c2.moveTo(gx,gy-gs*2);c2.lineTo(gx+gs*0.6,gy);c2.lineTo(gx,gy+gs*2);c2.lineTo(gx-gs*0.6,gy);c2.closePath();c2.fill();
+    }
+  }
+  c2.restore();
+}
 function hdPortraitFauna(g){
   const G=hdGenesFor(g);
   const S2=440,cv=document.createElement('canvas');cv.width=cv.height=S2;
@@ -6169,15 +6094,7 @@ function hdPortraitFauna(g){
   const bg=c2.createRadialGradient(S2*0.5,S2*0.42,20,S2*0.5,S2*0.5,S2*0.62);
   bg.addColorStop(0,HABG[hb]||'#10141c');bg.addColorStop(1,'#06070d');
   c2.fillStyle=bg;c2.fillRect(0,0,S2,S2);
-  if(G.apex||G.par){
-    /* the one-of-a-kinds look it (V12) — a molten aura BEHIND the beast,
-       not a drawn circle (Nick's call on the ring) */
-    c2.save();c2.globalCompositeOperation='lighter';
-    const au=c2.createRadialGradient(S2*0.5,S2*0.52,10,S2*0.5,S2*0.52,S2*0.42);
-    const ac2=G.apex?'255,196,90':'80,232,205';
-    au.addColorStop(0,'rgba('+ac2+',0.30)');au.addColorStop(0.6,'rgba('+ac2+',0.10)');au.addColorStop(1,'rgba('+ac2+',0)');
-    c2.fillStyle=au;c2.fillRect(0,0,S2,S2);c2.restore();
-  }
+  _rankAura(c2,S2,G.tier,G.apex,G.par,g.seed);
   const bcv=hdBeastBare(G,(g.seed^0x9A11)>>>0);
   c2.fillStyle='rgba(0,0,0,0.5)';c2.beginPath();c2.ellipse(S2*0.5,S2*0.80,S2*0.30,S2*0.045,0,0,7);c2.fill();
   c2.drawImage(bcv,S2*0.06,S2*0.10,S2*0.88,S2*0.88);
@@ -6198,6 +6115,7 @@ function hdPortraitFlora(g){
   const bg=c2.createRadialGradient(S2*0.5,S2*0.40,20,S2*0.5,S2*0.5,S2*0.62);
   bg.addColorStop(0,g.lumin?'#150f20':'#0f1a10');bg.addColorStop(1,'#06070d');
   c2.fillStyle=bg;c2.fillRect(0,0,S2,S2);
+  _rankAura(c2,S2,rarityRoll(g.seed,1),false,false,g.seed);
   const r2=mulberry32((g.seed^0x717)>>>0);
   const pcv=_hdPlantBare((g.seed^0x717)>>>0,{
     trunk:g.lumin?'#2c2440':'#31241a', leaf:leaf, lum:lum,
@@ -6264,7 +6182,7 @@ function hdVista(opts){
   const rL=mulberry32((seed^0x1A70)>>>0);
   const hz=H*(0.465+rL()*0.075);
   const sx=civ==='none'?W*(0.24+rL()*0.54):W*(0.60+rL()*0.24);   /* keep the sun off the skyline */
-  const sy=dusk?hz-30:H*0.15;
+  const sy=(dusk||opts.duskize)?hz-32:H*0.15;   /* twilight suns sit LOW everywhere (round-2 audit) */
   const cmpFlip=rL()<0.5, cmpShift=(rL()-0.5)*W*0.22;
   const rX=x=>cmpFlip?W-x:x;
   /* wonder rolls (L3) — rare, card-derived: rings overhead, a looming
@@ -6333,12 +6251,15 @@ function hdVista(opts){
        but teal, blue, rose and gold veils are out there */
     /* hues draw from real auroral families (greens/cyans/violets/roses) —
        an unconstrained roll lands on olive and reads as murk, not aurora */
+    /* feature-local stream: the aurora's rolls never shift the herd or
+       the flock when weather suppresses it (round-2 audit) */
+    const rA=mulberry32((seed^0xA0A1)>>>0);
     const AURF=[132,158,185,205,275,295,318,345];
-    const ah1=AURF[(rW()*AURF.length)|0]+(rW()-0.5)*14;
-    const ah2=AURF[(rW()*AURF.length)|0]+(rW()-0.5)*14;
+    const ah1=AURF[(rA()*AURF.length)|0]+(rA()-0.5)*14;
+    const ah2=AURF[(rA()*AURF.length)|0]+(rA()-0.5)*14;
     g.save();g.globalCompositeOperation='lighter';
     for(const[hue,off,amp,al] of [[ah1,H*0.06,30,0.15],[ah2,H*0.15,42,0.10]]){
-      const ph1=r()*TAU, ph2=r()*TAU;
+      const ph1=rA()*TAU, ph2=rA()*TAU;
       for(let ax=-3;ax<=W;ax+=3){
         const base=off+Math.sin(ax*0.011+ph1)*amp*0.55+Math.sin(ax*0.0042+ph2)*amp*0.45
           +_hdFbm(ax*0.006,hue,seed+hue,3)*amp*0.5;
@@ -6499,8 +6420,10 @@ function hdVista(opts){
             Math.min(2+r()*7, rw6*0.4), 1.4);}
         g.globalCompositeOperation='source-over';}
       if(!frozen&&(opts.aqua||0)>0){
-        /* the card's swimmers surface in the river too */
-        const t9=0.55+rL()*0.2, p9=riverAt(t9), rw9=(2+t9*t9*74)*0.5;
+        /* the card's swimmers surface in the river too — own stream so
+           the herd never reshuffles with the weather (round-2 audit) */
+        const rQ2=mulberry32((seed^0x515E)>>>0);
+        const t9=0.55+rQ2()*0.2, p9=riverAt(t9), rw9=(2+t9*t9*74)*0.5;
         const asz2=Math.min(rw9*0.5,7);
         g.fillStyle='rgba(10,16,26,0.8)';
         g.beginPath();g.moveTo(p9[0]-asz2,p9[1]);g.quadraticCurveTo(p9[0],p9[1]-asz2*0.8,p9[0]+asz2,p9[1]);g.closePath();g.fill();
@@ -6695,10 +6618,11 @@ function hdVista(opts){
     if((opts.aqua||0)>0){
       /* the card's swimmers break the surface: dorsal arcs, a tail fin,
          a ripple ring — the ocean's roster is finally IN the ocean */
+      const rQ=mulberry32((seed^0x50A5)>>>0);   /* feature-local stream */
       const na=Math.min(2,opts.aqua);
       for(let ai2=0;ai2<na;ai2++){
-        const axx=W*(0.22+rW()*0.55), ayy=hz+(by-hz)*(0.35+rW()*0.32);
-        const asz=(5+rW()*9)*(0.5+(ayy-hz)/(by-hz));
+        const axx=W*(0.22+rQ()*0.55), ayy=hz+(by-hz)*(0.35+rQ()*0.32);
+        const asz=(5+rQ()*9)*(0.5+(ayy-hz)/(by-hz));
         g.fillStyle=opts.pal==='night'?'rgba(8,12,22,0.9)':'rgba(12,20,32,0.85)';
         g.beginPath();g.moveTo(axx-asz,ayy);g.quadraticCurveTo(axx,ayy-asz*0.9,axx+asz,ayy);g.closePath();g.fill();
         g.beginPath();g.moveTo(axx+asz*1.6,ayy);g.lineTo(axx+asz*2.1,ayy-asz*0.7);g.lineTo(axx+asz*2.4,ayy);g.closePath();g.fill();
@@ -6930,11 +6854,12 @@ function hdVista(opts){
   if((opts.air||0)>0 && !nightize){
     /* the card's fliers ride this sky — gliders, floaters, cloud-deck
        drifters, drawn as a distant flock (scene-appropriate placement) */
-    const fl=Math.min(3,opts.air)+((rW()*2)|0);
+    const rF=mulberry32((seed^0xF11E)>>>0);   /* feature-local stream */
+    const fl=Math.min(3,opts.air)+((rF()*2)|0);
     const fc2=opts.pal==='night'?'rgba(205,218,242,0.38)':(dusk?'rgba(30,20,36,0.8)':'rgba(22,28,40,0.75)');
     g.strokeStyle=fc2;g.lineWidth=1.7;g.lineCap='round';
     for(let fi=0;fi<fl;fi++){
-      const fxx=W*(0.10+rW()*0.80), fyy=hz*(0.16+rW()*0.50), fs2=2.5+rW()*4;
+      const fxx=W*(0.10+rF()*0.80), fyy=hz*(0.16+rF()*0.50), fs2=2.5+rF()*4;
       g.beginPath();g.moveTo(fxx-fs2*2,fyy);g.quadraticCurveTo(fxx-fs2,fyy-fs2,fxx,fyy);
       g.quadraticCurveTo(fxx+fs2,fyy-fs2,fxx+fs2*2,fyy);g.stroke();
     }
@@ -6988,6 +6913,18 @@ vistaBox.addEventListener('click', ()=>{
 });
 function reshowVista(){
   if(!_lastVista) return;
+  if(_lastVista.cv){
+    /* re-view reuses the composed canvas — no re-render hitch on phones
+       (round-2 audit) */
+    vistaBox.innerHTML='<div class="vh">'+_lastVista.head+'</div>';
+    vistaBox.appendChild(_lastVista.cv);
+    const vt=document.createElement('div');vt.className='vt';vt.textContent=_lastVista.vtTxt;
+    vistaBox.appendChild(vt);
+    clearTimeout(_vistaHideT);
+    vistaBox.style.display='flex';
+    requestAnimationFrame(()=>vistaBox.classList.add('on'));
+    return;
+  }
   const v=_lastVista;
   showVistaBox(v.P, v.tod, v.wx, v.era, v.genes, v.aurora, v.flora, v.climSnow, v.water, v.xtra);
 }
@@ -7030,7 +6967,8 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
   vt.textContent='local '+tod+(wx?' · '+(WXW[wx]||wx):'')+' — tap to continue';
   vistaBox.appendChild(vt);
   _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
-    flora:flora, climSnow:climSnow, water:water, xtra:xtra};
+    flora:flora, climSnow:climSnow, water:water, xtra:xtra,
+    cv:cv, head:'Planetfall — '+(TYPE_LABEL[type]||'World'), vtTxt:vt.textContent};
   clearTimeout(_vistaHideT);
   vistaBox.style.display='flex';
   requestAnimationFrame(()=>vistaBox.classList.add('on'));
@@ -11312,13 +11250,105 @@ const ELEM_ICES={H2O:1,CH4:1,NH3:1,CO2:1,He3:1};
 const ELEM_GAS={H:1,He:1,N:1,O:1,Cl:1,S:1,P:1,C:1};
 const ELEM_EXO={Nd:1,Pm:1,Vg:1,Pz:1};
 const _elemIcons=new Map();
+/* HD material icons (graphics overhaul, Nick: the inventory is the bag —
+   Minecraft/Satisfactory grade): painterly 96px canvas renders — faceted
+   gems, translucent ice spears, glowing flasks, brushed ingot stacks —
+   behind the same hd flag as the rest of the HD art. */
+const _ELEM_ICEHD={H2O:1,CH4:1,NH3:1,CO2:1,He3:1};
+function _hdElemIcon(sym){
+  const c=EC[sym]||'#c8d0dc';
+  const n=parseInt(c.slice(1),16), cr=(n>>16)&255, cg=(n>>8)&255, cb=n&255;
+  const S=96,cv=document.createElement('canvas');cv.width=cv.height=S;
+  const g=cv.getContext('2d'), r=mulberry32(hashInt(0xE1E, sym.charCodeAt(0)*31+(sym.charCodeAt(1)||7), sym.length)>>>0);
+  const K=(k,a)=>'rgba('+Math.min(255,(cr*k)|0)+','+Math.min(255,(cg*k)|0)+','+Math.min(255,(cb*k)|0)+','+a+')';
+  g.fillStyle='rgba(0,0,0,0.35)';g.beginPath();g.ellipse(S*0.5,S*0.84,S*0.30,S*0.055,0,0,7);g.fill();
+  if(ELEM_EXO[sym]){
+    /* a cut gem: crown + pavilion facets, lit core, star glints */
+    const cx=S*0.5, cy=S*0.48, w=S*0.30, h=S*0.40;
+    const F=[[[-w,0],[-w*0.45,-h*0.55],[0,-h*0.32],1.05],[[0,-h*0.32],[-w*0.45,-h*0.55],[w*0.45,-h*0.55],1.45],
+      [[0,-h*0.32],[w*0.45,-h*0.55],[w,0],0.85],[[-w,0],[0,-h*0.32],[0,h],0.7],[[0,-h*0.32],[w,0],[0,h],0.5]];
+    for(const f of F){g.fillStyle=K(f[3],1);g.beginPath();
+      g.moveTo(cx+f[0][0],cy+f[0][1]);g.lineTo(cx+f[1][0],cy+f[1][1]);g.lineTo(cx+f[2][0],cy+f[2][1]);g.closePath();g.fill();}
+    g.save();g.globalCompositeOperation='lighter';
+    const gl2=g.createRadialGradient(cx,cy,2,cx,cy,w*1.4);
+    gl2.addColorStop(0,K(1.6,0.5));gl2.addColorStop(1,K(1.6,0));
+    g.fillStyle=gl2;g.fillRect(0,0,S,S);
+    for(let i=0;i<2;i++){const gx=cx+(r()-0.5)*w*1.4, gy=cy+(r()-0.5)*h, gs=2+r()*2.4;
+      g.fillStyle='rgba(255,255,255,0.85)';
+      g.beginPath();g.moveTo(gx-gs*2,gy);g.lineTo(gx,gy-gs*0.55);g.lineTo(gx+gs*2,gy);g.lineTo(gx,gy+gs*0.55);g.closePath();g.fill();
+      g.beginPath();g.moveTo(gx,gy-gs*2);g.lineTo(gx+gs*0.55,gy);g.lineTo(gx,gy+gs*2);g.lineTo(gx-gs*0.55,gy);g.closePath();g.fill();}
+    g.restore();
+  } else if(_ELEM_ICEHD[sym]){
+    /* translucent crystal spears with inner light */
+    for(let sp3=0;sp3<3;sp3++){
+      const bx=S*(0.32+sp3*0.17), bh=S*(0.34+r()*0.20), bw=S*(0.075+r()*0.035), tilt=(sp3-1)*0.24;
+      g.save();g.translate(bx,S*0.80);g.rotate(tilt);
+      g.globalAlpha=0.82;
+      const ig=g.createLinearGradient(-bw,0,bw,0);
+      ig.addColorStop(0,K(0.72,1));ig.addColorStop(0.5,K(1.32,1));ig.addColorStop(1,K(0.6,1));
+      g.fillStyle=ig;g.beginPath();g.moveTo(-bw,0);g.lineTo(-bw*0.5,-bh);g.lineTo(0,-bh*1.16);g.lineTo(bw*0.55,-bh*0.92);g.lineTo(bw,0);g.closePath();g.fill();
+      g.globalAlpha=1;
+      g.strokeStyle='rgba(255,255,255,0.6)';g.lineWidth=1.4;
+      g.beginPath();g.moveTo(-bw*0.28,-bh*0.12);g.lineTo(-bw*0.12,-bh*0.9);g.stroke();
+      g.restore();
+    }
+  } else if(ELEM_GAS[sym]){
+    /* a glass flask, the vapor glowing inside */
+    const cx=S*0.5;
+    g.save();g.globalCompositeOperation='lighter';
+    const vg2=g.createRadialGradient(cx,S*0.60,4,cx,S*0.60,S*0.30);
+    vg2.addColorStop(0,K(1.35,0.55));vg2.addColorStop(1,K(1.35,0));
+    g.fillStyle=vg2;g.fillRect(0,0,S,S);g.restore();
+    g.beginPath();
+    g.moveTo(cx-S*0.06,S*0.16);g.lineTo(cx-S*0.06,S*0.34);
+    g.quadraticCurveTo(cx-S*0.30,S*0.62,cx-S*0.21,S*0.76);
+    g.quadraticCurveTo(cx-S*0.12,S*0.85,cx,S*0.85);
+    g.quadraticCurveTo(cx+S*0.12,S*0.85,cx+S*0.21,S*0.76);
+    g.quadraticCurveTo(cx+S*0.30,S*0.62,cx+S*0.06,S*0.34);
+    g.lineTo(cx+S*0.06,S*0.16);g.closePath();
+    const lq=g.createLinearGradient(0,S*0.5,0,S*0.85);
+    lq.addColorStop(0,K(0.7,0.25));lq.addColorStop(0.45,K(1.0,0.85));lq.addColorStop(1,K(0.55,0.95));
+    g.fillStyle=lq;g.fill();
+    g.strokeStyle='rgba(226,236,252,0.6)';g.lineWidth=2;g.stroke();
+    g.strokeStyle='rgba(255,255,255,0.55)';g.lineWidth=2.4;
+    g.beginPath();g.moveTo(cx-S*0.115,S*0.44);g.quadraticCurveTo(cx-S*0.21,S*0.62,cx-S*0.15,S*0.72);g.stroke();
+    for(let bu=0;bu<3;bu++){g.fillStyle='rgba(255,255,255,'+(0.35+r()*0.3).toFixed(2)+')';
+      g.beginPath();g.arc(cx+(r()-0.5)*S*0.16,S*(0.62+r()*0.16),1.4+r()*2,0,7);g.fill();}
+    g.fillStyle='rgba(210,190,160,0.95)';g.fillRect(cx-S*0.065,S*0.10,S*0.13,S*0.07);
+  } else {
+    /* a stacked pair of cast ingots — proper isometric faces: front rect,
+       top parallelogram, right side, brushed lines (the first draft read
+       as folded ribbons; Nick's icon-sheet review) */
+    const bar=(bx,by2,w2,h2,d2)=>{
+      g.fillStyle=K(1.0,1);g.fillRect(bx,by2-h2,w2,h2);           /* front */
+      g.fillStyle=K(1.38,1);g.beginPath();                         /* top */
+      g.moveTo(bx,by2-h2);g.lineTo(bx+d2,by2-h2-d2*0.6);g.lineTo(bx+w2+d2,by2-h2-d2*0.6);g.lineTo(bx+w2,by2-h2);g.closePath();g.fill();
+      g.fillStyle=K(0.55,1);g.beginPath();                         /* side */
+      g.moveTo(bx+w2,by2-h2);g.lineTo(bx+w2+d2,by2-h2-d2*0.6);g.lineTo(bx+w2+d2,by2-d2*0.6);g.lineTo(bx+w2,by2);g.closePath();g.fill();
+      g.strokeStyle='rgba(255,255,255,0.25)';g.lineWidth=1;        /* brushed */
+      for(let br2=1;br2<4;br2++){const yy=by2-h2*br2/4;
+        g.beginPath();g.moveTo(bx+2,yy);g.lineTo(bx+w2-2,yy);g.stroke();}
+      g.strokeStyle='rgba(0,0,0,0.25)';g.lineWidth=1;
+      g.strokeRect(bx+0.5,by2-h2+0.5,w2-1,h2-1);
+    };
+    bar(S*0.14,S*0.80,S*0.44,S*0.15,S*0.11);
+    bar(S*0.30,S*0.62,S*0.40,S*0.14,S*0.10);
+    g.save();g.globalCompositeOperation='lighter';                 /* specular kiss */
+    g.fillStyle='rgba(255,255,255,0.14)';
+    g.beginPath();g.moveTo(S*0.20,S*0.70);g.lineTo(S*0.26,S*0.68);g.lineTo(S*0.52,S*0.80);g.lineTo(S*0.46,S*0.82);g.closePath();g.fill();
+    g.restore();
+  }
+  return cv.toDataURL();
+}
 function _eshade(hex,f){
   const n=parseInt(hex.slice(1),16), r=(n>>16)&255, g=(n>>8)&255, b=n&255;
   const m=c=>Math.max(0,Math.min(255,Math.round(f>0?c+(255-c)*f:c*(1+f))));
   return 'rgb('+m(r)+','+m(g)+','+m(b)+')';
 }
 function elemIcon(sym){
-  let u=_elemIcons.get(sym); if(u) return u;
+  const _k=sym+(HD_PORTRAITS?'|hd':'');
+  let u=_elemIcons.get(_k); if(u) return u;
+  if(HD_PORTRAITS){ u=_hdElemIcon(sym); _elemIcons.set(_k,u); return u; }
   const c=EC[sym]||'#c8d0dc', lo=_eshade(c,-0.45), hi=_eshade(c,0.45), gl=_eshade(c,0.72);
   let body='';
   if(ELEM_EXO[sym]){
@@ -11342,7 +11372,7 @@ function elemIcon(sym){
          '<polygon points="8,21 13,16.5 20,16.5 15,21" fill="'+gl+'" opacity="0.55"/>';
   }
   u='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">'+body+'</svg>');
-  _elemIcons.set(sym,u); return u;
+  _elemIcons.set(_k,u); return u;
 }
 let cargoView='inv';
 function renderCargo(){
