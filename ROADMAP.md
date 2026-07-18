@@ -1,5 +1,25 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
+## ▶▶ NEXT SESSION AGENDA (agreed with Nick, 2026-07-18)
+
+1. ITERATE v1.3 PHASE 1 (HD landing vistas — see the v1.3 section below
+   for exactly what's in the code and what's a stand-in). Nick will have
+   on-device feedback from flipping Settings → Graphics → Landing view →
+   HD and landing on real worlds. Known iteration list: ember/volcano
+   scene (lava worlds currently borrow the dust palette), island scene
+   for ocean worlds, snow weather, twilight polish, aurora nights.
+2. UPDATE THE VISUAL-DIRECTION ARTIFACT alongside code iterations:
+   https://claude.ai/code/artifact/bb85d5b5-2f27-48d3-86fc-9f7a39f8c660
+   ("Celestial Frontier — v1.3 Visual Direction"). To update it from a
+   NEW session: read its current content with WebFetch on that URL (the
+   original source file lived in a session-scratchpad that is gone),
+   write the revised page to a new local file, and publish with the
+   Artifact tool passing that URL as `url` so the link stays the same.
+3. Mechanics reminders: extract.js first; v1.3 stays flag-gated (hd
+   default Classic) and UNDEPLOYED until Nick's word; every phase passes
+   the seed-sweep + heat gates below; fingerprint/smoke/systems each
+   batch (smoke is 155 checks).
+
 ## ▶ v1.3 "THE HD FRONTIER" — IN THE CODE, ITERATING (2026-07-18). DO NOT
 ## BUMP/DEPLOY until Nick's word; the hd flag keeps it invisible either way.
 
