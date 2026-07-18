@@ -625,6 +625,20 @@
   #panel.grab .head:active{cursor:grabbing}
   #panel.grab .htxt{padding-right:22px}
   @media (pointer:coarse){ #panel .pxc{width:34px;height:34px;font-size:15px;top:3px;right:3px} }
+  /* the panel-manager ✕ — one close language for every panel (v1.3.5) */
+  .pnx{position:absolute;top:6px;right:6px;width:26px;height:26px;border:0;border-radius:8px;
+    background:rgba(20,24,44,0.6);color:var(--dim);font:600 13px/26px system-ui,sans-serif;
+    text-align:center;cursor:pointer;padding:0;z-index:6}
+  .pnx:hover{color:var(--ink);background:rgba(150,162,210,0.14)}
+  #tray .pnx,#setpanel .pnx{position:absolute}
+  #guidebox .card{position:relative}   /* anchor the guide's ✕ to the card, not the screen */
+  @media (pointer:coarse){ .pnx{width:34px;height:34px;font-size:15px;line-height:34px;top:3px;right:3px} }
+  /* the vista ✕ — safe-area aware, floats over the art */
+  .vxc{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:calc(env(safe-area-inset-right,0px) + 14px);
+    width:36px;height:36px;border:1px solid rgba(150,162,210,0.35);border-radius:10px;
+    background:rgba(10,12,20,0.55);color:#cdd5f2;font:600 16px/34px system-ui,sans-serif;
+    text-align:center;cursor:pointer;padding:0;z-index:3}
+  .vxc:hover{color:#fff;border-color:rgba(150,162,210,0.7)}
   #panel .thumb{width:54px;height:54px;flex:none;border-radius:50%;background:#05060c;
     box-shadow:0 0 0 1px rgba(150,162,210,0.18),0 4px 14px rgba(0,0,0,0.5)}
   #panel .thumb.sq{border-radius:11px}
@@ -1240,7 +1254,8 @@
       <div id="bell" role="button" tabindex="0" data-tip="Every toast lands here too — nothing is missed." data-guide="settings">🔔<span id="bellct"></span></div>
       <div id="tray">
         <div class="thead"><span>Notifications</span>
-          <span class="tacts"><span id="trayread">mark all read</span> · <span id="trayclear">clear all</span></span></div>
+          <span class="tacts"><span id="trayread">mark all read</span> · <span id="trayclear">clear all</span></span>
+          <button class="pnx" data-pnx="tray" type="button">&#10005;</button></div>
         <div id="traylist"></div>
       </div>
     </div>
@@ -1259,7 +1274,7 @@
 
 <div id="setbtn" role="button" tabindex="0" data-tip="Settings — text size, sound, effects, tooltips, reset.">⚙</div>
 <div id="setpanel">
-  <div class="shead">Settings</div>
+  <div class="shead">Settings<button class="pnx" data-pnx="set" type="button">&#10005;</button></div>
   <div class="stabs">
     <span class="stab on" data-stab="d" role="button" tabindex="0">Display</span><span class="stab" data-stab="g" role="button" tabindex="0">Graphics</span><span class="stab" data-stab="a" role="button" tabindex="0">Audio</span>
   </div>
@@ -1435,7 +1450,7 @@
 </div></div>
 <div id="helpbtn" role="button" tabindex="0" data-tip="Guide to the Universe — every system explained.">?</div>
 <div id="guidebox"><div class="card">
-  <div class="gh">🧭 Guide to the Universe</div>
+  <div class="gh">🧭 Guide to the Universe<button class="pnx" data-pnx="guide" type="button">&#10005;</button></div>
   <div class="gsub">Every system explained — search anything, or browse by topic.</div>
   <input id="guidesearch" type="text" placeholder="Search the guide&hellip; breeding, stardust, signatures&hellip;" spellcheck="false" autocomplete="off">
   <div id="guidebody"></div>
@@ -6720,8 +6735,11 @@ function hdVista(opts){
    longer see-once: the last landing's args are cached so the surface
    card can reopen it (graphics overhaul B1) */
 const vistaBox=document.createElement('div');vistaBox.id='vistabox';document.body.appendChild(vistaBox);
-let _lastVista=null, _vistaHideT=0;
+let _lastVista=null, _vistaHideT=0, _vistaShowSeq=0;
 vistaBox.addEventListener('click', ()=>{
+  /* a show's fade-in rides a queued animation frame — bump the sequence so
+     a lightning-fast tap can't lose the race and strand the view open */
+  _vistaShowSeq++;
   vistaBox.classList.remove('on');
   clearTimeout(_vistaHideT);
   _vistaHideT=setTimeout(()=>{ if(!vistaBox.classList.contains('on')) vistaBox.style.display='none'; }, 460);
@@ -6752,6 +6770,15 @@ function savePostcard(){
   toast('⇪ Postcard saved','The view and its share code are baked into the image — send it to a friend.');
 }
 function _vistaExtras(){
+  /* the corner ✕ — same language as every card and panel (v1.3.5).
+     No handler of its own: the tap bubbles to the vistabox dismiss.
+     Hidden during training, where the view is the lesson. */
+  if(tutDone){
+    const x=document.createElement('button');
+    x.className='vxc'; x.type='button'; x.textContent='✕';
+    x.setAttribute('data-tip','Close this view — tapping anywhere works too');
+    vistaBox.appendChild(x);
+  }
   const pc=document.createElement('div');pc.className='vpc';
   pc.setAttribute('role','button');pc.tabIndex=0;
   pc.textContent='⇪ Save postcard';
@@ -6771,7 +6798,8 @@ function reshowVista(){
     _vistaExtras();
     clearTimeout(_vistaHideT);
     vistaBox.style.display='flex';
-    requestAnimationFrame(()=>vistaBox.classList.add('on'));
+    { const my=++_vistaShowSeq;
+      requestAnimationFrame(()=>{ if(my===_vistaShowSeq) vistaBox.classList.add('on'); }); }
     return;
   }
   const v=_lastVista;
@@ -6821,7 +6849,8 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
   _vistaExtras();
   clearTimeout(_vistaHideT);
   vistaBox.style.display='flex';
-  requestAnimationFrame(()=>vistaBox.classList.add('on'));
+  { const my=++_vistaShowSeq;
+    requestAnimationFrame(()=>{ if(my===_vistaShowSeq) vistaBox.classList.add('on'); }); }
 }
 /* ----------------------------------------------------------------
    @section ui-panel [app] — survey-card panel — render, lock, bookmark row, actions
@@ -7470,7 +7499,7 @@ logEl.addEventListener('click', e=>{
 logBtn.addEventListener('click', ()=>{
   logOpen=!logOpen;
   logEl.style.display=logOpen?'block':'none';
-  if(logOpen){ codexOpen=false; codexEl.style.display='none'; renderLog(); }
+  if(logOpen){ closePanels('log'); renderLog(); }
   gameEvent('atlas-open', {open:logOpen});
 });
 
@@ -7848,7 +7877,7 @@ codexEl.addEventListener('click', e=>{
 codexBtn.addEventListener('click', ()=>{
   codexOpen=!codexOpen;
   codexEl.style.display=codexOpen?'block':'none';
-  if(codexOpen){ logOpen=false; logEl.style.display='none'; renderCodex(); }
+  if(codexOpen){ closePanels('codex'); renderCodex(); }
   gameEvent('codex-open', {open:codexOpen});
 });
 
@@ -8284,7 +8313,7 @@ function renderTray(){
 bellEl.addEventListener('click', ()=>{
   trayOpen=!trayOpen;
   trayEl.style.display=trayOpen?'block':'none';
-  if(trayOpen) renderTray();
+  if(trayOpen){ closePanels('tray'); renderTray(); }
   gameEvent('tray', {open:trayOpen});
 });
 trayList.addEventListener('click', e=>{
@@ -8302,7 +8331,7 @@ document.getElementById('trayclear').addEventListener('click', ()=>{
   renderBell(); renderTray(); queueSave();
 });
 document.addEventListener('pointerdown', e=>{
-  if(trayOpen && !e.target.closest('#bellwrap')){ trayOpen=false; trayEl.style.display='none'; }
+  /* tray outside-close now lives in the panel manager (v1.3.5) */
 });
 
 /* ---- rarity sting: a chime that climbs with the tier (WebAudio, no assets) ---- */
@@ -10533,6 +10562,7 @@ function _guideSearch(q){
 }
 function openGuide(){
   const g=document.getElementById('guidebox'); if(!g) return;
+  closePanels('guide');
   const s=document.getElementById('guidesearch'); if(s) s.value='';
   _guideMenu();
   g.style.display='flex';
@@ -10540,6 +10570,7 @@ function openGuide(){
 /* deep link straight to one topic — used by tooltips and the tutorial */
 function openGuideTopic(id){
   const g=document.getElementById('guidebox'); if(!g) return;
+  closePanels('guide');
   const s=document.getElementById('guidesearch'); if(s) s.value='';
   _guideShow(id);
   g.style.display='flex';
@@ -10926,7 +10957,7 @@ if(BUILD_ID!=='dev'){
 /* ---- Prime Codex wiring ---- */
 (function(){
   const pb=document.getElementById('primebox'), eb=document.getElementById('endingbox');
-  const open=()=>{ renderPrime(); pb.style.display='flex'; };
+  const open=()=>{ closePanels('prime'); renderPrime(); pb.style.display='flex'; };
   const pBtn=document.getElementById('pcdxbtn');
   if(pBtn){ pBtn.addEventListener('click', open);
     pBtn.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); open(); } }); }
@@ -11359,7 +11390,7 @@ if(cargoBtn){
   cargoBtn.addEventListener('click', ()=>{
     cargoOpen=!cargoOpen;
     cargoEl.style.display=cargoOpen?'block':'none';
-    if(cargoOpen) renderCargo();
+    if(cargoOpen){ closePanels('cargo'); renderCargo(); }
   });
 }
 if(cargoEl){
@@ -11742,7 +11773,7 @@ function renderCharters(){
 if(chBtn) chBtn.addEventListener('click', ()=>{
   chOpen=!chOpen;
   chPanel.style.display=chOpen?'block':'none';
-  if(chOpen) renderCharters();
+  if(chOpen){ closePanels('charters'); renderCharters(); }
 });
 function gameEvent(type, detail){
   try{ if(_tutHook) _tutHook(type, detail||{}); }catch(_){}
@@ -12059,7 +12090,7 @@ function resetSettingsView(){
 }
 document.getElementById('setbtn').addEventListener('click', ()=>{
   const opening = setPanel.style.display!=='block';
-  if(opening) resetSettingsView();
+  if(opening){ resetSettingsView(); closePanels('set'); }
   setPanel.style.display = opening ? 'block' : 'none';
   applyFs(); applyTone(); applyFont();
   const so=document.getElementById('sndopt');
@@ -12283,7 +12314,7 @@ eventsBtn.addEventListener('click', ()=>{
   eventsEl.style.display=eventsOpen?'block':'none';
   clearInterval(_evTimer);
   if(eventsOpen){
-    statsOpen=false; statsEl.style.display='none';
+    closePanels('events');
     renderEvents();
     _evTimer=setInterval(()=>{ if(eventsOpen) renderEvents(); }, 1000);
   }
@@ -12304,17 +12335,74 @@ eventsEl.addEventListener('click', e=>{
   toast(def.ic+' '+def.title, def.desc+'. Every explorer watching right now is being sent to this same place.');
   eventsOpen=false; eventsEl.style.display='none'; clearInterval(_evTimer);
 });
+/* ----------------------------------------------------------------
+   @section panel-manager [app] — one panel at a time (v1.3.5)
+   Owns: PANELS, MODAL_SEL, closePanels
+   ----------------------------------------------------------------
+   Nick's live pass (2026-07-18): panels stacked into an unplayable
+   pile on the phone. One rule everywhere now — opening a panel closes
+   the rest, a corner ✕ closes it, and a tap on empty space closes it
+   too. True modals (duel, reveal, name prompts, death, ending) stand
+   apart: a stray tap must never eat a fight. Hidden hand during
+   training — the tutorial keeps its own locks. */
+const PANELS=[
+  {id:'log',      el:()=>logEl,    btn:'#logbtn',    x:1, open:()=>logOpen,    close:()=>{ logOpen=false;    logEl.style.display='none'; }},
+  {id:'codex',    el:()=>codexEl,  btn:'#codexbtn',  x:1, open:()=>codexOpen,  close:()=>{ codexOpen=false;  codexEl.style.display='none'; }},
+  {id:'cargo',    el:()=>cargoEl,  btn:'#cargobtn',  x:1, open:()=>cargoOpen,  close:()=>{ cargoOpen=false;  cargoEl.style.display='none'; }},
+  {id:'charters', el:()=>chPanel,  btn:'#chbtn',     x:1, open:()=>chOpen,     close:()=>{ chOpen=false;     chPanel.style.display='none'; }},
+  {id:'events',   el:()=>eventsEl, btn:'#eventsbtn', x:1, open:()=>eventsOpen, close:()=>{ eventsOpen=false; eventsEl.style.display='none'; clearInterval(_evTimer); }},
+  {id:'stats',    el:()=>statsEl,  btn:'#rank',      x:1, open:()=>statsOpen,  close:()=>{ statsOpen=false;  statsEl.style.display='none'; }},
+  {id:'tray',     el:()=>trayEl,   btn:'#bellwrap',  x:0, open:()=>trayOpen,   close:()=>{ trayOpen=false;   trayEl.style.display='none'; }},
+  {id:'set',      el:()=>setPanel, btn:'#setbtn',    x:0, open:()=>setPanel.style.display==='block', close:()=>{ setPanel.style.display='none'; }},
+  {id:'guide',    el:()=>document.getElementById('guidebox'), btn:'#helpbtn', x:0,
+    open:()=>{ const g=document.getElementById('guidebox'); return !!(g && g.style.display && g.style.display!=='none'); },
+    close:()=>{ const g=document.getElementById('guidebox'); if(g) g.style.display='none';
+                try{ if(!seenGuide){ seenGuide=true; queueSave(); } }catch(_){ } }},
+  {id:'prime',    el:()=>document.getElementById('primebox'), btn:'#pcdxbtn', x:0,
+    open:()=>{ const p=document.getElementById('primebox'); return !!(p && p.style.display && p.style.display!=='none'); },
+    close:()=>{ const p=document.getElementById('primebox'); if(p) p.style.display='none'; }},
+];
+function closePanels(except){
+  for(const p of PANELS){ try{ if(p.id!==except && p.open()) p.close(); }catch(_){ } }
+}
+/* modals keep their own explicit buttons — the manager never touches them */
+const MODAL_SEL='#reveal,#pickbox,#duelbox,#sharebox,#namebox,#deathbox,#endingbox,#relbox,#tutbox,#helppop,#vistabox,#toasts';
 document.addEventListener('pointerdown', e=>{
-  if(eventsOpen && !e.target.closest('#events') && !e.target.closest('#eventsbtn')){
-    eventsOpen=false; eventsEl.style.display='none'; clearInterval(_evTimer);
-  }
-  if(codexOpen && !e.target.closest('#codex') && !e.target.closest('#codexbtn') && !e.target.closest('#reveal') && !e.target.closest('#pickbox')){
-    codexOpen=false; codexEl.style.display='none';
-  }
-  if(logOpen && !e.target.closest('#log') && !e.target.closest('#logbtn') && !e.target.closest('#reveal')){
-    logOpen=false; logEl.style.display='none';
+  if(!tutDone) return;                     /* training keeps its own locks */
+  const t=e.target;
+  if(!t || !t.closest) return;
+  if(t.closest(MODAL_SEL)) return;
+  for(const p of PANELS){
+    try{
+      if(!p.open()) continue;
+      const el=p.el();
+      if(t.closest(p.btn) || (el && el.contains(t))) continue;
+      p.close();
+    }catch(_){ }
   }
 });
+/* the corner ✕ — one delegated handler for every panel, injected or static */
+document.addEventListener('click', e=>{
+  const x=e.target && e.target.closest && e.target.closest('[data-pnx]');
+  if(!x) return;
+  const p=PANELS.find(q=>q.id===x.dataset.pnx);
+  if(p){ try{ if(p.open()) p.close(); }catch(_){ } e.stopPropagation(); }
+});
+/* rendered panels wipe their innerHTML on every render — a MutationObserver
+   re-seats the ✕ so no render function needs to know about it */
+function _mkPnx(id){
+  const b=document.createElement('button');
+  b.className='pnx'; b.dataset.pnx=id; b.type='button';
+  b.textContent='✕'; b.setAttribute('data-tip','Close');
+  return b;
+}
+for(const p of PANELS){
+  if(!p.x) continue;
+  const el=p.el && p.el(); if(!el) continue;
+  const seat=()=>{ if(tutDone && !el.querySelector('[data-pnx]')) el.appendChild(_mkPnx(p.id)); };
+  new MutationObserver(seat).observe(el, {childList:true});
+  seat();
+}
 
 /* ---- expedition stats panel (tap your rank) ---- */
 /* ----------------------------------------------------------------
@@ -12411,16 +12499,12 @@ rankEl.addEventListener('click', ()=>{
   statsOpen=!statsOpen;
   statsEl.style.display=statsOpen?'block':'none';
   if(statsOpen){
+    closePanels('stats');
     renderStats();
-    eventsOpen=false; eventsEl.style.display='none'; clearInterval(_evTimer);
   }
   gameEvent('stats-open', {open:statsOpen});
 });
-document.addEventListener('pointerdown', e=>{
-  if(statsOpen && !e.target.closest('#stats') && !e.target.closest('#rank')){
-    statsOpen=false; statsEl.style.display='none';
-  }
-});
+/* stats outside-close now lives in the panel manager (v1.3.5) */
 
 /* ---- view persistence: a browser tab-discard or reload returns you
         exactly where you were instead of dumping you at the universe view ---- */

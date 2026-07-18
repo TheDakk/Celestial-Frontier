@@ -232,6 +232,30 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('lockdown lifted after training', visible(doc.getElementById('codex')) !== cdxWasOpen);
     if (visible(doc.getElementById('codex'))) click(doc.getElementById('codexbtn'));
 
+    // ============ PANEL MANAGER: one panel at a time (v1.3.5) ============
+    const tapOutside = () => doc.body.dispatchEvent(new w.Event('pointerdown', { bubbles: true }));
+    click(doc.getElementById('codexbtn'));
+    check('panelman: Compendium opens', visible(doc.getElementById('codex')));
+    click(doc.getElementById('logbtn'));
+    check('panelman: opening Atlas closes Compendium', visible(doc.getElementById('log'))
+      && !visible(doc.getElementById('codex')));
+    check('panelman: Atlas wears a corner ✕', await until(() =>
+      !!doc.querySelector('#log [data-pnx="log"]'), 1000, 'atlas x'));   // ✕ seats a microtask after render
+    click(doc.querySelector('#log [data-pnx="log"]'));
+    check('panelman: ✕ closes the Atlas', !visible(doc.getElementById('log')));
+    click(doc.getElementById('chbtn'));
+    click(doc.getElementById('eventsbtn'));
+    check('panelman: Events closes Charters (a pair that used to stack)',
+      visible(doc.getElementById('events')) && !visible(doc.getElementById('chpanel')));
+    tapOutside();
+    check('panelman: tapping empty space closes the open panel', !visible(doc.getElementById('events')));
+    click(doc.getElementById('setbtn'));
+    check('panelman: settings panel opens with its ✕', visible(doc.getElementById('setpanel'))
+      && !!doc.querySelector('#setpanel [data-pnx="set"]'));
+    click(doc.querySelector('#setpanel [data-pnx="set"]'));
+    check('panelman: settings ✕ closes settings', !visible(doc.getElementById('setpanel')));
+    await sleep(600);   // a pointerdown suppresses focus-tooltips for 500ms (by design) — let it lapse
+
     // ============ GUIDE TO THE UNIVERSE ============
     click(doc.getElementById('helpbtn'));
     check('? popover shows version + guide link', visible(doc.getElementById('helppop')));
@@ -504,7 +528,10 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('You are here'), 4000, 'surface mine'));
     check('discovery: ground survey reveals the mineral veins without Deep Scanners',
       pan3.textContent.includes('Mineral veins'));
-    // the landing completed starter charter 1; the open board re-rendered live
+    // the landing completed starter charter 1. The board CLOSED on the way
+    // (v1.3.5 panel manager: canvas taps close panels — Nick's stacking fix),
+    // so reopen it to read the ticks.
+    if (!visible(chp)) click2(sk.doc.getElementById('chbtn'), sk.w);
     check('charters: Make planetfall completes on landing (paid + ticked)', skH.chDone.has('st-land')
       && chp.textContent.includes('✓ Make planetfall'));
     const chToasts1 = [...sk.doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
