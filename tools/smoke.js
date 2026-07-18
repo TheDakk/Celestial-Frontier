@@ -864,8 +864,10 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // the character sheet wears the sockets
     click2(sk.doc.getElementById('rank'), sk.w);
     const stEl4 = sk.doc.getElementById('stats');
-    check('v1.4 equipment: the character sheet shows five sockets', await until(() =>
-      stEl4.querySelectorAll('[data-eqslot]').length === 5, 4000, 'eq sockets'));
+    check('v1.4 equipment: the character sheet shows all nine sockets', await until(() =>
+      stEl4.querySelectorAll('[data-eqslot]').length === 9, 4000, 'eq sockets'));
+    check('v1.4 shipyard: the ship renders on the character sheet (a spaceship, hull caption)',
+      !!stEl4.querySelector('.shipimg') && /hull|online/i.test(stEl4.querySelector('.shipcap').textContent));
     check('v1.4 equipment: the effect readout speaks the boost', /mining yield/.test(stEl4.textContent));
     // ship systems ARE the ring keys: hand over the drives, watch the rings open
     skH.items.set('jumpdrive', 1);
