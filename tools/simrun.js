@@ -213,16 +213,22 @@ async function expedition(sess, seed, nActions, deep) {
     if (pct0 <= 35) { run.hostileGroundings++; note('grounded a hostile world (' + pct0 + '%): ' + (d.title || '')); }
     return d;
   };
+  const RARE_SET = new Set(['Ag', 'Au', 'Pt', 'Ir', 'U', 'Nd', 'Pm', 'Vg', 'Pz']);
   const mineAt = (sys, pl) => {
     const d = H.landed.has(pl.P.seed) ? H.describePick(pickOf(H, sys, pl)) : landOn(sys, pl);
     if (!d) return;
     const before = H.stats.mines || 0;
-    const strikesBefore = run._lastStrike || 0;
     const bv = (() => { try { return H.biomeVeinFor(pl.P.seed); } catch (_) { return null; } })();
     const cargoBv = bv ? (H.cargo.get(bv) || 0) : 0;
+    // rich strikes land RARE_VEIN elements — snapshot them to actually count
+    // (the first batch's counter never incremented; critics chased a ghost)
+    let rareBefore = 0; for (const s of RARE_SET) rareBefore += H.cargo.get(s) || 0;
     H.mineWorld(d);
     if ((H.stats.mines || 0) === before) run.noops++;
-    if (bv && (H.cargo.get(bv) || 0) > cargoBv) { run.biomeVeinLoads += (H.cargo.get(bv) || 0) - cargoBv; note('biome vein paid ' + bv + ' at ' + (d.title || '')); }
+    let rareAfter = 0; for (const s of RARE_SET) rareAfter += H.cargo.get(s) || 0;
+    const bvGain = bv ? (H.cargo.get(bv) || 0) - cargoBv : 0;
+    if (bvGain > 0) { run.biomeVeinLoads += bvGain; note('biome vein paid ' + bv + ' at ' + (d.title || '')); }
+    if (rareAfter - rareBefore - Math.max(0, bvGain) > 0) { run.richStrikes++; if (run.richStrikes <= 4) note('RICH STRIKE at ' + (d.title || '')); }
   };
   const bestCreature = () => {
     let best = null;
@@ -306,10 +312,16 @@ async function expedition(sess, seed, nActions, deep) {
         for (const pl of curSys.planets) {
           const d = H.describePick(pickOf(H, curSys, pl));
           if (d.species && d.species.length && !H.surveyedSet.has(pl.P.seed)) {
+            const sizeBefore = H.codex.size;
+            const bestBefore = (bestCreature() || { grade: { tier: -1 } }).grade.tier;
             H.autoScanWorld(d); run.scans++; done = true;
             if (H.hp < hpBefore) { run.scanHits++; note('bioscan turned hostile (−' + (hpBefore - H.hp) + ' hp)'); }
+            // log a rare find ONLY when it's genuinely new AND a new personal
+            // best (the first batch re-logged the same best every scan — the
+            // collector critic rightly called the noise a cardinal sin, but
+            // it was the diary's sin, not the game's: the game chimes once)
             const b = bestCreature();
-            if (b && b.grade.tier >= 5) note('RARE FIND: ' + b.grade.name + ' ' + b.name);
+            if (H.codex.size > sizeBefore && b && b.grade.tier >= 5 && b.grade.tier > bestBefore) note('RARE FIND: ' + b.grade.name + ' ' + b.name);
             break;
           }
         }

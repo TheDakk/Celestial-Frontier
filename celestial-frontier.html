@@ -12285,8 +12285,9 @@ pickList.addEventListener('click', e=>{
     if(r.ok){
       playRaritySting(3); fxBurst(FX_GREEN,16);
       resEl.innerHTML='\ud83d\udc9a <span style="color:#7fe6a0">+'+r.heal+' HP</span> \u00b7 <span style="color:'+sm.col+'">+'+r.gain+' '+sm.name+'</span>. The '+other.name+' nourished you \u2014 now at '+hp+'/'+HP_MAX+' HP.';
-    } else if(!r.dead){
-      resEl.innerHTML='\u2620 <span style="color:#ff8a72">Poisoned \u2212'+r.dmg+' HP.</span> The '+other.name+' was toxic ('+Math.round(r.pois*100)+'% risk). You\u2019re at '+hp+'/'+HP_MAX+' HP.';
+    } else {
+      resEl.innerHTML='\u2620 <span style="color:#ff8a72">Poisoned \u2212'+r.dmg+' HP.</span> The '+other.name+' was toxic ('+Math.round(r.pois*100)+'% risk). You\u2019re at '+hp+'/'+HP_MAX+' HP'+
+        (r.brink?' \u2014 <span style="color:#ff5a4a">at the brink. Medicine gutted you, but it never kills.</span>':'.');
     }
     document.getElementById('pick-title').textContent='\ud83c\udf3f Eat flora \u2014 heal & grow \u2014 '+hp+'/'+HP_MAX+' HP';
     pickList.innerHTML='';
@@ -12441,8 +12442,16 @@ function healExplorer(floraEntry, roll){
   const stat=floraStat(floraEntry.genome);
   const gain=1+tF+(techOwned.has('lab1')?1:0);   /* the Xenobotany Lab squeezes one more point from every meal */
   if(roll<pois){
-    const dmg=Math.ceil(healBase*0.6);
-    return {ok:false, pois, heal, dmg, stat, dead:damageExplorer(dmg, 'The '+floraEntry.name+' was toxic.')};
+    /* v1.4.1 (the player-critic panel's unanimous finding: the HEAL button
+       was the expedition's #1 killer — 3 of 6 sim diaries ended "ate a
+       plant, died"). The wave-off law extends to the dinner plate: a toxic
+       meal can gut you to the brink, but eating medicine NEVER kills the
+       explorer. Beasts can still die of bad meals — a beast has a keeper;
+       you are the keeper. */
+    let dmg=Math.ceil(healBase*0.6);
+    dmg=Math.min(dmg, Math.max(0, hp-1));
+    if(dmg>0){ hp-=dmg; renderHP(); }
+    return {ok:false, pois, heal, dmg, stat, dead:false, brink:hp<=1};
   }
   hp=Math.min(HP_MAX, hp+heal);
   pstats[stat]=Math.min(330, pstats[stat]+gain);
@@ -12519,7 +12528,7 @@ const GUIDE=[
  {id:'stats', t:'The five stats', k:'vitality ferocity resilience agility insight stats grow flora character', body:
   '<p>You fight with five stats, each starting at 50 and grown permanently by eating flora:</p><ul><li><b style="color:#7fe6a0">Vitality</b> — your life pool; sets max HP (×2) and duel toughness.</li><li><b style="color:#ff8a72">Ferocity</b> — attack power.</li><li><b style="color:#9fb4ff">Resilience</b> — blunts incoming damage.</li><li><b style="color:#ffd96a">Agility</b> — initiative; who strikes first.</li><li><b style="color:#d6a0ff">Insight</b> — critical-hit chance.</li></ul><p>Tap your nameplate to open your character sheet and inspect them. Creatures use the same five stats, rolled from their genomes.</p>'},
  {id:'hp', t:'HP, hazards & death', k:'hp health damage wound hazard death die expedition reset brink', body:
-  '<p>You can be wounded by scanning hostile worlds, by champion duty (losing a conquest you fought yourself), and by toxic flora.</p><ul><li>Your HP bar lives in the top bar; max HP = Vitality × 2.</li><li>Heal by eating flora — tap the ❤ heart (see <span data-gt="eating">Eating flora</span>).</li><li>At 0 HP the expedition ends — the universe is unchanged (it’s math), but your record starts over. Don’t scan furnace worlds at 12 HP.</li></ul>'},
+  '<p>You can be wounded by scanning hostile worlds, by champion duty (losing a conquest you fought yourself), and by toxic flora.</p><ul><li>Your HP bar lives in the top bar; max HP = Vitality × 2.</li><li>Heal by eating flora — tap the ❤ heart (see <span data-gt="eating">Eating flora</span>). <b>Medicine never kills:</b> a toxic meal can gut you to the brink — 1 HP — but eating flora is the one gamble that can&#8217;t end the expedition. (The same law as wave-offs: a scrape, never a grave.)</li><li>At 0 HP the expedition ends — the universe is unchanged (it’s math), but your record starts over. Don’t scan furnace worlds at 12 HP.</li></ul>'},
  {id:'rank', t:'Ranks & expedition score', k:'rank score cadet scout pathfinder voyager pioneer cartographer wayfarer sovereign luminary eternal rename name change explorer', body:
   '<p>Everything you do — surveying, cataloguing, breeding, settling, dueling — feeds your <b>expedition score</b>, and score climbs the ten ranks: <em>Cadet → Scout → Pathfinder → Voyager → Pioneer → Star Cartographer → Mythic Wayfarer → Void Sovereign → Cosmic Luminary → Eternal Frontier</em>. Your rank rides on your nameplate and on everything you share.</p><p><b>Nameplate colors:</b> every rank carries its own color, unlocked forever the moment you reach it. Pick any unlocked color from your character sheet (tap your nameplate → Nameplate) — and <b>Eternal Frontier</b> unlocks the iridescent foil.</p><p><b>Renaming yourself:</b> the ✎ rename link atop your character sheet — or <b>Settings → Display → Explorer name</b> — changes your name anytime. Your record stays; only the name on it changes.</p>'},
  {id:'achievements', t:'Achievements', k:'achievements unlock badges trophies curator survivor', body:
@@ -12800,7 +12809,9 @@ const RELEASES=[
  ],
  ['⚖ Balancing', [
   '🌈 THE RING SPECTRUM — rarity now expands with the rings: finds near home catalogue up to Legendary, the home galaxy up to Mythic, and each region beyond opens one more band until the Deep Field frees the summit grades. Distance is rarity, the same law as danger. Your bred bloodlines, guardians and Paragons are beyond the cap — and nothing you already catalogued ever downgrades.',
-  '🌈 Worlds and stars obey the same ladder on NEW expeditions — spectral designations near home top out where the ring does, and with them the spoils, veins and reserves that scale on a world&#8217;s tier. The riches, like the legends, live outward. Existing expeditions keep every designation their cards ever showed.'],
+  '🌈 Worlds and stars obey the same ladder on NEW expeditions — spectral designations near home top out where the ring does, and with them the spoils, veins and reserves that scale on a world&#8217;s tier. The riches, like the legends, live outward. Existing expeditions keep every designation their cards ever showed.',
+  '💚 MEDICINE NEVER KILLS — the wave-off law reaches the dinner plate: a toxic meal can gut you to 1 HP, but eating flora can no longer end the expedition. (Your beasts can still die of a bad meal — a beast has a keeper; you are the keeper.) The 700-player synthetic panel found the heal button was the #1 cause of death; that contradiction is gone.',
+  '🛠 Grail recipes now name their exotic&#8217;s source biome right in the cost line — Neodymium reads &#8220;Geode worlds&#8221;, Prismatium &#8220;Magma seas&#8221;. The ladder is only climbable if the map to the next rung is readable.'],
  ],
  ['🖱 UI Enhancements', [
   'The landing view is called <b>Planetside</b> now, and it&#8217;s a pop-up card floating over the game with its ✕ on the frame — it no longer reads as a separate full screen.',
@@ -13637,9 +13648,13 @@ function renderCargo(){
         const gatedBy=it.req && itemCount(it.req)<1 ? (ITEM_BY.get(it.req)||{}).name : null;
         const can=_canCraft(it) && !built;
         const bits=[];
+        /* the grail exotics name their source biome — the ladder is only
+           climbable if the map to the next rung is readable (critic panel) */
+        const _SRC={Nd:'Geode worlds', Pm:'Carbon worlds', Vg:'Glass deserts', Pz:'Magma seas'};
         for(const k in (it.cost||{})){
           const have=cargo.get(k)||0, need=it.cost[k];
-          bits.push('<span style="color:'+(have>=need?'#7fe6a0':'#ff8a72')+'"><img class="ci" src="'+elemIcon(k)+'" alt="">'+need+'× '+(ELEM_NAME[k]||k)+' <span style="opacity:.65">('+have+')</span></span>');
+          bits.push('<span style="color:'+(have>=need?'#7fe6a0':'#ff8a72')+'"><img class="ci" src="'+elemIcon(k)+'" alt="">'+need+'× '+(ELEM_NAME[k]||k)+
+            (_SRC[k]?'<span style="opacity:.6"> — '+_SRC[k]+'</span>':'')+' <span style="opacity:.65">('+have+')</span></span>');
         }
         for(const k in (it.parts||{})){
           const have=itemCount(k), need=it.parts[k];
