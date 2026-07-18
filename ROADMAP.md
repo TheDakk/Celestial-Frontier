@@ -662,6 +662,42 @@
 ## documented single-key re-pins. Smoke grew 173 -> 227.
 ## THE v1.3 LINE IS CLOSED. Next session opens v1.4 "THE ASCENT".
 
+## ▶▶ NICK'S DIRECTIVE ROUND (2026-07-18, third pass — ALL BUILT):
+## · EQUIPMENT = NINE SOCKETS (his slot set): Helmet · Earpiece ·
+##   Necklace · Suit · Gloves · Leggings · Boots · Tool · Module.
+##   New gear per slot (headlamp/visor/Voidglass visor; comms earpiece
+##   + reslotted Vein Resonator; meteorite pendant/Star Compass/
+##   Diplomat's Beacon/Prismatic Pendant; grip+surgeon's gloves; field
+##   leggings/greaves; mag-boots/Graviton Boots). Medkit removed
+##   (Surgeon's Gloves carry heal). 4 new icon families, proof-sheeted.
+## · "Planetside" replaces "Landing vista" (his pick) — button + notes.
+## · Duel skip label = "⚔ Skip" (his emoji call).
+## · AUTO-EXTRACTOR LOADS COUNT (try-and-iterate): stats.mines and
+##   Ascent mining goals count loads, not presses; wording back to
+##   "loads of ore".
+## · EARTH HARVESTS (audit fix applied): home is settled-from-start and
+##   now pays hourly stardust like any settled world (card was gated on
+##   a fauna roster Earth's hardcoded rows never had).
+## · BIOME-GATED VEINS (his "very cool, do it"): geode→Nd, carbon→Pm,
+##   glass→Vg, magmasea→Pz — guaranteed ✦ vein on the card, steady
+##   trickle on pulls, rich strikes there ALWAYS hit the exotic;
+##   RARE_VEIN luck elsewhere untouched (no card contradictions).
+##   Grail recipes consume them (Voidglass Visor, Graviton Boots,
+##   Prismatic Pendant; Warp Fold already ate Pz).
+## · BEACON REWORKED (his call, see how it plays): ring-scoped —
+##   walks Sol at stage 0, Neighborhood/galaxy stars at 1-2, the old
+##   far-cosmos walk at 3; stage-aware toast + Guide copy.
+## · SHIPYARD on the character sheet: painterly SPACECRAFT side profile
+##   (needle nose, swept fins — Nick: "not like a boat") that gains
+##   each built system: jump engines, Array dish, extractor pod, IG
+##   outriggers. Cached per built-set; proof-sheeted both states.
+## · Mined-out-worlds-as-real-estate: LIKED, logged as v1.5 candidate.
+## · PACING LAW (his close): Sol must mine+craft its way to the next
+##   ring, then each ring funds the next — verified for ch1 (Sol veins
+##   cover the whole Jump Drive chain + Earth harvest now funds ☄).
+## Suites after the round: fingerprint 50/50, smoke 252/252, systems
+## 19/19, balance PASS.
+##
 ## ★★★ v1.4 "THE ASCENT" IS BUILT — AWAITING NICK'S PASS + DEPLOY WORD ★★★
 ## (2026-07-18, second session; commits 0f39b99 + ff0abfe + review batch.
 ## GAME_VERSION bumped to '1.4' [Nick commissioned the 1.4 build this

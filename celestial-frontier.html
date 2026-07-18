@@ -800,6 +800,10 @@
   #stats .eqcand .ds{font-size:9.5px;color:var(--dim);line-height:1.35}
   #stats .eqfx{font-size:10px;line-height:1.6;color:#bfe6c8;border:1px solid rgba(127,230,160,0.25);
     border-radius:9px;padding:6px 9px;margin:0 0 4px;background:rgba(127,230,160,0.05)}
+  /* the Shipyard: your ship, gaining modules as systems come online */
+  #stats .shipimg{width:100%;border-radius:10px;border:1px solid var(--glass-brd);background:#06070f;display:block}
+  #stats .shipcap{font-size:9.5px;color:var(--plasma);letter-spacing:.06em;text-transform:uppercase;
+    text-align:center;margin:4px 0 2px}
   #cargo{position:fixed;top:calc(var(--row1-h,58px) + 170px);right:18px;z-index:12;width:320px;max-height:min(56vh,500px);overflow-y:auto;
     background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(150,162,210,0.2);border-radius:15px;padding:6px;display:none;
@@ -8534,6 +8538,15 @@ function renderPanel(p, isLocked){
         conqBtn='<button class="act'+(ready?'':' in')+'" data-act="harv" data-guide="harvest" data-tip="Settled worlds yield ☄ Stardust once an hour — and their bioscans are always safe.">'+
           (ready?'Harvest Stardust — ready':'Settled — replenishing')+'</button>';
       }
+    } else if(!glance && d.planetSeed===133 && conquered.has(133)){
+      /* EARTH (v1.4 audit fix): home is settled from the start, but its
+         card hardcodes flora/fauna rows without a species roster, so it
+         never entered the conquest block — the one settlement a Sol-locked
+         explorer HAS never paid. Home pays like any settled world now. */
+      const cE=conquered.get(133);
+      const readyE=Date.now()-cE.t>=HARVEST_CD;
+      conqBtn='<button class="act'+(readyE?'':' in')+'" data-act="harv" data-guide="harvest" data-tip="Home pays its keep — ☄ Stardust once an hour, like every settled world.">'+
+        (readyE?'Harvest Stardust — ready':'Settled — replenishing')+'</button>';
     }
     /* lifeless worlds carry the elements — the dead-world loop. Prospecting
        takes boots on the ground (v1.2); the deep scanner (scan1) reads the
@@ -8551,7 +8564,10 @@ function renderPanel(p, isLocked){
       const _mLeft=_mR-_mN;
       if(techOwned.has('scan1') || grounded){
         const _dp=depositsFor(d.planetSeed, d.ptype, _mTier);
+        /* the biome's gated exotic reads as its own lit vein (v1.4) */
+        const _bv=biomeVeinFor(d.planetSeed);
         rows+='<div class="splabel"><span class="k">Mineral veins</span><span class="v">'+_dp.map(s=>ELEM_NAME[s]||s).join(' · ')+
+          (_bv?' · <span style="color:'+(EC[_bv]||'#fff')+'">'+(ELEM_NAME[_bv]||_bv)+' ✦</span>':'')+
           (grounded?' <span style="color:var(--faint)">· '+(_mLeft>0?_mLeft.toLocaleString()+' pulls left':'mined out')+'</span>':'')+'</span></div>';
       }
       mineBtn = grounded
@@ -8577,7 +8593,7 @@ function renderPanel(p, isLocked){
        art is no longer see-once (graphics overhaul B1) */
     let vistaBtn='';
     if(!glance && hdOn && d.planetSeed!=null && landed.has(d.planetSeed) && st.mode==='system'){
-      vistaBtn='<button class="act" data-act="vista" data-tip="Look out over your landing site again">Landing vista</button>';
+      vistaBtn='<button class="act" data-act="vista" data-tip="Look out over your landing site again">Planetside</button>';
     }
     const btn = glance ? '' : atlasRow + conqBtn + landBtn + mineBtn + vistaBtn +
       (d.where ? '<button class="act" data-act="share" data-guide="codes" data-tip="Copy a code — friends land on this exact world">⇪ Share this discovery</button>' : '');
@@ -10076,7 +10092,7 @@ const ACH=[
   {id:'rimbreaker',cat:'Engineering', ic:'🌌', name:'Rim-Breaker',     d:'Build the Intergalactic Drive', t:()=>itemCount('igdrive')>=1},
   {id:'ascended',  cat:'Engineering', ic:'⬆', name:'The Ascent',      d:'Complete all three Ascent chapters', t:()=>(typeof ascCh!=='undefined' && ascCh>=ASC_CHAPTERS.length && itemCount('igdrive')>=1)},
   {id:'lastvein',  cat:'Engineering', ic:'⛏', name:'To the Last Vein', d:'Mine a world completely dry', t:()=>(stats.minedout||0)>=1},
-  {id:'richstrike',cat:'Engineering', ic:'💎', name:'Prospector&#8217;s Luck', d:'Make 250 mining pulls', t:()=>(stats.mines||0)>=250},
+  {id:'richstrike',cat:'Engineering', ic:'💎', name:'Prospector&#8217;s Luck', d:'Pull 250 loads of ore', t:()=>(stats.mines||0)>=250},
   /* — Cosmic Events — */
   {id:'daily',   cat:'Cosmic Events', ic:'🗓', name:'Pilgrim',        d:'Follow the Traveler\u2019s Beacon', t:null},
   {id:'anomaly5',cat:'Cosmic Events', ic:'🕯', name:'Devout',         d:'Follow 5 different Beacons', t:()=>stats.anomalies>=5},
@@ -10627,6 +10643,37 @@ document.addEventListener('pointerdown', e=>{
    ---------------------------------------------------------------- */
 function dailyWhere(){
   const key=Math.floor(Date.now()/1000/300);   /* 5-minute beacon cycle */
+  /* v1.4 REWORK (Nick): the beacon lights INSIDE your charter — it walks
+     Sol while Sol is your world, the Neighborhood once you can jump, the
+     whole galaxy once the Array is up, and only then the wider cosmos.
+     Still deterministic per cycle: every explorer on the same ring is
+     pointed at the same place at the same moment. */
+  const stg=(typeof ascStage==='function')?ascStage():3;
+  const homeGal={x:HOME_POS.x, y:HOME_POS.y, size:78, sp:0, tilt:0.62, rot:0.5, seed:HOME_GAL_SEED, home:true};
+  if(stg===0){
+    const seeds=[131,132,134,135,136,137,138];   /* Sol's worlds, home aside */
+    const r0=mulberry32(hashInt(777, key|0, 43)>>>0);
+    return {key, where:{type:'planet', gal:homeGal, star:{x:SOL_POS.x, y:SOL_POS.y, seed:SOL_SEED}, pseed:seeds[(r0()*seeds.length)|0]}};
+  }
+  if(stg<3){
+    const R=stg===1?ASC_RING_R:GR*0.92;
+    const r1=mulberry32(hashInt(777, key|0, 44+stg)>>>0);
+    const prof=galaxyProfile(HOME_GAL_SEED);
+    for(let i=0;i<300;i++){
+      const a=r1()*TAU, dd=Math.sqrt(r1())*R;
+      const cx=Math.floor((SOL_POS.x+Math.cos(a)*dd)/GCELL), cy=Math.floor((SOL_POS.y+Math.sin(a)*dd)/GCELL);
+      for(const s of starsInCell(HOME_GAL_SEED, prof, cx, cy).stars){
+        if(s.seed===SOL_SEED || Math.hypot(s.x-SOL_POS.x, s.y-SOL_POS.y)>R) continue;
+        const sys=systemFor(s.seed);
+        if(sys.planets && sys.planets.length){
+          let pick=sys.planets[0];
+          for(const pl of sys.planets){ if(pl.P.type==='terran'||pl.P.type==='ocean'){ pick=pl; break; } }
+          return {key, where:{type:'planet', gal:homeGal, star:{x:s.x, y:s.y, seed:s.seed}, pseed:pick.P.seed}};
+        }
+      }
+    }
+    return null;
+  }
   const r=mulberry32(hashInt(777, key|0, 42)>>>0);
   let gal=null;
   for(let i=0;i<400 && !gal;i++){
@@ -10660,7 +10707,10 @@ dailyBtn.addEventListener('click', ()=>{
   travelTo(res.where);
   if(res.key!==lastAnomKey){ lastAnomKey=res.key; stats.anomalies++; }
   unlock('daily'); checkAch(); renderRank(); queueSave();
-  toast('Traveler\u2019s Beacon', 'A random destination, somewhere out there. A new beacon lights every 5 minutes — follow as many as you like.');
+  { const _stg=(typeof ascStage==='function')?ascStage():3;
+  toast('Traveler\u2019s Beacon', _stg===0?'While Sol is your charter, the beacon walks the home system — a different neighbor every 5 minutes.'
+    :(_stg<3?'A destination inside your charter — a new beacon lights every 5 minutes, the same for every explorer on your ring.'
+    :'A random destination, somewhere out there. A new beacon lights every 5 minutes — follow as many as you like.')); }
 });
 
 /* ================= CREATURE STATS & DUELS =================
@@ -11343,7 +11393,7 @@ function fightNow(mine, theirs, opts){
   if(!_skipBtn){
     _skipBtn=document.createElement('button');
     _skipBtn.id='duelskip'; _skipBtn.type='button';
-    _skipBtn.textContent='⏭ Skip to the outcome';
+    _skipBtn.textContent='⚔ Skip';
     const _lgp=lg.parentNode; if(_lgp) _lgp.insertBefore(_skipBtn, lg.nextSibling);
   }
   _skipBtn.style.display='';
@@ -11989,7 +12039,7 @@ const GUIDE=[
  {id:'charters', t:'Expedition Charters', k:'charter charters hunt board weekly goals task starter reward stardust', body:
   '<p>The <b>Charters</b> board (left rail) always has work for an explorer. Fresh expeditions receive five <b>starter charters</b> — one for each trade, in the order they chain: make planetfall, prospect a dead world, discover life, name a Field Scout, conquer a world. Each pays <b>☄ Stardust</b> the moment it completes — and trades you&#8217;ve already proven are quietly marked complete.</p><p>Once the trades are learned, the board turns weekly: three charters a week, identical for every explorer in the universe — deterministic, like everything else out here. Compare boards with a friend; they match.</p>'},
  {id:'beacon', t:'Traveler’s Beacon', k:'beacon daily random destination five minutes', body:
-  '<p>The <b>Traveler’s Beacon</b> (left rail) offers a fresh destination every <b>5 minutes</b> — somewhere notable, picked deterministically, so every explorer’s beacon points at the same place at the same moment. An easy way to see something new when the infinite feels too big.</p>'},
+  '<p>The <b>Traveler’s Beacon</b> (left rail) offers a fresh destination every <b>5 minutes</b> — always somewhere <b>inside your charter</b>: it walks Sol while Sol is your world, the Neighborhood once you can jump, the whole galaxy once the Array is up, and the wider cosmos beyond the Rim. Picked deterministically, so every explorer on your ring is pointed at the same place at the same moment. An easy way to see something new when the infinite feels too big.</p>'},
  {id:'atlas', t:'The Star Atlas', k:'atlas bookmark favorite home save place travel star log', body:
   '<p>Your personal map of the infinite. On any survey card:</p><ul><li><b>+ Add to Star Atlas</b> bookmarks the place.</li><li><b>☆ Favorite</b> marks your best finds (and auto-saves them).</li><li><b>⌂ Home</b> marks one place as home — yours to change anytime.</li><li>The weekly pool now includes <b>Down the hard way</b> — land on a gas giant, a hothouse or a molten world. The descent will fight you; that&#8217;s the point.</li></ul><p>Open the <b>Star Atlas</b> (right rail) and tap any entry to ride the <b>hyperlane</b> there — the camera dives out, the sky stretches into a streak tunnel tinted by your destination’s light, and you ease in on arrival (tap to skip; obeys your effects and Motion settings). The Atlas keeps your most recent ~120 places.</p>'},
  {id:'colors', t:'The color language', k:'color colors tint meaning legend cyan gold red green ember violet lime chronicle toast tray mud', body:
@@ -12053,7 +12103,7 @@ const GUIDE=[
  {id:'research', t:'Research & ships', k:'research tech technology bench drive ship hull scanner lab fusion antimatter warp travel distance', body:
   '<p>The engineer’s track, parallel to the Prime Codex: the Prime Codex is your legend, the Research Bench is your capability. Research costs mined elements + ☄ Stardust:</p><ul><li><b>🛰 Deep Scanners</b> — survey cards reveal mineral veins from orbit.</li><li><b>🛡 Reinforced Hull</b> — hostile bioscans wound you 25% lighter.</li><li><b>🧪 Xenobotany Lab</b> — flora meals nourish one extra stat point.</li><li><b>The drive ladder</b> — 🚀 Fusion → ⚛ Antimatter → 🌀 Warp Fold. Hyperlane travel scales with real distance; each drive cuts it, and Warp Fold makes every jump arrive in a breath. Distance is never a wall — only a wait, and only ever a short one.</li></ul>'},
  {id:'crafting', t:'The Fabricator & gear', k:'craft crafting fabricator recipe parts components ship systems gear equipment suit tool module instrument charm slot equip mining rig auto extractor anchor', body:
-  '<p>The <b>🧰 Fabricator</b> (Cargo hold, middle tab) turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">The Ascent</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character sheet (tap your nameplate) grew five sockets — Suit, Tool, Module, Instrument, Charm. Mining rigs multiply hauls; suits blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); landing modules climb to the Gravitic Anchor, which never waves off; instruments sharpen first contact, rich strikes and meals.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
+  '<p>The <b>🧰 Fabricator</b> (Cargo hold, middle tab) turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">The Ascent</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character sheet (tap your nameplate) grew nine sockets — Helmet, Earpiece, Necklace, Suit, Gloves, Leggings, Boots, Tool and ship Module. Mining rigs and gloves multiply hauls; suits, visors and leggings blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); boots, greaves and the module ladder steady landings up to the Gravitic Anchor, which never waves off; earpieces and necklaces sharpen first contact, rich strikes, meals and travel.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
  {id:'ascent', t:'The Ascent', k:'ascent chapter chapters sol lock jump drive ring ladder progression mainline quest unlock neighborhood galaxy intergalactic', body:
   '<p><b>⬆ The Ascent</b> is the mainline: three chapters, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p>Veteran expeditions from before v1.4 already hold the sky — the Ascent never re-locks anything you had.</p>'},
 ]},
@@ -12295,12 +12345,15 @@ const RELEASES=[
  ['✨ New Features & Systems', [
   '⬆ THE ASCENT — a mainline of three chapters, pinned atop the Charters board. New expeditions start locked to Sol and mine → craft → build their way to the stars: the ⚡ Jump Drive opens the Neighborhood, the 📡 Long-Range Array opens the whole galaxy, the 🌌 Intergalactic Drive opens the dark between. The whole sky stays visible from day one — looking is free, moving is earned. Veteran saves already hold everything and lose nothing.',
   '🧰 THE FABRICATOR — a full crafting spine in the Cargo hold: T1 basic parts → T2 components → T3 ship systems and explorer gear, ~30 space-made recipes with painterly icons, no wait-timers ever.',
-  '🎽 EQUIPMENT — your character sheet grew five gear sockets (Suit · Tool · Module · Instrument · Charm). Mining rigs multiply hauls, hazard suits open molten/crushing/frozen worlds and blunt field wounds, the Gravitic Anchor ends wave-offs forever, the Diplomat&#8217;s Beacon wins first contacts, charms bring luck. Risk is the frontier — gear is how you tame it.',
+  '🎽 EQUIPMENT — your character sheet grew nine gear sockets (Helmet · Earpiece · Necklace · Suit · Gloves · Leggings · Boots · Tool · Module). Mining rigs and grip gloves multiply hauls, hazard suits open molten/crushing/frozen worlds, the Gravitic Anchor ends wave-offs forever, the Diplomat&#8217;s Beacon wins first contacts, and the grail pieces are forged from biome-gated exotics. Risk is the frontier — gear is how you tame it.',
+  '📡 THE SHIPYARD — your character sheet shows your ship: a bare hull on chemical thrusters that visibly gains every system you build — Jump Drive engines, the Array dish, the Auto-Extractor pod, the Intergalactic outriggers.',
+  '🗺 THE BEACON, RETUNED — the Traveler&#8217;s Beacon now always lights somewhere inside YOUR charter: it walks Sol while Sol is your world, then the Neighborhood, then the galaxy, then the wider cosmos.',
+  '💎 BIOME-GATED VEINS — four showpiece biomes are the living sources of the four exotics: Geode worlds bleed Neodymium, Carbon worlds Promethium, Glass deserts Voidglass, and magma seas guard Prismatium. The vein shows on the card with a ✦, and every rich strike there hits it.',
   '⛏ MINING REBUILT — no more hourly timer: every press pulls a varying haul, rich strikes hit rare pockets, and reserves are FINITE — the card counts the pulls left, and a world can be mined to nothing (it takes hundreds of pulls; there are always more worlds). The 🤖 Auto-Extractor keeps working every mined world while you&#8217;re away.',
   '🏅 Nine new Engineering achievements, two new Guide chapters (The Fabricator & gear · The Ascent).'],
  ],
  ['🖱 UI Enhancements', [
-  'The landing view is a pop-up card now, floating over the game with its ✕ on the frame — it no longer reads as a separate full screen.',
+  'The landing view is called <b>Planetside</b> now, and it&#8217;s a pop-up card floating over the game with its ✕ on the frame — it no longer reads as a separate full screen.',
   'Duels grew a ⏭ Skip button — let the chronicle play, or jump straight to the outcome.',
   'Compendium shelves speak one language now — Land · Aerial · Aquatic · Amphibious · Cave · Extremophile Fauna (gas-giant floaters shelve under Aerial; each card still names its precise realm).',
   'Survey cards stay beside their world — pan, zoom or let the orbit drift, the card rides along instead of stranding across the screen.'],
@@ -12838,6 +12891,23 @@ function depositsFor(seed, type, tier){
     picks.push(RARE_VEIN[Math.min(RARE_VEIN.length-1, (r()*(1+(tier||0)))|0)]);
   return picks;
 }
+/* v1.4 BIOME-GATED VEINS (Nick: "rarer worlds' veins gate rarer recipes —
+   do it"): four showpiece biomes are the LIVING SOURCES of the four
+   exotics — the vein is guaranteed there, and every rich strike at one
+   hits it. RARE_VEIN luck elsewhere is untouched, so nothing a card ever
+   showed changes; these worlds simply GAIN a row. Danger = rarity: the
+   magma sea (10% landing) guards Prismatium. */
+const BIOME_VEIN={geode:'Nd', carbon:'Pm', glass:'Vg', magmasea:'Pz'};
+function biomeVeinFor(seed){
+  /* same derivation as the card's biome row (in-system only, pure per seed) */
+  try{
+    const pl=st.sys&&st.sys.planets?st.sys.planets.find(x=>x.P&&x.P.seed===seed):null;
+    const P=pl?pl.P:(st.planet&&st.planet.P&&st.planet.P.seed===seed?st.planet.P:null);
+    if(!P) return null;
+    const b=biomeFor(P, climateBand(P, st.sys, (pl&&pl.orb)||(st.planet&&st.planet.orb)||100));
+    return (b && BIOME_VEIN[b.k])||null;
+  }catch(_){ return null; }
+}
 const mined=new Map();         /* pseed → last mine ms (auto-extractor anchor + veteran grandfather) */
 const mineX=new Map();         /* pseed → extractions taken so far (save field mx) */
 const cargo=new Map();         /* element symbol → qty */
@@ -12874,6 +12944,7 @@ function mineWorld(d){
   loads=Math.min(loads, R-n0);
   mined.set(ps, Date.now());
   const deps=depositsFor(ps, d.ptype||'rocky', tier);
+  const bv=biomeVeinFor(ps);   /* the biome's guaranteed exotic, if any */
   const mult=mineYieldMult();
   const got=new Map(); let rare=null;
   for(let i=0;i<loads;i++){
@@ -12884,19 +12955,25 @@ function mineWorld(d){
       const q=Math.max(1, Math.round((1+r()*3+Math.floor(tier/3))*mult));
       got.set(sym, (got.get(sym)||0)+q);
     }
+    /* a biome vein pays a steady trickle of its exotic on plain pulls */
+    if(bv && r()<0.25) got.set(bv, (got.get(bv)||0)+1);
     /* the RICH STRIKE — a lucky pull opens a rare pocket (instruments and
-       the plasma bore sharpen the odds) */
+       the plasma bore sharpen the odds); on a biome-vein world the pocket
+       is ALWAYS the biome's exotic */
     if(r() < 0.05+(tier||0)*0.01+_equipBonus('strike')){
-      const sym=RARE_VEIN[Math.min(RARE_VEIN.length-1, (r()*(1+(tier||0)))|0)];
+      const sym=bv||RARE_VEIN[Math.min(RARE_VEIN.length-1, (r()*(1+(tier||0)))|0)];
       got.set(sym, (got.get(sym)||0)+Math.max(1, Math.round(mult)));
       rare=sym;
     }
   }
   mineX.set(ps, n0+loads);
   for(const [sym,q] of got) cargo.set(sym, (cargo.get(sym)||0)+q);
-  stats.mines=(stats.mines||0)+1;
+  /* every LOAD counts (Nick's call): auto-extractor hauls feed the same
+     counters as hand pulls — goals, achievements and the ledger agree
+     with the ore that actually moved */
+  stats.mines=(stats.mines||0)+loads;
   if(n0+loads>=R) stats.minedout=(stats.minedout||0)+1;   /* a world given everything */
-  gameEvent('mined', {planetSeed:ps, first:_firstMine});
+  gameEvent('mined', {planetSeed:ps, first:_firstMine, loads:loads});
   const left=R-(n0+loads);
   playRaritySting(rare?4:2); fxBurst(FX_GOLD, rare?26:14);
   const gotTxt=[...got.entries()].map(e=>e[1]+'× '+(ELEM_NAME[e[0]]||e[0])).join(' · ');
@@ -13220,21 +13297,41 @@ const ITEMS=[
  {id:'struts', cat:'gear', slot:'module', tier:1, fam:'struts', hue:'#aab2c2', name:'Landing Struts',      d:'Wave-off scrapes hurt less', cost:{}, parts:{frame:1,plate:1}, eff:{struts:2,land:5}},
  {id:'stabil', cat:'gear', slot:'module', tier:2, fam:'struts', hue:'#ffd96a', name:'Descent Stabilizers', d:'Reads the storm on the way down — landings markedly safer', cost:{}, parts:{servo:1,navcore:1}, req:'struts', eff:{struts:3,land:15}},
  {id:'anchor', cat:'gear', slot:'module', tier:3, fam:'anchor', hue:'#3fe8c8', name:'Gravitic Anchor',     d:'The ground comes to YOU — no descent can wave you off', cost:{Nd:1,U:1}, parts:{coil:2,navcore:1}, req:'stabil', eff:{land100:1}},
- /* ---- GEAR: INSTRUMENT slot (explore better) ---- */
- {id:'diplobeacon',cat:'gear', slot:'instrument', tier:2, fam:'beacon', hue:'#cdbcff', name:'Diplomat’s Beacon', d:'Broadcasts peaceful intent — first contact lands far more often', cost:{Au:1}, parts:{lens:1,chip:1,cell:1}, eff:{contact:20}},
- {id:'resonator', cat:'gear', slot:'instrument', tier:2, fam:'probe', hue:'#b58cff', name:'Vein Resonator', d:'Sings to buried metal — rich strikes come far oftener', cost:{}, parts:{chip:2,coil:1}, eff:{strike:0.06}},
- {id:'medkit', cat:'gear', slot:'instrument', tier:1, fam:'kit', hue:'#7fe6a0', name:'Field Medkit', d:'Flora meals mend the explorer harder', cost:{P:2}, parts:{weave:1,cryogel:1}, eff:{heal:0.35}},
- /* ---- GEAR: CHARM slot (a little luck) ---- */
- {id:'meteor', cat:'gear', slot:'charm', tier:1, fam:'charm', hue:'#ffd96a', name:'Meteorite Shard', d:'A lucky stone from before the worlds — strikes run a little richer', cost:{Ni:2,C:1}, eff:{strike:0.02}},
- {id:'compass',cat:'gear', slot:'charm', tier:2, fam:'charm', hue:'#7fd0ff', name:'Star Compass', d:'Always knows the way home — hyperlanes run quicker', cost:{Ag:1}, parts:{lens:1,wire:1}, eff:{speed:1}},
+ /* ---- GEAR: HELMET slot ---- */
+ {id:'headlamp', cat:'gear', slot:'helmet', tier:1, fam:'helm', hue:'#ffd96a', name:'Miner’s Headlamp', d:'Light finds what shadow hid — rich strikes come a little oftener', cost:{}, parts:{lens:1,cell:1}, eff:{strike:0.02}},
+ {id:'visor',    cat:'gear', slot:'helmet', tier:2, fam:'helm', hue:'#9fdfe8', name:'Scout Visor',      d:'Reads the danger before it reads you — field wounds bite lighter', cost:{}, parts:{lens:1,chip:1,weave:1}, req:'headlamp', eff:{scut:0.15}},
+ {id:'voidhelm', cat:'gear', slot:'helmet', tier:3, fam:'helm', hue:'#3fe8c8', name:'Voidglass Visor',  d:'Ground from a glass desert&#8217;s lightning-fused sand — near-immune eyes', cost:{Vg:1}, parts:{lens:1,hullseg:1}, req:'visor', eff:{scut:0.25,strike:0.02}},
+ /* ---- GEAR: EARPIECE slot ---- */
+ {id:'earpiece', cat:'gear', slot:'ears', tier:1, fam:'probe', hue:'#7fd0ff', name:'Comms Earpiece', d:'Hears the hesitation in a wary hail — first contact lands oftener', cost:{}, parts:{wire:1,chip:1}, eff:{contact:10}},
+ {id:'resonator',cat:'gear', slot:'ears', tier:2, fam:'probe', hue:'#b58cff', name:'Vein Resonator', d:'Sings to buried metal — rich strikes come far oftener', cost:{}, parts:{chip:2,coil:1}, eff:{strike:0.06}},
+ /* ---- GEAR: NECKLACE slot ---- */
+ {id:'meteor', cat:'gear', slot:'necklace', tier:1, fam:'charm', hue:'#ffd96a', name:'Meteorite Pendant', d:'A lucky stone from before the worlds — strikes run a little richer', cost:{Ni:2,C:1}, eff:{strike:0.02}},
+ {id:'compass',cat:'gear', slot:'necklace', tier:2, fam:'charm', hue:'#7fd0ff', name:'Star Compass', d:'Always knows the way home — hyperlanes run quicker', cost:{Ag:1}, parts:{lens:1,wire:1}, eff:{speed:1}},
+ {id:'diplobeacon',cat:'gear', slot:'necklace', tier:2, fam:'beacon', hue:'#cdbcff', name:'Diplomat’s Beacon', d:'Broadcasts peaceful intent — first contact lands far more often', cost:{Au:1}, parts:{lens:1,chip:1,cell:1}, eff:{contact:20}},
+ {id:'prismpendant',cat:'gear', slot:'necklace', tier:3, fam:'charm', hue:'#ff7ae8', name:'Prismatic Pendant', d:'A cut of pure Prismatium from a magma sea — luck bends around it', cost:{Pz:1}, parts:{lens:1}, eff:{contact:10,heal:0.2,strike:0.02}},
+ /* ---- GEAR: GLOVES slot ---- */
+ {id:'gripgloves', cat:'gear', slot:'gloves', tier:1, fam:'glove', hue:'#c2a878', name:'Grip Gloves',       d:'Ore comes up easier when the hands don&#8217;t slip', cost:{}, parts:{weave:1,plate:1}, eff:{yield:0.25}},
+ {id:'surgeon',    cat:'gear', slot:'gloves', tier:2, fam:'glove', hue:'#7fe6a0', name:'Surgeon’s Gloves',  d:'Flora meals mend the explorer harder', cost:{}, parts:{weave:2,cryogel:1}, req:'gripgloves', eff:{heal:0.35}},
+ /* ---- GEAR: LEGGINGS slot ---- */
+ {id:'fieldlegs', cat:'gear', slot:'legs', tier:1, fam:'legs', hue:'#9fb6d6', name:'Field Leggings',      d:'Woven filament from ankle to hip — field wounds bite lighter', cost:{}, parts:{weave:2}, eff:{scut:0.1}},
+ {id:'greaves',   cat:'gear', slot:'legs', tier:2, fam:'legs', hue:'#ffd96a', name:'Stabilizer Greaves',  d:'Braced for the drop — landings steadier, scrapes shallower', cost:{}, parts:{frame:1,weave:1}, req:'fieldlegs', eff:{land:5,struts:1}},
+ /* ---- GEAR: BOOTS slot ---- */
+ {id:'magboots', cat:'gear', slot:'boots', tier:1, fam:'boot', hue:'#aab2c2', name:'Mag-Boots',      d:'The ground holds you the moment you touch it — landings land', cost:{}, parts:{plate:1,weave:1}, eff:{land:5}},
+ {id:'gravboots',cat:'gear', slot:'boots', tier:3, fam:'boot', hue:'#3fe8c8', name:'Graviton Boots', d:'Woven around geode-world neodymium — the fall never wins', cost:{Nd:1}, parts:{coil:1,weave:1}, req:'magboots', eff:{land:10,struts:1}},
 ];
 const ITEM_BY=new Map(ITEMS.map(it=>[it.id, it]));
+/* the nine sockets (Nick's slot set, 2026-07-18): the ARPG body — head to
+   boots — plus the working pair, Tool and ship Module */
 const EQ_SLOTS=[
-  {id:'suit',       ic:'🧑‍🚀', name:'Suit'},
-  {id:'tool',       ic:'⛏',  name:'Tool'},
-  {id:'module',     ic:'🛬', name:'Module'},
-  {id:'instrument', ic:'🛰', name:'Instrument'},
-  {id:'charm',      ic:'✨', name:'Charm'},
+  {id:'helmet',   ic:'⛑',  name:'Helmet'},
+  {id:'ears',     ic:'🎧', name:'Earpiece'},
+  {id:'necklace', ic:'📿', name:'Necklace'},
+  {id:'suit',     ic:'🧑‍🚀', name:'Suit'},
+  {id:'gloves',   ic:'🧤', name:'Gloves'},
+  {id:'legs',     ic:'👖', name:'Leggings'},
+  {id:'boots',    ic:'🥾', name:'Boots'},
+  {id:'tool',     ic:'⛏',  name:'Tool'},
+  {id:'module',   ic:'🛬', name:'Module'},
 ];
 const items=new Map();     /* item id → qty owned (save field items) */
 const equip={};            /* slot → item id (save field eq) */
@@ -13540,6 +13637,63 @@ function partIcon(id){
     g.fillStyle=K(0.7); g.fillRect(S*0.42,S*0.32,S*0.16,S*0.06);
     g.fillStyle='rgba(255,255,255,0.9)';
     g.fillRect(S*0.46,S*0.46,S*0.08,S*0.18); g.fillRect(S*0.41,S*0.51,S*0.18,S*0.08);
+  } else if(fam==='helm'){
+    /* a sealed helmet, visor lit from within */
+    const hg2=g.createRadialGradient(S*0.44,S*0.36,2,S*0.5,S*0.46,S*0.26);
+    hg2.addColorStop(0,K(1.35)); hg2.addColorStop(1,K(0.7));
+    g.fillStyle=hg2;
+    g.beginPath(); g.arc(S*0.5,S*0.46,S*0.24,Math.PI,0); g.lineTo(S*0.74,S*0.62);
+    g.quadraticCurveTo(S*0.5,S*0.70,S*0.26,S*0.62); g.closePath(); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.35)'; g.lineWidth=2; g.stroke();
+    g.save(); g.globalCompositeOperation='lighter';
+    const vg3=g.createLinearGradient(S*0.34,0,S*0.66,0);
+    vg3.addColorStop(0,K(1.6,0.15)); vg3.addColorStop(0.5,K(1.7,0.9)); vg3.addColorStop(1,K(1.6,0.15));
+    g.fillStyle=vg3;
+    if(g.roundRect){ g.beginPath(); g.roundRect(S*0.32,S*0.42,S*0.36,S*0.09,S*0.045); g.fill(); }
+    else g.fillRect(S*0.32,S*0.42,S*0.36,S*0.09);
+    g.restore();
+    g.fillStyle='rgba(255,255,255,0.8)'; g.beginPath(); g.arc(S*0.5,S*0.26,S*0.028,0,TAU); g.fill();
+  } else if(fam==='glove'){
+    /* a work glove, palm out — thumb, cuff, knuckle plate */
+    g.fillStyle=K(1.05);
+    if(g.roundRect){ g.beginPath(); g.roundRect(S*0.36,S*0.28,S*0.28,S*0.34,S*0.07); g.fill(); }
+    else g.fillRect(S*0.36,S*0.28,S*0.28,S*0.34);
+    g.beginPath(); g.ellipse(S*0.32,S*0.46,S*0.065,S*0.11,0.5,0,TAU); g.fill();   /* thumb */
+    g.fillStyle=K(0.7);
+    if(g.roundRect){ g.beginPath(); g.roundRect(S*0.35,S*0.62,S*0.30,S*0.12,S*0.03); g.fill(); }
+    else g.fillRect(S*0.35,S*0.62,S*0.30,S*0.12);                                  /* cuff */
+    g.fillStyle=K(1.4,0.85); g.fillRect(S*0.41,S*0.33,S*0.18,S*0.05);              /* knuckle plate */
+    g.strokeStyle='rgba(0,0,0,0.25)'; g.lineWidth=1.4;
+    for(let i2=1;i2<3;i2++){ const fx2=S*(0.36+i2*0.093);
+      g.beginPath(); g.moveTo(fx2,S*0.29); g.lineTo(fx2,S*0.40); g.stroke(); }
+  } else if(fam==='legs'){
+    /* utility leggings: waistband, two legs, knee plates */
+    g.fillStyle=K(1.0);
+    g.beginPath();
+    g.moveTo(S*0.34,S*0.26); g.lineTo(S*0.66,S*0.26); g.lineTo(S*0.66,S*0.44);
+    g.lineTo(S*0.60,S*0.78); g.lineTo(S*0.53,S*0.78); g.lineTo(S*0.51,S*0.48);
+    g.lineTo(S*0.49,S*0.48); g.lineTo(S*0.47,S*0.78); g.lineTo(S*0.40,S*0.78);
+    g.lineTo(S*0.34,S*0.44); g.closePath(); g.fill();
+    g.fillStyle=K(0.65); g.fillRect(S*0.34,S*0.26,S*0.32,S*0.06);                  /* waistband */
+    g.fillStyle=K(1.35,0.9);
+    g.fillRect(S*0.395,S*0.58,S*0.075,S*0.055); g.fillRect(S*0.535,S*0.58,S*0.075,S*0.055);  /* knee plates */
+    g.strokeStyle='rgba(255,255,255,0.25)'; g.lineWidth=1.4;
+    g.beginPath(); g.moveTo(S*0.37,S*0.34); g.lineTo(S*0.63,S*0.34); g.stroke();
+  } else if(fam==='boot'){
+    /* a boot in profile: shaft, foot, magnetic sole glow */
+    g.fillStyle=K(1.05);
+    g.beginPath();
+    g.moveTo(S*0.36,S*0.26); g.lineTo(S*0.52,S*0.26); g.lineTo(S*0.52,S*0.56);
+    g.lineTo(S*0.70,S*0.62); g.quadraticCurveTo(S*0.74,S*0.64,S*0.74,S*0.70);
+    g.lineTo(S*0.74,S*0.74) ; g.lineTo(S*0.34,S*0.74); g.lineTo(S*0.36,S*0.26);
+    g.closePath(); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.3)'; g.lineWidth=2; g.stroke();
+    g.fillStyle=K(0.6); g.fillRect(S*0.34,S*0.70,S*0.40,S*0.05);                   /* sole */
+    g.save(); g.globalCompositeOperation='lighter';
+    const bg3=g.createLinearGradient(0,S*0.74,0,S*0.84);
+    bg3.addColorStop(0,K(1.6,0.6)); bg3.addColorStop(1,K(1.6,0));
+    g.fillStyle=bg3; g.fillRect(S*0.32,S*0.74,S*0.44,S*0.10); g.restore();         /* mag glow */
+    g.fillStyle=K(1.4,0.9); g.fillRect(S*0.38,S*0.32,S*0.10,S*0.04);               /* clasp */
   } else { /* charm — a cut talisman on a cord */
     g.strokeStyle=K(0.8,0.9); g.lineWidth=2;
     g.beginPath(); g.arc(S*0.5,S*0.18,S*0.10,0.4,Math.PI-0.4); g.stroke();
@@ -13554,6 +13708,92 @@ function partIcon(id){
   }
   u=cv.toDataURL();
   _partIcons.set(id,u); return u;
+}
+/* THE SHIPYARD (v1.4, Nick: "make sure the visual is a Spaceship") — a
+   painterly side profile of YOUR ship on the character sheet: a sleek
+   needle-nosed spacecraft, nose right, that visibly gains every ship
+   system you build. Re-rendered only when the built set changes. */
+let _shipURL=null, _shipKey='';
+function shipImage(){
+  const jump=itemCount('jumpdrive')>0, arr=itemCount('array')>0,
+        ig=itemCount('igdrive')>0, aux=itemCount('autoext')>0;
+  const key=(jump?'J':'')+(arr?'A':'')+(ig?'I':'')+(aux?'X':'');
+  if(_shipURL && _shipKey===key) return _shipURL;
+  const W2=320, H2=120, cv=document.createElement('canvas'); cv.width=W2; cv.height=H2;
+  const g=cv.getContext('2d');
+  g.fillStyle='#06070f'; g.fillRect(0,0,W2,H2);
+  const r=mulberry32(0x5111);
+  for(let i=0;i<44;i++){ g.globalAlpha=0.15+r()*0.55; g.fillStyle='#ffffff';
+    g.fillRect(r()*W2, r()*H2, 1.2, 1.2); }
+  g.globalAlpha=1;
+  const cx=W2*0.52, cy=H2*0.55;
+  /* engine bells first (they sit behind the stern) */
+  const bell=(bx,by,s,glowCol)=>{
+    if(glowCol){ g.save(); g.globalCompositeOperation='lighter';
+      const eg=g.createRadialGradient(bx-13*s,by,1,bx-13*s,by,17*s);
+      eg.addColorStop(0,glowCol); eg.addColorStop(1,'rgba(0,0,0,0)');
+      g.fillStyle=eg; g.beginPath(); g.ellipse(bx-17*s,by,17*s,6*s,0,0,TAU); g.fill(); g.restore(); }
+    g.fillStyle='#39415c';
+    g.beginPath(); g.moveTo(bx,by-5*s); g.lineTo(bx-9*s,by-7.5*s); g.lineTo(bx-12*s,by+7.5*s); g.lineTo(bx,by+5*s); g.closePath(); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.25)'; g.lineWidth=1;
+    g.beginPath(); g.moveTo(bx-9*s,by-7.5*s); g.lineTo(bx-12*s,by+7.5*s); g.stroke();
+  };
+  if(ig){ bell(cx-58,cy-30,0.7,'rgba(255,122,232,0.8)'); bell(cx-50,cy+30,0.7,'rgba(255,122,232,0.8)'); }
+  if(jump){ bell(cx-80,cy-13,0.85,'rgba(127,208,255,0.85)'); bell(cx-78,cy+11,0.85,'rgba(127,208,255,0.85)'); }
+  bell(cx-84,cy-1,1,'rgba(255,190,120,0.75)');
+  /* the HULL: needle nose right, swept delta lines — spacecraft, not boat */
+  const hull=g.createLinearGradient(0,cy-26,0,cy+22);
+  hull.addColorStop(0,'#e2e8f6'); hull.addColorStop(0.5,'#9aa6c0'); hull.addColorStop(1,'#495270');
+  g.fillStyle=hull;
+  g.beginPath();
+  g.moveTo(cx+120,cy);
+  g.quadraticCurveTo(cx+68,cy-20,cx-12,cy-22);
+  g.lineTo(cx-80,cy-14);
+  g.lineTo(cx-86,cy+6);
+  g.quadraticCurveTo(cx-20,cy+20,cx+62,cy+14);
+  g.closePath(); g.fill();
+  /* swept-BACK dorsal + ventral fins */
+  g.fillStyle='#6c7898';
+  g.beginPath(); g.moveTo(cx-44,cy-18); g.lineTo(cx-90,cy-46); g.lineTo(cx-70,cy-12); g.closePath(); g.fill();
+  g.beginPath(); g.moveTo(cx-38,cy+15); g.lineTo(cx-66,cy+36); g.lineTo(cx-56,cy+11); g.closePath(); g.fill();
+  /* canopy */
+  const cp=g.createLinearGradient(cx+38,cy-20,cx+72,cy-2);
+  cp.addColorStop(0,'#c2eaff'); cp.addColorStop(1,'#3e8ccf');
+  g.fillStyle=cp;
+  g.beginPath(); g.ellipse(cx+56,cy-9,21,6.5,-0.08,0,TAU); g.fill();
+  g.strokeStyle='rgba(255,255,255,0.5)'; g.lineWidth=1;
+  g.beginPath(); g.ellipse(cx+56,cy-9,21,6.5,-0.08,3.5,5.6); g.stroke();
+  /* seams + running lights */
+  g.strokeStyle='rgba(18,24,42,0.4)'; g.lineWidth=1;
+  g.beginPath(); g.moveTo(cx-72,cy-7); g.lineTo(cx+84,cy-5); g.stroke();
+  g.fillStyle='rgba(255,90,80,0.9)'; g.beginPath(); g.arc(cx+112,cy-1,1.6,0,TAU); g.fill();
+  g.fillStyle='rgba(120,255,150,0.9)'; g.beginPath(); g.arc(cx-78,cy-13,1.6,0,TAU); g.fill();
+  /* LONG-RANGE ARRAY: dorsal dish on a mast */
+  if(arr){
+    g.strokeStyle='#8a96b6'; g.lineWidth=2;
+    g.beginPath(); g.moveTo(cx+6,cy-20); g.lineTo(cx+6,cy-34); g.stroke();
+    g.save(); g.translate(cx+6,cy-36); g.rotate(-0.5);
+    g.fillStyle='#b6c2dc'; g.beginPath(); g.arc(0,0,9,0,Math.PI); g.closePath(); g.fill();
+    g.fillStyle='#5c6888'; g.beginPath(); g.ellipse(0,0,9,2.4,0,0,TAU); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.6)'; g.lineWidth=1;
+    g.beginPath(); g.moveTo(0,0); g.lineTo(0,-6); g.stroke();
+    g.fillStyle='#fff'; g.beginPath(); g.arc(0,-6,1.4,0,TAU); g.fill();
+    g.restore();
+    g.strokeStyle='rgba(159,224,106,0.5)'; g.lineWidth=1;
+    for(let i=1;i<=2;i++){ g.beginPath(); g.arc(cx+14,cy-44,7*i,-1.1,0.4); g.stroke(); }
+  }
+  /* AUTO-EXTRACTOR: ventral pod with a drill head */
+  if(aux){
+    g.fillStyle='#7a6f5c';
+    if(g.roundRect){ g.beginPath(); g.roundRect(cx+14,cy+13,26,11,4); g.fill(); }
+    else g.fillRect(cx+14,cy+13,26,11);
+    g.fillStyle='#c2a878';
+    g.beginPath(); g.moveTo(cx+22,cy+24); g.lineTo(cx+32,cy+24); g.lineTo(cx+27,cy+33); g.closePath(); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.3)'; g.lineWidth=1;
+    g.beginPath(); g.moveTo(cx+16,cy+16); g.lineTo(cx+38,cy+16); g.stroke();
+  }
+  _shipURL=cv.toDataURL(); _shipKey=key;
+  return _shipURL;
 }
 
 /* ================= THE PRIME CODEX =================
@@ -13983,7 +14223,7 @@ const ASC_CHAPTERS=[
   intro:'Sol is yours to learn — the rest of the sky is charts and longing. Mine the dead worlds, feed the Fabricator, and build the Jump Drive.',
   goals:[
    {id:'c1-land', ev:'landfall', filt:x=>x&&x.planetSeed!=null&&_SOL_SEEDS.has(x.planetSeed), n:2, t:'Make planetfall on 2 worlds of Sol'},
-   {id:'c1-mine', ev:'mined',    n:8, t:'Make 8 mining pulls at Sol&#8217;s dead worlds'},
+   {id:'c1-mine', ev:'mined',    n:8, t:'Pull 8 loads of ore at Sol&#8217;s dead worlds'},
    {id:'c1-part', ev:'crafted', filt:x=>x&&x.cat==='part', n:4, t:'Fabricate 4 basic parts'},
    {id:'c1-comp', ev:'crafted', filt:x=>x&&x.cat==='comp', n:2, t:'Assemble 2 components'},
    {id:'c1-jump', ev:'crafted', filt:x=>x&&x.id==='jumpdrive', n:1, t:'Build the ⚡ Jump Drive'},
@@ -14003,7 +14243,7 @@ const ASC_CHAPTERS=[
   goals:[
    {id:'c3-breed', ev:'bred', filt:x=>x&&x.ok, n:1, t:'Breed a hybrid bloodline'},
    {id:'c3-gear',  ev:'crafted', filt:x=>x&&x.cat==='gear', n:2, t:'Craft 2 pieces of explorer gear'},
-   {id:'c3-mine',  ev:'mined', n:20, t:'Make 20 more mining pulls'},
+   {id:'c3-mine',  ev:'mined', n:20, t:'Pull 20 more loads of ore'},
    {id:'c3-ig',    ev:'crafted', filt:x=>x&&x.id==='igdrive', n:1, t:'Build the 🌌 Intergalactic Drive'},
   ],
   unlockNote:'The dark between galaxies is yours to cross — from here the Prime Codex Signatures extend the frontier, ring by ring.'},
@@ -14059,7 +14299,9 @@ function ascEvent(type, detail){
     for(const g of ch.goals){
       if((ascProg[g.id]||0)>=g.n || g.ev!==type) continue;
       if(g.filt && !g.filt(detail||{})) continue;
-      ascProg[g.id]=(ascProg[g.id]||0)+1;
+      /* mining goals count LOADS (auto-extractor hauls included) */
+      const inc=(type==='mined' && detail && detail.loads>0)?detail.loads:1;
+      ascProg[g.id]=Math.min(g.n, (ascProg[g.id]||0)+inc);
       hit=true;
       if(ci===ascCh && (ascProg[g.id]||0)>=g.n && !ch.goals.every(g2=>(ascProg[g2.id]||0)>=g2.n)){
         const nxt=ch.goals.find(g2=>(ascProg[g2.id]||0)<g2.n);
@@ -14783,6 +15025,14 @@ function renderStats(){
     const hl=_equipBonus('heal'); if(hl>0) fx.push('💚 +'+Math.round(hl*100)+'% meal healing');
     const sp=_equipBonus('speed'); if(sp>0) fx.push('🚀 quicker hyperlanes');
     if(fx.length) html+='<div class="eqfx">'+fx.join(' · ')+'</div>';
+  }
+  /* ---- THE SHIPYARD (v1.4): your ship, wearing every system you build ---- */
+  {
+    const sysNames=ITEMS.filter(it=>it.cat==='sys' && itemCount(it.id)>0).map(it=>it.name);
+    html+='<h4>Shipyard</h4><img class="shipimg" src="'+shipImage()+'" alt="Your ship">'+
+      '<div class="shipcap">'+(sysNames.length
+        ? sysNames.join(' · ')+' online'
+        : 'A bare hull on chemical thrusters — the 🧰 Fabricator builds her out.')+'</div>';
   }
   const _statBody=
     '<div class="srow"><span class="k">Living worlds surveyed</span><span>'+stats.surveys+'</span></div>'+

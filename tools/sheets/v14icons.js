@@ -1,9 +1,10 @@
 // v1.4 proof sheet: the Fabricator's part/gear icons (every shape family)
 // + the new asteroid rock sprites (belt + icy) that replaced the squares.
 module.exports = {
-  width: 1240, height: 760,
+  width: 1240, height: 1000,
   lift: ['mulberry32', 'hashInt', '_rockSprites', '_rockSet',
-         'ITEMS', 'ITEM_BY', '_partIcons', 'partIcon'],
+         'ITEMS', 'ITEM_BY', '_partIcons', 'partIcon',
+         '_shipURL', 'shipImage'],
   draw: `function(g){
     g.fillStyle='#07080f'; g.fillRect(0,0,1240,760);
     g.fillStyle='#8892b8'; g.font='12px monospace';
@@ -28,5 +29,19 @@ module.exports = {
       })(x,y,it);
       x+=118; if(x>1240-118){ x=20; y+=140; }
     }
+    // the Shipyard: bare hull, then everything online (itemCount shimmed —
+    // the game's items Map can't be lifted cleanly, its decl line ends in a comment)
+    window.items=new Map();
+    window.itemCount=function(id){ return window.items.get(id)||0; };
+    const shipRow=(sy)=>{
+      const bare=new Image(); bare.src=shipImage();
+      bare.onload=function(){ g.drawImage(bare, 20, sy, 320, 120);
+        g.fillStyle='#8892b8'; g.font='11px monospace'; g.fillText('bare hull', 20, sy+134); };
+      window.items.set('jumpdrive',1); window.items.set('array',1); window.items.set('igdrive',1); window.items.set('autoext',1);
+      const full=new Image(); full.src=shipImage();
+      full.onload=function(){ g.drawImage(full, 380, sy, 320, 120);
+        g.fillStyle='#8892b8'; g.font='11px monospace'; g.fillText('all systems online (jump+array+IG+extractor)', 380, sy+134); };
+    };
+    shipRow(840);
   }`,
 };
