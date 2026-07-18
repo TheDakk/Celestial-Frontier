@@ -510,6 +510,12 @@
   #duelbox #duel-log .dl-ex{color:#ff8a72}
   #duelbox #duel-log .dl-death{color:#ff5a4a}
   #duelbox #duel-result{font:600 13px var(--ui);text-align:center;margin:10px 0 2px;color:var(--ink)}
+  /* ⏭ skip the chronicle (v1.3.11): quiet pill under the log — auto-play
+     stays the default show */
+  #duelbox #duelskip{display:block;margin:8px auto 0;padding:6px 14px;font:600 10px var(--ui);
+    letter-spacing:.08em;color:var(--dim);background:rgba(20,24,44,0.6);
+    border:1px solid var(--glass-brd);border-radius:999px;cursor:pointer}
+  #duelbox #duelskip:hover{color:var(--ink);border-color:rgba(150,162,210,0.55)}
   #duelbox #duel-setup{margin:10px 0 0}
   #duelbox .dnote{font-size:10.5px;color:var(--faint);line-height:1.55;margin:0 0 8px}
   #duelbox .drow{display:flex;gap:7px}
@@ -650,8 +656,9 @@
   #tray .pnx,#setpanel .pnx{position:absolute}
   #guidebox .card{position:relative}   /* anchor the guide's ✕ to the card, not the screen */
   @media (pointer:coarse){ .pnx{width:34px;height:34px;font-size:15px;line-height:34px;top:3px;right:3px} }
-  /* the vista ✕ — safe-area aware, floats over the art */
-  .vxc{position:absolute;top:calc(env(safe-area-inset-top,0px) + 14px);right:calc(env(safe-area-inset-right,0px) + 14px);
+  /* the vista ✕ — anchored to the pop-up card's corner (v1.3.11), the same
+     close language as every other card */
+  .vxc{position:absolute;top:8px;right:8px;
     width:36px;height:36px;border:1px solid rgba(150,162,210,0.35);border-radius:10px;
     background:rgba(10,12,20,0.55);color:#cdd5f2;font:600 16px/34px system-ui,sans-serif;
     text-align:center;cursor:pointer;padding:0;z-index:3}
@@ -1220,14 +1227,18 @@
   #vistabox{position:fixed;inset:0;z-index:44;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;
     opacity:0;transition:opacity .45s;
     padding:max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));
-    background:radial-gradient(120% 90% at 50% 45%, rgba(6,8,16,0.985), rgba(2,3,8,0.995));cursor:pointer;padding:14px}
-  /* v1.3.7: the landing floats in dark space — the close-up ground smear
-     behind it never shows through (Nick's screenshot; blur alone leaked it) */
+    background:rgba(3,5,11,0.72);cursor:pointer;padding:14px}
+  /* v1.3.11 (Nick): the vista is a POP-UP CARD floating over the game now,
+     not a takeover screen — the dimmed sky shows through behind it (safe
+     since v1.3.8: landing never leaves space, so no ground smear leaks). */
   #vistabox.on{opacity:1}
+  #vistabox .vcard{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;
+    padding:13px 13px 11px;border:1px solid var(--glass-brd);border-radius:18px;
+    background:radial-gradient(130% 120% at 50% 0%, rgba(15,19,36,0.97), rgba(6,8,16,0.98));
+    box-shadow:0 30px 90px rgba(0,0,0,0.7);max-width:calc(100vw - 24px)}
   /* landscape phones: clamp width to the image's own 2.233 aspect so the
      frame never letterboxes empty bars (graphics overhaul B3) */
-  #vistabox canvas{width:min(94vw,960px,calc(70vh*2.233));max-height:70vh;object-fit:contain;border-radius:16px;border:1px solid var(--glass-brd);
-    box-shadow:0 30px 90px rgba(0,0,0,0.7)}
+  #vistabox canvas{width:min(90vw,900px,calc(64vh*2.233));max-height:64vh;object-fit:contain;border-radius:12px;border:1px solid var(--glass-brd)}
   #vistabox .vh{font:600 11px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--plasma)}
   #vistabox .vt{font:600 9px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
   #vistabox .vpc{font:600 10px var(--ui);letter-spacing:.12em;color:var(--plasma);cursor:pointer;
@@ -2089,11 +2100,23 @@ function beltThumb(){
   const key='blt'; if(thumbCache.has(key)) return thumbCache.get(key);
   const T=128, c=document.createElement('canvas'); c.width=c.height=T;
   const g=c.getContext('2d'); const r=mulberry32(7);
+  /* irregular lumps, not squares (v1.3.11) — each a tiny shaded polygon */
   for(let i=0;i<46;i++){
     const a=-0.6+r()*1.9, rr=T*0.34+(r()-0.5)*T*0.13;
-    g.fillStyle=r()<0.3?'#a3978a':'#7c756b';
-    const sz=(0.8+r()*2.4)*T/64;
-    g.fillRect(T*0.5+Math.cos(a)*rr-sz/2, T*0.62+Math.sin(a)*rr*0.55-sz/2, sz, sz);
+    const lit2=r()<0.3;
+    const sz=(1.0+r()*2.6)*T/64;
+    const bx=T*0.5+Math.cos(a)*rr, by=T*0.62+Math.sin(a)*rr*0.55;
+    const nv=5+((r()*3)|0);
+    g.fillStyle=lit2?'#a3978a':'#7c756b';
+    g.beginPath();
+    for(let k=0;k<nv;k++){
+      const va=k/nv*TAU+r()*0.5, vr=sz*(0.55+r()*0.5);
+      const px2=bx+Math.cos(va)*vr, py2=by+Math.sin(va)*vr;
+      if(k===0) g.moveTo(px2,py2); else g.lineTo(px2,py2);
+    }
+    g.closePath(); g.fill();
+    g.fillStyle='rgba(226,220,206,0.35)';
+    g.beginPath(); g.arc(bx-sz*0.25, by-sz*0.25, sz*0.28, 0, TAU); g.fill();
   }
   const url=c.toDataURL(); thumbCache.set(key,url); return url;
 }
@@ -5179,6 +5202,38 @@ function drawGalaxy(time){
 /* side caches for per-object presentation (fingerprint-safe: no new
    fields on domain objects) */
 const _litCache=new Map(), _ringCache=new Map(), _mtintCache=new Map();
+/* baked asteroid sprites (v1.3.11): 8 irregular shaded lumps per family,
+   rendered once — the per-frame draw is a plain drawImage. Rock grey-browns
+   for the inner belt, blue-whites for the icy outer ring. */
+const _rockSprites={};
+function _rockSet(kind){
+  let set=_rockSprites[kind]; if(set) return set;
+  set=_rockSprites[kind]=[];
+  const ice=kind==='ice';
+  const mid=ice?'#8fa8c2':'#7a7266', lit=ice?'#d8e8f6':'#a89e8e';
+  for(let v=0;v<8;v++){
+    const S=24, cv=document.createElement('canvas'); cv.width=cv.height=S;
+    const g=cv.getContext('2d'), r=mulberry32(hashInt(0xA57E, v, ice?2:1)>>>0);
+    const cx=S/2, cy=S/2, n=7+((r()*4)|0), pts=[];
+    for(let i=0;i<n;i++){ const a=i/n*TAU, rr=S*0.32*(0.60+r()*0.55); pts.push([cx+Math.cos(a)*rr, cy+Math.sin(a)*rr]); }
+    g.fillStyle=mid; g.beginPath(); g.moveTo(pts[0][0],pts[0][1]);
+    for(let i=1;i<n;i++) g.lineTo(pts[i][0],pts[i][1]);
+    g.closePath(); g.fill();
+    /* sunward facet + shadowed flank, clipped to the silhouette */
+    g.globalCompositeOperation='source-atop';
+    const lg2=g.createLinearGradient(0,0,S,S);
+    lg2.addColorStop(0,lit); lg2.addColorStop(0.45,'rgba(0,0,0,0)'); lg2.addColorStop(1,'rgba(10,8,6,0.55)');
+    g.fillStyle=lg2; g.fillRect(0,0,S,S);
+    /* a couple of crater pocks */
+    for(let k2=0;k2<3;k2++){
+      g.fillStyle='rgba(0,0,0,'+(0.18+r()*0.16).toFixed(2)+')';
+      g.beginPath(); g.arc(cx+(r()-0.5)*S*0.42, cy+(r()-0.5)*S*0.42, 1+r()*2.2, 0, TAU); g.fill();
+    }
+    g.globalCompositeOperation='source-over';
+    set.push(cv);
+  }
+  return set;
+}
 function ensureCardFacts(P, sys, orb){
   if(CARD_FACTS.has(P.seed)) return;
   const r=mulberry32((P.seed^0x1234567)>>>0);
@@ -5271,12 +5326,19 @@ function drawSystem(time){
       }
     }
   }
-  /* asteroid belt */
+  /* asteroid belt — real rock lumps, not squares (v1.3.11, Nick's pass).
+     A tiny baked sprite set; variant + facing derive from fields each rock
+     already carries, so the seeded stream is untouched. */
   if(sys.belt){
-    ctx.fillStyle='#8a8276';
+    const _rs=_rockSet('rock');
     for(const b of sys.belt.rocks){
       const a=b.a+time*b.sp;
-      ctx.fillRect(Math.cos(a)*b.rr, Math.sin(a)*b.rr, b.s, b.s);
+      const spr=_rs[((b.a*997)|0)&7], sz=b.s*2.6;
+      ctx.save();
+      ctx.translate(Math.cos(a)*b.rr, Math.sin(a)*b.rr);
+      ctx.rotate(b.a*13);
+      ctx.drawImage(spr, -sz/2, -sz/2, sz, sz);
+      ctx.restore();
     }
     picks.push({ringPick:true, sx:(0-c.x)*c.z+W/2, sy:(0-c.y)*c.z+H/2,
       rr:sys.belt.r*c.z, band:Math.max(6*c.z,10), kind:'belt', data:{sys}});
@@ -5286,12 +5348,17 @@ function drawSystem(time){
       ctx.fillText('asteroid belt', 0, -sys.belt.r - 8/c.z);
     }
   }
-  /* outer icy Kuiper-style ring */
+  /* outer icy Kuiper-style ring — icy lumps, same sprite language */
   if(sys.kuiper){
-    ctx.fillStyle='#9fb8d0';
+    const _ks=_rockSet('ice');
     for(const b of sys.kuiper.rocks){
       const a=b.a+time*b.sp*0.4;
-      ctx.fillRect(Math.cos(a)*b.rr, Math.sin(a)*b.rr, b.s, b.s);
+      const spr=_ks[((b.a*997)|0)&7], sz=b.s*2.4;
+      ctx.save();
+      ctx.translate(Math.cos(a)*b.rr, Math.sin(a)*b.rr);
+      ctx.rotate(b.a*13);
+      ctx.drawImage(spr, -sz/2, -sz/2, sz, sz);
+      ctx.restore();
     }
     picks.push({ringPick:true, sx:(0-c.x)*c.z+W/2, sy:(0-c.y)*c.z+H/2,
       rr:sys.kuiper.r*c.z, band:Math.max(6*c.z,10), kind:'kuiper', data:{sys}});
@@ -7446,33 +7513,46 @@ function savePostcard(){
   else fire(cv.toDataURL('image/png'));
   toast('⇪ Postcard saved','The view and its share code are baked into the image — send it to a friend.');
 }
-function _vistaExtras(){
+function _vistaExtras(host){
   /* the corner ✕ — same language as every card and panel (v1.3.5).
      No handler of its own: the tap bubbles to the vistabox dismiss.
-     Shows in every vista, training included (v1.3.8 — Nick expects it). */
+     Shows in every vista, training included (v1.3.8 — Nick expects it).
+     v1.3.11: anchored to the pop-up card's corner, not the screen. */
+  host=host||vistaBox;
   {
     const x=document.createElement('button');
     x.className='vxc'; x.type='button'; x.textContent='✕';
     x.setAttribute('data-tip','Close this view — tapping anywhere works too');
-    vistaBox.appendChild(x);
+    host.appendChild(x);
   }
   const pc=document.createElement('div');pc.className='vpc';
   pc.setAttribute('role','button');pc.tabIndex=0;
   pc.textContent='⇪ Save postcard';
   pc.addEventListener('click',(e)=>{ e.stopPropagation(); savePostcard(); });
   pc.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); savePostcard(); } });
-  vistaBox.appendChild(pc);
+  host.appendChild(pc);
+}
+/* mount the vista as a WINDOWED pop-up card (v1.3.11, Nick: the view read
+   as a separate full screen with an ✕ stranded in the corner — now it is a
+   framed card floating over the game, ✕ on the frame). One mount path for
+   every scene family + the re-view. */
+function _vistaMount(headHtml, cv, vtTxt){
+  vistaBox.innerHTML='';
+  const card=document.createElement('div'); card.className='vcard';
+  const vh=document.createElement('div'); vh.className='vh'; vh.innerHTML=headHtml;
+  card.appendChild(vh);
+  card.appendChild(cv);
+  const vt=document.createElement('div'); vt.className='vt'; vt.textContent=vtTxt;
+  card.appendChild(vt);
+  _vistaExtras(card);
+  vistaBox.appendChild(card);
 }
 function reshowVista(){
   if(!_lastVista) return;
   if(_lastVista.cv){
     /* re-view reuses the composed canvas — no re-render hitch on phones
        (round-2 audit) */
-    vistaBox.innerHTML='<div class="vh">'+_lastVista.head+'</div>';
-    vistaBox.appendChild(_lastVista.cv);
-    const vt=document.createElement('div');vt.className='vt';vt.textContent=_lastVista.vtTxt;
-    vistaBox.appendChild(vt);
-    _vistaExtras();
+    _vistaMount(_lastVista.head, _lastVista.cv, _lastVista.vtTxt);
     clearTimeout(_vistaHideT);
     vistaBox.style.display='flex';
     { const my=++_vistaShowSeq;
@@ -7661,15 +7741,12 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
       ring:!!P.ring, moons:P.moons||0, tod:tod, aurora:!!aurora,
       air:(xtra&&xtra.air)||0, wb:wbG?wbG.k:null,
       evt:evtG, titan:!!(xtra&&xtra.titan)});
-    vistaBox.innerHTML='<div class="vh">Cloud deck — '+((wbG&&wbG.n)||TYPE_LABEL[type]||'Gas giant')+'</div>';
-    vistaBox.appendChild(cvG);
-    const vtG=document.createElement('div');vtG.className='vt';
-    vtG.textContent='local '+tod+' — tap to continue';
-    vistaBox.appendChild(vtG);
+    const headG='Cloud deck — '+((wbG&&wbG.n)||TYPE_LABEL[type]||'Gas giant');
+    const vtTxtG='local '+tod+' — tap to continue';
+    _vistaMount(headG, cvG, vtTxtG);
     _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
       flora:flora, climSnow:climSnow, water:water, xtra:xtra,
-      cv:cvG, head:'Cloud deck — '+((wbG&&wbG.n)||TYPE_LABEL[type]||'Gas giant'), vtTxt:vtG.textContent};
-    _vistaExtras();
+      cv:cvG, head:headG, vtTxt:vtTxtG};
     clearTimeout(_vistaHideT);
     vistaBox.style.display='flex';
     { const my=++_vistaShowSeq;
@@ -7702,15 +7779,12 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
      vantage (5b-ii); no sky, no weather, biolume for light */
   if(wb5 && wb5.k==='abyssal'){
     const cvA=_hdAbyssScene({seed:P.seed, aqua:(xtra&&xtra.aqua)||0});
-    vistaBox.innerHTML='<div class="vh">The deep — '+wb5.n+'</div>';
-    vistaBox.appendChild(cvA);
-    const vtA=document.createElement('div');vtA.className='vt';
-    vtA.textContent='beneath the surface — tap to continue';
-    vistaBox.appendChild(vtA);
+    const headA='The deep — '+wb5.n;
+    const vtTxtA='beneath the surface — tap to continue';
+    _vistaMount(headA, cvA, vtTxtA);
     _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
       flora:flora, climSnow:climSnow, water:water, xtra:xtra,
-      cv:cvA, head:'The deep — '+wb5.n, vtTxt:vtA.textContent};
-    _vistaExtras();
+      cv:cvA, head:headA, vtTxt:vtTxtA};
     clearTimeout(_vistaHideT);
     vistaBox.style.display='flex';
     { const my=++_vistaShowSeq;
@@ -7724,17 +7798,14 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
     ring:!!(xtra&&xtra.ring), stc:(xtra&&xtra.stc)||null, herd:(xtra&&xtra.herd)||0,
     aqua:(xtra&&xtra.aqua)||0, air:(xtra&&xtra.air)||0, wb:wb5?wb5.k:null,
     evt:evt5, titan:!!(xtra&&xtra.titan)});
-  vistaBox.innerHTML='<div class="vh">Planetfall — '+((wb5&&wb5.n)||TYPE_LABEL[type]||'World')+'</div>';
-  vistaBox.appendChild(cv);
+  const head5='Planetfall — '+((wb5&&wb5.n)||TYPE_LABEL[type]||'World');
   const WXW={rain:'rain',snow:'snowfall',dust:'dust storm',ash:'ashfall',haze:'haze'};
-  const vt=document.createElement('div');vt.className='vt';
-  vt.textContent='local '+tod+(wx?' · '+(WXW[wx]||wx):'')+
+  const vtTxt5='local '+tod+(wx?' · '+(WXW[wx]||wx):'')+
     (evt5?' · '+WX_EVENT_WORD[evt5]:'')+' — tap to continue';
-  vistaBox.appendChild(vt);
+  _vistaMount(head5, cv, vtTxt5);
   _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
     flora:flora, climSnow:climSnow, water:water, xtra:xtra,
-    cv:cv, head:'Planetfall — '+((wb5&&wb5.n)||TYPE_LABEL[type]||'World'), vtTxt:vt.textContent};
-  _vistaExtras();
+    cv:cv, head:head5, vtTxt:vtTxt5};
   clearTimeout(_vistaHideT);
   vistaBox.style.display='flex';
   { const my=++_vistaShowSeq;
@@ -7744,7 +7815,7 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
    @section ui-panel [app] — survey-card panel — render, lock, bookmark row, actions
    Owns: _lastDesc, _panelKey, panelRect, stickyPick, _spExpanded, _frozenFor, _frozenPos, _autoScanned, cardExpand, renderPanel
    ---------------------------------------------------------------- */
-let _lastDesc=null, _panelKey=null, panelRect=null, stickyPick=null, _spExpanded=null, _frozenFor=null, _frozenPos=null, _autoScanned=null;
+let _lastDesc=null, _panelKey=null, panelRect=null, stickyPick=null, _spExpanded=null, _frozenFor=null, _frozenPos=null, _frozenPick=null, _autoScanned=null;
 /* condensed-card expand state (1.1.2): bit 1 = Environment open, bit 2 =
    Civilization census open. Remembered across cards AND sessions (save
    field cx, absent-default 0 = collapsed) — set it once, keep your view. */
@@ -8467,14 +8538,23 @@ function renderPanel(p, isLocked){
     } else { ax=16; ay=_topMin; }
   }
   else if(isLocked && _frozenFor===d.logId && _frozenPos){
-    /* locked — anchored in place so it never chases the drifting object */
+    /* locked — anchored RELATIVE to the object (v1.3.11): the card rides
+       with its planet through pans and zooms instead of stranding across
+       the screen (Nick's training screenshot — Earth's card far from
+       Earth). A drag re-sets the offset; slow orbit drift carries the
+       card smoothly, never a chase-jitter. */
+    if(_frozenPick && p.sx!=null && (p.sx!==_frozenPick.x || p.sy!==_frozenPick.y)){
+      _frozenPos.x += p.sx-_frozenPick.x;
+      _frozenPos.y += p.sy-_frozenPick.y;
+    }
+    if(p.sx!=null) _frozenPick={x:p.sx, y:p.sy};
     ax=clamp(_frozenPos.x, 8, W-pw-8);
     ay=clamp(_frozenPos.y, _topMin, H-ph-12);
   } else {
     ax = p.sx+20+pw < W-8 ? p.sx+20 : p.sx-pw-20;
     ay = clamp(p.sy-10, _topMin, H-ph-12);
     ax = clamp(ax, 8, W-pw-8);
-    if(isLocked){ _frozenFor=d.logId; _frozenPos={x:ax, y:ay}; }
+    if(isLocked){ _frozenFor=d.logId; _frozenPos={x:ax, y:ay}; _frozenPick=(p.sx!=null)?{x:p.sx, y:p.sy}:null; }
     else { _frozenFor=null; }
   }
   if(ax!==_panelAX || ay!==_panelAY){
@@ -9083,23 +9163,41 @@ function renderCodex(){
       fromTxt+'</span>'+
       '</div></div>';
   };
+  /* SHELVES speak one habitat language (v1.3.11, Nick: "Gas Giant Life"
+     broke the Land / Aerial / Aquatic theme): realms fold onto themed
+     shelves for display only — the card badge keeps the precise realm,
+     and the stored data (and the Warden of Realms count) is untouched. */
   const groups={};
-  for(const sp of list){ const rm=sp.realm||sp.kind; (groups[rm]||(groups[rm]=[])).push(sp); }
-  const order=REALM_ORDER.filter(r=>groups[r]);
-  for(const rm in groups) if(order.indexOf(rm)<0) order.push(rm);   /* any future realm still shows */
+  for(const sp of list){ const rm=_SHELF_OF[sp.realm]||sp.realm||sp.kind; (groups[rm]||(groups[rm]=[])).push(sp); }
+  const order=_SHELF_ORDER.filter(r=>groups[r]);
+  for(const rm in groups) if(order.indexOf(rm)<0) order.push(rm);   /* any future shelf still shows */
   for(const rm of order){
     const group=groups[rm];
     const open=_cdxOpen.has(rm) || codexKing!=='all';   /* a filtered kingdom lays its shelves open */
     const hy=group.filter(s=>s.hybrid).length;
     const kg=(group[0]&&group[0].kind||'').toLowerCase();
     html+='<div class="cgrp'+(open?' open':'')+'" data-cg="'+rm+'">'+
-      '<div class="cgh kg-'+kg+'" role="button" tabindex="0"><span><span class="arr">▸</span>'+(REALM_ICON[rm]||'')+' '+rm+'</span>'+
+      '<div class="cgh kg-'+kg+'" role="button" tabindex="0"><span><span class="arr">▸</span>'+(_SHELF_ICON[rm]||REALM_ICON[rm]||'')+' '+rm+'</span>'+
       '<span class="cnt">'+group.length+(hy?' · '+hy+' hybrid':'')+'</span></div>'+
       '<div class="cgb">'+(open?group.map(spCard).join(''):'')+'</div></div>';
   }
   codexEl.innerHTML=html;
 }
 const _cdxOpen=new Set(['Land Fauna']);
+/* realm → display shelf. Fauna shelves all read "<Habitat> Fauna"; the
+   showcase realms (Megafauna, Anomalous Life) stand as their own shelves. */
+const _SHELF_OF={
+  'Gas Giant Life':'Aerial Fauna',
+  'Amphibious Life':'Amphibious Fauna',
+  'Subterranean Life':'Cave Fauna',
+  'Extreme-World Life':'Extremophile Fauna',
+  'Exotic Biochemistry':'Extremophile Fauna',
+  'Intelligent Natural Life':'Sapient Fauna',
+  'Collective / Hive Life':'Hive Fauna',
+};
+const _SHELF_ICON={'Amphibious Fauna':'🐸','Cave Fauna':'🕳️',
+  'Extremophile Fauna':'🌋','Sapient Fauna':'🧠','Hive Fauna':'🐝'};
+const _SHELF_ORDER=(()=>{ const out=[]; for(const r of REALM_ORDER){ const s=_SHELF_OF[r]||r; if(out.indexOf(s)<0) out.push(s); } return out; })();
 let codexKing='all';   /* kingdom filter: all|Fauna|Flora|Fungi|Microbe (v1.3.10, Nick: plants vs animals blurred) */
 codexEl.addEventListener('click', e=>{
   const ck=e.target.closest('[data-ck]');
@@ -11081,10 +11179,23 @@ function fightNow(mine, theirs, opts){
   say('<span style="opacity:.85"><i>Initiative:</i> '+(_fastA?mine.name:theirs.name)+' moves first (AGI '+(_fastA?res.A.agi+' vs '+res.B.agi:res.B.agi+' vs '+res.A.agi)+').</span>',
       'Initiative: '+(_fastA?mine.name:theirs.name)+' moves first.');
   duelBox.style.display='flex';
+  /* ⏭ skip (v1.3.11, Nick's ask): the chronicle still auto-plays for those
+     who like the theater — one tap prints the rest of the fight instantly */
+  let _skip=false;
+  let _skipBtn=document.getElementById('duelskip');
+  if(!_skipBtn){
+    _skipBtn=document.createElement('button');
+    _skipBtn.id='duelskip'; _skipBtn.type='button';
+    _skipBtn.textContent='⏭ Skip to the outcome';
+    const _lgp=lg.parentNode; if(_lgp) _lgp.insertBefore(_skipBtn, lg.nextSibling);
+  }
+  _skipBtn.style.display='';
+  _skipBtn.onclick=(e)=>{ e.stopPropagation(); _skip=true; _skipBtn.style.display='none'; };
   let i=0;
   const step=()=>{
     if(duelBox.style.display!=='flex') return;
     if(i>=res.log.length){
+      _skipBtn.style.display='none';
       const win=res.winner==='A'?mine.name:(res.winner==='B'?theirs.name:null);
       const _drEl=document.getElementById('duel-result');
       _drEl.textContent = opts.resultText
@@ -11113,12 +11224,14 @@ function fightNow(mine, theirs, opts){
       gameEvent('duel-done', {winner:res.winner});
       return;
     }
-    const L=res.log[i++];
-    narrate(L);
     const eA=document.getElementById('hpA'), eB=document.getElementById('hpB');
-    if(eA) eA.style.width=Math.round(L.hpA/res.maxA*100)+'%';
-    if(eB) eB.style.width=Math.round(L.hpB/res.maxB*100)+'%';
-    setTimeout(step, 240);
+    do{
+      const L=res.log[i++];
+      narrate(L);
+      if(eA) eA.style.width=Math.round(L.hpA/res.maxA*100)+'%';
+      if(eB) eB.style.width=Math.round(L.hpB/res.maxB*100)+'%';
+    } while(_skip && i<res.log.length);
+    if(_skip) step(); else setTimeout(step, 240);
   };
   setTimeout(step, 420);
 }
@@ -11510,7 +11623,10 @@ pickList.addEventListener('click', e=>{
   const other=codex.get(c.dataset.pk); if(!other) return;
   const resEl=document.getElementById('pick-result');
   if(_pickMode==='heal'){
-    const r=healExplorer(other, (_tutRig&&_tutRig.heal!=null)?_tutRig.heal:Math.random());
+    /* v1.3.11: training NEVER loses a roll, whatever step is up — Nick's
+       pass caught a feed during the breed lesson rolling live toxin odds.
+       (The rigged rolls stay inside training; the real odds rule outside.) */
+    const r=healExplorer(other, (_tutRig&&_tutRig.heal!=null)?_tutRig.heal:(!tutDone?0.95:Math.random()));
     gameEvent('healed', {ok:!!r.ok});
     const sm=STAT_META[r.stat]||{name:'',col:'#9fb6d6'};
     if(r.ok){
@@ -11525,7 +11641,7 @@ pickList.addEventListener('click', e=>{
     return;
   }
   if(_pickMode==='breed'){
-    const r=breedPair(_pickBase, other, (_tutRig&&_tutRig.breed!=null)?_tutRig.breed:Math.random());
+    const r=breedPair(_pickBase, other, (_tutRig&&_tutRig.breed!=null)?_tutRig.breed:(!tutDone?-1:Math.random()));
     stats.breeds=(stats.breeds||0)+1;
     gameEvent('bred', {ok:!!r.ok});
     if(r.ok){
@@ -11545,7 +11661,7 @@ pickList.addEventListener('click', e=>{
       revealEl.style.display='none';
     }
   } else {
-    const r=feedPair(_pickBase, other, (_tutRig&&_tutRig.feed!=null)?_tutRig.feed:Math.random());
+    const r=feedPair(_pickBase, other, (_tutRig&&_tutRig.feed!=null)?_tutRig.feed:(!tutDone?0.99:Math.random()));
     stats.feeds=(stats.feeds||0)+1;
     gameEvent('fed', {ok:!!r.ok});
     const _fcol={loved:'#7fe6a0', neutral:'#cfd6f2', disliked:'#ffd96a'};
@@ -11908,6 +12024,15 @@ function openGuideTopic(id){
   }
   if(hb){ hb.addEventListener('click', toggleHelp);
     hb.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggleHelp(); } }); }
+  /* v1.3.11 (Nick's pass): tapping empty space closes the ? popover like
+     any panel. It sits in MODAL_SEL (a tap on it must not close panels
+     beneath), so it needs its own outside-tap closer. */
+  document.addEventListener('pointerdown', e=>{
+    if(!_hpop || _hpop.style.display!=='block') return;
+    const t=e.target;
+    if(t && t.closest && (t.closest('#helppop')||t.closest('#helpbtn'))) return;
+    _hpop.style.display='none';
+  });
 })();
 
 /* ----------------------------------------------------------------
@@ -12001,6 +12126,19 @@ const GAME_VERSION='1.3.10';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.4', title:'The Ascent', date:'July 2026', sections:[
+ ['🖱 UI Enhancements', [
+  'The landing view is a pop-up card now, floating over the game with its ✕ on the frame — it no longer reads as a separate full screen.',
+  'Duels grew a ⏭ Skip button — let the chronicle play, or jump straight to the outcome.',
+  'Compendium shelves speak one language now — Land · Aerial · Aquatic · Amphibious · Cave · Extremophile Fauna (gas-giant floaters shelve under Aerial; each card still names its precise realm).',
+  'Survey cards stay beside their world — pan, zoom or let the orbit drift, the card rides along instead of stranding across the screen.'],
+ ],
+ ['🐛 Bug Fixes', [
+  'Asteroids are actual rocks now — the belt and the outer icy ring draw shaded, irregular lumps instead of squares, in close-up and in the card thumb alike.',
+  'Tapping empty space closes the ? popover, like every other panel.',
+  'Field Training is a safe room again: every practice roll — feeding included, on any step — succeeds. A rig bug had the training meal poisoning the loaned beast every single time.'],
+ ],
+]},
 {v:'1.3.10', title:'Kingdom Shelves', date:'July 2026', sections:[
  ['🖱 UI Enhancements', [
   'The Compendium stopped blurring plants into animals. Filter chips — All · 🐾 Fauna · 🌿 Flora · 🍄 Fungi · 🦠 Microbes — sit above the shelves, and picking one lays that kingdom&#8217;s shelves open on their own. Every shelf header now wears its kingdom&#8217;s color, so the list reads at a glance even unfiltered.'],
@@ -13155,7 +13293,7 @@ const TUT_STEPS=[
   when:(t)=>t==='specimen'},
  {id:'card-tour', spot:'#reveal .card', btn:'Got It', rev:'scout',   /* the tour's one live verb — reversible, and it IS on the card */
   text:()=>'Read it like a Pathfinder: five stat bars and total Power; its ✧ ability; the rarity grade tinting the card. Rarer life fights harder, breeds stronger, heals — or poisons — more. Beasts also list the flora flavours they ♥ love and ⊘ dislike.'},
- {id:'feed', allow:['#codex','#codexbtn'], rev:'feed', enter:()=>{ _tutRig={feed:-1}; },   /* -1 beats any odds — training never loses (Nick got stuck on a failed rig) */
+ {id:'feed', allow:['#codex','#codexbtn'], rev:'feed', enter:()=>{ _tutRig={feed:0.99}; },   /* feedPair poisons on LOW rolls — 0.99 is the safe, best-event roll (v1.3.11: the old -1 rig GUARANTEED the training poisoning Nick screenshotted) */
   text:()=>'Time for a meal. Open a 🐾 beast in the Compendium, tap <b>Feed</b>, and pick a plant. The plant is always consumed — a welcome meal grows the beast’s bloodline permanently.',
   when:(t)=>t==='fed'},
  {id:'breed', allow:['#codex','#codexbtn'], rev:'breed', enter:()=>{ _tutRig={breed:-1}; },
@@ -13945,6 +14083,18 @@ function frameInner(){
   } else st.fade=0;
   _travelFrame();   /* hyperlane overlay + driven camera, when a jump is in flight */
   let hovered=null;
+  /* find a reference pick's live twin this frame — pick data objects are
+     rebuilt every frame, so identity fails for planets; match by the
+     underlying world instead (v1.3.11 card-anchoring fix) */
+  const _livePick=(ref)=>{
+    if(!ref || !ref.data) return null;
+    return picks.find(p=>p.data===ref.data ||
+      (p.kind===ref.kind && p.data && (
+        (p.data.P && ref.data.P && p.data.P.seed===ref.data.P.seed) ||
+        (p.data.pl && ref.data.pl && p.data.pl===ref.data.pl) ||
+        (p.kind==='comet' && p.data.ci!=null && p.data.ci===ref.data.ci)
+      )))||null;
+  };
   if(st.mode==='surface' && st.planet){
     hovered={kind:'planet', data:{P:st.planet.P, sys:st.sys, pl:st.planet}};
   } else {
@@ -13975,12 +14125,18 @@ function frameInner(){
     else if(stickyPick && panelRect && mouse.x!=null &&
             mouse.x>=panelRect.x-40 && mouse.x<=panelRect.x+panelRect.w+16 &&
             mouse.y>=panelRect.y-16 && mouse.y<=panelRect.y+panelRect.h+16){
-      hovered=stickyPick;   /* cursor is on (or near) the panel — keep it open and clickable */
+      /* cursor is on (or near) the panel — keep it open and clickable.
+         v1.3.11: refresh the pick's screen coords from the live frame, so
+         the glance card follows its planet through pans/zooms (pick data
+         objects are rebuilt per frame; match planets by seed). */
+      const lv=_livePick(stickyPick);
+      if(lv) stickyPick=lv;
+      hovered=stickyPick;
     } else { stickyPick=null; }
   }
   /* a locked object's panel takes priority and stays open even as the object drifts */
   if(locked){
-    const live = picks.find(p=>p.data===locked.data);
+    const live=_livePick(locked);
     if(live){ locked.sx=live.sx; locked.sy=live.sy; hovered=live; }
     else hovered={ data:locked.data, kind:locked.kind, sx:locked.sx, sy:locked.sy, r:20 };
   }

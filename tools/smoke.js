@@ -194,13 +194,20 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('kingdoms: filter chips stay hidden during training (one voice)',
       !doc.querySelector('#codex [data-ck]'));
 
-    // open a FAUNA specimen card (open its realm group first)
+    // open a FAUNA specimen card (open its shelf first — v1.3.11 folds
+    // realms onto themed display shelves, so find the card by opening
+    // shelves rather than assuming the shelf name equals the realm)
     const fauna = [...H.codex.values()].filter((e) => e.kind === 'Fauna');
     check('cache holds 3 fauna + 3 flora', fauna.length === 3 && H.codex.size === 6);
     const openCard = (id) => {
-      const entry = H.codex.get(id);
-      const grp = doc.querySelector('.cgrp[data-cg="' + (entry.realm || entry.kind) + '"]');
-      if (grp && !grp.classList.contains('open')) click(grp.querySelector('.cgh'));
+      // each shelf toggle re-renders the codex, so re-query fresh nodes
+      // every pass instead of iterating a stale list
+      let guard = 0;
+      while (!doc.querySelector('[data-pick="' + id + '"]') && guard++ < 20) {
+        const grp = [...doc.querySelectorAll('#codex .cgrp')].find((g) => !g.classList.contains('open'));
+        if (!grp) break;
+        click(grp.querySelector('.cgh'));
+      }
       click(doc.querySelector('[data-pick="' + id + '"]'));
     };
     openCard(fauna[0].id);
@@ -231,6 +238,13 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.getElementById('pickclose'));
 
     tutAct();                                                       // begin training duel
+    // v1.3.11: the chronicle can be skipped — the button appears while the
+    // fight plays, and one tap prints the rest instantly (auto-play stays
+    // the default; this also keeps the suite quick)
+    check('v1.3.11: the duel offers a skip-to-outcome button', await until(() =>
+      visible(doc.getElementById('duelbox')) && !!doc.getElementById('duelskip')
+      && doc.getElementById('duelskip').style.display !== 'none', 8000, 'duel skip button'));
+    click(doc.getElementById('duelskip'));
     check('training duel resolves and completes step 11', await until(() => tutAt(12), 25000, 'duel done'));
     check('hazard nip lands (HP 85/100)', await until(() => doc.getElementById('hptext').textContent === '85/100 HP', 3000, 'hp 85'));
     tutAct();                                                       // hazard -> heal
@@ -298,6 +312,13 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // ============ GUIDE TO THE UNIVERSE ============
     click(doc.getElementById('helpbtn'));
     check('? popover shows version + guide link', visible(doc.getElementById('helppop')));
+    // v1.3.11: a tap on empty space closes the ? popover (it lives outside
+    // the panel manager, so it needs — and now has — its own closer)
+    doc.getElementById('cosmos').dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, cancelable: true, view: w }));
+    check('v1.3.11: outside tap closes the ? popover', await until(() =>
+      !visible(doc.getElementById('helppop')), 3000, 'helppop outside close'));
+    click(doc.getElementById('helpbtn'));
+    check('? popover reopens after the outside-tap close', visible(doc.getElementById('helppop')));
     click(doc.getElementById('hp-guide'));
     const gbox = doc.getElementById('guidebox');
     check('guide opens from ? button', visible(gbox));
@@ -343,6 +364,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('guide closes via Continue', !visible(gbox));
 
     // ============ TOOLTIPS ============
+    await sleep(600);   // the outside-tap pointerdown above suppresses focus-tooltips for 500ms (by design) — let it lapse
     const tipTarget = doc.getElementById('rank');
     tipTarget.dispatchEvent(new w.FocusEvent('focusin', { bubbles: true }));
     await sleep(420);
@@ -543,6 +565,12 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('HD vista: re-view reopens the panorama', await until(() =>
       sk.doc.getElementById('vistabox').style.display === 'flex', 4000, 'vista reopen'));
     check('HD vista: the postcard button rides the panorama', !!sk.doc.querySelector('#vistabox .vpc'));
+    // v1.3.11: the vista is a windowed pop-up card — header, canvas, caption
+    // and the corner X all live INSIDE the .vcard frame
+    check('v1.3.11 vista window: the pop-up card frame wraps the art',
+      !!sk.doc.querySelector('#vistabox .vcard canvas') && !!sk.doc.querySelector('#vistabox .vcard .vh'));
+    check('v1.3.11 vista window: the X sits on the card, not the screen',
+      !!sk.doc.querySelector('#vistabox .vcard .vxc'));
     click2(sk.doc.getElementById('vistabox'), sk.w);
     await until(() => sk.doc.getElementById('vistabox').style.display === 'none', 4000, 'vista re-dismiss');
     // v1.3 iteration 2 — every new scene must render a full-size canvas without throwing
