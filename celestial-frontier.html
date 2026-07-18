@@ -450,6 +450,11 @@
   #chpanel .ch .cr{margin-left:auto;font-size:10px;color:#ffd96a;white-space:nowrap}
   #chpanel .ch .cd{font-size:10.5px;color:var(--dim);line-height:1.5;margin-top:3px}
   #chpanel .ch .chk{color:#7fe6a0}
+  /* v1.4: the Ascent chapter rides pinned above the charter board */
+  #chpanel .ascbox{border:1px solid rgba(127,208,255,0.35);border-radius:12px;padding:9px 9px 6px;margin:0 0 10px;
+    background:linear-gradient(180deg,rgba(127,208,255,0.07),rgba(6,8,16,0.3));box-shadow:0 0 14px rgba(127,208,255,0.08)}
+  #chpanel .ascbox .ehead{margin-bottom:5px}
+  #chpanel .ascbox .ambient{margin-bottom:7px}
   /* the active Field Scout wears its cyan tag in the Compendium roster */
   #codex .sp .scouttag{font:600 8px var(--ui);letter-spacing:.09em;color:#6fd3ff;
     border:1px solid rgba(111,211,255,0.5);border-radius:999px;padding:1px 6px;margin-left:5px;vertical-align:1px;white-space:nowrap}
@@ -760,6 +765,41 @@
     text-shadow:0 1px 2px rgba(0,0,0,0.9),0 0 3px rgba(0,0,0,0.7)}
   #cargo .slot.empty2{opacity:0.35}
   #cargo .bset .ci{width:12px;height:12px;vertical-align:-2px;margin-right:1px}
+  /* ---- v1.4 THE FABRICATOR: crafted tiles wear their tier; ship systems
+     glow; equipped gear is starred ---- */
+  #cargo .slot.t2{border-color:rgba(255,217,106,0.45)}
+  #cargo .slot.t3{border-color:rgba(255,122,232,0.5);box-shadow:inset 0 1px 0 rgba(255,255,255,0.05),0 0 10px rgba(255,122,232,0.18)}
+  #cargo .slot.sys{border-color:rgba(127,208,255,0.55);box-shadow:inset 0 1px 0 rgba(255,255,255,0.05),0 0 12px rgba(127,208,255,0.22)}
+  #cargo .slot .eqstar{position:absolute;left:3px;top:1px;font-size:10px;color:#ffd96a;text-shadow:0 1px 2px rgba(0,0,0,0.9)}
+  #cargo .bset .ci.big{width:26px;height:26px;vertical-align:-8px;margin-right:4px}
+  #cargo .gslot{font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--plasma);
+    border:1px solid rgba(150,162,210,0.3);border-radius:999px;padding:1px 6px;margin-left:3px}
+  /* ---- v1.4 EQUIPMENT on the character sheet: five sockets, ARPG-style ---- */
+  #stats .eqrow{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:2px 0 6px}
+  #stats .eqslot{position:relative;aspect-ratio:0.86;border:1px solid rgba(150,162,210,0.28);border-radius:10px;cursor:pointer;
+    background:linear-gradient(180deg,rgba(150,162,210,0.10),rgba(6,8,16,0.45));
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:3px 2px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.05)}
+  #stats .eqslot:hover{border-color:rgba(150,162,210,0.55)}
+  #stats .eqslot.sel{border-color:#ffcf8a;box-shadow:0 0 10px rgba(255,207,138,0.25)}
+  #stats .eqslot.filled.t1{border-color:rgba(159,182,214,0.55)}
+  #stats .eqslot.filled.t2{border-color:rgba(255,217,106,0.6);box-shadow:0 0 10px rgba(255,217,106,0.16)}
+  #stats .eqslot.filled.t3{border-color:rgba(255,122,232,0.65);box-shadow:0 0 12px rgba(255,122,232,0.22)}
+  #stats .eqslot img{width:58%;height:58%}
+  #stats .eqslot .eqph{font-size:16px;opacity:0.5}
+  #stats .eqslot .eqname{font:600 7.5px var(--ui);letter-spacing:.02em;color:var(--dim);text-align:center;
+    max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #stats .eqslot.filled .eqname{color:var(--ink)}
+  #stats .eqpick{border:1px solid rgba(255,207,138,0.3);border-radius:10px;padding:4px;margin:0 0 6px;background:rgba(6,8,16,0.5)}
+  #stats .eqcand{display:flex;align-items:center;gap:8px;padding:5px 6px;border-radius:8px;cursor:pointer}
+  #stats .eqcand:hover{background:rgba(150,162,210,0.12)}
+  #stats .eqcand.on{background:rgba(255,207,138,0.10)}
+  #stats .eqcand img{width:26px;height:26px;flex:none}
+  #stats .eqcand .eqph{width:26px;text-align:center;font-size:14px;opacity:0.6;flex:none}
+  #stats .eqcand .nm{font:600 11px var(--ui);color:var(--ink)}
+  #stats .eqcand .ds{font-size:9.5px;color:var(--dim);line-height:1.35}
+  #stats .eqfx{font-size:10px;line-height:1.6;color:#bfe6c8;border:1px solid rgba(127,230,160,0.25);
+    border-radius:9px;padding:6px 9px;margin:0 0 4px;background:rgba(127,230,160,0.05)}
   #cargo{position:fixed;top:calc(var(--row1-h,58px) + 170px);right:18px;z-index:12;width:320px;max-height:min(56vh,500px);overflow-y:auto;
     background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(150,162,210,0.2);border-radius:15px;padding:6px;display:none;
@@ -4393,7 +4433,14 @@ function checkTransitions(){
     /* flying into the wormhole hurls you somewhere unimaginably distant */
     {
       const wh2=galaxyWormhole(st.gal.seed);
-      if(wh2){
+      if(wh2 && c.z>minWH/60 && Math.hypot(wh2.x-c.x, wh2.y-c.y)*c.z<120 &&
+         typeof ascStage==='function' && ascStage()<3){
+        /* v1.4: the far mouth opens onto intergalactic space — it needs the
+           IG drive. The wormhole stays visible, surveyable, and waiting. */
+        ascBlock();
+        c.z=Math.min(c.z, minWH/62);
+      }
+      else if(wh2){
         if(c.z>minWH/60 && Math.hypot(wh2.x-c.x, wh2.y-c.y)*c.z<120){
           /* destination seeded from the galaxy — identical for every explorer */
           const wj=mulberry32((st.gal.seed^0xC0FFEE)>>>0);
@@ -4427,11 +4474,20 @@ function checkTransitions(){
         }
       }
       if(best && bd*c.z < 130){
-        st.star=best;
-        st.sys=null;
-        st.sz0=0.40*minWH/SYS_R;
-        st.scam={x:0,y:0,z:st.sz0*1.05};
-        st.mode='system'; st.fade=1;
+        /* v1.4 ring ladder: diving into a star IS travel — the Ascent
+           gates it (stage 0: Sol only; stage 1: the Neighborhood slice;
+           stage 2+: the whole galaxy). Looking stays free. */
+        if(typeof ascAllows==='function' &&
+           !ascAllows({gal:st.gal, star:best, type:'star'})){
+          ascBlock();
+          c.z=Math.min(c.z, starZ*1.5);
+        } else {
+          st.star=best;
+          st.sys=null;
+          st.sz0=0.40*minWH/SYS_R;
+          st.scam={x:0,y:0,z:st.sz0*1.05};
+          st.mode='system'; st.fade=1;
+        }
       } else {
         c.z=Math.min(c.z, starZ*1.6);
       }
@@ -5187,6 +5243,22 @@ function drawGalaxy(time){
           ctx.fillText(kilo?'kilonova — neutron stars collide, forging gold':'supernova!', sx, sy-rad-8/c.z);
         }
       }
+    }
+  }
+  /* v1.4 ring ladder: while the Ascent gates in-galaxy travel, the home
+     galaxy wears the charter ring — the boundary is a promise, not a mystery */
+  if(st.gal.seed===HOME_GAL_SEED && typeof ascStage==='function'){
+    const stg=ascStage();
+    if(stg<2){
+      const rr2=stg===0?GCELL*1.35:ASC_RING_R;
+      ctx.setLineDash([7,6]);
+      ctx.strokeStyle='rgba(127,208,255,0.30)'; ctx.lineWidth=1.6/c.z;
+      ctx.beginPath(); ctx.arc(SOL_POS.x,SOL_POS.y, rr2, 0, TAU); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.font=`italic ${11/c.z}px Georgia,serif`; ctx.textAlign='center';
+      ctx.fillStyle='rgba(127,208,255,0.6)';
+      ctx.fillText(stg===0?'your charter — Sol (build the Jump Drive)':'your charter — the Neighborhood (build the Long-Range Array)',
+        SOL_POS.x, SOL_POS.y - rr2 - 9/c.z);
     }
   }
   ctx.restore();
@@ -7851,6 +7923,8 @@ function routeHit(dmg, why){
   /* a strike meant for the explorer: the field scout absorbs it if one
      stands (same injury language as poison meals); returns true only if
      the EXPLORER died */
+  /* v1.4: the equipped suit blunts field wounds before anyone takes them */
+  try{ const _sc=clamp(_equipBonus('scut'),0,0.7); if(_sc>0) dmg=Math.max(1, Math.round(dmg*(1-_sc))); }catch(_){ }
   const sc=scoutId?codex.get(scoutId):null;
   if(sc && sc.genome && sc.kind==='Fauna'){
     const w=clamp(dmg/80, 0.12, 0.6);
@@ -7878,7 +7952,8 @@ function attemptContact(d){
   if(seed==null || seed===133 || contacted.has(seed) || conquered.has(seed)) return;
   const cvRow=d.rows && d.rows.find(r=>r[0]==='Civilization');
   if(!cvRow || /^None/.test(cvRow[1])) return;
-  if(Math.random()<0.7){
+  /* v1.4: the Diplomat's Beacon raises the odds a wary world listens */
+  if(Math.random()<Math.min(0.98, 0.7+_equipBonus('contact')/100)){
     contacted.add(seed);
     playRaritySting(2);
     toast('🤝 First contact', 'They meet you at the landing site — the census of '+(d.title||'this world')+' is yours to read.');
@@ -8014,7 +8089,14 @@ const DESCENT_TIERS={
   venus:{p:25,lo:5,hi:7}, lava:{p:20,lo:6,hi:8}};
 const _waveOffs=new Map();          /* planetSeed → consecutive wave-offs (save field wvo) */
 let _descCleared=null, _descDeclined=null, _descOpenFor=null, _apprLatch=null;
-function descentBonus(){ return 0; }   /* v1.4: crafted landing gear raises this */
+function descentBonus(P){
+  /* v1.4: crafted landing gear plugs in here — the global bonus from
+     modules/suits, plus the hazard suit tuned to THIS world's family
+     (Thermal Weave on lava, Pressure Shell on gas, Cryo Lining on ice) */
+  let b=_equipBonus('land');
+  if(P && P.type) b+=_equipLandFam(P.type);
+  return b;
+}
 function descentTierLabel(p){
   return p>=100?'Calm approach':p>=90?'Steady approach':p>=75?'Rough descent'
        :p>=55?'Hazardous descent':p>=30?'Extreme descent':'Hostile descent';
@@ -8048,7 +8130,8 @@ function descentFor(pl){
   const wx=_descWx(pl);
   let p=base;
   if(wx) p = p>=90 ? Math.max(90, p-5) : Math.max(5, p-5);
-  p=Math.min(100, p + 20*(_waveOffs.get(P.seed)||0) + descentBonus());
+  p=Math.min(100, p + 20*(_waveOffs.get(P.seed)||0) + descentBonus(P));
+  if(_equipBonus('land100')>0) p=100;   /* the Gravitic Anchor: no descent waves you off */
   return {pct:p, lo:t.lo, hi:t.hi, wx:wx, biome:bio};
 }
 function descentSafe(seed){
@@ -8068,6 +8151,7 @@ function _descRoll(pl){
   _waveOffs.set(pl.P.seed, n);
   let dmg=d.lo+Math.floor(Math.random()*(d.hi-d.lo+1));
   try{ if(techOwned.has('hull1') && dmg>1) dmg-=1; }catch(_){ }   /* reinforced hulls scrape lighter */
+  try{ const _st=_equipBonus('struts'); if(_st>0) dmg=Math.max(0, dmg-_st); }catch(_){ }   /* v1.4 landing struts eat the scrape */
   dmg=Math.min(dmg, Math.max(0, hp-1));          /* a wave-off never kills */
   if(dmg>0){ hp-=dmg; renderHP(); }
   playFailTone(); fxShake();
@@ -8460,15 +8544,22 @@ function renderPanel(p, isLocked){
        populating d.species, so the lifeless test misfired and home wore a
        Mine button no other living world gets (Nick's screenshot, v1.2) */
     if(!glance && d.planetSeed!=null && d.planetSeed!==133 && (!d.species || !d.species.length) && d.ptype){
-      const _mt=mined.get(d.planetSeed);
-      const _mReady=!_mt || (Date.now()-_mt>=MINE_CD);
+      /* v1.4: mining is a click, reserves are finite — the card reads the
+         veins AND how much is left in them */
+      const _mTier=d.designation?d.designation.tier:0;
+      const _mR=reserveFor(d.planetSeed, _mTier);
+      const _mN=Math.min(mineX.get(d.planetSeed)||0, _mR);
+      const _mLeft=_mR-_mN;
       if(techOwned.has('scan1') || grounded){
-        const _dp=depositsFor(d.planetSeed, d.ptype, d.designation?d.designation.tier:0);
-        rows+='<div class="splabel"><span class="k">Mineral veins</span><span class="v">'+_dp.map(s=>ELEM_NAME[s]||s).join(' · ')+'</span></div>';
+        const _dp=depositsFor(d.planetSeed, d.ptype, _mTier);
+        rows+='<div class="splabel"><span class="k">Mineral veins</span><span class="v">'+_dp.map(s=>ELEM_NAME[s]||s).join(' · ')+
+          (grounded?' <span style="color:var(--faint)">· '+(_mLeft>0?_mLeft.toLocaleString()+' pulls left':'mined out')+'</span>':'')+'</span></div>';
       }
       mineBtn = grounded
-        ? '<button class="act'+(_mReady?'':' in')+'" data-act="mine" data-guide="mining" data-tip="Dead worlds carry the elements — mine them hourly to stock your 🧰 Cargo for research.">'+
-          (_mReady?'Mine Deposits':'Mined — veins settling')+'</button>'
+        ? (_mLeft>0
+          ? '<button class="act" data-act="mine" data-guide="mining" data-tip="Every pull takes a varying haul from this world&#8217;s veins — they run dry only after hundreds. Crafted rigs pull more.">⛏ Mine'+
+            (_mN>0?' — '+_mLeft.toLocaleString()+' left':' Deposits')+'</button>'
+          : '<button class="act in" data-act="mine" data-guide="mining" data-tip="Every vein on this world has given all it had.">Mined Out</button>')
         : '';   /* prospecting takes boots on the ground — the Land button is the way down */
     }
     const atlasRow =
@@ -9443,6 +9534,8 @@ function _destSeed(w){
 }
 function travelTo(w){
   try{ _descAbort(); }catch(_){ }       /* a stale descent ask never rides along */
+  /* v1.4 ring ladder: movement is gated, curiosity never is */
+  if(w && w.gal && typeof ascAllows==='function' && !ascAllows(w)){ ascBlock(); return; }
   if(!w || !w.gal || !fxOn || !motionOK() || _trav){ goTo(w); return; }
   /* distance matters — and your drive answers it. Duration scales with the
      gulf you're crossing ÷ drive tier, CAPPED so travel is flavor, never
@@ -9971,6 +10064,16 @@ const ACH=[
   {id:'quasar', cat:'Exploration', ic:'🔆', name:'Blinding Light',d:'Visit a quasar galaxy', t:null},
   {id:'dwarfg', cat:'Exploration', ic:'🌫', name:'Small Wonders', d:'Visit a dwarf galaxy', t:null},
   {id:'curator', cat:'Exploration', ic:'★', name:'Curator', d:'Favorite a place in your Star Atlas', t:null},
+  /* — Engineering (v1.4 The Ascent) — */
+  {id:'crafter',   cat:'Engineering', ic:'🛠', name:'Fabricator',      d:'Craft your first part', t:()=>(stats.crafts||0)>=1},
+  {id:'crafts25',  cat:'Engineering', ic:'⚙', name:'Assembly Line',   d:'Craft 25 things', t:()=>(stats.crafts||0)>=25},
+  {id:'geared',    cat:'Engineering', ic:'🎽', name:'Outfitted',       d:'Equip a piece of explorer gear', t:()=>Object.keys(equip).length>0},
+  {id:'shipwright',cat:'Engineering', ic:'⚡', name:'Shipwright',      d:'Build the Jump Drive', t:()=>itemCount('jumpdrive')>=1},
+  {id:'arraybuilt',cat:'Engineering', ic:'📡', name:'The Long Ear',    d:'Build the Long-Range Array', t:()=>itemCount('array')>=1},
+  {id:'rimbreaker',cat:'Engineering', ic:'🌌', name:'Rim-Breaker',     d:'Build the Intergalactic Drive', t:()=>itemCount('igdrive')>=1},
+  {id:'ascended',  cat:'Engineering', ic:'⬆', name:'The Ascent',      d:'Complete all three Ascent chapters', t:()=>(typeof ascCh!=='undefined' && ascCh>=ASC_CHAPTERS.length && itemCount('igdrive')>=1)},
+  {id:'lastvein',  cat:'Engineering', ic:'⛏', name:'To the Last Vein', d:'Mine a world completely dry', t:()=>(stats.minedout||0)>=1},
+  {id:'richstrike',cat:'Engineering', ic:'💎', name:'Prospector&#8217;s Luck', d:'Pull 250 loads of ore', t:()=>(stats.mines||0)>=250},
   /* — Cosmic Events — */
   {id:'daily',   cat:'Cosmic Events', ic:'🗓', name:'Pilgrim',        d:'Follow the Traveler\u2019s Beacon', t:null},
   {id:'anomaly5',cat:'Cosmic Events', ic:'🕯', name:'Devout',         d:'Follow 5 different Beacons', t:()=>stats.anomalies>=5},
@@ -10087,7 +10190,9 @@ function doSave(){
       harvests:stats.harvests||0, essenceEarned:stats.essenceEarned||0,
       guardians:stats.guardians||0, paragons:stats.paragons||0,
       nh:nameHue, br:stats.bestRank||0, setsc:[...claimedSets],
-      cargo:[...cargo], minedw:[...mined], tech:[...techOwned], mines:stats.mines||0,
+      cargo:[...cargo], minedw:[...mined], mx:[...mineX].slice(-4000), tech:[...techOwned], mines:stats.mines||0,
+      items:[...items], eq:equip, crafts:stats.crafts||0, minedout:stats.minedout||0,
+      asc:ascCh, ascp:ascProg,
       names:[...customNames],
       shares:stats.shares, jumps:stats.jumps,
       anomalies:stats.anomalies, anomKey:lastAnomKey,
@@ -10138,8 +10243,36 @@ function loadSave(){
     for(const s of (data.setsc||[])) if(BINDER_SETS.some(x=>x.id===s)) claimedSets.add(s);
     for(const kv of (data.cargo||[])){ if(kv && ELEM_NAME[kv[0]]!=null) cargo.set(kv[0], clamp(num(kv[1]), 0, 1e6)); }
     for(const kv of (data.minedw||[])){ if(kv && kv[0]!=null) mined.set(kv[0], clamp(num(kv[1]), 0, _nowL)); }
+    /* v1.4 finite reserves: mx = pulls taken per world. Absent (pre-1.4
+       save) ⇒ every previously-mined world counts one pull — a veteran's
+       reserves stand effectively full. */
+    if(Array.isArray(data.mx)){
+      for(const kv of data.mx){ if(kv && kv[0]!=null) mineX.set(kv[0], clamp(num(kv[1]), 0, 1e7)|0); }
+    } else {
+      for(const k of mined.keys()) mineX.set(k, 1);
+    }
     for(const t of (data.tech||[])) if(TECHS.some(x=>x.id===t)) techOwned.add(t);
     stats.mines=num(data.mines);
+    /* v1.4 Fabricator: crafted items + equipped gear. Absent ⇒ empty bench
+       (veterans start crafting from zero like everyone; nothing re-hides). */
+    for(const kv of (data.items||[])){ if(kv && ITEM_BY.has(kv[0])) items.set(kv[0], clamp(num(kv[1]), 0, 999)|0); }
+    if(data.eq && typeof data.eq==='object'){
+      for(const s of EQ_SLOTS){
+        const id=data.eq[s.id];
+        if(typeof id==='string' && ITEM_BY.has(id) && ITEM_BY.get(id).slot===s.id && (items.get(id)||0)>0) equip[s.id]=id;
+      }
+    }
+    stats.crafts=num(data.crafts);
+    stats.minedout=num(data.minedout);
+    /* v1.4 THE ASCENT. asc ABSENT (pre-1.4 save) ⇒ the whole Ascent reads
+       complete — veterans already hold the sky; nothing may re-lock it. */
+    if(data.asc===undefined){ ascCh=ASC_CHAPTERS.length; }
+    else {
+      ascCh=clamp(num(data.asc), 0, ASC_CHAPTERS.length)|0;
+      if(data.ascp && typeof data.ascp==='object'){
+        for(const k in data.ascp){ const v=+data.ascp[k]; if(typeof k==='string' && k.length<24 && Number.isFinite(v) && v>=0) ascProg[k]=Math.min(v|0, 999); }
+      }
+    }
     showCargoBtn();
     nameHue=Number.isFinite(+data.nh)?clamp((+data.nh)|0, -1, RANK_HUES.length-1):-1;
     stats.bestRank=clamp(num(data.br), 0, RANK_HUES.length-1);
@@ -10266,6 +10399,11 @@ function resetMemoryState(){
     scoutId=null; _pendingSample=null;
     contacted.clear(); _pendingContact=null;
     chDone.clear(); chProg={}; chWeek=-1;
+    /* v1.4 audit catch: the engineer's track never reset in-place — a soft
+       reset kept your cargo, mined worlds and tech until a hard reload */
+    mined.clear(); mineX.clear(); cargo.clear(); techOwned.clear();
+    items.clear(); for(const k in equip) delete equip[k]; _eqOpen=null;
+    ascCh=0; ascProg={};   /* a fresh expedition climbs the Ascent again */
     _lastRankName=null; _lastRankFloor=-1;   /* a fresh Cadet is a beginning, not a promotion */
     explorerName=''; essence=0; pstats={vit:50,fer:50,res:50,agi:50,ins:50}; HP_MAX=hpMaxFromVit(); hp=HP_MAX;
     for(const k in stats) if(typeof stats[k]==='number') stats[k]=0;
@@ -10381,6 +10519,10 @@ shareLink.addEventListener('click', function(){ this.select(); try{ this.setSele
 function travelToCode(code){
   const dec=decodeWhere(code);
   if(!dec || !dec.where || !dec.where.gal){ toast('Code Not Recognized','That doesn\u2019t look like a CF1 share code. Codes start with CF1-.'); return false; }
+  if(typeof ascAllows==='function' && !ascAllows(dec.where)){
+    toast('⬆ Beyond Your Charter', ascHint()+' The code will keep.');
+    return false;
+  }
   if(!withinReach(dec.where.gal.x, dec.where.gal.y)){
     toast('Beyond Your Charter','Those coordinates lie past your reach. Claim more Prime Codex Signatures, then plot this course again.');
     return false;
@@ -11780,7 +11922,8 @@ function healExplorer(floraEntry, roll){
   removeFromCodex(floraEntry.id);
   const tF=(floraEntry.grade?floraEntry.grade.tier:0);
   const pois=clamp(0.08 + tF*0.07, 0.05, 0.6);
-  const heal=Math.round(12 + tF*9 + pois*30);
+  /* v1.4: a Field Medkit squeezes more mending from every meal */
+  const heal=Math.round((12 + tF*9 + pois*30)*(1+_equipBonus('heal')));
   const stat=floraStat(floraEntry.genome);
   const gain=1+tF+(techOwned.has('lab1')?1:0);   /* the Xenobotany Lab squeezes one more point from every meal */
   if(roll<pois){
@@ -11888,9 +12031,13 @@ const GUIDE=[
  {id:'harvest', t:'Harvesting', k:'harvest hourly cooldown settled world replenish stardust', body:
   '<p>Every settled world can be harvested for Stardust once per hour (rarer worlds yield more). The button lives on the world’s survey card — “Settled — replenishing” means come back later. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
  {id:'mining', t:'Mining & the Cargo hold', k:'mine mining elements minerals deposits cargo hold dead lifeless world vein iron gold prismatium samples field landing inventory icons', body:
-  '<p>Dead worlds carry the elements. Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and rarer worlds hide richer veins, up to exotics like Voidglass and Prismatium.</p><ul><li><b>Landing pays.</b> Your first footfall on any world (home aside) collects <b>field samples</b> — a pinch of up to two of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration stocks the hold all by itself.</li><li>Prospecting takes boots on the ground: press a lifeless world&#8217;s <b>Land</b> button, or dive in and confirm the descent — planetfall is a <b>ground survey</b>, and the Mine Deposits button opens with it. (Gas giants, hothouses and molten worlds will fight the landing — see <span data-gt="landing">Landing</span>.) (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li>Mining is hourly per world, like harvests.</li><li>Everything lands in your <b>🧰 Cargo hold</b> (right rail — it appears with your first cargo). Its <b>Inventory</b> tab is a grid of item tiles — ingots for metals, shards for ices, flasks for gases, cut gems for the exotics — and the <b>Research Bench</b> tab spends them, with the same icons in every recipe — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
+  '<p>Dead worlds carry the elements. Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and rarer worlds hide richer veins, up to exotics like Voidglass and Prismatium.</p><ul><li><b>Landing pays.</b> Your first footfall on any world (home aside) collects <b>field samples</b> — a pinch of up to two of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration stocks the hold all by itself.</li><li>Prospecting takes boots on the ground: press a lifeless world&#8217;s <b>Land</b> button, or dive in and confirm the descent — planetfall is a <b>ground survey</b>, and the Mine Deposits button opens with it. (Gas giants, hothouses and molten worlds will fight the landing — see <span data-gt="landing">Landing</span>.) (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li><b>Mining is a pull, not a timer.</b> Every press of ⛏ Mine takes a varying haul from the world&#8217;s veins — sometimes a <b>rich strike</b> hits a rare pocket. <b>Reserves are finite:</b> the card counts the pulls left, and a world mined to nothing stays mined out forever (there are always more worlds). Crafted mining rigs multiply every haul, and the Auto-Extractor keeps pulling while you&#8217;re away — collect on your next visit.</li><li>Everything lands in your <b>🧰 Cargo hold</b> (right rail — it appears with your first cargo). Its <b>Inventory</b> tab is a grid of item tiles — ingots for metals, shards for ices, flasks for gases, cut gems for the exotics — and the <b>Research Bench</b> tab spends them, with the same icons in every recipe — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
  {id:'research', t:'Research & ships', k:'research tech technology bench drive ship hull scanner lab fusion antimatter warp travel distance', body:
   '<p>The engineer’s track, parallel to the Prime Codex: the Prime Codex is your legend, the Research Bench is your capability. Research costs mined elements + ☄ Stardust:</p><ul><li><b>🛰 Deep Scanners</b> — survey cards reveal mineral veins from orbit.</li><li><b>🛡 Reinforced Hull</b> — hostile bioscans wound you 25% lighter.</li><li><b>🧪 Xenobotany Lab</b> — flora meals nourish one extra stat point.</li><li><b>The drive ladder</b> — 🚀 Fusion → ⚛ Antimatter → 🌀 Warp Fold. Hyperlane travel scales with real distance; each drive cuts it, and Warp Fold makes every jump arrive in a breath. Distance is never a wall — only a wait, and only ever a short one.</li></ul>'},
+ {id:'crafting', t:'The Fabricator & gear', k:'craft crafting fabricator recipe parts components ship systems gear equipment suit tool module instrument charm slot equip mining rig auto extractor anchor', body:
+  '<p>The <b>🧰 Fabricator</b> (Cargo hold, middle tab) turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">The Ascent</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character sheet (tap your nameplate) grew five sockets — Suit, Tool, Module, Instrument, Charm. Mining rigs multiply hauls; suits blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); landing modules climb to the Gravitic Anchor, which never waves off; instruments sharpen first contact, rich strikes and meals.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
+ {id:'ascent', t:'The Ascent', k:'ascent chapter chapters sol lock jump drive ring ladder progression mainline quest unlock neighborhood galaxy intergalactic', body:
+  '<p><b>⬆ The Ascent</b> is the mainline: three chapters, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p>Veteran expeditions from before v1.4 already hold the sky — the Ascent never re-locks anything you had.</p>'},
 ]},
 {icon:'✦', cat:'The Prime Codex', blurb:'Signatures, the frontier, endings', topics:[
  {id:'signatures', t:'The nine Signatures', k:'signature prime codex stone ocean flame sky life mind prism star void win', body:
@@ -12122,11 +12269,18 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.3.10';
+const GAME_VERSION='1.4';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
 {v:'1.4', title:'The Ascent', date:'July 2026', sections:[
+ ['✨ New Features & Systems', [
+  '⬆ THE ASCENT — a mainline of three chapters, pinned atop the Charters board. New expeditions start locked to Sol and mine → craft → build their way to the stars: the ⚡ Jump Drive opens the Neighborhood, the 📡 Long-Range Array opens the whole galaxy, the 🌌 Intergalactic Drive opens the dark between. The whole sky stays visible from day one — looking is free, moving is earned. Veteran saves already hold everything and lose nothing.',
+  '🧰 THE FABRICATOR — a full crafting spine in the Cargo hold: T1 basic parts → T2 components → T3 ship systems and explorer gear, ~30 space-made recipes with painterly icons, no wait-timers ever.',
+  '🎽 EQUIPMENT — your character sheet grew five gear sockets (Suit · Tool · Module · Instrument · Charm). Mining rigs multiply hauls, hazard suits open molten/crushing/frozen worlds and blunt field wounds, the Gravitic Anchor ends wave-offs forever, the Diplomat&#8217;s Beacon wins first contacts, charms bring luck. Risk is the frontier — gear is how you tame it.',
+  '⛏ MINING REBUILT — no more hourly timer: every press pulls a varying haul, rich strikes hit rare pockets, and reserves are FINITE — the card counts the pulls left, and a world can be mined to nothing (it takes hundreds of pulls; there are always more worlds). The 🤖 Auto-Extractor keeps working every mined world while you&#8217;re away.',
+  '🏅 Nine new Engineering achievements, two new Guide chapters (The Fabricator & gear · The Ascent).'],
+ ],
  ['🖱 UI Enhancements', [
   'The landing view is a pop-up card now, floating over the game with its ✕ on the frame — it no longer reads as a separate full screen.',
   'Duels grew a ⏭ Skip button — let the chronicle play, or jump straight to the outcome.',
@@ -12636,7 +12790,7 @@ function doHarvest(d){
    engineer's track, parallel to the Prime Codex — capability, not legend. */
 /* ----------------------------------------------------------------
    @section mining [app] — element deposits, cargo hold, research bench
-   Owns: ELEM_NAME, DEPOSIT_PROFILES, RARE_VEIN, depositsFor, mined, cargo, MINE_CD, mineWorld, TECHS, techOwned, …
+   Owns: ELEM_NAME, DEPOSIT_PROFILES, RARE_VEIN, depositsFor, mined, mineX, reserveFor, cargo, mineWorld, TECHS, techOwned, …
    ---------------------------------------------------------------- */
 const ELEM_NAME={Fe:'Iron',Si:'Silicon',Mg:'Magnesium',Al:'Aluminium',Ca:'Calcium',Na:'Sodium',Ni:'Nickel',Ti:'Titanium',
   H:'Hydrogen',He:'Helium',C:'Carbon',N:'Nitrogen',O:'Oxygen',S:'Sulfur',P:'Phosphorus',Cl:'Chlorine',
@@ -12666,28 +12820,72 @@ function depositsFor(seed, type, tier){
     picks.push(RARE_VEIN[Math.min(RARE_VEIN.length-1, (r()*(1+(tier||0)))|0)]);
   return picks;
 }
-const mined=new Map();         /* pseed → last mine ms */
+const mined=new Map();         /* pseed → last mine ms (auto-extractor anchor + veteran grandfather) */
+const mineX=new Map();         /* pseed → extractions taken so far (save field mx) */
 const cargo=new Map();         /* element symbol → qty */
-const MINE_CD=HARVEST_CD;      /* the same hourly rhythm as harvests */
+/* ---- v1.4 THE ASCENT: mining is a CLICK, not a timer (Nick: "I don't
+   want to waste the user's time") — every press pulls a varying haul from
+   the world's veins, RESERVES ARE FINITE (a world can be mined out, over
+   hundreds of pulls), rich strikes hit rare pockets, and crafted tools
+   multiply the take. Yields are seeded by extraction INDEX, so pull #n on
+   a given world is the same for every explorer — no reroll exploits. */
+function reserveFor(seed, tier){
+  /* total pulls a world holds — deterministic; richer (rarer) worlds run deeper */
+  const r=mulberry32(hashInt(seed>>>0, 0x2E5, 3)>>>0);
+  return Math.round((420+((r()*380)|0))*(1+(tier||0)*0.35));
+}
+/* v1.4 gear sockets (descentBonus precedent): _equipBonus lives with the
+   Fabricator/equipment section further down; declared function-hoisted */
+function mineYieldMult(){ return 1+_equipBonus('yield'); }
+function autoExtractorOwned(){ return _equipBonus('auto')>0; }
+function minePending(ps){
+  /* the auto-extractor keeps pulling while you're away: one load per
+     10 minutes since the last collection, capped — collected on the next
+     Mine press at that world */
+  if(!autoExtractorOwned() || !mined.has(ps)) return 0;
+  return Math.min(30, Math.floor((Date.now()-(mined.get(ps)||0))/6e5));
+}
 function mineWorld(d){
   const ps=d.planetSeed; if(ps==null) return;
-  const last=mined.get(ps)||0, now=Date.now();
-  if(now-last<MINE_CD){ toast('⛏ Mining','The veins are settling — ready in '+fmtRemain(MINE_CD-(now-last))+'.'); return; }
-  const _firstMine=!mined.has(ps);   /* before the stamp — charters count WORLDS, not re-mines */
-  mined.set(ps, now);
   const tier=(d.designation?d.designation.tier:0);
+  const R=reserveFor(ps, tier);
+  const n0=Math.min(mineX.get(ps)||0, R);
+  if(n0>=R){ toast('⛏ Mined Out','The veins are empty — this world gave everything it had.'); return; }
+  const _firstMine=!mined.has(ps);   /* before the stamp — charters count WORLDS, not re-mines */
+  let loads=1+minePending(ps);
+  loads=Math.min(loads, R-n0);
+  mined.set(ps, Date.now());
   const deps=depositsFor(ps, d.ptype||'rocky', tier);
-  const r=mulberry32(hashInt(ps>>>0, 0xE1F, (now/3600000)|0)>>>0);
-  const got=[];
-  for(const sym of deps){
-    const q=1+((r()*4)|0)+Math.floor(tier/3);
-    cargo.set(sym, (cargo.get(sym)||0)+q);
-    got.push(q+'× '+(ELEM_NAME[sym]||sym));
+  const mult=mineYieldMult();
+  const got=new Map(); let rare=null;
+  for(let i=0;i<loads;i++){
+    const r=mulberry32(hashInt(ps>>>0, 0xE1F, n0+i+1)>>>0);
+    /* each pull: a varying haul from two of the world's veins */
+    for(let j=0;j<2 && deps.length;j++){
+      const sym=deps[(r()*deps.length)|0];
+      const q=Math.max(1, Math.round((1+r()*3+Math.floor(tier/3))*mult));
+      got.set(sym, (got.get(sym)||0)+q);
+    }
+    /* the RICH STRIKE — a lucky pull opens a rare pocket (instruments and
+       the plasma bore sharpen the odds) */
+    if(r() < 0.05+(tier||0)*0.01+_equipBonus('strike')){
+      const sym=RARE_VEIN[Math.min(RARE_VEIN.length-1, (r()*(1+(tier||0)))|0)];
+      got.set(sym, (got.get(sym)||0)+Math.max(1, Math.round(mult)));
+      rare=sym;
+    }
   }
+  mineX.set(ps, n0+loads);
+  for(const [sym,q] of got) cargo.set(sym, (cargo.get(sym)||0)+q);
   stats.mines=(stats.mines||0)+1;
+  if(n0+loads>=R) stats.minedout=(stats.minedout||0)+1;   /* a world given everything */
   gameEvent('mined', {planetSeed:ps, first:_firstMine});
-  playRaritySting(2); fxBurst(FX_GOLD,14);
-  toast('⛏ Deposits Mined', got.join(' · ')+' — stored in your 🧰 Cargo.');
+  const left=R-(n0+loads);
+  playRaritySting(rare?4:2); fxBurst(FX_GOLD, rare?26:14);
+  const gotTxt=[...got.entries()].map(e=>e[1]+'× '+(ELEM_NAME[e[0]]||e[0])).join(' · ');
+  toast(rare?'⛏ Rich Strike!':'⛏ Deposits Mined',
+    (loads>1?loads+' loads (auto-extractor) — ':'')+gotTxt+
+    (rare?' — a pocket of '+(ELEM_NAME[rare]||rare)+'!':'')+
+    (left>0?' · '+left.toLocaleString()+' pulls left in the veins.':' · That was the last of it — the world is mined out.'));
   showCargoBtn(); if(cargoOpen) renderCargo();
   _panelKey=null; checkAch(); renderRank(); queueSave();
 }
@@ -12701,7 +12899,11 @@ const TECHS=[
  {id:'drive3', ic:'🌀', name:'Warp Fold',        d:'Distance becomes a rumor — every jump arrives in a breath', cost:{Pz:1,Ir:3,U:4}, sd:300, req:'drive2'},
 ];
 const techOwned=new Set();
-function driveMult(){ return techOwned.has('drive3')?8:(techOwned.has('drive2')?4:(techOwned.has('drive1')?2:1)); }
+function driveMult(){
+  const base=techOwned.has('drive3')?8:(techOwned.has('drive2')?4:(techOwned.has('drive1')?2:1));
+  /* v1.4: the Star Compass charm shaves travel further */
+  try{ return base+_equipBonus('speed'); }catch(_){ return base; }
+}
 function _canAfford(t){
   if(t.req && !techOwned.has(t.req)) return false;
   if(essence<t.sd) return false;
@@ -12723,9 +12925,9 @@ const cargoBtn=document.getElementById('cargobtn');
 const cargoEl=document.getElementById('cargo');
 let cargoOpen=false;
 function showCargoBtn(){
-  if(cargoBtn && (cargo.size>0 || techOwned.size>0)) cargoBtn.style.display='flex';
+  if(cargoBtn && (cargo.size>0 || techOwned.size>0 || items.size>0)) cargoBtn.style.display='flex';
   const cc=document.getElementById('cargocount');
-  if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0);   /* count is live even when the panel is closed */
+  if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0)+[...items.values()].reduce((a,b)=>a+b,0);   /* count is live even when the panel is closed */
 }
 /* every element wears its family color — gold is gold, ices are cyan, exotics shimmer */
 const EC={Au:'#ffd96a',Ag:'#e2e6f0',Cu:'#e8956a',Pt:'#dfe8fa',Ir:'#cdb8ec',Fe:'#aab2c2',Ni:'#b8c0ce',Ti:'#9fb6d6',W:'#8a96aa',
@@ -12840,17 +13042,62 @@ function elemIcon(sym){
 let cargoView='inv';
 function renderCargo(){
   if(!cargoEl) return;
-  const cc=document.getElementById('cargocount'); if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0);
+  const cc=document.getElementById('cargocount'); if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0)+[...items.values()].reduce((a,b)=>a+b,0);
   let html='<div class="chead">🧰 Cargo</div>'+
     '<div class="ctabs">'+
     '<span class="ctab'+(cargoView==='inv'?' on':'')+'" data-ct="inv" role="button" tabindex="0">Inventory</span>'+
-    '<span class="ctab'+(cargoView==='bench'?' on':'')+'" data-ct="bench" role="button" tabindex="0">Research Bench</span></div>';
+    '<span class="ctab'+(cargoView==='fab'?' on':'')+'" data-ct="fab" role="button" tabindex="0">Fabricator</span>'+
+    '<span class="ctab'+(cargoView==='bench'?' on':'')+'" data-ct="bench" role="button" tabindex="0">Research</span></div>';
   if(cargoView==='inv'){
     const rows=[...cargo.entries()].filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]);
-    if(!rows.length) html+='<div class="empty">The hold is empty. Dead worlds carry the elements — land on one and press Mine Deposits.</div>';
+    if(!rows.length) html+='<div class="empty">The hold is empty. Dead worlds carry the elements — land on one and press ⛏ Mine.</div>';
     else html+='<div class="inv">'+rows.map(e=>'<span class="slot" data-tip="'+(ELEM_NAME[e[0]]||e[0])+'">'+
       '<img src="'+elemIcon(e[0])+'" alt="'+(ELEM_NAME[e[0]]||e[0])+'"><span class="qty">'+e[1]+'</span></span>').join('')+
       Array.from({length:Math.max(0, 12-rows.length)}, ()=>'<span class="slot empty2"></span>').join('')+'</div>';
+    /* crafted things get their own shelf — parts, gear (equipped ones
+       starred), and the ship systems bolted on for good */
+    const irows=ITEMS.filter(it=>itemCount(it.id)>0);
+    if(irows.length){
+      const eqSet=new Set(Object.values(equip));
+      html+='<div class="chead" style="margin-top:8px">🛠 Crafted</div><div class="inv">'+
+        irows.map(it=>'<span class="slot t'+it.tier+(it.cat==='sys'?' sys':'')+'" data-tip="'+it.name+(eqSet.has(it.id)?' — equipped':(it.cat==='sys'?' — ship system, online':''))+'">'+
+          '<img src="'+partIcon(it.id)+'" alt="'+it.name+'"><span class="qty">'+(it.cat==='sys'?'✓':itemCount(it.id))+'</span>'+
+          (eqSet.has(it.id)?'<span class="eqstar">★</span>':'')+'</span>').join('')+'</div>';
+    }
+    cargoEl.innerHTML=html;
+    return;
+  }
+  if(cargoView==='fab'){
+    /* the FABRICATOR: recipes grouped by rung — Basic Parts → Components →
+       Ship Systems → Gear. Costs light green when you hold them. */
+    const GROUPS=[['part','Basic Parts — T1'],['comp','Components — T2'],['sys','Ship Systems — T3'],['gear','Explorer Gear']];
+    for(const [cat,label] of GROUPS){
+      html+='<div class="chead" style="margin-top:8px">'+label+'</div>';
+      for(const it of ITEMS){
+        if(it.cat!==cat) continue;
+        const own=itemCount(it.id);
+        const built=it.cat==='sys' && own>0;
+        const gatedBy=it.req && itemCount(it.req)<1 ? (ITEM_BY.get(it.req)||{}).name : null;
+        const can=_canCraft(it) && !built;
+        const bits=[];
+        for(const k in (it.cost||{})){
+          const have=cargo.get(k)||0, need=it.cost[k];
+          bits.push('<span style="color:'+(have>=need?'#7fe6a0':'#ff8a72')+'"><img class="ci" src="'+elemIcon(k)+'" alt="">'+need+'× '+(ELEM_NAME[k]||k)+' <span style="opacity:.65">('+have+')</span></span>');
+        }
+        for(const k in (it.parts||{})){
+          const have=itemCount(k), need=it.parts[k];
+          bits.push('<span style="color:'+(have>=need?'#7fe6a0':'#ff8a72')+'"><img class="ci" src="'+partIcon(k)+'" alt="">'+need+'× '+((ITEM_BY.get(k)||{}).name||k)+' <span style="opacity:.65">('+have+')</span></span>');
+        }
+        if(it.sd) bits.push('<span style="color:'+(essence>=it.sd?'#7fe6a0':'#ff8a72')+'">☄'+it.sd+'</span>');
+        html+='<div class="bset'+(built?' done':'')+'"><span><img class="ci big" src="'+partIcon(it.id)+'" alt=""> <b>'+it.name+'</b>'+
+          (it.slot?' <span class="gslot">'+(EQ_SLOTS.find(s=>s.id===it.slot)||{}).ic+' '+it.slot+'</span>':'')+
+          (own&&it.cat!=='sys'?' <span style="color:#7fe6a0">×'+own+'</span>':'')+' — '+it.d+
+          (built?'':'<br><span class="bcnt">'+(gatedBy?'requires '+gatedBy:bits.join(' + '))+'</span>')+'</span>'+
+          (built?'<span class="bclaimed">online ✓</span>'
+                :(can?'<button class="bclaim" data-craft="'+it.id+'" type="button">Craft</button>':''))+
+          '</div>';
+      }
+    }
     cargoEl.innerHTML=html;
     return;
   }
@@ -12884,8 +13131,372 @@ if(cargoEl){
     const ct=e.target.closest('[data-ct]');
     if(ct){ cargoView=ct.dataset.ct; renderCargo(); refocus(cargoEl, '[data-ct="'+cargoView+'"]'); return; }
     const t=e.target.closest('[data-tech]');
-    if(t) buyTech(t.dataset.tech);
+    if(t){ buyTech(t.dataset.tech); return; }
+    const cr=e.target.closest('[data-craft]');
+    if(cr) craftItem(cr.dataset.craft);
   });
+}
+
+/* ================= THE FABRICATOR (v1.4 "THE ASCENT") =================
+   The Minecraft/Satisfactory spine: mine elements → craft T1 basic parts →
+   T2 components → T3 ship systems and explorer GEAR. Ship systems are
+   permanent builds (they gate the ring ladder); gear EQUIPS on the explorer
+   (the Diablo/PoE pillar — the character sheet grew an equipment screen).
+   Recipes are fixed data, identical for every explorer; no wait-timers —
+   the pacing is the mining loop itself. */
+/* ----------------------------------------------------------------
+   @section fabricator [app] — items, recipes, gear slots, equip effects
+   Owns: ITEMS, ITEM_BY, items, equip, itemCount, _equipBonus, craftItem,
+         equipItem, partIcon, EQ_SLOTS
+   ---------------------------------------------------------------- */
+/* cat: part (T1) · comp (T2) · sys (T3 permanent ship systems) · gear
+   (equippable; slot names the socket). fam: icon shape family. eff: the
+   effect keys the gear sockets read (_equipBonus). */
+const ITEMS=[
+ /* ---- T1 BASIC PARTS ---- */
+ /* (element picks audited against Sol's ACTUAL seeded veins — Chapter 1
+    must be craftable without leaving the home system: Mercury Fe/Al/Ca/Cr,
+    Mars Si/Cl/Ca, the gas giants H/He/CH4/NH3/He3, Uranus ices/O) */
+ {id:'plate',  cat:'part', tier:1, fam:'plate', hue:'#aab2c2', name:'Iron Plate',      d:'Rolled hull stock — the frontier is built on it', cost:{Fe:4}},
+ {id:'wire',   cat:'part', tier:1, fam:'wire',  hue:'#e8b06a', name:'Aluminium Wire',  d:'Drawn conductor spool', cost:{Al:3}},
+ {id:'chip',   cat:'part', tier:1, fam:'chip',  hue:'#9fdfe8', name:'Silicon Chip',    d:'Etched logic wafer', cost:{Si:3}},
+ {id:'frame',  cat:'part', tier:1, fam:'frame', hue:'#9fb6d6', name:'Steel Frame',     d:'Chromium-steel truss — light enough, unbreakable enough', cost:{Fe:3,Cr:1}},
+ {id:'lens',   cat:'part', tier:1, fam:'lens',  hue:'#cde8fa', name:'Optic Lens',      d:'Fluorite-glass eye for instruments', cost:{Si:2,Ca:1}},
+ {id:'pellet', cat:'part', tier:1, fam:'fuel',  hue:'#f2c8a2', name:'Fuel Pellet',     d:'Compressed hydrogen-methane charge', cost:{H:3,CH4:1}},
+ {id:'weave',  cat:'part', tier:1, fam:'weave', hue:'#8a8a9a', name:'Carbon Weave',    d:'Filament cloth cracked from methane — suits begin here', cost:{CH4:3}},
+ {id:'cell',   cat:'part', tier:1, fam:'cell',  hue:'#ff9fb2', name:'Power Cell',      d:'Sealed hydrogen-oxygen charge brick', cost:{H:2,O:2}},
+ {id:'cryogel',cat:'part', tier:1, fam:'gel',   hue:'#8fd6ff', name:'Cryo Gel',        d:'Slush of stabilized ices', cost:{H2O:3,NH3:1}},
+ /* ---- T2 COMPONENTS ---- */
+ {id:'coil',   cat:'comp', tier:2, fam:'coil',  hue:'#ffd96a', name:'Drive Coil',      d:'Field windings for anything that pushes', cost:{}, parts:{wire:2,plate:1}},
+ {id:'navcore',cat:'comp', tier:2, fam:'core',  hue:'#b58cff', name:'Nav Core',        d:'A thinking knot of charts and starlight', cost:{}, parts:{chip:2,lens:1}},
+ {id:'hullseg',cat:'comp', tier:2, fam:'hull',  hue:'#b8c0ce', name:'Hull Segment',    d:'Curved armor blade for ship or shelter', cost:{}, parts:{frame:1,plate:2}},
+ {id:'fuelcell',cat:'comp',tier:2, fam:'fcell', hue:'#7fd0ff', name:'Fuel Cell',       d:'A pellet magazine wrapped around a spark', cost:{}, parts:{pellet:2,cell:1}},
+ {id:'servo',  cat:'comp', tier:2, fam:'servo', hue:'#c2a878', name:'Servo Rig',       d:'Motorized joints that do the heavy lifting', cost:{}, parts:{plate:1,cell:1,wire:1}},
+ {id:'cryocap',cat:'comp', tier:2, fam:'capsule',hue:'#a8d8f0', name:'Cryo Capsule',   d:'Cold storage that never warms', cost:{}, parts:{cryogel:2,frame:1}},
+ /* ---- T3 SHIP SYSTEMS (permanent builds — the Ascent spine) ---- */
+ {id:'jumpdrive', cat:'sys', tier:3, fam:'drive', hue:'#7fd0ff', name:'Jump Drive', d:'Folds the gulf between stars — INTERSTELLAR travel', sd:30, cost:{}, parts:{coil:2,navcore:1,fuelcell:1},
+   eff:{}, unlock:'Interstellar travel — every star in the home galaxy'},
+ {id:'array', cat:'sys', tier:3, fam:'array', hue:'#9fe06a', name:'Long-Range Array', d:'An ear the size of a mountain — charts the whole galaxy', sd:60, cost:{}, parts:{navcore:2,lens:1,cell:1}, req:'jumpdrive',
+   eff:{}, unlock:'Galaxy-wide reach — and the parts bench for the Intergalactic Drive'},
+ {id:'igdrive', cat:'sys', tier:3, fam:'drive', hue:'#ff7ae8', name:'Intergalactic Drive', d:'Crosses the dark between galaxies', sd:150, cost:{Pt:2}, parts:{coil:3,fuelcell:2,navcore:1}, req:'array',
+   eff:{}, unlock:'Intergalactic travel — the frontier ladder opens (Prime Codex Signatures extend it)'},
+ {id:'autoext', cat:'sys', tier:3, fam:'rig', hue:'#c2a878', name:'Auto-Extractor', d:'Keeps pulling ore at every world you have mined, even while you are away', sd:40, cost:{}, parts:{servo:2,navcore:1,cell:1},
+   eff:{auto:1}},
+ /* ---- GEAR: TOOL slot (mine better) ---- */
+ {id:'rig1', cat:'gear', slot:'tool', tier:1, fam:'rig', hue:'#c2a878', name:'Mining Rig I',   d:'Powered pick — every pull takes half again as much', cost:{}, parts:{servo:1,plate:1}, eff:{yield:0.5}},
+ {id:'rig2', cat:'gear', slot:'tool', tier:2, fam:'rig', hue:'#ffd96a', name:'Mining Rig II',  d:'Twin-head bore — doubles every haul', cost:{W:2}, parts:{servo:1,frame:1,cell:1}, req:'rig1', eff:{yield:1}},
+ {id:'rig3', cat:'gear', slot:'tool', tier:3, fam:'rig', hue:'#ff7ae8', name:'Plasma Bore III',d:'Cuts stone like water — triple hauls, and rich strikes come oftener', cost:{Ir:1,U:2}, parts:{servo:2,coil:1}, req:'rig2', eff:{yield:2,strike:0.04}},
+ /* ---- GEAR: SUIT slot (survive the frontier) ---- */
+ {id:'fieldsuit',cat:'gear', slot:'suit', tier:1, fam:'suit', hue:'#9fb6d6', name:'Field Suit',      d:'Sealed exploration shell — hostile bioscans bite lighter', cost:{}, parts:{weave:2,plate:1}, eff:{scut:0.25,land:5}},
+ {id:'hazmat',  cat:'gear', slot:'suit', tier:2, fam:'suit', hue:'#9fe06a', name:'Hazmat Suit',      d:'Walks through what kills — bioscan wounds nearly halved', cost:{S:2}, parts:{weave:2,cell:1}, req:'fieldsuit', eff:{scut:0.45,land:8}},
+ {id:'thermal', cat:'gear', slot:'suit', tier:3, fam:'suit', hue:'#ff8a72', name:'Thermal Weave',    d:'Laughs at molten shores — ember and acid worlds open up', cost:{W:2,S:2}, parts:{weave:2,hullseg:1}, req:'hazmat', eff:{scut:0.45,land:10,landfam:{lava:30,venus:30}}},
+ {id:'presshull',cat:'gear',slot:'suit', tier:3, fam:'suit', hue:'#cdb8ec', name:'Pressure Shell',   d:'Holds its shape where the sky crushes — gas and acid decks open up', cost:{Pb:2}, parts:{weave:1,hullseg:2}, req:'hazmat', eff:{scut:0.45,land:10,landfam:{gas:30,venus:30}}},
+ {id:'cryoline', cat:'gear',slot:'suit', tier:3, fam:'suit', hue:'#8fd6ff', name:'Cryo Lining',      d:'Warm to the last ridge of the ice — frozen worlds open up', cost:{}, parts:{weave:1,cryocap:2}, req:'hazmat', eff:{scut:0.45,land:10,landfam:{ice:30}}},
+ /* ---- GEAR: MODULE slot (land better) ---- */
+ {id:'struts', cat:'gear', slot:'module', tier:1, fam:'struts', hue:'#aab2c2', name:'Landing Struts',      d:'Wave-off scrapes hurt less', cost:{}, parts:{frame:1,plate:1}, eff:{struts:2,land:5}},
+ {id:'stabil', cat:'gear', slot:'module', tier:2, fam:'struts', hue:'#ffd96a', name:'Descent Stabilizers', d:'Reads the storm on the way down — landings markedly safer', cost:{}, parts:{servo:1,navcore:1}, req:'struts', eff:{struts:3,land:15}},
+ {id:'anchor', cat:'gear', slot:'module', tier:3, fam:'anchor', hue:'#3fe8c8', name:'Gravitic Anchor',     d:'The ground comes to YOU — no descent can wave you off', cost:{Nd:1,U:1}, parts:{coil:2,navcore:1}, req:'stabil', eff:{land100:1}},
+ /* ---- GEAR: INSTRUMENT slot (explore better) ---- */
+ {id:'diplobeacon',cat:'gear', slot:'instrument', tier:2, fam:'beacon', hue:'#cdbcff', name:'Diplomat’s Beacon', d:'Broadcasts peaceful intent — first contact lands far more often', cost:{Au:1}, parts:{lens:1,chip:1,cell:1}, eff:{contact:20}},
+ {id:'resonator', cat:'gear', slot:'instrument', tier:2, fam:'probe', hue:'#b58cff', name:'Vein Resonator', d:'Sings to buried metal — rich strikes come far oftener', cost:{}, parts:{chip:2,coil:1}, eff:{strike:0.06}},
+ {id:'medkit', cat:'gear', slot:'instrument', tier:1, fam:'kit', hue:'#7fe6a0', name:'Field Medkit', d:'Flora meals mend the explorer harder', cost:{P:2}, parts:{weave:1,cryogel:1}, eff:{heal:0.35}},
+ /* ---- GEAR: CHARM slot (a little luck) ---- */
+ {id:'meteor', cat:'gear', slot:'charm', tier:1, fam:'charm', hue:'#ffd96a', name:'Meteorite Shard', d:'A lucky stone from before the worlds — strikes run a little richer', cost:{Ni:2,C:1}, eff:{strike:0.02}},
+ {id:'compass',cat:'gear', slot:'charm', tier:2, fam:'charm', hue:'#7fd0ff', name:'Star Compass', d:'Always knows the way home — hyperlanes run quicker', cost:{Ag:1}, parts:{lens:1,wire:1}, eff:{speed:1}},
+];
+const ITEM_BY=new Map(ITEMS.map(it=>[it.id, it]));
+const EQ_SLOTS=[
+  {id:'suit',       ic:'🧑‍🚀', name:'Suit'},
+  {id:'tool',       ic:'⛏',  name:'Tool'},
+  {id:'module',     ic:'🛬', name:'Module'},
+  {id:'instrument', ic:'🛰', name:'Instrument'},
+  {id:'charm',      ic:'✨', name:'Charm'},
+];
+const items=new Map();     /* item id → qty owned (save field items) */
+const equip={};            /* slot → item id (save field eq) */
+function itemCount(id){ return items.get(id)||0; }
+/* effect line for pickers/tooltips — the numbers in plain words */
+function _effWords(it){
+  const e=(it&&it.eff)||{}, out=[];
+  if(e.yield) out.push('+'+Math.round(e.yield*100)+'% mining yield');
+  if(e.strike) out.push('+'+Math.round(e.strike*100)+'% rich strikes');
+  if(e.auto) out.push('auto-extraction');
+  if(e.land) out.push('+'+e.land+'% landing');
+  if(e.landfam) out.push('+'+Object.values(e.landfam)[0]+'% landing on '+Object.keys(e.landfam).map(t=>({lava:'molten',venus:'acid',gas:'gas-giant',ice:'frozen'})[t]||t).join('/')+' worlds');
+  if(e.land100) out.push('landings never wave off');
+  if(e.struts) out.push('−'+e.struts+' HP wave-off scrapes');
+  if(e.scut) out.push('−'+Math.round(e.scut*100)+'% field wounds');
+  if(e.contact) out.push('+'+e.contact+'% first contact');
+  if(e.heal) out.push('+'+Math.round(e.heal*100)+'% meal healing');
+  if(e.speed) out.push('quicker hyperlanes');
+  return out.join(' · ')||it.d;
+}
+/* the ONE gear socket every system reads: equipped gear + built ship
+   systems, summed by effect key (landfam is read by descentBonus itself) */
+function _equipBonus(key){
+  let v=0;
+  for(const s of EQ_SLOTS){
+    const it=equip[s.id]?ITEM_BY.get(equip[s.id]):null;
+    if(it && it.eff && typeof it.eff[key]==='number') v+=it.eff[key];
+  }
+  for(const it of ITEMS){
+    if(it.cat==='sys' && itemCount(it.id)>0 && it.eff && typeof it.eff[key]==='number') v+=it.eff[key];
+  }
+  return v;
+}
+function _equipLandFam(type){
+  let v=0;
+  for(const s of EQ_SLOTS){
+    const it=equip[s.id]?ITEM_BY.get(equip[s.id]):null;
+    if(it && it.eff && it.eff.landfam && typeof it.eff.landfam[type]==='number') v+=it.eff.landfam[type];
+  }
+  return v;
+}
+function _canCraft(it){
+  if(it.req && itemCount(it.req)<1) return false;   /* the ladder: own the rung below */
+  if(it.sd && essence<it.sd) return false;
+  for(const k in (it.cost||{})) if((cargo.get(k)||0)<it.cost[k]) return false;
+  for(const k in (it.parts||{})) if(itemCount(k)<it.parts[k]) return false;
+  return true;
+}
+function craftItem(id){
+  const it=ITEM_BY.get(id); if(!it) return;
+  if(it.cat==='sys' && itemCount(id)>0) return;     /* systems build once */
+  if(!_canCraft(it)) return;
+  for(const k in (it.cost||{})) cargo.set(k, (cargo.get(k)||0)-it.cost[k]);
+  for(const k in (it.parts||{})) items.set(k, itemCount(k)-it.parts[k]);
+  if(it.sd) essence-=it.sd;
+  items.set(id, itemCount(id)+1);
+  stats.crafts=(stats.crafts||0)+1;
+  gameEvent('crafted', {id:id, cat:it.cat, tier:it.tier});
+  if(it.cat==='sys'){
+    playRaritySting(6); playFanfare(); fxBurst(FX_GOLD,46);
+    cinematic({kicker:'🛠 Ship System Online', title:it.name, sub:it.unlock||it.d, hex:'#7fd0ff', tier:5});
+  } else if(it.cat==='gear'){
+    playRaritySting(4); fxBurst(FX_GOLD,20);
+    toast('🛠 Crafted — '+it.name, it.d+'. Equip it on your character sheet (tap your nameplate).');
+    /* an empty matching socket takes new gear immediately — no menu-diving
+       for the common case; swapping later is the character sheet's job */
+    if(it.slot && !equip[it.slot]) equipItem(it.slot, id, true);
+  } else {
+    playRaritySting(2);
+    toast('🛠 Crafted', it.name+' ×1 — in your 🧰 Cargo hold.');
+  }
+  showCargoBtn(); if(cargoOpen) renderCargo();
+  if(statsOpen) renderStats();
+  checkAch(); renderRank(); queueSave();
+}
+function equipItem(slot, id, quiet){
+  if(!EQ_SLOTS.some(s=>s.id===slot)) return;
+  if(id && (!ITEM_BY.has(id) || ITEM_BY.get(id).slot!==slot || !itemCount(id))) return;
+  equip[slot]=id||undefined;
+  if(!id) delete equip[slot];
+  if(!quiet){
+    const it=id?ITEM_BY.get(id):null;
+    toast('🎽 '+(it?('Equipped — '+it.name):'Unequipped'), it?it.d:'The socket stands empty.');
+  }
+  if(statsOpen) renderStats();
+  queueSave();
+}
+/* painterly part icons — the _hdElemIcon language extended to crafted
+   things: one shape family per part kind, tinted per item, cached */
+const _partIcons=new Map();
+function partIcon(id){
+  let u=_partIcons.get(id); if(u) return u;
+  const it=ITEM_BY.get(id)||{fam:'plate',hue:'#aab2c2'};
+  const S=96, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d');
+  const n=parseInt((it.hue||'#aab2c2').slice(1),16), cr=(n>>16)&255, cg=(n>>8)&255, cb=n&255;
+  const K=(k,a)=>'rgba('+Math.min(255,(cr*k)|0)+','+Math.min(255,(cg*k)|0)+','+Math.min(255,(cb*k)|0)+','+(a==null?1:a)+')';
+  g.fillStyle='rgba(0,0,0,0.35)'; g.beginPath(); g.ellipse(S*0.5,S*0.85,S*0.30,S*0.05,0,0,TAU); g.fill();
+  const fam=it.fam;
+  if(fam==='plate'||fam==='hull'){
+    for(let i=0;i<2;i++){
+      const y=S*(0.62-i*0.16), sk=S*0.09;
+      g.fillStyle=K(1.25); g.beginPath();
+      g.moveTo(S*0.18+sk,y-S*0.09); g.lineTo(S*0.78+sk,y-S*0.09); g.lineTo(S*0.78,y); g.lineTo(S*0.18,y); g.closePath(); g.fill();
+      g.fillStyle=K(0.9); g.fillRect(S*0.18,y,S*0.60,S*0.09);
+      g.strokeStyle='rgba(255,255,255,0.25)'; g.strokeRect(S*0.18+0.5,y+0.5,S*0.60-1,S*0.09-1);
+    }
+    if(fam==='hull'){ g.fillStyle=K(1.5,0.5); g.fillRect(S*0.18,S*0.40,S*0.60,S*0.03); }
+  } else if(fam==='wire'){
+    g.strokeStyle=K(1); g.lineWidth=S*0.055; g.lineCap='round';
+    for(let i=0;i<4;i++){ g.beginPath(); g.ellipse(S*0.5,S*0.55,S*0.24,S*0.135,0,0,TAU); g.stroke(); g.translate(0,-S*0.055); }
+    g.setTransform(1,0,0,1,0,0);
+    g.strokeStyle=K(1.5,0.7); g.lineWidth=S*0.02;
+    g.beginPath(); g.ellipse(S*0.5,S*0.38,S*0.24,S*0.135,0,3.4,5.6); g.stroke();
+  } else if(fam==='chip'){
+    g.fillStyle=K(0.5); g.fillRect(S*0.28,S*0.30,S*0.44,S*0.42);
+    g.fillStyle=K(1.1); g.fillRect(S*0.34,S*0.36,S*0.32,S*0.30);
+    g.strokeStyle=K(1.6,0.8); g.lineWidth=2;
+    for(let i=0;i<4;i++){
+      const y=S*(0.34+i*0.09);
+      g.beginPath(); g.moveTo(S*0.20,y); g.lineTo(S*0.28,y); g.moveTo(S*0.72,y); g.lineTo(S*0.80,y); g.stroke();
+    }
+    g.fillStyle='rgba(255,255,255,0.5)'; g.fillRect(S*0.36,S*0.38,S*0.10,S*0.04);
+  } else if(fam==='frame'||fam==='struts'){
+    g.strokeStyle=K(1.1); g.lineWidth=S*0.05; g.lineCap='round';
+    g.beginPath(); g.moveTo(S*0.22,S*0.72); g.lineTo(S*0.22,S*0.30); g.lineTo(S*0.78,S*0.30); g.lineTo(S*0.78,S*0.72); g.stroke();
+    g.lineWidth=S*0.035; g.strokeStyle=K(0.8);
+    g.beginPath(); g.moveTo(S*0.22,S*0.72); g.lineTo(S*0.78,S*0.30); g.moveTo(S*0.22,S*0.30); g.lineTo(S*0.78,S*0.72); g.stroke();
+    if(fam==='struts'){ g.strokeStyle=K(1.4,0.9); g.lineWidth=S*0.03;
+      g.beginPath(); g.moveTo(S*0.30,S*0.72); g.lineTo(S*0.40,S*0.84); g.moveTo(S*0.70,S*0.72); g.lineTo(S*0.60,S*0.84); g.stroke(); }
+  } else if(fam==='lens'){
+    const gr2=g.createRadialGradient(S*0.44,S*0.44,2,S*0.5,S*0.5,S*0.26);
+    gr2.addColorStop(0,'rgba(255,255,255,0.95)'); gr2.addColorStop(0.35,K(1.3)); gr2.addColorStop(1,K(0.55));
+    g.fillStyle=gr2; g.beginPath(); g.arc(S*0.5,S*0.5,S*0.26,0,TAU); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.5)'; g.lineWidth=2.4; g.stroke();
+    g.strokeStyle='rgba(255,255,255,0.75)'; g.lineWidth=2;
+    g.beginPath(); g.arc(S*0.46,S*0.46,S*0.15,3.5,4.6); g.stroke();
+  } else if(fam==='fuel'||fam==='cell'){
+    const w=S*0.26, h=S*0.44, x=S*0.5-w/2, y=S*0.26;
+    const lg3=g.createLinearGradient(x,0,x+w,0);
+    lg3.addColorStop(0,K(0.6)); lg3.addColorStop(0.5,K(1.25)); lg3.addColorStop(1,K(0.55));
+    g.fillStyle=lg3;
+    g.beginPath();
+    if(g.roundRect) g.roundRect(x,y,w,h,S*0.07); else g.rect(x,y,w,h);
+    g.fill();
+    g.strokeStyle='rgba(255,255,255,0.35)'; g.lineWidth=2; g.stroke();
+    if(fam==='cell'){ g.fillStyle=K(1.6,0.95); g.fillRect(S*0.5-S*0.05,y-S*0.05,S*0.10,S*0.05);
+      g.fillStyle='rgba(255,255,255,0.7)'; g.font='600 '+(S*0.2)+'px sans-serif'; g.textAlign='center'; g.fillText('+', S*0.5, y+h*0.42); }
+    else { g.fillStyle=K(1.5,0.6); g.beginPath(); g.ellipse(S*0.5,y+h*0.3,w*0.26,h*0.12,0,0,TAU); g.fill(); }
+  } else if(fam==='weave'){
+    g.save(); g.translate(S*0.5,S*0.52); g.rotate(-0.12);
+    g.fillStyle=K(0.75); g.fillRect(-S*0.28,-S*0.22,S*0.56,S*0.44);
+    g.strokeStyle=K(1.35,0.8); g.lineWidth=2;
+    for(let i=-4;i<=4;i++){
+      g.beginPath(); g.moveTo(i*S*0.07,-S*0.22); g.lineTo(i*S*0.07,S*0.22); g.stroke();
+      g.beginPath(); g.moveTo(-S*0.28,i*S*0.055); g.lineTo(S*0.28,i*S*0.055); g.stroke();
+    }
+    g.restore();
+  } else if(fam==='gel'){
+    g.fillStyle=K(1,0.9);
+    g.beginPath(); g.arc(S*0.5,S*0.58,S*0.22,0,TAU); g.fill();
+    g.fillStyle=K(1.4,0.8); g.beginPath(); g.arc(S*0.42,S*0.5,S*0.10,0,TAU); g.fill();
+    g.fillStyle='rgba(255,255,255,0.6)'; g.beginPath(); g.arc(S*0.44,S*0.48,S*0.035,0,TAU); g.fill();
+  } else if(fam==='coil'){
+    g.strokeStyle=K(1.15); g.lineWidth=S*0.075; g.lineCap='round';
+    g.beginPath(); g.ellipse(S*0.5,S*0.52,S*0.235,S*0.235,0,0,TAU); g.stroke();
+    g.strokeStyle=K(0.6); g.lineWidth=S*0.02;
+    for(let i=0;i<10;i++){ const a=i/10*TAU;
+      g.beginPath(); g.moveTo(S*0.5+Math.cos(a)*S*0.16,S*0.52+Math.sin(a)*S*0.16);
+      g.lineTo(S*0.5+Math.cos(a)*S*0.31,S*0.52+Math.sin(a)*S*0.31); g.stroke(); }
+    g.save(); g.globalCompositeOperation='lighter';
+    const cg2=g.createRadialGradient(S*0.5,S*0.52,1,S*0.5,S*0.52,S*0.14);
+    cg2.addColorStop(0,K(1.7,0.8)); cg2.addColorStop(1,K(1.7,0));
+    g.fillStyle=cg2; g.fillRect(0,0,S,S); g.restore();
+  } else if(fam==='core'){
+    g.strokeStyle=K(0.8); g.lineWidth=S*0.045;
+    g.beginPath(); g.arc(S*0.5,S*0.52,S*0.26,0,TAU); g.stroke();
+    g.save(); g.globalCompositeOperation='lighter';
+    const co=g.createRadialGradient(S*0.5,S*0.52,1,S*0.5,S*0.52,S*0.20);
+    co.addColorStop(0,'rgba(255,255,255,0.95)'); co.addColorStop(0.4,K(1.4,0.9)); co.addColorStop(1,K(1.2,0));
+    g.fillStyle=co; g.beginPath(); g.arc(S*0.5,S*0.52,S*0.20,0,TAU); g.fill(); g.restore();
+    g.strokeStyle=K(1.5,0.55); g.lineWidth=1.6;
+    g.beginPath(); g.ellipse(S*0.5,S*0.52,S*0.30,S*0.10,0.5,0,TAU); g.stroke();
+  } else if(fam==='fcell'||fam==='capsule'){
+    const w=S*0.30, h=S*0.46, x=S*0.5-w/2, y=S*0.25;
+    const lg4=g.createLinearGradient(x,0,x+w,0);
+    lg4.addColorStop(0,K(0.6)); lg4.addColorStop(0.45,K(1.3)); lg4.addColorStop(1,K(0.5));
+    g.fillStyle=lg4;
+    g.beginPath(); g.ellipse(S*0.5,y,w/2,S*0.06,0,Math.PI,0); g.lineTo(x+w,y+h);
+    g.ellipse(S*0.5,y+h,w/2,S*0.06,0,0,Math.PI); g.closePath(); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.35)'; g.lineWidth=2; g.stroke();
+    g.fillStyle=K(1.6,0.75); g.fillRect(x,y+h*0.42,w,S*0.045);
+    if(fam==='capsule'){ g.fillStyle='rgba(255,255,255,0.55)'; g.beginPath(); g.arc(S*0.5,y+h*0.24,S*0.05,0,TAU); g.fill(); }
+  } else if(fam==='servo'||fam==='rig'){
+    g.strokeStyle=K(1); g.lineWidth=S*0.075; g.lineCap='round';
+    g.beginPath(); g.moveTo(S*0.26,S*0.74); g.lineTo(S*0.42,S*0.48); g.lineTo(S*0.62,S*0.40); g.stroke();
+    g.fillStyle=K(1.25);
+    for(const [jx,jy] of [[S*0.26,S*0.74],[S*0.42,S*0.48],[S*0.62,S*0.40]]){
+      g.beginPath(); g.arc(jx,jy,S*0.055,0,TAU); g.fill();
+    }
+    if(fam==='rig'){
+      g.fillStyle=K(1.45);
+      g.beginPath(); g.moveTo(S*0.62,S*0.32); g.lineTo(S*0.80,S*0.44); g.lineTo(S*0.62,S*0.50); g.closePath(); g.fill();
+      g.strokeStyle='rgba(255,255,255,0.4)'; g.lineWidth=1.6;
+      g.beginPath(); g.moveTo(S*0.66,S*0.37); g.lineTo(S*0.75,S*0.43); g.stroke();
+    } else {
+      g.fillStyle=K(0.7); g.fillRect(S*0.58,S*0.32,S*0.14,S*0.16);
+    }
+  } else if(fam==='drive'){
+    const lg5=g.createLinearGradient(0,S*0.3,0,S*0.78);
+    lg5.addColorStop(0,K(1.25)); lg5.addColorStop(1,K(0.55));
+    g.fillStyle=lg5;
+    g.beginPath(); g.moveTo(S*0.40,S*0.26); g.lineTo(S*0.60,S*0.26); g.lineTo(S*0.72,S*0.62); g.lineTo(S*0.28,S*0.62); g.closePath(); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.35)'; g.lineWidth=2; g.stroke();
+    g.save(); g.globalCompositeOperation='lighter';
+    const fl=g.createRadialGradient(S*0.5,S*0.66,2,S*0.5,S*0.66,S*0.20);
+    fl.addColorStop(0,'rgba(255,255,255,0.9)'); fl.addColorStop(0.4,K(1.5,0.8)); fl.addColorStop(1,K(1.5,0));
+    g.fillStyle=fl; g.beginPath(); g.ellipse(S*0.5,S*0.70,S*0.14,S*0.20,0,0,TAU); g.fill(); g.restore();
+  } else if(fam==='array'){
+    g.fillStyle=K(1.15);
+    g.beginPath(); g.ellipse(S*0.5,S*0.45,S*0.27,S*0.16,-0.5,0,TAU); g.fill();
+    g.fillStyle=K(0.6); g.beginPath(); g.ellipse(S*0.52,S*0.47,S*0.20,S*0.11,-0.5,0,TAU); g.fill();
+    g.strokeStyle=K(1); g.lineWidth=S*0.04;
+    g.beginPath(); g.moveTo(S*0.5,S*0.56); g.lineTo(S*0.5,S*0.80); g.stroke();
+    g.strokeStyle='rgba(255,255,255,0.65)'; g.lineWidth=1.6;
+    g.beginPath(); g.moveTo(S*0.5,S*0.45); g.lineTo(S*0.66,S*0.28); g.stroke();
+    g.fillStyle='rgba(255,255,255,0.85)'; g.beginPath(); g.arc(S*0.66,S*0.28,S*0.03,0,TAU); g.fill();
+  } else if(fam==='suit'){
+    g.fillStyle=K(1.05);
+    g.beginPath();
+    g.moveTo(S*0.36,S*0.78); g.lineTo(S*0.36,S*0.48); g.quadraticCurveTo(S*0.36,S*0.38,S*0.46,S*0.36);
+    g.lineTo(S*0.54,S*0.36); g.quadraticCurveTo(S*0.64,S*0.38,S*0.64,S*0.48); g.lineTo(S*0.64,S*0.78); g.closePath(); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.3)'; g.lineWidth=2; g.stroke();
+    const hg=g.createRadialGradient(S*0.47,S*0.25,1,S*0.5,S*0.27,S*0.115);
+    hg.addColorStop(0,'rgba(255,255,255,0.9)'); hg.addColorStop(1,K(0.8));
+    g.fillStyle=hg; g.beginPath(); g.arc(S*0.5,S*0.27,S*0.115,0,TAU); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.4)'; g.lineWidth=1.6; g.stroke();
+    g.fillStyle=K(1.5,0.8); g.fillRect(S*0.44,S*0.52,S*0.12,S*0.05);
+  } else if(fam==='anchor'){
+    g.strokeStyle=K(1.2); g.lineWidth=S*0.05; g.lineCap='round';
+    g.beginPath(); g.moveTo(S*0.5,S*0.28); g.lineTo(S*0.5,S*0.62); g.stroke();
+    g.beginPath(); g.arc(S*0.5,S*0.60,S*0.17,0.3,Math.PI-0.3); g.stroke();
+    g.save(); g.globalCompositeOperation='lighter';
+    const ag=g.createRadialGradient(S*0.5,S*0.74,1,S*0.5,S*0.74,S*0.17);
+    ag.addColorStop(0,K(1.6,0.8)); ag.addColorStop(1,K(1.6,0));
+    g.fillStyle=ag; g.fillRect(0,0,S,S); g.restore();
+    g.fillStyle='rgba(255,255,255,0.8)'; g.beginPath(); g.arc(S*0.5,S*0.28,S*0.045,0,TAU); g.fill();
+  } else if(fam==='beacon'){
+    g.fillStyle=K(0.8);
+    g.beginPath(); g.moveTo(S*0.42,S*0.78); g.lineTo(S*0.5,S*0.34); g.lineTo(S*0.58,S*0.78); g.closePath(); g.fill();
+    g.save(); g.globalCompositeOperation='lighter';
+    const bg2=g.createRadialGradient(S*0.5,S*0.30,1,S*0.5,S*0.30,S*0.16);
+    bg2.addColorStop(0,'rgba(255,255,255,0.95)'); bg2.addColorStop(0.4,K(1.5,0.85)); bg2.addColorStop(1,K(1.5,0));
+    g.fillStyle=bg2; g.beginPath(); g.arc(S*0.5,S*0.30,S*0.16,0,TAU); g.fill(); g.restore();
+    g.strokeStyle=K(1.5,0.4); g.lineWidth=1.6;
+    for(const a of [-0.9,-0.45,0.45,0.9]){
+      g.beginPath(); g.moveTo(S*0.5+Math.cos(a-Math.PI/2)*S*0.20,S*0.30+Math.sin(a-Math.PI/2)*S*0.20);
+      g.lineTo(S*0.5+Math.cos(a-Math.PI/2)*S*0.28,S*0.30+Math.sin(a-Math.PI/2)*S*0.28); g.stroke();
+    }
+  } else if(fam==='probe'){
+    g.fillStyle=K(1.1); g.beginPath(); g.arc(S*0.5,S*0.5,S*0.13,0,TAU); g.fill();
+    g.strokeStyle=K(0.9,0.9); g.lineWidth=2.2;
+    for(let i=1;i<=3;i++){ g.beginPath(); g.arc(S*0.5,S*0.5,S*0.13+i*S*0.075,-0.7,0.7); g.stroke(); }
+    g.strokeStyle='rgba(255,255,255,0.4)'; g.lineWidth=1.6;
+    g.beginPath(); g.arc(S*0.46,S*0.46,S*0.05,3.4,4.9); g.stroke();
+  } else if(fam==='kit'){
+    g.fillStyle=K(0.9);
+    if(g.roundRect){ g.beginPath(); g.roundRect(S*0.28,S*0.38,S*0.44,S*0.34,S*0.05); g.fill(); }
+    else g.fillRect(S*0.28,S*0.38,S*0.44,S*0.34);
+    g.fillStyle=K(0.7); g.fillRect(S*0.42,S*0.32,S*0.16,S*0.06);
+    g.fillStyle='rgba(255,255,255,0.9)';
+    g.fillRect(S*0.46,S*0.46,S*0.08,S*0.18); g.fillRect(S*0.41,S*0.51,S*0.18,S*0.08);
+  } else { /* charm — a cut talisman on a cord */
+    g.strokeStyle=K(0.8,0.9); g.lineWidth=2;
+    g.beginPath(); g.arc(S*0.5,S*0.18,S*0.10,0.4,Math.PI-0.4); g.stroke();
+    const cx=S*0.5, cy=S*0.52, w2=S*0.17, h2=S*0.24;
+    const F2=[[[-w2,0],[0,-h2],[0,0],1.3],[[0,-h2],[w2,0],[0,0],0.9],[[-w2,0],[0,h2],[0,0],0.7],[[0,h2],[w2,0],[0,0],0.5]];
+    for(const f of F2){ g.fillStyle=K(f[3]); g.beginPath();
+      g.moveTo(cx+f[0][0],cy+f[0][1]); g.lineTo(cx+f[1][0],cy+f[1][1]); g.lineTo(cx+f[2][0],cy+f[2][1]); g.closePath(); g.fill(); }
+    g.save(); g.globalCompositeOperation='lighter';
+    const chg=g.createRadialGradient(cx,cy,1,cx,cy,w2*1.6);
+    chg.addColorStop(0,K(1.6,0.55)); chg.addColorStop(1,K(1.6,0));
+    g.fillStyle=chg; g.fillRect(0,0,S,S); g.restore();
+  }
+  u=cv.toDataURL();
+  _partIcons.set(id,u); return u;
 }
 
 /* ================= THE PRIME CODEX =================
@@ -12921,7 +13532,13 @@ const REGIONS=[
   {name:'the Frontier',      sigs:9, r:UCELL*20},
 ];
 function currentRegion(){ let r=REGIONS[0]; for(const R of REGIONS) if(primeCount()>=R.sigs) r=R; return r; }
-function reachRadius(){ return currentRegion().r; }                    /* reach jumps outward each time a new region opens */
+function reachRadius(){
+  /* reach jumps outward each time a new region opens. v1.4: until the
+     Intergalactic Drive is built, the universe-scale charter is the home
+     galaxy and its halo — the Ascent owns the inner rings. */
+  try{ if(typeof ascStage==='function' && ascStage()<3) return UCELL*0.35; }catch(_){ }
+  return currentRegion().r;
+}
 function withinReach(x,y){ return Math.hypot(x-HOME_POS.x, y-HOME_POS.y) <= reachRadius(); }
 /* which region a point in the cosmos falls in, by raw distance from home (independent of how far you can travel) */
 function regionAt(x,y){ const d=Math.hypot(x-HOME_POS.x, y-HOME_POS.y); for(let i=0;i<REGIONS.length;i++) if(d<=REGIONS[i].r) return i; return REGIONS.length-1; }
@@ -12929,6 +13546,9 @@ let _charterToastT=0;
 function charterBlock(){
   const now=performance.now();
   if(now-_charterToastT>1800){ _charterToastT=now;
+    /* v1.4: while the Ascent gates the rings, the block names the BUILD
+       that opens them — the Signature message belongs to the outer ladder */
+    if(typeof ascStage==='function' && ascStage()<3){ toast('⬆ Beyond Your Charter', ascHint()); return; }
     toast('Beyond Your Charter','That galaxy lies past your reach. Claim more Prime Codex Signatures to extend it.'); }
 }
 function pathfinderRank(){ const n=primeCount();
@@ -13249,7 +13869,25 @@ function renderCharters(){
   if(!chPanel) return;
   const list=_chActive().length && CHARTER_STARTERS.some(c=>!chDone.has(c.id)) ? CHARTER_STARTERS : _chWeekly();
   const starters=list===CHARTER_STARTERS;
-  let h='<div class="ehead">'+(starters?'Starter charters — learn the trades':'Weekly charters')+'</div>';
+  let h='';
+  /* v1.4: the Ascent chapter rides pinned above the charter board — the
+     mainline always names your next step */
+  {
+    const ch=(typeof _ascActive==='function')?_ascActive():null;
+    if(ch){
+      h+='<div class="ascbox"><div class="ehead" style="color:#7fd0ff">⬆ '+ch.name+'</div>'+
+        '<div class="ambient">'+ch.intro+'</div>';
+      for(const g of ch.goals){
+        const p=Math.min(ascProg[g.id]||0, g.n), done=p>=g.n;
+        h+='<div class="ch'+(done?' done':'')+'"><div class="ct">'+(done?'<span class="chk">✓</span> ':'')+g.t+
+          (g.n>1?' <span class="cp">'+p+' / '+g.n+'</span>':'')+'</div></div>';
+      }
+      h+='</div>';
+    } else if(typeof ascCh!=='undefined' && ascCh>=ASC_CHAPTERS.length && (itemCount('igdrive')||itemCount('array')||itemCount('jumpdrive'))){
+      h+='<div class="ambient" style="color:#7fd0ff">⬆ The Ascent is complete — the frontier ladder is yours.</div>';
+    }
+  }
+  h+='<div class="ehead">'+(starters?'Starter charters — learn the trades':'Weekly charters')+'</div>';
   if(!starters) h+='<div class="ambient">Three fresh charters every week — the same board for every explorer in the universe.</div>';
   for(const c of list){
     const done=_chDoneOf(c), p=Math.min(chProg[c.id]||0, c.n);
@@ -13265,9 +13903,117 @@ if(chBtn) chBtn.addEventListener('click', ()=>{
   chPanel.style.display=chOpen?'block':'none';
   if(chOpen){ closePanels('charters'); renderCharters(); }
 });
+/* ================= THE ASCENT (v1.4) =================
+   The mainline: ordered chapters on the charter machinery. New saves start
+   LOCKED TO SOL — the whole sky stays visible and surveyable (gate TRAVEL,
+   never CURIOSITY) — and mine → craft their way off the rock. Each chapter's
+   capstone is a SHIP SYSTEM whose existence IS the unlock, so veterans who
+   already hold the capability are grandfathered past the gate by absence of
+   the save field. The ring ladder: Sol → the Neighborhood (a slice of the
+   home galaxy) → the whole galaxy → the intergalactic frontier (where the
+   Prime Codex Signature ladder takes over, as it always did). */
+/* ----------------------------------------------------------------
+   @section ascent [app] — chapter engine, Sol lock, ring ladder
+   Owns: ASC_CHAPTERS, ascCh, ascProg, ascEvent, ascStage, ascAllows,
+         ascHint, ascBlock, ASC_RING_R
+   ---------------------------------------------------------------- */
+const ASC_RING_R=GR*0.25;      /* stage-1 "Neighborhood" slice of the home galaxy */
+const _SOL_SEEDS=new Set([131,132,133,134,135,136,137,138]);   /* Sol's worlds (Mercury..Neptune) */
+const ASC_CHAPTERS=[
+ {id:'ch1', name:'Chapter 1 — Off the Rock',
+  intro:'Sol is yours to learn — the rest of the sky is charts and longing. Mine the dead worlds, feed the Fabricator, and build the Jump Drive.',
+  goals:[
+   {id:'c1-land', ev:'landfall', n:2, t:'Make planetfall on 2 worlds of Sol'},
+   {id:'c1-mine', ev:'mined',    n:8, t:'Pull 8 loads of ore from Sol&#8217;s dead worlds'},
+   {id:'c1-part', ev:'crafted', filt:x=>x&&x.cat==='part', n:4, t:'Fabricate 4 basic parts'},
+   {id:'c1-comp', ev:'crafted', filt:x=>x&&x.cat==='comp', n:2, t:'Assemble 2 components'},
+   {id:'c1-jump', ev:'crafted', filt:x=>x&&x.id==='jumpdrive', n:1, t:'Build the ⚡ Jump Drive'},
+  ],
+  unlockNote:'Interstellar travel is yours — the Neighborhood&#8217;s stars are open.'},
+ {id:'ch2', name:'Chapter 2 — The Neighborhood',
+  intro:'The nearby stars answer. Hunt life, plant a flag, and build the Long-Range Array to chart the whole galaxy.',
+  goals:[
+   {id:'c2-land', ev:'landfall', filt:x=>x&&x.planetSeed!=null&&!_SOL_SEEDS.has(x.planetSeed), n:3, t:'Land on 3 worlds beyond Sol'},
+   {id:'c2-scan', ev:'bioscan',  n:2, t:'Discover life on 2 alien worlds'},
+   {id:'c2-conq', ev:'conquest', n:1, t:'Conquer a world'},
+   {id:'c2-array',ev:'crafted', filt:x=>x&&x.id==='array', n:1, t:'Build the 📡 Long-Range Array'},
+  ],
+  unlockNote:'The whole home galaxy answers your charts.'},
+ {id:'ch3', name:'Chapter 3 — Beyond the Rim',
+  intro:'One galaxy is a grain of sand. Master the trades, gear up, and build the drive that crosses the dark.',
+  goals:[
+   {id:'c3-breed', ev:'bred', filt:x=>x&&x.ok, n:1, t:'Breed a hybrid bloodline'},
+   {id:'c3-gear',  ev:'crafted', filt:x=>x&&x.cat==='gear', n:2, t:'Craft 2 pieces of explorer gear'},
+   {id:'c3-mine',  ev:'mined', n:20, t:'Pull 20 more loads of ore'},
+   {id:'c3-ig',    ev:'crafted', filt:x=>x&&x.id==='igdrive', n:1, t:'Build the 🌌 Intergalactic Drive'},
+  ],
+  unlockNote:'The dark between galaxies is yours to cross — from here the Prime Codex Signatures extend the frontier, ring by ring.'},
+];
+let ascCh=0;          /* current chapter index; length ⇒ the Ascent is complete (save asc) */
+let ascProg={};       /* goal id → count (save ascp) */
+function ascStage(){
+  /* the ring you stand on — the built system IS the key, so a veteran with
+     no asc field but no drives still reads complete via ascCh */
+  if(ascCh>=ASC_CHAPTERS.length) return 3;
+  if(itemCount('igdrive')) return 3;
+  if(itemCount('array')) return 2;
+  if(itemCount('jumpdrive')) return 1;
+  return 0;
+}
+function ascHint(){
+  const stg=ascStage();
+  return stg===0?'Sol is your charter for now — build the ⚡ Jump Drive (🧰 Fabricator) to reach the stars.'
+       :stg===1?'Your drive reaches the Neighborhood — the 📡 Long-Range Array (🧰 Fabricator) charts the whole galaxy.'
+       :'The dark between galaxies needs the 🌌 Intergalactic Drive — the Fabricator has the recipe.';
+}
+let _ascToastT=0;
+function ascBlock(){
+  const now=performance.now();
+  if(now-_ascToastT>1800){ _ascToastT=now; toast('⬆ Beyond Your Charter', ascHint()); }
+}
+/* may travel to w? (atlas / search / codes / beacon / zoom transitions).
+   Looking is always free — this gates MOVEMENT only. */
+function ascAllows(w){
+  const stg=ascStage();
+  if(stg>=3) return true;
+  if(!w || !w.gal) return true;
+  if(w.gal.seed!==HOME_GAL_SEED) return false;      /* other galaxies wait for the IG drive */
+  if(!w.star) return true;                          /* the home galaxy itself is fine */
+  if(stg>=2) return true;                           /* array: the whole galaxy */
+  if(w.star.seed===SOL_SEED) return true;
+  if(stg===1) return Math.hypot(w.star.x-SOL_POS.x, w.star.y-SOL_POS.y)<=ASC_RING_R;
+  return false;                                     /* stage 0: Sol only */
+}
+function _ascActive(){ return ascCh<ASC_CHAPTERS.length ? ASC_CHAPTERS[ascCh] : null; }
+function ascEvent(type, detail){
+  if(!tutDone || _loading) return;
+  const ch=_ascActive(); if(!ch) return;
+  let hit=false;
+  for(const g of ch.goals){
+    if((ascProg[g.id]||0)>=g.n || g.ev!==type) continue;
+    if(g.filt && !g.filt(detail||{})) continue;
+    ascProg[g.id]=(ascProg[g.id]||0)+1;
+    hit=true;
+    if((ascProg[g.id]||0)>=g.n && !ch.goals.every(g2=>(ascProg[g2.id]||0)>=g2.n)){
+      const nxt=ch.goals.find(g2=>(ascProg[g2.id]||0)<g2.n);
+      toast('⬆ The Ascent', '“'+g.t.replace(/<[^>]*>/g,'')+'” done.'+(nxt?' Next: '+nxt.t.replace(/<[^>]*>/g,'')+'.':''));
+    }
+  }
+  if(!hit) return;
+  if(ch.goals.every(g=>(ascProg[g.id]||0)>=g.n)){
+    ascCh++;
+    playFanfare(); fxBurst(FX_GOLD, 40);
+    cinematic({kicker:'⬆ THE ASCENT', title:ch.name.replace(/&#8217;/g,'’'), sub:ch.unlockNote.replace(/&#8217;/g,'’'), hex:'#7fd0ff', tier:5,
+      then:()=>{ const nx=_ascActive(); if(nx) toast('⬆ '+nx.name, nx.intro); }});
+    gameEvent('ascent-chapter', {done:ch.id, now:ascCh});
+  }
+  if(chOpen) renderCharters();
+  _chBadge(); checkAch(); renderRank(); queueSave();
+}
 function gameEvent(type, detail){
   try{ if(_tutHook) _tutHook(type, detail||{}); }catch(_){}
   try{ charterEvent(type, detail||{}); }catch(_){}
+  try{ if(type!=='ascent-chapter') ascEvent(type, detail||{}); }catch(_){}
 }
 
 const TUT_STEPS=[
@@ -13910,6 +14656,7 @@ for(const p of PANELS){
    Owns: statsOpen, renderStats, _agOpen
    ---------------------------------------------------------------- */
 let statsOpen=false;
+let _eqOpen=null;   /* which equipment socket's picker is open (v1.4) */
 function renderStats(){
   const r=rankInfo();
   const span=r.next ? (r.next[0]-r.floor) : 1;
@@ -13924,6 +14671,41 @@ function renderStats(){
     '<div class="srow"><span class="k">Expedition score</span><span>'+r.score+(r.next?' / '+r.next[0]+' → '+r.next[1]:' · max rank')+'</span></div>'+
     '<div class="bar"><i style="width:'+pct.toFixed(0)+'%"></i></div>';
   html+=statBlockHTML();
+  /* ---- EQUIPMENT (v1.4): the ARPG half of the Ascent — five sockets on
+     the explorer. Tap a socket to choose among owned gear for it. ---- */
+  html+='<h4>Equipment</h4><div class="eqrow">'+EQ_SLOTS.map(s=>{
+    const it=equip[s.id]?ITEM_BY.get(equip[s.id]):null;
+    return '<div class="eqslot'+(it?' filled t'+it.tier:'')+(_eqOpen===s.id?' sel':'')+'" data-eqslot="'+s.id+'" role="button" tabindex="0" data-tip="'+s.name+(it?' — '+it.name:' — empty socket')+'">'+
+      (it?'<img src="'+partIcon(it.id)+'" alt="'+it.name+'">':'<span class="eqph">'+s.ic+'</span>')+
+      '<span class="eqname">'+(it?it.name:s.name)+'</span></div>';
+  }).join('')+'</div>';
+  if(_eqOpen){
+    const cands=ITEMS.filter(it=>it.slot===_eqOpen && itemCount(it.id)>0);
+    const cur=equip[_eqOpen];
+    html+='<div class="eqpick">'+
+      (cands.length?cands.map(it=>{
+        const effTxt=_effWords(it);
+        return '<div class="eqcand'+(cur===it.id?' on':'')+'" data-eqpick="'+it.id+'" role="button" tabindex="0">'+
+          '<img src="'+partIcon(it.id)+'" alt=""><div class="m"><div class="nm">'+it.name+(cur===it.id?' ✓':'')+'</div>'+
+          '<div class="ds">'+effTxt+'</div></div></div>';
+      }).join(''):'<div class="empty" style="padding:8px">Nothing crafted for this socket yet — the 🧰 Fabricator builds gear from mined parts.</div>')+
+      (cur?'<div class="eqcand" data-eqpick="" role="button" tabindex="0"><span class="eqph">∅</span><div class="m"><div class="nm">Unequip</div><div class="ds">leave the socket empty</div></div></div>':'')+
+      '</div>';
+  }
+  /* the live effect readout — what all this metal actually does */
+  {
+    const fx=[];
+    const y=_equipBonus('yield'); if(y>0) fx.push('⛏ +'+Math.round(y*100)+'% mining yield');
+    const stk=_equipBonus('strike'); if(stk>0) fx.push('💎 +'+Math.round(stk*100)+'% rich-strike odds');
+    if(_equipBonus('auto')>0) fx.push('🤖 auto-extractor online');
+    const ld=_equipBonus('land'); if(ld>0) fx.push('🛬 +'+ld+'% landing');
+    if(_equipBonus('land100')>0) fx.push('⚓ landings never wave off');
+    const sct=clamp(_equipBonus('scut'),0,0.7); if(sct>0) fx.push('🛡 −'+Math.round(sct*100)+'% field wounds');
+    const ct=_equipBonus('contact'); if(ct>0) fx.push('🤝 +'+ct+'% first contact');
+    const hl=_equipBonus('heal'); if(hl>0) fx.push('💚 +'+Math.round(hl*100)+'% meal healing');
+    const sp=_equipBonus('speed'); if(sp>0) fx.push('🚀 quicker hyperlanes');
+    if(fx.length) html+='<div class="eqfx">'+fx.join(' · ')+'</div>';
+  }
   const _statBody=
     '<div class="srow"><span class="k">Living worlds surveyed</span><span>'+stats.surveys+'</span></div>'+
     '<div class="srow"><span class="k">Galaxies explored</span><span>'+galSeen.size+'</span></div>'+
@@ -13985,6 +14767,11 @@ function renderStats(){
 const _agOpen=new Set();
 statsEl.addEventListener('click', e=>{
   if(e.target && e.target.id==='renameme'){ askExplorerName(false); renderStats(); return; }
+  /* v1.4 equipment sockets: tap a slot to open its picker, tap gear to equip */
+  const eqp=e.target.closest('[data-eqpick]');
+  if(eqp){ equipItem(_eqOpen, eqp.dataset.eqpick||null); _eqOpen=null; renderStats(); return; }
+  const eqs=e.target.closest('[data-eqslot]');
+  if(eqs){ _eqOpen=(_eqOpen===eqs.dataset.eqslot)?null:eqs.dataset.eqslot; renderStats(); return; }
   const pl=e.target.closest('.plate');
   if(pl){ if(pl.dataset.plate!==undefined){ nameHue=+pl.dataset.plate; applyNameplate(); renderStats(); queueSave(); } return; }
   const sr=e.target.closest('.statrow');
