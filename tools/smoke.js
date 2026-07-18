@@ -191,6 +191,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       && doc.getElementById('bellct').textContent !== '0');
     click(doc.getElementById('codexbtn'));
     check('opening Compendium completes step 6', await until(() => tutAt(7), 3000, 'step7'));
+    check('kingdoms: filter chips stay hidden during training (one voice)',
+      !doc.querySelector('#codex [data-ck]'));
 
     // open a FAUNA specimen card (open its realm group first)
     const fauna = [...H.codex.values()].filter((e) => e.kind === 'Fauna');
@@ -616,6 +618,28 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       check('descent: success clears the ramp', !skH._waveOffs.get(555001));
       check('descent: a cleared world reads safe (the dive is spent on landing)', skH.descentSafe(555001) === true);
       sk.w.Math.random = () => 0;   // back to warm dice for the flows below
+    }
+    // ============ v1.3.10: COMPENDIUM KINGDOM SHELVES ============
+    {
+      // seed one flora + one fauna from a real roster, then drive the filter
+      const ros = skH.planetSpecies({ type: 'terran', seed: 777444 }, null, 'temperate', 'complex');
+      const fl = ros.find((g) => g.kingdom === 'flora'), fa = ros.find((g) => g.kingdom === 'fauna');
+      skH._storeSpecies(fl, 'Smoke Meadow', null);
+      skH._storeSpecies(fa, 'Smoke Meadow', null);
+      click2(sk.doc.getElementById('codexbtn'), sk.w);
+      const cx = sk.doc.getElementById('codex');
+      check('kingdoms: the filter chips render for a stocked Compendium',
+        !!cx.querySelector('[data-ck="Flora"]') && !!cx.querySelector('[data-ck="Fauna"]'));
+      check('kingdoms: shelf headers wear their kingdom tint',
+        !!cx.querySelector('.cgh.kg-flora') && !!cx.querySelector('.cgh.kg-fauna'));
+      click2(cx.querySelector('[data-ck="Flora"]'), sk.w);
+      check('kingdoms: the Flora chip hides every animal shelf and lays plants open',
+        !cx.querySelector('.cgh.kg-fauna') && !!cx.querySelector('.cgrp.open .cgh.kg-flora'),
+        cx.textContent.slice(0, 80));
+      check('kingdoms: the count line reads the filtered truth', /flora shown/.test(cx.textContent));
+      click2(cx.querySelector('[data-ck="all"]'), sk.w);
+      check('kingdoms: All restores the full shelves', !!cx.querySelector('.cgh.kg-fauna'));
+      click2(sk.doc.getElementById('codexbtn'), sk.w);
     }
     // ============ v1.3.5 Batch 5a: BIOMES + EXTREMOPHILES ============
     {
