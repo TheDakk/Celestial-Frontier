@@ -656,5 +656,41 @@ resumes — the jsdom boot covers load-time wiring, not interaction flows.
 
 ---
 
+## 15. v1.4 "The Ascent" addendum (2026-07-18)
+
+Three new app-layer systems (all in `main.js`; nothing touches the domain modules —
+fingerprint stayed byte-identical):
+
+- **Mining rework** (`@section mining`): `mineWorld` is instant per click ("pull");
+  yields seeded by extraction index (`hashInt(seed,0xE1F,n)`), so pull *n* is identical
+  for every explorer. `reserveFor(seed,tier)` fixes each world's FINITE total pulls
+  (~420–800 × (1+tier·0.35)); `mineX` (save `mx`, absent ⇒ veterans full) tracks pulls
+  taken; rich strikes add `RARE_VEIN` pockets; `minePending` accrues auto-extractor
+  loads (1/10 min, cap 30) anchored on `mined` timestamps.
+- **Fabricator + equipment** (`@section fabricator`): `ITEMS` recipe catalog
+  (T1 parts → T2 components → T3 ship systems + gear; costs audited against Sol's
+  actual seeded veins so Chapter 1 is craftable at home), `craftItem`/`equipItem`,
+  five `EQ_SLOTS` on the character sheet, `partIcon()` painterly icons.
+  `_equipBonus(key)` is the single gear socket read by: `descentFor`/`descentBonus(P)`
+  (land, per-family `landfam`, `land100`), `_descRoll` (struts scrape cut), `routeHit`
+  (`scut` wound cut), `attemptContact` (contact %), `healExplorer` (heal %),
+  `driveMult` (speed), `mineWorld` (yield, strike, auto). Save fields `items`, `eq`.
+- **Ascent chapter engine** (`@section ascent`): `ASC_CHAPTERS` (3 chapters on the
+  charter/gameEvent machinery, pinned atop the Charters panel), save `asc`/`ascp`
+  (**`asc` absent ⇒ complete — veterans never re-lock**). `ascStage()` 0–3 keys off
+  the built drives; `ascAllows(where)` gates star entry (checkTransitions), wormholes,
+  `travelTo`, `travelToCode`; `reachRadius()` returns `UCELL*0.35` below stage 3.
+  Rings: Sol → Neighborhood (`ASC_RING_R = GR*0.25` around `SOL_POS`) → home galaxy →
+  the pre-existing REGIONS/prime-signature ladder. Reset restarts the Ascent.
+
+v1.3.11-grade fixes shipped in the same build: card offset-anchoring
+(`_frozenPick`/`_livePick`), Compendium display shelves (`_SHELF_OF`), training roll
+rigs on every step (feed rig is a HIGH roll — `feedPair` poisons on `roll<pois`),
+duel `#duelskip`, vista `.vcard` windowed pop-up, `_rockSet` asteroid sprites,
+helppop outside-tap closer. `resetMemoryState` now clears the engineer's track
+(mined/mineX/cargo/tech/items/equip/asc — previously leaked through soft resets).
+
+---
+
 *Generated for continuity. If the source and this document disagree, trust the source —
 then update this file.*
