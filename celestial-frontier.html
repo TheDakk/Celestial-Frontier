@@ -2825,7 +2825,7 @@ const {climateBand, COMP, atmosphereText, climateText, waterText, gravityText, T
 /* ================================================================
    @module SpeciesTraits [domain] — trait tables, rarity grades & spectral anomalies
    Deps: Rand
-   API:  SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, rarityRoll
+   API:  SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, rarityRoll, EX_HABITAT, EX_LOCO, AQ_FLORA_FORM, AIR_FLORA_FORM, habOf, locoOf, floraFormOf
    ================================================================ */
 const SpeciesTraits=(()=>{
 const SP_KINGDOM=['flora','fungi','microbe','fauna'];
@@ -2967,6 +2967,27 @@ const FUNGI_FORM=['mushroom forests','shelf-fungus terraces','puffball fields','
 const MICROBE_FORM=['photosynthetic mats','chemosynthetic films','iron-oxidizing slime','sulfur-eating colonies',
   'radiation-resistant crusts','bioluminescent plankton','methane-eating mats','acid-pool biofilms',
   'magnetotactic swarms','silica-shelled diatom blooms','purple sulfur films','snow-algae crusts'];
+/* v1.3.5 PARALLEL POOLS — the extremophile / sea / air language. The
+   pinned pools above must NEVER grow (their lengths are baked into every
+   existing genome's index rolls — extending one re-rolls the universe).
+   New species branches carry markers instead (g.x extremophile fauna,
+   g.aq sea flora, g.af air flora) and read these pools through the
+   habOf/locoOf/floraFormOf helpers. */
+const EX_HABITAT=['hydrothermal vent fields','cooling lava margins','beneath the ice sheets',
+  'abyssal trenches','the acid cloud layers','storm-eye updrafts','brine pools',
+  'deep cave systems','the crushing lower decks'];
+const EX_LOCO=['vent-clingers','magma-swimmers','under-ice drifters','pressure-walkers',
+  'acid-cloud floaters','storm-riders','winged hunters','thermal-soarers','brine-crawlers'];
+const AQ_FLORA_FORM=['kelp towers','seagrass meadows','reef-builder colonies','sargassum rafts',
+  'bioluminescent bloom fields','tube-garden banks'];
+const AIR_FLORA_FORM=['aeroplankton veils','drift-spore banners','cloud-garden colonies'];
+function habOf(g){ return (g&&g.x) ? EX_HABITAT[(g.habitat||0)%EX_HABITAT.length] : (FA_HABITAT[((g&&g.habitat)||0)%FA_HABITAT.length]||''); }
+function locoOf(g){ return (g&&g.x) ? EX_LOCO[(g.loco||0)%EX_LOCO.length] : (FA_LOCO[((g&&g.loco)||0)%FA_LOCO.length]||''); }
+function floraFormOf(g){
+  if(g&&g.aq) return AQ_FLORA_FORM[(g.form||0)%AQ_FLORA_FORM.length];
+  if(g&&g.af) return AIR_FLORA_FORM[(g.form||0)%AIR_FLORA_FORM.length];
+  return FLORA_FORM[((g&&g.form)||0)%FLORA_FORM.length]||'';
+}
 /* fauna anatomy — body, locomotion, plus head, limbs, skin, appendages, eyes for real specificity */
 const FA_BODY=['six-limbed','armored','stilt-legged','tentacled','serpentine','many-segmented',
   'shelled','membranous','crystalline-plated','gelatinous','tusked','horned','spindly','squat heavy-boned',
@@ -3028,9 +3049,9 @@ function speciesName(seed){
   const r=mulberry32((seed^0x5eed5)>>>0);
   return SP_NAME_A[(r()*SP_NAME_A.length)|0]+SP_NAME_B[(r()*SP_NAME_B.length)|0]+SP_NAME_C[(r()*SP_NAME_C.length)|0];
 }
-return Object.freeze({SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, rarityRoll});
+return Object.freeze({SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, rarityRoll, EX_HABITAT, EX_LOCO, AQ_FLORA_FORM, AIR_FLORA_FORM, habOf, locoOf, floraFormOf});
 })();
-const {SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, rarityRoll}=SpeciesTraits;
+const {SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, rarityRoll, EX_HABITAT, EX_LOCO, AQ_FLORA_FORM, AIR_FLORA_FORM, habOf, locoOf, floraFormOf}=SpeciesTraits;
 /* @end SpeciesTraits */
 /* ================================================================
    @module Genome [domain] — genome synthesis, classification & species description
@@ -3106,8 +3127,8 @@ function sapienceTier(g){
   return 0;
 }
 function realmBiome(g){
-  if(g.kingdom==='fauna') return FA_HABITAT[(g.habitat||0)%FA_HABITAT.length]||'';
-  if(g.kingdom==='flora') return FLORA_FORM[(g.form||0)%FLORA_FORM.length]||'';
+  if(g.kingdom==='fauna') return habOf(g);
+  if(g.kingdom==='flora') return floraFormOf(g);
   if(g.kingdom==='fungi') return FUNGI_FORM[(g.form||0)%FUNGI_FORM.length]||'';
   return MICROBE_FORM[(g.form||0)%MICROBE_FORM.length]||'';
 }
@@ -3120,10 +3141,15 @@ function classifyRealm(g){
     return /swarm|colony|bloom|mat|film/.test(f)?'Colonial Life':'Microbial Life';
   }
   /* fauna — read its world from the habitat & locomotion genes */
-  const hab=FA_HABITAT[(g.habitat||0)%FA_HABITAT.length]||'';
-  const loco=FA_LOCO[(g.loco||0)%FA_LOCO.length]||'';
+  const hab=habOf(g);
+  const loco=locoOf(g);
   if(sapienceTier(g)>=3) return 'Intelligent Natural Life';
   if((g.size||0)>=5) return 'Megafauna';
+  if(g.x){                        /* extremophiles claim the realms built for them */
+    if(/deck/.test(hab)) return 'Gas Giant Life';
+    if(/cave/.test(hab)) return 'Subterranean Life';
+    return 'Extreme-World Life';
+  }
   if((g.heat||1)===2 && /volcanic|ash|vent|lava/.test(hab)) return 'Exotic Biochemistry';
   if(/cavern|subterranean/.test(hab)) return 'Subterranean Life';
   if(/cloud deck/.test(hab)) return 'Gas Giant Life';
@@ -3155,8 +3181,8 @@ function realmModifiers(g){
     if((g.size||0)>=4) mods.push('Megafauna');
     const beh=FA_BEHAVIOR[(g.behavior||0)%FA_BEHAVIOR.length]||'';
     if(/symbiotic/.test(beh)) mods.push('Symbiotic');
-    const hab=FA_HABITAT[(g.habitat||0)%FA_HABITAT.length]||'';
-    if(/volcanic|ash|vent|methane|ammonia|salt-flat/.test(hab)) mods.push('Extremophile');
+    const hab=habOf(g);
+    if(g.x || /volcanic|ash|vent|methane|ammonia|salt-flat/.test(hab)) mods.push('Extremophile');
     const sense=FA_SENSE[(g.sense||0)%FA_SENSE.length]||'';
     if(/magnetic/.test(sense)) mods.push('Magnetic navigator');
     if(/echo/.test(sense)) mods.push('Echolocator');
@@ -3173,7 +3199,7 @@ function describeSpecies(g){
   if(g.kingdom==='flora'){
     const detail=FLORA_DETAIL[(g.detail||0)%FLORA_DETAIL.length];
     return {name:speciesName(g.seed), kind:'Flora', grade:speciesGrade(g),
-      desc:col+' '+FLORA_FORM[g.form%FLORA_FORM.length]+(g.lumin?', faintly bioluminescent':''),
+      desc:col+' '+floraFormOf(g)+(g.lumin?', faintly bioluminescent':''),
       detail:'A photosynthetic species, '+detail+'.'};
   }
   if(g.kingdom==='fungi'){
@@ -3209,12 +3235,12 @@ function speciesGrade(g){
 }
 function faunaDesc(g){
   const col=SP_COLOR[g.color%SP_COLOR.length];
-  const body=FA_BODY[g.body%FA_BODY.length], loco=FA_LOCO[g.loco%FA_LOCO.length];
+  const body=FA_BODY[g.body%FA_BODY.length], loco=locoOf(g);
   const trait=FA_TRAIT[g.trait%FA_TRAIT.length], size=FA_SIZE[g.size%FA_SIZE.length];
   const head=FA_HEAD[(g.head||0)%FA_HEAD.length], skin=FA_SKIN[(g.skin||0)%FA_SKIN.length];
   const tail=FA_TAIL[(g.tail||0)%FA_TAIL.length], eyes=FA_EYES[(g.eyes||0)%FA_EYES.length];
   const pattern=FA_PATTERN[(g.pattern||0)%FA_PATTERN.length];
-  const behavior=FA_BEHAVIOR[(g.behavior||0)%FA_BEHAVIOR.length], habitat=FA_HABITAT[(g.habitat||0)%FA_HABITAT.length];
+  const behavior=FA_BEHAVIOR[(g.behavior||0)%FA_BEHAVIOR.length], habitat=habOf(g);
   const diet=FA_DIET[g.diet%FA_DIET.length];
   const eyeTxt = eyes===0?'no eyes':(eyes===1?'a single great eye':eyes+' eyes');
   const anat = head+', '+skin+'-skinned, with '+eyeTxt+(tail!=='none'?' and a '+tail+' tail':'');
@@ -3376,6 +3402,13 @@ function crossGenome(a, b){
     g[m]=(g[m]+1+((r()*3)|0));
   }
   if(r()<0.2) g.lumin=!g.lumin;
+  /* v1.3.5 extremophile inheritance: markers ride WITHOUT touching the
+     rng stream. Two extremophile parents breed a true extremophile
+     (pool-safe: the child keeps reading the EX pools). A mixed pair
+     breeds back into the standard pools — the hardy line dilutes. */
+  if(a.x && b.x) g.x=1;
+  if(a.aq && b.aq) g.aq=1;
+  if(a.af && b.af) g.af=1;
   return g;
 }
 return Object.freeze({evolveGenome, crossGenome});
@@ -3438,6 +3471,23 @@ function planetSpecies(P, sys, band, level){
   } else if(level==='microbial'||level==='subsurface'||level==='aerial'){
     many('microbe', 2, 4, pr(0.55));      /* extremophile mats, cloud microbes, vent colonies */
     if(level==='subsurface' && r()<0.4*rich) many('fauna', 1, 2, pr(0.35)); /* blind cave/ocean fauna */
+  } else if(level==='xfauna'){
+    /* against all odds: one or two hardy creatures, and the mats they graze */
+    many('fauna', 1, 1, pr(0.4));
+    many('microbe', 2, 2, pr(0.55));
+    for(const gx of list) if(gx.kingdom==='fauna') gx.x=1;   /* reads the extremophile pools */
+  }
+  /* v1.3.5 — the sea finally grows things (audit: FLORA_FORM had no kelp
+     at all), and aerial-life worlds get their veils. ADDITIVE slots on a
+     separate stream: every species rolled above is byte-identical; the
+     world simply gains its gardens. */
+  if(level==='aquatic'){
+    const r9=mulberry32((P.seed^0xA0F10)>>>0);
+    const n9=1+(r9()<0.5?1:0);
+    for(let i9=0;i9<n9;i9++){ add('flora', 900+i9); list[list.length-1].aq=1; }
+  } else if(level==='aerial'){
+    const r9=mulberry32((P.seed^0xA1F10)>>>0);
+    if(r9()<0.35){ add('flora', 920); list[list.length-1].af=1; }
   }
   /* wild hybrids — on teeming worlds, two resident species have interbred in the wild.
      A naturally-occurring crossbreed you can find and scan, just like Pokémon in tall grass. */
@@ -3464,18 +3514,27 @@ function biosphere(P, sys, band, r){
   else if(P.type==='terran' && band==='hot') level = r()<0.4?'sparse':(r()<0.7?'microbial':'none');
   else if(P.type==='ocean' && band==='temperate') level = r()<0.78?'aquatic':'flora';
   else if(P.type==='ocean' && band==='cold') level = r()<0.55?'aquatic':'subsurface';
-  else if(P.type==='ocean' && band==='hot') level = r()<0.35?'microbial':'none';
-  else if(P.type==='desert' && band==='temperate') level = r()<0.6?'sparse':'microbial';
-  else if(P.type==='desert') level = r()<0.3?'sparse':'microbial';
-  else if(P.type==='ice') level = r()<0.5?'subsurface':(r()<0.7?'microbial':'none');
-  else if(P.type==='rocky') level = r()<0.18?'microbial':'none';
-  else if(P.type==='venus') level = r()<0.12?'aerial':'none';      /* acid-cloud microbes */
-  else if(P.type==='lava') level = r()<0.1?'microbial':'none';     /* extremophile vent mats */
-  else if(P.type==='gas') level = r()<0.14?'aerial':'none';        /* cloud-layer floaters */
+  /* EXTREMOPHILE FAUNA (v1.3.5, Nick's authorized domain change,
+     2026-07-18): a thin slice INSIDE each hostile type's existing draw
+     upgrades microbes to actual creatures — sulfur-magma beasts,
+     under-ice vent fauna, acid-cloud drifters, deep-vent grazers.
+     Same r() consumption as before (nested thresholds on one value),
+     so every world OUTSIDE a slice is byte-identical. Chances follow
+     real astrobiology: proven-extreme niches ~1-1.5%, speculative
+     ~0.1-0.25%, near-impossible 0.04% (a magma-sea beast is a legend). */
+  else if(P.type==='ocean' && band==='hot'){ const v=r(); level = v<0.01?'xfauna':(v<0.35?'microbial':'none'); }
+  else if(P.type==='desert' && band==='temperate'){ const v=r(); level = v<0.6?'sparse':(v<0.615?'xfauna':'microbial'); }
+  else if(P.type==='desert'){ const v=r(); level = v<0.3?'sparse':(v<0.315?'xfauna':'microbial'); }
+  else if(P.type==='ice'){ const v=r(); level = v<0.012?'xfauna':(v<0.5?'subsurface':(r()<0.7?'microbial':'none')); }
+  else if(P.type==='rocky'){ const v=r(); level = v<0.003?'xfauna':(v<0.18?'microbial':'none'); }
+  else if(P.type==='venus'){ const v=r(); level = v<0.001?'xfauna':(v<0.12?'aerial':'none'); }
+  else if(P.type==='lava'){ const v=r(); level = v<0.0004?'xfauna':(v<0.1?'microbial':'none'); }
+  else if(P.type==='gas'){ const v=r(); level = v<0.0025?'xfauna':(v<0.14?'aerial':'none'); }
   else level='none';
   const LBL={complex:'Abundant — flora and fauna', flora:'Plant-like flora only',
     aquatic:'Aquatic ecosystems', sparse:'Sparse, hardy vegetation', microbial:'Microbial life only',
     subsurface:'Subsurface microbial life (in hidden seas)', aerial:'Airborne microbial life in the cloud layers',
+    xfauna:'Extremophile fauna — life that should not be possible here',
     none:'No known life'};
   return {level:LBL[level]||'No known life', key:level};
 }
@@ -5575,7 +5634,7 @@ function drawSurface(time){
          swimmers break the water, fliers ride the sky */
       const roster=(_lastDesc.species||[]).filter(gg=>gg.kingdom==='fauna');
       const clsOf=gg=>{
-        const lc=FA_LOCO[(gg.loco||0)%FA_LOCO.length]||'', hb=FA_HABITAT[(gg.habitat||0)%FA_HABITAT.length]||'';
+        const lc=locoOf(gg), hb=habOf(gg);
         if(/swim|filter|current/.test(lc)||/open ocean|sea shallows|vent fields/.test(hb)) return 'aqua';   /* current-drifters swim, not fly */
         if(/glider|floater|drift/.test(lc)||/cloud decks/.test(hb)) return 'air';
         return 'land';
@@ -5587,7 +5646,7 @@ function drawSurface(time){
       /* the Life row decides whether the vista grows anything at all;
          the Water row decides the river */
       const lifeRow=_lastDesc.rows&&_lastDesc.rows.find(rr=>rr[0]==='Life');
-      const floraOk=!lifeRow||!/^(No known life|Microbial|Subsurface|Airborne)/.test(lifeRow[1]);
+      const floraOk=!lifeRow||!/^(No known life|Microbial|Subsurface|Airborne|Extremophile)/.test(lifeRow[1]);
       const waterRow=_lastDesc.rows&&_lastDesc.rows.find(rr=>rr[0]==='Water');
       const waterTxt=waterRow?String(waterRow[1]):'';
       const waterV=/Liquid|rivers|ocean/i.test(waterTxt)?'liquid':(/Frozen/i.test(waterTxt)?'frozen':(waterRow?'none':'liquid'));
@@ -7223,6 +7282,95 @@ function noteLanding(seed){
   queueSave();
 }
 /* ----------------------------------------------------------------
+   @section biomes [app] — every world wears a biome (v1.3.5 Batch 5a)
+   Owns: BIOME_SETS, biomeFor, descentTierFromPct
+   ----------------------------------------------------------------
+   A pure, deterministic layer INSIDE each of the 8 frozen types —
+   seeded from its own hash stream (hashInt ^0xB10E), so no existing
+   world changes type and the fingerprint stays untouched. Candidates
+   are CONDITIONED on the climate band, so a biome can never contradict
+   the card ("Mostly evaporated" hot terrans roll Salt Flats, never
+   Marsh). Common biomes are common; the alien ones are wonder-class
+   rare. Each carries its landing rung (Nick's ladder) and the flavor
+   line the card's Biome row speaks. Deferred with a note: the Eyeball
+   World (tidally-locked red-dwarf terran) — honest tidal lock needs a
+   Seasons-row domain change, a Nick decision. */
+const BIOME_SETS={
+ terran:[
+  {k:'temperate',n:'Temperate world', w:24, land:100, bands:['temperate'], f:'meadows, forests and slow rivers under a kind sun'},
+  {k:'savanna',  n:'Savanna world',   w:12, land:100, bands:['temperate','hot'], f:'gold grass to the horizon, herds moving like weather'},
+  {k:'jungle',   n:'Jungle world',    w:10, land:85,  bands:['temperate'], f:'canopy over canopy — the ground is a rumor'},
+  {k:'marsh',    n:'Marsh world',     w:8,  land:90,  bands:['temperate'], f:'reed flats and braided channels, loud with small lives'},
+  {k:'swamp',    n:'Swamp world',     w:7,  land:80,  bands:['temperate'], f:'blackwater fens under hanging moss'},
+  {k:'mangrove', n:'Mangrove world',  w:5,  land:90,  bands:['temperate'], f:'tangled roots walking out into a warm sea'},
+  {k:'tundra',   n:'Tundra world',    w:12, land:90,  bands:['cold'], f:'permafrost moss and a low, reluctant sun'},
+  {k:'karst',    n:'Karst world',     w:5,  land:80,  bands:['temperate','cold','hot'], f:'sinkholes and cave mouths — the ground is hollow'},
+  {k:'saltflat', n:'Salt-Flat world', w:8,  land:85,  bands:['hot'], f:'blinding white pans where the water used to be'},
+  {k:'fungal',   n:'Fungal world',    w:1.6,land:85,  bands:['temperate','cold'], rare:1, f:'spore towers and gill canopies — a forest with no trees'},
+  {k:'crystalsteppe',n:'Crystal Steppe world',w:1.4,land:85, bands:['temperate','cold','hot'], rare:1, f:'mineral spires standing in the grass like a frozen chord'},
+ ],
+ ocean:[
+  {k:'opensea',  n:'Open-Sea world',  w:20, land:90, f:'water to every horizon, weather its only geography'},
+  {k:'archipelago',n:'Archipelago world',w:14, land:95, f:'island chains scattered like a flung handful of green'},
+  {k:'coral',    n:'Coral-Shallows world',w:10, land:100, bands:['temperate'], f:'turquoise reef flats you can read from orbit'},
+  {k:'stormsea', n:'Storm-Sea world', w:8,  land:60, f:'squall lines stacked to the edge of sight'},
+  {k:'volcisle', n:'Volcanic-Archipelago world', w:5, land:70, f:'young fire building new land out of the sea'},
+  {k:'abyssal',  n:'Abyssal world',   w:7,  land:75, f:'no islands, no shallows — a lightless deep that goes down and down'},
+  {k:'milksea',  n:'Milk-Sea world',  w:1.4,land:90, rare:1, f:'bioluminescent blooms wide enough to glow at the horizon'},
+ ],
+ ice:[
+  {k:'glacier',  n:'Glacier world',   w:18, land:90, f:'rivers of old ice grinding to a frozen sea'},
+  {k:'packice',  n:'Pack-Ice world',  w:12, land:85, f:'a frozen ocean ridged where the floes shoulder each other'},
+  {k:'cryogeyser',n:'Cryogeyser world',w:8, land:70, f:'plumes of buried sea breaking through the crust'},
+  {k:'blueice',  n:'Blue-Ice world',  w:2,  land:55, rare:1, f:'canyons of old blue ice, lit from within'},
+ ],
+ desert:[
+  {k:'dunesea',  n:'Dune-Sea world',  w:18, land:90, f:'sand in slow waves the size of hills'},
+  {k:'canyon',   n:'Canyon world',    w:10, land:85, f:'slot canyons and strata — a history book split open'},
+  {k:'saltpan',  n:'Salt-Pan world',  w:8,  land:85, bands:['hot'], f:'mirage shimmer over crusted brine pans'},
+  {k:'oxide',    n:'Oxide-Waste world',w:10,land:75, f:'rust plains walked by dust devils'},
+  {k:'glass',    n:'Glass-Desert world',w:1.6,land:50, rare:1, f:'sand fused to glass by old lightning, sharp as a warning'},
+ ],
+ rocky:[
+  {k:'cratered', n:'Cratered world',  w:18, land:95, f:'a face that remembers every impact'},
+  {k:'boulder',  n:'Boulder-Field world',w:10,land:90, f:'regolith plains strewn with stones the size of houses'},
+  {k:'graben',   n:'Graben-Canyon world',w:8,land:85, f:'the crust pulled apart into long shadowed trenches'},
+  {k:'geode',    n:'Geode world',     w:2.4,land:80, rare:1, f:'gashes of amethyst where the ground split and grew jewels'},
+  {k:'carbon',   n:'Carbon world',    w:1.6,land:60, rare:1, f:'graphite-black plains that glint, here and there, like diamond'},
+ ],
+ venus:[
+  {k:'sulfurdeck',n:'Sulfur-Storm world',w:10,land:30, f:'storm decks of sulfur, gold-green and furious'},
+  {k:'acidhaze', n:'Acid-Haze world', w:12, land:25, f:'a crushing haze that eats light and metal alike'},
+  {k:'abyssgreen',n:'Greenhouse-Abyss world',w:4,land:10, f:'the bottom of an atmosphere like an ocean — gloom, heat, and lightning'},
+ ],
+ lava:[
+  {k:'ashwaste', n:'Ash-Waste world', w:10, land:35, f:'cooling fields under a slow gray snowfall of ash'},
+  {k:'emberfield',n:'Ember-Field world',w:10,land:25, f:'ground that glows through its own cracks'},
+  {k:'obsidian', n:'Obsidian world',  w:7,  land:20, f:'black glass plains veined with fire'},
+  {k:'magmasea', n:'Magma-Sea world', w:4,  land:10, f:'a shoreline where the ocean is molten rock'},
+ ],
+ gas:[
+  {k:'banded',   n:'Banded giant',    w:16, land:65, f:'storm bands running unbroken around the world'},
+  {k:'ammonia',  n:'Pastel-Ammonia giant',w:8,land:75, f:'soft pale decks, deceptively calm'},
+  {k:'stormeye', n:'Storm-Eye giant', w:4,  land:30, f:'one storm older than nations, wider than worlds'},
+  {k:'hotglow',  n:'Ember giant',     w:3,  land:15, rare:1, f:'a giant that glows its own sullen red — the night side is a furnace'},
+ ],
+};
+function biomeFor(P, band){
+  const set=BIOME_SETS[P.type]; if(!set) return null;
+  const bd=band==='frozen'?'cold':band;   /* remnant-orbit worlds read as cold country */
+  const cands=set.filter(b=>!b.bands || b.bands.includes(bd));
+  const pool=cands.length?cands:set;
+  const r=mulberry32(hashInt(P.seed, 0xB10E, 7)>>>0);
+  let total=0; for(const b of pool) total+=b.w;
+  let v=r()*total;
+  for(const b of pool){ v-=b.w; if(v<=0) return b; }
+  return pool[pool.length-1];
+}
+function descentTierFromPct(p){
+  return p>=90?{lo:2,hi:2}:p>=75?{lo:3,hi:4}:p>=55?{lo:4,hi:6}:p>=30?{lo:5,hi:7}:{lo:6,hi:8};
+}
+/* ----------------------------------------------------------------
    @section descent [app] — the landing ladder (v1.3.5 Batch 4)
    Owns: DESCENT_TIERS, _waveOffs, descentFor, descentSafe, _descWx,
          descentBonus, _descRoll, openDescentBox, _descStay
@@ -7269,12 +7417,17 @@ function _descWx(pl){
   return now?wx:null;
 }
 function descentFor(pl){
-  const P=pl.P, t=DESCENT_TIERS[P.type]||DESCENT_TIERS.terran;
+  /* the BIOME sets the rung (Batch 5a); the type table is the fallback */
+  const P=pl.P;
+  const band=climateBand(P, st.sys, pl.orb||100);
+  const bio=biomeFor(P, band);
+  const base=bio?bio.land:(DESCENT_TIERS[P.type]||DESCENT_TIERS.terran).p;
+  const t=descentTierFromPct(base);
   const wx=_descWx(pl);
-  let p=t.p;
+  let p=base;
   if(wx) p = p>=90 ? Math.max(90, p-5) : Math.max(5, p-5);
   p=Math.min(100, p + 20*(_waveOffs.get(P.seed)||0) + descentBonus());
-  return {pct:p, lo:t.lo, hi:t.hi, wx:wx};
+  return {pct:p, lo:t.lo, hi:t.hi, wx:wx, biome:bio};
 }
 function descentSafe(seed){
   return !tutDone || seed===133 || landed.has(seed) || _descCleared===seed;
@@ -7307,7 +7460,7 @@ function openDescentBox(pl){
   const d=descentFor(pl);
   document.getElementById('desc-title').textContent='Begin descent — '+(pl.name||'this world')+'?';
   document.getElementById('desc-risk').innerHTML=
-    '<span class="dtier">'+descentTierLabel(d.pct)+'</span> · '+d.pct+'% success'+
+    (d.biome?d.biome.n+' — ':'')+'<span class="dtier">'+descentTierLabel(d.pct)+'</span> · '+d.pct+'% success'+
     (d.wx?'<br><span class="dwx">storm in progress −5</span>':'')+
     (d.pct<100?'<br><span class="dhp">a wave-off costs '+d.lo+'–'+d.hi+' HP — and teaches the approach (+20% next try)</span>':'');
   b.style.display='flex';
@@ -7450,6 +7603,15 @@ function renderPanel(p, isLocked){
          grandfather rule; review catch) */
       grounded = d.planetSeed===133 || landed.has(d.planetSeed) || conquered.has(d.planetSeed) ||
         (st.mode==='surface' && st.planet && st.planet.P && st.planet.P.seed===d.planetSeed);
+      /* the world's BIOME (v1.3.5) — the sub-label wears it, a row speaks
+         it. Only where the true climate band is knowable (in-system);
+         pure per seed, so every explorer reads the same biome. */
+      var biome5=null;
+      try{
+        const _pl5=st.sys&&st.sys.planets?st.sys.planets.find(x=>x.P&&x.P.seed===d.planetSeed):null;
+        const _P5=_pl5?_pl5.P:(st.mode==='surface'&&st.planet&&st.planet.P.seed===d.planetSeed?st.planet.P:null);
+        if(_P5) biome5=biomeFor(_P5, climateBand(_P5, st.sys, (_pl5&&_pl5.orb)||(st.planet&&st.planet.orb)||100));
+      }catch(_){ biome5=null; }
       /* the census needs more than boots — it needs a SUCCESSFUL first
          contact (or a flag planted, or home) */
       var known = d.planetSeed===133 || conquered.has(d.planetSeed) || contacted.has(d.planetSeed);
@@ -7463,8 +7625,18 @@ function renderPanel(p, isLocked){
         else if(CIV_K[row[0]]) civDet.push(row);
         else if(row[0]==='Civilization') civHead=row;
         else if(row[0]==='⟁ Signal') sigRow=row;
-        else if(!glance) rows+=rowHtml(row);             /* Spectral class, Life, Earth's Flora/Fauna */
-        else if(row[2]==='grade') rows+=rowHtml(row);    /* the glance still shows the color language */
+        else if(!glance){
+          rows+=rowHtml(row);                            /* Spectral class, Life, Earth's Flora/Fauna */
+          if(row[2]==='grade' && biome5)
+            rows+='<div class="row"><span class="k">Biome</span><span class="v"'+
+              (biome5.rare?' style="color:#d6a0ff"':'')+'>'+biome5.f+(biome5.rare?' — a rare kind of world':'')+'</span></div>';
+        }
+        else if(row[2]==='grade'){
+          rows+=rowHtml(row);                            /* the glance still shows the color language */
+          if(biome5)
+            rows+='<div class="row"><span class="k">Biome</span><span class="v"'+
+              (biome5.rare?' style="color:#d6a0ff"':'')+'>'+biome5.n+'</span></div>';
+        }
       }
       if(glance){
         /* tier 0: what a telescope sees — coarse reads, no census, no roster */
@@ -7477,7 +7649,8 @@ function renderPanel(p, isLocked){
            signals violet — matching the card's own row language */
         if(_val('Atmosphere') && !/^None/i.test(_val('Atmosphere'))) reads.push('<span style="color:#9fdfe8">atmosphere</span>');
         if(/liquid|ocean|river/i.test(_val('Water'))) reads.push('<span style="color:#6fd3ff">liquid-water signature</span>');
-        if(_val('Life') && !/^No known life/i.test(_val('Life'))) reads.push('<span style="color:#7fe6a0">biosignatures</span>');
+        if(/^Extremophile/i.test(_val('Life'))) reads.push('<span style="color:#d6a0ff">impossible biosignatures</span>');
+        else if(_val('Life') && !/^No known life/i.test(_val('Life'))) reads.push('<span style="color:#7fe6a0">biosignatures</span>');
         if((civHead && !/^None/.test(civHead[1])) || sigRow) reads.push('<span style="color:#cdbcff">⟁ structured signals</span>');
         rows+='<div class="row"><span class="k">Long-range</span><span class="v">'+
           (reads.length?reads.join(' · '):'a quiet, dark world')+'</span></div>';
@@ -7618,7 +7791,8 @@ function renderPanel(p, isLocked){
     const closeX=(isLocked && st.mode!=='surface' && tutDone)
       ? '<button class="pxc" data-act="close" data-tip="Close this card — tapping empty space works too">✕</button>' : '';
     panelEl.innerHTML =
-      '<div class="head">'+thumb+'<div class="htxt"><h3>'+d.title+'</h3><div class="sub">'+d.sub+'</div></div>'+closeX+'</div>'+
+      '<div class="head">'+thumb+'<div class="htxt"><h3>'+d.title+'</h3><div class="sub">'+
+      ((typeof biome5!=='undefined'&&biome5)?biome5.n:d.sub)+'</div></div>'+closeX+'</div>'+
       '<div class="body">'+(btn?btn+'<div class="bdiv"></div>':'')+rows+
       '<span class="tag">'+(st.mode==='surface'?'You are here':(glance?'Long-range glance':(d.planetSeed!=null&&landed.has(d.planetSeed)?'Ground-surveyed':'Procedural survey')))+'</span></div>';
     /* the rarity color language: tint the whole card border by spectral designation */
@@ -12114,6 +12288,10 @@ const CHARTER_POOL=[
  {id:'wk-conq',  ev:'conquest', n:1, t:'Raise a flag',          d:'Conquer a world.', sd:30},
  {id:'wk-feed',  ev:'fed',  filt:x=>x&&x.ok, n:3, t:'Keeper of beasts', d:'Feed your fauna 3 welcome meals.', sd:20},
  {id:'wk-breed', ev:'bred', filt:x=>x&&x.ok, n:1, t:'A new bloodline',  d:'Breed any pair into a hybrid.', sd:30},
+ /* v1.3.5: the descent ladder gets its hunt. Pool growth rolls the weekly
+    board once at the next rollover (selection indexes the pool) — noted
+    in the release bullets. */
+ {id:'wk-hostile', ev:'landfall', filt:x=>{ try{ const t=planetParams(x.planetSeed).type; return t==='venus'||t==='lava'||t==='gas'; }catch(_){ return false; } }, n:1, t:'Down the hard way', d:'Land on a gas giant, a hothouse or a molten world — the descent will fight you.', sd:35},
 ];
 const chDone=new Set();        /* completed starter ids — permanent (save chs) */
 let chWeek=-1;                 /* rotation week (save chw) */

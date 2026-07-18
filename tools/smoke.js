@@ -555,7 +555,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       const hpNum = () => parseInt(sk.doc.getElementById('hptext').textContent, 10);
       const fakePl = { P: { seed: 555001, type: 'lava', sizeMul: 1 }, orb: 140, name: 'Cinder' };
       const d0 = skH.descentFor(fakePl);
-      check('descent: a lava world sits at the Hostile rung (15-20%)', d0.pct >= 15 && d0.pct <= 20, 'pct=' + d0.pct);
+      check('descent: a lava world sits low on the ladder (5-35%, by biome)', d0.pct >= 5 && d0.pct <= 35,
+        'pct=' + d0.pct + ' biome=' + (d0.biome && d0.biome.k));
       check('descent: grounded worlds are forever safe', skH.descentSafe(dp.data.P.seed) === true);
       // wave-off: force the dice cold
       sk.w.Math.random = () => 0.999;
@@ -577,6 +578,46 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       check('descent: success clears the ramp', !skH._waveOffs.get(555001));
       check('descent: a cleared world reads safe (the dive is spent on landing)', skH.descentSafe(555001) === true);
       sk.w.Math.random = () => 0;   // back to warm dice for the flows below
+    }
+    // ============ v1.3.5 Batch 5a: BIOMES + EXTREMOPHILES ============
+    {
+      // deterministic: the same seed always wears the same biome
+      const P1 = { type: 'terran', seed: 424001 };
+      const b1 = skH.biomeFor(P1, 'temperate'), b2 = skH.biomeFor(P1, 'temperate');
+      check('biomes: deterministic per seed', b1 && b2 && b1.k === b2.k, b1 && b1.k);
+      // card-conditioned: a hot terran can never roll a wet biome
+      let wetOnHot = 0;
+      for (let s = 1; s < 400; s++) {
+        const b = skH.biomeFor({ type: 'terran', seed: s * 7919 }, 'hot');
+        if (b && (b.k === 'marsh' || b.k === 'swamp' || b.k === 'mangrove' || b.k === 'jungle' || b.k === 'temperate')) wetOnHot++;
+      }
+      check('biomes: "mostly evaporated" terrans never roll wet biomes', wetOnHot === 0, String(wetOnHot));
+      // every type resolves to a biome for every band
+      let holes = 0;
+      for (const ty of ['terran', 'ocean', 'ice', 'desert', 'rocky', 'venus', 'lava', 'gas'])
+        for (const bd of ['temperate', 'cold', 'hot', 'frozen'])
+          for (let s = 1; s <= 40; s++) if (!skH.biomeFor({ type: ty, seed: s * 104729 }, bd)) holes++;
+      check('biomes: 8 types × every band × 40 seeds — no holes', holes === 0, String(holes));
+      // the extremophile slice: injected dice prove each hostile type can carry fauna
+      const lvl = (ty, v, band2) => skH.biosphere({ type: ty, seed: 999999 }, null, band2 || 'hot', () => v).level;
+      check('extremophiles: a magma world can carry fauna (1-in-10,000 slice)',
+        /^Extremophile/.test(lvl('lava', 0.0003)));
+      check('extremophiles: the slice is thin — 0.001 rolls plain microbes on lava',
+        /^Microbial/.test(lvl('lava', 0.001)));
+      check('extremophiles: ice, venus, gas, rocky, desert + hot oceans all have a slice',
+        /^Extremophile/.test(lvl('ice', 0.005)) && /^Extremophile/.test(lvl('venus', 0.0005))
+        && /^Extremophile/.test(lvl('gas', 0.002)) && /^Extremophile/.test(lvl('rocky', 0.002))
+        && /^Extremophile/.test(lvl('desert', 0.61, 'temperate')) && /^Extremophile/.test(lvl('ocean', 0.005)));
+      check('extremophiles: outside the slices nothing moved (lava 0.05 = microbial, ice 0.6+0.8 = none)',
+        /^Microbial/.test(lvl('lava', 0.05)) && /^Airborne/.test(lvl('venus', 0.05)));
+      // an xfauna world generates a real roster with at least one creature
+      const roster = skH.planetSpecies({ type: 'lava', seed: 424242 }, null, 'hot', 'xfauna');
+      check('extremophiles: an xfauna world raises at least one creature + its mats',
+        roster.length >= 2 && roster.some((g) => g.kingdom === 'fauna'), 'roster=' + roster.length);
+      // the card wears the biome: the grounded world's sub-label + Biome row
+      check('biomes: the survey card sub-label wears the biome', /world|giant/i.test(
+        (pan3.querySelector('.sub') || {}).textContent || ''), (pan3.querySelector('.sub') || {}).textContent);
+      check('biomes: the card speaks a Biome row', pan3.textContent.includes('Biome'));
     }
     check('discovery: standing on it, mining is open on the spot', await until(() =>
       !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('You are here'), 4000, 'surface mine'));
