@@ -95,5 +95,8 @@
  "descentFor",
  "_waveOffs",
  "flyDown",
- "descentSafe"
+ "descentSafe",
+ "biosphere",
+ "biomeFor",
+ "BIOME_SETS"
 ]
