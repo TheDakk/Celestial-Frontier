@@ -4410,6 +4410,7 @@ function checkTransitions(){
       const apparent=pr*c.z;
       const d=Math.hypot(px-c.x, py-c.y)*c.z;
       if(pl.P.seed===_descDeclined && apparent<0.36*minWH) _descDeclined=null;
+      if(pl.P.seed===_apprLatch && apparent<0.36*minWH) _apprLatch=null;
       if(apparent>0.40*minWH){
         if(d<0.5*minWH){
           /* THE DESCENT (v1.3.5): a manual dive on an unlanded world stops
@@ -4423,15 +4424,17 @@ function checkTransitions(){
             if(_descDeclined!==pl.P.seed && _descOpenFor!==pl.P.seed) openDescentBox(pl);
             return;
           }
-          st.planet=pl;
-          st.pfbm=makeNoise(pl.P.seed);
-          st.pcam={x:0,y:0,z:1};
-          st.mode='surface'; st.fade=1;
-          _descCleared=null;               /* the clearance is spent on this landing */
-          noteLanding(pl.P.seed);          /* planetfall = ground survey (v1.2) */
-          _pendingContact=pl.P.seed;       /* inhabited worlds: first contact rides the card render */
-          _vistaPend=true;                 /* HD landing vista (v1.3, hd flag) */
-          playWhoosh();                    /* planetfall */
+          /* v1.3.8 THE VIEW HOLDS (Nick): landing never leaves space.
+             The camera stays at approach framing — the planet from
+             orbit — and the vista tells the ground's story. The old
+             tile close-up is gone from the game's reachable states. */
+          c.z=Math.min(c.z, (0.38*minWH)/pr);
+          if(!tutDone) return;             /* training zooms; it never lands */
+          if(_apprLatch!==pl.P.seed){
+            _apprLatch=pl.P.seed;
+            _descCleared=null;             /* the clearance is spent on this landing */
+            _performLanding(pl);
+          }
           return;
         }
         /* landing assist: the planet is past landing size but sits off-center
@@ -7425,7 +7428,7 @@ function _vistaExtras(){
   /* the corner ✕ — same language as every card and panel (v1.3.5).
      No handler of its own: the tap bubbles to the vistabox dismiss.
      Hidden during training, where the view is the lesson. */
-  if(tutDone){
+  {
     const x=document.createElement('button');
     x.className='vxc'; x.type='button'; x.textContent='✕';
     x.setAttribute('data-tip','Close this view — tapping anywhere works too');
@@ -7917,7 +7920,7 @@ const DESCENT_TIERS={
   ice:{p:85,lo:3,hi:4}, desert:{p:85,lo:3,hi:4}, gas:{p:65,lo:4,hi:6},
   venus:{p:25,lo:5,hi:7}, lava:{p:20,lo:6,hi:8}};
 const _waveOffs=new Map();          /* planetSeed → consecutive wave-offs (save field wvo) */
-let _descCleared=null, _descDeclined=null, _descOpenFor=null;
+let _descCleared=null, _descDeclined=null, _descOpenFor=null, _apprLatch=null;
 function descentBonus(){ return 0; }   /* v1.4: crafted landing gear raises this */
 function descentTierLabel(p){
   return p>=100?'Calm approach':p>=90?'Steady approach':p>=75?'Rough descent'
@@ -7982,6 +7985,76 @@ function _descRoll(pl){
   queueSave();
   return false;
 }
+/* the landing rites, spaceside (v1.3.8): ground survey, first contact,
+   samples and the vista - all without ever leaving the system view */
+function _performLanding(pl){
+  noteLanding(pl.P.seed);
+  _pendingContact=pl.P.seed;         /* inhabited worlds: contact rides the card render */
+  if(hdOn){ try{ openLandingVista(pl); }catch(_){ } }
+  playWhoosh();
+}
+/* the vista, computed from orbit - the same clock, weather spell and
+   card facts the surface view used to derive, now standalone */
+function openLandingVista(pl){
+  const P=pl.P, time=perfTime();
+  if(!pl._env){
+    const er=mulberry32((P.seed^0xE57)>>>0);
+    const tilt=er()<0.8;
+    const band=climateBand(P, st.sys, pl.orb||100);
+    const hasAtmo = P.type!=='rocky';
+    const hasField = P.seed===133 || P.type==='gas' ||
+      ((P.type==='terran'||P.type==='ocean') && mulberry32((P.seed^0xBEEF)>>>0)()<0.8);
+    let wx=null;
+    if(P.type==='terran') wx = band==='temperate' ? 'rain' : (band==='hot' ? 'haze' : 'snow');
+    else if(P.type==='ocean') wx='rain';
+    else if(P.type==='ice') wx='snow';
+    else if(P.type==='desert') wx='dust';
+    else if(P.type==='lava') wx='ash';
+    else if(P.type==='venus') wx='haze';
+    pl._env={tilt, band, hasAtmo, hasField, wx, ph:er()*TAU, dayLen:70+er()*50, yearLen:320+er()*260};
+  }
+  const env=pl._env;
+  const m0=(v,n2)=>((v%n2)+n2)%n2;
+  let seasonT=0;
+  if(env.tilt && env.hasAtmo && P.type!=='gas' && P.type!=='venus'){
+    const yp=m0(time/env.yearLen + env.ph/TAU, 1); seasonT=Math.sin(yp*TAU);
+  }
+  const effWx=(env.wx==='rain' && seasonT<-0.45)?'snow':env.wx;
+  const WX_ODDS={rain:0.42,snow:0.58,dust:0.48,ash:0.68,haze:0.88};
+  const wxNow=!!effWx && mulberry32((P.seed^0x77EA^Math.floor(time/90))>>>0)() < (WX_ODDS[effWx]||1);
+  const dph=m0(time/env.dayLen + env.ph/TAU, 1);
+  const Bc=0.5+0.5*Math.cos((dph-0.5)*TAU);
+  const tod=Bc>0.72?'day':(Bc>0.42?'twilight':'night');
+  const d=(_lastDesc && _lastDesc.planetSeed===P.seed) ? _lastDesc : planetDescriptor(P, st.sys, pl);
+  let era='none';
+  const cvRow=d.rows&&d.rows.find(rr=>rr[0]==='Civilization');
+  if(cvRow && !/^None/.test(cvRow[1])){
+    const teRow=d.rows.find(rr=>rr[0]==='Tech era');
+    era=(teRow && /spacefar|interstellar|post/i.test(teRow[1]))?'space'
+      :((teRow && /industrial|modern/i.test(teRow[1]))?'town':'iron');
+  }
+  const roster=(d.species||[]).filter(gg=>gg.kingdom==='fauna');
+  const clsOf=gg=>{
+    const lc=locoOf(gg), hb=habOf(gg);
+    if(/swim|filter|current/.test(lc)||/open ocean|sea shallows|vent fields/.test(hb)) return 'aqua';
+    if(/glider|floater|drift/.test(lc)||/cloud decks/.test(hb)) return 'air';
+    return 'land';
+  };
+  const standable=roster.filter(gg=>clsOf(gg)==='land');
+  const genes=standable.slice(0,3).map(hdGenesFor);
+  const lifeRow=d.rows&&d.rows.find(rr=>rr[0]==='Life');
+  const floraOk=!lifeRow||!/^(No known life|Microbial|Subsurface|Airborne|Extremophile)/.test(lifeRow[1]);
+  const waterRow=d.rows&&d.rows.find(rr=>rr[0]==='Water');
+  const waterTxt=waterRow?String(waterRow[1]):'';
+  const waterV=/Liquid|rivers|ocean/i.test(waterTxt)?'liquid':(/Frozen/i.test(waterTxt)?'frozen':(waterRow?'none':'liquid'));
+  const _tit=roster.some(gg=>(gg.size||0)>=5) && (mulberry32((P.seed^0x717B)>>>0)()<0.30);
+  showVistaBox(P, tod, (env.wx&&wxNow)?effWx:null, era, genes, env.hasField,
+    floraOk, env.wx&&effWx==='snow', waterV,
+    {ring:P.ring, stc:(st.star&&st.star.c)||null, herd:standable.length,
+     aqua:roster.filter(gg=>clsOf(gg)==='aqua').length,
+     air:roster.filter(gg=>clsOf(gg)==='air').length,
+     titan:_tit, title:d.title||null, where:d.where||null});
+}
 const _descBoxEl=()=>document.getElementById('descbox');
 function openDescentBox(pl){
   const b=_descBoxEl(); if(!b) return;
@@ -8019,7 +8092,10 @@ function _descAbort(){
       const tNow=perfTime();
       const ang=pl.orb*0.13 + tNow*0.05/(pl.orb*0.012);
       st.scam.x=Math.cos(ang)*pl.orb; st.scam.y=Math.sin(ang)*pl.orb;
-      st.scam.z=(0.41*minWH)/(6*(pl.P.sizeMul||1));
+      st.scam.z=(0.375*minWH)/(6*(pl.P.sizeMul||1));
+      _apprLatch=pl.P.seed;
+      _descCleared=null;
+      _performLanding(pl);
     } else {
       st.scam.z*=0.55;                            /* bounced back to orbit */
     }
@@ -8041,7 +8117,10 @@ function flyDown(pseed){
   const ang = pl.orb*0.13 + tNow*0.05/(pl.orb*0.012);
   st.scam.x=Math.cos(ang)*pl.orb;
   st.scam.y=Math.sin(ang)*pl.orb;
-  st.scam.z=(0.41*minWH)/(6*(pl.P.sizeMul||1));
+  st.scam.z=(0.375*minWH)/(6*(pl.P.sizeMul||1));   /* approach framing - the view holds in space (v1.3.8) */
+  _apprLatch=pseed;
+  _descCleared=null;
+  _performLanding(pl);
   return true;
 }
 function grantFieldSamples(d){
@@ -8314,7 +8393,7 @@ function renderPanel(p, isLocked){
     /* the landing panorama is re-viewable from the surface card — the
        art is no longer see-once (graphics overhaul B1) */
     let vistaBtn='';
-    if(!glance && st.mode==='surface' && hdOn && _lastVista && _lastVista.P && _lastVista.P.seed===d.planetSeed){
+    if(!glance && hdOn && d.planetSeed!=null && landed.has(d.planetSeed) && st.mode==='system'){
       vistaBtn='<button class="act" data-act="vista" data-tip="Look out over your landing site again">Landing vista</button>';
     }
     const btn = glance ? '' : atlasRow + conqBtn + landBtn + mineBtn + vistaBtn +
@@ -8427,7 +8506,14 @@ panelEl.addEventListener('click', e=>{
   const xc=e.target.closest('[data-act="close"]');
   if(xc){ locked=null; stickyPick=null; return; }
   const vb=e.target.closest('[data-act="vista"]');
-  if(vb){ reshowVista(); return; }
+  if(vb){
+    if(_lastVista && _lastDesc && _lastVista.P && _lastVista.P.seed===_lastDesc.planetSeed) reshowVista();
+    else if(_lastDesc && st.sys){   /* fresh session: rebuild the view from the card (v1.3.8) */
+      const plV=st.sys.planets.find(x=>x.P&&x.P.seed===_lastDesc.planetSeed);
+      if(plV){ try{ openLandingVista(plV); }catch(_){ } }
+    }
+    return;
+  }
   const gt=e.target.closest('[data-gtoggle]');
   if(gt){
     /* fold/unfold in place — no rebuild, so keyboard focus stays on the
@@ -10041,7 +10127,7 @@ function resetMemoryState(){
     if(typeof notifications!=='undefined' && notifications.length) notifications.length=0;
     for(const k in primeFill) delete primeFill[k];
     homeId=null; frontierUnlocked=false; frontierEnding=null; seenGuide=false; tutDone=false; _rnSeen=GAME_VERSION;
-    _waveOffs.clear(); _descCleared=null; _descDeclined=null; _descOpenFor=null;
+    _waveOffs.clear(); _descCleared=null; _descDeclined=null; _descOpenFor=null; _apprLatch=null;
     scoutId=null; _pendingSample=null;
     contacted.clear(); _pendingContact=null;
     chDone.clear(); chProg={}; chWeek=-1;
@@ -11777,6 +11863,7 @@ function openGuideTopic(id){
   function toggleHelp(){
     const p=_helpPop();
     if(p.style.display==='block'){ p.style.display='none'; return; }
+    try{ closePanels(); }catch(_){ }   /* one surface at a time - settings under the ? popover was Nick's overlap */
     p.innerHTML='<div class="hpv" role="button" tabindex="0" title="Tap for the full release notes">Celestial Frontier · v'+GAME_VERSION+
       (BUILD_ID!=='dev'?' <span>(build '+BUILD_ID+')</span>':' <span>(dev)</span>')+' <span style="opacity:.6">›</span></div>'+
       '<button id="hp-guide" type="button">🧭 Open the Guide</button>';
@@ -11873,10 +11960,19 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.3.7';
+const GAME_VERSION='1.3.8';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.3.8', title:'The View Holds', date:'July 2026', sections:[
+ ['✨ New Features & Systems', [
+  'Landing never leaves space now. The camera holds at approach framing — the planet hanging in the black — while the landing view tells the ground&#8217;s story. The old flat close-up is gone from the game entirely: mining, the census, samples and first contact all work right from orbit, exactly as before.',
+  'The Landing vista button now works on any world you&#8217;ve stood on, even after a reload — it rebuilds the view fresh if this session hasn&#8217;t seen it yet.'],
+ ],
+ ['🖱 UI Enhancements', [
+  'The landing view&#8217;s ✕ shows everywhere now, training included, and the ? popover follows the one-panel rule — no more settings peeking out from underneath it.'],
+ ],
+]},
 {v:'1.3.7', title:'One Lesson at a Time', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   'Field Training now only answers the lesson. The survey card&#8217;s other buttons — Land included — went quiet during lessons that aren&#8217;t about them, and the specimen card&#8217;s verbs follow the same rule (the feeding lesson can&#8217;t wander into a live breeding roll). Folding rows and closing cards stay free.',
