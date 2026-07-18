@@ -127,5 +127,22 @@
  "essence",
  "stats",
  "ascBlock",
- "ascHint"
+ "ascHint",
+ "_performLanding",
+ "autoScanWorld",
+ "feedPair",
+ "breedPair",
+ "healExplorer",
+ "doHarvest",
+ "travelTo",
+ "dailyWhere",
+ "conquered",
+ "hp",
+ "HP_MAX",
+ "pstats",
+ "tutDone",
+ "describePick",
+ "_canCraft",
+ "biomeVeinFor",
+ "ITEM_BY"
 ]

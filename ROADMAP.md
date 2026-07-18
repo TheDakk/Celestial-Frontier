@@ -698,6 +698,33 @@
 ## Suites after the round: fingerprint 50/50, smoke 252/252, systems
 ## 19/19, balance PASS.
 ##
+## ▶▶ HD COVERAGE PASS + SYNTHETIC PLAYTESTS (2026-07-18, fourth round):
+## THE HD ENGINE LAW is now standing memory (Nick: everything visual uses
+## the painterly engine, forever). Full-code audit (1 agent + proof
+## sheets) found 11 flat holdouts — ALL FIXED: banded per-seed RING
+## sprites w/ Cassini gap (was one stroked arc), typed lit-sphere MOONS
+## (was flat tinted discs), shaded DWARF planets, 'Oumuamua-style
+## INTERSTELLAR VISITOR sliver (was a fillRect), comet COMA, WORMHOLE
+## gravitational-lensing sprite (was stroked ellipses), QUASAR sprite
+## (host+core+jets, view AND thumb), PLANETARY NEBULA joins decoSprite
+## (the last stroked-circle death), rogue-planet rim orb, pulsar beams
+## tapered everywhere, NS thumb glow, BINARY-PAIR star thumbs, per-moon
+## seeded moonThumb craters. Verified-HD coverage map in the audit
+## (tools/sheets/v14space.png is the proof sheet). drawSurface confirmed
+## dead code (purge candidate, unchanged).
+## SYNTHETIC PLAYTESTS (new tools/simrun.js, Report Pack):
+##  · 1,000 fast persona expeditions (miner/sprinter/explorer/rancher/
+##    chaotic; land/mine/craft/equip/scan/feed/breed/heal/harvest/
+##    beacon/jump via probe hook) — ZERO errors, ZERO invariant
+##    violations, ZERO softlocks; 22 deaths all from toxic-meal gambles
+##    (WAD); wave-off floor held (explorers pinned at 1 HP, never
+##    died); Jump Drive reached in p50 181 actions (focused sprinters
+##    ~89-180 ≈ the 30-45min human target); stage 2 needs conquest +
+##    weekly economy (beyond a 3-min session — expected).
+##  · 60 full-UI 18-step training playthroughs w/ seeded random choices
+##    (11 via skip path) — 60/60 complete, zero stalls, zero errors.
+##  · probe-names grew to 146; simreport-fast/ui.json keep full data.
+##
 ## ★★★ v1.4 "THE ASCENT" IS BUILT — AWAITING NICK'S PASS + DEPLOY WORD ★★★
 ## (2026-07-18, second session; commits 0f39b99 + ff0abfe + review batch.
 ## GAME_VERSION bumped to '1.4' [Nick commissioned the 1.4 build this
