@@ -259,6 +259,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     click(doc.getElementById('bell'));
     check('opening tray completes step 14', await until(() => tutAt(15), 3000, 'step15'));
+    // v1.5 (Nick's live pass): the tray opened by the tray lesson must NOT
+    // sit over the search box when the search step begins
+    check('tray closes when the search lesson takes over', !visible(doc.getElementById('tray')));
     type(doc.getElementById('searchin'), 'earth');
     check('searching earth completes step 15', await until(() => tutAt(16), 3000, 'step16'));
     click(doc.getElementById('rank'));
@@ -287,11 +290,18 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.querySelector('#log [data-pnx="log"]'));
     check('panelman: ✕ closes the Atlas', !visible(doc.getElementById('log')));
     click(doc.getElementById('chbtn'));
-    click(doc.getElementById('eventsbtn'));
-    check('panelman: Events closes Charters (a pair that used to stack)',
-      visible(doc.getElementById('events')) && !visible(doc.getElementById('chpanel')));
+    click(doc.getElementById('codexbtn'));
+    check('panelman: Compendium closes Charters (a pair that used to stack)',
+      visible(doc.getElementById('codex')) && !visible(doc.getElementById('chpanel')));
     tapOutside();
-    check('panelman: tapping empty space closes the open panel', !visible(doc.getElementById('events')));
+    check('panelman: tapping empty space closes the open panel', !visible(doc.getElementById('codex')));
+    // v1.5: Cosmic Events + Traveler's Beacon are hidden for rework — the
+    // buttons are display:none and their engines refuse even synthetic taps
+    click(doc.getElementById('eventsbtn'));
+    click(doc.getElementById('dailybtn'));
+    check('dormant systems: events + beacon refuse to open (hidden for rework)',
+      !visible(doc.getElementById('events'))
+      && doc.getElementById('eventsbtn').style.display !== 'block');
     click(doc.getElementById('setbtn'));
     check('panelman: settings panel opens with its ✕', visible(doc.getElementById('setpanel'))
       && !!doc.querySelector('#setpanel [data-pnx="set"]'));

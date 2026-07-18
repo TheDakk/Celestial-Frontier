@@ -262,7 +262,8 @@
   #searchres .none{padding:13px;font-size:11px;color:var(--faint);text-align:center;line-height:1.55}
 
   /* ---- daily anomaly + expedition stats (left rail) ---- */
-  #dailybtn{position:fixed;top:calc(var(--topbar-h,100px) + 8px);left:18px;z-index:8;pointer-events:auto;cursor:pointer;
+  /* v1.5: the Traveler's Beacon is HIDDEN for rework — engine dormant */
+  #dailybtn{display:none !important;position:fixed;top:calc(var(--topbar-h,100px) + 8px);left:18px;z-index:8;pointer-events:auto;cursor:pointer;
     font-family:var(--ui);font-size:11px;letter-spacing:.08em;color:var(--dim);
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:999px;padding:7px 14px;
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:7px;
@@ -422,7 +423,8 @@
   #sharebox .note{font-size:10.5px;color:var(--faint);line-height:1.5;margin:10px 0 0}
 
   /* ---- cosmic events: the universe lives on every timescale ---- */
-  #eventsbtn{position:fixed;top:calc(var(--topbar-h,100px) + 44px);left:18px;z-index:8;pointer-events:auto;cursor:pointer;
+  /* v1.5: Cosmic Events are HIDDEN for rework — engine dormant */
+  #eventsbtn{display:none !important;position:fixed;top:calc(var(--topbar-h,100px) + 44px);left:18px;z-index:8;pointer-events:auto;cursor:pointer;
     font-family:var(--ui);font-size:11px;letter-spacing:.08em;color:var(--dim);
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:999px;padding:7px 14px;
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:7px;
@@ -430,15 +432,18 @@
   #eventsbtn:hover{color:var(--ink);border-color:rgba(255,170,90,0.55)}
   #eventsbtn .dot{width:6px;height:6px;border-radius:50%;background:#ff9a4c;box-shadow:0 0 8px #ff9a4c;animation:evpulse 2.4s infinite}
   @keyframes evpulse{0%,100%{opacity:1}50%{opacity:0.35}}
-  /* ---- expedition charters: the hunt board ---- */
-  #chbtn{position:fixed;top:calc(var(--topbar-h,100px) + 80px);left:18px;z-index:8;pointer-events:auto;cursor:pointer;
-    font-family:var(--ui);font-size:11px;letter-spacing:.08em;color:var(--dim);
-    background:var(--glass);border:1px solid var(--glass-brd);border-radius:999px;padding:7px 14px;
-    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:7px;
-    transition:color .2s,border-color .2s}
-  #chbtn:hover{color:var(--ink);border-color:rgba(255,217,106,0.55)}
+  /* ---- expedition charters: the hunt board ----
+     v1.5 UI SWAP (Nick): charters/the Ascent are the daily driver — they
+     wear the PRIME SLOT (top right, the old Prime Codex position) */
+  #chbtn{position:fixed;top:calc(var(--row1-h,58px) + 10px);right:18px;z-index:9;pointer-events:auto;cursor:pointer;
+    font-family:var(--ui);font-size:11px;font-weight:600;letter-spacing:.06em;color:#ffe1a1;
+    background:linear-gradient(135deg,rgba(60,50,18,0.62),rgba(30,25,12,0.55));
+    border:1px solid rgba(255,217,106,0.35);border-radius:999px;padding:7px 13px;box-shadow:0 0 18px rgba(255,217,106,0.1);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;gap:7px;
+    transition:color .2s,border-color .2s,box-shadow .15s}
+  #chbtn:hover{color:var(--ink);border-color:rgba(255,217,106,0.6);box-shadow:0 0 22px rgba(255,217,106,0.22)}
   #chbtn .dot{width:6px;height:6px;border-radius:50%;background:#ffd96a;box-shadow:0 0 8px #ffd96a;animation:evpulse 2.4s infinite}
-  #chpanel{position:fixed;top:calc(var(--topbar-h,100px) + 116px);left:18px;z-index:12;width:318px;max-height:min(60vh,520px);overflow-y:auto;display:none;
+  #chpanel{position:fixed;top:calc(var(--row1-h,58px) + 52px);right:18px;z-index:12;width:318px;max-height:min(60vh,520px);overflow-y:auto;display:none;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:11px;
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
   #chpanel .ehead{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:#ffd96a;margin:0 0 8px}
@@ -826,8 +831,10 @@
   #cargo .chead{padding:9px 11px 7px;font-family:var(--ui);font-size:10px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--faint)}
   #cargo .bset{margin:0 6px 6px}
-  /* ---- Prime Codex button ---- */
-  #pcdxbtn{cursor:pointer;flex:none;position:fixed;top:calc(var(--row1-h,58px) + 10px);right:18px;z-index:9;
+  /* ---- Prime Codex button ----
+     v1.5 UI SWAP (Nick): the Codex is endgame now — it keeps its gold but
+     moves to the left rail (the charters' old home) */
+  #pcdxbtn{cursor:pointer;flex:none;position:fixed;top:calc(var(--topbar-h,100px) + 8px);left:18px;right:auto;z-index:8;
     display:flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;
     font-family:var(--ui);font-size:11px;font-weight:600;letter-spacing:.06em;color:#f0cf8a;
     background:linear-gradient(135deg,rgba(60,46,18,0.62),rgba(30,24,12,0.55));
@@ -1154,14 +1161,16 @@
     body.fs-lg #bell{font-size:13px}
     body.fs-xl #bell{font-size:14px}
     #hpbar{width:clamp(110px,33vw,188px);height:12px} #hptext{font-size:9px} #hpheart{font-size:14px}
-    #pcdxbtn{right:14px;padding:6px 9px;font-size:10.5px;gap:5px} #pcdxbtn .lbl{display:inline}
+    #pcdxbtn{left:14px;right:auto;padding:6px 9px;font-size:10.5px;gap:5px} #pcdxbtn .lbl{display:inline}
     #codexbtn,#logbtn,#codex,#log,#cargobtn,#cargo{right:14px}
     #cargo{width:min(300px,calc(100vw - 20px))}
     /* side buttons + panels sit BELOW the two-row topbar — never overlapping it */
     /* float the side rails just below the header, however many rows it wraps to */
-    #dailybtn{top:calc(var(--topbar-h,118px) + 8px);font-size:10px;padding:6px 11px}  #stats{top:calc(var(--row1-h,58px) + 6px)}
-    #eventsbtn{top:calc(var(--topbar-h,118px) + 44px);font-size:10px;padding:6px 11px} #events{top:calc(var(--topbar-h,118px) + 80px)}
-    #chbtn{top:calc(var(--topbar-h,118px) + 80px);font-size:10px;padding:6px 11px} #chpanel{top:calc(var(--topbar-h,118px) + 116px)}
+    #stats{top:calc(var(--row1-h,58px) + 6px)}
+    /* v1.5 swap: Prime Codex leads the left rail; charters wear the prime slot */
+    #pcdxbtn{top:calc(var(--topbar-h,118px) + 8px)}
+    #chbtn{top:calc(var(--row1-h,58px) + 8px);right:14px;font-size:10px;padding:6px 10px}
+    #chpanel{top:calc(var(--row1-h,58px) + 46px);right:14px;left:auto;width:min(312px,calc(100vw - 20px))}
     #panel{width:min(300px,calc(100vw - 20px))}
     #codex,#log{width:min(300px,calc(100vw - 20px))}
     #stats,#events{width:min(312px,calc(100vw - 20px))}
@@ -10805,6 +10814,7 @@ function dailyWhere(){
   return {key, where:{type:'galaxy', gal:slimGal(gal)}};
 }
 dailyBtn.addEventListener('click', ()=>{
+  if(EVENTS_DORMANT) return;   /* v1.5: beacon hidden for rework — engine dormant */
   const res=dailyWhere();
   if(!res || !res.where){ toast('Traveler\u2019s Beacon','The beacon is faint right now — try again.'); return; }
   /* v1.4: the beacon usually points far outside the Ascent's rings - no
@@ -12155,7 +12165,7 @@ const GUIDE=[
  {id:'codes', t:'Share codes (CF1 / CFB)', k:'share code link friend cf1 cfb copy multiplayer social', body:
   '<p>There is no server — the universe is mathematics, identical on every device. A share code is just an address into that shared math:</p><ul><li><b>⇪ Share this discovery</b> on a survey card copies a <b>CF1-</b> code/link. Anyone who opens it lands on the exact same world, with your name for it attached.</li><li><b>⇪ Code</b> on a creature card copies a <b>CFB-</b> code carrying the full genome — the identical creature, stats and all, appears on your friend’s device for a duel.</li></ul><p>Codes are sanitized on arrival; a tampered code can’t hurt your save.</p>'},
  {id:'charters', t:'Expedition Charters', k:'charter charters hunt board weekly goals task starter reward stardust', body:
-  '<p>The <b>Charters</b> board (left rail) always has work for an explorer. Fresh expeditions receive five <b>starter charters</b> — one for each trade, in the order they chain: make planetfall, prospect a dead world, discover life, name a Field Scout, conquer a world. Each pays <b>☄ Stardust</b> the moment it completes — and trades you&#8217;ve already proven are quietly marked complete.</p><p>Once the trades are learned, the board turns weekly: three charters a week, identical for every explorer in the universe — deterministic, like everything else out here. Compare boards with a friend; they match.</p>'},
+  '<p>The <b>Charters</b> board (top right — it earned the prime slot) always has work for an explorer. Fresh expeditions receive five <b>starter charters</b> — one for each trade, in the order they chain: make planetfall, prospect a dead world, discover life, name a Field Scout, conquer a world. Each pays <b>☄ Stardust</b> the moment it completes — and trades you&#8217;ve already proven are quietly marked complete.</p><p>Once the trades are learned, the board turns weekly: three charters a week, identical for every explorer in the universe — deterministic, like everything else out here. Compare boards with a friend; they match.</p>'},
  {id:'beacon', t:'Traveler’s Beacon', k:'beacon daily random destination five minutes', body:
   '<p>The <b>Traveler’s Beacon</b> (left rail) offers a fresh destination every <b>5 minutes</b> — always somewhere <b>inside your charter</b>: it walks Sol while Sol is your world, the Neighborhood once you can jump, the whole galaxy once the Array is up, and the wider cosmos beyond the Rim. Picked deterministically, so every explorer on your ring is pointed at the same place at the same moment. An easy way to see something new when the infinite feels too big.</p>'},
  {id:'atlas', t:'The Star Atlas', k:'atlas bookmark favorite home save place travel star log', body:
@@ -12245,7 +12255,12 @@ const GUIDE=[
  {id:'saving', t:'Your save & reset', k:'save localstorage reset erase wipe browser device local', body:
   '<p>Your expedition saves automatically to this browser on this device — no account, no cloud. Clearing site data clears the expedition, so export your best creatures as CFB codes if you’re attached. <b>↺ Reset Game</b> in Settings erases everything after a confirm — the universe itself is unharmed; it’s math.</p>'},
 ]}];
-function _guideTopic(id){ for(const c of GUIDE) for(const t of c.topics) if(t.id===id) return {c,t}; return null; }
+/* v1.5: Cosmic Events + the Traveler's Beacon are HIDDEN for rework —
+   buttons off, panels off, engines dormant. The Guide must not advertise
+   what the player can't reach, so their topics vanish with them. */
+const DORMANT_TOPICS=new Set(['beacon','events']);
+function _liveTopics(c){ return c.topics.filter(t=>!DORMANT_TOPICS.has(t.id)); }
+function _guideTopic(id){ if(DORMANT_TOPICS.has(id)) return null; for(const c of GUIDE) for(const t of c.topics) if(t.id===id) return {c,t}; return null; }
 function _guideMenu(){
   const body=document.getElementById('guidebody'); if(!body) return;
   body.innerHTML=GUIDE.map((c,i)=>
@@ -12257,13 +12272,13 @@ function _guideMenu(){
 function _guideCat(i){
   const body=document.getElementById('guidebody'); const c=GUIDE[i]; if(!body||!c) return;
   body.innerHTML='<div class="gback" data-gb="menu" role="button" tabindex="0">‹ All topics</div>'+
-    c.topics.map(t=>'<div class="gitem" data-gt="'+t.id+'" role="button" tabindex="0"><span>'+c.icon+'</span> '+t.t+'<span class="gn">›</span></div>').join('');
+    _liveTopics(c).map(t=>'<div class="gitem" data-gt="'+t.id+'" role="button" tabindex="0"><span>'+c.icon+'</span> '+t.t+'<span class="gn">›</span></div>').join('');
   body.scrollTop=0;
   refocus(body, '.gback');
 }
 function _guideShow(id){
   const body=document.getElementById('guidebody'); const hit=_guideTopic(id); if(!body||!hit) return;
-  const others=hit.c.topics.filter(t=>t.id!==id).slice(0,4);
+  const others=_liveTopics(hit.c).filter(t=>t.id!==id).slice(0,4);
   body.innerHTML='<div class="gback" data-gb="'+GUIDE.indexOf(hit.c)+'" role="button" tabindex="0">‹ '+hit.c.cat+'</div>'+
     '<div class="gtopic"><h4>'+hit.c.icon+' '+hit.t.t+'</h4>'+hit.t.body+
     (others.length?'<div class="gsee">In '+hit.c.cat+': '+others.map(t=>'<span data-gt="'+t.id+'" role="button" tabindex="0">'+t.t+'</span>').join(' · ')+'</div>':'')+
@@ -12276,7 +12291,7 @@ function _guideSearch(q){
   q=q.trim().toLowerCase();
   if(q.length<2){ _guideMenu(); return; }
   const hits=[];
-  for(const c of GUIDE) for(const t of c.topics){
+  for(const c of GUIDE) for(const t of _liveTopics(c)){
     const hay=(t.t+' '+t.k+' '+t.body.replace(/<[^>]*>/g,' ')).toLowerCase();
     if(hay.includes(q)) hits.push({c,t, rank:(t.t.toLowerCase().includes(q)?0:(t.k.includes(q)?1:2))});
   }
@@ -14594,8 +14609,28 @@ function _tutAdvance(){
   _tutStep++;
   if(_tutStep>=TUT_STEPS.length){ _tutFinish(); return; }
   const s=TUT_STEPS[_tutStep];
+  _tutPanelSweep(s);
   if(s.enter){ try{ s.enter(); }catch(_){} }
   _tutShow();
+}
+/* one lesson, one voice (v1.5, Nick's live pass): the tray opened by the
+   tray lesson sat over the search box in the next step — the outside-tap
+   closer is training-inert by design, so nothing ever closed it. On every
+   step advance, any open panel the NEW step's allow list doesn't name
+   closes. Exact-token match — '#logbtn' must never keep '#log' alive. */
+function _tutPanelSweep(s){
+  try{
+    const toks=new Set(TUT_ALWAYS.concat((s&&s.allow)||[]));
+    for(const p of PANELS){
+      try{
+        if(!p.open()) continue;
+        const el=p.el();
+        const idSel=(el&&el.id)?('#'+el.id):null;
+        if((idSel && toks.has(idSel)) || (p.btn && toks.has(p.btn))) continue;
+        p.close();
+      }catch(_){ }
+    }
+  }catch(_){ }
 }
 /* practice specimens: three random Earth beasts, three random Earth flora.
    Random on purpose — every recruit trains a different menagerie. */
@@ -14672,7 +14707,7 @@ function _tutFinish(){
     toast('✦ Welcome to the Frontier', 'Training complete. Fly far, '+(explorerName||'Explorer')+' — the Guide (?) is always at hand.');
     /* the hunt board takes over where training leaves off: five starter
        charters teach the trades in order, each paid on the spot */
-    pushNotif('Expedition Charters', 'Your hunt board is open (Charters, left rail) — first charter: Make planetfall.');
+    pushNotif('Expedition Charters', 'Your hunt board is open (Charters, top right) — first charter: Make planetfall.');
     /* v1.4: a NEW expedition starts its Ascent — the mainline announces
        itself once, right where training ends */
     if(typeof _ascActive==='function' && _ascActive()){
@@ -14991,9 +15026,13 @@ function renderEvents(){
   }
   eventsEl.innerHTML=html;
 }
-/* rare events pop up over time: a toast the moment their window opens */
+/* rare events pop up over time: a toast the moment their window opens.
+   v1.5: DORMANT — the whole system is hidden for rework; announcing a
+   spectacle the player has no panel to reach would be a taunt. */
+const EVENTS_DORMANT=true;
 const _evAnnounced=new Set();
 function announceRareEvents(){
+  if(EVENTS_DORMANT) return;
   const now=Date.now();
   for(const def of EVENT_DEFS){
     if(def.per<=86400) continue;
@@ -15010,6 +15049,7 @@ function announceRareEvents(){
 setTimeout(announceRareEvents, 5000);
 setInterval(announceRareEvents, 600000);
 eventsBtn.addEventListener('click', ()=>{
+  if(EVENTS_DORMANT) return;   /* v1.5: hidden for rework — engine dormant */
   eventsOpen=!eventsOpen;
   eventsEl.style.display=eventsOpen?'block':'none';
   clearInterval(_evTimer);
@@ -15219,11 +15259,15 @@ function renderStats(){
       '<div class="c">'+n+'</div>'+T.name+'</div>';
   }
   html+='</div>';
-  html+='<h4>Achievements · '+unlocked.size+' / '+ACH.length+'</h4>';
+  /* v1.5: the Cosmic Events system (beacon + events) is dormant — its
+     achievement shelf hides with it rather than dangle unreachable goals.
+     Anything already unlocked still counts toward the total. */
+  const _achShown=ACH.filter(a=>!(EVENTS_DORMANT && a.cat==='Cosmic Events' && !unlocked.has(a.id)));
+  html+='<h4>Achievements · '+unlocked.size+' / '+_achShown.length+'</h4>';
   const cats=[];
-  for(const a of ACH) if(!cats.includes(a.cat||'Misc')) cats.push(a.cat||'Misc');
+  for(const a of _achShown) if(!cats.includes(a.cat||'Misc')) cats.push(a.cat||'Misc');
   for(const cat of cats){
-    const list2=ACH.filter(a=>(a.cat||'Misc')===cat);
+    const list2=_achShown.filter(a=>(a.cat||'Misc')===cat);
     const got=list2.filter(a=>unlocked.has(a.id)).length;
     const open=_agOpen.has(cat);
     let body='';
