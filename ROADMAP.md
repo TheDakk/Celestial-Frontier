@@ -1,26 +1,47 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
-## ▶▶ NEXT SESSION AGENDA
+## ★★ v1.3 "THE HD FRONTIER" IS LIVE ★★ (2026-07-18, build b79de67,
+## Nick: "Ship it"). HD IS ALWAYS ON — no Classic mode, no setting.
+## Shipped: painted landing vistas on every world (seeded compositions,
+## weather spells, wonder rolls: sky rings / giant moons / biolume
+## shores / star-tinted light), painterly portraits for ALL kingdoms w/
+## grade-scaled rarity AURAS, HD material icons, class-colored glowing
+## galaxy stars + textured nebulae, per-seed unique galaxies (kind-
+## locked to the card), card-honest planets (band water / era lights /
+## ring thumbs / typed moons), conquest arenas + guardian entrances,
+## vista postcards w/ CF1 codes, painterly player avatar, card ✕ +
+## drag, human-voice copy pass. Fingerprint 50/50 (two documented
+## single-key re-pins of speciesPortrait ONLY — see baseline.json
+## notes; wholesale regeneration stays banned), smoke 173/173, systems
+## 19/19, balance PASS at ship.
 
-1. NICK'S ON-DEVICE PASS of Phase 1 iterations 2+2b+2c (below): flip
-   Settings → Graphics → Landing view → HD, then land widely — lava,
-   ocean, winter, dusk, night. Also try the new card ✕ + drag (those
-   ship in CLASSIC too). His screenshots drive iteration 3.
-2. GALAXY-VIEW STARS (Nick's screenshot, 2026-07-17: "it's bland right
-   now" — sparse colored dots, one supernova remnant): CONFIRMED as
-   v1.3 PHASE 3 (system dressing: belt rocks, comet tails, ringed
-   giants, phase-lit planets) + PHASE 4 (dust-carved galaxy sprites) +
-   an in-galaxy star-field richness pass (fainter deep-field stars,
-   color temperature spread, clustering along arms) — add that pass to
-   Phase 3's list; the vista work deliberately came first.
-3. Remaining Phase 1 candidates: per-world biome variety inside a type;
-   aurora over ICE worlds (surface draws them; the vista's nightize
-   grade doesn't yet).
-4. Then PHASE 2 — creature portraits + true gene inheritance.
-5. Mechanics: extract.js first; the hd flag stays default-Classic and
-   UNDEPLOYED until Nick's word — BUT NOTE: weather spells, the card
-   ✕/drag, and the text-size coverage fixes are NOT flag-gated (they
-   ride any deploy; RELEASES[0] bullets written).
+## ▶▶ NEXT SESSION AGENDA (v1.4 "THE ASCENT" KICKOFF)
+
+1. NICK'S LIVE PASS of v1.3 (his screenshots are bug reports — read
+   them closely). Watch for: vista variety across many landings, aura
+   feel on his real Compendium, postcard flow on iPhone, boot time on
+   his big save.
+2. START v1.4 "THE ASCENT" — full design already below (Sol lock-in →
+   Jump Drive → ring unlocks: Milky Way slice → Local Cluster →
+   outward). SUGGESTED BUILD ORDER:
+   a. RECIPE SPINE first (pure data + Fabricator UI): T1 basic parts /
+      T2 components / T3 ship systems, procedural part icons in the
+      _hdElemIcon language, Research Bench → Fabricator tabs. No
+      gating yet — veterans just get a new bench to play with.
+   b. ASCENT CHAPTER ENGINE on the charter machinery (ordered chain,
+      chapter panel pinned atop the charter board, save fields with
+      absent-safe defaults = veterans complete).
+   c. CHAPTER 1 "Off the Rock": Sol lock (NEW saves only; gate TRAVEL
+      never CURIOSITY), Moon/Mars/asteroid mining goals, Jump Drive
+      recipe, first jump ≤45 min. Smoke needs a full chapter-1 drive.
+   d. Chapters 2-3 + ring ladder on reachRadius.
+3. Deferred graphics polish (only if Nick asks): real crescent phases
+   (needs sprite relight — city-lights conflict), surface-view F1/F3/F4
+   nits, galaxy interior morphology V2 + crossGenome inheritance V13
+   (both DOMAIN changes — Nick decisions, unchanged).
+4. Mechanics: extract.js first; deploys only on Nick's word; the
+   baseline re-pin protocol (single-key, diff-verified, documented) is
+   the ONLY sanctioned baseline touch.
 
 ## ▶▶ THE GRAPHICS OVERHAUL — APPROVED IN FULL (Nick, 2026-07-17: "I want
 ## to include all of this") + NEW PILLAR: ENGINEERED INFINITY
