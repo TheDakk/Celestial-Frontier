@@ -11850,7 +11850,7 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.3.5';
+const GAME_VERSION='1.3.6';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
@@ -11860,6 +11860,7 @@ const RELEASES=[
  ],
  ['🖱 UI Enhancements', [
   'Field Training keeps one voice now: while a lesson is up, sweeping the cursor around no longer pops survey glances over the guidance — only the card the lesson is about (finding Earth still lets Earth glance).',
+  'Hover cards now live only at system scale, where hovering means inspecting — sweeping the cursor across a galaxy no longer strobes every star&#8217;s card. Tapping still opens anything, anywhere.',
   'Zooming into a landed world stops before the ground smears into stripes — there was nothing to see closer anyway.'],
  ],
  ['🐛 Bug Fixes', [
@@ -13785,6 +13786,12 @@ function frameInner(){
         } else if(d<p.r && d<bd){ bd=d; hovered=p; }
       }
     }
+    /* a tap is intent, a hover is an accident (v1.3.6, Nick's call):
+       sweep-glances live only at SYSTEM scale, where hovering means
+       inspecting. At universe/galaxy scale a fast sweep strobed every
+       star's card — taps still open everything, everywhere (the star
+       signature hunts depend on them). */
+    if(hovered && st.mode!=='system' && st.mode!=='surface') hovered=null;
     if(hovered && !tutDone){
       /* training shows only the current lesson's card: a cursor sweep
          across Sol must not pop glances over the guidance (Nick's ask).
