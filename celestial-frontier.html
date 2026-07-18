@@ -11672,10 +11672,40 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.3';
+const GAME_VERSION='1.3.5';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.3.5', title:'Soft Landings', date:'July 2026', sections:[
+ ['✨ New Features & Systems', [
+  'Every world now wears a biome. Swamp worlds, coral shallows, glass deserts, magma seas, carbon worlds, storm-eye giants — around thirty-five kinds in all, written on the survey card and painted into the landing view. The rare ones announce themselves in violet.',
+  'Landing is a real decision now. Every world sits on a success ladder — a meadow world is a formality, a magma sea is a one-in-ten dive — and the odds are shown before you commit. A failed descent bounces you back to orbit with a scrape, never worse, and every attempt teaches the approach: your next try on that world is better. Worlds you&#8217;ve stood on are yours forever — return landings never ask.',
+  'Diving into an unvisited world by hand now stops at approach altitude and asks before you commit. The Land button on a survey card skips the question — pressing it is the answer.',
+  'Gas giants finally have somewhere to land: the high cloud deck. Storm bands to the horizon, the great spot if the card carries one, your ring overhead, lightning in the deeps, and drifting aerial life where the card grants it.',
+  'The weather got teeth. Tornadoes on the horizon, hurricane walls at sea, sand walls rolling over the dunes, ice storms, erupting cryogeysers, acid rain that dies mid-air over Venus-likes, volcanic lightning, fire whirls, iron rain on ember giants — all called out on the surface readout, in the landing view, and on the descent ask, so you can see the storm from orbit and dare it anyway.',
+  'Life turned up where it has no business being. A thin slice of hostile worlds — molten, frozen, crushing, airless-adjacent — carries actual creatures now, not just microbes. The orbital glance hints at them in violet: impossible biosignatures. The hardest landings hide the strangest finds.',
+  'Some worlds keep leviathans. When a world&#8217;s own roster carries a titanic creature, you may catch it breaking the horizon at full scale. The card always said titanic; now the ground shakes like it.',
+  'Abyssal ocean worlds take the landing view beneath the waves — dying shafts of light, glowing plankton, vent fire far below, and deep-sea hunters with lures where the card grants them.',
+  'The sea grows things now. Ocean worlds gained kelp towers, seagrass meadows, reef-builders and sargassum rafts; aerial-life worlds gained drifting veils. Extremophile creatures come with their own ways of living — vent-clingers, magma-swimmers, storm-riders, winged hunters.'],
+ ],
+ ['🖱 UI Enhancements', [
+  'One panel at a time. Opening the Atlas closes the Compendium, opening Charters closes the Atlas — on phone and desktop alike — and every panel wears a corner ✕. Tapping empty space closes whatever&#8217;s open. Duels, reveals and dialogs are safe: a stray tap never eats a fight.',
+  'The landing view has a ✕ too, and a quick tap right after reopening it can no longer strand it open.',
+  'Orbit matches the ground now: carbon worlds look graphite-dark from space, obsidian worlds near-black, magma seas glow warm, blue-ice worlds run cold, ember giants burn sullen red.'],
+ ],
+ ['⚖ Balancing', [
+  'An active storm makes any landing a little harder — five points, never enough to trouble a friendly world.',
+  'A new weekly charter, Down the hard way, pays 35 ☄ for landing on a gas giant, a hothouse or a molten world. Adding it reshuffles the weekly board once at the next rollover.'],
+ ],
+ ['🐛 Bug Fixes', [
+  'The little dashes around supernova remnants and the drawn circles around cosmic deaths are gone — everything that dies in space dies as a cloud now.',
+  'Gas giant surfaces no longer claim to be airless with no weather. They have rather a lot of both.'],
+ ],
+ ['🔧 Under the Hood', [
+  'The galaxy view stopped allocating gradients every frame for remnants and mergers — they&#8217;re baked once now, which is kinder to phone batteries.',
+  'Wave-off progress on hard worlds is saved with the expedition, so a reload never steals a climb.'],
+ ],
+]},
 {v:'1.3', title:'The HD Frontier', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
   'Landing on a world now opens a painted view of where you&#8217;re standing. Everything in it comes from the survey card: the terrain, the weather, the time of day, who lives there, and what&#8217;s grazing nearby. Tap the card&#8217;s Landing vista button any time to look again.',

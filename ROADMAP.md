@@ -541,6 +541,49 @@
 ## too (recommended yes); Batch 5 biome list trims/renames + whether
 ## sub-labels read "Swamp world" style (recommended yes).
 
+## ★★ v1.3.5 "SOFT LANDINGS" — BUILT & VERIFIED (2026-07-18), NOT
+## DEPLOYED — one word ships it (GAME_VERSION bumped to '1.3.5',
+## RELEASES[0] written, deploy on Nick's word only).
+## ALL FIVE BATCHES LANDED (7 commits, one per push):
+##  B2 panel manager (one panel at a time both platforms, ✕ everywhere
+##     incl. vista, modals exempt + training-inert; ALSO fixed a real
+##     vista dismiss race a fast tap could hit on phones)
+##  B1 space dust (gassy remnant shells, soft merger ripples, baked
+##     sprites — the per-frame gradient heat sink is gone)
+##  B3 cloud deck (8/8 vista coverage; TYPE_DESC + status copy fixed —
+##     gas giants no longer claim "airless")
+##  B4 the descent (biome ladder w/ shown %, zoom stops at approach +
+##     asks / Land button auto-rolls, wave-off never lethal, +20% pity
+##     SAVED per world [field wvo], grounded forever safe, weather −5
+##     small, Earth+training exempt, Guide topic 'landing', copy sweep)
+##  B5a biomes (~35 in 8 frozen types, band-conditioned, sub-label +
+##     Biome row, rare kinds violet; EXTREMOPHILE fauna slices in
+##     domain [Nick-authorized; NO pinned probe world fell in a slice —
+##     fingerprint 50/50 with ZERO re-pins]; parallel pools EX_HABITAT/
+##     EX_LOCO/AQ_FLORA/AIR_FLORA via g.x/g.aq/g.af markers; kelp at
+##     last; xfauna breed true when both parents are; weekly charter
+##     'Down the hard way'. EYEBALL WORLD DEFERRED: tidal lock would
+##     contradict the Seasons row — NICK DOMAIN DECISION pending.)
+##  B5b-i biome-dressed vistas (9 feature painters + identity washes;
+##     header names the biome; deck tuned per gas biome; NOTE for
+##     Nick's device pass: terran color identities [savanna gold, swamp
+##     gloom] are directionally in but want palette-level tuning
+##     against real screenshots)
+##  B5b-ii weather events (9 showpieces, seeded spells, named on
+##     surface line + vista caption + descent ask), colossal wanderers
+##     (titanic roster members break the horizon), the deep (abyssal
+##     underwater vantage)
+##  B5c biome-tinted orbit sprites (band-independent types only —
+##     honesty over flair on search thumbs)
+##  + language pass (training un-bolded to functional-only, descent
+##     language replaces zoom-to-land everywhere, intro tightened)
+## SUITES AT BUMP: fingerprint 50/50 byte-identical (zero re-pins
+## needed), smoke 211/211 (+38 new checks), systems 19/19, balance
+## PASS. New tools: proofsheet.js + sheets/ (headless-Edge art review;
+## 5 proof rounds inspected, 3 in-review fixes).
+## AWAITING: Nick's deploy word; his device pass (esp. terran biome
+## washes + aura feel + boot time on his big save — G14 still open).
+
 ## ▶▶ NEXT SESSION AGENDA (v1.4 "THE ASCENT" KICKOFF)
 
 1. NICK'S LIVE PASS of v1.3 (his screenshots are bug reports — read
