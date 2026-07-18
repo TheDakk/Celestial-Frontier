@@ -48,22 +48,33 @@
 ##  the text pools are combinatorial, honest because the card said it.
 ##
 ## BUILD ORDER (each batch: build → validate/smoke/systems → commit):
-##  BATCH A — law violations V1-V11 (Classic-visible honesty fixes)
-##  BATCH B — vista blockers B1-B3 (re-view+fade, composition variety
-##            [absorbed into L1], chrome/safe-area)
-##  BATCH C — galaxy view: I1 star sprites+twinkle, nebula/remnant
-##            pre-renders (heat), morphology V2 + per-seed sprites I4
-##  BATCH D — light & sky: I2 star-tinted light everywhere, I12 real
-##            crescents, I3 rings-in-sky + daytime moons
-##  BATCH E — INFINITY CORE: plant species genes, seeded compositions,
-##            seeded aurora hues, herd scaling, wonder-roll framework
-##  BATCH F — object art: V12 portrait anatomy overhaul (Phase 2 pulled
-##            in), I7 specimenCard, I9 city lights, I13 small thumbs
+##  BATCH A ✓ DONE (bde0603) — V1-V11 honesty fixes + I2-system + I9
+##  BATCH B ✓ DONE (9ea3d7e) — vista re-view/fade/chrome (B1+B3)
+##  BATCH C ✓ DONE (59f56e9) — galaxy star sprites + textured deco
+##            pre-renders + cluster sprites (I1+G2+G5). NOT done: V2
+##            morphology + I4 per-seed galaxy sprites — V2 needs a
+##            DOMAIN change (star positions move vs the frozen
+##            fingerprint baseline) → NICK DECISION, see below.
+##  BATCH D — partially absorbed: I2 star-tint (system ✓ in A, vista ✓
+##            in E; surface dawn/dusk STILL OPEN), I3 rings-in-sky ✓ in
+##            E (daytime moons still open), I12 real crescents OPEN.
+##  BATCH E ✓ DONE (df64e84) — INFINITY CORE: seeded compositions,
+##            per-world flora species + rare hue families, seeded
+##            aurora families, herd scaling, wonder rolls (rings sky /
+##            looming moon / biolume shores / star-tinted noon).
+##  BATCH F — NEXT: V12 portrait anatomy overhaul (all 16 body plans,
+##            skin/loco/trait drawn, eyeless fixed, guardian/paragon
+##            distinction), I7 specimenCard wiring, I13 small thumbs
+##            (per-moon seeds, binary star thumbs, quasar sprite,
+##            filament web blobs).
 ##  BATCH G — FX & showpieces: tunnel variety/heat, I5 vista postcards,
-##            I6 battle arenas + guardian intro
-##  V13 (gene inheritance) — DOMAIN change: attempt behind the
-##  fingerprint gate; if the baseline breaks, revert + present the
-##  tradeoff to Nick (children would change → needs his call).
+##            I6 battle arenas + guardian intro, F1 tile-proxy fallback,
+##            F3 surface aurora seeded hues, F4 cloud-shadow prerender.
+##  NICK DECISIONS PENDING (domain/baseline changes, NOT built):
+##  - V2 galaxy interior morphology (ellipticals stop being spirals) —
+##    moves star positions vs the determinism baseline.
+##  - V13 crossGenome inheritance gaps (5 genes never inherit; limbs/
+##    accent never mutate) — changes future bred children.
 
 ## ▶ GRAPHICS PASS FINDINGS (2026-07-17, 3 audit agents + spot-verified;
 ## the raw finding list the overhaul above was built from)
