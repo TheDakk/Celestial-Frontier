@@ -75,6 +75,35 @@
 ##      finishing the Trail unlocks a "Legacy" prestige layer (v2
 ##      hook) instead of just an epilogue.
 ##
+## 8. THE PAPERDOLL CHARACTER SCREEN (Nick: "Diablo 2/3/4, PoE 1/2,
+##    classic WoW look and feel" — also the fix for "I wasn't sure how
+##    to open the Cargo"): opening the character sheet brings up a
+##    CENTERED screen, one home for the whole explorer:
+##    · LEFT PANEL: all the stats — battle stats, HP, rank/score,
+##      expedition statistics (collapsible groups as today).
+##    · CENTER: a FULL-BODY painterly portrait of your explorer (the
+##      current avatar is a bust — extend playerAvatar to a full-length
+##      paperdoll, HD engine law, proof-sheeted) with the equipment
+##      sockets ANCHORED TO THE BODY: Helmet at the head, Earpiece at
+##      the ear, Necklace below the chin, Suit on the chest, Gloves at
+##      the hands, Leggings on the legs, Boots at the feet, Tool in a
+##      hand, ship Module docked beside the figure (Shipyard thumbnail
+##      as its anchor). Charm/necklace side-slots in the classic
+##      positions flanking the portrait.
+##    · UNDERNEATH: the full CARGO + INVENTORY grid (elements + crafted
+##      items), with the Fabricator/Research tabs riding along — the
+##      cargo panel folds INTO the character screen; the top-bar 🧰
+##      button stays as a shortcut that opens this screen on its
+##      inventory tab.
+##    · MOBILE-FIRST CAUTION (iPhone primary): the classic three-column
+##      paperdoll must stack on phones — paperdoll first, stats fold,
+##      inventory below; sockets stay finger-sized.
+##    · Panel-manager: this is a big centered surface — one-at-a-time
+##      rules, ✕ + outside-tap, training-inert per the standing laws.
+##    · SEQUENCING: build this BEFORE work order #2 (the 1,000-bot
+##      character-sheet round) so the bots test the NEW screen — and
+##      the specimen-card condense (#3) shares its visual language.
+##
 ## CARRY-INS FROM THE v1.4.1 CRITIC PANEL (ranked backlog, Nick has
 ## seen the report):
 ##  a. Array wall: p50 378 actions/24% completion — cheaper Nav Core
@@ -102,10 +131,13 @@
 ##
 ## SUGGESTED BUILD ORDER: wipe/fresh-start plumbing first (everything
 ## else simplifies behind it) → tray/training bug + UI swap + hide
-## events/beacon (small, ship early) → specimen-card condense → quest
-## notifications → Prime Codex rework (design sign-off with Nick
-## first) → XP balance + leveling sim tier → 1,000-bot sheet-focus
-## round + critic panel → carry-in backlog by Nick's picks.
+## events/beacon (small, ship early) → THE PAPERDOLL CHARACTER SCREEN
+## (#8 — before the bot round; full-body avatar proof-sheeted first) →
+## specimen-card condense (shares the paperdoll's visual language) →
+## quest notifications → Prime Codex rework (design sign-off with
+## Nick first) → XP balance + leveling sim tier → 1,000-bot sheet-
+## focus round + critic panel on the NEW screen → carry-in backlog by
+## Nick's picks.
 ## Standing rules: extract.js first; proofsheet for ALL art; deploys
 ## on Nick's word; simrun.js (ui/chaos/fast/deep) is the regression
 ## gate; fingerprint stays byte-identical (the baseline survives the
