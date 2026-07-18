@@ -9306,10 +9306,30 @@ function ringGrade(g, grade, where){
    for expeditions begun under the law (save flag rsw). A veteran's card
    that once read Prismatic must never re-read Deep (vague-never-wrong). */
 let _ringWorlds=false;
-function _clampDesig(desig, cap){
-  const T=GRADE_TIERS[cap], hue=desig.hue||'Gray';
-  const label=cap===7?'Prismatic '+hue:cap===5?hue+'-Gold':cap===6?hue+'-Black':(T.pre?T.pre+' '+hue:hue);
-  return {tier:cap, name:T.name, label:label, hex:T.hex, hue:hue, star:T.star, glow:cap>=2};
+/* recover a designation's SPECTRA domain from its own label (survey BUG B:
+   the first clamp spoke the creature language — every clamped world read
+   "Gray-Gold". Worlds wear color, not stars; the label IS the domain). */
+function _specDomOf(desig){
+  for(const dom in SPECTRA){
+    const lad=SPECTRA[dom];
+    if(desig.tier<lad.length){ if(lad[desig.tier] && lad[desig.tier][0]===desig.label) return dom; }
+    else {
+      const hue=lad[7][0].replace('Prismatic','').trim();
+      if(desig.label===((GRADE_TIERS[desig.tier].pre+' '+hue).trim())) return dom;
+    }
+  }
+  return null;
+}
+function _clampSpectral(desig, cap){
+  const dom=_specDomOf(desig);
+  if(dom){
+    const lad=SPECTRA[dom];
+    if(cap<lad.length) return {tier:cap, label:lad[cap][0], hex:lad[cap][1], name:GRADE_TIERS[cap].name};
+    const T=GRADE_TIERS[cap], hue=lad[7][0].replace('Prismatic','').trim();
+    return {tier:cap, label:(T.pre+' '+hue).trim(), hex:T.hex, name:T.name};
+  }
+  const T=GRADE_TIERS[cap];
+  return {tier:cap, label:T.name, hex:T.hex, name:T.name};
 }
 function ringDesignation(d){
   /* clamp a descriptor's designation in place, once, by where it lives —
@@ -9318,7 +9338,15 @@ function ringDesignation(d){
   if(!_ringWorlds || !d || !d.designation || !d.where || d._ringed) return d;
   d._ringed=true;
   const cap=gradeCapAt(d.where);
-  if(d.designation.tier>cap) d.designation=_clampDesig(d.designation, cap);
+  if(d.designation.tier>cap){
+    d.designation=_clampSpectral(d.designation, cap);
+    /* survey BUG A: the Spectral-class ROW bakes its text in the domain
+       descriptor — rewrite it so the card speaks the clamped designation */
+    try{
+      const gr=d.rows && d.rows.find(r2=>r2[2]==='grade');
+      if(gr) gr[1]=d.designation.label+' — '+d.designation.name;
+    }catch(_){ }
+  }
   return d;
 }
 function _storeSpecies(g, from, where, deferArt, capExempt){
@@ -11727,14 +11755,17 @@ function statBars(S){
 function fightNow(mine, theirs, opts){
   opts=opts||{};
   const res=runDuel(mine, theirs);
-  const sideHtml=(nm, art, S, id, isYou)=>(
-    '<img src="'+art+'" alt=""><div class="nm" style="color:'+S.hex+'">'+nm+'</div>'+
+  /* the side card wears the combatant's CATALOGUED grade when it has one
+     (ring spectrum coherence — the raw budget hex could flash a tier the
+     player was never shown); battle numbers stay raw + deterministic */
+  const sideHtml=(nm, art, S, id, isYou, cg)=>(
+    '<img src="'+art+'" alt=""><div class="nm" style="color:'+((cg&&cg.hex)||S.hex)+'">'+nm+'</div>'+
     (isYou?'<div class="you-badge">You</div>':'')+
     '<div class="hp"><i id="'+id+'" style="width:100%"></i></div>'+
     '<div class="ab" style="color:'+(S.ab.col||'#ffd96a')+'">✧ '+S.ab.n+'</div>'+
     statBars(S));
-  document.getElementById('duel-a').innerHTML=sideHtml(mine.name, mine.art||speciesPortrait(mine.genome), res.A, 'hpA', !!mine.isPlayer);
-  document.getElementById('duel-b').innerHTML=sideHtml(theirs.name, theirs.art||speciesPortrait(theirs.genome), res.B, 'hpB', !!theirs.isPlayer);
+  document.getElementById('duel-a').innerHTML=sideHtml(mine.name, mine.art||speciesPortrait(mine.genome), res.A, 'hpA', !!mine.isPlayer, mine.grade);
+  document.getElementById('duel-b').innerHTML=sideHtml(theirs.name, theirs.art||speciesPortrait(theirs.genome), res.B, 'hpB', !!theirs.isPlayer, theirs.grade);
   const lg=document.getElementById('duel-log');
   /* ---- THE CHRONICLE (1.0): a duel is a story, not a damage feed. The
      narrator is seeded by the matchup, so the same fight tells the same tale
