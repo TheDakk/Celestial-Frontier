@@ -16,5 +16,5 @@
   "PLAYER_SEED", "HARVEST_CD", "SAVE_KEY",
   "picks", "st", "goTo", "gameEvent", "codex", "logMap",
   "sfxVol", "motionMode", "landed", "noteLanding", "cardExpand", "scoutId",
-  "chDone", "chProg", "contacted"
+  "chDone", "chProg", "contacted", "hdOn"
 ]

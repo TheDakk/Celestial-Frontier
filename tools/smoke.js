@@ -87,6 +87,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('bulletin hides other-line entries (no 1.1.x, no 1.0 debut)',
       !relFresh.textContent.includes('Clear Signals') && !relFresh.textContent.includes('Signal & Polish')
       && !relFresh.textContent.includes('The Frontier Opens'));
+    check('bulletin hides unshipped v-next entries (v1.3 stays invisible)',
+      !relFresh.textContent.includes('The HD Frontier'));
     check('training has not started yet', !visible(doc.getElementById('tutbox')));
     click(doc.getElementById('relok'));
     check('bulletin closes into training (step 1)', await until(() => tutAt(1), 4000, 'step1'));
@@ -306,6 +308,14 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(mopts[1]);                                        // Full
     check('Motion → Full lifts the class', H.motionMode === 0 && !doc.body.classList.contains('rmotion'));
     click(mopts[0]);                                        // Auto again (jsdom has no OS preference → full motion)
+    // v1.3 HD landing view flag: default Classic, toggles, persists off
+    check('settings shows Landing view Classic/HD (Classic on, hd off)',
+      !!doc.querySelector('#setpanel .fsopt[data-hd="0"].on') && H.hdOn===false);
+    click(doc.querySelector('#setpanel .fsopt[data-hd="1"]'));
+    check('Landing view toggles to HD', H.hdOn===true
+      && !!doc.querySelector('#setpanel .fsopt[data-hd="1"].on'));
+    click(doc.querySelector('#setpanel .fsopt[data-hd="0"]'));
+    check('Landing view returns to Classic', H.hdOn===false);
     check('Motion → Auto follows the OS preference', H.motionMode === -1 && !doc.body.classList.contains('rmotion'));
     const vs = doc.getElementById('volslider');
     check('settings shows Volume slider at full', !!vs && vs.value === '100');
@@ -427,10 +437,17 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       !!pan3.querySelector('[data-act="landcta"]') && !pan3.querySelector('[data-act="mine"]'));
     check('discovery: the glance never misreads a dead world (no biosignatures on venus-type)',
       !pan3.textContent.includes('biosignatures'));
+    // enable the HD landing view so planetfall opens the vista (v1.3)
+    click2(sk.doc.querySelector('#setpanel .fsopt[data-hd="1"]'), sk.w);
+    check('HD landing view armed for the flight down', skH.hdOn===true);
     // press the LAND button — it must fly down and perform real planetfall
     click2(pan3.querySelector('[data-act="landcta"]'), sk.w);
     check('discovery: the Land button performs planetfall', await until(() =>
       skH.st.mode === 'surface' && skH.landed.has(dp.data.P.seed), 5000, 'planetfall'));
+    check('HD vista: planetfall opens the landing panorama', await until(() =>
+      sk.doc.getElementById('vistabox').style.display === 'flex', 5000, 'vista overlay'));
+    click2(sk.doc.getElementById('vistabox'), sk.w);
+    check('HD vista: tap dismisses the panorama', sk.doc.getElementById('vistabox').style.display === 'none');
     check('discovery: standing on it, mining is open on the spot', await until(() =>
       !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('You are here'), 4000, 'surface mine'));
     check('discovery: ground survey reveals the mineral veins without Deep Scanners',
