@@ -116,6 +116,19 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // locate Earth among live canvas picks, then tap it for real
     const okPick = await until(() => H.st.mode === 'system' && H.picks.some((p) => p.data && p.data.P && p.data.P.seed === 133), 6000, 'earth pick');
     check('system view exposes Earth as a pick', okPick);
+    // v1.3.9: during find-earth, tapping any OTHER world must do nothing
+    {
+      const wrong = H.picks.find((q) => q.data && q.data.P && q.data.P.seed !== 133);
+      if (wrong) {
+        const cvW = doc.getElementById('cosmos');
+        const oW = { bubbles: true, cancelable: true, view: w, clientX: wrong.sx, clientY: wrong.sy, button: 0 };
+        cvW.dispatchEvent(new w.MouseEvent('pointerdown', oW));
+        cvW.dispatchEvent(new w.MouseEvent('pointerup', oW));
+        cvW.dispatchEvent(new w.MouseEvent('click', oW));
+        await sleep(250);
+        check('training: tapping a non-lesson world locks nothing (still step 2)', tutAt(2));
+      }
+    }
     if (okPick) {
       const p = H.picks.find((q) => q.data && q.data.P && q.data.P.seed === 133);
       const cv = doc.getElementById('cosmos');
