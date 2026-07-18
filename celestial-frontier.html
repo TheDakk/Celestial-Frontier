@@ -1359,8 +1359,8 @@
   <h3>Celestial Frontier</h3>
   <div class="lore">
     <p>You are not the first to chart this universe. An order of explorers came before you — the Pathfinders — and for an age their beacons mapped the dark. Then, one by one, the beacons went quiet. They died a single discovery short of completing their master survey.</p>
-    <p>What they left behind: nine unclaimed Signatures; field notes that swear the spectrum runs deeper than Prismatic; and scattered warnings of named titans that rule the worlds where it runs deepest. Document a worthy example of every Signature, and the completed Prime Codex will reveal what no chart has ever shown — the Celestial Frontier.</p>
-    <p class="creed">Master the infinite — you cannot finish it. But you can become the first Celestial Pathfinder.</p>
+    <p>They left nine Signatures unclaimed, and field notes that swear the spectrum runs deeper than Prismatic. The notes also warn of named titans ruling the worlds where it runs deepest. Document a worthy example of every Signature and the completed Prime Codex will show you what no chart has — the Celestial Frontier.</p>
+    <p class="creed">Nobody can chart it all. Somebody will still be first.</p>
   </div>
   <p class="nnote">First, what shall the stars call you?</p>
   <input id="namein" type="text" maxlength="20" placeholder="Your explorer name" spellcheck="false" autocomplete="off">
@@ -3236,7 +3236,6 @@ var HD_PORTRAITS=false;
    ================================================================ */
 const SpeciesArt=(()=>{
 const speciesArtCache=new Map();
-const speciesArtRaw=new Map();
 function speciesPortrait(g){
   /* HD_PORTRAITS rides the hd flag (set by applyHd): the determinism
      fingerprint pins CLASSIC portrait bytes, so the V12 anatomy overhaul
@@ -3253,7 +3252,7 @@ function speciesPortrait(g){
     const url=g.kingdom==='fauna'?hdPortraitFauna(g)
       :(g.kingdom==='flora'?hdPortraitFlora(g)
       :(g.kingdom==='fungi'?hdPortraitFungi(g):hdPortraitMicrobe(g)));
-    if(speciesArtCache.size>1200){ const k=speciesArtCache.keys().next().value; speciesArtCache.delete(k); speciesArtRaw.delete(k); }
+    if(speciesArtCache.size>1200){ const k=speciesArtCache.keys().next().value; speciesArtCache.delete(k); }
     speciesArtCache.set(key,url);
     return url;
   }
@@ -3455,100 +3454,8 @@ function speciesPortrait(g){
     '<rect width="120" height="120" fill="url(#rim)"/>'+
     '<rect width="120" height="120" fill="url(#vig)"/></svg>';
   const url=svgURI(svg);
-  speciesArtRaw.set(key, defs+inner);   /* keep the raw guts for the specimen card */
-  if(speciesArtCache.size>1200){ const k=speciesArtCache.keys().next().value; speciesArtCache.delete(k); speciesArtRaw.delete(k); }
+  if(speciesArtCache.size>1200){ const k=speciesArtCache.keys().next().value; speciesArtCache.delete(k); }
   speciesArtCache.set(key,url);
-  return url;
-}
-/* a painterly specimen card: the portrait at scale, with labeled anatomy callouts */
-const specimenCache=new Map();
-function specimenCard(g){
-  const key='sc'+g.seed+'_'+(g.gen||0);
-  if(specimenCache.has(key)) return specimenCache.get(key);
-  const base=SP_HEX[SP_COLOR[g.color%SP_COLOR.length]]||'#8a9bb5';
-  const acc=SP_HEX[SP_COLOR[(g.accent||g.trait||3)%SP_COLOR.length]]||'#cfd6f2';
-  const d=describeSpecies(g);
-  /* gather labeled parts depending on kingdom */
-  let labels=[];
-  if(g.kingdom==='fauna'){
-    labels=[
-      ['head', FA_HEAD[(g.head||0)%FA_HEAD.length]],
-      ['eyes', (FA_EYES[(g.eyes||0)%FA_EYES.length]||0)+'-eyed'],
-      ['skin', FA_SKIN[(g.skin||0)%FA_SKIN.length]],
-      ['limbs', (FA_LIMBS[(g.limbs||0)%FA_LIMBS.length])+' limbs'],
-    ];
-    const tl=FA_TAIL[(g.tail||0)%FA_TAIL.length];
-    if(tl!=='none') labels.push(['tail', tl]);
-    if(g.lumin) labels.push(['glow', 'bioluminescent']);
-  } else if(g.kingdom==='flora'){
-    labels=[['form', FLORA_FORM[g.form%FLORA_FORM.length]], ['canopy','photosynthetic crown']];
-    if(g.lumin) labels.push(['glow','lure-light']);
-  } else if(g.kingdom==='fungi'){
-    labels=[['cap', FUNGI_FORM[g.form%FUNGI_FORM.length]], ['spores','reproductive bodies']];
-    if(g.lumin) labels.push(['glow','luminescent gills']);
-  } else {
-    labels=[['colony', MICROBE_FORM[g.form%MICROBE_FORM.length]], ['scale','microscopic']];
-  }
-  /* embed the base portrait SVG, then draw callout lines + labels around it on a 360-wide card */
-  speciesPortrait(g);   /* ensure raw guts are cached */
-  let portInner = speciesArtRaw.get(g.seed+'_'+(g.gen||0)+'_'+g.kingdom) || '';
-  if(!portInner){ speciesArtCache.delete(g.seed+'_'+(g.gen||0)+'_'+g.kingdom); speciesPortrait(g);
-    portInner = speciesArtRaw.get(g.seed+'_'+(g.gen||0)+'_'+g.kingdom) || ''; }
-  const W=400, H=320;
-  const esc=t=>(''+t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  /* left column: portrait (140 wide) with up to 4 anatomy callouts */
-  let cal='';
-  const anchors=[[44,60],[44,118],[44,176],[44,234]];
-  labels.slice(0,4).forEach((lb,i)=>{
-    const [lx,ly]=anchors[i];
-    cal+='<line x1="'+lx+'" y1="'+ly+'" x2="86" y2="'+ly+'" stroke="'+acc+'" stroke-width="0.8" opacity="0.45"/>';
-    cal+='<circle cx="86" cy="'+ly+'" r="1.8" fill="'+acc+'"/>';
-    cal+='<text x="10" y="'+(ly-3)+'" fill="#9fb6d6" font-family="monospace" font-size="8" font-weight="bold" letter-spacing="0.5">'+esc(lb[0].toUpperCase())+'</text>';
-    cal+='<text x="10" y="'+(ly+8)+'" fill="#d6dcf0" font-family="sans-serif" font-size="9">'+esc(lb[1].slice(0,18))+'</text>';
-  });
-  /* right column: bestiary stat block */
-  let stats=[];
-  if(g.kingdom==='fauna'){
-    stats=[['DIET', d.diet], ['SIZE', FA_SIZE[g.size%FA_SIZE.length]], ['TEMPERAMENT', d.temper],
-      ['SENSES', d.sense], ['HABITAT', d.habitat], ['REPRODUCTION', d.repro], ['LIFESPAN', d.life]];
-  } else if(g.kingdom==='flora'){
-    stats=[['CLASS','Photosynthetic flora'],['FORM', FLORA_FORM[g.form%FLORA_FORM.length]],
-      ['BEHAVIOR', FLORA_DETAIL[(g.detail||0)%FLORA_DETAIL.length]],['LIGHT', g.lumin?'bioluminescent':'sun-driven']];
-  } else if(g.kingdom==='fungi'){
-    stats=[['CLASS','Fungal decomposer'],['BODY', FUNGI_FORM[g.form%FUNGI_FORM.length]],
-      ['ROLE','recycles matter into the food web'],['LIGHT', g.lumin?'glowing gills':'lightless']];
-  } else {
-    stats=[['CLASS','Microbial life'],['COLONY', MICROBE_FORM[g.form%MICROBE_FORM.length]],
-      ['SCALE','microscopic'],['ROLE','foundation of the food web']];
-  }
-  let sb='';
-  let yy=58;
-  for(const [k,v] of stats.slice(0,7)){
-    sb+='<text x="200" y="'+yy+'" fill="'+acc+'" font-family="monospace" font-size="8" font-weight="bold" letter-spacing="1">'+esc(k)+'</text>';
-    /* wrap value to ~28 chars */
-    const words=(''+v).split(' '); let line='',ln=0;
-    yy+=12;
-    for(const w of words){
-      if((line+' '+w).length>30){ sb+='<text x="200" y="'+yy+'" fill="#d6dcf0" font-family="sans-serif" font-size="9.5">'+esc(line)+'</text>'; yy+=11; line=w; ln++; if(ln>1) break; }
-      else line=line?line+' '+w:w;
-    }
-    sb+='<text x="200" y="'+yy+'" fill="#d6dcf0" font-family="sans-serif" font-size="9.5">'+esc(line)+'</text>';
-    yy+=16;
-  }
-  const gr=d.grade;
-  const ghex=gr?gr.hex:acc;
-  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+W+' '+H+'">'+
-    '<rect width="'+W+'" height="'+H+'" fill="#070912"/>'+
-    '<rect x="5" y="5" width="'+(W-10)+'" height="'+(H-10)+'" rx="10" fill="none" stroke="'+ghex+'" stroke-width="1.2" opacity="0.45"/>'+
-    '<line x1="186" y1="16" x2="186" y2="'+(H-34)+'" stroke="'+acc+'" stroke-width="0.6" opacity="0.25"/>'+
-    '<g transform="translate(50,22) scale(0.75)">'+portInner+'</g>'+
-    cal+ sb+
-    '<text x="14" y="'+(H-14)+'" fill="'+ghex+'" font-family="monospace" font-size="8.5" letter-spacing="1.5">SPECIMEN'+(gr?' · '+gr.name.toUpperCase():'')+(g.gen?' · GEN '+g.gen:'')+'</text>'+
-    '<text x="'+(W-14)+'" y="'+(H-14)+'" text-anchor="end" fill="#5b6680" font-family="monospace" font-size="8" letter-spacing="1">'+esc((d.kind||'').toUpperCase())+'</text>'+
-    '</svg>';
-  const url=svgURI(svg);
-  if(specimenCache.size>200){ const k=specimenCache.keys().next().value; specimenCache.delete(k); }
-  specimenCache.set(key,url);
   return url;
 }
 return Object.freeze({speciesPortrait});
@@ -5752,11 +5659,11 @@ function applyHd(){
   const flip=HD_PORTRAITS!==hdOn;
   HD_PORTRAITS=hdOn;   /* the V12 portrait anatomy rides the same flag */
   if(flip){
-    /* stored art must follow the switch (round-2 audit): codex entries
-       freeze entry.art at discovery time — repaint them in the new mode,
-       and bust the open card's roster thumbs */
+    /* stored art follows the switch WITHOUT a freeze (ship audit C3):
+       null the strings and let artOf() repaint pay-per-view; bust the
+       open card's roster thumbs too */
     try{
-      for(const en of codex.values()) if(en&&en.genome) en.art=speciesPortrait(en.genome);
+      for(const en of codex.values()) if(en&&en.genome) en.art=null;
       if(_lastDesc) _lastDesc._spArt=null;
       _panelKey=null;
       if(typeof codexOpen!=='undefined'&&codexOpen) renderCodex();
@@ -7603,9 +7510,27 @@ const logMap=new Map();
 let logOpen=false;
 let homeId=null;       /* the one location you've marked home */
 let logFilter='all';   /* 'all' | 'fav' */
+/* planet thumbs in the Atlas are LIVE (ship audit C1): never frozen at
+   bookmark time, never persisted — rebuilt from seed on render, so card
+   upgrades (band/life/era lights) always show, a low-res boot placeholder
+   can never be pinned into the save, and ~1MB of dataURLs leaves the
+   quota. Sol worlds resolve through the hand-authored catalogue. */
+function atlasThumb(it){
+  if(it.thumb) return it.thumb;
+  if(it.id&&it.id[0]==='p'){
+    const ps=+it.id.slice(1);
+    if(!isNaN(ps)){
+      const sp=(SOL_PLANETS||[]).find(x=>x&&x.P&&x.P.seed===ps);
+      return planetThumb(sp?sp.P:planetParams(ps));
+    }
+  }
+  return it.thumb||'';
+}
 function addToLog(d){
   if(!d.logId || logMap.has(d.logId)) return;
-  logMap.set(d.logId, {id:d.logId, title:d.title, sub:d.sub, thumb:d.thumb, sq:d.thumbSq,
+  logMap.set(d.logId, {id:d.logId, title:d.title, sub:d.sub,
+    thumb:(d.planetSeed!=null?null:d.thumb),   /* planets: live via atlasThumb */
+    sq:d.thumbSq,
     badge:d.badge, star:(d.grade?d.grade.star:''), where:d.where, t:Date.now()});
   logCountEl.textContent=logMap.size;
   if(logOpen) renderLog();
@@ -7638,7 +7563,8 @@ function renderLog(){
   }
   for(const it of items){
     const isHome=it.id===homeId;
-    const th = it.thumb ? '<img class="t'+(it.sq?' sq':'')+'" src="'+it.thumb+'" alt="">' : '<span class="t"></span>';
+    const _tu=atlasThumb(it);
+    const th = _tu ? '<img class="t'+(it.sq?' sq':'')+'" src="'+_tu+'" alt="">' : '<span class="t"></span>';
     const star = it.star ? '<span class="rstar">'+it.star+'</span>' : '';
     /* badges wear the card language: life green, civilization violet, signals lavender */
     const _bc={Life:'#7fe6a0',Biosphere:'#7fe6a0',Signal:'#cdbcff',Civilized:'#d6a0ff',Advanced:'#d6a0ff'}[it.badge];
@@ -7707,12 +7633,15 @@ const codex=new Map();         /* id -> {id, name, kind, desc, diet, gen, genome
 let codexOpen=false;
 const KIND_ICON={Flora:'🌿', Fungi:'🍄', Microbe:'🦠', Fauna:'🐾'};
 function codexId(g){ return 's'+g.seed; }
-function _storeSpecies(g, from, where){
+function artOf(en){ return en.art||(en.art=en.genome?speciesPortrait(en.genome):''); }
+function _storeSpecies(g, from, where, deferArt){
   const id=codexId(g);
   if(codex.has(id)) return null;
   const d=describeSpecies(g);
+  /* deferArt (save restore): don't paint 300 portraits synchronously at
+     boot — consumers go through artOf() and pay per view (ship audit C2) */
   const entry={id, name:d.name, kind:d.kind, desc:d.desc, diet:d.diet||null,
-    detail:d.detail||'', art:speciesPortrait(g), grade:d.grade,
+    detail:d.detail||'', art:deferArt?null:speciesPortrait(g), grade:d.grade,
     gen:g.gen||0, genome:g, from:from||'Unknown world', where:where||null, hybrid:!!g.parents,
     realm:classifyRealm(g), role:ecologyRole(g), biome:realmBiome(g), mods:realmModifiers(g),
     sapient:sapienceTier(g)};
@@ -8012,7 +7941,7 @@ function renderCodex(){
     const mods=(sp.mods||[]).slice(0,4);
     const modHtml=mods.length?'<span class="mods">'+mods.map(m=>'<em>'+m+'</em>').join('')+'</span>':'';
     const ccx=creatureCondition(sp.genome);
-    return '<div class="sp'+(foil?' iridframe':'')+'" data-pick="'+sp.id+'" role="button" tabindex="0" style="'+bstyle+'"><img class="art" src="'+sp.art+'" alt="">'+
+    return '<div class="sp'+(foil?' iridframe':'')+'" data-pick="'+sp.id+'" role="button" tabindex="0" style="'+bstyle+'"><img class="art" src="'+artOf(sp)+'" alt="">'+
       '<div class="info"><div class="nm">'+(REALM_ICON[realm]||KIND_ICON[sp.kind]||'')+' '+sp.name+' '+rar+
       (sp.id===scoutId?'<span class="scouttag">SCOUT</span>':'')+
       (ccx.h>0?' <span style="color:'+ccx.col+';font-size:9px">● '+ccx.label+'</span>':'')+
@@ -8871,7 +8800,8 @@ function queueSave(){ if(_loading||_wiping) return; clearTimeout(_saveT); _saveT
 function doSave(){
   if(_wiping) return;   /* a reset is in progress — never re-create the save on unload */
   try{
-    const log=[...logMap.values()].sort((a,b)=>b.t-a.t).slice(0,120);
+    const log=[...logMap.values()].sort((a,b)=>b.t-a.t).slice(0,120)
+      .map(e=>e.id&&e.id[0]==='p'?Object.assign({},e,{thumb:null}):e);   /* planet thumbs rebuild from seed (C1) */
     localStorage.setItem(SAVE_KEY, JSON.stringify({
       v:4, epoch:COSMIC_EPOCH,
       view:whereOfView(),
@@ -8989,7 +8919,7 @@ function loadSave(){
     for(const s of (data.evts||[])) eventKeysSeen.add(s);
     for(const s of (data.evann||[])) _evAnnounced.add(s);
     for(const a of (data.ach||[])) unlocked.add(a);
-    for(const e of (data.codex||[])){ if(e && e.g) _storeSpecies(e.g, e.f, e.w||null); }
+    for(const e of (data.codex||[])){ if(e && e.g) _storeSpecies(e.g, e.f, e.w||null, true); }
     /* the field scout must still exist in the Compendium (it may have been
        bred away, fed away, or lost) — a stale id silently stands down */
     scoutId=(typeof data.scout==='string' && codex.has(data.scout)) ? data.scout : null;
@@ -9092,6 +9022,7 @@ function wipeSaveAndReload(){
   try{ startNewGame(); }catch(_){}
   try{ if(!explorerName || explorerName==='Explorer') askExplorerName(true); }catch(_){}
   try{ renderRank(); renderHP(); updatePrimeBtn(); renderPrime(); }catch(_){}
+  try{ _lastVista=null; vistaBox.classList.remove('on'); vistaBox.style.display='none'; }catch(_){}
   _wiping=false;                      /* the rebuilt fresh game saves normally */
 }
 window.addEventListener('beforeunload', doSave);
@@ -9225,11 +9156,11 @@ function runSearch(qRaw){
   _srOut=[];
   for(const it of logMap.values()){
     if(((it.title||'')+' '+(it.sub||'')).toLowerCase().includes(q))
-      _srOut.push({nm:it.title, ds:it.sub||'Star Atlas', thumb:it.thumb, go:{log:it.id}});
+      _srOut.push({nm:it.title, ds:it.sub||'Star Atlas', thumb:atlasThumb(it), go:{log:it.id}});
   }
   for(const e of codex.values()){
     if(((e.name||'')+' '+(e.kind||'')+' '+(e.from||'')).toLowerCase().includes(q))
-      _srOut.push({nm:e.name, ds:e.kind+' · '+e.from, thumb:e.art, go:{sp:e.id}});
+      _srOut.push({nm:e.name, ds:e.kind+' · '+e.from, thumb:artOf(e), go:{sp:e.id}});
   }
   _srOut=_srOut.slice(0,12);
   if(!_srOut.length){
@@ -10315,7 +10246,7 @@ function openPicker(mode, base){
         const p=S.ab.gutsy?0:clamp(0.10+t*0.06-S.res/700,0.04,0.55);
         oddsTxt='+'+(1+t)+' growth &nbsp;·&nbsp; ☠ '+Math.round(p*100)+'% poison'; oddsCol=p<0.15?'#7fe6a0':(p<0.3?'#ffd96a':'#ff8a72');
       }
-      return '<div class="cand" data-pk="'+e.id+'"><img src="'+e.art+'" alt="">'+
+      return '<div class="cand" data-pk="'+e.id+'"><img src="'+(e.art||(e.genome?artOf(e):e.art))+'" alt="">'+
         '<div class="m"><div class="nm" style="color:'+(e.grade?e.grade.hex:'')+'">'+e.name+'</div>'+
         '<div class="ds">'+(e.grade?e.grade.name:'')+' · '+e.kind+(e.hybrid?' · hybrid':'')+'</div></div>'+
         '<span class="odds" style="color:'+oddsCol+'">'+oddsTxt+'</span></div>';
@@ -10329,7 +10260,7 @@ pickList.addEventListener('click', e=>{
     const pk=c.dataset.pk;
     let champ=null;
     if(pk==='__self__') champ=playerCombatant();
-    else { const en=codex.get(pk); if(en) champ={name:en.name, genome:en.genome, art:en.art, id:en.id, grade:en.grade}; }
+    else { const en=codex.get(pk); if(en) champ={name:en.name, genome:en.genome, art:artOf(en), id:en.id, grade:en.grade}; }
     if(champ && _conquerTarget && _conquerNative) runConquestBattle(_conquerTarget, champ, _conquerNative);
     return;
   }
@@ -10571,7 +10502,7 @@ const GUIDE=[
  {id:'stats', t:'The five stats', k:'vitality ferocity resilience agility insight stats grow flora character', body:
   '<p>You fight with five stats, each starting at 50 and grown permanently by eating flora:</p><ul><li><b style="color:#7fe6a0">Vitality</b> — your life pool; sets max HP (×2) and duel toughness.</li><li><b style="color:#ff8a72">Ferocity</b> — attack power.</li><li><b style="color:#9fb4ff">Resilience</b> — blunts incoming damage.</li><li><b style="color:#ffd96a">Agility</b> — initiative; who strikes first.</li><li><b style="color:#d6a0ff">Insight</b> — critical-hit chance.</li></ul><p>Tap your nameplate to open your character sheet and inspect them. Creatures use the same five stats, rolled from their genomes.</p>'},
  {id:'hp', t:'HP, hazards & death', k:'hp health damage wound hazard death die expedition reset brink', body:
-  '<p>The frontier bites. You can be wounded by scanning hostile worlds, by champion duty (losing a conquest you fought yourself), and by toxic flora.</p><ul><li>Your HP bar lives in the top bar; max HP = Vitality × 2.</li><li>Heal by eating flora — tap the ❤ heart (see <span data-gt="eating">Eating flora</span>).</li><li>At 0 HP the expedition ends — the universe is unchanged (it’s math), but your record starts over. Don’t scan furnace worlds at 12 HP.</li></ul>'},
+  '<p>You can be wounded by scanning hostile worlds, by champion duty (losing a conquest you fought yourself), and by toxic flora.</p><ul><li>Your HP bar lives in the top bar; max HP = Vitality × 2.</li><li>Heal by eating flora — tap the ❤ heart (see <span data-gt="eating">Eating flora</span>).</li><li>At 0 HP the expedition ends — the universe is unchanged (it’s math), but your record starts over. Don’t scan furnace worlds at 12 HP.</li></ul>'},
  {id:'rank', t:'Ranks & expedition score', k:'rank score cadet scout pathfinder voyager pioneer cartographer wayfarer sovereign luminary eternal rename name change explorer', body:
   '<p>Everything you do — surveying, cataloguing, breeding, settling, dueling — feeds your <b>expedition score</b>, and score climbs the ten ranks: <em>Cadet → Scout → Pathfinder → Voyager → Pioneer → Star Cartographer → Mythic Wayfarer → Void Sovereign → Cosmic Luminary → Eternal Frontier</em>. Your rank rides on your nameplate and on everything you share.</p><p><b>Nameplate colors:</b> every rank carries its own color, unlocked forever the moment you reach it. Pick any unlocked color from your character sheet (tap your nameplate → Nameplate) — and <b>Eternal Frontier</b> unlocks the iridescent foil.</p><p><b>Renaming yourself:</b> the ✎ rename link atop your character sheet — or <b>Settings → Display → Explorer name</b> — changes your name anytime. Your record stays; only the name on it changes.</p>'},
  {id:'achievements', t:'Achievements', k:'achievements unlock badges trophies curator survivor', body:
@@ -10825,29 +10756,29 @@ const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 const RELEASES=[
 {v:'1.3', title:'The HD Frontier', date:'In development', sections:[
  ['✨ New Features & Systems', [
-  'HD landing vistas (beta) — Settings → Graphics → <b>Landing view: HD</b>. Planetfall opens a ground-level panorama built entirely from the world&#8217;s card: its biome, its civilization&#8217;s era, the local clock, the weather, auroras over magnetized worlds, and the world&#8217;s own creatures. Classic stays the default while the art grows.',
-  'No two worlds are the same painting anymore. Every vista now rolls its own horizon, sun, river course, islands and flora — and every world grows its own plant species, usually chlorophyll-green but sometimes golden, copper, even violet. Rare wonders are out there: rings arcing across the sky, a looming giant moon, bioluminescent shores, aurora veils in colors beyond the green. The universe finally has more sights than any one expedition will see.',
-  'HD creature portraits (beta, same switch) — every body plan in the Compendium finally looks like its card reads: armored backs, stilt-riders, tentacled bells, crystal-faceted hides, gelatinous drifters; fur, scales, feathers and warts; crystal antlers and mirrored eyes where the card says so. Apex Guardians glow inside a molten-gold aura, Paragons a silver-teal one. Eyeless things are, at last, eyeless.',
-  'Weather comes in spells — a world&#8217;s Weather row is its climate, not a life sentence. Rain showers pass, dust storms blow through, and the surface readout says clear skies between them. Snow country keeps its snow on the ground either way.',
+  'HD landing views. Turn on <b>Landing view: HD</b> under Settings → Graphics and landing on a world opens a painted view of where you&#8217;re standing. Everything in it comes from the survey card: the terrain, the weather, the time of day, who lives there, and what&#8217;s grazing nearby. Classic is still the default while we finish the art.',
+  'Worlds look different from each other now. The horizon, the sun, the rivers and the plants are all rolled per world, and plant life isn&#8217;t always green — you&#8217;ll run into golden, copper and violet forests if you travel enough. Some landings are stranger still: rings across the sky, a huge low moon, shores that glow in the dark.',
+  'HD creature portraits, on the same switch. Compendium art now matches what the card says — a tentacled creature has tentacles, an armored one has plates, an eyeless one has no eyes. Apex Guardians get a molten-gold aura and Paragons a silver-teal one.',
+  'Weather moves on. Rain showers pass and dust storms blow through instead of running forever; between spells the readout says clear skies. Snow stays on the ground in cold country either way.',
  ]],
  ['🎨 UI Enhancements', [
-  'The galaxy view earns its stars: every star now glows with its true class color — soft halos, diffraction spikes on the giants, a gentle twinkle on the brightest — and nebulae, dark clouds and supernova remnants are textured things instead of flat circles.',
-  'The picture now honors the card, everywhere. Hot worlds&#8217; oceans are truly &#8220;mostly evaporated&#8221; (brine basins and salt flats), frozen worlds&#8217; seas are ice; every civilized world&#8217;s night side glows with city lights scaled to its era; ringed worlds finally show their rings on the survey card; moons wear their true type colors in the system view; gas giants wear the auroras their cards promise; and each system&#8217;s planets are lit by their own star&#8217;s color.',
-  'Rarity celebration uncapped: an Omnipotent find now celebrates like one (the cinematic scaled with tier only up to Mythic before), summit-grade creatures wear their iridescent foil in the Compendium list too, and a caught Paragon&#8217;s Binder slot shows its true grade color. Silicon — one of the most-mined elements — finally got its own icon color.',
-  'Survey cards are yours to handle now: a locked card wears an <b>✕</b> to close it (tapping empty space still works), and you can <b>drag any open card by its header</b> — mouse or finger — to move it out of the way and keep reading the sky behind it.',
+  'Stars in the galaxy view now glow in their real class colors, with halos, spikes on the giants and a faint twinkle on the brightest. Nebulae, dark clouds and supernova remnants got proper texture instead of flat circles.',
+  'Planet art matches the survey card now. Hot worlds show dried seas and salt flats, frozen worlds show ice, civilized worlds light up at night by era, ringed worlds show their rings on the card, moons get their true colors, and each system&#8217;s planets are lit by their own star.',
+  'Big finds celebrate properly. The reveal cinematic used to stop scaling at Mythic; it now goes all the way up. Summit-grade creatures show their foil in the Compendium list, and a caught Paragon&#8217;s Binder slot uses its real grade color. Silicon also finally got its own icon color.',
+  'Survey cards are easier to handle: a locked card has an <b>✕</b> to close it (tapping empty space still works), and you can <b>drag any open card by its header</b> — mouse or finger — to get it out of the way.',
  ]],
 ]},
 {v:'1.2.6', title:'Ink & Ember', date:'July 2026', sections:[
  ['🎨 UI Enhancements', [
-  'Calmer reading everywhere: bold now marks only things you can press or proper names — about a hundred stray emphasis words across cards, battles, training and these very notes have relaxed back into plain text. (In the brighter Text tones, gold now always means “this is a thing,” never decoration.)',
-  'The Chronicle speaks in color, old-school MUD style: your champion reads cyan and the foe ember on every line, damage in yellow and criticals in gold, misses dim, staggers flash, burns glow orange, mending green, lifesteal violet, thorns lime — and a felled combatant falls in red. The verdict wears its outcome too: victory gold, defeat red. Shared battle logs stay plain text.',
-  'The same color language now runs through the whole expedition: pop-ups and the bell tray tint by event — red for harm and loss, gold for milestones and first contact, green for harvests, samples and mined hauls — and a world&#8217;s long-range glance tints each reading by family: water cyan, life green, signals violet. The <b>Compendium</b> marks your Field Scout in cyan, the <b>Star Atlas</b> tints its badges, and <b>Cosmic Events</b> each wear their nature&#8217;s color.',
+  'Calmer reading everywhere: bold now marks only things you can press or proper names — about a hundred stray emphasis words across cards, battles, training and these very notes have relaxed back into plain text. (In the brighter Text tones, gold marks interactive things.)',
+  'Battle text is color-coded, old-school MUD style. Your champion reads cyan, the foe ember. Damage is yellow, crits gold, misses dim, burns orange, mending green, lifesteal violet, thorns lime; a felled combatant falls in red. Victory prints gold, defeat red. Shared battle logs stay plain text.',
+  'Pop-ups and the bell tray use the same colors: red for harm, gold for milestones, green for gains. A world&#8217;s long-range glance tints its readings too (water cyan, life green, signals violet), the <b>Compendium</b> marks your Field Scout in cyan, and the <b>Star Atlas</b> and <b>Cosmic Events</b> follow suit.',
   'A full grammar and clarity pass over every word in the game: stale button names corrected, the settings guide caught up with three tabs of reality, one wandering “Codex” sent home to the Prime Codex, and the First Contact <em>achievement</em> renamed First Specimen so the real first contact could keep its name.',
  ]],
 ]},
 {v:'1.2.5', title:'First Contact', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
-  'First contact is an act, not a formality. Landing on an inhabited world attempts contact: most receptions are warm and open the census on the spot — but a wary one wounds you and the census stays sealed. Land again to retry. A named Field Scout takes the hit in your place, and conquest never needs to ask.',
+  'Landing on an inhabited world now attempts first contact. Most receptions are warm and open the census on the spot; a wary one wounds you and keeps the census sealed until you land again. A named Field Scout takes the hit in your place. Conquered worlds skip all of this.',
   'The Cargo hold is a real inventory now — a grid of item tiles, every element with its own icon: ingots for metals, shards for ices, flasks for gases, cut gems for the exotics. The <b>Research Bench</b> lives on its own tab, with the same icons in every recipe.',
  ]],
  ['🎨 UI Enhancements', [
@@ -10865,16 +10796,16 @@ const RELEASES=[
 ]},
 {v:'1.2', title:'The Discovery Arc', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
-  'Knowing a world now comes in three acts. A glance shows what a telescope sees — color class and long-range reads: atmosphere, water signatures, biosignatures, ⟁ signals (hover, on a computer; on a phone your tap goes straight to the survey). An orbital survey (tap) reads the environment and biosphere. And planetfall completes the picture: land on a world to run its ground survey.',
+  'You learn a world in three steps. A glance shows what a telescope sees — color class and long-range reads: atmosphere, water signatures, biosignatures, ⟁ signals (hover, on a computer; on a phone your tap goes straight to the survey). An orbital survey (tap) reads the environment and biosphere. And planetfall completes the picture: land on a world to run its ground survey.',
   '<b>Land buttons</b> — unlanded worlds now carry one on their card: <b>Land — make contact</b> on civilized worlds, <b>Land to prospect</b> on dead ones. One press flies you down; zooming in by hand still works.',
-  'Civilizations must be met, not scanned — from orbit an organized world is only ⟁ signals; land to make contact and read its census: tech era, local calendar, population.',
+  'You can&#8217;t read a civilization from orbit — all you get is ⟁ signals. Land and make contact to see its tech era, calendar and population.',
   'Prospecting takes boots on the ground — a dead world&#8217;s ⛏ Mine Deposits opens once you&#8217;ve landed on it. 🛰 Deep Scanners still read the veins from orbit.',
   'Worlds you&#8217;ve stood on wear a Ground-surveyed mark — and every world you charted, settled or mined before this update counts as ground-surveyed already: nothing you knew is re-hidden.',
   'Landing pays — your first footfall on any world collects field samples: a pinch of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration now stocks the Research Bench all by itself.',
   'Field Scouts — name one of your fauna the expedition&#8217;s scout (press <b>Scout</b> on its card) and it takes the hit when a bioscan turns hostile, through the same wounds-and-mending life every creature lives. A scout with nothing left is lost forever. Hunt tougher beasts to scan deadlier worlds.',
  ]],
  ['🛠 Under the Hood', [
-  'A cool-down for hot phones: the star field is painted once instead of every frame, survey readouts stop recomputing sixty times a second, the card layout no longer thrashes, and phones render at a tuned resolution. Same universe, cooler hands, longer batteries.',
+  'A cool-down for hot phones: the star field is painted once instead of every frame, survey readouts stop recomputing sixty times a second, the card layout no longer thrashes, and phones render at a tuned resolution.',
  ]],
  ['🎨 UI Enhancements', [
   'Survey-card headings dropped their emoji and line up cleanly again; the fold rows now say <b>expand</b> / <b>close</b> instead of a tiny triangle.',
@@ -10929,7 +10860,7 @@ const RELEASES=[
 {v:'1.0', title:'The Frontier Opens', date:'June 2026', sections:[
  ['🌌 An Infinite, Shared Universe', [
   'A deterministic procedural cosmos — every galaxy, star and world generated from seeds, identical for every explorer, fully offline, no account needed. Four seamless scales: universe → galaxy → star system → planet surface.',
-  'Hyperlane travel with real distance — far jumps take longer, and researched drives shrink the void to a breath. The tunnel wears your destination’s light; tap to skip.',
+  'Hyperlane travel with real distance — far jumps take longer, and researched drives cut travel times way down. The tunnel takes on your destination’s light; tap to skip.',
   'Survey cards for everything: worlds, stars, black holes, wormholes, supernovae, the CMB — and spectral designations that wear each object’s rarity as color.',
   'Frontier regions — your charter begins at the Solar Reach and expands with every Signature claimed: the Local Cluster, the Near Field, the Deep Field, the Outer Dark, and finally the Frontier. Farther regions field tougher defenders and stranger life.',
   'Cosmic events on every timescale — somewhere a star is always dying, and rarer spectacles cycle by the hour, week, month and year. Every explorer sees the same event at the same moment; the 📜 Witness Log remembers the skies you saw.',
@@ -10949,11 +10880,11 @@ const RELEASES=[
   'A living collection — your Compendium interbreeds and evolves on its own as the cosmic clock ticks, and worlds re-roll their rosters as the universe ages. Sapience tiers run from Instinctive to fully Sapient; whole worlds host civilizations from stone-age to starfaring.',
  ]],
  ['⚔ Battle', [
-  'Classes, XP & levels — every beast is born to one of 180+ classes (Warrior to Worldbreaker; the legendary ones live at the summit) with innate always-on arts. Power is built through wins — duels, conquests, guardians — and levels wake more arts, never raw stats.',
+  'Classes, XP & levels — every beast is born to one of 180+ classes (Warrior to Worldbreaker; the legendary ones live at the summit) with innate always-on arts. Power comes from winning — duels, conquests, guardians. Levels unlock more arts; stats never inflate on their own.',
   'An ability matrix of hundreds of arts (“Fire Reckoning III”), every verb balanced across thousands of simulated duels. Hybrids inherit their other parent’s archetype; guardians fight with Sovereign arts.',
   'The Chronicle — duels are narrated blow-by-blow like a tabletop session: initiative, named arts, executes, thorn recoils, burn ticks, death lines — closing with a statistics ledger and a shareable battle log.',
   'Conquest — champion worlds yourself or send a beast; settled worlds fly your flag, scan safely and pay Stardust. World fields make defenders fight in their element.',
-  'Wounds persist — conquest scars and resented meals leave a beast Bruised, Injured or Critical, fighting below its strength until mended. Feeding is medicine: loved flavours mend most, rarer flora mend deeper — and poison harder. The frontier bites you too: hostile bioscans cost HP, and at zero the expedition ends.',
+  'Wounds persist — conquest scars and resented meals leave a beast Bruised, Injured or Critical, fighting below its strength until mended. Feeding is medicine: loved flavours mend most, rarer flora mend deeper — and poison harder. Hostile bioscans cost you HP too, and at zero the expedition ends.',
  ]],
  ['🛠 Progression', [
   '<b>The Prime Codex</b> — nine Signatures to finish the Pathfinders’ unfinished master survey and reach the Celestial Frontier. Each carries their field notes; the Prism Signature is the discovery they died short of. Multiple endings.',
@@ -11124,7 +11055,7 @@ function openConquestPicker(d, native){
   _pickMode='conquer'; _pickBase=null;
   const nS=battleStats(native.genome);
   const fauna=[...codex.values()].filter(e=>e.kind==='Fauna')
-    .map(e=>({name:e.name, genome:e.genome, art:e.art, id:e.id, grade:e.grade}));
+    .map(e=>({name:e.name, genome:e.genome, art:artOf(e), id:e.id, grade:e.grade}));
   const champs=[playerCombatant(), ...fauna];
   document.getElementById('pick-title').textContent=(native.guardian?'👑 Challenge ':'⚔ Conquer ')+(d.title||'this world');
   document.getElementById('pick-note').innerHTML='Choose ONE champion to face this world\u2019s apex native, '+
@@ -11897,12 +11828,12 @@ function gameEvent(type, detail){
 
 const TUT_STEPS=[
  {id:'welcome', btn:'Begin Training',
-  text:()=>'Welcome to <b>Sol</b>, '+(explorerName||'Explorer')+' — humanity’s cradle and your first charter. Before the infinite opens, the order asks one thing of every new Pathfinder: <b>Field Training</b>.<br>Everything ahead is real practice — and nothing you lose in training follows you out.'},
+  text:()=>'Welcome to <b>Sol</b>, '+(explorerName||'Explorer')+' — humanity’s cradle and your first charter. The order asks one thing of every new Pathfinder first: <b>Field Training</b>.<br>It’s all real practice, and nothing you lose in training follows you out.'},
  {id:'find-earth', allow:['#cosmos','#panel'],
   text:()=>'First, find home. <b>Drag and zoom to Earth</b> — the blue world, third from the Sun — and <b>tap it</b> to open its survey card.',
   when:(t,d)=>t==='survey'&&d.planetSeed===133},
  {id:'survey-tour', spot:'#panel', btn:'Got It', allow:['#panel'],
-  text:()=>'This is a <b>survey card</b> — every world, star and galaxy has one, generated from pure math: atmosphere, climate, life, hazards. Every explorer in existence reads exactly this card at Earth. And a card is only the view from orbit — <b>zoom all the way into a world to land on it</b>, and its ground survey opens the rest.'},
+  text:()=>'This is a <b>survey card</b> — every world, star and galaxy has one: atmosphere, climate, life, hazards. The universe is generated, so every explorer sees this exact card at Earth. A card is only the view from orbit — <b>zoom all the way into a world to land on it</b> and the ground survey opens the rest.'},
  {id:'atlas-add', spot:'#panel [data-act="add"]', allow:['#panel'],
   text:()=>'Chart it. Tap <b>+ Add to Star Atlas</b> on Earth’s card — the Atlas is how you find your way back across the infinite.',
   when:(t,d)=>t==='atlas-add'&&d.id==='p133'},
@@ -11921,30 +11852,30 @@ const TUT_STEPS=[
   text:()=>'Time for a meal. Open a 🐾 beast in the Compendium, tap <b>Feed</b>, and pick a plant. The plant is always consumed — a welcome meal grows the beast’s bloodline permanently.',
   when:(t)=>t==='fed'},
  {id:'breed', allow:['#codex','#codexbtn'], enter:()=>{ _tutRig={breed:0.001}; },
-  text:()=>'Now forge a bloodline. Open a 🐾 beast, tap <b>Breed</b>, and choose a mate. Both parents are always consumed by the union — but tonight, the stars favor you.',
+  text:()=>'Now forge a bloodline. Open a 🐾 beast, tap <b>Breed</b>, and choose a mate. Both parents are always consumed by the union. (This training pair is a sure thing.)',
   when:(t)=>t==='bred'},
  {id:'duel', btn:'⚔ Begin Training Duel', stay:true,
   text:()=>'A new creature, born of two! Let’s see it fight. Duels run round by round on the five stats and abilities — and the same matchup plays out identically on every device. Press the button when ready.',
   when:(t)=>t==='duel-done'},
  {id:'hazard', spot:'#hpbar', btn:'Ouch — Got It',
   enter:()=>{ setTimeout(()=>{ try{ if(hp>20) damageExplorer(Math.min(15, hp-5), 'Your training rival got a parting nip in.'); }catch(_){} }, 400); },
-  text:()=>'…and your rival got a parting nip in. That bar up top is your HP. The frontier bites: hostile bioscans, toxic meals and championing your own conquests all wound you — and at 0 HP, the expedition ends.'},
+  text:()=>'…and your rival got a parting nip in. That bar up top is your HP. Hostile bioscans, toxic meals and fighting your own conquests can all wound you. At 0 HP the expedition ends.'},
  {id:'heal', spot:'#hpheart', allow:['#hpwrap'], enter:()=>{ _tutRig={heal:0.95}; },
   text:()=>'Heal up. Tap the <b>❤ heart</b> by your HP bar and eat a flora. Medicine restores HP and permanently grows one of your five battle stats — the deadliest medicine heals hardest.',
   when:(t,d)=>t==='healed'&&d.ok},
  {id:'tray', spot:'#bell', allow:['#bell','#tray'],
-  text:()=>'Everything that happens is remembered. Open the <b>🔔 notification tray</b> — your expedition’s running story, even when popups are silenced.',
+  text:()=>'Open the <b>🔔 notification tray</b> — it keeps a running log of everything that happened, even while popups are silenced.',
   when:(t,d)=>t==='tray'&&!!d.open},
  {id:'search', spot:'#searchin', allow:['#searchwrap','#searchin','#searchres'],
-  text:()=>'The infinite is searchable. Type <b>earth</b> in the search box — it finds anything you’ve discovered, and pasted CF1/CFB codes travel to worlds or summon creatures.',
+  text:()=>'Type <b>earth</b> in the search box — it finds anything you’ve discovered. Pasting a CF1/CFB code travels to that world or summons that creature.',
   when:(t,d)=>t==='searched'&&(d.q||'').toLowerCase().indexOf('ear')>=0&&d.n>0},
  {id:'sheet', spot:'#rank', allow:['#rank','#stats'],
   text:()=>'One last thing: <b>tap your nameplate</b> to open your character sheet — your five stats, rank, expedition statistics and achievements.',
   when:(t,d)=>t==='stats-open'&&!!d.open},
  {id:'horizon', spot:'#pcdxbtn', btn:'Got It',
-  text:()=>'You’re ready. Out there wait living worlds to scan (mind the danger %), worlds to <b>⚔ conquer</b> — fight as yourself, or send one of your beasts as champion — hourly ☄ <b>Stardust harvests</b> — and the nine <b>✦ Signatures</b> of the Prime Codex, the road to the Celestial Frontier. The <b>? Guide</b> (bottom right) explains every system, any time.'},
+  text:()=>'You’re ready. Scan living worlds (mind the danger %), <b>⚔ conquer</b> the ones worth keeping — fight yourself or send a beast as champion — and collect ☄ <b>Stardust harvests</b> every hour. The nine <b>✦ Signatures</b> of the Prime Codex are the long road. The <b>? Guide</b> (bottom right) explains every system, any time.'},
  {id:'finale', btn:'✦ Begin the Expedition', enter:()=>_tutCleanup(),
-  text:()=>'Field training complete, <b>'+(explorerName||'Explorer')+'</b>. The cache returns to the order — your Compendium stands empty, your wounds are mended, and Earth shines in your Star Atlas. Everything from here on is real.<br><br><em>Master the infinite.</em>'},
+  text:()=>'Field training complete, <b>'+(explorerName||'Explorer')+'</b>. The training cache goes back to the order — your Compendium is empty again, your wounds are mended, and Earth shines in your Star Atlas. The rest counts. Good hunting.'},
 ];
 
 const tutEl=document.createElement('div'); tutEl.id='tutbox'; document.body.appendChild(tutEl);
@@ -12049,7 +11980,7 @@ function _tutDuel(){
   if(!mine){ _tutAdvance(); return; }   /* nothing left to fight with — move on */
   const rg=makeGenome((Math.random()*0xFFFFFFFF)>>>0, 'fauna', 0.5);
   duelSetup.style.display='none'; duelFightBtn.style.display='none'; duelErr.textContent='';
-  fightNow({name:mine.name, genome:mine.genome, art:mine.art},
+  fightNow({name:mine.name, genome:mine.genome, art:artOf(mine)},
            {name:describeSpecies(rg).name+' (Training Rival)', genome:rg},
            {intro:'Training duel — '+mine.name+' squares up…'});
 }
