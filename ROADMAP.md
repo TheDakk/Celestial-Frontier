@@ -73,9 +73,27 @@
 ##  RELEASES[0] bullets written for everything Classic-visible (galaxy
 ##  stars, card-honest pictures, rarity uncap) + the HD infinity/portrait
 ##  additions folded into the HD bullets (rule 7 satisfied pre-deploy).
-##  BATCH G — FX & showpieces: tunnel variety/heat, I5 vista postcards,
-##            I6 battle arenas + guardian intro, F1 tile-proxy fallback,
-##            F3 surface aurora seeded hues, F4 cloud-shadow prerender.
+##  BATCH F2+G ✓ DONE (1c5e990): painterly player avatar, tunnel
+##            per-destination lanes + outward rush + heat fix, vista
+##            POSTCARDS (PNG with name + CF1 code baked in), conquest
+##            ARENAS (defender's biome behind the duel card) + guardian
+##            entrance cinematic w/ portrait, PER-SEED galaxy sprites
+##            (kind-locked to the card; archetype placeholder + LRU
+##            bake). Also earlier: fungi/microbe painterly portraits,
+##            rarity AURAS (grade-scaled; Nick's foil call), HD material
+##            icons, atlas live thumbs, lazy art, dead code purge, human
+##            copy pass over intro/notes/training.
+##  HD IS ALWAYS ON (Nick's ship call, 2026-07-18, f9c6012): the Landing
+##            view setting is GONE; old saves' hd field ignored. BASELINE
+##            RE-PIN: exactly one probe (speciesPortrait art bytes)
+##            changed; all 49 domain probes verified byte-identical
+##            before the surgical single-key re-pin (note in
+##            baseline.json). Wholesale regeneration remains banned.
+##  STILL DEFERRED: real crescent phases (runtime shadow mask conflicts
+##            with night-side city lights baked into planet sprites —
+##            needs a sprite relight rework); F1 tile-proxy fallback,
+##            F3 surface aurora seeded hues, F4 cloud-shadow prerender
+##            (minor surface-view polish).
 ##  NICK DECISIONS PENDING (domain/baseline changes, NOT built):
 ##  - V2 galaxy interior morphology (ellipticals stop being spirals) —
 ##    moves star positions vs the determinism baseline.
