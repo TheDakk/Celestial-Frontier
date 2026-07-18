@@ -577,6 +577,29 @@
 ##     honesty over flair on search thumbs)
 ##  + language pass (training un-bolded to functional-only, descent
 ##     language replaces zoom-to-land everywhere, intro tightened)
+## PRE-SHIP REVIEW (2026-07-18, Nick's final-check ask; 2 review agents
+## + self-review, findings fixed in-batch):
+##  FIXED: per-frame biomeFor/wxEventFor alloc on the surface status
+##  line (heat rule — now env-cached per spell bucket); stale descent
+##  confirm on zoom-out/travel (_descAbort); cached vista header lost
+##  the biome name on re-view; the mining Guide topic still taught
+##  "zoom all the way in" (G10 residual); Atlas entries now BOOKMARK
+##  UNDER THE BIOME NAME (G6 real fix — "swamp"/"carbon" searchable;
+##  pre-1.3.5 entries keep type labels, honest); hull1 now trims
+##  wave-off scrapes (G4 promise); gold "Through the fire" toast on
+##  first grounding of a <=30% world (G7); 7 Guide teaching lines
+##  (G19: survey/discover/kingdoms/breeding/colors/charters/search);
+##  'Against All Odds' achievement — catalogue an extremophile (G1);
+##  cross-pool breeding smoke checks (G2).
+##  DEFERRED, NOW RECORDED (completeness agent caught the silent
+##  drop): HAZARDOUS FLORA (spore-bursts/snap-traps/acid sap + the
+##  fatal-meal linkage G15 + scout-absorbed sample scrapes) — NOT
+##  BUILT in v1.3.5; queue with the 5b portrait-materials work.
+##  Also still open as candidates: 'Witness a colossal wanderer'
+##  charter; first-sighting gold caption for wanderers; per-hue
+##  color rarity (currently 17 hides uniform ~5.9% — finish rarity
+##  rides the creature tier instead; making hues rarer for NEW
+##  creatures is a domain call for Nick).
 ## SUITES AT BUMP: fingerprint 50/50 byte-identical (zero re-pins
 ## needed), smoke 211/211 (+38 new checks), systems 19/19, balance
 ## PASS. New tools: proofsheet.js + sheets/ (headless-Edge art review;
