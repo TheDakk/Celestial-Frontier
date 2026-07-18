@@ -913,11 +913,17 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // a fresh one → on), and a high-tier designation clamps to the ring
     check('ring spectrum: a fresh expedition ringlaws its worlds', skH._ringWorlds === true);
     {
-      const fakeD = { designation: { tier: 9, name: 'Celestial', hex: '#a8c8ff', hue: 'Blue' },
+      // a real ocean-ladder deep-spectrum designation ("Radiant Blue" = tier
+      // 9 on SPECTRA.ocean) clamps to the ring in ITS OWN spectral language
+      // ("Blue-Gold"), and the baked Spectral-class row rewrites with it
+      const fakeD = { designation: { tier: 9, name: 'Celestial', hex: '#a8c8ff', label: 'Radiant Blue' },
+        rows: [['Spectral class', 'Radiant Blue — Celestial', 'grade']],
         where: { gal: { seed: 999 }, star: { x: 560, y: 170, seed: 424242 } }, planetSeed: 555 };
       skH.ringDesignation(fakeD);
-      check('ring spectrum: a deep-spectrum WORLD near home wears the ring cap', fakeD.designation.tier === 5
-        && /Gold/.test(fakeD.designation.label));
+      check('ring spectrum: a deep-spectrum WORLD near home clamps in its own spectral language',
+        fakeD.designation.tier === 5 && fakeD.designation.label === 'Blue-Gold');
+      check('ring spectrum: the Spectral-class card row speaks the clamped designation',
+        fakeD.rows[0][1] === 'Blue-Gold — Legendary');
     }
     {
       // a forced high-tier genome catalogued in the Neighborhood clamps to 5;
