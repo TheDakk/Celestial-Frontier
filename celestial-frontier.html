@@ -1716,37 +1716,53 @@ function surfaceColor(P, u, lat, fbm, fx){
     const hotB=fx&&fx.band==='hot', coldB=fx&&(fx.band==='cold'||fx.band==='frozen');
     /* life richness tints the greenery once the card is known (V9) */
     const vegSat=fx&&fx.lush===false?16:42, vegSat2=fx&&fx.lush===false?14:40;
+    /* polish pass (Nick: "blend the terrain and oceans so it looks
+       coherent"): every boundary — caps, coastlines, arid patches,
+       snowlines, salt flats — feathers over a smoothstep zone instead
+       of cutting on a hard threshold */
+    const sm=(v,a,b2)=>{const x2=clamp((v-a)/(b2-a),0,1);return x2*x2*(3-2*x2)};
     if(coldB){
-      if(polar>0.30 && e>0.30) return [238,244,250];
-      if(e<0.44) return mix([176,200,220],[214,232,244], e/0.44);   /* sea ice */
-      if(e<0.505) return [206,216,228];
-      const taiga=hsl(P.landHue, 20, 26);
-      if(e<0.60) return mix([216,226,236], taiga, 0.5*(1-(e-0.505)/0.095));
-      return mix([218,228,236],[242,246,252],(e-0.60)/0.4);
+      let c;
+      if(e<0.44) c=mix([176,200,220],[214,232,244], e/0.44);   /* sea ice */
+      else {
+        const taiga=hsl(P.landHue, 20, 26);
+        c=mix([206,216,228], mix([216,226,236],taiga,0.5), sm(e,0.44,0.56));
+        c=mix(c,[242,246,252], sm(e,0.56,0.95));
+      }
+      return mix(c,[240,246,252], Math.min(1, sm(polar,0.22,0.50)*sm(e,0.24,0.44)+sm(polar,0.55,0.82)));
     }
     if(hotB){
-      if(e<0.30) return mix([40,80,104],[96,134,144], e/0.30);      /* brine basins */
-      if(e<0.36) return [192,174,128];                              /* salt flats */
-      const dst=mix([206,168,104],[160,122,74], fbm(u*3.1+50, lat*3.1+9, 4));
-      if(e<0.72) return dst;
-      return mix(dst,[226,222,216],(e-0.72)/0.28);
+      let c;
+      if(e<0.30) c=mix([40,80,104],[96,134,144], e/0.30);      /* brine basins */
+      else {
+        const dst=mix([206,168,104],[160,122,74], fbm(u*3.1+50, lat*3.1+9, 4));
+        c=mix([192,174,128], dst, sm(e,0.32,0.46));            /* salt flats feather out */
+        c=mix(c,[226,222,216], sm(e,0.72,0.95));
+      }
+      return c;
     }
-    if(polar>0.86-P.iceAmt*0.1 || (polar>0.72 && e>0.58)) return [236,244,250];
-    if(e<0.44) return mix([8,38,92],[20,82,150], e/0.44);
-    if(e<0.485) return mix([20,82,150],[64,150,185],(e-0.44)/0.045);
-    if(e<0.505) return [198,182,134];
-    const arid = polar<0.38 && fbm(u*2.6+50, lat*2.6+9, 4)>0.56;
-    if(arid) return mix([196,164,104],[168,134,82], fbm(u*7,lat*7,3));
-    const veg = hsl(P.landHue, vegSat, 32);
-    if(e<0.60) return mix(hsl(P.landHue,vegSat2,42), veg, (e-0.505)/0.095);
-    if(e<0.72) return mix(veg,[118,102,82],(e-0.60)/0.12);
-    return [228,228,234];
+    let c;
+    if(e<0.44){
+      c=mix([8,38,92],[20,82,150], e/0.44);
+      c=mix(c,[52,128,172], sm(e,0.38,0.44));                  /* shallows approach the coast */
+    } else {
+      const veg=hsl(P.landHue, vegSat, 32), vegHi=hsl(P.landHue, vegSat2, 42);
+      let land=mix(vegHi, veg, sm(e,0.50,0.62));
+      land=mix(land,[118,102,82], sm(e,0.60,0.74));
+      land=mix(land,[228,228,234], sm(e,0.72,0.86));           /* snowline feathers in */
+      const aridT=sm(fbm(u*2.6+50, lat*2.6+9, 4),0.50,0.64)*(1-sm(polar,0.30,0.46));
+      land=mix(land, mix([196,164,104],[168,134,82], fbm(u*7,lat*7,3)), aridT);
+      c=mix([64,150,185], mix([198,182,134],land, sm(e,0.468,0.535)), sm(e,0.44,0.492));
+    }
+    const capT=Math.max(sm(polar,0.80-P.iceAmt*0.1,0.95), sm(polar,0.62,0.84)*sm(e,0.52,0.66));
+    return mix(c,[236,244,250], capT);
   }
   if(t==='ocean'){
-    if(polar>0.88) return [232,242,250];
-    if(e<0.62) return mix([6,30,86],[24,96,164], e/0.62);
-    if(e<0.65) return [70,160,190];
-    return mix([190,176,130], hsl(P.landHue,35,38), (e-0.65)*6);
+    const smO=(v,a,b2)=>{const x2=clamp((v-a)/(b2-a),0,1);return x2*x2*(3-2*x2)};
+    let c;
+    if(e<0.62) c=mix([6,30,86],[24,96,164], e/0.62);
+    else c=mix([70,160,190], mix([190,176,130], hsl(P.landHue,35,38), smO(e,0.65,0.80)), smO(e,0.62,0.66));
+    return mix(c,[232,242,250], smO(polar,0.80,0.93));   /* feathered pack ice */
   }
   if(t==='ice'){
     const cr=fbm(u*4+7, lat*4+3, 4);
@@ -5012,17 +5028,24 @@ function decoSprite(dc){
       g.fillRect(C+Math.cos(a2)*d2, C+Math.sin(a2)*d2, 1.4, 1.4);
     }
   } else if(dc.k==='mol'){
-    for(let i=0;i<12;i++){
-      const a=r()*TAU, d=Math.pow(r(),1.4)*C*0.55;
-      const bx=C+Math.cos(a)*d, by=C+Math.sin(a)*d, br=C*(0.16+r()*0.30);
+    /* dark clouds DIM the starlight — they must never read as black
+       holes punched in the disk (Nick's splotch report). Soft wide
+       falloff, gentle alphas, one feathered mass instead of blob piles. */
+    const mg2=g.createRadialGradient(C,C,0,C,C,C*0.72);
+    mg2.addColorStop(0,'rgba(16,12,24,0.34)');
+    mg2.addColorStop(0.55,'rgba(22,16,32,0.18)');
+    mg2.addColorStop(1,'rgba(22,16,32,0)');
+    g.fillStyle=mg2;g.beginPath();g.arc(C,C,C*0.72,0,TAU);g.fill();
+    for(let i=0;i<8;i++){
+      const a=r()*TAU, d=Math.pow(r(),1.4)*C*0.4;
+      const bx=C+Math.cos(a)*d, by=C+Math.sin(a)*d, br=C*(0.20+r()*0.26);
       const ng=g.createRadialGradient(bx,by,0,bx,by,br);
-      ng.addColorStop(0,'rgba(10,7,16,'+(0.35+r()*0.35).toFixed(3)+')');
-      ng.addColorStop(0.7,'rgba(36,26,48,'+(0.12+r()*0.12).toFixed(3)+')');
-      ng.addColorStop(1,'rgba(36,26,48,0)');
+      ng.addColorStop(0,'rgba(14,10,22,'+(0.10+r()*0.10).toFixed(3)+')');
+      ng.addColorStop(1,'rgba(22,16,32,0)');
       g.fillStyle=ng;g.beginPath();g.arc(bx,by,br,0,TAU);g.fill();
     }
-    g.strokeStyle='rgba(120,96,150,0.16)';g.lineWidth=1;  /* faint rim light */
-    g.beginPath();g.arc(C,C,C*0.55,r()*TAU,r()*TAU+2.2);g.stroke();
+    g.strokeStyle='rgba(140,112,170,0.12)';g.lineWidth=1;  /* faint rim light */
+    g.beginPath();g.arc(C,C,C*0.5,r()*TAU,r()*TAU+2.0);g.stroke();
   } else if(dc.k==='rem'){
     g.globalCompositeOperation='lighter';
     for(let i=0;i<26;i++){  /* filamentary shell, not a clean circle */
@@ -6281,8 +6304,13 @@ function hdVista(opts){
         const gcv=opts.pal==='night'?'205,220,255':(dusk?'255,206,142':'255,244,210');
         const gka=opts.pal==='night'?0.4:1;
         for(let gl=0;gl<26;gl++){const t6=0.1+r()*0.7,p4=riverAt(t6);
+          /* sparkles stay INSIDE the water: offset and dash length are
+             clamped to the river's true width at this bend (Nick's
+             "reflections way off" report — they used to land on grass) */
+          const rw6=2+t6*t6*74;
           g.fillStyle='rgba('+gcv+','+((0.25+r()*0.4)*gka).toFixed(3)+')';
-          g.fillRect(p4[0]+(r()-0.5)*(3+t6*46),p4[1]+(r()-0.5)*5,2+r()*7,1.4);}
+          g.fillRect(p4[0]+(r()-0.5)*rw6*0.66, p4[1]+(r()-0.5)*4,
+            Math.min(2+r()*7, rw6*0.4), 1.4);}
         g.globalCompositeOperation='source-over';}
       if(frozen){ /* pressure cracks in the ice ribbon */
         g.strokeStyle='rgba(116,146,170,0.5)';g.lineWidth=1;
