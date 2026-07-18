@@ -5639,10 +5639,10 @@ function drawSurface(time){
       /* only fauna that can STAND join the landing party — the card's own
          locomotion/habitat words (swimmers of the open ocean, drifters of
          the cloud decks) must never render as a legged beast on the shore */
-      const genes=(_lastDesc.species||[]).filter(gg=>gg.kingdom==='fauna'
+      const standable=(_lastDesc.species||[]).filter(gg=>gg.kingdom==='fauna'
         && !/swim|float|filter|drift/.test(FA_LOCO[(gg.loco||0)%FA_LOCO.length]||'')
-        && !/open ocean|sea shallows|cloud decks|vent fields/.test(FA_HABITAT[(gg.habitat||0)%FA_HABITAT.length]||''))
-        .slice(0,2).map(hdGenesFor);
+        && !/open ocean|sea shallows|cloud decks|vent fields/.test(FA_HABITAT[(gg.habitat||0)%FA_HABITAT.length]||''));
+      const genes=standable.slice(0,3).map(hdGenesFor);
       /* the Life row decides whether the vista grows anything at all;
          the Water row decides the river */
       const lifeRow=_lastDesc.rows&&_lastDesc.rows.find(rr=>rr[0]==='Life');
@@ -5652,7 +5652,8 @@ function drawSurface(time){
       const waterV=/Liquid|rivers|ocean/i.test(waterTxt)?'liquid':(/Frozen/i.test(waterTxt)?'frozen':(waterRow?'none':'liquid'));
       const todV=tod==='daytime'?'day':tod;
       showVistaBox(P, todV, (env.wx&&wxNow)?effWx:null, era, genes, env.hasField,
-        floraOk, env.wx&&effWx==='snow', waterV);
+        floraOk, env.wx&&effWx==='snow', waterV,
+        {ring:P.ring, stc:(st.star&&st.star.c)||null, herd:standable.length});
     }catch(_){}
   }
   if(_vistaPend && !hdOn) _vistaPend=false;
@@ -5845,8 +5846,8 @@ function _hdPlaceBeast(g,bcv,x,groundY,scale,flip,hazeAmt,warm,tuft,hazeCol){
 }
 /* the volcano that rules an ember world's mid-ground — cone, crater glow,
    a lava trickle down the flank, smoke drifting leeward */
-function _hdVolcano(g,W,hz,seed,r){
-  const vx=W*0.62, vy=hz-88, bw=150, by2=hz+18;
+function _hdVolcano(g,W,hz,seed,r,vx0){
+  const vx=vx0||W*0.62, vy=hz-88, bw=150, by2=hz+18;
   g.fillStyle='#301410';
   g.beginPath();g.moveTo(vx-bw,by2);
   g.quadraticCurveTo(vx-bw*0.28,vy+26,vx-16,vy);
@@ -5892,21 +5893,45 @@ function hdVista(opts){
   const flora=opts.flora!==false;
   const water=opts.water||'liquid';
   const civ=opts.era||'none';
-  const hz=H*0.50,sx=W*0.72,sy=dusk?hz-30:H*0.15;
+  /* THE INFINITY DIALS (L1): every fixed anchor becomes a seeded
+     parameter — two worlds of the same type stop being the same
+     painting. All presentation-layer; determinism holds per seed. */
+  const rL=mulberry32((seed^0x1A70)>>>0);
+  const hz=H*(0.465+rL()*0.075);
+  const sx=civ==='none'?W*(0.24+rL()*0.54):W*(0.60+rL()*0.24);   /* keep the sun off the skyline */
+  const sy=dusk?hz-30:H*0.15;
+  const cmpFlip=rL()<0.5, cmpShift=(rL()-0.5)*W*0.22;
+  const rX=x=>cmpFlip?W-x:x;
+  /* wonder rolls (L3) — rare, card-derived: rings overhead, a looming
+     primary moon, bioluminescent shores; combinations rarer still */
+  const rW=mulberry32((seed^0x0B0E)>>>0);
+  const bigMoon=(opts.moons||0)>0 && rW()<0.06;
+  const bioLume=rW()<0.10 && flora && (opts.pal==='night');
+  const ringSky=!!opts.ring;
+  /* the star's own light (I2): blend its color into sun + crest */
+  let sunC='#fff6dc', sunHalo='255,246,220';
+  if(opts.stc){
+    const sn=parseInt(String(opts.stc).slice(1),16);
+    const sr=(sn>>16)&255, sg9=(sn>>8)&255, sb=sn&255;
+    const bl=(a,b2)=>Math.round(a*0.42+b2*0.58);
+    sunHalo=bl(sr,255)+','+bl(sg9,246)+','+bl(sb,220);
+    sunC='rgb('+bl(sr,255)+','+bl(sg9,246)+','+bl(sb,220)+')';
+  }
   const sky=g.createLinearGradient(0,0,0,hz+8);
   sky.addColorStop(0,P.skyTop);sky.addColorStop(0.62,P.skyMid);sky.addColorStop(1,P.skyHz);
   g.fillStyle=sky;g.fillRect(0,0,W,hz+8);
   if(opts.pal==='night'){
     for(let s5=0;s5<220;s5++){g.fillStyle='rgba(255,255,255,'+(0.15+r()*0.6)+')';
       g.fillRect(r()*W,r()*hz*1.1,1.1+(r()<0.06?1:0),1.1);}
-    const mns=opts.moons||0,mpx=W*0.15,mpy=H*0.10;
+    const mns=opts.moons||0,mpx=W*0.15,mpy=bigMoon?H*0.16:H*0.10;
     for(let mn=0;mn<Math.min(mns,3);mn++){
-      const mxx=mn===0?mpx:W*(0.30+mn*0.09),myy=mn===0?mpy:H*(0.07+mn*0.04),mr=mn===0?13:6-mn;
-      const mg3=g.createRadialGradient(mxx,myy,2,mxx,myy,mr*(mn===0?11:6));
+      /* the wonder roll: ~6% of moonlit worlds hang a LOOMING primary */
+      const mxx=mn===0?mpx:W*(0.30+mn*0.09),myy=mn===0?mpy:H*(0.07+mn*0.04),mr=mn===0?(bigMoon?30:13):6-mn;
+      const mg3=g.createRadialGradient(mxx,myy,2,mxx,myy,mr*(mn===0?(bigMoon?5:11):6));
       mg3.addColorStop(0,'rgba(216,230,252,'+(mn===0?0.55:0.3)+')');
       mg3.addColorStop(0.3,'rgba(190,208,240,'+(mn===0?0.18:0.08)+')');
       mg3.addColorStop(1,'rgba(190,208,240,0)');
-      g.fillStyle=mg3;g.beginPath();g.arc(mxx,myy,mr*(mn===0?11:6),0,7);g.fill();
+      g.fillStyle=mg3;g.beginPath();g.arc(mxx,myy,mr*(mn===0?(bigMoon?5:11):6),0,7);g.fill();
       g.fillStyle=mn===0?'#e9f0fa':'#c4d0e4';g.beginPath();g.arc(mxx,myy,mr,0,7);g.fill();
       g.fillStyle='rgba(150,168,196,0.55)';
       g.beginPath();g.arc(mxx-mr*0.3,myy-mr*0.2,mr*0.22,0,7);g.fill();
@@ -5922,13 +5947,32 @@ function hdVista(opts){
       g.fillStyle='rgba(255,255,255,'+(0.08+r()*0.3*(1-syy/(hz*0.55))).toFixed(3)+')';
       g.fillRect(r()*W,syy,1,1);}
   }
+  if(ringSky){
+    /* the world's own rings arc across its sky — the card fact P.ring,
+       finally visible from the ground (I3) */
+    const ra2=(rL()-0.5)*0.5, rw2=H*(0.05+rL()*0.05), rcy=hz*(0.40+rL()*0.30);
+    g.save();g.translate(W*0.5,rcy);g.rotate(ra2*0.5);
+    const band=g.createLinearGradient(0,-rw2,0,rw2);
+    const rA=opts.pal==='night'?0.20:(dusk?0.16:0.11);
+    band.addColorStop(0,'rgba(220,228,244,0)');
+    band.addColorStop(0.5,'rgba(220,228,244,'+rA+')');
+    band.addColorStop(1,'rgba(220,228,244,0)');
+    g.fillStyle=band;g.fillRect(-W*0.8,-rw2,W*1.6,rw2*2);
+    g.strokeStyle='rgba(235,240,250,'+(rA*0.9).toFixed(3)+')';g.lineWidth=1.1;
+    g.beginPath();g.moveTo(-W*0.8,-rw2*0.25);g.lineTo(W*0.8,-rw2*0.25);g.stroke();
+    g.restore();
+  }
   if(opts.aurora&&opts.pal==='night'){
-    /* auroras crown magnetized worlds at night — same card fact, same twin
-       hues as the live surface (green 140 / violet 280). Columns overlap
-       2× (step 3, width 6, alphas halved) so the ribbon reads as one
-       smooth veil, not stripes. */
+    /* auroras crown magnetized worlds at night — hue pair now SEEDED per
+       world (infinity L1): most wear the classic green/violet family,
+       but teal, blue, rose and gold veils are out there */
+    /* hues draw from real auroral families (greens/cyans/violets/roses) —
+       an unconstrained roll lands on olive and reads as murk, not aurora */
+    const AURF=[132,158,185,205,275,295,318,345];
+    const ah1=AURF[(rW()*AURF.length)|0]+(rW()-0.5)*14;
+    const ah2=AURF[(rW()*AURF.length)|0]+(rW()-0.5)*14;
     g.save();g.globalCompositeOperation='lighter';
-    for(const[hue,off,amp,al] of [[140,H*0.06,30,0.15],[280,H*0.15,42,0.10]]){
+    for(const[hue,off,amp,al] of [[ah1,H*0.06,30,0.15],[ah2,H*0.15,42,0.10]]){
       const ph1=r()*TAU, ph2=r()*TAU;
       for(let ax=-3;ax<=W;ax+=3){
         const base=off+Math.sin(ax*0.011+ph1)*amp*0.55+Math.sin(ax*0.0042+ph2)*amp*0.45
@@ -5947,12 +5991,14 @@ function hdVista(opts){
     const hRad=dusk?200:(sea?110:150);   /* the open-sea sky can't hide a heavy glare */
     const hK=(sea&&!dusk?0.62:1)*P.sun;
     const halo=g.createRadialGradient(sx,sy,4,sx,sy,hRad);
-    const hc=dusk?'255,166,96':(desert?'236,200,150':'255,246,220');
+    /* clear-day sunlight carries the STAR's color (I2): a red dwarf's
+       noon is amber-rose, an A-star's is white glare */
+    const hc=dusk?'255,166,96':(desert?'236,200,150':sunHalo);
     const hc2b=dusk?'255,140,80':'255,236,190';
     halo.addColorStop(0,'rgba('+hc+','+(0.9*hK).toFixed(3)+')');halo.addColorStop(0.25,'rgba('+hc2b+','+(0.5*hK).toFixed(3)+')');halo.addColorStop(1,'rgba('+hc2b+',0)');
     g.fillStyle=halo;g.beginPath();g.arc(sx,sy,hRad,0,7);g.fill();
     g.globalAlpha=desert?0.7:(P.sun<0.4?0.4:1);
-    g.fillStyle=dusk?'#ffce8e':(desert?'#f0dcb4':'#fff6dc');
+    g.fillStyle=dusk?'#ffce8e':(desert?'#f0dcb4':sunC);
     g.beginPath();g.arc(sx,sy,dusk?15:13,0,7);g.fill();g.globalAlpha=1;
   }
   if(opts.pal==='rain'){
@@ -5991,7 +6037,7 @@ function hdVista(opts){
   ];
   const zx0=W*0.34,zx1=W*0.70;let plat=0,ridge2=[];
   if(!sea)LAY.forEach(function(Ly,li){
-    if(ember&&li===2)_hdVolcano(g,W,hz,seed,r);
+    if(ember&&li===2)_hdVolcano(g,W,hz,seed,r,rX(W*(0.42+((seed>>>4)%100)/100*0.34)));
     const ys=[],platY=Ly.base-Ly.amp*0.55;
     for(let x=0;x<=W;x+=4){
       let y=Ly.base-_hdFbm(x*(desert?0.003:0.004)+li*13+seed%97,li*7,seed+li,Ly.oct)*Ly.amp*2+Ly.amp*0.6;
@@ -6018,7 +6064,21 @@ function hdVista(opts){
       g.fillStyle=fg;g.fillRect(0,Ly.base-26,W,60);}
   });
   const ridgeY=x=>{const i2=clamp(Math.round(x/4),0,ridge2.length-1);return ridge2[i2]||plat};
-  const pcv=_hdPlantBare(seed+2);
+  /* the world grows its OWN flora species (infinity L2): a leaf-hue
+     family (chlorophyll common; golden 4.5% / copper 3.5% / violet 1.5%
+     rare), seeded shape genes, and two species per world */
+  const rP=mulberry32((seed^0xF10A)>>>0);
+  let leafHue=98+rP()*44;
+  const morph=rP();
+  if(morph>0.985) leafHue=265+rP()*40;
+  else if(morph>0.950) leafHue=8+rP()*22;
+  else if(morph>0.905) leafHue=44+rP()*16;
+  const mkSp=()=>({
+    trunk:'hsl('+(((leafHue+140+rP()*60)%360)|0)+',20%,'+((10+rP()*8)|0)+'%)',
+    leaf:'hsla('+((leafHue+(rP()-0.5)*18)|0)+','+((40+rP()*30)|0)+'%,'+((28+rP()*16)|0)+'%,0.9)',
+    spread:0.8+rP()*0.7, depth:3+((rP()*2.4)|0), lean:0.1+rP()*0.5});
+  const pcv=_hdPlantBare(seed+2, mkSp());
+  const pcv2=_hdPlantBare(seed+9, mkSp());
   /* plant grading shared by every scene: winter frosts them, night turns
      them to silhouettes, dusk steeps them violet */
   const frost=opts.pal==='snow'?0.35:0;
@@ -6039,8 +6099,9 @@ function hdVista(opts){
   }
   if(!desert&&!sea&&!ember&&opts.pal!=='ice'&&opts.pal!=='grey'&&opts.pal!=='haze'){
     /* the river no longer vanishes when a civilization stands here (V7) —
-       the card's Water row said rivers, so the road fords one */
-    const rp=[[W*0.60,hz+30],[W*0.52,hz+90],[W*0.62,H*0.78],[W*0.40,H+20]];
+       the card's Water row said rivers, so the road fords one. The course
+       itself is seeded now: mirrored and shifted per world (L1). */
+    const rp=[[rX(W*0.60)+cmpShift,hz+30],[rX(W*0.52)+cmpShift,hz+90],[rX(W*0.62)+cmpShift,H*0.78],[rX(W*0.40)+cmpShift,H+20]];
     const riverAt=t=>{const a=rp[0],b=rp[1],c=rp[2],d=rp[3];
       return[(1-t)*(1-t)*(1-t)*a[0]+3*(1-t)*(1-t)*t*b[0]+3*(1-t)*t*t*c[0]+t*t*t*d[0],
              (1-t)*(1-t)*(1-t)*a[1]+3*(1-t)*(1-t)*t*b[1]+3*(1-t)*t*t*c[1]+t*t*t*d[1]]};
@@ -6077,24 +6138,34 @@ function hdVista(opts){
     }
     if(civ==='none'){
       const nightAmb=opts.pal==='night'?0.18:0;   /* moonlight knocks the near life back */
+      const bs=cmpFlip?-1:1;                       /* herd side follows the course */
       if(opts.genes&&opts.genes.length){
         const bcv=hdBeastBare(opts.genes[0],(seed^0x8EA)>>>0);
-        const pBank=riverAt(0.70);
-        _hdPlaceBeast(g,bcv,pBank[0]+66,pBank[1]+8,0.36,true,nightAmb,P.sun>0?0.10:0);
-        const pFar=riverAt(0.28);
-        _hdPlaceBeast(g,bcv,pFar[0]-64,pFar[1]+10,0.17,true,0.45,0.05);
+        const tB=0.62+rL()*0.14, pBank=riverAt(tB);
+        _hdPlaceBeast(g,bcv,pBank[0]+66*bs,pBank[1]+8,0.32+rL()*0.08,!cmpFlip,nightAmb,P.sun>0?0.10:0);
+        const pFar=riverAt(0.24+rL()*0.10);
+        _hdPlaceBeast(g,bcv,pFar[0]-64*bs,pFar[1]+10,0.17,!cmpFlip,0.45,0.05);
         if(opts.genes[1]){
           const bcv2=hdBeastBare(opts.genes[1],(seed^0x77F)>>>0);
-          _hdPlaceBeast(g,bcv2,pFar[0]-110,pFar[1]+4,0.14,true,0.55,0.04);
+          _hdPlaceBeast(g,bcv2,pFar[0]-110*bs,pFar[1]+4,0.14,!cmpFlip,0.55,0.04);
+        }
+        /* teeming worlds show it (L1): extra herd silhouettes when the
+           roster runs deep */
+        if((opts.herd||0)>2){
+          for(let hx=0;hx<Math.min((opts.herd||0)-2,2);hx++){
+            const bcvH=hdBeastBare(opts.genes[(hx+1)%opts.genes.length],(seed^(0x51+hx*7))>>>0);
+            const pH=riverAt(0.16+_hdHash(hx,seed,21)*0.16);
+            _hdPlaceBeast(g,bcvH,pH[0]+(50+hx*46)*bs*-1,pH[1]+6,0.11,!cmpFlip,0.6,0.03);
+          }
         }
       }
       if(flora){
         for(let tp2=0;tp2<8;tp2++){
           const px5=(tp2+0.5)*(W/8)+(_hdHash(tp2,seed,3)-0.5)*40;
-          _hdStampPlant(g,pcv,px5,ridgeY(px5)+3,0.24+_hdHash(tp2,seed,5)*0.14,0.42+frost*0.4,pd,pdc);
+          _hdStampPlant(g,tp2%2?pcv2:pcv,px5,ridgeY(px5)+3,0.24+_hdHash(tp2,seed,5)*0.14,0.42+frost*0.4,pd,pdc);
         }
-        _hdStampPlant(g,pcv,W*0.085,H*0.90,0.95,frost,pd*0.9,pdc);
-        _hdStampPlant(g,pcv,W*0.90,H*0.94,1.15,frost,pd*0.9,pdc);
+        _hdStampPlant(g,pcv,rX(W*0.085),H*0.90,0.95,frost,pd*0.9,pdc);
+        _hdStampPlant(g,pcv2,rX(W*0.90),H*0.94,1.15,frost,pd*0.9,pdc);
       }
     }
   }
@@ -6120,7 +6191,7 @@ function hdVista(opts){
   if(ember){
     /* the lava flow — the same course a river would cut, running molten.
        Bright at the far bend, white-gold where it pools near the viewer. */
-    const rp=[[W*0.60,hz+30],[W*0.52,hz+90],[W*0.62,H*0.78],[W*0.40,H+20]];
+    const rp=[[rX(W*0.60)+cmpShift,hz+30],[rX(W*0.52)+cmpShift,hz+90],[rX(W*0.62)+cmpShift,H*0.78],[rX(W*0.40)+cmpShift,H+20]];
     const lavaAt=t=>{const a=rp[0],b=rp[1],c=rp[2],d=rp[3];
       return[(1-t)*(1-t)*(1-t)*a[0]+3*(1-t)*(1-t)*t*b[0]+3*(1-t)*t*t*c[0]+t*t*t*d[0],
              (1-t)*(1-t)*(1-t)*a[1]+3*(1-t)*(1-t)*t*b[1]+3*(1-t)*t*t*c[1]+t*t*t*d[1]]};
@@ -6181,10 +6252,12 @@ function hdVista(opts){
       }
       g.lineTo(ix+iw/2,hz+1);g.closePath();g.fill();
     };
-    isl(W*0.86,W*0.13,12,P.layers[0]);
-    isl(W*0.67,W*0.09,8,P.layers[0]);
-    const bigX=W*0.20,bigW=W*0.26;
-    isl(bigX,bigW,30,P.layers[1]);
+    /* island layout is seeded per world (L1): count, sizes, side */
+    const nIsl=1+((rL()*3)|0);
+    if(nIsl>1) isl(rX(W*0.86),W*(0.08+rL()*0.08),8+rL()*8,P.layers[0]);
+    if(nIsl>2) isl(rX(W*0.67),W*(0.06+rL()*0.06),6+rL()*6,P.layers[0]);
+    const bigX=rX(W*(0.16+rL()*0.12)),bigW=W*(0.20+rL()*0.12);
+    isl(bigX,bigW,22+rL()*16,P.layers[1]);
     if(civ!=='none'){
       /* an inhabited archipelago shows its harbor from the water */
       const litUp=opts.pal==='night'||opts.pal==='twilight';
@@ -6247,12 +6320,23 @@ function hdVista(opts){
     g.beginPath();g.moveTo(0,H);g.lineTo(0,shoreY(0));
     for(let x7=0;x7<=W;x7+=8)g.lineTo(x7,shoreY(x7));
     g.lineTo(W,H);g.closePath();g.fillStyle=bg2;g.fill();
-    g.strokeStyle='rgba(255,255,255,0.45)';g.lineWidth=1.8;   /* foam lines */
+    /* the wonder roll: bioluminescent shores — life-rich dark water
+       glows where it breaks (the cards' glow-in-the-dark biology) */
+    const foamC=bioLume?'96,255,224':'255,255,255';
+    if(bioLume){
+      g.save();g.globalCompositeOperation='lighter';
+      g.strokeStyle='rgba(64,255,214,0.30)';g.lineWidth=6;
+      g.beginPath();
+      for(let xb=0;xb<=W;xb+=8){const yb2=shoreY(xb)-2;
+        xb?g.lineTo(xb,yb2):g.moveTo(xb,yb2);}
+      g.stroke();g.restore();
+    }
+    g.strokeStyle='rgba('+foamC+',0.45)';g.lineWidth=1.8;   /* foam lines */
     g.beginPath();
     for(let x8=0;x8<=W;x8+=8){const yB=shoreY(x8)-1.5+Math.sin(x8*0.09)*1.2;
       x8?g.lineTo(x8,yB):g.moveTo(x8,yB);}
     g.stroke();
-    g.strokeStyle='rgba(255,255,255,0.2)';g.lineWidth=3.5;
+    g.strokeStyle='rgba('+foamC+',0.2)';g.lineWidth=3.5;
     g.beginPath();
     for(let x9=0;x9<=W;x9+=8){const yB2=shoreY(x9)-5+Math.sin(x9*0.05+2)*1.6;
       x9?g.lineTo(x9,yB2):g.moveTo(x9,yB2);}
@@ -6270,10 +6354,10 @@ function hdVista(opts){
       }
     }
     if(flora){
-      _hdStampPlant(g,pcv,W*0.07,H*0.93,1.0,frost,pd*0.9,pdc);
-      _hdStampPlant(g,pcv,W*0.93,H*0.90,0.8,frost,pd*0.9,pdc);
-      _hdStampPlant(g,pcv,W*0.55,by+9,0.18,0.45+frost*0.3,pd,pdc);
-      _hdStampPlant(g,pcv,W*0.72,by+13,0.22,0.4+frost*0.3,pd,pdc);
+      _hdStampPlant(g,pcv,rX(W*0.07),H*0.93,1.0,frost,pd*0.9,pdc);
+      _hdStampPlant(g,pcv2,rX(W*0.93),H*0.90,0.8,frost,pd*0.9,pdc);
+      _hdStampPlant(g,pcv2,rX(W*0.55),by+9,0.18,0.45+frost*0.3,pd,pdc);
+      _hdStampPlant(g,pcv,rX(W*0.72),by+13,0.22,0.4+frost*0.3,pd,pdc);
     }
   }
   if((civ==='iron'||civ==='town')&&!sea){
@@ -6500,9 +6584,9 @@ vistaBox.addEventListener('click', ()=>{
 function reshowVista(){
   if(!_lastVista) return;
   const v=_lastVista;
-  showVistaBox(v.P, v.tod, v.wx, v.era, v.genes, v.aurora, v.flora, v.climSnow, v.water);
+  showVistaBox(v.P, v.tod, v.wx, v.era, v.genes, v.aurora, v.flora, v.climSnow, v.water, v.xtra);
 }
-function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water){
+function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xtra){
   /* the card drives the picture: type → scene, ACTIVE weather token →
      overlay (the Weather row is climate; spells come and go), snow climate
      → snow stays on the ground between falls, the clock → night/twilight
@@ -6531,7 +6615,8 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water){
   const cv=hdVista({seed:P.seed, era:era, pal:pal, biome:biome, wx:wx,
     moons:P.moons||0, aurora:!!aurora&&wx!=='rain'&&wx!=='snow',
     nightize:nightize, duskize:duskize, flora:flora!==false,
-    water:water||'liquid', genes:genes&&genes.length?genes:null});
+    water:water||'liquid', genes:genes&&genes.length?genes:null,
+    ring:!!(xtra&&xtra.ring), stc:(xtra&&xtra.stc)||null, herd:(xtra&&xtra.herd)||0});
   vistaBox.innerHTML='<div class="vh">Planetfall — '+(TYPE_LABEL[type]||'World')+'</div>';
   vistaBox.appendChild(cv);
   const WXW={rain:'rain',snow:'snowfall',dust:'dust storm',ash:'ashfall',haze:'haze'};
@@ -6539,7 +6624,7 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water){
   vt.textContent='local '+tod+(wx?' · '+(WXW[wx]||wx):'')+' — tap to continue';
   vistaBox.appendChild(vt);
   _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
-    flora:flora, climSnow:climSnow, water:water};
+    flora:flora, climSnow:climSnow, water:water, xtra:xtra};
   clearTimeout(_vistaHideT);
   vistaBox.style.display='flex';
   requestAnimationFrame(()=>vistaBox.classList.add('on'));
