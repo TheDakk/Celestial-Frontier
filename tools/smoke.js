@@ -435,6 +435,31 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       && !!pan3.querySelector('[data-gtoggle="1"]'));
     check('discovery: an unlanded dead world offers Land, never Mine',
       !!pan3.querySelector('[data-act="landcta"]') && !pan3.querySelector('[data-act="mine"]'));
+    // v1.3 card UX: the locked card wears a close X and drags by its head
+    check('card UX: a locked card wears the close X', !!pan3.querySelector('.pxc'));
+    {
+      const head = pan3.querySelector('.head');
+      const x0 = parseFloat(pan3.style.left) || 0, y0 = parseFloat(pan3.style.top) || 0;
+      const pOpts = (x, y) => ({ bubbles: true, cancelable: true, clientX: x, clientY: y, view: sk.w });
+      head.dispatchEvent(new sk.w.MouseEvent('pointerdown', pOpts(x0 + 40, y0 + 12)));
+      head.dispatchEvent(new sk.w.MouseEvent('pointermove', pOpts(x0 + 140, y0 + 92)));
+      head.dispatchEvent(new sk.w.MouseEvent('pointerup', pOpts(x0 + 140, y0 + 92)));
+      const moved = await until(() => Math.abs((parseFloat(pan3.style.left) || 0) - x0) > 50
+        && pan3.style.display !== 'none', 4000, 'panel drag');
+      check('card UX: dragging the head moves the card and keeps it open', moved);
+      click2(pan3.querySelector('.pxc'), sk.w);
+      // the cursor may still hover the world (desktop), so the panel can
+      // legitimately reopen as a GLANCE preview — the X's job is releasing
+      // the LOCK (and with it the buttons and the X itself)
+      check('card UX: the X releases the lock', await until(() =>
+        !pan3.classList.contains('locked'), 4000, 'lock release'));
+      // re-lock the same world so the Land-button flow below continues unchanged
+      cv3.dispatchEvent(new sk.w.MouseEvent('pointerdown', dOpts));
+      cv3.dispatchEvent(new sk.w.MouseEvent('pointerup', dOpts));
+      cv3.dispatchEvent(new sk.w.MouseEvent('click', dOpts));
+      check('card UX: tapping the world again re-locks the survey', await until(() =>
+        pan3.style.display !== 'none' && !!pan3.querySelector('[data-act="landcta"]'), 4000, 're-lock'));
+    }
     check('discovery: the glance never misreads a dead world (no biosignatures on venus-type)',
       !pan3.textContent.includes('biosignatures'));
     // enable the HD landing view so planetfall opens the vista (v1.3)

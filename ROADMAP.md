@@ -2,21 +2,73 @@
 
 ## ▶▶ NEXT SESSION AGENDA
 
-1. NICK'S ON-DEVICE PASS of Phase 1 iteration 2 (below): Settings →
-   Graphics → Landing view → HD, then land on a lava world, an ocean
-   world, a cold/winter terran, and anything at dusk or night. His
-   screenshots drive iteration 3.
-2. Remaining Phase 1 candidates (only if Nick wants more before Phase 2):
-   per-world biome variety inside a type (the same terran rolling
-   forest vs plains), rocky/ice night variants (currently those types
-   always render their day pal — the caption can say "local night" over
-   a daylight scene; deliberate v1 simplification), aurora over ICE
-   worlds (surface renderer draws them; vista ice scenes have no night).
-3. Then PHASE 2 — creature portraits + true gene inheritance (see phase
-   plan below).
-4. Mechanics: extract.js first; v1.3 stays flag-gated (hd default
-   Classic) and UNDEPLOYED until Nick's word; fingerprint/smoke/systems
-   each batch (smoke is now 161 checks).
+1. NICK'S ON-DEVICE PASS of Phase 1 iterations 2+2b+2c (below): flip
+   Settings → Graphics → Landing view → HD, then land widely — lava,
+   ocean, winter, dusk, night. Also try the new card ✕ + drag (those
+   ship in CLASSIC too). His screenshots drive iteration 3.
+2. GALAXY-VIEW STARS (Nick's screenshot, 2026-07-17: "it's bland right
+   now" — sparse colored dots, one supernova remnant): CONFIRMED as
+   v1.3 PHASE 3 (system dressing: belt rocks, comet tails, ringed
+   giants, phase-lit planets) + PHASE 4 (dust-carved galaxy sprites) +
+   an in-galaxy star-field richness pass (fainter deep-field stars,
+   color temperature spread, clustering along arms) — add that pass to
+   Phase 3's list; the vista work deliberately came first.
+3. Remaining Phase 1 candidates: per-world biome variety inside a type;
+   aurora over ICE worlds (surface draws them; the vista's nightize
+   grade doesn't yet).
+4. Then PHASE 2 — creature portraits + true gene inheritance.
+5. Mechanics: extract.js first; the hd flag stays default-Classic and
+   UNDEPLOYED until Nick's word — BUT NOTE: weather spells, the card
+   ✕/drag, and the text-size coverage fixes are NOT flag-gated (they
+   ride any deploy; RELEASES[0] bullets written).
+
+## ▶ ITERATION 2c (2026-07-17, same session): CARD UX + SETTINGS AUDIT
+
+- SURVEY CARD ✕ + DRAG (Nick's ask): locked cards wear a ✕ (close;
+  tapping empty space still works — the ✕ is the visible affordance);
+  any open card drags by its HEADER, pointer events, mouse + touch
+  (6px threshold so taps stay taps; touch-action:none on the head;
+  drag position rides _frozenPos so the per-frame clamp keeps the card
+  on-screen; surface card draggable too, defaults top-left). Hidden and
+  inert during training. Smoke +4 (✕ present, drag moves+stays open, ✕
+  releases the lock — cursor-hover legitimately reopens the GLANCE on
+  desktop — re-lock works).
+- SETTINGS AUDIT (Nick: "make sure all settings work"): agent audited
+  all 12 controls end-to-end (wiring→apply→persist→load→edges).
+  11/12 clean, incl. the historic fixes holding (rm never freezes the
+  OS pref; vol taper; hd flag; notif gating; reset two-step). FIXED:
+  Text size A+/A++ now also scales the Guide, Charters, Release Notes,
+  pick/duel/share/Prime dialog cards and the settings panel itself
+  (was: survey/list surfaces only); fs whitelisted on load (arbitrary
+  body-class injection via a tampered save); flushToasts re-checks
+  notifOn at fire time; _wiping guard actually arms during a wipe
+  (was write-only-false) and releases after the in-place rebuild.
+- Suites at commit: fingerprint byte-identical, smoke 167/167,
+  systems 19/19, balance PASS.
+
+## ▶ ITERATION 2b (2026-07-17, same session): THE WHOLE-SPACE PASS
+
+Nick: "we're not just limited to these cards, right? account for
+everything possible in the world and make sure it all looks great."
+Confirmed generative (hdVista renders ANY card at planetfall; artifact
+cards are examples). Then rendered the FULL reachable card space (43
+scenes through showVistaBox's exact mapping) and fixed what read wrong:
+- AURORA: smooth veil (2× overlapping gradient columns, alphas halved)
+  — Nick's "lines through it" striping is gone; suppressed while
+  rain/snow actively falls (a deck hangs above).
+- WEATHER SPELLS (the big unlock): the Weather row is CLIMATE, not a
+  permanent condition — whether it falls NOW is a seeded ~90s spell
+  roll (same mechanism as the lightning bursts), shared by surface and
+  vista; the surface status line says "clear skies" between spells.
+  Without this, temperate terrans and ALL ocean worlds rained forever —
+  the sunny meadow and sunny island scenes were UNREACHABLE in play.
+- SNOW IS GROUND STATE: cold-band worlds keep the snow pal between
+  falls (climSnow); flakes only while snowing.
+- WATER ROW DRIVES THE RIVER: liquid / FROZEN ice ribbon with pressure
+  cracks (cold worlds + deep winter) / none ("Mostly evaporated" hot
+  worlds get no river).
+- LIFELESS LAND = BARREN SOIL ground palette (meadow green promised a
+  biosphere the card denies); no clouds on airless rocky worlds.
 
 ## ▶ v1.3 PHASE 1 ITERATION 2 — BUILT & VERIFIED (2026-07-17). The whole
 ## roadmap iteration list landed in one batch; still flag-gated, NOT deployed.

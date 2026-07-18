@@ -182,6 +182,15 @@
   body.fs-lg .tst{font-size:13px}
   body.fs-lg #hint{font-size:13px}
   body.fs-lg #hud-center #trail{font-size:15px}
+  /* the reading surfaces the first pass missed (settings audit, v1.3):
+     Guide, Charters, Release Notes and the dialog cards */
+  body.fs-lg #guidebox .gstep div,body.fs-lg #guidebox .gsub{font-size:13px}
+  body.fs-lg #chpanel .ch .ct{font-size:13px}
+  body.fs-lg #chpanel .ch .cd{font-size:12px}
+  body.fs-lg #relbox li{font-size:13.5px}
+  body.fs-lg #relbox .rb-cat{font-size:11px}
+  body.fs-lg #pickbox .card,body.fs-lg #duelbox .card,body.fs-lg #sharebox .card,body.fs-lg #primebox .card{font-size:13px}
+  body.fs-lg #setpanel .srow,body.fs-lg #setpanel .opts .fsopt{font-size:12.5px}
   body.fs-xl #panel .row, body.fs-xl #panel .row .v{font-size:15px}
   body.fs-xl #panel .row .k{font-size:12.5px}
   body.fs-xl #panel .tag{font-size:12px}
@@ -199,6 +208,13 @@
   body.fs-xl .tst{font-size:15px}
   body.fs-xl #hint{font-size:15px}
   body.fs-xl #hud-center #trail{font-size:17px}
+  body.fs-xl #guidebox .gstep div,body.fs-xl #guidebox .gsub{font-size:15px}
+  body.fs-xl #chpanel .ch .ct{font-size:15px}
+  body.fs-xl #chpanel .ch .cd{font-size:13.5px}
+  body.fs-xl #relbox li{font-size:15px}
+  body.fs-xl #relbox .rb-cat{font-size:12px}
+  body.fs-xl #pickbox .card,body.fs-xl #duelbox .card,body.fs-xl #sharebox .card,body.fs-xl #primebox .card{font-size:15px}
+  body.fs-xl #setpanel .srow,body.fs-xl #setpanel .opts .fsopt{font-size:14px}
 
   /* ---- notification bell & tray ---- */
   #bellwrap{position:relative}
@@ -599,8 +615,16 @@
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:16px;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
     backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
     box-shadow:0 16px 50px rgba(0,0,0,0.6),0 0 0 0.5px rgba(255,255,255,0.04) inset}
-  #panel .head{display:flex;gap:12px;align-items:center;padding:13px 14px 11px;
+  #panel .head{display:flex;gap:12px;align-items:center;padding:13px 14px 11px;position:relative;
     border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(143,180,255,0.06),transparent)}
+  #panel .pxc{position:absolute;top:6px;right:6px;width:26px;height:26px;border:0;border-radius:8px;
+    background:transparent;color:var(--faint);font:600 13px var(--ui);cursor:pointer;z-index:2;
+    display:flex;align-items:center;justify-content:center;padding:0}
+  #panel .pxc:hover{color:var(--ink);background:rgba(150,162,210,0.14)}
+  #panel.grab .head{cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+  #panel.grab .head:active{cursor:grabbing}
+  #panel.grab .htxt{padding-right:22px}
+  @media (pointer:coarse){ #panel .pxc{width:34px;height:34px;font-size:15px;top:3px;right:3px} }
   #panel .thumb{width:54px;height:54px;flex:none;border-radius:50%;background:#05060c;
     box-shadow:0 0 0 1px rgba(150,162,210,0.18),0 4px 14px rgba(0,0,0,0.5)}
   #panel .thumb.sq{border-radius:11px}
@@ -6387,8 +6411,10 @@ function renderPanel(p, isLocked){
     '|'+(_cq?('C'+(Date.now()-_cq.t>=HARVEST_CD?'R':'W')):'')+'|'+(d._nameKey?(customNames.get(d._nameKey)||''):'')+'|'+(_favOn?'F':'')+(_homeOn?'H':'')+
     '|'+(d.planetSeed!=null&&(d.planetSeed===133||landed.has(d.planetSeed)||conquered.has(d.planetSeed))?'G':'')+   /* ground-surveyed (v1.2) */
     '|'+(d.planetSeed!=null&&contacted.has(d.planetSeed)?'K':'')+   /* census known via first contact (v1.2.2) */
+    '|'+(tutDone?'':'t')+   /* the ✕ appears only after training */
     '|cx'+cardExpand;   /* keep cx LAST — the toggle handler patches it in place */
   panelEl.classList.toggle('locked', !!isLocked);
+  panelEl.classList.toggle('grab', !!isLocked || st.mode==='surface');   /* draggable by the head */
   if(key!==_panelKey){               /* rebuild content only when it actually changes */
     _panelKey=key;
     /* surveying is a deliberate act: only a tapped/locked card (or standing on
@@ -6588,8 +6614,13 @@ function renderPanel(p, isLocked){
     /* actions live at the TOP of the body (1.1.2): on phones the old
        bottom placement put "+ Add to Star Atlas" below the fold — a
        playtester got stranded at training step 4 because of it */
+    /* ✕ closes a locked card (tapping empty space always worked — this is
+       the visible affordance); hidden during training, where the card is
+       the lesson. The head doubles as the drag handle. */
+    const closeX=(isLocked && st.mode!=='surface' && tutDone)
+      ? '<button class="pxc" data-act="close" data-tip="Close this card — tapping empty space works too">✕</button>' : '';
     panelEl.innerHTML =
-      '<div class="head">'+thumb+'<div class="htxt"><h3>'+d.title+'</h3><div class="sub">'+d.sub+'</div></div></div>'+
+      '<div class="head">'+thumb+'<div class="htxt"><h3>'+d.title+'</h3><div class="sub">'+d.sub+'</div></div>'+closeX+'</div>'+
       '<div class="body">'+(btn?btn+'<div class="bdiv"></div>':'')+rows+
       '<span class="tag">'+(st.mode==='surface'?'You are here':(glance?'Long-range glance':(d.planetSeed!=null&&landed.has(d.planetSeed)?'Ground-surveyed':'Procedural survey')))+'</span></div>';
     /* the rarity color language: tint the whole card border by spectral designation */
@@ -6618,7 +6649,13 @@ function renderPanel(p, isLocked){
   }
   const _topMin=_panelTopMin, pw=_panelW, ph=_panelH;
   let ax, ay;
-  if(st.mode==='surface'){ ax=16; ay=_topMin; }
+  if(st.mode==='surface'){
+    /* the surface card sits top-left — unless the explorer dragged it */
+    if(_frozenFor===d.logId && _frozenPos){
+      ax=clamp(_frozenPos.x, 8, W-pw-8);
+      ay=clamp(_frozenPos.y, _topMin, H-ph-12);
+    } else { ax=16; ay=_topMin; }
+  }
   else if(isLocked && _frozenFor===d.logId && _frozenPos){
     /* locked — anchored in place so it never chases the drifting object */
     ax=clamp(_frozenPos.x, 8, W-pw-8);
@@ -6637,8 +6674,35 @@ function renderPanel(p, isLocked){
   if(!panelRect) panelRect={x:0,y:0,w:0,h:0};
   panelRect.x=ax; panelRect.y=ay; panelRect.w=pw; panelRect.h=ph;
 }
+/* drag the card by its head — desktop mouse and mobile touch alike (v1.3
+   card UX, Nick's ask: "move it out of the way but leave it open").
+   A 6px threshold keeps plain taps on the head from becoming drags. */
+let _pDrag=null;
+panelEl.addEventListener('pointerdown', e=>{
+  if(document.body.classList.contains('training')) return;   /* the lesson card stays put */
+  if(!locked && st.mode!=='surface') return;                  /* hover previews follow the cursor */
+  if(!e.target.closest('.head') || e.target.closest('.pxc')) return;
+  _pDrag={px:e.clientX, py:e.clientY, x:_panelAX||0, y:_panelAY||0, moved:false, id:e.pointerId};
+  if(panelEl.setPointerCapture){ try{ panelEl.setPointerCapture(e.pointerId); }catch(_){} }
+});
+panelEl.addEventListener('pointermove', e=>{
+  if(!_pDrag || e.pointerId!==_pDrag.id) return;
+  const dx=e.clientX-_pDrag.px, dy=e.clientY-_pDrag.py;
+  if(!_pDrag.moved && Math.hypot(dx,dy)<6) return;
+  _pDrag.moved=true;
+  e.preventDefault();
+  if(!_lastDesc){ _pDrag=null; return; }
+  /* the positioner clamps every frame, so a drag can never lose the card */
+  _frozenFor=_lastDesc.logId;
+  _frozenPos={x:_pDrag.x+dx, y:_pDrag.y+dy};
+});
+const _pDragEnd=e=>{ if(_pDrag && e.pointerId===_pDrag.id) _pDrag=null; };
+panelEl.addEventListener('pointerup', _pDragEnd);
+panelEl.addEventListener('pointercancel', _pDragEnd);
 /* add / remove via the panel button */
 panelEl.addEventListener('click', e=>{
+  const xc=e.target.closest('[data-act="close"]');
+  if(xc){ locked=null; stickyPick=null; return; }
   const gt=e.target.closest('[data-gtoggle]');
   if(gt){
     /* fold/unfold in place — no rebuild, so keyboard focus stays on the
@@ -7545,7 +7609,9 @@ function flushToasts(){
   let i=0;
   /* re-check the training gate at FIRE time — a queue flushed on the edge of
      startTutorial must stay quiet (the tray already holds every entry) */
-  while(_toastQ.length){ const [t,m]=_toastQ.shift(); setTimeout(()=>{ if(!_trainingUp()) _showToast(t,m); }, 400+i*1100); i++; }
+  /* re-check notifications too — the toggle may have flipped while the
+     queue waited behind the title screen (settings audit, v1.3) */
+  while(_toastQ.length){ const [t,m]=_toastQ.shift(); setTimeout(()=>{ if(!_trainingUp() && notifOn) _showToast(t,m); }, 400+i*1100); i++; }
 }
 function toast(title, msg){
   /* training keeps ONE voice — the guidance card. Pop-ups rest in the tray
@@ -8067,7 +8133,8 @@ function loadSave(){
     if(data.pstats && typeof data.pstats==='object'){ for(const _k of STAT_KEYS) if(typeof data.pstats[_k]==='number') pstats[_k]=clamp(Math.round(data.pstats[_k]),1,330); }
     HP_MAX=hpMaxFromVit();
     if(typeof data.hp==='number') hp=clamp(data.hp,1,HP_MAX);  /* never load in dead */
-    fsMode=data.fs||''; applyFs();
+    fsMode=(data.fs==='fs-lg'||data.fs==='fs-xl')?data.fs:'';   /* whitelist — fs becomes a body class */
+    applyFs();
     toneMode=(data.tone==='tone-bright'||data.tone==='tone-max')?data.tone:''; applyTone();
     fontMode=(data.font==='font-sys'||data.font==='font-mono')?data.font:''; applyFont();
     sndOn=data.snd!==0;
@@ -8182,7 +8249,7 @@ function resetMemoryState(){
   }catch(_){}
 }
 function wipeSaveAndReload(){
-  _wiping=false;                      /* the rebuilt fresh game should save normally */
+  _wiping=true;                       /* arm the unload guard — nothing may re-create the save mid-wipe */
   clearTimeout(_saveT);
   try{ tutAbort(); }catch(_){}
 
@@ -8202,6 +8269,7 @@ function wipeSaveAndReload(){
   try{ startNewGame(); }catch(_){}
   try{ if(!explorerName || explorerName==='Explorer') askExplorerName(true); }catch(_){}
   try{ renderRank(); renderHP(); updatePrimeBtn(); renderPrime(); }catch(_){}
+  _wiping=false;                      /* the rebuilt fresh game saves normally */
 }
 window.addEventListener('beforeunload', doSave);
 window.addEventListener('pageshow', e=>{ if(e && e.persisted) location.reload(); });
@@ -9934,7 +10002,11 @@ const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 const RELEASES=[
 {v:'1.3', title:'The HD Frontier', date:'In development', sections:[
  ['✨ New Features & Systems', [
-  '<b>HD landing vistas (beta)</b> — Settings → Graphics → <b>Landing view: HD</b>. Planetfall opens a ground-level panorama built entirely from the world&#8217;s card: its biome, its civilization&#8217;s era on the terraced hill, the local time of day, the weather falling out of the sky, and the world&#8217;s own creatures standing on the land. Classic stays the default while the art grows.',
+  '<b>HD landing vistas (beta)</b> — Settings → Graphics → <b>Landing view: HD</b>. Planetfall opens a ground-level panorama built entirely from the world&#8217;s card: its biome, its civilization&#8217;s era on the terraced hill, the local time of day, the weather falling out of the sky, auroras crowning magnetized worlds at night, and the world&#8217;s own creatures standing on the land. Classic stays the default while the art grows.',
+  '<b>Weather comes in spells</b> — a world&#8217;s Weather row is its climate, not a life sentence. Rain showers pass, dust storms blow through, and the surface readout says <b>clear skies</b> between them. Snow country keeps its snow on the ground either way.',
+ ]],
+ ['🎨 UI Enhancements', [
+  'Survey cards are yours to handle now: a locked card wears an <b>✕</b> to close it (tapping empty space still works), and you can <b>drag any open card by its header</b> — mouse or finger — to move it out of the way and keep reading the sky behind it.',
  ]],
 ]},
 {v:'1.2.6', title:'Ink & Ember', date:'July 2026', sections:[
