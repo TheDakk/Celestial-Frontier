@@ -11136,7 +11136,7 @@ dailyBtn.addEventListener('click', ()=>{
 /* ================================================================
    @module CombatCore [domain] — battle stats, biome abilities, deterministic duels & creature codes
    Deps: Rand, EncUtil, player, naming-ui, Genome, viewport, player-state
-   API:  abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED
+   API:  abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf
    ================================================================ */
 const CombatCore=(()=>{
 const STAT_NAMES=['Vitality','Ferocity','Resilience','Agility','Instinct'];
@@ -11642,9 +11642,9 @@ function runDuel(mine, theirs){
   const winner = (hpA<=0&&hpB<=0)?null : hpA<=0?'B' : hpB<=0?'A' : (hpA/maxA>=hpB/maxB?'A':'B');
   return {A, B, log, winner, hpA, hpB, maxA, maxB};
 }
-return Object.freeze({abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED});
+return Object.freeze({abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf});
 })();
-const {abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED}=CombatCore;
+const {abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf}=CombatCore;
 /* @end CombatCore */
 /* ----------------------------------------------------------------
    @section duel-ui [app] — duel UI — code loader, side cards & fight flow (CFB- codes)

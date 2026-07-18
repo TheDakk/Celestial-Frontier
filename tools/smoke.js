@@ -898,6 +898,17 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       && skH.gradeCapAt({ gal: { seed: 777, x: 4000, y: 4000 } }) >= 12);
     check('ring spectrum: bred/imported creatures are never capped',
       skH.gradeCapAt(null) >= 12);
+    // v1.4.1 regression lock: awardXP must reach levelOf (it lived un-exported
+    // inside CombatCore — every victorious duel/conquest with a creature
+    // champion threw and lost the win's spoils; 501/700 deep sims hit it)
+    {
+      const gX = skH.makeGenome(24681357, 'fauna', 0.4);
+      const eX = skH._storeSpecies(gX, 'XP test', null);
+      let xpOk = true;
+      try { skH.awardXP(eX.id, 8); } catch (e) { xpOk = false; }
+      check('victory XP: awardXP runs clean (levelOf exported)', xpOk && (eX.genome.xp || 0) >= 8);
+      check('victory XP: levelOf math holds', skH.levelOf({ xp: 108 }) === 3 && skH.levelOf({ xp: 0 }) === 0);
+    }
     // worlds obey the ladder only for post-law expeditions (this sk boot is
     // a fresh one → on), and a high-tier designation clamps to the ring
     check('ring spectrum: a fresh expedition ringlaws its worlds', skH._ringWorlds === true);

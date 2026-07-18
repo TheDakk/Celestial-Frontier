@@ -154,5 +154,7 @@
  "gradeCapAt",
  "ringGrade",
  "_ringWorlds",
- "ringDesignation"
+ "ringDesignation",
+ "awardXP",
+ "levelOf"
 ]
