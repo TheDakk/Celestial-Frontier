@@ -631,6 +631,24 @@
 ## close-up leaked through the blur). Suites at ship: fingerprint
 ## 50/50, smoke 219/219, systems 19/19, balance PASS.
 
+## ★★ v1.3.8 "THE VIEW HOLDS" IS LIVE ★★ (2026-07-18, build 5b9652d).
+## LANDING NEVER LEAVES SPACE: surface mode is unreachable — the zoom
+## transition holds at approach framing and _performLanding runs the
+## rites spaceside; openLandingVista derives clock/weather/roster
+## standalone (planetDescriptor fallback when no card is open); Land
+## button + confirm land at approach zoom; the Landing vista button
+## rides any grounded world's system card and REBUILDS after reload.
+## Training zooms but never lands. Vista ✕ now in every vista incl.
+## training; ? popover obeys the one-panel rule (Nick's settings-
+## under-helppop overlap). NOTE: drawSurface + the surface caller
+## block are now dead code — PURGE CANDIDATE for a cleanup batch
+## (kept this ship for zero-risk deploy). v1.4 panel exceptions
+## (inventory+bench co-open) deferred to the Fabricator design.
+## Suites: fingerprint 50/50, smoke 220/220, systems 19/19, balance
+## PASS. (Also note: Nick's 1.3.7-era reports came from a CACHED
+## 1.3.6 client — the update pill matters; watch his next session
+## picks up 1.3.8 cleanly.)
+
 ## ▶▶ NEXT SESSION AGENDA (v1.4 "THE ASCENT" KICKOFF) — updated at the
 ## 2026-07-18 session close. SHIPPED THIS SESSION: v1.3.5 "Soft
 ## Landings" (build bc70152) + v1.3.6 "Quiet Skies" (build c1bac38).
