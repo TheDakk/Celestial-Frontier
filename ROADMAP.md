@@ -327,6 +327,56 @@ PHASE 1 — LANDED IN THE GAME (this commit, flag-gated):
   (flag default/toggle/persist + full planetfall→vista→dismiss drive),
   systems 19/19.
 
+## ▶▶ v1.4 DIRECTION v2 (Nick, 2026-07-17): "THE ASCENT" — CRAFT BENCH +
+## SATISFACTORY-STYLE PROGRESSION. Nick: after training "it just feels
+## like I don't know what to do next" — lock new players into Sol, mine →
+## build your way off, quest chain outward: Sol → Milky Way → other
+## galaxies. Codex becomes ultimate goals; quests give the next step.
+##
+## AGREED DESIGN SKETCH (Claude's shape, Nick to iterate):
+## - THE ASCENT = the mainline quest chain, built ON the existing charter
+##   engine (it already listens to the whole gameEvent stream). Charters
+##   stay as the weekly/side board; Ascent chapters are ordered, each
+##   with unlocks. Prime Codex/achievements become the "ultimate goals"
+##   meta-layer above both.
+## - CHAPTER 1 "Off the Rock" (Sol lock-in, NEW saves only — veterans
+##   are grandfathered past any chapter whose unlock they already hold,
+##   the proven charter-veteran pattern): interstellar travel now needs a
+##   JUMP DRIVE. Mine Sol (Moon/Mars/asteroids), craft T1 basic parts →
+##   T2 components → the Jump Drive. Target: first jump within ~30-45
+##   minutes of play. LAW: gate TRAVEL, never CURIOSITY — the whole sky
+##   stays visible/surveyable from Sol; moving is what costs parts.
+## - CHAPTER 2 "The Neighborhood" (Milky Way): quests introduce the
+##   existing loops as goals (first bioscan, first conquest, first
+##   breeding, charters board) + build the Long-Range Array → extends
+##   reachRadius rings (the mechanic already exists and already gates
+##   the map — perfect hook).
+## - CHAPTER 3 "Beyond the Rim": Intergalactic Drive (T3 system built
+##   from T2 components) → other galaxies; wormholes stay as the wild
+##   shortcut.
+## - RECIPE TIERS (Satisfactory pattern, deterministic, same for all):
+##   T0 raw elements (mined, exists) → T1 basic parts (Iron Plate,
+##   Copper Wire, Silicon Chip, Fuel Pellet...) → T2 components (Drive
+##   Coil, Hull Segment, Nav Core, Fuel Cell) → T3 ship systems (Jump
+##   Drive, Long-Range Array, Intergalactic Drive) → beyond-v1.4: more
+##   systems (vista-visible ship parts, first-contact gifts — the v1.4
+##   craft-effects list below). Rarer worlds' veins gate rarer recipes.
+## - PACING RULES: early recipes cost minutes, not hours; NO wait-timers
+##   (the mining cooldown already paces per-world — quests should push
+##   you to MORE worlds, not to waiting); costs grow with tier; the
+##   complexity curve comes from recipe DEPTH not grind width.
+## - UI: Research Bench grows into the FABRICATOR (tabs: Inventory /
+##   Fabricator / Blueprints); parts get procedural icons in the
+##   elemIcon language; quest tracker rides the charter panel (Ascent
+##   chapter pinned on top); full inventory/bench visual refresh ships
+##   WITH it (Nick: "make sure craft bench and inventory are completely
+##   up to date and looking great").
+## - GUARDRAILS: share codes to unreachable places become a quest hint,
+##   not a dead tap; reset keeps the Ascent restartable; smoke needs a
+##   full chapter-1 drive; save schema: quest progress fields with
+##   absent-safe defaults (veterans ⇒ complete).
+##
+## (original v1.4 craft-bench notes below — still the effects list)
 ## ▶ v1.4 DIRECTION (Nick, 2026-07-18): THE CRAFT BENCH
 
 Build out the craft bench, Minecraft-style: the materials mined from
