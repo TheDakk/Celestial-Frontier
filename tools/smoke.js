@@ -483,6 +483,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       ['aurora night over land', { seed: 9006, era: 'space', pal: 'night', moons: 2, aurora: true }],
       ['rocky world by starlight (nightize)', { seed: 9007, era: 'none', pal: 'grey', nightize: true, moons: 2 }],
       ['lifeless ocean — bare beach, no moon glitter', { seed: 9008, era: 'none', pal: 'night', biome: 'island', flora: false, moons: 0 }],
+      ['desert with hardy vegetation (V3)', { seed: 9009, era: 'none', pal: 'sand', flora: true }],
+      ['industrial-era town, river kept (V6+V7)', { seed: 9010, era: 'town', pal: 'day', moons: 1 }],
     ]) {
       let cvS = null, err = null;
       try { cvS = skH.hdVista(o); } catch (e) { err = e; }

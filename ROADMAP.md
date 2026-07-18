@@ -22,8 +22,51 @@
    ✕/drag, and the text-size coverage fixes are NOT flag-gated (they
    ride any deploy; RELEASES[0] bullets written).
 
+## ▶▶ THE GRAPHICS OVERHAUL — APPROVED IN FULL (Nick, 2026-07-17: "I want
+## to include all of this") + NEW PILLAR: ENGINEERED INFINITY
+##
+## Nick's addition: "be sure there's infinite possibilities with the
+## planets, stars, flora, fauna — a very high likelihood we're going to
+## see variations we never seen before. This is the main discovery aspect."
+##
+## THE INFINITY ARCHITECTURE (all app-layer, deterministic per seed):
+##  L1 CONTINUOUS DIALS — kill every fixed anchor/color: river course,
+##     horizon, sun x, plant branch/droop/leaf genes, aurora hue pair,
+##     star-face spots/corona, island layouts, beast spots/facing — all
+##     become seeded parameters.
+##  L2 COMBINATORIAL RECIPES — portraits draw ALL the genome (16 bodies ×
+##     9 hides × 18 locos × patterns × traits); plants get species genes
+##     from world palette+heat; thumbs read the whole card.
+##  L3 WONDER ROLLS — rare card-derived visual events, combinations rarer
+##     still: rings overhead (P.ring), giant/low moon, twin suns (binary
+##     card fact), bioluminescent night shores (life+dark), meteor
+##     showers, exotic sky tints (atmosphere row), vegetation hue
+##     families (chlorophyll common; copper/violet/crimson rare).
+##  Law holds: every wonder must trace to a card fact + seed. Where the
+##  card TEXT already varies (FA_TRAIT "bearing crystal antlers",
+##  atmosphere rows), the art now FOLLOWS the text — infinite because
+##  the text pools are combinatorial, honest because the card said it.
+##
+## BUILD ORDER (each batch: build → validate/smoke/systems → commit):
+##  BATCH A — law violations V1-V11 (Classic-visible honesty fixes)
+##  BATCH B — vista blockers B1-B3 (re-view+fade, composition variety
+##            [absorbed into L1], chrome/safe-area)
+##  BATCH C — galaxy view: I1 star sprites+twinkle, nebula/remnant
+##            pre-renders (heat), morphology V2 + per-seed sprites I4
+##  BATCH D — light & sky: I2 star-tinted light everywhere, I12 real
+##            crescents, I3 rings-in-sky + daytime moons
+##  BATCH E — INFINITY CORE: plant species genes, seeded compositions,
+##            seeded aurora hues, herd scaling, wonder-roll framework
+##  BATCH F — object art: V12 portrait anatomy overhaul (Phase 2 pulled
+##            in), I7 specimenCard, I9 city lights, I13 small thumbs
+##  BATCH G — FX & showpieces: tunnel variety/heat, I5 vista postcards,
+##            I6 battle arenas + guardian intro
+##  V13 (gene inheritance) — DOMAIN change: attempt behind the
+##  fingerprint gate; if the baseline breaks, revert + present the
+##  tradeoff to Nick (children would change → needs his call).
+
 ## ▶ GRAPHICS PASS FINDINGS (2026-07-17, 3 audit agents + spot-verified;
-## REPORTED TO NICK PRE-BUILD — nothing below is built yet, he picks)
+## the raw finding list the overhaul above was built from)
 
 LAW VIOLATIONS (card contradicts picture — fix-before-ship candidates):
  V1 terran water ignores climate band: liquid blue oceans painted on
@@ -42,7 +85,9 @@ LAW VIOLATIONS (card contradicts picture — fix-before-ship candidates):
  V6 vista era flattening: Modern-era civs render the medieval keep
     (everything below spacefaring → 'iron').
  V7 civilized worlds lose their river (river block requires civ none).
- V8 magnetized ICE worlds at night never show aurora (nightize lacks it).
+ V8 WITHDRAWN on verification: ice/desert/rocky/venus worlds can NEVER
+    have a magnetosphere (hasField = terran/ocean/gas/Earth only), so
+    the card never promises them auroras — the vista is already honest.
  V9 planetThumb ignores rings/civ/life/band (P.ring never in the thumb).
  V10 rarity presentation: reveal cinematic CLAMPS tier at 8 (an
     Omnipotent find celebrates as a Mythic); Compendium rows never foil
