@@ -1,5 +1,66 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
+## ▶ v1.3 "THE HD FRONTIER" — IN THE CODE, ITERATING (2026-07-18). DO NOT
+## BUMP/DEPLOY until Nick's word; the hd flag keeps it invisible either way.
+
+THE LAW (Nick, settled over the 2026-07-17/18 art sessions): **the card
+drives the picture** — every render derives only from descriptor facts +
+seed. Estimates vague-never-wrong. Nothing decorative the card didn't ask
+for. No rays/spikes/glow-domes. Color language per [[Ink & Ember]].
+The full visual bible lives as a claude.ai artifact ("Celestial Frontier —
+v1.3 Visual Direction", Nick has the link) — galaxies (dust = suppressed
+starlight, never painted), living system (star-lit belt/comet/ringed
+giant/terran moons/phase strip), card-driven worlds (era-scaled night
+lights, hurricanes, cloud shadows, gas storms), 4-generation breeding
+inheritance, and the landing vistas.
+
+PHASE 1 — LANDED IN THE GAME (this commit, flag-gated):
+- New @section hdart [app] (~450 lines): _hdNoise/_hdFbm (seeded, no
+  Math.random), HD_PALS (day/night/rain/dust/sand/ice/grey/haze),
+  hdVista(opts) master renderer (biomes: green w/ river+life, iron-era
+  keep+road+flanking-village+fields, spacefaring skyline grounded per-
+  tower on ridgeY, deserts, ice crystals, rocky/venus palettes), moons-
+  from-card night sky (max 3, radiant primary, no beams), weather
+  overlays (rain 2-depth + road sheen streaks, dust banks + wind),
+  twilight grade, hdGenesFor(genome)→visual genes (v1: seeded from
+  genome seed + ability color; TRUE parent-trait inheritance is Phase 2),
+  hdBeastBare + placement (lit-side-sunward flip, warm grade, seated
+  tufts, distance haze), plant stamps (base-anchored, contact shadows).
+- #vistabox overlay: planetfall (when hdOn) opens the panorama once the
+  surface frame knows tod/wx and renderPanel has cached the descriptor
+  (era parsed from Tech era row; genes from the fauna roster, max 2).
+  Tap dismisses. Gas giants skip (no ground). lava→dust pal is a V1
+  STAND-IN — the ember/volcano scene is next iteration.
+- Settings → Graphics → "Landing view: Classic / HD (beta)" — save field
+  `hd` (absent ⇒ 0 Classic), applyHd(), probe hdOn. DEFAULT CLASSIC:
+  main can deploy for hotfixes without exposing v1.3.
+- Verified: fingerprint byte-identical (all app-layer), smoke 155/155
+  (flag default/toggle/persist + full planetfall→vista→dismiss drive),
+  systems 19/19.
+
+PHASE PLAN (iterate in order, each phase shippable; flag stays until
+Nick flips the default):
+1. VISTAS (in) → iterate: volcano/ember scene, island scene for ocean
+   worlds, snow weather, twilight polish, aurora nights, moon count from
+   P.moons ✓, Nick's on-device passes.
+2. CREATURE PORTRAITS: HD painterly fauna/flora replacing speciesPortrait
+   (spine/limb silhouette + per-pixel hide + rim + habitat), TRUE gene
+   inheritance (visual genes derived from genome fields so crossGenome
+   children visibly blend parents), same render reused vista/card/
+   Compendium ("globally there").
+3. WORLDS & SYSTEM DRESSING: HD planet sprites (terrain noise, cloud
+   shadows, atmosphere rims, era-scaled night lights, hurricanes from
+   the weather row, gas storm ovals), phase-from-orbit lighting, belt
+   rocks, comet tails, ringed giants, terran moons in system view.
+4. GALAXIES (OPTIONAL, LAST): dust-as-gaps spirals — only swap the live
+   sprites when unambiguously better on Nick's screen.
+GATES: seed-sweep harness (render ~200 random cards headless, assert no
+degenerate layouts) before any phase's flag flips; heat check per phase
+(renders stay once-per-object cached; v1.2 heat rules apply); full
+validate/smoke each batch.
+
+
+
 > The living state of development. **Any session (human or Claude) resumes from
 > this file** — update the Now/Next/Awaiting sections at the end of every work
 > batch, keep everything committed and pushed. The chat is disposable; this
