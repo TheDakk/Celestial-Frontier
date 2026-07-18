@@ -1182,6 +1182,11 @@
     box-shadow:0 30px 90px rgba(0,0,0,0.7)}
   #vistabox .vh{font:600 11px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--plasma)}
   #vistabox .vt{font:600 9px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+  #vistabox .vpc{font:600 10px var(--ui);letter-spacing:.12em;color:var(--plasma);cursor:pointer;
+    padding:7px 14px;border:1px solid var(--glass-brd);border-radius:999px;background:var(--glass)}
+  #vistabox .vpc:hover{color:#fff;border-color:rgba(150,162,210,0.55)}
+  #cinema .cimg{width:118px;height:118px;border-radius:16px;border:1px solid rgba(255,217,106,0.5);
+    display:block;margin:0 auto 12px;box-shadow:0 12px 40px rgba(0,0,0,0.6)}
   /* fat fingers get invisible hit-padding — the visible pill sizes and the
      40px rail rhythm stay exactly as designed */
   @media (pointer:coarse){
@@ -1961,7 +1966,7 @@ function starThumb(kind,col){
   thumbCache.set(key,url); return url;
 }
 function galaxyThumb(g){
-  const key='g'+g.sp+(g.quasar?'q':'');
+  const key='g'+g.seed+'_'+g.sp+(g.quasar?'q':'');
   if(thumbCache.has(key)) return thumbCache.get(key);
   const T=128, c=document.createElement('canvas'); c.width=c.height=T;
   const ctx2=c.getContext('2d');
@@ -1970,7 +1975,7 @@ function galaxyThumb(g){
     q.addColorStop(0,'#fff'); q.addColorStop(0.2,'#bcd4ff'); q.addColorStop(0.55,'rgba(140,180,255,0.4)'); q.addColorStop(1,'transparent');
     ctx2.fillStyle=q; ctx2.fillRect(0,0,T,T);
   } else {
-    ctx2.drawImage(GAL_SPRITES[g.sp],0,0,T,T);
+    ctx2.drawImage(getGalaxySprite(g),0,0,T,T);
   }
   const url=c.toDataURL();
   thumbCache.set(key,url); return url;
@@ -2030,12 +2035,14 @@ const {planetThumb, starThumb, galaxyThumb, moonThumb, cometThumb, beltThumb, ge
 const GalaxyArt=(()=>{
 /* ---------------- galaxy sprites ---------------- */
 const G_PX=512;
-function makeGalaxySprite(seed){
+function makeGalaxySprite(seed, kindLock){
   const c=document.createElement('canvas'); c.width=c.height=G_PX;
   const g=c.getContext('2d'); g.translate(G_PX/2,G_PX/2);
   const r=mulberry32(seed);
   const kindRoll=r();
-  const kind = kindRoll<0.42?'spiral':(kindRoll<0.60?'barred':(kindRoll<0.72?'lent':(kindRoll<0.87?'ellip':'irr')));
+  /* kindLock (per-seed sprites, I4): the CARD's morphology wins — the
+     seed only varies the details within that kind */
+  const kind = kindLock || (kindRoll<0.42?'spiral':(kindRoll<0.60?'barred':(kindRoll<0.72?'lent':(kindRoll<0.87?'ellip':'irr'))));
   const U=G_PX/192;
   let _arms=0, _b=0, _r0=1, _rot=0;   /* arm geometry, shared with the grain pass */
   if(kind==='spiral'||kind==='barred'){
@@ -2182,9 +2189,29 @@ const GAL_SPRITE_SEEDS=[9000,9004,9006,9007,9009,9010, 9016,9017,9024, 9018,9026
 const GAL_SPRITES=GAL_SPRITE_SEEDS.map(makeGalaxySprite);
 function galSpriteKind(seed){ const r=mulberry32(seed); const k=r(); return k<0.42?'spiral':(k<0.60?'barred':(k<0.72?'lenticular':(k<0.87?'elliptical':'irregular'))); }
 const GAL_KIND=GAL_SPRITE_SEEDS.map(galSpriteKind);
-return Object.freeze({GAL_SPRITES, GAL_KIND});
+return Object.freeze({GAL_SPRITES, GAL_KIND, makeGalaxySprite, GAL_SPRITE_SEEDS});
 })();
-const {GAL_SPRITES, GAL_KIND}=GalaxyArt;
+const {GAL_SPRITES, GAL_KIND, makeGalaxySprite, GAL_SPRITE_SEEDS}=GalaxyArt;
+/* per-seed galaxy sprites (I4): every galaxy gets its OWN face, baked in
+   the background with the shared archetype as an instant placeholder.
+   Morphology is locked to the archetype's kind so the sprite can never
+   contradict the card's Lenticular/Elliptical/Irregular row. */
+const _galSprCache=new Map();
+const _GKIND_SHORT={spiral:'spiral', barred:'barred', lenticular:'lent', elliptical:'ellip', irregular:'irr'};
+function getGalaxySprite(g2){
+  if(g2.quasar) return GAL_SPRITES[g2.sp]||GAL_SPRITES[0];
+  const key=g2.seed;
+  let spr=_galSprCache.get(key);
+  if(spr) return spr;
+  spr=GAL_SPRITES[g2.sp]||GAL_SPRITES[0];
+  if(_galSprCache.size>64){ const k=_galSprCache.keys().next().value; _galSprCache.delete(k); }
+  _galSprCache.set(key, spr);
+  const lock=_GKIND_SHORT[GAL_KIND[g2.sp]]||'spiral';
+  setTimeout(()=>{
+    if(_galSprCache.get(key)===spr) _galSprCache.set(key, makeGalaxySprite((g2.seed^0x6A7A)>>>0, lock));
+  }, 45);
+  return spr;
+}
 /* @end GalaxyArt */
 
 /* ================================================================
@@ -4658,7 +4685,7 @@ function drawUniverse(time){
         }
         ctx.restore();
         ctx.save(); ctx.translate(g.x,g.y); ctx.rotate(g.rot+Math.PI/2); ctx.scale(1,g.tilt);
-        ctx.drawImage(GAL_SPRITES[g.sp], -sz*0.6, -sz*0.6, sz*1.2, sz*1.2);
+        ctx.drawImage(getGalaxySprite(g), -sz*0.6, -sz*0.6, sz*1.2, sz*1.2);
         ctx.restore();
         if(sz*c.z>30){
           ctx.font=`italic ${12/c.z}px Georgia, serif`; ctx.textAlign='center';
@@ -4700,7 +4727,7 @@ function drawUniverse(time){
       ctx.save(); ctx.translate(g.x,g.y);
       ctx.rotate(g.rot + time*0.0012);   /* galaxies turn on cosmic time — barely perceptible */
       ctx.scale(1,g.tilt);
-      ctx.drawImage(GAL_SPRITES[g.sp], -sz, -sz, sz*2, sz*2);
+      ctx.drawImage(getGalaxySprite(g), -sz, -sz, sz*2, sz*2);
       ctx.restore();
       if(sz*c.z>34 && !g.dwarf){
         ctx.font=`italic ${12/c.z}px Georgia, serif`;
@@ -5630,7 +5657,7 @@ function drawSurface(time){
       showVistaBox(P, todV, (env.wx&&wxNow)?effWx:null, era, genes, env.hasField,
         floraOk, env.wx&&effWx==='snow', waterV,
         {ring:P.ring, stc:(st.star&&st.star.c)||null, herd:standable.length,
-         aqua:aquaN, air:airN});
+         aqua:aquaN, air:airN, title:_lastDesc.title||null, where:_lastDesc.where||null});
     }catch(_){}
   }
   if(_vistaPend && !hdOn) _vistaPend=false;
@@ -6898,6 +6925,35 @@ vistaBox.addEventListener('click', ()=>{
   clearTimeout(_vistaHideT);
   _vistaHideT=setTimeout(()=>{ if(!vistaBox.classList.contains('on')) vistaBox.style.display='none'; }, 460);
 });
+function savePostcard(){
+  if(!_lastVista||!_lastVista.cv) return;
+  const src=_lastVista.cv, W2=src.width, H2=src.height+86;
+  const cv=document.createElement('canvas');cv.width=W2;cv.height=H2;
+  const g=cv.getContext('2d');
+  g.fillStyle='#0a0c14';g.fillRect(0,0,W2,H2);
+  g.drawImage(src,0,0);
+  g.fillStyle='rgba(150,162,210,0.25)';g.fillRect(0,src.height,W2,1);
+  const ttl=(_lastVista.xtra&&_lastVista.xtra.title)||'An uncharted world';
+  g.fillStyle='#ffd96a';g.font='600 26px Georgia,serif';g.textAlign='left';
+  g.fillText(ttl, 24, src.height+40);
+  let code='';
+  try{ if(_lastVista.xtra&&_lastVista.xtra.where) code=encodeWhere(_lastVista.xtra.where, ttl); }catch(_){}
+  if(code){ g.fillStyle='#7c86ae';g.font='9px monospace';g.fillText(code, 24, src.height+66); }
+  g.fillStyle='#aab3d2';g.font='600 12px sans-serif';g.textAlign='right';
+  g.fillText('C E L E S T I A L   F R O N T I E R', W2-24, src.height+40);
+  const a=document.createElement('a');
+  a.href=cv.toDataURL('image/png');
+  a.download=String(ttl).replace(/[^\w-]+/g,'_')+'-postcard.png';
+  document.body.appendChild(a);a.click();a.remove();
+  toast('⇪ Postcard saved','The view and its share code are baked into the image — send it to a friend.');
+}
+function _vistaExtras(){
+  const pc=document.createElement('div');pc.className='vpc';
+  pc.setAttribute('role','button');pc.tabIndex=0;
+  pc.textContent='⇪ Save postcard';
+  pc.addEventListener('click',(e)=>{ e.stopPropagation(); savePostcard(); });
+  vistaBox.appendChild(pc);
+}
 function reshowVista(){
   if(!_lastVista) return;
   if(_lastVista.cv){
@@ -6907,6 +6963,7 @@ function reshowVista(){
     vistaBox.appendChild(_lastVista.cv);
     const vt=document.createElement('div');vt.className='vt';vt.textContent=_lastVista.vtTxt;
     vistaBox.appendChild(vt);
+    _vistaExtras();
     clearTimeout(_vistaHideT);
     vistaBox.style.display='flex';
     requestAnimationFrame(()=>vistaBox.classList.add('on'));
@@ -6956,6 +7013,7 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
   _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
     flora:flora, climSnow:climSnow, water:water, xtra:xtra,
     cv:cv, head:'Planetfall — '+(TYPE_LABEL[type]||'World'), vtTxt:vt.textContent};
+  _vistaExtras();
   clearTimeout(_vistaHideT);
   vistaBox.style.display='flex';
   requestAnimationFrame(()=>vistaBox.classList.add('on'));
@@ -8185,6 +8243,11 @@ let _sysReduced=(()=>{ try{ return matchMedia('(prefers-reduced-motion: reduce)'
 /* the OS preference is honored LIVE while Motion sits on Auto — a player who
    flips Reduce Motion on mid-session (or mid-save) is heard immediately */
 try{ matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', e=>{ _sysReduced=!!e.matches; applyMotion(); }); }catch(_){}
+function _destSeed(w){
+  let h=7; const ws=JSON.stringify(w||{});
+  for(let i=0;i<ws.length;i++) h=(h*31+ws.charCodeAt(i))>>>0;
+  return h;
+}
 function travelTo(w){
   if(!w || !w.gal || !fxOn || !motionOK() || _trav){ goTo(w); return; }
   /* distance matters — and your drive answers it. Duration scales with the
@@ -8194,7 +8257,7 @@ function travelTo(w){
   const mult=(typeof driveMult==='function')?driveMult():1;
   const dur=clamp(800+(dist*3)/mult, 800, Math.max(1200, 8000/mult));
   if(dist>1400 && mult===1) toast('🚀 Long Burn','The old fusion-chemical drive strains across '+Math.round(dist)+' u of void — research better drives at the Research Bench in your 🧰 Cargo hold.');
-  _trav={t0:performance.now(), dur, w, hex:'#cfe0ff', jumped:false, zEnd:0};
+  _trav={t0:performance.now(), dur, w, hex:'#cfe0ff', jumped:false, zEnd:0, seed:_destSeed(w)};
   playWhoosh();                        /* the lane opens */
 }
 function _travelFrame(){
@@ -8208,7 +8271,8 @@ function _travelFrame(){
     goTo(_trav.w);                                   /* the teleport, hidden mid-tunnel */
     const c2=curCam();
     if(c2){ _trav.zEnd=c2.z; c2.z=c2.z*0.5; }
-    _trav.hex=(st.star&&st.star.c)||'#cfe0ff';       /* arrival tunnel wears the destination's light */
+    _trav.hex=(st.star&&st.star.c)||'#cfe0ff';       /* arrival tunnel takes the destination's light */
+    _trav._g=null;
   } else {
     const c2=curCam();
     if(c2&&_trav.zEnd) c2.z+=(_trav.zEnd-c2.z)*0.14; /* ease into arrival */
@@ -8217,24 +8281,37 @@ function _travelFrame(){
   const cx=W/2, cy=H/2;
   const v=clamp(t<0.32 ? t/0.32 : (1-t)/0.68, 0, 1);
   const a=v*0.85;
-  const r0=mulberry32(0x7261);                       /* a stable tunnel that stretches, not boils */
+  /* every trip lays its own lane (seeded per destination), the streaks
+     RUSH outward instead of just swelling, and the streak table + core
+     gradient bake once per journey - no per-frame allocation (F2/G) */
+  if(!_trav.streaks){
+    const r0=mulberry32((0x7261^(_trav.seed||0))>>>0);
+    _trav.streaks=[];
+    for(let i=0;i<90;i++) _trav.streaks.push({
+      ang:r0()*Math.PI*2, f:r0(), wsp:0.5+r0(), al:0.25+r0()*0.75, lw:0.6+r0()*1.6});
+  }
   ctx.save();
   ctx.globalCompositeOperation='lighter';
   ctx.strokeStyle=_trav.hex;
-  for(let i=0;i<90;i++){
-    const ang=r0()*Math.PI*2, rr=36+r0()*(minWH*0.55), wsp=0.5+r0();
-    const len=(18+rr*0.9)*v*wsp;
-    ctx.globalAlpha=a*(0.25+r0()*0.75);
-    ctx.lineWidth=0.6+r0()*1.6;
+  const rush=(performance.now()-_trav.t0)*0.00085;
+  const span=minWH*0.55;
+  for(const sk of _trav.streaks){
+    const rr=36+((sk.f+rush*sk.wsp)%1)*span;
+    const len=(18+rr*0.9)*v*sk.wsp;
+    ctx.globalAlpha=a*sk.al;
+    ctx.lineWidth=sk.lw;
     ctx.beginPath();
-    ctx.moveTo(cx+Math.cos(ang)*rr, cy+Math.sin(ang)*rr);
-    ctx.lineTo(cx+Math.cos(ang)*(rr+len), cy+Math.sin(ang)*(rr+len));
+    ctx.moveTo(cx+Math.cos(sk.ang)*rr, cy+Math.sin(sk.ang)*rr);
+    ctx.lineTo(cx+Math.cos(sk.ang)*(rr+len), cy+Math.sin(sk.ang)*(rr+len));
     ctx.stroke();
   }
   ctx.globalAlpha=a*0.45;
-  const g=ctx.createRadialGradient(cx,cy,0,cx,cy,minWH*0.42);
-  g.addColorStop(0,_trav.hex); g.addColorStop(1,'rgba(2,2,8,0)');
-  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+  if(!_trav._g || _trav._ghex!==_trav.hex){
+    _trav._g=ctx.createRadialGradient(cx,cy,0,cx,cy,minWH*0.42);
+    _trav._g.addColorStop(0,_trav.hex); _trav._g.addColorStop(1,'rgba(2,2,8,0)');
+    _trav._ghex=_trav.hex;
+  }
+  ctx.fillStyle=_trav._g; ctx.fillRect(0,0,W,H);
   ctx.restore();
 }
 document.addEventListener('pointerdown', ()=>{       /* tap skips the lane */
@@ -9506,19 +9583,49 @@ function abilityOf(g){
 /* ---- the explorer as a battler: a gold-helmeted avatar + stats grown from your record ---- */
 let _playerAvatarURL=null;
 function playerAvatar(){
+  /* the explorer, painterly like everything else now (F2/G): gold suit,
+     glass visor reflecting starlight, rim-lit against the void */
   if(_playerAvatarURL) return _playerAvatarURL;
-  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">'+
-    '<defs><radialGradient id="pbg" cx="50%" cy="36%" r="75%"><stop offset="0" stop-color="#1a1622"/><stop offset="1" stop-color="#05060c"/></radialGradient>'+
-    '<linearGradient id="pgold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe6a8"/><stop offset="0.55" stop-color="#e0a84a"/><stop offset="1" stop-color="#b07a28"/></linearGradient>'+
-    '<radialGradient id="pvis" cx="42%" cy="36%" r="70%"><stop offset="0" stop-color="#bcd4ff"/><stop offset="0.6" stop-color="#5a6cc8"/><stop offset="1" stop-color="#221848"/></radialGradient></defs>'+
-    '<rect width="120" height="120" fill="url(#pbg)"/>'+
-    '<ellipse cx="60" cy="92" rx="30" ry="16" fill="url(#pgold)" opacity="0.55"/>'+
-    '<path d="M34 62 a26 26 0 0 1 52 0 l0 6 a26 22 0 0 1 -52 0 Z" fill="url(#pgold)"/>'+
-    '<path d="M40 58 a20 20 0 0 1 40 0 l0 5 a20 17 0 0 1 -40 0 Z" fill="url(#pvis)"/>'+
-    '<ellipse cx="52" cy="54" rx="6" ry="8" fill="#eaf2ff" opacity="0.55"/>'+
-    '<circle cx="60" cy="40" r="3" fill="#ffcf8a"/><path d="M60 28 l1.6 4 4 0.6 -2.8 2.8 0.7 4 -3.5-2 -3.5 2 0.7-4 -2.8-2.8 4-0.6 Z" fill="#ffe6a8"/>'+
-    '</svg>';
-  _playerAvatarURL=svgURI(svg);
+  const S2=240,cv=document.createElement('canvas');cv.width=cv.height=S2;
+  const c2=cv.getContext('2d');
+  const bg=c2.createRadialGradient(S2*0.5,S2*0.36,10,S2*0.5,S2*0.5,S2*0.62);
+  bg.addColorStop(0,'#1a1622');bg.addColorStop(1,'#05060c');
+  c2.fillStyle=bg;c2.fillRect(0,0,S2,S2);
+  const r=mulberry32(0x50A1E5);
+  for(let i=0;i<26;i++){ c2.fillStyle='rgba(255,255,255,'+(0.15+r()*0.5).toFixed(2)+')';
+    c2.fillRect(r()*S2,r()*S2*0.55,1.2,1.2); }
+  c2.fillStyle='rgba(0,0,0,0.5)';c2.beginPath();c2.ellipse(S2*0.5,S2*0.86,S2*0.30,S2*0.045,0,0,7);c2.fill();
+  const suit=c2.createLinearGradient(0,S2*0.60,0,S2*0.92);
+  suit.addColorStop(0,'#ffe6a8');suit.addColorStop(0.55,'#e0a84a');suit.addColorStop(1,'#8a5e20');
+  c2.fillStyle=suit;
+  c2.beginPath();c2.moveTo(S2*0.22,S2*0.90);
+  c2.quadraticCurveTo(S2*0.24,S2*0.64,S2*0.42,S2*0.58);
+  c2.lineTo(S2*0.58,S2*0.58);
+  c2.quadraticCurveTo(S2*0.76,S2*0.64,S2*0.78,S2*0.90);
+  c2.closePath();c2.fill();
+  c2.fillStyle='rgba(60,40,12,0.5)';
+  c2.fillRect(S2*0.47,S2*0.60,S2*0.06,S2*0.28);
+  const hx=S2*0.5,hy=S2*0.40,hr=S2*0.185;
+  const helm=c2.createRadialGradient(hx-hr*0.4,hy-hr*0.5,2,hx,hy,hr*1.25);
+  helm.addColorStop(0,'#fff2cf');helm.addColorStop(0.5,'#dca84e');helm.addColorStop(1,'#7c541e');
+  c2.fillStyle=helm;c2.beginPath();c2.arc(hx,hy,hr,0,7);c2.fill();
+  const vis=c2.createRadialGradient(hx-hr*0.3,hy-hr*0.25,2,hx,hy,hr*0.86);
+  vis.addColorStop(0,'#cfe0ff');vis.addColorStop(0.5,'#4a5cb8');vis.addColorStop(1,'#161038');
+  c2.fillStyle=vis;c2.beginPath();c2.arc(hx,hy+hr*0.06,hr*0.74,0,7);c2.fill();
+  c2.fillStyle='rgba(255,255,255,0.5)';
+  c2.beginPath();c2.ellipse(hx-hr*0.30,hy-hr*0.18,hr*0.22,hr*0.30,-0.5,0,7);c2.fill();
+  for(let i=0;i<5;i++){ c2.fillStyle='rgba(235,244,255,'+(0.4+r()*0.4).toFixed(2)+')';
+    c2.fillRect(hx-hr*0.5+r()*hr, hy-hr*0.3+r()*hr*0.8, 1.1, 1.1); }
+  c2.save();c2.globalCompositeOperation='lighter';
+  c2.strokeStyle='rgba(255,220,150,0.55)';c2.lineWidth=2.2;
+  c2.beginPath();c2.arc(hx,hy,hr,Math.PI*1.05,Math.PI*1.75);c2.stroke();
+  c2.restore();
+  c2.fillStyle='#ffcf8a';
+  c2.beginPath();c2.arc(S2*0.5,S2*0.70,S2*0.022,0,7);c2.fill();
+  const fg=c2.createLinearGradient(0,S2*0.74,0,S2);
+  fg.addColorStop(0,'rgba(6,8,14,0)');fg.addColorStop(1,'rgba(6,8,14,0.55)');
+  c2.fillStyle=fg;c2.fillRect(0,S2*0.74,S2,S2*0.26);
+  _playerAvatarURL=cv.toDataURL();
   return _playerAvatarURL;
 }
 const PLAYER_SEED=0x50A1E5;   /* a stable seed so duels against you are deterministic */
@@ -9715,6 +9822,41 @@ const {abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, e
    Owns: duelBox, statLines, statBars, fightNow, _duelMine, _duelTheirs, duelSetup, duelFightBtn, duelErr, duelSideCard, …
    ---------------------------------------------------------------- */
 const duelBox=document.getElementById('duelbox');
+/* the conquest arena (I6): a painted strip of the defender's world sits
+   behind the duel card; friendly code-duels stay neutral glass */
+function arenaBackdrop(seed,type){
+  const W2=720,H2=240,cv=document.createElement('canvas');cv.width=W2;cv.height=H2;
+  const g=cv.getContext('2d');
+  const palKey=type==='ice'?'ice':(type==='rocky'?'grey':(type==='venus'?'haze':(type==='desert'?'sand':(type==='lava'?'ember':'day'))));
+  const P=HD_PALS[palKey]||HD_PALS.day;
+  const hz2=H2*0.55;
+  const sky=g.createLinearGradient(0,0,0,hz2+6);
+  sky.addColorStop(0,P.skyTop);sky.addColorStop(0.62,P.skyMid);sky.addColorStop(1,P.skyHz);
+  g.fillStyle=sky;g.fillRect(0,0,W2,hz2+6);
+  for(let li=0;li<3;li++){
+    g.fillStyle=P.layers[li+1]||P.layers[li];
+    g.beginPath();g.moveTo(0,H2);
+    for(let x=0;x<=W2;x+=6) g.lineTo(x, hz2-16+li*24-_hdFbm(x*0.006+li*7,li*3,(seed^0xA12A)>>>0,4)*38);
+    g.lineTo(W2,H2);g.closePath();g.fill();
+  }
+  const gr=g.createLinearGradient(0,hz2,0,H2);
+  gr.addColorStop(0,P.ground[0]);gr.addColorStop(1,P.ground[2]);
+  g.fillStyle=gr;g.fillRect(0,hz2+34,W2,H2);
+  const vg=g.createRadialGradient(W2/2,H2*0.4,40,W2/2,H2*0.5,W2*0.6);
+  vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(2,3,8,0.6)');
+  g.fillStyle=vg;g.fillRect(0,0,W2,H2);
+  return cv.toDataURL();
+}
+function setArenaBackdrop(d){
+  const card=duelBox&&duelBox.querySelector?duelBox.querySelector('.card'):null;
+  if(!card) return;
+  if(!d||d.planetSeed==null){ card.style.backgroundImage=''; card.style.backgroundSize=''; return; }
+  const ps=d.planetSeed;
+  const sp=(SOL_PLANETS||[]).find(x=>x&&x.P&&x.P.seed===ps);
+  const type=(sp?sp.P:planetParams(ps)).type;
+  card.style.backgroundImage='linear-gradient(rgba(7,9,16,0.86),rgba(7,9,16,0.94)), url('+arenaBackdrop(ps,type)+')';
+  card.style.backgroundSize='cover';
+}
 let _lastDuelText='';
 document.addEventListener('click', e=>{
   if(e.target && e.target.id==='duel-share-log' && _lastDuelText){
@@ -9871,7 +10013,7 @@ function fightNow(mine, theirs, opts){
   };
   setTimeout(step, 420);
 }
-document.getElementById('duelclose').addEventListener('click', ()=>{ duelBox.style.display='none'; });
+document.getElementById('duelclose').addEventListener('click', ()=>{ duelBox.style.display='none'; setArenaBackdrop(null); });
 duelBox.addEventListener('click', e=>{ if(e.target===duelBox) duelBox.style.display='none'; });
 /* ---- duel setup: a real interface instead of a prompt ---- */
 let _duelMine=null, _duelTheirs=null;
@@ -10072,6 +10214,7 @@ function _cineNext(){
   el.style.setProperty('--cine', hex);
   el.innerHTML='<div class="rays"></div><div class="core">'+
     '<div class="kick">'+(o.kicker||'✦')+'</div>'+
+    (o.img?'<img class="cimg" src="'+o.img+'" alt="">':'')+
     '<div class="big">'+o.title+'</div>'+
     (o.sub?'<div class="sub">'+o.sub+'</div>':'')+
     '<div class="hint">tap to continue</div></div>';
@@ -11070,6 +11213,19 @@ function openConquestPicker(d, native){
 function runConquestBattle(d, champ, native){
   pickBox.style.display='none';
   duelSetup.style.display='none'; duelFightBtn.style.display='none'; duelErr.textContent='';
+  /* the arena is the world you're fighting FOR (I6): a painted strip of
+     its biome behind the duel card */
+  try{ setArenaBackdrop(d); }catch(_){}
+  /* an Apex Guardian gets an entrance: its portrait at scale, wearing
+     its true grade, before the first blow */
+  if(native.guardian){
+    try{
+      const _gS3=battleStats(native.genome), _gT3=GRADE_TIERS[_gS3.tier];
+      cinematic({kicker:'👑 Apex Guardian', title:native.name,
+        sub:(_gT3?_gT3.name:'Summit-grade')+' — ruler of '+(d.title||'this world'),
+        hex:_gT3?_gT3.hex:'#ffd96a', tier:_gS3.tier|0, img:speciesPortrait(native.genome)});
+    }catch(_){}
+  }
   fightNow(champ, native, {
     intro:(native.guardian?('👑 '+native.name+' rises. The world itself holds its breath'):('The conquest begins — '+champ.name+' faces '+native.name))+'\u2026',
     resultText:(res,win)=> res.winner==='A'

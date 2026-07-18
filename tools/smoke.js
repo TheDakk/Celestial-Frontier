@@ -475,6 +475,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click2(pan3.querySelector('[data-act="vista"]'), sk.w);
     check('HD vista: re-view reopens the panorama', await until(() =>
       sk.doc.getElementById('vistabox').style.display === 'flex', 4000, 'vista reopen'));
+    check('HD vista: the postcard button rides the panorama', !!sk.doc.querySelector('#vistabox .vpc'));
     click2(sk.doc.getElementById('vistabox'), sk.w);
     await until(() => sk.doc.getElementById('vistabox').style.display === 'none', 4000, 'vista re-dismiss');
     // v1.3 iteration 2 — every new scene must render a full-size canvas without throwing
