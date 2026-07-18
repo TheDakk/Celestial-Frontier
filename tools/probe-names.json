@@ -102,5 +102,7 @@
  "wxEventFor",
  "_hdAbyssScene",
  "_hdWxEvent",
- "_hdTitan"
+ "_hdTitan",
+ "habOf",
+ "locoOf"
 ]

@@ -614,6 +614,19 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       const roster = skH.planetSpecies({ type: 'lava', seed: 424242 }, null, 'hot', 'xfauna');
       check('extremophiles: an xfauna world raises at least one creature + its mats',
         roster.length >= 2 && roster.some((g) => g.kingdom === 'fauna'), 'roster=' + roster.length);
+      // cross-pool breeding stays index-safe (G2): two extremophiles breed
+      // true; a mixed pair falls back to the standard pools
+      {
+        const xa = { seed: 111, kingdom: 'fauna', color: 1, accent: 2, form: 1, body: 1, loco: 1, trait: 1, size: 2, habitat: 1, heat: 1, gen: 0, x: 1 };
+        const xb = { seed: 222, kingdom: 'fauna', color: 3, accent: 4, form: 2, body: 2, loco: 2, trait: 2, size: 3, habitat: 2, heat: 1, gen: 0, x: 1 };
+        const plain = { seed: 333, kingdom: 'fauna', color: 5, accent: 6, form: 3, body: 3, loco: 3, trait: 3, size: 1, habitat: 3, heat: 1, gen: 0 };
+        const pure = skH.crossGenome(xa, xb), mixed = skH.crossGenome(xa, plain);
+        check('breeding: two extremophiles breed a true extremophile', pure.x === 1);
+        check('breeding: a mixed pair breeds back to the standard pools', !mixed.x);
+        check('breeding: the child reads a valid habitat either way',
+          typeof skH.habOf(pure) === 'string' && skH.habOf(pure).length > 0
+          && typeof skH.habOf(mixed) === 'string' && skH.habOf(mixed).length > 0);
+      }
       // the card wears the biome: the grounded world's sub-label + Biome row
       check('biomes: the survey card sub-label wears the biome', /world|giant/i.test(
         (pan3.querySelector('.sub') || {}).textContent || ''), (pan3.querySelector('.sub') || {}).textContent);

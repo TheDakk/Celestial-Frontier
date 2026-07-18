@@ -3496,18 +3496,6 @@ function planetSpecies(P, sys, band, level){
     many('microbe', 2, 2, pr(0.55));
     for(const gx of list) if(gx.kingdom==='fauna') gx.x=1;   /* reads the extremophile pools */
   }
-  /* v1.3.5 — the sea finally grows things (audit: FLORA_FORM had no kelp
-     at all), and aerial-life worlds get their veils. ADDITIVE slots on a
-     separate stream: every species rolled above is byte-identical; the
-     world simply gains its gardens. */
-  if(level==='aquatic'){
-    const r9=mulberry32((P.seed^0xA0F10)>>>0);
-    const n9=1+(r9()<0.5?1:0);
-    for(let i9=0;i9<n9;i9++){ add('flora', 900+i9); list[list.length-1].aq=1; }
-  } else if(level==='aerial'){
-    const r9=mulberry32((P.seed^0xA1F10)>>>0);
-    if(r9()<0.35){ add('flora', 920); list[list.length-1].af=1; }
-  }
   /* wild hybrids — on teeming worlds, two resident species have interbred in the wild.
      A naturally-occurring crossbreed you can find and scan, just like Pokémon in tall grass. */
   if(list.length>=2 && rich>1.0){
@@ -3517,6 +3505,20 @@ function planetSpecies(P, sys, band, level){
       const a=list[(hr()*list.length)|0], b=list[(hr()*list.length)|0];
       if(a!==b){ const wild=crossGenome(a,b); wild.wild=true; list.push(wild); }
     }
+  }
+  /* v1.3.5 — the sea finally grows things (audit: FLORA_FORM had no kelp
+     at all), and aerial-life worlds get their veils. ADDITIVE slots on a
+     separate stream, added AFTER the wild-hybrid roll so list.length is
+     unchanged when the hybrid picks its parents — every pre-1.3.5
+     species AND hybrid stays byte-identical; the world simply gains its
+     gardens (pre-ship review catch). */
+  if(level==='aquatic'){
+    const r9=mulberry32((P.seed^0xA0F10)>>>0);
+    const n9=1+(r9()<0.5?1:0);
+    for(let i9=0;i9<n9;i9++){ add('flora', 900+i9); list[list.length-1].aq=1; }
+  } else if(level==='aerial'){
+    const r9=mulberry32((P.seed^0xA1F10)>>>0);
+    if(r9()<0.35){ add('flora', 920); list[list.length-1].af=1; }
   }
   if(_speciesMemo.size>48){ const k0=_speciesMemo.keys().next().value; _speciesMemo.delete(k0); }
   _speciesMemo.set(_mkey, list);
@@ -4391,6 +4393,7 @@ function checkTransitions(){
       st.gcam.x=st.star.x; st.gcam.y=st.star.y;
       st.gcam.z=(minWH/34)*0.8;
       st.mode='galaxy'; st.fade=1; st.star=null; st.sys=null;
+      try{ _descAbort(); }catch(_){ }
       return;
     }
     const sys = st.sys || (st.sys=systemFor(st.star.seed));
@@ -5630,11 +5633,18 @@ function drawSurface(time){
   if(season) parts.push(season);
   parts.push(env.wx ? (wxNow ? WX_NAME[effWx] : 'clear skies')
     : (P.type==='gas' ? 'winds beyond any scale' : 'airless — no weather'));
-  /* the showpiece, when one is running (5b-ii) — the status line says so */
+  /* the showpiece, when one is running (5b-ii) — the status line says so.
+     Cached on the planet's env: biome forever (it's deterministic), the
+     event per 90s spell bucket — this line runs every frame and the heat
+     rules forbid per-frame allocation (pre-ship review catch). */
   try{
-    const _b6=biomeFor(P, env.band);
-    const _ev6=wxEventFor(P, _b6&&_b6.k, wxNow?effWx:null);
-    if(_ev6) parts.push(WX_EVENT_WORD[_ev6]);
+    if(env._bio===undefined) env._bio=biomeFor(P, env.band)||null;
+    const _evKey=Math.floor(time/90)+'|'+(wxNow?effWx:'');
+    if(env._evKey!==_evKey){
+      env._evKey=_evKey;
+      env._ev=wxEventFor(P, env._bio&&env._bio.k, wxNow?effWx:null);
+    }
+    if(env._ev) parts.push(WX_EVENT_WORD[env._ev]);
   }catch(_){ }
   if(auroraOn) parts.push('auroras overhead');
   setCtxText((TYPE_DESC[P.type]||'')+' · '+parts.join(' · '));
@@ -7625,7 +7635,7 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
     vistaBox.appendChild(vtG);
     _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
       flora:flora, climSnow:climSnow, water:water, xtra:xtra,
-      cv:cvG, head:'Cloud deck — '+(TYPE_LABEL[type]||'Gas giant'), vtTxt:vtG.textContent};
+      cv:cvG, head:'Cloud deck — '+((wbG&&wbG.n)||TYPE_LABEL[type]||'Gas giant'), vtTxt:vtG.textContent};
     _vistaExtras();
     clearTimeout(_vistaHideT);
     vistaBox.style.display='flex';
@@ -7690,7 +7700,7 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
   vistaBox.appendChild(vt);
   _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
     flora:flora, climSnow:climSnow, water:water, xtra:xtra,
-    cv:cv, head:'Planetfall — '+(TYPE_LABEL[type]||'World'), vtTxt:vt.textContent};
+    cv:cv, head:'Planetfall — '+((wb5&&wb5.n)||TYPE_LABEL[type]||'World'), vtTxt:vt.textContent};
   _vistaExtras();
   clearTimeout(_vistaHideT);
   vistaBox.style.display='flex';
@@ -7944,12 +7954,15 @@ function _descRoll(pl){
   if(Math.random()*100 < d.pct){
     _descCleared=pl.P.seed;
     _waveOffs.delete(pl.P.seed);
+    if(d.biome && d.biome.land<=30 && !landed.has(pl.P.seed))
+      toast('🏆 Through the fire', (pl.name||'A hostile world')+' let you in — few explorers ever stand here.');
     queueSave();
     return true;
   }
   const n=(_waveOffs.get(pl.P.seed)||0)+1;
   _waveOffs.set(pl.P.seed, n);
   let dmg=d.lo+Math.floor(Math.random()*(d.hi-d.lo+1));
+  try{ if(techOwned.has('hull1') && dmg>1) dmg-=1; }catch(_){ }   /* reinforced hulls scrape lighter */
   dmg=Math.min(dmg, Math.max(0, hp-1));          /* a wave-off never kills */
   if(dmg>0){ hp-=dmg; renderHP(); }
   playFailTone(); fxShake();
@@ -7977,6 +7990,12 @@ function openDescentBox(pl){
 function _descStay(){
   const b=_descBoxEl(); if(b) b.style.display='none';
   if(_descOpenFor!=null) _descDeclined=_descOpenFor;
+  _descOpenFor=null;
+}
+function _descAbort(){
+  /* leaving the system (zoom-out, Atlas travel) closes a stale confirm
+     without marking the world declined (pre-ship review catch) */
+  const b=_descBoxEl(); if(b) b.style.display='none';
   _descOpenFor=null;
 }
 (function(){
@@ -8486,7 +8505,17 @@ function atlasThumb(it){
 }
 function addToLog(d){
   if(!d.logId || logMap.has(d.logId)) return;
-  logMap.set(d.logId, {id:d.logId, title:d.title, sub:d.sub,
+  /* planets bookmark under their BIOME name (v1.3.5) — "swamp" and
+     "carbon" become searchable, and Atlas rows say what kind of world
+     you saved. Off-system the band is unknowable; the type label stands. */
+  let sub9=d.sub;
+  try{
+    if(d.planetSeed!=null && st.sys && st.sys.planets){
+      const pl9=st.sys.planets.find(x=>x.P&&x.P.seed===d.planetSeed);
+      if(pl9){ const b9=biomeFor(pl9.P, climateBand(pl9.P, st.sys, pl9.orb||100)); if(b9) sub9=b9.n; }
+    }
+  }catch(_){ }
+  logMap.set(d.logId, {id:d.logId, title:d.title, sub:sub9,
     thumb:(d.planetSeed!=null?null:d.thumb),   /* planets: live via atlasThumb */
     sq:d.thumbSq,
     badge:d.badge, star:(d.grade?d.grade.star:''), where:d.where, t:Date.now()});
@@ -9021,6 +9050,7 @@ const BINDER_SETS=[
  {id:'themes',   name:'Master of Arts',     d:'Own a beast of every ability theme', sd:80, prog:o=>o.themes.size+' / '+Object.keys(ABILITY_THEMES).length, done:o=>o.themes.size>=Object.keys(ABILITY_THEMES).length},
  {id:'bodies',   name:'The Bestiary',       d:'Own every fauna body plan', sd:80, prog:o=>o.bodies.size+' / '+FA_BODY.length, done:o=>o.bodies.size>=FA_BODY.length},
  {id:'realms',   name:'Warden of Realms',   d:'Own a species from every realm', sd:100, prog:o=>o.realms.size+' / '+REALM_ORDER.length, done:o=>o.realms.size>=REALM_ORDER.length},
+ {id:'xeno',     name:'Against All Odds',   d:'Catalogue an extremophile — life that should not be possible', sd:60, prog:o=>(o.xeno?'1':'0')+' / 1', done:o=>!!o.xeno},
  {id:'court',    name:'The Apex Court',     d:'Claim a guardian of each summit grade', sd:150, prog:()=>_courtN()+' / 3', done:()=>_courtN()>=3},
  {id:'para10',   name:'Seeker of Legends',  d:'Find 10 of the Fifty Paragons', sd:120, prog:()=>paragonsOwned()+' / 10', done:()=>paragonsOwned()>=10},
 ];
@@ -9030,13 +9060,13 @@ function _codexTabs(){
     '<span class="cvt'+(codexView==='binder'?' on':'')+'" data-cvw="binder" role="button" tabindex="0">🗂 Binder</span></div>';
 }
 function renderBinder(){
-  const own={tiers:new Set(), realms:new Set(), bodies:new Set(), themes:new Set(), flavors:new Set(), kinds:new Set(), sizes:new Set()};
+  const own={tiers:new Set(), realms:new Set(), bodies:new Set(), themes:new Set(), flavors:new Set(), kinds:new Set(), sizes:new Set(), xeno:false};
   for(const e of codex.values()){
     if(e.grade) own.tiers.add(e.grade.tier);
     if(e.realm) own.realms.add(e.realm);
     if(e.kind) own.kinds.add(e.kind);
     const g=e.genome||{};
-    if(e.kind==='Fauna'){ own.bodies.add((g.body||0)%FA_BODY.length); own.themes.add(abilityTheme(g)); own.sizes.add((g.size||0)%FA_SIZE.length); }
+    if(e.kind==='Fauna'){ own.bodies.add((g.body||0)%FA_BODY.length); own.themes.add(abilityTheme(g)); own.sizes.add((g.size||0)%FA_SIZE.length); if(g.x) own.xeno=true; }
     if(e.kind==='Flora') own.flavors.add(floraStat(g));
   }
   const pages=[
@@ -9161,6 +9191,7 @@ function _destSeed(w){
   return h;
 }
 function travelTo(w){
+  try{ _descAbort(); }catch(_){ }       /* a stale descent ask never rides along */
   if(!w || !w.gal || !fxOn || !motionOK() || _trav){ goTo(w); return; }
   /* distance matters — and your drive answers it. Duration scales with the
      gulf you're crossing ÷ drive tier, CAPPED so travel is flavor, never
@@ -11516,11 +11547,11 @@ const GUIDE=[
  {id:'zoom', t:'Flying the universe', k:'zoom pan pinch scroll drag modes universe galaxy system surface navigate controls', body:
   '<p>The whole cosmos is one continuous view. <b>Pinch or scroll to zoom, drag to pan.</b> Zooming dives through four scales: <em>universe → galaxy → star system → planet surface</em> — and zooming out climbs back up. Everything you can see, you can visit.</p><ul><li>Tap any object to open its <b>survey card</b>; tap it again (or tap elsewhere) to release.</li><li>When a planet fills the view but sits off-center, keep zooming — the camera glides the rest of the way in. On a world you&#8217;ve never stood on, the dive stops at approach altitude and asks before you commit — see <span data-gt="landing">Landing</span>. Panning and pinching are never hijacked.</li><li>On a surface, you walk the world itself — the survey card stays pinned.</li><li>Travel beyond your charted frontier is gated — see <span data-gt="regions">Frontier regions</span>.</li></ul>'},
  {id:'survey', t:'Survey cards', k:'survey card panel tap inspect atmosphere climate water gravity descriptor lock pin land contact census glance ground', body:
-  '<p>Knowing a world comes in three acts. <b>Glance</b>: on a computer, hovering shows the long-range reads — color class, atmosphere, water signatures, whispers of life (on a phone your tap goes straight to the survey). <b>Orbital survey</b>: tap to lock the card and the instruments speak — environment, biosphere, signals. <b>Ground survey</b>: <b>land</b> — press the card&#8217;s Land button, or dive toward the world and confirm the descent (see <span data-gt="landing">Landing</span>); planetfall opens the census of any civilization and the mineral veins of dead worlds. Every line is generated from the object’s seed, so your survey matches every other explorer’s.</p><ul><li>Tapping locks the card in place so you can press its buttons while the object drifts.</li><li>A planet&#8217;s card leads with its actions and headlines; the <b>Environment</b> row&#8217;s <b>expand</b> pill unfolds the full readings, and a civilization&#8217;s headline unfolds its census. Cards remember whether you like them open or folded — the ⟁ Signal row never hides, and a world you&#8217;ve stood on wears a <b>Ground-surveyed</b> tag.</li><li>An organized world announces itself from orbit as <b>⟁ signals</b> — land to attempt <b>first contact</b>. Most receptions are warm; a wary one wounds you (a named Field Scout takes the hit instead), and the census stays sealed until a landing goes well. Conquest never needs to ask.</li><li>Worlds with a biosphere show <b>Discover Life</b> — see <span data-gt="discover">Discovering life</span>.</li><li>The bookmark row saves the place — see <span data-gt="atlas">The Star Atlas</span>.</li></ul>'},
+  '<p>Knowing a world comes in three acts. <b>Glance</b>: on a computer, hovering shows the long-range reads — color class, atmosphere, water signatures, whispers of life (on a phone your tap goes straight to the survey). <b>Orbital survey</b>: tap to lock the card and the instruments speak — environment, biosphere, signals. <b>Ground survey</b>: <b>land</b> — press the card&#8217;s Land button, or dive toward the world and confirm the descent (see <span data-gt="landing">Landing</span>); planetfall opens the census of any civilization and the mineral veins of dead worlds. Every line is generated from the object’s seed, so your survey matches every other explorer’s.</p><ul><li>Tapping locks the card in place so you can press its buttons while the object drifts.</li><li>A planet&#8217;s card leads with its actions and headlines; the <b>Environment</b> row&#8217;s <b>expand</b> pill unfolds the full readings, and a civilization&#8217;s headline unfolds its census. Cards remember whether you like them open or folded — the ⟁ Signal row never hides, and a world you&#8217;ve stood on wears a <b>Ground-surveyed</b> tag.</li><li>An organized world announces itself from orbit as <b>⟁ signals</b> — land to attempt <b>first contact</b>. Most receptions are warm; a wary one wounds you (a named Field Scout takes the hit instead), and the census stays sealed until a landing goes well. Conquest never needs to ask.</li><li>Worlds with a biosphere show <b>Discover Life</b> — see <span data-gt="discover">Discovering life</span>.</li><li>The bookmark row saves the place — see <span data-gt="atlas">The Star Atlas</span>.</li><li>Every planet&#8217;s card names its <b>biome</b> — swamp world, carbon world, magma sea — and the rare kinds announce themselves in violet. A glance that whispers <b>impossible biosignatures</b> means something is alive where nothing should be.</li></ul>'},
  {id:'landing', t:'Landing', k:'landing descent land wave-off risk success approach orbit scrape pity ramp weather storm', body:
   '<p>Setting down is the one moment the frontier pushes back. Every world sits somewhere on a ladder, from a calm approach that always works to a hostile dive that mostly doesn&#8217;t — the odds come from what the world is, and a storm blowing right now shaves a little more off. You see the number before you commit.</p><ul><li>Zooming into an unvisited world stops at approach altitude and asks. The <b>Land</b> button on a survey card skips the question — pressing it is the answer.</li><li>A failed descent is a wave-off: you&#8217;re bounced back to orbit with a scrape, never worse. It cannot kill you.</li><li>Every wave-off teaches the approach — your next try on that world is a fair bit better, and the lesson is remembered even between sessions.</li><li>Once you&#8217;ve stood on a world it is yours: return landings always succeed, no questions asked.</li><li>Earth is home. Home never waves you off.</li></ul>'},
  {id:'search', t:'Search', k:'search box find discoveries paste code lookup', body:
-  '<p>The search box (top bar) hunts across everything you’ve already discovered: Atlas places, Compendium species, even cosmic events you’ve witnessed. It also accepts pasted codes:</p><ul><li><b>CF1-…</b> world codes — jump straight to a friend’s discovery.</li><li><b>CFB-…</b> creature codes — load a friend’s creature for a duel.</li></ul><p>See <span data-gt="codes">Share codes</span>.</p>'},
+  '<p>The search box (top bar) hunts across everything you’ve already discovered: Atlas places, Compendium species, even cosmic events you’ve witnessed. It also accepts pasted codes:</p><ul><li><b>CF1-…</b> world codes — jump straight to a friend’s discovery.</li><li><b>CFB-…</b> creature codes — load a friend’s creature for a duel.</li><li>Worlds bookmark under their biome — searching <b>swamp</b> or <b>carbon</b> finds every one you&#8217;ve saved since v1.3.5.</li></ul><p>See <span data-gt="codes">Share codes</span>.</p>'},
  {id:'codes', t:'Share codes (CF1 / CFB)', k:'share code link friend cf1 cfb copy multiplayer social', body:
   '<p>There is no server — the universe is mathematics, identical on every device. A share code is just an address into that shared math:</p><ul><li><b>⇪ Share this discovery</b> on a survey card copies a <b>CF1-</b> code/link. Anyone who opens it lands on the exact same world, with your name for it attached.</li><li><b>⇪ Code</b> on a creature card copies a <b>CFB-</b> code carrying the full genome — the identical creature, stats and all, appears on your friend’s device for a duel.</li></ul><p>Codes are sanitized on arrival; a tampered code can’t hurt your save.</p>'},
  {id:'charters', t:'Expedition Charters', k:'charter charters hunt board weekly goals task starter reward stardust', body:
@@ -11528,15 +11559,15 @@ const GUIDE=[
  {id:'beacon', t:'Traveler’s Beacon', k:'beacon daily random destination five minutes', body:
   '<p>The <b>Traveler’s Beacon</b> (left rail) offers a fresh destination every <b>5 minutes</b> — somewhere notable, picked deterministically, so every explorer’s beacon points at the same place at the same moment. An easy way to see something new when the infinite feels too big.</p>'},
  {id:'atlas', t:'The Star Atlas', k:'atlas bookmark favorite home save place travel star log', body:
-  '<p>Your personal map of the infinite. On any survey card:</p><ul><li><b>+ Add to Star Atlas</b> bookmarks the place.</li><li><b>☆ Favorite</b> marks your best finds (and auto-saves them).</li><li><b>⌂ Home</b> marks one place as home — yours to change anytime.</li></ul><p>Open the <b>Star Atlas</b> (right rail) and tap any entry to ride the <b>hyperlane</b> there — the camera dives out, the sky stretches into a streak tunnel tinted by your destination’s light, and you ease in on arrival (tap to skip; obeys your effects and Motion settings). The Atlas keeps your most recent ~120 places.</p>'},
+  '<p>Your personal map of the infinite. On any survey card:</p><ul><li><b>+ Add to Star Atlas</b> bookmarks the place.</li><li><b>☆ Favorite</b> marks your best finds (and auto-saves them).</li><li><b>⌂ Home</b> marks one place as home — yours to change anytime.</li><li>The weekly pool now includes <b>Down the hard way</b> — land on a gas giant, a hothouse or a molten world. The descent will fight you; that&#8217;s the point.</li></ul><p>Open the <b>Star Atlas</b> (right rail) and tap any entry to ride the <b>hyperlane</b> there — the camera dives out, the sky stretches into a streak tunnel tinted by your destination’s light, and you ease in on arrival (tap to skip; obeys your effects and Motion settings). The Atlas keeps your most recent ~120 places.</p>'},
  {id:'colors', t:'The color language', k:'color colors tint meaning legend cyan gold red green ember violet lime chronicle toast tray mud', body:
-  '<p>The expedition speaks in color, old-school MUD style — a tint means the same thing everywhere, and the words always carry the meaning too, so nothing is lost if you read past the color.</p><ul><li>Pop-ups and the <b>🔔 tray</b> tint by event: red for harm and loss, gold for milestones and first contact, green for harvests, samples and mined hauls, calm blue for everything else.</li><li>In <b>the Chronicle</b>, your champion reads cyan and the foe ember on every line; damage is yellow, criticals gold, misses dim, staggers flash, burns glow orange, mending green, lifesteal violet, thorns lime — a felled combatant falls in red, and the verdict wears its outcome: victory gold, defeat red.</li><li>A world&#8217;s long-range glance tints each reading by family — water cyan, life green, signals violet.</li><li>Elsewhere the language holds: the <b>Compendium</b> marks your <b>Field Scout</b> in cyan, the <b>Star Atlas</b> tints its badges, <b>Cosmic Events</b> wear their nature&#8217;s color, and a creature&#8217;s condition runs green → yellow → red as wounds deepen.</li></ul>'},
+  '<p>The expedition speaks in color, old-school MUD style — a tint means the same thing everywhere, and the words always carry the meaning too, so nothing is lost if you read past the color.</p><ul><li>Pop-ups and the <b>🔔 tray</b> tint by event: red for harm and loss, gold for milestones and first contact, green for harvests, samples and mined hauls, calm blue for everything else.</li><li>In <b>the Chronicle</b>, your champion reads cyan and the foe ember on every line; damage is yellow, criticals gold, misses dim, staggers flash, burns glow orange, mending green, lifesteal violet, thorns lime — a felled combatant falls in red, and the verdict wears its outcome: victory gold, defeat red.</li><li>A world&#8217;s long-range glance tints each reading by family — water cyan, life green, signals violet.</li><li>Elsewhere the language holds: the <b>Compendium</b> marks your <b>Field Scout</b> in cyan, the <b>Star Atlas</b> tints its badges, <b>Cosmic Events</b> wear their nature&#8217;s color, and a creature&#8217;s condition runs green → yellow → red as wounds deepen.</li><li>A <b>wave-off</b> lands in harm red — a scrape, never a death. Field samples and touchdowns keep their gain green, and a landing that beats a hostile world arrives in milestone gold.</li></ul>'},
 ]},
 {icon:'🧬', cat:'Life & the Compendium', blurb:'Kingdoms, discovery, rarity, specimen cards', topics:[
  {id:'discover', t:'Discovering life', k:'discover life scan bioscan species danger wound hp catalogue', body:
-  '<p>Living worlds show <b>Discover Life</b> on their survey card. Scanning is a deliberate act — and on hostile worlds it has teeth: the danger percentage shown is your chance of being wounded by wildlife mid-scan (fiercer apex fauna and furnace worlds are deadlier). The scan always completes — you earned it.</p><ul><li>Every species found lands in your <b>Compendium</b> automatically.</li><li>Or send a beast ahead: press <b>Scout</b> on any of your fauna&#8217;s cards to name it your <b>Field Scout</b> — it takes the hit in your place, wounds and all, mended the usual way with ♥ loved flora. A scout with nothing left is lost forever.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li>Conquered worlds scan safely — see <span data-gt="conquest">Conquest</span>.</li></ul>'},
+  '<p>Living worlds show <b>Discover Life</b> on their survey card. Scanning is a deliberate act — and on hostile worlds it has teeth: the danger percentage shown is your chance of being wounded by wildlife mid-scan (fiercer apex fauna and furnace worlds are deadlier). The scan always completes — you earned it.</p><ul><li>Every species found lands in your <b>Compendium</b> automatically.</li><li>Or send a beast ahead: press <b>Scout</b> on any of your fauna&#8217;s cards to name it your <b>Field Scout</b> — it takes the hit in your place, wounds and all, mended the usual way with ♥ loved flora. A scout with nothing left is lost forever.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li>Conquered worlds scan safely — see <span data-gt="conquest">Conquest</span>.</li><li>A thin slice of hostile worlds — molten, frozen, crushing — carries actual creatures, not just microbes. The odds run from about 1-in-70 on the friendliest extremes to 1-in-10,000 on the magma seas: the hardest landings hide the strangest finds.</li></ul>'},
  {id:'kingdoms', t:'The four kingdoms', k:'kingdom microbe flora fauna fungi realm biome classification', body:
-  '<p>All life belongs to one of four kingdoms — <b>🦠 Microbe, 🌿 Flora, 🍄 Fungi, 🐾 Fauna</b> — and is shelved in the Compendium by realm (Land Fauna, Aquatic Fauna, Colonial Life…). Kingdom decides what a creature can do:</p><ul><li><b>Fauna</b> fight duels, defend worlds, and can be fed.</li><li><b>Flora</b> are medicine and meals — eaten by you or fed to beasts.</li><li>All kingdoms can breed within their own kind.</li></ul>'},
+  '<p>All life belongs to one of four kingdoms — <b>🦠 Microbe, 🌿 Flora, 🍄 Fungi, 🐾 Fauna</b> — and is shelved in the Compendium by realm (Land Fauna, Aquatic Fauna, Colonial Life…). Kingdom decides what a creature can do:</p><ul><li><b>Fauna</b> fight duels, defend worlds, and can be fed.</li><li><b>Flora</b> are medicine and meals — eaten by you or fed to beasts.</li><li>All kingdoms can breed within their own kind.</li><li>The sea grows kelp towers, reef-builders and sargassum rafts now; aerial-life worlds fly drifting veils. Extremophiles come with their own ways of living — vent-clingers, magma-swimmers, storm-riders — and worlds whose roster runs titanic sometimes show it breaking the horizon.</li></ul>'},
  {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique mythic celestial primordial transcendent empyrean eternal omnipotent deep spectrum summit color', body:
   '<p>Every species rolls one of 15 grades. The first eight — Common, Uncommon, Notable, Rare, Exotic, <b>Legendary, Anomalous, Unique</b> — cover all most expeditions will ever see. Beyond them lies the <b>deep spectrum</b>: <b>Mythic, Celestial, Primordial</b> and <b>Transcendent</b> — a literal one-in-a-million roll. Past even that wait the three <b>summit grades</b> — <b>Empyrean, Eternal, Omnipotent</b> — all but unrollable, belonging to master bloodlines and to <span data-gt="guardians">Apex Guardians</span>. Rarity tints the card, pitches the discovery chime, and matters mechanically:</p><ul><li>Rarer flora heal more — and poison more. Rarer pairs are harder to breed but forge stronger bloodlines.</li><li>Finding a Legendary-or-better species pays a ☄ Stardust bonus (first discovery only).</li><li>Stars and worlds carry rarity too — their <em>spectral designation</em> — and rare worlds yield richer conquest spoils.</li><li>Hunting the deep spectrum? Size, glow, wild apex blood and deep hybrid generations all push a creature’s grade upward — a master bloodline can climb far past what nature rolls.</li></ul>'},
  {id:'specimen', t:'Reading a specimen card', k:'specimen card stats power ability bloodline brood fed gen hybrid tastes', body:
@@ -11548,7 +11579,7 @@ const GUIDE=[
 ]},
 {icon:'🌿', cat:'Breeding & Feeding', blurb:'Bloodlines, meals, medicine', topics:[
  {id:'breeding', t:'Breeding', k:'breed pair parents consumed odds hybrid bloodline stardust boost union', body:
-  '<p>Pick a specimen, press <b>Breed</b>, choose a same-kingdom mate. Both parents are consumed by the union — win or lose.</p><ul><li>The odds shown depend on the pair’s rarity — rare pairs are long shots.</li><li>☄ Stardust you’ve earned passively boosts odds (up to +15%) — see <span data-gt="stardust">Stardust</span>.</li><li>Success forges a <b>new bloodline</b>: a hybrid child with boosted stats (+1 brood). Chain generations for monsters.</li><li>Failure loses both parents. Breed your spares, not your champions.</li></ul>'},
+  '<p>Pick a specimen, press <b>Breed</b>, choose a same-kingdom mate. Both parents are consumed by the union — win or lose.</p><ul><li>The odds shown depend on the pair’s rarity — rare pairs are long shots.</li><li>☄ Stardust you’ve earned passively boosts odds (up to +15%) — see <span data-gt="stardust">Stardust</span>.</li><li>Success forges a <b>new bloodline</b>: a hybrid child with boosted stats (+1 brood). Chain generations for monsters.</li><li>Failure loses both parents. Breed your spares, not your champions.</li><li>Two extremophile parents breed a true extremophile; a mixed pair breeds back toward ordinary stock. A creature&#8217;s two-tone hide follows its accent gene, so children visibly carry their parents&#8217; colors.</li></ul>'},
  {id:'feeding', t:'Feeding beasts', k:'feed flora meal tastes loved disliked poison toxic dead bloodline fed mend medicine', body:
   '<p>Fauna can be fed flora from your Compendium (<b>Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavours it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength.</li><li>Feeding is also medicine: a welcome meal mends a wounded beast, and loved flavours mend most. A disliked meal that goes badly can wound it further — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll poisons the beast, biting off a chunk of its condition; rarer flora bite far deeper. Only a beast whose strength is already spent dies of it — at zero, it’s gone. The Iron Gut ability shrugs toxins off.</li></ul>'},
  {id:'injuries', t:'Injuries & recovery', k:'injury wound hurt condition bruised critical mend recover heal scars medicine', body:
@@ -11586,7 +11617,7 @@ const GUIDE=[
  {id:'harvest', t:'Harvesting', k:'harvest hourly cooldown settled world replenish stardust', body:
   '<p>Every settled world can be harvested for Stardust once per hour (rarer worlds yield more). The button lives on the world’s survey card — “Settled — replenishing” means come back later. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
  {id:'mining', t:'Mining & the Cargo hold', k:'mine mining elements minerals deposits cargo hold dead lifeless world vein iron gold prismatium samples field landing inventory icons', body:
-  '<p>Dead worlds carry the elements. Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and rarer worlds hide richer veins, up to exotics like Voidglass and Prismatium.</p><ul><li><b>Landing pays.</b> Your first footfall on any world (home aside) collects <b>field samples</b> — a pinch of up to two of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration stocks the hold all by itself.</li><li>Prospecting takes boots on the ground: press a lifeless world&#8217;s <b>Land</b> button (or zoom all the way in) — planetfall is a <b>ground survey</b>, and the Mine Deposits button opens with it. (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li>Mining is hourly per world, like harvests.</li><li>Everything lands in your <b>🧰 Cargo hold</b> (right rail — it appears with your first cargo). Its <b>Inventory</b> tab is a grid of item tiles — ingots for metals, shards for ices, flasks for gases, cut gems for the exotics — and the <b>Research Bench</b> tab spends them, with the same icons in every recipe — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
+  '<p>Dead worlds carry the elements. Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and rarer worlds hide richer veins, up to exotics like Voidglass and Prismatium.</p><ul><li><b>Landing pays.</b> Your first footfall on any world (home aside) collects <b>field samples</b> — a pinch of up to two of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration stocks the hold all by itself.</li><li>Prospecting takes boots on the ground: press a lifeless world&#8217;s <b>Land</b> button, or dive in and confirm the descent — planetfall is a <b>ground survey</b>, and the Mine Deposits button opens with it. (Gas giants, hothouses and molten worlds will fight the landing — see <span data-gt="landing">Landing</span>.) (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li>Mining is hourly per world, like harvests.</li><li>Everything lands in your <b>🧰 Cargo hold</b> (right rail — it appears with your first cargo). Its <b>Inventory</b> tab is a grid of item tiles — ingots for metals, shards for ices, flasks for gases, cut gems for the exotics — and the <b>Research Bench</b> tab spends them, with the same icons in every recipe — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
  {id:'research', t:'Research & ships', k:'research tech technology bench drive ship hull scanner lab fusion antimatter warp travel distance', body:
   '<p>The engineer’s track, parallel to the Prime Codex: the Prime Codex is your legend, the Research Bench is your capability. Research costs mined elements + ☄ Stardust:</p><ul><li><b>🛰 Deep Scanners</b> — survey cards reveal mineral veins from orbit.</li><li><b>🛡 Reinforced Hull</b> — hostile bioscans wound you 25% lighter.</li><li><b>🧪 Xenobotany Lab</b> — flora meals nourish one extra stat point.</li><li><b>The drive ladder</b> — 🚀 Fusion → ⚛ Antimatter → 🌀 Warp Fold. Hyperlane travel scales with real distance; each drive cuts it, and Warp Fold makes every jump arrive in a breath. Distance is never a wall — only a wait, and only ever a short one.</li></ul>'},
 ]},
