@@ -725,7 +725,44 @@
 ##    (11 via skip path) — 60/60 complete, zero stalls, zero errors.
 ##  · probe-names grew to 146; simreport-fast/ui.json keep full data.
 ##
-## ★★★ v1.4 "THE ASCENT" IS BUILT — AWAITING NICK'S PASS + DEPLOY WORD ★★★
+## ★★★ v1.4 "THE ASCENT" DEPLOYED 2026-07-18 (build 4d28528, Nick:
+## "deploy and do our standard post-deployment checks") — LIVE at
+## celestialfrontier.github.io, version.json serving v1.4. ★★★
+##
+## POST-DEPLOY SWEEP (2 audit agents + chaos-sim + self):
+##  HEAT: baked the last per-frame gradients from the HD pass (rogue
+##   orb, pulsar beams, NS cores incl. the system-view straggler, the
+##   visitor trail) into shared sprites.
+##  EXPLOIT AUDIT — 3 fixed: auto-extractor clock-warp/save-edit farm
+##   (mined stamps now clamp to one accrual window before a new `at`
+##   wall-clock save stamp), mx save cap that could refill finite
+##   reserves (uncapped — minedw stored the keys anyway), c1-mine Sol
+##   filter (was relying on the travel lock). Determinism, crafting,
+##   Ascent gates, save-tamper hardening, consumption loops all CLEAN.
+##  MISSED-SCENARIO AUDIT — fixed: **DEATH SOFT-LOCK** (pre-v1.0! the
+##   in-place rebuild never hid the z-50 deathbox — "new expedition"
+##   ran under a permanent overlay; Settings→Reset masked it since it
+##   never opens deathbox); resetMemoryState missed claimedSets (Binder
+##   bounties unclaimable post-death) + lastAnomKey/_parSites/nameHue/
+##   _chBadge; biomeVeinFor determinism guard (roll now consumed either
+##   way); _eqOpen clears on stats close; auto-extractor restamps mined
+##   worlds on build (no retroactive windfall); stranded-boot on a
+##   gated CF1 hash now falls back to saved-view; copy sweep (nine
+##   sockets / click-mine / beacon-per-ring tooltip / tiers12 dup /
+##   search topic). Endings, training×v1.4, share codes, panel manager,
+##   achievements all verified CLEAN.
+##  CHAOS SYNTHETIC TEST (300 adversarial UI-training runs — random
+##   clicks/Escape/panel-storms between every step): found + fixed a
+##   REAL strand — **Escape during the training duel closed it and
+##   hung the tutorial forever** (the input lockdown covered taps, not
+##   keydown; Escape now inert on lesson modals while !tutDone). After
+##   the fix: 300/300 complete, 0 breaks, 0 stacked panels, vista +
+##   helppop + one-panel rules all held under the storm.
+##  Suites green after every fix: fingerprint 50/50, smoke 253/253,
+##  systems 19/19, balance PASS. (700 deep progression runs +
+##  player-critic fun report in flight.)
+##
+## ★★★ v1.4 "THE ASCENT" IS LIVE ★★★
 ## (2026-07-18, second session; commits 0f39b99 + ff0abfe + review batch.
 ## GAME_VERSION bumped to '1.4' [Nick commissioned the 1.4 build this
 ## session]; NOT deployed — deploys only on Nick's word.)

@@ -144,5 +144,11 @@
  "describePick",
  "_canCraft",
  "biomeVeinFor",
- "ITEM_BY"
+ "ITEM_BY",
+ "conquerPlanet",
+ "runConquestBattle",
+ "apexNative",
+ "playerCombatant",
+ "surveyedSet",
+ "_pickMode"
 ]
