@@ -1308,6 +1308,8 @@
       <span class="opts"><span id="tipsopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
   </div>
   <div class="sgrp" data-sg="g">
+    <div class="srow2"><span>Star charts</span>
+      <span class="opts"><span id="chartopt" class="fsopt" role="button" tabindex="0" data-tip="Orbit paths, the habitable zone and chart labels in system view. Off keeps the sky looking like a universe.">Off</span></span></div>
     <div class="srow2"><span>Visual effects</span>
       <span class="opts"><span id="fxopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
     <div class="srow2"><span>Screen shake</span>
@@ -4156,7 +4158,7 @@ function zoomLimits(){
   if(st.mode==='universe') return [0.0024, 40];
   if(st.mode==='galaxy')   return [st.gz0*0.5, minWH/2.5];
   if(st.mode==='system')   return [st.sz0*0.5, minWH/3];
-  return [0.45, 600];
+  return [0.45, 6];   /* past ~6× the ground tiles smear into stripes (Nick's screenshot) — there is nothing to see closer */
 }
 
 /* ---------------- input ---------------- */
@@ -5166,8 +5168,8 @@ function drawSystem(time){
   const sys = st.sys || (st.sys=systemFor(st.star.seed));
   picks.push({sx:(0-c.x)*c.z+W/2, sy:(0-c.y)*c.z+H/2, r:Math.max((sys.starR||20)*c.z,18*PICK_F), kind:'starsys', data:{seed:st.star.seed, sys}});
   ctx.save(); ctx.translate(W/2,H/2); ctx.scale(c.z,c.z); ctx.translate(-c.x,-c.y);
-  /* habitable zone — the band where water can stay liquid */
-  if(sys.hz){
+  /* habitable zone — the band where water can stay liquid (Star charts) */
+  if(chartsOn && sys.hz){
     ctx.beginPath();
     ctx.arc(0,0,sys.hz[1],0,TAU);
     ctx.arc(0,0,sys.hz[0],0,TAU,true);
@@ -5251,7 +5253,7 @@ function drawSystem(time){
     }
     picks.push({ringPick:true, sx:(0-c.x)*c.z+W/2, sy:(0-c.y)*c.z+H/2,
       rr:sys.belt.r*c.z, band:Math.max(6*c.z,10), kind:'belt', data:{sys}});
-    if(c.z>minWH/700){
+    if(chartsOn && c.z>minWH/700){
       ctx.font=`italic ${9.5/c.z}px Georgia,serif`; ctx.textAlign='center';
       ctx.fillStyle='rgba(180,172,158,0.7)';
       ctx.fillText('asteroid belt', 0, -sys.belt.r - 8/c.z);
@@ -5268,10 +5270,12 @@ function drawSystem(time){
       rr:sys.kuiper.r*c.z, band:Math.max(6*c.z,10), kind:'kuiper', data:{sys}});
   }
   /* Oort-style comet shell at the edge of the system */
-  ctx.setLineDash([6,5]);
-  ctx.strokeStyle='rgba(170,200,255,0.13)'; ctx.lineWidth=2.5;
-  ctx.beginPath(); ctx.arc(0,0,SYS_R-3,0,TAU); ctx.stroke();
-  ctx.setLineDash([]);
+  if(chartsOn){
+    ctx.setLineDash([6,5]);
+    ctx.strokeStyle='rgba(170,200,255,0.13)'; ctx.lineWidth=2.5;
+    ctx.beginPath(); ctx.arc(0,0,SYS_R-3,0,TAU); ctx.stroke();
+    ctx.setLineDash([]);
+  }
   picks.push({ringPick:true, sx:(0-c.x)*c.z+W/2, sy:(0-c.y)*c.z+H/2,
     rr:(SYS_R-3)*c.z, band:Math.max(5*c.z,10), kind:'oort', data:{}});
   /* the star's own light color reaches its worlds (I2): tinted lit-side
@@ -5286,8 +5290,10 @@ function drawSystem(time){
   }
   /* orbits & planets */
   for(const pl of sys.planets){
-    ctx.strokeStyle='rgba(232,236,255,0.13)'; ctx.lineWidth=0.8/c.z;
-    ctx.beginPath(); ctx.arc(0,0,pl.orb,0,TAU); ctx.stroke();
+    if(chartsOn){
+      ctx.strokeStyle='rgba(232,236,255,0.13)'; ctx.lineWidth=0.8/c.z;
+      ctx.beginPath(); ctx.arc(0,0,pl.orb,0,TAU); ctx.stroke();
+    }
     const ang = pl.orb*0.13 + time*0.05/(pl.orb*0.012);
     const px=Math.cos(ang)*pl.orb, py=Math.sin(ang)*pl.orb;
     const pr=6*pl.P.sizeMul;
@@ -7874,6 +7880,7 @@ const BIOME_SETS={
  ],
 };
 function biomeFor(P, band){
+  if(P.seed===133) return null;   /* Earth is Earth — home never re-labels (its card said savanna; it lies) */
   const set=BIOME_SETS[P.type]; if(!set) return null;
   const bd=band==='frozen'?'cold':band;   /* remnant-orbit worlds read as cold country */
   const cands=set.filter(b=>!b.bands || b.bands.includes(bd));
@@ -9451,6 +9458,7 @@ document.addEventListener('pointerdown', e=>{
 let AC=null;
 let sndOn=true;
 let fxOn=true;
+let chartsOn=false;   /* Star charts overlay (orbits/zones/labels) — OFF by default (v1.3.6, Nick's call) */
 let shakeOn=true;
 let sfxVol=1;            /* master SFX level 0..1 — saves without the field play at full, as before */
 let motionMode=-1;       /* -1 Auto (follow the OS reduce-motion preference, live) · 0 Full · 1 Reduced.
@@ -9813,7 +9821,7 @@ function doSave(){
     localStorage.setItem(SAVE_KEY, JSON.stringify({
       v:4, epoch:COSMIC_EPOCH,
       view:whereOfView(),
-      hp:hp, pstats:pstats, fs:fsMode, tone:toneMode, font:fontMode, snd:sndOn?1:0, fx:fxOn?1:0, shake:shakeOn?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
+      hp:hp, pstats:pstats, fs:fsMode, tone:toneMode, font:fontMode, snd:sndOn?1:0, fx:fxOn?1:0, chart:chartsOn?1:0, shake:shakeOn?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
       vol:Math.round(sfxVol*100), rm:motionMode, cx:cardExpand,
       land:(()=>{ /* union in settled/mined worlds so cap eviction can never
         re-hide a census you demonstrably hold (review catch); insertion
@@ -9901,6 +9909,7 @@ function loadSave(){
     fontMode=(data.font==='font-sys'||data.font==='font-mono')?data.font:''; applyFont();
     sndOn=data.snd!==0;
     fxOn=data.fx!==0;
+    chartsOn=data.chart===1;   /* absent ⇒ off — the clean sky is the default */
     shakeOn=data.shake!==0;
     notifOn=data.notif!==0;
     tipsOn=data.tips!==0;
@@ -11845,6 +11854,19 @@ const GAME_VERSION='1.3.5';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.3.6', title:'Quiet Skies', date:'July 2026', sections:[
+ ['✨ New Features & Systems', [
+  'A Star charts setting joins Graphics — orbit paths, the habitable zone and chart labels in system view. It ships off, so the sky reads as a universe instead of a diagram; flip it on when you want the astronomy.'],
+ ],
+ ['🖱 UI Enhancements', [
+  'Field Training keeps one voice now: while a lesson is up, sweeping the cursor around no longer pops survey glances over the guidance — only the card the lesson is about (finding Earth still lets Earth glance).',
+  'Zooming into a landed world stops before the ground smears into stripes — there was nothing to see closer anyway.'],
+ ],
+ ['🐛 Bug Fixes', [
+  'Training rolls cannot fail anymore. A training breed could lose the roll, eat both parents and strand the lesson — every rigged roll now beats any odds.',
+  'Earth no longer introduces itself as a savanna world. Home keeps its true card.'],
+ ],
+]},
 {v:'1.3.5', title:'Soft Landings', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
   'Every world now wears a biome. Swamp worlds, coral shallows, glass deserts, magma seas, carbon worlds, storm-eye giants — around thirty-five kinds in all, written on the survey card and painted into the landing view. The rare ones announce themselves in violet.',
@@ -12941,6 +12963,7 @@ const TUT_STEPS=[
  {id:'welcome', btn:'Begin Training',
   text:()=>'Welcome to <b>Sol</b>, '+(explorerName||'Explorer')+' — humanity’s cradle and your first charter. The order asks one thing of every new Pathfinder first: <b>Field Training</b>.<br>It’s all real practice, and nothing you lose in training follows you out.'},
  {id:'find-earth', allow:['#cosmos','#panel'],
+  pick:p=>!!(p && p.kind==='planet' && p.data && p.data.P && p.data.P.seed===133),
   text:()=>'First, find home. <b>Drag and zoom to Earth</b> — the blue world, third from the Sun — and <b>tap it</b> to open its survey card.',
   when:(t,d)=>t==='survey'&&d.planetSeed===133},
  {id:'survey-tour', spot:'#panel', btn:'Got It', allow:['#panel'],
@@ -12959,10 +12982,10 @@ const TUT_STEPS=[
   when:(t)=>t==='specimen'},
  {id:'card-tour', spot:'#reveal .card', btn:'Got It',
   text:()=>'Read it like a Pathfinder: five stat bars and total Power; its ✧ ability; the rarity grade tinting the card. Rarer life fights harder, breeds stronger, heals — or poisons — more. Beasts also list the flora flavours they ♥ love and ⊘ dislike.'},
- {id:'feed', allow:['#codex','#codexbtn'], enter:()=>{ _tutRig={feed:0.62}; },
+ {id:'feed', allow:['#codex','#codexbtn'], enter:()=>{ _tutRig={feed:-1}; },   /* -1 beats any odds — training never loses (Nick got stuck on a failed rig) */
   text:()=>'Time for a meal. Open a 🐾 beast in the Compendium, tap <b>Feed</b>, and pick a plant. The plant is always consumed — a welcome meal grows the beast’s bloodline permanently.',
   when:(t)=>t==='fed'},
- {id:'breed', allow:['#codex','#codexbtn'], enter:()=>{ _tutRig={breed:0.001}; },
+ {id:'breed', allow:['#codex','#codexbtn'], enter:()=>{ _tutRig={breed:-1}; },
   text:()=>'Now forge a bloodline. Open a 🐾 beast, tap <b>Breed</b>, and choose a mate. Both parents are always consumed by the union. (This training pair is a sure thing.)',
   when:(t)=>t==='bred'},
  {id:'duel', btn:'⚔ Begin Training Duel', stay:true,
@@ -13252,6 +13275,8 @@ document.getElementById('setbtn').addEventListener('click', ()=>{
   applyFs(); applyTone(); applyFont();
   const so=document.getElementById('sndopt');
   if(so){ so.classList.toggle('on', sndOn); so.textContent=sndOn?'On':'Off'; }
+  const co9=document.getElementById('chartopt');
+  if(co9){ co9.classList.toggle('on', chartsOn); co9.textContent=chartsOn?'On':'Off'; }
   const fo2=document.getElementById('fxopt');
   if(fo2){ fo2.classList.toggle('on', fxOn); fo2.textContent=fxOn?'On':'Off'; }
   const sho=document.getElementById('shakeopt');
@@ -13279,6 +13304,13 @@ setPanel.addEventListener('click', e=>{
     sndOn=!sndOn;
     e.target.classList.toggle('on', sndOn);
     e.target.textContent=sndOn?'On':'Off';
+    queueSave();
+    return;
+  }
+  if(e.target && e.target.id==='chartopt'){
+    chartsOn=!chartsOn;
+    e.target.classList.toggle('on', chartsOn);
+    e.target.textContent=chartsOn?'On':'Off';
     queueSave();
     return;
   }
@@ -13752,6 +13784,13 @@ function frameInner(){
           if(rd<p.band && rd+10000<bd){ bd=rd+10000; hovered=p; }
         } else if(d<p.r && d<bd){ bd=d; hovered=p; }
       }
+    }
+    if(hovered && !tutDone){
+      /* training shows only the current lesson's card: a cursor sweep
+         across Sol must not pop glances over the guidance (Nick's ask).
+         Steps opt in via pick() — find-earth lets Earth glance. */
+      const s9=TUT_STEPS[_tutStep];
+      if(!(s9 && s9.pick && s9.pick(hovered))) hovered=null;
     }
     if(hovered){ stickyPick=hovered; }
     else if(stickyPick && panelRect && mouse.x!=null &&
