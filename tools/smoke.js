@@ -308,14 +308,10 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(mopts[1]);                                        // Full
     check('Motion → Full lifts the class', H.motionMode === 0 && !doc.body.classList.contains('rmotion'));
     click(mopts[0]);                                        // Auto again (jsdom has no OS preference → full motion)
-    // v1.3 HD landing view flag: default Classic, toggles, persists off
-    check('settings shows Landing view Classic/HD (Classic on, hd off)',
-      !!doc.querySelector('#setpanel .fsopt[data-hd="0"].on') && H.hdOn===false);
-    click(doc.querySelector('#setpanel .fsopt[data-hd="1"]'));
-    check('Landing view toggles to HD', H.hdOn===true
-      && !!doc.querySelector('#setpanel .fsopt[data-hd="1"].on'));
-    click(doc.querySelector('#setpanel .fsopt[data-hd="0"]'));
-    check('Landing view returns to Classic', H.hdOn===false);
+    // v1.3 ship decision: HD is the game — no Landing view setting exists,
+    // and the flag is permanently on
+    check('HD is always on, with no Landing view row in Settings',
+      H.hdOn===true && !doc.querySelector('#setpanel .fsopt[data-hd]'));
     check('Motion → Auto follows the OS preference', H.motionMode === -1 && !doc.body.classList.contains('rmotion'));
     const vs = doc.getElementById('volslider');
     check('settings shows Volume slider at full', !!vs && vs.value === '100');
@@ -463,8 +459,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('discovery: the glance never misreads a dead world (no biosignatures on venus-type)',
       !pan3.textContent.includes('biosignatures'));
     // enable the HD landing view so planetfall opens the vista (v1.3)
-    click2(sk.doc.querySelector('#setpanel .fsopt[data-hd="1"]'), sk.w);
-    check('HD landing view armed for the flight down', skH.hdOn===true);
+    check('HD landing view armed for the flight down (always on)', skH.hdOn===true);
     // press the LAND button — it must fly down and perform real planetfall
     click2(pan3.querySelector('[data-act="landcta"]'), sk.w);
     check('discovery: the Land button performs planetfall', await until(() =>
