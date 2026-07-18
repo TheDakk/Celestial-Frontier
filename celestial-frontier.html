@@ -289,6 +289,23 @@
   #stats .ach b{font-weight:600;color:var(--ink)}
 
   /* ---- explorer welcome / rename dialog ---- */
+  /* the descent confirm (v1.3.5) — a small held breath before the dive */
+  #descbox{position:fixed;inset:0;z-index:37;display:none;align-items:center;justify-content:center;
+    background:rgba(4,5,10,0.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+  #descbox .card{width:min(340px,calc(100vw - 48px));text-align:center;
+    background:linear-gradient(180deg, rgba(15,17,33,0.97), rgba(8,9,18,0.98));
+    border:1px solid rgba(150,162,210,0.4);border-radius:16px;padding:20px 18px;
+    box-shadow:0 22px 70px rgba(0,0,0,0.65)}
+  #descbox .dh{font:700 17px var(--ui);color:var(--ink);margin:0 0 10px}
+  #desc-risk{font:13px/1.65 var(--ui);color:var(--dim);margin:0 0 16px}
+  #desc-risk .dtier{color:#ffd96a;font-weight:600}
+  #desc-risk .dwx{color:#ffb08a}
+  #desc-risk .dhp{color:var(--dim);font-size:11.5px}
+  #descbox button{font:600 13px var(--ui);padding:10px 14px;border-radius:10px;cursor:pointer;margin:0 4px}
+  #desc-go{background:rgba(111,211,255,0.14);border:1px solid rgba(111,211,255,0.5);color:#bfe9ff}
+  #desc-go:hover{background:rgba(111,211,255,0.24)}
+  #desc-stay{background:rgba(20,24,44,0.6);border:1px solid rgba(150,162,210,0.35);color:var(--dim)}
+  #desc-stay:hover{color:var(--ink)}
   #namebox{position:fixed;inset:0;z-index:38;display:none;align-items:center;justify-content:center;
     background:rgba(4,5,10,0.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
   #namebox .card{width:min(400px,calc(100vw - 36px));max-height:calc(100vh - 90px);max-height:calc(100dvh - 40px);overflow-y:auto;
@@ -1449,6 +1466,11 @@
   </div>
 </div></div>
 <div id="helpbtn" role="button" tabindex="0" data-tip="Guide to the Universe — every system explained.">?</div>
+<div id="descbox"><div class="card">
+  <div class="dh" id="desc-title">Begin descent?</div>
+  <div id="desc-risk"></div>
+  <div><button id="desc-go" type="button">Begin descent</button><button id="desc-stay" type="button">Stay in orbit</button></div>
+</div></div>
 <div id="guidebox"><div class="card">
   <div class="gh">🧭 Guide to the Universe<button class="pnx" data-pnx="guide" type="button">&#10005;</button></div>
   <div class="gsub">Every system explained — search anything, or browse by topic.</div>
@@ -4076,7 +4098,7 @@ window.addEventListener('pointermove', e=>{
   mouse.x=e.clientX; mouse.y=e.clientY;
   /* hovering over an open panel must never survey what's behind it */
   mouseOverUI = !!(e.target && e.target.closest &&
-    e.target.closest('#codex,#log,#stats,#events,#searchwrap,#topbar,#dailybtn,#eventsbtn,#logbtn,#codexbtn,#pcdxbtn,#primebox,#endingbox,#guidebox,#helpbtn,#sharebox,#duelbox,#pickbox,#reveal,#setpanel,#setbtn,#namebox,#deathbox'));
+    e.target.closest('#codex,#log,#stats,#events,#searchwrap,#topbar,#dailybtn,#eventsbtn,#logbtn,#codexbtn,#pcdxbtn,#primebox,#endingbox,#guidebox,#helpbtn,#sharebox,#duelbox,#pickbox,#reveal,#setpanel,#setbtn,#namebox,#deathbox,#descbox'));
 });
 cv.addEventListener('pointermove', e=>{
   if(!dragging || pinching || activeTouches>=2) return;   /* two fingers down = zoom only, never pan-fight */
@@ -4185,6 +4207,12 @@ document.addEventListener('keydown', e=>{
       nb.style.display='none'; _renameTarget=null;
       flushToasts();   /* pop-ups queued behind the dialog must not strand until a future commit */
       return;
+    }
+    /* the descent confirm treats Escape as "stay in orbit" — a bare hide
+       would just reopen it next frame */
+    {
+      const db=document.getElementById('descbox');
+      if(db && db.style.display && db.style.display!=='none'){ _descStay(); return; }
     }
     /* close the topmost dismissible overlay — one per press */
     for(const id of ['reveal','pickbox','duelbox','sharebox','primebox','guidebox','setpanel']){
@@ -4296,12 +4324,25 @@ function checkTransitions(){
       const pr=(6*pl.P.sizeMul);
       const apparent=pr*c.z;
       const d=Math.hypot(px-c.x, py-c.y)*c.z;
+      if(pl.P.seed===_descDeclined && apparent<0.36*minWH) _descDeclined=null;
       if(apparent>0.40*minWH){
         if(d<0.5*minWH){
+          /* THE DESCENT (v1.3.5): a manual dive on an unlanded world stops
+             at approach altitude and ASKS — the flat close-up never shows
+             uninvited. Declining holds you in orbit until you pull back
+             out and dive again. Grounded worlds, Earth and training fly
+             straight through, exactly as before. */
+          if(!descentSafe(pl.P.seed)){
+            const zCap=(0.38*minWH)/pr;
+            c.z=Math.min(c.z, zCap);
+            if(_descDeclined!==pl.P.seed && _descOpenFor!==pl.P.seed) openDescentBox(pl);
+            return;
+          }
           st.planet=pl;
           st.pfbm=makeNoise(pl.P.seed);
           st.pcam={x:0,y:0,z:1};
           st.mode='surface'; st.fade=1;
+          _descCleared=null;               /* the clearance is spent on this landing */
           noteLanding(pl.P.seed);          /* planetfall = ground survey (v1.2) */
           _pendingContact=pl.P.seed;       /* inhabited worlds: first contact rides the card render */
           _vistaPend=true;                 /* HD landing vista (v1.3, hd flag) */
@@ -7181,15 +7222,131 @@ function noteLanding(seed){
   }
   queueSave();
 }
+/* ----------------------------------------------------------------
+   @section descent [app] — the landing ladder (v1.3.5 Batch 4)
+   Owns: DESCENT_TIERS, _waveOffs, descentFor, descentSafe, _descWx,
+         descentBonus, _descRoll, openDescentBox, _descStay
+   ----------------------------------------------------------------
+   Landing carries the world's risk (Nick's design): every type sits on
+   a success ladder — friendly worlds are a formality, a magma world is
+   a 1-in-5 dive. The roll is app-layer random (first-contact precedent);
+   the ODDS are pure card facts. FAIL-SOFT RULES: a wave-off costs a
+   scrape and never kills; each wave-off on the same world adds +20%
+   (the pilot learns the approach — saved, so a reload never steals it);
+   grounded worlds are forever 100% and skip every prompt; Earth and
+   training are exempt. Manual zoom ASKS first (the flat tiles never
+   show uninvited); the Land button IS the intent and auto-dives.
+   v1.4 hook: descentBonus() is where crafted landing gear plugs in.
+   Biomes (Batch 5) refine these tiers per-biome. */
+const DESCENT_TIERS={
+  terran:{p:95,lo:2,hi:2}, ocean:{p:90,lo:2,hi:2}, rocky:{p:90,lo:2,hi:2},
+  ice:{p:85,lo:3,hi:4}, desert:{p:85,lo:3,hi:4}, gas:{p:65,lo:4,hi:6},
+  venus:{p:25,lo:5,hi:7}, lava:{p:20,lo:6,hi:8}};
+const _waveOffs=new Map();          /* planetSeed → consecutive wave-offs (save field wvo) */
+let _descCleared=null, _descDeclined=null, _descOpenFor=null;
+function descentBonus(){ return 0; }   /* v1.4: crafted landing gear raises this */
+function descentTierLabel(p){
+  return p>=100?'Calm approach':p>=90?'Steady approach':p>=75?'Rough descent'
+       :p>=55?'Hazardous descent':p>=30?'Extreme descent':'Hostile descent';
+}
+function _descWx(pl){
+  /* the same seeded ~90s weather spell the surface and vista share —
+     an ACTIVE storm makes any approach a little worse (−5, small by
+     design; gas storm bands are already priced into the tier) */
+  const P=pl.P;
+  if(P.type==='rocky'||P.type==='gas') return null;
+  const band=climateBand(P, st.sys, pl.orb||100);
+  let wx=null;
+  if(P.type==='terran') wx=band==='temperate'?'rain':(band==='hot'?'haze':'snow');
+  else if(P.type==='ocean') wx='rain';
+  else if(P.type==='ice') wx='snow';
+  else if(P.type==='desert') wx='dust';
+  else if(P.type==='lava') wx='ash';
+  else if(P.type==='venus') wx='haze';
+  if(!wx) return null;
+  const WX_ODDS={rain:0.42,snow:0.58,dust:0.48,ash:0.68,haze:0.88};
+  const now=mulberry32((P.seed^0x77EA^Math.floor(perfTime()/90))>>>0)() < (WX_ODDS[wx]||1);
+  return now?wx:null;
+}
+function descentFor(pl){
+  const P=pl.P, t=DESCENT_TIERS[P.type]||DESCENT_TIERS.terran;
+  const wx=_descWx(pl);
+  let p=t.p;
+  if(wx) p = p>=90 ? Math.max(90, p-5) : Math.max(5, p-5);
+  p=Math.min(100, p + 20*(_waveOffs.get(P.seed)||0) + descentBonus());
+  return {pct:p, lo:t.lo, hi:t.hi, wx:wx};
+}
+function descentSafe(seed){
+  return !tutDone || seed===133 || landed.has(seed) || _descCleared===seed;
+}
+function _descRoll(pl){
+  const d=descentFor(pl);
+  if(Math.random()*100 < d.pct){
+    _descCleared=pl.P.seed;
+    _waveOffs.delete(pl.P.seed);
+    queueSave();
+    return true;
+  }
+  const n=(_waveOffs.get(pl.P.seed)||0)+1;
+  _waveOffs.set(pl.P.seed, n);
+  let dmg=d.lo+Math.floor(Math.random()*(d.hi-d.lo+1));
+  dmg=Math.min(dmg, Math.max(0, hp-1));          /* a wave-off never kills */
+  if(dmg>0){ hp-=dmg; renderHP(); }
+  playFailTone(); fxShake();
+  const nxt=Math.min(100, descentFor(pl).pct);
+  toast('🛬 Wave-off', 'The descent went sour and you pulled back to orbit'+
+    (dmg>0?' with a scrape — 🩸 −'+dmg+' HP':'')+
+    '. The approach is learned now: next attempt '+nxt+'%.');
+  queueSave();
+  return false;
+}
+const _descBoxEl=()=>document.getElementById('descbox');
+function openDescentBox(pl){
+  const b=_descBoxEl(); if(!b) return;
+  _descOpenFor=pl.P.seed;
+  const d=descentFor(pl);
+  document.getElementById('desc-title').textContent='Begin descent — '+(pl.name||'this world')+'?';
+  document.getElementById('desc-risk').innerHTML=
+    '<span class="dtier">'+descentTierLabel(d.pct)+'</span> · '+d.pct+'% success'+
+    (d.wx?'<br><span class="dwx">storm in progress −5</span>':'')+
+    (d.pct<100?'<br><span class="dhp">a wave-off costs '+d.lo+'–'+d.hi+' HP — and teaches the approach (+20% next try)</span>':'');
+  b.style.display='flex';
+}
+function _descStay(){
+  const b=_descBoxEl(); if(b) b.style.display='none';
+  if(_descOpenFor!=null) _descDeclined=_descOpenFor;
+  _descOpenFor=null;
+}
+(function(){
+  const go=document.getElementById('desc-go'), stay=document.getElementById('desc-stay');
+  if(go) go.addEventListener('click', ()=>{
+    const b=_descBoxEl(); if(b) b.style.display='none';
+    const seed=_descOpenFor; _descOpenFor=null;
+    if(seed==null || st.mode!=='system' || !st.sys) return;
+    const pl=st.sys.planets.find(x=>x.P && x.P.seed===seed);
+    if(!pl) return;
+    if(_descRoll(pl)){
+      const tNow=perfTime();
+      const ang=pl.orb*0.13 + tNow*0.05/(pl.orb*0.012);
+      st.scam.x=Math.cos(ang)*pl.orb; st.scam.y=Math.sin(ang)*pl.orb;
+      st.scam.z=(0.41*minWH)/(6*(pl.P.sizeMul||1));
+    } else {
+      st.scam.z*=0.55;                            /* bounced back to orbit */
+    }
+  });
+  if(stay) stay.addEventListener('click', _descStay);
+})();
 /* the LAND button's engine: place the system camera on the planet at
    landing zoom — the very next frame of the zoom handler performs the real
    planetfall (whoosh, noteLanding, surface). On phones the locked card
-   covers the planet, so pinch-to-land needed a button (review catch). */
+   covers the planet, so pinch-to-land needed a button (review catch).
+   v1.3.5: pressing Land IS the intent — no confirm, straight to the roll. */
 function flyDown(pseed){
   if(st.mode!=='system' || !st.star || pseed==null) return false;
   const sys = st.sys || (st.sys=systemFor(st.star.seed));
   const pl = sys.planets.find(x=>x.P && x.P.seed===pseed);
   if(!pl) return false;
+  if(!descentSafe(pseed) && !_descRoll(pl)) return true;   /* wave-off — handled */
   const tNow=perfTime();
   const ang = pl.orb*0.13 + tNow*0.05/(pl.orb*0.012);
   st.scam.x=Math.cos(ang)*pl.orb;
@@ -7592,7 +7749,7 @@ panelEl.addEventListener('click', e=>{
     /* the button LANDS — the toast is only the fallback when the planet
        isn't in the current system view (e.g. a card left locked mid-travel) */
     if(_lastDesc.planetSeed!=null && flyDown(_lastDesc.planetSeed)) return;
-    toast('Landing','Zoom all the way into this world — planetfall turns your orbital survey into a ground survey.');
+    toast('Landing','Dive toward this world and confirm the descent — planetfall turns your orbital survey into a ground survey.');
     return;
   }
   if(b.dataset.act==='share'){ shareWhere(_lastDesc); return; }
@@ -8477,7 +8634,7 @@ function _trainingUp(){
    at-a-glance layer, never the only one. */
 function evClass(tt){
   const t=String(tt);
-  if(/☠|🩸|⚠|lost|wounded|badly|Failed|stands down|Toxic|Poisoned/i.test(t)) return 'harm';
+  if(/☠|🩸|⚠|lost|wounded|badly|Failed|stands down|Toxic|Poisoned|Wave-off/i.test(t)) return 'harm';
   if(/Charter complete|Achievement|Rank Up|🏆|👑|✦|🤝|🎉|Bloodline|Rare Find|First contact/i.test(t)) return 'gold';
   if(/⛏|☄|⛳|Harvest|Mined|Deposits|samples|Ground survey|Cargo/i.test(t)) return 'gain';
   return 'info';
@@ -8952,6 +9109,7 @@ function doSave(){
         for(const k of mined.keys()) _l.add(k);
         return [..._l].slice(-4000); })(),
       scout:scoutId, landings:stats.landings||0,
+      wvo:[..._waveOffs].slice(-400),
       cont:[...contacted].slice(-4000),
       chs:[...chDone], chw:chWeek, chp:chProg, charters:stats.charters||0,
       notifs:notifications.slice(0,50),
@@ -9090,6 +9248,16 @@ function loadSave(){
       for(const s of landed) contacted.add(s);
       for(const k of conquered.keys()) contacted.add(k);
     }
+    /* the descent's pity ramp (v1.3.5): wave-off progress survives a
+       reload — losing 5 climbs on a 10% world to a refresh would be
+       rage-quit fuel. Absent ⇒ empty, capped, clamped. */
+    if(Array.isArray(data.wvo)){
+      for(const e2 of data.wvo.slice(-400)){
+        if(!Array.isArray(e2)) continue;
+        const s2=+e2[0], n2=Math.max(0, Math.min(5, (+e2[1])|0));
+        if(Number.isFinite(s2) && n2>0) _waveOffs.set(s2, n2);
+      }
+    }
     if(data.prime && typeof data.prime==='object'){ for(const k in data.prime) if(SIG_IDS.includes(k)) primeFill[k]=data.prime[k]; }
     frontierUnlocked=!!data.frontier; frontierEnding=data.ending||null;
     seenGuide=!!data.guide;
@@ -9127,6 +9295,7 @@ function resetMemoryState(){
     if(typeof notifications!=='undefined' && notifications.length) notifications.length=0;
     for(const k in primeFill) delete primeFill[k];
     homeId=null; frontierUnlocked=false; frontierEnding=null; seenGuide=false; tutDone=false; _rnSeen=GAME_VERSION;
+    _waveOffs.clear(); _descCleared=null; _descDeclined=null; _descOpenFor=null;
     scoutId=null; _pendingSample=null;
     contacted.clear(); _pendingContact=null;
     chDone.clear(); chProg={}; chWeek=-1;
@@ -10662,9 +10831,11 @@ let seenGuide=false, _nameInitial=false;
 const GUIDE=[
 {icon:'🚀', cat:'Getting Around', blurb:'Zoom, survey, search, share, travel', topics:[
  {id:'zoom', t:'Flying the universe', k:'zoom pan pinch scroll drag modes universe galaxy system surface navigate controls', body:
-  '<p>The whole cosmos is one continuous view. <b>Pinch or scroll to zoom, drag to pan.</b> Zooming dives through four scales: <em>universe → galaxy → star system → planet surface</em> — and zooming out climbs back up. Everything you can see, you can visit.</p><ul><li>Tap any object to open its <b>survey card</b>; tap it again (or tap elsewhere) to release.</li><li>When a planet fills the view but sits off-center, keep zooming — the camera glides the rest of the way down and lands. Panning and pinching are never hijacked.</li><li>On a surface, you walk the world itself — the survey card stays pinned.</li><li>Travel beyond your charted frontier is gated — see <span data-gt="regions">Frontier regions</span>.</li></ul>'},
+  '<p>The whole cosmos is one continuous view. <b>Pinch or scroll to zoom, drag to pan.</b> Zooming dives through four scales: <em>universe → galaxy → star system → planet surface</em> — and zooming out climbs back up. Everything you can see, you can visit.</p><ul><li>Tap any object to open its <b>survey card</b>; tap it again (or tap elsewhere) to release.</li><li>When a planet fills the view but sits off-center, keep zooming — the camera glides the rest of the way in. On a world you&#8217;ve never stood on, the dive stops at approach altitude and asks before you commit — see <span data-gt="landing">Landing</span>. Panning and pinching are never hijacked.</li><li>On a surface, you walk the world itself — the survey card stays pinned.</li><li>Travel beyond your charted frontier is gated — see <span data-gt="regions">Frontier regions</span>.</li></ul>'},
  {id:'survey', t:'Survey cards', k:'survey card panel tap inspect atmosphere climate water gravity descriptor lock pin land contact census glance ground', body:
-  '<p>Knowing a world comes in three acts. <b>Glance</b>: on a computer, hovering shows the long-range reads — color class, atmosphere, water signatures, whispers of life (on a phone your tap goes straight to the survey). <b>Orbital survey</b>: tap to lock the card and the instruments speak — environment, biosphere, signals. <b>Ground survey</b>: <b>land</b> — press the card&#8217;s Land button or zoom all the way in; planetfall opens the census of any civilization and the mineral veins of dead worlds. Every line is generated from the object’s seed, so your survey matches every other explorer’s.</p><ul><li>Tapping locks the card in place so you can press its buttons while the object drifts.</li><li>A planet&#8217;s card leads with its actions and headlines; the <b>Environment</b> row&#8217;s <b>expand</b> pill unfolds the full readings, and a civilization&#8217;s headline unfolds its census. Cards remember whether you like them open or folded — the ⟁ Signal row never hides, and a world you&#8217;ve stood on wears a <b>Ground-surveyed</b> tag.</li><li>An organized world announces itself from orbit as <b>⟁ signals</b> — land to attempt <b>first contact</b>. Most receptions are warm; a wary one wounds you (a named Field Scout takes the hit instead), and the census stays sealed until a landing goes well. Conquest never needs to ask.</li><li>Worlds with a biosphere show <b>Discover Life</b> — see <span data-gt="discover">Discovering life</span>.</li><li>The bookmark row saves the place — see <span data-gt="atlas">The Star Atlas</span>.</li></ul>'},
+  '<p>Knowing a world comes in three acts. <b>Glance</b>: on a computer, hovering shows the long-range reads — color class, atmosphere, water signatures, whispers of life (on a phone your tap goes straight to the survey). <b>Orbital survey</b>: tap to lock the card and the instruments speak — environment, biosphere, signals. <b>Ground survey</b>: <b>land</b> — press the card&#8217;s Land button, or dive toward the world and confirm the descent (see <span data-gt="landing">Landing</span>); planetfall opens the census of any civilization and the mineral veins of dead worlds. Every line is generated from the object’s seed, so your survey matches every other explorer’s.</p><ul><li>Tapping locks the card in place so you can press its buttons while the object drifts.</li><li>A planet&#8217;s card leads with its actions and headlines; the <b>Environment</b> row&#8217;s <b>expand</b> pill unfolds the full readings, and a civilization&#8217;s headline unfolds its census. Cards remember whether you like them open or folded — the ⟁ Signal row never hides, and a world you&#8217;ve stood on wears a <b>Ground-surveyed</b> tag.</li><li>An organized world announces itself from orbit as <b>⟁ signals</b> — land to attempt <b>first contact</b>. Most receptions are warm; a wary one wounds you (a named Field Scout takes the hit instead), and the census stays sealed until a landing goes well. Conquest never needs to ask.</li><li>Worlds with a biosphere show <b>Discover Life</b> — see <span data-gt="discover">Discovering life</span>.</li><li>The bookmark row saves the place — see <span data-gt="atlas">The Star Atlas</span>.</li></ul>'},
+ {id:'landing', t:'Landing', k:'landing descent land wave-off risk success approach orbit scrape pity ramp weather storm', body:
+  '<p>Setting down is the one moment the frontier pushes back. Every world sits somewhere on a ladder, from a calm approach that always works to a hostile dive that mostly doesn&#8217;t — the odds come from what the world is, and a storm blowing right now shaves a little more off. You see the number before you commit.</p><ul><li>Zooming into an unvisited world stops at approach altitude and asks. The <b>Land</b> button on a survey card skips the question — pressing it is the answer.</li><li>A failed descent is a wave-off: you&#8217;re bounced back to orbit with a scrape, never worse. It cannot kill you.</li><li>Every wave-off teaches the approach — your next try on that world is a fair bit better, and the lesson is remembered even between sessions.</li><li>Once you&#8217;ve stood on a world it is yours: return landings always succeed, no questions asked.</li><li>Earth is home. Home never waves you off.</li></ul>'},
  {id:'search', t:'Search', k:'search box find discoveries paste code lookup', body:
   '<p>The search box (top bar) hunts across everything you’ve already discovered: Atlas places, Compendium species, even cosmic events you’ve witnessed. It also accepts pasted codes:</p><ul><li><b>CF1-…</b> world codes — jump straight to a friend’s discovery.</li><li><b>CFB-…</b> creature codes — load a friend’s creature for a duel.</li></ul><p>See <span data-gt="codes">Share codes</span>.</p>'},
  {id:'codes', t:'Share codes (CF1 / CFB)', k:'share code link friend cf1 cfb copy multiplayer social', body:
@@ -11929,7 +12100,7 @@ let _tutHook=null, _tutStep=-1, _tutSnap=null, _tutPreIds=null, _tutTimer=0;
    Owns: CHARTER_STARTERS, CHARTER_POOL, chDone, chWeek, chProg, chOpen, charterEvent, renderCharters
    ---------------------------------------------------------------- */
 const CHARTER_STARTERS=[
- {id:'st-land',  ev:'landfall',  n:1, t:'Make planetfall',      d:'Land on any world — press Land on its survey card, or zoom all the way in. A first footfall pays field samples.', sd:10},
+ {id:'st-land',  ev:'landfall',  n:1, t:'Make planetfall',      d:'Land on any world — press Land on its survey card, or dive in and confirm the descent. A first footfall pays field samples.', sd:10},
  {id:'st-mine',  ev:'mined',     n:1, t:'Prospect a dead world', d:'Land on a lifeless world and press Mine Deposits — the elements stock your Cargo hold for research.', sd:15},
  {id:'st-scan',  ev:'bioscan',   n:1, t:'Discover life',         d:'Find a living world and press Discover Life on its card — mind the danger percentage, or send a scout.', sd:15},
  {id:'st-scout', ev:'scout-set', n:1, t:'Name a Field Scout',    d:'Open one of your fauna in the Compendium and press Scout — it takes the hit when a bioscan turns hostile.', sd:15},
@@ -12604,7 +12775,7 @@ function closePanels(except){
   for(const p of PANELS){ try{ if(p.id!==except && p.open()) p.close(); }catch(_){ } }
 }
 /* modals keep their own explicit buttons — the manager never touches them */
-const MODAL_SEL='#reveal,#pickbox,#duelbox,#sharebox,#namebox,#deathbox,#endingbox,#relbox,#tutbox,#helppop,#vistabox,#toasts';
+const MODAL_SEL='#reveal,#pickbox,#duelbox,#sharebox,#namebox,#deathbox,#endingbox,#relbox,#tutbox,#helppop,#vistabox,#toasts,#descbox';
 document.addEventListener('pointerdown', e=>{
   if(!tutDone) return;                     /* training keeps its own locks */
   const t=e.target;

@@ -399,6 +399,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     // ============ BOOT 3: skip path still charts Earth ============
     const sk = boot();
+    // pin the app-layer dice (descent + first contact) to success so the
+    // flow below is deterministic; the wave-off path gets its own checks
+    sk.w.Math.random = () => 0;
     await sleep(700);
     type(sk.doc.getElementById('namein'), 'Skipper', sk.w);
     click2(sk.doc.getElementById('nameok'), sk.w);
@@ -545,6 +548,35 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       click2(vb, sk.w);
       await until(() => vb.style.display === 'none', 4000, 'deck dismiss');
       check('cloud deck dismisses like every vista', vb.style.display === 'none');
+    }
+    // ============ v1.3.5 Batch 4: THE DESCENT ============
+    {
+      check('descent: confirm dialog exists in the DOM', !!sk.doc.getElementById('descbox'));
+      const hpNum = () => parseInt(sk.doc.getElementById('hptext').textContent, 10);
+      const fakePl = { P: { seed: 555001, type: 'lava', sizeMul: 1 }, orb: 140, name: 'Cinder' };
+      const d0 = skH.descentFor(fakePl);
+      check('descent: a lava world sits at the Hostile rung (15-20%)', d0.pct >= 15 && d0.pct <= 20, 'pct=' + d0.pct);
+      check('descent: grounded worlds are forever safe', skH.descentSafe(dp.data.P.seed) === true);
+      // wave-off: force the dice cold
+      sk.w.Math.random = () => 0.999;
+      const hp0 = hpNum();
+      const r1 = skH._descRoll(fakePl);
+      check('descent: a cold roll waves off', r1 === false);
+      check('descent: the wave-off scrapes the explorer (never lethal)', hpNum() < hp0 && hpNum() >= 1,
+        hp0 + '->' + hpNum());
+      check('descent: the pity ramp remembers the attempt', skH._waveOffs.get(555001) === 1);
+      const d1 = skH.descentFor(fakePl);
+      check('descent: +20% after a wave-off', d1.pct >= d0.pct + 20 - 5 && d1.pct <= d0.pct + 20,
+        d0.pct + '->' + d1.pct);
+      // climb the whole ramp — at 100% even the coldest dice land
+      // (an active ash storm holds −5, so the top can take one extra rung)
+      let landedAt = 0;
+      for (let dive = 2; dive <= 7 && !landedAt; dive++) if (skH._descRoll(fakePl)) landedAt = dive;
+      check('descent: the ramp tops out — cold dice land by the sixth dive', landedAt > 0 && landedAt <= 6,
+        'landed at dive ' + landedAt);
+      check('descent: success clears the ramp', !skH._waveOffs.get(555001));
+      check('descent: a cleared world reads safe (the dive is spent on landing)', skH.descentSafe(555001) === true);
+      sk.w.Math.random = () => 0;   // back to warm dice for the flows below
     }
     check('discovery: standing on it, mining is open on the spot', await until(() =>
       !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('You are here'), 4000, 'surface mine'));
