@@ -15,6 +15,532 @@
 ## notes; wholesale regeneration stays banned), smoke 173/173, systems
 ## 19/19, balance PASS at ship.
 
+## ▶▶ v1.3.5 "SOFT LANDINGS" (working name) — PLANNED 2026-07-18 from
+## NICK'S LIVE PASS (5 phone screenshots + notes; plan approved: ___)
+##
+## HIS FINDINGS → ROOT CAUSES (all verified in source):
+## N1 "little lines around recent nebulae": decoSprite 'rem' branch
+##    draws 26 filament STROKES in a ring (~line 4662) — reads as dashes.
+## N2 "circles around recent deaths": supernovaSites live loop strokes a
+##    hard orange circle per remnant (~4823) + the gravitational-wave
+##    cosmic event draws 3 stroked concentric rings (~4867). Nick's law:
+##    NO circles/rings on deaths — gassy, blended, space-cloud look.
+##    (Bonus: that whole loop allocates radial gradients per frame — a
+##    known heat-rule violation; baking sprites fixes both.)
+## N3 gas giants have no landing payoff: showVistaBox returns early for
+##    type gas (~6788); zoom-in dumps you on flat band tiles; card says
+##    "no surface to land on" while YOU ARE HERE. Nick: ALL worlds land,
+##    gas giants included (Claude agrees — the "no surface" fact becomes
+##    the scene, not a wall).
+## N4 landing should carry a small ROLL of risk (HP scrape on a rough
+##    descent) without making players fear landing.
+## N5 MOBILE MENU STACKING (the unplayable one): every panel (Atlas /
+##    Compendium / Cargo / Charters / Events / stats...) keeps its own
+##    open bool, only some pairs mutually exclude, only some have
+##    outside-tap close — they pile up and can only be closed from their
+##    own buttons. Universal ✕ + one-panel-at-a-time needed.
+## N6 zooming into a world should NOT land you into flat graphics — at
+##    landing zoom it should ASK ("begin descent?"), then the VISTA is
+##    the landing, with an ✕ to close (the ✕ convention goes everywhere).
+##
+## THE PLAN — 4 batches, each build → validate/smoke/systems → commit:
+## BATCH 1 SPACE DUST (graphics): rework 'rem' deco sprite to a gassy
+##    filament shell (soft puffs on the shell annulus, no strokes);
+##    bake supernova-site remnants into cached textured sprites (seeded
+##    by site.seed — kills the per-frame gradients too); replace the GW
+##    event's stroked rings with soft luminous ripples ('lighter'
+##    gradients, feathered). Proof sheet via headless Edge BEFORE Nick
+##    sees it. No domain changes.
+## BATCH 2 ONE PANEL AT A TIME (the unplayable fix, ships first if
+##    split): central panel registry (id/el/close), openPanel() closes
+##    the rest — BOTH platforms (predictability > desktop real estate);
+##    ✕ in every panel header (reuse the card's .pxc language); one
+##    unified empty-space-tap handler closes the open panel; vista gets
+##    an ✕ too. Smoke: exclusivity matrix + ✕ + outside-tap.
+## BATCH 3 EVERY WORLD HAS A VISTA (Nick 2026-07-18: "not just gas
+##    giants — ensure every planet has a vista; the scene is whatever
+##    the card indicates"). The 8 planet types are closed (gas/rocky/
+##    desert/ice/terran/ocean/venus/lava) and GAS IS THE ONLY GAP —
+##    the other 7 already render. So: (a) new gas scene — you hold
+##    station in the high cloud deck: banded storm horizon, cloud-top
+##    floor, polar auroras when the card promises them (V5 debt), ring
+##    overhead when P.ring, typed moons, lightning in the deeps, aerial
+##    fauna silhouettes when Gas Giant Life; header "Cloud deck" not
+##    "Planetfall"; TYPE_DESC copy softens ("no solid surface — you
+##    ride the high deck"). (b) HARD GUARANTEE: showVistaBox never
+##    early-returns for any type; seed-sweep harness asserts 8/8 types
+##    × the pal/wx matrix produce a scene. Card law holds everywhere.
+## BATCH 4 THE DESCENT (landing flow, Nick's split):
+##    - MANUAL ZOOM: the zoom STOPS at approach altitude, BEFORE the
+##      flat surface tiles ever show — confirm sheet "Begin descent?"
+##      with the risk read. Decline = stay in orbit (no re-prompt until
+##      you pull back out past the threshold and dive again).
+##    - LAND BUTTON: auto-lands, NO confirm (pressing it IS the intent).
+##    - THE LANDING LADDER (Nick 2026-07-18: success lines up with the
+##      BIOME, full spectrum, standardized game-wide; gentle on good
+##      biomes, brutal on hostile ones). Six standard tiers, each biome
+##      pinned to one (table in Batch 5): CALM 100% (no scrape) /
+##      STEADY 90% (wave-off 2 HP) / ROUGH 75% (3-4 HP) / HAZARDOUS
+##      55% (4-6 HP) / EXTREME 30% (5-7 HP) / HOSTILE 10-15% (6-8 HP).
+##      WEATHER MODIFIER (Nick 2026-07-18: "very, very small"): an
+##      ACTIVE weather spell = −5, and it never drags a Calm/Steady
+##      world below 90 (weather is flavor risk, never a wall on
+##      friendly worlds); floor 5% overall. The confirm sheet shows
+##      the real % incl. the weather line ("storm in progress −5") —
+##      (mechanics precedent: bioscan danger % is already shown;
+##      vague-not-wrong governs world FACTS, not odds).
+##    - THE ROLL (app-layer random, like first contact): SUCCESS → the
+##      vista pops (the landing IS the vista). FAIL = WAVE-OFF: bounced
+##      back to orbit with the tier's scrape (hull tech reduces,
+##      routeHit, never lethal — floor 1 HP) + toast; retry immediate.
+##    - THE PITY RAMP (anti-frustration, makes 10% biomes playable
+##      without gear): each consecutive wave-off on the SAME world adds
+##      +20% to the next attempt (10→30→50→70→90→100 — worst case 6
+##      dives, ~25 HP; the pilot learns the approach). Resets only on
+##      success; grounded worlds are forever 100% + skip the confirm.
+##      Earth + training exempt (auto-confirm + auto-succeed).
+##      Guide + RELEASES copy. Roll plumbing takes a success-bonus
+##      modifier from day one (v1.4 gear slots straight in).
+##    - v1.4 HOOK (Nick): crafted items will BOOST landing success up
+##      to 100% (see the v1.4 craft-effects list) — so the roll plumbing
+##      takes a success-bonus modifier from day one.
+##
+## BATCH 5 THE BIOME EXPANSION (Nick 2026-07-18: "think of all the
+##    biomes possible... even brand new alien type biomes... a full
+##    deep dive iteration" — more worlds to see, more vistas).
+##    ARCHITECTURE (determinism-safe, Claude's design, Nick approving):
+##    - The 8 domain TYPES are FROZEN — re-slicing planetParams' roll
+##      would re-type every existing world (atlases, share codes,
+##      grounded worlds would contradict player memory). Never.
+##    - Instead a BIOME layer refines within type: biomeFor(P, desc) =
+##      pure deterministic fn in a NEW app-layer module (depositsFor
+##      precedent), seeded by hashInt(seed, BIOME_CONST) — a separate
+##      stream, ZERO perturbation of existing rng draws, fingerprint
+##      stays byte-identical, no baseline touch at all.
+##    - CONDITIONED ON THE CARD so it never contradicts (vague-never-
+##      wrong): biome rolls only among candidates the card's climate
+##      band / Water row / Life row allow. "Mostly evaporated" terran
+##      can't roll Marsh — it rolls Salt Flats. Swamp needs liquid
+##      water + life. The card stays coherent by construction.
+##    - PRESENTATION: card gains a Biome row (app-layer renderPanel,
+##      like Mineral veins) and the SUB-LABEL wears it — players see
+##      "Swamp world", "Fungal world", "Crystal world" as if new
+##      planet types, engine keeps 8 archetypes underneath.
+##    - CARD-HONEST ART: vista scene per biome family + thumb/system-
+##      sprite tinting follows (swamp = dark blackwater mottle, crystal
+##      = faceted glints). Rarity ladder: common biomes common, ALIEN
+##      biomes rare (engineered-infinity L3 — wonder-class rolls).
+##    PROPOSED BIOME SETS (Nick trims/renames; ~34 across 8 types):
+##    - TERRAN: Temperate (current) / Swamp (blackwater fens, hanging
+##      moss, mist) / Marsh (reed flats, braided channels, fireflies)
+##      / Jungle (canopy tiers) / Savanna (gold grass, big herds) /
+##      Tundra (permafrost moss, low sun) / rare-alien: Fungal (spore
+##      towers, gill canopies) + Crystal Steppe (mineral spires).
+##    - OCEAN: Open Sea + islands (current) / Archipelago (island
+##      chains) / Coral Shallows (turquoise reef flats) / Storm Sea
+##      (perpetual squall) / rare-alien: Milk Sea (biolume blooms).
+##    - ICE: Glacier Fields (current) / Cryogeyser Plains (Enceladus
+##      jets) / Pack-Ice Sea (pressure ridges) / rare-alien: Blue-Ice
+##      Canyons (glowing crevasse light).
+##    - DESERT: Dune Sea (current) / Salt Flats (blinding white,
+##      mirage shimmer) / Canyon Lands (slot canyons, strata) / Oxide
+##      Waste (rust + dust devils) / rare-alien: Glass Desert
+##      (vitrified, lightning-fused).
+##    - ROCKY: Cratered Highlands (current) / Graben Canyons / Boulder
+##      Regolith / rare-alien: Geode Fields (amethyst gashes) + Carbon
+##      World (graphite black, diamond glints).
+##    - VENUS: Acid Haze (current) / Sulfur Storm Decks / rare:
+##      Greenhouse Abyss (crushing gloom, constant lightning).
+##    - LAVA: Ember Fields (current) / Obsidian Plains (black glass,
+##      red cracks) / Magma Seas (molten-ocean coasts) / Ash Wastes.
+##    - GAS: Banded Deck (Batch 3 scene) / Great-Storm Eye (a
+##      hurricane bigger than worlds) / Pastel Ammonia Decks / rare:
+##      Hot-Giant Glow (night side is a furnace).
+##    LANDING SUCCESS BY BIOME (Nick's ask; % = base success, before
+##    pity ramp / weather −10 / v1.4 gear; grounded worlds always 100):
+##    - TERRAN: Temperate 100 · Savanna 100 · Tundra 90 · Marsh 90 ·
+##      Jungle 85 · Fungal 85 · Crystal Steppe 85 · Swamp 80
+##    - OCEAN: Coral Shallows 100 · Archipelago 95 · Open Sea 90 ·
+##      Milk Sea 90 · Storm Sea 60
+##    - ICE: Glacier Fields 90 · Pack-Ice Sea 85 · Cryogeyser Plains
+##      70 · Blue-Ice Canyons 55
+##    - DESERT: Dune Sea 90 · Canyon Lands 85 · Salt Flats 85 · Oxide
+##      Waste 75 · Glass Desert 50
+##    - ROCKY: Cratered Highlands 95 · Boulder Regolith 90 · Graben
+##      Canyons 85 · Geode Fields 80 · Carbon World 60
+##    - GAS: Pastel Ammonia Decks 75 · Banded Deck 65 · Great-Storm
+##      Eye 30 · Hot-Giant Glow 15
+##    - VENUS: Sulfur Storm Decks 30 · Acid Haze 25 · Greenhouse
+##      Abyss 10
+##    - LAVA: Ash Wastes 35 · Ember Fields 25 · Obsidian Plains 20 ·
+##      Magma Seas 10 (Nick's "lava ~10%" anchor)
+##    Alien biomes deliberately span the FULL spectrum (Fungal 85 →
+##    Hot-Giant Glow 15) — alien ≠ dangerous; hostile ≠ boring.
+##    EXTREMOPHILE LIFE — AUDITED + NICK'S DECISION (2026-07-18,
+##    "we should still have life... sulfur-magma creature... icy
+##    creature... lower chance based on how life survives"):
+##    - AUDIT RESULT: biosphere() already gives EVERY type a nonzero
+##      life chance — lava 10% microbial vent mats, venus 12% aerial
+##      microbes, gas 14% cloud floaters, rocky 18%, ice 50%
+##      subsurface hidden seas, desert ALWAYS at least microbial,
+##      ocean rolls full Aquatic ecosystems (deep-sea worlds exist and
+##      are covered). Nick's principle is already domain law.
+##    - THE ACTUAL GAP: hostile types cap at MICROBIAL — no creature
+##      ever appears. NEW: a rare EXTREMOPHILE FAUNA tier, carved as a
+##      thin slice INSIDE each hostile type's existing single rng draw
+##      (nested thresholds on the same r() call — NO extra draws, the
+##      stream stays byte-aligned; only the sliced worlds' Life row
+##      upgrades microbial→fauna). Biome-conditioned (a fauna world
+##      preferentially rolls the biome its creature fits), wired
+##      through the existing 'Extreme-World Life'/'Gas Giant Life'/
+##      'Subterranean Life' habitats into bioscan/Compendium/vistas.
+##    - EXTREMOPHILE FAUNA CHANCES — FULL PASS (Nick 2026-07-18:
+##      "ultra rare on types we're almost positive wouldn't exist" —
+##      chances follow REAL astrobiology, in four plausibility bands):
+##      EARTHLIKE (life expected — the normal biosphere roll already
+##        provides fauna, no slice needed): all terran biomes, all
+##        ocean biomes except deep-vent below.
+##      PROVEN EXTREME ~0.5-2.5% (Earth has these TODAY — vents,
+##        brines, deserts, permafrost, deep rock):
+##        Canyon Lands 2.5 · Dune Sea 2.0 · Cryogeyser Plains 1.5 ·
+##        Pack-Ice Sea 1.5 · deep-vent fauna on hot-band oceans 1.0 ·
+##        Blue-Ice Canyons 0.8 · Glacier Fields 0.5 · Oxide Waste 0.5
+##        · Geode Fields 0.5 · Salt Flats 0.3 · rocky subsurface
+##        (Cratered/Boulder/Graben cave fauna) 0.3
+##      SPECULATIVE ~0.1-0.4% (debated science — Venus clouds,
+##        Sagan's floaters): Pastel Ammonia Decks 0.4 · Banded Deck
+##        0.3 · Sulfur Storm Decks 0.2 · Acid Haze 0.15 · Great-Storm
+##        Eye 0.15 · Ash Wastes 0.1
+##      NEAR-IMPOSSIBLE 0.01-0.05% (no real-world basis — THE GRAILS):
+##        Ember Fields 0.05 · Glass Desert 0.05 · Carbon World 0.05 ·
+##        Obsidian Plains 0.03 · Greenhouse Abyss 0.02 · Hot-Giant
+##        Glow 0.02 · MAGMA SEAS 0.01 (Nick's "pure fire" anchor —
+##        1 in 10,000; finding the magma-swimmer is a LEGEND, its
+##        share code a trophy).
+##      ENCOUNTER MATH (why these numbers): a player surveying ~1,000
+##      worlds meets a handful of proven-extreme fauna (the loop pays
+##      regularly), maybe ONE speculative find (a story), and near-
+##      impossible finds stay community events. Rarity-tier/aura should
+##      scale with the band (near-impossible ⇒ summit-grade rarity).
+##    EXTREMOPHILE VISUAL LANGUAGE (Nick 2026-07-18: "these creatures
+##    should look very alien-like... not just the aura"). THE LAW
+##    EXTENDS: the ENVIRONMENT drives the anatomy. Alien-ness scales
+##    with the plausibility band — band 2 reads as recognizably weird
+##    Earth-logic; band 4 is fully alien body logic. Per-environment
+##    GENE PACKS (material + palette + feature + glow, each pack a
+##    combinatorial pool so no two match):
+##    - MAGMA/EMBER: obsidian-plate hide w/ glowing seam-cracks (ember
+##      rim light), heat-vane fins, slag-shell backs; basalt black +
+##      ember orange.
+##    - UNDER-ICE VENT (Europa logic): translucent antifreeze flesh,
+##      biolume lures, eyeless-or-huge-eyed (deep-sea rules), frost-
+##      crystal shells; blue-white + biolume cyan.
+##    - DEEP-VENT OCEAN: black-smoker armor, mineral-crust plating,
+##      siphon mouths; charcoal + mineral glints.
+##    - VENUS ACID CLOUDS: float-sac drifter bodies, trailing filter
+##      tendrils, iridescent acid-sheen membranes; sulfur gold-greens.
+##    - GAS DECK: hydrogen ballonets, kite membranes, storm-riding
+##      sails — palette MIRRORS that world's own deck bands (card!).
+##    - ROCKY SUBSURFACE: pallid eyeless troglobites, echo-sense
+##      organs, crystal-tipped feelers.
+##    - SALT/BRINE: halophile PINKS (real Earth biology — brine pools
+##      are pink today), salt-crust carapace.
+##    - CARBON WORLD: graphite-black bodies, diamond glint facets.
+##    - GLASS DESERT: vitreous translucent shells, fulgurite spines.
+##    IMPLEMENTATION: descriptor TEXT drives it (card-drives-picture) —
+##    extremophile FA_TRAIT/hide pools per habitat ("obsidian-plated,
+##    veins of cooling magma", "antifreeze-clear blood") live in the
+##    NEW extremophile species branch ONLY (existing species pools/
+##    streams untouched — new text is reachable only from the new Life
+##    levels, so existing genomes stay byte-identical); hdGenesFor +
+##    the portrait renderer learn the material/glow packs; the SAME
+##    render is globally there (vista herds / reveal card / Compendium)
+##    per the Phase-2 rule. FLORA TOO: chemosynthetic tube gardens at
+##    vents, cinder blooms + sulfur chimneys on ember fields, frost-
+##    crystal flora under ice, aeroplankton veils in acid clouds —
+##    vista-visible where the card grants them. RARITY FLOORS by band:
+##    proven-extreme ⇒ elevated floor; speculative ⇒ high floor;
+##    near-impossible ⇒ summit-grade floor + full aura treatment (the
+##    magma-swimmer must LOOK like the legend it is).
+##    - THIS IS A DOMAIN CHANGE, AUTHORIZED BY NICK 2026-07-18 (the
+##      V13-class call, made): ~2-3% of hostile worlds' Life row text
+##      changes. Per the re-pin protocol: per-probe diff first; if a
+##      pinned baseline world falls in a slice, single-key re-pin with
+##      note naming this decision. Wholesale regen stays banned.
+##    - DANGER = RARITY (the Diablo-loot law): the hardest landings
+##      host the strangest finds.
+##    AIR/LAND/SEA AUDIT (Nick 2026-07-18 "complete pass... see if
+##    there's anything we're missing"; audited FA_*/FLORA_FORM/
+##    FUNGI_FORM/MICROBE_FORM/FA_HABITAT/planetSpecies):
+##    - FAUNA: LAND rich (11 locos). SEA solid at the surface
+##      (swimmers/jet-swimmers/filter-feeders; coastal/open-ocean/reef
+##      habitats) but NO abyssal-trench or under-ice habitat. AIR thin:
+##      only passive fliers (gliders/floaters/drifters/current-
+##      drifters) — no powered winged hunters despite the four-winged
+##      body plan. MICROBES already gloriously extreme (sulfur-eating,
+##      acid-pool, methane-eating, snow-algae — aligned as-is).
+##    - FLORA: LAND strong (18 forms). SEA MISSING ENTIRELY — aquatic
+##      worlds roll flora but FLORA_FORM has no kelp/seagrass/reef-
+##      builder/sargassum (the "kelp, algae mats" only exist in a
+##      comment!). AIR flora nonexistent.
+##    - HARD CONSTRAINT (learned): existing pools are INDEX-PINNED
+##      (genome rolls use (r()*len)|0 — extending ANY existing array
+##      re-rolls every existing creature). ALL additions ship as
+##      PARALLEL POOLS reachable only from NEW species branches/slots:
+##      · EX_HABITAT (extremophile branch): beneath the ice sheets,
+##        abyssal trenches, cooling lava margins, acid cloud layers,
+##        storm-eye updrafts, brine pools, the eternal twilight ring.
+##      · EX_LOCO adds powered fliers: winged hunters, storm-riders,
+##        thermal-soarers (aerial fauna finally get wings that flap).
+##      · AQ_FLORA (new additive slots on aquatic worlds, separate
+##        hash stream — existing species byte-identical, worlds GAIN
+##        rows): kelp towers, seagrass meadows, reef-builder colonies,
+##        sargassum rafts, biolume bloom fields.
+##      · AIR_FLORA (new slots on aerial-life worlds): aeroplankton
+##        veils, drift-spore banners, cloud-garden colonies.
+##    - BIOMES +5 (audit gaps → ~39 total): Mangrove Coast (terran
+##      wet — the mangrove-tangles habitat gets its world; land 90) ·
+##      Karst Caverns (rocky/terran — crystal-cavern + cave fauna
+##      stage; land 80, cave fauna 1.0) · Volcanic Archipelago (ocean
+##      — ember-meets-sea, Hawaii logic; land 70) · Abyssal Ocean
+##      (ocean, no islands, lightless deep — vent/abyssal fauna stage;
+##      land 75, vent fauna 1.5) · EYEBALL WORLD (terran/ice around
+##      RED DWARFS — tidally locked: permanent day face, frozen night
+##      face, life crowded into the terminator ring; the existing
+##      'twilight terminator zone' habitat finally gets its world;
+##      card-honest via the star's spectral class; land 85; rare-alien
+##      showpiece).
+##    - VISTA WIRING: hdVista already carries air/aqua counts (opts) —
+##      the new fliers/swimmers have a rendering path waiting.
+##    FLORA VARIETY PASS (Nick 2026-07-18 "all the various types of
+##    plants and trees... obviously a fire world never has plants"):
+##    biome-conditioned FLORA FAMILIES — each biome weights its plant
+##    species toward what belongs (mangrove tangles on Mangrove
+##    Coasts, succulent/cactus-analogues + deep-root scrub in deserts,
+##    cushion-scrub + dwarf frost flora on tundra, reed thickets in
+##    marshes, canopy titans in jungles, kelp/seagrass/reef flora in
+##    the sea biomes, aeroplankton on aerial-life worlds). The card's
+##    Life row remains the gate — fire/airless/lifeless worlds get NO
+##    flora, ever, unless an extremophile slice grants it (cinder
+##    blooms are card-granted, never decoration). Vista plant stamps +
+##    species rosters + thumbs draw from the same biome family so the
+##    world reads as ONE ecology, not a hodgepodge.
+##    WEATHER EVENT SYSTEM (Nick 2026-07-18 "crazy other weather
+##    events... tornadoes in the background... drives 'what's going on
+##    with this planet?'"). AUDIT FINDING: weatherText() ALREADY
+##    promises the spectacle — "Continent-sized cyclones", "Endless
+##    hurricanes", "Planet-circling dust storms", "cryovolcanic geyser
+##    plumes", "sulfuric-acid drizzle that evaporates before it lands",
+##    "storms of glowing rock vapor" — and the vista renders generic
+##    rain/dust. ANOTHER CARD DEBT (the aurora pattern). THE FIX:
+##    weather EVENTS as app-layer spell rolls (the proven seeded ~90s
+##    mechanism), conditioned on Weather row + type + band + biome —
+##    common weather common, SHOWPIECES rare. No domain text changes:
+##    exotic phenomena the old row lacks ride the NEW biome row's text
+##    (iron rain lives in Hot-Giant Glow's description). EVENT CATALOG:
+##    - TERRAN temperate: thunderstorm (forked lightning, wind-bent
+##      trees, downpour) · TORNADO funnel on the horizon (rare) · hail
+##      · fog banks · monsoon walls (jungle/marsh) · rainbow after
+##      rain (optical wonder).
+##    - TERRAN cold: blizzard whiteout · ICE STORM (crystal-coated
+##      flora) · diamond-dust glitter · sun dogs / light halos (real
+##      ice-crystal optics).
+##    - TERRAN hot: heat shimmer · dry lightning · firestorm fronts
+##      (rare).
+##    - OCEAN: HURRICANE wall on the horizon (the card's endless
+##      promise, finally painted) · WATERSPOUTS (rare) · squall lines
+##      · lightning over open water.
+##    - DESERT: HABOOB (advancing sand-cliff wall — the showpiece) ·
+##      dust devils · dry lightning · global-storm haze days · mirage
+##      shimmer.
+##    - ICE: CRYOGEYSER ERUPTIONS (the card's plumes, painted) ·
+##      nitrogen frost-fog · aurora storms.
+##    - VENUS: ACID VIRGA (rain dying mid-air — the card's exact
+##      sentence, painted) · sulfur mega-lightning · crush-haze.
+##    - LAVA: VOLCANIC LIGHTNING in the ash column (real physics,
+##      spectacular) · ember rain · FIRE WHIRLS (rare) · rock-vapor
+##      glow storms.
+##    - GAS: the cyclone wall seen from the deck · ammonia lightning
+##      lighting clouds from below · biome-carried exotics: IRON RAIN
+##      (Hot-Giant Glow) · glass-shard winds · diamond hail (deep
+##      decks, rare).
+##    - ROCKY/airless: stays honest — no atmosphere, no weather, ever.
+##    WIRING: surface status line + vista caption word the event
+##    ("volcanic lightning storm"); the descent confirm's weather line
+##    names it ("hurricane in progress −5") — Nick's exact fantasy:
+##    see the storm from orbit, dare the landing, land INSIDE it.
+##    Overlays pre-baked per event (heat rules); smoke probes per
+##    event family; postcards inherit (a tornado postcard!). (5b)
+##    NMS-INSPIRED ADDITIONS (Nick shared No Man's Sky's full update
+##    arc 2026-07-18; three fits for THIS patch, filtered hard):
+##    - COLOSSAL WANDERERS (Origins' sandworm energy, 100% card-
+##      honest): FA_SIZE already has 'titanic' and the Megafauna realm
+##      exists — when a world's OWN roster holds a titanic creature, a
+##      rare wonder-roll renders it at TRUE horizon scale in the
+##      vista: a sandworm breaching the Dune Sea, a leviathan arching
+##      out of the Open/Abyssal ocean, a sky-colossus silhouette
+##      crossing the gas deck. The card said titanic; the vista
+##      finally means it. (5b)
+##    - UNDERWATER VANTAGE (The Abyss): the Abyssal Ocean biome's
+##      vista is the game's first SUB-surface view — biolume drifts,
+##      vent glow below, the dim ceiling of the sea above (cloud-deck
+##      precedent: the vantage follows the card's truth). (5b)
+##    - HAZARDOUS FLORA (Visions): dangerous plant traits in the NEW
+##      parallel pools (spore-burst pods, snap-traps, acid sap) —
+##      vista-visible, card-warned in the flora text (vague-never-
+##      wrong), tiny field-sample risk on the worst offenders. Plants
+##      stop being furniture. (5a text + 5b art)
+##    FILTERED OUT for now (noted for v1.4+ below): Wonders/records
+##    catalogue, archaeology/fossils; bases/freighters/multiplayer/
+##    settlements are a different game.
+##    FULL-KINGDOM BALANCE GATE (Nick: "eventually somebody will just
+##    hunt out one creature... full balance pass on everything"):
+##    - LAW: POWER IS DECOUPLED FROM RARITY. Rarity buys aura,
+##      prestige, stardust value and Compendium glory — NOT combat
+##      dominance. Extremophile/summit finds stay inside the tuned
+##      combat bands; no biome or species may be the strictly-best
+##      hunt. (The chase stays wide — Diablo law: many viable grails.)
+##    - GATE: the balance-sim extends to ALL FOUR KINGDOMS (fauna,
+##      flora, fungi, microbes) incl. extremophiles + cross-pool
+##      hybrids: duel win-rate spread, feeding/medicine value
+##      distribution (no single flora farm dominates healing), breed
+##      outcomes, conquest champion spread. Any dominant strategy the
+##      sim flags gets tuned BEFORE the batch ships (balance PASS is
+##      already a ship gate — this widens what it covers).
+##    PUSH PLAN (separate pushes, Nick's word each): 5a biomeFor +
+##    card row + sub-label + landing-ladder audit + the parallel gene
+##    pools/slots above; 5b vista scenes per biome family (the big art
+##    batch — proof sheets per family); 5c thumbs/system sprites.
+##    Seed-sweep gate extends to the full type × biome × pal matrix.
+##    v1.4 HOOK: rare biomes can gate rare VEINS later ("rarer worlds'
+##    veins gate rarer recipes" — biome becomes the flavor carrier).
+##
+## CLAUDE'S GAP AUDIT (2026-07-18, Nick: "anything else that could be
+## missing that I didn't think about") — folded into the batches:
+## G1 DISCOVERABILITY OF THE GRAILS: at 0.01% nobody will know the
+##    magma-swimmer EXISTS. The orbital glance/survey must HINT on
+##    extremophile-slice worlds ("faint biosignatures — where nothing
+##    should survive", ⟁-language, vague-never-wrong) so the hunt is
+##    playable, not blind luck. + New charters ("Catalogue an
+##    extremophile") and Prime Codex/achievement hooks pointing at
+##    hostile-biome hunting, so the content advertises itself. (5a)
+## G2 BREEDING EXTREMOPHILES: crossGenome must handle the new parallel
+##    pools safely (index math). RECOMMENDATION: breedable with
+##    anything (infinite-Pokémon pillar — magma-beast × meadow grazer
+##    hybrids are the dream), hybrid draws each gene from the parent's
+##    own pool so indices never cross pools. (5a + smoke)
+## G3 BALANCE: summit-grade rarity floors mean extremophiles could
+##    dominate duels/conquest — balance-sim gate must cover them; tune
+##    power separately from rarity if the sim flags it. Conquest
+##    ARENAS also need the new biome backdrops or the defender's-biome
+##    arena renders wrong. (5b)
+## G4 WAVE-OFF DAMAGE ROUTING (design call made): the EXPLORER takes
+##    landing scrapes (it's piloting, not fieldwork) — the Field Scout
+##    only absorbs bioscan wounds. Hull tech reduces both. (Batch 4)
+## G5 PITY-RAMP PERSISTENCE: ramp progress saves per-world (small
+##    capped map) — losing 5 wave-offs of progress to a page reload on
+##    a 10% world would be rage-quit fuel. (Batch 4, save field w/
+##    absent-safe default)
+## G6 SEARCH & ATLAS: biome joins the search index ("swamp", "eyeball")
+##    and Atlas rows show the biome word — hunting by biome becomes a
+##    real workflow. (5a/5c)
+## G7 EVENT LANGUAGE: wave-off/landing toasts classify into the evClass
+##    color palette (harm red scrape, gain green touchdown, gold first
+##    footfall on a Hostile world); planetfall whoosh gets a wave-off
+##    variant sting (volume/rmotion rules apply). (Batch 4)
+## G8 RULE-7 SWEEP: every batch lands its Guide topic updates (landing
+##    ladder, biomes, extremophiles) + categorized RELEASES bullets in
+##    the same batch it ships. (all)
+## FINAL AUDIT (2026-07-18, pre-build):
+## G9 PANELS vs MODALS (Batch 2, ship-blocker-grade): the overlay list
+##    (~line 4064) mixes closable PANELS (codex/log/stats/events/
+##    cargo/charters/setpanel/guidebox/primebox/search results/notif
+##    tray) with true MODALS (duelbox mid-fight, pickbox, reveal,
+##    namebox, deathbox, endingbox). Tap-outside-to-close applies to
+##    PANELS ONLY — a stray tap must NEVER close a duel, a reveal, or
+##    a name prompt. Registry carries a modal flag; modals keep their
+##    explicit buttons (and get the corner ✕ only where dismissal is
+##    already legal). Notification tray + search results JOIN the
+##    panel registry (they stack today too).
+## G10 COPY SWEEP "zoom all the way in" (Batch 4): the charter
+##    st-land text, the landcta fallback toast, and the Guide survey
+##    topic all teach "zoom all the way into this world" — every
+##    instance updates to the descent-confirm flow in the same batch,
+##    or the game teaches a lie.
+## G11 ROLL SEQUENCE ON CIV WORLDS (Batch 4, defined not changed):
+##    descent roll first; first-contact roll only fires AFTER a
+##    successful landing (as today, on the card render). No stacking
+##    surprise: civ worlds are overwhelmingly temperate terran = Calm.
+## G12 SAVE SCHEMA TALLY (whole patch): exactly ONE new save field —
+##    the pity-ramp map (capped, absent-safe default empty). Biomes/
+##    weather derive from seed; extremophiles ride the codex; panel
+##    state is transient. Keep it that way.
+## G13 VISTA ✕ IN TRAINING (Batch 2): follows the card-✕ rule —
+##    hidden during training (the vista is the lesson); tap-to-
+##    dismiss still works there.
+## G14 STILL UNVERIFIED FROM NICK'S v1.3 WATCHLIST: boot time on his
+##    big save — none of the 1.3.5 batches touch boot; Nick should
+##    watch it on his next pass and report.
+## POST-NMS AUDIT (2026-07-18, second pass over the three additions):
+## G15 HAZARDOUS FLORA ✕ FATAL MEALS (coherence win): the fatal-meal
+##    mechanic already exists — hazardous flora species should be the
+##    LIKELY fatal meals (the card warned you; feeding acid-sap to
+##    your champion is on you). One system, two faces. Sample-time
+##    scrapes from hazardous flora route like bioscan wounds (Field
+##    Scout absorbs — it's fieldwork, unlike landing G4).
+## G16 UNDERWATER VANTAGE WIRING: the F3 aquatic filter runs in
+##    REVERSE beneath the waves (swimmers/drifters IN, walkers OUT);
+##    weather/aurora/moon overlays don't reach the deep (always-dark
+##    pal, biolume is the light); header copy "Descent — beneath the
+##    waves" not "Planetfall".
+## G17 COLOSSAL WANDERERS: visual-only (no combat/balance surface —
+##    the titan on the horizon is the same creature already in the
+##    roster); joins the wonder-roll family + first-sighting gold
+##    caption; "Witness a colossal wanderer" charter/achievement
+##    candidate rides G1 discoverability.
+## G18 5b SCOPE SPLIT: the art batch is now large — 5b-i biome scene
+##    families; 5b-ii weather events + wanderers + underwater vantage.
+##    Two proof-sheeted pushes instead of one monster.
+## FINAL OCD AUDIT (2026-07-18, Guide matrix + achievement math):
+## G19 GUIDE COVERAGE MATRIX (17 topics audited; the batch that ships
+##    a feature ships its Guide line): zoom (descent confirm replaces
+##    zoom-to-land) · survey (ladder %, biome row, ⟁ extremophile
+##    hints) · search+atlas (biome terms) · charters (new types) ·
+##    colors (wave-off/touchdown classes) · discover (extremophile
+##    hunting, hazardous-flora sampling) · kingdoms (gene packs, sea/
+##    air flora, wanderers) · breed (cross-pool hybrids) · feed
+##    (hazardous flora = risky meals) · mining (gas giants behind the
+##    first-landing roll; veterans grandfathered) · settings (Motion
+##    gates weather animation). + ONE new topic: 'landing' (the
+##    ladder, wave-offs, pity ramp, grounded = forever safe). beacon/
+##    rank/ending/events/codes: no change needed (verified).
+## G20 ACHIEVEMENT MATH GUARDS (would have silently broken):
+##    - Bestiary counts FA_BODY.length — extremophiles REUSE the 16
+##      body plans (material/gene packs only, no new body indices).
+##    - Warden of Realms counts REALM_ORDER.length — extremophiles
+##      map INTO existing realms (Extreme-World/Gas Giant/
+##      Subterranean); NO new realm entries.
+##    - Five Flavours / Master of Arts — new flora/fauna draw from
+##      the existing 5 flavors + existing ABILITY_THEMES. No pool
+##      growth on achievement-counted arrays anywhere.
+## G21 WEEKLY CHARTER POOL: selection hashes the pool SIZE
+##    (hashInt(0xC4A7, week, 7)) — growing the pool changes which
+##    weeklies a given week rolls. Ship pool growth as a deliberate
+##    one-time rollover (note in RELEASES); cross-player determinism
+##    holds per version.
+## G22 MOTION SETTING gates all animated weather/wanderer overlays
+##    (rmotion whitelist extends); thunder/ambient stings honor the
+##    volume taper.
+## G23 RESET clears the pity-ramp map (save hygiene; reset stays a
+##    full clean slate).
+##
+## SETTLED (Nick 2026-07-18): VERSION IS 1.3.5, separate pushes per
+## batch. STILL HIS CALLS: descent success/damage numbers (proposal:
+## Calm 100%; Rough ~85%, wave-off 3-4 HP; Hazardous ~70%, wave-off
+## 5-8 HP — before v1.4 item bonuses); panel exclusivity on desktop
+## too (recommended yes); Batch 5 biome list trims/renames + whether
+## sub-labels read "Swamp world" style (recommended yes).
+
 ## ▶▶ NEXT SESSION AGENDA (v1.4 "THE ASCENT" KICKOFF)
 
 1. NICK'S LIVE PASS of v1.3 (his screenshots are bug reports — read
@@ -366,6 +892,27 @@ PHASE 1 — LANDED IN THE GAME (this commit, flag-gated):
   (flag default/toggle/persist + full planetfall→vista→dismiss drive),
   systems 19/19.
 
+## ▶▶ v1.4 GOALS (Nick, 2026-07-18 — THE NORTH STAR, verbatim intent):
+## achieve the ability to space explore at a HIGH LEVEL with very large
+## success rates — and everything that power is EARNED through the loop:
+## - MINE materials across worlds → BUILD spaceships that travel faster
+##   and farther (extends the drive ladder + the ring unlocks).
+## - CHARACTER EQUIPMENT SCREEN: an equipment panel grows out of the
+##   character sheet — gear SLOTS on your explorer (suit, and the slot
+##   set to be designed). Materials found exploring worlds (biomes and
+##   rare worlds drop the special stuff) build hazmat suits etc. that
+##   let you land WITHOUT damage and push success rates toward 100%.
+## - THE TWO FEELS, NAMED: Minecraft/Satisfactory resource-gathering
+##   (mine → inventory → bench → build) + Diablo/Path of Exile ACTION
+##   RPG (equipment on your character, loot-chase for gear materials —
+##   the ARPG pillar now formally covers GEAR, not just fauna).
+## - THE FOUR SYSTEMS of v1.4: crafting bench · inventory · character
+##   equipment · resource gathering — fully intertwined into gameplay
+##   (quests route through all four; nothing is a menu island).
+## - UI MANDATE: make it all VERY BEAUTIFUL for the player — the
+##   bench/inventory/equipment screens get the full HD treatment
+##   (the _hdElemIcon language + rarity auras set the bar).
+##
 ## ▶▶ v1.4 DIRECTION v2 (Nick, 2026-07-17): "THE ASCENT" — CRAFT BENCH +
 ## SATISFACTORY-STYLE PROGRESSION. Nick: after training "it just feels
 ## like I don't know what to do next" — lock new players into Sol, mine →
@@ -453,6 +1000,43 @@ on. Design intent (to be shaped when v1.4 opens):
   e.g. drives/travel speed (extends the existing ladder), a diplomat's
   gift or beacon that raises first-contact odds, scan lures/armor for
   safer bioscans, harvest/mining yield tools, vista-visible ship parts.
+- LANDING GEAR (Nick, 2026-07-18, ties to the v1.3.5 descent roll):
+  crafted items raise landing success odds, up to a 100% guarantee
+  (e.g. T1 Landing Struts trim wave-off damage → T2 Descent
+  Stabilizers upgrade a hazard tier → T3 Gravitic Anchor = 100%,
+  never wave off). The pattern generalizes: crafting is how you buy
+  certainty across the game's rolls (landing, first contact, bioscan)
+  — risk is the frontier, gear is how you tame it.
+- FRONTIER RECORDS (NMS Fractal's Wonders catalogue, deferred from
+  1.3.5 for scope): a personal records board — largest creature
+  catalogued, most hostile world landed, rarest find, deepest ring
+  reached — amplifying the grail hunt the extremophile system opens.
+  Rides existing stats; pairs with the Prime Codex meta-layer.
+- ARCHAEOLOGY & FOSSILS (NMS Visions/Relics, v1.4+ candidate): dig
+  sites on dead worlds yield fossils of EXTINCT seeded species (the
+  evolution engine already ages rosters by cosmic epoch — extinct
+  ancestors are derivable); assemble skeletons for a Binder-style
+  museum page. Pairs naturally with mining/crafting loops.
+- COOKING & PROVISIONS (Nick, 2026-07-18): flora yield HARVESTABLE
+  PRODUCE — fruits, vegetables, biome-flavored crops (ember-fruit
+  from cinder blooms, brine-melons off salt flats, kelp hearts from
+  the sea gardens). The bench combines them into MEALS AND SOUPS that
+  restore HP (and later buff) — feeding-as-medicine extends from
+  creatures to the EXPLORER, and meals become the ARPG consumable
+  slot (the flask feel). Recipes deterministic; rare biomes grow rare
+  ingredients (same law as veins: rarer worlds, richer kitchens).
+- HAZARD SUITS + EXTREMOPHILE HUNTING (Nick, 2026-07-18): per-hazard
+  gear opens the hostile biomes as EXPLORATION tiers, not just landing
+  rolls — Thermal Weave (lava/ember), Pressure Hull (venus abyss /
+  gas deeps), Cryo Lining (blue-ice/cryogeyser), each pushing its
+  biome family toward 100% landing AND gating safe bioscans there.
+  The prize: adapted alien life (deep-sea-vent logic) — thermovores
+  on magma seas, acid-cloud floaters over venus, high-pressure
+  drifters in the storm eye, under-ice vent fauna. Rides the existing
+  'Extreme-World Life'/'Gas Giant Life'/'Subterranean Life' habitats;
+  danger = rarity, so the hostile biomes become the endgame hunting
+  grounds (Monster Hunter pillar). Loop: craft the suit → land the
+  unlandable → scan the unscannable → rarest Compendium finds.
 - Items get their own procedural icons in the inventory grid (elemIcon
   recipe style); recipes deterministic and identical for every explorer.
 - Ties the whole economy loop: explore → land (samples) → mine → craft →
