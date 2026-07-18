@@ -98,5 +98,9 @@
  "descentSafe",
  "biosphere",
  "biomeFor",
- "BIOME_SETS"
+ "BIOME_SETS",
+ "wxEventFor",
+ "_hdAbyssScene",
+ "_hdWxEvent",
+ "_hdTitan"
 ]

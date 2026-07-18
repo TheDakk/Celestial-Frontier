@@ -5611,6 +5611,12 @@ function drawSurface(time){
   if(season) parts.push(season);
   parts.push(env.wx ? (wxNow ? WX_NAME[effWx] : 'clear skies')
     : (P.type==='gas' ? 'winds beyond any scale' : 'airless — no weather'));
+  /* the showpiece, when one is running (5b-ii) — the status line says so */
+  try{
+    const _b6=biomeFor(P, env.band);
+    const _ev6=wxEventFor(P, _b6&&_b6.k, wxNow?effWx:null);
+    if(_ev6) parts.push(WX_EVENT_WORD[_ev6]);
+  }catch(_){ }
   if(auroraOn) parts.push('auroras overhead');
   setCtxText((TYPE_DESC[P.type]||'')+' · '+parts.join(' · '));
   /* HD landing vista (v1.3, flag-gated): built here because this is where
@@ -5651,10 +5657,13 @@ function drawSurface(time){
       const waterTxt=waterRow?String(waterRow[1]):'';
       const waterV=/Liquid|rivers|ocean/i.test(waterTxt)?'liquid':(/Frozen/i.test(waterTxt)?'frozen':(waterRow?'none':'liquid'));
       const todV=tod==='daytime'?'day':tod;
+      /* a colossal wanderer: the roster's own titanic creature, shown at
+         true scale on a rare roll (5b-ii — the card said titanic) */
+      const _tit=roster.some(gg=>(gg.size||0)>=5) && (mulberry32((P.seed^0x717B)>>>0)()<0.30);
       showVistaBox(P, todV, (env.wx&&wxNow)?effWx:null, era, genes, env.hasField,
         floraOk, env.wx&&effWx==='snow', waterV,
         {ring:P.ring, stc:(st.star&&st.star.c)||null, herd:standable.length,
-         aqua:aquaN, air:airN, title:_lastDesc.title||null, where:_lastDesc.where||null});
+         aqua:aquaN, air:airN, titan:_tit, title:_lastDesc.title||null, where:_lastDesc.where||null});
     }catch(_){}
   }
   if(_vistaPend && !hdOn) _vistaPend=false;
@@ -6172,6 +6181,199 @@ function _hdVolcano(g,W,hz,seed,r,vx0){
 /* the master vista: opts={seed, biome:'land'|'island', era:'none'|'iron'|'space',
    pal key, wx: the card's weather token|null, moons, aurora:bool (the card's
    magnetosphere — auroras crown the poles), genes:[fauna genes]|null} */
+/* WEATHER EVENTS (v1.3.5 Batch 5b-ii) — the Weather row has promised
+   "endless hurricanes" and "planet-circling dust storms" since launch;
+   now the sky pays up. The same seeded ~90s spell mechanism as wxNow,
+   rarer odds, honest to type + biome + the weather actually falling.
+   Airless rocky worlds stay weatherless forever. */
+function wxEventFor(P, wb, wxTok){
+  const b=Math.floor(perfTime()/90);
+  const r=mulberry32((P.seed^0xE7E7^b)>>>0);
+  const t=P.type;
+  if(t==='lava'){ if(wxTok==='ash'&&r()<0.5) return 'volclightning'; if(r()<0.10) return 'firewhirl'; return null; }
+  if(t==='desert'){ if(wxTok==='dust'&&r()<0.5) return 'haboob'; return null; }
+  if(t==='ocean'){ if(wb==='stormsea'&&r()<0.7) return 'hurricane'; if(wxTok==='rain'&&r()<0.22) return 'hurricane'; return null; }
+  if(t==='terran'){ if(wxTok==='rain'&&r()<0.14) return 'tornado'; if(wxTok==='snow'&&r()<0.25) return 'icestorm'; return null; }
+  if(t==='ice'){ if(wb==='cryogeyser'&&r()<0.6) return 'cryoeruption'; if(wxTok==='snow'&&r()<0.2) return 'icestorm'; return null; }
+  if(t==='venus'){ return r()<0.5?'virga':null; }
+  if(t==='gas'){ if(wb==='hotglow'&&r()<0.6) return 'ironrain'; return null; }
+  return null;
+}
+const WX_EVENT_WORD={tornado:'a tornado on the horizon', hurricane:'a hurricane wall closing in',
+  haboob:'a sand wall rolling in', icestorm:'an ice storm glazing everything',
+  cryoeruption:'a cryogeyser in full eruption', virga:'acid rain dying in the air',
+  volclightning:'volcanic lightning in the ash', firewhirl:'fire whirls walking the fields',
+  ironrain:'iron rain glowing as it falls'};
+/* the showpiece painters — one scene-sized statement each, all seeded */
+function _hdWxEvent(g, evt, seed, hz, W, H, night){
+  const r=mulberry32((seed^0xE7A2)>>>0);
+  const A=night?0.7:1;
+  if(evt==='tornado'){
+    const x=W*(0.55+r()*0.3), top=hz*0.30, w0=34+r()*20;
+    const tg=g.createLinearGradient(0,top,0,hz);
+    tg.addColorStop(0,'rgba(40,42,52,'+(0.75*A)+')'); tg.addColorStop(1,'rgba(30,30,38,'+(0.55*A)+')');
+    g.fillStyle=tg; g.beginPath();
+    g.moveTo(x-w0,top); g.quadraticCurveTo(x-w0*0.2, hz*0.6, x-4+(r()-0.5)*10, hz);
+    g.lineTo(x+6+(r()-0.5)*10, hz); g.quadraticCurveTo(x+w0*0.3, hz*0.6, x+w0*1.1, top);
+    g.closePath(); g.fill();
+    g.fillStyle='rgba(46,46,56,'+(0.8*A)+')'; g.beginPath(); g.ellipse(x,top,w0*2.4,14,0,0,TAU); g.fill();
+    const dg4=g.createRadialGradient(x,hz,0,x,hz,50);
+    dg4.addColorStop(0,'rgba(90,84,70,'+(0.45*A)+')'); dg4.addColorStop(1,'rgba(90,84,70,0)');
+    g.fillStyle=dg4; g.beginPath(); g.arc(x,hz,50,0,TAU); g.fill();
+  } else if(evt==='hurricane'){
+    const cx3=W*(0.28+r()*0.44);
+    for(let k=0;k<4;k++){
+      const rr2=60+k*46, a0=r()*TAU;
+      const ag2=g.createRadialGradient(cx3,hz,rr2-26,cx3,hz,rr2+18);
+      ag2.addColorStop(0,'rgba(70,78,92,0)');
+      ag2.addColorStop(0.55,'rgba(70,78,92,'+((0.34-k*0.06)*A)+')');
+      ag2.addColorStop(1,'rgba(70,78,92,0)');
+      g.fillStyle=ag2; g.beginPath(); g.arc(cx3,hz,rr2+18,Math.PI+a0*0.04,TAU-0.2); g.fill();
+    }
+    const wg2=g.createLinearGradient(0,hz*0.55,0,hz);
+    wg2.addColorStop(0,'rgba(52,58,72,0)'); wg2.addColorStop(1,'rgba(52,58,72,'+(0.5*A)+')');
+    g.fillStyle=wg2; g.fillRect(0,hz*0.55,W,hz*0.45);
+  } else if(evt==='haboob'){
+    const x0=W*(0.5+r()*0.3);
+    const hg2=g.createLinearGradient(x0,0,W,0);
+    hg2.addColorStop(0,'rgba(150,110,60,0)'); hg2.addColorStop(0.35,'rgba(150,110,60,'+(0.65*A)+')');
+    hg2.addColorStop(1,'rgba(120,86,44,'+(0.9*A)+')');
+    g.fillStyle=hg2; g.fillRect(x0,hz*0.18,W-x0,H-hz*0.18);
+    for(let i=0;i<8;i++){
+      const bx=x0+(W-x0)*r(), by=hz*(0.2+r()*0.5), br=20+r()*36;
+      const bg5=g.createRadialGradient(bx,by,0,bx,by,br);
+      bg5.addColorStop(0,'rgba(160,120,70,'+(0.5*A)+')'); bg5.addColorStop(1,'rgba(160,120,70,0)');
+      g.fillStyle=bg5; g.beginPath(); g.arc(bx,by,br,0,TAU); g.fill();
+    }
+  } else if(evt==='icestorm'){
+    g.strokeStyle='rgba(220,236,250,'+(0.5*A)+')'; g.lineWidth=1.1;
+    for(let i=0;i<60;i++){
+      const x=r()*W, y=r()*H*0.9, ln=8+r()*14;
+      g.beginPath(); g.moveTo(x,y); g.lineTo(x-ln*0.5,y+ln); g.stroke();
+    }
+    for(let i=0;i<26;i++){
+      g.fillStyle='rgba(235,247,255,'+(0.35+r()*0.5).toFixed(2)+')';
+      g.fillRect(r()*W, hz+(H-hz)*r(), 2, 1.4);
+    }
+  } else if(evt==='cryoeruption'){
+    const x=W*(0.3+r()*0.4), h=hz*0.85;
+    const pg2=g.createLinearGradient(x,hz,x,hz-h);
+    pg2.addColorStop(0,'rgba(240,248,255,'+(0.75*A)+')'); pg2.addColorStop(1,'rgba(240,248,255,0)');
+    g.fillStyle=pg2; g.beginPath();
+    g.moveTo(x-4,hz); g.quadraticCurveTo(x-14,hz-h*0.55,x-30,hz-h);
+    g.lineTo(x+30,hz-h); g.quadraticCurveTo(x+14,hz-h*0.55,x+4,hz); g.closePath(); g.fill();
+    const fog=g.createRadialGradient(x,hz-h,0,x,hz-h,80);
+    fog.addColorStop(0,'rgba(230,242,252,'+(0.4*A)+')'); fog.addColorStop(1,'rgba(230,242,252,0)');
+    g.fillStyle=fog; g.beginPath(); g.arc(x,hz-h,80,0,TAU); g.fill();
+  } else if(evt==='virga'){
+    for(let i=0;i<7;i++){
+      const x=W*(0.08+r()*0.84), top=hz*0.28+r()*20, fall=hz*0.30;
+      const vg2=g.createLinearGradient(x,top,x,top+fall);
+      vg2.addColorStop(0,'rgba(210,200,160,'+(0.4*A)+')'); vg2.addColorStop(1,'rgba(210,200,160,0)');
+      g.fillStyle=vg2; g.fillRect(x-6,top,12,fall);
+    }
+  } else if(evt==='volclightning'){
+    const x=W*(0.3+r()*0.4), top=hz*0.12;
+    g.strokeStyle='rgba(210,225,255,'+(0.85*A)+')'; g.lineWidth=1.6;
+    for(let k2=0;k2<3;k2++){
+      let cx4=x+(r()-0.5)*60, cy4=top+r()*20;
+      g.beginPath(); g.moveTo(cx4,cy4);
+      for(let s3=0;s3<5;s3++){ cx4+=(r()-0.5)*34; cy4+=hz*0.10; g.lineTo(cx4,cy4); }
+      g.stroke();
+    }
+    const lg3=g.createRadialGradient(x,top+30,0,x,top+30,110);
+    lg3.addColorStop(0,'rgba(190,210,255,'+(0.30*A)+')'); lg3.addColorStop(1,'rgba(190,210,255,0)');
+    g.fillStyle=lg3; g.beginPath(); g.arc(x,top+30,110,0,TAU); g.fill();
+  } else if(evt==='firewhirl'){
+    for(let i=0;i<2;i++){
+      const x=W*(0.25+r()*0.5), h=60+r()*50, y=hz+(H-hz)*(0.25+r()*0.3);
+      const fg2=g.createLinearGradient(x,y,x+(r()-0.5)*16,y-h);
+      fg2.addColorStop(0,'rgba(255,140,50,0.8)'); fg2.addColorStop(0.7,'rgba(255,90,30,0.35)'); fg2.addColorStop(1,'rgba(255,90,30,0)');
+      g.fillStyle=fg2; g.beginPath();
+      g.moveTo(x-3,y); g.quadraticCurveTo(x-8,y-h*0.5,x-4,y-h);
+      g.lineTo(x+4,y-h); g.quadraticCurveTo(x+8,y-h*0.5,x+3,y); g.closePath(); g.fill();
+    }
+  } else if(evt==='ironrain'){
+    g.strokeStyle='rgba(255,150,70,0.75)'; g.lineWidth=1.4;
+    for(let i=0;i<40;i++){
+      const x=r()*W, y=r()*H*0.8, ln=10+r()*16;
+      g.beginPath(); g.moveTo(x,y); g.lineTo(x-2,y+ln); g.stroke();
+    }
+  }
+}
+/* COLOSSAL WANDERERS — when a world's own roster carries a titanic
+   creature, a rare roll shows it at true scale: a back breaking the
+   horizon, and the scene is suddenly very small. Card-honest since
+   launch (FA_SIZE has always said 'titanic'). */
+function _hdTitan(g, mode, seed, hz, W, H, night){
+  const r=mulberry32((seed^0x717A)>>>0);
+  const x=W*(0.30+r()*0.40), span=W*(0.28+r()*0.14);
+  const col=night?'rgba(8,10,16,0.92)':'rgba(16,18,26,0.85)';
+  if(mode==='deck'){
+    g.fillStyle=col;
+    g.beginPath(); g.ellipse(x, hz*0.5, span*0.5, span*0.09, -0.06, 0, TAU); g.fill();
+    for(let f=0;f<3;f++){ const fx=x-span*0.3+f*span*0.3;
+      g.beginPath(); g.moveTo(fx,hz*0.5); g.lineTo(fx+span*0.05,hz*0.5-span*0.10); g.lineTo(fx+span*0.10,hz*0.5); g.closePath(); g.fill(); }
+    return;
+  }
+  /* land/sea: humps of one long back arcing through the ground line */
+  const humps=2+((r()<0.5)?1:0);
+  for(let h2=0;h2<humps;h2++){
+    const hx=x-span*0.5+span*(h2+0.5)/humps, hw=span/humps*0.42, hh=26+r()*20;
+    g.fillStyle=col;
+    g.beginPath(); g.ellipse(hx, hz+2, hw, hh, 0, Math.PI, 0); g.fill();
+    /* spray or dust where it breaks the surface */
+    const sg3=g.createRadialGradient(hx-hw,hz,0,hx-hw,hz,18);
+    sg3.addColorStop(0, mode==='sea'?'rgba(210,230,240,0.5)':'rgba(120,100,70,0.45)');
+    sg3.addColorStop(1,'rgba(0,0,0,0)');
+    g.fillStyle=sg3; g.beginPath(); g.arc(hx-hw,hz,18,0,TAU); g.fill();
+  }
+}
+/* THE DEEP — the Abyssal world's vista goes beneath the waves: the first
+   sub-surface vantage (the cloud deck set the precedent — the vantage
+   follows the card's truth). No sky, no weather; biolume is the light. */
+function _hdAbyssScene(o){
+  const W=960,H=430,cv=document.createElement('canvas');cv.width=W;cv.height=H;
+  const g=cv.getContext('2d'), r=mulberry32((o.seed^0xAB55)>>>0);
+  const sea=g.createLinearGradient(0,0,0,H);
+  sea.addColorStop(0,'#0a2236'); sea.addColorStop(0.4,'#05131f'); sea.addColorStop(1,'#01060a');
+  g.fillStyle=sea; g.fillRect(0,0,W,H);
+  /* the dim ceiling of the sea — light shafts losing the argument */
+  for(let i=0;i<5;i++){
+    const x=W*(0.1+r()*0.8), w2=30+r()*50;
+    const shaft=g.createLinearGradient(x,0,x+(r()-0.5)*30,H*0.5);
+    shaft.addColorStop(0,'rgba(120,180,210,0.10)'); shaft.addColorStop(1,'rgba(120,180,210,0)');
+    g.fillStyle=shaft; g.fillRect(x-w2/2,0,w2,H*0.5);
+  }
+  /* biolume motes and drifting blooms */
+  for(let i=0;i<120;i++){
+    const x=r()*W, y=H*0.15+r()*H*0.8;
+    g.fillStyle='rgba('+(r()<0.6?'120,230,255':'170,140,255')+','+(0.15+r()*0.5).toFixed(2)+')';
+    g.fillRect(x,y,1.4+r()*1.4,1.2);
+  }
+  /* the vents far below — warm light through black water */
+  for(let i=0;i<3;i++){
+    const x=W*(0.15+r()*0.7), y=H*(0.86+r()*0.1);
+    const vg3=g.createRadialGradient(x,y,0,x,y,60+r()*40);
+    vg3.addColorStop(0,'rgba(255,120,60,0.30)'); vg3.addColorStop(1,'rgba(255,120,60,0)');
+    g.fillStyle=vg3; g.beginPath(); g.arc(x,y,60+r()*40,0,TAU); g.fill();
+  }
+  /* swimmers where the card grants them — deep-sea rules: lures, dark bodies */
+  const n=Math.min(4,(o.aqua||0)+1);
+  for(let i=0;i<n && (o.aqua||0)>0;i++){
+    const x=W*(0.15+r()*0.7), y=H*(0.3+r()*0.45), s2=10+r()*18, dir=r()<0.5?1:-1;
+    g.fillStyle='rgba(4,8,14,0.9)';
+    g.beginPath(); g.ellipse(x,y,s2,s2*0.34,0,0,TAU); g.fill();
+    g.beginPath(); g.moveTo(x+dir*s2,y); g.lineTo(x+dir*(s2+s2*0.5),y-s2*0.25); g.lineTo(x+dir*(s2+s2*0.5),y+s2*0.25); g.closePath(); g.fill();
+    const lg4=g.createRadialGradient(x-dir*s2*0.8,y-s2*0.5,0,x-dir*s2*0.8,y-s2*0.5,5);
+    lg4.addColorStop(0,'rgba(150,240,255,0.9)'); lg4.addColorStop(1,'rgba(150,240,255,0)');
+    g.fillStyle=lg4; g.beginPath(); g.arc(x-dir*s2*0.8,y-s2*0.5,5,0,TAU); g.fill();
+  }
+  const vg4=g.createRadialGradient(W/2,H*0.45,H*0.3,W/2,H*0.5,W*0.62);
+  vg4.addColorStop(0,'rgba(0,0,0,0)'); vg4.addColorStop(1,'rgba(0,2,5,0.5)');
+  g.fillStyle=vg4; g.fillRect(0,0,W,H);
+  return cv;
+}
 /* the biome dressing (v1.3.5 Batch 5b) — the Biome row's words painted
    into the scene. One compact painter per feature family, all seeded, no
    strokes-for-glow, layered before the near-ground fringe so the vignette
@@ -7000,6 +7202,8 @@ function hdVista(opts){
     g.fillStyle=dg2;g.fillRect(0,0,W,H);
   }
   if(opts.wb) _hdBiomeDress(g, opts, seed, hz, W, H);
+  if(opts.evt) _hdWxEvent(g, opts.evt, seed, hz, W, H, opts.pal==='night'||opts.nightize);
+  if(opts.titan) _hdTitan(g, sea?'sea':'land', seed, hz, W, H, opts.pal==='night'||opts.nightize);
   g.fillStyle=desert?'#1c1006':(ember?'#120605':(sea?'#140f08':(opts.pal==='snow'?'#0e141c':'#071108')));
   g.beginPath();g.moveTo(0,H);
   for(let x2=0;x2<=W;x2+=6)g.lineTo(x2,H-8-_hdFbm(x2*0.02,3,seed+41,3)*16);
@@ -7235,6 +7439,8 @@ function _hdDeckScene(o){
   } else if(o.wb==='ammonia'){
     g.fillStyle='rgba(240,238,246,0.10)'; g.fillRect(0,0,W,H);   /* the pastel lift */
   }
+  if(o.evt) _hdWxEvent(g, o.evt, o.seed, hz, W, H, night);
+  if(o.titan) _hdTitan(g, 'deck', o.seed, hz, W, H, night);
   return cv;
 }
 function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xtra){
@@ -7250,9 +7456,11 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
        (Nick, 2026-07-18: all worlds land, gas giants included) */
     let wbG=null;
     try{ wbG=biomeFor(P, climateBand(P, st.sys, (st.planet&&st.planet.orb)||100)); }catch(_){ }
+    const evtG=wxEventFor(P, wbG?wbG.k:null, null);
     const cvG=_hdDeckScene({seed:P.seed, hue:P.hue, spot:!!P.spot, spotHue:P.spotHue,
       ring:!!P.ring, moons:P.moons||0, tod:tod, aurora:!!aurora,
-      air:(xtra&&xtra.air)||0, wb:wbG?wbG.k:null});
+      air:(xtra&&xtra.air)||0, wb:wbG?wbG.k:null,
+      evt:evtG, titan:!!(xtra&&xtra.titan)});
     vistaBox.innerHTML='<div class="vh">Cloud deck — '+((wbG&&wbG.n)||TYPE_LABEL[type]||'Gas giant')+'</div>';
     vistaBox.appendChild(cvG);
     const vtG=document.createElement('div');vtG.className='vt';
@@ -7289,17 +7497,39 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
      finer grain: the Biome row's words become the picture's features */
   let wb5=null;
   try{ const b5=biomeFor(P, climateBand(P, st.sys, (st.planet&&st.planet.orb)||100)); if(b5) wb5=b5; }catch(_){ }
+  const evt5=wxEventFor(P, wb5?wb5.k:null, wx);
+  /* the Abyssal world goes BENEATH the waves — the first sub-surface
+     vantage (5b-ii); no sky, no weather, biolume for light */
+  if(wb5 && wb5.k==='abyssal'){
+    const cvA=_hdAbyssScene({seed:P.seed, aqua:(xtra&&xtra.aqua)||0});
+    vistaBox.innerHTML='<div class="vh">The deep — '+wb5.n+'</div>';
+    vistaBox.appendChild(cvA);
+    const vtA=document.createElement('div');vtA.className='vt';
+    vtA.textContent='beneath the surface — tap to continue';
+    vistaBox.appendChild(vtA);
+    _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
+      flora:flora, climSnow:climSnow, water:water, xtra:xtra,
+      cv:cvA, head:'The deep — '+wb5.n, vtTxt:vtA.textContent};
+    _vistaExtras();
+    clearTimeout(_vistaHideT);
+    vistaBox.style.display='flex';
+    { const my=++_vistaShowSeq;
+      requestAnimationFrame(()=>{ if(my===_vistaShowSeq) vistaBox.classList.add('on'); }); }
+    return;
+  }
   const cv=hdVista({seed:P.seed, era:era, pal:pal, biome:biome, wx:wx,
     moons:P.moons||0, aurora:!!aurora&&wx!=='rain'&&wx!=='snow',
     nightize:nightize, duskize:duskize, flora:flora!==false,
     water:water||'liquid', genes:genes&&genes.length?genes:null,
     ring:!!(xtra&&xtra.ring), stc:(xtra&&xtra.stc)||null, herd:(xtra&&xtra.herd)||0,
-    aqua:(xtra&&xtra.aqua)||0, air:(xtra&&xtra.air)||0, wb:wb5?wb5.k:null});
+    aqua:(xtra&&xtra.aqua)||0, air:(xtra&&xtra.air)||0, wb:wb5?wb5.k:null,
+    evt:evt5, titan:!!(xtra&&xtra.titan)});
   vistaBox.innerHTML='<div class="vh">Planetfall — '+((wb5&&wb5.n)||TYPE_LABEL[type]||'World')+'</div>';
   vistaBox.appendChild(cv);
   const WXW={rain:'rain',snow:'snowfall',dust:'dust storm',ash:'ashfall',haze:'haze'};
   const vt=document.createElement('div');vt.className='vt';
-  vt.textContent='local '+tod+(wx?' · '+(WXW[wx]||wx):'')+' — tap to continue';
+  vt.textContent='local '+tod+(wx?' · '+(WXW[wx]||wx):'')+
+    (evt5?' · '+WX_EVENT_WORD[evt5]:'')+' — tap to continue';
   vistaBox.appendChild(vt);
   _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
     flora:flora, climSnow:climSnow, water:water, xtra:xtra,
@@ -7579,9 +7809,11 @@ function openDescentBox(pl){
   _descOpenFor=pl.P.seed;
   const d=descentFor(pl);
   document.getElementById('desc-title').textContent='Begin descent — '+(pl.name||'this world')+'?';
+  const ev7=wxEventFor(pl.P, d.biome&&d.biome.k, d.wx);
   document.getElementById('desc-risk').innerHTML=
     (d.biome?d.biome.n+' — ':'')+'<span class="dtier">'+descentTierLabel(d.pct)+'</span> · '+d.pct+'% success'+
     (d.wx?'<br><span class="dwx">storm in progress −5</span>':'')+
+    (ev7?'<br><span class="dwx">'+WX_EVENT_WORD[ev7]+'</span>':'')+
     (d.pct<100?'<br><span class="dhp">a wave-off costs '+d.lo+'–'+d.hi+' HP — and teaches the approach (+20% next try)</span>':'');
   b.style.display='flex';
 }
