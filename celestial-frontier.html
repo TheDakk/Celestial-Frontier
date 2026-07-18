@@ -5495,7 +5495,7 @@ function drawSurface(time){
   /* a whisper of seasonal light */
   if(seasonT<-0.2){ ctx.fillStyle=`rgba(120,150,235,${((-seasonT-0.2)*0.07).toFixed(3)})`; ctx.fillRect(0,0,W,H); }
   else if(seasonT>0.2){ ctx.fillStyle=`rgba(255,200,120,${((seasonT-0.2)*0.05).toFixed(3)})`; ctx.fillRect(0,0,W,H); }
-  const TYPE_DESC={gas:'an endless sea of storm bands — there is no surface to land on',
+  const TYPE_DESC={gas:'an endless sea of storm bands — no solid ground, only the high deck',
     terran:'oceans, continents, deserts and ice — a living world',
     ocean:'a global ocean broken by scattered islands',
     ice:'a frozen shell scored with pressure cracks',
@@ -5509,7 +5509,8 @@ function drawSurface(time){
   const WX_NAME={rain:'rain showers',snow:'snowfall',dust:'dust storms',ash:'ash and embers',haze:'thick haze'};
   const parts=['local '+tod];
   if(season) parts.push(season);
-  parts.push(env.wx ? (wxNow ? WX_NAME[effWx] : 'clear skies') : 'airless — no weather');
+  parts.push(env.wx ? (wxNow ? WX_NAME[effWx] : 'clear skies')
+    : (P.type==='gas' ? 'winds beyond any scale' : 'airless — no weather'));
   if(auroraOn) parts.push('auroras overhead');
   setCtxText((TYPE_DESC[P.type]||'')+' · '+parts.join(' · '));
   /* HD landing vista (v1.3, flag-gated): built here because this is where
@@ -6885,6 +6886,143 @@ function reshowVista(){
   const v=_lastVista;
   showVistaBox(v.P, v.tod, v.wx, v.era, v.genes, v.aurora, v.flora, v.climSnow, v.water, v.xtra);
 }
+/* the CLOUD DECK — a gas giant's landing view (v1.3.5, Batch 3: every
+   world has a vista). There is no ground; you hold station in the high
+   deck. Everything here is the card's: band hue family (P.hue), the
+   great spot (P.spot/P.spotHue), ring (P.ring), moons, the immense
+   magnetic field's polar auroras, and aerial fauna where the Life row
+   grants them. Ammonia lightning lights the deeps from below — the
+   Weather row promised continent-sized storms since launch. */
+function _hdDeckScene(o){
+  const W=960,H=430,cv=document.createElement('canvas');cv.width=W;cv.height=H;
+  const g=cv.getContext('2d'), r=mulberry32((o.seed^0xDEC)>>>0);
+  const night=o.tod==='night', dusk=o.tod==='twilight';
+  const hue=(o.hue==null?30:o.hue);
+  const hsl=(h,s,l,a)=>'hsla('+(((h%360)+360)%360)+','+s+'%,'+l+'%,'+(a==null?1:a)+')';
+  const hz=H*(0.56+r()*0.08);
+  /* upper haze — the same band family, thinned by altitude */
+  const sky=g.createLinearGradient(0,0,0,hz);
+  sky.addColorStop(0, hsl(hue, 38, night?6:(dusk?16:34)));
+  sky.addColorStop(0.7, hsl(hue+10, 44, night?10:(dusk?26:52)));
+  sky.addColorStop(1, hsl(hue+16, 50, night?14:(dusk?38:66)));
+  g.fillStyle=sky; g.fillRect(0,0,W,hz+2);
+  /* high shelf-bands riding the jet streams */
+  for(let i=0;i<5;i++){
+    const y=hz*(0.12+i*0.17)+(r()-0.5)*10, th=6+r()*14, ph=r()*TAU;
+    g.fillStyle=hsl(hue+(r()-0.5)*24, 40, (night?12:(dusk?30:58))+(r()-0.5)*8, 0.20+r()*0.15);
+    g.beginPath(); g.moveTo(0,y);
+    for(let x2=0;x2<=W;x2+=60) g.lineTo(x2, y+Math.sin(x2*0.004+ph)*8);
+    g.lineTo(W,y+th);
+    for(let x3=W;x3>=0;x3-=60) g.lineTo(x3, y+th+Math.sin(x3*0.004+ph)*8);
+    g.closePath(); g.fill();
+  }
+  if(night){
+    for(let i=0;i<90;i++){
+      g.fillStyle='rgba(255,255,255,'+(0.22+r()*0.5).toFixed(2)+')';
+      g.fillRect(r()*W, r()*hz*0.85, 1.3, 1.3);
+    }
+  } else {
+    const sx2=W*(0.2+r()*0.6), sy2=hz*(dusk?0.62:0.3);
+    const sg=g.createRadialGradient(sx2,sy2,0,sx2,sy2,60);
+    sg.addColorStop(0,'rgba(255,246,225,'+(dusk?0.5:0.75)+')'); sg.addColorStop(1,'rgba(255,246,225,0)');
+    g.fillStyle=sg; g.beginPath(); g.arc(sx2,sy2,60,0,TAU); g.fill();
+  }
+  /* the card's ring, seen edge-on from inside — a lit band + its shadow line */
+  if(o.ring){
+    g.save(); g.translate(W*0.5, hz*0.55); g.rotate(-0.18);
+    const rg2=g.createLinearGradient(-W*0.6,0,W*0.6,0);
+    rg2.addColorStop(0,'rgba(230,225,210,0)');
+    rg2.addColorStop(0.5,'rgba(230,225,210,'+(night?0.30:0.38)+')');
+    rg2.addColorStop(1,'rgba(230,225,210,0)');
+    g.fillStyle=rg2; g.fillRect(-W*0.6,-2.2,W*1.2,4.4);
+    g.fillStyle='rgba(20,16,28,'+(night?0.35:0.20)+')'; g.fillRect(-W*0.6,2.2,W*1.2,1.4);
+    g.restore();
+  }
+  /* moons from the card, small and high (max 3 drawn) */
+  for(let i=0;i<Math.min(3,o.moons|0);i++){
+    const mx=W*(0.12+r()*0.76), my2=hz*(0.10+r()*0.38), mr=3.5+r()*6;
+    g.fillStyle='rgba(228,232,240,'+(night?0.85:0.5)+')';
+    g.beginPath(); g.arc(mx,my2,mr,0,TAU); g.fill();
+  }
+  /* polar auroras — the immense field's crown, faint curtains at the rims */
+  if(o.aurora){
+    for(const side of [0.10,0.90]){
+      for(let i=0;i<3;i++){
+        const ax=W*side+(r()-0.5)*90, aw=30+r()*50;
+        const ag=g.createLinearGradient(ax,0,ax,hz*0.5);
+        ag.addColorStop(0,hsl(140,80,60,0));
+        ag.addColorStop(0.35,hsl(i%2?280:140,80,62,night?0.20:0.10));
+        ag.addColorStop(1,hsl(280,80,60,0));
+        g.fillStyle=ag; g.fillRect(ax-aw/2,0,aw,hz*0.5);
+      }
+    }
+  }
+  /* THE DECK — cloud-top floor rolling away to the horizon */
+  const deck=g.createLinearGradient(0,hz,0,H);
+  deck.addColorStop(0, hsl(hue+8, 46, night?16:(dusk?34:62)));
+  deck.addColorStop(0.5, hsl(hue-6, 42, night?10:(dusk?24:46)));
+  deck.addColorStop(1, hsl(hue-14, 38, night?6:(dusk?14:30)));
+  g.fillStyle=deck; g.fillRect(0,hz,W,H-hz);
+  /* broad rolling swells first — the deck is weather, not dots */
+  for(let sw=0;sw<3;sw++){
+    const y=hz+(H-hz)*(0.22+sw*0.28), ph=r()*TAU, amp=8+sw*10;
+    g.fillStyle=hsl(hue+(r()-0.5)*14, 44, (night?15:(dusk?32:60))+sw*3, 0.28);
+    g.beginPath(); g.moveTo(0,y);
+    for(let x4=0;x4<=W;x4+=48) g.lineTo(x4, y+Math.sin(x4*0.006+ph)*amp);
+    g.lineTo(W,H); g.lineTo(0,H); g.closePath(); g.fill();
+  }
+  for(let row=0;row<4;row++){
+    const y=hz+(H-hz)*(0.16+row*0.24), sc=0.5+row*0.45;
+    for(let i=0;i<10;i++){
+      const x2=((i+(row%2?0.5:0))/10)*W+(r()-0.5)*40, br=(16+r()*26)*sc;
+      const pg=g.createRadialGradient(x2,y,0,x2,y,br);
+      pg.addColorStop(0, hsl(hue+(r()-0.5)*18, 44, (night?18:(dusk?38:68))+r()*8, 0.3));
+      pg.addColorStop(1, hsl(hue, 44, night?12:40, 0));
+      g.fillStyle=pg; g.beginPath(); g.arc(x2,y,br,0,TAU); g.fill();
+    }
+  }
+  /* the great storm, if the card carries one — a vast oval on the horizon */
+  if(o.spot){
+    const sx3=W*(0.25+r()*0.5), sy3=hz+(H-hz)*0.18, rw=90+r()*70;
+    g.save(); g.translate(sx3,sy3); g.scale(1,0.36);
+    const spg=g.createRadialGradient(0,0,0,0,0,rw);
+    spg.addColorStop(0,hsl(o.spotHue||hue,55,night?20:52,0.55));
+    spg.addColorStop(0.7,hsl(o.spotHue||hue,50,night?14:40,0.28));
+    spg.addColorStop(1,hsl(o.spotHue||hue,50,40,0));
+    g.fillStyle=spg; g.beginPath(); g.arc(0,0,rw,0,TAU); g.fill(); g.restore();
+  }
+  /* ammonia lightning lighting the deeps from below */
+  const nl=(night?4:2)+((r()<0.5)?1:0);
+  for(let i=0;i<nl;i++){
+    const lx=r()*W, ly=hz+(H-hz)*(0.3+r()*0.6), lr=20+r()*36;
+    const lg2=g.createRadialGradient(lx,ly,0,lx,ly,lr);
+    lg2.addColorStop(0,'rgba(200,220,255,'+(night?0.5:0.28)+')');
+    lg2.addColorStop(1,'rgba(200,220,255,0)');
+    g.fillStyle=lg2; g.beginPath(); g.arc(lx,ly,lr,0,TAU); g.fill();
+  }
+  /* aerial drifters — only when the card's Life row grants them */
+  if(o.air>0){
+    for(let i=0;i<Math.min(4,o.air+1);i++){
+      const fx=W*(0.15+r()*0.7), fy=hz*(0.45+r()*0.4), fs=6+r()*10;
+      g.fillStyle='rgba('+(night?'12,16,26':'30,26,40')+','+(0.28+r()*0.16).toFixed(2)+')';
+      g.beginPath(); g.ellipse(fx,fy,fs,fs*0.62,0,0,TAU); g.fill();
+      g.lineWidth=1.1; g.strokeStyle='rgba(20,18,30,0.3)';
+      for(let t2=0;t2<3;t2++){
+        const tx=fx-fs*0.4+t2*fs*0.4;
+        g.beginPath(); g.moveTo(tx,fy+fs*0.5);
+        g.quadraticCurveTo(tx+(r()-0.5)*6, fy+fs*1.6, tx+(r()-0.5)*10, fy+fs*(2.2+r()));
+        g.stroke();
+      }
+    }
+  }
+  /* the breath of haze where deck meets sky */
+  const hzg=g.createLinearGradient(0,hz-30,0,hz+50);
+  hzg.addColorStop(0,'rgba(255,255,255,0)');
+  hzg.addColorStop(0.5,hsl(hue+16,50,night?18:70,0.16));
+  hzg.addColorStop(1,'rgba(255,255,255,0)');
+  g.fillStyle=hzg; g.fillRect(0,hz-30,W,80);
+  return cv;
+}
 function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xtra){
   /* the card drives the picture: type → scene, ACTIVE weather token →
      overlay (the Weather row is climate; spells come and go), snow climate
@@ -6893,7 +7031,27 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
      auroras (never through a precipitating deck), Life row → flora,
      Water row → the river (liquid/frozen/none) */
   const type=P.type;
-  if(type==='gas') return;                       /* no ground to stand on */
+  if(type==='gas'){
+    /* no ground to stand on — so the vista is the DECK, not a wall
+       (Nick, 2026-07-18: all worlds land, gas giants included) */
+    const cvG=_hdDeckScene({seed:P.seed, hue:P.hue, spot:!!P.spot, spotHue:P.spotHue,
+      ring:!!P.ring, moons:P.moons||0, tod:tod, aurora:!!aurora,
+      air:(xtra&&xtra.air)||0});
+    vistaBox.innerHTML='<div class="vh">Cloud deck — '+(TYPE_LABEL[type]||'Gas giant')+'</div>';
+    vistaBox.appendChild(cvG);
+    const vtG=document.createElement('div');vtG.className='vt';
+    vtG.textContent='local '+tod+' — tap to continue';
+    vistaBox.appendChild(vtG);
+    _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
+      flora:flora, climSnow:climSnow, water:water, xtra:xtra,
+      cv:cvG, head:'Cloud deck — '+(TYPE_LABEL[type]||'Gas giant'), vtTxt:vtG.textContent};
+    _vistaExtras();
+    clearTimeout(_vistaHideT);
+    vistaBox.style.display='flex';
+    { const my=++_vistaShowSeq;
+      requestAnimationFrame(()=>{ if(my===_vistaShowSeq) vistaBox.classList.add('on'); }); }
+    return;
+  }
   let pal='day', biome='land', nightize=false, duskize=false;
   if(type==='ice') pal='ice';
   else if(type==='rocky') pal='grey';
