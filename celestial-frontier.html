@@ -270,11 +270,55 @@
     transition:color .2s,border-color .2s}
   #dailybtn:hover{color:var(--ink);border-color:rgba(176,108,255,0.5)}
   #dailybtn .dot{width:6px;height:6px;border-radius:50%;background:#b06cff;box-shadow:0 0 8px #b06cff}
-  #stats{position:fixed;top:calc(var(--row1-h,58px) + 6px);left:18px;z-index:22;width:302px;max-height:min(74vh,640px);overflow-y:auto;display:none;
-    background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:13px;
-    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
-  #stats{scrollbar-color:rgba(255,207,138,0.5) rgba(150,162,210,0.12)}
-  #stats::-webkit-scrollbar{width:8px} #stats::-webkit-scrollbar-thumb{background:rgba(255,207,138,0.5);border-radius:8px}
+  /* ---- v1.5 THE CHARACTER SCREEN: the centered home for the explorer.
+     #stats and #cargo became REGIONS inside #sheetcard — same render
+     functions, new address. Desktop: stats left, paperdoll center,
+     cargo full-width beneath. Phones: doll first, stats, then cargo. ---- */
+  #sheet{position:fixed;inset:0;z-index:24;display:none;align-items:center;justify-content:center;
+    background:rgba(4,6,13,0.62);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+  #sheetcard{position:relative;width:min(880px,calc(100vw - 20px));max-height:calc(100dvh - 26px);overflow-y:auto;
+    display:grid;grid-template-columns:288px 1fr;grid-template-areas:"stats doll" "cargo cargo";gap:12px;
+    background:linear-gradient(175deg,rgba(19,23,42,0.97),rgba(8,10,20,0.98));
+    border:1px solid rgba(255,207,138,0.28);border-radius:18px;padding:14px;
+    box-shadow:0 26px 90px rgba(0,0,0,0.7),0 0 30px rgba(255,207,138,0.06)}
+  #sheetcard{scrollbar-color:rgba(255,207,138,0.5) rgba(150,162,210,0.12)}
+  #sheetcard::-webkit-scrollbar{width:8px} #sheetcard::-webkit-scrollbar-thumb{background:rgba(255,207,138,0.5);border-radius:8px}
+  #sheetstats{grid-area:stats;min-width:0}
+  #doll{grid-area:doll;min-width:0}
+  #sheetcargo{grid-area:cargo;min-width:0;border-top:1px solid rgba(150,162,210,0.18);padding-top:10px}
+  #stats{display:none;background:none;border:0;padding:0}
+  /* the doll: the figure fills the region; sockets pin to the body */
+  #doll .dollwrap{position:relative;margin:0 auto;width:min(100%,340px)}
+  #doll .dollwrap img.dollimg{display:block;width:100%;border-radius:14px;
+    border:1px solid rgba(150,162,210,0.22);background:#04050b}
+  #doll .dsock{position:absolute;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:12px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(150,162,210,0.45);
+    background:radial-gradient(130% 105% at 50% 0%,rgba(24,30,54,0.55),rgba(5,7,14,0.64));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.10),0 3px 9px rgba(0,0,0,0.55)}
+  #doll .dsock:hover{border-color:rgba(255,207,138,0.6)}
+  #doll .dsock.sel{border-color:#ffcf8a;box-shadow:0 0 12px rgba(255,207,138,0.35)}
+  #doll .dsock img{width:78%;height:78%;filter:drop-shadow(0 3px 4px rgba(0,0,0,0.6))}
+  #doll .dsock .eqph{font-size:17px;opacity:0.55}
+  #doll .dsock.filled.t1{border-color:rgba(159,182,214,0.7)}
+  #doll .dsock.filled.t2{border-color:rgba(255,217,106,0.75);box-shadow:0 0 10px rgba(255,217,106,0.22)}
+  #doll .dsock.filled.t3{border-color:rgba(255,122,232,0.8);box-shadow:0 0 12px rgba(255,122,232,0.3)}
+  #doll .dship{position:absolute;transform:translate(-50%,-50%);width:96px;border-radius:9px;
+    border:1px solid rgba(127,208,255,0.35);background:#05060d;opacity:0.96}
+  #doll .dname{font:700 15px var(--ui);letter-spacing:.03em;color:var(--ink);text-align:center;margin:2px 0 8px}
+  #doll .dname .drank{display:block;font:600 9.5px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:#f0cf8a;margin-top:3px}
+  #doll .eqfx{font-size:10px;line-height:1.6;color:#bfe6c8;border:1px solid rgba(127,230,160,0.25);
+    border-radius:9px;padding:6px 9px;margin:8px auto 0;max-width:min(100%,340px);background:rgba(127,230,160,0.05)}
+  #doll .eqpick{border:1px solid rgba(255,207,138,0.3);border-radius:10px;padding:4px;margin:8px auto 0;max-width:min(100%,340px);background:rgba(6,8,16,0.72)}
+  #doll .eqcand{display:flex;align-items:center;gap:8px;padding:5px 6px;border-radius:8px;cursor:pointer}
+  #doll .eqcand:hover{background:rgba(150,162,210,0.12)}
+  #doll .eqcand.on{background:rgba(255,207,138,0.10)}
+  #doll .eqcand img{width:26px;height:26px;flex:none}
+  #doll .eqcand .eqph{width:26px;text-align:center;font-size:14px;opacity:0.6;flex:none}
+  #doll .eqcand .nm{font:600 11px var(--ui);color:var(--ink)}
+  #doll .eqcand .ds{font-size:9.5px;color:var(--dim);line-height:1.35}
+  #doll .shipcap{font-size:9.5px;color:var(--plasma);letter-spacing:.06em;text-transform:uppercase;
+    text-align:center;margin:6px 0 0}
   #stats h4{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:var(--plasma);margin:12px 0 6px}
   #stats h4:first-child{margin-top:0}
   #stats .srow{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:#e2e7f8;margin:4px 0}
@@ -792,41 +836,10 @@
   #stats .pframe .pmeta{min-width:0;flex:1}
   #stats .pframe .pname{font:600 13px var(--ui);letter-spacing:.04em;color:var(--ink)}
   #stats .pframe .prank{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#f0cf8a;margin-top:3px}
-  /* ---- v1.4 EQUIPMENT on the character sheet: nine sockets, ARPG-style ---- */
-  #stats .eqrow{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:2px 0 6px}
-  #stats .eqslot{position:relative;aspect-ratio:0.86;border:1px solid rgba(150,162,210,0.28);border-radius:10px;cursor:pointer;
-    background:radial-gradient(130% 105% at 50% 0%,rgba(150,162,210,0.14),rgba(5,7,14,0.66));
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;padding:3px 2px;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,0.09),inset 0 -7px 12px rgba(0,0,0,0.45),0 1px 0 rgba(0,0,0,0.55)}
-  #stats .eqslot img{filter:drop-shadow(0 3px 4px rgba(0,0,0,0.55))}
-  #stats .eqslot:hover{border-color:rgba(150,162,210,0.55)}
-  #stats .eqslot.sel{border-color:#ffcf8a;box-shadow:0 0 10px rgba(255,207,138,0.25)}
-  #stats .eqslot.filled.t1{border-color:rgba(159,182,214,0.55)}
-  #stats .eqslot.filled.t2{border-color:rgba(255,217,106,0.6);box-shadow:0 0 10px rgba(255,217,106,0.16)}
-  #stats .eqslot.filled.t3{border-color:rgba(255,122,232,0.65);box-shadow:0 0 12px rgba(255,122,232,0.22)}
-  #stats .eqslot img{width:58%;height:58%}
-  #stats .eqslot .eqph{font-size:16px;opacity:0.5}
-  #stats .eqslot .eqname{font:600 7.5px var(--ui);letter-spacing:.02em;color:var(--dim);text-align:center;
-    max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  #stats .eqslot.filled .eqname{color:var(--ink)}
-  #stats .eqpick{border:1px solid rgba(255,207,138,0.3);border-radius:10px;padding:4px;margin:0 0 6px;background:rgba(6,8,16,0.5)}
-  #stats .eqcand{display:flex;align-items:center;gap:8px;padding:5px 6px;border-radius:8px;cursor:pointer}
-  #stats .eqcand:hover{background:rgba(150,162,210,0.12)}
-  #stats .eqcand.on{background:rgba(255,207,138,0.10)}
-  #stats .eqcand img{width:26px;height:26px;flex:none}
-  #stats .eqcand .eqph{width:26px;text-align:center;font-size:14px;opacity:0.6;flex:none}
-  #stats .eqcand .nm{font:600 11px var(--ui);color:var(--ink)}
-  #stats .eqcand .ds{font-size:9.5px;color:var(--dim);line-height:1.35}
-  #stats .eqfx{font-size:10px;line-height:1.6;color:#bfe6c8;border:1px solid rgba(127,230,160,0.25);
-    border-radius:9px;padding:6px 9px;margin:0 0 4px;background:rgba(127,230,160,0.05)}
-  /* the Shipyard: your ship, gaining modules as systems come online */
-  #stats .shipimg{width:100%;border-radius:10px;border:1px solid var(--glass-brd);background:#06070f;display:block}
-  #stats .shipcap{font-size:9.5px;color:var(--plasma);letter-spacing:.06em;text-transform:uppercase;
-    text-align:center;margin:4px 0 2px}
-  #cargo{position:fixed;top:calc(var(--row1-h,58px) + 170px);right:18px;z-index:12;width:320px;max-height:min(56vh,500px);overflow-y:auto;
-    background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-    border:1px solid rgba(150,162,210,0.2);border-radius:15px;padding:6px;display:none;
-    box-shadow:0 18px 50px rgba(0,0,0,0.5)}
+  /* (v1.5: the nine equipment sockets + Shipyard moved onto the paperdoll —
+     their styles live under #doll now) */
+  /* v1.5: the cargo panel folded INTO the character screen — a region now */
+  #cargo{display:none;background:none;border:0;padding:0}
   #cargo .empty{padding:18px 14px;font-size:11.5px;color:var(--faint);text-align:center;line-height:1.55}
   #cargo .chead{padding:9px 11px 7px;font-family:var(--ui);font-size:10px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--faint)}
@@ -1162,18 +1175,20 @@
     body.fs-xl #bell{font-size:14px}
     #hpbar{width:clamp(110px,33vw,188px);height:12px} #hptext{font-size:9px} #hpheart{font-size:14px}
     #pcdxbtn{left:14px;right:auto;padding:6px 9px;font-size:10.5px;gap:5px} #pcdxbtn .lbl{display:inline}
-    #codexbtn,#logbtn,#codex,#log,#cargobtn,#cargo{right:14px}
-    #cargo{width:min(300px,calc(100vw - 20px))}
+    #codexbtn,#logbtn,#codex,#log,#cargobtn{right:14px}
     /* side buttons + panels sit BELOW the two-row topbar — never overlapping it */
     /* float the side rails just below the header, however many rows it wraps to */
-    #stats{top:calc(var(--row1-h,58px) + 6px)}
     /* v1.5 swap: Prime Codex leads the left rail; charters wear the prime slot */
     #pcdxbtn{top:calc(var(--topbar-h,118px) + 8px)}
     #chbtn{top:calc(var(--row1-h,58px) + 8px);right:14px;font-size:10px;padding:6px 10px}
     #chpanel{top:calc(var(--row1-h,58px) + 46px);right:14px;left:auto;width:min(312px,calc(100vw - 20px))}
     #panel{width:min(300px,calc(100vw - 20px))}
     #codex,#log{width:min(300px,calc(100vw - 20px))}
-    #stats,#events{width:min(312px,calc(100vw - 20px))}
+    #events{width:min(312px,calc(100vw - 20px))}
+    /* v1.5 character screen stacks on phones: paperdoll first, stats fold,
+       inventory below — sockets stay finger-sized (48px) */
+    #sheetcard{grid-template-columns:1fr;grid-template-areas:"doll" "stats" "cargo";padding:10px;gap:10px}
+    #sheetstats{border-top:1px solid rgba(150,162,210,0.18);padding-top:10px}
     #tray{width:min(290px,calc(100vw - 20px));right:-6px}
     #primebox .card,#endingbox .card,#guidebox .card{padding:18px 14px}
     #context{bottom:calc(96px + env(safe-area-inset-bottom,0px));font-size:11.5px}
@@ -1430,7 +1445,16 @@
 </div>
 
 <div id="dailybtn" role="button" tabindex="0" data-tip="A fresh destination inside your charter every 5 minutes — the same beacon for every explorer on your ring." data-guide="beacon"><span class="dot"></span>Traveler’s Beacon</div>
-<div id="stats"></div>
+<!-- v1.5 THE CHARACTER SCREEN: one centered home for the whole explorer —
+     stats left, full-body paperdoll center, cargo/fabricator underneath.
+     The old #stats and #cargo panels live INSIDE it now, as regions. -->
+<div id="sheet">
+  <div id="sheetcard">
+    <div id="doll"></div>
+    <div id="sheetstats"><div id="stats"></div></div>
+    <div id="sheetcargo"><div id="cargo"></div></div>
+  </div>
+</div>
 <div id="toast"></div>
 <div id="eventsbtn" role="button" tabindex="0" data-tip="Live cosmic events — every explorer sees the same sky at the same moment." data-guide="events"><span class="dot"></span>Cosmic Events</div>
 <div id="chbtn" role="button" tabindex="0" data-tip="Expedition Charters — your hunt board. Starters teach the expedition&#8217;s trades; then three fresh charters a week, the same for every explorer." data-guide="charters"><span class="dot"></span>Charters</div>
@@ -1538,8 +1562,7 @@
 <div id="log"></div>
 <div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="dot bio"></span>Compendium <span class="n" id="codexcount">0</span></div>
 <div id="codex"></div>
-<div id="cargobtn" role="button" tabindex="0" style="display:none" data-tip="Mined elements and the research bench — the engineer’s track." data-guide="mining"><span class="dot crg"></span>Cargo <span class="n" id="cargocount">0</span></div>
-<div id="cargo"></div>
+<div id="cargobtn" role="button" tabindex="0" style="display:none" data-tip="Your hold and workbench — opens the character screen on its inventory." data-guide="mining"><span class="dot crg"></span>Cargo <span class="n" id="cargocount">0</span></div>
 <div id="primebox"><div class="card">
   <button id="primeclose" class="pxclose" type="button">&times;</button>
   <div class="ph"><div class="pt">✦ The Prime Codex</div>
@@ -9646,7 +9669,7 @@ function travelTo(w){
   const dist=Math.hypot((w.gal.x-st.ucam.x)||0, (w.gal.y-st.ucam.y)||0);
   const mult=(typeof driveMult==='function')?driveMult():1;
   const dur=clamp(800+(dist*3)/mult, 800, Math.max(1200, 8000/mult));
-  if(dist>1400 && mult===1) toast('🚀 Long Burn','The old fusion-chemical drive strains across '+Math.round(dist)+' u of void — research better drives at the Research Bench in your 🧰 Cargo hold.');
+  if(dist>1400 && mult===1) toast('🚀 Long Burn','The old fusion-chemical drive strains across '+Math.round(dist)+' u of void — research better drives on your character screen&#8217;s Research tab (🧰).');
   _trav={t0:performance.now(), dur, w, hex:'#cfe0ff', jumped:false, zEnd:0, seed:_destSeed(w)};
   playWhoosh();                        /* the lane opens */
 }
@@ -10538,7 +10561,7 @@ function resetMemoryState(){
     nameHue=-1;
     try{ _chBadge(); }catch(_){ }
     try{ showCargoBtn(); }catch(_){ }
-    try{ if(typeof cargoEl!=='undefined' && cargoEl){ cargoOpen=false; cargoEl.style.display='none'; } }catch(_){ }
+    try{ if(typeof closeSheet==='function') closeSheet(); }catch(_){ }
     try{ if(typeof chPanel!=='undefined' && chPanel){ chOpen=false; chPanel.style.display='none'; } }catch(_){ }
     _lastRankName=null; _lastRankFloor=-1;   /* a fresh Cadet is a beginning, not a promotion */
     explorerName=''; essence=0; pstats={vit:50,fer:50,res:50,agi:50,ins:50}; HP_MAX=hpMaxFromVit(); hp=HP_MAX;
@@ -10563,7 +10586,7 @@ function wipeSaveAndReload(){
     setPanel.style.display='none';
     codexOpen=false;  codexEl.style.display='none';
     logOpen=false;    logEl.style.display='none';
-    statsOpen=false;  statsEl.style.display='none';
+    try{ closeSheet(); }catch(_){ }
     eventsOpen=false; eventsEl.style.display='none'; clearInterval(_evTimer);
     /* post-deploy audit, HIGH: the DEATH overlay was never hidden by the
        in-place rebuild — "Begin a new expedition" left the fresh game
@@ -10837,7 +10860,7 @@ dailyBtn.addEventListener('click', ()=>{
 /* ================================================================
    @module CombatCore [domain] — battle stats, biome abilities, deterministic duels & creature codes
    Deps: Rand, EncUtil, player, naming-ui, Genome, viewport, player-state
-   API:  abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf
+   API:  abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, paperdollAvatar, DOLL_ANCHORS, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf
    ================================================================ */
 const CombatCore=(()=>{
 const STAT_NAMES=['Vitality','Ferocity','Resilience','Agility','Instinct'];
@@ -11158,6 +11181,177 @@ function playerAvatar(){
   _playerAvatarURL=cv.toDataURL();
   return _playerAvatarURL;
 }
+/* THE PAPERDOLL (v1.5, Nick: "Diablo 2/3/4, PoE, classic WoW look and
+   feel"): the explorer at FULL LENGTH for the character screen — the same
+   gold suit and glass visor as the bust, painterly per the HD engine law,
+   rim-lit against the void. One master, cached; the equipment sockets
+   anchor to this figure via DOLL_ANCHORS (fractions of the canvas). */
+let _dollURL=null;
+function paperdollAvatar(){
+  if(_dollURL) return _dollURL;
+  const W2=360,H2=600,cv=document.createElement('canvas');cv.width=W2;cv.height=H2;
+  const g=cv.getContext('2d');
+  /* the void behind: deep radial night + a violet nebula breath + stars */
+  const bg=g.createRadialGradient(W2*0.5,H2*0.30,20,W2*0.5,H2*0.52,H2*0.72);
+  bg.addColorStop(0,'#191524');bg.addColorStop(1,'#04050b');
+  g.fillStyle=bg;g.fillRect(0,0,W2,H2);
+  const r=mulberry32(0x50A1E5);
+  const neb=g.createRadialGradient(W2*0.80,H2*0.20,8,W2*0.80,H2*0.20,W2*0.55);
+  neb.addColorStop(0,'rgba(96,72,170,0.17)');neb.addColorStop(1,'rgba(96,72,170,0)');
+  g.fillStyle=neb;g.fillRect(0,0,W2,H2);
+  const neb2=g.createRadialGradient(W2*0.14,H2*0.62,8,W2*0.14,H2*0.62,W2*0.4);
+  neb2.addColorStop(0,'rgba(46,110,150,0.12)');neb2.addColorStop(1,'rgba(46,110,150,0)');
+  g.fillStyle=neb2;g.fillRect(0,0,W2,H2);
+  for(let i=0;i<90;i++){ g.fillStyle='rgba(255,255,255,'+(0.10+r()*0.5).toFixed(2)+')';
+    g.fillRect(r()*W2, r()*H2*0.86, 1.3, 1.3); }
+  /* ground: a soft landing-pad disc + the explorer's shadow */
+  const pad=g.createRadialGradient(W2*0.5,H2*0.925,4,W2*0.5,H2*0.925,W2*0.36);
+  pad.addColorStop(0,'rgba(120,130,170,0.14)');pad.addColorStop(0.7,'rgba(60,66,96,0.07)');pad.addColorStop(1,'rgba(0,0,0,0)');
+  g.fillStyle=pad;g.beginPath();g.ellipse(W2*0.5,H2*0.925,W2*0.36,H2*0.036,0,0,7);g.fill();
+  g.fillStyle='rgba(0,0,0,0.55)';
+  g.beginPath();g.ellipse(W2*0.5,H2*0.928,W2*0.205,H2*0.020,0,0,7);g.fill();
+  const cx=W2*0.5;
+  const gold=(y0,y1)=>{const s=g.createLinearGradient(0,y0,0,y1);
+    s.addColorStop(0,'#ffe6a8');s.addColorStop(0.55,'#e0a84a');s.addColorStop(1,'#8a5e20');return s;};
+  const darkgold=(y0,y1)=>{const s=g.createLinearGradient(0,y0,0,y1);
+    s.addColorStop(0,'#d9a851');s.addColorStop(0.6,'#a87830');s.addColorStop(1,'#5e3f14');return s;};
+  /* LEGS: two tapered columns with a knee seam */
+  const hipY=H2*0.565, kneeY=H2*0.735, ankY=H2*0.875;
+  for(const sgn of [-1,1]){
+    const lx=cx+sgn*W2*0.062;
+    g.fillStyle=darkgold(hipY,ankY);
+    g.beginPath();
+    g.moveTo(lx-W2*0.052,hipY);g.lineTo(lx+W2*0.052,hipY);
+    g.lineTo(lx+W2*0.040,kneeY);g.lineTo(lx+W2*0.036,ankY);
+    g.lineTo(lx-W2*0.036,ankY);g.lineTo(lx-W2*0.040,kneeY);
+    g.closePath();g.fill();
+    /* knee plate */
+    g.fillStyle='rgba(255,230,168,0.30)';
+    g.beginPath();g.ellipse(lx,kneeY-H2*0.008,W2*0.036,H2*0.016,0,0,7);g.fill();
+    /* inner shade */
+    g.fillStyle='rgba(30,20,6,0.35)';
+    g.fillRect(lx-sgn*W2*0.012-W2*0.008,hipY,W2*0.014,ankY-hipY);
+  }
+  /* BOOTS: heavy, darker metal with a lit top rim */
+  for(const sgn of [-1,1]){
+    const lx=cx+sgn*W2*0.062;
+    const bg2=g.createLinearGradient(0,ankY,0,H2*0.925);
+    bg2.addColorStop(0,'#c9a050');bg2.addColorStop(0.5,'#7c5a22');bg2.addColorStop(1,'#3c2a0e');
+    g.fillStyle=bg2;
+    g.beginPath();
+    g.moveTo(lx-W2*0.042,ankY);g.lineTo(lx+W2*0.042,ankY);
+    g.lineTo(lx+W2*0.052,H2*0.912);g.lineTo(lx+sgn*W2*0.028+W2*0.052,H2*0.925);
+    g.lineTo(lx-W2*0.052,H2*0.925);g.lineTo(lx-W2*0.052,H2*0.912);
+    g.closePath();g.fill();
+    g.fillStyle='rgba(255,236,180,0.35)';g.fillRect(lx-W2*0.042,ankY,W2*0.084,2.2);
+  }
+  /* TORSO: the chest carapace — broad shoulders tapering to the waist */
+  const shY=H2*0.300, waY=H2*0.565;
+  g.fillStyle=gold(shY,waY);
+  g.beginPath();
+  g.moveTo(cx-W2*0.155,shY+H2*0.012);
+  g.quadraticCurveTo(cx-W2*0.175,shY+H2*0.075,cx-W2*0.120,H2*0.47);
+  g.quadraticCurveTo(cx-W2*0.115,H2*0.53,cx-W2*0.125,waY);
+  g.lineTo(cx+W2*0.125,waY);
+  g.quadraticCurveTo(cx+W2*0.115,H2*0.53,cx+W2*0.120,H2*0.47);
+  g.quadraticCurveTo(cx+W2*0.175,shY+H2*0.075,cx+W2*0.155,shY+H2*0.012);
+  g.quadraticCurveTo(cx,shY-H2*0.016,cx-W2*0.155,shY+H2*0.012);
+  g.closePath();g.fill();
+  /* belt */
+  g.fillStyle='rgba(40,26,8,0.75)';g.fillRect(cx-W2*0.125,waY-H2*0.012,W2*0.25,H2*0.020);
+  g.fillStyle='#ffcf8a';g.fillRect(cx-W2*0.020,waY-H2*0.012,W2*0.040,H2*0.020);
+  /* chest seam + sternum plate */
+  g.fillStyle='rgba(60,40,12,0.5)';g.fillRect(cx-W2*0.010,shY+H2*0.03,W2*0.020,H2*0.20);
+  g.fillStyle='rgba(255,240,200,0.22)';
+  g.beginPath();g.ellipse(cx,shY+H2*0.085,W2*0.075,H2*0.045,0,0,7);g.fill();
+  /* the chest lamp — the bust's little star, kept */
+  g.fillStyle='#ffcf8a';g.beginPath();g.arc(cx,shY+H2*0.075,W2*0.016,0,7);g.fill();
+  g.save();g.globalCompositeOperation='lighter';
+  const lampGlow=g.createRadialGradient(cx,shY+H2*0.075,1,cx,shY+H2*0.075,W2*0.09);
+  lampGlow.addColorStop(0,'rgba(255,207,138,0.5)');lampGlow.addColorStop(1,'rgba(255,207,138,0)');
+  g.fillStyle=lampGlow;g.fillRect(cx-W2*0.1,shY,W2*0.2,H2*0.16);
+  g.restore();
+  /* ARMS: hanging slightly out, sectioned at the elbow, glove fists */
+  for(const sgn of [-1,1]){
+    const sx=cx+sgn*W2*0.165, ex=cx+sgn*W2*0.205, hx=cx+sgn*W2*0.215;
+    const elY=H2*0.435, haY=H2*0.545;
+    g.strokeStyle='rgba(0,0,0,0)';
+    g.fillStyle=gold(shY,haY);
+    g.beginPath();   /* upper arm */
+    g.moveTo(sx-W2*0.043,shY+H2*0.020);g.lineTo(sx+W2*0.043,shY+H2*0.020);
+    g.lineTo(ex+W2*0.032,elY);g.lineTo(ex-W2*0.032,elY);g.closePath();g.fill();
+    g.fillStyle=darkgold(elY,haY);
+    g.beginPath();   /* forearm */
+    g.moveTo(ex-W2*0.030,elY);g.lineTo(ex+W2*0.030,elY);
+    g.lineTo(hx+W2*0.024,haY);g.lineTo(hx-W2*0.024,haY);g.closePath();g.fill();
+    /* shoulder pauldron */
+    g.fillStyle=gold(shY,elY);
+    g.beginPath();g.ellipse(sx,shY+H2*0.016,W2*0.055,H2*0.030,0,0,7);g.fill();
+    g.fillStyle='rgba(255,244,210,0.30)';
+    g.beginPath();g.ellipse(sx-sgn*W2*0.012,shY+H2*0.008,W2*0.030,H2*0.013,0,0,7);g.fill();
+    /* glove */
+    const gv=g.createRadialGradient(hx,haY+H2*0.012,2,hx,haY+H2*0.012,W2*0.040);
+    gv.addColorStop(0,'#f4d79e');gv.addColorStop(1,'#6e4c1a');
+    g.fillStyle=gv;
+    g.beginPath();g.ellipse(hx,haY+H2*0.014,W2*0.032,H2*0.022,0,0,7);g.fill();
+  }
+  /* HELMET + VISOR (the bust's exact language, scaled to the figure) */
+  const hx0=cx, hy0=H2*0.180, hr=W2*0.118;
+  /* neck ring */
+  g.fillStyle='#6e4c1a';g.fillRect(cx-W2*0.045,hy0+hr*0.8,W2*0.09,H2*0.030);
+  const helm=g.createRadialGradient(hx0-hr*0.4,hy0-hr*0.5,2,hx0,hy0,hr*1.25);
+  helm.addColorStop(0,'#fff2cf');helm.addColorStop(0.5,'#dca84e');helm.addColorStop(1,'#7c541e');
+  g.fillStyle=helm;g.beginPath();g.arc(hx0,hy0,hr,0,7);g.fill();
+  const vis=g.createRadialGradient(hx0-hr*0.3,hy0-hr*0.25,2,hx0,hy0,hr*0.86);
+  vis.addColorStop(0,'#cfe0ff');vis.addColorStop(0.5,'#4a5cb8');vis.addColorStop(1,'#161038');
+  g.fillStyle=vis;g.beginPath();g.arc(hx0,hy0+hr*0.06,hr*0.74,0,7);g.fill();
+  g.fillStyle='rgba(255,255,255,0.5)';
+  g.beginPath();g.ellipse(hx0-hr*0.30,hy0-hr*0.18,hr*0.22,hr*0.30,-0.5,0,7);g.fill();
+  for(let i=0;i<5;i++){ g.fillStyle='rgba(235,244,255,'+(0.4+r()*0.4).toFixed(2)+')';
+    g.fillRect(hx0-hr*0.5+r()*hr, hy0-hr*0.3+r()*hr*0.8, 1.1, 1.1); }
+  /* rim light: one warm stroke down the lit side, one cool kiss opposite */
+  g.save();g.globalCompositeOperation='lighter';
+  g.strokeStyle='rgba(255,220,150,0.55)';g.lineWidth=2.2;
+  g.beginPath();g.arc(hx0,hy0,hr,Math.PI*1.05,Math.PI*1.75);g.stroke();
+  g.strokeStyle='rgba(255,214,140,0.30)';g.lineWidth=2.6;
+  g.beginPath();
+  g.moveTo(cx-W2*0.150,shY+H2*0.020);
+  g.quadraticCurveTo(cx-W2*0.170,H2*0.42,cx-W2*0.125,waY);
+  g.moveTo(cx-W2*0.104,hipY+H2*0.01);g.lineTo(cx-W2*0.100,ankY);
+  g.stroke();
+  g.strokeStyle='rgba(140,170,255,0.20)';g.lineWidth=2;
+  g.beginPath();
+  g.moveTo(cx+W2*0.150,shY+H2*0.020);
+  g.quadraticCurveTo(cx+W2*0.170,H2*0.42,cx+W2*0.125,waY);
+  g.stroke();
+  g.restore();
+  /* painterly wear: faint tonal strokes over the metal, never flat */
+  for(let i=0;i<40;i++){
+    const wx=cx+(r()-0.5)*W2*0.34, wy=shY+r()*(ankY-shY);
+    g.fillStyle='rgba('+(r()<0.5?'255,240,205':'30,20,8')+','+(0.03+r()*0.05).toFixed(3)+')';
+    g.fillRect(wx, wy, 2+r()*8, 1.1);
+  }
+  /* floor fade */
+  const fg=g.createLinearGradient(0,H2*0.86,0,H2);
+  fg.addColorStop(0,'rgba(4,5,11,0)');fg.addColorStop(1,'rgba(4,5,11,0.6)');
+  g.fillStyle=fg;g.fillRect(0,H2*0.86,W2,H2*0.14);
+  _dollURL=cv.toDataURL();
+  return _dollURL;
+}
+/* where each socket pins to the figure (fractions of the doll canvas).
+   The Module docks beside the figure on the pad — its anchor is the
+   Shipyard thumbnail, not the body. */
+const DOLL_ANCHORS={
+  helmet:  [0.500,0.148],
+  ears:    [0.665,0.190],
+  necklace:[0.500,0.272],
+  suit:    [0.500,0.395],
+  gloves:  [0.258,0.560],
+  tool:    [0.742,0.560],
+  legs:    [0.500,0.665],
+  boots:   [0.500,0.868],
+  module:  [0.858,0.820],
+};
 const PLAYER_SEED=0x50A1E5;   /* a stable seed so duels against you are deterministic */
 function playerBattleStats(){
   const p=pstats, total=p.vit+p.fer+p.res+p.agi+p.ins;
@@ -11343,9 +11537,9 @@ function runDuel(mine, theirs){
   const winner = (hpA<=0&&hpB<=0)?null : hpA<=0?'B' : hpB<=0?'A' : (hpA/maxA>=hpB/maxB?'A':'B');
   return {A, B, log, winner, hpA, hpB, maxA, maxB};
 }
-return Object.freeze({abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf});
+return Object.freeze({abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, paperdollAvatar, DOLL_ANCHORS, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf});
 })();
-const {abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf}=CombatCore;
+const {abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, paperdollAvatar, DOLL_ANCHORS, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf}=CombatCore;
 /* @end CombatCore */
 /* ----------------------------------------------------------------
    @section duel-ui [app] — duel UI — code loader, side cards & fight flow (CFB- codes)
@@ -12227,13 +12421,13 @@ const GUIDE=[
  {id:'harvest', t:'Harvesting', k:'harvest hourly cooldown settled world replenish stardust', body:
   '<p>Every settled world can be harvested for Stardust once per hour (rarer worlds yield more). The button lives on the world’s survey card — “Settled — replenishing” means come back later. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
  {id:'mining', t:'Mining & the Cargo hold', k:'mine mining elements minerals deposits cargo hold dead lifeless world vein iron gold prismatium samples field landing inventory icons', body:
-  '<p>Dead worlds carry the elements. Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and rarer worlds hide richer veins, up to exotics like Voidglass and Prismatium.</p><ul><li><b>Landing pays.</b> Your first footfall on any world (home aside) collects <b>field samples</b> — a pinch of up to two of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration stocks the hold all by itself.</li><li>Prospecting takes boots on the ground: press a lifeless world&#8217;s <b>Land</b> button, or dive in and confirm the descent — planetfall is a <b>ground survey</b>, and the Mine Deposits button opens with it. (Gas giants, hothouses and molten worlds will fight the landing — see <span data-gt="landing">Landing</span>.) (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li><b>Mining is a pull, not a timer.</b> Every press of ⛏ Mine takes a varying haul from the world&#8217;s veins — sometimes a <b>rich strike</b> hits a rare pocket. <b>Reserves are finite:</b> the card counts the pulls left, and a world mined to nothing stays mined out forever (there are always more worlds). Crafted mining rigs multiply every haul, and the Auto-Extractor keeps pulling while you&#8217;re away — collect on your next visit.</li><li>Everything lands in your <b>🧰 Cargo hold</b> (right rail — it appears with your first cargo). Its <b>Inventory</b> tab is a grid of item tiles — ingots for metals, shards for ices, flasks for gases, cut gems for the exotics — and the <b>Research Bench</b> tab spends them, with the same icons in every recipe — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
+  '<p>Dead worlds carry the elements. Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and rarer worlds hide richer veins, up to exotics like Voidglass and Prismatium.</p><ul><li><b>Landing pays.</b> Your first footfall on any world (home aside) collects <b>field samples</b> — a pinch of up to two of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration stocks the hold all by itself.</li><li>Prospecting takes boots on the ground: press a lifeless world&#8217;s <b>Land</b> button, or dive in and confirm the descent — planetfall is a <b>ground survey</b>, and the Mine Deposits button opens with it. (Gas giants, hothouses and molten worlds will fight the landing — see <span data-gt="landing">Landing</span>.) (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li><b>Mining is a pull, not a timer.</b> Every press of ⛏ Mine takes a varying haul from the world&#8217;s veins — sometimes a <b>rich strike</b> hits a rare pocket. <b>Reserves are finite:</b> the card counts the pulls left, and a world mined to nothing stays mined out forever (there are always more worlds). Crafted mining rigs multiply every haul, and the Auto-Extractor keeps pulling while you&#8217;re away — collect on your next visit.</li><li>Everything lands in your <b>🧰 Cargo hold</b> — it lives on your <b>character screen</b> now, beneath the paperdoll (tap your nameplate, or the 🧰 shortcut that appears with your first cargo). Its <b>Inventory</b> tab is a grid of item tiles — ingots for metals, shards for ices, flasks for gases, cut gems for the exotics — and the <b>Research Bench</b> tab spends them, with the same icons in every recipe — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
  {id:'research', t:'Research & ships', k:'research tech technology bench drive ship hull scanner lab fusion antimatter warp travel distance', body:
   '<p>The engineer’s track, parallel to the Prime Codex: the Prime Codex is your legend, the Research Bench is your capability. Research costs mined elements + ☄ Stardust:</p><ul><li><b>🛰 Deep Scanners</b> — survey cards reveal mineral veins from orbit.</li><li><b>🛡 Reinforced Hull</b> — hostile bioscans wound you 25% lighter.</li><li><b>🧪 Xenobotany Lab</b> — flora meals nourish one extra stat point.</li><li><b>The drive ladder</b> — 🚀 Fusion → ⚛ Antimatter → 🌀 Warp Fold. Hyperlane travel scales with real distance; each drive cuts it, and Warp Fold makes every jump arrive in a breath. Distance is never a wall — only a wait, and only ever a short one.</li></ul>'},
  {id:'crafting', t:'The Fabricator & gear', k:'craft crafting fabricator recipe parts components ship systems gear equipment suit tool module instrument charm slot equip mining rig auto extractor anchor', body:
-  '<p>The <b>🧰 Fabricator</b> (Cargo hold, middle tab) turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">The Ascent</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character sheet (tap your nameplate) grew nine sockets — Helmet, Earpiece, Necklace, Suit, Gloves, Leggings, Boots, Tool and ship Module. Mining rigs and gloves multiply hauls; suits, visors and leggings blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); boots, greaves and the module ladder steady landings up to the Gravitic Anchor, which never waves off; earpieces and necklaces sharpen first contact, rich strikes, meals and travel.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
+  '<p>The <b>🧰 Fabricator</b> (character screen → Cargo, middle tab) turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">The Ascent</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character screen (tap your nameplate) shows your explorer head to boots, with nine sockets pinned to the body — Helmet at the head, Earpiece at the ear, Necklace below the chin, Suit on the chest, Gloves and Tool at the hands, Leggings, Boots, and the ship Module docked beside the figure. Mining rigs and gloves multiply hauls; suits, visors and leggings blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); boots, greaves and the module ladder steady landings up to the Gravitic Anchor, which never waves off; earpieces and necklaces sharpen first contact, rich strikes, meals and travel.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
  {id:'ascent', t:'The Ascent', k:'ascent chapter chapters sol lock jump drive ring ladder progression mainline quest unlock neighborhood galaxy intergalactic', body:
-  '<p><b>⬆ The Ascent</b> is the mainline: three chapters, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p><b>The spectrum expands with the rings.</b> Rarity is a ladder of distance: the Neighborhood catalogues up to <b>Legendary</b>, the home galaxy up to <b>Mythic</b>, and each region beyond opens one more band — Celestial, Primordial, Transcendent — until the Deep Field frees the <b>summit grades</b>. The strangest finds live farthest out; guardians, Paragons and your own bred bloodlines are beyond the law. Veteran expeditions from before v1.4 already hold the sky — the Ascent never re-locks anything you had, and no creature you already catalogued ever downgrades.</p>'},
+  '<p><b>⬆ The Ascent</b> is the mainline: three chapters, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p><b>The spectrum expands with the rings.</b> Rarity is a ladder of distance: the Neighborhood catalogues up to <b>Legendary</b>, the home galaxy up to <b>Mythic</b>, and each region beyond opens one more band — Celestial, Primordial, Transcendent — until the Deep Field frees the <b>summit grades</b>. The strangest finds live farthest out; guardians, Paragons and your own bred bloodlines are beyond the law.</p>'},
 ]},
 {icon:'✦', cat:'The Prime Codex', blurb:'Signatures, the frontier, endings', topics:[
  {id:'signatures', t:'The nine Signatures', k:'signature prime codex stone ocean flame sky life mind prism star void win', body:
@@ -13370,10 +13564,10 @@ function renderCargo(){
   cargoEl.innerHTML=html;
 }
 if(cargoBtn){
+  /* v1.5: the 🧰 button is a shortcut into the character screen, landed
+     on its inventory (the cargo panel folded into the sheet) */
   cargoBtn.addEventListener('click', ()=>{
-    cargoOpen=!cargoOpen;
-    cargoEl.style.display=cargoOpen?'block':'none';
-    if(cargoOpen){ closePanels('cargo'); renderCargo(); }
+    if(sheetOpen) closeSheet(); else openSheet('inv');
   });
 }
 if(cargoEl){
@@ -13563,6 +13757,7 @@ function craftItem(id){
   }
   showCargoBtn(); if(cargoOpen) renderCargo();
   if(statsOpen) renderStats();
+  try{ if(sheetOpen) renderDoll(); }catch(_){ }   /* fresh gear may auto-equip into a socket */
   checkAch(); renderRank(); queueSave();
 }
 function equipItem(slot, id, quiet){
@@ -13574,7 +13769,7 @@ function equipItem(slot, id, quiet){
     const it=id?ITEM_BY.get(id):null;
     toast('🎽 '+(it?('Equipped — '+it.name):'Unequipped'), it?it.d:'The socket stands empty.');
   }
-  if(statsOpen) renderStats();
+  try{ if(sheetOpen) renderDoll(); }catch(_){ }
   checkAch(); queueSave();   /* Outfitted lands the moment gear is worn */
 }
 /* painterly part icons — the _hdElemIcon language extended to crafted
@@ -14201,6 +14396,7 @@ function commitExplorerName(){
   explorerName=nm||'Explorer';
   nameBox.style.display='none';
   renderRank(); queueSave();
+  try{ if(sheetOpen) renderDoll(); }catch(_){ }   /* the paperdoll header wears the new name */
   flushToasts();   /* anything held back while the title screen was up */
   toast('Welcome, '+explorerName, 'The frontier is yours. Your name rides on everything you discover and share.');
   if(_nameInitial){
@@ -15091,10 +15287,11 @@ eventsEl.addEventListener('click', e=>{
 const PANELS=[
   {id:'log',      el:()=>logEl,    btn:'#logbtn',    x:1, open:()=>logOpen,    close:()=>{ logOpen=false;    logEl.style.display='none'; }},
   {id:'codex',    el:()=>codexEl,  btn:'#codexbtn',  x:1, open:()=>codexOpen,  close:()=>{ codexOpen=false;  codexEl.style.display='none'; }},
-  {id:'cargo',    el:()=>cargoEl,  btn:'#cargobtn',  x:1, open:()=>cargoOpen,  close:()=>{ cargoOpen=false;  cargoEl.style.display='none'; }},
   {id:'charters', el:()=>chPanel,  btn:'#chbtn',     x:1, open:()=>chOpen,     close:()=>{ chOpen=false;     chPanel.style.display='none'; }},
   {id:'events',   el:()=>eventsEl, btn:'#eventsbtn', x:1, open:()=>eventsOpen, close:()=>{ eventsOpen=false; eventsEl.style.display='none'; clearInterval(_evTimer); }},
-  {id:'stats',    el:()=>statsEl,  btn:'#rank',      x:1, open:()=>statsOpen,  close:()=>{ statsOpen=false;  statsEl.style.display='none'; _eqOpen=null; }},
+  /* v1.5: stats + cargo merged into the one character screen */
+  {id:'sheet',    el:()=>document.getElementById('sheetcard'), btn:'#rank,#cargobtn', x:1,
+    open:()=>sheetOpen, close:()=>closeSheet()},
   {id:'tray',     el:()=>trayEl,   btn:'#bellwrap',  x:0, open:()=>trayOpen,   close:()=>{ trayOpen=false;   trayEl.style.display='none'; }},
   {id:'set',      el:()=>setPanel, btn:'#setbtn',    x:0, open:()=>setPanel.style.display==='block', close:()=>{ setPanel.style.display='none'; }},
   {id:'guide',    el:()=>document.getElementById('guidebox'), btn:'#helpbtn', x:0,
@@ -15163,62 +15360,15 @@ function renderStats(){
   for(const e of codex.values()){
     if(e.grade){ tierHave[e.grade.tier]++; if(!rarest || e.grade.tier>rarest.grade.tier) rarest=e; }
   }
-  /* THE PLAYER FRAME (v1.4 HD pass, Nick's ask): the painterly explorer
-     portrait — the same gold-visored avatar who fights your duels —
-     finally fronts the character sheet, in a framed header */
-  let html='<div class="pframe">'+
-    '<img class="pav" src="'+playerAvatar()+'" alt="Your explorer">'+
-    '<div class="pmeta">'+
-      '<div class="pname">✪ '+(explorerName||'Explorer')+
-        '<span class="cfrom" id="renameme" style="float:right;cursor:pointer;font-size:11px;color:#9fc2ff;text-transform:none;letter-spacing:0;padding:2px 6px">✎ rename</span></div>'+
-      '<div class="prank">'+r.name+'</div>'+
-      '<div class="srow" style="margin:3px 0 4px"><span class="k">Expedition score</span><span>'+r.score+(r.next?' / '+r.next[0]+' → '+r.next[1]:' · max rank')+'</span></div>'+
-      '<div class="bar"><i style="width:'+pct.toFixed(0)+'%"></i></div>'+
-    '</div></div>';
+  /* v1.5: the LEFT column of the character screen — rank/score, battle
+     stats, statistics, nameplate, ladder, achievements. The portrait,
+     sockets and Shipyard live on the paperdoll (renderDoll); the cargo
+     hold rides beneath (renderCargo). */
+  let html='<h4>Rank & score</h4>'+
+    '<div class="srow"><span class="k">Rank</span><span style="color:#f0cf8a">'+r.name+'</span></div>'+
+    '<div class="srow"><span class="k">Expedition score</span><span>'+r.score+(r.next?' / '+r.next[0]+' → '+r.next[1]:' · max rank')+'</span></div>'+
+    '<div class="bar" style="margin-bottom:9px"><i style="width:'+pct.toFixed(0)+'%"></i></div>';
   html+=statBlockHTML();
-  /* ---- EQUIPMENT (v1.4): the ARPG half of the Ascent — nine sockets on
-     the explorer. Tap a socket to choose among owned gear for it. ---- */
-  html+='<h4>Equipment</h4><div class="eqrow">'+EQ_SLOTS.map(s=>{
-    const it=equip[s.id]?ITEM_BY.get(equip[s.id]):null;
-    return '<div class="eqslot'+(it?' filled t'+it.tier:'')+(_eqOpen===s.id?' sel':'')+'" data-eqslot="'+s.id+'" role="button" tabindex="0" data-tip="'+s.name+(it?' — '+it.name:' — empty socket')+'">'+
-      (it?'<img src="'+partIcon(it.id)+'" alt="'+it.name+'">':'<span class="eqph">'+s.ic+'</span>')+
-      '<span class="eqname">'+(it?it.name:s.name)+'</span></div>';
-  }).join('')+'</div>';
-  if(_eqOpen){
-    const cands=ITEMS.filter(it=>it.slot===_eqOpen && itemCount(it.id)>0);
-    const cur=equip[_eqOpen];
-    html+='<div class="eqpick">'+
-      (cands.length?cands.map(it=>{
-        const effTxt=_effWords(it);
-        return '<div class="eqcand'+(cur===it.id?' on':'')+'" data-eqpick="'+it.id+'" role="button" tabindex="0">'+
-          '<img src="'+partIcon(it.id)+'" alt=""><div class="m"><div class="nm">'+it.name+(cur===it.id?' ✓':'')+'</div>'+
-          '<div class="ds">'+effTxt+'</div></div></div>';
-      }).join(''):'<div class="empty" style="padding:8px">Nothing crafted for this socket yet — the 🧰 Fabricator builds gear from mined parts.</div>')+
-      (cur?'<div class="eqcand" data-eqpick="" role="button" tabindex="0"><span class="eqph">∅</span><div class="m"><div class="nm">Unequip</div><div class="ds">leave the socket empty</div></div></div>':'')+
-      '</div>';
-  }
-  /* the live effect readout — what all this metal actually does */
-  {
-    const fx=[];
-    const y=_equipBonus('yield'); if(y>0) fx.push('⛏ +'+Math.round(y*100)+'% mining yield');
-    const stk=_equipBonus('strike'); if(stk>0) fx.push('💎 +'+Math.round(stk*100)+'% rich-strike odds');
-    if(_equipBonus('auto')>0) fx.push('🤖 auto-extractor online');
-    const ld=_equipBonus('land'); if(ld>0) fx.push('🛬 +'+ld+'% landing');
-    if(_equipBonus('land100')>0) fx.push('⚓ landings never wave off');
-    const sct=clamp(_equipBonus('scut'),0,0.7); if(sct>0) fx.push('🛡 −'+Math.round(sct*100)+'% field wounds');
-    const ct=_equipBonus('contact'); if(ct>0) fx.push('🤝 +'+ct+'% first contact');
-    const hl=_equipBonus('heal'); if(hl>0) fx.push('💚 +'+Math.round(hl*100)+'% meal healing');
-    const sp=_equipBonus('speed'); if(sp>0) fx.push('🚀 quicker hyperlanes');
-    if(fx.length) html+='<div class="eqfx">'+fx.join(' · ')+'</div>';
-  }
-  /* ---- THE SHIPYARD (v1.4): your ship, wearing every system you build ---- */
-  {
-    const sysNames=ITEMS.filter(it=>it.cat==='sys' && itemCount(it.id)>0).map(it=>it.name);
-    html+='<h4>Shipyard</h4><img class="shipimg" src="'+shipImage()+'" alt="Your ship">'+
-      '<div class="shipcap">'+(sysNames.length
-        ? sysNames.join(' · ')+' online'
-        : 'A bare hull on chemical thrusters — the 🧰 Fabricator builds her out.')+'</div>';
-  }
   const _statBody=
     '<div class="srow"><span class="k">Living worlds surveyed</span><span>'+stats.surveys+'</span></div>'+
     '<div class="srow"><span class="k">Galaxies explored</span><span>'+galSeen.size+'</span></div>'+
@@ -15281,14 +15431,99 @@ function renderStats(){
   }
   statsEl.innerHTML=html;
 }
+/* ---- THE PAPERDOLL REGION (v1.5): the full-body explorer with the nine
+   sockets anchored to the body — Helmet at the head, Earpiece at the ear,
+   Necklace below the chin, Suit on the chest, Gloves and Tool at the
+   hands, Leggings on the legs, Boots at the feet, and the ship Module
+   docked beside the figure on the Shipyard thumbnail. ---- */
+function renderDoll(){
+  const dollEl=document.getElementById('doll'); if(!dollEl) return;
+  const r=rankInfo();
+  let html='<div class="dname">✪ '+(explorerName||'Explorer')+
+    ' <span class="cfrom" id="renameme" role="button" tabindex="0" style="cursor:pointer;font-size:11px;color:#9fc2ff;font-weight:400">✎ rename</span>'+
+    '<span class="drank">'+r.name+'</span></div>';
+  html+='<div class="dollwrap"><img class="dollimg" src="'+paperdollAvatar()+'" alt="Your explorer">';
+  /* the ship docks beside the figure; the Module socket pins to her hull */
+  html+='<img class="dship" src="'+shipImage()+'" alt="Your ship" style="left:'+(DOLL_ANCHORS.module[0]*100)+'%;top:'+((DOLL_ANCHORS.module[1]-0.075)*100)+'%">';
+  for(const s of EQ_SLOTS){
+    const a=DOLL_ANCHORS[s.id]; if(!a) continue;
+    const it=equip[s.id]?ITEM_BY.get(equip[s.id]):null;
+    html+='<div class="dsock'+(it?' filled t'+it.tier:'')+(_eqOpen===s.id?' sel':'')+'" data-eqslot="'+s.id+'" role="button" tabindex="0"'+
+      ' style="left:'+(a[0]*100)+'%;top:'+(a[1]*100)+'%" data-tip="'+s.name+(it?' — '+it.name:' — empty socket')+'">'+
+      (it?'<img src="'+partIcon(it.id)+'" alt="'+it.name+'">':'<span class="eqph">'+s.ic+'</span>')+'</div>';
+  }
+  html+='</div>';
+  {
+    const sysNames=ITEMS.filter(it=>it.cat==='sys' && itemCount(it.id)>0).map(it=>it.name);
+    html+='<div class="shipcap">'+(sysNames.length
+      ? sysNames.join(' · ')+' online'
+      : 'A bare hull on chemical thrusters — the Fabricator below builds her out.')+'</div>';
+  }
+  if(_eqOpen){
+    const cands=ITEMS.filter(it=>it.slot===_eqOpen && itemCount(it.id)>0);
+    const cur=equip[_eqOpen];
+    const sl=EQ_SLOTS.find(s=>s.id===_eqOpen)||{};
+    html+='<div class="eqpick"><div class="chead" style="padding:2px 4px 4px">'+(sl.ic||'')+' '+(sl.name||'')+'</div>'+
+      (cands.length?cands.map(it=>{
+        const effTxt=_effWords(it);
+        return '<div class="eqcand'+(cur===it.id?' on':'')+'" data-eqpick="'+it.id+'" role="button" tabindex="0">'+
+          '<img src="'+partIcon(it.id)+'" alt=""><div class="m"><div class="nm">'+it.name+(cur===it.id?' ✓':'')+'</div>'+
+          '<div class="ds">'+effTxt+'</div></div></div>';
+      }).join(''):'<div class="empty" style="padding:8px">Nothing crafted for this socket yet — the Fabricator below builds gear from mined parts.</div>')+
+      (cur?'<div class="eqcand" data-eqpick="" role="button" tabindex="0"><span class="eqph">∅</span><div class="m"><div class="nm">Unequip</div><div class="ds">leave the socket empty</div></div></div>':'')+
+      '</div>';
+  }
+  /* the live effect readout — what all this metal actually does */
+  {
+    const fx=[];
+    const y=_equipBonus('yield'); if(y>0) fx.push('⛏ +'+Math.round(y*100)+'% mining yield');
+    const stk=_equipBonus('strike'); if(stk>0) fx.push('💎 +'+Math.round(stk*100)+'% rich-strike odds');
+    if(_equipBonus('auto')>0) fx.push('🤖 auto-extractor online');
+    const ld=_equipBonus('land'); if(ld>0) fx.push('🛬 +'+ld+'% landing');
+    if(_equipBonus('land100')>0) fx.push('⚓ landings never wave off');
+    const sct=clamp(_equipBonus('scut'),0,0.7); if(sct>0) fx.push('🛡 −'+Math.round(sct*100)+'% field wounds');
+    const ct=_equipBonus('contact'); if(ct>0) fx.push('🤝 +'+ct+'% first contact');
+    const hl=_equipBonus('heal'); if(hl>0) fx.push('💚 +'+Math.round(hl*100)+'% meal healing');
+    const sp=_equipBonus('speed'); if(sp>0) fx.push('🚀 quicker hyperlanes');
+    if(fx.length) html+='<div class="eqfx">'+fx.join(' · ')+'</div>';
+  }
+  dollEl.innerHTML=html;
+}
+/* ---- the character screen itself: one centered surface, three regions ---- */
+let sheetOpen=false;
+function renderSheet(){ renderStats(); renderDoll(); renderCargo(); }
+function openSheet(view){
+  sheetOpen=true; statsOpen=true; cargoOpen=true;   /* the old flags mirror the sheet — every caller keeps working */
+  closePanels('sheet');
+  if(view==='inv') cargoView='inv';
+  const sh=document.getElementById('sheet'); if(sh) sh.style.display='flex';
+  statsEl.style.display='block'; if(cargoEl) cargoEl.style.display='block';
+  renderSheet();
+  /* the corner ✕: #sheetcard's own children never mutate (renders happen
+     inside the regions), so the panel manager's observer never re-seats —
+     seat it here instead. Hidden during training, per the standing law. */
+  try{ if(tutDone){ const card=document.getElementById('sheetcard');
+    if(card && !card.querySelector('[data-pnx]')) card.appendChild(_mkPnx('sheet')); } }catch(_){ }
+  try{
+    const card=document.getElementById('sheetcard');
+    if(card){ card.scrollTop=0;
+      if(view==='inv'){ const cg=document.getElementById('sheetcargo'); if(cg && cg.offsetTop) card.scrollTop=cg.offsetTop-10; } }
+  }catch(_){ }
+}
+function closeSheet(){
+  sheetOpen=false; statsOpen=false; cargoOpen=false; _eqOpen=null;
+  const sh=document.getElementById('sheet'); if(sh) sh.style.display='none';
+  statsEl.style.display='none'; if(cargoEl) cargoEl.style.display='none';
+}
+document.getElementById('doll').addEventListener('click', e=>{
+  if(e.target && e.target.id==='renameme'){ askExplorerName(false); renderDoll(); return; }
+  const eqp=e.target.closest('[data-eqpick]');
+  if(eqp){ equipItem(_eqOpen, eqp.dataset.eqpick||null); _eqOpen=null; renderDoll(); return; }
+  const eqs=e.target.closest('[data-eqslot]');
+  if(eqs){ _eqOpen=(_eqOpen===eqs.dataset.eqslot)?null:eqs.dataset.eqslot; renderDoll(); return; }
+});
 const _agOpen=new Set();
 statsEl.addEventListener('click', e=>{
-  if(e.target && e.target.id==='renameme'){ askExplorerName(false); renderStats(); return; }
-  /* v1.4 equipment sockets: tap a slot to open its picker, tap gear to equip */
-  const eqp=e.target.closest('[data-eqpick]');
-  if(eqp){ equipItem(_eqOpen, eqp.dataset.eqpick||null); _eqOpen=null; renderStats(); return; }
-  const eqs=e.target.closest('[data-eqslot]');
-  if(eqs){ _eqOpen=(_eqOpen===eqs.dataset.eqslot)?null:eqs.dataset.eqslot; renderStats(); return; }
   const pl=e.target.closest('.plate');
   if(pl){ if(pl.dataset.plate!==undefined){ nameHue=+pl.dataset.plate; applyNameplate(); renderStats(); queueSave(); } return; }
   const sr=e.target.closest('.statrow');
@@ -15300,15 +15535,10 @@ statsEl.addEventListener('click', e=>{
   grp.classList.toggle('open');
 });
 rankEl.addEventListener('click', ()=>{
-  statsOpen=!statsOpen;
-  statsEl.style.display=statsOpen?'block':'none';
-  if(statsOpen){
-    closePanels('stats');
-    renderStats();
-  }
-  gameEvent('stats-open', {open:statsOpen});
+  if(sheetOpen) closeSheet(); else openSheet('stats');
+  gameEvent('stats-open', {open:sheetOpen});
 });
-/* stats outside-close now lives in the panel manager (v1.3.5) */
+/* sheet outside-close lives in the panel manager (v1.3.5 law) */
 
 /* ---- view persistence: a browser tab-discard or reload returns you
         exactly where you were instead of dumping you at the universe view ---- */

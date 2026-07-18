@@ -860,16 +860,32 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('v1.4 gear: the Mining Rig crafts and self-equips into the empty Tool socket',
       skH.itemCount('rig1') === 1 && skH.equip.tool === 'rig1');
     check('v1.4 gear: the equipped rig multiplies mining yield', skH._equipBonus('yield') === 0.5);
-    // the character sheet wears the sockets
+    // v1.5 THE PAPERDOLL: one centered character screen — sockets ON the body
+    // (the sheet is still open from the 🧰 shortcut above — the buttons
+    // toggle, so close it first, then open fresh from the nameplate)
+    click2(sk.doc.getElementById('cargobtn'), sk.w);
+    check('v1.5 sheet: the 🧰 button toggles the screen closed again',
+      !visible(sk.doc.getElementById('sheet')));
     click2(sk.doc.getElementById('rank'), sk.w);
-    const stEl4 = sk.doc.getElementById('stats');
-    check('v1.4 equipment: the character sheet shows all nine sockets', await until(() =>
-      stEl4.querySelectorAll('[data-eqslot]').length === 9, 4000, 'eq sockets'));
-    check('v1.4 HD pass: the painterly player frame fronts the character sheet',
-      !!stEl4.querySelector('.pframe .pav') && stEl4.querySelector('.pframe .pav').src.startsWith('data:'));
-    check('v1.4 shipyard: the ship renders on the character sheet (a spaceship, hull caption)',
-      !!stEl4.querySelector('.shipimg') && /hull|online/i.test(stEl4.querySelector('.shipcap').textContent));
-    check('v1.4 equipment: the effect readout speaks the boost', /mining yield/.test(stEl4.textContent));
+    const shEl = sk.doc.getElementById('sheet');
+    const dollEl4 = sk.doc.getElementById('doll');
+    check('v1.5 sheet: the character screen opens centered with all three regions',
+      visible(shEl) && sk.doc.getElementById('stats').style.display === 'block'
+      && sk.doc.getElementById('cargo').style.display === 'block');
+    check('v1.5 paperdoll: all nine sockets pin to the figure', await until(() =>
+      dollEl4.querySelectorAll('[data-eqslot]').length === 9, 4000, 'eq sockets'));
+    check('v1.5 paperdoll: the full-body painterly explorer fronts the screen',
+      !!dollEl4.querySelector('.dollimg') && dollEl4.querySelector('.dollimg').src.startsWith('data:'));
+    check('v1.5 paperdoll: sockets carry body anchors (inline positions)',
+      /left:.*top:/.test(dollEl4.querySelector('[data-eqslot]').getAttribute('style') || ''));
+    check('v1.5 shipyard: the ship docks beside the figure (Module anchor)',
+      !!dollEl4.querySelector('.dship') && /hull|online/i.test(dollEl4.querySelector('.shipcap').textContent));
+    check('v1.4 equipment: the effect readout speaks the boost', /mining yield/.test(dollEl4.textContent));
+    // socket picker: tap the Tool socket, the candidates list opens on the doll
+    click2(dollEl4.querySelector('[data-eqslot="tool"]'), sk.w);
+    check('v1.5 paperdoll: tapping a socket opens its picker', await until(() =>
+      !!dollEl4.querySelector('.eqpick [data-eqpick]'), 3000, 'eq picker'));
+    click2(dollEl4.querySelector('[data-eqslot="tool"]'), sk.w);   // close the picker again
     // ship systems ARE the ring keys: hand over the drives, watch the rings open
     skH.items.set('jumpdrive', 1);
     check('v1.4 rings: the Jump Drive opens the Neighborhood', skH.ascStage() === 1
