@@ -622,6 +622,15 @@
 ## its own card). RELEASES[0]=1.3.6 staged hidden. Suites: fingerprint
 ## 50/50, smoke 218/218, systems 19/19, balance PASS.
 
+## ★★ v1.3.7 "ONE LESSON AT A TIME" IS LIVE ★★ (2026-07-18, build
+## 840e651). Training answers ONLY the lesson: survey-card actions gate
+## to per-step acts:[] whitelists (Nick landed on Earth mid-atlas-
+## lesson — the whole panel was an allowed surface); specimen-card
+## verbs gate to per-step rev:'' (card-tour keeps the reversible scout
+## toggle); the vista backdrop is near-opaque dark space (the ground
+## close-up leaked through the blur). Suites at ship: fingerprint
+## 50/50, smoke 219/219, systems 19/19, balance PASS.
+
 ## ▶▶ NEXT SESSION AGENDA (v1.4 "THE ASCENT" KICKOFF) — updated at the
 ## 2026-07-18 session close. SHIPPED THIS SESSION: v1.3.5 "Soft
 ## Landings" (build bc70152) + v1.3.6 "Quiet Skies" (build c1bac38).
