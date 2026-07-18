@@ -524,6 +524,28 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       try { cvS = skH.hdVista(o); } catch (e) { err = e; }
       check('HD vista scene renders: ' + nm, !err && !!cvS && cvS.width === 960 && cvS.height === 430, err && String(err));
     }
+    // v1.3.5 Batch 3: the CLOUD DECK — gas giants stop being the one type
+    // with no vista. Scene renders for every dressing the card can supply.
+    for (const [nm, o] of [
+      ['gas deck, amber day + ring + spot', { seed: 9101, hue: 30, spot: true, spotHue: 55, ring: true, moons: 3, tod: 'day', aurora: true, air: 0 }],
+      ['gas deck, cyan night + drifters', { seed: 9102, hue: 200, spot: false, ring: false, moons: 6, tod: 'night', aurora: true, air: 2 }],
+      ['gas deck, violet twilight', { seed: 9103, hue: 310, spot: true, spotHue: 285, ring: false, moons: 1, tod: 'twilight', aurora: false, air: 0 }],
+    ]) {
+      let cvS = null, err = null;
+      try { cvS = skH._hdDeckScene(o); } catch (e) { err = e; }
+      check('cloud deck renders: ' + nm, !err && !!cvS && cvS.width === 960 && cvS.height === 430, err && String(err));
+    }
+    // the wiring: showVistaBox must OPEN for a gas world now (was: early return)
+    {
+      const gasP = { type: 'gas', seed: 777001, hue: 210, spot: true, spotHue: 180, ring: true, moons: 5 };
+      skH.showVistaBox(gasP, 'day', null, 'none', null, true, false, false, 'none', { air: 1 });
+      const vb = sk.doc.getElementById('vistabox');
+      check('gas giant planetfall opens the Cloud deck vista', vb.style.display === 'flex'
+        && vb.textContent.includes('Cloud deck'), vb.textContent.slice(0, 60));
+      click2(vb, sk.w);
+      await until(() => vb.style.display === 'none', 4000, 'deck dismiss');
+      check('cloud deck dismisses like every vista', vb.style.display === 'none');
+    }
     check('discovery: standing on it, mining is open on the spot', await until(() =>
       !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('You are here'), 4000, 'surface mine'));
     check('discovery: ground survey reveals the mineral veins without Deep Scanners',
