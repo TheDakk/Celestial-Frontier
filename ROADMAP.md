@@ -662,9 +662,128 @@
 ## documented single-key re-pins. Smoke grew 173 -> 227.
 ## THE v1.3 LINE IS CLOSED. Next session opens v1.4 "THE ASCENT".
 
-## ▶▶ NEXT SESSION AGENDA (v1.4 "THE ASCENT" KICKOFF) — updated at the
-## 2026-07-18 session close. SHIPPED THIS SESSION: v1.3.5 "Soft
-## Landings" (build bc70152) + v1.3.6 "Quiet Skies" (build c1bac38).
+## ★★★ v1.4 "THE ASCENT" IS BUILT — AWAITING NICK'S PASS + DEPLOY WORD ★★★
+## (2026-07-18, second session; commits 0f39b99 + ff0abfe + review batch.
+## GAME_VERSION bumped to '1.4' [Nick commissioned the 1.4 build this
+## session]; NOT deployed — deploys only on Nick's word.)
+##
+## PART 1 — NICK'S v1.3 LIVE-PASS FIXES (folded into the 1.4 bulletin):
+##  · ? popover closes on outside tap (it lives in MODAL_SEL, so it got
+##    its own dedicated closer)
+##  · ASTEROIDS ARE ROCKS: baked 8-variant shaded lump sprites (grey
+##    belt + icy Kuiper families) replace the fillRect squares — system
+##    view AND beltThumb; proof-sheeted (tools/sheets/v14icons.png)
+##  · CARD ANCHORING: locked cards + hover glances ride WITH their
+##    planet through pans/zooms (offset anchoring via _frozenPick;
+##    _livePick matches picks by P.seed since pick objects are rebuilt
+##    per frame) — Nick's screenshot: Earth's card stranded across the
+##    screen in training
+##  · COMPENDIUM SHELVES: realms fold onto one habitat language for
+##    display (Gas Giant Life→Aerial Fauna, Amphibious/Cave/
+##    Extremophile/Sapient/Hive Fauna); card badges keep the precise
+##    realm; Warden-of-Realms untouched (display-only _SHELF_OF)
+##  · TRAINING IS A SAFE ROOM: all three rolls (feed/breed/heal)
+##    rigged on EVERY step while !tutDone. ROOT CAUSE FOUND: the 1.3.6
+##    {feed:-1} rig GUARANTEED poisoning — feedPair poisons on LOW
+##    rolls (roll<pois), so -1 always failed. Feed rig is 0.99 now.
+##  · DUEL SKIP: ⏭ Skip-to-the-outcome button; auto-play stays default
+##  · VISTA IS A WINDOWED POP-UP: .vcard frame floats over the dimmed
+##    game, ✕ on the frame (was: full-screen takeover, ✕ in the screen
+##    corner). "Landing vista" WORDING: brainstorm list delivered to
+##    Nick, NOT renamed — his pick pending.
+##
+## PART 2 — v1.4 CORE (the four systems, intertwined):
+##  · MINING REBUILT (Nick's spec): click=pull, NO timer; varying haul
+##    seeded by extraction INDEX (hashInt(seed,0xE1F,n) — same for
+##    every explorer, no reroll exploit); FINITE reserves
+##    (reserveFor: ~420-800 pulls ×(1+tier*0.35); card counts pulls
+##    left; mined-out is forever); rich strikes (5%+tier+gear) hit
+##    rare-vein pockets; AUTO-EXTRACTOR accrues 1 load/10min offline
+##    (cap 30) once built. Save field mx (absent⇒veterans full).
+##    Also fixed: resetMemoryState never cleared mined/cargo/tech.
+##  · THE FABRICATOR: Cargo panel tabs Inventory/Fabricator/Research.
+##    ~30 recipes: T1 parts → T2 components → T3 ship systems + gear.
+##    ELEMENT PICKS AUDITED AGAINST SOL'S ACTUAL SEEDED VEINS (Mercury
+##    Fe/Al/Ca/Cr · Mars Si/Cl/Ca · gas giants H/He/CH4/NH3/He3 ·
+##    Uranus ices/O — NO Cu/Ti/C/Li in Sol, hence Aluminium Wire,
+##    chromium Steel Frame, methane-cracked Carbon Weave, H/O Power
+##    Cell) so Chapter 1 is craftable without leaving home. Painterly
+##    partIcon() shape families (proof-sheeted, 4 icon fixes from
+##    review: array-leaf→radar dish, rig-arrow→drill, struts-kite→
+##    lander tripod, coil core lit).
+##  · EQUIPMENT (ARPG pillar): 5 sockets on the character sheet
+##    (Suit/Tool/Module/Instrument/Charm), tap-to-pick, live effect
+##    readout, fresh-craft auto-equips into an empty matching socket.
+##    Wired: yield/strike (mining), land + per-family hazard suits
+##    (Thermal/Pressure/Cryo +30 on their families) + Gravitic Anchor
+##    land100, struts scrape cut, scut (routeHit — bioscan AND failed
+##    contact), contact +%, heal +%, speed (driveMult+charm).
+##  · THE ASCENT: 3 chapters on the charter machinery (ascEvent via
+##    gameEvent), pinned .ascbox atop the Charters panel. NEW saves
+##    (save field asc; ABSENT⇒complete=veterans) start Sol-locked.
+##    Ring ladder = ascStage(): 0 Sol only → 1 Jump Drive: Neighborhood
+##    (GR*0.25 around SOL_POS) → 2 Long-Range Array: whole home galaxy
+##    → 3 Intergalactic Drive: REGIONS/prime-sig ladder as before.
+##    GATES (travel only, never curiosity): star entry in
+##    checkTransitions, galaxy entry via reachRadius (UCELL*0.35 at
+##    stage<3), wormhole transit, travelTo, travelToCode; charter ring
+##    drawn in-galaxy with the next build named on the label;
+##    charterBlock speaks ascHint() while the Ascent gates. Chapter 1
+##    announced at training end (new saves only).
+##  · 9 Engineering achievements; Guide chapters 'The Fabricator &
+##    gear' + 'The Ascent'; mining topic rewritten; RELEASES v1.4
+##    entry (fixes + features).
+##  SUITES AT BUILD: fingerprint 50/50 byte-identical, smoke 251/251
+##  (+24 new: helppop close, duel skip, vista window, shelf mapping,
+##  mining pulls/reserves, Sol lock matrix, craft chain, self-equip,
+##  ring stages, veteran grandfather), systems 19/19, balance PASS.
+##  probe-names grew to 129 hooked names. NEW TOOLING:
+##  tools/sheets/v14icons.js (icon + rock proof sheet; 4 in-review
+##  icon fixes).
+##
+## PRE-SHIP REVIEW (2 agents + self-review, 2026-07-18 — ALL CONFIRMED
+## FINDINGS FIXED IN-BATCH):
+##  · cosmic-event "Witnessed" credit + Beacon pilgrimage credit no
+##    longer awarded when the Ascent refuses the jump (was: cinematic +
+##    achievement + "you are being sent" with the camera parked)
+##  · CURIOSITY UNGATED (the review's philosophical catch): foreign-
+##    galaxy BROWSING + wormhole rides stay open at every stage
+##    (reachRadius back to regional; ascAllows gates only star/system
+##    dives; wormhole far mouth is a view — its stars stay drive-gated)
+##  · chapter progress BANKS across chapters (out-building the current
+##    chapter no longer discards Ch3 work; while-loop completion);
+##    c1-land gained its Sol filter
+##  · stage-0 starter charters (scan/scout/conquer — impossible in
+##    lifeless Sol) say "awaits the stars" on the board and the
+##    completion toast never points at them
+##  · Field Medkit no longer sharpens poison (dmg keys off unboosted
+##    heal); "pulls" wording aligned everywhere (counts = presses)
+##  · plain mining pulls stay out of the 60-cap bell tray (rich
+##    strikes / first mine / mined-out still log); mx save cap keeps
+##    deepest-mined worlds + load-time backfill (mined-out can never
+##    silently refill); star-gate camera clamp *0.97 BELOW the dive
+##    trigger (was: ascBlock toast every 1.8s forever); in-place reset
+##    hides the cargo button/panels (showCargoBtn can hide now);
+##    "Ship System Online" cinematic queues BEFORE the chapter-complete
+##    cinematic it causes; paragon plot-a-course respects the gate;
+##    equipItem fires checkAch (Outfitted lands on equip)
+##  STILL OPEN (Nick decisions, see audit report): Earth-harvest
+##  economy hole (settled-since-start Earth has no Harvest button —
+##  pre-existing, now visible because Earth is a stage-0 player's only
+##  settlement); auto-extractor loads deplete reserves but count as
+##  one "pull" per collection press (wording now says pulls; counting
+##  loads instead is a design call).
+##
+## DEFERRED FROM THE v1.4 DESIGN (recorded, not built): COOKING &
+## PROVISIONS (meals/flora produce — the flask slot), FRONTIER RECORDS
+## board, ARCHAEOLOGY/FOSSILS, hazardous flora (still open from 1.3.5),
+## biome-gated rare veins ("rarer worlds' veins gate rarer recipes" —
+## rare veins exist via RARE_VEIN tiers but biome doesn't gate them
+## yet), beacon/weekly-charter awareness of the Sol lock (see audit).
+##
+## ▶▶ PREVIOUS SESSION AGENDA (v1.4 KICKOFF) — kept for the record.
+## SHIPPED THAT SESSION: v1.3.5 "Soft Landings" (build bc70152) +
+## v1.3.6 "Quiet Skies" (build c1bac38).
 ##
 ## 1. NICK'S LIVE PASSES of 1.3.5+1.3.6 (screenshots are bug reports):
 ##    watch terran biome color identity (savanna gold / swamp gloom

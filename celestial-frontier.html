@@ -4430,17 +4430,13 @@ function checkTransitions(){
       st.mode='universe'; st.fade=1; st.gal=null;
       return;
     }
-    /* flying into the wormhole hurls you somewhere unimaginably distant */
+    /* flying into the wormhole hurls you somewhere unimaginably distant —
+       and stays open at every Ascent stage: the far mouth is a VIEW of
+       far skies (their stars remain drive-gated), so it is curiosity,
+       not travel. The wild shortcut keeps its wildness. */
     {
       const wh2=galaxyWormhole(st.gal.seed);
-      if(wh2 && c.z>minWH/60 && Math.hypot(wh2.x-c.x, wh2.y-c.y)*c.z<120 &&
-         typeof ascStage==='function' && ascStage()<3){
-        /* v1.4: the far mouth opens onto intergalactic space — it needs the
-           IG drive. The wormhole stays visible, surveyable, and waiting. */
-        ascBlock();
-        c.z=Math.min(c.z, minWH/62);
-      }
-      else if(wh2){
+      if(wh2){
         if(c.z>minWH/60 && Math.hypot(wh2.x-c.x, wh2.y-c.y)*c.z<120){
           /* destination seeded from the galaxy — identical for every explorer */
           const wj=mulberry32((st.gal.seed^0xC0FFEE)>>>0);
@@ -4480,7 +4476,10 @@ function checkTransitions(){
         if(typeof ascAllows==='function' &&
            !ascAllows({gal:st.gal, star:best, type:'star'})){
           ascBlock();
-          c.z=Math.min(c.z, starZ*1.5);
+          /* clamp BELOW the dive trigger (the unreachable-galaxy hold's
+             *0.97 precedent) — parking inside it re-fired the block —
+             and with it the toast — every 1.8s forever (review catch) */
+          c.z=Math.min(c.z, starZ*0.97);
         } else {
           st.star=best;
           st.sys=null;
@@ -9453,7 +9452,11 @@ codexEl.addEventListener('click', e=>{
     const i=+par.dataset.par;
     if(codex.has('s'+paragonSeed(i))){ showReveal(codex.get('s'+paragonSeed(i)), false); return; }
     const w=paragonWhere(i);
-    if(w){
+    if(w && typeof ascAllows==='function' && !ascAllows(w)){
+      /* v1.4 review catch: the legend's world is drive-gated — keep the
+         binder open, say only why, and never promise a landing */
+      ascBlock();
+    } else if(w){
       if(w.pseed!=null && !_parSites.has(w.pseed)) _parSites.set(w.pseed, i);
       codexOpen=false; codexEl.style.display='none';
       travelTo(w);
@@ -10073,7 +10076,7 @@ const ACH=[
   {id:'rimbreaker',cat:'Engineering', ic:'🌌', name:'Rim-Breaker',     d:'Build the Intergalactic Drive', t:()=>itemCount('igdrive')>=1},
   {id:'ascended',  cat:'Engineering', ic:'⬆', name:'The Ascent',      d:'Complete all three Ascent chapters', t:()=>(typeof ascCh!=='undefined' && ascCh>=ASC_CHAPTERS.length && itemCount('igdrive')>=1)},
   {id:'lastvein',  cat:'Engineering', ic:'⛏', name:'To the Last Vein', d:'Mine a world completely dry', t:()=>(stats.minedout||0)>=1},
-  {id:'richstrike',cat:'Engineering', ic:'💎', name:'Prospector&#8217;s Luck', d:'Pull 250 loads of ore', t:()=>(stats.mines||0)>=250},
+  {id:'richstrike',cat:'Engineering', ic:'💎', name:'Prospector&#8217;s Luck', d:'Make 250 mining pulls', t:()=>(stats.mines||0)>=250},
   /* — Cosmic Events — */
   {id:'daily',   cat:'Cosmic Events', ic:'🗓', name:'Pilgrim',        d:'Follow the Traveler\u2019s Beacon', t:null},
   {id:'anomaly5',cat:'Cosmic Events', ic:'🕯', name:'Devout',         d:'Follow 5 different Beacons', t:()=>stats.anomalies>=5},
@@ -10190,7 +10193,9 @@ function doSave(){
       harvests:stats.harvests||0, essenceEarned:stats.essenceEarned||0,
       guardians:stats.guardians||0, paragons:stats.paragons||0,
       nh:nameHue, br:stats.bestRank||0, setsc:[...claimedSets],
-      cargo:[...cargo], minedw:[...mined], mx:[...mineX].slice(-4000), tech:[...techOwned], mines:stats.mines||0,
+      /* mx keeps the DEEPEST-mined worlds when capped (review catch: a
+         plain tail-slice would refill mined-out worlds past 4000 entries) */
+      cargo:[...cargo], minedw:[...mined], mx:[...mineX].sort((a,b)=>b[1]-a[1]).slice(0,4000), tech:[...techOwned], mines:stats.mines||0,
       items:[...items], eq:equip, crafts:stats.crafts||0, minedout:stats.minedout||0,
       asc:ascCh, ascp:ascProg,
       names:[...customNames],
@@ -10248,6 +10253,10 @@ function loadSave(){
        reserves stand effectively full. */
     if(Array.isArray(data.mx)){
       for(const kv of data.mx){ if(kv && kv[0]!=null) mineX.set(kv[0], clamp(num(kv[1]), 0, 1e7)|0); }
+      /* review catch: mx is capped (deepest-mined kept) while minedw is
+         not — any mined world that fell off the cap must never read as
+         untouched, or its finite reserve silently refills */
+      for(const k of mined.keys()) if(!mineX.has(k)) mineX.set(k, 1);
     } else {
       for(const k of mined.keys()) mineX.set(k, 1);
     }
@@ -10404,6 +10413,9 @@ function resetMemoryState(){
     mined.clear(); mineX.clear(); cargo.clear(); techOwned.clear();
     items.clear(); for(const k in equip) delete equip[k]; _eqOpen=null;
     ascCh=0; ascProg={};   /* a fresh expedition climbs the Ascent again */
+    try{ showCargoBtn(); }catch(_){ }
+    try{ if(typeof cargoEl!=='undefined' && cargoEl){ cargoOpen=false; cargoEl.style.display='none'; } }catch(_){ }
+    try{ if(typeof chPanel!=='undefined' && chPanel){ chOpen=false; chPanel.style.display='none'; } }catch(_){ }
     _lastRankName=null; _lastRankFloor=-1;   /* a fresh Cadet is a beginning, not a promotion */
     explorerName=''; essence=0; pstats={vit:50,fer:50,res:50,agi:50,ins:50}; HP_MAX=hpMaxFromVit(); hp=HP_MAX;
     for(const k in stats) if(typeof stats[k]==='number') stats[k]=0;
@@ -10642,6 +10654,9 @@ function dailyWhere(){
 dailyBtn.addEventListener('click', ()=>{
   const res=dailyWhere();
   if(!res || !res.where){ toast('Traveler\u2019s Beacon','The beacon is faint right now — try again.'); return; }
+  /* v1.4: the beacon usually points far outside the Ascent's rings - no
+     pilgrimage credit while the jump is gated (the hint teaches the build) */
+  if(typeof ascAllows==='function' && !ascAllows(res.where)){ ascBlock(); return; }
   travelTo(res.where);
   if(res.key!==lastAnomKey){ lastAnomKey=res.key; stats.anomalies++; }
   unlock('daily'); checkAch(); renderRank(); queueSave();
@@ -11922,12 +11937,15 @@ function healExplorer(floraEntry, roll){
   removeFromCodex(floraEntry.id);
   const tF=(floraEntry.grade?floraEntry.grade.tier:0);
   const pois=clamp(0.08 + tF*0.07, 0.05, 0.6);
-  /* v1.4: a Field Medkit squeezes more mending from every meal */
-  const heal=Math.round((12 + tF*9 + pois*30)*(1+_equipBonus('heal')));
+  /* v1.4: a Field Medkit squeezes more mending from every meal — the
+     BONUS never sharpens the poison (review catch: dmg keys off the
+     unboosted heal, or the medkit would make gambles deadlier) */
+  const healBase=Math.round(12 + tF*9 + pois*30);
+  const heal=Math.round(healBase*(1+_equipBonus('heal')));
   const stat=floraStat(floraEntry.genome);
   const gain=1+tF+(techOwned.has('lab1')?1:0);   /* the Xenobotany Lab squeezes one more point from every meal */
   if(roll<pois){
-    const dmg=Math.ceil(heal*0.6);
+    const dmg=Math.ceil(healBase*0.6);
     return {ok:false, pois, heal, dmg, stat, dead:damageExplorer(dmg, 'The '+floraEntry.name+' was toxic.')};
   }
   hp=Math.min(HP_MAX, hp+heal);
@@ -12882,10 +12900,14 @@ function mineWorld(d){
   const left=R-(n0+loads);
   playRaritySting(rare?4:2); fxBurst(FX_GOLD, rare?26:14);
   const gotTxt=[...got.entries()].map(e=>e[1]+'× '+(ELEM_NAME[e[0]]||e[0])).join(' · ');
-  toast(rare?'⛏ Rich Strike!':'⛏ Deposits Mined',
-    (loads>1?loads+' loads (auto-extractor) — ':'')+gotTxt+
+  const mineMsg=(loads>1?loads+' loads (auto-extractor) — ':'')+gotTxt+
     (rare?' — a pocket of '+(ELEM_NAME[rare]||rare)+'!':'')+
-    (left>0?' · '+left.toLocaleString()+' pulls left in the veins.':' · That was the last of it — the world is mined out.'));
+    (left>0?' · '+left.toLocaleString()+' pulls left in the veins.':' · That was the last of it — the world is mined out.');
+  /* plain pulls stay OUT of the bell tray (review catch: a grinding
+     session would evict every achievement from the 60-cap log) — only
+     the notable ones make the record */
+  if(rare || _firstMine || left<=0) toast(rare?'⛏ Rich Strike!':(left<=0?'⛏ Mined Out':'⛏ Deposits Mined'), mineMsg);
+  else if(notifOn) _showToast('⛏ Deposits Mined', mineMsg);
   showCargoBtn(); if(cargoOpen) renderCargo();
   _panelKey=null; checkAch(); renderRank(); queueSave();
 }
@@ -12925,7 +12947,9 @@ const cargoBtn=document.getElementById('cargobtn');
 const cargoEl=document.getElementById('cargo');
 let cargoOpen=false;
 function showCargoBtn(){
-  if(cargoBtn && (cargo.size>0 || techOwned.size>0 || items.size>0)) cargoBtn.style.display='flex';
+  /* shows AND hides — an in-place reset must not leave the button up
+     with a stale pre-reset count (review catch) */
+  if(cargoBtn) cargoBtn.style.display=(cargo.size>0 || techOwned.size>0 || items.size>0)?'flex':'none';
   const cc=document.getElementById('cargocount');
   if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0)+[...items.values()].reduce((a,b)=>a+b,0);   /* count is live even when the panel is closed */
 }
@@ -13268,11 +13292,15 @@ function craftItem(id){
   if(it.sd) essence-=it.sd;
   items.set(id, itemCount(id)+1);
   stats.crafts=(stats.crafts||0)+1;
-  gameEvent('crafted', {id:id, cat:it.cat, tier:it.tier});
+  /* the "system online" moment plays BEFORE any chapter-complete cinematic
+     the crafted event triggers — cinematics queue FIFO, and the drive must
+     announce itself before the chapter it completes (review catch) */
   if(it.cat==='sys'){
     playRaritySting(6); playFanfare(); fxBurst(FX_GOLD,46);
     cinematic({kicker:'🛠 Ship System Online', title:it.name, sub:it.unlock||it.d, hex:'#7fd0ff', tier:5});
-  } else if(it.cat==='gear'){
+  }
+  gameEvent('crafted', {id:id, cat:it.cat, tier:it.tier});
+  if(it.cat==='sys'){ /* announced above */ } else if(it.cat==='gear'){
     playRaritySting(4); fxBurst(FX_GOLD,20);
     toast('🛠 Crafted — '+it.name, it.d+'. Equip it on your character sheet (tap your nameplate).');
     /* an empty matching socket takes new gear immediately — no menu-diving
@@ -13296,7 +13324,7 @@ function equipItem(slot, id, quiet){
     toast('🎽 '+(it?('Equipped — '+it.name):'Unequipped'), it?it.d:'The socket stands empty.');
   }
   if(statsOpen) renderStats();
-  queueSave();
+  checkAch(); queueSave();   /* Outfitted lands the moment gear is worn */
 }
 /* painterly part icons — the _hdElemIcon language extended to crafted
    things: one shape family per part kind, tinted per item, cached */
@@ -13334,13 +13362,23 @@ function partIcon(id){
       g.beginPath(); g.moveTo(S*0.20,y); g.lineTo(S*0.28,y); g.moveTo(S*0.72,y); g.lineTo(S*0.80,y); g.stroke();
     }
     g.fillStyle='rgba(255,255,255,0.5)'; g.fillRect(S*0.36,S*0.38,S*0.10,S*0.04);
-  } else if(fam==='frame'||fam==='struts'){
+  } else if(fam==='frame'){
     g.strokeStyle=K(1.1); g.lineWidth=S*0.05; g.lineCap='round';
     g.beginPath(); g.moveTo(S*0.22,S*0.72); g.lineTo(S*0.22,S*0.30); g.lineTo(S*0.78,S*0.30); g.lineTo(S*0.78,S*0.72); g.stroke();
     g.lineWidth=S*0.035; g.strokeStyle=K(0.8);
     g.beginPath(); g.moveTo(S*0.22,S*0.72); g.lineTo(S*0.78,S*0.30); g.moveTo(S*0.22,S*0.30); g.lineTo(S*0.78,S*0.72); g.stroke();
-    if(fam==='struts'){ g.strokeStyle=K(1.4,0.9); g.lineWidth=S*0.03;
-      g.beginPath(); g.moveTo(S*0.30,S*0.72); g.lineTo(S*0.40,S*0.84); g.moveTo(S*0.70,S*0.72); g.lineTo(S*0.60,S*0.84); g.stroke(); }
+  } else if(fam==='struts'){
+    /* a lander: dome body on splayed legs with foot pads (icon review:
+       the truss-with-feet draft read as a box kite) */
+    g.fillStyle=K(1.15);
+    g.beginPath(); g.arc(S*0.5,S*0.42,S*0.16,Math.PI,0); g.closePath(); g.fill();
+    g.fillStyle=K(0.7); g.fillRect(S*0.32,S*0.42,S*0.36,S*0.07);
+    g.strokeStyle=K(0.95); g.lineWidth=S*0.035; g.lineCap='round';
+    for(const dx of [-1,0,1]){
+      g.beginPath(); g.moveTo(S*0.5+dx*S*0.10,S*0.49); g.lineTo(S*0.5+dx*S*0.24,S*0.78); g.stroke();
+      g.fillStyle=K(1.3); g.fillRect(S*0.5+dx*S*0.24-S*0.045,S*0.78,S*0.09,S*0.028);
+    }
+    g.fillStyle='rgba(255,255,255,0.5)'; g.beginPath(); g.arc(S*0.44,S*0.36,S*0.03,0,TAU); g.fill();
   } else if(fam==='lens'){
     const gr2=g.createRadialGradient(S*0.44,S*0.44,2,S*0.5,S*0.5,S*0.26);
     gr2.addColorStop(0,'rgba(255,255,255,0.95)'); gr2.addColorStop(0.35,K(1.3)); gr2.addColorStop(1,K(0.55));
@@ -13382,8 +13420,8 @@ function partIcon(id){
       g.beginPath(); g.moveTo(S*0.5+Math.cos(a)*S*0.16,S*0.52+Math.sin(a)*S*0.16);
       g.lineTo(S*0.5+Math.cos(a)*S*0.31,S*0.52+Math.sin(a)*S*0.31); g.stroke(); }
     g.save(); g.globalCompositeOperation='lighter';
-    const cg2=g.createRadialGradient(S*0.5,S*0.52,1,S*0.5,S*0.52,S*0.14);
-    cg2.addColorStop(0,K(1.7,0.8)); cg2.addColorStop(1,K(1.7,0));
+    const cg2=g.createRadialGradient(S*0.5,S*0.52,1,S*0.5,S*0.52,S*0.21);
+    cg2.addColorStop(0,'rgba(255,255,255,0.55)'); cg2.addColorStop(0.4,K(1.7,0.8)); cg2.addColorStop(1,K(1.7,0));
     g.fillStyle=cg2; g.fillRect(0,0,S,S); g.restore();
   } else if(fam==='core'){
     g.strokeStyle=K(0.8); g.lineWidth=S*0.045;
@@ -13404,21 +13442,33 @@ function partIcon(id){
     g.strokeStyle='rgba(255,255,255,0.35)'; g.lineWidth=2; g.stroke();
     g.fillStyle=K(1.6,0.75); g.fillRect(x,y+h*0.42,w,S*0.045);
     if(fam==='capsule'){ g.fillStyle='rgba(255,255,255,0.55)'; g.beginPath(); g.arc(S*0.5,y+h*0.24,S*0.05,0,TAU); g.fill(); }
-  } else if(fam==='servo'||fam==='rig'){
+  } else if(fam==='servo'){
     g.strokeStyle=K(1); g.lineWidth=S*0.075; g.lineCap='round';
     g.beginPath(); g.moveTo(S*0.26,S*0.74); g.lineTo(S*0.42,S*0.48); g.lineTo(S*0.62,S*0.40); g.stroke();
     g.fillStyle=K(1.25);
     for(const [jx,jy] of [[S*0.26,S*0.74],[S*0.42,S*0.48],[S*0.62,S*0.40]]){
       g.beginPath(); g.arc(jx,jy,S*0.055,0,TAU); g.fill();
     }
-    if(fam==='rig'){
-      g.fillStyle=K(1.45);
-      g.beginPath(); g.moveTo(S*0.62,S*0.32); g.lineTo(S*0.80,S*0.44); g.lineTo(S*0.62,S*0.50); g.closePath(); g.fill();
-      g.strokeStyle='rgba(255,255,255,0.4)'; g.lineWidth=1.6;
-      g.beginPath(); g.moveTo(S*0.66,S*0.37); g.lineTo(S*0.75,S*0.43); g.stroke();
-    } else {
-      g.fillStyle=K(0.7); g.fillRect(S*0.58,S*0.32,S*0.14,S*0.16);
+    g.fillStyle=K(0.7); g.fillRect(S*0.58,S*0.32,S*0.14,S*0.16);
+  } else if(fam==='rig'){
+    /* a powered drill: motor block, side grip, tapering auger, bit sparks
+       (icon review: the arm-with-a-triangle draft read as a bent arrow) */
+    g.fillStyle=K(1.15);
+    if(g.roundRect){ g.beginPath(); g.roundRect(S*0.34,S*0.22,S*0.32,S*0.24,S*0.045); g.fill(); }
+    else g.fillRect(S*0.34,S*0.22,S*0.32,S*0.24);
+    g.fillStyle='rgba(255,255,255,0.25)'; g.fillRect(S*0.37,S*0.25,S*0.26,S*0.045);
+    g.fillStyle=K(0.7); g.fillRect(S*0.20,S*0.27,S*0.14,S*0.10);
+    g.fillStyle=K(0.95);
+    g.beginPath(); g.moveTo(S*0.42,S*0.46); g.lineTo(S*0.58,S*0.46); g.lineTo(S*0.5,S*0.82); g.closePath(); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.5)'; g.lineWidth=1.4;
+    for(let i2=0;i2<3;i2++){
+      const yy=S*(0.52+i2*0.09), w3=S*(0.062-i2*0.016);
+      g.beginPath(); g.moveTo(S*0.5-w3,yy); g.lineTo(S*0.5+w3,yy-S*0.02); g.stroke();
     }
+    g.save(); g.globalCompositeOperation='lighter';
+    const rg2=g.createRadialGradient(S*0.5,S*0.82,1,S*0.5,S*0.82,S*0.10);
+    rg2.addColorStop(0,K(1.6,0.7)); rg2.addColorStop(1,K(1.6,0));
+    g.fillStyle=rg2; g.fillRect(0,0,S,S); g.restore();
   } else if(fam==='drive'){
     const lg5=g.createLinearGradient(0,S*0.3,0,S*0.78);
     lg5.addColorStop(0,K(1.25)); lg5.addColorStop(1,K(0.55));
@@ -13430,14 +13480,21 @@ function partIcon(id){
     fl.addColorStop(0,'rgba(255,255,255,0.9)'); fl.addColorStop(0.4,K(1.5,0.8)); fl.addColorStop(1,K(1.5,0));
     g.fillStyle=fl; g.beginPath(); g.ellipse(S*0.5,S*0.70,S*0.14,S*0.20,0,0,TAU); g.fill(); g.restore();
   } else if(fam==='array'){
+    /* a radar cup on a mast, pinging the stars (icon review: the tilted
+       ellipse draft read as a leaf) */
+    g.save(); g.translate(S*0.5,S*0.38); g.rotate(-0.5);
     g.fillStyle=K(1.15);
-    g.beginPath(); g.ellipse(S*0.5,S*0.45,S*0.27,S*0.16,-0.5,0,TAU); g.fill();
-    g.fillStyle=K(0.6); g.beginPath(); g.ellipse(S*0.52,S*0.47,S*0.20,S*0.11,-0.5,0,TAU); g.fill();
-    g.strokeStyle=K(1); g.lineWidth=S*0.04;
-    g.beginPath(); g.moveTo(S*0.5,S*0.56); g.lineTo(S*0.5,S*0.80); g.stroke();
-    g.strokeStyle='rgba(255,255,255,0.65)'; g.lineWidth=1.6;
-    g.beginPath(); g.moveTo(S*0.5,S*0.45); g.lineTo(S*0.66,S*0.28); g.stroke();
-    g.fillStyle='rgba(255,255,255,0.85)'; g.beginPath(); g.arc(S*0.66,S*0.28,S*0.03,0,TAU); g.fill();
+    g.beginPath(); g.arc(0,0,S*0.25,0,Math.PI); g.closePath(); g.fill();
+    g.fillStyle=K(0.55);
+    g.beginPath(); g.ellipse(0,0,S*0.25,S*0.06,0,0,TAU); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.55)'; g.lineWidth=1.8;
+    g.beginPath(); g.moveTo(0,0); g.lineTo(0,-S*0.15); g.stroke();
+    g.fillStyle='rgba(255,255,255,0.9)'; g.beginPath(); g.arc(0,-S*0.15,S*0.03,0,TAU); g.fill();
+    g.restore();
+    g.strokeStyle=K(0.9); g.lineWidth=S*0.045; g.lineCap='round';
+    g.beginPath(); g.moveTo(S*0.5,S*0.48); g.lineTo(S*0.5,S*0.80); g.stroke();
+    g.strokeStyle=K(1.5,0.55); g.lineWidth=1.6;
+    for(let i2=1;i2<=2;i2++){ g.beginPath(); g.arc(S*0.62,S*0.20,S*0.09*i2,-1.1,0.4); g.stroke(); }
   } else if(fam==='suit'){
     g.fillStyle=K(1.05);
     g.beginPath();
@@ -13532,13 +13589,7 @@ const REGIONS=[
   {name:'the Frontier',      sigs:9, r:UCELL*20},
 ];
 function currentRegion(){ let r=REGIONS[0]; for(const R of REGIONS) if(primeCount()>=R.sigs) r=R; return r; }
-function reachRadius(){
-  /* reach jumps outward each time a new region opens. v1.4: until the
-     Intergalactic Drive is built, the universe-scale charter is the home
-     galaxy and its halo — the Ascent owns the inner rings. */
-  try{ if(typeof ascStage==='function' && ascStage()<3) return UCELL*0.35; }catch(_){ }
-  return currentRegion().r;
-}
+function reachRadius(){ return currentRegion().r; }                    /* reach jumps outward each time a new region opens */
 function withinReach(x,y){ return Math.hypot(x-HOME_POS.x, y-HOME_POS.y) <= reachRadius(); }
 /* which region a point in the cosmos falls in, by raw distance from home (independent of how far you can travel) */
 function regionAt(x,y){ const d=Math.hypot(x-HOME_POS.x, y-HOME_POS.y); for(let i=0;i<REGIONS.length;i++) if(d<=REGIONS[i].r) return i; return REGIONS.length-1; }
@@ -13853,9 +13904,16 @@ function charterEvent(type, detail){
       essence+=c.sd; stats.essenceEarned=(stats.essenceEarned||0)+c.sd;
       stats.charters=(stats.charters||0)+1;
       playRaritySting(2);
-      const nxt=CHARTER_STARTERS.find(x=>!chDone.has(x.id));
+      /* v1.4 review catch: at Ascent stage 0 the life-hunting starters
+         (scan/scout/conquer) are beyond Sol — never point the player at
+         a charter they cannot physically reach yet */
+      const _far0=(typeof ascStage==='function' && ascStage()===0)?{'st-scan':1,'st-scout':1,'st-conq':1}:{};
+      const rem0=CHARTER_STARTERS.filter(x=>!chDone.has(x.id));
+      const nxt=rem0.find(x=>!_far0[x.id]);
       toast('Charter Complete', '“'+c.t+'” — +'+c.sd+' ☄ Stardust.'+(c.id[0]==='s'
-        ? (nxt ? ' Next charter: '+nxt.t+'.' : ' The trades are learned — the weekly charter board is open.') : ''));
+        ? (nxt ? ' Next charter: '+nxt.t+'.'
+          : (rem0.length ? ' The rest of the board awaits the stars beyond Sol.'
+                         : ' The trades are learned — the weekly charter board is open.')) : ''));
     }
   }
   if(hit){ if(chOpen) renderCharters(); _chBadge(); checkAch(); renderRank(); queueSave(); }
@@ -13889,12 +13947,13 @@ function renderCharters(){
   }
   h+='<div class="ehead">'+(starters?'Starter charters — learn the trades':'Weekly charters')+'</div>';
   if(!starters) h+='<div class="ambient">Three fresh charters every week — the same board for every explorer in the universe.</div>';
+  const _far0=(starters && typeof ascStage==='function' && ascStage()===0)?{'st-scan':1,'st-scout':1,'st-conq':1}:{};
   for(const c of list){
     const done=_chDoneOf(c), p=Math.min(chProg[c.id]||0, c.n);
     h+='<div class="ch'+(done?' done':'')+'"><div class="ct">'+(done?'<span class="chk">✓</span> ':'')+c.t+
       (c.n>1?' <span class="cp">'+p+' / '+c.n+'</span>':'')+
       '<span class="cr">+'+c.sd+' ☄</span></div>'+
-      (done?'':'<div class="cd">'+c.d+'</div>')+'</div>';
+      (done?'':'<div class="cd">'+c.d+(_far0[c.id]?' <span style="color:#7fd0ff">Awaits the stars — Sol&#8217;s worlds hold no wild life; build the ⚡ Jump Drive first.</span>':'')+'</div>')+'</div>';
   }
   chPanel.innerHTML=h;
 }
@@ -13923,8 +13982,8 @@ const ASC_CHAPTERS=[
  {id:'ch1', name:'Chapter 1 — Off the Rock',
   intro:'Sol is yours to learn — the rest of the sky is charts and longing. Mine the dead worlds, feed the Fabricator, and build the Jump Drive.',
   goals:[
-   {id:'c1-land', ev:'landfall', n:2, t:'Make planetfall on 2 worlds of Sol'},
-   {id:'c1-mine', ev:'mined',    n:8, t:'Pull 8 loads of ore from Sol&#8217;s dead worlds'},
+   {id:'c1-land', ev:'landfall', filt:x=>x&&x.planetSeed!=null&&_SOL_SEEDS.has(x.planetSeed), n:2, t:'Make planetfall on 2 worlds of Sol'},
+   {id:'c1-mine', ev:'mined',    n:8, t:'Make 8 mining pulls at Sol&#8217;s dead worlds'},
    {id:'c1-part', ev:'crafted', filt:x=>x&&x.cat==='part', n:4, t:'Fabricate 4 basic parts'},
    {id:'c1-comp', ev:'crafted', filt:x=>x&&x.cat==='comp', n:2, t:'Assemble 2 components'},
    {id:'c1-jump', ev:'crafted', filt:x=>x&&x.id==='jumpdrive', n:1, t:'Build the ⚡ Jump Drive'},
@@ -13944,7 +14003,7 @@ const ASC_CHAPTERS=[
   goals:[
    {id:'c3-breed', ev:'bred', filt:x=>x&&x.ok, n:1, t:'Breed a hybrid bloodline'},
    {id:'c3-gear',  ev:'crafted', filt:x=>x&&x.cat==='gear', n:2, t:'Craft 2 pieces of explorer gear'},
-   {id:'c3-mine',  ev:'mined', n:20, t:'Pull 20 more loads of ore'},
+   {id:'c3-mine',  ev:'mined', n:20, t:'Make 20 more mining pulls'},
    {id:'c3-ig',    ev:'crafted', filt:x=>x&&x.id==='igdrive', n:1, t:'Build the 🌌 Intergalactic Drive'},
   ],
   unlockNote:'The dark between galaxies is yours to cross — from here the Prime Codex Signatures extend the frontier, ring by ring.'},
@@ -13971,15 +14030,17 @@ function ascBlock(){
   const now=performance.now();
   if(now-_ascToastT>1800){ _ascToastT=now; toast('⬆ Beyond Your Charter', ascHint()); }
 }
-/* may travel to w? (atlas / search / codes / beacon / zoom transitions).
-   Looking is always free — this gates MOVEMENT only. */
+/* may travel to w? (atlas / search / codes / beacon / events / zoom).
+   Looking is always free — this gates STAR/SYSTEM dives only. Flying out
+   to LOOK at any galaxy inside the regional charter stays open at every
+   stage (curiosity audit: the old whole-universe clamp gated browsing). */
 function ascAllows(w){
   const stg=ascStage();
   if(stg>=3) return true;
   if(!w || !w.gal) return true;
-  if(w.gal.seed!==HOME_GAL_SEED) return false;      /* other galaxies wait for the IG drive */
-  if(!w.star) return true;                          /* the home galaxy itself is fine */
-  if(stg>=2) return true;                           /* array: the whole galaxy */
+  if(!w.star) return true;                          /* galaxy-scale sightseeing is free */
+  if(w.gal.seed!==HOME_GAL_SEED) return false;      /* foreign STARS wait for the IG drive */
+  if(stg>=2) return true;                           /* array: the whole home galaxy */
   if(w.star.seed===SOL_SEED) return true;
   if(stg===1) return Math.hypot(w.star.x-SOL_POS.x, w.star.y-SOL_POS.y)<=ASC_RING_R;
   return false;                                     /* stage 0: Sol only */
@@ -13987,20 +14048,29 @@ function ascAllows(w){
 function _ascActive(){ return ascCh<ASC_CHAPTERS.length ? ASC_CHAPTERS[ascCh] : null; }
 function ascEvent(type, detail){
   if(!tutDone || _loading) return;
-  const ch=_ascActive(); if(!ch) return;
+  if(ascCh>=ASC_CHAPTERS.length) return;
   let hit=false;
-  for(const g of ch.goals){
-    if((ascProg[g.id]||0)>=g.n || g.ev!==type) continue;
-    if(g.filt && !g.filt(detail||{})) continue;
-    ascProg[g.id]=(ascProg[g.id]||0)+1;
-    hit=true;
-    if((ascProg[g.id]||0)>=g.n && !ch.goals.every(g2=>(ascProg[g2.id]||0)>=g2.n)){
-      const nxt=ch.goals.find(g2=>(ascProg[g2.id]||0)<g2.n);
-      toast('⬆ The Ascent', '“'+g.t.replace(/<[^>]*>/g,'')+'” done.'+(nxt?' Next: '+nxt.t.replace(/<[^>]*>/g,'')+'.':''));
+  /* progress BANKS for every chapter from the current one on (review
+     catch: a player who out-built the current chapter — Array before the
+     Ch2 conquest — must not lose the Ch3 work done in the meantime).
+     Only the CURRENT chapter narrates; future credit lands silently. */
+  for(let ci=ascCh; ci<ASC_CHAPTERS.length; ci++){
+    const ch=ASC_CHAPTERS[ci];
+    for(const g of ch.goals){
+      if((ascProg[g.id]||0)>=g.n || g.ev!==type) continue;
+      if(g.filt && !g.filt(detail||{})) continue;
+      ascProg[g.id]=(ascProg[g.id]||0)+1;
+      hit=true;
+      if(ci===ascCh && (ascProg[g.id]||0)>=g.n && !ch.goals.every(g2=>(ascProg[g2.id]||0)>=g2.n)){
+        const nxt=ch.goals.find(g2=>(ascProg[g2.id]||0)<g2.n);
+        toast('⬆ The Ascent', '“'+g.t.replace(/<[^>]*>/g,'')+'” done.'+(nxt?' Next: '+nxt.t.replace(/<[^>]*>/g,'')+'.':''));
+      }
     }
   }
   if(!hit) return;
-  if(ch.goals.every(g=>(ascProg[g.id]||0)>=g.n)){
+  /* complete as many chapters as the banked progress now covers */
+  while(ascCh<ASC_CHAPTERS.length && ASC_CHAPTERS[ascCh].goals.every(g=>(ascProg[g.id]||0)>=g.n)){
+    const ch=ASC_CHAPTERS[ascCh];
     ascCh++;
     playFanfare(); fxBurst(FX_GOLD, 40);
     cinematic({kicker:'⬆ THE ASCENT', title:ch.name.replace(/&#8217;/g,'’'), sub:ch.unlockNote.replace(/&#8217;/g,'’'), hex:'#7fd0ff', tier:5,
@@ -14224,6 +14294,11 @@ function _tutFinish(){
     /* the hunt board takes over where training leaves off: five starter
        charters teach the trades in order, each paid on the spot */
     pushNotif('Expedition Charters', 'Your hunt board is open (Charters, left rail) — first charter: Make planetfall.');
+    /* v1.4: a NEW expedition starts its Ascent — the mainline announces
+       itself once, right where training ends (veterans read complete) */
+    if(typeof _ascActive==='function' && _ascActive()){
+      pushNotif('⬆ The Ascent — '+_ascActive().name, 'Sol is your charter for now. '+_ascActive().intro+' (Pinned atop your Charters board.)');
+    }
     _chBadge();
   }
   queueSave();
@@ -14570,6 +14645,9 @@ eventsEl.addEventListener('click', e=>{
   const def=EVENT_DEFS.find(x=>x.id===go.dataset.ev); if(!def) return;
   const res=eventWhere(def);
   if(!res.where){ toast(def.title,'The signal is too faint to localize — try again.'); return; }
+  /* v1.4: witnessing means BEING there — if the Ascent still gates the
+     jump, no credit and no "you are being sent" fib */
+  if(typeof ascAllows==='function' && !ascAllows(res.where)){ ascBlock(); return; }
   travelTo(res.where);
   if(!eventKeysSeen.has(res.key)){ eventKeysSeen.add(res.key); stats.events++;
     cinematic({kicker:'👁 Witnessed', title:def.title,

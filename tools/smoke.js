@@ -449,7 +449,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // and nothing about the veteran's sky may re-lock
     check('v1.4 veteran grandfather: the Ascent never re-locks a held sky',
       vet.w.__PROBE_HOOK__.ascStage() === 3
-      && vet.w.__PROBE_HOOK__.ascAllows({ gal: { seed: 777 }, type: 'galaxy' }));
+      && vet.w.__PROBE_HOOK__.ascAllows({ gal: { seed: 777 }, star: { x: 1, y: 2, seed: 9 }, type: 'star' }));
     // discovery arc (v1.2): a pre-1.2 save has no `land` field — every world
     // the veteran charted or settled must count as ground-surveyed already
     check('veteran: pre-1.2 save grandfathers charted + settled worlds as ground-surveyed',
@@ -835,7 +835,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       skH.ascAllows({ gal: { seed: 999 }, star: { x: 560, y: 170, seed: 424242 }, type: 'star' }));
     check('v1.4 Sol lock: another star in the home galaxy is gated',
       !skH.ascAllows({ gal: { seed: 999 }, star: { x: 900, y: -400, seed: 555 }, type: 'star' }));
-    check('v1.4 Sol lock: other galaxies are gated', !skH.ascAllows({ gal: { seed: 777 }, type: 'galaxy' }));
+    check('v1.4 Sol lock: foreign STARS are gated, galaxy sightseeing is not (curiosity stays free)',
+      !skH.ascAllows({ gal: { seed: 777 }, star: { x: 1, y: 2, seed: 9 }, type: 'star' })
+      && skH.ascAllows({ gal: { seed: 777 }, type: 'galaxy' }));
     // the chapter rides pinned atop the charter board
     if (!visible(chp)) click2(sk.doc.getElementById('chbtn'), sk.w);
     check('v1.4 Ascent: Chapter 1 pinned atop the charter board', chp.textContent.includes('Off the Rock')
@@ -873,10 +875,10 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     skH.items.set('array', 1);
     check('v1.4 rings: the Long-Range Array opens the whole galaxy', skH.ascStage() === 2
       && skH.ascAllows({ gal: { seed: 999 }, star: { x: -900, y: 900, seed: 556 }, type: 'star' })
-      && !skH.ascAllows({ gal: { seed: 777 }, type: 'galaxy' }));
+      && !skH.ascAllows({ gal: { seed: 777 }, star: { x: 1, y: 2, seed: 9 }, type: 'star' }));
     skH.items.set('igdrive', 1);
     check('v1.4 rings: the Intergalactic Drive opens the dark between', skH.ascStage() === 3
-      && skH.ascAllows({ gal: { seed: 777 }, type: 'galaxy' }));
+      && skH.ascAllows({ gal: { seed: 777 }, star: { x: 1, y: 2, seed: 9 }, type: 'star' }));
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
     sk.w.close();
 
