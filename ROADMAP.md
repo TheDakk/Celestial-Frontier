@@ -725,6 +725,42 @@
 ##    (11 via skip path) — 60/60 complete, zero stalls, zero errors.
 ##  · probe-names grew to 146; simreport-fast/ui.json keep full data.
 ##
+## ▶▶ v1.4.1 "THE RING SPECTRUM" LIVE (2026-07-18, builds c3ea6ce →
+## 5337a68 → a3dd448; Nick: "cap the tiers by ring… apply it across the
+## whole board"):
+##  · CREATURE grades cap by catalog location: Neighborhood→Legendary(5),
+##    home galaxy→Mythic(8), regions 0/1/2→9/10/11, Deep Field+→summit.
+##    App-layer (genomes/power/portraits/codes untouched); guardians+
+##    Paragons exempt; bred/imported never capped; per-entry rc marker =
+##    nothing already catalogued ever downgrades.
+##  · WORLD/STAR designations obey the same ladder on NEW saves (rsw
+##    flag; veterans' cards never rewrite). One clamp at the descriptor
+##    memo → spoils/veins/reserves/samples/signatures all inherit.
+##    Survey fixes: card row rewrites with the clamp; worlds clamp in
+##    their OWN SPECTRA ladder (Red-Gold, not Gray-Gold); duel side-
+##    cards tint by catalogued grade (budgets stay raw+deterministic).
+##  · **levelOf HOTFIX (deployed 5337a68, was LIVE-BROKEN)**: never
+##    exported from CombatCore → every victorious duel/conquest with a
+##    CREATURE champion threw in awardXP, aborting the win (no
+##    conquered.set/spoils/guardian/signature/ch2 credit). Player-as-
+##    champion skipped it — why humans never saw it. Caught by the
+##    700-run deep sims (501 hits). Smoke regression-locked.
+##  · BOARD-WIDE RARITY SURVEY (agent, recorded verdicts): veins/
+##    reserves/spoils/samples/breeding/rare-find all inherit the ring
+##    via the clamped tier; biomes/extremophiles/wonders/paragons stay
+##    position-free BY DESIGN; battle-budget capping REJECTED (would
+##    desync shared-code duels). NICK DIALS PENDING: (a) route Apex
+##    grades out of stats.best so one early guardian doesn't detonate
+##    six Rarity achievements; (b) biome-vein valve (grail exotics
+##    craftable in-galaxy via hard landings — recommended KEEP open).
+##  · SYNTHETIC REPORT PACK: 300 chaos trainings (100% complete after
+##    the Escape fix) + 700 deep expeditions on the fixed build (0
+##    errors, 519 conquests, ring spectrum visible in the data: best-
+##    catch p50 = Legendary; jump p50 64 acts, Array p50 378, IG 2/700;
+##    fun-index p50 5.7, rancher/explorer highest). 3 player-critic
+##    agents (collector/optimizer/explorer) reviewing for the fun
+##    matrix + recommendations. simrun.js modes: ui/chaos/fast/deep.
+##
 ## ★★★ v1.4 "THE ASCENT" DEPLOYED 2026-07-18 (build 4d28528, Nick:
 ## "deploy and do our standard post-deployment checks") — LIVE at
 ## celestialfrontier.github.io, version.json serving v1.4. ★★★
