@@ -6322,7 +6322,9 @@ const WX_EVENT_WORD={tornado:'a tornado on the horizon', hurricane:'a hurricane 
 function _hdWxEvent(g, evt, seed, hz, W, H, night){
   const r=mulberry32((seed^0xE7A2)>>>0);
   const A=night?0.7:1;
+  /* the big shapes blur into the air; lightning and rain streaks stay sharp */
   if(evt==='tornado'){
+    try{ g.filter='blur(2px)'; }catch(_){ }
     const x=W*(0.55+r()*0.3), top=hz*0.30, w0=34+r()*20;
     const tg=g.createLinearGradient(0,top,0,hz);
     tg.addColorStop(0,'rgba(40,42,52,'+(0.75*A)+')'); tg.addColorStop(1,'rgba(30,30,38,'+(0.55*A)+')');
@@ -6335,6 +6337,7 @@ function _hdWxEvent(g, evt, seed, hz, W, H, night){
     dg4.addColorStop(0,'rgba(90,84,70,'+(0.45*A)+')'); dg4.addColorStop(1,'rgba(90,84,70,0)');
     g.fillStyle=dg4; g.beginPath(); g.arc(x,hz,50,0,TAU); g.fill();
   } else if(evt==='hurricane'){
+    try{ g.filter='blur(5px)'; }catch(_){ }
     const cx3=W*(0.28+r()*0.44);
     for(let k=0;k<4;k++){
       const rr2=60+k*46, a0=r()*TAU;
@@ -6348,6 +6351,7 @@ function _hdWxEvent(g, evt, seed, hz, W, H, night){
     wg2.addColorStop(0,'rgba(52,58,72,0)'); wg2.addColorStop(1,'rgba(52,58,72,'+(0.5*A)+')');
     g.fillStyle=wg2; g.fillRect(0,hz*0.55,W,hz*0.45);
   } else if(evt==='haboob'){
+    try{ g.filter='blur(5px)'; }catch(_){ }
     const x0=W*(0.5+r()*0.3);
     const hg2=g.createLinearGradient(x0,0,W,0);
     hg2.addColorStop(0,'rgba(150,110,60,0)'); hg2.addColorStop(0.35,'rgba(150,110,60,'+(0.65*A)+')');
@@ -6370,6 +6374,7 @@ function _hdWxEvent(g, evt, seed, hz, W, H, night){
       g.fillRect(r()*W, hz+(H-hz)*r(), 2, 1.4);
     }
   } else if(evt==='cryoeruption'){
+    try{ g.filter='blur(3px)'; }catch(_){ }
     const x=W*(0.3+r()*0.4), h=hz*0.85;
     const pg2=g.createLinearGradient(x,hz,x,hz-h);
     pg2.addColorStop(0,'rgba(240,248,255,'+(0.75*A)+')'); pg2.addColorStop(1,'rgba(240,248,255,0)');
@@ -6380,6 +6385,7 @@ function _hdWxEvent(g, evt, seed, hz, W, H, night){
     fog.addColorStop(0,'rgba(230,242,252,'+(0.4*A)+')'); fog.addColorStop(1,'rgba(230,242,252,0)');
     g.fillStyle=fog; g.beginPath(); g.arc(x,hz-h,80,0,TAU); g.fill();
   } else if(evt==='virga'){
+    try{ g.filter='blur(3px)'; }catch(_){ }
     for(let i=0;i<7;i++){
       const x=W*(0.08+r()*0.84), top=hz*0.28+r()*20, fall=hz*0.30;
       const vg2=g.createLinearGradient(x,top,x,top+fall);
@@ -6399,6 +6405,7 @@ function _hdWxEvent(g, evt, seed, hz, W, H, night){
     lg3.addColorStop(0,'rgba(190,210,255,'+(0.30*A)+')'); lg3.addColorStop(1,'rgba(190,210,255,0)');
     g.fillStyle=lg3; g.beginPath(); g.arc(x,top+30,110,0,TAU); g.fill();
   } else if(evt==='firewhirl'){
+    try{ g.filter='blur(3px)'; }catch(_){ }
     for(let i=0;i<2;i++){
       const x=W*(0.25+r()*0.5), h=60+r()*50, y=hz+(H-hz)*(0.25+r()*0.3);
       const fg2=g.createLinearGradient(x,y,x+(r()-0.5)*16,y-h);
@@ -6414,6 +6421,7 @@ function _hdWxEvent(g, evt, seed, hz, W, H, night){
       g.beginPath(); g.moveTo(x,y); g.lineTo(x-2,y+ln); g.stroke();
     }
   }
+  try{ g.filter='none'; }catch(_){ }
 }
 /* COLOSSAL WANDERERS — when a world's own roster carries a titanic
    creature, a rare roll shows it at true scale: a back breaking the
@@ -6430,6 +6438,7 @@ function _hdTitan(g, mode, seed, hz, W, H, night){
       g.beginPath(); g.moveTo(fx,hz*0.5); g.lineTo(fx+span*0.05,hz*0.5-span*0.10); g.lineTo(fx+span*0.10,hz*0.5); g.closePath(); g.fill(); }
     return;
   }
+  try{ g.filter='blur(1.2px)'; }catch(_){ }
   /* land/sea: ONE long living back arcing through the ground line — a
      continuous spine, not floating domes (Nick's globes report). The
      silhouette rises to a shoulder, runs a ridge of plates, and sinks
@@ -6465,6 +6474,7 @@ function _hdTitan(g, mode, seed, hz, W, H, night){
   hzW.addColorStop(0,'rgba(150,165,190,'+(night?0.06:0.14)+')');
   hzW.addColorStop(1,'rgba(150,165,190,0)');
   g.fillStyle=hzW; g.fillRect(x0-10,hz-hh-14,(x1-x0)+20,hh+20);
+  try{ g.filter='none'; }catch(_){ }
 }
 /* THE DEEP — the Abyssal world's vista goes beneath the waves: the first
    sub-surface vantage (the cloud deck set the precedent — the vantage
@@ -6534,11 +6544,11 @@ function _hdBiomeDress(g, o, seed, hz, W, H){
     const x=W*r(), y=groundY(0.3+r()*0.6), rr=3+r()*10*(0.5+(y-hz)/(H-hz));
     g.fillStyle=col; g.beginPath(); g.ellipse(x,y,rr,rr*0.62,0,0,TAU); g.fill();
     g.fillStyle='rgba(0,0,0,0.25)'; g.beginPath(); g.ellipse(x,y+rr*0.5,rr,rr*0.2,0,0,TAU); g.fill(); } };
-  const ridges=(col,n)=>{ for(let i=0;i<n;i++){
+  const ridges=(col,n)=>{ try{ g.filter='blur(3px)'; }catch(_){ } for(let i=0;i<n;i++){
     const y=groundY(0.18+i*(0.5/n)), amp=6+r()*10;
     g.fillStyle=col; g.beginPath(); g.moveTo(0,y);
     for(let x2=0;x2<=W;x2+=40) g.lineTo(x2, y+Math.sin(x2*0.01+i*2+r()*2)*amp);
-    g.lineTo(W,y+amp+8); g.lineTo(0,y+amp+8); g.closePath(); g.fill(); } };
+    g.lineTo(W,y+amp+8); g.lineTo(0,y+amp+8); g.closePath(); g.fill(); } try{ g.filter='none'; }catch(_){ } };
   const veins=(col,n)=>{ g.lineWidth=1.4;
     for(let i=0;i<n;i++){ const x=W*r(), y=groundY(0.25+r()*0.6);
       g.strokeStyle=col; g.beginPath(); g.moveTo(x,y);
@@ -6572,7 +6582,7 @@ function _hdBiomeDress(g, o, seed, hz, W, H){
   switch(wb){
     /* terran */
     case 'savanna':  wash('150,118,34',0.42); boulders('rgba(70,52,26,0.55)',4); break;
-    case 'jungle':   wash('8,46,12',0.40); towers('rgba(16,52,20,0.9)','rgba(20,34,14,0.9)',14); mist('160,190,150',0.12*A,hz+4,30); break;
+    case 'jungle':   wash('8,46,12',0.46); towers('rgba(16,52,20,0.9)','rgba(20,34,14,0.9)',24); mist('160,190,150',0.14*A,hz+4,34); break;
     case 'marsh':    wash('44,72,40',0.30); mist('180,200,180',0.20*A,groundY(0.45),48); spires('rgba(52,74,40,0.7)',null,14,6,16); break;
     case 'swamp':    wash('8,14,8',0.52); towers('rgba(30,40,22,0.85)','rgba(18,22,12,0.9)',5); mist('120,140,110',0.22*A,groundY(0.3),64); break;
     case 'mangrove': wash('26,40,26',0.18); towers('rgba(24,48,26,0.9)','rgba(30,26,14,0.95)',7); break;
@@ -6708,6 +6718,7 @@ function hdVista(opts){
     const ah1=AURF[(rA()*AURF.length)|0]+(rA()-0.5)*14;
     const ah2=AURF[(rA()*AURF.length)|0]+(rA()-0.5)*14;
     g.save();g.globalCompositeOperation='lighter';
+    try{ g.filter='blur(5px)'; }catch(_){ }   /* one veil, never columns */
     for(const[hue,off,amp,al] of [[ah1,H*0.06,30,0.15],[ah2,H*0.15,42,0.10]]){
       const ph1=rA()*TAU, ph2=rA()*TAU;
       for(let ax=-3;ax<=W;ax+=3){
@@ -6914,7 +6925,7 @@ function hdVista(opts){
       if(flora){
         for(let tp2=0;tp2<8;tp2++){
           const px5=(tp2+0.5)*(W/8)+(_hdHash(tp2,seed,3)-0.5)*40;
-          _hdStampPlant(g,tp2%2?pcv2:pcv,px5,ridgeY(px5)+3,0.24+_hdHash(tp2,seed,5)*0.14,0.42+frost*0.4,pd,pdc);
+          _hdStampPlant(g,tp2%2?pcv2:pcv,px5,ridgeY(px5)+7,0.24+_hdHash(tp2,seed,5)*0.14,0.62+frost*0.3,pd,pdc);
         }
         _hdStampPlant(g,pcv,rX(W*0.085),H*0.90,0.95,frost,pd*0.9,pdc);
         _hdStampPlant(g,pcv2,rX(W*0.90),H*0.94,1.15,frost,pd*0.9,pdc);
@@ -6927,7 +6938,7 @@ function hdVista(opts){
     const dpv=_hdPlantBare(seed+5,{trunk:'#2a2014',leaf:'rgba(130,120,66,0.85)',spread:1.5,depth:3});
     for(let dp2=0;dp2<6;dp2++){
       const dx2=W*(0.06+dp2*0.16)+(_hdHash(dp2,seed,11)-0.5)*50;
-      _hdStampPlant(g,dpv,dx2,ridgeY(dx2)+4,0.10+_hdHash(dp2,seed,13)*0.08,0.35,pd,pdc);
+      _hdStampPlant(g,dpv,dx2,ridgeY(dx2)+7,0.10+_hdHash(dp2,seed,13)*0.08,0.55,pd,pdc);
     }
     _hdStampPlant(g,dpv,W*0.12,H*0.90,0.5,0,pd*0.9,pdc);
     _hdStampPlant(g,dpv,W*0.83,H*0.94,0.62,0,pd*0.9,pdc);
@@ -7451,7 +7462,9 @@ function _hdDeckScene(o){
   sky.addColorStop(0.7, hsl(hue+10, 44, night?10:(dusk?26:52)));
   sky.addColorStop(1, hsl(hue+16, 50, night?14:(dusk?38:66)));
   g.fillStyle=sky; g.fillRect(0,0,W,hz+2);
-  /* high shelf-bands riding the jet streams */
+  /* high shelf-bands riding the jet streams — blurred into the air, an
+     atmosphere is weather, not linework (Nick's coherence call) */
+  try{ g.filter='blur(5px)'; }catch(_){ }
   for(let i=0;i<5;i++){
     const y=hz*(0.12+i*0.17)+(r()-0.5)*10, th=6+r()*14, ph=r()*TAU;
     g.fillStyle=hsl(hue+(r()-0.5)*24, 40, (night?12:(dusk?30:58))+(r()-0.5)*8, 0.20+r()*0.15);
@@ -7461,6 +7474,7 @@ function _hdDeckScene(o){
     for(let x3=W;x3>=0;x3-=60) g.lineTo(x3, y+th+Math.sin(x3*0.004+ph)*8);
     g.closePath(); g.fill();
   }
+  try{ g.filter='none'; }catch(_){ }
   if(night){
     for(let i=0;i<90;i++){
       g.fillStyle='rgba(255,255,255,'+(0.22+r()*0.5).toFixed(2)+')';
@@ -7475,6 +7489,7 @@ function _hdDeckScene(o){
   /* the card's ring, seen edge-on from inside — a lit band + its shadow line */
   if(o.ring){
     g.save(); g.translate(W*0.5, hz*0.55); g.rotate(-0.18);
+    try{ g.filter='blur(1.5px)'; }catch(_){ }
     const rg2=g.createLinearGradient(-W*0.6,0,W*0.6,0);
     rg2.addColorStop(0,'rgba(230,225,210,0)');
     rg2.addColorStop(0.5,'rgba(230,225,210,'+(night?0.30:0.38)+')');
@@ -7491,6 +7506,7 @@ function _hdDeckScene(o){
   }
   /* polar auroras — the immense field's crown, faint curtains at the rims */
   if(o.aurora){
+    try{ g.filter='blur(8px)'; }catch(_){ }
     for(const side of [0.10,0.90]){
       for(let i=0;i<3;i++){
         const ax=W*side+(r()-0.5)*90, aw=30+r()*50;
@@ -7501,6 +7517,7 @@ function _hdDeckScene(o){
         g.fillStyle=ag; g.fillRect(ax-aw/2,0,aw,hz*0.5);
       }
     }
+    try{ g.filter='none'; }catch(_){ }
   }
   /* THE DECK — cloud-top floor rolling away to the horizon */
   const deck=g.createLinearGradient(0,hz,0,H);
@@ -7509,6 +7526,7 @@ function _hdDeckScene(o){
   deck.addColorStop(1, hsl(hue-14, 38, night?6:(dusk?14:30)));
   g.fillStyle=deck; g.fillRect(0,hz,W,H-hz);
   /* broad rolling swells first — the deck is weather, not dots */
+  try{ g.filter='blur(7px)'; }catch(_){ }
   for(let sw=0;sw<3;sw++){
     const y=hz+(H-hz)*(0.22+sw*0.28), ph=r()*TAU, amp=8+sw*10;
     g.fillStyle=hsl(hue+(r()-0.5)*14, 44, (night?15:(dusk?32:60))+sw*3, 0.28);
@@ -7516,6 +7534,7 @@ function _hdDeckScene(o){
     for(let x4=0;x4<=W;x4+=48) g.lineTo(x4, y+Math.sin(x4*0.006+ph)*amp);
     g.lineTo(W,H); g.lineTo(0,H); g.closePath(); g.fill();
   }
+  try{ g.filter='none'; }catch(_){ }
   for(let row=0;row<4;row++){
     const y=hz+(H-hz)*(0.16+row*0.24), sc=0.5+row*0.45;
     for(let i=0;i<10;i++){
@@ -7532,9 +7551,10 @@ function _hdDeckScene(o){
     const eye=o.wb==='stormeye';
     const sx3=W*(0.25+r()*0.5), sy3=hz+(H-hz)*0.18, rw=(90+r()*70)*(eye?2.2:1);
     g.save(); g.translate(sx3,sy3); g.scale(1,0.36);
+    const eyeBoost=o.wb==='stormeye'?1.5:1;
     const spg=g.createRadialGradient(0,0,0,0,0,rw);
-    spg.addColorStop(0,hsl(o.spotHue||hue,55,night?20:52,0.55));
-    spg.addColorStop(0.7,hsl(o.spotHue||hue,50,night?14:40,0.28));
+    spg.addColorStop(0,hsl(o.spotHue||hue,60,night?22:48,0.55*eyeBoost));
+    spg.addColorStop(0.55,hsl((o.spotHue||hue)+14,55,night?15:38,0.32*eyeBoost));
     spg.addColorStop(1,hsl(o.spotHue||hue,50,40,0));
     g.fillStyle=spg; g.beginPath(); g.arc(0,0,rw,0,TAU); g.fill(); g.restore();
   }
