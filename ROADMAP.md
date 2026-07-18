@@ -608,6 +608,18 @@
 ## AWAITING: Nick's deploy word; his device pass (esp. terran biome
 ## washes + aura feel + boot time on his big save — G14 still open).
 
+## ▶ v1.3.6 "QUIET SKIES" — STAGED (2026-07-18, commit 4864db6), NOT
+## BUMPED/DEPLOYED — one word ships it. From Nick's desktop live pass:
+## training rigs now -1 (beat ANY odds — a failed training breed ate
+## both parents and stranded him); training hover glances step-scoped
+## (his "one voice" ask — find-earth lets Earth glance); STAR CHARTS
+## setting (Graphics, OFF default, save field chart) hides orbit
+## paths/hz band+label/belt label/Oort dashes; surface zoom capped
+## 600->6 (tile smear + untextured region at extreme zoom); EARTH
+## EXEMPT from the biome roll (was re-labeled "Savanna world" against
+## its own card). RELEASES[0]=1.3.6 staged hidden. Suites: fingerprint
+## 50/50, smoke 218/218, systems 19/19, balance PASS.
+
 ## ▶▶ NEXT SESSION AGENDA (v1.4 "THE ASCENT" KICKOFF)
 
 1. NICK'S LIVE PASS of v1.3 (his screenshots are bug reports — read
