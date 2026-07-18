@@ -1919,7 +1919,26 @@ function renderPlanetSprite(P, PX){
     }
   }
   g.putImageData(img,0,0);
+  /* v1.3.5 Batch 5c: the biome tints the orbit view, so what you see
+     from space matches what you land into. Only for types whose biome
+     roll never depends on the climate band (ice/rocky/venus/lava/gas)
+     — band-dependent types keep their type look and speak their biome
+     through the card and the vista instead. */
+  try{
+    const bt=_bioSpriteTint(P);
+    if(bt){ g.globalCompositeOperation='source-atop'; g.fillStyle=bt;
+            g.fillRect(0,0,PX,PX); g.globalCompositeOperation='source-over'; }
+  }catch(_){ }
   return c;
+}
+function _bioSpriteTint(P){
+  if(!(P.type==='ice'||P.type==='rocky'||P.type==='venus'||P.type==='lava'||P.type==='gas')) return null;
+  const b=biomeFor(P,'cold'); if(!b) return null;
+  return ({blueice:'rgba(90,150,220,0.20)', cryogeyser:'rgba(210,235,250,0.14)',
+    geode:'rgba(150,100,200,0.12)', carbon:'rgba(0,0,0,0.38)', graben:'rgba(20,20,30,0.15)',
+    sulfurdeck:'rgba(200,170,40,0.18)', abyssgreen:'rgba(20,40,20,0.25)',
+    ashwaste:'rgba(120,116,112,0.25)', obsidian:'rgba(5,3,8,0.35)', magmasea:'rgba(255,90,30,0.18)',
+    ammonia:'rgba(240,238,246,0.20)', hotglow:'rgba(255,60,20,0.22)'})[b.k]||null;
 }
 /* a fast 128px placeholder renders instantly; the full 512px sprite is swapped in a
    beat later — entering a system never freezes a frame on a 262k-pixel noise loop */
