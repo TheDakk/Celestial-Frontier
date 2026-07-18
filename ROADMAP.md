@@ -22,6 +22,90 @@
    ✕/drag, and the text-size coverage fixes are NOT flag-gated (they
    ride any deploy; RELEASES[0] bullets written).
 
+## ▶ GRAPHICS PASS FINDINGS (2026-07-17, 3 audit agents + spot-verified;
+## REPORTED TO NICK PRE-BUILD — nothing below is built yet, he picks)
+
+LAW VIOLATIONS (card contradicts picture — fix-before-ship candidates):
+ V1 terran water ignores climate band: liquid blue oceans painted on
+    "Mostly evaporated" and "Frozen into ice sheets" worlds — in the
+    system sprite, card thumb AND surface tiles (surfaceColor takes no
+    band; verified). One parameter threads all three.
+ V2 galaxy morphology: card says Lenticular/Elliptical/Irregular, the
+    interior is ALWAYS a 2-3-arm spiral; interior hue ≠ exterior sprite
+    hue (16 shared archetype sprites for the whole universe).
+ V3 desert "Sparse, hardy vegetation" + fauna worlds vista as EMPTY
+    dunes (green-life block gated !desert).
+ V4 system-view moons all render flat grey; the moon card + thumb are
+    typed rocky/icy/volcanic/captured.
+ V5 gas giants: card promises "auroras crown the poles" + immense
+    field; no view ever shows it.
+ V6 vista era flattening: Modern-era civs render the medieval keep
+    (everything below spacefaring → 'iron').
+ V7 civilized worlds lose their river (river block requires civ none).
+ V8 magnetized ICE worlds at night never show aurora (nightize lacks it).
+ V9 planetThumb ignores rings/civ/life/band (P.ring never in the thumb).
+ V10 rarity presentation: reveal cinematic CLAMPS tier at 8 (an
+    Omnipotent find celebrates as a Mythic); Compendium rows never foil
+    at summit; Binder Paragon slots hardcode teal regardless of grade.
+ V11 Si missing from the EC icon palette (mined on rocky/desert/dwarf,
+    used in a research cost — renders generic gray).
+ V12 portraits: "eyeless" fauna get eyes; mottled/plain draw nothing;
+    11 of 16 FA_BODY plans share one ellipse; skin/loco/trait ignored;
+    Guardians/Paragons get zero bespoke visual anywhere.
+ V13 (domain! Phase 2 + fingerprint decision) crossGenome never
+    inherits temper/sense/repro/life/metab; limbs+accent can never
+    mutate. Fixing changes generated children → baseline question.
+
+VISTA FEATURE-BAR BLOCKERS:
+ B1 see-once art: any stray tap dismisses instantly, no fade, no ✕, NO
+    RE-VIEW — cache the args + "Landing vista" action on the surface
+    card; fade in/out (cinema's .on pattern).
+ B2 one composition per type: fixed horizon/sun/river/island/volcano
+    anchors — every temperate terran is the same painting. Seeded
+    layout variants.
+ B3 vistabox chrome off-language (ad-hoc border, no glass, hint doesn't
+    match cinema's dismiss convention) + phone-landscape letterboxing
+    (width needs calc(70vh*2.233) clamp) + no safe-area padding.
+
+HEAT-RULE VIOLATIONS FOUND (per-frame allocations): galaxy nebulae/
+remnant/supernova gradients; surface cloud-shadow gradients (4/frame);
+travel-tunnel gradient + mulberry closure per frame (also: same fixed
+90 streaks every trip, seed 0x7261).
+
+TOP UPGRADE IDEAS (proposed to Nick, his picks):
+ I1 galaxy star sprites — 13 pre-rendered per-class glow/spike sprites
+    replace flat 1-2px arcs + twinkle on the brightest (HIS SCREENSHOT).
+ I2 star-colored light EVERYWHERE: spectral class tints vista sunlight,
+    system planet lighting, surface dawn/dusk (st.star.c is one
+    argument away; verified available).
+ I3 rings in the vista sky when P.ring (+ daytime moons).
+ I4 per-seed galaxy sprites (LRU like hazeCache) — every galaxy unique,
+    thumb/interior/exterior agree; fixes V2 with the same plumbing.
+ I5 vista postcards: save/share a landing vista stamped with world
+    name + share code (rides the existing share-code loop).
+ I6 battle staging: seeded arena backdrop behind duels/conquest from
+    the defender's world type (habitat-scene generator reusable as-is);
+    guardian intro card at scale with summit foil.
+ I7 wire the DEAD specimenCard (finished painterly labeled card art,
+    never exported/called — verified) into reveal/Compendium detail.
+ I8 ambient motion, rmotion-gated, zero JS: 60-90s CSS slow-pan on the
+    vista canvas; cinema-style fades.
+ I9 city lights for every civ world's night side, era-scaled (currently
+    an Earth-only easter egg) — sprite + thumb + classic tiles.
+ I10 herd size scales with the roster (5+ on teeming worlds, distant
+    silhouettes); per-world plant species (palette/heat-driven variants,
+    2 per scene — one tree universe-wide today).
+ I11 classic-mode card-honesty nods: vegetation tint + era night dots
+    on tiles, star-tinted terminator (non-HD players see the card too).
+ I12 real crescent phases in system view (shadow-mask sprite over
+    unrotated planet — features stop spinning with orbit).
+ I13 moon thumbs seeded per moon; binary-pair star thumbs; quasar
+    sprite; filament-shaped web blobs (universe view).
+ I14 Rings/Moons rows on the planet card (facts render but aren't ON
+    the card — reverse law gap; touches descriptor = design call).
+ DEAD CODE to prune or keep for tests: ocean harbor + ember fauna vista
+ paths (unreachable by domain rules: civs need Abundant land life).
+
 ## ▶ ITERATION 2c (2026-07-17, same session): CARD UX + SETTINGS AUDIT
 
 - SURVEY CARD ✕ + DRAG (Nick's ask): locked cards wear a ✕ (close;
