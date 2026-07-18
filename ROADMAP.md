@@ -62,11 +62,17 @@
 ##            per-world flora species + rare hue families, seeded
 ##            aurora families, herd scaling, wonder rolls (rings sky /
 ##            looming moon / biolume shores / star-tinted noon).
-##  BATCH F — NEXT: V12 portrait anatomy overhaul (all 16 body plans,
-##            skin/loco/trait drawn, eyeless fixed, guardian/paragon
-##            distinction), I7 specimenCard wiring, I13 small thumbs
+##  BATCH F1 ✓ DONE (f372d0b) — V12 portrait anatomy overhaul, HD-GATED:
+##            the fingerprint PINS Classic portrait bytes (learned by
+##            hitting it), so HD_PORTRAITS rides the hd flag via applyHd.
+##            All 16 body plans distinct, skin/loco/trait drawn, eyeless
+##            honest, Guardian gold / Paragon teal rims.
+##  BATCH F2 — REMAINING: I7 specimenCard wiring, I13 small thumbs
 ##            (per-moon seeds, binary star thumbs, quasar sprite,
 ##            filament web blobs).
+##  RELEASES[0] bullets written for everything Classic-visible (galaxy
+##  stars, card-honest pictures, rarity uncap) + the HD infinity/portrait
+##  additions folded into the HD bullets (rule 7 satisfied pre-deploy).
 ##  BATCH G — FX & showpieces: tunnel variety/heat, I5 vista postcards,
 ##            I6 battle arenas + guardian intro, F1 tile-proxy fallback,
 ##            F3 surface aurora seeded hues, F4 cloud-shadow prerender.
