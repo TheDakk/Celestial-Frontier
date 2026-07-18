@@ -866,6 +866,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     const stEl4 = sk.doc.getElementById('stats');
     check('v1.4 equipment: the character sheet shows all nine sockets', await until(() =>
       stEl4.querySelectorAll('[data-eqslot]').length === 9, 4000, 'eq sockets'));
+    check('v1.4 HD pass: the painterly player frame fronts the character sheet',
+      !!stEl4.querySelector('.pframe .pav') && stEl4.querySelector('.pframe .pav').src.startsWith('data:'));
     check('v1.4 shipyard: the ship renders on the character sheet (a spaceship, hull caption)',
       !!stEl4.querySelector('.shipimg') && /hull|online/i.test(stEl4.querySelector('.shipcap').textContent));
     check('v1.4 equipment: the effect readout speaks the boost', /mining yield/.test(stEl4.textContent));
