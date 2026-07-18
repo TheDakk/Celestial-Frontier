@@ -33,7 +33,13 @@ function lift(name) {
   throw new Error('cannot lift: ' + name);
 }
 
-const lifted = sheet.lift.map(lift).join('\n');
+let lifted = (sheet.lift || []).map(lift).join('\n');
+if (sheet.liftBetween) {
+  const [a, b] = sheet.liftBetween;
+  const i = main.indexOf(a), j = main.indexOf(b, i + a.length);
+  if (i < 0 || j < 0) throw new Error('liftBetween markers not found');
+  lifted += '\n' + main.slice(i, j);
+}
 const html = `<!doctype html><meta charset="utf-8">
 <body style="margin:0;background:#07080f">
 <canvas id="cv" width="${sheet.width}" height="${sheet.height}"></canvas>

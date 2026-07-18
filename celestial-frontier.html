@@ -6172,6 +6172,106 @@ function _hdVolcano(g,W,hz,seed,r,vx0){
 /* the master vista: opts={seed, biome:'land'|'island', era:'none'|'iron'|'space',
    pal key, wx: the card's weather token|null, moons, aurora:bool (the card's
    magnetosphere — auroras crown the poles), genes:[fauna genes]|null} */
+/* the biome dressing (v1.3.5 Batch 5b) — the Biome row's words painted
+   into the scene. One compact painter per feature family, all seeded, no
+   strokes-for-glow, layered before the near-ground fringe so the vignette
+   still grades everything as one picture. */
+function _hdBiomeDress(g, o, seed, hz, W, H){
+  const r=mulberry32((seed^0xD135)>>>0), wb=o.wb;
+  const night=o.pal==='night'||o.nightize;
+  const A=night?0.55:1;                          /* the dark knocks features back */
+  const groundY=k=>hz+(H-hz)*k;
+  const wash=(col,a)=>{ const wg=g.createLinearGradient(0,hz,0,H);
+    wg.addColorStop(0,'rgba('+col+','+(a*0.55).toFixed(3)+')');
+    wg.addColorStop(1,'rgba('+col+','+a.toFixed(3)+')');
+    g.fillStyle=wg; g.fillRect(0,hz,W,H-hz); };
+  const spires=(col,glow,n,hMin,hMax)=>{ for(let i=0;i<n;i++){
+    const x=W*(0.08+r()*0.84), y=groundY(0.25+r()*0.55), h=hMin+r()*(hMax-hMin), w2=h*(0.16+r()*0.12);
+    g.fillStyle=col; g.beginPath(); g.moveTo(x-w2,y); g.lineTo(x+(r()-0.5)*w2*0.6,y-h); g.lineTo(x+w2,y); g.closePath(); g.fill();
+    if(glow){ const gg2=g.createRadialGradient(x,y-h*0.55,0,x,y-h*0.55,h*0.7);
+      gg2.addColorStop(0,glow); gg2.addColorStop(1,'rgba(0,0,0,0)');
+      g.fillStyle=gg2; g.beginPath(); g.arc(x,y-h*0.55,h*0.7,0,TAU); g.fill(); } } };
+  const boulders=(col,n)=>{ for(let i=0;i<n;i++){
+    const x=W*r(), y=groundY(0.3+r()*0.6), rr=3+r()*10*(0.5+(y-hz)/(H-hz));
+    g.fillStyle=col; g.beginPath(); g.ellipse(x,y,rr,rr*0.62,0,0,TAU); g.fill();
+    g.fillStyle='rgba(0,0,0,0.25)'; g.beginPath(); g.ellipse(x,y+rr*0.5,rr,rr*0.2,0,0,TAU); g.fill(); } };
+  const ridges=(col,n)=>{ for(let i=0;i<n;i++){
+    const y=groundY(0.18+i*(0.5/n)), amp=6+r()*10;
+    g.fillStyle=col; g.beginPath(); g.moveTo(0,y);
+    for(let x2=0;x2<=W;x2+=40) g.lineTo(x2, y+Math.sin(x2*0.01+i*2+r()*2)*amp);
+    g.lineTo(W,y+amp+8); g.lineTo(0,y+amp+8); g.closePath(); g.fill(); } };
+  const veins=(col,n)=>{ g.lineWidth=1.4;
+    for(let i=0;i<n;i++){ const x=W*r(), y=groundY(0.25+r()*0.6);
+      g.strokeStyle=col; g.beginPath(); g.moveTo(x,y);
+      let cx2=x, cy2=y;
+      for(let s2=0;s2<4;s2++){ cx2+=(r()-0.5)*40; cy2+=(r()*10); g.lineTo(cx2,cy2); }
+      g.stroke(); } };
+  const shimmer=(col,n)=>{ for(let i=0;i<n;i++){
+    g.fillStyle='rgba('+col+','+(0.2+r()*0.45).toFixed(2)+')';
+    g.fillRect(W*r(), groundY(0.2+r()*0.7), 1.6+r()*2, 1.2); } };
+  const mist=(col,a,y0,h2)=>{ const mg=g.createLinearGradient(0,y0,0,y0+h2);
+    mg.addColorStop(0,'rgba('+col+',0)'); mg.addColorStop(0.5,'rgba('+col+','+a.toFixed(2)+')'); mg.addColorStop(1,'rgba('+col+',0)');
+    g.fillStyle=mg; g.fillRect(0,y0,W,h2); };
+  const plumes=(n)=>{ for(let i=0;i<n;i++){
+    const x=W*(0.12+r()*0.76), y=groundY(0.25+r()*0.4), h=30+r()*60;
+    const pg=g.createLinearGradient(x,y,x+(r()-0.5)*14,y-h);
+    pg.addColorStop(0,'rgba(235,244,252,'+(0.5*A)+')'); pg.addColorStop(1,'rgba(235,244,252,0)');
+    g.fillStyle=pg; g.beginPath();
+    g.moveTo(x-2,y); g.quadraticCurveTo(x-4-r()*6, y-h*0.6, x-8-r()*8, y-h);
+    g.lineTo(x+8+r()*8, y-h); g.quadraticCurveTo(x+4+r()*6, y-h*0.6, x+2,y); g.closePath(); g.fill(); } };
+  const towers=(capCol,stalkCol,n)=>{ for(let i=0;i<n;i++){
+    const x=W*(0.06+r()*0.88), y=groundY(0.3+r()*0.55), h=(14+r()*30)*(0.5+(y-hz)/(H-hz)), w2=h*0.16;
+    g.fillStyle=stalkCol; g.fillRect(x-w2/2, y-h, w2, h);
+    g.fillStyle=capCol; g.beginPath(); g.ellipse(x, y-h, h*0.4, h*0.18, 0, Math.PI, 0); g.fill(); } };
+  const devils=(n)=>{ for(let i=0;i<n;i++){
+    const x=W*(0.15+r()*0.7), y=groundY(0.3+r()*0.3), h=36+r()*50;
+    const dg3=g.createLinearGradient(x,y,x+(r()-0.5)*20,y-h);
+    dg3.addColorStop(0,'rgba(190,150,100,'+(0.35*A)+')'); dg3.addColorStop(1,'rgba(190,150,100,0)');
+    g.fillStyle=dg3; g.beginPath();
+    g.moveTo(x-3,y); g.quadraticCurveTo(x-10, y-h*0.5, x-14, y-h);
+    g.lineTo(x+14, y-h); g.quadraticCurveTo(x+10, y-h*0.5, x+3, y); g.closePath(); g.fill(); } };
+  switch(wb){
+    /* terran */
+    case 'savanna':  wash('150,118,34',0.42); boulders('rgba(70,52,26,0.55)',4); break;
+    case 'jungle':   wash('8,46,12',0.40); towers('rgba(16,52,20,0.9)','rgba(20,34,14,0.9)',14); mist('160,190,150',0.12*A,hz+4,30); break;
+    case 'marsh':    wash('44,72,40',0.30); mist('180,200,180',0.20*A,groundY(0.45),48); spires('rgba(52,74,40,0.7)',null,14,6,16); break;
+    case 'swamp':    wash('8,14,8',0.52); towers('rgba(30,40,22,0.85)','rgba(18,22,12,0.9)',5); mist('120,140,110',0.22*A,groundY(0.3),64); break;
+    case 'mangrove': wash('26,40,26',0.18); towers('rgba(24,48,26,0.9)','rgba(30,26,14,0.95)',7); break;
+    case 'tundra':   wash('96,110,96',0.16); boulders('rgba(88,100,104,0.5)',5); break;
+    case 'karst':    ridges('rgba(60,64,58,0.35)',2); spires('rgba(52,58,50,0.8)',null,5,18,42); break;
+    case 'saltflat': case 'saltpan': wash('228,230,228',0.55); shimmer('255,255,255',90); mist('235,240,240',0.14*A,groundY(0.35),34); break;
+    case 'fungal':   towers('rgba(150,110,160,'+(0.85*A)+')','rgba(90,74,96,0.9)',9); mist('150,120,160',0.08*A,groundY(0.4),40); break;
+    case 'crystalsteppe': spires('rgba(120,150,190,0.55)','rgba(150,190,240,'+(0.10*A)+')',7,16,46); break;
+    /* ocean */
+    case 'coral':    wash('30,150,150',0.10); shimmer('160,240,230',36); break;
+    case 'stormsea': mist('90,100,110',0.22*A,hz-40,50); break;
+    case 'volcisle': spires('rgba(26,14,12,0.9)','rgba(255,120,50,'+(0.10*A)+')',3,30,60); veins('rgba(255,110,40,'+(0.5*A)+')',4); break;
+    case 'milksea':  shimmer('140,230,255',70); mist('120,220,250',0.10,groundY(0.2),50); break;
+    /* ice */
+    case 'packice':  ridges('rgba(190,215,235,0.30)',3); break;
+    case 'cryogeyser': plumes(3); break;
+    case 'blueice':  ridges('rgba(80,140,210,0.35)',2); spires('rgba(90,150,220,0.5)','rgba(120,190,255,'+(0.12*A)+')',4,22,50); break;
+    /* desert */
+    case 'canyon':   ridges('rgba(96,48,26,0.65)',3); wash('116,62,30',0.18); break;
+    case 'oxide':    wash('120,50,20',0.18); devils(2+((r()<0.5)?1:0)); break;
+    case 'glass':    wash('150,170,175',0.10); shimmer('220,245,250',80); spires('rgba(170,200,205,0.35)',null,3,10,26); break;
+    /* rocky */
+    case 'boulder':  boulders('rgba(70,70,80,0.8)',12); break;
+    case 'graben':   ridges('rgba(40,40,50,0.5)',3); break;
+    case 'geode':    spires('rgba(120,80,170,0.6)','rgba(170,120,240,'+(0.12*A)+')',5,12,30); veins('rgba(170,120,240,'+(0.4*A)+')',3); break;
+    case 'carbon':   wash('8,8,10',0.35); shimmer('220,235,255',26); break;
+    /* venus */
+    case 'sulfurdeck': wash('140,120,20',0.20); mist('190,170,60',0.16,hz-30,60); break;
+    case 'abyssgreen': wash('10,20,10',0.35); mist('40,70,40',0.20,hz-20,70); break;
+    /* lava */
+    case 'ashwaste': wash('60,58,56',0.28); mist('120,116,112',0.16,groundY(0.3),50); break;
+    case 'obsidian': wash('6,4,8',0.35); veins('rgba(255,90,30,'+(0.55*A)+')',6); shimmer('200,180,255',18); break;
+    case 'magmasea': { const mg2=g.createLinearGradient(0,groundY(0.35),0,H);
+      mg2.addColorStop(0,'rgba(255,120,40,0)'); mg2.addColorStop(1,'rgba(255,120,40,0.30)');
+      g.fillStyle=mg2; g.fillRect(0,groundY(0.35),W,H-groundY(0.35));
+      veins('rgba(255,150,60,0.7)',8); break; }
+  }
+}
 function hdVista(opts){
   const W=960,H=430,cv=document.createElement('canvas');cv.width=W;cv.height=H;
   const g=cv.getContext('2d'),seed=opts.seed>>>0,r=mulberry32((seed^0x9d7)>>>0);
@@ -6899,6 +6999,7 @@ function hdVista(opts){
     dg2.addColorStop(0,'rgba(40,30,70,0.30)');dg2.addColorStop(0.5,'rgba(180,90,50,0.14)');dg2.addColorStop(1,'rgba(20,16,40,0.28)');
     g.fillStyle=dg2;g.fillRect(0,0,W,H);
   }
+  if(opts.wb) _hdBiomeDress(g, opts, seed, hz, W, H);
   g.fillStyle=desert?'#1c1006':(ember?'#120605':(sea?'#140f08':(opts.pal==='snow'?'#0e141c':'#071108')));
   g.beginPath();g.moveTo(0,H);
   for(let x2=0;x2<=W;x2+=6)g.lineTo(x2,H-8-_hdFbm(x2*0.02,3,seed+41,3)*16);
@@ -6997,7 +7098,10 @@ function _hdDeckScene(o){
   const W=960,H=430,cv=document.createElement('canvas');cv.width=W;cv.height=H;
   const g=cv.getContext('2d'), r=mulberry32((o.seed^0xDEC)>>>0);
   const night=o.tod==='night', dusk=o.tod==='twilight';
-  const hue=(o.hue==null?30:o.hue);
+  /* the giant's biome tunes the deck: an Ember giant glows its own sullen
+     red; Pastel-Ammonia decks lift pale; a Storm-Eye giant is dominated
+     by the one great storm */
+  const hue=o.wb==='hotglow' ? 8 : (o.hue==null?30:o.hue);
   const hsl=(h,s,l,a)=>'hsla('+(((h%360)+360)%360)+','+s+'%,'+l+'%,'+(a==null?1:a)+')';
   const hz=H*(0.56+r()*0.08);
   /* upper haze — the same band family, thinned by altitude */
@@ -7081,9 +7185,11 @@ function _hdDeckScene(o){
       g.fillStyle=pg; g.beginPath(); g.arc(x2,y,br,0,TAU); g.fill();
     }
   }
-  /* the great storm, if the card carries one — a vast oval on the horizon */
-  if(o.spot){
-    const sx3=W*(0.25+r()*0.5), sy3=hz+(H-hz)*0.18, rw=90+r()*70;
+  /* the great storm, if the card carries one — a vast oval on the horizon
+     (on a Storm-Eye giant it IS the horizon) */
+  if(o.spot || o.wb==='stormeye'){
+    const eye=o.wb==='stormeye';
+    const sx3=W*(0.25+r()*0.5), sy3=hz+(H-hz)*0.18, rw=(90+r()*70)*(eye?2.2:1);
     g.save(); g.translate(sx3,sy3); g.scale(1,0.36);
     const spg=g.createRadialGradient(0,0,0,0,0,rw);
     spg.addColorStop(0,hsl(o.spotHue||hue,55,night?20:52,0.55));
@@ -7121,6 +7227,14 @@ function _hdDeckScene(o){
   hzg.addColorStop(0.5,hsl(hue+16,50,night?18:70,0.16));
   hzg.addColorStop(1,'rgba(255,255,255,0)');
   g.fillStyle=hzg; g.fillRect(0,hz-30,W,80);
+  if(o.wb==='hotglow'){
+    /* the night side is a furnace — the deck lights itself from below */
+    const fg=g.createLinearGradient(0,H,0,hz);
+    fg.addColorStop(0,'rgba(255,90,30,0.30)'); fg.addColorStop(1,'rgba(255,90,30,0)');
+    g.fillStyle=fg; g.fillRect(0,hz,W,H-hz);
+  } else if(o.wb==='ammonia'){
+    g.fillStyle='rgba(240,238,246,0.10)'; g.fillRect(0,0,W,H);   /* the pastel lift */
+  }
   return cv;
 }
 function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xtra){
@@ -7134,10 +7248,12 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
   if(type==='gas'){
     /* no ground to stand on — so the vista is the DECK, not a wall
        (Nick, 2026-07-18: all worlds land, gas giants included) */
+    let wbG=null;
+    try{ wbG=biomeFor(P, climateBand(P, st.sys, (st.planet&&st.planet.orb)||100)); }catch(_){ }
     const cvG=_hdDeckScene({seed:P.seed, hue:P.hue, spot:!!P.spot, spotHue:P.spotHue,
       ring:!!P.ring, moons:P.moons||0, tod:tod, aurora:!!aurora,
-      air:(xtra&&xtra.air)||0});
-    vistaBox.innerHTML='<div class="vh">Cloud deck — '+(TYPE_LABEL[type]||'Gas giant')+'</div>';
+      air:(xtra&&xtra.air)||0, wb:wbG?wbG.k:null});
+    vistaBox.innerHTML='<div class="vh">Cloud deck — '+((wbG&&wbG.n)||TYPE_LABEL[type]||'Gas giant')+'</div>';
     vistaBox.appendChild(cvG);
     const vtG=document.createElement('div');vtG.className='vt';
     vtG.textContent='local '+tod+' — tap to continue';
@@ -7169,13 +7285,17 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
     if(tod==='night') nightize=true;
     else if(tod==='twilight') duskize=true;
   }
+  /* the world's biome dresses the scene (v1.3.5 Batch 5b) — same law,
+     finer grain: the Biome row's words become the picture's features */
+  let wb5=null;
+  try{ const b5=biomeFor(P, climateBand(P, st.sys, (st.planet&&st.planet.orb)||100)); if(b5) wb5=b5; }catch(_){ }
   const cv=hdVista({seed:P.seed, era:era, pal:pal, biome:biome, wx:wx,
     moons:P.moons||0, aurora:!!aurora&&wx!=='rain'&&wx!=='snow',
     nightize:nightize, duskize:duskize, flora:flora!==false,
     water:water||'liquid', genes:genes&&genes.length?genes:null,
     ring:!!(xtra&&xtra.ring), stc:(xtra&&xtra.stc)||null, herd:(xtra&&xtra.herd)||0,
-    aqua:(xtra&&xtra.aqua)||0, air:(xtra&&xtra.air)||0});
-  vistaBox.innerHTML='<div class="vh">Planetfall — '+(TYPE_LABEL[type]||'World')+'</div>';
+    aqua:(xtra&&xtra.aqua)||0, air:(xtra&&xtra.air)||0, wb:wb5?wb5.k:null});
+  vistaBox.innerHTML='<div class="vh">Planetfall — '+((wb5&&wb5.n)||TYPE_LABEL[type]||'World')+'</div>';
   vistaBox.appendChild(cv);
   const WXW={rain:'rain',snow:'snowfall',dust:'dust storm',ash:'ashfall',haze:'haze'};
   const vt=document.createElement('div');vt.className='vt';
