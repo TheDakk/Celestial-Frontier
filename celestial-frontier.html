@@ -8658,6 +8658,7 @@ function renderPanel(p, isLocked){
     d=_descMemo.d;
   } else {
     d=describePick(p);
+    try{ ringDesignation(d); }catch(_){ }   /* the ring spectrum clamps once, at the memo */
     _descMemo.sig=_sig; _descMemo.t=_nowP; _descMemo.d=d;
   }
   if(!d){ panelEl.style.display='none'; panelEl.classList.remove('locked'); _lastDesc=null; _panelKey=null; panelRect=null; _frozenFor=null; return; }
@@ -9263,14 +9264,72 @@ let codexOpen=false;
 const KIND_ICON={Flora:'🌿', Fungi:'🍄', Microbe:'🦠', Fauna:'🐾'};
 function codexId(g){ return 's'+g.seed; }
 function artOf(en){ return en.art||(en.art=en.genome?speciesPortrait(en.genome):''); }
-function _storeSpecies(g, from, where, deferArt){
+/* ================= THE RING SPECTRUM (v1.4.1, Nick's progression law) =====
+   Rarity EXPANDS with the rings: the sky near home rolls the same dice as
+   everywhere, but a find's CATALOGUED grade is capped by where it lives —
+   the Neighborhood tops out at Legendary, the home galaxy at Mythic, and
+   each universe region opens one more band until the Deep Field frees the
+   summit. Distance = rarity, the same law as danger = rarity. App-layer
+   only (genomes, combat power and portraits never change — POWER IS
+   DECOUPLED FROM RARITY); guardians and Paragons keep their forced grades;
+   bred/imported creatures carry no origin and are never capped; and every
+   entry catalogued BEFORE this law (no rc marker in the save) keeps the
+   grade the player was shown — nothing ever downgrades in someone's hands. */
+const RING_SPECTRUM=[
+  {cap:5,  n:'the Neighborhood',   note:'up to Legendary'},
+  {cap:8,  n:'the home galaxy',    note:'up to Mythic'},
+  {cap:9,  n:'the Solar Reach',    note:'up to Celestial'},
+  {cap:10, n:'the Local Cluster',  note:'up to Primordial'},
+  {cap:11, n:'the Near Field',     note:'up to Transcendent'},
+  {cap:14, n:'the Deep Field and beyond', note:'the full spectrum — the summit lives out here'},
+];
+function gradeCapAt(where){
+  if(!where || !where.gal) return TIER_MAX;          /* bred / imported / unplaced: never capped */
+  try{
+    if(where.gal.seed===HOME_GAL_SEED){
+      if(where.star && Math.hypot(where.star.x-SOL_POS.x, where.star.y-SOL_POS.y)<=ASC_RING_R) return RING_SPECTRUM[0].cap;
+      return RING_SPECTRUM[1].cap;
+    }
+    const reg=regionAt(where.gal.x, where.gal.y);
+    return reg<=0?RING_SPECTRUM[2].cap : reg===1?RING_SPECTRUM[3].cap : reg===2?RING_SPECTRUM[4].cap : TIER_MAX;
+  }catch(_){ return TIER_MAX; }
+}
+function ringGrade(g, grade, where){
+  if(!grade || (g && (g.apex||g.par))) return grade;   /* the named legends keep their crowns */
+  const cap=gradeCapAt(where);
+  if(grade.tier<=cap) return grade;
+  const dom=g.kingdom==='fauna'?'life':(g.kingdom==='flora'?'forest':(g.kingdom==='fungi'?'fungal':'life'));
+  return colorGrade(dom, g.seed, {salt:0x10F, force:cap});
+}
+/* the ring spectrum for WORLDS AND STARS (Nick: "apply it across the whole
+   board"): spectral designations obey the same distance ladder — but ONLY
+   for expeditions begun under the law (save flag rsw). A veteran's card
+   that once read Prismatic must never re-read Deep (vague-never-wrong). */
+let _ringWorlds=false;
+function _clampDesig(desig, cap){
+  const T=GRADE_TIERS[cap], hue=desig.hue||'Gray';
+  const label=cap===7?'Prismatic '+hue:cap===5?hue+'-Gold':cap===6?hue+'-Black':(T.pre?T.pre+' '+hue:hue);
+  return {tier:cap, name:T.name, label:label, hex:T.hex, hue:hue, star:T.star, glow:cap>=2};
+}
+function ringDesignation(d){
+  /* clamp a descriptor's designation in place, once, by where it lives —
+     every downstream reader (card row, border tint, spoils, reserves,
+     samples, signatures) then sees ONE coherent tier */
+  if(!_ringWorlds || !d || !d.designation || !d.where || d._ringed) return d;
+  d._ringed=true;
+  const cap=gradeCapAt(d.where);
+  if(d.designation.tier>cap) d.designation=_clampDesig(d.designation, cap);
+  return d;
+}
+function _storeSpecies(g, from, where, deferArt, capExempt){
   const id=codexId(g);
   if(codex.has(id)) return null;
   const d=describeSpecies(g);
   /* deferArt (save restore): don't paint 300 portraits synchronously at
      boot — consumers go through artOf() and pay per view (ship audit C2) */
   const entry={id, name:d.name, kind:d.kind, desc:d.desc, diet:d.diet||null,
-    detail:d.detail||'', art:deferArt?null:speciesPortrait(g), grade:d.grade,
+    detail:d.detail||'', art:deferArt?null:speciesPortrait(g), grade:capExempt?d.grade:ringGrade(g, d.grade, where||null),
+    rc:capExempt?0:1,   /* ring-capped era marker — persists so a veteran's pre-law grades never downgrade */
     gen:g.gen||0, genome:g, from:from||'Unknown world', where:where||null, hybrid:!!g.parents,
     realm:classifyRealm(g), role:ecologyRole(g), biome:realmBiome(g), mods:realmModifiers(g),
     sapient:sapienceTier(g)};
@@ -9960,6 +10019,7 @@ document.addEventListener('pointerdown', ()=>{       /* tap skips the lane */
    Owns: startNewGame
    ---------------------------------------------------------------- */
 function startNewGame(){
+  _ringWorlds=true;   /* a fresh expedition lives under the ring spectrum, worlds included */
   const solStar={x:SOL_POS.x, y:SOL_POS.y, c:'#fff4d8', s:1.1, seed:SOL_SEED, sol:true};
   const homeGal={x:HOME_POS.x, y:HOME_POS.y, size:78, sp:0, tilt:0.62, rot:0.5, seed:HOME_GAL_SEED, home:true};
   goTo({type:'star', gal:homeGal, star:solStar});
@@ -10538,6 +10598,7 @@ function doSave(){
          anyway, and any eviction silently refills a finite reserve —
          entries are two numbers, the cap bought nothing) */
       at:Date.now(),   /* wall-clock save stamp — anchors offline-accrual clamps on load */
+      rsw:_ringWorlds?1:0,   /* world designations obey the ring spectrum (post-law expeditions only) */
       cargo:[...cargo], minedw:[...mined], mx:[...mineX], tech:[...techOwned], mines:stats.mines||0,
       items:[...items], eq:equip, crafts:stats.crafts||0, minedout:stats.minedout||0,
       asc:ascCh, ascp:ascProg,
@@ -10553,7 +10614,7 @@ function doSave(){
       ach:[...unlocked],
       log, home:homeId,
       prime:primeFill, frontier:frontierUnlocked?1:0, ending:frontierEnding, guide:seenGuide?1:0, tut:tutDone?1:0, rn:_rnSeen,
-      codex:[...codex.values()].map(e=>({g:e.genome, f:e.from, w:e.where||null})),
+      codex:[...codex.values()].map(e=>({g:e.genome, f:e.from, w:e.where||null, rc:e.rc?1:0})),
     }));
   }catch(_){
     /* private mode or quota — session continues unsaved */
@@ -10624,6 +10685,7 @@ function loadSave(){
     }
     stats.crafts=num(data.crafts);
     stats.minedout=num(data.minedout);
+    _ringWorlds=data.rsw===1;   /* absent (pre-law save) ⇒ world cards keep the designations they always showed */
     /* v1.4 THE ASCENT. asc ABSENT (pre-1.4 save) ⇒ the whole Ascent reads
        complete — veterans already hold the sky; nothing may re-lock it. */
     if(data.asc===undefined){ ascCh=ASC_CHAPTERS.length; }
@@ -10674,7 +10736,9 @@ function loadSave(){
     for(const s of (data.evts||[])) eventKeysSeen.add(s);
     for(const s of (data.evann||[])) _evAnnounced.add(s);
     for(const a of (data.ach||[])) unlocked.add(a);
-    for(const e of (data.codex||[])){ if(e && e.g) _storeSpecies(e.g, e.f, e.w||null, true); }
+    /* ring-spectrum grandfather: entries saved WITHOUT the rc marker were
+       catalogued before the law — they keep the grade the player saw */
+    for(const e of (data.codex||[])){ if(e && e.g) _storeSpecies(e.g, e.f, e.w||null, true, !e.rc); }
     /* the field scout must still exist in the Compendium (it may have been
        bred away, fed away, or lost) — a stale id silently stands down */
     scoutId=(typeof data.scout==='string' && codex.has(data.scout)) ? data.scout : null;
@@ -10764,6 +10828,7 @@ function resetMemoryState(){
     mined.clear(); mineX.clear(); cargo.clear(); techOwned.clear();
     items.clear(); for(const k in equip) delete equip[k]; _eqOpen=null;
     ascCh=0; ascProg={};   /* a fresh expedition climbs the Ascent again */
+    _ringWorlds=true;      /* and lives fully under the ring spectrum */
     /* post-deploy audit: the Binder economy survived a reset — claimed
        sets stayed "claimed ✓" into the new run, making their one-time
        bounties permanently unclaimable. Same family: beacon key, paragon
@@ -12455,7 +12520,7 @@ const GUIDE=[
  {id:'crafting', t:'The Fabricator & gear', k:'craft crafting fabricator recipe parts components ship systems gear equipment suit tool module instrument charm slot equip mining rig auto extractor anchor', body:
   '<p>The <b>🧰 Fabricator</b> (Cargo hold, middle tab) turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">The Ascent</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character sheet (tap your nameplate) grew nine sockets — Helmet, Earpiece, Necklace, Suit, Gloves, Leggings, Boots, Tool and ship Module. Mining rigs and gloves multiply hauls; suits, visors and leggings blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); boots, greaves and the module ladder steady landings up to the Gravitic Anchor, which never waves off; earpieces and necklaces sharpen first contact, rich strikes, meals and travel.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
  {id:'ascent', t:'The Ascent', k:'ascent chapter chapters sol lock jump drive ring ladder progression mainline quest unlock neighborhood galaxy intergalactic', body:
-  '<p><b>⬆ The Ascent</b> is the mainline: three chapters, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p>Veteran expeditions from before v1.4 already hold the sky — the Ascent never re-locks anything you had.</p>'},
+  '<p><b>⬆ The Ascent</b> is the mainline: three chapters, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p><b>The spectrum expands with the rings.</b> Rarity is a ladder of distance: the Neighborhood catalogues up to <b>Legendary</b>, the home galaxy up to <b>Mythic</b>, and each region beyond opens one more band — Celestial, Primordial, Transcendent — until the Deep Field frees the <b>summit grades</b>. The strangest finds live farthest out; guardians, Paragons and your own bred bloodlines are beyond the law. Veteran expeditions from before v1.4 already hold the sky — the Ascent never re-locks anything you had, and no creature you already catalogued ever downgrades.</p>'},
 ]},
 {icon:'✦', cat:'The Prime Codex', blurb:'Signatures, the frontier, endings', topics:[
  {id:'signatures', t:'The nine Signatures', k:'signature prime codex stone ocean flame sky life mind prism star void win', body:
@@ -12701,6 +12766,10 @@ const RELEASES=[
   '💎 BIOME-GATED VEINS — four showpiece biomes are the living sources of the four exotics: Geode worlds bleed Neodymium, Carbon worlds Promethium, Glass deserts Voidglass, and magma seas guard Prismatium. The vein shows on the card with a ✦, and every rich strike there hits it.',
   '⛏ MINING REBUILT — no more hourly timer: every press pulls a varying haul, rich strikes hit rare pockets, and reserves are FINITE — the card counts the pulls left, and a world can be mined to nothing (it takes hundreds of pulls; there are always more worlds). The 🤖 Auto-Extractor keeps working every mined world while you&#8217;re away.',
   '🏅 Nine new Engineering achievements, two new Guide chapters (The Fabricator & gear · The Ascent).'],
+ ],
+ ['⚖ Balancing', [
+  '🌈 THE RING SPECTRUM — rarity now expands with the rings: finds near home catalogue up to Legendary, the home galaxy up to Mythic, and each region beyond opens one more band until the Deep Field frees the summit grades. Distance is rarity, the same law as danger. Your bred bloodlines, guardians and Paragons are beyond the cap — and nothing you already catalogued ever downgrades.',
+  '🌈 Worlds and stars obey the same ladder on NEW expeditions — spectral designations near home top out where the ring does, and with them the spoils, veins and reserves that scale on a world&#8217;s tier. The riches, like the legends, live outward. Existing expeditions keep every designation their cards ever showed.'],
  ],
  ['🖱 UI Enhancements', [
   'The landing view is called <b>Planetside</b> now, and it&#8217;s a pop-up card floating over the game with its ✕ on the frame — it no longer reads as a separate full screen.',

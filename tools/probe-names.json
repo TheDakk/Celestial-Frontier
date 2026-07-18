@@ -150,5 +150,9 @@
  "apexNative",
  "playerCombatant",
  "surveyedSet",
- "_pickMode"
+ "_pickMode",
+ "gradeCapAt",
+ "ringGrade",
+ "_ringWorlds",
+ "ringDesignation"
 ]

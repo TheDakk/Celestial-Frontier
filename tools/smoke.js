@@ -450,6 +450,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('v1.4 veteran grandfather: the Ascent never re-locks a held sky',
       vet.w.__PROBE_HOOK__.ascStage() === 3
       && vet.w.__PROBE_HOOK__.ascAllows({ gal: { seed: 777 }, star: { x: 1, y: 2, seed: 9 }, type: 'star' }));
+    check('ring spectrum grandfather: a veteran save keeps its world designations un-ringed',
+      vet.w.__PROBE_HOOK__._ringWorlds === false);
     // discovery arc (v1.2): a pre-1.2 save has no `land` field — every world
     // the veteran charted or settled must count as ground-surveyed already
     check('veteran: pre-1.2 save grandfathers charted + settled worlds as ground-surveyed',
@@ -883,6 +885,41 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     skH.items.set('igdrive', 1);
     check('v1.4 rings: the Intergalactic Drive opens the dark between', skH.ascStage() === 3
       && skH.ascAllows({ gal: { seed: 777 }, star: { x: 1, y: 2, seed: 9 }, type: 'star' }));
+    // v1.4.1 THE RING SPECTRUM: catalogued rarity is capped by where the
+    // find lives — Legendary in the Neighborhood, Mythic in the home
+    // galaxy, the summit only past the Near Field; unplaced (bred/import)
+    // creatures are never capped
+    check('ring spectrum: the Neighborhood caps at Legendary (5)',
+      skH.gradeCapAt({ gal: { seed: 999 }, star: { x: 560, y: 170, seed: 424242 } }) === 5);
+    check('ring spectrum: the home galaxy caps at Mythic (8)',
+      skH.gradeCapAt({ gal: { seed: 999 }, star: { x: -900, y: 900, seed: 556 } }) === 8);
+    check('ring spectrum: regions ladder to the summit (far = uncapped)',
+      skH.gradeCapAt({ gal: { seed: 777, x: 92, y: -58 } }) === 9
+      && skH.gradeCapAt({ gal: { seed: 777, x: 4000, y: 4000 } }) >= 12);
+    check('ring spectrum: bred/imported creatures are never capped',
+      skH.gradeCapAt(null) >= 12);
+    // worlds obey the ladder only for post-law expeditions (this sk boot is
+    // a fresh one → on), and a high-tier designation clamps to the ring
+    check('ring spectrum: a fresh expedition ringlaws its worlds', skH._ringWorlds === true);
+    {
+      const fakeD = { designation: { tier: 9, name: 'Celestial', hex: '#a8c8ff', hue: 'Blue' },
+        where: { gal: { seed: 999 }, star: { x: 560, y: 170, seed: 424242 } }, planetSeed: 555 };
+      skH.ringDesignation(fakeD);
+      check('ring spectrum: a deep-spectrum WORLD near home wears the ring cap', fakeD.designation.tier === 5
+        && /Gold/.test(fakeD.designation.label));
+    }
+    {
+      // a forced high-tier genome catalogued in the Neighborhood clamps to 5;
+      // guardians (apex) sail past the law
+      const gG = skH.makeGenome(987654, 'fauna', 0.5);
+      const near = { gal: { seed: 999 }, star: { x: 560, y: 170, seed: 424242 } };
+      const fake = { tier: 9, name: 'Celestial', hex: '#a8c8ff' };
+      const clamped = skH.ringGrade(gG, fake, near);
+      check('ring spectrum: a deep-spectrum roll near home wears Legendary', clamped && clamped.tier === 5);
+      gG.apex = 12;
+      const kept = skH.ringGrade(gG, fake, near);
+      check('ring spectrum: an Apex Guardian keeps its summit crown', kept && kept.tier === 9);
+    }
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
     sk.w.close();
 
