@@ -149,6 +149,14 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('fold toggling never advances training', tutAt(4));
     check('Earth (a living world) never offers mining',
       !doc.querySelector('#panel [data-act="mine"]'));
+    // v1.3.6: Earth keeps its true card — no biome re-label, no Biome row
+    {
+      const sub = doc.querySelector('#panel .sub');
+      check('Earth is Earth — home never re-labels as a biome', !!sub
+        && !/savanna|swamp|marsh|jungle|tundra|karst|salt|fungal|crystal/i.test(sub.textContent)
+        && ![...doc.querySelectorAll('#panel .row .k')].some((k) => k.textContent === 'Biome'),
+        sub && sub.textContent);
+    }
     check('every world is tap-to-landable (Earth carries a plain Land button)',
       !!doc.querySelector('#panel [data-act="landcta"]'));
     click(doc.querySelector('#panel [data-act="add"]'));
@@ -255,6 +263,17 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.querySelector('#setpanel [data-pnx="set"]'));
     check('panelman: settings ✕ closes settings', !visible(doc.getElementById('setpanel')));
     await sleep(600);   // a pointerdown suppresses focus-tooltips for 500ms (by design) — let it lapse
+
+    // ============ v1.3.6: STAR CHARTS + EARTH'S TRUE CARD ============
+    click(doc.getElementById('setbtn'));
+    const chOpt = doc.getElementById('chartopt');
+    check('star charts: setting exists and ships OFF', !!chOpt && chOpt.textContent === 'Off'
+      && !chOpt.classList.contains('on'));
+    click(chOpt);
+    check('star charts: toggles On', chOpt.textContent === 'On' && chOpt.classList.contains('on'));
+    click(chOpt);
+    check('star charts: toggles back Off', chOpt.textContent === 'Off');
+    click(doc.getElementById('setbtn'));
 
     // ============ GUIDE TO THE UNIVERSE ============
     click(doc.getElementById('helpbtn'));
