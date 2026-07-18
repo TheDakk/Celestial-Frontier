@@ -354,6 +354,14 @@ PHASE 1 — LANDED IN THE GAME (this commit, flag-gated):
 ## - CHAPTER 3 "Beyond the Rim": Intergalactic Drive (T3 system built
 ##   from T2 components) → other galaxies; wormholes stay as the wild
 ##   shortcut.
+## - THE RING THEME (Nick, 2026-07-18 — THE v1.4 THEME): expansion is a
+##   ladder of CONCENTRIC UNLOCKS, each earned by quests + building:
+##     Sol (locked start) → a slice of the Milky Way → the LOCAL CLUSTER
+##     → farther clusters → ... outward ring by ring, forever.
+##   Quests gate each ring; every ring re-runs the whole loop at bigger
+##   scale (mine richer veins → craft higher tiers → hunt stranger
+##   fauna → unlock the next ring). reachRadius IS the ring mechanic —
+##   the chapters just take ownership of when it grows.
 ## - RECIPE TIERS (Satisfactory pattern, deterministic, same for all):
 ##   T0 raw elements (mined, exists) → T1 basic parts (Iron Plate,
 ##   Copper Wire, Silicon Chip, Fuel Pellet...) → T2 components (Drive

@@ -1358,11 +1358,11 @@
   </svg>
   <h3>Celestial Frontier</h3>
   <div class="lore">
-    <p>You are not the first to chart this universe. An order of explorers came before you — the <em>Pathfinders</em> — and for an age their beacons mapped the dark. Then, one by one, the beacons went quiet. They died a single discovery short of completing their master survey.</p>
-    <p>What they left behind: nine unclaimed <em>Signatures</em>; field notes that swear the spectrum runs <em>deeper than Prismatic</em>; and scattered warnings of <em>named titans</em> that rule the worlds where it runs deepest. Document a worthy example of every Signature, and the completed Prime Codex will reveal what no chart has ever shown — the <em>Celestial Frontier</em>.</p>
-    <p class="creed">Master the infinite — you cannot finish it. But you can become the first <em>Celestial Pathfinder</em>.</p>
+    <p>You are not the first to chart this universe. An order of explorers came before you — the Pathfinders — and for an age their beacons mapped the dark. Then, one by one, the beacons went quiet. They died a single discovery short of completing their master survey.</p>
+    <p>What they left behind: nine unclaimed Signatures; field notes that swear the spectrum runs deeper than Prismatic; and scattered warnings of named titans that rule the worlds where it runs deepest. Document a worthy example of every Signature, and the completed Prime Codex will reveal what no chart has ever shown — the Celestial Frontier.</p>
+    <p class="creed">Master the infinite — you cannot finish it. But you can become the first Celestial Pathfinder.</p>
   </div>
-  <p class="nnote">First, what shall the stars call <em>you</em>?</p>
+  <p class="nnote">First, what shall the stars call you?</p>
   <input id="namein" type="text" maxlength="20" placeholder="Your explorer name" spellcheck="false" autocomplete="off">
   <button id="nameok" type="button" disabled>Begin the expedition</button>
   <button id="namecancel" type="button">Cancel</button>
@@ -3247,8 +3247,12 @@ function speciesPortrait(g){
   /* HD: fauna and flora route to the PAINTERLY canvas renderers (the
      vista's own beasts/plants, staged like the visual-direction artifact
      — Nick: "those portraits looked badass") */
-  if(HD_PORTRAITS && (g.kingdom==='fauna'||g.kingdom==='flora')){
-    const url=g.kingdom==='fauna'?hdPortraitFauna(g):hdPortraitFlora(g);
+  if(HD_PORTRAITS){
+    /* ALL FOUR KINGDOMS render painterly in HD (Nick: replace every
+       legacy SVG surface) — fauna, flora, fungi, microbes */
+    const url=g.kingdom==='fauna'?hdPortraitFauna(g)
+      :(g.kingdom==='flora'?hdPortraitFlora(g)
+      :(g.kingdom==='fungi'?hdPortraitFungi(g):hdPortraitMicrobe(g)));
     if(speciesArtCache.size>1200){ const k=speciesArtCache.keys().next().value; speciesArtCache.delete(k); speciesArtRaw.delete(k); }
     speciesArtCache.set(key,url);
     return url;
@@ -6122,6 +6126,94 @@ function hdPortraitFlora(g){
     spread:0.75+r2()*0.6, depth:4+(r2()<0.5?1:0), lean:0.15+r2()*0.4});
   c2.fillStyle='rgba(0,0,0,0.5)';c2.beginPath();c2.ellipse(S2*0.5,S2*0.84,S2*0.26,S2*0.04,0,0,7);c2.fill();
   c2.drawImage(pcv,S2*0.10,S2*0.02,S2*0.80,S2*0.84);
+  const fg=c2.createLinearGradient(0,S2*0.72,0,S2);
+  fg.addColorStop(0,'rgba(6,8,14,0)');fg.addColorStop(1,'rgba(6,8,14,0.5)');
+  c2.fillStyle=fg;c2.fillRect(0,S2*0.72,S2,S2*0.28);
+  return cv.toDataURL();
+}
+function hdPortraitFungi(g){
+  /* painterly mushroom stand: gradient caps, gill shadows, spore motes;
+     luminous colonies light their own grove */
+  const S2=440,cv=document.createElement('canvas');cv.width=cv.height=S2;
+  const c2=cv.getContext('2d');
+  const hideHex=SP_HEX[SP_COLOR[(g.color||0)%SP_COLOR.length]]||'#b08a6a';
+  const hn=parseInt(hideHex.slice(1),16), cr=(hn>>16)&255, cg=(hn>>8)&255, cb=hn&255;
+  const accHex=SP_HEX[SP_COLOR[(g.accent||g.trait||3)%SP_COLOR.length]]||'#d6a0ff';
+  const bg=c2.createRadialGradient(S2*0.5,S2*0.42,20,S2*0.5,S2*0.5,S2*0.62);
+  bg.addColorStop(0,g.lumin?'#141020':'#151109');bg.addColorStop(1,'#06070d');
+  c2.fillStyle=bg;c2.fillRect(0,0,S2,S2);
+  _rankAura(c2,S2,rarityRoll(g.seed,1),false,false,g.seed);
+  const r=mulberry32((g.seed^0xF06)>>>0);
+  c2.fillStyle='rgba(0,0,0,0.5)';c2.beginPath();c2.ellipse(S2*0.5,S2*0.82,S2*0.28,S2*0.04,0,0,7);c2.fill();
+  for(let i=0;i<3;i++){
+    const mx=S2*(0.30+i*0.20)+(r()-0.5)*S2*0.05, h2=S2*(0.20+r()*0.26), capW=S2*(0.10+r()*0.08);
+    const stemW=capW*0.32, by2=S2*0.82;
+    const st2=c2.createLinearGradient(mx-stemW,0,mx+stemW,0);
+    st2.addColorStop(0,'rgba('+(cr*0.5|0)+','+(cg*0.5|0)+','+(cb*0.5|0)+',1)');
+    st2.addColorStop(0.5,'rgba('+Math.min(255,cr*0.95|0)+','+Math.min(255,cg*0.95|0)+','+Math.min(255,cb*0.95|0)+',1)');
+    st2.addColorStop(1,'rgba('+(cr*0.42|0)+','+(cg*0.42|0)+','+(cb*0.42|0)+',1)');
+    c2.fillStyle=st2;
+    c2.beginPath();c2.moveTo(mx-stemW,by2);c2.quadraticCurveTo(mx-stemW*0.7,by2-h2*0.6,mx-stemW*0.5,by2-h2);
+    c2.lineTo(mx+stemW*0.5,by2-h2);c2.quadraticCurveTo(mx+stemW*0.7,by2-h2*0.6,mx+stemW,by2);c2.closePath();c2.fill();
+    const capG=c2.createRadialGradient(mx-capW*0.3,by2-h2-capW*0.5,2,mx,by2-h2,capW*1.5);
+    capG.addColorStop(0,'rgba('+Math.min(255,cr*1.45|0)+','+Math.min(255,cg*1.45|0)+','+Math.min(255,cb*1.45|0)+',1)');
+    capG.addColorStop(0.7,hideHex);
+    capG.addColorStop(1,'rgba('+(cr*0.4|0)+','+(cg*0.4|0)+','+(cb*0.4|0)+',1)');
+    c2.fillStyle=capG;
+    c2.beginPath();c2.moveTo(mx-capW,by2-h2);
+    c2.quadraticCurveTo(mx,by2-h2-capW*1.25,mx+capW,by2-h2);
+    c2.quadraticCurveTo(mx,by2-h2+capW*0.28,mx-capW,by2-h2);c2.closePath();c2.fill();
+    c2.fillStyle='rgba(20,12,8,0.5)';
+    c2.beginPath();c2.ellipse(mx,by2-h2+capW*0.05,capW*0.8,capW*0.12,0,0,7);c2.fill();
+    if(g.lumin){
+      c2.save();c2.globalCompositeOperation='lighter';
+      const lg3=c2.createRadialGradient(mx,by2-h2-capW*0.3,2,mx,by2-h2-capW*0.3,capW*2.2);
+      const an3=parseInt(accHex.slice(1),16);
+      lg3.addColorStop(0,'rgba('+((an3>>16)&255)+','+((an3>>8)&255)+','+(an3&255)+',0.5)');
+      lg3.addColorStop(1,'rgba(0,0,0,0)');
+      c2.fillStyle=lg3;c2.beginPath();c2.arc(mx,by2-h2-capW*0.3,capW*2.2,0,7);c2.fill();c2.restore();
+    }
+    for(let d2=0;d2<4;d2++){ /* spore motes drifting */
+      c2.fillStyle='rgba(255,255,255,'+(0.2+r()*0.35).toFixed(2)+')';
+      c2.beginPath();c2.arc(mx-capW+r()*capW*2, by2-h2-capW*(0.4+r()*1.1), 1+r()*1.6,0,7);c2.fill();
+    }
+  }
+  const fg=c2.createLinearGradient(0,S2*0.72,0,S2);
+  fg.addColorStop(0,'rgba(6,8,14,0)');fg.addColorStop(1,'rgba(6,8,14,0.5)');
+  c2.fillStyle=fg;c2.fillRect(0,S2*0.72,S2,S2*0.28);
+  return cv.toDataURL();
+}
+function hdPortraitMicrobe(g){
+  /* a living colony under the lens: translucent cells, nuclei, membrane
+     rims, additive bloom — the smallest life gets the painterly pass too */
+  const S2=440,cv=document.createElement('canvas');cv.width=cv.height=S2;
+  const c2=cv.getContext('2d');
+  const hideHex=SP_HEX[SP_COLOR[(g.color||0)%SP_COLOR.length]]||'#7fd6c8';
+  const hn=parseInt(hideHex.slice(1),16), cr=(hn>>16)&255, cg=(hn>>8)&255, cb=hn&255;
+  const bg=c2.createRadialGradient(S2*0.5,S2*0.45,20,S2*0.5,S2*0.5,S2*0.62);
+  bg.addColorStop(0,'#0a1216');bg.addColorStop(1,'#05060c');
+  c2.fillStyle=bg;c2.fillRect(0,0,S2,S2);
+  _rankAura(c2,S2,rarityRoll(g.seed,1),false,false,g.seed);
+  const r=mulberry32((g.seed^0x111C)>>>0);
+  for(let i=0;i<16;i++){
+    const a=r()*TAU, d=Math.pow(r(),1.4)*S2*0.26;
+    const x=S2*0.5+Math.cos(a)*d, y=S2*0.48+Math.sin(a)*d*0.8, rr=S2*(0.03+r()*0.05);
+    const cell=c2.createRadialGradient(x-rr*0.3,y-rr*0.3,1,x,y,rr);
+    cell.addColorStop(0,'rgba('+Math.min(255,cr*1.4|0)+','+Math.min(255,cg*1.4|0)+','+Math.min(255,cb*1.4|0)+',0.55)');
+    cell.addColorStop(0.75,'rgba('+cr+','+cg+','+cb+',0.30)');
+    cell.addColorStop(1,'rgba('+cr+','+cg+','+cb+',0.06)');
+    c2.fillStyle=cell;c2.beginPath();c2.arc(x,y,rr,0,7);c2.fill();
+    c2.strokeStyle='rgba('+Math.min(255,cr*1.5|0)+','+Math.min(255,cg*1.5|0)+','+Math.min(255,cb*1.5|0)+',0.45)';
+    c2.lineWidth=1.2;c2.beginPath();c2.arc(x,y,rr,0,7);c2.stroke();
+    c2.fillStyle='rgba(12,16,22,0.8)';
+    c2.beginPath();c2.arc(x+rr*0.2,y-rr*0.1,rr*0.28,0,7);c2.fill();
+    if(r()<0.4){ c2.fillStyle='rgba(255,255,255,0.5)';
+      c2.beginPath();c2.arc(x-rr*0.35,y-rr*0.4,rr*0.12,0,7);c2.fill(); }
+  }
+  c2.save();c2.globalCompositeOperation='lighter';
+  const bloom=c2.createRadialGradient(S2*0.5,S2*0.48,10,S2*0.5,S2*0.48,S2*0.36);
+  bloom.addColorStop(0,'rgba('+cr+','+cg+','+cb+',0.16)');bloom.addColorStop(1,'rgba(0,0,0,0)');
+  c2.fillStyle=bloom;c2.fillRect(0,0,S2,S2);c2.restore();
   const fg=c2.createLinearGradient(0,S2*0.72,0,S2);
   fg.addColorStop(0,'rgba(6,8,14,0)');fg.addColorStop(1,'rgba(6,8,14,0.5)');
   c2.fillStyle=fg;c2.fillRect(0,S2*0.72,S2,S2*0.28);
@@ -10733,29 +10825,29 @@ const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 const RELEASES=[
 {v:'1.3', title:'The HD Frontier', date:'In development', sections:[
  ['✨ New Features & Systems', [
-  '<b>HD landing vistas (beta)</b> — Settings → Graphics → <b>Landing view: HD</b>. Planetfall opens a ground-level panorama built entirely from the world&#8217;s card: its biome, its civilization&#8217;s era, the local clock, the weather, auroras over magnetized worlds, and the world&#8217;s own creatures. Classic stays the default while the art grows.',
-  '<b>No two worlds are the same painting anymore.</b> Every vista now rolls its own horizon, sun, river course, islands and flora — and every world grows its <b>own plant species</b>, usually chlorophyll-green but sometimes golden, copper, even violet. Rare wonders are out there: <b>rings arcing across the sky</b>, a <b>looming giant moon</b>, <b>bioluminescent shores</b>, aurora veils in colors beyond the green. The universe finally has more sights than any one expedition will see.',
-  '<b>HD creature portraits (beta, same switch)</b> — every body plan in the Compendium finally looks like its card reads: armored backs, stilt-riders, tentacled bells, crystal-faceted hides, gelatinous drifters; fur, scales, feathers and warts; crystal antlers and mirrored eyes where the card says so. <b>Apex Guardians glow inside a molten-gold aura, Paragons a silver-teal one.</b> Eyeless things are, at last, eyeless.',
-  '<b>Weather comes in spells</b> — a world&#8217;s Weather row is its climate, not a life sentence. Rain showers pass, dust storms blow through, and the surface readout says <b>clear skies</b> between them. Snow country keeps its snow on the ground either way.',
+  'HD landing vistas (beta) — Settings → Graphics → <b>Landing view: HD</b>. Planetfall opens a ground-level panorama built entirely from the world&#8217;s card: its biome, its civilization&#8217;s era, the local clock, the weather, auroras over magnetized worlds, and the world&#8217;s own creatures. Classic stays the default while the art grows.',
+  'No two worlds are the same painting anymore. Every vista now rolls its own horizon, sun, river course, islands and flora — and every world grows its own plant species, usually chlorophyll-green but sometimes golden, copper, even violet. Rare wonders are out there: rings arcing across the sky, a looming giant moon, bioluminescent shores, aurora veils in colors beyond the green. The universe finally has more sights than any one expedition will see.',
+  'HD creature portraits (beta, same switch) — every body plan in the Compendium finally looks like its card reads: armored backs, stilt-riders, tentacled bells, crystal-faceted hides, gelatinous drifters; fur, scales, feathers and warts; crystal antlers and mirrored eyes where the card says so. Apex Guardians glow inside a molten-gold aura, Paragons a silver-teal one. Eyeless things are, at last, eyeless.',
+  'Weather comes in spells — a world&#8217;s Weather row is its climate, not a life sentence. Rain showers pass, dust storms blow through, and the surface readout says clear skies between them. Snow country keeps its snow on the ground either way.',
  ]],
  ['🎨 UI Enhancements', [
-  '<b>The galaxy view earns its stars</b>: every star now glows with its true class color — soft halos, diffraction spikes on the giants, a gentle twinkle on the brightest — and nebulae, dark clouds and supernova remnants are textured things instead of flat circles.',
-  '<b>The picture now honors the card, everywhere.</b> Hot worlds&#8217; oceans are truly &#8220;mostly evaporated&#8221; (brine basins and salt flats), frozen worlds&#8217; seas are ice; every civilized world&#8217;s night side glows with city lights scaled to its era; ringed worlds finally show their rings on the survey card; moons wear their true type colors in the system view; gas giants wear the auroras their cards promise; and each system&#8217;s planets are lit by their own star&#8217;s color.',
-  'Rarity celebration uncapped: an <b>Omnipotent</b> find now celebrates like one (the cinematic scaled with tier only up to Mythic before), summit-grade creatures wear their iridescent foil in the Compendium list too, and a caught Paragon&#8217;s Binder slot shows its true grade color. Silicon — one of the most-mined elements — finally got its own icon color.',
+  'The galaxy view earns its stars: every star now glows with its true class color — soft halos, diffraction spikes on the giants, a gentle twinkle on the brightest — and nebulae, dark clouds and supernova remnants are textured things instead of flat circles.',
+  'The picture now honors the card, everywhere. Hot worlds&#8217; oceans are truly &#8220;mostly evaporated&#8221; (brine basins and salt flats), frozen worlds&#8217; seas are ice; every civilized world&#8217;s night side glows with city lights scaled to its era; ringed worlds finally show their rings on the survey card; moons wear their true type colors in the system view; gas giants wear the auroras their cards promise; and each system&#8217;s planets are lit by their own star&#8217;s color.',
+  'Rarity celebration uncapped: an Omnipotent find now celebrates like one (the cinematic scaled with tier only up to Mythic before), summit-grade creatures wear their iridescent foil in the Compendium list too, and a caught Paragon&#8217;s Binder slot shows its true grade color. Silicon — one of the most-mined elements — finally got its own icon color.',
   'Survey cards are yours to handle now: a locked card wears an <b>✕</b> to close it (tapping empty space still works), and you can <b>drag any open card by its header</b> — mouse or finger — to move it out of the way and keep reading the sky behind it.',
  ]],
 ]},
 {v:'1.2.6', title:'Ink & Ember', date:'July 2026', sections:[
  ['🎨 UI Enhancements', [
-  'Calmer reading everywhere: <b>bold now marks only things you can press or proper names</b> — about a hundred stray emphasis words across cards, battles, training and these very notes have relaxed back into plain text. (In the brighter Text tones, gold now always means “this is a thing,” never decoration.)',
-  '<b>The Chronicle speaks in color</b>, old-school MUD style: your champion reads cyan and the foe ember on every line, damage in yellow and criticals in gold, misses dim, staggers flash, burns glow orange, mending green, lifesteal violet, thorns lime — and a felled combatant falls in red. The verdict wears its outcome too: victory gold, defeat red. Shared battle logs stay plain text.',
-  'The same color language now runs through the whole expedition: <b>pop-ups and the bell tray</b> tint by event — red for harm and loss, gold for milestones and first contact, green for harvests, samples and mined hauls — and a world&#8217;s long-range glance tints each reading by family: water cyan, life green, signals violet. The <b>Compendium</b> marks your Field Scout in cyan, the <b>Star Atlas</b> tints its badges, and <b>Cosmic Events</b> each wear their nature&#8217;s color.',
+  'Calmer reading everywhere: bold now marks only things you can press or proper names — about a hundred stray emphasis words across cards, battles, training and these very notes have relaxed back into plain text. (In the brighter Text tones, gold now always means “this is a thing,” never decoration.)',
+  'The Chronicle speaks in color, old-school MUD style: your champion reads cyan and the foe ember on every line, damage in yellow and criticals in gold, misses dim, staggers flash, burns glow orange, mending green, lifesteal violet, thorns lime — and a felled combatant falls in red. The verdict wears its outcome too: victory gold, defeat red. Shared battle logs stay plain text.',
+  'The same color language now runs through the whole expedition: pop-ups and the bell tray tint by event — red for harm and loss, gold for milestones and first contact, green for harvests, samples and mined hauls — and a world&#8217;s long-range glance tints each reading by family: water cyan, life green, signals violet. The <b>Compendium</b> marks your Field Scout in cyan, the <b>Star Atlas</b> tints its badges, and <b>Cosmic Events</b> each wear their nature&#8217;s color.',
   'A full grammar and clarity pass over every word in the game: stale button names corrected, the settings guide caught up with three tabs of reality, one wandering “Codex” sent home to the Prime Codex, and the First Contact <em>achievement</em> renamed First Specimen so the real first contact could keep its name.',
  ]],
 ]},
 {v:'1.2.5', title:'First Contact', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
-  'First contact is an act, not a formality. Landing on an inhabited world attempts contact: most receptions are warm and open the census on the spot — but a wary one wounds you and the census stays sealed. Land again to retry. A named <b>Field Scout</b> takes the hit in your place, and conquest never needs to ask.',
+  'First contact is an act, not a formality. Landing on an inhabited world attempts contact: most receptions are warm and open the census on the spot — but a wary one wounds you and the census stays sealed. Land again to retry. A named Field Scout takes the hit in your place, and conquest never needs to ask.',
   'The Cargo hold is a real inventory now — a grid of item tiles, every element with its own icon: ingots for metals, shards for ices, flasks for gases, cut gems for the exotics. The <b>Research Bench</b> lives on its own tab, with the same icons in every recipe.',
  ]],
  ['🎨 UI Enhancements', [
@@ -10767,19 +10859,19 @@ const RELEASES=[
 ]},
 {v:'1.2.1', title:'The Hunt Board', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
-  '<b>Expedition Charters</b> — a hunt board joins the left rail. New explorers receive five <b>starter charters</b> that teach the expedition&#8217;s trades in the order they chain — make planetfall, prospect a dead world, discover life, name a Field Scout, conquer a world — each paying ☄ Stardust on the spot. (Veterans: trades you&#8217;ve already proven are quietly marked complete.)',
+  'Expedition Charters — a hunt board joins the left rail. New explorers receive five starter charters that teach the expedition&#8217;s trades in the order they chain — make planetfall, prospect a dead world, discover life, name a Field Scout, conquer a world — each paying ☄ Stardust on the spot. (Veterans: trades you&#8217;ve already proven are quietly marked complete.)',
   'Once the trades are learned, the board turns weekly: three fresh charters every week, identical for every explorer in the universe. Compare boards with a friend — they match.',
  ]],
 ]},
 {v:'1.2', title:'The Discovery Arc', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
-  'Knowing a world now comes in three acts. A <b>glance</b> shows what a telescope sees — color class and long-range reads: atmosphere, water signatures, biosignatures, ⟁ signals (hover, on a computer; on a phone your tap goes straight to the survey). An <b>orbital survey</b> (tap) reads the environment and biosphere. And <b>planetfall</b> completes the picture: land on a world to run its <b>ground survey</b>.',
+  'Knowing a world now comes in three acts. A glance shows what a telescope sees — color class and long-range reads: atmosphere, water signatures, biosignatures, ⟁ signals (hover, on a computer; on a phone your tap goes straight to the survey). An orbital survey (tap) reads the environment and biosphere. And planetfall completes the picture: land on a world to run its ground survey.',
   '<b>Land buttons</b> — unlanded worlds now carry one on their card: <b>Land — make contact</b> on civilized worlds, <b>Land to prospect</b> on dead ones. One press flies you down; zooming in by hand still works.',
   'Civilizations must be met, not scanned — from orbit an organized world is only ⟁ signals; land to make contact and read its census: tech era, local calendar, population.',
   'Prospecting takes boots on the ground — a dead world&#8217;s ⛏ Mine Deposits opens once you&#8217;ve landed on it. 🛰 Deep Scanners still read the veins from orbit.',
-  'Worlds you&#8217;ve stood on wear a <b>Ground-surveyed</b> mark — and every world you charted, settled or mined before this update counts as ground-surveyed already: nothing you knew is re-hidden.',
+  'Worlds you&#8217;ve stood on wear a Ground-surveyed mark — and every world you charted, settled or mined before this update counts as ground-surveyed already: nothing you knew is re-hidden.',
   'Landing pays — your first footfall on any world collects field samples: a pinch of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration now stocks the Research Bench all by itself.',
-  '<b>Field Scouts</b> — name one of your fauna the expedition&#8217;s scout (press <b>Scout</b> on its card) and it takes the hit when a bioscan turns hostile, through the same wounds-and-mending life every creature lives. A scout with nothing left is lost forever. Hunt tougher beasts to scan deadlier worlds.',
+  'Field Scouts — name one of your fauna the expedition&#8217;s scout (press <b>Scout</b> on its card) and it takes the hit when a bioscan turns hostile, through the same wounds-and-mending life every creature lives. A scout with nothing left is lost forever. Hunt tougher beasts to scan deadlier worlds.',
  ]],
  ['🛠 Under the Hood', [
   'A cool-down for hot phones: the star field is painted once instead of every frame, survey readouts stop recomputing sixty times a second, the card layout no longer thrashes, and phones render at a tuned resolution. Same universe, cooler hands, longer batteries.',
@@ -10797,7 +10889,7 @@ const RELEASES=[
   'Card actions (Star Atlas, Conquer, Mine, Share) moved to the top of every survey card — no more scrolling to chart a world.',
   'Scrollbars you can actually see — every scrolling panel (release notes, survey cards, the Guide, Compendium and more) now shows a visible thumb and a faint track, so it&#8217;s always clear there&#8217;s more below the fold. One explorer got stranded mid-training because the old scrollbar vanished into the void.',
   'The Settings panel is a touch wider and its option pills can never poke past its right edge again, whatever font you&#8217;ve chosen.',
-  'The <b>“What&#8217;s new”</b> bulletin for a patch now carries its whole release line — 1.1.2 shows the 1.1.1 and 1.1 notes beneath it, so nobody lands on a patch note with no context.',
+  'The “What&#8217;s new” bulletin for a patch now carries its whole release line — 1.1.2 shows the 1.1.1 and 1.1 notes beneath it, so nobody lands on a patch note with no context.',
  ]],
 ]},
 {v:'1.1.1', title:'Signal & Polish', date:'July 2026', sections:[
@@ -10805,29 +10897,29 @@ const RELEASES=[
   'Settings rows breathe — option pills keep a clean gap from their labels instead of crowding them (Font and Motion were touching).',
  ]],
  ['🛠 Under the Hood', [
-  'The game now introduces itself as <b>Celestial Frontier</b> everywhere outside the game too — browser tab, link previews and search results. (The old “Cosmic Codex” page subtitle is retired; the Prime Codex keeps its name.)',
+  'The game now introduces itself as Celestial Frontier everywhere outside the game too — browser tab, link previews and search results. (The old “Cosmic Codex” page subtitle is retired; the Prime Codex keeps its name.)',
  ]],
 ]},
 {v:'1.1', title:'Field Reports', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
-  'Core-loop <b>sound effects</b>: a soft sonar ping answers every survey tap, and a rushing whoosh carries hyperlane travel and planetfall.',
+  'Core-loop sound effects: a soft sonar ping answers every survey tap, and a rushing whoosh carries hyperlane travel and planetfall.',
   '<b>Sound volume slider</b> (Settings → Audio) — every effect now rides one master level; set it and the survey ping answers at exactly that loudness.',
   '<b>Motion setting</b> (Settings → Graphics) — <b>Auto</b> honors your device&#8217;s reduce-motion preference (and keeps listening for it), or pick <b>Full</b> / <b>Reduced</b> yourself. Reduced stills the travel tunnel, screen shake, confetti and foil shimmer.',
   '<b>Change your explorer name</b> anytime — Settings → Display → Explorer name, or the ✎ link atop your character sheet. Your record stays; only the name changes.',
  ]],
  ['🎨 UI Enhancements', [
-  '<b>Quieter Field Training</b> — while training, pop-ups rest in the 🔔 tray (nothing is lost) and tooltips hold, so the guidance card is the one voice. Blocked scrolls now nudge the card instead of failing silently.',
-  'Survey-card labels are <b>brighter</b> and now scale with the A+ / A++ text sizes.',
-  'Desktop hint corrected: hovering <b>previews</b> a card — a <b>click</b> surveys it.',
-  '<b>Bigger touch targets</b> on phones — everything tappable in the sky and the small Atlas/Settings controls now offer a fingertip more grab, with nothing visibly changed.',
-  '<b>Keyboard support</b> throughout the panels — Settings, Compendium, Binder, Star Atlas and Guide entries can all be tabbed to and pressed with Enter or Space, with a visible focus ring.',
+  'Quieter Field Training — while training, pop-ups rest in the 🔔 tray (nothing is lost) and tooltips hold, so the guidance card is the one voice. Blocked scrolls now nudge the card instead of failing silently.',
+  'Survey-card labels are brighter and now scale with the A+ / A++ text sizes.',
+  'Desktop hint corrected: hovering previews a card — a click surveys it.',
+  'Bigger touch targets on phones — everything tappable in the sky and the small Atlas/Settings controls now offer a fingertip more grab, with nothing visibly changed.',
+  'Keyboard support throughout the panels — Settings, Compendium, Binder, Star Atlas and Guide entries can all be tabbed to and pressed with Enter or Space, with a visible focus ring.',
  ]],
  ['🚀 Gameplay', [
-  '<b>Landing assist</b> — when a planet fills the view but sits off-center, keep zooming: the camera glides the rest of the way and lands instead of silently maxing out. It only ever answers that deliberate zoom-in — panning, pinching and moon-gazing are never hijacked.',
+  'Landing assist — when a planet fills the view but sits off-center, keep zooming: the camera glides the rest of the way and lands instead of silently maxing out. It only ever answers that deliberate zoom-in — panning, pinching and moon-gazing are never hijacked.',
  ]],
  ['🐞 Bug Fixes', [
   'Tiny moons no longer steal taps aimed at their planet — “tap Earth” now lands on Earth. A moon’s tap target now matches what you can actually see, and the generous grab returns once you’re close; planet tap targets grew a touch, too.',
-  'No more phantom <b>Rank Up</b> during Field Training — the sandbox promotion was quietly returned with the practice cache, so the fanfare now waits for the real thing.',
+  'No more phantom Rank Up during Field Training — the sandbox promotion was quietly returned with the practice cache, so the fanfare now waits for the real thing.',
   'The rename dialog can be cancelled (Esc or Cancel) instead of demanding a name.',
  ]],
  ['🛠 Under the Hood', [
@@ -10836,38 +10928,38 @@ const RELEASES=[
 ]},
 {v:'1.0', title:'The Frontier Opens', date:'June 2026', sections:[
  ['🌌 An Infinite, Shared Universe', [
-  'A <b>deterministic procedural cosmos</b> — every galaxy, star and world generated from seeds, identical for every explorer, fully offline, no account needed. Four seamless scales: universe → galaxy → star system → planet surface.',
-  '<b>Hyperlane travel</b> with real distance — far jumps take longer, and researched drives shrink the void to a breath. The tunnel wears your destination’s light; tap to skip.',
-  '<b>Survey cards</b> for everything: worlds, stars, black holes, wormholes, supernovae, the CMB — and spectral designations that wear each object’s rarity as color.',
-  '<b>Frontier regions</b> — your charter begins at the Solar Reach and expands with every Signature claimed: the Local Cluster, the Near Field, the Deep Field, the Outer Dark, and finally the Frontier. Farther regions field tougher defenders and stranger life.',
-  '<b>Cosmic events on every timescale</b> — somewhere a star is always dying, and rarer spectacles cycle by the hour, week, month and year. Every explorer sees the same event at the same moment; the 📜 Witness Log remembers the skies you saw.',
+  'A deterministic procedural cosmos — every galaxy, star and world generated from seeds, identical for every explorer, fully offline, no account needed. Four seamless scales: universe → galaxy → star system → planet surface.',
+  'Hyperlane travel with real distance — far jumps take longer, and researched drives shrink the void to a breath. The tunnel wears your destination’s light; tap to skip.',
+  'Survey cards for everything: worlds, stars, black holes, wormholes, supernovae, the CMB — and spectral designations that wear each object’s rarity as color.',
+  'Frontier regions — your charter begins at the Solar Reach and expands with every Signature claimed: the Local Cluster, the Near Field, the Deep Field, the Outer Dark, and finally the Frontier. Farther regions field tougher defenders and stranger life.',
+  'Cosmic events on every timescale — somewhere a star is always dying, and rarer spectacles cycle by the hour, week, month and year. Every explorer sees the same event at the same moment; the 📜 Witness Log remembers the skies you saw.',
  ]],
  ['🧭 The Explorer’s Tools', [
-  '<b>Star Atlas</b> bookmarks with favorites and a home marker; <b>search</b> that finds anything you’ve discovered or named and accepts pasted codes; the <b>Traveler’s Beacon</b> — a fresh shared destination every five minutes.',
-  '<b>Share codes</b> — CF1- codes land friends on your exact world; CFB- codes summon your exact creature for duels; 📸 <b>discovery records</b> turn Legendary+ finds into paste-anywhere keepsakes.',
-  '<b>Field Training</b> — every new expedition opens with a fully sandboxed tutorial: chart Earth, train with a loaned cache, feed, breed, duel, take a scratch and heal. Skippable for veterans; nothing lost in training follows you out.',
+  '<b>Star Atlas</b> bookmarks with favorites and a home marker; <b>search</b> that finds anything you’ve discovered or named and accepts pasted codes; the Traveler’s Beacon — a fresh shared destination every five minutes.',
+  'Share codes — CF1- codes land friends on your exact world; CFB- codes summon your exact creature for duels; 📸 discovery records turn Legendary+ finds into paste-anywhere keepsakes.',
+  'Field Training — every new expedition opens with a fully sandboxed tutorial: chart Earth, train with a loaned cache, feed, breed, duel, take a scratch and heal. Skippable for veterans; nothing lost in training follows you out.',
   'A searchable <b>🧭 Guide to the Universe</b> covers every system in the game — tap ? anytime (the version line there opens these notes).',
  ]],
  ['🧬 Life & the Compendium', [
-  'Catalogue life across <b>four kingdoms and sixteen realms</b>, drawn by a painterly portrait engine that stages every creature <b>in the habitat where you found it</b>.',
-  'A <b>15-grade rarity ladder</b> — Common through the deep spectrum to the summit: <b>Empyrean, Eternal, Omnipotent</b>. Foil frames at the top; no creature’s grade ever falls.',
+  'Catalogue life across four kingdoms and sixteen realms, drawn by a painterly portrait engine that stages every creature in the habitat where you found it.',
+  'A 15-grade rarity ladder — Common through the deep spectrum to the summit: Empyrean, Eternal, Omnipotent. Foil frames at the top; no creature’s grade ever falls.',
   '<b>Breed</b> hybrids (both parents consumed!), <b>feed</b> for permanent growth and medicine — and mind the poison: rarer flora bite deeper, and only a spent beast dies of it.',
-  '<b>👑 Apex Guardians</b> — named one-of-a-kind summit titans ruling rare worlds, the same rulers for every explorer. Defeat one in conquest and it joins your Compendium.',
-  '<b>🜲 The Fifty Paragons</b> — legendary deep-spectrum creatures on fixed worlds, silhouettes in your Binder until found. Share the coordinates; your friend hunts the same legend.',
-  '<b>A living collection</b> — your Compendium interbreeds and evolves on its own as the cosmic clock ticks, and worlds re-roll their rosters as the universe ages. Sapience tiers run from Instinctive to fully Sapient; whole worlds host civilizations from stone-age to starfaring.',
+  '👑 Apex Guardians — named one-of-a-kind summit titans ruling rare worlds, the same rulers for every explorer. Defeat one in conquest and it joins your Compendium.',
+  '🜲 The Fifty Paragons — legendary deep-spectrum creatures on fixed worlds, silhouettes in your Binder until found. Share the coordinates; your friend hunts the same legend.',
+  'A living collection — your Compendium interbreeds and evolves on its own as the cosmic clock ticks, and worlds re-roll their rosters as the universe ages. Sapience tiers run from Instinctive to fully Sapient; whole worlds host civilizations from stone-age to starfaring.',
  ]],
  ['⚔ Battle', [
-  '<b>Classes, XP & levels</b> — every beast is born to one of 180+ classes (Warrior to Worldbreaker; the legendary ones live at the summit) with <b>innate always-on arts</b>. <b>Power is built through wins</b> — duels, conquests, guardians — and levels wake more arts, never raw stats.',
-  'An <b>ability matrix</b> of hundreds of arts (“Fire Reckoning III”), every verb balanced across thousands of simulated duels. Hybrids inherit their other parent’s archetype; guardians fight with Sovereign arts.',
-  '<b>The Chronicle</b> — duels are narrated blow-by-blow like a tabletop session: initiative, named arts, executes, thorn recoils, burn ticks, death lines — closing with a statistics ledger and a <b>shareable battle log</b>.',
-  '<b>Conquest</b> — champion worlds yourself or send a beast; settled worlds fly your flag, scan safely and pay Stardust. World fields make defenders fight in their element.',
-  '<b>Wounds persist</b> — conquest scars and resented meals leave a beast Bruised, Injured or Critical, fighting below its strength until mended. <b>Feeding is medicine</b>: loved flavours mend most, rarer flora mend deeper — and poison harder. The frontier bites you too: hostile bioscans cost HP, and at zero the expedition ends.',
+  'Classes, XP & levels — every beast is born to one of 180+ classes (Warrior to Worldbreaker; the legendary ones live at the summit) with innate always-on arts. Power is built through wins — duels, conquests, guardians — and levels wake more arts, never raw stats.',
+  'An ability matrix of hundreds of arts (“Fire Reckoning III”), every verb balanced across thousands of simulated duels. Hybrids inherit their other parent’s archetype; guardians fight with Sovereign arts.',
+  'The Chronicle — duels are narrated blow-by-blow like a tabletop session: initiative, named arts, executes, thorn recoils, burn ticks, death lines — closing with a statistics ledger and a shareable battle log.',
+  'Conquest — champion worlds yourself or send a beast; settled worlds fly your flag, scan safely and pay Stardust. World fields make defenders fight in their element.',
+  'Wounds persist — conquest scars and resented meals leave a beast Bruised, Injured or Critical, fighting below its strength until mended. Feeding is medicine: loved flavours mend most, rarer flora mend deeper — and poison harder. The frontier bites you too: hostile bioscans cost HP, and at zero the expedition ends.',
  ]],
  ['🛠 Progression', [
   '<b>The Prime Codex</b> — nine Signatures to finish the Pathfinders’ unfinished master survey and reach the Celestial Frontier. Each carries their field notes; the Prism Signature is the discovery they died short of. Multiple endings.',
-  '<b>Mining & Research</b> — dead worlds carry the elements: stock your 🧰 Cargo and spend it at the bench — scanners, hull, lab, and the drive ladder (Fusion → Antimatter → Warp Fold).',
+  'Mining & Research — dead worlds carry the elements: stock your 🧰 Cargo and spend it at the bench — scanners, hull, lab, and the drive ladder (Fusion → Antimatter → Warp Fold).',
   '<b>The Binder</b> — you cannot collect individuals out of infinity, so collect types: fixed pages identical for every explorer, claimable Sets with Stardust bounties.',
-  'Ten explorer ranks with <b>unlockable nameplate colors</b> (foil at Eternal Frontier), dozens of achievements, the Star Atlas, the Traveler’s Beacon, cosmic events with a 📜 Witness Log, 📸 discovery records, and share codes for worlds and creatures alike.',
+  'Ten explorer ranks with unlockable nameplate colors (foil at Eternal Frontier), dozens of achievements, the Star Atlas, the Traveler’s Beacon, cosmic events with a 📜 Witness Log, 📸 discovery records, and share codes for worlds and creatures alike.',
  ]],
  ['⚙ The Craft', [
   'One file, offline-capable, mobile-first. Deterministic to the byte — the same universe on every device, verified by a 50-probe fingerprint and a full headless test fleet on every build.',
@@ -11635,8 +11727,8 @@ function askExplorerName(initial){
   if(h) h.textContent = initial ? 'Celestial Frontier' : 'Change your explorer name';
   const lore=nameBox.querySelector('.lore'); if(lore) lore.style.display = initial ? 'block' : 'none';
   const nn=nameBox.querySelector('.nnote'); if(nn) nn.innerHTML = initial
-    ? 'First, what shall the stars call <em>you</em>?'
-    : 'What shall the stars call <em>you</em>?';
+    ? 'First, what shall the stars call you?'
+    : 'What shall the stars call you?';
   const ok=document.getElementById('nameok'); if(ok){ ok.textContent=initial?'Begin the expedition':'Save name'; ok.disabled=!nameIn.value.trim(); }
   const nc=document.getElementById('namecancel'); if(nc) nc.style.display = initial ? 'none' : 'block';   /* only the FIRST naming is mandatory */
   nameBox.style.display='flex';
