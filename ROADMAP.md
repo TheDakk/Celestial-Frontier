@@ -1,24 +1,95 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
-## ▶▶ NEXT SESSION AGENDA (agreed with Nick, 2026-07-18)
+## ▶▶ NEXT SESSION AGENDA
 
-1. ITERATE v1.3 PHASE 1 (HD landing vistas — see the v1.3 section below
-   for exactly what's in the code and what's a stand-in). Nick will have
-   on-device feedback from flipping Settings → Graphics → Landing view →
-   HD and landing on real worlds. Known iteration list: ember/volcano
-   scene (lava worlds currently borrow the dust palette), island scene
-   for ocean worlds, snow weather, twilight polish, aurora nights.
-2. UPDATE THE VISUAL-DIRECTION ARTIFACT alongside code iterations:
-   https://claude.ai/code/artifact/bb85d5b5-2f27-48d3-86fc-9f7a39f8c660
-   ("Celestial Frontier — v1.3 Visual Direction"). To update it from a
-   NEW session: read its current content with WebFetch on that URL (the
-   original source file lived in a session-scratchpad that is gone),
-   write the revised page to a new local file, and publish with the
-   Artifact tool passing that URL as `url` so the link stays the same.
-3. Mechanics reminders: extract.js first; v1.3 stays flag-gated (hd
-   default Classic) and UNDEPLOYED until Nick's word; every phase passes
-   the seed-sweep + heat gates below; fingerprint/smoke/systems each
-   batch (smoke is 155 checks).
+1. NICK'S ON-DEVICE PASS of Phase 1 iteration 2 (below): Settings →
+   Graphics → Landing view → HD, then land on a lava world, an ocean
+   world, a cold/winter terran, and anything at dusk or night. His
+   screenshots drive iteration 3.
+2. Remaining Phase 1 candidates (only if Nick wants more before Phase 2):
+   per-world biome variety inside a type (the same terran rolling
+   forest vs plains), rocky/ice night variants (currently those types
+   always render their day pal — the caption can say "local night" over
+   a daylight scene; deliberate v1 simplification), aurora over ICE
+   worlds (surface renderer draws them; vista ice scenes have no night).
+3. Then PHASE 2 — creature portraits + true gene inheritance (see phase
+   plan below).
+4. Mechanics: extract.js first; v1.3 stays flag-gated (hd default
+   Classic) and UNDEPLOYED until Nick's word; fingerprint/smoke/systems
+   each batch (smoke is now 161 checks).
+
+## ▶ v1.3 PHASE 1 ITERATION 2 — BUILT & VERIFIED (2026-07-17). The whole
+## roadmap iteration list landed in one batch; still flag-gated, NOT deployed.
+
+WHAT CHANGED (all inside @section hdart + the showVistaBox mapping):
+- EMBER WORLDS (lava): new ember pal (smoke-black sky, red horizon glow),
+  _hdVolcano (cone + crater glow + flank trickle + leeward smoke), the
+  river course runs as a LAVA FLOW (crust plates, bank glow), emissive
+  ground cracks, smoke banks with underlit bellies; wx 'ash' overlay =
+  falling ash + rising embers. Fauna ember-lit with warm haze ('150,96,80').
+- ISLAND SCENE (ocean worlds, biome:'island'): open sea to the horizon
+  with per-pal water gradients (day/night/rain/twilight/snow), distant
+  island silhouettes, sun/moon GLITTER ROAD (sparkle-dash envelope — no
+  drawn shape; a wake-triangle draft violated the no-rays law and was
+  cut), wave crests opening toward shore, beach foreground with foam
+  lines + wet sand, era-scaled harbor on the big island (iron: keep +
+  hearth dots; space: lit towers + beacon). Beasts and flora come down
+  to the sand.
+- SNOW: new snow pal (winter-grey light, snow-covered layers/ground) for
+  terran snowfall; wx 'snow' overlay (round flakes at two depths + chill
+  band) — ice worlds get falling snow too, and winter rain→snow (effWx)
+  now reaches the vista.
+- TWILIGHT: first-class pal, no longer a flat grade — indigo→amber dusk
+  sky, LOW sun (sy=hz-30, sets behind the ridges on land, kisses the
+  water on islands), dark cloud bellies lit from below, first stars,
+  warm crest light, dusk grade on top.
+- AURORA NIGHTS: opts.aurora (from env.hasField — the same magnetosphere
+  fact whose card row says "auroras crown the poles") hangs curtain
+  auroras over night scenes, twin hues 140/280 matching the live surface,
+  column-striated with per-column gradients.
+- SCENE-WIDE GRADING (proof-sheet findings, fixed in-batch): the river
+  now WEARS THE SKY (night dark-steel + faint moon glints, twilight
+  amber→violet; was summer-blue in every scene — glowed like a
+  searchlight at night); plants darken to silhouettes at night / steep
+  violet at dusk / frost in winter (_hdStampPlant darkAmt/darkCol);
+  near beasts knocked back at night; sea-day sun halo softened (110px,
+  0.62 alpha — glare dominated the open sky); beast tuft color per
+  ground ('34,14,10' basalt, '86,72,44' sand); rain/dust/snow/ash
+  overlays keyed to the card's wx TOKEN, not the pal (night rain now
+  streaks); vista caption words the weather ("snowfall", "ashfall").
+- WIRING: showVistaBox(P, tod, wx, era, genes, aurora) — era→harbor on
+  islands too; lava→ember (the dust stand-in is gone); terran/ocean tod
+  twilight→twilight pal, wx snow→snow pal.
+VERIFIED: fingerprint byte-identical (all app-layer), smoke 155→163
+(8 new scene checks render ember/island/aurora/snow/twilight/nightize/
+bare-beach headless via the new hdVista probe hook), systems 19/19,
+balance PASS. Proof sheet rendered via headless Edge (14 scenes) and
+inspected — that's where the searchlight-river, day-glo-trees-at-night,
+glare-halo and wake-triangle findings came from.
+REVIEW ROUND (2 parallel agents, all confirmed findings fixed in-batch):
+- CORRECTNESS: clean — executed all 1,728 caller-producible opt
+  combinations headless (0 throws, 0 invalid canvas colors); plat/ridge2
+  guards, pal fallbacks, hasField parity vs the card all verified.
+- EDGE/DESIGN-LAW, 5 confirmed, 5 fixed:
+  F1 ice/rocky/venus/desert at night rendered DAYLIGHT under a caption
+     saying "local night" → new nightize grade (starlight + the card's
+     moons + no sun/clouds/sun-crests) and duskize (dusk grade) applied
+     to types whose pal has no clock; ember exempt (sunless either way).
+  F2 moon-glitter road + river night-glints rendered with 0 moons →
+     both now gate on the card's moons (moonless night = dark water).
+  F3 aquatic fauna ("jet-propelled swimmers of the open ocean") stood
+     legged on the beach → caller filters non-standing loco/habitat
+     (swim/float/filter/drift; open ocean/sea shallows/cloud decks/vent
+     fields) out of the vista party. TRUE body-plan genes stay Phase 2.
+  F4 beach/meadow trees + grass fringe on "No known life"/microbial
+     worlds → new flora flag from the card's Life row gates every plant
+     stamp and the grass silhouettes (land + island scenes both).
+  F5 night rain/snow fell from a clear starry sky → cloud deck now
+     rides the night pal when the wx token precipitates.
+ARTIFACT REPUBLISHED post-fixes (engine slice re-lifted verbatim).
+ARTIFACT UPDATED (same URL): the Landing Zones section now renders from
+the game's own hdart code (lifted verbatim), 11 scenes incl. the five
+new ones; footer marks vistas "IN THE GAME, flag-gated, iterating".
 
 ## ▶ v1.3 "THE HD FRONTIER" — IN THE CODE, ITERATING (2026-07-18). DO NOT
 ## BUMP/DEPLOY until Nick's word; the hd flag keeps it invisible either way.
@@ -49,8 +120,8 @@ PHASE 1 — LANDED IN THE GAME (this commit, flag-gated):
 - #vistabox overlay: planetfall (when hdOn) opens the panorama once the
   surface frame knows tod/wx and renderPanel has cached the descriptor
   (era parsed from Tech era row; genes from the fauna roster, max 2).
-  Tap dismisses. Gas giants skip (no ground). lava→dust pal is a V1
-  STAND-IN — the ember/volcano scene is next iteration.
+  Tap dismisses. Gas giants skip (no ground). lava→dust pal was a V1
+  STAND-IN — replaced by the real ember scene in ITERATION 2 (above).
 - Settings → Graphics → "Landing view: Classic / HD (beta)" — save field
   `hd` (absent ⇒ 0 Classic), applyHd(), probe hdOn. DEFAULT CLASSIC:
   main can deploy for hotfixes without exposing v1.3.
@@ -79,9 +150,10 @@ on. Design intent (to be shaped when v1.4 opens):
 
 PHASE PLAN (iterate in order, each phase shippable; flag stays until
 Nick flips the default):
-1. VISTAS (in) → iterate: volcano/ember scene, island scene for ocean
-   worlds, snow weather, twilight polish, aurora nights, moon count from
-   P.moons ✓, Nick's on-device passes.
+1. VISTAS (in) → iterate: volcano/ember scene ✓, island scene for ocean
+   worlds ✓, snow weather ✓, twilight polish ✓, aurora nights ✓, moon
+   count from P.moons ✓ (ALL LANDED — iteration 2, 2026-07-17); still
+   open: Nick's on-device passes.
 2. CREATURE PORTRAITS: HD painterly fauna/flora replacing speciesPortrait
    (spine/limb silhouette + per-pixel hide + rim + habitat), TRUE gene
    inheritance (visual genes derived from genome fields so crossGenome
