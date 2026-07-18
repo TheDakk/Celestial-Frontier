@@ -649,6 +649,19 @@
 ## 1.3.6 client — the update pill matters; watch his next session
 ## picks up 1.3.8 cleanly.)
 
+## ★★★ v1.3 LINE COMPLETE — SEVEN SHIPS IN ONE DAY (2026-07-18) ★★★
+## 1.3 (HD Frontier, pre-session) → 1.3.5 Soft Landings (bc70152) →
+## 1.3.6 Quiet Skies (c1bac38) → 1.3.7 One Lesson at a Time (840e651)
+## → 1.3.8 The View Holds (5b9652d) → 1.3.9 Eyes on the Lesson
+## (1caf852) → 1.3.10 Kingdom ShelVES IS LIVE (89ac8c9, FINAL v1.3
+## UPDATE — Compendium kingdom chips + tinted shelves; chips hidden in
+## training; counts read the filtered truth). Ship-gate suites green
+## on every ship; final exploit sweep PASS (wvo clamped, chart strict,
+## samples/charters unfarmable, wave-offs grant nothing, filter
+## transient). Fingerprint ended the day 50/50 byte-identical with 3
+## documented single-key re-pins. Smoke grew 173 -> 227.
+## THE v1.3 LINE IS CLOSED. Next session opens v1.4 "THE ASCENT".
+
 ## ▶▶ NEXT SESSION AGENDA (v1.4 "THE ASCENT" KICKOFF) — updated at the
 ## 2026-07-18 session close. SHIPPED THIS SESSION: v1.3.5 "Soft
 ## Landings" (build bc70152) + v1.3.6 "Quiet Skies" (build c1bac38).
