@@ -38,6 +38,25 @@ PHASE 1 — LANDED IN THE GAME (this commit, flag-gated):
   (flag default/toggle/persist + full planetfall→vista→dismiss drive),
   systems 19/19.
 
+## ▶ v1.4 DIRECTION (Nick, 2026-07-18): THE CRAFT BENCH
+
+Build out the craft bench, Minecraft-style: the materials mined from
+worlds match real recipes, and what you build changes what you can do —
+explore faster, land safer, succeed more often at first contact, and so
+on. Design intent (to be shaped when v1.4 opens):
+- Grows the existing Research Bench + element cargo + inventory grid
+  (icons already shipped in 1.2.5) from a fixed 6-tech list into open
+  crafting: recipes consume specific mined elements (+ ☄), rarer worlds'
+  veins gate rarer recipes.
+- Crafted things carry EFFECTS, not numbers-for-numbers (no-grind rule):
+  e.g. drives/travel speed (extends the existing ladder), a diplomat's
+  gift or beacon that raises first-contact odds, scan lures/armor for
+  safer bioscans, harvest/mining yield tools, vista-visible ship parts.
+- Items get their own procedural icons in the inventory grid (elemIcon
+  recipe style); recipes deterministic and identical for every explorer.
+- Ties the whole economy loop: explore → land (samples) → mine → craft →
+  explore farther. Charters can teach it ("Craft your first tool").
+
 PHASE PLAN (iterate in order, each phase shippable; flag stays until
 Nick flips the default):
 1. VISTAS (in) → iterate: volcano/ember scene, island scene for ocean
