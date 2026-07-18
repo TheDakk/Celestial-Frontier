@@ -159,6 +159,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     }
     check('every world is tap-to-landable (Earth carries a plain Land button)',
       !!doc.querySelector('#panel [data-act="landcta"]'));
+    // v1.3.7: the card answers only the lesson — Land must be inert here
+    click(doc.querySelector('#panel [data-act="landcta"]'));
+    await sleep(250);
+    check('training: off-lesson card buttons are inert (Land does nothing at step 4)',
+      H.st.mode !== 'surface' && tutAt(4));
     click(doc.querySelector('#panel [data-act="add"]'));
     check('adding Earth to Atlas completes step 4', await until(() => tutAt(5), 3000, 'step5'));
     check('Atlas count is 1 (Earth)', doc.getElementById('logcount').textContent === '1');
