@@ -156,5 +156,7 @@
  "ringDesignation",
  "awardXP",
  "levelOf",
- "nextStepGoal"
+ "nextStepGoal",
+ "claimSignature",
+ "primeFill"
 ]
