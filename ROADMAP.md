@@ -541,9 +541,10 @@
 ## too (recommended yes); Batch 5 biome list trims/renames + whether
 ## sub-labels read "Swamp world" style (recommended yes).
 
-## ★★ v1.3.5 "SOFT LANDINGS" — BUILT & VERIFIED (2026-07-18), NOT
-## DEPLOYED — one word ships it (GAME_VERSION bumped to '1.3.5',
-## RELEASES[0] written, deploy on Nick's word only).
+## ★★ v1.3.5 "SOFT LANDINGS" IS LIVE ★★ (2026-07-18, build bc70152,
+## Nick: "ship it"). Deployed after the pre-ship review (2 agents +
+## self-review, all findings fixed) — suites at ship: fingerprint
+## 50/50 byte-identical, smoke 214/214, systems 19/19, balance PASS.
 ## ALL FIVE BATCHES LANDED (7 commits, one per push):
 ##  B2 panel manager (one panel at a time both platforms, ✕ everywhere
 ##     incl. vista, modals exempt + training-inert; ALSO fixed a real
