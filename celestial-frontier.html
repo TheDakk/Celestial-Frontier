@@ -1394,7 +1394,7 @@
   <h3>Celestial Frontier</h3>
   <div class="lore">
     <p>You are not the first to chart this universe. An order of explorers came before you — the Pathfinders — and for an age their beacons mapped the dark. Then, one by one, the beacons went quiet. They died a single discovery short of completing their master survey.</p>
-    <p>They left nine Signatures unclaimed, and field notes that swear the spectrum runs deeper than Prismatic. The notes also warn of named titans ruling the worlds where it runs deepest. Document a worthy example of every Signature and the completed Prime Codex will show you what no chart has — the Celestial Frontier.</p>
+    <p>They left nine Signatures unclaimed, and field notes that swear the spectrum runs deeper than Prismatic. The notes also warn of named titans ruling the worlds where it runs deepest. Claim a worthy example of all nine and the finished Prime Codex will show you what no chart ever has — the Celestial Frontier.</p>
     <p class="creed">Nobody can chart it all. Somebody will still be first.</p>
   </div>
   <p class="nnote">First, what shall the stars call you?</p>
@@ -12745,7 +12745,7 @@ const TUT_STEPS=[
   text:()=>'First, find home. <b>Drag and zoom to Earth</b> — the blue world, third from the Sun — and <b>tap it</b> to open its survey card.',
   when:(t,d)=>t==='survey'&&d.planetSeed===133},
  {id:'survey-tour', spot:'#panel', btn:'Got It', allow:['#panel'],
-  text:()=>'This is a <b>survey card</b> — every world, star and galaxy has one: atmosphere, climate, life, hazards. The universe is generated, so every explorer sees this exact card at Earth. A card is only the view from orbit — <b>zoom all the way into a world to land on it</b> and the ground survey opens the rest.'},
+  text:()=>'This is a <b>survey card</b> — every world, star and galaxy has one: atmosphere, climate, life, hazards. The universe is generated, so every explorer sees this exact card at Earth. A card is only the view from orbit — dive toward a world and confirm the descent to land, and the ground survey opens the rest.'},
  {id:'atlas-add', spot:'#panel [data-act="add"]', allow:['#panel'],
   text:()=>'Chart it. Tap <b>+ Add to Star Atlas</b> on Earth’s card — the Atlas is how you find your way back across the infinite.',
   when:(t,d)=>t==='atlas-add'&&d.id==='p133'},
@@ -12753,13 +12753,13 @@ const TUT_STEPS=[
   text:()=>'Earth is charted — your Atlas’s first entry. Open the <b>Star Atlas</b> (right rail). Tapping any entry travels there instantly; ☆ favorites and the ⌂ home mark live there too.',
   when:(t,d)=>t==='atlas-open'&&!!d.open},
  {id:'cache', spot:'#codexbtn', allow:['#codexbtn'], enter:()=>_tutGrant(),
-  text:()=>'A <b>training cache</b> just arrived: three Earth beasts and three Earth flora, on loan from the order. Open your <b>Compendium</b> to meet them.',
+  text:()=>'A training cache just arrived: three Earth beasts and three Earth flora, on loan from the order. Open your <b>Compendium</b> to meet them.',
   when:(t,d)=>t==='codex-open'&&!!d.open},
  {id:'specimen', spot:'#codex', allow:['#codex'],
   text:()=>'Fighters, breeders and medicine all live here, shelved by realm. <b>Tap any specimen</b> to open its card.',
   when:(t)=>t==='specimen'},
  {id:'card-tour', spot:'#reveal .card', btn:'Got It',
-  text:()=>'Read it like a Pathfinder: <b>five stat bars</b> and total Power; its <b>✧ ability</b>; its <b>rarity grade</b> tinting the card. Rarer life fights harder, breeds stronger, heals — or poisons — more. Beasts also list flora flavours they <b>♥ love</b> and <b>⊘ dislike</b>.'},
+  text:()=>'Read it like a Pathfinder: five stat bars and total Power; its ✧ ability; the rarity grade tinting the card. Rarer life fights harder, breeds stronger, heals — or poisons — more. Beasts also list the flora flavours they ♥ love and ⊘ dislike.'},
  {id:'feed', allow:['#codex','#codexbtn'], enter:()=>{ _tutRig={feed:0.62}; },
   text:()=>'Time for a meal. Open a 🐾 beast in the Compendium, tap <b>Feed</b>, and pick a plant. The plant is always consumed — a welcome meal grows the beast’s bloodline permanently.',
   when:(t)=>t==='fed'},
@@ -12785,9 +12785,9 @@ const TUT_STEPS=[
   text:()=>'One last thing: <b>tap your nameplate</b> to open your character sheet — your five stats, rank, expedition statistics and achievements.',
   when:(t,d)=>t==='stats-open'&&!!d.open},
  {id:'horizon', spot:'#pcdxbtn', btn:'Got It',
-  text:()=>'You’re ready. Scan living worlds (mind the danger %), <b>⚔ conquer</b> the ones worth keeping — fight yourself or send a beast as champion — and collect ☄ <b>Stardust harvests</b> every hour. The nine <b>✦ Signatures</b> of the Prime Codex are the long road. The <b>? Guide</b> (bottom right) explains every system, any time.'},
+  text:()=>'You’re ready. Scan living worlds (mind the danger %), ⚔ conquer the ones worth keeping — fight yourself or send a beast as champion — and collect ☄ Stardust every hour. The nine ✦ Signatures of the Prime Codex are the long road. The <b>? Guide</b> (bottom right) explains every system, any time.'},
  {id:'finale', btn:'✦ Begin the Expedition', enter:()=>_tutCleanup(),
-  text:()=>'Field training complete, <b>'+(explorerName||'Explorer')+'</b>. The training cache goes back to the order — your Compendium is empty again, your wounds are mended, and Earth shines in your Star Atlas. The rest counts. Good hunting.'},
+  text:()=>'Field training complete, '+(explorerName||'Explorer')+'. The cache goes back to the order — your Compendium is empty again, your wounds are mended, and Earth shines in your Star Atlas. From here on, everything counts. Good hunting.'},
 ];
 
 const tutEl=document.createElement('div'); tutEl.id='tutbox'; document.body.appendChild(tutEl);
