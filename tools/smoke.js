@@ -619,6 +619,29 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         (pan3.querySelector('.sub') || {}).textContent || ''), (pan3.querySelector('.sub') || {}).textContent);
       check('biomes: the card speaks a Biome row', pan3.textContent.includes('Biome'));
     }
+    // ============ v1.3.5 Batch 5b-i: BIOME SCENE SWEEP ============
+    // every biome key must dress a scene without throwing, across pals
+    {
+      let bad = [];
+      const allKeys = [];
+      for (const ty in skH.BIOME_SETS) for (const b of skH.BIOME_SETS[ty]) allKeys.push([ty, b.k]);
+      let sweepSeed = 7001;
+      for (const [ty, k] of allKeys) {
+        if (ty === 'gas') {
+          for (const tod of ['day', 'night']) {
+            try { const c2 = skH._hdDeckScene({ seed: sweepSeed++, hue: 120, spot: true, spotHue: 90, ring: true, moons: 2, tod, aurora: true, air: 1, wb: k }); if (!c2 || c2.width !== 960) bad.push(k + '/' + tod); }
+            catch (e) { bad.push(k + '/' + tod + ':' + e.message); }
+          }
+        } else {
+          for (const pal of ['day', 'night', 'snow']) {
+            try { const c2 = skH.hdVista({ seed: sweepSeed++, era: 'none', pal, wb: k, moons: 1, flora: true }); if (!c2 || c2.width !== 960) bad.push(k + '/' + pal); }
+            catch (e) { bad.push(k + '/' + pal + ':' + e.message); }
+          }
+        }
+      }
+      check('biome scenes: full key × pal sweep renders clean (' + allKeys.length + ' biomes)',
+        bad.length === 0, bad.slice(0, 4).join(' | '));
+    }
     check('discovery: standing on it, mining is open on the spot', await until(() =>
       !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('You are here'), 4000, 'surface mine'));
     check('discovery: ground survey reveals the mineral veins without Deep Scanners',
