@@ -642,6 +642,23 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       check('biome scenes: full key × pal sweep renders clean (' + allKeys.length + ' biomes)',
         bad.length === 0, bad.slice(0, 4).join(' | '));
     }
+    // ============ v1.3.5 Batch 5b-ii: WEATHER EVENTS + WANDERERS + THE DEEP ============
+    {
+      const badE = [];
+      for (const evt of ['tornado', 'hurricane', 'haboob', 'icestorm', 'cryoeruption', 'virga', 'volclightning', 'firewhirl', 'ironrain']) {
+        try { const c3 = skH.hdVista({ seed: 6600 + badE.length, era: 'none', pal: 'day', wb: 'temperate', evt, flora: true, moons: 1 }); if (!c3) badE.push(evt); }
+        catch (e) { badE.push(evt + ':' + e.message); }
+      }
+      check('weather events: all 9 showpieces render clean', badE.length === 0, badE.join('|'));
+      check('weather events: the roll is honest — airless rocky worlds never get one',
+        skH.wxEventFor({ type: 'rocky', seed: 42 }, 'cratered', null) === null);
+      let cT = null, err2 = null;
+      try { cT = skH.hdVista({ seed: 6700, era: 'none', pal: 'day', wb: 'savanna', titan: true, flora: true, herd: 2 }); } catch (e) { err2 = e; }
+      check('colossal wanderer: a titan breaks the horizon without breaking the scene', !err2 && !!cT, err2 && String(err2));
+      let cA = null, err3 = null;
+      try { cA = skH._hdAbyssScene({ seed: 6800, aqua: 2 }); } catch (e) { err3 = e; }
+      check('the deep: the abyssal vantage renders beneath the waves', !err3 && !!cA && cA.width === 960, err3 && String(err3));
+    }
     check('discovery: standing on it, mining is open on the spot', await until(() =>
       !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('You are here'), 4000, 'surface mine'));
     check('discovery: ground survey reveals the mineral veins without Deep Scanners',

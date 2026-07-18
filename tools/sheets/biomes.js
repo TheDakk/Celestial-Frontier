@@ -1,6 +1,6 @@
 // Batch 5b-i proof sheet: biome-dressed vistas across the families.
 module.exports = {
-  width: 1460, height: 1420,
+  width: 1460, height: 1900,
   lift: ['mulberry32', 'hashInt', 'makeNoise'],
   liftBetween: ['let hdOn=true, _vistaPend=false;', 'function showVistaBox'],
   draw: `function(g){
@@ -28,6 +28,11 @@ module.exports = {
       ['obsidian world',     {seed:8116, era:'none', pal:'ember', wb:'obsidian', flora:false}],
       ['magma sea',          {seed:8117, era:'none', pal:'ember', wb:'magmasea', flora:false}],
       ['sulfur deck (venus)',{seed:8118, era:'none', pal:'haze',  wb:'sulfurdeck', flora:false}],
+      ['TORNADO on temperate', {seed:8301, era:'none', pal:'rain', wb:'temperate', evt:'tornado', wx:'rain', flora:true}],
+      ['HABOOB over dunes', {seed:8302, era:'none', pal:'dust', wb:'dunesea', evt:'haboob', wx:'dust', flora:false}],
+      ['VOLCANIC LIGHTNING', {seed:8303, era:'none', pal:'ember', wb:'emberfield', evt:'volclightning', wx:'ash', flora:false}],
+      ['HURRICANE wall at sea', {seed:8304, era:'none', pal:'rain', biome:'island', wb:'stormsea', evt:'hurricane', wx:'rain', flora:true}],
+      ['TITAN breaching savanna', {seed:8305, era:'none', pal:'day', wb:'savanna', titan:true, flora:true, herd:2}],
     ];
     g.font='12px monospace';
     cases.forEach((c,i)=>{
