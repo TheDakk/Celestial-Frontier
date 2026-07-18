@@ -1583,7 +1583,7 @@
 <div id="primebox"><div class="card">
   <button id="primeclose" class="pxclose" type="button">&times;</button>
   <div class="ph"><div class="pt">✦ The Prime Codex</div>
-    <div class="psubt">The Pathfinders’ unfinished master survey. Document one worthy example of each legendary Signature — finish what they began, and the Celestial Frontier will reveal itself.</div></div>
+    <div class="psubt">The Pathfinders’ Trail — the endgame arc that begins where the Ascent ends. Nine lost beacons, nine Signatures: walk their trail, recover each beacon’s relic blueprint, and finish the master survey they died one discovery short of. Complete it, and the Celestial Frontier reveals itself.</div></div>
   <div class="pmeter-wrap"><div class="pmeter"><i id="prime-meter"></i></div>
     <div class="pmeta"><span id="prime-count">0 / 9</span><span id="prime-rank">Wanderer</span></div></div>
   <div id="prime-grid" class="pgrid"></div>
@@ -12486,8 +12486,8 @@ const GUIDE=[
   '<p><b>⬆ The Ascent</b> is the mainline: three chapters, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p><b>The spectrum expands with the rings.</b> Rarity is a ladder of distance: the Neighborhood catalogues up to <b>Legendary</b>, the home galaxy up to <b>Mythic</b>, and each region beyond opens one more band — Celestial, Primordial, Transcendent — until the Deep Field frees the <b>summit grades</b>. The strangest finds live farthest out; guardians, Paragons and your own bred bloodlines are beyond the law.</p>'},
 ]},
 {icon:'✦', cat:'The Prime Codex', blurb:'Signatures, the frontier, endings', topics:[
- {id:'signatures', t:'The nine Signatures', k:'signature prime codex stone ocean flame sky life mind prism star void win', body:
-  '<p>The Pathfinders died one discovery short of completing their master survey. Nine legendary <b>Signatures</b> remain — claim all nine to reach the Celestial Frontier. Seven are claimed by <b>conquering</b> a worthy world; two by <b>finding</b> a worthy object:</p><ul><li><b>Stone</b> — a rare rocky, metal or mineral world (conquer)</li><li><b>Ocean</b> — a living ocean world (conquer)</li><li><b>Flame</b> — an extreme volcanic world (conquer)</li><li><b>Sky</b> — an aerial or gas-giant ecosystem (conquer)</li><li><b>Life</b> — a complex land biosphere (conquer)</li><li><b>Mind</b> — a world with a sapient native (conquer)</li><li><b>Prism</b> — a unique prismatic lifeform’s world (conquer)</li><li><b>Star</b> — an extreme star or stellar remnant (find)</li><li><b>Void</b> — a black hole or galactic anomaly (find)</li></ul><p>Track them with the gold <b>✦ Prime Codex</b> button. Species-borne Signatures require their world to be conquered first.</p>'},
+ {id:'signatures', t:'The Pathfinders’ Trail (nine Signatures)', k:'signature prime codex trail beacon relic blueprint stone ocean flame sky life mind prism star void win endgame', body:
+  '<p><b>The Trail is the endgame</b> — it begins where the Ascent ends, beyond the Rim. The Pathfinders died one discovery short of completing their master survey; their nine lost beacons mark nine legendary <b>Signatures</b>. Claim all nine to reach the Celestial Frontier. Seven are claimed by <b>conquering</b> a worthy world; two by <b>finding</b> a worthy object:</p><ul><li><b>Stone</b> — a rare rocky, metal or mineral world (conquer)</li><li><b>Ocean</b> — a living ocean world (conquer)</li><li><b>Flame</b> — an extreme volcanic world (conquer)</li><li><b>Sky</b> — an aerial or gas-giant ecosystem (conquer)</li><li><b>Life</b> — a complex land biosphere (conquer)</li><li><b>Mind</b> — a world with a sapient native (conquer)</li><li><b>Prism</b> — a unique prismatic lifeform’s world (conquer)</li><li><b>Star</b> — an extreme star or stellar remnant (find)</li><li><b>Void</b> — a black hole or galactic anomaly (find)</li></ul><p><b>Every claim recovers a relic blueprint</b> — nine unique, signature-tier pieces of gear (one per socket) that only the Fabricator of a Signature-holder can forge. The Codex panel (✦, left rail) tells each beacon’s story, names how far its trail reaches, and marks the blueprints you hold. Species-borne Signatures require their world to be conquered first — and the deepest trails (Mind, Prism) only complete far out in the rings.</p>'},
  {id:'regions', t:'Frontier regions', k:'region reach frontier expand charter solar local cluster near deep outer dark travel gate', body:
   '<p>You begin charted for the <b>Solar Reach</b>. Each Signature claimed pushes your charter outward — <em>the Local Cluster, the Near Field, the Deep Field, the Outer Dark</em>, and finally <em>the Frontier</em>. Travel beyond your charter is blocked until you’ve earned it, and farther regions field tougher apex defenders with stranger life.</p>'},
  {id:'endings', t:'Endings & the Celestial Frontier', k:'ending win frontier legacy prismatic complete game finish', body:
@@ -13566,14 +13566,16 @@ function renderCargo(){
   if(cargoView==='fab'){
     /* the FABRICATOR: recipes grouped by rung — Basic Parts → Components →
        Ship Systems → Gear. Costs light green when you hold them. */
-    const GROUPS=[['part','Basic Parts — T1'],['comp','Components — T2'],['sys','Ship Systems — T3'],['gear','Explorer Gear']];
+    const GROUPS=[['part','Basic Parts — T1'],['comp','Components — T2'],['sys','Ship Systems — T3'],['gear','Explorer Gear'],['relic','Signature Relics — the Pathfinders’ legacy']];
     for(const [cat,label] of GROUPS){
       html+='<div class="chead" style="margin-top:8px">'+label+'</div>';
+      if(cat==='relic') html+='<div class="ambient" style="font-size:10px;color:var(--faint);font-style:italic;margin:0 6px 6px">Nine blueprints, one per claimed Prime Codex Signature — recovered from the order&#8217;s lost beacons.</div>';
       for(const it of ITEMS){
         if(it.cat!==cat) continue;
         const own=itemCount(it.id);
         const built=it.cat==='sys' && own>0;
-        const gatedBy=it.req && itemCount(it.req)<1 ? (ITEM_BY.get(it.req)||{}).name : null;
+        const sigLock=it.sig && !primeFill[it.sig] ? (SIGS.find(s2=>s2.id===it.sig)||{}).name : null;
+        const gatedBy=sigLock ? null : (it.req && itemCount(it.req)<1 ? (ITEM_BY.get(it.req)||{}).name : null);
         const can=_canCraft(it) && !built;
         const bits=[];
         /* the grail exotics name their source biome — the ladder is only
@@ -13592,7 +13594,7 @@ function renderCargo(){
         html+='<div class="bset'+(built?' done':'')+'"><span><img class="ci big" src="'+partIcon(it.id)+'" alt=""> <b>'+it.name+'</b>'+
           (it.slot?' <span class="gslot">'+(EQ_SLOTS.find(s=>s.id===it.slot)||{}).ic+' '+it.slot+'</span>':'')+
           (own&&it.cat!=='sys'?' <span style="color:#7fe6a0">×'+own+'</span>':'')+' — '+it.d+
-          (built?'':'<br><span class="bcnt">'+(gatedBy?'requires '+gatedBy:bits.join(' + '))+'</span>')+'</span>'+
+          (built?'':'<br><span class="bcnt">'+(sigLock?'🔒 the blueprint waits on the '+sigLock+' (Prime Codex)':(gatedBy?'requires '+gatedBy:bits.join(' + ')))+'</span>')+'</span>'+
           (built?'<span class="bclaimed">online ✓</span>'
                 :(can?'<button class="bclaim" data-craft="'+it.id+'" type="button">Craft</button>':''))+
           '</div>';
@@ -13717,6 +13719,19 @@ const ITEMS=[
  /* ---- GEAR: BOOTS slot ---- */
  {id:'magboots', cat:'gear', slot:'boots', tier:1, fam:'boot', hue:'#aab2c2', name:'Mag-Boots',      d:'The ground holds you the moment you touch it — landings land', cost:{}, parts:{plate:1,weave:1}, eff:{land:5}},
  {id:'gravboots',cat:'gear', slot:'boots', tier:3, fam:'boot', hue:'#3fe8c8', name:'Graviton Boots', d:'Woven around geode-world neodymium — the fall never wins', cost:{Nd:1}, parts:{coil:1,weave:1}, req:'magboots', eff:{land:10,struts:1}},
+ /* ---- v1.5 SIGNATURE RELICS (the Pathfinders' Trail): one blueprint per
+    claimed Signature — endgame-tier gear recovered from the lost beacons.
+    `sig` gates the recipe on primeFill; one relic per socket, nine in all.
+    Effects stay inside the wired keys — POWER IS DECOUPLED FROM RARITY. */
+ {id:'rl-stone', cat:'relic', sig:'stone', slot:'suit',     tier:3, fam:'suit',  hue:'#c9a878', name:'Graven Aegis',        d:'Beacon I&#8217;s hull plating, re-forged — the ground itself argues on your side', cost:{Fe:8,W:4,Nd:1}, parts:{hullseg:1}, eff:{scut:0.25}},
+ {id:'rl-ocean', cat:'relic', sig:'ocean', slot:'boots',    tier:3, fam:'boot',  hue:'#4fc8e8', name:'Tidewalker Boots',    d:'Beacon II&#8217;s keeper walked out under the sea and never slipped once',        cost:{H2O:8,Ti:4},     parts:{weave:1,servo:1}, eff:{land:6,struts:1}},
+ {id:'rl-flame', cat:'relic', sig:'flame', slot:'gloves',   tier:3, fam:'glove', hue:'#ff7a4a', name:'Emberforged Gauntlets', d:'Pulled glowing from Beacon III&#8217;s wreck — they remember the heat of the strike', cost:{S:6,Fe:6,Pz:1},  parts:{servo:1}, eff:{yield:0.2,strike:0.08}},
+ {id:'rl-sky',   cat:'relic', sig:'sky',   slot:'module',   tier:3, fam:'drive', hue:'#8fd6ff', name:'Skysail Module',      d:'Beacon IV&#8217;s storm-rig — it reads every deck and rides the fastest lane',    cost:{H:8,He3:2},      parts:{coil:1,navcore:1}, eff:{speed:1,land:4}},
+ {id:'rl-life',  cat:'relic', sig:'life',  slot:'necklace', tier:3, fam:'charm', hue:'#7fe6a0', name:'Verdant Locket',      d:'A seed from Beacon V&#8217;s canopy, still green — meals mend far past their measure', cost:{O:6,H2O:6},     parts:{cryogel:1}, eff:{heal:0.3}},
+ {id:'rl-mind',  cat:'relic', sig:'mind',  slot:'ears',     tier:3, fam:'chip',  hue:'#c79fff', name:'Mindreader Coil',     d:'Tuned to the voice that answered Beacon VI — first contact hears you coming',    cost:{Si:8,Ir:2}, parts:{chip:1,wire:1}, eff:{contact:12}},
+ {id:'rl-star',  cat:'relic', sig:'star',  slot:'helmet',   tier:3, fam:'helm',  hue:'#ffd96a', name:'Starcrowned Helm',    d:'Beacon VII&#8217;s lens, set in gold — it finds the bright seam in anything',      cost:{Au:4,Pt:2},      parts:{lens:1}, eff:{strike:0.1,contact:4}},
+ {id:'rl-void',  cat:'relic', sig:'void',  slot:'legs',     tier:3, fam:'legs',  hue:'#9a8aff', name:'Voidwoven Leggings',  d:'Cut from what came back of Beacon VIII — half here, half elsewhere, all yours',  cost:{C:6,Ir:2},       parts:{weave:2}, eff:{scut:0.15,speed:1}},
+ {id:'rl-prism', cat:'relic', sig:'prism', slot:'tool',     tier:3, fam:'rig',   hue:'#ff7ae8', name:'Prismatic Lathe',     d:'Beacon IX&#8217;s last word, made a tool — it takes the color no one could name',  cost:{Vg:1,Pm:1,Pz:1}, parts:{coil:1,servo:1}, eff:{yield:0.35,strike:0.06}},
 ];
 const ITEM_BY=new Map(ITEMS.map(it=>[it.id, it]));
 /* the nine sockets (Nick's slot set, 2026-07-18): the ARPG body — head to
@@ -13773,6 +13788,7 @@ function _equipLandFam(type){
   return v;
 }
 function _canCraft(it){
+  if(it.sig && !primeFill[it.sig]) return false;    /* v1.5 relics: the Signature IS the blueprint */
   if(it.req && itemCount(it.req)<1) return false;   /* the ladder: own the rung below */
   if(it.sd && essence<it.sd) return false;
   for(const k in (it.cost||{})) if((cargo.get(k)||0)<it.cost[k]) return false;
@@ -13801,9 +13817,9 @@ function craftItem(id){
     cinematic({kicker:'🛠 Ship System Online', title:it.name, sub:it.unlock||it.d, hex:'#7fd0ff', tier:5});
   }
   gameEvent('crafted', {id:id, cat:it.cat, tier:it.tier});
-  if(it.cat==='sys'){ /* announced above */ } else if(it.cat==='gear'){
-    playRaritySting(4); fxBurst(FX_GOLD,20);
-    toast('🛠 Crafted — '+it.name, it.d+'. Equip it on your character sheet (tap your nameplate).');
+  if(it.cat==='sys'){ /* announced above */ } else if(it.cat==='gear'||it.cat==='relic'){
+    playRaritySting(it.cat==='relic'?6:4); fxBurst(FX_GOLD,it.cat==='relic'?40:20);
+    toast('🛠 '+(it.cat==='relic'?'Relic Forged':'Crafted')+' — '+it.name, it.d.replace(/&#8217;/g,'’')+'. Equip it on your character sheet (tap your nameplate).');
     /* an empty matching socket takes new gear immediately — no menu-diving
        for the common case; swapping later is the character sheet's job */
     if(it.slot && !equip[it.slot]) equipItem(it.slot, id, true);
@@ -14209,16 +14225,31 @@ function shipImage(){
    @section prime [app] — Prime Codex — 9 Signatures, frontier regions & endings
    Owns: SIGS, SIG_IDS, primeFill, frontierUnlocked, frontierEnding, primeCount, REGIONS, currentRegion, reachRadius, withinReach, …
    ---------------------------------------------------------------- */
+/* v1.5 THE PATHFINDERS' TRAIL: the Codex is the ENDGAME arc that begins
+   where the Ascent ends. Each Signature is a chapter told through one of
+   the order's nine lost beacons (lore), it names how far its trail
+   reaches (the ring-spectrum synergy), and claiming it unlocks a unique
+   Fabricator BLUEPRINT \u2014 the signature relics. Claim mechanics, region
+   gating and endings are UNCHANGED; the Trail is how the arc reads. */
 const SIGS=[
-  {id:'stone', icon:'\ud83e\udea8', name:'Stone Signature', verb:'Conquer', hint:'a rare world of stone, metal or mineral \u2014 the Pathfinders\u2019 first vow'},
-  {id:'ocean', icon:'\ud83c\udf0a', name:'Ocean Signature', verb:'Conquer', hint:'a living ocean world \u2014 they called them \u201cthe breathing seas\u201d'},
-  {id:'flame', icon:'\ud83c\udf0b', name:'Flame Signature', verb:'Conquer', hint:'an extreme volcanic world, where their third beacon fell'},
-  {id:'sky',   icon:'\u2601\ufe0f', name:'Sky Signature',  verb:'Conquer', hint:'an aerial or gas-giant ecosystem \u2014 life with no ground at all'},
-  {id:'life',  icon:'\ud83c\udf3f', name:'Life Signature', verb:'Conquer', hint:'a complex land biosphere, the kind they crossed the dark to find'},
-  {id:'mind',  icon:'\ud83e\udde0', name:'Mind Signature', verb:'Conquer', hint:'an intelligent natural lifeform \u2014 hunt the signals, as they did'},
-  {id:'star',  icon:'\u2734\ufe0f', name:'Star Signature', verb:'Find', hint:'an extreme star or stellar remnant \u2014 the lights that outlived them'},
-  {id:'void',  icon:'\ud83d\udd73\ufe0f', name:'Void Signature', verb:'Find', hint:'a black hole, void or anomaly \u2014 what swallowed their last beacon'},
-  {id:'prism', icon:'\ud83d\udd2e', name:'Prism Signature', verb:'Conquer', hint:'a unique prismatic lifeform \u2014 the one discovery they died short of'},
+  {id:'stone', icon:'\ud83e\udea8', name:'Stone Signature', verb:'Conquer', hint:'a rare world of stone, metal or mineral \u2014 the Pathfinders\u2019 first vow',
+    lore:'Beacon I fell silent on a world of graven stone. The first vow of the order: know the ground you stand on.', reach:'any ring \u2014 rarer stone lies farther out'},
+  {id:'ocean', icon:'\ud83c\udf0a', name:'Ocean Signature', verb:'Conquer', hint:'a living ocean world \u2014 they called them \u201cthe breathing seas\u201d',
+    lore:'Beacon II still pings beneath a breathing sea. Its keeper never surfaced.', reach:'any ring with living seas'},
+  {id:'flame', icon:'\ud83c\udf0b', name:'Flame Signature', verb:'Conquer', hint:'an extreme volcanic world, where their third beacon fell',
+    lore:'Beacon III burned on a molten shore, transmitting to the last.', reach:'the hostile worlds of any ring'},
+  {id:'sky',   icon:'\u2601\ufe0f', name:'Sky Signature',  verb:'Conquer', hint:'an aerial or gas-giant ecosystem \u2014 life with no ground at all',
+    lore:'Beacon IV rode the cloud decks. The keeper wrote of life that never once touched ground.', reach:'the gas giants of any ring'},
+  {id:'life',  icon:'\ud83c\udf3f', name:'Life Signature', verb:'Conquer', hint:'a complex land biosphere, the kind they crossed the dark to find',
+    lore:'Beacon V stood in a canopy older than the order itself.', reach:'any living ring'},
+  {id:'mind',  icon:'\ud83e\udde0', name:'Mind Signature', verb:'Conquer', hint:'an intelligent natural lifeform \u2014 hunt the signals, as they did',
+    lore:'Beacon VI answered back \u2014 in a voice that was not the keeper\u2019s.', reach:'the Near Field and beyond'},
+  {id:'star',  icon:'\u2734\ufe0f', name:'Star Signature', verb:'Find', hint:'an extreme star or stellar remnant \u2014 the lights that outlived them',
+    lore:'Beacon VII drifted into the glare of a dying sun, and kept singing.', reach:'the extreme stars of any ring'},
+  {id:'void',  icon:'\ud83d\udd73\ufe0f', name:'Void Signature', verb:'Find', hint:'a black hole, void or anomaly \u2014 what swallowed their last beacon',
+    lore:'Beacon VIII crossed an event horizon mid-sentence.', reach:'the dark places of any ring'},
+  {id:'prism', icon:'\ud83d\udd2e', name:'Prism Signature', verb:'Conquer', hint:'a unique prismatic lifeform \u2014 the one discovery they died short of',
+    lore:'Beacon IX was never found. Its last word was a color no one could name.', reach:'the Deep Field \u2014 the trail\u2019s end'},
 ];
 const SIG_IDS=SIGS.map(s=>s.id);
 const primeFill={};
@@ -14287,8 +14318,10 @@ function claimSignature(id, info, quiet){
   if(!quiet){
     const sg=SIGS.find(s=>s.id===id);
     playRaritySting(6); fxBurst(FX_GOLD,72);
+    const _rl=(typeof ITEMS!=='undefined')?ITEMS.find(it=>it.sig===id):null;
     toast(sg.icon+' '+sg.name+' Claimed!',
-      '\u201c'+info.title+'\u201d completes the '+sg.name+' \u2014 '+primeCount()+'/9 of the Prime Codex.');
+      '\u201c'+info.title+'\u201d completes the '+sg.name+' \u2014 '+primeCount()+'/9 of the Prime Codex.'+
+      (_rl?' Blueprint recovered: the Fabricator can now forge the '+_rl.name+'.':''));
     const _R=REGIONS.find(R=>R.sigs>0 && R.sigs===primeCount());
     if(_R) setTimeout(()=>toast('\u2727 The Frontier Expands','Your reach now extends into '+_R.name+'. Distant galaxies open to you.'), 950);
     queueSave();
@@ -14328,20 +14361,25 @@ function checkFrontier(quiet){
 function renderPrime(){
   const el=document.getElementById('prime-grid'); if(!el) return;
   const n=primeCount();
-  el.innerHTML=SIGS.map(s=>{
+  el.innerHTML=SIGS.map((s,i)=>{
     const f=primeFill[s.id];
+    const relic=(typeof ITEMS!=='undefined')?ITEMS.find(it=>it.sig===s.id):null;
     if(f){
       const stars='\u2605'.repeat(Math.min(4,Math.max(0,(f.tier||0)-1)));
       return '<div class="psig filled'+(f.where?' goable':'')+'"'+(f.where?' data-pgo="'+s.id+'"':'')+' style="--c:'+(f.hex||'#9fb6d6')+'">'+
         '<div class="pic">'+s.icon+'</div>'+
         '<div class="pm"><div class="pn">'+s.name+'</div>'+
         '<div class="pby">'+f.title+(stars?' <span class="pstar">'+stars+'</span>':'')+'</div>'+
-        '<div class="psub2">'+(f.sub||'')+(f.where?' \u00b7 tap to travel \u2197':'')+'</div></div>'+
-        '<div class="pchk">\u2713</div></div>';
+        '<div class="psub2">'+(f.sub||'')+(f.where?' \u00b7 tap to travel \u2197':'')+'</div>'+
+        (relic?'<div class="psub2" style="color:#7fe6a0">\ud83d\udee0 Blueprint recovered: '+relic.name+' \u2014 the Fabricator can forge it</div>':'')+
+        '</div><div class="pchk">\u2713</div></div>';
     }
     return '<div class="psig locked"><div class="pic">'+s.icon+'</div>'+
-      '<div class="pm"><div class="pn">'+s.name+'</div><div class="psub2">'+(s.verb||'Find')+' '+s.hint+'</div></div>'+
-      '<div class="pchk">\u25cb</div></div>';
+      '<div class="pm"><div class="pn">'+s.name+'</div>'+
+      (s.lore?'<div class="psub2" style="font-style:italic;color:var(--dim)">'+s.lore+'</div>':'')+
+      '<div class="psub2">'+(s.verb||'Find')+' '+s.hint+'</div>'+
+      (s.reach?'<div class="psub2" style="color:var(--plasma)">Trail reaches: '+s.reach+(relic?' \u00b7 relic blueprint waits':'')+'</div>':'')+
+      '</div><div class="pchk">\u25cb</div></div>';
   }).join('');
   const meter=document.getElementById('prime-meter'); if(meter) meter.style.width=Math.round(n/9*100)+'%';
   const lbl=document.getElementById('prime-count'); if(lbl) lbl.textContent=n+' / 9';
@@ -14380,7 +14418,7 @@ function chooseEnding(id){
   document.getElementById('ending-choices').style.display='none';
   const r=document.getElementById('ending-result'); r.style.display='block';
   document.getElementById('ending-title').textContent=e.title;
-  document.getElementById('ending-text').innerHTML='You are now <b>'+e.title+'</b>. The master survey is finished \u2014 the first in history. Somewhere out in the dark, a thousand quiet beacons answer at last. The infinite galaxy remains, endless and open. Explore on, '+(explorerName||'Pathfinder')+'.';
+  document.getElementById('ending-text').innerHTML='You are now <b>'+e.title+'</b>. The master survey is finished \u2014 the first in history. Somewhere out in the dark, a thousand quiet beacons answer at last. The infinite galaxy remains, endless and open. Explore on, '+(explorerName||'Pathfinder')+'.<br><br><span style="color:#c9a8ff">The Pathfinders&#8217; Trail is walked. What an order does with a finished survey \u2014 <b>the Legacy</b> \u2014 is a story for a coming update.</span>';
   playRaritySting(7);
 }
 function openFrontier(){

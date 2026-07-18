@@ -882,6 +882,18 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('v1.4 gear: the Mining Rig crafts and self-equips into the empty Tool socket',
       skH.itemCount('rig1') === 1 && skH.equip.tool === 'rig1');
     check('v1.4 gear: the equipped rig multiplies mining yield', skH._equipBonus('yield') === 0.5);
+    // v1.5 THE PATHFINDERS' TRAIL: relic blueprints gate on claimed Signatures
+    check('trail: nine relics exist, one per socket, each tied to a Signature',
+      skH.ITEMS.filter((it) => it.cat === 'relic').length === 9
+      && new Set(skH.ITEMS.filter((it) => it.cat === 'relic').map((it) => it.slot)).size === 9);
+    skH.cargo.set('Au', 8); skH.cargo.set('Pt', 4); skH.items.set('lens', 1);
+    skH.craftItem('rl-star');
+    check('trail: a relic refuses to forge before its Signature is claimed',
+      skH.itemCount('rl-star') === 0 && !skH._canCraft(skH.ITEM_BY.get('rl-star')));
+    skH.claimSignature('star', { title: 'Test Remnant', sub: 'star', tier: 6, hex: '#ffd96a', where: null }, true);
+    skH.craftItem('rl-star');
+    check('trail: the claimed Signature IS the blueprint (relic forges + self-equips)',
+      skH.itemCount('rl-star') === 1 && skH.equip.helmet === 'rl-star');
     // v1.5 THE PAPERDOLL: one centered character screen — sockets ON the body
     // (the sheet is still open from the 🧰 shortcut above — the buttons
     // toggle, so close it first, then open fresh from the nameplate)
