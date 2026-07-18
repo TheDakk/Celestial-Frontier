@@ -1683,7 +1683,7 @@ function gasPalette(P){
   }
   return out;
 }
-function surfaceColor(P, u, lat, fbm){
+function surfaceColor(P, u, lat, fbm, fx){
   const t=P.type;
   if(t==='gas'){
     if(!P._pal) P._pal = gasPalette(P);
@@ -1704,14 +1704,36 @@ function surfaceColor(P, u, lat, fbm){
   const e = fbm(u*1.8+10, lat*1.8+5, 6);
   const polar = Math.abs(lat);
   if(t==='terran'){
+    /* the card's climate band drives the water (graphics overhaul V1):
+       hot = "Mostly evaporated" → brine basins + salt flats; cold =
+       "Frozen into ice sheets" → the seas are ice. Facts arrive via the
+       fx arg (from CARD_FACTS); absent ⇒ temperate (unchanged look). */
+    const hotB=fx&&fx.band==='hot', coldB=fx&&(fx.band==='cold'||fx.band==='frozen');
+    /* life richness tints the greenery once the card is known (V9) */
+    const vegSat=fx&&fx.lush===false?16:42, vegSat2=fx&&fx.lush===false?14:40;
+    if(coldB){
+      if(polar>0.30 && e>0.30) return [238,244,250];
+      if(e<0.44) return mix([176,200,220],[214,232,244], e/0.44);   /* sea ice */
+      if(e<0.505) return [206,216,228];
+      const taiga=hsl(P.landHue, 20, 26);
+      if(e<0.60) return mix([216,226,236], taiga, 0.5*(1-(e-0.505)/0.095));
+      return mix([218,228,236],[242,246,252],(e-0.60)/0.4);
+    }
+    if(hotB){
+      if(e<0.30) return mix([40,80,104],[96,134,144], e/0.30);      /* brine basins */
+      if(e<0.36) return [192,174,128];                              /* salt flats */
+      const dst=mix([206,168,104],[160,122,74], fbm(u*3.1+50, lat*3.1+9, 4));
+      if(e<0.72) return dst;
+      return mix(dst,[226,222,216],(e-0.72)/0.28);
+    }
     if(polar>0.86-P.iceAmt*0.1 || (polar>0.72 && e>0.58)) return [236,244,250];
     if(e<0.44) return mix([8,38,92],[20,82,150], e/0.44);
     if(e<0.485) return mix([20,82,150],[64,150,185],(e-0.44)/0.045);
     if(e<0.505) return [198,182,134];
     const arid = polar<0.38 && fbm(u*2.6+50, lat*2.6+9, 4)>0.56;
     if(arid) return mix([196,164,104],[168,134,82], fbm(u*7,lat*7,3));
-    const veg = hsl(P.landHue, 42, 32);
-    if(e<0.60) return mix(hsl(P.landHue,40,42), veg, (e-0.505)/0.095);
+    const veg = hsl(P.landHue, vegSat, 32);
+    if(e<0.60) return mix(hsl(P.landHue,vegSat2,42), veg, (e-0.505)/0.095);
     if(e<0.72) return mix(veg,[118,102,82],(e-0.60)/0.12);
     return [228,228,234];
   }
@@ -1753,6 +1775,12 @@ return Object.freeze({surfaceColor, planetParams});
 const {surfaceColor, planetParams}=PlanetGen;
 /* @end PlanetGen */
 
+/* card presentation facts (band / life richness / era lights), cached in a
+   side map — NEVER as fields on P/sys/pl: the determinism fingerprint
+   serializes those objects and new fields would change the baseline
+   (graphics overhaul V1/V9/I9) */
+const CARD_FACTS=new Map();   /* P.seed -> {band, lush, civLights} */
+
 /* ================================================================
    @module ThumbArt [app] — canvas sprites & thumbnails for planets, stars, moons, comets
    Deps: Rand, PlanetGen, EncUtil, GalaxyArt
@@ -1768,6 +1796,7 @@ function renderPlanetSprite(P, PX){
   const img=g.createImageData(PX,PX);
   const d=img.data;
   const fbm=makeNoise(P.seed);
+  const _fx=CARD_FACTS.get(P.seed)||null;
   const R0=PX/2;
   for(let y=0;y<PX;y++){
     const dy=(y-R0)/R0;
@@ -1778,7 +1807,7 @@ function renderPlanetSprite(P, PX){
       if(rr2>1){ d[i+3]=0; continue; }
       const z=Math.sqrt(1-rr2);
       const u=Math.atan2(dx,z)*1.4;
-      const col=surfaceColor(P,u,dy,fbm);
+      const col=surfaceColor(P,u,dy,fbm,_fx);
       let cr=col[0], cg2=col[1], cb=col[2];
       /* clouds drifting over living worlds */
       if(P.type==='terran'||P.type==='ocean'){
@@ -1788,14 +1817,24 @@ function renderPlanetSprite(P, PX){
           cr=cr*(1-ca)+250*ca; cg2=cg2*(1-ca)+252*ca; cb=cb*(1-ca)+255*ca;
         }
       }
+      /* gas giants with their immense fields wear auroral polar ovals —
+         the card promises them (V5) */
+      if(P.type==='gas' && Math.abs(dy)>0.74 && Math.abs(dy)<0.92){
+        const aa=(1-Math.abs(Math.abs(dy)-0.83)/0.09)*0.30;
+        cr=cr*(1-aa)+110*aa; cg2=cg2*(1-aa)+235*aa; cb=cb*(1-aa)+170*aa;
+      }
       /* day-night terminator: light baked from the upper-left, re-aimed at draw time */
       const shade=Math.max(dx*-0.42 + dy*-0.30 + z*0.86, 0);
       let lum=0.20+0.88*shade;
-      /* Earth by night: city lights tracing the coasts */
-      if(P.seed===133 && shade<0.16){
+      /* city lights tracing the coasts by night — every civilized world,
+         density scaled by its era (was an Earth-only easter egg; I9) */
+      const _cl=P.seed===133?0.5:((_fx&&_fx.civLights)||0);
+      if(_cl>0 && shade<0.16 && (P.type==='terran'||P.type==='ocean')){
         const landN=fbm(u*1.5, dy*1.5, 5);
         const cityN=fbm(u*9+3, dy*9-8, 4);
-        if(landN>0.52 && cityN>0.60){ cr=255; cg2=212; cb=138; lum=0.95; }
+        /* threshold 0.78-0.3*cl: village 0.735 · modern 0.63 (Earth's
+           original 0.60 look) · spacefaring 0.48 blaze */
+        if(landN>0.52 && cityN>0.78-_cl*0.3){ cr=255; cg2=212; cb=138; lum=0.95; }
       }
       d[i]=clamp(cr*lum,0,255); d[i+1]=clamp(cg2*lum,0,255); d[i+2]=clamp(cb*lum,0,255);
       const rr=Math.sqrt(rr2);
@@ -1807,15 +1846,23 @@ function renderPlanetSprite(P, PX){
 }
 /* a fast 128px placeholder renders instantly; the full 512px sprite is swapped in a
    beat later — entering a system never freezes a frame on a 262k-pixel noise loop */
+/* the sprite honors card facts that can arrive after first render (band /
+   life / era lights) — they join the cache key so surveying a world
+   upgrades its picture (graphics overhaul V1/V9/I9) */
+function _cardSig(P){
+  const fx=CARD_FACTS.get(P.seed);
+  return fx?(fx.band||'')+'|'+(fx.lush===undefined?'?':(fx.lush?1:0))+'|'+(fx.civLights||0):'';
+}
 function getPlanetSprite(P){
-  const hit=spriteCache.get(P.seed);
+  const key=P.seed+'|'+_cardSig(P);
+  const hit=spriteCache.get(key);
   if(hit) return hit;
   const lo=renderPlanetSprite(P, 128);
   lo._lowres=true;
   if(spriteCache.size>28){ const k=spriteCache.keys().next().value; spriteCache.delete(k); }
-  spriteCache.set(P.seed, lo);
+  spriteCache.set(key, lo);
   setTimeout(()=>{
-    if(spriteCache.get(P.seed)===lo) spriteCache.set(P.seed, renderPlanetSprite(P, P_PX));
+    if(spriteCache.get(key)===lo) spriteCache.set(key, renderPlanetSprite(P, P_PX));
   }, 30);
   return lo;
 }
@@ -1823,12 +1870,30 @@ function getPlanetSprite(P){
 /* ---------------- thumbnails (data URLs) for panel + scan log ---------------- */
 const thumbCache=new Map();
 function planetThumb(P){
-  const key='p'+P.seed;
+  const key='p'+P.seed+'|'+_cardSig(P);
   if(thumbCache.has(key)) return thumbCache.get(key);
   const s=getPlanetSprite(P);
   const T=128, c=document.createElement('canvas'); c.width=c.height=T;
   const g=c.getContext('2d');
-  g.drawImage(s,0,0,T,T);
+  if(P.ring){
+    /* a ringed world's card finally shows its rings (V9): planet drawn
+       inset, seeded ring band behind + before */
+    const r=mulberry32((P.seed^0x1276)>>>0);
+    const tilt=0.42+r()*0.5, hue=P.type==='ice'?'188,212,232':'224,206,166';
+    const ring=(front)=>{
+      g.save();g.translate(T/2,T/2);g.rotate(-0.42);g.scale(1,0.32*tilt);
+      g.strokeStyle='rgba('+hue+','+(front?0.85:0.55)+')';g.lineWidth=T*0.055;
+      g.beginPath();g.arc(0,0,T*0.44,front?0:Math.PI,front?Math.PI:0,false);g.stroke();
+      g.strokeStyle='rgba('+hue+','+(front?0.4:0.25)+')';g.lineWidth=T*0.022;
+      g.beginPath();g.arc(0,0,T*0.52,front?0:Math.PI,front?Math.PI:0,false);g.stroke();
+      g.restore();
+    };
+    ring(false);
+    g.drawImage(s,T*0.14,T*0.14,T*0.72,T*0.72);
+    ring(true);
+  } else {
+    g.drawImage(s,0,0,T,T);
+  }
   // soft day/night shading for depth
   const lg=g.createRadialGradient(T*0.34,T*0.30,2,T*0.5,T*0.5,T*0.62);
   lg.addColorStop(0,'rgba(255,250,235,0.18)'); lg.addColorStop(0.5,'rgba(0,0,0,0)'); lg.addColorStop(1,'rgba(0,0,14,0.62)');
@@ -3647,7 +3712,7 @@ const {biosphere, civilization, planetSpecies}=Ecology;
 /* ================================================================
    @module Descriptors [domain] — survey-card descriptors for every object kind
    Deps: Rand, SurveyPhrases, Ecology, Genome, SpeciesTraits, state-camera, prime, ThumbArt, StarCatalog, WorldGen, WorldConfig, Naming, GalaxyArt, player-state
-   API:  galaxyStats, fmtBig, roman, describePick, slimGal, starDescriptor, planetDescriptor, moonDescriptor, galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor, kuiperDescriptor, visitorDescriptor, beltDescriptor
+   API:  galaxyStats, fmtBig, roman, describePick, slimGal, starDescriptor, planetDescriptor, moonDescriptor, galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor, kuiperDescriptor, visitorDescriptor, beltDescriptor, SOL_MOONS
    ================================================================ */
 const Descriptors=(()=>{
 function magnetText(P){
@@ -3689,6 +3754,12 @@ function planetDescriptor(P, sys, pl){
   const band = climateBand(P, sys, orb);
   const bio = biosphere(P, sys, band, r);
   const civ = civilization(P, sys, band, bio, r);
+  /* publish the card's presentation facts to the side cache (NOT onto P —
+     the fingerprint serializes these objects): the sprite/thumb/tile art
+     reads them to honor the card (V1/V9/I9) */
+  CARD_FACTS.set(P.seed,{band:band,
+    lush:/complex|earth|flora|aquatic/.test(bio.key||'')?true:(/none|microbial|subsurface|aerial/.test(bio.key||'')?false:undefined),
+    civLights:civ.civ?(/Spacefaring|Interstellar|Post/.test((civ.era&&civ.era.name)||'')?1:(/Industrial|Modern/.test((civ.era&&civ.era.name)||'')?0.5:0.15)):0});
   const rows=[
     ['Made of', COMP[P.type]],
     ['Atmosphere', atmosphereText(P, band, r)],
@@ -4081,9 +4152,9 @@ function describePick(p){
   }
   return d;
 }
-return Object.freeze({galaxyStats, fmtBig, roman, describePick, slimGal, starDescriptor, planetDescriptor, moonDescriptor, galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor, kuiperDescriptor, visitorDescriptor, beltDescriptor});
+return Object.freeze({galaxyStats, fmtBig, roman, describePick, slimGal, starDescriptor, planetDescriptor, moonDescriptor, galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor, kuiperDescriptor, visitorDescriptor, beltDescriptor, SOL_MOONS});
 })();
-const {galaxyStats, fmtBig, roman, describePick, slimGal, starDescriptor, planetDescriptor, moonDescriptor, galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor, kuiperDescriptor, visitorDescriptor, beltDescriptor}=Descriptors;
+const {galaxyStats, fmtBig, roman, describePick, slimGal, starDescriptor, planetDescriptor, moonDescriptor, galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor, kuiperDescriptor, visitorDescriptor, beltDescriptor, SOL_MOONS}=Descriptors;
 /* @end Descriptors */
 
 
@@ -4120,7 +4191,7 @@ function getTile(P, fbm, L, tx, ty){
       const qx=fbm(u*0.55+37.2, lat*1.4+91.7, 3);
       const qy=fbm(u*0.55+11.9, lat*1.4+57.3, 3);
       const u2=u+(qx-0.5)*wAmp, lat2=lat+(qy-0.5)*wAmp*0.4;
-      let col=surfaceColor(P,u2,lat2,fbm);
+      let col=surfaceColor(P,u2,lat2,fbm,CARD_FACTS.get(P.seed)||null);
       const isWater=col[2]>col[0]+26 && col[2]>col[1]+8;
       if(relief){
         /* true 2-axis hillshade, lit from the northwest */
@@ -4968,6 +5039,23 @@ function drawGalaxy(time){
   setCtxText('every dot is one of ~'+fmtBig(gs2.stars)+' stars sharing ~'+fmtBig(gs2.planets)+' worlds — zoom deeper and more keep resolving');
 }
 
+/* replicate the descriptor's presentation facts for a planet the player
+   hasn't surveyed yet — same rng stream (seed^0x1234567), same draw
+   order as planetDescriptor, so the values are identical (graphics
+   overhaul V1/V9/I9). Idempotent; the descriptor overwrites harmlessly. */
+/* side caches for per-object presentation (fingerprint-safe: no new
+   fields on domain objects) */
+const _litCache=new Map(), _ringCache=new Map(), _mtintCache=new Map();
+function ensureCardFacts(P, sys, orb){
+  if(CARD_FACTS.has(P.seed)) return;
+  const r=mulberry32((P.seed^0x1234567)>>>0);
+  const band=climateBand(P, sys, orb||100);
+  const bio=biosphere(P, sys, band, r);
+  const civ=civilization(P, sys, band, bio, r);
+  CARD_FACTS.set(P.seed,{band:band,
+    lush:/complex|earth|flora|aquatic/.test(bio.key||'')?true:(/none|microbial|subsurface|aerial/.test(bio.key||'')?false:undefined),
+    civLights:civ.civ?(/Spacefaring|Interstellar|Post/.test((civ.era&&civ.era.name)||'')?1:(/Industrial|Modern/.test((civ.era&&civ.era.name)||'')?0.5:0.15)):0});
+}
 function drawSystem(time){
   drawBackdrop();
   const c=st.scam;
@@ -5082,6 +5170,16 @@ function drawSystem(time){
   ctx.setLineDash([]);
   picks.push({ringPick:true, sx:(0-c.x)*c.z+W/2, sy:(0-c.y)*c.z+H/2,
     rr:(SYS_R-3)*c.z, band:Math.max(5*c.z,10), kind:'oort', data:{}});
+  /* the star's own light color reaches its worlds (I2): tinted lit-side
+     stop, cached in a side map (never a field on sys — the fingerprint
+     serializes it) */
+  let _lit=_litCache.get(sys.starCol||'');
+  if(!_lit){
+    const n=parseInt((sys.starCol||'#ffe9c8').slice(1),16);
+    const lr=((n>>16)&255), lgc=((n>>8)&255), lb=(n&255);
+    _lit='rgba('+Math.round(lr*0.55+255*0.45)+','+Math.round(lgc*0.55+250*0.45)+','+Math.round(lb*0.55+230*0.45)+',0.18)';
+    _litCache.set(sys.starCol||'', _lit);
+  }
   /* orbits & planets */
   for(const pl of sys.planets){
     ctx.strokeStyle='rgba(232,236,255,0.13)'; ctx.lineWidth=0.8/c.z;
@@ -5089,12 +5187,22 @@ function drawSystem(time){
     const ang = pl.orb*0.13 + time*0.05/(pl.orb*0.012);
     const px=Math.cos(ang)*pl.orb, py=Math.sin(ang)*pl.orb;
     const pr=6*pl.P.sizeMul;
+    ensureCardFacts(pl.P, sys, pl.orb);   /* band/life/era reach the sprite (V1/V9/I9) */
     const sprite=getPlanetSprite(pl.P);
     picks.push({sx:(px-c.x)*c.z+W/2, sy:(py-c.y)*c.z+H/2, r:Math.max(pr*c.z,16*PICK_F), kind:'planet', data:{P:pl.P, sys, pl}});
     ctx.save(); ctx.translate(px,py);
+    /* rings: seeded tilt + type hue, no longer one beige arc for the
+       whole universe (S3) — cached in a side map, never on P */
+    let _rg=_ringCache.get(pl.P.seed);
+    if(!_rg){
+      const rr9=mulberry32((pl.P.seed^0x1276)>>>0);
+      _rg={tilt:0.30+rr9()*0.34,
+        hue:(pl.P.type==='ice'||(pl.P.type==='gas'&&rr9()<0.4))?'188,212,232':'224,206,166'};
+      _ringCache.set(pl.P.seed,_rg);
+    }
     if(pl.P.ring){
-      ctx.save(); ctx.rotate(0.45); ctx.scale(1,0.32);
-      ctx.strokeStyle='rgba(224,206,166,0.7)'; ctx.lineWidth=pr*0.5;
+      ctx.save(); ctx.rotate(0.45); ctx.scale(1,_rg.tilt);
+      ctx.strokeStyle='rgba('+_rg.hue+',0.7)'; ctx.lineWidth=pr*0.5;
       ctx.beginPath(); ctx.arc(0,0,pr*1.9,Math.PI,TAU); ctx.stroke();
       ctx.restore();
     }
@@ -5106,14 +5214,27 @@ function drawSystem(time){
     ctx.rotate(-aim);
     const lx2=-Math.cos(ang)*pr*0.5, ly2=-Math.sin(ang)*pr*0.5;
     const lg=ctx.createRadialGradient(lx2,ly2,0,0,0,pr*1.5);
-    lg.addColorStop(0,'rgba(255,250,230,0.16)'); lg.addColorStop(0.5,'rgba(0,0,0,0)'); lg.addColorStop(1,'rgba(0,0,12,0.42)');
+    lg.addColorStop(0,_lit); lg.addColorStop(0.5,'rgba(0,0,0,0)'); lg.addColorStop(1,'rgba(0,0,12,0.42)');
     ctx.fillStyle=lg; ctx.fillRect(-pr,-pr,pr*2,pr*2);
     ctx.restore();
     if(pl.P.ring){
-      ctx.save(); ctx.rotate(0.45); ctx.scale(1,0.32);
-      ctx.strokeStyle='rgba(238,222,184,0.9)'; ctx.lineWidth=pr*0.5;
+      ctx.save(); ctx.rotate(0.45); ctx.scale(1,_rg.tilt);
+      ctx.strokeStyle='rgba('+_rg.hue+',0.9)'; ctx.lineWidth=pr*0.5;
       ctx.beginPath(); ctx.arc(0,0,pr*1.9,0,Math.PI); ctx.stroke();
       ctx.restore();
+    }
+    /* moons wear their card's type (V4): same deterministic roll as
+       moonDescriptor, cached per planet in a side map */
+    let _mt=_mtintCache.get(pl.P.seed);
+    if(!_mt){
+      _mt=[];
+      for(let mm=0;mm<pl.P.moons;mm++){
+        const msol=(SOL_MOONS[pl.P.seed]||[])[mm];
+        const mr2=mulberry32(hashInt(pl.P.seed, mm*17+5, 91));
+        const ti=msol?msol.t:Math.floor(mr2()*4);
+        _mt.push(['#b9bcc6','#cfe4f2','#e0c060','#8d8678'][ti]||'#c8ccd8');
+      }
+      _mtintCache.set(pl.P.seed,_mt);
     }
     for(let m=0;m<pl.P.moons;m++){
       /* Kepler-ish: outer moons drift slower (ω ∝ r^-1.5), so big planets'
@@ -5123,7 +5244,7 @@ function drawSystem(time){
       const mdist=pr*morb;
       const mx=Math.cos(ma)*mdist, my=Math.sin(ma)*mdist*0.4;
       const mrad=Math.max(0.5,pr*0.12);
-      ctx.fillStyle='#c8ccd8';
+      ctx.fillStyle=_mt[m]||'#c8ccd8';
       ctx.beginPath(); ctx.arc(mx, my, mrad, 0, TAU); ctx.fill();
       ctx.save();
       ctx.beginPath(); ctx.arc(mx, my, mrad, 0, TAU); ctx.clip();
@@ -5223,6 +5344,9 @@ function drawSystem(time){
 function drawSurface(time){
   const c=st.pcam;
   const P=st.planet.P;
+  /* the tiles must know the card's band/life before the FIRST tile is
+     cut, or a hot world's first frames bake temperate oceans (V1) */
+  ensureCardFacts(P, st.sys, st.planet.orb);
   ctx.fillStyle='#000'; ctx.fillRect(0,0,W,H);
   const L=clamp(Math.floor(Math.log2(c.z*Math.min(DPR,2))), -1, 10);
   const pow=Math.pow(2,L);
@@ -5238,7 +5362,7 @@ function drawSurface(time){
     const tile=getTile(P, st.pfbm, L, tx, ty);
     if(tile) ctx.drawImage(tile, tx*TW, ty*TW, TW+0.5/c.z, TW+0.5/c.z);
     else {
-      if(!P._fb){ const fc=surfaceColor(P, 0.3, 0.25, st.pfbm); P._fb=`rgb(${fc[0]|0},${fc[1]|0},${fc[2]|0})`; }
+      if(!P._fb){ const fc=surfaceColor(P, 0.3, 0.25, st.pfbm, CARD_FACTS.get(P.seed)||null); P._fb=`rgb(${fc[0]|0},${fc[1]|0},${fc[2]|0})`; }
       ctx.fillStyle=P._fb;
       ctx.fillRect(tx*TW,ty*TW,TW+0.5/c.z,TW+0.5/c.z);
     }
@@ -5413,7 +5537,8 @@ function drawSurface(time){
       const cvRow=_lastDesc.rows&&_lastDesc.rows.find(rr=>rr[0]==='Civilization');
       if(cvRow && !/^None/.test(cvRow[1])){
         const teRow=_lastDesc.rows.find(rr=>rr[0]==='Tech era');
-        era=(teRow && /spacefar|interstellar|post/i.test(teRow[1]))?'space':'iron';
+        era=(teRow && /spacefar|interstellar|post/i.test(teRow[1]))?'space'
+          :((teRow && /industrial|modern/i.test(teRow[1]))?'town':'iron');   /* V6: no castles for railway ages */
       }
       /* only fauna that can STAND join the landing party — the card's own
          locomotion/habitat words (swimmers of the open ocean, drifters of
@@ -5563,23 +5688,29 @@ function hdBeastBare(G,seed){
   cv._feetY=feetMax/S;
   return cv;
 }
-function _hdPlantBare(seed){
+function _hdPlantBare(seed, sp){
+  /* the plant SPECIES genes (graphics overhaul, infinity L1/L2): trunk +
+     leaf color, branch spread, recursion depth, lean — every world can
+     grow its own flora instead of one tree universe-wide */
+  sp=sp||{};
+  const trunk=sp.trunk||'#14261a', leaf=sp.leaf||'rgba(46,96,54,0.9)';
+  const spread=sp.spread||1.05, depth0=sp.depth||4, lean=sp.lean!==undefined?sp.lean:0.2;
   const S=200,cv=document.createElement('canvas');cv.width=cv.height=S;
   const g2=cv.getContext('2d'),r=mulberry32(seed>>>0);
   const branch=(x,y,ang,len,w,depth)=>{
     const nx2=x+Math.cos(ang)*len,ny2=y+Math.sin(ang)*len;
-    g2.strokeStyle='#14261a';g2.lineWidth=w;g2.lineCap='round';
+    g2.strokeStyle=trunk;g2.lineWidth=w;g2.lineCap='round';
     g2.beginPath();g2.moveTo(x,y);g2.lineTo(nx2,ny2);g2.stroke();
     if(depth<=0){
       for(let i=0;i<5;i++){const la=ang+(r()-0.5)*2.4,lr=3+r()*8;
-        g2.globalAlpha=0.6+r()*0.35;g2.fillStyle='rgba(46,96,54,0.9)';
+        g2.globalAlpha=0.6+r()*0.35;g2.fillStyle=leaf;
         g2.beginPath();g2.ellipse(nx2+Math.cos(la)*lr*0.6,ny2+Math.sin(la)*lr*0.6,lr*0.65,lr*0.3,la,0,7);g2.fill();}
       g2.globalAlpha=1;return;
     }
     const kids=2+(r()<0.4?1:0);
-    for(let k=0;k<kids;k++)branch(nx2,ny2,ang+(r()-0.5)*1.05,len*(0.64+r()*0.14),w*0.6,depth-1);
+    for(let k=0;k<kids;k++)branch(nx2,ny2,ang+(r()-0.5)*spread,len*(0.64+r()*0.14),w*0.6,depth-1);
   };
-  branch(S/2,S*0.985,-1.5708+(r()-0.5)*0.2,S*0.2,S*0.03,4);
+  branch(S/2,S*0.985,-1.5708+(r()-0.5)*lean,S*0.2,S*0.03,depth0);
   return cv;
 }
 function _hdStampPlant(g,pcv,x,baseY,s2,hazeAmt,darkAmt,darkCol){
@@ -5810,7 +5941,9 @@ function hdVista(opts){
       g.globalAlpha=0.12;g.fillStyle=fleck;g.fillRect(tx,ty,2+sc*7,1+sc*2);}
     g.globalAlpha=1;
   }
-  if(civ==='none'&&!desert&&!sea&&!ember&&opts.pal!=='ice'&&opts.pal!=='grey'&&opts.pal!=='haze'){
+  if(!desert&&!sea&&!ember&&opts.pal!=='ice'&&opts.pal!=='grey'&&opts.pal!=='haze'){
+    /* the river no longer vanishes when a civilization stands here (V7) —
+       the card's Water row said rivers, so the road fords one */
     const rp=[[W*0.60,hz+30],[W*0.52,hz+90],[W*0.62,H*0.78],[W*0.40,H+20]];
     const riverAt=t=>{const a=rp[0],b=rp[1],c=rp[2],d=rp[3];
       return[(1-t)*(1-t)*(1-t)*a[0]+3*(1-t)*(1-t)*t*b[0]+3*(1-t)*t*t*c[0]+t*t*t*d[0],
@@ -5846,25 +5979,46 @@ function hdVista(opts){
           g.lineTo(p7[0]+w8,p7[1]+(r()-0.5)*4);g.stroke();}
       }
     }
-    const nightAmb=opts.pal==='night'?0.18:0;   /* moonlight knocks the near life back */
-    if(opts.genes&&opts.genes.length){
-      const bcv=hdBeastBare(opts.genes[0],(seed^0x8EA)>>>0);
-      const pBank=riverAt(0.70);
-      _hdPlaceBeast(g,bcv,pBank[0]+66,pBank[1]+8,0.36,true,nightAmb,P.sun>0?0.10:0);
-      const pFar=riverAt(0.28);
-      _hdPlaceBeast(g,bcv,pFar[0]-64,pFar[1]+10,0.17,true,0.45,0.05);
-      if(opts.genes[1]){
-        const bcv2=hdBeastBare(opts.genes[1],(seed^0x77F)>>>0);
-        _hdPlaceBeast(g,bcv2,pFar[0]-110,pFar[1]+4,0.14,true,0.55,0.04);
+    if(civ==='none'){
+      const nightAmb=opts.pal==='night'?0.18:0;   /* moonlight knocks the near life back */
+      if(opts.genes&&opts.genes.length){
+        const bcv=hdBeastBare(opts.genes[0],(seed^0x8EA)>>>0);
+        const pBank=riverAt(0.70);
+        _hdPlaceBeast(g,bcv,pBank[0]+66,pBank[1]+8,0.36,true,nightAmb,P.sun>0?0.10:0);
+        const pFar=riverAt(0.28);
+        _hdPlaceBeast(g,bcv,pFar[0]-64,pFar[1]+10,0.17,true,0.45,0.05);
+        if(opts.genes[1]){
+          const bcv2=hdBeastBare(opts.genes[1],(seed^0x77F)>>>0);
+          _hdPlaceBeast(g,bcv2,pFar[0]-110,pFar[1]+4,0.14,true,0.55,0.04);
+        }
+      }
+      if(flora){
+        for(let tp2=0;tp2<8;tp2++){
+          const px5=(tp2+0.5)*(W/8)+(_hdHash(tp2,seed,3)-0.5)*40;
+          _hdStampPlant(g,pcv,px5,ridgeY(px5)+3,0.24+_hdHash(tp2,seed,5)*0.14,0.42+frost*0.4,pd,pdc);
+        }
+        _hdStampPlant(g,pcv,W*0.085,H*0.90,0.95,frost,pd*0.9,pdc);
+        _hdStampPlant(g,pcv,W*0.90,H*0.94,1.15,frost,pd*0.9,pdc);
       }
     }
-    if(flora){
-      for(let tp2=0;tp2<8;tp2++){
-        const px5=(tp2+0.5)*(W/8)+(_hdHash(tp2,seed,3)-0.5)*40;
-        _hdStampPlant(g,pcv,px5,ridgeY(px5)+3,0.24+_hdHash(tp2,seed,5)*0.14,0.42+frost*0.4,pd,pdc);
+  }
+  if(desert&&flora){
+    /* the card said "Sparse, hardy vegetation" — the dunes agree (V3):
+       dry-country shrubs, olive-tan leaves, plus the world's own beasts */
+    const dpv=_hdPlantBare(seed+5,{trunk:'#2a2014',leaf:'rgba(130,120,66,0.85)',spread:1.5,depth:3});
+    for(let dp2=0;dp2<6;dp2++){
+      const dx2=W*(0.06+dp2*0.16)+(_hdHash(dp2,seed,11)-0.5)*50;
+      _hdStampPlant(g,dpv,dx2,ridgeY(dx2)+4,0.10+_hdHash(dp2,seed,13)*0.08,0.35,pd,pdc);
+    }
+    _hdStampPlant(g,dpv,W*0.12,H*0.90,0.5,0,pd*0.9,pdc);
+    _hdStampPlant(g,dpv,W*0.83,H*0.94,0.62,0,pd*0.9,pdc);
+    if(opts.genes&&opts.genes.length){
+      const bcv=hdBeastBare(opts.genes[0],(seed^0x8EA)>>>0);
+      _hdPlaceBeast(g,bcv,W*0.55,H*0.86,0.30,true,0,P.sun>0?0.12:0,'96,78,40');
+      if(opts.genes[1]){
+        const bcv2=hdBeastBare(opts.genes[1],(seed^0x77F)>>>0);
+        _hdPlaceBeast(g,bcv2,W*0.30,hz+96,0.14,false,0.4,0.06,'96,78,40');
       }
-      _hdStampPlant(g,pcv,W*0.085,H*0.90,0.95,frost,pd*0.9,pdc);
-      _hdStampPlant(g,pcv,W*0.90,H*0.94,1.15,frost,pd*0.9,pdc);
     }
   }
   if(ember){
@@ -6026,7 +6180,7 @@ function hdVista(opts){
       _hdStampPlant(g,pcv,W*0.72,by+13,0.22,0.4+frost*0.3,pd,pdc);
     }
   }
-  if(civ==='iron'&&!sea){
+  if((civ==='iron'||civ==='town')&&!sea){
     const kx=(zx0+zx1)/2+20,ky=plat+2;
     const road=[[W*0.30,H+10],[W*0.40,H*0.82],[W*0.36,H*0.70],[kx-18,ky+8]];
     const roadAt=t=>{const a=road[0],b=road[1],c=road[2],d=road[3];
@@ -6073,19 +6227,41 @@ function hdVista(opts){
         g.beginPath();g.moveTo(hx,hy-15*s4);
         g.quadraticCurveTo(hx+(opts.pal==='rain'?14:8),hy-15*s4-(opts.pal==='rain'?8:18),hx+(opts.pal==='rain'?26:4+r()*10),hy-15*s4-(opts.pal==='rain'?13:38));g.stroke();}
     }
-    const block=(x,y,w,h,dk,lt)=>{g.fillStyle=dk;g.fillRect(x-w/2,y-h,w,h);g.fillStyle=lt;g.fillRect(x,y-h,w/2,h);};
-    g.fillStyle='rgba(10,16,10,0.35)';g.beginPath();g.ellipse(kx-30,ky+5,60,7,0,0,7);g.fill();
-    block(kx,ky,86,34,'#232c38','#303c4a');
-    for(let cn=0;cn<7;cn++)g.fillRect(kx-40+cn*12,ky-40,7,7);
-    block(kx-52,ky,20,52,'#1e2732','#2b3644');
-    block(kx+52,ky,20,52,'#1e2732','#2b3644');
-    block(kx,ky-30,30,34,'#273241','#374556');
-    g.fillStyle='#161d26';
-    g.beginPath();g.moveTo(kx-62,ky-52);g.lineTo(kx-52,ky-68);g.lineTo(kx-42,ky-52);g.closePath();g.fill();
-    g.beginPath();g.moveTo(kx+42,ky-52);g.lineTo(kx+52,ky-68);g.lineTo(kx+62,ky-52);g.closePath();g.fill();
-    g.beginPath();g.moveTo(kx-17,ky-64);g.lineTo(kx,ky-80);g.lineTo(kx+17,ky-64);g.closePath();g.fill();
-    g.fillStyle='#ffc86a';
-    g.fillRect(kx-56,ky-34,3,4.5);g.fillRect(kx+50,ky-34,3,4.5);g.fillRect(kx-5,ky-48,4,6);g.fillRect(kx+10,ky-20,3,4.5);
+    if(civ==='town'){
+      /* Industrial/Modern era (V6): low flat-roofed blocks with lit
+         windows and streetlamps down the road — no castle for a world
+         whose card says railways and computers */
+      const blockT=(x,y,w2,h2)=>{g.fillStyle='#1f2731';g.fillRect(x-w2/2,y-h2,w2,h2);
+        g.fillStyle='#2b3542';g.fillRect(x,y-h2,w2/2,h2);
+        for(let wr=0;wr<Math.floor(h2/7);wr++)for(let wc=0;wc<Math.floor(w2/9);wc++)
+          if(_hdHash(wr,(wc+x)|0,3)<0.55){g.fillStyle=_hdHash(wr,(wc+x)|0,5)<0.5?'#ffd98a':'#c8dfff';
+            g.fillRect(x-w2/2+3+wc*9,y-6-wr*7,2.2,3);}
+      };
+      g.fillStyle='rgba(10,16,10,0.35)';g.beginPath();g.ellipse(kx-20,ky+5,70,7,0,0,7);g.fill();
+      blockT(kx-38,ky,34,26);blockT(kx+4,ky,44,38);blockT(kx+46,ky,28,20);
+      blockT(kx-70,ky,20,14);blockT(kx+78,ky,22,16);
+      g.save();g.globalCompositeOperation='lighter';
+      for(let lp=0;lp<6;lp++){const tl=0.12+lp*0.13,pl2=roadAt(tl),lsc=(1-tl+0.4);
+        const lx3=pl2[0]+(lp%2?14:-14)*lsc, ly3=pl2[1];
+        g.strokeStyle='rgba(120,130,140,0.7)';g.lineWidth=1;
+        g.beginPath();g.moveTo(lx3,ly3);g.lineTo(lx3,ly3-9*lsc);g.stroke();
+        g.fillStyle='rgba(255,214,130,0.85)';g.beginPath();g.arc(lx3,ly3-9*lsc,1.4,0,7);g.fill();}
+      g.restore();
+    } else {
+      const block=(x,y,w,h,dk,lt)=>{g.fillStyle=dk;g.fillRect(x-w/2,y-h,w,h);g.fillStyle=lt;g.fillRect(x,y-h,w/2,h);};
+      g.fillStyle='rgba(10,16,10,0.35)';g.beginPath();g.ellipse(kx-30,ky+5,60,7,0,0,7);g.fill();
+      block(kx,ky,86,34,'#232c38','#303c4a');
+      for(let cn=0;cn<7;cn++)g.fillRect(kx-40+cn*12,ky-40,7,7);
+      block(kx-52,ky,20,52,'#1e2732','#2b3644');
+      block(kx+52,ky,20,52,'#1e2732','#2b3644');
+      block(kx,ky-30,30,34,'#273241','#374556');
+      g.fillStyle='#161d26';
+      g.beginPath();g.moveTo(kx-62,ky-52);g.lineTo(kx-52,ky-68);g.lineTo(kx-42,ky-52);g.closePath();g.fill();
+      g.beginPath();g.moveTo(kx+42,ky-52);g.lineTo(kx+52,ky-68);g.lineTo(kx+62,ky-52);g.closePath();g.fill();
+      g.beginPath();g.moveTo(kx-17,ky-64);g.lineTo(kx,ky-80);g.lineTo(kx+17,ky-64);g.closePath();g.fill();
+      g.fillStyle='#ffc86a';
+      g.fillRect(kx-56,ky-34,3,4.5);g.fillRect(kx+50,ky-34,3,4.5);g.fillRect(kx-5,ky-48,4,6);g.fillRect(kx+10,ky-20,3,4.5);
+    }
     for(let fp=0;fp<6;fp++){
       const fpx=(fp<3?fp*0.10+0.03:0.76+(fp-3)*0.085)*W;
       _hdStampPlant(g,pcv,fpx,ridgeY(fpx)+3,0.22+_hdHash(fp,seed,5)*0.12,0.42+frost*0.4,pd,pdc);
@@ -7178,7 +7354,10 @@ function renderCodex(){
   /* drill-down categories: Fauna first (your fighters), then the rest */
   const spCard=(sp)=>{
     const gr=sp.grade;
-    const bstyle = gr ? 'border-color:'+gr.hex+';box-shadow:0 0 0 1px '+gr.hex+(gr.tier>=4?', 0 0 16px '+gr.hex+'55':(gr.tier>=2?', 0 0 9px '+gr.hex+'33':'')) : '';
+    /* summit grades wear the foil in the Compendium too, and the glow now
+       climbs past tier 4 instead of flat-lining (graphics overhaul V10) */
+    const foil=gr&&gr.tier>=12;
+    const bstyle = gr&&!foil ? 'border-color:'+gr.hex+';box-shadow:0 0 0 1px '+gr.hex+(gr.tier>=8?', 0 0 22px '+gr.hex+'66':(gr.tier>=4?', 0 0 16px '+gr.hex+'55':(gr.tier>=2?', 0 0 9px '+gr.hex+'33':''))) : '';
     const rar = gr && gr.star ? '<span class="rar" style="color:'+gr.hex+'">'+gr.star+'</span>' : '';
     const rlabel = gr ? '<span class="rlabel" style="color:'+gr.hex+'">'+gr.name+'</span> · ' : '';
     const fromTxt = sp.hybrid
@@ -7191,7 +7370,7 @@ function renderCodex(){
     const mods=(sp.mods||[]).slice(0,4);
     const modHtml=mods.length?'<span class="mods">'+mods.map(m=>'<em>'+m+'</em>').join('')+'</span>':'';
     const ccx=creatureCondition(sp.genome);
-    return '<div class="sp" data-pick="'+sp.id+'" role="button" tabindex="0" style="'+bstyle+'"><img class="art" src="'+sp.art+'" alt="">'+
+    return '<div class="sp'+(foil?' iridframe':'')+'" data-pick="'+sp.id+'" role="button" tabindex="0" style="'+bstyle+'"><img class="art" src="'+sp.art+'" alt="">'+
       '<div class="info"><div class="nm">'+(REALM_ICON[realm]||KIND_ICON[sp.kind]||'')+' '+sp.name+' '+rar+
       (sp.id===scoutId?'<span class="scouttag">SCOUT</span>':'')+
       (ccx.h>0?' <span style="color:'+ccx.col+';font-size:9px">● '+ccx.label+'</span>':'')+
@@ -7350,7 +7529,9 @@ function renderBinder(){
     '<div class="bind-head">Named one-of-a-kind legends at fixed worlds — the same fifty for every explorer. <b>Tap a silhouette</b> to plot a course to its last-known world, then scan there to catalogue it.</div><div class="bgrid">';
   for(let i=0;i<PARAGON_N;i++){
     const have=codex.has('s'+paragonSeed(i));
-    html+='<span class="bslot pslot'+(have?'':' miss')+'" data-par="'+i+'" role="button" tabindex="0"'+(have?' style="border-color:#3fe8c8;color:#3fe8c8"':'')+'>'+
+    /* a caught Paragon's slot wears its TRUE grade color (V10) */
+    const pgx=have?((codex.get('s'+paragonSeed(i)).grade||{}).hex||'#3fe8c8'):'';
+    html+='<span class="bslot pslot'+(have?'':' miss')+'" data-par="'+i+'" role="button" tabindex="0"'+(have?' style="border-color:'+pgx+';color:'+pgx+'"':'')+'>'+
       (have?codex.get('s'+paragonSeed(i)).name:'#'+(i+1)+' — ?')+'</span>';
   }
   html+='</div><h4 class="bh">🏅 Sets</h4>';
@@ -9325,7 +9506,7 @@ function _cineNext(){
   if(!o){ _cineOn=false; _cineCur=null; return; }
   _cineOn=true; _cineCur=o;
   const el=_cineBox();
-  const hex=o.hex||'#ffd96a', tier=Math.max(0, Math.min(8, o.tier|0));
+  const hex=o.hex||'#ffd96a', tier=Math.max(0, Math.min(TIER_MAX, o.tier|0));   /* an Omnipotent find celebrates like one (V10) */
   el.style.setProperty('--cine', hex);
   el.innerHTML='<div class="rays"></div><div class="core">'+
     '<div class="kick">'+(o.kicker||'✦')+'</div>'+
@@ -10503,7 +10684,7 @@ function showCargoBtn(){
 }
 /* every element wears its family color — gold is gold, ices are cyan, exotics shimmer */
 const EC={Au:'#ffd96a',Ag:'#e2e6f0',Cu:'#e8956a',Pt:'#dfe8fa',Ir:'#cdb8ec',Fe:'#aab2c2',Ni:'#b8c0ce',Ti:'#9fb6d6',W:'#8a96aa',
-  Co:'#7fa8f8',Cr:'#bcd6e6',Mn:'#c2a878',Pb:'#98a2b2',Sn:'#c8d0dc',Zn:'#cdd5e2',Al:'#d2d6dc',Mg:'#e2e2dc',Ca:'#eee8d2',Na:'#ffd96a',
+  Co:'#7fa8f8',Cr:'#bcd6e6',Mn:'#c2a878',Pb:'#98a2b2',Sn:'#c8d0dc',Zn:'#cdd5e2',Al:'#d2d6dc',Mg:'#e2e2dc',Ca:'#eee8d2',Na:'#ffd96a',Si:'#d9c9a3',
   Li:'#ff9fb2',U:'#9fe06a',Th:'#bcd66a',S:'#d8c24f',P:'#ffb84f',C:'#8a8a9a',N:'#a8c8ff',O:'#9fdfe8',Cl:'#c0ff5a',
   H:'#f2c8a2',He:'#ecdfc2',H2O:'#9fdfe8',CH4:'#8fd6ff',NH3:'#b8d2f8',CO2:'#c2ecf2',He3:'#7fd0ff',
   Nd:'#b58cff',Pm:'#ff9fe0',Vg:'#3fe8c8',Pz:'#ff7ae8'};
