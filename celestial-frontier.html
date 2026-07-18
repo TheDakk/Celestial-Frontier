@@ -4795,6 +4795,98 @@ function drawUniverse(time){
     : 'galaxies cluster along the cosmic web, leaving vast dark voids — the orange ring is the edge of the observable universe'));
 }
 
+/* I1: pre-rendered star glow sprites, keyed by class color (+spikes for
+   the big ones). The flat 1-2px arc/fill dots were the galaxy view's
+   blandness (Nick's screenshot). One drawImage per star, additive, with
+   a cheap sin() twinkle on the brightest — zero per-frame allocation. */
+const _starSpr=new Map();
+function starSprite(col, spike){
+  const key=col+(spike?'+':'');
+  let sp=_starSpr.get(key);
+  if(sp) return sp;
+  const S=64, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  const n=parseInt(col.slice(1),16), cr=(n>>16)&255, cg=(n>>8)&255, cb=n&255;
+  const halo=g.createRadialGradient(C,C,0.4,C,C,C);
+  halo.addColorStop(0,'rgba(255,255,255,0.95)');
+  halo.addColorStop(0.12,'rgba('+cr+','+cg+','+cb+',0.9)');
+  halo.addColorStop(0.30,'rgba('+cr+','+cg+','+cb+',0.28)');
+  halo.addColorStop(0.62,'rgba('+cr+','+cg+','+cb+',0.07)');
+  halo.addColorStop(1,'rgba('+cr+','+cg+','+cb+',0)');
+  g.fillStyle=halo; g.fillRect(0,0,S,S);
+  if(spike){
+    g.globalCompositeOperation='lighter';
+    const sg2=g.createLinearGradient(0,C,S,C);
+    sg2.addColorStop(0,'rgba('+cr+','+cg+','+cb+',0)');
+    sg2.addColorStop(0.5,'rgba(255,255,255,0.55)');
+    sg2.addColorStop(1,'rgba('+cr+','+cg+','+cb+',0)');
+    g.fillStyle=sg2;
+    g.fillRect(0,C-0.7,S,1.4);
+    g.save();g.translate(C,C);g.rotate(Math.PI/2);g.translate(-C,-C);
+    g.fillRect(0,C-0.7,S,1.4);
+    g.restore();
+  }
+  _starSpr.set(key,cv);
+  return cv;
+}
+/* G2: nebulae / dark clouds / supernova remnants bake into textured
+   sprites once per deco object (cells are memoized, so a WeakMap holds).
+   Kills the per-frame createRadialGradient allocations (heat rule) and
+   replaces flat colored circles with puffy, filamented things. */
+const _decoSpr=new WeakMap();
+function decoSprite(dc){
+  let sp=_decoSpr.get(dc);
+  if(sp) return sp;
+  const S=128, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  const r=mulberry32(hashInt((dc.x*7)|0,(dc.y*7)|0,dc.k==='mol'?5:9)>>>0);
+  if(dc.k==='h2'||dc.k==='neb'){
+    g.globalCompositeOperation='lighter';
+    for(let i=0;i<16;i++){
+      const a=r()*TAU, d=Math.pow(r(),1.5)*C*0.62;
+      const bx=C+Math.cos(a)*d, by=C+Math.sin(a)*d, br=C*(0.14+r()*0.30);
+      const hue=dc.hue+(r()-0.5)*36;
+      const ng=g.createRadialGradient(bx,by,0,bx,by,br);
+      ng.addColorStop(0,'hsla('+hue+',82%,'+(58+r()*16)+'%,'+(0.10+r()*0.12).toFixed(3)+')');
+      ng.addColorStop(1,'hsla('+hue+',82%,55%,0)');
+      g.fillStyle=ng;g.beginPath();g.arc(bx,by,br,0,TAU);g.fill();
+    }
+    for(let i2=0;i2<10;i2++){  /* embedded newborn stars */
+      const a2=r()*TAU, d2=Math.pow(r(),1.6)*C*0.5;
+      g.fillStyle='rgba(255,255,255,'+(0.35+r()*0.5).toFixed(3)+')';
+      g.fillRect(C+Math.cos(a2)*d2, C+Math.sin(a2)*d2, 1.4, 1.4);
+    }
+  } else if(dc.k==='mol'){
+    for(let i=0;i<12;i++){
+      const a=r()*TAU, d=Math.pow(r(),1.4)*C*0.55;
+      const bx=C+Math.cos(a)*d, by=C+Math.sin(a)*d, br=C*(0.16+r()*0.30);
+      const ng=g.createRadialGradient(bx,by,0,bx,by,br);
+      ng.addColorStop(0,'rgba(10,7,16,'+(0.35+r()*0.35).toFixed(3)+')');
+      ng.addColorStop(0.7,'rgba(36,26,48,'+(0.12+r()*0.12).toFixed(3)+')');
+      ng.addColorStop(1,'rgba(36,26,48,0)');
+      g.fillStyle=ng;g.beginPath();g.arc(bx,by,br,0,TAU);g.fill();
+    }
+    g.strokeStyle='rgba(120,96,150,0.16)';g.lineWidth=1;  /* faint rim light */
+    g.beginPath();g.arc(C,C,C*0.55,r()*TAU,r()*TAU+2.2);g.stroke();
+  } else if(dc.k==='rem'){
+    g.globalCompositeOperation='lighter';
+    for(let i=0;i<26;i++){  /* filamentary shell, not a clean circle */
+      const a=r()*TAU, rr2=C*(0.62+(r()-0.5)*0.16);
+      const ln=C*(0.08+r()*0.16);
+      g.strokeStyle='hsla('+(14+r()*26)+',90%,'+(56+r()*14)+'%,'+(0.16+r()*0.22).toFixed(3)+')';
+      g.lineWidth=0.8+r()*1.6;
+      g.beginPath();
+      g.moveTo(C+Math.cos(a)*(rr2-ln/2), C+Math.sin(a)*(rr2-ln/2));
+      g.lineTo(C+Math.cos(a+0.10+r()*0.12)*(rr2+ln/2), C+Math.sin(a+0.10+r()*0.12)*(rr2+ln/2));
+      g.stroke();
+    }
+    const core=g.createRadialGradient(C,C,0,C,C,C*0.12);
+    core.addColorStop(0,'rgba(220,235,255,0.95)');core.addColorStop(1,'rgba(220,235,255,0)');
+    g.fillStyle=core;g.beginPath();g.arc(C,C,C*0.12,0,TAU);g.fill();
+  }
+  _decoSpr.set(dc,cv);
+  return cv;
+}
 function drawGalaxy(time){
   drawBackdrop();
   const c=st.gcam;
@@ -4849,14 +4941,9 @@ function drawGalaxy(time){
   for(let cx=cx0;cx<=cx1;cx++)for(let cy=cy0;cy<=cy1;cy++){
     const cell=starsInCell(st.gal.seed, prof, cx, cy);
     for(const dc of cell.deco){
-      if(dc.k==='h2'||dc.k==='neb'){
-        const ng=ctx.createRadialGradient(dc.x,dc.y,0,dc.x,dc.y,dc.rr);
-        ng.addColorStop(0,`hsla(${dc.hue},80%,64%,0.34)`); ng.addColorStop(1,'transparent');
-        ctx.fillStyle=ng; ctx.beginPath(); ctx.arc(dc.x,dc.y,dc.rr,0,TAU); ctx.fill();
-      } else if(dc.k==='mol'){
-        const ng=ctx.createRadialGradient(dc.x,dc.y,0,dc.x,dc.y,dc.rr);
-        ng.addColorStop(0,'rgba(10,7,16,0.88)'); ng.addColorStop(0.7,'rgba(36,26,48,0.35)'); ng.addColorStop(1,'transparent');
-        ctx.fillStyle=ng; ctx.beginPath(); ctx.arc(dc.x,dc.y,dc.rr,0,TAU); ctx.fill();
+      if(dc.k==='h2'||dc.k==='neb'||dc.k==='mol'){
+        const sp=decoSprite(dc);
+        ctx.drawImage(sp, dc.x-dc.rr*1.15, dc.y-dc.rr*1.15, dc.rr*2.3, dc.rr*2.3);
       } else if(dc.k==='plan'){
         ctx.strokeStyle='rgba(120,230,210,0.55)'; ctx.lineWidth=Math.max(0.8/c.z, dc.rr*0.16);
         ctx.beginPath(); ctx.arc(dc.x,dc.y,dc.rr*0.7,0,TAU); ctx.stroke();
@@ -4865,15 +4952,13 @@ function drawGalaxy(time){
         ctx.fillStyle='rgba(240,250,255,0.95)';
         ctx.beginPath(); ctx.arc(dc.x,dc.y,Math.max(0.5/c.z,0.5),0,TAU); ctx.fill();
       } else if(dc.k==='open'){
-        for(const p of dc.pts){
-          ctx.fillStyle='hsla(205,90%,86%,0.95)';
-          ctx.beginPath(); ctx.arc(dc.x+p[0],dc.y+p[1],p[2]*baseR,0,TAU); ctx.fill();
-        }
+        ctx.save();ctx.globalCompositeOperation='lighter';
+        for(const p of dc.pts){const D2=p[2]*baseR*6;
+          ctx.drawImage(starSprite('#cfe4ff',false), dc.x+p[0]-D2/2, dc.y+p[1]-D2/2, D2, D2);}
+        ctx.restore();
       } else if(dc.k==='rem'){
-        ctx.strokeStyle='rgba(255,140,80,0.5)'; ctx.lineWidth=Math.max(0.6/c.z, dc.rr*0.1);
-        ctx.beginPath(); ctx.arc(dc.x,dc.y,dc.rr,0,TAU); ctx.stroke();
-        ctx.fillStyle='rgba(220,235,255,0.9)';
-        ctx.beginPath(); ctx.arc(dc.x,dc.y,Math.max(0.5/c.z,0.6),0,TAU); ctx.fill();
+        const sp=decoSprite(dc);
+        ctx.drawImage(sp, dc.x-dc.rr*1.3, dc.y-dc.rr*1.3, dc.rr*2.6, dc.rr*2.6);
       } else if(dc.k==='rogue'){
         ctx.fillStyle='#2e2a44';
         ctx.beginPath(); ctx.arc(dc.x,dc.y,0.9,0,TAU); ctx.fill();
@@ -4884,17 +4969,20 @@ function drawGalaxy(time){
         fg.addColorStop(0,'rgba(201,138,106,0.9)'); fg.addColorStop(1,'transparent');
         ctx.fillStyle=fg; ctx.beginPath(); ctx.arc(dc.x,dc.y,1.6,0,TAU); ctx.fill();
       } else if(dc.k==='glob'){
-        for(const p of dc.pts){
-          ctx.fillStyle='hsla(45,55%,84%,0.85)';
-          ctx.beginPath(); ctx.arc(dc.x+p[0],dc.y+p[1],p[2]*baseR,0,TAU); ctx.fill();
-        }
+        ctx.save();ctx.globalCompositeOperation='lighter';
+        for(const p of dc.pts){const D2=p[2]*baseR*5.5;
+          ctx.drawImage(starSprite('#f0dcb0',false), dc.x+p[0]-D2/2, dc.y+p[1]-D2/2, D2, D2);}
+        ctx.restore();
       }
       picks.push({sx:(dc.x-c.x)*c.z+W/2, sy:(dc.y-c.y)*c.z+H/2,
         r:Math.max((dc.rr||GCELL*0.4)*c.z*0.8,12*PICK_F), kind:'deco', data:dc});
     }
+    ctx.save(); ctx.globalCompositeOperation='lighter';
     for(const s of cell.stars){
-      ctx.fillStyle=s.c;
-      ctx.beginPath(); ctx.arc(s.x, s.y, s.s*baseR*1.6, 0, TAU); ctx.fill();
+      const D=s.s*baseR*8;
+      if(s.s>1.3) ctx.globalAlpha=0.82+0.18*Math.sin(time*2.4+(s.seed%97));
+      ctx.drawImage(starSprite(s.c, s.s>=1.5), s.x-D/2, s.y-D/2, D, D);
+      ctx.globalAlpha=1;
       picks.push({sx:(s.x-c.x)*c.z+W/2, sy:(s.y-c.y)*c.z+H/2, r:Math.max(s.s*baseR*1.6*c.z,12*PICK_F), kind:'star', data:s});
       if(s.sol && c.z>minWH/900){
         ctx.strokeStyle='rgba(255,217,160,0.8)'; ctx.lineWidth=1.2/c.z;
@@ -4904,6 +4992,7 @@ function drawGalaxy(time){
         ctx.fillText('Sun — our star', s.x, s.y - 14/c.z);
       }
     }
+    ctx.restore();
   }
   /* fine star layer — keep resolving stars the deeper you zoom */
   if(c.z > minWH/260){
@@ -4911,14 +5000,16 @@ function drawGalaxy(time){
     const fy0=Math.max(Math.floor(y0/FCELL), Math.floor(-GR/FCELL)-1);
     const fx1=Math.min(Math.floor(x1/FCELL), Math.floor(GR/FCELL)+1);
     const fy1=Math.min(Math.floor(y1/FCELL), Math.floor(GR/FCELL)+1);
+    ctx.save(); ctx.globalCompositeOperation='lighter';
     for(let fx=fx0;fx<=fx1;fx++)for(let fy=fy0;fy<=fy1;fy++){
       for(const s of fineStarsInCell(st.gal.seed, prof, fx, fy)){
-        ctx.fillStyle=s.c;
-        ctx.beginPath(); ctx.arc(s.x, s.y, s.s*baseR*1.5, 0, TAU); ctx.fill();
+        const D=s.s*baseR*6.5;
+        ctx.drawImage(starSprite(s.c,false), s.x-D/2, s.y-D/2, D, D);
         picks.push({sx:(s.x-c.x)*c.z+W/2, sy:(s.y-c.y)*c.z+H/2,
           r:Math.max(s.s*baseR*1.5*c.z,9*PICK_F), kind:'star', data:s});
       }
     }
+    ctx.restore();
   }
   /* the supermassive black hole — drawn over every star layer: light stops here */
   if(c.z>minWH/700){
