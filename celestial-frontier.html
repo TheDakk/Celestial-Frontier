@@ -1048,7 +1048,22 @@
   @keyframes pop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
   #reveal .rt{font-family:var(--ui);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#7fe6a0;margin-bottom:10px}
   #reveal img{width:240px;height:240px;border-radius:18px;object-fit:contain;background:radial-gradient(circle at 50% 38%,#10131e,#05060c);box-shadow:0 0 0 1px rgba(127,230,160,0.25),0 0 50px rgba(127,230,160,0.14)}
-  #rev-info{margin:10px auto 0;max-width:330px;text-align:left}
+  /* v1.5 specimen condense: the field-notes fold (world-card language) */
+  #reveal .rgrp{margin:10px auto 0;max-width:330px;text-align:left}
+  #reveal .rghead{display:flex;align-items:center;gap:8px;cursor:pointer;border-radius:8px;padding:5px 6px;
+    border:1px solid rgba(150,162,210,0.18);background:rgba(150,162,210,0.05)}
+  #reveal .rghead .k{flex:none;font:600 9.5px var(--ui);letter-spacing:.09em;text-transform:uppercase;color:var(--plasma)}
+  #reveal .rghead .v{flex:1;min-width:0;font-size:10.5px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #reveal .rghead:hover .k{color:var(--ink)}
+  #reveal .rghead .chev{flex:none;font:600 8.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;
+    color:var(--faint);border:1px solid rgba(150,162,210,0.25);border-radius:999px;padding:2px 8px}
+  #reveal .rghead:hover .chev{color:var(--ink)}
+  #reveal .rghead .chev::after{content:'expand'}
+  #reveal .rgrp.open .rghead .chev::after{content:'close'}
+  #reveal .rgbody{display:none;padding-left:8px;border-left:1px solid rgba(150,162,210,0.2);margin:4px 0 2px 2px}
+  #reveal .rgrp.open .rgbody{display:block}
+  #reveal .rgrp.open .rghead .v{opacity:0.35}
+  #rev-info{margin:6px auto 0;max-width:330px;text-align:left}
   #rev-info .ir{display:flex;gap:10px;font-size:11.5px;line-height:1.5;margin:3px 0}
   #rev-info .ir .k{flex:none;width:96px;font:600 9.5px var(--ui);letter-spacing:.07em;text-transform:uppercase;color:var(--faint);padding-top:2px}
   #rev-info .ir .v{color:#cfd6f2}
@@ -1061,7 +1076,9 @@
   #codex .sp .nm{font-family:var(--ui);font-size:12.5px;font-weight:500;color:#d6f2de}
   #codex .sp .rar{font-size:9px;letter-spacing:.05em;vertical-align:middle}
   #codex .sp .rlabel{font-weight:600}
-  #codex .sp .ds{font-size:10.5px;color:var(--dim);line-height:1.4;margin-top:1px}
+  /* v1.5 condense: shelf rows read at a glance — the card holds the prose */
+  #codex .sp .ds{font-size:10.5px;color:var(--dim);line-height:1.4;margin-top:1px;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   #codex .cfrom{color:#9fc2ff;cursor:pointer;text-decoration:underline dotted rgba(159,194,255,0.5);text-underline-offset:2px}
   #codex .cfrom:hover{color:#cfe2ff}
   #codex .sp .gen{font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:#7fe6a0;
@@ -1599,15 +1616,24 @@
   <button id="guideok" type="button">Continue</button>
   <div class="gcredit" id="gcredit" data-tip="Tap for the release notes — everything that has changed, version by version.">Celestial Frontier &middot; v1.1 &middot; Developed by Dakk</div>
 </div></div>
+<!-- v1.5 specimen condense (Nick: "same as the world cards"): identity +
+     stats up top, the field-notes wall folded behind a remembered group -->
 <div id="reveal"><div class="card">
   <div class="rt" id="rev-t">New species discovered</div>
   <img id="rev-img" alt="">
   <div class="rn" id="rev-name"></div>
   <div class="rk" id="rev-kind"></div>
-  <div class="rd" id="rev-detail"></div>
-  <div id="rev-info"></div>
-  <div class="rmeta" id="rev-meta"></div>
   <div id="rev-stats"></div>
+  <div class="rgrp" id="rev-fold">
+    <div class="rghead" id="rev-fold-head" role="button" tabindex="0" data-tip="The full field notes — anatomy, behavior, habitat and lineage">
+      <span class="k">Field notes</span><span class="v" id="rev-fold-dig"></span><span class="chev"></span>
+    </div>
+    <div class="rgbody">
+      <div class="rd" id="rev-detail"></div>
+      <div id="rev-info"></div>
+    </div>
+  </div>
+  <div class="rmeta" id="rev-meta"></div>
   <div class="ractions"></div>
   <div class="rx" id="rev-x">tap to continue</div>
 </div></div>
@@ -9217,12 +9243,30 @@ function showReveal(entry, isHybrid){
     (gr?'<span class="gbadge'+(gr.tier>=12?' irid':'')+'" style="color:'+gr.hex+'">'+gr.name+(gr.star?' '+gr.star:'')+'</span> · ':'') +
     (entry.hybrid?('Hybrid · generation '+entry.gen):((entry.realm||entry.kind)+' · '+entry.from));
   document.getElementById('rev-detail').textContent = entry.detail||'';
-  /* the field notes: every trait, readable, below the portrait */
+  /* v1.5 condense (Nick: "same as the world cards"): the field notes fold
+     behind a remembered group — identity and stats stay up top. The digest
+     keeps the specimen's character on the collapsed header. */
   const infoEl=document.getElementById('rev-info');
-  if(infoEl) infoEl.innerHTML = entry.genome
-    ? speciesDetails(entry.genome).map(r=>'<div class="ir"><span class="k">'+r[0]+'</span><span class="v">'+r[1]+'</span></div>').join('')
-    : '';
-  document.getElementById('rev-meta').textContent='';
+  const rows=entry.genome?speciesDetails(entry.genome):[];
+  if(infoEl) infoEl.innerHTML = rows.map(r=>'<div class="ir"><span class="k">'+r[0]+'</span><span class="v">'+r[1]+'</span></div>').join('');
+  try{
+    const fold=document.getElementById('rev-fold');
+    if(fold){
+      const has=!!((entry.detail||'').length || rows.length);
+      fold.style.display=has?'block':'none';
+      fold.classList.toggle('open', !!(cardExpand&4));
+      const dig=document.getElementById('rev-fold-dig');
+      if(dig){
+        const sz=rows.find(r2=>r2[0]==='Size'), hb=rows.find(r2=>r2[0]==='Habitat');
+        dig.textContent=[sz&&sz[1], hb&&hb[1]].filter(Boolean).join(' · ')
+          || (entry.detail||'').split(/[.—]/)[0].slice(0,60);
+      }
+    }
+    /* the ⟁-grade hook never folds: an extremophile is a discovery story */
+    const meta=document.getElementById('rev-meta');
+    if(meta) meta.innerHTML = (entry.genome && entry.genome.x)
+      ? '<span style="color:#c9a8ff">⟁ Extremophile — alive where nothing should survive</span>' : '';
+  }catch(_){ }
   const card=document.querySelector('#reveal .card')||revealEl.firstElementChild;
   if(card && gr){
     card.style.borderColor=gr.hex; card.style.boxShadow='0 0 0 1px '+gr.hex+', 0 0 '+(gr.tier>=5?90:40)+'px '+gr.hex+(gr.tier>=5?'88':'55');
@@ -9294,6 +9338,17 @@ revealEl.addEventListener('click', (e)=>{
     const s0=TUT_STEPS[_tutStep];
     const want='rev-'+((s0&&s0.rev)||'');
     if(e.target.id!==want) return;
+  }
+  /* v1.5 field-notes fold: the header toggles (remembered, cx bit 4);
+     reading inside the fold never dismisses the card */
+  if(e.target && e.target.closest && e.target.closest('#rev-fold')){
+    if(e.target.closest('#rev-fold-head')){
+      cardExpand^=4;
+      const g2=document.getElementById('rev-fold');
+      if(g2) g2.classList.toggle('open', !!(cardExpand&4));
+      queueSave();
+    }
+    return;
   }
   if(e.target && e.target.id==='rev-share' && _revEntry){ shareCreature(_revEntry); return; }
   if(e.target && e.target.id==='rev-duel' && _revEntry){ startDuelWithCode(_revEntry); return; }
@@ -10475,8 +10530,9 @@ function loadSave(){
     const _rmv=num(data.rm,-1);
     motionMode=_rmv===1 ? 1 : (_rmv===0 ? 0 : -1);
     applyMotion();
-    /* cx absent (pre-1.1.2 save) ⇒ 0 = card detail groups collapsed */
-    cardExpand=clamp(num(data.cx), 0, 3)|0;
+    /* cx absent ⇒ 0 = card detail groups collapsed. Bits: 1 environment ·
+       2 census · 4 specimen field notes (v1.5) */
+    cardExpand=clamp(num(data.cx), 0, 7)|0;
     /* `hd` in old saves is IGNORED — HD is always on now (ship decision) */
     applyHd();
     for(const n of (data.notifs||[])){ if(n && n.tt!=null && notifications.length<60) notifications.push(n); }

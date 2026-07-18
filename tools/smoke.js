@@ -213,6 +213,23 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     };
     openCard(fauna[0].id);
     check('opening a specimen completes step 7', await until(() => tutAt(8), 3000, 'step8'));
+    // v1.5 specimen condense: field notes fold like the world card's groups
+    const revFold = doc.getElementById('rev-fold');
+    check('specimen condense: the field notes ship folded with a digest',
+      !!revFold && !revFold.classList.contains('open')
+      && (doc.getElementById('rev-fold-dig').textContent || '').length > 0);
+    check('specimen condense: stats render ABOVE the fold',
+      !!doc.getElementById('rev-stats').innerHTML
+      && doc.getElementById('rev-stats').compareDocumentPosition(revFold) & 4);
+    click(doc.getElementById('rev-fold-head'));
+    check('specimen condense: the header unfolds the notes (card stays open)',
+      revFold.classList.contains('open') && visible(doc.getElementById('reveal')));
+    click(doc.getElementById('rev-info'));
+    check('specimen condense: reading inside the fold never dismisses the card',
+      visible(doc.getElementById('reveal')));
+    click(doc.getElementById('rev-fold-head'));
+    check('specimen condense: the toggle folds it back (remembered as cx bit 4)',
+      !revFold.classList.contains('open') && (H.cardExpand & 4) === 0);
     // field scout (v1.2): every owned fauna card offers the toggle; it round-trips
     const scoutBtn = doc.getElementById('rev-scout');
     check('scout: fauna card offers the Field Scout toggle', !!scoutBtn && scoutBtn.textContent.includes('Scout'));
