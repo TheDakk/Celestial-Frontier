@@ -5248,6 +5248,12 @@ function drawSurface(time){
     season=['spring','summer','autumn','winter'][Math.floor(yp*4)];
   }
   const effWx = (env.wx==='rain' && seasonT<-0.45) ? 'snow' : env.wx;
+  /* the card's Weather row is CLIMATE ("rain showers") — whether anything
+     falls RIGHT NOW is a seeded ~90s spell, same mechanism as the
+     lightning bursts below, so temperate worlds also get clear skies.
+     Surface and vista share this roll. */
+  const WX_ODDS={rain:0.42,snow:0.58,dust:0.48,ash:0.68,haze:0.88};
+  const wxNow = !!effWx && mulberry32((P.seed^0x77EA^Math.floor(time/90))>>>0)() < (WX_ODDS[effWx]||1);
   /* drifting cloud shadows */
   if(env.hasAtmo && P.type!=='venus' && P.type!=='gas'){
     const span=5200;
@@ -5265,7 +5271,7 @@ function drawSurface(time){
     }
   }
   /* weather particles */
-  if(effWx && effWx!=='haze'){
+  if(wxNow && effWx!=='haze'){
     if(effWx==='rain'){
       ctx.strokeStyle='rgba(185,212,255,0.34)'; ctx.lineWidth=1.1;
       ctx.beginPath();
@@ -5301,7 +5307,7 @@ function drawSurface(time){
       }
     }
   }
-  if(effWx==='haze'){
+  if(wxNow && effWx==='haze'){
     const hcol = P.type==='venus' ? '212,190,90' : '230,200,140';
     ctx.fillStyle=`rgba(${hcol},${(0.10+0.05*Math.sin(time*0.4)).toFixed(3)})`;
     ctx.fillRect(0,0,W,H);
@@ -5336,7 +5342,7 @@ function drawSurface(time){
     }
   }
   /* lightning during rainstorms */
-  if(effWx==='rain'){
+  if(wxNow && effWx==='rain'){
     const lb=Math.floor(time/8.5);
     const lr=mulberry32((P.seed^lb)>>>0);
     if(lr()<0.45){
@@ -5370,7 +5376,7 @@ function drawSurface(time){
   const WX_NAME={rain:'rain showers',snow:'snowfall',dust:'dust storms',ash:'ash and embers',haze:'thick haze'};
   const parts=['local '+tod];
   if(season) parts.push(season);
-  parts.push(env.wx ? WX_NAME[effWx] : 'airless — no weather');
+  parts.push(env.wx ? (wxNow ? WX_NAME[effWx] : 'clear skies') : 'airless — no weather');
   if(auroraOn) parts.push('auroras overhead');
   setCtxText((TYPE_DESC[P.type]||'')+' · '+parts.join(' · '));
   /* HD landing vista (v1.3, flag-gated): built here because this is where
@@ -5392,11 +5398,16 @@ function drawSurface(time){
         && !/swim|float|filter|drift/.test(FA_LOCO[(gg.loco||0)%FA_LOCO.length]||'')
         && !/open ocean|sea shallows|cloud decks|vent fields/.test(FA_HABITAT[(gg.habitat||0)%FA_HABITAT.length]||''))
         .slice(0,2).map(hdGenesFor);
-      /* the Life row decides whether the vista grows anything at all */
+      /* the Life row decides whether the vista grows anything at all;
+         the Water row decides the river */
       const lifeRow=_lastDesc.rows&&_lastDesc.rows.find(rr=>rr[0]==='Life');
       const floraOk=!lifeRow||!/^(No known life|Microbial|Subsurface|Airborne)/.test(lifeRow[1]);
+      const waterRow=_lastDesc.rows&&_lastDesc.rows.find(rr=>rr[0]==='Water');
+      const waterTxt=waterRow?String(waterRow[1]):'';
+      const waterV=/Liquid|rivers|ocean/i.test(waterTxt)?'liquid':(/Frozen/i.test(waterTxt)?'frozen':(waterRow?'none':'liquid'));
       const todV=tod==='daytime'?'day':tod;
-      showVistaBox(P, todV, env.wx?effWx:null, era, genes, env.hasField, floraOk);
+      showVistaBox(P, todV, (env.wx&&wxNow)?effWx:null, era, genes, env.hasField,
+        floraOk, env.wx&&effWx==='snow', waterV);
     }catch(_){}
   }
   if(_vistaPend && !hdOn) _vistaPend=false;
@@ -5625,8 +5636,10 @@ function hdVista(opts){
      type's own scene, duskize = the dusk grade. The caption must never
      say "local night" over a daylight picture. */
   const nightize=!!opts.nightize, duskize=!!opts.duskize;
-  /* the card's Life row decides whether anything green stands anywhere */
+  /* the card's Life row decides whether anything green stands anywhere;
+     the Water row decides the river: 'liquid' | 'frozen' | 'none' */
   const flora=opts.flora!==false;
+  const water=opts.water||'liquid';
   const civ=opts.era||'none';
   const hz=H*0.50,sx=W*0.72,sy=dusk?hz-30:H*0.15;
   const sky=g.createLinearGradient(0,0,0,hz+8);
@@ -5660,19 +5673,21 @@ function hdVista(opts){
   }
   if(opts.aurora&&opts.pal==='night'){
     /* auroras crown magnetized worlds at night — same card fact, same twin
-       hues as the live surface (green 140 / violet 280), curtain-striated */
+       hues as the live surface (green 140 / violet 280). Columns overlap
+       2× (step 3, width 6, alphas halved) so the ribbon reads as one
+       smooth veil, not stripes. */
     g.save();g.globalCompositeOperation='lighter';
     for(const[hue,off,amp,al] of [[140,H*0.06,30,0.15],[280,H*0.15,42,0.10]]){
       const ph1=r()*TAU, ph2=r()*TAU;
-      for(let ax=0;ax<=W;ax+=5){
+      for(let ax=-3;ax<=W;ax+=3){
         const base=off+Math.sin(ax*0.011+ph1)*amp*0.55+Math.sin(ax*0.0042+ph2)*amp*0.45
           +_hdFbm(ax*0.006,hue,seed+hue,3)*amp*0.5;
         const len=34+_hdFbm(ax*0.013,7,seed+hue*3,3)*90;
         const cg=g.createLinearGradient(0,base,0,base+len);
-        cg.addColorStop(0,'hsla('+hue+',85%,66%,'+(al*1.5).toFixed(3)+')');
-        cg.addColorStop(0.35,'hsla('+hue+',85%,60%,'+al+')');
+        cg.addColorStop(0,'hsla('+hue+',85%,66%,'+(al*0.75).toFixed(3)+')');
+        cg.addColorStop(0.35,'hsla('+hue+',85%,60%,'+(al*0.5).toFixed(3)+')');
         cg.addColorStop(1,'hsla('+hue+',85%,55%,0)');
-        g.fillStyle=cg;g.fillRect(ax,base,4,len);
+        g.fillStyle=cg;g.fillRect(ax,base,6,len);
       }
     }
     g.restore();
@@ -5694,8 +5709,9 @@ function hdVista(opts){
     bp.addColorStop(0,'rgba(210,216,222,0.5)');bp.addColorStop(1,'rgba(210,216,222,0)');
     g.fillStyle=bp;g.fillRect(0,0,W,hz);
   }
-  if(P.sun>0.6&&!desert&&!nightize){
-    /* at dusk the clouds turn: dark bellies, sun-struck undersides */
+  if(P.sun>0.6&&!desert&&!nightize&&opts.pal!=='grey'){
+    /* clouds — never on an airless rock; at dusk they turn:
+       dark bellies, sun-struck undersides */
     const cShad=dusk?'rgba(255,172,122,0.9)':'rgba(150,168,198,0.55)';
     const cBody=dusk?'rgba(52,36,72,0.9)':'rgba(255,252,244,0.95)';
     const puff=(cx,cy,s2,al)=>{g.globalAlpha=al;
@@ -5757,10 +5773,15 @@ function hdVista(opts){
   const frost=opts.pal==='snow'?0.35:0;
   const pd=opts.pal==='night'?0.6:(dusk?0.42:0), pdc=dusk?'30,18,44':'8,12,20';
   if(!sea){
+    /* a lifeless world's ground is soil and stone — meadow green would
+       promise a biosphere the card denies (snow/ice/rock pals keep their
+       own mineral grounds) */
+    const barren=!flora&&!desert&&!ember&&opts.pal!=='ice'&&opts.pal!=='grey'&&opts.pal!=='haze'&&opts.pal!=='snow';
+    const gnd=barren?[P.ground[0],'#473827','#241b0f']:P.ground;
     const gr=g.createLinearGradient(0,hz+40,0,H);
-    gr.addColorStop(0,P.ground[0]);gr.addColorStop(0.35,P.ground[1]);gr.addColorStop(1,P.ground[2]);
+    gr.addColorStop(0,gnd[0]);gr.addColorStop(0.35,gnd[1]);gr.addColorStop(1,gnd[2]);
     g.fillStyle=gr;g.fillRect(0,hz+58,W,H);
-    const fleck=desert?'#2c1c0c':(ember?'#2a0f08':(opts.pal==='snow'?'#8ea2b4':'#08160c'));
+    const fleck=desert?'#2c1c0c':(ember?'#2a0f08':(opts.pal==='snow'?'#8ea2b4':(barren?'#332818':'#08160c')));
     for(let t3=0;t3<(desert?200:380);t3++){const tx=r()*W,ty=hz+64+Math.pow(r(),1.5)*(H-hz-70),sc=(ty-hz)/(H-hz);
       g.globalAlpha=0.12;g.fillStyle=fleck;g.fillRect(tx,ty,2+sc*7,1+sc*2);}
     g.globalAlpha=1;
@@ -5770,26 +5791,37 @@ function hdVista(opts){
     const riverAt=t=>{const a=rp[0],b=rp[1],c=rp[2],d=rp[3];
       return[(1-t)*(1-t)*(1-t)*a[0]+3*(1-t)*(1-t)*t*b[0]+3*(1-t)*t*t*c[0]+t*t*t*d[0],
              (1-t)*(1-t)*(1-t)*a[1]+3*(1-t)*(1-t)*t*b[1]+3*(1-t)*t*t*c[1]+t*t*t*d[1]]};
-    g.beginPath();
-    for(let t4=0;t4<=1.001;t4+=0.03){const p2=riverAt(t4),w2=2+t4*t4*74;
-      if(t4===0)g.moveTo(p2[0]-w2/2,p2[1]);else g.lineTo(p2[0]-w2/2,p2[1]);}
-    for(let t5=1;t5>=-0.001;t5-=0.03){const p3=riverAt(t5),w3=2+t5*t5*74;g.lineTo(p3[0]+w3/2,p3[1]);}
-    g.closePath();
-    /* the river wears the sky: summer blue by day, dusk amber at twilight,
-       dark steel under the stars */
-    const RIV={night:['#3a4a66','#22344c','#101d30'],twilight:['#e8a06a','#7a5674','#2a1c40']}
-      [opts.pal]||['#cfe0ea','#7fa2c4','#37587c'];
-    const rg2=g.createLinearGradient(0,hz+30,0,H);
-    rg2.addColorStop(0,RIV[0]);rg2.addColorStop(0.4,RIV[1]);rg2.addColorStop(1,RIV[2]);
-    g.fillStyle=rg2;g.fill();
-    if(P.sun>0||(opts.pal==='night'&&(opts.moons||0)>0)){g.globalCompositeOperation='lighter';
-      /* night glints are MOONLIGHT — a moonless card gets a dark river */
-      const gcv=opts.pal==='night'?'205,220,255':(dusk?'255,206,142':'255,244,210');
-      const gka=opts.pal==='night'?0.4:1;
-      for(let gl=0;gl<26;gl++){const t6=0.1+r()*0.7,p4=riverAt(t6);
-        g.fillStyle='rgba('+gcv+','+((0.25+r()*0.4)*gka).toFixed(3)+')';
-        g.fillRect(p4[0]+(r()-0.5)*(3+t6*46),p4[1]+(r()-0.5)*5,2+r()*7,1.4);}
-      g.globalCompositeOperation='source-over';}
+    if(water!=='none'){
+      g.beginPath();
+      for(let t4=0;t4<=1.001;t4+=0.03){const p2=riverAt(t4),w2=2+t4*t4*74;
+        if(t4===0)g.moveTo(p2[0]-w2/2,p2[1]);else g.lineTo(p2[0]-w2/2,p2[1]);}
+      for(let t5=1;t5>=-0.001;t5-=0.03){const p3=riverAt(t5),w3=2+t5*t5*74;g.lineTo(p3[0]+w3/2,p3[1]);}
+      g.closePath();
+      /* the river wears the sky — and the card's Water row: frozen worlds
+         (and deep winter) carry an ice ribbon, not open water */
+      const frozen=opts.pal==='snow'||water==='frozen';
+      const RIV=frozen?['#dfe9f2','#b9cede','#8fa9c0']
+        :({night:['#3a4a66','#22344c','#101d30'],twilight:['#e8a06a','#7a5674','#2a1c40']}
+          [opts.pal]||['#cfe0ea','#7fa2c4','#37587c']);
+      const rg2=g.createLinearGradient(0,hz+30,0,H);
+      rg2.addColorStop(0,RIV[0]);rg2.addColorStop(0.4,RIV[1]);rg2.addColorStop(1,RIV[2]);
+      g.fillStyle=rg2;g.fill();
+      if(!frozen&&(P.sun>0||(opts.pal==='night'&&(opts.moons||0)>0))){g.globalCompositeOperation='lighter';
+        /* night glints are MOONLIGHT — a moonless card gets a dark river */
+        const gcv=opts.pal==='night'?'205,220,255':(dusk?'255,206,142':'255,244,210');
+        const gka=opts.pal==='night'?0.4:1;
+        for(let gl=0;gl<26;gl++){const t6=0.1+r()*0.7,p4=riverAt(t6);
+          g.fillStyle='rgba('+gcv+','+((0.25+r()*0.4)*gka).toFixed(3)+')';
+          g.fillRect(p4[0]+(r()-0.5)*(3+t6*46),p4[1]+(r()-0.5)*5,2+r()*7,1.4);}
+        g.globalCompositeOperation='source-over';}
+      if(frozen){ /* pressure cracks in the ice ribbon */
+        g.strokeStyle='rgba(116,146,170,0.5)';g.lineWidth=1;
+        for(let fc=0;fc<5;fc++){const t7=0.2+r()*0.65,p7=riverAt(t7),w8=(2+t7*t7*74)*0.4;
+          g.beginPath();g.moveTo(p7[0]-w8,p7[1]+(r()-0.5)*4);
+          g.lineTo(p7[0]+(r()-0.5)*w8,p7[1]+(r()-0.5)*6);
+          g.lineTo(p7[0]+w8,p7[1]+(r()-0.5)*4);g.stroke();}
+      }
+    }
     const nightAmb=opts.pal==='night'?0.18:0;   /* moonlight knocks the near life back */
     if(opts.genes&&opts.genes.length){
       const bcv=hdBeastBare(opts.genes[0],(seed^0x8EA)>>>0);
@@ -6162,10 +6194,13 @@ function hdVista(opts){
 /* the planetfall overlay */
 const vistaBox=document.createElement('div');vistaBox.id='vistabox';document.body.appendChild(vistaBox);
 vistaBox.addEventListener('click', ()=>{ vistaBox.style.display='none'; });
-function showVistaBox(P, tod, wx, era, genes, aurora, flora){
-  /* the card drives the picture: type → scene, weather token → pal +
-     overlay, the clock → night/twilight (a grade on types whose pal has
-     no clock of its own), magnetosphere → auroras, Life row → flora */
+function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water){
+  /* the card drives the picture: type → scene, ACTIVE weather token →
+     overlay (the Weather row is climate; spells come and go), snow climate
+     → snow stays on the ground between falls, the clock → night/twilight
+     (a grade on types whose pal has no clock of its own), magnetosphere →
+     auroras (never through a precipitating deck), Life row → flora,
+     Water row → the river (liquid/frozen/none) */
   const type=P.type;
   if(type==='gas') return;                       /* no ground to stand on */
   let pal='day', biome='land', nightize=false, duskize=false;
@@ -6179,15 +6214,16 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora){
     if(tod==='night') pal='night';
     else if(tod==='twilight') pal='twilight';
     else if(wx==='rain') pal='rain';
-    else if(wx==='snow') pal='snow';
+    else if(wx==='snow'||climSnow) pal='snow';
   } else if(type!=='lava'){
     /* ember is sunless either way; everyone else honors the clock */
     if(tod==='night') nightize=true;
     else if(tod==='twilight') duskize=true;
   }
   const cv=hdVista({seed:P.seed, era:era, pal:pal, biome:biome, wx:wx,
-    moons:P.moons||0, aurora:!!aurora, nightize:nightize, duskize:duskize,
-    flora:flora!==false, genes:genes&&genes.length?genes:null});
+    moons:P.moons||0, aurora:!!aurora&&wx!=='rain'&&wx!=='snow',
+    nightize:nightize, duskize:duskize, flora:flora!==false,
+    water:water||'liquid', genes:genes&&genes.length?genes:null});
   vistaBox.innerHTML='<div class="vh">Planetfall — '+(TYPE_LABEL[type]||'World')+'</div>';
   vistaBox.appendChild(cv);
   const WXW={rain:'rain',snow:'snowfall',dust:'dust storm',ash:'ashfall',haze:'haze'};
