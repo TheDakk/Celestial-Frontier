@@ -78,11 +78,12 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // fresh expedition: latest bulletin FIRST, then training
     const relFresh = doc.getElementById('relbox');
     check('fresh expedition: latest bulletin shows before training', await until(() =>
-      visible(relFresh) && relFresh.textContent.includes('The HD Frontier') && relFresh.textContent.includes('v1.3'), 4000, 'fresh bulletin'));
-    // v1.3 opens a fresh minor line — the bulletin shows it alone, and
-    // no other line (1.2.x, 1.1.x, 1.0) may leak in
-    check('bulletin shows the v1.3 line alone (no 1.2.x leak)',
-      !relFresh.textContent.includes('Ink & Ember') && !relFresh.textContent.includes('First Contact')
+      visible(relFresh) && relFresh.textContent.includes('The Ascent') && relFresh.textContent.includes('v1.4'), 4000, 'fresh bulletin'));
+    // v1.4 opens a fresh minor line — the bulletin shows it alone, and
+    // no other line (1.3.x, 1.2.x, 1.1.x, 1.0) may leak in
+    check('bulletin shows the v1.4 line alone (no 1.3.x/1.2.x leak)',
+      !relFresh.textContent.includes('The HD Frontier') && !relFresh.textContent.includes('Kingdom Shelves')
+      && !relFresh.textContent.includes('Ink & Ember') && !relFresh.textContent.includes('First Contact')
       && !relFresh.textContent.includes('The Hunt Board') && !relFresh.textContent.includes('The Discovery Arc'));
     check('bulletin hides other-line entries (no 1.1.x, no 1.0 debut)',
       !relFresh.textContent.includes('Clear Signals') && !relFresh.textContent.includes('Signal & Polish')
@@ -351,7 +352,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     // release notes: the version line in the footer opens the full history
     const gc = doc.getElementById('gcredit');
-    check('guide footer shows version + build', gc && gc.textContent.includes('v1.3') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
+    check('guide footer shows version + build', gc && gc.textContent.includes('v1.4') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
     click(gc);
     const relbox = doc.getElementById('relbox');
     check('footer opens cumulative release notes (all versions)', visible(relbox)
@@ -437,13 +438,18 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('veteran: tutorial never starts', !visible(vet.doc.getElementById('tutbox')));
     const vrel = vet.doc.getElementById('relbox');
     check('veteran: update bulletin pops once', visible(vrel)
-      && vrel.textContent.includes('The HD Frontier')
+      && vrel.textContent.includes('The Ascent')
       && vet.doc.getElementById('relok').textContent === 'Continue');
     click2(vet.doc.getElementById('relok'), vet.w);
     check('veteran: bulletin closes via Continue', !visible(vrel));
     check('veteran: absent vol/rm default to full volume + Auto motion',
       vet.doc.getElementById('volslider').value === '100' && !vet.doc.body.classList.contains('rmotion')
       && vet.w.__PROBE_HOOK__.motionMode === -1);
+    // v1.4: a pre-1.4 save has no `asc` field — the Ascent reads COMPLETE
+    // and nothing about the veteran's sky may re-lock
+    check('v1.4 veteran grandfather: the Ascent never re-locks a held sky',
+      vet.w.__PROBE_HOOK__.ascStage() === 3
+      && vet.w.__PROBE_HOOK__.ascAllows({ gal: { seed: 777 }, type: 'galaxy' }));
     // discovery arc (v1.2): a pre-1.2 save has no `land` field — every world
     // the veteran charted or settled must count as ground-surveyed already
     check('veteran: pre-1.2 save grandfathers charted + settled worlds as ground-surveyed',
@@ -811,6 +817,66 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       pan3.textContent.includes('Ground-surveyed') && !!pan3.querySelector('[data-act="mine"]'), 5000, 'ground card from orbit'));
     check('discovery: a grounded world still offers plain Land (revisits + sightseeing)',
       !!pan3.querySelector('[data-act="landcta"]'));
+
+    // ============ v1.4 THE ASCENT: mining rework, Fabricator, gear, Sol lock ============
+    // mining is a click now — a second pull right away works, and reserves count down
+    const mines0 = skH.stats.mines;
+    const mx0 = skH.mineX.get(dp.data.P.seed) || 0;
+    click2(pan3.querySelector('[data-act="mine"]'), sk.w);
+    check('v1.4 mining: an immediate second pull works (no cooldown)', await until(() =>
+      skH.stats.mines === mines0 + 1 && (skH.mineX.get(dp.data.P.seed) || 0) === mx0 + 1, 4000, 'second pull'));
+    check('v1.4 mining: the card counts the pulls left in the veins', await until(() =>
+      /pulls left/.test(pan3.textContent), 4000, 'pulls-left readout'));
+    check('v1.4 mining: reserves are finite and deterministic',
+      skH.reserveFor(dp.data.P.seed, 0) === skH.reserveFor(dp.data.P.seed, 0) && skH.reserveFor(dp.data.P.seed, 0) > 100);
+    // the Sol lock: a fresh expedition reads stage 0 — Sol travels, nothing else does
+    check('v1.4 Sol lock: a fresh expedition stands on ring 0', skH.ascStage() === 0);
+    check('v1.4 Sol lock: Sol itself is always allowed',
+      skH.ascAllows({ gal: { seed: 999 }, star: { x: 560, y: 170, seed: 424242 }, type: 'star' }));
+    check('v1.4 Sol lock: another star in the home galaxy is gated',
+      !skH.ascAllows({ gal: { seed: 999 }, star: { x: 900, y: -400, seed: 555 }, type: 'star' }));
+    check('v1.4 Sol lock: other galaxies are gated', !skH.ascAllows({ gal: { seed: 777 }, type: 'galaxy' }));
+    // the chapter rides pinned atop the charter board
+    if (!visible(chp)) click2(sk.doc.getElementById('chbtn'), sk.w);
+    check('v1.4 Ascent: Chapter 1 pinned atop the charter board', chp.textContent.includes('Off the Rock')
+      && !!chp.querySelector('.ascbox'));
+    // the Fabricator: grant ore through the hook, craft a T1 part for real
+    skH.cargo.set('Fe', 20); skH.cargo.set('Al', 12); skH.cargo.set('Si', 12);
+    skH.craftItem('plate');
+    check('v1.4 Fabricator: crafting consumes elements and yields the part',
+      skH.itemCount('plate') === 1 && skH.cargo.get('Fe') === 16);
+    check('v1.4 Ascent: crafting advances the chapter goal', (skH.ascProg['c1-part'] || 0) >= 1);
+    click2(sk.doc.getElementById('cargobtn'), sk.w);
+    const cg4 = sk.doc.getElementById('cargo');
+    click2(cg4.querySelector('[data-ct="fab"]'), sk.w);
+    check('v1.4 Fabricator: the tab lists recipes with craft buttons', cg4.textContent.includes('Basic Parts')
+      && cg4.textContent.includes('Jump Drive') && !!cg4.querySelector('[data-craft]'));
+    // gear: craft the Mining Rig chain's first tool and see it socket + boost
+    skH.cargo.set('H', 12); skH.cargo.set('O', 12); skH.cargo.set('Cr', 6);
+    skH.craftItem('cell'); skH.craftItem('wire'); skH.craftItem('plate');
+    skH.craftItem('servo');
+    skH.craftItem('rig1');
+    check('v1.4 gear: the Mining Rig crafts and self-equips into the empty Tool socket',
+      skH.itemCount('rig1') === 1 && skH.equip.tool === 'rig1');
+    check('v1.4 gear: the equipped rig multiplies mining yield', skH._equipBonus('yield') === 0.5);
+    // the character sheet wears the sockets
+    click2(sk.doc.getElementById('rank'), sk.w);
+    const stEl4 = sk.doc.getElementById('stats');
+    check('v1.4 equipment: the character sheet shows five sockets', await until(() =>
+      stEl4.querySelectorAll('[data-eqslot]').length === 5, 4000, 'eq sockets'));
+    check('v1.4 equipment: the effect readout speaks the boost', /mining yield/.test(stEl4.textContent));
+    // ship systems ARE the ring keys: hand over the drives, watch the rings open
+    skH.items.set('jumpdrive', 1);
+    check('v1.4 rings: the Jump Drive opens the Neighborhood', skH.ascStage() === 1
+      && skH.ascAllows({ gal: { seed: 999 }, star: { x: 620, y: 220, seed: 555 }, type: 'star' })
+      && !skH.ascAllows({ gal: { seed: 999 }, star: { x: -900, y: 900, seed: 556 }, type: 'star' }));
+    skH.items.set('array', 1);
+    check('v1.4 rings: the Long-Range Array opens the whole galaxy', skH.ascStage() === 2
+      && skH.ascAllows({ gal: { seed: 999 }, star: { x: -900, y: 900, seed: 556 }, type: 'star' })
+      && !skH.ascAllows({ gal: { seed: 777 }, type: 'galaxy' }));
+    skH.items.set('igdrive', 1);
+    check('v1.4 rings: the Intergalactic Drive opens the dark between', skH.ascStage() === 3
+      && skH.ascAllows({ gal: { seed: 777 }, type: 'galaxy' }));
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
     sk.w.close();
 
