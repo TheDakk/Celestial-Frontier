@@ -1,5 +1,116 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
+## ▶▶▶ v1.5 "FRESH START" — THE NEXT SESSION'S CHARTER (planned
+## 2026-07-18 at session close, Nick's words folded in verbatim-intent;
+## RESUME HERE) ◀◀◀
+##
+## THE HEADLINE (Nick): **v1.5 WIPES ALL EXISTING DATA — a fresh start
+## for everybody, nothing grandfathered.** Implementation: bump the save
+## key (cfcc_save_v1 → cfcc_save_v2), no migration; the update bulletin
+## announces the fresh start honestly (a "your old expedition is
+## honored, the frontier begins anew" send-off — consider letting the
+## old save's rarest find get a farewell card). CLEANUP DIVIDEND: the
+## grandfather machinery becomes dead code — rc entry markers, rsw
+## world flag, asc-absent⇒complete, land/cont absent-grandfathers,
+## veteran charter auto-completes — ALL simplify to the post-law path.
+## The Ascent/ring spectrum becomes every player's canon opening.
+## drawSurface + art-tiles purge finally ships too (dead since 1.3.8).
+##
+## NICK'S v1.5 WORK ORDERS:
+## 1. XP/LEVEL PROGRESSION BALANCE + SYNTHETIC TESTING: the class-XP
+##    system (duels +8 · conquests +20 · guardians +60; quadratic
+##    thresholds, innate arts at L3/L6) has never been tuned — and
+##    levelOf only STARTED WORKING this session (the export hotfix).
+##    Build a leveling tier into simrun.js (track XP curves per persona,
+##    time-to-L3/L6/L9, art-unlock pacing vs duel/conquest cadence) and
+##    balance the thresholds against real progression speed.
+## 2. 1,000-BOT ROUND №2 — CHARACTER-SHEET FOCUS: how bots interact
+##    with the sheet: stats readouts, equipment picker flows, shipyard,
+##    nameplate, stat-growth legibility (eat-to-grow), achievements
+##    panel. Instrument sheet-interaction telemetry + critic panel on
+##    "is the character sheet a place you WANT to open?"
+## 3. SPECIMEN CARDS CONDENSE (Nick: "same as the world cards"): fauna/
+##    flora/fungi/microbe reveal cards + Compendium entries are walls of
+##    text — apply the 1.1.2 world-card pattern: stats up top, identity
+##    always visible, the verbose blocks (anatomy/behavior/habitat/
+##    genome details) folded behind remembered expand groups (cardExpand
+##    precedent, new bits), ⟁-grade hooks never folded. Same treatment
+##    across reveal card, Compendium rows, duel side-cards.
+## 4. BUG (Nick's live pass): the notification TRAY stays open over the
+##    search box during training step 16 ("type earth") — the tray
+##    opened in step 15 must close (or be closed by) the search step;
+##    check the panel manager's training-inert rules for the tray.
+## 5. COSMIC EVENTS + TRAVELER'S BEACON: **hide both for now** (buttons
+##    + panels off; keep the engines dormant) and REWORK for a later
+##    update — fold into the quest/notification system when they
+##    return (beacon = charter-side "expedition of the hour"?; events =
+##    seasonal spectacles with witness rewards).
+## 6. UI SWAP: CHARTERS ⇄ PRIME CODEX positions (charters/Ascent are
+##    the daily driver now — they earn the prime slot; the Codex is
+##    endgame). + QUEST NOTIFICATIONS: a nudge pipeline that tells the
+##    player their NEXT chapter goal / charter when idle or on login
+##    (the pushNotif rail exists; add a "next step" heartbeat — gentle,
+##    dismissible, never nagging twice for the same goal).
+## 7. PRIME CODEX REWORK (Nick asked for thoughts — Claude's proposal,
+##    for discussion at session start):
+##    THE PROBLEM: the 9 Signatures predate the Ascent — they were the
+##    only progression; now they overlap it (both gate reach) and their
+##    verbs (conquer X, find Y) read like flat checklist charters.
+##    THE PROPOSAL — "THE PATHFINDERS' TRAIL": the Codex becomes the
+##    ENDGAME arc that begins where the Ascent ends (beyond the Rim):
+##    · Each Signature becomes a mini-CHAPTER with narrative beats
+##      (the Pathfinders' story told through their 9 lost beacons —
+##      the lore hooks already exist in the hints), not a checkbox:
+##      e.g. Flame = follow the third beacon's trail to a Magma-Sea
+##      world in the Deep Field, ground it, conquer its guardian.
+##    · Signatures keep gating the outer REGIONS (that part works and
+##      now composes cleanly: Ascent owns rings 0-2, Codex owns 3+).
+##    · Each Signature ALSO awards a unique Fabricator BLUEPRINT
+##      (signature-tier gear/ship modules — ties the endgame arc into
+##      the crafting spine; the "signature relics" set).
+##    · Ring-spectrum synergy: each Signature's target band sits in
+##      the region its trail reaches — the Codex becomes the guided
+##      tour of the upper spectrum.
+##    · The ending stays multi-flavored but adds the sandbox promise:
+##      finishing the Trail unlocks a "Legacy" prestige layer (v2
+##      hook) instead of just an epilogue.
+##
+## CARRY-INS FROM THE v1.4.1 CRITIC PANEL (ranked backlog, Nick has
+## seen the report):
+##  a. Array wall: p50 378 actions/24% completion — cheaper Nav Core
+##     chain or paying ch2 sub-goals.
+##  b. Gear-ladder legibility: ⬆ upgrade pip on equipped items with a
+##     craftable successor (Descent Stabilizers: 1/700 wears).
+##  c. Exotic circular gate: wave-offs at hostile biome worlds drop a
+##     pinch of that biome's exotic (failure funds the counter-gear).
+##  d. Bred-champion mercy: fallen bred conquest champions return
+##     'Critical' (or leave a re-breedable bloodline record).
+##  e. Ring-breach anomaly: ONE rare near-home world carrying a single
+##     deep-spectrum find — taste the spectrum early.
+##  f. Death keeps the diary: reset leaves a 'recovered expedition
+##     log' (fresh-start v1.5 makes this the right moment to design).
+##  g. Stage-1→2 corridor wonder: en-route events on long hauls.
+##  h. NICK DIALS still open: apex grades out of stats.best (Rarity-
+##     achievement detonation — recommended YES); biome-vein valve
+##     (recommended KEEP open).
+##  i. Deferred features standing: cooking/provisions (flask slot),
+##     Frontier Records, archaeology/fossils, hazardous flora (G15),
+##     mined-out worlds as real estate (v1.5+ candidate), Shipyard
+##     visual evolution (avatar tint by nameplate / rank-evolving
+##     portrait), Eyeball World + per-hue rarity + V2 morphology + V13
+##     crossGenome (domain decisions), G14 boot time (STILL unverified).
+##
+## SUGGESTED BUILD ORDER: wipe/fresh-start plumbing first (everything
+## else simplifies behind it) → tray/training bug + UI swap + hide
+## events/beacon (small, ship early) → specimen-card condense → quest
+## notifications → Prime Codex rework (design sign-off with Nick
+## first) → XP balance + leveling sim tier → 1,000-bot sheet-focus
+## round + critic panel → carry-in backlog by Nick's picks.
+## Standing rules: extract.js first; proofsheet for ALL art; deploys
+## on Nick's word; simrun.js (ui/chaos/fast/deep) is the regression
+## gate; fingerprint stays byte-identical (the baseline survives the
+## save wipe — determinism is about the universe, not the save).
+
 ## ★★ v1.3 "THE HD FRONTIER" IS LIVE ★★ (2026-07-18, build b79de67,
 ## Nick: "Ship it"). HD IS ALWAYS ON — no Classic mode, no setting.
 ## Shipped: painted landing vistas on every world (seeded compositions,
