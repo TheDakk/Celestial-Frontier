@@ -290,6 +290,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('cleanup: Atlas keeps only Earth', doc.getElementById('logcount').textContent === '1' && H.logMap.has('p133'));
     tutAct();                                                       // begin the expedition
     check('tutorial closes', await until(() => !visible(doc.getElementById('tutbox')), 2000, 'tut close'));
+    // v1.5 quest notifications: the heartbeat knows the next goal the
+    // moment training ends — chapter 1 of the Ascent, never twice per goal
+    const nsg = H.nextStepGoal && H.nextStepGoal();
+    check('quest nudge: next-step goal names the Ascent chapter-1 goal',
+      !!nsg && /asc:c1-/.test(nsg.key) && /Next Step/.test(nsg.tt) && nsg.ms.length > 10, nsg && nsg.key);
     const cdxWasOpen = visible(doc.getElementById('codex'));
     click(doc.getElementById('codexbtn'));
     check('lockdown lifted after training', visible(doc.getElementById('codex')) !== cdxWasOpen);
