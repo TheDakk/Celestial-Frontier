@@ -1975,7 +1975,7 @@ function galaxyThumb(g){
     q.addColorStop(0,'#fff'); q.addColorStop(0.2,'#bcd4ff'); q.addColorStop(0.55,'rgba(140,180,255,0.4)'); q.addColorStop(1,'transparent');
     ctx2.fillStyle=q; ctx2.fillRect(0,0,T,T);
   } else {
-    ctx2.drawImage(getGalaxySprite(g),0,0,T,T);
+    ctx2.drawImage(getGalaxySprite(g,true),0,0,T,T);   /* sync: a thumb never wears the archetype */
   }
   const url=c.toDataURL();
   thumbCache.set(key,url); return url;
@@ -2198,15 +2198,24 @@ const {GAL_SPRITES, GAL_KIND, makeGalaxySprite, GAL_SPRITE_SEEDS}=GalaxyArt;
    contradict the card's Lenticular/Elliptical/Irregular row. */
 const _galSprCache=new Map();
 const _GKIND_SHORT={spiral:'spiral', barred:'barred', lenticular:'lent', elliptical:'ellip', irregular:'irr'};
-function getGalaxySprite(g2){
+function getGalaxySprite(g2, sync){
   if(g2.quasar) return GAL_SPRITES[g2.sp]||GAL_SPRITES[0];
   const key=g2.seed;
   let spr=_galSprCache.get(key);
-  if(spr) return spr;
+  if(spr && !(sync && spr._arch)) return spr;
+  const lock=_GKIND_SHORT[GAL_KIND[g2.sp]]||'spiral';
+  if(sync){
+    /* thumbnails must never pin the shared archetype face into the
+       Atlas/save (triple-check #1) — bake this one now */
+    spr=makeGalaxySprite((g2.seed^0x6A7A)>>>0, lock);
+    if(_galSprCache.size>64){ const k=_galSprCache.keys().next().value; _galSprCache.delete(k); }
+    _galSprCache.set(key, spr);
+    return spr;
+  }
   spr=GAL_SPRITES[g2.sp]||GAL_SPRITES[0];
+  spr._arch=true;
   if(_galSprCache.size>64){ const k=_galSprCache.keys().next().value; _galSprCache.delete(k); }
   _galSprCache.set(key, spr);
-  const lock=_GKIND_SHORT[GAL_KIND[g2.sp]]||'spiral';
   setTimeout(()=>{
     if(_galSprCache.get(key)===spr) _galSprCache.set(key, makeGalaxySprite((g2.seed^0x6A7A)>>>0, lock));
   }, 45);
@@ -3262,223 +3271,15 @@ var HD_PORTRAITS=true;   /* HD is always on (v1.3 ship decision) */
 const SpeciesArt=(()=>{
 const speciesArtCache=new Map();
 function speciesPortrait(g){
-  /* HD_PORTRAITS rides the hd flag (set by applyHd): the determinism
-     fingerprint pins CLASSIC portrait bytes, so the V12 anatomy overhaul
-     ships flag-gated exactly like the vistas. Flipping the flag re-keys
-     the cache; stored art in old codex entries repaints on next render. */
-  const key=g.seed+'_'+(g.gen||0)+'_'+g.kingdom+(HD_PORTRAITS?'_hd':'')+(g.apex?'_A':'')+(g.par?'_P':'');
+  /* HD is the game (ship decision): every kingdom renders painterly.
+     The classic SVG anatomy + stagecraft pass were deleted as dead code
+     once the Landing view setting went away — see git history if the
+     recipes are ever wanted again. */
+  const key=g.seed+'_'+(g.gen||0)+'_'+g.kingdom+(g.apex?'_A':'')+(g.par?'_P':'');
   if(speciesArtCache.has(key)) return speciesArtCache.get(key);
-  /* HD: fauna and flora route to the PAINTERLY canvas renderers (the
-     vista's own beasts/plants, staged like the visual-direction artifact
-     — Nick: "those portraits looked badass") */
-  if(HD_PORTRAITS){
-    /* ALL FOUR KINGDOMS render painterly in HD (Nick: replace every
-       legacy SVG surface) — fauna, flora, fungi, microbes */
-    const url=g.kingdom==='fauna'?hdPortraitFauna(g)
-      :(g.kingdom==='flora'?hdPortraitFlora(g)
-      :(g.kingdom==='fungi'?hdPortraitFungi(g):hdPortraitMicrobe(g)));
-    if(speciesArtCache.size>1200){ const k=speciesArtCache.keys().next().value; speciesArtCache.delete(k); }
-    speciesArtCache.set(key,url);
-    return url;
-  }
-  const base=SP_HEX[SP_COLOR[g.color%SP_COLOR.length]]||'#8a9bb5';
-  const acc=SP_HEX[SP_COLOR[(g.accent||g.trait||3)%SP_COLOR.length]]||'#cfd6f2';
-  const glow=g.lumin;
-  const R=mulberry32((g.seed^0xAA77)>>>0);
-  let inner='';
-  const defs='<defs><radialGradient id="bg" cx="50%" cy="38%" r="75%">'+
-    '<stop offset="0%" stop-color="#11151f"/><stop offset="100%" stop-color="#05060c"/></radialGradient>'+
-    '<radialGradient id="bd" cx="42%" cy="34%" r="72%">'+
-    '<stop offset="0%" stop-color="'+shade(base,0.32)+'"/>'+
-    '<stop offset="62%" stop-color="'+base+'"/>'+
-    '<stop offset="100%" stop-color="'+shade(base,-0.4)+'"/></radialGradient>'+
-    (glow?'<filter id="gl"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>':'')+
-    '</defs>';
-  const F = glow?' filter="url(#gl)"':'';
-
-  if(g.kingdom==='microbe'){
-    // a cluster of cells / a film
-    for(let i=0;i<26;i++){
-      const x=18+R()*84, y=18+R()*84, rr=3+R()*9;
-      inner+='<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+rr.toFixed(1)+'" fill="'+
-        (R()<0.5?base:acc)+'" opacity="'+(0.35+R()*0.4).toFixed(2)+'"'+F+'/>';
-      if(R()<0.4) inner+='<circle cx="'+(x+rr*0.3).toFixed(1)+'" cy="'+(y-rr*0.2).toFixed(1)+'" r="'+(rr*0.4).toFixed(1)+'" fill="'+shade(base,-0.3)+'" opacity="0.5"/>';
-    }
-  } else if(g.kingdom==='flora'){
-    // a stalk with leaves / fronds, scaled by form
-    const tall = (g.form%18)<10;
-    const cx=60, baseY=104;
-    inner+='<rect x="'+(cx-3)+'" y="'+(tall?34:60)+'" width="6" height="'+(tall?70:44)+'" rx="3" fill="'+shade(base,-0.25)+'"/>';
-    const leaves= 5+(g.form%5);
-    for(let i=0;i<leaves;i++){
-      const t=i/(leaves-1);
-      const ly=baseY-(tall?64:40)*t-6;
-      const side=i%2?1:-1;
-      const len=16+R()*22, ang=side*(0.5+R()*0.5);
-      const ex=cx+Math.cos(ang)*len, ey=ly-Math.sin(Math.abs(ang))*len*0.4;
-      inner+='<path d="M'+cx+','+ly+' Q'+(cx+side*14)+','+(ly-10)+' '+ex.toFixed(1)+','+ey.toFixed(1)+'" stroke="'+base+'" stroke-width="'+(5+R()*5).toFixed(1)+'" fill="none" stroke-linecap="round"'+F+'/>';
-      if(glow||R()<0.4) inner+='<circle cx="'+ex.toFixed(1)+'" cy="'+ey.toFixed(1)+'" r="3" fill="'+acc+'"'+F+'/>';
-    }
-    // crown bloom
-    inner+='<circle cx="'+cx+'" cy="'+(tall?32:58)+'" r="'+(8+(g.form%4)*2)+'" fill="'+acc+'" opacity="0.9"'+F+'/>';
-  } else if(g.kingdom==='fungi'){
-    // mushroom cluster
-    for(let i=0;i<3;i++){
-      const cx=38+i*22+R()*6, baseY=104, h=26+R()*34;
-      inner+='<rect x="'+(cx-3.5)+'" y="'+(baseY-h)+'" width="7" height="'+h+'" rx="3" fill="'+shade(base,0.1)+'"/>';
-      const cap=14+R()*12;
-      inner+='<path d="M'+(cx-cap)+','+(baseY-h)+' Q'+cx+','+(baseY-h-cap*1.1)+' '+(cx+cap)+','+(baseY-h)+' Z" fill="'+base+'"'+F+'/>';
-      if(glow) inner+='<ellipse cx="'+cx+'" cy="'+(baseY-h)+'" rx="'+cap+'" ry="3" fill="'+acc+'" opacity="0.7"'+F+'/>';
-      for(let d=0;d<4;d++) inner+='<circle cx="'+(cx-cap*0.6+R()*cap*1.2).toFixed(1)+'" cy="'+(baseY-h-cap*0.4-R()*6).toFixed(1)+'" r="'+(1.4+R()*2).toFixed(1)+'" fill="'+acc+'" opacity="0.8"/>';
-    }
-  } else if(!HD_PORTRAITS){
-    // ===== FAUNA (CLASSIC): byte-pinned by the determinism fingerprint —
-    // do not touch; the HD branch below is where portrait art evolves =====
-    const sc=FA_SIZE_M[(g.size||2)%FA_SIZE_M.length];
-    const cx=60, cy=64;
-    const bw=30+sc*22, bh=18+sc*16;
-    const bodyShape=g.body%FA_BODY.length;
-    const serp = bodyShape===4, radial = bodyShape===15, segm = bodyShape===5;
-    const tail=FA_TAIL[(g.tail||0)%FA_TAIL.length];
-    if(tail!=='none'){
-      const tx=cx-bw*0.9, ty=cy+4;
-      if(tail==='finned') inner+='<path d="M'+tx+','+ty+' L'+(tx-22)+','+(ty-12)+' L'+(tx-16)+','+ty+' L'+(tx-22)+','+(ty+12)+' Z" fill="'+shade(base,-0.2)+'"/>';
-      else inner+='<path d="M'+tx+','+ty+' Q'+(tx-26)+','+(ty-6)+' '+(tx-30)+','+(ty+(tail==='whip-like'?-18:6))+'" stroke="'+shade(base,-0.15)+'" stroke-width="'+(tail==='plumed'?9:5)+'" fill="none" stroke-linecap="round"/>';
-      if(tail==='stinger-tipped'||tail==='spiked') inner+='<circle cx="'+(tx-30)+'" cy="'+(ty+6)+'" r="4" fill="'+acc+'"/>';
-    }
-    const limbs=FA_LIMBS[(g.limbs||0)%FA_LIMBS.length];
-    for(let i=0;i<limbs;i++){
-      const t=limbs>1?i/(limbs-1):0.5;
-      const lx=cx-bw*0.55+t*bw*1.1;
-      const down=cy+bh*0.6;
-      const foot=down+14+sc*10*(0.6+R()*0.5);
-      const splay=(t-0.5)*16;
-      inner+='<path d="M'+lx.toFixed(1)+','+down.toFixed(1)+' L'+(lx+splay).toFixed(1)+','+foot.toFixed(1)+'" stroke="'+shade(base,-0.2)+'" stroke-width="'+(3+sc*3).toFixed(1)+'" stroke-linecap="round"/>';
-    }
-    if(bodyShape===14||bodyShape===7){
-      for(const sgn of [-1,1]) inner+='<path d="M'+cx+','+(cy-2)+' Q'+(cx+sgn*40)+','+(cy-34)+' '+(cx+sgn*52)+','+(cy+6)+' Q'+(cx+sgn*30)+','+(cy+2)+' '+cx+','+(cy+4)+' Z" fill="'+acc+'" opacity="0.55"'+F+'/>';
-    }
-    if(serp){
-      let d='M'+(cx-bw)+','+cy+' ';
-      for(let i=1;i<=6;i++){ d+='Q'+(cx-bw+i*bw*0.34)+','+(cy+(i%2?-14:14))+' '+(cx-bw+i*bw*0.34+10)+','+cy+' '; }
-      inner+='<path d="'+d+'" stroke="url(#bd)" stroke-width="'+(12+sc*8)+'" fill="none" stroke-linecap="round"'+F+'/>';
-    } else if(radial){
-      for(let i=0;i<7;i++){ const a=i/7*Math.PI*2; inner+='<ellipse cx="'+(cx+Math.cos(a)*bw*0.5).toFixed(1)+'" cy="'+(cy+Math.sin(a)*bw*0.5).toFixed(1)+'" rx="'+(bw*0.3).toFixed(1)+'" ry="7" transform="rotate('+(a*57.3).toFixed(0)+' '+(cx+Math.cos(a)*bw*0.5).toFixed(1)+' '+(cy+Math.sin(a)*bw*0.5).toFixed(1)+')" fill="url(#bd)"'+F+'/>'; }
-      inner+='<circle cx="'+cx+'" cy="'+cy+'" r="'+(bw*0.42)+'" fill="url(#bd)"'+F+'/>';
-    } else {
-      inner+='<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+bw+'" ry="'+bh+'" fill="url(#bd)"'+F+'/>';
-      if(segm) for(let i=1;i<5;i++) inner+='<line x1="'+(cx-bw+i*bw*0.4)+'" y1="'+(cy-bh*0.8)+'" x2="'+(cx-bw+i*bw*0.4)+'" y2="'+(cy+bh*0.8)+'" stroke="'+shade(base,-0.3)+'" stroke-width="2" opacity="0.5"/>';
-    }
-    const pat=FA_PATTERN[(g.pattern||0)%FA_PATTERN.length];
-    if(pat==='striped') for(let i=0;i<5;i++) inner+='<line x1="'+(cx-bw*0.6+i*bw*0.3)+'" y1="'+(cy-bh*0.7)+'" x2="'+(cx-bw*0.6+i*bw*0.3+6)+'" y2="'+(cy+bh*0.7)+'" stroke="'+shade(base,-0.35)+'" stroke-width="3" opacity="0.55"/>';
-    else if(pat==='spotted'||pat==='eye-spotted') for(let i=0;i<7;i++){ const sx=cx-bw*0.7+R()*bw*1.3, sy=cy-bh*0.5+R()*bh; inner+='<circle cx="'+sx.toFixed(1)+'" cy="'+sy.toFixed(1)+'" r="'+(pat==='eye-spotted'?4:2.5)+'" fill="'+(pat==='eye-spotted'?acc:shade(base,-0.3))+'" opacity="0.6"/>'; }
-    else if(pat==='banded') for(let i=0;i<3;i++) inner+='<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+(bw*(0.4+i*0.25))+'" ry="'+(bh*(0.4+i*0.25))+'" fill="none" stroke="'+shade(base,-0.3)+'" stroke-width="2" opacity="0.4"/>';
-    else if(pat==='iridescent'||pat==='marbled') inner+='<ellipse cx="'+(cx-bw*0.2)+'" cy="'+(cy-bh*0.3)+'" rx="'+(bw*0.5)+'" ry="'+(bh*0.5)+'" fill="'+acc+'" opacity="0.25"/>';
-    const hx=cx+bw*0.78, hy=cy-bh*0.2, hr=10+sc*8;
-    const head=g.head%FA_HEAD.length;
-    inner+='<circle cx="'+hx.toFixed(1)+'" cy="'+hy.toFixed(1)+'" r="'+hr.toFixed(1)+'" fill="url(#bd)"'+F+'/>';
-    if(FA_HEAD[head].includes('beak')) inner+='<path d="M'+(hx+hr*0.6)+','+hy+' L'+(hx+hr*1.6)+','+(hy+2)+' L'+(hx+hr*0.6)+','+(hy+6)+' Z" fill="'+acc+'"/>';
-    if(FA_HEAD[head].includes('horn')||FA_HEAD[head].includes('crest')) for(const sgn of [-1,1]) inner+='<path d="M'+(hx+sgn*hr*0.4)+','+(hy-hr*0.6)+' L'+(hx+sgn*hr*0.7)+','+(hy-hr*1.8)+'" stroke="'+acc+'" stroke-width="3" stroke-linecap="round"/>';
-    if(FA_HEAD[head].includes('mandible')||FA_HEAD[head].includes('fang')) inner+='<path d="M'+(hx+hr*0.5)+','+(hy+hr*0.4)+' l4,7 m4,-7 l-4,7" stroke="'+shade(base,-0.4)+'" stroke-width="2"/>';
-    if(FA_HEAD[head].includes('tendril')) for(let i=0;i<4;i++) inner+='<path d="M'+(hx+hr*0.5)+','+(hy-2+i*3)+' q10,'+(i%2?-6:6)+' 16,0" stroke="'+acc+'" stroke-width="1.5" fill="none"/>';
-    const eyes=FA_EYES[(g.eyes||0)%FA_EYES.length];
-    const ecol=glow?acc:'#0c0e16';
-    for(let i=0;i<Math.min(eyes,8);i++){
-      const ang=(i/Math.max(eyes,1))*Math.PI - Math.PI/2;
-      const ex=hx+Math.cos(ang)*hr*0.45, ey=hy+Math.sin(ang)*hr*0.5;
-      inner+='<circle cx="'+ex.toFixed(1)+'" cy="'+ey.toFixed(1)+'" r="'+(2.2+sc).toFixed(1)+'" fill="'+ecol+'"'+(glow?F:'')+'/>';
-      if(!glow) inner+='<circle cx="'+(ex+0.8).toFixed(1)+'" cy="'+(ey-0.8).toFixed(1)+'" r="0.9" fill="#fff" opacity="0.8"/>';
-    }
-  }   /* fauna: HD portraits render painterly via hdPortraitFauna (early return above) */
-  /* ---- the painterly pass (1.0): every portrait gets STAGECRAFT — a lit
-     aura behind the subject, a soft ground shadow beneath it, organic
-     texture displacement over the anatomy, a diagonal rim of light and a
-     deep vignette. The anatomy recipes stay; the staging is what turns a
-     diagram into an illustration. Deterministic, asset-free. */
-  const pfDefs='<radialGradient id="aur" cx="50%" cy="40%" r="58%">'+
-      '<stop offset="0%" stop-color="'+shade(base,0.18)+'" stop-opacity="0.34"/>'+
-      '<stop offset="70%" stop-color="'+base+'" stop-opacity="0.10"/>'+
-      '<stop offset="100%" stop-color="#000000" stop-opacity="0"/></radialGradient>'+
-    '<radialGradient id="vig" cx="50%" cy="50%" r="74%">'+
-      '<stop offset="62%" stop-color="#000000" stop-opacity="0"/>'+
-      '<stop offset="100%" stop-color="#01020a" stop-opacity="0.78"/></radialGradient>'+
-    '<linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">'+
-      '<stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>'+
-      '<stop offset="34%" stop-color="#ffffff" stop-opacity="0"/>'+
-      '<stop offset="100%" stop-color="#000000" stop-opacity="0.22"/></linearGradient>'+
-    '<filter id="pf" x="-12%" y="-12%" width="124%" height="124%">'+
-      '<feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="'+(g.seed%97)+'" result="n"/>'+
-      '<feDisplacementMap in="SourceGraphic" in2="n" scale="1.6"/></filter>'+
-    '<filter id="gsh"><feGaussianBlur stdDeviation="3"/></filter>';
-  /* ---- habitat backdrop (Dakk-approved hybrid): the creature stands IN the
-     place it was discovered — sky tinted by its biome heat, silhouette
-     terrain from its OWN habitat gene — with the stagecraft lighting on
-     top. Field guide meets trading card. Dark, low-contrast silhouettes so
-     the subject still pops. */
-  const _scene=(()=>{
-    const Rs=mulberry32((g.seed^0x5CE7)>>>0);
-    const heat=(g.heat==null)?1:g.heat;
-    const skyTop=heat===2?'#22100c':heat===0?'#0a1322':'#0d1726';
-    const skyHor=heat===2?'#4a2415':heat===0?'#1a2c42':'#1f3048';
-    let s='<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">'+
-      '<stop offset="0%" stop-color="'+skyTop+'"/><stop offset="100%" stop-color="'+skyHor+'"/></linearGradient>';
-    let body='<rect width="120" height="78" fill="url(#sky)" opacity="0.85"/>';
-    if(g.kingdom==='microbe'){
-      /* the microscope field: a lit medium with drifting bokeh */
-      body='<rect width="120" height="120" fill="'+(heat===2?'#190e13':'#0b1120')+'" opacity="0.92"/>';
-      for(let k=0;k<8;k++) body+='<circle cx="'+((Rs()*120)|0)+'" cy="'+((Rs()*120)|0)+'" r="'+((6+Rs()*16)|0)+'" fill="'+skyHor+'" opacity="0.12"/>';
-      return s+'<g>'+body+'</g>';
-    }
-    const hIdx=(g.habitat||0)%FA_HABITAT.length;
-    /* 19 habitats → 10 scene kinds */
-    const kind=[3,1,2,4,4,5,1,6,7,8,7,9,4,4,0,8,1,3,5][hIdx]!==undefined?[3,1,2,4,4,5,1,6,7,8,7,9,4,4,0,8,1,3,5][hIdx]:1;
-    const ground='<rect y="76" width="120" height="44" fill="#05070d" opacity="0.9"/>';
-    const sil=(pts,op)=>'<polygon points="'+pts+'" fill="#070a12" opacity="'+op+'"/>';
-    if(kind===0){ /* high cloud decks */
-      for(let k=0;k<4;k++) body+='<ellipse cx="'+((Rs()*120)|0)+'" cy="'+((30+Rs()*50)|0)+'" rx="'+((18+Rs()*22)|0)+'" ry="'+((4+Rs()*5)|0)+'" fill="'+skyHor+'" opacity="0.35"/>';
-    } else if(kind===1){ /* plains / tundra / salt flats: two soft hills */
-      body+=sil('0,76 0,64 30,58 70,66 120,60 120,76','0.8')+sil('0,76 0,70 50,64 90,70 120,66 120,76','0.95')+ground;
-    } else if(kind===2){ /* highland ridges: jagged peaks */
-      let p='0,76 '; for(let k=0;k<=6;k++) p+=(k*20)+','+((34+Rs()*26)|0)+' '; body+=sil(p+'120,76','0.7');
-      let p2='0,76 '; for(let k=0;k<=5;k++) p2+=(k*24)+','+((52+Rs()*16)|0)+' '; body+=sil(p2+'120,76','0.95')+ground;
-    } else if(kind===3){ /* forest canopy / mangrove: a treeline */
-      body+=sil('0,76 0,60 20,52 40,62 60,50 80,60 100,54 120,62 120,76','0.7');
-      for(let k=0;k<5;k++){ const x=(8+Rs()*104)|0; body+=sil(x+',76 '+(x-5)+',76 '+x+','+((48+Rs()*14)|0)+' '+(x+5)+',76','0.95'); }
-      body+=ground;
-    } else if(kind===4){ /* shores, deltas, strange seas: water bands */
-      body+='<rect y="62" width="120" height="16" fill="'+skyHor+'" opacity="0.5"/>';
-      for(let k=0;k<3;k++) body+='<rect x="'+((Rs()*60)|0)+'" y="'+(64+k*4)+'" width="'+((30+Rs()*50)|0)+'" height="1.2" fill="#9fb6d6" opacity="0.18"/>';
-      body+=ground;
-    } else if(kind===5){ /* caverns & crystal caverns: stalactites + shards */
-      for(let k=0;k<6;k++){ const x=(Rs()*120)|0; body+=sil(x+',0 '+(x-4)+',0 '+x+','+((14+Rs()*22)|0)+' '+(x+4)+',0','0.9'); }
-      if(hIdx===18) for(let k=0;k<4;k++){ const x=(10+Rs()*100)|0; body+='<polygon points="'+x+',76 '+(x-3)+',76 '+(x+1)+','+((52+Rs()*14)|0)+' '+(x+4)+',76" fill="'+shade(base,0.1)+'" opacity="0.35"/>'; }
-      body+=ground;
-    } else if(kind===6){ /* the twilight terminator: half-lit world */
-      body+='<rect width="60" height="78" fill="#02030a" opacity="0.8"/>'+ground;
-    } else if(kind===7){ /* open ocean / reefs / vents: deep bands + motes */
-      body='<rect width="120" height="120" fill="'+(heat===2?'#101620':'#081120')+'" opacity="0.9"/>';
-      for(let k=0;k<3;k++) body+='<rect y="'+(20+k*28)+'" width="120" height="10" fill="'+skyHor+'" opacity="0.18"/>';
-      if(hIdx===15) for(let k=0;k<3;k++){ const x=(15+Rs()*90)|0; body+='<rect x="'+x+'" y="60" width="3" height="40" fill="#ff8a4a" opacity="0.25"/>'; }
-      return s+'<g>'+body+'</g>';
-    } else if(kind===8){ /* volcanic ash fields: cones + embers */
-      body+=sil('10,76 40,44 70,76','0.85')+sil('60,76 92,52 120,76','0.95');
-      for(let k=0;k<5;k++) body+='<circle cx="'+((Rs()*120)|0)+'" cy="'+((30+Rs()*40)|0)+'" r="0.9" fill="#ff8a4a" opacity="0.5"/>';
-      body+=ground;
-    } else { /* desert dunes */
-      body+='<path d="M0,70 Q30,58 60,68 T120,64 L120,76 L0,76 Z" fill="#070a12" opacity="0.8"/>'+
-        '<path d="M0,76 Q40,66 80,74 T120,72 L120,76 Z" fill="#070a12" opacity="0.95"/>'+ground;
-    }
-    return s+'<g>'+body+'</g>';
-  })();
-  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">'+defs.replace('</defs>', pfDefs+_scene.slice(0, _scene.indexOf('</linearGradient>')+17)+'</defs>')+
-    '<rect width="120" height="120" fill="url(#bg)"/>'+
-    _scene.slice(_scene.indexOf('</linearGradient>')+17)+
-    '<circle cx="60" cy="50" r="52" fill="url(#aur)"/>'+
-    '<ellipse cx="60" cy="103" rx="34" ry="8" fill="#000000" opacity="0.5" filter="url(#gsh)"/>'+
-    '<g filter="url(#pf)">'+inner+'</g>'+
-    '<rect width="120" height="120" fill="url(#rim)"/>'+
-    '<rect width="120" height="120" fill="url(#vig)"/></svg>';
-  const url=svgURI(svg);
+  const url=g.kingdom==='fauna'?hdPortraitFauna(g)
+    :(g.kingdom==='flora'?hdPortraitFlora(g)
+    :(g.kingdom==='fungi'?hdPortraitFungi(g):hdPortraitMicrobe(g)));
   if(speciesArtCache.size>1200){ const k=speciesArtCache.keys().next().value; speciesArtCache.delete(k); }
   speciesArtCache.set(key,url);
   return url;
@@ -5672,9 +5473,9 @@ const {perfTime, t0, drawUniverse, drawGalaxy, drawSystem, drawSurface}=Renderer
    panorama at planetfall built from card facts alone: biome from the world
    type, settlement from the civilization era, light from the local clock,
    weather from the sky row, life from the world's own fauna roster.
-   Gated by hdOn (Settings → Graphics → Landing view; save field `hd`,
-   default Classic) so iterations ride main without touching players. All
-   seeded, no Math.random, rendered once per landing. */
+   HD is always on (v1.3 ship decision) — hdOn survives as a constant so
+   older call sites read unchanged. All seeded, no Math.random, rendered
+   once per landing. */
 /* ----------------------------------------------------------------
    @section hdart [app] — HD vista engine + planetfall overlay
    Owns: hdOn, _vistaPend, hdVista, hdBeastBare, hdGenesFor, showVistaBox
@@ -6941,10 +6742,13 @@ function savePostcard(){
   if(code){ g.fillStyle='#7c86ae';g.font='9px monospace';g.fillText(code, 24, src.height+66); }
   g.fillStyle='#aab3d2';g.font='600 12px sans-serif';g.textAlign='right';
   g.fillText('C E L E S T I A L   F R O N T I E R', W2-24, src.height+40);
-  const a=document.createElement('a');
-  a.href=cv.toDataURL('image/png');
-  a.download=String(ttl).replace(/[^\w-]+/g,'_')+'-postcard.png';
-  document.body.appendChild(a);a.click();a.remove();
+  const fname=String(ttl).replace(/[^\w-]+/g,'_')+'-postcard.png';
+  const fire=(href,revoke)=>{ const a=document.createElement('a');
+    a.href=href; a.download=fname;
+    document.body.appendChild(a); a.click(); a.remove();
+    if(revoke) setTimeout(()=>URL.revokeObjectURL(href), 4000); };
+  if(cv.toBlob) cv.toBlob(b2=>{ if(b2) fire(URL.createObjectURL(b2), true); else fire(cv.toDataURL('image/png')); }, 'image/png');
+  else fire(cv.toDataURL('image/png'));
   toast('⇪ Postcard saved','The view and its share code are baked into the image — send it to a friend.');
 }
 function _vistaExtras(){
@@ -6952,6 +6756,7 @@ function _vistaExtras(){
   pc.setAttribute('role','button');pc.tabIndex=0;
   pc.textContent='⇪ Save postcard';
   pc.addEventListener('click',(e)=>{ e.stopPropagation(); savePostcard(); });
+  pc.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); savePostcard(); } });
   vistaBox.appendChild(pc);
 }
 function reshowVista(){
@@ -8970,7 +8775,6 @@ function loadSave(){
     applyMotion();
     /* cx absent (pre-1.1.2 save) ⇒ 0 = card detail groups collapsed */
     cardExpand=clamp(num(data.cx), 0, 3)|0;
-    /* hd absent (pre-1.3 save) ⇒ Classic landing view */
     /* `hd` in old saves is IGNORED — HD is always on now (ship decision) */
     applyHd();
     for(const n of (data.notifs||[])){ if(n && n.tt!=null && notifications.length<60) notifications.push(n); }
@@ -10014,7 +9818,7 @@ function fightNow(mine, theirs, opts){
   setTimeout(step, 420);
 }
 document.getElementById('duelclose').addEventListener('click', ()=>{ duelBox.style.display='none'; setArenaBackdrop(null); });
-duelBox.addEventListener('click', e=>{ if(e.target===duelBox) duelBox.style.display='none'; });
+duelBox.addEventListener('click', e=>{ if(e.target===duelBox){ duelBox.style.display='none'; setArenaBackdrop(null); } });
 /* ---- duel setup: a real interface instead of a prompt ---- */
 let _duelMine=null, _duelTheirs=null;
 const duelSetup=document.getElementById('duel-setup');
@@ -10026,6 +9830,7 @@ function duelSideCard(nm, art, S){
     '<span class="sl">'+statLines(S)+'</span>';
 }
 function startDuelWithCode(entry){
+  setArenaBackdrop(null);   /* friendly duels are neutral ground — never a stale conquest arena */
   _duelMine={name:entry.name, genome:entry.genome, art:entry.art||speciesPortrait(entry.genome)};
   _duelTheirs=null;
   document.getElementById('duel-a').innerHTML=duelSideCard(_duelMine.name, _duelMine.art, battleStats(_duelMine.genome));
@@ -11508,39 +11313,12 @@ function _hdElemIcon(sym){
   }
   return cv.toDataURL();
 }
-function _eshade(hex,f){
-  const n=parseInt(hex.slice(1),16), r=(n>>16)&255, g=(n>>8)&255, b=n&255;
-  const m=c=>Math.max(0,Math.min(255,Math.round(f>0?c+(255-c)*f:c*(1+f))));
-  return 'rgb('+m(r)+','+m(g)+','+m(b)+')';
-}
 function elemIcon(sym){
-  const _k=sym+(HD_PORTRAITS?'|hd':'');
-  let u=_elemIcons.get(_k); if(u) return u;
-  if(HD_PORTRAITS){ u=_hdElemIcon(sym); _elemIcons.set(_k,u); return u; }
-  const c=EC[sym]||'#c8d0dc', lo=_eshade(c,-0.45), hi=_eshade(c,0.45), gl=_eshade(c,0.72);
-  let body='';
-  if(ELEM_EXO[sym]){
-    body='<polygon points="18,4 30,14 18,32 6,14" fill="'+c+'"/>'+
-         '<polygon points="18,4 30,14 18,18 6,14" fill="'+hi+'"/>'+
-         '<polygon points="18,18 30,14 18,32" fill="'+lo+'"/>'+
-         '<polygon points="12,9 18,4 18,18 9,12.5" fill="'+gl+'" opacity="0.85"/>';
-  } else if(ELEM_ICES[sym]){
-    body='<polygon points="18,3 26,12 23,32 12,30 9,13" fill="'+c+'"/>'+
-         '<polygon points="18,3 26,12 18,16 9,13" fill="'+hi+'"/>'+
-         '<polygon points="18,16 23,32 12,30" fill="'+lo+'"/>'+
-         '<polygon points="13,8 18,3 18,16 11,12" fill="'+gl+'" opacity="0.6"/>';
-  } else if(ELEM_GAS[sym]){
-    body='<path d="M15 5h6v6l6 12a5 5 0 0 1-5 7H14a5 5 0 0 1-5-7l6-12z" fill="rgba(220,228,248,0.18)" stroke="rgba(220,228,248,0.55)" stroke-width="1.4"/>'+
-         '<path d="M12.2 19l-2.4 4.8a3.4 3.4 0 0 0 3.4 4.7h9.6a3.4 3.4 0 0 0 3.4-4.7L23.8 19z" fill="'+c+'" opacity="0.92"/>'+
-         '<rect x="14" y="3.4" width="8" height="3" rx="1" fill="rgba(220,228,248,0.6)"/>';
-  } else {
-    body='<polygon points="5,22 12,15 31,15 24,22" fill="'+hi+'"/>'+
-         '<polygon points="5,22 24,22 24,29 5,29" fill="'+c+'"/>'+
-         '<polygon points="24,22 31,15 31,22 24,29" fill="'+lo+'"/>'+
-         '<polygon points="8,21 13,16.5 20,16.5 15,21" fill="'+gl+'" opacity="0.55"/>';
-  }
-  u='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36">'+body+'</svg>');
-  _elemIcons.set(_k,u); return u;
+  /* HD is the game: every material icon renders painterly (the classic
+     SVG set was deleted as dead code — git history keeps the recipes) */
+  let u=_elemIcons.get(sym); if(u) return u;
+  u=_hdElemIcon(sym);
+  _elemIcons.set(sym,u); return u;
 }
 let cargoView='inv';
 function renderCargo(){

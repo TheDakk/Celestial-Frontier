@@ -16,7 +16,7 @@
     visitorDescriptor, beltDescriptor, climateBand,
     makeGenome, crossGenome, evolveGenome, describeSpecies, faunaDesc,
     speciesGrade, rarityRoll, colorGrade, spectral, sapienceTier, guardianFor,
-    realmBiome, classifyRealm, ecologyRole, planetSpecies, speciesPortrait,
+    realmBiome, classifyRealm, ecologyRole, planetSpecies, speciesPortrait, hdGenesFor,
     battleStats, abilityOf, abilityTheme, floraStat, runDuel, winEstimate,
     encodeWhere, decodeWhere, encodeCreature, decodeCreature, cleanName, normGenome,
     RANKS, REGIONS, SIGS, GRADE_TIERS,
@@ -127,8 +127,11 @@
     const pl = (sys.planets || [])[2];
     return pl ? planetSpecies(pl.P, sys, climateBand(pl.P, sys, pl.orb !== undefined ? pl.orb : 2), 2) : 'no-planet';
   });
-  probe('speciesPortrait', () => [G1(), G2(), makeGenome(9, 'flora', 0.8), makeGenome(10, 'fungi', 0.1),
-    makeGenome(11, 'microbe', 0.6)].map((g) => speciesPortrait(g)));
+  // HD-always-on made dataURL fingerprints vacuous under jsdom's toDataURL
+  // stub — probe the genome→visual-gene contract instead, which is what
+  // actually pins the portrait art's determinism now (2026-07-18).
+  probe('speciesPortrait', () => [G1(), G2(), makeGenome(9, 'fauna', 0.8), makeGenome(10, 'fauna', 0.1),
+    makeGenome(11, 'fauna', 0.6)].map((g) => hdGenesFor(g)));
 
   // --- combat ---
   probe('battleStats', () => [G1(), G2()].map((g) => battleStats(g)));
