@@ -1,0 +1,854 @@
+{
+ "report": {
+  "mode": "ui",
+  "runs": 60,
+  "generatedFrom": "tools/simrun.js",
+  "errorTable": {},
+  "completed": 60,
+  "skipPath": 11,
+  "postClean": 60,
+  "stallTable": {}
+ },
+ "runs": [
+  {
+   "mode": "ui",
+   "seed": 15851,
+   "errors": [],
+   "stalls": [],
+   "skipped": true,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 23770,
+   "errors": [],
+   "stalls": [],
+   "skipped": true,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 47527,
+   "errors": [],
+   "stalls": [],
+   "skipped": true,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 7932,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 39608,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 31689,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 13,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 55446,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2654459531,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2654435774,
+   "errors": [],
+   "stalls": [],
+   "skipped": true,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2654475369,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2654467450,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2654451612,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2654443693,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2654483288,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2654491207,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1013904239,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1013943834,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1013920077,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1013927996,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1013935915,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1013912158,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1013951753,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3668340000,
+   "errors": [],
+   "stalls": [],
+   "skipped": true,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1013959672,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3668363757,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3668355838,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3668379595,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3668387514,
+   "errors": [],
+   "stalls": [],
+   "skipped": true,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3668371676,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2027808465,
+   "errors": [],
+   "stalls": [],
+   "skipped": true,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3668347919,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2027832222,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3668395433,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2027848060,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 387276930,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2027840141,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2027824303,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2027855979,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 2027816384,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 387300687,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 387316525,
+   "errors": [],
+   "stalls": [],
+   "skipped": true,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 387308606,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 387292768,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3041736448,
+   "errors": [],
+   "stalls": [],
+   "skipped": true,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 387324444,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3041752286,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 387284849,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3041728529,
+   "errors": [],
+   "stalls": [],
+   "skipped": true,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3041712691,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3041744367,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3041760205,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1401220751,
+   "errors": [],
+   "stalls": [],
+   "skipped": true,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1401204913,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1401212832,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 3041720610,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1401196994,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1401181156,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1401228670,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  },
+  {
+   "mode": "ui",
+   "seed": 1401189075,
+   "errors": [],
+   "stalls": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "post": {
+    "errors": [],
+    "violations": []
+   },
+   "bootErrors": []
+  }
+ ]
+}

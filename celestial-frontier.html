@@ -2086,8 +2086,8 @@ function planetThumb(P){
   if(!s._lowres) thumbCache.set(key,url);   /* don't pin a low-res placeholder as the thumb */
   return url;
 }
-function starThumb(kind,col){
-  const key='s'+kind+col;
+function starThumb(kind,col,binCol){
+  const key='s'+kind+col+(binCol?'~'+binCol:'');
   if(thumbCache.has(key)) return thumbCache.get(key);
   const T=128, c=document.createElement('canvas'); c.width=c.height=T;
   const g=c.getContext('2d'); g.translate(T/2,T/2);
@@ -2098,13 +2098,28 @@ function starThumb(kind,col){
     g.fillStyle=ad; g.save(); g.scale(1,0.5); g.beginPath(); g.arc(0,0,30,0,TAU); g.fill(); g.restore();
     g.fillStyle='#000'; g.beginPath(); g.arc(0,0,8,0,TAU); g.fill();
   } else if(kind==='NS'){
-    g.strokeStyle='rgba(170,220,255,0.7)'; g.lineWidth=2;
-    g.beginPath(); g.moveTo(-26,0); g.lineTo(26,0); g.stroke();
-    g.fillStyle='#dceaff'; g.beginPath(); g.arc(0,0,5,0,TAU); g.fill();
+    /* HD coverage pass: lighthouse beams taper like the live pulsar's,
+       the star itself is a hot glow, not a flat dot */
+    for(const sgn of [-1,1]){
+      const bg2=g.createLinearGradient(0,0,sgn*30,0);
+      bg2.addColorStop(0,'rgba(190,230,255,0.85)'); bg2.addColorStop(1,'rgba(190,230,255,0)');
+      g.strokeStyle=bg2; g.lineWidth=3.2; g.lineCap='round';
+      g.beginPath(); g.moveTo(sgn*4,0); g.lineTo(sgn*30,0); g.stroke();
+    }
+    const ng=g.createRadialGradient(0,0,0,0,0,11);
+    ng.addColorStop(0,'#ffffff'); ng.addColorStop(0.4,'#dceaff'); ng.addColorStop(1,'rgba(190,220,255,0)');
+    g.fillStyle=ng; g.beginPath(); g.arc(0,0,11,0,TAU); g.fill();
   } else {
-    const sg=g.createRadialGradient(0,0,0,0,0,26);
+    /* a binary pair's card finally shows both suns (HD coverage pass) */
+    const cx0=binCol?-7:0, cy0=binCol?4:0;
+    const sg=g.createRadialGradient(cx0,cy0,0,cx0,cy0,26);
     sg.addColorStop(0,'#ffffff'); sg.addColorStop(0.28,col); sg.addColorStop(0.6,col+'55'); sg.addColorStop(1,'transparent');
-    g.fillStyle=sg; g.beginPath(); g.arc(0,0,26,0,TAU); g.fill();
+    g.fillStyle=sg; g.beginPath(); g.arc(cx0,cy0,26,0,TAU); g.fill();
+    if(binCol){
+      const s2=g.createRadialGradient(22,-14,0,22,-14,14);
+      s2.addColorStop(0,'#ffffff'); s2.addColorStop(0.3,binCol); s2.addColorStop(0.65,binCol+'55'); s2.addColorStop(1,'transparent');
+      g.fillStyle=s2; g.beginPath(); g.arc(22,-14,14,0,TAU); g.fill();
+    }
   }
   const url=c.toDataURL();
   thumbCache.set(key,url); return url;
@@ -2115,9 +2130,10 @@ function galaxyThumb(g){
   const T=128, c=document.createElement('canvas'); c.width=c.height=T;
   const ctx2=c.getContext('2d');
   if(g.quasar){
-    const q=ctx2.createRadialGradient(T/2,T/2,0,T/2,T/2,T/2);
-    q.addColorStop(0,'#fff'); q.addColorStop(0.2,'#bcd4ff'); q.addColorStop(0.55,'rgba(140,180,255,0.4)'); q.addColorStop(1,'transparent');
-    ctx2.fillStyle=q; ctx2.fillRect(0,0,T,T);
+    /* the card wears the same baked quasar the sky shows (HD pass) */
+    ctx2.save(); ctx2.translate(T/2,T/2); ctx2.rotate(0.6);
+    ctx2.drawImage(_quasarSpr(), -T*0.62, -T*0.62, T*1.24, T*1.24);
+    ctx2.restore();
   } else {
     ctx2.drawImage(getGalaxySprite(g,true),0,0,T,T);   /* sync: a thumb never wears the archetype */
   }
@@ -2125,15 +2141,18 @@ function galaxyThumb(g){
   thumbCache.set(key,url); return url;
 }
 
-function moonThumb(ti){
-  const key='mn'+ti; if(thumbCache.has(key)) return thumbCache.get(key);
+function moonThumb(ti,mseed){
+  /* per-moon seeded (HD coverage pass): every rocky moon in the universe
+     used to share one identical crater layout */
+  const key='mn'+ti+'_'+((mseed||0)>>>0)%997;
+  if(thumbCache.has(key)) return thumbCache.get(key);
   const T=128, c=document.createElement('canvas'); c.width=c.height=T;
   const g=c.getContext('2d');
   const cols=['#b9bcc6','#cfe4f2','#e0c060','#8d8678'];
   const gr=g.createRadialGradient(T*0.38,T*0.34,3,T/2,T/2,T*0.42);
   gr.addColorStop(0,'#ffffff'); gr.addColorStop(0.25,cols[ti]||cols[0]); gr.addColorStop(1,'#1a1c26');
   g.fillStyle=gr; g.beginPath(); g.arc(T/2,T/2,T*0.4,0,TAU); g.fill();
-  if(ti===0||ti===3){ const r=mulberry32(9+ti); g.fillStyle='rgba(40,42,52,0.45)';
+  if(ti===0||ti===3){ const r=mulberry32(hashInt((mseed||9)>>>0, ti, 13)>>>0); g.fillStyle='rgba(40,42,52,0.45)';
     for(let i=0;i<7;i++){ const a=r()*TAU,d=r()*T*0.26;
       g.beginPath(); g.arc(T/2+Math.cos(a)*d, T/2+Math.sin(a)*d, (1.5+r()*3.5)*T/64, 0, TAU); g.fill(); } }
   if(ti===1){ const r=mulberry32(21); g.strokeStyle='rgba(110,160,200,0.5)'; g.lineWidth=1.2*T/64;
@@ -3868,7 +3887,7 @@ function starDescriptor(seed){
   rows.unshift(['Spectral class', desig.label+' — '+desig.name, 'grade']);
   let sbadge = badge;
   return {title:starName(seed), sub:info.label,
-    thumb:starThumb(sc.kind, sc.col), thumbSq:false, rows, designation:desig,
+    thumb:starThumb(sc.kind, sc.col, sys.binary?sys.binary.col2:null), thumbSq:false, rows, designation:desig,
     starKind:sc.kind, binary:!!sys.binary,
     logId:'s'+seed, notable: !!sbadge || desig.tier>=3, badge:sbadge};
 }
@@ -3973,7 +3992,7 @@ function moonDescriptor(pl, m){
   }
   const badge = sol&&sol.badge ? sol.badge : (ti===1?'Ocean?':null);
   return {title:name, sub: sol&&sol.rows ? 'Earth\u2019s moon' : mt[0],
-    thumb:moonThumb(ti), rows, logId:'m'+seed, badge};
+    thumb:moonThumb(ti, seed), rows, logId:'m'+seed, badge};
 }
 function cometDescriptor(starSeed, ci, cm){
   const seed=hashInt(starSeed, 31+ci, 17);
@@ -4759,14 +4778,11 @@ function drawUniverse(time){
       }
       if(g.quasar){
         if(g.blazar) ctx.globalAlpha = 0.55+0.45*Math.abs(Math.sin(time*6+g.seed%10));
-        const q=ctx.createRadialGradient(g.x,g.y,0,g.x,g.y,sz);
-        q.addColorStop(0,'#ffffff'); q.addColorStop(0.18,'#bcd4ff'); q.addColorStop(0.5,'rgba(140,180,255,0.35)'); q.addColorStop(1,'transparent');
-        ctx.fillStyle=q; ctx.beginPath(); ctx.arc(g.x,g.y,sz,0,TAU); ctx.fill();
-        ctx.strokeStyle='rgba(150,190,255,0.4)'; ctx.lineWidth=sz*0.1;
-        ctx.beginPath();
-        ctx.moveTo(g.x-Math.cos(g.rot)*sz*2.6, g.y-Math.sin(g.rot)*sz*2.6);
-        ctx.lineTo(g.x+Math.cos(g.rot)*sz*2.6, g.y+Math.sin(g.rot)*sz*2.6);
-        ctx.stroke();
+        /* baked host + core + tapered jets (HD coverage pass) — also
+           retires this per-frame gradient */
+        ctx.save(); ctx.translate(g.x,g.y); ctx.rotate(g.rot);
+        ctx.drawImage(_quasarSpr(), -sz*2.8, -sz*2.8, sz*5.6, sz*5.6);
+        ctx.restore();
         if(sz*c.z>26){
           ctx.font=`italic ${12/c.z}px Georgia, serif`; ctx.textAlign='center';
           ctx.fillStyle='rgba(190,215,255,0.85)';
@@ -4947,6 +4963,32 @@ function decoSprite(dc){
     const core=g.createRadialGradient(C,C,0,C,C,C*0.12);
     core.addColorStop(0,'rgba(220,235,255,0.95)');core.addColorStop(1,'rgba(220,235,255,0)');
     g.fillStyle=core;g.beginPath();g.arc(C,C,C*0.12,0,TAU);g.fill();
+  } else if(dc.k==='plan'){
+    /* PLANETARY NEBULA (HD coverage pass): the one deco that still drew
+       stroked circles. A dying sun's shed shell — torn teal/gold puffs on
+       a ring annulus, white-dwarf spark at center. Same recipe as 'rem',
+       cooler chemistry. */
+    g.globalCompositeOperation='lighter';
+    for(let i=0;i<18;i++){
+      const a=r()*TAU, rr2=C*(0.42+(r()-0.5)*0.18);
+      const bx=C+Math.cos(a)*rr2, by=C+Math.sin(a)*rr2, br=C*(0.09+r()*0.13);
+      const hue=r()<0.62?166+r()*26:42+r()*18;
+      const ng=g.createRadialGradient(bx,by,0,bx,by,br);
+      ng.addColorStop(0,'hsla('+hue+',80%,'+(58+r()*14)+'%,'+(0.10+r()*0.13).toFixed(3)+')');
+      ng.addColorStop(1,'hsla('+hue+',80%,55%,0)');
+      g.fillStyle=ng;g.beginPath();g.arc(bx,by,br,0,TAU);g.fill();
+    }
+    for(let i2=0;i2<6;i2++){   /* faint outer halo wisps */
+      const a2=r()*TAU, d2=C*(0.62+r()*0.22);
+      const bx2=C+Math.cos(a2)*d2, by2=C+Math.sin(a2)*d2, br2=C*(0.05+r()*0.07);
+      const ng2=g.createRadialGradient(bx2,by2,0,bx2,by2,br2);
+      ng2.addColorStop(0,'hsla(190,70%,70%,'+(0.04+r()*0.05).toFixed(3)+')');
+      ng2.addColorStop(1,'hsla(190,70%,70%,0)');
+      g.fillStyle=ng2;g.beginPath();g.arc(bx2,by2,br2,0,TAU);g.fill();
+    }
+    const wd=g.createRadialGradient(C,C,0,C,C,C*0.09);
+    wd.addColorStop(0,'rgba(255,255,255,0.95)');wd.addColorStop(1,'rgba(210,240,255,0)');
+    g.fillStyle=wd;g.beginPath();g.arc(C,C,C*0.09,0,TAU);g.fill();
   }
   _decoSpr.set(dc,cv);
   return cv;
@@ -5049,15 +5091,10 @@ function drawGalaxy(time){
     const wh=galaxyWormhole(st.gal.seed);
     if(wh){
       const whx=wh.x, why=wh.y;
+      /* gravitational lensing sprite (HD coverage pass): dark throat inside
+         a warped ring of smeared starlight — no more stroked ellipses */
       ctx.save(); ctx.translate(whx,why); ctx.rotate(time*1.2);
-      ctx.lineWidth=1.6;
-      ctx.strokeStyle='rgba(190,150,255,0.7)';
-      ctx.beginPath(); ctx.ellipse(0,0,9,3.6,0,0,TAU); ctx.stroke();
-      ctx.strokeStyle='rgba(120,220,255,0.6)';
-      ctx.beginPath(); ctx.ellipse(0,0,6,2.4,1.1,0,TAU); ctx.stroke();
-      const wg=ctx.createRadialGradient(0,0,0,0,0,12);
-      wg.addColorStop(0,'rgba(20,8,40,0.95)'); wg.addColorStop(0.6,'rgba(120,80,200,0.35)'); wg.addColorStop(1,'transparent');
-      ctx.fillStyle=wg; ctx.beginPath(); ctx.arc(0,0,12,0,TAU); ctx.fill();
+      ctx.drawImage(_wormSpr(), -15, -15, 30, 30);
       ctx.restore();
       picks.push({sx:(whx-c.x)*c.z+W/2, sy:(why-c.y)*c.z+H/2, r:Math.max(12*c.z,14*PICK_F), kind:'worm', data:{x:whx,y:why}});
       if(c.z>minWH/900){
@@ -5081,12 +5118,11 @@ function drawGalaxy(time){
         const sp=decoSprite(dc);
         ctx.drawImage(sp, dc.x-dc.rr*1.15, dc.y-dc.rr*1.15, dc.rr*2.3, dc.rr*2.3);
       } else if(dc.k==='plan'){
-        ctx.strokeStyle='rgba(120,230,210,0.55)'; ctx.lineWidth=Math.max(0.8/c.z, dc.rr*0.16);
-        ctx.beginPath(); ctx.arc(dc.x,dc.y,dc.rr*0.7,0,TAU); ctx.stroke();
-        ctx.strokeStyle='rgba(120,200,255,0.30)';
-        ctx.beginPath(); ctx.arc(dc.x,dc.y,dc.rr,0,TAU); ctx.stroke();
-        ctx.fillStyle='rgba(240,250,255,0.95)';
-        ctx.beginPath(); ctx.arc(dc.x,dc.y,Math.max(0.5/c.z,0.5),0,TAU); ctx.fill();
+        /* a dying star's shed shell — a torn gassy ring like its remnant
+           siblings, never a drawn circle (HD coverage pass; the law of
+           v1.3.5 finally reaches the planetary nebula) */
+        const sp=decoSprite(dc);
+        ctx.drawImage(sp, dc.x-dc.rr*1.2, dc.y-dc.rr*1.2, dc.rr*2.4, dc.rr*2.4);
       } else if(dc.k==='open'){
         ctx.save();ctx.globalCompositeOperation='lighter';
         for(const p of dc.pts){const D2=p[2]*baseR*6;
@@ -5096,10 +5132,13 @@ function drawGalaxy(time){
         const sp=decoSprite(dc);
         ctx.drawImage(sp, dc.x-dc.rr*1.3, dc.y-dc.rr*1.3, dc.rr*2.6, dc.rr*2.6);
       } else if(dc.k==='rogue'){
-        ctx.fillStyle='#2e2a44';
-        ctx.beginPath(); ctx.arc(dc.x,dc.y,0.9,0,TAU); ctx.fill();
-        ctx.strokeStyle='rgba(140,130,190,0.5)'; ctx.lineWidth=Math.max(0.3/c.z,0.25);
-        ctx.beginPath(); ctx.arc(dc.x,dc.y,0.9,0,TAU); ctx.stroke();
+        /* a sunless orb with the faintest starlit rim — the stroked
+           outline read as an accidental pick-ring (HD coverage pass) */
+        const rg2=ctx.createRadialGradient(dc.x-0.3,dc.y-0.3,0,dc.x,dc.y,1.05);
+        rg2.addColorStop(0,'rgba(96,90,142,0.85)');
+        rg2.addColorStop(0.55,'rgba(46,42,68,0.9)');
+        rg2.addColorStop(1,'rgba(46,42,68,0)');
+        ctx.fillStyle=rg2; ctx.beginPath(); ctx.arc(dc.x,dc.y,1.05,0,TAU); ctx.fill();
       } else if(dc.k==='fbd'){
         const fg=ctx.createRadialGradient(dc.x,dc.y,0,dc.x,dc.y,1.6);
         fg.addColorStop(0,'rgba(201,138,106,0.9)'); fg.addColorStop(1,'transparent');
@@ -5171,10 +5210,19 @@ function drawGalaxy(time){
       ctx.drawImage(_bhDiscSpr(), -7, -7, 14, 14); ctx.restore();
       ctx.fillStyle='#000'; ctx.beginPath(); ctx.arc(site.x,site.y,Math.max(0.4/c.z,1.1),0,TAU); ctx.fill();
     } else if(site.remnant==='NS'){
+      /* tapered lighthouse beams + a hot glow core (HD coverage pass —
+         the flat stroked line and dot were the last pre-HD pulsar) */
       ctx.save(); ctx.translate(site.x,site.y); ctx.rotate(time*2.2);
-      ctx.strokeStyle='rgba(170,220,255,0.5)'; ctx.lineWidth=Math.max(0.5/c.z,0.6);
-      ctx.beginPath(); ctx.moveTo(-7,0); ctx.lineTo(7,0); ctx.stroke(); ctx.restore();
-      ctx.fillStyle='rgba(220,235,255,0.95)'; ctx.beginPath(); ctx.arc(site.x,site.y,Math.max(0.5/c.z,0.7),0,TAU); ctx.fill();
+      for(const sgn of [-1,1]){
+        const bg2=ctx.createLinearGradient(0,0,sgn*7.5,0);
+        bg2.addColorStop(0,'rgba(190,230,255,0.7)'); bg2.addColorStop(1,'rgba(190,230,255,0)');
+        ctx.strokeStyle=bg2; ctx.lineWidth=Math.max(0.5/c.z,0.8); ctx.lineCap='round';
+        ctx.beginPath(); ctx.moveTo(sgn*0.9,0); ctx.lineTo(sgn*7.5,0); ctx.stroke();
+      }
+      ctx.restore();
+      const nsg=ctx.createRadialGradient(site.x,site.y,0,site.x,site.y,Math.max(0.9/c.z,1.6));
+      nsg.addColorStop(0,'rgba(255,255,255,0.95)'); nsg.addColorStop(0.5,'rgba(220,235,255,0.7)'); nsg.addColorStop(1,'rgba(220,235,255,0)');
+      ctx.fillStyle=nsg; ctx.beginPath(); ctx.arc(site.x,site.y,Math.max(0.9/c.z,1.6),0,TAU); ctx.fill();
     }
     picks.push({sx:(site.x-c.x)*c.z+W/2, sy:(site.y-c.y)*c.z+H/2, r:Math.max(16*c.z,13*PICK_F), kind:'snova', data:site});
     /* the newborn protostars its shockwave is igniting */
@@ -5323,6 +5371,207 @@ function _rockSet(kind){
   }
   return set;
 }
+/* ---- v1.4 HD COVERAGE PASS: the system view's small bodies join the
+   painterly engine (audit findings — rings, moons, dwarfs, the visitor,
+   comet comas were still flat primitives). All baked once, drawImage'd
+   per frame; seeded where variety matters. ---- */
+const _ringSprCache=new Map();
+function _ringSprite(seed, hue){
+  /* translucent banded ring system + Cassini gap, per-seed */
+  let sp=_ringSprCache.get(seed); if(sp) return sp;
+  const S=256, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  const r=mulberry32((seed^0x7717)>>>0);
+  const bands=3+((r()*3)|0);
+  let rad=C*0.62;
+  for(let b=0;b<bands;b++){
+    const w=C*(0.045+r()*0.075);
+    rad+=w*0.5;
+    g.strokeStyle='rgba('+hue+','+(0.24+r()*0.30).toFixed(2)+')';
+    g.lineWidth=w;
+    g.beginPath(); g.arc(C,C,rad,0,TAU); g.stroke();
+    /* a brighter inner filament inside each band */
+    g.strokeStyle='rgba('+hue+','+(0.10+r()*0.16).toFixed(2)+')';
+    g.lineWidth=w*0.34;
+    g.beginPath(); g.arc(C,C,rad-w*0.22,0,TAU); g.stroke();
+    rad+=w*0.62+C*0.012;
+  }
+  /* the Cassini-style gap */
+  g.globalCompositeOperation='destination-out';
+  g.strokeStyle='rgba(0,0,0,0.9)'; g.lineWidth=C*0.028;
+  g.beginPath(); g.arc(C,C,C*(0.70+r()*0.16),0,TAU); g.stroke();
+  /* feather the outer edge */
+  g.strokeStyle='rgba(0,0,0,0.45)'; g.lineWidth=C*0.02;
+  g.beginPath(); g.arc(C,C,rad-C*0.005,0,TAU); g.stroke();
+  g.globalCompositeOperation='source-over';
+  if(_ringSprCache.size>200) _ringSprCache.clear();
+  _ringSprCache.set(seed, cv);
+  return cv;
+}
+const _moonSprs={};
+function _moonSpr(ti){
+  /* the four moon types as lit spheres — the live view finally matches
+     the card thumb: rocky grey, icy blue-white, volcanic gold, captured
+     rubble-brown */
+  let sp=_moonSprs[ti]; if(sp) return sp;
+  const S=28, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  const base=['#b9bcc6','#cfe4f2','#e0c060','#8d8678'][ti]||'#c8ccd8';
+  const n=parseInt(base.slice(1),16), br2=(n>>16)&255, bg2=(n>>8)&255, bb2=n&255;
+  const K=(k,a)=>'rgba('+Math.min(255,(br2*k)|0)+','+Math.min(255,(bg2*k)|0)+','+Math.min(255,(bb2*k)|0)+','+(a==null?1:a)+')';
+  const lg2=g.createRadialGradient(C-S*0.16,C-S*0.16,1,C,C,S*0.48);
+  lg2.addColorStop(0,K(1.35)); lg2.addColorStop(0.6,K(1)); lg2.addColorStop(1,K(0.55));
+  g.fillStyle=lg2; g.beginPath(); g.arc(C,C,S*0.46,0,TAU); g.fill();
+  const r=mulberry32(0xA00E+ti);
+  if(ti===2){ /* volcanic: faint ember cracks */
+    g.strokeStyle='rgba(255,110,50,0.55)'; g.lineWidth=0.9;
+    for(let i=0;i<3;i++){ g.beginPath();
+      g.moveTo(C+(r()-0.5)*S*0.5, C+(r()-0.5)*S*0.5);
+      g.lineTo(C+(r()-0.5)*S*0.6, C+(r()-0.5)*S*0.6); g.stroke(); }
+  } else if(ti===1){ /* icy: bright streaks */
+    g.strokeStyle='rgba(255,255,255,0.4)'; g.lineWidth=0.8;
+    for(let i=0;i<3;i++){ g.beginPath();
+      g.arc(C,C,S*(0.20+r()*0.2), r()*TAU, r()*TAU+0.9); g.stroke(); }
+  } else { /* rocky / captured: crater pocks */
+    for(let i=0;i<4;i++){
+      g.fillStyle='rgba(0,0,0,'+(0.14+r()*0.14).toFixed(2)+')';
+      g.beginPath(); g.arc(C+(r()-0.5)*S*0.5, C+(r()-0.5)*S*0.5, 0.8+r()*1.6, 0, TAU); g.fill();
+    }
+  }
+  _moonSprs[ti]=cv; return cv;
+}
+const _dwarfSprs=[];
+function _dwarfSpr(v){
+  let sp=_dwarfSprs[v%3]; if(sp) return sp;
+  const S=24, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2, r=mulberry32(0xD3A2F+(v%3));
+  const lg2=g.createRadialGradient(C-3,C-3,1,C,C,S*0.5);
+  lg2.addColorStop(0,'#e8ddc8'); lg2.addColorStop(0.55,'#c2b8a6'); lg2.addColorStop(1,'#6e6656');
+  g.fillStyle=lg2; g.beginPath(); g.arc(C,C,S*0.45,0,TAU); g.fill();
+  for(let i=0;i<3;i++){
+    g.fillStyle='rgba(0,0,0,'+(0.14+r()*0.14).toFixed(2)+')';
+    g.beginPath(); g.arc(C+(r()-0.5)*S*0.5, C+(r()-0.5)*S*0.5, 0.7+r()*1.4, 0, TAU); g.fill();
+  }
+  _dwarfSprs[v%3]=cv; return cv;
+}
+let _visitorSprC=null;
+function _visitorSpr(){
+  /* the hyperbolic visitor: an 'Oumuamua-style tumbling sliver — the
+     rock-lump recipe stretched ~3:1 (was: a literal fillRect) */
+  if(_visitorSprC) return _visitorSprC;
+  const S=48, H2=18, cv=document.createElement('canvas'); cv.width=S; cv.height=H2;
+  const g=cv.getContext('2d'), r=mulberry32(0x0A31A);
+  const cx=S/2, cy=H2/2, n=9, pts=[];
+  for(let i=0;i<n;i++){
+    const a=i/n*TAU;
+    pts.push([cx+Math.cos(a)*S*0.42*(0.72+r()*0.4), cy+Math.sin(a)*H2*0.36*(0.65+r()*0.5)]);
+  }
+  g.fillStyle='#8a6f58';
+  g.beginPath(); g.moveTo(pts[0][0],pts[0][1]);
+  for(let i=1;i<n;i++) g.lineTo(pts[i][0],pts[i][1]);
+  g.closePath(); g.fill();
+  g.globalCompositeOperation='source-atop';
+  const lg2=g.createLinearGradient(0,0,S,H2);
+  lg2.addColorStop(0,'#d6a684'); lg2.addColorStop(0.5,'rgba(0,0,0,0)'); lg2.addColorStop(1,'rgba(20,10,6,0.6)');
+  g.fillStyle=lg2; g.fillRect(0,0,S,H2);
+  for(let i=0;i<3;i++){
+    g.fillStyle='rgba(0,0,0,'+(0.16+r()*0.14).toFixed(2)+')';
+    g.beginPath(); g.arc(cx+(r()-0.5)*S*0.6, cy+(r()-0.5)*H2*0.5, 0.7+r()*1.3, 0, TAU); g.fill();
+  }
+  g.globalCompositeOperation='source-over';
+  return _visitorSprC=cv;
+}
+let _comaSprC=null;
+function _comaSpr(){
+  /* a comet's white-hot coma (the live head was a flat dot; the thumb
+     always had one) */
+  if(_comaSprC) return _comaSprC;
+  const S=24, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  const cg2=g.createRadialGradient(C,C,0,C,C,C);
+  cg2.addColorStop(0,'rgba(255,255,255,0.95)');
+  cg2.addColorStop(0.28,'rgba(207,230,255,0.75)');
+  cg2.addColorStop(1,'rgba(180,215,255,0)');
+  g.fillStyle=cg2; g.beginPath(); g.arc(C,C,C,0,TAU); g.fill();
+  return _comaSprC=cv;
+}
+let _quasarSprC=null;
+function _quasarSpr(){
+  /* a feeding supermassive black hole (HD coverage pass): dim host-galaxy
+     haze, blinding accretion core, twin tapered jets ending in faint
+     lobes — was a per-frame gradient dot with a flat stroked line */
+  if(_quasarSprC) return _quasarSprC;
+  const S=160, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  /* the host, almost drowned by its own core */
+  g.save(); g.translate(C,C); g.scale(1,0.42);
+  const host=g.createRadialGradient(0,0,0,0,0,S*0.30);
+  host.addColorStop(0,'rgba(170,185,235,0.20)');
+  host.addColorStop(0.6,'rgba(150,165,215,0.10)');
+  host.addColorStop(1,'rgba(150,165,215,0)');
+  g.fillStyle=host; g.beginPath(); g.arc(0,0,S*0.30,0,TAU); g.fill();
+  g.restore();
+  /* twin jets along x — tapered wedges of light, lobes at the tips */
+  g.globalCompositeOperation='lighter';
+  for(const sgn of [-1,1]){
+    const jg=g.createLinearGradient(C,C,C+sgn*S*0.47,C);
+    jg.addColorStop(0,'rgba(160,195,255,0.55)');
+    jg.addColorStop(0.75,'rgba(140,180,255,0.16)');
+    jg.addColorStop(1,'rgba(140,180,255,0)');
+    g.fillStyle=jg;
+    g.beginPath();
+    g.moveTo(C+sgn*S*0.05, C-S*0.012);
+    g.lineTo(C+sgn*S*0.47, C-S*0.030);
+    g.lineTo(C+sgn*S*0.47, C+S*0.030);
+    g.lineTo(C+sgn*S*0.05, C+S*0.012);
+    g.closePath(); g.fill();
+    const lb=g.createRadialGradient(C+sgn*S*0.44,C,0,C+sgn*S*0.44,C,S*0.085);
+    lb.addColorStop(0,'rgba(150,190,255,0.28)'); lb.addColorStop(1,'rgba(150,190,255,0)');
+    g.fillStyle=lb; g.beginPath(); g.arc(C+sgn*S*0.44,C,S*0.085,0,TAU); g.fill();
+  }
+  g.globalCompositeOperation='source-over';
+  /* the core outshines everything */
+  const q=g.createRadialGradient(C,C,0,C,C,S*0.19);
+  q.addColorStop(0,'#ffffff'); q.addColorStop(0.18,'#bcd4ff');
+  q.addColorStop(0.5,'rgba(140,180,255,0.35)'); q.addColorStop(1,'rgba(140,180,255,0)');
+  g.fillStyle=q; g.beginPath(); g.arc(C,C,S*0.19,0,TAU); g.fill();
+  return _quasarSprC=cv;
+}
+let _wormSprC=null;
+function _wormSpr(){
+  /* the wormhole as gravitational lensing: a dark throat inside a warped
+     Einstein ring of smeared violet/cyan starlight (was: two stroked
+     ellipses — chart chrome on a physical landmark) */
+  if(_wormSprC) return _wormSprC;
+  const S=96, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2, r=mulberry32(0x3072);
+  g.globalCompositeOperation='lighter';
+  for(let i=0;i<44;i++){
+    const a=r()*TAU;
+    const ex=C+Math.cos(a)*S*0.30, ey=C+Math.sin(a)*S*0.135;
+    const br=1.4+r()*3.2;
+    const col=r()<0.5?'190,150,255':'120,220,255';
+    const ng=g.createRadialGradient(ex,ey,0,ex,ey,br*2.4);
+    ng.addColorStop(0,'rgba('+col+','+(0.22+r()*0.28).toFixed(2)+')');
+    ng.addColorStop(1,'rgba('+col+',0)');
+    g.fillStyle=ng; g.beginPath(); g.arc(ex,ey,br*2.4,0,TAU); g.fill();
+  }
+  /* faint outer chromatic arcs */
+  for(let i=0;i<14;i++){
+    const a=r()*TAU;
+    const ex=C+Math.cos(a)*S*0.42, ey=C+Math.sin(a)*S*0.20;
+    const ng=g.createRadialGradient(ex,ey,0,ex,ey,3.4);
+    ng.addColorStop(0,'rgba(160,190,255,0.14)'); ng.addColorStop(1,'rgba(160,190,255,0)');
+    g.fillStyle=ng; g.beginPath(); g.arc(ex,ey,3.4,0,TAU); g.fill();
+  }
+  g.globalCompositeOperation='source-over';
+  const tg2=g.createRadialGradient(C,C,0,C,C,S*0.17);
+  tg2.addColorStop(0,'rgba(8,4,18,0.98)');
+  tg2.addColorStop(0.7,'rgba(20,10,44,0.75)');
+  tg2.addColorStop(1,'rgba(20,10,44,0)');
+  g.fillStyle=tg2; g.beginPath(); g.arc(C,C,S*0.17,0,TAU); g.fill();
+  return _wormSprC=cv;
+}
 function ensureCardFacts(P, sys, orb){
   if(CARD_FACTS.has(P.seed)) return;
   const r=mulberry32((P.seed^0x1234567)>>>0);
@@ -5383,8 +5632,10 @@ function drawSystem(time){
         ctx.restore();
       }
     }
-    ctx.fillStyle='#dceaff';
-    ctx.beginPath(); ctx.arc(0,0,5,0,TAU); ctx.fill();
+    /* the star itself glows white-hot (HD coverage pass — was a flat dot) */
+    const nsc=ctx.createRadialGradient(0,0,0,0,0,9);
+    nsc.addColorStop(0,'#ffffff'); nsc.addColorStop(0.45,'#dceaff'); nsc.addColorStop(1,'rgba(190,220,255,0)');
+    ctx.fillStyle=nsc; ctx.beginPath(); ctx.arc(0,0,9,0,TAU); ctx.fill();
   } else if(sys.kind==='PROTO'){
     /* a star being born inside its protoplanetary disk */
     ctx.save(); ctx.rotate(0.4); ctx.scale(1,0.34);
@@ -5494,9 +5745,13 @@ function drawSystem(time){
       _ringCache.set(pl.P.seed,_rg);
     }
     if(pl.P.ring){
+      /* baked banded ring sprite (HD coverage pass) — back half behind
+         the planet, slightly dimmed, like the old two-arc split */
+      const _rspr=_ringSprite(pl.P.seed, _rg.hue);
       ctx.save(); ctx.rotate(0.45); ctx.scale(1,_rg.tilt);
-      ctx.strokeStyle='rgba('+_rg.hue+',0.7)'; ctx.lineWidth=pr*0.5;
-      ctx.beginPath(); ctx.arc(0,0,pr*1.9,Math.PI,TAU); ctx.stroke();
+      ctx.globalAlpha=0.8;
+      ctx.beginPath(); ctx.rect(-pr*2.2,-pr*2.2,pr*4.4,pr*2.2); ctx.clip();
+      ctx.drawImage(_rspr,-pr*2.1,-pr*2.1,pr*4.2,pr*4.2);
       ctx.restore();
     }
     ctx.save();
@@ -5511,9 +5766,10 @@ function drawSystem(time){
     ctx.fillStyle=lg; ctx.fillRect(-pr,-pr,pr*2,pr*2);
     ctx.restore();
     if(pl.P.ring){
+      const _rspr=_ringSprite(pl.P.seed, _rg.hue);
       ctx.save(); ctx.rotate(0.45); ctx.scale(1,_rg.tilt);
-      ctx.strokeStyle='rgba('+_rg.hue+',0.9)'; ctx.lineWidth=pr*0.5;
-      ctx.beginPath(); ctx.arc(0,0,pr*1.9,0,Math.PI); ctx.stroke();
+      ctx.beginPath(); ctx.rect(-pr*2.2,0,pr*4.4,pr*2.2); ctx.clip();
+      ctx.drawImage(_rspr,-pr*2.1,-pr*2.1,pr*4.2,pr*4.2);
       ctx.restore();
     }
     /* moons wear their card's type (V4): same deterministic roll as
@@ -5524,8 +5780,7 @@ function drawSystem(time){
       for(let mm=0;mm<pl.P.moons;mm++){
         const msol=(SOL_MOONS[pl.P.seed]||[])[mm];
         const mr2=mulberry32(hashInt(pl.P.seed, mm*17+5, 91));
-        const ti=msol?msol.t:Math.floor(mr2()*4);
-        _mt.push(['#b9bcc6','#cfe4f2','#e0c060','#8d8678'][ti]||'#c8ccd8');
+        _mt.push(msol?msol.t:Math.floor(mr2()*4));   /* type INDEX — the sprite set carries the palette now */
       }
       _mtintCache.set(pl.P.seed,_mt);
     }
@@ -5537,8 +5792,10 @@ function drawSystem(time){
       const mdist=pr*morb;
       const mx=Math.cos(ma)*mdist, my=Math.sin(ma)*mdist*0.4;
       const mrad=Math.max(0.5,pr*0.12);
-      ctx.fillStyle=_mt[m]||'#c8ccd8';
-      ctx.beginPath(); ctx.arc(mx, my, mrad, 0, TAU); ctx.fill();
+      /* typed lit-sphere sprite (HD coverage pass) — the live moon finally
+         matches its card thumb; the terminator overlay below still turns
+         the dark side away from the star */
+      ctx.drawImage(_moonSpr(_mt[m]|0), mx-mrad*1.09, my-mrad*1.09, mrad*2.18, mrad*2.18);
       ctx.save();
       ctx.beginPath(); ctx.arc(mx, my, mrad, 0, TAU); ctx.clip();
       ctx.fillStyle='rgba(4,6,18,0.55)';
@@ -5571,8 +5828,12 @@ function drawSystem(time){
     const ang=dw.orb*0.13 + time*0.05/(dw.orb*0.012);
     const dx2=Math.cos(ang)*dw.orb, dy2=Math.sin(ang)*dw.orb;
     const ds=2.2;
-    ctx.fillStyle='#c2b8a6'; ctx.beginPath(); ctx.arc(dx2,dy2,ds,0,TAU); ctx.fill();
-    ctx.fillStyle='rgba(0,0,20,0.4)'; ctx.beginPath(); ctx.arc(dx2+ds*0.3,dy2+ds*0.2,ds*0.7,0,TAU); ctx.fill();
+    /* shaded sphere sprite (HD coverage pass), terminator kept */
+    ctx.drawImage(_dwarfSpr((dw.orb|0)%3), dx2-ds*1.1, dy2-ds*1.1, ds*2.2, ds*2.2);
+    ctx.save();
+    ctx.beginPath(); ctx.arc(dx2,dy2,ds,0,TAU); ctx.clip();
+    ctx.fillStyle='rgba(0,0,20,0.4)'; ctx.beginPath(); ctx.arc(dx2+Math.cos(ang)*ds*0.5,dy2+Math.sin(ang)*ds*0.5,ds*0.85,0,TAU); ctx.fill();
+    ctx.restore();
     picks.push({sx:(dx2-c.x)*c.z+W/2, sy:(dy2-c.y)*c.z+H/2, r:Math.max(ds*c.z,11*PICK_F), kind:'dwarf', data:{dw, sys}});
     if(c.z>minWH/600){
       ctx.font=`italic ${9/c.z}px Georgia,serif`; ctx.textAlign='center';
@@ -5586,10 +5847,13 @@ function drawSystem(time){
     const sPos=((time*v.speed+v.off)%L)-L/2;
     const dirx=Math.cos(v.ang), diry=Math.sin(v.ang);
     const vx=-diry*v.b + dirx*sPos, vy=dirx*v.b + diry*sPos;
-    ctx.strokeStyle='rgba(214,170,140,0.5)'; ctx.lineWidth=1.4;
-    ctx.beginPath(); ctx.moveTo(vx-dirx*9,vy-diry*9); ctx.lineTo(vx+dirx*9,vy+diry*9); ctx.stroke();
-    ctx.save(); ctx.translate(vx,vy); ctx.rotate(v.ang);
-    ctx.fillStyle='#d6a684'; ctx.fillRect(-4,-1.1,8,2.2);
+    /* outgassing trail fades behind the sliver (HD coverage pass) */
+    const vtg=ctx.createLinearGradient(vx-dirx*11,vy-diry*11,vx+dirx*6,vy+diry*6);
+    vtg.addColorStop(0,'rgba(214,170,140,0)'); vtg.addColorStop(1,'rgba(214,170,140,0.55)');
+    ctx.strokeStyle=vtg; ctx.lineWidth=1.6; ctx.lineCap='round';
+    ctx.beginPath(); ctx.moveTo(vx-dirx*11,vy-diry*11); ctx.lineTo(vx+dirx*4,vy+diry*4); ctx.stroke();
+    ctx.save(); ctx.translate(vx,vy); ctx.rotate(v.ang+time*0.35);   /* it tumbles */
+    ctx.drawImage(_visitorSpr(),-5,-1.9,10,3.8);
     ctx.restore();
     picks.push({sx:(vx-c.x)*c.z+W/2, sy:(vy-c.y)*c.z+H/2, r:Math.max(4*c.z,12*PICK_F), kind:'visitor', data:{v}});
     if(c.z>minWH/650){
@@ -5615,8 +5879,8 @@ function drawSystem(time){
     tg.addColorStop(0,'rgba(200,230,255,0.8)'); tg.addColorStop(1,'transparent');
     ctx.strokeStyle=tg; ctx.lineWidth=2.2; ctx.lineCap='round';
     ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x+ux*tailLen,y+uy*tailLen); ctx.stroke();
-    ctx.fillStyle='#eaf4ff';
-    ctx.beginPath(); ctx.arc(x,y,1.8,0,TAU); ctx.fill();
+    /* the white-hot coma the thumb always had (HD coverage pass) */
+    ctx.drawImage(_comaSpr(), x-3.4, y-3.4, 6.8, 6.8);
     if(c.z>minWH/520){
       const cname='Comet '+properName(hashInt(st.star.seed, 31+ci, 17), 2);
       ctx.font=`italic ${9/c.z}px Georgia,serif`; ctx.textAlign='center';
