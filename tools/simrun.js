@@ -404,7 +404,7 @@ async function expedition(sess, seed, nActions, deep) {
 
   await sleep(1200);
   try {
-    const raw = w.localStorage.getItem('cfcc_save_v1');
+    const raw = w.localStorage.getItem('cfcc_save_v2');
     const data = raw ? JSON.parse(raw) : null;
     run.saveOk = !!(data && typeof data === 'object' && data.v === 4);
   } catch (e) { run.errors.push('save parse: ' + e.message); }

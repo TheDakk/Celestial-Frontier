@@ -427,43 +427,30 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('no errors after all interactions', errors.length === 0, errors.slice(0, 3).join(' | '));
     w.close();
 
-    // ============ BOOT 2: veteran save (no `tut` field) never sees training ============
+    // ============ BOOT 2: v1.5 FRESH START — a legacy v1 save gets the farewell card, then begins anew ============
     const vet = boot((win) => {
       win.localStorage.setItem('cfcc_save_v1', JSON.stringify({ v: 4, me: 'Veteran', guide: 1, rn: '1.0',
         log: [{ id: 'p555', title: 'Old Haunt', sub: 'World', t: 1 }],
         conq: [[777, { t: 1, tier: 1 }]] }));
     });
     await sleep(1600);
-    check('veteran: no name prompt', !visible(vet.doc.getElementById('namebox')));
-    check('veteran: tutorial never starts', !visible(vet.doc.getElementById('tutbox')));
-    const vrel = vet.doc.getElementById('relbox');
-    check('veteran: update bulletin pops once', visible(vrel)
-      && vrel.textContent.includes('The Ascent')
-      && vet.doc.getElementById('relok').textContent === 'Continue');
-    click2(vet.doc.getElementById('relok'), vet.w);
-    check('veteran: bulletin closes via Continue', !visible(vrel));
-    check('veteran: absent vol/rm default to full volume + Auto motion',
-      vet.doc.getElementById('volslider').value === '100' && !vet.doc.body.classList.contains('rmotion')
-      && vet.w.__PROBE_HOOK__.motionMode === -1);
-    // v1.4: a pre-1.4 save has no `asc` field — the Ascent reads COMPLETE
-    // and nothing about the veteran's sky may re-lock
-    check('v1.4 veteran grandfather: the Ascent never re-locks a held sky',
-      vet.w.__PROBE_HOOK__.ascStage() === 3
-      && vet.w.__PROBE_HOOK__.ascAllows({ gal: { seed: 777 }, star: { x: 1, y: 2, seed: 9 }, type: 'star' }));
-    check('ring spectrum grandfather: a veteran save keeps its world designations un-ringed',
-      vet.w.__PROBE_HOOK__._ringWorlds === false);
-    // discovery arc (v1.2): a pre-1.2 save has no `land` field — every world
-    // the veteran charted or settled must count as ground-surveyed already
-    check('veteran: pre-1.2 save grandfathers charted + settled worlds as ground-surveyed',
-      vet.w.__PROBE_HOOK__.landed.has(555) && vet.w.__PROBE_HOOK__.landed.has(777));
-    // charters: proven trades complete quietly; unproven ones stay open
-    check('veteran: starter charters auto-complete only for proven trades',
-      vet.w.__PROBE_HOOK__.chDone.has('st-land') && vet.w.__PROBE_HOOK__.chDone.has('st-conq')
-      && !vet.w.__PROBE_HOOK__.chDone.has('st-scan') && !vet.w.__PROBE_HOOK__.chDone.has('st-mine'));
-    // first contact (v1.2.2): a pre-contact save keeps every census it held
-    check('veteran: contacted grandfathered from landed + conquered',
-      vet.w.__PROBE_HOOK__.contacted.has(555) && vet.w.__PROBE_HOOK__.contacted.has(777));
-    check('veteran: boots clean', vet.errors.length === 0, vet.errors.slice(0, 2).join(' | '));
+    const vetH = vet.w.__PROBE_HOOK__;
+    check('fresh start: the legacy v1 key is consumed at boot',
+      vet.w.localStorage.getItem('cfcc_save_v1') === null);
+    const fwb = vet.doc.getElementById('farewellbox');
+    check('fresh start: the farewell card shows, addressed to the old explorer',
+      !!fwb && fwb.textContent.includes('Farewell, Veteran')
+      && fwb.textContent.includes('begins anew'));
+    click2(fwb && fwb.querySelector('#farewellok'), vet.w);
+    check('fresh start: the farewell dismisses', !vet.doc.getElementById('farewellbox'));
+    check('fresh start: a NEW expedition waits beneath (name prompt, nothing skipped)',
+      visible(vet.doc.getElementById('namebox')));
+    check('fresh start: nothing carries over — no old worlds, no old flags, no old charters',
+      !vetH.landed.has(555) && !vetH.conquered.has(777)
+      && !vetH.contacted.has(555) && vetH.chDone.size === 0);
+    check('fresh start: the Ascent is the canon opening (stage 0, chapter 1)',
+      vetH.ascStage() === 0);
+    check('fresh start: boots clean', vet.errors.length === 0, vet.errors.slice(0, 2).join(' | '));
     vet.w.close();
 
     // ============ BOOT 3: skip path still charts Earth ============
@@ -911,7 +898,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     }
     // worlds obey the ladder only for post-law expeditions (this sk boot is
     // a fresh one → on), and a high-tier designation clamps to the ring
-    check('ring spectrum: a fresh expedition ringlaws its worlds', skH._ringWorlds === true);
+    check('ring spectrum: every expedition ringlaws its worlds (no flag since the fresh start)',
+      typeof skH._ringWorlds === 'undefined');
     {
       // a real ocean-ladder deep-spectrum designation ("Radiant Blue" = tier
       // 9 on SPECTRA.ocean) clamps to the ring in ITS OWN spectral language
@@ -942,7 +930,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     // ============ BOOT 4: half-finished training saved in deep space resumes AT SOL ============
     const ds = boot((win) => {
-      win.localStorage.setItem('cfcc_save_v1', JSON.stringify({
+      win.localStorage.setItem('cfcc_save_v2', JSON.stringify({
         v: 4, me: 'Wanderer', guide: 1, tut: 0, rn: '1.1.1', vol: 40, rm: 1,
         view: { type: 'galaxy', gal: { x: -3000, y: 2400, size: 60, sp: 3, tilt: 0.4, rot: 1.2, seed: 777777 } },
       }));
