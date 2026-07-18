@@ -514,7 +514,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // press the LAND button — it must fly down and perform real planetfall
     click2(pan3.querySelector('[data-act="landcta"]'), sk.w);
     check('discovery: the Land button performs planetfall', await until(() =>
-      skH.st.mode === 'surface' && skH.landed.has(dp.data.P.seed), 5000, 'planetfall'));
+      skH.st.mode === 'system' && skH.landed.has(dp.data.P.seed), 5000, 'planetfall'));
+    check('v1.3.8: the view holds — landing never leaves the system view', skH.st.mode === 'system');
     check('HD vista: planetfall opens the landing panorama', await until(() =>
       sk.doc.getElementById('vistabox').style.display === 'flex', 5000, 'vista overlay'));
     click2(sk.doc.getElementById('vistabox'), sk.w);
@@ -697,7 +698,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       check('the deep: the abyssal vantage renders beneath the waves', !err3 && !!cA && cA.width === 960, err3 && String(err3));
     }
     check('discovery: standing on it, mining is open on the spot', await until(() =>
-      !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('You are here'), 4000, 'surface mine'));
+      !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('Ground-surveyed'), 4000, 'orbit mine'));
     check('discovery: ground survey reveals the mineral veins without Deep Scanners',
       pan3.textContent.includes('Mineral veins'));
     // the landing completed starter charter 1. The board CLOSED on the way
@@ -732,9 +733,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('MUD events: the samples toast wears the gain tint', !!sk.doc.querySelector('#toast .tst.tk-gain'));
     check('discovery: samples reach the Cargo hold (button appears)',
       sk.doc.getElementById('cargobtn').style.display === 'flex');
-    // zoom back out — the ground survey is remembered from orbit
-    skH.st.pcam.z = 0.4;
-    check('discovery: zooming out returns to the system', await until(() => skH.st.mode === 'system', 4000, 'back to system'));
+    // v1.3.8: we never left the system — the ground survey is read from orbit
+    check('discovery: still in the system view after landing (the view holds)', skH.st.mode === 'system');
     const okBack = await until(() => skH.picks.some((p) => p.data && p.data.P && p.data.P.seed === dp.data.P.seed), 5000, 'repick');
     check('discovery: the landed world is still pickable', okBack);
     const dp2 = skH.picks.find((q) => q.data && q.data.P && q.data.P.seed === dp.data.P.seed);
