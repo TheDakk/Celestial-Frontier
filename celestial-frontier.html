@@ -14564,6 +14564,57 @@ function charterEvent(type, detail){
   }
   if(hit){ if(chOpen) renderCharters(); _chBadge(); checkAch(); renderRank(); queueSave(); }
 }
+/* ---- v1.5 QUEST NOTIFICATIONS: the next-step heartbeat ----
+   A gentle nudge that names the player's NEXT goal — once on login,
+   and when the session goes quiet — through the toast/tray rail.
+   Laws: silent during training; silent while any modal is up; NEVER
+   twice for the same goal in a session (the tray remembers the rest). */
+let _lastActT=Date.now();
+const _nudged=new Set();
+function nextStepGoal(){
+  try{
+    if(!tutDone) return null;
+    const ch=_ascActive();
+    if(ch){
+      const g=ch.goals.find(g2=>(ascProg[g2.id]||0)<g2.n);
+      if(g){
+        const p=Math.min(ascProg[g.id]||0, g.n);
+        return {key:'asc:'+g.id, tt:'🧭 Next Step — '+ch.name.replace(/^Chapter \d+ — /,''),
+          ms:g.t.replace(/&#8217;/g,'’')+(g.n>1?' ('+p+' / '+g.n+')':'')+'. The chapter rides atop your Charters board (top right).'};
+      }
+    }
+    const _far0=(typeof ascStage==='function' && ascStage()===0)?{'st-scan':1,'st-scout':1,'st-conq':1}:{};
+    const c=_chActive().find(c2=>!_chDoneOf(c2) && !_far0[c2.id]);
+    if(c){
+      const p=Math.min(chProg[c.id]||0, c.n);
+      return {key:'ch:'+c.id+(c.id[0]==='w'?':'+chWeek:''), tt:'🧭 Next Charter — '+c.t,
+        ms:c.d+(c.n>1?' ('+p+' / '+c.n+')':'')+' Pays +'+c.sd+' ☄ on the spot.'};
+    }
+    if(primeCount()<9){
+      return {key:'prime:'+primeCount(), tt:'🧭 The Long Road',
+        ms:'The board is clear — the Prime Codex waits. '+(9-primeCount())+' Signature'+(primeCount()===8?'':'s')+' left; the ✦ panel (left rail) names the next.'};
+    }
+  }catch(_){ }
+  return null;
+}
+function _questNudge(){
+  const g=nextStepGoal();
+  if(!g || _nudged.has(g.key)) return;
+  try{   /* one voice: never talk over a held breath */
+    for(const id of ['reveal','pickbox','duelbox','namebox','deathbox','endingbox','relbox','descbox','sharebox','guidebox','farewellbox','cinema']){
+      const el=document.getElementById(id);
+      if(el && el.style.display && el.style.display!=='none') return;
+    }
+  }catch(_){ }
+  _nudged.add(g.key);
+  toast(g.tt, g.ms);
+}
+document.addEventListener('pointerdown', ()=>{ _lastActT=Date.now(); }, {passive:true, capture:true});
+document.addEventListener('keydown', ()=>{ _lastActT=Date.now(); }, {passive:true, capture:true});
+setTimeout(()=>{ try{ _questNudge(); }catch(_){ } }, 14000);         /* login: the plan, once the dust settles */
+setInterval(()=>{ try{
+  if(Date.now()-_lastActT>5*6e4){ _questNudge(); _lastActT=Date.now(); }   /* idle: 5 quiet minutes earn one pointer */
+}catch(_){ } }, 6e4);
 const chBtn=document.getElementById('chbtn'), chPanel=document.getElementById('chpanel');
 function _chBadge(){
   const dot=chBtn&&chBtn.querySelector('.dot');

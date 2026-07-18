@@ -155,5 +155,6 @@
  "ringGrade",
  "ringDesignation",
  "awardXP",
- "levelOf"
+ "levelOf",
+ "nextStepGoal"
 ]
