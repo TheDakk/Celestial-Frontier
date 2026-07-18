@@ -5385,9 +5385,18 @@ function drawSurface(time){
         const teRow=_lastDesc.rows.find(rr=>rr[0]==='Tech era');
         era=(teRow && /spacefar|interstellar|post/i.test(teRow[1]))?'space':'iron';
       }
-      const genes=(_lastDesc.species||[]).filter(gg=>gg.kingdom==='fauna').slice(0,2).map(hdGenesFor);
+      /* only fauna that can STAND join the landing party — the card's own
+         locomotion/habitat words (swimmers of the open ocean, drifters of
+         the cloud decks) must never render as a legged beast on the shore */
+      const genes=(_lastDesc.species||[]).filter(gg=>gg.kingdom==='fauna'
+        && !/swim|float|filter|drift/.test(FA_LOCO[(gg.loco||0)%FA_LOCO.length]||'')
+        && !/open ocean|sea shallows|cloud decks|vent fields/.test(FA_HABITAT[(gg.habitat||0)%FA_HABITAT.length]||''))
+        .slice(0,2).map(hdGenesFor);
+      /* the Life row decides whether the vista grows anything at all */
+      const lifeRow=_lastDesc.rows&&_lastDesc.rows.find(rr=>rr[0]==='Life');
+      const floraOk=!lifeRow||!/^(No known life|Microbial|Subsurface|Airborne)/.test(lifeRow[1]);
       const todV=tod==='daytime'?'day':tod;
-      showVistaBox(P, todV, env.wx?effWx:null, era, genes);
+      showVistaBox(P, todV, env.wx?effWx:null, era, genes, env.hasField, floraOk);
     }catch(_){}
   }
   if(_vistaPend && !hdOn) _vistaPend=false;
@@ -5437,7 +5446,13 @@ const HD_PALS={
  grey: {skyTop:'#181820',skyMid:'#34343e',skyHz:'#6a6a74',layers:['#8a8a94','#62626c','#3e3e48','#26262e'],
         ground:['#26262e','#3a3a42','#18181e'],crest:'220,220,230',sun:0.9},
  haze: {skyTop:'#8a6a2c',skyMid:'#c09c50',skyHz:'#e8cc8c',layers:['#c0a060','#98783e','#6c5228','#463414'],
-        ground:['#463414','#54401e','#2a1e0a'],crest:'255,232,180',sun:0.25}
+        ground:['#463414','#54401e','#2a1e0a'],crest:'255,232,180',sun:0.25},
+ ember:{skyTop:'#0d0708',skyMid:'#2a1410',skyHz:'#6e2412',layers:['#4a2018','#38160f','#26100c','#180a08'],
+        ground:['#180a08','#200c08','#0c0504'],crest:'255,122,58',sun:0},
+ snow: {skyTop:'#46536a',skyMid:'#76879c',skyHz:'#c2ccd6',layers:['#b6c2d0','#93a4b6','#6a8098','#48607a'],
+        ground:['#48607a','#d8e2ea','#b0c2d0'],crest:'255,255,255',sun:0.15},
+ twilight:{skyTop:'#1c1440',skyMid:'#5c3a66',skyHz:'#e8945c',layers:['#4a3a5e','#38294a','#261c38','#161028'],
+        ground:['#161028','#1c2418','#0a100a'],crest:'255,178,120',sun:0.9}
 };
 /* fauna genome → visual genes, deterministically (Phase 2 deepens this) */
 function hdGenesFor(g){
@@ -5532,32 +5547,33 @@ function _hdPlantBare(seed){
   branch(S/2,S*0.985,-1.5708+(r()-0.5)*0.2,S*0.2,S*0.03,4);
   return cv;
 }
-function _hdStampPlant(g,pcv,x,baseY,s2,hazeAmt){
+function _hdStampPlant(g,pcv,x,baseY,s2,hazeAmt,darkAmt,darkCol){
   const S=pcv.width,w=S*s2,h=S*s2;
   g.fillStyle='rgba(0,0,0,'+(0.28*(1-hazeAmt))+')';
   g.beginPath();g.ellipse(x,baseY+1,w*0.16,h*0.02+1.4,0,0,7);g.fill();
-  if(hazeAmt>0){
+  if(hazeAmt>0||darkAmt>0){
     const work=document.createElement('canvas');work.width=work.height=S;
     const wg=work.getContext('2d');wg.drawImage(pcv,0,0);
     wg.globalCompositeOperation='source-atop';
-    wg.fillStyle='rgba(127,150,180,'+hazeAmt+')';wg.fillRect(0,0,S,S);
+    if(darkAmt>0){wg.fillStyle='rgba('+(darkCol||'8,12,20')+','+darkAmt+')';wg.fillRect(0,0,S,S);}
+    if(hazeAmt>0){wg.fillStyle='rgba(127,150,180,'+hazeAmt+')';wg.fillRect(0,0,S,S);}
     g.drawImage(work,x-w/2,baseY-h*0.985,w,h);
   } else g.drawImage(pcv,x-w/2,baseY-h*0.985,w,h);
 }
-function _hdPlaceBeast(g,bcv,x,groundY,scale,flip,hazeAmt,warm){
+function _hdPlaceBeast(g,bcv,x,groundY,scale,flip,hazeAmt,warm,tuft,hazeCol){
   const S=bcv.width,w=S*scale,h=S*scale;
   const work=document.createElement('canvas');work.width=work.height=S;
   const wg=work.getContext('2d');
   wg.drawImage(bcv,0,0);
   wg.globalCompositeOperation='source-atop';
   if(warm>0){wg.fillStyle='rgba(255,218,168,'+warm+')';wg.fillRect(0,0,S,S);}
-  if(hazeAmt>0){wg.fillStyle='rgba(127,162,196,'+hazeAmt+')';wg.fillRect(0,0,S,S);}
+  if(hazeAmt>0){wg.fillStyle='rgba('+(hazeCol||'127,162,196')+','+hazeAmt+')';wg.fillRect(0,0,S,S);}
   g.fillStyle='rgba(0,0,0,'+(0.34*(1-hazeAmt))+')';
   g.beginPath();g.ellipse(x,groundY+2,w*0.30,h*0.042,0,0,7);g.fill();
   g.save();g.translate(x,groundY-bcv._feetY*h);
   if(flip)g.scale(-1,1);
   g.drawImage(work,-w/2,0,w,h);g.restore();
-  g.strokeStyle='rgba(9,24,13,'+(0.9-hazeAmt*0.6)+')';g.lineWidth=Math.max(1,1.6*scale*4);
+  g.strokeStyle='rgba('+(tuft||'9,24,13')+','+(0.9-hazeAmt*0.6)+')';g.lineWidth=Math.max(1,1.6*scale*4);
   for(let tf=0;tf<Math.max(3,(8*scale*4)|0);tf++){
     const gx=x+(tf/Math.max(2,(8*scale*4)|0)-0.5)*w*0.6+(_hdHash(tf,x|0,7)-0.5)*8;
     const gh=(4+_hdHash(tf,3,9)*8)*scale*3.4;
@@ -5565,14 +5581,54 @@ function _hdPlaceBeast(g,bcv,x,groundY,scale,flip,hazeAmt,warm){
     g.quadraticCurveTo(gx+(_hdHash(tf,5,3)-0.5)*6,groundY+3-gh*0.6,gx+(_hdHash(tf,8,5)-0.5)*10,groundY+3-gh);g.stroke();
   }
 }
-/* the master vista: opts={seed, biome, era:'none'|'iron'|'space', pal key,
-   moons, genes:[fauna genes]|null, twilight:bool} */
+/* the volcano that rules an ember world's mid-ground — cone, crater glow,
+   a lava trickle down the flank, smoke drifting leeward */
+function _hdVolcano(g,W,hz,seed,r){
+  const vx=W*0.62, vy=hz-88, bw=150, by2=hz+18;
+  g.fillStyle='#301410';
+  g.beginPath();g.moveTo(vx-bw,by2);
+  g.quadraticCurveTo(vx-bw*0.28,vy+26,vx-16,vy);
+  g.lineTo(vx+13,vy+2);
+  g.quadraticCurveTo(vx+bw*0.30,vy+30,vx+bw*0.94,by2);
+  g.closePath();g.fill();
+  g.fillStyle='rgba(122,44,24,0.32)';
+  g.beginPath();g.moveTo(vx-2,vy+3);g.lineTo(vx+13,vy+2);
+  g.quadraticCurveTo(vx+bw*0.30,vy+30,vx+bw*0.94,by2);
+  g.lineTo(vx+bw*0.5,by2);g.quadraticCurveTo(vx+bw*0.16,vy+42,vx-2,vy+3);g.closePath();g.fill();
+  g.save();g.globalCompositeOperation='lighter';
+  const cg2=g.createRadialGradient(vx,vy+2,2,vx,vy+2,46);
+  cg2.addColorStop(0,'rgba(255,180,90,0.85)');cg2.addColorStop(0.35,'rgba(255,110,40,0.35)');cg2.addColorStop(1,'rgba(255,110,40,0)');
+  g.fillStyle=cg2;g.beginPath();g.arc(vx,vy+2,46,0,7);g.fill();
+  const trickle=()=>{g.beginPath();g.moveTo(vx-4,vy+4);
+    g.quadraticCurveTo(vx+9,vy+40,vx-2,vy+62);
+    g.quadraticCurveTo(vx-11,vy+84,vx+6,by2-6);g.stroke();};
+  g.strokeStyle='rgba(255,110,40,0.28)';g.lineWidth=5.5;trickle();
+  g.strokeStyle='rgba(255,152,62,0.85)';g.lineWidth=2.2;trickle();
+  g.restore();
+  for(let sp=0;sp<9;sp++){const t=sp/8;
+    g.fillStyle='rgba(20,12,12,'+(0.34*(1-t*0.7)).toFixed(3)+')';
+    g.beginPath();g.ellipse(vx+2-t*70-r()*10, vy-8-t*88, 10+t*34, 7+t*20, -0.3, 0, 7);g.fill();
+    if(sp<3){g.fillStyle='rgba(255,120,50,'+(0.10*(1-t)).toFixed(3)+')';
+      g.beginPath();g.ellipse(vx+1-t*20, vy-4-t*26, 8+t*12, 5+t*8, 0, 0, 7);g.fill();}
+  }
+}
+/* the master vista: opts={seed, biome:'land'|'island', era:'none'|'iron'|'space',
+   pal key, wx: the card's weather token|null, moons, aurora:bool (the card's
+   magnetosphere — auroras crown the poles), genes:[fauna genes]|null} */
 function hdVista(opts){
   const W=960,H=430,cv=document.createElement('canvas');cv.width=W;cv.height=H;
   const g=cv.getContext('2d'),seed=opts.seed>>>0,r=mulberry32((seed^0x9d7)>>>0);
   const P=HD_PALS[opts.pal]||HD_PALS.day, desert=opts.pal==='dust'||opts.pal==='sand';
+  const ember=opts.pal==='ember', dusk=opts.pal==='twilight', sea=opts.biome==='island', wx=opts.wx||null;
+  /* worlds whose type-pal has no clock of its own (ice/rocky/venus/desert)
+     honor the card's clock with a grade: nightize = starlight over the
+     type's own scene, duskize = the dusk grade. The caption must never
+     say "local night" over a daylight picture. */
+  const nightize=!!opts.nightize, duskize=!!opts.duskize;
+  /* the card's Life row decides whether anything green stands anywhere */
+  const flora=opts.flora!==false;
   const civ=opts.era||'none';
-  const hz=H*0.50,sx=W*0.72,sy=H*0.15;
+  const hz=H*0.50,sx=W*0.72,sy=dusk?hz-30:H*0.15;
   const sky=g.createLinearGradient(0,0,0,hz+8);
   sky.addColorStop(0,P.skyTop);sky.addColorStop(0.62,P.skyMid);sky.addColorStop(1,P.skyHz);
   g.fillStyle=sky;g.fillRect(0,0,W,hz+8);
@@ -5592,28 +5648,70 @@ function hdVista(opts){
       g.beginPath();g.arc(mxx-mr*0.3,myy-mr*0.2,mr*0.22,0,7);g.fill();
       g.beginPath();g.arc(mxx+mr*0.35,myy+mr*0.3,mr*0.16,0,7);g.fill();
     }
+    if(wx==='rain'||wx==='snow'){ /* precipitation needs a cloud deck, even at night */
+      g.fillStyle='rgba(10,14,24,0.55)';
+      for(let nc=0;nc<7;nc++){g.beginPath();g.ellipse(r()*W,hz*(0.08+r()*0.5),90+r()*150,12+r()*16,0,0,7);g.fill();}
+    }
   }
-  if(P.sun>0){
-    const halo=g.createRadialGradient(sx,sy,4,sx,sy,150);
-    const hc=desert?'236,200,150':'255,246,220';
-    halo.addColorStop(0,'rgba('+hc+','+(0.9*P.sun)+')');halo.addColorStop(0.25,'rgba(255,236,190,'+(0.5*P.sun)+')');halo.addColorStop(1,'rgba(255,236,190,0)');
-    g.fillStyle=halo;g.beginPath();g.arc(sx,sy,150,0,7);g.fill();
-    g.globalAlpha=desert?0.7:1;g.fillStyle=desert?'#f0dcb4':'#fff6dc';
-    g.beginPath();g.arc(sx,sy,13,0,7);g.fill();g.globalAlpha=1;
+  if(dusk){ /* the first stars of the evening */
+    for(let s6=0;s6<70;s6++){const syy=r()*hz*0.55;
+      g.fillStyle='rgba(255,255,255,'+(0.08+r()*0.3*(1-syy/(hz*0.55))).toFixed(3)+')';
+      g.fillRect(r()*W,syy,1,1);}
+  }
+  if(opts.aurora&&opts.pal==='night'){
+    /* auroras crown magnetized worlds at night — same card fact, same twin
+       hues as the live surface (green 140 / violet 280), curtain-striated */
+    g.save();g.globalCompositeOperation='lighter';
+    for(const[hue,off,amp,al] of [[140,H*0.06,30,0.15],[280,H*0.15,42,0.10]]){
+      const ph1=r()*TAU, ph2=r()*TAU;
+      for(let ax=0;ax<=W;ax+=5){
+        const base=off+Math.sin(ax*0.011+ph1)*amp*0.55+Math.sin(ax*0.0042+ph2)*amp*0.45
+          +_hdFbm(ax*0.006,hue,seed+hue,3)*amp*0.5;
+        const len=34+_hdFbm(ax*0.013,7,seed+hue*3,3)*90;
+        const cg=g.createLinearGradient(0,base,0,base+len);
+        cg.addColorStop(0,'hsla('+hue+',85%,66%,'+(al*1.5).toFixed(3)+')');
+        cg.addColorStop(0.35,'hsla('+hue+',85%,60%,'+al+')');
+        cg.addColorStop(1,'hsla('+hue+',85%,55%,0)');
+        g.fillStyle=cg;g.fillRect(ax,base,4,len);
+      }
+    }
+    g.restore();
+  }
+  if(P.sun>0&&!nightize){
+    const hRad=dusk?200:(sea?110:150);   /* the open-sea sky can't hide a heavy glare */
+    const hK=(sea&&!dusk?0.62:1)*P.sun;
+    const halo=g.createRadialGradient(sx,sy,4,sx,sy,hRad);
+    const hc=dusk?'255,166,96':(desert?'236,200,150':'255,246,220');
+    const hc2b=dusk?'255,140,80':'255,236,190';
+    halo.addColorStop(0,'rgba('+hc+','+(0.9*hK).toFixed(3)+')');halo.addColorStop(0.25,'rgba('+hc2b+','+(0.5*hK).toFixed(3)+')');halo.addColorStop(1,'rgba('+hc2b+',0)');
+    g.fillStyle=halo;g.beginPath();g.arc(sx,sy,hRad,0,7);g.fill();
+    g.globalAlpha=desert?0.7:(P.sun<0.4?0.4:1);
+    g.fillStyle=dusk?'#ffce8e':(desert?'#f0dcb4':'#fff6dc');
+    g.beginPath();g.arc(sx,sy,dusk?15:13,0,7);g.fill();g.globalAlpha=1;
   }
   if(opts.pal==='rain'){
     const bp=g.createRadialGradient(sx,sy+20,5,sx,sy+20,120);
     bp.addColorStop(0,'rgba(210,216,222,0.5)');bp.addColorStop(1,'rgba(210,216,222,0)');
     g.fillStyle=bp;g.fillRect(0,0,W,hz);
   }
-  if(P.sun>0.6&&!desert){
+  if(P.sun>0.6&&!desert&&!nightize){
+    /* at dusk the clouds turn: dark bellies, sun-struck undersides */
+    const cShad=dusk?'rgba(255,172,122,0.9)':'rgba(150,168,198,0.55)';
+    const cBody=dusk?'rgba(52,36,72,0.9)':'rgba(255,252,244,0.95)';
     const puff=(cx,cy,s2,al)=>{g.globalAlpha=al;
-      g.fillStyle='rgba(150,168,198,0.55)';
+      g.fillStyle=cShad;
       for(let j=0;j<6;j++){g.beginPath();g.ellipse(cx+(j-2.5)*s2*14,cy+3,s2*16,s2*7,0,0,7);g.fill();}
-      g.fillStyle='rgba(255,252,244,0.95)';
+      g.fillStyle=cBody;
       for(let j2=0;j2<5;j2++){g.beginPath();g.ellipse(cx+(j2-2)*s2*13+s2*4,cy-4-((j2%2)*4)*s2,s2*13,s2*8,0,0,7);g.fill();}
       g.globalAlpha=1;};
     puff(W*0.16,H*0.14,1.2,0.8);puff(W*0.42,H*0.22,0.8,0.6);puff(W*0.88,H*0.24,0.9,0.55);
+  }
+  if(ember){ /* smoke rides an ember world's sky; the underlit banks glow */
+    for(let sb=0;sb<6;sb++){const sy2=hz*(0.12+r()*0.55);
+      g.fillStyle='rgba(16,8,8,'+(0.25+r()*0.25).toFixed(3)+')';
+      g.beginPath();g.ellipse(r()*W,sy2,90+r()*160,10+r()*16,0,0,7);g.fill();
+      g.fillStyle='rgba(255,90,40,'+(0.04+r()*0.05).toFixed(3)+')';
+      g.beginPath();g.ellipse(r()*W,hz*(0.6+r()*0.35),80+r()*120,8+r()*10,0,0,7);g.fill();}
   }
   if(opts.pal==='rain'){g.fillStyle='rgba(70,80,90,0.5)';
     for(let rc=0;rc<8;rc++){g.globalAlpha=0.3+r()*0.3;
@@ -5625,7 +5723,8 @@ function hdVista(opts){
     {col:P.layers[3],base:hz+52,amp:desert?26:40,oct:desert?3:5}
   ];
   const zx0=W*0.34,zx1=W*0.70;let plat=0,ridge2=[];
-  LAY.forEach(function(Ly,li){
+  if(!sea)LAY.forEach(function(Ly,li){
+    if(ember&&li===2)_hdVolcano(g,W,hz,seed,r);
     const ys=[],platY=Ly.base-Ly.amp*0.55;
     for(let x=0;x<=W;x+=4){
       let y=Ly.base-_hdFbm(x*(desert?0.003:0.004)+li*13+seed%97,li*7,seed+li,Ly.oct)*Ly.amp*2+Ly.amp*0.6;
@@ -5636,7 +5735,7 @@ function hdVista(opts){
     g.fillStyle=Ly.col;g.beginPath();g.moveTo(0,H);
     ys.forEach(function(y,i2){g.lineTo(i2*4,y)});
     g.lineTo(W,H);g.closePath();g.fill();
-    if(P.sun>0||opts.pal==='night'){
+    if((P.sun>0&&!nightize)||opts.pal==='night'){
       g.lineWidth=1.6;
       for(let i3=1;i3<ys.length;i3++){
         const xx=i3*4,alp=clamp(1-Math.abs(xx-(opts.pal==='night'?W*0.15:sx))/(W*0.75),0,1)*(opts.pal==='night'?0.22:0.5)*(1-li*0.16);
@@ -5653,13 +5752,20 @@ function hdVista(opts){
   });
   const ridgeY=x=>{const i2=clamp(Math.round(x/4),0,ridge2.length-1);return ridge2[i2]||plat};
   const pcv=_hdPlantBare(seed+2);
-  const gr=g.createLinearGradient(0,hz+40,0,H);
-  gr.addColorStop(0,P.ground[0]);gr.addColorStop(0.35,P.ground[1]);gr.addColorStop(1,P.ground[2]);
-  g.fillStyle=gr;g.fillRect(0,hz+58,W,H);
-  for(let t3=0;t3<(desert?200:380);t3++){const tx=r()*W,ty=hz+64+Math.pow(r(),1.5)*(H-hz-70),sc=(ty-hz)/(H-hz);
-    g.globalAlpha=0.12;g.fillStyle=desert?'#2c1c0c':'#08160c';g.fillRect(tx,ty,2+sc*7,1+sc*2);}
-  g.globalAlpha=1;
-  if(civ==='none'&&!desert&&opts.pal!=='ice'&&opts.pal!=='grey'&&opts.pal!=='haze'){
+  /* plant grading shared by every scene: winter frosts them, night turns
+     them to silhouettes, dusk steeps them violet */
+  const frost=opts.pal==='snow'?0.35:0;
+  const pd=opts.pal==='night'?0.6:(dusk?0.42:0), pdc=dusk?'30,18,44':'8,12,20';
+  if(!sea){
+    const gr=g.createLinearGradient(0,hz+40,0,H);
+    gr.addColorStop(0,P.ground[0]);gr.addColorStop(0.35,P.ground[1]);gr.addColorStop(1,P.ground[2]);
+    g.fillStyle=gr;g.fillRect(0,hz+58,W,H);
+    const fleck=desert?'#2c1c0c':(ember?'#2a0f08':(opts.pal==='snow'?'#8ea2b4':'#08160c'));
+    for(let t3=0;t3<(desert?200:380);t3++){const tx=r()*W,ty=hz+64+Math.pow(r(),1.5)*(H-hz-70),sc=(ty-hz)/(H-hz);
+      g.globalAlpha=0.12;g.fillStyle=fleck;g.fillRect(tx,ty,2+sc*7,1+sc*2);}
+    g.globalAlpha=1;
+  }
+  if(civ==='none'&&!desert&&!sea&&!ember&&opts.pal!=='ice'&&opts.pal!=='grey'&&opts.pal!=='haze'){
     const rp=[[W*0.60,hz+30],[W*0.52,hz+90],[W*0.62,H*0.78],[W*0.40,H+20]];
     const riverAt=t=>{const a=rp[0],b=rp[1],c=rp[2],d=rp[3];
       return[(1-t)*(1-t)*(1-t)*a[0]+3*(1-t)*(1-t)*t*b[0]+3*(1-t)*t*t*c[0]+t*t*t*d[0],
@@ -5669,18 +5775,26 @@ function hdVista(opts){
       if(t4===0)g.moveTo(p2[0]-w2/2,p2[1]);else g.lineTo(p2[0]-w2/2,p2[1]);}
     for(let t5=1;t5>=-0.001;t5-=0.03){const p3=riverAt(t5),w3=2+t5*t5*74;g.lineTo(p3[0]+w3/2,p3[1]);}
     g.closePath();
+    /* the river wears the sky: summer blue by day, dusk amber at twilight,
+       dark steel under the stars */
+    const RIV={night:['#3a4a66','#22344c','#101d30'],twilight:['#e8a06a','#7a5674','#2a1c40']}
+      [opts.pal]||['#cfe0ea','#7fa2c4','#37587c'];
     const rg2=g.createLinearGradient(0,hz+30,0,H);
-    rg2.addColorStop(0,'#cfe0ea');rg2.addColorStop(0.4,'#7fa2c4');rg2.addColorStop(1,'#37587c');
+    rg2.addColorStop(0,RIV[0]);rg2.addColorStop(0.4,RIV[1]);rg2.addColorStop(1,RIV[2]);
     g.fillStyle=rg2;g.fill();
-    if(P.sun>0){g.globalCompositeOperation='lighter';
+    if(P.sun>0||(opts.pal==='night'&&(opts.moons||0)>0)){g.globalCompositeOperation='lighter';
+      /* night glints are MOONLIGHT — a moonless card gets a dark river */
+      const gcv=opts.pal==='night'?'205,220,255':(dusk?'255,206,142':'255,244,210');
+      const gka=opts.pal==='night'?0.4:1;
       for(let gl=0;gl<26;gl++){const t6=0.1+r()*0.7,p4=riverAt(t6);
-        g.fillStyle='rgba(255,244,210,'+(0.25+r()*0.4)+')';
+        g.fillStyle='rgba('+gcv+','+((0.25+r()*0.4)*gka).toFixed(3)+')';
         g.fillRect(p4[0]+(r()-0.5)*(3+t6*46),p4[1]+(r()-0.5)*5,2+r()*7,1.4);}
       g.globalCompositeOperation='source-over';}
+    const nightAmb=opts.pal==='night'?0.18:0;   /* moonlight knocks the near life back */
     if(opts.genes&&opts.genes.length){
       const bcv=hdBeastBare(opts.genes[0],(seed^0x8EA)>>>0);
       const pBank=riverAt(0.70);
-      _hdPlaceBeast(g,bcv,pBank[0]+66,pBank[1]+8,0.36,true,0,P.sun>0?0.10:0);
+      _hdPlaceBeast(g,bcv,pBank[0]+66,pBank[1]+8,0.36,true,nightAmb,P.sun>0?0.10:0);
       const pFar=riverAt(0.28);
       _hdPlaceBeast(g,bcv,pFar[0]-64,pFar[1]+10,0.17,true,0.45,0.05);
       if(opts.genes[1]){
@@ -5688,14 +5802,175 @@ function hdVista(opts){
         _hdPlaceBeast(g,bcv2,pFar[0]-110,pFar[1]+4,0.14,true,0.55,0.04);
       }
     }
-    for(let tp2=0;tp2<8;tp2++){
-      const px5=(tp2+0.5)*(W/8)+(_hdHash(tp2,seed,3)-0.5)*40;
-      _hdStampPlant(g,pcv,px5,ridgeY(px5)+3,0.24+_hdHash(tp2,seed,5)*0.14,0.42);
+    if(flora){
+      for(let tp2=0;tp2<8;tp2++){
+        const px5=(tp2+0.5)*(W/8)+(_hdHash(tp2,seed,3)-0.5)*40;
+        _hdStampPlant(g,pcv,px5,ridgeY(px5)+3,0.24+_hdHash(tp2,seed,5)*0.14,0.42+frost*0.4,pd,pdc);
+      }
+      _hdStampPlant(g,pcv,W*0.085,H*0.90,0.95,frost,pd*0.9,pdc);
+      _hdStampPlant(g,pcv,W*0.90,H*0.94,1.15,frost,pd*0.9,pdc);
     }
-    _hdStampPlant(g,pcv,W*0.085,H*0.90,0.95,0);
-    _hdStampPlant(g,pcv,W*0.90,H*0.94,1.15,0);
   }
-  if(civ==='iron'){
+  if(ember){
+    /* the lava flow — the same course a river would cut, running molten.
+       Bright at the far bend, white-gold where it pools near the viewer. */
+    const rp=[[W*0.60,hz+30],[W*0.52,hz+90],[W*0.62,H*0.78],[W*0.40,H+20]];
+    const lavaAt=t=>{const a=rp[0],b=rp[1],c=rp[2],d=rp[3];
+      return[(1-t)*(1-t)*(1-t)*a[0]+3*(1-t)*(1-t)*t*b[0]+3*(1-t)*t*t*c[0]+t*t*t*d[0],
+             (1-t)*(1-t)*(1-t)*a[1]+3*(1-t)*(1-t)*t*b[1]+3*(1-t)*t*t*c[1]+t*t*t*d[1]]};
+    g.beginPath();
+    for(let t4=0;t4<=1.001;t4+=0.03){const p2=lavaAt(t4),w2=2+t4*t4*74;
+      if(t4===0)g.moveTo(p2[0]-w2/2,p2[1]);else g.lineTo(p2[0]-w2/2,p2[1]);}
+    for(let t5=1;t5>=-0.001;t5-=0.03){const p3=lavaAt(t5),w3=2+t5*t5*74;g.lineTo(p3[0]+w3/2,p3[1]);}
+    g.closePath();
+    const lg=g.createLinearGradient(0,hz+30,0,H);
+    lg.addColorStop(0,'#8a2410');lg.addColorStop(0.35,'#e2591c');lg.addColorStop(0.75,'#ffb03c');lg.addColorStop(1,'#ffdf7a');
+    g.fillStyle=lg;g.fill();
+    for(let cp=0;cp<40;cp++){const tc=0.15+r()*0.8,pc=lavaAt(tc),w6=2+tc*tc*70;
+      g.fillStyle='rgba(30,10,6,'+(0.35+r()*0.35).toFixed(3)+')';    /* cooling crust plates */
+      g.beginPath();g.ellipse(pc[0]+(r()-0.5)*w6*0.8,pc[1]+(r()-0.5)*6,2+r()*8*tc+1,1+r()*3,0,0,7);g.fill();}
+    g.save();g.globalCompositeOperation='lighter';
+    for(let gl2=0;gl2<22;gl2++){const tg2=0.06+r()*0.9,pg=lavaAt(tg2),w7=8+tg2*tg2*90;
+      const gg2=g.createRadialGradient(pg[0],pg[1],1,pg[0],pg[1],w7);
+      gg2.addColorStop(0,'rgba(255,120,40,'+(0.10+tg2*0.12).toFixed(3)+')');gg2.addColorStop(1,'rgba(255,120,40,0)');
+      g.fillStyle=gg2;g.beginPath();g.arc(pg[0],pg[1],w7,0,7);g.fill();}
+    /* emissive ground cracks vein the basalt */
+    for(let ck=0;ck<8;ck++){
+      let cx2=W*(0.04+r()*0.9), cy2=hz+80+r()*(H-hz-100);
+      const segs=3+(r()*3|0), sc3=(cy2-hz)/(H-hz);
+      if(Math.abs(cx2-W*0.45)<70)continue;
+      g.strokeStyle='rgba(255,120,44,'+(0.5*sc3).toFixed(3)+')';g.lineWidth=1+sc3*1.6;
+      g.beginPath();g.moveTo(cx2,cy2);
+      for(let sg3=0;sg3<segs;sg3++){cx2+=(r()-0.3)*26*sc3;cy2+=(r()-0.5)*8*sc3;g.lineTo(cx2,cy2);}
+      g.stroke();
+      g.strokeStyle='rgba(255,90,30,'+(0.16*sc3).toFixed(3)+')';g.lineWidth=4*sc3+1;g.stroke();
+    }
+    g.restore();
+    if(opts.genes&&opts.genes.length){ /* ember-lit fauna hold the basalt bank */
+      const bcv=hdBeastBare(opts.genes[0],(seed^0x8EA)>>>0);
+      const pB=lavaAt(0.66);
+      _hdPlaceBeast(g,bcv,pB[0]+80,pB[1]+6,0.34,true,0,0.22,'34,14,10');
+      if(opts.genes[1]){
+        const bcv2=hdBeastBare(opts.genes[1],(seed^0x77F)>>>0);
+        const pF2=lavaAt(0.3);
+        _hdPlaceBeast(g,bcv2,pF2[0]-84,pF2[1]+8,0.15,true,0.4,0.12,'34,14,10','150,96,80');
+      }
+    }
+  }
+  if(sea){
+    /* THE ISLAND SCENE — an ocean world's landing: open water to the
+       horizon, a scatter of islands, and the beach under your boots.
+       Everything keys off the pal (day/night/rain/twilight/snow). */
+    const by=H*0.795;
+    const SEA={day:['#c6dae2','#4e88a8','#1c4866'],night:['#111e33','#0a1526','#050b16'],
+      rain:['#98a2a8','#4e5e68','#242f38'],twilight:['#e89a62','#6a3a58','#1c1130'],
+      snow:['#b8c6d2','#5c7688','#2a4250']}[opts.pal]||['#c6dae2','#4e88a8','#1c4866'];
+    const BCH={day:['#d8c49c','#a98e62'],night:['#1a2233','#0d1320'],rain:['#8e8878','#585444'],
+      twilight:['#7c5040','#33203a'],snow:['#dce6ee','#9cb0c0']}[opts.pal]||['#d8c49c','#a98e62'];
+    const isl=(ix,iw,ih,col)=>{
+      g.fillStyle=col;g.beginPath();g.moveTo(ix-iw/2,hz+1);
+      for(let x=0;x<=iw;x+=6){
+        const t=x/iw, env2=Math.sin(t*3.1416);
+        g.lineTo(ix-iw/2+x, hz+1-(_hdFbm(x*0.02+(ix|0),3,seed+(ix|0),3)*0.7+0.5)*ih*env2);
+      }
+      g.lineTo(ix+iw/2,hz+1);g.closePath();g.fill();
+    };
+    isl(W*0.86,W*0.13,12,P.layers[0]);
+    isl(W*0.67,W*0.09,8,P.layers[0]);
+    const bigX=W*0.20,bigW=W*0.26;
+    isl(bigX,bigW,30,P.layers[1]);
+    if(civ!=='none'){
+      /* an inhabited archipelago shows its harbor from the water */
+      const litUp=opts.pal==='night'||opts.pal==='twilight';
+      if(civ==='space'){
+        for(let tw9=0;tw9<6;tw9++){
+          const txx=bigX-bigW*0.28+tw9*bigW*0.11+(r()-0.5)*8, th9=10+r()*22, tww=2.5+r()*3;
+          g.fillStyle=litUp?'#0c1422':'#1a2636';
+          g.fillRect(txx-tww/2,hz-6-th9,tww,th9+6);
+          for(let wn2=0;wn2<Math.floor(th9/5);wn2++)
+            if(r()<(litUp?0.9:0.6)){g.fillStyle=r()<0.5?'#8fd6ff':'#ffd98a';
+              g.fillRect(txx-0.8,hz-9-wn2*5,1.4,1.6);}
+        }
+        g.fillStyle='#ff6a5a';g.fillRect(bigX-1,hz-40-r()*6,1.8,1.8);
+      } else {
+        g.fillStyle='#241c14';g.fillRect(bigX-7,hz-9,14,9);
+        g.fillStyle='#312619';g.beginPath();g.moveTo(bigX-8,hz-9);g.lineTo(bigX,hz-15);g.lineTo(bigX+8,hz-9);g.closePath();g.fill();
+        for(let hd2=0;hd2<4;hd2++){g.fillStyle='#ffc86a';
+          g.fillRect(bigX-bigW*0.2+hd2*bigW*0.13,hz-3-r()*4,1.6,2);}
+      }
+    }
+    const sg4=g.createLinearGradient(0,hz,0,by+14);
+    sg4.addColorStop(0,SEA[0]);sg4.addColorStop(0.42,SEA[1]);sg4.addColorStop(1,SEA[2]);
+    g.fillStyle=sg4;g.fillRect(0,hz,W,by-hz+14);
+    /* the light lays a glitter road on the water — sun by day, moon by
+       night — but ONLY if the card hung a moon in this sky */
+    if(P.sun>0.05||(opts.pal==='night'&&(opts.moons||0)>0)){
+      const gx3=opts.pal==='night'?W*0.15:sx;
+      const gcol=opts.pal==='night'?'205,220,255':(dusk?'255,190,120':'255,242,200');
+      const gk=opts.pal==='night'?0.7:(P.sun||0.5);
+      g.save();g.globalCompositeOperation='lighter';
+      /* a bright seam right at the waterline, then loose sparkle dashes in a
+         widening envelope — no drawn shape, the density IS the road */
+      const seam=g.createRadialGradient(gx3,hz+3,1,gx3,hz+3,60);
+      seam.addColorStop(0,'rgba('+gcol+','+(0.35*gk).toFixed(3)+')');
+      seam.addColorStop(1,'rgba('+gcol+',0)');
+      g.fillStyle=seam;g.fillRect(gx3-60,hz,120,10);
+      for(let gl3=0;gl3<150;gl3++){
+        const tg3=r(), yy=hz+2+tg3*tg3*(by-hz-6);
+        const hw=(8+tg3*150)*(0.5+r()*0.5);
+        g.fillStyle='rgba('+gcol+','+((0.26-tg3*0.17)*gk*(0.3+r()*0.7)).toFixed(3)+')';
+        g.fillRect(gx3+(r()-0.5)*hw, yy, 3+tg3*14*r(), 1+tg3*1.4);
+      }
+      g.restore();
+    }
+    g.strokeStyle='rgba('+P.crest+',0.5)';
+    for(let wv=0;wv<16;wv++){ /* crests open up as they near the shore */
+      const tw4=wv/16, yy=hz+4+tw4*tw4*(by-hz-2);
+      g.globalAlpha=0.05+tw4*0.13;g.lineWidth=0.8+tw4*1.4;
+      let x6=r()*40-30;
+      while(x6<W){const len2=14+r()*40+tw4*50;
+        g.beginPath();g.moveTo(x6,yy+(r()-0.5)*3);
+        g.quadraticCurveTo(x6+len2/2,yy-1-tw4*2,x6+len2,yy+(r()-0.5)*3);g.stroke();
+        x6+=len2+20+r()*90;}
+    }
+    g.globalAlpha=1;
+    /* the beach you stand on */
+    const shoreY=x=>by+10-Math.sin(x/W*3.1416)*16-_hdFbm(x*0.01,9,seed+13,3)*8;
+    const bg2=g.createLinearGradient(0,by-6,0,H);
+    bg2.addColorStop(0,BCH[0]);bg2.addColorStop(1,BCH[1]);
+    g.beginPath();g.moveTo(0,H);g.lineTo(0,shoreY(0));
+    for(let x7=0;x7<=W;x7+=8)g.lineTo(x7,shoreY(x7));
+    g.lineTo(W,H);g.closePath();g.fillStyle=bg2;g.fill();
+    g.strokeStyle='rgba(255,255,255,0.45)';g.lineWidth=1.8;   /* foam lines */
+    g.beginPath();
+    for(let x8=0;x8<=W;x8+=8){const yB=shoreY(x8)-1.5+Math.sin(x8*0.09)*1.2;
+      x8?g.lineTo(x8,yB):g.moveTo(x8,yB);}
+    g.stroke();
+    g.strokeStyle='rgba(255,255,255,0.2)';g.lineWidth=3.5;
+    g.beginPath();
+    for(let x9=0;x9<=W;x9+=8){const yB2=shoreY(x9)-5+Math.sin(x9*0.05+2)*1.6;
+      x9?g.lineTo(x9,yB2):g.moveTo(x9,yB2);}
+    g.stroke();
+    for(let sp3=0;sp3<160;sp3++){const spy=by+8+Math.pow(r(),1.4)*(H-by-10);
+      g.globalAlpha=0.10;g.fillStyle=opts.pal==='snow'?'#8ea2b4':'#5c4a30';
+      g.fillRect(r()*W,spy,1.5+(spy-by)/(H-by)*3,1);}
+    g.globalAlpha=1;
+    if(opts.genes&&opts.genes.length){ /* life comes down to the water */
+      const bcv=hdBeastBare(opts.genes[0],(seed^0x8EA)>>>0);
+      _hdPlaceBeast(g,bcv,W*0.30,H*0.885,0.36,true,opts.pal==='night'?0.18:0,P.sun>0?0.10:0,'86,72,44');
+      if(opts.genes[1]){
+        const bcv2=hdBeastBare(opts.genes[1],(seed^0x77F)>>>0);
+        _hdPlaceBeast(g,bcv2,W*0.60,by+16,0.15,false,0.4,0.05,'86,72,44');
+      }
+    }
+    if(flora){
+      _hdStampPlant(g,pcv,W*0.07,H*0.93,1.0,frost,pd*0.9,pdc);
+      _hdStampPlant(g,pcv,W*0.93,H*0.90,0.8,frost,pd*0.9,pdc);
+      _hdStampPlant(g,pcv,W*0.55,by+9,0.18,0.45+frost*0.3,pd,pdc);
+      _hdStampPlant(g,pcv,W*0.72,by+13,0.22,0.4+frost*0.3,pd,pdc);
+    }
+  }
+  if(civ==='iron'&&!sea){
     const kx=(zx0+zx1)/2+20,ky=plat+2;
     const road=[[W*0.30,H+10],[W*0.40,H*0.82],[W*0.36,H*0.70],[kx-18,ky+8]];
     const roadAt=t=>{const a=road[0],b=road[1],c=road[2],d=road[3];
@@ -5757,11 +6032,11 @@ function hdVista(opts){
     g.fillRect(kx-56,ky-34,3,4.5);g.fillRect(kx+50,ky-34,3,4.5);g.fillRect(kx-5,ky-48,4,6);g.fillRect(kx+10,ky-20,3,4.5);
     for(let fp=0;fp<6;fp++){
       const fpx=(fp<3?fp*0.10+0.03:0.76+(fp-3)*0.085)*W;
-      _hdStampPlant(g,pcv,fpx,ridgeY(fpx)+3,0.22+_hdHash(fp,seed,5)*0.12,0.42);
+      _hdStampPlant(g,pcv,fpx,ridgeY(fpx)+3,0.22+_hdHash(fp,seed,5)*0.12,0.42+frost*0.4,pd,pdc);
     }
-    _hdStampPlant(g,pcv,W*0.06,H*0.92,0.85,0);
+    _hdStampPlant(g,pcv,W*0.06,H*0.92,0.85,frost,pd*0.9,pdc);
   }
-  if(civ==='space'){
+  if(civ==='space'&&!sea){
     const night=opts.pal==='night';
     const towers=[],bay=(zx1-zx0-52)/6;
     for(let tw=0;tw<7;tw++)towers.push({x:zx0+26+tw*bay+(r()-0.5)*bay*0.22,h:44+r()*80,w:Math.min(12+r()*8,bay*0.62),row:0});
@@ -5786,11 +6061,11 @@ function hdVista(opts){
     });
     for(let sp2=0;sp2<5;sp2++){
       const spx=(sp2<3?sp2*0.09+0.04:0.78+(sp2-3)*0.09)*W;
-      _hdStampPlant(g,pcv,spx,ridgeY(spx)+3,0.20+_hdHash(sp2,seed,9)*0.10,night?0.55:0.42);
+      _hdStampPlant(g,pcv,spx,ridgeY(spx)+3,0.20+_hdHash(sp2,seed,9)*0.10,night?0.55:0.42+frost*0.4,pd,pdc);
     }
-    _hdStampPlant(g,pcv,W*0.93,H*0.93,0.9,night?0.25:0);
+    _hdStampPlant(g,pcv,W*0.93,H*0.93,0.9,night?0.25:frost,pd*0.9,pdc);
   }
-  if(opts.pal==='rain'){
+  if(wx==='rain'||opts.pal==='rain'){
     g.strokeStyle='rgba(200,212,224,0.14)';g.lineWidth=1;
     for(let rn=0;rn<170;rn++){const rx3=r()*W,ry3=r()*H,rl=9+r()*8;
       g.beginPath();g.moveTo(rx3,ry3);g.lineTo(rx3-rl*0.25,ry3+rl);g.stroke();}
@@ -5820,47 +6095,104 @@ function hdVista(opts){
       g.fillStyle='rgba(255,255,255,0.9)';
       g.beginPath();g.moveTo(ix2+is2*0.28,iy2-is2);g.lineTo(ix2+is2*0.38,iy2);g.lineTo(ix2+is2*0.5,iy2);g.closePath();g.fill();}
   }
-  if(opts.twilight){
+  if(wx==='snow'){ /* round flakes at two depths — rain streaks, snow drifts */
+    for(let sf=0;sf<240;sf++){
+      g.fillStyle='rgba(255,255,255,'+(0.25+r()*0.35).toFixed(3)+')';
+      g.beginPath();g.arc(r()*W,r()*H,0.8+r()*1.2,0,7);g.fill();}
+    for(let sf2=0;sf2<60;sf2++){
+      g.fillStyle='rgba(255,255,255,'+(0.5+r()*0.4).toFixed(3)+')';
+      g.beginPath();g.arc(r()*W,r()*H,1.6+r()*1.5,0,7);g.fill();}
+    const chill=g.createLinearGradient(0,hz-16,0,hz+64);
+    chill.addColorStop(0,'rgba(210,224,238,0)');chill.addColorStop(0.5,'rgba(210,224,238,0.18)');chill.addColorStop(1,'rgba(210,224,238,0)');
+    g.fillStyle=chill;g.fillRect(0,hz-16,W,80);
+  }
+  if(wx==='ash'){ /* ash drifts down; embers climb from the glowing ground */
+    for(let af=0;af<150;af++){
+      g.fillStyle='rgba(170,160,158,'+(0.14+r()*0.22).toFixed(3)+')';
+      g.beginPath();g.arc(r()*W,r()*H,0.7+r()*1.3,0,7);g.fill();}
+    g.save();g.globalCompositeOperation='lighter';
+    for(let ef=0;ef<50;ef++){const ex2=r()*W,ey2=hz+r()*(H-hz),el2=3+r()*7;
+      g.strokeStyle='rgba(255,150,60,'+(0.25+r()*0.45).toFixed(3)+')';g.lineWidth=1;
+      g.beginPath();g.moveTo(ex2,ey2);g.lineTo(ex2+(r()-0.5)*3,ey2-el2);g.stroke();}
+    g.restore();
+  }
+  if(wx==='haze'&&opts.pal!=='haze'){ /* heat shimmer bands over a hot horizon */
+    for(let hb=0;hb<3;hb++){const hy3=hz-8+hb*26;
+      const hg3=g.createLinearGradient(0,hy3-10,0,hy3+14);
+      hg3.addColorStop(0,'rgba(255,236,190,0)');hg3.addColorStop(0.5,'rgba(255,236,190,0.10)');hg3.addColorStop(1,'rgba(255,236,190,0)');
+      g.fillStyle=hg3;g.fillRect(0,hy3-10,W,24);}
+  }
+  if(dusk){ /* the dusk grade: violet above, a warm band at the sun, night rising */
     const tw3=g.createLinearGradient(0,0,0,H);
-    tw3.addColorStop(0,'rgba(40,30,70,0.30)');tw3.addColorStop(0.5,'rgba(180,90,50,0.14)');tw3.addColorStop(1,'rgba(20,16,40,0.28)');
+    tw3.addColorStop(0,'rgba(30,20,70,0.28)');tw3.addColorStop(0.45,'rgba(215,110,50,0.10)');
+    tw3.addColorStop(0.62,'rgba(120,60,90,0.10)');tw3.addColorStop(1,'rgba(14,10,34,0.30)');
     g.fillStyle=tw3;g.fillRect(0,0,W,H);
   }
-  g.fillStyle=desert?'#1c1006':'#071108';
+  if(nightize){ /* the card said night: the type's own scene, by starlight */
+    const ng=g.createLinearGradient(0,0,0,H);
+    ng.addColorStop(0,'rgba(5,8,22,0.72)');ng.addColorStop(0.5,'rgba(6,10,26,0.58)');ng.addColorStop(1,'rgba(4,6,18,0.64)');
+    g.fillStyle=ng;g.fillRect(0,0,W,H);
+    for(let s7=0;s7<170;s7++){
+      g.fillStyle='rgba(255,255,255,'+(0.12+r()*0.5).toFixed(3)+')';
+      g.fillRect(r()*W,r()*hz*0.5,1.1,1.1);}
+    const mns2=Math.min(opts.moons||0,3);   /* the card's moons, small and high */
+    for(let mn2=0;mn2<mns2;mn2++){
+      const mxx2=W*(0.14+mn2*0.13),myy2=H*(0.09+mn2*0.03),mr2=mn2===0?9:5-mn2;
+      g.fillStyle=mn2===0?'#dfe8f6':'#b8c4da';g.beginPath();g.arc(mxx2,myy2,mr2,0,7);g.fill();
+      g.fillStyle='rgba(140,158,186,0.5)';g.beginPath();g.arc(mxx2-mr2*0.3,myy2-mr2*0.2,mr2*0.22,0,7);g.fill();
+    }
+  } else if(duskize){ /* the card said twilight: the dusk grade over the type's scene */
+    const dg2=g.createLinearGradient(0,0,0,H);
+    dg2.addColorStop(0,'rgba(40,30,70,0.30)');dg2.addColorStop(0.5,'rgba(180,90,50,0.14)');dg2.addColorStop(1,'rgba(20,16,40,0.28)');
+    g.fillStyle=dg2;g.fillRect(0,0,W,H);
+  }
+  g.fillStyle=desert?'#1c1006':(ember?'#120605':(sea?'#140f08':(opts.pal==='snow'?'#0e141c':'#071108')));
   g.beginPath();g.moveTo(0,H);
   for(let x2=0;x2<=W;x2+=6)g.lineTo(x2,H-8-_hdFbm(x2*0.02,3,seed+41,3)*16);
   g.lineTo(W,H);g.closePath();g.fill();
-  if(!desert){g.strokeStyle='rgba(10,22,12,0.95)';g.lineWidth=1.6;
+  if(!desert&&!ember&&flora){
+    g.strokeStyle='rgba('+(opts.pal==='snow'?'14,20,30':(sea?'22,18,10':'10,22,12'))+',0.95)';g.lineWidth=1.6;
     for(let gb=0;gb<70;gb++){const gx2=r()*W,gy2=H-4-r()*10,gh2=8+r()*16;
       g.beginPath();g.moveTo(gx2,gy2);g.quadraticCurveTo(gx2+(r()-0.5)*8,gy2-gh2*0.6,gx2+(r()-0.5)*14,gy2-gh2);g.stroke();}}
   const vg=g.createRadialGradient(W/2,H*0.45,H*0.3,W/2,H*0.5,W*0.62);
-  vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(2,3,8,'+(opts.pal==='night'?0.3:0.45)+')');
+  vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(2,3,8,'+(opts.pal==='night'?0.3:(ember?0.38:0.45))+')');
   g.fillStyle=vg;g.fillRect(0,0,W,H);
   return cv;
 }
 /* the planetfall overlay */
 const vistaBox=document.createElement('div');vistaBox.id='vistabox';document.body.appendChild(vistaBox);
 vistaBox.addEventListener('click', ()=>{ vistaBox.style.display='none'; });
-function showVistaBox(P, tod, wx, era, genes){
-  /* biome/pal from the card: type → biome, weather → pal override, clock → night */
+function showVistaBox(P, tod, wx, era, genes, aurora, flora){
+  /* the card drives the picture: type → scene, weather token → pal +
+     overlay, the clock → night/twilight (a grade on types whose pal has
+     no clock of its own), magnetosphere → auroras, Life row → flora */
   const type=P.type;
   if(type==='gas') return;                       /* no ground to stand on */
-  let pal='day', twilight=false;
+  let pal='day', biome='land', nightize=false, duskize=false;
   if(type==='ice') pal='ice';
   else if(type==='rocky') pal='grey';
   else if(type==='venus') pal='haze';
   else if(type==='desert') pal=(wx==='dust')?'dust':'sand';
-  else if(type==='lava') pal='dust';             /* v1: ember pass next iteration */
-  if((type==='terran'||type==='ocean')){
+  else if(type==='lava') pal='ember';
+  if(type==='terran'||type==='ocean'){
+    if(type==='ocean') biome='island';
     if(tod==='night') pal='night';
+    else if(tod==='twilight') pal='twilight';
     else if(wx==='rain') pal='rain';
-    if(tod==='twilight') twilight=true;
+    else if(wx==='snow') pal='snow';
+  } else if(type!=='lava'){
+    /* ember is sunless either way; everyone else honors the clock */
+    if(tod==='night') nightize=true;
+    else if(tod==='twilight') duskize=true;
   }
-  const cv=hdVista({seed:P.seed, era:era, pal:pal, moons:P.moons||0,
-    genes:genes&&genes.length?genes:null, twilight:twilight});
+  const cv=hdVista({seed:P.seed, era:era, pal:pal, biome:biome, wx:wx,
+    moons:P.moons||0, aurora:!!aurora, nightize:nightize, duskize:duskize,
+    flora:flora!==false, genes:genes&&genes.length?genes:null});
   vistaBox.innerHTML='<div class="vh">Planetfall — '+(TYPE_LABEL[type]||'World')+'</div>';
   vistaBox.appendChild(cv);
+  const WXW={rain:'rain',snow:'snowfall',dust:'dust storm',ash:'ashfall',haze:'haze'};
   const vt=document.createElement('div');vt.className='vt';
-  vt.textContent='local '+tod+(wx?' · '+wx:'')+' — tap to continue';
+  vt.textContent='local '+tod+(wx?' · '+(WXW[wx]||wx):'')+' — tap to continue';
   vistaBox.appendChild(vt);
   vistaBox.style.display='flex';
 }

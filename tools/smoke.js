@@ -448,6 +448,21 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       sk.doc.getElementById('vistabox').style.display === 'flex', 5000, 'vista overlay'));
     click2(sk.doc.getElementById('vistabox'), sk.w);
     check('HD vista: tap dismisses the panorama', sk.doc.getElementById('vistabox').style.display === 'none');
+    // v1.3 iteration 2 — every new scene must render a full-size canvas without throwing
+    for (const [nm, o] of [
+      ['ember volcano + ashfall', { seed: 9001, era: 'none', pal: 'ember', wx: 'ash', moons: 1 }],
+      ['island day (spacefaring harbor)', { seed: 9002, era: 'space', pal: 'day', biome: 'island', moons: 2 }],
+      ['island night rain + aurora', { seed: 9003, era: 'iron', pal: 'night', biome: 'island', wx: 'rain', moons: 3, aurora: true }],
+      ['terran snowfall', { seed: 9004, era: 'iron', pal: 'snow', wx: 'snow', moons: 0 }],
+      ['terran twilight', { seed: 9005, era: 'none', pal: 'twilight', moons: 1 }],
+      ['aurora night over land', { seed: 9006, era: 'space', pal: 'night', moons: 2, aurora: true }],
+      ['rocky world by starlight (nightize)', { seed: 9007, era: 'none', pal: 'grey', nightize: true, moons: 2 }],
+      ['lifeless ocean — bare beach, no moon glitter', { seed: 9008, era: 'none', pal: 'night', biome: 'island', flora: false, moons: 0 }],
+    ]) {
+      let cvS = null, err = null;
+      try { cvS = skH.hdVista(o); } catch (e) { err = e; }
+      check('HD vista scene renders: ' + nm, !err && !!cvS && cvS.width === 960 && cvS.height === 430, err && String(err));
+    }
     check('discovery: standing on it, mining is open on the spot', await until(() =>
       !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('You are here'), 4000, 'surface mine'));
     check('discovery: ground survey reveals the mineral veins without Deep Scanners',
