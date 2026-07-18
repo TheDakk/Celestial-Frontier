@@ -446,7 +446,7 @@ async function uiTraining(seed, chaos) {
     const ok = await until(fn, ms);
     if (!ok) {
       // diagnose the stuck state: which overlays are up?
-      const open = ['tutbox', 'pickbox', 'reveal', 'duelbox', 'namebox', 'relbox', 'guidebox', 'setpanel', 'codex', 'log', 'cargo', 'chpanel', 'events', 'stats', 'tray', 'helppop', 'vistabox']
+      const open = ['tutbox', 'pickbox', 'reveal', 'duelbox', 'namebox', 'relbox', 'guidebox', 'setpanel', 'codex', 'log', 'sheet', 'chpanel', 'events', 'tray', 'helppop', 'vistabox']
         .filter((id) => visible(doc.getElementById(id)));
       run.stalls.push(label + ' [open: ' + open.join(',') + ']');
     }
@@ -593,7 +593,8 @@ async function uiTraining(seed, chaos) {
 
     if (run.completed && chaos) {
       // ---- POST-TRAINING PANEL STORM: the one-panel rule under fire ----
-      const PANEL_IDS = ['codex', 'log', 'cargo', 'chpanel', 'events', 'stats', 'tray', 'setpanel', 'guidebox', 'primebox'];
+      // v1.5: stats + cargo merged into the one #sheet character screen
+      const PANEL_IDS = ['codex', 'log', 'sheet', 'chpanel', 'events', 'tray', 'setpanel', 'guidebox', 'primebox'];
       for (let round = 0; round < 6; round++) {
         for (const b of ['logbtn', 'codexbtn', 'cargobtn', 'chbtn', 'eventsbtn', 'setbtn', 'bell', 'rank', 'pcdxbtn']) click(doc.getElementById(b));
         await sleep(60);
