@@ -608,8 +608,10 @@
 ## AWAITING: Nick's deploy word; his device pass (esp. terran biome
 ## washes + aura feel + boot time on his big save — G14 still open).
 
-## ▶ v1.3.6 "QUIET SKIES" — STAGED (2026-07-18, commit 4864db6), NOT
-## BUMPED/DEPLOYED — one word ships it. From Nick's desktop live pass:
+## ★★ v1.3.6 "QUIET SKIES" IS LIVE ★★ (2026-07-18, build c1bac38,
+## Nick: "build it and deploy it"). + hover cards live at SYSTEM scale
+## only (a tap is intent, a hover is an accident — sweeps at galaxy
+## scale strobed every star card; taps unchanged everywhere). From Nick's desktop live pass:
 ## training rigs now -1 (beat ANY odds — a failed training breed ate
 ## both parents and stranded him); training hover glances step-scoped
 ## (his "one voice" ask — find-earth lets Earth glance); STAR CHARTS
@@ -620,7 +622,36 @@
 ## its own card). RELEASES[0]=1.3.6 staged hidden. Suites: fingerprint
 ## 50/50, smoke 218/218, systems 19/19, balance PASS.
 
-## ▶▶ NEXT SESSION AGENDA (v1.4 "THE ASCENT" KICKOFF)
+## ▶▶ NEXT SESSION AGENDA (v1.4 "THE ASCENT" KICKOFF) — updated at the
+## 2026-07-18 session close. SHIPPED THIS SESSION: v1.3.5 "Soft
+## Landings" (build bc70152) + v1.3.6 "Quiet Skies" (build c1bac38).
+##
+## 1. NICK'S LIVE PASSES of 1.3.5+1.3.6 (screenshots are bug reports):
+##    watch terran biome color identity (savanna gold / swamp gloom
+##    want palette-level tuning), jungle density, aura feel, extremo-
+##    phile hunt pacing, descent feel on phone, boot time on his big
+##    save (STILL unverified, G14).
+## 2. v1.3.x DEBT (small, shippable anytime): HAZARDOUS FLORA (the
+##    recorded deferral — spore-bursts/snap-traps/acid sap + G15
+##    fatal-meal linkage + scout-absorbed sample scrapes; queue with
+##    extremophile portrait materials); wanderer-witness charter +
+##    first-sighting gold caption; NICK DOMAIN DECISIONS: Eyeball
+##    World (Seasons row), per-hue color rarity, V2 galaxy morphology,
+##    V13 crossGenome gaps.
+## 3. START v1.4 "THE ASCENT" — goals + full design below (north star,
+##    ring ladder, recipe spine, chapter engine, equipment screen,
+##    cooking, hazmat suits). BUILD ORDER stands: a) recipe spine
+##    (bench data + Fabricator tabs), b) chapter engine on charters,
+##    c) Chapter 1 Sol lock (NEW saves only, gate TRAVEL never
+##    CURIOSITY, first jump <=45min), d) chapters 2-3 + ring ladder on
+##    reachRadius. HOOKS ALREADY LIVE IN 1.3.5: descentBonus() gear
+##    socket, biome rare-material flavor, extremophile g.x packs, the
+##    'risk is the frontier, gear tames it' law.
+## 4. Standing rules: extract.js first; proofsheet.js + sheets/ for
+##    ALL art review (headless Edge); deploys on Nick's word; baseline
+##    re-pin protocol single-key only (3 sanctioned re-pins exist);
+##    core.autocrlf false (a stash cycle once CRLF-corrupted the
+##    toolchain).
 
 1. NICK'S LIVE PASS of v1.3 (his screenshots are bug reports — read
    them closely). Watch for: vista variety across many landings, aura
