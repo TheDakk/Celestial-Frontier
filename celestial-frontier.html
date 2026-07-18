@@ -5761,6 +5761,29 @@ function hdGenesFor(g){
   const base=[bmix((hn>>16)&255,(an>>16)&255), bmix((hn>>8)&255,(an>>8)&255), bmix(hn&255,an&255)];
   const horn=(headTxt.includes('horn')||headTxt.includes('crest')||/crystal antlers/.test(trait))
     ?0.7+r()*0.4:(plan===11?1.0:(plan===10?0.5:0));
+  /* v1.3.5 coherence pass (Nick: creatures read bland/flat): a second
+     harmonious body color rotates off the hide hue — direction and
+     distance from the ACCENT gene, so bred children inherit their
+     two-tone honestly — and the pattern paints in a mixed tone instead
+     of plain shadow. FINISH climbs with the creature's own rarity tier:
+     matte → sheen → iridescent → prismatic pearl. */
+  const rot=((g.accent||0)%2?1:-1)*(26+((g.accent||0)%5)*6);
+  const _h2r=(rgb,deg)=>{
+    const [R,G2,B]=rgb; const mx=Math.max(R,G2,B), mn=Math.min(R,G2,B); const l=(mx+mn)/2;
+    let h=0,s2=0; const d2=mx-mn;
+    if(d2){ s2=l>127?d2/(510-mx-mn):d2/(mx+mn);
+      h= mx===R ? ((G2-B)/d2+(G2<B?6:0)) : mx===G2 ? (B-R)/d2+2 : (R-G2)/d2+4; h*=60; }
+    h=(h+deg+360)%360;
+    const c2=(1-Math.abs(2*l/255-1))*s2*255, x2=c2*(1-Math.abs((h/60)%2-1)), m2=l-c2/2;
+    const [r5,g5,b5]= h<60?[c2,x2,0]:h<120?[x2,c2,0]:h<180?[0,c2,x2]:h<240?[0,x2,c2]:h<300?[x2,0,c2]:[c2,0,x2];
+    return [Math.round(clamp(r5+m2,0,255)),Math.round(clamp(g5+m2,0,255)),Math.round(clamp(b5+m2,0,255))];
+  };
+  const base2=_h2r(base, rot);
+  const pat=[(base2[0]*0.5+((an>>16)&255)*0.3)|0,(base2[1]*0.5+((an>>8)&255)*0.3)|0,(base2[2]*0.5+(an&255)*0.3)|0];
+  /* the iridescent pair — far hue swings for the high finishes, so a
+     Mythic actually LOOKS like oil-on-water, not a rumor of it */
+  const irid=_h2r(base, rot>0?130:-130), irid2=_h2r(base, rot>0?-110:110);
+  const tier=S.tier|0;
   return {bulk:clamp(0.62+sizeM*0.30+(S.vit/400)*0.30,0.6,1.7),
     len:0.82+((g.size||2)%5)*0.09+((g.body||0)%4)*0.05,   /* body length dial */
     neck:0.3+((g.head||0)%5)*0.13,
@@ -5768,11 +5791,15 @@ function hdGenesFor(g){
     tail:0.35+((g.tail||0)%7)*0.09,
     leg:(plan===2||plan===12)?0.9:0.3+((g.limbs||0)%6)*0.09,
     stripes:patTxt==='striped'||patTxt==='banded'?0.75:0,
-    mottle:/mottled|spotted|marbled/.test(patTxt)?0.95:0.5,
-    base:base, dark:[base[0]*0.42|0,base[1]*0.42|0,base[2]*0.42|0],
+    mottle:/mottled|spotted|marbled/.test(patTxt)?0.95:0.62,
+    aqua:/swim|filter|jet|brine-crawl/.test(locoOf(g))||/ocean|shallows|reef|vent|trench|lakeshore|sea/.test(habOf(g)),
+    airb:/glider|floater|drifter|soarer|storm-rider|winged/.test(locoOf(g))||/cloud deck|updraft/.test(habOf(g)),
+    base:base, base2:base2, pat:pat, irid:irid, irid2:irid2,
+    dark:[base[0]*0.42|0,base[1]*0.42|0,base[2]*0.42|0],
+    finish:tier>=8?3:(tier>=6?2:(tier>=4?1:0)),
     rim:g.lumin?col:'rgba(255,220,170,1)', eye:col,
     plan:plan, glow:!!g.lumin, apex:!!g.apex, par:!!g.par,
-    tier:S.tier|0,
+    tier:tier,
     heat:(g.habitat||0)%FA_HABITAT.length};
 }
 function hdBeastBare(G,seed){
@@ -5866,21 +5893,74 @@ function hdBeastBare(G,seed){
     }
   } else if(seg){
     for(let li2=0;li2<6;li2++) leg(x0+S*0.04+li2*(x1-x0)*0.185, li2>2);
+  } else if(G.aqua && !stilt){
+    /* swimmers: flippers instead of legs, a dorsal fin, a tail fluke —
+       the water writes the body (coherence pass) */
+    for(const fx2 of [x0+S*0.07, x1-S*0.05]){
+      sg2.beginPath();sg2.moveTo(fx2,baseY+S*0.01);
+      sg2.quadraticCurveTo(fx2-S*0.05,baseY+S*0.09,fx2-S*0.09,baseY+S*0.075);
+      sg2.quadraticCurveTo(fx2-S*0.03,baseY+S*0.035,fx2,baseY-S*0.005);
+      sg2.closePath();sg2.fill();
+      if(baseY+S*0.09>feetMax)feetMax=baseY+S*0.09;
+    }
+    { const dx=(x0+x1)/2, topY=baseY-S*0.085*G.bulk-S*0.05;
+      sg2.beginPath();sg2.moveTo(dx-S*0.045,topY+S*0.04);
+      sg2.quadraticCurveTo(dx+S*0.01,topY-S*0.075,dx+S*0.075,topY+S*0.015);
+      sg2.closePath();sg2.fill(); }
+    { sg2.beginPath();sg2.moveTo(x0+S*0.005,baseY-S*0.02);
+      sg2.lineTo(x0-S*0.075,baseY-S*0.095);
+      sg2.lineTo(x0-S*0.075,baseY+S*0.05);
+      sg2.closePath();sg2.fill(); }
   } else {
     leg(x0+S*0.05,false);leg(x0+S*0.09,false);leg(x1-S*0.06,true);leg(x1-S*0.02,true);
+    if(G.airb && !winged){
+      /* the airborne that aren't four-winged still wear small sails */
+      for(const sgn of [-1,1]){
+        sg2.globalAlpha=0.8;
+        sg2.beginPath();sg2.moveTo(S*0.47,baseY-S*0.055);
+        sg2.quadraticCurveTo(S*(0.47+sgn*0.11),baseY-S*0.21,S*(0.47+sgn*0.19),baseY-S*0.115);
+        sg2.quadraticCurveTo(S*(0.47+sgn*0.10),baseY-S*0.06,S*0.47,baseY-S*0.015);
+        sg2.closePath();sg2.fill();sg2.globalAlpha=1;
+      }
+    }
   }
   const tex=document.createElement('canvas');tex.width=tex.height=S;const tg=tex.getContext('2d');
   const img=tg.createImageData(S,S),D=img.data;
+  /* the coherence-pass hide: back wears the hide color, the belly rolls
+     into its harmonious partner (base2), patterns paint in a mixed tone
+     — a real pelt, not one flat paint bucket. Iridescent finishes ride
+     a slow hue drift; the pearl finish adds a second, counter drift. */
+  const B2=G.base2||G.base, PT=G.pat||G.dark, FIN=G.finish||0;
   for(let py=0;py<S;py++)for(let px=0;px<S;px++){
     const o=(py*S+px)*4;
     const f=_hdFbm(px*0.024,py*0.024,seed,4)*G.mottle;
     const st2=(Math.sin(px*0.06+_hdFbm(px*0.012,py*0.012,seed+9,3)*6)*0.5+0.5)*G.stripes;
     const m=clamp(f*0.9+st2*0.5,0,1);
-    const cr2=_hdMix3(G.base,G.dark,m);
+    const belly=clamp((py/S)*1.7-0.45,0,1);
+    const bodyC=_hdMix3(G.base,B2,belly);
+    let cr2=_hdMix3(bodyC,PT,m*0.9);
+    cr2=_hdMix3(cr2,G.dark,m*0.26);
+    if(FIN>=2){
+      const ir=_hdFbm(px*0.010+7,py*0.010,seed+31,3);
+      const sw=Math.sin((px+py)*0.045+ir*5)*0.5+0.5;
+      cr2=_hdMix3(cr2,(sw<0.5?(G.irid||B2):(G.irid2||PT)),(FIN>=3?0.34:0.24)*Math.abs(sw-0.5)*2+0.06);
+      if(FIN>=3){
+        const sw2=Math.sin((px-py)*0.05+ir*4)*0.5+0.5;
+        cr2=_hdMix3(cr2,[250,240,255],0.16*sw2);
+      }
+    }
     const lt=clamp(1.18-(py/S)*1.15-(px/S)*0.25,0.22,1.12);
     D[o]=cr2[0]*lt;D[o+1]=cr2[1]*lt;D[o+2]=cr2[2]*lt;D[o+3]=255;
   }
   tg.putImageData(img,0,0);
+  if(FIN>=1){
+    /* the sheen — one soft light-band along the back, kept subtle */
+    const shn=tg.createLinearGradient(0,S*0.18,0,S*0.52);
+    shn.addColorStop(0,'rgba(255,252,240,0)');
+    shn.addColorStop(0.45,'rgba(255,252,240,'+(FIN>=2?0.14:0.10)+')');
+    shn.addColorStop(1,'rgba(255,252,240,0)');
+    tg.fillStyle=shn; tg.fillRect(0,S*0.18,S,S*0.34);
+  }
   const shade=(x,y,rx,ry,al)=>{const sgd=tg.createRadialGradient(x,y,1,x,y,Math.max(rx,ry));
     sgd.addColorStop(0,'rgba(20,12,10,'+al+')');sgd.addColorStop(1,'rgba(20,12,10,0)');
     tg.fillStyle=sgd;tg.beginPath();tg.ellipse(x,y,rx,ry,0,0,7);tg.fill();};
@@ -6053,6 +6133,21 @@ function hdPortraitFauna(g){
   fg.addColorStop(0,'rgba(6,8,14,0)');fg.addColorStop(1,'rgba(6,8,14,0.55)');
   c2.fillStyle=fg;c2.fillRect(0,S2*0.7,S2,S2*0.3);
   return cv.toDataURL();
+}
+/* world camouflage (v1.3.5 coherence pass, Nick's call): the world
+   dictates a share of every creature's field color — a wash of the
+   ground family over the pelt, heavier with distance, so herds sit IN
+   the landscape instead of on top of it. The Compendium portrait keeps
+   the creature's own colors; camouflage is a field condition. */
+function _hdCamo(cv0, col, a){
+  const c9=document.createElement('canvas'); c9.width=cv0.width; c9.height=cv0.height;
+  const g9=c9.getContext('2d'); g9.drawImage(cv0,0,0);
+  g9.globalCompositeOperation='source-atop';
+  g9.globalAlpha=a; g9.fillStyle=col; g9.fillRect(0,0,c9.width,c9.height);
+  c9._feetY=cv0._feetY;   /* the placement anchor rides along — losing it
+                             NaN'd the transform and beached beasts in the
+                             sky's top corner (coherence-pass catch) */
+  return c9;
 }
 function hdPortraitFlora(g){
   const S2=440,cv=document.createElement('canvas');cv.width=cv.height=S2;
@@ -6335,18 +6430,41 @@ function _hdTitan(g, mode, seed, hz, W, H, night){
       g.beginPath(); g.moveTo(fx,hz*0.5); g.lineTo(fx+span*0.05,hz*0.5-span*0.10); g.lineTo(fx+span*0.10,hz*0.5); g.closePath(); g.fill(); }
     return;
   }
-  /* land/sea: humps of one long back arcing through the ground line */
-  const humps=2+((r()<0.5)?1:0);
-  for(let h2=0;h2<humps;h2++){
-    const hx=x-span*0.5+span*(h2+0.5)/humps, hw=span/humps*0.42, hh=26+r()*20;
-    g.fillStyle=col;
-    g.beginPath(); g.ellipse(hx, hz+2, hw, hh, 0, Math.PI, 0); g.fill();
-    /* spray or dust where it breaks the surface */
-    const sg3=g.createRadialGradient(hx-hw,hz,0,hx-hw,hz,18);
-    sg3.addColorStop(0, mode==='sea'?'rgba(210,230,240,0.5)':'rgba(120,100,70,0.45)');
-    sg3.addColorStop(1,'rgba(0,0,0,0)');
-    g.fillStyle=sg3; g.beginPath(); g.arc(hx-hw,hz,18,0,TAU); g.fill();
+  /* land/sea: ONE long living back arcing through the ground line — a
+     continuous spine, not floating domes (Nick's globes report). The
+     silhouette rises to a shoulder, runs a ridge of plates, and sinks
+     to a tail; distance haze blends it into the scene's air. */
+  const hh=22+r()*16, x0=x-span*0.55, x1=x+span*0.55;
+  g.fillStyle=col;
+  g.beginPath(); g.moveTo(x0,hz+3);
+  const segs=7;
+  for(let s4=0;s4<=segs;s4++){
+    const t2=s4/segs, sx4=x0+(x1-x0)*t2;
+    /* two rolling crests along one body, tallest a third of the way in */
+    const env2=Math.sin(t2*Math.PI);
+    const crest=(Math.sin(t2*Math.PI*2.2+0.4)*0.30+0.70);
+    g.lineTo(sx4, hz+3-hh*env2*crest);
   }
+  g.lineTo(x1,hz+3); g.closePath(); g.fill();
+  /* ridge plates along the spine */
+  for(let p2=1;p2<6;p2++){
+    const t3=p2/6, sx5=x0+(x1-x0)*t3;
+    const top=hz+3-(22+r()*16)*Math.sin(t3*Math.PI)*0.92;
+    g.beginPath(); g.moveTo(sx5-5,top+4); g.lineTo(sx5+(r()-0.5)*4,top-6-r()*5); g.lineTo(sx5+5,top+4);
+    g.closePath(); g.fill();
+  }
+  /* spray or dust where the body breaks the surface, both ends */
+  for(const ex of [x0+span*0.06, x1-span*0.06]){
+    const sg3=g.createRadialGradient(ex,hz+2,0,ex,hz+2,26);
+    sg3.addColorStop(0, mode==='sea'?'rgba(210,230,240,0.45)':'rgba(120,100,70,0.40)');
+    sg3.addColorStop(1,'rgba(0,0,0,0)');
+    g.fillStyle=sg3; g.beginPath(); g.arc(ex,hz+2,26,0,TAU); g.fill();
+  }
+  /* distance haze — the air between you and it */
+  const hzW=g.createLinearGradient(0,hz-hh-14,0,hz+6);
+  hzW.addColorStop(0,'rgba(150,165,190,'+(night?0.06:0.14)+')');
+  hzW.addColorStop(1,'rgba(150,165,190,0)');
+  g.fillStyle=hzW; g.fillRect(x0-10,hz-hh-14,(x1-x0)+20,hh+20);
 }
 /* THE DEEP — the Abyssal world's vista goes beneath the waves: the first
    sub-surface vantage (the cloud deck set the precedent — the vantage
@@ -6774,20 +6892,20 @@ function hdVista(opts){
       const nightAmb=opts.pal==='night'?0.18:0;   /* moonlight knocks the near life back */
       const bs=cmpFlip?-1:1;                       /* herd side follows the course */
       if(opts.genes&&opts.genes.length){
-        const bcv=hdBeastBare(opts.genes[0],(seed^0x8EA)>>>0);
+        const bcv=_hdCamo(hdBeastBare(opts.genes[0],(seed^0x8EA)>>>0), P.ground[1], 0.14);
         const tB=0.62+rL()*0.14, pBank=riverAt(tB);
         _hdPlaceBeast(g,bcv,pBank[0]+66*bs,pBank[1]+8,0.32+rL()*0.08,!cmpFlip,nightAmb,P.sun>0?0.10:0);
         const pFar=riverAt(0.24+rL()*0.10);
         _hdPlaceBeast(g,bcv,pFar[0]-64*bs,pFar[1]+10,0.17,!cmpFlip,0.45,0.05);
         if(opts.genes[1]){
-          const bcv2=hdBeastBare(opts.genes[1],(seed^0x77F)>>>0);
+          const bcv2=_hdCamo(hdBeastBare(opts.genes[1],(seed^0x77F)>>>0), P.ground[1], 0.24);
           _hdPlaceBeast(g,bcv2,pFar[0]-110*bs,pFar[1]+4,0.14,!cmpFlip,0.55,0.04);
         }
         /* teeming worlds show it (L1): extra herd silhouettes when the
            roster runs deep */
         if((opts.herd||0)>2){
           for(let hx=0;hx<Math.min((opts.herd||0)-2,2);hx++){
-            const bcvH=hdBeastBare(opts.genes[(hx+1)%opts.genes.length],(seed^(0x51+hx*7))>>>0);
+            const bcvH=_hdCamo(hdBeastBare(opts.genes[(hx+1)%opts.genes.length],(seed^(0x51+hx*7))>>>0), P.ground[1], 0.30);
             const pH=riverAt(0.16+_hdHash(hx,seed,21)*0.16);
             _hdPlaceBeast(g,bcvH,pH[0]+(50+hx*46)*bs*-1,pH[1]+6,0.11,!cmpFlip,0.6,0.03);
           }
@@ -6814,10 +6932,10 @@ function hdVista(opts){
     _hdStampPlant(g,dpv,W*0.12,H*0.90,0.5,0,pd*0.9,pdc);
     _hdStampPlant(g,dpv,W*0.83,H*0.94,0.62,0,pd*0.9,pdc);
     if(opts.genes&&opts.genes.length){
-      const bcv=hdBeastBare(opts.genes[0],(seed^0x8EA)>>>0);
+      const bcv=_hdCamo(hdBeastBare(opts.genes[0],(seed^0x8EA)>>>0), P.ground[1], 0.14);
       _hdPlaceBeast(g,bcv,W*0.55,H*0.86,0.30,true,0,P.sun>0?0.12:0,'96,78,40');
       if(opts.genes[1]){
-        const bcv2=hdBeastBare(opts.genes[1],(seed^0x77F)>>>0);
+        const bcv2=_hdCamo(hdBeastBare(opts.genes[1],(seed^0x77F)>>>0), P.ground[1], 0.26);
         _hdPlaceBeast(g,bcv2,W*0.30,hz+96,0.14,false,0.4,0.06,'96,78,40');
       }
     }
