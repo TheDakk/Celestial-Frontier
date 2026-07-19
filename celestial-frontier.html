@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Celestial Frontier</title>
-<meta name="description" content="Explore an infinite, shared universe — chart galaxies, catalogue living worlds, and finish the Pathfinders&#8217; unfinished survey. Free, in your browser.">
+<meta name="description" content="Explore an infinite, shared universe — chart galaxies, catalogue living worlds, master the nine elemental titans and complete the Prime Codex. Free, in your browser.">
 <meta property="og:title" content="Celestial Frontier">
-<meta property="og:description" content="Explore an infinite, shared universe — chart galaxies, catalogue living worlds, and finish the Pathfinders&#8217; unfinished survey. Free, in your browser.">
+<meta property="og:description" content="Explore an infinite, shared universe — chart galaxies, catalogue living worlds, master the nine elemental titans and complete the Prime Codex. Free, in your browser.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://celestialfrontier.github.io/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1671,9 +1671,9 @@
   </svg>
   <h3>Celestial Frontier</h3>
   <div class="lore">
-    <p>You are not the first to chart this universe. An order of explorers came before you — the Pathfinders — and for an age their beacons mapped the dark. Then, one by one, the beacons went quiet. They died a single discovery short of completing their master survey.</p>
-    <p>They left nine Signatures unclaimed, and field notes that swear the spectrum runs deeper than Prismatic. The notes also warn of named titans ruling the worlds where it runs deepest. Claim a worthy example of all nine and the finished Prime Codex will show you what no chart ever has — the Celestial Frontier.</p>
-    <p class="creed">Nobody can chart it all. Somebody will still be first.</p>
+    <p>The universe is older than any chart and wider than any reckoning — and yet it can be known. You begin where every explorer begins: one small world, a borrowed ship, and a whole sky that has never learned your name.</p>
+    <p>The Prime Codex is the master survey — the nine elemental forces from which all creation is wrought, each ruled by a titan that embodies it. Fell a titan and you master its element. Master all nine, and you have mastered the forces of the universe itself — and the Celestial Frontier, the truth beyond the charted sky, opens only to a master.</p>
+    <p class="creed">You cannot finish the infinite. You can master it.</p>
   </div>
   <p class="nnote">First, what shall the stars call you?</p>
   <input id="namein" type="text" maxlength="20" placeholder="Your explorer name" spellcheck="false" autocomplete="off">
@@ -1725,7 +1725,7 @@
 <div id="primebox"><div class="card">
   <button id="primeclose" class="pxclose" type="button">&times;</button>
   <div class="ph"><div class="pt">✦ The Prime Codex</div>
-    <div class="psubt">The Elemental Signatures — the endgame arc that begins where the Chapters end. Nine elements, nine named titans that guard them, scattered across the sky: the basics near home, Void and Prism far past the Deep Field. Find each element’s world, defeat its guardian, and claim the Signature. Collect all nine and the Celestial Frontier reveals itself.</div></div>
+    <div class="psubt">Master the nine. The Prime Codex is the master survey of the elemental forces that compose the universe — each ruled by a titan that embodies it. Fell a titan and its element is yours to command; the basics wait near home, Void and Prism far past the Deep Field. Master all nine, and the Celestial Frontier — the truth beyond the charted sky — opens to you.</div></div>
   <div class="pmeter-wrap"><div class="pmeter"><i id="prime-meter"></i></div>
     <div class="pmeta"><span id="prime-count">0 / 9</span><span id="prime-rank">Wanderer</span></div></div>
   <div id="prime-grid" class="pgrid"></div>
@@ -1734,7 +1734,7 @@
 <div id="endingbox"><div class="card">
   <div id="ending-choices">
     <div class="eh">The Celestial Frontier</div>
-    <div class="esub">The Prime Codex is complete. The Frontier reveals itself — and asks what kind of Pathfinder you are. Your choice becomes your legacy; the galaxy stays open.</div>
+    <div class="esub">The Prime Codex is complete. You have mastered all nine elements, and with them the forces of the universe itself. The Celestial Frontier opens — and asks what kind of Pathfinder you are. Your choice becomes your legacy; the galaxy stays open, endless, yours to know.</div>
     <div id="ending-list"></div>
   </div>
   <div id="ending-result" style="display:none">
@@ -12957,11 +12957,11 @@ const GUIDE=[
 ]},
 {icon:'✦', cat:'The Prime Codex', blurb:'Signatures, the frontier, endings', topics:[
  {id:'signatures', t:'The Elemental Signatures (nine titans)', k:'signature prime codex element guardian titan relic blueprint earth wind fire air water electric poison void prism win endgame', body:
-  '<p><b>The Elemental Signatures are the endgame</b> — nine elements, each ruled by a unique <b>named titan</b> that is the same for every explorer. You do not know from orbit whether a signature waits on a world — you have to <b>land and survey</b> to find out, and the guardian may or may not be present when you arrive. Defeat the titan in conquest — send your strongest bred and tamed champions — and the element is yours. The nine, staggered from near to far:</p><ul><li><b>Earth · Fire · Air · Wind · Water</b> — the basics, near home and its neighbouring rings.</li><li><b>Electric · Poison</b> — the middle reach, the Local Cluster and Near Field.</li><li><b>Void · Prism</b> — far out, past the Deep Field, at the trail’s end.</li></ul><p><b>Every claim recovers a relic blueprint</b> — nine unique, signature-tier pieces of gear (one per socket) that only the Fabricator of a Signature-holder can forge. The Codex panel (✦, left rail) names each element’s guardian and how far out it dwells, and marks the blueprints you hold. This is where the whole game meets: land, mine and tame and heal, craft and upgrade and breed stronger champions — then hunt the titans and complete the Codex.</p>'},
+  '<p><b>The nine elements are the universe’s master test.</b> Each elemental force is embodied by a unique named titan — the same for every explorer. You won’t know a titan waits until you <b>land and survey</b>, and it may or may not be present when you arrive. Face it, send your strongest bred and tamed champions, prevail, and you master that element. The nine, staggered from near to far:</p><ul><li><b>Earth · Fire · Air · Wind · Water</b> — the basics, near home and its neighbouring rings.</li><li><b>Electric · Poison</b> — the middle reach, the Local Cluster and Near Field.</li><li><b>Void · Prism</b> — far out, past the Deep Field.</li></ul><p><b>Every element you master recovers a relic blueprint</b> — nine unique, signature-tier pieces of gear (one per socket) that only the Fabricator of a master can forge. The Codex panel (✦, left rail) names each element’s titan and how far out it dwells, and tracks the blueprints you hold. This is where the whole game becomes one: land, mine and tame and heal, craft and breed stronger champions — then master the titans one element at a time, until you are master of them all.</p>'},
  {id:'regions', t:'Frontier regions', k:'region reach frontier expand charter solar local cluster near deep outer dark travel gate', body:
   '<p>You begin charted for the <b>Solar Reach</b>. Each Signature claimed pushes your charter outward — <em>the Local Cluster, the Near Field, the Deep Field, the Outer Dark</em>, and finally <em>the Frontier</em>. Travel beyond your charter is blocked until you’ve earned it, and farther regions field tougher apex defenders with stranger life.</p>'},
  {id:'endings', t:'Endings & the Celestial Frontier', k:'ending win frontier legacy prismatic complete game finish', body:
-  '<p>Complete all nine Signatures and the <b>Celestial Frontier</b> reveals itself — and asks what kind of Pathfinder you are. Your choice becomes your legacy (some legacies must be earned through deeds beyond the Prime Codex). The universe stays open afterward: you cannot finish the infinite, only master it.</p>'},
+  '<p>Master all nine elements and the <b>Celestial Frontier</b> reveals itself — and asks what kind of Pathfinder you are. Your choice becomes your legacy (some legacies must be earned through deeds beyond the Prime Codex). The universe stays open afterward: you cannot finish the infinite, only master it.</p>'},
 ]},
 {icon:'🌌', cat:'The Living Universe', blurb:'Determinism — one shared cosmos, no server', topics:[
  {id:'events', t:'Cosmic events', k:'events supernova timescale minute hour day week month year decade witness', body:
@@ -13499,7 +13499,7 @@ const RELEASES=[
   'PERSISTENT WOUNDS — conquest scars and resented meals leave a beast Bruised, Injured, or Critical, fighting below strength until mended; feeding is medicine (loved flavours mend most, rarer flora mend deeper — and poison harder); hostile bioscans cost explorer HP, and zero HP ends the expedition.',
  ]],
  ['🛠 Progression', [
-  'THE PRIME CODEX — nine Signatures completing the Pathfinders’ master survey toward the Celestial Frontier; each carries their field notes; the Prism Signature is the discovery they died short of; multiple endings.',
+  'THE PRIME CODEX — nine elemental Signatures, each guarded by a named titan; master all nine to master the forces of the universe and open the Celestial Frontier; multiple endings.',
   'MINING & RESEARCH — dead worlds carry the elements; stock the 🧰 Cargo and spend at the bench: scanners, hull, lab, and the drive ladder (Fusion → Antimatter → Warp Fold).',
   'THE BINDER — collect types, not individuals: fixed pages identical for every explorer, with claimable Sets paying Stardust bounties.',
   'RANKS & RECORDS — ten explorer ranks with unlockable nameplate colors (foil at Eternal Frontier), dozens of achievements, the Star Atlas, the Traveler’s Beacon, cosmic events with a 📜 Witness Log, 📸 discovery records, and share codes for worlds and creatures alike.',
@@ -14341,7 +14341,7 @@ let yardOpen=false, yardView='fab';
 const _fabOpen=new Set(['part']);
 function _fabHTML(){
   let html='';
-  const GROUPS=[['part','Basic Parts — T1'],['comp','Components — T2'],['sys','Ship Systems — T3'],['gear','Explorer Gear'],['relic','Signature Relics — the Pathfinders’ legacy']];
+  const GROUPS=[['part','Basic Parts — T1'],['comp','Components — T2'],['sys','Ship Systems — T3'],['gear','Explorer Gear'],['relic','Signature Relics — a master’s reward']];
   for(const [cat,label] of GROUPS){
     const list=ITEMS.filter(it=>it.cat===cat);
     if(!list.length) continue;
@@ -14351,7 +14351,7 @@ function _fabHTML(){
       '<div class="fghead" role="button" tabindex="0"><span>'+label+'</span>'+
       '<span class="cnt">'+(craftable?craftable+' craftable':'')+'</span><span class="wchev"></span></div>'+
       '<div class="fgbody">';
-    if(cat==='relic') html+='<div class="ambient" style="font-size:10px;color:var(--faint);font-style:italic;margin:0 6px 6px">Nine blueprints, one per claimed Prime Codex Signature — recovered from the order&#8217;s lost beacons.</div>';
+    if(cat==='relic') html+='<div class="ambient" style="font-size:10px;color:var(--faint);font-style:italic;margin:0 6px 6px">Nine blueprints, one per element you have mastered — a titan&#8217;s power, forged into gear only a master can make.</div>';
     for(const it of list){
       const own=itemCount(it.id);
       const built=it.cat==='sys' && own>0;
@@ -15262,7 +15262,7 @@ function chooseEnding(id){
   document.getElementById('ending-choices').style.display='none';
   const r=document.getElementById('ending-result'); r.style.display='block';
   document.getElementById('ending-title').textContent=e.title;
-  document.getElementById('ending-text').innerHTML='You are now <b>'+e.title+'</b>. The master survey is finished \u2014 the first in history. Somewhere out in the dark, a thousand quiet beacons answer at last. The infinite galaxy remains, endless and open. Explore on, '+(explorerName||'Pathfinder')+'.<br><br><span style="color:#c9a8ff">The Pathfinders&#8217; Trail is walked. What an order does with a finished survey \u2014 <b>the Legacy</b> \u2014 is a story for a coming update.</span>';
+  document.getElementById('ending-text').innerHTML='You are now <b>'+e.title+'</b>. You have mastered all nine elements, and the forces of the universe with them \u2014 the first in an age to do it. The Celestial Frontier is yours to walk, and the infinite galaxy remains, endless and open. Explore on, '+(explorerName||'Pathfinder')+'.<br><br><span style="color:#c9a8ff">You cannot finish the infinite \u2014 you have done the only thing that can be done with it. What a master makes of a mastered universe \u2014 <b>the Legacy</b> \u2014 is a story for a coming update.</span>';
   playRaritySting(7);
 }
 function openFrontier(){
