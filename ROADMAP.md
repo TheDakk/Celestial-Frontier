@@ -1,5 +1,48 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
+## ★★★ v1.5.2 "THE SHIPYARD + THE QUEST SYSTEM" IS LIVE ★★★
+## (2026-07-19 overnight, build 61024a9, deployed per Nick's overnight
+## charter; version.json v:1.5.2 verified live.)
+## THE OVERNIGHT RECORD (Nick asleep; full director's report artifact +
+## exec summary delivered separately):
+##  · HAMMER3 certified the frozen v1.5.2b build first: chaos 300/300,
+##    ui 150/150, medium clean (yard exercised 549×) — both harness
+##    driver fixes proven; zero errors anywhere.
+##  · BUILT (commits c115458, b5d1651, 61024a9): mining BURST CAP
+##    (press = burst ≤ MINE_BURST 10, the upgrade knob) · Ascent →
+##    CHAPTERS surface rename (achievement 'The Last Chapter';
+##    cinematic 'CHAPTER COMPLETE'; history untouched) · PROGRESSIVE
+##    CHAINS (trades spine gates weeklies; Sol tour side income;
+##    ring-locked links never revealed) · ACCEPT-TO-ACTIVATE (chacc
+##    field, cap 3, auto-accept first link at training end, S1
+##    already-proven chk() proofs excluding home ground) · CHARTER
+##    GEAR static phase (earpiece/headlamp/magboots/meteor/fieldlegs;
+##    grants fire no 'crafted' event) · DEEP-LINK NUDGES (toast go→
+##    charters, › affordance) · simrun learned it all (S8) + variety-
+##    by-ring telemetry · release notes + Guide synced · smoke checks
+##    recreated for the new law (295 PASS).
+##  · 5,000-TESTER ROUND: ALL LEGS CLEAN (0 errors/deaths/softlocks;
+##    ui 500/500, chaos 500/500). Fun p50: fast 6.59, medium 6.09,
+##    deep 5.89. Charters 7-8/run. Variety opens by ring.
+##  · FIX BATCH (61024a9): chAccept tutDone guard; DEPTH_TAX sixth
+##    rung 2.5 (autonomous, straightforward-fix authority).
+##  · PROGRESSION AUDIT (planets/stars, Nick's order): economy +
+##    rarity + depth tax OPEN UP (formulas verified); FLAT: star-class
+##    variety, world-type/biome pools (ring 1 exhausts them), defender
+##    strength/win-odds (copy overstates), galaxy content, post-Deep-
+##    Field plateau. All design calls → exec summary R1-R4.
+##  · 50,000-TESTER ROUND in flight at close (ui 2000 → chaos 1500 →
+##    medium 3000 → deep 1500 → fast 42000 in 6 chunks; results in
+##    tools/tester50k-*.json as legs land; 'TESTER50K DONE' at end).
+## ⚠ DECISIONS AWAITING NICK (exec summary, morning): S10 pacing
+##    (burst compressed Jump p50 65→37, IG 0.3%→27% of deep runs,
+##    medium/deep fun dipped ~0.2-0.3 — count chapter goals in bursts?
+##    retune c1-mine? accept the faster ladder?) · R1 defender region
+##    scaling · R3 far-ring star/biome content (v1.6) · R4 tier-scaled
+##    conquest XP (w/ parked P8) · weekly-accept UX (slate of 3 shared
+##    with starters) · fun-dip watch.
+
+## ▼▼ EXECUTED OVERNIGHT 2026-07-19 (kept for the record) ▼▼
 ## ▶▶▶ NEXT SESSION — v1.5.x CONTINUATION (Nick, 2026-07-19; RESUME
 ## HERE — everything below is Nick's documented direction) ◀◀◀
 ##
