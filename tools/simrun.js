@@ -131,11 +131,14 @@ const PERSONAS = ['miner', 'sprinter', 'explorer', 'rancher', 'chaotic'];
 function personaWeights(p, deep) {
   const base = (() => {
     switch (p) {
-      case 'miner':    return { land: 2, mine: 8, craft: 3, equip: 1, scan: 1, feed: 0.5, breed: 0.3, heal: 0.5, harvest: 1, beacon: 0.5, jump: 1, conquer: 0.6, duel: 0.4 };
-      case 'sprinter': return { land: 2, mine: 4, craft: 6, equip: 2, scan: 0.7, feed: 0.2, breed: 0.2, heal: 0.5, harvest: 2, beacon: 0.3, jump: 3, conquer: 1.2, duel: 0.3 };
-      case 'explorer': return { land: 6, mine: 2, craft: 2, equip: 1, scan: 4, feed: 0.5, breed: 0.3, heal: 1, harvest: 1, beacon: 2, jump: 3, conquer: 1, duel: 0.5 };
-      case 'rancher':  return { land: 2, mine: 2, craft: 1, equip: 1, scan: 4, feed: 4, breed: 3, heal: 2, harvest: 1, beacon: 0.5, jump: 1.5, conquer: 1.2, duel: 2 };
-      default:         return { land: 3, mine: 3, craft: 3, equip: 2, scan: 2, feed: 2, breed: 2, heal: 2, harvest: 1, beacon: 1, jump: 2, conquer: 1, duel: 1 };
+      /* v1.5: the beacon is HIDDEN for rework — bots stop using it (weight 0
+         kept explicit for the record); `sheet` drives the NEW character
+         screen through the real DOM (Nick's sheet-focus round) */
+      case 'miner':    return { land: 2, mine: 8, craft: 3, equip: 1, scan: 1, feed: 0.5, breed: 0.3, heal: 0.5, harvest: 1, jump: 1, conquer: 0.6, duel: 0.4, sheet: 0.8 };
+      case 'sprinter': return { land: 2, mine: 4, craft: 6, equip: 2, scan: 0.7, feed: 0.2, breed: 0.2, heal: 0.5, harvest: 2, jump: 3, conquer: 1.2, duel: 0.3, sheet: 0.8 };
+      case 'explorer': return { land: 6, mine: 2, craft: 2, equip: 1, scan: 4, feed: 0.5, breed: 0.3, heal: 1, harvest: 1, jump: 3, conquer: 1, duel: 0.5, sheet: 0.6 };
+      case 'rancher':  return { land: 2, mine: 2, craft: 1, equip: 1, scan: 4, feed: 4, breed: 3, heal: 2, harvest: 1, jump: 1.5, conquer: 1.2, duel: 2, sheet: 1 };
+      default:         return { land: 3, mine: 3, craft: 3, equip: 2, scan: 2, feed: 2, breed: 2, heal: 2, harvest: 1, jump: 2, conquer: 1, duel: 1, sheet: 1 };
     }
   })();
   if (!deep) { delete base.conquer; delete base.duel; }
@@ -164,8 +167,28 @@ async function expedition(sess, seed, nActions, deep) {
     minedOut: 0, jumpAt: -1, arrayAt: -1, igAt: -1, ascChEnd: 0, stageEnd: 0,
     hpMin: 999, essenceEnd: 0, saveOk: false, softlock: null,
     gearTimeline: [], log: [],
+    // v1.5 leveling tier: XP curves, time-to-level, art-unlock pacing
+    lvl3At: -1, lvl6At: -1, lvl9At: -1, xpTop: 0, lvlTop: 0, xpDuels: 0, xpConq: 0,
+    // v1.5 sheet-focus round: how bots actually use the character screen
+    sheetOpens: 0, socketTaps: 0, uiEquips: 0, cargoTabs: 0,
   };
   const note = (s) => { if (run.log.length < 150) run.log.push('[' + run.actions + '] ' + s); };
+  // v1.5 leveling telemetry: scan the stable for level crossings after any
+  // XP-bearing act (duel wins here, conquest/guardian XP via the real flow)
+  const lvlCheck = () => {
+    try {
+      for (const e of H.codex.values()) {
+        if (e.kind !== 'Fauna' || !e.genome) continue;
+        const xp = (+e.genome.xp) || 0;
+        if (xp > run.xpTop) run.xpTop = xp;
+        const lv = H.levelOf(e.genome);
+        if (lv > run.lvlTop) run.lvlTop = lv;
+        if (lv >= 3 && run.lvl3At < 0) { run.lvl3At = run.actions; note('LEVEL 3 — ' + e.name + ' wakes its second innate art'); }
+        if (lv >= 6 && run.lvl6At < 0) { run.lvl6At = run.actions; note('LEVEL 6 — ' + e.name + ' wakes its third innate art'); }
+        if (lv >= 9 && run.lvl9At < 0) { run.lvl9At = run.actions; note('LEVEL 9 — ' + e.name + ' is at MAX'); }
+      }
+    } catch (_) {}
+  };
   const inv = mkInvariants(run);
   const act = (label, fn) => {
     try { fn(); } catch (e) { run.errors.push(label + ': ' + (e && e.message)); }
@@ -349,8 +372,9 @@ async function expedition(sess, seed, nActions, deep) {
           await sleep(150);
           clickEl(doc.getElementById('duelclose'));
           clickEl(doc.getElementById('pickclose'));
-          if (H.conquered.has(target.planetSeed)) { run.conquests++; note('CONQUERED ' + target.title + ' (spoils! essence now ' + H.essence + ')'); }
+          if (H.conquered.has(target.planetSeed)) { run.conquests++; run.xpConq += 20; note('CONQUERED ' + target.title + ' (spoils! essence now ' + H.essence + ')'); }
           else { run.conquestsLost++; note('conquest of ' + target.title + ' FAILED'); }
+          lvlCheck();
         } catch (e) { run.errors.push('conquer: ' + (e && e.message)); }
         inv(H, doc, 'conquer');
       })();
@@ -358,10 +382,22 @@ async function expedition(sess, seed, nActions, deep) {
       act('duel', () => {
         const mine = [...H.codex.values()].filter((e) => e.kind === 'Fauna');
         if (!mine.length) { run.noops++; return; }
-        const me = mine[(r() * mine.length) | 0];
+        // champion loyalty (v1.5 leveling tier): players level ONE champion —
+        // 70% of duels field the highest-XP (then best-grade) creature
+        let me;
+        if (r() < 0.7) {
+          me = mine.reduce((b, e) => {
+            const xe = (+e.genome.xp) || 0, xb = (+b.genome.xp) || 0;
+            return (xe > xb || (xe === xb && (e.grade ? e.grade.tier : 0) > (b.grade ? b.grade.tier : 0))) ? e : b;
+          }, mine[0]);
+        } else me = mine[(r() * mine.length) | 0];
         const foeG = H.makeGenome((r() * 0xFFFFFFFF) >>> 0, 'fauna', 0.4 + r() * 0.4);
         const res = H.runDuel({ name: me.name, genome: me.genome }, { name: 'Wild challenger', genome: foeG });
-        if (res.winner === 'A') { run.duelsW++; if (run.duelsW <= 3) note('duel won by ' + me.name); }
+        if (res.winner === 'A') {
+          run.duelsW++; if (run.duelsW <= 3) note('duel won by ' + me.name);
+          H.awardXP(me.id, 8); run.xpDuels += 8;   // the duel UI's own award, mirrored
+          lvlCheck();
+        }
         else if (res.winner === 'B') run.duelsL++;
       });
     } else if (a === 'feed' || a === 'breed' || a === 'heal') {
@@ -384,6 +420,48 @@ async function expedition(sess, seed, nActions, deep) {
           }
         } else run.noops++;
       });
+    } else if (a === 'sheet') {
+      // v1.5 THE CHARACTER SCREEN through the real DOM: open from the
+      // nameplate, tap a socket on the paperdoll, use the picker, visit a
+      // cargo tab, close by ✕ or toggle — every step asserted
+      await (async () => {
+        try {
+          const rank = doc.getElementById('rank');
+          const shEl = doc.getElementById('sheet');
+          if (shEl.style.display === 'flex') clickEl(rank);   // ensure a clean open
+          clickEl(rank);
+          if (!(await until(() => shEl.style.display === 'flex', 1500))) { run.violations.push('sheet: nameplate did not open the screen'); return; }
+          run.sheetOpens++;
+          const doll = doc.getElementById('doll');
+          const socks = doll.querySelectorAll('[data-eqslot]');
+          if (socks.length !== 9) run.violations.push('sheet: expected 9 sockets, saw ' + socks.length);
+          if (!doll.querySelector('.dollimg')) run.violations.push('sheet: no paperdoll figure');
+          const sk2 = socks[(r() * socks.length) | 0];
+          const skId = sk2 && sk2.dataset.eqslot;
+          clickEl(sk2); run.socketTaps++;
+          await sleep(30);
+          const pick = doc.querySelector('#doll .eqpick');
+          if (!pick) run.violations.push('sheet: socket tap opened no picker');
+          else {
+            const cand = pick.querySelectorAll('[data-eqpick]');
+            if (cand.length && r() < 0.8) {
+              const before = H.equip[skId];
+              clickEl(cand[(r() * cand.length) | 0]); run.uiEquips++;
+              await sleep(20);
+              if (H.equip[skId] === before && cand.length > 1) { /* picked the worn one or unequip — fine */ }
+            } else clickEl(doc.querySelector('#doll [data-eqslot="' + skId + '"]'));   // fold the picker back
+          }
+          if (r() < 0.5) {
+            const tab = doc.querySelector('#cargo [data-ct="' + (r() < 0.5 ? 'fab' : 'bench') + '"]');
+            if (tab) { clickEl(tab); run.cargoTabs++; }
+          }
+          const x = doc.querySelector('#sheetcard [data-pnx]');
+          if (x && r() < 0.5) clickEl(x); else clickEl(rank);
+          await sleep(20);
+          if (shEl.style.display === 'flex') run.violations.push('sheet: did not close');
+        } catch (e) { run.errors.push('sheet: ' + (e && e.message)); }
+        inv(H, doc, 'sheet');
+      })();
     } else if (a === 'harvest') {
       act('harvest', () => {
         const targets = [...H.conquered.keys()];
@@ -704,6 +782,25 @@ function aggregate(mode, runs) {
     rep.arrayActions = num(runs.filter((r) => r.arrayAt > 0).map((r) => r.arrayAt));
     rep.igActions = num(runs.filter((r) => r.igAt > 0).map((r) => r.igAt));
     rep.funIndex = num(runs.map((r) => r.funIndex || 0));
+    // v1.5 leveling tier: XP curves + time-to-level + art-unlock pacing
+    rep.leveling = {
+      lvlTop: num(runs.map((r) => r.lvlTop || 0)),
+      xpTop: num(runs.map((r) => r.xpTop || 0)),
+      reachedL3: runs.filter((r) => r.lvl3At > 0).length,
+      reachedL6: runs.filter((r) => r.lvl6At > 0).length,
+      reachedL9: runs.filter((r) => r.lvl9At > 0).length,
+      actionsToL3: num(runs.filter((r) => r.lvl3At > 0).map((r) => r.lvl3At)),
+      actionsToL6: num(runs.filter((r) => r.lvl6At > 0).map((r) => r.lvl6At)),
+      xpFromDuels: runs.reduce((a, r) => a + (r.xpDuels || 0), 0),
+      xpFromConquest: runs.reduce((a, r) => a + (r.xpConq || 0), 0),
+    };
+    // v1.5 sheet-focus round: usage + assertion totals for the new screen
+    rep.sheet = {
+      opens: runs.reduce((a, r) => a + (r.sheetOpens || 0), 0),
+      socketTaps: runs.reduce((a, r) => a + (r.socketTaps || 0), 0),
+      uiEquips: runs.reduce((a, r) => a + (r.uiEquips || 0), 0),
+      cargoTabs: runs.reduce((a, r) => a + (r.cargoTabs || 0), 0),
+    };
     // equipment matrix: how often each piece was worn at session end
     const eqCount = {}, sysCount = {};
     for (const r of runs) {
