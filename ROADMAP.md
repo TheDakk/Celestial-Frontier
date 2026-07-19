@@ -42,6 +42,45 @@
 ##    conquest XP (w/ parked P8) · weekly-accept UX (slate of 3 shared
 ##    with starters) · fun-dip watch.
 
+## ▶▶ MORNING SESSION 2026-07-19 — NICK APPROVED ALL FIVE DECISIONS
+## ("Go ahead and work on all of these, approved"):
+##  · D1 SHIPPED: chapter mining goals count PRESSES (mined event carries
+##    press flag from mineToggle; ascEvent counts presses; goal text
+##    'Run the drills N times'). Charters/hold still count real loads.
+##  · D2 SHIPPED: GUARDIANS ride the region law — the audit overstated
+##    the gap: ordinary apex natives scaled +14%/region since v1.4
+##    (apexNative _mult, honored in battleStats 11722, stripped from
+##    codes 11776); only the guardian branch skipped it. Now it doesn't.
+##  · D3 SHIPPED: conquest XP = (20|60) + world tier; P8 discovery XP —
+##    every genuinely new species teaches the standing Field Scout +2
+##    (both catalogue paths). Thresholds stay 6·l² (panel consensus).
+##  · D5/P3 SHIPPED: ARRIVAL PAYS — first arrival in a new system logs
+##    '🧭 First Arrival' + 2 ☄ (sysSeen set, save sysv, cap 900,
+##    Sol/home excluded, training/loading silent). Sprinter counterweight.
+##  · D4 → THE v1.6 SLATE (below), per the approved recommendation.
+##
+## ▶▶ THE v1.6 SLATE — FAR-RING CONTENT + THE LOOT CORE (D4, approved
+## direction; DESIGN WITH NICK before building — v1.6-scale):
+##  · THE AFFIX WALL (S6, the core): per-instance gear, app-layer seeded
+##    rolls, one loot faucet first (conquest spoils), power decoupled
+##    from rarity, gear never rides share codes.
+##  · FAR-RING STARS: give the flat star category distance meaning —
+##    region-flavored exotic spawns (magnetar fields in the Deep?),
+##    star-scale payoffs (remnant mining? beacon anchors?), so expanding
+##    gains something star-wise beyond a rarity tint.
+##  · FAR-ONLY WORLD CONTENT: biome/type variants that only spawn beyond
+##    given regions (the pool currently exhausts in ring 1) — must stay
+##    seed-deterministic per position (region derives from position, so
+##    the fingerprint law can hold; audit before building).
+##  · GALAXY IDENTITY: galaxyProfile feeds only art today — consider
+##    letting far galaxies bias content mixes (a carbon-rich galaxy, a
+##    remnant field) without touching near-ring determinism.
+##  · POST-DEEP-FIELD: rarity summit at Deep Field is documented design;
+##    if Outer Dark/Frontier deserve their own hook, it comes from
+##    content (above), not caps.
+##  · Parked critic picks that fold in naturally: P2 Sol first life,
+##    P5 first Codex claim at stage 2, P7 Legendary wall.
+
 ## ▼▼ EXECUTED OVERNIGHT 2026-07-19 (kept for the record) ▼▼
 ## ▶▶▶ NEXT SESSION — v1.5.x CONTINUATION (Nick, 2026-07-19; RESUME
 ## HERE — everything below is Nick's documented direction) ◀◀◀

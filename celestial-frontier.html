@@ -4614,6 +4614,7 @@ function checkTransitions(){
           st.sz0=0.40*minWH/SYS_R;
           st.scam={x:0,y:0,z:st.sz0*1.05};
           st.mode='system'; st.fade=1;
+          try{ _arriveSystem(best.seed); }catch(_){ }
         }
       } else {
         c.z=Math.min(c.z, starZ*1.6);
@@ -9270,6 +9271,10 @@ function autoScanWorld(d){
     essence+=_sdB; stats.essenceEarned=(stats.essenceEarned||0)+_sdB;
     setTimeout(()=>toast('\u2604 Rare Find Bonus','+'+_sdB+' Stardust for legendary specimens. Total: '+essence+'.'), 1300);
   }
+  /* v1.5.2 D3 (P8, Nick): the collector's road levels the SCOUT \u2014 every
+     genuinely new species catalogued teaches the standing Field Scout +2
+     (a pure collector was level 0 forever; now the companion grows) */
+  if(newOnes.length && scoutId && codex.has(scoutId)) awardXP(scoutId, newOnes.length*2);
   toast('Survey Complete',
     newOnes.length+' new species catalogued'+
     (top && top.grade ? ' — rarest: <span style="color:'+top.grade.hex+'">'+top.grade.name+(top.grade.star?' '+top.grade.star:'')+' '+top.name+'</span>' : '')+
@@ -9318,6 +9323,8 @@ function discoverSpecies(g, from){
       setTimeout(()=>toast('\u2604 Rare Find Bonus','+'+_b+' Stardust for a legendary specimen. Total: '+essence+'.'), 1300);
     }
   }
+  /* v1.5.2 D3 (P8): the single-catalogue path teaches the scout too */
+  if(scoutId && codex.has(scoutId) && scoutId!==fresh.id) awardXP(scoutId, 2);
   toast('Species Catalogued',
     (fresh.grade?'<span style="color:'+fresh.grade.hex+'">'+fresh.grade.name+(fresh.grade.star?' '+fresh.grade.star:'')+'</span> · ':'')+
     fresh.name+' — view it in your Compendium.');
@@ -9843,6 +9850,7 @@ function goTo(w){
       st.scam={x:0, y:0, z:st.sz0*1.05};
     }
     st.mode='system';
+    try{ _arriveSystem(w.star.seed); }catch(_){ }
   }
   st.fade=1;
 }
@@ -9995,6 +10003,21 @@ function cleanName(s){ return String(s).replace(/[<>&"']/g,'').trim().slice(0,24
 const surveyedSet=new Set();     /* planet seeds of living worlds you've surveyed */
 const galSeen=new Set();         /* galaxy seeds you've flown inside */
 const surfSeen=new Set();        /* planet seeds you've stood on */
+/* v1.5.2 D5/P3 (Nick): ARRIVAL PAYS — the first time you reach a system,
+   the record notes it: a log line and a pinch of Stardust. 18,000 jumps
+   deserved more than 18 payoffs. Capped, oldest evicted (save sysv). */
+const sysSeen=new Set();         /* star seeds you've arrived at */
+function _arriveSystem(seed){
+  try{
+    if(_loading || !tutDone || seed==null || seed===SOL_SEED || sysSeen.has(seed)) return;
+    sysSeen.add(seed);
+    if(sysSeen.size>900){ const _old=sysSeen.values().next().value; sysSeen.delete(_old); }
+    essence+=2; stats.essenceEarned=(stats.essenceEarned||0)+2;
+    stats.arrivals=(stats.arrivals||0)+1;
+    toast('🧭 First Arrival', starName(seed)+' — no expedition record precedes you here. +2 ☄ Stardust.');
+    queueSave();
+  }catch(_){ }
+}
 const starKindsSeen=new Set();   /* star classes you've surveyed */
 const ptypesSeen=new Set();      /* world types you've surveyed */
 const eventKeysSeen=new Set();   /* cosmic events you've witnessed */
@@ -10578,7 +10601,7 @@ function doSave(){
       anomalies:stats.anomalies, anomKey:lastAnomKey,
       events:stats.events, duels:stats.duels, duelwins:stats.duelwins,
       surveyed:[...surveyedSet],
-      gals:[...galSeen], surf:[...surfSeen],
+      gals:[...galSeen], surf:[...surfSeen], sysv:[...sysSeen],
       starK:[...starKindsSeen], ptypes:[...ptypesSeen],
       evts:[...eventKeysSeen].slice(-200),
       evann:[..._evAnnounced].slice(-60),
@@ -10700,6 +10723,7 @@ function loadSave(){
     stats.surveys=surveyedSet.size;
     for(const s of (data.gals||[])) galSeen.add(s);
     for(const s of (data.surf||[])) surfSeen.add(s);
+    for(const s of (data.sysv||[])){ const n=+s; if(Number.isFinite(n)) sysSeen.add(n); }   /* absent ⇒ arrivals pay fresh (safe) */
     for(const s of (data.starK||[])) starKindsSeen.add(s);
     for(const s of (data.ptypes||[])) ptypesSeen.add(s);
     for(const s of (data.evts||[])) eventKeysSeen.add(s);
@@ -10768,7 +10792,7 @@ function resetMemoryState(){
      even if the browser soft-navigates instead of doing a hard reload */
   try{
     codex.clear(); logMap.clear(); conquered.clear(); landed.clear();
-    surveyedSet.clear(); galSeen.clear(); surfSeen.clear();
+    surveyedSet.clear(); galSeen.clear(); surfSeen.clear(); sysSeen.clear();
     starKindsSeen.clear(); ptypesSeen.clear(); eventKeysSeen.clear();
     _evAnnounced.clear(); unlocked.clear(); customNames.clear();
     if(typeof notifications!=='undefined' && notifications.length) notifications.length=0;
@@ -13043,10 +13067,14 @@ const RELEASES=[
   '🛠 TRAINING LEARNS THE FORGE — Field Training gained a nineteenth lesson: the order loans a pinch of ore, you open your 🧰 hold, and craft your first Iron Plate at the real Fabricator (and learn where ore comes from). Like everything in training it&#8217;s a sandbox — the ore and the plate go back to the order on your way out.',
   '⚔ THE QUEST SYSTEM — the mainline is called <b>CHAPTERS</b> now, and the charter board beneath it went progressive: charters arrive in <b>chains</b> — the five trades and the Sol tour — each revealing one link at a time. A revealed charter waits for your <b>ACCEPT</b> before it tracks (three ride at once); a deed the frontier has already seen you do completes on the spot, already proven. The weekly board opens when the five trades are learned.',
   '🎒 CHARTERS PAY GEAR — five early links pay a crafted piece on completion (a headlamp, mag-boots, a meteorite pendant, field leggings, a comms earpiece), worn straight into an empty socket. The early game outfits you through quests; the Fabricator stays the upgrade path.',
-  '🧭 NUDGES LEAD SOMEWHERE — the next-step nudge speaks the chain (your accepted charter first, else the link awaiting its Accept), and tapping a guiding toast (marked ›) opens the Charters board itself.'],
+  '🧭 NUDGES LEAD SOMEWHERE — the next-step nudge speaks the chain (your accepted charter first, else the link awaiting its Accept), and tapping a guiding toast (marked ›) opens the Charters board itself.',
+  '🧭 ARRIVAL PAYS — the first time you reach a system no expedition record precedes you in, the record says so: a First Arrival line and +2 ☄ Stardust. Eighteen thousand jumps deserved more than eighteen payoffs.'],
  ],
  ['⚖ Balancing', [
   '⛏ THE MINING BURST — one press buys a burst of up to ten pulls (~16 seconds), then the drills stand down and want another press. A card parked open can no longer drain a world&#8217;s finite reserve while you sleep; recipes that extend the burst are on the road ahead.',
+  '⬆ CHAPTER GOALS COUNT DEEDS — mining goals in the Chapters count drill RUNS now, not loads (one press = one deed), so the burst makes you richer without fast-forwarding the campaign. Your hold and the charters still count every real load.',
+  '👑 GUARDIANS HONOR THE DISTANCE — Apex Guardians now ride the same region law as every apex defender (+14% power per region out). The ordinary natives have fought harder farther out since v1.4; the named guardians no longer sit that law out.',
+  '🛡 LEGENDS GROW WHERE THE WORLDS ARE RARER — conquest XP now scales with the conquered world&#8217;s tier, and every genuinely new species catalogued teaches your standing Field Scout (+2 XP): the collector&#8217;s road finally levels a companion of its own.',
   '🩸 THE MERCY LAW REACHES CONQUEST — a fallen BRED champion crawls home Critical instead of dying (your bloodline is broken, not erased); champion duty can beat you to the brink but never kill you; and below a quarter health you cannot lead a conquest yourself — send a beast, or mend first. The 5,000-player synthetic panel died 344 times re-queuing that exact fight; that door is closed. Wild-caught champions still pay the old price — a keeper&#8217;s bond is earned by breeding.',
   '🌡 THE DEPTH TAX — field wounds now scale with distance: bioscans and wary receptions in the home galaxy bite softer than before, and each universe region beyond adds its tax, up to more than double at the Frontier. The shown danger %% never lied; now the PRICE is graded too. Near home, a naked explorer&#8217;s survival is close to certain; the deep rings are where scouts, hulls and suits earn their keep.'],
  ],
@@ -13441,7 +13469,15 @@ function apexNative(d){
   /* a guarded world's defender is its named Apex Guardian — until it falls */
   if(d.planetSeed!=null && !conquered.has(d.planetSeed)){
     const gd=guardianFor(d.planetSeed);
-    if(gd) return {name:gd.name, genome:gd.genome, guardian:true, region:0};
+    if(gd){
+      /* v1.5.2 D2 (Nick): guardians ride the same region law as every
+         apex — ordinary natives scaled +14%/region since v1.4; this
+         branch skipped it. App-layer copy; codes never carry _mult. */
+      const _regG=(typeof st!=='undefined'&&st.gal)?regionAt(st.gal.x,st.gal.y):0;
+      const gg={...gd.genome};
+      if(_regG>0) gg._mult=1+_regG*0.14;
+      return {name:gd.name, genome:gg, guardian:true, region:_regG};
+    }
   }
   let best=fauna[0], bt=-1;
   for(const g of fauna){ const t=battleStats(g).total; if(t>bt){ bt=t; best=g; } }
@@ -13521,7 +13557,9 @@ function runConquestBattle(d, champ, native){
       stats.duels++;
       if(res.winner==='A'){
         stats.duelwins++;
-        if(!champ.isPlayer && champ.id) awardXP(champ.id, native.guardian?60:20);
+        /* v1.5.2 D3 (Nick): conquest XP scales with the world's tier —
+           leveling finally opens up with distance, like everything else */
+        if(!champ.isPlayer && champ.id) awardXP(champ.id, (native.guardian?60:20)+(d.designation?d.designation.tier:0));
         conquered.set(d.planetSeed, {t:0, tier:(d.designation?d.designation.tier:1)});
         gameEvent('conquest', {planetSeed:d.planetSeed});
         if(native.guardian){
@@ -13696,7 +13734,7 @@ function minePending(ps){
   if(!autoExtractorOwned() || !mined.has(ps)) return 0;
   return Math.min(30, Math.floor((Date.now()-(mined.get(ps)||0))/6e5));
 }
-function mineWorld(d){
+function mineWorld(d, press){
   const ps=d.planetSeed; if(ps==null) return;
   const tier=(d.designation?d.designation.tier:0);
   const R=reserveFor(ps, tier);
@@ -13740,7 +13778,9 @@ function mineWorld(d){
      with the ore that actually moved */
   stats.mines=(stats.mines||0)+loads;
   if(n0+loads>=R) stats.minedout=(stats.minedout||0)+1;   /* a world given everything */
-  gameEvent('mined', {planetSeed:ps, first:_firstMine, loads:loads});
+  /* press marks the pull that STARTED a burst — the chapter goals count
+     presses (one press = one deed), the charters keep counting pulls */
+  gameEvent('mined', {planetSeed:ps, first:_firstMine, loads:loads, press:!!press});
   const left=R-(n0+loads);
   playRaritySting(rare?4:2); fxBurst(FX_GOLD, rare?26:14);
   const gotTxt=[...got.entries()].map(e=>e[1]+'× '+(ELEM_NAME[e[0]]||e[0])).join(' · ');
@@ -13774,7 +13814,7 @@ function mineStop(){
 function mineToggle(d){
   if(_mineRun && _mineRun.seed===d.planetSeed){ mineStop(); return; }
   mineStop();
-  if(!mineWorld(d)) return;                    /* first pull now; dead vein = nothing to run */
+  if(!mineWorld(d, true)) return;              /* first pull now (the press); dead vein = nothing to run */
   const seed=d.planetSeed;
   _mineRun={seed, pulls:1, t:setInterval(()=>{
     try{
@@ -15266,7 +15306,7 @@ const ASC_CHAPTERS=[
   intro:'Sol is yours to learn — the rest of the sky is charts and longing. Mine the dead worlds, feed the Fabricator, and build the Jump Drive.',
   goals:[
    {id:'c1-land', ev:'landfall', filt:x=>x&&x.planetSeed!=null&&_SOL_SEEDS.has(x.planetSeed), n:2, t:'Make planetfall on 2 worlds of Sol'},
-   {id:'c1-mine', ev:'mined', filt:x=>x&&x.planetSeed!=null&&_SOL_SEEDS.has(x.planetSeed), n:8, t:'Pull 8 loads of ore at Sol&#8217;s dead worlds'},
+   {id:'c1-mine', ev:'mined', filt:x=>x&&x.planetSeed!=null&&_SOL_SEEDS.has(x.planetSeed), n:8, t:'Run the drills 8 times at Sol&#8217;s dead worlds'},
    {id:'c1-part', ev:'crafted', filt:x=>x&&x.cat==='part', n:4, t:'Fabricate 4 basic parts'},
    {id:'c1-comp', ev:'crafted', filt:x=>x&&x.cat==='comp', n:2, t:'Assemble 2 components'},
    {id:'c1-jump', ev:'crafted', filt:x=>x&&x.id==='jumpdrive', n:1, t:'Build the ⚡ Jump Drive'},
@@ -15286,7 +15326,7 @@ const ASC_CHAPTERS=[
   goals:[
    {id:'c3-breed', ev:'bred', filt:x=>x&&x.ok, n:1, t:'Breed a hybrid bloodline'},
    {id:'c3-gear',  ev:'crafted', filt:x=>x&&x.cat==='gear', n:2, t:'Craft 2 pieces of explorer gear'},
-   {id:'c3-mine',  ev:'mined', n:20, t:'Pull 20 more loads of ore'},
+   {id:'c3-mine',  ev:'mined', n:20, t:'Run the drills 20 more times'},
    {id:'c3-ig',    ev:'crafted', filt:x=>x&&x.id==='igdrive', n:1, t:'Build the 🌌 Intergalactic Drive'},
   ],
   unlockNote:'The dark between galaxies is yours to cross — from here the Prime Codex Signatures extend the frontier, ring by ring.'},
@@ -15341,8 +15381,12 @@ function ascEvent(type, detail){
     for(const g of ch.goals){
       if((ascProg[g.id]||0)>=g.n || g.ev!==type) continue;
       if(g.filt && !g.filt(detail||{})) continue;
-      /* mining goals count LOADS (auto-extractor hauls included) */
-      const inc=(type==='mined' && detail && detail.loads>0)?detail.loads:1;
+      /* v1.5.2 D1 (Nick's ruling): mining goals count PRESSES — one press
+         = one burst = one deed, so the burst cap can't collapse chapter
+         pacing. The ore itself still gates the recipes; charters and the
+         hold keep counting real loads. */
+      if(type==='mined' && !(detail && detail.press)) continue;
+      const inc=1;
       ascProg[g.id]=Math.min(g.n, (ascProg[g.id]||0)+inc);
       hit=true;
       if(ci===ascCh && (ascProg[g.id]||0)>=g.n && !ch.goals.every(g2=>(ascProg[g2.id]||0)>=g2.n)){
