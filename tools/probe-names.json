@@ -162,5 +162,13 @@
  "_mineRun",
  "_lastDesc",
  "mineToggle",
- "mineStop"
+ "mineStop",
+ "chacc",
+ "chAccept",
+ "_chAvailable",
+ "_chAccepted",
+ "_tradesDone",
+ "_chById",
+ "CH_CHAINS",
+ "MINE_BURST"
 ]

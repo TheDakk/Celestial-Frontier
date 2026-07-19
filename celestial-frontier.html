@@ -502,6 +502,10 @@
   #chpanel .ch .cr{margin-left:auto;font-size:10px;color:#ffd96a;white-space:nowrap}
   #chpanel .ch .cd{font-size:10.5px;color:var(--dim);line-height:1.5;margin-top:3px}
   #chpanel .ch .chk{color:#7fe6a0}
+  /* v1.5.2 accept-to-activate: the Accept pill wears the reward gold */
+  #chpanel .ch .cacc{margin-left:6px;font:700 9.5px var(--ui);letter-spacing:.09em;text-transform:uppercase;color:#1a1206;
+    background:#ffd96a;border-radius:8px;padding:2px 9px;cursor:pointer;white-space:nowrap}
+  #chpanel .ch .cacc:hover{background:#ffe79a}
   /* v1.4: the Ascent chapter rides pinned above the charter board */
   #chpanel .ascbox{border:1px solid rgba(127,208,255,0.35);border-radius:12px;padding:9px 9px 6px;margin:0 0 10px;
     background:linear-gradient(180deg,rgba(127,208,255,0.07),rgba(6,8,16,0.3));box-shadow:0 0 14px rgba(127,208,255,0.08)}
@@ -1671,7 +1675,7 @@
 <div id="primebox"><div class="card">
   <button id="primeclose" class="pxclose" type="button">&times;</button>
   <div class="ph"><div class="pt">✦ The Prime Codex</div>
-    <div class="psubt">The Pathfinders’ Trail — the endgame arc that begins where the Ascent ends. Nine lost beacons, nine Signatures: walk their trail, recover each beacon’s relic blueprint, and finish the master survey they died one discovery short of. Complete it, and the Celestial Frontier reveals itself.</div></div>
+    <div class="psubt">The Pathfinders’ Trail — the endgame arc that begins where the Chapters end. Nine lost beacons, nine Signatures: walk their trail, recover each beacon’s relic blueprint, and finish the master survey they died one discovery short of. Complete it, and the Celestial Frontier reveals itself.</div></div>
   <div class="pmeter-wrap"><div class="pmeter"><i id="prime-meter"></i></div>
     <div class="pmeta"><span id="prime-count">0 / 9</span><span id="prime-rank">Wanderer</span></div></div>
   <div id="prime-grid" class="pgrid"></div>
@@ -10025,17 +10029,24 @@ function evClass(tt){
   if(/⛏|☄|⛳|Harvest|Mined|Deposits|samples|Ground survey|Cargo/i.test(t)) return 'gain';
   return 'info';
 }
-function _showToast(title, msg){
+function _showToast(title, msg, go){
   const el=document.createElement('div'); el.className='tst tk-'+evClass(title);
-  el.innerHTML='<div class="tt">'+title+'</div>'+msg;
+  el.innerHTML='<div class="tt">'+title+(go?' ›':'')+'</div>'+msg;
   /* linger long enough to actually read: ~reading speed, 4.2s—9s */
   const hold=Math.min(9000, 4200 + String(title+msg).replace(/<[^>]*>/g,'').length*38);
   let _gone=false;
   const dismiss=()=>{ if(_gone) return; _gone=true;
     el.style.transition='opacity .4s'; el.style.opacity='0'; setTimeout(()=>el.remove(),420); };
-  el.addEventListener('click', dismiss);          /* tap to dismiss early */
+  /* v1.5.2 deep link (S9): a toast that names a surface takes you there —
+     the tap still dismisses either way */
+  el.addEventListener('click', ()=>{ if(go) _goSurface(go); dismiss(); });
   toastEl.appendChild(el);
   setTimeout(dismiss, hold);
+}
+function _goSurface(name){
+  try{
+    if(name==='charters' && chBtn && !chOpen) chBtn.click();
+  }catch(_){ }
 }
 function flushToasts(){
   let i=0;
@@ -10043,15 +10054,15 @@ function flushToasts(){
      startTutorial must stay quiet (the tray already holds every entry) */
   /* re-check notifications too — the toggle may have flipped while the
      queue waited behind the title screen (settings audit, v1.3) */
-  while(_toastQ.length){ const [t,m]=_toastQ.shift(); setTimeout(()=>{ if(!_trainingUp() && notifOn) _showToast(t,m); }, 400+i*1100); i++; }
+  while(_toastQ.length){ const [t,m,g]=_toastQ.shift(); setTimeout(()=>{ if(!_trainingUp() && notifOn) _showToast(t,m,g); }, 400+i*1100); i++; }
 }
-function toast(title, msg){
+function toast(title, msg, go){
   /* training keeps ONE voice — the guidance card. Pop-ups rest in the tray
      (nothing lost; the tray step's payoff, and the same quiet the
      achievements always kept). They resume the moment training ends. */
   if(notifOn && !_trainingUp()){
-    if(_introUp()) _toastQ.push([title, msg]);    /* the title screen stays quiet */
-    else _showToast(title, msg);
+    if(_introUp()) _toastQ.push([title, msg, go]);    /* the title screen stays quiet */
+    else _showToast(title, msg, go);
   }
   pushNotif(title, msg);   /* always logged to the bell tray, even when popups are off */
 }
@@ -10399,7 +10410,7 @@ const ACH=[
   {id:'shipwright',cat:'Engineering', ic:'⚡', name:'Shipwright',      d:'Build the Jump Drive', t:()=>itemCount('jumpdrive')>=1},
   {id:'arraybuilt',cat:'Engineering', ic:'📡', name:'The Long Ear',    d:'Build the Long-Range Array', t:()=>itemCount('array')>=1},
   {id:'rimbreaker',cat:'Engineering', ic:'🌌', name:'Rim-Breaker',     d:'Build the Intergalactic Drive', t:()=>itemCount('igdrive')>=1},
-  {id:'ascended',  cat:'Engineering', ic:'⬆', name:'The Ascent',      d:'Complete all three Ascent chapters', t:()=>(typeof ascCh!=='undefined' && ascCh>=ASC_CHAPTERS.length && itemCount('igdrive')>=1)},
+  {id:'ascended',  cat:'Engineering', ic:'⬆', name:'The Last Chapter', d:'Complete all three Chapters', t:()=>(typeof ascCh!=='undefined' && ascCh>=ASC_CHAPTERS.length && itemCount('igdrive')>=1)},
   {id:'lastvein',  cat:'Engineering', ic:'⛏', name:'To the Last Vein', d:'Mine a world completely dry', t:()=>(stats.minedout||0)>=1},
   {id:'richstrike',cat:'Engineering', ic:'💎', name:'Prospector&#8217;s Luck', d:'Pull 250 loads of ore', t:()=>(stats.mines||0)>=250},
   /* — Cosmic Events — */
@@ -10545,7 +10556,7 @@ function doSave(){
       scout:scoutId, landings:stats.landings||0,
       wvo:[..._waveOffs].slice(-400),
       cont:[...contacted].slice(-4000),
-      chs:[...chDone], chw:chWeek, chp:chProg, charters:stats.charters||0,
+      chs:[...chDone], chw:chWeek, chp:chProg, chacc:[...chacc], charters:stats.charters||0,
       notifs:notifications.slice(0,50),
       me:explorerName,
       essence:essence,
@@ -10705,6 +10716,9 @@ function loadSave(){
     if(data.chp && typeof data.chp==='object'){
       for(const k in data.chp){ const v=+data.chp[k]; if(typeof k==='string' && k.length<24 && Number.isFinite(v) && v>=0) chProg[k]=Math.min(v|0, 999); }
     }
+    /* v1.5.2 accept-to-activate: absent ⇒ nothing accepted (safe — the
+       board offers its chains fresh); ids validated against both decks */
+    for(const s of (data.chacc||[])) if(typeof s==='string' && !chDone.has(s) && (CHARTER_STARTERS.some(c=>c.id===s)||CHARTER_POOL.some(c=>c.id===s))) chacc.add(s);
     for(const it of (data.log||[])){ if(it && it.id){ it.star=''; logMap.set(it.id, it); } }
     homeId=(data.home && logMap.has(data.home))?data.home:null;
     for(const s of (data.land||[])){ const n=+s; if(Number.isFinite(n)) landed.add(n); }
@@ -10763,7 +10777,7 @@ function resetMemoryState(){
     _waveOffs.clear(); _descCleared=null; _descDeclined=null; _descOpenFor=null; _apprLatch=null;
     scoutId=null; _pendingSample=null;
     contacted.clear(); _pendingContact=null;
-    chDone.clear(); chProg={}; chWeek=-1;
+    chDone.clear(); chProg={}; chWeek=-1; chacc.clear();
     /* v1.4 audit catch: the engineer's track never reset in-place — a soft
        reset kept your cargo, mined worlds and tech until a hard reload */
     mined.clear(); mineX.clear(); cargo.clear(); techOwned.clear();
@@ -12749,13 +12763,13 @@ const GUIDE=[
  {id:'research', t:'Research & ships', k:'research tech technology bench drive ship hull scanner lab fusion antimatter warp travel distance', body:
   '<p>The engineer’s track, parallel to the Prime Codex: the Prime Codex is your legend, the Research Bench is your capability. Research costs mined elements + ☄ Stardust:</p><ul><li><b>🛰 Deep Scanners</b> — survey cards reveal mineral veins from orbit.</li><li><b>🛡 Reinforced Hull</b> — hostile bioscans wound you 25% lighter.</li><li><b>🧪 Xenobotany Lab</b> — flora meals nourish one extra stat point.</li><li><b>The drive ladder</b> — 🚀 Fusion → ⚛ Antimatter → 🌀 Warp Fold. Hyperlane travel scales with real distance; each drive cuts it, and Warp Fold makes every jump arrive in a breath. Distance is never a wall — only a wait, and only ever a short one.</li></ul>'},
  {id:'crafting', t:'The Fabricator & gear', k:'craft crafting fabricator recipe parts components ship systems gear equipment suit tool module instrument charm slot equip mining rig auto extractor anchor', body:
-  '<p>The <b>Fabricator</b> lives at the <b>🛠 Shipyard</b> (right rail) — your ship, her systems, and both workbenches in one place. It turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">The Ascent</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character screen (tap your nameplate) shows your explorer head to boots, with nine sockets pinned to the body — Helmet at the head, Earpiece at the ear, Necklace below the chin, Suit on the chest, Gloves and Tool at the hands, Leggings, Boots, and the Module — the 🎒 pack on your shoulder. Mining rigs and gloves multiply hauls; suits, visors and leggings blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); boots, greaves and the module ladder steady landings up to the Gravitic Anchor, which never waves off; earpieces and necklaces sharpen first contact, rich strikes, meals and travel.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
- {id:'ascent', t:'The Ascent', k:'ascent chapter chapters sol lock jump drive ring ladder progression mainline quest unlock neighborhood galaxy intergalactic', body:
-  '<p><b>⬆ The Ascent</b> is the mainline: three chapters, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p><b>The spectrum expands with the rings.</b> Rarity is a ladder of distance: the Neighborhood catalogues up to <b>Legendary</b>, the home galaxy up to <b>Mythic</b>, and each region beyond opens one more band — Celestial, Primordial, Transcendent — until the Deep Field frees the <b>summit grades</b>. The strangest finds live farthest out; guardians, Paragons and your own bred bloodlines are beyond the law.</p>'},
+  '<p>The <b>Fabricator</b> lives at the <b>🛠 Shipyard</b> (right rail) — your ship, her systems, and both workbenches in one place. It turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">Chapters</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character screen (tap your nameplate) shows your explorer head to boots, with nine sockets pinned to the body — Helmet at the head, Earpiece at the ear, Necklace below the chin, Suit on the chest, Gloves and Tool at the hands, Leggings, Boots, and the Module — the 🎒 pack on your shoulder. Mining rigs and gloves multiply hauls; suits, visors and leggings blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); boots, greaves and the module ladder steady landings up to the Gravitic Anchor, which never waves off; earpieces and necklaces sharpen first contact, rich strikes, meals and travel.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
+ {id:'ascent', t:'Chapters', k:'ascent chapter chapters sol lock jump drive ring ladder progression mainline quest unlock neighborhood galaxy intergalactic', body:
+  '<p><b>⬆ The Chapters</b> are the mainline: three of them, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p><b>The spectrum expands with the rings.</b> Rarity is a ladder of distance: the Neighborhood catalogues up to <b>Legendary</b>, the home galaxy up to <b>Mythic</b>, and each region beyond opens one more band — Celestial, Primordial, Transcendent — until the Deep Field frees the <b>summit grades</b>. The strangest finds live farthest out; guardians, Paragons and your own bred bloodlines are beyond the law.</p>'},
 ]},
 {icon:'✦', cat:'The Prime Codex', blurb:'Signatures, the frontier, endings', topics:[
  {id:'signatures', t:'The Pathfinders’ Trail (nine Signatures)', k:'signature prime codex trail beacon relic blueprint stone ocean flame sky life mind prism star void win endgame', body:
-  '<p><b>The Trail is the endgame</b> — it begins where the Ascent ends, beyond the Rim. The Pathfinders died one discovery short of completing their master survey; their nine lost beacons mark nine legendary <b>Signatures</b>. Claim all nine to reach the Celestial Frontier. Seven are claimed by <b>conquering</b> a worthy world; two by <b>finding</b> a worthy object:</p><ul><li><b>Stone</b> — a rare rocky, metal or mineral world (conquer)</li><li><b>Ocean</b> — a living ocean world (conquer)</li><li><b>Flame</b> — an extreme volcanic world (conquer)</li><li><b>Sky</b> — an aerial or gas-giant ecosystem (conquer)</li><li><b>Life</b> — a complex land biosphere (conquer)</li><li><b>Mind</b> — a world with a sapient native (conquer)</li><li><b>Prism</b> — a unique prismatic lifeform’s world (conquer)</li><li><b>Star</b> — an extreme star or stellar remnant (find)</li><li><b>Void</b> — a black hole or galactic anomaly (find)</li></ul><p><b>Every claim recovers a relic blueprint</b> — nine unique, signature-tier pieces of gear (one per socket) that only the Fabricator of a Signature-holder can forge. The Codex panel (✦, left rail) tells each beacon’s story, names how far its trail reaches, and marks the blueprints you hold. Species-borne Signatures require their world to be conquered first — and the deepest trails (Mind, Prism) only complete far out in the rings.</p>'},
+  '<p><b>The Trail is the endgame</b> — it begins where the Chapters end, beyond the Rim. The Pathfinders died one discovery short of completing their master survey; their nine lost beacons mark nine legendary <b>Signatures</b>. Claim all nine to reach the Celestial Frontier. Seven are claimed by <b>conquering</b> a worthy world; two by <b>finding</b> a worthy object:</p><ul><li><b>Stone</b> — a rare rocky, metal or mineral world (conquer)</li><li><b>Ocean</b> — a living ocean world (conquer)</li><li><b>Flame</b> — an extreme volcanic world (conquer)</li><li><b>Sky</b> — an aerial or gas-giant ecosystem (conquer)</li><li><b>Life</b> — a complex land biosphere (conquer)</li><li><b>Mind</b> — a world with a sapient native (conquer)</li><li><b>Prism</b> — a unique prismatic lifeform’s world (conquer)</li><li><b>Star</b> — an extreme star or stellar remnant (find)</li><li><b>Void</b> — a black hole or galactic anomaly (find)</li></ul><p><b>Every claim recovers a relic blueprint</b> — nine unique, signature-tier pieces of gear (one per socket) that only the Fabricator of a Signature-holder can forge. The Codex panel (✦, left rail) tells each beacon’s story, names how far its trail reaches, and marks the blueprints you hold. Species-borne Signatures require their world to be conquered first — and the deepest trails (Mind, Prism) only complete far out in the rings.</p>'},
  {id:'regions', t:'Frontier regions', k:'region reach frontier expand charter solar local cluster near deep outer dark travel gate', body:
   '<p>You begin charted for the <b>Solar Reach</b>. Each Signature claimed pushes your charter outward — <em>the Local Cluster, the Near Field, the Deep Field, the Outer Dark</em>, and finally <em>the Frontier</em>. Travel beyond your charter is blocked until you’ve earned it, and farther regions field tougher apex defenders with stranger life.</p>'},
  {id:'endings', t:'Endings & the Celestial Frontier', k:'ending win frontier legacy prismatic complete game finish', body:
@@ -13740,8 +13754,14 @@ function mineWorld(d){
    press ⛏ Mine once and the drills keep pulling every couple of seconds —
    press again to stop. Stops on its own when the vein empties, the card
    changes worlds, or the card closes. Every auto pull is a real pull
-   through mineWorld — same yields, same counters, same finite reserves. */
-let _mineRun=null;   /* {seed, t} */
+   through mineWorld — same yields, same counters, same finite reserves.
+   THE BURST CAP (v1.5.2, Nick's ruling): one press buys one BURST of up
+   to MINE_BURST pulls (~16s), then the drills stand down and want another
+   press — parking a card open AFK can no longer drain a finite reserve.
+   Burst size is the future upgrade knob (rigs/recipes may extend it).
+   Never multi-world, never offline — the Auto-Extractor keeps that role. */
+let _mineRun=null;   /* {seed, t, pulls} */
+const MINE_BURST=10;
 function mineStop(){
   if(_mineRun){ clearInterval(_mineRun.t); _mineRun=null; _panelKey=null; }
 }
@@ -13750,10 +13770,11 @@ function mineToggle(d){
   mineStop();
   if(!mineWorld(d)) return;                    /* first pull now; dead vein = nothing to run */
   const seed=d.planetSeed;
-  _mineRun={seed, t:setInterval(()=>{
+  _mineRun={seed, pulls:1, t:setInterval(()=>{
     try{
       if(!_lastDesc || _lastDesc.planetSeed!==seed || !panelEl || panelEl.style.display==='none'){ mineStop(); return; }
-      if(!mineWorld(_lastDesc)) mineStop();
+      if(!mineWorld(_lastDesc)){ mineStop(); return; }
+      if(_mineRun && ++_mineRun.pulls>=MINE_BURST) mineStop();   /* the burst is spent — the drills stand down */
     }catch(_){ mineStop(); }
   }, 1600)};
   _panelKey=null;
@@ -14944,21 +14965,46 @@ let _tutHook=null, _tutStep=-1, _tutSnap=null, _tutPreIds=null, _tutTimer=0;
    mining cooldowns; the DOMAIN stays pure).
    Owns: CHARTER_STARTERS, CHARTER_POOL, chDone, chWeek, chProg, chOpen, charterEvent, renderCharters
    ---------------------------------------------------------------- */
+/* v1.5.2 ACCEPT-TO-ACTIVATE (Nick): a charter tracks only once ACCEPTED.
+   `chk` is the "already proven" test (S1): a STATE charter whose deed is
+   already done completes on the spot at accept — no lost credit, no
+   silent banking. COUNT charters (no chk, or n>1) count from accept.
+   Training's own footfall is home ground — Earth never proves st-land. */
 const CHARTER_STARTERS=[
- {id:'st-land',  ev:'landfall',  n:1, t:'Make planetfall',      d:'Land on any world — press Land on its survey card, or dive in and confirm the descent. A first footfall pays field samples.', sd:10},
- {id:'st-mine',  ev:'mined',     n:1, t:'Prospect a dead world', d:'Land on a lifeless world and press Mine Deposits — the elements stock your Cargo hold for research.', sd:15},
- {id:'st-scan',  ev:'bioscan',   n:1, t:'Discover life',         d:'Find a living world and press Discover Life on its card — mind the danger percentage, or send a scout.', sd:15},
- {id:'st-scout', ev:'scout-set', n:1, t:'Name a Field Scout',    d:'Open one of your fauna in the Compendium and press Scout — it takes the hit when a bioscan turns hostile.', sd:15},
- {id:'st-conq',  ev:'conquest',  n:1, t:'Conquer a world',       d:'Press Conquer Planet on a world with fauna and pick a champion — yourself, or one of your beasts.', sd:25},
+ {id:'st-land',  ev:'landfall',  n:1, t:'Make planetfall',      d:'Land on any world — press Land on its survey card, or dive in and confirm the descent. A first footfall pays field samples.', sd:10,
+   chk:()=>{ for(const s of surfSeen) if(s!==133) return true; return false; }},
+ {id:'st-mine',  ev:'mined',     n:1, t:'Prospect a dead world', d:'Land on a lifeless world and press Mine Deposits — the elements stock your Cargo hold for research.', sd:15,
+   chk:()=>(stats.mines||0)>0},
+ {id:'st-scan',  ev:'bioscan',   n:1, t:'Discover life',         d:'Find a living world and press Discover Life on its card — mind the danger percentage, or send a scout.', sd:15, item:'earpiece'},
+ {id:'st-scout', ev:'scout-set', n:1, t:'Name a Field Scout',    d:'Open one of your fauna in the Compendium and press Scout — it takes the hit when a bioscan turns hostile.', sd:15,
+   chk:()=>!!scoutId},
+ {id:'st-conq',  ev:'conquest',  n:1, t:'Conquer a world',       d:'Press Conquer Planet on a world with fauna and pick a champion — yourself, or one of your beasts.', sd:25,
+   chk:()=>{ for(const s of conquered.keys()) if(s!==133) return true; return false; }},
  /* v1.5.2b THE SOL TOUR (Nick: "think of it like EverQuest — quests that
     send you out and bring you back"): a guided lap of the home system,
     each stop paying on the spot. All reachable at stage 0. */
- {id:'st-mercury', ev:'landfall', filt:x=>x&&x.planetSeed===131, n:1, t:'First footfall: Mercury', d:'Sol&#8217;s innermost world bakes in the glare. Stand on it — the sunward veins run rich.', sd:10},
- {id:'st-mars',    ev:'landfall', filt:x=>x&&x.planetSeed===134, n:1, t:'The red neighbor',        d:'Mars waited a long age for boots. Land, and read the rust from the ground.', sd:10},
- {id:'st-giants',  ev:'mined', filt:x=>x&&(x.planetSeed===135||x.planetSeed===136), n:5, t:'Wells of the giants', d:'Set the drills running in Jupiter or Saturn&#8217;s deep decks — 5 loads between them.', sd:15},
- {id:'st-ice',     ev:'landfall', filt:x=>x&&(x.planetSeed===137||x.planetSeed===138), n:1, t:'The cold frontier', d:'Uranus or Neptune — stand at the edge of Sol&#8217;s long dark, where the ices wait.', sd:10},
- {id:'st-comp',    ev:'crafted', filt:x=>x&&x.cat==='comp', n:1, t:'A working component',  d:'Assemble any T2 component at the 🛠 Shipyard — the Jump Drive is built from these.', sd:15},
+ {id:'st-mercury', ev:'landfall', filt:x=>x&&x.planetSeed===131, n:1, t:'First footfall: Mercury', d:'Sol&#8217;s innermost world bakes in the glare. Stand on it — the sunward veins run rich.', sd:10,
+   chk:()=>surfSeen.has(131), item:'headlamp'},
+ {id:'st-mars',    ev:'landfall', filt:x=>x&&x.planetSeed===134, n:1, t:'The red neighbor',        d:'Mars waited a long age for boots. Land, and read the rust from the ground.', sd:10,
+   chk:()=>surfSeen.has(134), item:'magboots'},
+ {id:'st-giants',  ev:'mined', filt:x=>x&&(x.planetSeed===135||x.planetSeed===136), n:5, t:'Wells of the giants', d:'Set the drills running in Jupiter or Saturn&#8217;s deep decks — 5 loads between them.', sd:15, item:'meteor'},
+ {id:'st-ice',     ev:'landfall', filt:x=>x&&(x.planetSeed===137||x.planetSeed===138), n:1, t:'The cold frontier', d:'Uranus or Neptune — stand at the edge of Sol&#8217;s long dark, where the ices wait.', sd:10,
+   chk:()=>surfSeen.has(137)||surfSeen.has(138), item:'fieldlegs'},
+ {id:'st-comp',    ev:'crafted', filt:x=>x&&x.cat==='comp', n:1, t:'A working component',  d:'Assemble any T2 component at the 🛠 Shipyard — the Jump Drive is built from these.', sd:15,
+   chk:()=>ITEMS.some(it=>it.cat==='comp'&&itemCount(it.id)>0)},
 ];
+/* v1.5.2 PROGRESSIVE CHAINS (Nick's quest-system law): the board shows
+   only AVAILABLE work — each chain reveals ONE link at a time; completing
+   it reveals the next. The five TRADES are the spine (they open the
+   weekly board when the chain completes — S3); the SOL TOUR is optional
+   side income and gates nothing. A chain never reveals a link the
+   player's ring can't reach (the _far0 law, S2). */
+const CH_CHAINS=[
+ {id:'trades', ids:['st-land','st-mine','st-scan','st-scout','st-conq']},
+ {id:'tour',   ids:['st-mercury','st-mars','st-giants','st-ice','st-comp']},
+];
+const CH_CAP=3;            /* a full slate (S4) */
+const chacc=new Set();     /* accepted, incomplete charter ids (save chacc) */
 const CHARTER_POOL=[
  {id:'wk-land',  ev:'landfall', n:3, t:'Boots on three worlds', d:'Make planetfall on 3 worlds you have never stood on.', sd:20},
  {id:'wk-mine',  ev:'mined', filt:x=>x&&x.first, n:3, t:'Deep veins', d:'Mine deposits on 3 dead worlds you have never mined.', sd:25},
@@ -14982,6 +15028,7 @@ function _chRoll(){
   if(wk!==chWeek){
     chWeek=wk;
     for(const k in chProg) if(k[0]==='w') delete chProg[k];
+    for(const id of [...chacc]) if(id[0]==='w') chacc.delete(id);   /* last week's slate expires */
   }
 }
 function _chWeekly(){
@@ -14990,36 +15037,83 @@ function _chWeekly(){
   for(let i=0;i<3 && pool.length;i++) out.push(pool.splice((r()*pool.length)|0,1)[0]);
   return out;
 }
-function _chActive(){
-  _chRoll();
-  const rem=CHARTER_STARTERS.filter(c=>!chDone.has(c.id));
-  return rem.length ? rem : _chWeekly();   /* all starters listen at once — no lost credit */
-}
+function _chById(id){ return CHARTER_STARTERS.find(c=>c.id===id)||CHARTER_POOL.find(c=>c.id===id); }
 function _chDoneOf(c){ return c.id[0]==='s' ? chDone.has(c.id) : (chProg[c.id]||0)>=c.n; }
+/* v1.4 review catch, now the S2 chain law: at ring 0 the life-hunting
+   trades (scan/scout/conquer) are beyond Sol — a chain must never REVEAL
+   a link the player's ring can't reach */
+function _far0Ids(){ return (typeof ascStage==='function' && ascStage()===0)?{'st-scan':1,'st-scout':1,'st-conq':1}:{}; }
+function _tradesDone(){ return CH_CHAINS[0].ids.every(id=>chDone.has(id)); }
+function _chainNext(chain){
+  const id=chain.ids.find(i=>!chDone.has(i));
+  if(!id) return null;
+  return _far0Ids()[id] ? {locked:true, id} : {locked:false, id, c:_chById(id)};
+}
+function _chLockedNote(){
+  for(const chain of CH_CHAINS){ const nx=_chainNext(chain); if(nx && nx.locked) return '⬆ The next trade awaits the stars — build the ⚡ Jump Drive.'; }
+  return '';
+}
+function _chAvailable(){   /* revealed, reachable, not yet accepted */
+  _chRoll();
+  const out=[];
+  for(const chain of CH_CHAINS){
+    const nx=_chainNext(chain);
+    if(nx && !nx.locked && !chacc.has(nx.id)) out.push(nx.c);
+  }
+  if(_tradesDone()) for(const c of _chWeekly()) if(!chacc.has(c.id) && !_chDoneOf(c)) out.push(c);
+  return out;
+}
+function _chAccepted(){    /* accepted and still in the field */
+  _chRoll();
+  const wkIds=_tradesDone()?new Set(_chWeekly().map(c=>c.id)):null;
+  return [...chacc].map(_chById).filter(Boolean)
+    .filter(c=>!_chDoneOf(c))
+    .filter(c=>c.id[0]!=='w' || (wkIds&&wkIds.has(c.id)));
+}
+/* v1.5.2 CHARTER GEAR (S5, static phase): a link can pay a CRAFTED piece —
+   existing low-tier ids only, the same for every explorer. The quiet
+   pieces (lamp, boots, pendant, leggings, earpiece) outfit the early
+   game; rigs, gloves and suits stay the Fabricator's moment. */
+function _chGrant(id){
+  const it=ITEM_BY.get(id); if(!it) return '';
+  items.set(id, itemCount(id)+1);
+  try{ if(!equip[it.slot]) equipItem(it.slot, id, true); }catch(_){ }
+  try{ showCargoBtn(); }catch(_){ }
+  return ' The charter pays gear: '+it.name+' — yours, worn or held.';
+}
+function _chComplete(c, proven){
+  const tradesBefore=_tradesDone();
+  if(c.id[0]==='s') chDone.add(c.id); else chProg[c.id]=c.n;
+  chacc.delete(c.id);
+  essence+=c.sd; stats.essenceEarned=(stats.essenceEarned||0)+c.sd;
+  stats.charters=(stats.charters||0)+1;
+  playRaritySting(2);
+  const gear=c.item?_chGrant(c.item):'';
+  const reveal=_chAvailable().find(x=>x.id[0]==='s');
+  toast('Charter Complete', '“'+c.t+'”'+(proven?' — already proven.':'')+' +'+c.sd+' ☄ Stardust.'+gear+
+    (!tradesBefore && _tradesDone() ? ' The trades are learned — the weekly charter board is open.' : '')+
+    (reveal ? ' A new charter is on the board: '+reveal.t+' — accept it to begin.' : (_chLockedNote()?' '+_chLockedNote():'')), 'charters');
+}
+function chAccept(id){
+  const c=_chById(id);
+  if(!c || chacc.has(id) || _chDoneOf(c)) return;
+  if(_chAccepted().length>=CH_CAP){ toast('Charter Board', 'Three charters is a full slate — see one through first.'); return; }
+  chacc.add(id);
+  let proven=false;
+  try{ proven=!!(c.chk && c.chk()); }catch(_){ proven=false; }
+  if(proven) _chComplete(c, true);
+  else toast('Charter Accepted', '“'+c.t+'”'+(c.n>1?' — counting from here on.':'')+' Pays +'+c.sd+' ☄ on completion.', 'charters');
+  if(chOpen) renderCharters(); _chBadge(); checkAch(); renderRank(); queueSave();
+}
 function charterEvent(type, detail){
   if(!tutDone || _loading) return;
   let hit=false;
-  for(const c of _chActive()){
-    if(_chDoneOf(c) || c.ev!==type) continue;
+  for(const c of _chAccepted()){
+    if(c.ev!==type) continue;
     if(c.filt && !c.filt(detail)) continue;
     chProg[c.id]=(chProg[c.id]||0)+1;
     hit=true;
-    if((chProg[c.id]||0)>=c.n){
-      if(c.id[0]==='s') chDone.add(c.id);
-      essence+=c.sd; stats.essenceEarned=(stats.essenceEarned||0)+c.sd;
-      stats.charters=(stats.charters||0)+1;
-      playRaritySting(2);
-      /* v1.4 review catch: at Ascent stage 0 the life-hunting starters
-         (scan/scout/conquer) are beyond Sol — never point the player at
-         a charter they cannot physically reach yet */
-      const _far0=(typeof ascStage==='function' && ascStage()===0)?{'st-scan':1,'st-scout':1,'st-conq':1}:{};
-      const rem0=CHARTER_STARTERS.filter(x=>!chDone.has(x.id));
-      const nxt=rem0.find(x=>!_far0[x.id]);
-      toast('Charter Complete', '“'+c.t+'” — +'+c.sd+' ☄ Stardust.'+(c.id[0]==='s'
-        ? (nxt ? ' Next charter: '+nxt.t+'.'
-          : (rem0.length ? ' The rest of the board awaits the stars beyond Sol.'
-                         : ' The trades are learned — the weekly charter board is open.')) : ''));
-    }
+    if((chProg[c.id]||0)>=c.n) _chComplete(c, false);
   }
   if(hit){ if(chOpen) renderCharters(); _chBadge(); checkAch(); renderRank(); queueSave(); }
 }
@@ -15038,16 +15132,23 @@ function nextStepGoal(){
       const g=ch.goals.find(g2=>(ascProg[g2.id]||0)<g2.n);
       if(g){
         const p=Math.min(ascProg[g.id]||0, g.n);
-        return {key:'asc:'+g.id, tt:'🧭 Next Step — '+ch.name.replace(/^Chapter \d+ — /,''),
+        return {key:'asc:'+g.id, tt:'🧭 Next Step — '+ch.name.replace(/^Chapter \d+ — /,''), go:'charters',
           ms:g.t.replace(/&#8217;/g,'’')+(g.n>1?' ('+p+' / '+g.n+')':'')+'. The chapter rides atop your Charters board (top right).'};
       }
     }
-    const _far0=(typeof ascStage==='function' && ascStage()===0)?{'st-scan':1,'st-scout':1,'st-conq':1}:{};
-    const c=_chActive().find(c2=>!_chDoneOf(c2) && !_far0[c2.id]);
-    if(c){
-      const p=Math.min(chProg[c.id]||0, c.n);
-      return {key:'ch:'+c.id+(c.id[0]==='w'?':'+chWeek:''), tt:'🧭 Next Charter — '+c.t,
-        ms:c.d+(c.n>1?' ('+p+' / '+c.n+')':'')+' Pays +'+c.sd+' ☄ on the spot.'};
+    /* v1.5.2 the chain speaks: an accepted charter first; else the next
+       link waiting for its ACCEPT (S9) */
+    const accN=_chAccepted();
+    if(accN.length){
+      const c=accN[0], p=Math.min(chProg[c.id]||0, c.n);
+      return {key:'ch:'+c.id+(c.id[0]==='w'?':'+chWeek:''), tt:'🧭 Next Charter — '+c.t, go:'charters',
+        ms:c.d+(c.n>1?' ('+p+' / '+c.n+')':'')+' Pays +'+c.sd+' ☄ on completion.'};
+    }
+    const avN=_chAvailable();
+    if(avN.length){
+      const c=avN[0];
+      return {key:'chacc:'+c.id+(c.id[0]==='w'?':'+chWeek:''), tt:'🧭 A Charter Awaits — '+c.t, go:'charters',
+        ms:'Accept it on the Charters board (top right) — pays +'+c.sd+' ☄.'};
     }
     if(primeCount()<9){
       return {key:'prime:'+primeCount(), tt:'🧭 The Long Road',
@@ -15066,7 +15167,7 @@ function _questNudge(){
     }
   }catch(_){ }
   _nudged.add(g.key);
-  toast(g.tt, g.ms);
+  toast(g.tt, g.ms, g.go);
 }
 document.addEventListener('pointerdown', ()=>{ _lastActT=Date.now(); }, {passive:true, capture:true});
 document.addEventListener('keydown', ()=>{ _lastActT=Date.now(); }, {passive:true, capture:true});
@@ -15077,12 +15178,10 @@ setInterval(()=>{ try{
 const chBtn=document.getElementById('chbtn'), chPanel=document.getElementById('chpanel');
 function _chBadge(){
   const dot=chBtn&&chBtn.querySelector('.dot');
-  if(dot) dot.style.display=_chActive().some(c=>!_chDoneOf(c))?'':'none';
+  if(dot) dot.style.display=(_chAvailable().length||_chAccepted().length)?'':'none';
 }
 function renderCharters(){
   if(!chPanel) return;
-  const list=_chActive().length && CHARTER_STARTERS.some(c=>!chDone.has(c.id)) ? CHARTER_STARTERS : _chWeekly();
-  const starters=list===CHARTER_STARTERS;
   let h='';
   /* v1.4: the Ascent chapter rides pinned above the charter board — the
      mainline always names your next step */
@@ -15098,21 +15197,43 @@ function renderCharters(){
       }
       h+='</div>';
     } else if(typeof ascCh!=='undefined' && ascCh>=ASC_CHAPTERS.length && (itemCount('igdrive')||itemCount('array')||itemCount('jumpdrive'))){
-      h+='<div class="ambient" style="color:#7fd0ff">⬆ The Ascent is complete — the frontier ladder is yours.</div>';
+      h+='<div class="ambient" style="color:#7fd0ff">⬆ Every chapter is closed — the frontier ladder is yours.</div>';
     }
   }
-  h+='<div class="ehead">'+(starters?'Starter charters — learn the trades':'Weekly charters')+'</div>';
-  if(!starters) h+='<div class="ambient">Three fresh charters every week — the same board for every explorer in the universe.</div>';
-  const _far0=(starters && typeof ascStage==='function' && ascStage()===0)?{'st-scan':1,'st-scout':1,'st-conq':1}:{};
-  for(const c of list){
-    const done=_chDoneOf(c), p=Math.min(chProg[c.id]||0, c.n);
-    h+='<div class="ch'+(done?' done':'')+'"><div class="ct">'+(done?'<span class="chk">✓</span> ':'')+c.t+
-      (c.n>1?' <span class="cp">'+p+' / '+c.n+'</span>':'')+
-      '<span class="cr">+'+c.sd+' ☄</span></div>'+
-      (done?'':'<div class="cd">'+c.d+(_far0[c.id]?' <span style="color:#7fd0ff">Awaits the stars — Sol&#8217;s worlds hold no wild life; build the ⚡ Jump Drive first.</span>':'')+'</div>')+'</div>';
+  /* v1.5.2 the progressive board: Accepted (in the field) → Available
+     (accept to begin) → the chain-locked note → the honored count */
+  const acc=_chAccepted(), avail=_chAvailable(), wkOpen=_tradesDone();
+  if(acc.length){
+    h+='<div class="ehead">Accepted — in the field</div>';
+    for(const c of acc){
+      const p=Math.min(chProg[c.id]||0, c.n);
+      h+='<div class="ch"><div class="ct">'+c.t+
+        (c.n>1?' <span class="cp">'+p+' / '+c.n+'</span>':'')+
+        '<span class="cr">+'+c.sd+' ☄</span></div>'+
+        '<div class="cd">'+c.d+(c.item&&ITEM_BY.get(c.item)?' <span style="color:#ffd96a">Pays gear: '+ITEM_BY.get(c.item).name+'.</span>':'')+'</div></div>';
+    }
   }
+  if(avail.length){
+    h+='<div class="ehead">Available — accept to begin</div>';
+    if(acc.length>=CH_CAP) h+='<div class="ambient">Three charters is a full slate — see one through to accept another.</div>';
+    for(const c of avail){
+      h+='<div class="ch"><div class="ct">'+c.t+
+        '<span class="cr">+'+c.sd+' ☄</span><span class="cacc" role="button" tabindex="0" data-chacc="'+c.id+'">Accept</span></div>'+
+        '<div class="cd">'+c.d+(c.item&&ITEM_BY.get(c.item)?' <span style="color:#ffd96a">Pays gear: '+ITEM_BY.get(c.item).name+'.</span>':'')+'</div></div>';
+    }
+  }
+  const lock=_chLockedNote();
+  if(lock) h+='<div class="ambient" style="color:#7fd0ff">'+lock+'</div>';
+  if(wkOpen) h+='<div class="ambient">Three fresh charters every week — the same board for every explorer in the universe.</div>';
+  if(!acc.length && !avail.length && !lock && wkOpen) h+='<div class="ambient">The week&#8217;s board is clear — new charters at the next rollover.</div>';
+  const honored=stats.charters||0;
+  if(honored) h+='<div class="ambient">✓ '+honored+' charter'+(honored===1?'':'s')+' honored.</div>';
   chPanel.innerHTML=h;
 }
+chPanel&&chPanel.addEventListener('click',(e)=>{
+  const b=e.target&&e.target.closest&&e.target.closest('[data-chacc]');
+  if(b) chAccept(b.dataset.chacc);
+});
 if(chBtn) chBtn.addEventListener('click', ()=>{
   chOpen=!chOpen;
   chPanel.style.display=chOpen?'block':'none';
@@ -15219,7 +15340,7 @@ function ascEvent(type, detail){
       hit=true;
       if(ci===ascCh && (ascProg[g.id]||0)>=g.n && !ch.goals.every(g2=>(ascProg[g2.id]||0)>=g2.n)){
         const nxt=ch.goals.find(g2=>(ascProg[g2.id]||0)<g2.n);
-        toast('⬆ The Ascent', '“'+g.t.replace(/<[^>]*>/g,'')+'” done.'+(nxt?' Next: '+nxt.t.replace(/<[^>]*>/g,'')+'.':''));
+        toast('⬆ '+ch.name, '“'+g.t.replace(/<[^>]*>/g,'')+'” done.'+(nxt?' Next: '+nxt.t.replace(/<[^>]*>/g,'')+'.':''));
       }
     }
   }
@@ -15229,7 +15350,7 @@ function ascEvent(type, detail){
     const ch=ASC_CHAPTERS[ascCh];
     ascCh++;
     playFanfare(); fxBurst(FX_GOLD, 40);
-    cinematic({kicker:'⬆ THE ASCENT', title:ch.name.replace(/&#8217;/g,'’'), sub:ch.unlockNote.replace(/&#8217;/g,'’'), hex:'#7fd0ff', tier:5,
+    cinematic({kicker:'⬆ CHAPTER COMPLETE', title:ch.name.replace(/&#8217;/g,'’'), sub:ch.unlockNote.replace(/&#8217;/g,'’'), hex:'#7fd0ff', tier:5,
       then:()=>{ const nx=_ascActive(); if(nx) toast('⬆ '+nx.name, nx.intro); }});
     gameEvent('ascent-chapter', {done:ch.id, now:ascCh});
   }
@@ -15516,11 +15637,15 @@ function _tutFinish(){
     toast('✦ Welcome to the Frontier', 'Training complete. Fly far, '+(explorerName||'Explorer')+' — the Guide (?) is always at hand.');
     /* the hunt board takes over where training leaves off: five starter
        charters teach the trades in order, each paid on the spot */
-    pushNotif('Expedition Charters', 'Your hunt board is open (Charters, top right) — first charter: Make planetfall.');
+    /* v1.5.2 (S4): the first trade link is accepted for you — the
+       "more charters await" handoff stays seamless; every later link
+       wants its ACCEPT from the board */
+    try{ chacc.add('st-land'); }catch(_){ }
+    pushNotif('Expedition Charters', 'Your hunt board is open (Charters, top right) — your first charter is accepted: Make planetfall. New charters are ACCEPTED from the board as each one reveals the next.');
     /* v1.4: a NEW expedition starts its Ascent — the mainline announces
        itself once, right where training ends */
     if(typeof _ascActive==='function' && _ascActive()){
-      pushNotif('⬆ The Ascent — '+_ascActive().name, 'Sol is your charter for now. '+_ascActive().intro+' (Pinned atop your Charters board.)');
+      pushNotif('⬆ '+_ascActive().name, 'Sol is your charter for now. '+_ascActive().intro+' (Pinned atop your Charters board.)');
     }
     _chBadge();
   }
@@ -16247,7 +16372,7 @@ function showFarewell(fw){
     '<div class="card" style="width:min(400px,calc(100vw - 36px));max-height:calc(100dvh - 40px);overflow-y:auto;text-align:center;padding:22px 20px;border-radius:16px;background:linear-gradient(180deg,rgba(26,32,58,0.97),rgba(13,17,32,0.97));border:1px solid rgba(170,184,236,0.3);box-shadow:0 20px 70px rgba(0,0,0,0.6)">'+
       '<div style="font:700 10px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--plasma)">The frontier begins anew</div>'+
       '<h3 style="font:700 24px var(--ui);margin:9px 0 8px;color:#f0cf8a">Farewell'+(fw.me?', '+fw.me:'')+'</h3>'+
-      '<div style="font:12.5px/1.65 var(--ui);color:var(--dim)">Your old expedition is honored — '+(fw.n?fw.n+' species catalogued, ':'')+'every league of it real. With v1.5 the frontier starts everyone anew on the same footing: one sky, one Ascent, no head starts.</div>'+
+      '<div style="font:12.5px/1.65 var(--ui);color:var(--dim)">Your old expedition is honored — '+(fw.n?fw.n+' species catalogued, ':'')+'every league of it real. With v1.5 the frontier starts everyone anew on the same footing: one sky, one road, no head starts.</div>'+
       bestHtml+
       '<button id="farewellok" style="width:100%;margin-top:13px;padding:12px 0;font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:#1a1206;border:0;border-radius:11px;background:linear-gradient(180deg,#ffe9b0,#e0a84a);cursor:pointer">Begin the new expedition</button>'+
     '</div>';

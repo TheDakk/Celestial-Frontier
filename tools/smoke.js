@@ -548,11 +548,15 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // charters: the hunt board opens after training with the starter list
     click2(sk.doc.getElementById('chbtn'), sk.w);
     const chp = sk.doc.getElementById('chpanel');
-    check('charters: the board opens with the starter charters', chp.style.display === 'block'
-      && chp.textContent.includes('Starter charters') && chp.textContent.includes('Make planetfall')
-      && chp.textContent.includes('Conquer a world'));
+    // v1.5.2 PROGRESSIVE CHAINS: the board shows only the first link of
+    // each chain — the trades spine (auto-accepted at training end) and
+    // the Sol tour (awaiting its Accept). Later links stay hidden.
+    check('charters: the board opens progressively — first links only', chp.style.display === 'block'
+      && chp.textContent.includes('Accepted — in the field') && chp.textContent.includes('Make planetfall')
+      && chp.textContent.includes('First footfall: Mercury') && !chp.textContent.includes('Conquer a world')
+      && !chp.textContent.includes('The red neighbor'));
     check('charters: nothing is complete on a fresh expedition', skH.chDone.size === 0
-      && !chp.textContent.includes('✓'));
+      && skH.chacc.has('st-land') && !!chp.querySelector('[data-chacc="st-mercury"]'));
     // Sol is deterministic: find a lifeless (venus-type) planet pick, hover it
     const okDead = await until(() => skH.st.mode === 'system'
       && skH.picks.some((p) => p.data && p.data.P && p.data.P.type === 'venus'), 6000, 'venus pick');
@@ -827,16 +831,23 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // (v1.3.5 panel manager: canvas taps close panels — Nick's stacking fix),
     // so reopen it to read the ticks.
     if (!visible(chp)) click2(sk.doc.getElementById('chbtn'), sk.w);
-    check('charters: Make planetfall completes on landing (paid + ticked)', skH.chDone.has('st-land')
-      && chp.textContent.includes('✓ Make planetfall'));
+    check('charters: Make planetfall completes on landing (auto-accepted at training end)', skH.chDone.has('st-land')
+      && chp.textContent.includes('1 charter honored'));
     const chToasts1 = [...sk.doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
-    check('charters: completion announces itself with the next charter', chToasts1.includes('Charter Complete')
+    check('charters: completion reveals the next link for its ACCEPT', chToasts1.includes('Charter Complete')
       && chToasts1.includes('Prospect a dead world'), chToasts1);
     check('MUD events: the charter toast wears the milestone gold tint', !!sk.doc.querySelector('#toast .tst.tk-gold'));
-    // mine right here — starter charter 2
+    // v1.5.2 ACCEPT-TO-ACTIVATE: the revealed link must be accepted before
+    // it tracks — mine first WITHOUT accepting, prove no silent credit,
+    // then accept (already-proven completes on the spot: S1's banked-state law)
+    check('charters: the revealed link waits for its ACCEPT (no silent tracking)',
+      !!chp.querySelector('[data-chacc="st-mine"]') && !skH.chDone.has('st-mine'));
     click2(pan3.querySelector('[data-act="mine"]'), sk.w);
-    check('charters: Prospect a dead world completes on the first mine', await until(() =>
-      skH.chDone.has('st-mine') && chp.textContent.includes('✓ Prospect a dead world'), 4000, 'charter 2'));
+    await until(() => (skH.stats && skH.stats.mines > 0) || true, 1500, 'first pull');
+    check('charters: an unaccepted charter earns nothing from the deed', !skH.chDone.has('st-mine'));
+    click2(chp.querySelector('[data-chacc="st-mine"]'), sk.w);
+    check('charters: accept honors banked state — already-proven completes on the spot', await until(() =>
+      skH.chDone.has('st-mine'), 4000, 'charter 2'));
     // cargo (v1.5.2b): the hold lives on the CHARACTER SHEET (rank opens it)
     click2(sk.doc.getElementById('rank'), sk.w);
     const cgEl = sk.doc.getElementById('cargo');
