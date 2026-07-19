@@ -955,7 +955,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       let xpOk = true;
       try { skH.awardXP(eX.id, 8); } catch (e) { xpOk = false; }
       check('victory XP: awardXP runs clean (levelOf exported)', xpOk && (eX.genome.xp || 0) >= 8);
-      check('victory XP: levelOf math holds', skH.levelOf({ xp: 108 }) === 3 && skH.levelOf({ xp: 0 }) === 0);
+      check('victory XP: levelOf math holds (6*l^2 — the v1.5 rebalance)',
+      skH.levelOf({ xp: 54 }) === 3 && skH.levelOf({ xp: 216 }) === 6 && skH.levelOf({ xp: 0 }) === 0);
     }
     // worlds obey the ladder only for post-law expeditions (this sk boot is
     // a fresh one → on), and a high-tier designation clamps to the ring

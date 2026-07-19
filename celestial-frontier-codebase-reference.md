@@ -129,7 +129,7 @@ etc.) are pure functions of position/seed.
 | `SOL_SEED` | 424242 | our solar system seed |
 | `PLAYER_SEED` | 0x50A1E5 | stable seed → deterministic duels vs the player |
 | `HARVEST_CD` | 3600e3 | 1-hour stardust-harvest cooldown (ms) |
-| `SAVE_KEY` | `'cfcc_save_v1'` | localStorage key |
+| `SAVE_KEY` | `'cfcc_save_v2'` | localStorage key (v1.5 fresh start; v1 read once for the farewell, then removed) |
 | Earth | planet seed **133** | home world, conquered from game start |
 
 ---
@@ -311,6 +311,14 @@ Logic: `worldSignature`, `speciesSignatures`, `primeCheckWorld`, `primeCheckSpec
 (species signatures require the world to be **conquered**), `claimSignature`, `primeCount`,
 `renderPrime`, `checkFrontier`, `chooseEnding`/`renderEnding`/`openFrontier`.
 
+**v1.5 — THE PATHFINDERS' TRAIL:** the Codex is presented as the endgame arc
+(begins where the Ascent ends). Each `SIGS` entry carries `lore` (its lost
+beacon's story beat) and `reach` (how far its trail leads); claiming a
+Signature unlocks its **relic blueprint** — nine `cat:'relic'` items in
+`ITEMS` (one per equipment socket, `sig` field names the gating Signature;
+`_canCraft` refuses while `primeFill[sig]` is empty). Claim mechanics,
+region gating and endings are unchanged. The "Prime Codex" NAME is law.
+
 ### Achievements
 `unlock(id)`, `checkAch`, `ACH` list (categories: Cataloguing, Breeding, Rarity, Worlds,
 Stellar, Exploration…). Shown in the stats panel as collapsible category groups.
@@ -322,17 +330,21 @@ Stellar, Exploration…). Shown in the stats panel as collapsible category group
 ### Topbar (unified across desktop & mobile)
 Brand hidden; breadcrumb hidden. Layout (flexbox, `--topbar-h` and `--row1-h` measured
 live by `syncTopbarH` + ResizeObserver):
-- **Row 1:** nameplate (rank pill, opens stats) … search box (grows to fill) + 🔔 bell.
+- **Row 1:** nameplate (rank pill, opens the character screen) … search box (grows to fill) + 🔔 bell.
 - **Row 2:** HP bar (heart + bar + "X/Y HP").
-- **Right rail** (anchored to bottom of row 1, `--row1-h`): **Prime Codex** → **Compendium**
-  → **Star Atlas**.
-- **Left rail** (anchored below full topbar): **Traveler's Beacon** → **Cosmic Events**.
+- **Right rail** (anchored to bottom of row 1, `--row1-h`): **Charters** (the v1.5
+  prime slot — gold pill) → **Compendium** → **Star Atlas** → **Cargo** (shortcut
+  into the character screen's inventory).
+- **Left rail** (anchored below full topbar): **Prime Codex** (endgame — moved here
+  in the v1.5 swap). Traveler's Beacon + Cosmic Events are HIDDEN for rework
+  (`EVENTS_DORMANT`; buttons `display:none`, engines refuse clicks).
 
 ### Key panels / modals (and their elements)
 | Element id | What |
 |---|---|
 | `#panel` | Survey card (scrollable; bookmark row; conquer/share buttons; "locked" pin hint at top-left). |
-| `#stats` | Expedition stats (rank, score, **clickable** battle-stat rows, collapsible **Statistics** + **Achievements**, rarity ladder). Opens **over the HP bar** (z-index 22, above topbar). |
+| `#sheet` / `#sheetcard` | **v1.5 THE CHARACTER SCREEN** — centered overlay (z 24) holding three regions: `#sheetstats` (contains `#stats`), `#doll` (full-body `paperdollAvatar()` + 9 sockets absolutely positioned via `DOLL_ANCHORS` + ship thumb + picker + effect readout), `#sheetcargo` (contains `#cargo`). `openSheet(view)`/`closeSheet()`; `statsOpen`/`cargoOpen` mirror `sheetOpen` for legacy callers. One PANELS entry (`id:'sheet'`, btns `#rank,#cargobtn`); ✕ seated on open. Mobile stacks doll → stats → cargo. |
+| `#stats` | Expedition stats REGION inside the sheet (rank/score, **clickable** battle-stat rows, collapsible **Statistics** + **Achievements**, nameplate picker, rarity ladder). No longer position:fixed. |
 | `#codex` / `#codexbtn` | **Compendium** (species). |
 | `#log` / `#logbtn` | **Star Atlas** (bookmarks). |
 | `#primebox` / `#pcdxbtn` | **Prime Codex** modal (× and backdrop close). |
@@ -469,7 +481,16 @@ presentation, the determinism ban covers domain modules only.
 
 ---
 
-## 10. Save format (`localStorage['cfcc_save_v1']`)
+## 10. Save format (`localStorage['cfcc_save_v2']`)
+
+**v1.5 FRESH START:** the key bumped `cfcc_save_v1` → `cfcc_save_v2` with **no
+migration** — the bump IS the wipe. `readLegacySave()` reads the old key once
+at boot to build the farewell card (rarest find honored), then removes it.
+All grandfather paths listed below (asc-absent ⇒ complete, land/cont absent
+⇒ back-filled, `rsw`/`rc` markers, veteran starter-charter auto-completes)
+are GONE — absent fields now take their plain post-law defaults. `cx` clamps
+0–7 (bit 4 = specimen field-notes fold). The historical notes below describe
+the v1 loader for the record.
 
 Written by `doSave` (debounced via `queueSave`, 900 ms). Fields (v1):
 

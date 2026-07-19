@@ -21,10 +21,12 @@ setTimeout(() => {
   const g = makeGenome(777001, 'fauna', 1);
   const S0 = battleStats(g);
   ok('fauna gets a class at level 0', !!S0.cls && S0.lvl === 0, JSON.stringify({cls:S0.cls, lvl:S0.lvl}));
-  const g3 = Object.assign({}, g, { xp: 120 });   // sqrt(120/12)=3.16 -> lvl 3
-  const g6 = Object.assign({}, g, { xp: 450 });   // sqrt(37.5)=6.1  -> lvl 6
-  ok('xp 120 -> level 3', battleStats(g3).lvl === 3, 'got ' + battleStats(g3).lvl);
-  ok('xp 450 -> level 6', battleStats(g6).lvl === 6, 'got ' + battleStats(g6).lvl);
+  // v1.5 balance: thresholds are 6*l^2 (L3=54, L6=216) — tuned by the
+  // 240-run leveling sim (12*l^2 left the class system unreachable)
+  const g3 = Object.assign({}, g, { xp: 60 });    // sqrt(60/6)=3.16 -> lvl 3
+  const g6 = Object.assign({}, g, { xp: 225 });   // sqrt(37.5)=6.1  -> lvl 6
+  ok('xp 60 -> level 3 (6*l^2 thresholds)', battleStats(g3).lvl === 3, 'got ' + battleStats(g3).lvl);
+  ok('xp 225 -> level 6', battleStats(g6).lvl === 6, 'got ' + battleStats(g6).lvl);
   ok('levels never change raw stats', ['vit','fer','res','agi','ins'].every(k => battleStats(g3)[k] === S0[k]),
      'stat drift detected');
   ok('flora gets no class', !battleStats(makeGenome(777002, 'flora', 1)).cls);
