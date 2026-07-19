@@ -255,7 +255,7 @@ async function expedition(sess, seed, nActions, deep) {
     // v1.5.2 the press is a BURST (S10): up to MINE_BURST pulls per mine
     // action — the sim's action unit matches the player's press unit
     const _burst = (H.MINE_BURST | 0) || 10;
-    for (let bi = 0; bi < _burst; bi++) { if (!H.mineWorld(d)) break; }
+    for (let bi = 0; bi < _burst; bi++) { if (!H.mineWorld(d, bi === 0)) break; }   // first pull carries the press (D1)
     if ((H.stats.mines || 0) === before) run.noops++;
     let rareAfter = 0; for (const s of RARE_SET) rareAfter += H.cargo.get(s) || 0;
     const bvGain = bv ? (H.cargo.get(bv) || 0) - cargoBv : 0;
@@ -522,6 +522,7 @@ async function expedition(sess, seed, nActions, deep) {
   run.ascChEnd = H.ascCh; run.stageEnd = H.ascStage();
   run.essenceEnd = H.essence;
   run.chartersDone = (H.stats && H.stats.charters) || 0;
+  run.arrivals = (H.stats && H.stats.arrivals) || 0;   // D5/P3 arrival pays
   // v1.5.2 progression review: variety must keep opening with the rings —
   // union of the game's survey-fed sets and what the bot physically touched
   run.ptypes = [...new Set([...(H.ptypesSeen || []), ..._ptSim])];
@@ -684,8 +685,11 @@ async function uiTraining(seed, chaos) {
       click(doc.getElementById('pickclose'));
       chaosBurst(); tutAct();
       await stall(() => visible(doc.getElementById('duelbox')), 6000, 'duel opens');
+      // only assert the focus-lockdown law if the duel actually OPENED —
+      // a spam-stalled run that never got there is a stall, not a break
+      const duelWasUp = visible(doc.getElementById('duelbox'));
       chaosBurst();   // chaos DURING the duel — the modal must not die
-      if (!visible(doc.getElementById('duelbox'))) run.breaks.push('duelbox closed by stray input during training duel');
+      if (duelWasUp && !visible(doc.getElementById('duelbox'))) run.breaks.push('duelbox closed by stray input during training duel');
       if (r() < 0.6) { await sleep(350); click(doc.getElementById('duelskip')); }
       await stall(() => tutAt(13), 30000, 'step 12 (duel done)');
       tutAct();
