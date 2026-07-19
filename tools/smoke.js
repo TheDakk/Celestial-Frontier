@@ -1,7 +1,7 @@
 // Interaction smoke test: boots the game in jsdom and drives real UI flows —
 // canvas taps, clicks, typing — asserting on the resulting DOM. Complements
 // the determinism fingerprint (pure functions) by covering wiring, including
-// the complete 19-step Field Training tutorial, the Guide, and tooltips.
+// the complete 20-step Field Training tutorial, the Guide, and tooltips.
 //
 // Runs against a probe build so it can locate canvas picks (window.__PROBE_HOOK__).
 //
@@ -59,7 +59,7 @@ async function until(fn, ms, label) {
   console.log('TIMEOUT waiting: ' + label);
   return false;
 }
-const tutAt = (n) => { const t = doc.getElementById('tutbox'); return visible(t) && t.textContent.includes(n + ' / 19'); };
+const tutAt = (n) => { const t = doc.getElementById('tutbox'); return visible(t) && t.textContent.includes(n + ' / 20'); };
 const tutAct = () => click(doc.getElementById('tut-act'));
 
 (async () => {
@@ -70,7 +70,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('probe hook present', !!H);
     check('intro name prompt shown for fresh expedition', visible(doc.getElementById('namebox')));
 
-    // ============ FIELD TRAINING — full 19-step drive ============
+    // ============ FIELD TRAINING — full 20-step drive ============
     type(doc.getElementById('namein'), 'SmokeTester');
     click(doc.getElementById('nameok'));
     check('name accepted, intro closed', !visible(doc.getElementById('namebox')));
@@ -185,6 +185,13 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('Atlas count is 1 (Earth)', doc.getElementById('logcount').textContent === '1');
     click(doc.getElementById('logbtn'));
     check('opening Atlas completes step 5', await until(() => tutAt(6), 3000, 'step6'));
+    // v1.5.2 THE LANDING LESSON: press Land on Earth's card — home never
+    // waves off, and Planetside (the vista) IS the lesson's payoff
+    click(doc.querySelector('#panel [data-act="landcta"]'));
+    check('landing on Earth completes the landing lesson', await until(() => tutAt(7), 3000, 'step7'));
+    check('landing lesson: Planetside opened for the landing', visible(doc.getElementById('vistabox')));
+    check('landing lesson: the vista yields the stage to the Compendium lesson', await until(() =>
+      !visible(doc.getElementById('vistabox')), 4000, 'vista grace'));
     check('training cache granted (6 specimens)', doc.getElementById('codexcount').textContent === '6');
     // training is toast-quiet: cache + rank-up land in the tray, never as pop-ups
     const tutToasts = [...doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
@@ -193,7 +200,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('training quiet: the bell tray still counts the story', visible(doc.getElementById('bellct'))
       && doc.getElementById('bellct').textContent !== '0');
     click(doc.getElementById('codexbtn'));
-    check('opening Compendium completes step 6', await until(() => tutAt(7), 3000, 'step7'));
+    check('opening Compendium completes step 6', await until(() => tutAt(8), 3000, 'step7'));
     check('kingdoms: filter chips stay hidden during training (one voice)',
       !doc.querySelector('#codex [data-ck]'));
 
@@ -214,7 +221,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       click(doc.querySelector('[data-pick="' + id + '"]'));
     };
     openCard(fauna[0].id);
-    check('opening a specimen completes step 7', await until(() => tutAt(8), 3000, 'step8'));
+    check('opening a specimen completes step 7', await until(() => tutAt(9), 3000, 'step8'));
     // v1.5 specimen condense: field notes fold like the world card's groups
     const revFold = doc.getElementById('rev-fold');
     check('specimen condense: the field notes ship folded with a digest',
@@ -241,19 +248,19 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.getElementById('rev-scout'));
     check('scout: toggling again stands it down', H.scoutId === null);
     tutAct();                                                       // card tour -> feed
-    check('step 9: feed', tutAt(9));
+    check('step 9: feed', tutAt(10));
 
     click(doc.getElementById('rev-feed'));
     check('feed picker lists flora', await until(() => visible(doc.getElementById('pickbox')) && doc.querySelector('#pick-list [data-pk]'), 3000, 'feed picker'));
     click(doc.querySelector('#pick-list [data-pk]'));
-    check('feeding completes step 9', await until(() => tutAt(10), 3000, 'step10'));
+    check('feeding completes step 9', await until(() => tutAt(11), 3000, 'step10'));
     click(doc.getElementById('pickclose'));
 
     // breed: same fauna card is still the open reveal
     click(doc.getElementById('rev-breed'));
     check('breed picker lists mates', await until(() => doc.querySelector('#pick-list [data-pk]'), 3000, 'breed picker'));
     click(doc.querySelector('#pick-list [data-pk]'));
-    check('breeding completes step 10', await until(() => tutAt(11), 3000, 'step11'));
+    check('breeding completes step 10', await until(() => tutAt(12), 3000, 'step11'));
     check('rigged training breed succeeded', doc.getElementById('pick-result').textContent.includes('born'));
     click(doc.getElementById('pickclose'));
 
@@ -265,19 +272,19 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       visible(doc.getElementById('duelbox')) && !!doc.getElementById('duelskip')
       && doc.getElementById('duelskip').style.display !== 'none', 8000, 'duel skip button'));
     click(doc.getElementById('duelskip'));
-    check('training duel resolves and completes step 11', await until(() => tutAt(12), 25000, 'duel done'));
+    check('training duel resolves and completes step 11', await until(() => tutAt(13), 25000, 'duel done'));
     check('hazard nip lands (HP 85/100)', await until(() => doc.getElementById('hptext').textContent === '85/100 HP', 3000, 'hp 85'));
     tutAct();                                                       // hazard -> heal
-    check('step 13: heal', tutAt(13));
+    check('step 13: heal', tutAt(14));
 
     click(doc.getElementById('hpheart'));
     check('heal picker lists flora', await until(() => doc.querySelector('#pick-list [data-pk]'), 3000, 'heal picker'));
     click(doc.querySelector('#pick-list [data-pk]'));
-    check('healing completes step 13', await until(() => tutAt(14), 3000, 'step14'));
+    check('healing completes step 13', await until(() => tutAt(15), 3000, 'step14'));
     click(doc.getElementById('pickclose'));
 
     click(doc.getElementById('bell'));
-    check('opening tray completes step 14', await until(() => tutAt(15), 3000, 'step15'));
+    check('opening tray completes step 14', await until(() => tutAt(16), 3000, 'step15'));
     // v1.5 (Nick's live pass + review catch): the tray the lesson opened
     // gets a grace beat on screen — the recruit must SEE what they opened —
     // then yields before the search lesson needs the box beneath it
@@ -286,22 +293,25 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('tray yields before the search lesson needs the box', await until(() =>
       !visible(doc.getElementById('tray')), 4000, 'tray grace close'));
     type(doc.getElementById('searchin'), 'earth');
-    check('searching earth completes step 15', await until(() => tutAt(16), 3000, 'step16'));
+    check('searching earth completes step 15', await until(() => tutAt(17), 3000, 'step16'));
     click(doc.getElementById('rank'));
-    check('character sheet completes step 16', await until(() => tutAt(17), 3000, 'step17'));
+    check('character sheet completes step 16', await until(() => tutAt(18), 3000, 'step17'));
     // v1.5.1 THE FORGE LESSON: loaned ore appears, the recruit crafts an
     // Iron Plate through the real Fabricator (sheet stays open from the
     // previous lesson — its cargo button is the panel's own token)
     check('forge: the loaned ore opens the hold (cargo button + iron)',
       doc.getElementById('cargobtn').style.display === 'flex' && (H.cargo.get('Fe') || 0) >= 4);
-    click(doc.querySelector('#cargo [data-ct="fab"]'));
-    await until(() => !!doc.querySelector('#cargo [data-craft="plate"]'), 2000, 'fab tab');
-    click(doc.querySelector('#cargo [data-craft="plate"]'));
-    check('forge: crafting the plate completes step 17', await until(() => tutAt(18), 3000, 'step18'));
+    // v1.5.2: the bench lives at the SHIPYARD — tap the docked ship
+    click(doc.getElementById('dollship'));
+    check('forge: the docked ship opens the Shipyard', await until(() =>
+      doc.getElementById('yard').style.display === 'flex', 2000, 'yard opens'));
+    await until(() => !!doc.querySelector('#yardbench [data-craft="plate"]'), 2000, 'fab group');
+    click(doc.querySelector('#yardbench [data-craft="plate"]'));
+    check('forge: crafting the plate completes step 17', await until(() => tutAt(19), 3000, 'step18'));
     check('forge: training craft credits NO charter and NO Ascent goal',
       !H.chDone.has('st-mine') && (H.ascProg['c1-part'] || 0) === 0);
     tutAct();                                                       // horizon -> finale (cleanup)
-    check('finale reached', await until(() => tutAt(19), 3000, 'step19'));
+    check('finale reached', await until(() => tutAt(20), 3000, 'step19'));
     check('cleanup: Compendium empty', doc.getElementById('codexcount').textContent === '0');
     check('cleanup: HP fully restored', doc.getElementById('hptext').textContent === '100/100 HP');
     check('cleanup: the loaned ore + practice plate went back to the order',
@@ -519,7 +529,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click2(sk.doc.getElementById('tut-skip'), sk.w);
     check('skip shows confirm', sk.doc.getElementById('tutbox').textContent.includes('Skip training?'));
     click2(sk.doc.getElementById('tut-skip-no'), sk.w);
-    check('Keep Training returns to step', sk.doc.getElementById('tutbox').textContent.includes('1 / 19'));
+    check('Keep Training returns to step', sk.doc.getElementById('tutbox').textContent.includes('1 / 20'));
     click2(sk.doc.getElementById('tut-skip'), sk.w);
     click2(sk.doc.getElementById('tut-skip-yes'), sk.w);
     check('skip closes tutorial', !visible(sk.doc.getElementById('tutbox')));
@@ -835,9 +845,18 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       // procedural data-URI icons — SVG in Classic, canvas PNG in HD (jsdom stubs the latter as 'data:,')
       && cgEl.querySelector('.slot img').src.startsWith('data:'));
     check('cargo: tiles carry quantities', !!cgEl.querySelector('.slot .qty'));
-    click2(cgEl.querySelector('[data-ct="bench"]'), sk.w);
-    check('cargo: the Research Bench lives on its own tab', cgEl.textContent.includes('Deep Scanners')
-      && !!cgEl.querySelector('.ctab.on[data-ct="bench"]'));
+    // v1.5.2: the hold is bags-only — empty slot boxes always visible; the
+    // Research Bench moved to the Shipyard (behind the docked ship)
+    check('cargo: the hold shows Diablo bag slots (empty boxes included)',
+      cgEl.querySelectorAll('.slot').length >= 24 && !!cgEl.querySelector('.slot.empty2'));
+    click2(sk.doc.getElementById('dollship'), sk.w);
+    check('shipyard: the docked ship opens the yard (sheet yields — one panel)',
+      await until(() => sk.doc.getElementById('yard').style.display === 'flex', 2000, 'yard')
+      && !visible(sk.doc.getElementById('sheet')));
+    click2(sk.doc.querySelector('#yardbench [data-yt="bench"]'), sk.w);
+    check('shipyard: the Research Bench lives on its own tab', await until(() =>
+      sk.doc.getElementById('yardbench').textContent.includes('Deep Scanners'), 2000, 'bench tab'));
+    click2(sk.doc.getElementById('rank'), sk.w);   // sheet replaces yard for the checks below
     // landing pays (v1.2): first footfall grants field samples + stardust
     const groundToasts = [...sk.doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
     check('discovery: first landing grants field samples (toast + stardust)',
@@ -889,11 +908,19 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('v1.4 Fabricator: crafting consumes elements and yields the part',
       skH.itemCount('plate') === 1 && skH.cargo.get('Fe') === 16);
     check('v1.4 Ascent: crafting advances the chapter goal', (skH.ascProg['c1-part'] || 0) >= 1);
-    click2(sk.doc.getElementById('cargobtn'), sk.w);
-    const cg4 = sk.doc.getElementById('cargo');
-    click2(cg4.querySelector('[data-ct="fab"]'), sk.w);
-    check('v1.4 Fabricator: the tab lists recipes with craft buttons', cg4.textContent.includes('Basic Parts')
-      && cg4.textContent.includes('Jump Drive') && !!cg4.querySelector('[data-craft]'));
+    if (!visible(sk.doc.getElementById('sheet'))) click2(sk.doc.getElementById('cargobtn'), sk.w);
+    click2(sk.doc.getElementById('dollship'), sk.w);
+    await until(() => sk.doc.getElementById('yard').style.display === 'flex', 2000, 'yard for fab');
+    click2(sk.doc.querySelector('#yardbench [data-yt="fab"]'), sk.w);   // the tab is remembered — pick fab explicitly
+    const yb4 = sk.doc.getElementById('yardbench');
+    check('v1.5.2 Fabricator: category folds list recipes with craft buttons (T1 open by default)',
+      yb4.textContent.includes('Basic Parts') && yb4.textContent.includes('Ship Systems')
+      && !!yb4.querySelector('.fabgrp.open [data-craft]'));
+    // fold discipline: T2 ships closed, opens on its header
+    click2(yb4.querySelector('.fabgrp[data-fg="comp"] .fghead'), sk.w);
+    check('v1.5.2 Fabricator: a closed category opens on its header',
+      !!sk.doc.querySelector('#yardbench .fabgrp[data-fg="comp"].open'));
+    click2(sk.doc.getElementById('rank'), sk.w);   // sheet back (yard yields) for the paperdoll block
     // gear: craft the Mining Rig chain's first tool and see it socket + boost
     skH.cargo.set('H', 12); skH.cargo.set('O', 12); skH.cargo.set('Cr', 6);
     skH.craftItem('cell'); skH.craftItem('wire'); skH.craftItem('plate');
@@ -914,6 +941,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     skH.craftItem('rl-star');
     check('trail: the claimed Signature IS the blueprint (relic forges + self-equips)',
       skH.itemCount('rl-star') === 1 && skH.equip.helmet === 'rl-star');
+    // v1.5.2 THE RECORDS BOARD: trophies out of the mirror
+    click2(sk.doc.getElementById('recbtn'), sk.w);
+    const recEl = sk.doc.getElementById('records');
+    check('records: 🏆 opens the board with the rarity ladder + achievement shelves',
+      visible(recEl) && recEl.querySelectorAll('.tier').length >= 12 && recEl.querySelectorAll('.agrp').length >= 5);
+    check('records: the character sheet no longer carries the trophies',
+      !sk.doc.getElementById('stats').textContent.includes('Rarity ladder'));
+    click2(sk.doc.getElementById('recbtn'), sk.w);
+    check('records: the button toggles it closed', !visible(recEl));
+    click2(sk.doc.getElementById('cargobtn'), sk.w);   // sheet back open — the paperdoll block toggles it
     // v1.5 THE PAPERDOLL: one centered character screen — sockets ON the body
     // (the sheet is still open from the 🧰 shortcut above — the buttons
     // toggle, so close it first, then open fresh from the nameplate)
