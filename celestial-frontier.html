@@ -15516,7 +15516,7 @@ const TUT_STEPS=[
  {id:'atlas-open', spot:'#logbtn', allow:['#logbtn','#log'],
   text:()=>'Earth is charted — your Atlas’s first entry. Open the <b>Star Atlas</b> (right rail). Tapping any entry travels there instantly; ☆ favorites and the ⌂ home mark live there too.',
   when:(t,d)=>t==='atlas-open'&&!!d.open},
- {id:'land', spot:'#panel [data-act="landcta"]', allow:['#panel','#vistabox'], acts:['landcta'],
+ {id:'land', spot:'#panel [data-act="landcta"]', allow:['#panel','#vistabox','#cosmos'], acts:['landcta'],   /* the canvas stays open: a closed card can always be re-opened by tapping Earth */
   text:()=>'Now stand on it. Press <b>Land</b> on Earth&#8217;s card — home never waves you off. <b>Planetside</b> opens: the world at ground level, painted from its own survey. Out there, hostile worlds fight the descent — the card always shows your odds first.',
   when:(t,d)=>t==='landfall'&&d.planetSeed===133},
  {id:'cache', spot:'#codexbtn', allow:['#codexbtn'],
@@ -15702,7 +15702,11 @@ function _tutPanelSweep(s, prev){
        inside the gate with no allowed way to close it (Nick's step-18
        lockup: zoomed into Earth, card open, every tap eaten) */
     try{
-      const needsCard=[...toks].some(t=>String(t).indexOf('#panel')>=0 || String(t).indexOf('data-act')>=0);
+      /* GRACE, like the registry sweep: the card survives one step past
+         the lesson that used it — sweeping it at the atlas step stranded
+         the land step with no card and no canvas (Nick's step-6 lock) */
+      const _refsCard=(arr)=>arr.some(t=>String(t).indexOf('#panel')>=0 || String(t).indexOf('data-act')>=0);
+      const needsCard=_refsCard([...toks]) || _refsCard(prevToks);
       if(!needsCard && typeof panelEl!=='undefined' && panelEl && panelEl.style.display!=='none'){
         stickyPick=null; locked=null;
         try{ mineStop(); }catch(_){ }
