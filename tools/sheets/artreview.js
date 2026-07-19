@@ -16,6 +16,7 @@ module.exports = {
     g.font='12px monospace';
     const cases=[
       ['sulfurdeck twilight rain (the postcard)', {seed:9101, era:'none', pal:'twilight', wb:'sulfurdeck', wx:'rain', moons:0, water:'none'}],
+      ['VIRGA on sulfurdeck (the pillar fix)',       {seed:9113, era:'none', pal:'twilight', wb:'sulfurdeck', evt:'virga', moons:0, water:'none'}],
       ['sulfurdeck day',                          {seed:9102, era:'none', pal:'day', wb:'sulfurdeck', moons:1, water:'none'}],
       ['sulfurdeck night',                        {seed:9103, era:'none', pal:'night', wb:'sulfurdeck', moons:1, water:'none'}],
       ['space-era skyline · temperate day',       {seed:9104, era:'space', pal:'day', wb:'temperate', flora:true, moons:1}],
