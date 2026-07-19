@@ -13236,7 +13236,7 @@ const RELEASES=[
   '🌸 THE CARD BLOSSOMS — orbit shows identity, a life-signature count, and a one-line environment summary; landing opens the environment fold, the biosphere survey, and the capture verbs.',
   '🐾 TAME & SCAVENGE — the biosphere survey reveals the roster instead of cataloguing it; each species is caught individually with visible odds (lower for rarer species, raised by crafted gear). Misses cost nothing; every Compendium page is earned.',
   '🔮 THE ELEMENTAL SIGNATURES — the Prime Codex is nine elements now, each ruled by a named titan (Terrakoth of Earth, Pyraxis of Fire, Nullreth of the Void…). The basics wait near home; Electric and Poison at mid range; Void and Prism far past the Deep Field. The beacon lore is retired — the elements are the arc.',
-  '⚔ THE TITAN HUNT — each element&#8217;s Signature is guarded by a unique named titan, far mightier than any wild apex — the same creature for every explorer, seeded to its world. The Codex reads a resonance that names the KIND of world to hunt (molten worlds for Fire, the deep dark for the Void) and how far out it lies; you won&#8217;t know a titan waits until you land and survey. Send your bred and tamed champions, fell it, and claim the element. Mine, craft, breed stronger, hunt the titans — the whole game meets here.',
+  '⚔ THE TITAN HUNT — each element&#8217;s Signature is guarded by a unique named titan, far mightier than any wild apex — the same creature for every explorer, seeded to its world. The Codex reads a resonance that names the KIND of world to hunt (molten worlds for Fire, the deep dark for the Void) and how far out it lies — <b>tap a resonance in reach to track it</b> and set a bearing for the titan&#8217;s nearest world. You won&#8217;t know a titan waits until you land and survey. Each titan wears its element and fights wrapped in it. Send your bred and tamed champions, fell it, and claim the element. Mine, craft, breed stronger, hunt the titans — the whole game meets here.',
   '🌍 THE CRADLE — Earth now carries a real, catchable biosphere from your first landing: land, survey, and tame or scavenge a full spread of beasts, birds, flora and microbes. Every one is a <b>starter</b> — grade capped at Uncommon, honest stat variance, no ceiling-breakers — so a menagerie on day one never becomes an early armory. Humanity stays on the card; the wildlife joins it.'],
  ],
  ['⚖ Balancing', [
@@ -13610,9 +13610,17 @@ if(BUILD_ID!=='dev'){
   if(pb) pb.addEventListener('click', e=>{ if(e.target===pb) pb.style.display='none'; });
   const grid=document.getElementById('prime-grid');
   if(grid) grid.addEventListener('click', e=>{
-    const slot=e.target.closest('[data-pgo]'); if(!slot) return;
-    const f=primeFill[slot.dataset.pgo];
-    if(f && f.where){ pb.style.display='none'; travelTo(f.where); }
+    const slot=e.target.closest('[data-pgo]');
+    if(slot){ const f=primeFill[slot.dataset.pgo]; if(f && f.where){ pb.style.display='none'; travelTo(f.where); } return; }
+    /* v1.5.2c stage 3: track an unclaimed titan — fly to the nearest world
+       its resonance points at (the scan runs on tap, never per-frame) */
+    const trk=e.target.closest('[data-tgo]');
+    if(trk){
+      const elem=trk.dataset.tgo, sg=SIGS.find(s=>s.id===elem);
+      const w=nearestTitanWorld(elem);
+      if(w){ pb.style.display='none'; toast('📡 Tracking '+(sg?sg.el:'')+' Titan', 'The resonance sharpens — bearing set for '+(sg?sg.guardian:'the titan')+'. Land and survey where it leads.'); travelTo(w); }
+      else toast('📡 '+(sg?sg.el:'')+' Resonance', 'The signal scatters — press your reach farther out and it will sharpen. '+(_SIG_HUNT[elem]?'Hunt '+_SIG_HUNT[elem]+'.':''));
+    }
   });
   const fr=document.getElementById('prime-frontier'); if(fr) fr.addEventListener('click', ()=>openFrontier());
   const list=document.getElementById('ending-list');
@@ -13650,22 +13658,93 @@ function _titanElemOf(d){
   const pt=d&&d.ptype;
   return (pt && _TITAN_WORLD[pt]) ? _TITAN_WORLD[pt] : null;
 }
+/* the seeded presence core — reusable so both the live card (titanFor) and
+   the resonance scanner (nearestTitanWorld) agree world-for-world */
+function _titanPresent(pseed, elem, reg){
+  if(pseed==null || (typeof primeFill!=='undefined' && primeFill[elem])) return false;
+  if(reg<(_TITAN_MINREG[elem]||0)) return false;
+  const salt=elem==='void'?0x5D:elem.charCodeAt(0);
+  return mulberry32(hashInt(pseed>>>0, 0x7174, salt)>>>0)()<0.085;   /* rare seeded roll */
+}
+function titanElemAt(pseed, ptype, reg){
+  /* which unclaimed element's titan rules this world in this region, or null */
+  if(_titanPresent(pseed, 'void', reg)) return 'void';   /* the deep dark's titan seeps into any far world */
+  const elem=(ptype && _TITAN_WORLD[ptype]) || null;
+  if(elem && _titanPresent(pseed, elem, reg)) return elem;
+  return null;
+}
 function titanFor(d){
   /* returns {elem, name, genome, tier} if this world guards an as-yet-
      unclaimed element's Signature right now, else null. Deterministic by
      world seed → the same titans on the same worlds for every explorer. */
   if(!d || d.planetSeed==null) return null;
   const reg=(typeof st!=='undefined'&&st.gal)?regionAt(st.gal.x,st.gal.y):0;
-  const claimed=(id)=>typeof primeFill!=='undefined' && primeFill[id];
-  const present=(id,salt)=>{ if(claimed(id) || reg<(_TITAN_MINREG[id]||0)) return false;
-    return mulberry32(hashInt(d.planetSeed>>>0, 0x7174, salt)>>>0)()<0.085; };   /* rare seeded roll */
-  /* Void is the deep dark's own titan — it seeps into ANY world far out,
-     no world-type needed (checked first so it can rule a frontier world) */
-  if(present('void', 0x5D)) return titanGuardian('void', d.planetSeed, reg);
-  /* the element this world's nature suits (Fire on molten worlds, …) */
-  const elem=_titanElemOf(d);
-  if(elem && present(elem, elem.charCodeAt(0))) return titanGuardian(elem, d.planetSeed, reg);
-  return null;
+  const elem=titanElemAt(d.planetSeed, d.ptype, reg);
+  return elem ? titanGuardian(elem, d.planetSeed, reg) : null;
+}
+/* per-element theming (v1.5.2c stage 3): SP_COLOR index + the world-field
+   the titan fights wrapped in, so each titan reads as its element */
+const _TITAN_THEME={
+  stone:{col:13, wf:null},  flame:{col:1, wf:'lava'},   sky:{col:10, wf:'gas'},
+  star:{col:3, wf:'gas'},   ocean:{col:8, wf:'ocean'},  mind:{col:4, wf:'ice'},
+  life:{col:0, wf:null},    void:{col:9, wf:null},       prism:{col:16, wf:null} };
+/* THE RESONANCE DEEP-LINK (v1.5.2c stage 3): find the nearest world where
+   this element's titan currently waits, so tapping the resonance flies the
+   hunter to it. Bounded, deterministic, on-demand (never per-frame). Near
+   elements live in the home galaxy; far ones out in their region band. */
+function nearestTitanWorld(elem){
+  try{
+    const minReg=_TITAN_MINREG[elem]||0;
+    const wantTypes=Object.keys(_TITAN_WORLD).filter(pt=>_TITAN_WORLD[pt]===elem);
+    const stg=(typeof ascStage==='function')?ascStage():3;
+    if(minReg===0){
+      /* the home galaxy (region 0) — only huntable once the drives open it */
+      if(stg<1) return null;
+      const homeGal={x:HOME_POS.x, y:HOME_POS.y, size:78, sp:0, tilt:0.62, rot:0.5, seed:HOME_GAL_SEED, home:true};
+      const prof=galaxyProfile(HOME_GAL_SEED);
+      const R=stg<2?ASC_RING_R:GR*0.94;
+      const rr=mulberry32(hashInt(0x7174, elem.charCodeAt(0), 7)>>>0);
+      for(let i=0;i<600;i++){
+        const a=rr()*TAU, dd=Math.sqrt(rr())*R;
+        const cx=Math.floor((SOL_POS.x+Math.cos(a)*dd)/GCELL), cy=Math.floor((SOL_POS.y+Math.sin(a)*dd)/GCELL);
+        for(const s of starsInCell(HOME_GAL_SEED, prof, cx, cy).stars){
+          if(Math.hypot(s.x-SOL_POS.x, s.y-SOL_POS.y)>R) continue;
+          const sys=systemFor(s.seed); if(!sys.planets) continue;
+          for(const pl of sys.planets){
+            const pt=pl.P.type;
+            if((elem==='void' || wantTypes.includes(pt)) && _titanPresent(pl.P.seed, elem, 0))
+              return {type:'planet', gal:homeGal, star:{x:s.x, y:s.y, seed:s.seed}, pseed:pl.P.seed};
+          }
+        }
+      }
+      return null;
+    }
+    /* a far element — scan galaxies in its region annulus for a titan world */
+    if((typeof currentRegion==='function') && REGIONS.indexOf(currentRegion())<minReg) return null;   /* not yet in reach */
+    const r0=REGIONS[minReg-1]?REGIONS[minReg-1].r:0, r1=REGIONS[minReg]?REGIONS[minReg].r:REGIONS[REGIONS.length-1].r;
+    const rr=mulberry32(hashInt(0x7174, elem.charCodeAt(0), 11)>>>0);
+    for(let i=0;i<260;i++){
+      const a=rr()*TAU, dd=r0+rr()*(r1-r0);
+      const gx=HOME_POS.x+Math.cos(a)*dd, gy=HOME_POS.y+Math.sin(a)*dd;
+      const reg=regionAt(gx,gy); if(reg<minReg) continue;
+      for(const g of galaxiesInCell(Math.floor(gx/UCELL), Math.floor(gy/UCELL))){
+        if(g.quasar||g.dwarf||g.size<28) continue;
+        const gp=galaxyProfile(g.seed), pr=mulberry32(hashInt(g.seed, elem.charCodeAt(0), 3)>>>0);
+        for(let k=0;k<24;k++){
+          const cx=Math.floor((pr()*2-1)*g.size/GCELL), cy=Math.floor((pr()*2-1)*g.size/GCELL);
+          for(const s of starsInCell(g.seed, gp, cx, cy).stars){
+            const sys=systemFor(s.seed); if(!sys.planets) continue;
+            for(const pl of sys.planets){
+              const pt=pl.P.type;
+              if((elem==='void' || Object.keys(_TITAN_WORLD).filter(t=>_TITAN_WORLD[t]===elem).includes(pt)) && _titanPresent(pl.P.seed, elem, reg))
+                return {type:'planet', gal:{x:g.x, y:g.y, size:g.size, sp:g.sp||0, tilt:g.tilt||0.5, rot:g.rot||0.5, seed:g.seed}, star:{x:s.x, y:s.y, seed:s.seed}, pseed:pl.P.seed};
+            }
+          }
+        }
+      }
+    }
+    return null;
+  }catch(_){ return null; }
 }
 function titanGuardian(elem, pseed, reg){
   const sig=SIGS.find(s=>s.id===elem); if(!sig) return null;
@@ -13676,7 +13755,15 @@ function titanGuardian(elem, pseed, reg){
   g.size=5; g.lumin=true; g.wild=1;
   g.apex=14;                       /* summit-grade — the hardest fights in the game */
   g._titan=elem;                   /* app-layer tag; never travels in codes */
-  const mult=1.6+(reg||0)*0.14;    /* titans hit far harder than ordinary apex */
+  const th=_TITAN_THEME[elem];
+  if(th){ g.color=th.col; if(th.wf) g._wf=th.wf; }   /* wears its element; fights in its element */
+  /* BALANCE (stage 3): a champion's power is TIER-CAPPED (~751 at the
+     summit — level adds arts, not raw stats) and does NOT grow with the
+     region, so titan power must stay near that ceiling everywhere or the
+     far ones become unwinnable. ~840–900: a hard boss that demands a
+     summit-bred team, only faintly steeper far out. The real difficulty
+     curve is the gating — you must breed the best AND earn the reach. */
+  const mult=1.15+(reg||0)*0.03;   /* first pass — confirm the win rate by playtest/deep-sim */
   g._mult=mult;
   return {elem, name:sig.guardian, genome:g, tier:14, sig};
 }
@@ -15106,10 +15193,10 @@ function _sigResonance(s){
      galaxy (stage 3), then each claimed Signature pushes the frontier out */
   const reached=(typeof ascStage==='function' && ascStage()<3) ? -1 :
     (typeof currentRegion==='function' ? (REGIONS.indexOf(currentRegion())) : 0);
-  if(reached<0) return {col:'var(--faint)', text:'a resonance beyond your charter — build toward the stars to hear it.'};
-  if(minReg<=reached) return {col:'#7fe6a0', text:'resonates <b>strong</b> — hunt '+hunt+'; the titan waits on one of them.'};
-  if(minReg-reached===1) return {col:'#ffd96a', text:'resonates <b>faint</b>, farther out — press your reach onward to close on '+hunt+'.'};
-  return {col:'var(--faint)', text:'barely a whisper from the deep dark — '+hunt+', unimaginably far beyond your reach.'};
+  if(reached<0) return {reachable:false, col:'var(--faint)', text:'a resonance beyond your charter — build toward the stars to hear it.'};
+  if(minReg<=reached) return {reachable:true, col:'#7fe6a0', text:'resonates <b>strong</b> — hunt '+hunt+'; the titan waits on one of them.'};
+  if(minReg-reached===1) return {reachable:false, col:'#ffd96a', text:'resonates <b>faint</b>, farther out — press your reach onward to close on '+hunt+'.'};
+  return {reachable:false, col:'var(--faint)', text:'barely a whisper from the deep dark — '+hunt+', unimaginably far beyond your reach.'};
 }
 function renderPrime(){
   const el=document.getElementById('prime-grid'); if(!el) return;
@@ -15128,10 +15215,13 @@ function renderPrime(){
         '</div><div class="pchk">\u2713</div></div>';
     }
     const _res=_sigResonance(s);
-    return '<div class="psig locked"><div class="pic">'+s.icon+'</div>'+
+    /* the resonance is a live TRACK when the element is in reach \u2014 tapping
+       flies the hunter to the nearest world its titan waits on (stage 3) */
+    const track=_res.reachable;
+    return '<div class="psig locked'+(track?' goable':'')+'"'+(track?' data-tgo="'+s.id+'"':'')+'><div class="pic">'+s.icon+'</div>'+
       '<div class="pm"><div class="pn">'+s.name+'</div>'+
       (s.guardian?'<div class="psub2" style="color:#ff8a72">\u2694 Guarded by <b>'+s.guardian+'</b></div>':'')+
-      '<div class="psub2" style="color:'+_res.col+'">\ud83d\udce1 '+_res.text+'</div>'+
+      '<div class="psub2" style="color:'+_res.col+'">\ud83d\udce1 '+_res.text+(track?' \u00b7 <b>tap to track \u2197</b>':'')+'</div>'+
       (relic?'<div class="psub2" style="color:var(--faint)">relic blueprint on the claim</div>':'')+
       '</div><div class="pchk">\u25cb</div></div>';
   }).join('');
