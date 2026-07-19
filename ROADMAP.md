@@ -79,6 +79,21 @@
 ##      re-verifies the fixes before the deploy goes out.
 ##   5. ✕ CORNER LAW: closes sit cleanly in the corner, never bleeding
 ##      over pictures/UI; touch targets grow by invisible hit-padding.
+##   6. LAYOUT GATE (tools/uilayout.js): headless-Edge, 9 viewports,
+##      ~520 checks (✕ law, z-order, rail reachability cold/after-tray/
+##      after-search, side-scroll, clipped text) + proof sheets. Runs
+##      with the battery, ON TOP of the beta count. Born 2026-07-19
+##      after jsdom missed all three of Nick's mobile bugs (no layout).
+##   7. TEAM REVIEW PANELS (Nick's org design, 2026-07-19): each release
+##      is reviewed by the full team before final deploy — ARTWORK
+##      (vista/proof-sheet vision review; composition, blending, the
+##      painting law), ENGINEERING (correctness/edge/perf), UI (layout
+##      gate + viewport sheets), BUG & FEEDBACK (beta-round findings
+##      triage), QA (battery + exploit sweep), AUDIO (sting/fanfare
+##      coverage + timing). Feedback → fixes → re-verify → live.
+##      Implemented as multi-agent panels; findings land in the same
+##      release. Release notes are TECHNICAL OUTLINES (category →
+##      tight bullets), all entries, standing format.
 
 ## ▶▶ THE v1.6 SLATE — FAR-RING CONTENT + THE LOOT CORE (D4, approved
 ## direction; DESIGN WITH NICK before building — v1.6-scale):

@@ -825,7 +825,7 @@
   #codexbtn .dot.bio{width:6px;height:6px;border-radius:50%;background:#7fe6a0;box-shadow:0 0 8px #7fe6a0}
   #codexbtn .n{color:#7fe6a0}
   /* ---- Cargo hold (1.0): appears after your first mine of a dead world ---- */
-  #cargobtn{position:fixed;top:calc(var(--row1-h,58px) + 130px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
+  #cargobtn{position:fixed;top:calc(var(--row1-h,58px) + 170px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
     display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;
     font-family:var(--ui);font-size:11px;letter-spacing:.06em;color:var(--dim);
     background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
@@ -1245,13 +1245,16 @@
   .fabgrp .fgbody{display:none;padding:4px 6px 6px}
   .fabgrp.open > .fgbody{display:block}
   /* ---- v1.5.2 THE RECORDS BOARD: trophies out of the mirror ---- */
-  #recbtn{position:fixed;top:calc(var(--row1-h,58px) + 170px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
+  /* v1.5.2c (Nick): Records rides UP into the standing rail — it matters
+     from minute one; the Shipyard (appears with first cargo) takes the
+     lower slot when it arrives */
+  #recbtn{position:fixed;top:calc(var(--row1-h,58px) + 130px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
     font-family:var(--ui);font-size:11px;letter-spacing:.08em;color:var(--dim);
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:999px;padding:7px 14px;
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:7px;
     transition:color .2s,border-color .2s}
   #recbtn:hover{color:var(--ink);border-color:rgba(255,217,106,0.55)}
-  #records{position:fixed;top:calc(var(--row1-h,58px) + 210px);right:18px;z-index:22;width:318px;max-height:min(62vh,540px);overflow-y:auto;display:none;
+  #records{position:fixed;top:calc(var(--row1-h,58px) + 170px);right:18px;z-index:22;width:318px;max-height:min(62vh,540px);overflow-y:auto;display:none;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:11px;
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
   #records h4{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:var(--plasma);margin:8px 0 6px}
@@ -7232,7 +7235,7 @@ function hdVista(opts){
       const frozen=opts.pal==='snow'||water==='frozen';
       const RIV=frozen?['#dfe9f2','#b9cede','#8fa9c0']
         :({night:['#3a4a66','#22344c','#101d30'],twilight:['#e8a06a','#7a5674','#2a1c40']}
-          [opts.pal]||['#cfe0ea','#7fa2c4','#37587c']);
+          [opts.pal]||['#b9d3e4','#7fa2c4','#37587c']);   /* day top de-glared — water, not a light smear (art review) */
       const rg2=g.createLinearGradient(0,hz+30,0,H);
       rg2.addColorStop(0,RIV[0]);rg2.addColorStop(0.4,RIV[1]);rg2.addColorStop(1,RIV[2]);
       g.fillStyle=rg2;g.fill();
@@ -8419,7 +8422,10 @@ function openLandingVista(pl){
   const floraOk=!lifeRow||!/^(No known life|Microbial|Subsurface|Airborne|Extremophile)/.test(lifeRow[1]);
   const waterRow=d.rows&&d.rows.find(rr=>rr[0]==='Water');
   const waterTxt=waterRow?String(waterRow[1]):'';
-  const waterV=/Liquid|rivers|ocean/i.test(waterTxt)?'liquid':(/Frozen/i.test(waterTxt)?'frozen':(waterRow?'none':'liquid'));
+  /* art review (Nick's light-on-land report): 'Molten; glowing rivers of
+     rock' matched the 'rivers' test and drew a WATER river with sun
+     glints across lava worlds — molten is never water */
+  const waterV=/Molten/i.test(waterTxt)?'none':(/Liquid|rivers|ocean/i.test(waterTxt)?'liquid':(/Frozen/i.test(waterTxt)?'frozen':(waterRow?'none':'liquid')));
   const _tit=roster.some(gg=>(gg.size||0)>=5) && (mulberry32((P.seed^0x717B)>>>0)()<0.30);
   showVistaBox(P, tod, (env.wx&&wxNow)?effWx:null, era, genes, env.hasField,
     floraOk, env.wx&&effWx==='snow', waterV,
@@ -16213,30 +16219,8 @@ function renderStats(){
     '<div class="srow"><span class="k">Expedition score</span><span>'+r.score+(r.next?' / '+r.next[0]+' → '+r.next[1]:' · max rank')+'</span></div>'+
     '<div class="bar" style="margin-bottom:9px"><i style="width:'+pct.toFixed(0)+'%"></i></div>';
   html+=statBlockHTML();
-  const _statBody=
-    '<div class="srow"><span class="k">Living worlds surveyed</span><span>'+stats.surveys+'</span></div>'+
-    '<div class="srow"><span class="k">Galaxies explored</span><span>'+galSeen.size+'</span></div>'+
-    '<div class="srow"><span class="k">Worlds landed on</span><span>'+surfSeen.size+'</span></div>'+
-    '<div class="srow"><span class="k">Worlds settled</span><span>'+conquered.size+'</span></div>'+
-    '<div class="srow"><span class="k">Species catalogued</span><span>'+codex.size+'</span></div>'+
-    '<div class="srow"><span class="k">Hybrids bred \u00b7 deepest line</span><span>'+stats.hybrids+' \u00b7 gen '+stats.maxGen+'</span></div>'+
-    '<div class="srow"><span class="k">Breedings won / tried</span><span>'+(stats.breedwins||0)+' / '+(stats.breeds||0)+'</span></div>'+
-    '<div class="srow"><span class="k">Beasts fed</span><span>'+(stats.feeds||0)+'</span></div>'+
-    '<div class="srow"><span class="k">Duels fought / won</span><span>'+stats.duels+' / '+stats.duelwins+'</span></div>'+
-    '<div class="srow"><span class="k">Bioscan close calls</span><span>'+(stats.scanhits||0)+'</span></div>'+
-    '<div class="srow"><span class="k">Charters completed</span><span>'+(stats.charters||0)+'</span></div>'+
-    '<div class="srow"><span class="k">Beacon pilgrimages</span><span>'+stats.anomalies+'</span></div>'+
-    '<div class="srow"><span class="k">Cosmic events witnessed</span><span>'+stats.events+'</span></div>'+
-    '<div class="srow"><span class="k">Stardust (breed odds +'+Math.round(stardustBonus()*100)+'%)</span><span>'+essence+'</span></div>'+
-    '<div class="srow"><span class="k">Stardust harvested</span><span>'+(stats.harvests||0)+'</span></div>'+
-    '<div class="srow"><span class="k">Codes shared / followed</span><span>'+stats.shares+' / '+stats.jumps+'</span></div>'+
-    (rarest?'<div class="srow"><span class="k">Rarest find</span><span style="color:'+rarest.grade.hex+'">'+rarest.grade.name+' '+(rarest.grade.star||'')+' '+rarest.name+'</span></div>':'')+
-    /* the summit is chased, not checklisted: the top of the ladder is a statistic, not an achievement */
-    (stats.best>0?'<div class="srow"><span class="k">Highest grade ever reached</span><span class="gbadge'+(stats.best>=12?' irid':'')+'" style="color:'+GRADE_TIERS[Math.min(stats.best,TIER_MAX)].hex+'">'+GRADE_TIERS[Math.min(stats.best,TIER_MAX)].name+'</span></div>':'')+
-    '<div class="srow"><span class="k">Apex Guardians felled</span><span>'+(stats.guardians||0)+'</span></div>';
-  html+='<div class="agrp'+(_agOpen.has('__stats')?' open':'')+'" data-ag="__stats">'+
-    '<div class="aghead"><span>Statistics</span><span class="cnt"></span><span class="wchev"></span></div>'+
-    '<div class="agbody">'+_statBody+'</div></div>';
+  /* v1.5.2c (Nick): the Statistics fold moved to the 🏆 Records board —
+     the sheet is the mirror; the ledger lives in the trophy room */
   /* v1.5.2 (Nick): the character sheet is YOU, nothing else — rank, battle
      stats, statistics, and the nameplate fold. The rarity ladder and every
      achievement shelf moved OUT to the 🏆 Records board (right rail). */
@@ -16269,6 +16253,34 @@ function renderRecords(){
     const n=tierHave[T.t];
     return '<div class="tier" style="border-color:'+T.hex+(n?'':'44')+';color:'+T.hex+(n?'':'66')+'"><div class="c">'+n+'</div>'+T.name+'</div>';
   }).join('')+'</div>';
+  /* v1.5.2c (Nick): the Statistics ledger lives HERE now — the trophy
+     room keeps the numbers; the character sheet keeps the mirror */
+  let _rar=null;
+  for(const e of codex.values()) if(e.grade && (!_rar || e.grade.tier>_rar.grade.tier)) _rar=e;
+  const _statBody=
+    '<div class="srow"><span class="k">Living worlds surveyed</span><span>'+stats.surveys+'</span></div>'+
+    '<div class="srow"><span class="k">Galaxies explored</span><span>'+galSeen.size+'</span></div>'+
+    '<div class="srow"><span class="k">Worlds landed on</span><span>'+surfSeen.size+'</span></div>'+
+    '<div class="srow"><span class="k">Worlds settled</span><span>'+conquered.size+'</span></div>'+
+    '<div class="srow"><span class="k">Species catalogued</span><span>'+codex.size+'</span></div>'+
+    '<div class="srow"><span class="k">Hybrids bred / deepest line</span><span>'+stats.hybrids+' / gen '+stats.maxGen+'</span></div>'+
+    '<div class="srow"><span class="k">Breedings won / tried</span><span>'+(stats.breedwins||0)+' / '+(stats.breeds||0)+'</span></div>'+
+    '<div class="srow"><span class="k">Beasts fed</span><span>'+(stats.feeds||0)+'</span></div>'+
+    '<div class="srow"><span class="k">Duels fought / won</span><span>'+stats.duels+' / '+stats.duelwins+'</span></div>'+
+    '<div class="srow"><span class="k">Bioscan close calls</span><span>'+(stats.scanhits||0)+'</span></div>'+
+    '<div class="srow"><span class="k">Charters completed</span><span>'+(stats.charters||0)+'</span></div>'+
+    '<div class="srow"><span class="k">First arrivals</span><span>'+(stats.arrivals||0)+'</span></div>'+
+    '<div class="srow"><span class="k">Beacon pilgrimages</span><span>'+stats.anomalies+'</span></div>'+
+    '<div class="srow"><span class="k">Cosmic events witnessed</span><span>'+stats.events+'</span></div>'+
+    '<div class="srow"><span class="k">Stardust (breed odds +'+Math.round(stardustBonus()*100)+'%)</span><span>'+essence+'</span></div>'+
+    '<div class="srow"><span class="k">Stardust harvested</span><span>'+(stats.harvests||0)+'</span></div>'+
+    '<div class="srow"><span class="k">Codes shared / followed</span><span>'+stats.shares+' / '+stats.jumps+'</span></div>'+
+    (_rar?'<div class="srow"><span class="k">Rarest find</span><span style="color:'+_rar.grade.hex+'">'+_rar.grade.name+' '+(_rar.grade.star||'')+' '+_rar.name+'</span></div>':'')+
+    (stats.best>0?'<div class="srow"><span class="k">Highest grade ever reached</span><span class="gbadge'+(stats.best>=12?' irid':'')+'" style="color:'+GRADE_TIERS[Math.min(stats.best,TIER_MAX)].hex+'">'+GRADE_TIERS[Math.min(stats.best,TIER_MAX)].name+'</span></div>':'')+
+    '<div class="srow"><span class="k">Apex Guardians felled</span><span>'+(stats.guardians||0)+'</span></div>';
+  html+='<div class="agrp'+(_agOpen.has('__stats')?' open':'')+'" data-ag="__stats">'+
+    '<div class="aghead"><span>Statistics</span><span class="cnt"></span><span class="wchev"></span></div>'+
+    '<div class="agbody">'+_statBody+'</div></div>';
   const _achShown=ACH.filter(a=>!(EVENTS_DORMANT && a.cat==='Cosmic Events' && !unlocked.has(a.id)));
   html+='<h4 style="margin-top:12px">Achievements · '+unlocked.size+' / '+_achShown.length+'</h4>';
   const cats=[];
