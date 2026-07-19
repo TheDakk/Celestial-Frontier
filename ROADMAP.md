@@ -74,12 +74,27 @@
 ##     categories over single worlds, or auto-complete when the target
 ##     is no longer satisfiable. Same family as the _far0 lesson: a
 ##     chain must never REVEAL a link the player's ring can't reach.
-## S3. THE ASCENT vs THE CHAINS: the pinned chapter is a parallel
-##     checklist; charters become sequential chains — two quest
-##     grammars on one board. Options: chapter stays parallel (it's a
-##     "chapter"), or its goals reveal progressively too. Nick's call;
-##     whichever wins, the WEEKLY BOARD GATE must be redefined (today:
-##     all starters done → weeklies. With chains: which chains gate?).
+## S3. THE ASCENT vs THE CHAINS (decision briefed to Nick 2026-07-19):
+##     The Ascent = the v1.4 three-chapter MAINLINE pinned above the
+##     charter list. Ch1 Off the Rock (Sol): land 2 Sol worlds · 8 ore
+##     loads · 4 parts · 2 components · build ⚡ Jump Drive → opens the
+##     Neighborhood. Ch2: land 3 beyond Sol · life on 2 · conquer 1 ·
+##     build 📡 Array → whole galaxy. Ch3: breed a hybrid · 2 gear ·
+##     20 loads · build 🌌 IG Drive → the Trail takes over. Chapter
+##     goals are PARALLEL by design (concurrent activities, any order)
+##     and progress BANKS across chapters (review-fix law: out-building
+##     your chapter never loses work).
+##     OPTION A (Claude recommends): Ascent stays parallel — a chapter
+##     reads as a campaign act ("everything this ring asks"); charters
+##     below become the one-job-at-a-time chains; sharpen the copy
+##     ("THE MAINLINE" vs "CHARTERS") since the box already looks
+##     distinct. Ch1 is already implicitly sequential via the recipe
+##     tree anyway. OPTION B: chapter goals reveal progressively too —
+##     one grammar, but artificial order on concurrent work, and
+##     banking would complete hidden goals invisibly (hollow).
+##     WEEKLY GATE (Nick agreed to redefine): weeklies open when the
+##     FIVE-TRADE chain completes; the Sol tour is optional side
+##     income and does not gate. Crisp end to the guided phase.
 ## S4. ACTIVE-CHARTER CAP: EverQuest journals cap active quests. 3
 ##     accepted at once feels right (the board shows Available /
 ##     Accepted / Done sections, folds per the one-fold language).
