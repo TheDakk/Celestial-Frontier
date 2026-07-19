@@ -98,13 +98,28 @@
 ##    EMERGENT: finite attempts + random catch order ⇒ a fresh
 ##    expedition yields a different Compendium (roster still seeded/
 ##    shared) — Nick's "replay Earth, get a different animal" for free.
-##    ⚠ FORK FOR NICK: can the Compendium be 100%-ed in ONE expedition?
-##    Recommendation: COMPLETABLE-WITH-INVESTMENT — generous pool, last
-##    catches on a world cost the most; patience+gear+revisits finish
-##    it, hasty play doesn't (rewards depth, doesn't hard-gate the
-##    Pokédex chase). MINING ALREADY DOES THIS (reserveFor finite by
-##    tier + burst cap) — this makes mine/tame/scavenge one honest
-##    idea: every world is a finite resource you work and leave.
+##    ★ NICK'S RULING (2026-07-19): completable-WITH-INVESTMENT, and
+##    the Compendium is the POST-GAME TROPHY — you finish the main arc
+##    (Titan Hunt / Prime Codex) then KEEP PLAYING to fill it out. It's
+##    the endgame that never runs dry. THIS ALIGNS WITH THE EPOCH/'YEAR'
+##    CLOCK and is powered by it: the clock (a) REGROWS biospheres
+##    (refreshes attempt pools → revisiting works) AND (b) EVOLVES them
+##    (planetSpecies already re-rolls rosters per epoch → returned worlds
+##    hold further-evolved descendants + new hybrids). One clock feeds
+##    recovery + endless novelty → a LIVING Compendium that keeps
+##    growing new catches as the universe ages. Compendium = post-game
+##    trophy; Prime Codex = the main game w/ an ending.
+##    ⚠ NUANCE TO DECIDE LATER: raw count is technically infinite (new
+##    life keeps appearing), so '100%' can't be a literal number. Frame
+##    the trophy as a DEFINED MILESTONE (e.g. every world-type's
+##    signature life catalogued, or a prestige achievement) that IS
+##    completable, sitting atop the endless living count — a real
+##    'you did it' without pretending the infinite is finishable
+##    (matches the ending line: 'you cannot finish the infinite, only
+##    master it').
+##    MINING ALREADY DOES THIS (reserveFor finite by tier + burst cap) —
+##    this makes mine/tame/scavenge one honest idea: every world is a
+##    finite resource you work and leave.
 ##  · THE AFFIX/LOOT CORE (S6) — per-instance gear, one faucet first
 ##    (conquest spoils), app-layer seeded, never in share codes. The
 ##    month-scale retention chase.
