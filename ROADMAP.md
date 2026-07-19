@@ -1,33 +1,43 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
-## ▶▶▶ NEXT SESSION — v1.6 (Nick, 2026-07-19 close: "record it and get
-## ready for next session v1.6"; RESUME HERE) ◀◀◀
+## ▶▶▶ NEXT SESSION — v1.6 (RESUME HERE; updated 2026-07-19 session
+## close, Nick: "get ready for v1.6") ◀◀◀
 ##
-## STATE AT CLOSE: v1.5.2 LIVE at build 62c8930 (three deploys today:
-## 61024a9 five-rulings base → 0caabe7 hpwrap hotfix → 62c8930 fixes
-## wave). The first standard 6k beta was IN FLIGHT at close on the live
-## build (fail-fast; chaos 749/750 post-clean already banked; results
-## land in tools/beta6k-*.json, 'BETA6K DONE' at end) — READ IT FIRST:
-## the veteran 250 leg carries the first-ever STALENESS-HORIZON and
-## DROUGHT numbers (rep.staleness / rep.drought / rep.noveltyCurve).
-## Refresh the director's report artifact with the full round.
+## STATE AT CLOSE: v1.5.2 LIVE at build 8279eb6. The day ran long past
+## the overnight round: after the 6k beta (all clean), Nick playtested
+## live and drove a big wave of fixes + two major systems, each battery-
+## green (fingerprint 50/50, smoke 305, layout gate) and deployed on his
+## word. Deploy chain today: 61024a9 → 0caabe7 → 62c8930 → 07142d0
+## (emoji/virga) → 5cca2ab (capture) → 61a9420/53eb46c/9b99a74 (training
+## + field-bug fixes) → 6164d3f (Codex stage 1) → 9f110e7 (titan hunt
+## stage 2) → a9958e7 (stage 3) → 8279eb6 (story). LIVE = 8279eb6.
 ##
-## OPENING MOVES, in order:
-## (1) Beta verdict + report refresh (above; round relaunched on
-##     07142d0 after the emoji/virga wave — full 6k, fail-fast).
-## (2) NICK'S PENDING WORDS (the two judgment calls only): D1
-##     wall-clock pacing FEEL check on his device (Jump p50 37 actions
-##     × 16s bursts — does it feel right?); L6 ceiling call (1/500
-##     reach it — richer XP vs lower threshold).
-##     ✔ DONE SAME-DAY (Nick: "supposed to be live"): EMOJI PASS live
-##     in 07142d0 (☣ Forbidden Science, 🔷 Deep Find, 🛰 Survey Fleet,
-##     ☀☀ Twin Suns; 💠 stays the Earpiece stud). VENUS PILLARS
-##     SOLVED: the caption was the clue — the VIRGA event's blur(3px)
-##     is unsupported on Safari/iOS, shafts drew as hard slabs reading
-##     as a skyline; now hand-feathered (browser-independent), live.
-## (3) MOBILE JOURNEY LEG for tools/uilayout.js (task queued): real
-##     touch gameplay (land, mine, accept, sheet, yard) at phone
-##     viewports via CDP Input.dispatchTouchEvent.
+## WHAT SHIPPED TODAY (all live): THE BLOSSOM + TAME/SCAVENGE capture
+## design (survey reveals, capture catalogues, odds fall w/ rarity +
+## gear); THE CRADLE — Earth's real catchable roster (real names,
+## Uncommon-clamped); PRIME CODEX → ELEMENTAL TITAN HUNT (stages 1-3:
+## 9 named titans seeded by world seed/shared, region-banded cumulative,
+## resonance deep-link, element theming, balance pass — titan ~870-940
+## vs champion ceiling ~751); the "MASTERING THE UNIVERSE" story rewrite
+## (retired the Pathfinder/beacon lore everywhere player-visible); plus
+## Nick's playtest fixes (Shipyard always on rail, training click-
+## through no-timer, craft button affordability re-render, Records/
+## Statistics move, ✕ corner+z-order laws, hpwrap click-eater, vista
+## ghost-click guard, mining drill-quest counts pulls).
+##
+## OPENING MOVES next session:
+## (1) NICK'S PENDING JUDGMENT CALLS (need his device/feel): TITAN
+##     BALANCE — playtest the fights; ~1.15x mult (871 near / 941 far
+##     vs ~751 champion ceiling) is a FIRST PASS, confirm win rate
+##     (a deep-sim combat leg can measure it if he wants data). D1
+##     pacing feel (Jump p50 37). L6 XP ceiling (1/500 reach it).
+## (2) THE EARTH WORK Nick flagged ("stuff with Earth after Stage 3")
+##     — awaiting his direction on what.
+## (3) MOBILE JOURNEY LEG for tools/uilayout.js (still queued, task
+##     #21): real touch gameplay at phone viewports via CDP
+##     Input.dispatchTouchEvent — the harness gap that let his field
+##     bugs slip (synthetic clicks bypass the training pointer gate).
+## (4) Then v1.6 proper (THE v1.6 SLATE below).
 ##
 ## ★ PRIME CODEX → ELEMENTAL SIGNATURE GUARDIANS (Nick's endgame
 ## redesign, 2026-07-19; detailed spec — building next):
