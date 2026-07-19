@@ -677,10 +677,11 @@ async function uiTraining(seed, chaos) {
       await stall(() => tutAt(17), 4000, 'step 16'); chaosBurst();
       click(doc.getElementById('rank'));
       await stall(() => tutAt(18), 4000, 'step 17 (sheet open)'); chaosBurst();
-      // v1.5.1 THE FORGE LESSON: fab tab, craft the Iron Plate for real
-      click(doc.querySelector('#cargo [data-ct="fab"]'));
-      await stall(() => !!doc.querySelector('#cargo [data-craft="plate"]'), 3000, 'forge: fab tab');
-      click(doc.querySelector('#cargo [data-craft="plate"]'));
+      // v1.5.2b THE FORGE LESSON: the 🛠 Shipyard rail button opens the
+      // yard; the Fabricator's T1 fold is open by default — craft the plate
+      click(doc.getElementById('cargobtn'));
+      await stall(() => !!doc.querySelector('#yardbench [data-craft="plate"]'), 3000, 'forge: yard fab');
+      click(doc.querySelector('#yardbench [data-craft="plate"]'));
       await stall(() => tutAt(19), 4000, 'step 18 (plate forged)'); chaosBurst(); tutAct();
       await stall(() => tutAt(20), 4000, 'step 19'); chaosBurst(); tutAct();
       await stall(() => H.tutDone === true, 5000, 'finale');
