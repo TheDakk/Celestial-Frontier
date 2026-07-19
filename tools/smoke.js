@@ -978,6 +978,27 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     skH.craftItem('rl-star');
     check('trail: the claimed Signature IS the blueprint (relic forges + self-equips)',
       skH.itemCount('rl-star') === 1 && skH.equip.helmet === 'rl-star');
+    // v1.5.2c THE ELEMENTAL TITANS: signatures are won by felling a named
+    // titan, region-gated (basics near, Void/Prism far), seeded/shared
+    skH.st.gal = { seed: 999, x: 90, y: -60, size: 78 };   // home galaxy (region 0)
+    let fireWorld = null;
+    for (let s = 1; s < 500 && !fireWorld; s++) { if (skH.titanFor({ planetSeed: s, ptype: 'lava' })) fireWorld = s; }
+    check('titans: a Fire titan is seeded onto a molten world near home', fireWorld != null);
+    check('titans: Void is region-gated far out — silent near home',
+      skH.titanFor({ planetSeed: 7, ptype: 'rocky' }) === null && !skH.primeFill.void);
+    if (fireWorld != null) {
+      const nat = skH.apexNative({ planetSeed: fireWorld, ptype: 'lava', species: [] });
+      check('titans: the titan is the world’s boss (apexNative, no native fauna needed)',
+        !!nat && nat.titan === 'flame' && nat.guardian === true);
+      check('titans: a titan far outguns a normal apex (a bred-champion fight)',
+        skH.battleStats(nat.genome).total > 1000);
+      // fell it → the element is claimed, and its titans stand down everywhere
+      skH.claimSignature('flame', { title: 'Fire — test', sub: 'titan felled', tier: 14, hex: '#ffd96a', where: null }, true);
+      check('titans: felling the titan claims its element',
+        !!skH.primeFill.flame);
+      check('titans: a claimed element’s titan stands down',
+        skH.titanFor({ planetSeed: fireWorld, ptype: 'lava' }) === null);
+    }
     // v1.5.2 THE RECORDS BOARD: trophies out of the mirror
     click2(sk.doc.getElementById('recbtn'), sk.w);
     const recEl = sk.doc.getElementById('records');

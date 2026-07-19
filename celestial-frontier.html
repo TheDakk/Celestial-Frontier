@@ -8638,7 +8638,9 @@ function renderPanel(p, isLocked){
        desktop hover is just a preview */
     if(isLocked || st.mode==='surface'){
       noteSurvey(d);
-      primeCheckWorld(d);
+      /* v1.5.2c: signatures are no longer claimed by merely surveying the
+         right kind of world — each is won by defeating its elemental TITAN
+         (see titanFor / the conquest claim). Survey only REVEALS a titan. */
       gameEvent('survey', {logId:d.logId, planetSeed:d.planetSeed});
       /* standing on it counts as landing, whatever road led here (covers a
          save restored directly onto a surface) */
@@ -8843,7 +8845,17 @@ function renderPanel(p, isLocked){
       if(_uf) conqBtn+='<button class="act" data-act="tame" data-guide="discover" data-tip="Try to tame one of this world’s uncaught beasts — rarer creatures resist harder; crafted gear tips the hand.">🐾 Tame</button>';
       if(_up) conqBtn+='<button class="act" data-act="scavenge" data-guide="discover" data-tip="Gather an uncaught growth — flora, fungus or microbe — for your Compendium. Rarity resists; gear persuades.">🌿 Scavenge</button>';
     }
-    if(!glance && d.planetSeed!=null && d.species && d.species.some(g=>g.kingdom==='fauna')){
+    /* an elemental TITAN overrides the ordinary guardian/conquest card —
+       its Signature is the prize, and its world is conquerable even with
+       no native fauna (Nick's Prime Codex hunt; only once you've landed) */
+    const _tt=(!glance && grounded && d.planetSeed!=null && !conquered.has(d.planetSeed)) ? (()=>{ try{ return titanFor(d); }catch(_){ return null; } })() : null;
+    if(_tt){
+      const _tS=battleStats(_tt.genome), _tT=GRADE_TIERS[Math.min(_tS.tier,GRADE_TIERS.length-1)];
+      rows+='<div class="splabel"><span class="k" style="color:'+_tt.sig.icon+'">'+_tt.sig.icon+' '+_tt.sig.el+' Titan</span>'+
+        '<span class="v" style="color:'+_tT.hex+'">'+_tt.name+' — Power '+_tS.total+'</span></div>'+
+        '<div class="row"><span class="v" style="color:var(--plasma)">A titan stirs here. Defeat it to claim the '+_tt.sig.name+'.</span></div>';
+      conqBtn='<button class="act" data-act="conq" data-guide="signatures" data-tip="An elemental titan guards a Prime Codex Signature — send your strongest champions; defeat it to claim the element.">⚔ Challenge '+_tt.name+'</button>';
+    } else if(!glance && d.planetSeed!=null && d.species && d.species.some(g=>g.kingdom==='fauna')){
       const c=conquered.get(d.planetSeed);
       const _gd=c?null:guardianFor(d.planetSeed);   /* fallen guardians stay fallen — settled worlds show none */
       if(_gd){
@@ -13223,7 +13235,8 @@ const RELEASES=[
   '🧭 ARRIVAL PAYS — first arrival in a system with no prior expedition record logs a First Arrival line and pays +2 ☄ Stardust.',
   '🌸 THE CARD BLOSSOMS — orbit shows identity, a life-signature count, and a one-line environment summary; landing opens the environment fold, the biosphere survey, and the capture verbs.',
   '🐾 TAME & SCAVENGE — the biosphere survey reveals the roster instead of cataloguing it; each species is caught individually with visible odds (lower for rarer species, raised by crafted gear). Misses cost nothing; every Compendium page is earned.',
-  '🔮 THE ELEMENTAL SIGNATURES — the Prime Codex is nine elements now, each ruled by a named titan (Terrakoth of Earth, Pyraxis of Fire, Nullreth of the Void…). The basics wait near home; Electric and Poison at mid range; Void and Prism far past the Deep Field. Find the element&#8217;s world, defeat its guardian, claim the Signature. The beacon lore is retired — the elements are the arc.',
+  '🔮 THE ELEMENTAL SIGNATURES — the Prime Codex is nine elements now, each ruled by a named titan (Terrakoth of Earth, Pyraxis of Fire, Nullreth of the Void…). The basics wait near home; Electric and Poison at mid range; Void and Prism far past the Deep Field. The beacon lore is retired — the elements are the arc.',
+  '⚔ THE TITAN HUNT — each element&#8217;s Signature is guarded by a unique named titan, far mightier than any wild apex — the same creature for every explorer, seeded to its world. The Codex reads a resonance that names the KIND of world to hunt (molten worlds for Fire, the deep dark for the Void) and how far out it lies; you won&#8217;t know a titan waits until you land and survey. Send your bred and tamed champions, fell it, and claim the element. Mine, craft, breed stronger, hunt the titans — the whole game meets here.',
   '🌍 THE CRADLE — Earth now carries a real, catchable biosphere from your first landing: land, survey, and tame or scavenge a full spread of beasts, birds, flora and microbes. Every one is a <b>starter</b> — grade capped at Uncommon, honest stat variance, no ceiling-breakers — so a menagerie on day one never becomes an early armory. Humanity stays on the card; the wildlife joins it.'],
  ],
  ['⚖ Balancing', [
@@ -13619,7 +13632,61 @@ document.getElementById('deathok').addEventListener('click', wipeSaveAndReload);
    ---------------------------------------------------------------- */
 const HARVEST_CD=3600e3;
 /* the single toughest native fauna — the champion you must beat to take the world */
+/* ================= THE ELEMENTAL TITANS (v1.5.2c, Nick's Prime Codex
+   hunt) ================= Nine named titans, one per element, each
+   guarding its Signature. WHERE they dwell is legible so the hunt has a
+   scent — Fire on molten worlds, Water on living seas, Void by the black
+   holes — and gated by REGION so the basics wait near home while Void and
+   Prism dwell only far out (cumulative: the far rings hold them all). A
+   world hosts a titan only on a rare SEEDED roll (hashInt(pseed,elem)) —
+   deterministic and identical for every explorer, share-code safe (never
+   epoch-seeded: the epoch clock is per-player). Beat the titan to claim
+   the element; once claimed, its titans stand down. */
+const _TITAN_WORLD={ lava:'flame', ocean:'ocean', gas:'sky', rocky:'stone',
+  desert:'star', venus:'life', ice:'mind', terran:'prism' };   /* ptype → element sig id */
+const _TITAN_MINREG={ stone:0, flame:0, sky:0, star:0, ocean:0, mind:1, life:1, void:2, prism:2 };
+function _titanElemOf(d){
+  /* which element THIS world's NATURE could host (by type), null if none */
+  const pt=d&&d.ptype;
+  return (pt && _TITAN_WORLD[pt]) ? _TITAN_WORLD[pt] : null;
+}
+function titanFor(d){
+  /* returns {elem, name, genome, tier} if this world guards an as-yet-
+     unclaimed element's Signature right now, else null. Deterministic by
+     world seed → the same titans on the same worlds for every explorer. */
+  if(!d || d.planetSeed==null) return null;
+  const reg=(typeof st!=='undefined'&&st.gal)?regionAt(st.gal.x,st.gal.y):0;
+  const claimed=(id)=>typeof primeFill!=='undefined' && primeFill[id];
+  const present=(id,salt)=>{ if(claimed(id) || reg<(_TITAN_MINREG[id]||0)) return false;
+    return mulberry32(hashInt(d.planetSeed>>>0, 0x7174, salt)>>>0)()<0.085; };   /* rare seeded roll */
+  /* Void is the deep dark's own titan — it seeps into ANY world far out,
+     no world-type needed (checked first so it can rule a frontier world) */
+  if(present('void', 0x5D)) return titanGuardian('void', d.planetSeed, reg);
+  /* the element this world's nature suits (Fire on molten worlds, …) */
+  const elem=_titanElemOf(d);
+  if(elem && present(elem, elem.charCodeAt(0))) return titanGuardian(elem, d.planetSeed, reg);
+  return null;
+}
+function titanGuardian(elem, pseed, reg){
+  const sig=SIGS.find(s=>s.id===elem); if(!sig) return null;
+  /* a forced-apex titan far above a normal guardian — element-themed,
+     region-scaled, wearing its Signature's true name */
+  const heat = elem==='flame'?2 : (elem==='mind'||elem==='void')?0 : 1;
+  const g=makeGenome(hashInt(pseed>>>0, 0x7174, 0x99)>>>0, 'fauna', heat);
+  g.size=5; g.lumin=true; g.wild=1;
+  g.apex=14;                       /* summit-grade — the hardest fights in the game */
+  g._titan=elem;                   /* app-layer tag; never travels in codes */
+  const mult=1.6+(reg||0)*0.14;    /* titans hit far harder than ordinary apex */
+  g._mult=mult;
+  return {elem, name:sig.guardian, genome:g, tier:14, sig};
+}
 function apexNative(d){
+  /* an elemental TITAN rules its world above all else — it is the boss you
+     must beat to claim the Signature, and it makes the world conquerable
+     even where no native fauna stand (Nick's Prime Codex hunt) */
+  if(d.planetSeed!=null && !conquered.has(d.planetSeed)){
+    try{ const tt=titanFor(d); if(tt) return {name:tt.name, genome:tt.genome, guardian:true, titan:tt.elem, region:(typeof st!=='undefined'&&st.gal)?regionAt(st.gal.x,st.gal.y):0}; }catch(_){ }
+  }
   const fauna=(d.species||[]).filter(g=>g.kingdom==='fauna');
   if(!fauna.length) return null;
   /* a guarded world's defender is its named Apex Guardian — until it falls */
@@ -13721,14 +13788,20 @@ function runConquestBattle(d, champ, native){
         if(native.guardian){
           /* the fallen guardian joins the Compendium — the fighter's road to the summit */
           stats.guardians=(stats.guardians||0)+1;
-          const ge=_storeSpecies(native.genome, 'Apex Guardian of '+(d.title||'a world'), d.where||null);
+          const ge=_storeSpecies(native.genome, (native.titan?'Elemental Titan':'Apex Guardian')+' of '+(d.title||'a world'), d.where||null);
           const _gg=ge&&ge.grade;
-          cinematic({kicker:'👑 The Guardian Falls', title:native.name,
+          cinematic({kicker:native.titan?'⚔ The Titan Falls':'👑 The Guardian Falls', title:native.name,
             sub:(_gg?_gg.name+(_gg.star?' '+_gg.star:''):'A summit-grade titan')+' — it joins your Compendium',
             hex:(_gg?_gg.hex:'#ffd96a'), tier:(_gg?_gg.tier:8)});
         }
-        primeCheckWorld(d);   /* a settled rocky/lava world now yields its Stone/Flame signature */
-        for(const e of codex.values()) if(e.where && e.where.pseed===d.planetSeed) primeCheckSpecies(e, false);
+        /* v1.5.2c THE TITAN CLAIM (Nick): defeating an elemental titan IS
+           the Signature — routed through claimSignature so relics, frontier
+           expansion and endings all fire exactly as before */
+        if(native.titan && typeof claimSignature==='function' && !primeFill[native.titan]){
+          const _sg=SIGS.find(s=>s.id===native.titan);
+          claimSignature(native.titan, {title:(_sg?_sg.el+' — '+native.name:native.name), sub:'titan felled',
+            tier:14, hex:'#ffd96a', where:d.where||null});
+        }
         toast('\ud83c\udff4 '+(d.title||'World')+' Settled', champ.name+' overcame '+native.name+'. The world flies your flag \u2014 bioscans here are safe, and you can \u26cf harvest Stardust every hour.');
         const sd=8+(((d.designation&&d.designation.tier)||1))*5+(native.guardian?40:0);   /* guarded worlds pay a ruler's ransom */
         essence+=sd; stats.essenceEarned=(stats.essenceEarned||0)+sd;
@@ -14984,7 +15057,12 @@ function claimSignature(id, info, quiet){
   checkFrontier(quiet);
   return true;
 }
-function primeCheckSpecies(entry, quiet){
+/* v1.5.2c: signatures are claimed ONLY by felling elemental titans now
+   (see the conquest claim). These two remain as harmless no-ops so their
+   call sites and the load-time retro pass do nothing — a live save's
+   already-claimed signatures carry through the saved primeFill blob. */
+function primeCheckSpecies(entry, quiet){ return; }
+function _primeCheckSpecies_legacy(entry, quiet){
   if(_loading && !quiet) return;     /* claims during save-restore are handled by the quiet retro pass */
   if(primeCount()>=9 || !entry) return;
   /* a creature's signature is earned only once you CONQUER the world it lives on — scanning alone no longer counts */
@@ -14997,7 +15075,8 @@ function primeCheckSpecies(entry, quiet){
     }
   }
 }
-function primeCheckWorld(d){
+function primeCheckWorld(d){ return; }   /* v1.5.2c: superseded by titan claims */
+function _primeCheckWorld_legacy(d){
   if(_loading || !d || primeCount()>=9) return;
   const w=worldSignature(d);
   if(w && !primeFill[w.id]){
@@ -15012,6 +15091,25 @@ function checkFrontier(quiet){
     frontierUnlocked=true; queueSave();
     if(!quiet){ playRaritySting(7); setTimeout(openFrontier, 1000); }
   }
+}
+/* the resonance reading — a scent for the hunt, not coordinates: names the
+   KIND of world to search and how far out it lies, its strength rising as
+   the player's reach approaches the element's region band (Nick's design:
+   the tiers are felt through distance, never labelled) */
+const _SIG_HUNT={ flame:'molten worlds', ocean:'living ocean worlds', sky:'the gas giants',
+  stone:'rocky, mineral worlds', star:'wind-scoured desert worlds', life:'toxic hothouse worlds',
+  mind:'storm-lit ice worlds', void:'worlds at a black hole’s edge', prism:'prismatic worlds at the frontier' };
+function _sigResonance(s){
+  const hunt=_SIG_HUNT[s.id]||'the far worlds';
+  const minReg=(typeof _TITAN_MINREG!=='undefined'?_TITAN_MINREG[s.id]:0)||0;
+  /* how far the explorer can currently reach: the Ascent opens the home
+     galaxy (stage 3), then each claimed Signature pushes the frontier out */
+  const reached=(typeof ascStage==='function' && ascStage()<3) ? -1 :
+    (typeof currentRegion==='function' ? (REGIONS.indexOf(currentRegion())) : 0);
+  if(reached<0) return {col:'var(--faint)', text:'a resonance beyond your charter — build toward the stars to hear it.'};
+  if(minReg<=reached) return {col:'#7fe6a0', text:'resonates <b>strong</b> — hunt '+hunt+'; the titan waits on one of them.'};
+  if(minReg-reached===1) return {col:'#ffd96a', text:'resonates <b>faint</b>, farther out — press your reach onward to close on '+hunt+'.'};
+  return {col:'var(--faint)', text:'barely a whisper from the deep dark — '+hunt+', unimaginably far beyond your reach.'};
 }
 function renderPrime(){
   const el=document.getElementById('prime-grid'); if(!el) return;
@@ -15029,12 +15127,12 @@ function renderPrime(){
         (relic?'<div class="psub2" style="color:#7fe6a0">\ud83d\udee0 Blueprint recovered: '+relic.name+' \u2014 the Fabricator can forge it</div>':'')+
         '</div><div class="pchk">\u2713</div></div>';
     }
+    const _res=_sigResonance(s);
     return '<div class="psig locked"><div class="pic">'+s.icon+'</div>'+
       '<div class="pm"><div class="pn">'+s.name+'</div>'+
       (s.guardian?'<div class="psub2" style="color:#ff8a72">\u2694 Guarded by <b>'+s.guardian+'</b></div>':'')+
-      (s.lore?'<div class="psub2" style="font-style:italic;color:var(--dim)">'+s.lore+'</div>':'')+
-      '<div class="psub2">Find '+s.hint+' \u2014 the guardian may or may not be there.</div>'+
-      (s.reach?'<div class="psub2" style="color:var(--plasma)">Reach: '+s.reach+(relic?' \u00b7 relic blueprint on the claim':'')+'</div>':'')+
+      '<div class="psub2" style="color:'+_res.col+'">\ud83d\udce1 '+_res.text+'</div>'+
+      (relic?'<div class="psub2" style="color:var(--faint)">relic blueprint on the claim</div>':'')+
       '</div><div class="pchk">\u25cb</div></div>';
   }).join('');
   const meter=document.getElementById('prime-meter'); if(meter) meter.style.width=Math.round(n/9*100)+'%';

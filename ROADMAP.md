@@ -60,13 +60,27 @@
 ##   · prism→PRISM. TIER STAGGER: near = Earth/Fire/Air/Wind/Water;
 ##   mid = Electric/Poison; far = Void/Prism. Each bound to a NAMED
 ##   elemental titan (forced-apex, app-layer, deterministic) you defeat
-##   to claim. BUILD STAGES (each tested to bar before deploy):
-##   (1) SIGS→elements + named guardians + tier reach text + Guide/
-##   notes copy; (2) claim requires the element's guardian defeat
-##   (extend guardianFor/primeCheck); (3) scatter + 'not always
-##   present' presence nuance + discovery-on-landing polish; (4) 6k
-##   beta + balance. Save note: primeFill keys unchanged (ids kept) so
-##   NO migration needed; relic items keep their sig ids.
+##   to claim. BUILD STAGES: (1) LIVE 6164d3f — elemental re-theme +
+##   named titans + copy. (2) BUILT — THE TITAN HUNT: titanFor/
+##   titanGuardian at APP layer (near apexNative; NOT the Genome domain
+##   module — they need primeFill/SIGS/st/regionAt), seeded by WORLD
+##   seed (shared, NEVER epoch: epoch is per-player), region-banded
+##   cumulative (_TITAN_MINREG), 8.5% presence roll. apexNative returns
+##   the titan (world conquerable without native fauna); conquest win →
+##   claimSignature(elem). Old type-based claim (primeCheckWorld/
+##   Species + survey auto-claim) NEUTERED to no-ops — titans are the
+##   sole path; saved primeFill carries live claims. Resonance reading
+##   in renderPrime (_sigResonance: world-KIND + distance, no tier
+##   labels). Titan power ~1280 vs normal apex 641. 6 smoke checks
+##   (305 PASS). (3) NEXT: balance vs bred teams · resonance deep-link
+##   to nearest titan world · per-element titan art · 6k beta.
+##   (4) v1.6: renewable rematch loop.
+##   ⚠ LESSON: titan fns first put in the Genome DOMAIN module —
+##   unexported + blind to app state; apexNative's try/catch HID the
+##   ReferenceError and smoke passed VACUOUSLY. Moved to app layer.
+##   Watch domain/app scope for any fn needing primeFill/st/SIGS.
+##   Save: primeFill keys unchanged (ids kept), NO migration; relics
+##   keep sig ids.
 
 ## THE v1.6 SLATE (Nick-approved direction; DESIGN WITH HIM first —
 ## the full spec block sits below at 'THE v1.6 SLATE'):
