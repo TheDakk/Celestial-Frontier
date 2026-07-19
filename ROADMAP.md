@@ -1,5 +1,52 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
+## ▶▶▶ NEXT SESSION — v1.6 (Nick, 2026-07-19 close: "record it and get
+## ready for next session v1.6"; RESUME HERE) ◀◀◀
+##
+## STATE AT CLOSE: v1.5.2 LIVE at build 62c8930 (three deploys today:
+## 61024a9 five-rulings base → 0caabe7 hpwrap hotfix → 62c8930 fixes
+## wave). The first standard 6k beta was IN FLIGHT at close on the live
+## build (fail-fast; chaos 749/750 post-clean already banked; results
+## land in tools/beta6k-*.json, 'BETA6K DONE' at end) — READ IT FIRST:
+## the veteran 250 leg carries the first-ever STALENESS-HORIZON and
+## DROUGHT numbers (rep.staleness / rep.drought / rep.noveltyCurve).
+## Refresh the director's report artifact with the full round.
+##
+## OPENING MOVES, in order:
+## (1) Beta verdict + report refresh (above).
+## (2) NICK'S PENDING WORDS: emoji fixes (⚜ Forbidden Science = wrong;
+##     💠 Earpiece / 🚁 Survey Fleet / 🌗 Twin Suns = questionable —
+##     inventory in session notes); D1 wall-clock pacing FEEL check on
+##     his device (Jump p50 37 actions × 16s bursts — does it feel
+##     right?); L6 ceiling call (1/500 reach it — richer XP vs lower
+##     threshold).
+## (3) VENUS PILLAR REPRO (art): rebuild the exact Venus-132 postcard
+##     args and fix the floating-formation seating (ridge baseline +
+##     base-contact shadow — the space-era towers at 7601+ are the
+##     good pattern).
+## (4) MOBILE JOURNEY LEG for tools/uilayout.js (task queued): real
+##     touch gameplay (land, mine, accept, sheet, yard) at phone
+##     viewports via CDP Input.dispatchTouchEvent.
+##
+## THE v1.6 SLATE (Nick-approved direction; DESIGN WITH HIM first —
+## the full spec block sits below at 'THE v1.6 SLATE'):
+##  · THE AFFIX/LOOT CORE (S6) — per-instance gear, one faucet first
+##    (conquest spoils), app-layer seeded, never in share codes. The
+##    month-scale retention chase.
+##  · FAR-RING CONTENT — stars/biomes/galaxy identity beyond ring 1
+##    (the progression audit's flat spots R3).
+##  · CHAMPION CODES — leveled-creature showcase/challenger codes
+##    (clamped import, exhibit-only; Nick: "really cool").
+##  · RETENTION LAW — AI-authored deterministic content DROPS on a
+##    cadence (events/beacon revival as seasonal vehicles); measured
+##    by staleness-horizon/novelty instruments.
+##  · Parked critic picks that fold in: P2 Sol first life, P5 early
+##    Codex claim, P7 Legendary wall; S11 decline rules if wanted.
+## STANDING PROCESS (locked today, see 'STANDARD ROLLOUT PROCESS'):
+## battery → copy pass → Guide check → layout gate → 6k beta (fail-
+## fast) with feedback ACTED ON → team panels (artwork/engineering/UI/
+## bug+feedback/QA/audio) → deploy. Release notes = technical outlines.
+
 ## ★★★ v1.5.2 "THE SHIPYARD + THE QUEST SYSTEM" IS LIVE ★★★
 ## (2026-07-19 overnight, build 61024a9, deployed per Nick's overnight
 ## charter; version.json v:1.5.2 verified live.)
@@ -58,6 +105,40 @@
 ##    '🧭 First Arrival' + 2 ☄ (sysSeen set, save sysv, cap 900,
 ##    Sol/home excluded, training/loading silent). Sprinter counterweight.
 ##  · D4 → THE v1.6 SLATE (below), per the approved recommendation.
+##
+## ▶▶ DAY-2 AFTERNOON RECORD (2026-07-19, Nick present; three deploys):
+##  · HPWRAP POINTER-EAT (live-blocking, Nick's field find): the full-
+##    width HP row wrapper silently ate real clicks on the Charters
+##    button + answered hovers with the HP tooltip (topbar z-20 over
+##    chbtn z-9; synthetic clicks bypassed it, which is how every test
+##    missed it). Fixed (wrapper inert, pill interactive) + hotfix
+##    deployed 0caabe7. New RAIL-REACHABILITY law in the gate.
+##  · THE LAYOUT GATE BORN (tools/uilayout.js): headless-Edge CDP, 9
+##    viewports, ~520 checks (✕ corner law glyph-accurate, z-order,
+##    rail reachability cold/tray/search, side-scroll, clipped text),
+##    fresh expedition per viewport, proof sheets. Found the yard ✕
+##    appended at the bottom of the scroll; Nick found the sheet's the
+##    same way. Both seated FIRST now. jsdom performs no layout — this
+##    gate exists because all three of his mobile bugs were invisible
+##    to 10,000+ clean jsdom runs.
+##  · MOBILE TRIO: coarse ✕ 28px visual + invisible hit padding; rail
+##    panels z-22 over topbar chips; training card dodges its own
+##    spotlighted target.
+##  · RECORDS RESTRUCTURE (Nick): Records button to the standing slot;
+##    Shipyard takes the lower slot on appearing; Statistics ledger
+##    moved from the sheet to Records (+First Arrivals row).
+##  · FIRST COPY GATE RUN: 6 SHOUTING-caps demoted, 'sock'→'slot',
+##    hunt board→charter board, Guide gained tier-XP/scout-XP/First-
+##    Arrival currency. Verdict: voice human, Guide current.
+##  · FIRST ART REVIEW (vision on tools/sheets/artreview.png): molten
+##    worlds drew a WATER river w/ sun glints ('rivers of rock' matched
+##    the water regex) — fixed; day river de-glared. Venus pillar
+##    seating = repro pending. EMOJI INVENTORY: 1 wrong (⚜ Forbidden
+##    Science), 3 questionable — awaiting Nick.
+##  · RELEASE NOTES: all 19 entries → technical outlines (standing
+##    format). TEAM PIPELINE recorded (incl. audio team).
+##  · Deploys: 0caabe7 (hotfix) → 62c8930 (fix wave). Beta 6k running
+##    at close; chaos 749/750 + ui 500/500 already clean.
 ##
 ## ★ STANDARD ROLLOUT PROCESS (Nick, 2026-07-19 — every release):
 ##   1. Build + battery (validate/smoke/systems/balance).
