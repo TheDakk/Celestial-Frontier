@@ -8,21 +8,23 @@
   "skipPath": 0,
   "postClean": 749,
   "stallTable": {
-   "step 19 [open: reveal]": 34,
-   "step 6 (land lesson up) [open: tutbox]": 4,
+   "step 19 [open: reveal]": 32,
    "step 4 [open: tutbox]": 4,
-   "step 19 [open: helppop]": 11,
-   "step 19 [open: reveal,setpanel,helppop]": 5,
-   "step 19 [open: reveal,helppop]": 27,
+   "step 19 [open: reveal,helppop]": 31,
+   "step 6 (land lesson up) [open: tutbox]": 4,
+   "step 19 [open: setpanel,helppop]": 2,
    "step 7 (landed home) [open: tutbox,codex]": 1,
+   "step 19 [open: helppop]": 7,
+   "step 19 [open: reveal,setpanel,helppop]": 3,
    "step 19 [open: reveal,setpanel]": 6,
-   "step 19 [open: tutbox,reveal,helppop]": 3,
-   "step 19 [open: ]": 4,
-   "step 19 [open: tutbox,reveal]": 2,
+   "step 19 [open: tutbox,reveal,helppop]": 4,
+   "step 19 [open: ]": 6,
+   "step 19 [open: tutbox,reveal]": 1,
+   "step 19 [open: tutbox]": 2,
    "step 5 [open: tutbox]": 3,
    "step 4 [open: tutbox,helppop]": 1,
    "step 5 [open: tutbox,helppop]": 1,
-   "step 19 [open: tutbox,helppop]": 3,
+   "step 19 [open: tutbox,helppop]": 2,
    "step 3 [open: tutbox]": 1,
    "step 7 (landed home) [open: tutbox]": 1,
    "step 7 [open: tutbox]": 1,
@@ -47,23 +49,11 @@
    "step 17 (sheet open) [open: tutbox]": 1,
    "forge: yard fab [open: tutbox,helppop]": 1,
    "step 18 (plate forged) [open: tutbox,helppop]": 1,
-   "step 19 [open: tutbox]": 1,
    "finale [open: tutbox]": 1
   },
   "breakTable": {}
  },
  "runs": [
-  {
-   "mode": "chaos",
-   "seed": 13,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
   {
    "mode": "chaos",
    "seed": 47527,
@@ -77,7 +67,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 15851,
+   "seed": 13,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -99,7 +89,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 55446,
+   "seed": 23770,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -110,7 +100,18 @@
   },
   {
    "mode": "chaos",
-   "seed": 23770,
+   "seed": 15851,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 55446,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -167,17 +168,6 @@
   },
   {
    "mode": "chaos",
-   "seed": 2654475369,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 2654451612,
    "errors": [],
    "stalls": [],
@@ -200,7 +190,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2654443693,
+   "seed": 2654475369,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -211,7 +201,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2654467450,
+   "seed": 2654443693,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -233,7 +223,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1013904239,
+   "seed": 1013927996,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -244,7 +234,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1013927996,
+   "seed": 2654467450,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -277,6 +267,31 @@
   },
   {
    "mode": "chaos",
+   "seed": 2654491207,
+   "errors": [],
+   "stalls": [
+    "step 4 [open: tutbox]",
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1013904239,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 1013943834,
    "errors": [],
    "stalls": [
@@ -290,40 +305,18 @@
   },
   {
    "mode": "chaos",
-   "seed": 3668355838,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3668340000,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1013935915,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 3668363757,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3668355838,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -345,65 +338,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2654491207,
-   "errors": [],
-   "stalls": [
-    "step 4 [open: tutbox]",
-    "step 19 [open: helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3668379595,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3668387514,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2027824303,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2027832222,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2027816384,
+   "seed": 1013935915,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -425,7 +360,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2027848060,
+   "seed": 3668340000,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -436,33 +371,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2027808465,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,setpanel,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3668371676,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2027855979,
+   "seed": 3668387514,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -473,7 +382,40 @@
   },
   {
    "mode": "chaos",
-   "seed": 387284849,
+   "seed": 3668379595,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2027832222,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2027824303,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2027816384,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -495,6 +437,87 @@
   },
   {
    "mode": "chaos",
+   "seed": 2027855979,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2027848060,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3668371676,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 387284849,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2027808465,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: setpanel,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2027863898,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 387324444,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 387316525,
    "errors": [],
    "stalls": [],
@@ -506,7 +529,20 @@
   },
   {
    "mode": "chaos",
-   "seed": 387276930,
+   "seed": 387300687,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2027840141,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -530,41 +566,6 @@
   },
   {
    "mode": "chaos",
-   "seed": 387324444,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 387300687,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2027840141,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 3041720610,
    "errors": [],
    "stalls": [],
@@ -576,18 +577,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2027863898,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3041752286,
+   "seed": 387276930,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -609,18 +599,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3041712691,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3041728529,
+   "seed": 3041752286,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -642,7 +621,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1401189075,
+   "seed": 3041728529,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -653,7 +632,29 @@
   },
   {
    "mode": "chaos",
-   "seed": 1401220751,
+   "seed": 387332363,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3041712691,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1401189075,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -677,29 +678,18 @@
   },
   {
    "mode": "chaos",
+   "seed": 1401220751,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 1401228670,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1401181156,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1401196994,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -721,7 +711,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 387332363,
+   "seed": 1401196994,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -732,7 +722,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 4055656512,
+   "seed": 3041768124,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -743,18 +733,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1401204913,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4055664431,
+   "seed": 1401181156,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -776,7 +755,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 4055616917,
+   "seed": 1401204913,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -787,7 +766,18 @@
   },
   {
    "mode": "chaos",
-   "seed": 4055632755,
+   "seed": 4055656512,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4055664431,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -809,7 +799,29 @@
   },
   {
    "mode": "chaos",
-   "seed": 3041768124,
+   "seed": 4055632755,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1401236589,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4055616917,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -842,7 +854,18 @@
   },
   {
    "mode": "chaos",
-   "seed": 2415085382,
+   "seed": 2415101220,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4055672350,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -854,6 +877,17 @@
   {
    "mode": "chaos",
    "seed": 4055648593,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2415085382,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -877,39 +911,6 @@
   },
   {
    "mode": "chaos",
-   "seed": 2415101220,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1401236589,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 774553847,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 2415093301,
    "errors": [],
    "stalls": [
@@ -923,7 +924,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 774601361,
+   "seed": 2415109139,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -934,7 +935,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2415109139,
+   "seed": 774601361,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -967,18 +968,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 4055672350,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3428989608,
+   "seed": 774553847,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1000,7 +990,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 774585523,
+   "seed": 2415140815,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1012,28 +1002,6 @@
   {
    "mode": "chaos",
    "seed": 774577604,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3429029203,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2415140815,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1057,11 +1025,20 @@
   },
   {
    "mode": "chaos",
-   "seed": 3429037122,
+   "seed": 774585523,
    "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3429029203,
+   "errors": [],
+   "stalls": [],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -1081,7 +1058,31 @@
   },
   {
    "mode": "chaos",
-   "seed": 3429021284,
+   "seed": 3428989608,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3429037122,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3428997527,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1103,42 +1104,18 @@
   },
   {
    "mode": "chaos",
+   "seed": 3429021284,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 1788497668,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1788458073,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3428997527,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1788505587,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1160,51 +1137,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1788481830,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 147926538,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1788489749,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 147966133,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 147942376,
+   "seed": 1788505587,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1229,11 +1162,90 @@
   },
   {
    "mode": "chaos",
+   "seed": 1788458073,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1788481830,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 147942376,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 147966133,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1788489749,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 1788465992,
    "errors": [],
    "stalls": [
     "step 19 [open: reveal,helppop]"
    ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3429045041,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 147926538,
+   "errors": [],
+   "stalls": [],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -1253,7 +1265,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2802401894,
+   "seed": 2802378137,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1264,7 +1276,18 @@
   },
   {
    "mode": "chaos",
-   "seed": 2802362299,
+   "seed": 147958214,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2802401894,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1288,7 +1311,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2802378137,
+   "seed": 1788513506,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1299,18 +1322,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3429045041,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 147958214,
+   "seed": 2802362299,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1354,29 +1366,18 @@
   },
   {
    "mode": "chaos",
-   "seed": 2802386056,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1788513506,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 2802393975,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2802386056,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1398,7 +1399,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1161878278,
+   "seed": 147981971,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1409,11 +1410,9 @@
   },
   {
    "mode": "chaos",
-   "seed": 1161830764,
+   "seed": 2802370218,
    "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
+   "stalls": [],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -1422,7 +1421,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2802370218,
+   "seed": 1161878278,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1444,18 +1443,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1161854521,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3816306120,
+   "seed": 1161830764,
    "errors": [],
    "stalls": [
     "step 19 [open: helppop]"
@@ -1468,40 +1456,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 147981971,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3816266525,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3816314039,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3816282363,
+   "seed": 2802417732,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1523,6 +1478,52 @@
   },
   {
    "mode": "chaos",
+   "seed": 3816314039,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3816306120,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1161854521,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3816282363,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 3816298201,
    "errors": [],
    "stalls": [],
@@ -1534,7 +1535,29 @@
   },
   {
    "mode": "chaos",
-   "seed": 3816290282,
+   "seed": 3816266525,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1161886197,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2175782504,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1556,18 +1579,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2802417732,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2175782504,
+   "seed": 3816290282,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1600,7 +1612,31 @@
   },
   {
    "mode": "chaos",
-   "seed": 2175758747,
+   "seed": 3816274444,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3816321958,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 535219293,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1622,66 +1658,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1161886197,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2175734990,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 535219293,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 535250969,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3816274444,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3189678811,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1703,7 +1680,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3816321958,
+   "seed": 2175758747,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1714,64 +1691,11 @@
   },
   {
    "mode": "chaos",
-   "seed": 3189655054,
+   "seed": 2175734990,
    "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 535227212,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3189686730,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1549147276,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3189670892,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1549123519,
-   "errors": [],
-   "stalls": [],
+   "stalls": [
+    "step 19 [open: helppop]"
+   ],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -1802,20 +1726,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 535203455,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3189662973,
+   "seed": 3189655054,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1826,7 +1737,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1549155195,
+   "seed": 3189678811,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1837,7 +1748,18 @@
   },
   {
    "mode": "chaos",
-   "seed": 4203559280,
+   "seed": 3189686730,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3189670892,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1859,7 +1781,108 @@
   },
   {
    "mode": "chaos",
+   "seed": 535211374,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 535227212,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1549123519,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1549147276,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1549155195,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 1549139357,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3189647135,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 535203455,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4203559280,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3189662973,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1881,20 +1904,11 @@
   },
   {
    "mode": "chaos",
-   "seed": 535211374,
+   "seed": 3189694649,
    "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3189639216,
-   "errors": [],
-   "stalls": [],
+   "stalls": [
+    "step 19 [open: tutbox,reveal,helppop]"
+   ],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -1904,6 +1918,28 @@
   {
    "mode": "chaos",
    "seed": 4203590956,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4203575118,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1549115600,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1936,17 +1972,6 @@
   },
   {
    "mode": "chaos",
-   "seed": 4203575118,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 2563051502,
    "errors": [],
    "stalls": [],
@@ -1958,7 +1983,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3189647135,
+   "seed": 3189639216,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1980,7 +2005,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 4203567199,
+   "seed": 2563043583,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -1991,11 +2016,20 @@
   },
   {
    "mode": "chaos",
-   "seed": 3189694649,
+   "seed": 4203551361,
    "errors": [],
-   "stalls": [
-    "step 19 [open: tutbox,reveal,helppop]"
-   ],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4203567199,
+   "errors": [],
+   "stalls": [],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -2015,9 +2049,11 @@
   },
   {
    "mode": "chaos",
-   "seed": 2563043583,
+   "seed": 1549163114,
    "errors": [],
-   "stalls": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -2026,7 +2062,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1549115600,
+   "seed": 922512048,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2050,17 +2086,6 @@
   },
   {
    "mode": "chaos",
-   "seed": 2563035664,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 922527886,
    "errors": [],
    "stalls": [],
@@ -2072,29 +2097,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 922512048,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4203551361,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4203543442,
+   "seed": 2563035664,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2118,77 +2121,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 922504129,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3576931971,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: ]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1549163114,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3576963647,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3576947809,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2563011907,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3576955728,
+   "seed": 4203598875,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2210,7 +2143,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3576939890,
+   "seed": 3576947809,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2221,7 +2154,20 @@
   },
   {
    "mode": "chaos",
-   "seed": 4203598875,
+   "seed": 3576931971,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4203543442,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2232,7 +2178,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1936400436,
+   "seed": 3576963647,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2243,7 +2189,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1936432112,
+   "seed": 922504129,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2254,29 +2200,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1936416274,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 922480372,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1936424193,
+   "seed": 3576955728,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2298,7 +2222,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1936408355,
+   "seed": 1936416274,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2320,7 +2244,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 295900577,
+   "seed": 2563011907,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2331,7 +2255,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3576916133,
+   "seed": 1936432112,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2342,11 +2266,9 @@
   },
   {
    "mode": "chaos",
-   "seed": 295868901,
+   "seed": 3576939890,
    "errors": [],
-   "stalls": [
-    "step 19 [open: helppop]"
-   ],
+   "stalls": [],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -2355,7 +2277,18 @@
   },
   {
    "mode": "chaos",
-   "seed": 295876820,
+   "seed": 1936424193,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1936400436,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2367,6 +2300,17 @@
   {
    "mode": "chaos",
    "seed": 922535805,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 922480372,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2390,31 +2334,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2950336338,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 295892658,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1936384598,
+   "seed": 1936408355,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2438,7 +2358,42 @@
   },
   {
    "mode": "chaos",
+   "seed": 295900577,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 3576971566,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 295868901,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3576916133,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2460,7 +2415,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2950312581,
+   "seed": 295876820,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2471,9 +2426,11 @@
   },
   {
    "mode": "chaos",
-   "seed": 1309804803,
+   "seed": 295892658,
    "errors": [],
-   "stalls": [],
+   "stalls": [
+    "step 19 [open: helppop]"
+   ],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -2482,7 +2439,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2950304662,
+   "seed": 2950336338,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2504,7 +2461,53 @@
   },
   {
    "mode": "chaos",
-   "seed": 295853063,
+   "seed": 1309788965,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2950312581,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2950304662,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1936440031,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1936384598,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2526,7 +2529,29 @@
   },
   {
    "mode": "chaos",
-   "seed": 1309788965,
+   "seed": 1309804803,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3964224726,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 295860982,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2559,11 +2584,9 @@
   },
   {
    "mode": "chaos",
-   "seed": 1936440031,
+   "seed": 295908496,
    "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
+   "stalls": [],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -2583,7 +2606,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2950288824,
+   "seed": 295853063,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2594,31 +2617,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3964224726,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3964240564,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 295860982,
+   "seed": 2950296743,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2651,83 +2650,6 @@
   },
   {
    "mode": "chaos",
-   "seed": 295908496,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1309757289,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2323709029,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2950296743,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2323685272,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3964232645,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2323677353,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 2323693191,
    "errors": [],
    "stalls": [],
@@ -2750,7 +2672,20 @@
   },
   {
    "mode": "chaos",
-   "seed": 3964193050,
+   "seed": 3964240564,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2950288824,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2761,18 +2696,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 683177494,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 683153737,
+   "seed": 3964232645,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2794,7 +2718,18 @@
   },
   {
    "mode": "chaos",
-   "seed": 2323701110,
+   "seed": 2323685272,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2323677353,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2816,7 +2751,130 @@
   },
   {
    "mode": "chaos",
+   "seed": 2323709029,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1309757289,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1309812722,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3964200969,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 683177494,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3337597417,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 683153737,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2323701110,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3964193050,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 683145818,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3964248483,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2323669434,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2849,7 +2907,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3964200969,
+   "seed": 2323716948,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2860,20 +2918,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1309812722,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3337597417,
+   "seed": 683137899,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2889,6 +2934,17 @@
    "stalls": [
     "step 19 [open: reveal]"
    ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1697057963,
+   "errors": [],
+   "stalls": [],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -2919,20 +2975,11 @@
   },
   {
    "mode": "chaos",
-   "seed": 1697057963,
+   "seed": 1697065882,
    "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2323669434,
-   "errors": [],
-   "stalls": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -2954,7 +3001,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3964248483,
+   "seed": 683185413,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -2976,6 +3023,17 @@
   },
   {
    "mode": "chaos",
+   "seed": 3337573660,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 56550185,
    "errors": [],
    "stalls": [],
@@ -2987,18 +3045,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 683137899,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2323716948,
+   "seed": 56534347,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3031,19 +3078,6 @@
   },
   {
    "mode": "chaos",
-   "seed": 1697065882,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 56526428,
    "errors": [],
    "stalls": [
@@ -3068,83 +3102,6 @@
   },
   {
    "mode": "chaos",
-   "seed": 2710985946,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3337573660,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 56518509,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 683185413,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1697073801,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 56534347,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2710962189,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 1697042125,
    "errors": [],
    "stalls": [],
@@ -3156,73 +3113,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1070454411,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1697034206,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 56542266,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2710954270,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 2710970108,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1070430654,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 56510590,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3246,7 +3137,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 56502671,
+   "seed": 56518509,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3257,7 +3148,51 @@
   },
   {
    "mode": "chaos",
-   "seed": 3724890172,
+   "seed": 2710985946,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1697073801,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2710962189,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1697034206,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 56510590,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3279,7 +3214,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1070422735,
+   "seed": 1070430654,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3290,7 +3225,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2710946351,
+   "seed": 1070454411,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3301,33 +3236,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2710978027,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3724866415,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2710938432,
+   "seed": 2710954270,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3338,7 +3247,18 @@
   },
   {
    "mode": "chaos",
-   "seed": 3724874334,
+   "seed": 56502671,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 56542266,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3362,7 +3282,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3724858496,
+   "seed": 3724874334,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3373,7 +3293,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1070414816,
+   "seed": 2710946351,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3384,7 +3304,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1070446492,
+   "seed": 3724890172,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3395,20 +3315,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2084358637,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2084334880,
+   "seed": 2710938432,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3419,7 +3326,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1070406897,
+   "seed": 1070422735,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3441,7 +3348,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2084326961,
+   "seed": 1070414816,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3452,7 +3359,33 @@
   },
   {
    "mode": "chaos",
-   "seed": 3724850577,
+   "seed": 3724866415,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: ]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2710978027,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: ]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2710993865,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3463,29 +3396,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 443827102,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 443803345,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3724842658,
+   "seed": 3724858496,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3509,7 +3420,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 443795426,
+   "seed": 3724850577,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3520,7 +3431,75 @@
   },
   {
    "mode": "chaos",
-   "seed": 3724882253,
+   "seed": 1070406897,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2084334880,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2084358637,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1070446492,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2084326961,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 443811264,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3724842658,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3542,7 +3521,51 @@
   },
   {
    "mode": "chaos",
-   "seed": 2710993865,
+   "seed": 443803345,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 443827102,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1070462330,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3724882253,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 443795426,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3575,130 +3598,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 443811264,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3098231187,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 443779588,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 443787507,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3098239106,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1457731328,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2084350718,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1070462330,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3098223268,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4112167089,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1457699652,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 443819183,
+   "seed": 3724898091,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3722,6 +3622,118 @@
   },
   {
    "mode": "chaos",
+   "seed": 443787507,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3098231187,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3098239106,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 443779588,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2084366556,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2084350718,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1457731328,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3098223268,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1457715490,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1457699652,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 3098215349,
    "errors": [],
    "stalls": [],
@@ -3733,7 +3745,29 @@
   },
   {
    "mode": "chaos",
-   "seed": 3724898091,
+   "seed": 443835021,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 443819183,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4112167089,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3768,18 +3802,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2471635554,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3098254944,
+   "seed": 1457683814,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3801,161 +3824,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1457683814,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2084366556,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1457715490,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4112127494,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4112143332,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 831104019,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2471603878,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4112119575,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1457723409,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 443835021,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2471595959,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2471611797,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4112151251,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2471588040,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4112159170,
+   "seed": 3098254944,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3977,7 +3846,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 831072343,
+   "seed": 2471635554,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3988,7 +3857,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 831080262,
+   "seed": 4112127494,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -3999,7 +3868,84 @@
   },
   {
    "mode": "chaos",
-   "seed": 831064424,
+   "seed": 4112151251,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4112143332,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4112119575,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2471603878,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1457739247,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 831104019,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2471595959,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1457723409,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4021,7 +3967,95 @@
   },
   {
    "mode": "chaos",
-   "seed": 1457739247,
+   "seed": 2471611797,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2471588040,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4112175008,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 831072343,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 831064424,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4112159170,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 831080262,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 831088181,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2471643473,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4078,20 +4112,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2471627635,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1844976569,
+   "seed": 3485523942,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4105,7 +4126,20 @@
    "seed": 3485500185,
    "errors": [],
    "stalls": [
-    "step 19 [open: reveal]"
+    "step 19 [open: ]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2471627635,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
    ],
    "breaks": [],
    "skipped": false,
@@ -4126,7 +4160,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 831088181,
+   "seed": 831111938,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4137,7 +4171,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 4112175008,
+   "seed": 1844976569,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4159,29 +4193,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1844984488,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 831096100,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 204445034,
+   "seed": 1844992407,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4203,17 +4215,6 @@
   },
   {
    "mode": "chaos",
-   "seed": 3485523942,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 1844960731,
    "errors": [],
    "stalls": [],
@@ -4225,7 +4226,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2471643473,
+   "seed": 831096100,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4236,7 +4237,40 @@
   },
   {
    "mode": "chaos",
-   "seed": 204452953,
+   "seed": 1844984488,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 204445034,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 204460872,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3485547699,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4250,7 +4284,7 @@
    "seed": 204476710,
    "errors": [],
    "stalls": [
-    "step 19 [open: reveal]"
+    "step 19 [open: ]"
    ],
    "breaks": [],
    "skipped": false,
@@ -4260,7 +4294,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1844992407,
+   "seed": 204429196,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4282,7 +4316,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 204429196,
+   "seed": 204452953,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4293,7 +4327,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2858888714,
+   "seed": 2858896633,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4304,7 +4338,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 831111938,
+   "seed": 1845016164,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4328,33 +4362,33 @@
   },
   {
    "mode": "chaos",
+   "seed": 2858864957,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2858888714,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 2858880795,
    "errors": [],
    "stalls": [
     "step 19 [open: reveal,helppop]"
    ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 204460872,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2858864957,
-   "errors": [],
-   "stalls": [],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -4385,128 +4419,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1218357179,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3485547699,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1845000326,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1218349260,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2858896633,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1218380936,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1218341341,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1218333422,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3872792940,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1845016164,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 204468791,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3872785021,
+   "seed": 204484629,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4528,9 +4441,110 @@
   },
   {
    "mode": "chaos",
-   "seed": 3872816697,
+   "seed": 1218357179,
    "errors": [],
    "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1218333422,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1845000326,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1218380936,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2858920390,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1218341341,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1218349260,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3872792940,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 204468791,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3872800859,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -4550,7 +4564,29 @@
   },
   {
    "mode": "chaos",
-   "seed": 204484629,
+   "seed": 3872816697,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1218388855,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3872785021,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4583,22 +4619,9 @@
   },
   {
    "mode": "chaos",
-   "seed": 2232285162,
+   "seed": 2232269324,
    "errors": [],
    "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2232261405,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: ]"
-   ],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -4618,7 +4641,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2858920390,
+   "seed": 2232285162,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4640,10 +4663,10 @@
   },
   {
    "mode": "chaos",
-   "seed": 3872800859,
+   "seed": 2232261405,
    "errors": [],
    "stalls": [
-    "step 19 [open: reveal,helppop]"
+    "step 19 [open: reveal]"
    ],
    "breaks": [],
    "skipped": false,
@@ -4653,7 +4676,40 @@
   },
   {
    "mode": "chaos",
+   "seed": 3872824616,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 2232245567,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 591721951,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2232293081,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4677,9 +4733,11 @@
   },
   {
    "mode": "chaos",
-   "seed": 1218388855,
+   "seed": 591737789,
    "errors": [],
-   "stalls": [],
+   "stalls": [
+    "step 19 [open: reveal,setpanel]"
+   ],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -4688,20 +4746,11 @@
   },
   {
    "mode": "chaos",
-   "seed": 591721951,
+   "seed": 591706113,
    "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2232269324,
-   "errors": [],
-   "stalls": [],
+   "stalls": [
+    "step 19 [open: tutbox,reveal]"
+   ],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -4711,6 +4760,17 @@
   {
    "mode": "chaos",
    "seed": 591714032,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3246157712,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4747,19 +4807,6 @@
   },
   {
    "mode": "chaos",
-   "seed": 591706113,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: tutbox,reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 3872808778,
    "errors": [],
    "stalls": [],
@@ -4771,119 +4818,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3246149793,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3872824616,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3246189388,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3246165631,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3246141874,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 591737789,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,setpanel]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2232277243,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3246157712,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1605618258,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2232293081,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1605657853,
+   "seed": 591761546,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -4905,6 +4840,83 @@
   },
   {
    "mode": "chaos",
+   "seed": 3246149793,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3246141874,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3246189388,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3246197307,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1605618258,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2232277243,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3246165631,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 1605610339,
    "errors": [],
    "stalls": [],
@@ -4916,88 +4928,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1605634096,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1605626177,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 591745708,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4260046100,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4260093614,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4260054019,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 591761546,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4260061938,
+   "seed": 1605657853,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5021,121 +4952,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 4260069857,
-   "errors": [],
-   "stalls": [
-    "step 4 [open: tutbox]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3246197307,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2619514565,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2619530403,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2619522484,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4260077776,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3246181469,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2619562079,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2619538322,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 978990949,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 978998868,
+   "seed": 1605626177,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5157,6 +4974,87 @@
   },
   {
    "mode": "chaos",
+   "seed": 4260046100,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4260077776,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4260054019,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 591745708,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1605634096,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4260093614,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4260061938,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 2619546241,
    "errors": [],
    "stalls": [],
@@ -5168,7 +5066,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1605649934,
+   "seed": 2619514565,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5179,7 +5077,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 979006787,
+   "seed": 2619562079,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5190,11 +5088,58 @@
   },
   {
    "mode": "chaos",
-   "seed": 978983030,
+   "seed": 4260101533,
    "errors": [],
    "stalls": [
-    "step 5 [open: tutbox]",
+    "step 19 [open: reveal]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2619522484,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2619530403,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3246181469,
+   "errors": [],
+   "stalls": [
     "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4260069857,
+   "errors": [],
+   "stalls": [
+    "step 4 [open: tutbox]"
    ],
    "breaks": [],
    "skipped": false,
@@ -5215,7 +5160,53 @@
   },
   {
    "mode": "chaos",
-   "seed": 4260085695,
+   "seed": 978990949,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2619538322,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2619569998,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: tutbox]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 978998868,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3633450467,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5239,9 +5230,10 @@
   },
   {
    "mode": "chaos",
-   "seed": 3633434629,
+   "seed": 978983030,
    "errors": [],
    "stalls": [
+    "step 5 [open: tutbox]",
     "step 19 [open: reveal,helppop]"
    ],
    "breaks": [],
@@ -5252,213 +5244,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3633426710,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4260101533,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3633442548,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2619554160,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3633450467,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3633466305,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1992903094,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1992911013,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1992895175,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3633418791,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 979022625,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1992918932,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2619569998,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: tutbox,reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1992934770,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 352363640,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1992887256,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 352371559,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3633458386,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 352379478,
+   "seed": 1605649934,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5480,6 +5266,133 @@
   },
   {
    "mode": "chaos",
+   "seed": 979006787,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3633426710,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1992918932,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4260085695,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3633434629,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3633442548,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3633418791,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: ]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3633466305,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2619554160,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1992903094,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1992895175,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 352387397,
    "errors": [],
    "stalls": [],
@@ -5491,7 +5404,20 @@
   },
   {
    "mode": "chaos",
-   "seed": 3006799401,
+   "seed": 3633474224,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: setpanel,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1992911013,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5502,7 +5428,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 352355721,
+   "seed": 1992887256,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5513,7 +5439,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3006815239,
+   "seed": 979022625,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5524,29 +5450,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3006807320,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 352403235,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1992926851,
+   "seed": 352363640,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5568,6 +5472,107 @@
   },
   {
    "mode": "chaos",
+   "seed": 352371559,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1992934770,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 352355721,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3633458386,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3006799401,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1992942689,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1366291623,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 352379478,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 352403235,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 1366267866,
    "errors": [],
    "stalls": [],
@@ -5579,7 +5584,40 @@
   },
   {
    "mode": "chaos",
-   "seed": 1366275785,
+   "seed": 3006807320,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1992926851,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 352411154,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4020727384,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5591,30 +5629,6 @@
   {
    "mode": "chaos",
    "seed": 3006838996,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3633474224,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,setpanel,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1366283704,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5638,6 +5652,39 @@
   },
   {
    "mode": "chaos",
+   "seed": 3006815239,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1366275785,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3006846915,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 4020703627,
    "errors": [],
    "stalls": [],
@@ -5649,7 +5696,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1366291623,
+   "seed": 2380195849,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5682,7 +5729,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 4020719465,
+   "seed": 1366283704,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5704,17 +5751,6 @@
   },
   {
    "mode": "chaos",
-   "seed": 2380172092,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 4020711546,
    "errors": [],
    "stalls": [],
@@ -5726,7 +5762,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 4020727384,
+   "seed": 1366315380,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5737,108 +5773,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3006831077,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1992942689,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4020743222,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4020695708,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2380195849,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2380180011,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2380187930,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 739640557,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2380211687,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 352411154,
+   "seed": 2380172092,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5860,7 +5795,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2380164173,
+   "seed": 3006831077,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5871,7 +5806,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 739656395,
+   "seed": 4020743222,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5882,7 +5817,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 739648476,
+   "seed": 4020719465,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -5893,176 +5828,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3394076318,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 739680152,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1366299542,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3006846915,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3394100075,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3394092156,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 739632638,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4020735303,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1753544783,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3394115913,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1753568540,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3394084237,
-   "errors": [],
-   "stalls": [
-    "step 4 [open: tutbox,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1366315380,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1753560621,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3394068399,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 113037005,
+   "seed": 4020695708,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6084,7 +5850,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 113013248,
+   "seed": 3394100075,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6095,20 +5861,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2380203768,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1753584378,
+   "seed": 2380211687,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6119,7 +5872,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 113029086,
+   "seed": 2380180011,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6130,7 +5883,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1753536864,
+   "seed": 739640557,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6141,18 +5894,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1753552702,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2767472766,
+   "seed": 2380187930,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6174,7 +5916,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 113052843,
+   "seed": 2380164173,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6185,7 +5927,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2767449009,
+   "seed": 1753568540,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6196,7 +5938,20 @@
   },
   {
    "mode": "chaos",
-   "seed": 113021167,
+   "seed": 1366299542,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 739680152,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6207,7 +5962,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 113005329,
+   "seed": 3394076318,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6218,7 +5973,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2767464847,
+   "seed": 739648476,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6229,7 +5984,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1126941231,
+   "seed": 4020735303,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6240,7 +5995,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 739672233,
+   "seed": 113037005,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6251,7 +6006,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1126917474,
+   "seed": 739656395,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6262,7 +6017,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2767456928,
+   "seed": 739632638,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6273,7 +6028,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2767441090,
+   "seed": 3394115913,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6284,7 +6039,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3781376992,
+   "seed": 1753544783,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6308,7 +6063,242 @@
   },
   {
    "mode": "chaos",
+   "seed": 3394092156,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3394084237,
+   "errors": [],
+   "stalls": [
+    "step 4 [open: tutbox,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2767472766,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3394068399,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3394123832,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1753584378,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2380203768,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 113013248,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1753552702,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1126941231,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1753536864,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1753560621,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 113052843,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 739672233,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1753592297,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 113021167,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2767449009,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3781376992,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 113029086,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 3394107994,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2767456928,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 113005329,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6332,7 +6322,128 @@
   },
   {
    "mode": "chaos",
+   "seed": 113060762,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1126917474,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1753576459,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2767464847,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2140845457,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1126925393,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2767441090,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 113044924,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1126957069,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2767496523,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 3781353235,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1126909555,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6356,7 +6467,20 @@
   },
   {
    "mode": "chaos",
-   "seed": 1126925393,
+   "seed": 500313922,
+   "errors": [],
+   "stalls": [
+    "step 5 [open: tutbox]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1126964988,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6367,95 +6491,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3394123832,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1753576459,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1126909555,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2140845457,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2140821700,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1126957069,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3781369073,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 113044924,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3781345316,
+   "seed": 2767480685,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6477,7 +6513,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1753592297,
+   "seed": 2140821700,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6499,20 +6535,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 500313922,
-   "errors": [],
-   "stalls": [
-    "step 5 [open: tutbox]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2767480685,
+   "seed": 3781369073,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6523,7 +6546,40 @@
   },
   {
    "mode": "chaos",
-   "seed": 2140813781,
+   "seed": 3154749683,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3781400749,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3781345316,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1126949150,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6556,7 +6612,75 @@
   },
   {
    "mode": "chaos",
-   "seed": 113060762,
+   "seed": 1514218148,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2140869214,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2140813781,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3781384911,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 500329760,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 500290165,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 500298084,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6580,7 +6704,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3154749683,
+   "seed": 4168653909,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6591,7 +6715,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1126949150,
+   "seed": 500337679,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6613,97 +6737,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 500290165,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: ]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 500329760,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 500298084,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 500306003,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2767496523,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1514218148,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3781384911,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 3154765521,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3154733845,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6725,7 +6759,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1126964988,
+   "seed": 3154733845,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6736,7 +6770,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3154741764,
+   "seed": 500306003,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6747,21 +6781,34 @@
   },
   {
    "mode": "chaos",
-   "seed": 4168653909,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3154718007,
+   "seed": 2140853376,
    "errors": [],
    "stalls": [
-    "step 19 [open: reveal]"
+    "step 5 [open: tutbox,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3154773440,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2528122374,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
    ],
    "breaks": [],
    "skipped": false,
@@ -6804,7 +6851,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3781400749,
+   "seed": 3154741764,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6815,21 +6862,10 @@
   },
   {
    "mode": "chaos",
-   "seed": 1514210229,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2140853376,
+   "seed": 3154718007,
    "errors": [],
    "stalls": [
-    "step 5 [open: tutbox,helppop]"
+    "step 19 [open: reveal]"
    ],
    "breaks": [],
    "skipped": false,
@@ -6839,7 +6875,18 @@
   },
   {
    "mode": "chaos",
-   "seed": 1514186472,
+   "seed": 500321841,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1514241905,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6872,30 +6919,6 @@
   },
   {
    "mode": "chaos",
-   "seed": 2140869214,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2528122374,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
    "seed": 4168638071,
    "errors": [],
    "stalls": [],
@@ -6907,7 +6930,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 500321841,
+   "seed": 1514210229,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -6918,68 +6941,9 @@
   },
   {
    "mode": "chaos",
-   "seed": 4168622233,
+   "seed": 1514186472,
    "errors": [],
    "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4168645990,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2528106536,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 500337679,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2528138212,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2528098617,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,setpanel]"
-   ],
    "breaks": [],
    "skipped": false,
    "completed": true,
@@ -6989,6 +6953,17 @@
   {
    "mode": "chaos",
    "seed": 887590839,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2528106536,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7010,211 +6985,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2528114455,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2528090698,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3154773440,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3542026600,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1514226067,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 887559163,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 887575001,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 887606677,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1514241905,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 887567082,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: reveal,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 4168661828,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 887582920,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1901495065,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3541994924,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3542010762,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3542042438,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3542002843,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3542018681,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 260963530,
+   "seed": 2528138212,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7238,7 +7009,204 @@
   },
   {
    "mode": "chaos",
-   "seed": 1901463389,
+   "seed": 4168622233,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3542026600,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2528098617,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,setpanel]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4168645990,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1514226067,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2528146131,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2528090698,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 887606677,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2528114455,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 887575001,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 4168661828,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 887567082,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1901495065,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 887559163,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 887614596,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3542042438,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3542010762,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 887582920,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7250,6 +7218,72 @@
   {
    "mode": "chaos",
    "seed": 2528130293,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3542002843,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 260963530,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3541994924,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1901510903,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3542018681,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 887598758,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7282,7 +7316,31 @@
   },
   {
    "mode": "chaos",
-   "seed": 1901510903,
+   "seed": 3542050357,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: tutbox,reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1901463389,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3542034519,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7304,7 +7362,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2528146131,
+   "seed": 260979368,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7328,18 +7386,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 887598758,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 260931854,
+   "seed": 1274867756,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7361,7 +7408,31 @@
   },
   {
    "mode": "chaos",
-   "seed": 1274867756,
+   "seed": 1901502984,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1901518822,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2915415129,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7383,7 +7454,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 887614596,
+   "seed": 2915383453,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7394,7 +7465,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 260979368,
+   "seed": 260931854,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7416,7 +7487,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3542034519,
+   "seed": 260971449,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7427,73 +7498,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2915367615,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2915383453,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2915375534,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2915415129,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2915391372,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1901502984,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1274836080,
+   "seed": 1274883594,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7517,6 +7522,39 @@
   },
   {
    "mode": "chaos",
+   "seed": 260987287,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2915367615,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2915391372,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 1274851918,
    "errors": [],
    "stalls": [],
@@ -7528,97 +7566,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3542050357,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: tutbox,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1274843999,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1274859837,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1274883594,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3929271841,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 260971449,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3929287679,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3929279760,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2288771982,
+   "seed": 2915375534,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7640,7 +7588,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2288740306,
+   "seed": 2915423048,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7651,20 +7599,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1901518822,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3929295598,
+   "seed": 1274836080,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7675,7 +7610,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2288756144,
+   "seed": 1274859837,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7686,7 +7621,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2288748225,
+   "seed": 3929287679,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7697,7 +7632,18 @@
   },
   {
    "mode": "chaos",
-   "seed": 648240447,
+   "seed": 2288771982,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1274843999,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7732,7 +7678,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 648208771,
+   "seed": 3929271841,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7743,7 +7689,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 260987287,
+   "seed": 648240447,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7754,7 +7700,64 @@
   },
   {
    "mode": "chaos",
-   "seed": 648224609,
+   "seed": 2288756144,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1274891513,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3929279760,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3929295598,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1274875675,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: reveal,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2288740306,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7776,7 +7779,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 648216690,
+   "seed": 648256285,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7787,7 +7790,29 @@
   },
   {
    "mode": "chaos",
-   "seed": 3302644532,
+   "seed": 648224609,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2288748225,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3929327274,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7809,7 +7834,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2915423048,
+   "seed": 648208771,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7820,7 +7845,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 648256285,
+   "seed": 3302692046,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7831,31 +7856,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1274875675,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1662112997,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 648232528,
+   "seed": 2288795739,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7867,6 +7868,39 @@
   {
    "mode": "chaos",
    "seed": 1662144673,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3929311436,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 648216690,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 648232528,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -7890,128 +7924,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3302652451,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1274891513,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3302692046,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3929311436,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 21581462,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3302668289,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 21613138,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1662128835,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1662120916,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2288779901,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3929327274,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1662136754,
+   "seed": 3302644532,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -8033,7 +7946,117 @@
   },
   {
    "mode": "chaos",
+   "seed": 648264204,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 21613138,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2288779901,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3302668289,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1662128835,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1662112997,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 21628976,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3302652451,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 2676048899,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3302699965,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1662136754,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -8055,7 +8078,139 @@
   },
   {
    "mode": "chaos",
+   "seed": 648248366,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 21581462,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2676064737,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1662120916,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1035517364,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1662168430,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 21605219,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2676033061,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3302684127,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
    "seed": 21589381,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1035533202,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3689953125,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 21636895,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -8079,139 +8234,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 648248366,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 21605219,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2288795739,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1035517364,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2676033061,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 21628976,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1035485688,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2676025142,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3302684127,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 648264204,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3689953125,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1035501526,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2676064737,
+   "seed": 1662152592,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -8233,7 +8256,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3689921449,
+   "seed": 1035501526,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -8244,18 +8267,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1035493607,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1662152592,
+   "seed": 2676025142,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -8277,7 +8289,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3302699965,
+   "seed": 2676072656,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -8288,29 +8300,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 2049389914,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1035533202,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1035509445,
+   "seed": 1035485688,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -8332,86 +8322,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3689929368,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3689937287,
-   "errors": [],
-   "stalls": [
-    "step 19 [open: tutbox,helppop]"
-   ],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 1662168430,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 3689945206,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2676056818,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2049405752,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 21636895,
-   "errors": [],
-   "stalls": [],
-   "breaks": [],
-   "skipped": false,
-   "completed": true,
-   "postOk": true,
-   "bootErrors": []
-  },
-  {
-   "mode": "chaos",
-   "seed": 2049397833,
+   "seed": 1035493607,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -8435,7 +8346,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 1035525283,
+   "seed": 1035509445,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -8446,7 +8357,53 @@
   },
   {
    "mode": "chaos",
-   "seed": 2676072656,
+   "seed": 3689921449,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2676056818,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3689937287,
+   "errors": [],
+   "stalls": [
+    "step 19 [open: tutbox,helppop]"
+   ],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 1035541121,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3689929368,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -8468,7 +8425,7 @@
   },
   {
    "mode": "chaos",
-   "seed": 3689961044,
+   "seed": 1035525283,
    "errors": [],
    "stalls": [],
    "breaks": [],
@@ -8479,7 +8436,51 @@
   },
   {
    "mode": "chaos",
-   "seed": 1035541121,
+   "seed": 2049389914,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2049405752,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3689945206,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 2049397833,
+   "errors": [],
+   "stalls": [],
+   "breaks": [],
+   "skipped": false,
+   "completed": true,
+   "postOk": true,
+   "bootErrors": []
+  },
+  {
+   "mode": "chaos",
+   "seed": 3689961044,
    "errors": [],
    "stalls": [],
    "breaks": [],

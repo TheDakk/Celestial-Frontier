@@ -4005,6 +4005,17 @@ function planetDescriptor(P, sys, pl){
   if(P.seed===133){
     rows.push(['Flora', 'Forests, grasses and ocean algae — they make the oxygen', 'bio']);
     rows.push(['Fauna', 'Mammals, birds, fish, insects — and humans', 'bio']);
+    /* v1.5.2c OPTION A (Nick's authorization, 2026-07-19): the cradle
+       carries a real, catchable roster — seeded like any world, but its
+       beasts are STARTERS BY LAW (the _cradle flag clamps their grade at
+       Uncommon downstream): a menagerie on day one, never an armory. The
+       prose rows above stay — humanity is not a specimen. */
+    species = planetSpecies(P, sys, band, 'complex');   /* 'earth' is no roster key — the cradle rolls the full complex biosphere */
+    for(const g of species){
+      g._cradle=1;
+      const d=describeSpecies(g);
+      rows.push([d.kind, d.name+' — '+d.desc, 'bio', 'sp:'+g.seed]);
+    }
   } else {
     species = planetSpecies(P, sys, band, bio.key);
     for(const g of species){
@@ -9285,7 +9296,9 @@ function gradeCapAt(where){
 }
 function ringGrade(g, grade, where){
   if(!grade || (g && (g.apex||g.par))) return grade;   /* the named legends keep their crowns */
-  const cap=gradeCapAt(where);
+  /* THE CRADLE LAW (v1.5.2c, Nick): Earth's beasts are starters wherever
+     they travel — grade clamps at Uncommon, budgets stay honest */
+  const cap=(g && g._cradle) ? Math.min(2, gradeCapAt(where)) : gradeCapAt(where);
   if(grade.tier<=cap) return grade;
   const dom=g.kingdom==='fauna'?'life':(g.kingdom==='flora'?'forest':(g.kingdom==='fungi'?'fungal':'life'));
   return colorGrade(dom, g.seed, {salt:0x10F, force:cap});
@@ -11833,7 +11846,10 @@ function playerCombatant(){
 }
 function battleStats(g){
   const d=describeSpecies(g);
-  const tier=(d.grade?d.grade.tier:0);
+  /* THE CRADLE LAW (v1.5.2c, Nick): Earth's starters fight at starter
+     budgets everywhere — raw grade clamps at Uncommon for the cradle flag
+     (no probe genome carries it; the fingerprint stands untouched) */
+  const tier=Math.min((d.grade?d.grade.tier:0), (g&&g._cradle)?2:99);
   const r=mulberry32((g.seed^0x57A7)>>>0);
   const budget=170+tier*38+Math.floor(r()*30);
   const W={fauna:[1,1.15,0.9,1.1,0.85], flora:[1.3,0.6,1.45,0.4,1.25],
@@ -13184,7 +13200,8 @@ const RELEASES=[
   '🧭 NUDGES LEAD SOMEWHERE — the next-step nudge names the current chain link (accepted charter first, else the link awaiting Accept); tapping a guiding toast (marked ›) opens the Charters board.',
   '🧭 ARRIVAL PAYS — first arrival in a system with no prior expedition record logs a First Arrival line and pays +2 ☄ Stardust.',
   '🌸 THE CARD BLOSSOMS — orbit shows identity, a life-signature count, and a one-line environment summary; landing opens the environment fold, the biosphere survey, and the capture verbs.',
-  '🐾 TAME & SCAVENGE — the biosphere survey reveals the roster instead of cataloguing it; each species is caught individually with visible odds (lower for rarer species, raised by crafted gear). Misses cost nothing; every Compendium page is earned.'],
+  '🐾 TAME & SCAVENGE — the biosphere survey reveals the roster instead of cataloguing it; each species is caught individually with visible odds (lower for rarer species, raised by crafted gear). Misses cost nothing; every Compendium page is earned.',
+  '🌍 THE CRADLE — Earth now carries a real, catchable biosphere from your first landing: land, survey, and tame or scavenge a full spread of beasts, birds, flora and microbes. Every one is a <b>starter</b> — grade capped at Uncommon, honest stat variance, no ceiling-breakers — so a menagerie on day one never becomes an early armory. Humanity stays on the card; the wildlife joins it.'],
  ],
  ['⚖ Balancing', [
   '⛏ THE MINING BURST — one press runs up to 10 pulls (~16s), then mining stops until pressed again. Prevents AFK reserve drain; burst-extending recipes are planned.',
@@ -15212,7 +15229,9 @@ function _chDoneOf(c){ return c.id[0]==='s' ? chDone.has(c.id) : (chProg[c.id]||
 /* v1.4 review catch, now the S2 chain law: at ring 0 the life-hunting
    trades (scan/scout/conquer) are beyond Sol — a chain must never REVEAL
    a link the player's ring can't reach */
-function _far0Ids(){ return (typeof ascStage==='function' && ascStage()===0)?{'st-scan':1,'st-scout':1,'st-conq':1}:{}; }
+/* v1.5.2c: Earth's roster made Discover Life and the Field Scout
+   reachable at ring 0 — only conquest still waits for the stars */
+function _far0Ids(){ return (typeof ascStage==='function' && ascStage()===0)?{'st-conq':1}:{}; }
 function _tradesDone(){ return CH_CHAINS[0].ids.every(id=>chDone.has(id)); }
 function _chainNext(chain){
   const id=chain.ids.find(i=>!chDone.has(i));
