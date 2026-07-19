@@ -173,5 +173,8 @@
  "MINE_BURST",
  "starKindsSeen",
  "ptypesSeen",
- "regionAt"
+ "regionAt",
+ "tryCapture",
+ "captureOdds",
+ "discoverSpecies"
 ]

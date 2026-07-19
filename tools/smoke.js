@@ -576,8 +576,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     cv3.dispatchEvent(new sk.w.MouseEvent('pointerup', dOpts));
     cv3.dispatchEvent(new sk.w.MouseEvent('click', dOpts));
     const sawOrbital = await until(() => pan3.querySelector('.atlasrow') && pan3.textContent.includes('Procedural survey'), 4000, 'orbital card');
-    check('discovery: tapping locks the ORBITAL SURVEY (buttons + environment fold)', sawOrbital
-      && !!pan3.querySelector('[data-gtoggle="1"]'));
+    // v1.5.2c THE BLOSSOM: orbit shows the environment SUMMARY LINE only —
+    // the expandable fold belongs to the ground (asserted after landing)
+    check('discovery: tapping locks the ORBITAL SURVEY (buttons + summary rows)', sawOrbital
+      && !pan3.querySelector('[data-gtoggle="1"]')
+      && pan3.textContent.includes('land for the full survey'));
     check('discovery: an unlanded dead world offers Land, never Mine',
       !!pan3.querySelector('[data-act="landcta"]') && !pan3.querySelector('[data-act="mine"]'));
     // v1.3 card UX: the locked card wears a close X and drags by its head
@@ -832,6 +835,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     }
     check('discovery: standing on it, mining is open on the spot', await until(() =>
       !!pan3.querySelector('[data-act="mine"]') && pan3.textContent.includes('Ground-surveyed'), 4000, 'orbit mine'));
+    check('discovery: the card BLOSSOMS on the ground (environment fold opens)',
+      !!pan3.querySelector('[data-gtoggle="1"]'));
     check('discovery: ground survey reveals the mineral veins without Deep Scanners',
       pan3.textContent.includes('Mineral veins'));
     // the landing completed starter charter 1. The board CLOSED on the way

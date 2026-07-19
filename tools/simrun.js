@@ -360,6 +360,9 @@ async function expedition(sess, seed, nActions, deep) {
             const sizeBefore = H.codex.size;
             const bestBefore = (bestCreature() || { grade: { tier: -1 } }).grade.tier;
             H.autoScanWorld(d); run.scans++; done = true;
+            // v1.5.2c capture design: the survey reveals; the bots then tame
+            // and scavenge like players do (odds-driven, gear-boosted)
+            for (let ci = 0; ci < 10; ci++) { try { H.tryCapture(d, ci % 2 ? 'flora' : 'fauna'); } catch (_) {} }
             if (H.hp < hpBefore) { run.scanHits++; note('bioscan turned hostile (−' + (hpBefore - H.hp) + ' hp)'); }
             // log a rare find ONLY when it's genuinely new AND a new personal
             // best (the first batch re-logged the same best every scan — the
