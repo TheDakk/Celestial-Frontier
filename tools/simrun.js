@@ -1,7 +1,7 @@
 // Synthetic playthrough harness (v1.4 "Report Pack").
 //
 // Tiers:
-//   ui    — full-fidelity jsdom sessions driving the real 18-step Field
+//   ui    — full-fidelity jsdom sessions driving the real 19-step Field
 //           Training through the DOM (seeded random choices; a slice takes
 //           the Skip path), then a short live expedition.
 //   chaos — the ui tier with an adversary at the controls: random clicks on
@@ -554,7 +554,7 @@ async function uiTraining(seed, chaos) {
       }
     }
   };
-  const tutAt = (n) => { const t = doc.getElementById('tutbox'); return visible(t) && t.textContent.includes(n + ' / 18'); };
+  const tutAt = (n) => { const t = doc.getElementById('tutbox'); return visible(t) && t.textContent.includes(n + ' / 19'); };
   const tutAct = () => click(doc.getElementById('tut-act'));
   const guard = (label) => {
     // during training the lesson card must never vanish and panels must not stack
@@ -663,8 +663,13 @@ async function uiTraining(seed, chaos) {
       type(doc.getElementById('searchin'), 'earth');
       await stall(() => tutAt(16), 4000, 'step 16'); chaosBurst();
       click(doc.getElementById('rank'));
-      await stall(() => tutAt(17), 4000, 'step 17'); chaosBurst(); tutAct();
-      await stall(() => tutAt(18), 4000, 'step 18'); chaosBurst(); tutAct();
+      await stall(() => tutAt(17), 4000, 'step 17 (sheet open)'); chaosBurst();
+      // v1.5.1 THE FORGE LESSON: fab tab, craft the Iron Plate for real
+      click(doc.querySelector('#cargo [data-ct="fab"]'));
+      await stall(() => !!doc.querySelector('#cargo [data-craft="plate"]'), 3000, 'forge: fab tab');
+      click(doc.querySelector('#cargo [data-craft="plate"]'));
+      await stall(() => tutAt(18), 4000, 'step 18 (plate forged)'); chaosBurst(); tutAct();
+      await stall(() => tutAt(19), 4000, 'step 19'); chaosBurst(); tutAct();
       await stall(() => H.tutDone === true, 5000, 'finale');
     }
     run.completed = H.tutDone === true;
@@ -751,8 +756,13 @@ async function childMain(mode, n, seed0) {
       if (mode === 'ui' || mode === 'chaos') out = await uiTraining(seed, mode === 'chaos');
       else {
         const sess = await bootToSandbox();
-        const nActs = mode === 'deep' ? 450 + ((seed >>> 4) % 450) : 120 + ((seed >>> 4) % 300);
-        out = await expedition(sess, seed, nActs, mode === 'deep');
+        /* v1.5.1 (Nick): 'medium' — the intermittent player. Deep-tier
+           behaviors (conquests, duels, the sheet through the DOM) at a
+           between-sessions length. */
+        const nActs = mode === 'deep' ? 450 + ((seed >>> 4) % 450)
+                    : mode === 'medium' ? 220 + ((seed >>> 4) % 200)
+                    : 120 + ((seed >>> 4) % 300);
+        out = await expedition(sess, seed, nActs, mode === 'deep' || mode === 'medium');
         try { sess.w.close(); } catch (_) {}
       }
     } catch (e) { out = { mode, seed, fatal: String(e && e.message) }; }
@@ -772,8 +782,11 @@ function aggregate(mode, runs) {
     const k = String(e).slice(0, 140); errTable[k] = (errTable[k] || 0) + 1;
   }
   const rep = { mode, runs: runs.length, generatedFrom: 'tools/simrun.js', errorTable: errTable };
-  if (mode === 'fast' || mode === 'deep') {
+  if (mode === 'fast' || mode === 'deep' || mode === 'medium') {
     rep.deaths = runs.filter((r) => r.deaths > 0).length;
+    /* v1.5.1 death-curve audit: deaths must ramp with depth, not sit flat */
+    rep.deathsByStage = {};
+    for (const r of runs) if (r.deaths > 0) rep.deathsByStage['s' + (r.stageEnd || 0)] = (rep.deathsByStage['s' + (r.stageEnd || 0)] || 0) + 1;
     rep.softlocks = runs.filter((r) => r.softlock).map((r) => r.softlock);
     rep.savesOk = runs.filter((r) => r.saveOk).length;
     rep.reachedStage = { s0: 0, s1: 0, s2: 0, s3: 0 };
