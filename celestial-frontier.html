@@ -8417,6 +8417,7 @@ function renderPanel(p, isLocked){
     '|'+(d.planetSeed!=null&&contacted.has(d.planetSeed)?'K':'')+   /* census known via first contact (v1.2.2) */
     '|'+(tutDone?'':'t')+   /* the ✕ appears only after training */
     '|'+(st.mode==='surface'&&hdOn&&_lastVista&&_lastVista.P&&_lastVista.P.seed===d.planetSeed?'V':'')+   /* re-view button arrives a frame after planetfall */
+    '|s'+(typeof ascStage==='function'?ascStage():'')+'r'+primeCount()+   /* the charter row follows the ring live (v1.5.1) */
     '|cx'+cardExpand;   /* keep cx LAST — the toggle handler patches it in place */
   panelEl.classList.toggle('locked', !!isLocked);
   panelEl.classList.toggle('grab', !!isLocked || st.mode==='surface');   /* draggable by the head */
@@ -8543,6 +8544,26 @@ function renderPanel(p, isLocked){
         if(sigRow) civHtml+=rowHtml(sigRow);
       }
     } else {
+      /* v1.5.1 (Nick's pick): a star beyond your ring says so ON THE CARD —
+         the rule is learned where you already read, not at the bounced
+         zoom. Looking stays free (the survey renders in full); only the
+         dive is gated, and the row names the build that opens it. */
+      try{
+        const w9=d.where;
+        if(w9 && tutDone){
+          const _stg9=(typeof ascStage==='function')?ascStage():3;
+          if(w9.type==='star' && w9.star && !ascAllows(w9)){
+            rows+='<div class="row" style="color:#7fd0ff"><span class="k">⬆ Charter</span><span class="v" style="color:#7fd0ff">A view for now — '+
+              (_stg9===0?'the ⚡ Jump Drive opens this sky'
+              :_stg9===1?'the 📡 Long-Range Array opens the whole galaxy'
+              :'the 🌌 Intergalactic Drive crosses the dark')+'</span></div>';
+          } else if(w9.type==='galaxy' && w9.gal && !withinReach(w9.gal.x, w9.gal.y)){
+            rows+='<div class="row" style="color:#7fd0ff"><span class="k">✦ Charter</span><span class="v" style="color:#7fd0ff">A view for now — claim more Prime Codex Signatures to extend your reach</span></div>';
+          } else if(w9.type==='galaxy' && w9.gal && w9.gal.seed!==HOME_GAL_SEED && _stg9<3){
+            rows+='<div class="row" style="color:#7fd0ff"><span class="k">⬆ Charter</span><span class="v" style="color:#7fd0ff">A view for now — its stars await the 🌌 Intergalactic Drive</span></div>';
+          }
+        }
+      }catch(_){ }
       for(const row of d.rows){
         if(row[3]&&row[3].startsWith('sp:')) continue;   /* species handled as a group below */
         rows+=rowHtml(row);
@@ -12858,7 +12879,8 @@ const RELEASES=[
   '🧍 THE PORTRAIT, REPAINTED — your explorer is a person now: true proportions, a neck, jointed arms, calved legs, a face catching the lamp light behind the visor — standing on a lit landing pad under a ringed world. Same gold, better human.',
   '🎽 THE PICKER COMES TO YOUR THUMB — tap a socket and the gear list opens right beside it, not half a screen below the figure.',
   '🗂 ONE CARD GRAMMAR EVERYWHERE — actions on top, the critical numbers next, everything collectible folded: the specimen card&#8217;s verbs moved above its stats (the world-card law), and the character sheet&#8217;s long tail — nameplate colors, the rarity ladder, all the achievement shelves — folded into Collection and Achievements groups. The left column is four lines and three folds now.',
-  '📱 PHONES BREATHE — the character screen stacks paperdoll → cargo → stats, so &#8220;the Fabricator below&#8221; is one flick away, exactly where the empty sockets promise it.'],
+  '📱 PHONES BREATHE — the character screen stacks paperdoll → cargo → stats, so &#8220;the Fabricator below&#8221; is one flick away, exactly where the empty sockets promise it.',
+  '⬆ THE CHARTER SPEAKS ON THE CARD — a star or galaxy beyond your ring now says so right on its survey card (&#8220;a view for now — the ⚡ Jump Drive opens this sky&#8221;), naming the build that opens it. You learn the rule where you read, not at the bounced zoom. Looking stays free, everywhere, always.'],
  ],
  ['✨ New Features & Systems', [
   '🛠 TRAINING LEARNS THE FORGE — Field Training gained a nineteenth lesson: the order loans a pinch of ore, you open your 🧰 hold, and craft your first Iron Plate at the real Fabricator (and learn where ore comes from). Like everything in training it&#8217;s a sandbox — the ore and the plate go back to the order on your way out.'],
