@@ -78,11 +78,12 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // fresh expedition: latest bulletin FIRST, then training
     const relFresh = doc.getElementById('relbox');
     check('fresh expedition: latest bulletin shows before training', await until(() =>
-      visible(relFresh) && relFresh.textContent.includes('The Ascent') && relFresh.textContent.includes('v1.4'), 4000, 'fresh bulletin'));
-    // v1.4 opens a fresh minor line — the bulletin shows it alone, and
-    // no other line (1.3.x, 1.2.x, 1.1.x, 1.0) may leak in
-    check('bulletin shows the v1.4 line alone (no 1.3.x/1.2.x leak)',
-      !relFresh.textContent.includes('The HD Frontier') && !relFresh.textContent.includes('Kingdom Shelves')
+      visible(relFresh) && relFresh.textContent.includes('Fresh Start') && relFresh.textContent.includes('v1.5'), 4000, 'fresh bulletin'));
+    // v1.5 opens a fresh minor line — the bulletin shows it alone, and
+    // no other line (1.4.x, 1.3.x, 1.2.x, 1.1.x, 1.0) may leak in
+    check('bulletin shows the v1.5 line alone (no 1.4/1.3.x leak)',
+      !relFresh.textContent.includes('The Ascent') && !relFresh.textContent.includes('The HD Frontier')
+      && !relFresh.textContent.includes('Kingdom Shelves')
       && !relFresh.textContent.includes('Ink & Ember') && !relFresh.textContent.includes('First Contact')
       && !relFresh.textContent.includes('The Hunt Board') && !relFresh.textContent.includes('The Discovery Arc'));
     check('bulletin hides other-line entries (no 1.1.x, no 1.0 debut)',
@@ -384,7 +385,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     // release notes: the version line in the footer opens the full history
     const gc = doc.getElementById('gcredit');
-    check('guide footer shows version + build', gc && gc.textContent.includes('v1.4') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
+    check('guide footer shows version + build', gc && gc.textContent.includes('v1.5') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
     click(gc);
     const relbox = doc.getElementById('relbox');
     check('footer opens cumulative release notes (all versions)', visible(relbox)

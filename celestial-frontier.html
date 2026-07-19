@@ -12720,10 +12720,27 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.4';
+const GAME_VERSION='1.5';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.5', title:'Fresh Start', date:'July 2026', sections:[
+ ['✨ New Features & Systems', [
+  '🌅 A FRESH START FOR EVERYBODY — v1.5 begins the frontier anew: every expedition, veteran and newcomer alike, starts from the same first morning in Sol. Nothing is grandfathered, nothing is carried — the Ascent is now every explorer&#8217;s canon opening. Your old expedition is honored on its way out: a farewell card sends it off, rarest find and all. The universe itself is untouched — same seeds, same worlds, same share codes; only the record starts over.',
+  '🧍 THE CHARACTER SCREEN — one centered home for the whole explorer, Diablo-style: your full-length painterly explorer stands center with all nine gear sockets pinned to the body (Helmet at the head, Earpiece at the ear, Necklace below the chin, Suit on the chest, Gloves and Tool at the hands, Leggings, Boots — and the ship Module docked beside the figure). Stats fill the left column; your whole Cargo hold, Fabricator and Research Bench ride underneath. The 🧰 button is a shortcut straight to the inventory. On phones it stacks: paperdoll first, stats, then the hold.',
+  '✦ THE PATHFINDERS&#8217; TRAIL — the Prime Codex is the endgame arc now, beginning where the Ascent ends. Each Signature tells one lost beacon&#8217;s story, names how far its trail reaches, and its claim recovers a RELIC BLUEPRINT: nine unique signature-tier pieces of gear, one per socket, that only a Signature-holder&#8217;s Fabricator can forge. Walk the whole Trail and the Legacy — a prestige layer — is coming in a future update.',
+  '🧭 QUEST NOTIFICATIONS — the frontier now names your next step: a gentle nudge on login and when the session goes quiet points at your current chapter goal or charter. Never twice for the same goal, never over another conversation, and the 🔔 tray remembers.'],
+ ],
+ ['🖱 UI Enhancements', [
+  '⚔ CHARTERS TAKE THE PRIME SLOT — the hunt board and the Ascent are the daily drive now, so they wear the gold pill top right where the Prime Codex used to sit; the Codex (endgame) moved to the left rail.',
+  '🐾 SPECIMEN CARDS CONDENSED — the world-card pattern comes to creatures: identity and battle stats up top, the field-notes wall folded behind a remembered expand group with a one-line digest. Extremophile finds keep their ⟁ headline — a discovery story never hides. Compendium shelf rows clamp to a glance; the card holds the prose.',
+  '🌙 QUIET SKIES FOR NOW — Cosmic Events and the Traveler&#8217;s Beacon are tucked away while they&#8217;re reworked into something worthier; their achievements shelve with them. They&#8217;ll return.'],
+ ],
+ ['🐛 Bug Fixes', [
+  'The notification tray no longer sits over the search box during Field Training — every lesson closes the panels the next lesson doesn&#8217;t need.',
+  'Groundfall and Trailblazer count again — the worlds-landed-on tally froze in v1.3.8 when landings stopped leaving space; it now ticks with the landing rite itself.'],
+ ],
+]},
 {v:'1.4', title:'The Ascent', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
   '⬆ THE ASCENT — a mainline of three chapters, pinned atop the Charters board. New expeditions start locked to Sol and mine → craft → build their way to the stars: the ⚡ Jump Drive opens the Neighborhood, the 📡 Long-Range Array opens the whole galaxy, the 🌌 Intergalactic Drive opens the dark between. The whole sky stays visible from day one — looking is free, moving is earned. Veteran saves already hold everything and lose nothing.',
