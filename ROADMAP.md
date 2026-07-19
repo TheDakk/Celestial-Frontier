@@ -10,11 +10,30 @@
 ## frozen build; an earlier round was invalidated by mid-edit builds
 ## under the workers). Suites at freeze: fingerprint 50/50, smoke
 ## 293/293, systems 19/19, balance PASS.
-## NEXT SESSION'S OPENING MOVES (Nick's close-out, 2026-07-19): the
-## hammer ran at session end — results recorded below. Then: (1) apply
-## the mining burst cap (item 0), (2) smoke + a chaos slice, (3)
-## node tools/deploy.js — the v1.5.2 deploy carries Nick's standing
-## instruction for this iteration. THEN the progressive-charter work.
+## HAMMER ROUND RESULTS AT SESSION CLOSE (recorded 2026-07-19, Nick:
+## no rerun this session):
+##  · chaos 300: 0/300 completed, ui 150: 38/150 — a HARNESS
+##    FALSE-NEGATIVE, not a game failure: every stall was at
+##    'forge: fab tab' — the ui/chaos training driver still clicked
+##    the REMOVED #cargo fab-tab selector (smoke was updated for the
+##    Shipyard; the driver was not; the 38 completions are the
+##    skip-path slice). Zero errors, zero breaks, zero exceptions in
+##    both legs. DRIVER FIXED AND COMMITTED at session end (simrun
+##    forge flow now: cargobtn → #yardbench [data-craft="plate"]).
+##  · medium 150: was still running at close — if tools/
+##    hammer2-medium.json exists next session, read it; its bots were
+##    already correct (API + updated sheet/yard actions).
+##  · The GAME build passed everything that actually reached it:
+##    fingerprint 50/50, smoke 293/293 (drives all 20 training steps
+##    incl. the Shipyard forge THROUGH THE DOM), systems 19/19,
+##    balance PASS, and the micro-repro proved the auto-mine loop.
+## NEXT SESSION'S OPENING MOVES (Nick's close-out, 2026-07-19):
+## (1) re-run the hammer with the FIXED driver (chaos 300 + ui 150 +
+## medium 150 if its report is missing) on the frozen build,
+## (2) apply the mining burst cap (item 0), (3) smoke + a chaos slice,
+## (4) node tools/deploy.js — the v1.5.2 deploy carries Nick's
+## standing instruction for this iteration. THEN the Chapters rename +
+## progressive-charter work (S3 ruling below).
 ##
 ## 0. MINING BURST CAP (Nick's ruling, 2026-07-19 — apply BEFORE or AT
 ##    next deploy): auto-mining semantics as built — the run binds to
