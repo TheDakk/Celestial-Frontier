@@ -158,5 +158,9 @@
  "levelOf",
  "nextStepGoal",
  "claimSignature",
- "primeFill"
+ "primeFill",
+ "_mineRun",
+ "_lastDesc",
+ "mineToggle",
+ "mineStop"
 ]
