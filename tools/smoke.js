@@ -1,7 +1,7 @@
 // Interaction smoke test: boots the game in jsdom and drives real UI flows —
 // canvas taps, clicks, typing — asserting on the resulting DOM. Complements
 // the determinism fingerprint (pure functions) by covering wiring, including
-// the complete 18-step Field Training tutorial, the Guide, and tooltips.
+// the complete 19-step Field Training tutorial, the Guide, and tooltips.
 //
 // Runs against a probe build so it can locate canvas picks (window.__PROBE_HOOK__).
 //
@@ -59,7 +59,7 @@ async function until(fn, ms, label) {
   console.log('TIMEOUT waiting: ' + label);
   return false;
 }
-const tutAt = (n) => { const t = doc.getElementById('tutbox'); return visible(t) && t.textContent.includes(n + ' / 18'); };
+const tutAt = (n) => { const t = doc.getElementById('tutbox'); return visible(t) && t.textContent.includes(n + ' / 19'); };
 const tutAct = () => click(doc.getElementById('tut-act'));
 
 (async () => {
@@ -70,7 +70,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('probe hook present', !!H);
     check('intro name prompt shown for fresh expedition', visible(doc.getElementById('namebox')));
 
-    // ============ FIELD TRAINING — full 18-step drive ============
+    // ============ FIELD TRAINING — full 19-step drive ============
     type(doc.getElementById('namein'), 'SmokeTester');
     click(doc.getElementById('nameok'));
     check('name accepted, intro closed', !visible(doc.getElementById('namebox')));
@@ -288,10 +288,24 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('searching earth completes step 15', await until(() => tutAt(16), 3000, 'step16'));
     click(doc.getElementById('rank'));
     check('character sheet completes step 16', await until(() => tutAt(17), 3000, 'step17'));
+    // v1.5.1 THE FORGE LESSON: loaned ore appears, the recruit crafts an
+    // Iron Plate through the real Fabricator (sheet stays open from the
+    // previous lesson — its cargo button is the panel's own token)
+    check('forge: the loaned ore opens the hold (cargo button + iron)',
+      doc.getElementById('cargobtn').style.display === 'flex' && (H.cargo.get('Fe') || 0) >= 4);
+    click(doc.querySelector('#cargo [data-ct="fab"]'));
+    await until(() => !!doc.querySelector('#cargo [data-craft="plate"]'), 2000, 'fab tab');
+    click(doc.querySelector('#cargo [data-craft="plate"]'));
+    check('forge: crafting the plate completes step 17', await until(() => tutAt(18), 3000, 'step18'));
+    check('forge: training craft credits NO charter and NO Ascent goal',
+      !H.chDone.has('st-mine') && (H.ascProg['c1-part'] || 0) === 0);
     tutAct();                                                       // horizon -> finale (cleanup)
-    check('finale reached', await until(() => tutAt(18), 3000, 'step18'));
+    check('finale reached', await until(() => tutAt(19), 3000, 'step19'));
     check('cleanup: Compendium empty', doc.getElementById('codexcount').textContent === '0');
     check('cleanup: HP fully restored', doc.getElementById('hptext').textContent === '100/100 HP');
+    check('cleanup: the loaned ore + practice plate went back to the order',
+      H.cargo.size === 0 && H.itemCount('plate') === 0
+      && doc.getElementById('cargobtn').style.display === 'none');
     check('cleanup: Atlas keeps only Earth', doc.getElementById('logcount').textContent === '1' && H.logMap.has('p133'));
     tutAct();                                                       // begin the expedition
     check('tutorial closes', await until(() => !visible(doc.getElementById('tutbox')), 2000, 'tut close'));
@@ -504,7 +518,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click2(sk.doc.getElementById('tut-skip'), sk.w);
     check('skip shows confirm', sk.doc.getElementById('tutbox').textContent.includes('Skip training?'));
     click2(sk.doc.getElementById('tut-skip-no'), sk.w);
-    check('Keep Training returns to step', sk.doc.getElementById('tutbox').textContent.includes('1 / 18'));
+    check('Keep Training returns to step', sk.doc.getElementById('tutbox').textContent.includes('1 / 19'));
     click2(sk.doc.getElementById('tut-skip'), sk.w);
     click2(sk.doc.getElementById('tut-skip-yes'), sk.w);
     check('skip closes tutorial', !visible(sk.doc.getElementById('tutbox')));
