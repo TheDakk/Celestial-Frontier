@@ -6757,12 +6757,28 @@ function _hdWxEvent(g, evt, seed, hz, W, H, night){
     fog.addColorStop(0,'rgba(230,242,252,'+(0.4*A)+')'); fog.addColorStop(1,'rgba(230,242,252,0)');
     g.fillStyle=fog; g.beginPath(); g.arc(x,hz-h,80,0,TAU); g.fill();
   } else if(evt==='virga'){
-    try{ g.filter='blur(3px)'; }catch(_){ }
-    for(let i=0;i<7;i++){
-      const x=W*(0.08+r()*0.84), top=hz*0.28+r()*20, fall=hz*0.30;
-      const vg2=g.createLinearGradient(x,top,x,top+fall);
-      vg2.addColorStop(0,'rgba(210,200,160,'+(0.4*A)+')'); vg2.addColorStop(1,'rgba(210,200,160,0)');
-      g.fillStyle=vg2; g.fillRect(x-6,top,12,fall);
+    /* Safari/iOS has no ctx.filter — the old blur(3px) silently no-oped
+       there and the shafts rendered as hard flat-topped slabs that read
+       as a city skyline (Nick's Venus postcard). Feather by hand: an
+       offscreen shaft faded on BOTH axes, stamped with a slight lean —
+       rain dying in the air on every browser. */
+    const vc=document.createElement('canvas'); vc.width=32; vc.height=96;
+    const vgc=vc.getContext('2d');
+    if(vgc){
+      const vv=vgc.createLinearGradient(0,0,0,96);
+      vv.addColorStop(0,'rgba(210,200,160,0)'); vv.addColorStop(0.18,'rgba(210,200,160,'+(0.38*A)+')');
+      vv.addColorStop(1,'rgba(210,200,160,0)');
+      vgc.fillStyle=vv; vgc.fillRect(0,0,32,96);
+      const vh=vgc.createLinearGradient(0,0,32,0);
+      vh.addColorStop(0,'rgba(0,0,0,0)'); vh.addColorStop(0.5,'rgba(0,0,0,1)'); vh.addColorStop(1,'rgba(0,0,0,0)');
+      vgc.globalCompositeOperation='destination-in';
+      vgc.fillStyle=vh; vgc.fillRect(0,0,32,96);
+      for(let i=0;i<7;i++){
+        const x=W*(0.08+r()*0.84), top=hz*0.28+r()*20, fall=hz*0.30, w=16+r()*14;
+        g.save(); g.translate(x,top); g.rotate((r()-0.5)*0.10);
+        g.drawImage(vc,-w/2,0,w,fall);
+        g.restore();
+      }
     }
   } else if(evt==='volclightning'){
     const x=W*(0.3+r()*0.4), top=hz*0.12;
@@ -10417,7 +10433,7 @@ const ACH=[
   {id:'gen5',    cat:'Breeding', ic:'🧫', name:'Dynasty',      d:'Reach a generation-5 hybrid line', t:()=>stats.maxGen>=5},
   {id:'gen10',   cat:'Breeding', ic:'👑', name:'Bloodline Eternal', d:'Reach a generation-10 hybrid line', t:()=>stats.maxGen>=10},
   /* — Rarity — */
-  {id:'rare',    cat:'Rarity', ic:'💠', name:'Deep Find',     d:'Discover something Rare or better', t:()=>stats.best>=3},
+  {id:'rare',    cat:'Rarity', ic:'🔷', name:'Deep Find',     d:'Discover something Rare or better', t:()=>stats.best>=3},   /* 💠 belongs to the Earpiece stud (Nick's pick) — no double meaning */
   {id:'legend',  cat:'Rarity', ic:'🌟', name:'Gold Rush',     d:'Discover a Legendary', t:()=>stats.best>=5},
   {id:'unique',  cat:'Rarity', ic:'✦',  name:'One of One',    d:'Discover a one-of-one Unique', t:()=>stats.best>=7},
   {id:'mythic',  cat:'Rarity', ic:'🧿', name:'Beyond the Veil', d:'Discover a Mythic — rarer than one-of-one', t:()=>stats.best>=8},
@@ -10429,7 +10445,7 @@ const ACH=[
   {id:'survey5',  cat:'Worlds', ic:'🛰', name:'Eyes Down',       d:'Survey 5 living worlds', t:()=>stats.surveys>=5},
   {id:'survey25', cat:'Worlds', ic:'🌍', name:'World Walker',    d:'Survey 25 living worlds', t:()=>stats.surveys>=25},
   {id:'survey100',cat:'Worlds', ic:'🛸', name:'Centurion',       d:'Survey 100 living worlds', t:()=>stats.surveys>=100},
-  {id:'survey250',cat:'Worlds', ic:'🚁', name:'Survey Fleet',    d:'Survey 250 living worlds', t:()=>stats.surveys>=250},
+  {id:'survey250',cat:'Worlds', ic:'🛰', name:'Survey Fleet',    d:'Survey 250 living worlds', t:()=>stats.surveys>=250},   /* an Earth helicopter had no place in deep space */
   {id:'worldset', cat:'Worlds', ic:'🪐', name:'Planetary Census',d:'Survey all 8 world types', t:()=>ptypesSeen.size>=8},
   {id:'surface5', cat:'Worlds', ic:'👣', name:'Groundfall',      d:'Stand on the surface of 5 worlds', t:()=>surfSeen.size>=5},
   {id:'surface25',cat:'Worlds', ic:'🥾', name:'Trailblazer',     d:'Stand on the surface of 25 worlds', t:()=>surfSeen.size>=25},
@@ -10438,7 +10454,7 @@ const ACH=[
   {id:'spacefar', cat:'Worlds', ic:'🚀', name:'Peer Review',     d:'Scan a spacefaring civilization', t:null},
   /* — Stellar — */
   {id:'sol',     cat:'Stellar', ic:'☀️', name:'Old Neighborhood', d:'Survey the Sun', t:null},
-  {id:'binary',  cat:'Stellar', ic:'🌗', name:'Twin Suns',        d:'Survey a binary star system', t:null},
+  {id:'binary',  cat:'Stellar', ic:'☀☀', name:'Twin Suns',        d:'Survey a binary star system', t:null},   /* two suns, not a moon phase */
   {id:'seebh',   cat:'Stellar', ic:'🕳', name:'Event Horizon',    d:'Survey a stellar black hole', t:null},
   {id:'seens',   cat:'Stellar', ic:'🗼', name:'Lighthouse',       d:'Survey a neutron star', t:null},
   {id:'seemag',  cat:'Stellar', ic:'🧲', name:'Starquake',        d:'Survey a magnetar', t:null},
@@ -10491,7 +10507,7 @@ const ACH=[
   {id:'bred1',  cat:'Husbandry', ic:'💞', name:'Matchmaker',       d:'Successfully breed a pair', t:()=>(stats.breedwins||0)>=1},
   {id:'bred10', cat:'Husbandry', ic:'🐣', name:'Brood Master',     d:'10 successful breedings', t:()=>(stats.breedwins||0)>=10},
   {id:'bredfail',cat:'Husbandry',ic:'🎲', name:'High Roller',      d:'Lose a pair to a failed breeding', t:()=>(stats.breeds||0)>(stats.breedwins||0)},
-  {id:'bredlegend',cat:'Husbandry',ic:'⚜', name:'Forbidden Science', d:'Breed two Legendary-or-better creatures', t:null},
+  {id:'bredlegend',cat:'Husbandry',ic:'☣', name:'Forbidden Science', d:'Breed two Legendary-or-better creatures', t:null},
   {id:'feed5',  cat:'Husbandry', ic:'🍽', name:'Zookeeper',        d:'Feed flora to fauna 5 times', t:()=>(stats.feeds||0)>=5},
   {id:'feedfail',cat:'Husbandry',ic:'☠', name:'Bitter Harvest',    d:'Lose a beast to a poisonous meal', t:()=>(stats.feedfails||0)>=1},
   /* — Duels — */
