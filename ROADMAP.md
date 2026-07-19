@@ -9,10 +9,12 @@
 ## the final hammer round (chaos 300 + ui 150 + medium 150 on the
 ## frozen build; an earlier round was invalidated by mid-edit builds
 ## under the workers). Suites at freeze: fingerprint 50/50, smoke
-## 293/293, systems 19/19, balance PASS. IF THE DEPLOY DID NOT HAPPEN
-## THIS SESSION: run the hammer, apply the mining burst cap below,
-## smoke + chaos slice, then node tools/deploy.js on Nick's standing
-## instruction for this iteration.
+## 293/293, systems 19/19, balance PASS.
+## NEXT SESSION'S OPENING MOVES (Nick's close-out, 2026-07-19): the
+## hammer ran at session end — results recorded below. Then: (1) apply
+## the mining burst cap (item 0), (2) smoke + a chaos slice, (3)
+## node tools/deploy.js — the v1.5.2 deploy carries Nick's standing
+## instruction for this iteration. THEN the progressive-charter work.
 ##
 ## 0. MINING BURST CAP (Nick's ruling, 2026-07-19 — apply BEFORE or AT
 ##    next deploy): auto-mining semantics as built — the run binds to
@@ -84,14 +86,20 @@
 ##     goals are PARALLEL by design (concurrent activities, any order)
 ##     and progress BANKS across chapters (review-fix law: out-building
 ##     your chapter never loses work).
-##     OPTION A (Claude recommends): Ascent stays parallel — a chapter
-##     reads as a campaign act ("everything this ring asks"); charters
-##     below become the one-job-at-a-time chains; sharpen the copy
-##     ("THE MAINLINE" vs "CHARTERS") since the box already looks
-##     distinct. Ch1 is already implicitly sequential via the recipe
-##     tree anyway. OPTION B: chapter goals reveal progressively too —
-##     one grammar, but artificial order on concurrent work, and
-##     banking would complete hidden goals invisibly (hollow).
+##     ★ NICK'S RULING (2026-07-19, session close): OPTION A — the
+##     mainline stays parallel — AND it gets RENAMED "CHAPTERS" and
+##     MERGED with the progressive charter work: one quest system,
+##     where the Chapters are the campaign spine (parallel goals per
+##     chapter, banking intact) and the charters are its progressive
+##     side-chains (accept-to-activate, reveal-on-complete). Naming
+##     sweep required: "The Ascent" → "Chapters" across the board copy,
+##     Guide, nudges, RELEASES vocabulary ("Chapter 1 — Off the Rock"
+##     already reads right); check the naming law list (Ascent isn't
+##     protected; Prime/Cosmic Codex are). ascStage/asc* internals can
+##     keep their names — the SURFACE renames.
+##     (Superseded option B: chapter goals reveal progressively — one
+##     grammar, but artificial order on concurrent work, and banking
+##     would complete hidden goals invisibly.)
 ##     WEEKLY GATE (Nick agreed to redefine): weeklies open when the
 ##     FIVE-TRADE chain completes; the Sol tour is optional side
 ##     income and does not gate. Crisp end to the guided phase.
