@@ -180,5 +180,8 @@
  "titanFor",
  "titanGuardian",
  "_titanElemOf",
- "_sigResonance"
+ "_sigResonance",
+ "nearestTitanWorld",
+ "titanElemAt",
+ "_titanPresent"
 ]

@@ -990,8 +990,12 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       const nat = skH.apexNative({ planetSeed: fireWorld, ptype: 'lava', species: [] });
       check('titans: the titan is the world’s boss (apexNative, no native fauna needed)',
         !!nat && nat.titan === 'flame' && nat.guardian === true);
-      check('titans: a titan far outguns a normal apex (a bred-champion fight)',
-        skH.battleStats(nat.genome).total > 1000);
+      // rebalanced (stage 3): a titan outguns even a summit champion
+      // (~751 ceiling) but stays winnable for a bred team — not the old
+      // unbeatable 1000+. A hard boss: above the ceiling, below runaway.
+      const _tp = skH.battleStats(nat.genome).total;
+      check('titans: a titan is a hard boss — above a summit champion, not unwinnable',
+        _tp > 800 && _tp < 1000, 'titan power ' + _tp);
       // fell it → the element is claimed, and its titans stand down everywhere
       skH.claimSignature('flame', { title: 'Fire — test', sub: 'titan felled', tier: 14, hex: '#ffd96a', where: null }, true);
       check('titans: felling the titan claims its element',
