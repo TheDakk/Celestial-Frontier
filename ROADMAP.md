@@ -1,7 +1,32 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
 ## ▶▶▶ NEXT SESSION — v1.5.x CONTINUATION (Nick, 2026-07-19; RESUME
-## HERE after the v1.5.2 line settles) ◀◀◀
+## HERE — everything below is Nick's documented direction) ◀◀◀
+##
+## STATE AT SESSION CLOSE: v1.5.1 is LIVE (build c299ac3). v1.5.2 "The
+## Shipyard" + the v1.5.2b consistency pass are BUILT, COMMITTED and
+## STAGED (GAME_VERSION 1.5.2, bulletin written) — deploy was pending
+## the final hammer round (chaos 300 + ui 150 + medium 150 on the
+## frozen build; an earlier round was invalidated by mid-edit builds
+## under the workers). Suites at freeze: fingerprint 50/50, smoke
+## 293/293, systems 19/19, balance PASS. IF THE DEPLOY DID NOT HAPPEN
+## THIS SESSION: run the hammer, apply the mining burst cap below,
+## smoke + chaos slice, then node tools/deploy.js on Nick's standing
+## instruction for this iteration.
+##
+## 0. MINING BURST CAP (Nick's ruling, 2026-07-19 — apply BEFORE or AT
+##    next deploy): auto-mining semantics as built — the run binds to
+##    ONE world's open card; each 1.6s tick re-checks: button pressed
+##    again / card closed / card switched worlds / vein dry → stop;
+##    one run ever exists at a time; nothing persists across reload;
+##    leaving the card kills the run on the next tick. THE GAP: parking
+##    a card open AFK could drain that one world's finite reserve
+##    (~10-20 min). THE CAP: one press = one BURST of up to 10 pulls
+##    (~16s), then the drills stand down and want another press.
+##    BURST SIZE is the future upgrade knob ("recipes to increase the
+##    amount you can mine at once" — rigs/recipes extend the burst).
+##    Never multi-world, never offline (the crafted Auto-Extractor
+##    keeps that role, untouched).
 ##
 ## 1. PROGRESSIVE CHARTERS (Nick's quest-system law): only the quests
 ##    that are AVAILABLE show on the board — completing one reveals the
@@ -30,6 +55,25 @@
 ##      random affixes must stay app-layer/seeded (share codes and the
 ##      fingerprint law are untouched); an affix system on gear is a
 ##      v1.6-scale design — scope it with Nick before building.
+##
+## NICK'S DEVICE-PASS WATCHLIST (carried): the two Edge crash dumps
+##    (renderer died in UnrecoverableAccessibilityError — browser-side;
+##    canvas aria-hidden mitigation shipped in 1.5.2b; watch whether
+##    the crashes recur and whether charters-won't-open recurs with
+##    them — it never reproduced in a clean build); paperdoll socket
+##    feel on his iPhone; farewell-card/namebox layering on iOS; G14
+##    boot time (STILL unverified since v1.3).
+## WHAT SHIPPED IN THE STAGED v1.5.2 LINE (context for the resume):
+##    the Shipyard screen (ship + Fabricator + Research behind the 🛠
+##    rail button, categories folded), Records board (🏆: rarity ladder
+##    + achievements out of the sheet), bags-only inventory with slot
+##    grid + pack-grown rows (Module = worn 🎒), one fold language
+##    (expand/close pills everywhere), plain stat bars, specimen verbs
+##    in a grid, 20-step training (landing + forge lessons), the Sol
+##    tour charters, auto-run mining (burst cap pending above), depth
+##    tax on field wounds, conquest mercy law (bred-only, once per
+##    mend, 25% self-gate), names-are-names label pass, ring-sprite
+##    clip fix, sticky panel ✕, first-shelf auto-open Compendium.
 ## (Wherever the v1.5.x line ended up at deploy time, this continues it.)
 
 ## ▶▶ v1.5.1 "THE MIRROR POLISH" — BUILT, STAGED, AWAITING NICK'S
