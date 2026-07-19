@@ -240,7 +240,7 @@ async function expedition(sess, seed, nActions, deep) {
     }
     if (tries > 12) return null;
     try { H._performLanding(pl); } catch (e) { run.errors.push('performLanding: ' + e.message); }
-    try { const vb = doc.getElementById('vistabox'); if (vb && vb.style.display !== 'none') { await sleep(460); vb.click(); } } catch (_) {}   /* the dismiss arms 420ms after the show (ghost-click guard) */
+    try { const vb = doc.getElementById('vistabox'); if (vb && vb.style.display !== 'none') { setTimeout(() => { try { vb.click(); } catch (_) {} }, 500); } } catch (_) {}   /* deferred past the 420ms ghost-click arming window (landOn is not async) */
     try { if (pl.P && pl.P.type) _ptSim.add(pl.P.type); } catch (_) { }
     run.landings++;
     if (pct0 <= 35) { run.hostileGroundings++; note('grounded a hostile world (' + pct0 + '%): ' + (d.title || '')); }
