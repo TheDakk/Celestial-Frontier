@@ -147,6 +147,21 @@
 ## battery → copy pass → Guide check → layout gate → 6k beta (fail-
 ## fast) with feedback ACTED ON → team panels (artwork/engineering/UI/
 ## bug+feedback/QA/audio) → deploy. Release notes = technical outlines.
+## v1.6 COPY STYLE (Nick, 2026-07-19): REMOVE THE EM-DASH game-wide —
+## the whole game leans on '—' as its voice; Nick wants it gone
+## ('humans don't use the long dash'). Replace by job: comma (soft
+## pause/aside), period (hard break), colon (definition/list intro),
+## semicolon (linked clauses). A full de-dash sweep across Guide,
+## cards, toasts, release notes; fold into the copy-pass. (v1.5.2
+## story rewrite kept dashes per Nick's 'leave them for now'.)
+## STORY THEME (locked): MASTERING THE UNIVERSE — the Prime Codex is
+## the master survey; fell each element's titan to master it; master
+## all nine to master the forces of the universe and open the
+## Celestial Frontier. 'You cannot finish the infinite, only master
+## it.' Master = master-of-a-craft, never tyrant. Title stays
+## 'Celestial Frontier' (no 'Master of the Universe' subtitle — reads
+## He-Man, fights the serene tone). Applied to intro/subtitle/guide/
+## ending/meta/relics in v1.5.2c (build TBD).
 
 ## ★★★ v1.5.2 "THE SHIPYARD + THE QUEST SYSTEM" IS LIVE ★★★
 ## (2026-07-19 overnight, build 61024a9, deployed per Nick's overnight
