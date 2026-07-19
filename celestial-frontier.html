@@ -12870,7 +12870,7 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.5';
+const GAME_VERSION='1.5.1';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
@@ -15869,7 +15869,18 @@ function renderDoll(){
         return '<div class="eqcand'+(cur===it.id?' on':'')+'" data-eqpick="'+it.id+'" role="button" tabindex="0">'+
           '<img src="'+partIcon(it.id)+'" alt=""><div class="m"><div class="nm">'+it.name+(cur===it.id?' ✓':'')+'</div>'+
           '<div class="ds">'+effTxt+'</div></div></div>';
-      }).join(''):'<div class="empty" style="padding:8px">Nothing crafted for this socket yet — the Fabricator below builds gear from mined parts.</div>')+
+      }).join(''):(function(){
+        /* UI-panel catch: 90% of early socket taps dead-ended — the empty
+           picker now names the socket's FIRST rung and its ore, so the tap
+           teaches the ladder instead of shrugging */
+        const first=ITEMS.filter(it=>it.slot===_eqOpen && !it.sig && !it.req).sort((a,b)=>(a.tier||0)-(b.tier||0))[0];
+        let hint='';
+        if(first){
+          const bits=Object.keys(first.cost||{}).map(k=>first.cost[k]+'× '+(ELEM_NAME[k]||k));
+          hint=' First on this ladder: <b>'+first.name+'</b>'+(bits.length?' — '+bits.join(', '):'')+'.';
+        }
+        return '<div class="empty" style="padding:8px">Nothing crafted for this socket yet.'+hint+' The Fabricator below builds it from mined parts.</div>';
+      })())+
       (cur?'<div class="eqcand" data-eqpick="" role="button" tabindex="0"><span class="eqph">∅</span><div class="m"><div class="nm">Unequip</div><div class="ds">leave the socket empty</div></div></div>':'')+
       '</div>';
   }
