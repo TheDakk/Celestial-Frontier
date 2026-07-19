@@ -56,6 +56,74 @@
 ##      fingerprint law are untouched); an affix system on gear is a
 ##      v1.6-scale design — scope it with Nick before building.
 ##
+## CLAUDE'S SCENARIO REVIEW (2026-07-19, Nick asked "what did I not
+## think of" — decisions to make BEFORE building the above):
+## S1. PRE-EARNED PROGRESS vs ACCEPT-TO-ACTIVATE (the big one): if
+##     tracking starts at accept, a player who mines 8 loads THEN
+##     accepts the mining charter gets zero credit — rage fuel. But
+##     silent banking contradicts the point of accepting. PROPOSAL:
+##     STATE-quests (land on Mars, own a component) check world-state
+##     at accept and complete instantly with an "already proven" note
+##     (the veteran-trades precedent); COUNT-quests (pull 5 loads)
+##     count from accept, and their text says so ("from here on").
+##     Decide with Nick.
+## S2. CHAIN DEADLOCK GUARD: a charter targeting a SPECIFIC world's
+##     resource can strand (e.g. "5 loads from Jupiter/Saturn" if both
+##     were mined out first — unlikely at ~700 pulls each, but the
+##     PATTERN matters as chains grow). Law: targeted charters prefer
+##     categories over single worlds, or auto-complete when the target
+##     is no longer satisfiable. Same family as the _far0 lesson: a
+##     chain must never REVEAL a link the player's ring can't reach.
+## S3. THE ASCENT vs THE CHAINS: the pinned chapter is a parallel
+##     checklist; charters become sequential chains — two quest
+##     grammars on one board. Options: chapter stays parallel (it's a
+##     "chapter"), or its goals reveal progressively too. Nick's call;
+##     whichever wins, the WEEKLY BOARD GATE must be redefined (today:
+##     all starters done → weeklies. With chains: which chains gate?).
+## S4. ACTIVE-CHARTER CAP: EverQuest journals cap active quests. 3
+##     accepted at once feels right (the board shows Available /
+##     Accepted / Done sections, folds per the one-fold language).
+##     First trade-chain link could AUTO-accept at training's end so
+##     the "more charters available" handoff stays seamless.
+## S5. QUEST GEAR vs THE FABRICATOR (economy collision): if charters
+##     hand out gloves, the crafted Grip Gloves lose their moment and
+##     the mine→craft pacing law bends. Rule: quest gear is the WORN
+##     tier — lesser "Worn/Standard-Issue" variants (reduced eff) of
+##     existing pieces, so crafting stays the upgrade path and the
+##     Ascent's craft gates hold. Static phase = grant EXISTING item
+##     ids only (zero new machinery).
+## S6. THE AFFIX WALL (biggest technical lift in the loot plan): items
+##     today are FIXED defs counted by id (items Map id→qty). "Low
+##     random stats" means per-INSTANCE gear — a new save shape
+##     (instance list), picker/equip/effect plumbing per instance, and
+##     app-layer seeded rolls (fingerprint law). Static-first is what
+##     makes v1.5.x shippable; the affix system is the v1.6 core.
+##     When it lands: ONE loot faucet first (conquest spoils — Diablo
+##     is kill-things-get-loot), drop tables obey POWER-DECOUPLED-
+##     FROM-RARITY, and gear NEVER rides share codes.
+## S7. SAVE-FIELD BUDGET (G12 discipline): the whole plan needs ONE
+##     new field now — `chacc` (accepted charter ids, absent-safe
+##     empty). Chain availability derives from chDone. Gear instances
+##     wait for v1.6. Keep it that lean.
+## S8. SIM COVERAGE IN THE SAME BATCH: accept-to-activate breaks every
+##     persona bot unless simrun learns to accept charters first —
+##     the harness must ship WITH the feature (the lesson this session
+##     taught twice: drivers and build move together).
+## S9. NUDGE + DEEP LINK: nextStepGoal should point at the current
+##     chain link ("Accept your next charter" when none is accepted) —
+##     and the toast/nudge could DEEP-LINK: tapping it opens the
+##     charter board. Toasts are passive today; a small tap-to-open
+##     system serves every future nudge, not just charters.
+## S10. BURST vs CHAPTER PACING (small, watch it): one 10-pull burst
+##     nearly completes c1-mine (8 loads) in a single press. Ore
+##     AMOUNTS still gate crafting, so pacing likely holds — but
+##     re-check chapter-1 time-to-Jump-Drive in the sim after the cap
+##     lands; if it collapses, chapter goals should count PRESSES
+##     (bursts), not loads.
+## S11. DECLINE, WHEN IT COMES: declining a weekly needs re-roll rules
+##     (gone for the week? redraw from the pool?) — park until Nick
+##     wants decline at all.
+##
 ## NICK'S DEVICE-PASS WATCHLIST (carried): the two Edge crash dumps
 ##    (renderer died in UnrecoverableAccessibilityError — browser-side;
 ##    canvas aria-hidden mitigation shipped in 1.5.2b; watch whether
