@@ -1,5 +1,92 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
+## ★★★ v1.5 "FRESH START" IS LIVE ★★★ (2026-07-18/19, build 0d86e32,
+## deploy pre-authorized in Nick's session charter; version.json v:1.5
+## verified live, all systems present in the served html.)
+## EVERY WORK ORDER SHIPPED (9 commits): the WIPE (cfcc_save_v2, no
+## migration, farewell card honors the old expedition's rarest find;
+## grandfather machinery + drawSurface/art-tiles purged; single-key
+## baseline re-pin of the constants SAVE_KEY tail, documented) · THE
+## PAPERDOLL CHARACTER SCREEN (full-body painterly explorer, 9 sockets
+## anchored to the body, ship docked beside, stats left, cargo/
+## Fabricator/Research beneath; proof-sheeted + live screenshots) ·
+## specimen cards CONDENSED (world-card fold, cx bit 4, ⟁ hook never
+## folds) · QUEST NOTIFICATIONS (login+idle next-step nudge, never
+## twice per goal) · CHARTERS⇄CODEX slot swap · events+beacon DORMANT
+## (buttons/Guide/achievement shelf hidden, engines refuse) · THE
+## PATHFINDERS' TRAIL (beacon lore + reach per Signature, NINE relic
+## blueprints one-per-socket gated on claims, Legacy teased honestly) ·
+## XP RETUNE (levelOf 12·l²→6·l², measured: L3 reach 3%→24%; awards
+## unchanged) · training tray bug fixed with a GRACE-BEAT sweep (the
+## lesson's own panel gets 1.6s on screen, then yields).
+## BUGS FOUND EN ROUTE: surfSeen (Groundfall/Trailblazer + worlds-
+## landed stat) frozen since 1.3.8 — fixed into _performLanding.
+## PRE-SHIP REVIEW (adversarial agent, 6 confirmed findings, ALL
+## fixed): grace-beat sweep; Escape closes the sheet; nudge modal guard
+## + hover shield cover the new surfaces; corrupt legacy keys earn no
+## eulogy; primeFill claims coerced/clamped on load.
+## SUITES AT SHIP: fingerprint 50/50 byte-identical (1 documented
+## re-pin), smoke 277/277, systems 19/19, balance PASS.
+##
+## THE 5,000-TESTER ROUND (Nick's scale-up; fast 3,600 + deep 700 +
+## ui 400 + chaos 300): ZERO errors, ZERO breaks, ZERO softlocks in
+## every leg; training 700/700 complete incl. 300 chaos-adversary runs;
+## the new sheet exercised 46,000+ times through the real DOM clean.
+## How far they get: Jump Drive p50 65 actions (deep) / 203 (short
+## sessions); Array p50 394 (32% of long sessions); IG 2/700; L3 165/
+## 700 at p50 411 actions; deep fun-index p50 6.23 (rancher 6.72 top).
+## One loud signal: 347/700 deep deaths, 344 of them CHAMPION-DUTY
+## SPIRALS (re-fighting lost conquests as self at 1 HP — part bot
+## tilt, part real design gap; medicine-never-kills held at 3).
+##
+## ▶▶ THE CRITIC PANEL'S v1.6 SLATE (4 lenses on the packs; ranked,
+## AWAITING NICK'S PICKS — nothing built post-deploy without his word):
+## P1 CONQUEST MERCY PACK (optimizer #1 + backlog item d): fallen bred
+##    champions return 'Critical' instead of dying + a self-champion
+##    floor (first conquest loss as yourself leaves you Critical;
+##    conquest can't start while Critical). Converts the 347 run-ending
+##    deaths into recoverable states. NOTE 42% of dead runs had no
+##    bred champion — the self-floor half is what closes it.
+## P2 SOL NEEDS FIRST LIFE (collector #1 + explorer #2): rancher
+##    persona catalogued ZERO species in 722 short sessions — the
+##    wiped Binder gains nothing until the Jump Drive (~200 actions).
+##    Candidates: starter microbes on Mars/ice moons, Earth's own
+##    breeding pair kept post-training, or ring-breach anomaly (e).
+## P3 ARRIVAL PAYS (explorer #1, "the beacon's vacated job"): a first-
+##    footfall/arrival event per new system that writes a log line —
+##    18,044 jumps logged against ~18 payoff events is the loudest
+##    ratio in the pack. Fits the corridor-wonder backlog item (g).
+## P4 CONQUEST/DUEL INVERSION (optimizer #2): conquest wins 21% vs
+##    duels 76% — duel-grinding is the degenerate XP path while the
+##    named verb is a 4-in-5 loss. Telegraph winnable conquests
+##    (picker already shows odds — surface them earlier) or raise +20.
+## P5 FIRST CODEX CLAIM AT STAGE 2 (optimizer #3): zero Signature/
+##    relic events in 700 runs — as gated, all nine relic blueprints
+##    shipped as dead content. Let the first 1-2 Signatures (Stone/
+##    Star?) be claimable in the home galaxy so the Trail's first
+##    beacon lights during the Ascent, not after it.
+## P6 SHEET POLISH (quartermaster, verdict "ALMOST — yes on desktop"):
+##    (a) anchor the equip picker to the tapped socket (it renders
+##    below the whole doll — cause and effect half a screen apart);
+##    (b) mobile region order doll→CARGO→stats (the empty states
+##    promise "the Fabricator below" but stats' long tail buries it);
+##    (c) fold nameplate+rarity ladder into a collapsed Collection
+##    group; (d) pull the ship-thumb module anchor in ~4% (clips at
+##    the card edge on phones). Gear engagement is real (22% tap-to-
+##    equip) but top-heavy: Hazmat Suit worn 1×, Verdant Locket 1×.
+## P7 LEGENDARY WALL (collector #3): 61% of rare finds are the same
+##    grade — within-ring grade variance or a shorter road to stage 2.
+## P8 DISCOVERY XP (collector #2): all tracked XP came from combat —
+##    cataloguing a genuinely new species could tick the sheet (+2?).
+##    A pure collector is level 0 forever.
+## KEEP AS-IS (panel consensus): the 6·l² curve ("thresholds honest,
+## don't re-cut"), the Ascent stage-1 pacing (Jump p50 65 "crisp"),
+## breeding (59% hybrid rate, "best-feeling loop in the game").
+## NICK DEVICE-PASS WATCHLIST: paperdoll socket feel on iPhone;
+## farewell card over the name prompt (iOS keyboard layering);
+## G14 boot time (STILL unverified since v1.3).
+
+## ▼▼ THE EXECUTED v1.5 CHARTER (kept for the record) ▼▼
 ## ▶▶▶ v1.5 "FRESH START" — THE NEXT SESSION'S CHARTER (planned
 ## 2026-07-18 at session close, Nick's words folded in verbatim-intent;
 ## RESUME HERE) ◀◀◀
