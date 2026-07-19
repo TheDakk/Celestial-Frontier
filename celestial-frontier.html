@@ -4281,7 +4281,7 @@ window.addEventListener('pointermove', e=>{
   mouse.x=e.clientX; mouse.y=e.clientY;
   /* hovering over an open panel must never survey what's behind it */
   mouseOverUI = !!(e.target && e.target.closest &&
-    e.target.closest('#codex,#log,#stats,#events,#searchwrap,#topbar,#dailybtn,#eventsbtn,#logbtn,#codexbtn,#pcdxbtn,#primebox,#endingbox,#guidebox,#helpbtn,#sharebox,#duelbox,#pickbox,#reveal,#setpanel,#setbtn,#namebox,#deathbox,#descbox'));
+    e.target.closest('#codex,#log,#sheet,#events,#searchwrap,#topbar,#chbtn,#chpanel,#cargobtn,#logbtn,#codexbtn,#pcdxbtn,#primebox,#endingbox,#guidebox,#helpbtn,#sharebox,#duelbox,#pickbox,#reveal,#setpanel,#setbtn,#namebox,#deathbox,#descbox,#farewellbox'));
 });
 cv.addEventListener('pointermove', e=>{
   if(!dragging || pinching || activeTouches>=2) return;   /* two fingers down = zoom only, never pan-fight */
@@ -4419,6 +4419,8 @@ document.addEventListener('keydown', e=>{
         return;
       }
     }
+    /* the character screen (v1.5) is keyboard-openable — Escape closes it too */
+    try{ if(typeof sheetOpen!=='undefined' && sheetOpen){ closeSheet(); return; } }catch(_){ }
   }
 });
 
@@ -10370,7 +10372,7 @@ function readLegacySave(){
         }catch(_){ }
       }
       _farewell={me:cleanName(od.me||'')||'', best, n:list.length};
-    }catch(_){ _farewell={me:'', best:null, n:0}; }
+    }catch(_){ /* a corrupt legacy key earns no eulogy — just remove it */ }
     localStorage.removeItem(LEGACY_SAVE_KEY);
   }catch(_){ }
 }
@@ -10572,7 +10574,21 @@ function loadSave(){
         if(Number.isFinite(s2) && n2>0) _waveOffs.set(s2, n2);
       }
     }
-    if(data.prime && typeof data.prime==='object'){ for(const k in data.prime) if(SIG_IDS.includes(k)) primeFill[k]=data.prime[k]; }
+    /* v1.5 hardening (review catch): relic blueprints hang off primeFill
+       now, so a loaded claim gets the same coerce/clamp treatment as every
+       other save field — strings stripped of markup, tier a finite number,
+       hex a real color or the default */
+    if(data.prime && typeof data.prime==='object'){
+      const _sanS=(v,n2)=>String(v==null?'':v).replace(/[<>&"']/g,'').slice(0,n2);
+      for(const k in data.prime){
+        if(!SIG_IDS.includes(k) || !data.prime[k] || typeof data.prime[k]!=='object') continue;
+        const f=data.prime[k];
+        primeFill[k]={title:_sanS(f.title,48)||'a lost record', sub:_sanS(f.sub,32),
+          tier:clamp(num(f.tier), 0, TIER_MAX)|0,
+          hex:/^#[0-9a-fA-F]{3,8}$/.test(String(f.hex||''))?String(f.hex):'#9fb6d6',
+          where:(f.where&&typeof f.where==='object')?f.where:null};
+      }
+    }
     frontierUnlocked=!!data.frontier; frontierEnding=data.ending||null;
     seenGuide=!!data.guide;
     tutDone = data.tut===undefined ? true : !!data.tut;   /* tut absent (edited save) ⇒ done — never force training on a held run */
@@ -14666,7 +14682,7 @@ function _questNudge(){
   const g=nextStepGoal();
   if(!g || _nudged.has(g.key)) return;
   try{   /* one voice: never talk over a held breath */
-    for(const id of ['reveal','pickbox','duelbox','namebox','deathbox','endingbox','relbox','descbox','sharebox','guidebox','farewellbox','cinema']){
+    for(const id of ['reveal','pickbox','duelbox','namebox','deathbox','endingbox','relbox','descbox','sharebox','guidebox','farewellbox','cinema','primebox','vistabox']){
       const el=document.getElementById(id);
       if(el && el.style.display && el.style.display!=='none') return;
     }
@@ -14974,10 +14990,11 @@ function _tutSpot(){
 }
 function _tutAdvance(){
   _tutRig=null;
+  const prev=_tutStep>=0?TUT_STEPS[_tutStep]:null;
   _tutStep++;
   if(_tutStep>=TUT_STEPS.length){ _tutFinish(); return; }
   const s=TUT_STEPS[_tutStep];
-  _tutPanelSweep(s);
+  _tutPanelSweep(s, prev);
   if(s.enter){ try{ s.enter(); }catch(_){} }
   _tutShow();
 }
@@ -14985,18 +15002,45 @@ function _tutAdvance(){
    tray lesson sat over the search box in the next step — the outside-tap
    closer is training-inert by design, so nothing ever closed it. On every
    step advance, any open panel the NEW step's allow list doesn't name
-   closes. Exact-token match — '#logbtn' must never keep '#log' alive. */
-function _tutPanelSweep(s){
+   closes. Exact-token match — '#logbtn' must never keep '#log' alive.
+   REVIEW CATCH: the completing click and the advance share one task, so
+   an immediate close would rob the lesson's own panel of every frame —
+   the recruit taps the bell and NOTHING appears. A panel the JUST-DONE
+   step allowed gets a grace beat on screen before it yields the stage. */
+let _tutSweepT=0;
+function _tutPanelSweep(s, prev){
   try{
     const toks=new Set(TUT_ALWAYS.concat((s&&s.allow)||[]));
+    const prevToks=(prev&&prev.allow)||[];
+    clearTimeout(_tutSweepT);
+    const owned=[];
+    const matches=(p)=>{
+      const el=p.el();
+      const idSel=(el&&el.id)?('#'+el.id):null;
+      const btns=p.btn?String(p.btn).split(','):[];
+      const inSet=(t)=>toks.has(t);
+      if((idSel && inSet(idSel)) || btns.some(inSet)) return 'keep';
+      /* did the step we just finished teach this panel? el id, its buttons,
+         or any allowed selector living INSIDE it (the sheet holds #stats) */
+      try{
+        for(const t of prevToks){
+          if((idSel && t===idSel) || btns.includes(t)) return 'grace';
+          if(el && el.querySelector && el.querySelector(t)) return 'grace';
+        }
+      }catch(_){ }
+      return 'close';
+    };
     for(const p of PANELS){
       try{
         if(!p.open()) continue;
-        const el=p.el();
-        const idSel=(el&&el.id)?('#'+el.id):null;
-        if((idSel && toks.has(idSel)) || (p.btn && toks.has(p.btn))) continue;
+        const m=matches(p);
+        if(m==='keep') continue;
+        if(m==='grace'){ owned.push(p); continue; }
         p.close();
       }catch(_){ }
+    }
+    if(owned.length){
+      _tutSweepT=setTimeout(()=>{ for(const p of owned){ try{ if(p.open()) p.close(); }catch(_){ } } }, 1600);
     }
   }catch(_){ }
 }

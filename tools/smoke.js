@@ -277,9 +277,13 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     click(doc.getElementById('bell'));
     check('opening tray completes step 14', await until(() => tutAt(15), 3000, 'step15'));
-    // v1.5 (Nick's live pass): the tray opened by the tray lesson must NOT
-    // sit over the search box when the search step begins
-    check('tray closes when the search lesson takes over', !visible(doc.getElementById('tray')));
+    // v1.5 (Nick's live pass + review catch): the tray the lesson opened
+    // gets a grace beat on screen — the recruit must SEE what they opened —
+    // then yields before the search lesson needs the box beneath it
+    check('tray gets its grace beat on screen (lesson not robbed of frames)',
+      visible(doc.getElementById('tray')));
+    check('tray yields before the search lesson needs the box', await until(() =>
+      !visible(doc.getElementById('tray')), 4000, 'tray grace close'));
     type(doc.getElementById('searchin'), 'earth');
     check('searching earth completes step 15', await until(() => tutAt(16), 3000, 'step16'));
     click(doc.getElementById('rank'));
