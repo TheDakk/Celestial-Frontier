@@ -78,7 +78,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // fresh expedition: latest bulletin FIRST, then training
     const relFresh = doc.getElementById('relbox');
     check('fresh expedition: latest bulletin shows before training', await until(() =>
-      visible(relFresh) && relFresh.textContent.includes('Fresh Start') && relFresh.textContent.includes('v1.5'), 4000, 'fresh bulletin'));
+      visible(relFresh) && relFresh.textContent.includes('The Mirror Polish')
+      && relFresh.textContent.includes('Fresh Start') && relFresh.textContent.includes('v1.5'), 4000, 'fresh bulletin'));
     // v1.5 opens a fresh minor line — the bulletin shows it alone, and
     // no other line (1.4.x, 1.3.x, 1.2.x, 1.1.x, 1.0) may leak in
     check('bulletin shows the v1.5 line alone (no 1.4/1.3.x leak)',

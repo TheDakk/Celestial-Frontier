@@ -20,6 +20,12 @@
 ##  pays, P4 conquest/duel inversion, P5 first Codex claim at stage 2,
 ##  P7 Legendary wall, P8 discovery XP — and Nick's own musing: a
 ##  fuller UI uniformity sweep as v1.6.
+##  FROM THE 1,000-TESTER UI PANEL (8.5/10, "ship it"; two folded, two
+##  parked): PARKED — phone socket anchors nudge off the figure art
+##  (helmet-over-visor, torso stack; his device pass should judge);
+##  desktop sheet left-column dead zone below the folds. Adversary-only
+##  stall family (chaos re-opening reveals on the finale step) recovers
+##  100% — recorded, not fixed.
 
 ## ★★★ v1.5 "FRESH START" IS LIVE ★★★ (2026-07-18/19, build 0d86e32,
 ## deploy pre-authorized in Nick's session charter; version.json v:1.5
