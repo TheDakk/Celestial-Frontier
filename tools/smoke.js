@@ -290,8 +290,13 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // then yields before the search lesson needs the box beneath it
     check('tray gets its grace beat on screen (lesson not robbed of frames)',
       visible(doc.getElementById('tray')));
-    check('tray yields before the search lesson needs the box', await until(() =>
-      !visible(doc.getElementById('tray')), 4000, 'tray grace close'));
+    // v1.5.2c (Nick): no timer closes it — it holds until the player acts.
+    // Reaching for the search box IS the dismiss ('click through', not a clock).
+    check('tray holds with no countdown while the recruit reads',
+      visible(doc.getElementById('tray')));
+    doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'e', bubbles: true }));
+    check('tray yields on the next interaction, freeing the search box', await until(() =>
+      !visible(doc.getElementById('tray')), 3000, 'tray click-through close'));
     type(doc.getElementById('searchin'), 'earth');
     check('searching earth completes step 15', await until(() => tutAt(17), 3000, 'step16'));
     click(doc.getElementById('rank'));
@@ -315,8 +320,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('cleanup: Compendium empty', doc.getElementById('codexcount').textContent === '0');
     check('cleanup: HP fully restored', doc.getElementById('hptext').textContent === '100/100 HP');
     check('cleanup: the loaned ore + practice plate went back to the order',
-      H.cargo.size === 0 && H.itemCount('plate') === 0
-      && doc.getElementById('cargobtn').style.display === 'none');
+      H.cargo.size === 0 && H.itemCount('plate') === 0);
+    // v1.5.2c (Nick): the Shipyard rail button is ALWAYS present now (was
+    // hidden until first cargo — it flickered off between lessons)
+    check('the Shipyard button stands on the rail even with an empty hold',
+      doc.getElementById('cargobtn').style.display === 'flex');
     check('cleanup: Atlas keeps only Earth', doc.getElementById('logcount').textContent === '1' && H.logMap.has('p133'));
     tutAct();                                                       // begin the expedition
     check('tutorial closes', await until(() => !visible(doc.getElementById('tutbox')), 2000, 'tut close'));

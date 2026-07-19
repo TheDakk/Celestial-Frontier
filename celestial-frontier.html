@@ -4011,10 +4011,11 @@ function planetDescriptor(P, sys, pl){
        Uncommon downstream): a menagerie on day one, never an armory. The
        prose rows above stay — humanity is not a specimen. */
     species = planetSpecies(P, sys, band, 'complex');   /* 'earth' is no roster key — the cradle rolls the full complex biosphere */
+    _earthNamePass(species);   /* real Earth names over the working genomes (Nick's roster) */
     for(const g of species){
       g._cradle=1;
       const d=describeSpecies(g);
-      rows.push([d.kind, d.name+' — '+d.desc, 'bio', 'sp:'+g.seed]);
+      rows.push([d.kind, (g._earthName||d.name)+' — '+d.desc, 'bio', 'sp:'+g.seed]);
     }
   } else {
     species = planetSpecies(P, sys, band, bio.key);
@@ -9349,10 +9350,31 @@ function ringDesignation(d){
   }
   return d;
 }
+/* v1.5.2c THE CRADLE ROSTER (Nick's Earth list): real Earth names layered
+   over the working genomes — the creatures render and fight in the game's
+   own style, but read as Wolf, Oak, Chanterelle. Assigned per genome by
+   seed within Earth's roster, no duplicates; app-layer only, so the
+   determinism domain (describeSpecies) is untouched. Earth-only. */
+const _EARTH_NAMES={
+  fauna:['Wolf','Fox','Brown Bear','Lion','Tiger','Snow Leopard','Elephant','Zebra','Giraffe','Moose','Bison','Rhinoceros','Hippopotamus','Gorilla','Chimpanzee','Lemur','Sea Otter','Wolverine','Raccoon','Beaver','Red Squirrel','Hedgehog','Fruit Bat','Kangaroo','Koala','Platypus','Armadillo','Pangolin','Golden Eagle','Peregrine Falcon','Snowy Owl','Raven','Scarlet Macaw','Peacock','Swan','Great Heron','Flamingo','Emperor Penguin','Ostrich','Hummingbird','Woodpecker','Toucan','Nile Crocodile','Komodo Dragon','Green Iguana','Chameleon','Reticulated Python','King Cobra','Rattlesnake','Galápagos Tortoise','Sea Turtle','Poison Dart Frog','Fire Salamander','Axolotl','Great White Shark','Manta Ray','Giant Octopus','Cuttlefish','Seahorse','Anglerfish','Bottlenose Dolphin','Orca','Narwhal','Moon Jelly','Starfish','Orchid Mantis','Emperor Dragonfly','Firefly','Rhinoceros Beetle','Monarch Butterfly','Luna Moth','Bumblebee','Leafcutter Ant','Tarantula','Emperor Scorpion','Coconut Crab','Mantis Shrimp'],
+  flora:['Oak','Sugar Maple','Silver Birch','Weeping Willow','Coast Redwood','Baobab','Mangrove','Scots Pine','Cedar','Ginkgo','Coconut Palm','Cherry Blossom','Magnolia','Bamboo','Sunflower','Wild Rose','Sacred Lotus','Water Lily','Moth Orchid','Lavender','Field Poppy','Dandelion','Bracken Fern','Venus Flytrap','Pitcher Plant','Saguaro Cactus','Prickly Pear','Aloe','Blue Agave','English Ivy','Wisteria','Giant Kelp','Seagrass','Foxglove','Bluebell','Tulip','Bearded Iris','Heather','Elderberry','Sagebrush'],
+  fungi:['Chanterelle','Morel','Black Truffle','Oyster Mushroom','Giant Puffball','Bracket Fungus','Stinkhorn','Earthstar','Fly Agaric','Coral Fungus','Ghost Fungus','Reindeer Lichen'],
+  microbe:['Green Algae','Red Algae','Diatom','Cyanobacteria','Amoeba','Paramecium','Tardigrade','Plankton Bloom']
+};
+function _earthNamePass(list){
+  const used={fauna:new Set(),flora:new Set(),fungi:new Set(),microbe:new Set()};
+  for(const g of list){
+    const pool=_EARTH_NAMES[g.kingdom]||_EARTH_NAMES.fauna, u=used[g.kingdom]||used.fauna;
+    let i=(g.seed>>>0)%pool.length, guard=0;
+    while(u.has(i) && guard++<pool.length) i=(i+1)%pool.length;
+    u.add(i); g._earthName=pool[i];
+  }
+}
 function _storeSpecies(g, from, where, deferArt){
   const id=codexId(g);
   if(codex.has(id)) return null;
   const d=describeSpecies(g);
+  if(g._earthName) d.name=g._earthName;   /* the cradle's real names carry into the Compendium */
   /* deferArt (save restore): don't paint 300 portraits synchronously at
      boot — consumers go through artOf() and pay per view (ship audit C2) */
   const entry={id, name:d.name, kind:d.kind, desc:d.desc, diet:d.diet||null,
@@ -9384,7 +9406,7 @@ function tryCapture(d, kind){
   const verb=isF?'🐾 Tame':'🌿 Scavenge';
   if(!pool.length){ toast(verb, isF?'Every beast here already walks your Compendium.':'Every growth here is already pressed into your Compendium.'); return; }
   const g=pool[(Math.random()*pool.length)|0];
-  const dsc=describeSpecies(g);
+  const dsc=describeSpecies(g); if(g._earthName) dsc.name=g._earthName;
   const ch=captureOdds(g, d);
   if(Math.random()<ch){
     discoverSpecies(g, d.planetName||d.title||'A living world', d.where||null);
@@ -13998,7 +14020,10 @@ function showCargoBtn(){
      rail ALWAYS once training ends. Hiding it until first cargo orphaned
      the whole crafting system when the training sandbox reclaimed its
      loaners (empty hold ⇒ no button ⇒ "where did crafting go?"). */
-  if(cargoBtn) cargoBtn.style.display=(tutDone || cargo.size>0 || techOwned.size>0 || items.size>0)?'flex':'none';
+  /* v1.5.2c (Nick): the Shipyard rail button is ALWAYS present — training
+     included (it was flickering off between lessons). Crafting has a
+     permanent home from the first frame. */
+  if(cargoBtn) cargoBtn.style.display='flex';
   const cc=document.getElementById('cargocount');
   if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0)+[...items.values()].reduce((a,b)=>a+b,0);   /* count is live even when the panel is closed */
 }
@@ -14242,6 +14267,7 @@ if(cargoBtn){
   cargoBtn.addEventListener('click', ()=>{
     if(yardOpen) closeYard(); else openYard();
   });
+  try{ showCargoBtn(); }catch(_){ }   /* present from the first frame — training included (Nick) */
 }
 {
   const _yardEl=document.getElementById('yard');
@@ -14255,7 +14281,7 @@ if(cargoBtn){
       const t=e.target.closest('[data-tech]');
       if(t){ buyTech(t.dataset.tech); return; }
       const cr=e.target.closest('[data-craft]');
-      if(cr) craftItem(cr.dataset.craft);
+      if(cr){ craftItem(cr.dataset.craft); if(yardOpen) renderYard(); }   /* re-render so spent-out recipes drop their Craft button (Nick) */
     });
   }
 }
@@ -15738,7 +15764,7 @@ function _tutAdvance(){
    an immediate close would rob the lesson's own panel of every frame —
    the recruit taps the bell and NOTHING appears. A panel the JUST-DONE
    step allowed gets a grace beat on screen before it yields the stage. */
-let _tutSweepT=0;
+let _tutSweepT=0, _tutGraceArm=null;
 function _tutPanelSweep(s, prev){
   try{
     const toks=new Set(TUT_ALWAYS.concat((s&&s.allow)||[]));
@@ -15776,6 +15802,9 @@ function _tutPanelSweep(s, prev){
         try{ mineStop(); }catch(_){ }
       }
     }catch(_){ }
+    /* a pending grace-dismiss from the prior step resolves now (the player
+       advanced without touching it) — never leaves two lessons' panels up */
+    if(_tutGraceArm){ try{ _tutGraceArm(); }catch(_){ } _tutGraceArm=null; }
     for(const p of PANELS){
       try{
         if(!p.open()) continue;
@@ -15785,11 +15814,25 @@ function _tutPanelSweep(s, prev){
         p.close();
       }catch(_){ }
     }
+    /* v1.5.2c (Nick: "let the user click THROUGH it, not a timer"): a panel
+       the just-finished lesson opened (e.g. the tray, opened by the very
+       click that advanced) stays on screen with NO countdown — it yields
+       on the player's NEXT interaction outside it, or when they advance
+       again. Nothing ever vanishes while they read. */
     if(owned.length){
-      /* the grace beat grew 1.6s → 3.2s (Nick: windows were closing
-         before he was done with them) — the last lesson's panel gets a
-         real moment before it yields the stage */
-      _tutSweepT=setTimeout(()=>{ for(const p of owned){ try{ if(p.open()) p.close(); }catch(_){ } } }, 3200);
+      const dismiss=(e)=>{
+        if(e){ for(const p of owned){ try{ const el=p.el&&p.el(); if(el && e.target && el.contains(e.target)) return; }catch(_){ } } }
+        document.removeEventListener('pointerdown', dismiss, true);
+        document.removeEventListener('keydown', dismiss, true);
+        _tutGraceArm=null;
+        for(const p of owned){ try{ if(p.open()) p.close(); }catch(_){ } }
+      };
+      _tutGraceArm=()=>dismiss(null);   /* the next sweep resolves it if untouched */
+      /* arm now — the advancing event already finished propagating past
+         document (capture) before this sweep ran, so it can't self-trigger;
+         a FRESH pointerdown/keydown is the player's "click through" */
+      document.addEventListener('pointerdown', dismiss, true);
+      document.addEventListener('keydown', dismiss, true);
     }
   }catch(_){ }
 }
