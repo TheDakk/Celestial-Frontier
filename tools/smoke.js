@@ -616,8 +616,14 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('v1.3.8: the view holds — landing never leaves the system view', skH.st.mode === 'system');
     check('HD vista: planetfall opens the landing panorama', await until(() =>
       sk.doc.getElementById('vistabox').style.display === 'flex', 5000, 'vista overlay'));
+    // the dismiss ARMS 420ms after the show (ghost-click guard: the landing
+    // tap's synthesized click must never dismiss the payoff it opened)
     click2(sk.doc.getElementById('vistabox'), sk.w);
-    check('HD vista: tap dismisses the panorama (fade-out)', await until(() =>
+    check('HD vista: the birth-tap does NOT dismiss (ghost-click guard)',
+      sk.doc.getElementById('vistabox').style.display === 'flex');
+    await new Promise((r) => setTimeout(r, 480));
+    click2(sk.doc.getElementById('vistabox'), sk.w);
+    check('HD vista: an armed tap dismisses the panorama (fade-out)', await until(() =>
       sk.doc.getElementById('vistabox').style.display === 'none', 4000, 'vista fade-out'));
     // B1: the art is no longer see-once — the surface card reopens it
     check('HD vista: the surface card offers a re-view', await until(() =>

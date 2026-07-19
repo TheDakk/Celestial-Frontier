@@ -240,7 +240,7 @@ async function expedition(sess, seed, nActions, deep) {
     }
     if (tries > 12) return null;
     try { H._performLanding(pl); } catch (e) { run.errors.push('performLanding: ' + e.message); }
-    try { const vb = doc.getElementById('vistabox'); if (vb) vb.click(); } catch (_) {}
+    try { const vb = doc.getElementById('vistabox'); if (vb && vb.style.display !== 'none') { await sleep(460); vb.click(); } } catch (_) {}   /* the dismiss arms 420ms after the show (ghost-click guard) */
     try { if (pl.P && pl.P.type) _ptSim.add(pl.P.type); } catch (_) { }
     run.landings++;
     if (pct0 <= 35) { run.hostileGroundings++; note('grounded a hostile world (' + pct0 + '%): ' + (d.title || '')); }
@@ -780,6 +780,7 @@ async function uiTraining(seed, chaos) {
       if (okL) {
         H._performLanding(pl);
         await sleep(150);
+        await sleep(460);   /* outlive the vista's ghost-click arming window */
         const vb = doc.getElementById('vistabox');
         if (visible(vb)) {
           if (!vb.querySelector('.vcard .vxc')) run.breaks.push('vista lost its windowed card frame');
