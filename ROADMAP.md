@@ -41,6 +41,17 @@
 ##  · RETENTION LAW — AI-authored deterministic content DROPS on a
 ##    cadence (events/beacon revival as seasonal vehicles); measured
 ##    by staleness-horizon/novelty instruments.
+##  · CREATURE-BELONGING PASS (Nick's artistic law, 2026-07-19: "the
+##    animal pictured as what it is on the card, in their native
+##    environment — never pasted"): (a) contact shadows under every
+##    stamped creature (the seating law); (b) scene palette tints the
+##    creature's rim light; (c) behavior-true posture (grazers heads-
+##    down, ambushers in flora); (d) reveal-card backdrops painted by
+##    the SAME biome painter as the vista — the card as a window into
+##    the world. Pairs with far-ring biomes. The one-sentence law for
+##    all art: everything in the frame painted by the same hand at the
+##    same hour (buildings sit · virga dies in air · rivers born from
+##    mist · lava born from the mountain · creatures in their light).
 ##  · Parked critic picks that fold in: P2 Sol first life, P5 early
 ##    Codex claim, P7 Legendary wall; S11 decline rules if wanted.
 ## STANDING PROCESS (locked today, see 'STANDARD ROLLOUT PROCESS'):

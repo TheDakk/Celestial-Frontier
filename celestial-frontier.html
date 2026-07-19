@@ -729,7 +729,12 @@
     background:rgba(20,24,44,0.85);color:var(--dim);font:600 13px/26px system-ui,sans-serif;
     text-align:center;cursor:pointer;padding:0;z-index:6}
   .pnx:hover{color:var(--ink);background:rgba(150,162,210,0.14)}
-  #tray .pnx,#setpanel .pnx{position:absolute}
+  /* the ✕ law, everywhere: UPPER RIGHT, with air — absolute closes get an
+     explicit corner anchor (unanchored, the tray's landed on its own
+     title), and the headers reserve the lane so text never runs under */
+  #tray .pnx,#setpanel .pnx{position:absolute;top:6px;right:6px;float:none}
+  #tray .thead{padding-right:40px}
+  #setpanel .shead{padding-right:40px}
   #guidebox .card{position:relative}   /* anchor the guide's ✕ to the card, not the screen */
   /* ✕ CORNER LAW (Nick's device pass, v1.5.2c): the close sits cleanly in
      the corner — the VISUAL never grows into content; the finger's target
@@ -740,9 +745,12 @@
     .pnx{width:28px;height:28px;font-size:13px;line-height:28px;top:3px;right:3px}
     .pnx::after{inset:-9px}
   }
-  /* the first header row of every rail panel reserves the corner */
-  #chpanel > .ehead:first-child,#codex > .ehead:first-child,#log > .ehead:first-child,
-  #records > .ehead:first-child,#events > .ehead:first-child{padding-right:36px}
+  /* the ✕ owns the corner LANE: whatever renders first in a rail panel —
+     a chapter box, a filter-pill row, a tab row — shifts left of it, so
+     the close lines up with clean air, never over content (Nick's
+     alignment pass; the ✕ still rides the scroll after the first row) */
+  #chpanel > [data-pnx] + *,#codex > [data-pnx] + *,#log > [data-pnx] + *,
+  #records > [data-pnx] + *,#events > [data-pnx] + *{margin-right:34px}
   /* the vista ✕ — anchored to the pop-up card's corner (v1.3.11), the same
      close language as every other card */
   .vxc{position:absolute;top:6px;right:6px;
@@ -1542,6 +1550,8 @@
       <span class="opts"><span id="renameopt" class="fsopt" role="button" tabindex="0" data-tip="Change your explorer name — your progress stays yours.">✎ Change</span></span></div>
     <div class="srow2"><span>Tooltips</span>
       <span class="opts"><span id="tipsopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
+    <div class="srow2"><span>Notifications</span>
+      <span class="opts"><span id="notifopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
   </div>
   <div class="sgrp" data-sg="g">
     <div class="srow2"><span>Star charts</span>
@@ -1558,8 +1568,6 @@
       <span class="opts"><span id="sndopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
     <div class="srow2"><span>Volume</span>
       <span class="opts"><input id="volslider" type="range" min="0" max="100" step="5" value="100" aria-label="Sound effects volume"></span></div>
-    <div class="srow2"><span>Notifications</span>
-      <span class="opts"><span id="notifopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
   </div>
   <div class="sdiv"></div>
   <div class="rcnote">💾 Your expedition saves <b>only to this browser, on this device</b> — clearing site data erases it. Back up favourites as ⇪ creature codes.</div>
@@ -7236,7 +7244,9 @@ function hdVista(opts){
     /* the river no longer vanishes when a civilization stands here (V7) —
        the card's Water row said rivers, so the road fords one. The course
        itself is seeded now: mirrored and shifted per world (L1). */
-    const rp=[[rX(W*0.60)+cmpShift,hz+30],[rX(W*0.52)+cmpShift,hz+90],[rX(W*0.62)+cmpShift,H*0.78],[rX(W*0.40)+cmpShift,H+20]];
+    /* the source sits in the VALLEY between hill bands, not on the ridge
+       face — the tail must never read as running into the mountain (Nick) */
+    const rp=[[rX(W*0.60)+cmpShift,hz+46],[rX(W*0.52)+cmpShift,hz+98],[rX(W*0.62)+cmpShift,H*0.78],[rX(W*0.40)+cmpShift,H+20]];
     const riverAt=t=>{const a=rp[0],b=rp[1],c=rp[2],d=rp[3];
       return[(1-t)*(1-t)*(1-t)*a[0]+3*(1-t)*(1-t)*t*b[0]+3*(1-t)*t*t*c[0]+t*t*t*d[0],
              (1-t)*(1-t)*(1-t)*a[1]+3*(1-t)*(1-t)*t*b[1]+3*(1-t)*t*t*c[1]+t*t*t*d[1]]};
@@ -7252,14 +7262,26 @@ function hdVista(opts){
       const RIV=frozen?['#dfe9f2','#b9cede','#8fa9c0']
         :({night:['#3a4a66','#22344c','#101d30'],twilight:['#e8a06a','#7a5674','#2a1c40']}
           [opts.pal]||['#b9d3e4','#7fa2c4','#37587c']);   /* day top de-glared — water, not a light smear (art review) */
-      const rg2=g.createLinearGradient(0,hz+30,0,H);
-      rg2.addColorStop(0,RIV[0]);rg2.addColorStop(0.4,RIV[1]);rg2.addColorStop(1,RIV[2]);
+      /* the far end DISSOLVES into the distance haze instead of springing
+         from a hard point on the ridge (Nick's art pass — same seating
+         law as the buildings): the top of the fill fades in from nothing */
+      const _rvA=(hex,a)=>{const n=parseInt(hex.slice(1),16);return 'rgba('+(n>>16)+','+((n>>8)&255)+','+(n&255)+','+a+')';};
+      const rg2=g.createLinearGradient(0,hz+46,0,H);
+      rg2.addColorStop(0,_rvA(RIV[0],0));rg2.addColorStop(0.10,_rvA(RIV[0],0));
+      rg2.addColorStop(0.32,_rvA(RIV[0],0.9));
+      rg2.addColorStop(0.55,RIV[1]);rg2.addColorStop(1,RIV[2]);
       g.fillStyle=rg2;g.fill();
+      /* birth-mist: a breath of valley haze pooled where the water first
+         shows, so the tail is born from air, not cut into a hillside */
+      {const p0=riverAt(0.16);
+       const mist=g.createRadialGradient(p0[0],p0[1],0,p0[0],p0[1],46);
+       mist.addColorStop(0,_rvA(RIV[0],0.16));mist.addColorStop(1,_rvA(RIV[0],0));
+       g.fillStyle=mist;g.beginPath();g.ellipse(p0[0],p0[1],46,15,0,0,TAU);g.fill();}
       if(!frozen&&(P.sun>0||(opts.pal==='night'&&(opts.moons||0)>0))){g.globalCompositeOperation='lighter';
         /* night glints are MOONLIGHT — a moonless card gets a dark river */
         const gcv=opts.pal==='night'?'205,220,255':(dusk?'255,206,142':'255,244,210');
         const gka=opts.pal==='night'?0.4:1;
-        for(let gl=0;gl<26;gl++){const t6=0.1+r()*0.7,p4=riverAt(t6);
+        for(let gl=0;gl<26;gl++){const t6=0.22+r()*0.58,p4=riverAt(t6);   /* no sparkle in the fade-in zone */
           /* sparkles stay INSIDE the water: offset and dash length are
              clamped to the river's true width at this bend (Nick's
              "reflections way off" report — they used to land on grass) */
@@ -7342,6 +7364,8 @@ function hdVista(opts){
   if(ember){
     /* the lava flow — the same course a river would cut, running molten.
        Bright at the far bend, white-gold where it pools near the viewer. */
+    /* lava obeys the OPPOSITE law to water: it is born FROM the mountain —
+       the source stays at the ridge, where the volcano stands */
     const rp=[[rX(W*0.60)+cmpShift,hz+30],[rX(W*0.52)+cmpShift,hz+90],[rX(W*0.62)+cmpShift,H*0.78],[rX(W*0.40)+cmpShift,H+20]];
     const lavaAt=t=>{const a=rp[0],b=rp[1],c=rp[2],d=rp[3];
       return[(1-t)*(1-t)*(1-t)*a[0]+3*(1-t)*(1-t)*t*b[0]+3*(1-t)*t*t*c[0]+t*t*t*d[0],
