@@ -1,5 +1,26 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
+## ▶▶ v1.5.1 "THE MIRROR POLISH" — BUILT, STAGED, AWAITING NICK'S
+## DEPLOY + BUMP WORD (2026-07-18 late; Nick: "apply those" + uncrowd
+## the iPhone + one card grammar + a more human portrait):
+##  · PORTRAIT v2: human proportions, neck/joints/face-behind-visor,
+##    landing pad + ringed world (proof-sheeted, anchors re-pinned)
+##  · UNIFORM CARD LAW: specimen verbs on TOP; sheet left column = 4
+##    critical lines + 3 folds (Statistics / Collection / Achievements
+##    master fold, nested groups)
+##  · P6: equip picker POPOVER beside the tapped socket; phones stack
+##    doll→CARGO→stats; ship thumb unclipped
+##  · P1 MERCY LAW: bred champions crawl home Critical; champion duty
+##    floors at 1 HP (scrape, never grave); can't lead below 25% HP.
+##    VERIFIED: deep-sim deaths 347/700 → 0/60.
+##  · RELEASES 1.5.1 staged hidden; GAME_VERSION stays 1.5 until the
+##    bump word. Suites: fingerprint 50/50, smoke 277/277, systems
+##    19/19, balance PASS, chaos 40/40.
+##  STILL PARKED FOR NICK'S v1.6 PICKS: P2 Sol first-life, P3 arrival
+##  pays, P4 conquest/duel inversion, P5 first Codex claim at stage 2,
+##  P7 Legendary wall, P8 discovery XP — and Nick's own musing: a
+##  fuller UI uniformity sweep as v1.6.
+
 ## ★★★ v1.5 "FRESH START" IS LIVE ★★★ (2026-07-18/19, build 0d86e32,
 ## deploy pre-authorized in Nick's session charter; version.json v:1.5
 ## verified live, all systems present in the served html.)
