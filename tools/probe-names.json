@@ -176,5 +176,9 @@
  "regionAt",
  "tryCapture",
  "captureOdds",
- "discoverSpecies"
+ "discoverSpecies",
+ "titanFor",
+ "titanGuardian",
+ "_titanElemOf",
+ "_sigResonance"
 ]
