@@ -84,6 +84,27 @@
 
 ## THE v1.6 SLATE (Nick-approved direction; DESIGN WITH HIM first —
 ## the full spec block sits below at 'THE v1.6 SLATE'):
+##  · BIOSPHERE YIELD — finite tame/scavenge per living world (Nick's
+##    idea 2026-07-19; "no more spam-clicking one planet"). TWO AXES:
+##    ATTEMPTS = the finite world resource (every try, hit or miss,
+##    spends one; dry = worked out, move on); SUCCESS-PER-ATTEMPT =
+##    gear/craft (the existing contact/strike bonuses raise odds, NEVER
+##    the pool). TIER by BIOSPHERE ABUNDANCE, not size/random: Life
+##    level (barren→microbial→flora→complex) × roster size × rarity,
+##    + a small seeded per-world wobble so worlds feel individual.
+##    RECOVERY: the pool regrows on revisit after the biosphere
+##    recovers (hook the cosmic-epoch clock) — worlds aren't
+##    permanently locked; come-back-geared-up is a real loop.
+##    EMERGENT: finite attempts + random catch order ⇒ a fresh
+##    expedition yields a different Compendium (roster still seeded/
+##    shared) — Nick's "replay Earth, get a different animal" for free.
+##    ⚠ FORK FOR NICK: can the Compendium be 100%-ed in ONE expedition?
+##    Recommendation: COMPLETABLE-WITH-INVESTMENT — generous pool, last
+##    catches on a world cost the most; patience+gear+revisits finish
+##    it, hasty play doesn't (rewards depth, doesn't hard-gate the
+##    Pokédex chase). MINING ALREADY DOES THIS (reserveFor finite by
+##    tier + burst cap) — this makes mine/tame/scavenge one honest
+##    idea: every world is a finite resource you work and leave.
 ##  · THE AFFIX/LOOT CORE (S6) — per-instance gear, one faucet first
 ##    (conquest spoils), app-layer seeded, never in share codes. The
 ##    month-scale retention chase.
