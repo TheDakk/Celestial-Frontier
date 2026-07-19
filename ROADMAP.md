@@ -29,6 +29,45 @@
 ##     touch gameplay (land, mine, accept, sheet, yard) at phone
 ##     viewports via CDP Input.dispatchTouchEvent.
 ##
+## ★ PRIME CODEX → ELEMENTAL SIGNATURE GUARDIANS (Nick's endgame
+## redesign, 2026-07-19; detailed spec — building next):
+##   THE LOOP: land to discover whether a signature is here (unknown
+##   from orbit); the signature is GUARDED by a unique, NAMED, very
+##   strong elemental creature — the SAME guardian for every player of
+##   that element. Send your bred/tamed animals to defeat it; the kill
+##   claims the signature. Guardian may not always be present at the
+##   site. Collect all nine to complete the Prime Codex.
+##   THE 9 ELEMENTS + TIER STAGGER (basics near → obscure far):
+##     Tier 1 (home/Neighborhood/home galaxy): Earth, Wind, Fire,
+##       Water  (Nick listed earth/wind/fire/air/water — air≈wind,
+##       reconcile to 4 basics + water, or keep Air distinct = 5 near)
+##     Tier 2 (Local Cluster / Near Field): Electric, Poison
+##     Tier 3 (Deep Field / Outer Dark / Frontier): Void, Prism
+##   Guardians are element-themed, named, forced-apex genomes; found in
+##   multiple galaxies/clusters but the higher elements only spawn
+##   farther out. Ties the whole game: land→mine/tame/heal→craft/
+##   upgrade→breed stronger→hunt the guardian→claim→reach further.
+##   BONES THAT EXIST (makes this a reframe, not net-new): SIGS[9]
+##   (stone/ocean/flame/sky/life/mind/star/void/prism, 14881),
+##   claimSignature (14961), primeCheckSpecies/World claim-on-conquest
+##   (14979), guardianFor named Apex Guardians (3563), REGIONS frontier
+##   expansion by primeCount (14906), relic blueprints per signature.
+##   ★ NICK'S RULING (2026-07-19): REPLACE with pure elements — no
+##   beacon narrative; the elements ARE the arc. LOCKED MAPPING (keep
+##   internal SIG ids so saves + relic item.sig refs survive; re-theme
+##   display only): stone→EARTH · ocean→WATER · flame→FIRE · sky→AIR ·
+##   star→WIND (stellar wind) · life→POISON · mind→ELECTRIC · void→VOID
+##   · prism→PRISM. TIER STAGGER: near = Earth/Fire/Air/Wind/Water;
+##   mid = Electric/Poison; far = Void/Prism. Each bound to a NAMED
+##   elemental titan (forced-apex, app-layer, deterministic) you defeat
+##   to claim. BUILD STAGES (each tested to bar before deploy):
+##   (1) SIGS→elements + named guardians + tier reach text + Guide/
+##   notes copy; (2) claim requires the element's guardian defeat
+##   (extend guardianFor/primeCheck); (3) scatter + 'not always
+##   present' presence nuance + discovery-on-landing polish; (4) 6k
+##   beta + balance. Save note: primeFill keys unchanged (ids kept) so
+##   NO migration needed; relic items keep their sig ids.
+
 ## THE v1.6 SLATE (Nick-approved direction; DESIGN WITH HIM first —
 ## the full spec block sits below at 'THE v1.6 SLATE'):
 ##  · THE AFFIX/LOOT CORE (S6) — per-instance gear, one faucet first

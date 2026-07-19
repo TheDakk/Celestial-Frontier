@@ -1725,7 +1725,7 @@
 <div id="primebox"><div class="card">
   <button id="primeclose" class="pxclose" type="button">&times;</button>
   <div class="ph"><div class="pt">✦ The Prime Codex</div>
-    <div class="psubt">The Pathfinders’ Trail — the endgame arc that begins where the Chapters end. Nine lost beacons, nine Signatures: walk their trail, recover each beacon’s relic blueprint, and finish the master survey they died one discovery short of. Complete it, and the Celestial Frontier reveals itself.</div></div>
+    <div class="psubt">The Elemental Signatures — the endgame arc that begins where the Chapters end. Nine elements, nine named titans that guard them, scattered across the sky: the basics near home, Void and Prism far past the Deep Field. Find each element’s world, defeat its guardian, and claim the Signature. Collect all nine and the Celestial Frontier reveals itself.</div></div>
   <div class="pmeter-wrap"><div class="pmeter"><i id="prime-meter"></i></div>
     <div class="pmeta"><span id="prime-count">0 / 9</span><span id="prime-rank">Wanderer</span></div></div>
   <div id="prime-grid" class="pgrid"></div>
@@ -12944,8 +12944,8 @@ const GUIDE=[
   '<p><b>⬆ The Chapters</b> are the mainline: three of them, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p><b>The spectrum expands with the rings.</b> Rarity is a ladder of distance: the Neighborhood catalogues up to <b>Legendary</b>, the home galaxy up to <b>Mythic</b>, and each region beyond opens one more band — Celestial, Primordial, Transcendent — until the Deep Field frees the <b>summit grades</b>. The strangest finds live farthest out; guardians, Paragons and your own bred bloodlines are beyond the law.</p>'},
 ]},
 {icon:'✦', cat:'The Prime Codex', blurb:'Signatures, the frontier, endings', topics:[
- {id:'signatures', t:'The Pathfinders’ Trail (nine Signatures)', k:'signature prime codex trail beacon relic blueprint stone ocean flame sky life mind prism star void win endgame', body:
-  '<p><b>The Trail is the endgame</b> — it begins where the Chapters end, beyond the Rim. The Pathfinders died one discovery short of completing their master survey; their nine lost beacons mark nine legendary <b>Signatures</b>. Claim all nine to reach the Celestial Frontier. Seven are claimed by <b>conquering</b> a worthy world; two by <b>finding</b> a worthy object:</p><ul><li><b>Stone</b> — a rare rocky, metal or mineral world (conquer)</li><li><b>Ocean</b> — a living ocean world (conquer)</li><li><b>Flame</b> — an extreme volcanic world (conquer)</li><li><b>Sky</b> — an aerial or gas-giant ecosystem (conquer)</li><li><b>Life</b> — a complex land biosphere (conquer)</li><li><b>Mind</b> — a world with a sapient native (conquer)</li><li><b>Prism</b> — a unique prismatic lifeform’s world (conquer)</li><li><b>Star</b> — an extreme star or stellar remnant (find)</li><li><b>Void</b> — a black hole or galactic anomaly (find)</li></ul><p><b>Every claim recovers a relic blueprint</b> — nine unique, signature-tier pieces of gear (one per socket) that only the Fabricator of a Signature-holder can forge. The Codex panel (✦, left rail) tells each beacon’s story, names how far its trail reaches, and marks the blueprints you hold. Species-borne Signatures require their world to be conquered first — and the deepest trails (Mind, Prism) only complete far out in the rings.</p>'},
+ {id:'signatures', t:'The Elemental Signatures (nine titans)', k:'signature prime codex element guardian titan relic blueprint earth wind fire air water electric poison void prism win endgame', body:
+  '<p><b>The Elemental Signatures are the endgame</b> — nine elements, each ruled by a unique <b>named titan</b> that is the same for every explorer. You do not know from orbit whether a signature waits on a world — you have to <b>land and survey</b> to find out, and the guardian may or may not be present when you arrive. Defeat the titan in conquest — send your strongest bred and tamed champions — and the element is yours. The nine, staggered from near to far:</p><ul><li><b>Earth · Fire · Air · Wind · Water</b> — the basics, near home and its neighbouring rings.</li><li><b>Electric · Poison</b> — the middle reach, the Local Cluster and Near Field.</li><li><b>Void · Prism</b> — far out, past the Deep Field, at the trail’s end.</li></ul><p><b>Every claim recovers a relic blueprint</b> — nine unique, signature-tier pieces of gear (one per socket) that only the Fabricator of a Signature-holder can forge. The Codex panel (✦, left rail) names each element’s guardian and how far out it dwells, and marks the blueprints you hold. This is where the whole game meets: land, mine and tame and heal, craft and upgrade and breed stronger champions — then hunt the titans and complete the Codex.</p>'},
  {id:'regions', t:'Frontier regions', k:'region reach frontier expand charter solar local cluster near deep outer dark travel gate', body:
   '<p>You begin charted for the <b>Solar Reach</b>. Each Signature claimed pushes your charter outward — <em>the Local Cluster, the Near Field, the Deep Field, the Outer Dark</em>, and finally <em>the Frontier</em>. Travel beyond your charter is blocked until you’ve earned it, and farther regions field tougher apex defenders with stranger life.</p>'},
  {id:'endings', t:'Endings & the Celestial Frontier', k:'ending win frontier legacy prismatic complete game finish', body:
@@ -13223,6 +13223,7 @@ const RELEASES=[
   '🧭 ARRIVAL PAYS — first arrival in a system with no prior expedition record logs a First Arrival line and pays +2 ☄ Stardust.',
   '🌸 THE CARD BLOSSOMS — orbit shows identity, a life-signature count, and a one-line environment summary; landing opens the environment fold, the biosphere survey, and the capture verbs.',
   '🐾 TAME & SCAVENGE — the biosphere survey reveals the roster instead of cataloguing it; each species is caught individually with visible odds (lower for rarer species, raised by crafted gear). Misses cost nothing; every Compendium page is earned.',
+  '🔮 THE ELEMENTAL SIGNATURES — the Prime Codex is nine elements now, each ruled by a named titan (Terrakoth of Earth, Pyraxis of Fire, Nullreth of the Void…). The basics wait near home; Electric and Poison at mid range; Void and Prism far past the Deep Field. Find the element&#8217;s world, defeat its guardian, claim the Signature. The beacon lore is retired — the elements are the arc.',
   '🌍 THE CRADLE — Earth now carries a real, catchable biosphere from your first landing: land, survey, and tame or scavenge a full spread of beasts, birds, flora and microbes. Every one is a <b>starter</b> — grade capped at Uncommon, honest stat variance, no ceiling-breakers — so a menagerie on day one never becomes an early armory. Humanity stays on the card; the wildlife joins it.'],
  ],
  ['⚖ Balancing', [
@@ -14878,25 +14879,32 @@ function shipImage(){
    reaches (the ring-spectrum synergy), and claiming it unlocks a unique
    Fabricator BLUEPRINT \u2014 the signature relics. Claim mechanics, region
    gating and endings are UNCHANGED; the Trail is how the arc reads. */
+/* v1.5.2c THE ELEMENTAL SIGNATURES (Nick's Prime Codex redesign, "replace
+   with pure elements"): nine elemental signatures, each GUARDED by a
+   unique named titan \u2014 the same creature for every explorer. Land to
+   learn if a signature waits here; defeat its guardian to claim it. Tier
+   staggers reach: the basics near, Electric/Poison at mid range, Void and
+   Prism far out past the Deep Field. (Internal ids are kept so live saves
+   and relic blueprints carry through \u2014 only the theme changed.) */
 const SIGS=[
-  {id:'stone', icon:'\ud83e\udea8', name:'Stone Signature', verb:'Conquer', hint:'a rare world of stone, metal or mineral \u2014 the Pathfinders\u2019 first vow',
-    lore:'Beacon I fell silent on a world of graven stone. The first vow of the order: know the ground you stand on.', reach:'any ring \u2014 rarer stone lies farther out'},
-  {id:'ocean', icon:'\ud83c\udf0a', name:'Ocean Signature', verb:'Conquer', hint:'a living ocean world \u2014 they called them \u201cthe breathing seas\u201d',
-    lore:'Beacon II still pings beneath a breathing sea. Its keeper never surfaced.', reach:'any ring with living seas'},
-  {id:'flame', icon:'\ud83c\udf0b', name:'Flame Signature', verb:'Conquer', hint:'an extreme volcanic world, where their third beacon fell',
-    lore:'Beacon III burned on a molten shore, transmitting to the last.', reach:'the hostile worlds of any ring'},
-  {id:'sky',   icon:'\u2601\ufe0f', name:'Sky Signature',  verb:'Conquer', hint:'an aerial or gas-giant ecosystem \u2014 life with no ground at all',
-    lore:'Beacon IV rode the cloud decks. The keeper wrote of life that never once touched ground.', reach:'the gas giants of any ring'},
-  {id:'life',  icon:'\ud83c\udf3f', name:'Life Signature', verb:'Conquer', hint:'a complex land biosphere, the kind they crossed the dark to find',
-    lore:'Beacon V stood in a canopy older than the order itself.', reach:'any living ring'},
-  {id:'mind',  icon:'\ud83e\udde0', name:'Mind Signature', verb:'Conquer', hint:'an intelligent natural lifeform \u2014 hunt the signals, as they did',
-    lore:'Beacon VI answered back \u2014 in a voice that was not the keeper\u2019s.', reach:'the Near Field and beyond'},
-  {id:'star',  icon:'\u2734\ufe0f', name:'Star Signature', verb:'Find', hint:'an extreme star or stellar remnant \u2014 the lights that outlived them',
-    lore:'Beacon VII drifted into the glare of a dying sun, and kept singing.', reach:'the extreme stars of any ring'},
-  {id:'void',  icon:'\ud83d\udd73\ufe0f', name:'Void Signature', verb:'Find', hint:'a black hole, void or anomaly \u2014 what swallowed their last beacon',
-    lore:'Beacon VIII crossed an event horizon mid-sentence.', reach:'the dark places of any ring'},
-  {id:'prism', icon:'\ud83d\udd2e', name:'Prism Signature', verb:'Conquer', hint:'a unique prismatic lifeform \u2014 the one discovery they died short of',
-    lore:'Beacon IX was never found. Its last word was a color no one could name.', reach:'the Deep Field \u2014 the trail\u2019s end'},
+  {id:'stone', el:'Earth', tier:1, icon:'\u26f0\ufe0f', name:'Earth Signature', verb:'Conquer', guardian:'Terrakoth, the Mountain\u2019s Fist',
+    hint:'a rare world of stone, metal or mineral', lore:'Terrakoth stands where the crust runs richest \u2014 a titan of living rock. Break it, take the Earth.', reach:'the basic elements lie near home \u2014 Earth among the first'},
+  {id:'flame', el:'Fire', tier:1, icon:'\ud83d\udd25', name:'Fire Signature', verb:'Conquer', guardian:'Pyraxis, the Ember Tyrant',
+    hint:'an extreme volcanic world', lore:'Pyraxis coils on a molten shore, breathing furnace-light. Quench it, take the Fire.', reach:'near \u2014 the molten worlds of the inner rings'},
+  {id:'sky',   el:'Air', tier:1, icon:'\ud83c\udf2c\ufe0f', name:'Air Signature', verb:'Conquer', guardian:'Sylphrend, the Gale Sovereign',
+    hint:'an aerial or gas-giant ecosystem', lore:'Sylphrend rides the cloud decks, never once touching ground. Ground it, take the Air.', reach:'near \u2014 the gas giants and aerial worlds'},
+  {id:'star',  el:'Wind', tier:1, icon:'\ud83c\udf00', name:'Wind Signature', verb:'Conquer', guardian:'Zephyrmaw, the Stellar Squall',
+    hint:'a world scoured by a dying star\u2019s solar wind', lore:'Zephyrmaw is born of stellar wind, a storm given shape near the extreme stars. Still it, take the Wind.', reach:'near \u2014 worlds under the fiercest stars'},
+  {id:'ocean', el:'Water', tier:1, icon:'\ud83c\udf0a', name:'Water Signature', verb:'Conquer', guardian:'Abyssleth, the Tide Devout',
+    hint:'a living ocean world', lore:'Abyssleth swims the breathing seas, older than any shore. Beach it, take the Water.', reach:'near \u2014 any world with living seas'},
+  {id:'mind',  el:'Electric', tier:2, icon:'\u26a1', name:'Electric Signature', verb:'Conquer', guardian:'Voltmaw, the Living Current',
+    hint:'a world alive with electric, signalling life', lore:'Voltmaw answers your scans in a voice of raw current. Earth it, take the Electric.', reach:'the middle reach \u2014 the Local Cluster and Near Field'},
+  {id:'life',  el:'Poison', tier:2, icon:'\u2620\ufe0f', name:'Poison Signature', verb:'Conquer', guardian:'Venomroyne, the Blight Mother',
+    hint:'a virulent, toxic biosphere', lore:'Venomroyne festers at the heart of a poisoned canopy, mother to a thousand toxins. End it, take the Poison.', reach:'the middle reach \u2014 the tainted worlds farther out'},
+  {id:'void',  el:'Void', tier:3, icon:'\ud83d\udd73\ufe0f', name:'Void Signature', verb:'Conquer', guardian:'Nullreth, the Devourer',
+    hint:'a world at the edge of a black hole or anomaly', lore:'Nullreth feeds where light itself is swallowed, out past the Deep Field. Deny it, take the Void.', reach:'far out \u2014 the dark places beyond the Deep Field'},
+  {id:'prism', el:'Prism', tier:3, icon:'\ud83d\udd2e', name:'Prism Signature', verb:'Conquer', guardian:'Iridax, the Spectral Paragon',
+    hint:'a unique prismatic world at the trail\u2019s end', lore:'Iridax is a color no one has named, waiting at the farthest edge of the sky. Claim it, and the Frontier itself opens.', reach:'the farthest reach \u2014 the trail\u2019s end'},
 ];
 const SIG_IDS=SIGS.map(s=>s.id);
 const primeFill={};
@@ -15023,9 +15031,10 @@ function renderPrime(){
     }
     return '<div class="psig locked"><div class="pic">'+s.icon+'</div>'+
       '<div class="pm"><div class="pn">'+s.name+'</div>'+
+      (s.guardian?'<div class="psub2" style="color:#ff8a72">\u2694 Guarded by <b>'+s.guardian+'</b></div>':'')+
       (s.lore?'<div class="psub2" style="font-style:italic;color:var(--dim)">'+s.lore+'</div>':'')+
-      '<div class="psub2">'+(s.verb||'Find')+' '+s.hint+'</div>'+
-      (s.reach?'<div class="psub2" style="color:var(--plasma)">Trail reaches: '+s.reach+(relic?' \u00b7 relic blueprint waits':'')+'</div>':'')+
+      '<div class="psub2">Find '+s.hint+' \u2014 the guardian may or may not be there.</div>'+
+      (s.reach?'<div class="psub2" style="color:var(--plasma)">Reach: '+s.reach+(relic?' \u00b7 relic blueprint on the claim':'')+'</div>':'')+
       '</div><div class="pchk">\u25cb</div></div>';
   }).join('');
   const meter=document.getElementById('prime-meter'); if(meter) meter.style.width=Math.round(n/9*100)+'%';
