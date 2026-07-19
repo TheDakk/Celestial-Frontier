@@ -83,7 +83,13 @@
   #trail{order:6;flex:1 1 100%;width:100%;justify-content:flex-start}
   #hud-center #rank{pointer-events:auto}
   #hud-center #trail{font-size:13px;letter-spacing:.07em}
-  #hpwrap{display:flex;align-items:center;gap:6px;pointer-events:auto}
+  /* the WRAPPER is a full-width layout row — it must never eat pointer
+     events across its empty span (it sat invisibly over the Charters
+     button: real clicks died, and its old data-tip answered for them —
+     Nick's dead-button + wandering-HP-tooltip field report). Only the
+     pill is interactive; the tip rides the pill now. */
+  #hpwrap{display:flex;align-items:center;gap:6px;pointer-events:none}
+  #hpwrap #hppill{pointer-events:auto}
   /* the HP readout wears the same glass-pill chrome as every other chip in
      the topbar — a naked bar floated awkwardly among pills (Dakk playtest) */
   #hppill{display:flex;align-items:center;gap:7px;background:var(--glass);
@@ -490,7 +496,9 @@
     transition:color .2s,border-color .2s,box-shadow .15s}
   #chbtn:hover{color:var(--ink);border-color:rgba(255,217,106,0.6);box-shadow:0 0 22px rgba(255,217,106,0.22)}
   #chbtn .dot{width:6px;height:6px;border-radius:50%;background:#ffd96a;box-shadow:0 0 8px #ffd96a;animation:evpulse 2.4s infinite}
-  #chpanel{position:fixed;top:calc(var(--row1-h,58px) + 52px);right:18px;z-index:12;width:318px;max-height:min(60vh,520px);overflow-y:auto;display:none;
+  /* Z-ORDER LAW (Nick's device pass): open rail panels sit ABOVE the topbar
+     stacking layer (z 20) — a chip must never cover the screen you opened */
+  #chpanel{position:fixed;top:calc(var(--row1-h,58px) + 52px);right:18px;z-index:22;width:318px;max-height:min(60vh,520px);overflow-y:auto;display:none;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:11px;
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
   #chpanel .ehead{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:#ffd96a;margin:0 0 8px}
@@ -514,7 +522,7 @@
   /* the active Field Scout wears its cyan tag in the Compendium roster */
   #codex .sp .scouttag{font:600 8px var(--ui);letter-spacing:.09em;color:#6fd3ff;
     border:1px solid rgba(111,211,255,0.5);border-radius:999px;padding:1px 6px;margin-left:5px;vertical-align:1px;white-space:nowrap}
-  #events{position:fixed;top:calc(var(--topbar-h,100px) + 80px);left:18px;z-index:12;width:318px;max-height:min(64vh,560px);overflow-y:auto;display:none;
+  #events{position:fixed;top:calc(var(--topbar-h,100px) + 80px);left:18px;z-index:22;width:318px;max-height:min(64vh,560px);overflow-y:auto;display:none;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:11px;
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
   #events .ehead{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:#ffb066;margin:0 0 8px}
@@ -723,13 +731,26 @@
   .pnx:hover{color:var(--ink);background:rgba(150,162,210,0.14)}
   #tray .pnx,#setpanel .pnx{position:absolute}
   #guidebox .card{position:relative}   /* anchor the guide's ✕ to the card, not the screen */
-  @media (pointer:coarse){ .pnx{width:34px;height:34px;font-size:15px;line-height:34px;top:3px;right:3px} }
+  /* ✕ CORNER LAW (Nick's device pass, v1.5.2c): the close sits cleanly in
+     the corner — the VISUAL never grows into content; the finger's target
+     grows through invisible hit-padding instead */
+  .pnx{z-index:5}
+  .pnx::after{content:'';position:absolute;inset:-6px}
+  @media (pointer:coarse){
+    .pnx{width:28px;height:28px;font-size:13px;line-height:28px;top:3px;right:3px}
+    .pnx::after{inset:-9px}
+  }
+  /* the first header row of every rail panel reserves the corner */
+  #chpanel > .ehead:first-child,#codex > .ehead:first-child,#log > .ehead:first-child,
+  #records > .ehead:first-child,#events > .ehead:first-child{padding-right:36px}
   /* the vista ✕ — anchored to the pop-up card's corner (v1.3.11), the same
      close language as every other card */
-  .vxc{position:absolute;top:8px;right:8px;
-    width:36px;height:36px;border:1px solid rgba(150,162,210,0.35);border-radius:10px;
-    background:rgba(10,12,20,0.55);color:#cdd5f2;font:600 16px/34px system-ui,sans-serif;
+  .vxc{position:absolute;top:6px;right:6px;
+    width:30px;height:30px;border:1px solid rgba(150,162,210,0.35);border-radius:9px;
+    background:rgba(10,12,20,0.55);color:#cdd5f2;font:600 14px/28px system-ui,sans-serif;
     text-align:center;cursor:pointer;padding:0;z-index:3}
+  .vxc::after{content:'';position:absolute;inset:-8px}   /* the finger's real target */
+  #vistabox .vh{padding-right:38px}   /* the header row reserves the corner */
   .vxc:hover{color:#fff;border-color:rgba(150,162,210,0.7)}
   #panel .thumb{width:54px;height:54px;flex:none;border-radius:50%;background:#05060c;
     box-shadow:0 0 0 1px rgba(150,162,210,0.18),0 4px 14px rgba(0,0,0,0.5)}
@@ -989,6 +1010,9 @@
     border-radius:16px;padding:13px 16px;box-shadow:0 14px 50px rgba(0,0,0,0.7),0 0 30px rgba(255,217,106,0.12);
     font:500 12px var(--ui);color:var(--dim);line-height:1.6}
   #tutbox.nudge{animation:tutnudge .38s ease}
+  /* the guidance card DODGES when it covers its own click target (Nick's
+     device pass — step 5's Star Atlas button hid under the card on phones) */
+  #tutbox.dodge{top:auto;bottom:74px}
   @keyframes tutnudge{0%{transform:translateX(-50%) scale(1)}35%{transform:translateX(-50%) scale(1.045)}100%{transform:translateX(-50%) scale(1)}}
   #tutbox .tt{font:700 9.5px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:#ffd96a;
     margin-bottom:6px;display:flex;justify-content:space-between}
@@ -1037,7 +1061,7 @@
      it used to open underneath it (Dakk's 10:24 PM screenshot) */
   body.training #panel{top:calc(var(--tut-bot,150px) + 8px) !important;
     max-height:calc(100vh - var(--tut-bot,150px) - 120px) !important}
-  #codex{position:fixed;top:calc(var(--row1-h,58px) + 90px);right:18px;z-index:12;width:320px;max-height:min(66vh,600px);overflow-y:auto;
+  #codex{position:fixed;top:calc(var(--row1-h,58px) + 90px);right:18px;z-index:22;width:320px;max-height:min(66vh,600px);overflow-y:auto;
     background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(150,162,210,0.2);border-radius:15px;padding:6px;display:none;
     box-shadow:0 18px 50px rgba(0,0,0,0.5)}
@@ -1134,7 +1158,7 @@
   #panel .splist .k{flex:none;width:74px;color:#9fe6b4;font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding-top:1px}
   #panel .splist .v{color:#cfe8d6}
   #panel .splist .v em{font-style:normal;color:#7fe6a0;font-size:10px;margin-left:4px}
-  #log{position:fixed;top:calc(var(--row1-h,58px) + 130px);right:18px;z-index:12;width:300px;max-height:min(62vh,540px);overflow-y:auto;
+  #log{position:fixed;top:calc(var(--row1-h,58px) + 130px);right:18px;z-index:22;width:300px;max-height:min(62vh,540px);overflow-y:auto;
     display:none;background:var(--glass);border:1px solid var(--glass-brd);border-radius:16px;padding:6px;
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 16px 50px rgba(0,0,0,0.6)}
   #log{scrollbar-color:rgba(178,188,226,0.55) rgba(150,162,210,0.12)}
@@ -1227,7 +1251,7 @@
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:7px;
     transition:color .2s,border-color .2s}
   #recbtn:hover{color:var(--ink);border-color:rgba(255,217,106,0.55)}
-  #records{position:fixed;top:calc(var(--row1-h,58px) + 210px);right:18px;z-index:12;width:318px;max-height:min(62vh,540px);overflow-y:auto;display:none;
+  #records{position:fixed;top:calc(var(--row1-h,58px) + 210px);right:18px;z-index:22;width:318px;max-height:min(62vh,540px);overflow-y:auto;display:none;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:11px;
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
   #records h4{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:var(--plasma);margin:8px 0 6px}
@@ -1466,8 +1490,8 @@
   <div id="hud-center">
     <div id="rank" role="button" tabindex="0" data-tip="Your rank and expedition score — tap for your character sheet." data-guide="rank"></div>
     <div id="trail"></div>
-    <div id="hpwrap" data-tip="Your hitpoints — hostile worlds bite. Max HP = Vitality × 2. Tap the ❤ to heal with flora." data-guide="hp">
-      <div id="hppill"><span id="hpheart" role="button" tabindex="0" aria-label="Heal with flora from your Compendium">❤</span><div id="hpbar"><i id="hpfill"></i><span id="hptext"></span></div></div>
+    <div id="hpwrap">
+      <div id="hppill" data-tip="Your hitpoints — hostile worlds bite. Max HP = Vitality × 2. Tap the ❤ to heal with flora." data-guide="hp"><span id="hpheart" role="button" tabindex="0" aria-label="Heal with flora from your Compendium">❤</span><div id="hpbar"><i id="hpfill"></i><span id="hptext"></span></div></div>
     </div>
   </div>
   <div id="hud-right">
@@ -1564,7 +1588,7 @@
 </div></div>
 <div id="toast"></div>
 <div id="eventsbtn" role="button" tabindex="0" data-tip="Live cosmic events — every explorer sees the same sky at the same moment." data-guide="events"><span class="dot"></span>Cosmic Events</div>
-<div id="chbtn" role="button" tabindex="0" data-tip="Expedition Charters — your hunt board. Starters teach the expedition&#8217;s trades; then three fresh charters a week, the same for every explorer." data-guide="charters"><span class="dot"></span>Charters</div>
+<div id="chbtn" role="button" tabindex="0" data-tip="Expedition Charters — your charter board. Chains teach the expedition&#8217;s trades one link at a time; then three fresh charters a week, the same for every explorer." data-guide="charters"><span class="dot"></span>Charters</div>
 <div id="chpanel"></div>
 <div id="events"></div>
 
@@ -12771,7 +12795,7 @@ const GUIDE=[
  {id:'abilities', t:'Abilities & biome themes', k:'ability theme fire frost storm tide stone venom void sand chem psionic wild burn regen crit dodge', body:
   '<p>Every creature carries one ability from its habitat’s theme — <em>fire, frost, storm, tide, stone, venom, void, sand, chem, psionic, wild</em> (gliders lean storm, swimmers tide, burrowers stone…). Beside each theme’s named classics lives the <b>ability matrix</b>: sixteen archetype verbs — Smite, Aegis, Affliction, Fury, Ambush, Eye, Veil, Mending, Echo, Thirst, <b>Thorns, Rend, Reckoning, Bulwark, Shock, Roulette</b> — at five magnitudes (I–V) that climb with rarity: hundreds of abilities in all (“Fire Reckoning III”). Hybrids usually inherit their other parent’s archetype; sometimes they mutate something new. Apex Guardians fight with <b>Sovereign</b> arts at full magnitude. Every verb is balanced empirically — equal-stat win rates pinned near 50%, with honest counters. The ability is printed on the specimen card.</p>'},
  {id:'classes', t:'Classes, XP & levels', k:'class level xp experience innate warrior mage berserker paladin assassin fusion wins', body:
-  '<p>Every beast is born to a <b>class</b> — Warrior, Berserker, Necromancer, Assassin, Druid… over a hundred, with the legendary ones (<b>Titan, Worldbreaker, Avatar, Chosen One</b>) reserved for summit-grade creatures. A class grants <b>innate arts</b>: always-on powers that need no roll, printed on the specimen card.</p><ul><li>Power is built through wins. Victories feed the XP bar — duels +8, conquests +20, guardians +60 — and levels wake more innate arts (slots at level 3 and 6), never raw stats.</li><li><b>Breeding fuses bloodlines:</b> a hybrid usually inherits a class from its parents’ lineages — a Caster line crossed with a Martial line breeds toward Spellswords and Battlemages.</li><li>Levels are <em>your</em> creature’s story — a shared code arrives at level 1.</li></ul>'},
+  '<p>Every beast is born to a <b>class</b> — Warrior, Berserker, Necromancer, Assassin, Druid… over a hundred, with the legendary ones (<b>Titan, Worldbreaker, Avatar, Chosen One</b>) reserved for summit-grade creatures. A class grants <b>innate arts</b>: always-on powers that need no roll, printed on the specimen card.</p><ul><li>Power is built through wins. Victories feed the XP bar — duels +8; conquests +20 and guardians +60, each climbing with the conquered world&#8217;s tier — and cataloguing a genuinely new species teaches your standing Field Scout +2. Levels wake more innate arts (slots at level 3 and 6), never raw stats.</li><li><b>Breeding fuses bloodlines:</b> a hybrid usually inherits a class from its parents’ lineages — a Caster line crossed with a Martial line breeds toward Spellswords and Battlemages.</li><li>Levels are <em>your</em> creature’s story — a shared code arrives at level 1.</li></ul>'},
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
   '<p>Any world with fauna can be conquered. Press <b>Conquer Planet</b> on its survey card and choose one champion — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries wounds home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a wild-caught creature:</b> it is gone forever.</li><li><b>Lose with a bred champion:</b> your bloodline crawls home <b>Critical</b> — broken, not dead. Mend it with flora it ♥ loves — a champion fielded while still Critical will not crawl home twice.</li><li><b>Lose fighting yourself:</b> you take the wound instead — it can beat you to the brink but never kill you, and below a quarter health you cannot lead a conquest at all (send a beast, or mend first).</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
  {id:'binder', t:'The Binder & the Fifty Paragons', k:'binder collection sets slots types paragon fifty silhouette claim stardust', body:
@@ -12781,7 +12805,7 @@ const GUIDE=[
 ]},
 {icon:'☄', cat:'Stardust & Progression', blurb:'Economy, harvests, spoils', topics:[
  {id:'stardust', t:'Stardust', k:'stardust essence currency economy breeding odds boost earn', body:
-  '<p>☄ Stardust is the expedition’s soft currency. Lifetime Stardust earned passively raises your breeding odds (+1% per 50 earned, up to +15%). Three faucets:</p><ul><li><b>⛏ Harvests</b> from settled worlds — see <span data-gt="harvest">Harvesting</span>.</li><li><b>Spoils of Conquest</b> — every world you settle pays out (rarer worlds pay more).</li><li><b>Rare Find Bonus</b> — first discovery of any Legendary+ species.</li></ul>'},
+  '<p>☄ Stardust is the expedition’s soft currency. Lifetime Stardust earned passively raises your breeding odds (+1% per 50 earned, up to +15%). The faucets:</p><ul><li><b>⛏ Harvests</b> from settled worlds — see <span data-gt="harvest">Harvesting</span>.</li><li><b>Spoils of Conquest</b> — every world you settle pays out (rarer worlds pay more).</li><li><b>Rare Find Bonus</b> — first discovery of any Legendary+ species.</li><li><b>First Arrival</b> — reaching a system no expedition record precedes you in pays a small +2 ☄.</li></ul>'},
  {id:'harvest', t:'Harvesting', k:'harvest hourly cooldown settled world replenish stardust', body:
   '<p>Every settled world can be harvested for Stardust once per hour (rarer worlds yield more). The button lives on the world’s survey card — “Settled — replenishing” means come back later. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
  {id:'mining', t:'Mining & the Cargo hold', k:'mine mining elements minerals deposits cargo hold dead lifeless world vein iron gold prismatium samples field landing inventory icons', body:
@@ -13034,24 +13058,24 @@ const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 const RELEASES=[
 {v:'1.5.2', title:'The Shipyard', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
-  '🛠 THE SHIPYARD — your ship earned her own screen: the Shipyard button on the right rail opens the workshop — her portrait gaining every system you build, with the Fabricator and Research Bench beneath, recipes folded by category. The character screen keeps only what is YOURS: the figure, your stats, and the hold.',
+  '🛠 THE SHIPYARD — your ship earned her own screen: the Shipyard button on the right rail opens the workshop — her portrait gaining every system you build, with the Fabricator and Research Bench beneath, recipes folded by category. The character screen keeps only what is <b>yours</b>: the figure, your stats, and the hold.',
   '🏆 THE RECORDS BOARD — the rarity ladder and every achievement shelf moved out of the character sheet into their own right-rail panel. The mirror is for you; the trophy room is next door.',
   '🛬 TRAINING LEARNS TO LAND — Field Training gained a landing lesson: press Land on Earth&#8217;s card (home never waves you off) and Planetside opens as the payoff. Twenty lessons now, every system in the loop: chart, land, catalogue, feed, breed, duel, heal, forge.',
   '⛏ THE DRILLS RUN THEMSELVES — press Mine once and the rig keeps pulling on its own; press again to stop, or let the vein run dry. No more finger-drumming a planet to death.',
   '🗺 THE SOL TOUR — five new starter charters walk you around home like a proper first zone: first footfall on Mercury, the red neighbor, the wells of the giants, the cold frontier, a working component. Each pays on the spot; the weekly board opens when the tour is walked.',
-  '🎒 THE PACK ON YOUR BACK — the Module socket is worn gear now (the ship lives at the Shipyard): sock a pack module and your hold visibly grows a row of bags per tier.'],
+  '🎒 THE PACK ON YOUR BACK — the Module socket is worn gear now (the ship lives at the Shipyard): slot a pack module and your hold visibly grows a row of bags per tier.'],
  ],
  ['🖱 UI Enhancements', [
   '🎒 THE HOLD IS A BAG — the inventory is a proper Diablo-style slot grid under your portrait, empty boxes and all, so the space your ore will fill is always visible.',
   '📊 STAT BARS ON THE SHEET — your five battle stats wear the same bars as every specimen card. One language, every card.',
   '⬆ Gated foreign-galaxy stars now name the right build (the Intergalactic Drive) on their charter row, whatever ring you stand on.',
-  '🎽 The equip picker opens BELOW its socket (the socket stays visible and tappable) and wears a ✕ — an empty socket&#8217;s hint is no longer a dead end.',
+  '🎽 The equip picker opens <b>below</b> its socket (the socket stays visible and tappable) and wears a ✕ — an empty socket&#8217;s hint is no longer a dead end.',
   '🔤 ONE FOLD LANGUAGE — every collapsible header in the game wears the world card&#8217;s expand/close pill instead of a tiny arrow; the Compendium always lays its first occupied shelf open; battle stats read as plain bars (the Guide holds the definitions); Mega Fauna matches its shelf-mates; specimen-card verbs sit in a tidy grid.',
-  '🔭 NAMES ARE NAMES — map labels lost their parentheses and glyphs: Pluto is Pluto, comets and moons wear just their names. What a thing IS lives on its card. Ring systems no longer clip square at the sprite&#8217;s edge on wide-band worlds.',
+  '🔭 NAMES ARE NAMES — map labels lost their parentheses and glyphs: Pluto is Pluto, comets and moons wear just their names. What a thing <b>is</b> lives on its card. Ring systems no longer clip square at the sprite&#8217;s edge on wide-band worlds.',
   '✕ EVERY PANEL&#8217;S CLOSE now rides the top corner even while the list under it scrolls.'],
  ],
  ['⚖ Balancing', [
-  '🩸 MERCY, SHARPENED — crawling home is for bloodlines YOU BRED (wild-born crossbreeds pay the wild price), and it happens once per mend: a champion fielded while still Critical does not crawl home twice. The same rule closes a reroll seam the audit found — every retry past the first now demands real mending.',
+  '🩸 MERCY, SHARPENED — crawling home is for bloodlines <b>you bred</b> (wild-born crossbreeds pay the wild price), and it happens once per mend: a champion fielded while still Critical does not crawl home twice. The same rule closes a reroll seam the audit found — every retry past the first now demands real mending.',
   '🤝 A wary first contact joins the wave-off family — it can beat you to the brink, never into the grave. It fires on its own when you land; automatic damage should never be a death sentence. The deep rings still make it sting.'],
  ],
 ]},
@@ -13509,7 +13533,7 @@ function openConquestPicker(d, native){
     .map(e=>({name:e.name, genome:e.genome, art:artOf(e), id:e.id, grade:e.grade}));
   const champs=[playerCombatant(), ...fauna];
   document.getElementById('pick-title').textContent=(native.guardian?'👑 Challenge ':'⚔ Conquer ')+(d.title||'this world');
-  document.getElementById('pick-note').innerHTML='Choose ONE champion to face this world\u2019s apex native, '+
+  document.getElementById('pick-note').innerHTML='Choose <b>one</b> champion to face this world\u2019s apex native, '+
     '<b style="color:'+nS.hex+'">'+native.name+'</b> (Power '+nS.total+'). '+
     'Win and the world is yours to settle. Lose, and a wild-caught champion is lost forever; a bred one crawls home Critical. Fight yourself and you take the wound — it cannot kill you, but below a quarter health you cannot lead at all.';
   if(native.guardian) document.getElementById('pick-note').innerHTML=
@@ -14092,7 +14116,7 @@ function openYard(){
   closePanels('yard');
   const y=document.getElementById('yard'); if(y) y.style.display='flex';
   renderYard();
-  try{ if(tutDone){ const card=document.getElementById('yardcard'); if(card && !card.querySelector('[data-pnx]')) card.appendChild(_mkPnx('yard')); } }catch(_){ }
+  try{ if(tutDone){ const card=document.getElementById('yardcard'); if(card && !card.querySelector('[data-pnx]')) card.insertBefore(_mkPnx('yard'), card.firstChild); } }catch(_){ }   /* seated FIRST — the ✕ corner law */
 }
 function closeYard(){ yardOpen=false; const y=document.getElementById('yard'); if(y) y.style.display='none'; }
 if(cargoBtn){
@@ -15284,7 +15308,14 @@ chPanel&&chPanel.addEventListener('click',(e)=>{
 if(chBtn) chBtn.addEventListener('click', ()=>{
   chOpen=!chOpen;
   chPanel.style.display=chOpen?'block':'none';
-  if(chOpen){ closePanels('charters'); renderCharters(); }
+  /* defensive (Nick's field report: a dead-feeling button): the board must
+     OPEN even if a row fails to build — an error shows a plain notice
+     instead of silently eating the click */
+  if(chOpen){
+    try{ closePanels('charters'); }catch(_){ }
+    try{ renderCharters(); }
+    catch(e){ try{ chPanel.innerHTML='<div class="ambient">The board jammed — reopen it. ('+String(e&&e.message).slice(0,80)+')</div>'; }catch(_){ } }
+  }
 });
 /* ================= THE ASCENT (v1.4) =================
    The mainline: ordered chapters on the charter machinery. New saves start
@@ -15545,6 +15576,22 @@ function _tutSpot(){
     const rect=el.getBoundingClientRect();
     if(rect.width>2&&rect.height>2&&rect.bottom>0&&rect.top<H) r=rect;
   }
+  /* the card must never cover the very thing it's pointing at: when the
+     step's target sits in the top half and intersects the card, the card
+     dodges to the bottom edge until the target is clear */
+  try{
+    if(r && tutEl.style.display==='block'){
+      const tb=tutEl.getBoundingClientRect();
+      const overlaps=!(r.right<tb.left||r.left>tb.right||r.bottom<tb.top||r.top>tb.bottom);
+      if(overlaps && r.top<H*0.55) tutEl.classList.add('dodge');
+      else if(!overlaps && tutEl.classList.contains('dodge')){
+        /* only come home if home doesn't overlap either (no flip-flop) */
+        tutEl.classList.remove('dodge');
+        const th=tutEl.getBoundingClientRect();
+        if(!(r.right<th.left||r.left>th.right||r.bottom<th.top||r.top>th.bottom)) tutEl.classList.add('dodge');
+      }
+    } else if(!r) tutEl.classList.remove('dodge');
+  }catch(_){ }
   if(!r){ tutSpotEl.style.display='none'; return; }
   tutSpotEl.style.display='block';
   tutSpotEl.style.left=Math.round(r.left-6)+'px';
@@ -15692,7 +15739,7 @@ function _tutFinish(){
        "more charters await" handoff stays seamless; every later link
        wants its ACCEPT from the board */
     try{ chacc.add('st-land'); }catch(_){ }
-    pushNotif('Expedition Charters', 'Your hunt board is open (Charters, top right) — your first charter is accepted: Make planetfall. New charters are ACCEPTED from the board as each one reveals the next.');
+    pushNotif('Expedition Charters', 'Your charter board is open (Charters, top right) — your first charter is accepted: Make planetfall. New charters are accepted from the board as each one reveals the next.');
     /* v1.4: a NEW expedition starts its Ascent — the mainline announces
        itself once, right where training ends */
     if(typeof _ascActive==='function' && _ascActive()){
@@ -16345,7 +16392,7 @@ function openSheet(view){
      inside the regions), so the panel manager's observer never re-seats —
      seat it here instead. Hidden during training, per the standing law. */
   try{ if(tutDone){ const card=document.getElementById('sheetcard');
-    if(card && !card.querySelector('[data-pnx]')) card.appendChild(_mkPnx('sheet')); } }catch(_){ }
+    if(card && !card.querySelector('[data-pnx]')) card.insertBefore(_mkPnx('sheet'), card.firstChild); } }catch(_){ }   /* seated FIRST — the ✕ corner law */
   try{
     const card=document.getElementById('sheetcard');
     if(card){ card.scrollTop=0;

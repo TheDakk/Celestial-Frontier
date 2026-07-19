@@ -202,6 +202,10 @@ async function expedition(sess, seed, nActions, deep) {
   // bypass the survey-panel path that feeds the game's own seen-sets)
   const _ptSim = new Set(), _skSim = new Set();
   try { _skSim.add(H.starClass(SOL.seed).kind); } catch (_) { }
+  /* retention instrument state (drought + grammar-novelty) */
+  let _lastJoyAt = 0, _maxDrought = 0, _joyPrev = 0;
+  const _nv = { pt: 0, sk: 0, it: 0, drv: 0, reg: 0 };
+  run.noveltyCurve = [];
   const gotoStar = (star) => {
     H.goTo({ type: 'star', gal: HOME_GAL, star });
     curStar = star; curSys = H.systemFor(star.seed);
@@ -510,6 +514,23 @@ async function expedition(sess, seed, nActions, deep) {
       });
     } else run.noops++;
     if (H.hp < run.hpMin) run.hpMin = H.hp;
+    /* retention instruments (Nick's month-two directive): the drought
+       detector (longest joy gap) and the grammar-novelty curve — kinds,
+       not instances: new world type, star class, recipe, drive, region */
+    try {
+      const j = 2 * run.richStrikes + 4 * run.conquests + 2.5 * run.duelsW + 3 * run.hybrids +
+        2 * run.hostileGroundings + 0.15 * run.landings + 0.5 * (H.codex ? H.codex.size : 0) +
+        0.3 * ((H.stats && H.stats.crafts) || 0) + 3 * (run.jumpAt > 0 ? 1 : 0) + 4 * (run.arrayAt > 0 ? 1 : 0) + 5 * (run.igAt > 0 ? 1 : 0);
+      if (j > _joyPrev + 0.01) { if (i - _lastJoyAt > _maxDrought) _maxDrought = i - _lastJoyAt; _lastJoyAt = i; _joyPrev = j; }
+      const b = (i / 100) | 0;
+      while (run.noveltyCurve.length <= b) run.noveltyCurve.push(0);
+      const pt = _ptSim.size, sk = _skSim.size, it = (H.items ? H.items.size : 0);
+      const drv = ['jumpdrive', 'array', 'igdrive', 'autoext'].reduce((a2, id) => a2 + ((H.items.get(id) || 0) > 0 ? 1 : 0), 0);
+      let reg = _nv.reg; try { if (H.regionAt && H.st && H.st.gal) reg = Math.max(reg, H.regionAt(H.st.gal.x, H.st.gal.y)); } catch (_) { }
+      const nv = (pt > _nv.pt ? 1 : 0) + (sk > _nv.sk ? 1 : 0) + (it > _nv.it ? 1 : 0) + (drv > _nv.drv ? 1 : 0) + (reg > _nv.reg ? 1 : 0);
+      _nv.pt = pt; _nv.sk = sk; _nv.it = it; _nv.drv = drv; _nv.reg = reg;
+      if (nv) run.noveltyCurve[b] += nv;
+    } catch (_) { }
   }
 
   await sleep(1200);
@@ -523,6 +544,12 @@ async function expedition(sess, seed, nActions, deep) {
   run.essenceEnd = H.essence;
   run.chartersDone = (H.stats && H.stats.charters) || 0;
   run.arrivals = (H.stats && H.stats.arrivals) || 0;   // D5/P3 arrival pays
+  if (run.actions - _lastJoyAt > _maxDrought) _maxDrought = run.actions - _lastJoyAt;   /* a run that ENDS dry counts */
+  run.maxDrought = _maxDrought;
+  run.stalenessAt = -1;
+  for (let b = 1; b + 1 < run.noveltyCurve.length; b++) {
+    if (run.noveltyCurve[b] === 0 && run.noveltyCurve[b + 1] === 0) { run.stalenessAt = b * 100; break; }
+  }
   // v1.5.2 progression review: variety must keep opening with the rings —
   // union of the game's survey-fed sets and what the bot physically touched
   run.ptypes = [...new Set([...(H.ptypesSeen || []), ..._ptSim])];
@@ -817,10 +844,13 @@ async function childMain(mode, n, seed0) {
         /* v1.5.1 (Nick): 'medium' — the intermittent player. Deep-tier
            behaviors (conquests, duels, the sheet through the DOM) at a
            between-sessions length. */
-        const nActs = mode === 'deep' ? 450 + ((seed >>> 4) % 450)
+        /* 'veteran' — one save played far past the honeymoon: the
+           staleness/retention tier (Nick's month-two instrument) */
+        const nActs = mode === 'veteran' ? 2000 + ((seed >>> 4) % 400)
+                    : mode === 'deep' ? 450 + ((seed >>> 4) % 450)
                     : mode === 'medium' ? 220 + ((seed >>> 4) % 200)
                     : 120 + ((seed >>> 4) % 300);
-        out = await expedition(sess, seed, nActs, mode === 'deep' || mode === 'medium');
+        out = await expedition(sess, seed, nActs, mode === 'deep' || mode === 'medium' || mode === 'veteran');
         try { sess.w.close(); } catch (_) {}
       }
     } catch (e) { out = { mode, seed, fatal: String(e && e.message) }; }
@@ -840,7 +870,7 @@ function aggregate(mode, runs) {
     const k = String(e).slice(0, 140); errTable[k] = (errTable[k] || 0) + 1;
   }
   const rep = { mode, runs: runs.length, generatedFrom: 'tools/simrun.js', errorTable: errTable };
-  if (mode === 'fast' || mode === 'deep' || mode === 'medium') {
+  if (mode === 'fast' || mode === 'deep' || mode === 'medium' || mode === 'veteran') {
     rep.deaths = runs.filter((r) => r.deaths > 0).length;
     /* v1.5.1 death-curve audit: deaths must ramp with depth, not sit flat */
     rep.deathsByStage = {};
@@ -855,6 +885,18 @@ function aggregate(mode, runs) {
     rep.funIndex = num(runs.map((r) => r.funIndex || 0));
     // v1.5.2 the quest system: accepts + completions across the round
     rep.charters = { accepts: num(runs.map((r) => r.chAccepts || 0)), done: num(runs.map((r) => r.chartersDone || 0)) };
+    /* retention instruments: where does the game go quiet, and when does
+       its grammar run out? staleness = 200 straight actions of zero
+       kind-novelty; the Steam month-two curve, measured pre-launch */
+    rep.drought = num(runs.map((r) => r.maxDrought || 0));
+    const _stale = runs.filter((r) => (r.stalenessAt || -1) >= 0);
+    rep.staleness = { share: +(_stale.length / runs.length).toFixed(3), at: _stale.length ? num(_stale.map((r) => r.stalenessAt)) : null };
+    rep.noveltyCurve = [];
+    for (let b = 0; b < 22; b++) {
+      const vals = runs.filter((r) => r.noveltyCurve && r.noveltyCurve.length > b).map((r) => r.noveltyCurve[b]);
+      if (!vals.length) break;
+      rep.noveltyCurve.push(+(vals.reduce((a2, c) => a2 + c, 0) / vals.length).toFixed(2));
+    }
     // v1.5.2 progression review (Nick): variety must keep OPENING with the
     // rings — world types and star classes seen, split by the ring a run
     // ended on. Flat numbers across stages = a progression wall.

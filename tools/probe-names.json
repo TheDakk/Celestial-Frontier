@@ -172,5 +172,6 @@
  "CH_CHAINS",
  "MINE_BURST",
  "starKindsSeen",
- "ptypesSeen"
+ "ptypesSeen",
+ "regionAt"
 ]

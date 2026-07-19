@@ -59,6 +59,27 @@
 ##    Sol/home excluded, training/loading silent). Sprinter counterweight.
 ##  · D4 → THE v1.6 SLATE (below), per the approved recommendation.
 ##
+## ★ STANDARD ROLLOUT PROCESS (Nick, 2026-07-19 — every release):
+##   1. Build + battery (validate/smoke/systems/balance).
+##   2. COPY PASS: full story/UI/description sweep — grammar, noun-true
+##      capitalization, no random mid-sentence caps for emphasis, human
+##      register (how Nick & Claude talk, not AI-ese). Headline caps
+##      (release-note lead-ins, kickers) are designed style, kept.
+##   3. GUIDE CURRENCY CHECK: every topic verified against mechanics.
+##   4. BETA ROUND (two-tier, fail-fast leg order chaos → ui → medium
+##      → deep → veteran → fast): STANDARD ~6,000 (chaos 750 + ui 500
+##      + medium 1,000 + deep 1,000 + veteran 250 + fast 2,500) every
+##      release; MILESTONE ~20,000 (chaos 2,000 + veteran 1,000, same
+##      shape) for x.0-scale reworks. Feedback → modifications → only
+##      then deploy. (Statistics: behavior means pin by ~1k runs/leg;
+##      volume only buys rare-crash hunting, chaos does that best.)
+##      THE FEEDBACK IS ACTED ON, not filed (Nick): every beta round's
+##      findings feed the same release — recommendations weighed, bugs
+##      and exploits fixed, optimizations applied, then the round
+##      re-verifies the fixes before the deploy goes out.
+##   5. ✕ CORNER LAW: closes sit cleanly in the corner, never bleeding
+##      over pictures/UI; touch targets grow by invisible hit-padding.
+
 ## ▶▶ THE v1.6 SLATE — FAR-RING CONTENT + THE LOOT CORE (D4, approved
 ## direction; DESIGN WITH NICK before building — v1.6-scale):
 ##  · THE AFFIX WALL (S6, the core): per-instance gear, app-layer seeded
@@ -80,6 +101,19 @@
 ##    content (above), not caps.
 ##  · Parked critic picks that fold in naturally: P2 Sol first life,
 ##    P5 first Codex claim at stage 2, P7 Legendary wall.
+##  · CHAMPION CODES (Nick 2026-07-19, "would be really cool" — liked):
+##    a code that carries a creature's LEVEL/XP story (clamped on
+##    import), summoned strictly as a CHALLENGER/EXHIBIT — never an
+##    owned copy (ownership imports stay level-1; forged god-codes are
+##    just a harder duel someone chose). The flex is real, the economy
+##    intact. Pipeline exists (CFB-/normGenome; today xp is deliberately
+##    stripped at 11793). Pairs with affix gear on the champion card.
+##  · RETENTION LAW (Nick's month-two directive): content pipeline must
+##    outrun grammar exhaustion — AI-authored, versioned, DETERMINISTIC
+##    data drops (never generative in the client: breaks determinism +
+##    share codes). Delivery vehicles: the dormant Cosmic Events +
+##    Traveler's Beacon as seasonal drops; measured by the harness's
+##    novelty-per-hour / staleness-horizon instruments.
 
 ## ▼▼ EXECUTED OVERNIGHT 2026-07-19 (kept for the record) ▼▼
 ## ▶▶▶ NEXT SESSION — v1.5.x CONTINUATION (Nick, 2026-07-19; RESUME
