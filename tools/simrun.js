@@ -452,18 +452,22 @@ async function expedition(sess, seed, nActions, deep) {
             } else clickEl(doc.querySelector('#doll [data-eqslot="' + skId + '"]'));   // fold the picker back
           }
           if (r() < 0.5) {
-            // v1.5.2: the bench lives at the Shipyard now — visit through the ship
-            clickEl(doc.getElementById('dollship'));
-            if (await until(() => doc.getElementById('yard').style.display === 'flex', 1200)) {
-              run.cargoTabs++;
-              const tabs = doc.querySelectorAll('#yardbench [data-yt]');
-              if (tabs.length) clickEl(tabs[(r() * tabs.length) | 0]);
-              const fg = doc.querySelectorAll('#yardbench .fghead');
-              if (fg.length && r() < 0.6) clickEl(fg[(r() * fg.length) | 0]);
-              clickEl(doc.getElementById('rank'));   // the sheet replaces the yard (one-panel law)
-              await sleep(20);
-              if (doc.getElementById('yard').style.display === 'flex') run.violations.push('sheet: yard did not yield to the sheet');
-            } else run.violations.push('sheet: docked ship did not open the Shipyard');
+            // v1.5.2b: the ship is OFF the doll — the 🛠 Shipyard rail button
+            // is the one door to the bench (visible once anything is held)
+            const yardBtn = doc.getElementById('cargobtn');
+            if (yardBtn && yardBtn.style.display !== 'none') {
+              clickEl(yardBtn);
+              if (await until(() => doc.getElementById('yard').style.display === 'flex', 1200)) {
+                run.cargoTabs++;
+                const tabs = doc.querySelectorAll('#yardbench [data-yt]');
+                if (tabs.length) clickEl(tabs[(r() * tabs.length) | 0]);
+                const fg = doc.querySelectorAll('#yardbench .fghead');
+                if (fg.length && r() < 0.6) clickEl(fg[(r() * fg.length) | 0]);
+                clickEl(doc.getElementById('rank'));   // the sheet replaces the yard (one-panel law)
+                await sleep(20);
+                if (doc.getElementById('yard').style.display === 'flex') run.violations.push('sheet: yard did not yield to the sheet');
+              } else run.violations.push('sheet: the Shipyard rail button did not open the yard');
+            }
           }
           const x = doc.querySelector('#sheetcard [data-pnx]');
           if (x && r() < 0.5) clickEl(x); else clickEl(rank);

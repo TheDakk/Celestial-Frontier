@@ -1551,8 +1551,8 @@
   </div>
 </div>
 <!-- v1.5.2 THE SHIPYARD: the ship IS the workshop — her portrait, the
-     Fabricator and the Research Bench in one place, opened by tapping the
-     docked ship on the paperdoll -->
+     Fabricator and the Research Bench in one place, opened by the
+     Shipyard rail button (v1.5.2b: the ship is off the doll) -->
 <div id="yard"><div id="yardcard">
   <div class="chead" style="color:#7fd0ff;font-size:12px;letter-spacing:.14em;margin-bottom:6px">🛠 THE SHIPYARD</div>
   <div id="yardship"></div>
@@ -12749,7 +12749,7 @@ const GUIDE=[
  {id:'research', t:'Research & ships', k:'research tech technology bench drive ship hull scanner lab fusion antimatter warp travel distance', body:
   '<p>The engineer’s track, parallel to the Prime Codex: the Prime Codex is your legend, the Research Bench is your capability. Research costs mined elements + ☄ Stardust:</p><ul><li><b>🛰 Deep Scanners</b> — survey cards reveal mineral veins from orbit.</li><li><b>🛡 Reinforced Hull</b> — hostile bioscans wound you 25% lighter.</li><li><b>🧪 Xenobotany Lab</b> — flora meals nourish one extra stat point.</li><li><b>The drive ladder</b> — 🚀 Fusion → ⚛ Antimatter → 🌀 Warp Fold. Hyperlane travel scales with real distance; each drive cuts it, and Warp Fold makes every jump arrive in a breath. Distance is never a wall — only a wait, and only ever a short one.</li></ul>'},
  {id:'crafting', t:'The Fabricator & gear', k:'craft crafting fabricator recipe parts components ship systems gear equipment suit tool module instrument charm slot equip mining rig auto extractor anchor', body:
-  '<p>The <b>Fabricator</b> lives at the <b>🛠 Shipyard</b> (right rail) — your ship, her systems, and both workbenches in one place. It turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">The Ascent</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character screen (tap your nameplate) shows your explorer head to boots, with nine sockets pinned to the body — Helmet at the head, Earpiece at the ear, Necklace below the chin, Suit on the chest, Gloves and Tool at the hands, Leggings, Boots, and the ship Module docked beside the figure. Mining rigs and gloves multiply hauls; suits, visors and leggings blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); boots, greaves and the module ladder steady landings up to the Gravitic Anchor, which never waves off; earpieces and necklaces sharpen first contact, rich strikes, meals and travel.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
+  '<p>The <b>Fabricator</b> lives at the <b>🛠 Shipyard</b> (right rail) — your ship, her systems, and both workbenches in one place. It turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">The Ascent</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character screen (tap your nameplate) shows your explorer head to boots, with nine sockets pinned to the body — Helmet at the head, Earpiece at the ear, Necklace below the chin, Suit on the chest, Gloves and Tool at the hands, Leggings, Boots, and the Module — the 🎒 pack on your shoulder. Mining rigs and gloves multiply hauls; suits, visors and leggings blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); boots, greaves and the module ladder steady landings up to the Gravitic Anchor, which never waves off; earpieces and necklaces sharpen first contact, rich strikes, meals and travel.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
  {id:'ascent', t:'The Ascent', k:'ascent chapter chapters sol lock jump drive ring ladder progression mainline quest unlock neighborhood galaxy intergalactic', body:
   '<p><b>⬆ The Ascent</b> is the mainline: three chapters, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p><b>The spectrum expands with the rings.</b> Rarity is a ladder of distance: the Neighborhood catalogues up to <b>Legendary</b>, the home galaxy up to <b>Mythic</b>, and each region beyond opens one more band — Celestial, Primordial, Transcendent — until the Deep Field frees the <b>summit grades</b>. The strangest finds live farthest out; guardians, Paragons and your own bred bloodlines are beyond the law.</p>'},
 ]},
@@ -12994,7 +12994,7 @@ const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 const RELEASES=[
 {v:'1.5.2', title:'The Shipyard', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
-  '🛠 THE SHIPYARD — your ship earned her own screen: tap her where she docks beside your paperdoll and the workshop opens — her portrait gaining every system you build, with the Fabricator and Research Bench beneath, recipes folded by category. The character screen keeps only what is YOURS: the figure, your stats, and the hold.',
+  '🛠 THE SHIPYARD — your ship earned her own screen: the Shipyard button on the right rail opens the workshop — her portrait gaining every system you build, with the Fabricator and Research Bench beneath, recipes folded by category. The character screen keeps only what is YOURS: the figure, your stats, and the hold.',
   '🏆 THE RECORDS BOARD — the rarity ladder and every achievement shelf moved out of the character sheet into their own right-rail panel. The mirror is for you; the trophy room is next door.',
   '🛬 TRAINING LEARNS TO LAND — Field Training gained a landing lesson: press Land on Earth&#8217;s card (home never waves you off) and Planetside opens as the payoff. Twenty lessons now, every system in the loop: chart, land, catalogue, feed, breed, duel, heal, forge.',
   '⛏ THE DRILLS RUN THEMSELVES — press Mine once and the rig keeps pulling on its own; press again to stop, or let the vein run dry. No more finger-drumming a planet to death.',
@@ -13941,8 +13941,8 @@ function renderCargo(){
 }
 /* ---- THE SHIPYARD (v1.5.2, Nick): the ship IS the workshop — her
    portrait up top gaining every system you build, the Fabricator and the
-   Research Bench beneath, recipes folded by category. Opened by tapping
-   the ship docked beside your paperdoll. ---- */
+   Research Bench beneath, recipes folded by category. Opened by the 🛠
+   Shipyard rail button (v1.5.2b: the ship is off the doll). ---- */
 let yardOpen=false, yardView='fab';
 const _fabOpen=new Set(['part']);
 function _fabHTML(){
@@ -16085,8 +16085,8 @@ function renderRecords(){
 /* ---- THE PAPERDOLL REGION (v1.5): the full-body explorer with the nine
    sockets anchored to the body — Helmet at the head, Earpiece at the ear,
    Necklace below the chin, Suit on the chest, Gloves and Tool at the
-   hands, Leggings on the legs, Boots at the feet, and the ship Module
-   docked beside the figure on the Shipyard thumbnail. ---- */
+   hands, Leggings on the legs, Boots at the feet, and the Module — the
+   🎒 pack worn on the shoulder (v1.5.2b: the ship is off the doll). ---- */
 function renderDoll(){
   const dollEl=document.getElementById('doll'); if(!dollEl) return;
   const r=rankInfo();
