@@ -1,5 +1,37 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
+## ▶▶▶ NEXT SESSION — v1.5.x CONTINUATION (Nick, 2026-07-19; RESUME
+## HERE after the v1.5.2 line settles) ◀◀◀
+##
+## 1. PROGRESSIVE CHARTERS (Nick's quest-system law): only the quests
+##    that are AVAILABLE show on the board — completing one reveals the
+##    next, chains building further and further ("kind of like a
+##    progressive quest system"). AUDIT the current board first: today
+##    ALL starters (5 trades + the 5-stop Sol tour) listen and show at
+##    once — restructure into visible CHAINS where each completion
+##    unlocks the next link. Verify the whole charter flow behaves
+##    progressively, not as a wall of parallel checkboxes.
+## 2. ACCEPT-TO-ACTIVATE: after training the game says "more charters
+##    available" — lean into that: you go to the charter board and hit
+##    ACCEPT, and THAT starts the quest tracking (accumulating the
+##    resources it needs). NO DECLINE for now (considered for later —
+##    accept/decline as a real choice down the line). Progressing
+##    through Sol requires accepting its charters and completing them.
+## 3. CHARTER REWARDS BECOME GEAR (the quest-outfit path): completing a
+##    charter can pay a CRAFTED ITEM instead of (or with) stardust —
+##    gloves, a helmet, low-stat starter gear that nudges survival and
+##    success odds. The early game outfits you through quests.
+##    - EARLY = STATIC: constant, deterministic rewards at first (same
+##      item for every explorer — fixed pieces from the existing
+##      recipe/gear pool at low tiers).
+##    - LATER = DIABLO LOOT: as you expand into the wider world, found
+##      gear shifts toward a random-roll loot system ("low random
+##      stats" → the full Diablo chase). DESIGN NOTE for the session:
+##      random affixes must stay app-layer/seeded (share codes and the
+##      fingerprint law are untouched); an affix system on gear is a
+##      v1.6-scale design — scope it with Nick before building.
+## (Wherever the v1.5.x line ended up at deploy time, this continues it.)
+
 ## ▶▶ v1.5.1 "THE MIRROR POLISH" — BUILT, STAGED, AWAITING NICK'S
 ## DEPLOY + BUMP WORD (2026-07-18 late; Nick: "apply those" + uncrowd
 ## the iPhone + one card grammar + a more human portrait):
