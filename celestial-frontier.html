@@ -309,7 +309,10 @@
   #doll .dname .drank{display:block;font:600 9.5px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:#f0cf8a;margin-top:3px}
   #doll .eqfx{font-size:10px;line-height:1.6;color:#bfe6c8;border:1px solid rgba(127,230,160,0.25);
     border-radius:9px;padding:6px 9px;margin:8px auto 0;max-width:min(100%,340px);background:rgba(127,230,160,0.05)}
-  #doll .eqpick{border:1px solid rgba(255,207,138,0.3);border-radius:10px;padding:4px;margin:8px auto 0;max-width:min(100%,340px);background:rgba(6,8,16,0.72)}
+  /* the equip picker is a popover pinned beside the tapped socket (v1.5.1) */
+  #doll .eqpick{position:absolute;z-index:4;width:min(72%,250px);max-height:62%;overflow-y:auto;
+    border:1px solid rgba(255,207,138,0.45);border-radius:10px;padding:4px;background:rgba(6,8,16,0.94);
+    box-shadow:0 12px 34px rgba(0,0,0,0.65)}
   #doll .eqcand{display:flex;align-items:center;gap:8px;padding:5px 6px;border-radius:8px;cursor:pointer}
   #doll .eqcand:hover{background:rgba(150,162,210,0.12)}
   #doll .eqcand.on{background:rgba(255,207,138,0.10)}
@@ -605,8 +608,12 @@
   #stats .aghead:hover{background:rgba(150,162,210,0.12)}
   #stats .aghead .cnt{color:var(--plasma);letter-spacing:.04em}
   #stats .agbody{padding:4px 10px 7px;display:none}
-  #stats .agrp.open .agbody{display:block}
-  #stats .agrp.open .aghead .arr{transform:rotate(90deg)}
+  /* child combinators (v1.5.1): groups NEST now — Achievements is one
+     master fold holding the category folds; opening the outer must not
+     spill the inner bodies */
+  #stats .agrp.open > .agbody{display:block}
+  #stats .agrp.open > .aghead .arr{transform:rotate(90deg)}
+  #stats .agbody .agrp{margin:4px 0}
   #stats .aghead .arr{display:inline-block;transition:transform .15s;margin-right:6px;color:var(--faint)}
 
   /* ---- breed / feed picker ---- */
@@ -1202,10 +1209,11 @@
     #panel{width:min(300px,calc(100vw - 20px))}
     #codex,#log{width:min(300px,calc(100vw - 20px))}
     #events{width:min(312px,calc(100vw - 20px))}
-    /* v1.5 character screen stacks on phones: paperdoll first, stats fold,
-       inventory below — sockets stay finger-sized (48px) */
-    #sheetcard{grid-template-columns:1fr;grid-template-areas:"doll" "stats" "cargo";padding:10px;gap:10px}
-    #sheetstats{border-top:1px solid rgba(150,162,210,0.18);padding-top:10px}
+    /* v1.5.1 character screen stacks on phones: paperdoll first, then the
+       CARGO the empty states keep promising ("the Fabricator below"), then
+       the stats folds — sockets stay finger-sized (48px) */
+    #sheetcard{grid-template-columns:1fr;grid-template-areas:"doll" "cargo" "stats";padding:10px;gap:10px}
+    #sheetstats,#sheetcargo{border-top:1px solid rgba(150,162,210,0.18);padding-top:10px}
     #tray{width:min(290px,calc(100vw - 20px));right:-6px}
     #primebox .card,#endingbox .card,#guidebox .card{padding:18px 14px}
     #context{bottom:calc(96px + env(safe-area-inset-bottom,0px));font-size:11.5px}
@@ -1623,6 +1631,9 @@
   <img id="rev-img" alt="">
   <div class="rn" id="rev-name"></div>
   <div class="rk" id="rev-kind"></div>
+  <!-- v1.5.1 uniform card law: the verbs live at the TOP, like the world
+       card's action row — then the critical numbers, then the folds -->
+  <div class="ractions"></div>
   <div id="rev-stats"></div>
   <div class="rgrp" id="rev-fold">
     <div class="rghead" id="rev-fold-head" role="button" tabindex="0" data-tip="The full field notes — anatomy, behavior, habitat and lineage">
@@ -1634,7 +1645,6 @@
     </div>
   </div>
   <div class="rmeta" id="rev-meta"></div>
-  <div class="ractions"></div>
   <div class="rx" id="rev-x">tap to continue</div>
 </div></div>
 
@@ -9293,7 +9303,7 @@ function showReveal(entry, isHybrid){
         return '<div class="abil">'+(S.vit*3)+' HP in battle · Condition: <b style="color:'+cc.col+'">'+cc.label+'</b> — '+
           (cc.h>0
             ? 'wounded ('+Math.round(cc.h*100)+'% hurt) and fighting below its strength. Feed it flora it ♥ loves to mend.'
-            : 'friendly duels are sport, but conquest leaves scars and a fallen champion is lost forever.')+'</div>'; })();
+            : 'friendly duels are sport, but conquest leaves scars — a fallen wild champion is lost forever; a bred one crawls home Critical.')+'</div>'; })();
     if(entry.kind==='Flora'){
       const _fs=floraStat(entry.genome), _m=STAT_META[_fs]||{name:'a stat',col:'#7fe6a0'};
       stEl.innerHTML+='<div class="abil"><span style="color:'+_m.col+'">Nourishes <b>'+_m.name+'</b></span> — eat it, or feed it to a beast that loves it, to grow that stat'+(entry.grade?' (+'+(1+entry.grade.tier)+')':'')+'.'+((entry.genome.brood)?'<br>♞ Bred line: gen '+(entry.genome.gen||0):'')+'</div>';
@@ -11270,149 +11280,221 @@ function paperdollAvatar(){
   if(_dollURL) return _dollURL;
   const W2=360,H2=600,cv=document.createElement('canvas');cv.width=W2;cv.height=H2;
   const g=cv.getContext('2d');
-  /* the void behind: deep radial night + a violet nebula breath + stars */
-  const bg=g.createRadialGradient(W2*0.5,H2*0.30,20,W2*0.5,H2*0.52,H2*0.72);
-  bg.addColorStop(0,'#191524');bg.addColorStop(1,'#04050b');
+  /* THE VOID BEHIND (v1.5.1, Nick: "more space-like"): deep night, two
+     nebula breaths, a distant ringed world, and a low horizon glow */
+  const bg=g.createRadialGradient(W2*0.5,H2*0.28,20,W2*0.5,H2*0.52,H2*0.74);
+  bg.addColorStop(0,'#171326');bg.addColorStop(1,'#03040a');
   g.fillStyle=bg;g.fillRect(0,0,W2,H2);
   const r=mulberry32(0x50A1E5);
-  const neb=g.createRadialGradient(W2*0.80,H2*0.20,8,W2*0.80,H2*0.20,W2*0.55);
-  neb.addColorStop(0,'rgba(96,72,170,0.17)');neb.addColorStop(1,'rgba(96,72,170,0)');
+  const neb=g.createRadialGradient(W2*0.82,H2*0.16,8,W2*0.82,H2*0.16,W2*0.6);
+  neb.addColorStop(0,'rgba(98,70,176,0.20)');neb.addColorStop(1,'rgba(98,70,176,0)');
   g.fillStyle=neb;g.fillRect(0,0,W2,H2);
-  const neb2=g.createRadialGradient(W2*0.14,H2*0.62,8,W2*0.14,H2*0.62,W2*0.4);
-  neb2.addColorStop(0,'rgba(46,110,150,0.12)');neb2.addColorStop(1,'rgba(46,110,150,0)');
+  const neb2=g.createRadialGradient(W2*0.10,H2*0.58,8,W2*0.10,H2*0.58,W2*0.45);
+  neb2.addColorStop(0,'rgba(42,116,158,0.14)');neb2.addColorStop(1,'rgba(42,116,158,0)');
   g.fillStyle=neb2;g.fillRect(0,0,W2,H2);
-  for(let i=0;i<90;i++){ g.fillStyle='rgba(255,255,255,'+(0.10+r()*0.5).toFixed(2)+')';
-    g.fillRect(r()*W2, r()*H2*0.86, 1.3, 1.3); }
-  /* ground: a soft landing-pad disc + the explorer's shadow */
-  const pad=g.createRadialGradient(W2*0.5,H2*0.925,4,W2*0.5,H2*0.925,W2*0.36);
-  pad.addColorStop(0,'rgba(120,130,170,0.14)');pad.addColorStop(0.7,'rgba(60,66,96,0.07)');pad.addColorStop(1,'rgba(0,0,0,0)');
-  g.fillStyle=pad;g.beginPath();g.ellipse(W2*0.5,H2*0.925,W2*0.36,H2*0.036,0,0,7);g.fill();
+  for(let i2=0;i2<110;i2++){ g.fillStyle='rgba(255,255,255,'+(0.08+r()*0.55).toFixed(2)+')';
+    const ss=r()<0.9?1.2:2;
+    g.fillRect(r()*W2, r()*H2*0.9, ss, ss); }
+  /* a distant ringed world, upper left — somewhere still unvisited */
+  {
+    const px=W2*0.155, py=H2*0.145, pr=W2*0.052;
+    const pg=g.createRadialGradient(px-pr*0.4,py-pr*0.4,1,px,py,pr);
+    pg.addColorStop(0,'#9fd0d8');pg.addColorStop(0.55,'#4a7d96');pg.addColorStop(1,'#17293c');
+    g.fillStyle=pg;g.beginPath();g.arc(px,py,pr,0,7);g.fill();
+    g.save();g.translate(px,py);g.rotate(-0.42);g.globalAlpha=0.75;
+    g.strokeStyle='rgba(200,214,240,0.5)';g.lineWidth=2.2;
+    g.beginPath();g.ellipse(0,0,pr*1.9,pr*0.5,0,0,7);g.stroke();
+    g.restore();
+    g.fillStyle='rgba(3,4,10,0.55)';
+    g.beginPath();g.arc(px+pr*0.45,py+pr*0.32,pr*0.9,0,7);g.fill();
+  }
+  /* low horizon band — the pad sits somewhere real */
+  const hor=g.createLinearGradient(0,H2*0.82,0,H2*0.95);
+  hor.addColorStop(0,'rgba(70,60,110,0)');hor.addColorStop(0.6,'rgba(70,60,110,0.14)');hor.addColorStop(1,'rgba(20,18,36,0.05)');
+  g.fillStyle=hor;g.fillRect(0,H2*0.82,W2,H2*0.13);
+  /* ground: landing-pad disc + shadow */
+  const pad=g.createRadialGradient(W2*0.5,H2*0.918,4,W2*0.5,H2*0.918,W2*0.38);
+  pad.addColorStop(0,'rgba(126,136,178,0.16)');pad.addColorStop(0.7,'rgba(62,68,100,0.08)');pad.addColorStop(1,'rgba(0,0,0,0)');
+  g.fillStyle=pad;g.beginPath();g.ellipse(W2*0.5,H2*0.918,W2*0.38,H2*0.038,0,0,7);g.fill();
+  g.strokeStyle='rgba(150,162,210,0.14)';g.lineWidth=1.4;
+  g.beginPath();g.ellipse(W2*0.5,H2*0.918,W2*0.30,H2*0.026,0,0,7);g.stroke();
   g.fillStyle='rgba(0,0,0,0.55)';
-  g.beginPath();g.ellipse(W2*0.5,H2*0.928,W2*0.205,H2*0.020,0,0,7);g.fill();
+  g.beginPath();g.ellipse(W2*0.5,H2*0.920,W2*0.185,H2*0.018,0,0,7);g.fill();
   const cx=W2*0.5;
-  const gold=(y0,y1)=>{const s=g.createLinearGradient(0,y0,0,y1);
-    s.addColorStop(0,'#ffe6a8');s.addColorStop(0.55,'#e0a84a');s.addColorStop(1,'#8a5e20');return s;};
-  const darkgold=(y0,y1)=>{const s=g.createLinearGradient(0,y0,0,y1);
-    s.addColorStop(0,'#d9a851');s.addColorStop(0.6,'#a87830');s.addColorStop(1,'#5e3f14');return s;};
-  /* LEGS: two tapered columns with a knee seam */
-  const hipY=H2*0.565, kneeY=H2*0.735, ankY=H2*0.875;
+  /* THE EXPLORER (v1.5.1, Nick: "more human-like"): true-r proportions —
+     a neck, sloped shoulders, elbowed arms, calved legs — in the same
+     gold-and-glass language as the bust. Light from upper-left. */
+  const gold=(y0,y1)=>{const s2=g.createLinearGradient(0,y0,0,y1);
+    s2.addColorStop(0,'#ffe6a8');s2.addColorStop(0.55,'#e0a84a');s2.addColorStop(1,'#8a5e20');return s2;};
+  const darkgold=(y0,y1)=>{const s2=g.createLinearGradient(0,y0,0,y1);
+    s2.addColorStop(0,'#d9a851');s2.addColorStop(0.6,'#a87830');s2.addColorStop(1,'#5e3f14');return s2;};
+  const shTopY=H2*0.238, waistY=H2*0.478, hipY=H2*0.505, kneeY=H2*0.700, ankY=H2*0.868, footY=H2*0.916;
+  /* LEGS: thigh → knee → calf → ankle, a real taper with a calf swell */
   for(const sgn of [-1,1]){
-    const lx=cx+sgn*W2*0.062;
+    const hx2=cx+sgn*W2*0.055;
     g.fillStyle=darkgold(hipY,ankY);
     g.beginPath();
-    g.moveTo(lx-W2*0.052,hipY);g.lineTo(lx+W2*0.052,hipY);
-    g.lineTo(lx+W2*0.040,kneeY);g.lineTo(lx+W2*0.036,ankY);
-    g.lineTo(lx-W2*0.036,ankY);g.lineTo(lx-W2*0.040,kneeY);
+    g.moveTo(hx2-W2*0.050,hipY);
+    g.lineTo(hx2+W2*0.050,hipY);
+    g.quadraticCurveTo(hx2+W2*0.040,H2*0.60,hx2+W2*0.034,kneeY);
+    g.quadraticCurveTo(hx2+W2*0.038,H2*0.765,hx2+W2*0.026,ankY);   /* calf swell then ankle */
+    g.lineTo(hx2-W2*0.026,ankY);
+    g.quadraticCurveTo(hx2-W2*0.040,H2*0.765,hx2-W2*0.034,kneeY);
+    g.quadraticCurveTo(hx2-W2*0.042,H2*0.60,hx2-W2*0.050,hipY);
     g.closePath();g.fill();
-    /* knee plate */
-    g.fillStyle='rgba(255,230,168,0.30)';
-    g.beginPath();g.ellipse(lx,kneeY-H2*0.008,W2*0.036,H2*0.016,0,0,7);g.fill();
-    /* inner shade */
-    g.fillStyle='rgba(30,20,6,0.35)';
-    g.fillRect(lx-sgn*W2*0.012-W2*0.008,hipY,W2*0.014,ankY-hipY);
+    /* knee plate + inner shade */
+    g.fillStyle='rgba(255,230,168,0.28)';
+    g.beginPath();g.ellipse(hx2,kneeY-H2*0.006,W2*0.030,H2*0.014,0,0,7);g.fill();
+    g.fillStyle='rgba(30,20,6,0.30)';
+    g.fillRect(hx2-sgn*W2*0.010-W2*0.006,hipY,W2*0.011,kneeY-hipY);
   }
-  /* BOOTS: heavy, darker metal with a lit top rim */
+  /* BOOTS: shin cuff + foot, lit top rim */
   for(const sgn of [-1,1]){
-    const lx=cx+sgn*W2*0.062;
-    const bg2=g.createLinearGradient(0,ankY,0,H2*0.925);
+    const hx2=cx+sgn*W2*0.055;
+    const bg2=g.createLinearGradient(0,ankY,0,footY);
     bg2.addColorStop(0,'#c9a050');bg2.addColorStop(0.5,'#7c5a22');bg2.addColorStop(1,'#3c2a0e');
     g.fillStyle=bg2;
     g.beginPath();
-    g.moveTo(lx-W2*0.042,ankY);g.lineTo(lx+W2*0.042,ankY);
-    g.lineTo(lx+W2*0.052,H2*0.912);g.lineTo(lx+sgn*W2*0.028+W2*0.052,H2*0.925);
-    g.lineTo(lx-W2*0.052,H2*0.925);g.lineTo(lx-W2*0.052,H2*0.912);
+    g.moveTo(hx2-W2*0.032,ankY);g.lineTo(hx2+W2*0.032,ankY);
+    g.lineTo(hx2+W2*0.040,H2*0.905);g.lineTo(hx2+sgn*W2*0.034+W2*0.040,footY);
+    g.lineTo(hx2-W2*0.040,footY);g.lineTo(hx2-W2*0.040,H2*0.905);
     g.closePath();g.fill();
-    g.fillStyle='rgba(255,236,180,0.35)';g.fillRect(lx-W2*0.042,ankY,W2*0.084,2.2);
+    g.fillStyle='rgba(255,236,180,0.35)';g.fillRect(hx2-W2*0.032,ankY,W2*0.064,2);
   }
-  /* TORSO: the chest carapace — broad shoulders tapering to the waist */
-  const shY=H2*0.300, waY=H2*0.565;
-  g.fillStyle=gold(shY,waY);
+  /* TORSO: sloped shoulders, a chest that narrows to a real waist */
+  g.fillStyle=gold(shTopY,waistY);
   g.beginPath();
-  g.moveTo(cx-W2*0.155,shY+H2*0.012);
-  g.quadraticCurveTo(cx-W2*0.175,shY+H2*0.075,cx-W2*0.120,H2*0.47);
-  g.quadraticCurveTo(cx-W2*0.115,H2*0.53,cx-W2*0.125,waY);
-  g.lineTo(cx+W2*0.125,waY);
-  g.quadraticCurveTo(cx+W2*0.115,H2*0.53,cx+W2*0.120,H2*0.47);
-  g.quadraticCurveTo(cx+W2*0.175,shY+H2*0.075,cx+W2*0.155,shY+H2*0.012);
-  g.quadraticCurveTo(cx,shY-H2*0.016,cx-W2*0.155,shY+H2*0.012);
+  g.moveTo(cx-W2*0.070,shTopY-H2*0.010);                       /* neck base L */
+  g.quadraticCurveTo(cx-W2*0.135,shTopY,cx-W2*0.148,shTopY+H2*0.030);  /* shoulder slope L */
+  g.quadraticCurveTo(cx-W2*0.140,H2*0.345,cx-W2*0.108,H2*0.415);
+  g.quadraticCurveTo(cx-W2*0.096,H2*0.455,cx-W2*0.098,waistY);
+  g.lineTo(cx+W2*0.098,waistY);
+  g.quadraticCurveTo(cx+W2*0.096,H2*0.455,cx+W2*0.108,H2*0.415);
+  g.quadraticCurveTo(cx+W2*0.140,H2*0.345,cx+W2*0.148,shTopY+H2*0.030);
+  g.quadraticCurveTo(cx+W2*0.135,shTopY,cx+W2*0.070,shTopY-H2*0.010);
   g.closePath();g.fill();
-  /* belt */
-  g.fillStyle='rgba(40,26,8,0.75)';g.fillRect(cx-W2*0.125,waY-H2*0.012,W2*0.25,H2*0.020);
-  g.fillStyle='#ffcf8a';g.fillRect(cx-W2*0.020,waY-H2*0.012,W2*0.040,H2*0.020);
-  /* chest seam + sternum plate */
-  g.fillStyle='rgba(60,40,12,0.5)';g.fillRect(cx-W2*0.010,shY+H2*0.03,W2*0.020,H2*0.20);
-  g.fillStyle='rgba(255,240,200,0.22)';
-  g.beginPath();g.ellipse(cx,shY+H2*0.085,W2*0.075,H2*0.045,0,0,7);g.fill();
-  /* the chest lamp — the bust's little star, kept */
-  g.fillStyle='#ffcf8a';g.beginPath();g.arc(cx,shY+H2*0.075,W2*0.016,0,7);g.fill();
-  g.save();g.globalCompositeOperation='lighter';
-  const lampGlow=g.createRadialGradient(cx,shY+H2*0.075,1,cx,shY+H2*0.075,W2*0.09);
-  lampGlow.addColorStop(0,'rgba(255,207,138,0.5)');lampGlow.addColorStop(1,'rgba(255,207,138,0)');
-  g.fillStyle=lampGlow;g.fillRect(cx-W2*0.1,shY,W2*0.2,H2*0.16);
-  g.restore();
-  /* ARMS: hanging slightly out, sectioned at the elbow, glove fists */
+  /* hips joining torso to legs */
+  g.fillStyle=darkgold(waistY,hipY+H2*0.03);
+  g.beginPath();
+  g.moveTo(cx-W2*0.098,waistY);g.lineTo(cx+W2*0.098,waistY);
+  g.lineTo(cx+W2*0.105,hipY+H2*0.022);g.lineTo(cx-W2*0.105,hipY+H2*0.022);
+  g.closePath();g.fill();
+  /* belt + pouches (the working suit, not a costume) */
+  g.fillStyle='rgba(40,26,8,0.8)';g.fillRect(cx-W2*0.100,waistY-H2*0.011,W2*0.200,H2*0.019);
+  g.fillStyle='#ffcf8a';g.fillRect(cx-W2*0.016,waistY-H2*0.011,W2*0.032,H2*0.019);
   for(const sgn of [-1,1]){
-    const sx=cx+sgn*W2*0.165, ex=cx+sgn*W2*0.205, hx=cx+sgn*W2*0.215;
-    const elY=H2*0.435, haY=H2*0.545;
-    g.strokeStyle='rgba(0,0,0,0)';
-    g.fillStyle=gold(shY,haY);
+    g.fillStyle='#6e4c1a';
+    g.fillRect(cx+sgn*W2*0.062-W2*0.020,waistY+H2*0.004,W2*0.040,H2*0.026);
+    g.fillStyle='rgba(255,236,180,0.25)';
+    g.fillRect(cx+sgn*W2*0.062-W2*0.020,waistY+H2*0.004,W2*0.040,1.6);
+  }
+  /* chest: harness straps, seam, sternum light */
+  g.strokeStyle='rgba(60,40,12,0.55)';g.lineWidth=W2*0.016;
+  g.beginPath();g.moveTo(cx-W2*0.118,shTopY+H2*0.030);g.lineTo(cx-W2*0.030,H2*0.400);g.stroke();
+  g.beginPath();g.moveTo(cx+W2*0.118,shTopY+H2*0.030);g.lineTo(cx+W2*0.030,H2*0.400);g.stroke();
+  g.fillStyle='rgba(60,40,12,0.45)';g.fillRect(cx-W2*0.008,H2*0.300,W2*0.016,H2*0.155);
+  g.fillStyle='rgba(255,240,200,0.20)';
+  g.beginPath();g.ellipse(cx,H2*0.300,W2*0.062,H2*0.036,0,0,7);g.fill();
+  g.fillStyle='#ffcf8a';g.beginPath();g.arc(cx,H2*0.298,W2*0.013,0,7);g.fill();
+  g.save();g.globalCompositeOperation='lighter';
+  const lampGlow=g.createRadialGradient(cx,H2*0.298,1,cx,H2*0.298,W2*0.075);
+  lampGlow.addColorStop(0,'rgba(255,207,138,0.45)');lampGlow.addColorStop(1,'rgba(255,207,138,0)');
+  g.fillStyle=lampGlow;g.fillRect(cx-W2*0.09,H2*0.24,W2*0.18,H2*0.12);
+  g.restore();
+  /* ARMS: shoulder → elbow (bent slightly in) → glove, sectioned */
+  for(const sgn of [-1,1]){
+    const sx=cx+sgn*W2*0.140, ex=cx+sgn*W2*0.172, hx3=cx+sgn*W2*0.180;
+    const sy=shTopY+H2*0.028, elY=H2*0.392, haY=H2*0.510;
+    g.fillStyle=gold(sy,haY);
     g.beginPath();   /* upper arm */
-    g.moveTo(sx-W2*0.043,shY+H2*0.020);g.lineTo(sx+W2*0.043,shY+H2*0.020);
-    g.lineTo(ex+W2*0.032,elY);g.lineTo(ex-W2*0.032,elY);g.closePath();g.fill();
+    g.moveTo(sx-W2*0.036,sy);g.lineTo(sx+W2*0.036,sy);
+    g.lineTo(ex+W2*0.027,elY);g.lineTo(ex-W2*0.027,elY);g.closePath();g.fill();
     g.fillStyle=darkgold(elY,haY);
-    g.beginPath();   /* forearm */
-    g.moveTo(ex-W2*0.030,elY);g.lineTo(ex+W2*0.030,elY);
-    g.lineTo(hx+W2*0.024,haY);g.lineTo(hx-W2*0.024,haY);g.closePath();g.fill();
+    g.beginPath();   /* forearm, tapering to the wrist */
+    g.moveTo(ex-W2*0.025,elY);g.lineTo(ex+W2*0.025,elY);
+    g.lineTo(hx3+W2*0.019,haY);g.lineTo(hx3-W2*0.019,haY);g.closePath();g.fill();
+    /* elbow ring */
+    g.fillStyle='rgba(94,63,20,0.6)';
+    g.beginPath();g.ellipse(ex,elY,W2*0.027,H2*0.008,0,0,7);g.fill();
     /* shoulder pauldron */
-    g.fillStyle=gold(shY,elY);
-    g.beginPath();g.ellipse(sx,shY+H2*0.016,W2*0.055,H2*0.030,0,0,7);g.fill();
+    g.fillStyle=gold(sy-H2*0.02,elY);
+    g.beginPath();g.ellipse(sx,sy,W2*0.048,H2*0.026,sgn*0.22,0,7);g.fill();
     g.fillStyle='rgba(255,244,210,0.30)';
-    g.beginPath();g.ellipse(sx-sgn*W2*0.012,shY+H2*0.008,W2*0.030,H2*0.013,0,0,7);g.fill();
-    /* glove */
-    const gv=g.createRadialGradient(hx,haY+H2*0.012,2,hx,haY+H2*0.012,W2*0.040);
+    g.beginPath();g.ellipse(sx-sgn*W2*0.010,sy-H2*0.006,W2*0.026,H2*0.011,sgn*0.22,0,7);g.fill();
+    /* glove: a hand, slightly cupped */
+    const gv=g.createRadialGradient(hx3,haY+H2*0.012,2,hx3,haY+H2*0.012,W2*0.036);
     gv.addColorStop(0,'#f4d79e');gv.addColorStop(1,'#6e4c1a');
     g.fillStyle=gv;
-    g.beginPath();g.ellipse(hx,haY+H2*0.014,W2*0.032,H2*0.022,0,0,7);g.fill();
+    g.beginPath();g.ellipse(hx3,haY+H2*0.014,W2*0.026,H2*0.020,sgn*0.3,0,7);g.fill();
+    g.fillStyle='rgba(30,20,6,0.35)';
+    g.beginPath();g.ellipse(hx3+sgn*W2*0.006,haY+H2*0.020,W2*0.014,H2*0.008,sgn*0.3,0,7);g.fill();
   }
-  /* HELMET + VISOR (the bust's exact language, scaled to the figure) */
-  const hx0=cx, hy0=H2*0.180, hr=W2*0.118;
-  /* neck ring */
-  g.fillStyle='#6e4c1a';g.fillRect(cx-W2*0.045,hy0+hr*0.8,W2*0.09,H2*0.030);
-  const helm=g.createRadialGradient(hx0-hr*0.4,hy0-hr*0.5,2,hx0,hy0,hr*1.25);
+  /* NECK: a real one, in shadow under the helmet ring */
+  g.fillStyle='#8a5e20';
+  g.fillRect(cx-W2*0.034,H2*0.198,W2*0.068,H2*0.036);
+  g.fillStyle='rgba(20,14,4,0.4)';
+  g.fillRect(cx-W2*0.034,H2*0.198,W2*0.068,H2*0.012);
+  /* HELMET + VISOR: the bust's glass, now with a FACE behind it */
+  const hx0=cx, hy0=H2*0.148, hr=W2*0.088;
+  const helm=g.createRadialGradient(hx0-hr*0.4,hy0-hr*0.5,2,hx0,hy0,hr*1.28);
   helm.addColorStop(0,'#fff2cf');helm.addColorStop(0.5,'#dca84e');helm.addColorStop(1,'#7c541e');
   g.fillStyle=helm;g.beginPath();g.arc(hx0,hy0,hr,0,7);g.fill();
-  const vis=g.createRadialGradient(hx0-hr*0.3,hy0-hr*0.25,2,hx0,hy0,hr*0.86);
-  vis.addColorStop(0,'#cfe0ff');vis.addColorStop(0.5,'#4a5cb8');vis.addColorStop(1,'#161038');
-  g.fillStyle=vis;g.beginPath();g.arc(hx0,hy0+hr*0.06,hr*0.74,0,7);g.fill();
-  g.fillStyle='rgba(255,255,255,0.5)';
-  g.beginPath();g.ellipse(hx0-hr*0.30,hy0-hr*0.18,hr*0.22,hr*0.30,-0.5,0,7);g.fill();
-  for(let i=0;i<5;i++){ g.fillStyle='rgba(235,244,255,'+(0.4+r()*0.4).toFixed(2)+')';
+  const vis=g.createRadialGradient(hx0-hr*0.3,hy0-hr*0.25,2,hx0,hy0,hr*0.88);
+  vis.addColorStop(0,'#cfe0ff');vis.addColorStop(0.5,'#4a5cb8');vis.addColorStop(1,'#141034');
+  g.fillStyle=vis;g.beginPath();g.arc(hx0,hy0+hr*0.05,hr*0.76,0,7);g.fill();
+  /* the human inside: brow, nose-line and cheek catch the lamp light */
+  g.save();
+  g.beginPath();g.arc(hx0,hy0+hr*0.05,hr*0.72,0,7);g.clip();
+  g.fillStyle='rgba(214,168,138,0.34)';
+  g.beginPath();g.ellipse(hx0,hy0+hr*0.14,hr*0.42,hr*0.52,0,0,7);g.fill();   /* face oval */
+  g.fillStyle='rgba(20,16,40,0.55)';
+  g.beginPath();g.ellipse(hx0-hr*0.20,hy0+hr*0.02,hr*0.10,hr*0.05,0,0,7);g.fill();   /* eye shadows */
+  g.beginPath();g.ellipse(hx0+hr*0.20,hy0+hr*0.02,hr*0.10,hr*0.05,0,0,7);g.fill();
+  g.fillStyle='rgba(255,226,196,0.30)';
+  g.beginPath();g.ellipse(hx0-hr*0.02,hy0-hr*0.16,hr*0.34,hr*0.08,0,0,7);g.fill();   /* brow light */
+  g.fillStyle='rgba(255,226,196,0.22)';
+  g.fillRect(hx0-hr*0.03,hy0+hr*0.02,hr*0.06,hr*0.26);                                /* nose line */
+  g.fillStyle='rgba(150,96,72,0.30)';
+  g.beginPath();g.ellipse(hx0,hy0+hr*0.42,hr*0.14,hr*0.05,0,0,7);g.fill();            /* mouth shadow */
+  g.restore();
+  /* glass over the face: reflection wedge + starlight flecks */
+  g.fillStyle='rgba(255,255,255,0.40)';
+  g.beginPath();g.ellipse(hx0-hr*0.30,hy0-hr*0.20,hr*0.20,hr*0.30,-0.5,0,7);g.fill();
+  for(let i3=0;i3<5;i3++){ g.fillStyle='rgba(235,244,255,'+(0.35+r()*0.4).toFixed(2)+')';
     g.fillRect(hx0-hr*0.5+r()*hr, hy0-hr*0.3+r()*hr*0.8, 1.1, 1.1); }
-  /* rim light: one warm stroke down the lit side, one cool kiss opposite */
+  /* helmet ring seal */
+  g.strokeStyle='rgba(94,63,20,0.8)';g.lineWidth=2.4;
+  g.beginPath();g.arc(hx0,hy0,hr*0.99,Math.PI*0.15,Math.PI*0.85);g.stroke();
+  /* RIM LIGHT: warm down the lit side, a cool answer opposite */
   g.save();g.globalCompositeOperation='lighter';
   g.strokeStyle='rgba(255,220,150,0.55)';g.lineWidth=2.2;
   g.beginPath();g.arc(hx0,hy0,hr,Math.PI*1.05,Math.PI*1.75);g.stroke();
-  g.strokeStyle='rgba(255,214,140,0.30)';g.lineWidth=2.6;
+  g.strokeStyle='rgba(255,214,140,0.30)';g.lineWidth=2.4;
   g.beginPath();
-  g.moveTo(cx-W2*0.150,shY+H2*0.020);
-  g.quadraticCurveTo(cx-W2*0.170,H2*0.42,cx-W2*0.125,waY);
-  g.moveTo(cx-W2*0.104,hipY+H2*0.01);g.lineTo(cx-W2*0.100,ankY);
+  g.moveTo(cx-W2*0.144,shTopY+H2*0.030);
+  g.quadraticCurveTo(cx-W2*0.135,H2*0.36,cx-W2*0.098,waistY);
+  g.moveTo(cx-W2*0.098,hipY+H2*0.01);g.lineTo(cx-W2*0.082,ankY);
   g.stroke();
   g.strokeStyle='rgba(140,170,255,0.20)';g.lineWidth=2;
   g.beginPath();
-  g.moveTo(cx+W2*0.150,shY+H2*0.020);
-  g.quadraticCurveTo(cx+W2*0.170,H2*0.42,cx+W2*0.125,waY);
+  g.moveTo(cx+W2*0.144,shTopY+H2*0.030);
+  g.quadraticCurveTo(cx+W2*0.135,H2*0.36,cx+W2*0.098,waistY);
   g.stroke();
   g.restore();
-  /* painterly wear: faint tonal strokes over the metal, never flat */
-  for(let i=0;i<40;i++){
-    const wx=cx+(r()-0.5)*W2*0.34, wy=shY+r()*(ankY-shY);
+  /* painterly wear: faint strokes over the metal, never flat */
+  for(let i4=0;i4<44;i4++){
+    const wx=cx+(r()-0.5)*W2*0.30, wy=shTopY+r()*(ankY-shTopY);
     g.fillStyle='rgba('+(r()<0.5?'255,240,205':'30,20,8')+','+(0.03+r()*0.05).toFixed(3)+')';
     g.fillRect(wx, wy, 2+r()*8, 1.1);
   }
+  /* drifting motes in the pad light */
+  for(let i5=0;i5<12;i5++){
+    g.fillStyle='rgba(200,210,255,'+(0.06+r()*0.10).toFixed(2)+')';
+    g.beginPath();g.arc(W2*(0.2+r()*0.6), H2*(0.55+r()*0.33), 0.8+r()*1.4, 0, 7);g.fill();
+  }
   /* floor fade */
   const fg=g.createLinearGradient(0,H2*0.86,0,H2);
-  fg.addColorStop(0,'rgba(4,5,11,0)');fg.addColorStop(1,'rgba(4,5,11,0.6)');
+  fg.addColorStop(0,'rgba(3,4,10,0)');fg.addColorStop(1,'rgba(3,4,10,0.6)');
   g.fillStyle=fg;g.fillRect(0,H2*0.86,W2,H2*0.14);
   _dollURL=cv.toDataURL();
   return _dollURL;
@@ -11421,15 +11503,15 @@ function paperdollAvatar(){
    The Module docks beside the figure on the pad — its anchor is the
    Shipyard thumbnail, not the body. */
 const DOLL_ANCHORS={
-  helmet:  [0.500,0.148],
-  ears:    [0.665,0.190],
-  necklace:[0.500,0.272],
-  suit:    [0.500,0.395],
-  gloves:  [0.258,0.560],
-  tool:    [0.742,0.560],
-  legs:    [0.500,0.665],
-  boots:   [0.500,0.868],
-  module:  [0.858,0.820],
+  helmet:  [0.500,0.120],
+  ears:    [0.645,0.158],
+  necklace:[0.500,0.238],
+  suit:    [0.500,0.358],
+  gloves:  [0.318,0.528],
+  tool:    [0.682,0.528],
+  legs:    [0.500,0.615],
+  boots:   [0.500,0.875],
+  module:  [0.815,0.800],
 };
 const PLAYER_SEED=0x50A1E5;   /* a stable seed so duels against you are deterministic */
 function playerBattleStats(){
@@ -12213,7 +12295,16 @@ pickList.addEventListener('click', e=>{
   if(_pickMode==='conquer'){
     const pk=c.dataset.pk;
     let champ=null;
-    if(pk==='__self__') champ=playerCombatant();
+    if(pk==='__self__'){
+      /* v1.5.1 MERCY LAW (critic panel P1): you cannot LEAD a conquest at
+         the brink — the 5,000-bot round died 344 times re-queuing this
+         exact fight at 1 HP. Send a beast, or mend first. */
+      if(hp<Math.ceil(HP_MAX*0.25)){
+        toast('⚔ Too Wounded To Lead','Below a quarter health you cannot champion a conquest yourself — eat flora (the ❤ by your HP bar), or send a beast in your place.');
+        return;
+      }
+      champ=playerCombatant();
+    }
     else { const en=codex.get(pk); if(en) champ={name:en.name, genome:en.genome, art:artOf(en), id:en.id, grade:en.grade}; }
     if(champ && _conquerTarget && _conquerNative) runConquestBattle(_conquerTarget, champ, _conquerNative);
     return;
@@ -12488,7 +12579,7 @@ const GUIDE=[
  {id:'classes', t:'Classes, XP & levels', k:'class level xp experience innate warrior mage berserker paladin assassin fusion wins', body:
   '<p>Every beast is born to a <b>class</b> — Warrior, Berserker, Necromancer, Assassin, Druid… over a hundred, with the legendary ones (<b>Titan, Worldbreaker, Avatar, Chosen One</b>) reserved for summit-grade creatures. A class grants <b>innate arts</b>: always-on powers that need no roll, printed on the specimen card.</p><ul><li>Power is built through wins. Victories feed the XP bar — duels +8, conquests +20, guardians +60 — and levels wake more innate arts (slots at level 3 and 6), never raw stats.</li><li><b>Breeding fuses bloodlines:</b> a hybrid usually inherits a class from its parents’ lineages — a Caster line crossed with a Martial line breeds toward Spellswords and Battlemages.</li><li>Levels are <em>your</em> creature’s story — a shared code arrives at level 1.</li></ul>'},
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
-  '<p>Any world with fauna can be conquered. Press <b>Conquer Planet</b> on its survey card and choose one champion — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries wounds home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a creature:</b> it is gone forever.</li><li><b>Lose fighting yourself:</b> you take the wound instead.</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
+  '<p>Any world with fauna can be conquered. Press <b>Conquer Planet</b> on its survey card and choose one champion — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries wounds home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a wild-caught creature:</b> it is gone forever.</li><li><b>Lose with a bred champion:</b> your bloodline crawls home <b>Critical</b> — broken, not dead. Mend it with flora it ♥ loves.</li><li><b>Lose fighting yourself:</b> you take the wound instead — it can beat you to the brink but never kill you, and below a quarter health you cannot lead a conquest at all (send a beast, or mend first).</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
  {id:'binder', t:'The Binder & the Fifty Paragons', k:'binder collection sets slots types paragon fifty silhouette claim stardust', body:
   '<p>Open the Compendium and switch to the <b>🗂 Binder</b> tab. You cannot collect individuals out of an infinite universe — so the Binder collects types: fixed pages of slots (every grade, every realm, every body plan, every ability theme…) that are the same for every explorer; your universe decides which specimen fills each.</p><ul><li><b>Sets</b> are curated collections that pay a one-time ☄ Stardust bounty — claim them in the Binder when complete.</li><li><b>The Fifty Paragons</b> are named, one-of-a-kind deep-spectrum legends living on fixed worlds — the same fifty worlds for every explorer. Tap a silhouette to plot a course to its last-known world, then land and <b>Discover Life</b> to catalogue it. Share the coordinates — your friend hunts the very same legend.</li></ul>'},
  {id:'guardians', t:'Apex Guardians', k:'guardian apex named ruler challenge summit empyrean eternal singular crown titan', body:
@@ -12747,6 +12838,17 @@ const GAME_VERSION='1.5';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.5.1', title:'The Mirror Polish', date:'July 2026', sections:[
+ ['🖱 UI Enhancements', [
+  '🧍 THE PORTRAIT, REPAINTED — your explorer is a person now: true proportions, a neck, jointed arms, calved legs, a face catching the lamp light behind the visor — standing on a lit landing pad under a ringed world. Same gold, better human.',
+  '🎽 THE PICKER COMES TO YOUR THUMB — tap a socket and the gear list opens right beside it, not half a screen below the figure.',
+  '🗂 ONE CARD GRAMMAR EVERYWHERE — actions on top, the critical numbers next, everything collectible folded: the specimen card&#8217;s verbs moved above its stats (the world-card law), and the character sheet&#8217;s long tail — nameplate colors, the rarity ladder, all the achievement shelves — folded into Collection and Achievements groups. The left column is four lines and three folds now.',
+  '📱 PHONES BREATHE — the character screen stacks paperdoll → cargo → stats, so &#8220;the Fabricator below&#8221; is one flick away, exactly where the empty sockets promise it.'],
+ ],
+ ['⚖ Balancing', [
+  '🩸 THE MERCY LAW REACHES CONQUEST — a fallen BRED champion crawls home Critical instead of dying (your bloodline is broken, not erased); champion duty can beat you to the brink but never kill you; and below a quarter health you cannot lead a conquest yourself — send a beast, or mend first. The 5,000-player synthetic panel died 344 times re-queuing that exact fight; that door is closed. Wild-caught champions still pay the old price — a keeper&#8217;s bond is earned by breeding.'],
+ ],
+]},
 {v:'1.5', title:'Fresh Start', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
   '🌅 A FRESH START FOR EVERYBODY — v1.5 begins the frontier anew: every expedition, veteran and newcomer alike, starts from the same first morning in Sol. Nothing is grandfathered, nothing is carried — the Ascent is now every explorer&#8217;s canon opening. Your old expedition is honored on its way out: a farewell card sends it off, rarest find and all. The universe itself is untouched — same seeds, same worlds, same share codes; only the record starts over.',
@@ -13171,10 +13273,10 @@ function openConquestPicker(d, native){
   document.getElementById('pick-title').textContent=(native.guardian?'👑 Challenge ':'⚔ Conquer ')+(d.title||'this world');
   document.getElementById('pick-note').innerHTML='Choose ONE champion to face this world\u2019s apex native, '+
     '<b style="color:'+nS.hex+'">'+native.name+'</b> (Power '+nS.total+'). '+
-    'Win and the world is yours to settle. Lose, and a Compendium creature is lost forever — or if you fight yourself, you take the wound.';
+    'Win and the world is yours to settle. Lose, and a wild-caught champion is lost forever; a bred one crawls home Critical. Fight yourself and you take the wound — it cannot kill you, but below a quarter health you cannot lead at all.';
   if(native.guardian) document.getElementById('pick-note').innerHTML=
     'This world is ruled by <b style="color:'+nS.hex+'">'+native.name+'</b> — a one-of-a-kind <b style="color:'+nS.hex+'">'+GRADE_TIERS[nS.tier].name+'</b> Apex Guardian (Power '+nS.total+'). '+
-    'Defeat it and the world is yours, and the guardian itself joins your Compendium. Lose, and a Compendium creature is lost forever — or if you fight yourself, you take the wound.';
+    'Defeat it and the world is yours, and the guardian itself joins your Compendium. Lose, and a wild-caught champion is lost forever; a bred one crawls home Critical. Fight yourself and you take the wound — never the grave.';
   document.getElementById('pick-result').innerHTML='';
   pickList.innerHTML=champs.map(c=>{
     const S=c.stats||battleStats(c.genome);
@@ -13210,7 +13312,9 @@ function runConquestBattle(d, champ, native){
     resultText:(res,win)=> res.winner==='A'
       ? '\ud83c\udff4 World settled! '+champ.name+' triumphs — bioscans here are safe and ☄ Stardust awaits.'
       : (champ.isPlayer ? '\ud83d\udc80 You were overpowered. The world holds.'
-                        : '\ud83d\udc80 '+champ.name+' fell — lost forever. The world holds.'),
+        : ((champ.id && (codex.get(champ.id)||{}).hybrid)
+          ? '\ud83e\ude78 '+champ.name+' was broken — it crawls home Critical. The world holds.'
+          : '\ud83d\udc80 '+champ.name+' fell — lost forever. The world holds.')),
     onResolve:(res)=>{
       stats.duels++;
       if(res.winner==='A'){
@@ -13256,11 +13360,28 @@ function runConquestBattle(d, champ, native){
       } else {
         playFailTone(); playThud(); fxShake();
         if(champ.isPlayer){
+          /* v1.5.1 MERCY LAW: champion duty joins the wave-off family \u2014 a
+             scrape, never a grave. The wound still bites (and the brink
+             gate above stops the death-spiral re-queue), but the one thing
+             a lost conquest can no longer do is end the expedition. */
           const nS=battleStats(native.genome);
-          damageExplorer(Math.round(16+nS.total/24), hazardFlavor(d, native.name));   /* flavored + shows HP lost */
+          const _cd=Math.min(Math.round(16+nS.total/24), Math.max(0, hp-1));
+          if(_cd>0) damageExplorer(_cd, hazardFlavor(d, native.name));   /* flavored + shows HP lost */
+          else toast('\u2694 Beaten To The Brink', native.name+' left you at 1 HP \u2014 mend before you fight anything else.');
         } else if(champ.id){
-          removeFromCodex(champ.id);
-          toast('\ud83d\udc80 '+champ.name+' was lost', native.name+' proved too strong defending '+(d.title||'the world')+'. '+champ.name+' fell and is gone from your Compendium \u2014 the world still holds.');
+          const _en=codex.get(champ.id);
+          if(_en && _en.hybrid){
+            /* v1.5.1 MERCY LAW (Nick's backlog item d): a BRED champion is
+               a bloodline you built \u2014 it crawls home Critical instead of
+               dying. Wild-caught champions still pay the old price. */
+            _en.genome.hurt=0.85;
+            const _cc=creatureCondition(_en.genome);
+            toast('\ud83e\ude78 '+champ.name+' Crawls Home', native.name+' broke it defending '+(d.title||'the world')+' \u2014 your bred champion returns <b style="color:'+_cc.col+'">'+_cc.label+'</b>, not dead. Feed it flora it \u2665 loves. The world still holds.');
+            if(codexOpen) renderCodex();
+          } else {
+            removeFromCodex(champ.id);
+            toast('\ud83d\udc80 '+champ.name+' was lost', native.name+' proved too strong defending '+(d.title||'the world')+'. '+champ.name+' fell and is gone from your Compendium \u2014 the world still holds.');
+          }
         }
       }
       checkAch(); renderRank(); queueSave();
@@ -15609,8 +15730,11 @@ function renderStats(){
   html+='<div class="agrp'+(_agOpen.has('__stats')?' open':'')+'" data-ag="__stats">'+
     '<div class="aghead"><span><span class="arr">\u25B8</span>Statistics</span><span class="cnt"></span></div>'+
     '<div class="agbody">'+_statBody+'</div></div>';
-  /* nameplate picker: rank colors unlock as you climb; foil at the summit */
-  html+='<h4>Nameplate</h4><div class="plates">'+
+  /* v1.5.1 UNIFORM CARD LAW (Nick's crowding pass): critical numbers stay
+     open — everything collectible folds. The nameplate picker and rarity
+     ladder share one Collection fold; the achievement shelves live inside
+     ONE master Achievements fold (nested groups; child-combinator CSS). */
+  let collBody='<h4 style="margin-top:2px">Nameplate</h4><div class="plates">'+
     '<span class="plate auto'+(nameHue<0?' sel':'')+'" data-plate="-1" title="Match current rank">A</span>'+
     RANK_HUES.map((h,i)=>{
       const un=i<=(stats.bestRank||0);
@@ -15618,20 +15742,24 @@ function renderStats(){
         (un?' data-plate="'+i+'"':'')+(h!=='irid'?' style="background:'+h+'"':'')+
         ' title="'+RANKS[i][1]+(un?'':' — reach this rank to unlock')+'"></span>';
     }).join('')+'</div>';
-  html+='<h4>Rarity ladder</h4><div class="tiers">';
+  collBody+='<h4>Rarity ladder</h4><div class="tiers">';
   for(const T of GRADE_TIERS){
     const n=tierHave[T.t];
-    html+='<div class="tier" style="border-color:'+T.hex+(n?'':'44')+';color:'+T.hex+(n?'':'66')+'">'+
+    collBody+='<div class="tier" style="border-color:'+T.hex+(n?'':'44')+';color:'+T.hex+(n?'':'66')+'">'+
       '<div class="c">'+n+'</div>'+T.name+'</div>';
   }
-  html+='</div>';
+  collBody+='</div>';
+  html+='<div class="agrp'+(_agOpen.has('__coll')?' open':'')+'" data-ag="__coll">'+
+    '<div class="aghead"><span><span class="arr">▸</span>Collection</span><span class="cnt">'+
+      (rarest&&rarest.grade?'<span style="color:'+rarest.grade.hex+'">'+rarest.grade.name+'</span>':'')+'</span></div>'+
+    '<div class="agbody">'+collBody+'</div></div>';
   /* v1.5: the Cosmic Events system (beacon + events) is dormant — its
      achievement shelf hides with it rather than dangle unreachable goals.
      Anything already unlocked still counts toward the total. */
   const _achShown=ACH.filter(a=>!(EVENTS_DORMANT && a.cat==='Cosmic Events' && !unlocked.has(a.id)));
-  html+='<h4>Achievements · '+unlocked.size+' / '+_achShown.length+'</h4>';
   const cats=[];
   for(const a of _achShown) if(!cats.includes(a.cat||'Misc')) cats.push(a.cat||'Misc');
+  let achBody='';
   for(const cat of cats){
     const list2=_achShown.filter(a=>(a.cat||'Misc')===cat);
     const got=list2.filter(a=>unlocked.has(a.id)).length;
@@ -15641,10 +15769,13 @@ function renderStats(){
       const on=unlocked.has(a.id);
       body+='<div class="ach'+(on?'':' off')+'"><span class="ic">'+a.ic+'</span><span><b>'+a.name+'</b> — '+a.d+'</span></div>';
     }
-    html+='<div class="agrp'+(open?' open':'')+'" data-ag="'+cat+'">'+
+    achBody+='<div class="agrp'+(open?' open':'')+'" data-ag="'+cat+'">'+
       '<div class="aghead"><span><span class="arr">▸</span>'+cat+'</span><span class="cnt">'+got+' / '+list2.length+'</span></div>'+
       '<div class="agbody">'+body+'</div></div>';
   }
+  html+='<div class="agrp'+(_agOpen.has('__ach')?' open':'')+'" data-ag="__ach">'+
+    '<div class="aghead"><span><span class="arr">▸</span>Achievements</span><span class="cnt">'+unlocked.size+' / '+_achShown.length+'</span></div>'+
+    '<div class="agbody">'+achBody+'</div></div>';
   statsEl.innerHTML=html;
 }
 /* ---- THE PAPERDOLL REGION (v1.5): the full-body explorer with the nine
@@ -15668,18 +15799,18 @@ function renderDoll(){
       ' style="left:'+(a[0]*100)+'%;top:'+(a[1]*100)+'%" data-tip="'+s.name+(it?' — '+it.name:' — empty socket')+'">'+
       (it?'<img src="'+partIcon(it.id)+'" alt="'+it.name+'">':'<span class="eqph">'+s.ic+'</span>')+'</div>';
   }
-  html+='</div>';
-  {
-    const sysNames=ITEMS.filter(it=>it.cat==='sys' && itemCount(it.id)>0).map(it=>it.name);
-    html+='<div class="shipcap">'+(sysNames.length
-      ? sysNames.join(' · ')+' online'
-      : 'A bare hull on chemical thrusters — the Fabricator below builds her out.')+'</div>';
-  }
+  /* v1.5.1 (critic panel P6a): the picker is a POPOVER pinned beside the
+     tapped socket — cause and effect share a thumb's reach, instead of
+     the list landing half a screen below the doll */
   if(_eqOpen){
+    const a=DOLL_ANCHORS[_eqOpen]||[0.5,0.5];
     const cands=ITEMS.filter(it=>it.slot===_eqOpen && itemCount(it.id)>0);
     const cur=equip[_eqOpen];
     const sl=EQ_SLOTS.find(s=>s.id===_eqOpen)||{};
-    html+='<div class="eqpick"><div class="chead" style="padding:2px 4px 4px">'+(sl.ic||'')+' '+(sl.name||'')+'</div>'+
+    const side=a[0]<0.5?'left:12%;':'right:12%;';
+    const top=Math.min(Math.max(a[1]*100-8, 2), 72);
+    html+='<div class="eqpick" style="'+side+'top:'+top.toFixed(0)+'%">'+
+      '<div class="chead" style="padding:2px 4px 4px">'+(sl.ic||'')+' '+(sl.name||'')+'</div>'+
       (cands.length?cands.map(it=>{
         const effTxt=_effWords(it);
         return '<div class="eqcand'+(cur===it.id?' on':'')+'" data-eqpick="'+it.id+'" role="button" tabindex="0">'+
@@ -15688,6 +15819,13 @@ function renderDoll(){
       }).join(''):'<div class="empty" style="padding:8px">Nothing crafted for this socket yet — the Fabricator below builds gear from mined parts.</div>')+
       (cur?'<div class="eqcand" data-eqpick="" role="button" tabindex="0"><span class="eqph">∅</span><div class="m"><div class="nm">Unequip</div><div class="ds">leave the socket empty</div></div></div>':'')+
       '</div>';
+  }
+  html+='</div>';
+  {
+    const sysNames=ITEMS.filter(it=>it.cat==='sys' && itemCount(it.id)>0).map(it=>it.name);
+    html+='<div class="shipcap">'+(sysNames.length
+      ? sysNames.join(' · ')+' online'
+      : 'A bare hull on chemical thrusters — the Fabricator below builds her out.')+'</div>';
   }
   /* the live effect readout — what all this metal actually does */
   {
