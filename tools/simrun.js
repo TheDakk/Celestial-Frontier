@@ -198,9 +198,14 @@ async function expedition(sess, seed, nActions, deep) {
   const solSys = H.systemFor(SOL.seed);
   let farStars = [];
   let curStar = { x: SOL.x, y: SOL.y, seed: SOL.seed }, curSys = solSys;
+  // v1.5.2 progression review: variety the run actually TOUCHED (bots
+  // bypass the survey-panel path that feeds the game's own seen-sets)
+  const _ptSim = new Set(), _skSim = new Set();
+  try { _skSim.add(H.starClass(SOL.seed).kind); } catch (_) { }
   const gotoStar = (star) => {
     H.goTo({ type: 'star', gal: HOME_GAL, star });
     curStar = star; curSys = H.systemFor(star.seed);
+    try { _skSim.add(H.starClass(star.seed).kind); } catch (_) { }
   };
   const findRingStars = () => {
     const prof = H.galaxyProfile(999);
@@ -232,6 +237,7 @@ async function expedition(sess, seed, nActions, deep) {
     if (tries > 12) return null;
     try { H._performLanding(pl); } catch (e) { run.errors.push('performLanding: ' + e.message); }
     try { const vb = doc.getElementById('vistabox'); if (vb) vb.click(); } catch (_) {}
+    try { if (pl.P && pl.P.type) _ptSim.add(pl.P.type); } catch (_) { }
     run.landings++;
     if (pct0 <= 35) { run.hostileGroundings++; note('grounded a hostile world (' + pct0 + '%): ' + (d.title || '')); }
     return d;
@@ -246,7 +252,10 @@ async function expedition(sess, seed, nActions, deep) {
     // rich strikes land RARE_VEIN elements — snapshot them to actually count
     // (the first batch's counter never incremented; critics chased a ghost)
     let rareBefore = 0; for (const s of RARE_SET) rareBefore += H.cargo.get(s) || 0;
-    H.mineWorld(d);
+    // v1.5.2 the press is a BURST (S10): up to MINE_BURST pulls per mine
+    // action — the sim's action unit matches the player's press unit
+    const _burst = (H.MINE_BURST | 0) || 10;
+    for (let bi = 0; bi < _burst; bi++) { if (!H.mineWorld(d)) break; }
     if ((H.stats.mines || 0) === before) run.noops++;
     let rareAfter = 0; for (const s of RARE_SET) rareAfter += H.cargo.get(s) || 0;
     const bvGain = bv ? (H.cargo.get(bv) || 0) - cargoBv : 0;
@@ -278,6 +287,15 @@ async function expedition(sess, seed, nActions, deep) {
       } else if (r() < 0.4) a = 'craft';   // ladder done — gear up
     }
     run.actions++;
+    // v1.5.2 accept-to-activate (S8): the engaged player keeps the slate
+    // full — accept every revealed link (proven ones complete on the spot)
+    try {
+      let _g = 0;
+      while (_g++ < 4 && H._chAvailable && H._chAvailable().length && H._chAccepted().length < 3) {
+        H.chAccept(H._chAvailable()[0].id);
+        run.chAccepts = (run.chAccepts || 0) + 1;
+      }
+    } catch (_) { }
     if (a === 'jump' && stage >= 1) {
       act('jump', () => { if (!farStars.length) findRingStars(); if (farStars.length) { gotoStar(farStars[(r() * farStars.length) | 0]); note('jumped to a new system (stage ' + stage + ')'); } });
     } else if (a === 'land') {
@@ -503,6 +521,11 @@ async function expedition(sess, seed, nActions, deep) {
 
   run.ascChEnd = H.ascCh; run.stageEnd = H.ascStage();
   run.essenceEnd = H.essence;
+  run.chartersDone = (H.stats && H.stats.charters) || 0;
+  // v1.5.2 progression review: variety must keep opening with the rings —
+  // union of the game's survey-fed sets and what the bot physically touched
+  run.ptypes = [...new Set([...(H.ptypesSeen || []), ..._ptSim])];
+  run.starKinds = [...new Set([...(H.starKindsSeen || []), ..._skSim])];
   try {
     run.mines = H.stats.mines || 0;
     run.crafts = H.stats.crafts || 0;
@@ -736,6 +759,19 @@ async function uiTraining(seed, chaos) {
       }
       run.postOk = run.breaks.length === 0;
     } else if (run.completed) {
+      // v1.5.2 accept-to-activate through the real DOM: open the board,
+      // tap an Accept pill, and the link must arm (or complete, if proven)
+      try {
+        click(doc.getElementById('chbtn'));
+        await sleep(80);
+        const pill = doc.querySelector('#chpanel [data-chacc]');
+        if (pill) {
+          const id = pill.dataset.chacc;
+          click(pill); await sleep(60);
+          if (!H.chacc.has(id) && !H.chDone.has(id)) run.breaks.push('accept pill did not arm ' + id);
+        } else if (!H.chacc.size) run.breaks.push('no Accept pill on the fresh board');
+        click(doc.getElementById('chbtn'));
+      } catch (e) { run.errors.push('accept: ' + (e && e.message)); }
       const mini = await expedition(sess, seed ^ 0xBEEF, 40, false);
       run.postOk = mini.errors.length === 0 && mini.violations.length === 0;
       run.post = { errors: mini.errors.slice(0, 4), violations: mini.violations.slice(0, 4) };
@@ -813,6 +849,20 @@ function aggregate(mode, runs) {
     rep.arrayActions = num(runs.filter((r) => r.arrayAt > 0).map((r) => r.arrayAt));
     rep.igActions = num(runs.filter((r) => r.igAt > 0).map((r) => r.igAt));
     rep.funIndex = num(runs.map((r) => r.funIndex || 0));
+    // v1.5.2 the quest system: accepts + completions across the round
+    rep.charters = { accepts: num(runs.map((r) => r.chAccepts || 0)), done: num(runs.map((r) => r.chartersDone || 0)) };
+    // v1.5.2 progression review (Nick): variety must keep OPENING with the
+    // rings — world types and star classes seen, split by the ring a run
+    // ended on. Flat numbers across stages = a progression wall.
+    rep.varietyByStage = {};
+    for (const s of [0, 1, 2, 3]) {
+      const rs = runs.filter((r) => (r.stageEnd || 0) === s);
+      if (rs.length) rep.varietyByStage['s' + s] = {
+        runs: rs.length,
+        ptypes: +(rs.reduce((a2, r) => a2 + (r.ptypes ? r.ptypes.length : 0), 0) / rs.length).toFixed(2),
+        starKinds: +(rs.reduce((a2, r) => a2 + (r.starKinds ? r.starKinds.length : 0), 0) / rs.length).toFixed(2),
+      };
+    }
     // v1.5 leveling tier: XP curves + time-to-level + art-unlock pacing
     rep.leveling = {
       lvlTop: num(runs.map((r) => r.lvlTop || 0)),

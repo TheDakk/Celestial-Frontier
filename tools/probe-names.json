@@ -170,5 +170,7 @@
  "_tradesDone",
  "_chById",
  "CH_CHAINS",
- "MINE_BURST"
+ "MINE_BURST",
+ "starKindsSeen",
+ "ptypesSeen"
 ]
