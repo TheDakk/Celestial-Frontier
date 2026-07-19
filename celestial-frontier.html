@@ -13947,9 +13947,11 @@ const cargoBtn=document.getElementById('cargobtn');
 const cargoEl=document.getElementById('cargo');
 let cargoOpen=false;
 function showCargoBtn(){
-  /* shows AND hides — an in-place reset must not leave the button up
-     with a stale pre-reset count (review catch) */
-  if(cargoBtn) cargoBtn.style.display=(cargo.size>0 || techOwned.size>0 || items.size>0)?'flex':'none';
+  /* v1.5.2c (Nick): the Shipyard is the crafting HOME — it stands on the
+     rail ALWAYS once training ends. Hiding it until first cargo orphaned
+     the whole crafting system when the training sandbox reclaimed its
+     loaners (empty hold ⇒ no button ⇒ "where did crafting go?"). */
+  if(cargoBtn) cargoBtn.style.display=(tutDone || cargo.size>0 || techOwned.size>0 || items.size>0)?'flex':'none';
   const cc=document.getElementById('cargocount');
   if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0)+[...items.values()].reduce((a,b)=>a+b,0);   /* count is live even when the panel is closed */
 }
@@ -15568,7 +15570,7 @@ const TUT_STEPS=[
     cargo.set('Fe',(cargo.get('Fe')||0)+6); cargo.set('Al',(cargo.get('Al')||0)+4); cargo.set('Si',(cargo.get('Si')||0)+4);
     showCargoBtn();
   }catch(_){ } },
-  text:()=>'The engineer&#8217;s trade: the order has loaned you a pinch of ore — nothing to mine for this lesson. Open the <b>🛠 Shipyard</b> (right rail) and craft an <b>Iron Plate</b> at the Fabricator. (Out in the field, pressing <b>⛏ Mine</b> on a dead world fills the hold on its own.)',
+  text:()=>'The engineer&#8217;s trade: the order has loaned you a pinch of ore — nothing to mine for this lesson. Open the <b>🛠 Shipyard</b> (right rail) and craft an <b>Iron Plate</b> at the Fabricator. (Training is a sandbox — the loaned ore and plate return to the order when you graduate. Out in the field, <b>⛏ Mine</b> fills the hold for real.)',
   when:(t)=>t==='crafted'},
  {id:'horizon', spot:'#pcdxbtn', btn:'Got It',
   text:()=>'You’re ready. Scan living worlds (mind the danger %), ⚔ conquer the ones worth keeping — fight yourself or send a beast as champion — and collect ☄ Stardust every hour. The nine ✦ Signatures of the Prime Codex are the long road. The <b>? Guide</b> (bottom right) explains every system, any time.'},
@@ -15818,6 +15820,7 @@ function _tutFinish(){
        "more charters await" handoff stays seamless; every later link
        wants its ACCEPT from the board */
     try{ chacc.add('st-land'); }catch(_){ }
+    try{ showCargoBtn(); }catch(_){ }   /* the Shipyard stands on the rail from graduation on */
     pushNotif('Expedition Charters', 'Your charter board is open (Charters, top right) — your first charter is accepted: Make planetfall. New charters are accepted from the board as each one reveals the next.');
     /* v1.4: a NEW expedition starts its Ascent — the mainline announces
        itself once, right where training ends */
