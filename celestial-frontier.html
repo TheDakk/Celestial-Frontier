@@ -1240,8 +1240,10 @@
   #codex .cgh .cnt{margin-left:auto}
   #stats .aghead .cnt, #records .aghead .cnt{margin-left:auto}
   /* the specimen card's verbs wrap into a tidy grid — no more button crush */
-  #reveal .ractions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:8px auto 2px;max-width:330px}
-  #reveal .ractions button{width:100%;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* v1.5.2c (Nick): whole words, never "Br..." — three columns give every
+     verb room; ellipsis masking is gone so clipping can't hide */
+  #reveal .ractions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:8px auto 2px;max-width:330px}
+  #reveal .ractions button{width:100%;min-width:0;white-space:nowrap;font-size:10.5px;padding-left:2px;padding-right:2px}
   /* the drill running: the mine button glows while the vein feeds */
   #panel .act.on{border-color:rgba(255,217,106,0.7);color:#ffe9b0;box-shadow:0 0 12px rgba(255,217,106,0.25)}
   /* ---- v1.5.2 THE SHIPYARD: the ship is the workshop ---- */
@@ -8596,9 +8598,10 @@ function renderPanel(p, isLocked){
   }
   if(!d){ panelEl.style.display='none'; panelEl.classList.remove('locked'); _lastDesc=null; _panelKey=null; panelRect=null; _frozenFor=null; return; }
   _lastDesc=d;
-  /* life is NOT catalogued on sight — you must click the Life forms row to scan.
-     A world whose roster is already fully in your Compendium shows expanded. */
-  const lifeScanned = d.species && d.species.length && d.species.every(g=>codex.has(codexId(g)));
+  /* life is NOT catalogued on sight — the survey REVEALS the roster
+     (persistent, rides surveyedSet), then 🐾 Tame / 🌿 Scavenge are how
+     species enter the Compendium (v1.5.2c, Nick's capture design) */
+  const lifeScanned = d.species && d.species.length && ((d.planetSeed!=null && surveyedSet.has(d.planetSeed)) || d.species.every(g=>codex.has(codexId(g))));
   const lifeOpen = d.species && d.species.length && (lifeScanned || _spExpanded===d.logId);
   if(lifeOpen && !d._spArt){ d._spArt={}; for(const g of d.species) d._spArt[g.seed]=speciesPortrait(g); }
   const inLog=logMap.has(d.logId);
@@ -8716,11 +8719,18 @@ function renderPanel(p, isLocked){
              of the climate + the gravity line, ellipsis-clamped to one line */
           const _cl=((envRows.find(r=>r[0]==='Climate')||['',''])[1]||'').split(/[,—]/)[0].trim();
           const _gv=(envRows.find(r=>r[0]==='Gravity')||['',''])[1]||'';
+          if(!grounded){
+            /* THE BLOSSOM: orbit reads the summary line only — the full
+               environmental fold opens when you stand on the world */
+            rows+='<div class="row"><span class="k">Environment</span><span class="v">'+[_cl,_gv].filter(Boolean).join(' · ')+
+              ' <span style="color:var(--faint)">— land for the full survey</span></span></div>';
+          } else {
           const _eo=!!(cardExpand&1);
           rows+='<div class="grp'+(_eo?' open':'')+'"><div class="row ghead" data-gtoggle="1" role="button" tabindex="0" '+
             'data-tip="The full environmental survey — atmosphere, water, weather and more">'+
             '<span class="k">Environment</span><span class="v gdig">'+[_cl,_gv].filter(Boolean).join(' · ')+'</span>'+
             '<span class="chev"></span></div><div class="gbody">'+envRows.map(rowHtml).join('')+'</div></div>';
+          }
         }
         if(civHead){
           if(!known && !/^None/.test(civHead[1])){
@@ -8768,8 +8778,13 @@ function renderPanel(p, isLocked){
         rows+=rowHtml(row);
       }
     }
-    if(!glance && spRows.length && !lifeOpen){
-      /* collapsed: life is detected, not yet catalogued — scanning is a deliberate act */
+    if(!glance && spRows.length && !lifeOpen && !grounded){
+      /* THE BLOSSOM (v1.5.2c, Nick): from orbit the biosphere is a signal,
+         not a list — the card opens up when you stand on the world */
+      rows+='<div class="row sp" data-guide="discover"><span class="thumbmini" style="background:rgba(127,230,160,0.10)"></span>'+
+        '<span class="spk"></span><span class="v"><b>'+spRows.length+' life signatures</b> — land to survey the biosphere</span></div>';
+    } else if(!glance && spRows.length && !lifeOpen){
+      /* grounded, unrevealed: the survey is a deliberate act */
       const dz=dangerOf(d);
       const dzTxt=dz.pct<=0 ? '' : ' · <b style="color:'+(dz.pct<0.18?'#ffd96a':'#ff8a72')+'">⚠ '+Math.round(dz.pct*100)+'% danger</b>';
       rows+='<div class="row sp scanlife" data-scanlife="1" data-guide="discover" data-tip="'+(dz.pct>0
@@ -8787,8 +8802,10 @@ function renderPanel(p, isLocked){
       }).sort((a,b)=>b.tier-a.tier);
       const PREVIEW=8;
       const shown=ranked.slice(0,PREVIEW);
+      const _caught=spRows.filter(row=>codex.has('s'+row[3].slice(3))).length;
       rows+='<div class="splabel"><span class="k">Life forms</span>'+
-        '<span class="v">'+spRows.length+' species — all catalogued in your Compendium'+
+        '<span class="v">'+_caught+' / '+spRows.length+' in your Compendium'+
+        (_caught<spRows.length?' — tame and scavenge the rest':'')+
         (spRows.length>PREVIEW?' · top '+PREVIEW+' shown':'')+'</span></div>';
       for(const it of shown){
         const en=codex.get('s'+it.spId);
@@ -8806,6 +8823,14 @@ function renderPanel(p, isLocked){
     }
     rows+=civHtml;   /* civilization (+ ⟁ Signal) reads below the life roster */
     let conqBtn='';
+    /* 🐾 TAME · 🌿 SCAVENGE — only on worlds where you stand, only once the
+       biosphere is surveyed, only while something remains uncaught */
+    if(!glance && grounded && lifeOpen && d.species && d.species.length){
+      const _uf=d.species.some(g=>g.kingdom==='fauna' && !codex.has(codexId(g)));
+      const _up=d.species.some(g=>g.kingdom!=='fauna' && !codex.has(codexId(g)));
+      if(_uf) conqBtn+='<button class="act" data-act="tame" data-guide="discover" data-tip="Try to tame one of this world’s uncaught beasts — rarer creatures resist harder; crafted gear tips the hand.">🐾 Tame</button>';
+      if(_up) conqBtn+='<button class="act" data-act="scavenge" data-guide="discover" data-tip="Gather an uncaught growth — flora, fungus or microbe — for your Compendium. Rarity resists; gear persuades.">🌿 Scavenge</button>';
+    }
     if(!glance && d.planetSeed!=null && d.species && d.species.some(g=>g.kingdom==='fauna')){
       const c=conquered.get(d.planetSeed);
       const _gd=c?null:guardianFor(d.planetSeed);   /* fallen guardians stay fallen — settled worlds show none */
@@ -9064,6 +9089,8 @@ panelEl.addEventListener('click', e=>{
   if(b.dataset.act==='conq'){ conquerPlanet(_lastDesc); return; }
   if(b.dataset.act==='harv'){ doHarvest(_lastDesc); return; }
   if(b.dataset.act==='mine'){ mineToggle(_lastDesc); return; }
+  if(b.dataset.act==='tame'){ tryCapture(_lastDesc, 'fauna'); return; }
+  if(b.dataset.act==='scavenge'){ tryCapture(_lastDesc, 'flora'); return; }
   if(b.dataset.act==='add') addToLog(_lastDesc);
   else if(b.dataset.act==='del'){
     logMap.delete(_lastDesc.logId);
@@ -9328,6 +9355,32 @@ function _storeSpecies(g, from, where, deferArt){
   primeCheckSpecies(entry);
   return entry;
 }
+/* ---- 🐾 TAME · 🌿 SCAVENGE (v1.5.2c, Nick's capture design): the survey
+   reveals a world's roster; each species must then be CAUGHT to earn its
+   Compendium page. Odds fall with rarity, crafted gear sharpens the hand,
+   and a miss costs only the story. App-layer rolls — the rosters stay
+   seeded law, and the ring spectrum clamps every catch. ---- */
+function captureOdds(g, d){
+  const dsc=describeSpecies(g);
+  const tier=(ringGrade(g, dsc.grade, d.where||null)||{tier:0}).tier||0;
+  return clamp(0.78 - tier*0.07 + (_equipBonus('contact')||0)*0.005, 0.06, 0.92);
+}
+function tryCapture(d, kind){
+  const isF=kind==='fauna';
+  const pool=(d.species||[]).filter(g=>(isF?g.kingdom==='fauna':g.kingdom!=='fauna') && !codex.has(codexId(g)));
+  const verb=isF?'🐾 Tame':'🌿 Scavenge';
+  if(!pool.length){ toast(verb, isF?'Every beast here already walks your Compendium.':'Every growth here is already pressed into your Compendium.'); return; }
+  const g=pool[(Math.random()*pool.length)|0];
+  const dsc=describeSpecies(g);
+  const ch=captureOdds(g, d);
+  if(Math.random()<ch){
+    discoverSpecies(g, d.planetName||d.title||'A living world', d.where||null);
+    gameEvent(isF?'tamed':'scavenged', {planetSeed:d.planetSeed});
+    _panelKey=null;
+  } else {
+    toast(verb+' — it slipped away', dsc.name+' eluded you ('+Math.round(ch*100)+'% odds). Sharper gear tips the hand; there is no limit on trying.');
+  }
+}
 function autoScanWorld(d){
   if(d.planetSeed!=null && !surveyedSet.has(d.planetSeed)){
     surveyedSet.add(d.planetSeed);
@@ -9337,41 +9390,15 @@ function autoScanWorld(d){
   }
   if(d.badge==='Civilized'||d.badge==='Advanced') unlock('civ');
   if(d.badge==='Advanced') unlock('spacefar');
-  const newOnes=[];
-  for(const g of d.species){
-    if(!codex.has(codexId(g))){
-      const e=_storeSpecies(g, d.planetName||d.title, d.where);
-      if(e) newOnes.push(e);
-    }
-  }
-  if(!newOnes.length) return;
-  flashCodex();
-  /* no card popups — discoveries land quietly in the Codex; a chime pitched to the
-     rarest find plus a summary toast is the only fanfare */
-  newOnes.sort((a,b)=>(b.grade?b.grade.tier:0)-(a.grade?a.grade.tier:0));
-  const top=newOnes[0];
-  if(top && top.grade){
-    playRaritySting(top.grade.tier);
-    if(top.grade.tier>=4) fxBurst([top.grade.hex,'#ffffff'], 24+top.grade.tier*6);
-    if(top.grade.tier>=5) cinematic({kicker:'✦ Rare Find', title:top.name,
-      sub:top.grade.name+(top.grade.star?' '+top.grade.star:'')+' · '+top.kind+' — first ever catalogued',
-      hex:top.grade.hex, tier:top.grade.tier});
-  }
-  let _sdB=0;
-  for(const e of newOnes) if(e.grade && e.grade.tier>=5) _sdB+=(e.grade.tier-3);
-  if(_sdB){
-    essence+=_sdB; stats.essenceEarned=(stats.essenceEarned||0)+_sdB;
-    setTimeout(()=>toast('\u2604 Rare Find Bonus','+'+_sdB+' Stardust for legendary specimens. Total: '+essence+'.'), 1300);
-  }
-  /* v1.5.2 D3 (P8, Nick): the collector's road levels the SCOUT \u2014 every
-     genuinely new species catalogued teaches the standing Field Scout +2
-     (a pure collector was level 0 forever; now the companion grows) */
-  if(newOnes.length && scoutId && codex.has(scoutId)) awardXP(scoutId, newOnes.length*2);
-  toast('Survey Complete',
-    newOnes.length+' new species catalogued'+
-    (top && top.grade ? ' — rarest: <span style="color:'+top.grade.hex+'">'+top.grade.name+(top.grade.star?' '+top.grade.star:'')+' '+top.name+'</span>' : '')+
-    '. View them in your Compendium.');
-  /* the Fifty Paragons: scanning a legend's home world catalogues the legend itself */
+  /* v1.5.2c THE CAPTURE DESIGN (Nick): the survey REVEALS, it does not
+     catalogue — the roster opens on the card, and 🐾 Tame / 🌿 Scavenge
+     are how each species earns its Compendium page */
+  const _unc=(d.species||[]).filter(g=>!codex.has(codexId(g))).length;
+  _spExpanded=d.logId; _panelKey=null;
+  toast('Biosphere Surveyed', (d.species?d.species.length:0)+' life forms revealed'+
+    (_unc?' — <b>'+_unc+'</b> not yet in your Compendium. Tame the beasts; scavenge the growth.':' — every one already walks your Compendium.'));
+  /* the Fifty Paragons: a legend does not hide from its witness — surveying
+     its home world still catalogues the Paragon itself, capture-free */
   if(d.planetSeed!=null && _parSites.has(d.planetSeed)){
     const pi=_parSites.get(d.planetSeed);
     const pg=paragonGenome(pi);
@@ -9386,21 +9413,14 @@ function autoScanWorld(d){
       }
     }
   }
-  /* a fresh scan can spark one auto-hybrid from the new arrivals + your existing collection */
-  const pool=[...codex.values()];
-  if(pool.length>=2){
-    const r=mulberry32((d.planetSeed^0xBEEF)>>>0);
-    const a=newOnes[(r()*newOnes.length)|0];
-    const b=pool[(r()*pool.length)|0];
-    if(a && b && a.id!==b.id){
-      const child=crossGenome(a.genome, b.genome);
-      _storeSpecies(child, a.name+' × '+b.name);
-    }
-  }
+  /* (auto-hybrids now spark at CAPTURE time — discoverSpecies pairs each
+     new catch with the collection; the scan reveals and nothing more) */
   if(codexOpen) renderCodex();
 }
-function discoverSpecies(g, from){
-  const fresh=_storeSpecies(g, from);
+function discoverSpecies(g, from, where){
+  /* `where` rides through to the ring clamp — captures obey the spectrum
+     law like every survey did; bred arrivals pass no where (uncapped BY LAW) */
+  const fresh=_storeSpecies(g, from, where||null);
   flashCodex();
   if(!fresh){ if(codexOpen) renderCodex(); return; }
   if(fresh.grade){
@@ -9625,7 +9645,7 @@ function flashCodex(){
 function renderCodex(){
   if(codexView==='binder'){ renderBinder(); return; }
   if(codex.size===0){
-    codexEl.innerHTML=_codexTabs()+'<div class="empty">Your Compendium is empty.<br><br>Find a living world and press Discover Life on its survey card — every species found is catalogued automatically, like a field guide that fills itself.<br><br>Your discoveries then interbreed and evolve on their own, so new hybrids keep appearing the more you explore.</div>';
+    codexEl.innerHTML=_codexTabs()+'<div class="empty">Your Compendium is empty.<br><br>Land on a living world and survey its biosphere — then <b>🐾 Tame</b> its beasts and <b>🌿 Scavenge</b> its growth. Every catch earns its page here; the rare ones will make you work for it.<br><br>Your catches then interbreed and evolve on their own, so new hybrids keep appearing the more you explore.</div>';
     return;
   }
   const all=[...codex.values()];
@@ -9637,7 +9657,7 @@ function renderCodex(){
   for(const e of all){ const t=e.grade?e.grade.name:'—'; counts[t]=(counts[t]||0)+1; }
   const rareLine = rarest&&rarest.grade ? '<span style="color:'+rarest.grade.hex+'">Rarest: '+rarest.grade.name+' '+(rarest.grade.star||'')+' '+rarest.name+'</span>' : '';
   let html=_codexTabs()+'<div class="lab"><div class="lt">⚗ Compendium</div>'+
-    '<div class="labnote">Every world you scan with Discover Life is catalogued automatically. Your discoveries interbreed on their own and keep evolving as the cosmos ages — so the collection is endless. '+
+    '<div class="labnote">Survey a world&#8217;s biosphere, then tame and scavenge its species — every catch earns its page. Your catches interbreed on their own and keep evolving as the cosmos ages — so the collection is endless. '+
     rareLine+'</div></div>';
   html+='<div class="chead">'+(codexKing==='all'
     ? codex.size+' species · '+hybrids+' hybrid'+(hybrids===1?'':'s')+' bred'
@@ -12825,7 +12845,7 @@ const GUIDE=[
 ]},
 {icon:'🧬', cat:'Life & the Compendium', blurb:'Kingdoms, discovery, rarity, specimen cards', topics:[
  {id:'discover', t:'Discovering life', k:'discover life scan bioscan species danger wound hp catalogue', body:
-  '<p>Living worlds show <b>Discover Life</b> on their survey card. Scanning is a deliberate act — and on hostile worlds it has teeth: the danger percentage shown is your chance of being wounded by wildlife mid-scan (fiercer apex fauna and furnace worlds are deadlier). <b>Wounds deepen with distance:</b> a scrape in the home galaxy is survivable naked, but the same claws in the Deep Field bite double and worse — scouts, the Reinforced Hull and crafted suits are how the far rings are scanned and survived. The scan always completes — you earned it.</p><ul><li>Every species found lands in your <b>Compendium</b> automatically.</li><li>Or send a beast ahead: press <b>Scout</b> on any of your fauna&#8217;s cards to name it your <b>Field Scout</b> — it takes the hit in your place, wounds and all, mended the usual way with ♥ loved flora. A scout with nothing left is lost forever.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li>Conquered worlds scan safely — see <span data-gt="conquest">Conquest</span>.</li><li>A thin slice of hostile worlds — molten, frozen, crushing — carries actual creatures, not just microbes. The odds run from about 1-in-70 on the friendliest extremes to 1-in-10,000 on the magma seas: the hardest landings hide the strangest finds.</li></ul>'},
+  '<p>From orbit a living world shows only its <b>life signatures</b> — the card blossoms when you land. Ground the world, then <b>survey its biosphere</b>: a deliberate act with teeth on hostile worlds — the danger percentage is your chance of being wounded by wildlife mid-survey, and <b>wounds deepen with distance</b> (a scrape in the home galaxy is survivable naked; the same claws in the Deep Field bite double and worse — scouts, the Reinforced Hull and crafted suits are how the far rings are survived). The survey always completes — you earned it.</p><ul><li>The survey <b>reveals</b> the roster; it catalogues nothing. Press <b>🐾 Tame</b> for beasts and <b>🌿 Scavenge</b> for flora, fungi and microbes — each attempt names its odds, rarer species resist harder, and crafted gear tips the hand. Every catch earns its Compendium page; there is no limit on trying.</li><li>Or send a beast ahead: press <b>Scout</b> on any of your fauna&#8217;s cards to name it your <b>Field Scout</b> — it takes the hit in your place, wounds and all, mended the usual way with ♥ loved flora. A scout with nothing left is lost forever.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li>Conquered worlds scan safely — see <span data-gt="conquest">Conquest</span>.</li><li>A thin slice of hostile worlds — molten, frozen, crushing — carries actual creatures, not just microbes. The odds run from about 1-in-70 on the friendliest extremes to 1-in-10,000 on the magma seas: the hardest landings hide the strangest finds.</li></ul>'},
  {id:'kingdoms', t:'The four kingdoms', k:'kingdom microbe flora fauna fungi realm biome classification', body:
   '<p>All life belongs to one of four kingdoms — <b>🦠 Microbe, 🌿 Flora, 🍄 Fungi, 🐾 Fauna</b> — and is shelved in the Compendium by realm (Land Fauna, Aquatic Fauna, Colonial Life…). Kingdom decides what a creature can do:</p><ul><li><b>Fauna</b> fight duels, defend worlds, and can be fed.</li><li><b>Flora</b> are medicine and meals — eaten by you or fed to beasts.</li><li>All kingdoms can breed within their own kind.</li><li>The sea grows kelp towers, reef-builders and sargassum rafts now; aerial-life worlds fly drifting veils. Extremophiles come with their own ways of living — vent-clingers, magma-swimmers, storm-riders — and worlds whose roster runs titanic sometimes show it breaking the horizon.</li></ul>'},
  {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique mythic celestial primordial transcendent empyrean eternal omnipotent deep spectrum summit color', body:
@@ -13162,7 +13182,9 @@ const RELEASES=[
   '⚔ ACCEPT TO ACTIVATE — a revealed charter tracks only after <b>Accept</b> (three active at once); a deed already done completes on the spot. The weekly board opens once the five trades are learned.',
   '🎒 CHARTERS PAY GEAR — five early links award a crafted piece on completion (headlamp, mag-boots, meteorite pendant, field leggings, comms earpiece), equipped straight into an empty socket. The Fabricator remains the upgrade path.',
   '🧭 NUDGES LEAD SOMEWHERE — the next-step nudge names the current chain link (accepted charter first, else the link awaiting Accept); tapping a guiding toast (marked ›) opens the Charters board.',
-  '🧭 ARRIVAL PAYS — first arrival in a system with no prior expedition record logs a First Arrival line and pays +2 ☄ Stardust.'],
+  '🧭 ARRIVAL PAYS — first arrival in a system with no prior expedition record logs a First Arrival line and pays +2 ☄ Stardust.',
+  '🌸 THE CARD BLOSSOMS — orbit shows identity, a life-signature count, and a one-line environment summary; landing opens the environment fold, the biosphere survey, and the capture verbs.',
+  '🐾 TAME & SCAVENGE — the biosphere survey reveals the roster instead of cataloguing it; each species is caught individually with visible odds (lower for rarer species, raised by crafted gear). Misses cost nothing; every Compendium page is earned.'],
  ],
  ['⚖ Balancing', [
   '⛏ THE MINING BURST — one press runs up to 10 pulls (~16s), then mining stops until pressed again. Prevents AFK reserve drain; burst-extending recipes are planned.',
@@ -15123,7 +15145,7 @@ const CHARTER_STARTERS=[
    chk:()=>{ for(const s of surfSeen) if(s!==133) return true; return false; }},
  {id:'st-mine',  ev:'mined',     n:1, t:'Prospect a dead world', d:'Land on a lifeless world and press Mine Deposits — the elements stock your Cargo hold for research.', sd:15,
    chk:()=>(stats.mines||0)>0},
- {id:'st-scan',  ev:'bioscan',   n:1, t:'Discover life',         d:'Find a living world and press Discover Life on its card — mind the danger percentage, or send a scout.', sd:15, item:'earpiece'},
+ {id:'st-scan',  ev:'bioscan',   n:1, t:'Discover life',         d:'Land on a living world and survey its biosphere — mind the danger percentage, or send a scout. Then tame what you find.', sd:15, item:'earpiece'},
  {id:'st-scout', ev:'scout-set', n:1, t:'Name a Field Scout',    d:'Open one of your fauna in the Compendium and press Scout — it takes the hit when a bioscan turns hostile.', sd:15,
    chk:()=>!!scoutId},
  {id:'st-conq',  ev:'conquest',  n:1, t:'Conquer a world',       d:'Press Conquer Planet on a world with fauna and pick a champion — yourself, or one of your beasts.', sd:25,
