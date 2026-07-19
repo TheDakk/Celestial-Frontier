@@ -301,9 +301,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // previous lesson — its cargo button is the panel's own token)
     check('forge: the loaned ore opens the hold (cargo button + iron)',
       doc.getElementById('cargobtn').style.display === 'flex' && (H.cargo.get('Fe') || 0) >= 4);
-    // v1.5.2: the bench lives at the SHIPYARD — tap the docked ship
-    click(doc.getElementById('dollship'));
-    check('forge: the docked ship opens the Shipyard', await until(() =>
+    // v1.5.2b: the rail button IS the Shipyard
+    click(doc.getElementById('cargobtn'));
+    check('forge: the 🛠 Shipyard button opens the yard', await until(() =>
       doc.getElementById('yard').style.display === 'flex', 2000, 'yard opens'));
     await until(() => !!doc.querySelector('#yardbench [data-craft="plate"]'), 2000, 'fab group');
     click(doc.querySelector('#yardbench [data-craft="plate"]'));
@@ -837,20 +837,19 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click2(pan3.querySelector('[data-act="mine"]'), sk.w);
     check('charters: Prospect a dead world completes on the first mine', await until(() =>
       skH.chDone.has('st-mine') && chp.textContent.includes('✓ Prospect a dead world'), 4000, 'charter 2'));
-    // cargo (v1.2.2): the hold is a real inventory — icon tiles + a bench tab
-    click2(sk.doc.getElementById('cargobtn'), sk.w);
+    // cargo (v1.5.2b): the hold lives on the CHARACTER SHEET (rank opens it)
+    click2(sk.doc.getElementById('rank'), sk.w);
     const cgEl = sk.doc.getElementById('cargo');
-    check('cargo: the Inventory tab shows item tiles with element icons',
+    check('cargo: the hold shows item tiles with element icons',
       cgEl.style.display === 'block' && cgEl.querySelectorAll('.slot img').length > 0
       // procedural data-URI icons — SVG in Classic, canvas PNG in HD (jsdom stubs the latter as 'data:,')
       && cgEl.querySelector('.slot img').src.startsWith('data:'));
     check('cargo: tiles carry quantities', !!cgEl.querySelector('.slot .qty'));
-    // v1.5.2: the hold is bags-only — empty slot boxes always visible; the
-    // Research Bench moved to the Shipyard (behind the docked ship)
+    // v1.5.2b: the hold is bags-only on the SHEET; the rail button is the Shipyard
     check('cargo: the hold shows Diablo bag slots (empty boxes included)',
       cgEl.querySelectorAll('.slot').length >= 24 && !!cgEl.querySelector('.slot.empty2'));
-    click2(sk.doc.getElementById('dollship'), sk.w);
-    check('shipyard: the docked ship opens the yard (sheet yields — one panel)',
+    click2(sk.doc.getElementById('cargobtn'), sk.w);
+    check('shipyard: the 🛠 rail button opens the yard (sheet yields — one panel)',
       await until(() => sk.doc.getElementById('yard').style.display === 'flex', 2000, 'yard')
       && !visible(sk.doc.getElementById('sheet')));
     click2(sk.doc.querySelector('#yardbench [data-yt="bench"]'), sk.w);
@@ -878,13 +877,21 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('discovery: a grounded world still offers plain Land (revisits + sightseeing)',
       !!pan3.querySelector('[data-act="landcta"]'));
 
-    // ============ v1.4 THE ASCENT: mining rework, Fabricator, gear, Sol lock ============
-    // mining is a click now — a second pull right away works, and reserves count down
+    // ============ v1.5.2b MINING: one press runs the drills ============
+    skH.mineStop();   // the charter check above may have left a run alive — clean slate
+    await sleep(120);
     const mines0 = skH.stats.mines;
-    const mx0 = skH.mineX.get(dp.data.P.seed) || 0;
     click2(pan3.querySelector('[data-act="mine"]'), sk.w);
-    check('v1.4 mining: an immediate second pull works (no cooldown)', await until(() =>
-      skH.stats.mines === mines0 + 1 && (skH.mineX.get(dp.data.P.seed) || 0) === mx0 + 1, 4000, 'second pull'));
+    check('mining: the first press pulls immediately', await until(() =>
+      skH.stats.mines >= mines0 + 1 && skH._mineRun && skH._mineRun.seed === dp.data.P.seed, 4000, 'first pull'),
+      'mines=' + skH.stats.mines + ' vs0=' + mines0 + ' run=' + JSON.stringify(skH._mineRun && skH._mineRun.seed));
+    check('mining: the drills keep pulling on their own (auto-run)', await until(() =>
+      skH.stats.mines >= mines0 + 2, 4000, 'auto pull'));
+    click2(pan3.querySelector('[data-act="mine"]'), sk.w);   // second press STOPS the run
+    await until(() => !skH._mineRun, 2000, 'run stops');
+    const minesStop = skH.stats.mines;
+    await sleep(2000);
+    check('mining: a second press stops the drills', !skH._mineRun && skH.stats.mines === minesStop);
     check('v1.4 mining: the card counts the pulls left in the veins', await until(() =>
       /pulls left/.test(pan3.textContent), 4000, 'pulls-left readout'));
     check('v1.4 mining: reserves are finite and deterministic',
@@ -908,8 +915,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('v1.4 Fabricator: crafting consumes elements and yields the part',
       skH.itemCount('plate') === 1 && skH.cargo.get('Fe') === 16);
     check('v1.4 Ascent: crafting advances the chapter goal', (skH.ascProg['c1-part'] || 0) >= 1);
-    if (!visible(sk.doc.getElementById('sheet'))) click2(sk.doc.getElementById('cargobtn'), sk.w);
-    click2(sk.doc.getElementById('dollship'), sk.w);
+    if (sk.doc.getElementById('yard').style.display !== 'flex') click2(sk.doc.getElementById('cargobtn'), sk.w);
     await until(() => sk.doc.getElementById('yard').style.display === 'flex', 2000, 'yard for fab');
     click2(sk.doc.querySelector('#yardbench [data-yt="fab"]'), sk.w);   // the tab is remembered — pick fab explicitly
     const yb4 = sk.doc.getElementById('yardbench');
@@ -950,12 +956,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       !sk.doc.getElementById('stats').textContent.includes('Rarity ladder'));
     click2(sk.doc.getElementById('recbtn'), sk.w);
     check('records: the button toggles it closed', !visible(recEl));
-    click2(sk.doc.getElementById('cargobtn'), sk.w);   // sheet back open — the paperdoll block toggles it
     // v1.5 THE PAPERDOLL: one centered character screen — sockets ON the body
-    // (the sheet is still open from the 🧰 shortcut above — the buttons
-    // toggle, so close it first, then open fresh from the nameplate)
-    click2(sk.doc.getElementById('cargobtn'), sk.w);
-    check('v1.5 sheet: the 🧰 button toggles the screen closed again',
+    if (visible(sk.doc.getElementById('sheet'))) click2(sk.doc.getElementById('rank'), sk.w);
+    check('v1.5.2b sheet: the nameplate toggles the screen closed',
       !visible(sk.doc.getElementById('sheet')));
     click2(sk.doc.getElementById('rank'), sk.w);
     const shEl = sk.doc.getElementById('sheet');
@@ -969,8 +972,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       !!dollEl4.querySelector('.dollimg') && dollEl4.querySelector('.dollimg').src.startsWith('data:'));
     check('v1.5 paperdoll: sockets carry body anchors (inline positions)',
       /left:.*top:/.test(dollEl4.querySelector('[data-eqslot]').getAttribute('style') || ''));
-    check('v1.5 shipyard: the ship docks beside the figure (Module anchor)',
-      !!dollEl4.querySelector('.dship') && /hull|online/i.test(dollEl4.querySelector('.shipcap').textContent));
+    check('v1.5.2b: the ship is OFF the doll (it lives at the Shipyard) and the pack socket is worn',
+      !dollEl4.querySelector('.dship') && !!dollEl4.querySelector('[data-eqslot="module"]'));
     check('v1.4 equipment: the effect readout speaks the boost', /mining yield/.test(dollEl4.textContent));
     // socket picker: tap the Tool socket, the candidates list opens on the doll
     click2(dollEl4.querySelector('[data-eqslot="tool"]'), sk.w);

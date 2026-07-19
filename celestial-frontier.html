@@ -710,8 +710,11 @@
   #panel.grab .htxt{padding-right:22px}
   @media (pointer:coarse){ #panel .pxc{width:34px;height:34px;font-size:15px;top:3px;right:3px} }
   /* the panel-manager ✕ — one close language for every panel (v1.3.5) */
-  .pnx{position:absolute;top:6px;right:6px;width:26px;height:26px;border:0;border-radius:8px;
-    background:rgba(20,24,44,0.6);color:var(--dim);font:600 13px/26px system-ui,sans-serif;
+  /* v1.5.2b: sticky ✕ — seated first in the panel, floats right, and rides
+     the top edge while the content under it scrolls (Nick: "the X is off") */
+  .pnx{position:sticky;top:2px;float:right;width:26px;height:26px;border:0;border-radius:8px;
+    margin:0 0 -26px 8px;
+    background:rgba(20,24,44,0.85);color:var(--dim);font:600 13px/26px system-ui,sans-serif;
     text-align:center;cursor:pointer;padding:0;z-index:6}
   .pnx:hover{color:var(--ink);background:rgba(150,162,210,0.14)}
   #tray .pnx,#setpanel .pnx{position:absolute}
@@ -1176,6 +1179,22 @@
   @keyframes fxshake{0%,100%{transform:none}20%{transform:translate(-8px,4px)}40%{transform:translate(7px,-5px)}
     60%{transform:translate(-5px,3px)}80%{transform:translate(3px,-2px)}}
 
+  /* ---- v1.5.2b ONE FOLD LANGUAGE (Nick): the word, not the arrow —
+     every collapsible header wears the world card's expand/close pill ---- */
+  .wchev{flex:none;font:600 8.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;
+    color:var(--faint);border:1px solid rgba(150,162,210,0.25);border-radius:999px;padding:2px 8px;margin-left:8px}
+  .wchev::after{content:'expand'}
+  .agrp.open > .aghead .wchev::after{content:'close'}
+  .cgrp.open > .cgh .wchev::after{content:'close'}
+  .fabgrp.open > .fghead .wchev::after{content:'close'}
+  .aghead:hover .wchev, .cgh:hover .wchev, .fghead:hover .wchev{color:var(--ink)}
+  #codex .cgh .cnt{margin-left:auto}
+  #stats .aghead .cnt, #records .aghead .cnt{margin-left:auto}
+  /* the specimen card's verbs wrap into a tidy grid — no more button crush */
+  #reveal .ractions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:8px auto 2px;max-width:330px}
+  #reveal .ractions button{width:100%;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* the drill running: the mine button glows while the vein feeds */
+  #panel .act.on{border-color:rgba(255,217,106,0.7);color:#ffe9b0;box-shadow:0 0 12px rgba(255,217,106,0.25)}
   /* ---- v1.5.2 THE SHIPYARD: the ship is the workshop ---- */
   #yard{position:fixed;inset:0;z-index:24;display:none;align-items:center;justify-content:center;
     background:rgba(4,6,13,0.62);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
@@ -1646,7 +1665,7 @@
 <div id="log"></div>
 <div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="dot bio"></span>Compendium <span class="n" id="codexcount">0</span></div>
 <div id="codex"></div>
-<div id="cargobtn" role="button" tabindex="0" style="display:none" data-tip="Your hold — opens the character screen on its inventory." data-guide="mining"><span class="dot crg"></span>Cargo <span class="n" id="cargocount">0</span></div>
+<div id="cargobtn" role="button" tabindex="0" style="display:none" data-tip="The Shipyard — your ship, the Fabricator and the Research Bench." data-guide="crafting"><span class="dot crg"></span>Shipyard <span class="n" id="cargocount">0</span></div>
 <div id="recbtn" role="button" tabindex="0" data-tip="The Records board — your rarity ladder and every achievement shelf." data-guide="achievements">🏆 Records</div>
 <div id="records"></div>
 <div id="primebox"><div class="card">
@@ -1750,6 +1769,11 @@
    Owns: cv, ctx, trailEl, ctxEl, panelEl, hintEl, logEl, logBtn, logCountEl, codexBtn, …
    ---------------------------------------------------------------- */
 const cv = document.getElementById('cosmos');
+/* a11y-churn mitigation (Nick's Edge crash dumps: renderer died in
+   UnrecoverableAccessibilityError while assistive tech was attached).
+   The canvas exposes nothing readable, and hiding it from the a11y tree
+   removes the highest-churn node the browser was trying to track. */
+try{ cv.setAttribute('aria-hidden','true'); cv.setAttribute('role','presentation'); }catch(_){ }
 const ctx = cv.getContext('2d');
 const trailEl = document.getElementById('trail');
 const ctxEl = document.getElementById('context');
@@ -5153,7 +5177,7 @@ function drawGalaxy(time){
       if(c.z>minWH/900){
         ctx.font=`italic ${11/c.z}px Georgia,serif`; ctx.textAlign='center';
         ctx.fillStyle='rgba(200,170,255,0.85)';
-        ctx.fillText('wormhole? (hypothetical)', whx, why+20/c.z);
+        ctx.fillText('wormhole — hypothetical', whx, why+20/c.z);
       }
     }
   }
@@ -5431,18 +5455,29 @@ function _ringSprite(seed, hue){
   const g=cv.getContext('2d'), C=S/2;
   const r=mulberry32((seed^0x7717)>>>0);
   const bands=3+((r()*3)|0);
-  let rad=C*0.62;
+  /* pre-roll the band recipe, then SCALE it to fit the sprite — wide
+     many-band rolls (Nick's Uranus) used to run past the canvas edge and
+     come back square-cut. Same rng draws, same look, bounded radius. */
+  const recipe=[];
+  let radEnd=C*0.62;
   for(let b=0;b<bands;b++){
     const w=C*(0.045+r()*0.075);
+    recipe.push({w, a1:(0.24+r()*0.30), a2:(0.10+r()*0.16)});
+    radEnd+=w*1.12+C*0.012;
+  }
+  const k=Math.min(1, (C*0.96-C*0.62)/Math.max(1,(radEnd-C*0.62)));
+  let rad=C*0.62;
+  for(const bn of recipe){
+    const w=bn.w*k;
     rad+=w*0.5;
-    g.strokeStyle='rgba('+hue+','+(0.24+r()*0.30).toFixed(2)+')';
+    g.strokeStyle='rgba('+hue+','+bn.a1.toFixed(2)+')';
     g.lineWidth=w;
     g.beginPath(); g.arc(C,C,rad,0,TAU); g.stroke();
     /* a brighter inner filament inside each band */
-    g.strokeStyle='rgba('+hue+','+(0.10+r()*0.16).toFixed(2)+')';
+    g.strokeStyle='rgba('+hue+','+bn.a2.toFixed(2)+')';
     g.lineWidth=w*0.34;
     g.beginPath(); g.arc(C,C,rad-w*0.22,0,TAU); g.stroke();
-    rad+=w*0.62+C*0.012;
+    rad+=w*0.62+C*0.012*k;
   }
   /* the Cassini-style gap */
   g.globalCompositeOperation='destination-out';
@@ -5909,7 +5944,7 @@ function drawSystem(time){
         const mname=pl.name+' '+roman(m+1);
         ctx.font=`${8.5/c.z}px Georgia,serif`; ctx.textAlign='center';
         ctx.fillStyle='rgba(190,198,222,0.7)';
-        ctx.fillText('☾ '+mname, mx, my - mrad - 4/c.z);
+        ctx.fillText(mname, mx, my - mrad - 4/c.z);   /* just the name — no glyphs (Nick's naming pass) */
       }
     }
     ctx.restore();
@@ -5934,7 +5969,7 @@ function drawSystem(time){
     if(c.z>minWH/600){
       ctx.font=`italic ${9/c.z}px Georgia,serif`; ctx.textAlign='center';
       ctx.fillStyle='rgba(214,206,190,0.75)';
-      ctx.fillText(dw.name+' (dwarf planet)', dx2, dy2+ds+11/c.z);
+      ctx.fillText(dw.name, dx2, dy2+ds+11/c.z);   /* the card says what it is — the label says WHO (Nick's naming pass) */
     }
   }
   /* a hyperbolic interstellar visitor streaking through */
@@ -5953,7 +5988,7 @@ function drawSystem(time){
     if(c.z>minWH/650){
       ctx.font=`italic ${9/c.z}px Georgia,serif`; ctx.textAlign='center';
       ctx.fillStyle='rgba(230,190,160,0.8)';
-      ctx.fillText('\u27EB interstellar object', vx, vy-10/c.z);
+      ctx.fillText('interstellar object', vx, vy-10/c.z);
     }
   }
   /* comets with tails blown away from the star */
@@ -5979,7 +6014,7 @@ function drawSystem(time){
       const cname='Comet '+properName(hashInt(st.star.seed, 31+ci, 17), 2);
       ctx.font=`italic ${9/c.z}px Georgia,serif`; ctx.textAlign='center';
       ctx.fillStyle='rgba(205,228,255,0.78)';
-      ctx.fillText('☄ '+cname, x, y - 6/c.z);
+      ctx.fillText(cname, x, y - 6/c.z);   /* just the name (Nick's naming pass) */
     }
   }
   ctx.restore();
@@ -8724,10 +8759,13 @@ function renderPanel(p, isLocked){
           (_bv?' · <span style="color:'+(EC[_bv]||'#fff')+'">'+(ELEM_NAME[_bv]||_bv)+' ✦</span>':'')+
           (grounded?' <span style="color:var(--faint)">· '+(_mLeft>0?_mLeft.toLocaleString()+' pulls left':'mined out')+'</span>':'')+'</span></div>';
       }
+      const _running=(typeof _mineRun!=='undefined') && _mineRun && _mineRun.seed===d.planetSeed;
       mineBtn = grounded
         ? (_mLeft>0
-          ? '<button class="act" data-act="mine" data-guide="mining" data-tip="Every pull takes a varying haul from this world&#8217;s veins — they run dry only after hundreds. Crafted rigs pull more.">⛏ Mine'+
-            (_mN>0?' — '+_mLeft.toLocaleString()+' left':' Deposits')+'</button>'
+          ? (_running
+            ? '<button class="act on" data-act="mine" data-guide="mining" data-tip="The drills are running this vein — tap to stop.">⛏ Mining… tap to stop</button>'
+            : '<button class="act" data-act="mine" data-guide="mining" data-tip="One press starts the drills — they keep pulling on their own until you stop them or the vein empties. Crafted rigs pull more per haul.">⛏ Mine'+
+              (_mN>0?' — '+_mLeft.toLocaleString()+' left':' Deposits')+'</button>')
           : '<button class="act in" data-act="mine" data-guide="mining" data-tip="Every vein on this world has given all it had.">Mined Out</button>')
         : '';   /* prospecting takes boots on the ground — the Land button is the way down */
     }
@@ -8928,7 +8966,7 @@ panelEl.addEventListener('click', e=>{
   if(b.dataset.act==='share'){ shareWhere(_lastDesc); return; }
   if(b.dataset.act==='conq'){ conquerPlanet(_lastDesc); return; }
   if(b.dataset.act==='harv'){ doHarvest(_lastDesc); return; }
-  if(b.dataset.act==='mine'){ mineWorld(_lastDesc); return; }
+  if(b.dataset.act==='mine'){ mineToggle(_lastDesc); return; }
   if(b.dataset.act==='add') addToLog(_lastDesc);
   else if(b.dataset.act==='del'){
     logMap.delete(_lastDesc.logId);
@@ -9542,14 +9580,20 @@ function renderCodex(){
   for(const sp of list){ const rm=_SHELF_OF[sp.realm]||sp.realm||sp.kind; (groups[rm]||(groups[rm]=[])).push(sp); }
   const order=_SHELF_ORDER.filter(r=>groups[r]);
   for(const rm in groups) if(order.indexOf(rm)<0) order.push(rm);   /* any future shelf still shows */
+  /* v1.5.2 (Nick's live pass): a Compendium with EVERY shelf folded looks
+     empty — the training cache rolled no Land Fauna and the specimen
+     lesson pointed at a list of closed drawers. The first shelf with
+     anything in it always opens itself. */
+  if(order.length && !order.some(rm=>_cdxOpen.has(rm))) _cdxOpen.add(order[0]);
   for(const rm of order){
     const group=groups[rm];
     const open=_cdxOpen.has(rm) || codexKing!=='all';   /* a filtered kingdom lays its shelves open */
     const hy=group.filter(s=>s.hybrid).length;
     const kg=(group[0]&&group[0].kind||'').toLowerCase();
+    const rmLabel=rm==='Megafauna'?'Mega Fauna':rm;   /* one naming shape per shelf (Nick) */
     html+='<div class="cgrp'+(open?' open':'')+'" data-cg="'+rm+'">'+
-      '<div class="cgh kg-'+kg+'" role="button" tabindex="0"><span><span class="arr">▸</span>'+(_SHELF_ICON[rm]||REALM_ICON[rm]||'')+' '+rm+'</span>'+
-      '<span class="cnt">'+group.length+(hy?' · '+hy+' hybrid':'')+'</span></div>'+
+      '<div class="cgh kg-'+kg+'" role="button" tabindex="0"><span>'+(_SHELF_ICON[rm]||REALM_ICON[rm]||'')+' '+rmLabel+'</span>'+
+      '<span class="cnt">'+group.length+(hy?' · '+hy+' hybrid':'')+'</span><span class="wchev"></span></div>'+
       '<div class="cgb">'+(open?group.map(spCard).join(''):'')+'</div></div>';
   }
   codexEl.innerHTML=html;
@@ -9827,7 +9871,7 @@ function travelTo(w){
   const dist=Math.hypot((w.gal.x-st.ucam.x)||0, (w.gal.y-st.ucam.y)||0);
   const mult=(typeof driveMult==='function')?driveMult():1;
   const dur=clamp(800+(dist*3)/mult, 800, Math.max(1200, 8000/mult));
-  if(dist>1400 && mult===1) toast('🚀 Long Burn','The old fusion-chemical drive strains across '+Math.round(dist)+' u of void — research better drives at the Shipyard (tap your ship on the character screen).');
+  if(dist>1400 && mult===1) toast('🚀 Long Burn','The old fusion-chemical drive strains across '+Math.round(dist)+' u of void — research better drives at the 🛠 Shipyard (right rail).');
   _trav={t0:performance.now(), dur, w, hex:'#cfe0ff', jumped:false, zEnd:0, seed:_destSeed(w)};
   playWhoosh();                        /* the lane opens */
 }
@@ -11396,8 +11440,13 @@ function paperdollAvatar(){
     g.strokeStyle='rgba(200,214,240,0.5)';g.lineWidth=2.2;
     g.beginPath();g.ellipse(0,0,pr*1.9,pr*0.5,0,0,7);g.stroke();
     g.restore();
+    /* terminator shadow CLIPPED to the disc — it floated beside the planet
+       as a dark blob (Nick's screenshot) */
+    g.save();
+    g.beginPath();g.arc(px,py,pr,0,7);g.clip();
     g.fillStyle='rgba(3,4,10,0.55)';
     g.beginPath();g.arc(px+pr*0.45,py+pr*0.32,pr*0.9,0,7);g.fill();
+    g.restore();
   }
   /* low horizon band — the pad sits somewhere real */
   const hor=g.createLinearGradient(0,H2*0.82,0,H2*0.95);
@@ -11596,13 +11645,13 @@ function paperdollAvatar(){
 const DOLL_ANCHORS={
   helmet:  [0.500,0.148],   /* centered ON the helmet (Nick's line-up pass) */
   ears:    [0.690,0.148],   /* beside the head at true ear height, an even gap off the helmet socket */
-  necklace:[0.500,0.238],
-  suit:    [0.500,0.358],
+  necklace:[0.500,0.262],   /* spaced down off the ring seal (Nick) */
+  suit:    [0.500,0.375],
   gloves:  [0.318,0.528],
   tool:    [0.682,0.528],
   legs:    [0.500,0.615],
   boots:   [0.500,0.875],
-  module:  [0.185,0.800],   /* the ship docks LEFT — the right side carried too much */
+  module:  [0.200,0.310],   /* the PACK rides the shoulder — worn, not parked (Nick) */
 };
 const PLAYER_SEED=0x50A1E5;   /* a stable seed so duels against you are deterministic */
 function playerBattleStats(){
@@ -11616,21 +11665,17 @@ const _statOpen=new Set();
 function statBlockHTML(){
   const P=playerBattleStats();
   let rows='';
-  /* v1.5.2 (Nick): the bars come to the character sheet \u2014 the same visual
-     language as the specimen card's stat block, one look everywhere */
-  for(const k of STAT_KEYS){ const m=STAT_META[k]; const op=_statOpen.has(k);
-    rows+='<div class="statrow" data-stat="'+k+'" role="button" tabindex="0">'+
-      '<div class="srow" style="margin:0;cursor:pointer"><span class="k" style="color:'+m.col+'">'+
-        '<span class="arr" style="display:inline-block;transition:transform .15s;margin-right:5px;color:var(--faint)'+(op?';transform:rotate(90deg)':'')+'">\u25B8</span>'+
-        m.name+'</span><span><b style="color:'+m.col+'">'+P[k]+'</b></span></div>'+
-      '<div class="bar" style="height:5px;margin:2px 0 5px 16px"><i style="width:'+Math.min(100,Math.round(P[k]/330*100))+'%;background:'+m.col+'"></i></div>'+
-      (op?'<div style="font-size:9.5px;color:var(--faint);padding:1px 0 6px 16px;line-height:1.45">'+m.d+'</div>':'')+
-    '</div>';
+  /* v1.5.2 (Nick): plain bars in the specimen card's language \u2014 no
+     tap-to-expand on stats; what each one does lives in the Guide */
+  for(const k of STAT_KEYS){ const m=STAT_META[k];
+    rows+='<div class="srow" style="margin:3px 0 0"><span class="k" style="color:'+m.col+'">'+m.name+'</span>'+
+      '<span><b style="color:'+m.col+'">'+P[k]+'</b></span></div>'+
+      '<div class="bar" style="height:5px;margin:2px 0 5px"><i style="width:'+Math.min(100,Math.round(P[k]/330*100))+'%;background:'+m.col+'"></i></div>';
   }
   return '<h4>Battle stats \u00b7 power '+P.total+'</h4>'+
     '<div class="srow"><span class="k">Max HP \u2014 from Vitality</span><span style="color:#7fe6a0">'+HP_MAX+'</span></div>'+
     rows+
-    '<div class="srow"><span class="k" style="width:auto;font-size:9px;color:var(--faint)">Tap a stat to see what it does \u00b7 eat flora (the \u2764 by your HP bar) to grow them.</span><span></span></div>';
+    '<div class="srow"><span class="k" style="width:auto;font-size:9px;color:var(--faint)">Eat flora (the \u2764 by your HP bar) to grow them \u2014 the ? Guide explains each stat.</span><span></span></div>';
 }
 function playerCombatant(){
   return {name:(explorerName||'You'), genome:{seed:PLAYER_SEED}, art:playerAvatar(),
@@ -12700,11 +12745,11 @@ const GUIDE=[
  {id:'harvest', t:'Harvesting', k:'harvest hourly cooldown settled world replenish stardust', body:
   '<p>Every settled world can be harvested for Stardust once per hour (rarer worlds yield more). The button lives on the world’s survey card — “Settled — replenishing” means come back later. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
  {id:'mining', t:'Mining & the Cargo hold', k:'mine mining elements minerals deposits cargo hold dead lifeless world vein iron gold prismatium samples field landing inventory icons', body:
-  '<p>Dead worlds carry the elements. Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and rarer worlds hide richer veins, up to exotics like Voidglass and Prismatium.</p><ul><li><b>Landing pays.</b> Your first footfall on any world (home aside) collects <b>field samples</b> — a pinch of up to two of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration stocks the hold all by itself.</li><li>Prospecting takes boots on the ground: press a lifeless world&#8217;s <b>Land</b> button, or dive in and confirm the descent — planetfall is a <b>ground survey</b>, and the Mine Deposits button opens with it. (Gas giants, hothouses and molten worlds will fight the landing — see <span data-gt="landing">Landing</span>.) (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li><b>Mining is a pull, not a timer.</b> Every press of ⛏ Mine takes a varying haul from the world&#8217;s veins — sometimes a <b>rich strike</b> hits a rare pocket. <b>Reserves are finite:</b> the card counts the pulls left, and a world mined to nothing stays mined out forever (there are always more worlds). Crafted mining rigs multiply every haul, and the Auto-Extractor keeps pulling while you&#8217;re away — collect on your next visit.</li><li>Everything lands in your <b>🧰 Cargo hold</b> — it lives on your <b>character screen</b> now, beneath the paperdoll (tap your nameplate, or the 🧰 shortcut that appears with your first cargo). The hold is a Diablo bag under your portrait: a grid of slots — ingots for metals, shards for ices, flasks for gases, cut gems for the exotics. Spending them happens at the <b>Shipyard</b> (tap your docked ship): the Fabricator and the Research Bench live with the ship they build — see <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
+  '<p>Dead worlds carry the elements. Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and rarer worlds hide richer veins, up to exotics like Voidglass and Prismatium.</p><ul><li><b>Landing pays.</b> Your first footfall on any world (home aside) collects <b>field samples</b> — a pinch of up to two of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration stocks the hold all by itself.</li><li>Prospecting takes boots on the ground: press a lifeless world&#8217;s <b>Land</b> button, or dive in and confirm the descent — planetfall is a <b>ground survey</b>, and the Mine Deposits button opens with it. (Gas giants, hothouses and molten worlds will fight the landing — see <span data-gt="landing">Landing</span>.) (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li><b>The drills run themselves.</b> Press ⛏ Mine once and the rig keeps pulling every couple of seconds — press again to stop, or let the vein run dry. Every haul varies, and sometimes a <b>rich strike</b> hits a rare pocket. <b>Reserves are finite:</b> the card counts the pulls left, and a world mined to nothing stays mined out forever (there are always more worlds). Crafted mining rigs multiply every haul, and the Auto-Extractor keeps pulling while you&#8217;re away — collect on your next visit.</li><li>Everything lands in your <b>🧰 Cargo hold</b> — it lives on your <b>character screen</b> now, beneath the paperdoll (tap your nameplate, or the 🧰 shortcut that appears with your first cargo). The hold is a Diablo bag under your portrait: a grid of slots — ingots for metals, shards for ices, flasks for gases, cut gems for the exotics. Spending them happens at the <b>🛠 Shipyard</b> (right rail): the Fabricator and the Research Bench live with the ship they build — and a crafted pack in your Module socket grows the bags themselves. See <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
  {id:'research', t:'Research & ships', k:'research tech technology bench drive ship hull scanner lab fusion antimatter warp travel distance', body:
   '<p>The engineer’s track, parallel to the Prime Codex: the Prime Codex is your legend, the Research Bench is your capability. Research costs mined elements + ☄ Stardust:</p><ul><li><b>🛰 Deep Scanners</b> — survey cards reveal mineral veins from orbit.</li><li><b>🛡 Reinforced Hull</b> — hostile bioscans wound you 25% lighter.</li><li><b>🧪 Xenobotany Lab</b> — flora meals nourish one extra stat point.</li><li><b>The drive ladder</b> — 🚀 Fusion → ⚛ Antimatter → 🌀 Warp Fold. Hyperlane travel scales with real distance; each drive cuts it, and Warp Fold makes every jump arrive in a breath. Distance is never a wall — only a wait, and only ever a short one.</li></ul>'},
  {id:'crafting', t:'The Fabricator & gear', k:'craft crafting fabricator recipe parts components ship systems gear equipment suit tool module instrument charm slot equip mining rig auto extractor anchor', body:
-  '<p>The <b>🧰 Fabricator</b> lives at the <b>Shipyard</b> — tap your docked ship on the character screen — and turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">The Ascent</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character screen (tap your nameplate) shows your explorer head to boots, with nine sockets pinned to the body — Helmet at the head, Earpiece at the ear, Necklace below the chin, Suit on the chest, Gloves and Tool at the hands, Leggings, Boots, and the ship Module docked beside the figure. Mining rigs and gloves multiply hauls; suits, visors and leggings blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); boots, greaves and the module ladder steady landings up to the Gravitic Anchor, which never waves off; earpieces and necklaces sharpen first contact, rich strikes, meals and travel.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
+  '<p>The <b>Fabricator</b> lives at the <b>🛠 Shipyard</b> (right rail) — your ship, her systems, and both workbenches in one place. It turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">The Ascent</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character screen (tap your nameplate) shows your explorer head to boots, with nine sockets pinned to the body — Helmet at the head, Earpiece at the ear, Necklace below the chin, Suit on the chest, Gloves and Tool at the hands, Leggings, Boots, and the ship Module docked beside the figure. Mining rigs and gloves multiply hauls; suits, visors and leggings blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); boots, greaves and the module ladder steady landings up to the Gravitic Anchor, which never waves off; earpieces and necklaces sharpen first contact, rich strikes, meals and travel.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
  {id:'ascent', t:'The Ascent', k:'ascent chapter chapters sol lock jump drive ring ladder progression mainline quest unlock neighborhood galaxy intergalactic', body:
   '<p><b>⬆ The Ascent</b> is the mainline: three chapters, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p><b>The spectrum expands with the rings.</b> Rarity is a ladder of distance: the Neighborhood catalogues up to <b>Legendary</b>, the home galaxy up to <b>Mythic</b>, and each region beyond opens one more band — Celestial, Primordial, Transcendent — until the Deep Field frees the <b>summit grades</b>. The strangest finds live farthest out; guardians, Paragons and your own bred bloodlines are beyond the law.</p>'},
 ]},
@@ -12951,13 +12996,19 @@ const RELEASES=[
  ['✨ New Features & Systems', [
   '🛠 THE SHIPYARD — your ship earned her own screen: tap her where she docks beside your paperdoll and the workshop opens — her portrait gaining every system you build, with the Fabricator and Research Bench beneath, recipes folded by category. The character screen keeps only what is YOURS: the figure, your stats, and the hold.',
   '🏆 THE RECORDS BOARD — the rarity ladder and every achievement shelf moved out of the character sheet into their own right-rail panel. The mirror is for you; the trophy room is next door.',
-  '🛬 TRAINING LEARNS TO LAND — Field Training gained a landing lesson: press Land on Earth&#8217;s card (home never waves you off) and Planetside opens as the payoff. Twenty lessons now, every system in the loop: chart, land, catalogue, feed, breed, duel, heal, forge.'],
+  '🛬 TRAINING LEARNS TO LAND — Field Training gained a landing lesson: press Land on Earth&#8217;s card (home never waves you off) and Planetside opens as the payoff. Twenty lessons now, every system in the loop: chart, land, catalogue, feed, breed, duel, heal, forge.',
+  '⛏ THE DRILLS RUN THEMSELVES — press Mine once and the rig keeps pulling on its own; press again to stop, or let the vein run dry. No more finger-drumming a planet to death.',
+  '🗺 THE SOL TOUR — five new starter charters walk you around home like a proper first zone: first footfall on Mercury, the red neighbor, the wells of the giants, the cold frontier, a working component. Each pays on the spot; the weekly board opens when the tour is walked.',
+  '🎒 THE PACK ON YOUR BACK — the Module socket is worn gear now (the ship lives at the Shipyard): sock a pack module and your hold visibly grows a row of bags per tier.'],
  ],
  ['🖱 UI Enhancements', [
   '🎒 THE HOLD IS A BAG — the inventory is a proper Diablo-style slot grid under your portrait, empty boxes and all, so the space your ore will fill is always visible.',
   '📊 STAT BARS ON THE SHEET — your five battle stats wear the same bars as every specimen card. One language, every card.',
   '⬆ Gated foreign-galaxy stars now name the right build (the Intergalactic Drive) on their charter row, whatever ring you stand on.',
-  '🎽 The equip picker opens BELOW its socket (the socket stays visible and tappable) and wears a ✕ — an empty socket&#8217;s hint is no longer a dead end.'],
+  '🎽 The equip picker opens BELOW its socket (the socket stays visible and tappable) and wears a ✕ — an empty socket&#8217;s hint is no longer a dead end.',
+  '🔤 ONE FOLD LANGUAGE — every collapsible header in the game wears the world card&#8217;s expand/close pill instead of a tiny arrow; the Compendium always lays its first occupied shelf open; battle stats read as plain bars (the Guide holds the definitions); Mega Fauna matches its shelf-mates; specimen-card verbs sit in a tidy grid.',
+  '🔭 NAMES ARE NAMES — map labels lost their parentheses and glyphs: Pluto is Pluto, comets and moons wear just their names. What a thing IS lives on its card. Ring systems no longer clip square at the sprite&#8217;s edge on wide-band worlds.',
+  '✕ EVERY PANEL&#8217;S CLOSE now rides the top corner even while the list under it scrolls.'],
  ],
  ['⚖ Balancing', [
   '🩸 MERCY, SHARPENED — crawling home is for bloodlines YOU BRED (wild-born crossbreeds pay the wild price), and it happens once per mend: a champion fielded while still Critical does not crawl home twice. The same rule closes a reroll seam the audit found — every retry past the first now demands real mending.',
@@ -13683,6 +13734,29 @@ function mineWorld(d){
   else if(notifOn) _showToast('⛏ Deposits Mined', mineMsg);
   showCargoBtn(); if(cargoOpen) renderCargo();
   _panelKey=null; checkAch(); renderRank(); queueSave();
+  return left>0;   /* v1.5.2b: the auto-run needs to know when the vein dies */
+}
+/* ---- THE DRILL RUNS ITSELF (v1.5.2b, Nick: "not spam clicking"):
+   press ⛏ Mine once and the drills keep pulling every couple of seconds —
+   press again to stop. Stops on its own when the vein empties, the card
+   changes worlds, or the card closes. Every auto pull is a real pull
+   through mineWorld — same yields, same counters, same finite reserves. */
+let _mineRun=null;   /* {seed, t} */
+function mineStop(){
+  if(_mineRun){ clearInterval(_mineRun.t); _mineRun=null; _panelKey=null; }
+}
+function mineToggle(d){
+  if(_mineRun && _mineRun.seed===d.planetSeed){ mineStop(); return; }
+  mineStop();
+  if(!mineWorld(d)) return;                    /* first pull now; dead vein = nothing to run */
+  const seed=d.planetSeed;
+  _mineRun={seed, t:setInterval(()=>{
+    try{
+      if(!_lastDesc || _lastDesc.planetSeed!==seed || !panelEl || panelEl.style.display==='none'){ mineStop(); return; }
+      if(!mineWorld(_lastDesc)) mineStop();
+    }catch(_){ mineStop(); }
+  }, 1600)};
+  _panelKey=null;
 }
 /* ---- the research bench: the engineer's ladder ---- */
 const TECHS=[
@@ -13847,7 +13921,10 @@ function renderCargo(){
      always there, empty boxes and all. The bench moved to the Shipyard. */
   let html='<div class="chead">🧰 Cargo</div>';
   const rows=[...cargo.entries()].filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]);
-  const SLOTS=Math.max(24, Math.ceil(Math.max(1,rows.length)/6)*6);
+  /* the worn PACK grows the bags (Nick): a Module in its socket adds a
+     row of slots per tier — the hold you can SEE gets bigger with you */
+  const _pk=equip.module?ITEM_BY.get(equip.module):null;
+  const SLOTS=Math.max(24+(_pk?(_pk.tier||1)*6:0), Math.ceil(Math.max(1,rows.length)/6)*6);
   html+='<div class="inv">'+rows.map(e=>'<span class="slot" data-tip="'+(ELEM_NAME[e[0]]||e[0])+'">'+
     '<img src="'+elemIcon(e[0])+'" alt="'+(ELEM_NAME[e[0]]||e[0])+'"><span class="qty">'+e[1]+'</span></span>').join('')+
     Array.from({length:Math.max(0, SLOTS-rows.length)}, ()=>'<span class="slot empty2"></span>').join('')+'</div>';
@@ -13877,8 +13954,8 @@ function _fabHTML(){
     const open=_fabOpen.has(cat);
     const craftable=list.filter(it=>_canCraft(it) && !(it.cat==='sys'&&itemCount(it.id)>0)).length;
     html+='<div class="fabgrp'+(open?' open':'')+'" data-fg="'+cat+'">'+
-      '<div class="fghead" role="button" tabindex="0"><span class="arr">▸</span><span>'+label+'</span>'+
-      '<span class="cnt">'+(craftable?craftable+' craftable':'')+'</span></div>'+
+      '<div class="fghead" role="button" tabindex="0"><span>'+label+'</span>'+
+      '<span class="cnt">'+(craftable?craftable+' craftable':'')+'</span><span class="wchev"></span></div>'+
       '<div class="fgbody">';
     if(cat==='relic') html+='<div class="ambient" style="font-size:10px;color:var(--faint);font-style:italic;margin:0 6px 6px">Nine blueprints, one per claimed Prime Codex Signature — recovered from the order&#8217;s lost beacons.</div>';
     for(const it of list){
@@ -13952,9 +14029,10 @@ function openYard(){
 }
 function closeYard(){ yardOpen=false; const y=document.getElementById('yard'); if(y) y.style.display='none'; }
 if(cargoBtn){
-  /* the 🧰 button is a shortcut into the character screen's inventory */
+  /* v1.5.2b (Nick): the rail button IS the Shipyard now — Fabricator +
+     Research live here; the inventory lives only on the character sheet */
   cargoBtn.addEventListener('click', ()=>{
-    if(sheetOpen) closeSheet(); else openSheet('inv');
+    if(yardOpen) closeYard(); else openYard();
   });
 }
 {
@@ -14073,14 +14151,14 @@ const ITEM_BY=new Map(ITEMS.map(it=>[it.id, it]));
    boots — plus the working pair, Tool and ship Module */
 const EQ_SLOTS=[
   {id:'helmet',   ic:'⛑',  name:'Helmet'},
-  {id:'ears',     ic:'🎧', name:'Earpiece'},
+  {id:'ears',     ic:'💠', name:'Earpiece'},   /* an earring, not headphones (Nick) */
   {id:'necklace', ic:'📿', name:'Necklace'},
   {id:'suit',     ic:'🧑‍🚀', name:'Suit'},
   {id:'gloves',   ic:'🧤', name:'Gloves'},
   {id:'legs',     ic:'👖', name:'Leggings'},
   {id:'boots',    ic:'🥾', name:'Boots'},
   {id:'tool',     ic:'⛏',  name:'Tool'},
-  {id:'module',   ic:'🛬', name:'Module'},
+  {id:'module',   ic:'🎒', name:'Module'},   /* worn on the back — a pack, not a ship (Nick); grows the hold's bags */
 ];
 const items=new Map();     /* item id → qty owned (save field items) */
 const equip={};            /* slot → item id (save field eq) */
@@ -14872,6 +14950,14 @@ const CHARTER_STARTERS=[
  {id:'st-scan',  ev:'bioscan',   n:1, t:'Discover life',         d:'Find a living world and press Discover Life on its card — mind the danger percentage, or send a scout.', sd:15},
  {id:'st-scout', ev:'scout-set', n:1, t:'Name a Field Scout',    d:'Open one of your fauna in the Compendium and press Scout — it takes the hit when a bioscan turns hostile.', sd:15},
  {id:'st-conq',  ev:'conquest',  n:1, t:'Conquer a world',       d:'Press Conquer Planet on a world with fauna and pick a champion — yourself, or one of your beasts.', sd:25},
+ /* v1.5.2b THE SOL TOUR (Nick: "think of it like EverQuest — quests that
+    send you out and bring you back"): a guided lap of the home system,
+    each stop paying on the spot. All reachable at stage 0. */
+ {id:'st-mercury', ev:'landfall', filt:x=>x&&x.planetSeed===131, n:1, t:'First footfall: Mercury', d:'Sol&#8217;s innermost world bakes in the glare. Stand on it — the sunward veins run rich.', sd:10},
+ {id:'st-mars',    ev:'landfall', filt:x=>x&&x.planetSeed===134, n:1, t:'The red neighbor',        d:'Mars waited a long age for boots. Land, and read the rust from the ground.', sd:10},
+ {id:'st-giants',  ev:'mined', filt:x=>x&&(x.planetSeed===135||x.planetSeed===136), n:5, t:'Wells of the giants', d:'Set the drills running in Jupiter or Saturn&#8217;s deep decks — 5 loads between them.', sd:15},
+ {id:'st-ice',     ev:'landfall', filt:x=>x&&(x.planetSeed===137||x.planetSeed===138), n:1, t:'The cold frontier', d:'Uranus or Neptune — stand at the edge of Sol&#8217;s long dark, where the ices wait.', sd:10},
+ {id:'st-comp',    ev:'crafted', filt:x=>x&&x.cat==='comp', n:1, t:'A working component',  d:'Assemble any T2 component at the 🛠 Shipyard — the Jump Drive is built from these.', sd:15},
 ];
 const CHARTER_POOL=[
  {id:'wk-land',  ev:'landfall', n:3, t:'Boots on three worlds', d:'Make planetfall on 3 worlds you have never stood on.', sd:20},
@@ -15089,9 +15175,9 @@ function ascStage(){
 }
 function ascHint(){
   const stg=ascStage();
-  return stg===0?'Sol is your charter for now — build the ⚡ Jump Drive at the Shipyard (tap your ship on the character screen).'
-       :stg===1?'Your drive reaches the Neighborhood — the 📡 Long-Range Array (Shipyard) charts the whole galaxy.'
-       :'The dark between galaxies needs the 🌌 Intergalactic Drive — the Shipyard has the recipe.';
+  return stg===0?'Sol is your charter for now — build the ⚡ Jump Drive at the 🛠 Shipyard (right rail).'
+       :stg===1?'Your drive reaches the Neighborhood — the 📡 Long-Range Array (🛠 Shipyard) charts the whole galaxy.'
+       :'The dark between galaxies needs the 🌌 Intergalactic Drive — the 🛠 Shipyard has the recipe.';
 }
 let _ascToastT=0;
 function ascBlock(){
@@ -15210,12 +15296,12 @@ const TUT_STEPS=[
  {id:'sheet', spot:'#rank', allow:['#rank','#stats'],
   text:()=>'Now meet yourself: <b>tap your nameplate</b> to open your character screen — your explorer head to boots, with nine gear sockets on the body, your stats, and your cargo hold beneath.',
   when:(t,d)=>t==='stats-open'&&!!d.open},
- {id:'forge', spot:'#cargobtn', allow:['#cargobtn','#sheetcard','#yardcard'],
+ {id:'forge', spot:'#cargobtn', allow:['#cargobtn','#yardcard'],
   enter:()=>{ try{
     cargo.set('Fe',(cargo.get('Fe')||0)+6); cargo.set('Al',(cargo.get('Al')||0)+4); cargo.set('Si',(cargo.get('Si')||0)+4);
     showCargoBtn();
   }catch(_){ } },
-  text:()=>'The engineer&#8217;s trade: dead worlds carry the elements — land on one and press <b>⛏ Mine</b> to fill your hold. The order has loaned you a pinch of ore. Open your character screen (🧰), tap your <b>docked ship</b> — the Shipyard is her workbench — and craft an <b>Iron Plate</b> at the Fabricator.',
+  text:()=>'The engineer&#8217;s trade: dead worlds carry the elements — press <b>⛏ Mine</b> on one and the drills fill your hold on their own. The order has loaned you a pinch of ore. Open the <b>🛠 Shipyard</b> (right rail) and craft an <b>Iron Plate</b> at the Fabricator.',
   when:(t)=>t==='crafted'},
  {id:'horizon', spot:'#pcdxbtn', btn:'Got It',
   text:()=>'You’re ready. Scan living worlds (mind the danger %), ⚔ conquer the ones worth keeping — fight yourself or send a beast as champion — and collect ☄ Stardust every hour. The nine ✦ Signatures of the Prime Codex are the long road. The <b>? Guide</b> (bottom right) explains every system, any time.'},
@@ -15817,11 +15903,11 @@ const PANELS=[
   {id:'charters', el:()=>chPanel,  btn:'#chbtn',     x:1, open:()=>chOpen,     close:()=>{ chOpen=false;     chPanel.style.display='none'; }},
   {id:'events',   el:()=>eventsEl, btn:'#eventsbtn', x:1, open:()=>eventsOpen, close:()=>{ eventsOpen=false; eventsEl.style.display='none'; clearInterval(_evTimer); }},
   /* v1.5: stats + cargo merged into the one character screen */
-  {id:'sheet',    el:()=>document.getElementById('sheetcard'), btn:'#rank,#cargobtn', x:1,
+  {id:'sheet',    el:()=>document.getElementById('sheetcard'), btn:'#rank', x:1,
     open:()=>sheetOpen, close:()=>closeSheet()},
   /* v1.5.2: the Shipyard (ship + Fabricator + Research) and the Records
      board (rarity ladder + achievements) are their own surfaces */
-  {id:'yard',     el:()=>document.getElementById('yardcard'), btn:'#dollship', x:1,
+  {id:'yard',     el:()=>document.getElementById('yardcard'), btn:'#cargobtn', x:1,
     open:()=>yardOpen, close:()=>closeYard()},
   {id:'records',  el:()=>document.getElementById('records'), btn:'#recbtn', x:1,
     open:()=>recOpen, close:()=>{ recOpen=false; const r9=document.getElementById('records'); if(r9) r9.style.display='none'; }},
@@ -15872,7 +15958,9 @@ function _mkPnx(id){
 for(const p of PANELS){
   if(!p.x) continue;
   const el=p.el && p.el(); if(!el) continue;
-  const seat=()=>{ if(tutDone && !el.querySelector('[data-pnx]')) el.appendChild(_mkPnx(p.id)); };
+  /* v1.5.2b (Nick: "the ✕ is off"): the ✕ seats FIRST + sticky, so it
+     rides the top of the panel even when the list under it scrolls */
+  const seat=()=>{ if(tutDone && !el.querySelector('[data-pnx]')) el.insertBefore(_mkPnx(p.id), el.firstChild); };
   new MutationObserver(seat).observe(el, {childList:true});
   seat();
 }
@@ -15924,7 +16012,7 @@ function renderStats(){
     (stats.best>0?'<div class="srow"><span class="k">Highest grade ever reached</span><span class="gbadge'+(stats.best>=12?' irid':'')+'" style="color:'+GRADE_TIERS[Math.min(stats.best,TIER_MAX)].hex+'">'+GRADE_TIERS[Math.min(stats.best,TIER_MAX)].name+'</span></div>':'')+
     '<div class="srow"><span class="k">Apex Guardians felled</span><span>'+(stats.guardians||0)+'</span></div>';
   html+='<div class="agrp'+(_agOpen.has('__stats')?' open':'')+'" data-ag="__stats">'+
-    '<div class="aghead"><span><span class="arr">\u25B8</span>Statistics</span><span class="cnt"></span></div>'+
+    '<div class="aghead"><span>Statistics</span><span class="cnt"></span><span class="wchev"></span></div>'+
     '<div class="agbody">'+_statBody+'</div></div>';
   /* v1.5.2 (Nick): the character sheet is YOU, nothing else — rank, battle
      stats, statistics, and the nameplate fold. The rarity ladder and every
@@ -15938,7 +16026,7 @@ function renderStats(){
         ' title="'+RANKS[i][1]+(un?'':' — reach this rank to unlock')+'"></span>';
     }).join('')+'</div>';
   html+='<div class="agrp'+(_agOpen.has('__coll')?' open':'')+'" data-ag="__coll">'+
-    '<div class="aghead"><span><span class="arr">▸</span>Nameplate</span><span class="cnt"></span></div>'+
+    '<div class="aghead"><span>Nameplate</span><span class="cnt"></span><span class="wchev"></span></div>'+
     '<div class="agbody">'+collBody+'</div></div>';
   if(rarest && rarest.grade){
     html+='<div class="srow" style="margin-top:6px"><span class="k">Rarest find</span><span style="color:'+rarest.grade.hex+'">'+rarest.grade.name+' '+rarest.name+'</span></div>';
@@ -15972,7 +16060,7 @@ function renderRecords(){
       body+='<div class="ach'+(on?'':' off')+'"><span class="ic">'+a.ic+'</span><span><b>'+a.name+'</b> — '+a.d+'</span></div>';
     }
     html+='<div class="agrp'+(open?' open':'')+'" data-ag="'+cat+'">'+
-      '<div class="aghead"><span><span class="arr">▸</span>'+cat+'</span><span class="cnt">'+got+' / '+list2.length+'</span></div>'+
+      '<div class="aghead"><span>'+cat+'</span><span class="cnt">'+got+' / '+list2.length+'</span><span class="wchev"></span></div>'+
       '<div class="agbody">'+body+'</div></div>';
   }
   el.innerHTML=html;
@@ -16006,9 +16094,8 @@ function renderDoll(){
     ' <span class="cfrom" id="renameme" role="button" tabindex="0" style="cursor:pointer;font-size:11px;color:#9fc2ff;font-weight:400">✎ rename</span>'+
     '<span class="drank">'+r.name+'</span></div>';
   html+='<div class="dollwrap"><img class="dollimg" src="'+paperdollAvatar()+'" alt="Your explorer">';
-  /* the ship docks beside the figure; the Module socket pins to her hull.
-     She is also the door to the SHIPYARD (v1.5.2) — tap to open the bench */
-  html+='<img class="dship" id="dollship" role="button" tabindex="0" data-tip="The Shipyard — your ship, her systems, the Fabricator and Research bench" src="'+shipImage()+'" alt="Your ship — opens the Shipyard" style="left:'+(DOLL_ANCHORS.module[0]*100)+'%;top:'+((DOLL_ANCHORS.module[1]-0.075)*100)+'%;cursor:pointer">';
+  /* v1.5.2b (Nick): the ship lives at the Shipyard (🛠 right rail), not on
+     the doll — the Module socket is the PACK on your shoulder now */
   for(const s of EQ_SLOTS){
     const a=DOLL_ANCHORS[s.id]; if(!a) continue;
     const it=equip[s.id]?ITEM_BY.get(equip[s.id]):null;
@@ -16052,12 +16139,6 @@ function renderDoll(){
       '</div>';
   }
   html+='</div>';
-  {
-    const sysNames=ITEMS.filter(it=>it.cat==='sys' && itemCount(it.id)>0).map(it=>it.name);
-    html+='<div class="shipcap">'+(sysNames.length
-      ? sysNames.join(' · ')+' online'
-      : 'A bare hull on chemical thrusters — the Fabricator below builds her out.')+'</div>';
-  }
   /* the live effect readout — what all this metal actually does */
   {
     const fx=[];
@@ -16102,7 +16183,6 @@ function closeSheet(){
 }
 document.getElementById('doll').addEventListener('click', e=>{
   if(e.target && e.target.id==='renameme'){ askExplorerName(false); renderDoll(); return; }
-  if(e.target && e.target.id==='dollship'){ openYard(); return; }   /* the ship is the Shipyard's door */
   if(e.target.closest && e.target.closest('[data-eqclose]')){ _eqOpen=null; renderDoll(); return; }
   const eqp=e.target.closest('[data-eqpick]');
   if(eqp){ equipItem(_eqOpen, eqp.dataset.eqpick||null); _eqOpen=null; renderDoll(); return; }
