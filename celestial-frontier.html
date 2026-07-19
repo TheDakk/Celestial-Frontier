@@ -12585,7 +12585,9 @@ function hazardFlavor(d, foe){
    shown danger % is untouched (odds were always honest; the price wasn't
    graded). Home galaxy wounds soften ×0.8; each universe region beyond
    adds its tax up to ×2.2 at the Frontier. */
-const DEPTH_TAX=[1.0, 1.3, 1.6, 1.9, 2.2];   /* by regionAt: Solar Reach → Outer Dark+ */
+/* v1.5.2 progression audit: six regions deserve six rungs — Outer Dark and
+   the Frontier no longer share a tax ("each region beyond adds its tax") */
+const DEPTH_TAX=[1.0, 1.3, 1.6, 1.9, 2.2, 2.5];   /* by regionAt: Solar Reach → the Frontier */
 function depthTax(where){
   try{
     if(!where || !where.gal) return 1;
@@ -15099,6 +15101,7 @@ function _chComplete(c, proven){
     (reveal ? ' A new charter is on the board: '+reveal.t+' — accept it to begin.' : (_chLockedNote()?' '+_chLockedNote():'')), 'charters');
 }
 function chAccept(id){
+  if(!tutDone) return;   /* the board is inert until training ends — accepts too */
   const c=_chById(id);
   if(!c || chacc.has(id) || _chDoneOf(c)) return;
   if(_chAccepted().length>=CH_CAP){ toast('Charter Board', 'Three charters is a full slate — see one through first.'); return; }
