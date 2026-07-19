@@ -733,6 +733,14 @@
      explicit corner anchor (unanchored, the tray's landed on its own
      title), and the headers reserve the lane so text never runs under */
   #tray .pnx,#setpanel .pnx{position:absolute;top:6px;right:6px;float:none}
+  /* the overlay CARDS too — the sheet is a grid, and a flow-inserted ✕
+     was auto-placed into an implicit bottom row (Nick's screenshot):
+     absolute anchors are immune to layout */
+  #sheetcard > .pnx,#yardcard > .pnx{position:absolute;top:8px;right:8px;float:none}
+  #yardcard{position:relative}
+  /* the Guide joins the same law — one corner, one look, every window */
+  #guidebox .pnx{position:absolute;top:8px;right:8px;float:none}
+  #guidebox .gh{padding-right:40px;padding-left:40px}   /* centered title stays centered */
   #tray .thead{padding-right:40px}
   #setpanel .shead{padding-right:40px}
   #guidebox .card{position:relative}   /* anchor the guide's ✕ to the card, not the screen */
@@ -15552,7 +15560,7 @@ const TUT_STEPS=[
     cargo.set('Fe',(cargo.get('Fe')||0)+6); cargo.set('Al',(cargo.get('Al')||0)+4); cargo.set('Si',(cargo.get('Si')||0)+4);
     showCargoBtn();
   }catch(_){ } },
-  text:()=>'The engineer&#8217;s trade: dead worlds carry the elements — press <b>⛏ Mine</b> on one and the drills fill your hold on their own. The order has loaned you a pinch of ore. Open the <b>🛠 Shipyard</b> (right rail) and craft an <b>Iron Plate</b> at the Fabricator.',
+  text:()=>'The engineer&#8217;s trade: the order has loaned you a pinch of ore — nothing to mine for this lesson. Open the <b>🛠 Shipyard</b> (right rail) and craft an <b>Iron Plate</b> at the Fabricator. (Out in the field, pressing <b>⛏ Mine</b> on a dead world fills the hold on its own.)',
   when:(t)=>t==='crafted'},
  {id:'horizon', spot:'#pcdxbtn', btn:'Got It',
   text:()=>'You’re ready. Scan living worlds (mind the danger %), ⚔ conquer the ones worth keeping — fight yourself or send a beast as champion — and collect ☄ Stardust every hour. The nine ✦ Signatures of the Prime Codex are the long road. The <b>? Guide</b> (bottom right) explains every system, any time.'},
@@ -15689,6 +15697,17 @@ function _tutPanelSweep(s, prev){
       }catch(_){ }
       return 'close';
     };
+    /* the SURVEY CARD is canvas-managed, not registry-managed — a step
+       that doesn't teach it must sweep it too, or it sits locked-open
+       inside the gate with no allowed way to close it (Nick's step-18
+       lockup: zoomed into Earth, card open, every tap eaten) */
+    try{
+      const needsCard=[...toks].some(t=>String(t).indexOf('#panel')>=0 || String(t).indexOf('data-act')>=0);
+      if(!needsCard && typeof panelEl!=='undefined' && panelEl && panelEl.style.display!=='none'){
+        stickyPick=null; locked=null;
+        try{ mineStop(); }catch(_){ }
+      }
+    }catch(_){ }
     for(const p of PANELS){
       try{
         if(!p.open()) continue;

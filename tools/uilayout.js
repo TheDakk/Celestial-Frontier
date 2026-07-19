@@ -197,7 +197,10 @@ async function main() {
         if(x){
           const xr=R(x);
           out.xr=xr; out.pr=pr; out.xTag=(x.className||'')+'#'+(x.dataset&&x.dataset.pnx||'');
-          out.xIn = xr.l>=pr.l-2 && xr.r<=pr.r+2 && xr.t>=pr.t-2;
+          /* the LAW is upper-right WITH AIR — not merely "inside": a ✕
+             auto-placed into a grid's bottom row passed the old check
+             (Nick's sheet screenshot). Corner region = top 70px, right 70px. */
+          out.xIn = xr.l>=pr.l-2 && xr.r<=pr.r+2 && xr.t>=pr.t-2 && xr.t<=pr.t+70 && xr.r>=pr.r-70;
           out.xOverText=0;
           /* measure GLYPHS, not boxes: floated ✕ makes text wrap around it,
              so a header's border-box may intersect while its text is clear —
