@@ -9300,7 +9300,7 @@ function showReveal(entry, isHybrid){
         ((entry.genome.brood||entry.genome.fed)?'<br>♞ Bloodline: brood '+(entry.genome.brood||0)+' · fed '+(entry.genome.fed||0):'')+'</div>';
       if(entry.kind==='Fauna' && S.cls){
         const _xp=(+entry.genome.xp)||0, _lv=S.lvl;
-        const _lo=12*_lv*_lv, _hi=12*(_lv+1)*(_lv+1);
+        const _lo=6*_lv*_lv, _hi=6*(_lv+1)*(_lv+1);
         const _pct=_lv>=9?100:Math.round((_xp-_lo)/Math.max(1,_hi-_lo)*100);
         stEl.innerHTML+='<div class="abil"><b>'+S.cls+'</b> · Level '+_lv+(_lv>=9?' · MAX':'')+
           ' — innate arts, always on ('+(1+(_lv>=3?1:0)+(_lv>=6?1:0))+' of 3 awake)'+
@@ -11145,7 +11145,14 @@ function classOf(g){
 }
 /* levels: pure win-fed XP, quadratic thresholds (early levels land fast).
    Levels NEVER touch stats — they unlock innate slots at 3 and 6. */
-function levelOf(g){ return Math.min(9, Math.floor(Math.sqrt(Math.max(0,(+g.xp)||0)/12))); }
+/* v1.5 BALANCE (leveling sim tier, 240-run measurement): at 12·l² only 3%
+   of sessions ever woke the SECOND art (L3 at a median 504 actions) and
+   nobody living reached L6 — the class system was fiction past level 1.
+   6·l² pins the intent: L3 ≈ 7 victories (mid-session for a fighter),
+   L6 ≈ 27 (a multi-session arc), L9 ≈ 61 (the long chase — or guardians).
+   The award trio (duels +8 · conquests +20 · guardians +60) is unchanged
+   and stays true on every card. */
+function levelOf(g){ return Math.min(9, Math.floor(Math.sqrt(Math.max(0,(+g.xp)||0)/6))); }
 function classKit(g){
   const cls=classOf(g), lvl=levelOf(g);
   const n=1+(lvl>=3?1:0)+(lvl>=6?1:0);
@@ -12735,6 +12742,9 @@ const RELEASES=[
   '⚔ CHARTERS TAKE THE PRIME SLOT — the hunt board and the Ascent are the daily drive now, so they wear the gold pill top right where the Prime Codex used to sit; the Codex (endgame) moved to the left rail.',
   '🐾 SPECIMEN CARDS CONDENSED — the world-card pattern comes to creatures: identity and battle stats up top, the field-notes wall folded behind a remembered expand group with a one-line digest. Extremophile finds keep their ⟁ headline — a discovery story never hides. Compendium shelf rows clamp to a glance; the card holds the prose.',
   '🌙 QUIET SKIES FOR NOW — Cosmic Events and the Traveler&#8217;s Beacon are tucked away while they&#8217;re reworked into something worthier; their achievements shelve with them. They&#8217;ll return.'],
+ ],
+ ['⚖ Balancing', [
+  '🛡 LEVELS YOU CAN ACTUALLY REACH — a 240-session synthetic panel found the class system was fiction past level 1: only 3% of sessions ever woke the second innate art, and nobody reached the third. Level thresholds are now half as steep: level 3 lands around seven victories, level 6 is a real multi-session arc, and level 9 is the long chase. XP awards are unchanged — duels +8, conquests +20, guardians +60, exactly as the card says.'],
  ],
  ['🐛 Bug Fixes', [
   'The notification tray no longer sits over the search box during Field Training — every lesson closes the panels the next lesson doesn&#8217;t need.',
