@@ -13,18 +13,19 @@
 ## Refresh the director's report artifact with the full round.
 ##
 ## OPENING MOVES, in order:
-## (1) Beta verdict + report refresh (above).
-## (2) NICK'S PENDING WORDS: emoji fixes (⚜ Forbidden Science = wrong;
-##     💠 Earpiece / 🚁 Survey Fleet / 🌗 Twin Suns = questionable —
-##     inventory in session notes); D1 wall-clock pacing FEEL check on
-##     his device (Jump p50 37 actions × 16s bursts — does it feel
-##     right?); L6 ceiling call (1/500 reach it — richer XP vs lower
-##     threshold).
-## (3) VENUS PILLAR REPRO (art): rebuild the exact Venus-132 postcard
-##     args and fix the floating-formation seating (ridge baseline +
-##     base-contact shadow — the space-era towers at 7601+ are the
-##     good pattern).
-## (4) MOBILE JOURNEY LEG for tools/uilayout.js (task queued): real
+## (1) Beta verdict + report refresh (above; round relaunched on
+##     07142d0 after the emoji/virga wave — full 6k, fail-fast).
+## (2) NICK'S PENDING WORDS (the two judgment calls only): D1
+##     wall-clock pacing FEEL check on his device (Jump p50 37 actions
+##     × 16s bursts — does it feel right?); L6 ceiling call (1/500
+##     reach it — richer XP vs lower threshold).
+##     ✔ DONE SAME-DAY (Nick: "supposed to be live"): EMOJI PASS live
+##     in 07142d0 (☣ Forbidden Science, 🔷 Deep Find, 🛰 Survey Fleet,
+##     ☀☀ Twin Suns; 💠 stays the Earpiece stud). VENUS PILLARS
+##     SOLVED: the caption was the clue — the VIRGA event's blur(3px)
+##     is unsupported on Safari/iOS, shafts drew as hard slabs reading
+##     as a skyline; now hand-feathered (browser-independent), live.
+## (3) MOBILE JOURNEY LEG for tools/uilayout.js (task queued): real
 ##     touch gameplay (land, mine, accept, sheet, yard) at phone
 ##     viewports via CDP Input.dispatchTouchEvent.
 ##
