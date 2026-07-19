@@ -841,7 +841,7 @@
   #codexbtn .dot.bio{width:6px;height:6px;border-radius:50%;background:#7fe6a0;box-shadow:0 0 8px #7fe6a0}
   #codexbtn .n{color:#7fe6a0}
   /* ---- Cargo hold (1.0): appears after your first mine of a dead world ---- */
-  #cargobtn{position:fixed;top:calc(var(--row1-h,58px) + 170px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
+  #cargobtn{position:fixed;top:calc(var(--row1-h,58px) + 130px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
     display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;
     font-family:var(--ui);font-size:11px;letter-spacing:.06em;color:var(--dim);
     background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
@@ -914,8 +914,13 @@
   #primebox .card{position:relative;width:min(460px,calc(100vw - 28px));max-height:calc(100vh - 36px);overflow-y:auto;
     background:var(--glass);border:1px solid rgba(255,207,138,0.4);border-radius:20px;padding:24px 22px;
     box-shadow:0 0 70px rgba(255,207,138,0.12),0 26px 80px rgba(0,0,0,0.7)}
-  #primebox .pxclose{position:absolute;top:12px;right:14px;width:28px;height:28px;border-radius:50%;border:none;cursor:pointer;
-    background:rgba(150,162,210,0.14);color:var(--dim);font-size:17px;line-height:1}
+  /* the Prime Codex ✕ joins the family (Nick: "a different type of X") —
+     same square-rounded chrome, same corner seat, same hit padding */
+  #primebox .pxclose{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:8px;border:0;cursor:pointer;
+    background:none;color:var(--faint);font-size:14px;line-height:26px;padding:0;text-align:center}
+  #primebox .pxclose:hover{color:var(--ink);background:rgba(150,162,210,0.14)}
+  #primebox .pxclose::after{content:'';position:absolute;inset:-8px}
+  @media (pointer:coarse){ #primebox .pxclose{width:28px;height:28px;font-size:13px;line-height:28px} }
   #primebox .ph .pt{font:700 18px var(--ui);letter-spacing:.04em;color:#ffe6a8;text-align:center}
   #primebox .ph .psubt{font-size:12px;line-height:1.6;color:var(--dim);text-align:center;margin:7px 0 14px}
   #primebox .pmeter-wrap{margin-bottom:14px}
@@ -1261,16 +1266,16 @@
   .fabgrp .fgbody{display:none;padding:4px 6px 6px}
   .fabgrp.open > .fgbody{display:block}
   /* ---- v1.5.2 THE RECORDS BOARD: trophies out of the mirror ---- */
-  /* v1.5.2c (Nick): Records rides UP into the standing rail — it matters
-     from minute one; the Shipyard (appears with first cargo) takes the
-     lower slot when it arrives */
-  #recbtn{position:fixed;top:calc(var(--row1-h,58px) + 130px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
+  /* v1.5.2c (Nick's final order): Shipyard ABOVE Records — the crafting
+     home takes the standing slot (it's always visible now); Records is
+     the LAST item on the rail */
+  #recbtn{position:fixed;top:calc(var(--row1-h,58px) + 170px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
     font-family:var(--ui);font-size:11px;letter-spacing:.08em;color:var(--dim);
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:999px;padding:7px 14px;
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:7px;
     transition:color .2s,border-color .2s}
   #recbtn:hover{color:var(--ink);border-color:rgba(255,217,106,0.55)}
-  #records{position:fixed;top:calc(var(--row1-h,58px) + 170px);right:18px;z-index:22;width:318px;max-height:min(62vh,540px);overflow-y:auto;display:none;
+  #records{position:fixed;top:calc(var(--row1-h,58px) + 210px);right:18px;z-index:22;width:318px;max-height:min(62vh,540px);overflow-y:auto;display:none;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:11px;
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
   #records h4{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:var(--plasma);margin:8px 0 6px}
@@ -8930,18 +8935,21 @@ function renderPanel(p, isLocked){
        the screen (Nick's training screenshot — Earth's card far from
        Earth). A drag re-sets the offset; slow orbit drift carries the
        card smoothly, never a chase-jitter. */
-    if(_frozenPick && p.sx!=null && (p.sx!==_frozenPick.x || p.sy!==_frozenPick.y)){
+    /* TRAINING PINS THE CARD (Nick: "it keeps moving all over the
+       screen") — no planet-following while a lesson is up; the ride
+       resumes when training ends */
+    if(tutDone && _frozenPick && p.sx!=null && (p.sx!==_frozenPick.x || p.sy!==_frozenPick.y)){
       _frozenPos.x += p.sx-_frozenPick.x;
       _frozenPos.y += p.sy-_frozenPick.y;
     }
-    if(p.sx!=null) _frozenPick={x:p.sx, y:p.sy};
+    if(tutDone && p.sx!=null) _frozenPick={x:p.sx, y:p.sy};
     ax=clamp(_frozenPos.x, 8, W-pw-8);
     ay=clamp(_frozenPos.y, _topMin, H-ph-12);
   } else {
     ax = p.sx+20+pw < W-8 ? p.sx+20 : p.sx-pw-20;
     ay = clamp(p.sy-10, _topMin, H-ph-12);
     ax = clamp(ax, 8, W-pw-8);
-    if(isLocked){ _frozenFor=d.logId; _frozenPos={x:ax, y:ay}; _frozenPick=(p.sx!=null)?{x:p.sx, y:p.sy}:null; }
+    if(isLocked){ _frozenFor=d.logId; _frozenPos={x:ax, y:ay}; _frozenPick=(tutDone && p.sx!=null)?{x:p.sx, y:p.sy}:null; }
     else { _frozenFor=null; }
   }
   if(ax!==_panelAX || ay!==_panelAY){
@@ -14088,9 +14096,15 @@ function renderCargo(){
   if(irows.length){
     const eqSet=new Set(Object.values(equip));
     html+='<div class="chead" style="margin-top:8px">🛠 Crafted</div><div class="inv">'+
-      irows.map(it=>'<span class="slot t'+it.tier+(it.cat==='sys'?' sys':'')+'" data-tip="'+it.name+(eqSet.has(it.id)?' — equipped':(it.cat==='sys'?' — ship system, online':''))+'">'+
-        '<img src="'+partIcon(it.id)+'" alt="'+it.name+'"><span class="qty">'+(it.cat==='sys'?'✓':itemCount(it.id))+'</span>'+
-        (eqSet.has(it.id)?'<span class="eqstar">★</span>':'')+'</span>').join('')+'</div>';
+      irows.map(it=>{
+        /* v1.5.2c (Nick): wearables equip straight from the hold — tap a
+           gear tile and it slots into its socket (tap again to unslot) */
+        const wear=it.slot && it.cat!=='sys';
+        return '<span class="slot t'+it.tier+(it.cat==='sys'?' sys':'')+'"'+(wear?' role="button" tabindex="0" data-eqitem="'+it.id+'"':'')+
+          ' data-tip="'+it.name+(eqSet.has(it.id)?' — equipped, tap to unslot':(wear?' — tap to wear':(it.cat==='sys'?' — ship system, online':'')))+'">'+
+          '<img src="'+partIcon(it.id)+'" alt="'+it.name+'"><span class="qty">'+(it.cat==='sys'?'✓':itemCount(it.id))+'</span>'+
+          (eqSet.has(it.id)?'<span class="eqstar">★</span>':'')+'</span>';
+      }).join('')+'</div>';
   }
   cargoEl.innerHTML=html;
 }
@@ -15476,11 +15490,10 @@ function ascEvent(type, detail){
     for(const g of ch.goals){
       if((ascProg[g.id]||0)>=g.n || g.ev!==type) continue;
       if(g.filt && !g.filt(detail||{})) continue;
-      /* v1.5.2 D1 (Nick's ruling): mining goals count PRESSES — one press
-         = one burst = one deed, so the burst cap can't collapse chapter
-         pacing. The ore itself still gates the recipes; charters and the
-         hold keep counting real loads. */
-      if(type==='mined' && !(detail && detail.press)) continue;
+      /* v1.5.2c (Nick, playing it): the counter must MOVE while the
+         drills run — every pull ticks the goal, auto pulls included
+         (press-only counting read as 'auto-mining doesn't count').
+         One pull = one tick; loads still fill the hold separately. */
       const inc=1;
       ascProg[g.id]=Math.min(g.n, (ascProg[g.id]||0)+inc);
       hit=true;
@@ -15732,7 +15745,10 @@ function _tutPanelSweep(s, prev){
       }catch(_){ }
     }
     if(owned.length){
-      _tutSweepT=setTimeout(()=>{ for(const p of owned){ try{ if(p.open()) p.close(); }catch(_){ } } }, 1600);
+      /* the grace beat grew 1.6s → 3.2s (Nick: windows were closing
+         before he was done with them) — the last lesson's panel gets a
+         real moment before it yields the stage */
+      _tutSweepT=setTimeout(()=>{ for(const p of owned){ try{ if(p.open()) p.close(); }catch(_){ } } }, 3200);
     }
   }catch(_){ }
 }
