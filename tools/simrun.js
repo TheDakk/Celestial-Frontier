@@ -1,7 +1,7 @@
 // Synthetic playthrough harness (v1.4 "Report Pack").
 //
 // Tiers:
-//   ui    — full-fidelity jsdom sessions driving the real 19-step Field
+//   ui    — full-fidelity jsdom sessions driving the real 20-step Field
 //           Training through the DOM (seeded random choices; a slice takes
 //           the Skip path), then a short live expedition.
 //   chaos — the ui tier with an adversary at the controls: random clicks on
@@ -452,8 +452,18 @@ async function expedition(sess, seed, nActions, deep) {
             } else clickEl(doc.querySelector('#doll [data-eqslot="' + skId + '"]'));   // fold the picker back
           }
           if (r() < 0.5) {
-            const tab = doc.querySelector('#cargo [data-ct="' + (r() < 0.5 ? 'fab' : 'bench') + '"]');
-            if (tab) { clickEl(tab); run.cargoTabs++; }
+            // v1.5.2: the bench lives at the Shipyard now — visit through the ship
+            clickEl(doc.getElementById('dollship'));
+            if (await until(() => doc.getElementById('yard').style.display === 'flex', 1200)) {
+              run.cargoTabs++;
+              const tabs = doc.querySelectorAll('#yardbench [data-yt]');
+              if (tabs.length) clickEl(tabs[(r() * tabs.length) | 0]);
+              const fg = doc.querySelectorAll('#yardbench .fghead');
+              if (fg.length && r() < 0.6) clickEl(fg[(r() * fg.length) | 0]);
+              clickEl(doc.getElementById('rank'));   // the sheet replaces the yard (one-panel law)
+              await sleep(20);
+              if (doc.getElementById('yard').style.display === 'flex') run.violations.push('sheet: yard did not yield to the sheet');
+            } else run.violations.push('sheet: docked ship did not open the Shipyard');
           }
           const x = doc.querySelector('#sheetcard [data-pnx]');
           if (x && r() < 0.5) clickEl(x); else clickEl(rank);
@@ -554,7 +564,7 @@ async function uiTraining(seed, chaos) {
       }
     }
   };
-  const tutAt = (n) => { const t = doc.getElementById('tutbox'); return visible(t) && t.textContent.includes(n + ' / 19'); };
+  const tutAt = (n) => { const t = doc.getElementById('tutbox'); return visible(t) && t.textContent.includes(n + ' / 20'); };
   const tutAct = () => click(doc.getElementById('tut-act'));
   const guard = (label) => {
     // during training the lesson card must never vanish and panels must not stack
@@ -596,9 +606,12 @@ async function uiTraining(seed, chaos) {
       click(doc.querySelector('#panel [data-act="add"]'));
       await stall(() => tutAt(5), 4000, 'step 5'); chaosBurst();
       click(doc.getElementById('logbtn'));
-      await stall(() => tutAt(6), 4000, 'step 6'); chaosBurst();
+      // v1.5.2 landing lesson: Land on Earth from the card
+      await stall(() => tutAt(6), 4000, 'step 6 (land lesson up)'); chaosBurst();
+      click(doc.querySelector('#panel [data-act="landcta"]'));
+      await stall(() => tutAt(7), 4000, 'step 7 (landed home)'); chaosBurst();
       click(doc.getElementById('codexbtn'));
-      await stall(() => tutAt(7), 4000, 'step 7'); guard('step7'); chaosBurst();
+      await stall(() => tutAt(8), 4000, 'step 7'); guard('step7'); chaosBurst();
       const openRandom = (kind) => {
         const all = [...H.codex.values()].filter((e) => !kind || e.kind === kind);
         if (!all.length) return null;
@@ -613,10 +626,10 @@ async function uiTraining(seed, chaos) {
         return e;
       };
       openRandom('Fauna');
-      await stall(() => tutAt(8), 4000, 'step 8'); chaosBurst();
+      await stall(() => tutAt(9), 4000, 'step 8'); chaosBurst();
       if (r() < 0.5) click(doc.getElementById('rev-scout'));
       tutAct();
-      await stall(() => tutAt(9), 4000, 'step 9'); chaosBurst();
+      await stall(() => tutAt(10), 4000, 'step 9'); chaosBurst();
       openRandom('Fauna');
       await stall(() => !!doc.getElementById('rev-feed'), 3000, 'feed button');
       click(doc.getElementById('rev-feed'));
@@ -629,7 +642,7 @@ async function uiTraining(seed, chaos) {
       }
       const cands = doc.querySelectorAll('#pick-list [data-pk]');
       if (cands.length) click(cands[(r() * cands.length) | 0]);
-      const fedOk = await stall(() => tutAt(10), 5000, 'step 10 (feed succeeded)');
+      const fedOk = await stall(() => tutAt(11), 5000, 'step 10 (feed succeeded)');
       if (fedOk && doc.getElementById('pick-result').textContent.includes('poisoned')) run.breaks.push('TRAINING FEED POISONED (rig broken)');
       click(doc.getElementById('pickclose'));
       chaosBurst();
@@ -640,36 +653,36 @@ async function uiTraining(seed, chaos) {
       let mates = doc.querySelectorAll('#pick-list [data-pk]');
       if (!mates.length) { openRandom('Fauna'); click(doc.getElementById('rev-breed')); await stall(() => !!doc.querySelector('#pick-list [data-pk]'), 3000, 'breed picker (reopen)'); mates = doc.querySelectorAll('#pick-list [data-pk]'); }
       if (mates.length) click(mates[(r() * mates.length) | 0]);
-      await stall(() => tutAt(11), 6000, 'step 11 (breed succeeded)');
+      await stall(() => tutAt(12), 6000, 'step 11 (breed succeeded)');
       click(doc.getElementById('pickclose'));
       chaosBurst(); tutAct();
       await stall(() => visible(doc.getElementById('duelbox')), 6000, 'duel opens');
       chaosBurst();   // chaos DURING the duel — the modal must not die
       if (!visible(doc.getElementById('duelbox'))) run.breaks.push('duelbox closed by stray input during training duel');
       if (r() < 0.6) { await sleep(350); click(doc.getElementById('duelskip')); }
-      await stall(() => tutAt(12), 30000, 'step 12 (duel done)');
+      await stall(() => tutAt(13), 30000, 'step 12 (duel done)');
       tutAct();
-      await stall(() => tutAt(13), 5000, 'step 13'); chaosBurst();
+      await stall(() => tutAt(14), 5000, 'step 13'); chaosBurst();
       click(doc.getElementById('hpheart'));
       await stall(() => !!doc.querySelector('#pick-list [data-pk]'), 3000, 'heal picker');
       let meds = doc.querySelectorAll('#pick-list [data-pk]');
       if (!meds.length) { click(doc.getElementById('hpheart')); await stall(() => !!doc.querySelector('#pick-list [data-pk]'), 3000, 'heal picker (reopen)'); meds = doc.querySelectorAll('#pick-list [data-pk]'); }
       if (meds.length) click(meds[(r() * meds.length) | 0]);
-      await stall(() => tutAt(14), 4000, 'step 14 (heal succeeded)');
+      await stall(() => tutAt(15), 4000, 'step 14 (heal succeeded)');
       click(doc.getElementById('pickclose'));
       chaosBurst();
       click(doc.getElementById('bell'));
-      await stall(() => tutAt(15), 4000, 'step 15'); chaosBurst();
+      await stall(() => tutAt(16), 4000, 'step 15'); chaosBurst();
       type(doc.getElementById('searchin'), 'earth');
-      await stall(() => tutAt(16), 4000, 'step 16'); chaosBurst();
+      await stall(() => tutAt(17), 4000, 'step 16'); chaosBurst();
       click(doc.getElementById('rank'));
-      await stall(() => tutAt(17), 4000, 'step 17 (sheet open)'); chaosBurst();
+      await stall(() => tutAt(18), 4000, 'step 17 (sheet open)'); chaosBurst();
       // v1.5.1 THE FORGE LESSON: fab tab, craft the Iron Plate for real
       click(doc.querySelector('#cargo [data-ct="fab"]'));
       await stall(() => !!doc.querySelector('#cargo [data-craft="plate"]'), 3000, 'forge: fab tab');
       click(doc.querySelector('#cargo [data-craft="plate"]'));
-      await stall(() => tutAt(18), 4000, 'step 18 (plate forged)'); chaosBurst(); tutAct();
-      await stall(() => tutAt(19), 4000, 'step 19'); chaosBurst(); tutAct();
+      await stall(() => tutAt(19), 4000, 'step 18 (plate forged)'); chaosBurst(); tutAct();
+      await stall(() => tutAt(20), 4000, 'step 19'); chaosBurst(); tutAct();
       await stall(() => H.tutDone === true, 5000, 'finale');
     }
     run.completed = H.tutDone === true;
