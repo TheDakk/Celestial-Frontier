@@ -7789,8 +7789,13 @@ function hdVista(opts){
    longer see-once: the last landing's args are cached so the surface
    card can reopen it (graphics overhaul B1) */
 const vistaBox=document.createElement('div');vistaBox.id='vistabox';document.body.appendChild(vistaBox);
-let _lastVista=null, _vistaHideT=0, _vistaShowSeq=0;
+let _lastVista=null, _vistaHideT=0, _vistaShowSeq=0, _vistaArmedAt=0;
 vistaBox.addEventListener('click', ()=>{
+  /* GHOST-CLICK GUARD (Nick: "the vista popped up and then closed"): on
+     touch, the tap that pressed LAND synthesizes a click a beat later —
+     it landed on the freshly-mounted overlay and dismissed the payoff.
+     The dismiss arms 420ms after the show; the birth-tap passes through. */
+  if(performance.now()-_vistaArmedAt<420) return;
   /* a show's fade-in rides a queued animation frame — bump the sequence so
      a lightning-fast tap can't lose the race and strand the view open */
   _vistaShowSeq++;
@@ -7847,6 +7852,7 @@ function _vistaExtras(host){
    framed card floating over the game, ✕ on the frame). One mount path for
    every scene family + the re-view. */
 function _vistaMount(headHtml, cv, vtTxt){
+  _vistaArmedAt=performance.now();   /* the dismiss arms shortly AFTER the show */
   vistaBox.innerHTML='';
   const card=document.createElement('div'); card.className='vcard';
   const vh=document.createElement('div'); vh.className='vh'; vh.innerHTML=headHtml;
@@ -15521,9 +15527,11 @@ const TUT_STEPS=[
   when:(t,d)=>t==='landfall'&&d.planetSeed===133},
  {id:'cache', spot:'#codexbtn', allow:['#codexbtn'],
   enter:()=>{ _tutGrant();
-    /* the Planetside from the landing lesson gets its beat, then yields
-       the stage to the Compendium (the vista is not a managed panel) */
-    setTimeout(()=>{ try{ _lastVista=null; vistaBox.classList.remove('on'); vistaBox.style.display='none'; }catch(_){ } }, 1600); },
+    /* the Planetside from the landing lesson is the PAYOFF — it lingers
+       long enough to actually be seen (1.6s read as a glitch: Nick's
+       "popped up and then closed"), then yields the stage to the
+       Compendium (the vista is not a managed panel) */
+    setTimeout(()=>{ try{ _lastVista=null; vistaBox.classList.remove('on'); vistaBox.style.display='none'; }catch(_){ } }, 3200); },
   text:()=>'A training cache just arrived: three Earth beasts and three Earth flora, on loan from the order. Open your <b>Compendium</b> to meet them.',
   when:(t,d)=>t==='codex-open'&&!!d.open},
  {id:'specimen', spot:'#codex', allow:['#codex'],
