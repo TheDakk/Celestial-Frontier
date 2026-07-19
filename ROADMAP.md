@@ -23,6 +23,31 @@
 ##  · medium 150: was still running at close — if tools/
 ##    hammer2-medium.json exists next session, read it; its bots were
 ##    already correct (API + updated sheet/yard actions).
+## MEDIUM VERDICT + HAMMER3 (recorded 2026-07-19 ~00:30, autonomous
+## batch after the hammer2 background round completed):
+##  · hammer2-medium landed: 558× 'sheet: docked ship did not open the
+##    Shipyard' — the SAME false-negative family, NOT a game bug: the
+##    medium/deep 'sheet' action still clicked #dollship, an id REMOVED
+##    by the v1.5.2b pack change (the sheet/yard bots were NOT already
+##    correct, contrary to the line above). cargoTabs: 0 — the yard got
+##    ZERO medium-mode coverage. Otherwise clean: 0 deaths, 0 softlocks,
+##    saves 148/150 (2 = run-cap truncation), funIndex mean 6.26.
+##  · DRIVER FIXED: sheet action now enters through the real door —
+##    #cargobtn (gated on visibility, like a player) → yard asserts →
+##    rank reclaims the sheet. Violation string renamed ('the Shipyard
+##    rail button did not open the yard').
+##  · STALE COPY FIXED in the staged build (v1.5.2b missed spots, all
+##    player-visible): the v1.5.2 release-note bullet still said "tap
+##    her where she docks beside your paperdoll" (now: the right-rail
+##    Shipyard button); the Guide crafting entry still listed "the ship
+##    Module docked beside the figure" (now: the 🎒 pack on your
+##    shoulder); three stale source comments synced. Battery after:
+##    fingerprint 50/50, smoke 293 PASS / 0 FAIL, validate all-PASS.
+##  · HAMMER3 LAUNCHED on this build (chaos 300 + ui 150 + medium 150,
+##    background): the FIRST round to actually exercise the 23:54
+##    training-driver fix (hammer2's ui/chaos legs started before that
+##    commit landed and ran the OLD driver). Results →
+##    tools/hammer3-{chaos,ui,medium}.json when 'HAMMER3 DONE'.
 ##  · The GAME build passed everything that actually reached it:
 ##    fingerprint 50/50, smoke 293/293 (drives all 20 training steps
 ##    incl. the Shipyard forge THROUGH THE DOM), systems 19/19,
