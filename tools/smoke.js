@@ -680,6 +680,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       const vb = sk.doc.getElementById('vistabox');
       check('gas giant planetfall opens the Cloud deck vista', vb.style.display === 'flex'
         && vb.textContent.includes('Cloud deck'), vb.textContent.slice(0, 60));
+      await new Promise((r) => setTimeout(r, 480));   // outlive the ghost-click arming window
       click2(vb, sk.w);
       await until(() => vb.style.display === 'none', 4000, 'deck dismiss');
       check('cloud deck dismisses like every vista', vb.style.display === 'none');
