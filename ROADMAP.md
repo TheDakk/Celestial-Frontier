@@ -1,5 +1,211 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
+## ★★★ v1.6 "THE LIVING FRONTIER" — LOCKED DESIGN (2026-07-19, Nick +
+## Claude, off the uploaded 5-file Generation Data Pack v2.1.0) ★★★
+## SHIP-GATE FIRST: v1.5.2c "The Titan Hunt" (GAME_VERSION bumped in source;
+## titan/cradle/capture/story release notes added; retitled block) is staged
+## — rebuild+validate after the running 6k beta clears, then deploy on Nick's
+## word to CLOSE OUT 1.5. Then v1.6 begins.
+##
+## THE DATA PACK (uploads: 01_EARTH 3236 rows, 02_NON_EARTH 1575, 03_PROCEDURAL
+## 816, 04_SUPPORT 117, 05_GUIDE.md). RULING: CURATE + VOCABULARY, never embed
+## wholesale (5,600 rows would break the single-file seeded-procedural
+## architecture + phone budget).
+##   · EARTH = AUTHORED. Full unique roster: 563 animals + 310 plants (distinct
+##     species — Black/Brown/Polar/Sloth/Spectacled Bear are 5 separate catches;
+##     2,269 fauna rows = biome PLACEMENTS of the 563, kept as biome-membership).
+##     ALL of it spawns at home, organized into ~10-13 biome-family REGIONS
+##     (Forest/Grassland/Desert/Polar/Marine/Freshwater/Mountain/Coastal/Cave/
+##     Island/Shrubland), Uncommon-capped, real names, starter-normalized stats,
+##     per-expedition RANDOMNESS (replay Earth → different Compendium slice).
+##   · NON-EARTH = PROCEDURAL VOCABULARY. Lift the 315 biome IDENTITIES (element/
+##     theme, tier, planet-type, substrate/atmo/temp/gravity/light, hazards) into
+##     the seeded generator → far-ring worlds gain distinct star/biome/galaxy
+##     identity beyond ring 1. 758 procedural traits + 58 compatibility rules →
+##     richer, more coherent creatures. Elemental biomes (Fire→Emberfield etc.)
+##     feed the Titan Hunt's 9 elements. DO NOT embed the 1,260 spawn-pool rows —
+##     the engine already generates them.
+##   · THE 93 EARTH BIOMES do DOUBLE DUTY (Nick's compromise): signature families
+##     at HOME; the full 93 are the biome pool for FAR-RING habitable/Earth-like
+##     worlds (Earth-like creatures out there, + a seeded EVOLUTION twist so a
+##     Deep-Field Earth-like shows a Rare/mutated cousin, bridging authored Earth
+##     life into the procedural rarity ladder).
+##
+## RARITY / TIERS / SUCCESS (Nick approved 2026-07-19):
+##   · LADDER: our live 15-tier GRADE_TIERS is AUTHORITATIVE (Common..Omnipotent).
+##     Pack's 7 map in by POSITION not name: Epic→Exotic, pack-Anomalous(their
+##     top)→our summit. We have far more than enough tiers; add none.
+##   · CAPS BY RING: existing ringGrade stands (Legendary near → Mythic home galaxy
+##     → summit Deep Field). Pack difficulty tiers 1-5 ≙ our rings 1-5.
+##   · SUCCESS TABLE: REPLACE the flat formula (0.78-0.07*tier, same for both) with
+##     CLAUDE'S per-attempt table (pack was the sanity-ref, NOT literal — pack
+##     numbers assume unlimited tries; Biosphere Yield makes tries FINITE, so we
+##     recalibrated UP to per-VISIT feel). TAME/attempt: Common 60 · Uncommon 45 ·
+##     Rare 27 · Exotic 19 · Legendary 13 · Anomalous 9 · Mythic 4 · Celestial+ 2→<1.
+##     SCAVENGE ≈ 1.5-2× tame (cap 95). SAMPLE (microbes) its own gentle curve.
+##     TARGET per abundant visit (~8 attempts): Common near-lock · Rare likely ·
+##     Legendary+ a chase · summit = post-game tail.
+##   · TWO FIXES THAT MATTER MORE THAN THE TABLE: (1) GEAR SCALING — contact gear
+##     is +0.5% today (noise); make it up to ~+25% by tier = the real
+##     success-per-attempt lever. (2) DEPTH PENALTY — mild x0.9/ring beyond home,
+##     NOT the pack's cliff (Deep-Field Common ~40%, not 8%).
+##
+## THE FOUR KINGDOMS (Nick 2026-07-19): Fauna→🐾 Tame (fighters/breeders) ·
+## Flora→🌿 Scavenge (medicine/food/poison) · Fungi→🌿 Scavenge (flora-family,
+## distinct flavor) · Microbes→🔬 SAMPLE (NOT combatants — research/crafting
+## inputs to the Fabricator + Compendium breadth; the life of primitive/
+## "microbial" abundance-tier worlds). Verb label follows the kingdom over one
+## capture flow.
+##
+## BIOSPHERE YIELD: attempts = the finite world resource (every Tame/Scavenge/
+## Sample spends one, hit or miss; dry = worked out, move on). Pool by abundance:
+## barren 0 (mine instead) · microbial ~3 · flora ~6 · complex/Earth-like ~10-12,
+## x seeded wobble. Success-per-attempt = the table + gear (never the pool).
+## RECOVERY + EVOLUTION ride the EXISTING epoch clock (evolveGenome/per-epoch
+## reroll): revisit after an epoch → pool regrows + roster evolved (new hybrids/
+## descendants). One clock → a LIVING Compendium. Emergent replay for free.
+## COMPENDIUM = POST-GAME TROPHY atop the Titan Hunt/Prime Codex arc; "100%" is a
+## DEFINED MILESTONE (every world-type's signature life, or a prestige) over the
+## endless living count — "you cannot finish the infinite, only master it."
+##
+## EARTH ROSTER ADDITIONS (Claude's gap review, Nick liked — compile in pack
+## format w/ rarity + biome placements): AUSTRALIA/MONOTREMES Kangaroo·Koala·
+## Platypus·Echidna·Wombat·Tasmanian Devil·Wallaby·Sugar Glider · ICONIC
+## REPTILES/AMPHIB Komodo Dragon·Chameleon·Gila Monster·Axolotl·Frilled Lizard ·
+## PRIMATES Lemur·Gibbon·Mandrill·Marmoset · RATITES Emu·Cassowary·Kiwi · MISC
+## Sun Bear·Dingo·Cockatoo·Firefly·Vampire Bat·Pronghorn · LIVING FOSSILS (great
+## high-rarity catches) Coelacanth·Nautilus·Tardigrade·Horseshoe Crab · NEW
+## EARTH FUNGI KINGDOM (~10, incl. a poison) Chanterelle·Morel·Truffle·Oyster·
+## Lion's Mane·Fly Agaric·Puffball·Death Cap · EARTH MICROBES for Sample
+## Tardigrade·Plankton·Diatom·Cyanobacteria·Amoeba · PLANTS Venus Flytrap·
+## Eucalyptus·Poppy·Oak·Redwood·Cedar. (~40-50 adds; pack is otherwise complete.)
+##
+## BUILD ORDER: (1) ITEM TOOLTIP CARDS + CLICK-TO-EQUIP (Nick's ask: cargo items
+## have no stats/hover card today; crafted+found get a painterly card like
+## planets/stars showing effects+slot+rarity; click an equippable → auto-slots to
+## its body socket. This is the loot foundation — the card is where per-instance
+## affixes render). (2) CAPTURE BACKBONE (success table + gear fix + depth mod +
+## the 4-kingdom verbs). (3) EARTH STARTER ZONE (full roster + additions + fungi/
+## microbes + biome regions + zone traversal — survey-card lists regions, map is a
+## later upgrade). (4) FAR-RING CONTENT (biome vocabulary, habitable-world Earth-
+## like rosters + evolution twist, trait enrichment). (5) BIOSPHERE YIELD (finite
+## attempts + epoch recovery). (6) AFFIX/LOOT CORE (per-instance gear stats on the
+## item card). (7) CHAMPION CODES (clamped, exhibit-only showcase codes).
+## ★ THE ARTWORK ANSWER (Nick's key question 2026-07-19: how do KNOWN Earth
+## animals fit the HD engine?): WE DON'T DRAW THEM — we describe each as a
+## GENOME RECIPE and let speciesPortrait/hdGenesFor PAINT it, so it's in-style
+## by construction (one brush = the HD Engine Law holds automatically). Today
+## the Cradle layers real NAMES onto RANDOM genomes (a "Wolf" may not look
+## wolf-ish); v1.6 FLIPS it: named animal → authored/derived genome whose traits
+## (body plan, head, covering, color, size + 2-3 defining TELLS) make the engine
+## render a recognizable painterly version. Scales because animals cluster into
+## ~40-60 body ARCHETYPES (all bears/cats/canids/ungulates share a base) ×
+## parametric variation, NOT 563 drawings — and Part II's taxonomy IS the recipe
+## language. REAL WORK: extend the engine's render vocabulary for distinct
+## SILHOUETTES (bipedal-hopper=kangaroo, duck-bill=platypus, trunk=elephant,
+## long-neck=giraffe, shell, antlers…) — pays double (better Earth animals AND
+## richer aliens). Painterly interpretation, not photoreal; lean on NAME + biome
+## + signature feature; the 5 bears share a base and differ by color/size (honest
+## — real bears are similar). PROOF-SHEET every Earth animal (proofsheet.js),
+## read the PNGs, iterate recipes till they read right. This is its own v1.6
+## phase: "THE EARTH BESTIARY" (engine-vocabulary extension + genome recipes),
+## sequenced with/after the Earth Starter Zone build.
+##
+## THE 2ND UPLOAD (618a8f13 Additional Organisms + Procedural Vocabulary):
+##   PART I ORGANISMS — ALL NEW (cross-checked vs the 563/310, zero dupes). ADOPT:
+##   ~38 fauna (Pronghorn·Springbok·Bongo·Duiker·Gerenuk·Nilgai·Tahr·Serow·Colugo·
+##   Tree Shrew·Aye-Aye·Proboscis Monkey·Quoll·Harpy Eagle·Kookaburra·Hoatzin·
+##   Quetzal·Weaverbird·Screamer·Kakapo·Ocean Sunfish·Remora·Archerfish·Knifefish·
+##   Icefish·Mudminnow·Flying Gurnard·Sea Squirt·Salp·Pyrosome·Lancelet·Sea Spider·
+##   Fairy Shrimp·Tadpole Shrimp·Springtail·Dobsonfly·Scorpionfly·Thrips) · ~18
+##   flora (Dragon Fruit·Kiwi Fruit·Watermelon·Mangosteen·Rhubarb·Breadnut·Cotton·
+##   Flax·Hemp·Tobacco·Canola·Licorice·Anise·Star Anise·Fenugreek·Joshua Tree·Tea
+##   Tree·Camphor Tree) · ~25 FUNGI (new kingdom) · ~22 MICROBES (new). APPLY the
+##   doc's NORMALIZATION (merge Cat/Cattle/Chicken/Grape/etc.; KEEP Grizzly Bear
+##   SEPARATE from Brown Bear — Nick's earlier Q answered YES). Net Earth roster
+##   after both uploads: ~600 animals + ~330 plants + ~35 fungi + ~22 microbes.
+##   PART II PROCEDURAL VOCABULARY (28 fields) — this IS the expanded genome
+##   language for BOTH the artwork recipes AND richer aliens. TRIAGE:
+##     ADOPT (core vocab + systems): body plan/shape/limbs/skeleton, head/mouth/
+##     feeding, respiration/circulatory/metabolism, covering/pattern/color-behavior,
+##     locomotion, defensive+offensive traits (→ duel abilities), senses, behavior/
+##     communication/temperament (→ tameability), reproduction/lifespan/size,
+##     habitat, ELEMENTAL AFFINITY (→ the 9 titans/biome elements), tameability
+##     factors + scavenge/harvest factors (→ Biosphere Yield tuning + crafting),
+##     flora structure/parts/defenses/growth, fungi+microbe traits, environmental
+##     variables (atmo/gravity/temp/light/liquid/weather → biome identity+vista+
+##     hazards), RESOURCE DROPS (→ creatures drop materials to the Fabricator/loot),
+##     and §28 PROCEDURAL VALIDATION RULES (coherence backbone — Earth fauna can't
+##     get crystalline skeleton/void travel/magma-swim etc.; aquatic needs gills;
+##     parasites need hosts; biome caps override; Earth ≤ Uncommon — this is WHAT
+##     KEEPS EARTH ANIMALS RECOGNIZABLE and aliens coherent; extends the pack's 58
+##     rules). FLAVOR-ONLY (descriptor on summit/void/prismatic, not built as
+##     mechanics now): anomalous abilities (Teleport/Time/Reality), exotic diets
+##     (Emotion/Light Feeder), telepathy/hive-mind, void/magical metabolism, exotic
+##     locomotion (Teleport/Phase). DEFER/EXCLUDE: Sapient/Proto-Sapient (conflicts
+##     with the civilization system), RPG-gating (Required Quest/Reputation/Skill),
+##     Disease Chance/Spoilage (no such systems yet).
+## THE 3RD UPLOAD (904f763c Additional Biomes) — ADOPT as biome VOCABULARY (same
+## curate rule: lift identities+metadata, generator paints/assigns; don't embed
+## spawn rows). BIGGEST WIN = the NEW MIDDLE TIER "EARTH-LIKE EXOPLANET" (~60-70:
+## tidally-locked Twilight-Belt Forest/Terminator Savanna, star-spectrum Red-Dwarf
+## Blackleaf Forest/Infrared Jungle/UV Shield Forest, planet-scale Global Riverland/
+## Fog Desert/Supercontinent Interior, gravity Low-Grav Giant Forest/High-Grav Dwarf
+## Forest, atmosphere High-Oxygen Megaforest/Sulfur-Tolerant Wetland, geological
+## Crater Oasis/Lava-Tube Biosphere/Caldera Rainforest, moon Subsurface Moon Ocean/
+## Ice-Moon Vent). These ARE the "far-ring Earth-like worlds" — biologically
+## plausible, recognizable ecological roles, Rare-or-lower, carry the EARTH ROSTER
+## with star/gravity-driven color+anatomy shifts + the seeded EVOLUTION twist.
+## ALSO ADOPT the extra EXOTIC non-Earth (physical/cosmic Rogue-Planet Sea/Neutron-
+## Star Crustlands/Photon Sea/Aurora Ocean → tie to our stellar systems; exotic-
+## matter Ferrofluid Marsh/Diamond-Rain Layer/Metallic-Hydrogen Ocean → real
+## exoplanet science; TECH Quantum-Computer Caverns/Server-Reef → Machine element;
+## LIGHT/PRISM Laser Forest/UV Reef/Living-Rainbow River → Prism titan; VOID Void
+## Bloom/Silence Abyss/Vacuum Garden → Void titan; LIVING-WORLD Living Continent/
+## Sapient Ocean/Planetary Eye → a RARE deep-frontier special world-type). Nick
+## already EXCLUDED Mind/Memory/Emotion + Dimensional/Reality biomes (too abstract/
+## un-renderable — good). ADOPT the biome_scope FIELD (Earth · Earth-Like Exoplanet
+## · Alien Habitable · Extreme Alien · Artificial · Anomalous · Spiritual · Cosmic)
+## — it drives ring/type assignment. TARGET ~525-550 biomes (93 Earth + 60-70
+## Earth-like + 370-390 exotic).
+## ★ THE 2ND ART LIFT — "THE BIOME ATLAS": biomes/vistas paint the SAME way as
+## creatures (hdVista assembles from biome metadata: substrate/atmo/light/liquid/
+## weather/palette → NOT hand-drawn). The new biomes need vista-painter vocabulary
+## extension (red-dwarf → dark foliage, low-grav → tall spindly, diamond-rain →
+## crystalline, void → null-light) + proof-sheets. Parallels The Earth Bestiary:
+## creatures = genome→speciesPortrait; biomes = metadata→hdVista. Both are the big
+## v1.6 art work; both "describe→engine paints→proof-sheet," never external art.
+## PROTOTYPE FIRST (Nick agreed): author genome recipes for a handful (Wolf·
+## Kangaroo·Elephant·Great White) + a couple new-biome vistas, proof-sheet them,
+## and confirm the engine renders recognizably BEFORE committing to ~600 animals +
+## ~525 biomes. De-risks the whole art question.
+## ★ BIOME ASSIGNMENT + COLOR COHERENCE (Nick's Q 2026-07-19: how do planets get
+## biomes, which HZ worlds go non-Earth-like, do colors reflect biome?). PIPELINE
+## (all seeded/deterministic, cached per planet seed): seed → planetParams(type,
+## gravity/size, atmosphere) → system STAR CLASS → climateBand(HZ position: hot/
+## temperate/cold) → ring/region → FILTER the ~525 biomes by each biome's metadata
+## (compatible_planet_types + temp/gravity/atmo/light BANDS + difficulty_tier +
+## biome_scope) → SEEDED PICK. Same planet = same biome for every player. WHICH HZ
+## WORLDS GO NON-EARTH-LIKE: terran/ocean IN the HZ near home around a SUN-LIKE
+## star → Earth-like; the SAME world around a RED DWARF / tidally-locked / high-
+## gravity / odd-atmosphere system → EARTH-LIKE EXOPLANET (star+gravity+air pick
+## it); wrong type in HZ → sparse/microbial/Alien Habitable; out of HZ or lava/gas/
+## ice/venus → exotic/elemental regardless; DEPTH shifts the eligible pool Earth-
+## like→Alien Habitable→Extreme Alien→Void/Prismatic, gated by ring rarity cap.
+## ONE-VS-MANY: rich complex-life worlds get a FEW biome REGIONS (like Earth);
+## barren/simple worlds get ONE dominant biome — scales with Biosphere Yield
+## abundance. COLOR (the v1.3 card-drives-picture law EXTENDED, this is a real
+## change — today P.hue is RANDOM r()*360): the BIOME drives the palette. Each
+## biome carries a theme/palette → the planet's ORBITAL sprite hue derives from its
+## PRIMARY biome (read a world's nature from its map color before landing) → the
+## surface vista uses the SAME palette → creatures rim-lit by the scene (creature-
+## belonging law). Orbital sprite → vista → creature light = one biome-derived
+## palette, map to ground. WORK: derive display hue from assigned biome in
+## planetParams/getPlanetSprite (still seeded), + the Biome Atlas vista vocabulary.
+## PROCESS: standard rollout each release (battery→copy+DE-DASH sweep→guide→layout
+## gate→6k beta acted-on→team panels→deploy). v1.6 copy law: remove the em-dash
+## game-wide.
+
 ## ▶▶▶ NEXT SESSION — v1.6 (RESUME HERE; updated 2026-07-19 session
 ## close, Nick: "get ready for v1.6") ◀◀◀
 ##

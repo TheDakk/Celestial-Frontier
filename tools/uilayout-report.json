@@ -1,6 +1,433 @@
 {
  "results": [
   {
+   "vp": "iphone-se",
+   "surf": "boot",
+   "name": "coarse-pointer emulation active",
+   "ok": true,
+   "detail": "pnx touch sizing rules apply"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "boot",
+   "name": "boots and training skips",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "rail-cold",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "rail-after-tray",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "rail-after-search",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "charters",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "charters",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "charters",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "charters",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "charters",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "charters",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "charters",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "compendium",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "compendium",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "compendium",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "compendium",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "compendium",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "compendium",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "compendium",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "atlas",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "atlas",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "atlas",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "atlas",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "atlas",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "atlas",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "atlas",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "records",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "records",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "records",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "records",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "records",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "records",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "records",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "sheet",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "sheet",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "sheet",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "sheet",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "sheet",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "sheet",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "sheet",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "shipyard",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "shipyard",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "shipyard",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "shipyard",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "shipyard",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "shipyard",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "shipyard",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "settings",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "settings",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "settings",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "settings",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "settings",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "settings",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "settings",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "tray",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "tray",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "tray",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "tray",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "tray",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "tray",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "tray",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
    "vp": "iphone",
    "surf": "boot",
    "name": "coarse-pointer emulation active",
@@ -428,6 +855,2134 @@
    "detail": ""
   },
   {
+   "vp": "iphone-max",
+   "surf": "boot",
+   "name": "coarse-pointer emulation active",
+   "ok": true,
+   "detail": "pnx touch sizing rules apply"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "boot",
+   "name": "boots and training skips",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "rail-cold",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "rail-after-tray",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "rail-after-search",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "charters",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "charters",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "charters",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "charters",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "charters",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "charters",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "charters",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "compendium",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "compendium",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "compendium",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "compendium",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "compendium",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "compendium",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "compendium",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "atlas",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "atlas",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "atlas",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "atlas",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "atlas",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "atlas",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "atlas",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "records",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "records",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "records",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "records",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "records",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "records",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "records",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "sheet",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "sheet",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "sheet",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "sheet",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "sheet",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "sheet",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "sheet",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "shipyard",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "shipyard",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "shipyard",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "shipyard",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "shipyard",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "shipyard",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "shipyard",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "settings",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "settings",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "settings",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "settings",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "settings",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "settings",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "settings",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "tray",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "tray",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "tray",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "tray",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "tray",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "tray",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "tray",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "boot",
+   "name": "coarse-pointer emulation active",
+   "ok": true,
+   "detail": "pnx touch sizing rules apply"
+  },
+  {
+   "vp": "android",
+   "surf": "boot",
+   "name": "boots and training skips",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "rail-cold",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "rail-after-tray",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "rail-after-search",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "charters",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "charters",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "charters",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "charters",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "charters",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "charters",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "charters",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "compendium",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "compendium",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "compendium",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "compendium",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "compendium",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "compendium",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "compendium",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "atlas",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "atlas",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "atlas",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "atlas",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "atlas",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "atlas",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "atlas",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "records",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "records",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "records",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "records",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "records",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "records",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "records",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "sheet",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "sheet",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "sheet",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "sheet",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "sheet",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "sheet",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "sheet",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "shipyard",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "shipyard",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "shipyard",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "shipyard",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "shipyard",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "shipyard",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "shipyard",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "settings",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "settings",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "settings",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "settings",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "settings",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "settings",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "settings",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "tray",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "tray",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "tray",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "tray",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "tray",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "tray",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "tray",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "boot",
+   "name": "coarse-pointer emulation active",
+   "ok": true,
+   "detail": "pnx touch sizing rules apply"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "boot",
+   "name": "boots and training skips",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "rail-cold",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "rail-after-tray",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "rail-after-search",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "charters",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "charters",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "charters",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "charters",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "charters",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "charters",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "charters",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "compendium",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "compendium",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "compendium",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "compendium",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "compendium",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "compendium",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "compendium",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "atlas",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "atlas",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "atlas",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "atlas",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "atlas",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "atlas",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "atlas",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "records",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "records",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "records",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "records",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "records",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "records",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "records",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "sheet",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "sheet",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "sheet",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "sheet",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "sheet",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "sheet",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "sheet",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "shipyard",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "shipyard",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "shipyard",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "shipyard",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "shipyard",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "shipyard",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "shipyard",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "settings",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "settings",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "settings",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "settings",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "settings",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "settings",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "settings",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "tray",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "tray",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "tray",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "tray",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "tray",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "tray",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "tray",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "boot",
+   "name": "coarse-pointer emulation active",
+   "ok": true,
+   "detail": "pnx touch sizing rules apply"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "boot",
+   "name": "boots and training skips",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "rail-cold",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "rail-after-tray",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "rail-after-search",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "charters",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "charters",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "charters",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "charters",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "charters",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "charters",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "charters",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "compendium",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "compendium",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "compendium",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "compendium",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "compendium",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "compendium",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "compendium",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "atlas",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "atlas",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "atlas",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "atlas",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "atlas",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "atlas",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "atlas",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "records",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "records",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "records",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "records",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "records",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "records",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "records",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "sheet",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "sheet",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "sheet",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "sheet",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "sheet",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "sheet",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "sheet",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "shipyard",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "shipyard",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "shipyard",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "shipyard",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "shipyard",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "shipyard",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "shipyard",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "settings",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "settings",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "settings",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "settings",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "settings",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "settings",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "settings",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "tray",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "tray",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "tray",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "tray",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "tray",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "tray",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "tray",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "boot",
+   "name": "boots and training skips",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "rail-cold",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "rail-after-tray",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "rail-after-search",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "charters",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "charters",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "charters",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "charters",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "charters",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "charters",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "charters",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "compendium",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "compendium",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "compendium",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "compendium",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "compendium",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "compendium",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "compendium",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "atlas",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "atlas",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "atlas",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "atlas",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "atlas",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "atlas",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "atlas",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "records",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "records",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "records",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "records",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "records",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "records",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "records",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "sheet",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "sheet",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "sheet",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "sheet",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "sheet",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "sheet",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "sheet",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "shipyard",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "shipyard",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "shipyard",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "shipyard",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "shipyard",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "shipyard",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "shipyard",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "settings",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "settings",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "settings",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "settings",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "settings",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "settings",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "settings",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "tray",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "tray",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "tray",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "tray",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "tray",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "tray",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "tray",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
    "vp": "desktop",
    "surf": "boot",
    "name": "boots and training skips",
@@ -842,6 +3397,426 @@
   },
   {
    "vp": "desktop",
+   "surf": "tray",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "boot",
+   "name": "boots and training skips",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "rail-cold",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "rail-after-tray",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "rail-after-search",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "charters",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "charters",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "charters",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "charters",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "charters",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "charters",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "charters",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "compendium",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "compendium",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "compendium",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "compendium",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "compendium",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "compendium",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "compendium",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "atlas",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "atlas",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "atlas",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "atlas",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "atlas",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "atlas",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "atlas",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "records",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "records",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "records",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "records",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "records",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "records",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "records",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "sheet",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "sheet",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "sheet",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "sheet",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "sheet",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "sheet",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "sheet",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "shipyard",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "shipyard",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "shipyard",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "shipyard",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "shipyard",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "shipyard",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "shipyard",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "settings",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "settings",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "settings",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "settings",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "settings",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "settings",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "settings",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "tray",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "tray",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "tray",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "tray",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "tray",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "tray",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "wide",
    "surf": "tray",
    "name": "no clipped headers",
    "ok": true,

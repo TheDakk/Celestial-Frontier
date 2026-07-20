@@ -70,6 +70,7 @@
   #rank{font-family:var(--ui);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
     color:#1a1206;background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a);
     border:1px solid rgba(255,220,150,0.9);border-radius:999px;padding:7px 15px;white-space:nowrap;cursor:pointer;
+    max-width:min(38vw,340px);overflow:hidden;text-overflow:ellipsis;
     box-shadow:0 0 14px rgba(240,200,110,0.45), 0 2px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.5);
     text-shadow:0 1px 0 rgba(255,255,255,0.35);transition:box-shadow .2s,transform .15s}
   #rank:hover{box-shadow:0 0 22px rgba(240,200,110,0.7), 0 2px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.5);transform:translateY(-1px)}
@@ -312,6 +313,8 @@
   #doll .dship{position:absolute;transform:translate(-50%,-50%);width:96px;border-radius:9px;
     border:1px solid rgba(127,208,255,0.35);background:#05060d;opacity:0.96}
   #doll .dname{font:700 15px var(--ui);letter-spacing:.03em;color:var(--ink);text-align:center;margin:2px 0 8px}
+  /* clamp a long explorer name so it can't wrap the ✎ rename link out of the plate (Nick, v1.5.2c) */
+  #doll .dname .dnm{display:inline-block;max-width:calc(100% - 78px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
   #doll .dname .drank{display:block;font:600 9.5px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:#f0cf8a;margin-top:3px}
   #doll .eqfx{font-size:10px;line-height:1.6;color:#bfe6c8;border:1px solid rgba(127,230,160,0.25);
     border-radius:9px;padding:6px 9px;margin:8px auto 0;max-width:min(100%,340px);background:rgba(127,230,160,0.05)}
@@ -389,6 +392,26 @@
   #namebox #namecancel{display:none;width:100%;margin-top:8px;padding:9px 0;font:600 11px var(--ui);letter-spacing:.08em;text-transform:uppercase;
     color:var(--dim);cursor:pointer;background:rgba(150,162,210,0.10);border:1px solid var(--glass-brd);border-radius:11px}
   #namebox #namecancel:hover{color:var(--ink);background:rgba(150,162,210,0.18)}
+  /* THE NAMEPLATE MENU (Settings → Nameplate, v1.5.2c) */
+  #platebox{position:fixed;inset:0;z-index:37;display:none;align-items:center;justify-content:center;
+    background:rgba(4,5,10,0.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  #platebox .card{position:relative;width:min(360px,calc(100vw - 36px));max-height:calc(100dvh - 40px);overflow-y:auto;
+    text-align:center;background:radial-gradient(135% 95% at 50% -15%, rgba(96,90,210,0.22), transparent 58%), linear-gradient(180deg, rgba(15,17,33,0.97), rgba(8,9,18,0.98));
+    border:1px solid rgba(255,207,138,0.4);border-radius:18px;padding:24px 22px;
+    box-shadow:0 0 60px rgba(255,207,138,0.1), 0 26px 80px rgba(0,0,0,0.7)}
+  #platebox .pnx{position:absolute;top:8px;right:8px;float:none;background:none}
+  #platebox h3{font:700 22px var(--ui);letter-spacing:.02em;margin:2px 0 16px;background:linear-gradient(180deg,#ffffff,#f4d79e 52%,#e0a84a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+  #platebox .np-pvwrap{margin:0 0 16px}
+  #platebox .np-preview{display:inline-block;max-width:100%;font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    border:1px solid rgba(255,220,150,0.9);border-radius:999px;padding:8px 16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    color:#1a1206;background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a)}
+  #platebox .np-rename{display:inline-flex;align-items:center;gap:6px;margin:0 auto 18px;padding:9px 16px;font:600 12px var(--ui);letter-spacing:.04em;
+    color:#9fc2ff;cursor:pointer;background:rgba(150,162,210,0.10);border:1px solid var(--glass-brd);border-radius:11px}
+  #platebox .np-rename:hover{color:var(--ink);background:rgba(150,162,210,0.18)}
+  #platebox .np-lbl{font:600 10px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--plasma);margin:0 0 10px;text-align:left}
+  #platebox .plates{justify-content:flex-start;margin:0}
+  #platebox .plate{width:26px;height:26px}
+  #platebox .np-note{font-size:10.5px;color:var(--faint);line-height:1.5;margin-top:14px;text-align:left}
 
   /* ---- release notes: the expedition bulletin ---- */
   #relbox{position:fixed;inset:0;z-index:42;display:none;align-items:center;justify-content:center;
@@ -488,7 +511,9 @@
   /* ---- expedition charters: the hunt board ----
      v1.5 UI SWAP (Nick): charters/the Ascent are the daily driver — they
      wear the PRIME SLOT (top right, the old Prime Codex position) */
-  #chbtn{position:fixed;top:calc(var(--row1-h,58px) + 10px);right:18px;z-index:9;pointer-events:auto;cursor:pointer;
+  /* v1.5.2c rail swap (Nick): Charters take the LEFT rail; the Prime Codex
+     (endgame) takes the top-right gold-pill slot */
+  #chbtn{position:fixed;top:calc(var(--topbar-h,100px) + 8px);left:18px;right:auto;z-index:9;pointer-events:auto;cursor:pointer;
     font-family:var(--ui);font-size:11px;font-weight:600;letter-spacing:.06em;color:#ffe1a1;
     background:linear-gradient(135deg,rgba(60,50,18,0.62),rgba(30,25,12,0.55));
     border:1px solid rgba(255,217,106,0.35);border-radius:999px;padding:7px 13px;box-shadow:0 0 18px rgba(255,217,106,0.1);
@@ -498,7 +523,7 @@
   #chbtn .dot{width:6px;height:6px;border-radius:50%;background:#ffd96a;box-shadow:0 0 8px #ffd96a;animation:evpulse 2.4s infinite}
   /* Z-ORDER LAW (Nick's device pass): open rail panels sit ABOVE the topbar
      stacking layer (z 20) — a chip must never cover the screen you opened */
-  #chpanel{position:fixed;top:calc(var(--row1-h,58px) + 52px);right:18px;z-index:22;width:318px;max-height:min(60vh,520px);overflow-y:auto;display:none;
+  #chpanel{position:fixed;top:calc(var(--topbar-h,100px) + 52px);left:18px;right:auto;z-index:22;width:318px;max-height:min(60vh,520px);overflow-y:auto;display:none;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:11px;
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
   #chpanel .ehead{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:#ffd96a;margin:0 0 8px}
@@ -732,7 +757,9 @@
   /* the ✕ law, everywhere: UPPER RIGHT, with air — absolute closes get an
      explicit corner anchor (unanchored, the tray's landed on its own
      title), and the headers reserve the lane so text never runs under */
-  #tray .pnx,#setpanel .pnx{position:absolute;top:6px;right:6px;float:none}
+  /* ✕ corner law (Nick, v1.5.2c): on glassy panels the opaque ✕ fill read as
+     a heavy button box — drop it to a clean glyph; the hover tint still lands */
+  #tray .pnx,#setpanel .pnx{position:absolute;top:6px;right:6px;float:none;background:none}
   /* the overlay CARDS too — the sheet is a grid, and a flow-inserted ✕
      was auto-placed into an implicit bottom row (Nick's screenshot):
      absolute anchors are immune to layout */
@@ -896,9 +923,9 @@
     text-transform:uppercase;color:var(--faint)}
   .cargoish .bset{margin:0 6px 6px}
   /* ---- Prime Codex button ----
-     v1.5 UI SWAP (Nick): the Codex is endgame now — it keeps its gold but
-     moves to the left rail (the charters' old home) */
-  #pcdxbtn{cursor:pointer;flex:none;position:fixed;top:calc(var(--topbar-h,100px) + 8px);left:18px;right:auto;z-index:8;
+     v1.5.2c UI SWAP (Nick): the Codex is endgame — it keeps its gold and now
+     takes the top-right gold-pill slot (the charters' old home) */
+  #pcdxbtn{cursor:pointer;flex:none;position:fixed;top:calc(var(--row1-h,58px) + 10px);right:18px;left:auto;z-index:8;
     display:flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;
     font-family:var(--ui);font-size:11px;font-weight:600;letter-spacing:.06em;color:#f0cf8a;
     background:linear-gradient(135deg,rgba(60,46,18,0.62),rgba(30,24,12,0.55));
@@ -1166,6 +1193,9 @@
     text-transform:uppercase;padding-top:1px}
   #panel .row.sp .thumbmini{flex:none;width:26px;height:26px;border-radius:6px;background-size:cover;
     background-position:center;box-shadow:0 0 0 1px rgba(127,230,160,0.25)}
+  /* the Tame/Scavenge actions inside the Life forms fold (v1.5.2c) */
+  #panel .lifeacts{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 3px}
+  #panel .lifeacts .act{flex:1 1 auto;min-width:120px}
   #panel .splabel{display:flex;gap:9px;font-size:10px;line-height:1.4;margin:8px -2px 3px;padding-top:7px;
     border-top:1px solid var(--line)}
   #panel .splabel .k{flex:none;width:74px;color:#9fe6b4;letter-spacing:.04em;text-transform:uppercase;padding-top:1px}
@@ -1319,17 +1349,17 @@
     body.fs-lg #bell{font-size:13px}
     body.fs-xl #bell{font-size:14px}
     #hpbar{width:clamp(110px,33vw,188px);height:12px} #hptext{font-size:9px} #hpheart{font-size:14px}
-    #pcdxbtn{left:14px;right:auto;padding:6px 9px;font-size:10.5px;gap:5px} #pcdxbtn .lbl{display:inline}
+    #chbtn{left:14px;right:auto;padding:6px 9px;font-size:10.5px;gap:5px}
     #codexbtn,#logbtn,#codex,#log,#cargobtn{right:14px}
     #recbtn{right:14px}
     #records{right:14px;width:min(300px,calc(100vw - 20px))}
     #yardcard{padding:10px}
     /* side buttons + panels sit BELOW the two-row topbar — never overlapping it */
     /* float the side rails just below the header, however many rows it wraps to */
-    /* v1.5 swap: Prime Codex leads the left rail; charters wear the prime slot */
-    #pcdxbtn{top:calc(var(--topbar-h,118px) + 8px)}
-    #chbtn{top:calc(var(--row1-h,58px) + 8px);right:14px;font-size:10px;padding:6px 10px}
-    #chpanel{top:calc(var(--row1-h,58px) + 46px);right:14px;left:auto;width:min(312px,calc(100vw - 20px))}
+    /* v1.5.2c swap: Charters lead the left rail; the Prime Codex wears the prime slot */
+    #chbtn{top:calc(var(--topbar-h,118px) + 8px)}
+    #pcdxbtn{top:calc(var(--row1-h,58px) + 8px);right:14px;left:auto;font-size:10px;padding:6px 10px}
+    #chpanel{top:calc(var(--topbar-h,118px) + 46px);left:14px;right:auto;width:min(312px,calc(100vw - 20px))}
     #panel{width:min(300px,calc(100vw - 20px))}
     #codex,#log{width:min(300px,calc(100vw - 20px))}
     #events{width:min(312px,calc(100vw - 20px))}
@@ -1350,13 +1380,13 @@
   @media (max-width:380px){
     #searchin{font-size:11.5px}
     #hpbar{width:clamp(100px,40vw,172px)}
-    #pcdxbtn{font-size:10px;padding:5px 7px}
+    #chbtn{font-size:10px;padding:5px 7px}
   }
   /* ---- nameplate rank colors (v1.3): the pill is painted inline by applyNameplate;
      the summit rank wears the foil; the picker dots live in the character sheet ---- */
-  #rank.irid-plate{background:linear-gradient(100deg,#ff7ae8,#ffc24f,#3fe8c8,#9a8aff,#ff7ae8) !important;
+  #rank.irid-plate,#platebox .np-preview.irid-plate{background:linear-gradient(100deg,#ff7ae8,#ffc24f,#3fe8c8,#9a8aff,#ff7ae8) !important;
     background-size:300% 100% !important;animation:iridslide 3.5s linear infinite;
-    border-color:transparent !important;color:#141228}
+    border-color:transparent !important;color:#141228 !important}
   .plates{display:flex;gap:7px;flex-wrap:wrap;margin:6px 0 10px}
   .plate{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid rgba(255,255,255,0.25);box-sizing:border-box}
   .plate.sel{border-color:#fff;box-shadow:0 0 8px rgba(255,255,255,0.6)}
@@ -1452,7 +1482,7 @@
   /* Motion: Reduced — the decorative loops stand still (the travel tunnel,
      screen shake and confetti bursts are gated in JS via motionOn) */
   body.rmotion #updatepill, body.rmotion #cinema .rays, body.rmotion #eventsbtn .dot, body.rmotion #chbtn .dot,
-  body.rmotion #rank.irid-plate, body.rmotion .plate.irid, body.rmotion .gbadge.irid,
+  body.rmotion #rank.irid-plate, body.rmotion #platebox .np-preview.irid-plate, body.rmotion .plate.irid, body.rmotion .gbadge.irid,
   body.rmotion .iridframe::after{animation:none !important}
   /* v1.3 HD landing vista overlay (flag-gated, iterating) */
   #vistabox{position:fixed;inset:0;z-index:44;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;
@@ -1561,8 +1591,8 @@
       <span class="opts"><span class="fsopt" data-tone="" role="button" tabindex="0">Soft</span><span class="fsopt" data-tone="tone-bright" role="button" tabindex="0">Bright</span><span class="fsopt" data-tone="tone-max" role="button" tabindex="0">Max</span></span></div>
     <div class="srow2"><span>Font</span>
       <span class="opts"><span class="fsopt" data-font="" role="button" tabindex="0">Grotesk</span><span class="fsopt" data-font="font-sys" role="button" tabindex="0">System</span><span class="fsopt" data-font="font-mono" role="button" tabindex="0">Mono</span></span></div>
-    <div class="srow2"><span>Explorer name</span>
-      <span class="opts"><span id="renameopt" class="fsopt" role="button" tabindex="0" data-tip="Change your explorer name — your progress stays yours.">✎ Change</span></span></div>
+    <div class="srow2"><span>Nameplate</span>
+      <span class="opts"><span id="nameplateopt" class="fsopt" role="button" tabindex="0" data-tip="Change your explorer name and pick your nameplate colour.">Customize</span></span></div>
     <div class="srow2"><span>Tooltips</span>
       <span class="opts"><span id="tipsopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
     <div class="srow2"><span>Notifications</span>
@@ -1572,9 +1602,9 @@
     <div class="srow2"><span>Star charts</span>
       <span class="opts"><span id="chartopt" class="fsopt" role="button" tabindex="0" data-tip="Orbit paths, the habitable zone and chart labels in system view. Off keeps the sky looking like a universe.">Off</span></span></div>
     <div class="srow2"><span>Visual effects</span>
-      <span class="opts"><span id="fxopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
+      <span class="opts"><span id="fxopt" class="fsopt on" role="button" tabindex="0" data-tip="Confetti, foil shimmer, glows and particle flourishes. Off keeps the interface calm and the frame light.">On</span></span></div>
     <div class="srow2"><span>Screen shake</span>
-      <span class="opts"><span id="shakeopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
+      <span class="opts"><span id="shakeopt" class="fsopt on" role="button" tabindex="0" data-tip="A brief jolt on impacts, conquests and hazards. Off holds the view steady.">On</span></span></div>
     <div class="srow2"><span>Motion</span>
       <span class="opts"><span class="fsopt on" data-motion="-1" role="button" tabindex="0" data-tip="Auto follows your device&#8217;s reduce-motion preference. Reduced stills the travel tunnel, shake, confetti and shimmer.">Auto</span><span class="fsopt" data-motion="0" role="button" tabindex="0">Full</span><span class="fsopt" data-motion="1" role="button" tabindex="0">Reduced</span></span></div>
   </div>
@@ -4572,7 +4602,7 @@ document.addEventListener('keydown', e=>{
        The name prompt + descent above already handled their own cases. */
     if(!tutDone) return;
     /* close the topmost dismissible overlay — one per press */
-    for(const id of ['reveal','pickbox','duelbox','sharebox','primebox','guidebox','setpanel']){
+    for(const id of ['reveal','pickbox','duelbox','sharebox','platebox','primebox','guidebox','setpanel']){
       const el=document.getElementById(id);
       if(el && el.style.display && el.style.display!=='none'){
         if(id==='reveal'){ try{ pendingReveals.length=0; }catch(_){} el.style.display='none'; try{ if(codexOpen) renderCodex(); }catch(_){} }
@@ -4692,7 +4722,7 @@ function checkTransitions(){
       return;
     }
     const sys = st.sys || (st.sys=systemFor(st.star.seed));
-    const tNow=perfTime();
+    const tNow=orbTime();
     let assist=null, assistApp=0;
     for(const pl of sys.planets){
       const ang = pl.orb*0.13 + tNow*0.05/(pl.orb*0.012);
@@ -4701,7 +4731,7 @@ function checkTransitions(){
       const apparent=pr*c.z;
       const d=Math.hypot(px-c.x, py-c.y)*c.z;
       if(pl.P.seed===_descDeclined && apparent<0.36*minWH) _descDeclined=null;
-      if(pl.P.seed===_apprLatch && apparent<0.36*minWH) _apprLatch=null;
+      if(pl.P.seed===_apprLatch && apparent<0.36*minWH){ _apprLatch=null; _orbFrozenAt=null; }   /* zoomed back out: the orbit resumes */
       if(apparent>0.40*minWH){
         if(d<0.5*minWH){
           /* THE DESCENT (v1.3.5): a manual dive on an unlanded world stops
@@ -4723,6 +4753,7 @@ function checkTransitions(){
           if(!tutDone) return;             /* training zooms; it never lands */
           if(_apprLatch!==pl.P.seed){
             _apprLatch=pl.P.seed;
+            _orbFrozenAt=tNow;             /* hold the orbit where the planet now sits */
             _descCleared=null;             /* the clearance is spent on this landing */
             _performLanding(pl);
           }
@@ -5787,6 +5818,9 @@ function drawSystem(time){
   drawBackdrop();
   const c=st.scam;
   const sys = st.sys || (st.sys=systemFor(st.star.seed));
+  /* orbit angle holds while a world is latched (the orbit-hold); other
+     animations keep their live `time` */
+  const otime = _orbFrozenAt!=null ? _orbFrozenAt : time;
   picks.push({sx:(0-c.x)*c.z+W/2, sy:(0-c.y)*c.z+H/2, r:Math.max((sys.starR||20)*c.z,18*PICK_F), kind:'starsys', data:{seed:st.star.seed, sys}});
   ctx.save(); ctx.translate(W/2,H/2); ctx.scale(c.z,c.z); ctx.translate(-c.x,-c.y);
   /* habitable zone — the band where water can stay liquid (Star charts) */
@@ -5926,7 +5960,7 @@ function drawSystem(time){
       ctx.strokeStyle='rgba(232,236,255,0.13)'; ctx.lineWidth=0.8/c.z;
       ctx.beginPath(); ctx.arc(0,0,pl.orb,0,TAU); ctx.stroke();
     }
-    const ang = pl.orb*0.13 + time*0.05/(pl.orb*0.012);
+    const ang = pl.orb*0.13 + otime*0.05/(pl.orb*0.012);
     const px=Math.cos(ang)*pl.orb, py=Math.sin(ang)*pl.orb;
     const pr=6*pl.P.sizeMul;
     ensureCardFacts(pl.P, sys, pl.orb);   /* band/life/era reach the sprite (V1/V9/I9) */
@@ -6023,7 +6057,7 @@ function drawSystem(time){
   }
   /* dwarf planets */
   if(sys.dwarfs) for(const dw of sys.dwarfs){
-    const ang=dw.orb*0.13 + time*0.05/(dw.orb*0.012);
+    const ang=dw.orb*0.13 + otime*0.05/(dw.orb*0.012);
     const dx2=Math.cos(ang)*dw.orb, dy2=Math.sin(ang)*dw.orb;
     const ds=2.2;
     /* shaded sphere sprite (HD coverage pass), terminator kept */
@@ -8151,6 +8185,11 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
    Owns: _lastDesc, _panelKey, panelRect, stickyPick, _spExpanded, _frozenFor, _frozenPos, _autoScanned, cardExpand, renderPanel
    ---------------------------------------------------------------- */
 let _lastDesc=null, _panelKey=null, panelRect=null, stickyPick=null, _spExpanded=null, _frozenFor=null, _frozenPos=null, _frozenPick=null, _autoScanned=null;
+/* the Life forms fold (Nick, v1.5.2c): the surveyed roster + its Tame/
+   Scavenge actions collapse behind an expand/close pill, like every other
+   card fold. Transient (not saved): holds the logId of the open world,
+   opens on discovery, defaults collapsed on revisit. */
+let _lifeExpanded=null;
 /* condensed-card expand state (1.1.2): bit 1 = Environment open, bit 2 =
    Civilization census open. Remembered across cards AND sessions (save
    field cx, absent-default 0 = collapsed) — set it once, keep your view. */
@@ -8354,6 +8393,14 @@ const DESCENT_TIERS={
   venus:{p:25,lo:5,hi:7}, lava:{p:20,lo:6,hi:8}};
 const _waveOffs=new Map();          /* planetSeed → consecutive wave-offs (save field wvo) */
 let _descCleared=null, _descDeclined=null, _descOpenFor=null, _apprLatch=null;
+/* THE ORBIT HOLD (Nick, v1.5.2c): while a world is latched — approached,
+   landed, its card the focus — the orbital clock freezes at the latch
+   instant. The planet stops drifting out from under the camera, and its
+   survey card (which rides the planet's screen position) holds still too.
+   The freeze lifts when the latch clears (you zoom back out). Purely
+   visual: orbit angle is perfTime-driven, never seed-fed. */
+let _orbFrozenAt=null;              /* perfTime snapshot, or null = live orbit */
+function orbTime(){ return _orbFrozenAt!=null ? _orbFrozenAt : perfTime(); }
 function descentBonus(P){
   /* v1.4: crafted landing gear plugs in here — the global bonus from
      modules/suits, plus the hazard suit tuned to THIS world's family
@@ -8546,6 +8593,7 @@ function _descAbort(){
       st.scam.x=Math.cos(ang)*pl.orb; st.scam.y=Math.sin(ang)*pl.orb;
       st.scam.z=(0.375*minWH)/(6*(pl.P.sizeMul||1));
       _apprLatch=pl.P.seed;
+      _orbFrozenAt=tNow;                            /* hold the orbit under the landed camera */
       _descCleared=null;
       _performLanding(pl);
     } else {
@@ -8571,6 +8619,7 @@ function flyDown(pseed){
   st.scam.y=Math.sin(ang)*pl.orb;
   st.scam.z=(0.375*minWH)/(6*(pl.P.sizeMul||1));   /* approach framing - the view holds in space (v1.3.8) */
   _apprLatch=pseed;
+  _orbFrozenAt=tNow;                                /* hold the orbit under the landed camera */
   _descCleared=null;
   _performLanding(pl);
   return true;
@@ -8621,7 +8670,7 @@ function renderPanel(p, isLocked){
   const _homeOn = homeId===d.logId && inLog;
   const codexStamp=codex.size;
   const _cq=d.planetSeed!=null?conquered.get(d.planetSeed):null;
-  const key=d.logId+'|'+st.mode+'|'+(inLog?1:0)+'|'+(isLocked?'L':'')+'|'+codexStamp+'|'+(lifeOpen?'X':'')+
+  const key=d.logId+'|'+st.mode+'|'+(inLog?1:0)+'|'+(isLocked?'L':'')+'|'+codexStamp+'|'+(lifeOpen?'X':'')+(_lifeExpanded===d.logId?'x':'')+
     '|'+(_cq?('C'+(Date.now()-_cq.t>=HARVEST_CD?'R':'W')):'')+'|'+(d._nameKey?(customNames.get(d._nameKey)||''):'')+'|'+(_favOn?'F':'')+(_homeOn?'H':'')+
     '|'+(d.planetSeed!=null&&(d.planetSeed===133||landed.has(d.planetSeed)||conquered.has(d.planetSeed))?'G':'')+   /* ground-surveyed (v1.2) */
     '|'+(d.planetSeed!=null&&contacted.has(d.planetSeed)?'K':'')+   /* census known via first contact (v1.2.2) */
@@ -8807,7 +8856,9 @@ function renderPanel(p, isLocked){
         '<span class="thumbmini" style="background:rgba(127,230,160,0.14)"></span>'+
         '<span class="spk"></span><span class="v"><b>Discover Life</b> — '+spRows.length+' life forms detected'+dzTxt+'</span></div>';
     } else if(!glance && spRows.length){
-      /* preview the most notable few inline; the full roster lives in the Codex */
+      /* THE LIFE FORMS FOLD (Nick, v1.5.2c): the surveyed roster and its
+         🐾 Tame / 🌿 Scavenge actions collapse behind the card's expand/close
+         pill, like every other fold. Opens on discovery; closes on tap. */
       const ranked=spRows.map(row=>{
         const spId=row[3].slice(3);
         const g=d.species.find(x=>x.seed===+spId);
@@ -8817,34 +8868,43 @@ function renderPanel(p, isLocked){
       const PREVIEW=8;
       const shown=ranked.slice(0,PREVIEW);
       const _caught=spRows.filter(row=>codex.has('s'+row[3].slice(3))).length;
-      rows+='<div class="splabel"><span class="k">Life forms</span>'+
-        '<span class="v">'+_caught+' / '+spRows.length+' in your Compendium'+
-        (_caught<spRows.length?' — tame and scavenge the rest':'')+
-        (spRows.length>PREVIEW?' · top '+PREVIEW+' shown':'')+'</span></div>';
+      const _open=_lifeExpanded===d.logId;
+      let lbody='';
       for(const it of shown){
         const en=codex.get('s'+it.spId);
         const gcol=en&&en.grade?en.grade.hex:'';
         const gstar=en&&en.grade&&en.grade.star?' <span style="color:'+en.grade.hex+';font-size:9px">'+en.grade.star+'</span>':'';
-        rows+='<div class="row sp found" data-sp="'+it.spId+'">'+
+        lbody+='<div class="row sp found" data-sp="'+it.spId+'">'+
           '<span class="thumbmini" style="background-image:url('+(d._spArt&&d._spArt[it.spId]||'')+')'+(gcol?';box-shadow:0 0 0 1px '+gcol:'')+'"></span>'+
           '<span class="spk"'+(gcol?' style="color:'+gcol+'"':'')+'>'+it.row[0]+'</span>'+
           '<span class="v"'+(gcol?' style="color:'+gcol+'"':'')+'>'+it.row[1]+gstar+'</span></div>';
       }
       if(spRows.length>PREVIEW){
-        rows+='<div class="row sp morelink" data-opencodex="1"><span class="thumbmini" style="background:rgba(127,230,160,0.12)"></span>'+
+        lbody+='<div class="row sp morelink" data-opencodex="1"><span class="thumbmini" style="background:rgba(127,230,160,0.12)"></span>'+
           '<span class="spk">+'+(spRows.length-PREVIEW)+'</span><span class="v">more species — open the Compendium to see them all</span></div>';
       }
+      /* the actions sit with the roster they pull from — only where you stand,
+         only while something remains uncaught (Nick: "the buttons here") */
+      if(grounded && d.species && d.species.length){
+        const _uf=d.species.some(g=>g.kingdom==='fauna' && !codex.has(codexId(g)));
+        const _up=d.species.some(g=>g.kingdom!=='fauna' && !codex.has(codexId(g)));
+        let acts='';
+        if(_uf) acts+='<button class="act" data-act="tame" data-guide="discover" data-tip="Try to tame one of this world’s uncaught beasts — rarer creatures resist harder; crafted gear tips the hand.">🐾 Tame</button>';
+        if(_up) acts+='<button class="act" data-act="scavenge" data-guide="discover" data-tip="Gather an uncaught growth — flora, fungus or microbe — for your Compendium. Rarity resists; gear persuades.">🌿 Scavenge</button>';
+        if(acts) lbody+='<div class="lifeacts">'+acts+'</div>';
+      }
+      const _ldig=_caught+' / '+spRows.length+' in your Compendium'+
+        (_caught<spRows.length?' — tame and scavenge the rest':'')+
+        (spRows.length>PREVIEW?' · top '+PREVIEW+' shown':'');
+      rows+='<div class="grp'+(_open?' open':'')+'"><div class="row ghead" data-lifetoggle="1" role="button" tabindex="0" '+
+        'data-tip="This world’s living roster — tame beasts and scavenge growths to fill your Compendium">'+
+        '<span class="k">Life forms</span><span class="v gdig">'+_ldig+'</span>'+
+        '<span class="chev"></span></div><div class="gbody">'+lbody+'</div></div>';
     }
     rows+=civHtml;   /* civilization (+ ⟁ Signal) reads below the life roster */
     let conqBtn='';
-    /* 🐾 TAME · 🌿 SCAVENGE — only on worlds where you stand, only once the
-       biosphere is surveyed, only while something remains uncaught */
-    if(!glance && grounded && lifeOpen && d.species && d.species.length){
-      const _uf=d.species.some(g=>g.kingdom==='fauna' && !codex.has(codexId(g)));
-      const _up=d.species.some(g=>g.kingdom!=='fauna' && !codex.has(codexId(g)));
-      if(_uf) conqBtn+='<button class="act" data-act="tame" data-guide="discover" data-tip="Try to tame one of this world’s uncaught beasts — rarer creatures resist harder; crafted gear tips the hand.">🐾 Tame</button>';
-      if(_up) conqBtn+='<button class="act" data-act="scavenge" data-guide="discover" data-tip="Gather an uncaught growth — flora, fungus or microbe — for your Compendium. Rarity resists; gear persuades.">🌿 Scavenge</button>';
-    }
+    /* 🐾 Tame / 🌿 Scavenge moved INTO the Life forms fold above (Nick,
+       v1.5.2c) — grouped with the roster they draw from */
     /* an elemental TITAN overrides the ordinary guardian/conquest card —
        its Signature is the prize, and its world is conquerable even with
        no native fauna (Nick's Prime Codex hunt; only once you've landed) */
@@ -9076,6 +9136,15 @@ panelEl.addEventListener('click', e=>{
     queueSave();
     return;
   }
+  const lt=e.target.closest('[data-lifetoggle]');
+  if(lt && _lastDesc){
+    /* fold/unfold the Life forms menu in place (no rebuild) — the card
+       changes height, so remeasure like the other folds */
+    _lifeExpanded = (_lifeExpanded===_lastDesc.logId) ? null : _lastDesc.logId;
+    const g=lt.closest('.grp'); if(g) g.classList.toggle('open', _lifeExpanded===_lastDesc.logId);
+    _panelDirty=true;
+    return;
+  }
   const more=e.target.closest('[data-opencodex]');
   if(more){ if(!codexOpen){ codexBtn.click(); } return; }
   const scan=e.target.closest('[data-scanlife]');
@@ -9088,6 +9157,7 @@ panelEl.addEventListener('click', e=>{
       if(routeHit(_dmg, hazardFlavor(_lastDesc, null))) return;   /* the scan still completes — you earned it */
     }
     _spExpanded=_lastDesc.logId;       /* the click IS the discovery moment */
+    _lifeExpanded=_lastDesc.logId;     /* reveal opens the fold straight to the roster */
     autoScanWorld(_lastDesc);
     _panelKey=null;
     return;
@@ -10488,25 +10558,35 @@ function _shadeHex(hex, f){
   const n=parseInt(hex.slice(1),16);
   return 'rgb('+Math.round(((n>>16)&255)*f)+','+Math.round(((n>>8)&255)*f)+','+Math.round((n&255)*f)+')';
 }
+/* paint one pill element in a plate hue — shared by the topbar nameplate and
+   the Nameplate menu's live preview (v1.5.2c) */
+function _paintPlate(el, hue){
+  if(!el) return;
+  if(hue==='irid'){
+    el.classList.add('irid-plate');
+    el.style.background=''; el.style.borderColor=''; el.style.boxShadow=''; el.style.color=''; el.style.textShadow='';
+    return;
+  }
+  el.classList.remove('irid-plate');
+  el.style.background='linear-gradient(135deg,'+hue+','+_shadeHex(hue,0.74)+' 55%,'+hue+')';
+  el.style.borderColor=hue;
+  el.style.boxShadow='0 0 14px '+hue+'66, 0 2px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.5)';
+  /* text color by luminance: ink on bright plates, near-white on deep ones */
+  const n=parseInt(hue.slice(1),16);
+  const L=0.299*((n>>16)&255)+0.587*((n>>8)&255)+0.114*(n&255);
+  el.style.color = L>150 ? '#1a1206' : '#f4f8ff';
+  el.style.textShadow = L>150 ? '0 1px 0 rgba(255,255,255,0.35)' : '0 1px 2px rgba(0,0,0,0.6)';
+}
+/* the rank floor a chosen (or auto) plate resolves to */
+function _plateHue(){
+  const cur=rankIdx(rankInfo().floor);
+  const pick=(nameHue>=0 && nameHue<=(stats.bestRank||0) && nameHue<RANK_HUES.length)?nameHue:cur;
+  return RANK_HUES[Math.min(pick, RANK_HUES.length-1)];
+}
 function applyNameplate(){
   const cur=rankIdx(rankInfo().floor);
   if(cur>(stats.bestRank||0)) stats.bestRank=cur;          /* unlocks never demote */
-  const pick=(nameHue>=0 && nameHue<=(stats.bestRank||0) && nameHue<RANK_HUES.length)?nameHue:cur;
-  const hue=RANK_HUES[Math.min(pick, RANK_HUES.length-1)];
-  if(hue==='irid'){
-    rankEl.classList.add('irid-plate');
-    rankEl.style.background=''; rankEl.style.borderColor=''; rankEl.style.boxShadow=''; rankEl.style.color='';
-  } else {
-    rankEl.classList.remove('irid-plate');
-    rankEl.style.background='linear-gradient(135deg,'+hue+','+_shadeHex(hue,0.74)+' 55%,'+hue+')';
-    rankEl.style.borderColor=hue;
-    rankEl.style.boxShadow='0 0 14px '+hue+'66, 0 2px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.5)';
-    /* text color by luminance: ink on bright plates, near-white on deep ones */
-    const n=parseInt(hue.slice(1),16);
-    const L=0.299*((n>>16)&255)+0.587*((n>>8)&255)+0.114*(n&255);
-    rankEl.style.color = L>150 ? '#1a1206' : '#f4f8ff';
-    rankEl.style.textShadow = L>150 ? '0 1px 0 rgba(255,255,255,0.35)' : '0 1px 2px rgba(0,0,0,0.6)';
-  }
+  _paintPlate(rankEl, _plateHue());
 }
 let _lastRankName=null, _lastRankFloor=-1;
 function renderRank(){
@@ -10957,7 +11037,7 @@ function resetMemoryState(){
     if(typeof notifications!=='undefined' && notifications.length) notifications.length=0;
     for(const k in primeFill) delete primeFill[k];
     homeId=null; frontierUnlocked=false; frontierEnding=null; seenGuide=false; tutDone=false; _rnSeen=GAME_VERSION;
-    _waveOffs.clear(); _descCleared=null; _descDeclined=null; _descOpenFor=null; _apprLatch=null;
+    _waveOffs.clear(); _descCleared=null; _descDeclined=null; _descOpenFor=null; _apprLatch=null; _orbFrozenAt=null;
     scoutId=null; _pendingSample=null;
     contacted.clear(); _pendingContact=null;
     chDone.clear(); chProg={}; chWeek=-1; chacc.clear();
@@ -12923,7 +13003,7 @@ const GUIDE=[
  {id:'hp', t:'HP, hazards & death', k:'hp health damage wound hazard death die expedition reset brink', body:
   '<p>You can be wounded by scanning hostile worlds, by champion duty (losing a conquest you fought yourself), and by toxic flora.</p><ul><li>Your HP bar lives in the top bar; max HP = Vitality × 2.</li><li>Heal by eating flora — tap the ❤ heart (see <span data-gt="eating">Eating flora</span>). <b>Medicine never kills:</b> a toxic meal can gut you to the brink — 1 HP — but eating flora is the one gamble that can&#8217;t end the expedition. (The same law as wave-offs: a scrape, never a grave.)</li><li>At 0 HP the expedition ends — the universe is unchanged (it’s math), but your record starts over. Don’t scan furnace worlds at 12 HP.</li></ul>'},
  {id:'rank', t:'Ranks & expedition score', k:'rank score cadet scout pathfinder voyager pioneer cartographer wayfarer sovereign luminary eternal rename name change explorer', body:
-  '<p>Everything you do — surveying, cataloguing, breeding, settling, dueling — feeds your <b>expedition score</b>, and score climbs the ten ranks: <em>Cadet → Scout → Pathfinder → Voyager → Pioneer → Star Cartographer → Mythic Wayfarer → Void Sovereign → Cosmic Luminary → Eternal Frontier</em>. Your rank rides on your nameplate and on everything you share.</p><p><b>Nameplate colors:</b> every rank carries its own color, unlocked forever the moment you reach it. Pick any unlocked color from your character sheet (tap your nameplate → Nameplate) — and <b>Eternal Frontier</b> unlocks the iridescent foil.</p><p><b>Renaming yourself:</b> the ✎ rename link atop your character sheet — or <b>Settings → Display → Explorer name</b> — changes your name anytime. Your record stays; only the name on it changes.</p>'},
+  '<p>Everything you do — surveying, cataloguing, breeding, settling, dueling — feeds your <b>expedition score</b>, and score climbs the ten ranks: <em>Cadet → Scout → Pathfinder → Voyager → Pioneer → Star Cartographer → Mythic Wayfarer → Void Sovereign → Cosmic Luminary → Eternal Frontier</em>. Your rank rides on your nameplate and on everything you share.</p><p><b>Nameplate colors:</b> every rank carries its own color, unlocked forever the moment you reach it. Pick any unlocked color from <b>Settings → Nameplate</b> — and <b>Eternal Frontier</b> unlocks the iridescent foil.</p><p><b>Renaming yourself:</b> open <b>Settings → Nameplate</b> and tap <b>✎ Change name</b> anytime. Your record stays; only the name on it changes.</p>'},
  {id:'achievements', t:'Achievements', k:'achievements unlock badges trophies curator survivor', body:
   '<p>Dozens of achievements track cataloguing, breeding, rarity hunting, conquest, stellar finds and exploration feats. They live on your character screen (tap your nameplate) under the <b>Achievements</b> fold — open it and each category shelf expands on its own. Many are secret handshakes with the universe: favorite a place, survive the brink, find a black hole…</p>'},
 ]},
@@ -13190,12 +13270,16 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.5.2';
+const GAME_VERSION='1.5.2c';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
-{v:'1.5.2', title:'The Shipyard', date:'July 2026', sections:[
+{v:'1.5.2c', title:'The Titan Hunt', date:'July 2026', sections:[
  ['✨ New Features & Systems', [
+  '🔮 THE ELEMENTAL TITAN HUNT — the Prime Codex is nine elements now, each guarded by a unique, named titan (Terrakoth of Earth, Pyraxis of Fire, Nullreth of the Void…). Landing reveals whether a titan stands on this world; send your strongest champions to fell it and claim the element. The basics wait near home, Electric and Poison at mid range, Void and Prism far past the Deep Field.',
+  '🐾 TAME &amp; SCAVENGE — life is no longer catalogued on sight. Landing surveys the biosphere; then 🐾 Tame a beast or 🌿 Scavenge a growth to enter it in your Compendium. Odds fall with rarity and rise with crafted gear.',
+  '🌍 THE CRADLE — Earth&#8217;s real animals and plants are your first catchable roster: named creatures clamped to starter grades and fighting at starter strength, their true names carried into the Compendium.',
+  '✦ MASTERING THE UNIVERSE — the story is retold end to end. The Prime Codex is the master survey; fell each element&#8217;s titan to master it; master all nine to open the Celestial Frontier. You cannot finish the infinite, only master it. (The old Pathfinder and beacon lore is retired.)',
   '🛠 THE SHIPYARD — new right-rail screen for the ship: ship portrait that gains each built system, with the Fabricator and Research Bench beneath, recipes grouped by category. The character screen now holds only the explorer: figure, stats, and cargo hold.',
   '🏆 THE RECORDS BOARD — rarity ladder and all achievement shelves moved from the character sheet into their own right-rail panel.',
   '🛬 TRAINING LEARNS TO LAND — new Field Training lesson: press Land on Earth&#8217;s card (Earth never waves off) to open Planetside. Training is now 20 lessons covering chart, land, catalogue, feed, breed, duel, heal, and forge.',
@@ -13210,7 +13294,20 @@ const RELEASES=[
   '🎽 EQUIP PICKER — opens <b>below</b> its socket (socket stays visible and tappable) and carries a ✕; an empty socket&#8217;s hint is no longer a dead end.',
   '🔤 ONE FOLD LANGUAGE — every collapsible header uses the world card&#8217;s expand/close pill (replacing arrow glyphs); the Compendium opens with its first occupied shelf expanded; battle stats render as plain bars (definitions live in the Guide); Mega Fauna matches its shelf-mates; specimen-card verbs sit in a grid.',
   '🔭 NAMES ARE NAMES — map labels drop parentheses and glyphs: Pluto, comets, and moons show bare names; type details live on the card. Ring systems no longer clip square at the sprite edge on wide-band worlds.',
-  '✕ EVERY PANEL&#8217;S CLOSE — stays pinned to the top corner while the list beneath it scrolls.'],
+  '✕ EVERY PANEL&#8217;S CLOSE — stays pinned to the top corner while the list beneath it scrolls.',
+  '🧭 CHARTERS MOVE TO THE LEFT RAIL — the Charters board (and the Chapters spine atop it) take the left rail; the Prime Codex, your endgame, moves to the top-right gold pill.',
+  '🐾 THE LIFE FORMS MENU — a surveyed world&#8217;s roster now folds behind the card&#8217;s expand/close pill, with its 🐾 Tame and 🌿 Scavenge actions grouped inside, beside the creatures they draw from.',
+  '✕ THE SETTINGS CLOSE, CLEANED — the menu&#8217;s ✕ is a clean corner glyph now, not a filled box over the panel.',
+  '🎨 THE NAMEPLATE MENU — Settings now has a <b>Nameplate</b> row that opens one editor for your name and your plate colour; the colour picker moved here from the character sheet, and the old redundant Explorer-name row is gone.',
+  '⚙ GRAPHICS TOOLTIPS — the Graphics toggles (visual effects, screen shake) carry tooltips now.'],
+ ],
+ ['🐛 Bug Fixes', [
+  '🪐 THE MAP HOLDS WHILE YOU VISIT — landing on (or zooming in to) a world now freezes its orbit, so the planet stays framed under the camera and its survey card stops drifting across the screen; the sky resumes turning when you pull back out.',
+  '🛬 PLANETSIDE HOLDS IN TRAINING — the landing-lesson vista no longer closes on its own; it waits for your tap to continue, exactly like live play.',
+  '✎ LONG NAMES STAY IN THE PLATE — a long explorer name is trimmed with an ellipsis in the nameplate and on the character sheet instead of spilling out of the box.',
+  '⚒ THE FORGE READS YOUR HOLD — the Fabricator&#8217;s craft buttons re-check what you can afford the moment new ore lands, so a recipe you can suddenly build lights up without reopening the Shipyard.',
+  '⛏ DRILL CHARTERS COUNT AGAIN — mining charters tally each pull the drills make.',
+  '🛠 SHIPYARD ALWAYS ON THE RAIL — the 🛠 button no longer disappears after training; the Shipyard is always one tap away.'],
  ],
  ['⚖ Balancing', [
   '🩸 MERCY, SHARPENED — the crawl-home mercy now applies only to bloodlines <b>you bred</b> (wild-born crossbreeds die on defeat), and fires once per mend: a champion fielded while still Critical does not crawl home twice. The same rule closes a reroll seam found in the audit — every retry past the first requires real mending.',
@@ -15335,6 +15432,7 @@ function commitExplorerName(){
   nameBox.style.display='none';
   renderRank(); queueSave();
   try{ if(sheetOpen) renderDoll(); }catch(_){ }   /* the paperdoll header wears the new name */
+  try{ if(typeof plateBox!=='undefined' && plateBox.style.display==='flex') renderPlateBox(); }catch(_){ }   /* the Nameplate menu preview follows */
   flushToasts();   /* anything held back while the title screen was up */
   toast('Welcome, '+explorerName, 'The frontier is yours. Your name rides on everything you discover and share.');
   if(_nameInitial){
@@ -15352,6 +15450,41 @@ document.getElementById('nameok').addEventListener('click', commitExplorerName);
 })();
 nameIn.addEventListener('keydown', e=>{ if(e.key==='Enter' && nameIn.value.trim()) commitExplorerName(); });
 nameIn.addEventListener('input', ()=>{ const ok=document.getElementById('nameok'); if(ok) ok.disabled=!nameIn.value.trim(); });
+
+/* ================= THE NAMEPLATE MENU =================
+   @section nameplate-ui [app] — name + plate colour, opened from Settings →
+   Nameplate (Nick, v1.5.2c: moved off the character sheet into one editor).
+   Owns: plateBox, renderPlateBox, openPlateBox, closePlateBox */
+const plateBox=document.createElement('div'); plateBox.id='platebox';
+plateBox.innerHTML='<div class="card">'+
+  '<button class="pnx" id="np-x" type="button">&#10005;</button>'+
+  '<h3>Nameplate</h3>'+
+  '<div class="np-pvwrap"><span id="np-preview" class="np-preview"></span></div>'+
+  '<button id="np-rename" class="np-rename" type="button">&#9998; Change name</button>'+
+  '<div class="np-lbl">Plate colour</div>'+
+  '<div id="np-plates" class="plates"></div>'+
+  '<div class="np-note">Colours unlock as you climb the ranks; the iridescent foil arrives at Eternal Frontier.</div>'+
+  '</div>';
+document.body.appendChild(plateBox);
+function renderPlateBox(){
+  const pv=document.getElementById('np-preview');
+  if(pv){ pv.textContent='✪ '+(explorerName||'Explorer')+' — '+rankInfo().name; _paintPlate(pv, _plateHue()); }
+  const ps=document.getElementById('np-plates');
+  if(ps){ ps.innerHTML='<span class="plate auto'+(nameHue<0?' sel':'')+'" data-plate="-1" title="Match current rank">A</span>'+
+    RANK_HUES.map((h,i)=>{ const un=i<=(stats.bestRank||0);
+      return '<span class="plate'+(un?'':' lk')+(nameHue===i?' sel':'')+(h==='irid'?' irid':'')+'"'+
+        (un?' data-plate="'+i+'"':'')+(h!=='irid'?' style="background:'+h+'"':'')+
+        ' title="'+RANKS[i][1]+(un?'':' — reach this rank to unlock')+'"></span>'; }).join(''); }
+}
+function openPlateBox(){ renderPlateBox(); plateBox.style.display='flex'; }
+function closePlateBox(){ plateBox.style.display='none'; }
+plateBox.addEventListener('click', e=>{
+  if(e.target===plateBox){ closePlateBox(); return; }              /* tap the backdrop to close */
+  if(e.target.closest('#np-x')){ closePlateBox(); return; }
+  if(e.target.closest('#np-rename')){ askExplorerName(false); return; }
+  const pl=e.target.closest('.plate');
+  if(pl && pl.dataset.plate!==undefined){ nameHue=+pl.dataset.plate; applyNameplate(); renderPlateBox(); queueSave(); }
+});
 
 /* ================= FIELD TRAINING =================
    A new explorer's first two minutes: a step-gated walkthrough of every core
@@ -15546,7 +15679,7 @@ function nextStepGoal(){
       if(g){
         const p=Math.min(ascProg[g.id]||0, g.n);
         return {key:'asc:'+g.id, tt:'🧭 Next Step — '+ch.name.replace(/^Chapter \d+ — /,''), go:'charters',
-          ms:g.t.replace(/&#8217;/g,'’')+(g.n>1?' ('+p+' / '+g.n+')':'')+'. The chapter rides atop your Charters board (top right).'};
+          ms:g.t.replace(/&#8217;/g,'’')+(g.n>1?' ('+p+' / '+g.n+')':'')+'. The chapter rides atop your Charters board (top left).'};
       }
     }
     /* v1.5.2 the chain speaks: an accepted charter first; else the next
@@ -15561,11 +15694,11 @@ function nextStepGoal(){
     if(avN.length){
       const c=avN[0];
       return {key:'chacc:'+c.id+(c.id[0]==='w'?':'+chWeek:''), tt:'🧭 A Charter Awaits — '+c.t, go:'charters',
-        ms:'Accept it on the Charters board (top right) — pays +'+c.sd+' ☄.'};
+        ms:'Accept it on the Charters board (top left) — pays +'+c.sd+' ☄.'};
     }
     if(primeCount()<9){
       return {key:'prime:'+primeCount(), tt:'🧭 The Long Road',
-        ms:'The board is clear — the Prime Codex waits. '+(9-primeCount())+' Signature'+(primeCount()===8?'':'s')+' left; the ✦ panel (left rail) names the next.'};
+        ms:'The board is clear — the Prime Codex waits. '+(9-primeCount())+' Signature'+(primeCount()===8?'':'s')+' left; the ✦ panel (top right) names the next.'};
     }
   }catch(_){ }
   return null;
@@ -15574,7 +15707,7 @@ function _questNudge(){
   const g=nextStepGoal();
   if(!g || _nudged.has(g.key)) return;
   try{   /* one voice: never talk over a held breath */
-    for(const id of ['reveal','pickbox','duelbox','namebox','deathbox','endingbox','relbox','descbox','sharebox','guidebox','farewellbox','cinema','primebox','vistabox']){
+    for(const id of ['reveal','pickbox','duelbox','namebox','platebox','deathbox','endingbox','relbox','descbox','sharebox','guidebox','farewellbox','cinema','primebox','vistabox']){
       const el=document.getElementById(id);
       if(el && el.style.display && el.style.display!=='none') return;
     }
@@ -15806,12 +15939,11 @@ const TUT_STEPS=[
   when:(t,d)=>t==='landfall'&&d.planetSeed===133},
  {id:'cache', spot:'#codexbtn', allow:['#codexbtn'],
   enter:()=>{ _tutGrant();
-    /* the Planetside from the landing lesson is the PAYOFF — it lingers
-       long enough to actually be seen (1.6s read as a glitch: Nick's
-       "popped up and then closed"), then yields the stage to the
-       Compendium (the vista is not a managed panel) */
-    setTimeout(()=>{ try{ _lastVista=null; vistaBox.classList.remove('on'); vistaBox.style.display='none'; }catch(_){ } }, 3200); },
-  text:()=>'A training cache just arrived: three Earth beasts and three Earth flora, on loan from the order. Open your <b>Compendium</b> to meet them.',
+    /* the Planetside from the landing lesson is the PAYOFF — it HOLDS until
+       you tap "to continue", exactly like live play (Nick, v1.5.2c: "the
+       vista still closes during training"). No auto-close timer; the vista
+       is in TUT_ALWAYS so a tap dismisses it and yields to the Compendium. */ },
+  text:()=>'A training cache just arrived: three Earth beasts and three Earth flora, on loan from the order. Tap the Planetside to continue, then open your <b>Compendium</b> to meet them.',
   when:(t,d)=>t==='codex-open'&&!!d.open},
  {id:'specimen', spot:'#codex', allow:['#codex'],
   text:()=>'Fighters, breeders and medicine all live here, shelved by realm. <b>Tap any specimen</b> to open its card.',
@@ -15860,7 +15992,7 @@ const tutSpotEl=document.createElement('div'); tutSpotEl.id='tutspot'; document.
 
 /* focus lockdown: while training, only the current lesson's surfaces accept
    input. The card and any open dialog stay usable so nobody gets stuck. */
-const TUT_ALWAYS=['#tutbox','#pickbox','#reveal','#duelbox','#namebox','#deathbox','#setbtn','#setpanel','#relbox','#helpbtn','#helppop','#sharebox'];
+const TUT_ALWAYS=['#tutbox','#pickbox','#reveal','#duelbox','#namebox','#deathbox','#setbtn','#setpanel','#relbox','#helpbtn','#helppop','#sharebox','#vistabox'];
 const TUT_GATE_EVTS=['pointerdown','click','touchstart','wheel'];
 let _tutNudgeT=0;
 function _tutGate(e){
@@ -16118,7 +16250,7 @@ function _tutFinish(){
        wants its ACCEPT from the board */
     try{ chacc.add('st-land'); }catch(_){ }
     try{ showCargoBtn(); }catch(_){ }   /* the Shipyard stands on the rail from graduation on */
-    pushNotif('Expedition Charters', 'Your charter board is open (Charters, top right) — your first charter is accepted: Make planetfall. New charters are accepted from the board as each one reveals the next.');
+    pushNotif('Expedition Charters', 'Your charter board is open (Charters, top left) — your first charter is accepted: Make planetfall. New charters are accepted from the board as each one reveals the next.');
     /* v1.4: a NEW expedition starts its Ascent — the mainline announces
        itself once, right where training ends */
     if(typeof _ascActive==='function' && _ascActive()){
@@ -16300,9 +16432,9 @@ setPanel.addEventListener('click', e=>{
     queueSave();
     return;
   }
-  if(e.target && e.target.id==='renameopt'){
+  if(e.target && e.target.closest && e.target.closest('#nameplateopt')){
     setPanel.style.display='none';
-    askExplorerName(false);
+    openPlateBox();
     return;
   }
   if(e.target && e.target.id==='tipsopt'){
@@ -16527,7 +16659,7 @@ function closePanels(except){
   for(const p of PANELS){ try{ if(p.id!==except && p.open()) p.close(); }catch(_){ } }
 }
 /* modals keep their own explicit buttons — the manager never touches them */
-const MODAL_SEL='#reveal,#pickbox,#duelbox,#sharebox,#namebox,#deathbox,#endingbox,#relbox,#tutbox,#helppop,#vistabox,#toasts,#descbox';
+const MODAL_SEL='#reveal,#pickbox,#duelbox,#sharebox,#namebox,#platebox,#deathbox,#endingbox,#relbox,#tutbox,#helppop,#vistabox,#toasts,#descbox';
 document.addEventListener('pointerdown', e=>{
   if(!tutDone) return;                     /* training keeps its own locks */
   const t=e.target;
@@ -16597,17 +16729,9 @@ function renderStats(){
   /* v1.5.2 (Nick): the character sheet is YOU, nothing else — rank, battle
      stats, statistics, and the nameplate fold. The rarity ladder and every
      achievement shelf moved OUT to the 🏆 Records board (right rail). */
-  let collBody='<div class="plates">'+
-    '<span class="plate auto'+(nameHue<0?' sel':'')+'" data-plate="-1" title="Match current rank">A</span>'+
-    RANK_HUES.map((h,i)=>{
-      const un=i<=(stats.bestRank||0);
-      return '<span class="plate'+(un?'':' lk')+(nameHue===i?' sel':'')+(h==='irid'?' irid':'')+'"'+
-        (un?' data-plate="'+i+'"':'')+(h!=='irid'?' style="background:'+h+'"':'')+
-        ' title="'+RANKS[i][1]+(un?'':' — reach this rank to unlock')+'"></span>';
-    }).join('')+'</div>';
-  html+='<div class="agrp'+(_agOpen.has('__coll')?' open':'')+'" data-ag="__coll">'+
-    '<div class="aghead"><span>Nameplate</span><span class="cnt"></span><span class="wchev"></span></div>'+
-    '<div class="agbody">'+collBody+'</div></div>';
+  /* v1.5.2c (Nick): the Nameplate customizer (name + plate colour) moved OUT
+     to Settings → Nameplate — the sheet's plate reads as your record, edited
+     from the menu now. */
   if(rarest && rarest.grade){
     html+='<div class="srow" style="margin-top:6px"><span class="k">Rarest find</span><span style="color:'+rarest.grade.hex+'">'+rarest.grade.name+' '+rarest.name+'</span></div>';
   }
@@ -16698,8 +16822,7 @@ function renderRecords(){
 function renderDoll(){
   const dollEl=document.getElementById('doll'); if(!dollEl) return;
   const r=rankInfo();
-  let html='<div class="dname">✪ '+(explorerName||'Explorer')+
-    ' <span class="cfrom" id="renameme" role="button" tabindex="0" style="cursor:pointer;font-size:11px;color:#9fc2ff;font-weight:400">✎ rename</span>'+
+  let html='<div class="dname">✪ <span class="dnm">'+(explorerName||'Explorer')+'</span>'+
     '<span class="drank">'+r.name+'</span></div>';
   html+='<div class="dollwrap"><img class="dollimg" src="'+paperdollAvatar()+'" alt="Your explorer">';
   /* v1.5.2b (Nick): the ship lives at the Shipyard (🛠 right rail), not on
@@ -16917,7 +17040,7 @@ function frameInner(){
   }
   picks.length=0;
   checkTransitions();
-  if(st.mode!==_lastMode){ _lastMode=st.mode; locked=null; _autoScanned=null; _frozenFor=null; }
+  if(st.mode!==_lastMode){ _lastMode=st.mode; locked=null; _autoScanned=null; _frozenFor=null; _apprLatch=null; _orbFrozenAt=null; }   /* a mode change lifts any stale orbit-hold */
   (MODE_PAINTERS[st.mode]||drawUniverse)(time);
   if(st.fade>0.02){
     ctx.fillStyle=`rgba(2,2,8,${st.fade})`;

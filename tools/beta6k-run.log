@@ -1,0 +1,114 @@
+  …50/750
+  …100/750
+  …150/750
+  …200/750
+  …250/750
+  …300/750
+  …350/750
+  …400/750
+  …450/750
+  …500/750
+  …550/750
+  …600/750
+  …650/750
+  …700/750
+  …750/750
+=== CHAOS REPORT (750 runs) ===
+{
+  "mode": "chaos",
+  "runs": 750,
+  "generatedFrom": "tools/simrun.js",
+  "errorTable": {},
+  "completed": 749,
+  "skipPath": 0,
+  "postClean": 749,
+  "stallTable": {
+    "step 19 [open: reveal,vistabox]": 27,
+    "step 6 (land lesson up) [open: tutbox,vistabox]": 3,
+    "step 4 [open: tutbox]": 4,
+    "step 19 [open: reveal,helppop]": 6,
+    "step 19 [open: reveal,setpanel,helppop,vistabox]": 3,
+    "step 19 [open: reveal,helppop,vistabox]": 27,
+    "step 19 [open: reveal]": 6,
+    "step 7 (landed home) [open: tutbox,codex,vistabox]": 1,
+    "step 19 [open: setpanel,helppop]": 1,
+    "step 19 [open: reveal,setpanel,vistabox]": 4,
+    "step 19 [open: helppop]": 2,
+    "step 19 [open: tutbox,helppop]": 2,
+    "step 19 [open: tutbox,reveal,helppop]": 3,
+    "step 19 [open: vistabox]": 5,
+    "step 19 [open: tutbox,reveal,vistabox]": 2,
+    "step 19 [open: reveal,setpanel]": 2,
+    "step 5 [open: tutbox,log]": 2,
+    "step 19 [open: helppop,vistabox]": 3,
+    "step 19 [open: reveal,setpanel,helppop]": 1,
+    "step 4 [open: tutbox,helppop]": 1,
+    "step 5 [open: tutbox,log,helppop]": 1,
+    "step 19 [open: tutbox,reveal,helppop,vistabox]": 1,
+    "step 3 [open: tutbox]": 1,
+    "step 5 [open: tutbox]": 1,
+    "step 6 (land lesson up) [open: tutbox]": 1,
+    "step 7 (landed home) [open: tutbox]": 1,
+    "step 7 [open: tutbox]": 1,
+    "step 8 [open: tutbox]": 1,
+    "step 9 [open: tutbox]": 1,
+    "feed button [open: tutbox]": 1,
+    "feed picker [open: tutbox]": 1,
+    "feed picker (reopen) [open: tutbox]": 1,
+    "step 10 (feed succeeded) [open: tutbox]": 1,
+    "breed button [open: tutbox,setpanel]": 1,
+    "breed picker [open: tutbox,setpanel]": 1,
+    "breed picker (reopen) [open: tutbox,setpanel]": 1,
+    "step 11 (breed succeeded) [open: tutbox,setpanel]": 1,
+    "duel opens [open: tutbox]": 1,
+    "step 12 (duel done) [open: tutbox]": 1,
+    "step 13 [open: tutbox]": 1,
+    "heal picker [open: tutbox]": 1,
+    "heal picker (reopen) [open: tutbox]": 1,
+    "step 14 (heal succeeded) [open: tutbox]": 1,
+    "step 15 [open: tutbox]": 1,
+    "step 16 [open: tutbox]": 1,
+    "step 17 (sheet open) [open: tutbox]": 1,
+    "forge: yard fab [open: tutbox,helppop]": 1,
+    "step 18 (plate forged) [open: tutbox,helppop]": 1,
+    "step 19 [open: tutbox]": 1,
+    "finale [open: tutbox]": 1
+  },
+  "breakTable": {}
+}
+full data: C:\Projects\Celestial-Frontier\tools\simreport-chaos.json
+  …50/500
+  …100/500
+  …150/500
+  …200/500
+  …250/500
+  …300/500
+  …350/500
+  …400/500
+  …450/500
+  …500/500
+=== UI REPORT (500 runs) ===
+{
+  "mode": "ui",
+  "runs": 500,
+  "generatedFrom": "tools/simrun.js",
+  "errorTable": {},
+  "completed": 500,
+  "skipPath": 128,
+  "postClean": 500,
+  "stallTable": {},
+  "breakTable": {}
+}
+full data: C:\Projects\Celestial-Frontier\tools\simreport-ui.json
+  …50/1000
+  …100/1000
+  …150/1000
+  …200/1000
+  …250/1000
+  …300/1000
+  …350/1000
+  …400/1000
+  …450/1000
+  …500/1000
+  …550/1000
+  …600/1000

@@ -185,13 +185,21 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('Atlas count is 1 (Earth)', doc.getElementById('logcount').textContent === '1');
     click(doc.getElementById('logbtn'));
     check('opening Atlas completes step 5', await until(() => tutAt(6), 3000, 'step6'));
-    // v1.5.2 THE LANDING LESSON: press Land on Earth's card — home never
-    // waves off, and Planetside (the vista) IS the lesson's payoff
+    // v1.5.2c THE LANDING LESSON: press Land on Earth's card — home never
+    // waves off, and Planetside (the vista) IS the lesson's payoff. It HOLDS
+    // until you tap "to continue" (no auto-close timer — Nick: "the vista
+    // still closes during training"), matching live play; #vistabox is in
+    // TUT_ALWAYS so the tap lands mid-training.
     click(doc.querySelector('#panel [data-act="landcta"]'));
     check('landing on Earth completes the landing lesson', await until(() => tutAt(7), 3000, 'step7'));
     check('landing lesson: Planetside opened for the landing', visible(doc.getElementById('vistabox')));
-    check('landing lesson: the vista yields the stage to the Compendium lesson', await until(() =>
-      !visible(doc.getElementById('vistabox')), 4000, 'vista grace'));
+    // the payoff holds — it does NOT auto-close on a timer (past the ghost-arm)
+    await sleep(700);
+    check('landing lesson: the vista holds until dismissed (no auto-close)', visible(doc.getElementById('vistabox')));
+    // an armed tap dismisses it and yields the stage to the Compendium lesson
+    click(doc.getElementById('vistabox'));
+    check('landing lesson: tapping the vista dismisses it', await until(() =>
+      !visible(doc.getElementById('vistabox')), 4000, 'vista dismiss'));
     check('training cache granted (6 specimens)', doc.getElementById('codexcount').textContent === '6');
     // training is toast-quiet: cache + rank-up land in the tray, never as pop-ups
     const tutToasts = [...doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
@@ -478,21 +486,44 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // (persistence of vol/rm is asserted on the pre-seeded boots below — this
     //  window is file:// / opaque-origin, so its localStorage is off limits)
 
-    // ============ PLAYER RENAME (Settings → Display, cancellable) ============
-    click(doc.getElementById('renameopt'));               // settings panel is still open from the tooltip checks
+    // ============ NAMEPLATE MENU (Settings → Nameplate: name + plate colour) ============
+    // v1.5.2c: the nameplate editor (name + colour) lives in Settings now,
+    // moved off the character sheet (settings panel is open from the checks above)
+    click(doc.getElementById('nameplateopt'));            // open the Nameplate menu
+    const pbox = doc.getElementById('platebox');
+    check('Nameplate menu opens from Settings', visible(pbox));
+    check('Nameplate menu carries the plate colour swatches', pbox.querySelectorAll('#np-plates .plate').length >= 2);
+    check('Nameplate menu shows a live preview pill', !!pbox.querySelector('#np-preview'));
+    // picking an unlocked colour applies it and marks the swatch selected
+    // (the menu re-renders on pick, so re-query the fresh node)
+    click(pbox.querySelector('#np-plates .plate[data-plate="0"]'));
+    check('picking a plate colour selects it', (() => {
+      const s0 = pbox.querySelector('#np-plates .plate[data-plate="0"]');
+      const auto = pbox.querySelector('#np-plates .plate[data-plate="-1"]');
+      return !!s0 && s0.classList.contains('sel') && auto && !auto.classList.contains('sel');
+    })());
+    click(doc.getElementById('np-rename'));               // open the rename dialog
     const nbox = doc.getElementById('namebox');
-    check('settings rename opens the naming dialog', visible(nbox)
+    check('Nameplate menu opens the naming dialog', visible(nbox)
       && nbox.textContent.includes('Change your explorer name'));
     check('rename dialog offers Cancel (initial naming never does)', visible(doc.getElementById('namecancel')));
     doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
     check('Escape cancels the rename', !visible(nbox));
     check('cancel kept the old name', doc.getElementById('rank').textContent.includes('SmokeTester'));
-    click(doc.getElementById('setbtn'));
-    click(doc.getElementById('renameopt'));
+    click(doc.getElementById('np-rename'));
     type(doc.getElementById('namein'), 'RenamedTester');
     click(doc.getElementById('nameok'));
     check('rename commits and the nameplate follows', !visible(nbox)
       && doc.getElementById('rank').textContent.includes('RenamedTester'));
+    // the corner ✕ closes the menu too
+    click(doc.getElementById('np-x'));
+    check('the Nameplate menu ✕ closes it', !visible(pbox));
+    // reopen and confirm Escape also closes it
+    click(doc.getElementById('setbtn'));
+    click(doc.getElementById('nameplateopt'));
+    check('Nameplate menu reopens', visible(pbox));
+    doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    check('Escape closes the Nameplate menu', !visible(pbox));
 
     check('no errors after all interactions', errors.length === 0, errors.slice(0, 3).join(' | '));
     w.close();
