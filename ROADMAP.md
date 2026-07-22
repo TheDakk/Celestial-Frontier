@@ -164,18 +164,26 @@
 ##   have the player accept the first ~3 quests during training so they learn the Accept flow. Extends the
 ##   existing 20-step training; keep it in the tutorial-sandbox pattern (snapshot/restore, no leaked progress —
 ##   see CF-001). Goal: players currently may not know charters exist or how to use them.
-## v1.7 DEFERRED FIXES (consolidated — from the v1.6 code review + earlier deferrals; each mapped to its phase):
-##   (A) RE-PIN / generation-touching → fold into Phase A/B: rare-vein DEDUP (P2-005, depositsFor) · MIRROR-DUEL
-##       tiebreak (CF16-011 / CF-004, runDuel — fp + champion-code interaction) · NAME VARIETY epithet (CF-008 —
-##       with the naming/text-polish pass).
-##   (B) SAVE-FORMAT: Atlas THUMBNAIL bloat (CF16-004 / CF-002 — strip star/galaxy thumbs + rebuild from seed;
-##       careful, rule-5) · bounded portrait/thumb caches (CF16-005).
-##   (C) ACCESSIBILITY pass: restore pinch-ZOOM + keyboard/screen-reader NAVIGATOR (CF16-012 / CF-006) + modal
-##       dialog semantics/focus-trap/return.
-##   (D) REAL-IPHONE mobile-onboarding LAYOUT pass (needs device testing): tutorial card overlaps / hidden
-##       spotlight / intro-CTA-below-fold (CF16-001/002/003) · charter-counter wrap + specimen frame/text
-##       collision (CF16-006/007 — likely already fixed by v1.6 verb-grid/layout; VERIFY) · cyan rim-light
-##       (CF16-008). — The 4 P2 hotfixes (Binder/save/conquest/breed) already SHIPPED in v1.6.1.
+## v1.7 DEFERRED FIXES (consolidated — v1.6 code review CF16-001..016 + P2-005 + earlier deferrals; per phase):
+##   (A) RE-PIN / generation-touching → Phase A/B: rare-vein DEDUP (P2-005) · MIRROR-DUEL tiebreak (CF16-011/CF-004,
+##       runDuel — fp + champion codes) · NAME VARIETY epithet (CF-008, with the naming/text pass).
+##   (B) SAVE / MEMORY: Atlas THUMBNAIL bloat (CF16-004/CF-002 — strip ALL thumbs + rebuild from seed + v5 migration,
+##       rule-5) · bounded LRU portrait/thumb caches + split list-thumb (96-144px) vs detail-portrait (CF16-005,
+##       mobile-memory HIGH) · Atlas-entry field-whitelist before innerHTML (CF16-013, hardening).
+##   (C) ACCESSIBILITY: restore pinch-ZOOM + limit touch-action:none to #cosmos + keyboard/screen-reader NAVIGATOR
+##       (CF16-012/CF-006) + modal dialog semantics/focus-trap/return + 44px touch targets.
+##   (D) REAL-IPHONE mobile-onboarding LAYOUT pass (needs device testing — the review's #1 BLOCKER set): ONE
+##       collision-aware tutorial layout coordinator (CF16-001) · dynamic/hit-tested spotlight targets + Forge
+##       sub-step (CF16-002) · intro FIXED ACTION FOOTER so the CTA isn't below the fold (CF16-003) · single
+##       event-driven spotlight tracker (CF16-009) · readiness-based target mounting (CF16-010) · charter-counter
+##       wrap (CF16-006) · specimen frame/scroller separation (CF16-007) · cyan rim-light softening (CF16-008).
+##       ⚠ CF16-006/007 are NOT the verb-row grid fixed in v1.6 — separate elements, still OPEN.
+##   (E) TOOLING/DOCS (cheap, non-blocking): Playwright + CI + all-20-tutorial-steps + small-phone viewports
+##       (CF16-014) · fix doc/version inconsistencies — README/CLAUDE 18→20 steps + smoke counts, package.json
+##       1.0.0→1.6, UI_PRESENTATION stacking order (CF16-015) · .gitignore generated artifacts (scratchpad/
+##       uisheets/reports) + stop tracking them (CF16-016).
+##   SHIPPED already (not deferred): the 4 P2 hotfixes (Binder/save/conquest/breed) in v1.6.1; and the 2 items this
+##   review calls "already present in v1.6" (tutorial stat-leak, delayed-hazard) = our CF-001/CF-003 (this session).
 ## v1.7 ARC = "THE FORGE & DISCOVERY" — design doc WRITTEN: **FORGE_AND_DISCOVERY.md** (source of truth for the
 ##   arc). Runs AFTER v1.6 deploys. Two pillars + streams: (P1) DISCOVERY — world rarity becomes a LANDING reveal,
 ##   not an orbital label; drop "Spectral"/color-word/★ glyphs; NEW world ladder (Nick FINAL): 0 ordinary(silent)/
