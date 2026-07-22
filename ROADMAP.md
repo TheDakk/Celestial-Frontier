@@ -19,7 +19,20 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF (as of 2026-07-22 — v1.6 DEPLOYED LIVE) ◀◀◀
+## ▶▶▶ SESSION HANDOFF (as of 2026-07-22 — v1.6.1 DEPLOYED LIVE) ◀◀◀
+## ★★★ v1.6.1 "THE BINDER PATCH" DEPLOYED LIVE (2026-07-22, build 973bbaa; site + source both pushed). The
+##   v1.6 CODE REVIEW (Nick's synthetic gameplay/code-review report) ran and found real bugs our panel/smoke
+##   missed. HOTFIXED (all fp-safe, fp 50/50, smoke+layout green, +Binder smoke check): P2-001 Binder crash
+##   (renderBinder read ABILITY_THEMES from outer scope → ReferenceError; exported it from CombatCore — was a
+##   LIVE crash) · P2-002 malformed-save (_sanitizeSavedGenome clamps brood/fed/xp/hurt + seed/kingdom; a crafted
+##   save forged an 11.7M-power creature exportable as a share code) · P2-003 duplicate conquest reward (idempotent
+##   conquered.has guard at onResolve) · P2-004 stale breeding parents (breedPair rejects consumed/invalid).
+##   DEFERRED to v1.7 (fingerprint/re-pin or bigger): P2-005 rare-vein dedup (depositsFor = generation → materials
+##   re-pin) · CF16-011 mirror-duel tiebreak (=CF-004) · CF16-004 Atlas thumbnails (=CF-002) · CF16-012 zoom/
+##   keyboard-nav (=CF-006) · CF16-001/002/003 mobile-onboarding LAYOUT blockers (need real-iPhone pass). NOTE the
+##   review tested an OLD 'dev' snapshot, so several carried-forward UI findings were ALREADY fixed in v1.6/v1.6.1
+##   (verb grid, Records short-phone, training soft-lock). NEXT: dive into v1.7 (rarity Phase A → Forge/materials
+##   Phase B → text polish → charter-training module + the deferred review items).
 ## ★★★ v1.6 "THE LIVING FRONTIER" IS DEPLOYED LIVE (2026-07-22, build 8351d67 → https://celestialfrontier.github.io/;
 ##   version.json v1.6). Committed to source main @8351d67 (release commit). Battery green at ship: validate 8
 ##   gates + fp 50/50, smoke 0 fails, layout PASS(546). v1.6 = the painterly art overhaul + lineage cards +
