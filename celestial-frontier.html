@@ -377,6 +377,10 @@
     background:rgba(5,6,12,0.5);border:1px solid rgba(255,207,138,0.18)}
   #namebox .lore p{font:12.5px/1.65 var(--ui);color:var(--dim);margin:0 0 10px}
   #namebox .lore p:last-child{margin-bottom:0}
+  /* CF16-003: pin the name field + Begin button so they stay visible on short iPhones (they were
+     below the fold at the bottom of the scrolling card). Only the lore above scrolls now. */
+  #namebox .nm-actions{position:sticky;bottom:0;z-index:1;padding-top:12px;margin-top:2px;
+    background:linear-gradient(180deg, rgba(8,9,18,0) 0%, rgba(11,12,24,0.92) 32%, rgba(9,10,20,0.99) 60%)}
   #namebox .lore em{font-style:normal;font-weight:600;color:#f0cf8a}
   #namebox .lore .creed{font-style:normal;color:var(--ink);font-weight:600;
     border-top:1px solid rgba(255,207,138,0.16);padding-top:11px;margin-top:2px;letter-spacing:.01em}
@@ -557,7 +561,7 @@
   #chpanel .ch{padding:8px 9px;border-radius:10px;margin:4px 0;border:1px solid rgba(150,162,210,0.14);background:rgba(150,162,210,0.05)}
   #chpanel .ch.done{opacity:0.55}
   #chpanel .ch .ct{font:600 11.5px var(--ui);color:var(--ink);display:flex;align-items:baseline;gap:6px}
-  #chpanel .ch .cp{font-size:10px;color:var(--plasma)}
+  #chpanel .ch .cp{font-size:10px;color:var(--plasma);white-space:nowrap;flex:none}   /* CF16-006: the "0 / 2" counter never wraps internally on narrow phones */
   #chpanel .ch .cr{margin-left:auto;font-size:10px;color:#ffd96a;white-space:nowrap}
   #chpanel .ch .cd{font-size:10.5px;color:var(--dim);line-height:1.5;margin-top:3px}
   #chpanel .ch .chk{color:#7fe6a0}
@@ -1731,10 +1735,12 @@
     <p>The Prime Codex is the master survey — the nine elemental forces from which all creation is wrought, each ruled by a titan that embodies it. Fell a titan and you master its element. Master all nine, and you have mastered the forces of the universe itself — and the Celestial Frontier, the truth beyond the charted sky, opens only to a master.</p>
     <p class="creed">You cannot finish the infinite. You can master it.</p>
   </div>
+  <div class="nm-actions">
   <p class="nnote">First, what shall the stars call you?</p>
   <input id="namein" type="text" maxlength="24" placeholder="Your explorer name" spellcheck="false" autocomplete="off">
   <button id="nameok" type="button" disabled>Begin the expedition</button>
   <button id="namecancel" type="button">Cancel</button>
+  </div>
 </div></div>
 
 <div id="relbox"><div class="card">
@@ -15960,10 +15966,16 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.6.1';
+const GAME_VERSION='1.6.2';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.6.2', title:'Mobile Polish', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '📱 THE BEGIN BUTTON STAYS IN VIEW — on short phones the intro&#8217;s name field and Begin button could sit below the bottom of the screen; they&#8217;re now pinned in place while the story scrolls above them.',
+  '🔢 CHARTER COUNTERS DON&#8217;T SPLIT — a charter&#8217;s progress count (like 0 / 2) no longer wraps onto two lines on narrow screens.'],
+ ],
+]},
 {v:'1.6.1', title:'The Binder Patch', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '📖 THE BINDER OPENS AGAIN — the Compendium&#8217;s Binder view hit an error and refused to open; it works again.',
