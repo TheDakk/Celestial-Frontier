@@ -17,7 +17,11 @@ if (fs.existsSync(path.join(root, 'main.js')))
   run([t('build.js'), '--template', path.join(root, 'celestial-frontier.html'),
     '--js', path.join(root, 'main.js'), '--out', path.join(root, 'celestial-frontier.html')]);
 run([t('checks.js'), path.join(root, 'celestial-frontier.html')]);
+run([t('rig-audit.js')]);   // class->rig binding gate (v1.6): FAIL on wrong-class collisions
+run([t('coloratlas-check.js')]);   // color atlas (v1.6 §6): pure + deterministic color path
+run([t('biomeprofile-check.js')]);   // biome profiles (v1.6 §F): every live biome covered
 run([t('make-probe-build.js'), path.join(root, 'celestial-frontier.html'), t('probe-build.html')]);
+run([t('render-audit.js')]);   // v1.6: every Earth species renders without throwing (fingerprint only covers procedural)
 run([t('harness.js'), t('probe-build.html'), t('current.json')]);
 
 const base = JSON.parse(fs.readFileSync(t('baseline.json'), 'utf8')).fingerprint;

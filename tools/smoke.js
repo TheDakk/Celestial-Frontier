@@ -78,12 +78,14 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // fresh expedition: latest bulletin FIRST, then training
     const relFresh = doc.getElementById('relbox');
     check('fresh expedition: latest bulletin shows before training', await until(() =>
-      visible(relFresh) && relFresh.textContent.includes('The Mirror Polish')
-      && relFresh.textContent.includes('Fresh Start') && relFresh.textContent.includes('v1.5'), 4000, 'fresh bulletin'));
-    // v1.5 opens a fresh minor line — the bulletin shows it alone, and
-    // no other line (1.4.x, 1.3.x, 1.2.x, 1.1.x, 1.0) may leak in
-    check('bulletin shows the v1.5 line alone (no 1.4/1.3.x leak)',
-      !relFresh.textContent.includes('The Ascent') && !relFresh.textContent.includes('The HD Frontier')
+      visible(relFresh) && relFresh.textContent.includes('The Living Frontier')
+      && relFresh.textContent.includes('v1.6'), 4000, 'fresh bulletin'));
+    // v1.6 opens a fresh minor line — the bulletin shows it alone, and
+    // no other line (1.5.x, 1.4.x, 1.3.x, 1.2.x, 1.1.x, 1.0) may leak in
+    check('bulletin shows the v1.6 line alone (no 1.5/1.4/1.3.x leak)',
+      !relFresh.textContent.includes('The Titan Hunt') && !relFresh.textContent.includes('The Mirror Polish')
+      && !relFresh.textContent.includes('Fresh Start')
+      && !relFresh.textContent.includes('The Ascent') && !relFresh.textContent.includes('The HD Frontier')
       && !relFresh.textContent.includes('Kingdom Shelves')
       && !relFresh.textContent.includes('Ink & Ember') && !relFresh.textContent.includes('First Contact')
       && !relFresh.textContent.includes('The Hunt Board') && !relFresh.textContent.includes('The Discovery Arc'));
@@ -430,7 +432,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     // release notes: the version line in the footer opens the full history
     const gc = doc.getElementById('gcredit');
-    check('guide footer shows version + build', gc && gc.textContent.includes('v1.5') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
+    check('guide footer shows version + build', gc && gc.textContent.includes('v1.6') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
     click(gc);
     const relbox = doc.getElementById('relbox');
     check('footer opens cumulative release notes (all versions)', visible(relbox)
@@ -1067,6 +1069,23 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('v1.5 paperdoll: tapping a socket opens its picker', await until(() =>
       !!dollEl4.querySelector('.eqpick [data-eqpick]'), 3000, 'eq picker'));
     click2(dollEl4.querySelector('[data-eqslot="tool"]'), sk.w);   // close the picker again
+    // v1.6 THE ITEM CARD: tapping a crafted item in the hold opens its stat
+    // card (effects + Equip button that slots it into its body socket)
+    skH.items.set('visor', 1);
+    click2(sk.doc.getElementById('rank'), sk.w);   // close sheet
+    click2(sk.doc.getElementById('rank'), sk.w);   // reopen -> re-render the hold with the new item
+    const vtile = sk.doc.querySelector('#cargo [data-item="visor"]');
+    check('v1.6 item card: crafted items are tappable tiles in the hold', !!vtile);
+    click2(vtile, sk.w);
+    const icard = sk.doc.getElementById('itemcard');
+    check('v1.6 item card: tapping an item opens its stat card', icard.style.display !== 'none' && /Scout Visor/.test(icard.textContent));
+    check('v1.6 item card: the card surfaces the item effect', /bioscan wounds/.test(icard.textContent));
+    const eqbtn = icard.querySelector('[data-equipbtn="visor"]');
+    check('v1.6 item card: wearables carry an Equip button', !!eqbtn);
+    click2(eqbtn, sk.w);
+    check('v1.6 item card: Equip slots the item into its socket', skH.equip.helmet === 'visor');
+    click2(icard.querySelector('[data-icclose]'), sk.w);
+    check('v1.6 item card: the corner close dismisses it', icard.style.display === 'none');
     // ship systems ARE the ring keys: hand over the drives, watch the rings open
     skH.items.set('jumpdrive', 1);
     check('v1.4 rings: the Jump Drive opens the Neighborhood', skH.ascStage() === 1

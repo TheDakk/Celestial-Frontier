@@ -1,5 +1,12 @@
 # Celestial Frontier — Engineering Handoff (v1.0)
 
+> ⚠️ **HISTORICAL ARTIFACT — v1.0 snapshot (June 2026). Not current state.** This is the
+> cold-start handoff as it read at v1.0 launch and is preserved for context/history only.
+> Facts here are frozen at v1.0 (e.g. it cites a 49-probe fingerprint — now 50; "no summit
+> tiers"; etc.). For CURRENT state read `ROADMAP.md` (live handoff) and the per-system docs;
+> for the current code map read `celestial-frontier-codebase-reference.md`. Do not treat any
+> claim below as live without checking it against the source.
+
 **Date:** June 11, 2026
 **Status:** Shipped at v1.0, fully playable, no known open bugs. Security/perf audited at v1.0.
 **Audience:** Any engineer (or Claude Code session) picking this project up cold.
