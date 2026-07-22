@@ -19,7 +19,23 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF (as of 2026-07-22 — v1.6.2 DEPLOYED LIVE) ◀◀◀
+## ▶▶▶ SESSION HANDOFF (as of 2026-07-22 — v1.6.3 DEPLOYED LIVE) ◀◀◀
+## ★★★ v1.6.3 "CARD & TRAINING POLISH" DEPLOYED LIVE (2026-07-22, build 3a4f5f6; site + source pushed). More of
+##   Nick's real-iPhone review. SHIPPED (fp 50/50, smoke+layout green): SPECIMEN CARD verbs reordered per Nick →
+##   Breed·Feed·Duel·Scout·Code (rev-* ids unchanged so smoke/gate still work); RENAME moved to a ✎ icon beside the
+##   name (.rn-edit, id rev-rename, calls askRenameSpecies — matches the player "✎ Change name" convention) ·
+##   COMPENDIUM training step pinned to TOP (new step flag top:true honored in _tutSpot dodge logic) so the fauna
+##   list stays scrollable. Earlier this session: v1.6.2 intro Begin-button — first tried a STICKY footer (caused
+##   text bleed-through), then FIXED with a flex-COLUMN card (lore scrolls in its own region, actions a real footer;
+##   #namebox .card display:flex, .lore flex:1 overflow-y:auto, .nm-actions flex:none). ⚠ ALL need real-iPhone verify.
+## ▶ NEXT MOBILE PASS — Nick's REMAINING trio (the hard tutorial timing / z-order / lifecycle bugs; do ONE AT A TIME
+##   with device verify): (#1) EARTH/ATLAS menu bleeds UNDER the training+world card (step 6) — panel z-order/cleanup,
+##   a residual atlas panel not swept. (#5) BREED → DUEL OVERLAP (step 12) — the "A New Bloodline" reveal and the duel
+##   screen are both live at once → GATE the duel step on the breed reveal being dismissed (one thing on screen).
+##   (#6) EMPTY blue SPOTLIGHT RING on the nameplate/HP steps (steps 8/13) — CF16-002/010: highlight draws on a
+##   target that's covered or not-yet-rendered → wait-for-render + elementFromPoint hit-test before showing the ring.
+##   Plus the earlier-review CF16-007 (specimen frame crosses "Critical"), CF16-008 (cyan rim), CF16-004/005 (save/
+##   memory). See the v1.7 DEFERRED FIXES block. Glass/tint SLIDER + accessibility-DEFER already recorded (v1.7).
 ## ★★★ v1.6.2 "MOBILE POLISH" DEPLOYED LIVE (2026-07-22, build 5c85d8b; site + source pushed) — the FIRST mobile-
 ##   onboarding pass from the v1.6 mobile review (Nick's real-iPhone findings). SHIPPED (fp 50/50, smoke+layout
 ##   green, both fp-safe CSS/markup): CF16-003 intro Begin-button STICKY FOOTER (was below the fold on short
