@@ -1,7 +1,16 @@
 # Celestial Frontier — Universal Rarity (v1.7)
 
-**Status:** DESIGN / canonical spec for v1.7. Not built yet — v1.6 ships first, then this lands
-(Phase A, then Phase B). **Matches code as of:** design only, 2026-07-22.
+**Status:** Phase A **BUILT in source** (2026-07-22, atop v1.6.4) — awaiting Nick's deploy call; Phase B still design.
+**Matches code as of:** 2026-07-22 (Phase A §3 items 1–9 implemented + surgically re-pinned; §3 items 10–12
+— discovery gating, escalating reveal, per-tier frames, cross-kind Compendium views — still to build).
+**Phase A implementation notes:** `RARITY_V17` (10 canonical rows) + `displayRarity(rawScore)=RARITY_V17[clamp(raw,0,9)]`
+added in `main.js`; `GRADE_TIERS` collapsed (names/hex → canonical, all `star:''`, `pre`+SPECTRA kept byte-identical
+so planet/star ART labels don't move); `rarityRoll` UNTOUCHED. Surgical re-pin covered exactly 7 probes
+(gradeTiers/speciesGrade/colorGrade/describeSpecies/faunaDesc/battleStats/runDuel) — every delta proven to be a
+rarity field only (name/hex/star/label), zero generation-text or combat-number change. Sentinels live in `smoke.js`
+(10-tier ladder, collapse 6→Mythic/7→Celestial, clamp 10+→Transcendent, no ★/✦/✧/❖, no old names, no ALL-CAPS).
+**On Phase-A DEPLOY (not yet):** delete `RARITY_AND_GRADES.md` + repoint its cross-refs (it still describes the LIVE
+v1.6.4 game until Phase A goes live).
 **Canonical-doc plan (Nick, 2026-07-22):** THIS file becomes THE single canonical rarity doc. The old
 `RARITY_AND_GRADES.md` (current 15-tier system) is kept ONLY until Phase A ships — it still accurately
 describes the LIVE game that v1.6 runs, so it must not be deleted early. **On Phase-A ship: delete

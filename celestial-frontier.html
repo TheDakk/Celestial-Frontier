@@ -3399,7 +3399,7 @@ const {climateBand, COMP, atmosphereText, climateText, waterText, gravityText, T
 /* ================================================================
    @module SpeciesTraits [domain] — trait tables, rarity grades & spectral anomalies
    Deps: Rand
-   API:  SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, rarityRoll, EX_HABITAT, EX_LOCO, AQ_FLORA_FORM, AIR_FLORA_FORM, habOf, locoOf, floraFormOf
+   API:  SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, RARITY_V17, displayRarity, rarityRoll, EX_HABITAT, EX_LOCO, AQ_FLORA_FORM, AIR_FLORA_FORM, habOf, locoOf, floraFormOf
    ================================================================ */
 const SpeciesTraits=(()=>{
 const SP_KINGDOM=['flora','fungi','microbe','fauna'];
@@ -3417,30 +3417,54 @@ const SP_HEX={emerald:'#2fbf6b',crimson:'#d33b46',violet:'#9a6cff',golden:'#e7b9
    This is the game's grading spine. Living things (flora, fauna, fungi, microbes)
    earn rarity stars in the Codex; celestial objects wear their rarity as a
    SPECTRAL designation instead — see SPECTRA below. */
+/* ================= UNIVERSAL RARITY (v1.7 Phase A) =================
+   ONE 10-tier ladder for everything — flora, fauna, planets, stars, and
+   (v1.7) gear/materials. Canonical names + colors from RARITY_UNIVERSAL.md §1.
+   Normal capitalization, NO glyphs (the grade word carries the rarity), color
+   is badge/frame only (never the entity art). displayRarity(rawScore) reads the
+   raw rarityRoll score (0–14) DIRECTLY as a tier, clamping 10+ to Transcendent —
+   "collapse, don't remap", so the universe + power + old share codes are all
+   untouched (a score-6 creature is the SAME creature, now labelled Mythic). */
+const RARITY_V17=[
+  {t:0, id:'common',       name:'Common',       hex:'#B8BDC7'},
+  {t:1, id:'uncommon',     name:'Uncommon',     hex:'#4FD16B'},
+  {t:2, id:'notable',      name:'Notable',      hex:'#35C9B5'},
+  {t:3, id:'rare',         name:'Rare',         hex:'#3D8BFF'},
+  {t:4, id:'exotic',       name:'Exotic',       hex:'#9A5CFF'},
+  {t:5, id:'legendary',    name:'Legendary',    hex:'#F4A62A'},
+  {t:6, id:'mythic',       name:'Mythic',       hex:'#E54B8D'},
+  {t:7, id:'celestial',    name:'Celestial',    hex:'#54D8FF'},
+  {t:8, id:'primordial',   name:'Primordial',   hex:'#D85B3F'},
+  {t:9, id:'transcendent', name:'Transcendent', hex:'#F7F1FF'},
+];
+function displayRarity(rawScore){ return RARITY_V17[Math.max(0, Math.min(9, rawScore|0))]; }
+/* GRADE_TIERS keeps the 0–14 shape (rarityRoll is UNTOUCHED, and forced apex/
+   paragon tiers still index 8–14) but every entry's NAME + HEX now COLLAPSES to
+   the 10-tier ladder above (10–14 all read Transcendent). The per-tier `pre`
+   (art color-word prefix) and the SPECTRA ladders are deliberately left as-is so
+   planet/star ART designations stay byte-identical — only the rarity name/color/
+   glyph moved, which is the whole surgical re-pin. `star` is now blank on every
+   tier: no ★/✦/✧ anywhere. */
 const GRADE_TIERS=[
-  {t:0, name:'Common',    pre:'Pale',      hex:'#9fb6d6', star:''},
-  {t:1, name:'Uncommon',  pre:'',          hex:'#bcd6e6', star:''},
-  {t:2, name:'Notable',   pre:'Bright',    hex:'#7fd0ff', star:'★'},
-  {t:3, name:'Rare',      pre:'Deep',      hex:'#5b8cf0', star:'★★'},
-  {t:4, name:'Exotic',    pre:'Neon',      hex:'#b06cff', star:'★★★'},
-  {t:5, name:'Legendary', pre:'Gold',      hex:'#e7b94a', star:'★★★★'},
-  {t:6, name:'Anomalous', pre:'Blackened', hex:'#c0494a', star:'★★★★'},
-  {t:7, name:'Unique',    pre:'Prismatic', hex:'#d65bb8', star:'✦ ONE-OF-ONE'},
-  /* the deep spectrum — carved out of the top of the roll in v1.3, so every
-     pre-existing grade either held or rose; nothing ever downgrades */
-  /* the deep spectrum — vivid hues that escalate past nature:
-     aqua myth → starlight → first-fire ember → white light */
-  {t:8,  name:'Mythic',       pre:'Iridescent',   hex:'#3fe8c8', star:'✦✦'},
-  {t:9,  name:'Celestial',    pre:'Radiant',      hex:'#a8c8ff', star:'✦✦✦'},
-  {t:10, name:'Primordial',   pre:'Primordial',   hex:'#ff8a4a', star:'✦✦✦✦'},
-  {t:11, name:'Transcendent', pre:'Transcendent', hex:'#f4f8ff', star:'✧ ONE IN A MILLION'},
-  /* the summit — past one-in-a-million the dice all but give out; these grades
-     belong to master bloodlines and to Apex Guardians. Dawnfire → twilight →
-     the iridescent everything-color. Tier 12+ renders with the .irid foil
-     shimmer in the UI; the hex is the static fallback. */
-  {t:12, name:'Empyrean',   pre:'Empyrean',   hex:'#ffc24f', star:'✧✧'},
-  {t:13, name:'Eternal',    pre:'Eternal',    hex:'#9a8aff', star:'✧✧✧'},
-  {t:14, name:'Omnipotent', pre:'Omnipotent', hex:'#ff7ae8', star:'❖ OMNIPOTENT'},
+  {t:0,  name:'Common',       pre:'Pale',         hex:'#B8BDC7', star:''},
+  {t:1,  name:'Uncommon',     pre:'',             hex:'#4FD16B', star:''},
+  {t:2,  name:'Notable',      pre:'Bright',       hex:'#35C9B5', star:''},
+  {t:3,  name:'Rare',         pre:'Deep',         hex:'#3D8BFF', star:''},
+  {t:4,  name:'Exotic',       pre:'Neon',         hex:'#9A5CFF', star:''},
+  {t:5,  name:'Legendary',    pre:'Gold',         hex:'#F4A62A', star:''},
+  {t:6,  name:'Mythic',       pre:'Blackened',    hex:'#E54B8D', star:''},
+  {t:7,  name:'Celestial',    pre:'Prismatic',    hex:'#54D8FF', star:''},
+  {t:8,  name:'Primordial',   pre:'Iridescent',   hex:'#D85B3F', star:''},
+  {t:9,  name:'Transcendent', pre:'Radiant',      hex:'#F7F1FF', star:''},
+  /* 10–14: the old summit/deep bands — the raw roll can still land here and
+     apex/paragon forces still target them, but they all DISPLAY as Transcendent
+     (display clamps; raw kept internally for sorting/achievements). `pre` kept
+     for art-label continuity only. */
+  {t:10, name:'Transcendent', pre:'Primordial',   hex:'#F7F1FF', star:''},
+  {t:11, name:'Transcendent', pre:'Transcendent', hex:'#F7F1FF', star:''},
+  {t:12, name:'Transcendent', pre:'Empyrean',     hex:'#F7F1FF', star:''},
+  {t:13, name:'Transcendent', pre:'Eternal',      hex:'#F7F1FF', star:''},
+  {t:14, name:'Transcendent', pre:'Omnipotent',   hex:'#F7F1FF', star:''},
 ];
 const TIER_MAX=GRADE_TIERS.length-1;
 /* hue family per object domain → the base color word */
@@ -3626,9 +3650,9 @@ function speciesName(seed){
   const r=mulberry32((seed^0x5eed5)>>>0);
   return SP_NAME_A[(r()*SP_NAME_A.length)|0]+SP_NAME_B[(r()*SP_NAME_B.length)|0]+SP_NAME_C[(r()*SP_NAME_C.length)|0];
 }
-return Object.freeze({SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, rarityRoll, EX_HABITAT, EX_LOCO, AQ_FLORA_FORM, AIR_FLORA_FORM, habOf, locoOf, floraFormOf});
+return Object.freeze({SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, RARITY_V17, displayRarity, rarityRoll, EX_HABITAT, EX_LOCO, AQ_FLORA_FORM, AIR_FLORA_FORM, habOf, locoOf, floraFormOf});
 })();
-const {SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, rarityRoll, EX_HABITAT, EX_LOCO, AQ_FLORA_FORM, AIR_FLORA_FORM, habOf, locoOf, floraFormOf}=SpeciesTraits;
+const {SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, RARITY_V17, displayRarity, rarityRoll, EX_HABITAT, EX_LOCO, AQ_FLORA_FORM, AIR_FLORA_FORM, habOf, locoOf, floraFormOf}=SpeciesTraits;
 /* @end SpeciesTraits */
 /* ================================================================
    @module Genome [domain] — genome synthesis, classification & species description
@@ -11909,11 +11933,11 @@ function artOf(en){ return en.art||(en.art=en.genome?speciesPortrait(en.genome):
    v1.5 fresh start every catalogue lives under the law from its first entry. */
 const RING_SPECTRUM=[
   {cap:5,  n:'the Neighborhood',   note:'up to Legendary'},
-  {cap:8,  n:'the home galaxy',    note:'up to Mythic'},
-  {cap:9,  n:'the Solar Reach',    note:'up to Celestial'},
-  {cap:10, n:'the Local Cluster',  note:'up to Primordial'},
-  {cap:11, n:'the Near Field',     note:'up to Transcendent'},
-  {cap:14, n:'the Deep Field and beyond', note:'the full spectrum — the summit lives out here'},
+  {cap:8,  n:'the home galaxy',    note:'up to Primordial'},
+  {cap:9,  n:'the Solar Reach',    note:'up to Transcendent'},
+  {cap:10, n:'the Local Cluster',  note:'Transcendent, less rare'},
+  {cap:11, n:'the Near Field',     note:'Transcendent, rarer still'},
+  {cap:14, n:'the Deep Field and beyond', note:'the full spectrum — where Transcendent worlds are least rare'},
 ];
 function gradeCapAt(where){
   if(!where || !where.gal) return TIER_MAX;          /* bred / imported / unplaced: never capped */
@@ -12164,7 +12188,7 @@ function discoverSpecies(g, from, where){
   if(fresh.grade){
     playRaritySting(fresh.grade.tier);
     if(fresh.grade.tier>=4) fxBurst([fresh.grade.hex,'#ffffff'], 24+fresh.grade.tier*6);
-    if(fresh.grade.tier>=5) cinematic({kicker:'✦ Rare Find', title:fresh.name,
+    if(fresh.grade.tier>=5) cinematic({kicker:'Rare Find', title:fresh.name,
       sub:fresh.grade.name+(fresh.grade.star?' '+fresh.grade.star:'')+' · '+fresh.kind+' — first ever catalogued',
       hex:fresh.grade.hex, tier:fresh.grade.tier});
     if(fresh.grade.tier>=5){
@@ -12607,7 +12631,7 @@ const BINDER_SETS=[
  {id:'bodies',   name:'The Bestiary',       d:'Own every fauna body plan', sd:80, prog:o=>o.bodies.size+' / '+FA_BODY.length, done:o=>o.bodies.size>=FA_BODY.length},
  {id:'realms',   name:'Warden of Realms',   d:'Own a species from every realm', sd:100, prog:o=>o.realms.size+' / '+REALM_ORDER.length, done:o=>o.realms.size>=REALM_ORDER.length},
  {id:'xeno',     name:'Against All Odds',   d:'Catalogue an extremophile — life that should not be possible', sd:60, prog:o=>(o.xeno?'1':'0')+' / 1', done:o=>!!o.xeno},
- {id:'court',    name:'The Apex Court',     d:'Claim a guardian of each summit grade', sd:150, prog:()=>_courtN()+' / 3', done:()=>_courtN()>=3},
+ {id:'court',    name:'The Apex Court',     d:'Claim Apex Guardians of all three summit ranks', sd:150, prog:()=>_courtN()+' / 3', done:()=>_courtN()>=3},
  {id:'para10',   name:'Seeker of Legends',  d:'Find 10 of the Fifty Paragons', sd:120, prog:()=>paragonsOwned()+' / 10', done:()=>paragonsOwned()>=10},
 ];
 let codexView='list';
@@ -12632,7 +12656,7 @@ function renderBinder(){
     if(e.kind==='Flora') own.flavors.add(floraStat(g));
   }
   const pages=[
-    {ic:'🎨', name:'The Spectrum',       slots:GRADE_TIERS.map(T=>({label:T.name, hex:T.hex, have:own.tiers.has(T.t)}))},
+    {ic:'🎨', name:'The Spectrum',       slots:RARITY_V17.map(T=>({label:T.name, hex:T.hex, have: T.t<9 ? own.tiers.has(T.t) : [9,10,11,12,13,14].some(x=>own.tiers.has(x))}))},
     {ic:'🗺', name:'The Sixteen Realms', slots:REALM_ORDER.map(rm=>({label:rm, hex:'#8fb4ff', have:own.realms.has(rm)}))},
     {ic:'🦴', name:'Body Plans',         slots:FA_BODY.map((b,i)=>({label:b, hex:'#7fe6a0', have:own.bodies.has(i)}))},
     {ic:'✧', name:'Ability Themes',      slots:Object.keys(ABILITY_THEMES).map(k=>({label:(ABILITY_THEMES[k].label||k), hex:(ABILITY_THEMES[k].col||'#ffd96a'), have:own.themes.has(k)}))},
@@ -13263,7 +13287,7 @@ function renderRank(){
 
 /* ---- achievements: grouped by category, expandable in the stats panel ---- */
 function kindsOwned(){ const s=new Set(); for(const e of codex.values()) if(e.kind) s.add(e.kind); return s.size; }
-function tiersOwned(){ const s=new Set(); for(const e of codex.values()) if(e.grade) s.add(e.grade.tier); return s.size; }
+function tiersOwned(){ const s=new Set(); for(const e of codex.values()) if(e.grade) s.add(Math.min(9, e.grade.tier|0)); return s.size; }   /* count DISPLAY tiers (raw 9–14 all collapse to Transcendent) */
 function realmsOwned(){ const s=new Set(); for(const e of codex.values()) if(e.realm) s.add(e.realm); return s.size; }
 const ACH=[
   /* — Cataloguing — */
@@ -13284,12 +13308,12 @@ const ACH=[
   /* — Rarity — */
   {id:'rare',    cat:'Rarity', ic:'🔷', name:'Deep Find',     d:'Discover something Rare or better', t:()=>stats.best>=3},   /* 💠 belongs to the Earpiece stud (Nick's pick) — no double meaning */
   {id:'legend',  cat:'Rarity', ic:'🌟', name:'Gold Rush',     d:'Discover a Legendary', t:()=>stats.best>=5},
-  {id:'unique',  cat:'Rarity', ic:'✦',  name:'One of One',    d:'Discover a one-of-one Unique', t:()=>stats.best>=7},
-  {id:'mythic',  cat:'Rarity', ic:'🧿', name:'Beyond the Veil', d:'Discover a Mythic — rarer than one-of-one', t:()=>stats.best>=8},
+  {id:'unique',  cat:'Rarity', ic:'✦',  name:'Star-Touched',  d:'Discover a Celestial', t:()=>stats.best>=7},
+  {id:'mythic',  cat:'Rarity', ic:'🧿', name:'Beyond the Veil', d:'Discover a Primordial', t:()=>stats.best>=8},
   {id:'transc',  cat:'Rarity', ic:'💫', name:'One in a Million', d:'Discover a Transcendent', t:()=>stats.best>=11},
-  {id:'summit',  cat:'Rarity', ic:'🗻', name:'Beyond the Million', d:'Own a summit-grade creature (Empyrean or better)', t:()=>stats.best>=12},
+  {id:'summit',  cat:'Rarity', ic:'🗻', name:'Beyond the Million', d:'Own an Apex Guardian&#8217;s bloodline — a forced Transcendent summit', t:()=>stats.best>=12},
   {id:'tiers8',  cat:'Rarity', ic:'🎨', name:'Full Spectrum', d:'Own species of 8 different rarity tiers', t:()=>tiersOwned()>=8},
-  {id:'tiers12', cat:'Rarity', ic:'🌈', name:'The Deep Spectrum', d:'Own species of all 12 rarity tiers, Common through Transcendent', t:()=>tiersOwned()>=12},
+  {id:'tiers12', cat:'Rarity', ic:'🌈', name:'The Deep Spectrum', d:'Own species of all 10 rarity tiers, Common through Transcendent', t:()=>tiersOwned()>=10},
   /* — Worlds — */
   {id:'survey5',  cat:'Worlds', ic:'🛰', name:'Eyes Down',       d:'Survey 5 living worlds', t:()=>stats.surveys>=5},
   {id:'survey25', cat:'Worlds', ic:'🌍', name:'World Walker',    d:'Survey 25 living worlds', t:()=>stats.surveys>=25},
@@ -15685,8 +15709,8 @@ const GUIDE=[
   '<p>From orbit a living world shows only its <b>life signatures</b> — the card blossoms when you land. Ground the world, then <b>survey its biosphere</b>: a deliberate act with teeth on hostile worlds — the danger percentage is your chance of being wounded by wildlife mid-survey, and <b>wounds deepen with distance</b> (a scrape in the home galaxy is survivable naked; the same claws in the Deep Field bite double and worse — scouts, the Reinforced Hull and crafted suits are how the far rings are survived). The survey always completes — you earned it.</p><ul><li>The survey <b>reveals</b> the roster; it catalogues nothing. Press <b>🐾 Tame</b> for beasts and <b>🌿 Scavenge</b> for flora, fungi and microbes — each attempt names its odds, rarer species resist harder, and crafted gear tips the hand. Every catch earns its Compendium page; there is no limit on trying.</li><li>Or send a beast ahead: press <b>Scout</b> on any of your fauna&#8217;s cards to name it your <b>Field Scout</b> — it takes the hit in your place, wounds and all, mended the usual way with ♥ loved flora. A scout with nothing left is lost forever.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li>Conquered worlds scan safely — see <span data-gt="conquest">Conquest</span>.</li><li>A thin slice of hostile worlds — molten, frozen, crushing — carries actual creatures, not just microbes. The odds run from about 1-in-70 on the friendliest extremes to 1-in-10,000 on the magma seas: the hardest landings hide the strangest finds.</li></ul>'},
  {id:'kingdoms', t:'The four kingdoms', k:'kingdom microbe flora fauna fungi realm biome classification', body:
   '<p>All life belongs to one of four kingdoms — <b>🦠 Microbe, 🌿 Flora, 🍄 Fungi, 🐾 Fauna</b> — and is shelved in the Compendium by realm (Land Fauna, Aquatic Fauna, Colonial Life…). Kingdom decides what a creature can do:</p><ul><li><b>Fauna</b> fight duels, defend worlds, and can be fed.</li><li><b>Flora</b> are medicine and meals — eaten by you or fed to beasts.</li><li>All kingdoms can breed within their own kind.</li><li>The sea grows kelp towers, reef-builders and sargassum rafts now; aerial-life worlds fly drifting veils. Extremophiles come with their own ways of living — vent-clingers, magma-swimmers, storm-riders — and worlds whose roster runs titanic sometimes show it breaking the horizon.</li></ul>'},
- {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary anomalous unique mythic celestial primordial transcendent empyrean eternal omnipotent deep spectrum summit color', body:
-  '<p>Every species rolls one of 15 grades. The first eight — Common, Uncommon, Notable, Rare, Exotic, <b>Legendary, Anomalous, Unique</b> — cover all most expeditions will ever see. Beyond them lies the <b>deep spectrum</b>: <b>Mythic, Celestial, Primordial</b> and <b>Transcendent</b> — a literal one-in-a-million roll. Past even that wait the three <b>summit grades</b> — <b>Empyrean, Eternal, Omnipotent</b> — all but unrollable, belonging to master bloodlines and to <span data-gt="guardians">Apex Guardians</span>. Rarity tints the card, pitches the discovery chime, and matters mechanically:</p><ul><li>Rarer flora heal more — and poison more. Rarer pairs are harder to breed but forge stronger bloodlines.</li><li>Finding a Legendary-or-better species pays a ☄ Stardust bonus (first discovery only).</li><li>Stars and worlds carry rarity too — their <em>spectral designation</em> — and rare worlds yield richer conquest spoils.</li><li>Hunting the deep spectrum? Size, glow, wild apex blood and deep hybrid generations all push a creature’s grade upward — a master bloodline can climb far past what nature rolls.</li></ul>'},
+ {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary mythic celestial primordial transcendent spectrum color', body:
+  '<p>Every species wears one of ten grades on a single ladder shared by creatures, plants, worlds and stars alike: <b>Common → Uncommon → Notable → Rare → Exotic → Legendary → Mythic → Celestial → Primordial → Transcendent</b>. Most expeditions live in the lower bands; the top grades grow vanishingly rare, and a <b>Transcendent</b> is a one-in-a-million roll — the province of master bloodlines and <span data-gt="guardians">Apex Guardians</span>. Rarity tints the card, pitches the discovery chime, and matters mechanically:</p><ul><li>Rarer flora heal more — and poison more. Rarer pairs are harder to breed but forge stronger bloodlines.</li><li>Finding a Legendary-or-better species pays a ☄ Stardust bonus (first discovery only).</li><li>Stars and worlds carry rarity too — but a world hides its grade until you <b>land</b> and stand on it; a star reveals its grade on <b>survey</b>. Rarer worlds yield richer conquest spoils.</li><li>Chasing the rare grades? Size, glow, wild apex blood and deep hybrid generations all push a creature’s grade upward — a master bloodline can climb far past what nature rolls.</li></ul>'},
  {id:'specimen', t:'Reading a specimen card', k:'specimen card stats power ability bloodline brood fed gen hybrid tastes', body:
   '<p>Tap any species in the Compendium to open its card:</p><ul><li><b>Five stat bars + Power</b> — its battle strength, rolled deterministically from its genome (see <span data-gt="stats">The five stats</span>).</li><li><b>❤ HP & Condition</b> — its battle pool, and whether it’s Healthy, Bruised, Injured or Critical. Wounds persist and dull every stat — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>✧ Ability</b> — its biome-themed combat trick (see <span data-gt="abilities">Abilities</span>).</li><li><b>♥ Favours / ⊘ Dislikes</b> — its feeding tastes (fauna only).</li><li><b>♞ Bloodline</b> — <em>brood</em> (generations bred) and <em>fed</em> (meals taken) both permanently raise its stats.</li><li>Buttons: <b>⇪ Code</b> (share), <b>⚔ Duel</b>, <b>🧬 Breed</b>, <b>🌿 Feed</b>, <b>✎ Rename</b>.</li></ul>'},
  {id:'drift', t:'Passive evolution', k:'drift evolve hybrid automatic epoch cosmic clock', body:
@@ -15726,7 +15750,7 @@ const GUIDE=[
  {id:'binder', t:'The Binder & the Fifty Paragons', k:'binder collection sets slots types paragon fifty silhouette claim stardust', body:
   '<p>Open the Compendium and switch to the <b>🗂 Binder</b> tab. You cannot collect individuals out of an infinite universe — so the Binder collects types: fixed pages of slots (every grade, every realm, every body plan, every ability theme…) that are the same for every explorer; your universe decides which specimen fills each.</p><ul><li><b>Sets</b> are curated collections that pay a one-time ☄ Stardust bounty — claim them in the Binder when complete.</li><li><b>The Fifty Paragons</b> are named, one-of-a-kind deep-spectrum legends living on fixed worlds — the same fifty worlds for every explorer. Tap a silhouette to plot a course to its last-known world, then land and <b>Discover Life</b> to catalogue it. Share the coordinates — your friend hunts the very same legend.</li></ul>'},
  {id:'guardians', t:'Apex Guardians', k:'guardian apex named ruler challenge summit empyrean eternal singular crown titan', body:
-  '<p>About one fauna-bearing world in forty is ruled by a <b>👑 named Apex Guardian</b> — a one-of-a-kind luminous titan wearing a <b>summit grade</b>: Empyrean, Eternal or Omnipotent, beyond even Transcendent. The same guardian rules the same world for every explorer — share the coordinates and a friend faces the very same beast.</p><ul><li>A guarded world’s survey card names its ruler, grade and Power, and its conquest becomes a <b>guardian challenge</b>.</li><li>Defeat it and the world is settled, the spoils pay a ruler’s ransom, and the guardian itself joins your Compendium — the fighter’s road to the summit grades.</li><li><b>Lose</b> and the usual price is paid: a champion creature is lost forever, or you take the wound.</li><li>The breeder’s road also leads up: size, glow, wild blood and deep hybrid generations can push a bloodline to the summit without ever drawing a blade.</li></ul>'},
+  '<p>About one fauna-bearing world in forty is ruled by a <b>👑 named Apex Guardian</b> — a one-of-a-kind luminous titan wearing the ladder’s <b>Transcendent</b> summit, forced rather than rolled. The same guardian rules the same world for every explorer — share the coordinates and a friend faces the very same beast.</p><ul><li>A guarded world’s survey card names its ruler, grade and Power, and its conquest becomes a <b>guardian challenge</b>.</li><li>Defeat it and the world is settled, the spoils pay a ruler’s ransom, and the guardian itself joins your Compendium — the fighter’s road to Transcendent.</li><li><b>Lose</b> and the usual price is paid: a champion creature is lost forever, or you take the wound.</li><li>The breeder’s road also leads up: size, glow, wild blood and deep hybrid generations can push a bloodline to the summit without ever drawing a blade.</li></ul>'},
 ]},
 {icon:'☄', cat:'Stardust & Progression', blurb:'Economy, harvests, spoils', topics:[
  {id:'stardust', t:'Stardust', k:'stardust essence currency economy breeding odds boost earn', body:
@@ -15740,7 +15764,7 @@ const GUIDE=[
  {id:'crafting', t:'The Fabricator & gear', k:'craft crafting fabricator recipe parts components ship systems gear equipment suit tool module instrument charm slot equip mining rig auto extractor anchor', body:
   '<p>The <b>Fabricator</b> lives at the <b>🛠 Shipyard</b> (right rail) — your ship, her systems, and both workbenches in one place. It turns ore into capability, three rungs up: <b>T1 basic parts</b> (plates, wire, chips, weave) → <b>T2 components</b> (drive coils, nav cores, hull segments) → <b>T3 ship systems</b> and <b>explorer gear</b>. Recipes are fixed and identical for every explorer; nothing waits on a timer.</p><ul><li><b>Ship systems build once and stay built:</b> the ⚡ Jump Drive, 📡 Long-Range Array and 🌌 Intergalactic Drive open the travel rings (see <span data-gt="ascent">Chapters</span>); the 🤖 Auto-Extractor keeps mining every world you&#8217;ve worked while you&#8217;re away.</li><li><b>Gear equips on YOU.</b> Your character screen (tap your nameplate) shows your explorer head to boots, with nine sockets pinned to the body — Helmet at the head, Earpiece at the ear, Necklace below the chin, Suit on the chest, Gloves and Tool at the hands, Leggings, Boots, and the Module — the 🎒 pack on your shoulder. Mining rigs and gloves multiply hauls; suits, visors and leggings blunt field wounds (the T3 hazard suits open molten, crushing and frozen worlds to nearly-sure landings); boots, greaves and the module ladder steady landings up to the Gravitic Anchor, which never waves off; earpieces and necklaces sharpen first contact, rich strikes, meals and travel.</li><li><b>Risk is the frontier — gear is how you tame it.</b> Every roll in the game (landing, contact, bioscan) has a crafted answer.</li></ul>'},
  {id:'ascent', t:'Chapters', k:'ascent chapter chapters sol lock jump drive ring ladder progression mainline quest unlock neighborhood galaxy intergalactic', body:
-  '<p><b>⬆ The Chapters</b> are the mainline: three of them, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p><b>The spectrum expands with the rings.</b> Rarity is a ladder of distance: the Neighborhood catalogues up to <b>Legendary</b>, the home galaxy up to <b>Mythic</b>, and each region beyond opens one more band — Celestial, Primordial, Transcendent — until the Deep Field frees the <b>summit grades</b>. The strangest finds live farthest out; guardians, Paragons and your own bred bloodlines are beyond the law.</p>'},
+  '<p><b>⬆ The Chapters</b> are the mainline: three of them, pinned at the top of your Charters board, that carry a new explorer from one rock to the whole sky. The rings, in order:</p><ul><li><b>Sol.</b> New expeditions start locked to the home system — the entire sky stays visible and surveyable (looking is always free; moving is what you earn). Mine Sol&#8217;s dead worlds and build the <b>⚡ Jump Drive</b>.</li><li><b>The Neighborhood.</b> The nearby stars open. Hunt life, settle a world, and build the <b>📡 Long-Range Array</b> for the whole galaxy.</li><li><b>Beyond the Rim.</b> Master the trades and build the <b>🌌 Intergalactic Drive</b> — from there the Prime Codex Signatures extend your reach, ring by ring, exactly as they always have.</li></ul><p><b>The spectrum expands with the rings.</b> Rarity is a ladder of distance: the Neighborhood catalogues up to <b>Legendary</b>, the home galaxy up to <b>Primordial</b>, and each region beyond makes <b>Transcendent</b> finds steadily less rare — until the Deep Field, where the ladder’s summit lives. The strangest finds live farthest out; guardians, Paragons and your own bred bloodlines are beyond the law.</p>'},
 ]},
 {icon:'✦', cat:'The Prime Codex', blurb:'Signatures, the frontier, endings', topics:[
  {id:'signatures', t:'The Elemental Signatures (nine titans)', k:'signature prime codex element guardian titan relic blueprint earth wind fire air water electric poison void prism win endgame', body:
@@ -19636,8 +19660,8 @@ function renderRecords(){
   const tierHave=new Array(GRADE_TIERS.length).fill(0);
   for(const e of codex.values()) if(e.grade) tierHave[e.grade.tier]++;
   let html='<div class="chead" style="color:#ffd96a">🏆 Records</div>';
-  html+='<h4>Rarity ladder</h4><div class="tiers">'+GRADE_TIERS.map(T=>{
-    const n=tierHave[T.t];
+  html+='<h4>Rarity ladder</h4><div class="tiers">'+RARITY_V17.map(T=>{
+    const n = T.t<9 ? tierHave[T.t] : (tierHave[9]+tierHave[10]+tierHave[11]+tierHave[12]+tierHave[13]+tierHave[14]);   /* Transcendent folds raw 9–14 */
     return '<div class="tier" style="border-color:'+T.hex+(n?'':'44')+';color:'+T.hex+(n?'':'66')+'"><div class="c">'+n+'</div>'+T.name+'</div>';
   }).join('')+'</div>';
   /* v1.5.2c (Nick): the Statistics ledger lives HERE now — the trophy
