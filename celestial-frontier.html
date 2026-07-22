@@ -365,22 +365,21 @@
   #desc-stay:hover{color:var(--ink)}
   #namebox{position:fixed;inset:0;z-index:38;display:none;align-items:center;justify-content:center;
     background:rgba(4,5,10,0.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-  #namebox .card{width:min(400px,calc(100vw - 36px));max-height:calc(100vh - 90px);max-height:calc(100dvh - 40px);overflow-y:auto;
+  #namebox .card{width:min(400px,calc(100vw - 36px));max-height:calc(100vh - 90px);max-height:calc(100dvh - 40px);display:flex;flex-direction:column;overflow:hidden;
     text-align:center;background:radial-gradient(135% 95% at 50% -15%, rgba(96,90,210,0.26), transparent 58%), radial-gradient(120% 70% at 85% 116%, rgba(255,207,138,0.13), transparent 55%), linear-gradient(180deg, rgba(15,17,33,0.97), rgba(8,9,18,0.98));
     border:1px solid rgba(255,207,138,0.45);border-radius:18px;padding:26px 22px;
     box-shadow:0 0 60px rgba(255,207,138,0.12), 0 26px 80px rgba(0,0,0,0.7)}
-  #namebox .nm-mark{width:74px;height:74px;filter:drop-shadow(0 0 16px rgba(143,180,255,0.45))}
+  #namebox .nm-mark{width:74px;height:74px;flex:none;align-self:center;filter:drop-shadow(0 0 16px rgba(143,180,255,0.45))}
   #namebox h3{font:700 28px var(--ui);letter-spacing:.02em;margin:14px 0 7px;background:linear-gradient(180deg,#ffffff,#f4d79e 52%,#e0a84a);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 0 18px rgba(240,200,110,0.4))}
   #namebox .nnote{font-size:12px;color:var(--dim);line-height:1.6;margin:0 0 16px}
   #namebox .nnote em{color:var(--plasma);font-style:normal}
-  #namebox .lore{text-align:left;margin:4px 0 15px;padding:14px 15px;border-radius:12px;
+  #namebox .lore{text-align:left;margin:4px 0 15px;padding:14px 15px;border-radius:12px;flex:1 1 auto;overflow-y:auto;min-height:0;
     background:rgba(5,6,12,0.5);border:1px solid rgba(255,207,138,0.18)}
   #namebox .lore p{font:12.5px/1.65 var(--ui);color:var(--dim);margin:0 0 10px}
   #namebox .lore p:last-child{margin-bottom:0}
-  /* CF16-003: pin the name field + Begin button so they stay visible on short iPhones (they were
-     below the fold at the bottom of the scrolling card). Only the lore above scrolls now. */
-  #namebox .nm-actions{position:sticky;bottom:0;z-index:1;padding-top:12px;margin-top:2px;
-    background:linear-gradient(180deg, rgba(8,9,18,0) 0%, rgba(11,12,24,0.92) 32%, rgba(9,10,20,0.99) 60%)}
+  /* CF16-003: the intro card is a flex column — the lore scrolls in its OWN region while the name
+     field + Begin button stay as a fixed footer, always visible on short iPhones with NO text overlap. */
+  #namebox .nm-actions{flex:none;padding-top:10px}
   #namebox .lore em{font-style:normal;font-weight:600;color:#f0cf8a}
   #namebox .lore .creed{font-style:normal;color:var(--ink);font-weight:600;
     border-top:1px solid rgba(255,207,138,0.16);padding-top:11px;margin-top:2px;letter-spacing:.01em}

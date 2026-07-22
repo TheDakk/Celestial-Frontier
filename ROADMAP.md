@@ -175,6 +175,12 @@
 ##   have the player accept the first ~3 quests during training so they learn the Accept flow. Extends the
 ##   existing 20-step training; keep it in the tutorial-sandbox pattern (snapshot/restore, no leaked progress —
 ##   see CF-001). Goal: players currently may not know charters exist or how to use them.
+## v1.7 GLASS / TINT SLIDER (Nick, 2026-07-22): add a WINDOW TRANSPARENCY slider to Graphics settings — the panels
+##   use a glass/blur look (backdrop-filter); let players dial the tint from full-glass → more-opaque (the iOS-26
+##   "Liquid Glass" vibe), keeping a minimum tint FLOOR. Genuinely useful — the glass transparency is part of why
+##   text can be hard to read behind panels (see the intro-overlap fix). ★ Nick's call: this REPLACES the
+##   accessibility/screen-reader work on the near backlog → DEFER CF16-012 (zoom + keyboard/screen-reader NAVIGATOR
+##   / CF-006) to a LATER time (not this arc).
 ## v1.7 DEFERRED FIXES (consolidated — v1.6 code review CF16-001..016 + P2-005 + earlier deferrals; per phase):
 ##   (A) RE-PIN / generation-touching → Phase A/B: rare-vein DEDUP (P2-005) · MIRROR-DUEL tiebreak (CF16-011/CF-004,
 ##       runDuel — fp + champion codes) · NAME VARIETY epithet (CF-008, with the naming/text pass).
