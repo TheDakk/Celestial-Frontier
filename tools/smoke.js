@@ -68,6 +68,26 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     const H = w.__PROBE_HOOK__;
     check('boots with zero errors', errors.length === 0, errors.slice(0, 3).join(' | '));
     check('probe hook present', !!H);
+
+    // ============ v1.7 PHASE A — universal rarity vocabulary ============
+    if (H && H.RARITY_V17 && H.displayRarity && H.GRADE_TIERS) {
+      const RV = H.RARITY_V17, dR = H.displayRarity, GT = H.GRADE_TIERS;
+      check('rarity: RARITY_V17 is the 10-tier ladder', RV.length === 10 &&
+        RV[0].name === 'Common' && RV[9].name === 'Transcendent');
+      check('rarity: displayRarity collapses score 6 -> Mythic, 7 -> Celestial', dR(6).name === 'Mythic' && dR(7).name === 'Celestial');
+      check('rarity: displayRarity clamps raw 10+ to Transcendent', dR(12).name === 'Transcendent' && dR(14).name === 'Transcendent');
+      const starGlyph = /[★✦✧❖]/;   // ★ ✦ ✧ ❖
+      check('rarity: no ★/✦/✧/❖ glyphs on any GRADE_TIER star field', GT.every((t) => !starGlyph.test(t.star || '')));
+      check('rarity: no old tier names survive (Anomalous/Unique/Empyrean/Eternal/Omnipotent)',
+        !GT.some((t) => /Anomalous|Unique|Empyrean|Eternal|Omnipotent/.test(t.name)));
+      check('rarity: no ALL-CAPS rarity names', RV.every((t) => t.name !== t.name.toUpperCase()));
+      // a real fauna grade renders with a clean word and no glyph
+      const sg = H.speciesGrade(H.makeGenome(4242, 'fauna', 1));
+      check('rarity: a rolled fauna grade has a clean name and no star glyph',
+        typeof sg.name === 'string' && sg.name.length > 0 && !starGlyph.test(sg.star || '') && !starGlyph.test(sg.name));
+    } else {
+      check('rarity: Phase A hooks present (RARITY_V17/displayRarity/GRADE_TIERS)', false);
+    }
     check('intro name prompt shown for fresh expedition', visible(doc.getElementById('namebox')));
 
     // ============ FIELD TRAINING — full 20-step drive ============
@@ -1058,7 +1078,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click2(sk.doc.getElementById('recbtn'), sk.w);
     const recEl = sk.doc.getElementById('records');
     check('records: 🏆 opens the board with the rarity ladder + achievement shelves',
-      visible(recEl) && recEl.querySelectorAll('.tier').length >= 12 && recEl.querySelectorAll('.agrp').length >= 5);
+      visible(recEl) && recEl.querySelectorAll('.tier').length === 10 && recEl.querySelectorAll('.agrp').length >= 5);   // v1.7: the ladder is the 10-tier universal rarity
     check('records: the character sheet no longer carries the trophies',
       !sk.doc.getElementById('stats').textContent.includes('Rarity ladder'));
     click2(sk.doc.getElementById('recbtn'), sk.w);
