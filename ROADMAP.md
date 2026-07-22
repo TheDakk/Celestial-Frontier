@@ -164,6 +164,18 @@
 ##   have the player accept the first ~3 quests during training so they learn the Accept flow. Extends the
 ##   existing 20-step training; keep it in the tutorial-sandbox pattern (snapshot/restore, no leaked progress —
 ##   see CF-001). Goal: players currently may not know charters exist or how to use them.
+## v1.7 DEFERRED FIXES (consolidated — from the v1.6 code review + earlier deferrals; each mapped to its phase):
+##   (A) RE-PIN / generation-touching → fold into Phase A/B: rare-vein DEDUP (P2-005, depositsFor) · MIRROR-DUEL
+##       tiebreak (CF16-011 / CF-004, runDuel — fp + champion-code interaction) · NAME VARIETY epithet (CF-008 —
+##       with the naming/text-polish pass).
+##   (B) SAVE-FORMAT: Atlas THUMBNAIL bloat (CF16-004 / CF-002 — strip star/galaxy thumbs + rebuild from seed;
+##       careful, rule-5) · bounded portrait/thumb caches (CF16-005).
+##   (C) ACCESSIBILITY pass: restore pinch-ZOOM + keyboard/screen-reader NAVIGATOR (CF16-012 / CF-006) + modal
+##       dialog semantics/focus-trap/return.
+##   (D) REAL-IPHONE mobile-onboarding LAYOUT pass (needs device testing): tutorial card overlaps / hidden
+##       spotlight / intro-CTA-below-fold (CF16-001/002/003) · charter-counter wrap + specimen frame/text
+##       collision (CF16-006/007 — likely already fixed by v1.6 verb-grid/layout; VERIFY) · cyan rim-light
+##       (CF16-008). — The 4 P2 hotfixes (Binder/save/conquest/breed) already SHIPPED in v1.6.1.
 ## v1.7 ARC = "THE FORGE & DISCOVERY" — design doc WRITTEN: **FORGE_AND_DISCOVERY.md** (source of truth for the
 ##   arc). Runs AFTER v1.6 deploys. Two pillars + streams: (P1) DISCOVERY — world rarity becomes a LANDING reveal,
 ##   not an orbital label; drop "Spectral"/color-word/★ glyphs; NEW world ladder (Nick FINAL): 0 ordinary(silent)/
