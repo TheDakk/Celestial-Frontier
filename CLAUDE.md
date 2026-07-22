@@ -28,6 +28,7 @@ kind it is — the answer picks the fix.
 - `celestial-frontier-codebase-reference.md` — full technical reference, keep it in sync with the source.
 - `tools/` — verification toolkit (`npm install` once, then see `tools/README.md`).
 - **Live site:** https://celestialfrontier.github.io/ — deployed from the sibling repo clone at `..\celestialfrontier.github.io` via `node tools/deploy.js` (run only after validate + smoke pass, and only at user-approved milestones). This repo is the source of truth; never edit the site repo directly.
+- **DEPLOY CHECKLIST — push the SOURCE repo too.** `tools/deploy.js` only pushes the **site** repo, NOT this source repo (`TheDakk/Celestial-Frontier`, the private GitHub). So every release is TWO pushes: (1) commit the source release here, (2) `node tools/deploy.js` (pushes the live site), (3) **`git push origin main`** to sync the private source repo. Skipping step 3 silently leaves the source remote behind (it once drifted 97 commits). Always push source after a deploy.
 - `original/celestial-frontier-v1.0.html` — pristine pre-refactor build (the determinism baseline was captured from it).
 
 ## Hard rules
