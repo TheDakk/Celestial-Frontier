@@ -185,6 +185,14 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.querySelector('#panel [data-act="add"]'));
     check('adding Earth to Atlas completes step 4', await until(() => tutAt(5), 3000, 'step5'));
     check('Atlas count is 1 (Earth)', doc.getElementById('logcount').textContent === '1');
+    // REGRESSION (v1.6.4): a returning player already has Earth in `landed`
+    // (samples long since read). noteLanding(133) early-returns on a repeat
+    // land, so the landfall event the land step waits on never fires — the
+    // ring lights but Land "does nothing". Seed it BEFORE entering the land
+    // step so the step's enter() (which un-lands home for the drill) is what
+    // rescues it. A fresh boot never has 133 landed, which is why this was
+    // invisible until a veteran hit it on device.
+    H.landed.add(133);
     click(doc.getElementById('logbtn'));
     check('opening Atlas completes step 5', await until(() => tutAt(6), 3000, 'step6'));
     // v1.5.2c THE LANDING LESSON: press Land on Earth's card — home never

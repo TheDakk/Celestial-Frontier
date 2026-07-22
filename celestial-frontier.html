@@ -15977,10 +15977,15 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.6.3';
+const GAME_VERSION='1.6.4';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.6.4', title:'The Landing Fix', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🛬 LANDING TRAINING UNSTUCK — for returning pilots who had already set foot on Earth, the Land step could light up but never complete (the descent registered, yet training didn&#8217;t move on). It now always advances. New pilots were never affected.'],
+ ],
+]},
 {v:'1.6.3', title:'Card & Training Polish', date:'July 2026', sections:[
  ['🖱 UI Enhancements', [
   '🃏 SPECIMEN CARD, TIDIED — the action buttons are reordered (Breed · Feed · Duel · Scout · Code), and Rename moved to a small ✎ icon beside the name so the row stays clean.',
@@ -18803,6 +18808,12 @@ const TUT_STEPS=[
   text:()=>'Earth is charted — your Atlas’s first entry. Open the <b>Star Atlas</b> (right rail). Tapping any entry travels there instantly; ☆ favorites and the ⌂ home mark live there too.',
   when:(t,d)=>t==='atlas-open'&&!!d.open},
  {id:'land', spot:'#panel [data-act="landcta"]', allow:['#panel','#vistabox','#cosmos'], acts:['landcta'],   /* the canvas stays open: a closed card can always be re-opened by tapping Earth */
+  /* a returning player already has Earth in `landed` (samples long since read),
+     so noteLanding(133) would early-return and NEVER fire the landfall event
+     this step waits on — the ring lights but Land "does nothing". Un-land home
+     for the drill; the press re-adds it instantly. Fresh saves never hit this,
+     which is why smoke (a clean boot) couldn't see it. */
+  enter:()=>{ try{ landed.delete(133); }catch(_){ } },
   text:()=>'Now stand on it. Press <b>Land</b> on Earth&#8217;s card — home never waves you off. <b>Planetside</b> opens: the world at ground level, painted from its own survey. Out there, hostile worlds fight the descent — the card always shows your odds first.',
   when:(t,d)=>t==='landfall'&&d.planetSeed===133},
  {id:'cache', spot:'#codexbtn', allow:['#codexbtn'],
