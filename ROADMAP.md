@@ -19,7 +19,18 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF (as of 2026-07-22 — v1.6.1 DEPLOYED LIVE) ◀◀◀
+## ▶▶▶ SESSION HANDOFF (as of 2026-07-22 — v1.6.2 DEPLOYED LIVE) ◀◀◀
+## ★★★ v1.6.2 "MOBILE POLISH" DEPLOYED LIVE (2026-07-22, build 5c85d8b; site + source pushed) — the FIRST mobile-
+##   onboarding pass from the v1.6 mobile review (Nick's real-iPhone findings). SHIPPED (fp 50/50, smoke+layout
+##   green, both fp-safe CSS/markup): CF16-003 intro Begin-button STICKY FOOTER (was below the fold on short
+##   iPhones — .nm-actions position:sticky) · CF16-006 charter counter no-wrap (.cp white-space:nowrap;flex:none).
+##   ⚠ NEEDS REAL-IPHONE VERIFICATION — the layout gate doesn't cover small-iPhone viewports (CF16-014). STILL OPEN
+##   (structural, do next ONE AT A TIME with Nick verifying on device): CF16-007 specimen frame crosses "Critical"
+##   text (needs inner-scroller markup) · CF16-001 tutorial card BLOCKS the panel it teaches (collision-aware
+##   layout coordinator — the big one) · CF16-010 highlight/items don't load until clicked (readiness-based target
+##   mounting, not a 480ms timer) · CF16-008 cyan rim shards (fp-safe render — verify via proof sheet) · CF16-004/
+##   005 Atlas save-bloat + portrait-cache memory · CF16-012 zoom/touch-action (behavioral). See the v1.7 DEFERRED
+##   FIXES block below for the full mapped list.
 ## ★★★ v1.6.1 "THE BINDER PATCH" DEPLOYED LIVE (2026-07-22, build 973bbaa; site + source both pushed). The
 ##   v1.6 CODE REVIEW (Nick's synthetic gameplay/code-review report) ran and found real bugs our panel/smoke
 ##   missed. HOTFIXED (all fp-safe, fp 50/50, smoke+layout green, +Binder smoke check): P2-001 Binder crash
