@@ -1183,6 +1183,9 @@
   #rev-info .ir .k{flex:none;width:96px;font:600 9.5px var(--ui);letter-spacing:.07em;text-transform:uppercase;color:var(--faint);padding-top:2px}
   #rev-info .ir .v{color:#cfd6f2}
   #reveal .rn{font-family:var(--ui);font-size:20px;font-weight:600;color:#eafff0;margin-top:14px}
+  #reveal .rn-edit{display:inline-block;vertical-align:middle;margin-left:9px;font-size:12.5px;line-height:1;padding:5px 8px;
+    border-radius:8px;color:var(--dim);background:rgba(143,180,255,0.1);border:1px solid rgba(143,180,255,0.3);cursor:pointer}
+  #reveal .rn-edit:hover{background:rgba(143,180,255,0.22);color:var(--ink)}
   #reveal .rk{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7fe6a0;margin-top:3px}
   #reveal .rd{font-size:12.5px;color:var(--dim);line-height:1.5;margin-top:10px}
   #reveal .rmeta{font-size:11px;color:var(--faint);margin-top:10px}
@@ -12236,6 +12239,14 @@ function showReveal(entry, isHybrid){
   const nm=document.getElementById('rev-name');
   nm.textContent = entry.name;
   nm.style.color = gr?gr.hex:'';
+  /* ✎ edit icon beside the name (replaces the Rename verb button; matches the player's ✎ Change-name convention) */
+  if(codex.has(entry.id)){
+    const _re=document.createElement('button');
+    _re.id='rev-rename'; _re.type='button'; _re.className='rn-edit';
+    _re.setAttribute('data-tip','Rename this creature — your name rides inside its code too.');
+    _re.textContent='✎';
+    nm.appendChild(_re);
+  }
   /* the grade badge — every specimen wears its rarity like a collection card;
      summit grades (12+) get the iridescent foil treatment */
   document.getElementById('rev-kind').innerHTML =
@@ -12328,12 +12339,13 @@ function showReveal(entry, isHybrid){
     }
     if(acts){
       acts.style.display='grid';   /* was 'flex' — inline flex overrode the CSS grid and crushed 7-8 verbs into one row ("RenamRecord"); grid wraps them tidily at every resolution */
-      acts.innerHTML='<button id="rev-share" type="button" data-guide="codes" data-tip="Copy a CFB code — the identical creature, stats and all, on any device.">⇪ Code</button>'+
-        '<button id="rev-duel" type="button" data-guide="duels" data-tip="A friendly duel — sport only, nothing is lost.">Duel</button>'+
+      /* verb order (Nick): Breed · Feed · Duel · Scout · Code · [Champion] · [Record]; Rename moved to the ✎ icon by the name */
+      acts.innerHTML=
         (codex.has(entry.id) ? '<button id="rev-breed" type="button" data-guide="breeding" data-tip="Forge a new bloodline — both parents are consumed, win or lose.">Breed</button>' : '')+
         (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A welcome meal grows its bloodline and mends its wounds — a toxic one poisons, and can finish a beast with nothing left.">Feed</button>' : '')+
+        '<button id="rev-duel" type="button" data-guide="duels" data-tip="A friendly duel — sport only, nothing is lost.">Duel</button>'+
         (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-scout" type="button"'+(scoutId===entry.id?' class="on"':'')+' data-guide="discover" data-tip="Your Field Scout takes the hit when a bioscan turns hostile — wounds and all. A scout with nothing left is lost forever.">'+(scoutId===entry.id?'Scouting ✓':'Scout')+'</button>' : '')+
-        (codex.has(entry.id) ? '<button id="rev-rename" type="button" data-tip="Your name rides inside its creature code too.">✎ Rename</button>' : '')+
+        '<button id="rev-share" type="button" data-guide="codes" data-tip="Copy a CFB code — the identical creature, stats and all, on any device.">⇪ Code</button>'+
         (codex.has(entry.id) && levelOf(entry.genome)>0 ? '<button id="rev-champ" type="button" data-guide="codes" data-tip="Copy a 🏆 Champion code — this creature at its full leveled strength, for a friend to face in an exhibition duel.">🏆 Champion</button>' : '')+
         (entry.grade && entry.grade.tier>=5 ? '<button id="rev-record" type="button" data-tip="Copy a keepsake record of this find — flavor, stats and its creature code.">Record</button>' : '');
     }
@@ -15965,10 +15977,16 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.6.2';
+const GAME_VERSION='1.6.3';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.6.3', title:'Card & Training Polish', date:'July 2026', sections:[
+ ['🖱 UI Enhancements', [
+  '🃏 SPECIMEN CARD, TIDIED — the action buttons are reordered (Breed · Feed · Duel · Scout · Code), and Rename moved to a small ✎ icon beside the name so the row stays clean.',
+  '🧭 TRAINING OUT OF THE WAY — during the Compendium lesson the training card sits at the top, so the creature list below stays scrollable and reachable.'],
+ ],
+]},
 {v:'1.6.2', title:'Mobile Polish', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '📱 THE BEGIN BUTTON STAYS IN VIEW — on short phones the intro&#8217;s name field and Begin button could sit below the bottom of the screen; they&#8217;re now pinned in place while the story scrolls above them.',
@@ -18795,7 +18813,7 @@ const TUT_STEPS=[
        is in TUT_ALWAYS so a tap dismisses it and yields to the Compendium. */ },
   text:()=>'A training cache just arrived: three Earth beasts and three Earth flora, on loan from the order. Tap the Planetside to continue, then open your <b>Compendium</b> to meet them.',
   when:(t,d)=>t==='codex-open'&&!!d.open},
- {id:'specimen', spot:'#codex', allow:['#codex','#codexbtn'],   /* #codexbtn allowed so a Settings-closed Compendium can be reopened (was a soft-lock) */
+ {id:'specimen', spot:'#codex', top:true, allow:['#codex','#codexbtn'],   /* top:true → card pinned to top so the fauna list is scrollable; #codexbtn allowed so a Settings-closed Compendium can be reopened */
   text:()=>'Fighters, breeders and medicine all live here, shelved by realm. <b>Tap any specimen</b> to open its card.',
   when:(t)=>t==='specimen'},
  {id:'card-tour', spot:'#reveal .card', btn:'Got It', rev:'scout',   /* the tour's one live verb — reversible, and it IS on the card */
@@ -18912,7 +18930,8 @@ function _tutSpot(){
      step's target sits in the top half and intersects the card, the card
      dodges to the bottom edge until the target is clear */
   try{
-    if(r && tutEl.style.display==='block'){
+    if(s && s.top){ tutEl.classList.remove('dodge'); }   /* Nick: pin the card to the TOP for this step so the tall panel below (Compendium fauna list) stays scrollable and reachable */
+    else if(r && tutEl.style.display==='block'){
       const tb=tutEl.getBoundingClientRect();
       const overlaps=!(r.right<tb.left||r.left>tb.right||r.bottom<tb.top||r.top>tb.bottom);
       if(overlaps && r.top<H*0.55) tutEl.classList.add('dodge');
