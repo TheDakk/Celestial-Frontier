@@ -19,7 +19,18 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF (as of 2026-07-22 — v1.6.3 DEPLOYED LIVE) ◀◀◀
+## ▶▶▶ SESSION HANDOFF (as of 2026-07-22 — v1.6.4 DEPLOYED LIVE) ◀◀◀
+## ★★★ v1.6.4 "THE LANDING FIX" DEPLOYED LIVE (2026-07-22, build 3a4b839; site + source pushed). CRITICAL hotfix
+##   for Nick's "landing highlights but never triggers land" (stuck at step 6/20, Planetside open, empty ring).
+##   ROOT CAUSE: the land step advances on the `landfall` event, but noteLanding(seed) (main.js ~8914) early-returns
+##   `if(landed.has(seed))` BEFORE emitting landfall. Any VETERAN save already has Earth (133) in `landed` (samples
+##   long since read) → no landfall → step never advances. FRESH boots never have 133 landed, so smoke/layout/all
+##   gates passed clean and could NOT see it — device-with-history only. FIX (tutorial-only, NOT fingerprinted): the
+##   land step (main.js ~16947) got `enter:()=>{ landed.delete(133); }` — un-lands home for the drill so the press
+##   freshly fires landfall (noteLanding re-adds 133 instantly). REGRESSION GUARD added to smoke.js (~186): seeds
+##   `landed.add(133)` BEFORE entering the land step (old code fails, fix passes). fp 50/50, smoke 0-fail/322-pass,
+##   layout 546/9 all green. LESSON: fresh-boot gates are blind to veteran-save state — when a bug is "works for me
+##   but not on device", suspect saved state (landed/conquered/codex) that the harness starts empty.
 ## ★★★ v1.6.3 "CARD & TRAINING POLISH" DEPLOYED LIVE (2026-07-22, build 3a4f5f6; site + source pushed). More of
 ##   Nick's real-iPhone review. SHIPPED (fp 50/50, smoke+layout green): SPECIMEN CARD verbs reordered per Nick →
 ##   Breed·Feed·Duel·Scout·Code (rev-* ids unchanged so smoke/gate still work); RENAME moved to a ✎ icon beside the
