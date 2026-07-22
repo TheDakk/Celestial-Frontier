@@ -4,7 +4,7 @@
 module.exports = {
   width: 1500, height: 1060,
   lift: ['mulberry32', 'hashInt',
-         'SP_COLOR', 'SP_HEX', 'FA_HEAD', 'FA_TRAIT', 'FA_PATTERN', 'FA_SIZE_M', 'FA_HABITAT',
+         'SP_COLOR', 'SP_HEX', 'FA_HEAD', 'FA_TRAIT', 'FA_PATTERN', 'FA_SIZE_M', 'FA_HABITAT', 'FA_EYES', 'FA_TAIL', 'FA_LIMBS', 'FA_SKIN', 'FA_DIET',
          'FA_LOCO', 'EX_LOCO', 'EX_HABITAT', 'habOf', 'locoOf'],
   liftBetween: ['let hdOn=true, _vistaPend=false;', 'function showVistaBox'],
   draw: `function(g){

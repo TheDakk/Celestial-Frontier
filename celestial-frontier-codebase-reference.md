@@ -3,6 +3,15 @@
 > A complete technical reference for the game, written so any future session can pick up
 > full context without re-reading the 7,000-line source. When in doubt, the source file is
 > the source of truth — this document mirrors it as of v1.0.
+>
+> **v1.6 additions not yet folded into the sections below** (see ART_DIRECTION / PROCEDURAL_CHARACTERISTICS /
+> UI_PRESENTATION / SPECIES_AND_GENOME for detail): the Earth-bestiary rig system (`_rig*` per class) +
+> `hdGenesFor` procedural phenotype resolver + `hdBeastBare` structural-skin/limb/tail/habitat-preserve
+> passes; landing sub-surface scenes **`_hdReefScene`** (coral) and `_hdAbyssScene` (deep), routed from
+> `showVistaBox`; `_hdBiomeDress` biome cases. New verification tools: `tools/render-audit.js`,
+> `tools/rig-audit.js` (193 sentinels), **`tools/biome-audit.js`** (biome-layer integrity), and proof
+> sheets `tools/sheets/biome-coverage.js` (MODE=earth|proc, EMPTY=1), `proc-skins.js`, `proc-aqua.js`,
+> `b15-butterfly.js`.
 
 ---
 

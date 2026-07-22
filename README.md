@@ -22,8 +22,9 @@ toggle them in Settings.
 The whole game is one `<script>` inside the html, organized on SOLID lines into
 deterministic **domain modules** (`@module … [domain]`), **art/service modules**
 (`@module … [app]`) and **app sections** (`@section …`). Read the
-`ARCHITECTURE` comment at the top of the script, then `HANDOFF.md`,
-`CLAUDE.md`, and `celestial-frontier-codebase-reference.md`.
+`ARCHITECTURE` comment at the top of the script, then `CLAUDE.md`,
+`ROADMAP.md` (current state), and `celestial-frontier-codebase-reference.md`.
+(`HANDOFF.md` is a frozen v1.0 handoff, kept for history — not current state.)
 
 ## Develop
 

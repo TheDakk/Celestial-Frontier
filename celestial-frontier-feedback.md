@@ -1,5 +1,10 @@
 # Celestial Frontier — Playtest Feedback
 
+> ⚠️ **HISTORICAL ARTIFACT — v1.0 playtest (June 2026). Not a live work list.** These are
+> Emerson's original v1.0 impressions, preserved for context. Most items were addressed across
+> the v1.1→v1.6 arc; do not action anything here without checking it against current state in
+> `ROADMAP.md` and the per-system docs.
+
 **From:** Emerson
 **Date:** June 12, 2026
 **Build tested:** v1.0 "The Frontier Opens" at celestialfrontier.github.io, fresh profile (no saved state), desktop Chrome
