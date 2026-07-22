@@ -19,7 +19,38 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF (as of 2026-07-22 — v1.6.4 DEPLOYED LIVE) ◀◀◀
+## ▶▶▶ SESSION HANDOFF (as of 2026-07-22 — v1.6.4 LIVE; v1.7 ARC IN PROGRESS, source-only) ◀◀◀
+## ★★★ v1.7 CADENCE DECISION (Nick, 2026-07-22): HOLD & BUNDLE — do NOT deploy phases individually. Keep building
+##   "The Forge" in SOURCE ONLY and ship the whole arc as ONE big v1.7 release when substantially complete. No
+##   version bump / no deploy until then. Source can sit ahead of the live site (currently v1.6.4).
+## ★★★ v1.7 PHASE A "UNIVERSAL RARITY VOCABULARY" = BUILT IN SOURCE (2026-07-22, commit 375498a, atop v1.6.4; NOT
+##   deployed per the bundle decision). Collapsed the 15-tier grade system to the canonical 10-tier ladder
+##   (RARITY_UNIVERSAL.md §1): Common..Transcendent, normal caps, NO glyphs (★✦✧❖ all removed), color = badge only.
+##   "COLLAPSE, DON'T REMAP" — rarityRoll UNTOUCHED; new displayRarity(raw)=RARITY_V17[clamp(raw,0,9)] reads the raw
+##   score AS a tier + clamps 10+→Transcendent, so universe/power/old share codes unchanged (score-6 = same creature,
+##   now "Mythic"). RARITY_V17 (10 rows) + displayRarity added in main.js (exported via the SpeciesTraits module
+##   boundary); GRADE_TIERS names/hex collapsed, all star:'', `pre`+SPECTRA KEPT byte-identical so planet/star ART
+##   labels don't move. SURGICAL RE-PIN: exactly 7 probes changed (gradeTiers/speciesGrade/colorGrade/describeSpecies/
+##   faunaDesc/battleStats/runDuel) — a field-level diff PROVED every delta is a rarity field only (name/hex/star/
+##   label), ZERO generation-text/combat-number change; baseline re-pinned for those 7 only (backup verified, then
+##   deleted). UI swept: Guide (rarity/guardians/chapters prose), rarity achievements (best>=7 Celestial / >=8
+##   Primordial / >=11 Transcendent / >=12 apex; tiers12→all-10; tiersOwned collapses raw 9-14), ring-region notes,
+##   Binder "The Spectrum" (RARITY_V17.map, Transcendent folds raw 9-14), records rarity ladder (10 rows), discovery
+##   kicker ('✦ Rare Find'→'Rare Find'). SENTINELS in smoke.js (10-tier ladder / collapse 6→Mythic,7→Celestial /
+##   clamp 10+ / no glyphs / no old names / no ALL-CAPS) + hooked RARITY_V17+displayRarity in probe-names.json. Gates:
+##   validate FINGERPRINT MATCH, smoke 329/0, layout 546/9. ⚠ LESSON LEARNED: NEVER run `node tools/extract.js` after
+##   editing main.js — it regenerates main.js FROM the html and CLOBBERS your edits (cost a full redo this session).
+##   After editing main.js, run `node tools/build.js` ONLY.
+## ▶ v1.7 NEXT (still to build, source-only, bundle when done): Phase A PRESENTATION LAYER (RARITY_UNIVERSAL.md §3
+##   items 10-12, fp-safe) = discovery GATING (hide world rarity until successful LANDING; creatures/plants on
+##   catch; stars on survey; orbit = teaser only) + ESCALATING reveal (tier-scaled color/glow/sound, biggest for the
+##   scarce top) + per-tier FRAME (rarity readable w/o color, a11y) + cross-kind Compendium rarity filter/sort. THEN
+##   Phase B "THE FORGE" (MATERIALS_AND_GEAR.md + FORGE_AND_DISCOVERY.md P2): 47 craftable materials + seeded veins
+##   (world rarity decides what you mine) + 3-tab inventory (Materials/Craftables/Gear) + gear on the rarity ladder +
+##   generation modifiers = FULL re-pin. THEN P3 art (materials/gear/ship tiers) + P4 ARPG item windows + P5 audio +
+##   TEXT POLISH (rides a re-pin) + charter-training module + glass/tint slider + the ~16 DEFERRED FIXES. See the
+##   v1.7 pinned blocks below + RARITY_UNIVERSAL.md / MATERIALS_AND_GEAR.md / FORGE_AND_DISCOVERY.md.
+## ═══ (v1.6.4 landing hotfix — now superseded as the live build; kept for history) ═══
 ## ★★★ v1.6.4 "THE LANDING FIX" DEPLOYED LIVE (2026-07-22, build 3a4b839; site + source pushed). CRITICAL hotfix
 ##   for Nick's "landing highlights but never triggers land" (stuck at step 6/20, Planetside open, empty ring).
 ##   ROOT CAUSE: the land step advances on the `landfall` event, but noteLanding(seed) (main.js ~8914) early-returns
