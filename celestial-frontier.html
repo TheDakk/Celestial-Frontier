@@ -13494,6 +13494,21 @@ function doSave(){
       toast('⚠ Save Failed','The browser refused to store your save (storage full or private mode). Progress this session may not persist.'); }
   }
 }
+/* CF16-P2-002: clamp saved codex genomes on load — a crafted save with brood:999999 produced an
+   11.7M-power creature (battleStats adds brood*22 + fed*10) that could be exported as a share code.
+   Bound the power-driving + condition fields; drop entries with a bad seed or kingdom. Load-time only
+   (not fingerprinted). */
+function _sanitizeSavedGenome(g){
+  if(!g || typeof g!=='object') return null;
+  if(!Number.isFinite(+g.seed)) return null;
+  if(g.kingdom!=null && !['fauna','flora','fungi','microbe'].includes(g.kingdom)) return null;
+  const cl=(v,lo,hi)=>{ const x=+v; return Number.isFinite(x)?Math.max(lo,Math.min(hi,x)):lo; };
+  if('brood' in g) g.brood=cl(g.brood,0,9999);
+  if('fed' in g) g.fed=cl(g.fed,0,9999);
+  if('xp' in g) g.xp=cl(g.xp,0,1e6);
+  if('hurt' in g) g.hurt=cl(g.hurt,0,1);
+  return g;
+}
 function loadSave(){
   try{
     const raw=localStorage.getItem(SAVE_KEY); if(!raw) return false;
@@ -13616,7 +13631,7 @@ function loadSave(){
     for(const s of (data.evts||[])) eventKeysSeen.add(s);
     for(const s of (data.evann||[])) _evAnnounced.add(s);
     for(const a of (data.ach||[])) unlocked.add(a);
-    for(const e of (data.codex||[])){ if(e && e.g) _storeSpecies(e.g, e.f, e.w||null, true); }
+    for(const e of (data.codex||[])){ const _sg=e && e.g && _sanitizeSavedGenome(e.g); if(_sg) _storeSpecies(_sg, e.f, e.w||null, true); }
     /* the field scout must still exist in the Compendium (it may have been
        bred away, fed away, or lost) — a stale id silently stands down */
     scoutId=(typeof data.scout==='string' && codex.has(data.scout)) ? data.scout : null;
@@ -14002,7 +14017,7 @@ dailyBtn.addEventListener('click', ()=>{
 /* ================================================================
    @module CombatCore [domain] — battle stats, biome abilities, deterministic duels & creature codes
    Deps: Rand, EncUtil, player, naming-ui, Genome, viewport, player-state
-   API:  abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, paperdollAvatar, DOLL_ANCHORS, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf
+   API:  abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, paperdollAvatar, DOLL_ANCHORS, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf, ABILITY_THEMES
    ================================================================ */
 const CombatCore=(()=>{
 const STAT_NAMES=['Vitality','Ferocity','Resilience','Agility','Instinct'];
@@ -14774,9 +14789,9 @@ function runDuel(mine, theirs){
   const winner = (hpA<=0&&hpB<=0)?null : hpA<=0?'B' : hpB<=0?'A' : (hpA/maxA>=hpB/maxB?'A':'B');
   return {A, B, log, winner, hpA, hpB, maxA, maxB};
 }
-return Object.freeze({abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, paperdollAvatar, DOLL_ANCHORS, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf});
+return Object.freeze({abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, paperdollAvatar, DOLL_ANCHORS, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf, ABILITY_THEMES});   /* CF16-P2-001: Binder + achievements reference ABILITY_THEMES from outer scope — export it (was a ReferenceError crash on opening the Binder) */
 })();
-const {abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, paperdollAvatar, DOLL_ANCHORS, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf}=CombatCore;
+const {abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, paperdollAvatar, DOLL_ANCHORS, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf, ABILITY_THEMES}=CombatCore;
 /* @end CombatCore */
 /* ----------------------------------------------------------------
    @section duel-ui [app] — duel UI — code loader, side cards & fight flow (CFB- codes)
@@ -15237,6 +15252,8 @@ function removeFromCodex(id){
 }
 /* core rolls take the random value as an argument so outcomes are testable */
 function breedPair(aEntry, bEntry, roll){
+  /* CF16-P2-004: reject stale/invalid parents — a consumed entry must not breed again (defense-in-depth; the UI usually re-fetches from codex, but a duplicate event could pass a stale object) */
+  if(!aEntry || !bEntry || aEntry.id===bEntry.id || !codex.has(aEntry.id) || !codex.has(bEntry.id)) return {ok:false, stale:true};
   const odds=breedOdds(aEntry, bEntry);
   if(roll>=odds){
     removeFromCodex(aEntry.id); removeFromCodex(bEntry.id);
@@ -15943,10 +15960,18 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.6';
+const GAME_VERSION='1.6.1';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.6.1', title:'The Binder Patch', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '📖 THE BINDER OPENS AGAIN — the Compendium&#8217;s Binder view hit an error and refused to open; it works again.',
+  '🛡 SAVE INTEGRITY — loaded saves now clamp a creature&#8217;s bloodline values, so a tampered save can&#8217;t forge an impossibly powerful creature (or share one).',
+  '🏴 ONE WORLD, ONE REWARD — a rapid double-tap on a conquest can no longer pay its Stardust or count its win more than once.',
+  '🧬 BREEDING GUARD — the breeding core now refuses already-consumed parents, so a stray double-tap can&#8217;t spawn a phantom child.'],
+ ],
+]},
 {v:'1.6', title:'The Living Frontier', date:'July 2026', sections:[
  ['✨ New Features &amp; Systems', [
   '🎨 THE UNIVERSE, REPAINTED — every living thing is hand-painted now. The whole bestiary was redrawn by the game&#8217;s painterly canvas engine: no two clades share a silhouette, and a creature&#8217;s body tells you what it is at a glance.',
@@ -16656,6 +16681,7 @@ function runConquestBattle(d, champ, native){
           ? '\ud83e\ude78 '+champ.name+' was broken — it crawls home Critical. The world holds.'
           : '\ud83d\udc80 '+champ.name+' fell — lost forever. The world holds.')),
     onResolve:(res)=>{
+      if(conquered.has(d.planetSeed)) return;   /* CF16-P2-003: idempotent — a re-fired resolve on an already-settled world must not re-pay Stardust/wins/loot */
       stats.duels++;
       if(res.winner==='A'){
         stats.duelwins++;

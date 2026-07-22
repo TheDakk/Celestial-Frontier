@@ -444,6 +444,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.getElementById('guideok'));
     check('guide closes via Continue', !visible(gbox));
 
+    // ====== BINDER (CF16-P2-001: renderBinder read ABILITY_THEMES from outer scope -> ReferenceError crash) ======
+    click(doc.getElementById('codexbtn'));
+    check('Compendium opens (post-training)', visible(doc.getElementById('codex')));
+    const binderTab = doc.querySelector('#codex [data-cvw="binder"]');
+    if (binderTab) click(binderTab);
+    check('Binder view renders without throwing (ABILITY_THEMES now exported)',
+      !!doc.querySelector('#codex .bgrid, #codex .bind-head'), errors.slice(0, 2).join(' | '));
+    click(doc.getElementById('codexbtn'));
+    check('Compendium closes after Binder', !visible(doc.getElementById('codex')));
+
     // ============ TOOLTIPS ============
     await sleep(600);   // the outside-tap pointerdown above suppresses focus-tooltips for 500ms (by design) — let it lapse
     const tipTarget = doc.getElementById('rank');
