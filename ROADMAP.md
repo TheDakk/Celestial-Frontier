@@ -32,21 +32,27 @@
 ##   15/13/10/2/7, tiers 0-9, cosmics-not-vein-placed, symbols distinct). probe-names hooked MATERIALS/MAT_FAMILY/
 ##   matName/matBaseTier/matFamily + ELEM_NAME/DEPOSIT_PROFILES/RARE_VEIN. Battery: fp MATCH 50/50, smoke 356/0, layout
 ##   546/9. Doc synced (MATERIALS_AND_GEAR.md §3 "matches code as of 2026-07-23").
-##   ► FOLLOW-ON fp-SAFE POLISH this session (Nick picked "more fp-safe polish"), both battery-green & pushed:
-##     (5a-ui) MATERIAL CARD surfaces family + role from the registry [5bf069d] — matName()/matFamily()/matJob(); rarity
-##       deliberately NOT shown (rides the §5 instance model). smoke 358/0. (5a-inv) MATERIALS TAB GROUPS BY FAMILY
-##       (§21) [8e59342] — base→volatile→precious→exotic→cosmic under headers, sorted by base tier then qty, trailing
-##       "Hold capacity" empty-slot block keeps the ample-hold feel + the existing Diablo-bag check. smoke 360/0, layout
-##       546/9. (5a-inv2) CRAFTABLES TAB GROUPS BY KIND (§21) [e681539] — Basic Parts→Components→… via _ITEM_KIND, to
-##       match the Materials layout; Fabricator recipe list ALREADY grouped so left as-is. smoke 362/0, layout 546/9.
-##       ═══ the registry now PAYS OFF in the UI: material card (family+role) + BOTH hold tabs grouped. The fp-SAFE
-##       economy-UI surface is now THOROUGHLY covered — further fp-safe adds are marginal or held (base-rarity display
-##       = the §5 instance-model decision). ═══
-##   ▶ NEXT — the fp-safe surface is largely covered; the MEANINGFUL next step is the determinism-critical RE-PIN, which
-##     needs NICK AT A KEYBOARD (re-pin authorization + careful review): (5c) wire the 7 cosmics into DEPOSIT_PROFILES/
-##     RARE_VEIN by world rarity + (5d) recipes for the new materials + §5 instance-rarity resolution. Optional remaining
-##     fp-safe bits if continuing remote: group the CRAFTABLES tab by _ITEM_KIND (parallel to §21); extend family/role
-##     into the Fabricator recipe UI. But the arc's payoff is gated on 5c/5d.
+##   ► THEN Nick granted FULL AUTONOMY ("get everything done, don't wait, we'll review at the end") → I built the rest
+##     of the cosmic economy, each battery-green (fp MATCH 50/50) & pushed. ★★★ THE COSMIC ECONOMY IS COMPLETE — all 7
+##     cosmics obtainable + all 7 craftable:
+##     (5a-ui) MATERIAL CARD family+role [5bf069d] + BASE GRADE [dc857c5] (displayRarity of base tier; cargo stacks by
+##       substance §21 so it's the substance grade, not instance). (§21) MATERIALS TAB groups by family [8e59342] +
+##       CRAFTABLES TAB groups by kind [e681539]. (5c) WORLD-COSMIC VEINS [9ce9927] — cosmicVeinFor(seed,tier), a
+##       tier-gated SEPARATE vein like biome veins (tier<8 null → depositsFor untouched, mineWorld trickle gated on
+##       cv → fp-SAFE, NO RE-PIN NEEDED): tier 8 → foundational Pro/Pri, tier≥9 → +reality-breaking Voe/Chr/Dkm. Survey
+##       shows ✦ vein, mineWorld pays ~4% trickle, cargo load filter widened ELEM_NAME→MATERIALS so cosmics persist.
+##       (5d) COSMIC GEAR [3c427ad] — the 5 world-cosmics each anchor one endgame piece (§12 defining-anchor rar 8/9;
+##       §24 power modest/in-band, ⚠ flagged for power-curve tuning). (§8) STELLAR EXTRACTION [27900e5] — stellarYieldFor
+##       (class→cosmic: hot→Stellar Plasma, remnant→Coronium), star card ☀ Skim Corona action = skimStar() finite run
+##       (save field `skx`, additive/safe-absent, mirrors mining `mx`); + 2 stellar gear (Plasma Gauntlets/Coronal Aegis,
+##       Celestial). ⚠ SKIM INTERACTION mirrors mining as a default — FLAGGED for Nick's design review. smoke 384/0.
+##   ▶ NEXT (remaining v1.7, for the end review / next session):
+##     • NEEDS NICK: §22 FULL BESPOKE ART (47 materials + gear + ships — HD engine law, proof-sheets, his visual review;
+##       cosmics currently borrow the gem-icon form in their hue as INTERIM) · §24 POWER-CURVE tuning (1000-tester panel
+##       + his feel; cosmic/relic gear effects flagged) · §8 SKIM interaction design · cosmic GEAR BALANCE · TEXT POLISH
+##       (rides a re-pin). • AUTONOMOUS-DOABLE: §5 instance-rarity resolver + surface on deposits · CHARTER-training
+##       module · the fp-safe DEFERRED FIXES (CF16-013 Atlas field-whitelist, CF16-015 doc/version, CF16-016 .gitignore).
+##     ⚠ NEW SAVE FIELD this session: `skx` (stellar skims) — additive, safe-absent-default; note in codebase-reference §10.
 ## ★★★ TRAINING FLOW/OVERLAP FIXES (2026-07-23, remote-control session, commit e83aaa9; source-only, fp-safe,
 ##   tutorial-only) = DONE. Closed 2 of the 3 deeper per-step FLOW/STUCK bugs from the empty-ring block's "STILL TO
 ##   DO" list, via a full 20-step transition audit (each advance checked for a TUT_ALWAYS modal or a graced panel
