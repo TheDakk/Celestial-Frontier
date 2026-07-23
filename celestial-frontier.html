@@ -17448,11 +17448,33 @@ function renderCargo(){
   if(cargoTab==='mat'){
     /* the worn PACK grows the bags — a Module in its socket adds a row of slots per tier */
     const _pk=equip.module?ITEM_BY.get(equip.module):null;
-    const SLOTS=Math.max(24+(_pk?(_pk.tier||1)*6:0), Math.ceil(Math.max(1,rows.length)/6)*6);
-    html+='<div class="inv">'+rows.map(e=>'<span class="slot" role="button" tabindex="0" data-mat="'+e[0]+'" data-tip="'+(ELEM_NAME[e[0]]||e[0])+' — tap for details">'+
-      '<img src="'+elemIcon(e[0])+'" alt="'+(ELEM_NAME[e[0]]||e[0])+'"><span class="qty">'+e[1]+'</span></span>').join('')+
-      Array.from({length:Math.max(0, SLOTS-rows.length)}, ()=>'<span class="slot empty2"></span>').join('')+'</div>';
-    if(!rows.length) html+='<div class="empty" style="padding:6px 8px">The hold is empty. Dead worlds carry the elements — land on one and press ⛏ Mine.</div>';
+    const packBonus=_pk?(_pk.tier||1)*6:0;
+    if(!rows.length){
+      html+='<div class="inv">'+Array.from({length:24+packBonus}, ()=>'<span class="slot empty2"></span>').join('')+'</div>'+
+        '<div class="empty" style="padding:6px 8px">The hold is empty. Dead worlds carry the elements — land on one and press ⛏ Mine.</div>';
+    } else {
+      /* v1.7 §21: the Materials tab groups by FAMILY (base → volatile → precious
+         → exotic → cosmic, MAT_FAMILY order), each family sorted by base rarity
+         tier then quantity, so the roster reads organized instead of a flat pile.
+         Grids pad to the 6-column width so partial rows stay tidy. Unknown symbols
+         (e.g. a legacy save) fall into a trailing "Other" group. */
+      const groups=new Map();
+      for(const e of rows){ const f=matFamily(e[0])||'_'; if(!groups.has(f)) groups.set(f,[]); groups.get(f).push(e); }
+      const order=Object.keys(MAT_FAMILY).sort((a,b)=>MAT_FAMILY[a].order-MAT_FAMILY[b].order).concat('_');
+      for(const f of order){
+        const g=groups.get(f); if(!g||!g.length) continue;
+        g.sort((a,b)=>matBaseTier(b[0])-matBaseTier(a[0]) || b[1]-a[1]);
+        const label=(MAT_FAMILY[f]&&MAT_FAMILY[f].label)||'Other';
+        html+='<div class="chead" style="margin-top:4px">'+label+' <span style="opacity:.5;font-weight:400">'+g.length+'</span></div>'+
+          '<div class="inv">'+g.map(e=>'<span class="slot" role="button" tabindex="0" data-mat="'+e[0]+'" data-tip="'+matName(e[0])+' — tap for details">'+
+          '<img src="'+elemIcon(e[0])+'" alt="'+matName(e[0])+'"><span class="qty">'+e[1]+'</span></span>').join('')+'</div>';
+      }
+      /* the hold has ample room (§21 — materials never face slot pressure); the
+         remaining capacity shows as empty bag slots, so the bag metaphor holds */
+      const cap=Math.max(24+packBonus, Math.ceil(rows.length/6)*6), free=cap-rows.length;
+      if(free>0) html+='<div class="chead" style="margin-top:4px;opacity:.55">Hold capacity</div>'+
+        '<div class="inv">'+Array.from({length:free}, ()=>'<span class="slot empty2"></span>').join('')+'</div>';
+    }
   } else if(cargoTab==='craft'){
     html+= craftItems.length ? '<div class="inv">'+craftItems.map(_tile).join('')+'</div>'
       : '<div class="empty" style="padding:12px 8px">No craftables yet — build parts and components at the 🛠 Shipyard&#8217;s Fabricator.</div>';

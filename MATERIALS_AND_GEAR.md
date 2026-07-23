@@ -289,6 +289,11 @@ Rules:
 - **UI:** tabs use the game's existing expand/close card grammar; mobile-first — each tab is its own scroll
   view, so the character sheet never overflows on a phone.
 
+> **In code (2026-07-23):** the 3-tab hold exists (`cargoTab` = mat/craft/gear, `renderCargo`). The **Materials
+> tab now GROUPS by family** (base → volatile → precious → exotic → cosmic, `MAT_FAMILY` order), each family
+> sorted by base rarity tier then quantity, under a family header; a trailing "Hold capacity" block of empty
+> bag slots preserves the ample-capacity feel. fp-safe (presentation only). Guarded by smoke §21 sentinels.
+
 ## 22. Art direction — FULL BESPOKE (Nick, 2026-07-23, LOCKED)
 
 Every material, every gear piece, and every ship tier is **hand-drawn painterly art at the same HD bar as

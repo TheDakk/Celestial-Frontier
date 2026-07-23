@@ -1241,6 +1241,18 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click2(icard.querySelector('[data-salvgo="visor"]'), sk.w);
     check('v1.7 salvage: confirming removes the item, unequips it, and closes the card',
       (skH.items.get('visor') || 0) === 0 && skH.equip.helmet !== 'visor' && icard.style.display === 'none');
+    // v1.7 §21: the Materials tab groups the roster by family (base → volatile →
+    // precious → exotic → cosmic). Seed three families and check their headers.
+    skH.cargo.set('Fe', 9); skH.cargo.set('H2O', 4); skH.cargo.set('Au', 2);
+    click2(sk.doc.getElementById('rank'), sk.w);   // close
+    click2(sk.doc.getElementById('rank'), sk.w);   // reopen -> re-render the hold
+    const matTab = [...sk.doc.querySelectorAll('#cargo [data-ivt]')].find((t) => t.dataset.ivt === 'mat');
+    if (matTab) click2(matTab, sk.w);
+    const matHeads = [...sk.doc.querySelectorAll('#cargo .chead')].map((h) => h.textContent);
+    check('v1.7 §21: the Materials tab groups by family (base/volatile/precious headers)',
+      matHeads.some((t) => /Base & structural/.test(t)) && matHeads.some((t) => /Volatiles & gases/.test(t)) && matHeads.some((t) => /Precious & tech/.test(t)));
+    check('v1.7 §21: grouped material tiles still carry data-mat (tap-to-card intact)',
+      !!sk.doc.querySelector('#cargo [data-mat="Fe"]') && !!sk.doc.querySelector('#cargo [data-mat="Au"]'));
     // ship systems ARE the ring keys: hand over the drives, watch the rings open
     skH.items.set('jumpdrive', 1);
     check('v1.4 rings: the Jump Drive opens the Neighborhood', skH.ascStage() === 1
