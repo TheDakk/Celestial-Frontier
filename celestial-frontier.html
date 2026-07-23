@@ -457,6 +457,27 @@
     background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a);box-shadow:0 0 18px rgba(240,200,110,0.35)}
   #itemcard .ic-equip:hover{box-shadow:0 0 26px rgba(240,200,110,0.6)}
   #itemcard .ic-equip.worn{background:rgba(127,230,160,0.12);color:#bfe6c8;border-color:rgba(127,230,160,0.5);box-shadow:none}
+  /* v1.7 Forge: even, centered Equip + Salvage buttons */
+  #itemcard .ic-foot{display:flex;gap:9px;justify-content:center;margin-top:4px}
+  #itemcard .ic-abtn{flex:1 1 0;text-align:center;padding:11px 0;font:700 12px var(--ui);letter-spacing:.06em;text-transform:uppercase;
+    cursor:pointer;border-radius:12px;border:1px solid transparent}
+  #itemcard .ic-abtn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  #itemcard .ic-abtn.equip{color:#1a1206;border-color:rgba(255,220,150,0.9);
+    background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a);box-shadow:0 0 18px rgba(240,200,110,0.35)}
+  #itemcard .ic-abtn.equip:hover{box-shadow:0 0 26px rgba(240,200,110,0.6)}
+  #itemcard .ic-abtn.equip.worn{background:rgba(127,230,160,0.12);color:#bfe6c8;border-color:rgba(127,230,160,0.5);box-shadow:none}
+  #itemcard .ic-abtn.salvage{color:#e9b7ba;background:rgba(255,106,114,0.08);border-color:rgba(255,106,114,0.28)}
+  #itemcard .ic-abtn.salvage:hover{background:rgba(255,106,114,0.16);color:#ffd1d4}
+  #itemcard .ic-salv{border:1px solid rgba(255,106,114,0.32);background:rgba(255,106,114,0.06);border-radius:12px;padding:12px;margin-top:4px}
+  #itemcard .ic-salvh{font:800 13px var(--ui);color:#ffb3b8;margin-bottom:6px}
+  #itemcard .ic-salvr{font-size:12.5px;color:#c9d5ea;margin-bottom:12px;line-height:1.5}
+  #itemcard .ic-salvr b{color:#e7edf7}
+  #itemcard .ic-salvf{display:flex;gap:8px}
+  #itemcard .ic-salvf .ic-abtn{padding:9px 0}
+  #itemcard .ic-abtn.cancel{color:var(--dim);background:rgba(150,162,210,0.08);border-color:var(--line)}
+  #itemcard .ic-abtn.go{color:#fff;background:linear-gradient(180deg,#ff7a82,#e0505a);border-color:rgba(255,106,114,0.5)}
+  #itemcard .ic-salvoff{text-align:center;margin-top:9px;font-size:11px;color:var(--faint);text-decoration:underline;cursor:pointer}
+  #itemcard .ic-salvoff:hover{color:var(--dim)}
 
   /* ---- release notes: the expedition bulletin ---- */
   #relbox{position:fixed;inset:0;z-index:42;display:none;align-items:center;justify-content:center;
@@ -966,6 +987,10 @@
   .cargoish .empty{padding:18px 14px;font-size:11.5px;color:var(--faint);text-align:center;line-height:1.55}
   .cargoish .chead{padding:9px 11px 7px;font-family:var(--ui);font-size:10px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--faint)}
+  /* v1.7 Forge: Salvage All on the character screen's Crafted header */
+  .cargoish .chead .salvall{float:right;margin-top:-2px;font:700 9px var(--ui);letter-spacing:.06em;text-transform:uppercase;
+    color:#e9b7ba;background:rgba(255,106,114,0.08);border:1px solid rgba(255,106,114,0.28);border-radius:7px;padding:2px 9px;cursor:pointer}
+  .cargoish .chead .salvall:hover{background:rgba(255,106,114,0.16);color:#ffd1d4}
   .cargoish .bset{margin:0 6px 6px}
   /* ---- Prime Codex button ----
      v1.5.2c UI SWAP (Nick): the Codex is endgame — it keeps its gold and now
@@ -17298,7 +17323,10 @@ function renderCargo(){
   const irows=ITEMS.filter(it=>itemCount(it.id)>0);
   if(irows.length){
     const eqSet=new Set(Object.values(equip));
-    html+='<div class="chead" style="margin-top:8px">🛠 Crafted</div><div class="inv">'+
+    const _junk=_junkItems();
+    html+='<div class="chead" style="margin-top:8px">🛠 Crafted'+
+      (_junk.length?'<span class="salvall" role="button" tabindex="0" data-salvall="1">'+(_salvageAllArm?'Salvage '+_junk.length+'? — confirm':'♺ Salvage All Junk')+'</span>':'')+
+      '</div><div class="inv">'+
       irows.map(it=>{
         /* v1.6 (Nick): every crafted/found item opens a stat CARD on tap
            (icon, rarity, slot, effects, source) — wearables carry an Equip
@@ -17338,7 +17366,7 @@ function _matUses(key){
 }
 const _ITEM_KIND={part:'Basic Part',comp:'Component',sys:'Ship System',gear:'Explorer Gear',relic:'Signature Relic'};
 const itemCardEl=document.createElement('div'); itemCardEl.id='itemcard'; document.body.appendChild(itemCardEl);
-let _itemCardFor=null;
+let _itemCardFor=null, _salvagePending=null;
 function renderItemCard(){
   if(!_itemCardFor){ itemCardEl.style.display='none'; return; }
   let html='<div class="card"><button class="icx" data-icclose type="button">&#10005;</button>';
@@ -17362,16 +17390,76 @@ function renderItemCard(){
       '<div class="ic-desc">'+it.d+'</div>'+
       (stats.length||aff?'<div class="ic-stats">'+stats.map(s=>'<div class="ic-stat">• '+s+'</div>').join('')+
         (aff?'<div class="ic-stat" style="color:#ffd96a;border-top:1px solid rgba(255,217,106,0.2);margin-top:5px;padding-top:5px">'+_affLabel(aff)+' <span style="opacity:.6">— spoils of conquest</span></div>':'')+'</div>':'');
-    if(wear) html+='<button class="ic-equip'+(worn?' worn':'')+'" data-equipbtn="'+it.id+'">'+
-      (worn?'✓ Equipped — tap to remove':(slotDef?'Equip to '+slotDef.name:'Equip'))+'</button>';
+    if(wear){
+      if(_salvagePending===it.id){
+        const _ret=_salvageReturns(it);
+        html+='<div class="ic-salv"><div class="ic-salvh">⚠ Salvage '+it.name+'?</div>'+
+          '<div class="ic-salvr">Returns '+(_ret.length?_ret.map(r=>'<b>'+r.n+'× '+(ELEM_NAME[r.k]||r.k)+'</b>').join(' · '):'nothing')+'. This can&#8217;t be undone.</div>'+
+          '<div class="ic-salvf"><button class="ic-abtn cancel" data-salvcancel="1">Cancel</button>'+
+          '<button class="ic-abtn go" data-salvgo="'+it.id+'">Salvage</button></div>'+
+          '<div class="ic-salvoff" data-salvoff="'+it.id+'" role="button" tabindex="0">Turn off confirmation</div></div>';
+      } else {
+        html+='<div class="ic-foot">'+
+          '<button class="ic-abtn equip'+(worn?' worn':'')+'" data-equipbtn="'+it.id+'">'+(worn?'✓ Equipped':'Equip')+'</button>'+
+          '<button class="ic-abtn salvage" data-salvbtn="'+it.id+'">Salvage</button></div>';
+      }
+    }
     else if(it.cat==='sys') html+='<div class="ic-row"><span class="ic-v" style="color:#7fe6a0">Installed ship system — online.</span></div>';
   }
   html+='</div>';
   itemCardEl.innerHTML=html;
   itemCardEl.style.display='flex';
 }
-function openItemCard(o){ _itemCardFor=o; renderItemCard(); }
-function closeItemCard(){ _itemCardFor=null; itemCardEl.style.display='none'; }
+function openItemCard(o){ _salvagePending=null; _itemCardFor=o; renderItemCard(); }
+function closeItemCard(){ _salvagePending=null; _itemCardFor=null; itemCardEl.style.display='none'; }
+/* v1.7 Forge — salvage: break a piece of gear down for a share of its craft cost.
+   Guarded by the Settings › Gameplay "Confirm before salvaging" toggle. */
+function _salvageReturns(it){
+  const out=[], cost=it&&it.cost;
+  if(cost){ for(const k in cost){ const n=Math.floor((cost[k]||0)*0.5); if(n>0) out.push({k, n}); } }
+  if(!out.length && cost){ const k0=Object.keys(cost)[0]; if(k0) out.push({k:k0, n:1}); }   /* always yield something */
+  return out;
+}
+function salvageItem(id, confirmed){
+  const it=ITEM_BY.get(id);
+  if(!it || !it.slot || it.cat==='sys' || (items.get(id)||0)<=0) return;
+  if(salvageConfirm && !confirmed){ _salvagePending=id; renderItemCard(); return; }
+  _salvagePending=null;
+  if(equip[it.slot]===id) equipItem(it.slot, null);            /* unequip before it's gone */
+  const ret=_salvageReturns(it);
+  for(const r of ret) cargo.set(r.k, Math.min(1e6, (cargo.get(r.k)||0)+r.n));
+  const left=(items.get(id)||0)-1; if(left>0) items.set(id, left); else items.delete(id);
+  try{ playSurveyPing(); }catch(_){}
+  toast('♺ Salvaged', it.name+' broken down'+(ret.length?' — '+ret.map(r=>r.n+'× '+(ELEM_NAME[r.k]||r.k)).join(' · '):'')+'.');
+  _itemCardFor=null; itemCardEl.style.display='none';
+  try{ showCargoBtn(); if(sheetOpen) renderCargo(); }catch(_){}
+  try{ checkAch(); }catch(_){} queueSave();
+}
+/* Salvage All (character screen): bulk-break every UNEQUIPPED Common/Uncommon
+   (tier<=1) piece of gear at once. Two-stage confirm when the guard is on. */
+function _junkItems(){
+  const eqSet=new Set(Object.values(equip)), out=[];
+  for(const it of ITEMS){ if(it.slot && it.cat!=='sys' && (it.tier|0)<=1 && itemCount(it.id)>0 && !eqSet.has(it.id)) out.push(it.id); }
+  return out;
+}
+let _salvageAllArm=false;
+function salvageAllJunk(confirmed){
+  const junk=_junkItems();
+  if(!junk.length){ _salvageAllArm=false; return; }
+  if(salvageConfirm && !confirmed){ _salvageAllArm=true; try{ if(sheetOpen) renderCargo(); }catch(_){} return; }
+  _salvageAllArm=false;
+  let n=0; const got={};
+  for(const id of junk){
+    const it=ITEM_BY.get(id); let cnt=itemCount(id);
+    while(cnt-->0){ for(const r of _salvageReturns(it)){ cargo.set(r.k, Math.min(1e6,(cargo.get(r.k)||0)+r.n)); got[r.k]=(got[r.k]||0)+r.n; } n++; }
+    items.delete(id);
+  }
+  try{ playSurveyPing(); }catch(_){}
+  const gt=Object.keys(got).map(k=>got[k]+'× '+(ELEM_NAME[k]||k)).join(' · ');
+  toast('♺ Salvaged '+n+' item'+(n===1?'':'s'), gt?'Banked '+gt+'.':'Materials banked.');
+  try{ showCargoBtn(); if(sheetOpen) renderCargo(); }catch(_){}
+  try{ checkAch(); }catch(_){} queueSave();
+}
 itemCardEl.addEventListener('click', e=>{
   if(e.target===itemCardEl || e.target.closest('[data-icclose]')){ closeItemCard(); return; }
   const eb=e.target.closest('[data-equipbtn]');
@@ -17381,10 +17469,19 @@ itemCardEl.addEventListener('click', e=>{
       renderItemCard(); try{ if(sheetOpen) renderCargo(); }catch(_){ } }
     return;
   }
+  const sb=e.target.closest('[data-salvbtn]'); if(sb){ salvageItem(sb.dataset.salvbtn); return; }
+  const sg=e.target.closest('[data-salvgo]'); if(sg){ salvageItem(sg.dataset.salvgo, true); return; }
+  const sc=e.target.closest('[data-salvcancel]'); if(sc){ _salvagePending=null; renderItemCard(); return; }
+  const so=e.target.closest('[data-salvoff]'); if(so){
+    salvageConfirm=false;
+    const _o=document.getElementById('salvageopt'); if(_o){ _o.classList.remove('on'); _o.textContent='Off'; }
+    salvageItem(so.dataset.salvoff, true); return;   /* salvageItem queues the save */
+  }
 });
 if(typeof cargoEl!=='undefined' && cargoEl) cargoEl.addEventListener('click', e=>{
   const mat=e.target.closest('[data-mat]'); if(mat){ openItemCard({mat:mat.dataset.mat}); return; }
-  const item=e.target.closest('[data-item]'); if(item){ openItemCard({id:item.dataset.item}); return; }
+  const sa=e.target.closest('[data-salvall]'); if(sa){ salvageAllJunk(_salvageAllArm); return; }   /* first tap arms, second confirms */
+  const item=e.target.closest('[data-item]'); if(item){ if(_salvageAllArm){ _salvageAllArm=false; renderCargo(); } openItemCard({id:item.dataset.item}); return; }
 });
 /* ---- THE SHIPYARD (v1.5.2, Nick): the ship IS the workshop — her
    portrait up top gaining every system you build, the Fabricator and the
