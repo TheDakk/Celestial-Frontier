@@ -17512,10 +17512,15 @@ function renderItemCard(){
   const _frc = _framed ? displayRarity(_itemRarity(_fri)).hex : '';   /* the FRAME wears the item's ladder rarity */
   let html='<div class="card'+(_framed?' framed':'')+'"'+(_framed?' style="--ic-rc:'+_frc+'"':'')+'><button class="icx" data-icclose type="button">&#10005;</button>';
   if(_itemCardFor.mat!=null){
-    const k=_itemCardFor.mat, nm=ELEM_NAME[k]||k, have=cargo.get(k)||0, u=_matUses(k);
+    const k=_itemCardFor.mat, nm=matName(k), have=cargo.get(k)||0, u=_matUses(k);
+    /* v1.7 (step 5a): the material card reads its family + role from the
+       MATERIALS registry (fp-safe metadata; rarity is deliberately NOT shown
+       yet — that rides the §5 instance-rarity model in the re-pin). */
+    const _mf=matFamily(k), _mfl=(_mf&&MAT_FAMILY[_mf])?MAT_FAMILY[_mf].label:'Material', _job=matJob(k);
     html+='<div class="ic-top"><img class="ic-icon" src="'+elemIcon(k)+'" alt=""><div class="ic-head">'+
-      '<div class="ic-name">'+nm+'</div><div class="ic-kind">Raw element · '+have+' held</div></div></div>'+
+      '<div class="ic-name">'+nm+'</div><div class="ic-kind">'+_mfl+' · '+have+' held</div></div></div>'+
       '<div class="ic-desc">A refined element, pulled from the veins of dead worlds.</div>'+
+      (_job?'<div class="ic-row"><span class="ic-k">Role</span><span class="ic-v">'+_job+'</span></div>':'')+
       (u.src?'<div class="ic-row"><span class="ic-k">Found in</span><span class="ic-v">'+u.src+'</span></div>':'')+
       '<div class="ic-row"><span class="ic-k">Crafts</span><span class="ic-v">'+(u.uses.length?u.uses.join(', '):'nothing you can build yet')+'</span></div>';
   } else {
