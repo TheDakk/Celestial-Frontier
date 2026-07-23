@@ -154,6 +154,16 @@ Rewards: stellar-composition data, blueprints, nav data, coronal-harvest coords,
 collectors, energy signatures, limited probe-captured samples. Star rarity/modifiers drive extraction
 danger, yield, stellar-material eligibility, material properties, system resource profiles, required tech.
 
+> **In code (2026-07-23, step §8 — stellar extraction):** `stellarYieldFor(seed)` maps STAR CLASS → stellar cosmic
+> (hot/bright B/A/G/RG/SG → **Stellar Plasma**; dense remnants WD/NS/MAG/BH → **Coronium**; cool dwarfs M/K/BD/PROTO
+> → nothing). The star card gains a **☀ Skim Corona** action (the star analogue of ⛏ Mine): `skimStar(seed)` captures
+> 1–2 per press into cargo, a FINITE run per star (`skimReserveFor`, ~24–48 samples), tracked in `skimX` (save field
+> `skx`, absent ⇒ none — safe additive default, mirrors mining's `mx`). The two stellar cosmics then anchor the last
+> two gear pieces (Stellar Plasma → **Plasma Gauntlets**, Coronium → **Coronal Aegis**, both Celestial/tier 7). **All
+> 7 cosmics are now obtainable + craftable.** ⚠ The skim INTERACTION mirrors mining as a defensible default —
+> **flagged for Nick's design review** (feel, gating, gear/probe requirements per §8 are not yet modeled). fp-safe:
+> `starClass` unchanged, fp MATCH 50/50. Guarded by 8 smoke sentinels.
+
 ## 9. Biological ingredients (parts don't copy the organism's rarity)
 
 A Mythic creature can give Uncommon meat, Rare hide, Exotic armor-plate, Legendary regen-gland, Mythic
