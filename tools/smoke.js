@@ -126,6 +126,13 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         const mc = doc.getElementById('itemcard');
         check('materials: the detail card surfaces family + role (Iron)',
           visible(mc) && /Base & structural/.test(mc.textContent) && /Role/.test(mc.textContent) && /structural spine/.test(mc.textContent));
+        check('materials: the card shows the substance base grade (Iron = Common, tier 0)',
+          /Base grade/.test(mc.textContent) && new RegExp(H.displayRarity(H.matBaseTier('Fe')).name).test(mc.textContent));
+        H.closeItemCard();
+        // a precious material reads a higher base grade than a base one
+        H.openItemCard({ mat: 'Au' });
+        check('materials: Gold (tier 2) reads a higher base grade than Iron',
+          new RegExp(H.displayRarity(H.matBaseTier('Au')).name).test(doc.getElementById('itemcard').textContent) && H.matBaseTier('Au') > H.matBaseTier('Fe'));
         H.closeItemCard();
         check('materials: closing the material card leaves it hidden', !visible(mc));
       }
