@@ -277,7 +277,75 @@ Rules:
 - **UI:** tabs use the game's existing expand/close card grammar; mobile-first — each tab is its own scroll
   view, so the character sheet never overflows on a phone.
 
+## 22. Art direction — FULL BESPOKE (Nick, 2026-07-23, LOCKED)
+
+Every material, every gear piece, and every ship tier is **hand-drawn painterly art at the same HD bar as
+the creatures** — this is a hard requirement, not a nice-to-have, and it is baked in now so it can never be
+value-engineered down during the build. See also the standing **HD engine law** (`[[celestial-frontier-hd-engine-law]]`).
+
+**Foundation already in place:** materials (`_hdElemIcon`) and gear (`partIcon`) already render through the
+same painterly canvas engine as the bestiary — **144px masters**, real technique (faceted gems, translucent
+ice spears, glowing flasks, isometric ingots; plating/coils/circuitry/frames for gear). The classic SVG icon
+set was deleted as dead code. So consistency is satisfied at the ENGINE level; the Phase-B work is COVERAGE +
+DISTINCTIVENESS, not a rebuild.
+
+**The mandate:**
+- **All 47 materials get their OWN bespoke 144px master — NO family-recolor shortcuts.** The current
+  4-archetype recolor (gem/ice/gas/ingot, tinted per element) is SUPERSEDED. Iron ≠ Titanium ≠ Copper ≠ Gold
+  ≠ Silver ≠ Tungsten at a glance: each earns a distinct silhouette (native nugget / cast ingot / raw ore
+  chunk / crystal cluster / powder / rolled foil / sealed ampoule / …) **and** material-true detailing —
+  gold's warm sheen, iron's rust-flecked matte, titanium's blue heat-tint, copper's verdigris, sulfur's
+  crumbly yellow, uranium's cased glow, etc.
+- **The 7 cosmic materials get bespoke, otherworldly forms** — a plasma vial that actually glows (Stellar
+  Plasma), a stabilized condensate (Coronium), raw first-era matter (Protomatter), an ancient volatile
+  (Primordial Ice), a fractured phase-shard (Void Essence), an out-of-phase fragment (Chronal Shard), a
+  contained substrate (Dark Matter). These carry the "wow" and must look unlike any ordinary ore.
+- **Gear: bespoke painterly masters per family AND tier** — a Legendary rig reads visibly richer than a
+  Common one (more ornament, finer materials, a rarity glow), with the **rarity frame on the item card**
+  (ties into the 10-tier ladder, `[[rarity_universal]]`).
+- **Ship: hull tiers that visibly upgrade** as systems are built (the Shipyard already grows the hull;
+  extend it to distinct painterly tier art).
+- **Determinism + engine reuse:** build on the existing painterly engine (extend `_hdElemIcon`/`partIcon`
+  into a per-material / per-gear master registry), 144px+ masters, deterministic, no `Math.random`/`Date.now`.
+- **Proof-sheet EVERYTHING for Nick's sign-off** before it ships — the same review loop as the bestiary
+  (a full contact sheet of all 47 materials + every gear family×tier + ship tiers).
+
+**Sequence:** this is P3 of the v1.7 arc and rides on the material roster + economy existing in code, so
+Phase B builds the economy first (Materials/Craftables/Gear in `cargo`/`items`, the resolvers, the recipes),
+then the bespoke art registry is laid over it and proof-sheeted.
+
+## 23. ARPG item windows — Diablo 2 / Path of Exile feel (Nick, 2026-07-23, LOCKED)
+
+The item tooltip is a first-class feature, modelled on **Diablo 2 and Path of Exile 1 & 2**. Foundation exists:
+`#itemcard` / `renderItemCard` already opens a rarity-colored card with an affix line + equip button, and the
+loot model (`rollAffix`, `AFFIX_DEFS`, `equipAff`, `_slotAffix`, the 10-tier ladder, tier-as-item-level) is
+already ARPG-shaped. P4 upgrades it to the full anatomy.
+
+**Trigger:** desktop **hover**, mobile **tap** (per §7 / the spec) → a framed tooltip.
+
+**Anatomy (top → bottom), the PoE/D2 tooltip structure:**
+1. **Rarity header band** + item name (+ a "One of a Kind" subtitle when Unique-designated).
+2. **Item type + item level** line (and slot).
+3. divider → **implicit / intrinsic** mods.
+4. divider → **explicit affix lines**, each showing its rolled value **and its possible range** (PoE-style
+   "+18% (12–20%)"); the primary/defining affix is highlighted; drawback affixes read in a warning tone.
+5. **Quality** (foldable, Crude→Standard→Refined→Masterwork→Perfect — §2) and **upgrade level**.
+6. **Sockets / links / upgrade** rows where applicable.
+7. **Requirements** (station tier, tech) if any.
+8. italic **flavor text** at the bottom.
+
+**Frame:** a per-tier ornamental **frame around the whole window** (the ladder's normal/magic/rare/unique-
+equivalent borders, `[[rarity_universal]]` §3.11), readable without color (a11y).
+
+**Compare-to-equipped:** hovering/tapping shows the item **beside the worn piece** with green/red stat
+**deltas** (the D2/PoE compare pane).
+
+**Aesthetic:** lean toward **PoE 2's cleaner hierarchy** while keeping D2/PoE1 information density; mobile-
+first, so the less-critical rows (quality, requirements, flavor) fold via the card grammar on phones. Build on
+the existing `#itemcard` + affix model, extended. **P4 of the v1.7 arc; rides on P3 art + the done rarity ladder.**
+
 ---
 
-*Design basis: Nick's reviewed "Materials, Ingredients, Crafting & Gear" spec (uploaded 2026-07-22) — this
-file is the repo-canonical adoption. FULL fidelity for the Steam build. Build after v1.6, Phase B.*
+*Design basis: Nick's reviewed "Materials, Ingredients, Crafting & Gear" spec (uploaded 2026-07-22), plus the
+2026-07-23 FULL-BESPOKE art decision (§22) — this file is the repo-canonical adoption. FULL fidelity for the
+Steam build. Build after v1.6, Phase B.*

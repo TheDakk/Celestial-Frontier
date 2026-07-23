@@ -62,9 +62,15 @@
 ##   (MATERIALS_AND_GEAR.md + FORGE_AND_DISCOVERY.md P2): 47 craftable materials + seeded veins (world rarity
 ##   decides what you mine) + 3-tab inventory (Materials/Craftables/Gear) + gear on the rarity ladder + generation
 ##   modifiers = FULL re-pin (deserves its own careful arc — generation-critical for Steam; the game already has a
-##   base economy: cargo/ITEMS/craftItem/mineWorld/depositsFor/ELEM_NAME to build ON). THEN P3 art (materials/gear/
-##   ship tiers) + P4 ARPG item windows + P5 audio + TEXT POLISH (rides a re-pin) + charter-training module + the
-##   ~16 DEFERRED FIXES. See the v1.7 pinned blocks below + the three v1.7 design docs.
+##   base economy: cargo/ITEMS/craftItem/mineWorld/depositsFor/ELEM_NAME to build ON). THEN P3 ART = FULL BESPOKE
+##   (Nick 2026-07-23, LOCKED — MATERIALS_AND_GEAR.md §22): all 47 materials get their OWN painterly 144px master
+##   (NO family-recolor shortcuts — the current _hdElemIcon 4-archetype recolor is SUPERSEDED; Iron≠Titanium≠Gold at
+##   a glance), 7 cosmics get bespoke otherworldly forms, gear masters per family AND tier w/ rarity frame, ship hull
+##   tiers; extend _hdElemIcon/partIcon into a per-material/per-gear registry, proof-sheet ALL of it. + P4 ARPG ITEM
+##   WINDOWS (Nick loves the Diablo 2 / PoE 1 & 2 feel — desktop hover + mobile tap → framed stat tooltip: rarity
+##   header/frame, item level, affix lines w/ ranges, quality fold, compare-to-equipped, socket/upgrade rows) + P5
+##   audio + TEXT POLISH (rides a re-pin) + charter-training module + the ~16 DEFERRED FIXES. See the v1.7 pinned
+##   blocks below + the three v1.7 design docs.
 ## ═══ (v1.6.4 landing hotfix — now superseded as the live build; kept for history) ═══
 ## ★★★ v1.6.4 "THE LANDING FIX" DEPLOYED LIVE (2026-07-22, build 3a4b839; site + source pushed). CRITICAL hotfix
 ##   for Nick's "landing highlights but never triggers land" (stuck at step 6/20, Planetside open, empty ring).
