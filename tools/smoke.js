@@ -136,6 +136,33 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         H.closeItemCard();
         check('materials: closing the material card leaves it hidden', !visible(mc));
       }
+      // ===== v1.7 Phase B (5c) — world-cosmic veins (tier-gated, fp-safe) =====
+      if (H.cosmicVeinFor && H.depositsFor) {
+        const seeds = [];
+        for (let s = 1; s <= 500; s++) seeds.push(s * 1013 + 7);
+        // below Primordial (tier < 8): never a cosmic vein — this is what keeps
+        // every existing world byte-identical (depositsFor untouched, no extra roll)
+        check('cosmics 5c: no world below tier 8 yields a cosmic vein',
+          seeds.every((s) => [0, 1, 2, 3, 4, 5, 6, 7].every((t) => H.cosmicVeinFor(s, t) === null)));
+        const t8 = seeds.map((s) => H.cosmicVeinFor(s, 8)).filter(Boolean);
+        const t9 = seeds.map((s) => H.cosmicVeinFor(s, 9)).filter(Boolean);
+        check('cosmics 5c: tier-8 (Primordial) worlds carry foundational cosmics only (Pro/Pri)',
+          t8.length > 0 && t8.every((k) => k === 'Pro' || k === 'Pri'));
+        check('cosmics 5c: tier-9 (Transcendent) worlds unlock reality-breaking cosmics (Voe/Chr/Dkm)',
+          t9.some((k) => k === 'Voe' || k === 'Chr' || k === 'Dkm'));
+        check('cosmics 5c: every cosmic-vein symbol is a cosmic-family material',
+          t8.concat(t9).every((k) => H.MATERIALS[k] && H.MATERIALS[k].fam === 'cosmic'));
+        check('cosmics 5c: cosmicVeinFor is deterministic (same seed+tier → same result)',
+          seeds.slice(0, 80).every((s) => H.cosmicVeinFor(s, 9) === H.cosmicVeinFor(s, 9)));
+        // the cosmic never enters depositsFor's uniform pool (that is why the
+        // fingerprint holds and mining stays balanced — it's a separate rare vein)
+        check('cosmics 5c: depositsFor never contains a cosmic (fp-safe separate vein)',
+          seeds.slice(0, 120).every((s) => H.depositsFor(s, 'rocky', 12).every((k) => !H.MATERIALS[k] || H.MATERIALS[k].fam !== 'cosmic')));
+        // the cargo load filter now accepts every material (so mined cosmics
+        // persist) without dropping any key it used to accept
+        check('cosmics 5c: every legacy ELEM_NAME key is still a valid MATERIALS key (load filter safe)',
+          Object.keys(H.ELEM_NAME).every((k) => !!H.MATERIALS[k]));
+      }
     } else {
       check('materials: Phase B 5a hooks present (MATERIALS/MAT_FAMILY/matName/matBaseTier)', false);
     }

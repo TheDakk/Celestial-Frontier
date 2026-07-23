@@ -11646,8 +11646,10 @@ function renderPanel(p, isLocked){
         const _dp=depositsFor(d.planetSeed, d.ptype, _mTier);
         /* the biome's gated exotic reads as its own lit vein (v1.4) */
         const _bv=biomeVeinFor(d.planetSeed);
-        rows+='<div class="splabel"><span class="k">Mineral veins</span><span class="v">'+_dp.map(s=>ELEM_NAME[s]||s).join(' · ')+
-          (_bv?' · <span style="color:'+(EC[_bv]||'#fff')+'">'+(ELEM_NAME[_bv]||_bv)+' ✦</span>':'')+
+        const _cv=cosmicVeinFor(d.planetSeed, _mTier);   /* the rarest worlds carry a cosmic vein */
+        rows+='<div class="splabel"><span class="k">Mineral veins</span><span class="v">'+_dp.map(s=>matName(s)).join(' · ')+
+          (_bv?' · <span style="color:'+matColor(_bv)+'">'+matName(_bv)+' ✦</span>':'')+
+          (_cv?' · <span style="color:'+matColor(_cv)+'">'+matName(_cv)+' ✦</span>':'')+
           (grounded?' <span style="color:var(--faint)">· '+(_mLeft>0?_mLeft.toLocaleString()+' pulls left':'mined out')+'</span>':'')+'</span></div>';
       }
       const _running=(typeof _mineRun!=='undefined') && _mineRun && _mineRun.seed===d.planetSeed;
@@ -13724,7 +13726,7 @@ function loadSave(){
     stats.guardians=num(data.guardians);
     stats.paragons=num(data.paragons);
     for(const s of (data.setsc||[])) if(BINDER_SETS.some(x=>x.id===s)) claimedSets.add(s);
-    for(const kv of (data.cargo||[])){ if(kv && ELEM_NAME[kv[0]]!=null) cargo.set(kv[0], clamp(num(kv[1]), 0, 1e6)); }
+    for(const kv of (data.cargo||[])){ if(kv && MATERIALS[kv[0]]) cargo.set(kv[0], clamp(num(kv[1]), 0, 1e6)); }
     /* exploit audit: a mined timestamp edited to 0 read as "away for
        ages" and pre-armed 30 auto-extractor loads on EVERY world in one
        save edit. Clamp each stamp to at most one full accrual window
@@ -17065,6 +17067,26 @@ function biomeVeinFor(seed){
     return (b && BIOME_VEIN[b.k])||null;
   }catch(_){ return null; }
 }
+/* v1.7 THE FORGE — WORLD-COSMIC VEINS (MATERIALS_AND_GEAR.md §6/§17): the very
+   rarest worlds carry a foundational or reality-breaking cosmic material, GATED by
+   world tier so nothing below Primordial (tier 8) ever yields one — "reach even
+   harsher destinations → find better resources." Celestial-tier STELLAR cosmics
+   (Stellar Plasma / Coronium) come from STARS (§8), not planet veins, so they are
+   NOT here. Pure per seed+tier, a separate lit vein like the biome exotics: it
+   never touches depositsFor, and cosmicVeinFor returns null for every tier<8 world,
+   so all existing worlds' generation + mining stay byte-identical (fp-safe). World
+   rarity influences AVAILABILITY only (§6) — the world still holds abundant Commons. */
+const COSMIC_FOUND=['Pro','Pri'];          /* Primordial (tier 8): foundational */
+const COSMIC_BREAK=['Voe','Chr','Dkm'];    /* Transcendent (tier 9+): reality-breaking */
+function cosmicVeinFor(seed, tier){
+  if(!(tier>=8)) return null;              /* below Primordial: no cosmic, ever */
+  const r=mulberry32(hashInt(seed>>>0, 0xC05, 7)>>>0);
+  /* only a minority of even the rarest worlds hold one (these are the scarcest
+     materials in the game); the chance climbs a little with tier */
+  if(r() >= 0.18+Math.min(0.22,(tier-8)*0.05)) return null;
+  const pool = tier>=9 ? COSMIC_FOUND.concat(COSMIC_BREAK) : COSMIC_FOUND;
+  return pool[(r()*pool.length)|0];
+}
 const mined=new Map();         /* pseed → last mine ms (auto-extractor accrual anchor) */
 const mineX=new Map();         /* pseed → extractions taken so far (save field mx) */
 const cargo=new Map();         /* element symbol → qty */
@@ -17102,6 +17124,7 @@ function mineWorld(d, press){
   mined.set(ps, Date.now());
   const deps=depositsFor(ps, d.ptype||'rocky', tier);
   const bv=biomeVeinFor(ps);   /* the biome's guaranteed exotic, if any */
+  const cv=cosmicVeinFor(ps, tier);   /* v1.7: the rarest worlds' cosmic vein (null for tier<8) */
   const mult=mineYieldMult();
   const got=new Map(); let rare=null;
   for(let i=0;i<loads;i++){
@@ -17126,6 +17149,11 @@ function mineWorld(d, press){
       got.set(sym, (got.get(sym)||0)+Math.max(1, Math.round(mult)));
       rare=sym;
     }
+    /* v1.7 THE FORGE: the world-cosmic vein pays a RARE trickle. GATED on cv
+       (short-circuit) so every tier<8 world consumes ZERO extra rolls and mines
+       byte-identically — only the rarest worlds add this pull. A cosmic find reads
+       as a rich strike; it is the scarcest pocket there is. */
+    if(cv && r() < 0.04){ got.set(cv, (got.get(cv)||0)+Math.max(1, Math.round(mult))); rare=cv; }
   }
   mineX.set(ps, n0+loads);
   for(const [sym,q] of got) cargo.set(sym, (cargo.get(sym)||0)+q);
@@ -17139,9 +17167,9 @@ function mineWorld(d, press){
   gameEvent('mined', {planetSeed:ps, first:_firstMine, loads:loads, press:!!press});
   const left=R-(n0+loads);
   playRaritySting(rare?4:2); fxBurst(FX_GOLD, rare?26:14);
-  const gotTxt=[...got.entries()].map(e=>e[1]+'× '+(ELEM_NAME[e[0]]||e[0])).join(' · ');
+  const gotTxt=[...got.entries()].map(e=>e[1]+'× '+matName(e[0])).join(' · ');
   const mineMsg=(loads>1?loads+' loads (auto-extractor) — ':'')+gotTxt+
-    (rare?' — a pocket of '+(ELEM_NAME[rare]||rare)+'!':'')+
+    (rare?' — a pocket of '+matName(rare)+'!':'')+
     (left>0?' · '+left.toLocaleString()+' pulls left in the veins.':' · That was the last of it — the world is mined out.');
   /* plain pulls stay OUT of the bell tray (review catch: a grinding
      session would evict every achievement from the 60-cap log) — only
@@ -17332,7 +17360,10 @@ const _elemIcons=new Map();
    behind the same hd flag as the rest of the HD art. */
 const _ELEM_ICEHD={H2O:1,CH4:1,NH3:1,CO2:1,He3:1};
 function _hdElemIcon(sym){
-  const c=EC[sym]||'#c8d0dc';
+  /* cosmics aren't in EC — matColor sources their thematic hue (legacy symbols
+     resolve to their EC colour byte-identically). Interim art until the §22
+     bespoke masters land; cosmics borrow the faceted-gem form below. */
+  const c=matColor(sym);
   const n=parseInt(c.slice(1),16), cr=(n>>16)&255, cg=(n>>8)&255, cb=n&255;
   /* 144px master (v1.4 HD pass): a 50px inventory tile at DPR 3 samples
      150 device pixels — 96px masters read soft on OLED phones */
@@ -17340,8 +17371,9 @@ function _hdElemIcon(sym){
   const g=cv.getContext('2d'), r=mulberry32(hashInt(0xE1E, sym.charCodeAt(0)*31+(sym.charCodeAt(1)||7), sym.length)>>>0);
   const K=(k,a)=>'rgba('+Math.min(255,(cr*k)|0)+','+Math.min(255,(cg*k)|0)+','+Math.min(255,(cb*k)|0)+','+a+')';
   g.fillStyle='rgba(0,0,0,0.35)';g.beginPath();g.ellipse(S*0.5,S*0.84,S*0.30,S*0.055,0,0,7);g.fill();
-  if(ELEM_EXO[sym]){
-    /* a cut gem: crown + pavilion facets, lit core, star glints */
+  if(ELEM_EXO[sym] || matFamily(sym)==='cosmic'){
+    /* a cut gem: crown + pavilion facets, lit core, star glints (cosmics
+       borrow this form in their own hue until the §22 bespoke masters land) */
     const cx=S*0.5, cy=S*0.48, w=S*0.30, h=S*0.40;
     const F=[[[-w,0],[-w*0.45,-h*0.55],[0,-h*0.32],1.05],[[0,-h*0.32],[-w*0.45,-h*0.55],[w*0.45,-h*0.55],1.45],
       [[0,-h*0.32],[w*0.45,-h*0.55],[w,0],0.85],[[-w,0],[0,-h*0.32],[0,h],0.7],[[0,-h*0.32],[w,0],[0,h],0.5]];
