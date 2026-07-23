@@ -1160,6 +1160,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // v1.7 Forge: ARPG anatomy — rarity-frame header band + the Affixes fold
     check('v1.7 item window: rarity-frame header band + item level', !!icard.querySelector('.ic-band .ic-bname')
       && !!icard.querySelector('.card.framed') && /Item Lv/.test(icard.textContent));
+    check('v1.7 gear-on-ladder: the item wears a true 10-tier rarity chip',
+      !!icard.querySelector('.ic-chip.rar') && /Common|Uncommon|Notable|Rare|Exotic|Legendary|Mythic|Celestial|Primordial|Transcendent/.test(icard.querySelector('.ic-chip.rar').textContent));
     const afHead = icard.querySelector('[data-icfold]');
     check('v1.7 item window: the Affixes group uses the expand/close fold, open by default',
       !!afHead && /Affixes/.test(afHead.textContent) && !icard.querySelector('.ic-grp').classList.contains('folded'));
