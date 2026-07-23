@@ -31,11 +31,18 @@
 ##   depositsFor is byte-identical and nothing generates cosmics yet. +9 smoke sentinels (roster 47, families
 ##   15/13/10/2/7, tiers 0-9, cosmics-not-vein-placed, symbols distinct). probe-names hooked MATERIALS/MAT_FAMILY/
 ##   matName/matBaseTier/matFamily + ELEM_NAME/DEPOSIT_PROFILES/RARE_VEIN. Battery: fp MATCH 50/50, smoke 356/0, layout
-##   546/9. Doc synced (MATERIALS_AND_GEAR.md §3 "matches code as of 2026-07-23"). ▶ NEXT decision point (NOT built yet,
-##   awaiting Nick): (i) SURFACE the registry in the material card (family + base rarity + job) — fp-safe UI, but a
-##   PRESENTATION call that touches the deferred §5 instance-rarity model, so held for Nick's steer; OR (ii) the BIG
-##   determinism-critical piece — 5c vein-wiring RE-PIN (cosmics → DEPOSIT_PROFILES/RARE_VEIN by world rarity) + 5d
-##   recipes + §5 instance-rarity resolution. 5c/5d need Nick at a keyboard (re-pin authorization + careful review).
+##   546/9. Doc synced (MATERIALS_AND_GEAR.md §3 "matches code as of 2026-07-23").
+##   ► FOLLOW-ON fp-SAFE POLISH this session (Nick picked "more fp-safe polish"), both battery-green & pushed:
+##     (5a-ui) MATERIAL CARD surfaces family + role from the registry [5bf069d] — matName()/matFamily()/matJob(); rarity
+##       deliberately NOT shown (rides the §5 instance model). smoke 358/0. (5a-inv) MATERIALS TAB GROUPS BY FAMILY
+##       (§21) [8e59342] — base→volatile→precious→exotic→cosmic under headers, sorted by base tier then qty, trailing
+##       "Hold capacity" empty-slot block keeps the ample-hold feel + the existing Diablo-bag check. smoke 360/0, layout
+##       546/9. ═══ the registry now PAYS OFF in the UI (card + grouped hold). ═══
+##   ▶ NEXT — the fp-safe surface is largely covered; the MEANINGFUL next step is the determinism-critical RE-PIN, which
+##     needs NICK AT A KEYBOARD (re-pin authorization + careful review): (5c) wire the 7 cosmics into DEPOSIT_PROFILES/
+##     RARE_VEIN by world rarity + (5d) recipes for the new materials + §5 instance-rarity resolution. Optional remaining
+##     fp-safe bits if continuing remote: group the CRAFTABLES tab by _ITEM_KIND (parallel to §21); extend family/role
+##     into the Fabricator recipe UI. But the arc's payoff is gated on 5c/5d.
 ## ★★★ TRAINING FLOW/OVERLAP FIXES (2026-07-23, remote-control session, commit e83aaa9; source-only, fp-safe,
 ##   tutorial-only) = DONE. Closed 2 of the 3 deeper per-step FLOW/STUCK bugs from the empty-ring block's "STILL TO
 ##   DO" list, via a full 20-step transition audit (each advance checked for a TUT_ALWAYS modal or a graced panel
