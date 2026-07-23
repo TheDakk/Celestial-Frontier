@@ -163,6 +163,22 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         check('cosmics 5c: every legacy ELEM_NAME key is still a valid MATERIALS key (load filter safe)',
           Object.keys(H.ELEM_NAME).every((k) => !!H.MATERIALS[k]));
       }
+      // ===== v1.7 Phase B (§8) — stellar extraction: star class → stellar cosmic =====
+      if (H.stellarYieldFor && H.starClass) {
+        const sseeds = [];
+        for (let s = 1; s <= 2500; s++) sseeds.push(s * 733 + 3);
+        const byClass = {};
+        for (const s of sseeds) { const k = H.starClass(s).kind; (byClass[k] = byClass[k] || []).push(s); }
+        const hot = ['B', 'A', 'G', 'RG', 'SG'], remnant = ['WD', 'NS', 'MAG', 'BH'], barren = ['M', 'K', 'BD', 'PROTO'];
+        check('stellar §8: hot/bright stars yield Stellar Plasma (Pls)',
+          hot.every((k) => !byClass[k] || byClass[k].every((s) => H.stellarYieldFor(s) === 'Pls')));
+        check('stellar §8: dense stellar remnants yield Coronium (Crn)',
+          remnant.every((k) => !byClass[k] || byClass[k].every((s) => H.stellarYieldFor(s) === 'Crn')));
+        check('stellar §8: cool dwarfs / protostars yield no stellar cosmic',
+          barren.every((k) => !byClass[k] || byClass[k].every((s) => H.stellarYieldFor(s) === null)));
+        check('stellar §8: every stellar yield is a cosmic-family material',
+          sseeds.every((s) => { const y = H.stellarYieldFor(s); return y === null || (H.MATERIALS[y] && H.MATERIALS[y].fam === 'cosmic'); }));
+      }
     } else {
       check('materials: Phase B 5a hooks present (MATERIALS/MAT_FAMILY/matName/matBaseTier)', false);
     }
@@ -1194,6 +1210,22 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       skH.itemCount('cg-dark') === 1 && skH._itemRarity(skH.ITEM_BY.get('cg-dark')) === 9 && skH.displayRarity(9).name === 'Transcendent');
     check('cosmics 5d: the cosmic material knows what it crafts (§17 — every material has a job)',
       skH._matUses('Pro').uses.includes('Protomatter Carapace') && skH._matUses('Dkm').uses.includes('Dark Matter Bore'));
+    // v1.7 §8: skimming a star captures its stellar cosmic (finite run of samples)
+    let hotStar = null;
+    for (let s = 1; s < 4000 && !hotStar; s++) { if (skH.stellarYieldFor(s) === 'Pls') hotStar = s; }
+    const plsBefore = skH.cargo.get('Pls') || 0;
+    skH.skimStar(hotStar);
+    check('stellar §8: skimming a hot star captures Stellar Plasma into cargo',
+      (skH.cargo.get('Pls') || 0) > plsBefore);
+    const sres = skH.skimReserveFor(hotStar);
+    for (let i = 0; i < sres + 4; i++) skH.skimStar(hotStar);
+    check('stellar §8: a star\'s corona is a FINITE run — it depletes (no infinite plasma)',
+      (skH.skimX.get(hotStar) || 0) === sres && skH.skimStar(hotStar) === false);
+    check('stellar §8: a cool dwarf yields nothing to skim',
+      (() => { let cold = null; for (let s = 1; s < 4000 && !cold; s++) { if (skH.stellarYieldFor(s) === null) cold = s; } return skH.skimStar(cold) === false; })());
+    check('stellar §8: two stellar cosmic gear recipes exist (Celestial-anchored, from Pls/Crn)',
+      ['cg-plasma', 'cg-corona'].every((id) => { const it = skH.ITEM_BY.get(id); return it && it.cat === 'gear' && skH._itemRarity(it) === 7 && skH.displayRarity(7).name === 'Celestial'; })
+      && skH._matUses('Pls').uses.includes('Plasma Gauntlets') && skH._matUses('Crn').uses.includes('Coronal Aegis'));
     // v1.5.2c THE ELEMENTAL TITANS: signatures are won by felling a named
     // titan, region-gated (basics near, Void/Prism far), seeded/shared
     skH.st.gal = { seed: 999, x: 90, y: -60, size: 78 };   // home galaxy (region 0)
