@@ -2577,6 +2577,14 @@ function colorDNAFor(P, biomeK, starCol){
 
 /* ---------------- thumbnails (data URLs) for panel + scan log ---------------- */
 const thumbCache=new Map();
+/* house cache convention (round-2 audit; CF16-005): cap it — every browsed
+   world/star/galaxy pinned a ~10KB dataURL FOREVER on an unbounded map, a
+   slow leak on the long sessions phones feel first. Regeneration from seed
+   is free, so FIFO eviction is harmless. */
+function _thumbSet(key,url){
+  if(thumbCache.size>500){ thumbCache.delete(thumbCache.keys().next().value); }
+  thumbCache.set(key,url);
+}
 function planetThumb(P){
   const key='p'+P.seed+'|'+_cardSig(P);
   if(thumbCache.has(key)) return thumbCache.get(key);
@@ -2607,7 +2615,7 @@ function planetThumb(P){
   lg.addColorStop(0,'rgba(255,250,235,0.18)'); lg.addColorStop(0.5,'rgba(0,0,0,0)'); lg.addColorStop(1,'rgba(0,0,14,0.62)');
   g.globalCompositeOperation='source-atop'; g.fillStyle=lg; g.fillRect(0,0,T,T);
   const url=c.toDataURL();
-  if(!s._lowres) thumbCache.set(key,url);   /* don't pin a low-res placeholder as the thumb */
+  if(!s._lowres) _thumbSet(key,url);   /* don't pin a low-res placeholder as the thumb */
   return url;
 }
 function starThumb(kind,col,binCol){
@@ -2646,7 +2654,7 @@ function starThumb(kind,col,binCol){
     }
   }
   const url=c.toDataURL();
-  thumbCache.set(key,url); return url;
+  _thumbSet(key,url); return url;
 }
 function galaxyThumb(g){
   const key='g'+g.seed+'_'+g.sp+(g.quasar?'q':'');
@@ -2662,7 +2670,7 @@ function galaxyThumb(g){
     ctx2.drawImage(getGalaxySprite(g,true),0,0,T,T);   /* sync: a thumb never wears the archetype */
   }
   const url=c.toDataURL();
-  thumbCache.set(key,url); return url;
+  _thumbSet(key,url); return url;
 }
 
 function moonThumb(ti,mseed){
@@ -2682,7 +2690,7 @@ function moonThumb(ti,mseed){
   if(ti===1){ const r=mulberry32(21); g.strokeStyle='rgba(110,160,200,0.5)'; g.lineWidth=1.2*T/64;
     for(let i=0;i<5;i++){ g.beginPath();
       g.moveTo(T*0.25+r()*T*0.2, T*0.3+r()*T*0.3); g.lineTo(T*0.55+r()*T*0.25, T*0.45+r()*T*0.3); g.stroke(); } }
-  const url=c.toDataURL(); thumbCache.set(key,url); return url;
+  const url=c.toDataURL(); _thumbSet(key,url); return url;
 }
 function cometThumb(){
   const key='cmt'; if(thumbCache.has(key)) return thumbCache.get(key);
@@ -2695,7 +2703,7 @@ function cometThumb(){
   const ng=g.createRadialGradient(T*0.34,T*0.62,0,T*0.34,T*0.62,9*T/64);
   ng.addColorStop(0,'#ffffff'); ng.addColorStop(0.5,'#cfe6ff'); ng.addColorStop(1,'transparent');
   g.fillStyle=ng; g.beginPath(); g.arc(T*0.34,T*0.62,9*T/64,0,TAU); g.fill();
-  const url=c.toDataURL(); thumbCache.set(key,url); return url;
+  const url=c.toDataURL(); _thumbSet(key,url); return url;
 }
 function beltThumb(){
   const key='blt'; if(thumbCache.has(key)) return thumbCache.get(key);
@@ -2719,7 +2727,7 @@ function beltThumb(){
     g.fillStyle='rgba(226,220,206,0.35)';
     g.beginPath(); g.arc(bx-sz*0.25, by-sz*0.25, sz*0.28, 0, TAU); g.fill();
   }
-  const url=c.toDataURL(); thumbCache.set(key,url); return url;
+  const url=c.toDataURL(); _thumbSet(key,url); return url;
 }
 return Object.freeze({planetThumb, starThumb, galaxyThumb, moonThumb, cometThumb, beltThumb, getPlanetSprite});
 })();
@@ -14595,8 +14603,11 @@ function playerAvatar(){
 let _dollURL=null;
 function paperdollAvatar(){
   if(_dollURL) return _dollURL;
-  const W2=360,H2=600,cv=document.createElement('canvas');cv.width=W2;cv.height=H2;
-  const g=cv.getContext('2d');
+  /* crispness (cross-platform polish pass): the doll fills a 340-CSS-px wrap —
+     680 device px at the DPR-2 phone cap — so the 360px master read soft at
+     1.9× upscale. 2× backing store; one cached image, coordinates untouched. */
+  const W2=360,H2=600,cv=document.createElement('canvas');cv.width=W2*2;cv.height=H2*2;
+  const g=cv.getContext('2d');g.scale(2,2);
   /* THE VOID BEHIND (v1.5.1, Nick: "more space-like"): deep night, two
      nebula breaths, a distant ringed world, and a low horizon glow */
   const bg=g.createRadialGradient(W2*0.5,H2*0.28,20,W2*0.5,H2*0.52,H2*0.74);
@@ -19218,6 +19229,73 @@ function partIcon(id){
     chg.addColorStop(0,K(1.6,0.55)); chg.addColorStop(1,K(1.6,0));
     g.fillStyle=chg; g.fillRect(0,0,S,S); g.restore();
   }
+  /* §22 TIER DRESS — "a Legendary rig reads visibly richer than a Common one":
+     ornament and light scale with the piece's quality, layered over every
+     family form. All richness is in the item's OWN hue + white — rarity COLOR
+     stays on the card frame only (the ladder law: never tints entity art).
+     Deterministic per id. T1 parts stay matte workshop stock. */
+  (function(){
+    const rr2=mulberry32(hashInt(0x9EA7, (id.charCodeAt(0)||7)*31+(id.charCodeAt(1)||3), id.length)>>>0);
+    const t=it.tier|0, rar=(it.rar!=null)?(it.rar|0):0;
+    if(t<2 && rar<7) return;
+    g.save();g.globalCompositeOperation='lighter';
+    /* the quality aura — brighter and wider as the tier climbs. Kept SUBTLE
+       (proof-sheet catch: the first pass washed suits and relics into glowing
+       blobs — the silhouette must stay the star; the aura is a halo, not fog) */
+    const aa=rar>=7?0.16:(t>=3?0.10:0.06);
+    const ag2=g.createRadialGradient(S*0.5,S*0.5,S*0.14,S*0.5,S*0.5,S*(rar>=7?0.40:0.33));
+    ag2.addColorStop(0,K(1.4,0));ag2.addColorStop(0.55,K(1.4,aa));ag2.addColorStop(1,K(1.2,0));
+    g.fillStyle=ag2;g.fillRect(0,0,S,S);
+    /* craft glints — finer work catches more light */
+    const gl3=rar>=7?5:(t>=3?3:2);
+    for(let i2=0;i2<gl3;i2++){
+      const ga2=rr2()*6.28, gd2=S*(0.16+rr2()*0.18);
+      const gx2=S*0.5+Math.cos(ga2)*gd2, gy2=S*0.48+Math.sin(ga2)*gd2*0.8, gs2=1.6+rr2()*2.2;
+      g.fillStyle='rgba(255,255,255,'+(0.5+rr2()*0.35).toFixed(2)+')';
+      g.beginPath();g.moveTo(gx2-gs2*1.8,gy2);g.lineTo(gx2,gy2-gs2*0.5);g.lineTo(gx2+gs2*1.8,gy2);g.lineTo(gx2,gy2+gs2*0.5);g.closePath();g.fill();
+      g.beginPath();g.moveTo(gx2,gy2-gs2*1.8);g.lineTo(gx2+gs2*0.5,gy2);g.lineTo(gx2,gy2+gs2*1.8);g.lineTo(gx2-gs2*0.5,gy2);g.closePath();g.fill();
+    }
+    /* cosmic gear (rar 7+): a faint orbit of starlight — the endgame "wow",
+       still the item's own hue (the frame carries the rarity color) */
+    if(rar>=7){
+      g.strokeStyle=K(1.5,0.4);g.lineWidth=1.4;
+      g.beginPath();g.ellipse(S*0.5,S*0.5,S*0.40,S*0.15,-0.5,rr2()*2,rr2()*2+4.4);g.stroke();
+      g.strokeStyle='rgba(255,255,255,0.35)';g.lineWidth=0.9;
+      g.beginPath();g.ellipse(S*0.5,S*0.5,S*0.40,S*0.15,-0.5,rr2()*2,rr2()*2+3.2);g.stroke();
+    }
+    g.restore();
+    /* the FUNCTION MOTIF (§22 distinctiveness, honest version): same-family
+       gear siblings (five suits, three visors…) differ by JOB — so each gear
+       piece wears a small emblem of its primary effect in the top corner.
+       Function at a glance, not a recolor trick. Gear/relics only. */
+    if(it.slot && (it.cat==='gear'||it.cat==='relic')){
+      const e2=it.eff||{};
+      const mo=e2.yield!=null?'pick':(e2.strike!=null?'spark':(e2.scut!=null?'shield':(e2.heal!=null?'cross':(e2.speed!=null?'arrow':(e2.land!=null?'wing':(e2.contact!=null?'wave':(e2.auto?'gear':null)))))));
+      if(mo){
+        const mx3=S*0.83, my3=S*0.20, ms3=S*0.075;
+        g.save();
+        g.fillStyle='rgba(10,14,22,0.72)';g.beginPath();g.arc(mx3,my3,ms3*1.6,0,7);g.fill();
+        g.strokeStyle=K(1.35,0.8);g.lineWidth=1.2;g.stroke();
+        g.strokeStyle='rgba(255,255,255,0.92)';g.fillStyle='rgba(255,255,255,0.92)';g.lineWidth=2;g.lineCap='round';
+        if(mo==='pick'){ g.beginPath();g.moveTo(mx3-ms3*0.2,my3+ms3);g.lineTo(mx3+ms3*0.5,my3-ms3*0.5);g.stroke();
+          g.beginPath();g.moveTo(mx3-ms3*0.6,my3-ms3*0.3);g.quadraticCurveTo(mx3,my3-ms3*1.05,mx3+ms3*0.9,my3-ms3*0.1);g.stroke(); }
+        else if(mo==='spark'){ g.beginPath();g.moveTo(mx3+ms3*0.3,my3-ms3);g.lineTo(mx3-ms3*0.4,my3+ms3*0.15);g.lineTo(mx3+ms3*0.05,my3+ms3*0.15);g.lineTo(mx3-ms3*0.3,my3+ms3);g.stroke(); }
+        else if(mo==='shield'){ g.beginPath();g.moveTo(mx3,my3-ms3);g.lineTo(mx3+ms3*0.8,my3-ms3*0.5);g.lineTo(mx3+ms3*0.6,my3+ms3*0.5);
+          g.lineTo(mx3,my3+ms3);g.lineTo(mx3-ms3*0.6,my3+ms3*0.5);g.lineTo(mx3-ms3*0.8,my3-ms3*0.5);g.closePath();g.stroke(); }
+        else if(mo==='cross'){ g.beginPath();g.moveTo(mx3,my3-ms3);g.lineTo(mx3,my3+ms3);g.stroke();
+          g.beginPath();g.moveTo(mx3-ms3,my3);g.lineTo(mx3+ms3,my3);g.stroke(); }
+        else if(mo==='arrow'){ g.beginPath();g.moveTo(mx3-ms3,my3+ms3*0.6);g.lineTo(mx3+ms3*0.7,my3-ms3*0.3);g.stroke();
+          g.beginPath();g.moveTo(mx3+ms3*0.7,my3-ms3*0.3);g.lineTo(mx3+ms3*0.05,my3-ms3*0.4);g.moveTo(mx3+ms3*0.7,my3-ms3*0.3);g.lineTo(mx3+ms3*0.6,my3+ms3*0.35);g.stroke(); }
+        else if(mo==='wing'){ g.beginPath();g.moveTo(mx3-ms3,my3+ms3*0.5);g.quadraticCurveTo(mx3-ms3*0.2,my3-ms3*0.7,mx3+ms3,my3-ms3*0.3);
+          g.quadraticCurveTo(mx3+ms3*0.1,my3+ms3*0.05,mx3-ms3,my3+ms3*0.5);g.stroke(); }
+        else if(mo==='wave'){ for(let w4=0;w4<2;w4++){ g.beginPath();g.arc(mx3-ms3*0.5,my3,ms3*(0.55+w4*0.55),-0.9,0.9);g.stroke(); } }
+        else { g.beginPath();g.arc(mx3,my3,ms3*0.65,0,7);g.stroke();
+          for(let t4=0;t4<6;t4++){ const ta=t4*1.047; g.beginPath();g.moveTo(mx3+Math.cos(ta)*ms3*0.65,my3+Math.sin(ta)*ms3*0.65);
+            g.lineTo(mx3+Math.cos(ta)*ms3,my3+Math.sin(ta)*ms3);g.stroke(); } }
+        g.restore();
+      }
+    }
+  })();
   u=cv.toDataURL();
   _partIcons.set(id,u); return u;
 }
@@ -19231,8 +19309,12 @@ function shipImage(){
         ig=itemCount('igdrive')>0, aux=itemCount('autoext')>0;
   const key=(jump?'J':'')+(arr?'A':'')+(ig?'I':'')+(aux?'X':'');
   if(_shipURL && _shipKey===key) return _shipURL;
-  const W2=320, H2=120, cv=document.createElement('canvas'); cv.width=W2; cv.height=H2;
-  const g=cv.getContext('2d');
+  /* crispness (cross-platform polish pass): the portrait displays at FULL card
+     width — ~350 CSS px on a phone = 700 device px at the DPR-2 cap — so a
+     320px master upscaled 2.2× and read soft. The master renders at 2× now
+     (one cached image; every draw coordinate below is untouched via ctx scale). */
+  const W2=320, H2=120, cv=document.createElement('canvas'); cv.width=W2*2; cv.height=H2*2;
+  const g=cv.getContext('2d'); g.scale(2,2);
   g.fillStyle='#06070f'; g.fillRect(0,0,W2,H2);
   const r=mulberry32(0x5111);
   for(let i=0;i<44;i++){ g.globalAlpha=0.15+r()*0.55; g.fillStyle='#ffffff';
