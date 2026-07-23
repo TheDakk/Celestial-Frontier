@@ -241,6 +241,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('opening Compendium completes step 6', await until(() => tutAt(8), 3000, 'step7'));
     check('kingdoms: filter chips stay hidden during training (one voice)',
       !doc.querySelector('#codex [data-ck]'));
+    // v1.7 OPPOSITE-HALF DODGE (Nick): the Compendium lesson spotlights the
+    // whole panel, so the guidance card must dock at the BOTTOM — clearing the
+    // ✕/close toggle + list header up top that the top-pinned card used to block.
+    check('training dodge: the Compendium lesson card docks at the bottom (clears the close)',
+      await until(() => doc.getElementById('tutbox').classList.contains('dodge'), 1500, 'dodge'));
 
     // open a FAUNA specimen card (open its shelf first — v1.3.11 folds
     // realms onto themed display shelves, so find the card by opening

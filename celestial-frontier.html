@@ -49,6 +49,21 @@
   button,[role="button"],#cosmos{-webkit-touch-callout:none}
   #cosmos{display:block;width:100vw;height:100vh;cursor:grab;touch-action:none}
   #cosmos:active{cursor:grabbing}
+  /* ===== iOS SCROLL FIX — WHOLE UI (Nick, 2026-07-22) =====
+     The body is touch-action:none so a drag on the CANVAS pans the sky, not the
+     page. But that also suppresses touch-scroll on EVERY overflow panel/card:
+     iOS won't scroll a child unless the child re-declares its own pan. So each
+     scroll container must own its vertical pan (touch-action:pan-y) AND contain
+     its overscroll (or the rubber-band chains into the locked body and the panel
+     gets stuck — can't reach the top/bottom, can't land the close tap). This one
+     rule covers the world card, the specimen/reveal card, the Compendium, the
+     Atlas, charters, events, and every modal scroller. */
+  #panel,#codex,#log,#tray,#searchres,#chpanel,#events,#records,#yardcard,#sheetcard,
+  #doll .eqpick,#namebox .lore,#rel-body,#platebox .card,#itemcard .card,#duelbox .card,
+  #duelbox #duel-log,#pickbox .card,#primebox .card,#endingbox .card,#guidebox .card,
+  #reveal .card{overscroll-behavior:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch}
+  /* the world card drags by its head — that handle must stay a DRAG, not a scroll */
+  #panel .head{touch-action:none}
 
   /* ---- top bar ---- */
   #topbar{position:fixed;top:0;left:0;right:0;z-index:20;pointer-events:none;
@@ -1110,14 +1125,16 @@
     #tutbox .tbtns{margin-top:13px}
     #tutbox #tut-act,#tutbox #tut-skip-yes{padding:11px 0;font-size:11.5px}
   }
-  /* while training, dialogs yield the top of the screen to the guidance card
-     instead of centering underneath it (--tut-bot tracks the card's bottom) */
+  /* while training, dialogs yield to the guidance card instead of centering
+     under it. --tut-bot = where the dialog starts, --tut-cap = how tall it may
+     be — both track the card LIVE so it works whether the card is pinned to the
+     top (dialog drops below) or dodged to the bottom (dialog rises above it). */
   body.training #reveal, body.training #pickbox{align-items:flex-start}
-  body.training #reveal .card{margin-top:var(--tut-bot,160px);max-height:calc(100vh - var(--tut-bot,160px) - 14px)}
-  body.training #pickbox .card{margin-top:var(--tut-bot,160px);max-height:calc(100vh - var(--tut-bot,160px) - 14px)}
+  body.training #reveal .card{margin-top:var(--tut-bot,160px);max-height:var(--tut-cap,calc(100vh - var(--tut-bot,160px) - 14px))}
+  body.training #pickbox .card{margin-top:var(--tut-bot,160px);max-height:var(--tut-cap,calc(100vh - var(--tut-bot,160px) - 14px))}
   /* the rename dialog (Settings → Explorer name) is reachable mid-training too */
   body.training #namebox{align-items:flex-start}
-  body.training #namebox .card{margin-top:var(--tut-bot,160px);max-height:calc(100vh - var(--tut-bot,160px) - 14px);max-height:calc(100dvh - var(--tut-bot,160px) - 14px)}
+  body.training #namebox .card{margin-top:var(--tut-bot,160px);max-height:var(--tut-cap,calc(100dvh - var(--tut-bot,160px) - 14px))}
   #tutbox #tut-skip:hover,#tutbox #tut-skip-no:hover{color:var(--ink)}
   #guideok{width:100%;margin-top:16px;padding:12px 0;font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;
     color:#1a1206;cursor:pointer;border:1px solid rgba(255,220,150,0.9);border-radius:12px;
@@ -1138,7 +1155,7 @@
   /* training: the survey card yields BELOW the guidance card, like dialogs do —
      it used to open underneath it (Dakk's 10:24 PM screenshot) */
   body.training #panel{top:calc(var(--tut-bot,150px) + 8px) !important;
-    max-height:calc(100vh - var(--tut-bot,150px) - 120px) !important}
+    max-height:var(--tut-cap,calc(100vh - var(--tut-bot,150px) - 120px)) !important}
   #codex{position:fixed;top:calc(var(--row1-h,58px) + 90px);right:18px;z-index:22;width:320px;max-height:min(66vh,600px);overflow-y:auto;
     background:var(--glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
     border:1px solid rgba(150,162,210,0.2);border-radius:15px;padding:6px;display:none;
@@ -18913,7 +18930,7 @@ const TUT_STEPS=[
        is in TUT_ALWAYS so a tap dismisses it and yields to the Compendium. */ },
   text:()=>'A training cache just arrived: three Earth beasts and three Earth flora, on loan from the order. Tap the Planetside to continue, then open your <b>Compendium</b> to meet them.',
   when:(t,d)=>t==='codex-open'&&!!d.open},
- {id:'specimen', spot:'#codex', top:true, allow:['#codex','#codexbtn'],   /* top:true → card pinned to top so the fauna list is scrollable; #codexbtn allowed so a Settings-closed Compendium can be reopened */
+ {id:'specimen', spot:'#codex', bottom:true, allow:['#codex','#codexbtn'],   /* bottom:true → the whole Compendium is the spotlight, so pin the card to the BOTTOM: it clears the ✕/close toggle + list header at the top (Nick: the top-pinned card blocked closing the menu), and the list scrolls under it (overscroll-behavior:contain makes the ends reachable) */
   text:()=>'Fighters, breeders and medicine all live here, shelved by realm. <b>Tap any specimen</b> to open its card.',
   when:(t)=>t==='specimen'},
  {id:'card-tour', spot:'#reveal .card', btn:'Got It', rev:'scout',   /* the tour's one live verb — reversible, and it IS on the card */
@@ -19005,13 +19022,6 @@ function _tutShow(){
   }, 480);
 }
 function _tutSpot(){
-  /* keep --tut-bot current so open dialogs sit below the guidance card */
-  try{
-    if(tutEl.style.display==='block'){
-      const r=tutEl.getBoundingClientRect();
-      document.documentElement.style.setProperty('--tut-bot', Math.round(r.bottom+10)+'px');
-    }
-  }catch(_){}
   const s=(_tutStep>=0)?TUT_STEPS[_tutStep]:null;
   /* soft-lock guard: if a training step needs the Compendium open and an overlay
      (Settings, Guide, etc.) closed it, reopen it the moment that overlay is
@@ -19030,19 +19040,39 @@ function _tutSpot(){
      step's target sits in the top half and intersects the card, the card
      dodges to the bottom edge until the target is clear */
   try{
-    if(s && s.top){ tutEl.classList.remove('dodge'); }   /* Nick: pin the card to the TOP for this step so the tall panel below (Compendium fauna list) stays scrollable and reachable */
+    /* THE OPPOSITE-HALF RULE (Nick): the guidance card always sits in the HALF
+       of the screen the spotlight is NOT in — highlight up top → card to the
+       bottom; highlight down low → card up top. So the card never covers the
+       thing it points at, nor the menu's controls around it (e.g. the ✕/close
+       toggle that lives up by the topbar). Steps may force a side with
+       top/bottom when the target fills the screen and the rule can't choose. */
+    if(s && s.top){ tutEl.classList.remove('dodge'); }
+    else if(s && s.bottom){ tutEl.classList.add('dodge'); }
     else if(r && tutEl.style.display==='block'){
-      const tb=tutEl.getBoundingClientRect();
-      const overlaps=!(r.right<tb.left||r.left>tb.right||r.bottom<tb.top||r.top>tb.bottom);
-      if(overlaps && r.top<H*0.55) tutEl.classList.add('dodge');
-      else if(!overlaps && tutEl.classList.contains('dodge')){
-        /* only come home if home doesn't overlap either (no flip-flop) */
-        tutEl.classList.remove('dodge');
-        const th=tutEl.getBoundingClientRect();
-        if(!(r.right<th.left||r.left>th.right||r.bottom<th.top||r.top>th.bottom)) tutEl.classList.add('dodge');
-      }
+      const spotMid=(r.top+r.bottom)/2;
+      tutEl.classList.toggle('dodge', spotMid < H*0.5);
     } else if(!r) tutEl.classList.remove('dodge');
   }catch(_){ }
+  /* Publish where an in-training dialog (reveal/pickbox/name/#panel) may live so
+     it never sits UNDER the guidance card. When the card is at the TOP, dialogs
+     drop BELOW it (--tut-bot = card bottom). When the card dodged to the BOTTOM,
+     dialogs rise ABOVE it instead (--tut-bot near the topbar, --tut-cap capped at
+     the card's top) — otherwise a card-at-bottom would shove the reveal off the
+     bottom of the screen (Nick's opposite-half rule made this reachable). */
+  try{
+    if(tutEl.style.display==='block'){
+      const cr=tutEl.getBoundingClientRect();
+      if(tutEl.classList.contains('dodge')){
+        const _r1=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--row1-h'))||58;
+        const top=Math.round(_r1+12);
+        document.documentElement.style.setProperty('--tut-bot', top+'px');
+        document.documentElement.style.setProperty('--tut-cap', Math.max(140, Math.round(cr.top-top-12))+'px');
+      } else {
+        document.documentElement.style.setProperty('--tut-bot', Math.round(cr.bottom+10)+'px');
+        document.documentElement.style.setProperty('--tut-cap', Math.max(140, Math.round(H-cr.bottom-24))+'px');
+      }
+    }
+  }catch(_){}
   if(!r){ tutSpotEl.style.display='none'; return; }
   tutSpotEl.style.display='block';
   tutSpotEl.style.left=Math.round(r.left-6)+'px';
