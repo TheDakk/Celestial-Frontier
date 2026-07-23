@@ -12137,6 +12137,7 @@ logBtn.addEventListener('click', ()=>{
    Owns: COSMIC_EPOCH, codex, codexOpen, KIND_ICON, codexId, _storeSpecies, autoScanWorld, discoverSpecies, speciesDetails, pendingReveals, …
    ---------------------------------------------------------------- */
 let COSMIC_EPOCH=0;            /* the universe's biological clock — advances slowly as you explore */
+const EPOCH_TICK=1200;        /* seconds of play per epoch (v1.7 balance: 240→1200; slow evolution, not a 4-min farm) */
 const codex=new Map();         /* id -> {id, name, kind, desc, diet, gen, genome, from} */
 let codexOpen=false;
 const KIND_ICON={Flora:'🌿', Fungi:'🍄', Microbe:'🦠', Fauna:'🐾'};
@@ -13248,6 +13249,9 @@ const bellEl=document.getElementById('bell');
 const bellCt=document.getElementById('bellct');
 const trayEl=document.getElementById('tray');
 const trayList=document.getElementById('traylist');
+/* HTML escape for any externally-sourced text that reaches innerHTML (save
+   fields, share codes) — the sink-side guard against save-injection */
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function pushNotif(tt, ms){
   notifications.unshift({id:_notifSeq++, tt:String(tt), ms:String(ms), t:Date.now(), read:false});
   if(notifications.length>60) notifications.length=60;
@@ -13272,10 +13276,13 @@ function renderTray(){
     trayList.innerHTML='<div class="empty">Nothing yet. Achievements, discoveries and events will collect here.</div>';
     return;
   }
+  /* review catch (save-injection XSS): n.tt/n.ms feed innerHTML, and the LOAD
+     path restored them raw (pushNotif coerces, load didn't) — a tampered/shared
+     save could run script. Escape at the sink too: defense in depth. */
   trayList.innerHTML=notifications.map(n=>
-    '<div class="nt tk-'+evClass(n.tt)+(n.read?' read':'')+'" data-nt="'+n.id+'" title="Click to mark '+(n.read?'unread':'read')+'">'+
-    '<span class="dot"></span><div class="m"><div class="tt">'+n.tt+'</div>'+
-    '<div class="ms">'+n.ms+'</div><div class="ago">'+timeAgo(n.t)+'</div></div></div>').join('');
+    '<div class="nt tk-'+evClass(n.tt)+(n.read?' read':'')+'" data-nt="'+(n.id|0)+'" title="Click to mark '+(n.read?'unread':'read')+'">'+
+    '<span class="dot"></span><div class="m"><div class="tt">'+esc(n.tt)+'</div>'+
+    '<div class="ms">'+esc(n.ms)+'</div><div class="ago">'+timeAgo(n.t)+'</div></div></div>').join('');
 }
 bellEl.addEventListener('click', ()=>{
   trayOpen=!trayOpen;
@@ -13828,9 +13835,17 @@ function loadSave(){
     explorerName=cleanName(data.me||'');
     essence=clamp(num(data.essence), 0, 1e9);
     const _nowL=Date.now();
+    const _atL=clamp(num(data.at, _nowL), 0, _nowL);   /* the save's own wall-clock stamp — the anti-edit anchor */
+    /* review catch: the conquest harvest stamp never got the mined-stamp's
+       anti-edit clamp — editing every conq.t to 0 read the whole empire as
+       instantly ready and paid Stardust across it in one edit. Floor each stamp
+       to at most one HARVEST_CD before the save's own stamp: a genuinely long-
+       away player still gets exactly one ready harvest per world; a mass edit
+       gets the same (one cycle), not an infinite empire-wide payout. */
+    const _hvFloor=Math.max(0, _atL-HARVEST_CD);
     for(const kv of (data.conq||[])){
       if(!kv || kv[0]==null || !kv[1]) continue;
-      conquered.set(kv[0], {t:clamp(num(kv[1].t), 0, _nowL), tier:clamp(num(kv[1].tier), 0, TIER_MAX)});
+      conquered.set(kv[0], {t:clamp(num(kv[1].t), _hvFloor, _nowL), tier:clamp(num(kv[1].tier), 0, TIER_MAX)});
     }
     stats.breeds=num(data.breeds); stats.breedwins=num(data.breedwins);
     stats.feeds=num(data.feeds); stats.feedfails=num(data.feedfails);
@@ -13845,7 +13860,6 @@ function loadSave(){
        before the save's own wall-clock stamp — identical outcome for
        every legitimate player (the 30-load cap dominates), dead end for
        the mass edit. */
-    const _atL=clamp(num(data.at, _nowL), 0, _nowL);
     const _minT=Math.max(0, _atL-30*6e5);
     for(const kv of (data.minedw||[])){ if(kv && kv[0]!=null) mined.set(kv[0], clamp(num(kv[1]), _minT, _nowL)); }
     /* v1.4 finite reserves: mx = pulls taken per world. Absent (edited or
@@ -13895,7 +13909,11 @@ function loadSave(){
     showCargoBtn();
     nameHue=Number.isFinite(+data.nh)?clamp((+data.nh)|0, -1, RANK_HUES.length-1):-1;
     stats.bestRank=clamp(num(data.br), 0, RANK_HUES.length-1);
-    _savedView=data.view||null;
+    /* review catch (NaN-camera soft-lock): view was the one field restored with
+       zero validation, then boot fed it straight to goTo — a non-numeric
+       gal.size/x blacked the screen on EVERY launch (re-saved verbatim). Sanitize
+       the restored view's gal so a corrupt/tampered save can't brick the camera. */
+    _savedView=_sanitizeView(data.view);
     if(data.pstats && typeof data.pstats==='object'){ for(const _k of STAT_KEYS) if(typeof data.pstats[_k]==='number') pstats[_k]=clamp(Math.round(data.pstats[_k]),1,330); }
     HP_MAX=hpMaxFromVit();
     if(typeof data.hp==='number') hp=clamp(data.hp,1,HP_MAX);  /* never load in dead */
@@ -13930,7 +13948,10 @@ function loadSave(){
     cardExpand=clamp(num(data.cx), 0, 31)|0;
     /* `hd` in old saves is IGNORED — HD is always on now (ship decision) */
     applyHd();
-    for(const n of (data.notifs||[])){ if(n && n.tt!=null && notifications.length<60) notifications.push(n); }
+    /* review catch: coerce/clamp restored notifs the same way pushNotif does —
+       the load path was the one that trusted raw save text into the tray */
+    for(const n of (data.notifs||[])){ if(n && n.tt!=null && notifications.length<60)
+      notifications.push({id:num(n.id)|0, tt:String(n.tt).slice(0,200), ms:String(n.ms==null?'':n.ms).slice(0,400), t:clamp(num(n.t),0,4e12)||Date.now(), read:!!n.read}); }
     for(const n of notifications){ if(n.id>=_notifSeq) _notifSeq=n.id+1; }
     renderBell();
     for(const s of (data.surveyed||[])) surveyedSet.add(s);
@@ -14100,6 +14121,19 @@ function encodeWhere(w, name){
   if(name) o.n=String(name).slice(0,24);
   return 'CF1-'+b64encUtf8(JSON.stringify(o)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
 }
+/* a restored camera view is externally-sourced too — coerce its gal numbers so
+   a corrupt save can't feed NaN into goTo (review catch) */
+function _sanitizeView(v){
+  if(!v || !v.gal) return null;
+  const g=v.gal, _n=(x,d,lo,hi)=>{ const q=+x; return isFinite(q)?clamp(q,lo,hi):d; };
+  const gal={x:_n(g.x,0,-1e7,1e7),y:_n(g.y,0,-1e7,1e7),size:_n(g.size,60,8,4000),
+    sp:_n(g.sp,0,0,3e5),tilt:_n(g.tilt,0.5,-7,7),rot:_n(g.rot,0,-7,7),seed:_n(g.seed,1,0,4294967295)>>>0,
+    home:!!g.home, quasar:!!g.quasar, dwarf:!!g.dwarf};
+  const out={type:v.type, gal};
+  if(v.star && typeof v.star==='object') out.star={x:_n(v.star.x,0,-1e7,1e7),y:_n(v.star.y,0,-1e7,1e7),seed:_n(v.star.seed,1,0,4294967295)>>>0};
+  if(v.pseed!=null && isFinite(+v.pseed)) out.pseed=clamp(+v.pseed,0,4294967295)>>>0;
+  return out;
+}
 function decodeWhere(code){
   try{
     const h=String(code).indexOf('CF1-'); if(h<0) return null;
@@ -14107,11 +14141,17 @@ function decodeWhere(code){
     while(b64.length%4) b64+='=';
     const o=JSON.parse(b64decUtf8(b64));
     const G=o.g; if(!G || G.length<8) return null;
-    const gal={x:G[0],y:G[1],size:G[2],sp:G[3],tilt:G[4],rot:G[5],seed:G[6],
+    /* review catch (NaN-camera crash): a crafted CF1 code with a non-numeric
+       size/tilt/… passed the x/y reach gate, then goTo's 0.55*minWH/size went
+       NaN and blacked the screen. Coerce+clamp every decoded number the way
+       loadSave does for its own fields; a bad number can't reach a transform. */
+    const _n=(v,d,lo,hi)=>{ const x=+v; return isFinite(x)?clamp(x,lo,hi):d; };
+    const gal={x:_n(G[0],0,-1e7,1e7),y:_n(G[1],0,-1e7,1e7),size:_n(G[2],60,8,4000),
+      sp:_n(G[3],0,0,3e5),tilt:_n(G[4],0.5,-7,7),rot:_n(G[5],0,-7,7),seed:_n(G[6],1,0,4294967295)>>>0,
       home:!!(G[7]&1), quasar:!!(G[7]&2), dwarf:!!(G[7]&4)};
     const w={type:o.t==='p'?'planet':(o.t==='s'?'star':'galaxy'), gal};
-    if(o.s) w.star={x:o.s[0],y:o.s[1],seed:o.s[2]};
-    if(o.p!=null) w.pseed=o.p;
+    if(o.s) w.star={x:_n(o.s[0],0,-1e7,1e7),y:_n(o.s[1],0,-1e7,1e7),seed:_n(o.s[2],1,0,4294967295)>>>0};
+    if(o.p!=null){ const p=+o.p; if(isFinite(p)) w.pseed=clamp(p,0,4294967295)>>>0; }
     return {where:w, name:o.n?(cleanName(o.n)||null):null};
   }catch(_){ return null; }
 }
@@ -15152,6 +15192,8 @@ function setArenaBackdrop(d){
   card.style.backgroundSize='cover';
 }
 let _lastDuelText='';
+let _lastDuelCredit=0;   /* anti-farm: friendly-duel progression credit throttle */
+let _tutHadEarthLanded=false;   /* the land-step drill records Earth's prior landed state to restore it */
 document.addEventListener('click', e=>{
   if(e.target && e.target.id==='duel-share-log' && _lastDuelText){
     shareBox.querySelector('.who').textContent='⚔ Battle log';
@@ -15307,7 +15349,16 @@ function fightNow(mine, theirs, opts){
       if(opts.onResolve){ opts.onResolve(res); }
       else {
         stats.duels++;
-        if(res.winner==='A'){ stats.duelwins++; if(mine && mine.id) awardXP(mine.id, 8); }   /* wins feed the class XP bar */
+        /* review catch (free-win farming): a friendly duel against a pasted
+           (or self-exported ~50%) code paid duelwins + XP with no cost or
+           cooldown — spam the button, farm rank/achievements. The FIGHT stays
+           free sport; the PROGRESSION credit (win tally + class XP) is throttled
+           to once per 30s, so casual duels count but a farm loop does not. App-
+           layer cooldown (Date.now fine here — never feeds generation). */
+        if(res.winner==='A'){
+          const _dn=Date.now();
+          if(_dn-_lastDuelCredit>30000){ _lastDuelCredit=_dn; stats.duelwins++; if(mine && mine.id) awardXP(mine.id, 8); }
+        }
         playRaritySting(res.winner==='A'?5:2);
         checkAch(); renderRank(); queueSave();
       }
@@ -17041,7 +17092,15 @@ function runConquestBattle(d, champ, native){
         if(native.guardian){
           /* the fallen guardian joins the Compendium — the fighter's road to the summit */
           stats.guardians=(stats.guardians||0)+1;
-          const ge=_storeSpecies(native.genome, (native.titan?'Elemental Titan':'Apex Guardian')+' of '+(d.title||'a world'), d.where||null);
+          /* review catch (over-budget champion): _mult/_wf are DEFENDER-side
+             battlefield buffs (the region/world-field bonuses that made it a
+             boss), not creature properties — normGenome already strips them from
+             share codes. Strip them here too so the CAUGHT guardian fights at its
+             true bred stats, not a permanent ~40% multiplier no bred rival can
+             match (and so its Power reads the same on every device). apex stays:
+             the summit GRADE is legitimately its own. */
+          const _capG={...native.genome}; delete _capG._mult; delete _capG._wf;
+          const ge=_storeSpecies(_capG, (native.titan?'Elemental Titan':'Apex Guardian')+' of '+(d.title||'a world'), d.where||null);
           const _gg=ge&&ge.grade;
           cinematic({kicker:native.titan?'⚔ The Titan Falls':'👑 The Guardian Falls', title:native.name,
             sub:(_gg?_gg.name+(_gg.star?' '+_gg.star:''):'A summit-grade titan')+' — it joins your Compendium',
@@ -18573,10 +18632,22 @@ function openItemCard(o){ _salvagePending=null; _itemCardFor=o; renderItemCard()
 function closeItemCard(){ _salvagePending=null; _itemCardFor=null; itemCardEl.style.display='none'; }
 /* v1.7 Forge — salvage: break a piece of gear down for a share of its craft cost.
    Guarded by the Settings › Gameplay "Confirm before salvaging" toggle. */
+/* materials whose whole point is to GATE high-tier gear — a salvage must never
+   hand these back in full, or crafting them costs nothing (review catch) */
+const _SALVAGE_GATED={Nd:1,Pm:1,Vg:1,Pz:1,Pls:1,Crn:1,Pro:1,Pri:1,Voe:1,Chr:1,Dkm:1,Au:1,Pt:1,Ir:1,U:1,Th:1};
 function _salvageReturns(it){
   const out=[], cost=it&&it.cost;
   if(cost){ for(const k in cost){ const n=Math.floor((cost[k]||0)*0.5); if(n>0) out.push({k, n}); } }
-  if(!out.length && cost){ const k0=Object.keys(cost)[0]; if(k0) out.push({k:k0, n:1}); }   /* always yield something */
+  /* the fallback used to return 1 unit of the FIRST cost material whenever every
+     entry floored to 0 — a 100% refund of the exotic for every single-unit
+     recipe (Vg:1, Nd:1, Pz:1…), so the gating material was never actually spent
+     (craft → try on → salvage → get it back). Now: yield only a NON-gated cheap
+     material, never the defining exotic — salvage stays "a share", not a free
+     rental of the rarest thing in the game. */
+  if(!out.length && cost){
+    const k0=Object.keys(cost).find(k=>!_SALVAGE_GATED[k]);
+    if(k0) out.push({k:k0, n:1});
+  }
   return out;
 }
 function salvageItem(id, confirmed){
@@ -18584,10 +18655,13 @@ function salvageItem(id, confirmed){
   if(!it || !it.slot || it.cat==='sys' || (items.get(id)||0)<=0) return;
   if(salvageConfirm && !confirmed){ _salvagePending=id; renderItemCard(); return; }
   _salvagePending=null;
-  if(equip[it.slot]===id) equipItem(it.slot, null);            /* unequip before it's gone */
   const ret=_salvageReturns(it);
   for(const r of ret) cargo.set(r.k, Math.min(1e6, (cargo.get(r.k)||0)+r.n));
   const left=(items.get(id)||0)-1; if(left>0) items.set(id, left); else items.delete(id);
+  /* unequip ONLY when the LAST copy is gone (review catch: it unequipped on any
+     salvage even with duplicates owned, silently emptying the slot + dropping
+     the worn affix while a spare still sat in the bag) */
+  if(equip[it.slot]===id && left<=0) equipItem(it.slot, null);
   try{ playSurveyPing(); }catch(_){}
   toast('♺ Salvaged', it.name+' broken down'+(ret.length?' — '+ret.map(r=>r.n+'× '+(matName(r.k))).join(' · '):'')+'.');
   closeItemCard();   /* review cleanup: was an inlined copy of this fn's body */
@@ -20273,7 +20347,7 @@ const TUT_STEPS=[
      this step waits on — the ring lights but Land "does nothing". Un-land home
      for the drill; the press re-adds it instantly. Fresh saves never hit this,
      which is why smoke (a clean boot) couldn't see it. */
-  enter:()=>{ try{ landed.delete(133); }catch(_){ } },
+  enter:()=>{ try{ _tutHadEarthLanded=landed.has(133); landed.delete(133); }catch(_){ } },   /* remember, so cleanup restores a veteran's landed(133) if the press never re-added it (review catch) */
   text:()=>'Now stand on it. Press <b>Land</b> on Earth&#8217;s card — home never waves you off. <b>Planetside</b> opens: the world at ground level, painted from its own survey. Out there, hostile worlds fight the descent — the card always shows your odds first.',
   when:(t,d)=>t==='landfall'&&d.planetSeed===133},
  {id:'cache', spot:'#codexbtn', allow:['#codexbtn'],
@@ -20631,6 +20705,10 @@ function _tutCleanup(){
 function _tutEnsureEarth(){
   try{
     conquered.set(133, conquered.get(133)||{t:0, tier:5});
+    /* review catch: the land-step drill does landed.delete(133) to re-fire the
+       landfall event for veterans — restore it ONLY if it was landed before the
+       drill (a fresh/skip expedition legitimately hasn't stood on any world). */
+    if(_tutHadEarthLanded) landed.add(133);
     if(!logMap.has('p133')){
       const sys=systemFor(SOL_SEED);
       const earth=(sys&&sys.planets)?sys.planets.find(p=>p.P&&p.P.seed===133):null;
@@ -21460,7 +21538,14 @@ const MODE_PAINTERS=Object.freeze({universe:drawUniverse, galaxy:drawGalaxy, sys
 function frameInner(){
   ctx.setTransform(DPR,0,0,DPR,0,0);
   const time=perfTime();
-  const newEpoch=EPOCH_BASE+Math.floor(time/240);
+  /* review catch (biosphere farming): the cosmic clock ticked every 240s of
+     PLAY, so a parked player refreshed a world's finite capture pool AND rerolled
+     its never-catalogued roster (new Compendium entries + rare-find Stardust) —
+     plus passiveDrift minted a free hybrid — every 4 minutes. The clock is the
+     "come back and it's evolved" flavor, not a farm: at 20 min/tick nobody sits
+     for a cycle, and a real multi-hour playthrough still evolves several epochs.
+     EPOCH_TICK is the single cadence knob (save's EPOCH_BASE is unaffected). */
+  const newEpoch=EPOCH_BASE+Math.floor(time/EPOCH_TICK);
   if(newEpoch!==COSMIC_EPOCH){
     COSMIC_EPOCH=newEpoch;
     passiveDrift();
