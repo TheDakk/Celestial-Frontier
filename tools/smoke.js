@@ -1156,8 +1156,15 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('v1.6 item card: wearables carry an Equip button', !!eqbtn);
     click2(eqbtn, sk.w);
     check('v1.6 item card: Equip slots the item into its socket', skH.equip.helmet === 'visor');
-    click2(icard.querySelector('[data-icclose]'), sk.w);
-    check('v1.6 item card: the corner close dismisses it', icard.style.display === 'none');
+    // v1.7 Forge: the Salvage button + confirm guard + material return + card close
+    const svbtn = icard.querySelector('[data-salvbtn="visor"]');
+    check('v1.7 salvage: wearables carry a Salvage button beside Equip', !!svbtn);
+    click2(svbtn, sk.w);
+    check('v1.7 salvage: with the guard On, Salvage asks first (confirm prompt with a Salvage button)',
+      !!icard.querySelector('[data-salvgo="visor"]') && /Salvage Scout Visor/i.test(icard.textContent));
+    click2(icard.querySelector('[data-salvgo="visor"]'), sk.w);
+    check('v1.7 salvage: confirming removes the item, unequips it, and closes the card',
+      (skH.items.get('visor') || 0) === 0 && skH.equip.helmet !== 'visor' && icard.style.display === 'none');
     // ship systems ARE the ring keys: hand over the drives, watch the rings open
     skH.items.set('jumpdrive', 1);
     check('v1.4 rings: the Jump Drive opens the Neighborhood', skH.ascStage() === 1
