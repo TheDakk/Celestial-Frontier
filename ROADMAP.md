@@ -41,15 +41,30 @@
 ##   validate FINGERPRINT MATCH, smoke 329/0, layout 546/9. ⚠ LESSON LEARNED: NEVER run `node tools/extract.js` after
 ##   editing main.js — it regenerates main.js FROM the html and CLOBBERS your edits (cost a full redo this session).
 ##   After editing main.js, run `node tools/build.js` ONLY.
-## ▶ v1.7 NEXT (still to build, source-only, bundle when done): Phase A PRESENTATION LAYER (RARITY_UNIVERSAL.md §3
-##   items 10-12, fp-safe) = discovery GATING (hide world rarity until successful LANDING; creatures/plants on
-##   catch; stars on survey; orbit = teaser only) + ESCALATING reveal (tier-scaled color/glow/sound, biggest for the
-##   scarce top) + per-tier FRAME (rarity readable w/o color, a11y) + cross-kind Compendium rarity filter/sort. THEN
-##   Phase B "THE FORGE" (MATERIALS_AND_GEAR.md + FORGE_AND_DISCOVERY.md P2): 47 craftable materials + seeded veins
-##   (world rarity decides what you mine) + 3-tab inventory (Materials/Craftables/Gear) + gear on the rarity ladder +
-##   generation modifiers = FULL re-pin. THEN P3 art (materials/gear/ship tiers) + P4 ARPG item windows + P5 audio +
-##   TEXT POLISH (rides a re-pin) + charter-training module + glass/tint slider + the ~16 DEFERRED FIXES. See the
-##   v1.7 pinned blocks below + RARITY_UNIVERSAL.md / MATERIALS_AND_GEAR.md / FORGE_AND_DISCOVERY.md.
+## ★★★ v1.7 PHASE A PRESENTATION LAYER = BUILT IN SOURCE (2026-07-22, commit eb16e3a; RARITY_UNIVERSAL.md §3
+##   items 10-12, all fp-safe/UI-only). DISCOVERY GATING: a world HIDES its grade until you LAND — renderPanel's
+##   Spectral-class row shows a "land to reveal" teaser + the card border stays neutral from orbit, gated on the
+##   existing `grounded` flag; the glance leak ("glance still shows the color language") is closed too. Stars/
+##   galaxies still reveal on survey (gate keys on d.planetSeed). KEY: worlds carry `.designation` not `.grade`, so
+##   the Atlas/log/conquest NEVER leaked rarity — no gating needed there (confirmed by a full surface map).
+##   ESCALATING REVEAL: `_performLanding` fires a tier-scaled cinematic on the FIRST descent onto a Legendary+
+##   world (uses displayRarity for the collapsed name/color; Common..Exotic land quietly); per-tier data-frame bands
+##   (low→summit) are the readable-without-color a11y signal. CROSS-KIND COMPENDIUM: a rarity-floor filter (All/
+##   Rare+/Legendary+/Mythic+, `codexRare`) under the kingdom tabs sifts every kingdom by DISPLAY tier at once (list
+##   already sorts by tier). Smoke guards: unlanded world hides grade / landing reveals it. Gates: fp MATCH, smoke
+##   330/0, layout 546/9.
+## ★★★ v1.7 GLASS/TINT SLIDER = BUILT IN SOURCE (2026-07-22; Nick's iOS-26 "liquid glass" ask). Settings → Graphics
+##   → "Panel tint": a range slider driving a new `--glass-a` CSS alpha every glass panel reads, so one dial takes
+##   the whole UI from airy glass (0.40 floor, keeps text readable) to near-solid (0.98). Persists in save (`gt`,
+##   absent ⇒ classic 0.72); applyGlass() + clamp; Guide text updated. Smoke guard: live apply + floor clamp. (This
+##   was on the v1.7 backlog; done now as a self-contained fp-safe win.) Gates: fp MATCH, smoke 333/0.
+## ▶ v1.7 NEXT (still to build, source-only, bundle when done) — THE BIG ONE: Phase B "THE FORGE"
+##   (MATERIALS_AND_GEAR.md + FORGE_AND_DISCOVERY.md P2): 47 craftable materials + seeded veins (world rarity
+##   decides what you mine) + 3-tab inventory (Materials/Craftables/Gear) + gear on the rarity ladder + generation
+##   modifiers = FULL re-pin (deserves its own careful arc — generation-critical for Steam; the game already has a
+##   base economy: cargo/ITEMS/craftItem/mineWorld/depositsFor/ELEM_NAME to build ON). THEN P3 art (materials/gear/
+##   ship tiers) + P4 ARPG item windows + P5 audio + TEXT POLISH (rides a re-pin) + charter-training module + the
+##   ~16 DEFERRED FIXES. See the v1.7 pinned blocks below + the three v1.7 design docs.
 ## ═══ (v1.6.4 landing hotfix — now superseded as the live build; kept for history) ═══
 ## ★★★ v1.6.4 "THE LANDING FIX" DEPLOYED LIVE (2026-07-22, build 3a4b839; site + source pushed). CRITICAL hotfix
 ##   for Nick's "landing highlights but never triggers land" (stuck at step 6/20, Planetside open, empty ring).

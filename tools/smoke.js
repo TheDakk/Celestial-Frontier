@@ -523,6 +523,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     vs.dispatchEvent(new w.Event('input', { bubbles: true }));
     check('volume slider drives the SFX level live (sfxVol 0.4)', Math.abs(H.sfxVol - 0.4) < 1e-9, String(H.sfxVol));
     vs.dispatchEvent(new w.Event('change', { bubbles: true }));
+    // v1.7 PANEL-TINT (glass) slider — Settings → Graphics. Drives the --glass-a
+    // CSS alpha every glass panel reads; clamped to a readable floor.
+    const gsl = doc.getElementById('glassslider');
+    const glassA = () => parseFloat(doc.documentElement.style.getPropertyValue('--glass-a')) || 0.72;
+    check('settings: Panel-tint glass slider present at default 72', !!gsl && gsl.value === '72');
+    gsl.value = '90'; gsl.dispatchEvent(new w.Event('input', { bubbles: true }));
+    check('panel-tint slider drives --glass-a live (0.90)', Math.abs(glassA() - 0.90) < 1e-9, String(glassA()));
+    gsl.value = '10'; gsl.dispatchEvent(new w.Event('input', { bubbles: true }));   // below floor
+    check('panel-tint slider clamps to the readable floor (0.40)', Math.abs(glassA() - 0.40) < 1e-9, String(glassA()));
+    gsl.value = '72'; gsl.dispatchEvent(new w.Event('input', { bubbles: true }));
     // (persistence of vol/rm is asserted on the pre-seeded boots below — this
     //  window is file:// / opaque-origin, so its localStorage is off limits)
 
