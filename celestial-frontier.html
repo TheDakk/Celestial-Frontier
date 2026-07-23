@@ -8442,7 +8442,20 @@ function hdBeastBare(G,seed){
       g.fillStyle='#0a0c12';g.beginPath();g.ellipse(e2[0],e2[1],er*0.42,er*0.6,0,0,7);g.fill();      // vertical/round pupil
       g.fillStyle='#fff';g.beginPath();g.arc(e2[0]+er*0.26,e2[1]-er*0.28,er*0.16,0,7);g.fill(); }    // highlight
   }
-  cv._feetY=feetMax/S;
+  cv._feetY=feetMax/S;   /* authored anchor — the fallback */
+  /* GROUND-LEVELING (Nick: "fauna completely leveled in the ground"): the
+     hand-authored feetMax was slightly off for some body plans, so a few
+     creatures floated or sank. Measure the sprite's TRUE lowest opaque row and
+     seat THAT on the ground — universal across every rig. Guarded: a stub
+     canvas (or a blank read) leaves the authored anchor untouched, so headless
+     determinism is unaffected. */
+  try{
+    const _id=g.getImageData(0,0,S,S).data;
+    let _low=-1;
+    for(let _y=S-1; _y>=0 && _low<0; _y--){ const _row=_y*S*4;
+      for(let _x=0; _x<S; _x++){ if(_id[_row+_x*4+3]>24){ _low=_y; break; } } }
+    if(_low>0) cv._feetY=(_low+1)/S;
+  }catch(_){ }
   return cv;
 }
 function _hdPlantBare(seed, sp){
@@ -9352,12 +9365,32 @@ function _hdTitan(g, mode, seed, hz, W, H, night){
     g.beginPath(); g.moveTo(sx5-5,top+4); g.lineTo(sx5+(r()-0.5)*4,top-6-r()*5); g.lineTo(sx5+5,top+4);
     g.closePath(); g.fill();
   }
-  /* spray or dust where the body breaks the surface, both ends */
-  for(const ex of [x0+span*0.06, x1-span*0.06]){
-    const sg3=g.createRadialGradient(ex,hz+2,0,ex,hz+2,26);
-    sg3.addColorStop(0, mode==='sea'?'rgba(210,230,240,0.45)':'rgba(120,100,70,0.40)');
+  /* spray or dust where the body breaks the surface — both ends AND two
+     mid-body breaths (art audit: with contact only at the ends, the long
+     straight belly read as a floating slab against the bright haze band) */
+  for(const tq of [0.06, 0.38, 0.66, 0.94]){
+    const ex=x0+(x1-x0)*tq, er2=tq>0.2&&tq<0.8?16:26;
+    const sg3=g.createRadialGradient(ex,hz+2,0,ex,hz+2,er2);
+    sg3.addColorStop(0, mode==='sea'?'rgba(210,230,240,'+(tq>0.2&&tq<0.8?0.28:0.45)+')':'rgba(120,100,70,'+(tq>0.2&&tq<0.8?0.24:0.40)+')');
     sg3.addColorStop(1,'rgba(0,0,0,0)');
-    g.fillStyle=sg3; g.beginPath(); g.arc(ex,hz+2,26,0,TAU); g.fill();
+    g.fillStyle=sg3; g.beginPath(); g.arc(ex,hz+2,er2,0,TAU); g.fill();
+  }
+  /* the contact SKIRT — a low lap of spray/dust along the whole belly, so
+     the baseline is SEATED in the surface instead of ruled across it */
+  {const sk2=g.createLinearGradient(0,hz-3,0,hz+9);
+   const skc=mode==='sea'?'196,220,236':'134,116,86';
+   sk2.addColorStop(0,'rgba('+skc+',0)');sk2.addColorStop(0.5,'rgba('+skc+','+(night?0.10:0.20)+')');sk2.addColorStop(1,'rgba('+skc+',0)');
+   g.fillStyle=sk2; g.fillRect(x0-6,hz-3,(x1-x0)+12,12);}
+  /* at sea, the mass DARKENS the water beneath it — a soft mirrored shadow
+     (a body that big reflects; a body with no reflection floats) */
+  if(mode==='sea'){
+    const rf2=g.createLinearGradient(0,hz+4,0,hz+20);
+    rf2.addColorStop(0,'rgba(8,10,16,'+(night?0.30:0.22)+')');rf2.addColorStop(1,'rgba(8,10,16,0)');
+    g.fillStyle=rf2;
+    g.beginPath(); g.moveTo(x0+span*0.04,hz+4);
+    for(let s5=0;s5<=segs;s5++){ const t6=s5/segs;
+      g.lineTo(x0+(x1-x0)*t6, hz+4+hh*0.5*Math.sin(t6*Math.PI)); }
+    g.lineTo(x1-span*0.04,hz+4); g.closePath(); g.fill();
   }
   /* distance haze — the air between you and it */
   const hzW=g.createLinearGradient(0,hz-hh-14,0,hz+6);
@@ -9893,13 +9926,30 @@ function hdVista(opts){
       g.globalAlpha=0.12;g.fillStyle=fleck;g.fillRect(tx,ty,2+sc*7,1+sc*2);}
     g.globalAlpha=1;
   }
+  let _rivMouthX=null;   /* set when a river reaches the near field — the road keeps to the other bank */
   if(!desert&&!sea&&!ember&&opts.pal!=='ice'&&opts.pal!=='grey'&&opts.pal!=='haze'){
     /* the river no longer vanishes when a civilization stands here (V7) —
-       the card's Water row said rivers, so the road fords one. The course
-       itself is seeded now: mirrored and shifted per world (L1). */
+       the road keeps to the river's other bank now (art audit: "roads aren't
+       intersecting with rivers" — the old fixed course crossed the widening
+       near-field water with plain dirt, no ford, on many seeds). The course
+       itself is seeded: mirrored and shifted per world (L1). */
     /* the source sits in the VALLEY between hill bands, not on the ridge
        face — the tail must never read as running into the mountain (Nick) */
-    const rp=[[rX(W*0.60)+cmpShift,hz+46],[rX(W*0.52)+cmpShift,hz+98],[rX(W*0.62)+cmpShift,H*0.78],[rX(W*0.40)+cmpShift,H+20]];
+    /* the COURSE is SEEDED now (Nick: "a lot of the rivers are the same" — the
+       old control points were HARDCODED, so every world drew one S-curve, only
+       mirrored/shifted). A feature-local stream re-shapes the spring point, the
+       meander direction+depth, and the mouth per world: some run near-straight,
+       some ox-bow hard, some enter left and exit right. */
+    const rvQ=mulberry32((seed^0x81FE)>>>0);
+    const rvTop=0.40+rvQ()*0.34;                 /* where it springs on the ridge */
+    const rvMth=0.20+rvQ()*0.52;                 /* where it exits the near field */
+    const rvBow=(rvQ()-0.5)*0.40;                /* meander throw + direction */
+    const rvBow2=(rvQ()-0.5)*0.24;               /* second, gentler bend */
+    const rp=[[rX(W*rvTop)+cmpShift,hz+40+rvQ()*14],
+              [rX(W*(rvTop+rvBow))+cmpShift,hz+86+rvQ()*26],
+              [rX(W*(rvMth+(rvTop-rvMth)*0.42+rvBow2))+cmpShift,H*(0.70+rvQ()*0.14)],
+              [rX(W*rvMth)+cmpShift,H+20]];
+    if(water!=='none') _rivMouthX=rp[3][0];   /* the road reads this to keep to the other bank (audit: they used to cross in the near field) */
     const riverAt=t=>{const a=rp[0],b=rp[1],c=rp[2],d=rp[3];
       return[(1-t)*(1-t)*(1-t)*a[0]+3*(1-t)*(1-t)*t*b[0]+3*(1-t)*t*t*c[0]+t*t*t*d[0],
              (1-t)*(1-t)*(1-t)*a[1]+3*(1-t)*(1-t)*t*b[1]+3*(1-t)*t*t*c[1]+t*t*t*d[1]]};
@@ -10215,7 +10265,13 @@ function hdVista(opts){
   }
   if((civ==='iron'||civ==='town')&&!sea){
     const kx=(zx0+zx1)/2+20,ky=plat+2;
-    const road=[[W*0.30,H+10],[W*0.40,H*0.82],[W*0.36,H*0.70],[kx-18,ky+8]];
+    /* the road ENTERS from the bank the river is NOT on (art audit): the river
+       mouth is seeded, so the entry side is chosen against it — near-field
+       water and near-field road never share ground. The bends interpolate
+       toward the settlement so either side flows the same S into the distance. */
+    const _rdX=(_rivMouthX!=null && _rivMouthX<W*0.52)?W*0.68:W*0.30;
+    const _rdBow=(_rdX<W*0.5?1:-1)*W*0.055;
+    const road=[[_rdX,H+10],[_rdX+(kx-_rdX)*0.26+_rdBow,H*0.82],[_rdX+(kx-_rdX)*0.55-_rdBow*0.4,H*0.70],[kx-18,ky+8]];
     const roadAt=t=>{const a=road[0],b=road[1],c=road[2],d=road[3];
       return[(1-t)*(1-t)*(1-t)*a[0]+3*(1-t)*(1-t)*t*b[0]+3*(1-t)*t*t*c[0]+t*t*t*d[0],
              (1-t)*(1-t)*(1-t)*a[1]+3*(1-t)*(1-t)*t*b[1]+3*(1-t)*t*t*c[1]+t*t*t*d[1]]};
@@ -10324,6 +10380,15 @@ function hdVista(opts){
         g.fillStyle='#ff6a5a';g.beginPath();g.arc(T.x,base2-T.h-15,2.2,0,7);g.fill();}
       g.fillStyle='rgba(6,10,16,0.55)';g.fillRect(T.x-T.w/2,base2-1,T.w,2.4);
     });
+    /* the city SITS IN its own air (art audit — "skyline flush with the
+       mountains"): one low haze skirt across the block bases ties the whole
+       cluster into the ridge, the same seating law as buildings and the
+       river tail. Dusk breathes warm, day cool, night the glow of streets. */
+    {const _skb=ridgeY((zx0+zx1)/2);
+     const _skc=night?'96,124,164':(dusk?'214,168,118':'172,186,206');
+     const skT=g.createLinearGradient(0,_skb-12,0,_skb+14);
+     skT.addColorStop(0,'rgba('+_skc+',0)');skT.addColorStop(0.55,'rgba('+_skc+','+(night?0.13:0.17)+')');skT.addColorStop(1,'rgba('+_skc+',0)');
+     g.fillStyle=skT;g.fillRect(zx0-18,_skb-12,(zx1-zx0)+36,26);}
     for(let sp2=0;sp2<5;sp2++){
       const spx=(sp2<3?sp2*0.09+0.04:0.78+(sp2-3)*0.09)*W;
       _hdStampPlant(g,pcv,spx,ridgeY(spx)+3,0.20+_hdHash(sp2,seed,9)*0.10,night?0.55:0.42+frost*0.4,pd,pdc);
