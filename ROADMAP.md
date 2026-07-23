@@ -45,6 +45,21 @@
 ##   on + fills the 3 inventory tabs with the 47 materials. (6)
 ##   FULL-BESPOKE ART (§22) — 47 masters + gear family×tier + ship tiers, proof-sheet. (7) generation modifiers +
 ##   POWER-CURVE tuning (§24) via the 1000-tester panel. Uniques DEFERRED (§24). Design LOCKED in §22–24 + the mockup.
+## ★★★ TRAINING EMPTY-RING FIX (2026-07-23, Nick's 2 iPhone screenshots) = DONE [this commit]. ROOT CAUSE: `_tutSpot`
+##   only bounds-checked the target VERTICALLY, so a spotlight target that was OFF-SCREEN (a right-rail button behind
+##   the open character sheet — screenshot: forge step 18) or COVERED by a blocking overlay (a duel result over the
+##   HP bar — screenshot: hazard step 13) still drew an empty blue pill over nothing you could reach. FIX: full-
+##   viewport bounds (added rect.right>0 && rect.left<W) + a centre HIT-TEST (document.elementFromPoint — spotlight
+##   only if the topmost element at the target's centre IS the target or in its family; else draw nothing). fp MATCH,
+##   smoke 344/0 (jsdom already had 0-rects so training LOGIC unaffected). ⚠ STILL TO DO NEXT SESSION — the deeper
+##   per-step FLOW/STUCK bugs Nick flagged (need real-device repro, a full 20-step audit): (a) the "Compendium not
+##   loading, sitting ON TOP of the open inventory, can't click, stuck" case — a panel-manager one-panel-rule miss
+##   during training (opening a panel over the character sheet without closing it); (b) forge step 18 — the char
+##   sheet is open from step 17 and the Shipyard is behind it, so the player must close the sheet first (the spot
+##   #cargobtn is behind it → now correctly hidden, but the FLOW to reach the Shipyard needs checking); (c) the duel
+##   RESULT overlapping the hazard step (dismiss it when the hazard step enters?). Nick: "go through the WHOLE
+##   training module" — CF16-001/009 collision-aware layout + readiness-based mounting. He noted HP-bar/nameplate
+##   steps already read better (the dodge/darken landed). Audit every step for empty-ring + overlap + stuck.
 ## ★★★ v1.7 CADENCE DECISION (Nick, 2026-07-22): HOLD & BUNDLE — do NOT deploy phases individually. Keep building
 ##   "The Forge" in SOURCE ONLY and ship the whole arc as ONE big v1.7 release when substantially complete. No
 ##   version bump / no deploy until then. Source can sit ahead of the live site (currently v1.6.4).

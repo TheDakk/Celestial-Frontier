@@ -19209,7 +19209,19 @@ function _tutSpot(){
   let r=null;
   if(el){
     const rect=el.getBoundingClientRect();
-    if(rect.width>2&&rect.height>2&&rect.bottom>0&&rect.top<H) r=rect;
+    /* CF16-002/010 (Nick's screenshots — "the window doesn't appear, just the
+       blue highlight"): only spotlight a target that is actually ON-SCREEN and
+       NOT COVERED. The old check tested vertical bounds only, so an off-screen
+       rail button (behind the open character sheet) drew an empty pill on the
+       right edge, and a target sitting UNDER a blocking overlay (a duel result,
+       the inventory) got a ring you couldn't reach. Now: full-viewport bounds +
+       a centre hit-test — if the topmost element at the target's centre isn't
+       the target (or in its family), the target is hidden, so we draw nothing. */
+    if(rect.width>2&&rect.height>2&&rect.bottom>0&&rect.top<H&&rect.right>0&&rect.left<W){
+      const cx=Math.min(W-1,Math.max(1,(rect.left+rect.right)/2)), cy=Math.min(H-1,Math.max(1,(rect.top+rect.bottom)/2));
+      let hit=null; try{ hit=document.elementFromPoint(cx,cy); }catch(_){ }
+      if(!hit || hit===el || el.contains(hit) || hit.contains(el)) r=rect;
+    }
   }
   /* the card must never cover the very thing it's pointing at: when the
      step's target sits in the top half and intersects the card, the card
