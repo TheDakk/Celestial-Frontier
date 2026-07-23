@@ -368,6 +368,28 @@ equivalent borders, `[[rarity_universal]]` §3.11), readable without color (a11y
 first, so the less-critical rows (quality, requirements, flavor) fold via the card grammar on phones. Build on
 the existing `#itemcard` + affix model, extended. **P4 of the v1.7 arc; rides on P3 art + the done rarity ladder.**
 
+## 24. Power curve & balance (Nick, 2026-07-23)
+
+The player must **feel** a steady climb in power as they progress — the survival→discovery loop (§7) is the
+spine: better materials → better gear → survive harsher worlds → richer materials → stronger gear. Each new
+tier, quality step, affix, and upgrade should read as a **real, satisfying step up**, and the ARPG windows
+should make that gain legible (the compare-to-equipped deltas, §23).
+
+**But nothing crazy imbalanced.** Power comes from the SEPARATE dimensions (§2) — level / quality / affixes /
+upgrade — **not from rarity alone** (rarity ≠ power). A high-level Common can rival an early Legendary (§2,
+§12), which deliberately flattens runaway spikes. Guardrails: affix values stay in sane bands (§13 roll
+ranges), finished-gear rarity is capped by its defining anchor + recipe/station/tech caps (§12), and no single
+item or material should trivialize content. **Tune with the synthetic panel** (the 1000-tester harness) —
+watch specifically for power spikes, one-item trivialization, and dead tiers, and adjust ranges/caps rather
+than removing the feel of progression. Target a smooth curve where every ~tier feels ~meaningfully stronger
+without a cliff.
+
+**Uniques — deferred (Nick, 2026-07-23, undecided timing).** Unique items (§16) — authored one-of-ones with a
+rule-bending twist and the white-gold "One of a Kind" frame — are a strong **chase-power** layer, but Nick
+wants them **LATER on the roadmap, not in the first Forge build**: they must be introduced carefully so they
+don't break the curve (each Unique is hand-tuned, not a procedural roll). Ship the ladder + materials + gear +
+windows first; layer Uniques in once the curve is proven stable. Tracked as a v1.7-later / post-Forge item.
+
 ---
 
 *Design basis: Nick's reviewed "Materials, Ingredients, Crafting & Gear" spec (uploaded 2026-07-22), plus the
