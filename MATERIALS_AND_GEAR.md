@@ -340,10 +340,13 @@ Common & Uncommon piece and banks the materials, behind its OWN toggle **Setting
 1. **Rarity header band** + item name (+ a "One of a Kind" subtitle when Unique-designated).
 2. **Item type + item level** line (and slot).
 3. divider → **implicit / intrinsic** mods.
-4. divider → **explicit affix lines**, each showing its rolled value **and its possible range** (PoE-style
-   "+18% (12–20%)"); the primary/defining affix is highlighted; drawback affixes read in a warning tone.
-5. **Quality** (foldable, Crude→Standard→Refined→Masterwork→Perfect — §2) and **upgrade level**.
-6. **Sockets / links / upgrade** rows where applicable.
+4. divider → the **AFFIXES group**, carrying the **expand/close chevron next to its "Affixes" label** (the
+   game's existing fold grammar — the survey/specimen cards; Nick, 2026-07-23). Collapsed → a one-line digest
+   ("4 mods · 1 drawback"); expanded → the **explicit affix lines**, each showing its rolled value **and its
+   possible range** (PoE-style "+18% (12–20%)"); the primary/defining affix is highlighted; drawback affixes
+   read in a warning tone.
+5. **Quality** (Crude→Standard→Refined→Masterwork→Perfect — §2) and **upgrade level** — kept **OPEN**, no fold.
+6. **Sockets / links / upgrade** rows — kept **OPEN**. (Only the affix list folds; nothing else does.)
 7. **Requirements** (station tier, tech) if any.
 8. italic **flavor text** at the bottom.
 
