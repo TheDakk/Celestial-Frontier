@@ -33,13 +33,16 @@
 ##   (4) 3-TAB INVENTORY — the hold splits into Materials / Craftables / Gear tabs (cargoTab; §21); item tiles moved
 ##       into the Gear tab (Salvage All lives on its Equipment header), smoke navigates the Gear tab. smoke 343/0. [this commit]
 ##   ═══ the ENTIRE fp-safe UI LAYER of The Forge is now done (settings, salvage, ARPG item window, 3-tab inventory). ═══
+##   (5b) GEAR-ON-THE-LADDER = DONE [this commit]: `_itemRarity(it)` maps craft tier+cat → 10-tier ladder (authored
+##       `rar` overrides; fp-safe — items aren't seeded); the item window's FRAME + a rarity CHIP now wear the item's
+##       true rarity (Common..Mythic), and inventory tiles tint by rarity. Icon art stays its own hue (rarity = frame
+##       only, per the ladder spec). smoke 344/0, fp MATCH. NOTE: v1 tier→rarity map; the full §12 defining-anchor
+##       model refines it in the economy.
 ##   ▶ NEXT — THE BIG GENERATION PIECE (needs its own careful, dedicated build; do NOT rush — determinism-critical):
-##   (5) MATERIALS ECONOMY — the 47 materials + rarity resolution + seeded veins + recipes + GEAR-ON-LADDER (turns
-##   the item window's placeholder Item-Lv chip + hue into TRUE 10-tier rarity + real multi-affix/quality/sockets, and
-##   fills the 3 inventory tabs) = the FULL RE-PIN. Suggested decomposition: (5a) 47-material DATA model (roster +
-##   rarity tier + color + family + job) — fp-safe if not yet vein-placed; (5b) gear-on-ladder (author each ITEM's
-##   rarity tier → item window shows true ladder frame/name) — fp-safe (items are authored, not seeded); (5c) wire
-##   materials into depositsFor vein generation = THE RE-PIN; (5d) recipes/crafting for the new materials. (6)
+##   (5a) 47-material DATA model (roster + rarity tier + color + family + job) — fp-safe if not yet vein-placed;
+##   (5c) wire materials into depositsFor vein generation = THE RE-PIN; (5d) recipes/crafting for the new materials;
+##   material rarity RESOLUTION (§5) + world-to-resource generation (§6). This turns real multi-affix/quality/sockets
+##   on + fills the 3 inventory tabs with the 47 materials. (6)
 ##   FULL-BESPOKE ART (§22) — 47 masters + gear family×tier + ship tiers, proof-sheet. (7) generation modifiers +
 ##   POWER-CURVE tuning (§24) via the 1000-tester panel. Uniques DEFERRED (§24). Design LOCKED in §22–24 + the mockup.
 ## ★★★ v1.7 CADENCE DECISION (Nick, 2026-07-22): HOLD & BUNDLE — do NOT deploy phases individually. Keep building
