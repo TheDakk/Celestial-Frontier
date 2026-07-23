@@ -17240,6 +17240,91 @@ const EC={Au:'#ffd96a',Ag:'#e2e6f0',Cu:'#e8956a',Pt:'#dfe8fa',Ir:'#cdb8ec',Fe:'#
 const ELEM_ICES={H2O:1,CH4:1,NH3:1,CO2:1,He3:1};
 const ELEM_GAS={H:1,He:1,N:1,O:1,Cl:1,S:1,P:1,C:1};
 const ELEM_EXO={Nd:1,Pm:1,Vg:1,Pz:1};
+/* ----------------------------------------------------------------
+   @section materials-registry [app] — the 47-material metadata model
+   (v1.7 "The Forge"; MATERIALS_AND_GEAR.md §3/§5/§17). The SOURCE OF
+   TRUTH for each material's FAMILY, base RARITY TIER, functional CLASS
+   and JOB. This is the fp-SAFE data foundation (build step 5a): it does
+   NOT touch depositsFor / DEPOSIT_PROFILES / RARE_VEIN, so no world's
+   generation changes and the determinism fingerprint is untouched. The
+   7 cosmic materials are DEFINED here but are NOT yet vein-placed — no
+   world can generate them yet; wiring them into deposits (the re-pin,
+   step 5c) is a separate authorized build. Names + colors for the 40
+   existing materials stay sourced from ELEM_NAME / EC (no duplication);
+   the 7 cosmics carry their own name + col. Base tiers follow the §5
+   semantic caps (0–1 ordinary · 2–3 scarce/specialized · 4 unusual · 5
+   exceptional/defining-anchor · 7 stellar · 8 foundational · 9 reality-
+   breaking). Instance rarity is resolved elsewhere (§5) — this is the
+   substance's BASE tier, one input to that resolver, not a copy. */
+const MAT_FAMILY={
+  base:    {label:'Base & structural', order:0},
+  volatile:{label:'Volatiles & gases', order:1},
+  precious:{label:'Precious & tech',   order:2},
+  exotic:  {label:'Exotic',            order:3},
+  cosmic:  {label:'Cosmic',            order:4},
+};
+const MATERIALS={
+  /* base & structural (rock / industrial) — 15 */
+  Fe:{fam:'base',cls:'raw',tier:0,job:'structural spine'},
+  Si:{fam:'base',cls:'raw',tier:0,job:'structure / circuitry substrate'},
+  Mg:{fam:'base',cls:'raw',tier:0,job:'lightweight alloy'},
+  Al:{fam:'base',cls:'raw',tier:0,job:'lightweight alloy'},
+  Ca:{fam:'base',cls:'raw',tier:0,job:'flux / construction'},
+  Na:{fam:'base',cls:'raw',tier:0,job:'reagent / coolant salt'},
+  Ni:{fam:'base',cls:'raw',tier:0,job:'alloy hardener'},
+  Ti:{fam:'base',cls:'raw',tier:1,job:'high-strength structural spine'},
+  Cu:{fam:'base',cls:'raw',tier:0,job:'conductor'},
+  Zn:{fam:'base',cls:'raw',tier:0,job:'plating / anti-corrosion'},
+  Sn:{fam:'base',cls:'raw',tier:0,job:'solder / alloy'},
+  Mn:{fam:'base',cls:'raw',tier:0,job:'steel hardener'},
+  Cr:{fam:'base',cls:'raw',tier:1,job:'corrosion-proof plating'},
+  Pb:{fam:'base',cls:'raw',tier:0,job:'radiation shielding / ballast'},
+  W: {fam:'base',cls:'raw',tier:1,job:'refractory structural spine'},
+  /* volatiles, gases & ices — 13 */
+  H:  {fam:'volatile',cls:'energy',tier:0,job:'fuel'},
+  He: {fam:'volatile',cls:'raw',   tier:0,job:'coolant / lift'},
+  C:  {fam:'volatile',cls:'raw',   tier:0,job:'composite / fiber'},
+  N:  {fam:'volatile',cls:'raw',   tier:0,job:'life support / propellant'},
+  O:  {fam:'volatile',cls:'raw',   tier:0,job:'life support / oxidizer'},
+  S:  {fam:'volatile',cls:'raw',   tier:0,job:'chem / combustion'},
+  P:  {fam:'volatile',cls:'raw',   tier:0,job:'reagent / incendiary'},
+  Cl: {fam:'volatile',cls:'raw',   tier:0,job:'reagent / etchant'},
+  H2O:{fam:'volatile',cls:'raw',   tier:0,job:'life support / coolant'},
+  CH4:{fam:'volatile',cls:'energy',tier:1,job:'fuel / cooling'},
+  NH3:{fam:'volatile',cls:'raw',   tier:1,job:'coolant / reagent'},
+  CO2:{fam:'volatile',cls:'raw',   tier:0,job:'coolant / life support'},
+  He3:{fam:'volatile',cls:'energy',tier:1,job:'fusion fuel'},
+  /* precious, radioactive & tech — 10 */
+  Ag:{fam:'precious',cls:'raw',      tier:2,job:'precision conductor'},
+  Au:{fam:'precious',cls:'raw',      tier:2,job:'precision conductor / trade'},
+  Pt:{fam:'precious',cls:'catalyst', tier:2,job:'reaction catalyst'},
+  Ir:{fam:'precious',cls:'raw',      tier:3,job:'ultra-hard component'},
+  U: {fam:'precious',cls:'energy',   tier:3,job:'reactor fuel'},
+  Th:{fam:'precious',cls:'energy',   tier:3,job:'reactor fuel'},
+  Li:{fam:'precious',cls:'energy',   tier:2,job:'energy cell / medical'},
+  Co:{fam:'precious',cls:'raw',      tier:2,job:'energy & medical alloy'},
+  Nd:{fam:'precious',cls:'component',tier:2,job:'sensors / magnetics'},
+  Pm:{fam:'precious',cls:'component',tier:5,job:'defining anchor — luminous power core'},
+  /* exotic — 2 */
+  Vg:{fam:'exotic',cls:'catalyst', tier:5,job:'defining anchor — Void affinity'},
+  Pz:{fam:'exotic',cls:'component',tier:5,job:'defining anchor — Prism affinity'},
+  /* cosmic — 7 — DEFINED, not yet vein-placed (no generation until the re-pin) */
+  Pls:{fam:'cosmic',cls:'energy',   tier:7,name:'Stellar Plasma', col:'#ffe27a',job:'stellar power / high-energy weapons'},
+  Crn:{fam:'cosmic',cls:'component',tier:7,name:'Coronium',       col:'#ff9d4a',job:'containment / shields (stabilized condensate)'},
+  Pro:{fam:'cosmic',cls:'raw',      tier:8,name:'Protomatter',    col:'#c8e06a',job:'foundational construction / genesis'},
+  Pri:{fam:'cosmic',cls:'raw',      tier:8,name:'Primordial Ice', col:'#bfeaff',job:'ancient restoration / preservation'},
+  Voe:{fam:'cosmic',cls:'catalyst', tier:9,name:'Void Essence',   col:'#8a5cff',job:'phase / spatial reality-crafting'},
+  Chr:{fam:'cosmic',cls:'component',tier:9,name:'Chronal Shard',  col:'#4fe0d0',job:'temporal crafting'},
+  Dkm:{fam:'cosmic',cls:'component',tier:9,name:'Dark Matter',    col:'#6a4a8a',job:'reality-breaking substrate'},
+};
+/* accessors — name/color fall back to the existing ELEM_NAME/EC for the 40,
+   so those stay single-sourced; the cosmics carry their own */
+function matName(k){ return (MATERIALS[k]&&MATERIALS[k].name) || ELEM_NAME[k] || k; }
+function matInfo(k){ return MATERIALS[k]||null; }
+function matBaseTier(k){ return MATERIALS[k]?MATERIALS[k].tier:0; }
+function matFamily(k){ return MATERIALS[k]?MATERIALS[k].fam:null; }
+function matColor(k){ return (MATERIALS[k]&&MATERIALS[k].col) || EC[k] || '#cfd6e6'; }
+function matJob(k){ return MATERIALS[k]?MATERIALS[k].job:''; }
 const _elemIcons=new Map();
 /* HD material icons (graphics overhaul, Nick: the inventory is the bag —
    Minecraft/Satisfactory grade): painterly 96px canvas renders — faceted

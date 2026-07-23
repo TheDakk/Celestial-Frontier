@@ -1,8 +1,10 @@
 # Celestial Frontier — Materials, Ingredients, Crafting & Gear (v1.7 "The Forge")
 
 **Status:** CANONICAL design of record for v1.7 "The Forge". FULL adoption — no lean MVP.
-**Matches code as of:** design only, 2026-07-22. **Build phase:** the vocabulary rides Phase A; the
-generation + crafting economy is Phase B (post-v1.6, full re-pin).
+**Matches code as of:** 2026-07-23 — the §3 roster now exists in code as the **`MATERIALS` registry**
+(build step 5a, fp-safe): all 47 substances with family / base-rarity-tier / class / job (see §3 note). The
+rest is still design. **Build phase:** the vocabulary rides Phase A; the generation + crafting economy is
+Phase B (post-v1.6, full re-pin — NOT yet wired, so the 7 cosmics are defined but not mineable).
 **Related:** `RARITY_UNIVERSAL.md`, `FORGE_AND_DISCOVERY.md`, `ECONOMY_LOOT_CRAFTING.md`.
 
 ## 0. Locked decisions (Nick, 2026-07-22)
@@ -67,6 +69,16 @@ Neodymium, Promethium.
 
 Classify each cosmic resource as `raw_material` / `energy_medium` / `catalyst` / `stable_component` — not
 every top-tier resource behaves like mineable ore.
+
+> **In code (2026-07-23, step 5a):** the `MATERIALS` registry (main.js, `@section materials-registry`) is the
+> source of truth — 47 entries keyed by symbol, each `{fam, cls, tier, job}` (+ `name`/`col` for the cosmics).
+> Families: `base` (15) · `volatile` (13) · `precious` (10) · `exotic` (2) · `cosmic` (7). Classes: `raw` /
+> `energy` / `catalyst` / `component`. Base tiers follow the §5 caps (industrial 0–1 · precious/tech 2–3 ·
+> defining anchors Pm/Vg/Pz = 5 · Stellar Plasma/Coronium 7 · Protomatter/Primordial Ice 8 · Void Essence/
+> Chronal Shard/Dark Matter 9). Cosmic symbols: `Pls Crn Pro Pri Voe Chr Dkm`. **fp-safe:** the cosmics are NOT
+> in `DEPOSIT_PROFILES`/`RARE_VEIN`, so nothing generates them yet — vein-wiring (5c) is the deferred re-pin.
+> Names/colors of the 40 legacy materials stay single-sourced from `ELEM_NAME`/`EC`. Accessors: `matName`,
+> `matBaseTier`, `matFamily`, `matColor`, `matJob`, `matInfo`. Guarded by 9 smoke sentinels.
 
 ## 4. Material identity model — substance vs instance
 
