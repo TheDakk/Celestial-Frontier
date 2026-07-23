@@ -1146,6 +1146,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     skH.items.set('visor', 1);
     click2(sk.doc.getElementById('rank'), sk.w);   // close sheet
     click2(sk.doc.getElementById('rank'), sk.w);   // reopen -> re-render the hold with the new item
+    // v1.7 Forge: the hold is 3 tabs (Materials/Craftables/Gear) — the visor is gear
+    const gearTab = [...sk.doc.querySelectorAll('#cargo [data-ivt]')].find((t) => t.dataset.ivt === 'gear');
+    check('v1.7 inventory: the hold splits into Materials / Craftables / Gear tabs',
+      sk.doc.querySelectorAll('#cargo [data-ivt]').length === 3 && !!gearTab);
+    click2(gearTab, sk.w);
     const vtile = sk.doc.querySelector('#cargo [data-item="visor"]');
     check('v1.6 item card: crafted items are tappable tiles in the hold', !!vtile);
     click2(vtile, sk.w);
