@@ -326,15 +326,22 @@ BUTTONS on the card, never gestures — so it plays identically on desktop and p
 make equip a "click", it breaks on mobile). **NO corner-bracket / right-angle decorations on the frame**
 (Nick's call) — the rarity-tinted border + header glow carry it.
 
-**Actions on the card:** a compact **Equip** button (primary, rarity-colored) + a quiet **Salvage** button
-(danger-tinted). No oversized CTAs.
+**Actions on the card:** **Equip** and **Salvage** as two **even-sized buttons, centered at the bottom** of
+the card (Nick, 2026-07-23) — Equip primary/rarity-colored, Salvage a quiet danger tint. No oversized CTAs.
 
 **Salvage guard (Nick, 2026-07-23, LOCKED):** salvage is destructive (returns crafting materials, can't be
-undone), so it shows a **confirmation prompt** naming the item + what it returns, with a "Don't ask again"
-checkbox that mirrors the setting. The prompt is **toggleable in Settings › Gameplay → "Confirm before
-salvaging"** (default ON). A **Salvage All** button on the CHARACTER SCREEN bulk-breaks every unequipped
-Common & Uncommon piece and banks the materials, behind its OWN toggle **Settings › Gameplay → "Confirm
-'Salvage All'"** (default ON). Both toggles persist in the save.
+undone), so it shows a **confirmation prompt** naming the item + what it returns, with a **"Turn off
+confirmation"** checkbox that flips the setting. **ONE toggle governs everything — Settings › Gameplay →
+"Confirm before salvaging"** (default ON); it guards a single salvage AND the **Salvage All** button (on the
+CHARACTER SCREEN, which bulk-breaks every unequipped Common & Uncommon piece and banks the materials). NO
+separate Salvage-All toggle. The setting persists in the save.
+
+**Fold memory — unified across ALL cards (Nick, 2026-07-23, LOCKED):** a group's expand/collapse state is
+remembered **globally per group-type, not per-card** — expand the **Affixes** group once (it defaults
+EXPANDED) and every item card opens expanded thereafter; the player never re-clicks. The SAME rule applies to
+the **creature** cards (field-notes fold) and **world/survey** cards (environment/census folds): one shared
+remembered-fold preference per group-type across worlds, creatures, and items. Extend the existing
+`cardExpand`-style bitmask so all three card families read/write the same persisted fold state.
 
 **Anatomy (top → bottom), the PoE/D2 tooltip structure:**
 1. **Rarity header band** + item name (+ a "One of a Kind" subtitle when Unique-designated).
