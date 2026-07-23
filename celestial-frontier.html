@@ -19120,7 +19120,13 @@ const TUT_STEPS=[
   text:()=>'A new creature, born of two! Let’s see it fight. Duels run round by round on the five stats and abilities — and the same matchup plays out identically on every device. Press the button when ready.',
   when:(t)=>t==='duel-done'},
  {id:'hazard', spot:'#hpbar', btn:'Ouch — Got It',
-  enter:()=>{ clearTimeout(_tutHazT); _tutHazT=setTimeout(()=>{ _tutHazT=0; try{ const st=TUT_STEPS[_tutStep]; /* CF-003: only bite if STILL on the hazard step during training — never after cleanup/skip */ if(_tutHook && st && st.id==='hazard' && hp>20) damageExplorer(Math.min(15, hp-5), 'Your training rival got a parting nip in.'); }catch(_){} }, 400); },
+  /* the duel RESULT modal is in TUT_ALWAYS, so it lingered full-screen OVER the
+     HP bar this step points at (Nick's screenshot: duel result covers the hazard
+     lesson). The fight already played out round by round — dismiss it as the
+     hazard lesson takes the stage, so the recruit sees the HP bar the parting
+     nip is about to drop. */
+  enter:()=>{ try{ duelBox.style.display='none'; setArenaBackdrop(null); }catch(_){ }
+    clearTimeout(_tutHazT); _tutHazT=setTimeout(()=>{ _tutHazT=0; try{ const st=TUT_STEPS[_tutStep]; /* CF-003: only bite if STILL on the hazard step during training — never after cleanup/skip */ if(_tutHook && st && st.id==='hazard' && hp>20) damageExplorer(Math.min(15, hp-5), 'Your training rival got a parting nip in.'); }catch(_){} }, 400); },
   text:()=>'…and your rival got a parting nip in. That bar up top is your HP. Hostile bioscans, toxic meals and fighting your own conquests can all wound you. At 0 HP the expedition ends.'},
  {id:'heal', spot:'#hpheart', allow:['#hpwrap'], enter:()=>{ _tutRig={heal:0.95}; },
   text:()=>'Heal up. Tap the <b>❤ heart</b> by your HP bar and eat a flora. Medicine restores HP and permanently grows one of your five battle stats — the deadliest medicine heals hardest.',
@@ -19136,6 +19142,11 @@ const TUT_STEPS=[
   when:(t,d)=>t==='stats-open'&&!!d.open},
  {id:'forge', spot:'#cargobtn', allow:['#cargobtn','#yardcard'],
   enter:()=>{ try{
+    /* the sheet step left the character screen open (the sweep graces it — the
+       prior step's allow named its #rank button), and it covers the Shipyard rail
+       button THIS step points at → empty ring, no visible path to the yard (Nick's
+       forge-step lockup). Close it so the rail is reachable. */
+    if(typeof closeSheet==='function' && sheetOpen) closeSheet();
     cargo.set('Fe',(cargo.get('Fe')||0)+6); cargo.set('Al',(cargo.get('Al')||0)+4); cargo.set('Si',(cargo.get('Si')||0)+4);
     showCargoBtn();
   }catch(_){ } },

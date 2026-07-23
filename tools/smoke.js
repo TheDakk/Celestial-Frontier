@@ -316,6 +316,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       && doc.getElementById('duelskip').style.display !== 'none', 8000, 'duel skip button'));
     click(doc.getElementById('duelskip'));
     check('training duel resolves and completes step 11', await until(() => tutAt(13), 25000, 'duel done'));
+    // the duel RESULT modal is dismissed as the hazard lesson enters, so it no
+    // longer lingers over the HP bar the step points at (Nick's screenshot)
+    check('hazard step dismisses the lingering duel result', !visible(doc.getElementById('duelbox')));
     check('hazard nip lands (HP 85/100)', await until(() => doc.getElementById('hptext').textContent === '85/100 HP', 3000, 'hp 85'));
     tutAct();                                                       // hazard -> heal
     check('step 13: heal', tutAt(14));
@@ -345,10 +348,15 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.getElementById('rank'));
     check('character sheet completes step 16', await until(() => tutAt(18), 3000, 'step17'));
     // v1.5.1 THE FORGE LESSON: loaned ore appears, the recruit crafts an
-    // Iron Plate through the real Fabricator (sheet stays open from the
-    // previous lesson — its cargo button is the panel's own token)
+    // Iron Plate through the real Fabricator. The forge step CLOSES the
+    // character sheet on enter (it lingered over the Shipyard rail button the
+    // step points at — Nick's forge-step lockup); the rail is now reachable.
     check('forge: the loaned ore opens the hold (cargo button + iron)',
       doc.getElementById('cargobtn').style.display === 'flex' && (H.cargo.get('Fe') || 0) >= 4);
+    // the forge step closes the character sheet on enter so the Shipyard rail
+    // button it points at is no longer buried under the sheet (Nick's lockup)
+    check('forge: the character sheet is closed so the rail is reachable',
+      !visible(doc.getElementById('sheet')));
     // v1.5.2b: the rail button IS the Shipyard
     click(doc.getElementById('cargobtn'));
     check('forge: the 🛠 Shipyard button opens the yard', await until(() =>
