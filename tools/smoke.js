@@ -1226,6 +1226,15 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('stellar §8: two stellar cosmic gear recipes exist (Celestial-anchored, from Pls/Crn)',
       ['cg-plasma', 'cg-corona'].every((id) => { const it = skH.ITEM_BY.get(id); return it && it.cat === 'gear' && skH._itemRarity(it) === 7 && skH.displayRarity(7).name === 'Celestial'; })
       && skH._matUses('Pls').uses.includes('Plasma Gauntlets') && skH._matUses('Crn').uses.includes('Coronal Aegis'));
+    // v1.7: the cosmic economy earns achievements (§17 Codex-completion role) — the
+    // skim above set stats.skims/cosmics, and cg-proto was forged earlier this block
+    if (skH.checkAch && skH.unlocked) {
+      skH.checkAch();
+      check('cosmics: skimming + forging unlock the cosmic achievements',
+        skH.unlocked.has('skimmer') && skH.unlocked.has('cosmicfind') && skH.unlocked.has('cosmicgear'));
+      check('cosmics: the three cosmic achievements are defined in ACH',
+        ['cosmicfind', 'skimmer', 'cosmicgear'].every((id) => skH.ACH.some((a) => a.id === id)));
+    }
     // v1.5.2c THE ELEMENTAL TITANS: signatures are won by felling a named
     // titan, region-gated (basics near, Void/Prism far), seeded/shared
     skH.st.gal = { seed: 999, x: 90, y: -60, size: 78 };   // home galaxy (region 0)

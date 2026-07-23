@@ -13516,6 +13516,10 @@ const ACH=[
   {id:'ascended',  cat:'Engineering', ic:'⬆', name:'The Last Chapter', d:'Complete all three Chapters', t:()=>(typeof ascCh!=='undefined' && ascCh>=ASC_CHAPTERS.length && itemCount('igdrive')>=1)},
   {id:'lastvein',  cat:'Engineering', ic:'⛏', name:'To the Last Vein', d:'Mine a world completely dry', t:()=>(stats.minedout||0)>=1},
   {id:'richstrike',cat:'Engineering', ic:'💎', name:'Prospector&#8217;s Luck', d:'Mine 250 loads of ore', t:()=>(stats.mines||0)>=250},
+  /* v1.7 THE FORGE — the cosmic economy (all 7 cosmics; §17 Codex-completion role) */
+  {id:'cosmicfind',cat:'Engineering', ic:'✦', name:'Touched the Cosmos', d:'Recover a cosmic material from the deepest worlds or a star', t:()=>(stats.cosmics||0)>=1},
+  {id:'skimmer',   cat:'Engineering', ic:'☀', name:'Sun-Skimmer',       d:'Skim a star&#8217;s corona for its stellar cosmic', t:()=>(stats.skims||0)>=1},
+  {id:'cosmicgear',cat:'Engineering', ic:'🌟', name:'Forged from Starstuff', d:'Forge a piece of cosmic gear', t:()=>['cg-proto','cg-genesis','cg-void','cg-chron','cg-dark','cg-plasma','cg-corona'].some(id=>itemCount(id)>=1)},
   /* — Cosmic Events — */
   {id:'daily',   cat:'Cosmic Events', ic:'🗓', name:'Pilgrim',        d:'Follow the Traveler\u2019s Beacon', t:null},
   {id:'anomaly5',cat:'Cosmic Events', ic:'🕯', name:'Devout',         d:'Follow 5 different Beacons', t:()=>stats.anomalies>=5},
@@ -17123,7 +17127,7 @@ function skimStar(seed){
   const q=1+((r()*2)|0);   /* 1–2 per skim — the scarcest materials there are */
   cargo.set(sym, (cargo.get(sym)||0)+q);
   skimX.set(seed, n0+1);
-  stats.skims=(stats.skims||0)+1;
+  stats.skims=(stats.skims||0)+1; stats.cosmics=(stats.cosmics||0)+1;
   const left=R-(n0+1);
   playRaritySting(4); fxBurst(FX_GOLD, 22);
   toast('☀ Stellar Skim — '+matName(sym), q+'× captured'+(left>0?' · '+left+' samples left within reach.':' · that was the last within reach.'));
@@ -17197,7 +17201,7 @@ function mineWorld(d, press){
        (short-circuit) so every tier<8 world consumes ZERO extra rolls and mines
        byte-identically — only the rarest worlds add this pull. A cosmic find reads
        as a rich strike; it is the scarcest pocket there is. */
-    if(cv && r() < 0.04){ got.set(cv, (got.get(cv)||0)+Math.max(1, Math.round(mult))); rare=cv; }
+    if(cv && r() < 0.04){ got.set(cv, (got.get(cv)||0)+Math.max(1, Math.round(mult))); rare=cv; stats.cosmics=(stats.cosmics||0)+1; }
   }
   mineX.set(ps, n0+loads);
   for(const [sym,q] of got) cargo.set(sym, (cargo.get(sym)||0)+q);
