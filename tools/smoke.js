@@ -119,6 +119,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       // the cosmic symbols never collide with a legacy symbol
       check('materials: cosmic symbols are all distinct from the legacy 40',
         cosmic.every((k) => !H.ELEM_NAME[k]));
+      // the material detail card reads family + role from the registry (fp-safe
+      // UI surfacing; rarity is deliberately NOT shown yet). Renders even at 0 held.
+      if (H.openItemCard && H.closeItemCard) {
+        H.openItemCard({ mat: 'Fe' });
+        const mc = doc.getElementById('itemcard');
+        check('materials: the detail card surfaces family + role (Iron)',
+          visible(mc) && /Base & structural/.test(mc.textContent) && /Role/.test(mc.textContent) && /structural spine/.test(mc.textContent));
+        H.closeItemCard();
+        check('materials: closing the material card leaves it hidden', !visible(mc));
+      }
     } else {
       check('materials: Phase B 5a hooks present (MATERIALS/MAT_FAMILY/matName/matBaseTier)', false);
     }
