@@ -20,6 +20,22 @@
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
 ## ▶▶▶ SESSION HANDOFF (as of 2026-07-23 — v1.6.4 LIVE; v1.7 ARC IN PROGRESS, source-only) ◀◀◀
+## ★★★ v1.7 PHASE B (step 5a) — 47-MATERIAL DATA MODEL = DONE (2026-07-23, remote-control session, commit 66e7ef9;
+##   fp-SAFE, source-only). Built the `MATERIALS` registry (main.js @section materials-registry) — the SOURCE OF
+##   TRUTH for each material's {fam, cls, tier, job} (+ name/col for cosmics). 47 substances: base 15 · volatile 13 ·
+##   precious 10 · exotic 2 · COSMIC 7 (Stellar Plasma/Coronium/Protomatter/Primordial Ice/Void Essence/Chronal Shard/
+##   Dark Matter, symbols Pls/Crn/Pro/Pri/Voe/Chr/Dkm). Base tiers = §5 caps (industrial 0-1 · precious/tech 2-3 ·
+##   defining anchors Pm/Vg/Pz=5 · stellar 7 · foundational 8 · reality-breaking 9). Accessors matName/matBaseTier/
+##   matFamily/matColor/matJob/matInfo (names+colors of the 40 legacy stay single-sourced from ELEM_NAME/EC). ★ WHY
+##   fp-SAFE: the registry is METADATA only — the 7 cosmics are DEFINED but NOT in DEPOSIT_PROFILES/RARE_VEIN, so
+##   depositsFor is byte-identical and nothing generates cosmics yet. +9 smoke sentinels (roster 47, families
+##   15/13/10/2/7, tiers 0-9, cosmics-not-vein-placed, symbols distinct). probe-names hooked MATERIALS/MAT_FAMILY/
+##   matName/matBaseTier/matFamily + ELEM_NAME/DEPOSIT_PROFILES/RARE_VEIN. Battery: fp MATCH 50/50, smoke 356/0, layout
+##   546/9. Doc synced (MATERIALS_AND_GEAR.md §3 "matches code as of 2026-07-23"). ▶ NEXT decision point (NOT built yet,
+##   awaiting Nick): (i) SURFACE the registry in the material card (family + base rarity + job) — fp-safe UI, but a
+##   PRESENTATION call that touches the deferred §5 instance-rarity model, so held for Nick's steer; OR (ii) the BIG
+##   determinism-critical piece — 5c vein-wiring RE-PIN (cosmics → DEPOSIT_PROFILES/RARE_VEIN by world rarity) + 5d
+##   recipes + §5 instance-rarity resolution. 5c/5d need Nick at a keyboard (re-pin authorization + careful review).
 ## ★★★ TRAINING FLOW/OVERLAP FIXES (2026-07-23, remote-control session, commit e83aaa9; source-only, fp-safe,
 ##   tutorial-only) = DONE. Closed 2 of the 3 deeper per-step FLOW/STUCK bugs from the empty-ring block's "STILL TO
 ##   DO" list, via a full 20-step transition audit (each advance checked for a TUT_ALWAYS modal or a graced panel
