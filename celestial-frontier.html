@@ -16,7 +16,8 @@
   :root{
     --void:#04040c; --ink:#e9edff; --dim:#b2bad8; --faint:#828cb6; --label:#9aa4cb;
     --plasma:#ffcf8a; --accent:#8fb4ff; --line:rgba(150,162,210,0.14);
-    --glass:rgba(10,13,26,0.72); --glass-brd:rgba(150,162,210,0.20);
+    --glass-a:0.72;   /* v1.7 panel-tint slider (Settings → Graphics): 0.40 full-glass → 0.98 near-solid, floor keeps text readable */
+    --glass:rgba(10,13,26,var(--glass-a,0.72)); --glass-brd:rgba(150,162,210,0.20);
     --ui:'Space Grotesk',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif;
   }
   /* ---- text tone (v1.3/1.0): body text was blue-on-blue (--dim #8b93b8 on the
@@ -1641,6 +1642,8 @@
       <span class="opts"><span id="shakeopt" class="fsopt on" role="button" tabindex="0" data-tip="A brief jolt on impacts, conquests and hazards. Off holds the view steady.">On</span></span></div>
     <div class="srow2"><span>Motion</span>
       <span class="opts"><span class="fsopt on" data-motion="-1" role="button" tabindex="0" data-tip="Auto follows your device&#8217;s reduce-motion preference. Reduced stills the travel tunnel, shake, confetti and shimmer.">Auto</span><span class="fsopt" data-motion="0" role="button" tabindex="0">Full</span><span class="fsopt" data-motion="1" role="button" tabindex="0">Reduced</span></span></div>
+    <div class="srow2"><span>Panel tint</span>
+      <span class="opts"><input id="glassslider" type="range" min="40" max="98" step="2" value="72" aria-label="Panel glass transparency" data-tip="How solid the panels sit over the sky — left is airy liquid glass, right is nearly solid. A floor keeps text readable."></span></div>
   </div>
   <div class="sgrp" data-sg="a">
     <div class="srow2"><span>Sound</span>
@@ -13136,6 +13139,17 @@ function applySfxVol(){
   const s=document.getElementById('volslider');
   if(s) s.value=String(Math.round(sfxVol*100));
 }
+/* v1.7 PANEL TINT — the "liquid glass" slider (Settings → Graphics). Drives the
+   --glass-a CSS alpha every glass panel reads, so one dial takes the whole UI
+   from airy glass to near-solid. Clamped to a readable floor (0.40) and never
+   fully opaque (0.98). Persists like volume/motion. */
+let glassTint=0.72;      /* default = the original --glass alpha; saves without the field keep the classic look */
+function applyGlass(){
+  const a=clamp(glassTint, 0.40, 0.98);
+  try{ document.documentElement.style.setProperty('--glass-a', String(a)); }catch(_){}
+  const s=document.getElementById('glassslider');
+  if(s) s.value=String(Math.round(a*100));
+}
 function applyMotion(){
   try{ document.body.classList.toggle('rmotion', !motionOK()); }catch(_){}
   const opts=document.querySelectorAll ? document.querySelectorAll('#setpanel .fsopt[data-motion]') : [];
@@ -13535,7 +13549,7 @@ function doSave(){
       v:4, epoch:COSMIC_EPOCH,
       view:whereOfView(),
       hp:hp, pstats:pstats, fs:fsMode, tone:toneMode, font:fontMode, snd:sndOn?1:0, fx:fxOn?1:0, chart:chartsOn?1:0, shake:shakeOn?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
-      vol:Math.round(sfxVol*100), rm:motionMode, cx:cardExpand,
+      vol:Math.round(sfxVol*100), gt:Math.round(glassTint*100), rm:motionMode, cx:cardExpand,
       land:(()=>{ /* union in settled/mined worlds so cap eviction can never
         re-hide a census you demonstrably hold (review catch); insertion
         order keeps oldest-first eviction */
@@ -13699,6 +13713,9 @@ function loadSave(){
        keeps following the OS reduce-motion preference live */
     sfxVol=data.vol===undefined ? 1 : clamp(num(data.vol,100),0,100)/100;
     applySfxVol();
+    /* gt absent (pre-slider save) ⇒ the classic 0.72 tint */
+    glassTint=data.gt===undefined ? 0.72 : clamp(num(data.gt,72)/100, 0.40, 0.98);
+    applyGlass();
     const _rmv=num(data.rm,-1);
     motionMode=_rmv===1 ? 1 : (_rmv===0 ? 0 : -1);
     applyMotion();
@@ -15830,7 +15847,7 @@ const GUIDE=[
 ]},
 {icon:'⚙', cat:'Settings & Saving', blurb:'Toggles, tooltips, your save', topics:[
  {id:'settings', t:'Settings', k:'settings text size sound effects shake notifications tooltips toggle options', body:
-  '<p>The ⚙ panel (bottom right) has three tabs.</p><ul><li><b>Display</b>: <b>Text size</b> (A/A+/A++), <b>Text tone</b> (Soft / Bright / Max — brighter tones lift body text toward white and shift bold to gold), <b>Font</b> (Grotesk / System / Mono), <b>Explorer name</b>, and <b>Tooltips</b> (the short hints on hover, keyboard focus, or long-press — turn them off once you’re fluent).</li><li><b>Graphics</b>: <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, and <b>Motion</b> (Auto follows your device’s reduce-motion preference; Reduced stills the travel tunnel, shake, confetti and shimmer).</li><li><b>Audio</b>: <b>Sound</b>, the <b>Volume</b> slider, and <b>Notifications</b> (silences pop-ups; the 🔔 tray still logs everything).</li></ul><p>All persist with your save.</p>'},
+  '<p>The ⚙ panel (bottom right) has three tabs.</p><ul><li><b>Display</b>: <b>Text size</b> (A/A+/A++), <b>Text tone</b> (Soft / Bright / Max — brighter tones lift body text toward white and shift bold to gold), <b>Font</b> (Grotesk / System / Mono), <b>Explorer name</b>, and <b>Tooltips</b> (the short hints on hover, keyboard focus, or long-press — turn them off once you’re fluent).</li><li><b>Graphics</b>: <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, <b>Motion</b> (Auto follows your device’s reduce-motion preference; Reduced stills the travel tunnel, shake, confetti and shimmer), and <b>Panel tint</b> (a glass slider — drag from airy liquid glass to a near-solid backing; a floor keeps text readable).</li><li><b>Audio</b>: <b>Sound</b>, the <b>Volume</b> slider, and <b>Notifications</b> (silences pop-ups; the 🔔 tray still logs everything).</li></ul><p>All persist with your save.</p>'},
  {id:'saving', t:'Your save & reset', k:'save localstorage reset erase wipe browser device local', body:
   '<p>Your expedition saves automatically to this browser on this device — no account, no cloud. Clearing site data clears the expedition, so export your best creatures as CFB codes if you’re attached. <b>↺ Reset Game</b> in Settings erases everything after a confirm — the universe itself is unharmed; it’s math.</p>'},
 ]}];
@@ -19336,7 +19353,7 @@ document.getElementById('setbtn').addEventListener('click', ()=>{
   if(no){ no.classList.toggle('on', notifOn); no.textContent=notifOn?'On':'Off'; }
   const tp=document.getElementById('tipsopt');
   if(tp){ tp.classList.toggle('on', tipsOn); tp.textContent=tipsOn?'On':'Off'; }
-  applyMotion(); applySfxVol();
+  applyMotion(); applySfxVol(); applyGlass();
 });
 setPanel.addEventListener('click', e=>{
   const tb=e.target.closest('.stab');
@@ -19432,6 +19449,12 @@ document.addEventListener('pointerdown', e=>{
   if(!vs) return;
   vs.addEventListener('input', ()=>{ sfxVol=clamp((+vs.value||0)/100, 0, 1); applySfxVol(); });
   vs.addEventListener('change', ()=>{ queueSave(); playSurveyPing(); });
+})();
+(function(){
+  const gs=document.getElementById('glassslider');
+  if(!gs) return;
+  gs.addEventListener('input', ()=>{ glassTint=clamp((+gs.value||72)/100, 0.40, 0.98); applyGlass(); });
+  gs.addEventListener('change', ()=>{ queueSave(); });
 })();
 document.getElementById('hpheart').addEventListener('click', ()=>openPicker('heal', null));
 
