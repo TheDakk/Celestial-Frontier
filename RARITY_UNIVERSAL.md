@@ -1,8 +1,16 @@
 # Celestial Frontier — Universal Rarity (v1.7)
 
 **Status:** Phase A **BUILT in source** (2026-07-22, atop v1.6.4) — awaiting Nick's deploy call; Phase B still design.
-**Matches code as of:** 2026-07-22 (Phase A §3 items 1–9 implemented + surgically re-pinned; §3 items 10–12
-— discovery gating, escalating reveal, per-tier frames, cross-kind Compendium views — still to build).
+**Matches code as of:** 2026-07-22 (Phase A §3 items 1–12 ALL implemented; core relabel surgically re-pinned,
+presentation layer is fp-safe/UI-only). §3.10 discovery GATING: a world hides its grade until you LAND — the
+survey card's "Spectral class" row shows a "land to reveal" teaser and the card border stays neutral from orbit
+(gated on the existing `grounded` flag in `renderPanel`); stars/galaxies still reveal on survey (gate keys on
+`d.planetSeed`). §3.11 escalating REVEAL: on the first descent a Legendary+ world fires a tier-scaled `cinematic()`
+in `_performLanding` (Common..Exotic land quietly); the existing per-tier `data-frame` bands (low→summit on the
+reveal card) provide the readable-without-color a11y frame. §3.12 cross-kind Compendium: a rarity-floor filter
+(All/Rare+/Legendary+/Mythic+, `codexRare`) sits under the kingdom tabs, sifting every kingdom by display tier at
+once (the list already sorts by tier). NOTE: worlds carry `.designation` not `.grade`, so the Atlas/log/conquest
+never leaked rarity — no gating needed there.
 **Phase A implementation notes:** `RARITY_V17` (10 canonical rows) + `displayRarity(rawScore)=RARITY_V17[clamp(raw,0,9)]`
 added in `main.js`; `GRADE_TIERS` collapsed (names/hex → canonical, all `star:''`, `pre`+SPECTRA kept byte-identical
 so planet/star ART labels don't move); `rarityRoll` UNTOUCHED. Surgical re-pin covered exactly 7 probes

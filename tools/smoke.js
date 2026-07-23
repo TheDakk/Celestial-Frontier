@@ -649,7 +649,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('discovery: hover shows the LONG-RANGE GLANCE, not the survey', sawGlance);
     check('discovery: the glance offers no buttons and no environment rows',
       !pan3.querySelector('.atlasrow') && !pan3.querySelector('[data-gtoggle]'));
-    check('discovery: the glance keeps the color language (spectral row)', !!pan3.querySelector('.row.grade'));
+    // v1.7 DISCOVERY GATING: a world hides its grade until you LAND — from
+    // orbit the Spectral row is only a teaser ("land to reveal"), never the
+    // real rarity name/color (Nick: don't spoil whether a world is special).
+    check('v1.7 gating: an unlanded world HIDES its grade from orbit (teaser only)',
+      !!pan3.querySelector('.row.grade') && /land to reveal/i.test(pan3.textContent));
     // tap = orbital survey
     cv3.dispatchEvent(new sk.w.MouseEvent('pointerdown', dOpts));
     cv3.dispatchEvent(new sk.w.MouseEvent('pointerup', dOpts));
@@ -710,6 +714,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // B1: the art is no longer see-once — the surface card reopens it
     check('HD vista: the surface card offers a re-view', await until(() =>
       !!pan3.querySelector('[data-act="vista"]'), 4000, 'vista button'));
+    // v1.7 DISCOVERY GATING (the reveal): now that we've landed, the same card
+    // reveals the world's real grade — the teaser is gone and the Spectral row
+    // carries the true rarity name/color.
+    check('v1.7 gating: landing REVEALS the world grade (teaser gone)',
+      !!pan3.querySelector('.row.grade') && !/land to reveal/i.test(pan3.textContent));
     click2(pan3.querySelector('[data-act="vista"]'), sk.w);
     check('HD vista: re-view reopens the panorama', await until(() =>
       sk.doc.getElementById('vistabox').style.display === 'flex', 4000, 'vista reopen'));
