@@ -1214,6 +1214,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     let hotStar = null;
     for (let s = 1; s < 4000 && !hotStar; s++) { if (skH.stellarYieldFor(s) === 'Pls') hotStar = s; }
     const plsBefore = skH.cargo.get('Pls') || 0;
+    // review fix: skims gate on the Jump Drive (no Chapter-1 Celestial farming)
+    skH.items.delete('jumpdrive');
+    check('stellar §8: skims are GATED on the Jump Drive (no Chapter-1 farming)',
+      skH.skimStar(hotStar) === false && (skH.cargo.get('Pls') || 0) === plsBefore);
+    skH.items.set('jumpdrive', 1);
     skH.skimStar(hotStar);
     check('stellar §8: skimming a hot star captures Stellar Plasma into cargo',
       (skH.cargo.get('Pls') || 0) > plsBefore);

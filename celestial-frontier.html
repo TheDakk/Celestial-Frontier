@@ -11150,7 +11150,11 @@ function _performLanding(pl){
      Common..Exotic land quietly — the card simply opens up. Skipped in training. */
   if(_firstLand && tutDone){
     try{
-      const _d=(_lastDesc && _lastDesc.planetSeed===pl.P.seed)?_lastDesc:null;
+      /* review catch: a manual zoom/pinch descent lands with NO survey card
+         open (_lastDesc null or another world) — and _firstLand is consumed
+         either way, so the reveal was lost FOREVER on that world. Derive the
+         descriptor directly, the same fallback the vista (9250) already uses. */
+      const _d=(_lastDesc && _lastDesc.planetSeed===pl.P.seed)?_lastDesc:planetDescriptor(pl.P, st.sys, pl);
       const _desig=_d && _d.designation;
       if(_desig && (_desig.tier|0)>=5){
         const _dr=displayRarity(_desig.tier);
@@ -11302,7 +11306,7 @@ function grantFieldSamples(d){
   const tier=(d.designation?d.designation.tier:0);
   const deps=depositsFor(d.planetSeed, d.ptype||'rocky', tier).slice(0,2);
   const got=[];
-  for(const sym of deps){ cargo.set(sym, (cargo.get(sym)||0)+1); got.push('1× '+(ELEM_NAME[sym]||sym)); }
+  for(const sym of deps){ cargo.set(sym, (cargo.get(sym)||0)+1); got.push('1× '+matName(sym)); }
   const sd=3+tier*2;
   essence+=sd; stats.essenceEarned=(stats.essenceEarned||0)+sd;
   stats.landings=(stats.landings||0)+1;
@@ -11608,8 +11612,12 @@ function renderPanel(p, isLocked){
       const _gd=c?null:guardianFor(d.planetSeed);   /* fallen guardians stay fallen — settled worlds show none */
       if(_gd){
         const _gS=battleStats(_gd.genome), _gT=GRADE_TIERS[_gS.tier];
+        /* the guardian's summit CROWN (I·II·III) rides its row — the Apex Court
+           set needs one of each, and the collapsed display name alone can't
+           tell them apart (review catch: the blind grind) */
+        const _crown=_gS.tier>=12?' · Crown '+(['I','II','III'][Math.min(2,_gS.tier-12)]):'';
         rows+='<div class="splabel"><span class="k">Apex Guardian</span>'+
-          '<span class="v" style="color:'+_gT.hex+'">'+_gd.name+' — '+_gT.name+' · Power '+_gS.total+'</span></div>';
+          '<span class="v" style="color:'+_gT.hex+'">'+_gd.name+' — '+_gT.name+_crown+' · Power '+_gS.total+'</span></div>';
         conqBtn='<button class="act" data-act="conq" data-guide="guardians" data-tip="A named, one-of-a-kind summit-grade apex rules this world — defeat it in conquest and it joins your Compendium">Challenge '+_gd.name+'</button>';
       } else if(!c){
         conqBtn='<button class="act" data-act="conq" data-guide="conquest" data-tip="Choose a champion — you or a Compendium creature — and battle this world\u2019s apex native">Conquer Planet</button>';
@@ -11646,7 +11654,10 @@ function renderPanel(p, isLocked){
         const _dp=depositsFor(d.planetSeed, d.ptype, _mTier);
         /* the biome's gated exotic reads as its own lit vein (v1.4) */
         const _bv=biomeVeinFor(d.planetSeed);
-        const _cv=cosmicVeinFor(d.planetSeed, _mTier);   /* the rarest worlds carry a cosmic vein */
+        /* review catch (discovery gating): a cosmic vein exists ONLY on tier>=8
+           worlds, so naming it from orbit (Deep Scanners) leaked the very grade
+           the "land to reveal" teaser hides. The cosmic row is a LANDING payoff. */
+        const _cv=grounded ? cosmicVeinFor(d.planetSeed, _mTier) : null;
         rows+='<div class="splabel"><span class="k">Mineral veins</span><span class="v">'+_dp.map(s=>matName(s)).join(' · ')+
           (_bv?' · <span style="color:'+matColor(_bv)+'">'+matName(_bv)+' ✦</span>':'')+
           (_cv?' · <span style="color:'+matColor(_cv)+'">'+matName(_cv)+' ✦</span>':'')+
@@ -11687,9 +11698,11 @@ function renderPanel(p, isLocked){
       const _ss=d.where.star.seed, _sy=stellarYieldFor(_ss);
       if(_sy){
         const _sR=skimReserveFor(_ss), _sN=Math.min(skimX.get(_ss)||0,_sR), _sL=_sR-_sN;
-        skimBtn = _sL>0
-          ? '<button class="act" data-act="skim" data-tip="Skim this star’s corona for '+matName(_sy)+' — a limited run of samples.">☀ Skim Corona — '+matName(_sy)+(_sN>0?' ('+_sL+' left)':'')+'</button>'
-          : '<button class="act in" data-act="skim" data-tip="This star’s reachable corona is spent.">☀ Corona Spent</button>';
+        skimBtn = itemCount('jumpdrive')<1
+          ? '<button class="act in" data-act="skim" data-tip="Skimming a corona takes the Jump Drive&#8217;s stellar-class shielding — build it at the Shipyard.">☀ Corona — needs the Jump Drive</button>'
+          : (_sL>0
+            ? '<button class="act" data-act="skim" data-tip="Skim this star’s corona for '+matName(_sy)+' — a limited run of samples.">☀ Skim Corona — '+matName(_sy)+(_sN>0?' ('+_sL+' left)':'')+'</button>'
+            : '<button class="act in" data-act="skim" data-tip="This star’s reachable corona is spent.">☀ Corona Spent</button>');
       }
     }
     const btn = glance ? '' : atlasRow + conqBtn + landBtn + mineBtn + skimBtn + vistaBtn +
@@ -12591,7 +12604,7 @@ function renderCodex(){
   const rarest=all.reduce((m,e)=>((e.grade?e.grade.tier:0)>((m&&m.grade?m.grade.tier:0))?e:m), null);
   const counts={};
   for(const e of all){ const t=e.grade?e.grade.name:'—'; counts[t]=(counts[t]||0)+1; }
-  const rareLine = rarest&&rarest.grade ? '<span style="color:'+rarest.grade.hex+'">Rarest: '+rarest.grade.name+' '+(rarest.grade.star||'')+' '+rarest.name+'</span>' : '';
+  const rareLine = rarest&&rarest.grade ? '<span style="color:'+rarest.grade.hex+'">Rarest: '+rarest.grade.name+' '+rarest.name+'</span>' : '';   /* star glyphs retired in Phase A — the field is always '' */
   let html=_codexTabs()+'<div class="lab"><div class="lt">⚗ Compendium</div>'+
     '<div class="labnote">Survey a world&#8217;s biosphere, then tame and scavenge its species — every catch earns its page. Your catches interbreed on their own and keep evolving as the cosmos ages — so the collection is endless. '+
     rareLine+'</div></div>';
@@ -12766,7 +12779,15 @@ function _parBuildStep(){
 }
 setTimeout(_parBuildStep, 4000);
 function paragonsOwned(){ let n=0; for(let i=0;i<PARAGON_N;i++) if(codex.has('s'+paragonSeed(i))) n++; return n; }
-function _courtN(){ const s=new Set(); for(const e of codex.values()) if(e.genome && e.genome.apex && e.grade) s.add(e.grade.tier); return s.size; }
+function _courtSet(){ const s=new Set(); for(const e of codex.values()) if(e.genome && e.genome.apex && e.grade) s.add(e.grade.tier); return s; }
+function _courtN(){ return _courtSet().size; }
+/* review catch (the blind grind): the rarity collapse folded the three summit
+   ranks into one display name ("Transcendent"), so "all three summit ranks"
+   became invisible — a 2/3 player couldn't tell WHICH seat was missing. The
+   court names its three seats as CROWNS I·II·III (a designation overlay, per
+   the rarity spec — rank names stay dead). Raw tiers 12/13/14 → I/II/III. */
+function _courtProg(){ const s=_courtSet();
+  return ['I','II','III'].map((n,i)=>s.has(12+i)?n+' ✓':n+' —').join(' · '); }
 const claimedSets=new Set();
 const BINDER_SETS=[
  {id:'kingdoms', name:'Four Crowns',        d:'Own all four kingdoms', sd:25,  prog:o=>o.kinds.size+' / 4', done:o=>o.kinds.size>=4},
@@ -12775,7 +12796,7 @@ const BINDER_SETS=[
  {id:'bodies',   name:'The Bestiary',       d:'Own every fauna body plan', sd:80, prog:o=>o.bodies.size+' / '+FA_BODY.length, done:o=>o.bodies.size>=FA_BODY.length},
  {id:'realms',   name:'Warden of Realms',   d:'Own a species from every realm', sd:100, prog:o=>o.realms.size+' / '+REALM_ORDER.length, done:o=>o.realms.size>=REALM_ORDER.length},
  {id:'xeno',     name:'Against All Odds',   d:'Catalogue an extremophile — life that should not be possible', sd:60, prog:o=>(o.xeno?'1':'0')+' / 1', done:o=>!!o.xeno},
- {id:'court',    name:'The Apex Court',     d:'Claim Apex Guardians of all three summit ranks', sd:150, prog:()=>_courtN()+' / 3', done:()=>_courtN()>=3},
+ {id:'court',    name:'The Apex Court',     d:'Claim Apex Guardians of all three summit crowns — every guardian bears one', sd:150, prog:()=>_courtProg(), done:()=>_courtN()>=3},
  {id:'para10',   name:'Seeker of Legends',  d:'Find 10 of the Fifty Paragons', sd:120, prog:()=>paragonsOwned()+' / 10', done:()=>paragonsOwned()>=10},
 ];
 let codexView='list';
@@ -13679,6 +13700,7 @@ function doSave(){
       at:Date.now(),   /* wall-clock save stamp — anchors offline-accrual clamps on load */
       cargo:[...cargo], minedw:[...mined], mx:[...mineX], skx:[...skimX], bx:[...bioX], tech:[...techOwned], mines:stats.mines||0,
       items:[...items], eq:equip, ea:equipAff, crafts:stats.crafts||0, minedout:stats.minedout||0,
+      skims:stats.skims||0, cosmics:stats.cosmics||0,   /* v1.7 (review catch: unsaved, the counters reset each session) */
       asc:ascCh, ascp:ascProg,
       names:[...customNames],
       shares:stats.shares, jumps:stats.jumps,
@@ -13789,6 +13811,7 @@ function loadSave(){
     }
     stats.crafts=num(data.crafts);
     stats.minedout=num(data.minedout);
+    stats.skims=num(data.skims); stats.cosmics=num(data.cosmics);   /* v1.7; absent ⇒ 0 */
     /* v1.4 THE ASCENT — every v2 expedition climbs it. asc absent (edited
        save) ⇒ chapter 1: the safe default is the canon opening, and the
        built ship systems still speak through ascStage either way. */
@@ -13826,8 +13849,12 @@ function loadSave(){
     motionMode=_rmv===1 ? 1 : (_rmv===0 ? 0 : -1);
     applyMotion();
     /* cx absent ⇒ 0 = card detail groups collapsed. Bits: 1 environment ·
-       2 census · 4 specimen field notes (v1.5) */
-    cardExpand=clamp(num(data.cx), 0, 7)|0;
+       2 census · 4 specimen field notes (v1.5) · 8 lineage (v1.6) ·
+       16 item affixes (v1.7). Review catch: the old 0..7 clamp DESTROYED
+       bits 8/16 on every reload (the fold memory never survived a session)
+       and remapped 16→7, silently pre-expanding folds the player never
+       opened. Clamp to the full mask instead. */
+    cardExpand=clamp(num(data.cx), 0, 31)|0;
     /* `hd` in old saves is IGNORED — HD is always on now (ship decision) */
     applyHd();
     for(const n of (data.notifs||[])){ if(n && n.tt!=null && notifications.length<60) notifications.push(n); }
@@ -13918,8 +13945,10 @@ function resetMemoryState(){
     contacted.clear(); _pendingContact=null;
     chDone.clear(); chProg={}; chWeek=-1; chacc.clear();
     /* v1.4 audit catch: the engineer's track never reset in-place — a soft
-       reset kept your cargo, mined worlds and tech until a hard reload */
-    mined.clear(); mineX.clear(); bioX.clear(); cargo.clear(); techOwned.clear();
+       reset kept your cargo, mined worlds and tech until a hard reload.
+       v1.7 review catch: skimX joined that class — without clearing it a
+       fresh expedition opened Sol reading "Corona Spent". */
+    mined.clear(); mineX.clear(); skimX.clear(); bioX.clear(); cargo.clear(); techOwned.clear();
     items.clear(); for(const k in equip) delete equip[k]; for(const k in equipAff) delete equipAff[k]; _eqOpen=null;
     ascCh=0; ascProg={};   /* a fresh expedition climbs the Ascent again */
     /* post-deploy audit: the Binder economy survived a reset — claimed
@@ -15954,7 +15983,7 @@ const GUIDE=[
 ]},
 {icon:'⚙', cat:'Settings & Saving', blurb:'Toggles, tooltips, your save', topics:[
  {id:'settings', t:'Settings', k:'settings text size sound effects shake notifications tooltips toggle options', body:
-  '<p>The ⚙ panel (bottom right) has three tabs.</p><ul><li><b>Display</b>: <b>Text size</b> (A/A+/A++), <b>Text tone</b> (Soft / Bright / Max — brighter tones lift body text toward white and shift bold to gold), <b>Font</b> (Grotesk / System / Mono), <b>Explorer name</b>, and <b>Tooltips</b> (the short hints on hover, keyboard focus, or long-press — turn them off once you’re fluent).</li><li><b>Graphics</b>: <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, <b>Motion</b> (Auto follows your device’s reduce-motion preference; Reduced stills the travel tunnel, shake, confetti and shimmer), and <b>Panel tint</b> (a glass slider — drag from airy liquid glass to a near-solid backing; a floor keeps text readable).</li><li><b>Audio</b>: <b>Sound</b>, the <b>Volume</b> slider, and <b>Notifications</b> (silences pop-ups; the 🔔 tray still logs everything).</li></ul><p>All persist with your save.</p>'},
+  '<p>The ⚙ panel (bottom right) has four tabs.</p><ul><li><b>Display</b>: <b>Text size</b> (A/A+/A++), <b>Text tone</b> (Soft / Bright / Max — brighter tones lift body text toward white and shift bold to gold), <b>Font</b> (Grotesk / System / Mono), <b>Explorer name</b>, and <b>Tooltips</b> (the short hints on hover, keyboard focus, or long-press — turn them off once you’re fluent).</li><li><b>Graphics</b>: <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, <b>Motion</b> (Auto follows your device’s reduce-motion preference; Reduced stills the travel tunnel, shake, confetti and shimmer), and <b>Panel tint</b> (a glass slider — drag from airy liquid glass to a near-solid backing; a floor keeps text readable).</li><li><b>Gameplay</b>: <b>Confirm before salvaging</b> — the guard that asks before an item (or Salvage All) breaks gear down for parts.</li><li><b>Audio</b>: <b>Sound</b>, the <b>Volume</b> slider, and <b>Notifications</b> (silences pop-ups; the 🔔 tray still logs everything).</li></ul><p>All persist with your save.</p>'},
  {id:'saving', t:'Your save & reset', k:'save localstorage reset erase wipe browser device local', body:
   '<p>Your expedition saves automatically to this browser on this device — no account, no cloud. Clearing site data clears the expedition, so export your best creatures as CFB codes if you’re attached. <b>↺ Reset Game</b> in Settings erases everything after a confirm — the universe itself is unharmed; it’s math.</p>'},
 ]}];
@@ -17121,6 +17150,11 @@ const skimX=new Map();   /* star seed → samples skimmed (save field skx) */
 function skimReserveFor(seed){ const r=mulberry32(hashInt(seed>>>0, 0x5C1, 4)>>>0); return 24+((r()*24)|0); }
 function skimStar(seed){
   const sym=stellarYieldFor(seed); if(!sym) return false;
+  /* review catch (progression): ungated, a Chapter-1 recruit farmed Celestial-
+     tier Stellar Plasma from Sol in the first session. The skim rig rides the
+     JUMP DRIVE's stellar-class shielding — interstellar capability is the gate.
+     (§8's fuller probe/gear model is Nick's design pass; this is the floor.) */
+  if(itemCount('jumpdrive')<1){ toast('☀ Too Close to a Star','Skimming a corona takes the Jump Drive&#8217;s stellar shielding — build it at the 🛠 Shipyard first.'); return false; }
   const R=skimReserveFor(seed), n0=Math.min(skimX.get(seed)||0, R);
   if(n0>=R){ toast('☀ Corona Spent','This star’s reachable corona is exhausted — no more samples here.'); return false; }
   const r=mulberry32(hashInt(seed>>>0, 0x5C2, n0+1)>>>0);
@@ -17130,7 +17164,12 @@ function skimStar(seed){
   stats.skims=(stats.skims||0)+1; stats.cosmics=(stats.cosmics||0)+1;
   const left=R-(n0+1);
   playRaritySting(4); fxBurst(FX_GOLD, 22);
-  toast('☀ Stellar Skim — '+matName(sym), q+'× captured'+(left>0?' · '+left+' samples left within reach.':' · that was the last within reach.'));
+  /* plain skims stay OUT of the bell tray (same review catch as mining: a
+     corona-draining session would evict achievements from the 60-cap log) —
+     only the FIRST skim at a star and the last-drop make the record */
+  const skimMsg=q+'× captured'+(left>0?' · '+left+' samples left within reach.':' · that was the last within reach.');
+  if(n0===0 || left<=0) toast(left<=0?'☀ Corona Spent':'☀ Stellar Skim — '+matName(sym), skimMsg);
+  else if(notifOn) _showToast('☀ Stellar Skim — '+matName(sym), skimMsg);
   showCargoBtn(); if(cargoOpen) renderCargo();
   _panelKey=null; gameEvent('skimmed', {starSeed:seed}); checkAch(); renderRank(); queueSave();
   return left>0;
@@ -18438,7 +18477,7 @@ function renderItemCard(){
       if(_salvagePending===it.id){
         const _ret=_salvageReturns(it);
         html+='<div class="ic-salv"><div class="ic-salvh">⚠ Salvage '+it.name+'?</div>'+
-          '<div class="ic-salvr">Returns '+(_ret.length?_ret.map(r=>'<b>'+r.n+'× '+(ELEM_NAME[r.k]||r.k)+'</b>').join(' · '):'nothing')+'. This can&#8217;t be undone.</div>'+
+          '<div class="ic-salvr">Returns '+(_ret.length?_ret.map(r=>'<b>'+r.n+'× '+(matName(r.k))+'</b>').join(' · '):'nothing')+'. This can&#8217;t be undone.</div>'+
           '<div class="ic-salvf"><button class="ic-abtn cancel" data-salvcancel="1">Cancel</button>'+
           '<button class="ic-abtn go" data-salvgo="'+it.id+'">Salvage</button></div>'+
           '<div class="ic-salvoff" data-salvoff="'+it.id+'" role="button" tabindex="0">Turn off confirmation</div></div>';
@@ -18474,8 +18513,8 @@ function salvageItem(id, confirmed){
   for(const r of ret) cargo.set(r.k, Math.min(1e6, (cargo.get(r.k)||0)+r.n));
   const left=(items.get(id)||0)-1; if(left>0) items.set(id, left); else items.delete(id);
   try{ playSurveyPing(); }catch(_){}
-  toast('♺ Salvaged', it.name+' broken down'+(ret.length?' — '+ret.map(r=>r.n+'× '+(ELEM_NAME[r.k]||r.k)).join(' · '):'')+'.');
-  _itemCardFor=null; itemCardEl.style.display='none';
+  toast('♺ Salvaged', it.name+' broken down'+(ret.length?' — '+ret.map(r=>r.n+'× '+(matName(r.k))).join(' · '):'')+'.');
+  closeItemCard();   /* review cleanup: was an inlined copy of this fn's body */
   try{ showCargoBtn(); if(sheetOpen) renderCargo(); }catch(_){}
   try{ checkAch(); }catch(_){} queueSave();
 }
@@ -18499,7 +18538,7 @@ function salvageAllJunk(confirmed){
     items.delete(id);
   }
   try{ playSurveyPing(); }catch(_){}
-  const gt=Object.keys(got).map(k=>got[k]+'× '+(ELEM_NAME[k]||k)).join(' · ');
+  const gt=Object.keys(got).map(k=>got[k]+'× '+matName(k)).join(' · ');
   toast('♺ Salvaged '+n+' item'+(n===1?'':'s'), gt?'Banked '+gt+'.':'Materials banked.');
   try{ showCargoBtn(); if(sheetOpen) renderCargo(); }catch(_){}
   try{ checkAch(); }catch(_){} queueSave();
@@ -18559,7 +18598,7 @@ function _fabHTML(){
       const _SRC={Nd:'Geode worlds', Pm:'Carbon worlds', Vg:'Glass deserts', Pz:'Magma seas'};
       for(const k in (it.cost||{})){
         const have=cargo.get(k)||0, need=it.cost[k];
-        bits.push('<span style="color:'+(have>=need?'#7fe6a0':'#ff8a72')+'"><img class="ci" src="'+elemIcon(k)+'" alt="">'+need+'× '+(ELEM_NAME[k]||k)+
+        bits.push('<span style="color:'+(have>=need?'#7fe6a0':'#ff8a72')+'"><img class="ci" src="'+elemIcon(k)+'" alt="">'+need+'× '+matName(k)+
           (_SRC[k]?'<span style="opacity:.6"> — '+_SRC[k]+'</span>':'')+' <span style="opacity:.65">('+have+')</span></span>');
       }
       for(const k in (it.parts||{})){
@@ -18587,7 +18626,7 @@ function _benchHTML(){
     const afford=_canAfford(t);
     const costTxt=Object.keys(t.cost).map(k=>{
       const have=cargo.get(k)||0, need=t.cost[k];
-      return '<span style="color:'+(have>=need?'#7fe6a0':'#ff8a72')+'"><img class="ci" src="'+elemIcon(k)+'" alt="">'+need+'× '+(ELEM_NAME[k]||k)+' <span style="opacity:.65">('+have+')</span></span>';
+      return '<span style="color:'+(have>=need?'#7fe6a0':'#ff8a72')+'"><img class="ci" src="'+elemIcon(k)+'" alt="">'+need+'× '+matName(k)+' <span style="opacity:.65">('+have+')</span></span>';
     }).join(' + ')+' + <span style="color:'+(essence>=t.sd?'#7fe6a0':'#ff8a72')+'">☄'+t.sd+'</span>';
     html+='<div class="bset'+(own?' done':'')+'"><span>'+t.ic+' <b>'+t.name+'</b> — '+t.d+
       (own?'':'<br><span class="bcnt">'+(gated?'requires '+(TECHS.find(x=>x.id===t.req)||{}).name:costTxt)+'</span>')+'</span>'+
@@ -20130,7 +20169,7 @@ const TUT_STEPS=[
  {id:'search', spot:'#searchin', allow:['#searchwrap','#searchin','#searchres'],
   text:()=>'Type <b>earth</b> in the search box — it finds anything you’ve discovered. Pasting a CF1/CFB code travels to that world or summons that creature.',
   when:(t,d)=>t==='searched'&&(d.q||'').toLowerCase().indexOf('ear')>=0&&d.n>0},
- {id:'sheet', spot:'#rank', btn:'Got It', allow:['#rank','#stats'],
+ {id:'sheet', spot:'#rank', btn:'Got It', allow:['#rank','#sheet'],   /* the WHOLE screen — the text invites exploring sockets + hold (review catch: '#stats' alone left the paperdoll and 3-tab inventory gated frozen) */
   /* a "look at this, then acknowledge" step (like survey-tour / card-tour): the
      sheet OPENS on the nameplate tap and STAYS open so the recruit can explore it,
      then Got It advances. It used to auto-advance the instant the sheet opened
@@ -20185,7 +20224,7 @@ function _tutGate(e){
 function _tutGateOn(){ for(const ev of TUT_GATE_EVTS) document.addEventListener(ev, _tutGate, {capture:true, passive:false}); }
 function _tutGateOff(){ for(const ev of TUT_GATE_EVTS) document.removeEventListener(ev, _tutGate, {capture:true}); }
 
-let _tutSpotT=0, _tutSpotD=0;   /* the spotlight tracks its target LIVE — layouts
+let _tutSpotT=0, _tutSpotD=0, _tutFlipT=0;   /* the spotlight tracks its target LIVE — layouts
                       shift when dialogs open, text size changes or the topbar
                       reflows, and a once-per-step ring strands at stale spots */
 function _tutShow(){
@@ -20232,6 +20271,20 @@ function _tutSpot(){
       const cx=Math.min(W-1,Math.max(1,(rect.left+rect.right)/2)), cy=Math.min(H-1,Math.max(1,(rect.top+rect.bottom)/2));
       let hit=null; try{ hit=document.elementFromPoint(cx,cy); }catch(_){ }
       if(!hit || hit===el || el.contains(hit) || hit.contains(el)) r=rect;
+      /* v1.7 review catch (deadlock): when the thing covering the target is the
+         GUIDANCE CARD ITSELF, drawing nothing pins the card in place forever —
+         the !r branch below would strip the dodge and the card sits on its own
+         target, untappable, every 200ms tick. The card must MOVE instead: flip
+         it to the opposite half and let the next tick re-test the cleared spot. */
+      else if(hit && tutEl.contains(hit)){
+        /* damped: a huge mid-screen target could sit under the card in BOTH
+           halves — without a floor between flips the card would strobe at the
+           tick rate. One flip a second settles instead of flickering. */
+        const _fn=performance.now();
+        if(_fn-_tutFlipT>900){ _tutFlipT=_fn;
+          tutEl.classList.toggle('dodge', !tutEl.classList.contains('dodge')); }
+        return;   /* re-test next tick from the dodged position */
+      }
     }
   }
   /* the card must never cover the very thing it's pointing at: when the
@@ -20249,7 +20302,10 @@ function _tutSpot(){
     else if(r && tutEl.style.display==='block'){
       const spotMid=(r.top+r.bottom)/2;
       tutEl.classList.toggle('dodge', spotMid < H*0.5);
-    } else if(!r) tutEl.classList.remove('dodge');
+    }
+    /* no-target: leave the card where it is — snapping it back to the top
+       (the old `!r → remove('dodge')`) is what re-covered a target the
+       card had just dodged away from (the review's deadlock) */
   }catch(_){ }
   /* Publish where an in-training dialog (reveal/pickbox/name/#panel) may live so
      it never sits UNDER the guidance card. When the card is at the TOP, dialogs
@@ -20496,7 +20552,11 @@ function startTutorial(){
   _tutStep=-1;
   document.body.classList.add('training');   /* dialogs yield the top to the card */
   _tutAdvance();
-  _tutTimer=setInterval(_tutSpot, 350);
+  /* review perf catch (mobile): a second 350ms _tutSpot interval ran here on
+     top of _tutShow's per-step 200ms tracker — the SAME function twice, ~8
+     forced layout hit-tests/sec on the phone. The per-step tracker (started
+     by every _tutShow, including step 0's) is the one loop. _tutTimer stays
+     declared so the finish/abort clearIntervals remain no-ops. */
   _tutGateOn();
   queueSave();
 }
@@ -20994,7 +21054,7 @@ function renderRecords(){
     '<div class="srow"><span class="k">Stardust (breed odds +'+Math.round(stardustBonus()*100)+'%)</span><span>'+essence+'</span></div>'+
     '<div class="srow"><span class="k">Stardust harvested</span><span>'+(stats.harvests||0)+'</span></div>'+
     '<div class="srow"><span class="k">Codes shared / followed</span><span>'+stats.shares+' / '+stats.jumps+'</span></div>'+
-    (_rar?'<div class="srow"><span class="k">Rarest find</span><span style="color:'+_rar.grade.hex+'">'+_rar.grade.name+' '+(_rar.grade.star||'')+' '+_rar.name+'</span></div>':'')+
+    (_rar?'<div class="srow"><span class="k">Rarest find</span><span style="color:'+_rar.grade.hex+'">'+_rar.grade.name+' '+_rar.name+'</span></div>':'')+
     (stats.best>0?'<div class="srow"><span class="k">Highest grade ever reached</span><span class="gbadge'+(stats.best>=12?' irid':'')+'" style="color:'+GRADE_TIERS[Math.min(stats.best,TIER_MAX)].hex+'">'+GRADE_TIERS[Math.min(stats.best,TIER_MAX)].name+'</span></div>':'')+
     '<div class="srow"><span class="k">Apex Guardians felled</span><span>'+(stats.guardians||0)+'</span></div>';
   html+='<div class="agrp'+(_agOpen.has('__stats')?' open':'')+'" data-ag="__stats">'+
@@ -21083,7 +21143,7 @@ function renderDoll(){
         const first=ITEMS.filter(it=>it.slot===_eqOpen && !it.sig && !it.req).sort((a,b)=>(a.tier||0)-(b.tier||0))[0];
         let hint='';
         if(first){
-          const bits=Object.keys(first.cost||{}).map(k=>first.cost[k]+'× '+(ELEM_NAME[k]||k));
+          const bits=Object.keys(first.cost||{}).map(k=>first.cost[k]+'× '+matName(k));
           hint=' First on this ladder: <b>'+first.name+'</b>'+(bits.length?' — '+bits.join(', '):'')+'.';
         }
         return '<div class="empty" style="padding:8px">Nothing crafted for this socket yet.'+hint+' The Fabricator below builds it from mined parts.</div>';
@@ -21131,6 +21191,10 @@ function openSheet(view){
 }
 function closeSheet(){
   sheetOpen=false; statsOpen=false; cargoOpen=false; _eqOpen=null;
+  /* review catch: an armed Salvage-All confirm must NOT survive the sheet
+     closing — a stale arm meant one tap hours later bulk-salvaged with no
+     confirm, defeating the guard the setting promises */
+  _salvageAllArm=false;
   const sh=document.getElementById('sheet'); if(sh) sh.style.display='none';
   statsEl.style.display='none'; if(cargoEl) cargoEl.style.display='none';
 }
