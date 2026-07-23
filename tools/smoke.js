@@ -69,6 +69,25 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('boots with zero errors', errors.length === 0, errors.slice(0, 3).join(' | '));
     check('probe hook present', !!H);
 
+    // ============ v1.7 EXPLOIT/SECURITY review fixes ============
+    if (H && H.esc && H._salvageReturns && H._sanitizeView && H.decodeWhere) {
+      // save-injection XSS: externally-sourced text is HTML-escaped at the sink
+      check('security: esc() neutralizes markup from tampered saves/codes',
+        H.esc('<img src=x onerror=alert(1)>') === '&lt;img src=x onerror=alert(1)&gt;'
+        && H.esc(`"'&`) === '&quot;&#39;&amp;');
+      // NaN-camera crash: a share code / view with a non-numeric size can't reach a transform
+      const bad = H._sanitizeView({ type: 'galaxy', gal: { x: 5, y: 5, size: null, seed: 'x' } });
+      check('security: _sanitizeView coerces a non-numeric camera to finite safe numbers',
+        bad && isFinite(bad.gal.size) && bad.gal.size >= 8 && isFinite(bad.gal.seed) && isFinite(bad.gal.x));
+      // salvage never refunds a GATING exotic (single-unit exotic recipes)
+      const gated = ['Vg', 'Nd', 'Pz', 'Pm', 'Au', 'Ir', 'Pls', 'Voe'];
+      check('balance: salvage never returns a gating exotic in full',
+        gated.every((k) => H._salvageReturns({ cost: { [k]: 1, lens: 1 } }).every((r) => r.k !== k))
+        && gated.every((k) => H._salvageReturns({ cost: { [k]: 1 } }).every((r) => r.k !== k)));
+      // the cosmic clock is the slow-evolution cadence, not a 4-minute farm
+      check('balance: the cosmic epoch tick is slowed (>= 20 min of play)', H.EPOCH_TICK >= 1200);
+    }
+
     // ============ v1.7 PHASE A — universal rarity vocabulary ============
     if (H && H.RARITY_V17 && H.displayRarity && H.GRADE_TIERS) {
       const RV = H.RARITY_V17, dR = H.displayRarity, GT = H.GRADE_TIERS;
