@@ -12514,9 +12514,9 @@ function renderCodex(){
   let html=_codexTabs()+'<div class="lab"><div class="lt">⚗ Compendium</div>'+
     '<div class="labnote">Survey a world&#8217;s biosphere, then tame and scavenge its species — every catch earns its page. Your catches interbreed on their own and keep evolving as the cosmos ages — so the collection is endless. '+
     rareLine+'</div></div>';
-  html+='<div class="chead">'+(codexKing==='all'
+  html+='<div class="chead">'+((codexKing==='all' && codexRare===0)
     ? codex.size+' species · '+hybrids+' hybrid'+(hybrids===1?'':'s')+' bred'
-    : list.length+' '+(codexKing==='Microbe'?'microbes':codexKing.toLowerCase())+' shown · '+codex.size+' species in all')+'</div>';
+    : list.length+' '+(codexKing==='all'?'species':(codexKing==='Microbe'?'microbes':codexKing.toLowerCase()))+' shown · '+codex.size+' species in all')+'</div>';
   if(!list.length && codexRare>0)
     html+='<div class="empty">No '+(codexKing==='all'?'species':codexKing.toLowerCase())+' at <b style="color:'+RARITY_V17[codexRare].hex+'">'+RARITY_V17[codexRare].name+'</b> or above yet — the rarest finds live farthest out.</div>';
   else if(codexKing!=='all' && !list.length)
@@ -13389,7 +13389,7 @@ const ACH=[
   {id:'legend',  cat:'Rarity', ic:'🌟', name:'Gold Rush',     d:'Discover a Legendary', t:()=>stats.best>=5},
   {id:'unique',  cat:'Rarity', ic:'✦',  name:'Star-Touched',  d:'Discover a Celestial', t:()=>stats.best>=7},
   {id:'mythic',  cat:'Rarity', ic:'🧿', name:'Beyond the Veil', d:'Discover a Primordial', t:()=>stats.best>=8},
-  {id:'transc',  cat:'Rarity', ic:'💫', name:'One in a Million', d:'Discover a Transcendent', t:()=>stats.best>=11},
+  {id:'transc',  cat:'Rarity', ic:'💫', name:'One in a Million', d:'Discover a Transcendent', t:()=>stats.best>=9},   /* v1.7: raw 9 is the Transcendent DISPLAY floor (raw 9-14 all read Transcendent); matches the retuned unique>=7/mythic>=8 siblings */
   {id:'summit',  cat:'Rarity', ic:'🗻', name:'Beyond the Million', d:'Own an Apex Guardian&#8217;s bloodline — a forced Transcendent summit', t:()=>stats.best>=12},
   {id:'tiers8',  cat:'Rarity', ic:'🎨', name:'Full Spectrum', d:'Own species of 8 different rarity tiers', t:()=>tiersOwned()>=8},
   {id:'tiers12', cat:'Rarity', ic:'🌈', name:'The Deep Spectrum', d:'Own species of all 10 rarity tiers, Common through Transcendent', t:()=>tiersOwned()>=10},
@@ -13817,6 +13817,7 @@ function resetMemoryState(){
      even if the browser soft-navigates instead of doing a hard reload */
   try{
     codex.clear(); logMap.clear(); conquered.clear(); landed.clear();
+    codexKing='all'; codexRare=0;   /* clear the Compendium filters so a fresh expedition opens on "All" */
     surveyedSet.clear(); galSeen.clear(); surfSeen.clear(); sysSeen.clear();
     starKindsSeen.clear(); ptypesSeen.clear(); eventKeysSeen.clear();
     _evAnnounced.clear(); unlocked.clear(); customNames.clear();
