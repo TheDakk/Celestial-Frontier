@@ -242,6 +242,16 @@ explicitly supports loss/recovery/replication/universe-state consequences.
 - **Economy/support roles:** trade, research, repairs, ammunition, construction, fuel, consumables, faction
   contracts, terraforming, Codex completion. No material exists as a name with no purpose.
 
+> **In code (2026-07-23, step 5d — cosmic gear):** the 5 WORLD-cosmics each anchor one endgame gear piece
+> (main.js `ITEMS`, ids `cg-*`), faithful to their affinity: Protomatter→**Protomatter Carapace** (suit, scut),
+> Primordial Ice→**Genesis Locket** (necklace, heal), Void Essence→**Void-Phase Greaves** (legs, scut+speed),
+> Chronal Shard→**Chronal Drive** (module, speed+land), Dark Matter→**Dark Matter Bore** (tool, yield+strike).
+> Gated by simply HAVING the cosmic (only the deepest worlds yield it — no Signature `req`). Per §12 the cosmic
+> anchors RARITY via an authored `rar` (Primordial 8 / Transcendent 9); per §24 POWER stays modest & in-band with
+> the relics (⚠ flagged for the power-curve tuning pass). Interim `partIcon` art until §22 bespoke masters. The 2
+> STELLAR cosmics (Stellar Plasma/Coronium) still need their star-extraction source (§8) before they can anchor
+> gear. Guarded by 5 smoke sentinels.
+
 ## 18. Category profiles (one framework, per-category evaluation)
 
 One top-level rarity framework with profiles per: `raw_material, energy_medium, biological_ingredient,

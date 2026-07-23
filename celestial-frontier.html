@@ -17552,7 +17552,8 @@ function _itemStats(it){
 }
 function _matUses(key){
   const uses=ITEMS.filter(it=>it.cost&&it.cost[key]).map(it=>it.name);
-  const _SRC={Nd:'Geode worlds',Pm:'Carbon worlds',Vg:'Glass deserts',Pz:'Magma seas'};
+  const _SRC={Nd:'Geode worlds',Pm:'Carbon worlds',Vg:'Glass deserts',Pz:'Magma seas',
+    Pro:'Primordial worlds',Pri:'Primordial worlds',Voe:'Transcendent worlds',Chr:'Transcendent worlds',Dkm:'Transcendent worlds'};
   return {uses, src:_SRC[key]||null};
 }
 const _ITEM_KIND={part:'Basic Part',comp:'Component',sys:'Ship System',gear:'Explorer Gear',relic:'Signature Relic'};
@@ -17922,6 +17923,19 @@ const ITEMS=[
  {id:'rl-star',  cat:'relic', sig:'star',  slot:'helmet',   tier:3, fam:'helm',  hue:'#ffd96a', name:'Starcrowned Helm',    d:'Beacon VII&#8217;s lens, set in gold — it finds the bright seam in anything',      cost:{Au:4,Pt:2},      parts:{lens:1}, eff:{strike:0.1,contact:4}},
  {id:'rl-void',  cat:'relic', sig:'void',  slot:'legs',     tier:3, fam:'legs',  hue:'#9a8aff', name:'Voidwoven Leggings',  d:'Cut from what came back of Beacon VIII — half here, half elsewhere, all yours',  cost:{C:6,Ir:2},       parts:{weave:2}, eff:{scut:0.15,speed:1}},
  {id:'rl-prism', cat:'relic', sig:'prism', slot:'tool',     tier:3, fam:'rig',   hue:'#ff7ae8', name:'Prismatic Lathe',     d:'Beacon IX&#8217;s last word, made a tool — it takes the color no one could name',  cost:{Vg:1,Pm:1,Pz:1}, parts:{coil:1,servo:1}, eff:{yield:0.35,strike:0.06}},
+ /* ---- v1.7 THE FORGE — COSMIC GEAR (MATERIALS_AND_GEAR.md §12/§17): each of the
+    five WORLD-cosmics earns its job as the DEFINING anchor of one endgame piece —
+    faithful to the doc's affinities (Protomatter→construction, Primordial Ice→
+    preservation, Void Essence→phase, Chronal Shard→temporal, Dark Matter→reality).
+    Gated by simply HAVING the cosmic (only the deepest worlds yield it — no `req`).
+    The cosmic anchors the item's RARITY (authored `rar`, §12); POWER stays modest
+    and in-band with the relics (§24 decouples power from rarity — flagged for the
+    power-curve tuning pass). Interim partIcon art until the §22 bespoke masters. */
+ {id:'cg-proto', cat:'gear', slot:'suit',     tier:4, rar:8, fam:'suit',  hue:'#c8e06a', name:'Protomatter Carapace', d:'First-matter, poured into a shell that remembers being a world — nothing gets through it easily', cost:{Pro:1,Ti:6,W:4},  parts:{hullseg:2}, eff:{scut:0.35}},
+ {id:'cg-genesis',cat:'gear', slot:'necklace',tier:4, rar:8, fam:'charm', hue:'#bfeaff', name:'Genesis Locket',      d:'A bead of ice older than the Sun — every meal mends as if life itself were owed to you',           cost:{Pri:1,H2O:8,O:6}, parts:{cryocap:1}, eff:{heal:0.5}},
+ {id:'cg-void',  cat:'gear', slot:'legs',     tier:5, rar:9, fam:'legs',  hue:'#8a5cff', name:'Void-Phase Greaves',  d:'Woven through with a thread of pure absence — half your steps land in a place harm cannot follow',   cost:{Voe:1,C:8,Ir:3},  parts:{weave:2}, eff:{scut:0.28,speed:1}},
+ {id:'cg-chron', cat:'gear', slot:'module',   tier:5, rar:9, fam:'drive', hue:'#4fe0d0', name:'Chronal Drive',       d:'A shard of frozen time, geared to a hull — the fastest lane is the one you take before you arrive',  cost:{Chr:1,He3:4,Pt:2},parts:{coil:2,navcore:1}, eff:{speed:2,land:6}},
+ {id:'cg-dark',  cat:'gear', slot:'tool',     tier:5, rar:9, fam:'rig',   hue:'#6a4a8a', name:'Dark Matter Bore',    d:'A drill wound around a knot of the universe&#8217;s hidden mass — it finds the seam in everything',   cost:{Dkm:1,W:6,Ir:3},  parts:{servo:2}, eff:{yield:0.5,strike:0.12}},
 ];
 const ITEM_BY=new Map(ITEMS.map(it=>[it.id, it]));
 /* the nine sockets (Nick's slot set, 2026-07-18): the ARPG body — head to

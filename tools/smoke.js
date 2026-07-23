@@ -1176,6 +1176,24 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     skH.craftItem('rl-star');
     check('trail: the claimed Signature IS the blueprint (relic forges + self-equips)',
       skH.itemCount('rl-star') === 1 && skH.equip.helmet === 'rl-star');
+    // v1.7 5d: the world-cosmics earn their job — each anchors one endgame piece
+    check('cosmics 5d: five cosmic gear recipes exist, each defined by a world-cosmic',
+      ['cg-proto', 'cg-genesis', 'cg-void', 'cg-chron', 'cg-dark'].every((id) => {
+        const it = skH.ITEM_BY.get(id);
+        return it && it.cat === 'gear' && Object.keys(it.cost).some((k) => skH.MATERIALS[k] && skH.MATERIALS[k].fam === 'cosmic');
+      }));
+    skH.cargo.set('Pro', 1); skH.cargo.set('Ti', 8); skH.cargo.set('W', 6); skH.items.set('hullseg', 2);
+    skH.craftItem('cg-proto');
+    check('cosmics 5d: a foundational cosmic forges its gear and consumes the cosmic',
+      skH.itemCount('cg-proto') === 1 && (skH.cargo.get('Pro') || 0) === 0);
+    check('cosmics 5d: the cosmic anchors the gear rarity (Protomatter → Primordial/8)',
+      skH._itemRarity(skH.ITEM_BY.get('cg-proto')) === 8 && skH.displayRarity(8).name === 'Primordial');
+    skH.cargo.set('Dkm', 1); skH.cargo.set('W', 8); skH.cargo.set('Ir', 4); skH.items.set('servo', 2);
+    skH.craftItem('cg-dark');
+    check('cosmics 5d: a reality-breaking cosmic anchors Transcendent gear (Dark Matter → 9)',
+      skH.itemCount('cg-dark') === 1 && skH._itemRarity(skH.ITEM_BY.get('cg-dark')) === 9 && skH.displayRarity(9).name === 'Transcendent');
+    check('cosmics 5d: the cosmic material knows what it crafts (§17 — every material has a job)',
+      skH._matUses('Pro').uses.includes('Protomatter Carapace') && skH._matUses('Dkm').uses.includes('Dark Matter Bore'));
     // v1.5.2c THE ELEMENTAL TITANS: signatures are won by felling a named
     // titan, region-gated (basics near, Void/Prism far), seeded/shared
     skH.st.gal = { seed: 999, x: 90, y: -60, size: 78 };   // home galaxy (region 0)
