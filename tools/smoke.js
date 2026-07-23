@@ -538,6 +538,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     gsl.value = '10'; gsl.dispatchEvent(new w.Event('input', { bubbles: true }));   // below floor
     check('panel-tint slider clamps to the readable floor (0.40)', Math.abs(glassA() - 0.40) < 1e-9, String(glassA()));
     gsl.value = '72'; gsl.dispatchEvent(new w.Event('input', { bubbles: true }));
+    // v1.7 Forge: the new Gameplay tab + "Confirm before salvaging" toggle
+    const gpTab = [...doc.querySelectorAll('#setpanel .stab')].find((t) => t.dataset.stab === 'p');
+    check('settings: Gameplay tab present', !!gpTab);
+    click(gpTab);
+    const svOpt = doc.getElementById('salvageopt');
+    check('gameplay: "Confirm before salvaging" toggle shows in the Gameplay group (default On)',
+      !!svOpt && svOpt.textContent === 'On' && doc.querySelector('#setpanel .sgrp[data-sg="p"]').classList.contains('on'));
+    click(svOpt);
+    check('gameplay: the salvage-confirm toggle flips to Off', svOpt.textContent === 'Off' && !svOpt.classList.contains('on'));
+    click(svOpt);   // back to On (the guarded default)
     // (persistence of vol/rm is asserted on the pre-seeded boots below — this
     //  window is file:// / opaque-origin, so its localStorage is off limits)
 

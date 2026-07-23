@@ -19,7 +19,21 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF (as of 2026-07-22 — v1.6.4 LIVE; v1.7 ARC IN PROGRESS, source-only) ◀◀◀
+## ▶▶▶ SESSION HANDOFF (as of 2026-07-23 — v1.6.4 LIVE; v1.7 ARC IN PROGRESS, source-only) ◀◀◀
+## ★★★ v1.7 PHASE B "THE FORGE" BUILD = STARTED (2026-07-23, Nick authorized "completely do the next phase").
+##   BUILT SO FAR (fp-safe): a new SETTINGS › GAMEPLAY tab + "Confirm before salvaging" toggle (salvageConfirm,
+##   default ON, saved as `sv`, apply+handler wired) — the guard the salvage system reads. Gates green (fp MATCH,
+##   smoke 337/0 + a Gameplay-tab guard). NEXT increments (in order, each verified): (1) SALVAGE UI — item-card
+##   Salvage button (even/centered w/ Equip), confirm dialog (returns list + "Turn off confirmation"), salvageItem()
+##   returning materials from it.cost, + SALVAGE ALL on the character screen (bulk unequipped Common/Uncommon), all
+##   reading salvageConfirm; ⚠ the item-card equip button is currently `.ic-equip`/`data-equipbtn` — refactor to the
+##   even/centered .abtn pair CAREFULLY (equip smoke flows). (2) ARPG ITEM WINDOW anatomy upgrade (rarity header,
+##   item level, affix fold via a new cardExpand bit — DEFAULT EXPANDED, ranges, quality/sockets open, requirements,
+##   flavor) — MATERIALS_AND_GEAR.md §23; unify fold memory (cardExpand already global across world+creature cards →
+##   add item bit). (3) 3-TAB INVENTORY (Materials/Craftables/Gear, §21). (4) MATERIALS ECONOMY — 47 materials +
+##   seeded veins + recipes = FULL RE-PIN. (5) FULL-BESPOKE ART (§22) — 47 masters + gear family×tier + ship tiers,
+##   proof-sheet. (6) generation modifiers + POWER-CURVE tuning (§24) via the 1000-tester panel. Uniques DEFERRED
+##   (§24, timing TBD). All the design is LOCKED in MATERIALS_AND_GEAR.md §22–24 + the mockup Nick approved.
 ## ★★★ v1.7 CADENCE DECISION (Nick, 2026-07-22): HOLD & BUNDLE — do NOT deploy phases individually. Keep building
 ##   "The Forge" in SOURCE ONLY and ship the whole arc as ONE big v1.7 release when substantially complete. No
 ##   version bump / no deploy until then. Source can sit ahead of the live site (currently v1.6.4).

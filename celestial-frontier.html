@@ -1634,7 +1634,7 @@
 <div id="setpanel">
   <div class="shead">Settings<button class="pnx" data-pnx="set" type="button">&#10005;</button></div>
   <div class="stabs">
-    <span class="stab on" data-stab="d" role="button" tabindex="0">Display</span><span class="stab" data-stab="g" role="button" tabindex="0">Graphics</span><span class="stab" data-stab="a" role="button" tabindex="0">Audio</span>
+    <span class="stab on" data-stab="d" role="button" tabindex="0">Display</span><span class="stab" data-stab="g" role="button" tabindex="0">Graphics</span><span class="stab" data-stab="a" role="button" tabindex="0">Audio</span><span class="stab" data-stab="p" role="button" tabindex="0">Gameplay</span>
   </div>
   <div class="sgrp on" data-sg="d">
     <div class="srow2"><span>Text size</span>
@@ -1667,6 +1667,10 @@
       <span class="opts"><span id="sndopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
     <div class="srow2"><span>Volume</span>
       <span class="opts"><input id="volslider" type="range" min="0" max="100" step="5" value="100" aria-label="Sound effects volume"></span></div>
+  </div>
+  <div class="sgrp" data-sg="p">
+    <div class="srow2"><span>Confirm before salvaging</span>
+      <span class="opts"><span id="salvageopt" class="fsopt on" role="button" tabindex="0" data-tip="Ask before breaking an item down for materials — guards single salvages and Salvage All alike. Off salvages immediately.">On</span></span></div>
   </div>
   <div class="sdiv"></div>
   <div class="rcnote">💾 Your expedition saves <b>only to this browser, on this device</b> — clearing site data erases it. Back up favourites as ⇪ creature codes.</div>
@@ -13136,6 +13140,7 @@ let sndOn=true;
 let fxOn=true;
 let chartsOn=false;   /* Star charts overlay (orbits/zones/labels) — OFF by default (v1.3.6, Nick's call) */
 let shakeOn=true;
+let salvageConfirm=true;   /* v1.7 Forge: ask before salvaging (single + Salvage All) — ON by default (Nick) */
 let sfxVol=1;            /* master SFX level 0..1 — saves without the field play at full, as before */
 let motionMode=-1;       /* -1 Auto (follow the OS reduce-motion preference, live) · 0 Full · 1 Reduced.
                             Auto is the default AND is what gets saved unless the player explicitly
@@ -13565,7 +13570,7 @@ function doSave(){
     localStorage.setItem(SAVE_KEY, JSON.stringify({
       v:4, epoch:COSMIC_EPOCH,
       view:whereOfView(),
-      hp:hp, pstats:pstats, fs:fsMode, tone:toneMode, font:fontMode, snd:sndOn?1:0, fx:fxOn?1:0, chart:chartsOn?1:0, shake:shakeOn?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
+      hp:hp, pstats:pstats, fs:fsMode, tone:toneMode, font:fontMode, snd:sndOn?1:0, fx:fxOn?1:0, chart:chartsOn?1:0, shake:shakeOn?1:0, sv:salvageConfirm?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
       vol:Math.round(sfxVol*100), gt:Math.round(glassTint*100), rm:motionMode, cx:cardExpand,
       land:(()=>{ /* union in settled/mined worlds so cap eviction can never
         re-hide a census you demonstrably hold (review catch); insertion
@@ -13723,6 +13728,7 @@ function loadSave(){
     fxOn=data.fx!==0;
     chartsOn=data.chart===1;   /* absent ⇒ off — the clean sky is the default */
     shakeOn=data.shake!==0;
+    salvageConfirm=data.sv!==0;   /* absent ⇒ on — the guard is the default */
     notifOn=data.notif!==0;
     tipsOn=data.tips!==0;
     /* vol absent (pre-slider save) ⇒ full volume. rm: only an explicit player
@@ -19384,6 +19390,8 @@ document.getElementById('setbtn').addEventListener('click', ()=>{
   if(no){ no.classList.toggle('on', notifOn); no.textContent=notifOn?'On':'Off'; }
   const tp=document.getElementById('tipsopt');
   if(tp){ tp.classList.toggle('on', tipsOn); tp.textContent=tipsOn?'On':'Off'; }
+  const sv0=document.getElementById('salvageopt');
+  if(sv0){ sv0.classList.toggle('on', salvageConfirm); sv0.textContent=salvageConfirm?'On':'Off'; }
   applyMotion(); applySfxVol(); applyGlass();
 });
 setPanel.addEventListener('click', e=>{
@@ -19424,6 +19432,13 @@ setPanel.addEventListener('click', e=>{
     shakeOn=!shakeOn;
     e.target.classList.toggle('on', shakeOn);
     e.target.textContent=shakeOn?'On':'Off';
+    queueSave();
+    return;
+  }
+  if(e.target && e.target.id==='salvageopt'){
+    salvageConfirm=!salvageConfirm;
+    e.target.classList.toggle('on', salvageConfirm);
+    e.target.textContent=salvageConfirm?'On':'Off';
     queueSave();
     return;
   }
