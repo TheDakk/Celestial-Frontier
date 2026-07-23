@@ -116,6 +116,17 @@ cosmic/ancient availability, number of resource families, hazard-to-reward, surv
 after landing, or guarantee uniform richness. Semantic caps hold (Celestial needs stellar source, etc.);
 ordinary worlds may hold a rare exceptional deposit; high-tier worlds still hold abundant Commons.
 
+> **In code (2026-07-23, step 5c — WORLD-cosmic veins, fp-SAFE, no re-pin):** `cosmicVeinFor(seed, tier)` (main.js,
+> beside `biomeVeinFor`) gates the world-sourced cosmics by world **tier**: tier < 8 → `null` (nothing changes, so
+> `depositsFor` and every existing world stay byte-identical — fingerprint held); tier 8 (Primordial) → a minority
+> carry a **foundational** cosmic (Protomatter/Primordial Ice); tier ≥ 9 (Transcendent, incl. deep-space raw tiers
+> 10–14) → **reality-breaking** also eligible (Void Essence/Chronal Shard/Dark Matter). It's a *separate lit vein*
+> like the biome exotics — it never enters `depositsFor`'s uniform pool, so mining stays balanced. `mineWorld` pays
+> it as a rare (~4%) trickle, **gated on `cv`** (short-circuit) so tier < 8 consumes zero extra rolls. Survey card
+> shows it as a ✦ vein; cargo load filter widened `ELEM_NAME`→`MATERIALS` so cosmics persist; icons borrow the gem
+> form in their hue (interim, until §22). **Stellar cosmics (Stellar Plasma/Coronium) are NOT here — they come from
+> STARS (§8), a separate build.** Guarded by 7 smoke sentinels. fp MATCH 50/50.
+
 ## 7. Landing, discovery & rare finds (access/efficiency — NEVER a world rewrite)
 
 The survival→discovery loop stays central:
