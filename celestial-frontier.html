@@ -19137,15 +19137,22 @@ const TUT_STEPS=[
  {id:'search', spot:'#searchin', allow:['#searchwrap','#searchin','#searchres'],
   text:()=>'Type <b>earth</b> in the search box — it finds anything you’ve discovered. Pasting a CF1/CFB code travels to that world or summons that creature.',
   when:(t,d)=>t==='searched'&&(d.q||'').toLowerCase().indexOf('ear')>=0&&d.n>0},
- {id:'sheet', spot:'#rank', allow:['#rank','#stats'],
-  text:()=>'Now meet yourself: <b>tap your nameplate</b> to open your character screen — your explorer head to boots, with nine gear sockets on the body, your stats, and your cargo hold beneath.',
-  when:(t,d)=>t==='stats-open'&&!!d.open},
+ {id:'sheet', spot:'#rank', btn:'Got It', allow:['#rank','#stats'],
+  /* a "look at this, then acknowledge" step (like survey-tour / card-tour): the
+     sheet OPENS on the nameplate tap and STAYS open so the recruit can explore it,
+     then Got It advances. It used to auto-advance the instant the sheet opened
+     (when:stats-open) — but the forge step closes the sheet on enter to free the
+     Shipyard rail, and both fired in the SAME tap, so the browser never painted
+     the sheet: the nameplate tap looked dead (Nick's device repro). Now the sheet
+     is visibly open until they tap Got It, and forge closes it on the way out. */
+  text:()=>'Now meet yourself: <b>tap your nameplate</b> to open your character screen — your explorer head to boots, with nine gear sockets on the body, your stats, and your cargo hold beneath. Take a look around, then tap <b>Got It</b>.'},
  {id:'forge', spot:'#cargobtn', allow:['#cargobtn','#yardcard'],
   enter:()=>{ try{
-    /* the sheet step left the character screen open (the sweep graces it — the
-       prior step's allow named its #rank button), and it covers the Shipyard rail
-       button THIS step points at → empty ring, no visible path to the yard (Nick's
-       forge-step lockup). Close it so the rail is reachable. */
+    /* the sheet step leaves the character screen open (the recruit was told to
+       look around it), and on mobile it covers the whole screen — including the
+       Shipyard rail button THIS step points at → empty ring, no reachable path to
+       the yard (Nick's device repro: "I can't click the starship, the inventory
+       is blocking me"). Close it on the way in so the rail is revealed. */
     if(typeof closeSheet==='function' && sheetOpen) closeSheet();
     cargo.set('Fe',(cargo.get('Fe')||0)+6); cargo.set('Al',(cargo.get('Al')||0)+4); cargo.set('Si',(cargo.get('Si')||0)+4);
     showCargoBtn();

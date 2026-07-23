@@ -345,8 +345,15 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       !visible(doc.getElementById('tray')), 3000, 'tray click-through close'));
     type(doc.getElementById('searchin'), 'earth');
     check('searching earth completes step 15', await until(() => tutAt(17), 3000, 'step16'));
+    // v1.7: the sheet step is now "look at this, then Got It" (like the survey/
+    // specimen tours) — tapping the nameplate OPENS the sheet and leaves it open
+    // so the recruit can explore it; a Got It tap advances. (It used to auto-
+    // advance on open, which raced the forge step's closeSheet in one tap.)
     click(doc.getElementById('rank'));
-    check('character sheet completes step 16', await until(() => tutAt(18), 3000, 'step17'));
+    check('character sheet opens on the nameplate tap and stays open',
+      visible(doc.getElementById('sheet')));
+    tutAct();                                                       // Got It -> forge
+    check('character sheet lesson completes step 16', await until(() => tutAt(18), 3000, 'step17'));
     // v1.5.1 THE FORGE LESSON: loaned ore appears, the recruit crafts an
     // Iron Plate through the real Fabricator. The forge step CLOSES the
     // character sheet on enter (it lingered over the Shipyard rail button the
