@@ -1018,6 +1018,14 @@
   .cargoish .chead .salvall{float:right;margin-top:-2px;font:700 9px var(--ui);letter-spacing:.06em;text-transform:uppercase;
     color:#e9b7ba;background:rgba(255,106,114,0.08);border:1px solid rgba(255,106,114,0.28);border-radius:7px;padding:2px 9px;cursor:pointer}
   .cargoish .chead .salvall:hover{background:rgba(255,106,114,0.16);color:#ffd1d4}
+  /* v1.7 Forge: the 3 inventory tabs (Materials / Craftables / Gear) */
+  .cargoish .ivtabs{display:flex;gap:5px;padding:6px 6px 8px}
+  .cargoish .ivt{flex:1;text-align:center;font:700 10px var(--ui);letter-spacing:.05em;text-transform:uppercase;color:var(--dim);
+    padding:6px 4px;border-radius:8px;border:1px solid var(--line);background:rgba(20,24,44,0.4);cursor:pointer}
+  .cargoish .ivt b{color:var(--faint);font-weight:800;margin-left:2px}
+  .cargoish .ivt.on{color:var(--ink);border-color:rgba(150,162,210,0.6);background:rgba(150,162,210,0.14)}
+  .cargoish .ivt.on b{color:var(--plasma)}
+  .cargoish .ivt:hover{color:var(--ink)}
   .cargoish .bset{margin:0 6px 6px}
   /* ---- Prime Codex button ----
      v1.5.2c UI SWAP (Nick): the Codex is endgame — it keeps its gold and now
@@ -17331,39 +17339,42 @@ function elemIcon(sym){
   _elemIcons.set(sym,u); return u;
 }
 let cargoView='inv';   /* legacy name; the sheet's cargo region shows inventory only (v1.5.2) */
+let cargoTab='mat';    /* v1.7 Forge inventory tab: mat | craft | gear (§21) */
 function renderCargo(){
   if(!cargoEl) return;
   const cc=document.getElementById('cargocount'); if(cc) cc.textContent=[...cargo.values()].reduce((a,b)=>a+b,0)+[...items.values()].reduce((a,b)=>a+b,0);
-  /* v1.5.2 (Nick): ONLY the inventory lives with the portrait — the bags
-     under the explorer, Diablo-style: a fixed grid of slots that is
-     always there, empty boxes and all. The bench moved to the Shipyard. */
-  let html='<div class="chead">🧰 Cargo</div>';
+  /* v1.7 Forge (§21): the hold is THREE tabs — Materials (stackable raw
+     elements, the expanded Cargo hold), Craftables (crafted non-gear), and
+     Gear (equippable pieces + ship systems). Materials/consumables stack and
+     never eat gear slots; only the gear bag is a bounded slot grid. */
   const rows=[...cargo.entries()].filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]);
-  /* the worn PACK grows the bags (Nick): a Module in its socket adds a
-     row of slots per tier — the hold you can SEE gets bigger with you */
-  const _pk=equip.module?ITEM_BY.get(equip.module):null;
-  const SLOTS=Math.max(24+(_pk?(_pk.tier||1)*6:0), Math.ceil(Math.max(1,rows.length)/6)*6);
-  html+='<div class="inv">'+rows.map(e=>'<span class="slot" role="button" tabindex="0" data-mat="'+e[0]+'" data-tip="'+(ELEM_NAME[e[0]]||e[0])+' — tap for details">'+
-    '<img src="'+elemIcon(e[0])+'" alt="'+(ELEM_NAME[e[0]]||e[0])+'"><span class="qty">'+e[1]+'</span></span>').join('')+
-    Array.from({length:Math.max(0, SLOTS-rows.length)}, ()=>'<span class="slot empty2"></span>').join('')+'</div>';
-  if(!rows.length) html+='<div class="empty" style="padding:6px 8px">The hold is empty. Dead worlds carry the elements — land on one and press ⛏ Mine.</div>';
   const irows=ITEMS.filter(it=>itemCount(it.id)>0);
-  if(irows.length){
-    const eqSet=new Set(Object.values(equip));
+  const craftItems=irows.filter(it=>!it.slot && it.cat!=='sys');
+  const gearItems=irows.filter(it=>it.slot || it.cat==='sys');
+  const eqSet=new Set(Object.values(equip));
+  const _tile=it=>'<span class="slot t'+it.tier+(it.cat==='sys'?' sys':'')+'" role="button" tabindex="0" data-item="'+it.id+'"'+
+    ' data-tip="'+it.name+(eqSet.has(it.id)?' — equipped':(it.cat==='sys'?' — ship system, online':' — tap for its card'))+'">'+
+    '<img src="'+partIcon(it.id)+'" alt="'+it.name+'"><span class="qty">'+(it.cat==='sys'?'✓':itemCount(it.id))+'</span>'+
+    (eqSet.has(it.id)?'<span class="eqstar">★</span>':'')+'</span>';
+  const T=[['mat','Materials',rows.length],['craft','Craftables',craftItems.length],['gear','Gear',gearItems.length]];
+  let html='<div class="ivtabs">'+T.map(t=>'<span class="ivt'+(cargoTab===t[0]?' on':'')+'" data-ivt="'+t[0]+'" role="button" tabindex="0">'+t[1]+' <b>'+t[2]+'</b></span>').join('')+'</div>';
+  if(cargoTab==='mat'){
+    /* the worn PACK grows the bags — a Module in its socket adds a row of slots per tier */
+    const _pk=equip.module?ITEM_BY.get(equip.module):null;
+    const SLOTS=Math.max(24+(_pk?(_pk.tier||1)*6:0), Math.ceil(Math.max(1,rows.length)/6)*6);
+    html+='<div class="inv">'+rows.map(e=>'<span class="slot" role="button" tabindex="0" data-mat="'+e[0]+'" data-tip="'+(ELEM_NAME[e[0]]||e[0])+' — tap for details">'+
+      '<img src="'+elemIcon(e[0])+'" alt="'+(ELEM_NAME[e[0]]||e[0])+'"><span class="qty">'+e[1]+'</span></span>').join('')+
+      Array.from({length:Math.max(0, SLOTS-rows.length)}, ()=>'<span class="slot empty2"></span>').join('')+'</div>';
+    if(!rows.length) html+='<div class="empty" style="padding:6px 8px">The hold is empty. Dead worlds carry the elements — land on one and press ⛏ Mine.</div>';
+  } else if(cargoTab==='craft'){
+    html+= craftItems.length ? '<div class="inv">'+craftItems.map(_tile).join('')+'</div>'
+      : '<div class="empty" style="padding:12px 8px">No craftables yet — build parts and components at the 🛠 Shipyard&#8217;s Fabricator.</div>';
+  } else {
     const _junk=_junkItems();
-    html+='<div class="chead" style="margin-top:8px">🛠 Crafted'+
-      (_junk.length?'<span class="salvall" role="button" tabindex="0" data-salvall="1">'+(_salvageAllArm?'Salvage '+_junk.length+'? — confirm':'♺ Salvage All Junk')+'</span>':'')+
-      '</div><div class="inv">'+
-      irows.map(it=>{
-        /* v1.6 (Nick): every crafted/found item opens a stat CARD on tap
-           (icon, rarity, slot, effects, source) — wearables carry an Equip
-           button on the card that slots them into their body socket */
-        const wear=it.slot && it.cat!=='sys';
-        return '<span class="slot t'+it.tier+(it.cat==='sys'?' sys':'')+'" role="button" tabindex="0" data-item="'+it.id+'"'+
-          ' data-tip="'+it.name+(eqSet.has(it.id)?' — equipped':(wear?' — tap for its card':(it.cat==='sys'?' — ship system, online':' — tap for its card')))+'">'+
-          '<img src="'+partIcon(it.id)+'" alt="'+it.name+'"><span class="qty">'+(it.cat==='sys'?'✓':itemCount(it.id))+'</span>'+
-          (eqSet.has(it.id)?'<span class="eqstar">★</span>':'')+'</span>';
-      }).join('')+'</div>';
+    html+='<div class="chead" style="margin-top:2px">Equipment'+
+      (_junk.length?'<span class="salvall" role="button" tabindex="0" data-salvall="1">'+(_salvageAllArm?'Salvage '+_junk.length+'? — confirm':'♺ Salvage All Junk')+'</span>':'')+'</div>';
+    html+= gearItems.length ? '<div class="inv">'+gearItems.map(_tile).join('')+'</div>'
+      : '<div class="empty" style="padding:12px 8px">No gear in the bag yet — craft explorer gear at the Fabricator, or earn it from charters.</div>';
   }
   cargoEl.innerHTML=html;
 }
@@ -17522,6 +17533,7 @@ itemCardEl.addEventListener('click', e=>{
 });
 if(typeof cargoEl!=='undefined' && cargoEl) cargoEl.addEventListener('click', e=>{
   const mat=e.target.closest('[data-mat]'); if(mat){ openItemCard({mat:mat.dataset.mat}); return; }
+  const tv=e.target.closest('[data-ivt]'); if(tv){ if(cargoTab!==tv.dataset.ivt){ cargoTab=tv.dataset.ivt; _salvageAllArm=false; } renderCargo(); return; }
   const sa=e.target.closest('[data-salvall]'); if(sa){ salvageAllJunk(_salvageAllArm); return; }   /* first tap arms, second confirms */
   const item=e.target.closest('[data-item]'); if(item){ if(_salvageAllArm){ _salvageAllArm=false; renderCargo(); } openItemCard({id:item.dataset.item}); return; }
 });

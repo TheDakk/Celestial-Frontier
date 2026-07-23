@@ -30,12 +30,18 @@
 ##   (3) ARPG ITEM WINDOW anatomy — rarity-FRAME header band (.card.framed + --ic-rc) + name band + Item-Lv chip +
 ##       meta chips + the AFFIXES expand/close PILL fold (default EXPANDED, shares cardExpand BIT 16 → fold memory
 ##       global across worlds/creatures/items, Nick's rule). smoke 342/0. [this commit]
-##   ▶ NEXT (each its own verified increment): (4) 3-TAB INVENTORY (Materials/Craftables/Gear, §21) — fp-safe.
+##   (4) 3-TAB INVENTORY — the hold splits into Materials / Craftables / Gear tabs (cargoTab; §21); item tiles moved
+##       into the Gear tab (Salvage All lives on its Equipment header), smoke navigates the Gear tab. smoke 343/0. [this commit]
+##   ═══ the ENTIRE fp-safe UI LAYER of The Forge is now done (settings, salvage, ARPG item window, 3-tab inventory). ═══
+##   ▶ NEXT — THE BIG GENERATION PIECE (needs its own careful, dedicated build; do NOT rush — determinism-critical):
 ##   (5) MATERIALS ECONOMY — the 47 materials + rarity resolution + seeded veins + recipes + GEAR-ON-LADDER (turns
-##   the item window's Item-Lv chip + hue into TRUE 10-tier rarity + real multi-affix/quality/sockets) = the FULL
-##   RE-PIN (the big generation-critical piece; increments 3-4 enrich once this lands). (6) FULL-BESPOKE ART (§22) —
-##   47 masters + gear family×tier + ship tiers, proof-sheet. (7) generation modifiers + POWER-CURVE tuning (§24) via
-##   the 1000-tester panel. Uniques DEFERRED (§24). Design LOCKED in MATERIALS_AND_GEAR.md §22–24 + the approved mockup.
+##   the item window's placeholder Item-Lv chip + hue into TRUE 10-tier rarity + real multi-affix/quality/sockets, and
+##   fills the 3 inventory tabs) = the FULL RE-PIN. Suggested decomposition: (5a) 47-material DATA model (roster +
+##   rarity tier + color + family + job) — fp-safe if not yet vein-placed; (5b) gear-on-ladder (author each ITEM's
+##   rarity tier → item window shows true ladder frame/name) — fp-safe (items are authored, not seeded); (5c) wire
+##   materials into depositsFor vein generation = THE RE-PIN; (5d) recipes/crafting for the new materials. (6)
+##   FULL-BESPOKE ART (§22) — 47 masters + gear family×tier + ship tiers, proof-sheet. (7) generation modifiers +
+##   POWER-CURVE tuning (§24) via the 1000-tester panel. Uniques DEFERRED (§24). Design LOCKED in §22–24 + the mockup.
 ## ★★★ v1.7 CADENCE DECISION (Nick, 2026-07-22): HOLD & BUNDLE — do NOT deploy phases individually. Keep building
 ##   "The Forge" in SOURCE ONLY and ship the whole arc as ONE big v1.7 release when substantially complete. No
 ##   version bump / no deploy until then. Source can sit ahead of the live site (currently v1.6.4).
