@@ -11,7 +11,7 @@ the Prime Codex.
 Open `celestial-frontier.html` in any modern browser. No build, no server,
 no dependencies. Saves live in `localStorage`.
 
-New expeditions begin with **Field Training** — an 18-step, fully sandboxed
+New expeditions begin with **Field Training** — a 20-step, fully sandboxed
 tutorial that teaches every system by playing it (skippable). The **? Guide
 to the Universe** is a searchable manual of every mechanic, and short
 tooltips (long-press on touch, hover on desktop) link into it everywhere —

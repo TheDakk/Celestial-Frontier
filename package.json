@@ -1,6 +1,6 @@
 {
   "name": "celestial-frontier",
-  "version": "1.0.0",
+  "version": "1.6.4",
   "description": "Verification toolkit for the Celestial Frontier single-file game",
   "scripts": {
     "extract": "node tools/extract.js",
