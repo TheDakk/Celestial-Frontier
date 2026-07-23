@@ -478,6 +478,33 @@
   #itemcard .ic-abtn.go{color:#fff;background:linear-gradient(180deg,#ff7a82,#e0505a);border-color:rgba(255,106,114,0.5)}
   #itemcard .ic-salvoff{text-align:center;margin-top:9px;font-size:11px;color:var(--faint);text-decoration:underline;cursor:pointer}
   #itemcard .ic-salvoff:hover{color:var(--dim)}
+  /* v1.7 Forge — the ARPG item window: rarity-frame header band + affix fold */
+  #itemcard .card.framed{border-color:color-mix(in srgb, var(--ic-rc) 45%, var(--glass-brd));
+    box-shadow:0 24px 70px rgba(0,0,0,0.55), 0 0 30px -8px color-mix(in srgb, var(--ic-rc) 45%, transparent)}
+  #itemcard .ic-band{text-align:center;padding:12px 14px 10px;margin:-14px -14px 12px;
+    background:linear-gradient(180deg, color-mix(in srgb, var(--ic-rc) 20%, transparent), transparent);
+    border-bottom:1px solid color-mix(in srgb, var(--ic-rc) 26%, var(--line));position:relative}
+  #itemcard .ic-band::after{content:"";position:absolute;left:16%;right:16%;bottom:-1px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--ic-rc),transparent);opacity:.7}
+  #itemcard .ic-band .ic-bname{font:800 18px var(--ui);line-height:1.15;color:var(--ic-rc);
+    text-shadow:0 0 16px color-mix(in srgb, var(--ic-rc) 40%, transparent)}
+  #itemcard .ic-band .ic-bbase{font-size:11px;color:var(--dim);margin-top:2px;letter-spacing:.02em}
+  #itemcard .ic-meta{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:11px}
+  #itemcard .ic-chip{font:700 10px var(--ui);letter-spacing:.04em;padding:2px 8px;border-radius:5px;
+    background:rgba(150,162,210,0.1);border:1px solid var(--line);color:var(--dim)}
+  #itemcard .ic-chip.ilvl{font-family:var(--mono);color:color-mix(in srgb, var(--ic-rc) 80%, #fff);
+    border-color:color-mix(in srgb, var(--ic-rc) 40%, transparent);background:color-mix(in srgb, var(--ic-rc) 12%, transparent)}
+  #itemcard .ic-ghead{display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none;padding:4px 6px;margin:0 -6px 4px;border-radius:7px}
+  #itemcard .ic-ghead:hover{background:rgba(150,162,210,0.08)}
+  #itemcard .ic-ghead:focus-visible{outline:2px solid var(--ic-rc);outline-offset:1px}
+  #itemcard .ic-glabel{font:700 9.5px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  #itemcard .ic-chev{font:600 8.5px var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);
+    border:1px solid var(--line);border-radius:999px;padding:2px 8px;white-space:nowrap}
+  #itemcard .ic-ghead:hover .ic-chev{color:var(--ink);border-color:var(--glass-brd)}
+  #itemcard .ic-grp .ic-chev::after{content:'close'}
+  #itemcard .ic-grp.folded .ic-chev::after{content:'expand'}
+  #itemcard .ic-grp.folded .ic-gbody{display:none}
+  #itemcard .ic-glabel .cnt{margin-left:auto}
 
   /* ---- release notes: the expedition bulletin ---- */
   #relbox{position:fixed;inset:0;z-index:42;display:none;align-items:center;justify-content:center;
@@ -17369,7 +17396,9 @@ const itemCardEl=document.createElement('div'); itemCardEl.id='itemcard'; docume
 let _itemCardFor=null, _salvagePending=null;
 function renderItemCard(){
   if(!_itemCardFor){ itemCardEl.style.display='none'; return; }
-  let html='<div class="card"><button class="icx" data-icclose type="button">&#10005;</button>';
+  const _framed = _itemCardFor.mat==null && _itemCardFor.id!=null && ITEM_BY.has(_itemCardFor.id);
+  const _frc = _framed ? (ITEM_BY.get(_itemCardFor.id).hue||'#9fb6d6') : '';
+  let html='<div class="card'+(_framed?' framed':'')+'"'+(_framed?' style="--ic-rc:'+_frc+'"':'')+'><button class="icx" data-icclose type="button">&#10005;</button>';
   if(_itemCardFor.mat!=null){
     const k=_itemCardFor.mat, nm=ELEM_NAME[k]||k, have=cargo.get(k)||0, u=_matUses(k);
     html+='<div class="ic-top"><img class="ic-icon" src="'+elemIcon(k)+'" alt=""><div class="ic-head">'+
@@ -17383,13 +17412,24 @@ function renderItemCard(){
     const wear=it.slot && it.cat!=='sys', worn=equip[it.slot]===it.id;
     const slotDef=EQ_SLOTS.find(s=>s.id===it.slot), stats=_itemStats(it);
     const aff=worn?_slotAffix(it.slot):null;   /* v1.6 loot core: the worn piece's affix */
-    html+='<div class="ic-top"><img class="ic-icon t'+it.tier+'" style="border-color:'+(it.hue||'#9fb6d6')+'" src="'+partIcon(it.id)+'" alt="">'+
-      '<div class="ic-head"><div class="ic-name" style="color:'+(it.hue||'#f4f8ff')+'">'+it.name+(aff?' <span style="color:#ffd96a">✦</span>':'')+'</div>'+
-      '<div class="ic-kind">'+(_ITEM_KIND[it.cat]||'Item')+' · Tier '+it.tier+(slotDef?' · '+slotDef.ic+' '+slotDef.name:'')+
-      (it.cat!=='sys'?' · ×'+itemCount(it.id)+' held':'')+'</div></div></div>'+
+    /* ARPG anatomy: rarity-frame header band → icon + meta chips → desc →
+       the AFFIXES expand/close fold (default EXPANDED; shares cardExpand so the
+       fold state is remembered across every card — Nick's rule). Item level =
+       craft tier for now; the true rarity ladder arrives with gear-on-ladder. */
+    html+='<div class="ic-band"><div class="ic-bname">'+it.name+(aff?' <span style="color:#ffd96a">✦</span>':'')+'</div>'+
+      '<div class="ic-bbase">'+(_ITEM_KIND[it.cat]||'Item')+'</div></div>'+
+      '<div class="ic-top"><img class="ic-icon t'+it.tier+'" style="border-color:'+(it.hue||'#9fb6d6')+'" src="'+partIcon(it.id)+'" alt="">'+
+      '<div class="ic-meta" style="justify-content:flex-start">'+
+        '<span class="ic-chip ilvl">Item Lv '+it.tier+'</span>'+
+        (slotDef?'<span class="ic-chip">'+slotDef.ic+' '+slotDef.name+'</span>':'')+
+        (it.cat!=='sys'?'<span class="ic-chip">×'+itemCount(it.id)+' held</span>':'')+
+      '</div></div>'+
       '<div class="ic-desc">'+it.d+'</div>'+
-      (stats.length||aff?'<div class="ic-stats">'+stats.map(s=>'<div class="ic-stat">• '+s+'</div>').join('')+
-        (aff?'<div class="ic-stat" style="color:#ffd96a;border-top:1px solid rgba(255,217,106,0.2);margin-top:5px;padding-top:5px">'+_affLabel(aff)+' <span style="opacity:.6">— spoils of conquest</span></div>':'')+'</div>':'');
+      ((stats.length||aff)?(function(){ const _fl=!!(cardExpand&16);
+        return '<div class="ic-grp'+(_fl?' folded':'')+'"><div class="ic-ghead" data-icfold role="button" tabindex="0" aria-expanded="'+(!_fl)+'"><span class="ic-glabel">Affixes</span><span class="ic-chev"></span></div>'+
+          '<div class="ic-gbody"><div class="ic-stats">'+stats.map(s=>'<div class="ic-stat">• '+s+'</div>').join('')+
+          (aff?'<div class="ic-stat" style="color:#ffd96a;border-top:1px solid rgba(255,217,106,0.2);margin-top:5px;padding-top:5px">'+_affLabel(aff)+' <span style="opacity:.6">— spoils of conquest</span></div>':'')+'</div></div></div>';
+      })():'');
     if(wear){
       if(_salvagePending===it.id){
         const _ret=_salvageReturns(it);
@@ -17469,6 +17509,8 @@ itemCardEl.addEventListener('click', e=>{
       renderItemCard(); try{ if(sheetOpen) renderCargo(); }catch(_){ } }
     return;
   }
+  const fld=e.target.closest('[data-icfold]');
+  if(fld){ cardExpand^=16; renderItemCard(); queueSave(); return; }   /* shared fold memory: bit 16 = item affix fold */
   const sb=e.target.closest('[data-salvbtn]'); if(sb){ salvageItem(sb.dataset.salvbtn); return; }
   const sg=e.target.closest('[data-salvgo]'); if(sg){ salvageItem(sg.dataset.salvgo, true); return; }
   const sc=e.target.closest('[data-salvcancel]'); if(sc){ _salvagePending=null; renderItemCard(); return; }

@@ -1152,6 +1152,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     const icard = sk.doc.getElementById('itemcard');
     check('v1.6 item card: tapping an item opens its stat card', icard.style.display !== 'none' && /Scout Visor/.test(icard.textContent));
     check('v1.6 item card: the card surfaces the item effect', /bioscan wounds/.test(icard.textContent));
+    // v1.7 Forge: ARPG anatomy — rarity-frame header band + the Affixes fold
+    check('v1.7 item window: rarity-frame header band + item level', !!icard.querySelector('.ic-band .ic-bname')
+      && !!icard.querySelector('.card.framed') && /Item Lv/.test(icard.textContent));
+    const afHead = icard.querySelector('[data-icfold]');
+    check('v1.7 item window: the Affixes group uses the expand/close fold, open by default',
+      !!afHead && /Affixes/.test(afHead.textContent) && !icard.querySelector('.ic-grp').classList.contains('folded'));
+    click2(afHead, sk.w);
+    check('v1.7 item window: tapping the fold collapses it (remembered via the shared cardExpand)',
+      icard.querySelector('.ic-grp').classList.contains('folded'));
+    click2(icard.querySelector('[data-icfold]'), sk.w);   // re-open so the salvage checks below see a stable card
     const eqbtn = icard.querySelector('[data-equipbtn="visor"]');
     check('v1.6 item card: wearables carry an Equip button', !!eqbtn);
     click2(eqbtn, sk.w);
