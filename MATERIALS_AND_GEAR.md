@@ -347,8 +347,9 @@ remembered-fold preference per group-type across worlds, creatures, and items. E
 1. **Rarity header band** + item name (+ a "One of a Kind" subtitle when Unique-designated).
 2. **Item type + item level** line (and slot).
 3. divider → **implicit / intrinsic** mods.
-4. divider → the **AFFIXES group**, carrying the **expand/close chevron next to its "Affixes" label** (the
-   game's existing fold grammar — the survey/specimen cards; Nick, 2026-07-23). Collapsed → a one-line digest
+4. divider → the **AFFIXES group**, carrying the game's **"expand" / "close" PILL** (the uppercase bordered-pill
+   word, NOT a triangle/chevron — `#panel .ghead .chev::after{content:'expand'/'close'}`) **right next to the
+   "Affixes" label** (the survey/specimen cards' exact fold grammar; Nick, 2026-07-23). Collapsed → a one-line digest
    ("4 mods · 1 drawback"); expanded → the **explicit affix lines**, each showing its rolled value **and its
    possible range** (PoE-style "+18% (12–20%)"); the primary/defining affix is highlighted; drawback affixes
    read in a warning tone.
