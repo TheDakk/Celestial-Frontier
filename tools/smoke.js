@@ -88,6 +88,40 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     } else {
       check('rarity: Phase A hooks present (RARITY_V17/displayRarity/GRADE_TIERS)', false);
     }
+
+    // ======= v1.7 PHASE B (step 5a) — the 47-material data model =======
+    // fp-SAFE foundation: MATERIALS is metadata only, NOT wired into veins yet.
+    if (H && H.MATERIALS && H.MAT_FAMILY && H.matName && H.matBaseTier) {
+      const M = H.MATERIALS, keys = Object.keys(M);
+      check('materials: the roster is the full 47', keys.length === 47);
+      const fams = { base: 15, volatile: 13, precious: 10, exotic: 2, cosmic: 7 };
+      check('materials: family counts are 15/13/10/2/7',
+        Object.keys(fams).every((f) => keys.filter((k) => M[k].fam === f).length === fams[f]));
+      check('materials: every family is a known MAT_FAMILY',
+        keys.every((k) => !!H.MAT_FAMILY[M[k].fam]));
+      check('materials: every base tier is in 0..9',
+        keys.every((k) => Number.isInteger(M[k].tier) && M[k].tier >= 0 && M[k].tier <= 9));
+      check('materials: every material carries a job and a class',
+        keys.every((k) => M[k].job && M[k].cls && ['raw', 'energy', 'catalyst', 'component'].includes(M[k].cls)));
+      // the 40 legacy materials are exactly the non-cosmic set, and each keeps
+      // its ELEM_NAME (single-sourced — no duplicated names)
+      const legacy = keys.filter((k) => M[k].fam !== 'cosmic');
+      check('materials: 40 legacy materials all resolve their ELEM_NAME',
+        legacy.length === 40 && legacy.every((k) => H.ELEM_NAME[k] && H.matName(k) === H.ELEM_NAME[k]));
+      // the 7 cosmics are DEFINED but NOT yet mineable (fp-safe): none appear in
+      // any DEPOSIT_PROFILE or RARE_VEIN, so no world can generate them yet
+      const cosmic = keys.filter((k) => M[k].fam === 'cosmic');
+      check('materials: 7 cosmics defined, tier >= 7, with their own name+color',
+        cosmic.length === 7 && cosmic.every((k) => M[k].tier >= 7 && M[k].name && M[k].col && H.matName(k) === M[k].name));
+      const inProfiles = new Set([].concat(...Object.values(H.DEPOSIT_PROFILES || {}), H.RARE_VEIN || []));
+      check('materials: cosmics are NOT vein-placed yet (no generation, fp-safe)',
+        cosmic.every((k) => !inProfiles.has(k)));
+      // the cosmic symbols never collide with a legacy symbol
+      check('materials: cosmic symbols are all distinct from the legacy 40',
+        cosmic.every((k) => !H.ELEM_NAME[k]));
+    } else {
+      check('materials: Phase B 5a hooks present (MATERIALS/MAT_FAMILY/matName/matBaseTier)', false);
+    }
     check('intro name prompt shown for fresh expedition', visible(doc.getElementById('namebox')));
 
     // ============ FIELD TRAINING — full 20-step drive ============
