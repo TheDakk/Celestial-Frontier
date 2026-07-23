@@ -321,7 +321,20 @@ The item tooltip is a first-class feature, modelled on **Diablo 2 and Path of Ex
 loot model (`rollAffix`, `AFFIX_DEFS`, `equipAff`, `_slotAffix`, the 10-tier ladder, tier-as-item-level) is
 already ARPG-shaped. P4 upgrades it to the full anatomy.
 
-**Trigger:** desktop **hover**, mobile **tap** (per §7 / the spec) → a framed tooltip.
+**Trigger:** desktop **hover**, mobile **tap** → opens the framed tooltip (a READ). Actions are explicit
+BUTTONS on the card, never gestures — so it plays identically on desktop and phone (Nick, 2026-07-23: don't
+make equip a "click", it breaks on mobile). **NO corner-bracket / right-angle decorations on the frame**
+(Nick's call) — the rarity-tinted border + header glow carry it.
+
+**Actions on the card:** a compact **Equip** button (primary, rarity-colored) + a quiet **Salvage** button
+(danger-tinted). No oversized CTAs.
+
+**Salvage guard (Nick, 2026-07-23, LOCKED):** salvage is destructive (returns crafting materials, can't be
+undone), so it shows a **confirmation prompt** naming the item + what it returns, with a "Don't ask again"
+checkbox that mirrors the setting. The prompt is **toggleable in Settings › Gameplay → "Confirm before
+salvaging"** (default ON). A **Salvage All** button on the CHARACTER SCREEN bulk-breaks every unequipped
+Common & Uncommon piece and banks the materials, behind its OWN toggle **Settings › Gameplay → "Confirm
+'Salvage All'"** (default ON). Both toggles persist in the save.
 
 **Anatomy (top → bottom), the PoE/D2 tooltip structure:**
 1. **Rarity header band** + item name (+ a "One of a Kind" subtitle when Unique-designated).
