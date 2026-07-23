@@ -17476,8 +17476,20 @@ function renderCargo(){
         '<div class="inv">'+Array.from({length:free}, ()=>'<span class="slot empty2"></span>').join('')+'</div>';
     }
   } else if(cargoTab==='craft'){
-    html+= craftItems.length ? '<div class="inv">'+craftItems.map(_tile).join('')+'</div>'
-      : '<div class="empty" style="padding:12px 8px">No craftables yet — build parts and components at the 🛠 Shipyard&#8217;s Fabricator.</div>';
+    if(!craftItems.length) html+='<div class="empty" style="padding:12px 8px">No craftables yet — build parts and components at the 🛠 Shipyard&#8217;s Fabricator.</div>';
+    else {
+      /* v1.7 §21: group the Craftables tab by KIND (Basic Parts → Components →
+         …), matching the Materials tab's family grouping so the hold reads
+         organized. Order is the crafting ladder; unknown kinds trail. */
+      const korder=['part','comp','gear','sys','relic'];
+      const kg=new Map();
+      for(const it of craftItems){ const c=it.cat||'part'; if(!kg.has(c)) kg.set(c,[]); kg.get(c).push(it); }
+      const kk=[...kg.keys()].sort((a,b)=>((korder.indexOf(a)+1||99)-(korder.indexOf(b)+1||99)));
+      for(const c of kk){ const g=kg.get(c);
+        html+='<div class="chead" style="margin-top:4px">'+(_ITEM_KIND[c]||'Item')+'s <span style="opacity:.5;font-weight:400">'+g.length+'</span></div>'+
+          '<div class="inv">'+g.map(_tile).join('')+'</div>';
+      }
+    }
   } else {
     const _junk=_junkItems();
     html+='<div class="chead" style="margin-top:2px">Equipment'+

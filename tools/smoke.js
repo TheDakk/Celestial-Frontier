@@ -1253,6 +1253,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       matHeads.some((t) => /Base & structural/.test(t)) && matHeads.some((t) => /Volatiles & gases/.test(t)) && matHeads.some((t) => /Precious & tech/.test(t)));
     check('v1.7 §21: grouped material tiles still carry data-mat (tap-to-card intact)',
       !!sk.doc.querySelector('#cargo [data-mat="Fe"]') && !!sk.doc.querySelector('#cargo [data-mat="Au"]'));
+    // v1.7 §21: the Craftables tab likewise groups by KIND (Basic Parts / Components)
+    skH.items.set('plate', 2); skH.items.set('servo', 1);
+    click2(sk.doc.getElementById('rank'), sk.w); click2(sk.doc.getElementById('rank'), sk.w);   // re-render the hold
+    const craftTab = [...sk.doc.querySelectorAll('#cargo [data-ivt]')].find((t) => t.dataset.ivt === 'craft');
+    if (craftTab) click2(craftTab, sk.w);
+    const craftHeads = [...sk.doc.querySelectorAll('#cargo .chead')].map((h) => h.textContent);
+    check('v1.7 §21: the Craftables tab groups by kind (Basic Parts + Components headers)',
+      craftHeads.some((t) => /Basic Part/.test(t)) && craftHeads.some((t) => /Component/.test(t)));
+    check('v1.7 §21: grouped craftable tiles still carry data-item (tap-to-card intact)',
+      !!sk.doc.querySelector('#cargo [data-item="plate"]') && !!sk.doc.querySelector('#cargo [data-item="servo"]'));
     // ship systems ARE the ring keys: hand over the drives, watch the rings open
     skH.items.set('jumpdrive', 1);
     check('v1.4 rings: the Jump Drive opens the Neighborhood', skH.ascStage() === 1
