@@ -5,3 +5,14 @@ tools/current.json
 work/
 extracted/
 files.zip
+# generated artifacts (proof/UI sheets, sim reports, beta/tester/hammer runs) — CF16-016
+tools/uisheets/
+tools/sheets/
+tools/reports/
+scratchpad/
+tools/beta*.json
+tools/beta*.log
+tools/tester*.json
+tools/hammer*.json
+tools/r1000-*.json
+tools/simreport-*.json
