@@ -86,6 +86,15 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         && gated.every((k) => H._salvageReturns({ cost: { [k]: 1 } }).every((r) => r.k !== k)));
       // the cosmic clock is the slow-evolution cadence, not a 4-minute farm
       check('balance: the cosmic epoch tick is slowed (>= 20 min of play)', H.EPOCH_TICK >= 1200);
+      // POWER CURVE: loot affixes keep scaling into the deep spectrum (they used
+      // to cap at tier 6) — deep-world loot must out-roll shallow-world loot
+      if (H.rollAffix) {
+        const avg = (tier) => { let s = 0, n = 0; for (let sd = 1; sd < 600; sd++) { const a = H.rollAffix(sd, tier); if (a.k === 'yield') { s += a.v; n++; } } return n ? s / n : 0; };
+        const shallow = avg(1), deep = avg(9);
+        check('balance: loot affixes ramp with depth (deep worlds out-roll shallow)', deep > shallow * 1.15);
+        check('balance: affixes never exceed their cap (no over-roll)',
+          [0, 3, 6, 9, 12, 14].every((t) => { for (let sd = 1; sd < 200; sd++) { const a = H.rollAffix(sd, t); const def = H.AFFIX_DEFS.find((d) => d.k === a.k); if (a.v > def.hi + 1e-9) return false; } return true; }));
+      }
     }
 
     // ============ v1.7 PHASE A — universal rarity vocabulary ============
