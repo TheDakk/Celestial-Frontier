@@ -7,7 +7,7 @@ extracted/
 files.zip
 # generated artifacts (proof/UI sheets, sim reports, beta/tester/hammer runs) — CF16-016
 tools/uisheets/
-tools/sheets/
+tools/sheets/*.png
 tools/reports/
 scratchpad/
 tools/beta*.json

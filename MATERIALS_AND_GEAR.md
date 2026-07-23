@@ -364,6 +364,19 @@ DISTINCTIVENESS, not a rebuild.
 Phase B builds the economy first (Materials/Craftables/Gear in `cargo`/`items`, the resolvers, the recipes),
 then the bespoke art registry is laid over it and proof-sheeted.
 
+> **In code (2026-07-23 — MATERIALS DONE, 47/47 bespoke):** the `_MAT_ART` per-material registry (main.js,
+> above `_hdElemIcon`) now holds a bespoke 144px draw fn for every non-gem material, dispatched before the old
+> family forms: structural 15 (riveted plates / tilted wafer / burning ribbon / foil coil / calcite rhombs /
+> salt cubes / meteoric nugget / turbine fan / wire spool / spangled plate / solder+bead / sea nodule / chrome
+> sphere / hazard bricks / forge-hot cube), precious 10 (coin stacks Ag+Au / honeycomb catalyst / facet shard /
+> glowing fuel rod / breeder pellets / battery cell / blue druse / horseshoe magnet / luminous phial), volatiles
+> 12 (fuel cylinder / balloon / graphite lattice / dewar / breather tank / brimstone / matches / hazard flask /
+> slush comet / frost star / steaming block / fusion bottle) — **H2O keeps the classic spear trio** (it IS water
+> ice's identity once everything else moved off it); Vg/Pz keep their faceted-gem masters (they ARE gems). The
+> 7 cosmics are bespoke in the cosmic branch (mini-star / bound coronal loop / genesis clast / ancient monolith /
+> nebula-backed void tear / time-ringed shard / Einstein-ring dark mass). Proof-sheet: `tools/sheets/materials47.js`
+> → reviewed at 47/47 distinct, no recolor pairs. STILL OPEN in §22: gear family×tier masters + ship hull tiers.
+
 ## 23. ARPG item windows — Diablo 2 / Path of Exile feel (Nick, 2026-07-23, LOCKED)
 
 The item tooltip is a first-class feature, modelled on **Diablo 2 and Path of Exile 1 & 2**. Foundation exists:
