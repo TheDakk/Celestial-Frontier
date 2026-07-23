@@ -18995,8 +18995,15 @@ const AFFIX_DEFS=[
 function rollAffix(seed, tier){
   const r=mulberry32(hashInt(seed>>>0, 0xAFF1, (tier||0)+1)>>>0);
   const def=AFFIX_DEFS[(r()*AFFIX_DEFS.length)|0];
-  const t=Math.min(1, (tier||0)/6);
-  const mag=def.lo + (def.hi-def.lo)*(0.4+0.6*r())*(0.7+0.3*t);   /* deeper worlds roll stronger */
+  /* v1.7 POWER CURVE (Nick: "feel more powerful as they go further"): loot must
+     keep scaling into the DEEP spectrum — the old factor capped at tier 6, so
+     affixes went FLAT exactly where the hardest worlds begin. Now the tier factor
+     reaches full strength at tier 9 (deep) and there's a real ramp: a shallow
+     world rolls ~30–60% of the band, a summit world the full hi. Never exceeds
+     hi (so the load-clamp stays a no-op). Tunable via the two constants. */
+  const t=Math.min(1, (tier||0)/9);
+  const roll=0.5+0.5*r();                                 /* 0.5..1.0 of the band */
+  const mag=def.lo + (def.hi-def.lo)*roll*(0.6+0.4*t);    /* tier lifts the reachable magnitude 0.6→1.0 */
   return {k:def.k, v: def.pct? Math.round(mag*100)/100 : Math.round(mag)};
 }
 function _affLabel(a){
