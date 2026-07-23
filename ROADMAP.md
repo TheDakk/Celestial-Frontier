@@ -20,6 +20,20 @@
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
 ## ▶▶▶ SESSION HANDOFF (as of 2026-07-23 — v1.6.4 LIVE; v1.7 ARC IN PROGRESS, source-only) ◀◀◀
+## ★★★ TRAINING FLOW/OVERLAP FIXES (2026-07-23, remote-control session, commit e83aaa9; source-only, fp-safe,
+##   tutorial-only) = DONE. Closed 2 of the 3 deeper per-step FLOW/STUCK bugs from the empty-ring block's "STILL TO
+##   DO" list, via a full 20-step transition audit (each advance checked for a TUT_ALWAYS modal or a graced panel
+##   covering the next step's spot): (c) HAZARD step (12) — the duel RESULT modal (#duelbox is in TUT_ALWAYS) lingered
+##   full-screen over the #hpbar the step points at; hazard.enter now dismisses it (duelBox hidden + setArenaBackdrop
+##   (null)) so the recruit sees the HP bar the parting nip drops — Nick's own suggested fix. (b) FORGE step (17) —
+##   the panel sweep GRACES the character sheet across the advance (the sheet step's allow named its #rank btn), so it
+##   stayed open covering the #cargobtn Shipyard rail; forge.enter now closes the sheet (closeSheet() if sheetOpen) so
+##   the rail is reachable. AUDIT also cleared: step 6 vista-over-codexbtn is INTENTIONAL (text says tap Planetside
+##   first; empty-ring hit-test hides the ring meanwhile) + step 18 graced yard dismisses on the "Got It" tap — neither
+##   is a bug. smoke +2 guards (346/0), fp MATCH (50/50), layout 546/9. ⚠ STILL OPEN: bug (a) "Compendium ON TOP of the
+##   open inventory, stuck" — NO linear-flow repro found (during training the global one-open-per-side closer is DISABLED
+##   `if(!tutDone)return` @~17929, so training leans on _tutGate + _tutPanelSweep; no step opens codex over the sheet in
+##   sequence) → genuinely needs Nick's real-device repro to pin the trigger. Do NOT guess a fix (regression risk).
 ## ★★★ v1.7 PHASE B "THE FORGE" BUILD = IN PROGRESS (2026-07-23; Nick: "sprint through everything, don't wait").
 ##   DONE + VERIFIED (all fp-safe, each committed w/ fp MATCH + smoke + layout 546/9):
 ##   (1) SETTINGS › GAMEPLAY tab + "Confirm before salvaging" toggle (salvageConfirm, default ON, saved `sv`). [7057da2]
@@ -51,13 +65,12 @@
 ##   HP bar — screenshot: hazard step 13) still drew an empty blue pill over nothing you could reach. FIX: full-
 ##   viewport bounds (added rect.right>0 && rect.left<W) + a centre HIT-TEST (document.elementFromPoint — spotlight
 ##   only if the topmost element at the target's centre IS the target or in its family; else draw nothing). fp MATCH,
-##   smoke 344/0 (jsdom already had 0-rects so training LOGIC unaffected). ⚠ STILL TO DO NEXT SESSION — the deeper
-##   per-step FLOW/STUCK bugs Nick flagged (need real-device repro, a full 20-step audit): (a) the "Compendium not
+##   smoke 344/0 (jsdom already had 0-rects so training LOGIC unaffected). ✅ FOLLOW-UP (b)+(c) FIXED 2026-07-23
+##   (commit e83aaa9, see the FLOW/OVERLAP block at the top of this handoff). REMAINING: (a) the "Compendium not
 ##   loading, sitting ON TOP of the open inventory, can't click, stuck" case — a panel-manager one-panel-rule miss
-##   during training (opening a panel over the character sheet without closing it); (b) forge step 18 — the char
-##   sheet is open from step 17 and the Shipyard is behind it, so the player must close the sheet first (the spot
-##   #cargobtn is behind it → now correctly hidden, but the FLOW to reach the Shipyard needs checking); (c) the duel
-##   RESULT overlapping the hazard step (dismiss it when the hazard step enters?). Nick: "go through the WHOLE
+##   during training (opening a panel over the character sheet without closing it) — no linear-flow repro; needs
+##   real-device repro. [DONE (b) forge step 17 — char sheet closed on enter so the Shipyard rail is reachable.]
+##   [DONE (c) duel RESULT dismissed when the hazard step enters.] Nick: "go through the WHOLE
 ##   training module" — CF16-001/009 collision-aware layout + readiness-based mounting. He noted HP-bar/nameplate
 ##   steps already read better (the dodge/darken landed). Audit every step for empty-ring + overlap + stuck.
 ## ★★★ v1.7 CADENCE DECISION (Nick, 2026-07-22): HOLD & BUNDLE — do NOT deploy phases individually. Keep building
