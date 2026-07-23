@@ -37,7 +37,11 @@
 ##       deliberately NOT shown (rides the §5 instance model). smoke 358/0. (5a-inv) MATERIALS TAB GROUPS BY FAMILY
 ##       (§21) [8e59342] — base→volatile→precious→exotic→cosmic under headers, sorted by base tier then qty, trailing
 ##       "Hold capacity" empty-slot block keeps the ample-hold feel + the existing Diablo-bag check. smoke 360/0, layout
-##       546/9. ═══ the registry now PAYS OFF in the UI (card + grouped hold). ═══
+##       546/9. (5a-inv2) CRAFTABLES TAB GROUPS BY KIND (§21) [e681539] — Basic Parts→Components→… via _ITEM_KIND, to
+##       match the Materials layout; Fabricator recipe list ALREADY grouped so left as-is. smoke 362/0, layout 546/9.
+##       ═══ the registry now PAYS OFF in the UI: material card (family+role) + BOTH hold tabs grouped. The fp-SAFE
+##       economy-UI surface is now THOROUGHLY covered — further fp-safe adds are marginal or held (base-rarity display
+##       = the §5 instance-model decision). ═══
 ##   ▶ NEXT — the fp-safe surface is largely covered; the MEANINGFUL next step is the determinism-critical RE-PIN, which
 ##     needs NICK AT A KEYBOARD (re-pin authorization + careful review): (5c) wire the 7 cosmics into DEPOSIT_PROFILES/
 ##     RARE_VEIN by world rarity + (5d) recipes for the new materials + §5 instance-rarity resolution. Optional remaining
