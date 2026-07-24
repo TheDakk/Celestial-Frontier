@@ -6522,13 +6522,41 @@ function _bhSpr(){
   g.beginPath(); g.ellipse(0,0,S*0.112,S*0.155,0,Math.PI*1.15,Math.PI*1.85); g.stroke();   /* over the top */
   g.strokeStyle='rgba(255,170,90,0.30)'; g.lineWidth=S*0.014;
   g.beginPath(); g.ellipse(0,0,S*0.112,S*0.145,0,Math.PI*0.18,Math.PI*0.82); g.stroke();   /* under, dimmer */
-  /* the photon ring — light itself in orbit, razor thin */
-  g.strokeStyle='rgba(255,244,220,0.9)'; g.lineWidth=S*0.008;
+  /* the photon ring — light itself in orbit, razor thin (review: −12% peak) */
+  g.strokeStyle='rgba(255,244,220,0.78)'; g.lineWidth=S*0.008;
   g.beginPath(); g.arc(0,0,S*0.107,0,TAU); g.stroke();
+  /* lensed background stars — faint smeared arcs skimming the photon ring */
+  {
+    const br2=mulberry32(0xB40E);
+    g.lineCap='round';
+    for(let i2=0;i2<6;i2++){
+      const sa2=br2()*TAU, sr2=S*(0.125+br2()*0.05);
+      g.strokeStyle='rgba(235,240,255,'+(0.10+br2()*0.10).toFixed(2)+')';
+      g.lineWidth=(0.7+br2()*0.7);
+      g.beginPath(); g.arc(0,0,sr2,sa2,sa2+0.25+br2()*0.35); g.stroke();
+    }
+  }
+  /* disc turbulence — broken brightness streaks riding the flow */
+  g.save(); g.scale(1,0.42);
+  {
+    const tr2=mulberry32(0xB41F);
+    for(let i2=0;i2<7;i2++){
+      const ta2=tr2()*TAU, trr=S*(0.16+tr2()*0.24);
+      const bright=tr2()<0.5;
+      g.strokeStyle=bright?'rgba(255,225,170,'+(0.10+tr2()*0.10).toFixed(2)+')'
+                          :'rgba(80,30,10,'+(0.10+tr2()*0.10).toFixed(2)+')';
+      g.lineWidth=S*(0.008+tr2()*0.012);
+      g.beginPath(); g.arc(0,0,trr,ta2,ta2+0.5+tr2()*0.9); g.stroke();
+    }
+  }
+  g.restore();
   g.globalCompositeOperation='source-over';
-  /* the horizon — pure black, punched LAST over everything */
-  g.fillStyle='#000';
-  g.beginPath(); g.arc(0,0,S*0.100,0,TAU); g.fill();
+  /* the horizon — black, punched LAST, with a whisper-soft edge (review:
+     the perfectly clean circle read as a sticker) */
+  const hg3=g.createRadialGradient(0,0,S*0.088,0,0,S*0.102);
+  hg3.addColorStop(0,'rgba(0,0,0,1)'); hg3.addColorStop(0.88,'rgba(0,0,0,1)'); hg3.addColorStop(1,'rgba(0,0,0,0)');
+  g.fillStyle=hg3;
+  g.beginPath(); g.arc(0,0,S*0.102,0,TAU); g.fill();
   g.setTransform(1,0,0,1,0,0);
   return _bhSprC=cv;
 }
