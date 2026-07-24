@@ -6311,24 +6311,57 @@ function _quasarSpr(){
   host.addColorStop(1,'rgba(150,165,215,0)');
   g.fillStyle=host; g.beginPath(); g.arc(0,0,S*0.30,0,TAU); g.fill();
   g.restore();
-  /* twin jets along x — tapered wedges of light, lobes at the tips */
+  /* twin RELATIVISTIC jets (visual review 2026-07-24, fix-first #1: the old
+     wedges read as rectangular beams). Each jet: a faint wide emission cone,
+     a narrow core that TAPERS and fades (never a squared cap), bright plasma
+     KNOTS pulsing along it, and slight waviness — the approaching jet drawn
+     brighter and longer than the receding one (relativistic asymmetry). */
   g.globalCompositeOperation='lighter';
+  const jr=mulberry32(0x0A57);
   for(const sgn of [-1,1]){
-    const jg=g.createLinearGradient(C,C,C+sgn*S*0.47,C);
-    jg.addColorStop(0,'rgba(160,195,255,0.55)');
-    jg.addColorStop(0.75,'rgba(140,180,255,0.16)');
-    jg.addColorStop(1,'rgba(140,180,255,0)');
-    g.fillStyle=jg;
+    const bo=(sgn<0)?1.0:0.62;                 /* approaching side brighter/longer */
+    const jlen=S*(sgn<0?0.47:0.40);
+    /* the wide faint cone */
+    const cg2=g.createLinearGradient(C,C,C+sgn*jlen,C);
+    cg2.addColorStop(0,'rgba(150,185,255,'+(0.14*bo).toFixed(2)+')');
+    cg2.addColorStop(1,'rgba(140,180,255,0)');
+    g.fillStyle=cg2;
     g.beginPath();
-    g.moveTo(C+sgn*S*0.05, C-S*0.012);
-    g.lineTo(C+sgn*S*0.47, C-S*0.030);
-    g.lineTo(C+sgn*S*0.47, C+S*0.030);
-    g.lineTo(C+sgn*S*0.05, C+S*0.012);
+    g.moveTo(C+sgn*S*0.04, C);
+    g.lineTo(C+sgn*jlen, C-S*0.062);
+    g.lineTo(C+sgn*jlen, C+S*0.062);
     g.closePath(); g.fill();
-    const lb=g.createRadialGradient(C+sgn*S*0.44,C,0,C+sgn*S*0.44,C,S*0.085);
-    lb.addColorStop(0,'rgba(150,190,255,0.28)'); lb.addColorStop(1,'rgba(150,190,255,0)');
-    g.fillStyle=lb; g.beginPath(); g.arc(C+sgn*S*0.44,C,S*0.085,0,TAU); g.fill();
+    /* the narrow tapering core — wavy segments thinning to nothing */
+    let px2=C+sgn*S*0.045, py2=C, w2=S*0.016;
+    const segs=7;
+    for(let i2=0;i2<segs;i2++){
+      const t2=(i2+1)/segs;
+      const nx=C+sgn*jlen*t2, ny=C+Math.sin(t2*9+(sgn<0?0.4:2.1))*S*0.012;
+      const sg3=g.createLinearGradient(px2,0,nx,0);
+      sg3.addColorStop(0,'rgba(170,205,255,'+((0.50*(1-t2*0.85))*bo).toFixed(2)+')');
+      sg3.addColorStop(1,'rgba(160,195,255,'+((0.50*(1-Math.min(1,t2*1.15)))*bo).toFixed(2)+')');
+      g.strokeStyle=sg3; g.lineWidth=Math.max(0.8, w2*(1-t2*0.8)); g.lineCap='round';
+      g.beginPath(); g.moveTo(px2,py2); g.lineTo(nx,ny); g.stroke();
+      px2=nx; py2=ny;
+    }
+    /* plasma knots — brightness pulses where the jet shocks itself */
+    for(let k2=0;k2<3;k2++){
+      const kt=0.22+jr()*0.62, kx=C+sgn*jlen*kt, ky=C+Math.sin(kt*9+(sgn<0?0.4:2.1))*S*0.012;
+      const kr2=S*(0.012+jr()*0.014)*(1-kt*0.5);
+      const kg2=g.createRadialGradient(kx,ky,0,kx,ky,kr2*2.4);
+      kg2.addColorStop(0,'rgba(210,228,255,'+(0.5*bo*(1-kt*0.6)).toFixed(2)+')');
+      kg2.addColorStop(1,'rgba(170,205,255,0)');
+      g.fillStyle=kg2; g.beginPath(); g.arc(kx,ky,kr2*2.4,0,TAU); g.fill();
+    }
   }
+  /* a hint of the accretion disc around the core (tilted, small) */
+  g.save(); g.translate(C,C); g.rotate(-0.35); g.scale(1,0.32);
+  const dg2=g.createRadialGradient(0,0,S*0.035,0,0,S*0.12);
+  dg2.addColorStop(0,'rgba(0,0,0,0)');
+  dg2.addColorStop(0.4,'rgba(190,205,255,0.30)');
+  dg2.addColorStop(1,'rgba(160,180,255,0)');
+  g.fillStyle=dg2; g.beginPath(); g.arc(0,0,S*0.12,0,TAU); g.fill();
+  g.restore();
   g.globalCompositeOperation='source-over';
   /* the core outshines everything */
   const q=g.createRadialGradient(C,C,0,C,C,S*0.19);
