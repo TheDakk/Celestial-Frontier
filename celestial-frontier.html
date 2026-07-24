@@ -8014,11 +8014,16 @@ function hdBeastBare(G,seed){
   const effRig=G.rig||(_pf&&_pf.rig);
   if(winged && !effRig){ /* membranes first — they take the hide texture with the body */
     const four=(plan===14);   /* Pass 6: plan 14 = FOUR-WINGED — two forewings + two hindwings, distinct from plan 7's single pair */
+    /* v1.7 WINGED PASS: wings must DOMINATE the silhouette (Nick: fliers read
+       as floating quads) — wider span, higher peak, and a scalloped trailing
+       edge so the membrane reads as a wing even under the hide texture. */
     for(const sgn of [-1,1]){
       sg2.globalAlpha=0.85;
       sg2.beginPath();sg2.moveTo(S*0.47,baseY-S*0.05);   // forewing (upper/outer, larger)
-      sg2.quadraticCurveTo(S*(0.47+sgn*0.19),baseY-S*0.34,S*(0.47+sgn*0.30),baseY-S*0.17);
-      sg2.quadraticCurveTo(S*(0.47+sgn*0.15),baseY-S*0.09,S*0.47,baseY-S*0.02);
+      sg2.quadraticCurveTo(S*(0.47+sgn*0.22),baseY-S*0.44,S*(0.47+sgn*0.42),baseY-S*0.20);
+      /* trailing edge scallops back toward the body in two arcs (wing fingers) */
+      sg2.quadraticCurveTo(S*(0.47+sgn*0.30),baseY-S*0.10,S*(0.47+sgn*0.24),baseY-S*0.135);
+      sg2.quadraticCurveTo(S*(0.47+sgn*0.13),baseY-S*0.055,S*0.47,baseY-S*0.02);
       sg2.closePath();sg2.fill();
       if(four){ sg2.globalAlpha=0.72;   // hindwing (lower/inner, offset back so both pairs read)
         sg2.beginPath();sg2.moveTo(S*0.45,baseY-S*0.01);
@@ -8237,6 +8242,11 @@ function hdBeastBare(G,seed){
        count (2/3/4/6/8); Earth/legacy keep four. Legs spread evenly under the body. */
     const _procL=!G._earthName && !G._earthBlend && !G.rig;
     let nL = _procL ? (G.limbN==null?4:G.limbN) : 4;   /* v1.6 B15 (review 0.3, Nick's call): plan is a "land grazer" — the limb gene decides the count, no forced six */
+    /* v1.7 WINGED PASS (Nick: "gas fliers read as floating quads"): an AIRBORNE
+       winged body tucks to the two-leg flight stance — the wings carry it, the
+       legs trail. Grounded winged keep their full limb count (gryphon grammar).
+       Render-only, procedural plans only (Earth rigs never enter this branch). */
+    if(_procL && winged && G.airb && nL>2) nL=2;
     if(nL<=0){ /* legless — the serpent/aqua branches already handled; a squat body just rests */ }
     else if(nL===4 && !_procL){ leg(x0+S*0.05,false);leg(x0+S*0.09,false);leg(x1-S*0.06,true);leg(x1-S*0.02,true); }
     else { const span=x1-x0, LX=t=>x0+S*0.03+span*(0.04+t*0.92);   /* v1.6 B15 grouped-limb anatomy (review 8.3): functional fore/mid/rear groupings, not even stilts */
