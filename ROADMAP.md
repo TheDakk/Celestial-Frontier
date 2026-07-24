@@ -75,12 +75,76 @@
 ##   (6) WINGED BODY-PLAN PASS [d1e11fa] — Nick's "gas fliers read as floating quads": wings now DOMINATE (span
 ##     0.30→0.42, peak −0.44, scalloped trailing edge); AIRBORNE winged tucks to 2-leg flight stance, grounded keeps
 ##     full limbs (gryphon grammar). Proc plans only (Earth rigs untouched). NEW tools/sheets/winged.js reviewed.
-##   (7) §24 EMPIRICAL VALIDATION — archetype balance-sim PASS (all 17 in the 42–58% band; fury 55.6 top, enrage 45.6
-##     floor; healthy counters ±29 max). fast-500 panel CLEAN (0 err/death/softlock, funIndex 6.9 ≥ v1.6's 6.87).
-##     deep-500 panel result: see the batch-close note below (was still running at write time).
+##   (7) §24 EMPIRICAL VALIDATION = COMPLETE, PASS — archetype balance-sim PASS (all 17 in the 42–58% band; fury 55.6
+##     top, enrage 45.6 floor; healthy counters ±29 max). fast-500 CLEAN (0 err/death/softlock, funIndex 6.9 ≥ v1.6's
+##     6.87). deep-500 CLEAN (0 deaths/softlocks; funIndex 5.6 ≥ 5.5; broad gear adoption; drought mean ~36 = the SAME
+##     pre-existing staleness signal, unchanged by v1.7 — the Expedition Contracts suggestion is its designed fix).
+##     The affix ramp + cosmic gear did NOT distort deaths, stage progression, or equipment spread. §24 validated.
 ##   ▶ STILL QUEUED (each its own focused pass): charter-training module · accessibility (CF16-012 pinch-zoom +
 ##     CF-006 keyboard Navigator — needs device verify) · TEXT-POLISH re-pin (fingerprint re-pin — do with Nick) ·
 ##     rest of PROCEDURAL_CHARACTERISTICS pass order (proc HEAD system, tail-types, marquee traits, eye/limb counts).
+## ★★★ 2026-07-24 SECOND BATCH — Nick's device feedback round (commit 96416e7, battery-green, pushed):
+##   training feed/breed bottom-pin (step-10 rail-block screenshot) · WINDOWED cinematic card + newborn portrait in
+##   the breed reveal · planet blending (noise-edge caps w/ real iceAmt weight, sea-ice vs snow, limb atmosphere
+##   haze kills the ortho streak artifacts, 768/1024 HD focused-planet masters — phone capped 768 per heat pass).
+##   Proof: tools/sheets/planets24.js. ⚠ ALL need Nick's real-iPhone verify (esp. planet crispness + reveal window).
+##
+## ▶▶ NICK'S DECISIONS RECORDED (2026-07-24):
+##   · SAVE EXPORT/IMPORT = ON HOLD (Nick: version updates could break imported saves — revisit only WITH a
+##     versioned-migration story: export embeds GAME_VERSION + save schema rev; import runs the same load-time
+##     sanitize/coerce/clamp path as localStorage plus per-version migrations. Do NOT build until designed.)
+##   · GREEN-LIT for this version: Expedition JOURNAL · pinned RECIPE TRACKER · the QoL slate below · TEXT
+##     RE-POLISH (rides a fingerprint re-pin — surgical, Phase-A discipline) · PINCH-ZOOM (CF16-012) · TRAINING
+##     MODULE updates covering the new systems · UI EFFICIENCY pass (direction call below) · breed-reveal window
+##     (SHIPPED above) · planet blending (SHIPPED above).
+##
+## ▶▶ PLANET SPIN — RECOMMENDATION (Nick asked): full surface rotation means re-rasterizing the noise field
+##   every frame (a 512²-1024² loop — a phone heater; against the v1.2 heat mandate). But we can get ~80% of the
+##   living-planet feel for ~zero cost: (1) a separate CLOUD LAYER canvas that drifts horizontally across the
+##   disc (masked to the sphere, wraps) — classic trick, reads as rotation; (2) the terminator ALREADY re-aims at
+##   the star at draw time, so day/night sides genuinely shift as worlds orbit; (3) optional: a slow ~2s periodic
+##   re-render of the FOCUSED planet only with a u-offset (true spin, amortized). Recommend (1)+(2) now, (3) only
+##   if the feel wants more. Motion:Reduced keeps everything still. AWAITING NICK's go.
+##
+## ▶▶ UI EFFICIENCY REVIEW (Nick asked for thoughts — DIRECTION CALL NEEDED before the build):
+##   CURRENT (phone): left name-pill + HP row; right search + bell; RIGHT RAIL of 5 stacked pills (Prime Codex /
+##   Compendium / Star Atlas / Shipyard / Records) each w/ counts; bottom hint bar; floating ? and ⚙. PAIN: the
+##   rail eats the right edge of the world view, collides with training cards (today's step-10 bug class), sits
+##   in the top half (worst thumb reach), and 5 pill+count rows is heavy chrome for a phone.
+##   PROPOSAL A (recommended) — THE BOTTOM DOCK: consolidate the 5 rail pills into a fixed bottom icon dock
+##   (🐾 Compendium · ✦ Atlas · 🛠 Shipyard · 🏆 Records · ◉ Prime) with badge counts. KEEP THE SAME ELEMENT IDS
+##   (codexbtn/logbtn/…) so training spotlights, gates and smoke keep working — only position/shape changes.
+##   Thumb-reachable, frees the whole right edge, standard game grammar. Search collapses to a 🔍 icon that
+##   expands over the topbar; ?+⚙ fold into the dock end or stay floating bottom-right above it. HP slims to a
+##   thread when full, fattens when hurt. COSTS: a uilayout-gate re-pin (546 expectations updated deliberately),
+##   a training-position audit (cards must dodge the DOCK now — bottom-pinned steps flip to top), safe-area
+##   insets. PROPOSAL B (lighter) — keep the rail but collapse it to ICON-ONLY pills (40px squares, counts as
+##   badges), auto-hide while a panel is open, move Prime Codex into Records. PROPOSAL C (minimal) — auto-fade
+##   the rail to 35% while the map moves + the training-dodge hardening only. My call: A is the real fix; B if
+##   you want zero muscle-memory change. NICK PICKS → then it's its own focused session with device verify.
+##
+## ▶▶ CONTENT COMPLETENESS — what 1.6/1.7 still leaves on the table (biomes / Earth catalog / procgen; Nick
+##   asked "anything we left out"): BIOMES: night/dawn/dusk vista variants (pal exists — ties to the landing
+##   salt) · ecotone landings (a rolled COAST between two biomes — the transition zone IS the vista) · aurora on
+##   high-field worlds at night · meteor-shower / eclipse sky events (wxEventFor has the slot) · underground
+##   vistas (karst/lava-tube interiors — a "descend" verb on cave biomes). EARTH CATALOG: seasonal coats (arctic
+##   fox white↔brown by the world's band) · juvenile/adult life stages (size gene exists, no stage read) · sexual
+##   dimorphism pass (subtle crest/size per seed parity) · fungi/microbe shelves are thin vs 1010 fauna. PROCGEN
+##   (the queued PROCEDURAL_CHARACTERISTICS order): procedural HEAD system · tail-types · marquee traits ·
+##   eye/limb-count variety — plus NEW: bioluminescence for abyssal/night creatures (glow markings after dark) ·
+##   symbiosis pairs (a creature and its flora co-spawn in vistas) · predator-prey vista moments (a chase pose
+##   pairing) · true-giant scale storytelling (size 4 creatures should DWARF the herd). None started — pickable.
+##
+## ▶▶ TRAINING MODULE UPDATE — PLAN (Nick green-lit; build next session): the 20-step field training predates
+##   the v1.6/v1.7 systems. Approach: DON'T bloat the golden 20-step path — add a second, OPT-IN "ADVANCED
+##   BRIEFINGS" module (the charter-training pattern): short 3-5 step drills unlocked from the Guide/charters,
+##   one per system — (1) THE HOLD: 3 tabs, materials stack, salvage + confirm toggle; (2) THE FORGE: item
+##   window anatomy (rarity frame, affixes, compare), Equip/Salvage buttons, exceptional stock → Exceptionally
+##   Forged; (3) PROSPECTING: veins on the survey card (biome ✦ / cosmic ✦ / exceptional ✦), rich strikes,
+##   reserves; (4) THE STARS: survey → skim, the remnant's bite, the Corona Scoop; (5) DISCOVERY: rarity hides
+##   until you land/catch/survey (the reveal moment). Each drill = allow-gated like field training, smoke-driven.
+##   ALSO: the existing 20 steps get a light TEXT refresh where stale (rides the text re-pin).
+##
 ## ▶▶ SUGGESTIONS FOR NICK (2026-07-24, per "think about value-adds / what we missed / player QoL" — AWAITING
 ##    GREEN-LIGHT, none started; ordered by impact-per-effort, S/M/L = build size):
 ##    LOOK & FEEL: (a) [M] EXPEDITION JOURNAL — a scrollable strip of your past landings as postcard thumbnails
@@ -96,11 +160,25 @@
 ##      (a11y backstop for the color+frame system). (g) [M] EXPEDITION CONTRACTS — 3 rotating procedurally-picked
 ##      goals from EXISTING verbs ("skim a remnant star", "catalogue 2 jungle fauna", "forge with exceptional
 ##      stock") paying stardust; directly attacks the deep-sim maxDrought staleness signal using charter machinery.
-##    PLAYER QoL: (h) [M] PINNED RECIPE TRACKER — pin a Fabricator target; a small HUD chip shows live missing-
-##      materials while you mine (reads _canCraft delta). The Forge economy's best friend. (i) [S] RECENT-WORLDS
-##      quick-travel chips at the Atlas top (derived from the log — no save change). (j) [S] "NEW" DOTS — unseen
-##      Compendium entries / first-time materials get a dot until viewed (cardExpand-style memory, tiny field).
+##    PLAYER QoL — THE FULL SLATE (Nick 2026-07-24: "list out all the QoL suggestions" — direction APPROVED,
+##    items below are the build queue; ✔=green-lit by name, others pick-and-go):
+##      (h) [M] ✔ PINNED RECIPE TRACKER — pin a Fabricator target; a small HUD chip shows live missing-materials
+##          while you mine (reads _canCraft delta). The Forge economy's best friend.
+##      (a2)[M] ✔ EXPEDITION JOURNAL — past landings as a postcard strip (world · biome · date); stores only
+##          (seed, salt) pairs, re-renders deterministically — zero save bloat.
+##      (i) [S] RECENT-WORLDS quick-travel chips at the Atlas top (derived from the log — no save change).
+##      (j) [S] "NEW" DOTS — unseen Compendium entries / first-time materials get a dot until viewed
+##          (cardExpand-style memory, tiny save field).
 ##      (k) [S] BULK FEED — "Feed until full" on the specimen card (one confirm, consumes flora as today).
+##      (l) [S] BATCH CRAFT — ×5 press-and-hold on parts/components at the Fabricator (never on one-shot systems).
+##      (m) [S] SALVAGE UNDO — a 5s "Undo" on the salvage toast (returns the piece, re-takes the mats) — softer
+##          than the confirm for veterans who toggle confirmation off.
+##      (n) [S] ATLAS QUICK-FILTERS — chips for ★ favorites / 🏴 conquered / ⛏ has-reserves / civilized.
+##      (o) [S] STICKY SHELVES — Compendium remembers the last-open kingdom shelf; the hold remembers its tab
+##          (cardExpand grammar, tiny field).
+##      (p) [S] HP HEAL HINT — the ❤ chip names the best healing flora you currently own in its tooltip.
+##      (q) [M] CHARTER CHIP — the active charter's next goal as a one-line progress chip under the topbar,
+##          tap = open charters (kills the "what was I doing?" reopen loop).
 ## ★★★ v1.7 POLISH / SECURITY / BALANCE / ART-AUDIT SWEEP = DONE (2026-07-23, long remote-control session; each
 ##   commit battery-green: fp MATCH 50/50, smoke ↑396/0, layout 546/9, render 1010/0; all pushed). This sweep sits
 ##   ATOP the cosmic economy (5a/5c/5d/§8), material art (§22 47/47), and the two prior code reviews.
