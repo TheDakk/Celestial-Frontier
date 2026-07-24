@@ -684,6 +684,23 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.getElementById('guideok'));
     check('guide closes via Continue', !visible(gbox));
 
+    // ====== ADVANCED BRIEFINGS (v1.7 — five opt-in drills from the Guide) ======
+    click(doc.getElementById('helpbtn'));
+    click(doc.getElementById('hp-guide'));
+    check('briefings: the Guide menu offers the 🎓 row post-training',
+      !!doc.querySelector('.gbrief') && doc.querySelectorAll('.brbtn').length === 5);
+    doc.querySelector('[data-brief="hold"]').click();
+    check('briefings: starting one closes the Guide and shows the drill card',
+      !visible(gbox) && visible(doc.getElementById('tutbox')) && /The Hold/.test(doc.getElementById('tutbox').textContent));
+    click(doc.getElementById('brnext'));
+    check('briefings: Next advances (2/3, Craftables step)',
+      /2 \/ 3/.test(doc.getElementById('tutbox').textContent));
+    click(doc.getElementById('brnext'));
+    click(doc.getElementById('brnext'));   // Done
+    check('briefings: Done ends cleanly (card + spotlight gone)',
+      !visible(doc.getElementById('tutbox')) && !visible(doc.getElementById('tutspot')));
+    try{ if(H.sheetOpen) doc.getElementById('rank').click(); }catch(_){ }
+
     // ====== BINDER (CF16-P2-001: renderBinder read ABILITY_THEMES from outer scope -> ReferenceError crash) ======
     click(doc.getElementById('codexbtn'));
     check('Compendium opens (post-training)', visible(doc.getElementById('codex')));

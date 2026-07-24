@@ -1663,6 +1663,17 @@
     padding:6px 11px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,207,138,0.35);
     backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);max-width:min(62vw,340px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #chchip b{color:#f0cf8a;font-weight:600}
+  /* Advanced Briefings launcher row in the Guide */
+  .gbrief{display:flex;gap:11px;align-items:flex-start;padding:10px 11px;border-radius:12px;text-align:left;
+    background:rgba(127,208,255,0.06);border:1px solid rgba(127,208,255,0.25);margin-bottom:10px}
+  .gbrief .gi{flex:none;width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+    font-size:15px;background:rgba(143,180,255,0.12)}
+  .gbrief .gt{font:600 12px var(--ui);color:var(--ink)}
+  .gbrief .gd{font-size:10.5px;color:var(--dim);margin-top:2px}
+  .brrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+  .brbtn{padding:6px 12px;border-radius:999px;cursor:pointer;font:600 10.5px var(--ui);letter-spacing:.05em;
+    color:#cfe8ff;background:rgba(127,208,255,0.10);border:1px solid rgba(127,208,255,0.4)}
+  .brbtn:hover{background:rgba(127,208,255,0.2)}
   @media (max-width:520px){
     /* phone: icon + count chips — labels fold away, dots grow into icons */
     #pcdxbtn .lbl, #codexbtn .lbl, #logbtn .lbl, #cargobtn .lbl, #recbtn .lbl{display:none}
@@ -16938,11 +16949,84 @@ function _liveTopics(c){ return c.topics.filter(t=>!DORMANT_TOPICS.has(t.id)); }
 function _guideTopic(id){ if(DORMANT_TOPICS.has(id)) return null; for(const c of GUIDE) for(const t of c.topics) if(t.id===id) return {c,t}; return null; }
 function _guideMenu(){
   const body=document.getElementById('guidebody'); if(!body) return;
-  body.innerHTML=GUIDE.map((c,i)=>
+  /* ADVANCED BRIEFINGS (Nick 2026-07-24: every part of the UI taught) — five
+     opt-in walkthrough drills at the top of the Guide, post-training only */
+  const _brRow = tutDone
+    ? '<div class="gbrief"><span class="gi">🎓</span><span><div class="gt">Advanced Briefings</div>'+
+      '<div class="gd">Guided walkthroughs of the deeper systems:</div>'+
+      '<div class="brrow">'+Object.keys(BRIEFINGS).map(k=>
+        '<button class="brbtn" data-brief="'+k+'" type="button">'+BRIEFINGS[k].t+'</button>').join('')+'</div></span></div>'
+    : '';
+  body.innerHTML=_brRow+GUIDE.map((c,i)=>
     '<div class="gcat" data-gc="'+i+'" role="button" tabindex="0"><span class="gi">'+c.icon+'</span>'+
     '<span><div class="gt">'+c.cat+'</div><div class="gd">'+c.blurb+'</div></span><span class="gn">›</span></div>').join('');
   body.scrollTop=0;
   refocus(body, '.gcat');
+}
+/* ── the briefing runner: tutorial visuals, zero lockdown ── */
+const BRIEFINGS={
+ hold:{t:'🧰 The Hold', steps:[
+  {open:()=>{ try{ if(!sheetOpen) openSheet('stats'); cargoTab='mat'; renderCargo(); }catch(_){ } }, spot:'.ivtabs',
+   x:'Your hold is <b>three tabs</b>. <b>Materials</b> stack by substance — every element you mine lands here automatically, grouped by family, no slot pressure ever.'},
+  {open:()=>{ try{ cargoTab='craft'; renderCargo(); }catch(_){ } }, spot:'.ivtabs',
+   x:'<b>Craftables</b> — parts and components, grouped by kind. These are the rungs between raw ore and finished gear.'},
+  {open:()=>{ try{ cargoTab='gear'; renderCargo(); }catch(_){ } }, spot:'.ivtabs',
+   x:'<b>Gear</b> — the slot grid your pack module grows. Tap any piece for its card; <b>♺ Salvage All Junk</b> clears unequipped commons in one press (a confirm guards it — Settings › Gameplay).'}]},
+ forge:{t:'🛠 The Forge', steps:[
+  {open:()=>{ try{ if(!yardOpen) cargoBtn.click(); }catch(_){ } }, spot:'#yardcard',
+   x:'The <b>Fabricator</b>: three rungs — parts → components → systems & gear. Red materials are what you still need; the <b>📌 pin</b> on any recipe puts a tracker chip on your screen while you mine.'},
+  {x:'Tap any owned item for its <b>card</b>: rarity frame, level, its ✦ <b>affix</b> lines, and a compare against what you&#8217;re wearing. <b>Equip</b> and <b>♺ Salvage</b> are buttons right on the card.'},
+  {x:'<b>✦ Exceptional stock</b> spends first at the Fabricator. Forge a piece <b>entirely</b> from exceptional materials and it arrives <b>Exceptionally Forged</b> — carrying a seeded affix like conquest spoils.'}]},
+ prospect:{t:'⛏ Prospecting', steps:[
+  {x:'Every dead world&#8217;s survey card names its <b>mineral veins</b>. Three SPECIAL veins can join them: the biome&#8217;s gated exotic ✦, a <b>cosmic vein</b> on Primordial-and-up worlds, and the <b>✦ exceptional vein</b> — an ultra-pure seam ~1 world in 7 hides, found only once you land.'},
+  {x:'<b>⛏ Mine</b> runs in bursts and reserves are finite — a world can be mined out forever. Rich strikes hit rare pockets; rigs and gloves multiply every haul; the Auto-Extractor keeps pulling while you&#8217;re away.'},
+  {x:'Exceptional units stack as a <b>✦ sub-count</b> on the same material card and count one grade higher. They are the road to Exceptionally Forged gear.'}]},
+ stars:{t:'☀ The Stars', steps:[
+  {x:'Stars are mines too. <b>Survey</b> one, then <b>☀ Skim Corona</b>: hot bright stars pay <b>Stellar Plasma</b>, dead remnants pay <b>Coronium</b>, cool dwarfs nothing. Each star&#8217;s reachable corona is finite.'},
+  {x:'Mind the dead stars — a remnant&#8217;s corona <b>bites</b> the unshielded for 3 HP a pass, and below 5 HP it refuses you entirely.'},
+  {x:'The <b>Corona Scoop</b> (Shipyard — costs one hand-skimmed Plasma) ends the bite, ladles +1 per pass, and reaches a deeper corona. An exhausted star <b>reopens</b> when you build it.'}]},
+ discover:{t:'🔭 Discovery', steps:[
+  {x:'Rarity <b>hides until the discovery moment</b>: worlds reveal their grade when you <b>land</b>, creatures and plants when you <b>catch</b> them, stars when you <b>survey</b>. Orbit only ever teases.'},
+  {x:'The reveal <b>escalates with the grade</b> — the rarest finds get the biggest flourish. One 10-tier ladder covers everything: creatures, plants, worlds, stars, and gear.'},
+  {open:()=>{ try{ if(!codexOpen) codexBtn.click(); }catch(_){ } }, spot:'#codexbtn',
+   x:'The <b>Compendium</b> can filter and sort by rarity across every kind at once — your rarest finds surface to the top. Unseen specimens carry a blue dot until you open their card.'}]},
+};
+let _brRun=null;   /* {id, i} */
+function startBriefing(id){
+  const b=BRIEFINGS[id]; if(!b || !tutDone) return;
+  try{ const gx=document.getElementById('guidebox'); if(gx) gx.style.display='none'; }catch(_){ }
+  _brRun={id, i:0};
+  _brStep();
+}
+function _brStep(){
+  const b=_brRun&&BRIEFINGS[_brRun.id]; if(!b) return;
+  const s=b.steps[_brRun.i];
+  if(!s){ _brEnd(); return; }
+  try{ if(s.open) s.open(); }catch(_){ }
+  const tb=document.getElementById('tutbox'), sp=document.getElementById('tutspot');
+  tb.className='dodge'; tb.style.display='block';
+  tb.innerHTML='<div class="tt">🎓 '+b.t+' <span style="opacity:.6">'+(_brRun.i+1)+' / '+b.steps.length+'</span></div>'+
+    '<div class="tx">'+s.x+'</div>'+
+    '<div class="tbtns"><button id="brnext" type="button" style="flex:1;padding:9px 0;font:700 11px var(--ui);letter-spacing:.08em;cursor:pointer;border-radius:10px;border:1px solid rgba(127,208,255,0.5);background:rgba(127,208,255,0.12);color:#cfe8ff">'+(_brRun.i+1>=b.steps.length?'Done ✓':'Next ›')+'</button>'+
+    '<span id="brquit" role="button" tabindex="0" style="margin-left:auto;padding:6px 10px;font:600 10px var(--ui);cursor:pointer;color:var(--faint)">End briefing</span></div>';
+  document.getElementById('brnext').addEventListener('click', ()=>{ _brRun.i++; _brStep(); });
+  document.getElementById('brquit').addEventListener('click', _brEnd);
+  /* spotlight: same ring, positioned directly (no lockdown, no dodge logic) */
+  try{
+    const tg=s.spot?document.querySelector(s.spot):null;
+    const r2=tg?tg.getBoundingClientRect():null;
+    if(r2 && r2.width>2 && r2.height>2 && r2.bottom>0 && r2.top<innerHeight){
+      sp.style.display='block';
+      sp.style.left=(r2.left-6)+'px'; sp.style.top=(r2.top-6)+'px';
+      sp.style.width=(r2.width+12)+'px'; sp.style.height=(r2.height+12)+'px';
+    } else sp.style.display='none';
+  }catch(_){ sp.style.display='none'; }
+}
+function _brEnd(){
+  _brRun=null;
+  const tb=document.getElementById('tutbox'), sp=document.getElementById('tutspot');
+  if(tb){ tb.style.display='none'; tb.innerHTML=''; tb.className=''; }
+  if(sp) sp.style.display='none';
 }
 function _guideCat(i){
   const body=document.getElementById('guidebody'); const c=GUIDE[i]; if(!body||!c) return;
@@ -16998,6 +17082,8 @@ function openGuideTopic(id){
   const close=()=>{ g.style.display='none'; if(!seenGuide){ seenGuide=true; queueSave(); } };
   if(ok) ok.addEventListener('click', close);
   if(g) g.addEventListener('click', e=>{ if(e.target===g){ close(); return; }
+    const br=e.target.closest('[data-brief]');
+    if(br){ close(); startBriefing(br.dataset.brief); return; }
     const gb=e.target.closest('[data-gb]');
     if(gb){ if(gb.dataset.gb==='menu') _guideMenu(); else _guideCat(+gb.dataset.gb); return; }
     const gt=e.target.closest('[data-gt]');
