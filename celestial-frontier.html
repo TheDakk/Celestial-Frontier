@@ -6145,7 +6145,11 @@ function _starSurf(seed, col, kind){
   const n=parseInt((col||'#ffe9c8').slice(1),16), cr=(n>>16)&255, cg2=(n>>8)&255, cb=n&255;
   const fbm=makeNoise((seed^0x57A2)>>>0);
   const giant=(kind==='RG'||kind==='SG'), wd=(kind==='WD');
-  const cell=giant?2.1:5.5;              /* convection scale — giants churn HUGE cells */
+  const hot=(kind==='B'||kind==='A'), dwarfM=(kind==='M'||kind==='K'||kind==='BD');
+  /* visual review §3: classes differ by TEXTURE, not just tint — giants churn
+     huge cells, hot stars boil in tight fine granules, red dwarfs mottle dark
+     and throw flares, white dwarfs stay near-smooth */
+  const cell=giant?2.1:(hot?8.5:(dwarfM?6.2:5.5));
   const img=g.createImageData(S,S), d=img.data;
   for(let y=0;y<S;y++){
     const dy=(y-C)/C;
@@ -6154,7 +6158,7 @@ function _starSurf(seed, col, kind){
       if(rr2>1){ d[i+3]=0; continue; }
       const z=Math.sqrt(1-rr2), u=Math.atan2(dx,z)*1.4;
       const gN=fbm(u*cell+3, dy*cell-2, 4);
-      let k=wd ? (0.90+gN*0.12) : (0.72+gN*0.50);          /* granulation contrast */
+      let k=wd ? (0.90+gN*0.12) : (dwarfM ? (0.58+gN*0.66) : (hot ? (0.80+gN*0.34) : (0.72+gN*0.50)));   /* granulation contrast per class */
       const limb=Math.pow(z,0.55);                          /* real limb darkening */
       k*=(0.52+0.48*limb);
       const core=Math.pow(z,2)*(wd?0.5:0.38);              /* white-hot center lift */
@@ -6166,6 +6170,31 @@ function _starSurf(seed, col, kind){
     }
   }
   g.putImageData(img,0,0);
+  /* class signatures over the surface: red dwarfs throw bright FLARE arcs;
+     supergiants loft prominence PLUMES past the limb (visual review §3) */
+  const pr2=mulberry32((seed^0xF1A2)>>>0);
+  if(dwarfM){
+    g.save(); g.globalCompositeOperation='lighter'; g.lineCap='round';
+    for(let i2=0;i2<3;i2++){
+      const fa2=pr2()*TAU, fr2=S*(0.28+pr2()*0.14);
+      g.strokeStyle='rgba(255,220,180,'+(0.18+pr2()*0.16).toFixed(2)+')';
+      g.lineWidth=S*(0.008+pr2()*0.010);
+      g.beginPath(); g.arc(C+Math.cos(fa2)*S*0.06, C+Math.sin(fa2)*S*0.06, fr2, fa2-0.3, fa2+0.3+pr2()*0.4); g.stroke();
+    }
+    g.restore();
+  }
+  if(kind==='SG'||kind==='RG'){
+    g.save(); g.globalCompositeOperation='lighter';
+    const np2=kind==='SG'?4:2;
+    for(let i2=0;i2<np2;i2++){
+      const pa2=pr2()*TAU, px3=C+Math.cos(pa2)*S*0.497, py3=C+Math.sin(pa2)*S*0.497;
+      const pg3=g.createRadialGradient(px3,py3,0,px3,py3,S*(0.028+pr2()*0.026));
+      pg3.addColorStop(0,'rgba('+cr+','+((cg2*0.8)|0)+','+((cb*0.6)|0)+','+(0.20+pr2()*0.12).toFixed(2)+')');
+      pg3.addColorStop(1,'rgba('+cr+','+((cg2*0.8)|0)+','+((cb*0.6)|0)+',0)');
+      g.fillStyle=pg3; g.beginPath(); g.arc(px3,py3,S*(0.028+pr2()*0.026),0,TAU); g.fill();
+    }
+    g.restore();
+  }
   _starSurfCache.set(key, cv);
   return cv;
 }
