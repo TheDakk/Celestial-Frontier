@@ -5971,9 +5971,12 @@ function _rockSet(kind){
    per frame; seeded where variety matters. ---- */
 const _ringSprCache=new Map();
 function _ringSprite(seed, hue){
-  /* translucent banded ring system + Cassini gap, per-seed */
+  /* translucent banded ring system + Cassini gap, per-seed. 512 master
+     (2026-07-24 universe-crispness pass — the rng recipe is size-independent,
+     so doubling the canvas only sharpens; cache stays tiny per system). */
   let sp=_ringSprCache.get(seed); if(sp) return sp;
-  const S=256, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  if(_ringSprCache.size>10){ _ringSprCache.delete(_ringSprCache.keys().next().value); }
+  const S=512, cv=document.createElement('canvas'); cv.width=cv.height=S;
   const g=cv.getContext('2d'), C=S/2;
   const r=mulberry32((seed^0x7717)>>>0);
   const bands=3+((r()*3)|0);
@@ -6009,17 +6012,61 @@ function _ringSprite(seed, hue){
   g.strokeStyle='rgba(0,0,0,0.45)'; g.lineWidth=C*0.02;
   g.beginPath(); g.arc(C,C,rad-C*0.005,0,TAU); g.stroke();
   g.globalCompositeOperation='source-over';
-  if(_ringSprCache.size>200) _ringSprCache.clear();
-  _ringSprCache.set(seed, cv);
+  _ringSprCache.set(seed, cv);   /* FIFO-capped at 10 on entry — 512² masters are ~1MB each */
+  return cv;
+}
+/* v1.7 UNIVERSE-CRISPNESS (2026-07-24, Nick: "do the same for the stars and
+   everything else"): the zoomed-in STAR gets a SURFACE — convection
+   granulation, limb darkening, a white-hot core lift — where before it was a
+   flat gradient blob. Deterministic per star seed; giants (RG/SG) roll huge
+   slow cells, white dwarfs a near-smooth pale disc; NS/MAG/BH/PROTO keep
+   their bespoke renders. Drawn INSIDE the existing corona glow only when the
+   star is big on screen — far views keep the cheap gradient (heat rule). */
+const _starSurfCache=new Map();
+function _starSurf(seed, col, kind){
+  const key=(seed>>>0)+'|'+col+'|'+(kind||'');
+  let sp=_starSurfCache.get(key); if(sp) return sp;
+  if(_starSurfCache.size>6){ _starSurfCache.delete(_starSurfCache.keys().next().value); }
+  const S=512, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  const n=parseInt((col||'#ffe9c8').slice(1),16), cr=(n>>16)&255, cg2=(n>>8)&255, cb=n&255;
+  const fbm=makeNoise((seed^0x57A2)>>>0);
+  const giant=(kind==='RG'||kind==='SG'), wd=(kind==='WD');
+  const cell=giant?2.1:5.5;              /* convection scale — giants churn HUGE cells */
+  const img=g.createImageData(S,S), d=img.data;
+  for(let y=0;y<S;y++){
+    const dy=(y-C)/C;
+    for(let x=0;x<S;x++){
+      const dx=(x-C)/C, rr2=dx*dx+dy*dy, i=(y*S+x)*4;
+      if(rr2>1){ d[i+3]=0; continue; }
+      const z=Math.sqrt(1-rr2), u=Math.atan2(dx,z)*1.4;
+      const gN=fbm(u*cell+3, dy*cell-2, 4);
+      let k=wd ? (0.90+gN*0.12) : (0.72+gN*0.50);          /* granulation contrast */
+      const limb=Math.pow(z,0.55);                          /* real limb darkening */
+      k*=(0.52+0.48*limb);
+      const core=Math.pow(z,2)*(wd?0.5:0.38);              /* white-hot center lift */
+      const rr=Math.sqrt(rr2);
+      d[i  ]=clamp(cr*k+(255-cr)*core,0,255);
+      d[i+1]=clamp(cg2*k+(255-cg2)*core,0,255);
+      d[i+2]=clamp(cb*k+(255-cb)*core,0,255);
+      d[i+3]= rr>0.965 ? Math.max(0,Math.round(255*(1-rr)/0.035)) : 255;   /* feathered chromosphere edge */
+    }
+  }
+  g.putImageData(img,0,0);
+  _starSurfCache.set(key, cv);
   return cv;
 }
 const _moonSprs={};
-function _moonSpr(ti){
+function _moonSpr(ti, hd){
   /* the four moon types as lit spheres — the live view finally matches
      the card thumb: rocky grey, icy blue-white, volcanic gold, captured
-     rubble-brown */
-  let sp=_moonSprs[ti]; if(sp) return sp;
-  const S=28, cv=document.createElement('canvas'); cv.width=cv.height=S;
+     rubble-brown. hd (2026-07-24 universe-crispness): a CLOSE moon renders
+     a 160px master with real crater fields / streaks / crack networks —
+     the 28px far-view master upscaled was the moon version of the chunky
+     Earth. Same rng seed either way; the hd pass just draws MORE of it. */
+  const mk=hd?('h'+ti):ti;
+  let sp=_moonSprs[mk]; if(sp) return sp;
+  const S=hd?160:28, cv=document.createElement('canvas'); cv.width=cv.height=S;
   const g=cv.getContext('2d'), C=S/2;
   const base=['#b9bcc6','#cfe4f2','#e0c060','#8d8678'][ti]||'#c8ccd8';
   const n=parseInt(base.slice(1),16), br2=(n>>16)&255, bg2=(n>>8)&255, bb2=n&255;
@@ -6028,22 +6075,84 @@ function _moonSpr(ti){
   lg2.addColorStop(0,K(1.35)); lg2.addColorStop(0.6,K(1)); lg2.addColorStop(1,K(0.55));
   g.fillStyle=lg2; g.beginPath(); g.arc(C,C,S*0.46,0,TAU); g.fill();
   const r=mulberry32(0xA00E+ti);
-  if(ti===2){ /* volcanic: faint ember cracks */
-    g.strokeStyle='rgba(255,110,50,0.55)'; g.lineWidth=0.9;
-    for(let i=0;i<3;i++){ g.beginPath();
-      g.moveTo(C+(r()-0.5)*S*0.5, C+(r()-0.5)*S*0.5);
-      g.lineTo(C+(r()-0.5)*S*0.6, C+(r()-0.5)*S*0.6); g.stroke(); }
-  } else if(ti===1){ /* icy: bright streaks */
-    g.strokeStyle='rgba(255,255,255,0.4)'; g.lineWidth=0.8;
-    for(let i=0;i<3;i++){ g.beginPath();
-      g.arc(C,C,S*(0.20+r()*0.2), r()*TAU, r()*TAU+0.9); g.stroke(); }
-  } else { /* rocky / captured: crater pocks */
-    for(let i=0;i<4;i++){
-      g.fillStyle='rgba(0,0,0,'+(0.14+r()*0.14).toFixed(2)+')';
-      g.beginPath(); g.arc(C+(r()-0.5)*S*0.5, C+(r()-0.5)*S*0.5, 0.8+r()*1.6, 0, TAU); g.fill();
+  const lw=S/28;                                /* stroke weights scale with the master */
+  g.save(); g.beginPath(); g.arc(C,C,S*0.452,0,TAU); g.clip();   /* details never float off the sphere */
+  if(hd){
+    /* terrain mottling first — big soft tonal patches so the ground reads
+       as ground, not a flat gradient (both albedo directions, low alpha) */
+    for(let i=0;i<9;i++){
+      const mx2=C+(r()-0.5)*S*0.8, my2=C+(r()-0.5)*S*0.8, mr2=S*(0.07+r()*0.10);
+      const mg2=g.createRadialGradient(mx2,my2,0,mx2,my2,mr2);
+      const dkn=r()<0.5;
+      mg2.addColorStop(0,dkn?'rgba(0,0,10,0.10)':'rgba(255,255,255,0.07)');
+      mg2.addColorStop(1,'rgba(0,0,0,0)');
+      g.fillStyle=mg2; g.beginPath(); g.arc(mx2,my2,mr2,0,TAU); g.fill();
     }
   }
-  _moonSprs[ti]=cv; return cv;
+  if(ti===2){ /* volcanic: a few thin fissures + soft caldera glows */
+    g.strokeStyle='rgba(255,110,50,'+(hd?0.40:0.55)+')'; g.lineWidth=(hd?0.5:0.9)*lw;
+    for(let i=0;i<(hd?7:3);i++){
+      const fx2=C+(r()-0.5)*S*0.6, fy2=C+(r()-0.5)*S*0.6;
+      const fl2=hd?S*0.08:S*0.28, fa2=r()*TAU;
+      g.beginPath(); g.moveTo(fx2, fy2);
+      /* a slight elbow so fissures read as cracks, not dashes */
+      const mx3=fx2+Math.cos(fa2)*fl2*0.5, my3=fy2+Math.sin(fa2)*fl2*0.5;
+      g.lineTo(mx3, my3); g.lineTo(mx3+Math.cos(fa2+0.5)*fl2*0.5, my3+Math.sin(fa2+0.5)*fl2*0.5); g.stroke();
+    }
+    if(hd){ for(let i=0;i<4;i++){
+      const gx2=C+(r()-0.5)*S*0.5, gy2=C+(r()-0.5)*S*0.5, gr2=(2.2+r()*2.6)*lw;
+      const gg2=g.createRadialGradient(gx2,gy2,0,gx2,gy2,gr2);
+      gg2.addColorStop(0,'rgba(255,150,60,0.38)'); gg2.addColorStop(1,'rgba(255,150,60,0)');
+      g.fillStyle=gg2; g.beginPath(); g.arc(gx2,gy2,gr2,0,TAU); g.fill(); } }
+  } else if(ti===1){ /* icy: a few faint offset streaks — frost, not engraving */
+    g.strokeStyle='rgba(255,255,255,'+(hd?0.22:0.4)+')'; g.lineWidth=(hd?0.6:0.8)*lw;
+    for(let i=0;i<(hd?4:3);i++){
+      const ox2=hd?C+(r()-0.5)*S*0.34:C, oy2=hd?C+(r()-0.5)*S*0.34:C;
+      g.beginPath(); g.arc(ox2,oy2,S*(0.20+r()*0.2), r()*TAU, r()*TAU+0.9); g.stroke();
+    }
+    if(hd){ for(let i=0;i<6;i++){
+      const px3=C+(r()-0.5)*S*0.6, py3=C+(r()-0.5)*S*0.6, pr3=(1.0+r()*1.6)*lw;
+      const pg3=g.createRadialGradient(px3,py3,0,px3,py3,pr3);
+      pg3.addColorStop(0,'rgba(255,255,255,0.22)'); pg3.addColorStop(1,'rgba(255,255,255,0)');
+      g.fillStyle=pg3; g.beginPath(); g.arc(px3,py3,pr3,0,TAU); g.fill(); } }
+  } else { /* rocky / captured craters. HD: NON-OVERLAPPING placement (rejection
+              sampling), few-large-many-small sizing, and real bowl shading
+              matched to the sprite's upper-left light — no stray rim arcs. */
+    if(!hd){
+      for(let i=0;i<4;i++){
+        g.fillStyle='rgba(0,0,0,'+(0.14+r()*0.14).toFixed(2)+')';
+        g.beginPath(); g.arc(C+(r()-0.5)*S*0.55, C+(r()-0.5)*S*0.55, 0.8+r()*1.6, 0, TAU); g.fill();
+      }
+    } else {
+      const placed=[];
+      for(let t2=0; t2<70 && placed.length<11; t2++){
+        const big=placed.length<2;
+        const prd=S*(big?(0.075+r()*0.045):(0.020+r()*0.032));
+        const px2=C+(r()-0.5)*S*0.76, py2=C+(r()-0.5)*S*0.76;
+        if(Math.hypot(px2-C,py2-C)+prd>S*0.44) continue;               /* stay on the face */
+        if(placed.some(p=>Math.hypot(p.x-px2,p.y-py2)<(p.r+prd)*1.25)) continue;   /* never overlap */
+        placed.push({x:px2,y:py2,r:prd});
+      }
+      for(const cr2 of placed){
+        /* bowl: an across-the-crater gradient — shadowed wall toward the
+           light (upper-left), lit far wall — reads as depth, not a dot */
+        const bg4=g.createLinearGradient(cr2.x-cr2.r,cr2.y-cr2.r,cr2.x+cr2.r,cr2.y+cr2.r);
+        bg4.addColorStop(0,'rgba(0,0,8,0.34)');
+        bg4.addColorStop(0.55,'rgba(0,0,8,0.13)');
+        bg4.addColorStop(1,K(1.22,0.30));
+        g.fillStyle=bg4; g.beginPath(); g.arc(cr2.x,cr2.y,cr2.r,0,TAU); g.fill();
+        /* soft raised rim: a ring gradient just outside the bowl, brightest
+           on the sunlit (lower-right) side — no hard strokes */
+        const rg4=g.createRadialGradient(cr2.x,cr2.y,cr2.r*0.85,cr2.x,cr2.y,cr2.r*1.22);
+        rg4.addColorStop(0,'rgba(0,0,0,0)');
+        rg4.addColorStop(0.55,K(1.18,0.16));
+        rg4.addColorStop(1,'rgba(0,0,0,0)');
+        g.fillStyle=rg4; g.beginPath(); g.arc(cr2.x,cr2.y,cr2.r*1.25,0,TAU); g.fill();
+      }
+    }
+  }
+  g.restore();
+  _moonSprs[mk]=cv; return cv;
 }
 const _dwarfSprs=[];
 function _dwarfSpr(v){
@@ -6307,18 +6416,29 @@ function drawSystem(time){
     const sg=ctx.createRadialGradient(0,0,0,0,0,sys.starR*2.4);
     sg.addColorStop(0,'#ffffff'); sg.addColorStop(0.25,sys.starCol); sg.addColorStop(0.6,sys.starCol+'66'); sg.addColorStop(1,'transparent');
     ctx.fillStyle=sg; ctx.beginPath(); ctx.arc(0,0,sys.starR*2.4,0,TAU); ctx.fill();
+    /* universe-crispness (2026-07-24): a CLOSE star shows its boiling surface
+       inside the corona — far views keep the pure gradient (heat rule) */
+    if(sys.starR*2*c.z*DPR>90){
+      ctx.drawImage(_starSurf(st.star.seed, sys.starCol, sys.kind), -sys.starR, -sys.starR, sys.starR*2, sys.starR*2);
+    }
     if(sys.binary){
       const ba=time*0.25;
       const bx=Math.cos(ba)*sys.binary.sep, by=Math.sin(ba)*sys.binary.sep;
       const bg3=ctx.createRadialGradient(bx,by,0,bx,by,sys.binary.r2*2.4);
       bg3.addColorStop(0,'#ffffff'); bg3.addColorStop(0.25,sys.binary.col2); bg3.addColorStop(1,'transparent');
       ctx.fillStyle=bg3; ctx.beginPath(); ctx.arc(bx,by,sys.binary.r2*2.4,0,TAU); ctx.fill();
+      if(sys.binary.r2*2*c.z*DPR>90){
+        ctx.drawImage(_starSurf((st.star.seed^0xB1)>>>0, sys.binary.col2, ''), bx-sys.binary.r2, by-sys.binary.r2, sys.binary.r2*2, sys.binary.r2*2);
+      }
       if(sys.trinary){
         const ta=time*0.16+2.1;
         const tx2=Math.cos(ta)*sys.trinary.sep, ty2=Math.sin(ta)*sys.trinary.sep;
         const tg3=ctx.createRadialGradient(tx2,ty2,0,tx2,ty2,sys.trinary.r2*2.4);
         tg3.addColorStop(0,'#ffffff'); tg3.addColorStop(0.25,sys.trinary.col2); tg3.addColorStop(1,'transparent');
         ctx.fillStyle=tg3; ctx.beginPath(); ctx.arc(tx2,ty2,sys.trinary.r2*2.4,0,TAU); ctx.fill();
+        if(sys.trinary.r2*2*c.z*DPR>90){
+          ctx.drawImage(_starSurf((st.star.seed^0xC2)>>>0, sys.trinary.col2, ''), tx2-sys.trinary.r2, ty2-sys.trinary.r2, sys.trinary.r2*2, sys.trinary.r2*2);
+        }
       }
     }
   }
@@ -6451,7 +6571,7 @@ function drawSystem(time){
       /* typed lit-sphere sprite (HD coverage pass) — the live moon finally
          matches its card thumb; the terminator overlay below still turns
          the dark side away from the star */
-      ctx.drawImage(_moonSpr(_mt[m]|0), mx-mrad*1.09, my-mrad*1.09, mrad*2.18, mrad*2.18);
+      ctx.drawImage(_moonSpr(_mt[m]|0, mrad*2.18*c.z*DPR>34), mx-mrad*1.09, my-mrad*1.09, mrad*2.18, mrad*2.18);
       ctx.save();
       ctx.beginPath(); ctx.arc(mx, my, mrad, 0, TAU); ctx.clip();
       ctx.fillStyle='rgba(4,6,18,0.55)';
