@@ -1649,6 +1649,9 @@
     padding:3px 7px;cursor:pointer;font-size:12px;opacity:.55;transition:opacity .15s,border-color .15s}
   .bset .bpin:hover{opacity:1}
   .bset .bpin.on{opacity:1;border-color:rgba(255,217,106,0.65);box-shadow:0 0 10px rgba(255,217,106,0.2)}
+  /* new-entry dot (QoL j) — clears once the card has been opened */
+  #codex .sp .newdot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-left:6px;vertical-align:middle;
+    background:#7fd0ff;box-shadow:0 0 8px rgba(127,208,255,0.8)}
   @media (max-width:520px){
     /* phone: icon + count chips — labels fold away, dots grow into icons */
     #pcdxbtn .lbl, #codexbtn .lbl, #logbtn .lbl, #cargobtn .lbl, #recbtn .lbl{display:none}
@@ -13179,8 +13182,12 @@ function passiveDrift(){
   const hy=_storeSpecies(child, a.name+' × '+b.name+' (drift)');
   if(hy){ flashCodex(); if(codexOpen) renderCodex(); }
 }
+/* NEW-ENTRY DOTS (QoL j): a specimen keeps a dot until its card is opened.
+   Save field `seen` (ids only, intersected with the codex on save). */
+const seenSp=new Set();
 function showReveal(entry, isHybrid){
   const gr=entry.grade;
+  if(entry.id && !seenSp.has(entry.id)){ seenSp.add(entry.id); queueSave(); }   /* dot clears on the next natural list render (no mid-scroll re-render) */
   document.getElementById('rev-t').textContent = (isHybrid||entry.hybrid)?'Hybrid specimen':'Compendium specimen';
   const xEl=document.getElementById('rev-x');
   if(xEl) xEl.textContent = pendingReveals.length? ('tap to continue · '+pendingReveals.length+' more — hold to skip all') : 'tap to continue';
@@ -13420,6 +13427,7 @@ function renderCodex(){
     const ccx=creatureCondition(sp.genome);
     return '<div class="sp'+(foil?' iridframe':'')+'" data-pick="'+sp.id+'" role="button" tabindex="0" style="'+bstyle+'"><img class="art" src="'+artOf(sp)+'" alt="">'+
       '<div class="info"><div class="nm">'+(REALM_ICON[realm]||KIND_ICON[sp.kind]||'')+' '+sp.name+
+      (seenSp.has(sp.id)?'':'<span class="newdot" title="Not yet viewed"></span>')+
       (sp.id===scoutId?'<span class="scouttag">SCOUT</span>':'')+
       (ccx.h>0?' <span style="color:'+ccx.col+';font-size:9px">● '+ccx.label+'</span>':'')+
       '</div><div class="ds">'+sp.desc+
@@ -14488,7 +14496,7 @@ function doSave(){
          anyway, and any eviction silently refills a finite reserve —
          entries are two numbers, the cap bought nothing) */
       at:Date.now(),   /* wall-clock save stamp — anchors offline-accrual clamps on load */
-      cargo:[...cargo], cgx:[...cgx], jrn:journal.slice(-24), pin:pinnedRecipe||undefined, ctb:cargoTab, minedw:[...mined], mx:[...mineX], skx:[...skimX], bx:[...bioX], tech:[...techOwned], mines:stats.mines||0,
+      cargo:[...cargo], cgx:[...cgx], jrn:journal.slice(-24), pin:pinnedRecipe||undefined, ctb:cargoTab, seen:[...seenSp].filter(id=>codex.has(id)), minedw:[...mined], mx:[...mineX], skx:[...skimX], bx:[...bioX], tech:[...techOwned], mines:stats.mines||0,
       items:[...items], eq:equip, ea:equipAff, crafts:stats.crafts||0, minedout:stats.minedout||0,
       skims:stats.skims||0, cosmics:stats.cosmics||0,   /* v1.7 (review catch: unsaved, the counters reset each session) */
       asc:ascCh, ascp:ascProg,
@@ -14569,6 +14577,7 @@ function loadSave(){
     for(const kv of (data.cgx||[])){ if(kv && MATERIALS[kv[0]]) cgx.set(kv[0], clamp(num(kv[1]), 0, cargo.get(kv[0])||0)); }
     if(typeof data.pin==='string' && ITEM_BY.has(data.pin)) pinnedRecipe=data.pin;   /* pinned recipe — absent/unknown ⇒ none */
     if(data.ctb==='mat'||data.ctb==='craft'||data.ctb==='gear') cargoTab=data.ctb;   /* sticky hold tab (QoL o) */
+    for(const id of (data.seen||[])) if(typeof id==='string') seenSp.add(id.slice(0,24));   /* new-dots (QoL j) */
     /* journal: strings clamped, count capped — absent ⇒ empty */
     if(Array.isArray(data.jrn)) for(const j of data.jrn.slice(-24)){
       if(j && j.n) journal.push({s:num(j.s)|0, n:String(j.n).slice(0,28), w:String(j.w||'').slice(0,16), t:clamp(num(j.t),0,4102444800000)});
