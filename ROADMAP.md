@@ -36,6 +36,15 @@
 ##     Wheel/double-tap now ease toward a cursor-anchored TARGET each frame (_stepZoomGlide, 0.32); pinch/programmatic
 ##     stay immediate; Motion:Reduced instant. ⚠ FEEL change — needs Nick's interactive check on a wheel device.
 ##   (4) STAR CLASSES [f662e54]: MAG/PROTO/RG-SG made distinct (see the sweep entry below). Docs all synced [3978f07].
+##   (5) THE LANDING ROLL [183e757]: Earth was SPECIAL-CASED OUT of the %-weighted landing roll (always the same
+##     vista) and the roll only changed per 20-min epoch. Now: Earth rolls its REAL surface mix (_EARTH_LANDING —
+##     ~71% seas incl. coral/archipelago/storm belts, ~29% land split temperate/jungle/savanna/tundra/wetland/karst/
+##     saltflat; histogram verified: opensea 55%, savanna 7.5%…), the salt re-rolls PER LANDING (_vistaSalt =
+##     epoch*997+stats.landings), and the vista's RESIDENTS match the rolled region (openLandingVista rolls ONCE →
+##     xtra.wb; fauna filtered by the biome's rig families + per-landing seeded shuffle). Terran sea-rolls show the
+##     shore scene; coral/abyssal keep their reef/deep routes. Anchor biome (veins/odds/generation) untouched — fp
+##     MATCH. ⚠ training's first Earth landing rolls too (~55% ocean splash-down) — kept, flagged for Nick. Proof:
+##     tools/sheets/earthlandings.js.
 ##   ▶ FLAGGED for a focused reviewed pass (NOT done — catalog-affecting): WINGED body plan 7/14 (gas fliers read as
 ##     floating quads — real wings = big payoff for fliers + breeding-program creatures; #2 on PROCEDURAL_CHARACTERISTICS
 ##     pass order) · the rest of that pass order (procedural HEAD system, tail-types, marquee traits, eye/limb counts).
