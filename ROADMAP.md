@@ -83,6 +83,26 @@
 ##   ▶ STILL QUEUED (each its own focused pass): charter-training module · accessibility (CF16-012 pinch-zoom +
 ##     CF-006 keyboard Navigator — needs device verify) · TEXT-POLISH re-pin (fingerprint re-pin — do with Nick) ·
 ##     rest of PROCEDURAL_CHARACTERISTICS pass order (proc HEAD system, tail-types, marquee traits, eye/limb counts).
+## ▶▶▶ 2026-07-24 SIXTH DIRECTIVE — PROOFSET-2 REVIEW TRIAGE (PROOFSET2_REVIEW_2026-07-24.md saved to
+##   repo; Nick: 'we need to get this right and proceed'). VERDICT ACCEPTED: identity fidelity is the gap, not
+##   rendering. THE SIGNATURE-FEATURE PASS is the program of record, four enforced rules:
+##   (R1) every named Earth animal gets MANDATORY anatomical identifiers (recipe-declared, silhouette-level);
+##   (R2) every named Earth plant gets a MANDATORY identity organ readable at icon size;
+##   (R3) every landing biome gets a DISTINCT environmental composition (coral/mangrove/swamp/tundra scenes
+##        currently share the inland-settlement template — scene recipes per biome family);
+##   (R4) every procedural trait gets a MINIMUM READABLE FOOTPRINT (horn/mandible/eye-count/limb-offset
+##        minimums; translucent = soft organs not machinery rectangles; wing sweep in flight).
+##   EXECUTION ORDER: (1) MARKINGS layer in the pelt pass (mask/eye-patch/leg-stripes/chest-mark/belly-
+##   contrast, recipe-declared) + flagged-fauna recipes (panda, orca, okapi, bears, walrus tusks, elephant
+##   TRUNK as real rig anatomy, ape differentiation: arm length/stance/bulk, bird sub-silhouettes: swan-swim,
+##   raptor, puffin bill, hummingbird scale) → re-proof pages. (2) FLORA identity-organ system (signature
+##   fruit/flower/rhizome/pod per plant — rafflesia/banana/coffee/cacao/durian/papaya/spice-row first) —
+##   the review's #1 blocker. (3) LANDING-SCENE recipes per biome (R3). (4) Procedural trait minimums (R4).
+##   PUSHBACKS RECORDED: live-view ring 'seam' = the LIVEVIEW MOCK's crude clip (in-game split+shadows are
+##   correct) → FIX THE SHEET so proofs reflect the game; deep-space heading overlap = sheet cosmetic → fix;
+##   70/30 landing spread claim → validate with a 10k-roll histogram (classification: coral/archipelago/marsh
+##   count as SEA in the 70). Star-class SIZE differences exist in-game (sheet renders equal-size — add true
+##   relative scale row to the sheet so reviews stop re-flagging it).
 ## ▶▶▶ 2026-07-24 FIFTH DIRECTIVE (Nick) — THE 1.7 POLISH SUPER-QUEUE. Inputs: VISUAL_REVIEW_2026-07-24.md
 ##   (Nick's upload, saved to repo) + "advanced briefings + content completeness + ALL QoL + full Earth-catalog
 ##   one-by-one polish + procedural-trait pass + breeding cohesion, proof sheets when done".
