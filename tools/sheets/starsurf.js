@@ -4,11 +4,12 @@
 // must read as a boiling sphere, not a gradient blob; giants churn huge
 // cells; a close moon shows a real crater field / stripe network.
 module.exports = {
-  width: 1500, height: 900,
-  lift: ['mulberry32', 'hashInt', 'makeNoise', 'clamp', '_starSurfCache', '_starSurf', '_moonSprs', '_moonSpr'],
+  width: 1500, height: 1240,
+  lift: ['mulberry32', 'hashInt', 'makeNoise', 'clamp', '_starSurfCache', '_starSurf', '_moonSprs', '_moonSpr',
+         '_ringSprCache', '_ringSprite'],
   draw: `function(g){
     window.TAU=Math.PI*2;
-    g.fillStyle='#07080f'; g.fillRect(0,0,1500,900);
+    g.fillStyle='#07080f'; g.fillRect(0,0,1500,1240);
     g.font='12px monospace';
     try{
     const stars=[
@@ -31,6 +32,13 @@ module.exports = {
       g.fillStyle='#8892b8'; g.fillText(names[ti], x, 352);
       g.drawImage(_moonSpr(ti,false), x, 360, 220, 220);
       g.drawImage(_moonSpr(ti,true),  x, 600, 220, 220);
+    }
+    g.fillStyle='#ffd96a'; g.fillText('RINGS — 512 masters (band recipes are per-seed: count, widths, Cassini gap; sand vs ice hue)', 30, 880);
+    const rseeds=[[136,'224,206,166'],[9021,'224,206,166'],[5150,'188,212,232'],[777,'188,212,232']];
+    for(let i2=0;i2<rseeds.length;i2++){
+      const x=30+i2*370;
+      g.fillStyle='#8892b8'; g.fillText('seed '+rseeds[i2][0]+(i2>1?' (icy)':' (sandy)'), x, 900);
+      g.drawImage(_ringSprite(rseeds[i2][0], rseeds[i2][1]), x, 908, 340, 340);
     }
     }catch(e){ g.fillStyle='#ff6a5a'; g.fillText('ERROR: '+String(e).slice(0,160), 20, 40); }
   }`,

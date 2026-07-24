@@ -5498,7 +5498,10 @@ const _decoSpr=new WeakMap();
 function decoSprite(dc){
   let sp=_decoSpr.get(dc);
   if(sp) return sp;
-  const S=128, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  /* 256 masters (2026-07-24 deep-space crispness): nebulae are BIG map
+     features — zoomed in, the old 128 went soft. All geometry is C-relative,
+     so doubling only sharpens. */
+  const S=256, cv=document.createElement('canvas'); cv.width=cv.height=S;
   const g=cv.getContext('2d'), C=S/2;
   const r=mulberry32(hashInt((dc.x*7)|0,(dc.y*7)|0,dc.k==='mol'?5:9)>>>0);
   if(dc.k==='h2'||dc.k==='neb'){
@@ -5513,9 +5516,9 @@ function decoSprite(dc){
       g.fillStyle=ng;g.beginPath();g.arc(bx,by,br,0,TAU);g.fill();
     }
     for(let i2=0;i2<10;i2++){  /* embedded newborn stars */
-      const a2=r()*TAU, d2=Math.pow(r(),1.6)*C*0.5;
+      const a2=r()*TAU, d2=Math.pow(r(),1.6)*C*0.5, sp2=1.4*(S/128);
       g.fillStyle='rgba(255,255,255,'+(0.35+r()*0.5).toFixed(3)+')';
-      g.fillRect(C+Math.cos(a2)*d2, C+Math.sin(a2)*d2, 1.4, 1.4);
+      g.fillRect(C+Math.cos(a2)*d2, C+Math.sin(a2)*d2, sp2, sp2);
     }
   } else if(dc.k==='mol'){
     /* dark clouds DIM the starlight — they must never read as black
@@ -5534,7 +5537,7 @@ function decoSprite(dc){
       ng.addColorStop(1,'rgba(22,16,32,0)');
       g.fillStyle=ng;g.beginPath();g.arc(bx,by,br,0,TAU);g.fill();
     }
-    g.strokeStyle='rgba(140,112,170,0.12)';g.lineWidth=1;  /* faint rim light */
+    g.strokeStyle='rgba(140,112,170,0.12)';g.lineWidth=S/128;  /* faint rim light */
     g.beginPath();g.arc(C,C,C*0.5,r()*TAU,r()*TAU+2.0);g.stroke();
   } else if(dc.k==='rem'){
     g.globalCompositeOperation='lighter';
@@ -6266,7 +6269,7 @@ function _quasarSpr(){
      haze, blinding accretion core, twin tapered jets ending in faint
      lobes — was a per-frame gradient dot with a flat stroked line */
   if(_quasarSprC) return _quasarSprC;
-  const S=160, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const S=320, cv=document.createElement('canvas'); cv.width=cv.height=S;   /* 2026-07-24 deep-space crispness: 2× master, all coords S-relative */
   const g=cv.getContext('2d'), C=S/2;
   /* the host, almost drowned by its own core */
   g.save(); g.translate(C,C); g.scale(1,0.42);
@@ -6302,19 +6305,75 @@ function _quasarSpr(){
   g.fillStyle=q; g.beginPath(); g.arc(C,C,S*0.19,0,TAU); g.fill();
   return _quasarSprC=cv;
 }
+let _bhSprC=null;
+function _bhSpr(){
+  /* the black hole, done right (2026-07-24 deep-space pass): a BAKED
+     cinematic render replacing the per-frame gradient dot — tilted
+     accretion disc with a DOPPLER-BEAMED approaching side, the far side of
+     the disc LENSED into a ring arcing over and under the hole, a razor
+     photon ring, and the pure-black horizon punched last. One sprite,
+     drawImage'd (heat rule). */
+  if(_bhSprC) return _bhSprC;
+  const S=256, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  g.translate(C,C); g.rotate(0.5);
+  /* ambient heat-glow bath */
+  const amb=g.createRadialGradient(0,0,S*0.08,0,0,S*0.48);
+  amb.addColorStop(0,'rgba(255,150,60,0.20)');
+  amb.addColorStop(0.5,'rgba(255,110,40,0.07)');
+  amb.addColorStop(1,'rgba(255,110,40,0)');
+  g.fillStyle=amb; g.beginPath(); g.arc(0,0,S*0.48,0,TAU); g.fill();
+  /* the flat disc — hot inner rim cooling outward */
+  g.save(); g.scale(1,0.42);
+  const ad=g.createRadialGradient(0,0,S*0.115,0,0,S*0.44);
+  ad.addColorStop(0,'rgba(0,0,0,0)');
+  ad.addColorStop(0.18,'rgba(255,214,150,0.95)');
+  ad.addColorStop(0.42,'rgba(255,150,50,0.60)');
+  ad.addColorStop(0.75,'rgba(210,90,30,0.26)');
+  ad.addColorStop(1,'rgba(180,70,25,0)');
+  g.fillStyle=ad; g.beginPath(); g.arc(0,0,S*0.44,0,TAU); g.fill();
+  /* Doppler beaming — the side spinning TOWARD you blazes white-gold */
+  g.globalCompositeOperation='lighter';
+  const dop=g.createLinearGradient(-S*0.40,0,S*0.12,0);
+  dop.addColorStop(0,'rgba(255,235,190,0.55)');
+  dop.addColorStop(0.55,'rgba(255,200,120,0.16)');
+  dop.addColorStop(1,'rgba(255,200,120,0)');
+  g.fillStyle=dop; g.beginPath(); g.arc(0,0,S*0.44,0,TAU); g.fill();
+  g.restore();
+  /* the LENSED far side — the disc behind the hole bent into a halo that
+     HUGS the horizon, brightest at the apex over the top (the Interstellar
+     silhouette; first draft's wide loop read as a detached ring toy) */
+  g.globalCompositeOperation='lighter';
+  g.lineCap='round';
+  g.strokeStyle='rgba(255,200,120,0.62)'; g.lineWidth=S*0.022;
+  g.beginPath(); g.ellipse(0,0,S*0.112,S*0.155,0,Math.PI*1.15,Math.PI*1.85); g.stroke();   /* over the top */
+  g.strokeStyle='rgba(255,170,90,0.30)'; g.lineWidth=S*0.014;
+  g.beginPath(); g.ellipse(0,0,S*0.112,S*0.145,0,Math.PI*0.18,Math.PI*0.82); g.stroke();   /* under, dimmer */
+  /* the photon ring — light itself in orbit, razor thin */
+  g.strokeStyle='rgba(255,244,220,0.9)'; g.lineWidth=S*0.008;
+  g.beginPath(); g.arc(0,0,S*0.107,0,TAU); g.stroke();
+  g.globalCompositeOperation='source-over';
+  /* the horizon — pure black, punched LAST over everything */
+  g.fillStyle='#000';
+  g.beginPath(); g.arc(0,0,S*0.100,0,TAU); g.fill();
+  g.setTransform(1,0,0,1,0,0);
+  return _bhSprC=cv;
+}
 let _wormSprC=null;
 function _wormSpr(){
   /* the wormhole as gravitational lensing: a dark throat inside a warped
      Einstein ring of smeared violet/cyan starlight (was: two stroked
      ellipses — chart chrome on a physical landmark) */
   if(_wormSprC) return _wormSprC;
-  const S=96, cv=document.createElement('canvas'); cv.width=cv.height=S;
-  const g=cv.getContext('2d'), C=S/2, r=mulberry32(0x3072);
+  /* 192 master (2026-07-24 deep-space crispness) — the throat zoomed-in went
+     soft at 96; blob radii scale with the master (U) */
+  const S=192, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2, r=mulberry32(0x3072), U=S/96;
   g.globalCompositeOperation='lighter';
   for(let i=0;i<44;i++){
     const a=r()*TAU;
     const ex=C+Math.cos(a)*S*0.30, ey=C+Math.sin(a)*S*0.135;
-    const br=1.4+r()*3.2;
+    const br=(1.4+r()*3.2)*U;
     const col=r()<0.5?'190,150,255':'120,220,255';
     const ng=g.createRadialGradient(ex,ey,0,ex,ey,br*2.4);
     ng.addColorStop(0,'rgba('+col+','+(0.22+r()*0.28).toFixed(2)+')');
@@ -6325,9 +6384,9 @@ function _wormSpr(){
   for(let i=0;i<14;i++){
     const a=r()*TAU;
     const ex=C+Math.cos(a)*S*0.42, ey=C+Math.sin(a)*S*0.20;
-    const ng=g.createRadialGradient(ex,ey,0,ex,ey,3.4);
+    const ng=g.createRadialGradient(ex,ey,0,ex,ey,3.4*U);
     ng.addColorStop(0,'rgba(160,190,255,0.14)'); ng.addColorStop(1,'rgba(160,190,255,0)');
-    g.fillStyle=ng; g.beginPath(); g.arc(ex,ey,3.4,0,TAU); g.fill();
+    g.fillStyle=ng; g.beginPath(); g.arc(ex,ey,3.4*U,0,TAU); g.fill();
   }
   g.globalCompositeOperation='source-over';
   const tg2=g.createRadialGradient(C,C,0,C,C,S*0.17);
@@ -6371,18 +6430,9 @@ function drawSystem(time){
   }
   /* the primary */
   if(sys.kind==='BH'){
-    ctx.save(); ctx.rotate(0.5); ctx.scale(1,0.42);
-    const ad=ctx.createRadialGradient(0,0,10,0,0,46);
-    ad.addColorStop(0,'rgba(0,0,0,0)');
-    ad.addColorStop(0.4,'rgba(255,160,50,0.95)');
-    ad.addColorStop(0.7,'rgba(255,110,30,0.45)');
-    ad.addColorStop(1,'transparent');
-    ctx.fillStyle=ad; ctx.beginPath(); ctx.arc(0,0,46,0,TAU); ctx.fill();
-    ctx.restore();
-    ctx.fillStyle='#000';
-    ctx.beginPath(); ctx.arc(0,0,11,0,TAU); ctx.fill();
-    ctx.strokeStyle='rgba(255,190,90,0.9)'; ctx.lineWidth=1.6;
-    ctx.beginPath(); ctx.arc(0,0,12,0,TAU); ctx.stroke();
+    /* the baked cinematic render — tilt/lensing/Doppler live in the sprite
+       (2026-07-24 deep-space pass; was a per-frame gradient + stroked ring) */
+    ctx.drawImage(_bhSpr(), -55, -55, 110, 110);
   } else if(sys.kind==='NS'||sys.kind==='MAG'){
     /* baked beam sprite, rotated (heat rule — was two gradients/frame) */
     ctx.save(); ctx.rotate(time*3);
