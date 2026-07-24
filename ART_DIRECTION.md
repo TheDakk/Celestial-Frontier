@@ -357,6 +357,28 @@ Current vistas read as beautiful-but-sparse backdrops. Fix = **ecological occupa
 - **`shipImage` / `paperdollAvatar`** — 2x backing store for crispness.
 - **Star thumbnails** — MAG (field loops), PROTO (dusty disk + jets), and swollen RG/SG
   giants.
+- **GAS BIOMES ARE ALIVE** — `_hdDeckScene` now paints a gas giant's real aerial ecosystem:
+  floating cloud-gardens (its `af` flora via `_hdPlantBare`), gas-bladder colonies +
+  aeroplankton, and its real AIR CREATURES as flying silhouettes drawn from `hdBeastBare`
+  (same genome as their Compendium portrait). `openLandingVista` threads `airGenes` /
+  `aerFlora` through `xtra` → `showVistaBox` → `_hdDeckScene`. Gated on **any aerial life**
+  (was gated on the ~always-zero macrofauna air-count, so gas giants looked lifeless).
+- **VISTA FLORA = THE REAL SPECIES** — extracted `_floraSpx(g)` + `hdFloraBare(g,seed)` (the
+  flora parallel to `hdBeastBare`) out of `hdPortraitFlora` (byte-identical refactor). The
+  vista's plant canvases are now the world's ACTUAL terrestrial flora species when it carries
+  flora genes (a desert draws its cacti, a jungle its broadleaves, a meadow its ferns) — the
+  same art as their Compendium page. Flora-less worlds keep the tuned generic dressing
+  (fallback). Coherence: the plant on the planet is the one in your Compendium, matching how
+  creatures already share `hdBeastBare` across portrait/card/vista.
+- **THE LANDING ROLL (vista side)** — the touch-down REGION is rolled per landing and the
+  vista's fauna are picked to MATCH it: species whose rig family belongs in the rolled biome
+  (BIOME_SETS fauna list), seeded-shuffled per landing so repeat descents meet different
+  locals. A terran world whose roll came up a SEA region shows the shore/sea scene. (Generation
+  side of the roll: WORLD_GENERATION.md `biomeForLanding`.)
+- **RIVERS ON SETTLED WORLDS** — on iron/town worlds (the only ones with roads) the seeded
+  river now keeps to its OWN bank the whole way down (spring pulled to the mouth side,
+  meanders damped, bowing outward only) so it never crosses the road or the field quads; wild
+  worlds keep full meander freedom.
 
 ---
 

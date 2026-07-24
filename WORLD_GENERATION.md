@@ -1,6 +1,6 @@
 # Celestial Frontier — World & Universe Generation
 
-**STATUS:** matches code as of 2026-07-20 (verified against main.js).
+**STATUS:** matches code as of 2026-07-23 (verified against main.js).
 **Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it. Content catalogs live in BIOME_ATLAS.md; art rules in ART_DIRECTION.md.
 
@@ -93,6 +93,13 @@ A pure layer *inside* each of the 8 types, seeded from its **own** hash stream s
 - Candidates = `BIOME_SETS[P.type]` filtered to those whose `bands` include the current band (`frozen` reads as `cold`); if none qualify, the full set is used.
 - Weighted pick via `r = mulberry32(hashInt(P.seed, 0xB10E, 7))`. Rare biomes (`rare:1`) carry tiny weights, so wonders stay wonders.
 - The chosen biome supplies the card's Biome flavor line, its `land` % (feeds the landing/descent ladder, `descentTierFromPct` ~7550), and the vista's scene key.
+
+### 2.7a The landing roll — `biomeForLanding(P, band, salt)`
+Distinct from the anchor biome above, this rolls the **touch-down region** you actually descend into, `%`-weighted by the world's `biomeComposition`, and is now **re-rolled PER LANDING** via a salt of `epoch*997 + stats.landings` (was per-20-min-epoch only, so repeat descents in the same epoch always looked identical).
+- **EARTH (seed 133)** was previously special-cased OUT of this roll (always the same vista); it now rolls its OWN real-surface composition `_EARTH_LANDING` (keys resolved from `BIOME_SETS`): **~71% water** (opensea 58 / coral 4 / archipelago 5 / stormsea 3 / volcisle 1) and **~29% land** (temperate 7 / jungle 4.5 / savanna 4.5 / tundra 4 / saltflat 2 / karst 2 / marsh 1.5 / swamp 1.5 / mangrove 1.5). Histogram over 200 rolls verified opensea ~55%, savanna ~7.5%, temperate ~7%, jungle ~5%, tundra ~4%.
+- **CRITICAL — presentation only.** This picks the landing *scene/region*; the world's ANCHOR biome (`biomeFor`, which drives veins, deposits, capture odds, and all generation) is untouched, so determinism / fingerprint hold (**fp MATCH 50/50**).
+- **Caveat:** training's first Earth landing now also rolls, so it has a ~55% chance of an ocean splash-down rather than the old fixed land vista.
+- The vista then picks fauna to match the rolled region (see ART_DIRECTION.md "THE LANDING ROLL (vista side)").
 
 ### 2.8 World → vista (reference only; detail in ART_DIRECTION.md)
 On planetfall the descriptor's facts (band, biome, water state, life, civ era, star color, moons, rings) are passed to `hdVista(opts)` (~6260) to paint a 960×430 surface scene, or to `_hdDeckScene` (~7120, gas giants) / `_hdAbyssScene` (~6118, ocean/abyssal). The vista re-seeds its own presentation-only streams (`seed^0x9d7`, `^0x1A70`, `^0x0B0E`) so two same-type worlds are different paintings while staying per-seed deterministic. **These are art layers, not world generation** — art rules live in ART_DIRECTION.md.
