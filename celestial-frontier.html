@@ -10877,6 +10877,16 @@ function _hdDeckScene(o){
   if(o.titan) _hdTitan(g, 'deck', o.seed, hz, W, H, night);
   return cv;
 }
+/* sea-region biome keys that flip a terran landing to the shore/sea scene
+   (coral and abyssal route to their own dedicated scenes) */
+const _SEA_WB=new Set(['opensea','archipelago','stormsea','volcisle','milksea']);
+/* the landing-region roll salt: the epoch keeps long-time drift, the landings
+   counter re-rolls EVERY descent (vista/presentation only — generation, veins
+   and odds all key off the world's anchor biome, untouched) */
+function _vistaSalt(){
+  const ep=(typeof COSMIC_EPOCH!=='undefined')?COSMIC_EPOCH:0;
+  return ep*997 + ((stats&&stats.landings)||0);
+}
 function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xtra){
   /* the card drives the picture: type → scene, ACTIVE weather token →
      overlay (the Weather row is climate; spells come and go), snow climate
@@ -10928,8 +10938,19 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
   /* the world's biome dresses the scene (v1.3.5 Batch 5b) — same law,
      finer grain: the Biome row's words become the picture's features */
   let wb5=null;
-  try{ const _epL=(typeof COSMIC_EPOCH!=='undefined')?COSMIC_EPOCH:0;   /* v1.6: land in a %-weighted biome from the world's composition (varies by epoch) */
-    const b5=biomeForLanding(P, climateBand(P, st.sys, (st.planet&&st.planet.orb)||100), _epL); if(b5) wb5=b5; }catch(_){ }
+  try{
+    /* v1.7 (Nick): the landing region re-rolls PER LANDING, not per 20-min epoch
+       — every descent can find a different face of the world. The caller may
+       pass the biome it already rolled (xtra.wb — openLandingVista rolls once so
+       the species pick matches the scenery); otherwise roll here. */
+    if(xtra && xtra.wb){ wb5=xtra.wb; }
+    else{
+      const b5=biomeForLanding(P, climateBand(P, st.sys, (st.planet&&st.planet.orb)||100), _vistaSalt()); if(b5) wb5=b5;
+    }
+  }catch(_){ }
+  /* a terran world whose landing rolled a SEA region shows the sea scene (Earth's
+     70% water — you splash down offshore; coral/abyssal keep their own routes) */
+  if(wb5 && (type==='terran') && _SEA_WB.has(wb5.k)) biome='island';
   const evt5=wxEventFor(P, wb5?wb5.k:null, wx);
   /* the Abyssal world goes BENEATH the waves — the first sub-surface
      vantage (5b-ii); no sky, no weather, biolume for light */
@@ -11201,13 +11222,35 @@ function biomeComposition(P, band){
   if(total<=0) return pool.map(b=>({biome:b,pct:1/pool.length}));
   return weighted.map(x=>({biome:x.biome, pct:x.w/total})).sort((a,b)=>b.pct-a.pct);
 }
+/* EARTH'S OWN landing mix (Nick: "when people land on Earth it shouldn't be the
+   same picture every time — a % chance per biome by how much of the planet it
+   covers"). Real-Earth surface shares, expressed in the game's biome keys:
+   ~71% water (open sea dominating, reefs/archipelagos/storm belts/volcanic
+   isles), ~29% land split across forest/jungle/savanna/tundra/wetland/karst/
+   salt-desert. Keys resolve from BIOME_SETS so every entry carries its full
+   dressing (fauna/flora lists, scene features). */
+const _EARTH_LANDING=[
+  ['opensea',58],['coral',4],['archipelago',5],['stormsea',3],['volcisle',1],
+  ['temperate',7],['jungle',4.5],['savanna',4.5],['tundra',4],
+  ['saltflat',2],['karst',2],['marsh',1.5],['swamp',1.5],['mangrove',1.5]];
+let _earthLandComp=null;
+function _earthLandingComp(){
+  if(_earthLandComp) return _earthLandComp;
+  const byKey={}; for(const b of (BIOME_SETS.terran||[])) byKey[b.k]=b;
+  for(const b of (BIOME_SETS.ocean||[])) if(!byKey[b.k]) byKey[b.k]=b;
+  let total=0; const out=[];
+  for(const [k,w] of _EARTH_LANDING){ const b=byKey[k]; if(b){ out.push({biome:b, w}); total+=w; } }
+  _earthLandComp=out.map(x=>({biome:x.biome, pct:x.w/total}));
+  return _earthLandComp;
+}
 function biomeForLanding(P, band, salt){
   /* the biome you actually touch down in: a %-weighted draw from the
-     composition. `salt` (e.g. the cosmic epoch) varies the region, so a
-     revisited world can present a different biome as the universe ages —
-     deterministic + shared per (seed, salt). Earth stays Earth. */
-  if(P.seed===133) return biomeFor(P, band);
-  const comp=biomeComposition(P, band); if(!comp||!comp.length) return biomeFor(P, band);
+     composition. `salt` varies the region per landing, so touching down again
+     can find a different face of the world — deterministic per (seed, salt).
+     EARTH rolls its REAL surface mix (70% seas, then its forests/deserts/
+     tundra…) instead of the old always-the-same special case. */
+  const comp=(P.seed===133)?_earthLandingComp():biomeComposition(P, band);
+  if(!comp||!comp.length) return biomeFor(P, band);
   const r=mulberry32(hashInt(P.seed, 0x1A2D, (salt|0)+1)>>>0);
   let v=r();
   for(const c of comp){ v-=c.pct; if(v<=0) return c.biome; }
@@ -11402,7 +11445,22 @@ function openLandingVista(pl){
     if(/glider|floater|drift/.test(lc)||/cloud decks/.test(hb)) return 'air';
     return 'land';
   };
-  const standable=roster.filter(gg=>clsOf(gg)==='land');
+  /* v1.7 THE LANDING ROLL (Nick): the touch-down region is rolled ONCE here —
+     %-weighted by the world's composition (Earth: its real 70/30 surface mix) and
+     re-rolled per landing — then the VISTA'S RESIDENTS are picked to match it:
+     the species whose rig family belongs in that biome (BIOME_SETS fauna list),
+     seeded-shuffled per landing so repeat descents meet different locals. The
+     anchor biome (veins/odds/generation) is untouched — this is the view. */
+  let wbRoll=null;
+  try{ wbRoll=biomeForLanding(P, env.band, _vistaSalt()); }catch(_){ }
+  const _shuf=(arr,rs)=>{ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=(rs()*(i+1))|0; const t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
+  const _rigOfG=gg=>{ try{ const R=hdGenesFor(gg); if(R.rig) return R.rig;
+    if(gg._earthName){ const rec=_earthArt(gg._earthName); if(rec&&rec.rig) return rec.rig; } }catch(_){ } return null; };
+  const _wbFauna=(wbRoll&&wbRoll.fauna)||null;
+  const rsPick=mulberry32(hashInt(P.seed, 0x5EED, _vistaSalt()+7)>>>0);
+  const standable0=_shuf(roster.filter(gg=>clsOf(gg)==='land'), rsPick);
+  const _matched=_wbFauna?standable0.filter(gg=>{ const rg=_rigOfG(gg); return rg&&_wbFauna.includes(rg); }):[];
+  const standable=_matched.length?_matched.concat(standable0.filter(g2=>!_matched.includes(g2))):standable0;
   const genes=standable.slice(0,3).map(hdGenesFor);
   /* the world's AERIAL residents get drawn too (Nick: "creatures should show up
      in the biomes — I don't see any in the gas ones"). Cloud/gas worlds carry
@@ -11429,6 +11487,7 @@ function openLandingVista(pl){
      aqua:roster.filter(gg=>clsOf(gg)==='aqua').length,
      air:roster.filter(gg=>clsOf(gg)==='air').length,
      airGenes:airGenes, aerFlora:aerFloraG, floraGenes:floraGenes,
+     wb:wbRoll,   /* the once-rolled landing region — scenery + species agree */
      titan:_tit, title:d.title||null, where:d.where||null});
 }
 const _descBoxEl=()=>document.getElementById('descbox');
