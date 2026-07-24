@@ -14488,7 +14488,7 @@ function doSave(){
          anyway, and any eviction silently refills a finite reserve —
          entries are two numbers, the cap bought nothing) */
       at:Date.now(),   /* wall-clock save stamp — anchors offline-accrual clamps on load */
-      cargo:[...cargo], cgx:[...cgx], jrn:journal.slice(-24), pin:pinnedRecipe||undefined, minedw:[...mined], mx:[...mineX], skx:[...skimX], bx:[...bioX], tech:[...techOwned], mines:stats.mines||0,
+      cargo:[...cargo], cgx:[...cgx], jrn:journal.slice(-24), pin:pinnedRecipe||undefined, ctb:cargoTab, minedw:[...mined], mx:[...mineX], skx:[...skimX], bx:[...bioX], tech:[...techOwned], mines:stats.mines||0,
       items:[...items], eq:equip, ea:equipAff, crafts:stats.crafts||0, minedout:stats.minedout||0,
       skims:stats.skims||0, cosmics:stats.cosmics||0,   /* v1.7 (review catch: unsaved, the counters reset each session) */
       asc:ascCh, ascp:ascProg,
@@ -14568,6 +14568,7 @@ function loadSave(){
        clamped to the held quantity so a crafted save can never mint grade */
     for(const kv of (data.cgx||[])){ if(kv && MATERIALS[kv[0]]) cgx.set(kv[0], clamp(num(kv[1]), 0, cargo.get(kv[0])||0)); }
     if(typeof data.pin==='string' && ITEM_BY.has(data.pin)) pinnedRecipe=data.pin;   /* pinned recipe — absent/unknown ⇒ none */
+    if(data.ctb==='mat'||data.ctb==='craft'||data.ctb==='gear') cargoTab=data.ctb;   /* sticky hold tab (QoL o) */
     /* journal: strings clamped, count capped — absent ⇒ empty */
     if(Array.isArray(data.jrn)) for(const j of data.jrn.slice(-24)){
       if(j && j.n) journal.push({s:num(j.s)|0, n:String(j.n).slice(0,28), w:String(j.w||'').slice(0,16), t:clamp(num(j.t),0,4102444800000)});
