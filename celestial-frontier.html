@@ -1272,7 +1272,6 @@
   #reveal .rx{margin-top:16px;font-family:var(--ui);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
   #codex .sp .info{min-width:0;flex:1}
   #codex .sp .nm{font-family:var(--ui);font-size:12.5px;font-weight:500;color:#d6f2de}
-  #codex .sp .rar{font-size:9px;letter-spacing:.05em;vertical-align:middle}
   #codex .sp .rlabel{font-weight:600}
   /* v1.5 condense: shelf rows read at a glance — the card holds the prose */
   #codex .sp .ds{font-size:10.5px;color:var(--dim);line-height:1.4;margin-top:1px;
@@ -1334,7 +1333,6 @@
   #log .item .meta{min-width:0;flex:1}
   #log .item .nm{font-family:var(--ui);font-size:12.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #log .item .ds{font-size:10px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
-  #log .item .rstar{color:#e7b94a;font-size:9px;margin-left:5px;letter-spacing:.5px}
   #log .item .badge{flex:none;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;
     color:var(--plasma);background:rgba(255,207,138,0.12);border-radius:6px;padding:3px 6px}
   #log .log-head{display:flex;align-items:center;justify-content:space-between;gap:8px;
@@ -11852,11 +11850,10 @@ function renderPanel(p, isLocked){
       for(const it of shown){
         const en=codex.get('s'+it.spId);
         const gcol=en&&en.grade?en.grade.hex:'';
-        const gstar=en&&en.grade&&en.grade.star?' <span style="color:'+en.grade.hex+';font-size:9px">'+en.grade.star+'</span>':'';
         lbody+='<div class="row sp found" data-sp="'+it.spId+'">'+
           '<span class="thumbmini" style="background-image:url('+(d._spArt&&d._spArt[it.spId]||'')+')'+(gcol?';box-shadow:0 0 0 1px '+gcol:'')+'"></span>'+
           '<span class="spk"'+(gcol?' style="color:'+gcol+'"':'')+'>'+it.row[0]+'</span>'+
-          '<span class="v"'+(gcol?' style="color:'+gcol+'"':'')+'>'+it.row[1]+gstar+'</span></div>';
+          '<span class="v"'+(gcol?' style="color:'+gcol+'"':'')+'>'+it.row[1]+'</span></div>';
       }
       if(spRows.length>PREVIEW){
         lbody+='<div class="row sp morelink" data-opencodex="1"><span class="thumbmini" style="background:rgba(127,230,160,0.12)"></span>'+
@@ -12258,7 +12255,7 @@ function addToLog(d){
   logMap.set(d.logId, {id:d.logId, title:d.title, sub:sub9,
     thumb:(d.planetSeed!=null?null:d.thumb),   /* planets: live via atlasThumb */
     sq:d.thumbSq,
-    badge:d.badge, star:(d.grade?d.grade.star:''), where:d.where, t:Date.now()});
+    badge:d.badge, where:d.where, t:Date.now()});
   logCountEl.textContent=logMap.size;
   if(logOpen) renderLog();
   gameEvent('atlas-add', {id:d.logId});
@@ -12292,12 +12289,11 @@ function renderLog(){
     const isHome=it.id===homeId;
     const _tu=atlasThumb(it);
     const th = _tu ? '<img class="t'+(it.sq?' sq':'')+'" src="'+_tu+'" alt="">' : '<span class="t"></span>';
-    const star = it.star ? '<span class="rstar">'+it.star+'</span>' : '';
     /* badges wear the card language: life green, civilization violet, signals lavender */
     const _bc={Life:'#7fe6a0',Biosphere:'#7fe6a0',Signal:'#cdbcff',Civilized:'#d6a0ff',Advanced:'#d6a0ff'}[it.badge];
     const badge = (!isHome && it.badge) ? '<span class="badge"'+(_bc?' style="color:'+_bc+';border-color:'+_bc+'66"':'')+'>'+it.badge+'</span>' : '';
     html+='<div class="item'+(isHome?' ishome':'')+'" data-id="'+it.id+'" role="button" tabindex="0" title="Travel to '+it.title.replace(/"/g,'')+'">'+th+
-      '<div class="meta"><div class="nm">'+(isHome?'<span class="hm">⌂</span>':'')+it.title+star+'</div>'+
+      '<div class="meta"><div class="nm">'+(isHome?'<span class="hm">⌂</span>':'')+it.title+'</div>'+
         '<div class="ds">'+it.sub+'</div></div>'+
       badge+
       '<div class="lacts">'+
@@ -12611,7 +12607,7 @@ function autoScanWorld(d){
         stats.paragons=(stats.paragons||0)+1;
         playRaritySting(pe.grade?pe.grade.tier:8);
         cinematic({kicker:'🜲 A Paragon Found', title:pe.name,
-          sub:(pe.grade?pe.grade.name+(pe.grade.star?' '+pe.grade.star:''):'')+' — one of the Fifty',
+          sub:(pe.grade?pe.grade.name:'')+' — one of the Fifty',
           hex:(pe.grade?pe.grade.hex:'#ffd96a'), tier:(pe.grade?pe.grade.tier:8)});
       }
     }
@@ -12630,7 +12626,7 @@ function discoverSpecies(g, from, where){
     playRaritySting(fresh.grade.tier);
     if(fresh.grade.tier>=4) fxBurst([fresh.grade.hex,'#ffffff'], 24+fresh.grade.tier*6);
     if(fresh.grade.tier>=5) cinematic({kicker:'Rare Find', title:fresh.name,
-      sub:fresh.grade.name+(fresh.grade.star?' '+fresh.grade.star:'')+' · '+fresh.kind+' — first ever catalogued',
+      sub:fresh.grade.name+' · '+fresh.kind+' — first ever catalogued',
       hex:fresh.grade.hex, tier:fresh.grade.tier});
     if(fresh.grade.tier>=5){
       const _b=fresh.grade.tier-3;
@@ -12641,7 +12637,7 @@ function discoverSpecies(g, from, where){
   /* v1.5.2 D3 (P8): the single-catalogue path teaches the scout too */
   if(scoutId && codex.has(scoutId) && scoutId!==fresh.id) awardXP(scoutId, 2);
   toast('Species Catalogued',
-    (fresh.grade?'<span style="color:'+fresh.grade.hex+'">'+fresh.grade.name+(fresh.grade.star?' '+fresh.grade.star:'')+'</span> · ':'')+
+    (fresh.grade?'<span style="color:'+fresh.grade.hex+'">'+fresh.grade.name+'</span> · ':'')+
     fresh.name+' — view it in your Compendium.');
   /* auto-crossbreed: the new arrival pairs with a random species you already knew */
   const others=[...codex.values()].filter(e=>e.id!==fresh.id);
@@ -12715,7 +12711,7 @@ function showReveal(entry, isHybrid){
   /* the grade badge — every specimen wears its rarity like a collection card;
      summit grades (12+) get the iridescent foil treatment */
   document.getElementById('rev-kind').innerHTML =
-    (gr?'<span class="gbadge'+(gr.tier>=12?' irid':'')+'" style="color:'+gr.hex+'">'+gr.name+(gr.star?' '+gr.star:'')+'</span> · ':'') +
+    (gr?'<span class="gbadge'+(gr.tier>=12?' irid':'')+'" style="color:'+gr.hex+'">'+gr.name+'</span> · ':'') +
     (entry.hybrid?('Hybrid · generation '+entry.gen):((entry.realm||entry.kind)+' · '+entry.from));
   document.getElementById('rev-detail').textContent = entry.detail||'';
   /* v1.5 condense (Nick: "same as the world cards"): the field notes fold
@@ -12915,7 +12911,6 @@ function renderCodex(){
        climbs past tier 4 instead of flat-lining (graphics overhaul V10) */
     const foil=gr&&gr.tier>=12;
     const bstyle = gr&&!foil ? 'border-color:'+gr.hex+';box-shadow:0 0 0 1px '+gr.hex+(gr.tier>=8?', 0 0 22px '+gr.hex+'66':(gr.tier>=4?', 0 0 16px '+gr.hex+'55':(gr.tier>=2?', 0 0 9px '+gr.hex+'33':''))) : '';
-    const rar = gr && gr.star ? '<span class="rar" style="color:'+gr.hex+'">'+gr.star+'</span>' : '';
     const rlabel = gr ? '<span class="rlabel" style="color:'+gr.hex+'">'+gr.name+'</span> · ' : '';
     const fromTxt = sp.hybrid
       ? 'Hybrid · gen '+sp.gen
@@ -12928,7 +12923,7 @@ function renderCodex(){
     const modHtml=mods.length?'<span class="mods">'+mods.map(m=>'<em>'+m+'</em>').join('')+'</span>':'';
     const ccx=creatureCondition(sp.genome);
     return '<div class="sp'+(foil?' iridframe':'')+'" data-pick="'+sp.id+'" role="button" tabindex="0" style="'+bstyle+'"><img class="art" src="'+artOf(sp)+'" alt="">'+
-      '<div class="info"><div class="nm">'+(REALM_ICON[realm]||KIND_ICON[sp.kind]||'')+' '+sp.name+' '+rar+
+      '<div class="info"><div class="nm">'+(REALM_ICON[realm]||KIND_ICON[sp.kind]||'')+' '+sp.name+
       (sp.id===scoutId?'<span class="scouttag">SCOUT</span>':'')+
       (ccx.h>0?' <span style="color:'+ccx.col+';font-size:9px">● '+ccx.label+'</span>':'')+
       '</div><div class="ds">'+sp.desc+
@@ -14197,7 +14192,7 @@ function loadSave(){
     /* v1.5.2 accept-to-activate: absent ⇒ nothing accepted (safe — the
        board offers its chains fresh); ids validated against both decks */
     for(const s of (data.chacc||[])) if(typeof s==='string' && !chDone.has(s) && (CHARTER_STARTERS.some(c=>c.id===s)||CHARTER_POOL.some(c=>c.id===s))) chacc.add(s);
-    for(const it of (data.log||[])){ if(it && it.id){ it.star=''; logMap.set(it.id, it); } }
+    for(const it of (data.log||[])){ if(it && it.id){ logMap.set(it.id, it); } }
     homeId=(data.home && logMap.has(data.home))?data.home:null;
     for(const s of (data.land||[])){ const n=+s; if(Number.isFinite(n)) landed.add(n); }
     for(const s of (data.cont||[])){ const n=+s; if(Number.isFinite(n)) contacted.add(n); }
