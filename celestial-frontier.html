@@ -7138,7 +7138,7 @@ function _earthArt(name){
   else if(has(/\bowl\b|screech owl|horned owl/)) o={plan:0,leg:0.3,neck:0.05,tail:0.28,bulk:0.9,horn:0,airb:false,aqua:false,biped:1,rig:'bird',legLen:0.3,neckLen:0.02,beak:'owl',tailB:'short',stand:'upright',owl:1,owlTuft:has(/horned|screech|scops|long-eared|eagle owl/)?1:0};
   else if(has(/eagle|hawk|falcon|vulture|condor|kestrel|osprey|kite|harrier|buzzard|raptor|caracara/)) o={plan:7,airb:true,aqua:false,leg:0.16,tail:0.55,neck:0.42,bulk:0.88,horn:0,biped:1,rig:'bird',legLen:0.4,neckLen:0.2,beak:'hook',tailB:'fan',stand:'perch',raptor:1};
   else if(has(/bird|parrot|macaw|toucan|hornbill|finch|sparrow|robin|wren|jay|\bcrow\b|raven|magpie|pigeon|dove|gull|\btern\b|swallow\b|swift|starling|lark|thrush|warbler|kingfisher|woodpecker|hummingbird|peacock|pheasant|quail|partridge|grouse|turkey|chicken|rooster|duck|\bgoose\b|swan|pelican|cormorant|gannet|booby|petrel|albatross|frigatebird|cockatoo|weaver|quetzal|hoatzin|kookaburra|budgie|canary|oriole|cardinal|chough|coot|grebe|guineafowl|moorhen|ptarmigan|rail|screamer|skua|tanager|seabird|eider|loon|\bdiver\b|nightjar|nightingale|kittiwake|fulmar|shearwater|nuthatch|chickadee|bulbul|hoopoe|myna|bee-eater|lorikeet|lovebird|parakeet|teal|pintail|merganser|wigeon|cuckoo|mockingbird|wagtail|kittiwake/)) o={plan:7,airb:true,aqua:false,leg:0.18,tail:0.5,neck:0.45,bulk:0.6,horn:0,biped:1,rig:'bird',legLen:has(/hummingbird/)?0.1:(has(/duck|\bgoose\b|swan|pelican|cormorant|gannet|booby|petrel|albatross|frigatebird|coot|grebe|eider|loon|\bdiver\b|teal|pintail|merganser|wigeon/)?0.18:0.32),neckLen:has(/swan|\bgoose\b|cormorant/)?0.85:(has(/pelican|duck|eider|grebe|loon|\bdiver\b/)?0.5:0.24),beak:has(/pelican/)?'pouch':(has(/toucan|hornbill/)?'huge':(has(/parrot|macaw|cockatoo|budgie|canary|oriole/)?'hook':(has(/duck|\bgoose\b|swan|eider/)?'wide':(has(/hummingbird/)?'needle':'cone')))),tailB:has(/peacock|quetzal|pheasant/)?'long':(has(/swallow|swift|tern|frigatebird/)?'fork':'fan'),stand:has(/duck|\bgoose\b|swan|pelican|cormorant|grebe|coot|gull|petrel|albatross|gannet|booby|moorhen|eider|skua|loon|\bdiver\b|teal|pintail|merganser|wigeon|kittiwake|fulmar|shearwater/)?'swim':'perch',tiny:has(/hummingbird|finch|wren|sparrow|robin|canary|warbler|cardinal|tanager|nuthatch|chickadee|nightingale|bulbul|wagtail/)?1:0,train:has(/peacock/)?1:0};
-  else if(has(/elephant|mammoth/) && !has(/seal/)) o={plan:0,leg:0.6,neck:1.15,tail:0.3,bulk:1.7,horn:0.55,airb:false,aqua:false};  /* 4 legs + a trunk (long neck) + tusks */
+  else if(has(/elephant|mammoth/) && !has(/seal|shrew|hawk|fish/)) o={plan:0,leg:0.6,neck:0.4,tail:0.3,bulk:1.7,horn:0,airb:false,aqua:false,rig:'mammal',msub:'generic',special:'elephant',asianEar:has(/asian|indian/)?1:0};  /* R1: bespoke special — trunk/ears/tusks are anatomy */
   else if(has(/giraffe/)) o={plan:0,leg:0.78,neck:1.6,tail:0.45,bulk:1.3,airb:false,aqua:false};  /* the neck IS the animal */
   else if(has(/rhino|hippo|rhinoceros|hippopotamus/) && !has(/beetle/)) o={plan:10,leg:0.4,neck:0.35,tail:0.3,bulk:1.55,horn:0.6};
   else if(has(/tortoise|turtle|terrapin/)) o={plan:6,leg:0.3,neck:0.45,tail:0.25,bulk:0.95,horn:0,aqua:has(/sea|green|logger|hawksbill|leatherback|ridley/),rig:'turtle',sea:has(/sea|green|logger|hawksbill|leatherback|ridley/)?1:0};
@@ -7178,7 +7178,7 @@ function _earthArt(name){
     if(has(/bison|buffalo|musk ox|\byak\b|grizzly|brown bear|kodiak|sloth bear|takin/)) o.shag=1;
     if(has(/bison|buffalo|musk ox|\byak\b|gaur|banteng|takin|zebu|water buffalo/)) o.lowHead=1;   // bovines carry the head low off a heavy hump (Pass 3: bison low head carriage)
     // v1.6 Pass 5 — iconic mammals whose defining anatomy needs a dedicated form (order: specific first)
-    o.special = has(/pangolin|scaly anteater/) ? 'pangolin'
+    o.special = o.special || (has(/pangolin|scaly anteater/) ? 'pangolin'
       : has(/echidna|spiny anteater/) ? 'echidna'
       : has(/armadillo/) ? 'armadillo'
       : has(/\banteater\b|tamandua/) ? 'anteater'
@@ -7187,7 +7187,7 @@ function _earthArt(name){
       : has(/\bbeaver\b/) ? 'beaver'
       : has(/platypus/) ? 'platypus'
       : has(/flying squirrel|sugar glider|\bcolugo\b|flying lemur|feathertail|greater glider|marsupial glider/) ? 'glider'
-      : undefined;
+      : undefined);
   }
   // --- size hint (mammal bulk) ---
   if(o.bulk==null){ o.bulk = has(/mouse|shrew|vole|mole|lemming|bat|hamster|gerbil|dormouse|pika|weasel|stoat|ermine|chipmunk|squirrel|marmoset|tamarin/)?0.62
@@ -7229,6 +7229,10 @@ function _earthArt(name){
   else if(has(/okapi/)){ Object.assign(o, col(74,50,46)); o.legStripes=1; o.mottle=0; }
   else if(has(/spectacled bear/)){ o.mask=[214,206,182]; }          /* pale spectacles on a dark face */
   else if(has(/sloth bear/)){ o.shag=1; o.base2=[214,198,160]; }    /* pale chest wash */
+  else if(has(/orangutan/)){ Object.assign(o, col(178,96,46)); }
+  else if(has(/gorilla/)){ o.saddleGrey=1; }
+  else if(has(/walrus/)){ o.tuskIv='down'; }
+  else if(has(/warthog/) || (has(/wild boar|boar/)&&!has(/board/))){ o.tuskIv='up'; }
   else if(has(/skunk/)){ Object.assign(o, col(30,30,36)); o.stripes=0; o.dorsalStripe=1; }
   return o;
 }
@@ -7622,6 +7626,39 @@ function _mamSpecial(sg,S,baseY,G,r,kind,bulk){
   sg.lineCap='round'; sg.lineJoin='round';
   const legAt=(x,y0,w)=>{ sg.lineWidth=w; sg.beginPath();sg.moveTo(x,y0);sg.lineTo(x,footY);sg.stroke();
     sg.beginPath();sg.ellipse(x,footY,w*0.7,S*0.008,0,0,7);sg.fill(); };
+  if(kind==='elephant'){
+    /* R1 wave 2 (ProofSet-2 review): the TRUNK is mandatory silhouette — an
+       elephant is a pillar-legged mass, a domed head, a great ear flap, and a
+       trunk that reaches the ground. Tusks ride post-texture as ivory. */
+    const by=footY-S*0.30*B;
+    sg.beginPath();                                             // the massive body
+    sg.moveTo(cx-S*0.24,by+S*0.10);
+    sg.quadraticCurveTo(cx-S*0.26,by-S*0.16,cx-S*0.04,by-S*0.185);   // high arched back
+    sg.quadraticCurveTo(cx+S*0.14,by-S*0.17,cx+S*0.185,by-S*0.06);
+    sg.quadraticCurveTo(cx+S*0.20,by+S*0.10,cx+S*0.10,by+S*0.15);
+    sg.quadraticCurveTo(cx-S*0.10,by+S*0.185,cx-S*0.24,by+S*0.10);sg.closePath();sg.fill();
+    const hx=cx+S*0.225, hy=by-S*0.115;                          // domed head, high forehead
+    sg.beginPath();sg.ellipse(hx,hy,S*0.095,S*0.085,-0.15,0,7);sg.fill();
+    /* the great EAR flap (African large / Asian smaller) */
+    const eF=G.asianEar?0.62:1.0;
+    sg.beginPath();sg.ellipse(hx-S*0.055,hy+S*0.01,S*0.075*eF,S*0.095*eF,0.25,0,7);sg.fill();
+    /* THE TRUNK — thick at the face, tapering, curling forward at the ground */
+    sg.lineCap='round';
+    sg.lineWidth=S*0.055;sg.beginPath();sg.moveTo(hx+S*0.05,hy+S*0.03);
+    sg.quadraticCurveTo(hx+S*0.10,hy+S*0.14,hx+S*0.075,hy+S*0.24);sg.stroke();
+    sg.lineWidth=S*0.038;sg.beginPath();sg.moveTo(hx+S*0.075,hy+S*0.23);
+    sg.quadraticCurveTo(hx+S*0.055,hy+S*0.33,hx+S*0.095,hy+S*0.385);sg.stroke();
+    sg.lineWidth=S*0.024;sg.beginPath();sg.moveTo(hx+S*0.09,hy+S*0.38);
+    sg.quadraticCurveTo(hx+S*0.125,hy+S*0.405,hx+S*0.135,hy+S*0.385);sg.stroke();
+    /* pillar legs — thick, columnar */
+    legAt(cx-S*0.165,by+S*0.08,S*0.055*B); legAt(cx-S*0.075,by+S*0.12,S*0.058*B);
+    legAt(cx+S*0.055,by+S*0.12,S*0.058*B); legAt(cx+S*0.135,by+S*0.07,S*0.055*B);
+    /* small tail */
+    sg.lineWidth=S*0.012;sg.beginPath();sg.moveTo(cx-S*0.235,by+S*0.02);
+    sg.quadraticCurveTo(cx-S*0.28,by+S*0.14,cx-S*0.265,by+S*0.24);sg.stroke();
+    return {hp:{x:hx+S*0.02,y:hy-S*0.01},hips:[cx-S*0.15,by],shoulders:[cx+S*0.12,by],feetMax:footY+S*0.01,
+      ivory:[{x:hx+S*0.02,y:hy+S*0.075,a:1.25,l:S*0.085},{x:hx+S*0.045,y:hy+S*0.08,a:1.05,l:S*0.075}]};
+  }
   if(kind==='anteater'){
     const by=footY-S*0.13*B;
     sg.beginPath();sg.moveTo(cx-S*0.20,by+S*0.03);
@@ -8876,6 +8913,7 @@ function hdBeastBare(G,seed){
     }
     if(G.darkLimbs && py>S*0.565) cr2=_hdMix3(cr2,[26,26,32],0.82);
     if(G.dorsalStripe && py<S*0.50 && py>S*0.40) cr2=_hdMix3(cr2,[240,242,246],0.9);   /* the skunk's white back */
+    if(G.saddleGrey && py>S*0.42 && py<S*0.58) cr2=_hdMix3(cr2,[188,192,200],0.5);     /* the silverback's saddle */
     if(FIN>=2){
       const ir=_hdFbm(px*0.010+7,py*0.010,seed+31,3);
       const sw=Math.sin((px+py)*0.045+ir*5)*0.5+0.5;
@@ -9066,6 +9104,19 @@ function hdBeastBare(G,seed){
   /* v1.6 B15 FROG EYES (review 0.2): the frog rig draws its bulging eye MASS into the silhouette (so
      it takes the body texture); lay a bright iris + pupil ON TOP after the texture, with a light
      iris ring as a local contrast floor, so the eyes never merge into the skin. */
+  /* R1: post-texture IVORY (elephant/walrus tusks — white, never hide-textured) */
+  if(rigOut && rigOut.ivory){ g.lineCap='round';
+    for(const tk of rigOut.ivory){ g.strokeStyle='rgba(240,236,222,0.95)'; g.lineWidth=S*0.016;
+      g.beginPath(); g.moveTo(tk.x,tk.y);
+      g.quadraticCurveTo(tk.x+Math.cos(tk.a)*tk.l*0.6, tk.y+Math.sin(tk.a)*tk.l*0.75, tk.x+Math.cos(tk.a*0.55)*tk.l, tk.y+Math.sin(tk.a)*tk.l); g.stroke(); } }
+  if(G.tuskIv && hp){ g.lineCap='round'; g.strokeStyle='rgba(240,236,222,0.95)'; g.lineWidth=S*0.012;
+    const dn=G.tuskIv==='down';
+    for(const sgn2 of [0,1]){
+      const tx3=hp.x+S*(0.012+sgn2*0.014), ty3=hp.y+S*0.022;
+      g.beginPath(); g.moveTo(tx3,ty3);
+      if(dn) g.quadraticCurveTo(tx3+S*0.004, ty3+S*0.05, tx3-S*0.006, ty3+S*0.075);
+      else   g.quadraticCurveTo(tx3+S*0.018, ty3+S*0.012, tx3+S*0.026, ty3-S*0.02);
+      g.stroke(); } }
   if(rigOut && rigOut.eyesOwn){ const er=rigOut.eyeR||S*0.026;
     for(const e2 of rigOut.eyesOwn){
       g.fillStyle='rgba(20,14,10,0.5)';g.beginPath();g.arc(e2[0],e2[1],er*1.02,0,7);g.fill();       // socket rim
