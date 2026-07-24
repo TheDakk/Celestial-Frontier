@@ -48,17 +48,59 @@
 ##     shore scene; coral/abyssal keep their reef/deep routes. Anchor biome (veins/odds/generation) untouched — fp
 ##     MATCH. ⚠ training's first Earth landing rolls too (~55% ocean splash-down) — kept, flagged for Nick. Proof:
 ##     tools/sheets/earthlandings.js.
-## ▶ TODO NEXT (Nick approved, 2026-07-23 — do first thing next session): GLYPH DEAD-CODE CLEANUP. The rarity ★/✦/✧/❖
-##   glyphs are ALREADY gone from cards (Phase A: every GRADE_TIERS star:'', smoke "no glyphs" PASSES — the tag shows
-##   the NAME in its grade color only). But the RENDER code still exists, guarded and always empty: `gr.star?'<span
-##   class="rar"…>'+gr.star+'</span>':''` in spCard (main.js ~10961), `en.grade.star?…` in the found-list (~9898),
-##   and `it.star?'<span class="rstar">…'` in the Atlas list (~10338). Excise these dead spans (+ the .rar/.rstar CSS
-##   if now unused) so there's zero trace / no chance a glyph returns. fp-SAFE (render-only). Small commit. (NOTE: the
-##   ✦/✧ elsewhere are NOT rarity — ability ✧, vein ✦, Atlas favorite ★/☆, achievement icons — leave them.)
-##   ▶ FLAGGED for a focused reviewed pass (NOT done — catalog-affecting): WINGED body plan 7/14 (gas fliers read as
-##     floating quads — real wings = big payoff for fliers + breeding-program creatures; #2 on PROCEDURAL_CHARACTERISTICS
-##     pass order) · the rest of that pass order (procedural HEAD system, tail-types, marquee traits, eye/limb counts).
-##     Proof-sheets ready: tools/sheets/{gasdeck,floravista,stars,coherence,artreview}.js.
+## ★★★ 2026-07-24 BATCH (Nick: "continue the roadmap suggestions" + dead-code purge; every commit battery-green
+##   fp MATCH 50/50 · smoke ↑410/0 · layout 546/9 · render 1010/0; all pushed):
+##   (1) GLYPH DEAD-CODE CLEANUP [0eaa038] — all SEVEN dead star-render sites excised (spCard .rar, Atlas .rstar +
+##     logMap star field write/load-sanitize, found-list gstar, reveal gbadge, 3 cinematic/toast appends) + dead
+##     #codex .sp .rar / #log .item .rstar CSS. KEPT: .ic-chip.rar (live item-card chip) + data-layer star:'' (fp).
+##   (2) FULL DEFUNCT-CODE PURGE [9260056] — NEW tools/deadcode.js (reusable zero-ref scanner: game+markup+CSS+
+##     probes+checks+sheets corpora; every candidate hand-verified). Removed 12 JS symbols (colorDNAFor, biomeProfile
+##     accessor, pick1, SP_KINGDOM, SAP_LABEL, watery, finpt, matInfo, whole retired Prime-claim chain incl.
+##     speciesSignatures/worldSignature + no-op call sites) + 11 dead CSS rule-groups (.actrow .dstats .dship
+##     .gstep(s) .ic-equip .pframe/.pav/.pmeta/.pname/.prank .splist; fs-lg/xl compounds trimmed keeping .gsub).
+##     KEPT deliberately: Color-Atlas trio (gate-tested in validate), _titanElemOf (probe-hooked), ELEM_ICES (sheet).
+##   (3) §5 INSTANCE RARITY = DESIGN CALL RESOLVED [092a281] — "the EXCEPTIONAL VEIN": vein-level resolution meets
+##     §21 stack-by-substance. exVeinFor (~15% of worlds, own palette, own rng stream — cv fp-discipline), sparse
+##     extra trickle, ✦ sub-count on the SAME card (cgx, save field cgx, absent-safe, load-clamped), exceptional =
+##     base+1 clamp 6 (exTierOf), cosmics excluded. _spendMat burns exceptional first; FULL exceptional coverage ⇒
+##     EXCEPTIONALLY FORGED (seeded affix via spoils machinery, never clobbers a live enchant). 8 sentinels; §5 doc.
+##   (4) §8b SKIM DESIGN PASS (delegated) [77ac43c] — CORONA SCOOP sys (reqs Jump Drive, costs 1 hand-skimmed Pls):
+##     +1 sample/pass + ~50% deeper corona (exhausted stars reopen), bonuses OUTSIDE the seeded draw. REMNANT'S BITE:
+##     WD/NS/MAG/BH skims cost 3 HP unshielded (never lethal — <5 HP refused); the Scoop ends it. 3 sentinels; §8b doc.
+##   (5) §22 REMAINDER [b04ea3c] — TIER STRUCTURE layer in partIcon (the tier changes the MACHINE: rig conduit→plasma
+##     core, suit tanks→shoulder armor, helm pods→antenna+halo, glove/legs/boot/probe/charm/struts each evolve) +
+##     bespoke 'scoop' painter (was falling through to charm gem) + SHIP HULL TIERS in shipImage (Jump=armored spine
+##     +nose cap, IG=luminous seams+wingtip beacons, Scoop=golden ventral ladle; scout silhouette persists). Proof
+##     sheets reviewed: gear-tiers + NEW tools/sheets/shiptiers.js (⚠ harness gotcha documented: never lift `items`).
+##   (6) WINGED BODY-PLAN PASS [d1e11fa] — Nick's "gas fliers read as floating quads": wings now DOMINATE (span
+##     0.30→0.42, peak −0.44, scalloped trailing edge); AIRBORNE winged tucks to 2-leg flight stance, grounded keeps
+##     full limbs (gryphon grammar). Proc plans only (Earth rigs untouched). NEW tools/sheets/winged.js reviewed.
+##   (7) §24 EMPIRICAL VALIDATION — archetype balance-sim PASS (all 17 in the 42–58% band; fury 55.6 top, enrage 45.6
+##     floor; healthy counters ±29 max). fast-500 panel CLEAN (0 err/death/softlock, funIndex 6.9 ≥ v1.6's 6.87).
+##     deep-500 panel result: see the batch-close note below (was still running at write time).
+##   ▶ STILL QUEUED (each its own focused pass): charter-training module · accessibility (CF16-012 pinch-zoom +
+##     CF-006 keyboard Navigator — needs device verify) · TEXT-POLISH re-pin (fingerprint re-pin — do with Nick) ·
+##     rest of PROCEDURAL_CHARACTERISTICS pass order (proc HEAD system, tail-types, marquee traits, eye/limb counts).
+## ▶▶ SUGGESTIONS FOR NICK (2026-07-24, per "think about value-adds / what we missed / player QoL" — AWAITING
+##    GREEN-LIGHT, none started; ordered by impact-per-effort, S/M/L = build size):
+##    LOOK & FEEL: (a) [M] EXPEDITION JOURNAL — a scrollable strip of your past landings as postcard thumbnails
+##      (world · biome · date). ZERO save bloat: store only (seed, salt) pairs, re-render deterministically. Gives
+##      the game a memory; pairs with the landing-roll variety we just shipped. (b) [S] TIME-OF-DAY LANDINGS — the
+##      per-landing salt already re-rolls the biome; let it also pick dawn/dusk/night palettes (pal variants exist)
+##      so repeat landings breathe. (c) [S] IDLE DRIFT-CAM — after ~20s idle on system view, a slow parallax drift
+##      (Motion-gated, any input cancels). The universe breathes on the title-adjacent screens. (d) [L] AMBIENT
+##      AUDIO BEDS per vista family (the v1.7 P5 audio pass — still the single biggest feel multiplier remaining).
+##    MISSED / TRUST: (e) [S] SAVE EXPORT/IMPORT — "Export expedition file" (JSON download) + import in Settings.
+##      localStorage is one cleared-cache away from loss; this is the cheapest trust feature there is. (f) [S]
+##      RARITY-LADDER LUMINANCE CHECK — tiny tool asserting the 10 tier hexes stay distinguishable in grayscale
+##      (a11y backstop for the color+frame system). (g) [M] EXPEDITION CONTRACTS — 3 rotating procedurally-picked
+##      goals from EXISTING verbs ("skim a remnant star", "catalogue 2 jungle fauna", "forge with exceptional
+##      stock") paying stardust; directly attacks the deep-sim maxDrought staleness signal using charter machinery.
+##    PLAYER QoL: (h) [M] PINNED RECIPE TRACKER — pin a Fabricator target; a small HUD chip shows live missing-
+##      materials while you mine (reads _canCraft delta). The Forge economy's best friend. (i) [S] RECENT-WORLDS
+##      quick-travel chips at the Atlas top (derived from the log — no save change). (j) [S] "NEW" DOTS — unseen
+##      Compendium entries / first-time materials get a dot until viewed (cardExpand-style memory, tiny field).
+##      (k) [S] BULK FEED — "Feed until full" on the specimen card (one confirm, consumes flora as today).
 ## ★★★ v1.7 POLISH / SECURITY / BALANCE / ART-AUDIT SWEEP = DONE (2026-07-23, long remote-control session; each
 ##   commit battery-green: fp MATCH 50/50, smoke ↑396/0, layout 546/9, render 1010/0; all pushed). This sweep sits
 ##   ATOP the cosmic economy (5a/5c/5d/§8), material art (§22 47/47), and the two prior code reviews.
