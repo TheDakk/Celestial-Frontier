@@ -1,6 +1,6 @@
 # Celestial Frontier — Save System
 
-**STATUS:** matches code as of 2026-07-23 (verified against main.js + tools/).
+**STATUS:** matches code as of 2026-07-24 (verified against main.js + tools/).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated
 from seeds) to `localStorage` under one hardened key, with load-time coerce/clamp so a
 tampered or truncated save can never inject markup or poison the numbers.
@@ -99,11 +99,16 @@ Settings toggles: `fs`, `tone`, `font`, `snd`, `fx`, `chart`, `shake`, `notif`,
 Exploration: `land` (settled ∪ conquered ∪ mined), `scout`, `landings`, `cont`
 (contacted), `surveyed`, `gals`, `surf`, `sysv`, `starK`, `ptypes`, `evts`, `evann`,
 `home`, `conq` (conquered → {t,tier}).
-Economy / engineer track: `cargo`, `minedw`, `mx` (pulls per world), **`skx`**
+Economy / engineer track: `cargo`, **`cgx`** (v1.7 §5 — exceptional sub-counts per
+substance, load-clamped `cgx[k] <= cargo[k]`), `minedw`, `mx` (pulls per world), **`skx`**
 (stellar-skim samples per star — mirrors `mx`), **`bx`**
 (=`bioX` — v1.6 Biosphere Yield: `[attempts, epochStamp]` per world), `tech`, `items`,
 `eq` (equipped), **`ea`** (=`equipAff` — v1.6 worn loot-core affixes `{k,v,forId}`),
 `asc`/`ascp` (Ascent chapter + progress).
+QoL fields (2026-07-24, all absent-safe): **`jrn`** (Expedition Journal — up to 24
+`{s,n,w,t}` landing lines, strings clamped on load), **`pin`** (pinned Fabricator
+recipe id, validated vs `ITEM_BY`), **`ctb`** (sticky hold tab `mat|craft|gear`),
+**`seen`** (viewed-specimen ids for the NEW dots — intersected with the codex on save).
 Charters: `chs` (done), `chw` (week), `chp` (progress), **`chacc`** (=`chacc` — v1.5.2
 accepted-but-unfinished ids), `charters` (count).
 Records / stats: `notifs`, `breeds`, `breedwins`, `feeds`, `feedfails`, `harvests`,
