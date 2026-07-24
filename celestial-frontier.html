@@ -2651,12 +2651,45 @@ function starThumb(kind,col,binCol){
     const ng=g.createRadialGradient(0,0,0,0,0,11);
     ng.addColorStop(0,'#ffffff'); ng.addColorStop(0.4,'#dceaff'); ng.addColorStop(1,'rgba(190,220,255,0)');
     g.fillStyle=ng; g.beginPath(); g.arc(0,0,11,0,TAU); g.fill();
+  } else if(kind==='MAG'){
+    /* art audit: a magnetar read as a plain white star — now a tight fierce
+       core wrapped in magnetic-field loops with bright flux knots at the poles */
+    for(let f=0;f<3;f++){ g.save(); g.rotate(f*1.047);
+      g.strokeStyle='rgba(150,192,255,'+(0.5-f*0.1)+')'; g.lineWidth=1.5;
+      g.beginPath(); g.ellipse(0,0,27,9.5,0,0,TAU); g.stroke(); g.restore(); }
+    const mg=g.createRadialGradient(0,0,0,0,0,12);
+    mg.addColorStop(0,'#ffffff'); mg.addColorStop(0.42,col); mg.addColorStop(1,'rgba(207,224,255,0)');
+    g.fillStyle=mg; g.beginPath(); g.arc(0,0,12,0,TAU); g.fill();
+    for(const sgn of [-1,1]){ g.fillStyle='rgba(215,232,255,0.85)';
+      g.beginPath(); g.arc(0,sgn*13,2.4,0,TAU); g.fill(); }
+  } else if(kind==='PROTO'){
+    /* art audit: a protostar is "still being born inside its dusty disk" — give
+       it that disk + warm swaddle + bipolar jets, so it isn't a bare orange dot */
+    const dsk=g.createRadialGradient(0,0,6,0,0,32);
+    dsk.addColorStop(0,'rgba(150,96,60,0)'); dsk.addColorStop(0.5,'rgba(158,102,64,0.5)'); dsk.addColorStop(1,'rgba(90,55,35,0)');
+    g.save(); g.rotate(-0.4); g.scale(1,0.32); g.fillStyle=dsk; g.beginPath(); g.arc(0,0,32,0,TAU); g.fill(); g.restore();
+    for(const sgn of [-1,1]){ const jg=g.createLinearGradient(0,0,0,sgn*27);
+      jg.addColorStop(0,'rgba(255,222,182,0.55)'); jg.addColorStop(1,'rgba(255,222,182,0)');
+      g.strokeStyle=jg; g.lineWidth=2.4; g.lineCap='round';
+      g.beginPath(); g.moveTo(0,sgn*6); g.lineTo(0,sgn*27); g.stroke(); }
+    const pg=g.createRadialGradient(0,0,0,0,0,13);
+    pg.addColorStop(0,'#fff2e0'); pg.addColorStop(0.4,col); pg.addColorStop(1,'rgba(255,154,90,0)');
+    g.fillStyle=pg; g.beginPath(); g.arc(0,0,13,0,TAU); g.fill();
   } else {
     /* a binary pair's card finally shows both suns (HD coverage pass) */
+    /* art audit: red GIANTS read the same as an M dwarf in a thumbnail — give
+       them a bigger, softer, swollen glow so "enormous dying star" reads */
+    const giant=(kind==='RG'||kind==='SG');
+    const R0=giant?34:26;
     const cx0=binCol?-7:0, cy0=binCol?4:0;
-    const sg=g.createRadialGradient(cx0,cy0,0,cx0,cy0,26);
-    sg.addColorStop(0,'#ffffff'); sg.addColorStop(0.28,col); sg.addColorStop(0.6,col+'55'); sg.addColorStop(1,'transparent');
-    g.fillStyle=sg; g.beginPath(); g.arc(cx0,cy0,26,0,TAU); g.fill();
+    const sg=g.createRadialGradient(cx0,cy0,0,cx0,cy0,R0);
+    sg.addColorStop(0,'#ffffff'); sg.addColorStop(giant?0.34:0.28,col);
+    sg.addColorStop(giant?0.72:0.6,col+'55'); sg.addColorStop(1,'transparent');
+    g.fillStyle=sg; g.beginPath(); g.arc(cx0,cy0,R0,0,TAU); g.fill();
+    if(giant){ /* a faint cooler outer envelope — the puffed-off atmosphere */
+      const env=g.createRadialGradient(cx0,cy0,R0*0.6,cx0,cy0,R0*1.28);
+      env.addColorStop(0,col+'22'); env.addColorStop(1,'transparent');
+      g.fillStyle=env; g.beginPath(); g.arc(cx0,cy0,R0*1.28,0,TAU); g.fill(); }
     if(binCol){
       const s2=g.createRadialGradient(22,-14,0,22,-14,14);
       s2.addColorStop(0,'#ffffff'); s2.addColorStop(0.3,binCol); s2.addColorStop(0.65,binCol+'55'); s2.addColorStop(1,'transparent');
