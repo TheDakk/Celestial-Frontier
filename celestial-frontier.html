@@ -1657,6 +1657,12 @@
     font:600 11px var(--ui);letter-spacing:.05em;color:#bfe6c8;background:rgba(127,230,160,0.10);
     border:1px solid rgba(127,230,160,0.45)}
   #pickbulk:hover{background:rgba(127,230,160,0.18)}
+  /* charter chip (QoL q) — stacks under the pin chip on the left rail line */
+  #chchip{position:fixed;left:18px;top:calc(var(--topbar-h,100px) + 82px);z-index:9;display:flex;align-items:center;gap:5px;
+    font-family:var(--ui);font-size:10.5px;letter-spacing:.04em;color:var(--dim);cursor:pointer;
+    padding:6px 11px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,207,138,0.35);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);max-width:min(62vw,340px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #chchip b{color:#f0cf8a;font-weight:600}
   @media (max-width:520px){
     /* phone: icon + count chips — labels fold away, dots grow into icons */
     #pcdxbtn .lbl, #codexbtn .lbl, #logbtn .lbl, #cargobtn .lbl, #recbtn .lbl{display:none}
@@ -21141,6 +21147,23 @@ const chBtn=document.getElementById('chbtn'), chPanel=document.getElementById('c
 function _chBadge(){
   const dot=chBtn&&chBtn.querySelector('.dot');
   if(dot) dot.style.display=(_chAvailable().length||_chAccepted().length)?'':'none';
+  /* CHARTER CHIP (QoL q): the first accepted contract's live progress as a
+     one-line chip under the charter button — kills the "what was I doing?"
+     reopen loop. Tap → the board. Post-training only; hides when idle. */
+  try{
+    let el=document.getElementById('chchip');
+    const acc=tutDone?_chAccepted():[];
+    if(!acc.length){ if(el) el.style.display='none'; return; }
+    if(!el){
+      el=document.createElement('div'); el.id='chchip'; el.setAttribute('role','button'); el.tabIndex=0;
+      el.addEventListener('click', ()=>{ try{ if(!chOpen) chBtn.click(); }catch(_){ } });
+      document.body.appendChild(el);
+    }
+    const c=acc[0];
+    const prog=c.id[0]==='s'?'':(' · '+Math.min(chProg[c.id]||0,c.n)+'/'+c.n);
+    el.innerHTML='📜 <b>'+esc(String(c.t||c.d||'Contract').slice(0,30))+'</b>'+prog+(acc.length>1?' <span style="opacity:.55">+'+(acc.length-1)+'</span>':'');
+    el.style.display='flex';
+  }catch(_){ }
 }
 function renderCharters(){
   if(!chPanel) return;
