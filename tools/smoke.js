@@ -207,6 +207,42 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         check('stellar §8: every stellar yield is a cosmic-family material',
           sseeds.every((s) => { const y = H.stellarYieldFor(s); return y === null || (H.MATERIALS[y] && H.MATERIALS[y].fam === 'cosmic'); }));
       }
+      // ===== v1.7 §5 — instance rarity: the EXCEPTIONAL VEIN (design call 2026-07-24) =====
+      if (H.exVeinFor && H.exTierOf && H.cgx && H._spendMat) {
+        const xseeds = [];
+        for (let s = 1; s <= 600; s++) xseeds.push(s * 911 + 5);
+        check('§5: exVeinFor is deterministic (same seed → same vein)',
+          xseeds.slice(0, 100).every((s) => H.exVeinFor(s, 'rocky', 2) === H.exVeinFor(s, 'rocky', 2)));
+        const veins = xseeds.map((s) => H.exVeinFor(s, 'rocky', 2));
+        const hit = veins.filter(Boolean).length / xseeds.length;
+        check('§5: only a minority of worlds carry an exceptional vein (~15%)', hit > 0.08 && hit < 0.25);
+        check('§5: the vein substance always comes from the world\'s own deposit palette',
+          xseeds.every((s) => { const v = H.exVeinFor(s, 'rocky', 2); return v === null || H.depositsFor(s, 'rocky', 2).includes(v); }));
+        check('§5: no exceptional vein is ever a cosmic (cosmics are already the summit)',
+          veins.filter(Boolean).every((k) => H.MATERIALS[k] && H.MATERIALS[k].fam !== 'cosmic'));
+        check('§5: exceptional = base tier +1, clamped at 6 (one rule everywhere)',
+          H.exTierOf('Fe') === H.matBaseTier('Fe') + 1 && H.exTierOf('Nd') <= 6 &&
+          Object.keys(H.MATERIALS).every((k) => H.exTierOf(k) <= 6));
+        // spend discipline: exceptional stock burns FIRST and the sub-count clamps
+        H.cargo.set('Fe', 10); H.cgx.set('Fe', 4);
+        const exSpent = H._spendMat('Fe', 6);
+        check('§5: _spendMat burns exceptional stock first and reports it',
+          exSpent === 4 && H.cargo.get('Fe') === 4 && H.cgx.get('Fe') === 0);
+        H.cargo.set('Fe', 0);
+        // EXCEPTIONALLY FORGED: full exceptional coverage on a gear cost ⇒ the
+        // crafted piece arrives carrying a seeded affix (spoils grammar)
+        H.items.set('fieldsuit', 1); H.items.set('weave', 2); H.items.set('cell', 1);
+        H.cargo.set('S', 2); H.cgx.set('S', 2);
+        H.craftItem('hazmat');
+        // (toasts queue behind the intro screen here, so assert STATE, not DOM)
+        check('§5: exceptional-forged gear auto-equips carrying a seeded affix',
+          H.equip.suit === 'hazmat' && H.equipAff && H.equipAff.suit && H.equipAff.suit.forId === 'hazmat' &&
+          typeof H.equipAff.suit.k === 'string' && Number.isFinite(H.equipAff.suit.v));
+        check('§5: the forge spent the exceptional stock (cgx empty, cargo spent)',
+          (H.cgx.get('S') || 0) === 0 && (H.cargo.get('S') || 0) === 0);
+      } else {
+        check('§5: exceptional-vein hooks present (exVeinFor/exTierOf/cgx/_spendMat)', false);
+      }
     } else {
       check('materials: Phase B 5a hooks present (MATERIALS/MAT_FAMILY/matName/matBaseTier)', false);
     }
