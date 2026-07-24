@@ -243,6 +243,15 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       } else {
         check('§5: exceptional-vein hooks present (exVeinFor/exTierOf/cgx/_spendMat)', false);
       }
+      // ===== v1.7 §8b — skim design pass: the Corona Scoop + the remnant's bite =====
+      if (H.skimStar && H.starClass && H.ITEMS) {
+        const scoop = H.ITEMS.find((it) => it.id === 'cscoop');
+        check('§8b: the Corona Scoop exists — sys, rides the Jump Drive, costs a hand-skimmed Plasma',
+          !!scoop && scoop.cat === 'sys' && scoop.req === 'jumpdrive' &&
+          scoop.eff && scoop.eff.skim >= 1 && scoop.eff.skimguard >= 1 && (scoop.cost || {}).Pls >= 1);
+        // (the behavioral bite/scoop drive runs POST-training — the skim bite
+        //  costs real HP and the training hazard step asserts absolute HP)
+      }
     } else {
       check('materials: Phase B 5a hooks present (MATERIALS/MAT_FAMILY/matName/matBaseTier)', false);
     }
@@ -541,6 +550,27 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // hidden until first cargo — it flickered off between lessons)
     check('the Shipyard button stands on the rail even with an empty hold',
       doc.getElementById('cargobtn').style.display === 'flex');
+
+    // ===== v1.7 §8b — the remnant's bite + the Corona Scoop (post-training:
+    //       the bite costs real HP, and training just restored 100/100) =====
+    if (H.skimStar && H.starClass) {
+      let wd = null;
+      for (let s = 1; s < 4000 && !wd; s++) { if (['WD', 'NS', 'MAG', 'BH'].includes(H.starClass(s * 733 + 3).kind)) wd = s * 733 + 3; }
+      if (wd != null) {
+        H.items.set('jumpdrive', 1);
+        const hpOf = () => parseInt((doc.getElementById('hptext').textContent.match(/(\d+)\//) || [0, 0])[1], 10);
+        const hp0 = hpOf(), crn0 = H.cargo.get('Crn') || 0;
+        H.skimStar(wd);
+        check('§8b: an UNSHIELDED remnant skim bites for 3 HP but still pays Coronium',
+          hpOf() === hp0 - 3 && (H.cargo.get('Crn') || 0) > crn0);
+        H.items.set('cscoop', 1);
+        const hp1 = hpOf(), crn1 = H.cargo.get('Crn') || 0;
+        H.skimStar(wd);
+        check('§8b: the Corona Scoop ends the bite and ladles +1 per pass',
+          hpOf() === hp1 && (H.cargo.get('Crn') || 0) - crn1 >= 2);
+        H.items.set('cscoop', 0); H.items.set('jumpdrive', 0); H.cargo.delete('Crn'); H.cargo.delete('Pls');
+      } else check('§8b: found a remnant star to skim', false);
+    }
     check('cleanup: Atlas keeps only Earth', doc.getElementById('logcount').textContent === '1' && H.logMap.has('p133'));
     tutAct();                                                       // begin the expedition
     check('tutorial closes', await until(() => !visible(doc.getElementById('tutbox')), 2000, 'tut close'));
