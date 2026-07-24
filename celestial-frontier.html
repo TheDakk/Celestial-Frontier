@@ -557,7 +557,14 @@
     -webkit-mask-image:radial-gradient(circle, #000 0%, transparent 62%);
     mask-image:radial-gradient(circle, #000 0%, transparent 62%)}
   @keyframes cinespin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-  #cinema .core{position:relative;text-align:center;padding:0 22px;animation:cinein .7s cubic-bezier(.16,1,.3,1)}
+  /* v1.7 (Nick, 2026-07-24): the cinematic core is a WINDOWED CARD now (the
+     vista grammar) — the old transparent wash left the reveal fighting the
+     text underneath it. The rays keep spinning behind the window. */
+  #cinema .core{position:relative;text-align:center;padding:26px 30px 22px;animation:cinein .7s cubic-bezier(.16,1,.3,1);
+    background:linear-gradient(165deg, rgba(16,20,34,0.96), rgba(8,10,20,0.97));
+    border:1px solid color-mix(in srgb, var(--cine,#ffd96a) 45%, transparent);
+    border-radius:20px;max-width:min(480px, calc(100vw - 48px));
+    box-shadow:0 24px 80px rgba(0,0,0,0.7), 0 0 34px color-mix(in srgb, var(--cine,#ffd96a) 20%, transparent)}
   @keyframes cinein{from{transform:scale(.78);opacity:0;letter-spacing:.28em}to{transform:none;opacity:1}}
   #cinema .kick{font:700 11px var(--ui);letter-spacing:.34em;text-transform:uppercase;color:var(--cine,#ffd96a);
     text-shadow:0 0 18px var(--cine,#ffd96a);margin-bottom:10px}
@@ -2229,8 +2236,20 @@ function surfaceColor(P, u, lat, fbm, fx){
       if(aridT>0) land=mix(land, mix([196,164,104],[168,134,82], fbm(u*7,lat*7,3)), aridT);   /* skip the 2nd fbm when moot (heat) */
       c=mix([64,150,185], mix([198,182,134],land, sm(e,0.468,0.535)), sm(e,0.44,0.492));
     }
-    const capT=Math.max(sm(polar,0.80-P.iceAmt*0.1,0.95), sm(polar,0.62,0.84)*sm(e,0.52,0.66));
-    return mix(c,[236,244,250], capT);
+    /* polar caps (Nick, 2026-07-24: "pure white, don't blend"): the cap edge
+       follows a NOISE coastline instead of a clean latitude ring, sea ice
+       reads blue-grey while land snow reads warm-white (blended across the
+       waterline so no seam), and the old high-elevation blob term is gone —
+       the snowline above already handles mountain snow, so no more detached
+       white patches floating off the coasts. */
+    const capN=fbm(u*3.4+77, lat*3.4+21, 3);
+    /* iceAmt carries real weight: .2 = polar fringe, .9 = ice reaches the
+       mid-latitudes (an icy terran should READ icy from orbit) */
+    const _capSt=0.76-P.iceAmt*0.34+(capN-0.5)*0.16;
+    const capT=sm(polar, _capSt, Math.min(0.98, _capSt+0.34));   /* narrow ramp — ice reaches FULL white, not a thin wash */
+    const seaT=1-sm(e,0.42,0.48);   /* 1 at open sea → 0 on land, feathered */
+    const capCol=mix([240,246,252],[210,228,242], seaT);   /* snow → sea ice */
+    return mix(c, capCol, capT);
   }
   if(t==='ocean'){
     const smO=(v,a,b2)=>{const x2=clamp((v-a)/(b2-a),0,1);return x2*x2*(3-2*x2)};
@@ -2342,8 +2361,22 @@ function renderPlanetSprite(P, PX){
            original 0.60 look) · spacefaring 0.48 blaze */
         if(landN>0.52 && cityN>0.78-_cl*0.3){ cr=255; cg2=212; cb=138; lum=0.95; }
       }
-      d[i]=clamp(cr*lum,0,255); d[i+1]=clamp(cg2*lum,0,255); d[i+2]=clamp(cb*lum,0,255);
+      /* limb blend (Nick, 2026-07-24: "artifacts going around" — the ortho
+         projection stretches the surface noise into streaks at the edge of
+         the disc): worlds with air wash the last ~10% of the limb into an
+         atmospheric haze, which both hides the stretching and seats the
+         sphere — airless types just soften slightly. */
       const rr=Math.sqrt(rr2);
+      if(rr>0.90){
+        const lt=(rr-0.90)/0.10;
+        const hasAir=(P.type==='terran'||P.type==='ocean'||P.type==='venus'||P.type==='gas');
+        if(hasAir){
+          const ar2=P.type==='venus'?[236,214,170]:(P.type==='gas'?[228,222,236]:[188,214,240]);
+          const aa2=lt*lt*0.55;
+          cr=cr*(1-aa2)+ar2[0]*aa2; cg2=cg2*(1-aa2)+ar2[1]*aa2; cb=cb*(1-aa2)+ar2[2]*aa2;
+        }
+      }
+      d[i]=clamp(cr*lum,0,255); d[i+1]=clamp(cg2*lum,0,255); d[i+2]=clamp(cb*lum,0,255);
       d[i+3]= rr>0.97 ? Math.max(0,Math.round(255*(1-rr)/0.03)) : 255;
     }
   }
@@ -2378,16 +2411,27 @@ function _cardSig(P){
   const fx=CARD_FACTS.get(P.seed);
   return fx?(fx.band||'')+'|'+(fx.lush===undefined?'?':(fx.lush?1:0))+'|'+(fx.civLights||0):'';
 }
-function getPlanetSprite(P){
-  const key=P.seed+'|'+_cardSig(P);
+function getPlanetSprite(P, wantPx){
+  /* v1.7 crispness (Nick's Earth screenshot: chunky coastlines when a world
+     fills the phone screen): the FOCUSED world earns a 1024px master — the
+     512 default upscaled ~5× at DPR 3 is where the blockiness came from.
+     Same instant-lo → async-hi pattern; the HD tier keys separately and the
+     small cache cap keeps at most a couple of 4MB masters alive. */
+  /* 768 covers a full-screen phone world (390 CSS px × DPR 2); 1024 only when
+     the display truly demands it (desktop DPR 3) — a 1024² noise loop is a
+     real main-thread pause, so the phone never pays for it (heat pass). */
+  const hdPx=(wantPx|0)>=900 ? 1024 : ((wantPx|0)>640 ? 768 : 0);
+  const key=P.seed+'|'+_cardSig(P)+(hdPx?'|hd'+hdPx:'');
   const hit=spriteCache.get(key);
   if(hit) return hit;
-  const lo=renderPlanetSprite(P, 128);
-  lo._lowres=true;
+  /* placeholder: reuse the plain 512 if it exists (never flag IT low-res —
+     that flag gates thumb pinning); a fresh 128 gets the flag as before */
+  let lo=spriteCache.get(P.seed+'|'+_cardSig(P));
+  if(!lo){ lo=renderPlanetSprite(P, 128); lo._lowres=true; }
   if(spriteCache.size>28){ const k=spriteCache.keys().next().value; spriteCache.delete(k); }
   spriteCache.set(key, lo);
   setTimeout(()=>{
-    if(spriteCache.get(key)===lo) spriteCache.set(key, renderPlanetSprite(P, P_PX));
+    if(spriteCache.get(key)===lo) spriteCache.set(key, renderPlanetSprite(P, hdPx||P_PX));
   }, 30);
   return lo;
 }
@@ -6344,7 +6388,7 @@ function drawSystem(time){
     const px=Math.cos(ang)*pl.orb, py=Math.sin(ang)*pl.orb;
     const pr=6*pl.P.sizeMul;
     ensureCardFacts(pl.P, sys, pl.orb);   /* band/life/era reach the sprite (V1/V9/I9) */
-    const sprite=getPlanetSprite(pl.P);
+    const sprite=getPlanetSprite(pl.P, pr*2*c.z*DPR);   /* the focused world earns the 1024 HD master */
     picks.push({sx:(px-c.x)*c.z+W/2, sy:(py-c.y)*c.z+H/2, r:Math.max(pr*c.z,16*PICK_F), kind:'planet', data:{P:pl.P, sys, pl}});
     ctx.save(); ctx.translate(px,py);
     /* rings: seeded tilt + type hue, no longer one beige arc for the
@@ -16001,6 +16045,7 @@ pickList.addEventListener('click', e=>{
       playRaritySting(Math.min(TIER_MAX, (r.born&&r.born.grade?r.born.grade.tier:3)+1)); playFanfare(); fxBurst(FX_GREEN.concat(FX_PURP),46);
       if(r.born) cinematic({kicker:'🧬 A New Bloodline', title:r.born.name,
         sub:_pickBase.name+' × '+other.name+' — generation '+(r.born.gen||1),
+        img:(function(){ try{ return speciesPortrait(r.born.genome); }catch(_){ return null; } })(),   /* Nick 2026-07-24: the newborn's PICTURE in the reveal window */
         hex:(r.born.grade?r.born.grade.hex:'#7fe6a0'), tier:Math.max(2,(r.born.grade?r.born.grade.tier:0)),
         /* the card waits its turn — the spectacle finishes before the reveal slides in */
         then:()=>setTimeout(()=>{ pickBox.style.display='none'; showReveal(r.born, true); }, 350)});
@@ -20727,10 +20772,10 @@ const TUT_STEPS=[
   when:(t)=>t==='specimen'},
  {id:'card-tour', spot:'#reveal .card', btn:'Got It', rev:'scout',   /* the tour's one live verb — reversible, and it IS on the card */
   text:()=>'Read it like a Pathfinder: five stat bars and total Power; its ✧ ability; the rarity grade tinting the card. Rarer life fights harder, breeds stronger, heals — or poisons — more. Beasts also list the flora flavours they ♥ love and ⊘ dislike.'},
- {id:'feed', allow:['#codex','#codexbtn'], rev:'feed', enter:()=>{ _tutRig={feed:0.99}; },   /* feedPair poisons on LOW rolls — 0.99 is the safe, best-event roll (v1.3.11: the old -1 rig GUARANTEED the training poisoning Nick screenshotted) */
+ {id:'feed', bottom:true, allow:['#codex','#codexbtn'], rev:'feed', enter:()=>{ _tutRig={feed:0.99}; },   /* feedPair poisons on LOW rolls — 0.99 is the safe, best-event roll (v1.3.11: the old -1 rig GUARANTEED the training poisoning Nick screenshotted). bottom:true (Nick's step-10 screenshot, 2026-07-24): if the recruit closes the Compendium mid-step, a TOP card sat exactly over the rail pills the step needs tappable — pin it to the bottom like the specimen step */
   text:()=>'Time for a meal. Open a 🐾 beast in the Compendium, tap <b>Feed</b>, and pick a plant. The plant is always consumed — a welcome meal grows the beast’s bloodline permanently.',
   when:(t)=>t==='fed'},
- {id:'breed', allow:['#codex','#codexbtn'], rev:'breed', enter:()=>{ _tutRig={breed:-1}; },
+ {id:'breed', bottom:true, allow:['#codex','#codexbtn'], rev:'breed', enter:()=>{ _tutRig={breed:-1}; },   /* bottom:true — same rail-blocking fix as the feed step */
   text:()=>'Now forge a bloodline. Open a 🐾 beast, tap <b>Breed</b>, and choose a mate. Both parents are always consumed by the union. (This training pair is a sure thing.)',
   when:(t)=>t==='bred'},
  {id:'duel', btn:'⚔ Begin Training Duel', stay:true,
