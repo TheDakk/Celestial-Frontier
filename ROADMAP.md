@@ -192,7 +192,7 @@
 ##   you want zero muscle-memory change. NICK PICKS → then it's its own focused session with device verify.
 ##
 ## ▶▶ CONTENT COMPLETENESS — what 1.6/1.7 still leaves on the table (biomes / Earth catalog / procgen; Nick
-##   asked "anything we left out"): BIOMES: night/dawn/dusk vista variants (pal exists — ties to the landing
+##   asked "anything we left out"): AUDIT 2026-07-24 — several items turn out ALREADY LIVE: night/twilight landings (tod rolls from orbital brightness), aurora on high-field worlds at night, night bioluminescence (hdVista bioLume). TRULY OPEN below: BIOMES: (was: night/dawn/dusk vista variants — LIVE; ties to the landing
 ##   salt) · ecotone landings (a rolled COAST between two biomes — the transition zone IS the vista) · aurora on
 ##   high-field worlds at night · meteor-shower / eclipse sky events (wxEventFor has the slot) · underground
 ##   vistas (karst/lava-tube interiors — a "descend" verb on cave biomes). EARTH CATALOG: seasonal coats (arctic
