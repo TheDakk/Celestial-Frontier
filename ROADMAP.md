@@ -89,7 +89,7 @@
 ##   DOCK ANSWER: the shipped dock IS universal — ONE bottom dock on both platforms (labels on desktop, icon+count
 ##   chips ≤520px). No second design needed; device verify still pending.
 ##   VISUAL-REVIEW TRIAGE (my calls, work in this order):
-##   FIX-FIRST (small, high-impact): (a) QUASAR JETS — tapered irregular plasma w/ knots + emission cone +
+##   FIX-FIRST — ✔ ALL DONE 2026-07-24 (quasar jets ff/knots/asym [b5fe614] · ring shadows both ways [927e41b] + 2nd gap/grain [b8c0f37] · nebula multi-scale [553f849] · BH turbulence/lensing/soft-horizon [05616f9] · star-class textures [b936805] · coasts/vortices/cloud-wind [ff6e618]). Original list: (a) QUASAR JETS — tapered irregular plasma w/ knots + emission cone +
 ##     asymmetry (review's #1; rectangular beams confirmed). (b) RING OCCLUSION+SHADOWS — planet shadow across
 ##     rings + ring shadow on planet + uneven band opacity/grain/gaps (in-game draw already splits back/front; the
 ##     seam was the LIVEVIEW SHEET's clip, partly sheet artifact — but shadows are real gaps). (c) NEBULA
