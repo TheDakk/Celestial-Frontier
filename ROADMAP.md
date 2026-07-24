@@ -106,7 +106,7 @@
 ##     fronts + spiral storms + land/ocean cloud density, fractal cap edges + glacial tongues (cap noise shipped;
 ##     push further), gas-giant storms/vortices/band-width variety, venus circulation layers.
 ##   THEN THE BIG CONTENT PASSES (each its own arc, Nick 2026-07-24: "proceed with all four, don't wait"):
-##     (1) ADVANCED BRIEFINGS (5 drills + full-UI coverage audit, charter handoff shipped). (2) CONTENT-
+##     (1) ✔ ADVANCED BRIEFINGS SHIPPED [44ef2f1] — 5 drills from the Guide 🎓 row, zero-lockdown runner, 4 smoke sentinels; full-UI coverage now: 20-step training + guardians step + charter finale + 5 drills + Guide. (2) CONTENT-
 ##     COMPLETENESS slate. (3) ALL QoL slate. (4) EARTH CATALOG ONE-BY-ONE — audit all 1010 vs real counterparts
 ##     (rig-audit classifications + per-species silhouette review via catalog pages), fix misreads; PROCEDURAL-
 ##     TRAIT pass (head/tail/marquee/eye-limb) + BREEDING COHESION; proof sheets to Nick at each stage.
