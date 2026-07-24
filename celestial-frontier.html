@@ -9072,33 +9072,27 @@ function _earthFlora(name){
   else if(has(/mint|basil|thyme|\bsage\b|oregano|parsley|cilantro|coriander|\bdill\b|rosemary|chamomile|fennel|tarragon|chive|marjoram|lemongrass|\bherb\b|\bspice\b|nettle|clover|lavender|\bkale\b|lettuce|spinach|cabbage|chard|celery|arugula|watercress/)) form='herb';
   return Object.assign({form}, ex);
 }
-function hdPortraitFlora(g){
-  const S2=440,cv=document.createElement('canvas');cv.width=cv.height=S2;
-  const c2=cv.getContext('2d');
+/* the genome → plant-shape resolver, the FLORA equivalent of hdBeastBare's body:
+   a real growth FORM per genome (palette biome-derived), Earth names overriding
+   the botany. Extracted so the VISTA can draw a world's ACTUAL flora species (its
+   hero plant), not a generic tree — the same coherence the fauna already have
+   (the plant in the biome is the one in your Compendium). Render-only. */
+function _floraSpx(g){
   const hideHex=SP_HEX[SP_COLOR[(g.color||0)%SP_COLOR.length]]||'#7fb069';
   const hn=parseInt(hideHex.slice(1),16);
   const leaf='rgba('+((hn>>16)&255)+','+((hn>>8)&255)+','+(hn&255)+',0.88)';
   const accHex=SP_HEX[SP_COLOR[(g.accent||g.trait||3)%SP_COLOR.length]]||'#d6a0ff';
   const an2=parseInt(accHex.slice(1),16);
   const lum=g.lumin?'rgba('+((an2>>16)&255)+','+((an2>>8)&255)+','+(an2&255)+',0.9)':null;
-  const bg=c2.createRadialGradient(S2*0.5,S2*0.40,20,S2*0.5,S2*0.5,S2*0.62);
-  bg.addColorStop(0,g.lumin?'#150f20':'#0f1a10');bg.addColorStop(1,'#06070d');
-  c2.fillStyle=bg;c2.fillRect(0,0,S2,S2);
-  _rankAura(c2,S2,rarityRoll(g.seed,1),false,false,g.seed);
   const r2=mulberry32((g.seed^0x717)>>>0);
   const spx={ trunk:g.lumin?'#2c2440':'#31241a', leaf:leaf, lum:lum,
     spread:0.75+r2()*0.6, depth:4+(r2()<0.5?1:0), lean:0.15+r2()*0.4, accent:accHex };
-  /* v1.6 PROCEDURAL FLORA GROWTH FAMILIES (Nick's review): a real growth form per
-     genome (palette already biome-derived in leaf/accent), not one canopy-tree.
-     Earth names override this below via _earthFlora. Render-only. */
-  /* v1.6 Pass 9 FLORA text↔visual ALIGNMENT (review §5.2): FAM now matches FLORA_FORM index-for-
-     index (18 entries, %18 like floraFormOf) so a plant described as "fern-analogues" draws a
-     fern, "spore-towers" a spire, etc. — the codex word and the portrait agree. (aquatic/aerial
-     subfamily separation is still backlog.) */
+  /* v1.6 Pass 9 FLORA text↔visual ALIGNMENT: FAM matches FLORA_FORM index-for-index
+     (18 entries, %18 like floraFormOf) so the codex word and the portrait agree. */
   { const FAM=['fern','tree','moss','grass','tree','cactus','moss','vine','shrub','conifer','tree','tree','crop','flower','grass','shrub','palm','conifer'];
     spx.form = g.aq?'seaweed':(g.af?'aerial':FAM[(g.form||0)%FAM.length]);
-    if(g.aq) spx.aqsub=(g.form||0)%6;    /* v1.6 B15 (review 0.7): aquatic subfamily — kelp/seagrass/reef/sargassum/bloom/tube (matches AQ_FLORA_FORM) */
-    if(g.af) spx.aersub=(g.form||0)%3;   /* aerial subfamily — veil/banner/cloud-garden (matches AIR_FLORA_FORM) */
+    if(g.aq) spx.aqsub=(g.form||0)%6;    /* aquatic subfamily — kelp/seagrass/reef/sargassum/bloom/tube */
+    if(g.af) spx.aersub=(g.form||0)%3;   /* aerial subfamily — veil/banner/cloud-garden */
     spx.fform=['daisy','disc','orchid','spike','lily'][(g.trait||0)%5];
     spx.cform=['spire','layered','bushy','dense','round'][(g.body||0)%5];
     spx.tform=['broad','weep','baobab','acacia'][(g.pattern||0)%4];
@@ -9117,7 +9111,17 @@ function hdPortraitFlora(g){
     else if(stat==='Agility'){ spx.accent='rgba(90,220,190,0.9)'; }
     else if(stat==='Insight'){ spx.accent='rgba(180,150,255,0.95)'; spx.motes='rgba(180,150,255,0.9)'; }
   }
-  const pcv=_hdPlantBare((g.seed^0x717)>>>0, spx);
+  return spx;
+}
+function hdFloraBare(g, seed){ return _hdPlantBare(seed==null?((g.seed^0x717)>>>0):seed, _floraSpx(g)); }
+function hdPortraitFlora(g){
+  const S2=440,cv=document.createElement('canvas');cv.width=cv.height=S2;
+  const c2=cv.getContext('2d');
+  const bg=c2.createRadialGradient(S2*0.5,S2*0.40,20,S2*0.5,S2*0.5,S2*0.62);
+  bg.addColorStop(0,g.lumin?'#150f20':'#0f1a10');bg.addColorStop(1,'#06070d');
+  c2.fillStyle=bg;c2.fillRect(0,0,S2,S2);
+  _rankAura(c2,S2,rarityRoll(g.seed,1),false,false,g.seed);
+  const pcv=_hdPlantBare((g.seed^0x717)>>>0, _floraSpx(g));
   _fitPlant(c2, pcv, S2);   /* v1.6: box-fit normalization for flora */
   const fg=c2.createLinearGradient(0,S2*0.72,0,S2);
   fg.addColorStop(0,'rgba(6,8,14,0)');fg.addColorStop(1,'rgba(6,8,14,0.5)');
@@ -9970,8 +9974,14 @@ function hdVista(opts){
     trunk:'hsl('+(((leafHue+140+rP()*60)%360)|0)+',20%,'+((10+rP()*8)|0)+'%)',
     leaf:'hsla('+((leafHue+(rP()-0.5)*18)|0)+','+((40+rP()*30)|0)+'%,'+((28+rP()*16)|0)+'%,0.9)',
     spread:0.8+rP()*0.7, depth:3+((rP()*2.4)|0), lean:0.1+rP()*0.5});
-  const pcv=_hdPlantBare(seed+2, mkSp());
-  const pcv2=_hdPlantBare(seed+9, mkSp());
+  /* v1.7 (Nick: "plants as well — consistent across the game"): when the world
+     carries flora genes, the vista's plants ARE those species (hdFloraBare, the
+     same growth-form resolver as their Compendium portrait) — a desert's cacti,
+     a jungle's broadleaves — instead of a generic canopy. Flora-less worlds keep
+     the tuned generic dressing (no regression). */
+  const _fg=opts.floraGenes||[];
+  const pcv =_fg[0]?hdFloraBare(_fg[0]):_hdPlantBare(seed+2, mkSp());
+  const pcv2=_fg[1]?hdFloraBare(_fg[1]):(_fg[0]?hdFloraBare(_fg[0],seed+9):_hdPlantBare(seed+9, mkSp()));
   /* plant grading shared by every scene: winter frosts them, night turns
      them to silhouettes, dusk steeps them violet */
   const frost=opts.pal==='snow'?0.35:0;
@@ -10957,6 +10967,7 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
     moons:P.moons||0, aurora:!!aurora&&wx!=='rain'&&wx!=='snow',
     nightize:nightize, duskize:duskize, flora:flora!==false,
     water:water||'liquid', genes:genes&&genes.length?genes:null,
+    floraGenes:(xtra&&xtra.floraGenes)||null,
     ring:!!(xtra&&xtra.ring), stc:(xtra&&xtra.stc)||null, herd:(xtra&&xtra.herd)||0,
     aqua:(xtra&&xtra.aqua)||0, air:(xtra&&xtra.air)||0, wb:wb5?wb5.k:null,
     evt:evt5, titan:!!(xtra&&xtra.titan)});
@@ -11400,6 +11411,9 @@ function openLandingVista(pl){
   const airRoster=roster.filter(gg=>clsOf(gg)==='air' && gg.kingdom==='fauna');
   const airGenes=airRoster.slice(0,2).map(hdGenesFor);
   const aerFloraG=roster.filter(gg=>gg.kingdom==='flora' && gg.af).slice(0,1).map(hdGenesFor);
+  /* the world's terrestrial flora species → the vista's actual plants (the same
+     coherence the fauna have; aquatic/aerial flora are drawn by their own scenes) */
+  const floraGenes=roster.filter(gg=>gg.kingdom==='flora' && !gg.aq && !gg.af).slice(0,2).map(hdGenesFor);
   const lifeRow=d.rows&&d.rows.find(rr=>rr[0]==='Life');
   const floraOk=!lifeRow||!/^(No known life|Microbial|Subsurface|Airborne|Extremophile)/.test(lifeRow[1]);
   const waterRow=d.rows&&d.rows.find(rr=>rr[0]==='Water');
@@ -11414,7 +11428,7 @@ function openLandingVista(pl){
     {ring:P.ring, stc:(st.star&&st.star.c)||null, herd:standable.length,
      aqua:roster.filter(gg=>clsOf(gg)==='aqua').length,
      air:roster.filter(gg=>clsOf(gg)==='air').length,
-     airGenes:airGenes, aerFlora:aerFloraG,
+     airGenes:airGenes, aerFlora:aerFloraG, floraGenes:floraGenes,
      titan:_tit, title:d.title||null, where:d.where||null});
 }
 const _descBoxEl=()=>document.getElementById('descbox');
