@@ -12769,6 +12769,9 @@ function renderLog(){
   if(homeId && !logMap.has(homeId)) homeId=null;
   let items=[...logMap.values()];
   if(logFilter==='fav') items=items.filter(it=>it.fav || it.id===homeId);
+  /* QoL n: two more lenses — settled worlds, and civilized/living finds */
+  else if(logFilter==='won') items=items.filter(it=>it.id[0]==='p' && conquered.has(+it.id.slice(1)));
+  else if(logFilter==='life') items=items.filter(it=>!!it.badge);
   /* home pins to the very top, then favorites, then most-recent */
   items.sort((a,b)=>{
     const ra=a.id===homeId?2:(a.fav?1:0), rb=b.id===homeId?2:(b.fav?1:0);
@@ -12779,11 +12782,13 @@ function renderLog(){
     '<div class="lfilt">'+
       '<button data-filt="all" class="'+(logFilter==='all'?'on':'')+'">All</button>'+
       '<button data-filt="fav" class="'+(logFilter==='fav'?'on':'')+'">★ '+favCount+'</button>'+
+      '<button data-filt="won" class="'+(logFilter==='won'?'on':'')+'" title="Worlds you have settled">🏴</button>'+
+      '<button data-filt="life" class="'+(logFilter==='life'?'on':'')+'" title="Life, signals & civilizations">❋</button>'+
     '</div>'+
     ((homeId&&logMap.has(homeId))?'<button class="lgohome" data-gohome="1" title="Travel to your home">⌂ Travel Home</button>':'')+
   '</div>';
   if(!items.length){
-    html+='<div class="empty">No favorites yet — tap ☆ on any entry to star it.</div>';
+    html+='<div class="empty">'+(logFilter==='won'?'No settled worlds bookmarked yet — conquer one and add it here.':(logFilter==='life'?'No living or civilized finds bookmarked yet.':'No favorites yet — tap ☆ on any entry to star it.'))+'</div>';
   }
   for(const it of items){
     const isHome=it.id===homeId;
