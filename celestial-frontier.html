@@ -2326,9 +2326,17 @@ function surfaceColor(P, u, lat, fbm, fx){
     return c;
   }
   if(t==='venus'){
+    /* visual review §7.4: LAYERED circulation — a slow deep deck sheared one
+       way, a faster bright upper deck sheared the other, and an occasional
+       darker vortex where they fight */
     const shear=fbm(u*2.2, lat*2.2, 3)*1.6;
     const sw=fbm(u*1.1+shear, lat*4.4, 4);
-    return mix(hsl(P.hue%60+25, 45, 60), hsl(P.hue%60+38, 55, 82), sw);
+    const sw2=fbm(u*1.7-shear*0.7+21, lat*3.1+9, 3);
+    let c=mix(hsl(P.hue%60+25, 45, 60), hsl(P.hue%60+38, 55, 82), sw);
+    c=mix(c, hsl(P.hue%60+33, 50, 88), Math.max(0,(sw2-0.62))*1.6);
+    const vx=fbm(u*0.9+64, lat*2.4+40, 3);
+    if(vx>0.74 && Math.abs(lat)<0.6) c=mix(c, hsl(P.hue%60+18, 42, 44), (vx-0.74)*2.6);
+    return c;
   }
   if(t==='lava'){
     let c=mix([26,20,22],[64,50,48], e);
@@ -6900,7 +6908,7 @@ function drawSystem(time){
       const ma=time*(0.55/Math.pow(morb,1.5))+m*2.4;
       const mdist=pr*morb;
       const mx=Math.cos(ma)*mdist, my=Math.sin(ma)*mdist*0.4;
-      const mrad=Math.max(0.5,pr*0.12);
+      const mrad=Math.max(0.5,pr*0.108);   /* visual review §2.4: −10% — planets read larger; the 10px pick floor below keeps taps safe */
       /* typed lit-sphere sprite (HD coverage pass) — the live moon finally
          matches its card thumb; the terminator overlay below still turns
          the dark side away from the star */
