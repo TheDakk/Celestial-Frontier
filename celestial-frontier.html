@@ -9272,6 +9272,20 @@ function _hdPlantBare(seed, sp){
         g2.fillStyle=leaf;g2.beginPath();g2.ellipse(bx+S*0.02,S*0.68,S*0.17,S*0.035,0,0,7);g2.fill();   // broad floating pad at the waterline
         g2.fillStyle=accent;for(let i=0;i<9;i++){ const a=-1.5708+(i-4)*0.34;g2.beginPath();g2.ellipse(bx+Math.cos(a)*S*0.055,fy+Math.sin(a)*S*0.02,S*0.055,S*0.02,a+1.5708,0,7);g2.fill(); }
         g2.fillStyle='rgba(240,220,120,0.9)';g2.beginPath();g2.arc(bx,fy,S*0.03,0,7);g2.fill();
+      } else if(ff==='rafflesia'){   // R2 (review #1 flora mismatch): a HUGE ground
+        // bloom — five thick flesh-red lobes, dark central well, pale speckles, NO stem
+        const ry=S*0.62;
+        g2.fillStyle='rgba(150,52,40,0.97)';
+        for(let i=0;i<5;i++){ const a=-Math.PI/2+i/5*TAU;
+          g2.beginPath();g2.ellipse(bx+Math.cos(a)*S*0.135,ry+Math.sin(a)*S*0.115,S*0.115,S*0.085,a,0,7);g2.fill(); }
+        g2.fillStyle='rgba(178,74,52,0.95)';
+        for(let i=0;i<5;i++){ const a=-Math.PI/2+i/5*TAU;
+          g2.beginPath();g2.ellipse(bx+Math.cos(a)*S*0.115,ry+Math.sin(a)*S*0.10,S*0.085,S*0.06,a,0,7);g2.fill(); }
+        g2.fillStyle='rgba(58,20,16,0.98)';g2.beginPath();g2.arc(bx,ry,S*0.085,0,7);g2.fill();   // the central well
+        g2.fillStyle='rgba(110,42,34,0.95)';g2.beginPath();g2.arc(bx,ry,S*0.10,0,7);g2.stroke();
+        g2.fillStyle='rgba(236,214,190,0.55)';   // speckled flesh
+        const rr3=mulberry32(9911); for(let i=0;i<26;i++){ const a=rr3()*TAU, d=S*(0.10+rr3()*0.11);
+          g2.beginPath();g2.arc(bx+Math.cos(a)*d,ry+Math.sin(a)*d*0.85,S*0.008,0,7);g2.fill(); }
       } else {   // daisy (default)
         g2.fillStyle=accent;
         for(let i=0;i<8;i++){ const a=i/8*TAU;g2.beginPath();g2.ellipse(bx+Math.cos(a)*S*0.06,fy+Math.sin(a)*S*0.06,S*0.05,S*0.026,a,0,7);g2.fill(); }
@@ -9461,6 +9475,30 @@ function _hdPlantBare(seed, sp){
     for(let k=0;k<kids;k++)branch(nx2,ny2,ang+(r()-0.5)*spread,len*(0.64+r()*0.14),w*0.6,depth-1);
   };
   branch(S/2,S*0.985,-1.5708+(r()-0.5)*lean,S*0.2,S*0.03,depth0);
+  /* R2 IDENTITY ORGANS (ProofSet-2 review): the named fruit/pod IS the plant's
+     identity — oversized, readable at icon size, anchored to canopy or trunk */
+  if(sp.organ){
+    const oc='rgba('+(sp.oc||[214,150,52]).join(',')+',0.97)';
+    const g2=cv.getContext('2d'); g2.fillStyle=oc; g2.strokeStyle='rgba(60,44,24,0.9)'; g2.lineWidth=S*0.006;
+    if(sp.organ==='hangFruit'){
+      for(const [ox,oy] of [[-0.11,0.40],[0.05,0.44],[0.14,0.38]]){
+        g2.beginPath();g2.moveTo(S*(0.5+ox),S*(oy-0.045));g2.lineTo(S*(0.5+ox),S*oy);g2.stroke();
+        g2.beginPath();g2.ellipse(S*(0.5+ox),S*(oy+0.035),S*0.028,S*0.038,0,0,7);g2.fill(); } }
+    else if(sp.organ==='trunkPods'){
+      for(const [ox,oy,a] of [[-0.035,0.60,0.5],[0.04,0.68,-0.4],[-0.02,0.76,0.3]]){
+        g2.beginPath();g2.ellipse(S*(0.5+ox),S*oy,S*0.022,S*0.042,a,0,7);g2.fill();
+        g2.beginPath();g2.ellipse(S*(0.5+ox),S*oy,S*0.022,S*0.042,a,0,7);g2.stroke(); } }
+    else if(sp.organ==='spikeHang'){
+      const hx=S*0.60, hy=S*0.47;
+      g2.beginPath();g2.moveTo(hx,S*0.40);g2.lineTo(hx,hy-S*0.04);g2.stroke();
+      g2.beginPath();g2.ellipse(hx,hy,S*0.042,S*0.052,0,0,7);g2.fill();
+      for(let i=0;i<10;i++){ const a=i/10*6.283;
+        g2.beginPath();g2.moveTo(hx+Math.cos(a)*S*0.038,hy+Math.sin(a)*S*0.048);
+        g2.lineTo(hx+Math.cos(a)*S*0.058,hy+Math.sin(a)*S*0.072);g2.stroke(); } }
+    else if(sp.organ==='berryLine'){
+      for(let i=0;i<9;i++){ const a=-2.6+i*0.28, d=S*(0.10+(i%3)*0.045);
+        g2.beginPath();g2.arc(S*0.5+Math.cos(a)*d,S*0.34+Math.sin(a)*d*0.7,S*0.013,0,7);g2.fill(); } }
+  }
   return cv;
 }
 function _hdStampPlant(g,pcv,x,baseY,s2,hazeAmt,darkAmt,darkCol){
@@ -9659,7 +9697,7 @@ function _earthFlora(name){
      not a living organism, renders as that ORGAN (sap/nut/shoot/root/berry/pod/fruit) — a small
      ground item, visually distinct from the source plant. Explicit list so real plants (blueberry,
      mangrove tree) are untouched. */
-  if(has(/spruce tips|pine nuts?|maple sap|birch sap|tree sap|lotus root|papyrus shoots|bamboo shoots|barrel cactus fruit|juniper berries|mangrove leaves|orchid pods|nipa palm fruit|rose hip|brazil nut|pandanus fruit|\bacorn\b|(^| )date( |$)/)){
+  if(has(/spruce tips|pine nuts?|maple sap|birch sap|tree sap|lotus root|papyrus shoots|bamboo shoots|barrel cactus fruit|juniper berries|mangrove leaves|orchid pods|nipa palm fruit|rose hip|brazil nut|pandanus fruit|\bacorn\b|(^| )date( |$)/) && !has(/palm/)){   /* R2 fix: 'Date Palm' is the TREE, not the harvested date */
     const organ=has(/sap/)?'sap':(has(/nut|acorn/)?'nut':(has(/shoots|tips/)?'shoot':(has(/\broot\b/)?'root':(has(/berries|\bhip\b/)?'berry':(has(/pods/)?'pod':(has(/leaves/)?'leaf':'fruit'))))));
     return {form:'harvest', harvest:organ, item:1};
   }
@@ -9685,6 +9723,15 @@ function _earthFlora(name){
     ex.fform=has(/sunflower/)?'disc':(has(/orchid/)?'orchid':(has(/lavender|salvia|lupine|delphinium|hollyhock|hyacinth|foxglove|snapdragon/)?'spike':(has(/lotus|water lily|\blily\b/)?'lily':'daisy'))); }
   else if(has(/\boak\b|maple|birch|\belm\b|\bash\b|willow|beech|poplar|aspen|sycamore|mahogany|\bteak\b|ebony|baobab|acacia|eucalyptus|banyan|mangrove|magnolia|dogwood|linden|hornbeam|alder|ginkgo|sequoia|mimosa|mesquite/)){ form='tree'; ex.fruit=0;
     ex.tform=has(/willow/)?'weep':(has(/baobab/)?'baobab':(has(/acacia|mimosa|mesquite/)?'acacia':'broad')); }
+  else if(has(/cacao|cocoa tree/)){ form='tree'; ex.organ='trunkPods'; ex.oc=[196,120,44]; }
+  else if(has(/jackfruit/)){ form='tree'; ex.organ='trunkPods'; ex.oc=[188,178,84]; }
+  else if(has(/durian/)){ form='tree'; ex.organ='spikeHang'; ex.oc=[176,168,88]; }
+  else if(has(/coffee/)){ form='tree'; ex.organ='berryLine'; ex.oc=[198,44,36]; }
+  else if(has(/clove/) && !has(/clover/)){ form='tree'; ex.organ='berryLine'; ex.oc=[168,84,52]; }
+  else if(has(/mango/) && !has(/mangold/)){ form='tree'; ex.organ='hangFruit'; ex.oc=[236,158,56]; }
+  else if(has(/avocado/)){ form='tree'; ex.organ='hangFruit'; ex.oc=[112,140,62]; }
+  else if(has(/guava|breadfruit|nutmeg/)){ form='tree'; ex.organ='hangFruit'; ex.oc=[164,188,92]; }
+  else if(has(/papaya/)){ form='palm'; ex.fruit=1; }
   else if(has(/apple|pear|cherry|\bplum\b|peach|apricot|\bfig\b|orange|lemon|\blime\b|mango|papaya|guava|pomegranate|avocado|olive|almond|pecan|walnut|chestnut|hickory|hazelnut|cacao|coffee|nutmeg|lychee|persimmon|mulberry|jackfruit|durian|breadfruit/)){ form= has(/coffee|shrub|berry/)?'shrub':'tree'; ex.fruit=1; }
   else if(has(/blueberry|raspberry|blackberry|currant|gooseberry|cranberry|elderberry|\bbush\b|shrub|holly|boxwood|hydrangea|rhododendron|hazel|lilac|forsythia|sagebrush|manzanita|heather|\bgorse\b|barberry/)){ form='shrub'; ex.fruit=has(/berry|currant/)?1:0; }
   else if(has(/mint|basil|thyme|\bsage\b|oregano|parsley|cilantro|coriander|\bdill\b|rosemary|chamomile|fennel|tarragon|chive|marjoram|lemongrass|\bherb\b|\bspice\b|nettle|clover|lavender|\bkale\b|lettuce|spinach|cabbage|chard|celery|arugula|watercress/)) form='herb';
