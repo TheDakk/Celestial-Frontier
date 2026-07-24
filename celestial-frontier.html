@@ -1617,6 +1617,38 @@
     #setpanel .fsopt{position:relative}
     #setpanel .fsopt::after{content:'';position:absolute;inset:-6px -2px}
   }
+  /* ═══ v1.7 THE BOTTOM DOCK (Nick picked Proposal A, 2026-07-24) ═══
+     The five right-rail pills consolidate into a thumb-reachable bottom dock.
+     SAME element ids — training spotlights, gates and smoke keep working;
+     only position/shape change. Each pill centers on its slot via
+     translateX(-50% + slot), so widths never need to match. The right edge
+     of the world view is free again. */
+  #pcdxbtn, #codexbtn, #logbtn, #cargobtn, #recbtn{
+    top:auto !important; right:auto;
+    bottom:calc(12px + env(safe-area-inset-bottom,0px));
+    left:50%; white-space:nowrap; z-index:14}
+  #pcdxbtn{transform:translateX(calc(-50% - 224px))}
+  #logbtn{transform:translateX(calc(-50% - 112px))}
+  #codexbtn{transform:translateX(-50%)}
+  #cargobtn{transform:translateX(calc(-50% + 112px))}
+  #recbtn{transform:translateX(calc(-50% + 224px))}
+  /* the hint + utility circles step above the dock */
+  #hint{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  #setbtn{bottom:calc(62px + env(safe-area-inset-bottom,0px))}
+  #helpbtn{bottom:calc(62px + env(safe-area-inset-bottom,0px))}
+  /* bottom-pinned training cards clear the dock */
+  #tutbox.dodge{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  @media (max-width:520px){
+    /* phone: icon + count chips — labels fold away, dots grow into icons */
+    #pcdxbtn .lbl, #codexbtn .lbl, #logbtn .lbl, #cargobtn .lbl, #recbtn .lbl{display:none}
+    #pcdxbtn, #codexbtn, #logbtn, #cargobtn, #recbtn{padding:9px 12px; gap:5px}
+    #codexbtn .dot.bio, #logbtn .dot, #pcdxbtn .dot.pc, #cargobtn .dot.crg{width:10px;height:10px}
+    #pcdxbtn{transform:translateX(calc(-50% - 138px))}
+    #logbtn{transform:translateX(calc(-50% - 72px))}
+    #codexbtn{transform:translateX(-50%)}
+    #cargobtn{transform:translateX(calc(-50% + 66px))}
+    #recbtn{transform:translateX(calc(-50% + 128px))}
+  }
 </style>
 </head>
 <body>
@@ -1853,12 +1885,12 @@
   <p class="note">Same universe on every device — anyone who opens this link lands on this exact world.</p>
 </div></div>
 
-<div id="logbtn" role="button" tabindex="0" data-tip="Your bookmarked places — tap any entry to travel there." data-guide="atlas"><span class="dot"></span>Star Atlas <span class="n" id="logcount">0</span></div>
+<div id="logbtn" role="button" tabindex="0" data-tip="Your bookmarked places — tap any entry to travel there." data-guide="atlas"><span class="dot"></span><span class="lbl">Star Atlas</span> <span class="n" id="logcount">0</span></div>
 <div id="log"></div>
-<div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="dot bio"></span>Compendium <span class="n" id="codexcount">0</span></div>
+<div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="dot bio"></span><span class="lbl">Compendium</span> <span class="n" id="codexcount">0</span></div>
 <div id="codex"></div>
-<div id="cargobtn" role="button" tabindex="0" style="display:none" data-tip="The Shipyard — your ship, the Fabricator and the Research Bench." data-guide="crafting"><span class="dot crg"></span>Shipyard <span class="n" id="cargocount">0</span></div>
-<div id="recbtn" role="button" tabindex="0" data-tip="The Records board — your rarity ladder and every achievement shelf." data-guide="achievements">🏆 Records</div>
+<div id="cargobtn" role="button" tabindex="0" style="display:none" data-tip="The Shipyard — your ship, the Fabricator and the Research Bench." data-guide="crafting"><span class="dot crg"></span><span class="lbl">Shipyard</span> <span class="n" id="cargocount">0</span></div>
+<div id="recbtn" role="button" tabindex="0" data-tip="The Records board — your rarity ladder and every achievement shelf." data-guide="achievements">🏆<span class="lbl"> Records</span></div>
 <div id="records"></div>
 <div id="primebox"><div class="card">
   <button id="primeclose" class="pxclose" type="button">&times;</button>
