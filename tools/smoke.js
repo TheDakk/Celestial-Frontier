@@ -544,6 +544,10 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('finale reached', await until(() => tutAt(20), 3000, 'step19'));
     check('cleanup: Compendium empty', doc.getElementById('codexcount').textContent === '0');
     check('cleanup: HP fully restored', doc.getElementById('hptext').textContent === '100/100 HP');
+    // QoL (p): the ❤ pill's tip is DYNAMIC — post-cleanup the Compendium is
+    // empty, so it should coach cataloguing plants (with flora it names meals)
+    check('QoL: empty-Compendium ❤ tip coaches cataloguing plants',
+      /none in your Compendium/.test(doc.getElementById('hppill').dataset.tip || ''));
     check('cleanup: the loaned ore + practice plate went back to the order',
       H.cargo.size === 0 && H.itemCount('plate') === 0);
     // v1.5.2c (Nick): the Shipyard rail button is ALWAYS present now (was
