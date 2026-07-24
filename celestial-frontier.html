@@ -11901,6 +11901,10 @@ function _performLanding(pl){
 }
 /* the vista, computed from orbit - the same clock, weather spell and
    card facts the surface view used to derive, now standalone */
+/* EXPEDITION JOURNAL (QoL a2): the expedition's memory — one line per
+   landing (world · rolled region · when), newest last, capped at 24.
+   Save field jrn; absent ⇒ empty (safe additive default). */
+const journal=[];
 function openLandingVista(pl){
   const P=pl.P, time=perfTime();
   if(!pl._env){
@@ -11954,6 +11958,13 @@ function openLandingVista(pl){
      anchor biome (veins/odds/generation) is untouched — this is the view. */
   let wbRoll=null;
   try{ wbRoll=biomeForLanding(P, env.band, _vistaSalt()); }catch(_){ }
+  /* EXPEDITION JOURNAL (QoL a2, Nick green-lit): every landing writes a line —
+     world, rolled region, when. Tiny strings, capped at 24 (save field jrn). */
+  try{
+    const _jn=(pl.name||'A world');
+    journal.push({s:P.seed, n:String(_jn).slice(0,28), w:wbRoll?String(wbRoll.k).slice(0,16):'', t:Date.now()});
+    if(journal.length>24) journal.splice(0, journal.length-24);
+  }catch(_){ }
   const _shuf=(arr,rs)=>{ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=(rs()*(i+1))|0; const t=a[i]; a[i]=a[j]; a[j]=t; } return a; };
   const _rigOfG=gg=>{ try{ const R=hdGenesFor(gg); if(R.rig) return R.rig;
     if(gg._earthName){ const rec=_earthArt(gg._earthName); if(rec&&rec.rig) return rec.rig; } }catch(_){ } return null; };
@@ -14466,7 +14477,7 @@ function doSave(){
          anyway, and any eviction silently refills a finite reserve —
          entries are two numbers, the cap bought nothing) */
       at:Date.now(),   /* wall-clock save stamp — anchors offline-accrual clamps on load */
-      cargo:[...cargo], cgx:[...cgx], minedw:[...mined], mx:[...mineX], skx:[...skimX], bx:[...bioX], tech:[...techOwned], mines:stats.mines||0,
+      cargo:[...cargo], cgx:[...cgx], jrn:journal.slice(-24), minedw:[...mined], mx:[...mineX], skx:[...skimX], bx:[...bioX], tech:[...techOwned], mines:stats.mines||0,
       items:[...items], eq:equip, ea:equipAff, crafts:stats.crafts||0, minedout:stats.minedout||0,
       skims:stats.skims||0, cosmics:stats.cosmics||0,   /* v1.7 (review catch: unsaved, the counters reset each session) */
       asc:ascCh, ascp:ascProg,
@@ -14545,6 +14556,10 @@ function loadSave(){
     /* §5: exceptional sub-counts — absent ⇒ none (safe additive default);
        clamped to the held quantity so a crafted save can never mint grade */
     for(const kv of (data.cgx||[])){ if(kv && MATERIALS[kv[0]]) cgx.set(kv[0], clamp(num(kv[1]), 0, cargo.get(kv[0])||0)); }
+    /* journal: strings clamped, count capped — absent ⇒ empty */
+    if(Array.isArray(data.jrn)) for(const j of data.jrn.slice(-24)){
+      if(j && j.n) journal.push({s:num(j.s)|0, n:String(j.n).slice(0,28), w:String(j.w||'').slice(0,16), t:clamp(num(j.t),0,4102444800000)});
+    }
     /* exploit audit: a mined timestamp edited to 0 read as "away for
        ages" and pre-armed 30 auto-extractor loads on EVERY world in one
        save edit. Clamp each stamp to at most one full accrual window
@@ -14731,7 +14746,7 @@ function resetMemoryState(){
        reset kept your cargo, mined worlds and tech until a hard reload.
        v1.7 review catch: skimX joined that class — without clearing it a
        fresh expedition opened Sol reading "Corona Spent". */
-    mined.clear(); mineX.clear(); skimX.clear(); bioX.clear(); cargo.clear(); cgx.clear(); techOwned.clear();
+    mined.clear(); mineX.clear(); skimX.clear(); bioX.clear(); cargo.clear(); cgx.clear(); journal.length=0; techOwned.clear();
     items.clear(); for(const k in equip) delete equip[k]; for(const k in equipAff) delete equipAff[k]; _eqOpen=null;
     ascCh=0; ascProg={};   /* a fresh expedition climbs the Ascent again */
     /* post-deploy audit: the Binder economy survived a reset — claimed
@@ -22154,6 +22169,17 @@ function renderRecords(){
     const n = T.t<9 ? tierHave[T.t] : (tierHave[9]+tierHave[10]+tierHave[11]+tierHave[12]+tierHave[13]+tierHave[14]);   /* Transcendent folds raw 9–14 */
     return '<div class="tier" style="border-color:'+T.hex+(n?'':'44')+';color:'+T.hex+(n?'':'66')+'"><div class="c">'+n+'</div>'+T.name+'</div>';
   }).join('')+'</div>';
+  /* EXPEDITION JOURNAL (QoL a2): the trophy room remembers where you set
+     foot — newest first, the rolled landing region beside each world */
+  if(journal.length){
+    html+='<h4>Expedition journal</h4>';
+    const _jf=(t)=>{ try{ const d=new Date(t); return (d.getMonth()+1)+'/'+d.getDate(); }catch(_){ return ''; } };
+    for(let ji=journal.length-1; ji>=Math.max(0,journal.length-12); ji--){
+      const j=journal[ji];
+      html+='<div class="srow"><span class="k">'+esc(j.n)+'</span><span>'+
+        (j.w?esc(j.w)+' · ':'')+'<span style="color:var(--faint)">'+_jf(j.t)+'</span></span></div>';
+    }
+  }
   /* v1.5.2c (Nick): the Statistics ledger lives HERE now — the trophy
      room keeps the numbers; the character sheet keeps the mirror */
   let _rar=null;
