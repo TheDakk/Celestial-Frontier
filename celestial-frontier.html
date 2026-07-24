@@ -6673,6 +6673,16 @@ function drawSystem(time){
       ctx.globalAlpha=0.8;
       ctx.beginPath(); ctx.rect(-pr*2.2,-pr*2.2,pr*4.4,pr*2.2); ctx.clip();
       ctx.drawImage(_rspr,-pr*2.1,-pr*2.1,pr*4.2,pr*4.2);
+      /* PLANET'S SHADOW ON THE RINGS (visual review fix-first): the ring
+         segment behind the planet, away from the star, falls dark — a soft
+         directional pool in ring-plane space */
+      {
+        const _sa=ang-0.45;
+        const _sx=Math.cos(_sa)*pr*1.55, _sy=Math.sin(_sa)*pr*1.55/Math.max(0.2,_rg.tilt);
+        const _shg=ctx.createRadialGradient(_sx,_sy,0,_sx,_sy,pr*1.35);
+        _shg.addColorStop(0,'rgba(2,3,8,0.55)'); _shg.addColorStop(1,'rgba(2,3,8,0)');
+        ctx.fillStyle=_shg; ctx.fillRect(-pr*2.2,-pr*2.2,pr*4.4,pr*2.2);
+      }
       ctx.restore();
     }
     ctx.save();
@@ -6697,6 +6707,16 @@ function drawSystem(time){
     const lg=ctx.createRadialGradient(lx2,ly2,0,0,0,pr*1.5);
     lg.addColorStop(0,_lit); lg.addColorStop(0.5,'rgba(0,0,0,0)'); lg.addColorStop(1,'rgba(0,0,12,0.42)');
     ctx.fillStyle=lg; ctx.fillRect(-pr,-pr,pr*2,pr*2);
+    /* THE RINGS' SHADOW ON THE PLANET (visual review fix-first): a soft dark
+       band just below the ring plane across the globe — still inside the
+       planet clip so it never leaks into space */
+    if(pl.P.ring){
+      ctx.save(); ctx.rotate(0.45);
+      const _rsg=ctx.createLinearGradient(0,pr*0.02,0,pr*0.30);
+      _rsg.addColorStop(0,'rgba(2,3,10,0)'); _rsg.addColorStop(0.4,'rgba(2,3,10,0.26)'); _rsg.addColorStop(1,'rgba(2,3,10,0)');
+      ctx.fillStyle=_rsg; ctx.fillRect(-pr,pr*0.02,pr*2,pr*0.28);
+      ctx.restore();
+    }
     ctx.restore();
     if(pl.P.ring){
       const _rspr=_ringSprite(pl.P.seed, _rg.hue);
