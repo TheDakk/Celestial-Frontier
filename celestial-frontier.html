@@ -13953,9 +13953,23 @@ function _showToast(title, msg, go){
   toastEl.appendChild(el);
   setTimeout(dismiss, hold);
 }
+let _lastSalvage=null;   /* {id, ret, t} — QoL m undo window */
 function _goSurface(name){
   try{
     if(name==='charters' && chBtn && !chOpen) chBtn.click();
+    else if(name==='undo-salvage' && _lastSalvage && Date.now()-_lastSalvage.t<6000){
+      const u=_lastSalvage; _lastSalvage=null;
+      const it=ITEM_BY.get(u.id); if(!it) return;
+      for(const r of (u.ret||[])){
+        const have=cargo.get(r.k)||0, take=Math.min(have, r.n);
+        if(take>=have) cargo.delete(r.k); else cargo.set(r.k, have-take);
+        const x=cgx.get(r.k)||0; if(x>(cargo.get(r.k)||0)) cgx.set(r.k, cargo.get(r.k)||0);   /* keep cgx <= cargo */
+      }
+      items.set(u.id, (items.get(u.id)||0)+1);
+      toast('♺ Undone', it.name+' is back in the bag — the materials went back into it.');
+      try{ showCargoBtn(); if(sheetOpen){ renderCargo(); renderDoll(); } }catch(_){ }
+      queueSave();
+    }
   }catch(_){ }
 }
 function flushToasts(){
@@ -19539,7 +19553,10 @@ function salvageItem(id, confirmed){
      the worn affix while a spare still sat in the bag) */
   if(equip[it.slot]===id && left<=0) equipItem(it.slot, null);
   try{ playSurveyPing(); }catch(_){}
-  toast('♺ Salvaged', it.name+' broken down'+(ret.length?' — '+ret.map(r=>r.n+'× '+(matName(r.k))).join(' · '):'')+'.');
+  /* SALVAGE UNDO (QoL m): the toast carries a 6-second regret window — one
+     tap rebuilds the piece and takes the returned materials back */
+  _lastSalvage={id, ret, t:Date.now()};
+  toast('♺ Salvaged', it.name+' broken down'+(ret.length?' — '+ret.map(r=>r.n+'× '+(matName(r.k))).join(' · '):'')+'. <b>Tap to undo.</b>', 'undo-salvage');
   closeItemCard();   /* review cleanup: was an inlined copy of this fn's body */
   try{ showCargoBtn(); if(sheetOpen) renderCargo(); }catch(_){}
   try{ checkAch(); }catch(_){} queueSave();
