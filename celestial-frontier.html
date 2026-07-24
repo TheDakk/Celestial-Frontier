@@ -6305,6 +6305,36 @@ function _quasarSpr(){
   g.fillStyle=q; g.beginPath(); g.arc(C,C,S*0.19,0,TAU); g.fill();
   return _quasarSprC=cv;
 }
+/* the upper cloud deck — clouds ONLY, on a transparent disc, from a
+   DIFFERENT noise stream than the baked lower deck (so the two layers
+   parallax against each other as this one drifts). Limb-tapered so the
+   sliding edge never shows a hard seam. */
+const _cloudSprCache=new Map();
+function _cloudSpr(P){
+  let sp=_cloudSprCache.get(P.seed); if(sp) return sp;
+  if(_cloudSprCache.size>12){ _cloudSprCache.delete(_cloudSprCache.keys().next().value); }
+  const PX=256, cv=document.createElement('canvas'); cv.width=cv.height=PX;
+  const g=cv.getContext('2d');
+  const img=g.createImageData(PX,PX), d=img.data;
+  const fbm=makeNoise((P.seed^0xC10D)>>>0);
+  const R0=PX/2;
+  for(let y=0;y<PX;y++){
+    const dy=(y-R0)/R0;
+    for(let x=0;x<PX;x++){
+      const dx=(x-R0)/R0, rr2=dx*dx+dy*dy, i=(y*PX+x)*4;
+      if(rr2>1){ d[i+3]=0; continue; }
+      const z=Math.sqrt(1-rr2), u=Math.atan2(dx,z)*1.4;
+      const cl=fbm(u*2.2+7, dy*2.2+11, 4);
+      let a=cl>0.60 ? Math.min((cl-0.60)*3.0, 0.8) : 0;
+      const rr=Math.sqrt(rr2);
+      if(rr>0.82) a*=Math.max(0,(1-rr)/0.18);   /* taper well before the limb */
+      d[i]=250; d[i+1]=252; d[i+2]=255; d[i+3]=(a*255)|0;
+    }
+  }
+  g.putImageData(img,0,0);
+  _cloudSprCache.set(P.seed, cv);
+  return sp=cv;
+}
 let _bhSprC=null;
 function _bhSpr(){
   /* the black hole, done right (2026-07-24 deep-space pass): a BAKED
@@ -6586,6 +6616,18 @@ function drawSystem(time){
     ctx.rotate(aim);
     ctx.drawImage(sprite,-pr,-pr,pr*2,pr*2);
     ctx.rotate(-aim);
+    /* DRIFTING CLOUD DECK (Nick 2026-07-24): an upper cloud layer slides
+       slowly across living worlds — ~80% of the planet-rotation feel for two
+       drawImages. Wraps via the twin draw; the terminator overlay below
+       shades it into night with everything else. Motion-gated, close-up only. */
+    if((pl.P.type==='terran'||pl.P.type==='ocean') && motionOK() && pr*c.z>22){
+      const _cs=_cloudSpr(pl.P);
+      const _co=(time*1.6)%(pr*2);
+      ctx.globalAlpha=0.45;
+      ctx.drawImage(_cs, -pr+_co, -pr, pr*2, pr*2);
+      ctx.drawImage(_cs, -pr+_co-pr*2, -pr, pr*2, pr*2);
+      ctx.globalAlpha=1;
+    }
     const lx2=-Math.cos(ang)*pr*0.5, ly2=-Math.sin(ang)*pr*0.5;
     const lg=ctx.createRadialGradient(lx2,ly2,0,0,0,pr*1.5);
     lg.addColorStop(0,_lit); lg.addColorStop(0.5,'rgba(0,0,0,0)'); lg.addColorStop(1,'rgba(0,0,12,0.42)');
