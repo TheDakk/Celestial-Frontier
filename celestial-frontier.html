@@ -987,6 +987,7 @@
   .cargoish .slot.t3{border-color:rgba(255,122,232,0.5);box-shadow:inset 0 1px 0 rgba(255,255,255,0.05),0 0 10px rgba(255,122,232,0.18)}
   .cargoish .slot.sys{border-color:rgba(127,208,255,0.55);box-shadow:inset 0 1px 0 rgba(255,255,255,0.05),0 0 12px rgba(127,208,255,0.22)}
   .cargoish .slot .eqstar{position:absolute;left:3px;top:1px;font-size:10px;color:#ffd96a;text-shadow:0 1px 2px rgba(0,0,0,0.9)}
+  .cargoish .slot .exq{position:absolute;left:3px;top:1px;font:700 9px var(--ui);letter-spacing:.02em;text-shadow:0 1px 2px rgba(0,0,0,0.9)}
   .cargoish .bset .ci.big{width:26px;height:26px;vertical-align:-8px;margin-right:4px}
   .cargoish .gslot{font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--plasma);
     border:1px solid rgba(150,162,210,0.3);border-radius:999px;padding:1px 6px;margin-left:3px}
@@ -11902,9 +11903,13 @@ function renderPanel(p, isLocked){
            worlds, so naming it from orbit (Deep Scanners) leaked the very grade
            the "land to reveal" teaser hides. The cosmic row is a LANDING payoff. */
         const _cv=grounded ? cosmicVeinFor(d.planetSeed, _mTier) : null;
+        /* §5: the exceptional vein is a LANDING payoff too — prospecting from
+           orbit names the palette, boots on the ground find the pure seam */
+        const _xv=grounded ? exVeinFor(d.planetSeed, d.ptype, _mTier) : null;
         rows+='<div class="splabel"><span class="k">Mineral veins</span><span class="v">'+_dp.map(s=>matName(s)).join(' · ')+
           (_bv?' · <span style="color:'+matColor(_bv)+'">'+matName(_bv)+' ✦</span>':'')+
           (_cv?' · <span style="color:'+matColor(_cv)+'">'+matName(_cv)+' ✦</span>':'')+
+          (_xv?' · <span style="color:'+displayRarity(exTierOf(_xv)).hex+'">✦ exceptional '+matName(_xv)+'</span>':'')+
           (grounded?' <span style="color:var(--faint)">· '+(_mLeft>0?_mLeft.toLocaleString()+' pulls left':'mined out')+'</span>':'')+'</span></div>';
       }
       const _running=(typeof _mineRun!=='undefined') && _mineRun && _mineRun.seed===d.planetSeed;
@@ -13946,7 +13951,7 @@ function doSave(){
          anyway, and any eviction silently refills a finite reserve —
          entries are two numbers, the cap bought nothing) */
       at:Date.now(),   /* wall-clock save stamp — anchors offline-accrual clamps on load */
-      cargo:[...cargo], minedw:[...mined], mx:[...mineX], skx:[...skimX], bx:[...bioX], tech:[...techOwned], mines:stats.mines||0,
+      cargo:[...cargo], cgx:[...cgx], minedw:[...mined], mx:[...mineX], skx:[...skimX], bx:[...bioX], tech:[...techOwned], mines:stats.mines||0,
       items:[...items], eq:equip, ea:equipAff, crafts:stats.crafts||0, minedout:stats.minedout||0,
       skims:stats.skims||0, cosmics:stats.cosmics||0,   /* v1.7 (review catch: unsaved, the counters reset each session) */
       asc:ascCh, ascp:ascProg,
@@ -14022,6 +14027,9 @@ function loadSave(){
     stats.paragons=num(data.paragons);
     for(const s of (data.setsc||[])) if(BINDER_SETS.some(x=>x.id===s)) claimedSets.add(s);
     for(const kv of (data.cargo||[])){ if(kv && MATERIALS[kv[0]]) cargo.set(kv[0], clamp(num(kv[1]), 0, 1e6)); }
+    /* §5: exceptional sub-counts — absent ⇒ none (safe additive default);
+       clamped to the held quantity so a crafted save can never mint grade */
+    for(const kv of (data.cgx||[])){ if(kv && MATERIALS[kv[0]]) cgx.set(kv[0], clamp(num(kv[1]), 0, cargo.get(kv[0])||0)); }
     /* exploit audit: a mined timestamp edited to 0 read as "away for
        ages" and pre-armed 30 auto-extractor loads on EVERY world in one
        save edit. Clamp each stamp to at most one full accrual window
@@ -14208,7 +14216,7 @@ function resetMemoryState(){
        reset kept your cargo, mined worlds and tech until a hard reload.
        v1.7 review catch: skimX joined that class — without clearing it a
        fresh expedition opened Sol reading "Corona Spent". */
-    mined.clear(); mineX.clear(); skimX.clear(); bioX.clear(); cargo.clear(); techOwned.clear();
+    mined.clear(); mineX.clear(); skimX.clear(); bioX.clear(); cargo.clear(); cgx.clear(); techOwned.clear();
     items.clear(); for(const k in equip) delete equip[k]; for(const k in equipAff) delete equipAff[k]; _eqOpen=null;
     ascCh=0; ascProg={};   /* a fresh expedition climbs the Ascent again */
     /* post-deploy audit: the Binder economy survived a reset — claimed
@@ -17436,6 +17444,28 @@ function cosmicVeinFor(seed, tier){
   const pool = tier>=9 ? COSMIC_FOUND.concat(COSMIC_BREAK) : COSMIC_FOUND;
   return pool[(r()*pool.length)|0];
 }
+/* v1.7 §5 INSTANCE RARITY — THE EXCEPTIONAL VEIN (design call, 2026-07-24).
+   §5's per-instance rarity model meets §21's stack-by-substance storage like so:
+   rarity resolution happens at the VEIN (world) level, deterministically — a
+   minority of worlds carry ONE exceptional variant of a substance from their own
+   deposit palette ("ordinary worlds may hold a rare exceptional deposit", §6).
+   Mining it pays a sparse trickle of EXCEPTIONAL units that stack as a sub-count
+   on the SAME material card (cgx, never a second card — §21 wins on storage).
+   One readable rule everywhere: exceptional = base tier +1, clamped at 6
+   ("exceeds materials science"); cosmics are excluded (already the summit).
+   Exceptional stock spends FIRST at the Fabricator; gear whose full material
+   cost was covered by exceptional stock is EXCEPTIONALLY FORGED — it arrives
+   carrying a seeded affix (the §15 controlled variation, on live spoils
+   machinery). Pure per seed — a separate hashed stream, so every existing
+   world generates and mines byte-identically (fp-safe, cv discipline). */
+function exVeinFor(seed, type, tier){
+  const r=mulberry32(hashInt(seed>>>0, 0xE8C, 5)>>>0);
+  if(r()>=0.15) return null;               /* ~15% of worlds hold one */
+  const deps=depositsFor(seed, type||'rocky', tier||0);
+  if(!deps.length) return null;
+  return deps[(r()*deps.length)|0];        /* always from the world's own palette */
+}
+function exTierOf(k){ return Math.min(6, (matBaseTier(k)||0)+1); }   /* the one rule */
 /* v1.7 THE FORGE — STELLAR EXTRACTION (MATERIALS_AND_GEAR.md §8): the two
    Celestial-tier STELLAR cosmics come from STARS, never planet veins — "a scan
    doesn't drop plasma in cargo; extraction is a gameplay action." A star's CLASS
@@ -17478,6 +17508,9 @@ function skimStar(seed){
 const mined=new Map();         /* pseed → last mine ms (auto-extractor accrual anchor) */
 const mineX=new Map();         /* pseed → extractions taken so far (save field mx) */
 const cargo=new Map();         /* element symbol → qty */
+const cgx=new Map();           /* §5: symbol → how many of those units are EXCEPTIONAL
+                                  (a sub-count of cargo, never its own card; save field cgx;
+                                  invariant cgx[k] <= cargo[k], re-clamped on load) */
 /* ---- v1.4 THE ASCENT: mining is a CLICK, not a timer (Nick: "I don't
    want to waste the user's time") — every press pulls a varying haul from
    the world's veins, RESERVES ARE FINITE (a world can be mined out, over
@@ -17513,8 +17546,9 @@ function mineWorld(d, press){
   const deps=depositsFor(ps, d.ptype||'rocky', tier);
   const bv=biomeVeinFor(ps);   /* the biome's guaranteed exotic, if any */
   const cv=cosmicVeinFor(ps, tier);   /* v1.7: the rarest worlds' cosmic vein (null for tier<8) */
+  const xv=exVeinFor(ps, d.ptype||'rocky', tier);   /* §5: the exceptional vein, if any */
   const mult=mineYieldMult();
-  const got=new Map(); let rare=null;
+  const got=new Map(); let rare=null, exGot=0;
   for(let i=0;i<loads;i++){
     const r=mulberry32(hashInt(ps>>>0, 0xE1F, n0+i+1)>>>0);
     /* each pull: a varying haul from two of the world's veins */
@@ -17542,6 +17576,11 @@ function mineWorld(d, press){
        byte-identically — only the rarest worlds add this pull. A cosmic find reads
        as a rich strike; it is the scarcest pocket there is. */
     if(cv && r() < 0.04){ got.set(cv, (got.get(cv)||0)+Math.max(1, Math.round(mult))); rare=cv; stats.cosmics=(stats.cosmics||0)+1; }
+    /* §5 exceptional trickle — GATED on xv and rolled LAST (same fp discipline
+       as cv: a world without the vein consumes zero extra rolls, and nothing
+       reads this pull's stream afterwards, so all existing yields hold). The
+       unit is an EXTRA grain of the vein's own substance, marked exceptional. */
+    if(xv && r() < 0.10){ got.set(xv, (got.get(xv)||0)+1); cgx.set(xv, (cgx.get(xv)||0)+1); exGot++; }
   }
   mineX.set(ps, n0+loads);
   for(const [sym,q] of got) cargo.set(sym, (cargo.get(sym)||0)+q);
@@ -17557,6 +17596,7 @@ function mineWorld(d, press){
   playRaritySting(rare?4:2); fxBurst(FX_GOLD, rare?26:14);
   const gotTxt=[...got.entries()].map(e=>e[1]+'× '+matName(e[0])).join(' · ');
   const mineMsg=(loads>1?loads+' loads (auto-extractor) — ':'')+gotTxt+
+    (exGot?' · ✦ '+exGot+' exceptional':'')+
     (rare?' — a pocket of '+matName(rare)+'!':'')+
     (left>0?' · '+left.toLocaleString()+' pulls left in the veins.':' · That was the last of it — the world is mined out.');
   /* plain pulls stay OUT of the bell tray (review catch: a grinding
@@ -17621,7 +17661,7 @@ function _canAfford(t){
 function buyTech(id){
   const t=TECHS.find(x=>x.id===id);
   if(!t || techOwned.has(id) || !_canAfford(t)) return;
-  for(const k in t.cost) cargo.set(k, (cargo.get(k)||0)-t.cost[k]);
+  for(const k in t.cost) _spendMat(k, t.cost[k]);   /* §5: keeps cgx <= cargo */
   essence-=t.sd;
   techOwned.add(id);
   playRaritySting(5); playFanfare(); fxBurst(FX_GOLD,40);
@@ -18650,8 +18690,15 @@ function renderCargo(){
         g.sort((a,b)=>matBaseTier(b[0])-matBaseTier(a[0]) || b[1]-a[1]);
         const label=(MAT_FAMILY[f]&&MAT_FAMILY[f].label)||'Other';
         html+='<div class="chead" style="margin-top:4px">'+label+' <span style="opacity:.5;font-weight:400">'+g.length+'</span></div>'+
-          '<div class="inv">'+g.map(e=>'<span class="slot" role="button" tabindex="0" data-mat="'+e[0]+'" data-tip="'+matName(e[0])+' — tap for details">'+
-          '<img src="'+elemIcon(e[0])+'" alt="'+matName(e[0])+'"><span class="qty">'+e[1]+'</span></span>').join('')+'</div>';
+          '<div class="inv">'+g.map(e=>{
+            /* §5: exceptional units ride the SAME card as a ✦ sub-count in the
+               resolved (base+1) grade color — never a second card */
+            const _x=Math.min(cgx.get(e[0])||0, e[1]);
+            return '<span class="slot" role="button" tabindex="0" data-mat="'+e[0]+'" data-tip="'+matName(e[0])+
+              (_x?' — '+_x+' exceptional ('+displayRarity(exTierOf(e[0])).name+')':'')+' — tap for details">'+
+              '<img src="'+elemIcon(e[0])+'" alt="'+matName(e[0])+'"><span class="qty">'+e[1]+'</span>'+
+              (_x?'<span class="exq" style="color:'+displayRarity(exTierOf(e[0])).hex+'">✦'+_x+'</span>':'')+'</span>';
+          }).join('')+'</div>';
       }
       /* the hold has ample room (§21 — materials never face slot pressure); the
          remaining capacity shows as empty bag slots, so the bag metaphor holds */
@@ -19208,11 +19255,24 @@ function _canCraft(it){
   for(const k in (it.parts||{})) if(itemCount(k)<it.parts[k]) return false;
   return true;
 }
+/* §5: spend a material, EXCEPTIONAL stock first (the Fabricator always burns
+   your best grain). Returns how many of the spent units were exceptional. */
+function _spendMat(k, q){
+  cargo.set(k, (cargo.get(k)||0)-q);
+  const x=Math.min(cgx.get(k)||0, q);
+  if(x>0) cgx.set(k, (cgx.get(k)||0)-x);
+  return x;
+}
 function craftItem(id){
   const it=ITEM_BY.get(id); if(!it) return;
   if(it.cat==='sys' && itemCount(id)>0) return;     /* systems build once */
   if(!_canCraft(it)) return;
-  for(const k in (it.cost||{})) cargo.set(k, (cargo.get(k)||0)-it.cost[k]);
+  /* §5 EXCEPTIONALLY FORGED: when the FULL material cost is covered by
+     exceptional stock, a crafted equippable arrives carrying a seeded affix
+     (the same spoils grammar conquest pays) — §15's controlled variation. */
+  const _costKeys=Object.keys(it.cost||{});
+  let _exAll=_costKeys.length>0;
+  for(const k of _costKeys){ if(_spendMat(k, it.cost[k]) < it.cost[k]) _exAll=false; }
   for(const k in (it.parts||{})) items.set(k, itemCount(k)-it.parts[k]);
   if(it.sd) essence-=it.sd;
   items.set(id, itemCount(id)+1);
@@ -19236,6 +19296,15 @@ function craftItem(id){
     /* an empty matching socket takes new gear immediately — no menu-diving
        for the common case; swapping later is the character sheet's job */
     if(it.slot && !equip[it.slot]) equipItem(it.slot, id, true);
+    /* §5: the exceptionally-forged affix lands when the fresh piece holds its
+       slot and no live enchant would be clobbered (worn spoils always win) */
+    if(_exAll && it.slot && equip[it.slot]===id && !_slotAffix(it.slot)){
+      const aff=rollAffix(hashInt(0xF07E, (stats.crafts||0))>>>0, it.tier||1);
+      aff.forId=id; equipAff[it.slot]=aff;
+      playRaritySting(5);
+      toast('✦ Exceptionally Forged', 'Pure exceptional stock — the '+it.name+' carries '+_affLabel(aff).replace('✦ +','+')+'.');
+      try{ if(sheetOpen) renderDoll(); }catch(_){ }
+    }
   } else {
     playRaritySting(2);
     toast('🛠 Crafted', it.name+' ×1 — in your 🧰 Cargo hold.');
@@ -20810,7 +20879,7 @@ function _tutCleanup(){
     /* the forge lesson's loaned ore and practice plate go back to the
        order too — nothing in training follows you out (v1.5.1). A fresh
        recruit owns nothing else, so a clean sweep is safe. */
-    try{ cargo.clear(); items.clear(); for(const k in equip) delete equip[k]; for(const k in equipAff) delete equipAff[k]; _eqOpen=null;
+    try{ cargo.clear(); cgx.clear(); items.clear(); for(const k in equip) delete equip[k]; for(const k in equipAff) delete equipAff[k]; _eqOpen=null;
       showCargoBtn(); if(typeof closeSheet==='function' && sheetOpen) closeSheet(); }catch(_){ }
     _tutEnsureEarth();
     renderHP(); renderRank(); renderBell();

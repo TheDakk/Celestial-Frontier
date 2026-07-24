@@ -106,6 +106,18 @@ Semantic caps: 0–1 ordinary · 2–3 scarce/pure/specialized · 4 unusual comp
 replace · 6 exceeds materials science · 7 explicit stellar/cosmic · 8 explicit foundational/first-era · 9
 explicit reality-breaking. Don't add points for ordinary properties.
 
+> **In code (2026-07-24, §5 DESIGN CALL — "the exceptional vein", instance rarity resolved):** §5's per-instance
+> model and §21's stack-by-substance storage are reconciled at the VEIN level. `exVeinFor(seed,type,tier)` (pure,
+> own hashed stream — fp-safe, cv discipline): ~15% of worlds carry ONE exceptional variant of a substance from
+> their own `depositsFor` palette (§6's "ordinary worlds may hold a rare exceptional deposit"). Mining pays a
+> sparse (~10%/pull) trickle of EXTRA exceptional units — they stack as a ✦ sub-count on the SAME material card
+> (`cgx` map, save field `cgx`, absent ⇒ none, load-clamped ≤ held qty). **One rule everywhere: exceptional =
+> base tier +1, clamped at 6** (`exTierOf`); cosmics excluded (already the summit). The survey card shows the
+> vein as a landing payoff (like the cosmic row). Exceptional stock spends FIRST at the Fabricator/Research
+> (`_spendMat`); gear whose FULL material cost was covered by exceptional stock is **EXCEPTIONALLY FORGED** — it
+> arrives carrying a seeded affix on the live spoils machinery (`equipAff`, granted only when it wouldn't clobber
+> a live enchant; §15's controlled variation made tangible). Guarded by 8 smoke sentinels. fp MATCH 50/50.
+
 ## 6. World-to-resource generation (break the circular model)
 
 Order: star class+modifiers → planet type+structural modifiers → atmosphere/gravity/temp/liquids/hazards/
