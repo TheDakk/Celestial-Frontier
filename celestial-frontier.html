@@ -19585,7 +19585,7 @@ function _fabHTML(){
         (own&&it.cat!=='sys'?' <span style="color:#7fe6a0">×'+own+'</span>':'')+' — '+it.d+
         (built?'':'<br><span class="bcnt">'+(sigLock?'🔒 the blueprint waits on the '+sigLock+' (Prime Codex)':(gatedBy?'requires '+gatedBy:bits.join(' + ')))+'</span>')+'</span>'+
         (built?'<span class="bclaimed">online ✓</span>'
-              :(can?'<button class="bclaim" data-craft="'+it.id+'" type="button">Craft</button>':''))+
+              :(can?'<button class="bclaim" data-craft="'+it.id+'" type="button">Craft</button>'+((it.cat==='part'||it.cat==='comp')?'<button class="bclaim b5" data-craft5="'+it.id+'" type="button" title="Craft up to five in one press">×5</button>':''):''))+
         (built?'':'<button class="bpin'+(pinnedRecipe===it.id?' on':'')+'" data-pin="'+it.id+'" type="button" title="'+(pinnedRecipe===it.id?'Unpin this recipe':'Pin — a chip tracks the missing materials while you mine')+'">📌</button>')+
         '</div>';
     }
@@ -19655,6 +19655,11 @@ if(cargoBtn){
       const pn=e.target.closest('[data-pin]');
       if(pn){ pinnedRecipe = pinnedRecipe===pn.dataset.pin ? null : pn.dataset.pin;
         _pinChip(); if(yardOpen) renderYard(); queueSave(); return; }
+      const c5=e.target.closest('[data-craft5]');
+      if(c5){ const id5=c5.dataset.craft5, it5=ITEM_BY.get(id5); let n5=0;
+        while(n5<5 && it5 && _canCraft(it5)){ craftItem(id5, true); n5++; }
+        if(n5){ playRaritySting(2); toast('🛠 Crafted', (it5?it5.name:'Item')+' ×'+n5+' — in your 🧰 Cargo hold.'); }
+        if(yardOpen) renderYard(); return; }
       const cr=e.target.closest('[data-craft]');
       if(cr){ craftItem(cr.dataset.craft); if(yardOpen) renderYard(); }   /* re-render so spent-out recipes drop their Craft button (Nick) */
     });
@@ -19886,7 +19891,7 @@ function _spendMat(k, q){
   if(x>0) cgx.set(k, (cgx.get(k)||0)-x);
   return x;
 }
-function craftItem(id){
+function craftItem(id, _q){   /* _q: quiet (batch craft) — skips the per-unit toast/sting */
   const it=ITEM_BY.get(id); if(!it) return;
   if(it.cat==='sys' && itemCount(id)>0) return;     /* systems build once */
   if(!_canCraft(it)) return;
@@ -19928,7 +19933,7 @@ function craftItem(id){
       toast('✦ Exceptionally Forged', 'Pure exceptional stock — the '+it.name+' carries '+_affLabel(aff).replace('✦ +','+')+'.');
       try{ if(sheetOpen) renderDoll(); }catch(_){ }
     }
-  } else {
+  } else if(!_q){
     playRaritySting(2);
     toast('🛠 Crafted', it.name+' ×1 — in your 🧰 Cargo hold.');
   }
