@@ -83,6 +83,23 @@
 ##   ▶ STILL QUEUED (each its own focused pass): charter-training module · accessibility (CF16-012 pinch-zoom +
 ##     CF-006 keyboard Navigator — needs device verify) · TEXT-POLISH re-pin (fingerprint re-pin — do with Nick) ·
 ##     rest of PROCEDURAL_CHARACTERISTICS pass order (proc HEAD system, tail-types, marquee traits, eye/limb counts).
+## ★★★ 2026-07-24 FOURTH BATCH — Nick's build directives (commits eeb7e16→99fe900, battery-green, pushed):
+##   ✔ LIGHTING VERIFIED ACCURATE (sprite light re-aims at the star per frame, star-tinted lit overlay, terminator
+##     sweeps with orbit, city lights night-side only — answered in code, no fix needed).
+##   ✔ DRIFTING CLOUD DECK — a second upper cloud layer (own noise stream, _cloudSpr) slides across terran/ocean
+##     worlds; motion-gated, close-up only, 2 draws/frame. The living-planet feel without per-frame rasterizing.
+##   ✔ THE BOTTOM DOCK (Proposal A picked by Nick) — the 5 right-rail pills docked bottom-center, SAME ids (all
+##     spotlights/gates/smoke intact), phone folds labels into icon+count chips, hint/?/⚙/bottom-pinned training
+##     cards step above it. Layout gate passed 546/9 WITHOUT re-pin. ⚠ THE arc's most visible change — iPhone
+##     verify FIRST next session.
+##   ✔ TRAINING → CHARTER HANDOFF — the finale spotlights #chbtn and sends the graduate to accept their first
+##     contract; all 8 '(right rail)' texts across toasts/Guide/training updated to '(bottom dock)'.
+##   ▶ STILL TO BUILD from this directive (next session, in order): (1) ADVANCED BRIEFINGS training modules (the
+##     5-drill plan below — Nick wants EVERY part of the UI taught; audit each screen against training coverage:
+##     dock pills, character sheet/paperdoll/3-tab hold, item windows, salvage, veins trio, skim, discovery
+##     gating, Records, Events, Beacon, Guide search) + a light pass re-checking the 20-step flow against the
+##     DOCK layout on device. (2) CONTENT-COMPLETENESS slate (Nick approved: pick order from the block below).
+##     (3) QoL SLATE builds (journal + recipe tracker first). (4) Text re-polish re-pin + pinch-zoom (device).
 ## ★★★ 2026-07-24 THIRD BATCH — UNIVERSE-CRISPNESS (Nick: "planets everywhere? do stars + everything else") —
 ##   commits eeb7e16 (QoL-p dynamic ❤ heal hint) + 97fb07d, battery-green, pushed. CONFIRMED: the planet polish IS
 ##   universal (surfaceColor caps = every terran anywhere; limb haze = all airy types; HD tier = any focused world).
