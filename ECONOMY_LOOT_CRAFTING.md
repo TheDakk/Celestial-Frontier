@@ -1,8 +1,12 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-**STATUS:** matches code as of 2026-07-20 (verified against main.js).
+**STATUS:** matches code as of 2026-07-23 (verified against main.js).
 **Purpose:** The material economy — mining dead worlds into Cargo, spending it at the Shipyard (Fabricator + Research), crafting the gear/relic ladder, the item tooltip card, and the v1.6 AFFIX/LOOT core that imbues worn gear with seeded bonus stats.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
+**Cross-reference (v1.7):** the full v1.7 Forge economy — the 47-material registry with
+families/tiers, world-cosmic veins (`cosmicVeinFor`), stellar extraction (`skimStar`),
+the 7 cosmic gear pieces (`cg-*`), and the salvage system — is specified in
+`MATERIALS_AND_GEAR.md`. This doc no longer describes the complete engineer track.
 
 ## 1. Overview
 Dead worlds carry elements; life carries legends. This system is the **engineer's track** — parallel to the Prime Codex — turning ore into capability rather than story.
@@ -19,8 +23,8 @@ Two currencies feed it: mined **elements** (hard, finite per world) and **☄ St
 ## 2. Rules & mechanics
 
 ### Cargo & materials
-- `cargo` — `Map<elementSymbol, qty>` (save `cargo`). Rendered as a Diablo-style bag under the paperdoll.
-- Element identity: `ELEM_NAME` (42 symbols → names). Which elements a world holds comes from `DEPOSIT_PROFILES[ptype]`; `depositsFor(seed, type, tier)` picks the seeded subset; rarer worlds reach further up `RARE_VEIN`.
+- `cargo` — `Map<materialSymbol, qty>` (save `cargo`). Rendered as a Diablo-style bag under the paperdoll.
+- Material identity: the 47-entry **`MATERIALS`** registry (`matName()` resolves names; the old 42-symbol `ELEM_NAME` table is kept only as a legacy name fallback). Which materials a world holds comes from `DEPOSIT_PROFILES[ptype]`; `depositsFor(seed, type, tier)` picks the seeded subset; rarer worlds reach further up `RARE_VEIN`.
 - Ice/gas/exotic classes: `ELEM_ICES`, `ELEM_GAS`, `ELEM_EXO`.
 
 ### Mining
@@ -67,7 +71,7 @@ Two currencies feed it: mined **elements** (hard, finite per world) and **☄ St
 ### The AFFIX / LOOT core (v1.6)
 - **Per-instance gear bonuses.** `equipAff` = `{slot → {k, v, forId}}` (save **`ea`**) — a seeded affix bound to *that exact item in that slot*.
 - `AFFIX_DEFS` (6 kinds): `yield` (10–35%), `strike` (2–6%), `scut` (8–25% lighter bioscan wounds), `contact` (+4–12 first-contact/capture), `land` (+4–12 descent safety), `heal` (8–20% flora healing). `pct:1` kinds store a fraction (2-dp), `pct:0` kinds store an integer.
-- `rollAffix(seed, tier)`: `r = mulberry32(hashInt(seed, 0xAFF1, tier+1))`; pick a def; magnitude `mag = lo + (hi−lo)·(0.4+0.6·r)·(0.7+0.3·t)`, where `t = min(1, tier/6)` — **deeper worlds roll stronger**.
+- `rollAffix(seed, tier)`: `r = mulberry32(hashInt(seed, 0xAFF1, tier+1))`; pick a def; magnitude `mag = lo + (hi−lo)·(0.4+0.6·r)·(0.7+0.3·t)`, where `t = min(1, tier/9)` — **deeper worlds roll stronger**. (v1.7 power curve: the tier factor reaches full strength at tier **9**, was capped at 6, so loot keeps scaling into the deep spectrum.)
 - `_slotAffix(slot)` returns the affix **only while its exact piece is still worn** (`forId === equip[slot]`) — swap the piece out and the bonus goes dormant. `_affLabel` formats the "✦ +N% …" line. `_equipBonus` folds a live affix into the worn total.
 - **First faucet — conquest spoils.** On a conquest win, if you have any worn gear, a **40%** seeded gate (`mulberry32(hashInt(planetSeed,0x5901,2)) < 0.4`) imbues a **random worn piece**: `slot` chosen by `hashInt(planetSeed,0x5902,3)`, `aff = rollAffix(planetSeed, worldTier)`, `aff.forId = equip[slot]`, `equipAff[slot] = aff`. Toasts "✦ Spoils of Conquest — your \<gear\> takes on this world's character."
 
@@ -86,15 +90,15 @@ Two currencies feed it: mined **elements** (hard, finite per world) and **☄ St
   | contact | 4 | 12 | flat first-contact/capture |
   | land | 4 | 12 | flat descent safety |
   | heal | 0.08 | 0.20 | % flora healing |
-- **Affix magnitude:** `lo + (hi−lo)·(0.4+0.6·r)·(0.7+0.3·t)`, `t = min(1, tier/6)`.
+- **Affix magnitude:** `lo + (hi−lo)·(0.4+0.6·r)·(0.7+0.3·t)`, `t = min(1, tier/9)` (v1.7; was `tier/6`).
 - **Conquest imbue gate:** 40%.
-- `ELEM_NAME` — 42 symbols. `RARE_VEIN = [Ag, Au, Pt, Ir, U, Nd, Pm, Vg, Pz]` (index climbs with world rarity). `BIOME_VEIN = {geode:Nd, carbon:Pm, glass:Vg, magmasea:Pz}`.
+- `MATERIALS` — 47-entry registry (names via `matName()`; `ELEM_NAME`'s 42 symbols kept only as a legacy name fallback). `RARE_VEIN = [Ag, Au, Pt, Ir, U, Nd, Pm, Vg, Pz]` (index climbs with world rarity). `BIOME_VEIN = {geode:Nd, carbon:Pm, glass:Vg, magmasea:Pz}`.
 - `DEPOSIT_PROFILES` per ptype: rocky/metal/lava/ice/desert/gas/venus/dwarf/moon (see code — the seeded palette each world type mines from).
 - **Item ladder headcount:** 9 T1 parts, 6 T2 components, 4 T3 ship systems, ~20 gear pieces across 9 sockets, 9 Signature relics.
 
 ## 4. Data / save fields
 - **`ea`** — `equipAff` (the affix core): each slot's `{k, v, forId}`. On load: kept only if `k ∈ AFFIX_DEFS`, `forId` is a string, and `equip[slot] === forId`; `v` is coerced and **clamped 0..the affix's own `def.hi`** (v1.6 fix — was a flat 0..5 that silently truncated legit `contact`/`land` rolls above 5).
-- **`cargo`** — element→qty. **`items`** — item id→qty. **`eq`** — slot→item id. **`tech`** — `techOwned` set.
+- **`cargo`** — material→qty (validated on load against `MATERIALS`). **`items`** — item id→qty. **`eq`** — slot→item id. **`tech`** — `techOwned` set.
 - **`mx`** — `mineX` (pulls taken per world, uncapped by design). **`minedw`** — `mined` (last-mine timestamp per world; the Auto-Extractor accrual anchor). **`mines`**, **`minedout`**, **`crafts`** — lifetime counters.
 - **`essence`** / **`essenceEarned`** — current / lifetime ☄ Stardust; **`harvests`** — harvest count.
 - **`prime`** — `primeFill` (Signature blueprints; gates relic recipes).

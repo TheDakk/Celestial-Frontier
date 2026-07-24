@@ -1,10 +1,14 @@
 # Celestial Frontier — Materials, Ingredients, Crafting & Gear (v1.7 "The Forge")
 
 **Status:** CANONICAL design of record for v1.7 "The Forge". FULL adoption — no lean MVP.
-**Matches code as of:** 2026-07-23 — the §3 roster now exists in code as the **`MATERIALS` registry**
-(build step 5a, fp-safe): all 47 substances with family / base-rarity-tier / class / job (see §3 note). The
-rest is still design. **Build phase:** the vocabulary rides Phase A; the generation + crafting economy is
-Phase B (post-v1.6, full re-pin — NOT yet wired, so the 7 cosmics are defined but not mineable).
+**Matches code as of:** 2026-07-23 — the §3 roster exists as the **`MATERIALS` registry** (all 47 with
+family/tier/class/job), and the economy is now **wired**: all 7 cosmics are obtainable + craftable — the 5
+world-cosmics via tier-gated veins (`cosmicVeinFor`, §6 note), the 2 stellar via star skimming (`skimStar`,
+§8 note), each anchoring an endgame gear piece (`cg-*`, §17 note). This landed **fp-SAFE (no re-pin)** — the
+cosmics are a separate lit vein, so `depositsFor` and every existing world stay byte-identical. **Still design
+(not yet built):** the §5 per-deposit instance-rarity resolver, §22 gear×tier + ship-hull art, and the §24
+power-curve tuning. **Build phase:** the vocabulary rode Phase A; the Forge economy is Phase B (source-only,
+bundled — live is v1.6.4).
 **Related:** `RARITY_UNIVERSAL.md`, `FORGE_AND_DISCOVERY.md`, `ECONOMY_LOOT_CRAFTING.md`.
 
 ## 0. Locked decisions (Nick, 2026-07-22)
@@ -398,6 +402,11 @@ confirmation"** checkbox that flips the setting. **ONE toggle governs everything
 "Confirm before salvaging"** (default ON); it guards a single salvage AND the **Salvage All** button (on the
 CHARACTER SCREEN, which bulk-breaks every unequipped Common & Uncommon piece and banks the materials). NO
 separate Salvage-All toggle. The setting persists in the save.
+
+**Refund gating (as implemented):** `_SALVAGE_GATED` lists 16 exotic/cosmic symbols — `Nd Pm Vg Pz Pls Crn
+Pro Pri Voe Chr Dkm Au Pt Ir U Th` — that are **never refunded** on salvage; `_salvageReturns` yields only the
+**first NON-gated cost material** of the recipe. Also: salvage unequips a worn piece only when the **last
+copy** is broken down — duplicates stay equipped.
 
 **Fold memory — unified across ALL cards (Nick, 2026-07-23, LOCKED):** a group's expand/collapse state is
 remembered **globally per group-type, not per-card** — expand the **Affixes** group once (it defaults

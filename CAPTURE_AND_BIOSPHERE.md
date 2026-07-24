@@ -1,6 +1,6 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
-**STATUS:** matches code as of 2026-07-20 (verified against main.js).
+**STATUS:** matches code as of 2026-07-23 (verified against main.js).
 **Purpose:** How a surveyed world's revealed life earns Compendium pages — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -90,7 +90,7 @@ bioLeft(d): planetSeed==null ? 99 : max(0, bioPool(d) - _bioUsed(planetSeed))
 - **Worlds with no `planetSeed`** (e.g. special/hardcoded cards) return `bioLeft = 99` — effectively unlimited.
 
 ### 2.6 The cosmic clock — `COSMIC_EPOCH`
-Advanced in the main loop (`frameInner`, ~L16423): `newEpoch = EPOCH_BASE + floor(perfTime / 240)`. On change it sets `COSMIC_EPOCH`, runs `passiveDrift()`, and saves. `EPOCH_BASE` is loaded from the save (`data.epoch`). This is the one clock-driven value in the game — it does not feed generation within an epoch (see §5).
+Advanced in the main loop (`frameInner`, ~L16423): `newEpoch = EPOCH_BASE + floor(perfTime / EPOCH_TICK)` with `EPOCH_TICK = 1200` (~20 minutes of play per epoch). On change it sets `COSMIC_EPOCH`, runs `passiveDrift()`, and saves. `EPOCH_BASE` is loaded from the save (`data.epoch`). This is the one clock-driven value in the game — it does not feed generation within an epoch (see §5). `EPOCH_TICK` (main.js) is the single cadence knob; it was slowed from 240 (~4 min) in v1.7 as an anti-farm balance change — biosphere pools now recover ~every 20 minutes of play.
 
 ## 3. Key tables & numbers (REAL values)
 

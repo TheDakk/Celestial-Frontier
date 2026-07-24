@@ -1,6 +1,6 @@
 # Celestial Frontier — Save System
 
-**STATUS:** matches code as of 2026-07-20 (verified against main.js + tools/).
+**STATUS:** matches code as of 2026-07-23 (verified against main.js + tools/).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated
 from seeds) to `localStorage` under one hardened key, with load-time coerce/clamp so a
 tampered or truncated save can never inject markup or poison the numbers.
@@ -35,13 +35,17 @@ wipe (Nick's call). The universe (seeds, worlds, genomes, share codes) never cha
 - Enum/class fields are **whitelisted** before use: `fs`∈{fs-lg,fs-xl}, `tone`∈
   {tone-bright,tone-max}, `font`∈{font-sys,font-mono} — each becomes a body class, so
   an arbitrary value could otherwise inject a class.
-- Set-membership validated against real tables: cargo elements via `ELEM_NAME`, items
+- Set-membership validated against real tables: cargo materials via the `MATERIALS`
+  registry (47-entry; superseded the 42-symbol `ELEM_NAME` table), items
   via `ITEM_BY`, tech via `TECHS`, charter ids against `CHARTER_STARTERS`/
   `CHARTER_POOL`, binder sets via `BINDER_SETS`.
 - Exploit clamps: mined timestamps clamped to at most one accrual window before the
   save's own `at` stamp (10139–10141, defeats the "edit timestamp to 0 → 30 preloaded
-  extractor pulls" edit); conquered/mined unioned into `land` so cap eviction can't
-  re-hide a held census.
+  extractor pulls" edit); conquered-world **harvest** stamps get the parallel anti-edit
+  clamp on load — at most one `HARVEST_CD` before the save's own stamp; conquered/mined
+  unioned into `land` so cap eviction can't re-hide a held census.
+- Notifications are escaped + coerced on load (the tray sink uses `esc()`), so a
+  hand-edited save can't inject markup through the notification tray.
 - `_loading=true` for the whole pass so nested writes don't re-enter `queueSave`.
 
 ### "New fields must default safely when absent" (the veteran-save rule)
@@ -89,11 +93,14 @@ Settings & player: `v`, `epoch`, `at`, `view`, `hp`, `pstats`, `me` (explorerNam
 `nh` (nameHue), `essence`.
 Settings toggles: `fs`, `tone`, `font`, `snd`, `fx`, `chart`, `shake`, `notif`,
 **`tips`** (tooltips), **`vol`** (=`sfxVol*100`), **`rm`** (=`motionMode`), **`cx`**
-(=`cardExpand` fold bitmask), `guide`, **`tut`** (=`tutDone`), `rn` (release-notes seen).
+(=`cardExpand` fold bitmask), `guide`, **`tut`** (=`tutDone`), `rn` (release-notes seen),
+**`sv`** (=`salvageConfirm` — confirm-before-salvage toggle, default **on**), **`gt`**
+(=`glassTint` panel-tint slider, 0..1; absent ⇒ 0.72).
 Exploration: `land` (settled ∪ conquered ∪ mined), `scout`, `landings`, `cont`
 (contacted), `surveyed`, `gals`, `surf`, `sysv`, `starK`, `ptypes`, `evts`, `evann`,
 `home`, `conq` (conquered → {t,tier}).
-Economy / engineer track: `cargo`, `minedw`, `mx` (pulls per world), **`bx`**
+Economy / engineer track: `cargo`, `minedw`, `mx` (pulls per world), **`skx`**
+(stellar-skim samples per star — mirrors `mx`), **`bx`**
 (=`bioX` — v1.6 Biosphere Yield: `[attempts, epochStamp]` per world), `tech`, `items`,
 `eq` (equipped), **`ea`** (=`equipAff` — v1.6 worn loot-core affixes `{k,v,forId}`),
 `asc`/`ascp` (Ascent chapter + progress).
@@ -101,7 +108,8 @@ Charters: `chs` (done), `chw` (week), `chp` (progress), **`chacc`** (=`chacc` �
 accepted-but-unfinished ids), `charters` (count).
 Records / stats: `notifs`, `breeds`, `breedwins`, `feeds`, `feedfails`, `harvests`,
 `essenceEarned`, `guardians`, `paragons`, `br` (bestRank), `setsc` (claimed binder
-sets), `mines`, `crafts`, `minedout`, `shares`, `jumps`, `anomalies`, `anomKey`,
+sets), `mines`, `crafts`, `minedout`, **`skims`** (stellar-skim stat counter),
+**`cosmics`** (cosmic-material stat counter), `shares`, `jumps`, `anomalies`, `anomKey`,
 `events`, `duels`, `duelwins`, `ach` (unlocked achievements).
 Codex & world: `codex` (`[{g:genome,f:from,w:where}]`), `names` (custom names), `log`,
 `prime` (Prime Codex signature records), `frontier`, `ending`.
