@@ -5552,6 +5552,50 @@ function decoSprite(dc){
       g.fillStyle='rgba(255,255,255,'+(0.35+r()*0.5).toFixed(3)+')';
       g.fillRect(C+Math.cos(a2)*d2, C+Math.sin(a2)*d2, sp2, sp2);
     }
+    /* MULTI-SCALE STRUCTURE (visual review 2026-07-24, additive so the base
+       cloud keeps its look): filaments + a carved cavity + (h2) dark dust
+       lanes + a newborn CLUSTER, or (reflection) a lighting star with a
+       brightened near edge — clouds stop reading as uniform blurs */
+    g.globalCompositeOperation='lighter';
+    g.lineCap='round';
+    for(let f2=0;f2<3;f2++){   /* wisped filaments arcing through the body */
+      const fa3=r()*TAU, fr3=C*(0.16+r()*0.38), fw=(3.2+r()*3.4)*(S/128);
+      g.strokeStyle='hsla('+(dc.hue+(r()-0.5)*30)+',80%,72%,'+(0.045+r()*0.045).toFixed(3)+')';
+      g.lineWidth=fw;
+      g.beginPath(); g.arc(C+(r()-0.5)*C*0.4, C+(r()-0.5)*C*0.4, fr3, r()*TAU, r()*TAU+1.2+r()*1.4); g.stroke();
+    }
+    g.globalCompositeOperation='source-over';
+    { /* a wind-carved cavity — one soft dark hollow */
+      const cvx=C+(r()-0.5)*C*0.5, cvy=C+(r()-0.5)*C*0.5, cvr=C*(0.10+r()*0.12);
+      const cg4=g.createRadialGradient(cvx,cvy,0,cvx,cvy,cvr);
+      cg4.addColorStop(0,'rgba(8,6,14,0.32)'); cg4.addColorStop(1,'rgba(8,6,14,0)');
+      g.fillStyle=cg4; g.beginPath(); g.arc(cvx,cvy,cvr,0,TAU); g.fill();
+    }
+    if(dc.k==='h2'){
+      for(let dl=0;dl<3;dl++){   /* dark dust lanes cutting the glow */
+        g.strokeStyle='rgba(10,6,14,'+(0.16+r()*0.10).toFixed(2)+')';
+        g.lineWidth=(2.2+r()*2.6)*(S/128);
+        g.beginPath(); g.arc(C+(r()-0.5)*C*0.5, C+(r()-0.5)*C*0.6, C*(0.2+r()*0.3), r()*TAU, r()*TAU+1.0+r()); g.stroke();
+      }
+      { /* the newborn cluster — stars born together, not scattered */
+        const kx2=C+(r()-0.5)*C*0.5, ky2=C+(r()-0.5)*C*0.5;
+        for(let s3=0;s3<7;s3++){
+          const sa3=r()*TAU, sd3=Math.pow(r(),1.4)*C*0.08;
+          g.fillStyle='rgba(255,255,255,'+(0.5+r()*0.4).toFixed(2)+')';
+          g.fillRect(kx2+Math.cos(sa3)*sd3, ky2+Math.sin(sa3)*sd3, 1.6*(S/128), 1.6*(S/128));
+        }
+      }
+    } else {
+      /* reflection: ONE bright illuminating star + the near side glows */
+      const lsx=C+(r()-0.5)*C*0.7, lsy=C+(r()-0.5)*C*0.7;
+      g.save(); g.globalCompositeOperation='lighter';
+      const lg4=g.createRadialGradient(lsx,lsy,0,lsx,lsy,C*0.34);
+      lg4.addColorStop(0,'rgba(235,244,255,0.9)');
+      lg4.addColorStop(0.12,'hsla('+dc.hue+',70%,80%,0.35)');
+      lg4.addColorStop(1,'hsla('+dc.hue+',70%,70%,0)');
+      g.fillStyle=lg4; g.beginPath(); g.arc(lsx,lsy,C*0.34,0,TAU); g.fill();
+      g.restore();
+    }
   } else if(dc.k==='mol'){
     /* dark clouds DIM the starlight — they must never read as black
        holes punched in the disk (Nick's splotch report). Soft wide
@@ -5597,6 +5641,25 @@ function decoSprite(dc){
     const core=g.createRadialGradient(C,C,0,C,C,C*0.12);
     core.addColorStop(0,'rgba(220,235,255,0.95)');core.addColorStop(1,'rgba(220,235,255,0)');
     g.fillStyle=core;g.beginPath();g.arc(C,C,C*0.12,0,TAU);g.fill();
+    /* visual review: an EXPANDING remnant reads by its shock front — a
+       partial bright shell arc + filament streamers tracing the blast */
+    g.save(); g.globalCompositeOperation='lighter'; g.lineCap='round';
+    const shA=r()*TAU;
+    g.strokeStyle='rgba(255,214,170,0.14)'; g.lineWidth=5.5*(S/128);
+    g.beginPath(); g.arc(C,C,C*0.60,shA,shA+2.4+r()*1.4); g.stroke();
+    g.strokeStyle='rgba(255,236,210,0.10)'; g.lineWidth=3.0*(S/128);
+    g.beginPath(); g.arc(C,C,C*0.64,shA+0.3,shA+1.8+r()); g.stroke();
+    for(let fl2=0;fl2<4;fl2++){   /* filaments streaming outward */
+      const fa4=r()*TAU;
+      g.strokeStyle='hsla('+(14+r()*30)+',85%,66%,'+(0.07+r()*0.05).toFixed(2)+')';
+      g.lineWidth=(2.2+r()*2.2)*(S/128);
+      g.beginPath();
+      g.moveTo(C+Math.cos(fa4)*C*0.22, C+Math.sin(fa4)*C*0.22);
+      g.quadraticCurveTo(C+Math.cos(fa4+0.25)*C*0.42, C+Math.sin(fa4+0.25)*C*0.42,
+                         C+Math.cos(fa4+0.12)*C*0.60, C+Math.sin(fa4+0.12)*C*0.60);
+      g.stroke();
+    }
+    g.restore();
   } else if(dc.k==='plan'){
     /* PLANETARY NEBULA (HD coverage pass): the one deco that still drew
        stroked circles. A dying sun's shed shell — torn teal/gold puffs on
