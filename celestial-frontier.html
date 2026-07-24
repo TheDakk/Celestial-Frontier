@@ -1622,7 +1622,8 @@
   #vistabox.zoom .vh,#vistabox.zoom .vt{position:absolute;left:50%;transform:translateX(-50%);z-index:2;text-shadow:0 1px 6px rgba(0,0,0,0.9);pointer-events:none}
   #vistabox.zoom .vh{top:max(10px,env(safe-area-inset-top))}
   #vistabox.zoom .vt{bottom:max(26px,calc(env(safe-area-inset-bottom) + 20px))}
-  #vistabox.zoom .vpc{display:none}
+  #vistabox .vrow{display:flex;gap:18px;align-items:center}
+  #vistabox.zoom .vrow{display:none}
   #vistabox.zoom .vxc{z-index:3}
   #vistabox .vh{font:600 11px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--plasma)}
   #vistabox .vt{font:600 9px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
@@ -10015,10 +10016,22 @@ function hdVista(opts){
        meander direction+depth, and the mouth per world: some run near-straight,
        some ox-bow hard, some enter left and exit right. */
     const rvQ=mulberry32((seed^0x81FE)>>>0);
-    const rvTop=0.40+rvQ()*0.34;                 /* where it springs on the ridge */
-    const rvMth=0.20+rvQ()*0.52;                 /* where it exits the near field */
-    const rvBow=(rvQ()-0.5)*0.40;                /* meander throw + direction */
-    const rvBow2=(rvQ()-0.5)*0.24;               /* second, gentler bend */
+    let rvTop=0.40+rvQ()*0.34;                   /* where it springs on the ridge */
+    let rvMth=0.20+rvQ()*0.52;                   /* where it exits the near field */
+    let rvBow=(rvQ()-0.5)*0.40;                  /* meander throw + direction */
+    let rvBow2=(rvQ()-0.5)*0.24;                 /* second, gentler bend */
+    /* SETTLED worlds (Nick's field report: "the rivers go right through the
+       roads… and the farmlands"): when a road will draw (iron/town), the river
+       keeps to its OWN BANK the whole way down — spring pulled to the mouth's
+       side of the frame and the meanders damped so no bow can swing the course
+       across the road or its field quads. Wild worlds keep the full meander. */
+    if(civ==='iron'||civ==='town'){
+      const rvSide=rvMth<0.5?-1:1;
+      rvTop=0.5+rvSide*(0.10+Math.abs(rvTop-0.5)*0.55);
+      rvMth=0.5+rvSide*(0.16+Math.abs(rvMth-0.5)*0.8);
+      rvBow=rvSide*Math.abs(rvBow)*0.45;         /* bow OUTWARD only, gently */
+      rvBow2=rvSide*Math.abs(rvBow2)*0.4;
+    }
     const rp=[[rX(W*rvTop)+cmpShift,hz+40+rvQ()*14],
               [rX(W*(rvTop+rvBow))+cmpShift,hz+86+rvQ()*26],
               [rX(W*(rvMth+(rvTop-rvMth)*0.42+rvBow2))+cmpShift,H*(0.70+rvQ()*0.14)],
@@ -10585,12 +10598,19 @@ function hdVista(opts){
    card can reopen it (graphics overhaul B1) */
 const vistaBox=document.createElement('div');vistaBox.id='vistabox';document.body.appendChild(vistaBox);
 let _lastVista=null, _vistaHideT=0, _vistaShowSeq=0, _vistaArmedAt=0;
-vistaBox.addEventListener('click', ()=>{
+vistaBox.addEventListener('click', (e)=>{
   /* GHOST-CLICK GUARD (Nick: "the vista popped up and then closed"): on
      touch, the tap that pressed LAND synthesizes a click a beat later —
      it landed on the freshly-mounted overlay and dismissed the payoff.
      The dismiss arms 420ms after the show; the birth-tap passes through. */
   if(performance.now()-_vistaArmedAt<420) return;
+  /* FULL-SCREEN semantics (Nick): while zoomed, tapping ANYWHERE steps back
+     OUT of full screen to the windowed card — it never slams the whole view
+     shut. Only the ✕ closes everything from full screen. */
+  if(vistaBox.classList.contains('zoom') && !(e && e.target && e.target.closest && e.target.closest('.vxc'))){
+    vistaBox.classList.remove('zoom');
+    return;
+  }
   /* a show's fade-in rides a queued animation frame — bump the sequence so
      a lightning-fast tap can't lose the race and strand the view open */
   _vistaShowSeq++;
@@ -10635,12 +10655,24 @@ function _vistaExtras(host){
     x.setAttribute('data-tip','Close this view — tapping anywhere works too');
     host.appendChild(x);
   }
+  /* the pill row: ⛶ Full screen (Nick: a VISIBLE button, not just a hidden
+     tap — tapping the image still zooms too) beside ⇪ Save postcard. Tapping
+     anywhere while zoomed steps back out; the ✕ closes everything. */
+  const row=document.createElement('div');row.className='vrow';
+  const fsb=document.createElement('div');fsb.className='vpc vfs';
+  fsb.setAttribute('role','button');fsb.tabIndex=0;
+  fsb.textContent='⛶ Full screen';
+  const _fsGo=(e)=>{ e.stopPropagation(); if(!tutDone) return; vistaBox.classList.add('zoom'); };
+  fsb.addEventListener('click',_fsGo);
+  fsb.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); _fsGo(e); } });
+  row.appendChild(fsb);
   const pc=document.createElement('div');pc.className='vpc';
   pc.setAttribute('role','button');pc.tabIndex=0;
   pc.textContent='⇪ Save postcard';
   pc.addEventListener('click',(e)=>{ e.stopPropagation(); savePostcard(); });
   pc.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); savePostcard(); } });
-  host.appendChild(pc);
+  row.appendChild(pc);
+  host.appendChild(row);
 }
 /* mount the vista as a WINDOWED pop-up card (v1.3.11, Nick: the view read
    as a separate full screen with an ✕ stranded in the corner — now it is a

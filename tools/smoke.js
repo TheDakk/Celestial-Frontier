@@ -879,6 +879,15 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click2(_vcanvas, sk.w);
     check('v1.7 vista: tapping the zoomed image returns from zoom',
       !sk.doc.getElementById('vistabox').classList.contains('zoom'));
+    // the VISIBLE full-screen pill (Nick) — and while zoomed, a backdrop tap
+    // steps OUT of full screen instead of slamming the whole view shut
+    const fsb = sk.doc.querySelector('#vistabox .vfs');
+    check('v1.7 vista: a visible ⛶ Full screen button rides the card', !!fsb && /Full screen/.test(fsb.textContent));
+    click2(fsb, sk.w);
+    check('v1.7 vista: the Full screen button zooms', sk.doc.getElementById('vistabox').classList.contains('zoom'));
+    click2(sk.doc.getElementById('vistabox'), sk.w);
+    check('v1.7 vista: tapping off while zoomed exits zoom (does NOT dismiss)',
+      !sk.doc.getElementById('vistabox').classList.contains('zoom') && sk.doc.getElementById('vistabox').style.display === 'flex');
     click2(sk.doc.getElementById('vistabox'), sk.w);
     check('HD vista: an armed tap dismisses the panorama (fade-out)', await until(() =>
       sk.doc.getElementById('vistabox').style.display === 'none', 4000, 'vista fade-out'));
