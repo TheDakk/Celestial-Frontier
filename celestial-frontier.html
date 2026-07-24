@@ -207,7 +207,7 @@
   body.fs-lg #hud-center #trail{font-size:15px}
   /* the reading surfaces the first pass missed (settings audit, v1.3):
      Guide, Charters, Release Notes and the dialog cards */
-  body.fs-lg #guidebox .gstep div,body.fs-lg #guidebox .gsub{font-size:13px}
+  body.fs-lg #guidebox .gsub{font-size:13px}
   body.fs-lg #chpanel .ch .ct{font-size:13px}
   body.fs-lg #chpanel .ch .cd{font-size:12px}
   body.fs-lg #relbox li{font-size:13.5px}
@@ -231,7 +231,7 @@
   body.fs-xl .tst{font-size:15px}
   body.fs-xl #hint{font-size:15px}
   body.fs-xl #hud-center #trail{font-size:17px}
-  body.fs-xl #guidebox .gstep div,body.fs-xl #guidebox .gsub{font-size:15px}
+  body.fs-xl #guidebox .gsub{font-size:15px}
   body.fs-xl #chpanel .ch .ct{font-size:15px}
   body.fs-xl #chpanel .ch .cd{font-size:13.5px}
   body.fs-xl #relbox li{font-size:15px}
@@ -326,8 +326,6 @@
   #doll .dsock.filled.t1{border-color:rgba(159,182,214,0.7)}
   #doll .dsock.filled.t2{border-color:rgba(255,217,106,0.75);box-shadow:0 0 10px rgba(255,217,106,0.22)}
   #doll .dsock.filled.t3{border-color:rgba(255,122,232,0.8);box-shadow:0 0 12px rgba(255,122,232,0.3)}
-  #doll .dship{position:absolute;transform:translate(-50%,-50%);width:96px;border-radius:9px;
-    border:1px solid rgba(127,208,255,0.35);background:#05060d;opacity:0.96}
   #doll .dname{font:700 15px var(--ui);letter-spacing:.03em;color:var(--ink);text-align:center;margin:2px 0 8px}
   /* clamp a long explorer name so it can't wrap the ✎ rename link out of the plate (Nick, v1.5.2c) */
   #doll .dname .dnm{display:inline-block;max-width:calc(100% - 78px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:bottom}
@@ -452,11 +450,6 @@
   #itemcard .ic-row{display:flex;gap:10px;font-size:12px;line-height:1.5;margin:6px 0}
   #itemcard .ic-row .ic-k{flex:none;width:78px;color:var(--faint);text-transform:uppercase;letter-spacing:.05em;font-size:10px;padding-top:2px}
   #itemcard .ic-row .ic-v{color:var(--dim)}
-  #itemcard .ic-equip{width:100%;margin-top:4px;padding:12px 0;font:700 12px var(--ui);letter-spacing:.08em;text-transform:uppercase;
-    color:#1a1206;cursor:pointer;border:1px solid rgba(255,220,150,0.9);border-radius:12px;
-    background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a);box-shadow:0 0 18px rgba(240,200,110,0.35)}
-  #itemcard .ic-equip:hover{box-shadow:0 0 26px rgba(240,200,110,0.6)}
-  #itemcard .ic-equip.worn{background:rgba(127,230,160,0.12);color:#bfe6c8;border-color:rgba(127,230,160,0.5);box-shadow:none}
   /* v1.7 Forge: even, centered Equip + Salvage buttons */
   #itemcard .ic-foot{display:flex;gap:9px;justify-content:center;margin-top:4px}
   #itemcard .ic-abtn{flex:1 1 0;text-align:center;padding:11px 0;font:700 12px var(--ui);letter-spacing:.06em;text-transform:uppercase;
@@ -671,7 +664,6 @@
   #duelbox .side .hp{height:7px;border-radius:99px;background:rgba(150,162,210,0.16);overflow:hidden;margin:4px 0}
   #duelbox .side .hp i{display:block;height:100%;background:linear-gradient(90deg,#7fe6a0,#46c2b2);transition:width .25s}
   #duelbox .side .sl{font-size:9px;color:var(--faint);line-height:1.6;text-align:left;display:inline-block}
-  #duelbox .side .dstats{margin:6px 0 0;text-align:left}
   #duelbox .side .dst{display:flex;align-items:center;gap:5px;margin:2px 0}
   #duelbox .side .dst>span:first-child{flex:none;width:26px;font:600 8px var(--ui);letter-spacing:.06em;color:var(--faint)}
   #duelbox .side .dst .db{flex:1;height:5px;border-radius:99px;background:rgba(150,162,210,0.16);overflow:hidden}
@@ -808,7 +800,6 @@
   @keyframes tin{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
 
   /* ---- panel share / name buttons & life scan row ---- */
-  #panel .actrow{display:flex;gap:7px}
   #panel .act.half{flex:1}
   #panel .row.scanlife{cursor:pointer;border:1px dashed rgba(127,230,160,0.35);border-radius:9px;transition:background .15s,border-color .15s}
   #panel .row.scanlife:hover{background:rgba(127,230,160,0.08);border-color:rgba(127,230,160,0.7)}
@@ -1000,15 +991,6 @@
   .cargoish .gslot{font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--plasma);
     border:1px solid rgba(150,162,210,0.3);border-radius:999px;padding:1px 6px;margin-left:3px}
   /* ---- v1.4 THE PLAYER FRAME: painterly avatar fronting the sheet ---- */
-  #stats .pframe{display:flex;gap:12px;align-items:center;margin:0 0 11px;padding:10px 11px;
-    border:1px solid rgba(255,207,138,0.4);border-radius:14px;
-    background:linear-gradient(160deg,rgba(64,48,18,0.32),rgba(9,11,22,0.62));
-    box-shadow:inset 0 1px 0 rgba(255,255,255,0.07),0 6px 20px rgba(0,0,0,0.45),0 0 18px rgba(255,207,138,0.07)}
-  #stats .pframe .pav{width:76px;height:76px;flex:none;border-radius:12px;
-    border:1px solid rgba(255,207,138,0.55);box-shadow:0 0 16px rgba(255,207,138,0.20),inset 0 0 0 1px rgba(0,0,0,0.4)}
-  #stats .pframe .pmeta{min-width:0;flex:1}
-  #stats .pframe .pname{font:600 13px var(--ui);letter-spacing:.04em;color:var(--ink)}
-  #stats .pframe .prank{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#f0cf8a;margin-top:3px}
   /* (v1.5: the nine equipment sockets + Shipyard moved onto the paperdoll —
      their styles live under #doll now) */
   /* v1.5: the cargo panel folded INTO the character screen — a region now */
@@ -1112,13 +1094,6 @@
     box-shadow:0 0 60px rgba(143,180,255,0.12),0 26px 80px rgba(0,0,0,0.7)}
   #guidebox .gh{font:700 17px var(--ui);letter-spacing:.05em;color:var(--ink);text-align:center}
   #guidebox .gsub{font-size:11.5px;color:var(--dim);text-align:center;margin:6px 0 15px}
-  #guidebox .gsteps{display:flex;flex-direction:column;gap:10px;text-align:left}
-  #guidebox .gstep{display:flex;gap:11px;align-items:flex-start;padding:10px 11px;border-radius:12px;
-    background:rgba(8,9,16,0.5);border:1px solid var(--line)}
-  #guidebox .gstep .gi{flex:none;width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;
-    font-size:15px;background:rgba(143,180,255,0.12)}
-  #guidebox .gstep div{font-size:11.5px;line-height:1.6;color:var(--dim)}
-  #guidebox .gstep b{color:var(--ink)}
   #guidebox .gcredit{margin-top:12px;text-align:center;font-size:10px;letter-spacing:.12em;
     text-transform:uppercase;color:var(--faint)}
   #guidesearch{width:100%;box-sizing:border-box;margin:0 0 12px;padding:9px 12px;font:500 12px var(--ui);color:var(--ink);
@@ -1314,12 +1289,6 @@
   #panel.locked{box-shadow:0 18px 50px rgba(0,0,0,0.6), 0 0 0 1.5px rgba(127,230,160,0.4) !important}
   #panel.locked::after{content:'📌 locked — tap empty space to release';position:absolute;left:2px;right:auto;top:-20px;
     text-align:left;font-size:9px;letter-spacing:.06em;color:#7fe6a0;opacity:0.8}
-  #panel .splist{display:flex;gap:9px;font-size:12px;line-height:1.45;margin:7px -6px 2px;padding:6px 6px;
-    border-radius:7px;cursor:pointer;background:rgba(127,230,160,0.07);transition:background .15s}
-  #panel .splist:hover{background:rgba(127,230,160,0.13)}
-  #panel .splist .k{flex:none;width:74px;color:#9fe6b4;font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding-top:1px}
-  #panel .splist .v{color:#cfe8d6}
-  #panel .splist .v em{font-style:normal;color:#7fe6a0;font-size:10px;margin-left:4px}
   #log{position:fixed;top:calc(var(--row1-h,58px) + 130px);right:18px;z-index:22;width:300px;max-height:min(62vh,540px);overflow-y:auto;
     display:none;background:var(--glass);border:1px solid var(--glass-brd);border-radius:16px;padding:6px;
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 16px 50px rgba(0,0,0,0.6)}
@@ -2574,15 +2543,6 @@ const BIOME_PROFILES={
   stormeye:{sig:'#a0604a',fauna:['jelly','ceph'],flora:[],hazard:'megastorm',weather:'cyclone'},
   hotglow:{sig:'#b04030',fauna:[],flora:[],hazard:'heat',weather:'ember-cloud'},
 };
-function biomeProfile(k){ return BIOME_PROFILES[k]||null; }
-/* colorDNA for a world: the atlas physical palette, plus the biome signature
-   as the map-dot / vista PRIMARY colour when a live biome is known. */
-function colorDNAFor(P, biomeK, starCol){
-  const pal=resolveBodyPalette(P, starCol, biomeK||null);
-  const prof=biomeK?biomeProfile(biomeK):null;
-  return prof? Object.assign({}, pal, {biomeSig:prof.sig, hazard:prof.hazard, weather:prof.weather,
-    nativeFauna:prof.fauna, nativeFlora:prof.flora}) : pal;
-}
 
 /* ---------------- thumbnails (data URLs) for panel + scan log ---------------- */
 const thumbCache=new Map();
@@ -3524,7 +3484,6 @@ function climateBand(P, sys, orb){
   if(P.type==='ice') return 'frozen';
   return 'cold';
 }
-function pick1(r,a){ return a[Math.floor(r()*a.length)]; }
 return Object.freeze({climateBand, COMP, atmosphereText, climateText, waterText, gravityText, TYPE_LABEL});
 })();
 const {climateBand, COMP, atmosphereText, climateText, waterText, gravityText, TYPE_LABEL}=SurveyPhrases;
@@ -3540,7 +3499,6 @@ const {climateBand, COMP, atmosphereText, climateText, waterText, gravityText, T
    API:  SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_BEHAVIOR, FA_HABITAT, FLORA_DETAIL, FA_TEMPER, FA_SENSE, FA_REPRO, FA_LIFE, FA_METAB, FLORA_FORM, FUNGI_FORM, MICROBE_FORM, speciesName, colorGrade, SP_HEX, FA_SIZE_M, SPECTRA, spectral, GRADE_TIERS, TIER_MAX, RARITY_V17, displayRarity, rarityRoll, EX_HABITAT, EX_LOCO, AQ_FLORA_FORM, AIR_FLORA_FORM, habOf, locoOf, floraFormOf
    ================================================================ */
 const SpeciesTraits=(()=>{
-const SP_KINGDOM=['flora','fungi','microbe','fauna'];
 const SP_COLOR=['emerald','crimson','violet','golden','turquoise','indigo','amber','rust-red',
   'silver-blue','obsidian-black','bone-white','magenta','teal','ochre','jade','bruise-purple','glass-clear'];
 /* hex anchors for each color name, so the portrait matches the description */
@@ -3846,7 +3804,6 @@ const REALM_ICON={'Microbial Life':'\ud83e\udda0','Colonial Life':'\ud83c\udf10'
   'Intelligent Natural Life':'\ud83e\udde0'};
 /* ---- the Mind hunt: rare fauna cross into true cognition. Derived from the genome
         (cognition-marker genes gated by a rare deterministic roll) so it's stable. ---- */
-const SAP_LABEL=['Instinctive','Social','Tool-curious','Semi-sapient','Sapient'];
 function sapienceTier(g){
   if(!g || g.kingdom!=='fauna') return 0;
   const beh=FA_BEHAVIOR[(g.behavior||0)%FA_BEHAVIOR.length]||'';
@@ -4271,7 +4228,6 @@ function biosphere(P, sys, band, r){
   if(P.seed===133) return {level:'Abundant — flora and fauna (the home of humanity)', key:'earth'};
   if(sys && sys.sol) return {level:'No known life', key:'none'};   /* the rest of Sol is barren — life begins out among the stars */
   if(P.seed===134) return {level:'Possibly microbial (unconfirmed)', key:'microbial'};
-  const watery = P.type==='terran'||P.type==='ocean';
   let level;
   if(P.type==='terran' && band==='temperate') level = r()<0.82?'complex':'flora';
   else if(P.type==='terran' && band==='cold') level = r()<0.55?'sparse':(r()<0.7?'flora':'microbial');
@@ -7810,7 +7766,6 @@ function _rigFish(sg,S,baseY,G,r){
   const bulk=Math.max(0.7,(G.bulk||0.85)), len=Math.min(1.35,G.len||1);
   const shape=G.fshape||'fusiform';
   const cx=S*0.47, cy=baseY-S*0.05;
-  const finpt=(x,y,dx,dy,w)=>{ sg.beginPath();sg.moveTo(x,y);sg.lineTo(x+dx,y+dy);sg.lineTo(x+dx*0.4-w,y+dy*0.4+w);sg.closePath();sg.fill(); };
   if(shape==='seahorse'){
     sg.lineWidth=S*0.058*bulk;sg.lineCap='round';
     sg.beginPath();sg.moveTo(cx,cy-S*0.15);
@@ -12492,7 +12447,6 @@ function _storeSpecies(g, from, where, deferArt){
   codex.set(id, entry);
   codexCountEl.textContent=codex.size;
   onSpeciesStored(entry);
-  primeCheckSpecies(entry);
   return entry;
 }
 /* ---- 🐾 TAME · 🌿 SCAVENGE (v1.5.2c, Nick's capture design): the survey
@@ -14226,8 +14180,6 @@ function loadSave(){
     tutDone = data.tut===undefined ? true : !!data.tut;   /* tut absent (edited save) ⇒ done — never force training on a held run */
     _rnSeen = typeof data.rn==='string' ? data.rn.slice(0,12) : '0';   /* pre-notes saves get the debut bulletin once */
     _chBadge();
-    /* retroactive: signatures your existing Codex already deserves, claimed quietly */
-    if(primeCount()<9) for(const e of codex.values()) primeCheckSpecies(e, true);
     renderPrime(); updatePrimeBtn();
     logCountEl.textContent=logMap.size;
     codexCountEl.textContent=codex.size;
@@ -17784,7 +17736,6 @@ const MATERIALS={
 /* accessors — name/color fall back to the existing ELEM_NAME/EC for the 40,
    so those stay single-sourced; the cosmics carry their own */
 function matName(k){ return (MATERIALS[k]&&MATERIALS[k].name) || ELEM_NAME[k] || k; }
-function matInfo(k){ return MATERIALS[k]||null; }
 function matBaseTier(k){ return MATERIALS[k]?MATERIALS[k].tier:0; }
 function matFamily(k){ return MATERIALS[k]?MATERIALS[k].fam:null; }
 function matColor(k){ return (MATERIALS[k]&&MATERIALS[k].col) || EC[k] || '#cfd6e6'; }
@@ -19820,37 +19771,6 @@ function charterBlock(){
 }
 function pathfinderRank(){ const n=primeCount();
   return n>=9?'Celestial Pathfinder':n>=6?'Pathfinder':n>=4?'Surveyor':n>=2?'Chartmaker':'Wanderer'; }
-/* which Signatures a catalogued creature can fill, rarest-first (one creature fills one slot) */
-function speciesSignatures(entry){
-  const t=(entry.grade?entry.grade.tier:0)||0, realm=entry.realm||'', out=[];
-  /* the two hardest signatures dwell at the frontier: a wild find counts only if it lies far enough out.
-     bred/imported creatures carry no origin, so they are never region-locked. */
-  const reg=(entry.where&&entry.where.gal)?regionAt(entry.where.gal.x,entry.where.gal.y):99;
-  if((entry.sapient||0)>=3 && reg>=2) out.push('mind');
-  if(t>=7 && reg>=3) out.push('prism');
-  if(t>=4){
-    if(realm==='Aquatic Fauna') out.push('ocean');
-    else if(realm==='Gas Giant Life'||realm==='Aerial Fauna') out.push('sky');
-    else if(realm==='Land Fauna'||realm==='Flora') out.push('life');
-  }
-  return out;
-}
-/* which Signature a surveyed world/star/galaxy fills (the non-life four) */
-function worldSignature(d){
-  const t=(d.designation?d.designation.tier:(d.grade?d.grade.tier:0))||0;
-  if(d.sigStar) return {id:'star', t:Math.max(t,5)};
-  if(d.starKind){
-    if(d.starKind==='BH') return {id:'void', t:Math.max(t,5)};
-    if(['NS','SG','MAG','WD','RG','B'].includes(d.starKind)) return {id:'star', t:Math.max(t,5)};
-    if(t>=5) return {id:'star', t};
-  }
-  if(d.ptype && t>=4){
-    if(d.ptype==='lava') return {id:'flame', t};
-    if(d.ptype==='rocky'||d.ptype==='desert'||d.ptype==='venus') return {id:'stone', t};
-  }
-  if(d.logId && /^g/.test(d.logId) && t>=5) return {id:'void', t};   /* a legendary/anomalous galaxy */
-  return null;
-}
 function claimSignature(id, info, quiet){
   if(!SIG_IDS.includes(id) || primeFill[id]) return false;
   primeFill[id]=info;
@@ -19869,35 +19789,11 @@ function claimSignature(id, info, quiet){
   checkFrontier(quiet);
   return true;
 }
-/* v1.5.2c: signatures are claimed ONLY by felling elemental titans now
-   (see the conquest claim). These two remain as harmless no-ops so their
-   call sites and the load-time retro pass do nothing — a live save's
-   already-claimed signatures carry through the saved primeFill blob. */
-function primeCheckSpecies(entry, quiet){ return; }
-function _primeCheckSpecies_legacy(entry, quiet){
-  if(_loading && !quiet) return;     /* claims during save-restore are handled by the quiet retro pass */
-  if(primeCount()>=9 || !entry) return;
-  /* a creature's signature is earned only once you CONQUER the world it lives on — scanning alone no longer counts */
-  if(!(entry.where && entry.where.pseed!=null && conquered.has(entry.where.pseed))) return;
-  for(const id of speciesSignatures(entry)){
-    if(!primeFill[id]){
-      claimSignature(id, {title:entry.name, sub:(entry.realm||entry.kind), tier:(entry.grade?entry.grade.tier:0),
-        hex:(entry.grade?entry.grade.hex:'#9fb6d6'), where:entry.where||null}, quiet);
-      break;
-    }
-  }
-}
-function primeCheckWorld(d){ return; }   /* v1.5.2c: superseded by titan claims */
-function _primeCheckWorld_legacy(d){
-  if(_loading || !d || primeCount()>=9) return;
-  const w=worldSignature(d);
-  if(w && !primeFill[w.id]){
-    /* Stone & Flame come from worlds you SETTLE; Star & Void are cosmic finds you can only ever survey */
-    if((w.id==='stone'||w.id==='flame') && !(d.planetSeed!=null && conquered.has(d.planetSeed))) return;
-    claimSignature(w.id, {title:d.title, sub:d.sub, tier:w.t,
-      hex:(d.designation?d.designation.hex:(d.grade?d.grade.hex:'#9fb6d6')), where:d.where||null});
-  }
-}
+/* v1.5.2c: signatures are claimed ONLY by felling elemental titans (see the
+   conquest claim). The old scan/settle claim path (primeCheckSpecies/World +
+   speciesSignatures/worldSignature) was excised in the v1.7 dead-code purge —
+   a live save's already-claimed signatures carry through the saved primeFill
+   blob, so no claim is ever re-derived. */
 function checkFrontier(quiet){
   if(primeCount()>=9 && !frontierUnlocked){
     frontierUnlocked=true; queueSave();
