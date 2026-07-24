@@ -7213,6 +7213,23 @@ function _earthArt(name){
   else if(has(/flamingo|salmon|shrimp|prawn/)) c=col(224,120,130);
   else if(has(/eagle|hawk|owl|falcon|sparrow|finch|thrush|wren|deer|antelope|gazelle|kangaroo|impala|hare|rabbit|mouse|rat|squirrel|hyena|lynx|cougar|tapir|okapi/)) c=col(150,116,80);
   if(c) o=Object.assign(o, c);
+  /* ── SIGNATURE MARKINGS (ProofSet-2 review R1, 2026-07-24): defining marks
+     are REQUIRED ANATOMY, not optional pelt noise. Recipe-declared; painted
+     by the shared eye routine (masks/patches — head-anchored, every rig) and
+     the pelt pass (leg stripes / dark limbs / belly contrast — pixel-space). */
+  if(has(/giant panda|\bpanda\b/) && !has(/red panda/)){
+    Object.assign(o, col(238,240,244));            /* white body… */
+    o.mask=[22,22,28]; o.darkLimbs=1; o.pat=[30,30,36];   /* …black eye-mask, ears ride the mask, black limbs */
+  }
+  else if(has(/red panda/)){ Object.assign(o, col(196,92,48)); o.mask=[60,34,26]; o.darkLimbs=1; }
+  else if(has(/raccoon/) && !has(/dog/)){ Object.assign(o, col(128,128,138)); o.mask=[26,26,32]; }
+  else if(has(/badger/) && !has(/honey/)){ Object.assign(o, col(210,210,218)); o.mask=[24,24,30]; }
+  else if(has(/meerkat/)){ o.mask=[40,32,26]; }
+  else if(has(/orca|killer whale/)){ Object.assign(o, col(22,24,30)); o.eyePatch=1; o.base2=[238,242,248]; }
+  else if(has(/okapi/)){ Object.assign(o, col(74,50,46)); o.legStripes=1; o.mottle=0; }
+  else if(has(/spectacled bear/)){ o.mask=[214,206,182]; }          /* pale spectacles on a dark face */
+  else if(has(/sloth bear/)){ o.shag=1; o.base2=[214,198,160]; }    /* pale chest wash */
+  else if(has(/skunk/)){ Object.assign(o, col(30,30,36)); o.stripes=0; o.dorsalStripe=1; }
   return o;
 }
 function hdGenesFor(g){
@@ -8851,6 +8868,14 @@ function hdBeastBare(G,seed){
     /* Earth pelts keep their recipe color CLEAN between the marks (the old
        extra dark wash turned tiger-orange to mud) */
     cr2=_hdMix3(cr2,G.dark,m*((G._earthName||G._earthBlend)?0.08:0.26));
+    /* SIGNATURE MARKINGS (R1) — lower-body zone, pixel-space: an okapi NEVER
+       ships without striped legs; a panda's limbs are black anatomy */
+    if(G.legStripes && py>S*0.585){
+      const lb2=Math.sin(py*0.42+_hdFbm(px*0.03,py*0.01,seed+23,2)*1.4);
+      if(Math.abs(lb2)>0.45) cr2=_hdMix3(cr2,[236,236,240],0.85);
+    }
+    if(G.darkLimbs && py>S*0.565) cr2=_hdMix3(cr2,[26,26,32],0.82);
+    if(G.dorsalStripe && py<S*0.50 && py>S*0.40) cr2=_hdMix3(cr2,[240,242,246],0.9);   /* the skunk's white back */
     if(FIN>=2){
       const ir=_hdFbm(px*0.010+7,py*0.010,seed+31,3);
       const sw=Math.sin((px+py)*0.045+ir*5)*0.5+0.5;
@@ -9022,8 +9047,17 @@ function hdBeastBare(G,seed){
           for(let c=0;c<cnt;c++){ eye(hp.x+(c-(cnt-1)/2)*dx+S*0.006, hp.y-S*0.004+(rw-0.5)*dy, 0.84); drawn++; } } }
     } else {   // Earth / rigged
       const faceOn=rigOut&&rigOut.faceOn, spread=(rigOut&&rigOut.eyeSpread)||1;
-      if(faceOn){ const dx=S*0.024*spread; eye(hp.x-dx,hp.y-S*0.004); eye(hp.x+dx,hp.y-S*0.004); }
-      else eye(hp.x+S*0.013,hp.y-S*0.008);
+      /* SIGNATURE MARKINGS (R1): masks/patches paint UNDER the eyes, anchored
+         at the same head positions the eye routine uses — one site, every rig */
+      const _mkAt=(mx2,my2)=>{
+        if(G.mask){ g.fillStyle='rgba('+G.mask.join(',')+',0.92)';
+          g.beginPath(); g.ellipse(mx2,my2,eyeR*2.7,eyeR*2.15,-0.25,0,7); g.fill(); }
+        if(G.eyePatch){ g.fillStyle='rgba(240,244,250,0.95)';
+          g.beginPath(); g.ellipse(mx2+eyeR*1.6,my2-eyeR*1.4,eyeR*2.3,eyeR*1.25,-0.35,0,7); g.fill(); }
+      };
+      if(faceOn){ const dx=S*0.024*spread; _mkAt(hp.x-dx,hp.y-S*0.004); _mkAt(hp.x+dx,hp.y-S*0.004);
+        eye(hp.x-dx,hp.y-S*0.004); eye(hp.x+dx,hp.y-S*0.004); }
+      else { _mkAt(hp.x+S*0.013,hp.y-S*0.008); eye(hp.x+S*0.013,hp.y-S*0.008); }
       if(G._earthBlend && G.eyeN>2 && (1-(G._anchor==null?0.85:G._anchor))>0.3){   // Pass 8 drift: extra alien ocelli
         const extra=Math.min(4,G.eyeN-2);
         for(let k=0;k<extra;k++){ const a=-0.8+(extra>1?(k/(extra-1)):0.5)*1.6; eye(hp.x+Math.cos(a)*S*0.03+S*0.008,hp.y-S*0.018+Math.sin(a)*S*0.02,0.6); } }
