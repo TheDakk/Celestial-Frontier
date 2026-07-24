@@ -7288,6 +7288,13 @@ function hdGenesFor(g){
     Object.assign(R, rec);
     R.dark=[R.base[0]*0.42|0, R.base[1]*0.42|0, R.base[2]*0.42|0];
     if(!('pat' in rec)) R.pat=[R.base[0]*0.5|0,R.base[1]*0.5|0,R.base[2]*0.5|0];   /* recipes may set a hard pattern tone (tiger/zebra) */
+    /* catalog polish 2026-07-24: the RECIPE owns the pelt. Only species whose
+       recipe declares stripes/rosettes wear them (tiger/zebra/leopard…);
+       stray striped/mottled PATTERN GENES are muted — a real orangutan is
+       not striped. Procedural aliens keep their gene-driven hides. */
+    R._recPelt=('stripes' in rec)||('mottle' in rec);
+    if(!('stripes' in rec)) R.stripes=0;
+    if(!('mottle' in rec)) R.mottle=Math.min(R.mottle||0.62, 0.4);
   } }catch(_){ } }
   else if(g._earthBlend){   /* v1.6 BREED BLEND: Earth STRUCTURE (rig+anatomy) but keep the child's ALIEN palette */
     try{ const rec=_earthArt(g._earthBlend); if(rec){
@@ -7295,6 +7302,7 @@ function hdGenesFor(g){
       R.airb=!!rec.airb; R.aqua=!!rec.aqua; Object.assign(R, rec);
       R.base=kB; R.base2=kB2; R.pat=kP; R.irid=kI; R.irid2=kI2; R.eye=kE; R.rim=kR; R.glow=kG;   /* restore procedural colour/finish */
       R.dark=[R.base[0]*0.42|0,R.base[1]*0.42|0,R.base[2]*0.42|0];
+      R._recPelt=('stripes' in rec)||('mottle' in rec);   /* a tiger-child keeps tiger stripes — in ITS OWN colors (breeding cohesion) */
       R._earthBlend=g._earthBlend; delete R._earthName;   /* NOT a pure Earth gene — no name lock */
       /* v1.6 Pass 8 LINEAGE DRIFT: Earth-anchor strength (organic — set at breeding by the
          mate's alienness, accumulating over generations). hdBeastBare grafts alien phenotype
@@ -8819,11 +8827,30 @@ function hdBeastBare(G,seed){
     const o=(py*S+px)*4;
     const f=_hdFbm(px*0.024,py*0.024,seed,4)*G.mottle;
     const st2=(Math.sin(px*0.06+_hdFbm(px*0.012,py*0.012,seed+9,3)*6)*0.5+0.5)*G.stripes;
-    const m=clamp(f*0.9+st2*0.5,0,1);
+    let m;
+    if(G._recPelt){
+      /* EARTH PELT PASS (catalog polish, 2026-07-24 — Nick: "make them look
+         like their real counterparts"): a tiger is ORANGE with crisp black
+         stripes, a leopard golden with defined rosettes — not a muddy 50%
+         blend. Recipe pelts use THRESHOLDED marks at real frequencies over a
+         clean base; the procedural universe keeps its soft blended hide. */
+      let mark=0;
+      if((G.stripes||0)>0.5){
+        const sv=Math.sin(px*0.30 + _hdFbm(px*0.02,py*0.05,seed+9,3)*3.4);
+        mark=clamp((Math.abs(sv)-0.62)*-7,0,1)*G.stripes;      /* narrow vertical bands, ~30% coverage */
+      }
+      if((G.mottle||0)>0.9){
+        const rv=_hdFbm(px*0.075,py*0.075,seed+17,3);
+        mark=Math.max(mark, clamp((rv-0.50)*6,0,1)*0.9);       /* defined rosette cells (~25% coverage) */
+      }
+      m=clamp(f*0.22+mark,0,1);
+    } else m=clamp(f*0.9+st2*0.5,0,1);
     const belly=clamp((py/S)*1.7-0.45,0,1);
     const bodyC=_hdMix3(G.base,B2,belly);
     let cr2=_hdMix3(bodyC,PT,m*0.9);
-    cr2=_hdMix3(cr2,G.dark,m*0.26);
+    /* Earth pelts keep their recipe color CLEAN between the marks (the old
+       extra dark wash turned tiger-orange to mud) */
+    cr2=_hdMix3(cr2,G.dark,m*((G._earthName||G._earthBlend)?0.08:0.26));
     if(FIN>=2){
       const ir=_hdFbm(px*0.010+7,py*0.010,seed+31,3);
       const sw=Math.sin((px+py)*0.045+ir*5)*0.5+0.5;
