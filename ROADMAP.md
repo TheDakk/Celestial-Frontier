@@ -45,6 +45,13 @@
 ##     shore scene; coral/abyssal keep their reef/deep routes. Anchor biome (veins/odds/generation) untouched — fp
 ##     MATCH. ⚠ training's first Earth landing rolls too (~55% ocean splash-down) — kept, flagged for Nick. Proof:
 ##     tools/sheets/earthlandings.js.
+## ▶ TODO NEXT (Nick approved, 2026-07-23 — do first thing next session): GLYPH DEAD-CODE CLEANUP. The rarity ★/✦/✧/❖
+##   glyphs are ALREADY gone from cards (Phase A: every GRADE_TIERS star:'', smoke "no glyphs" PASSES — the tag shows
+##   the NAME in its grade color only). But the RENDER code still exists, guarded and always empty: `gr.star?'<span
+##   class="rar"…>'+gr.star+'</span>':''` in spCard (main.js ~10961), `en.grade.star?…` in the found-list (~9898),
+##   and `it.star?'<span class="rstar">…'` in the Atlas list (~10338). Excise these dead spans (+ the .rar/.rstar CSS
+##   if now unused) so there's zero trace / no chance a glyph returns. fp-SAFE (render-only). Small commit. (NOTE: the
+##   ✦/✧ elsewhere are NOT rarity — ability ✧, vein ✦, Atlas favorite ★/☆, achievement icons — leave them.)
 ##   ▶ FLAGGED for a focused reviewed pass (NOT done — catalog-affecting): WINGED body plan 7/14 (gas fliers read as
 ##     floating quads — real wings = big payoff for fliers + breeding-program creatures; #2 on PROCEDURAL_CHARACTERISTICS
 ##     pass order) · the rest of that pass order (procedural HEAD system, tail-types, marquee traits, eye/limb counts).
