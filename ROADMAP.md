@@ -105,11 +105,22 @@
 ##   PLANET SURFACE round 2 (medium): coastline halo break-up (beach/wetland/cliff variants by noise), weather
 ##     fronts + spiral storms + land/ocean cloud density, fractal cap edges + glacial tongues (cap noise shipped;
 ##     push further), gas-giant storms/vortices/band-width variety, venus circulation layers.
-##   THEN THE BIG CONTENT PASSES (each its own arc, in Nick's priority): (1) ADVANCED BRIEFINGS (5 drills +
-##     full-UI coverage audit, charter handoff shipped). (2) CONTENT-COMPLETENESS slate. (3) ALL QoL slate.
-##     (4) EARTH CATALOG ONE-BY-ONE — audit all 1010 vs real counterparts (rig-audit classifications + per-species
-##     silhouette review via catalog pages), fix misreads; PROCEDURAL-TRAIT pass (head/tail/marquee/eye-limb) +
-##     BREEDING COHESION (hybrid blends read as their parents); proof sheets to Nick at each stage.
+##   THEN THE BIG CONTENT PASSES (each its own arc, Nick 2026-07-24: "proceed with all four, don't wait"):
+##     (1) ADVANCED BRIEFINGS (5 drills + full-UI coverage audit, charter handoff shipped). (2) CONTENT-
+##     COMPLETENESS slate. (3) ALL QoL slate. (4) EARTH CATALOG ONE-BY-ONE — audit all 1010 vs real counterparts
+##     (rig-audit classifications + per-species silhouette review via catalog pages), fix misreads; PROCEDURAL-
+##     TRAIT pass (head/tail/marquee/eye-limb) + BREEDING COHESION; proof sheets to Nick at each stage.
+##   + TRAINING & GUIDE ADDITIONS (Nick, same directive): (a) TRAINING ORDER REVIEW — walk the 20 steps as a new
+##     player would play (zoom Earth → survey → Atlas → …), verify each step's order matches the intended game
+##     flow; document the audit in the roadmap even if no changes needed. (b) FILL THE GAPS: a CHARTERS step
+##     (accept + complete flow, already the finale handoff — teach the BOARD earlier too if order review says so)
+##     and a PRIME CODEX step teaching the GUARDIANS: how signatures are retrieved (fell elemental TITANS), how
+##     to challenge a boss (land + survey → face it or send champions), and what it takes to win (bred/tamed
+##     champion power, gear, element reach). Keep the "Guide has every answer" closer — Nick likes it. (c) GUIDE
+##     FULL AUDIT — every Guide entry checked against v1.6/v1.7 reality: dock wording (done), 3-tab hold, item
+##     windows/affixes/salvage, materials/cosmics/exceptional veins, skimming + Corona Scoop + remnant bite,
+##     rarity discovery-gating, 10-tier ladder names, landing roll variety, titan/signature flow; ADD entries for
+##     any shipped system with no Guide presence (Forge economy, exceptional forging, skim).
 ## ★★★ 2026-07-24 FOURTH BATCH — Nick's build directives (commits eeb7e16→99fe900, battery-green, pushed):
 ##   ✔ LIGHTING VERIFIED ACCURATE (sprite light re-aims at the star per frame, star-tinted lit overlay, terminator
 ##     sweeps with orbit, city lights night-side only — answered in code, no fix needed).
