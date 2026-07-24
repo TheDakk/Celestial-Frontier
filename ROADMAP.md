@@ -83,6 +83,33 @@
 ##   ▶ STILL QUEUED (each its own focused pass): charter-training module · accessibility (CF16-012 pinch-zoom +
 ##     CF-006 keyboard Navigator — needs device verify) · TEXT-POLISH re-pin (fingerprint re-pin — do with Nick) ·
 ##     rest of PROCEDURAL_CHARACTERISTICS pass order (proc HEAD system, tail-types, marquee traits, eye/limb counts).
+## ▶▶▶ 2026-07-24 FIFTH DIRECTIVE (Nick) — THE 1.7 POLISH SUPER-QUEUE. Inputs: VISUAL_REVIEW_2026-07-24.md
+##   (Nick's upload, saved to repo) + "advanced briefings + content completeness + ALL QoL + full Earth-catalog
+##   one-by-one polish + procedural-trait pass + breeding cohesion, proof sheets when done".
+##   DOCK ANSWER: the shipped dock IS universal — ONE bottom dock on both platforms (labels on desktop, icon+count
+##   chips ≤520px). No second design needed; device verify still pending.
+##   VISUAL-REVIEW TRIAGE (my calls, work in this order):
+##   FIX-FIRST (small, high-impact): (a) QUASAR JETS — tapered irregular plasma w/ knots + emission cone +
+##     asymmetry (review's #1; rectangular beams confirmed). (b) RING OCCLUSION+SHADOWS — planet shadow across
+##     rings + ring shadow on planet + uneven band opacity/grain/gaps (in-game draw already splits back/front; the
+##     seam was the LIVEVIEW SHEET's clip, partly sheet artifact — but shadows are real gaps). (c) NEBULA
+##     STRUCTURE — multi-scale: filaments/cavities/dust lanes per type (h2 dust lanes + wind cavities, reflection
+##     directional light, mol silhouette+rim, remnant shell+filaments). (d) BH polish — soften horizon edge ~1px,
+##     baked smeared star-arcs near photon ring, disk turbulence, −12% peak ring brightness.
+##   PARTLY-DONE / PUSHBACK (recorded, see reply to Nick): star-class SIZES already differ in-game (starR; sheet
+##     drew all at equal size — hid it); distant-moon softness mostly a sheet-blowup artifact (28px master IS
+##     dedicated, draws ≤34px in-game); dynamic terminators + slow clouds ALREADY LIVE (review predates them);
+##     moon-size −10–20% = do −10% only where pick-targets stay ≥ floor (tap safety).
+##   STAR-CLASS TEXTURE differentiation (medium): flare regions on M dwarfs, prominence plumes on SG, tighter
+##     hotter granulation on B, restrained WD halo — extend _starSurf kind params.
+##   PLANET SURFACE round 2 (medium): coastline halo break-up (beach/wetland/cliff variants by noise), weather
+##     fronts + spiral storms + land/ocean cloud density, fractal cap edges + glacial tongues (cap noise shipped;
+##     push further), gas-giant storms/vortices/band-width variety, venus circulation layers.
+##   THEN THE BIG CONTENT PASSES (each its own arc, in Nick's priority): (1) ADVANCED BRIEFINGS (5 drills +
+##     full-UI coverage audit, charter handoff shipped). (2) CONTENT-COMPLETENESS slate. (3) ALL QoL slate.
+##     (4) EARTH CATALOG ONE-BY-ONE — audit all 1010 vs real counterparts (rig-audit classifications + per-species
+##     silhouette review via catalog pages), fix misreads; PROCEDURAL-TRAIT pass (head/tail/marquee/eye-limb) +
+##     BREEDING COHESION (hybrid blends read as their parents); proof sheets to Nick at each stage.
 ## ★★★ 2026-07-24 FOURTH BATCH — Nick's build directives (commits eeb7e16→99fe900, battery-green, pushed):
 ##   ✔ LIGHTING VERIFIED ACCURATE (sprite light re-aims at the star per frame, star-tinted lit overlay, terminator
 ##     sweeps with orbit, city lights night-side only — answered in code, no fix needed).
