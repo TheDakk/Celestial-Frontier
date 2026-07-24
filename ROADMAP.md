@@ -88,7 +88,7 @@
 ##   one-by-one polish + procedural-trait pass + breeding cohesion, proof sheets when done".
 ##   DOCK ANSWER: the shipped dock IS universal — ONE bottom dock on both platforms (labels on desktop, icon+count
 ##   chips ≤520px). No second design needed; device verify still pending.
-##   VISUAL-REVIEW TRIAGE (my calls, work in this order):
+##   VISUAL-REVIEW TRIAGE — ✔ COMPLETE 2026-07-24 incl. venus circulation + moons −10% [83a6c54]. Original:
 ##   FIX-FIRST — ✔ ALL DONE 2026-07-24 (quasar jets ff/knots/asym [b5fe614] · ring shadows both ways [927e41b] + 2nd gap/grain [b8c0f37] · nebula multi-scale [553f849] · BH turbulence/lensing/soft-horizon [05616f9] · star-class textures [b936805] · coasts/vortices/cloud-wind [ff6e618]). Original list: (a) QUASAR JETS — tapered irregular plasma w/ knots + emission cone +
 ##     asymmetry (review's #1; rectangular beams confirmed). (b) RING OCCLUSION+SHADOWS — planet shadow across
 ##     rings + ring shadow on planet + uneven band opacity/grain/gaps (in-game draw already splits back/front; the
@@ -228,7 +228,7 @@
 ##      (a11y backstop for the color+frame system). (g) [M] EXPEDITION CONTRACTS — 3 rotating procedurally-picked
 ##      goals from EXISTING verbs ("skim a remnant star", "catalogue 2 jungle fauna", "forge with exceptional
 ##      stock") paying stardust; directly attacks the deep-sim maxDrought staleness signal using charter machinery.
-##    PLAYER QoL — THE FULL SLATE (Nick 2026-07-24: "list out all the QoL suggestions" — direction APPROVED,
+##    PLAYER QoL — THE FULL SLATE — IN PROGRESS 2026-07-24: ✔(h) recipe tracker [230aac6] ✔(a2) journal v1 text+region strip [488d7c6; postcard thumbs = v2, needs vista-opts reconstruction] ✔(o) sticky hold tab [31c52eb] ✔(p) heal hint [eeb7e16]. NOTE (i) recent-worlds needs a where-blob captured into the journal entries (travel needs more than a seed) — capture it in journal v2. Remaining: i/j/k/l/m/n/q. (Nick 2026-07-24: "list out all the QoL suggestions" — direction APPROVED,
 ##    items below are the build queue; ✔=green-lit by name, others pick-and-go):
 ##      (h) [M] ✔ PINNED RECIPE TRACKER — pin a Fabricator target; a small HUD chip shows live missing-materials
 ##          while you mine (reads _canCraft delta). The Forge economy's best friend.
