@@ -68,6 +68,14 @@ and **`close`** when open (celestial-frontier.html 853–854). Folds:
   of the screen unscrollable, a fixed regression). The panel-key's `|cx…` suffix is
   patched to match, then `queueSave()`.
 
+### Smooth zoom (navigation)
+- **`zoomAt()`** wheel / double-tap now accumulate onto a TARGET and ease toward it each frame
+  (`_stepZoomGlide`, factor 0.32), cursor-anchored, so a discrete mouse-wheel notch glides
+  instead of snapping across the universe / galaxy / system scales. Pinch and programmatic
+  zooms stay immediate; Motion:Reduced zooms instantly (glide gated on `motionOK()`); a pan /
+  pinch / mode-change cancels an in-flight glide; the step runs **before** `checkTransitions`
+  so mode-change thresholds read the eased z.
+
 ### The vista box (landing picture)
 - **`showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xtra)`**
   (7274) paints the landing scene onto a canvas (`_hdDeckScene` for gas giants, surface
@@ -80,6 +88,11 @@ and **`close`** when open (celestial-frontier.html 853–854). Folds:
 - **Tap-to-zoom** (`#vistabox.zoom`) — in live play, tapping the vista canvas zooms it
   full-screen; ✕ or the backdrop closes the zoom. During training the tap keeps its
   tap-to-continue meaning.
+- **Full-screen button** — the vista card now carries a visible "⛶ Full screen" pill (in a
+  `.vrow` beside "⇪ Save postcard") that adds `#vistabox.zoom`; tapping the image still zooms
+  too. Semantics: while zoomed, tapping ANYWHERE steps back OUT to the windowed card (never
+  dismisses); only the ✕ closes everything; training keeps tap-to-continue (the pill is inert
+  until `tutDone`).
 
 ### Cards
 - **World / survey panel** (`#panel`, `@section` at ~7364) — the object card with the
