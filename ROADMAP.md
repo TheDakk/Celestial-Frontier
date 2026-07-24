@@ -83,6 +83,14 @@
 ##   ▶ STILL QUEUED (each its own focused pass): charter-training module · accessibility (CF16-012 pinch-zoom +
 ##     CF-006 keyboard Navigator — needs device verify) · TEXT-POLISH re-pin (fingerprint re-pin — do with Nick) ·
 ##     rest of PROCEDURAL_CHARACTERISTICS pass order (proc HEAD system, tail-types, marquee traits, eye/limb counts).
+## ★★★ 2026-07-24 THIRD BATCH — UNIVERSE-CRISPNESS (Nick: "planets everywhere? do stars + everything else") —
+##   commits eeb7e16 (QoL-p dynamic ❤ heal hint) + 97fb07d, battery-green, pushed. CONFIRMED: the planet polish IS
+##   universal (surfaceColor caps = every terran anywhere; limb haze = all airy types; HD tier = any focused world).
+##   EXTENDED to the rest: STAR SURFACES (_starSurf — granulation + limb darkening + core lift inside the corona
+##   when zoomed; giants huge cells, WD smooth; NS/MAG/BH/PROTO keep bespoke; binaries/trinaries included) ·
+##   HD MOONS (160px close masters; REWORKED after Nick's live review "craters overlap / weird lines" →
+##   rejection-sampled non-overlap fields, bowl shading to the light, soft rims, mottling; icy frost / volcanic
+##   elbow-fissures) · RINGS 512 masters + sane cache cap. Proof: tools/sheets/starsurf.js. ⚠ iPhone verify next.
 ## ★★★ 2026-07-24 SECOND BATCH — Nick's device feedback round (commit 96416e7, battery-green, pushed):
 ##   training feed/breed bottom-pin (step-10 rail-block screenshot) · WINDOWED cinematic card + newborn portrait in
 ##   the breed reveal · planet blending (noise-edge caps w/ real iceAmt weight, sea-ice vs snow, limb atmosphere
