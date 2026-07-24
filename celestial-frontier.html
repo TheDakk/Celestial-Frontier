@@ -4921,19 +4921,40 @@ cv.addEventListener('pointerup', e=>{
 });
 document.documentElement.addEventListener('mouseleave', ()=>{ mouse.x=mouse.y=null; });
 let _assistArm=-1e9;   /* performance.now() of the last blocked zoom-in at the system ceiling */
-function zoomAt(f, sx, sy){
+let _zGlide=null;   /* smooth wheel-zoom: {cam, tz, wx, wy, sx, sy} — eased per frame */
+function zoomAt(f, sx, sy, immediate){
   const c=curCam();
   const [zmin,zmax]=zoomLimits();
-  const nz=clamp(c.z*f, zmin, zmax);
+  /* v1.7 SMOOTH ZOOM (Nick): a discrete mouse wheel snapped the zoom step by
+     step — steppy across the universe→galaxy→system scales. Wheel notches now
+     accumulate onto a TARGET and ease toward it each frame (a smooth glide),
+     pivoting on the pointer. Pinch/drag/programmatic stay IMMEDIATE (responsive),
+     and Motion:Reduced zooms instantly. */
+  const glide = !immediate && motionOK();
+  const base = (glide && _zGlide && _zGlide.cam===c) ? _zGlide.tz : c.z;
+  const nz=clamp(base*f, zmin, zmax);
   /* zooming IN against the system-mode ceiling is the one unmistakable
      "let me land" gesture — it briefly arms the landing assist (transitions
      section). Anything else near a big planet — surveying its moons, framing
      its rings, just parking — must never be hijacked by an autopilot. */
   if(st.mode==='system' && f>1 && nz>=zmax*0.999) _assistArm=performance.now();
   const wx=(sx-W/2)/c.z + c.x, wy=(sy-H/2)/c.z + c.y;
+  if(glide){ _zGlide={cam:c, tz:nz, wx, wy, sx, sy}; return; }   /* eased in _stepZoomGlide */
+  _zGlide=null;
   c.z=nz;
   c.x = wx - (sx-W/2)/c.z;
   c.y = wy - (sy-H/2)/c.z;
+}
+/* ease the live zoom toward the wheel target, re-pinning the pointer's world
+   point each step so the glide stays cursor-anchored; a pan/pinch cancels it */
+function _stepZoomGlide(){
+  const zg=_zGlide; if(!zg) return;
+  if(dragging || pinching || zg.cam!==curCam()){ _zGlide=null; return; }
+  const c=zg.cam;
+  c.z += (zg.tz-c.z)*0.32;
+  if(Math.abs(zg.tz-c.z) < zg.tz*0.005){ c.z=zg.tz; _zGlide=null; }
+  c.x = zg.wx - (zg.sx-W/2)/c.z;
+  c.y = zg.wy - (zg.sy-H/2)/c.z;
 }
 cv.addEventListener('wheel', e=>{
   e.preventDefault();
@@ -4951,7 +4972,7 @@ cv.addEventListener('touchmove', e=>{
     pinching=true;
     const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
     const mx=(e.touches[0].clientX+e.touches[1].clientX)/2, my=(e.touches[0].clientY+e.touches[1].clientY)/2;
-    if(pinch && pinch>0){ zoomAt(clamp(d/pinch, 0.5, 2.0), mx, my); }   /* clamp so one jittery frame can't fly across the cosmos */
+    if(pinch && pinch>0){ zoomAt(clamp(d/pinch, 0.5, 2.0), mx, my, true); }   /* pinch is IMMEDIATE (continuous gesture); clamp so one jittery frame can't fly across the cosmos */
     pinch=d;
   }
 },{passive:false});
@@ -21657,6 +21678,7 @@ function frameInner(){
     if(st.gal.dwarf) unlock('dwarfg');
   }
   picks.length=0;
+  _stepZoomGlide();   /* smooth wheel-zoom easing, before transitions read c.z */
   checkTransitions();
   if(st.mode!==_lastMode){ _lastMode=st.mode; locked=null; _autoScanned=null; _frozenFor=null; _apprLatch=null; _orbFrozenAt=null; }   /* a mode change lifts any stale orbit-hold */
   (MODE_PAINTERS[st.mode]||drawUniverse)(time);
