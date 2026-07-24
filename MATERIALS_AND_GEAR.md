@@ -180,6 +180,16 @@ danger, yield, stellar-material eligibility, material properties, system resourc
 > **flagged for Nick's design review** (feel, gating, gear/probe requirements per §8 are not yet modeled). fp-safe:
 > `starClass` unchanged, fp MATCH 50/50. Guarded by 8 smoke sentinels.
 
+> **In code (2026-07-24, §8b — the SKIM DESIGN PASS, delegated):** the probe/gear extraction model above the
+> Jump-Drive floor. (1) **Corona Scoop** (ship system, reqs Jump Drive, `cost:{Pls:1}` — a hand-skimmed Plasma
+> bootstraps it, the mining-rig ladder's grammar applied to stars): `eff:{skim:1, skimguard:1}` → **+1 sample per
+> pass** and a **~50% deeper reachable corona** (an exhausted star reopens when you build it — "drinks deeper").
+> Both bonuses apply OUTSIDE the seeded draw (pull #n's roll is identical with or without gear — the mining
+> discipline, fp-safe). (2) **The remnant's bite**: skimming a dense remnant (WD/NS/MAG/BH, the Coronium wells)
+> without the Scoop's shielding costs **3 HP** (`damageExplorer`) — NEVER lethal: below 5 HP the approach is
+> refused ("too burned"). Coronium now feels earned, and the Scoop carries an economic AND defensive role (§11:
+> reinforce, never compete). Guarded by 3 more smoke sentinels (bite, guard, +1 ladle). fp MATCH 50/50.
+
 ## 9. Biological ingredients (parts don't copy the organism's rarity)
 
 A Mythic creature can give Uncommon meat, Rare hide, Exotic armor-plate, Legendary regen-gland, Mythic

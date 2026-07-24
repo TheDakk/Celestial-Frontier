@@ -17486,10 +17486,22 @@ function skimStar(seed){
      JUMP DRIVE's stellar-class shielding — interstellar capability is the gate.
      (§8's fuller probe/gear model is Nick's design pass; this is the floor.) */
   if(itemCount('jumpdrive')<1){ toast('☀ Too Close to a Star','Skimming a corona takes the Jump Drive&#8217;s stellar shielding — build it at the 🛠 Shipyard first.'); return false; }
-  const R=skimReserveFor(seed), n0=Math.min(skimX.get(seed)||0, R);
+  /* §8 design pass: the Corona Scoop reaches DEEPER (bigger reachable reserve)
+     and ladles MORE per pass — both applied OUTSIDE the seeded draw, so pull #n's
+     roll is identical with or without gear (the mining-rig discipline) */
+  const _skB=_equipBonus('skim');
+  const R=Math.round(skimReserveFor(seed)*(1+0.5*_skB)), n0=Math.min(skimX.get(seed)||0, R);
   if(n0>=R){ toast('☀ Corona Spent','This star’s reachable corona is exhausted — no more samples here.'); return false; }
+  /* §8: a DEAD star's corona bites. Remnants (the Coronium wells) singe the
+     unshielded explorer — never lethally: below 5 HP the approach is refused,
+     so there is no death-by-skim, only a cost. The Scoop's shielding ends it. */
+  const _kind=starClass(seed).kind;
+  if(['WD','NS','MAG','BH'].includes(_kind) && !_equipBonus('skimguard')){
+    if(hp<=4){ toast('☀ Too Burned to Approach','A remnant’s corona would finish you at '+hp+' HP — heal first, or build the Corona Scoop’s shielding.'); return false; }
+    damageExplorer(3, 'The dead star’s corona bit through the hull shielding.');
+  }
   const r=mulberry32(hashInt(seed>>>0, 0x5C2, n0+1)>>>0);
-  const q=1+((r()*2)|0);   /* 1–2 per skim — the scarcest materials there are */
+  const q=1+((r()*2)|0)+_skB;   /* 1–2 per skim (+1 with the Scoop) — the scarcest materials there are */
   cargo.set(sym, (cargo.get(sym)||0)+q);
   skimX.set(seed, n0+1);
   stats.skims=(stats.skims||0)+1; stats.cosmics=(stats.cosmics||0)+1;
@@ -19090,6 +19102,13 @@ const ITEMS=[
    eff:{}, unlock:'Intergalactic travel — the frontier ladder opens (Prime Codex Signatures extend it)'},
  {id:'autoext', cat:'sys', tier:3, fam:'rig', hue:'#c2a878', name:'Auto-Extractor', d:'Keeps pulling ore at every world you have mined, even while you are away', sd:40, cost:{}, parts:{servo:2,navcore:1,cell:1},
    eff:{auto:1}},
+ /* v1.7 §8 (skim design pass): the probe/gear extraction rung above the
+    Jump-Drive floor. Costs a hand-skimmed Stellar Plasma — skim a little the
+    hard way, then build the rig that does it right (the mining-rig ladder's
+    grammar, applied to stars). skim: +1 sample per pass AND a deeper reachable
+    corona; skimguard: the shielding that lets you drink from dead stars. */
+ {id:'cscoop', cat:'sys', tier:3, fam:'scoop', hue:'#ffcf6a', name:'Corona Scoop', d:'A magnetic ladle the size of a city — drinks deeper from every star, shielded against the dead ones', sd:40, cost:{Pls:1}, parts:{coil:2,lens:1,cell:1}, req:'jumpdrive',
+   eff:{skim:1, skimguard:1}, unlock:'Deeper coronas, +1 sample per skim — and remnant stars no longer burn'},
  /* ---- GEAR: TOOL slot (mine better) ---- */
  {id:'rig1', cat:'gear', slot:'tool', tier:1, fam:'rig', hue:'#c2a878', name:'Mining Rig I',   d:'Powered pick — every pull takes half again as much', cost:{}, parts:{servo:1,plate:1}, eff:{yield:0.5}},
  {id:'rig2', cat:'gear', slot:'tool', tier:2, fam:'rig', hue:'#ffd96a', name:'Mining Rig II',  d:'Twin-head bore — doubles every haul', cost:{W:2}, parts:{servo:1,frame:1,cell:1}, req:'rig1', eff:{yield:1}},
