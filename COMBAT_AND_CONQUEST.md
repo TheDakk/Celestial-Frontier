@@ -1,6 +1,6 @@
 # Celestial Frontier — Combat & Conquest
 
-**STATUS:** matches code as of 2026-07-20 (verified against main.js).
+**STATUS:** matches code as of 2026-07-23 (verified against main.js).
 **Purpose:** How creatures fight — the stat budget, seeded duel resolution, innate arts (classes + archetypes), and named Apex Guardians — and how conquest settles a world: the mercy law, re-win prevention, and the depth tax that grades every field wound by distance.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -156,7 +156,7 @@ Guardian tiers: 12 Empyrean (70%) / 13 Eternal (25%) / 14 Omnipotent (5%); spawn
 - **`g.hurt`** — persistent wound 0..0.85 on a genome; drives `battleStats` penalty and `creatureCondition`. **Stripped from shared codes** (`normGenome` deletes `hurt`/`xp`/`_mult`/`_wf`) — challengers arrive fresh.
 - **`g.xp`** — win-fed; `levelOf` derives level. Exhibit codes may carry a clamped level (`o.x`) for showcase only (`decodeCreature` sets `exhibit:true`, never owned/breedable).
 - **`g.apex`** — guardian/titan tier band (12–14); `g.ep` = epithet index; `g.brood`/`g.fed` = breeding/feeding bonuses; `g._cradle` = Earth-starter flag.
-- **App-layer battlefield fields** (`_mult`, `_wf`) are applied per-fight, never persisted into codes.
+- **App-layer battlefield fields** (`_mult`, `_wf`) are applied per-fight, never persisted into codes. On CAPTURE the defeated native's genome is **cloned and `_mult`/`_wf` stripped** before it enters the Compendium (main.js: `const _capG={...native.genome}; delete _capG._mult; delete _capG._wf;`) — so a captured Guardian/Titan fights at its true bred stats, not the defender-only boss multiplier.
 - `stats.duels`, `stats.duelwins`, `stats.guardians`, `stats.essenceEarned` track combat/conquest history.
 
 ## 5. Determinism (seeded? feeds the fingerprint?)

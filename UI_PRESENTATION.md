@@ -1,6 +1,6 @@
 # Celestial Frontier — UI / Presentation System
 
-**STATUS:** matches code as of 2026-07-21 (v1.6 Batch 15.5, verified against main.js + tools/).
+**STATUS:** matches code as of 2026-07-23 (verified against main.js + tools/).
 **Purpose:** the mobile-first presentation layer — the unified topbar, the one-panel-at-
 a-time manager, the "fold language", the vista box, the cards, and the platform caps —
 plus the headless layout gate that guards them.
@@ -77,6 +77,9 @@ and **`close`** when open (celestial-frontier.html 853–854). Folds:
 - **Tap-to-continue** — the caption reads `'local <tod> — tap to continue'`. State is
   cached in `_lastVista`; `reshowVista()` re-opens it, and the card's `[data-act="vista"]`
   button rebuilds it from `_lastDesc` in a fresh session.
+- **Tap-to-zoom** (`#vistabox.zoom`) — in live play, tapping the vista canvas zooms it
+  full-screen; ✕ or the backdrop closes the zoom. During training the tap keeps its
+  tap-to-continue meaning.
 
 ### Cards
 - **World / survey panel** (`#panel`, `@section` at ~7364) — the object card with the
@@ -117,11 +120,13 @@ rule 9: the catalogue is "Compendium"; "Prime Codex"/"Cosmic Codex" keep "Codex"
   load (`<60` guard, 10212); 50 persisted to save.
 - **Art cache cap 1,200** — `speciesArtCache.size>1200` evicts oldest (1900); portrait/
   icon masters render at 144px so a 50px tile stays crisp at DPR 3.
+- **Thumb cache cap 500** — a second bounded cache: `thumbCache` is capped at **500**
+  via `_thumbSet` (distinct from the 1,200 `speciesArtCache` cap).
 
 ## 3. Key names & numbers (REAL values)
 - CSS vars: **`--topbar-h`**, **`--row1-h`** (set by `syncTopbarH`).
 - DPR cap: **2** touch / **3** desktop. Notification cap: **60** (50 saved). Art cache
-  cap: **1,200**. Icon/portrait master: **144px**.
+  cap: **1,200**; thumb cache cap: **500** (`_thumbSet`). Icon/portrait master: **144px**.
 - `PANELS`: 11 surfaces (7 rail with ✕, 4 header). `MODAL_SEL`: 15 modal ids.
 - Layout gate: **9 viewports** (see §6).
 

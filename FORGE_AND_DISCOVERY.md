@@ -1,10 +1,13 @@
 # Celestial Frontier — v1.7 "The Forge & Discovery"
 
-**Status:** DESIGN / planning doc for the arc *after* v1.6 ships. Nothing here is built yet.
-**Relationship to v1.6:** v1.6 "The Living Frontier" (the painterly art overhaul) ships first. This
+**Status:** DESIGN / planning doc for the v1.7 arc. Its core proposals — cosmic materials, stellar
+extraction, cosmic gear — are now **IMPLEMENTED** (2026-07-23); the **authoritative spec is
+`MATERIALS_AND_GEAR.md`**. This doc is retained for the arc's design rationale.
+**Relationship to v1.6:** v1.6 "The Living Frontier" (the painterly art overhaul) shipped first. This
 arc extends the same painterly engine + ARPG presentation from *living* things to the **made** things
 (gear, materials, the ship) and reworks **world rarity into a landing discovery**.
-**Matches code as of:** design only — 2026-07-21 (pre-implementation).
+**Matches code as of:** 2026-07-23 — core proposals implemented in v1.7 source; see
+`MATERIALS_AND_GEAR.md` for the spec of record.
 
 The arc has two headline pillars plus supporting streams:
 

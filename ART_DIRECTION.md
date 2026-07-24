@@ -1,5 +1,6 @@
 # Celestial Frontier — Master Art Direction
 
+**STATUS:** matches code as of 2026-07-23 (verified against main.js).
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the
@@ -340,6 +341,22 @@ Current vistas read as beautiful-but-sparse backdrops. Fix = **ecological occupa
 - **Per-biome "assembly kit" + "native ecosystem sheet"**: canonical flora families,
   fauna families, procedural families, accent palette, weather + hazard states.
 - **REUSE the card rigs** as vista silhouettes → cross-view coherence.
+
+### 7.1 v1.7 vista/material art (2026-07-23)
+
+- **Seeded river courses** (`rvQ`); roads pick the **opposite bank** from the river mouth
+  (`_rivMouthX`).
+- **Titan contact skirt** grounding the titan into the terrain; **at-sea titans get a
+  mirrored reflection**.
+- **Space-era skyline haze skirt** — the skyline is seated into the ridge, not floating.
+- **Fauna ground-leveling** — the sprite's true lowest opaque row is measured in
+  `hdBeastBare` so creatures stand on the ground, not hover above it.
+- **`_MAT_ART`** — bespoke per-material icon registry (all 47 materials), superseding the
+  old 4-archetype recolor.
+- **`partIcon`** — tier-dress + function-emblem motifs for crafted parts.
+- **`shipImage` / `paperdollAvatar`** — 2x backing store for crispness.
+- **Star thumbnails** — MAG (field loops), PROTO (dusty disk + jets), and swollen RG/SG
+  giants.
 
 ---
 

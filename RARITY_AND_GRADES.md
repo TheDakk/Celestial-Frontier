@@ -1,6 +1,13 @@
 # Celestial Frontier — Rarity & Grades System
 
-**STATUS:** matches code as of 2026-07-20 (verified against main.js).
+> **⚠ LIVE-BUILD REFERENCE (v1.6.4) — SUPERSEDED IN v1.7 SOURCE.** This doc describes
+> the **LIVE v1.6.4 15-grade ladder**. The v1.7 SOURCE has moved to the canonical
+> **10-tier ladder** in `RARITY_UNIVERSAL.md` (`RARITY_V17`/`displayRarity` —
+> Common..Transcendent, no glyphs, raw tiers 10+ clamp to Transcendent). Until v1.7
+> ships to players, this doc remains the live-build reference; on the v1.7 deploy it is
+> **deleted** per the ROADMAP rule.
+
+**STATUS:** matches code as of 2026-07-23 (LIVE v1.6.4 build; v1.7 source uses RARITY_UNIVERSAL.md).
 **Purpose:** the authoritative 15-grade rarity ladder — how a seed rolls a tier, how tiers become named grades with colors, the forced Apex/Paragon grades, guardian spawns, and how rarity drives finish/aura/complexity.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it. **The live rarity ladder is authoritative — the project rule is never to override it.** A mismatch means observable behavior changed.
 
