@@ -168,3 +168,13 @@ luminescence organ-localized.
 
 Each is drawing-layer + gene-driven → fingerprint-safe. Review the catalog sheets
 and mark which to run; we take them one at a time exactly like the Earth passes.
+
+## 2026-07-24 additions (verified in main.js)
+- **WINGED pass (plans 7/14)**: wings dominate the silhouette (span 0.42, scalloped
+  trailing edge); an AIRBORNE winged body tucks to the two-leg flight stance, grounded
+  keeps its full limb count. Procedural-only branch; Earth rigs untouched.
+- **Pelt separation**: Earth species run the RECIPE-AUTHORITATIVE pelt path (see
+  ART_DIRECTION 2026-07-24); the procedural hide (gene-driven soft mottle/stripes/
+  finish ladder) is unchanged — the two lineages stay visually distinct by design.
+- Still queued from the pass order: procedural HEAD system · tail-types · marquee
+  traits · eye/limb-count variety · bioluminescence-by-night is LIVE (hdVista bioLume).

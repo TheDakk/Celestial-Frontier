@@ -489,3 +489,9 @@ windows first; layer Uniques in once the curve is proven stable. Tracked as a v1
 *Design basis: Nick's reviewed "Materials, Ingredients, Crafting & Gear" spec (uploaded 2026-07-22), plus the
 2026-07-23 FULL-BESPOKE art decision (§22) — this file is the repo-canonical adoption. FULL fidelity for the
 Steam build. Build after v1.6, Phase B.*
+
+> **QoL riders (2026-07-24, verified):** 📌 recipe PIN on every un-built Fabricator row →
+> #pinchip live missing-materials tracker (READY state, tap → Shipyard; save field pin) ·
+> BATCH CRAFT ×5 on parts/components (quiet per-unit, one summary toast) · SALVAGE UNDO
+> (6s window on the toast — rebuilds the piece, takes returns back, cgx<=cargo held) ·
+> sticky hold tab (save field ctb).

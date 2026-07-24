@@ -1,6 +1,6 @@
 # Celestial Frontier — Master Art Direction
 
-**STATUS:** matches code as of 2026-07-23 (verified against main.js).
+**STATUS:** matches code as of 2026-07-24 (verified against main.js).
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the
@@ -470,3 +470,33 @@ heads · flora growth-form rebuild + plant-stat · `BIOME_ATLAS.md` · full proo
 
 *This file is the standing art spec. Update it as decisions change; prune per-section
 "pending" items as each ships. Prune the whole build-order/status once v1.6 deploys.*
+
+## 2026-07-24 additions (v1.7 universe-crispness + catalog polish — verified in main.js)
+- **Planets**: noise-edged polar caps (sea-ice vs land-snow, real iceAmt weight, narrow
+  ramp), atmospheric LIMB HAZE on airy types (kills ortho streaks), HD masters for the
+  focused world (768 phone / 1024 desktop; 512 default), coastline variety (beach/
+  wetland/cliff by shore noise), seeded cloud WIND (fronts stretch along the flow),
+  DRIFTING upper cloud deck (own noise stream, motion-gated), gas VORTEX storms,
+  venus layered circulation + vortices. Ring shadows both ways (planet↔rings), ring
+  2nd gap ~1/3 seeds + particle grain, 512 ring masters.
+- **Stars**: _starSurf granulated surfaces inside the corona when zoomed (per-class:
+  B/A tight granules, M/K mottled + flare arcs, RG/SG huge cells + limb prominences,
+  WD near-smooth); binaries/trinaries included; heat-gated by on-screen size.
+- **Moons**: 160px HD close masters (non-overlapping rejection-sampled craters, bowl
+  shading to the light, soft rims, terrain mottling; icy frost, volcanic elbow-fissures
+  + caldera glows); far 28px masters kept; moons −10% (pick floor intact).
+- **Deep space**: baked cinematic BLACK HOLE (Doppler disc, horizon-hugging lensed halo,
+  photon ring, turbulence streaks, star-smear lensing, feathered horizon); QUASAR
+  tapered/knotted asymmetric plasma jets + disc hint; WORMHOLE 192; NEBULAE 256 with
+  multi-scale structure (dust lanes, newborn clusters, illuminating star, shock shell +
+  filaments, carved cavities). Galaxy masters stay 512 BY DESIGN (cache memory; the zoom
+  transition hands off to vector-sharp live rendering).
+- **Earth catalog — RECIPE-AUTHORITATIVE PELTS** (the one-by-one pass, in progress):
+  only species whose _earthArt recipe declares stripes/mottle wear them; stray pattern
+  GENES are muted on Earth species; thresholded marks at real frequencies (narrow
+  stripe bands ~30%, rosette cells ~25%) over a CLEAN recipe base (dark wash 0.26→0.08).
+  _earthBlend children keep parental pelt MARKS in their own colors (breeding cohesion).
+  Procedural aliens keep soft gene-driven hides. WINGED plans 7/14: wings dominate,
+  airborne tucks to 2-leg flight stance, grounded keeps limbs.
+- **Lighting verified**: baked light re-aims at the star per frame; star-tinted lit
+  overlay; terminator sweeps with orbit; city lights night-side only.

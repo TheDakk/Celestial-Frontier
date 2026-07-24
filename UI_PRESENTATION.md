@@ -1,6 +1,6 @@
 # Celestial Frontier — UI / Presentation System
 
-**STATUS:** matches code as of 2026-07-23 (verified against main.js + tools/).
+**STATUS:** matches code as of 2026-07-24 (verified against main.js + tools/).
 **Purpose:** the mobile-first presentation layer — the unified topbar, the one-panel-at-
 a-time manager, the "fold language", the vista box, the cards, and the platform caps —
 plus the headless layout gate that guards them.
@@ -182,3 +182,26 @@ contract is the one UI-adjacent path that needs a re-pin — see DETERMINISM.md.
   panels ship.
 - The fold bitmask has 3 bits defined (1/2/4); `cx` is clamped 0–7 on load, leaving room
   for future folds without a save-shape change.
+
+## 2026-07-24 additions (v1.7 polish arc — verified in main.js)
+- **THE BOTTOM DOCK** (Nick picked Proposal A): the five rail pills (Prime Codex / Star
+  Atlas / Compendium / Shipyard / Records) are a bottom-center dock — same element ids,
+  slot-centered via translateX; phone (<=520px) folds labels (.lbl) into icon+count chips.
+  Hint bar, ?/⚙ and bottom-pinned training cards step above it (safe-area aware).
+- **Chips**: #pinchip (pinned Fabricator recipe — live missing-materials, green READY,
+  tap → Shipyard) under the charter button; #chchip (first accepted charter progress,
+  tap → board) beneath it. Both hide when idle/in-training.
+- **WINDOWED CINEMATIC**: the reveal core is a solid glass card (tier-colored border/glow,
+  rays behind). The breed reveal shows the newborn's portrait (speciesPortrait).
+- **ADVANCED BRIEFINGS**: a 🎓 row atop the Guide menu (post-training) launches five
+  zero-lockdown walkthrough drills (Hold / Forge / Prospecting / Stars / Discovery) —
+  tutorial visuals via #tutbox/#tutspot, direct rect spotlighting, smoke-driven.
+- **Records board**: the EXPEDITION JOURNAL strip (last 12 landings — world · rolled
+  region · date) above the statistics ledger.
+- **QoL slate shipped**: NEW-entry dots in the Compendium (.newdot until card viewed) ·
+  Atlas quick-filters (🏴 settled / ❋ life) · batch craft ×5 on parts/comps · bulk feed
+  ('Mend — safest meals', halts on first toxic bite) · salvage UNDO (6s toast window) ·
+  sticky hold tab · dynamic ❤ heal-hint tooltip.
+- **Training**: feed/breed steps bottom-pinned (rail-block fix); the horizon step teaches
+  the GUARDIANS (how signatures/titans work); the finale spotlights the charter board.
+- All '(right rail)' copy now reads '(bottom dock)'.
