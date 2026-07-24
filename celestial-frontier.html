@@ -21118,7 +21118,9 @@ const TUT_STEPS=[
   text:()=>'The engineer&#8217;s trade: the order has loaned you a pinch of ore — nothing to mine for this lesson. Open the <b>🛠 Shipyard</b> (bottom dock) and craft an <b>Iron Plate</b> at the Fabricator. (Training is a sandbox — the loaned ore and plate return to the order when you graduate. Out in the field, <b>⛏ Mine</b> fills the hold for real.)',
   when:(t)=>t==='crafted'},
  {id:'horizon', spot:'#pcdxbtn', btn:'Got It',
-  text:()=>'You’re ready. Scan living worlds (mind the danger %), ⚔ conquer the ones worth keeping — fight yourself or send a beast as champion — and collect ☄ Stardust every hour. The nine ✦ Signatures of the Prime Codex are the long road. The <b>? Guide</b> (bottom right) explains every system, any time.'},
+  /* Nick 2026-07-24: teach the GUARDIANS here, not just point at the pill —
+     how signatures are won, how a titan is challenged, what winning takes */
+  text:()=>'The long road: the <b>Prime Codex</b>. Nine elemental <b>Titans</b> — unique named guardians, the same for every explorer — each embody a Signature. <b>Land and survey</b> a world to learn a titan waits there; <b>challenge it</b> like any conquest — fight yourself, or send your strongest bred champion. Titans are the hardest fights in the game: breed powerful bloodlines, feed them well, and forge gear before you knock. Each felled titan <b>claims its ✦ Signature</b> and recovers a relic blueprint. Claim all nine to reach the Celestial Frontier. The <b>? Guide</b> (bottom right) explains every system, any time.'},
  {id:'finale', btn:'✦ Begin the Expedition', spot:'#chbtn', enter:()=>_tutCleanup(),
   /* Nick 2026-07-24: training ENDS ON THE CHARTERS — the recruit's very next
      tap has somewhere to land, so the quest line carries them out of school */
