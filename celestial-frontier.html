@@ -19616,6 +19616,30 @@ function partIcon(id){
     bg3.addColorStop(0,K(1.6,0.6)); bg3.addColorStop(1,K(1.6,0));
     g.fillStyle=bg3; g.fillRect(S*0.32,S*0.74,S*0.44,S*0.10); g.restore();         /* mag glow */
     g.fillStyle=K(1.4,0.9); g.fillRect(S*0.38,S*0.32,S*0.10,S*0.04);               /* clasp */
+  } else if(fam==='scoop'){
+    /* the CORONA SCOOP — a magnetic ladle drinking from a star: mast, open
+       crescent dish facing the fire, held plasma glowing in the bowl, and
+       the field lines that keep the corona from touching the hull */
+    g.strokeStyle=K(0.9); g.lineWidth=S*0.045; g.lineCap='round';
+    g.beginPath(); g.moveTo(S*0.5,S*0.78); g.lineTo(S*0.5,S*0.52); g.stroke();
+    const dg=g.createLinearGradient(0,S*0.30,0,S*0.56);
+    dg.addColorStop(0,K(1.35)); dg.addColorStop(1,K(0.75));
+    g.fillStyle=dg;
+    g.beginPath(); g.moveTo(S*0.24,S*0.34);
+    g.quadraticCurveTo(S*0.5,S*0.60,S*0.76,S*0.34);
+    g.lineTo(S*0.72,S*0.44); g.quadraticCurveTo(S*0.5,S*0.66,S*0.28,S*0.44);
+    g.closePath(); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.35)'; g.lineWidth=1.6;
+    g.beginPath(); g.moveTo(S*0.24,S*0.34); g.quadraticCurveTo(S*0.5,S*0.60,S*0.76,S*0.34); g.stroke();
+    g.save(); g.globalCompositeOperation='lighter';
+    const pg2=g.createRadialGradient(S*0.5,S*0.36,2,S*0.5,S*0.36,S*0.22);
+    pg2.addColorStop(0,'rgba(255,255,255,0.9)'); pg2.addColorStop(0.4,K(1.6,0.7)); pg2.addColorStop(1,K(1.6,0));
+    g.fillStyle=pg2; g.beginPath(); g.ellipse(S*0.5,S*0.36,S*0.22,S*0.13,0,0,TAU); g.fill();
+    g.strokeStyle=K(1.5,0.5); g.lineWidth=1.3;
+    for(const fa of [-0.35,0,0.35]){
+      g.beginPath(); g.arc(S*0.5+fa*S*0.5,S*0.20,S*0.10,0.6,2.5); g.stroke();
+    }
+    g.restore();
   } else { /* charm — a cut talisman on a cord */
     g.strokeStyle=K(0.8,0.9); g.lineWidth=2;
     g.beginPath(); g.arc(S*0.5,S*0.18,S*0.10,0.4,Math.PI-0.4); g.stroke();
@@ -19628,6 +19652,88 @@ function partIcon(id){
     chg.addColorStop(0,K(1.6,0.55)); chg.addColorStop(1,K(1.6,0));
     g.fillStyle=chg; g.fillRect(0,0,S,S); g.restore();
   }
+  /* §22 TIER STRUCTURE — the tier changes the MACHINE, not just its light:
+     each family gains real structural elements as the ladder climbs (a T2 suit
+     wears tanks, a T3 suit wears shoulder armor — silhouette evolution, the
+     rig1→rig2→rig3 story told in steel). Additive over the family master,
+     own-hue + white only (the ladder law), deterministic, gear/relics/sys. */
+  (function(){
+    const t=it.tier|0; if(t<2) return;
+    const L=(fn)=>{ g.save(); g.globalCompositeOperation='lighter'; fn(); g.restore(); };
+    if(fam==='rig'){
+      /* T2 twin-head: a second power conduit + head cap; T3 plasma core */
+      g.fillStyle=K(0.85); g.fillRect(S*0.30,S*0.24,S*0.04,S*0.20);
+      g.fillStyle=K(1.3); g.fillRect(S*0.38,S*0.18,S*0.24,S*0.045);
+      if(t>=3) L(()=>{ const pg=g.createLinearGradient(0,S*0.46,0,S*0.80);
+        pg.addColorStop(0,K(1.7,0.85)); pg.addColorStop(1,K(1.7,0));
+        g.fillStyle=pg; g.fillRect(S*0.485,S*0.46,S*0.03,S*0.34); });
+    } else if(fam==='suit'){
+      /* T2 backpack tanks peek past the shoulders; T3 shoulder plates + core */
+      g.fillStyle=K(0.75);
+      g.beginPath(); g.ellipse(S*0.325,S*0.52,S*0.035,S*0.10,0,0,TAU); g.fill();
+      g.beginPath(); g.ellipse(S*0.675,S*0.52,S*0.035,S*0.10,0,0,TAU); g.fill();
+      if(t>=3){
+        g.fillStyle=K(1.35);
+        g.beginPath(); g.moveTo(S*0.355,S*0.44); g.lineTo(S*0.355,S*0.375); g.quadraticCurveTo(S*0.38,S*0.345,S*0.44,S*0.35); g.lineTo(S*0.42,S*0.44); g.closePath(); g.fill();
+        g.beginPath(); g.moveTo(S*0.645,S*0.44); g.lineTo(S*0.645,S*0.375); g.quadraticCurveTo(S*0.62,S*0.345,S*0.56,S*0.35); g.lineTo(S*0.58,S*0.44); g.closePath(); g.fill();
+        L(()=>{ g.fillStyle=K(1.7,0.9); g.beginPath(); g.arc(S*0.5,S*0.545,S*0.028,0,TAU); g.fill(); });
+      }
+    } else if(fam==='helm'){
+      /* T2 comm pods at the temples; T3 crown antenna + a thin halo of light */
+      g.fillStyle=K(0.85);
+      g.beginPath(); g.arc(S*0.265,S*0.50,S*0.035,0,TAU); g.fill();
+      g.beginPath(); g.arc(S*0.735,S*0.50,S*0.035,0,TAU); g.fill();
+      if(t>=3){
+        g.strokeStyle=K(1.2,0.9); g.lineWidth=1.8; g.lineCap='round';
+        g.beginPath(); g.moveTo(S*0.5,S*0.22); g.lineTo(S*0.5,S*0.13); g.stroke();
+        g.fillStyle='rgba(255,255,255,0.85)'; g.beginPath(); g.arc(S*0.5,S*0.12,S*0.018,0,TAU); g.fill();
+        L(()=>{ g.strokeStyle=K(1.6,0.5); g.lineWidth=1.4;
+          g.beginPath(); g.ellipse(S*0.5,S*0.46,S*0.30,S*0.115,0,-2.6,-0.5); g.stroke(); });
+      }
+    } else if(fam==='glove'){
+      /* T2 knuckle studs; T3 an energy seam across the palm */
+      g.fillStyle='rgba(255,255,255,0.75)';
+      for(let i2=0;i2<3;i2++){ g.beginPath(); g.arc(S*(0.43+i2*0.07),S*0.315,S*0.013,0,TAU); g.fill(); }
+      if(t>=3) L(()=>{ const sg2=g.createLinearGradient(S*0.38,0,S*0.62,0);
+        sg2.addColorStop(0,K(1.7,0)); sg2.addColorStop(0.5,K(1.7,0.85)); sg2.addColorStop(1,K(1.7,0));
+        g.fillStyle=sg2; g.fillRect(S*0.38,S*0.485,S*0.24,S*0.025); });
+    } else if(fam==='legs'){
+      /* T2 hip pouches; T3 servo light-lines down each leg */
+      g.fillStyle=K(0.7);
+      g.fillRect(S*0.335,S*0.335,S*0.055,S*0.075); g.fillRect(S*0.61,S*0.335,S*0.055,S*0.075);
+      if(t>=3) L(()=>{ g.strokeStyle=K(1.7,0.7); g.lineWidth=1.6; g.lineCap='round';
+        g.beginPath(); g.moveTo(S*0.425,S*0.46); g.lineTo(S*0.44,S*0.75); g.stroke();
+        g.beginPath(); g.moveTo(S*0.575,S*0.46); g.lineTo(S*0.56,S*0.75); g.stroke(); });
+    } else if(fam==='boot'){
+      /* T2 a heel thruster fin; T3 the grav ring under the sole */
+      g.fillStyle=K(0.8);
+      g.beginPath(); g.moveTo(S*0.34,S*0.60); g.lineTo(S*0.26,S*0.70); g.lineTo(S*0.34,S*0.70); g.closePath(); g.fill();
+      if(t>=3) L(()=>{ g.strokeStyle=K(1.6,0.7); g.lineWidth=2;
+        g.beginPath(); g.ellipse(S*0.54,S*0.815,S*0.20,S*0.035,0,0,TAU); g.stroke(); });
+    } else if(fam==='probe'){
+      /* T2 a feed spike on the dish; T3 the full-signal halo */
+      g.strokeStyle=K(1.3,0.9); g.lineWidth=2; g.lineCap='round';
+      g.beginPath(); g.moveTo(S*0.5,S*0.5); g.lineTo(S*0.63,S*0.37); g.stroke();
+      g.fillStyle='rgba(255,255,255,0.8)'; g.beginPath(); g.arc(S*0.63,S*0.37,S*0.02,0,TAU); g.fill();
+      if(t>=3) L(()=>{ g.strokeStyle=K(1.6,0.5); g.lineWidth=1.4;
+        g.beginPath(); g.ellipse(S*0.5,S*0.5,S*0.36,S*0.14,-0.4,0,TAU); g.stroke(); });
+    } else if(fam==='charm'){
+      /* T2 cord beads; T3 the inner star */
+      g.fillStyle=K(1.3);
+      g.beginPath(); g.arc(S*0.41,S*0.235,S*0.016,0,TAU); g.fill();
+      g.beginPath(); g.arc(S*0.59,S*0.235,S*0.016,0,TAU); g.fill();
+      if(t>=3) L(()=>{ g.fillStyle='rgba(255,255,255,0.9)';
+        g.beginPath(); g.arc(S*0.5,S*0.52,S*0.022,0,TAU); g.fill(); });
+    } else if(fam==='struts'){
+      /* T2 (stabilizers): thruster pods on the legs */
+      g.fillStyle=K(0.85);
+      g.beginPath(); g.ellipse(S*0.335,S*0.68,S*0.03,S*0.045,0.3,0,TAU); g.fill();
+      g.beginPath(); g.ellipse(S*0.665,S*0.68,S*0.03,S*0.045,-0.3,0,TAU); g.fill();
+      L(()=>{ g.fillStyle=K(1.6,0.5);
+        g.beginPath(); g.ellipse(S*0.335,S*0.735,S*0.02,S*0.03,0,0,TAU); g.fill();
+        g.beginPath(); g.ellipse(S*0.665,S*0.735,S*0.02,S*0.03,0,0,TAU); g.fill(); });
+    }
+  })();
   /* §22 TIER DRESS — "a Legendary rig reads visibly richer than a Common one":
      ornament and light scale with the piece's quality, layered over every
      family form. All richness is in the item's OWN hue + white — rarity COLOR
@@ -19705,8 +19811,9 @@ function partIcon(id){
 let _shipURL=null, _shipKey='';
 function shipImage(){
   const jump=itemCount('jumpdrive')>0, arr=itemCount('array')>0,
-        ig=itemCount('igdrive')>0, aux=itemCount('autoext')>0;
-  const key=(jump?'J':'')+(arr?'A':'')+(ig?'I':'')+(aux?'X':'');
+        ig=itemCount('igdrive')>0, aux=itemCount('autoext')>0,
+        scp=itemCount('cscoop')>0;
+  const key=(jump?'J':'')+(arr?'A':'')+(ig?'I':'')+(aux?'X':'')+(scp?'S':'');
   if(_shipURL && _shipKey===key) return _shipURL;
   /* crispness (cross-platform polish pass): the portrait displays at FULL card
      width — ~350 CSS px on a phone = 700 device px at the DPR-2 cap — so a
@@ -19784,6 +19891,48 @@ function shipImage(){
     g.beginPath(); g.moveTo(cx+22,cy+24); g.lineTo(cx+32,cy+24); g.lineTo(cx+27,cy+33); g.closePath(); g.fill();
     g.strokeStyle='rgba(255,255,255,0.3)'; g.lineWidth=1;
     g.beginPath(); g.moveTo(cx+16,cy+16); g.lineTo(cx+38,cy+16); g.stroke();
+  }
+  /* §22 SHIP HULL TIERS — the drive ladder rebuilds the SHIP, not just its
+     bells: interstellar work armors the spine, intergalactic work makes the
+     hull itself luminous. Additive over the base hull (every coordinate
+     above is untouched), so the scout you started with is still in there. */
+  if(jump){
+    /* interstellar refit: an armored dorsal spine + a reinforced nose cap */
+    g.fillStyle='#7c88aa';
+    g.beginPath(); g.moveTo(cx-40,cy-20); g.quadraticCurveTo(cx+10,cy-27,cx+58,cy-17);
+    g.lineTo(cx+56,cy-13); g.quadraticCurveTo(cx+10,cy-22,cx-38,cy-16); g.closePath(); g.fill();
+    g.strokeStyle='rgba(255,255,255,0.3)'; g.lineWidth=1;
+    g.beginPath(); g.moveTo(cx-38,cy-18); g.lineTo(cx+56,cy-15); g.stroke();
+    g.fillStyle='#cdd6ea';
+    g.beginPath(); g.moveTo(cx+120,cy); g.quadraticCurveTo(cx+108,cy-6,cx+96,cy-7);
+    g.quadraticCurveTo(cx+106,cy-1,cx+96,cy+5); g.quadraticCurveTo(cx+108,cy+5,cx+120,cy); g.closePath(); g.fill();
+  }
+  if(ig){
+    /* intergalactic refit: the hull runs LUMINOUS seams (the drive's own
+       light, the bells' magenta) + wingtip beacons on both fins */
+    g.save(); g.globalCompositeOperation='lighter';
+    g.strokeStyle='rgba(255,122,232,0.45)'; g.lineWidth=1.2;
+    g.beginPath(); g.moveTo(cx-66,cy+1); g.quadraticCurveTo(cx+10,cy+9,cx+92,cy+2); g.stroke();
+    g.strokeStyle='rgba(255,122,232,0.28)';
+    g.beginPath(); g.moveTo(cx-58,cy-11); g.lineTo(cx+70,cy-9); g.stroke();
+    g.fillStyle='rgba(255,170,240,0.9)';
+    g.beginPath(); g.arc(cx-90,cy-46,1.8,0,TAU); g.fill();
+    g.beginPath(); g.arc(cx-66,cy+36,1.8,0,TAU); g.fill();
+    g.restore();
+  }
+  if(scp){
+    /* CORONA SCOOP: the golden magnetic ladle rides the ventral bow — the
+       ring that drinks from stars, glowing faintly with held plasma */
+    g.strokeStyle='#c9a24a'; g.lineWidth=2;
+    g.beginPath(); g.moveTo(cx+70,cy+10); g.lineTo(cx+70,cy+20); g.stroke();
+    g.fillStyle='#e8c56a';
+    g.beginPath(); g.ellipse(cx+70,cy+24,10,4.5,0,0,TAU); g.fill();
+    g.fillStyle='#8a6f34'; g.beginPath(); g.ellipse(cx+70,cy+24,6,2.4,0,0,TAU); g.fill();
+    g.save(); g.globalCompositeOperation='lighter';
+    const sg3=g.createRadialGradient(cx+70,cy+24,1,cx+70,cy+24,12);
+    sg3.addColorStop(0,'rgba(255,207,106,0.7)'); sg3.addColorStop(1,'rgba(255,207,106,0)');
+    g.fillStyle=sg3; g.beginPath(); g.ellipse(cx+70,cy+24,12,6,0,0,TAU); g.fill();
+    g.restore();
   }
   _shipURL=cv.toDataURL(); _shipKey=key;
   return _shipURL;
