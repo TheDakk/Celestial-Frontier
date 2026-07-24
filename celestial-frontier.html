@@ -10780,10 +10780,23 @@ function _hdDeckScene(o){
     lg2.addColorStop(1,'rgba(200,220,255,0)');
     g.fillStyle=lg2; g.beginPath(); g.arc(lx,ly,lr,0,TAU); g.fill();
   }
-  /* aerial drifters — only when the card's Life row grants them (v1.6 B15.4: a clear ANCHOR
-     gas-bladder floater + an aeroplankton SWARM so a populated gas giant visibly carries life). */
-  if(o.air>0){
-    for(let i=0;i<Math.min(5,o.air+2);i++){
+  /* AERIAL LIFE (Nick: "creatures should show up in the biomes — I don't see any
+     in the gas ones"). A gas giant's biosphere is microbial + aerial flora + rare
+     air fauna, so the deck now paints the world's ACTUAL life: floating cloud-
+     gardens (its af flora), gas-bladder colonies + an aeroplankton swarm (the
+     microbial haze), and — when the world carries them — its real air CREATURES as
+     flying silhouettes, drawn from the same genome as their Compendium portrait. */
+  const _hasAir=(o.air>0)||(o.airGenes&&o.airGenes.length)||(o.aerFlora&&o.aerFlora.length);
+  if(_hasAir){
+    /* the floating cloud-garden — the world's aerial flora, hung in the deck */
+    if(o.aerFlora&&o.aerFlora.length){
+      const gr=mulberry32((o.seed^0xAF10A)>>>0);
+      const gsp=()=>({trunk:'hsla(150,16%,24%,0.8)', leaf:'hsla('+((140+gr()*90)|0)+',44%,'+(night?34:46)+'%,0.82)', spread:1.1+gr()*0.6, depth:3, lean:0.2});
+      const gcv=_hdPlantBare((o.seed^0xAF10)>>>0, gsp());
+      for(let gi=0;gi<3;gi++){ const gx=W*(0.16+gr()*0.68), gy=hz*(0.30+gr()*0.5), gs=0.20+gr()*0.13;
+        _hdStampPlant(g, gcv, gx, gy, gs, night?0.52:0.36, night?0.42:0.14); }
+    }
+    for(let i=0;i<Math.min(5,(o.air||1)+2);i++){
       const anchor=(i===0), fx=W*(0.15+r()*0.7), fy=hz*(0.42+r()*0.42), fs=(anchor?18:6)+r()*(anchor?10:8);
       const bg3=g.createRadialGradient(fx,fy-fs*0.2,1,fx,fy,fs);   // a lit gas-bladder body
       bg3.addColorStop(0,'rgba('+(night?'60,70,100':'120,110,140')+',0.55)');
@@ -10793,6 +10806,24 @@ function _hdDeckScene(o){
       for(let t2=0;t2<(anchor?5:3);t2++){ const tx=fx-fs*0.5+t2*fs*(anchor?0.24:0.4);
         g.beginPath(); g.moveTo(tx,fy+fs*0.5);
         g.quadraticCurveTo(tx+(r()-0.5)*6, fy+fs*1.6, tx+(r()-0.5)*10, fy+fs*(2.2+r())); g.stroke(); }
+    }
+    /* the world's real AIR CREATURES — flying, from their own genome (no ground
+       shadow: they're aloft). Distance-hazed into the deck like every other body. */
+    if(o.airGenes&&o.airGenes.length){
+      const cr=mulberry32((o.seed^0xA1F1A)>>>0);
+      o.airGenes.forEach((ag,ai)=>{
+        try{
+          const bcv=hdBeastBare(ag,(o.seed^(0xB13+ai*97))>>>0);
+          const S=bcv.width, sc=0.15+cr()*0.09, w=S*sc, h=S*sc;
+          const cx=W*(0.2+cr()*0.6), cy=hz*(0.26+cr()*0.44);
+          const work=document.createElement('canvas'); work.width=work.height=S;
+          const wg=work.getContext('2d'); wg.drawImage(bcv,0,0);
+          wg.globalCompositeOperation='source-atop';
+          wg.fillStyle='rgba('+(night?'74,90,124':'150,168,205')+','+(night?0.44:0.30)+')'; wg.fillRect(0,0,S,S);
+          g.save(); g.translate(cx,cy); if(cr()<0.5) g.scale(-1,1);
+          g.drawImage(work,-w/2,-h/2,w,h); g.restore();
+        }catch(_){ }
+      });
     }
     g.fillStyle='rgba('+(night?'150,180,230':'200,190,220')+',0.4)';   // aeroplankton swarm — ambient biology
     for(let i=0;i<26;i++){ g.beginPath();g.arc(W*(0.1+r()*0.8), hz*(0.4+r()*0.5), 1+r()*1.6, 0,TAU);g.fill(); }
@@ -10832,6 +10863,7 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
     const cvG=_hdDeckScene({seed:P.seed, hue:P.hue, spot:!!P.spot, spotHue:P.spotHue,
       ring:!!P.ring, moons:P.moons||0, tod:tod, aurora:!!aurora,
       air:(xtra&&xtra.air)||0, wb:wbG?wbG.k:null,
+      airGenes:(xtra&&xtra.airGenes)||null, aerFlora:(xtra&&xtra.aerFlora)||null,
       evt:evtG, titan:!!(xtra&&xtra.titan)});
     const headG='Cloud deck — '+((wbG&&wbG.n)||TYPE_LABEL[type]||'Gas giant');
     const vtTxtG='local '+tod+' — tap to continue';
@@ -11340,6 +11372,13 @@ function openLandingVista(pl){
   };
   const standable=roster.filter(gg=>clsOf(gg)==='land');
   const genes=standable.slice(0,3).map(hdGenesFor);
+  /* the world's AERIAL residents get drawn too (Nick: "creatures should show up
+     in the biomes — I don't see any in the gas ones"). Cloud/gas worlds carry
+     air-classed life + microbial haze + an aerial flora veil; pass the real genes
+     so the deck draws THEM, not a generic floater. */
+  const airRoster=roster.filter(gg=>clsOf(gg)==='air' && gg.kingdom==='fauna');
+  const airGenes=airRoster.slice(0,2).map(hdGenesFor);
+  const aerFloraG=roster.filter(gg=>gg.kingdom==='flora' && gg.af).slice(0,1).map(hdGenesFor);
   const lifeRow=d.rows&&d.rows.find(rr=>rr[0]==='Life');
   const floraOk=!lifeRow||!/^(No known life|Microbial|Subsurface|Airborne|Extremophile)/.test(lifeRow[1]);
   const waterRow=d.rows&&d.rows.find(rr=>rr[0]==='Water');
@@ -11354,6 +11393,7 @@ function openLandingVista(pl){
     {ring:P.ring, stc:(st.star&&st.star.c)||null, herd:standable.length,
      aqua:roster.filter(gg=>clsOf(gg)==='aqua').length,
      air:roster.filter(gg=>clsOf(gg)==='air').length,
+     airGenes:airGenes, aerFlora:aerFloraG,
      titan:_tit, title:d.title||null, where:d.where||null});
 }
 const _descBoxEl=()=>document.getElementById('descbox');
