@@ -91,6 +91,11 @@
 ##   HD MOONS (160px close masters; REWORKED after Nick's live review "craters overlap / weird lines" →
 ##   rejection-sampled non-overlap fields, bowl shading to the light, soft rims, mottling; icy frost / volcanic
 ##   elbow-fissures) · RINGS 512 masters + sane cache cap. Proof: tools/sheets/starsurf.js. ⚠ iPhone verify next.
+##   + DEEP-SPACE follow-up [6ce5b95]: BLACK HOLE baked cinematic _bhSpr (Doppler disc, horizon-hugging lensed
+##   halo, photon ring; also a heat-rule win) · WORMHOLE 192 · QUASAR 320 · NEBULAE 256 (all four types) ·
+##   GALAXY masters stay 512 BY DESIGN (64-entry cache is memory-bound; the zoom transition hands off to live
+##   in-galaxy rendering which is vector-sharp). Proofs sent to Nick: universe-pass / deepspace / liveview
+##   composite (tools/sheets/{starsurf,deepspace,liveview}.js).
 ## ★★★ 2026-07-24 SECOND BATCH — Nick's device feedback round (commit 96416e7, battery-green, pushed):
 ##   training feed/breed bottom-pin (step-10 rail-block screenshot) · WINDOWED cinematic card + newborn portrait in
 ##   the breed reveal · planet blending (noise-edge caps w/ real iceAmt weight, sea-ice vs snow, limb atmosphere
