@@ -6,6 +6,143 @@
 > working doc crossed ~285KB / 4,272 lines and stopped reading in one pass.
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
+
+## ═══ (v1.6.4 landing hotfix — now superseded as the live build; kept for history) ═══
+## ★★★ v1.6.4 "THE LANDING FIX" DEPLOYED LIVE (2026-07-22, build 3a4b839; site + source pushed). CRITICAL hotfix
+##   for Nick's "landing highlights but never triggers land" (stuck at step 6/20, Planetside open, empty ring).
+##   ROOT CAUSE: the land step advances on the `landfall` event, but noteLanding(seed) (main.js ~8914) early-returns
+##   `if(landed.has(seed))` BEFORE emitting landfall. Any VETERAN save already has Earth (133) in `landed` (samples
+##   long since read) → no landfall → step never advances. FRESH boots never have 133 landed, so smoke/layout/all
+##   gates passed clean and could NOT see it — device-with-history only. FIX (tutorial-only, NOT fingerprinted): the
+##   land step (main.js ~16947) got `enter:()=>{ landed.delete(133); }` — un-lands home for the drill so the press
+##   freshly fires landfall (noteLanding re-adds 133 instantly). REGRESSION GUARD added to smoke.js (~186): seeds
+##   `landed.add(133)` BEFORE entering the land step (old code fails, fix passes). fp 50/50, smoke 0-fail/322-pass,
+##   layout 546/9 all green. LESSON: fresh-boot gates are blind to veteran-save state — when a bug is "works for me
+##   but not on device", suspect saved state (landed/conquered/codex) that the harness starts empty.
+## ★★★ v1.6.3 "CARD & TRAINING POLISH" DEPLOYED LIVE (2026-07-22, build 3a4f5f6; site + source pushed). More of
+##   Nick's real-iPhone review. SHIPPED (fp 50/50, smoke+layout green): SPECIMEN CARD verbs reordered per Nick →
+##   Breed·Feed·Duel·Scout·Code (rev-* ids unchanged so smoke/gate still work); RENAME moved to a ✎ icon beside the
+##   name (.rn-edit, id rev-rename, calls askRenameSpecies — matches the player "✎ Change name" convention) ·
+##   COMPENDIUM training step pinned to TOP (new step flag top:true honored in _tutSpot dodge logic) so the fauna
+##   list stays scrollable. Earlier this session: v1.6.2 intro Begin-button — first tried a STICKY footer (caused
+##   text bleed-through), then FIXED with a flex-COLUMN card (lore scrolls in its own region, actions a real footer;
+##   #namebox .card display:flex, .lore flex:1 overflow-y:auto, .nm-actions flex:none). ⚠ ALL need real-iPhone verify.
+## ▶ NEXT MOBILE PASS — Nick's REMAINING trio (the hard tutorial timing / z-order / lifecycle bugs; do ONE AT A TIME
+##   with device verify): (#1) EARTH/ATLAS menu bleeds UNDER the training+world card (step 6) — panel z-order/cleanup,
+##   a residual atlas panel not swept. (#5) BREED → DUEL OVERLAP (step 12) — the "A New Bloodline" reveal and the duel
+##   screen are both live at once → GATE the duel step on the breed reveal being dismissed (one thing on screen).
+##   (#6) EMPTY blue SPOTLIGHT RING on the nameplate/HP steps (steps 8/13) — CF16-002/010: highlight draws on a
+##   target that's covered or not-yet-rendered → wait-for-render + elementFromPoint hit-test before showing the ring.
+##   Plus the earlier-review CF16-007 (specimen frame crosses "Critical"), CF16-008 (cyan rim), CF16-004/005 (save/
+##   memory). See the v1.7 DEFERRED FIXES block. Glass/tint SLIDER + accessibility-DEFER already recorded (v1.7).
+## ★★★ v1.6.2 "MOBILE POLISH" DEPLOYED LIVE (2026-07-22, build 5c85d8b; site + source pushed) — the FIRST mobile-
+##   onboarding pass from the v1.6 mobile review (Nick's real-iPhone findings). SHIPPED (fp 50/50, smoke+layout
+##   green, both fp-safe CSS/markup): CF16-003 intro Begin-button STICKY FOOTER (was below the fold on short
+##   iPhones — .nm-actions position:sticky) · CF16-006 charter counter no-wrap (.cp white-space:nowrap;flex:none).
+##   ⚠ NEEDS REAL-IPHONE VERIFICATION — the layout gate doesn't cover small-iPhone viewports (CF16-014). STILL OPEN
+##   (structural, do next ONE AT A TIME with Nick verifying on device): CF16-007 specimen frame crosses "Critical"
+##   text (needs inner-scroller markup) · CF16-001 tutorial card BLOCKS the panel it teaches (collision-aware
+##   layout coordinator — the big one) · CF16-010 highlight/items don't load until clicked (readiness-based target
+##   mounting, not a 480ms timer) · CF16-008 cyan rim shards (fp-safe render — verify via proof sheet) · CF16-004/
+##   005 Atlas save-bloat + portrait-cache memory · CF16-012 zoom/touch-action (behavioral). See the v1.7 DEFERRED
+##   FIXES block below for the full mapped list.
+## ★★★ v1.6.1 "THE BINDER PATCH" DEPLOYED LIVE (2026-07-22, build 973bbaa; site + source both pushed). The
+##   v1.6 CODE REVIEW (Nick's synthetic gameplay/code-review report) ran and found real bugs our panel/smoke
+##   missed. HOTFIXED (all fp-safe, fp 50/50, smoke+layout green, +Binder smoke check): P2-001 Binder crash
+##   (renderBinder read ABILITY_THEMES from outer scope → ReferenceError; exported it from CombatCore — was a
+##   LIVE crash) · P2-002 malformed-save (_sanitizeSavedGenome clamps brood/fed/xp/hurt + seed/kingdom; a crafted
+##   save forged an 11.7M-power creature exportable as a share code) · P2-003 duplicate conquest reward (idempotent
+##   conquered.has guard at onResolve) · P2-004 stale breeding parents (breedPair rejects consumed/invalid).
+##   DEFERRED to v1.7 (fingerprint/re-pin or bigger): P2-005 rare-vein dedup (depositsFor = generation → materials
+##   re-pin) · CF16-011 mirror-duel tiebreak (=CF-004) · CF16-004 Atlas thumbnails (=CF-002) · CF16-012 zoom/
+##   keyboard-nav (=CF-006) · CF16-001/002/003 mobile-onboarding LAYOUT blockers (need real-iPhone pass). NOTE the
+##   review tested an OLD 'dev' snapshot, so several carried-forward UI findings were ALREADY fixed in v1.6/v1.6.1
+##   (verb grid, Records short-phone, training soft-lock). NEXT: dive into v1.7 (rarity Phase A → Forge/materials
+##   Phase B → text polish → charter-training module + the deferred review items).
+## ★★★ v1.6 "THE LIVING FRONTIER" IS DEPLOYED LIVE (2026-07-22, build 8351d67 → https://celestialfrontier.github.io/;
+##   version.json v1.6). Committed to source main @8351d67 (release commit). Battery green at ship: validate 8
+##   gates + fp 50/50, smoke 0 fails, layout PASS(546). v1.6 = the painterly art overhaul + lineage cards +
+##   champion codes + loot affixes + biosphere yield + item cards, PLUS the fix batch (footer version binding,
+##   CF-001 tutorial stat-leak, CF-003 hazard timeout, CF-005 Records short-phone fit, CF-007 aria-label, CF-009
+##   button types, CF-010 name-length, charter drills→Mine wording, specimen VERB-ROW GRID (fixed the button
+##   crush at all resolutions), TRAINING soft-lock re-assert (Settings-cancel now reopens the Compendium — does
+##   NOT lock Settings), and the fp-safe UI TEXT POLISH). DEFERRED (safety) → caught by the v1.6 CODE REVIEW +
+##   v1.7: CF-002 (Atlas save bloat — needs thumb-rebuild plumbing, rule-5), CF-004 (duel tiebreak — fp/re-pin +
+##   champion-code interaction), CF-006 (keyboard Navigator — its own focused pass), CF-008 (name variety — v1.7
+##   naming pass). ▶ NEXT (Nick's plan): the v1.6 CODE REVIEW is the FIRST v1.7 item — do it FIRST (catches the
+##   deferred fixes + anything else), THEN the rest of v1.7 (rarity Phase A → Forge/materials Phase B → text
+##   polish → charter-training module). See the v1.7 lines below.
+##
+## [HISTORICAL — pre-deploy handoff, kept for context] STATE: v1.5.2 is LIVE. v1.6 is BUILT but NOT deployed. The RC3 Gold review declared everything
+##   Gold-ready EXCEPT the biome-coverage LAYERS (4 narrow blockers); BATCH 15.5 closed all 4 — all
+##   render-only, fp 50/50, NO re-pin. validate = 8 gates green (193 sentinels), smoke green, layout
+##   PASS (546), NEW biome-layer audit green. Latest package: scratchpad/CF-FullArt-Batch15.5-Gold.zip.
+## BATCH 15.5 — the 4 RC3 Gold biome-layer blockers (all done): (1) EMPTY PURITY — reef fish-schools +
+##   abyssal creatures now gated on genes, so empty biomes carry ZERO fauna (coral=coral+water only,
+##   abyssal=dark water+vents only). (2) POPULATION — ice/grey(rocky)/haze(venus) worlds placed NO
+##   creatures (the land block at ~L7917 excludes those pals), so cryogeyser/tundra/rocky/venus were
+##   blank in all 3 modes; added a dedicated placement block (anchor + secondary). (3) SEPARATION —
+##   _hdAbyssScene now draws the ACTUAL genes (Earth anglerfish/squid vs procedural alien); GAS = Option
+##   A (Earth life UNSUPPORTED, labeled; native aerial life only in the procedural pass). Earth != proc
+##   everywhere now. (4) BIOME AUDIT — new tools/biome-audit.js (empty-purity structural gates + population
+##   + Earth!=proc lineage + fauna-free whitelist), wired into the audit report. RC2 Lepidoptera "blocker"
+##   was a FALSE ALARM (test-only names, not in catalog); classifier hardened + 23 sentinels anyway (B15.4).
+## BATCH 15.2 — the 4 release gates (all done): (Gate 1) FULL CATALOG EXPORT — all 18 fauna + 10 flora
+##   pages rendered (scratchpad/catalog/) + automated AUDIT-REPORT (render-audit 1010 clean · rig-audit
+##   631 classified/170 sentinels · fp 50/50); catalog is class-clean (Butterflyfish→fish, Butterfly/
+##   Moth→insect all certified). (Gate 2) SKIN — furred rebuilt (soft uneven fringe + neck/chest/tail
+##   tufts, not spikes), feathered rebuilt (overlapping directional contour feathers + tail plume),
+##   translucent now DROPS body opacity (0.66) so spine/ribs/gut/heart read through the membrane. (Gate 3)
+##   BUTTERFLY/MOTH — the symmetric-wing rig now returns faceOn→a MATCHED eye PAIR (was one side eye).
+##   (Gate 4) VISTA HERO-DEPTH — _hdPlaceBeast draws a denser ground-fringe, every 4th blade taller so it
+##   OVERLAPS the feet, scaled with the creature → heroes read as grounded foreground across all vistas.
+## WHAT'S DONE (Batch 15, from the Batch-14 review): (Area 3) STRUCTURAL SKIN — all 9 FA_SKIN materials
+##   now change the material language (scale rows/fur fringe/chitin bands/wet sheen/armour plates/warts/
+##   feathers/translucent channels/crystal facets), masked to the body [§0.6]. (Area 2) HABITAT-PRESERVES-
+##   BODY-PLAN — aquatic shelled/crystalline/tusked/horned/squat creatures read as shell-backed / mineral-
+##   plated / tusked / horned / benthic SWIMMERS, not a plain fish (_procFamily fpreserve marker + grafts)
+##   [§0.5]; GROUPED-LIMB anatomy (fore/mid/rear, tripod, arthropod) [§8.3]; specialized-rig TAILS on
+##   fish/crust/ceph [§0.4/8.4]. (Area 4) AQUATIC (6) + AERIAL (3) FLORA SUBFAMILIES in hdPortraitFlora/
+##   _hdPlantBare (kelp/seagrass/reef/sargassum/bloom/tube · veil/banner/cloud-garden) [§0.7]; root/tuber
+##   noted Earth-harvest-only. FROG pupils/irises drawn on top of the texture [§0.2]. PLAN-0 renamed
+##   FA_BODY[0] 'six-limbed'→'sturdy-limbed' (Nick's call — limb gene sets the count; fp-safe, NO re-pin)
+##   [§0.3]. (Area 1) VISTAS: global creature SCALE (clamp 1.8→1.4) + stronger GROUND-CONTACT shadow
+##   [§0.1]; NEW _hdReefScene — Coral-Shallows now drops to a bright reef (caustics, coral colonies, fish
+##   schools, in-column creatures), routed in showVistaBox like abyssal [§5.4]; JUNGLE canopy ceiling +
+##   vines + foreground broadleaf [§5.2]. KEY FINDING: the review's ABYSSAL "trees+moon+waterline" was a
+##   PROOF-SHEET ARTIFACT (vistas-big rendered abyssal via hdVista; the game uses _hdAbyssScene) — fixed
+##   the sheet; the real abyssal was already correct.
+## DESIGN DOCS (source of truth): ART_DIRECTION.md · PROCEDURAL_CHARACTERISTICS.md ·
+##   LINEAGE_AND_BREEDING.md (+ the per-system docs). New sheets: proc-skins.js, proc-aqua.js, b15-*.js.
+## ✅ GOLD SIGN-OFF RECEIVED (2026-07-21): Nick's "Batch 15.5 Gold Candidate Final Review" landed and is
+##   GOLD APPROVED across all six areas (art direction · Earth catalog · procedural fauna/phenotype ·
+##   procedural flora · biome layers · showcase vistas) — "No additional pre-release visual changes are
+##   necessary." Only actionable was its §18 shipping-checklist item 1 ("rerun the suite against the exact
+##   build"). DONE THIS SESSION: (a) re-extracted main.js + re-ran the FULL battery against the current
+##   build — validate 8 gates + fp 50/50 · biome-audit PASS · render 1010/0 · smoke PASS · layout PASS(546);
+##   all green. (b) REGENERATED the full art package fresh from that build → scratchpad/CF-FullArt-Batch15.5-
+##   Gold.zip (49 files; prior delivered zip backed up as *.PRIOR.zip). NOTE: tooling drift — flora-all-big.js
+##   is now ROWS=5 (30/page) so the Earth-flora catalog is 12 pages (was 10 @ 36); all 334 flora, more legible.
+##   (c) reviewed + edited Nick's markdown: added §0 build-verification addendum (battery table + fingerprint),
+##   §20 release-handoff, and corrected the flora page count 10→12; delivered the edited copy alongside the zip.
+##   Regen driver: scratchpad/build-package.js. All per-system docs already SYNCED to B15.5.
+## ▶ PHASE 8 IN PROGRESS (2026-07-21, Nick's word): v1.6 RELEASE-NOTES written + GAME_VERSION BUMPED to '1.6'
+##   (title "The Living Frontier"; RELEASES[0] new entry — art overhaul, alien phenotypes, landing vistas,
+##   lineage card, champion codes, conquest loot affixes, biosphere yield, item cards, class-routing).
+##   validate green (fp 50/50), smoke green (updated the 2 stale version assertions: fresh-bulletin + guide-
+##   footer now expect the v1.6 line). Bulletin logic confirmed: openReleaseNotes('latest') shows the current
+##   minor line alone (_line=GAME_VERSION[0..1]) → fresh v1.6 shows "The Living Frontier" only, no 1.5.x leak.
+##   6k BETA LAUNCHED in background (scratchpad/beta6k.sh → tools/beta-v16-{chaos,ui,fast,deep}.json;
+##   chaos1500+ui900+fast3000+deep600=6000). Fail-fast slices (chaos25/ui25/fast50) were CLEAN on v1.6.
+## 6k RESULT (CLEAN): 0 errors/breaks/violations/softlocks/deaths across ALL 6000 sessions. funIndex fast 6.87 /
+##   deep 5.5; deep maxDrought ~35 (the SAME long-session staleness signal v1.5.2 flagged — economy unchanged, not
+##   a v1.6 regression; feeds retention/crafting-depth backlog + the v1.7 materials idea). saveFail was a RED
+##   HERRING: pre-existing HARNESS artifact (active runs don't flush a final save in the 1.2s read window), 4%
+##   here vs 14% on the live v1.5.2 build — v1.6 is BETTER; codex does NOT persist lineage (L11639), doSave has
+##   graceful quota toast (L11641). NOT a blocker. Nick approved 10k (not 20k) crash-weighted confirmation.
+## ▶ 10k CONFIRMATION LAUNCHED (scratchpad/beta10k.sh → tools/beta10k-v16-*.json; chaos5000+ui3000+fast1500+
+##   deep500=10000). When it lands clean → team panels → deploy via tools/deploy.js on Nick's word.
+
 ## ═══ v1.6 BATCH 15.5 (2026-07-21) — the 4 RC3 GOLD biome-layer blockers. Render-only, fp 50/50, no
 ##   re-pin; NEW biome-layer audit green; smoke + layout green. RC3 declared everything else Gold-ready.
 ##  ✅ BLOCKER 1 EMPTY PURITY — empty biomes must carry no fauna. _hdReefScene fish-schools now gated on
