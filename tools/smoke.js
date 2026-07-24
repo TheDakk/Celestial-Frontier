@@ -870,9 +870,20 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('HD vista: the birth-tap does NOT dismiss (ghost-click guard)',
       sk.doc.getElementById('vistabox').style.display === 'flex');
     await new Promise((r) => setTimeout(r, 480));
+    // v1.7 (Nick): in live play tapping the vista IMAGE zooms it full-size
+    // instead of dismissing — a real look at the world; the ✕/backdrop still close
+    const _vcanvas = sk.doc.querySelector('#vistabox .vcard canvas');
+    click2(_vcanvas, sk.w);
+    check('v1.7 vista: tapping the image ZOOMS it full-size (does not dismiss)',
+      sk.doc.getElementById('vistabox').classList.contains('zoom') && sk.doc.getElementById('vistabox').style.display === 'flex');
+    click2(_vcanvas, sk.w);
+    check('v1.7 vista: tapping the zoomed image returns from zoom',
+      !sk.doc.getElementById('vistabox').classList.contains('zoom'));
     click2(sk.doc.getElementById('vistabox'), sk.w);
     check('HD vista: an armed tap dismisses the panorama (fade-out)', await until(() =>
       sk.doc.getElementById('vistabox').style.display === 'none', 4000, 'vista fade-out'));
+    check('v1.7 vista: dismissing also clears the zoom state',
+      !sk.doc.getElementById('vistabox').classList.contains('zoom'));
     // B1: the art is no longer see-once — the surface card reopens it
     check('HD vista: the surface card offers a re-view', await until(() =>
       !!pan3.querySelector('[data-act="vista"]'), 4000, 'vista button'));

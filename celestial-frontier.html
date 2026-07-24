@@ -1613,7 +1613,17 @@
     box-shadow:0 30px 90px rgba(0,0,0,0.7);max-width:calc(100vw - 24px)}
   /* landscape phones: clamp width to the image's own 2.233 aspect so the
      frame never letterboxes empty bars (graphics overhaul B3) */
-  #vistabox canvas{width:min(90vw,900px,calc(64vh*2.233));max-height:64vh;object-fit:contain;border-radius:12px;border:1px solid var(--glass-brd)}
+  #vistabox canvas{width:min(90vw,900px,calc(64vh*2.233));max-height:64vh;object-fit:contain;border-radius:12px;border:1px solid var(--glass-brd);cursor:zoom-in;transition:width .28s ease,max-height .28s ease}
+  /* v1.7 (Nick): tap the vista to ZOOM it full-size — a proper look at the
+     world, not just an ✕. Tapping again (or the ✕) returns. The card sheds its
+     chrome padding so the image fills the screen edge to edge. */
+  #vistabox.zoom .vcard{padding:0;border:none;background:none;box-shadow:none;max-width:100vw;gap:0}
+  #vistabox.zoom canvas{width:min(100vw,calc(100vh*2.233));max-height:100vh;border-radius:0;border:none;cursor:zoom-out}
+  #vistabox.zoom .vh,#vistabox.zoom .vt{position:absolute;left:50%;transform:translateX(-50%);z-index:2;text-shadow:0 1px 6px rgba(0,0,0,0.9);pointer-events:none}
+  #vistabox.zoom .vh{top:max(10px,env(safe-area-inset-top))}
+  #vistabox.zoom .vt{bottom:max(26px,calc(env(safe-area-inset-bottom) + 20px))}
+  #vistabox.zoom .vpc{display:none}
+  #vistabox.zoom .vxc{z-index:3}
   #vistabox .vh{font:600 11px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--plasma)}
   #vistabox .vt{font:600 9px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
   #vistabox .vpc{font:600 10px var(--ui);letter-spacing:.12em;color:var(--plasma);cursor:pointer;
@@ -10520,7 +10530,7 @@ vistaBox.addEventListener('click', ()=>{
   /* a show's fade-in rides a queued animation frame — bump the sequence so
      a lightning-fast tap can't lose the race and strand the view open */
   _vistaShowSeq++;
-  vistaBox.classList.remove('on');
+  vistaBox.classList.remove('on','zoom');   /* dismissing also drops any zoom */
   clearTimeout(_vistaHideT);
   _vistaHideT=setTimeout(()=>{ if(!vistaBox.classList.contains('on')) vistaBox.style.display='none'; }, 460);
 });
@@ -10579,7 +10589,17 @@ function _vistaMount(headHtml, cv, vtTxt){
   const vh=document.createElement('div'); vh.className='vh'; vh.innerHTML=headHtml;
   card.appendChild(vh);
   card.appendChild(cv);
-  const vt=document.createElement('div'); vt.className='vt'; vt.textContent=vtTxt;
+  /* v1.7 (Nick): tap the vista to ZOOM it full-size — a real look at the world,
+     not just an ✕. In TRAINING the tap still CONTINUES (the cache step waits on
+     it), so zoom is live-play only; there the tap bubbles to the dismiss. */
+  cv.addEventListener('click', (e)=>{
+    if(!tutDone) return;                 /* training: let the tap bubble → continue */
+    if(performance.now()-_vistaArmedAt<420) return;   /* same ghost-click guard as dismiss */
+    e.stopPropagation();
+    vistaBox.classList.toggle('zoom');
+  });
+  const vt=document.createElement('div'); vt.className='vt';
+  vt.textContent=(tutDone?vtTxt+'  ·  tap to zoom':vtTxt);
   card.appendChild(vt);
   _vistaExtras(card);
   vistaBox.appendChild(card);
