@@ -1638,6 +1638,17 @@
   #helpbtn{bottom:calc(62px + env(safe-area-inset-bottom,0px))}
   /* bottom-pinned training cards clear the dock */
   #tutbox.dodge{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  /* the pinned-recipe chip (QoL h) — rides under the charter button */
+  #pinchip{position:fixed;left:18px;top:calc(var(--topbar-h,100px) + 46px);z-index:9;display:flex;align-items:center;gap:5px;
+    font-family:var(--ui);font-size:10.5px;letter-spacing:.04em;color:var(--dim);cursor:pointer;
+    padding:6px 11px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-brd);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);max-width:min(62vw,340px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #pinchip b{color:var(--ink);font-weight:600}
+  #pinchip.ready{color:#7fe6a0;border-color:rgba(127,230,160,0.5);box-shadow:0 0 14px rgba(127,230,160,0.18)}
+  .bset .bpin{flex:none;margin-left:6px;background:none;border:1px solid var(--glass-brd);border-radius:8px;
+    padding:3px 7px;cursor:pointer;font-size:12px;opacity:.55;transition:opacity .15s,border-color .15s}
+  .bset .bpin:hover{opacity:1}
+  .bset .bpin.on{opacity:1;border-color:rgba(255,217,106,0.65);box-shadow:0 0 10px rgba(255,217,106,0.2)}
   @media (max-width:520px){
     /* phone: icon + count chips — labels fold away, dots grow into icons */
     #pcdxbtn .lbl, #codexbtn .lbl, #logbtn .lbl, #cargobtn .lbl, #recbtn .lbl{display:none}
@@ -14477,7 +14488,7 @@ function doSave(){
          anyway, and any eviction silently refills a finite reserve —
          entries are two numbers, the cap bought nothing) */
       at:Date.now(),   /* wall-clock save stamp — anchors offline-accrual clamps on load */
-      cargo:[...cargo], cgx:[...cgx], jrn:journal.slice(-24), minedw:[...mined], mx:[...mineX], skx:[...skimX], bx:[...bioX], tech:[...techOwned], mines:stats.mines||0,
+      cargo:[...cargo], cgx:[...cgx], jrn:journal.slice(-24), pin:pinnedRecipe||undefined, minedw:[...mined], mx:[...mineX], skx:[...skimX], bx:[...bioX], tech:[...techOwned], mines:stats.mines||0,
       items:[...items], eq:equip, ea:equipAff, crafts:stats.crafts||0, minedout:stats.minedout||0,
       skims:stats.skims||0, cosmics:stats.cosmics||0,   /* v1.7 (review catch: unsaved, the counters reset each session) */
       asc:ascCh, ascp:ascProg,
@@ -14556,6 +14567,7 @@ function loadSave(){
     /* §5: exceptional sub-counts — absent ⇒ none (safe additive default);
        clamped to the held quantity so a crafted save can never mint grade */
     for(const kv of (data.cgx||[])){ if(kv && MATERIALS[kv[0]]) cgx.set(kv[0], clamp(num(kv[1]), 0, cargo.get(kv[0])||0)); }
+    if(typeof data.pin==='string' && ITEM_BY.has(data.pin)) pinnedRecipe=data.pin;   /* pinned recipe — absent/unknown ⇒ none */
     /* journal: strings clamped, count capped — absent ⇒ empty */
     if(Array.isArray(data.jrn)) for(const j of data.jrn.slice(-24)){
       if(j && j.n) journal.push({s:num(j.s)|0, n:String(j.n).slice(0,28), w:String(j.w||'').slice(0,16), t:clamp(num(j.t),0,4102444800000)});
@@ -18238,7 +18250,31 @@ function buyTech(id){
 const cargoBtn=document.getElementById('cargobtn');
 const cargoEl=document.getElementById('cargo');
 let cargoOpen=false;
+/* PINNED RECIPE TRACKER (QoL h, Nick green-lit): pin a Fabricator target and
+   a small chip under the charter button tracks what's still missing while
+   you mine — flips to READY when the Fabricator can forge it. Save field
+   `pin` (validated against ITEM_BY on load; absent ⇒ none). */
+let pinnedRecipe=null;
+function _pinChip(){
+  let el=document.getElementById('pinchip');
+  const it=pinnedRecipe?ITEM_BY.get(pinnedRecipe):null;
+  if(!it || (it.cat==='sys'&&itemCount(it.id)>0)){ if(el) el.style.display='none'; return; }
+  if(!el){
+    el=document.createElement('div'); el.id='pinchip'; el.setAttribute('role','button'); el.tabIndex=0;
+    el.addEventListener('click', ()=>{ try{ cargoBtn.click(); }catch(_){ } });
+    document.body.appendChild(el);
+  }
+  const miss=[];
+  for(const k in (it.cost||{})){ const d2=it.cost[k]-(cargo.get(k)||0); if(d2>0) miss.push(d2+'× '+matName(k)); }
+  for(const k in (it.parts||{})){ const d2=it.parts[k]-itemCount(k); if(d2>0) miss.push(d2+'× '+((ITEM_BY.get(k)||{}).name||k)); }
+  if(it.sd && essence<it.sd) miss.push('☄'+(it.sd-essence));
+  if(it.req && itemCount(it.req)<1) miss.push((ITEM_BY.get(it.req)||{}).name||it.req);
+  el.className=miss.length?'':'ready';
+  el.innerHTML='📌 <b>'+it.name+'</b> — '+(miss.length?('need '+esc(miss.slice(0,3).join(' · '))+(miss.length>3?' …':'')):'READY to forge ✦');
+  el.style.display='flex';
+}
 function showCargoBtn(){
+  _pinChip();
   /* v1.5.2c (Nick): the Shipyard is the crafting HOME — it stands on the
      rail ALWAYS once training ends. Hiding it until first cargo orphaned
      the whole crafting system when the training sandbox reclaimed its
@@ -19540,6 +19576,7 @@ function _fabHTML(){
         (built?'':'<br><span class="bcnt">'+(sigLock?'🔒 the blueprint waits on the '+sigLock+' (Prime Codex)':(gatedBy?'requires '+gatedBy:bits.join(' + ')))+'</span>')+'</span>'+
         (built?'<span class="bclaimed">online ✓</span>'
               :(can?'<button class="bclaim" data-craft="'+it.id+'" type="button">Craft</button>':''))+
+        (built?'':'<button class="bpin'+(pinnedRecipe===it.id?' on':'')+'" data-pin="'+it.id+'" type="button" title="'+(pinnedRecipe===it.id?'Unpin this recipe':'Pin — a chip tracks the missing materials while you mine')+'">📌</button>')+
         '</div>';
     }
     html+='</div></div>';
@@ -19605,6 +19642,9 @@ if(cargoBtn){
         if(cat){ if(_fabOpen.has(cat)) _fabOpen.delete(cat); else _fabOpen.add(cat); renderYard(); } return; }
       const t=e.target.closest('[data-tech]');
       if(t){ buyTech(t.dataset.tech); return; }
+      const pn=e.target.closest('[data-pin]');
+      if(pn){ pinnedRecipe = pinnedRecipe===pn.dataset.pin ? null : pn.dataset.pin;
+        _pinChip(); if(yardOpen) renderYard(); queueSave(); return; }
       const cr=e.target.closest('[data-craft]');
       if(cr){ craftItem(cr.dataset.craft); if(yardOpen) renderYard(); }   /* re-render so spent-out recipes drop their Craft button (Nick) */
     });
