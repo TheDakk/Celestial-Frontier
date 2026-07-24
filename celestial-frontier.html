@@ -2211,6 +2211,19 @@ function surfaceColor(P, u, lat, fbm, fx){
     let c=mix(bands[i],bands[i+1],b-i);
     const storm=fbm(u*4+80, lat*8+80, 3);
     if(storm>0.73 && Math.abs(lat)<0.7) c=mix(c,[250,248,240],(storm-0.73)*3);
+    /* visual review §7.5: seeded VORTEX storms — two ovals per giant, a dark
+       swirl ring around a lighter eye, riding their own band latitude */
+    {
+      const vs=hashInt((P.seed>>>0),0x77,3);
+      for(let vi=0;vi<2;vi++){
+        const vu=(((vs>>>(vi*11))&255)/255)*2.4-1.2, vl=(((vs>>>(vi*11+5))&127)/127)*1.1-0.55;
+        const gd3=Math.hypot((u-vu)/0.24,(lat-vl)/0.085);
+        if(gd3<1){
+          const eye=Math.max(0,1-gd3*2.4);
+          c=mix(c, mix([30,26,34], [252,250,244], eye), (1-gd3)*0.5);
+        }
+      }
+    }
     if(P.spot){
       const gd=Math.hypot((u-0.5)/0.4,(lat-0.28)/0.16);
       if(gd<1) c=mix(hsl(P.spotHue,55,42), c, Math.pow(gd,1.6));
@@ -2266,7 +2279,12 @@ function surfaceColor(P, u, lat, fbm, fx){
       land=mix(land,[228,228,234], sm(e,0.72,0.86));           /* snowline feathers in */
       const aridT=sm(fbm(u*2.6+50, lat*2.6+9, 4),0.50,0.64)*(1-sm(polar,0.30,0.46));
       if(aridT>0) land=mix(land, mix([196,164,104],[168,134,82], fbm(u*7,lat*7,3)), aridT);   /* skip the 2nd fbm when moot (heat) */
-      c=mix([64,150,185], mix([198,182,134],land, sm(e,0.468,0.535)), sm(e,0.44,0.492));
+      /* visual review §6.2: the shore is not one yellow ring — a coast noise
+         picks BEACH sand, WETLAND green, or CLIFF grey per stretch, so the
+         halo breaks into real coastline variety */
+      const shN=fbm(u*5.2+31, lat*5.2+13, 3);
+      const shore=shN<0.40?[172,184,122]:(shN>0.72?[152,146,128]:[198,182,134]);
+      c=mix([64,150,185], mix(shore,land, sm(e,0.468,0.535)), sm(e,0.44,0.492));
     }
     /* polar caps (Nick, 2026-07-24: "pure white, don't blend"): the cap edge
        follows a NOISE coastline instead of a clean latitude ring, sea ice
@@ -2368,7 +2386,9 @@ function renderPlanetSprite(P, PX){
       let cr=col[0], cg2=col[1], cb=col[2];
       /* clouds drifting over living worlds */
       if(P.type==='terran'||P.type==='ocean'){
-        const cl=fbm(u*2.6+40, dy*2.6-17, 5);
+        /* visual review §6.4: a seeded WIND stretches fronts along the flow */
+        const wf2=0.55+((hashInt(P.seed>>>0,0x33D,2)&255)/255)*0.5;
+        const cl=fbm(u*2.6*wf2+40, dy*2.6/(0.75+wf2*0.35)-17, 5);
         if(cl>0.55){
           const ca=Math.min((cl-0.55)*3.2,0.85);
           cr=cr*(1-ca)+250*ca; cg2=cg2*(1-ca)+252*ca; cb=cb*(1-ca)+255*ca;
@@ -6496,7 +6516,8 @@ function _cloudSpr(P){
       const dx=(x-R0)/R0, rr2=dx*dx+dy*dy, i=(y*PX+x)*4;
       if(rr2>1){ d[i+3]=0; continue; }
       const z=Math.sqrt(1-rr2), u=Math.atan2(dx,z)*1.4;
-      const cl=fbm(u*2.2+7, dy*2.2+11, 4);
+      const wf3=0.55+((hashInt(P.seed>>>0,0x33D,2)&255)/255)*0.5;
+      const cl=fbm(u*2.2*wf3+7, dy*2.2/(0.75+wf3*0.35)+11, 4);
       let a=cl>0.60 ? Math.min((cl-0.60)*3.0, 0.8) : 0;
       const rr=Math.sqrt(rr2);
       if(rr>0.82) a*=Math.max(0,(1-rr)/0.18);   /* taper well before the limb */
