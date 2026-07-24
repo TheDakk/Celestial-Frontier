@@ -1652,6 +1652,11 @@
   /* new-entry dot (QoL j) — clears once the card has been opened */
   #codex .sp .newdot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-left:6px;vertical-align:middle;
     background:#7fd0ff;box-shadow:0 0 8px rgba(127,208,255,0.8)}
+  /* bulk-feed button (QoL k) */
+  #pickbulk{display:block;margin:8px auto 0;padding:7px 14px;border-radius:999px;cursor:pointer;
+    font:600 11px var(--ui);letter-spacing:.05em;color:#bfe6c8;background:rgba(127,230,160,0.10);
+    border:1px solid rgba(127,230,160,0.45)}
+  #pickbulk:hover{background:rgba(127,230,160,0.18)}
   @media (max-width:520px){
     /* phone: icon + count chips — labels fold away, dots grow into icons */
     #pcdxbtn .lbl, #codexbtn .lbl, #logbtn .lbl, #cargobtn .lbl, #recbtn .lbl{display:none}
@@ -16465,6 +16470,42 @@ function openPicker(mode, base){
     ? (e.kind===base.kind && e.id!==base.id)
     : (e.kind==='Flora'));
   document.getElementById('pick-title').textContent = isBreed ? '🧬 Breed '+base.name : (isHeal ? '❤ Heal yourself — '+hp+'/'+HP_MAX+' HP' : '🌿 Feed '+base.name);
+  /* BULK FEED (QoL k, Nick green-lit): a wounded beast can be mended in one
+     press — always the SAFEST meal (♥ loved first, lowest grade first, never
+     disliked), and the run STOPS at the first toxic bite. Post-training only. */
+  try{
+    const _old=document.getElementById('pickbulk'); if(_old) _old.remove();
+    if(!isBreed && !isHeal && tutDone && ((+base.genome.hurt)||0)>0){
+      const bb=document.createElement('button'); bb.id='pickbulk'; bb.type='button';
+      bb.textContent='❤ Mend — safest meals';
+      bb.title='Feeds the safest flora you own, one after another, until mended — stops at the first toxic bite.';
+      document.getElementById('pick-title').after(bb);
+      bb.addEventListener('click', ()=>{
+        let fed=0, halt='';
+        for(let i2=0;i2<10 && ((+base.genome.hurt)||0)>0;i2++){
+          const tastes=faunaTastes(base.genome);
+          const fl=[...codex.values()].filter(e=>e.kind==='Flora' && e.id!==base.id)
+            .filter(e=>!tastes.dislikes.includes(floraStat(e.genome)))
+            .sort((a,b)=>{
+              const la=tastes.likes.includes(floraStat(a.genome))?0:1, lb=tastes.likes.includes(floraStat(b.genome))?0:1;
+              return la!==lb ? la-lb : ((a.grade?a.grade.tier:0)-(b.grade?b.grade.tier:0));
+            });
+          if(!fl.length){ halt='out of safe flora'; break; }
+          const r2=feedPair(base, fl[0], Math.random());
+          stats.feeds=(stats.feeds||0)+1; gameEvent('fed', {bulk:true});
+          if(!r2.ok){ halt=r2.dead?'lost to a toxic bite':'a toxic bite — run stopped'; break; }
+          fed++;
+        }
+        const cnd=codex.has(base.id)?creatureCondition(base.genome):null;
+        resEl.innerHTML='❤ '+fed+' safe meal'+(fed===1?'':'s')+' served.'+
+          (halt?' <span style="color:#ff8a72">'+halt+'.</span>':'')+
+          (cnd?' <span style="color:'+cnd.col+'">Now <b>'+cnd.label+'</b>'+(cnd.h>0?' ('+Math.round(cnd.h*100)+'% hurt)':'')+'.</span>':'');
+        if(codex.has(base.id) && _revEntry===base) showReveal(base, base.hybrid);
+        pickList.innerHTML=''; pickBox.style.display='flex';
+        checkAch(); renderRank(); queueSave();
+      });
+    }
+  }catch(_){ }
   document.getElementById('pick-note').innerHTML = isBreed
     ? 'Choose a mate. Both parents are consumed by the union — win or lose. Rarer pairs are far harder to breed; success forges a brand-new bloodline with boosted stats.'+
       (stardustBonus()>0?' ☄ Stardust bonus: +'+Math.round(stardustBonus()*100)+'% odds.':'')
