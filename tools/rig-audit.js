@@ -116,7 +116,8 @@ const SENTINELS = [
   ['Zebra', 'mammal'], ['Rabbit', 'mammal'], ['Squirrel', 'mammal'],
   ['Polar Bear', 'mammal'], ['Meerkat', 'mammal'],
   // legacy plan-based path (intentional; rig undefined)
-  ['Elephant', 'legacy'], ['Giraffe', 'legacy'], ['Rhinoceros', 'legacy'],
+  ['Elephant', 'mammal'],   /* R1 wave 2 (2026-07-24): elephants route to the bespoke _mamSpecial 'elephant' (trunk/ears/ivory) — no longer the legacy plan-based path */
+  ['Giraffe', 'legacy'], ['Rhinoceros', 'legacy'],
   ['Earthworm', 'legacy'],
   // dedicated bat rig (Pass 4 P0: were legacy winged/insect-like)
   ['Bat', 'bat'], ['Vampire Bat', 'bat'], ['Fruit Bat', 'bat'], ['Insect-Eating Bat', 'bat'],
