@@ -1669,11 +1669,11 @@
      containing block and collapse it to the chip's width */
   #bellwrap{right:auto;left:calc(50% + 15px);transform:none;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
   /* UI v5: EVERY panel opens as a SHEET ABOVE the dock — aligned, never overlapping it */
-  #helppop{bottom:calc(112px + env(safe-area-inset-bottom,0px)) !important;right:8px}
+  #helppop{bottom:calc(142px + env(safe-area-inset-bottom,0px)) !important;right:8px}
   #setpanel,#tray,#chpanel,#codex,#log,#records{
     position:fixed;top:auto !important;left:8px;right:8px;width:auto;
-    bottom:calc(112px + env(safe-area-inset-bottom,0px));
-    max-height:calc(100dvh - var(--topbar-h,110px) - 132px)}
+    bottom:calc(142px + env(safe-area-inset-bottom,0px));
+    max-height:calc(100dvh - var(--topbar-h,110px) - 162px)}
   /* bottom-pinned training cards clear the dock */
   #tutbox.dodge{bottom:calc(104px + env(safe-area-inset-bottom,0px))}
   }
@@ -1714,7 +1714,13 @@
     color:#cfe8ff;background:rgba(127,208,255,0.10);border:1px solid rgba(127,208,255,0.4)}
   .brbtn:hover{background:rgba(127,208,255,0.2)}
   /* UI v4 (Nick 2026-07-25): the board buttons wear EMOJI ICONS everywhere */
-  #pcdxbtn .ico,#codexbtn .ico,#logbtn .ico,#cargobtn .ico,#recbtn .ico{font-size:12px;line-height:1}
+  #pcdxbtn .ico,#codexbtn .ico,#logbtn .ico,#cargobtn .ico,#recbtn .ico,#chbtn .ico{font-size:12px;line-height:1}
+  /* UI v9 (Nick): status lights retired — the icons carry identity now */
+  #pcdxbtn .dot,#codexbtn .dot,#logbtn .dot,#cargobtn .dot,#chbtn .dot{display:none}
+  /* SELECTION GROWTH (Nick): the open board's chip grows a touch; closing returns it */
+  #pcdxbtn.sel,#codexbtn.sel,#logbtn.sel,#cargobtn.sel,#recbtn.sel,#chbtn.sel{
+    border-color:rgba(255,217,106,0.8);box-shadow:0 0 18px rgba(255,217,106,0.30)}
+  #pcdxbtn.sel .ico,#codexbtn.sel .ico,#logbtn.sel .ico,#cargobtn.sel .ico,#recbtn.sel .ico,#chbtn.sel .ico{font-size:15px}
   @media (min-width:701px){
     /* DESKTOP v6 (Nick: 'align everything where the Charters box is'): ONE
        COMMAND LINE at the Charters level — Charters · 📖 Compendium on the
@@ -1729,19 +1735,16 @@
     #codex{left:18px;right:auto;top:calc(var(--topbar-h,100px) + 88px)}
     #log{top:calc(var(--topbar-h,100px) + 88px)}
     #chpanel{top:calc(var(--topbar-h,100px) + 88px)}
-    /* the bottom utility QUARTET, evenly centered above the hint:
-       🏆 Records · ? Guide · 🔔 Notifications · ⚙ Settings */
-    #recbtn{top:auto !important;right:auto;left:50%;transform:translateX(calc(-50% - 118px));bottom:54px;z-index:14}
-    #helpbtn{right:auto;left:50%;transform:translateX(calc(-50% - 34px));bottom:56px}
-    #bellwrap{right:auto;left:calc(50% + 17px);bottom:56px}
-    #setbtn{right:auto;left:50%;transform:translateX(calc(-50% + 102px));bottom:56px}
-    #setbtn:hover{transform:translateX(calc(-50% + 102px)) rotate(60deg)}
-    /* bottom dialogs open ABOVE the caption text — never over it (Nick) */
-    #records{top:auto !important;left:calc(50% - 159px);right:auto;bottom:150px}
-    #tray{left:calc(50% - 120px);right:auto;bottom:150px;top:auto}
-    #setpanel{left:50%;right:auto;transform:translateX(-50%);bottom:150px}
-    #helppop{left:50%;right:auto;transform:translateX(-50%);bottom:150px}
-    #context{bottom:102px}
+    /* UI v9 (Nick): utilities live in the BOTTOM-RIGHT corner on tablet+desktop,
+       evenly pitched — 🏆 Records · ? Guide · 🔔 Notifications · ⚙ Settings
+       (⚙ right:16 and ? right:58 come from the base rules). */
+    #bellwrap{right:100px;left:auto;bottom:16px}
+    #recbtn{top:auto !important;right:142px;left:auto;transform:none;bottom:14px;z-index:14}
+    /* corner panels rise from their buttons; SETTINGS centers between Prime and the caption */
+    #records{top:auto !important;left:auto;right:12px;bottom:60px}
+    #setpanel{left:50%;right:auto;top:50%;bottom:auto;transform:translate(-50%,-50%)}
+    /* Charters matches its row-mates — the OPEN state is the size signal now */
+    #chbtn{font-size:11px;padding:8px 13px}
   }
 </style>
 </head>
@@ -1979,7 +1982,7 @@
   <p class="note">Same universe on every device — anyone who opens this link lands on this exact world.</p>
 </div></div>
 
-<div id="logbtn" role="button" tabindex="0" data-tip="Your bookmarked places — tap any entry to travel there." data-guide="atlas"><span class="dot"></span><span class="ico">🌐</span><span class="lbl">Star Atlas</span> <span class="n" id="logcount">0</span></div>
+<div id="logbtn" role="button" tabindex="0" data-tip="Your bookmarked places — tap any entry to travel there." data-guide="atlas"><span class="dot"></span><span class="ico">🌍</span><span class="lbl">Star Atlas</span> <span class="n" id="logcount">0</span></div>
 <div id="log"></div>
 <div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="dot bio"></span><span class="ico">📖</span><span class="lbl">Compendium</span> <span class="n" id="codexcount">0</span></div>
 <div id="codex"></div>
@@ -23219,6 +23222,15 @@ eventsEl.addEventListener('click', e=>{
    too. True modals (duel, reveal, name prompts, death, ending) stand
    apart: a stray tap must never eat a fight. Hidden hand during
    training — the tutorial keeps its own locks. */
+/* UI v9 (Nick): SELECTION GROWTH — the open board's button wears .sel (its chip
+   grows + glows); closing returns it. Synced after every click/key, from the
+   registry's own open() truth. */
+function syncSelState(){
+  try{ for(const p of PANELS){ const b=document.querySelector(p.btn);
+    if(b) b.classList.toggle('sel', !!p.open()); } }catch(_){ }
+}
+document.addEventListener('click', ()=>setTimeout(syncSelState,0), true);
+document.addEventListener('keydown', ()=>setTimeout(syncSelState,0), true);
 const PANELS=[
   {id:'log',      el:()=>logEl,    btn:'#logbtn',    x:1, open:()=>logOpen,    close:()=>{ logOpen=false;    logEl.style.display='none'; }},
   {id:'codex',    el:()=>codexEl,  btn:'#codexbtn',  x:1, open:()=>codexOpen,  close:()=>{ codexOpen=false;  codexEl.style.display='none'; }},
