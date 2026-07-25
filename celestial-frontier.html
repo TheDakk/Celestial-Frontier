@@ -9143,12 +9143,70 @@ function hdBeastBare(G,seed){
   }catch(_){ }
   return cv;
 }
+function _leafRGBA(s){   /* parse a leaf color ('rgba(r,g,b,a)' or '#hex') → [r,g,b,a] */
+  s=String(s);
+  if(s[0]==='#'){ const n=parseInt(s.slice(1),16); return [(n>>16)&255,(n>>8)&255,n&255,1]; }
+  const m=s.match(/([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)(?:\s*,\s*([\d.]+))?/);
+  return m?[+m[1],+m[2],+m[3],m[4]!==undefined?+m[4]:1]:[46,96,54,0.9];
+}
+/* ═══ THE CANOPY UNION (Gold Master 2026-07-25, wave-1 blocker #1) ═══
+   Control lobes are never rendered directly. They're unioned into ONE
+   continuous silhouette on an offscreen mask — each lobe drawn as a seeded
+   low-frequency WOBBLE blob, so the union edge is organic — then filled with
+   a single top-lit gradient; soft interior shadow pockets at the lobe seams
+   and highlight clumps on the lit side restore volume without ever showing a
+   construction circle. Acceptance (review §4): at 100%/200% the circles used
+   to build a canopy must not be individually visible. */
+function _canopyMass(g2, S, lobes, leaf, rr){
+  if(!lobes||!lobes.length) return;
+  const C=_leafRGBA(leaf), a0=C[3];
+  const m=document.createElement('canvas'); m.width=m.height=S;
+  const mg=m.getContext('2d'); mg.fillStyle='#fff';
+  for(const L of lobes){
+    const lx=L[0], ly=L[1], lrx=L[2], lry=(L[3]!==undefined?L[3]:L[2]);
+    const ph=rr()*TAU, ph2=rr()*TAU, k1=0.16+rr()*0.14, k2=0.07+rr()*0.09;
+    mg.beginPath();
+    for(let i=0;i<=22;i++){ const a=i/22*TAU;
+      const w=1+Math.sin(a*3+ph)*k1+Math.sin(a*5+ph2)*k2;
+      const px=lx+Math.cos(a)*lrx*w, py=ly+Math.sin(a)*lry*w;
+      if(i) mg.lineTo(px,py); else mg.moveTo(px,py); }
+    mg.closePath(); mg.fill();
+  }
+  /* unified fill, clipped to the union */
+  mg.globalCompositeOperation='source-in';
+  let top=S, bot=0;
+  for(const L of lobes){ const ry=(L[3]!==undefined?L[3]:L[2]);
+    top=Math.min(top,L[1]-ry*1.3); bot=Math.max(bot,L[1]+ry*1.3); }
+  const hi=[Math.min(255,C[0]*1.28+22)|0,Math.min(255,C[1]*1.24+24)|0,Math.min(255,C[2]*1.18+14)|0];
+  const lo=[(C[0]*0.44)|0,(C[1]*0.50)|0,(C[2]*0.44)|0];
+  const fg=mg.createLinearGradient(0,top,0,bot);
+  fg.addColorStop(0,'rgba('+hi.join(',')+','+a0+')');
+  fg.addColorStop(0.55,'rgba('+(C[0]|0)+','+(C[1]|0)+','+(C[2]|0)+','+a0+')');
+  fg.addColorStop(1,'rgba('+lo.join(',')+','+a0+')');
+  mg.fillStyle=fg; mg.fillRect(0,0,S,S);
+  /* interior volume: soft pockets + lit clumps (gradients only, no hard rims) */
+  mg.globalCompositeOperation='source-atop';
+  for(const L of lobes){
+    const lrx=L[2], lry=(L[3]!==undefined?L[3]:L[2]);
+    if(lrx<S*0.018) continue;
+    const sx=L[0]+(rr()-0.5)*lrx*0.5, sy=L[1]+lry*(0.35+rr()*0.3), sr2=Math.max(2,lrx*(0.7+rr()*0.4));
+    const sg=mg.createRadialGradient(sx,sy,1,sx,sy,sr2);
+    sg.addColorStop(0,'rgba(6,14,8,'+(0.20+rr()*0.10).toFixed(3)+')'); sg.addColorStop(1,'rgba(6,14,8,0)');
+    mg.fillStyle=sg; mg.beginPath(); mg.arc(sx,sy,sr2,0,TAU); mg.fill();
+    const hx=L[0]-lrx*0.3, hy=L[1]-lry*(0.3+rr()*0.25), hr2=Math.max(2,lrx*(0.5+rr()*0.3));
+    const hg=mg.createRadialGradient(hx,hy,1,hx,hy,hr2);
+    hg.addColorStop(0,'rgba('+hi.join(',')+',0.28)'); hg.addColorStop(1,'rgba(0,0,0,0)');
+    mg.fillStyle=hg; mg.beginPath(); mg.arc(hx,hy,hr2,0,TAU); mg.fill();
+  }
+  mg.globalCompositeOperation='source-over';
+  g2.drawImage(m,0,0);
+}
 function _hdPlantBare(seed, sp){
   /* every world grows its own flora. sp.form (v1.6 Nick's bible) picks a
      BOTANICAL rig — tree/palm/conifer/shrub/herb/flower/grass/cactus/fern/
      vine/seaweed/crop/moss/trap — so a fern never reads as an oak. Vista &
-     procedural callers pass no form → 'tree' (the original recursive
-     silhouette), so their art is byte-unchanged. */
+     procedural callers pass no form → 'tree' (the recursive silhouette,
+     crowned by the CANOPY UNION since the 2026-07-25 Gold pass). */
   sp=sp||{};
   const trunk=sp.trunk||'#14261a', leaf=sp.leaf||'rgba(46,96,54,0.9)', accent=sp.accent||leaf;
   const spread=sp.spread||1.05, depth0=sp.depth||4, lean=sp.lean!==undefined?sp.lean:0.2;
@@ -9208,13 +9266,13 @@ function _hdPlantBare(seed, sp){
       if(cf==='layered'){   // cedar/cypress: wide flat horizontal boughs
         for(let ti=0;ti<5;ti++){ const ty=S*(0.30+ti*0.115), w=S*(0.075+ti*0.04);
           g2.beginPath();g2.ellipse(bx,ty,w,S*0.026,0,0,7);g2.fill(); } }
-      else if(cf==='bushy'){   // juniper: irregular blobby shrub-tree
-        for(let i=0;i<13;i++){ g2.globalAlpha=0.65+r()*0.35;g2.beginPath();g2.arc(bx+(r()-0.5)*S*0.24,S*(0.30+r()*0.32),S*(0.05+r()*0.04),0,7);g2.fill(); } g2.globalAlpha=1; }
-      else if(cf==='dense'){   // yew: dark dense rounded mass
-        g2.beginPath();g2.ellipse(bx,S*0.42,S*0.135,S*0.22,0,0,7);g2.fill(); }
-      else if(cf==='round'){   // pine: rounded fuller crown
-        g2.beginPath();g2.ellipse(bx,S*0.36,S*0.135,S*0.16,0,0,7);g2.fill();
-        g2.beginPath();g2.ellipse(bx,S*0.5,S*0.10,S*0.09,0,0,7);g2.fill(); }
+      else if(cf==='bushy'){   // juniper: irregular blobby shrub-tree — union mass
+        const lb=[]; for(let i=0;i<13;i++) lb.push([bx+(r()-0.5)*S*0.24, S*(0.30+r()*0.32), S*(0.05+r()*0.04)]);
+        _canopyMass(g2,S,lb,leaf,r); }
+      else if(cf==='dense'){   // yew: dark dense rounded mass (wobble-edged)
+        _canopyMass(g2,S,[[bx,S*0.42,S*0.135,S*0.22]],leaf,r); }
+      else if(cf==='round'){   // pine: rounded fuller crown (one union mass)
+        _canopyMass(g2,S,[[bx,S*0.36,S*0.135,S*0.16],[bx,S*0.5,S*0.10,S*0.09]],leaf,r); }
       else {   // spire (spruce/fir): tall narrow tiered cone
         for(let ti=0;ti<6;ti++){ const ty=S*(0.22+ti*0.115), w=S*(0.028+ti*0.036);
           g2.beginPath();g2.moveTo(bx,ty-S*0.07);g2.lineTo(bx-w,ty+S*0.05);g2.lineTo(bx+w,ty+S*0.05);g2.closePath();g2.fill(); } }
@@ -9223,9 +9281,8 @@ function _hdPlantBare(seed, sp){
     } else if(form==='shrub'){
       g2.strokeStyle=trunk;g2.lineWidth=S*0.014;
       for(let i=0;i<4;i++){ const a=-1.5708+(i-1.5)*0.32;g2.beginPath();g2.moveTo(bx,by);g2.lineTo(bx+Math.cos(a)*S*0.22,by+Math.sin(a)*S*0.4);g2.stroke(); }
-      for(let i=0;i<14;i++){ const cx2=bx+(r()-0.5)*S*0.34, cy2=S*(0.42+r()*0.34);
-        g2.globalAlpha=0.6+r()*0.35;g2.fillStyle=leaf;g2.beginPath();g2.arc(cx2,cy2,S*(0.045+r()*0.05),0,7);g2.fill(); }
-      g2.globalAlpha=1;
+      { const lb=[]; for(let i=0;i<14;i++) lb.push([bx+(r()-0.5)*S*0.34, S*(0.42+r()*0.34), S*(0.045+r()*0.05)]);
+        _canopyMass(g2,S,lb,leaf,r); }
       if(sp.fruit){ g2.fillStyle=accent;for(let i=0;i<6;i++){ g2.beginPath();g2.arc(bx+(r()-0.5)*S*0.3,S*(0.5+r()*0.25),S*0.014,0,7);g2.fill(); } }
     } else if(form==='herb' && sp.banana){   // BANANA: stout pseudostem + broad paddle leaves + hanging cluster (Nick)
       g2.strokeStyle=trunk;g2.lineWidth=S*0.03;g2.lineCap='round';g2.beginPath();g2.moveTo(bx,by);g2.lineTo(bx,S*0.32);g2.stroke();
@@ -9446,38 +9503,37 @@ function _hdPlantBare(seed, sp){
     g2.quadraticCurveTo(bx,S*0.30,bx+S*0.07,S*0.34);g2.quadraticCurveTo(bx+S*0.14,S*0.62,bx+S*0.045,by);g2.closePath();g2.fill();
     g2.strokeStyle=trunk;g2.lineWidth=S*0.02;g2.lineCap='round';
     for(let i=0;i<6;i++){ const a=-2.0+i*0.32;g2.beginPath();g2.moveTo(bx,S*0.34);g2.lineTo(bx+Math.cos(a)*S*0.16,S*0.34+Math.sin(a)*S*0.13);g2.stroke(); }
-    g2.fillStyle=leaf;for(let i=0;i<7;i++){ g2.globalAlpha=0.6+r()*0.3;g2.beginPath();g2.arc(bx+(r()-0.5)*S*0.34,S*(0.18+r()*0.1),S*0.04,0,7);g2.fill(); } g2.globalAlpha=1;
+    { const lb=[]; for(let i=0;i<7;i++) lb.push([bx+(r()-0.5)*S*0.34, S*(0.18+r()*0.1), S*(0.045+r()*0.018)]);
+      _canopyMass(g2,S,lb,leaf,r); }
     glow(bx,S*0.22,S*0.18); return cv;
   }
   if(tform==='acacia'){   // tall bare trunk under a wide FLAT umbrella canopy
     g2.strokeStyle=trunk;g2.lineWidth=S*0.024;g2.lineCap='round';
     g2.beginPath();g2.moveTo(bx,by);g2.lineTo(bx,S*0.34);
     for(let i=0;i<5;i++){ const a=-1.95+i*0.3;g2.moveTo(bx,S*0.36);g2.lineTo(bx+Math.cos(a)*S*0.22,S*0.28+Math.sin(a)*S*0.02); } g2.stroke();
-    g2.fillStyle=leaf;g2.beginPath();g2.ellipse(bx,S*0.24,S*0.28,S*0.055,0,0,7);g2.fill();
-    g2.globalAlpha=0.7;for(let i=0;i<9;i++){ g2.beginPath();g2.arc(bx+(r()-0.5)*S*0.5,S*0.24+(r()-0.5)*S*0.05,S*0.04,0,7);g2.fill(); } g2.globalAlpha=1;
+    { const lb=[[bx,S*0.24,S*0.28,S*0.055]];   // the flat umbrella + broken clumps, one union
+      for(let i=0;i<9;i++) lb.push([bx+(r()-0.5)*S*0.5, S*0.24+(r()-0.5)*S*0.05, S*0.04, S*0.026]);
+      _canopyMass(g2,S,lb,leaf,r); }
     glow(bx,S*0.24,S*0.2); return cv;
   }
+  const _tips=[];   /* CANOPY UNION: tips collect here; the crown renders ONCE, as one mass */
   const branch=(x,y,ang,len,w,depth)=>{
     const nx2=x+Math.cos(ang)*len,ny2=y+Math.sin(ang)*len;
     g2.strokeStyle=trunk;g2.lineWidth=w;g2.lineCap='round';
     g2.beginPath();g2.moveTo(x,y);g2.lineTo(nx2,ny2);g2.stroke();
-    if(depth<=0){
-      for(let i=0;i<5;i++){const la=ang+(r()-0.5)*2.4,lr=3+r()*8;
-        g2.globalAlpha=0.6+r()*0.35;g2.fillStyle=leaf;
-        g2.beginPath();g2.ellipse(nx2+Math.cos(la)*lr*0.6,ny2+Math.sin(la)*lr*0.6,lr*0.65,lr*0.3,la,0,7);g2.fill();}
-      if(sp.lum){ /* luminous flora glow at the branch tips */
-        g2.save();g2.globalCompositeOperation='lighter';g2.globalAlpha=0.55;
-        const lg2=g2.createRadialGradient(nx2,ny2,1,nx2,ny2,11);
-        lg2.addColorStop(0,sp.lum);lg2.addColorStop(1,'rgba(0,0,0,0)');
-        g2.fillStyle=lg2;g2.beginPath();g2.arc(nx2,ny2,11,0,7);g2.fill();
-        g2.restore();
-      }
-      g2.globalAlpha=1;return;
-    }
+    if(depth<=0){ _tips.push([nx2,ny2, 7+r()*6, 5+r()*4]); return; }
     const kids=2+(r()<0.4?1:0);
     for(let k=0;k<kids;k++)branch(nx2,ny2,ang+(r()-0.5)*spread,len*(0.64+r()*0.14),w*0.6,depth-1);
   };
   branch(S/2,S*0.985,-1.5708+(r()-0.5)*lean,S*0.2,S*0.03,depth0);
+  _canopyMass(g2,S,_tips,leaf,r);
+  if(sp.lum){ /* luminous flora: tip glows over the unified crown */
+    g2.save();g2.globalCompositeOperation='lighter';g2.globalAlpha=0.55;
+    for(const t of _tips){ const lg2=g2.createRadialGradient(t[0],t[1],1,t[0],t[1],11);
+      lg2.addColorStop(0,sp.lum);lg2.addColorStop(1,'rgba(0,0,0,0)');
+      g2.fillStyle=lg2;g2.beginPath();g2.arc(t[0],t[1],11,0,7);g2.fill(); }
+    g2.restore();g2.globalAlpha=1;
+  }
   /* R2 IDENTITY ORGANS (ProofSet-2 review): the named fruit/pod IS the plant's
      identity — oversized, readable at icon size, anchored to canopy or trunk */
   if(sp.organ){
