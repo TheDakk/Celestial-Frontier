@@ -2320,7 +2320,11 @@ function surfaceColor(P, u, lat, fbm, fx){
          halo breaks into real coastline variety */
       const shN=fbm(u*5.2+31, lat*5.2+13, 3);
       const shore=shN<0.40?[172,184,122]:(shN>0.72?[152,146,128]:[198,182,134]);
-      c=mix([64,150,185], mix(shore,land, sm(e,0.468,0.535)), sm(e,0.44,0.492));
+      /* wave-3 (Gold Master §6.1): the shore BAND WIDTH varies with the type —
+         cliff stretches plunge to the water (near-zero apron, the rim BREAKS),
+         wetlands run a broad green apron, beaches sit between */
+      const shW=shN>0.72?0.014:(shN<0.40?0.052:0.067);
+      c=mix([64,150,185], mix(shore,land, sm(e,0.468,0.468+shW)), sm(e,0.44,0.492));
     }
     /* polar caps (Nick, 2026-07-24: "pure white, don't blend"): the cap edge
        follows a NOISE coastline instead of a clean latitude ring, sea ice
@@ -2430,12 +2434,21 @@ function renderPlanetSprite(P, PX){
       let cr=col[0], cg2=col[1], cb=col[2];
       /* clouds drifting over living worlds */
       if(P.type==='terran'||P.type==='ocean'){
-        /* visual review §6.4: a seeded WIND stretches fronts along the flow */
+        /* visual review §6.4: a seeded WIND stretches fronts along the flow.
+           wave-3 (Gold Master §6.1): a low-freq FIELD mask breaks the deck into
+           weather SYSTEMS with clear sky between, and each bank throws a soft
+           SHADOW down-light onto the surface — depth, not an even sprinkle. */
         const wf2=0.55+((hashInt(P.seed>>>0,0x33D,2)&255)/255)*0.5;
-        const cl=fbm(u*2.6*wf2+40, dy*2.6/(0.75+wf2*0.35)-17, 5);
+        const fld=fbm(u*0.9+7, dy*0.9+61, 3);
+        const fgate=0.45+(fld<0.38?0:(fld>0.60?1:((fld-0.38)/0.22)))*0.75;
+        const cl=fbm(u*2.6*wf2+40, dy*2.6/(0.75+wf2*0.35)-17, 5)*fgate;
         if(cl>0.55){
           const ca=Math.min((cl-0.55)*3.2,0.85);
           cr=cr*(1-ca)+250*ca; cg2=cg2*(1-ca)+252*ca; cb=cb*(1-ca)+255*ca;
+        } else {
+          const clS=fbm((u+0.055)*2.6*wf2+40, (dy+0.05)*2.6/(0.75+wf2*0.35)-17, 5)*fgate;
+          if(clS>0.58){ const sa=Math.min((clS-0.58)*1.8,0.30);
+            cr*=(1-sa*0.8); cg2*=(1-sa*0.8); cb*=(1-sa*0.7); }
         }
       }
       /* gas giants with their immense fields wear auroral polar ovals —
