@@ -67,14 +67,42 @@ module.exports = {
     { // terminator on the moon, star to the left (live-view grammar)
       g.save(); g.beginPath(); g.arc(1043,178,25,0,TAU); g.clip();
       g.fillStyle='rgba(4,6,18,0.55)'; g.beginPath(); g.arc(1043+14,178,24,0,TAU); g.fill(); g.restore(); }
-    // ringed gas giant + two HD moons
+    // ringed gas giant + two HD moons — the GAME's exact draw grammar (2026-07-25
+    // Gold fix: the old mock's crude rect clip was the review's "seam"; the real
+    // renderer splits rear/front in ring-plane space with BOTH shadow passes)
     const GAS={type:'gas',seed:136,hue:44,spot:false};
     const rspr=_ringSprite(136,'224,206,166');
-    const GX=1300, GY=330, GR=130;
-    g.drawImage(rspr, GX-GR*1.7, GY-GR*1.7, GR*3.4, GR*3.4);          // full ring behind
-    g.drawImage(raster(GAS,512,null), GX-GR, GY-GR, GR*2, GR*2);      // planet over its back half
-    g.save(); g.beginPath(); g.rect(GX-GR*1.7, GY, GR*3.4, GR*1.7); g.clip();
-    g.drawImage(rspr, GX-GR*1.7, GY-GR*1.7, GR*3.4, GR*3.4); g.restore();  // front half back on top
+    const GX=1300, GY=330, GR=130, tilt=0.42, ANG=2.6;   // star to the left
+    g.save(); g.translate(GX,GY);
+    // rear half (dimmed) + the planet's shadow pooling on it
+    g.save(); g.rotate(0.45); g.scale(1,tilt);
+    g.globalAlpha=0.8;
+    g.beginPath(); g.rect(-GR*2.2,-GR*2.2,GR*4.4,GR*2.2); g.clip();
+    g.drawImage(rspr,-GR*2.1,-GR*2.1,GR*4.2,GR*4.2);
+    { const _sa=ANG-0.45, _sx=Math.cos(_sa)*GR*1.55, _sy=Math.sin(_sa)*GR*1.55/Math.max(0.2,tilt);
+      const _shg=g.createRadialGradient(_sx,_sy,0,_sx,_sy,GR*1.35);
+      _shg.addColorStop(0,'rgba(2,3,8,0.55)'); _shg.addColorStop(1,'rgba(2,3,8,0)');
+      g.fillStyle=_shg; g.fillRect(-GR*2.2,-GR*2.2,GR*4.4,GR*2.2); }
+    g.restore(); g.globalAlpha=1;
+    // the planet: lit toward the star, ring-shadow band inside the clip
+    g.save(); g.beginPath(); g.arc(0,0,GR,0,TAU); g.clip();
+    g.drawImage(raster(GAS,512,null), -GR,-GR, GR*2, GR*2);
+    { const lx2=-Math.cos(ANG)*GR*0.5, ly2=-Math.sin(ANG)*GR*0.5;
+      const lg3=g.createRadialGradient(lx2,ly2,0,0,0,GR*1.5);
+      lg3.addColorStop(0,'rgba(255,240,220,0.16)'); lg3.addColorStop(0.5,'rgba(0,0,0,0)'); lg3.addColorStop(1,'rgba(0,0,12,0.42)');
+      g.fillStyle=lg3; g.fillRect(-GR,-GR,GR*2,GR*2); }
+    g.save(); g.rotate(0.45);
+    { const _rsg=g.createLinearGradient(0,GR*0.02,0,GR*0.30);
+      _rsg.addColorStop(0,'rgba(2,3,10,0)'); _rsg.addColorStop(0.4,'rgba(2,3,10,0.26)'); _rsg.addColorStop(1,'rgba(2,3,10,0)');
+      g.fillStyle=_rsg; g.fillRect(-GR,GR*0.02,GR*2,GR*0.28); }
+    g.restore();
+    g.restore();
+    // front half riding over the planet's lower limb
+    g.save(); g.rotate(0.45); g.scale(1,tilt);
+    g.beginPath(); g.rect(-GR*2.2,0,GR*4.4,GR*2.2); g.clip();
+    g.drawImage(rspr,-GR*2.1,-GR*2.1,GR*4.2,GR*4.2);
+    g.restore();
+    g.restore();
     g.drawImage(_moonSpr(1,true), GX-210, GY+120, 44, 44);
     g.drawImage(_moonSpr(2,true), GX+80, GY-215, 36, 36);
     // ════ SCENE B — black-hole system ════
