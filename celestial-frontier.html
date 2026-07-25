@@ -258,9 +258,6 @@
      already land — beside ? and ⚙; the tray rises Windows-style above it.
      Desktop corner row: bell · ? · ⚙. Phones: bell rides above the ? bookend. */
   #bellwrap{position:fixed;right:100px;bottom:16px;z-index:14}
-  @media (max-width:700px){
-    #bellwrap{right:10px;bottom:calc(58px + env(safe-area-inset-bottom,0px))}
-  }
   #bell{position:relative;font-size:15px;line-height:1;cursor:pointer;width:34px;height:34px;padding:0;border-radius:50%;
     display:flex;align-items:center;justify-content:center;box-sizing:border-box;
     background:var(--glass);border:1px solid var(--glass-brd);
@@ -763,9 +760,7 @@
      master fold holding the category folds; opening the outer must not
      spill the inner bodies */
   #stats .agrp.open > .agbody{display:block}
-  #stats .agrp.open > .aghead .arr{transform:rotate(90deg)}
   #stats .agbody .agrp{margin:4px 0}
-  #stats .aghead .arr{display:inline-block;transition:transform .15s;margin-right:6px;color:var(--faint)}
 
   /* ---- breed / feed picker ---- */
   #pickbox{position:fixed;inset:0;z-index:35;display:none;align-items:center;justify-content:center;
@@ -796,8 +791,6 @@
     font:600 11px var(--ui);letter-spacing:.02em;color:#dbe2f5;background:rgba(150,162,210,0.06)}
   #codex .cgh:hover{background:rgba(150,162,210,0.12)}
   #codex .cgh .cnt{color:var(--plasma);letter-spacing:.03em}
-  #codex .cgh .arr{display:inline-block;transition:transform .15s;margin-right:6px;color:var(--faint)}
-  #codex .cgrp.open .arr{transform:rotate(90deg)}
   #codex .cgb{display:none;padding:2px 6px 6px}
   #codex .cgrp.open .cgb{display:block}
   #codex .sp .mods{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
@@ -1230,8 +1223,6 @@
     transition:background .15s;border:1px solid transparent}
   #codex .sp:hover{background:rgba(127,230,160,0.07)}
   #codex .sp.sel{background:rgba(127,230,160,0.12);border-color:rgba(127,230,160,0.35)}
-  #codex .sp .kd{flex:none;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;
-    justify-content:center;font-size:15px;background:#06120c;box-shadow:0 0 0 1px rgba(127,230,160,0.18)}
   #codex .sp .art{flex:none;width:46px;height:46px;border-radius:9px;background:#05060c;
     box-shadow:0 0 0 1px rgba(127,230,160,0.18);object-fit:cover}
   #reveal{position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;
@@ -1396,8 +1387,6 @@
     font:600 10px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--plasma);background:rgba(150,162,210,0.06)}
   .fabgrp .fghead:hover{background:rgba(150,162,210,0.12)}
   .fabgrp .fghead .cnt{margin-left:auto;color:#7fe6a0;letter-spacing:.04em}
-  .fabgrp .fghead .arr{display:inline-block;transition:transform .15s;color:var(--faint)}
-  .fabgrp.open > .fghead .arr{transform:rotate(90deg)}
   .fabgrp .fgbody{display:none;padding:4px 6px 6px}
   .fabgrp.open > .fgbody{display:block}
   /* ---- v1.5.2 THE RECORDS BOARD: trophies out of the mirror ---- */
@@ -1422,10 +1411,8 @@
     font:600 10px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--dim);background:rgba(150,162,210,0.06)}
   #records .aghead:hover{background:rgba(150,162,210,0.12)}
   #records .aghead .cnt{color:var(--plasma);letter-spacing:.04em}
-  #records .aghead .arr{display:inline-block;transition:transform .15s;margin-right:6px;color:var(--faint)}
   #records .agbody{padding:4px 10px 7px;display:none}
   #records .agrp.open > .agbody{display:block}
-  #records .agrp.open > .aghead .arr{transform:rotate(90deg)}
   #records .ach{display:flex;gap:8px;align-items:baseline;font-size:11px;margin:5px 0;color:#dde3f5;line-height:1.35}
   #records .ach.off{opacity:0.5}
   #records .ach .ic{flex:none}
@@ -1475,7 +1462,6 @@
        so the inventory tabs surface without a scroll; sockets stay ≥44px touch */
     #doll .dollwrap{width:min(62vw,240px)}
     #doll .dsock{width:44px;height:44px}
-    #tray{width:min(290px,calc(100vw - 20px));right:8px;bottom:calc(100px + env(safe-area-inset-bottom,0px))}
     #primebox .card,#endingbox .card,#guidebox .card{padding:18px 14px}
     #context{bottom:calc(96px + env(safe-area-inset-bottom,0px));font-size:11.5px}
     #hint{bottom:calc(60px + env(safe-area-inset-bottom,0px))}
@@ -1658,8 +1644,6 @@
     display:flex; align-items:center; justify-content:center; box-sizing:border-box}
   #pcdxbtn .lbl,#codexbtn .lbl,#logbtn .lbl,#cargobtn .lbl,#recbtn .lbl,#chbtn .lbl{display:none}
   #pcdxbtn .ico,#codexbtn .ico,#logbtn .ico,#cargobtn .ico,#recbtn .ico,#chbtn .ico{font-size:14px}
-  /* the status lights ride the chip corner on phones — attention signal without inline clutter */
-  #pcdxbtn .dot,#codexbtn .dot,#logbtn .dot,#cargobtn .dot,#chbtn .dot{position:absolute;top:3px;right:5px;width:5px;height:5px;margin:0}
   /* ROW 1 — the boards, Nick's order: 📜 Charters · 📖 Compendium · ✦ Prime · 🛠 Shipyard · 🗺 Atlas */
   #chbtn{bottom:calc(60px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 128px))}
   #codexbtn{bottom:calc(60px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 64px))}
@@ -1687,7 +1671,10 @@
   #tutbox.dodge{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
   }
   /* the pinned-recipe chip (QoL h) — rides under the charter button */
-  #pinchip{position:fixed;left:18px;top:calc(var(--topbar-h,100px) + 46px);z-index:9;display:flex;align-items:center;gap:5px;
+  /* v1.7 UI v11 fix (code review): the chips were anchored for the pre-v6 left
+     rail and sat ON TOP of the v11 Charters/Compendium stack (topbar+8..+83),
+     eating the Compendium button's clicks — they now live BELOW the stack */
+  #pinchip{position:fixed;left:18px;top:calc(var(--topbar-h,100px) + 92px);z-index:9;display:flex;align-items:center;gap:5px;
     font-family:var(--ui);font-size:10.5px;letter-spacing:.04em;color:var(--dim);cursor:pointer;
     padding:6px 11px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-brd);
     backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);max-width:min(62vw,340px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1706,7 +1693,7 @@
     border:1px solid rgba(127,230,160,0.45)}
   #pickbulk:hover{background:rgba(127,230,160,0.18)}
   /* charter chip (QoL q) — stacks under the pin chip on the left rail line */
-  #chchip{position:fixed;left:18px;top:calc(var(--topbar-h,100px) + 82px);z-index:9;display:flex;align-items:center;gap:5px;
+  #chchip{position:fixed;left:18px;top:calc(var(--topbar-h,100px) + 128px);z-index:9;display:flex;align-items:center;gap:5px;
     font-family:var(--ui);font-size:10.5px;letter-spacing:.04em;color:var(--dim);cursor:pointer;
     padding:6px 11px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,207,138,0.35);
     backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);max-width:min(62vw,340px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -9287,8 +9274,6 @@ function hdBeastBare(G,seed){
        never ink painted over it — every skin tints from the creature's own base
        (TXlo = its shadow, TXhi = its sheen), soft edges, varied alpha */
     const _cbT=G.base||[120,110,95];
-    const TXhi='rgba('+Math.min(255,(_cbT[0]*1.3+26)|0)+','+Math.min(255,(_cbT[1]*1.3+26)|0)+','+Math.min(255,(_cbT[2]*1.3+26)|0)+',';
-    const TXlo='rgba('+((_cbT[0]*0.42)|0)+','+((_cbT[1]*0.42)|0)+','+((_cbT[2]*0.42)|0)+',';
     if(skK===0){ const [sk,kg]=_layer();   /* scaled — overlapping scale rows */
       kg.lineWidth=1.3;
       /* FULL-CANVAS field (Nick round 4): the pattern covers everything the
@@ -12340,12 +12325,17 @@ function _hdDeckScene(o){
 /* sea-region biome keys that flip a terran landing to the shore/sea scene
    (coral and abyssal route to their own dedicated scenes) */
 const _SEA_WB=new Set(['opensea','archipelago','stormsea','volcisle','milksea']);
-/* the landing-region roll salt: the epoch keeps long-time drift, the landings
-   counter re-rolls EVERY descent (vista/presentation only — generation, veins
-   and odds all key off the world's anchor biome, untouched) */
+/* the landing-region roll salt: the epoch keeps long-time drift, the descent
+   sequence re-rolls EVERY descent (vista/presentation only — generation, veins
+   and odds all key off the world's anchor biome, untouched).
+   review fix: this used stats.landings, which only increments on a world's
+   FIRST landing — so re-landing the same world rolled the identical region for
+   a whole 20-minute epoch, on exactly the flow the feature was built for.
+   _descSeq is a session counter bumped once per openLandingVista. */
+let _descSeq=0;
 function _vistaSalt(){
   const ep=(typeof COSMIC_EPOCH!=='undefined')?COSMIC_EPOCH:0;
-  return ep*997 + ((stats&&stats.landings)||0);
+  return ep*997 + ((stats&&stats.landings)||0) + _descSeq*131;
 }
 function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xtra){
   /* the card drives the picture: type → scene, ACTIVE weather token →
@@ -12415,7 +12405,8 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
   /* the Abyssal world goes BENEATH the waves — the first sub-surface
      vantage (5b-ii); no sky, no weather, biolume for light */
   if(wb5 && wb5.k==='abyssal'){
-    const cvA=_hdAbyssScene({seed:P.seed, aqua:(xtra&&xtra.aqua)||0});
+    const cvA=_hdAbyssScene({seed:P.seed, aqua:(xtra&&xtra.aqua)||0,
+      genes:(xtra&&xtra.aquaGenes)||[]});   /* review fix: the deep's own species (the proof sheets passed genes; the game never did) */
     const headA='The deep — '+wb5.n;
     const vtTxtA='beneath the surface — tap to continue';
     _vistaMount(headA, cvA, vtTxtA);
@@ -12431,7 +12422,8 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
   /* the Coral-Shallows world drops beneath the bright shallows to its reef
      (v1.6 B15, review §5.4: the generic island scene read as a beach) */
   if(wb5 && wb5.k==='coral'){
-    const cvR=_hdReefScene({seed:P.seed, genes:genes});
+    const cvR=_hdReefScene({seed:P.seed,
+      genes:(xtra&&xtra.aquaGenes)||[]});   /* review fix: the reef swims the world's AQUA species — genes held the LAND herd (land beasts swam, real fish stayed invisible) */
     const headR='The reef — '+wb5.n;
     const vtTxtR='beneath the shallows — tap to continue';
     _vistaMount(headR, cvR, vtTxtR);
@@ -12866,6 +12858,7 @@ function _performLanding(pl){
 const journal=[];
 function openLandingVista(pl, _journal){
   const P=pl.P, time=perfTime();
+  _descSeq++;   /* every descent gets its own region roll (see _vistaSalt) */
   if(!pl._env){
     const er=mulberry32((P.seed^0xE57)>>>0);
     const tilt=er()<0.8;
@@ -12941,7 +12934,7 @@ function openLandingVista(pl, _journal){
   const airRoster=roster.filter(gg=>clsOf(gg)==='air' && gg.kingdom==='fauna');
   const airGenes=airRoster.slice(0,2).map(hdGenesFor);
   const _allSp=(d.species||[]);   /* review fix: roster is fauna-only — flora must come from the FULL species list */
-  const aerFloraG=_allSp.filter(gg=>gg.kingdom==='flora' && gg.af).slice(0,1).map(hdGenesFor);
+  const aerFloraG=_allSp.filter(gg=>gg.kingdom==='flora' && gg.af).slice(0,1);   /* RAW genomes (review fix: hdGenesFor is fauna-only — see floraGenes below) */
   /* the world's terrestrial flora species → the vista's actual plants (the same
      coherence the fauna have; aquatic/aerial flora are drawn by their own scenes).
      RAW genomes — hdFloraBare/_floraSpx read .form/.color/.seed off the genome
@@ -12961,6 +12954,9 @@ function openLandingVista(pl, _journal){
     floraOk, env.wx&&effWx==='snow', waterV,
     {ring:P.ring, stc:(st.star&&st.star.c)||null, herd:standable.length,
      aqua:roster.filter(gg=>clsOf(gg)==='aqua').length,
+     /* review fix: the abyss/reef sub-surface scenes draw the world's OWN
+        sea life — they need the AQUA-classed genes, not the land herd */
+     aquaGenes:roster.filter(gg=>clsOf(gg)==='aqua').slice(0,3).map(hdGenesFor),
      air:roster.filter(gg=>clsOf(gg)==='air').length,
      airGenes:airGenes, aerFlora:aerFloraG, floraGenes:floraGenes,
      wb:wbRoll,   /* the once-rolled landing region — scenery + species agree */
@@ -15560,7 +15556,7 @@ function loadSave(){
     for(const kv of (data.cgx||[])){ if(kv && MATERIALS[kv[0]]) cgx.set(kv[0], clamp(num(kv[1]), 0, cargo.get(kv[0])||0)); }
     if(typeof data.pin==='string' && ITEM_BY.has(data.pin)) pinnedRecipe=data.pin;   /* pinned recipe — absent/unknown ⇒ none */
     if(data.ctb==='mat'||data.ctb==='craft'||data.ctb==='gear') cargoTab=data.ctb;   /* sticky hold tab (QoL o) */
-    for(const id of (data.seen||[])) if(typeof id==='string') seenSp.add(id.slice(0,24));   /* new-dots (QoL j) */
+    if(Array.isArray(data.seen)) for(const id of data.seen){ if(typeof id==='string') seenSp.add(id.slice(0,24)); }   /* new-dots (QoL j); absent field backfills after the codex loads */
     /* journal: strings clamped, count capped — absent ⇒ empty */
     if(Array.isArray(data.jrn)) for(const j of data.jrn.slice(-24)){
       if(j && j.n) journal.push({s:num(j.s)|0, n:String(j.n).slice(0,28), w:String(j.w||'').slice(0,16), t:clamp(num(j.t),0,4102444800000)});
@@ -15676,6 +15672,11 @@ function loadSave(){
     for(const s of (data.evann||[])) _evAnnounced.add(s);
     for(const a of (data.ach||[])) unlocked.add(a);
     for(const e of (data.codex||[])){ const _sg=e && e.g && _sanitizeSavedGenome(e.g); if(_sg) _storeSpecies(_sg, e.f, e.w||null, true); }
+    /* review fix (veteran migration): a pre-v1.7 save has no `seen` field —
+       without a backfill every long-catalogued species wears the blue new-dot
+       on the very update that introduces it, drowning the signal. Absent field
+       (not an empty array) ⇒ everything already catalogued counts as viewed. */
+    if(!Array.isArray(data.seen)) for(const id of codex.keys()) seenSp.add(id);
     /* the field scout must still exist in the Compendium (it may have been
        bred away, fed away, or lost) — a stale id silently stands down */
     scoutId=(typeof data.scout==='string' && codex.has(data.scout)) ? data.scout : null;
@@ -20691,11 +20692,14 @@ function _fabHTML(){
       const gatedBy=sigLock ? null : (it.req && itemCount(it.req)<1 ? (ITEM_BY.get(it.req)||{}).name : null);
       const can=_canCraft(it) && !built;
       const bits=[];
-      const _SRC={Nd:'Geode worlds', Pm:'Carbon worlds', Vg:'Glass deserts', Pz:'Magma seas'};
+      /* review fix: this held its own 4-entry copy of the source map, which had
+         already drifted — none of the seven cosmics showed a source hint here
+         while the item card knew them all. _matUses is the single source. */
       for(const k in (it.cost||{})){
         const have=cargo.get(k)||0, need=it.cost[k];
+        const _src=(typeof _matUses==='function')?(_matUses(k)||{}).src:null;
         bits.push('<span style="color:'+(have>=need?'#7fe6a0':'#ff8a72')+'"><img class="ci" src="'+elemIcon(k)+'" alt="">'+need+'× '+matName(k)+
-          (_SRC[k]?'<span style="opacity:.6"> — '+_SRC[k]+'</span>':'')+' <span style="opacity:.65">('+have+')</span></span>');
+          (_src?'<span style="opacity:.6"> — '+_src+'</span>':'')+' <span style="opacity:.65">('+have+')</span></span>');
       }
       for(const k in (it.parts||{})){
         const have=itemCount(k), need=it.parts[k];
@@ -21992,7 +21996,7 @@ plateBox.addEventListener('click', e=>{
    ---------------------------------------------------------------- */
 let tutDone=false;            /* saved as `tut`; absent (edited save) reads done */
 let _tutRig=null;             /* while training, key rolls are rigged kind: {heal,breed,feed} */
-let _tutHook=null, _tutStep=-1, _tutSnap=null, _tutPreIds=null, _tutTimer=0, _tutHazT=0;
+let _tutHook=null, _tutStep=-1, _tutSnap=null, _tutPreIds=null, _tutHazT=0;
 /* the one funnel game systems report through; free when no tutorial listens */
 /* ----------------------------------------------------------------
    @section charters [app] — Expedition Charters: the hunt board
@@ -22531,6 +22535,12 @@ const TUT_STEPS=[
   /* Nick 2026-07-25 (order of operations): the LAST LESSON is the first quest —
      the recruit opens the 📜 board and ACCEPTS a contract themselves. Nothing
      is auto-accepted; the accept IS the graduation deed. */
+  /* review fix (restart deadlock): chacc deliberately survives _tutCleanup and
+     the save — a recruit who accepted here but quit before the finale restarts
+     training already HOLDING a contract, and _chAvailable hides accepted heads;
+     two such quits would leave the board with no Accept at all. If the deed is
+     already done, honor it and advance. */
+  enter:()=>{ if(chacc.size) setTimeout(()=>{ try{ gameEvent('chaccept',{id:[...chacc][0]}); }catch(_){ } }, 350); },
   text:()=>'Last lesson: the <b>📜 Charters</b> board is your quest line. Open it and press <b>Accept</b> on your first contract — nothing tracks until <em>you</em> accept it, and three may ride at once. Your pick will point your first real flight.',
   when:(t)=>t==='chaccept'},
  {id:'finale', btn:'✦ Begin the Expedition', enter:()=>_tutCleanup(),
@@ -22564,10 +22574,11 @@ function _tutGate(e){
 function _tutGateOn(){ for(const ev of TUT_GATE_EVTS) document.addEventListener(ev, _tutGate, {capture:true, passive:false}); }
 function _tutGateOff(){ for(const ev of TUT_GATE_EVTS) document.removeEventListener(ev, _tutGate, {capture:true}); }
 
-let _tutSpotT=0, _tutSpotD=0, _tutFlipT=0;   /* the spotlight tracks its target LIVE — layouts
+let _tutSpotT=0, _tutSpotD=0, _tutFlipT=0, _tutFlipOvr=-1;   /* the spotlight tracks its target LIVE — layouts
                       shift when dialogs open, text size changes or the topbar
                       reflows, and a once-per-step ring strands at stale spots */
 function _tutShow(){
+  _tutFlipOvr=-1;   /* each step's card starts on its ruled side; the flip latch is per-step */
   const s=TUT_STEPS[_tutStep]; if(!s){ tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT); clearTimeout(_tutSpotD); return; }
   tutEl.innerHTML='<div class="tt"><span>🧭 Field Training</span><span>'+(_tutStep+1)+' / '+TUT_STEPS.length+'</span></div>'+
     '<div class="tx">'+s.text()+'</div>'+
@@ -22621,9 +22632,15 @@ function _tutSpot(){
            halves — without a floor between flips the card would strobe at the
            tick rate. One flip a second settles instead of flickering. */
         const _fn=performance.now();
-        if(_fn-_tutFlipT>900){ _tutFlipT=_fn;
+        if(_fn-_tutFlipT>900){ _tutFlipT=_fn; _tutFlipOvr=_tutStep;
+          /* the flip LATCHES for this step (review fix): the side rules below
+             would otherwise re-assert the covering side next tick and the card
+             would teleport top↔bottom once a second for the whole step */
           tutEl.classList.toggle('dodge', !tutEl.classList.contains('dodge')); }
-        return;   /* re-test next tick from the dodged position */
+        /* fall through (review fix: the old early-return froze the ring and
+           --tut-bot/--tut-cap at stale coordinates while covered) — r stays
+           null, so no ring draws on the covered target, and the publish block
+           below re-anchors dialogs to the card's fresh side */
       }
     }
   }
@@ -22637,7 +22654,10 @@ function _tutSpot(){
        thing it points at, nor the menu's controls around it (e.g. the ✕/close
        toggle that lives up by the topbar). Steps may force a side with
        top/bottom when the target fills the screen and the rule can't choose. */
-    if(s && s.top){ tutEl.classList.remove('dodge'); }
+    /* a latched flip (card was covering its own target) outranks every side
+       rule for the remainder of the step — the covered side is proven wrong */
+    if(_tutFlipOvr===_tutStep){ }
+    else if(s && s.top){ tutEl.classList.remove('dodge'); }
     else if(s && s.bottom){ tutEl.classList.add('dodge'); }
     else if(r && tutEl.style.display==='block'){
       const spotMid=(r.top+r.bottom)/2;
@@ -22842,7 +22862,6 @@ function _tutEnsureEarth(){
   }catch(_){}
 }
 function _tutFinish(){
-  clearInterval(_tutTimer); _tutTimer=0;
   _tutGateOff();
   document.body.classList.remove('training');
   tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT); clearTimeout(_tutSpotD);
@@ -22852,12 +22871,19 @@ function _tutFinish(){
     toast('✦ Welcome to the Frontier', 'Training complete. Fly far, '+(explorerName||'Explorer')+' — the Guide (?) is always at hand.');
     /* the hunt board takes over where training leaves off: five starter
        charters teach the trades in order, each paid on the spot */
-    /* v1.5.2 (S4): the first trade link is accepted for you — the
-       "more charters await" handoff stays seamless; every later link
-       wants its ACCEPT from the board */
-    try{ chacc.add('st-land'); }catch(_){ }
+    /* v1.7 review fix: the v1.5.2 unconditional chacc.add('st-land') fought the
+       v11 graduation, where the recruit ACCEPTS their own pick (either chain
+       head) — a st-mercury graduate got st-land silently forced on top, and the
+       notification named the wrong charter. The recruit's accept now stands
+       alone; ONLY the skip path (which never saw the lesson, chacc empty) keeps
+       the v1.5.2 seamless handoff. */
     try{ showCargoBtn(); }catch(_){ }   /* the Shipyard stands on the rail from graduation on */
-    pushNotif('Expedition Charters', 'Your charter board is open (Charters, top left) — your first charter is accepted: Make planetfall. New charters are accepted from the board as each one reveals the next.');
+    if(chacc.size){
+      pushNotif('Expedition Charters', 'Your charter board is open (📜 Charters) — your accepted contract is tracking. New charters are accepted from the board as each one reveals the next.');
+    } else {
+      try{ chacc.add('st-land'); }catch(_){ }
+      pushNotif('Expedition Charters', 'Your charter board is open (📜 Charters) — your first charter is accepted: Make planetfall. New charters are accepted from the board as each one reveals the next.');
+    }
     /* v1.4: a NEW expedition starts its Ascent — the mainline announces
        itself once, right where training ends */
     if(typeof _ascActive==='function' && _ascActive()){
@@ -22869,7 +22895,6 @@ function _tutFinish(){
 }
 function tutAbort(){
   /* a reset mid-training: tear the overlay down without touching fresh state */
-  clearInterval(_tutTimer); _tutTimer=0;
   _tutGateOff();
   document.body.classList.remove('training');
   tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT); clearTimeout(_tutSpotD);
@@ -22899,8 +22924,7 @@ function startTutorial(){
   /* review perf catch (mobile): a second 350ms _tutSpot interval ran here on
      top of _tutShow's per-step 200ms tracker — the SAME function twice, ~8
      forced layout hit-tests/sec on the phone. The per-step tracker (started
-     by every _tutShow, including step 0's) is the one loop. _tutTimer stays
-     declared so the finish/abort clearIntervals remain no-ops. */
+     by every _tutShow, including step 0's) is the one loop. */
   _tutGateOn();
   queueSave();
 }

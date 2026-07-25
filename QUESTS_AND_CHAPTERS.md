@@ -141,3 +141,12 @@ their first contract THEMSELVES. Nothing is ever auto-accepted. Mechanics:
 Smoke drives the full 21 steps and asserts: board-open alone does NOT advance; nothing
 auto-accepted (chacc empty before the click); the recruit's accept advances; exactly ONE
 charter accepted at graduation. (419 checks total.)
+
+**2026-07-25 review hardening**: (1) *Restart self-heal* — `chacc` deliberately survives both the
+save and `_tutCleanup`, so a recruit who accepted at the graduation lesson but quit before the
+finale restarts training already holding a contract while `_chAvailable` hides accepted heads;
+the `charter-first` step's `enter` now detects `chacc.size` and re-emits `chaccept` — the deed
+already done is honored and the step advances instead of deadlocking. (2) *No forced double-accept* —
+`_tutFinish`'s v1.5.2 `chacc.add('st-land')` now runs ONLY when `chacc` is empty (the Skip path,
+which never saw the lesson); a graduate keeps exactly the contract they chose, and the closing
+notification matches whichever path ran.

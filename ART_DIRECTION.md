@@ -553,3 +553,15 @@ open-sea landing variation (horizon/waves/islands/clouds/fauna depth/lighting/we
 **POLISH (wave 3):** break coast halos into shore types · cloud fronts/broken fields/storm
 shadows · class-specific star surface behavior + white-dwarf density · 4-wing vs 2-wing
 silhouettes · then ONE full regression proof set → Gold retest checklist (§10 of the review).
+
+**2026-07-25 vista gene-plumbing review fixes**: the sub-surface scenes never received the world's
+own life in the LIVE game — `_hdAbyssScene` was called without `genes` (the proof sheets passed
+them, masking the gap: certs showed populated abysses the game could not render) and `_hdReefScene`
+received the LAND herd (land beasts painted swimming while the world's real fish stayed invisible).
+`openLandingVista` now builds `xtra.aquaGenes` (aqua-classed fauna through `hdGenesFor`) and both
+scenes consume it. `aerFloraG` also de-wrapped from `hdGenesFor` (raw genomes — same contract as
+`floraGenes`). And `_vistaSalt` now advances a session `_descSeq` per descent: the old
+`stats.landings` term only moved on a world's FIRST landing, so the per-landing region re-roll
+never fired on the exact flow it was built for (re-landing the same world). LESSON: audit the GAME
+call site, not just the proof sheet — a sheet that passes the parameter the game omits certifies
+art the player never sees.

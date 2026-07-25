@@ -29,7 +29,7 @@ const SEED_FULL = `<script>try{ localStorage.clear();
     items:[["plate",6],["wire",4],["chip",3],["lens",2],["weave",3],["cell",2],["coil",2],["navcore",1],["hullseg",2],["servo",1],["cryogel",1],["jumpdrive",1],["rig2",1],["hazmat",1],["visor",1],["magboots",1],["gripgloves",1],["earpiece",1],["compass",1],["stabil",1],["fieldlegs",1],["cg-plasma",1]],
     eq:{tool:"rig2",suit:"hazmat",helmet:"visor",boots:"magboots",gloves:"cg-plasma",ears:"earpiece",necklace:"compass",module:"stabil",legs:"fieldlegs"},
     ea:{tool:{k:"yield",v:0.22,forId:"rig2"},gloves:{k:"strike",v:0.04,forId:"cg-plasma"}},
-    ctb:"mat" }));
+    pin:"igdrive", ctb:"mat" }));
 }catch(e){}</script>`;
 
 const SHOTS = [
@@ -51,9 +51,7 @@ const SHOTS = [
   { id: 'prime-phone',       w: 390,  h: 844,  act: `document.getElementById('pcdxbtn').click();` },
   { id: 'tray-phone',        w: 390,  h: 844,  act: `document.getElementById('bell').click();` },
   { id: 'main-tablet',       w: 834,  h: 1112, act: `` },
-  { id: 'settings-open-desktop', w: 1440, h: 900, act: `document.getElementById('setbtn').click();` },
   { id: 'tray-desktop',      w: 1440, h: 900,  act: `document.getElementById('bell').click();` },
-  { id: 'charters-sel-desktop', w: 1440, h: 900, act: `document.getElementById('chbtn').click();` },
   { id: 'search-earth-desktop', w: 1440, h: 900, act: `const si=document.getElementById('searchin'); si.value='earth'; si.dispatchEvent(new Event('input',{bubbles:true}));` },
   { id: 'main-tablet-portrait', w: 834, h: 1112, act: `` },
   /* populated-save proofs (Shipyard + 3-tab inventory + equipped paperdoll) */

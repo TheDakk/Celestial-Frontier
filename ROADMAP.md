@@ -160,9 +160,41 @@
 ##   ★ PHONE SHEET (Nick) — paperdoll capped at min(62vw,240px) on ≤700px (was ~75% of viewport; tabs
 ##   + effects bar + first material families now surface unscrolled); sockets 44px (touch floor).
 ##   Sheets all scroll (overflow-y:auto + styled scrollbar) — wheel + finger, confirmed.
-##   ▶ AWAITING NICK — review of menu-map/inventory/CACTI proofs; THEN: bundle-time
-##   (version bump kills v1.6.4(dev), RELEASES, two-push deploy, final Gold zip + release archive) ·
-##   iPhone device verify (dock feel, sheets, selection highlight, dodge feel).'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
+## ▶▶▶ 2026-07-25 TENTH DIRECTIVE — PRE-DEPLOY CODE REVIEW (Nick: "full code review before we go
+##   live + defunct code + optimizations"). 27-agent workflow review of the whole v1.7 arc (diff
+##   3a4b839...HEAD): 21 verified findings → 10 distinct defects, ALL FIXED + below-cap cleanups
+##   (all gates green after: fp MATCH 50/50 · render 1010/0 · smoke 419/0 · layout 546/9):
+##   [1] #pinchip/#chchip were PRE-v6 anchors sitting ON the v11 Charters/Compendium stack (z9 over
+##       z8 — a pinned recipe made Compendium unclickable, its clicks opened the Shipyard!) → chips
+##       moved below the stack (topbar+92/+128); proof shot w/ pin:"igdrive" seeded.
+##   [2] GRADUATION RESTART DEADLOCK: chacc survives quit-before-finale; _chAvailable hides accepted
+##       heads → two half-finished runs left the board with NO Accept → charter-first step now
+##       self-heals in enter: if chacc.size, the deed is already done — re-emit chaccept, advance.
+##   [3] _tutFinish's v1.5.2 unconditional chacc.add('st-land') fought the graduation (st-mercury
+##       grad got st-land forced + wrong notification) → auto-accept now ONLY on the skip path
+##       (chacc empty); graduate keeps their own pick, notification matches either way.
+##   [4] VISTA GENE-PLUMBING FAMILY: _hdAbyssScene got NO genes in-game (proof sheets passed them —
+##       certs showed populated abysses the game never rendered) and _hdReefScene got the LAND herd
+##       (land beasts swam; real fish invisible) → new xtra.aquaGenes (aqua-classed, hdGenesFor)
+##       threads to both scenes. aerFloraG de-wrapped from hdGenesFor (same fern-bug class).
+##   [5] _vistaSalt used stats.landings (first-landing-only counter) → re-landing the same world
+##       rolled the SAME region all epoch → session _descSeq++ per openLandingVista re-rolls truly.
+##   [6] VETERAN MIGRATION: pre-1.7 saves have no `seen` → every old species wore the blue new-dot
+##       → absent field (not empty array) backfills all catalogued ids as viewed after codex load.
+##   [7] _tutSpot FLIP OSCILLATION (PLAUSIBLE→fixed): flip branch fought forced-side re-assert
+##       (card teleporting top↔bottom ~1/s) + early-return froze ring/--tut-bot → flip now LATCHES
+##       per step (_tutFlipOvr, outranks side rules, cleared each _tutShow) and falls through.
+##   [8] _fabHTML's stale 4-entry _SRC copy (none of the 7 cosmics had source hints) → _matUses().src
+##       single source. [9-10]+cleanups: TXhi/TXlo dead consts, 8 dead .arr rules (class renamed
+##       wchev), dead #codex .sp .kd, shadowed phone #tray/#bellwrap rules, stale phone dot-corner
+##       rule, _tutTimer vestige, uishot dup shots removed, board-dot system fully retired [87b398c],
+##       fa3 stream-preserving r(). deadcode.js clean (3 keepers probe/tool-referenced).
+##   ⚠ LESSON: proof sheets can MASK integration bugs — biome-coverage/vistas-big passed genes the
+##   game call site didn't; audit the GAME call site, not just the sheet. NOT YET SMOKE-PROBED:
+##   graduation-restart self-heal (needs a quit-mid-training harness — future smoke work).
+##   ▶ AWAITING NICK — review of menu-map/inventory/CACTI proofs + this review batch; THEN:
+##   bundle-time (version bump kills v1.6.4(dev), RELEASES, two-push deploy, final Gold zip +
+##   release archive) · iPhone device verify (dock feel, sheets, selection highlight, dodge feel).'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
 ##     (rig param) · red-panda tail rings · dart-frog contrast at card size · settings-panel anchor could sit
 ##     closer to the dock ⚙ on desktop (cosmetic) · desktop caption-vs-hint overlap at boot (pre-existing,
 ##     cosmetic). THEN: bundle-time items (RELEASES notes, GAME_VERSION bump on Nick's word, deploy site+
