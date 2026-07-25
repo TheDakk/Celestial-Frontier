@@ -1675,7 +1675,7 @@
     bottom:calc(142px + env(safe-area-inset-bottom,0px));
     max-height:calc(100dvh - var(--topbar-h,110px) - 162px)}
   /* bottom-pinned training cards clear the dock */
-  #tutbox.dodge{bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+  #tutbox.dodge{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
   }
   /* the pinned-recipe chip (QoL h) — rides under the charter button */
   #pinchip{position:fixed;left:18px;top:calc(var(--topbar-h,100px) + 46px);z-index:9;display:flex;align-items:center;gap:5px;
@@ -1728,9 +1728,9 @@
        right (Atlas under the search box). Utilities become a neat centered
        trio ⚙ 🔔 ? just above the hover-hint pill, where toasts land. */
     #pcdxbtn{left:50%;right:auto;transform:translateX(-50%);top:10px}
-    #codexbtn{left:18px;right:auto;top:calc(var(--topbar-h,100px) + 46px)}
+    #codexbtn{left:18px;right:auto;top:calc(var(--topbar-h,100px) + 50px)}
     #logbtn{right:18px;top:calc(var(--topbar-h,100px) + 8px)}
-    #cargobtn{right:18px;top:calc(var(--topbar-h,100px) + 46px)}
+    #cargobtn{right:18px;top:calc(var(--topbar-h,100px) + 50px)}
     /* panels drop from the command line */
     #codex{left:18px;right:auto;top:calc(var(--topbar-h,100px) + 88px)}
     #log{top:calc(var(--topbar-h,100px) + 88px)}
@@ -1743,8 +1743,17 @@
     /* corner panels rise from their buttons; SETTINGS centers between Prime and the caption */
     #records{top:auto !important;left:auto;right:12px;bottom:60px}
     #setpanel{left:50%;right:auto;top:50%;bottom:auto;transform:translate(-50%,-50%)}
-    /* Charters matches its row-mates — the OPEN state is the size signal now */
-    #chbtn{font-size:11px;padding:8px 13px}
+    /* both stacks share one metric: equal pill heights, uniform 42px pitch */
+    #chbtn,#codexbtn,#logbtn,#cargobtn{font-size:11px;padding:8px 13px}
+    /* SEARCH RESULTS get their own lane BELOW the right stack — typing never
+       covers 🌍 Star Atlas / 🛠 Shipyard (Nick) */
+    #searchres{position:fixed;top:calc(var(--topbar-h,100px) + 92px);right:18px;left:auto;width:300px}
+    /* 🏆 Records rides the corner as a trophy CIRCLE — no label competing
+       with the caption on tablet portrait (Nick) */
+    #recbtn .lbl{display:none}
+    #recbtn{width:36px;height:36px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
+    /* the dodged training card clears the caption + corner utilities */
+    #tutbox.dodge{bottom:100px}
   }
 </style>
 </head>
