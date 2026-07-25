@@ -5665,19 +5665,30 @@ function decoSprite(dc){
        holes punched in the disk (Nick's splotch report). Soft wide
        falloff, gentle alphas, one feathered mass instead of blob piles. */
     const mg2=g.createRadialGradient(C,C,0,C,C,C*0.72);
-    mg2.addColorStop(0,'rgba(16,12,24,0.34)');
-    mg2.addColorStop(0.55,'rgba(22,16,32,0.18)');
+    mg2.addColorStop(0,'rgba(16,12,24,0.52)');
+    mg2.addColorStop(0.55,'rgba(22,16,32,0.30)');
     mg2.addColorStop(1,'rgba(22,16,32,0)');
     g.fillStyle=mg2;g.beginPath();g.arc(C,C,C*0.72,0,TAU);g.fill();
     for(let i=0;i<8;i++){
       const a=r()*TAU, d=Math.pow(r(),1.4)*C*0.4;
       const bx=C+Math.cos(a)*d, by=C+Math.sin(a)*d, br=C*(0.20+r()*0.26);
       const ng=g.createRadialGradient(bx,by,0,bx,by,br);
-      ng.addColorStop(0,'rgba(14,10,22,'+(0.10+r()*0.10).toFixed(3)+')');
+      ng.addColorStop(0,'rgba(14,10,22,'+(0.16+r()*0.14).toFixed(3)+')');
       ng.addColorStop(1,'rgba(22,16,32,0)');
       g.fillStyle=ng;g.beginPath();g.arc(bx,by,br,0,TAU);g.fill();
     }
-    g.strokeStyle='rgba(140,112,170,0.12)';g.lineWidth=S/128;  /* faint rim light */
+    /* wave-2 (Gold Master): EMBEDDED PROTOSTARS — faint warm sparks buried in
+       the darkness, the tell that this is a nursery, not a hole */
+    for(let i=0;i<3;i++){
+      const a=r()*TAU, d=Math.pow(r(),1.6)*C*0.34;
+      const px=C+Math.cos(a)*d, py=C+Math.sin(a)*d, pr2=S*(0.010+r()*0.012);
+      const pg=g.createRadialGradient(px,py,0,px,py,pr2*3.2);
+      pg.addColorStop(0,'rgba(255,190,140,'+(0.22+r()*0.14).toFixed(2)+')');
+      pg.addColorStop(0.4,'rgba(220,120,90,0.10)');
+      pg.addColorStop(1,'rgba(220,120,90,0)');
+      g.fillStyle=pg;g.beginPath();g.arc(px,py,pr2*3.2,0,TAU);g.fill();
+    }
+    g.strokeStyle='rgba(140,112,170,0.20)';g.lineWidth=S/110;  /* rim light — a touch stronger (wave-2) */
     g.beginPath();g.arc(C,C,C*0.5,r()*TAU,r()*TAU+2.0);g.stroke();
   } else if(dc.k==='rem'){
     g.globalCompositeOperation='lighter';
@@ -6664,31 +6675,54 @@ function _wormSpr(){
      soft at 96; blob radii scale with the master (U) */
   const S=192, cv=document.createElement('canvas'); cv.width=cv.height=S;
   const g=cv.getContext('2d'), C=S/2, r=mulberry32(0x3072), U=S/96;
+  const RX=S*0.30, RY=S*0.135;
+  /* wave-2 rework (Gold Master): CONTINUOUS lensing — tangential smeared arcs
+     along the Einstein ellipse, not bead blobs */
   g.globalCompositeOperation='lighter';
-  for(let i=0;i<44;i++){
-    const a=r()*TAU;
-    const ex=C+Math.cos(a)*S*0.30, ey=C+Math.sin(a)*S*0.135;
-    const br=(1.4+r()*3.2)*U;
+  g.lineCap='round';
+  for(let i=0;i<70;i++){
+    const a0=r()*TAU, alen=0.25+r()*0.85;
+    const rx=RX*(0.92+r()*0.22), ry=RY*(0.92+r()*0.22);
     const col=r()<0.5?'190,150,255':'120,220,255';
-    const ng=g.createRadialGradient(ex,ey,0,ex,ey,br*2.4);
-    ng.addColorStop(0,'rgba('+col+','+(0.22+r()*0.28).toFixed(2)+')');
-    ng.addColorStop(1,'rgba('+col+',0)');
-    g.fillStyle=ng; g.beginPath(); g.arc(ex,ey,br*2.4,0,TAU); g.fill();
+    g.strokeStyle='rgba('+col+','+(0.05+r()*0.14).toFixed(3)+')';
+    g.lineWidth=(0.8+r()*3.0)*U;
+    g.beginPath();
+    for(let t=0;t<=14;t++){ const a=a0+alen*t/14;
+      const px=C+Math.cos(a)*rx, py=C+Math.sin(a)*ry;
+      if(t) g.lineTo(px,py); else g.moveTo(px,py); }
+    g.stroke();
   }
-  /* faint outer chromatic arcs */
-  for(let i=0;i<14;i++){
-    const a=r()*TAU;
-    const ex=C+Math.cos(a)*S*0.42, ey=C+Math.sin(a)*S*0.20;
-    const ng=g.createRadialGradient(ex,ey,0,ex,ey,3.4*U);
-    ng.addColorStop(0,'rgba(160,190,255,0.14)'); ng.addColorStop(1,'rgba(160,190,255,0)');
-    g.fillStyle=ng; g.beginPath(); g.arc(ex,ey,3.4*U,0,TAU); g.fill();
+  /* WARPED BACKGROUND STARS: trails bend around the throat, star at the head */
+  for(let i=0;i<26;i++){
+    const a0=r()*TAU, d=0.55+r()*0.75, bend=0.10+r()*0.22;
+    const rx=RX*d*1.5, ry=RY*d*1.9+S*0.02;
+    g.strokeStyle='rgba(210,225,255,'+(0.10+r()*0.20).toFixed(3)+')';
+    g.lineWidth=(0.5+r()*0.9)*U;
+    g.beginPath();
+    for(let t=0;t<=8;t++){ const a=a0+bend*t/8;
+      const px=C+Math.cos(a)*rx, py=C+Math.sin(a)*ry;
+      if(t) g.lineTo(px,py); else g.moveTo(px,py); }
+    g.stroke();
+    g.fillStyle='rgba(230,240,255,'+(0.3+r()*0.4).toFixed(2)+')';
+    g.beginPath(); g.arc(C+Math.cos(a0+bend)*rx, C+Math.sin(a0+bend)*ry, (0.6+r()*0.8)*U, 0, TAU); g.fill();
   }
   g.globalCompositeOperation='source-over';
-  const tg2=g.createRadialGradient(C,C,0,C,C,S*0.17);
-  tg2.addColorStop(0,'rgba(8,4,18,0.98)');
-  tg2.addColorStop(0.7,'rgba(20,10,44,0.75)');
-  tg2.addColorStop(1,'rgba(20,10,44,0)');
-  g.fillStyle=tg2; g.beginPath(); g.arc(C,C,S*0.17,0,TAU); g.fill();
+  /* THE THROAT: opaque deep core, a far-side glimpse (tunnel depth), and a
+     thin doubled rim where grazing light wraps the mouth */
+  const tg2=g.createRadialGradient(C,C,0,C,C,S*0.16);
+  tg2.addColorStop(0,'rgba(4,2,12,1)');
+  tg2.addColorStop(0.75,'rgba(10,6,26,0.92)');
+  tg2.addColorStop(1,'rgba(10,6,26,0)');
+  g.fillStyle=tg2; g.beginPath(); g.arc(C,C,S*0.16,0,TAU); g.fill();
+  g.globalCompositeOperation='lighter';
+  const fs2=g.createRadialGradient(C+S*0.025,C-S*0.012,0,C+S*0.025,C-S*0.012,S*0.05);
+  fs2.addColorStop(0,'rgba(150,200,255,0.30)'); fs2.addColorStop(1,'rgba(150,200,255,0)');
+  g.fillStyle=fs2; g.beginPath(); g.arc(C+S*0.025,C-S*0.012,S*0.05,0,TAU); g.fill();
+  g.strokeStyle='rgba(210,190,255,0.55)'; g.lineWidth=1.1*U;
+  g.beginPath(); g.ellipse(C,C,S*0.135,S*0.115,0,0,TAU); g.stroke();
+  g.strokeStyle='rgba(140,220,255,0.30)'; g.lineWidth=2.2*U;
+  g.beginPath(); g.ellipse(C,C,S*0.145,S*0.125,-0.2,0,TAU); g.stroke();
+  g.globalCompositeOperation='source-over';
   return _wormSprC=cv;
 }
 function ensureCardFacts(P, sys, orb){
