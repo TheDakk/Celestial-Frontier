@@ -6,19 +6,19 @@
 // the BH must read cinematic (Interstellar silhouette); nebulae must hold
 // soft cloud structure at large scale, no chunky blobs.
 module.exports = {
-  width: 1560, height: 1000,
+  width: 1560, height: 1290,
   lift: ['mulberry32', 'hashInt', 'clamp', '_bhSprC', '_bhSpr', '_wormSprC', '_wormSpr',
-         '_quasarSprC', '_quasarSpr', '_decoSpr', 'decoSprite'],
+         '_quasarSprC', '_quasarSpr', '_decoSpr', 'decoSprite', '_starSurfCache', '_starSurf', 'makeNoise', 'hsl', 'mix'],
   draw: `function(g){
     window.TAU=Math.PI*2;
     g.fillStyle='#07080f'; g.fillRect(0,0,1560,1000);
     g.font='12px monospace';
     try{
-    g.fillStyle='#ffd96a'; g.fillText('BLACK HOLE — baked accretion render (Doppler side, lensed arcs, photon ring, horizon)', 30, 24);
+    g.fillStyle='#ffd96a'; g.fillText('BLACK HOLE', 30, 24); g.fillStyle='#8892b8'; g.fillText('Doppler side · lensed arcs · photon ring', 30, 36);
     g.drawImage(_bhSpr(), 30, 40, 440, 440);
-    g.fillStyle='#ffd96a'; g.fillText('WORMHOLE — 192 throat', 520, 24);
+    g.fillStyle='#ffd96a'; g.fillText('WORMHOLE', 520, 24); g.fillStyle='#8892b8'; g.fillText('192 throat', 520, 36);
     g.drawImage(_wormSpr(), 520, 40, 440, 440);
-    g.fillStyle='#ffd96a'; g.fillText('QUASAR — 320 master (host haze, twin jets, blinding core)', 1010, 24);
+    g.fillStyle='#ffd96a'; g.fillText('QUASAR', 1010, 24); g.fillStyle='#8892b8'; g.fillText('host haze · twin jets · blinding core', 1010, 36);
     g.drawImage(_quasarSpr(), 1010, 40, 440, 440);
     g.fillStyle='#ffd96a'; g.fillText('NEBULAE — 256 masters: H II nursery · blue reflection · molecular dark cloud · supernova remnant', 30, 530);
     const decos=[
@@ -40,6 +40,21 @@ module.exports = {
       }
       g.drawImage(decoSprite(decos[i][1]), x, 560, 360, 360);
     }
+    /* TRUE RELATIVE SCALE (2026-07-25): the game scales stars by class — equal-size
+       proof cells kept hiding it from reviews. Radii here mirror the in-game ratios. */
+    g.fillStyle='#ffd96a'; g.fillText('STAR CLASS — TRUE RELATIVE SCALE (white dwarf → supergiant)', 30, 950);
+    const SCALES=[['WD',8,'#e8ecff'],['M',16,'#ff9a66'],['K',20,'#ffc27a'],['G',24,'#ffe9c8'],['F',28,'#fff4e0'],['A',33,'#e8f0ff'],['B',42,'#cfdfff'],['RG',78,'#ff9a66'],['SG',126,'#9ec1ff']];
+    { let sxp=60;
+      for(const [lab,srad,scol] of SCALES){
+        const scy=1120;
+        const cg2=g.createRadialGradient(sxp,scy,0,sxp,scy,srad*1.9);
+        cg2.addColorStop(0,'#ffffff'); cg2.addColorStop(0.3,scol);
+        cg2.addColorStop(0.65,scol.replace(')',',0.35)').replace('#','rgba(255,233,200,').slice(0,0)||'rgba(255,233,200,0.3)'); cg2.addColorStop(1,'rgba(0,0,0,0)');
+        g.fillStyle=cg2; g.beginPath(); g.arc(sxp,scy,srad*1.9,0,6.283); g.fill();
+        g.drawImage(_starSurf(9000+srad, scol, lab==='RG'||lab==='SG'?lab:(lab==='WD'?'WD':'')), sxp-srad, scy-srad, srad*2, srad*2);
+        g.fillStyle='#8892b8'; g.fillText(lab, sxp-6, scy+srad+16);
+        sxp+=srad*2+52;
+      } }
     }catch(e){ g.fillStyle='#ff6a5a'; g.fillText('ERROR: '+String(e).slice(0,160), 20, 40); }
   }`,
 };
