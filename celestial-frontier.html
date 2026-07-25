@@ -12119,7 +12119,7 @@ function _performLanding(pl){
   if(_ps===133) unlock('home');
   if((tutDone||_ps===133) && !surfSeen.has(_ps)){ surfSeen.add(_ps); checkAch(); queueSave(); }
   _pendingContact=pl.P.seed;         /* inhabited worlds: contact rides the card render */
-  if(hdOn){ try{ openLandingVista(pl); }catch(_){ } }
+  if(hdOn){ try{ openLandingVista(pl, true); }catch(_){ } }   /* journal:true — a real landing */
   playWhoosh();
   /* v1.7 DISCOVERY REVEAL — a world's grade is hidden from orbit; the descent
      is the payoff. On the FIRST landing, a Legendary-or-better world announces
@@ -12148,7 +12148,7 @@ function _performLanding(pl){
    landing (world · rolled region · when), newest last, capped at 24.
    Save field jrn; absent ⇒ empty (safe additive default). */
 const journal=[];
-function openLandingVista(pl){
+function openLandingVista(pl, _journal){
   const P=pl.P, time=perfTime();
   if(!pl._env){
     const er=mulberry32((P.seed^0xE57)>>>0);
@@ -12201,9 +12201,10 @@ function openLandingVista(pl){
      anchor biome (veins/odds/generation) is untouched — this is the view. */
   let wbRoll=null;
   try{ wbRoll=biomeForLanding(P, env.band, _vistaSalt()); }catch(_){ }
-  /* EXPEDITION JOURNAL (QoL a2, Nick green-lit): every landing writes a line —
-     world, rolled region, when. Tiny strings, capped at 24 (save field jrn). */
-  try{
+  /* EXPEDITION JOURNAL (QoL a2): only a REAL landing writes a line — the
+     Planetside RE-VIEW re-invokes this composer and must not duplicate
+     (review fix: phantom entries evicted genuine history from the 24 cap) */
+  if(_journal) try{
     const _jn=(pl.name||'A world');
     journal.push({s:P.seed, n:String(_jn).slice(0,28), w:wbRoll?String(wbRoll.k).slice(0,16):'', t:Date.now()});
     if(journal.length>24) journal.splice(0, journal.length-24);
@@ -12223,10 +12224,11 @@ function openLandingVista(pl){
      so the deck draws THEM, not a generic floater. */
   const airRoster=roster.filter(gg=>clsOf(gg)==='air' && gg.kingdom==='fauna');
   const airGenes=airRoster.slice(0,2).map(hdGenesFor);
-  const aerFloraG=roster.filter(gg=>gg.kingdom==='flora' && gg.af).slice(0,1).map(hdGenesFor);
+  const _allSp=(d.species||[]);   /* review fix: roster is fauna-only — flora must come from the FULL species list */
+  const aerFloraG=_allSp.filter(gg=>gg.kingdom==='flora' && gg.af).slice(0,1).map(hdGenesFor);
   /* the world's terrestrial flora species → the vista's actual plants (the same
      coherence the fauna have; aquatic/aerial flora are drawn by their own scenes) */
-  const floraGenes=roster.filter(gg=>gg.kingdom==='flora' && !gg.aq && !gg.af).slice(0,2).map(hdGenesFor);
+  const floraGenes=_allSp.filter(gg=>gg.kingdom==='flora' && !gg.aq && !gg.af).slice(0,2).map(hdGenesFor);
   const lifeRow=d.rows&&d.rows.find(rr=>rr[0]==='Life');
   const floraOk=!lifeRow||!/^(No known life|Microbial|Subsurface|Airborne|Extremophile)/.test(lifeRow[1]);
   const waterRow=d.rows&&d.rows.find(rr=>rr[0]==='Water');
@@ -12715,7 +12717,7 @@ function renderPanel(p, isLocked){
     if(!glance && d.starKind && d.where && d.where.star){
       const _ss=d.where.star.seed, _sy=stellarYieldFor(_ss);
       if(_sy){
-        const _sR=skimReserveFor(_ss), _sN=Math.min(skimX.get(_ss)||0,_sR), _sL=_sR-_sN;
+        const _sR=Math.round(skimReserveFor(_ss)*(1+0.5*_equipBonus('skim'))), _sN=Math.min(skimX.get(_ss)||0,_sR), _sL=_sR-_sN;   /* review fix: card matches skimStar's scoop-deepened reserve */
         skimBtn = itemCount('jumpdrive')<1
           ? '<button class="act in" data-act="skim" data-tip="Skimming a corona takes the Jump Drive&#8217;s stellar-class shielding — build it at the Shipyard.">☀ Corona — needs the Jump Drive</button>'
           : (_sL>0
@@ -14176,15 +14178,22 @@ function _goSurface(name){
   try{
     if(name==='charters' && chBtn && !chOpen) chBtn.click();
     else if(name==='undo-salvage' && _lastSalvage && Date.now()-_lastSalvage.t<6000){
-      const u=_lastSalvage; _lastSalvage=null;
-      const it=ITEM_BY.get(u.id); if(!it) return;
+      const u=_lastSalvage;
+      const it=ITEM_BY.get(u.id); if(!it){ _lastSalvage=null; return; }
+      /* review fix (dup exploit): undo needs the FULL refund still in hand —
+         spent materials mean the trade already stands */
+      for(const r of (u.ret||[])) if((cargo.get(r.k)||0) < r.n){
+        toast('♺ Too Late','The returned materials were already spent — the salvage stands.'); _lastSalvage=null; return; }
+      _lastSalvage=null;
       for(const r of (u.ret||[])){
-        const have=cargo.get(r.k)||0, take=Math.min(have, r.n);
-        if(take>=have) cargo.delete(r.k); else cargo.set(r.k, have-take);
+        const have=cargo.get(r.k)||0;
+        if(r.n>=have) cargo.delete(r.k); else cargo.set(r.k, have-r.n);
         const x=cgx.get(r.k)||0; if(x>(cargo.get(r.k)||0)) cgx.set(r.k, cargo.get(r.k)||0);   /* keep cgx <= cargo */
       }
       items.set(u.id, (items.get(u.id)||0)+1);
-      toast('♺ Undone', it.name+' is back in the bag — the materials went back into it.');
+      if(u.slot && !equip[u.slot]){ equipItem(u.slot, u.id, true);   /* review fix: a worn piece returns WORN, affix intact */
+        if(u.aff) equipAff[u.slot]=u.aff; }
+      toast('♺ Undone', it.name+' is back'+(u.slot?' — worn again, enchant intact.':' in the bag — the materials went back into it.'));
       try{ showCargoBtn(); if(sheetOpen){ renderCargo(); renderDoll(); } }catch(_){ }
       queueSave();
     }
@@ -14954,7 +14963,16 @@ function loadSave(){
     /* v1.5.2 accept-to-activate: absent ⇒ nothing accepted (safe — the
        board offers its chains fresh); ids validated against both decks */
     for(const s of (data.chacc||[])) if(typeof s==='string' && !chDone.has(s) && (CHARTER_STARTERS.some(c=>c.id===s)||CHARTER_POOL.some(c=>c.id===s))) chacc.add(s);
-    for(const it of (data.log||[])){ if(it && it.id){ logMap.set(it.id, it); } }
+    /* review fix (load hardening, CLAUDE.md rule 5): rebuild each Atlas entry
+       with COERCED fields only — a crafted save must not carry markup or
+       non-string ids into renderLog's innerHTML sinks */
+    const _cs=(v,n)=>String(v==null?'':v).replace(/[<>&"']/g,'').trim().slice(0,n);
+    for(const it of (data.log||[])){ if(it && it.id!=null){
+      const _id=_cs(it.id,24);
+      logMap.set(_id, { id:_id, title:_cs(it.title,60)||'Charted place', sub:_cs(it.sub,120),
+        thumb:(typeof it.thumb==='string'&&/^data:image/.test(it.thumb))?it.thumb:null, sq:!!it.sq,
+        badge:_cs(it.badge,18), where:it.where, fav:!!it.fav, t:clamp(num(it.t),0,4102444800000) });
+    } }
     homeId=(data.home && logMap.has(data.home))?data.home:null;
     for(const s of (data.land||[])){ const n=+s; if(Number.isFinite(n)) landed.add(n); }
     for(const s of (data.cont||[])){ const n=+s; if(Number.isFinite(n)) contacted.add(n); }
@@ -15017,6 +15035,8 @@ function resetMemoryState(){
        v1.7 review catch: skimX joined that class — without clearing it a
        fresh expedition opened Sol reading "Corona Spent". */
     mined.clear(); mineX.clear(); skimX.clear(); bioX.clear(); cargo.clear(); cgx.clear(); journal.length=0; techOwned.clear();
+    seenSp.clear(); pinnedRecipe=null; cargoTab='mat'; _lastSalvage=null;   /* review fix: QoL state must die with the run */
+    try{ _pinChip(); const _cc=document.getElementById('chchip'); if(_cc) _cc.style.display='none'; }catch(_){ }
     items.clear(); for(const k in equip) delete equip[k]; for(const k in equipAff) delete equipAff[k]; _eqOpen=null;
     ascCh=0; ascProg={};   /* a fresh expedition climbs the Ascent again */
     /* post-deploy audit: the Binder economy survived a reset — claimed
@@ -16332,6 +16352,7 @@ function fightNow(mine, theirs, opts){
         if(res.winner==='A'){
           const _dn=Date.now();
           if(_dn-_lastDuelCredit>30000){ _lastDuelCredit=_dn; stats.duelwins++; if(mine && mine.id) awardXP(mine.id, 8); }
+          else toast('⚔ Sparring Cooldown','A win this soon after the last pays no ledger credit or XP — give it '+Math.ceil((30000-(_dn-_lastDuelCredit))/1000)+'s between counted bouts.');   /* review fix: never silently uncredited */
         }
         playRaritySting(res.winner==='A'?5:2);
         checkAch(); renderRank(); queueSave();
@@ -16730,12 +16751,13 @@ function openPicker(mode, base){
             });
           if(!fl.length){ halt='out of safe flora'; break; }
           const r2=feedPair(base, fl[0], Math.random());
-          stats.feeds=(stats.feeds||0)+1; gameEvent('fed', {bulk:true});
+          stats.feeds=(stats.feeds||0)+1; gameEvent('fed', {bulk:true, ok:!!r2.ok});   /* review fix: wk-feed charter filters on ok */
           if(!r2.ok){ halt=r2.dead?'lost to a toxic bite':'a toxic bite — run stopped'; break; }
           fed++;
         }
         const cnd=codex.has(base.id)?creatureCondition(base.genome):null;
-        resEl.innerHTML='❤ '+fed+' safe meal'+(fed===1?'':'s')+' served.'+
+        const resEl=document.getElementById('pick-result');   /* review fix: the other listener's const is block-scoped */
+        if(resEl) resEl.innerHTML='❤ '+fed+' safe meal'+(fed===1?'':'s')+' served.'+
           (halt?' <span style="color:#ff8a72">'+halt+'.</span>':'')+
           (cnd?' <span style="color:'+cnd.col+'">Now <b>'+cnd.label+'</b>'+(cnd.h>0?' ('+Math.round(cnd.h*100)+'% hurt)':'')+'.</span>':'');
         if(codex.has(base.id) && _revEntry===base) showReveal(base, base.hybrid);
@@ -19848,7 +19870,9 @@ function salvageItem(id, confirmed){
   try{ playSurveyPing(); }catch(_){}
   /* SALVAGE UNDO (QoL m): the toast carries a 6-second regret window — one
      tap rebuilds the piece and takes the returned materials back */
-  _lastSalvage={id, ret, t:Date.now()};
+  _lastSalvage={id, ret, t:Date.now(),
+    slot:(it.slot && equip[it.slot]===id)?it.slot:null,   /* review fix: undo restores WORN state + its affix */
+    aff:(it.slot && equip[it.slot]===id && equipAff[it.slot] && equipAff[it.slot].forId===id)?Object.assign({},equipAff[it.slot]):null};
   toast('♺ Salvaged', it.name+' broken down'+(ret.length?' — '+ret.map(r=>r.n+'× '+(matName(r.k))).join(' · '):'')+'. <b>Tap to undo.</b>', 'undo-salvage');
   closeItemCard();   /* review cleanup: was an inlined copy of this fn's body */
   try{ showCargoBtn(); if(sheetOpen) renderCargo(); }catch(_){}
