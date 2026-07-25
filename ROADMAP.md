@@ -111,6 +111,17 @@
 ##   nebula arc breakup, live-view exposure hierarchy (runtime dominant-glow compression), 44px touch-target
 ##   audit + first-use dock tooltips (accessibility batch), meta-dock collapse = POST-FORGE (no realtime
 ##   combat state exists yet), flora-family vista mismatch = VERIFY (spot-check landing rosters vs biome).
+## ★★★ 2026-07-25 THE FINAL GOLD MICRO-PASS = EXECUTED (→ 7003c15, battery green, proofs delivered):
+##   ✔ (1) EAGLE brow ledge + squared raptor tail ✔ (2) GERENUK neckX (NEW mammal-rig G.neckX multiplier —
+##   o.neck was never consumed; now any recipe can stretch a neck) ✔ (3) RED PANDA ringed bush tail (rig
+##   exports rigOut.tailSeg, bush-aware; alternating dark/cream bands) ✔ (4) DART FROG aposematic
+##   source-atop wash (survives every downstream pelt wash — the pattern for guaranteed-bright species)
+##   + min patch width ✔ (5) OPEN-SEA 8 ARCHETYPES (empty/near-island/archipelago/rocky-coast/reef-shelf/
+##   storm-front/low-sun/distant-life; salt picks archetype then varies within; landings SHEET now salts per
+##   cell — the old sheet passed no salt so every sea cell rolled identically) ✔ (6) FLIGHT-STATE separation
+##   (_fitBeast: airborne winged procs lift S*0.10 off a narrowed, faded shadow) ✔ (8) phone guide-launcher
+##   lane above the dock. REMAINING before Gold sign-off: (7) version string AT BUNDLE TIME (bind verified) ·
+##   Nick's proof review of this pass · then regenerate the FULL zip as the Gold-candidate package.
 ##   ▶ AWAITING NICK'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
 ##     (rig param) · red-panda tail rings · dart-frog contrast at card size · settings-panel anchor could sit
 ##     closer to the dock ⚙ on desktop (cosmetic) · desktop caption-vs-hint overlap at boot (pre-existing,
