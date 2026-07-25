@@ -13027,10 +13027,12 @@ function renderLog(){
     const th = _tu ? '<img class="t'+(it.sq?' sq':'')+'" src="'+_tu+'" alt="">' : '<span class="t"></span>';
     /* badges wear the card language: life green, civilization violet, signals lavender */
     const _bc={Life:'#7fe6a0',Biosphere:'#7fe6a0',Signal:'#cdbcff',Civilized:'#d6a0ff',Advanced:'#d6a0ff'}[it.badge];
-    const badge = (!isHome && it.badge) ? '<span class="badge"'+(_bc?' style="color:'+_bc+';border-color:'+_bc+'66"':'')+'>'+it.badge+'</span>' : '';
-    html+='<div class="item'+(isHome?' ishome':'')+'" data-id="'+it.id+'" role="button" tabindex="0" title="Travel to '+it.title.replace(/"/g,'')+'">'+th+
-      '<div class="meta"><div class="nm">'+(isHome?'<span class="hm">⌂</span>':'')+it.title+'</div>'+
-        '<div class="ds">'+it.sub+'</div></div>'+
+    /* verify-pass: ESCAPE AT THE SINK — whatever future path writes a logMap
+       title/sub/badge, this innerHTML can never become an injection point */
+    const badge = (!isHome && it.badge) ? '<span class="badge"'+(_bc?' style="color:'+_bc+';border-color:'+_bc+'66"':'')+'>'+esc(it.badge)+'</span>' : '';
+    html+='<div class="item'+(isHome?' ishome':'')+'" data-id="'+esc(String(it.id))+'" role="button" tabindex="0" title="Travel to '+esc(String(it.title).replace(/"/g,''))+'">'+th+
+      '<div class="meta"><div class="nm">'+(isHome?'<span class="hm">⌂</span>':'')+esc(it.title)+'</div>'+
+        '<div class="ds">'+esc(it.sub)+'</div></div>'+
       badge+
       '<div class="lacts">'+
         '<button class="lfav'+(it.fav?' on':'')+'" data-fav="'+it.id+'" title="'+(it.fav?'Remove favorite':'Favorite')+'">'+(it.fav?'★':'☆')+'</button>'+
@@ -14106,7 +14108,7 @@ const searchRes=document.getElementById('searchres');
 const customNames=new Map();     /* 'p<seed>'|'s<seed>'|'g<seed>' → your name for it */
 /* every name that ever reaches innerHTML funnels through this — including names
    arriving inside pasted CF1/CFB codes, which are untrusted input */
-function cleanName(s){ return String(s).replace(/[<>&"']/g,'').trim().slice(0,24); }
+function cleanName(s,n){ return String(s).replace(/[<>&"']/g,'').trim().slice(0,n||24); }   /* verify-pass: one sanitizer, parameterized cap */
 const surveyedSet=new Set();     /* planet seeds of living worlds you've surveyed */
 const galSeen=new Set();         /* galaxy seeds you've flown inside */
 const surfSeen=new Set();        /* planet seeds you've stood on */
@@ -14191,9 +14193,14 @@ function _goSurface(name){
         const x=cgx.get(r.k)||0; if(x>(cargo.get(r.k)||0)) cgx.set(r.k, cargo.get(r.k)||0);   /* keep cgx <= cargo */
       }
       items.set(u.id, (items.get(u.id)||0)+1);
-      if(u.slot && !equip[u.slot]){ equipItem(u.slot, u.id, true);   /* review fix: a worn piece returns WORN, affix intact */
+      /* verify-pass: restore WORN state only if the slot is free AND the player
+         hasn't touched equipment since the salvage (our own last-copy unequip
+         counts one bump) — undo must never reverse a deliberate change */
+      let _rewore=false;
+      if(u.slot && !equip[u.slot] && _eqSeq<=(u.eqSeq||0)+1){
+        equipItem(u.slot, u.id, true); _rewore=true;
         if(u.aff) equipAff[u.slot]=u.aff; }
-      toast('♺ Undone', it.name+' is back'+(u.slot?' — worn again, enchant intact.':' in the bag — the materials went back into it.'));
+      toast('♺ Undone', it.name+' is back'+(_rewore?' — worn again, enchant intact.':' in the bag — the materials went back into it.'));
       try{ showCargoBtn(); if(sheetOpen){ renderCargo(); renderDoll(); } }catch(_){ }
       queueSave();
     }
@@ -14966,14 +14973,24 @@ function loadSave(){
     /* review fix (load hardening, CLAUDE.md rule 5): rebuild each Atlas entry
        with COERCED fields only — a crafted save must not carry markup or
        non-string ids into renderLog's innerHTML sinks */
-    const _cs=(v,n)=>String(v==null?'':v).replace(/[<>&"']/g,'').trim().slice(0,n);
+    const _cs=(v,n)=>cleanName(v==null?'':v,n);   /* verify-pass: reuse THE sanitizer — no second weaker copy */
+    /* verify-pass: whitelist-coerce `where` too — raw blobs bloated saves
+       (CF-002 class) and fed NaN into travelTo's camera math */
+    const _cw=(w)=>{ if(!w||typeof w!=='object') return null;
+      const o={};
+      if(w.gal&&typeof w.gal==='object'){ const gx=num(w.gal.x), gy=num(w.gal.y);
+        if(Number.isFinite(gx)&&Number.isFinite(gy)) o.gal={x:gx,y:gy}; }
+      for(const k of ['pseed','sseed','seed','orb','m','pi']){ const v2=num(w[k], NaN); if(Number.isFinite(v2)) o[k]=v2; }
+      if(w.star&&typeof w.star==='object'){ const ss2=num(w.star.seed, NaN); if(Number.isFinite(ss2)) o.star={seed:ss2}; }
+      return Object.keys(o).length?o:null; };
     for(const it of (data.log||[])){ if(it && it.id!=null){
       const _id=_cs(it.id,24);
+      if(!_id) continue;   /* verify-pass: an all-stripped id must not mint an empty-string key */
       logMap.set(_id, { id:_id, title:_cs(it.title,60)||'Charted place', sub:_cs(it.sub,120),
         thumb:(typeof it.thumb==='string'&&/^data:image/.test(it.thumb))?it.thumb:null, sq:!!it.sq,
-        badge:_cs(it.badge,18), where:it.where, fav:!!it.fav, t:clamp(num(it.t),0,4102444800000) });
+        badge:_cs(it.badge,18), where:_cw(it.where), fav:!!it.fav, t:clamp(num(it.t),0,4102444800000) });
     } }
-    homeId=(data.home && logMap.has(data.home))?data.home:null;
+    { const _h=_cs(data.home,24); homeId=(_h && logMap.has(_h))?_h:null; }   /* verify-pass: home resolves via the SAME coercion as the keys */
     for(const s of (data.land||[])){ const n=+s; if(Number.isFinite(n)) landed.add(n); }
     for(const s of (data.cont||[])){ const n=+s; if(Number.isFinite(n)) contacted.add(n); }
     /* the descent's pity ramp (v1.3.5): wave-off progress survives a
@@ -15035,7 +15052,7 @@ function resetMemoryState(){
        v1.7 review catch: skimX joined that class — without clearing it a
        fresh expedition opened Sol reading "Corona Spent". */
     mined.clear(); mineX.clear(); skimX.clear(); bioX.clear(); cargo.clear(); cgx.clear(); journal.length=0; techOwned.clear();
-    seenSp.clear(); pinnedRecipe=null; cargoTab='mat'; _lastSalvage=null;   /* review fix: QoL state must die with the run */
+    seenSp.clear(); pinnedRecipe=null; cargoTab='mat'; _lastSalvage=null; logFilter='all';   /* review fix: QoL state must die with the run (verify-pass: +the Atlas lens) */
     try{ _pinChip(); const _cc=document.getElementById('chchip'); if(_cc) _cc.style.display='none'; }catch(_){ }
     items.clear(); for(const k in equip) delete equip[k]; for(const k in equipAff) delete equipAff[k]; _eqOpen=null;
     ascCh=0; ascProg={};   /* a fresh expedition climbs the Ascent again */
@@ -19863,16 +19880,16 @@ function salvageItem(id, confirmed){
   const ret=_salvageReturns(it);
   for(const r of ret) cargo.set(r.k, Math.min(1e6, (cargo.get(r.k)||0)+r.n));
   const left=(items.get(id)||0)-1; if(left>0) items.set(id, left); else items.delete(id);
+  /* SALVAGE UNDO capture — BEFORE the unequip below reads/changes the slot
+     (verify-pass catch: capturing after made the worn-restore dead code) */
+  _lastSalvage={id, ret, t:Date.now(), eqSeq:_eqSeq,
+    slot:(it.slot && equip[it.slot]===id)?it.slot:null,
+    aff:(it.slot && equip[it.slot]===id && equipAff[it.slot] && equipAff[it.slot].forId===id)?Object.assign({},equipAff[it.slot]):null};
   /* unequip ONLY when the LAST copy is gone (review catch: it unequipped on any
      salvage even with duplicates owned, silently emptying the slot + dropping
      the worn affix while a spare still sat in the bag) */
   if(equip[it.slot]===id && left<=0) equipItem(it.slot, null);
   try{ playSurveyPing(); }catch(_){}
-  /* SALVAGE UNDO (QoL m): the toast carries a 6-second regret window — one
-     tap rebuilds the piece and takes the returned materials back */
-  _lastSalvage={id, ret, t:Date.now(),
-    slot:(it.slot && equip[it.slot]===id)?it.slot:null,   /* review fix: undo restores WORN state + its affix */
-    aff:(it.slot && equip[it.slot]===id && equipAff[it.slot] && equipAff[it.slot].forId===id)?Object.assign({},equipAff[it.slot]):null};
   toast('♺ Salvaged', it.name+' broken down'+(ret.length?' — '+ret.map(r=>r.n+'× '+(matName(r.k))).join(' · '):'')+'. <b>Tap to undo.</b>', 'undo-salvage');
   closeItemCard();   /* review cleanup: was an inlined copy of this fn's body */
   try{ showCargoBtn(); if(sheetOpen) renderCargo(); }catch(_){}
@@ -20328,9 +20345,11 @@ function craftItem(id, _q){   /* _q: quiet (batch craft) — skips the per-unit 
   try{ if(sheetOpen) renderDoll(); }catch(_){ }   /* fresh gear may auto-equip into a socket */
   checkAch(); renderRank(); queueSave();
 }
+let _eqSeq=0;   /* verify-pass: every equipment change bumps this — salvage-undo only restores worn state if gear was untouched since */
 function equipItem(slot, id, quiet){
   if(!EQ_SLOTS.some(s=>s.id===slot)) return;
   if(id && (!ITEM_BY.has(id) || ITEM_BY.get(id).slot!==slot || !itemCount(id))) return;
+  _eqSeq++;
   equip[slot]=id||undefined;
   if(!id) delete equip[slot];
   if(!quiet){
