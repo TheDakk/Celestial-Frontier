@@ -13,7 +13,9 @@ module.exports = {
     g.fillStyle='#07080f'; g.fillRect(0,0,1460,900);
     g.font='12px monospace';
     // flora genomes forced to specific FORMs (FAM index): 5=cactus, 0/16=fern/palm, 1=tree, 13=flower
-    const flora=(form,i)=>hdGenesFor({seed:90000+i*337, kingdom:'flora', form:form, color:i%17, accent:(i*3)%17, trait:(i*2)%25, body:i%5, pattern:i%4});
+    // RAW genomes — hdFloraBare reads .form/.color off the genome itself; wrapping in
+    // hdGenesFor (the FAUNA resolver) strips them and everything renders as a fern
+    const flora=(form,i)=>({seed:90000+i*337, kingdom:'flora', form:form, color:i%17, accent:(i*3)%17, trait:(i*2)%25, body:i%5, pattern:i%4});
     const cases=[
       ['desert · its CACTI',      {seed:9401,era:'none',pal:'day',wb:'dunesea',water:'none',moons:1,floraGenes:[flora(5,1),flora(5,2)]}],
       ['jungle · its BROADLEAVES',{seed:9402,era:'none',pal:'day',wb:'jungle',flora:true,moons:1,floraGenes:[flora(1,3),flora(16,4)]}],

@@ -370,6 +370,15 @@ Current vistas read as beautiful-but-sparse backdrops. Fix = **ecological occupa
   same art as their Compendium page. Flora-less worlds keep the tuned generic dressing
   (fallback). Coherence: the plant on the planet is the one in your Compendium, matching how
   creatures already share `hdBeastBare` across portrait/card/vista.
+  **2026-07-25 ROOT-CAUSE FIX (Gold review Gate 1 — "desert CACTI panel draws ferns"):** the
+  promise above was silently broken from day one — `floraGenes` mapped the genomes through
+  `hdGenesFor`, which is the FAUNA phenotype resolver; its return carries no `.form`/`.color`/
+  `.seed`, so `_floraSpx` defaulted every field and EVERY vista plant rendered as `FAM[0]`
+  (fern) in default colors. Fixed: the vista receives RAW flora genomes (`hdFloraBare`/
+  `_floraSpx` read the genome directly — same contract as `hdPortraitFlora`); the identical
+  wrong wrap was removed from `tools/sheets/floravista.js`, whose forced-cactus audit had been
+  masking its own test. RULE: `hdGenesFor` output feeds `hdBeastBare` ONLY; flora painters take
+  the raw genome.
 - **THE LANDING ROLL (vista side)** — the touch-down REGION is rolled per landing and the
   vista's fauna are picked to MATCH it: species whose rig family belongs in the rolled biome
   (BIOME_SETS fauna list), seeded-shuffled per landing so repeat descents meet different

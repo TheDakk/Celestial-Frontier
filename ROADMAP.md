@@ -140,8 +140,27 @@
 ##   exactly one accepted. ⚠ LESSON: smoke's tutAt matched the literal 'n / 20' card counter — adding a step
 ##   broke 22 checks at once; counter now '/ 21' (grep the total when steps change).
 ##   DOCS SYNCED: UI_PRESENTATION (final v8-v11 layout) + QUESTS_AND_CHAPTERS (graduation mechanics).
-##   ▶ AWAITING NICK — his review of v11 screens + graduation flow; THEN: desert-CACTI vista routing fix ·
-##   cert proof gaps (Shipyard d/p + Prime phone populated-save shots, equipped paperdoll) · bundle-time
+## ▶▶▶ 2026-07-25 NINTH DIRECTIVE — CACTI ROOT-CAUSE + INVENTORY PROOFS + PHONE DOLL (all gates green:
+##   fp MATCH 50/50 · render 1010/0 · smoke 419/0 · layout 546/9):
+##   ★ DESERT-CACTI FIX (Gold review Gate 1) — ROOT CAUSE FOUND: main.js floraGenes mapped flora genomes
+##   through hdGenesFor — the FAUNA phenotype resolver. Its return R carries NO .form/.color/.seed, so
+##   _floraSpx defaulted every lookup → FAM[0]='fern' in default colors for EVERY vista plant on EVERY
+##   world (the reviewer's "web-frond forms everywhere"). Compendium was never wrong (raw genomes).
+##   FIX: floraGenes passes RAW genomes (hdFloraBare reads the genome itself); same wrong wrap removed
+##   from tools/sheets/floravista.js (the audit sheet was masking its own test). airGenes KEEPS
+##   hdGenesFor (hdBeastBare wants R); aerFlora is presence-only (harmless). floravista proof now
+##   draws true column cacti / broadleaves+palm / flowers+ferns per genome. fp-safe (render layer).
+##   ⚠ LESSON: hdGenesFor = FAUNA-ONLY resolver. Flora painters (hdFloraBare/_floraSpx) take the RAW
+##   genome. A silent-defaults object made every field fall back — nothing threw, everything rendered.
+##   ★ INVENTORY PROOF RIG (cert gaps closed) — uishot.js SEED_FULL: populated save (23 materials across
+##   all 5 families + cgx exceptionals, 22 item stacks, MIXED-TIER LOADOUT WORN incl. T5 cg-plasma +
+##   affixes via ea). New shots: shipyard d/p, inv-materials/craftables/gear d + materials/gear p,
+##   prime-phone. Closes reviewers' Shipyard-proof + equipped-paperdoll + Prime-phone gaps.
+##   ⚠ uishot outDir must be ABSOLUTE — headless Edge silently drops relative --screenshot paths.
+##   ★ PHONE SHEET (Nick) — paperdoll capped at min(62vw,240px) on ≤700px (was ~75% of viewport; tabs
+##   + effects bar + first material families now surface unscrolled); sockets 44px (touch floor).
+##   Sheets all scroll (overflow-y:auto + styled scrollbar) — wheel + finger, confirmed.
+##   ▶ AWAITING NICK — review of menu-map/inventory/CACTI proofs; THEN: bundle-time
 ##   (version bump kills v1.6.4(dev), RELEASES, two-push deploy, final Gold zip + release archive) ·
 ##   iPhone device verify (dock feel, sheets, selection highlight, dodge feel).'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
 ##     (rig param) · red-panda tail rings · dart-frog contrast at card size · settings-panel anchor could sit

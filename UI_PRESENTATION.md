@@ -248,3 +248,12 @@ SELECTION = a gold-wash HIGHLIGHT on the open board's button (synced from the PA
 .sel — highlight over growth so spacing never moves); HP bar polished (quarter ticks in the trough,
 lit-top depth + bright leading tip on the fill, continuous green→amber→red hue held from before).
 Bell is a circle everywhere. `tools/uishot.js` captures 20 canonical screens per run.
+
+**2026-07-25 addendum (Nick's phone-sheet pass)**: on ≤700px the character-sheet paperdoll is
+capped at `min(62vw,240px)` (it was eating ~75% of the viewport) so the effects bar, all three
+inventory tabs, and the first material families surface without scrolling; sockets hold the 44px
+touch floor. Every sheet/panel scrolls internally (`overflow-y:auto` + styled scrollbar) — mouse
+wheel and touch drag both work. `tools/uishot.js` now also carries `SEED_FULL`, a populated save
+(5 material families + ✦ exceptionals, craftables, mixed-tier loadout worn with affixes) powering
+the Shipyard/inventory/paperdoll proof shots — outDir must be ABSOLUTE (headless Edge silently
+drops relative screenshot paths).
