@@ -122,6 +122,10 @@
 ##   (_fitBeast: airborne winged procs lift S*0.10 off a narrowed, faded shadow) ✔ (8) phone guide-launcher
 ##   lane above the dock. REMAINING before Gold sign-off: (7) version string AT BUNDLE TIME (bind verified) ·
 ##   Nick's proof review of this pass · then regenerate the FULL zip as the Gold-candidate package.
+## ★ 2026-07-25 UI v9 (Nick's screenshot round): dots retired · SELECTION GROWTH (.sel via PANELS sync)
+##   · 🌍 Atlas · Charters normalized · corner quartet on tablet/desktop · centered settings · phone lanes
+##   raised. ⚠ LESSON: TWO min-width:701 media blocks exist — a block-splice keyed on indexOf hit the tutbox
+##   one and ate 555 lines; recovered via git checkout + exact-match edits ONLY (re-learned rule 2 the hard way).
 ##   ▶ AWAITING NICK'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
 ##     (rig param) · red-panda tail rings · dart-frog contrast at card size · settings-panel anchor could sit
 ##     closer to the dock ⚙ on desktop (cosmetic) · desktop caption-vs-hint overlap at boot (pre-existing,
