@@ -1433,7 +1433,7 @@
     #hud-center{display:contents}
     #hud-right{display:contents}
     #trail{display:none}
-    #rank{order:1;margin-right:8px;font-size:10px;padding:4px 9px;max-width:44vw;overflow:hidden;text-overflow:ellipsis}
+    #rank{order:1;margin-right:8px;font-size:10px;padding:4px 9px;max-width:58vw;overflow:hidden;text-overflow:ellipsis}
     #searchwrap{order:2;flex:1 1 0;min-width:56px}
     #hpwrap{order:4;flex:1 1 100%;width:100%;max-width:none;justify-content:flex-start;margin-top:6px}
     #searchin{width:100%;min-width:0;font-size:12px}
@@ -1636,22 +1636,27 @@
      in the bottom-right corners. SAME element ids on both — training
      spotlights, lockdown, gates and smoke keep working everywhere. */
   @media (max-width:700px){
+  /* UI v4: TWO-ROW ICON DOCK — same order as desktop, condensed to emoji chips.
+     Row 1 (upper): 🗺 Atlas · ✦ Prime (middle) · 📖 Compendium
+     Row 2 (lower): 🏆 Records · 🛠 Shipyard — ⚙ / ? corner the lower row,
+     🔔 rides above the ? (the bottom-right settings+notifications cluster). */
   #pcdxbtn, #codexbtn, #logbtn, #cargobtn, #recbtn{
-    top:auto !important; right:auto;
-    bottom:calc(12px + env(safe-area-inset-bottom,0px));
-    left:50%; white-space:nowrap; z-index:14}
-  #pcdxbtn{transform:translateX(calc(-50% - 224px))}
-  #logbtn{transform:translateX(calc(-50% - 112px))}
-  #codexbtn{transform:translateX(-50%)}
-  #cargobtn{transform:translateX(calc(-50% + 112px))}
-  #recbtn{transform:translateX(calc(-50% + 224px))}
-  /* the hint steps above the dock */
-  #hint{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
-  #setbtn{right:auto;left:50%;transform:translateX(calc(-50% - 330px));bottom:calc(13px + env(safe-area-inset-bottom,0px))}
-  #setbtn:hover{transform:translateX(calc(-50% - 330px)) rotate(60deg)}
-  #helpbtn{right:auto;left:50%;transform:translateX(calc(-50% + 330px));bottom:calc(13px + env(safe-area-inset-bottom,0px))}
+    top:auto !important; right:auto; left:50%;
+    white-space:nowrap; z-index:14; padding:8px 11px; gap:5px}
+  #pcdxbtn .lbl,#codexbtn .lbl,#logbtn .lbl,#cargobtn .lbl,#recbtn .lbl{display:none}
+  #pcdxbtn .ico,#codexbtn .ico,#logbtn .ico,#cargobtn .ico,#recbtn .ico{font-size:14px}
+  #logbtn{bottom:calc(58px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 96px))}
+  #pcdxbtn{bottom:calc(58px + env(safe-area-inset-bottom,0px));transform:translateX(-50%)}
+  #codexbtn{bottom:calc(58px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% + 96px))}
+  #recbtn{bottom:calc(12px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 50px))}
+  #cargobtn{bottom:calc(12px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% + 50px))}
+  /* the hint steps above BOTH dock rows */
+  #hint{bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+  #setbtn{right:auto;left:10px;transform:none;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  #setbtn:hover{transform:rotate(60deg)}
+  #helpbtn{right:10px;left:auto;transform:none;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
   /* bottom-pinned training cards clear the dock */
-  #tutbox.dodge{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  #tutbox.dodge{bottom:calc(104px + env(safe-area-inset-bottom,0px))}
   }
   /* the pinned-recipe chip (QoL h) — rides under the charter button */
   #pinchip{position:fixed;left:18px;top:calc(var(--topbar-h,100px) + 46px);z-index:9;display:flex;align-items:center;gap:5px;
@@ -1689,20 +1694,20 @@
   .brbtn{padding:6px 12px;border-radius:999px;cursor:pointer;font:600 10.5px var(--ui);letter-spacing:.05em;
     color:#cfe8ff;background:rgba(127,208,255,0.10);border:1px solid rgba(127,208,255,0.4)}
   .brbtn:hover{background:rgba(127,208,255,0.2)}
-  @media (max-width:520px){
-    /* phone: icon + count chips — labels fold away, dots grow into icons */
-    #pcdxbtn .lbl, #codexbtn .lbl, #logbtn .lbl, #cargobtn .lbl, #recbtn .lbl{display:none}
-    #pcdxbtn, #codexbtn, #logbtn, #cargobtn, #recbtn{padding:9px 12px; gap:5px}
-    #codexbtn .dot.bio, #logbtn .dot, #pcdxbtn .dot.pc, #cargobtn .dot.crg{width:10px;height:10px}
-    #pcdxbtn{transform:translateX(calc(-50% - 138px))}
-    #logbtn{transform:translateX(calc(-50% - 72px))}
-    #codexbtn{transform:translateX(-50%)}
-    #cargobtn{transform:translateX(calc(-50% + 66px))}
-    #recbtn{transform:translateX(calc(-50% + 128px))}
-    /* phones: ⚙ / ? become the dock's edge bookends — fit ANY width */
-    #setbtn{left:10px;right:auto;transform:none}
-    #setbtn:hover{transform:rotate(60deg)}
-    #helpbtn{left:auto;right:10px;transform:none}
+  /* UI v4 (Nick 2026-07-25): the board buttons wear EMOJI ICONS everywhere */
+  #pcdxbtn .ico,#codexbtn .ico,#logbtn .ico,#cargobtn .ico,#recbtn .ico{font-size:12px;line-height:1}
+  @media (min-width:701px){
+    /* DESKTOP v4: ✦ Prime Codex takes the TOP MIDDLE; 🗺 Star Atlas sits under
+       the search box; 📖 Compendium · 🏆 Records · 🛠 Shipyard stack the right
+       rail; ⚙ + 🔔 (+?) hold the bottom-right corner. Panels re-anchor to match. */
+    #pcdxbtn{left:50%;right:auto;transform:translateX(-50%);top:calc(var(--row1-h,58px) + 10px)}
+    #logbtn{top:calc(var(--row1-h,58px) + 10px)}
+    #codexbtn{top:calc(var(--row1-h,58px) + 50px)}
+    #recbtn{top:calc(var(--row1-h,58px) + 90px)}
+    #cargobtn{top:calc(var(--row1-h,58px) + 130px)}
+    #log{top:calc(var(--row1-h,58px) + 50px)}
+    #codex{top:calc(var(--row1-h,58px) + 90px)}
+    #records{top:calc(var(--row1-h,58px) + 130px)}
   }
 </style>
 </head>
@@ -1738,7 +1743,7 @@
     </div>
   </div>
   <div id="hud-right">
-    <div id="pcdxbtn" role="button" tabindex="0" data-tip="The Prime Codex — claim all nine Signatures to reach the Celestial Frontier." data-guide="signatures"><span class="dot pc"></span><span class="lbl">Prime Codex</span> <span class="n" id="pcdxcount">0/9</span></div>
+    <div id="pcdxbtn" role="button" tabindex="0" data-tip="The Prime Codex — claim all nine Signatures to reach the Celestial Frontier." data-guide="signatures"><span class="dot pc"></span><span class="ico">✦</span><span class="lbl">Prime Codex</span> <span class="n" id="pcdxcount">0/9</span></div>
     <div id="searchwrap">
       <input id="searchin" type="text" placeholder="Search discoveries or paste code" autocomplete="off" spellcheck="false">
       <div id="searchres"></div>
@@ -1940,12 +1945,12 @@
   <p class="note">Same universe on every device — anyone who opens this link lands on this exact world.</p>
 </div></div>
 
-<div id="logbtn" role="button" tabindex="0" data-tip="Your bookmarked places — tap any entry to travel there." data-guide="atlas"><span class="dot"></span><span class="lbl">Star Atlas</span> <span class="n" id="logcount">0</span></div>
+<div id="logbtn" role="button" tabindex="0" data-tip="Your bookmarked places — tap any entry to travel there." data-guide="atlas"><span class="dot"></span><span class="ico">🗺</span><span class="lbl">Star Atlas</span> <span class="n" id="logcount">0</span></div>
 <div id="log"></div>
-<div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="dot bio"></span><span class="lbl">Compendium</span> <span class="n" id="codexcount">0</span></div>
+<div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="dot bio"></span><span class="ico">📖</span><span class="lbl">Compendium</span> <span class="n" id="codexcount">0</span></div>
 <div id="codex"></div>
-<div id="cargobtn" role="button" tabindex="0" style="display:none" data-tip="The Shipyard — your ship, the Fabricator and the Research Bench." data-guide="crafting"><span class="dot crg"></span><span class="lbl">Shipyard</span> <span class="n" id="cargocount">0</span></div>
-<div id="recbtn" role="button" tabindex="0" data-tip="The Records board — your rarity ladder and every achievement shelf." data-guide="achievements">🏆<span class="lbl"> Records</span></div>
+<div id="cargobtn" role="button" tabindex="0" style="display:none" data-tip="The Shipyard — your ship, the Fabricator and the Research Bench." data-guide="crafting"><span class="dot crg"></span><span class="ico">🛠</span><span class="lbl">Shipyard</span> <span class="n" id="cargocount">0</span></div>
+<div id="recbtn" role="button" tabindex="0" data-tip="The Records board — your rarity ladder and every achievement shelf." data-guide="achievements"><span class="ico">🏆</span><span class="lbl"> Records</span></div>
 <div id="records"></div>
 <div id="primebox"><div class="card">
   <button id="primeclose" class="pxclose" type="button">&times;</button>
@@ -2143,6 +2148,8 @@ function syncTopbarH(){
      Compendium / Star Atlas sit directly beneath it. Row 1 is measured from the
      SEARCH bar (UI v3 moved the bell to the bottom-right corner — measuring the
      bell would read the viewport bottom and throw every panel off-screen). */
+  const si=document.getElementById('searchin');
+  if(si) si.placeholder = (W<=700)?'Search or paste code':'Search discoveries or paste code';
   const sw=document.getElementById('searchwrap')||document.getElementById('rank');
   if(sw){ const r=sw.getBoundingClientRect();
     document.documentElement.style.setProperty('--row1-h', Math.max(40,Math.round(r.bottom))+'px'); }
@@ -9218,8 +9225,11 @@ function hdBeastBare(G,seed){
     const TXlo='rgba('+((_cbT[0]*0.42)|0)+','+((_cbT[1]*0.42)|0)+','+((_cbT[2]*0.42)|0)+',';
     if(skK===0){ const [sk,kg]=_layer();   /* scaled — overlapping scale rows */
       kg.lineWidth=1.3;
-      for(let ry=0;ry<8;ry++){ for(let rx=0;rx<10;rx++){ const xx=x0+rx*bw/9+(ry%2?bw/18:0);
-        const yy=topY+ry*bodH*0.13 - _bow(xx)*(ry<4?0.5:-0.3);   /* rows wrap the torso's swell */
+      /* FULL-CANVAS field (Nick round 4): the pattern covers everything the
+         silhouette mask keeps — head, limbs, tail — never just the torso box */
+      const nRy=Math.ceil(S/(bodH*0.13)), nRx=Math.ceil(S/(bw/9));
+      for(let ry=0;ry<nRy;ry++){ for(let rx=0;rx<nRx;rx++){ const xx=rx*bw/9+(ry%2?bw/18:0);
+        const yy=ry*bodH*0.13 - _bow(xx)*(ry%8<4?0.5:-0.3);
         if((rx*7+ry*5)%4===0) continue;
         const jr=bw*(0.042+(((rx*11+ry*3)%5))/520);
         const ja=0.42+(((rx*31+ry*17)%7)/18);
@@ -9228,14 +9238,15 @@ function hdBeastBare(G,seed){
         kg.strokeStyle='rgba(255,255,255,'+(ja*0.72).toFixed(2)+')';
         kg.beginPath();kg.arc(xx,yy-1,jr,0.35,Math.PI-0.35);kg.stroke(); } } _engrave(kg,sk);
     } else if(skK===2){ const [sk,kg]=_layer();   /* chitinous — hard segment bands + gloss */
-      for(let b=0;b<6;b++){ const jb=((b*37)%7)/7; const xx=x0+bw*(0.10+b*0.15+jb*0.035);
+      const nB=Math.ceil(S/(bw*0.15));
+      for(let b=0;b<nB;b++){ const jb=((b*37)%7)/7; const xx=bw*(0.02+b*0.15+jb*0.035);
         const bowC=S*0.008+_bow(xx)*0.35;   /* seams wrap the swell */
         kg.strokeStyle='rgba(0,0,0,0.26)';kg.lineWidth=4.0+jb*1.4;
-        kg.beginPath();kg.moveTo(xx,topY);kg.quadraticCurveTo(xx+bowC,midY,xx-S*0.004,botY);kg.stroke();
+        kg.beginPath();kg.moveTo(xx,0);kg.quadraticCurveTo(xx+bowC,S*0.5,xx-S*0.004,S);kg.stroke();
         kg.strokeStyle='rgba(0,0,0,0.60)';kg.lineWidth=1.6;
-        kg.beginPath();kg.moveTo(xx,topY);kg.quadraticCurveTo(xx+bowC,midY,xx-S*0.004,botY);kg.stroke();
+        kg.beginPath();kg.moveTo(xx,0);kg.quadraticCurveTo(xx+bowC,S*0.5,xx-S*0.004,S);kg.stroke();
         kg.strokeStyle='rgba(255,255,255,0.30)';kg.lineWidth=1.2;   /* lit segment edge */
-        kg.beginPath();kg.moveTo(xx-2,topY+2);kg.quadraticCurveTo(xx+bowC-2,midY,xx-S*0.004-2,botY-1);kg.stroke(); }
+        kg.beginPath();kg.moveTo(xx-2,2);kg.quadraticCurveTo(xx+bowC-2,S*0.5,xx-S*0.004-2,S-1);kg.stroke(); }
       const gl=kg.createLinearGradient(0,topY,0,midY);gl.addColorStop(0,'rgba(255,255,255,0.34)');gl.addColorStop(1,'rgba(255,255,255,0)');
       kg.fillStyle=gl;kg.fillRect(x0,topY,bw,midY-topY); _engrave(kg,sk);
     } else if(skK===4){ const [sk,kg]=_layer();   /* plated — big overlapping armour sections */
@@ -9247,7 +9258,7 @@ function hdBeastBare(G,seed){
         kg.strokeStyle='rgba(0,0,0,0.42)';kg.lineWidth=2.0;
         kg.beginPath();kg.ellipse(px,midY-S*0.006,bw*0.16,bodH*0.42,0,Math.PI*1.02,Math.PI*1.98);kg.stroke(); } _engrave(kg,sk);
     } else if(skK===5){ const [sk,kg]=_layer();   /* warty — scattered raised bumps */
-      for(let w=0;w<22;w++){ const wx=x0+((w*61)%100)/100*bw, wy=topY+((w*37)%100)/100*bodH, wr=bw*(0.022+((w*13)%5)/220);
+      for(let w=0;w<44;w++){ const wx=((w*61)%100)/100*S, wy=((w*37)%100)/100*S, wr=bw*(0.022+((w*13)%5)/220);
         const bg5=kg.createRadialGradient(wx-wr*0.4,wy-wr*0.4,0,wx,wy,wr*1.5);
         bg5.addColorStop(0,'rgba(255,255,255,0.45)'); bg5.addColorStop(0.5,'rgba(128,128,128,0.06)'); bg5.addColorStop(0.85,'rgba(0,0,0,0.28)'); bg5.addColorStop(1,'rgba(0,0,0,0)');
         kg.fillStyle=bg5;kg.beginPath();kg.arc(wx,wy,wr*1.5,0,7);kg.fill(); } _engrave(kg,sk);
@@ -9272,17 +9283,15 @@ function hdBeastBare(G,seed){
          the hide (Nick 2026-07-25: bright facets read as painted-on): each facet tints
          from the base color, gradient-filled with soft seams; only two hard glints
          keep the mineral sparkle */
-      for(let f=0;f<8;f++){ const fx=x0+bw*(0.1+f*0.11), fy=topY+((f*53)%5)*bodH*0.17;
+      for(let f=0;f<26;f++){ const fx=(((f*53)%11)/11)*S, fy=(((f*29)%9)/9)*S;
         const gN=kg.createLinearGradient(fx-bw*0.05,fy,fx+bw*0.08,fy+bodH*0.34);
         gN.addColorStop(0,'rgba(255,255,255,0.42)'); gN.addColorStop(0.55,'rgba(128,128,128,0.06)'); gN.addColorStop(1,'rgba(0,0,0,0.30)');
         kg.fillStyle=gN;
         kg.beginPath();kg.moveTo(fx,fy);kg.lineTo(fx+bw*0.08,fy+bodH*0.14);kg.lineTo(fx+bw*0.02,fy+bodH*0.34);kg.lineTo(fx-bw*0.05,fy+bodH*0.2);kg.closePath();kg.fill();
         kg.strokeStyle='rgba(0,0,0,0.22)';kg.lineWidth=1;kg.stroke();
+        if(f===3||f===9||f===17){ kg.strokeStyle='rgba(255,255,255,0.95)';kg.lineWidth=1.2;kg.lineCap='round';   /* grazing glints — INSIDE the mask */
+          kg.beginPath();kg.moveTo(fx,fy);kg.lineTo(fx+bw*0.08,fy+bodH*0.14);kg.stroke(); }
       } _engrave(kg,sk);
-      g.save();g.globalAlpha=0.4;g.strokeStyle='rgba(245,250,255,0.9)';g.lineWidth=1.1;g.lineCap='round';   /* two grazing glints, the mineral tell */
-      for(const f of [2,5]){ const fx=x0+bw*(0.1+f*0.11), fy=topY+((f*53)%5)*bodH*0.17;
-        g.beginPath();g.moveTo(fx,fy);g.lineTo(fx+bw*0.08,fy+bodH*0.14);g.stroke(); }
-      g.restore();
     } else if(skK===1){ /* furred (Nick 2026-07-25: outline quills read as painted-on) —
          the fur now lives IN the coat: a masked interior underfur texture carries
          most of it; the outline keeps only a soft, sparse, shorter fringe */
@@ -9290,32 +9299,34 @@ function hdBeastBare(G,seed){
            strokes that follow the torso and inherit its painted shading — nothing
            protrudes, nothing sits on top */
         kgF.lineCap='round';
-        for(let f=0;f<110;f++){ const fx=x0+((f*61)%100)/100*bw, fy=topY+((f*37)%100)/100*bodH;
-          const flow=0.95+Math.sin(((fx-x0)/bw)*3.14)*0.35+((f*13)%10)/40;   /* strands flow along the body, drooping at the flanks */
+        for(let f=0;f<240;f++){ const fx=((f*61)%100)/100*S, fy=((f*37)%100)/100*S;
+          const flow=0.95+Math.sin(Math.max(0,Math.min(1,(fx-x0)/bw))*3.14)*0.35+((f*13)%10)/40;
           const ln=S*(0.012+((f*29)%7)/850), dk=(f*7)%3!==0;
           kgF.strokeStyle=dk?'rgba(0,0,0,'+(0.30+((f*11)%5)/25).toFixed(2)+')':'rgba(255,255,255,'+(0.26+((f*17)%5)/30).toFixed(2)+')';
           kgF.lineWidth=0.9+((f*3)%3)*0.25;
           kgF.beginPath();kgF.moveTo(fx,fy);
           kgF.quadraticCurveTo(fx+Math.cos(flow)*ln*0.6,fy+Math.sin(flow)*ln*0.6,fx+Math.cos(flow)*ln,fy+Math.sin(flow)*ln);kgF.stroke(); }
         _engrave(kgF,skF,0.85); }
-    } else if(skK===6){ /* feathered — contour feathers CLIPPED INTO the body (nothing
-         sticks in the air); rachis + set jitter keep it plumage, not a stamp grid */
-      const [skP,kgP]=_layer(); const g=kgP;   /* draw the whole plumage into the masked layer */
-      g.save();const fb=(G.base||[120,120,120]), fl='rgba('+fb.join(',')+',', fd='rgba('+(fb.map(v=>(v*0.6)|0).join(','))+',';
-      for(let row=0;row<4;row++){ const yy=topY+row*bodH*0.19;
-        for(let fx2=0;fx2<9;fx2++){ const jf=((fx2*17+row*29)%7);
-          if((fx2*13+row*7)%5===0) continue;   /* broken coverage — plumage, not a stamp grid */   /* R4: break the uniform grid — jittered position/length/set */
-          const xx=x0+bw*(0.05+fx2*0.108)+(row%2?bw*0.05:0)+(jf-3)*bw*0.009, fl2=S*(0.028+row*0.004)*(0.85+jf*0.05);
-          g.save();g.translate(xx,yy);g.rotate(2.5+(jf-3)*0.055);              // point back-and-down (directional overlap)
-          g.fillStyle=(row%2?fl:fd)+'0.68)';g.beginPath();g.moveTo(0,0);g.quadraticCurveTo(-fl2*0.5,fl2*1.4,0,fl2*2.0);g.quadraticCurveTo(fl2*0.5,fl2*1.4,0,0);g.closePath();g.fill();
-          g.strokeStyle=fd+'0.32)';g.lineWidth=0.8;g.beginPath();g.moveTo(0,fl2*0.2);g.lineTo(0,fl2*1.7);g.stroke();   // rachis
-          g.restore(); } }
-      const pxr=(hips[0]||x0+bw*0.15);                                          // a contour-feather tail plume mass
-      g.fillStyle=fl+'0.85)';
-      for(let p=0;p<6;p++){ const a=2.55+p*0.13; g.save();g.translate(pxr,midY+bodH*0.12);g.rotate(a);
-        g.beginPath();g.moveTo(0,0);g.quadraticCurveTo(-S*0.012,S*0.05,0,S*0.115);g.quadraticCurveTo(S*0.012,S*0.05,0,0);g.closePath();g.fill();g.restore(); }
-      g.restore();
-      _mask(kgP,skP);
+    } else if(skK===6){ /* feathered — engraved PLUMAGE (Nick round 4: colored rows
+         read painted): a full-canvas scallop relief — every feather a white-edged,
+         dark-rooted shingle following the body flow — composited into the hide's
+         own paint and light like every other material */
+      const [skP,kgP]=_layer();
+      kgP.lineCap='round';
+      const frw=bw*0.10;
+      const nFy=Math.ceil(S/(frw*0.62)), nFx=Math.ceil(S/frw)+1;
+      for(let row=0;row<nFy;row++){ for(let c2=0;c2<nFx;c2++){
+        if((c2*13+row*7)%5===0) continue;
+        const jf=((c2*17+row*29)%7);
+        const fx=c2*frw+(row%2?frw*0.5:0)+(jf-3)*frw*0.06;
+        const fy=row*frw*0.62 - _bow(fx)*0.4;
+        const fr2=frw*(0.42+jf*0.03);
+        kgP.strokeStyle='rgba(0,0,0,'+(0.30+jf/30).toFixed(2)+')'; kgP.lineWidth=1.6;
+        kgP.beginPath(); kgP.arc(fx,fy,fr2,0.35,Math.PI-0.35); kgP.stroke();
+        kgP.strokeStyle='rgba(255,255,255,'+(0.22+jf/40).toFixed(2)+')'; kgP.lineWidth=1.0;
+        kgP.beginPath(); kgP.arc(fx,fy-1.3,fr2*0.92,0.5,Math.PI-0.5); kgP.stroke();
+      } }
+      _engrave(kgP,skP,0.9);
     }
   }
   if(armored){ /* plate seams over the back — hide-tinted (universal texture law) */
@@ -9328,6 +9339,11 @@ function hdBeastBare(G,seed){
     for(let sa=1;sa<4;sa++){g.beginPath();
       g.arc(S*0.47,baseY-S*0.075,S*0.20*G.bulk*L9*(1-sa*0.22),Math.PI,0);g.stroke();}
   }
+  if(winged && !effRig){ /* wing-root OCCLUSION (Gold review §E/F): a soft contact
+     shadow where the membrane meets the shoulder — the wing belongs to the body */
+    const wg2=g.createRadialGradient(S*0.565,baseY-S*0.055,1,S*0.565,baseY-S*0.055,S*0.055);
+    wg2.addColorStop(0,'rgba(8,6,10,0.34)'); wg2.addColorStop(1,'rgba(8,6,10,0)');
+    g.fillStyle=wg2; g.beginPath(); g.arc(S*0.565,baseY-S*0.055,S*0.055,0,7); g.fill(); }
   if(tusked&&!radial){ /* ivory curves from the jaw */
     g.strokeStyle='#e8e2d0';g.lineWidth=S*0.012;g.lineCap='round';
     g.beginPath();g.moveTo(hp.x+S*0.03,hp.y+S*0.02);
