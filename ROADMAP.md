@@ -47,8 +47,19 @@
 ##     FAUNA NITS REMAINING: dart-frog patch contrast verify at card size · eagle hook still subtle · gerenuk
 ##     neck (o.neck doesn't drive mammal-rig neck length — needs rig param) · red-panda RINGED TAIL (needs tail
 ##     path access) · R4 spike/fur/feather softening pass NOT STARTED.
-##   STILL TO RUN (before the full proof drop): R4 spikes · wave 3 (coast-halo breakup, cloud fronts/storms,
-##     star-class extras, wing silhouettes) · THE UI PASS + TRAINING REDO (see below) · full proof set + zip.
+##   [2026-07-25 SECOND SESSION, all committed+pushed → 5c0530f, every batch battery-green]:
+##   R4 SPIKES ✔ [crystal+dorsal: varied spacing/length, mid-back envelope, ROOTED mounds; feather grid
+##     jittered — fur/translucent-organs/wings were already done in earlier passes]. WAVE 3 ✔✔✔: coast-rim
+##     BREAKUP (shore band width varies by type — cliffs plunge to water) + cloud FIELD mask (weather systems
+##     w/ clear sky) + cloud SHADOWS [planets24 proof reviewed] · 4-WING vs 2-WING silhouettes (hindwing =
+##     real second pair, separated tip) [winged proof reviewed] · star-class extras = previously done + scale
+##     row. UI PASS STEP 1 ✔: ⚙+? circles JOIN the dock (desktop ±330 slots, phone edge-bookends; ids
+##     untouched → training lockdown + smoke targets hold; layout 546/9, smoke 415/0).
+##   STILL TO RUN (before the full proof drop): UI PASS REMAINDER (topbar shelf + left-rail charters/chips
+##     consistency + panel language) + THE FULL TRAINING REDO in the same batch (same focus lockdown, all
+##     prior lessons, text/spotlights vs the new layout) · fauna nits (eagle hook, gerenuk neck via rig param,
+##     red-panda tail rings, dart contrast verify) · FULL PROOF SET (incl. actual-size rows per the runtime-
+##     integration adoption) + zip for Nick's review round.
 ## ▶▶▶ 2026-07-25 EIGHTH DIRECTIVE — TWO MORE REVIEW DOCS TRIAGED (both saved to repo):
 ##   GAP_AUDIT_2026-07-25.md ("Build Gap Audit"): P0 items 1,3,4,5,6,8 ALREADY DONE this arc (universal rarity,
 ##   save validation/hardening, canopy, ring grammar, deepspace labels, gear-on-ladder); P0-2 Earth-cap = N/A
