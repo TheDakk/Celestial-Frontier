@@ -636,7 +636,6 @@
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:flex;align-items:center;gap:7px;
     transition:color .2s,border-color .2s,box-shadow .15s}
   #chbtn:hover{color:var(--ink);border-color:rgba(255,217,106,0.6);box-shadow:0 0 22px rgba(255,217,106,0.22)}
-  #chbtn .dot{width:6px;height:6px;border-radius:50%;background:#ffd96a;box-shadow:0 0 8px #ffd96a;animation:evpulse 2.4s infinite}
   /* Z-ORDER LAW (Nick's device pass): open rail panels sit ABOVE the topbar
      stacking layer (z 20) — a chip must never cover the screen you opened */
   #chpanel{position:fixed;top:calc(var(--topbar-h,100px) + 52px);left:18px;right:auto;z-index:22;width:318px;max-height:min(60vh,520px);overflow-y:auto;display:none;
@@ -971,7 +970,6 @@
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:7px;
     transition:color .2s,border-color .2s}
   #logbtn:hover{color:var(--ink);border-color:rgba(150,162,210,0.4)}
-  #logbtn .dot{width:6px;height:6px;border-radius:50%;background:var(--plasma);box-shadow:0 0 8px var(--plasma)}
   #logbtn .n{color:var(--plasma)}
   #codexbtn{position:fixed;top:calc(var(--row1-h,58px) + 50px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
     display:flex;align-items:center;gap:7px;padding:7px 14px;border-radius:999px;
@@ -979,7 +977,6 @@
     background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
     border:1px solid rgba(150,162,210,0.22);transition:color .15s,border-color .15s}
   #codexbtn:hover{color:var(--ink);border-color:rgba(150,162,210,0.4)}
-  #codexbtn .dot.bio{width:6px;height:6px;border-radius:50%;background:#7fe6a0;box-shadow:0 0 8px #7fe6a0}
   #codexbtn .n{color:#7fe6a0}
   /* ---- Cargo hold (1.0): appears after your first mine of a dead world ---- */
   #cargobtn{position:fixed;top:calc(var(--row1-h,58px) + 130px);right:18px;z-index:8;pointer-events:auto;cursor:pointer;
@@ -988,7 +985,6 @@
     background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
     border:1px solid rgba(150,162,210,0.22);transition:color .15s,border-color .15s}
   #cargobtn:hover{color:var(--ink);border-color:rgba(150,162,210,0.4)}
-  #cargobtn .dot.crg{width:6px;height:6px;border-radius:50%;background:#ffcf8a;box-shadow:0 0 8px #ffcf8a}
   #cargobtn .n{color:#ffcf8a}
   /* cargo (v1.2.2): Inventory / Research Bench tabs; the inventory is a
      sandbox-style item grid — icon tiles with corner quantities */
@@ -1050,7 +1046,6 @@
     backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
     border:1px solid rgba(255,207,138,0.35);box-shadow:0 0 18px rgba(255,207,138,0.1);transition:border-color .15s,box-shadow .15s}
   #pcdxbtn:hover{border-color:rgba(255,207,138,0.6);box-shadow:0 0 22px rgba(255,207,138,0.22)}
-  #pcdxbtn .dot.pc{width:6px;height:6px;border-radius:50%;background:#f0cf8a;box-shadow:0 0 8px #f0cf8a}
   #pcdxbtn .n{color:#ffe6a8;font-weight:700}
   #pcdxbtn.done{border-color:rgba(214,91,184,0.7);box-shadow:0 0 26px rgba(214,91,184,0.4)}
   /* ---- Prime Codex modal ---- */
@@ -1730,7 +1725,6 @@
   /* UI v4 (Nick 2026-07-25): the board buttons wear EMOJI ICONS everywhere */
   #pcdxbtn .ico,#codexbtn .ico,#logbtn .ico,#cargobtn .ico,#recbtn .ico,#chbtn .ico{font-size:12px;line-height:1}
   /* UI v9 (Nick): status lights retired — the icons carry identity now */
-  #pcdxbtn .dot,#codexbtn .dot,#logbtn .dot,#cargobtn .dot,#chbtn .dot{display:none}
   /* UI v11 (Nick): counts retired too — only ✦ Prime Codex keeps its 0/9 */
   #codexbtn .n,#logbtn .n,#cargobtn .n{display:none}
   /* SELECTION HIGHLIGHT (Nick v11: highlight beats growth — spacing never moves):
@@ -1806,7 +1800,7 @@
     </div>
   </div>
   <div id="hud-right">
-    <div id="pcdxbtn" role="button" tabindex="0" data-tip="The Prime Codex — claim all nine Signatures to reach the Celestial Frontier." data-guide="signatures"><span class="dot pc"></span><span class="ico">✦</span><span class="lbl">Prime Codex</span> <span class="n" id="pcdxcount">0/9</span></div>
+    <div id="pcdxbtn" role="button" tabindex="0" data-tip="The Prime Codex — claim all nine Signatures to reach the Celestial Frontier." data-guide="signatures"><span class="ico">✦</span><span class="lbl">Prime Codex</span> <span class="n" id="pcdxcount">0/9</span></div>
     <div id="searchwrap">
       <input id="searchin" type="text" placeholder="Search discoveries or paste code" autocomplete="off" spellcheck="false">
       <div id="searchres"></div>
@@ -1905,7 +1899,7 @@
 </div></div>
 <div id="toast"></div>
 <div id="eventsbtn" role="button" tabindex="0" data-tip="Live cosmic events — every explorer sees the same sky at the same moment." data-guide="events"><span class="dot"></span>Cosmic Events</div>
-<div id="chbtn" role="button" tabindex="0" data-tip="Expedition Charters — your charter board. Chains teach the expedition&#8217;s trades one link at a time; then three fresh charters a week, the same for every explorer." data-guide="charters"><span class="dot"></span><span class="ico">📜</span><span class="lbl">Charters</span></div>
+<div id="chbtn" role="button" tabindex="0" data-tip="Expedition Charters — your charter board. Chains teach the expedition&#8217;s trades one link at a time; then three fresh charters a week, the same for every explorer." data-guide="charters"><span class="ico">📜</span><span class="lbl">Charters</span></div>
 <div id="chpanel"></div>
 <div id="events"></div>
 
@@ -2008,11 +2002,11 @@
   <p class="note">Same universe on every device — anyone who opens this link lands on this exact world.</p>
 </div></div>
 
-<div id="logbtn" role="button" tabindex="0" data-tip="Your bookmarked places — tap any entry to travel there." data-guide="atlas"><span class="dot"></span><span class="ico">🌍</span><span class="lbl">Star Atlas</span> <span class="n" id="logcount">0</span></div>
+<div id="logbtn" role="button" tabindex="0" data-tip="Your bookmarked places — tap any entry to travel there." data-guide="atlas"><span class="ico">🌍</span><span class="lbl">Star Atlas</span> <span class="n" id="logcount">0</span></div>
 <div id="log"></div>
-<div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="dot bio"></span><span class="ico">📖</span><span class="lbl">Compendium</span> <span class="n" id="codexcount">0</span></div>
+<div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="ico">📖</span><span class="lbl">Compendium</span> <span class="n" id="codexcount">0</span></div>
 <div id="codex"></div>
-<div id="cargobtn" role="button" tabindex="0" style="display:none" data-tip="The Shipyard — your ship, the Fabricator and the Research Bench." data-guide="crafting"><span class="dot crg"></span><span class="ico">🛠</span><span class="lbl">Shipyard</span> <span class="n" id="cargocount">0</span></div>
+<div id="cargobtn" role="button" tabindex="0" style="display:none" data-tip="The Shipyard — your ship, the Fabricator and the Research Bench." data-guide="crafting"><span class="ico">🛠</span><span class="lbl">Shipyard</span> <span class="n" id="cargocount">0</span></div>
 <div id="recbtn" role="button" tabindex="0" data-tip="The Records board — your rarity ladder and every achievement shelf." data-guide="achievements"><span class="ico">🏆</span><span class="lbl"> Records</span></div>
 <div id="records"></div>
 <div id="primebox"><div class="card">
@@ -5727,7 +5721,8 @@ function decoSprite(dc){
     g.globalCompositeOperation='lighter';
     g.lineCap='round';
     for(let f2=0;f2<3;f2++){   /* wisped filaments arcing through the body */
-      const fa3=r()*TAU, fr3=C*(0.16+r()*0.38), fw=(3.2+r()*3.4)*(S/128);
+      r();   /* stream-preserving draw (was an unused angle — removing it would reseed every cloud's art) */
+      const fr3=C*(0.16+r()*0.38), fw=(3.2+r()*3.4)*(S/128);
       g.strokeStyle='hsla('+(dc.hue+(r()-0.5)*30)+',80%,72%,'+(0.045+r()*0.045).toFixed(3)+')';
       g.lineWidth=fw;
       g.beginPath(); g.arc(C+(r()-0.5)*C*0.4, C+(r()-0.5)*C*0.4, fr3, r()*TAU, r()*TAU+1.2+r()*1.4); g.stroke();
@@ -22229,8 +22224,8 @@ setInterval(()=>{ try{
 }catch(_){ } }, 6e4);
 const chBtn=document.getElementById('chbtn'), chPanel=document.getElementById('chpanel');
 function _chBadge(){
-  const dot=chBtn&&chBtn.querySelector('.dot');
-  if(dot) dot.style.display=(_chAvailable().length||_chAccepted().length)?'':'none';
+  /* v1.7 UI v11: board status dots retired (Nick: "don't serve any purpose") —
+     the badge is now only the charter chip below */
   /* CHARTER CHIP (QoL q): the first accepted contract's live progress as a
      one-line chip under the charter button — kills the "what was I doing?"
      reopen loop. Tap → the board. Post-training only; hides when idle. */
