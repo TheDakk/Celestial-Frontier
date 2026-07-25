@@ -91,6 +91,26 @@
 ##   jungle/desert vista organicity · puffin/toucan/macaw bill authority · liveview ring-shadow value bump ·
 ##   review's SDF/silhouette-influence pipeline = LOGGED as post-Gold enhancement (engrave v2 covers the
 ##   integration ask at our style level; silhouette budgets/zone maps queued if Nick wants more).
+## ★ 2026-07-25 ROUND-5 — TWO R2 REVIEWS TRIAGED (saved: GOLD_R2_REVIEW_A/B_2026-07-25.md; verdict
+##   96% CONDITIONAL GOLD, 'micro-pass, not another art cycle') + Nick's iPhone all-docked spec. DONE (→
+##   5ea9844, battery green): UI v5 = phone row 2 is FIVE centered chips ⚙🏆🛠🔔? (nothing floats) + EVERY
+##   phone panel (settings/tray/charters/compendium/atlas/records) opens as a SHEET ABOVE the dock — aligned,
+##   zero overlap. ⚠ LESSON: a transformed fixed ancestor becomes the containing block — bellwrap's translateX
+##   collapsed the fixed tray to 20px (gate caught it); positioned via left:calc() instead.
+##   ▶▶▶ THE FINAL GOLD MICRO-PASS (both reviews' gate, = the LAST wave before Gold sign-off):
+##   (1) EAGLE raptor read (hook+brow+chest+squared tail+talon stance) (2) GERENUK neck +20-30% vs impala,
+##   raised head, slimmer torso (needs mammal-rig neck param) (3) RED PANDA tail rings + volume (needs tail
+##   path in marking pass) (4) DART FROG contrast at card size (min patch width, saturation) (5) OPEN-SEA
+##   COMPOSITION ARCHETYPES — 8 real archetypes (empty horizon/near island/archipelago/rocky coast/reef
+##   shelf/storm front/low sun/distant life), vary within each — not one comp with parameter jitter
+##   (6) FLIGHT-STATE separation — airborne rises off its shadow (narrow+soften), legs tuck, body tilts;
+##   grounded lowers + folds tighter; 4-wing pair separation in flight (7) version string = BUNDLE-TIME
+##   (by design — bind guide card to GAME_VERSION at the bump; verify in release shots) (8) phone guide
+##   launcher lane above the dock. POLISH (if schedule): fur contour fuzz + crystal planar breaks (silhouette
+##   budgets), chitin joint interruption, scale zoning, ring-shadow softening, wormhole bead reduction,
+##   nebula arc breakup, live-view exposure hierarchy (runtime dominant-glow compression), 44px touch-target
+##   audit + first-use dock tooltips (accessibility batch), meta-dock collapse = POST-FORGE (no realtime
+##   combat state exists yet), flora-family vista mismatch = VERIFY (spot-check landing rosters vs biome).
 ##   ▶ AWAITING NICK'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
 ##     (rig param) · red-panda tail rings · dart-frog contrast at card size · settings-panel anchor could sit
 ##     closer to the dock ⚙ on desktop (cosmetic) · desktop caption-vs-hint overlap at boot (pre-existing,
