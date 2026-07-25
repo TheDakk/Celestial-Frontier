@@ -39,6 +39,8 @@ const SHOTS = [
   { id: 'settings-open-desktop', w: 1440, h: 900, act: `document.getElementById('setbtn').click();` },
   { id: 'tray-desktop',      w: 1440, h: 900,  act: `document.getElementById('bell').click();` },
   { id: 'charters-sel-desktop', w: 1440, h: 900, act: `document.getElementById('chbtn').click();` },
+  { id: 'search-earth-desktop', w: 1440, h: 900, act: `const si=document.getElementById('searchin'); si.value='earth'; si.dispatchEvent(new Event('input',{bubbles:true}));` },
+  { id: 'main-tablet-portrait', w: 834, h: 1112, act: `` },
 ];
 
 for (const s of SHOTS) {
