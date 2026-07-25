@@ -205,3 +205,20 @@ contract is the one UI-adjacent path that needs a re-pin — see DETERMINISM.md.
 - **Training**: feed/breed steps bottom-pinned (rail-block fix); the horizon step teaches
   the GUARDIANS (how signatures/titans work); the finale spotlights the charter board.
 - All '(right rail)' copy now reads '(bottom dock)'.
+
+## 2026-07-25 THE ONE-BAR LANGUAGE (v1.7 UI pass — matches code as of 2026-07-25)
+- **THE SHELF** (topbar): ONE row on desktop — nameplate · HP pill (inline, flex 160-340px) ·
+  search · bell; `--topbar-h` shrinks and every rail offset gains the row back. Phones keep
+  the two-row stack (HP full-width row 2). Trail hidden as before.
+- **THE DOCK** (bottom): ⚙ Settings and ? Guide now FLANK the five pills — desktop at ±330
+  translateX slots, phones as fixed edge bookends (left:10/right:10 — fits any width).
+  Same element ids everywhere: training spotlights, TUT_ALWAYS lockdown, and smoke targets
+  unchanged. Dock reads: ⚙ | Prime Codex · Star Atlas · Compendium · Shipyard · Records | ?
+- **TEXT SYNC**: 5 stale position refs updated to the dock era (charters "top left, under
+  the shelf"; ⚙ "bottom dock, left edge"; Prime Codex + ? Guide "bottom dock"; shipyard
+  comment). Training's focus lockdown verified end-to-end (smoke drives all 20 steps).
+- **PROOF RIG**: `tools/uishot.js` — headless-Edge UI screenshots via an exactly-sized
+  IFRAME (window-size is unreliable under Windows display scaling; the iframe gives a true
+  CSS viewport). Seeds a veteran save (`{me, tut:1, rn:GAME_VERSION}`) so the live UI boots
+  without intro/release popups. 13 shots: main/settings/charters/compendium/atlas/records/
+  prime/guide × desktop+phone.
