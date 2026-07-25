@@ -35,7 +35,7 @@ module.exports = {
         const o={seed:133, era:'none', pal:'day', wb:b.k, flora:true, water:'liquid', moons:1,
           genes:sea?null:[fauna(li),fauna(li+5)], herd:sea?0:3, aqua:sea?2:0,
           floraGenes:sea?null:[flora([5,0,1,13,16][li%5],li),flora(1,li+3)],
-          biome:sea?'island':undefined};
+          biome:sea?'island':undefined, salt:li*13+3};   /* per-landing salt drives the sea ARCHETYPE */
         g.drawImage(hdVista(o), x, y, 470, 210);
       }catch(e){ g.fillStyle='#ff6a5a'; g.fillText(String(e).slice(0,70), x, y+20); }
     }
