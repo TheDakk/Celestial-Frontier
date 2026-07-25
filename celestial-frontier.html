@@ -8879,11 +8879,17 @@ function hdBeastBare(G,seed){
   if(gel && !effRig){ /* soft blob swallowing the chain */
     sg2.beginPath();sg2.ellipse(S*0.47,baseY-S*0.04,S*0.20*G.bulk*L9,S*0.12*G.bulk,0,0,7);sg2.fill();
   }
-  if(crys && !effRig){ /* crystal spikes along the spine */
-    for(let cs2=0;cs2<5;cs2++){const cxx=x0+(x1-x0)*(0.16+cs2*0.17);
-      const chh=S*(0.05+((cs2%2)?0.035:0.015))*G.bulk;
-      const cyy=baseY-Math.sin((0.16+cs2*0.17)*3.14)*S*0.05-S*0.055*G.bulk;
-      sg2.beginPath();sg2.moveTo(cxx-S*0.022,cyy);sg2.lineTo(cxx,cyy-chh);sg2.lineTo(cxx+S*0.022,cyy);sg2.closePath();sg2.fill();}
+  if(crys && !effRig){ /* crystal spikes along the spine — R4: VARIED spacing/length,
+       tallest mid-back, each ROOTED in a mound (sharp tips stay: crystal IS hard) */
+    for(let cs2=0;cs2<6;cs2++){ const jt=((cs2*37)%7)/7;
+      const tpos=0.12+cs2*0.145+jt*0.045;
+      const cxx=x0+(x1-x0)*tpos;
+      const env=Math.sin(Math.min(1,tpos)*3.14);
+      const chh=S*(0.026+env*0.055+jt*0.022)*G.bulk;
+      const cw=S*(0.013+jt*0.012);
+      const cyy=baseY-Math.sin(tpos*3.14)*S*0.05-S*0.055*G.bulk;
+      sg2.beginPath();sg2.ellipse(cxx,cyy+S*0.004,cw*1.8,S*0.012,0,0,7);sg2.fill();
+      sg2.beginPath();sg2.moveTo(cxx-cw,cyy);sg2.lineTo(cxx+cw*(jt-0.4)*0.7,cyy-chh);sg2.lineTo(cxx+cw,cyy);sg2.closePath();sg2.fill(); }
   }
   const hp=rigOut?rigOut.hp:(radial?{x:S*0.5,y:baseY-S*0.06}:{x:x1+S*(0.06+G.neck*0.07),y:baseY-S*(0.10+G.neck*0.12)});
   if(!radial && !G.ceph && !G.upright && !effRig){
@@ -8941,8 +8947,12 @@ function hdBeastBare(G,seed){
       else if(hK===9){ sg2.beginPath();sg2.moveTo(dhp.x-hs*0.2,dhp.y);sg2.arc(dhp.x-hs*0.2,dhp.y,hs*1.7,-1.8,1.8,false);sg2.closePath();sg2.fill(); }   // frill
       else if(hK===7){ sg2.beginPath();sg2.arc(dhp.x-hs*0.1,dhp.y-hs*0.35,hs*1.35,0,7);sg2.fill(); } }   // dome
     if(drift>0.34){ const nS=Math.round(2+drift*4), y0=Math.min(hip[1],sh[1]);   // dorsal alien spikes/crystals
-      for(let s2=0;s2<nS;s2++){ const t=(s2+0.5)/nS, bx=hip[0]+(sh[0]-hip[0])*t, spk=S*(0.02+drift*0.03);
-        sg2.beginPath();sg2.moveTo(bx-S*0.012,y0);sg2.lineTo(bx,y0-spk);sg2.lineTo(bx+S*0.012,y0);sg2.closePath();sg2.fill(); } }
+      for(let s2=0;s2<nS;s2++){ const jt=((s2*41)%7)/7;   /* R4: varied + rooted, tallest mid-row */
+        const t=(s2+0.35+jt*0.3)/nS, bx=hip[0]+(sh[0]-hip[0])*t;
+        const spk=S*(0.014+drift*0.03*Math.sin(Math.min(1,t)*3.14)+jt*0.012);
+        const wd2=S*(0.009+jt*0.006);
+        sg2.beginPath();sg2.ellipse(bx,y0+S*0.003,wd2*1.8,S*0.008,0,0,7);sg2.fill();
+        sg2.beginPath();sg2.moveTo(bx-wd2,y0);sg2.lineTo(bx+wd2*(jt-0.4)*0.7,y0-spk);sg2.lineTo(bx+wd2,y0);sg2.closePath();sg2.fill(); } }
   }
   /* v1.6 Pass 9 SPECIALIZED-RIG head adapter: procedural fish/insect/crust now express the headK
      gene at their rig's head anchor (was the rig default). Family-scaled; structural → sg2. */
@@ -9204,8 +9214,9 @@ function hdBeastBare(G,seed){
     } else if(skK===6){ /* feathered — layered overlapping contour feathers pointing back-down + a tail plume */
       g.save();const fb=(G.base||[120,120,120]), fl='rgba('+fb.join(',')+',', fd='rgba('+(fb.map(v=>(v*0.6)|0).join(','))+',';
       for(let row=0;row<4;row++){ const yy=topY+row*bodH*0.19;
-        for(let fx2=0;fx2<9;fx2++){ const xx=x0+bw*(0.05+fx2*0.108)+(row%2?bw*0.05:0), fl2=S*(0.028+row*0.004);
-          g.save();g.translate(xx,yy);g.rotate(2.5);                            // point back-and-down (directional overlap)
+        for(let fx2=0;fx2<9;fx2++){ const jf=((fx2*17+row*29)%7);   /* R4: break the uniform grid — jittered position/length/set */
+          const xx=x0+bw*(0.05+fx2*0.108)+(row%2?bw*0.05:0)+(jf-3)*bw*0.009, fl2=S*(0.028+row*0.004)*(0.85+jf*0.05);
+          g.save();g.translate(xx,yy);g.rotate(2.5+(jf-3)*0.055);              // point back-and-down (directional overlap)
           g.fillStyle=(row%2?fl:fd)+'0.9)';g.beginPath();g.moveTo(0,0);g.quadraticCurveTo(-fl2*0.5,fl2*1.4,0,fl2*2.0);g.quadraticCurveTo(fl2*0.5,fl2*1.4,0,0);g.closePath();g.fill();
           g.strokeStyle=fd+'0.5)';g.lineWidth=0.8;g.beginPath();g.moveTo(0,fl2*0.2);g.lineTo(0,fl2*1.7);g.stroke();   // rachis
           g.restore(); } }
