@@ -97,7 +97,7 @@
 ##   TRUNK as real rig anatomy, ape differentiation: arm length/stance/bulk, bird sub-silhouettes: swan-swim,
 ##   raptor, puffin bill, hummingbird scale) → re-proof pages. (2) FLORA identity-organ system (signature
 ##   fruit/flower/rhizome/pod per plant — rafflesia/banana/coffee/cacao/durian/papaya/spice-row first) —
-##   the review's #1 blocker. (3) LANDING-SCENE recipes per biome (R3). (4) Procedural trait minimums (R4).
+##   the review's #1 blocker. (3) R3 STATUS 2026-07-24: era:town artifact REMOVED from the proof sheet (settlement/roads were sheet-forced; all 31 wb biome cases exist in-engine). REMAINING REAL WORK, now precisely visible: STRENGTHEN the weak wb washes — tundra must read SNOW (pale ground+sky, frost haze), swamp = standing water + dead trees, mangrove = channels + root stilts, coral-land = turquoise shelf + reef forms; + OPEN-SEA VARIETY (island count/placement, wave strength, sun position, shore curvature per salt). Histogram confirmed ~70% sea-family per spec. (4) Procedural trait minimums (R4).
 ##   PUSHBACKS RECORDED: live-view ring 'seam' = the LIVEVIEW MOCK's crude clip (in-game split+shadows are
 ##   correct) → FIX THE SHEET so proofs reflect the game; deep-space heading overlap = sheet cosmetic → fix;
 ##   70/30 landing spread claim → validate with a 10k-roll histogram (classification: coral/archipelago/marsh
