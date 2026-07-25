@@ -11287,13 +11287,17 @@ function hdVista(opts){
       }
       g.lineTo(ix+iw/2,hz+1);g.closePath();g.fill();
     };
-    /* island layout is seeded per world (L1): count, sizes, side */
-    const nIsl=1+((rL()*3)|0);
-    if(nIsl>1) isl(rX(W*0.86),W*(0.08+rL()*0.08),8+rL()*8,P.layers[0]);
-    if(nIsl>2) isl(rX(W*0.67),W*(0.06+rL()*0.06),6+rL()*6,P.layers[0]);
+    /* island layout: seeded per world (L1) AND per LANDING (wave-2 Gold pass —
+       open-sea compositions were too similar; the salt re-deals island
+       presence/count/placement and the swell every descent) */
+    const rS=mulberry32((seed ^ 0x5EA1 ^ (((opts.salt|0)+1)*0x9E3779B1))>>>0);
+    const nIsl=(rS()<0.22)?0:1+((rS()*3)|0);   /* ~1/5 landings: water to EVERY horizon */
+    if(nIsl>1) isl(rX(W*(0.76+rS()*0.16)),W*(0.08+rS()*0.08),8+rS()*8,P.layers[0]);
+    if(nIsl>2) isl(rX(W*(0.52+rS()*0.20)),W*(0.06+rS()*0.06),6+rS()*6,P.layers[0]);
     const bigX=rX(W*(0.16+rL()*0.12)),bigW=W*(0.20+rL()*0.12);
-    isl(bigX,bigW,22+rL()*16,P.layers[1]);
-    if(civ!=='none'){
+    if(nIsl>0) isl(bigX,bigW,22+rS()*16,P.layers[1]);
+    const swell=0.6+rS()*1.1;   /* per-landing sea state: calm sheet → heavy chop */
+    if(civ!=='none' && nIsl>0){
       /* an inhabited archipelago shows its harbor from the water */
       const litUp=opts.pal==='night'||opts.pal==='twilight';
       if(civ==='space'){
@@ -11338,9 +11342,10 @@ function hdVista(opts){
       g.restore();
     }
     g.strokeStyle='rgba('+P.crest+',0.5)';
-    for(let wv=0;wv<16;wv++){ /* crests open up as they near the shore */
-      const tw4=wv/16, yy=hz+4+tw4*tw4*(by-hz-2);
-      g.globalAlpha=0.05+tw4*0.13;g.lineWidth=0.8+tw4*1.4;
+    const nWv=Math.max(8,Math.round(16*swell));
+    for(let wv=0;wv<nWv;wv++){ /* crests open up as they near the shore; density+weight ride the swell */
+      const tw4=wv/nWv, yy=hz+4+tw4*tw4*(by-hz-2);
+      g.globalAlpha=(0.05+tw4*0.13)*Math.min(1.25,swell);g.lineWidth=(0.8+tw4*1.4)*(0.7+swell*0.35);
       let x6=r()*40-30;
       while(x6<W){const len2=14+r()*40+tw4*50;
         g.beginPath();g.moveTo(x6,yy+(r()-0.5)*3);
@@ -11351,7 +11356,7 @@ function hdVista(opts){
     if((opts.aqua||0)>0){
       /* the card's swimmers break the surface: dorsal arcs, a tail fin,
          a ripple ring — the ocean's roster is finally IN the ocean */
-      const rQ=mulberry32((seed^0x50A5)>>>0);   /* feature-local stream */
+      const rQ=mulberry32((seed^0x50A5^(((opts.salt|0)+1)*0x85EBCA6B))>>>0);   /* feature-local, per landing */
       const na=Math.min(2,opts.aqua);
       for(let ai2=0;ai2<na;ai2++){
         const axx=W*(0.22+rQ()*0.55), ayy=hz+(by-hz)*(0.35+rQ()*0.32);
@@ -12093,7 +12098,7 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
     floraGenes:(xtra&&xtra.floraGenes)||null,
     ring:!!(xtra&&xtra.ring), stc:(xtra&&xtra.stc)||null, herd:(xtra&&xtra.herd)||0,
     aqua:(xtra&&xtra.aqua)||0, air:(xtra&&xtra.air)||0, wb:wb5?wb5.k:null,
-    evt:evt5, titan:!!(xtra&&xtra.titan)});
+    evt:evt5, titan:!!(xtra&&xtra.titan), salt:_vistaSalt()});
   const head5='Planetfall — '+((wb5&&wb5.n)||TYPE_LABEL[type]||'World');
   const WXW={rain:'rain',snow:'snowfall',dust:'dust storm',ash:'ashfall',haze:'haze'};
   const vtTxt5='local '+tod+(wx?' · '+(WXW[wx]||wx):'')+
