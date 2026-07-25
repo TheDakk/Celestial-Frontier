@@ -77,6 +77,20 @@
 ##   syncTopbarH measured row1 from the BELL — moving the bell to the bottom made --row1-h = viewport height
 ##   and threw every right panel off-screen (layout gate caught it); now measured from SEARCH. Charters spot
 ##   still undecided by Nick (left column for now).
+## ★ 2026-07-25 ROUND-4 (GOLD_PROOFS_REVIEW_2026-07-25.md saved — 92% verdict, 'focused and finite';
+##   + Nick's UI v4 spec). ALL DONE this round (→ 840b0db, battery green; CF-v17-GOLD-PROOFS-R2.zip delivered):
+##   ENGRAVE v2 = full-body texture FIELDS (paint the whole canvas, the sil mask fits it — fixed chitin
+##   'scribbled in the middle' + anything outside the lines) + FEATHERED rebuilt as engraved shingle plumage
+##   (col-4 'bunch of lines' fix) + crystalline glints masked in-body. WING-ROOT CONTACT SHADOW (§E/F).
+##   UI v4 (Nick): EMOJI ICONS everywhere (✦🗺📖🛠🏆); desktop ✦ Prime TOP-MIDDLE · 🗺 Atlas under search ·
+##   📖🏆🛠 right rail · 🔔?⚙ corner w/ upward tray; phone TWO-ROW icon dock same order (row1 🗺✦📖 ·
+##   row2 ⚙🏆🛠? · 🔔 above ?); shelf truncation FIXED (nameplate 58vw, adaptive search placeholder in
+##   syncTopbarH). REVIEW TRIAGE: must-do #2,#3,§E/F DONE · #1 version label = BUNDLE-TIME by design (house
+##   rule: GAME_VERSION on Nick's word; '(dev)' marks source build) · REMAINING FOR GOLD (the final micro-
+##   wave): 4 fauna reads (eagle hook, gerenuk neck, red-panda rings, dart contrast) · open-sea variance bump ·
+##   jungle/desert vista organicity · puffin/toucan/macaw bill authority · liveview ring-shadow value bump ·
+##   review's SDF/silhouette-influence pipeline = LOGGED as post-Gold enhancement (engrave v2 covers the
+##   integration ask at our style level; silhouette budgets/zone maps queued if Nick wants more).
 ##   ▶ AWAITING NICK'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
 ##     (rig param) · red-panda tail rings · dart-frog contrast at card size · settings-panel anchor could sit
 ##     closer to the dock ⚙ on desktop (cosmetic) · desktop caption-vs-hint overlap at boot (pre-existing,
