@@ -95,8 +95,11 @@
   /* unified HUD on every width: brand + nameplate left, search + bell right, HP on its own row */
   #trail{display:none}
   #rank{order:2;margin-right:auto}
-  #searchwrap{order:3} #bellwrap{order:4}
-  #hpwrap{order:5;flex:1 1 100%;width:100%;margin-top:6px}
+  /* v1.7 THE SHELF (Nick 2026-07-25): one-row topbar on desktop — rank · HP ·
+     search · bell inline; --topbar-h shrinks and the whole UI gains a row.
+     Phones re-stack HP below (their media block). */
+  #searchwrap{order:4} #bellwrap{order:5}
+  #hpwrap{order:3;flex:1 1 200px;min-width:160px;max-width:340px;margin-top:0}
   #trail{order:6;flex:1 1 100%;width:100%;justify-content:flex-start}
   #hud-center #rank{pointer-events:auto}
   #hud-center #trail{font-size:13px;letter-spacing:.07em}
@@ -1424,7 +1427,7 @@
     #trail{display:none}
     #rank{order:1;margin-right:8px;font-size:10px;padding:4px 9px;max-width:44vw;overflow:hidden;text-overflow:ellipsis}
     #searchwrap{order:2;flex:1 1 0;min-width:56px} #bellwrap{order:3;flex:0 0 auto}
-    #hpwrap{order:4;flex:1 1 100%;width:100%;justify-content:flex-start;margin-top:6px}
+    #hpwrap{order:4;flex:1 1 100%;width:100%;max-width:none;justify-content:flex-start;margin-top:6px}
     #searchin{width:100%;min-width:0;font-size:12px}
     #searchres{width:min(290px,calc(100vw - 20px))}
     #bell{font-size:13px;padding:5px 8px}
@@ -7572,7 +7575,7 @@ function _rigBird(sg,S,baseY,G,r){
   if(G.raptor){ sg.beginPath();sg.ellipse(cx+trx*0.35,by+tryy*0.15,trx*0.55,tryy*0.78,tilt,0,7);sg.fill(); }   /* wave-2: the raptor's deep chest */
   // ---- head + neck ----
   const frontx=cx+Math.cos(tilt)*trx*0.82, fronty=by+Math.sin(tilt)*trx*0.82;
-  const hr=S*(owl?0.088:(tiny?0.04:0.052))*Math.max(0.85,bulk);
+  const hr=S*(owl?0.088:(tiny?0.04:(G.raptor?0.060:0.052)))*Math.max(0.85,bulk);   /* raptor: bigger head so the hook reads */
   const hx=frontx+S*(0.015+neckLen*0.05), hy=fronty-S*(0.03+neckLen*0.26)-(owl?S*0.02:0);   // Pass 4: shorter neck rise (anti-clip; box-fit rescales)
   sg.lineWidth=S*(0.028+0.016*(1-neckLen))*bulk;sg.lineCap='round';
   sg.beginPath();sg.moveTo(frontx,fronty-tryy*0.2);
@@ -8824,21 +8827,22 @@ function hdBeastBare(G,seed){
     /* v1.7 WINGED PASS: wings must DOMINATE the silhouette (Nick: fliers read
        as floating quads) — wider span, higher peak, and a scalloped trailing
        edge so the membrane reads as a wing even under the hide texture. */
+    /* Nick 2026-07-25: QUARTER-OPEN dragon posture — wings sweep out and
+       slightly up like a mid-flap, never mushing into the head; smaller
+       peak, tips ride below the crown line */
     for(const sgn of [-1,1]){
       sg2.globalAlpha=0.85;
-      sg2.beginPath();sg2.moveTo(S*0.47,baseY-S*0.05);   // forewing (upper/outer, larger)
-      sg2.quadraticCurveTo(S*(0.47+sgn*0.22),baseY-S*0.44,S*(0.47+sgn*0.42),baseY-S*0.20);
+      sg2.beginPath();sg2.moveTo(S*0.47,baseY-S*0.05);   // forewing (outer, larger)
+      sg2.quadraticCurveTo(S*(0.47+sgn*0.20),baseY-S*0.28,S*(0.47+sgn*0.37),baseY-S*0.13);
       /* trailing edge scallops back toward the body in two arcs (wing fingers) */
-      sg2.quadraticCurveTo(S*(0.47+sgn*0.30),baseY-S*0.10,S*(0.47+sgn*0.24),baseY-S*0.135);
-      sg2.quadraticCurveTo(S*(0.47+sgn*0.13),baseY-S*0.055,S*0.47,baseY-S*0.02);
+      sg2.quadraticCurveTo(S*(0.47+sgn*0.27),baseY-S*0.065,S*(0.47+sgn*0.21),baseY-S*0.10);
+      sg2.quadraticCurveTo(S*(0.47+sgn*0.12),baseY-S*0.04,S*0.47,baseY-S*0.02);
       sg2.closePath();sg2.fill();
-      if(four){ sg2.globalAlpha=0.75;   /* wave-3: the hindwing is a REAL second pair —
-           larger, angled low-outward, its tip clearly separated from the forewing's
-           high tip so 4-wing reads against 2-wing at silhouette level */
-        sg2.beginPath();sg2.moveTo(S*0.46,baseY-S*0.025);
-        sg2.quadraticCurveTo(S*(0.46+sgn*0.17),baseY-S*0.26,S*(0.46+sgn*0.34),baseY-S*0.09);
-        sg2.quadraticCurveTo(S*(0.46+sgn*0.22),baseY+S*0.015,S*(0.46+sgn*0.10),baseY+S*0.015);
-        sg2.quadraticCurveTo(S*(0.46+sgn*0.04),baseY-S*0.02,S*0.46,baseY-S*0.025);
+      if(four){ sg2.globalAlpha=0.75;   /* the hindwing stays a REAL second pair, lower still */
+        sg2.beginPath();sg2.moveTo(S*0.46,baseY-S*0.02);
+        sg2.quadraticCurveTo(S*(0.46+sgn*0.15),baseY-S*0.15,S*(0.46+sgn*0.30),baseY-S*0.035);
+        sg2.quadraticCurveTo(S*(0.46+sgn*0.20),baseY+S*0.03,S*(0.46+sgn*0.09),baseY+S*0.025);
+        sg2.quadraticCurveTo(S*(0.46+sgn*0.04),baseY-S*0.015,S*0.46,baseY-S*0.02);
         sg2.closePath();sg2.fill(); }
       sg2.globalAlpha=1;
     }
@@ -17588,7 +17592,7 @@ const GUIDE=[
  {id:'codes', t:'Share codes (CF1 / CFB)', k:'share code link friend cf1 cfb copy multiplayer social', body:
   '<p>There is no server — the universe is mathematics, identical on every device. A share code is just an address into that shared math:</p><ul><li><b>⇪ Share this discovery</b> on a survey card copies a <b>CF1-</b> code/link. Anyone who opens it lands on the exact same world, with your name for it attached.</li><li><b>⇪ Code</b> on a creature card copies a <b>CFB-</b> code carrying the full genome — the identical creature, stats and all, appears on your friend’s device for a duel.</li></ul><p>Codes are sanitized on arrival; a tampered code can’t hurt your save.</p>'},
  {id:'charters', t:'Expedition Charters', k:'charter charters hunt board weekly goals task starter reward stardust', body:
-  '<p>The <b>Charters</b> board (top right — it earned the prime slot) always has work for an explorer. Charters arrive in <b>chains</b> that reveal one link at a time: the five <b>trades</b> (planetfall, prospecting, discovering life, naming a Field Scout, conquest) and the <b>Sol tour</b>, a guided lap of the home system that pays its way in starter gear. Completing a link reveals the next — and a link your ring can&#8217;t reach yet stays off the board until the sky opens.</p><p><b>Accept to begin.</b> A revealed charter tracks nothing until you press <b>Accept</b> — three may ride at once. Accept a deed the frontier has already seen you do and it completes on the spot, <em>already proven</em>; counting charters count from the accept and say so. Each pays <b>☄ Stardust</b> — some pay <b>gear</b> — the moment it completes.</p><p>Once the five trades are learned, the board turns weekly: three charters a week, identical for every explorer in the universe — deterministic, like everything else out here. Compare boards with a friend; they match.</p>'},
+  '<p>The <b>Charters</b> board (top left, under the shelf) always has work for an explorer. Charters arrive in <b>chains</b> that reveal one link at a time: the five <b>trades</b> (planetfall, prospecting, discovering life, naming a Field Scout, conquest) and the <b>Sol tour</b>, a guided lap of the home system that pays its way in starter gear. Completing a link reveals the next — and a link your ring can&#8217;t reach yet stays off the board until the sky opens.</p><p><b>Accept to begin.</b> A revealed charter tracks nothing until you press <b>Accept</b> — three may ride at once. Accept a deed the frontier has already seen you do and it completes on the spot, <em>already proven</em>; counting charters count from the accept and say so. Each pays <b>☄ Stardust</b> — some pay <b>gear</b> — the moment it completes.</p><p>Once the five trades are learned, the board turns weekly: three charters a week, identical for every explorer in the universe — deterministic, like everything else out here. Compare boards with a friend; they match.</p>'},
  {id:'beacon', t:'Traveler’s Beacon', k:'beacon daily random destination five minutes', body:
   '<p>The <b>Traveler’s Beacon</b> (left rail) offers a fresh destination every <b>5 minutes</b> — always somewhere <b>inside your charter</b>: it walks Sol while Sol is your world, the Neighborhood once you can jump, the whole galaxy once the Array is up, and the wider cosmos beyond the Rim. Picked deterministically, so every explorer on your ring is pointed at the same place at the same moment. An easy way to see something new when the infinite feels too big.</p>'},
  {id:'atlas', t:'The Star Atlas', k:'atlas bookmark favorite home save place travel star log', body:
@@ -17678,7 +17682,7 @@ const GUIDE=[
 ]},
 {icon:'⚙', cat:'Settings & Saving', blurb:'Toggles, tooltips, your save', topics:[
  {id:'settings', t:'Settings', k:'settings text size sound effects shake notifications tooltips toggle options', body:
-  '<p>The ⚙ panel (bottom right) has four tabs.</p><ul><li><b>Display</b>: <b>Text size</b> (A/A+/A++), <b>Text tone</b> (Soft / Bright / Max — brighter tones lift body text toward white and shift bold to gold), <b>Font</b> (Grotesk / System / Mono), <b>Explorer name</b>, and <b>Tooltips</b> (the short hints on hover, keyboard focus, or long-press — turn them off once you’re fluent).</li><li><b>Graphics</b>: <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, <b>Motion</b> (Auto follows your device’s reduce-motion preference; Reduced stills the travel tunnel, shake, confetti and shimmer), and <b>Panel tint</b> (a glass slider — drag from airy liquid glass to a near-solid backing; a floor keeps text readable).</li><li><b>Gameplay</b>: <b>Confirm before salvaging</b> — the guard that asks before an item (or Salvage All) breaks gear down for parts.</li><li><b>Audio</b>: <b>Sound</b>, the <b>Volume</b> slider, and <b>Notifications</b> (silences pop-ups; the 🔔 tray still logs everything).</li></ul><p>All persist with your save.</p>'},
+  '<p>The ⚙ panel (bottom dock, left edge) has four tabs.</p><ul><li><b>Display</b>: <b>Text size</b> (A/A+/A++), <b>Text tone</b> (Soft / Bright / Max — brighter tones lift body text toward white and shift bold to gold), <b>Font</b> (Grotesk / System / Mono), <b>Explorer name</b>, and <b>Tooltips</b> (the short hints on hover, keyboard focus, or long-press — turn them off once you’re fluent).</li><li><b>Graphics</b>: <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, <b>Motion</b> (Auto follows your device’s reduce-motion preference; Reduced stills the travel tunnel, shake, confetti and shimmer), and <b>Panel tint</b> (a glass slider — drag from airy liquid glass to a near-solid backing; a floor keeps text readable).</li><li><b>Gameplay</b>: <b>Confirm before salvaging</b> — the guard that asks before an item (or Salvage All) breaks gear down for parts.</li><li><b>Audio</b>: <b>Sound</b>, the <b>Volume</b> slider, and <b>Notifications</b> (silences pop-ups; the 🔔 tray still logs everything).</li></ul><p>All persist with your save.</p>'},
  {id:'saving', t:'Your save & reset', k:'save localstorage reset erase wipe browser device local', body:
   '<p>Your expedition saves automatically to this browser on this device — no account, no cloud. Clearing site data clears the expedition, so export your best creatures as CFB codes if you’re attached. <b>↺ Reset Game</b> in Settings erases everything after a confirm — the universe itself is unharmed; it’s math.</p>'},
 ]}];
@@ -21968,7 +21972,7 @@ function nextStepGoal(){
     }
     if(primeCount()<9){
       return {key:'prime:'+primeCount(), tt:'🧭 The Long Road',
-        ms:'The board is clear — the Prime Codex waits. '+(9-primeCount())+' Signature'+(primeCount()===8?'':'s')+' left; the ✦ panel (top right) names the next.'};
+        ms:'The board is clear — the Prime Codex waits. '+(9-primeCount())+' Signature'+(primeCount()===8?'':'s')+' left; the ✦ Prime Codex (bottom dock) names the next.'};
     }
   }catch(_){ }
   return null;
@@ -22295,7 +22299,7 @@ const TUT_STEPS=[
  {id:'horizon', spot:'#pcdxbtn', btn:'Got It',
   /* Nick 2026-07-24: teach the GUARDIANS here, not just point at the pill —
      how signatures are won, how a titan is challenged, what winning takes */
-  text:()=>'The long road: the <b>Prime Codex</b>. Nine elemental <b>Titans</b> — unique named guardians, the same for every explorer — each embody a Signature. <b>Land and survey</b> a world to learn a titan waits there; <b>challenge it</b> like any conquest — fight yourself, or send your strongest bred champion. Titans are the hardest fights in the game: breed powerful bloodlines, feed them well, and forge gear before you knock. Each felled titan <b>claims its ✦ Signature</b> and recovers a relic blueprint. Claim all nine to reach the Celestial Frontier. The <b>? Guide</b> (bottom right) explains every system, any time.'},
+  text:()=>'The long road: the <b>Prime Codex</b>. Nine elemental <b>Titans</b> — unique named guardians, the same for every explorer — each embody a Signature. <b>Land and survey</b> a world to learn a titan waits there; <b>challenge it</b> like any conquest — fight yourself, or send your strongest bred champion. Titans are the hardest fights in the game: breed powerful bloodlines, feed them well, and forge gear before you knock. Each felled titan <b>claims its ✦ Signature</b> and recovers a relic blueprint. Claim all nine to reach the Celestial Frontier. The <b>? Guide</b> (bottom dock, right edge) explains every system, any time.'},
  {id:'finale', btn:'✦ Begin the Expedition', spot:'#chbtn', enter:()=>_tutCleanup(),
   /* Nick 2026-07-24: training ENDS ON THE CHARTERS — the recruit's very next
      tap has somewhere to land, so the quest line carries them out of school */
@@ -23227,7 +23231,7 @@ function renderDoll(){
   let html='<div class="dname">✪ <span class="dnm">'+(explorerName||'Explorer')+'</span>'+
     '<span class="drank">'+r.name+'</span></div>';
   html+='<div class="dollwrap"><img class="dollimg" src="'+paperdollAvatar()+'" alt="Your explorer">';
-  /* v1.5.2b (Nick): the ship lives at the Shipyard (🛠 right rail), not on
+  /* v1.5.2b (Nick): the ship lives at the Shipyard (🛠 bottom dock), not on
      the doll — the Module socket is the PACK on your shoulder now */
   for(const s of EQ_SLOTS){
     const a=DOLL_ANCHORS[s.id]; if(!a) continue;
