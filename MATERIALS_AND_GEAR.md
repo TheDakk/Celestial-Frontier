@@ -495,3 +495,36 @@ Steam build. Build after v1.6, Phase B.*
 > BATCH CRAFT ×5 on parts/components (quiet per-unit, one summary toast) · SALVAGE UNDO
 > (6s window on the toast — rebuilds the piece, takes returns back, cgx<=cargo held) ·
 > sticky hold tab (save field ctb).
+
+## 26. GOLD MASTER Part I compliance audit (2026-07-25 — vs `GOLD_MASTER_2026-07-25.md`)
+
+Nick's compiled Gold Master (Part I) re-states the reviewed materials/gear spec. Audit of the
+**shipped v1.7 build** against its 15 Final Rules — result: **the build already complies with the
+spirit of every rule that is in scope**; the deltas are deliberate scope calls, recorded here.
+
+**SATISFIED in code today:** universal 10-tier ladder everywhere (Phase A) · rarity separate from
+affixes/upgrades (equipAff is a parallel channel, never a tier bump) · finished gear does NOT
+inherit the rarest ingredient — `_itemRarity` anchors on the item's own tier/blueprint (1→Unc,
+2→Rare, 3→Leg, 4+→Mythic, relics ≥Celestial) · world influences probability/richness, not blind
+assignment (cosmic veins tier-GATED; exceptional veins ~15% of worlds, `exTierOf` = base+1 clamp 6
+— our slim instance-rarity model, §5 design call 092a281) · landing never rerolls generation
+(deposits deterministic; performance affects access only) · stars reveal→unlock→extract (survey →
+`skimStar` gameplay action → Corona Scoop gear loop, §8b) · deterministic crafting (seeded
+Exceptionally-Forged affix via `hashInt(0xF07E, crafts)`; same inputs+state ⇒ same result) · every
+material has ≥1 job (all 47 craftable/consumed; §21) · high tiers semantically gated (cosmics only
+from stellar/cosmic sources) · Unique protected as non-tier (deferred entirely, §24).
+
+**DEFERRED (deliberate, not gaps):**
+- **Quality grades** (Crude→Perfect, Part I §3): a 5th progression dimension — defer to the
+  masterwork/Uniques arc (post-Forge). Affixes + Exceptionally-Forged already give per-instance
+  variation; adding quality now multiplies UI/save/fp surface for little feel gain at current
+  item counts.
+- **Full material-instance schema** (Part I §5's 19 fields, provenance/modifiers like "Magnetized
+  Iron"): the EXCEPTIONAL VEIN (`cgx` sub-counts) IS our instance model — one bit of provenance
+  ("exceptional"), stackable, save-cheap. Do not adopt the field-per-property model; revisit only
+  if a future arc needs named provenance.
+- **Biological ingredients** (Part I §10 meat/hide/gland harvest): an entire new harvest system —
+  out of v1.7 scope; candidate for a post-Forge arc alongside Uniques.
+- **Item level as an independent stat** (Part I §3): item window currently shows craft tier as the
+  level; a true separate ilvl waits for the power-curve follow-up if ever needed (§24 validated
+  the curve WITHOUT it — don't add dimensions the balance doesn't need).

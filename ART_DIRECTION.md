@@ -500,3 +500,47 @@ heads · flora growth-form rebuild + plant-stat · `BIOME_ATLAS.md` · full proo
   airborne tucks to 2-leg flight stance, grounded keeps limbs.
 - **Lighting verified**: baked light re-aims at the star per frame; star-tinted lit
   overlay; terminator sweeps with orbit; city lights night-side only.
+
+## 2026-07-25 GOLD MASTER verdicts (Part II of `GOLD_MASTER_2026-07-25.md` — the program of record)
+
+Nick's compiled Gold assessment of the 52-sheet CF-v17-COMPLETE-REVIEW package. **Decision:
+Near-Gold, hold for one focused correction pass** — accepted, with two proof-sheet pushbacks.
+
+**APPROVED AS GOLD (do not reopen):** procedural-creature architecture + soft-mass blending +
+materials/finishes + aquatic conversion + body plans · large-planet direction · black-hole and
+quasar direction · gas-deck vistas. This is the first external GOLD on the creature renderer.
+
+**GOLD BLOCKERS (wave 1):**
+1. **Flora canopy union** — the #1 blocker, both Earth and procedural flora. Adopted pipeline
+   (review's, verbatim): control lobes → offscreen mono mask → overlap union → blur/expand →
+   threshold to ONE continuous silhouette → low-freq seeded edge distortion → unified gradient
+   fill → internal shadow pockets/branch gaps → species crown rule. Acceptance: at 100%/200%
+   the construction circles must not be individually visible. Lifts all 334 flora + every
+   canopy-heavy vista at once (matches our SOFT-MASS queue item #1).
+2. **Earth-flora identity organs wave 2** — kill the repeated templates (straight-stem+leaves,
+   dot-vine, circle shrub, generic fruit tree, repeated crop stalk, same kelp blade, same
+   root-crop top). Every named plant gets a readable identity organ (R2 continuation).
+3. ~~liveview ring seam~~ — **PUSHBACK: sheet defect.** The game renders rear-half → planet →
+   front-half + BOTH ring shadows (927e41b); the liveview MOCK uses a crude rect clip with no
+   shadow passes (tools/sheets/liveview.js). Fix = rebuild the sheet's ringed giant on the real
+   draw grammar so reviews stop re-flagging it (2nd review to trip on this).
+4. ~~deepspace heading overlap~~ — **sheet cosmetic**: the BH label (~600px at 12px mono)
+   overruns the wormhole column at x=520. Shorten/stack labels; also add a TRUE RELATIVE SCALE
+   star row (equal-size cells keep hiding the in-game class scaling — 2nd re-flag).
+
+**HIGH PRIORITY (wave 2):** selective fauna identity pass — frogs (dart warning patches, glass
+transparency, tree toe-pads, bullfrog bulk), bird sub-rigs (raptor/parrot/waterfowl/wader/
+perching/seabird/flightless/hummingbird; eagle hook+talons, puffin bill, swan neck), ungulate
+horn anchors (kudu spiral, impala lyre, gerenuk neck, pronghorn, warthog/boar/peccary), small
+mammals (pika ≠ ungulate, meerkat upright, sloth hang, red-panda mask+rings), turtle feet
+(splayed, rooted under shell edge, non-circular) · R4 spike/fur polish (vary spacing/length,
+group anatomically, blend roots, curve feathers; sharp triangles ONLY for hard materials;
+organic organs inside translucents) · moon geology (directional crater light, shadowed inner
+walls, asymmetric ejecta, broken rims, scale hierarchy; icy branching fractures; volcanic dark
+basalt/calderas/ash; dedicated SMALL-SIZE masters so distant moons keep one readable feature) ·
+wormhole throat depth + molecular-cloud punch (star occlusion, rim light, protostar hints) ·
+open-sea landing variation (horizon/waves/islands/clouds/fauna depth/lighting/weather per salt).
+
+**POLISH (wave 3):** break coast halos into shore types · cloud fronts/broken fields/storm
+shadows · class-specific star surface behavior + white-dwarf density · 4-wing vs 2-wing
+silhouettes · then ONE full regression proof set → Gold retest checklist (§10 of the review).

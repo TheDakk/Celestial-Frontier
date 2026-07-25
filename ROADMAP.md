@@ -23,6 +23,29 @@
 ## [HYGIENE 2026-07-24] Roadmap trimmed to a one-screen read: the v1.6.x DEPLOY history + Batch-15 + 6k/10k
 ##   beta blocks were moved VERBATIM to the TOP of ROADMAP_ARCHIVE.md (nothing deleted). Everything below is
 ##   still-live v1.7 state / backlog / process. All work committed + pushed; battery green. READY FOR NEXT SESSION.
+## ▶▶▶ 2026-07-25 SEVENTH DIRECTIVE — GOLD MASTER TRIAGE (GOLD_MASTER_2026-07-25.md saved to repo; Nick's
+##   compiled Part I materials/gear spec + Part II art Gold assessment; verdict "Near-Gold, hold for one
+##   focused correction pass" — ACCEPTED, feedback delivered, awaiting Nick's go on execution).
+##   PART I = COMPLIANCE AUDIT DONE (MATERIALS_AND_GEAR.md §26): shipped build already satisfies all 15
+##   Final Rules in scope (_itemRarity anchors on blueprint tier NOT rarest ingredient; veins gate by tier;
+##   landing never rerolls; skim = survey→unlock→extract; deterministic crafts). DEFERRED deliberately:
+##   quality grades (Crude→Perfect) → masterwork/Uniques arc; 19-field instance schema → exceptional vein
+##   IS our instance model; biological ingredients (§10 harvest parts) → post-Forge; independent ilvl →
+##   only if balance ever needs it (§24 validated without).
+##   PART II = THE GOLD CORRECTION PASS, three waves (full detail in ART_DIRECTION.md 2026-07-25 block):
+##   ★ APPROVED GOLD, do not reopen: procedural creatures (architecture/blending/materials/aquatic/plans),
+##     large-planet direction, BH + quasar direction, gas-deck vistas. First external GOLD on the renderer.
+##   WAVE 1 (blockers): (1) FLORA CANOPY UNION — adopted the review's mask→union→blur→threshold→distort→
+##     gradient pipeline; acceptance = no construction circle visible at 100%/200%; lifts all 334 flora +
+##     vistas (= soft-mass queue #1). (2) Earth-flora identity organs wave 2 (kill the 7 repeated templates).
+##     (3) PUSHBACK: liveview ring "seam" = the SHEET's rect clip (game split+shadows correct since 927e41b)
+##     → rebuild sheet on real draw grammar. (4) deepspace label overlap = sheet cosmetic → fix + add TRUE
+##     relative-scale star row (both are 2nd re-flags — the proofs must stop lying about the game).
+##   WAVE 2 (high): fauna identity wave 2 (frogs/bird sub-rigs/ungulate horns/small mammals/turtle feet) ·
+##     R4 spike-fur-feather polish · moon geology + dedicated small-size masters · wormhole throat +
+##     molecular-cloud punch · open-sea per-salt variation.
+##   WAVE 3 (polish): coast-halo breakup · cloud fronts/storms · star-class surface behavior + WD density ·
+##     wing-count silhouettes · then ONE full regression proof set → §10 Gold retest checklist.
 ## ★★★ v1.7 BIOME-COHERENCE / ZOOM / CATALOG POLISH = DONE (2026-07-23, same session; each commit battery-green:
 ##   fp MATCH 50/50, render 1010/0, biome-audit PASS, smoke 396/0, layout 546/9; pushed). "One visual language
 ##   everywhere — the thing on the planet is the thing in your Compendium" (Nick).
