@@ -1659,6 +1659,7 @@
      containing block and collapse it to the chip's width */
   #bellwrap{right:auto;left:calc(50% + 52px);transform:none;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
   /* UI v5: EVERY panel opens as a SHEET ABOVE the dock — aligned, never overlapping it */
+  #helppop{bottom:calc(112px + env(safe-area-inset-bottom,0px)) !important;right:8px}
   #setpanel,#tray,#chpanel,#codex,#log,#records{
     position:fixed;top:auto !important;left:8px;right:8px;width:auto;
     bottom:calc(112px + env(safe-area-inset-bottom,0px));
@@ -7388,13 +7389,13 @@ function _earthArt(name){
     Object.assign(o, col(238,240,244));            /* white body… */
     o.mask=[22,22,28]; o.darkLimbs=1; o.pat=[30,30,36];   /* …black eye-mask, ears ride the mask, black limbs */
   }
-  else if(has(/red panda/)){ Object.assign(o, col(196,92,48)); o.mask=[60,34,26]; o.darkLimbs=1; }
+  else if(has(/red panda/)){ Object.assign(o, col(206,96,44)); o.mask=[60,34,26]; o.darkLimbs=1; o.ringTail=1; o.bushTail=1; }
   else if(has(/raccoon/) && !has(/dog/)){ Object.assign(o, col(128,128,138)); o.mask=[26,26,32]; }
   else if(has(/badger/) && !has(/honey/)){ Object.assign(o, col(210,210,218)); o.mask=[24,24,30]; }
-  else if(has(/dart frog|poison dart/)){ Object.assign(o, col(238,178,44)); }
+  else if(has(/dart frog|poison dart/)){ Object.assign(o, col(248,204,52)); }
   else if(has(/meerkat/)){ o.mask=[40,32,26]; o.special='meerkat'; }
   else if(has(/ sloth /)&&!has(/bear/)){ o.special='sloth'; }
-  else if(has(/gerenuk/)){ o.neck=0.9; o.bulk=0.82; }
+  else if(has(/gerenuk/)){ o.neckX=1.55; o.bulk=0.82; }
   else if(has(/orca|killer whale/)){ Object.assign(o, col(22,24,30)); o.eyePatch=1; o.base2=[238,242,248]; }
   else if(has(/okapi/)){ Object.assign(o, col(74,50,46)); o.legStripes=1; o.mottle=0; }
   else if(has(/spectacled bear/)){ o.mask=[214,206,182]; }          /* pale spectacles on a dark face */
@@ -7612,6 +7613,9 @@ function _rigBird(sg,S,baseY,G,r){
     for(const s of (G.owlTuft?[-1,1]:[])){ sg.beginPath();
       sg.moveTo(hx+s*hr*0.6,hy-hr*0.7);sg.lineTo(hx+s*hr*1.0,hy-hr*1.5);sg.lineTo(hx+s*hr*0.2,hy-hr*0.8);sg.closePath();sg.fill(); } }
   else sg.beginPath(),sg.arc(hx,hy,hr,0,7),sg.fill();
+  if(G.raptor){ /* Gold gate #1: the raptor BROW — a fierce flat ledge over the eye */
+    sg.beginPath();sg.moveTo(hx-hr*0.55,hy-hr*0.60);sg.lineTo(hx+hr*1.05,hy-hr*0.30);
+    sg.lineTo(hx+hr*0.50,hy+hr*0.02);sg.lineTo(hx-hr*0.30,hy-hr*0.15);sg.closePath();sg.fill(); }
   _hdBeak(sg,S,hx,hy,hr,1,owl?'owl':beak);
   // ---- folded wing lying along the back ----
   sg.beginPath();
@@ -7621,7 +7625,10 @@ function _rigBird(sg,S,baseY,G,r){
   sg.closePath();sg.fill();
   // ---- tail ----
   const rearx=cx-Math.cos(tilt)*trx*0.9, reary=by-Math.sin(tilt)*trx*0.9+tryy*0.25;
-  if(tailB==='long'){ sg.lineWidth=S*0.03*bulk;
+  if(G.raptor){ /* squared, shorter raptor tail — waders keep the fan */
+    sg.beginPath();sg.moveTo(rearx,reary-S*0.045);sg.lineTo(rearx-S*0.115,reary-S*0.052);
+    sg.lineTo(rearx-S*0.12,reary+S*0.052);sg.lineTo(rearx,reary+S*0.045);sg.closePath();sg.fill(); }
+  else if(tailB==='long'){ sg.lineWidth=S*0.03*bulk;
     for(const off of [-0.05,0,0.05]){ sg.beginPath();sg.moveTo(rearx,reary);
       sg.quadraticCurveTo(rearx-S*0.14,reary+S*(0.10+off),rearx-S*0.24,reary+S*(0.22+off*2));sg.stroke(); } }
   else if(tailB==='fork'){ sg.beginPath();sg.moveTo(rearx,reary-S*0.02);
@@ -8082,7 +8089,7 @@ function _rigMammal(sg,S,baseY,G,r){
   drawLeg(cx+bl*0.48,true); drawLeg(cx+bl*0.72,true);
   // ---- HEAD (Nick's head supplement: family-distinct skull, muzzle, ears, ornament) ----
   const longFace=(G.face==='long'), orn=G.orn||'none';
-  const neckLen=S*(0.04+P.neck*0.4)*bulk;
+  const neckLen=S*(0.04+P.neck*0.4)*bulk*(G.neckX||1);
   const hr=S*({feline:.06,canid:.052,bear:.066,ungulate:.05,rodent:.052,mustelid:.046,rabbit:.055,marsupial:.052,generic:.052}[sub]||.052)*bulk;
   const hx=cx+bl*0.92+neckLen*0.5, hy=by-bh*(sub==='ungulate'?(G.lowHead?-0.15:0.5):0.42)-neckLen*(sub==='ungulate'?(G.lowHead?0.05:0.46):0.32);   // lowHead (bison): head low off hump; else head sits lower so long necks + tall horns don't clip the canvas top (Pass 4 camel-head cutoff)
   sg.lineWidth=S*(longFace?0.038:(sub==='ungulate'?0.045:(sub==='bear'?0.078:(sub==='mustelid'?0.05:0.06))))*bulk;sg.lineCap='round';
@@ -8160,6 +8167,7 @@ function _rigMammal(sg,S,baseY,G,r){
   // tail
   sg.lineCap='round';
   const tx=cx-bl*0.95, ty=by-bh*0.2;
+  if(G.bushTail) P.tail='bush';   /* red panda: the tail IS the flag */
   if(P.tail==='long'){ sg.lineWidth=S*0.014*bulk;sg.beginPath();sg.moveTo(tx,ty);sg.quadraticCurveTo(tx-S*0.08,ty+S*0.02,tx-S*0.10,ty+S*0.10);sg.stroke(); }
   else if(P.tail==='xlong'){ sg.lineWidth=S*0.013*bulk;sg.beginPath();sg.moveTo(tx,ty);sg.quadraticCurveTo(tx-S*0.13,ty+S*0.02,tx-S*0.16,ty+S*0.14);sg.stroke(); }
   else if(P.tail==='bob'){ sg.lineWidth=S*0.021*bulk;sg.beginPath();sg.moveTo(tx,ty);sg.lineTo(tx-S*0.028,ty+S*0.05);sg.stroke(); }
@@ -8176,7 +8184,8 @@ function _rigMammal(sg,S,baseY,G,r){
     sg.lineWidth=hr*0.18;sg.strokeStyle=sg.fillStyle;for(let i=0;i<12;i++){ const a=i/12*TAU;   // shaggy mane edge
       sg.beginPath();sg.moveTo(hx-hr*0.35+Math.cos(a)*hr*2.4,hy+hr*0.15+Math.sin(a)*hr*2.4);sg.lineTo(hx-hr*0.35+Math.cos(a)*hr*2.95,hy+hr*0.15+Math.sin(a)*hr*2.95);sg.stroke(); }
     sg.beginPath();sg.ellipse(hx,hy,hr*1.05,hr,0,0,7);sg.fill(); }                   // face re-laid over the ruff
-  return {hp:{x:hx,y:hy},hips:[cx-bl*0.5,by],shoulders:[cx+bl*0.5,by],feetMax:footY+S*0.012};
+  return {hp:{x:hx,y:hy},hips:[cx-bl*0.5,by],shoulders:[cx+bl*0.5,by],feetMax:footY+S*0.012,
+    tailSeg:P.tail==='bush'?[tx-S*0.02,ty-S*0.022,tx-S*0.135,ty+S*0.05]:[tx,ty,tx-S*0.13,ty+S*0.075]};
 }
 function _rigBat(sg,S,baseY,G,r){
   /* a MAMMALIAN bat: small furry torso, a membrane wing on each side stretched
@@ -9440,6 +9449,14 @@ function hdBeastBare(G,seed){
     g.fillStyle='rgba(226,232,190,0.8)';
     const fy2=rigOut.feetMax-S*0.006;
     for(const px4 of [-0.045,-0.012,0.03,0.058]){ g.beginPath(); g.arc(S*0.47+S*px4,fy2,S*0.0115,0,7); g.fill(); } }
+  if(G.ringTail && rigOut && rigOut.tailSeg){ /* Gold gate #3: the red panda's RINGED tail */
+    const [ax,ay,bx2,by2]=rigOut.tailSeg;
+    const dxT=bx2-ax, dyT=by2-ay, LT=Math.hypot(dxT,dyT)||1, nxT=-dyT/LT, nyT=dxT/LT;
+    g.lineCap='round';
+    for(const t of [0.24,0.46,0.68,0.88]){ const px=ax+dxT*t, py=ay+dyT*t, w=S*0.03*(1-t*0.3);
+      g.strokeStyle=(t===0.46||t===0.88)?'rgba(238,222,196,0.85)':'rgba(46,26,20,0.9)';   /* alternating dark/cream — the ring READ */
+      g.lineWidth=S*0.024;
+      g.beginPath(); g.moveTo(px-nxT*w,py-nyT*w); g.lineTo(px+nxT*w,py+nyT*w); g.stroke(); } }
   /* wave-2 FROG IDENTITY (post-texture): glass frog translucency + dart-frog warning patches */
   if(G.glassy && rigOut){
     const gx2=rigOut.hips&&rigOut.shoulders?(rigOut.hips[0]+rigOut.shoulders[0])/2:hp.x;
@@ -9451,12 +9468,15 @@ function hdBeastBare(G,seed){
     g.fillStyle='rgba(90,110,130,0.4)'; g.beginPath(); g.arc(gx2+S*0.018,gy2-S*0.004,S*0.0045,0,7); g.fill();
   }
   if(G.dartPatch && rigOut){
-    /* black blotches + cream counter-spots over the bright base — the double
-       contrast reads at card size on ANY hide tone */
+    /* APOSEMATIC BASE (Gold gate #4): a saturated warning wash clipped to the
+       body's own pixels — survives every downstream pelt wash — then black
+       blotches + cream counter-spots. Reads at card size on ANY hide tone. */
+    g.save(); g.globalCompositeOperation='source-atop';
+    g.fillStyle='rgba(252,206,58,0.45)'; g.fillRect(0,0,S,S); g.restore();
     g.fillStyle='rgba(12,10,16,0.95)';
     const bx4=rigOut.shoulders?rigOut.shoulders[0]:hp.x, by4=(rigOut.shoulders?rigOut.shoulders[1]:hp.y)-S*0.028;
     for(const [ox,oy,rx2,ry2,a2] of [[-0.02,-0.006,0.021,0.013,0.3],[-0.056,0.004,0.017,0.011,-0.2],[0.012,-0.015,0.013,0.009,0.5]]){
-      g.beginPath(); g.ellipse(bx4+S*ox,by4+S*oy,S*rx2*1.25,S*ry2*1.25,a2,0,7); g.fill(); }
+      g.beginPath(); g.ellipse(bx4+S*ox,by4+S*oy,Math.max(S*0.02,S*rx2*1.25),Math.max(S*0.014,S*ry2*1.25),a2,0,7); g.fill(); }
     g.fillStyle='rgba(244,238,196,0.9)';
     for(const [ox,oy] of [[-0.072,-0.012],[0.032,0.002],[-0.006,0.014]]){
       g.beginPath(); g.arc(bx4+S*ox,by4+S*oy,S*0.0065,0,7); g.fill(); }
@@ -10195,9 +10215,12 @@ function _fitBeast(c2,bcv,S2,G){
   }
   const scale=Math.min(S2*F.w/bb.w, S2*F.h/bb.h);
   const cx=S2*0.5, botLine=S2*(1-F.bot);
-  const dx=cx-(bb.x+bb.w/2)*scale, dy=botLine-(bb.y+bb.h)*scale;
-  c2.fillStyle='rgba(0,0,0,0.5)';c2.beginPath();
-  c2.ellipse(cx, botLine-S2*0.004, Math.min(S2*0.34, bb.w*scale*0.58), S2*0.038, 0,0,7);c2.fill();
+  /* FLIGHT-STATE (Gold R2 gate #6): an airborne winged proc rises off its ground
+     shadow — the shadow shrinks and fades below, so flying reads as FLYING */
+  const _fly=!!(G && G.airb && !G._earthName && !G._earthBlend && (G.plan===7||G.plan===14));
+  const dx=cx-(bb.x+bb.w/2)*scale, dy=botLine-(bb.y+bb.h)*scale-(_fly?S2*0.10:0);
+  c2.fillStyle='rgba(0,0,0,'+(_fly?0.26:0.5)+')';c2.beginPath();
+  c2.ellipse(cx, botLine-S2*0.004, Math.min(S2*0.34, bb.w*scale*(_fly?0.30:0.58)), S2*(_fly?0.024:0.038), 0,0,7);c2.fill();
   c2.drawImage(bcv, dx, dy, bcv.width*scale, bcv.height*scale);
 }
 function _fitPlant(c2,pcv,S2){   /* v1.6 box-fit for flora: measured bbox -> tall occupancy, root-anchored */
@@ -11515,12 +11538,36 @@ function hdVista(opts){
        open-sea compositions were too similar; the salt re-deals island
        presence/count/placement and the swell every descent) */
     const rS=mulberry32((seed ^ 0x5EA1 ^ (((opts.salt|0)+1)*0x9E3779B1))>>>0);
-    const nIsl=(rS()<0.22)?0:1+((rS()*3)|0);   /* ~1/5 landings: water to EVERY horizon */
-    if(nIsl>1) isl(rX(W*(0.76+rS()*0.16)),W*(0.08+rS()*0.08),8+rS()*8,P.layers[0]);
-    if(nIsl>2) isl(rX(W*(0.52+rS()*0.20)),W*(0.06+rS()*0.06),6+rS()*6,P.layers[0]);
-    const bigX=rX(W*(0.16+rL()*0.12)),bigW=W*(0.20+rL()*0.12);
-    if(nIsl>0) isl(bigX,bigW,22+rS()*16,P.layers[1]);
-    const swell=0.6+rS()*1.1;   /* per-landing sea state: calm sheet → heavy chop */
+    /* Gold R2 gate #5: EIGHT COMPOSITION ARCHETYPES — real different scenes,
+       not one composition with parameter jitter. The salt picks the archetype,
+       then varies freely within it. */
+    const arch=(rS()*8)|0;
+    let nIsl=0, bigScale=1, distArch=false, rocky=false, reef=false, storm=false, lowSun=false, lifeArch=false;
+    if(arch===0){ nIsl=0; }                                       /* empty horizon */
+    else if(arch===1){ nIsl=1; bigScale=1.7; }                    /* one NEAR island */
+    else if(arch===2){ nIsl=3; distArch=true; }                   /* distant archipelago */
+    else if(arch===3){ nIsl=1; rocky=true; bigScale=1.3; }        /* rocky coast */
+    else if(arch===4){ nIsl=(rS()<0.5?1:0); reef=true; }          /* reef shelf */
+    else if(arch===5){ nIsl=(rS()<0.4?1:0); storm=true; }         /* storm front */
+    else if(arch===6){ nIsl=1+((rS()*2)|0); lowSun=true; }        /* low sun */
+    else { nIsl=0; lifeArch=true; }                               /* distant life */
+    if(distArch){ for(let ii=0;ii<3;ii++) isl(rX(W*(0.18+ii*0.28+rS()*0.10)),W*(0.045+rS()*0.035),4+rS()*4,P.layers[0]); }
+    else{
+      if(nIsl>1) isl(rX(W*(0.76+rS()*0.16)),W*(0.08+rS()*0.08),8+rS()*8,P.layers[0]);
+      if(nIsl>2) isl(rX(W*(0.52+rS()*0.20)),W*(0.06+rS()*0.06),6+rS()*6,P.layers[0]);
+    }
+    const bigX=rX(W*(0.16+rL()*0.12)),bigW=W*(0.20+rL()*0.12)*bigScale;
+    if(nIsl>0 && !distArch){
+      if(rocky){ /* a dark cliff mass shouldering out of the water, spray at its feet */
+        g.fillStyle='rgba(26,28,34,0.96)';
+        g.beginPath();g.moveTo(bigX-bigW/2,hz+1);
+        g.lineTo(bigX-bigW*0.34,hz-(30+rS()*18));g.lineTo(bigX-bigW*0.05,hz-(38+rS()*22));
+        g.lineTo(bigX+bigW*0.22,hz-(20+rS()*14));g.lineTo(bigX+bigW/2,hz+1);g.closePath();g.fill();
+        g.fillStyle='rgba(225,235,240,0.5)';
+        for(let sp2=0;sp2<5;sp2++){ g.beginPath();g.ellipse(bigX-bigW*0.3+sp2*bigW*0.15,hz+2,7+rS()*7,2.2,0,0,7);g.fill(); }
+      } else isl(bigX,bigW,(22+rS()*16)*bigScale,P.layers[1]);
+    }
+    const swell=storm?1.5+rS()*0.4:(arch===0||reef?0.5+rS()*0.4:0.6+rS()*1.1);
     if(civ!=='none' && nIsl>0){
       /* an inhabited archipelago shows its harbor from the water */
       const litUp=opts.pal==='night'||opts.pal==='twilight';
@@ -11577,6 +11624,39 @@ function hdVista(opts){
         x6+=len2+20+r()*90;}
     }
     g.globalAlpha=1;
+    /* archetype dressing (Gold R2 gate #5) */
+    if(storm){ /* a charcoal squall front swallowing the horizon, rain veils under it */
+      for(let sc2=0;sc2<7;sc2++){ const scx=W*(sc2/6)+((rS()-0.5)*50), scy=hz-26-rS()*26, scw=80+rS()*90;
+        const sg6=g.createRadialGradient(scx,scy,0,scx,scy,scw);
+        sg6.addColorStop(0,'rgba(24,28,36,0.72)');sg6.addColorStop(0.6,'rgba(24,28,36,0.4)');sg6.addColorStop(1,'rgba(24,28,36,0)');
+        g.save();g.translate(scx,scy);g.scale(1,(15+rS()*13)/scw);g.translate(-scx,-scy);
+        g.fillStyle=sg6;g.beginPath();g.arc(scx,scy,scw,0,7);g.fill();g.restore(); }
+      g.strokeStyle='rgba(150,165,185,0.22)';g.lineWidth=1.4;
+      for(let rn2=0;rn2<14;rn2++){ const rx2=W*(0.1+rS()*0.8);
+        g.beginPath();g.moveTo(rx2,hz-20-rS()*14);g.lineTo(rx2-7,hz+7);g.stroke(); }
+      g.fillStyle='rgba(40,48,58,0.25)';g.fillRect(0,hz,W,by-hz+14);   /* the sea goes iron-grey */
+    }
+    if(reef){ /* a turquoise shallow shelf in the foreground, coral heads breaking it */
+      const rg5=g.createLinearGradient(0,by-38,0,by+10);
+      rg5.addColorStop(0,'rgba(70,200,190,0)');rg5.addColorStop(0.65,'rgba(80,215,200,0.30)');rg5.addColorStop(1,'rgba(96,225,208,0.42)');
+      g.fillStyle=rg5;g.fillRect(0,by-38,W,50);
+      g.fillStyle='rgba(150,110,96,0.55)';
+      for(let cn2=0;cn2<7;cn2++){ g.beginPath();g.ellipse(W*(0.08+rS()*0.84),by-6-rS()*20,4+rS()*7,2.4+rS()*2.4,0,0,7);g.fill(); }
+    }
+    if(lowSun && opts.pal!=='night'){ /* the sun lies on the water — a warm horizon band */
+      const lg5=g.createLinearGradient(0,hz-16,0,hz+34);
+      lg5.addColorStop(0,'rgba(255,176,96,0.34)');lg5.addColorStop(0.5,'rgba(255,150,80,0.18)');lg5.addColorStop(1,'rgba(255,150,80,0)');
+      g.fillStyle=lg5;g.fillRect(0,hz-16,W,50);
+    }
+    if(lifeArch){ /* something vast breaks the far water; seabirds ride over it */
+      const lx2=W*(0.3+rS()*0.4);
+      g.fillStyle='rgba(14,20,28,0.85)';
+      g.beginPath();g.moveTo(lx2-34,hz+2);g.quadraticCurveTo(lx2,hz-11-rS()*7,lx2+34,hz+2);g.closePath();g.fill();
+      g.beginPath();g.moveTo(lx2+42,hz+2);g.lineTo(lx2+50,hz-7-rS()*5);g.lineTo(lx2+56,hz+2);g.closePath();g.fill();
+      g.strokeStyle='rgba(20,26,34,0.8)';g.lineWidth=1.4;g.lineCap='round';
+      for(let bd2=0;bd2<3;bd2++){ const bx5=lx2-30+rS()*70, by5=hz-26-rS()*20;
+        g.beginPath();g.moveTo(bx5-4,by5);g.quadraticCurveTo(bx5,by5-3,bx5+0.5,by5);g.moveTo(bx5+0.5,by5);g.quadraticCurveTo(bx5+1,by5-3,bx5+5,by5);g.stroke(); }
+    }
     if((opts.aqua||0)>0){
       /* the card's swimmers break the surface: dorsal arcs, a tail fin,
          a ripple ring — the ocean's roster is finally IN the ocean */
