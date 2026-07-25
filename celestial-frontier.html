@@ -8825,10 +8825,13 @@ function hdBeastBare(G,seed){
       sg2.quadraticCurveTo(S*(0.47+sgn*0.30),baseY-S*0.10,S*(0.47+sgn*0.24),baseY-S*0.135);
       sg2.quadraticCurveTo(S*(0.47+sgn*0.13),baseY-S*0.055,S*0.47,baseY-S*0.02);
       sg2.closePath();sg2.fill();
-      if(four){ sg2.globalAlpha=0.72;   // hindwing (lower/inner, offset back so both pairs read)
-        sg2.beginPath();sg2.moveTo(S*0.45,baseY-S*0.01);
-        sg2.quadraticCurveTo(S*(0.45+sgn*0.15),baseY+S*0.12,S*(0.45+sgn*0.22),baseY+S*0.02);
-        sg2.quadraticCurveTo(S*(0.45+sgn*0.11),baseY-S*0.04,S*0.45,baseY-S*0.01);
+      if(four){ sg2.globalAlpha=0.75;   /* wave-3: the hindwing is a REAL second pair —
+           larger, angled low-outward, its tip clearly separated from the forewing's
+           high tip so 4-wing reads against 2-wing at silhouette level */
+        sg2.beginPath();sg2.moveTo(S*0.46,baseY-S*0.025);
+        sg2.quadraticCurveTo(S*(0.46+sgn*0.17),baseY-S*0.26,S*(0.46+sgn*0.34),baseY-S*0.09);
+        sg2.quadraticCurveTo(S*(0.46+sgn*0.22),baseY+S*0.015,S*(0.46+sgn*0.10),baseY+S*0.015);
+        sg2.quadraticCurveTo(S*(0.46+sgn*0.04),baseY-S*0.02,S*0.46,baseY-S*0.025);
         sg2.closePath();sg2.fill(); }
       sg2.globalAlpha=1;
     }
