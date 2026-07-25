@@ -1640,17 +1640,23 @@
      Row 1 (upper): 🗺 Atlas · ✦ Prime (middle) · 📖 Compendium
      Row 2 (lower): 🏆 Records · 🛠 Shipyard — ⚙ / ? corner the lower row,
      🔔 rides above the ? (the bottom-right settings+notifications cluster). */
-  #pcdxbtn, #codexbtn, #logbtn, #cargobtn, #recbtn, #chbtn{
+  #pcdxbtn, #codexbtn, #logbtn, #cargobtn, #chbtn{
     top:auto !important; right:auto; left:50%;
-    white-space:nowrap; z-index:14; padding:8px 11px; gap:5px}
+    white-space:nowrap; z-index:14; width:58px; padding:8px 0; gap:3px;
+    display:flex; align-items:center; justify-content:center; box-sizing:border-box}
+  #recbtn{top:auto !important; right:auto; left:50%; z-index:14;
+    width:36px; height:36px; padding:0; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; box-sizing:border-box}
   #pcdxbtn .lbl,#codexbtn .lbl,#logbtn .lbl,#cargobtn .lbl,#recbtn .lbl,#chbtn .lbl{display:none}
   #pcdxbtn .ico,#codexbtn .ico,#logbtn .ico,#cargobtn .ico,#recbtn .ico,#chbtn .ico{font-size:14px}
+  /* the status lights ride the chip corner on phones — attention signal without inline clutter */
+  #pcdxbtn .dot,#codexbtn .dot,#logbtn .dot,#cargobtn .dot,#chbtn .dot{position:absolute;top:3px;right:5px;width:5px;height:5px;margin:0}
   /* ROW 1 — the boards, Nick's order: 📜 Charters · 📖 Compendium · ✦ Prime · 🛠 Shipyard · 🗺 Atlas */
-  #chbtn{bottom:calc(58px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 124px))}
-  #codexbtn{bottom:calc(58px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 62px))}
-  #pcdxbtn{bottom:calc(58px + env(safe-area-inset-bottom,0px));transform:translateX(-50%)}
-  #cargobtn{bottom:calc(58px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% + 62px))}
-  #logbtn{bottom:calc(58px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% + 124px))}
+  #chbtn{bottom:calc(60px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 128px))}
+  #codexbtn{bottom:calc(60px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 64px))}
+  #pcdxbtn{bottom:calc(60px + env(safe-area-inset-bottom,0px));transform:translateX(-50%)}
+  #cargobtn{bottom:calc(60px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% + 64px))}
+  #logbtn{bottom:calc(60px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% + 128px))}
   /* ROW 2 — utilities, evenly spaced: 🏆 Records · ? Guide · 🔔 Notifications · ⚙ Settings */
   #recbtn{bottom:calc(12px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 96px))}
   /* the hint steps above BOTH dock rows */
@@ -1715,15 +1721,14 @@
        left, ✦ Prime Codex centered, 🛠 Shipyard · 🏆 Records · 🗺 Atlas on the
        right (Atlas under the search box). Utilities become a neat centered
        trio ⚙ 🔔 ? just above the hover-hint pill, where toasts land. */
-    #pcdxbtn{left:50%;right:auto;transform:translateX(-50%);top:calc(var(--topbar-h,100px) + 8px)}
-    #codexbtn{left:134px;right:auto;top:calc(var(--topbar-h,100px) + 8px)}
+    #pcdxbtn{left:50%;right:auto;transform:translateX(-50%);top:10px}
+    #codexbtn{left:18px;right:auto;top:calc(var(--topbar-h,100px) + 46px)}
     #logbtn{right:18px;top:calc(var(--topbar-h,100px) + 8px)}
-    #cargobtn{right:152px;top:calc(var(--topbar-h,100px) + 8px)}
+    #cargobtn{right:18px;top:calc(var(--topbar-h,100px) + 46px)}
     /* panels drop from the command line */
-    #codex{left:134px;right:auto;top:calc(var(--topbar-h,100px) + 48px)}
-    #log{top:calc(var(--topbar-h,100px) + 48px)}
-    #records{top:calc(var(--topbar-h,100px) + 48px)}
-    #chpanel{top:calc(var(--topbar-h,100px) + 48px)}
+    #codex{left:18px;right:auto;top:calc(var(--topbar-h,100px) + 88px)}
+    #log{top:calc(var(--topbar-h,100px) + 88px)}
+    #chpanel{top:calc(var(--topbar-h,100px) + 88px)}
     /* the bottom utility QUARTET, evenly centered above the hint:
        🏆 Records · ? Guide · 🔔 Notifications · ⚙ Settings */
     #recbtn{top:auto !important;right:auto;left:50%;transform:translateX(calc(-50% - 118px));bottom:54px;z-index:14}
@@ -1731,10 +1736,11 @@
     #bellwrap{right:auto;left:calc(50% + 17px);bottom:56px}
     #setbtn{right:auto;left:50%;transform:translateX(calc(-50% + 102px));bottom:56px}
     #setbtn:hover{transform:translateX(calc(-50% + 102px)) rotate(60deg)}
-    #records{top:auto !important;left:calc(50% - 159px);right:auto;bottom:100px}
-    #tray{left:calc(50% - 120px);right:auto;bottom:100px;top:auto}
-    #setpanel{left:50%;right:auto;transform:translateX(-50%);bottom:100px}
-    #helppop{left:50%;right:auto;transform:translateX(-50%);bottom:100px}
+    /* bottom dialogs open ABOVE the caption text — never over it (Nick) */
+    #records{top:auto !important;left:calc(50% - 159px);right:auto;bottom:150px}
+    #tray{left:calc(50% - 120px);right:auto;bottom:150px;top:auto}
+    #setpanel{left:50%;right:auto;transform:translateX(-50%);bottom:150px}
+    #helppop{left:50%;right:auto;transform:translateX(-50%);bottom:150px}
     #context{bottom:102px}
   }
 </style>
@@ -1973,7 +1979,7 @@
   <p class="note">Same universe on every device — anyone who opens this link lands on this exact world.</p>
 </div></div>
 
-<div id="logbtn" role="button" tabindex="0" data-tip="Your bookmarked places — tap any entry to travel there." data-guide="atlas"><span class="dot"></span><span class="ico">🗺</span><span class="lbl">Star Atlas</span> <span class="n" id="logcount">0</span></div>
+<div id="logbtn" role="button" tabindex="0" data-tip="Your bookmarked places — tap any entry to travel there." data-guide="atlas"><span class="dot"></span><span class="ico">🌐</span><span class="lbl">Star Atlas</span> <span class="n" id="logcount">0</span></div>
 <div id="log"></div>
 <div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="dot bio"></span><span class="ico">📖</span><span class="lbl">Compendium</span> <span class="n" id="codexcount">0</span></div>
 <div id="codex"></div>
