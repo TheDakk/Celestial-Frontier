@@ -59,7 +59,7 @@ async function until(fn, ms, label) {
   console.log('TIMEOUT waiting: ' + label);
   return false;
 }
-const tutAt = (n) => { const t = doc.getElementById('tutbox'); return visible(t) && t.textContent.includes(n + ' / 20'); };
+const tutAt = (n) => { const t = doc.getElementById('tutbox'); return visible(t) && t.textContent.includes(n + ' / 21'); };   /* 21 steps since the charter-accept graduation (Nick) */
 const tutAct = () => click(doc.getElementById('tut-act'));
 
 (async () => {
@@ -540,8 +540,15 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('forge: crafting the plate completes step 17', await until(() => tutAt(19), 3000, 'step18'));
     check('forge: training craft credits NO charter and NO Ascent goal',
       !H.chDone.has('st-mine') && (H.ascProg['c1-part'] || 0) === 0);
-    tutAct();                                                       // horizon -> finale (cleanup)
-    check('finale reached', await until(() => tutAt(20), 3000, 'step19'));
+    tutAct();                                                       // horizon -> charter-first (Nick: training ENDS on the accept)
+    check('graduation lesson reached (accept your first charter)', await until(() => tutAt(20), 3000, 'step19'));
+    click(doc.getElementById('chbtn'));
+    await until(() => !!doc.querySelector('#chpanel [data-chacc]'), 3000, 'charter board offers');
+    check('graduation: opening the board alone does NOT advance', tutAt(20));
+    check('graduation: nothing was auto-accepted', H.chacc.size === 0);
+    click(doc.querySelector('#chpanel [data-chacc]'));
+    check('graduation: ACCEPTING the first charter advances to the finale', await until(() => tutAt(21), 3000, 'step20'));
+    check('graduation: exactly ONE charter accepted, by the recruit', H.chacc.size === 1);
     check('cleanup: Compendium empty', doc.getElementById('codexcount').textContent === '0');
     check('cleanup: HP fully restored', doc.getElementById('hptext').textContent === '100/100 HP');
     // QoL (p): the ❤ pill's tip is DYNAMIC — post-cleanup the Compendium is
@@ -857,7 +864,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click2(sk.doc.getElementById('tut-skip'), sk.w);
     check('skip shows confirm', sk.doc.getElementById('tutbox').textContent.includes('Skip training?'));
     click2(sk.doc.getElementById('tut-skip-no'), sk.w);
-    check('Keep Training returns to step', sk.doc.getElementById('tutbox').textContent.includes('1 / 20'));
+    check('Keep Training returns to step', sk.doc.getElementById('tutbox').textContent.includes('1 / 21'));
     click2(sk.doc.getElementById('tut-skip'), sk.w);
     click2(sk.doc.getElementById('tut-skip-yes'), sk.w);
     check('skip closes tutorial', !visible(sk.doc.getElementById('tutbox')));

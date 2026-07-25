@@ -222,3 +222,29 @@ contract is the one UI-adjacent path that needs a re-pin — see DETERMINISM.md.
   CSS viewport). Seeds a veteran save (`{me, tut:1, rn:GAME_VERSION}`) so the live UI boots
   without intro/release popups. 13 shots: main/settings/charters/compendium/atlas/records/
   prime/guide × desktop+phone.
+
+## 2026-07-25 FINAL LAYOUT — UI v8→v11 (matches code as of 2026-07-25, Nick-directed)
+The settled cross-device layout after Nick's iteration rounds 8–11:
+
+**DESKTOP / TABLET (≥701px)**
+- ✦ **Prime Codex** — the VERY top, centered in the shelf line (keeps its 0/9 count — the only
+  button that keeps a count).
+- **Left stack** under the topbar: 📜 Charters over 📖 Compendium (equal pill metrics, uniform pitch).
+- **Right stack**: 🌍 Star Atlas over 🛠 Shipyard. SEARCH RESULTS open in their own fixed lane
+  BELOW the stack (typing never covers the pills).
+- **Bottom-right corner**, evenly pitched 42px, all CIRCLES, order: 🏆 Records · 🔔 Notifications ·
+  ? Guide · ⚙ Settings. Records is trophy-only (no label). Corner panels rise from their buttons;
+  the SETTINGS panel centers between Prime and the caption; every bottom dialog opens ABOVE the
+  caption text lane.
+
+**PHONE (≤700px)** — everything docked, two rows, even slots:
+- Row 1 (boards): 📜 Charters · 📖 Compendium · ✦ Prime (0/9) · 🛠 Shipyard · 🌍 Atlas — equal-width
+  58px chips, 64px slot pitch.
+- Row 2 (utilities): 🏆 Records · 🔔 Notifications · ? Guide · ⚙ Settings — 34-36px circles, 64px pitch.
+- Every panel opens as an aligned SHEET above the hover-hint; the guide launcher has its own lane.
+
+**Shared language**: emoji icons everywhere; status dots and counts RETIRED (only Prime keeps 0/9);
+SELECTION = a gold-wash HIGHLIGHT on the open board's button (synced from the PANELS registry via
+.sel — highlight over growth so spacing never moves); HP bar polished (quarter ticks in the trough,
+lit-top depth + bright leading tip on the fill, continuous green→amber→red hue held from before).
+Bell is a circle everywhere. `tools/uishot.js` captures 20 canonical screens per run.

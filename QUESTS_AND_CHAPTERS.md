@@ -120,3 +120,24 @@ Quests are mostly app-layer, but the parts that must be identical cross-device a
 - **Gear rewards are static-only:** `_chGrant` pays fixed existing item ids. The "deeper loot later" phase (rolled/tiered charter loot) is described in comments but not implemented.
 - **Sol-tour gear:** `earpiece`, `headlamp`, `magboots`, `meteor`, `fieldlegs` must exist in `ITEM_BY`/`ITEMS` for `_chGrant` to pay out; verify none were renamed in a later item pass.
 - **Weekly expiry UX:** accepted weeklies silently expire at rollover (`_chRoll`); no in-progress warning. Intentional but worth noting for players mid-charter at week's end.
+
+## 2026-07-25 addition — TRAINING GRADUATION = THE FIRST ACCEPT (Nick's order of operations)
+Field training is now **21 steps** and ends exactly as specified: zoom → find Earth → add to
+Atlas → land → catalogue/tame → feed → breed → duel → heal → tray → search → sheet → forge →
+Prime Codex/Guardians teach → **`charter-first`** → finale.
+
+**`charter-first` (step 20)**: the recruit opens the 📜 Charters board and presses **Accept** on
+their first contract THEMSELVES. Nothing is ever auto-accepted. Mechanics:
+- `chAccept` is inert during training EXCEPT this step (checked against the live step id);
+- the "already proven" instant-complete path is disabled until `tutDone` — a deed can never
+  complete off sandbox training stats;
+- accepting fires `gameEvent('chaccept')`, which is the step's advance gate;
+- the accepted charter **persists through `_tutCleanup`** (cleanup restores stats/codex/cargo but
+  never touches `chacc`) — the quest line carries the graduate out of school.
+
+**Finale (step 21)**: cleanup runs, and the card closes on: *"If you ever need help, tap the
+? Guide button — and the 🎓 briefings inside it walk every advanced system."*
+
+Smoke drives the full 21 steps and asserts: board-open alone does NOT advance; nothing
+auto-accepted (chacc empty before the click); the recruit's accept advances; exactly ONE
+charter accepted at graduation. (419 checks total.)

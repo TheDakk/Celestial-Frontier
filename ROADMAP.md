@@ -126,7 +126,24 @@
 ##   · 🌍 Atlas · Charters normalized · corner quartet on tablet/desktop · centered settings · phone lanes
 ##   raised. ⚠ LESSON: TWO min-width:701 media blocks exist — a block-splice keyed on indexOf hit the tutbox
 ##   one and ate 555 lines; recovered via git checkout + exact-match edits ONLY (re-learned rule 2 the hard way).
-##   ▶ AWAITING NICK'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
+## ★★★ 2026-07-25 UI v10/v11 + TRAINING GRADUATION (all Nick-directed, → committed, battery green
+##   fp MATCH · smoke 419/0 (+4 graduation checks) · layout 546/9):
+##   UI v10: uniform stack pitch/metrics · SEARCH RESULTS own fixed lane below the right stack (typed-
+##   'earth' proof) · 🏆 trophy-only circle · dodge lanes desktop 100/phone 150. UI v11: counts retired
+##   except ✦ Prime 0/9 · selection = GOLD-WASH HIGHLIGHT (growth removed — Nick: spacing never moves) ·
+##   HP BAR POLISH (quarter ticks, lit-top fill depth, bright leading tip; hue slide kept) · BELL = circle
+##   everywhere · utility order EVERYWHERE = 🏆 Records · 🔔 Notifications · ? Guide · ⚙ Settings.
+##   ★ TRAINING = 21 STEPS, ends on Nick's order of operations: NEW 'charter-first' step — recruit opens
+##   📜 and ACCEPTS their first contract (chAccept step-scoped exception; 'already proven' disabled until
+##   tutDone so sandbox stats can't complete deeds; accept fires gameEvent('chaccept'); chacc SURVIVES
+##   _tutCleanup) → finale points at ? Guide + 🎓 briefings. Smoke walks all 21 + asserts no auto-accepts,
+##   exactly one accepted. ⚠ LESSON: smoke's tutAt matched the literal 'n / 20' card counter — adding a step
+##   broke 22 checks at once; counter now '/ 21' (grep the total when steps change).
+##   DOCS SYNCED: UI_PRESENTATION (final v8-v11 layout) + QUESTS_AND_CHAPTERS (graduation mechanics).
+##   ▶ AWAITING NICK — his review of v11 screens + graduation flow; THEN: desert-CACTI vista routing fix ·
+##   cert proof gaps (Shipyard d/p + Prime phone populated-save shots, equipped paperdoll) · bundle-time
+##   (version bump kills v1.6.4(dev), RELEASES, two-push deploy, final Gold zip + release archive) ·
+##   iPhone device verify (dock feel, sheets, selection highlight, dodge feel).'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
 ##     (rig param) · red-panda tail rings · dart-frog contrast at card size · settings-panel anchor could sit
 ##     closer to the dock ⚙ on desktop (cosmetic) · desktop caption-vs-hint overlap at boot (pre-existing,
 ##     cosmetic). THEN: bundle-time items (RELEASES notes, GAME_VERSION bump on Nick's word, deploy site+

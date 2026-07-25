@@ -121,7 +121,16 @@
   #hpheart:hover{transform:scale(1.25)}
   #hpbar{position:relative;width:158px;height:13px;border-radius:99px;background:rgba(150,162,210,0.2);overflow:hidden;
     box-shadow:inset 0 1px 2px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05)}
-  #hpbar i{display:block;height:100%;width:100%;border-radius:99px;transition:width .35s,box-shadow .35s}
+  /* HP polish (Nick v11): quarter TICKS make the trough read as an instrument */
+  #hpbar::after{content:'';position:absolute;inset:0;border-radius:99px;pointer-events:none;
+    background:repeating-linear-gradient(90deg,transparent 0 calc(25% - 1px),rgba(255,255,255,0.09) calc(25% - 1px) 25%)}
+  #hpbar i{display:block;position:relative;height:100%;width:100%;border-radius:99px;transition:width .35s,box-shadow .35s}
+  /* the fill carries real depth: lit top → shaded base, and a bright leading tip */
+  #hpbar i::after{content:'';position:absolute;inset:0;border-radius:99px;
+    background:linear-gradient(180deg,rgba(255,255,255,0.32),rgba(255,255,255,0.05) 45%,rgba(0,0,0,0.20))}
+  #hpbar i::before{content:'';position:absolute;right:0;top:0;bottom:0;width:6px;border-radius:0 99px 99px 0;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.38))}
+  #hptext{z-index:2}
   /* the HP number lives ON the bar — centered, so text-size changes can never
      wrap it out of the row (it used to sit beside the bar and broke at A++) */
   #hptext{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
@@ -252,7 +261,8 @@
   @media (max-width:700px){
     #bellwrap{right:10px;bottom:calc(58px + env(safe-area-inset-bottom,0px))}
   }
-  #bell{position:relative;font-size:14px;line-height:1;cursor:pointer;padding:6px 9px;border-radius:999px;
+  #bell{position:relative;font-size:15px;line-height:1;cursor:pointer;width:34px;height:34px;padding:0;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;box-sizing:border-box;
     background:var(--glass);border:1px solid var(--glass-brd);
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:border-color .15s}
   #bell:hover{border-color:rgba(255,207,138,0.55)}
@@ -1662,12 +1672,12 @@
   /* the hint steps above BOTH dock rows */
   #hint{bottom:calc(104px + env(safe-area-inset-bottom,0px))}
   #context{bottom:calc(146px + env(safe-area-inset-bottom,0px))}
-  #helpbtn{left:50%;right:auto;transform:translateX(calc(-50% - 32px));bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  #helpbtn{left:50%;right:auto;transform:translateX(calc(-50% + 32px));bottom:calc(12px + env(safe-area-inset-bottom,0px))}
   #setbtn{right:auto;left:50%;transform:translateX(calc(-50% + 96px));bottom:calc(12px + env(safe-area-inset-bottom,0px))}
   #setbtn:hover{transform:translateX(calc(-50% + 96px)) rotate(60deg)}
   /* no transform here — a transformed ancestor would become the fixed tray's
      containing block and collapse it to the chip's width */
-  #bellwrap{right:auto;left:calc(50% + 15px);transform:none;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  #bellwrap{right:auto;left:calc(50% - 49px);transform:none;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
   /* UI v5: EVERY panel opens as a SHEET ABOVE the dock — aligned, never overlapping it */
   #helppop{bottom:calc(142px + env(safe-area-inset-bottom,0px)) !important;right:8px}
   #setpanel,#tray,#chpanel,#codex,#log,#records{
@@ -1717,10 +1727,13 @@
   #pcdxbtn .ico,#codexbtn .ico,#logbtn .ico,#cargobtn .ico,#recbtn .ico,#chbtn .ico{font-size:12px;line-height:1}
   /* UI v9 (Nick): status lights retired — the icons carry identity now */
   #pcdxbtn .dot,#codexbtn .dot,#logbtn .dot,#cargobtn .dot,#chbtn .dot{display:none}
-  /* SELECTION GROWTH (Nick): the open board's chip grows a touch; closing returns it */
+  /* UI v11 (Nick): counts retired too — only ✦ Prime Codex keeps its 0/9 */
+  #codexbtn .n,#logbtn .n,#cargobtn .n{display:none}
+  /* SELECTION HIGHLIGHT (Nick v11: highlight beats growth — spacing never moves):
+     the open board's chip wears a matching gold wash until it closes */
   #pcdxbtn.sel,#codexbtn.sel,#logbtn.sel,#cargobtn.sel,#recbtn.sel,#chbtn.sel{
-    border-color:rgba(255,217,106,0.8);box-shadow:0 0 18px rgba(255,217,106,0.30)}
-  #pcdxbtn.sel .ico,#codexbtn.sel .ico,#logbtn.sel .ico,#cargobtn.sel .ico,#recbtn.sel .ico,#chbtn.sel .ico{font-size:15px}
+    background:linear-gradient(135deg,rgba(255,217,106,0.22),rgba(255,190,80,0.12));
+    border-color:rgba(255,217,106,0.8);box-shadow:0 0 14px rgba(255,217,106,0.25)}
   @media (min-width:701px){
     /* DESKTOP v6 (Nick: 'align everything where the Charters box is'): ONE
        COMMAND LINE at the Charters level — Charters · 📖 Compendium on the
@@ -22119,13 +22132,20 @@ function _chComplete(c, proven){
     (reveal ? ' A new charter is on the board: '+reveal.t+' — accept it to begin.' : (_chLockedNote()?' '+_chLockedNote():'')), 'charters');
 }
 function chAccept(id){
-  if(!tutDone) return;   /* the board is inert until training ends — accepts too */
+  /* the board is inert until training ends — EXCEPT the graduation lesson,
+     where accepting your first contract IS the final step (Nick's order of
+     operations: training ends on the accept, never auto-accepted) */
+  const _gradStep=(typeof _tutStep!=='undefined' && typeof TUT_STEPS!=='undefined' && TUT_STEPS[_tutStep] && TUT_STEPS[_tutStep].id==='charter-first');
+  if(!tutDone && !_gradStep) return;
   const c=_chById(id);
   if(!c || chacc.has(id) || _chDoneOf(c)) return;
   if(_chAccepted().length>=CH_CAP){ toast('Charter Board', 'Three charters is a full slate — see one through first.'); return; }
   chacc.add(id);
   let proven=false;
-  try{ proven=!!(c.chk && c.chk()); }catch(_){ proven=false; }
+  /* never 'already proven' off SANDBOX training stats — deeds count for real
+     only after graduation */
+  if(tutDone){ try{ proven=!!(c.chk && c.chk()); }catch(_){ proven=false; } }
+  try{ gameEvent('chaccept',{id:id}); }catch(_){ }
   if(proven) _chComplete(c, true);
   else toast('Charter Accepted', '“'+c.t+'”'+(c.n>1?' — counting from here on.':'')+' Pays +'+c.sd+' ☄ on completion.', 'charters');
   if(chOpen) renderCharters(); _chBadge(); checkAch(); renderRank(); queueSave();
@@ -22505,10 +22525,14 @@ const TUT_STEPS=[
   /* Nick 2026-07-24: teach the GUARDIANS here, not just point at the pill —
      how signatures are won, how a titan is challenged, what winning takes */
   text:()=>'The long road: the <b>Prime Codex</b>. Nine elemental <b>Titans</b> — unique named guardians, the same for every explorer — each embody a Signature. <b>Land and survey</b> a world to learn a titan waits there; <b>challenge it</b> like any conquest — fight yourself, or send your strongest bred champion. Titans are the hardest fights in the game: breed powerful bloodlines, feed them well, and forge gear before you knock. Each felled titan <b>claims its ✦ Signature</b> and recovers a relic blueprint. Claim all nine to reach the Celestial Frontier. The <b>? Guide</b> (dock ?) explains every system, any time.'},
- {id:'finale', btn:'✦ Begin the Expedition', spot:'#chbtn', enter:()=>_tutCleanup(),
-  /* Nick 2026-07-24: training ENDS ON THE CHARTERS — the recruit's very next
-     tap has somewhere to land, so the quest line carries them out of school */
-  text:()=>'Field training complete, '+(explorerName||'Explorer')+'. The cache goes back to the order — your Compendium is empty again, your wounds are mended, and Earth shines in your Star Atlas. Your first <b>📜 Charters</b> are already posted (top left) — open the board, accept a contract, and let it point your first real flight. From here on, everything counts. Good hunting.'},
+ {id:'charter-first', spot:'#chbtn', allow:['#chbtn','#chpanel'],
+  /* Nick 2026-07-25 (order of operations): the LAST LESSON is the first quest —
+     the recruit opens the 📜 board and ACCEPTS a contract themselves. Nothing
+     is auto-accepted; the accept IS the graduation deed. */
+  text:()=>'Last lesson: the <b>📜 Charters</b> board is your quest line. Open it and press <b>Accept</b> on your first contract — nothing tracks until <em>you</em> accept it, and three may ride at once. Your pick will point your first real flight.',
+  when:(t)=>t==='chaccept'},
+ {id:'finale', btn:'✦ Begin the Expedition', enter:()=>_tutCleanup(),
+  text:()=>'Field training complete, '+(explorerName||'Explorer')+'. The cache goes back to the order — your Compendium is empty again, your wounds are mended, and Earth shines in your <b>🌍 Star Atlas</b>. Your contract is accepted and waiting. If you ever need help, tap the <b>? Guide</b> button — and the <b>🎓 briefings</b> inside it walk every advanced system. From here on, everything counts. Good hunting.'},
 ];
 
 const tutEl=document.createElement('div'); tutEl.id='tutbox'; document.body.appendChild(tutEl);
