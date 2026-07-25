@@ -1632,10 +1632,13 @@
   #codexbtn{transform:translateX(-50%)}
   #cargobtn{transform:translateX(calc(-50% + 112px))}
   #recbtn{transform:translateX(calc(-50% + 224px))}
-  /* the hint + utility circles step above the dock */
+  /* the hint steps above the dock */
   #hint{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
-  #setbtn{bottom:calc(62px + env(safe-area-inset-bottom,0px))}
-  #helpbtn{bottom:calc(62px + env(safe-area-inset-bottom,0px))}
+  /* ⚙ and ? JOIN the dock as flanking circles — one thumb bar, corners freed
+     (Nick 2026-07-25: one consistent sandbox-ARPG language everywhere) */
+  #setbtn{right:auto;left:50%;transform:translateX(calc(-50% - 330px));bottom:calc(13px + env(safe-area-inset-bottom,0px))}
+  #setbtn:hover{transform:translateX(calc(-50% - 330px)) rotate(60deg)}
+  #helpbtn{right:auto;left:50%;transform:translateX(calc(-50% + 330px));bottom:calc(13px + env(safe-area-inset-bottom,0px))}
   /* bottom-pinned training cards clear the dock */
   #tutbox.dodge{bottom:calc(64px + env(safe-area-inset-bottom,0px))}
   /* the pinned-recipe chip (QoL h) — rides under the charter button */
@@ -1684,6 +1687,10 @@
     #codexbtn{transform:translateX(-50%)}
     #cargobtn{transform:translateX(calc(-50% + 66px))}
     #recbtn{transform:translateX(calc(-50% + 128px))}
+    /* phones: ⚙ / ? become the dock's edge bookends — fit ANY width */
+    #setbtn{left:10px;right:auto;transform:none}
+    #setbtn:hover{transform:rotate(60deg)}
+    #helpbtn{left:auto;right:10px;transform:none}
   }
 </style>
 </head>
