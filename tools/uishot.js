@@ -32,6 +32,9 @@ const SHOTS = [
   { id: 'prime-desktop',     w: 1440, h: 900,  act: `document.getElementById('pcdxbtn').click();` },
   { id: 'guide-desktop',     w: 1440, h: 900,  act: `document.getElementById('helpbtn').click();` },
   { id: 'guide-phone',       w: 390,  h: 844,  act: `document.getElementById('helpbtn').click();` },
+  { id: 'atlas-phone',       w: 390,  h: 844,  act: `document.getElementById('logbtn').click();` },
+  { id: 'records-phone',     w: 390,  h: 844,  act: `document.getElementById('recbtn').click();` },
+  { id: 'tray-phone',        w: 390,  h: 844,  act: `document.getElementById('bell').click();` },
 ];
 
 for (const s of SHOTS) {

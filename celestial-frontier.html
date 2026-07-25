@@ -1648,13 +1648,21 @@
   #logbtn{bottom:calc(58px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 96px))}
   #pcdxbtn{bottom:calc(58px + env(safe-area-inset-bottom,0px));transform:translateX(-50%)}
   #codexbtn{bottom:calc(58px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% + 96px))}
-  #recbtn{bottom:calc(12px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 50px))}
-  #cargobtn{bottom:calc(12px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% + 50px))}
+  #recbtn{bottom:calc(12px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 70px))}
+  #cargobtn{bottom:calc(12px + env(safe-area-inset-bottom,0px));transform:translateX(-50%)}
   /* the hint steps above BOTH dock rows */
   #hint{bottom:calc(104px + env(safe-area-inset-bottom,0px))}
-  #setbtn{right:auto;left:10px;transform:none;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
-  #setbtn:hover{transform:rotate(60deg)}
-  #helpbtn{right:10px;left:auto;transform:none;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  #setbtn{right:auto;left:50%;transform:translateX(calc(-50% - 140px));bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  #setbtn:hover{transform:translateX(calc(-50% - 140px)) rotate(60deg)}
+  #helpbtn{left:50%;right:auto;transform:translateX(calc(-50% + 140px));bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  /* no transform here — a transformed ancestor would become the fixed tray's
+     containing block and collapse it to the chip's width */
+  #bellwrap{right:auto;left:calc(50% + 52px);transform:none;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  /* UI v5: EVERY panel opens as a SHEET ABOVE the dock — aligned, never overlapping it */
+  #setpanel,#tray,#chpanel,#codex,#log,#records{
+    position:fixed;top:auto !important;left:8px;right:8px;width:auto;
+    bottom:calc(112px + env(safe-area-inset-bottom,0px));
+    max-height:calc(100dvh - var(--topbar-h,110px) - 132px)}
   /* bottom-pinned training cards clear the dock */
   #tutbox.dodge{bottom:calc(104px + env(safe-area-inset-bottom,0px))}
   }
