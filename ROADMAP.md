@@ -83,6 +83,13 @@
 ##   ▶ STILL QUEUED (each its own focused pass): charter-training module · accessibility (CF16-012 pinch-zoom +
 ##     CF-006 keyboard Navigator — needs device verify) · TEXT-POLISH re-pin (fingerprint re-pin — do with Nick) ·
 ##     rest of PROCEDURAL_CHARACTERISTICS pass order (proc HEAD system, tail-types, marquee traits, eye/limb counts).
+## ▶▶ THE SOFT-MASS PASS (Nick 2026-07-24: 'blended colors, not just circles' — PRINCIPLE ADOPTED):
+##   soft subjects (snow/water/mist/canopies/clouds/tissue) = layered radial gradients with feathered edges;
+##   hard subjects (crystal/plate/machinery/ice SHARDS/coral skeletons) keep crisp edges — that IS their identity.
+##   SHIPPED: tundra drifts + swamp pools + coral shallows [bd5a0f5]. AUDIT QUEUE (priority order): (1) FLORA
+##   CANOPIES — berry bushes + round-crown trees are circle-piles; converting the canopy painter to gradient
+##   clumps lifts all 334 flora at once; (2) moss/lichen mats; (3) vista foliage clumps; (4) gas-giant storm
+##   flecks. Creature pipeline + planets/stars/nebulae already gradient-based (audited clean).
 ## ▶▶▶ 2026-07-24 SIXTH DIRECTIVE — PROOFSET-2 REVIEW TRIAGE (PROOFSET2_REVIEW_2026-07-24.md saved to
 ##   repo; Nick: 'we need to get this right and proceed'). VERDICT ACCEPTED: identity fidelity is the gap, not
 ##   rendering. THE SIGNATURE-FEATURE PASS is the program of record, four enforced rules:
