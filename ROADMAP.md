@@ -55,11 +55,22 @@
 ##     real second pair, separated tip) [winged proof reviewed] · star-class extras = previously done + scale
 ##     row. UI PASS STEP 1 ✔: ⚙+? circles JOIN the dock (desktop ±330 slots, phone edge-bookends; ids
 ##     untouched → training lockdown + smoke targets hold; layout 546/9, smoke 415/0).
-##   STILL TO RUN (before the full proof drop): UI PASS REMAINDER (topbar shelf + left-rail charters/chips
-##     consistency + panel language) + THE FULL TRAINING REDO in the same batch (same focus lockdown, all
-##     prior lessons, text/spotlights vs the new layout) · fauna nits (eagle hook, gerenuk neck via rig param,
-##     red-panda tail rings, dart contrast verify) · FULL PROOF SET (incl. actual-size rows per the runtime-
-##     integration adoption) + zip for Nick's review round.
+##   ★★★ 2026-07-25 FINISH-LINE SESSION (Nick: "get this across the finish line") — ALL DONE, PROOFS SHIPPED:
+##   UI PASS ✔ COMPLETE: THE SHELF (one-row topbar desktop: nameplate·HP·search·bell; phones keep 2-row) +
+##     ⚙/? FLANK THE DOCK (±330 desktop, edge bookends phone) + 5 stale guide/training position refs fixed
+##     to the dock era. TRAINING: ids untouched → lockdown + spotlights + smoke's 20-step run all hold
+##     (415/0). WINGS ✔ (Nick's mid-turn note): QUARTER-OPEN dragon posture, tips below crown, heads clear;
+##     4-wing keeps its second pair. Raptor head +15% so the hook reads.
+##   NEW TOOLING: tools/uishot.js — headless-Edge UI screenshots via exactly-sized IFRAME (window-size lies
+##     under Windows display scaling — measured vw 492 at requested 390; iframe gives the true CSS viewport).
+##     Seeds veteran save {me,tut:1,rn:GAME_VERSION} → boots the live UI, no intro/release popups.
+##   ★ CF-v17-GOLD-PROOFS.zip DELIVERED to Nick: 58 PNGs, 7 folders (earth-creatures/flora/procedural/
+##     celestial/materials-gear-ships/vistas/UI) + README mapping every change. All 41 sheets rendered 0-fail.
+##   ▶ AWAITING NICK'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
+##     (rig param) · red-panda tail rings · dart-frog contrast at card size · settings-panel anchor could sit
+##     closer to the dock ⚙ on desktop (cosmetic) · desktop caption-vs-hint overlap at boot (pre-existing,
+##     cosmetic). THEN: bundle-time items (RELEASES notes, GAME_VERSION bump on Nick's word, deploy site+
+##     source, iPhone verify list).
 ## ▶▶▶ 2026-07-25 EIGHTH DIRECTIVE — TWO MORE REVIEW DOCS TRIAGED (both saved to repo):
 ##   GAP_AUDIT_2026-07-25.md ("Build Gap Audit"): P0 items 1,3,4,5,6,8 ALREADY DONE this arc (universal rarity,
 ##   save validation/hardening, canopy, ring grammar, deepspace labels, gear-on-ladder); P0-2 Earth-cap = N/A
