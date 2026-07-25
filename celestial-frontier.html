@@ -8728,10 +8728,10 @@ function hdBeastBare(G,seed){
     else if(hk===2 && hK!==3){ sg2.beginPath();sg2.moveTo(hp.x-S*0.028,hp.y-S*0.028);sg2.lineTo(hp.x-S*0.016,hp.y-S*0.072);sg2.lineTo(hp.x-S*0.002,hp.y-S*0.03);sg2.closePath();sg2.fill(); }   // small nub
     else if(hk===3){ for(const s of [0,1]){ sg2.beginPath();sg2.ellipse(hp.x-S*0.03+s*S*0.03,hp.y-S*0.048,S*0.011,S*0.021,(s?0.25:-0.25),0,7);sg2.fill(); } }   // twin ears
   }
-  if(G.horn>0.05){
+  if(G.horn>0.05){ const _hEff=Math.max(G.horn,0.5);   /* R4: minimum readable footprint — a horn extends past the head or it isn't a horn */
     sg2.beginPath();sg2.moveTo(hp.x-5,hp.y-S*0.034);
-    sg2.quadraticCurveTo(hp.x-S*0.05*G.horn-5,hp.y-S*0.15*G.horn,hp.x-S*0.11*G.horn,hp.y-S*0.16*G.horn);
-    sg2.quadraticCurveTo(hp.x-S*0.03,hp.y-S*0.10*G.horn,hp.x+3,hp.y-S*0.04);sg2.closePath();sg2.fill();}
+    sg2.quadraticCurveTo(hp.x-S*0.05*_hEff-5,hp.y-S*0.15*_hEff,hp.x-S*0.11*_hEff,hp.y-S*0.16*_hEff);
+    sg2.quadraticCurveTo(hp.x-S*0.03,hp.y-S*0.10*_hEff,hp.x+3,hp.y-S*0.04);sg2.closePath();sg2.fill();}
   /* v1.6 Pass 7 TAIL PHENOTYPE (tailK): whip / finned / spiked / prehensile / plumed / stinger */
   { const tx0=x0+7, ty0=baseY+3, tex=x0-S*0.14, tey=baseY-S*(0.06+G.tail*0.08);
     const tk=_proc?(G.tailK||0):1;   // Earth legacy keeps a plain whip tail
@@ -8990,8 +8990,11 @@ function hdBeastBare(G,seed){
     } else if(skK===7){ const [sk,kg]=_layer();   /* translucent — body is see-through (above); show the guts */
       kg.strokeStyle='rgba(214,238,242,0.55)';kg.lineWidth=2.2;kg.lineCap='round';   // internal spine
       kg.beginPath();kg.moveTo(x0+bw*0.12,midY-bodH*0.05);kg.quadraticCurveTo(cxb,midY-bodH*0.12,x1-bw*0.1,midY-bodH*0.01);kg.stroke();
-      kg.strokeStyle='rgba(200,228,235,0.30)';kg.lineWidth=1.2;                       // ribs off the spine
-      for(let rb=0;rb<7;rb++){ const rx=x0+bw*(0.16+rb*0.11), ry=midY-bodH*0.08+rb*0.005; kg.beginPath();kg.moveTo(rx,ry);kg.lineTo(rx,ry+bodH*0.26);kg.stroke(); }
+      kg.strokeStyle='rgba(200,228,235,0.30)';kg.lineWidth=1.2;                       // ribs — CURVED, uneven (R4: straight even lines read as machinery)
+      { const _rn=5+((seed>>3)%3);
+        for(let rb=0;rb<_rn;rb++){ const jt=((seed>>(rb*2))%7)/7;
+          const rx=x0+bw*(0.14+(rb+jt*0.5)*(0.66/_rn)), ry=midY-bodH*(0.06+jt*0.03), rl=bodH*(0.18+jt*0.12);
+          kg.beginPath();kg.moveTo(rx,ry);kg.quadraticCurveTo(rx+bw*0.035,ry+rl*0.55,rx+bw*0.012,ry+rl);kg.stroke(); } }
       kg.strokeStyle='rgba(150,108,138,0.42)';kg.lineWidth=bw*0.05;                    // a coiled gut, contrasting inner tone
       kg.beginPath();kg.moveTo(x0+bw*0.3,midY+bodH*0.14);kg.bezierCurveTo(cxb-bw*0.1,midY+bodH*0.3,cxb+bw*0.15,midY+bodH*0.0,x1-bw*0.28,midY+bodH*0.16);kg.stroke();
       kg.fillStyle='rgba(118,178,190,0.36)';for(let o=0;o<3;o++){ kg.beginPath();kg.arc(x0+bw*(0.34+o*0.18),midY+bodH*0.03,bw*0.05,0,7);kg.fill(); }   // organ sacs
