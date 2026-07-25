@@ -32,7 +32,7 @@ module.exports = {
       const sea=['opensea','archipelago','stormsea','volcisle','milksea'].includes(b.k);
       g.fillStyle='#8892b8'; g.fillText('landing '+(li+1)+': '+b.k+(sea?' (sea)':' (land)'), x, y-6);
       try{
-        const o={seed:133, era:'town', pal:'day', wb:b.k, flora:true, water:'liquid', moons:1,
+        const o={seed:133, era:'none', pal:'day', wb:b.k, flora:true, water:'liquid', moons:1,
           genes:sea?null:[fauna(li),fauna(li+5)], herd:sea?0:3, aqua:sea?2:0,
           floraGenes:sea?null:[flora([5,0,1,13,16][li%5],li),flora(1,li+3)],
           biome:sea?'island':undefined};
