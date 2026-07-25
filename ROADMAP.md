@@ -23,6 +23,55 @@
 ## [HYGIENE 2026-07-24] Roadmap trimmed to a one-screen read: the v1.6.x DEPLOY history + Batch-15 + 6k/10k
 ##   beta blocks were moved VERBATIM to the TOP of ROADMAP_ARCHIVE.md (nothing deleted). Everything below is
 ##   still-live v1.7 state / backlog / process. All work committed + pushed; battery green. READY FOR NEXT SESSION.
+## ▶▶▶ 2026-07-25 NINTH DIRECTIVE — FULL EXECUTION GREENLIT (Nick: waves 1-3 + WHOLE pending list + the
+##   FULL UI PASS "left settings/help circles/topbar shelf — consistent with the infinite/sandbox ARPG feel"
+##   + save export/import design ("let's figure this out") + TRAINING FULLY REDONE to match the new UI with
+##   the SAME FOCUS LOCKDOWN (Nick x2: keep the lock, apply every prior training lesson: off-screen spotlight
+##   guard, veteran-save seeding, overlay dismissal on step entry, gameEvent emissions intact) + FULL PROOF
+##   SET at the end for his next review round.
+##   ★ SESSION PROGRESS (all committed, each battery-green fp MATCH · render 1010/0 · smoke 415/0 · layout 546/9):
+##   WAVE 1 = ✔✔✔✔ COMPLETE: (1) CANOPY UNION [tools/sheets/canopy.js proof] — _canopyMass wobble-lobe
+##     union+gradient+pockets; tree/shrub/bushy/dense/round/baobab/acacia; no circles at 100/200%. (2) FLORA
+##     IDENTITY WAVE 2 [flora-wave2.js proof] — form-agnostic paintOrgan (grapes/cherry/nutClu/barkCurl/
+##     pepper/podHang + prior 4), spice row (cinnamon/cardamom/black pepper/vanilla/chili/mustard), per-species
+##     fruit colors, 5 ROOT KINDS w/ vegetable colors, 4 HERB STRUCTURES (leafhead/needle/feather/aromatic),
+##     4 GRAIN KINDS, sheet algae (aq6), umbel flowers. (3) liveview sheet = REAL ring grammar. (4) deepspace
+##     labels + TRUE star-scale row.
+##   WAVE 2 = MOSTLY DONE: wormhole continuous lensing + warped star-trails + throat depth ✔ · molecular-cloud
+##     presence + protostars ✔ · MOON GEOLOGY ✔ (far masters ONE hero feature; icy branching interrupted
+##     fractures; volcanic basalt+caldera+cooled fissures; rocky broken rims + ejecta) · OPEN-SEA per-landing
+##     variation ✔ (salt re-deals islands/swell/fauna; opts.salt threaded into hdVista) · FAUNA IDENTITY ✔
+##     [fauna-wave2.js proof] (dart/glass/tree/bullfrog frogs, puffin bill, raptor hook+chest, swan S-neck,
+##     hummingbird, macaw, kudu/lyre/prong horns, warthog mane, meerkat sentinel special, sloth hang special,
+##     turtle splayed feet; ALSO fixed 2 stray 0x08 bytes in the boar regex — was silently breaking \bboar\b).
+##     FAUNA NITS REMAINING: dart-frog patch contrast verify at card size · eagle hook still subtle · gerenuk
+##     neck (o.neck doesn't drive mammal-rig neck length — needs rig param) · red-panda RINGED TAIL (needs tail
+##     path access) · R4 spike/fur/feather softening pass NOT STARTED.
+##   STILL TO RUN (before the full proof drop): R4 spikes · wave 3 (coast-halo breakup, cloud fronts/storms,
+##     star-class extras, wing silhouettes) · THE UI PASS + TRAINING REDO (see below) · full proof set + zip.
+## ▶▶▶ 2026-07-25 EIGHTH DIRECTIVE — TWO MORE REVIEW DOCS TRIAGED (both saved to repo):
+##   GAP_AUDIT_2026-07-25.md ("Build Gap Audit"): P0 items 1,3,4,5,6,8 ALREADY DONE this arc (universal rarity,
+##   save validation/hardening, canopy, ring grammar, deepspace labels, gear-on-ladder); P0-2 Earth-cap = N/A
+##   (grades are fingerprinted generation — recapping breaks determinism law); P0-3 migration = our absent-safe
+##   field policy + feeds the EXPORT/IMPORT DESIGN (adopt: versioned save envelope w/ schema fields when built).
+##   ADOPTED: save-size budget w/ warning threshold (ties CF-002) · mirror-duel test in balance sim (ties v1.6
+##   deferral) · sting-coverage audit (playRaritySting exists — verify flora/material discovery coverage) ·
+##   BALANCE.md numbers snapshot generated from code · release-gates checklist AT BUNDLE TIME. DECLINED (scope/
+##   fit): durability-repair, spoilage, vendor/auction/multiplayer economy, weapon families, PvP normalization,
+##   full 19-field schemas, document-owner bureaucracy, modifier compatibility matrix (worldgen derives
+##   properties structurally — cannot produce the contradictions the matrix guards). DEFERRED w/ quality grades+
+##   uniques+bio-ingredients (post-Forge): recipe-acquisition progression (hybrid unlock model — Nick's call,
+##   changes the fixed-recipes simplicity principle).
+##   RUNTIME_INTEGRATION_2026-07-25.md: ADOPT NOW — actual-size proof standard (every family proofed at master/
+##   gameplay/icon sizes — fold into the full proof set) · sheets-regression runner (render ALL sheets, no
+##   ERROR cells) · UI-scale proof sheet (cards/icons at true size). FOLD INTO EXISTING QUEUES: gameplay-state
+##   readability + accessibility redundancy (accessibility batch) · tutorial-uses-real-art (training redo).
+##   ROADMAP (post-Forge candidates, Nick decides): ANIMATION/locomotion system (big — Steam-worthy but a new
+##   engine layer) · ecology-in-motion (herds/packs/predation behavior) · procedural AUDIO identity (creature
+##   calls from genome) · breeding PREVIEW UI (deterministic spoiler tension — design taste call) · duplicate-use
+##   /bad-luck-pity systems · lineage archive/memorials · store/key-art/trailer assets (Steam prep) ·
+##   localization. NOTE: visual determinism concern = covered by policy (saves store seeds not pixels; painter
+##   changes are deliberate, RELEASES-noted).
 ## ▶▶▶ 2026-07-25 SEVENTH DIRECTIVE — GOLD MASTER TRIAGE (GOLD_MASTER_2026-07-25.md saved to repo; Nick's
 ##   compiled Part I materials/gear spec + Part II art Gold assessment; verdict "Near-Gold, hold for one
 ##   focused correction pass" — ACCEPTED, feedback delivered, awaiting Nick's go on execution).
