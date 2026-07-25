@@ -6306,39 +6306,105 @@ function _moonSpr(ti, hd){
       g.fillStyle=mg2; g.beginPath(); g.arc(mx2,my2,mr2,0,TAU); g.fill();
     }
   }
-  if(ti===2){ /* volcanic: a few thin fissures + soft caldera glows */
-    g.strokeStyle='rgba(255,110,50,'+(hd?0.40:0.55)+')'; g.lineWidth=(hd?0.5:0.9)*lw;
-    for(let i=0;i<(hd?7:3);i++){
-      const fx2=C+(r()-0.5)*S*0.6, fy2=C+(r()-0.5)*S*0.6;
-      const fl2=hd?S*0.08:S*0.28, fa2=r()*TAU;
-      g.beginPath(); g.moveTo(fx2, fy2);
-      /* a slight elbow so fissures read as cracks, not dashes */
-      const mx3=fx2+Math.cos(fa2)*fl2*0.5, my3=fy2+Math.sin(fa2)*fl2*0.5;
-      g.lineTo(mx3, my3); g.lineTo(mx3+Math.cos(fa2+0.5)*fl2*0.5, my3+Math.sin(fa2+0.5)*fl2*0.5); g.stroke();
+  if(ti===2){ /* volcanic (wave-2 Gold pass): dark basalt fields + irregular
+                 calderas + mostly-COOLED fissures with only segments glowing —
+                 geology, not a toy with luminous cracks */
+    if(hd){
+      for(let i=0;i<4;i++){   /* cooled basalt flows — broad soft dark fields */
+        const bx3=C+(r()-0.5)*S*0.66, by3=C+(r()-0.5)*S*0.66, br3=S*(0.10+r()*0.13);
+        const bg3=g.createRadialGradient(bx3,by3,0,bx3,by3,br3);
+        bg3.addColorStop(0,'rgba(30,20,14,'+(0.18+r()*0.12).toFixed(2)+')');
+        bg3.addColorStop(1,'rgba(30,20,14,0)');
+        g.fillStyle=bg3; g.beginPath(); g.arc(bx3,by3,br3,0,TAU); g.fill();
+      }
+      for(let i=0;i<2;i++){   /* ash shrouds — soft grey veils */
+        const ax=C+(r()-0.5)*S*0.6, ay=C+(r()-0.5)*S*0.6, ar2=S*(0.10+r()*0.08);
+        const ag=g.createRadialGradient(ax,ay,0,ax,ay,ar2);
+        ag.addColorStop(0,'rgba(120,110,100,0.14)'); ag.addColorStop(1,'rgba(120,110,100,0)');
+        g.fillStyle=ag; g.beginPath(); g.arc(ax,ay,ar2,0,TAU); g.fill();
+      }
+      for(let i=0;i<1;i++){   /* ONE commanding caldera — dark rimmed pit, molten floor hint */
+        const kx=C+(r()-0.5)*S*0.42, ky=C+(r()-0.5)*S*0.42, kr=S*(0.062+r()*0.024), ka=r()*TAU;
+        g.fillStyle='rgba(24,14,10,0.62)';
+        g.beginPath();
+        for(let p2=0;p2<=10;p2++){ const a=p2/10*TAU;
+          const w2=1+Math.sin(a*3+ka)*0.22+Math.sin(a*5+ka*2)*0.12;
+          const px=kx+Math.cos(a)*kr*w2, py=ky+Math.sin(a)*kr*0.72*w2;
+          if(p2) g.lineTo(px,py); else g.moveTo(px,py); }
+        g.closePath(); g.fill();
+        const kg=g.createRadialGradient(kx,ky,0,kx,ky,kr*0.6);
+        kg.addColorStop(0,'rgba(255,140,50,0.5)'); kg.addColorStop(1,'rgba(255,140,50,0)');
+        g.fillStyle=kg; g.beginPath(); g.arc(kx,ky,kr*0.6,0,TAU); g.fill();
+      }
+      for(let i=0;i<5;i++){   /* fissures: fine cooled cracks, ~1/3 carry a glowing segment */
+        const fx2=C+(r()-0.5)*S*0.6, fy2=C+(r()-0.5)*S*0.6, fa2=r()*TAU, fl2=S*(0.05+r()*0.04);
+        const mx3=fx2+Math.cos(fa2)*fl2*0.5, my3=fy2+Math.sin(fa2)*fl2*0.5;
+        const ex3=mx3+Math.cos(fa2+0.4)*fl2*0.5, ey3=my3+Math.sin(fa2+0.4)*fl2*0.5;
+        g.strokeStyle='rgba(40,26,16,0.45)'; g.lineWidth=0.38*lw;
+        g.beginPath(); g.moveTo(fx2,fy2); g.lineTo(mx3,my3); g.lineTo(ex3,ey3); g.stroke();
+        if(i%3===0){ g.strokeStyle='rgba(255,120,50,0.5)'; g.lineWidth=0.3*lw;
+          g.beginPath(); g.moveTo(mx3,my3); g.lineTo((mx3+ex3)/2,(my3+ey3)/2); g.stroke(); }
+      }
+    } else {   /* far master: ONE readable feature — a glowing caldera + 2 fissures */
+      const kx=C+(r()-0.5)*S*0.3, ky=C+(r()-0.5)*S*0.3;
+      g.fillStyle='rgba(24,14,10,0.7)'; g.beginPath(); g.ellipse(kx,ky,S*0.10,S*0.075,r(),0,TAU); g.fill();
+      const kg=g.createRadialGradient(kx,ky,0,kx,ky,S*0.06);
+      kg.addColorStop(0,'rgba(255,140,50,0.75)'); kg.addColorStop(1,'rgba(255,140,50,0)');
+      g.fillStyle=kg; g.beginPath(); g.arc(kx,ky,S*0.06,0,TAU); g.fill();
+      g.strokeStyle='rgba(255,110,50,0.5)'; g.lineWidth=0.8*lw;
+      for(let i=0;i<2;i++){ const fa2=r()*TAU, fx2=C+(r()-0.5)*S*0.5, fy2=C+(r()-0.5)*S*0.5;
+        g.beginPath(); g.moveTo(fx2,fy2);
+        g.lineTo(fx2+Math.cos(fa2)*S*0.2, fy2+Math.sin(fa2)*S*0.2); g.stroke(); }
     }
-    if(hd){ for(let i=0;i<4;i++){
-      const gx2=C+(r()-0.5)*S*0.5, gy2=C+(r()-0.5)*S*0.5, gr2=(2.2+r()*2.6)*lw;
-      const gg2=g.createRadialGradient(gx2,gy2,0,gx2,gy2,gr2);
-      gg2.addColorStop(0,'rgba(255,150,60,0.38)'); gg2.addColorStop(1,'rgba(255,150,60,0)');
-      g.fillStyle=gg2; g.beginPath(); g.arc(gx2,gy2,gr2,0,TAU); g.fill(); } }
-  } else if(ti===1){ /* icy: a few faint offset streaks — frost, not engraving */
-    g.strokeStyle='rgba(255,255,255,'+(hd?0.22:0.4)+')'; g.lineWidth=(hd?0.6:0.8)*lw;
-    for(let i=0;i<(hd?4:3);i++){
-      const ox2=hd?C+(r()-0.5)*S*0.34:C, oy2=hd?C+(r()-0.5)*S*0.34:C;
-      g.beginPath(); g.arc(ox2,oy2,S*(0.20+r()*0.2), r()*TAU, r()*TAU+0.9); g.stroke();
+  } else if(ti===1){ /* icy (wave-2 Gold pass): BRANCHING interrupted fractures
+                        with displacement highlights — Europa, not engraving */
+    if(hd){
+      const crack=(x,y,ang,len,w2,depth)=>{
+        let px=x, py=y, a=ang;
+        const segs=3+((r()*3)|0);
+        for(let s2=0;s2<segs;s2++){
+          const sl=len*(0.2+r()*0.18), gap=r()<0.22;   /* interruptions */
+          const nx2=px+Math.cos(a)*sl, ny2=py+Math.sin(a)*sl;
+          if(!gap){
+            g.strokeStyle='rgba(120,150,190,'+(0.30+r()*0.14).toFixed(2)+')';
+            g.lineWidth=Math.max(0.3,w2*(0.7+r()*0.6))*lw;
+            g.beginPath(); g.moveTo(px,py); g.lineTo(nx2,ny2); g.stroke();
+            /* displacement highlight: a bright hairline offset to the sun side */
+            g.strokeStyle='rgba(255,255,255,0.20)'; g.lineWidth=0.3*lw;
+            g.beginPath(); g.moveTo(px-0.9*lw,py-0.9*lw); g.lineTo(nx2-0.9*lw,ny2-0.9*lw); g.stroke();
+          }
+          px=nx2; py=ny2; a+=(r()-0.5)*0.7;
+          if(depth<2 && r()<0.30) crack(px,py,a+(r()<0.5?-0.8:0.8),len*0.55,w2*0.7,depth+1);   /* branches */
+        }
+      };
+      for(let i=0;i<4;i++) crack(C+(r()-0.5)*S*0.55, C+(r()-0.5)*S*0.55, r()*TAU, S*0.3, 0.6, 0);
+      for(let i=0;i<6;i++){   /* frost patches stay */
+        const px3=C+(r()-0.5)*S*0.6, py3=C+(r()-0.5)*S*0.6, pr3=(1.0+r()*1.6)*lw;
+        const pg3=g.createRadialGradient(px3,py3,0,px3,py3,pr3);
+        pg3.addColorStop(0,'rgba(255,255,255,0.22)'); pg3.addColorStop(1,'rgba(255,255,255,0)');
+        g.fillStyle=pg3; g.beginPath(); g.arc(px3,py3,pr3,0,TAU); g.fill(); }
+    } else {   /* far master: ONE bold interrupted fracture across the face */
+      g.strokeStyle='rgba(110,145,185,0.55)'; g.lineWidth=0.9*lw;
+      let px=C-S*0.3, py=C+(r()-0.5)*S*0.3, a=(r()-0.5)*0.5;
+      for(let s2=0;s2<4;s2++){ const nx2=px+Math.cos(a)*S*0.17, ny2=py+Math.sin(a)*S*0.17;
+        if(s2!==2){ g.beginPath(); g.moveTo(px,py); g.lineTo(nx2,ny2); g.stroke(); }
+        px=nx2; py=ny2; a+=(r()-0.5)*0.8; }
+      g.strokeStyle='rgba(255,255,255,0.35)'; g.lineWidth=0.5*lw;
+      g.beginPath(); g.arc(C,C,S*0.26, r()*TAU, r()*TAU+0.8); g.stroke();
     }
-    if(hd){ for(let i=0;i<6;i++){
-      const px3=C+(r()-0.5)*S*0.6, py3=C+(r()-0.5)*S*0.6, pr3=(1.0+r()*1.6)*lw;
-      const pg3=g.createRadialGradient(px3,py3,0,px3,py3,pr3);
-      pg3.addColorStop(0,'rgba(255,255,255,0.22)'); pg3.addColorStop(1,'rgba(255,255,255,0)');
-      g.fillStyle=pg3; g.beginPath(); g.arc(px3,py3,pr3,0,TAU); g.fill(); } }
   } else { /* rocky / captured craters. HD: NON-OVERLAPPING placement (rejection
               sampling), few-large-many-small sizing, and real bowl shading
               matched to the sprite's upper-left light — no stray rim arcs. */
     if(!hd){
-      for(let i=0;i<4;i++){
+      /* far master (wave-2): ONE hero crater with a real bowl + 3 specks — a
+         distant moon keeps a readable material feature */
+      const hx=C+(r()-0.5)*S*0.34, hy=C+(r()-0.5)*S*0.34, hr2=S*0.11;
+      const hb=g.createLinearGradient(hx-hr2,hy-hr2,hx+hr2,hy+hr2);
+      hb.addColorStop(0,'rgba(0,0,8,0.4)'); hb.addColorStop(0.55,'rgba(0,0,8,0.15)'); hb.addColorStop(1,K(1.25,0.35));
+      g.fillStyle=hb; g.beginPath(); g.arc(hx,hy,hr2,0,TAU); g.fill();
+      for(let i=0;i<3;i++){
         g.fillStyle='rgba(0,0,0,'+(0.14+r()*0.14).toFixed(2)+')';
-        g.beginPath(); g.arc(C+(r()-0.5)*S*0.55, C+(r()-0.5)*S*0.55, 0.8+r()*1.6, 0, TAU); g.fill();
+        g.beginPath(); g.arc(C+(r()-0.5)*S*0.55, C+(r()-0.5)*S*0.55, 0.8+r()*1.4, 0, TAU); g.fill();
       }
     } else {
       const placed=[];
@@ -6358,13 +6424,30 @@ function _moonSpr(ti, hd){
         bg4.addColorStop(0.55,'rgba(0,0,8,0.13)');
         bg4.addColorStop(1,K(1.22,0.30));
         g.fillStyle=bg4; g.beginPath(); g.arc(cr2.x,cr2.y,cr2.r,0,TAU); g.fill();
-        /* soft raised rim: a ring gradient just outside the bowl, brightest
-           on the sunlit (lower-right) side — no hard strokes */
+        /* BROKEN raised rim (wave-2): the ring gradient clips to 2–3 partial
+           arc wedges with seeded gaps — slumped walls, not a stamped circle */
         const rg4=g.createRadialGradient(cr2.x,cr2.y,cr2.r*0.85,cr2.x,cr2.y,cr2.r*1.22);
         rg4.addColorStop(0,'rgba(0,0,0,0)');
         rg4.addColorStop(0.55,K(1.18,0.16));
         rg4.addColorStop(1,'rgba(0,0,0,0)');
-        g.fillStyle=rg4; g.beginPath(); g.arc(cr2.x,cr2.y,cr2.r*1.25,0,TAU); g.fill();
+        g.fillStyle=rg4;
+        let ra=r()*TAU;
+        for(let w2=0;w2<3;w2++){ const span=1.1+r()*1.6;
+          g.beginPath(); g.moveTo(cr2.x,cr2.y);
+          g.arc(cr2.x,cr2.y,cr2.r*1.25,ra,ra+span); g.closePath(); g.fill();
+          ra+=span+0.25+r()*0.7; }
+        /* ASYMMETRIC EJECTA on the large craters: faint pale rays thrown
+           mostly one way (oblique impact) */
+        if(cr2.r>S*0.06){
+          const ea=r()*TAU;
+          g.strokeStyle=K(1.20,0.10); g.lineCap='round';
+          for(let e2=0;e2<6;e2++){
+            const a=ea+(r()-0.5)*1.5, el=cr2.r*(1.5+r()*1.8);
+            g.lineWidth=(0.4+r()*0.7)*lw;
+            g.beginPath(); g.moveTo(cr2.x+Math.cos(a)*cr2.r*1.15, cr2.y+Math.sin(a)*cr2.r*1.15);
+            g.lineTo(cr2.x+Math.cos(a)*(cr2.r*1.15+el), cr2.y+Math.sin(a)*(cr2.r*1.15+el)); g.stroke();
+          }
+        }
       }
     }
   }
