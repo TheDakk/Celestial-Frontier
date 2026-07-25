@@ -10314,11 +10314,14 @@ function _hdBiomeDress(g, o, seed, hz, W, H){
     case 'marsh':    wash('44,72,40',0.30); mist('180,200,180',0.20*A,groundY(0.45),48); spires('rgba(52,74,40,0.7)',null,14,6,16); break;
     case 'swamp':    /* R3: standing water + dead snags, not just dark hills */
       wash('8,14,8',0.52); towers('rgba(30,40,22,0.85)','rgba(18,22,12,0.9)',9); mist('120,140,110',0.26*A,groundY(0.3),64);
-      g.fillStyle='rgba(26,34,30,'+(0.9*A).toFixed(2)+')';
-      for(let i=0;i<6;i++){ const px2=W*(0.06+r()*0.88), py2=groundY(0.35+r()*0.5);
-        g.beginPath();g.ellipse(px2,py2,50+r()*70,8+r()*5,0,0,7);g.fill();
-        g.fillStyle='rgba(120,150,140,'+(0.16*A).toFixed(2)+')';g.beginPath();g.ellipse(px2,py2-1,44+r()*50,3,0,0,7);g.fill();
-        g.fillStyle='rgba(26,34,30,'+(0.9*A).toFixed(2)+')'; }
+      for(let i=0;i<6;i++){ const px2=W*(0.06+r()*0.88), py2=groundY(0.35+r()*0.5), pw=55+r()*75, ph=9+r()*6;
+        const wg2=g.createRadialGradient(px2,py2,0,px2,py2,pw);
+        wg2.addColorStop(0,'rgba(24,32,30,'+(0.85*A).toFixed(2)+')');
+        wg2.addColorStop(0.7,'rgba(24,32,30,'+(0.45*A).toFixed(2)+')');
+        wg2.addColorStop(1,'rgba(24,32,30,0)');
+        g.save();g.translate(px2,py2);g.scale(1,ph/pw);g.translate(-px2,-py2);
+        g.fillStyle=wg2;g.beginPath();g.arc(px2,py2,pw,0,7);g.fill();g.restore();
+        g.fillStyle='rgba(130,160,150,'+(0.14*A).toFixed(2)+')';g.beginPath();g.ellipse(px2,py2-1,pw*0.6,2,0,0,7);g.fill(); }
       break;
     case 'mangrove': /* R3: tidal channels + stilt roots */
       wash('26,40,26',0.26); towers('rgba(24,48,26,0.9)','rgba(30,26,14,0.95)',7);
@@ -10333,9 +10336,15 @@ function _hdBiomeDress(g, o, seed, hz, W, H){
       break;
     case 'tundra':   /* R3: tundra READS SNOW — pale strong wash, drifts, frost haze */
       wash('212,220,230',0.55); boulders('rgba(96,104,112,0.55)',4); mist('225,235,245',0.30*A,hz+6,40);
-      g.fillStyle='rgba(236,242,248,'+(0.85*A).toFixed(2)+')';
-      for(let i=0;i<9;i++){ const dx=W*(i/8)+((r()-0.5)*60), dy=groundY(0.25+r()*0.6);
-        g.beginPath();g.ellipse(dx,dy,34+r()*46,7+r()*6,0,0,7);g.fill(); }
+      /* Nick 2026-07-24: snow is BLENDED MASS, not stamped circles — layered
+         radial gradients fading into the ground, wider than they are tall */
+      for(let i=0;i<11;i++){ const dx=W*(i/10)+((r()-0.5)*70), dy=groundY(0.25+r()*0.6), dw=50+r()*70, dh=10+r()*8;
+        const sg4=g.createRadialGradient(dx,dy,0,dx,dy,dw);
+        sg4.addColorStop(0,'rgba(240,245,250,'+(0.55*A).toFixed(2)+')');
+        sg4.addColorStop(0.55,'rgba(232,240,248,'+(0.28*A).toFixed(2)+')');
+        sg4.addColorStop(1,'rgba(232,240,248,0)');
+        g.save();g.translate(dx,dy);g.scale(1,dh/dw);g.translate(-dx,-dy);
+        g.fillStyle=sg4;g.beginPath();g.arc(dx,dy,dw,0,7);g.fill();g.restore(); }
       break;
     case 'karst':    ridges('rgba(60,64,58,0.35)',2); spires('rgba(52,58,50,0.8)',null,5,18,42); break;
     case 'saltflat': wash('230,232,228',0.55); shimmer('255,255,255',55);   /* v1.6 B15.4: dry white crust + POLYGONAL cracking + mirage (distinct from saltpan) */
@@ -10354,9 +10363,13 @@ function _hdBiomeDress(g, o, seed, hz, W, H){
     /* ocean */
     case 'coral':    /* R3: a reef shelf — turquoise shallows + coral forms */
       wash('30,150,150',0.30); shimmer('160,240,230',48);
-      g.fillStyle='rgba(90,200,205,'+(0.35*A).toFixed(2)+')';
-      for(let i=0;i<5;i++){ const px3=W*(0.05+r()*0.9), py3=groundY(0.3+r()*0.55);
-        g.beginPath();g.ellipse(px3,py3,55+r()*70,9+r()*6,0,0,7);g.fill(); }
+      for(let i=0;i<5;i++){ const px3=W*(0.05+r()*0.9), py3=groundY(0.3+r()*0.55), pw3=60+r()*75, ph3=10+r()*7;
+        const cg4=g.createRadialGradient(px3,py3,0,px3,py3,pw3);
+        cg4.addColorStop(0,'rgba(110,215,215,'+(0.40*A).toFixed(2)+')');
+        cg4.addColorStop(0.65,'rgba(90,200,205,'+(0.20*A).toFixed(2)+')');
+        cg4.addColorStop(1,'rgba(90,200,205,0)');
+        g.save();g.translate(px3,py3);g.scale(1,ph3/pw3);g.translate(-px3,-py3);
+        g.fillStyle=cg4;g.beginPath();g.arc(px3,py3,pw3,0,7);g.fill();g.restore(); }
       g.lineCap='round';
       for(let i=0;i<10;i++){ const cx2=W*(0.04+r()*0.92), cy3=groundY(0.4+r()*0.5), ch2=10+r()*14;
         g.strokeStyle=['rgba(235,120,110,0.85)','rgba(240,170,90,0.85)','rgba(210,90,150,0.85)'][i%3]; g.lineWidth=2.4;
