@@ -66,6 +66,17 @@
 ##     Seeds veteran save {me,tut:1,rn:GAME_VERSION} → boots the live UI, no intro/release popups.
 ##   ★ CF-v17-GOLD-PROOFS.zip DELIVERED to Nick: 58 PNGs, 7 folders (earth-creatures/flora/procedural/
 ##     celestial/materials-gear-ships/vistas/UI) + README mapping every change. All 41 sheets rendered 0-fail.
+## ★ 2026-07-25 ROUND-3 ITERATION (Nick's review feedback, all committed → 5464498, battery green):
+##   THE ENGRAVE = the texture SOLUTION: skin layers hold GREYSCALE RELIEF (white raise / black carve)
+##   composited with globalCompositeOperation OVERLAY → detail modulates the hide's own painted color+light
+##   ('drawn in with the creature'). Rows/seams BOW around the torso (_bow); fur = pure interior flowing coat
+##   (zero protruding fringe); plumage clipped inside the body; crystalline carved + 2 grazing glints. WINGS
+##   shoulder-rooted side view (round 3, Nick: correct direction) + grander sweep. UI v3: HP STACKED under
+##   nameplate (left HUD column: Cadet→HP→Charters), NOTIFICATIONS in the bottom-right corner beside ?/⚙ with
+##   an UPWARD Windows-style tray — uniform desktop/tablet/phone (phone: bell above the ? bookend). ⚠ LESSON:
+##   syncTopbarH measured row1 from the BELL — moving the bell to the bottom made --row1-h = viewport height
+##   and threw every right panel off-screen (layout gate caught it); now measured from SEARCH. Charters spot
+##   still undecided by Nick (left column for now).
 ##   ▶ AWAITING NICK'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
 ##     (rig param) · red-panda tail rings · dart-frog contrast at card size · settings-panel anchor could sit
 ##     closer to the dock ⚙ on desktop (cosmetic) · desktop caption-vs-hint overlap at boot (pre-existing,
