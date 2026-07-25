@@ -98,8 +98,10 @@
   /* v1.7 THE SHELF (Nick 2026-07-25): one-row topbar on desktop — rank · HP ·
      search · bell inline; --topbar-h shrinks and the whole UI gains a row.
      Phones re-stack HP below (their media block). */
-  #searchwrap{order:4;margin-left:auto} #bellwrap{order:5}
-  #hpwrap{order:3;flex:0 1 230px;min-width:150px;margin-top:0;margin-left:10px}
+  /* UI v3 (Nick): the LEFT HUD column reads top-down — nameplate, HP stacked
+     beneath it, charters below. Search rides the right of row 1. */
+  #searchwrap{order:4;margin-left:auto}
+  #hpwrap{order:6;flex:1 1 100%;width:100%;margin-top:6px;justify-content:flex-start}
   #trail{order:6;flex:1 1 100%;width:100%;justify-content:flex-start}
   #hud-center #rank{pointer-events:auto}
   #hud-center #trail{font-size:13px;letter-spacing:.07em}
@@ -243,7 +245,13 @@
   body.fs-xl #setpanel .srow,body.fs-xl #setpanel .opts .fsopt{font-size:14px}
 
   /* ---- notification bell & tray ---- */
-  #bellwrap{position:relative}
+  /* UI v3 (Nick): notifications live in the BOTTOM-RIGHT corner — where toasts
+     already land — beside ? and ⚙; the tray rises Windows-style above it.
+     Desktop corner row: bell · ? · ⚙. Phones: bell rides above the ? bookend. */
+  #bellwrap{position:fixed;right:100px;bottom:16px;z-index:14}
+  @media (max-width:700px){
+    #bellwrap{right:10px;bottom:calc(58px + env(safe-area-inset-bottom,0px))}
+  }
   #bell{position:relative;font-size:14px;line-height:1;cursor:pointer;padding:6px 9px;border-radius:999px;
     background:var(--glass);border:1px solid var(--glass-brd);
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:border-color .15s}
@@ -251,7 +259,7 @@
   #bellct{position:absolute;top:-4px;right:-4px;min-width:15px;height:15px;border-radius:99px;display:none;
     background:#ff5a4a;color:#fff;font:700 9px/15px var(--ui);text-align:center;padding:0 3px;
     box-shadow:0 0 8px rgba(255,90,74,0.6)}
-  #tray{position:absolute;top:38px;right:0;width:310px;max-height:66vh;overflow-y:auto;display:none;z-index:40;
+  #tray{position:fixed;top:auto;bottom:56px;right:12px;width:310px;max-height:min(62vh,540px);overflow-y:auto;display:none;z-index:40;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:14px;padding:8px;
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.6)}
   #tray .thead{display:flex;justify-content:space-between;align-items:baseline;padding:3px 6px 8px;
@@ -1426,7 +1434,7 @@
     #hud-right{display:contents}
     #trail{display:none}
     #rank{order:1;margin-right:8px;font-size:10px;padding:4px 9px;max-width:44vw;overflow:hidden;text-overflow:ellipsis}
-    #searchwrap{order:2;flex:1 1 0;min-width:56px} #bellwrap{order:3;flex:0 0 auto}
+    #searchwrap{order:2;flex:1 1 0;min-width:56px}
     #hpwrap{order:4;flex:1 1 100%;width:100%;max-width:none;justify-content:flex-start;margin-top:6px}
     #searchin{width:100%;min-width:0;font-size:12px}
     #searchres{width:min(290px,calc(100vw - 20px))}
@@ -1458,7 +1466,7 @@
        the stats folds — sockets stay finger-sized (48px) */
     #sheetcard{grid-template-columns:1fr;grid-template-areas:"doll" "cargo" "stats";padding:10px;gap:10px}
     #sheetstats,#sheetcargo{border-top:1px solid rgba(150,162,210,0.18);padding-top:10px}
-    #tray{width:min(290px,calc(100vw - 20px));right:-6px}
+    #tray{width:min(290px,calc(100vw - 20px));right:8px;bottom:calc(100px + env(safe-area-inset-bottom,0px))}
     #primebox .card,#endingbox .card,#guidebox .card{padding:18px 14px}
     #context{bottom:calc(96px + env(safe-area-inset-bottom,0px));font-size:11.5px}
     #hint{bottom:calc(60px + env(safe-area-inset-bottom,0px))}
@@ -2131,10 +2139,12 @@ function syncTopbarH(){
   const tb=document.getElementById('topbar');
   if(!tb) return;
   document.documentElement.style.setProperty('--topbar-h', tb.offsetHeight+'px');
-  /* the right rail hangs from row 1 (search + bell) rather than the whole bar,
-     so Prime Codex / Compendium / Star Atlas sit directly beneath them */
-  const bw=document.getElementById('bellwrap');
-  if(bw){ const r=bw.getBoundingClientRect();
+  /* the right rail hangs from row 1 rather than the whole bar, so Prime Codex /
+     Compendium / Star Atlas sit directly beneath it. Row 1 is measured from the
+     SEARCH bar (UI v3 moved the bell to the bottom-right corner — measuring the
+     bell would read the viewport bottom and throw every panel off-screen). */
+  const sw=document.getElementById('searchwrap')||document.getElementById('rank');
+  if(sw){ const r=sw.getBoundingClientRect();
     document.documentElement.style.setProperty('--row1-h', Math.max(40,Math.round(r.bottom))+'px'); }
 }
 resize();
@@ -8840,9 +8850,9 @@ function hdBeastBare(G,seed){
       for(const lyr of [0,1]){ const near=lyr===1, dx=near?0:S*0.035, dy=near?0:-S*0.03;
         sg2.globalAlpha=near?0.88:0.5;
         sg2.beginPath(); sg2.moveTo(wroot+dx, wy0+dy);
-        sg2.quadraticCurveTo(S*0.46+dx, baseY-S*0.33+dy, S*0.25+dx, baseY-S*0.20+dy);
+        sg2.quadraticCurveTo(S*0.47+dx, baseY-S*0.36+dy, S*0.22+dx, baseY-S*0.23+dy);
         /* scalloped trailing edge back toward the body (wing fingers) */
-        sg2.quadraticCurveTo(S*0.33+dx, baseY-S*0.115+dy, S*0.38+dx, baseY-S*0.125+dy);
+        sg2.quadraticCurveTo(S*0.31+dx, baseY-S*0.13+dy, S*0.37+dx, baseY-S*0.14+dy);
         sg2.quadraticCurveTo(S*0.46+dx, baseY-S*0.05+dy, wroot+dx, wy0+dy);
         sg2.closePath(); sg2.fill();
         if(four){ sg2.globalAlpha=near?0.75:0.42;   /* the hindwing pair, rooted just behind, lower sweep */
@@ -9192,6 +9202,13 @@ function hdBeastBare(G,seed){
     const topY=Math.min(hips[1]||baseY,shoulders[1]||baseY)-S*0.03, midY=((hips[1]||baseY)+(shoulders[1]||baseY))/2-S*0.02;
     const botY=baseY+S*0.02, bodH=Math.max(S*0.1,botY-topY);
     const _mask=(kg,sk)=>{ kg.globalCompositeOperation='destination-in';kg.drawImage(sil,0,0);g.drawImage(sk,0,0); };
+    /* THE ENGRAVE (Nick 2026-07-25 round 2: texture must be DRAWN IN, not painted
+       on): the layer holds a GREYSCALE relief — white = raise, black = carve —
+       composited with OVERLAY so it modulates the hide's own painted color and
+       shading. Detail inherits the body's light exactly like real engraving. */
+    const _engrave=(kg,sk,al)=>{ kg.globalCompositeOperation='destination-in';kg.drawImage(sil,0,0);
+      g.save(); g.globalCompositeOperation='overlay'; g.globalAlpha=al==null?0.9:al; g.drawImage(sk,0,0); g.restore(); };
+    const _bow=(xx)=>Math.sin(Math.max(0,Math.min(1,(xx-x0)/bw))*Math.PI)*bodH*0.07;   /* rows follow the torso's swell */
     const _layer=()=>{ const sk=document.createElement('canvas');sk.width=sk.height=S;return [sk,sk.getContext('2d')]; };
     /* UNIVERSAL TEXTURE LAW (Nick 2026-07-25): skin detail is TEXTURE IN THE HIDE,
        never ink painted over it — every skin tints from the creature's own base
@@ -9201,32 +9218,39 @@ function hdBeastBare(G,seed){
     const TXlo='rgba('+((_cbT[0]*0.42)|0)+','+((_cbT[1]*0.42)|0)+','+((_cbT[2]*0.42)|0)+',';
     if(skK===0){ const [sk,kg]=_layer();   /* scaled — overlapping scale rows */
       kg.lineWidth=1.3;
-      for(let ry=0;ry<8;ry++){ const yy=topY+ry*bodH*0.13; for(let rx=0;rx<10;rx++){ const xx=x0+rx*bw/9+(ry%2?bw/18:0);
-        if((rx*7+ry*5)%4===0) continue;   /* broken coverage — worn patches, no stencil */
+      for(let ry=0;ry<8;ry++){ for(let rx=0;rx<10;rx++){ const xx=x0+rx*bw/9+(ry%2?bw/18:0);
+        const yy=topY+ry*bodH*0.13 - _bow(xx)*(ry<4?0.5:-0.3);   /* rows wrap the torso's swell */
+        if((rx*7+ry*5)%4===0) continue;
         const jr=bw*(0.042+(((rx*11+ry*3)%5))/520);
-        const ja=0.30+(((rx*31+ry*17)%7)/22);   /* varied depth — no stencil uniformity */
-        kg.strokeStyle=TXlo+ja.toFixed(2)+')';
+        const ja=0.42+(((rx*31+ry*17)%7)/18);
+        kg.strokeStyle='rgba(0,0,0,'+ja.toFixed(2)+')';
         kg.beginPath();kg.arc(xx,yy,jr,0.2,Math.PI-0.2);kg.stroke();
-        kg.strokeStyle=TXhi+(ja*0.5).toFixed(2)+')';
-        kg.beginPath();kg.arc(xx,yy-1,jr,0.35,Math.PI-0.35);kg.stroke(); } } _mask(kg,sk);
+        kg.strokeStyle='rgba(255,255,255,'+(ja*0.72).toFixed(2)+')';
+        kg.beginPath();kg.arc(xx,yy-1,jr,0.35,Math.PI-0.35);kg.stroke(); } } _engrave(kg,sk);
     } else if(skK===2){ const [sk,kg]=_layer();   /* chitinous — hard segment bands + gloss */
       for(let b=0;b<6;b++){ const jb=((b*37)%7)/7; const xx=x0+bw*(0.10+b*0.15+jb*0.035);
-        kg.strokeStyle=TXlo+'0.16)';kg.lineWidth=4.0+jb*1.4;   /* soft seam shadow */
-        kg.beginPath();kg.moveTo(xx,topY);kg.quadraticCurveTo(xx+S*0.008,midY,xx-S*0.004,botY);kg.stroke();
-        kg.strokeStyle=TXlo+'0.42)';kg.lineWidth=1.8;   /* the seam itself */
-        kg.beginPath();kg.moveTo(xx,topY);kg.quadraticCurveTo(xx+S*0.008,midY,xx-S*0.004,botY);kg.stroke(); }
-      const gl=kg.createLinearGradient(0,topY,0,midY);gl.addColorStop(0,'rgba(255,255,255,0.16)');gl.addColorStop(1,'rgba(255,255,255,0)');
-      kg.fillStyle=gl;kg.fillRect(x0,topY,bw,midY-topY); _mask(kg,sk);
+        const bowC=S*0.008+_bow(xx)*0.35;   /* seams wrap the swell */
+        kg.strokeStyle='rgba(0,0,0,0.26)';kg.lineWidth=4.0+jb*1.4;
+        kg.beginPath();kg.moveTo(xx,topY);kg.quadraticCurveTo(xx+bowC,midY,xx-S*0.004,botY);kg.stroke();
+        kg.strokeStyle='rgba(0,0,0,0.60)';kg.lineWidth=1.6;
+        kg.beginPath();kg.moveTo(xx,topY);kg.quadraticCurveTo(xx+bowC,midY,xx-S*0.004,botY);kg.stroke();
+        kg.strokeStyle='rgba(255,255,255,0.30)';kg.lineWidth=1.2;   /* lit segment edge */
+        kg.beginPath();kg.moveTo(xx-2,topY+2);kg.quadraticCurveTo(xx+bowC-2,midY,xx-S*0.004-2,botY-1);kg.stroke(); }
+      const gl=kg.createLinearGradient(0,topY,0,midY);gl.addColorStop(0,'rgba(255,255,255,0.34)');gl.addColorStop(1,'rgba(255,255,255,0)');
+      kg.fillStyle=gl;kg.fillRect(x0,topY,bw,midY-topY); _engrave(kg,sk);
     } else if(skK===4){ const [sk,kg]=_layer();   /* plated — big overlapping armour sections */
-      kg.strokeStyle=TXlo+'0.45)';kg.lineWidth=2.2;kg.fillStyle=TXhi+'0.10)';
       for(const px of [shoulders[0]||cxb+bw*0.22, cxb, hips[0]||cxb-bw*0.22]){
+        const pg2=kg.createLinearGradient(px,midY-bodH*0.42,px,midY+bodH*0.40);
+        pg2.addColorStop(0,'rgba(255,255,255,0.30)'); pg2.addColorStop(0.6,'rgba(128,128,128,0.05)'); pg2.addColorStop(1,'rgba(0,0,0,0.30)');
+        kg.fillStyle=pg2;
         kg.beginPath();kg.ellipse(px,midY-S*0.006,bw*0.16,bodH*0.42,0,0,7);kg.fill();
-        kg.beginPath();kg.ellipse(px,midY-S*0.006,bw*0.16,bodH*0.42,0,Math.PI*1.02,Math.PI*1.98);kg.stroke(); } _mask(kg,sk);
+        kg.strokeStyle='rgba(0,0,0,0.42)';kg.lineWidth=2.0;
+        kg.beginPath();kg.ellipse(px,midY-S*0.006,bw*0.16,bodH*0.42,0,Math.PI*1.02,Math.PI*1.98);kg.stroke(); } _engrave(kg,sk);
     } else if(skK===5){ const [sk,kg]=_layer();   /* warty — scattered raised bumps */
       for(let w=0;w<22;w++){ const wx=x0+((w*61)%100)/100*bw, wy=topY+((w*37)%100)/100*bodH, wr=bw*(0.022+((w*13)%5)/220);
         const bg5=kg.createRadialGradient(wx-wr*0.4,wy-wr*0.4,0,wx,wy,wr*1.5);
-        bg5.addColorStop(0,TXhi+'0.26)'); bg5.addColorStop(0.55,TXlo+'0.10)'); bg5.addColorStop(1,TXlo+'0)');
-        kg.fillStyle=bg5;kg.beginPath();kg.arc(wx,wy,wr*1.5,0,7);kg.fill(); } _mask(kg,sk);
+        bg5.addColorStop(0,'rgba(255,255,255,0.45)'); bg5.addColorStop(0.5,'rgba(128,128,128,0.06)'); bg5.addColorStop(0.85,'rgba(0,0,0,0.28)'); bg5.addColorStop(1,'rgba(0,0,0,0)');
+        kg.fillStyle=bg5;kg.beginPath();kg.arc(wx,wy,wr*1.5,0,7);kg.fill(); } _engrave(kg,sk);
     } else if(skK===3){ const [sk,kg]=_layer();   /* slick & wet — broad specular sheen */
       const gl=kg.createRadialGradient(cxb-bw*0.1,midY-bodH*0.2,2,cxb-bw*0.1,midY-bodH*0.2,bw*0.55);
       gl.addColorStop(0,'rgba(255,255,255,0.42)');gl.addColorStop(0.45,'rgba(255,255,255,0.08)');gl.addColorStop(1,'rgba(255,255,255,0)');
@@ -9248,40 +9272,35 @@ function hdBeastBare(G,seed){
          the hide (Nick 2026-07-25: bright facets read as painted-on): each facet tints
          from the base color, gradient-filled with soft seams; only two hard glints
          keep the mineral sparkle */
-      const cb=G.base||[120,130,160];
-      const hi='rgba('+Math.min(255,(cb[0]*1.35+30)|0)+','+Math.min(255,(cb[1]*1.35+30)|0)+','+Math.min(255,(cb[2]*1.4+40)|0)+',';
-      const lo='rgba('+((cb[0]*0.5)|0)+','+((cb[1]*0.5)|0)+','+((cb[2]*0.55)|0)+',';
       for(let f=0;f<8;f++){ const fx=x0+bw*(0.1+f*0.11), fy=topY+((f*53)%5)*bodH*0.17;
         const gN=kg.createLinearGradient(fx-bw*0.05,fy,fx+bw*0.08,fy+bodH*0.34);
-        gN.addColorStop(0,hi+'0.30)'); gN.addColorStop(0.55,hi+'0.10)'); gN.addColorStop(1,lo+'0.18)');
+        gN.addColorStop(0,'rgba(255,255,255,0.42)'); gN.addColorStop(0.55,'rgba(128,128,128,0.06)'); gN.addColorStop(1,'rgba(0,0,0,0.30)');
         kg.fillStyle=gN;
         kg.beginPath();kg.moveTo(fx,fy);kg.lineTo(fx+bw*0.08,fy+bodH*0.14);kg.lineTo(fx+bw*0.02,fy+bodH*0.34);kg.lineTo(fx-bw*0.05,fy+bodH*0.2);kg.closePath();kg.fill();
-        kg.strokeStyle=lo+'0.25)';kg.lineWidth=1;kg.stroke();
-        if(f===2||f===5){ kg.strokeStyle='rgba(245,250,255,0.5)';kg.lineWidth=1.2;
-          kg.beginPath();kg.moveTo(fx,fy);kg.lineTo(fx+bw*0.08,fy+bodH*0.14);kg.stroke(); }
-      } _mask(kg,sk);
+        kg.strokeStyle='rgba(0,0,0,0.22)';kg.lineWidth=1;kg.stroke();
+      } _engrave(kg,sk);
+      g.save();g.globalAlpha=0.4;g.strokeStyle='rgba(245,250,255,0.9)';g.lineWidth=1.1;g.lineCap='round';   /* two grazing glints, the mineral tell */
+      for(const f of [2,5]){ const fx=x0+bw*(0.1+f*0.11), fy=topY+((f*53)%5)*bodH*0.17;
+        g.beginPath();g.moveTo(fx,fy);g.lineTo(fx+bw*0.08,fy+bodH*0.14);g.stroke(); }
+      g.restore();
     } else if(skK===1){ /* furred (Nick 2026-07-25: outline quills read as painted-on) —
          the fur now lives IN the coat: a masked interior underfur texture carries
          most of it; the outline keeps only a soft, sparse, shorter fringe */
-      const fc='rgba('+((G.base2||G.base||[120,110,95]).join(','))+',';
-      { const [skF,kgF]=_layer();   /* interior underfur — soft directional strokes, clipped to the body */
-        kgF.strokeStyle=fc+'0.22)';kgF.lineCap='round';kgF.lineWidth=1.1;
-        for(let f=0;f<64;f++){ const fx=x0+((f*61)%100)/100*bw, fy=topY+((f*37)%100)/100*bodH;
-          const a=1.1+((f*13)%10)/22, ln=S*(0.013+((f*29)%7)/900);
+      { const [skF,kgF]=_layer();   /* the coat lives INSIDE the body: flowing engraved
+           strokes that follow the torso and inherit its painted shading — nothing
+           protrudes, nothing sits on top */
+        kgF.lineCap='round';
+        for(let f=0;f<110;f++){ const fx=x0+((f*61)%100)/100*bw, fy=topY+((f*37)%100)/100*bodH;
+          const flow=0.95+Math.sin(((fx-x0)/bw)*3.14)*0.35+((f*13)%10)/40;   /* strands flow along the body, drooping at the flanks */
+          const ln=S*(0.012+((f*29)%7)/850), dk=(f*7)%3!==0;
+          kgF.strokeStyle=dk?'rgba(0,0,0,'+(0.30+((f*11)%5)/25).toFixed(2)+')':'rgba(255,255,255,'+(0.26+((f*17)%5)/30).toFixed(2)+')';
+          kgF.lineWidth=0.9+((f*3)%3)*0.25;
           kgF.beginPath();kgF.moveTo(fx,fy);
-          kgF.quadraticCurveTo(fx+Math.cos(a)*ln*0.6,fy+Math.sin(a)*ln*0.6,fx+Math.cos(a)*ln,fy+Math.sin(a)*ln);kgF.stroke(); }
-        _mask(kgF,skF); }
-      g.save();g.lineCap='round';
-      g.strokeStyle=fc+'0.42)';g.lineWidth=1.0;                                  // sparse soft fringe, lower edge only
-      for(let f=0;f<48;f++){ const t=f/47, ex=x0+bw*t, ey=botY-S*0.008+Math.sin(t*3.14)*S*0.02;
-        const a=1.15+((f*47)%14-7)/16 + (f%3)*0.1, ln=S*(0.008+((f*29)%8)/1400);
-        g.beginPath();g.moveTo(ex,ey);g.quadraticCurveTo(ex+Math.cos(a)*ln*0.6,ey+Math.sin(a)*ln*0.6,ex+Math.cos(a)*ln,ey+Math.sin(a)*ln+ln*0.35);g.stroke(); }
-      g.strokeStyle=fc+'0.5)';g.lineWidth=1.2;                                   // tufts stay, softer + shorter
-      const tufts=[[shoulders[0]||cxb+bw*0.3,shoulders[1]||midY],[hips[0]||cxb-bw*0.3,hips[1]||midY],[cxb,botY-S*0.006]];
-      for(const tp of tufts){ for(let k=0;k<9;k++){ const a=-2.5+(k/8)*2.0+((k*37)%7-3)/14, ln=S*(0.013+((k*23)%9)/800);
-        g.beginPath();g.moveTo(tp[0]+((k%3)-1)*S*0.009,tp[1]);g.quadraticCurveTo(tp[0]+Math.cos(a)*ln*0.6,tp[1]+Math.sin(a)*ln*0.6,tp[0]+Math.cos(a)*ln,tp[1]+Math.sin(a)*ln);g.stroke(); } }
-      g.restore();
-    } else if(skK===6){ /* feathered — layered overlapping contour feathers pointing back-down + a tail plume */
+          kgF.quadraticCurveTo(fx+Math.cos(flow)*ln*0.6,fy+Math.sin(flow)*ln*0.6,fx+Math.cos(flow)*ln,fy+Math.sin(flow)*ln);kgF.stroke(); }
+        _engrave(kgF,skF,0.85); }
+    } else if(skK===6){ /* feathered — contour feathers CLIPPED INTO the body (nothing
+         sticks in the air); rachis + set jitter keep it plumage, not a stamp grid */
+      const [skP,kgP]=_layer(); const g=kgP;   /* draw the whole plumage into the masked layer */
       g.save();const fb=(G.base||[120,120,120]), fl='rgba('+fb.join(',')+',', fd='rgba('+(fb.map(v=>(v*0.6)|0).join(','))+',';
       for(let row=0;row<4;row++){ const yy=topY+row*bodH*0.19;
         for(let fx2=0;fx2<9;fx2++){ const jf=((fx2*17+row*29)%7);
@@ -9296,6 +9315,7 @@ function hdBeastBare(G,seed){
       for(let p=0;p<6;p++){ const a=2.55+p*0.13; g.save();g.translate(pxr,midY+bodH*0.12);g.rotate(a);
         g.beginPath();g.moveTo(0,0);g.quadraticCurveTo(-S*0.012,S*0.05,0,S*0.115);g.quadraticCurveTo(S*0.012,S*0.05,0,0);g.closePath();g.fill();g.restore(); }
       g.restore();
+      _mask(kgP,skP);
     }
   }
   if(armored){ /* plate seams over the back — hide-tinted (universal texture law) */
