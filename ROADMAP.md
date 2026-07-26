@@ -861,3 +861,51 @@
 
 **History / full batch logs:** see [`ROADMAP_ARCHIVE.md`](ROADMAP_ARCHIVE.md) — every v1.6 batch
 (1–14), the v1.5 charter, and all superseded session-handoff blocks, newest-first.
+## ▶▶▶ 2026-07-26 GO-LIVE — ★★ v1.7.0 "THE FORGE" DEPLOYED LIVE ★★ (Nick's word: "ready for go-live
+##   + 1,000-tester feedback"). Build 4264b2e → https://celestialfrontier.github.io/ via the SELF-
+##   GATING deploy (--release 1.7.0 target-checked; validate+smoke+layout ALL ran and passed inside
+##   the deploy). Source pushed + tag v1.7.0; release archive cut (releases/v1.7.0-4264b2e/: build,
+##   SHA-256, both fingerprints, layout report — dir gitignored). RELEASES[0] "The Forge" notes ship
+##   the whole arc. Bundle-day lessons: (1) the version bump broke 2 smoke checks pinning 'v1.6'
+##   text — version checks are now DYNAMIC via H.GAME_VERSION/H.RELEASES hooks, never re-pin again;
+##   (2) package-lock must bump WITH package.json or npm ci hard-fails.
+##   ★ CI ROOT CAUSE (Nick's "437" = log line ~400): the ONLY failing check across all 3 red runs
+##   was smoke's 'Escape closes the Nameplate menu' — same-tick close assert passed on local Node 26,
+##   failed deterministically on CI Node 22 (jsdom event-timing differs by node major). Fixed: check
+##   allows an async beat (until 1500ms — intent unchanged), CI pinned to Node 26 for LOCAL PARITY,
+##   upload-artifact@v6. Logs were pulled via the git credential-manager token → GitHub API (gh CLI
+##   unauthenticated — this path works for future CI triage).
+##   ▶ IN FLIGHT: 1,000-tester sim (fast 600 + deep 200 + chaos 140 + ui 60) → feedback report to
+##   Nick. THEN: Nick's real-iPhone pass on LIVE v1.7.0 · watch CI run at aeccae8 · post-Forge queue
+##   (§24 knee retune if wanted, instance gear, a11y Navigator, module split, save schema).
+## ▶▶▶ 2026-07-26 POST-RELEASE DESIGN QUEUE — "THE CONNECTION PASS" (v1.7.1 candidate; Nick: queue
+##   it, WAIT FOR MORE FEEDBACK before building). Source: PATH_TO_10_2026-07-26.md ("Path to 10/10",
+##   built on synthetic-campaign data). THESIS ACCEPTED: better CONNECTIONS between existing
+##   systems, not new systems — the creature loop's pieces don't feed each other (XP only flows
+##   from wins → 55/200 deep sims hit creature L3, ONE hit L6; Rancher persona breeds 4,575 times
+##   for the LOWEST fun score 5.18). CAVEAT: the 35.3% no-op rate is persona-inflated (blind
+##   attempts); fix is right anyway. PUSHBACK: training (8.7/10, 300/300) needs nothing now;
+##   "unusual creature in 5 min" must be PRESENTATION not generation (determinism law).
+##   THE SIX (all app-layer, fp-safe, live-save-safe; sequence 1→3 first):
+##   (1) ACTIONABLE DENIALS — every "can't" (breed/feed/duel/craft/land/skim/mine) names what's
+##       missing + where + the best available action now. [their #1; copy + availability checks]
+##   (2) BROADEN CREATURE XP — small awards at existing events (first tame, correct feed, breed,
+##       first-hybrid, conquest-loss survival, scans); target L3 in a first real session; the
+##       486-xp/L9 ceiling already bounds it.
+##   (3) CONQUEST MATCHUP METER — surface the EXISTING winEstimate pre-fight (Favored/Even/
+##       Dangerous/Overwhelming + one factor line); losses pay: partial XP, weakness intel,
+##       suggested preparation.
+##   (4) BREEDING ANTICIPATION — pre-breed hint panel (trait RANGES + rarity odds, NEVER the exact
+##       roll — breeding is deterministic; exact preview kills the reveal) + reveal beat + "new
+##       lineage" presentation.
+##   (5) CREATURE PERSONALITY (display layer) — surface the temperament/behavior/habitat genes the
+##       genomes already carry as card personality lines + earned MILESTONE TITLES ("won a duel at
+##       1 HP") in a new absent-safe save field.
+##   (6) SURVEY SPOTLIGHT — a living world's card highlights its most notable resident (first
+##       "unusual creature" by emphasis, zero generation change).
+##   MEASURE: re-run the 1,000-tester battery after the pass and compare vs the v1.7.0 baseline
+##   (in flight now): no-op rate (→<10%), Rancher fun (5.18→8+), overall fun (5.60→8+), L3
+##   attainment, conquest clarity. ROADMAP-ONLY (not quick pass): family tree/ancestry UI, museum/
+##   housing, faction threats, seasonal regions, audio motifs (→ procedural-audio arc; agree sound
+##   now outranks another art pass), persona routes, midgame/endgame structures.
+##   ▶ HOLDING for Nick's word + more feedback (tester report lands when the run finishes).
