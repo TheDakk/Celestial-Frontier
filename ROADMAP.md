@@ -1040,3 +1040,20 @@
 ##   ▶ THEN: Batch C a11y — BOTH rounds now rank it top (focus management named critical, zero
 ##   aria-live, search keyboard-dead); v1.8 spec absorbs their XP table + next-battery success
 ##   criteria (Rancher 7.5+, no-op <15%, L3 60% of medium creature players, L6 20% of deep).
+## ▶▶▶ 2026-07-26 ★ v1.7.6 "THE REGRESSION ROUND" + v1.7.7 "THE OPEN DOOR" (Nick: proceed 1-4;
+##   decision (c) per recommendation). 1.7.6: all 7 round-2 regressions — describePick null guard
+##   (the per-frame crash), #panel REGISTERED in PANELS/MODAL_SEL w/ training exception + dock-aware
+##   clamp, vista casing rendered at last (.vhn/.vhr spans; ⚠ LESSON: check the CSS at the sink),
+##   _craftNeed full shortfall list, training claims the screen (saved-chip at graduation), toast
+##   yield scoped (≤900 suppress minus the survey card; short desktops get a bottom-LEFT lane —
+##   smoke PROVED suppression eats board-produced feedback), single titles + titles at ALL widths
+##   w/ role=dialog (decision a), aria-disabled need-buttons, hint wraps, contrast to AA, closest-
+##   build CTA (decision c), banked LANDFALL credit + Claim ✓ rows, inline Atlas undo.
+##   1.7.7: BATCH C — canvas keyboard cursor (arrows/Enter-with-credit/±zoom/Escape + per-frame
+##   gold ring), aria-live announcer (toasts/targets/surveys), central focus management (focus-in
+##   on open, restore on close, Tab contained in the 5 modals), keyboard search (listbox + ↑↓ +
+##   Enter), 2px rings everywhere · decision (b) planetfall AUTO-CHARTS + ⛳ Visited filter ·
+##   harness sync CF-SIM-001/002/003 (004 N/A — our rig boots fresh JSDOM per session).
+##   REMAINING Batch-C tail (roadmap): full inert on modal backgrounds · 'Leave this world' button ·
+##   Records journal aria · vista tap-dead-420ms · Reset button placement · notification casing.
+##   ▶ Next fleet re-run will score the a11y persona against 2.5; targets: overlaps ≤85, JS errors 0.
