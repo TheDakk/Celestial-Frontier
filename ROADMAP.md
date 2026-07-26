@@ -222,8 +222,36 @@
 ##   probe-names.json (tools-only, fp-neutral). DEFERRED from review (roadmap): keyboard Navigator +
 ##   full a11y batch · OffscreenCanvas/worker portraits · source split into modules · savegame
 ##   schema/migration pipeline (ties save export/import design).
-##   ▶ AWAITING NICK — iPhone device verify; THEN bundle-time (version bump — validate now enforces
-##   package.json sync — RELEASES notes, gated two-push deploy, final Gold zip + release archive).'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
+## ▶▶▶ 2026-07-25 TWELFTH DIRECTIVE — EXTERNAL RE-REVIEW (CODE_REREVIEW_EXTERNAL_2026-07-25.md;
+##   confirmed ALL 14 prior fixes hold; found 1 NEW security defect + hardening items — Nick:
+##   "another pass"). ALL ADDRESSED (fp MATCH 50/50 · smoke 430/0 w/ 4 new regressions · layout
+##   546/9 · all 3 deploy gates verified):
+##   CF-RR-001 (High, NEW) legacy-thumb XSS — MY OWN legacy mitigation kept saved data:image
+##     strings and both sinks concatenated into src="" — a crafted `…;base64,x" onerror="` broke
+##     out. FIX: strict load validation /^data:image\/(png|jpe?g|webp);base64,[A-Za-z0-9+/=]+$/
+##     (no quote can exist; canvas toDataURL always passes) + esc() at BOTH sinks (belt+braces).
+##   CF-RR-002 save resilience — `{}` where an array belonged THREW mid-load; outer catch dumped
+##     the WHOLE save (fresh boot then SAVES OVER real progress). FIX: _capA moved to top of
+##     loadSave (12 more loops guarded + bx/seen bounded; a bad field loads empty, rest survives)
+##     + LAST-KNOWN-GOOD BACKUP (raw stashed to SAVE_KEY_bak after every proven-good load;
+##     corrupt primary restores from it with a 🛟 toast; reset clears both; loadSaveWithRecovery
+##     exported 3-site). CF-RR-006 portrait cache DEVICE-TIERED (phone 96 / desktop 256) + pagehide
+##     flush. CF-RR-007 prefers-reduced-transparency kills backdrop-filter (OS opt-in only — glass
+##     stays default). CF-RR-003/process: deploy REQUIRES --release X.Y.Z matching GAME_VERSION+
+##     package.json; --skip-gate needs CF_EMERGENCY_DEPLOY=I_ACCEPT_UNTESTED_RELEASE. CI ADDED
+##     (.github/workflows/test.yml: npm ci + full battery + rarity-sanity + deadcode on push/PR;
+##     uilayout browser now resolvable via CF_BROWSER/linux chrome paths). FONT-LICENSES.md (OFL).
+##     _cbT dead const removed. ⚠ LESSON: a "keep legacy data" mitigation is itself an INPUT PATH —
+##     validate what you keep. ⚠ LESSON 2: module-scoped fns need the 3-site export (API banner +
+##     freeze + destructure) — ReferenceError caught by validate's jsdom boot.
+##   ⚖ NICK DECISION (CF-RR-004): legit lineage ceiling ≈6,592 Power (200-cap brood/fed) vs
+##     titan-range power — is that the intended endgame ceiling? FOLD INTO §24 POWER-CURVE pass.
+##   DEFERRED (unchanged): instance-based gear (§5, pre-loot-depth) · adaptive/dirty-frame render ·
+##     module split · Object Navigator + a11y batch · seeded action-RNG (anti-save-scum, design) ·
+##     per-section save schema/migration (ties export/import).
+##   ▶ AWAITING NICK — iPhone device verify + the §24/lineage-ceiling call; THEN bundle-time
+##   (bump GAME_VERSION+package.json to 1.7.0, RELEASES notes, `node tools/deploy.js --release
+##   1.7.0` [self-gating], push source, final Gold zip + release archive).'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
 ##     (rig param) · red-panda tail rings · dart-frog contrast at card size · settings-panel anchor could sit
 ##     closer to the dock ⚙ on desktop (cosmetic) · desktop caption-vs-hint overlap at boot (pre-existing,
 ##     cosmetic). THEN: bundle-time items (RELEASES notes, GAME_VERSION bump on Nick's word, deploy site+

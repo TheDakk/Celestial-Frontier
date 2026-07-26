@@ -19,7 +19,17 @@ const fs = require('fs');
 const path = require('path');
 const { spawn } = require('child_process');
 const root = path.join(__dirname, '..');
-const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
+/* browser resolution (CI portability): CF_BROWSER env wins; else the local
+   Windows Edge; else common Linux/macOS Chrome/Chromium install paths */
+const EDGE = process.env.CF_BROWSER || [
+  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+  'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
+  '/usr/bin/google-chrome',
+  '/usr/bin/chromium-browser',
+  '/usr/bin/chromium',
+  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+].find((p) => { try { return fs.existsSync(p); } catch (_) { return false; } }) ||
+  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const _urlArg = process.argv.find((a) => a.startsWith('--url='));
 const GAME = _urlArg ? _urlArg.slice(6) : 'file:///' + path.join(root, 'celestial-frontier.html').replace(/\\/g, '/');
 const _vpArg = process.argv.find((a) => a.startsWith('--vp='));

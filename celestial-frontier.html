@@ -1756,6 +1756,13 @@
     /* the dodged training card clears the caption + corner utilities */
     #tutbox.dodge{bottom:100px}
   }
+  /* CF-RR-007: users (or their OS battery saver) asking for reduced transparency
+     get flat panels — backdrop blur is the single costliest compositing effect
+     on mobile GPUs. Purely opt-in via the OS setting; the glass look is default. */
+  @media (prefers-reduced-transparency: reduce){
+    *{backdrop-filter:none !important;-webkit-backdrop-filter:none !important}
+    :root{--glass:rgba(7,9,18,0.94)}
+  }
 </style>
 </head>
 <body>
@@ -4258,6 +4265,14 @@ var HD_PORTRAITS=true;   /* HD is always on (v1.3 ship decision) */
    ================================================================ */
 const SpeciesArt=(()=>{
 const speciesArtCache=new Map();
+/* CF-RR-006: the cache budget follows the DEVICE — phones (the heat mandate)
+   hold 96 portraits (~28MB encoded worst case), everything larger holds 256.
+   pagehide flushes it: the tab may be resurrected from bfcache under memory
+   pressure, and portraits rebuild from seed on demand anyway. */
+function _artCacheCap(){
+  try{ return (typeof matchMedia==='function' && matchMedia('(max-width: 700px)').matches)?96:256; }catch(_){ return 256; }
+}
+try{ window.addEventListener('pagehide', ()=>{ try{ speciesArtCache.clear(); }catch(_){ } }); }catch(_){ }
 function speciesPortrait(g){
   /* HD is the game (ship decision): every kingdom renders painterly.
      The classic SVG anatomy + stagecraft pass were deleted as dead code
@@ -4272,7 +4287,7 @@ function speciesPortrait(g){
   const url=g.kingdom==='fauna'?hdPortraitFauna(g)
     :(g.kingdom==='flora'?hdPortraitFlora(g)
     :(g.kingdom==='fungi'?hdPortraitFungi(g):hdPortraitMicrobe(g)));
-  if(speciesArtCache.size>=256){ const k=speciesArtCache.keys().next().value; speciesArtCache.delete(k); }
+  if(speciesArtCache.size>=_artCacheCap()){ const k=speciesArtCache.keys().next().value; speciesArtCache.delete(k); }
   speciesArtCache.set(key,url);
   return url;
 }
@@ -9278,9 +9293,8 @@ function hdBeastBare(G,seed){
     const _bow=(xx)=>Math.sin(Math.max(0,Math.min(1,(xx-x0)/bw))*Math.PI)*bodH*0.07;   /* rows follow the torso's swell */
     const _layer=()=>{ const sk=document.createElement('canvas');sk.width=sk.height=S;return [sk,sk.getContext('2d')]; };
     /* UNIVERSAL TEXTURE LAW (Nick 2026-07-25): skin detail is TEXTURE IN THE HIDE,
-       never ink painted over it — every skin tints from the creature's own base
-       (TXlo = its shadow, TXhi = its sheen), soft edges, varied alpha */
-    const _cbT=G.base||[120,110,95];
+       never ink painted over it — every skin tints from the creature's own base,
+       soft edges, varied alpha (THE ENGRAVE owns the implementation now) */
     if(skK===0){ const [sk,kg]=_layer();   /* scaled — overlapping scale rows */
       kg.lineWidth=1.3;
       /* FULL-CANVAS field (Nick round 4): the pattern covers everything the
@@ -13761,7 +13775,9 @@ function renderLog(){
   for(const it of items){
     const isHome=it.id===homeId;
     const _tu=atlasThumb(it);
-    const th = _tu ? '<img class="t'+(it.sq?' sq':'')+'" src="'+_tu+'" alt="">' : '<span class="t"></span>';
+    /* CF-RR-001: esc() the src — thumbs can be legacy SAVE strings, and a quote
+       in one used to break out of the attribute into live markup */
+    const th = _tu ? '<img class="t'+(it.sq?' sq':'')+'" src="'+esc(_tu)+'" alt="">' : '<span class="t"></span>';
     /* badges wear the card language: life green, civilization violet, signals lavender */
     const _bc={Life:'#7fe6a0',Biosphere:'#7fe6a0',Signal:'#cdbcff',Civilized:'#d6a0ff',Advanced:'#d6a0ff'}[it.badge];
     /* verify-pass: ESCAPE AT THE SINK — whatever future path writes a logMap
@@ -15418,7 +15434,7 @@ function onSpeciesStored(entry){
 /* ================================================================
    @module SaveSystem [app] — debounced save, hardened load, reset & wipe (cfcc_save_v2)
    Deps: player-state, atlas, compendium, bootstrap, player, settings, audio, notify, naming-ui, economy, events, prime, guide, Rand, ui-dom, progression, ui-stats, newgame
-   API:  queueSave, wipeSaveAndReload, loadSave, SAVE_KEY, readLegacySave, legacyFarewell
+   API:  queueSave, wipeSaveAndReload, loadSave, loadSaveWithRecovery, SAVE_KEY, readLegacySave, legacyFarewell
    ================================================================ */
 const SaveSystem=(()=>{
 /* ---- save / load (local only — the universe needs no saving, it's math) ---- */
@@ -15552,8 +15568,13 @@ function loadSave(){
     /* a tampered or corrupted save must never inject markup or poison the numbers:
        names are re-sanitized and every counter is coerced to a finite number */
     const num=(v,d)=>{ const x=+v; return Number.isFinite(x)?x:(d||0); };
+    /* CF-RR-002: EVERY collection iterates through this guard — `{}` where an
+       array belongs used to THROW here, and the outer catch then discarded the
+       ENTIRE save (a fresh boot over real progress). A bad field now just
+       loads empty; the rest of the save survives. */
+    const _capA=(a,n)=>Array.isArray(a)?a.slice(0,n):[];
     EPOCH_BASE=num(data.epoch); COSMIC_EPOCH=EPOCH_BASE;
-    for(const kv of (data.names||[])){
+    for(const kv of _capA(data.names,5000)){
       if(kv && typeof kv[0]==='string'){ const nm=cleanName(kv[1]); if(nm) customNames.set(kv[0], nm); }
     }
     stats.shares=num(data.shares); stats.jumps=num(data.jumps);
@@ -15570,7 +15591,7 @@ function loadSave(){
        away player still gets exactly one ready harvest per world; a mass edit
        gets the same (one cycle), not an infinite empire-wide payout. */
     const _hvFloor=Math.max(0, _atL-HARVEST_CD);
-    for(const kv of (data.conq||[])){
+    for(const kv of _capA(data.conq,20000)){
       if(!kv || kv[0]==null || !kv[1]) continue;
       conquered.set(kv[0], {t:clamp(num(kv[1].t), _hvFloor, _nowL), tier:clamp(num(kv[1].tier), 0, TIER_MAX)});
     }
@@ -15579,14 +15600,14 @@ function loadSave(){
     stats.harvests=num(data.harvests); stats.essenceEarned=num(data.essenceEarned);
     stats.guardians=num(data.guardians);
     stats.paragons=num(data.paragons);
-    for(const s of (data.setsc||[])) if(BINDER_SETS.some(x=>x.id===s)) claimedSets.add(s);
-    for(const kv of (data.cargo||[])){ if(kv && MATERIALS[kv[0]]) cargo.set(kv[0], clamp(num(kv[1]), 0, 1e6)); }
+    for(const s of _capA(data.setsc,200)) if(BINDER_SETS.some(x=>x.id===s)) claimedSets.add(s);
+    for(const kv of _capA(data.cargo,200)){ if(kv && MATERIALS[kv[0]]) cargo.set(kv[0], clamp(num(kv[1]), 0, 1e6)); }
     /* §5: exceptional sub-counts — absent ⇒ none (safe additive default);
        clamped to the held quantity so a crafted save can never mint grade */
-    for(const kv of (data.cgx||[])){ if(kv && MATERIALS[kv[0]]) cgx.set(kv[0], clamp(num(kv[1]), 0, cargo.get(kv[0])||0)); }
+    for(const kv of _capA(data.cgx,200)){ if(kv && MATERIALS[kv[0]]) cgx.set(kv[0], clamp(num(kv[1]), 0, cargo.get(kv[0])||0)); }
     if(typeof data.pin==='string' && ITEM_BY.has(data.pin)) pinnedRecipe=data.pin;   /* pinned recipe — absent/unknown ⇒ none */
     if(data.ctb==='mat'||data.ctb==='craft'||data.ctb==='gear') cargoTab=data.ctb;   /* sticky hold tab (QoL o) */
-    if(Array.isArray(data.seen)) for(const id of data.seen){ if(typeof id==='string') seenSp.add(id.slice(0,24)); }   /* new-dots (QoL j); absent field backfills after the codex loads */
+    if(Array.isArray(data.seen)) for(const id of data.seen.slice(0,3000)){ if(typeof id==='string') seenSp.add(id.slice(0,24)); }   /* new-dots (QoL j); absent field backfills after the codex loads */
     /* journal: strings clamped, count capped — absent ⇒ empty */
     if(Array.isArray(data.jrn)) for(const j of data.jrn.slice(-24)){
       if(j && j.n) journal.push({s:num(j.s)|0, n:String(j.n).slice(0,28), w:String(j.w||'').slice(0,16), t:clamp(num(j.t),0,4102444800000)});
@@ -15613,14 +15634,14 @@ function loadSave(){
     } else {
       for(const k of mined.keys()) mineX.set(k, 1);
     }
-    if(Array.isArray(data.bx)) for(const kv of data.bx){   /* v1.6 Biosphere Yield: attempts used + epoch stamp */
+    if(Array.isArray(data.bx)) for(const kv of data.bx.slice(0,60000)){   /* v1.6 Biosphere Yield: attempts used + epoch stamp */
       if(kv && kv[0]!=null && Array.isArray(kv[1])) bioX.set(num(kv[0]), [clamp(num(kv[1][0]),0,999)|0, clamp(num(kv[1][1]),0,1e9)|0]);
     }
-    for(const t of (data.tech||[])) if(TECHS.some(x=>x.id===t)) techOwned.add(t);
+    for(const t of _capA(data.tech,100)) if(TECHS.some(x=>x.id===t)) techOwned.add(t);
     stats.mines=num(data.mines);
     /* v1.4 Fabricator: crafted items + equipped gear. Absent ⇒ empty bench
        (veterans start crafting from zero like everyone; nothing re-hides). */
-    for(const kv of (data.items||[])){ if(kv && ITEM_BY.has(kv[0])) items.set(kv[0], clamp(num(kv[1]), 0, 999)|0); }
+    for(const kv of _capA(data.items,300)){ if(kv && ITEM_BY.has(kv[0])) items.set(kv[0], clamp(num(kv[1]), 0, 999)|0); }
     if(data.eq && typeof data.eq==='object'){
       for(const s of EQ_SLOTS){
         const id=data.eq[s.id];
@@ -15687,14 +15708,14 @@ function loadSave(){
     applyHd();
     /* review catch: coerce/clamp restored notifs the same way pushNotif does —
        the load path was the one that trusted raw save text into the tray */
-    for(const n of (data.notifs||[])){ if(n && n.tt!=null && notifications.length<60)
+    for(const n of _capA(data.notifs,60)){ if(n && n.tt!=null && notifications.length<60)
       notifications.push({id:num(n.id)|0, tt:String(n.tt).slice(0,200), ms:String(n.ms==null?'':n.ms).slice(0,400), t:clamp(num(n.t),0,4e12)||Date.now(), read:!!n.read}); }
     for(const n of notifications){ if(n.id>=_notifSeq) _notifSeq=n.id+1; }
     renderBell();
     /* CF-CR-009: every externally-sourced array is bounded on LOAD, not just on
        save — a crafted multi-megabyte save must not buy slow boots or memory.
-       Caps are generous multiples of what legitimate play can write. */
-    const _capA=(a,n)=>Array.isArray(a)?a.slice(0,n):[];
+       Caps are generous multiples of what legitimate play can write.
+       (_capA itself is declared at the top of loadSave — CF-RR-002.) */
     for(const s of _capA(data.surveyed,60000)) surveyedSet.add(s);
     stats.surveys=surveyedSet.size;
     for(const s of _capA(data.gals,20000)) galSeen.add(s);
@@ -15707,7 +15728,7 @@ function loadSave(){
     for(const a of _capA(data.ach,ACH.length+50)) unlocked.add(a);
     /* CF-CR-001/008: the origin text and travel target are external data — strip
        markup from the name, run the location through the shared view sanitizer */
-    for(const e of (data.codex||[]).slice(0,1500)){ const _sg=e && e.g && _sanitizeSavedGenome(e.g);
+    for(const e of _capA(data.codex,1500)){ const _sg=e && e.g && _sanitizeSavedGenome(e.g);
       if(_sg) _storeSpecies(_sg, String(e.f||'').replace(/[<>&"']/g,'').slice(0,48)||null, _sanitizeView(e.w)||null, true); }
     /* review fix (veteran migration): a pre-v1.7 save has no `seen` field —
        without a backfill every long-catalogued species wears the blue new-dot
@@ -15719,14 +15740,14 @@ function loadSave(){
     scoutId=(typeof data.scout==='string' && codex.has(data.scout)) ? data.scout : null;
     stats.landings=num(data.landings);
     stats.charters=num(data.charters);
-    for(const s of (data.chs||[])) if(CHARTER_STARTERS.some(c=>c.id===s)) chDone.add(s);
+    for(const s of _capA(data.chs,500)) if(CHARTER_STARTERS.some(c=>c.id===s)) chDone.add(s);
     chWeek=num(data.chw,-1);
     if(data.chp && typeof data.chp==='object'){
       for(const k in data.chp){ const v=+data.chp[k]; if(typeof k==='string' && k.length<24 && Number.isFinite(v) && v>=0) chProg[k]=Math.min(v|0, 999); }
     }
     /* v1.5.2 accept-to-activate: absent ⇒ nothing accepted (safe — the
        board offers its chains fresh); ids validated against both decks */
-    for(const s of (data.chacc||[])) if(typeof s==='string' && !chDone.has(s) && (CHARTER_STARTERS.some(c=>c.id===s)||CHARTER_POOL.some(c=>c.id===s))) chacc.add(s);
+    for(const s of _capA(data.chacc,50)) if(typeof s==='string' && !chDone.has(s) && (CHARTER_STARTERS.some(c=>c.id===s)||CHARTER_POOL.some(c=>c.id===s))) chacc.add(s);
     /* review fix (load hardening, CLAUDE.md rule 5): rebuild each Atlas entry
        with COERCED fields only — a crafted save must not carry markup or
        non-string ids into renderLog's innerHTML sinks */
@@ -15750,11 +15771,16 @@ function loadSave(){
       const _id=_cs(it.id,24);
       if(!_id) continue;   /* verify-pass: an all-stripped id must not mint an empty-string key */
       logMap.set(_id, { id:_id, title:_cs(it.title,60)||'Charted place', sub:_cs(it.sub,120),
-        thumb:(typeof it.thumb==='string'&&/^data:image/.test(it.thumb))?it.thumb:null, sq:!!it.sq,
+        /* CF-RR-001: a restored thumb must be PURE base64 image data — the old
+           prefix-only test admitted `data:image/png;base64,x" onerror="…` which
+           broke out of the img src attribute. Strict charset ⇒ no quotes, no
+           breakout; canvas toDataURL output (every legit legacy thumb) passes. */
+        thumb:(typeof it.thumb==='string' && it.thumb.length<300000 &&
+               /^data:image\/(png|jpe?g|webp);base64,[A-Za-z0-9+/=]+$/.test(it.thumb))?it.thumb:null, sq:!!it.sq,
         badge:_cs(it.badge,18), where:_cw(it.where), fav:!!it.fav, t:clamp(num(it.t),0,4102444800000) });
     } }
     { const _h=_cs(data.home,24); homeId=(_h && logMap.has(_h))?_h:null; }   /* verify-pass: home resolves via the SAME coercion as the keys */
-    for(const s of (data.land||[])){ const n=+s; if(Number.isFinite(n)) landed.add(n); }
+    for(const s of _capA(data.land,60000)){ const n=+s; if(Number.isFinite(n)) landed.add(n); }
     for(const s of _capA(data.cont,4000)){ const n=+s; if(Number.isFinite(n)) contacted.add(n); }   /* CF-CR-009: mirrors the save-side slice(-4000) */
     /* the descent's pity ramp (v1.3.5): wave-off progress survives a
        reload — losing 5 climbs on a 10% world to a refresh would be
@@ -15790,8 +15816,29 @@ function loadSave(){
     logCountEl.textContent=logMap.size;
     codexCountEl.textContent=codex.size;
     _loading=false;
+    /* CF-RR-002: this raw string just proved it loads — stash it as the
+       last-known-good. If a future write is truncated or corrupted, the next
+       boot restores from here instead of silently starting a fresh expedition
+       (which would then SAVE over the real progress). Thumbs no longer ride
+       the save, so the copy is small. */
+    try{ localStorage.setItem(SAVE_KEY+'_bak', raw); }catch(_){ }
     return true;
   }catch(_){ _loading=false; }
+  return false;
+}
+/* CF-RR-002 recovery: if the primary save is corrupt (parse/shape failure), a
+   backup that previously booted clean takes its place — once, loudly. */
+function loadSaveWithRecovery(){
+  if(loadSave()) return true;
+  try{
+    if(!localStorage.getItem(SAVE_KEY)) return false;   /* genuinely fresh — nothing to recover */
+    const bak=localStorage.getItem(SAVE_KEY+'_bak'); if(!bak) return false;
+    localStorage.setItem(SAVE_KEY, bak);
+    if(loadSave()){
+      try{ toast('🛟 Save Recovered', 'Your save data was damaged — the last good copy from a previous session was restored.'); }catch(_){ }
+      return true;
+    }
+  }catch(_){ }
   return false;
 }
 function resetMemoryState(){
@@ -15844,6 +15891,7 @@ function wipeSaveAndReload(){
   try{ tutAbort(); }catch(_){}
 
   try{ localStorage.removeItem(SAVE_KEY); }catch(_){}
+  try{ localStorage.removeItem(SAVE_KEY+'_bak'); }catch(_){}   /* CF-RR-002: a reset must not resurrect via the backup */
   resetMemoryState();                 /* clear every container of live progress */
   /* drop any shared-link hash without depending on a full page navigation */
   try{ if(location.hash) history.replaceState(null,'',location.href.split('#')[0]); }catch(_){}
@@ -15872,9 +15920,9 @@ function wipeSaveAndReload(){
 window.addEventListener('beforeunload', doSave);
 window.addEventListener('pageshow', e=>{ if(e && e.persisted) location.reload(); });
 document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') doSave(); });
-return Object.freeze({queueSave, wipeSaveAndReload, loadSave, SAVE_KEY, readLegacySave, legacyFarewell});
+return Object.freeze({queueSave, wipeSaveAndReload, loadSave, loadSaveWithRecovery, SAVE_KEY, readLegacySave, legacyFarewell});
 })();
-const {queueSave, wipeSaveAndReload, loadSave, SAVE_KEY, readLegacySave, legacyFarewell}=SaveSystem;
+const {queueSave, wipeSaveAndReload, loadSave, loadSaveWithRecovery, SAVE_KEY, readLegacySave, legacyFarewell}=SaveSystem;
 /* @end SaveSystem */
 
 /* ---- share codes: a pointer into the one shared universe ----
@@ -16037,7 +16085,7 @@ function runSearch(qRaw){
     /* CF-CR-001: names/origins flow from SAVED data — escape at the sink like
        every other panel (a crafted save's <img onerror> ran here otherwise) */
     searchRes.innerHTML=_srOut.map((o,i)=>'<div class="sr" data-sri="'+i+'">'+
-      (o.thumb?'<img src="'+o.thumb+'" alt="">':'<img alt="">')+
+      (o.thumb?'<img src="'+esc(o.thumb)+'" alt="">':'<img alt="">')+
       '<div class="m"><div class="nm">'+esc(o.nm)+'</div><div class="ds">'+esc(o.ds)+'</div></div></div>').join('');
   }
   searchRes.style.display='block';
@@ -23734,7 +23782,7 @@ function showFarewell(fw){
 
 /* ---- boot: restore your expedition, honor a shared link ---- */
 readLegacySave();   /* v1.5 fresh start — one read of the old key, then gone */
-const _hadSave=loadSave();
+const _hadSave=loadSaveWithRecovery();
 try{ const _fw=legacyFarewell(); if(_fw) showFarewell(_fw); }catch(_){}
 if(!explorerName || explorerName==='Explorer') askExplorerName(true);
 renderRank();

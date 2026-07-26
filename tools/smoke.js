@@ -1638,6 +1638,46 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       && dsH.motionMode === 1 && Math.abs(dsH.sfxVol - 0.4) < 1e-9);
     check('deep-space resume: boots clean', ds.errors.length === 0, ds.errors.slice(0, 2).join(' | '));
     ds.w.close();
+
+    // ===== CF-RR re-review regressions (2026-07-25 second external pass) =====
+    // CF-RR-001: a crafted Atlas thumbnail must neither survive load validation
+    // nor break out of the img src attribute at any sink
+    const xs = boot((win) => { try { win.localStorage.clear();
+      win.localStorage.setItem('cfcc_save_v2', JSON.stringify({ me: 'ThumbTest', tut: 1, rn: '1.6.4',
+        log: [{ id: 'g999x', title: 'Trap Galaxy', sub: 'probe', t: 5,
+          thumb: 'data:image/png;base64,x" onerror="window.__txss=777' }] }));
+    } catch (_) {} });
+    await sleep(900);
+    const xsH = xs.w.__PROBE_HOOK__;
+    const xsEntry = xsH && xsH.logMap && xsH.logMap.get('g999x');
+    check('security: a crafted thumbnail string is REJECTED at load (strict base64 charset)',
+      !!xsEntry && xsEntry.thumb === null);
+    check('security: no injected attribute ever executed from the crafted thumb', !xs.w.__txss);
+    xs.w.close();
+
+    // CF-RR-002: a malformed field ({} where an array belongs) must not discard
+    // the whole save — the valid sections still load
+    const mf = boot((win) => { try { win.localStorage.clear();
+      win.localStorage.setItem('cfcc_save_v2', JSON.stringify({ me: 'Survivor', tut: 1, rn: '1.6.4', essence: 55,
+        cargo: {}, names: {}, codex: {}, tech: {}, chs: {}, land: {}, conq: {}, items: {}, notifs: {} }));
+    } catch (_) {} });
+    await sleep(900);
+    const mfH = mf.w.__PROBE_HOOK__;
+    check('resilience: malformed save fields no longer kill the whole save (valid sections load)',
+      mfH && mfH.essence === 55 && mfH.tutDone === true,   /* tutDone loads LAST — proves loadSave ran to completion past every malformed field */
+      'essence=' + (mfH && mfH.essence) + ' tutDone=' + (mfH && mfH.tutDone));
+    mf.w.close();
+
+    // CF-RR-002 recovery: corrupt primary + good backup → the backup restores
+    const rc = boot((win) => { try { win.localStorage.clear();
+      win.localStorage.setItem('cfcc_save_v2', '{this is not json');
+      win.localStorage.setItem('cfcc_save_v2_bak', JSON.stringify({ me: 'Backup Bill', tut: 1, rn: '1.6.4', essence: 77 }));
+    } catch (_) {} });
+    await sleep(900);
+    const rcH = rc.w.__PROBE_HOOK__;
+    check('resilience: a corrupt save restores from the last-known-good backup',
+      rcH && rcH.essence === 77, 'essence=' + (rcH && rcH.essence));
+    rc.w.close();
   } catch (e) {
     check('smoke script crashed', false, e.stack && e.stack.split('\n').slice(0, 2).join(' '));
   }

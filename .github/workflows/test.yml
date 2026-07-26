@@ -1,0 +1,38 @@
+# CI (external review CF-RR): the same battery deploy.js enforces locally,
+# run on every push/PR so an untested commit can never sneak toward a release.
+name: test-battery
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  battery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: validate (fingerprint + render + invariants)
+        run: node tools/validate.js
+      - name: smoke (jsdom gameplay flows)
+        run: node tools/smoke.js
+      - name: layout (9 viewports)
+        run: node tools/uilayout.js
+      - name: rarity sanity
+        run: node tools/rarity-sanity.js
+      - name: dead code scan
+        run: node tools/deadcode.js
+      - name: archive reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: battery-reports
+          path: |
+            tools/current.json
+            tools/uilayout-report.json
+          if-no-files-found: ignore
