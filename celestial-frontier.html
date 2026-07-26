@@ -1688,8 +1688,14 @@
     width:44px; height:44px; padding:0; border-radius:50%;
     display:flex; align-items:center; justify-content:center; box-sizing:border-box}
   #recbtn .lbl{display:none}
+  /* Nick's call (option 3): captions TEACH, then retire — a recruit's dock
+     names every board; graduation returns the clean bare-icon dock (labels
+     come back if training is restarted from Settings). Prime keeps its count
+     either way (v11 law). */
   #pcdxbtn .lbl,#codexbtn .lbl,#logbtn .lbl,#cargobtn .lbl,#chbtn .lbl{
-    display:block;font-size:7.5px;letter-spacing:.04em;color:var(--dim);line-height:1;margin-top:1px}
+    display:none;font-size:7.5px;letter-spacing:.04em;color:var(--dim);line-height:1;margin-top:1px}
+  body.recruit #pcdxbtn .lbl,body.recruit #codexbtn .lbl,body.recruit #logbtn .lbl,
+  body.recruit #cargobtn .lbl,body.recruit #chbtn .lbl{display:block}
   #pcdxbtn .ico,#codexbtn .ico,#logbtn .ico,#cargobtn .ico,#recbtn .ico,#chbtn .ico{font-size:14px}
   #pcdxbtn .n{font-size:8px;line-height:1}
   /* ROW 1 — the boards, Nick's order: 📜 Charters · 📖 Compendium · ✦ Prime · 🛠 Shipyard · 🗺 Atlas */
@@ -18539,10 +18545,15 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.3';
+const GAME_VERSION='1.7.4';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.4', title:'The Quiet Dock', date:'July 2026', sections:[
+ ['🖱 UI Enhancements', [
+  '🏷 CAPTIONS THAT GRADUATE — the dock names its boards while you&#8217;re in Field Training; complete it and the labels retire, leaving the clean icon dock (they return if you restart training from ⚙ Settings). Prime Codex keeps its count either way.'],
+ ],
+]},
 {v:'1.7.3', title:'The Tablet Tier', date:'July 2026', sections:[
  ['🖱 UI Enhancements', [
   '📐 TABLETS GET THEIR OWN HOME — iPads, Surfaces and everything up to 900px now use the dock-and-sheet layout built for touch: boards open as titled, centered sheets above the dock with the world dimmed behind them, instead of desktop furniture squeezed to phone width.',
@@ -23335,6 +23346,7 @@ function _tutFinish(){
   _tutHook=null; _tutStep=-1; _tutRig=null;
   if(!tutDone){
     tutDone=true;
+    try{ _syncRecruit(); }catch(_){ }
     toast('✦ Welcome to the Frontier', 'Training complete. Fly far, '+(explorerName||'Explorer')+' — the Guide (?) is always at hand.');
     /* the hunt board takes over where training leaves off: five starter
        charters teach the trades in order, each paid on the spot */
@@ -23540,6 +23552,7 @@ setPanel.addEventListener('click', e=>{
     try{ closePanels(); }catch(_){ }
     setPanel.style.display='none';
     tutDone=false;
+    try{ _syncRecruit(); }catch(_){ }
     setTimeout(()=>{ try{ startTutorial(); }catch(_){ } }, 200);
     queueSave();
     return;
@@ -24161,6 +24174,9 @@ function showFarewell(fw){
 /* ---- boot: restore your expedition, honor a shared link ---- */
 readLegacySave();   /* v1.5 fresh start — one read of the old key, then gone */
 const _hadSave=loadSaveWithRecovery();
+/* dock captions (Nick option 3): recruits see named chips; graduates get the clean dock */
+function _syncRecruit(){ try{ document.body.classList.toggle('recruit', !tutDone); }catch(_){ } }
+_syncRecruit();
 try{ const _fw=legacyFarewell(); if(_fw) showFarewell(_fw); }catch(_){}
 if(!explorerName || explorerName==='Explorer') askExplorerName(true);
 renderRank();
