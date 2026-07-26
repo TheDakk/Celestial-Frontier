@@ -17,6 +17,13 @@ if (fs.existsSync(path.join(root, 'main.js')))
   run([t('build.js'), '--template', path.join(root, 'celestial-frontier.html'),
     '--js', path.join(root, 'main.js'), '--out', path.join(root, 'celestial-frontier.html')]);
 run([t('checks.js'), path.join(root, 'celestial-frontier.html')]);
+{ // CF-CR-004: one authoritative version — package.json must agree with GAME_VERSION
+  const html = fs.readFileSync(path.join(root, 'celestial-frontier.html'), 'utf8');
+  const gv = (html.match(/const GAME_VERSION='([^']+)'/) || [])[1];
+  const pv = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).version;
+  if (!gv || gv !== pv) { console.error('FAIL  version consistency — GAME_VERSION ' + gv + ' vs package.json ' + pv); process.exit(1); }
+  console.log('PASS  version consistency — v' + gv + ' (GAME_VERSION = package.json)');
+}
 run([t('rig-audit.js')]);   // class->rig binding gate (v1.6): FAIL on wrong-class collisions
 run([t('coloratlas-check.js')]);   // color atlas (v1.6 §6): pure + deterministic color path
 run([t('biomeprofile-check.js')]);   // biome profiles (v1.6 §F): every live biome covered

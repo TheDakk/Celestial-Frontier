@@ -6,14 +6,29 @@
 // sha, publishes version.json (update watch), then commits and pushes.
 // Clones the site repo automatically if the local copy is missing.
 //
-// Run AFTER tools/validate.js and tools/smoke.js pass.
+// The full test battery (validate + smoke + uilayout) runs FIRST and a
+// failure aborts the deploy — the gate is enforced, not a comment
+// (CF-CR-014). Skip only with --skip-gate (emergencies; think twice).
 //
-// Usage: node tools/deploy.js [path-to-site-repo]
+// Usage: node tools/deploy.js [path-to-site-repo] [--skip-gate]
 'use strict';
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const root = path.join(__dirname, '..');
+
+if (!process.argv.includes('--skip-gate')) {
+  for (const t of ['validate.js', 'smoke.js', 'uilayout.js']) {
+    console.log('deploy gate — running tools/' + t + ' …');
+    try {
+      execFileSync(process.execPath, [path.join(__dirname, t)], { cwd: root, stdio: 'inherit', timeout: 600000 });
+    } catch (e) {
+      console.error('\nDEPLOY ABORTED — tools/' + t + ' failed. Fix it (or --skip-gate for a declared emergency).');
+      process.exit(1);
+    }
+  }
+  console.log('deploy gate — all suites passed.\n');
+}
 const SITE_REPO = 'https://github.com/CelestialFrontier/celestialfrontier.github.io.git';
 const SITE_URL = 'https://celestialfrontier.github.io/';
 const site = process.argv[2] || path.join(root, '..', 'celestialfrontier.github.io');

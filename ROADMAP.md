@@ -192,9 +192,38 @@
 ##   ⚠ LESSON: proof sheets can MASK integration bugs — biome-coverage/vistas-big passed genes the
 ##   game call site didn't; audit the GAME call site, not just the sheet. NOT YET SMOKE-PROBED:
 ##   graduation-restart self-heal (needs a quit-mid-training harness — future smoke work).
-##   ▶ AWAITING NICK — review of menu-map/inventory/CACTI proofs + this review batch; THEN:
-##   bundle-time (version bump kills v1.6.4(dev), RELEASES, two-push deploy, final Gold zip +
-##   release archive) · iPhone device verify (dock feel, sheets, selection highlight, dodge feel).'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
+## ▶▶▶ 2026-07-25 ELEVENTH DIRECTIVE — EXTERNAL CODE REVIEW (CODE_REVIEW_EXTERNAL_2026-07-25.md,
+##   Nick: "fix everything"). 14 findings, 13 verified real, ALL 14 ADDRESSED (gates: fp MATCH 50/50
+##   incl. BOTH fp-sensitive fixes proven identity · smoke 426/0 w/ 9 NEW regression checks ·
+##   layout 546/9 · new version-consistency gate):
+##   CF-CR-001 search-sink XSS → esc() at the sink + codex from/where sanitized on load (from strips
+##     markup ≤48ch; where via _sanitizeView). CF-CR-002 affix resurrection → _clearDeadAffixes on
+##     last-copy destruction (single+bulk salvage); stale affix no longer blocks exceptional forges.
+##   CF-CR-003 320k-power saves → battleStats caps EFFECTIVE brood/fed at 200 (share-code ceiling;
+##     fp-proven identity), load xp clamped 486 (levelOf caps at 9). CF-CR-004 → validate.js now
+##     FAILS if GAME_VERSION ≠ package.json (bump itself stays bundle-time, Nick's word).
+##   CF-CR-005 4.6MB saves → atlasThumb rebuilds EVERY kind (planet/star/galaxy/moon/comet/belt)
+##     from seed; _cw keeps slimGal fields (numbers, not base64); save strips all regenerable thumbs
+##     (legacy galaxy entries w/o gal.seed keep theirs, never blank). CF-CR-006 → portrait cache
+##     1200 FIFO → 256 TRUE LRU (hit re-files; ~356MB worst-case → ~75MB) ⚠ AUDITED INVARIANT
+##     CHANGED deliberately (phone-heat mandate). CF-CR-007 mirror duels 93.5% first-slot → seeded
+##     CASCADED-hash coin (hashInt's h^x collapses for identical/xor-related seeds — the naive coin
+##     measured 100% one-sided!) → 50.1% measured over 5,000 mirrors, fp MATCH (no probe duel ties).
+##   CF-CR-008 prime where → _sanitizeView. CF-CR-009 → all load arrays length-bounded (_capA).
+##   CF-CR-010 → 8192-char cap on CF1/CFB before decode. CF-CR-011 → browser zoom re-enabled
+##     (iOS ignored the lock; canvas gestures preventDefault) + role=dialog/aria-modal on the 5 big
+##     overlays; keyboard Navigator stays deferred (feature build, post-Forge). CF-CR-012 → RAF
+##     STOPS on document.hidden, resumes on visibility. CF-CR-013 → fonts SELF-HOSTED (2 variable
+##     woff2 latin subsets embedded base64, ~93KB; zero third-party requests, offline-proof).
+##   CF-CR-014 → tools/deploy.js RUNS validate+smoke+uilayout and aborts on failure (--skip-gate
+##     escape hatch); package.json test/smoke/layout/deploy scripts added.
+##   ⚠ LESSONS: (1) hashInt(a,b,·) DEGENERATES when a,b are equal/xor-related (opening h^x is
+##   constant) — cascade nested hashInt for pair-keyed coins. (2) smoke's salvageItem hook added to
+##   probe-names.json (tools-only, fp-neutral). DEFERRED from review (roadmap): keyboard Navigator +
+##   full a11y batch · OffscreenCanvas/worker portraits · source split into modules · savegame
+##   schema/migration pipeline (ties save export/import design).
+##   ▶ AWAITING NICK — iPhone device verify; THEN bundle-time (version bump — validate now enforces
+##   package.json sync — RELEASES notes, gated two-push deploy, final Gold zip + release archive).'S REVIEW of the zip. KNOWN DEFERRALS (next pass): eagle hook strength · gerenuk neck
 ##     (rig param) · red-panda tail rings · dart-frog contrast at card size · settings-panel anchor could sit
 ##     closer to the dock ⚙ on desktop (cosmetic) · desktop caption-vs-hint overlap at boot (pre-existing,
 ##     cosmetic). THEN: bundle-time items (RELEASES notes, GAME_VERSION bump on Nick's word, deploy site+

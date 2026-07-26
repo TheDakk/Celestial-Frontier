@@ -95,6 +95,55 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         check('balance: affixes never exceed their cap (no over-roll)',
           [0, 3, 6, 9, 12, 14].every((t) => { for (let sd = 1; sd < 200; sd++) { const a = H.rollAffix(sd, t); const def = H.AFFIX_DEFS.find((d) => d.k === a.k); if (a.v > def.hi + 1e-9) return false; } return true; }));
       }
+
+      // ===== 2026-07-25 external code review (CF-CR-*) regressions =====
+      // CF-CR-010: oversized share codes are rejected before any decode work
+      check('security: an oversized CF1 code is rejected before decoding',
+        H.decodeWhere('CF1-' + 'A'.repeat(9000)) === null);
+      check('security: an oversized CFB code is rejected before decoding',
+        H.decodeCreature('CFB-' + 'A'.repeat(9000)) === null);
+      // CF-CR-001: the SEARCH sink escapes externally-sourced names (tampered save)
+      {
+        H.logMap.set('xztest', { id: 'xztest', title: '<img src=x onerror=window.__xss=1>', sub: 'probe', t: 1 });
+        const si = doc.getElementById('searchin');
+        si.value = 'onerror'; si.dispatchEvent(new w.Event('input', { bubbles: true }));
+        await sleep(150);
+        const sr = doc.getElementById('searchres');
+        check('security: search renders a hostile saved title as LITERAL text',
+          !w.__xss && sr && !sr.querySelector('img[src="x"]') && sr.textContent.includes('<img src=x'));
+        H.logMap.delete('xztest'); si.value = ''; si.dispatchEvent(new w.Event('input', { bubbles: true }));
+      }
+      // CF-CR-003: brood/fed combat contribution caps at the share-code ceiling (200)
+      {
+        const base = { seed: 421, kingdom: 'fauna' };
+        const p9999 = H.battleStats(Object.assign({}, base, { brood: 9999, fed: 9999 }));
+        const p200 = H.battleStats(Object.assign({}, base, { brood: 200, fed: 200 }));
+        check('balance: a 9999-brood crafted save fights at the 200-cap power, not 320k',
+          p9999.vit === p200.vit && p9999.fer === p200.fer);
+      }
+      // CF-CR-007: agility ties break by a fair seeded coin — deterministic per
+      // matchup, but neither slot owns the tie across matchups
+      {
+        let aWins = 0, det = true;
+        for (let i = 0; i < 40; i++) {
+          const g = H.makeGenome(50021 + i * 977);
+          const S = H.battleStats(g);
+          const mk = () => H.runDuel({ name: 'A', genome: g, stats: S }, { name: 'B', genome: Object.assign({}, g, { seed: (g.seed + 7) >>> 0 }), stats: S });
+          const r1 = mk(), r2 = mk();
+          if (r1.winner !== r2.winner) det = false;
+          if (r1.winner === 'A') aWins++;
+        }
+        check('balance: mirror duels are deterministic per matchup', det);
+        check('balance: neither duel slot owns the agility tie (review: 93.5% -> ~50%)', aWins >= 8 && aWins <= 32, aWins + '/40 A wins');
+      }
+      // CF-CR-002: a destroyed item's affix dies with the last copy
+      if (H.salvageItem && H.equipItem && H.items && H.equipAff) {
+        H.items.set('rig1', 1); H.equipItem('tool', 'rig1', true);
+        H.equipAff.tool = { k: 'yield', v: 0.3, forId: 'rig1' };
+        H.salvageItem('rig1', true);
+        check('exploit: salvaging the last copy kills its affix (no resurrection)',
+          !H.items.get('rig1') && !H.equipAff.tool);
+      }
     }
 
     // ============ v1.7 PHASE A — universal rarity vocabulary ============
