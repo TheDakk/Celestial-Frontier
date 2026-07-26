@@ -409,6 +409,13 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     await sleep(250);
     check('training: off-lesson card buttons are inert (Land does nothing at step 4)',
       H.st.mode !== 'surface' && tutAt(4));
+    // keyboard edition of the focus lockdown (v1.7.8): the atlas lesson NEEDS
+    // the card and allows no canvas reopen — Escape (Batch C's survey release)
+    // must be lesson-gated like taps/wheel, or a keyboard recruit strands here
+    doc.getElementById('cosmos').dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true, view: w }));
+    await sleep(250);
+    check('training: canvas keys are lesson-gated (Escape cannot strand the atlas lesson)',
+      doc.getElementById('panel').style.display !== 'none' && tutAt(4));
     click(doc.querySelector('#panel [data-act="add"]'));
     check('adding Earth to Atlas completes step 4', await until(() => tutAt(5), 3000, 'step5'));
     check('Atlas count is 1 (Earth)', doc.getElementById('logcount').textContent === '1');
@@ -420,8 +427,41 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // rescues it. A fresh boot never has 133 landed, which is why this was
     // invisible until a veteran hit it on device.
     H.landed.add(133);
+    // REGRESSION (v1.7.8, Nick's live step-6 lock): open the Atlas with a REAL
+    // pointerdown first — on device that pointerdown fired the PANELS grace-
+    // dismiss armed at the atlas-add advance and closed Earth's card RIGHT
+    // HERE, stranding the land step. (click() alone never triggers the
+    // dismiss, which is how this walk stayed green while devices locked up.)
+    doc.getElementById('logbtn').dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, cancelable: true, view: w, button: 0 }));
     click(doc.getElementById('logbtn'));
     check('opening Atlas completes step 5', await until(() => tutAt(6), 3000, 'step6'));
+    check('land step: Earth\'s card SURVIVED the Atlas tap (training sweep skips the survey card)',
+      doc.getElementById('panel').style.display !== 'none' && !!doc.querySelector('#panel [data-act="landcta"]'));
+    // ...and even a card the recruit closed must be recoverable: the land step
+    // opts Earth in via pick() exactly like find-earth, so a canvas tap
+    // re-surveys home. Without that opt-in the tap gate ate every tap and the
+    // step was unwinnable with the card gone. The card carries no ✕ during
+    // training (by design), but Batch C's Escape releases the survey lock and
+    // keydown is never tut-gated — a real keyboard recruit can reach this.
+    check('training card carries no ✕ (recruits cannot hand-close the lesson card)',
+      !doc.querySelector('#panel [data-act="close"]'));
+    doc.getElementById('cosmos').dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true, view: w }));
+    check('land step: Escape releases the survey (the recruit-reachable closer)', await until(() =>
+      doc.getElementById('panel').style.display === 'none', 3000, 'card closed'));
+    {
+      const pE = H.picks.find((q) => q.data && q.data.P && q.data.P.seed === 133);
+      check('land step: Earth is still a live pick with the card closed', !!pE);
+      if (pE) {
+        const cvE = doc.getElementById('cosmos');
+        const oE = { bubbles: true, cancelable: true, view: w, clientX: pE.sx, clientY: pE.sy, button: 0 };
+        cvE.dispatchEvent(new w.MouseEvent('pointerdown', oE));
+        cvE.dispatchEvent(new w.MouseEvent('pointerup', oE));
+        cvE.dispatchEvent(new w.MouseEvent('click', oE));
+      }
+      check('land step: tapping Earth REOPENS the card (pick() opt-in)', await until(() =>
+        doc.getElementById('panel').style.display !== 'none' && !!doc.querySelector('#panel [data-act="landcta"]'), 3000, 'card reopened'));
+      check('reopening the card never advances training', tutAt(6));
+    }
     // v1.5.2c THE LANDING LESSON: press Land on Earth's card — home never
     // waves off, and Planetside (the vista) IS the lesson's payoff. It HOLDS
     // until you tap "to continue" (no auto-close timer — Nick: "the vista

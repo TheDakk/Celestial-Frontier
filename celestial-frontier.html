@@ -5364,7 +5364,12 @@ function _kbCycle(dir){
   _announce(_kbName(p)+' — '+(i+1)+' of '+sorted.length+'. Enter to survey.');
 }
 cv.addEventListener('keydown', e=>{
-  if(_trainingUp && typeof _trainingUp==='function' && !tutDone){ /* training keeps its own script */ }
+  /* focus lockdown, keyboard edition (Nick's live step-6 lock, 2026-07-26):
+     the pointer/wheel gate never covered keydown, so Escape could release the
+     survey card — and ± could zoom the mode over, clearing the lock — during
+     a lesson with NO allowed way to reopen it (atlas-add). Canvas keys act
+     only when the lesson opens the canvas, exactly like taps. */
+  if(!tutDone){ const sG=TUT_STEPS[_tutStep]; if(!(sG && (sG.allow||[]).includes('#cosmos'))) return; }
   if(e.key==='ArrowRight'||e.key==='ArrowDown'){ e.preventDefault(); _kbCycle(1); return; }
   if(e.key==='ArrowLeft'||e.key==='ArrowUp'){ e.preventDefault(); _kbCycle(-1); return; }
   if(e.key==='Enter'||e.key===' '){
@@ -23120,7 +23125,12 @@ const TUT_STEPS=[
  {id:'atlas-open', spot:'#logbtn', allow:['#logbtn','#log'],
   text:()=>'Earth is charted — your Atlas’s first entry. Open the <b>Star Atlas</b> (the dock). Tapping any entry travels there instantly; ☆ favorites and the ⌂ home mark live there too.',
   when:(t,d)=>t==='atlas-open'&&!!d.open},
- {id:'land', spot:'#panel [data-act="landcta"]', allow:['#panel','#vistabox','#cosmos'], acts:['landcta'],   /* the canvas stays open: a closed card can always be re-opened by tapping Earth */
+ {id:'land', spot:'#panel [data-act="landcta"]', allow:['#panel','#vistabox','#cosmos'], acts:['landcta'],
+  /* the canvas stays open — and pick() makes the promise real: without it, the
+     tap gate (v1.3.9) nulled every canvas tap during this step, so a recruit
+     whose card closed at the atlas step could NEVER reopen Earth (Nick's live
+     step-6 lock, 2026-07-26) */
+  pick:p=>!!(p && p.kind==='planet' && p.data && p.data.P && p.data.P.seed===133),
   /* a returning player already has Earth in `landed` (samples long since read),
      so noteLanding(133) would early-return and NEVER fire the landfall event
      this step waits on — the ring lights but Land "does nothing". Un-land home
@@ -23420,6 +23430,11 @@ function _tutPanelSweep(s, prev){
     if(_tutGraceArm){ try{ _tutGraceArm(); }catch(_){ } _tutGraceArm=null; }
     for(const p of PANELS){
       try{
+        /* the SURVEY CARD's training lifecycle belongs to the canvas sweep
+           above (its needsCard grace spans atlas→land) — the registry's
+           grace-dismiss would close it on the very tap that opens the Atlas,
+           stranding the land step (Nick's live step-6 lock, 2026-07-26) */
+        if(p.id==='panel') continue;
         if(!p.open()) continue;
         const m=matches(p);
         if(m==='keep') continue;
