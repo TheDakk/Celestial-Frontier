@@ -1081,3 +1081,23 @@
 ##   the CURRENT stale build only gain this once they receive it — their copies heal via Pages cache
 ##   expiry (~10 min revalidation) or their old 45s pill; all future updates then propagate instantly.
 ##   ⚠ NOT DEPLOYED — rides the same v1.7.8 hotfix, awaiting Nick's word.
+## ▶▶▶ 2026-07-26 ★ v1.7.8 "THE COURIER" LIVE (build 2ba78d7) + ★ v1.7.9 "THE COURTESY PASS" LIVE
+##   (build 31186a4) — Nick: "continue on with the rest of 1.7 in the queue". 1.7.8 = the two live
+##   fixes (step-6 landing lock + cache-busted update watch). 1.7.9 = BATCH-C TAIL COMPLETE except
+##   the Atlas chart pane (a feature build, still queued): FULL INERTNESS (bg inert+aria-hidden
+##   under Guide/Prime/duel, rides syncSelState pulse; sheet+Settings deliberately excluded — dock
+##   board-swapping and outside-tap-close need live backgrounds) · LEAVE THIS WORLD (grounded card
+##   data-act=depart → overview camera reset + announce) · VISTA GHOST GUARD REBUILT (pointerdown-
+##   on-overlay tells ghost from genuine; the 420ms blanket was a fleet-flagged dead window; Escape
+##   bypasses via _vistaDismiss — a key is never a ghost; zoom steps out first) · JOURNAL role=list/
+##   listitem sentence labels · RESET separation (14px + muted-until-intent) · CASING AUDIT (10
+##   toast titles → Title Case). ⚠ LESSON: any dismiss-on-pointerdown path breaks el.click()
+##   callers — grep for programmatic .click() when adding pointer-based guards (the Escape stack
+##   was silently stranded). Harness: smoke tap() helper (pointerdown+click) for vista sites (both
+##   harnesses synced same-batch). Gates: fp MATCH 50/50, smoke 450/0, layout 546/9, sim ui 100/100.
+##   ▶ REMAINING 1.7 QUEUE (in order): Atlas chart pane (feature) · save-health pass (Atlas thumb
+##   strip + rebuild-from-seed + LRU art caches — rule-5 care) · §24 power-curve retune (tester
+##   data in hand) · name-variety epithets + text-polish (re-pin candidates) · rare-vein dedup +
+##   §5 instance-rarity (generation-touching, careful) · §22 gear×tier + ship-hull masters (art
+##   sessions). Then v1.8 Connection (holding) → 1.9 consolidation → 2.0 engine arc (Nick: PixiJS
+##   port SAVED FOR 2.0; art ports as canvas→texture masters, logic split is the prep).
