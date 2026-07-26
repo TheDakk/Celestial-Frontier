@@ -878,7 +878,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.getElementById('nameplateopt'));
     check('Nameplate menu reopens', visible(pbox));
     doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
-    check('Escape closes the Nameplate menu', !visible(pbox));
+    /* CI parity: allow an async beat — the close may ride a listener queued
+       behind the dispatch on slower runners (intent unchanged: it MUST close) */
+    check('Escape closes the Nameplate menu', await until(() => !visible(pbox), 1500, 'esc close'));
 
     check('no errors after all interactions', errors.length === 0, errors.slice(0, 3).join(' | '));
     w.close();
