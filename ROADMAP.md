@@ -1004,3 +1004,39 @@
 ##   don't compromise the veteran aesthetic for the newcomer or vice versa.
 ##   LIVE LADDER TODAY: 1.7.1 viewport → 1.7.2 Field Patch → 1.7.3 Tablet Tier + Stellar → 1.7.4.
 ##   ▶ NEXT: Nick iPhone re-verify (all four patches, one pass) · fleet Batch C a11y · v1.8 holding.
+## ▶▶▶ 2026-07-26 ROUND-2 FEEDBACK TRIAGE (two independent groups re-tested v1.7.3 b4a02df; docs
+##   saved: SYNTH_REPORT / FLEET_FIXLIST / FLEET_REPORT _v1.7.3_2026-07-26).
+##   SCOREBOARD: fun 4.92→5.71, ALL 12 personas up, 11/12 would keep playing (was 9), completionist
+##   dead-clicks 34→14.3%, 9-12/14 round-1 fixes verified IN BEHAVIOR, fps concern RETRACTED (60fps
+##   both builds, measured properly), other group: "no new technical blocker… better release
+##   candidate". COST: 7 regressions from our own fixes, JS errors 0→1, overlap defects 85→243.
+##   ★ REGRESSION HOTFIX QUEUE (v1.7.6 candidate, AWAITING NICK):
+##   (1) CRITICAL CF173-01 null-deref: describePick reads st.star.x unguarded in 4 branches
+##       (main.js ~2912-2918) — zoom-out with a card open crashes every frame. VERIFIED.
+##   (2) CF173-04 my vista-taxonomy fix NEVER RENDERED — #vistabox .vh text-transform:uppercase
+##       cancels the .toLowerCase() ⚠ LESSON: check the CSS at the sink before shipping a casing fix.
+##   (3) CF173-05 _craftNeed quotes only the FIRST shortfall → accumulate ('Need 3× Iron + 1× Cr').
+##   (4) CF173-06 toasts (z40) behind tutbox (z50) in the SAME top lane — the saved-chip written FOR
+##       the cautious newbie died unread behind the training card. (5) CF173-07 toasts collide with
+##       panels on SHORT viewports (720p) — yield-to-open-boards at ALL sizes + cap-1 to ≤900.
+##   (6) CF173-08 Records/Tray double titles (::before + inner heading). (7) CF173-03 #panel absent
+##       from PANELS/MODAL_SEL → boards bury/leak the survey card (85→243 overlaps) + dock overprints
+##       card (z14>z9) + Escape skips card → REGISTER the card, dock-aware bottom, z fix.
+##   (8) CF173-09 disabled craft buttons untabbable → aria-disabled pattern. (9) CF173-10 hint pill
+##       truncates (double-tap clause) → wrap ≤420 + shorten. (10) contrast: psub2 --faint→--dim,
+##       records .tier 8.5→11px (their measure: my 0.85 'stopped one step early'). (11) atlas-undo
+##       far from finger → inline undo/distinct 🗑. (12) dock labels 7.5→8.5px. (13) 'First
+##       footfall' already-satisfied → 'Ready to claim' state (pulled forward from v1.8).
+##   ★ HARNESS SYNC (no deploy): CF-SIM-001 simrun STILL waits for the fresh bulletin (my flow
+##   change retuned smoke but NOT simrun — the tutAt lesson repeated on a different axis: when the
+##   FLOW changes, grep BOTH harnesses) · CF-SIM-002 medium runs labeled 'deep' · CF-SIM-003 20-step
+##   comments · CF-SIM-004 page recycling.
+##   ⚖ NICK DECISIONS: (a) desktop rail panels (901+) get TITLES + role/aria-label (recommend YES —
+##   cheap, keeps the v11 rail look; scrim stays touch-only) · (b) Star Atlas AUTO-ADDS landed
+##   worlds w/ Visited filter (both rounds' explorer #1 ask — recommend YES) · (c) Shipyard starter
+##   affordability (recommend the nearest-affordable CTA over free iron) · NESTING CLAIM REFUTED:
+##   the tablet/1600 blocks ARE top-level (verified brace-walk) — but the model-stops-at-900 point
+##   stands as the design divergence in (a).
+##   ▶ THEN: Batch C a11y — BOTH rounds now rank it top (focus management named critical, zero
+##   aria-live, search keyboard-dead); v1.8 spec absorbs their XP table + next-battery success
+##   criteria (Rancher 7.5+, no-op <15%, L3 60% of medium creature players, L6 20% of deep).
