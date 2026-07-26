@@ -1070,3 +1070,14 @@
 ##   was the only lock class left. Smoke +7 (439/0) incl. the real-pointerdown repro click() never
 ##   fired (⚠ LESSON: jsdom click() ≠ pointerdown — dismiss-on-pointerdown paths need the real event).
 ##   ⚠ NOT DEPLOYED — awaiting Nick's word for the v1.7.8 hotfix (bump + RELEASES entry at deploy).
+## ▶▶▶ 2026-07-26 ★ UPDATE WATCH fixed in SOURCE (6b99db6) — Nick live: "the build is not refreshing
+##   even after resetting". The pill's location.reload() RE-SERVED the cached document (iOS Safari +
+##   Pages max-age=600) so refresh landed back on the stale build; first check was at 45s, so a stale
+##   cached boot (incl. in-game reset — same cached file) played old code all session. FIX: _updGo
+##   navigates to ?v=<build> (new URL = guaranteed cache miss; saves safe — localStorage + beforeunload),
+##   _updCheck(true) runs at BOOT so a stale boot silently self-heals before play (one try per build via
+##   sessionStorage guard — CDN lag falls to the pill, never a loop), spent buster stripped from the bar,
+##   _updSeen per-build so a second deploy re-offers. Probe hook +2, smoke +3 (442/0). ⚠ NOTE: users on
+##   the CURRENT stale build only gain this once they receive it — their copies heal via Pages cache
+##   expiry (~10 min revalidation) or their old 45s pill; all future updates then propagate instantly.
+##   ⚠ NOT DEPLOYED — rides the same v1.7.8 hotfix, awaiting Nick's word.
