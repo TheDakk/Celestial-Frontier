@@ -322,12 +322,14 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // fresh expedition: latest bulletin FIRST, then training
     const relFresh = doc.getElementById('relbox');
     check('fresh expedition: latest bulletin shows before training', await until(() =>
-      visible(relFresh) && relFresh.textContent.includes('The Living Frontier')
-      && relFresh.textContent.includes('v1.6'), 4000, 'fresh bulletin'));
-    // v1.6 opens a fresh minor line — the bulletin shows it alone, and
-    // no other line (1.5.x, 1.4.x, 1.3.x, 1.2.x, 1.1.x, 1.0) may leak in
-    check('bulletin shows the v1.6 line alone (no 1.5/1.4/1.3.x leak)',
-      !relFresh.textContent.includes('The Titan Hunt') && !relFresh.textContent.includes('The Mirror Polish')
+      visible(relFresh) && relFresh.textContent.includes((H.RELEASES && H.RELEASES[0] && H.RELEASES[0].title) || 'The Forge')
+      && relFresh.textContent.includes('v' + (H.GAME_VERSION || '').slice(0, 3)), 4000, 'fresh bulletin'));
+    // the current minor line shows ALONE — no earlier line
+    // (1.6.x, 1.5.x, 1.4.x, 1.3.x, 1.2.x, 1.1.x, 1.0) may leak in
+    check('bulletin shows the current line alone (no earlier-line leak)',
+      !relFresh.textContent.includes('The Living Frontier') && !relFresh.textContent.includes('The Landing Fix')
+      && !relFresh.textContent.includes('The Binder Patch')
+      && !relFresh.textContent.includes('The Titan Hunt') && !relFresh.textContent.includes('The Mirror Polish')
       && !relFresh.textContent.includes('Fresh Start')
       && !relFresh.textContent.includes('The Ascent') && !relFresh.textContent.includes('The HD Frontier')
       && !relFresh.textContent.includes('Kingdom Shelves')
@@ -736,7 +738,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     // release notes: the version line in the footer opens the full history
     const gc = doc.getElementById('gcredit');
-    check('guide footer shows version + build', gc && gc.textContent.includes('v1.6') && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
+    check('guide footer shows version + build', gc && gc.textContent.includes('v' + (H.GAME_VERSION || '')) && gc.textContent.includes('dev') && gc.classList.contains('gcredit-link'));
     click(gc);
     const relbox = doc.getElementById('relbox');
     check('footer opens cumulative release notes (all versions)', visible(relbox)
@@ -1651,7 +1653,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // CF-RR-001: a crafted Atlas thumbnail must neither survive load validation
     // nor break out of the img src attribute at any sink
     const xs = boot((win) => { try { win.localStorage.clear();
-      win.localStorage.setItem('cfcc_save_v2', JSON.stringify({ me: 'ThumbTest', tut: 1, rn: '1.6.4',
+      win.localStorage.setItem('cfcc_save_v2', JSON.stringify({ me: 'ThumbTest', tut: 1, rn: '1.7.0',
         log: [{ id: 'g999x', title: 'Trap Galaxy', sub: 'probe', t: 5,
           thumb: 'data:image/png;base64,x" onerror="window.__txss=777' }] }));
     } catch (_) {} });
@@ -1666,7 +1668,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // CF-RR-002: a malformed field ({} where an array belongs) must not discard
     // the whole save — the valid sections still load
     const mf = boot((win) => { try { win.localStorage.clear();
-      win.localStorage.setItem('cfcc_save_v2', JSON.stringify({ me: 'Survivor', tut: 1, rn: '1.6.4', essence: 55,
+      win.localStorage.setItem('cfcc_save_v2', JSON.stringify({ me: 'Survivor', tut: 1, rn: '1.7.0', essence: 55,
         cargo: {}, names: {}, codex: {}, tech: {}, chs: {}, land: {}, conq: {}, items: {}, notifs: {} }));
     } catch (_) {} });
     await sleep(900);
@@ -1679,7 +1681,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // CF-RR-002 recovery: corrupt primary + good backup → the backup restores
     const rc = boot((win) => { try { win.localStorage.clear();
       win.localStorage.setItem('cfcc_save_v2', '{this is not json');
-      win.localStorage.setItem('cfcc_save_v2_bak', JSON.stringify({ me: 'Backup Bill', tut: 1, rn: '1.6.4', essence: 77 }));
+      win.localStorage.setItem('cfcc_save_v2_bak', JSON.stringify({ me: 'Backup Bill', tut: 1, rn: '1.7.0', essence: 77 }));
     } catch (_) {} });
     await sleep(900);
     const rcH = rc.w.__PROBE_HOOK__;

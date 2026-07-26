@@ -18311,10 +18311,46 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.6.4';
+const GAME_VERSION='1.7.0';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.0', title:'The Forge', date:'July 2026', sections:[
+ ['✦ New Features & Systems', [
+  '💎 ONE RARITY LADDER FOR EVERYTHING — ten tiers, Common to Transcendent, now grade every creature, plant, world, star, material and piece of gear the same way. And rarity is a <b>discovery</b>: a world hides its grade until you land, a star until you survey it — the reveal grows grander the rarer the find.',
+  '⛏ THE FULL MATERIALS ECONOMY — 47 materials across five families (structural, volatiles, precious, exotic, <b>cosmic</b>), each with its own painterly icon, family-grouped in the hold. Exceptional ✦ units ride your ordinary stacks and forge finer gear.',
+  '🌌 THE SEVEN COSMICS — Protomatter, Primordial Ice, Void Essence, Chronal Shard, Dark Matter seam only the deepest worlds; Stellar Plasma and Coronium are <b>skimmed from the coronas of stars</b> (☀ Skim, once your Jump Drive flies). All seven anchor endgame gear, and the Apex Court crowns await their collectors.',
+  '🛠 THE FORGE — gear got the ARPG treatment: item windows with rarity frames and affix panels, equip and salvage side by side (a confirm guard if you want it, Salvage All for the junk), and the hold reborn as three tabs — Materials, Craftables, Gear.',
+  '🛟 SAVE GUARDIAN — your save now keeps a last-known-good backup; if the primary is ever damaged, the game restores it automatically instead of starting you over.'],
+ ],
+ ['🖱 UI Enhancements', [
+  '🧭 THE BRIDGE, REBUILT — ✦ Prime Codex holds the top center; 📜 Charters and 📖 Compendium stack the left rail, 🌍 Star Atlas and 🛠 Shipyard the right; 🏆 🔔 ? ⚙ sit as circles in the corner. On phones everything docks into two even rows at your thumbs, and every panel opens as a sheet above them.',
+  '✨ QUIET SIGNALS — the open board glows gold instead of growing, status dots and number badges are retired (only Prime keeps its 0/9), and the HP bar reads like a gauge: quarter ticks, a lit edge, a bright tip.',
+  '🎨 PANEL TINT — a Graphics slider sets how solid the glass panels pour; the character sheet fits phones so your inventory surfaces without a scroll.'],
+ ],
+ ['🎮 Gameplay', [
+  '🎓 TRAINING, GRADUATED — Field Training is 21 lessons and now ends the way an expedition begins: <b>you</b> open the 📜 board and accept your first charter. Nothing is ever accepted for you, and the ? Guide takes over from there.',
+  '🛬 EVERY DESCENT, A NEW FACE — the region you touch down in re-rolls on every landing, so returning to a world can find its deserts, jungles, or open seas.',
+  '🌊 THE DEEP IS ALIVE — abyssal dives and reef descents now swim with the world&#8217;s <b>own</b> aquatic species, and every vista plant is the true species from your Compendium — a desert&#8217;s cacti finally look like cacti.'],
+ ],
+ ['⚖ Balancing', [
+  '⚔ FAIR MIRRORS — when two perfectly matched fighters meet, the first strike now falls by a fair seeded coin instead of always favoring the challenger.',
+  '🧬 BLOODLINES WITH A HORIZON — breeding and feeding still grow a champion without limit in spirit, but the deepest grinds now approach a ceiling (~2.5× a Titan) instead of dwarfing every fight in the game. No real bloodline in the wild loses a single point.',
+  '🏋 POWER IS EARNED, NOT WORN — an item&#8217;s rarity is its story; its strength comes from tier and craftsmanship.'],
+ ],
+ ['🐛 Bug Fixes', [
+  '📌 a pinned recipe&#8217;s tracker chip no longer sits on top of the Compendium button.',
+  '🎓 restarting training after accepting a charter can no longer strand the final lesson.',
+  '🔵 veterans updating no longer see every long-catalogued species wearing the blue new-entry dot.',
+  '🛠 the Fabricator now says where every cosmic material is found, like the item cards always did.'],
+ ],
+ ['🔧 Under the Hood', [
+  '🔒 a full security hardening pass over saved data and share codes (two independent external reviews, every finding closed).',
+  '📴 the game&#8217;s fonts now live inside the game — no outside requests, fully offline.',
+  '🔋 hidden tabs stop rendering entirely; portrait memory is budgeted to the device; browser zoom is re-enabled.',
+  '🧪 releases now gate themselves: the deploy refuses to ship unless the full test battery passes.'],
+ ],
+]},
 {v:'1.6.4', title:'The Landing Fix', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🛬 LANDING TRAINING UNSTUCK — for returning pilots who had already set foot on Earth, the Land step could light up but never complete (the descent registered, yet training didn&#8217;t move on). It now always advances. New pilots were never affected.'],
