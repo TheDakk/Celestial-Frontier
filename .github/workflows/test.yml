@@ -11,11 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
+      - name: environment
+        run: |
+          node --version
+          npm --version
+          which google-chrome || which chromium-browser || echo "no chrome found"
       - run: npm ci
       - name: validate (fingerprint + render + invariants)
         run: node tools/validate.js
@@ -23,13 +28,15 @@ jobs:
         run: node tools/smoke.js
       - name: layout (9 viewports)
         run: node tools/uilayout.js
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
       - name: rarity sanity
         run: node tools/rarity-sanity.js
       - name: dead code scan
         run: node tools/deadcode.js
       - name: archive reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: battery-reports
           path: |
