@@ -1204,7 +1204,7 @@
      under the iOS touch floor), Keep Training wears the primary gold */
   #tutbox #tut-skip,#tutbox #tut-skip-yes{margin-left:auto;padding:12px 12px;min-height:44px;box-sizing:border-box;font:600 10.5px var(--ui);cursor:pointer;
     color:var(--dim);background:none;border:1px solid rgba(150,162,210,0.35);border-radius:10px}
-  @media (min-width:701px){
+  @media (min-width:901px){
     /* desktop: hang from row 1 (nameplate/search line) — high and centered */
     #tutbox{width:min(470px,calc(100vw - 24px));top:calc(var(--row1-h, 52px) + 10px);
       padding:17px 22px;font-size:13px;line-height:1.7;border-radius:18px}
@@ -1455,7 +1455,7 @@
   #records .ach.off{opacity:0.5}
   #records .ach .ic{flex:none}
   #records .ach b{font-weight:600;color:var(--ink)}
-  @media (max-width:700px){
+  @media (max-width:900px){
     /* topbar becomes two tidy rows: [brand · search · bell] then a centered [rank · HP] strip */
     /* FLEET v1.7.2 (skimmer/iphone-15-pro): the Dynamic Island sat squarely on
        the search field — the bar now clears the status strip like the dock does */
@@ -1672,20 +1672,26 @@
      designed around; the space view keeps its whole bottom edge), ⚙ / ?
      in the bottom-right corners. SAME element ids on both — training
      spotlights, lockdown, gates and smoke keep working everywhere. */
-  @media (max-width:700px){
+  @media (max-width:900px){
   /* UI v4: TWO-ROW ICON DOCK — same order as desktop, condensed to emoji chips.
      Row 1 (upper): 🗺 Atlas · ✦ Prime (middle) · 📖 Compendium
      Row 2 (lower): 🏆 Records · 🛠 Shipyard — ⚙ / ? corner the lower row,
      🔔 rides above the ? (the bottom-right settings+notifications cluster). */
+  /* BATCH B (fleet: 'a new player has no idea a scroll emoji means quests'):
+     the five board chips CAPTION themselves — icon above a tiny label — and
+     hold the 44px touch floor */
   #pcdxbtn, #codexbtn, #logbtn, #cargobtn, #chbtn{
     top:auto !important; right:auto; left:50%;
-    white-space:nowrap; z-index:14; width:58px; padding:8px 0; gap:3px;
-    display:flex; align-items:center; justify-content:center; box-sizing:border-box}
+    white-space:nowrap; z-index:14; width:60px; min-height:44px; padding:6px 0 4px; gap:1px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; box-sizing:border-box}
   #recbtn{top:auto !important; right:auto; left:50%; z-index:14;
-    width:36px; height:36px; padding:0; border-radius:50%;
+    width:44px; height:44px; padding:0; border-radius:50%;
     display:flex; align-items:center; justify-content:center; box-sizing:border-box}
-  #pcdxbtn .lbl,#codexbtn .lbl,#logbtn .lbl,#cargobtn .lbl,#recbtn .lbl,#chbtn .lbl{display:none}
+  #recbtn .lbl{display:none}
+  #pcdxbtn .lbl,#codexbtn .lbl,#logbtn .lbl,#cargobtn .lbl,#chbtn .lbl{
+    display:block;font-size:7.5px;letter-spacing:.04em;color:var(--dim);line-height:1;margin-top:1px}
   #pcdxbtn .ico,#codexbtn .ico,#logbtn .ico,#cargobtn .ico,#recbtn .ico,#chbtn .ico{font-size:14px}
+  #pcdxbtn .n{font-size:8px;line-height:1}
   /* ROW 1 — the boards, Nick's order: 📜 Charters · 📖 Compendium · ✦ Prime · 🛠 Shipyard · 🗺 Atlas */
   #chbtn{bottom:calc(60px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 128px))}
   #codexbtn{bottom:calc(60px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 64px))}
@@ -1703,14 +1709,48 @@
   /* no transform here — a transformed ancestor would become the fixed tray's
      containing block and collapse it to the chip's width */
   #bellwrap{right:auto;left:calc(50% - 49px);transform:none;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  /* BATCH B: the corner circles hold the 44px touch floor too */
+  #bell,#helpbtn,#setbtn{width:44px;height:44px}
   /* UI v5: EVERY panel opens as a SHEET ABOVE the dock — aligned, never overlapping it */
   #helppop{bottom:calc(142px + env(safe-area-inset-bottom,0px)) !important;right:8px}
+  /* BATCH B: ONE panel model — every board is a titled SHEET above the dock,
+     with a scrim claiming the world behind it (the fleet: half the panels
+     dimmed and half didn't, so there was no closing gesture to learn) and a
+     floor height (a one-entry Atlas read as a broken 135px band). */
   #setpanel,#tray,#chpanel,#codex,#log,#records{
     position:fixed;top:auto !important;left:8px;right:8px;width:auto;
     bottom:calc(142px + env(safe-area-inset-bottom,0px));
-    max-height:calc(100dvh - var(--topbar-h,110px) - 162px)}
+    min-height:min(42dvh, 380px);
+    max-height:calc(100dvh - var(--topbar-h,110px) - 162px);
+    box-shadow:0 0 0 100vmax rgba(4,6,13,0.45), 0 18px 50px rgba(0,0,0,0.5)}
+  /* the sheet announces WHAT it is — no more untitled bands */
+  #log::before{content:'🌍 Star Atlas'}
+  #codex::before{content:'📖 Compendium'}
+  #chpanel::before{content:'📜 Charters'}
+  #records::before{content:'🏆 Records'}
+  #tray::before{content:'🔔 Notifications'}
+  #log::before,#codex::before,#chpanel::before,#records::before,#tray::before{
+    display:block;font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;
+    color:#f0cf8a;padding:11px 12px 7px;border-bottom:1px solid rgba(150,162,210,0.16)}
   /* bottom-pinned training cards clear the dock */
   #tutbox.dodge{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
+  }
+  /* BATCH B: the 701–900px TABLET band — dock furniture, but sheets don't
+     stretch wall-to-wall on a 900px canvas; they center at a readable width */
+  @media (min-width:701px) and (max-width:900px){
+    #setpanel,#tray,#chpanel,#codex,#log,#records{
+      left:50%;right:auto;transform:translateX(-50%);width:min(600px,calc(100vw - 24px))}
+    #panel{width:min(340px,calc(100vw - 24px))}
+    /* the Planetside is the payoff — let it breathe on a tablet (fleet: "the
+       single best thing in the storyboard… served at postage-stamp size") */
+    #vistabox canvas{width:min(94vw,860px,calc(72vh*2.233));max-height:72vh}
+  }
+  /* BATCH B: ultrawide/large-desktop panels stop being phone columns */
+  @media (min-width:1600px){
+    #codex,#log{width:400px}
+    #records{width:380px}
+    #chpanel{width:380px}
+    #panel{width:340px}
   }
   /* the pinned-recipe chip (QoL h) — rides under the charter button */
   /* v1.7 UI v11 fix (code review): the chips were anchored for the pre-v6 left
@@ -1761,7 +1801,7 @@
   #pcdxbtn.sel,#codexbtn.sel,#logbtn.sel,#cargobtn.sel,#recbtn.sel,#chbtn.sel{
     background:linear-gradient(135deg,rgba(255,217,106,0.22),rgba(255,190,80,0.12));
     border-color:rgba(255,217,106,0.8);box-shadow:0 0 14px rgba(255,217,106,0.25)}
-  @media (min-width:701px){
+  @media (min-width:901px){
     /* DESKTOP v6 (Nick: 'align everything where the Charters box is'): ONE
        COMMAND LINE at the Charters level — Charters · 📖 Compendium on the
        left, ✦ Prime Codex centered, 🛠 Shipyard · 🏆 Records · 🗺 Atlas on the
@@ -1798,19 +1838,28 @@
   /* FLEET CRITICAL #1 (v1.7.2): on phones toasts dock at the TOP under the HP
      row — the bottom is dock + sheet + hint territory, and the arrival burst
      used to bury all three. Desktop keeps its bottom-right corner. */
-  @media (max-width:700px){
+  @media (max-width:900px){
     #toast{top:calc(var(--topbar-h,110px) + 8px);bottom:auto;right:8px;left:auto;max-width:min(300px,92vw)}
   }
   /* v1.7.1 (Nick's iPhone report): text inputs hold a 16px floor on phones —
      iOS auto-zooms the page when focusing any smaller field, and that zoom
      splits the visual/layout viewports (UI off-screen, taps offset). Works
      with the restored viewport lock as belt-and-braces. */
-  @media (max-width:700px){
+  @media (max-width:900px){
     #namein,#searchin{font-size:16px}
   }
   /* CF-RR-007: users (or their OS battery saver) asking for reduced transparency
      get flat panels — backdrop blur is the single costliest compositing effect
      on mobile GPUs. Purely opt-in via the OS setting; the glass look is default. */
+  /* BATCH B: the 44px TOUCH SWEEP (fleet appendix: Accept 16px, ☆/⌂/× 20px,
+     settings chips 21px — 50+ controls under the floor). Coarse pointers get
+     real targets; desktop mice keep the compact look. */
+  @media (pointer:coarse), (max-width:900px){
+    .cacc[data-chacc]{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;box-sizing:border-box}
+    #log .lfav,#log .lhome,#log .del{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+    #setpanel .fsopt{min-height:40px;display:inline-flex;align-items:center;padding:3px 13px;box-sizing:border-box}
+    #panel .pxc,#primebox .pxclose,.pnx{min-width:40px;min-height:40px}
+  }
   @media (prefers-reduced-transparency: reduce){
     *{backdrop-filter:none !important;-webkit-backdrop-filter:none !important}
     :root{--glass:rgba(7,9,18,0.94)}
@@ -2258,7 +2307,7 @@ function syncTopbarH(){
      SEARCH bar (UI v3 moved the bell to the bottom-right corner — measuring the
      bell would read the viewport bottom and throw every panel off-screen). */
   const si=document.getElementById('searchin');
-  if(si) si.placeholder = (W<=700)?'Search or paste code':'Search discoveries or paste code';
+  if(si) si.placeholder = (W<=900)?'Search or paste code':'Search discoveries or paste code';   /* Batch B: the dock/sheet model runs to 900px now */
   const sw=document.getElementById('searchwrap')||document.getElementById('rank');
   if(sw){ const r=sw.getBoundingClientRect();
     document.documentElement.style.setProperty('--row1-h', Math.max(40,Math.round(r.bottom))+'px'); }
@@ -13591,7 +13640,7 @@ function renderPanel(p, isLocked){
   if(_panelDirty || _panelVP!==_vp){
     _panelDirty=false; _panelVP=_vp;
     const _tb=document.getElementById('topbar');
-    _panelTopMin=(W<=700)?(((_tb&&_tb.offsetHeight)||118)+8):64;
+    _panelTopMin=(W<=900)?(((_tb&&_tb.offsetHeight)||118)+8):64;
     panelEl.style.maxHeight=Math.max(200, H - _panelTopMin - 14)+'px';
     _panelW=panelEl.offsetWidth; _panelH=panelEl.offsetHeight;
   }
@@ -15018,7 +15067,7 @@ function _showToast(title, msg, go){
      This is the report's own remedy for toasts burying the very panel the
      player just opened. */
   try{
-    if(window.innerWidth<=700){
+    if(window.innerWidth<=900){
       const busy=(typeof sheetOpen!=='undefined'&&sheetOpen) ||
         (typeof PANELS!=='undefined'&&PANELS.some(p=>{ try{ return p.open&&p.open(); }catch(_){ return false; } }));
       if(busy) return;
@@ -18490,10 +18539,20 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.2';
+const GAME_VERSION='1.7.3';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.3', title:'The Tablet Tier', date:'July 2026', sections:[
+ ['🖱 UI Enhancements', [
+  '📐 TABLETS GET THEIR OWN HOME — iPads, Surfaces and everything up to 900px now use the dock-and-sheet layout built for touch: boards open as titled, centered sheets above the dock with the world dimmed behind them, instead of desktop furniture squeezed to phone width.',
+  '🏷 THE DOCK SPEAKS — every board chip carries its name under its icon (no more guessing what the scroll means), and every chip, circle and control on touch screens holds the 44px finger floor — Accept buttons, Atlas stars, settings chips included.',
+  '🖼 BIGGER SKIES — the Planetside vista breathes on tablets, and panels on very large monitors finally grow beyond phone-column width.'],
+ ],
+ ['🎮 Gameplay', [
+  '🌀 THE STELLAR SIGNATURE — the Wind Signature is renamed: Zephyrmaw, the Stellar Squall, was always the titan of the <b>solar</b> wind, and now its Signature says so. Air keeps the skies; Stellar takes the stars. Claimed trophies keep their standing — only the name changes.'],
+ ],
+]},
 {v:'1.7.2', title:'The Field Patch', date:'July 2026', sections:[
  ['🖱 UI Enhancements', [
   '📜 THE TITANS SPEAK — every Prime Codex titan now tells its own story (Terrakoth stands where the crust runs richest; Sylphrend rides the cloud decks…), the guidance lines wrap instead of cutting mid-word, and locked rows read clearly.',
@@ -22082,12 +22141,14 @@ const SIGS=[
     hint:'an extreme volcanic world', lore:'Pyraxis coils on a molten shore, breathing furnace-light. Quench it, take the Fire.', reach:'near \u2014 the molten worlds of the inner rings'},
   {id:'sky',   el:'Air', tier:1, icon:'\ud83c\udf2c\ufe0f', name:'Air Signature', verb:'Conquer', guardian:'Sylphrend, the Gale Sovereign',
     hint:'an aerial or gas-giant ecosystem', lore:'Sylphrend rides the cloud decks, never once touching ground. Ground it, take the Air.', reach:'near \u2014 the gas giants and aerial worlds'},
-  /* FLEET wants 'Wind'\u2192'Stellar' here ('Air' + 'Wind' as two of nine elements
-     reads as a mistake; this one was always the SOLAR wind). DEFERRED: the
-     `sigs` probe pins these names \u2014 the rename needs a Nick-authorized
-     one-probe re-pin. The lore line already tells the stellar story. */
-  {id:'star',  el:'Wind', tier:1, icon:'\ud83c\udf00', name:'Wind Signature', verb:'Conquer', guardian:'Zephyrmaw, the Stellar Squall',
-    hint:'a world scoured by a dying star\u2019s solar wind', lore:'Zephyrmaw is born of stellar wind, a storm given shape near the extreme stars. Still it, take the Wind.', reach:'near \u2014 worlds under the fiercest stars'},
+  /* v1.7.3 (Nick-AUTHORIZED one-probe re-pin, 2026-07-26): 'Wind'\u2192'Stellar' \u2014
+     'Air' + 'Wind' as two of nine elemental forces read as a duplication
+     mistake, and this titan was always the SOLAR wind (guardian, hint, reach
+     and its own id all say star). The `sigs` probe was surgically re-pinned
+     with a field-diff proving these two strings are the ONLY delta.
+     id stays 'star': saves, claims and share codes unaffected. */
+  {id:'star',  el:'Stellar', tier:1, icon:'\ud83c\udf00', name:'Stellar Signature', verb:'Conquer', guardian:'Zephyrmaw, the Stellar Squall',
+    hint:'a world scoured by a dying star\u2019s solar wind', lore:'Zephyrmaw is born of stellar wind, a storm given shape near the extreme stars. Still it, take the Star.', reach:'near \u2014 worlds under the fiercest stars'},
   {id:'ocean', el:'Water', tier:1, icon:'\ud83c\udf0a', name:'Water Signature', verb:'Conquer', guardian:'Abyssleth, the Tide Devout',
     hint:'a living ocean world', lore:'Abyssleth swims the breathing seas, older than any shore. Beach it, take the Water.', reach:'near \u2014 any world with living seas'},
   {id:'mind',  el:'Electric', tier:2, icon:'\u26a1', name:'Electric Signature', verb:'Conquer', guardian:'Voltmaw, the Living Current',
@@ -23742,7 +23803,7 @@ function closePanels(except){
      cards still standing yield immediately (every one lives in the 🔔 tray).
      `except` is truthy exactly when a panel is opening. */
   try{
-    if(except && window.innerWidth<=700 && typeof toastEl!=='undefined'){
+    if(except && window.innerWidth<=900 && typeof toastEl!=='undefined'){
       while(toastEl.firstChild) toastEl.firstChild.remove();
     }
   }catch(_){ }
