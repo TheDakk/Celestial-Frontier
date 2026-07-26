@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<!-- CF-CR-011: browser zoom re-enabled (iOS ignored the lock anyway; the canvas
-     pinch handlers preventDefault, so game gestures never page-zoom) -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<!-- v1.7.1: the CF-CR-011 zoom unlock is REVERTED — on iOS it let Safari
+     auto-zoom on input focus (sub-16px fields), permanently splitting the
+     visual/layout viewports: fixed UI pushed off-screen, sheets overflowing,
+     and canvas taps landing offset from the picks (Nick's iPhone report).
+     Accessibility cost ~zero: iOS ignores this flag for USER pinch-zoom. -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Celestial Frontier</title>
 <meta name="description" content="Explore an infinite, shared universe — chart galaxies, catalogue living worlds, master the nine elemental titans and complete the Prime Codex. Free, in your browser.">
 <meta property="og:title" content="Celestial Frontier">
@@ -1755,6 +1758,13 @@
     #recbtn{width:36px;height:36px;padding:0;border-radius:50%;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
     /* the dodged training card clears the caption + corner utilities */
     #tutbox.dodge{bottom:100px}
+  }
+  /* v1.7.1 (Nick's iPhone report): text inputs hold a 16px floor on phones —
+     iOS auto-zooms the page when focusing any smaller field, and that zoom
+     splits the visual/layout viewports (UI off-screen, taps offset). Works
+     with the restored viewport lock as belt-and-braces. */
+  @media (max-width:700px){
+    #namein,#searchin{font-size:16px}
   }
   /* CF-RR-007: users (or their OS battery saver) asking for reduced transparency
      get flat panels — backdrop blur is the single costliest compositing effect
@@ -18311,10 +18321,15 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.0';
+const GAME_VERSION='1.7.1';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.1', title:'The Pocket Patch', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '📱 THE PHONE SCREEN FITS AGAIN — on iPhone, typing your name (or searching) could make Safari zoom the whole page and never let go: your nameplate and HP slid off the top, panels spilled past the edges, the Shipyard&#8217;s ✕ went unreachable, and taps on planets landed beside them (training&#8217;s &#8220;tap Earth&#8221; included). The viewport is locked again and text fields no longer trigger the zoom. Pinch-zoom for accessibility still works — iOS never gives that up.'],
+ ],
+]},
 {v:'1.7.0', title:'The Forge', date:'July 2026', sections:[
  ['✦ New Features & Systems', [
   '💎 ONE RARITY LADDER FOR EVERYTHING — ten tiers, Common to Transcendent, now grade every creature, plant, world, star, material and piece of gear the same way. And rarity is a <b>discovery</b>: a world hides its grade until you land, a star until you survey it — the reveal grows grander the rarer the find.',
