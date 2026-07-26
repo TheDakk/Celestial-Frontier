@@ -185,3 +185,14 @@ Guardian tiers: 12 Empyrean (70%) / 13 Eternal (25%) / 14 Omnipotent (5%); spawn
 - **Rare-find stardust only for genuinely-new species** — a fallen guardian only pays its Compendium reward / cinematic when `_storeSpecies` actually stores it (new); cross-ref CAPTURE_AND_BIOSPHERE §7.
 - **Depth-tax comment drift** — the ×2.2 in the header comment predates the six-rung array; treat `DEPTH_TAX[5] = 2.5` as truth. Flag for a comment fix on the next combat pass (docs-only; no code change here).
 - **Pending/uncertain**: `_mult` region scaling for titans (`1.15 + region*0.03`) vs guardians/natives (`1 + region*0.14`) is a first-pass balance ("confirm the win rate by playtest/deep-sim" per the code comment) — the numbers may shift; this doc tracks current values, not a frozen balance target.
+
+## Lineage power curve (2026-07-25 — Nick's 2.5×-titan call; interim until §24)
+The brood/fed combat bonus is `min(200,brood)*22 + min(200,fed)*10` (the share-code
+ceiling), then passes a **soft knee**: identity through a combined 1,000 (every
+realistic creature and live save unchanged — brood 20 / fed 50 = exact linear +940),
+saturating above with asymptote 1,700: `1000 + round(700*(x-1000)/(x-1000+2160))`.
+A maxed 200/200 bloodline lands +1,500 → ≈2,250 total power on a summit champion
+(~2.5× a titan's ~840–900) instead of the old ~6,600 (7× — trivialized the game's
+hardest fights). Monotonic (feeding/breeding always help), integer, deterministic,
+fingerprint-proven identity for probe genomes. Knee/asymptote are the single knob
+for the §24 power-curve pass. Smoke asserts the knee identity and the maxed delta.

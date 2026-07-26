@@ -16823,12 +16823,18 @@ function battleStats(g){
   /* diet sharpens ferocity a touch */
   s[1]+=Math.min(10,(g.diet||0)*2);
   /* a bred bloodline and a well-fed beast both grow stronger — spread the bonus.
-     CF-CR-003: the EFFECTIVE contribution caps at 200 — the ceiling the share-code
-     domain already declares (normGenome) — so a crafted 9999-brood save can no
-     longer field ~320k Power while its exported code reads ~6.6k. Lineage counts
-     above 200 keep displaying; they just stop adding stats. (Fingerprint-safe:
-     probe genomes carry fresh brood/fed far below the cap — min() is identity.) */
-  const bonus=Math.min(200,(g.brood||0))*22 + Math.min(200,(g.fed||0))*10;
+     CF-CR-003: the EFFECTIVE contribution caps at 200 each — the ceiling the
+     share-code domain already declares (normGenome) — so a crafted 9999-brood
+     save fights at the 200-cap. Lineage counts above keep displaying.
+     CF-RR-004 (Nick's 2.5×-titan call, 2026-07-25): above a SOFT KNEE the
+     combined bonus saturates — identity through 1,000 (every realistic
+     creature and live save byte-identical), asymptote 1,700, so a maxed
+     200/200 bloodline lands ≈2,250 total power (~2.5× a titan's ~900) instead
+     of ~6,600 (7× — trivialized the hardest fights). Monotonic: feeding and
+     breeding ALWAYS help. Retune knee/asymptote in the §24 power-curve pass.
+     (Fingerprint-safe: probe genomes carry zero brood/fed — full identity.) */
+  const bonusRaw=Math.min(200,(g.brood||0))*22 + Math.min(200,(g.fed||0))*10;
+  const bonus=bonusRaw<=1000?bonusRaw:1000+Math.round(700*(bonusRaw-1000)/(bonusRaw-1000+2160));
   if(bonus){ for(let i=0;i<5;i++) s[i]+=Math.round(bonus/5); }
   if(g._mult && g._mult>1){ for(let i=0;i<5;i++) s[i]=Math.round(s[i]*g._mult); }
   /* world fields: lava sharpens ferocity, ice hardens resilience, gas quickens,

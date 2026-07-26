@@ -114,12 +114,20 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         H.logMap.delete('xztest'); si.value = ''; si.dispatchEvent(new w.Event('input', { bubbles: true }));
       }
       // CF-CR-003: brood/fed combat contribution caps at the share-code ceiling (200)
+      // CF-RR-004 (Nick's 2.5x-titan call): the combined bonus saturates past a
+      // soft knee at 1,000 — realistic creatures identical, maxed ~2,250 total
       {
         const base = { seed: 421, kingdom: 'fauna' };
+        const p0 = H.battleStats(Object.assign({}, base, { brood: 0, fed: 0 }));
         const p9999 = H.battleStats(Object.assign({}, base, { brood: 9999, fed: 9999 }));
         const p200 = H.battleStats(Object.assign({}, base, { brood: 200, fed: 200 }));
+        const pMid = H.battleStats(Object.assign({}, base, { brood: 20, fed: 50 }));
         check('balance: a 9999-brood crafted save fights at the 200-cap power, not 320k',
           p9999.vit === p200.vit && p9999.fer === p200.fer);
+        check('balance: below the knee the lineage bonus is UNTOUCHED (brood 20 / fed 50 = exact linear +940)',
+          pMid.vit - p0.vit === Math.round(940 / 5), 'delta=' + (pMid.vit - p0.vit));
+        check('balance: a maxed 200/200 bloodline saturates to +1,500 (~2.5x titan total), not +6,400',
+          p200.vit - p0.vit === Math.round(1500 / 5), 'delta=' + (p200.vit - p0.vit));
       }
       // CF-CR-007: agility ties break by a fair seeded coin — deterministic per
       // matchup, but neither slot owns the tie across matchups
