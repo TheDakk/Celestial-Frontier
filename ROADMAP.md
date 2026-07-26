@@ -244,8 +244,15 @@
 ##     _cbT dead const removed. ⚠ LESSON: a "keep legacy data" mitigation is itself an INPUT PATH —
 ##     validate what you keep. ⚠ LESSON 2: module-scoped fns need the 3-site export (API banner +
 ##     freeze + destructure) — ReferenceError caught by validate's jsdom boot.
-##   ⚖ NICK DECISION (CF-RR-004): legit lineage ceiling ≈6,592 Power (200-cap brood/fed) vs
-##     titan-range power — is that the intended endgame ceiling? FOLD INTO §24 POWER-CURVE pass.
+##   ⚖ RESOLVED (CF-RR-004, Nick 2026-07-25: "2.5× titan") — LINEAGE SOFT KNEE shipped [30bbda7]:
+##     combined bonus identity ≤1,000 (realistic creatures/live saves byte-identical), saturates
+##     above (asymptote 1,700) → maxed 200/200 = +1,500 ≈ 2,250 total (~2.5× titan ~900) vs old
+##     ~6,600. Monotonic; fp MATCH; smoke asserts knee identity + maxed delta. §24 pass retunes
+##     the knee/asymptote knob if wanted. Curve documented in COMBAT_AND_CONQUEST.md.
+##   ⚠ CI NOTE: first workflow run (b8d021e) FAILED w/ deprecation warning — @v4 actions forced
+##     onto Node 24; bumped to @v5 + env-echo step + explicit CF_BROWSER [30bbda7]. If the run at
+##     30bbda7 still fails, get the failing STEP from the Actions page (or gh auth) — candidates:
+##     slow-runner smoke `until()` timeouts, or chrome/CDP quirks in the layout gate on ubuntu.
 ##   DEFERRED (unchanged): instance-based gear (§5, pre-loot-depth) · adaptive/dirty-frame render ·
 ##     module split · Object Navigator + a11y batch · seeded action-RNG (anti-save-scum, design) ·
 ##     per-section save schema/migration (ties export/import).
