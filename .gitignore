@@ -16,3 +16,4 @@ tools/tester*.json
 tools/hammer*.json
 tools/r1000-*.json
 tools/simreport-*.json
+releases/
