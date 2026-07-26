@@ -1503,8 +1503,7 @@
     #doll .dollwrap{width:min(62vw,240px)}
     #doll .dsock{width:44px;height:44px}
     #primebox .card,#endingbox .card,#guidebox .card{padding:18px 14px}
-    #context{bottom:calc(96px + env(safe-area-inset-bottom,0px));font-size:11.5px}
-    #hint{bottom:calc(60px + env(safe-area-inset-bottom,0px))}
+    #context{font-size:11.5px}   /* position comes from the dock block below */
     /* keep the help & settings icons apart, and above the phone's home indicator */
     #setbtn{right:14px;bottom:calc(16px + env(safe-area-inset-bottom,0px))}
     #helpbtn{right:62px;bottom:calc(16px + env(safe-area-inset-bottom,0px))}
@@ -1706,9 +1705,10 @@
   #logbtn{bottom:calc(60px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% + 128px))}
   /* ROW 2 — utilities, evenly spaced: 🏆 Records · ? Guide · 🔔 Notifications · ⚙ Settings */
   #recbtn{bottom:calc(12px + env(safe-area-inset-bottom,0px));transform:translateX(calc(-50% - 96px))}
-  /* the hint steps above BOTH dock rows */
-  #hint{bottom:calc(104px + env(safe-area-inset-bottom,0px))}
-  #context{bottom:calc(146px + env(safe-area-inset-bottom,0px))}
+  /* the hint steps CLEAR above both dock rows (Nick's catch: the pill touched
+     the chip tops once they grew to the 44px floor + captions) */
+  #hint{bottom:calc(124px + env(safe-area-inset-bottom,0px))}
+  #context{bottom:calc(164px + env(safe-area-inset-bottom,0px))}
   #helpbtn{left:50%;right:auto;transform:translateX(calc(-50% + 32px));bottom:calc(12px + env(safe-area-inset-bottom,0px))}
   #setbtn{right:auto;left:50%;transform:translateX(calc(-50% + 96px));bottom:calc(12px + env(safe-area-inset-bottom,0px))}
   #setbtn:hover{transform:translateX(calc(-50% + 96px)) rotate(60deg)}
@@ -1738,8 +1738,8 @@
   #log::before,#codex::before,#chpanel::before,#records::before,#tray::before{
     display:block;font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;
     color:#f0cf8a;padding:11px 12px 7px;border-bottom:1px solid rgba(150,162,210,0.16)}
-  /* bottom-pinned training cards clear the dock */
-  #tutbox.dodge{bottom:calc(150px + env(safe-area-inset-bottom,0px))}
+  /* bottom-pinned training cards clear the dock AND the raised hint pill */
+  #tutbox.dodge{bottom:calc(170px + env(safe-area-inset-bottom,0px))}
   }
   /* BATCH B: the 701–900px TABLET band — dock furniture, but sheets don't
      stretch wall-to-wall on a 900px canvas; they center at a readable width */
@@ -18545,10 +18545,15 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.4';
+const GAME_VERSION='1.7.5';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.5', title:'Clear Air', date:'July 2026', sections:[
+ ['🖱 UI Enhancements', [
+  '📏 ROOM TO BREATHE — the control hint pill, the caption above it, and the training card each step cleanly above the dock instead of brushing the chip tops.'],
+ ],
+]},
 {v:'1.7.4', title:'The Quiet Dock', date:'July 2026', sections:[
  ['🖱 UI Enhancements', [
   '🏷 CAPTIONS THAT GRADUATE — the dock names its boards while you&#8217;re in Field Training; complete it and the labels retire, leaving the clean icon dock (they return if you restart training from ⚙ Settings). Prime Codex keeps its count either way.'],
