@@ -15,7 +15,7 @@ const game = fs.readFileSync(path.join(__dirname, '..', 'celestial-frontier.html
 /* a minimal veteran save: absent fields default safely (CLAUDE.md rule 5);
    tut absent = training done, so the live UI boots directly */
 const SEED = `<script>try{ localStorage.clear();
-  localStorage.setItem('cfcc_save_v2', JSON.stringify({ me:'Proof Explorer', tut:1, rn:'1.6.4' }));
+  localStorage.setItem('cfcc_save_v2', JSON.stringify({ me:'Proof Explorer', tut:1, rn:'1.7.0' }));
 }catch(e){}</script>`;
 
 /* a POPULATED veteran save (cert gap: Shipyard/inventory/paperdoll proofs need
@@ -23,7 +23,7 @@ const SEED = `<script>try{ localStorage.clear();
    crafted parts, a mixed-tier loadout worn (T2 rig/hazmat/visor + T5 cosmic
    gauntlets + relic-free rest), affixes on two pieces. All fields load-clamped. */
 const SEED_FULL = `<script>try{ localStorage.clear();
-  localStorage.setItem('cfcc_save_v2', JSON.stringify({ me:'Proof Explorer', tut:1, rn:'1.6.4', essence:145,
+  localStorage.setItem('cfcc_save_v2', JSON.stringify({ me:'Proof Explorer', tut:1, rn:'1.7.0', essence:145,
     cargo:[["Fe",42],["Ti",9],["Si",28],["Al",17],["Cu",14],["W",6],["Cr",5],["H",30],["CH4",12],["H2O",18],["S",8],["O",21],["He3",3],["Au",4],["Pt",2],["Ag",5],["Nd",2],["U",2],["Ir",1],["Vg",1],["Pz",1],["Pls",1],["Pro",1]],
     cgx:[["Fe",5],["Ti",2],["Au",1]],
     items:[["plate",6],["wire",4],["chip",3],["lens",2],["weave",3],["cell",2],["coil",2],["navcore",1],["hullseg",2],["servo",1],["cryogel",1],["jumpdrive",1],["rig2",1],["hazmat",1],["visor",1],["magboots",1],["gripgloves",1],["earpiece",1],["compass",1],["stabil",1],["fieldlegs",1],["cg-plasma",1]],
