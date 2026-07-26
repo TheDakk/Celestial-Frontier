@@ -622,7 +622,7 @@ async function uiTraining(seed, chaos) {
       }
     }
   };
-  const tutAt = (n) => { const t = doc.getElementById('tutbox'); return visible(t) && t.textContent.includes(n + ' / 20'); };
+  const tutAt = (n) => { const t = doc.getElementById('tutbox'); return visible(t) && t.textContent.includes(n + ' / 21'); };   /* 21 steps since the charter-accept graduation — grep this when the total changes (same lesson as smoke's tutAt) */
   const tutAct = () => click(doc.getElementById('tut-act'));
   const guard = (label) => {
     // during training the lesson card must never vanish and panels must not stack
@@ -737,6 +737,9 @@ async function uiTraining(seed, chaos) {
       type(doc.getElementById('searchin'), 'earth');
       await stall(() => tutAt(17), 4000, 'step 16'); chaosBurst();
       click(doc.getElementById('rank'));
+      /* v1.7: the sheet lesson advances by its Got It BUTTON (the old training
+         advanced on open — the walker sat here forever without this press) */
+      await stall(() => visible(doc.getElementById('sheet')), 3000, 'sheet visible'); chaosBurst(); tutAct();
       await stall(() => tutAt(18), 4000, 'step 17 (sheet open)'); chaosBurst();
       // v1.5.2b THE FORGE LESSON: the 🛠 Shipyard rail button opens the
       // yard; the Fabricator's T1 fold is open by default — craft the plate
@@ -744,7 +747,14 @@ async function uiTraining(seed, chaos) {
       await stall(() => !!doc.querySelector('#yardbench [data-craft="plate"]'), 3000, 'forge: yard fab');
       click(doc.querySelector('#yardbench [data-craft="plate"]'));
       await stall(() => tutAt(19), 4000, 'step 18 (plate forged)'); chaosBurst(); tutAct();
-      await stall(() => tutAt(20), 4000, 'step 19'); chaosBurst(); tutAct();
+      /* v1.7 GRADUATION (the walker predated it — 49/60 UI runs walked the whole
+         training but never registered complete): the recruit opens 📜 and ACCEPTS
+         their first charter, then presses Begin the Expedition on the finale */
+      await stall(() => tutAt(20), 4000, 'graduation (charter-first)'); chaosBurst();
+      click(doc.getElementById('chbtn'));
+      await stall(() => !!doc.querySelector('#chpanel [data-chacc]'), 4000, 'charter offers');
+      click(doc.querySelector('#chpanel [data-chacc]'));
+      await stall(() => tutAt(21), 4000, 'finale card'); chaosBurst(); tutAct();
       await stall(() => H.tutDone === true, 5000, 'finale');
     }
     run.completed = H.tutDone === true;
