@@ -319,30 +319,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.getElementById('nameok'));
     check('name accepted, intro closed', !visible(doc.getElementById('namebox')));
 
-    // fresh expedition: latest bulletin FIRST, then training
+    // FLEET v1.7.2 (design change): a CHANGELOG is for returning players — a
+    // fresh expedition goes STRAIGHT to training, no bulletin gate
     const relFresh = doc.getElementById('relbox');
-    check('fresh expedition: latest bulletin shows before training', await until(() =>
-      visible(relFresh) && relFresh.textContent.includes((H.RELEASES && H.RELEASES[0] && H.RELEASES[0].title) || 'The Forge')
-      && relFresh.textContent.includes('v' + (H.GAME_VERSION || '').slice(0, 3)), 4000, 'fresh bulletin'));
-    // the current minor line shows ALONE — no earlier line
-    // (1.6.x, 1.5.x, 1.4.x, 1.3.x, 1.2.x, 1.1.x, 1.0) may leak in
-    check('bulletin shows the current line alone (no earlier-line leak)',
-      !relFresh.textContent.includes('The Living Frontier') && !relFresh.textContent.includes('The Landing Fix')
-      && !relFresh.textContent.includes('The Binder Patch')
-      && !relFresh.textContent.includes('The Titan Hunt') && !relFresh.textContent.includes('The Mirror Polish')
-      && !relFresh.textContent.includes('Fresh Start')
-      && !relFresh.textContent.includes('The Ascent') && !relFresh.textContent.includes('The HD Frontier')
-      && !relFresh.textContent.includes('Kingdom Shelves')
-      && !relFresh.textContent.includes('Ink & Ember') && !relFresh.textContent.includes('First Contact')
-      && !relFresh.textContent.includes('The Hunt Board') && !relFresh.textContent.includes('The Discovery Arc'));
-    check('bulletin hides other-line entries (no 1.1.x, no 1.0 debut)',
-      !relFresh.textContent.includes('Clear Signals') && !relFresh.textContent.includes('Signal & Polish')
-      && !relFresh.textContent.includes('The Frontier Opens'));
-    check('bulletin carries a real ship date (nothing In development)',
-      !relFresh.textContent.includes('In development'));
-    check('training has not started yet', !visible(doc.getElementById('tutbox')));
-    click(doc.getElementById('relok'));
-    check('bulletin closes into training (step 1)', await until(() => tutAt(1), 4000, 'step1'));
+    check('fresh expedition: NO changelog gate — training starts directly', await until(() => tutAt(1), 4000, 'step1'));
+    check('fresh expedition: the bulletin never appeared', !visible(relFresh));
     check('Earth NOT pre-charted during training', doc.getElementById('logcount').textContent === '0');
 
     // focus lockdown: off-lesson surfaces are inert during training
@@ -697,18 +678,12 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.getElementById('setbtn'));
 
     // ============ GUIDE TO THE UNIVERSE ============
+    // FLEET v1.7.2: post-training the ? opens the Guide DIRECTLY — the popover
+    // (with the version line) is training-only now
     click(doc.getElementById('helpbtn'));
-    check('? popover shows version + guide link', visible(doc.getElementById('helppop')));
-    // v1.3.11: a tap on empty space closes the ? popover (it lives outside
-    // the panel manager, so it needs — and now has — its own closer)
-    doc.getElementById('cosmos').dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, cancelable: true, view: w }));
-    check('v1.3.11: outside tap closes the ? popover', await until(() =>
-      !visible(doc.getElementById('helppop')), 3000, 'helppop outside close'));
-    click(doc.getElementById('helpbtn'));
-    check('? popover reopens after the outside-tap close', visible(doc.getElementById('helppop')));
-    click(doc.getElementById('hp-guide'));
     const gbox = doc.getElementById('guidebox');
-    check('guide opens from ? button', visible(gbox));
+    check('? opens the Guide directly (no build-hash popover in the way)', visible(gbox));
+    check('the version popover did NOT appear post-training', !visible(doc.getElementById('helppop')));
     check('guide title renamed', gbox.textContent.includes('Guide to the Universe'));
     const cats = doc.querySelectorAll('#guidebody .gcat');
     check('guide menu lists categories', cats.length >= 8, String(cats.length));
@@ -751,8 +726,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('guide closes via Continue', !visible(gbox));
 
     // ====== ADVANCED BRIEFINGS (v1.7 — five opt-in drills from the Guide) ======
-    click(doc.getElementById('helpbtn'));
-    click(doc.getElementById('hp-guide'));
+    click(doc.getElementById('helpbtn'));   /* v1.7.2: ? goes straight to the Guide now */
     check('briefings: the Guide menu offers the 🎓 row post-training',
       !!doc.querySelector('.gbrief') && doc.querySelectorAll('.brbtn').length === 5);
     doc.querySelector('[data-brief="hold"]').click();
@@ -1678,6 +1652,18 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('resilience: malformed save fields no longer kill the whole save (valid sections load)',
       mfH && mfH.essence === 55 && mfH.tutDone === true,   /* tutDone loads LAST — proves loadSave ran to completion past every malformed field */
       'essence=' + (mfH && mfH.essence) + ' tutDone=' + (mfH && mfH.tutDone));
+    // FLEET v1.7.2: the bulletin now belongs to RETURNING saves only — this
+    // veteran (rn one version behind) is exactly who should see it, alone-lined
+    {
+      const relV = mf.doc.getElementById('relbox');
+      check('returning veteran: the version bulletin fires', await until(() => visible(relV)
+        && relV.textContent.includes((mfH.RELEASES && mfH.RELEASES[0] && mfH.RELEASES[0].title) || ''), 4000, 'veteran bulletin'));
+      check('bulletin shows the current line alone (no earlier-line leak)',
+        !relV.textContent.includes('The Living Frontier') && !relV.textContent.includes('The Landing Fix')
+        && !relV.textContent.includes('The Titan Hunt') && !relV.textContent.includes('Fresh Start')
+        && !relV.textContent.includes('The Hunt Board') && !relV.textContent.includes('The Frontier Opens'));
+      check('bulletin carries a real ship date (nothing In development)', !relV.textContent.includes('In development'));
+    }
     mf.w.close();
 
     // CF-RR-002 recovery: corrupt primary + good backup → the backup restores
