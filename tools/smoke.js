@@ -959,6 +959,23 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('skip closes tutorial', !visible(sk.doc.getElementById('tutbox')));
     check('skip: Earth charted in Atlas', sk.doc.getElementById('logcount').textContent === '1');
     check('skip: Compendium empty', sk.doc.getElementById('codexcount').textContent === '0');
+    // v1.7.8 UPDATE WATCH (Nick live: "the build is not refreshing"): the old
+    // pill tapped into location.reload(), which re-serves the CACHED document
+    // on iOS/Pages — the refresh landed back on the stale build. The fix
+    // navigates to a cache-busted URL instead (_updGo), and boot now checks
+    // version.json immediately (not at 45s) so a stale cached boot self-heals.
+    {
+      const skH2 = sk.w.__PROBE_HOOK__;
+      check('update watch: _updGo (cache-busted navigator) is wired', typeof skH2._updGo === 'function');
+      skH2._updOffer({ v: '9.9.9', build: 'zzz9999' });
+      await sleep(150);
+      const updPill = sk.doc.getElementById('updatepill');
+      check('update watch: a newer version.json raises the gold pill (with the version)',
+        !!updPill && updPill.style.display === 'block' && updPill.textContent.includes('9.9.9'));
+      check('update watch: the offer announces itself (toast fired)',
+        [...sk.doc.querySelectorAll('#toast .tst')].some((t) => t.textContent.includes('Update Available'))
+        || [...sk.doc.querySelectorAll('#tray .titem')].some((t) => t.textContent.includes('Update Available')));
+    }
     click2(sk.doc.getElementById('codexbtn'), sk.w);
     check('skip: everything unlocked (Compendium opens)', visible(sk.doc.getElementById('codex')));
     click2(sk.doc.getElementById('helpbtn'), sk.w);

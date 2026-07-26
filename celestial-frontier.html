@@ -19218,30 +19218,60 @@ function openReleaseNotes(mode, then){
    (iOS Safari resurrects days-old tabs). Offline or local play ('dev'
    build, file://, no fetch): the watcher never arms — the game stays
    fully offline-capable. Refreshing is safe: beforeunload saves first. */
-let _updSeen=false;
+let _updSeen=null;   /* the build we last offered — a NEWER deploy re-offers */
+function _updGo(build){
+  /* CACHE-BUSTED navigation (Nick live, 2026-07-26: "the build is not
+     refreshing even after resetting"): a plain location.reload() can re-serve
+     the CACHED document — iOS Safari + Pages' max-age=600 — so the pill
+     "refreshed" straight back into the old build. A new URL is a guaranteed
+     cache miss. Saves are untouched: localStorage survives navigation and the
+     beforeunload save fires first. */
+  try{ location.replace(location.pathname+'?v='+encodeURIComponent(build||'x')+location.hash); }
+  catch(_){ try{ location.reload(); }catch(_){ } }
+}
 function _updOffer(j){
   if(_tutHook){ setTimeout(()=>_updOffer(j), 60e3); return; }   /* never interrupt training */
   let pill=document.getElementById('updatepill');
   if(!pill){ pill=document.createElement('div'); pill.id='updatepill'; document.body.appendChild(pill);
-    pill.addEventListener('click', ()=>{ try{ location.reload(); }catch(_){} }); }
+    pill.addEventListener('click', ()=>{ _updGo(j&&j.build); }); }
   const vTxt=(j && j.v && j.v!==GAME_VERSION) ? 'v'+j.v+' is here' : 'A new build is live';
   pill.textContent='⬆ '+vTxt+' — tap to refresh';
   pill.style.display='block';
   toast('⬆ Update Available', vTxt+'. Tap the gold pill to refresh — your expedition saves first.');
 }
-function _updCheck(){
-  if(_updSeen || BUILD_ID==='dev') return;
+function _updCheck(boot){
+  if(BUILD_ID==='dev') return;
   if(typeof fetch!=='function' || !/^https?:$/.test(location.protocol)) return;
   fetch('version.json?cb='+Date.now(), {cache:'no-store'})
     .then(r=>r&&r.ok?r.json():null)
-    .then(j=>{ if(j && j.build && j.build!==BUILD_ID){ _updSeen=true; _updOffer(j); } })
+    .then(j=>{
+      if(!(j && j.build && j.build!==BUILD_ID)) return;
+      /* BOOT: a stale cached boot SELF-HEALS before play begins — this is the
+         path a returning player (or an in-game reset, which reloads the same
+         cached file) actually takes. One silent try per target build, guarded
+         in sessionStorage: if the CDN still serves the old build after the
+         busted reload (Pages can lag minutes), fall through to the pill
+         instead of reload-looping. */
+      if(boot===true){
+        let tried=null; try{ tried=sessionStorage.getItem('cf_updtry'); }catch(_){ }
+        if(tried!==j.build){
+          try{ sessionStorage.setItem('cf_updtry', j.build); }catch(_){ }
+          _updGo(j.build); return;
+        }
+      }
+      if(_updSeen!==j.build){ _updSeen=j.build; _updOffer(j); }
+    })
     .catch(()=>{});
 }
 if(BUILD_ID!=='dev'){
+  _updCheck(true);   /* immediately at boot — 45s of stale play was the old floor */
   setTimeout(_updCheck, 45e3);
   setInterval(_updCheck, 600e3);
   document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='visible') _updCheck(); });
 }
+/* keep the address bar canonical: strip a spent cache-buster so bookmarks and
+   shares never carry it (the boot check re-busts whenever it's truly needed) */
+try{ if(/[?&]v=/.test(location.search)) history.replaceState(null,'',location.pathname+location.hash); }catch(_){ }
 
 /* ---- Prime Codex wiring ---- */
 (function(){
