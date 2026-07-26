@@ -18668,10 +18668,16 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.7';
+const GAME_VERSION='1.7.8';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.8', title:'The Courier', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🧭 TRAINING STEP 6, UNSTUCK — Earth&#8217;s survey card could vanish between the Atlas lesson and the landing lesson with no way to bring it back (opening the Atlas, travelling from its Earth row, or a keyboard Escape could each close it). The card now rides safely into the landing step, tapping Earth always reopens it, and keyboard shortcuts respect the lesson like taps do.',
+  '⬆ UPDATES ACTUALLY ARRIVE — the game now checks for a newer build the moment it starts and quietly swaps a stale copy for the live one before play begins (your expedition is untouched — saves live on your device, not in the page). The update pill&#8217;s refresh now truly fetches the new build instead of re-serving the cached one.'],
+ ],
+]},
 {v:'1.7.7', title:'The Open Door', date:'July 2026', sections:[
  ['✦ New Features & Systems', [
   '⌨ THE BOARD ANSWERS THE KEYBOARD — focus the star map and the arrow keys cycle every pickable body nearest-first (a gold dashed ring marks your target), <b>Enter surveys it</b> with full credit, +/− zoom on it, Escape releases. The universe is no longer mouse-only.',
