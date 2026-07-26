@@ -961,3 +961,23 @@
 ##     charters auto-honour (banked-state law care) · onboarding pacing beyond bulletin gating.
 ##   CONFIRMED CLEAN by fleet: 0 js errors, 0 soft-locks, save/paste hardening 'armoured', 45+ fps
 ##   worst case (their earlier 11fps was THEIR harness artifact, retracted), 791ms load.
+## ▶▶▶ 2026-07-26 ★ v1.7.2 "THE FIELD PATCH" — FLEET BATCH A BUILT (26 of 49 issues; gates all
+##   green: fp MATCH 50/50 · smoke 429/0 · layout 546/9 · version 1.7.2 consistent).
+##   SHIPPED: toast system (phone top-dock, cap 1, yields to open boards, CLICKABLE cards + the
+##   '#toasts' MODAL_SEL typo — deep links were dead since v1.5.2) · Prime Codex (wrap + per-titan
+##   LORE render + readable locked rows + scrollbars) · Records (srow selector, journal display
+##   names, full-ink tiles) · onboarding (fresh saves skip the changelog; ? → Guide direct post-
+##   training; skip-confirm inverted + Settings Restart Training; name gate cleanName-enable +
+##   inline reason; save reassurance + one-time saved chip) · input (Escape closes ALL boards via
+##   stack+PANELS — safe subset in training; tooltip own-panel suppress + collision flip; mouse
+##   PICK_F 1.2; assist-landing announce; tray read-on-open + 44px + armed clear-all; Atlas ×
+##   tip/legend/undo) · survey (LAND gold primary; ONE landing verb; Sol named; vista header =
+##   world · region; comet tail /z; goals show n / m; safe-area topbar) · Fabricator (Craft always
+##   visible w/ shortfall name; '0 craftable' counts) · shipyard hero collapse <780px.
+##   ⚠ LESSON: my first toast fix (top-dock) recreated the covered-panel bug UP TOP — the layout
+##   gate caught it (24 FAILs) → boards now CLAIM the screen (closePanels clears standing cards on
+##   phones; every toast tray-logs so nothing is lost). The gate paying for itself.
+##   ⚖ DEFERRED TO NICK: Wind→Stellar signature rename — the `sigs` PROBE pins signature names
+##   (fp MISMATCH on rename, reverted). Needs an authorized ONE-PROBE re-pin; the new lore line
+##   already tells the stellar story meanwhile. NOT IN A: notification casing audit (polish list),
+##   Batch B tablet tier, Batch C a11y (canvas keyboard/AT), v1.8 folds.
