@@ -4,7 +4,11 @@
   "description": "Verification toolkit for the Celestial Frontier single-file game",
   "scripts": {
     "extract": "node tools/extract.js",
-    "validate": "node tools/validate.js"
+    "validate": "node tools/validate.js",
+    "smoke": "node tools/smoke.js",
+    "layout": "node tools/uilayout.js",
+    "test": "node tools/validate.js && node tools/smoke.js && node tools/uilayout.js",
+    "deploy": "node tools/deploy.js"
   },
   "keywords": [],
   "author": "",
