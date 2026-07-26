@@ -1094,7 +1094,10 @@
   .psig.goable{cursor:pointer} .psig.goable:hover{background:rgba(143,180,255,0.08)}
   /* FLEET v1.7.2: locked rows keep READABLE ink (the 0.62 opacity multiplied
      over --faint landed ~2.9:1 — under AA on the game's own goal screen) */
-  .psig.locked{opacity:0.85}
+  /* v1.7.6 (round 2: '0.85 stopped one step early') — full ink on the TEXT;
+     only the icon and the empty check dim to mark the locked state */
+  .psig.locked{opacity:1}
+  .psig.locked .pic,.psig.locked .pchk{opacity:0.55}
   .psig.locked .pn{color:var(--dim)}
   .psig .pic{flex:none;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
     font-size:18px;background:rgba(150,162,210,0.1)}
@@ -1442,7 +1445,8 @@
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
   #records h4{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:var(--plasma);margin:8px 0 6px}
   #records .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:5px}
-  #records .tier{border:1px solid;border-radius:8px;padding:5px 3px;text-align:center;font-size:8.5px;letter-spacing:.03em}
+  /* v1.7.6: 11px — at 8.5px the strokes never reached their nominal colour (measured sub-AA) */
+  #records .tier{border:1px solid;border-radius:8px;padding:6px 3px;text-align:center;font-size:11px;letter-spacing:.02em}
   #records .tier .c{font:600 13px var(--ui)}
   #records .agrp{border:1px solid rgba(150,162,210,0.14);border-radius:10px;margin:5px 0;overflow:hidden}
   #records .aghead{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;cursor:pointer;
@@ -1560,6 +1564,11 @@
     font:500 10.5px/1.5 var(--ui);color:var(--dim);padding:7px 9px;border-radius:9px;
     border:1px solid var(--line);margin-bottom:6px}
   .bset.done{border-color:rgba(127,230,160,0.4)}
+  .undorow{margin:4px 6px;padding:10px 12px;border-radius:10px;cursor:pointer;font:600 11px var(--ui);
+    color:#ffcf8a;background:rgba(255,207,138,0.08);border:1px dashed rgba(255,207,138,0.45)}
+  .fabcta{margin:2px 8px 8px;padding:9px 12px;border-radius:11px;font:600 10.5px var(--ui);color:#cfe0ff;
+    background:rgba(127,208,255,0.08);border:1px solid rgba(127,208,255,0.3)}
+  .bclaim.need{pointer-events:auto}
   .bclaim{flex:none;padding:5px 10px;border-radius:8px;cursor:pointer;font:700 10px var(--ui);
     color:#1a1206;background:linear-gradient(135deg,#f2d27f,#e0a84a);border:1px solid rgba(255,220,150,0.9)}
   /* FLEET v1.7.2: the disabled shortfall button reads as guidance, not a control */
@@ -1647,7 +1656,12 @@
   #vistabox .vrow{display:flex;gap:18px;align-items:center}
   #vistabox.zoom .vrow{display:none}
   #vistabox.zoom .vxc{z-index:3}
-  #vistabox .vh{font:600 11px var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--plasma)}
+  /* v1.7.6 CF173-04: the uppercase transform CANCELLED the lowercase-region
+     fix (5 testers saw the 'fixed' contradiction). The name keeps the caps
+     look via a span; the region renders lowercase and visibly subordinate. */
+  #vistabox .vh{font:600 11px var(--ui);letter-spacing:.16em;color:var(--plasma)}
+  #vistabox .vh .vhn{text-transform:uppercase}
+  #vistabox .vh .vhr{text-transform:none;opacity:.78;font-weight:500}
   #vistabox .vt{font:600 9px var(--ui);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
   #vistabox .vpc{font:600 10px var(--ui);letter-spacing:.12em;color:var(--plasma);cursor:pointer;
     padding:7px 14px;border:1px solid var(--glass-brd);border-radius:999px;background:var(--glass)}
@@ -1692,7 +1706,7 @@
      come back if training is restarted from Settings). Prime keeps its count
      either way (v11 law). */
   #pcdxbtn .lbl,#codexbtn .lbl,#logbtn .lbl,#cargobtn .lbl,#chbtn .lbl{
-    display:none;font-size:7.5px;letter-spacing:.04em;color:var(--dim);line-height:1;margin-top:1px}
+    display:none;font-size:8.5px;letter-spacing:.04em;color:var(--dim);line-height:1;margin-top:1px}
   body.recruit #pcdxbtn .lbl,body.recruit #codexbtn .lbl,body.recruit #logbtn .lbl,
   body.recruit #cargobtn .lbl,body.recruit #chbtn .lbl{display:block}
   #pcdxbtn .ico,#codexbtn .ico,#logbtn .ico,#cargobtn .ico,#recbtn .ico,#chbtn .ico{font-size:14px}
@@ -1729,15 +1743,6 @@
     min-height:min(42dvh, 380px);
     max-height:calc(100dvh - var(--topbar-h,110px) - 162px);
     box-shadow:0 0 0 100vmax rgba(4,6,13,0.45), 0 18px 50px rgba(0,0,0,0.5)}
-  /* the sheet announces WHAT it is — no more untitled bands */
-  #log::before{content:'🌍 Star Atlas'}
-  #codex::before{content:'📖 Compendium'}
-  #chpanel::before{content:'📜 Charters'}
-  #records::before{content:'🏆 Records'}
-  #tray::before{content:'🔔 Notifications'}
-  #log::before,#codex::before,#chpanel::before,#records::before,#tray::before{
-    display:block;font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;
-    color:#f0cf8a;padding:11px 12px 7px;border-bottom:1px solid rgba(150,162,210,0.16)}
   /* bottom-pinned training cards clear the dock AND the raised hint pill */
   #tutbox.dodge{bottom:calc(170px + env(safe-area-inset-bottom,0px))}
   }
@@ -1857,6 +1862,23 @@
   /* CF-RR-007: users (or their OS battery saver) asking for reduced transparency
      get flat panels — backdrop blur is the single costliest compositing effect
      on mobile GPUs. Purely opt-in via the OS setting; the glass look is default. */
+  /* v1.7.6 CF173-07: SHORT desktops (720p laptops) move the toast lane to the
+     bottom-LEFT — the right column is where Records/Notifications live, and the
+     lane was swallowing their clicks. No suppression: feedback stays visible. */
+  @media (min-width:901px) and (max-height:820px){
+    #toast{left:18px;right:auto;align-items:flex-start}
+  }
+  /* v1.7.6 (Nick decision a): every board announces WHAT it is at EVERY width —
+     round 2's desktop testers opened three of the five main boards and found
+     unnamed groups of controls. The scrim stays touch-only; the NAME does not. */
+  #log::before{content:'🌍 Star Atlas'}
+  #codex::before{content:'📖 Compendium'}
+  #chpanel::before{content:'📜 Charters'}
+  #records::before{content:'🏆 Records'}
+  #tray::before{content:'🔔 Notifications'}
+  #log::before,#codex::before,#chpanel::before,#records::before,#tray::before{
+    display:block;font:700 11px var(--ui);letter-spacing:.14em;text-transform:uppercase;
+    color:#f0cf8a;padding:11px 12px 7px;border-bottom:1px solid rgba(150,162,210,0.16)}
   /* BATCH B: the 44px TOUCH SWEEP (fleet appendix: Accept 16px, ☆/⌂/× 20px,
      settings chips 21px — 50+ controls under the floor). Coarse pointers get
      real targets; desktop mice keep the compact look. */
@@ -1911,8 +1933,8 @@
     </div>
     <div id="bellwrap">
       <div id="bell" role="button" tabindex="0" data-tip="Every toast lands here too — nothing is missed." data-guide="settings">🔔<span id="bellct"></span></div>
-      <div id="tray">
-        <div class="thead"><span>Notifications</span>
+      <div id="tray" role="dialog" aria-label="Notifications">
+        <div class="thead"><span></span>
           <span class="tacts"><span id="trayread">mark all read</span> · <span id="trayclear">clear all</span></span>
           <button class="pnx" data-pnx="tray" type="button">&#10005;</button></div>
         <div id="traylist"></div>
@@ -1998,7 +2020,7 @@
 <!-- v1.5.2 THE SHIPYARD: the ship IS the workshop — her portrait, the
      Fabricator and the Research Bench in one place, opened by the
      Shipyard rail button (v1.5.2b: the ship is off the doll) -->
-<div id="yard"><div id="yardcard">
+<div id="yard"><div id="yardcard" role="dialog" aria-label="The Shipyard">
   <div class="chead" style="color:#7fd0ff;font-size:12px;letter-spacing:.14em;margin-bottom:6px">🛠 THE SHIPYARD</div>
   <div id="yardship"></div>
   <div id="yardbench" class="cargoish"></div>
@@ -2006,7 +2028,7 @@
 <div id="toast"></div>
 <div id="eventsbtn" role="button" tabindex="0" data-tip="Live cosmic events — every explorer sees the same sky at the same moment." data-guide="events"><span class="dot"></span>Cosmic Events</div>
 <div id="chbtn" role="button" tabindex="0" data-tip="Expedition Charters — your charter board. Chains teach the expedition&#8217;s trades one link at a time; then three fresh charters a week, the same for every explorer." data-guide="charters"><span class="ico">📜</span><span class="lbl">Charters</span></div>
-<div id="chpanel"></div>
+<div id="chpanel" role="dialog" aria-label="Charters"></div>
 <div id="events"></div>
 
 <div id="pickbox"><div class="card">
@@ -2110,12 +2132,12 @@
 </div></div>
 
 <div id="logbtn" role="button" tabindex="0" data-tip="Your bookmarked places — tap any entry to travel there." data-guide="atlas"><span class="ico">🌍</span><span class="lbl">Star Atlas</span> <span class="n" id="logcount">0</span></div>
-<div id="log"></div>
+<div id="log" role="dialog" aria-label="Star Atlas"></div>
 <div id="codexbtn" role="button" tabindex="0" data-tip="Every species you have catalogued — your fighters, breeders and medicine." data-guide="kingdoms"><span class="ico">📖</span><span class="lbl">Compendium</span> <span class="n" id="codexcount">0</span></div>
-<div id="codex"></div>
+<div id="codex" role="dialog" aria-label="Compendium"></div>
 <div id="cargobtn" role="button" tabindex="0" style="display:none" data-tip="The Shipyard — your ship, the Fabricator and the Research Bench." data-guide="crafting"><span class="ico">🛠</span><span class="lbl">Shipyard</span> <span class="n" id="cargocount">0</span></div>
 <div id="recbtn" role="button" tabindex="0" data-tip="The Records board — your rarity ladder and every achievement shelf." data-guide="achievements"><span class="ico">🏆</span><span class="lbl"> Records</span></div>
-<div id="records"></div>
+<div id="records" role="dialog" aria-label="Records"></div>
 <div id="primebox" role="dialog" aria-modal="true" aria-label="The Prime Codex"><div class="card">
   <button id="primeclose" class="pxclose" type="button">&times;</button>
   <div class="ph"><div class="pt">✦ The Prime Codex</div>
@@ -5094,29 +5116,37 @@ function slimGal(g){ if(!g) return null;
 }
 function describePick(p){
   let d=null, where=null;
+  /* v1.7.6 CF173-01 (CRITICAL, fleet round 2): zooming out of a system with a
+     survey card open nulls st.star while the panel still renders — every
+     st.star.x below threw per-frame. Resolve once; branches that genuinely
+     need a live star bail to a null card (renderPanel closes it cleanly). */
+  const _S=st.star||null;
+  const _sw=_S?{x:_S.x,y:_S.y,seed:_S.seed}:null;
+  const _needsStar=['starsys','planet','moon','comet','belt','dwarf','kuiper','oort','visitor'];
+  if(!_S && _needsStar.includes(p.kind)) return null;   /* caller treats a null card as 'nothing to show' */
   if(p.kind==='galaxy'){ d=galaxyDescriptor(p.data); where={type:'galaxy', gal:slimGal(p.data)}; }
   else if(p.kind==='quasar'){ d=quasarDescriptor(p.data); where={type:'galaxy', gal:slimGal(p.data)}; }
   else if(p.kind==='star'){ d=starDescriptor(p.data.seed); where={type:'star', gal:slimGal(st.gal), star:{x:p.data.x,y:p.data.y,seed:p.data.seed}}; }
-  else if(p.kind==='starsys'){ d=starDescriptor(p.data.seed); where={type:'star', gal:slimGal(st.gal), star:{x:st.star.x,y:st.star.y,seed:st.star.seed}}; }
+  else if(p.kind==='starsys'){ d=starDescriptor(p.data.seed); where={type:'star', gal:slimGal(st.gal), star:_sw}; }
   else if(p.kind==='planet'){ d=planetDescriptor(p.data.P, p.data.sys, p.data.pl);
-    where={type:'planet', gal:slimGal(st.gal), star:{x:st.star.x,y:st.star.y,seed:st.star.seed}, pseed:p.data.P.seed}; }
+    where={type:'planet', gal:slimGal(st.gal), star:_sw, pseed:p.data.P.seed}; }
   else if(p.kind==='moon'){ d=moonDescriptor(p.data.pl, p.data.m);
-    where={type:'planet', gal:slimGal(st.gal), star:{x:st.star.x,y:st.star.y,seed:st.star.seed}, pseed:p.data.pl.P.seed}; }
+    where={type:'planet', gal:slimGal(st.gal), star:_sw, pseed:p.data.pl.P.seed}; }
   else if(p.kind==='comet'){ d=cometDescriptor(st.star.seed, p.data.ci, p.data.cm);
-    where={type:'star', gal:slimGal(st.gal), star:{x:st.star.x,y:st.star.y,seed:st.star.seed}}; }
+    where={type:'star', gal:slimGal(st.gal), star:_sw}; }
   else if(p.kind==='belt'){ d=beltDescriptor(p.data.sys, st.star.seed);
-    where={type:'star', gal:slimGal(st.gal), star:{x:st.star.x,y:st.star.y,seed:st.star.seed}}; }
+    where={type:'star', gal:slimGal(st.gal), star:_sw}; }
   else if(p.kind==='deco'){ d=decoDescriptor(p.data);
     where={type:'galaxy', gal:slimGal(st.gal)}; }
   else if(p.kind==='worm'){ d=wormholeDescriptor(); where=null; }
   else if(p.kind==='dwarf'){ d=dwarfDescriptor(p.data.dw);
-    where={type:'star', gal:slimGal(st.gal), star:{x:st.star.x,y:st.star.y,seed:st.star.seed}}; }
+    where={type:'star', gal:slimGal(st.gal), star:_sw}; }
   else if(p.kind==='kuiper'){ d=kuiperDescriptor(p.data.sys, st.star.seed);
-    where={type:'star', gal:slimGal(st.gal), star:{x:st.star.x,y:st.star.y,seed:st.star.seed}}; }
+    where={type:'star', gal:slimGal(st.gal), star:_sw}; }
   else if(p.kind==='oort'){ d=oortDescriptor(st.star.seed);
-    where={type:'star', gal:slimGal(st.gal), star:{x:st.star.x,y:st.star.y,seed:st.star.seed}}; }
+    where={type:'star', gal:slimGal(st.gal), star:_sw}; }
   else if(p.kind==='visitor'){ d=visitorDescriptor(st.star.seed);
-    where={type:'star', gal:slimGal(st.gal), star:{x:st.star.x,y:st.star.y,seed:st.star.seed}}; }
+    where={type:'star', gal:slimGal(st.gal), star:_sw}; }
   else if(p.kind==='radio'){ d=radioDescriptor(p.data);
     where={type:'galaxy', gal:slimGal(p.data)}; }
   else if(p.kind==='snova'){ d=supernovaDescriptor(p.data);
@@ -12568,7 +12598,7 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
     const cvA=_hdAbyssScene({seed:P.seed, aqua:(xtra&&xtra.aqua)||0,
       genes:(xtra&&xtra.aquaGenes)||[]});   /* review fix: the deep's own species (the proof sheets passed genes; the game never did) */
     const _vwnA=(function(){ try{ const q=(st.sys&&st.sys.planets)?st.sys.planets.find(x=>x&&x.P&&x.P.seed===P.seed):null; return (q&&q.name)||null; }catch(_){ return null; } })();
-    const headA='The deep — '+(_vwnA?_vwnA+' · '+String(wb5.n).toLowerCase():wb5.n);
+    const headA='<span class="vhn">The deep — '+(_vwnA?_vwnA+'</span> · <span class="vhr">'+String(wb5.n).toLowerCase()+'</span>':wb5.n+'</span>');
     const vtTxtA='beneath the surface — tap to continue';
     _vistaMount(headA, cvA, vtTxtA);
     _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
@@ -12586,7 +12616,7 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
     const cvR=_hdReefScene({seed:P.seed,
       genes:(xtra&&xtra.aquaGenes)||[]});   /* review fix: the reef swims the world's AQUA species — genes held the LAND herd (land beasts swam, real fish stayed invisible) */
     const _vwnR=(function(){ try{ const q=(st.sys&&st.sys.planets)?st.sys.planets.find(x=>x&&x.P&&x.P.seed===P.seed):null; return (q&&q.name)||null; }catch(_){ return null; } })();
-    const headR='The reef — '+(_vwnR?_vwnR+' · '+String(wb5.n).toLowerCase():wb5.n);
+    const headR='<span class="vhn">The reef — '+(_vwnR?_vwnR+'</span> · <span class="vhr">'+String(wb5.n).toLowerCase()+'</span>':wb5.n+'</span>');
     const vtTxtR='beneath the shallows — tap to continue';
     _vistaMount(headR, cvR, vtTxtR);
     _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
@@ -12611,7 +12641,7 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
      the landing region follows lowercase, visibly subordinate */
   const _vwn=(function(){ try{ const q=(st.sys&&st.sys.planets)?st.sys.planets.find(x=>x&&x.P&&x.P.seed===P.seed):null;
     return (q&&q.name)||null; }catch(_){ return null; } })();
-  const head5='Planetfall — '+(_vwn?_vwn+' · '+String((wb5&&wb5.n)||TYPE_LABEL[type]||'world').toLowerCase():((wb5&&wb5.n)||TYPE_LABEL[type]||'World'));
+  const head5='<span class="vhn">Planetfall — '+(_vwn?_vwn+'</span> · <span class="vhr">'+String((wb5&&wb5.n)||TYPE_LABEL[type]||'world').toLowerCase()+'</span>':((wb5&&wb5.n)||TYPE_LABEL[type]||'World')+'</span>');
   const WXW={rain:'rain',snow:'snowfall',dust:'dust storm',ash:'ashfall',haze:'haze'};
   const vtTxt5='local '+tod+(wx?' · '+(WXW[wx]||wx):'')+
     (evt5?' · '+WX_EVENT_WORD[evt5]:'')+' — tap to continue';
@@ -13656,7 +13686,7 @@ function renderPanel(p, isLocked){
     /* the surface card sits top-left — unless the explorer dragged it */
     if(_frozenFor===d.logId && _frozenPos){
       ax=clamp(_frozenPos.x, 8, W-pw-8);
-      ay=clamp(_frozenPos.y, _topMin, H-ph-12);
+      ay=clamp(_frozenPos.y, _topMin, H-ph-((W<=900)?150:12));
     } else { ax=16; ay=_topMin; }
   }
   else if(isLocked && _frozenFor===d.logId && _frozenPos){
@@ -13674,10 +13704,10 @@ function renderPanel(p, isLocked){
     }
     if(tutDone && p.sx!=null) _frozenPick={x:p.sx, y:p.sy};
     ax=clamp(_frozenPos.x, 8, W-pw-8);
-    ay=clamp(_frozenPos.y, _topMin, H-ph-12);
+    ay=clamp(_frozenPos.y, _topMin, H-ph-((W<=900)?150:12));
   } else {
     ax = p.sx+20+pw < W-8 ? p.sx+20 : p.sx-pw-20;
-    ay = clamp(p.sy-10, _topMin, H-ph-12);
+    ay = clamp(p.sy-10, _topMin, H-ph-((W<=900)?150:12));
     ax = clamp(ax, 8, W-pw-8);
     if(isLocked){ _frozenFor=d.logId; _frozenPos={x:ax, y:ay}; _frozenPick=(tutDone && p.sx!=null)?{x:p.sx, y:p.sy}:null; }
     else { _frozenFor=null; }
@@ -13890,8 +13920,12 @@ function addToLog(d){
   queueSave();
 }
 function renderLog(){
+  /* v1.7.6 (round 2): the undo lives IN the list where the row was — the toast
+     alone put it ~400px from the finger that mis-tapped */
+  const _undoRow=(_lastAtlasDel && Date.now()-_lastAtlasDel.t<8000)
+    ? '<div class="undorow" data-undo-atlas role="button" tabindex="0">🗑 '+esc(_lastAtlasDel.entry.title||'Entry')+' removed — <b>tap to undo</b></div>' : '';
   if(logMap.size===0){
-    logEl.innerHTML='<div class="empty">Nothing saved yet.<br>Open any survey and press <b>+ Add to Star Atlas</b>.<br>Star your favorites and set a home, then jump between them from here.</div>';
+    logEl.innerHTML=_undoRow+'<div class="empty">Nothing saved yet.<br>Open any survey and press <b>+ Add to Star Atlas</b>.<br>Star your favorites and set a home, then jump between them from here.</div>';
     return;
   }
   if(homeId && !logMap.has(homeId)) homeId=null;
@@ -13939,6 +13973,7 @@ function renderLog(){
         '<button class="del" data-del="'+it.id+'" data-tip="Remove from Star Atlas" title="Remove">&times;</button>'+
       '</div></div>';
   }
+  html=_undoRow+html;
   html+='<div class="sub-hint">tap an entry to travel · ☆ favorite · ⌂ home · × remove</div>';
   logEl.innerHTML=html;
 }
@@ -13959,6 +13994,8 @@ logEl.addEventListener('click', e=>{
          :'“'+(t?t.title:'This place')+'” is now your home — jump to it anytime from the Star Atlas.');
     return;
   }
+  const uz=e.target.closest('[data-undo-atlas]');
+  if(uz){ _undoAtlasDel(); return; }
   const del=e.target.closest('[data-del]');
   if(del){
     /* FLEET v1.7.2: an unlabeled × inside a travel-tap row deleted with no
@@ -15072,10 +15109,16 @@ function _showToast(title, msg, go){
      back (everything already lands in the 🔔 tray, and the badge says so).
      This is the report's own remedy for toasts burying the very panel the
      player just opened. */
+  /* v1.7.6 CF173-07: yield to open boards where they'd collide — phones/tablets
+     (≤900w) AND short desktops (≤820h, the 720p laptop case). The survey card
+     is NOT a board: suppressing on it ate charter-completion feedback. */
+  /* ≤900 (dock/sheet land): boards own the screen, toasts hold to the tray.
+     Short DESKTOPS instead get a relocated bottom-LEFT lane (CSS) — suppressing
+     there ate the completion feedback the board itself produced. */
   try{
     if(window.innerWidth<=900){
       const busy=(typeof sheetOpen!=='undefined'&&sheetOpen) ||
-        (typeof PANELS!=='undefined'&&PANELS.some(p=>{ try{ return p.open&&p.open(); }catch(_){ return false; } }));
+        (typeof PANELS!=='undefined'&&PANELS.some(p=>{ try{ return p.id!=='panel' && p.open&&p.open(); }catch(_){ return false; } }));
       if(busy) return;
     }
   }catch(_){ }
@@ -15092,26 +15135,27 @@ function _showToast(title, msg, go){
   /* FLEET CRITICAL #1 (v1.7.2): on phones the arrival burst (4 toasts in 5s)
      buried the dock, the control hint and any open panel — narrow viewports
      show ONE card at a time; older cards yield (they all live in the 🔔 tray) */
-  try{ if(window.innerWidth<=420){ while(toastEl.children.length>=1) toastEl.firstChild.remove(); } }catch(_){ }
+  try{ if(window.innerWidth<=900){ while(toastEl.children.length>=1) toastEl.firstChild.remove(); } }catch(_){ }
   toastEl.appendChild(el);
   setTimeout(dismiss, hold);
 }
 let _lastSalvage=null;   /* {id, ret, t} — QoL m undo window */
 let _lastAtlasDel=null;  /* FLEET v1.7.2: {entry, wasHome, t} — atlas × undo window */
+function _undoAtlasDel(){
+  if(!(_lastAtlasDel && Date.now()-_lastAtlasDel.t<8000)) return;
+  const u=_lastAtlasDel; _lastAtlasDel=null;
+  if(u.entry && u.entry.id && !logMap.has(u.entry.id)){
+    logMap.set(u.entry.id, u.entry);
+    if(u.wasHome) homeId=u.entry.id;
+    logCountEl.textContent=logMap.size;
+    try{ if(logOpen) renderLog(); }catch(_){ }
+    toast('🗺 Re-charted', esc(u.entry.title||'Entry')+' is back in your Star Atlas.');
+    queueSave();
+  }
+}
 function _goSurface(name){
   try{
-    if(name==='undo-atlas' && _lastAtlasDel && Date.now()-_lastAtlasDel.t<8000){
-      const u=_lastAtlasDel; _lastAtlasDel=null;
-      if(u.entry && u.entry.id && !logMap.has(u.entry.id)){
-        logMap.set(u.entry.id, u.entry);
-        if(u.wasHome) homeId=u.entry.id;
-        logCountEl.textContent=logMap.size;
-        try{ if(logOpen) renderLog(); }catch(_){ }
-        toast('🗺 Re-charted', esc(u.entry.title||'Entry')+' is back in your Star Atlas.');
-        queueSave();
-      }
-      return;
-    }
+    if(name==='undo-atlas'){ _undoAtlasDel(); return; }
     if(name==='charters' && chBtn && !chOpen) chBtn.click();
     else if(name==='undo-salvage' && _lastSalvage && Date.now()-_lastSalvage.t<6000){
       const u=_lastSalvage;
@@ -15735,7 +15779,7 @@ function doSave(){
     /* FLEET v1.7.2 (cautious-newbie): the FIRST successful save of a fresh
        expedition announces itself once — the only save messaging used to be a
        data-loss warning sitting above the red Reset button */
-    if(!_savedChip){ _savedChip=true;
+    if(!_savedChip && tutDone){ _savedChip=true;   /* v1.7.6 CF173-06: recruits get this at graduation — it used to mount 2px behind the training card and expire unread */
       try{ toast('✓ Expedition saved', 'Progress saves automatically on this device — no account needed.'); }catch(_){ } }
   }catch(_){
     /* private mode or quota — session continues unsaved */
@@ -18545,10 +18589,25 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.5';
+const GAME_VERSION='1.7.6';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.6', title:'The Regression Round', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🛑 A CRASH, CAUGHT — zooming out of a system with a survey card open could throw an error every frame; the card now closes cleanly when its star leaves the view.',
+  '🗂 ONE SURFACE AT A TIME — opening any board now puts the survey card away first (boards were stacking on top of it), tapping the card never closes a board, Escape reaches the card too, and on phones the card stops above the dock instead of tangling with it.',
+  '🌍 THE WORLD-NAME FIX ACTUALLY SHOWS — the Planetside header&#8217;s lowercase landing region was being re-capitalized by styling; &#8220;PLANETFALL — MERCURY · carbon world&#8221; now reads as intended.',
+  '🔔 TOASTS BEHAVE EVERYWHERE — they no longer hide behind the training card (the &#8220;expedition saved&#8221; note now greets you at graduation), short laptop screens get a left-side lane clear of Records, and tablets show one at a time.',
+  '🏷 ONE TITLE PER BOARD — Records and Notifications stopped saying their names twice, and every board now carries its title on desktop as well as phones.'],
+ ],
+ ['🖱 UI Enhancements', [
+  '🛠 HONEST SHORTFALLS — an unaffordable recipe lists everything it&#8217;s missing (&#8220;Need 3× Iron + 1× Chromium&#8221;), the buttons can be hovered and tabbed for details, and the Fabricator opens with your <b>closest build</b> and how to close the gap.',
+  '📜 DEEDS ALREADY DONE SAY SO — a charter you&#8217;ve already fulfilled shows <b>Claim ✓</b> instead of asking you to do it again, and accepting it pays on the spot.',
+  '🗺 UNDO WHERE YOU NEED IT — removing an Atlas entry offers its undo right in the list, under your finger.',
+  '🔎 SMALL TYPE, RAISED — the rarity ladder, titan guidance lines, dock captions and the control hint (which now wraps instead of cutting off &#8220;double-tap zooms&#8221;) all stepped up in size or contrast.'],
+ ],
+]},
 {v:'1.7.5', title:'Clear Air', date:'July 2026', sections:[
  ['🖱 UI Enhancements', [
   '📏 ROOM TO BREATHE — the control hint pill, the caption above it, and the training card each step cleanly above the dock instead of brushing the chip tops.'],
@@ -21115,17 +21174,41 @@ const _fabOpen=new Set(['part']);
 /* FLEET v1.7.2: name the ONE thing stopping a craft — the first missing
    material (with count), missing part, gate item, or Signature lock */
 function _craftNeed(it, sigLock, gatedBy){
+  /* v1.7.6 CF173-05: quote EVERY shortfall, not the first — 'Need 3× Iron' on
+     a recipe also short 1× Chromium turned one mining trip into two */
   try{
     if(sigLock) return '🔒 '+sigLock;
     if(gatedBy) return 'Needs '+gatedBy;
-    for(const k in (it.cost||{})){ const short=it.cost[k]-(cargo.get(k)||0); if(short>0) return 'Need '+short+'× '+matName(k); }
-    for(const k in (it.parts||{})){ const short=it.parts[k]-itemCount(k); if(short>0) return 'Need '+short+'× '+((ITEM_BY.get(k)||{}).name||k); }
-    if(it.sd && essence<it.sd) return 'Need ☄ '+(it.sd-essence)+' more';
+    const short=[];
+    for(const k in (it.cost||{})){ const n=it.cost[k]-(cargo.get(k)||0); if(n>0) short.push(n+'× '+matName(k)); }
+    for(const k in (it.parts||{})){ const n=it.parts[k]-itemCount(k); if(n>0) short.push(n+'× '+((ITEM_BY.get(k)||{}).name||k)); }
+    if(it.sd && essence<it.sd) short.push('☄ '+(it.sd-essence));
+    if(short.length) return 'Need '+(short.length<=2 ? short.join(' + ') : short[0]+' + '+(short.length-1)+' more');
   }catch(_){ }
   return 'Missing materials';
 }
 function _fabHTML(){
   let html='';
+  /* v1.7.6 (Nick decision c): the Fabricator opens with the CLOSEST BUILD — a
+     fresh save saw nine refusals and no next move; now the nearest-affordable
+     recipe names its remaining gap and where to close it */
+  try{
+    let best=null;
+    for(const it of ITEMS){
+      if(it.cat==='sys'&&itemCount(it.id)>0) continue;
+      if(it.sig && !primeFill[it.sig]) continue;
+      if(it.req && itemCount(it.req)<1) continue;
+      let gap=0, ok=true;
+      for(const k in (it.cost||{})){ const n=it.cost[k]-(cargo.get(k)||0); if(n>0) gap+=n; }
+      for(const k in (it.parts||{})){ const n=it.parts[k]-itemCount(k); if(n>0){ ok=false; break; } }
+      if(!ok || gap===0) continue;
+      if(!best || gap<best.gap) best={it, gap};
+    }
+    if(best){
+      html+='<div class="fabcta">🧭 Closest build: <b>'+best.it.name+'</b> — '+esc(_craftNeed(best.it,null,null)).replace('Need ','')+
+        ' away · <span style="opacity:.75">press ⛏ Mine on a surveyed world&#8217;s card to close the gap</span></div>';
+    }
+  }catch(_){ }
   const GROUPS=[['part','Basic Parts — T1'],['comp','Components — T2'],['sys','Ship Systems — T3'],['gear','Explorer Gear'],['relic','Signature Relics — a master’s reward']];
   for(const [cat,label] of GROUPS){
     const list=ITEMS.filter(it=>it.cat===cat);
@@ -21165,7 +21248,7 @@ function _fabHTML(){
         (built?'<span class="bclaimed">online ✓</span>'
               :(can?'<button class="bclaim" data-craft="'+it.id+'" type="button">Craft</button>'+((it.cat==='part'||it.cat==='comp')?'<button class="bclaim b5" data-craft5="'+it.id+'" type="button" title="Craft up to five in one press">×5</button>':'')
               /* FLEET v1.7.2: unaffordable ≠ invisible — the disabled button NAMES the binding shortfall */
-              :'<button class="bclaim need" type="button" disabled>'+esc(_craftNeed(it, sigLock, gatedBy))+'</button>'))+
+              :'<button class="bclaim need" type="button" aria-disabled="true" data-tip="'+esc(_craftNeed(it, sigLock, gatedBy))+' — the cost line below lists everything">'+esc(_craftNeed(it, sigLock, gatedBy))+'</button>'))+
         (built?'':'<button class="bpin'+(pinnedRecipe===it.id?' on':'')+'" data-pin="'+it.id+'" type="button" title="'+(pinnedRecipe===it.id?'Unpin this recipe':'Pin — a chip tracks the missing materials while you mine')+'">📌</button>')+
         '</div>';
     }
@@ -22282,7 +22365,7 @@ function renderPrime(){
       (s.guardian?'<div class="psub2" style="color:#ff8a72">\u2694 Guarded by <b>'+s.guardian+'</b></div>':'')+
       (s.lore?'<div class="plore">'+s.lore+'</div>':'')+
       '<div class="psub2" style="color:'+_res.col+'">\ud83d\udce1 '+(track?_res.text+' \u00b7 <b>tap to track \u2197</b>':(s.reach||_res.text))+'</div>'+
-      (relic?'<div class="psub2" style="color:var(--faint)">relic blueprint on the claim</div>':'')+
+      (relic?'<div class="psub2" style="color:var(--dim)">relic blueprint on the claim</div>':'')+
       '</div><div class="pchk">\u25cb</div></div>';
   }).join('');
   const meter=document.getElementById('prime-meter'); if(meter) meter.style.width=Math.round(n/9*100)+'%';
@@ -22631,6 +22714,16 @@ function chAccept(id){
   /* never 'already proven' off SANDBOX training stats — deeds count for real
      only after graduation */
   if(tutDone){ try{ proven=!!(c.chk && c.chk()); }catch(_){ proven=false; } }
+  /* v1.7.6 (round 2): LANDFALL charters honor landings already made — the
+     landed set is replayed through the charter's own filter, so 'First
+     footfall: Mercury' accepted while standing there completes on the spot
+     (the banked-state law, extended from chk() charters to landfall events) */
+  if(tutDone && !proven && c.ev==='landfall'){
+    try{
+      let n=0; for(const sd of landed){ if(!c.filt || c.filt({planetSeed:sd})) n++; if(n>=c.n) break; }
+      if(n>=c.n) proven=true; else if(n>0) chProg[id]=n;
+    }catch(_){ }
+  }
   try{ gameEvent('chaccept',{id:id}); }catch(_){ }
   if(proven) _chComplete(c, true);
   else toast('Charter Accepted', '“'+c.t+'”'+(c.n>1?' — counting from here on.':'')+' Pays +'+c.sd+' ☄ on completion.', 'charters');
@@ -22768,9 +22861,16 @@ function renderCharters(){
     h+='<div class="ehead">Available — accept to begin</div>';
     if(acc.length>=CH_CAP) h+='<div class="ambient">Three charters is a full slate — see one through to accept another.</div>';
     for(const c of avail){
+      /* v1.7.6: a deed the frontier has already seen wears its truth — the
+         button reads CLAIM and the accept completes it on the spot */
+      let _done=false;
+      try{
+        if(c.chk) _done=!!c.chk();
+        else if(c.ev==='landfall'){ let n=0; for(const sd of landed){ if(!c.filt || c.filt({planetSeed:sd})) n++; if(n>=c.n) break; } _done=n>=(c.n||1); }
+      }catch(_){ _done=false; }
       h+='<div class="ch"><div class="ct">'+c.t+
-        '<span class="cr">+'+c.sd+' ☄</span><span class="cacc" role="button" tabindex="0" data-chacc="'+c.id+'">Accept</span></div>'+
-        '<div class="cd">'+c.d+(c.item&&ITEM_BY.get(c.item)?' <span style="color:#ffd96a">Pays gear: '+ITEM_BY.get(c.item).name+'.</span>':'')+'</div></div>';
+        '<span class="cr">+'+c.sd+' ☄</span><span class="cacc'+(_done?' rdy':'')+'" role="button" tabindex="0" data-chacc="'+c.id+'">'+(_done?'Claim ✓':'Accept')+'</span></div>'+
+        '<div class="cd">'+(_done?'<span style="color:#7fe6a0">Honoured in the doing — claim the pay.</span> ':'')+c.d+(c.item&&ITEM_BY.get(c.item)?' <span style="color:#ffd96a">Pays gear: '+ITEM_BY.get(c.item).name+'.</span>':'')+'</div></div>';
     }
   }
   const lock=_chLockedNote();
@@ -23404,6 +23504,7 @@ function startTutorial(){
   };
   _tutStep=-1;
   document.body.classList.add('training');   /* dialogs yield the top to the card */
+  try{ while(toastEl.firstChild) toastEl.firstChild.remove(); }catch(_){ }   /* v1.7.6: standing toasts too — same lane, lower z, they lost anyway (tray keeps them) */
   _tutAdvance();
   /* review perf catch (mobile): a second 350ms _tutSpot interval ran here on
      top of _tutShow's per-step 200ms tracker — the SAME function twice, ~8
@@ -23814,20 +23915,30 @@ const PANELS=[
   {id:'prime',    el:()=>document.getElementById('primebox'), btn:'#pcdxbtn', x:0,
     open:()=>{ const p=document.getElementById('primebox'); return !!(p && p.style.display && p.style.display!=='none'); },
     close:()=>{ const p=document.getElementById('primebox'); if(p) p.style.display='none'; }},
+  /* v1.7.6 CF173-03: the survey card is a REGISTERED surface — opening any
+     board closes it (85→243 overlap defects came from boards stacking onto a
+     card that never yielded), outside-tap logic sees it as itself via
+     MODAL_SEL, and Escape reaches it after the boards. LAST in the array so
+     boards close first. */
+  {id:'panel',    el:()=>panelEl, btn:null, x:1,
+    open:()=>!!(panelEl && panelEl.style.display && panelEl.style.display!=='none'),
+    close:()=>{ try{ locked=null; stickyPick=null; }catch(_){ } panelEl.style.display='none'; panelRect=null; _panelKey=null; }},
 ];
 function closePanels(except){
-  for(const p of PANELS){ try{ if(p.id!==except && p.open()) p.close(); }catch(_){ } }
+  /* v1.7.6: during training the LESSON owns the survey card's lifecycle — the
+     atlas-open step would otherwise close the card the land step needs */
+  for(const p of PANELS){ try{ if(p.id!==except && !(p.id==='panel' && !tutDone) && p.open()) p.close(); }catch(_){ } }
   /* FLEET v1.7.2: on phones a board OPENING claims the screen — any toast
      cards still standing yield immediately (every one lives in the 🔔 tray).
      `except` is truthy exactly when a panel is opening. */
   try{
-    if(except && window.innerWidth<=900 && typeof toastEl!=='undefined'){
+    if(except && except!=='panel' && window.innerWidth<=900 && typeof toastEl!=='undefined'){
       while(toastEl.firstChild) toastEl.firstChild.remove();
     }
   }catch(_){ }
 }
 /* modals keep their own explicit buttons — the manager never touches them */
-const MODAL_SEL='#reveal,#pickbox,#duelbox,#sharebox,#namebox,#platebox,#itemcard,#deathbox,#endingbox,#relbox,#tutbox,#helppop,#vistabox,#toast,#descbox';
+const MODAL_SEL='#reveal,#pickbox,#duelbox,#sharebox,#namebox,#platebox,#itemcard,#deathbox,#endingbox,#relbox,#tutbox,#helppop,#vistabox,#toast,#descbox,#panel';   /* v1.7.6: card taps never close boards */
 document.addEventListener('pointerdown', e=>{
   if(!tutDone) return;                     /* training keeps its own locks */
   const t=e.target;
@@ -23913,7 +24024,7 @@ function renderRecords(){
   const el=document.getElementById('records'); if(!el) return;
   const tierHave=new Array(GRADE_TIERS.length).fill(0);
   for(const e of codex.values()) if(e.grade) tierHave[e.grade.tier]++;
-  let html='<div class="chead" style="color:#ffd96a">🏆 Records</div>';
+  let html='';   /* v1.7.6 CF173-08: the panel ::before title is the ONE heading (this inner chead doubled it) */
   html+='<h4>Rarity ladder</h4><div class="tiers">'+RARITY_V17.map(T=>{
     const n = T.t<9 ? tierHave[T.t] : (tierHave[9]+tierHave[10]+tierHave[11]+tierHave[12]+tierHave[13]+tierHave[14]);   /* Transcendent folds raw 9–14 */
     return '<div class="tier" style="border-color:'+T.hex+(n?'':'44')+';color:'+T.hex+'"><div class="c">'+n+'</div>'+T.name+'</div>';
