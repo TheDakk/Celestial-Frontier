@@ -213,7 +213,7 @@
   body.fs-lg #panel .tag{font-size:10.5px}
   body.fs-lg #codex .sp .ds, body.fs-lg #tray .nt .ms, body.fs-lg #events .ev .ds{font-size:12px}
   body.fs-lg #codex .sp .nm, body.fs-lg #tray .nt .tt, body.fs-lg #events .ev .tt{font-size:13px}
-  body.fs-lg #stats .srow, body.fs-lg #log .item .nm{font-size:13px}
+  body.fs-lg #stats .srow, body.fs-lg #records .srow, body.fs-lg #log .item .nm{font-size:13px}
   body.fs-lg #log .item .ds{font-size:11px}
   body.fs-lg #hptext{font-size:10.5px}
   body.fs-lg #hpheart{font-size:17px}
@@ -239,7 +239,7 @@
   body.fs-xl #panel .tag{font-size:12px}
   body.fs-xl #codex .sp .ds, body.fs-xl #tray .nt .ms, body.fs-xl #events .ev .ds{font-size:13.5px}
   body.fs-xl #codex .sp .nm, body.fs-xl #tray .nt .tt, body.fs-xl #events .ev .tt{font-size:15px}
-  body.fs-xl #stats .srow, body.fs-xl #log .item .nm{font-size:15px}
+  body.fs-xl #stats .srow, body.fs-xl #records .srow, body.fs-xl #log .item .nm{font-size:15px}
   body.fs-xl #log .item .ds{font-size:12.5px}
   body.fs-xl #hptext{font-size:11.5px}
   body.fs-xl #hpheart{font-size:19px}
@@ -277,8 +277,12 @@
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.6)}
   #tray .thead{display:flex;justify-content:space-between;align-items:baseline;padding:3px 6px 8px;
     font:600 10px var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--plasma)}
-  #tray .tacts{font:600 9px var(--ui);letter-spacing:.04em;text-transform:none;color:#9fc2ff}
-  #tray .tacts span{cursor:pointer}
+  /* FLEET v1.7.2: real touch targets (were ~33×8px on a touch screen) and the
+     destructive one wears a distinct muted-danger tone */
+  #tray .tacts{font:600 10.5px var(--ui);letter-spacing:.04em;text-transform:none;color:#9fc2ff;display:flex;gap:6px;align-items:center}
+  #tray .tacts span{cursor:pointer;padding:12px 10px;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center;border-radius:9px}
+  #tray .tacts span:hover{background:rgba(150,162,210,0.12)}
+  #tray #trayclear{color:#ff9a86}
   #tray .tacts span:hover{color:#cfe2ff;text-decoration:underline}
   #tray .nt{display:flex;gap:8px;padding:8px 8px;border-radius:10px;cursor:pointer;margin:3px 0;
     border:1px solid rgba(150,162,210,0.12);transition:background .15s}
@@ -371,8 +375,10 @@
     text-align:center;margin:6px 0 0}
   #stats h4{font:600 10px var(--ui);letter-spacing:.13em;text-transform:uppercase;color:var(--plasma);margin:12px 0 6px}
   #stats h4:first-child{margin-top:0}
-  #stats .srow{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:#e2e7f8;margin:4px 0}
-  #stats .srow .k{color:var(--dim)}
+  /* FLEET v1.7.2: #records shares the ledger rows — the missing selector fused
+     'Mercury'+'carbon' into one word in the Expedition Journal */
+  #stats .srow,#records .srow{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:#e2e7f8;margin:4px 0}
+  #stats .srow .k,#records .srow .k{color:var(--dim)}
   #stats .bar{height:5px;border-radius:99px;background:rgba(150,162,210,0.15);overflow:hidden;margin-top:5px}
   #stats .bar i{display:block;height:100%;background:linear-gradient(90deg,#8fb4ff,#ffcf8a)}
   #stats .tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:5px}
@@ -805,6 +811,10 @@
 
   /* ---- toasts (achievements, share confirmations) ---- */
   #toast{position:fixed;right:18px;bottom:54px;z-index:40;display:flex;flex-direction:column;gap:8px;pointer-events:none;max-width:min(320px,86vw)}
+  /* FLEET v1.7.2: the cards themselves are hit-testable — the › deep link and
+     tap-to-dismiss were DEAD (container is pointer-events:none and nothing
+     re-enabled it; the chevron promised a tap the layer swallowed) */
+  #toast .tst{pointer-events:auto;cursor:pointer}
   #toast .tst{background:var(--glass);border:1px solid rgba(255,207,138,0.4);border-radius:12px;padding:10px 14px;
     font:12px/1.45 var(--body);color:var(--ink);box-shadow:0 10px 30px rgba(0,0,0,0.5);cursor:pointer;
     backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:tin .3s ease}
@@ -947,6 +957,10 @@
     background:rgba(143,180,255,0.08);border:1px solid rgba(143,180,255,0.25);border-radius:9px;
     cursor:pointer;transition:background .15s,color .15s}
   #panel .act:hover{background:rgba(143,180,255,0.18)}
+  /* FLEET v1.7.2: the card's ONE primary — gold fill like BEGIN/ACCEPT/CONTINUE
+     (five identical dim pills gave a first-timer no read on the next step) */
+  #panel .act.primary{background:linear-gradient(96deg,rgba(240,198,116,0.92),rgba(255,217,140,0.85));color:#1a1408;font-weight:700;border-color:rgba(255,217,106,0.9)}
+  #panel .act.primary:hover{background:linear-gradient(96deg,rgba(255,215,140,1),rgba(255,228,168,0.95))}
   /* uniform bookmark controls on every survey card: add + favorite + home */
   #panel .atlasrow{display:flex;gap:6px;margin-top:9px;align-items:stretch}
   #panel .atlasrow .act{margin-top:0;flex:1}
@@ -1050,7 +1064,11 @@
   /* ---- Prime Codex modal ---- */
   #primebox,#endingbox{position:fixed;inset:0;z-index:42;display:none;align-items:center;justify-content:center;
     background:rgba(4,5,10,0.82);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);padding:18px}
-  #primebox .card{position:relative;width:min(460px,calc(100vw - 28px));max-height:calc(100vh - 36px);overflow-y:auto;
+  /* FLEET v1.7.2: visible scrollbar + safe-area headroom — a 720px laptop showed
+     six of nine Signatures with zero scroll cue (Void and Prism invisible) */
+  #primebox .card{scrollbar-color:rgba(240,200,110,0.5) rgba(150,162,210,0.12)}
+  #primebox .card::-webkit-scrollbar{width:8px} #primebox .card::-webkit-scrollbar-thumb{background:rgba(240,200,110,0.5);border-radius:8px}
+  #primebox .card{position:relative;width:min(460px,calc(100vw - 28px));max-height:calc(100dvh - 36px - env(safe-area-inset-top,0px));overflow-y:auto;
     background:var(--glass);border:1px solid rgba(255,207,138,0.4);border-radius:20px;padding:24px 22px;
     box-shadow:0 0 70px rgba(255,207,138,0.12),0 26px 80px rgba(0,0,0,0.7)}
   /* the Prime Codex ✕ joins the family (Nick: "a different type of X") —
@@ -1074,7 +1092,10 @@
     background:rgba(8,9,16,0.5);border:1px solid var(--line)}
   .psig.filled{border-color:var(--c);box-shadow:inset 0 0 0 1px var(--c)}
   .psig.goable{cursor:pointer} .psig.goable:hover{background:rgba(143,180,255,0.08)}
-  .psig.locked{opacity:0.62}
+  /* FLEET v1.7.2: locked rows keep READABLE ink (the 0.62 opacity multiplied
+     over --faint landed ~2.9:1 — under AA on the game's own goal screen) */
+  .psig.locked{opacity:0.85}
+  .psig.locked .pn{color:var(--dim)}
   .psig .pic{flex:none;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
     font-size:18px;background:rgba(150,162,210,0.1)}
   .psig.filled .pic{background:color-mix(in srgb,var(--c) 22%,transparent)}
@@ -1082,7 +1103,11 @@
   .psig .pn{font:600 12.5px var(--ui);color:var(--ink)}
   .psig .pby{font-size:11px;color:var(--c,#9fb6d6);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .psig .pby .pstar{color:var(--c);font-size:9px;letter-spacing:.5px}
-  .psig .psub2{font-size:9.5px;color:var(--faint);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  /* FLEET v1.7.2 (7 testers, 9 devices): the sub-lines WRAP now — single-line
+     ellipsis cut every titan's guidance mid-word on anything narrower than a
+     desktop ('build toward the stars to h…' × 9) */
+  .psig .psub2{font-size:10.5px;color:var(--dim);margin-top:1px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .psig .plore{font-size:11px;color:var(--ink);opacity:.88;margin-top:2px;line-height:1.45}
   .psig .pchk{flex:none;font-size:15px;color:var(--faint)}
   .psig.filled .pchk{color:var(--c)}
   #prime-frontier{width:100%;margin-top:16px;padding:13px 0;font:700 13px var(--ui);letter-spacing:.1em;text-transform:uppercase;
@@ -1172,18 +1197,20 @@
   #tutbox .tx b{color:var(--ink)}
   #tutbox .tx em{color:var(--plasma);font-style:normal}
   #tutbox .tbtns{display:flex;gap:8px;margin-top:11px;align-items:center}
-  #tutbox #tut-act,#tutbox #tut-skip-yes{flex:1;padding:9px 0;font:700 11px var(--ui);letter-spacing:.08em;
+  #tutbox #tut-act,#tutbox #tut-skip-no.tut-primary{flex:1;padding:9px 0;font:700 11px var(--ui);letter-spacing:.08em;
     text-transform:uppercase;cursor:pointer;color:#1a1206;border:1px solid rgba(255,220,150,0.9);
     border-radius:10px;background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a)}
-  #tutbox #tut-skip,#tutbox #tut-skip-no{margin-left:auto;padding:6px 10px;font:600 10px var(--ui);cursor:pointer;
-    color:var(--faint);background:none;border:none;text-decoration:underline;text-underline-offset:2px}
+  /* FLEET v1.7.2: skip is a quiet GHOST button (not a 25px underlined link —
+     under the iOS touch floor), Keep Training wears the primary gold */
+  #tutbox #tut-skip,#tutbox #tut-skip-yes{margin-left:auto;padding:12px 12px;min-height:44px;box-sizing:border-box;font:600 10.5px var(--ui);cursor:pointer;
+    color:var(--dim);background:none;border:1px solid rgba(150,162,210,0.35);border-radius:10px}
   @media (min-width:701px){
     /* desktop: hang from row 1 (nameplate/search line) — high and centered */
     #tutbox{width:min(470px,calc(100vw - 24px));top:calc(var(--row1-h, 52px) + 10px);
       padding:17px 22px;font-size:13px;line-height:1.7;border-radius:18px}
     #tutbox .tt{font-size:10.5px;margin-bottom:8px}
     #tutbox .tbtns{margin-top:13px}
-    #tutbox #tut-act,#tutbox #tut-skip-yes{padding:11px 0;font-size:11.5px}
+    #tutbox #tut-act,#tutbox #tut-skip-no.tut-primary{padding:11px 0;font-size:11.5px}
   }
   /* while training, dialogs yield to the guidance card instead of centering
      under it. --tut-bot = where the dialog starts, --tut-cap = how tall it may
@@ -1195,7 +1222,7 @@
   /* the rename dialog (Settings → Explorer name) is reachable mid-training too */
   body.training #namebox{align-items:flex-start}
   body.training #namebox .card{margin-top:var(--tut-bot,160px);max-height:var(--tut-cap,calc(100dvh - var(--tut-bot,160px) - 14px))}
-  #tutbox #tut-skip:hover,#tutbox #tut-skip-no:hover{color:var(--ink)}
+  #tutbox #tut-skip:hover,#tutbox #tut-skip-yes:hover{color:var(--ink)}
   #guideok{width:100%;margin-top:16px;padding:12px 0;font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;
     color:#1a1206;cursor:pointer;border:1px solid rgba(255,220,150,0.9);border-radius:12px;
     background:linear-gradient(135deg,#f2d27f,#e0a84a 55%,#f2cf8a);box-shadow:0 0 18px rgba(240,200,110,0.4)}
@@ -1386,6 +1413,9 @@
   #yardcard{scrollbar-color:rgba(127,208,255,0.5) rgba(150,162,210,0.12)}
   #yardcard::-webkit-scrollbar{width:8px} #yardcard::-webkit-scrollbar-thumb{background:rgba(127,208,255,0.5);border-radius:8px}
   #yardship .shipimg{width:100%;border-radius:12px;border:1px solid rgba(127,208,255,0.25);background:#06070f;display:block}
+  /* FLEET v1.7.2: on short viewports the hero art yields to the Fabricator list
+     (it ate ~300px of a 700px modal before the first craftable row) */
+  @media (max-height:780px){ #yardship .shipimg{max-height:120px;object-fit:cover} }
   #yardship .shipcap{font-size:9.5px;color:var(--plasma);letter-spacing:.06em;text-transform:uppercase;text-align:center;margin:5px 0 8px}
   /* fabricator category folds */
   .fabgrp{border:1px solid rgba(150,162,210,0.14);border-radius:10px;margin:6px 0;overflow:hidden}
@@ -1405,6 +1435,8 @@
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;gap:7px;
     transition:color .2s,border-color .2s}
   #recbtn:hover{color:var(--ink);border-color:rgba(255,217,106,0.55)}
+  #records{scrollbar-color:rgba(255,207,138,0.5) rgba(150,162,210,0.12)}
+  #records::-webkit-scrollbar{width:8px} #records::-webkit-scrollbar-thumb{background:rgba(255,207,138,0.5);border-radius:8px}
   #records{position:fixed;top:calc(var(--row1-h,58px) + 210px);right:18px;z-index:22;width:318px;max-height:min(540px,calc(100dvh - var(--row1-h,58px) - 222px));overflow-y:auto;display:none;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:15px;padding:11px;
     backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 50px rgba(0,0,0,0.55)}
@@ -1425,7 +1457,9 @@
   #records .ach b{font-weight:600;color:var(--ink)}
   @media (max-width:700px){
     /* topbar becomes two tidy rows: [brand · search · bell] then a centered [rank · HP] strip */
-    #topbar{flex-wrap:wrap;padding:8px 10px;gap:6px 10px;align-items:center}
+    /* FLEET v1.7.2 (skimmer/iphone-15-pro): the Dynamic Island sat squarely on
+       the search field — the bar now clears the status strip like the dock does */
+    #topbar{flex-wrap:wrap;padding:8px 10px;padding-top:max(8px, env(safe-area-inset-top, 8px));gap:6px 10px;align-items:center}
     /* flatten both HUD groups so each piece can be placed independently:
        row 1 = [nameplate] .... [search][bell]; row 2 = [HP]; Prime Codex joins the right rail */
     #hud-center{display:contents}
@@ -1529,6 +1563,8 @@
   .bset.done{border-color:rgba(127,230,160,0.4)}
   .bclaim{flex:none;padding:5px 10px;border-radius:8px;cursor:pointer;font:700 10px var(--ui);
     color:#1a1206;background:linear-gradient(135deg,#f2d27f,#e0a84a);border:1px solid rgba(255,220,150,0.9)}
+  /* FLEET v1.7.2: the disabled shortfall button reads as guidance, not a control */
+  .bset .bclaim.need,.bclaim.need{opacity:.75;cursor:default;color:#ffb9a0;background:rgba(255,140,100,0.08);border-color:rgba(255,140,100,0.35);font-weight:600}
   .bclaimed{flex:none;font:600 10px var(--ui);color:#7fe6a0}
   /* class XP bar on specimen cards: wins fill it; levels wake innate arts */
   .xpbar{height:6px;border-radius:99px;background:rgba(150,162,210,0.16);overflow:hidden;margin:6px 0 3px}
@@ -1759,6 +1795,12 @@
     /* the dodged training card clears the caption + corner utilities */
     #tutbox.dodge{bottom:100px}
   }
+  /* FLEET CRITICAL #1 (v1.7.2): on phones toasts dock at the TOP under the HP
+     row — the bottom is dock + sheet + hint territory, and the arrival burst
+     used to bury all three. Desktop keeps its bottom-right corner. */
+  @media (max-width:700px){
+    #toast{top:calc(var(--topbar-h,110px) + 8px);bottom:auto;right:8px;left:auto;max-width:min(300px,92vw)}
+  }
   /* v1.7.1 (Nick's iPhone report): text inputs hold a 16px floor on phones —
      iOS auto-zooms the page when focusing any smaller field, and that zoom
      splits the visual/layout viewports (UI off-screen, taps offset). Works
@@ -1875,9 +1917,11 @@
   <div class="sgrp" data-sg="p">
     <div class="srow2"><span>Confirm before salvaging</span>
       <span class="opts"><span id="salvageopt" class="fsopt on" role="button" tabindex="0" data-tip="Ask before breaking an item down for materials — guards single salvages and Salvage All alike. Off salvages immediately.">On</span></span></div>
+    <div class="srow2"><span>Field Training</span>
+      <span class="opts"><span id="retrainopt" class="fsopt" role="button" tabindex="0" data-tip="Run the 21-lesson Field Training again — your expedition, creatures and progress are untouched.">Restart</span></span></div>
   </div>
   <div class="sdiv"></div>
-  <div class="rcnote">💾 Your expedition saves <b>only to this browser, on this device</b> — clearing site data erases it. Back up favourites as ⇪ creature codes.</div>
+  <div class="rcnote">💾 Saves <b>automatically</b>, to this browser on this device — no account needed. Clearing site data erases it, so back up favorites as ⇪ creature codes.</div>
   <button id="resetbtn" type="button">↺ Reset Game</button>
   <div id="resetconfirm">
     <div class="rcnote">This erases your whole expedition — Compendium, Prime Codex, Star Atlas, rank and all progress. This cannot be undone.</div>
@@ -1973,6 +2017,7 @@
   <button id="nameok" type="button" disabled>Begin the expedition</button>
   <button id="namecancel" type="button">Cancel</button>
   </div>
+  <div class="nsave" style="font:11px var(--ui);color:var(--faint);text-align:center;margin-top:9px">Your expedition saves automatically on this device — no account needed.</div>
 </div></div>
 
 <div id="relbox"><div class="card">
@@ -2168,17 +2213,17 @@ const TOUCH = (window.matchMedia && matchMedia('(pointer: coarse)').matches) || 
 /* fingers are wider than cursors: every canvas pick FLOOR scales up on touch
    devices (the true-size part of each target is untouched, so nothing can
    start stealing taps from a bigger neighbor — the Emerson moon lesson) */
-const PICK_F = TOUCH ? 1.4 : 1;
+const PICK_F = TOUCH ? 1.4 : 1.2;   /* FLEET v1.7.2: mouse pick padding — planets drift ~28px/s and a stale-aim click missed + silently closed the card */
 const HINTS = TOUCH ? {
   universe:'<em>Tap</em> a galaxy to survey it &middot; <em>pinch</em> or <em>double-tap</em> to dive inside',
   galaxy:'<em>Tap</em> any star &middot; <em>pinch-zoom</em> toward one to see its planets',
-  system:'<em>Tap</em> a planet to survey it &middot; <em>pinch in</em> to land',
+  system:'<em>Tap</em> a planet to survey it &middot; press <em>Land</em> on its card &middot; <em>double-tap</em> zooms',
   surface:'<em>Pinch out</em> to leave this world',
 } : {
   /* hover only PREVIEWS a card — survey credit needs a click (2026-06-11 change) */
   universe:'<em>Hover</em> a galaxy to preview &middot; <em>click</em> to survey &middot; <em>scroll</em> to zoom in',
   galaxy:'<em>Hover</em> any star &middot; <em>scroll</em> toward one to see its planets',
-  system:'<em>Hover</em> a planet to preview &middot; <em>click</em> to survey &middot; <em>scroll in</em> to land',
+  system:'<em>Hover</em> a planet to preview &middot; <em>click</em> to survey &middot; press <em>Land</em> on its card',
   surface:'<em>Scroll out</em> to leave this world',
 };
 let _hintMode='';
@@ -5134,6 +5179,7 @@ cv.addEventListener('pointerup', e=>{
 });
 document.documentElement.addEventListener('mouseleave', ()=>{ mouse.x=mouse.y=null; });
 let _assistArm=-1e9;   /* performance.now() of the last blocked zoom-in at the system ceiling */
+let _assistGlideT=-1e9;  /* FLEET v1.7.2: when the assist last steered — a landing within a beat of it announces itself */
 let _zGlide=null;   /* smooth wheel-zoom: {cam, tz, wx, wy, sx, sy} — eased per frame */
 function zoomAt(f, sx, sy, immediate){
   const c=curCam();
@@ -5237,18 +5283,38 @@ document.addEventListener('keydown', e=>{
        on them (chaos-sim catch: an Escape during the step-11 duel stranded
        the tutorial forever — the keydown path skipped the pointer gate).
        The name prompt + descent above already handled their own cases. */
-    if(!tutDone) return;
-    /* close the topmost dismissible overlay — one per press */
-    for(const id of ['reveal','pickbox','duelbox','sharebox','itemcard','platebox','primebox','guidebox','setpanel']){
+    /* FLEET v1.7.2: during training Escape may still dismiss the surfaces the
+       lockdown always allows (Settings, the ? popover, the bulletin) — total
+       inertness taught players the key was broken exactly when they felt
+       trapped. Lesson modals stay protected. */
+    if(!tutDone){
+      for(const id of ['setpanel','helppop','relbox','sharebox']){
+        const el=document.getElementById(id);
+        if(el && el.style.display && el.style.display!=='none'){ el.style.display='none'; return; }
+      }
+      return;
+    }
+    /* close the topmost dismissible overlay — one per press.
+       FLEET v1.7.2 (probed on all 21 devices): Escape closed only 2 of 9
+       boards — every dismissible surface joins the stack, modals first. */
+    for(const id of ['reveal','pickbox','duelbox','sharebox','itemcard','platebox','primebox','guidebox','setpanel','helppop','relbox','vistabox','descbox']){
       const el=document.getElementById(id);
       if(el && el.style.display && el.style.display!=='none'){
         if(id==='reveal'){ try{ pendingReveals.length=0; }catch(_){} el.style.display='none'; try{ if(codexOpen) renderCodex(); }catch(_){} }
+        else if(id==='vistabox'){ try{ el.click(); }catch(_){ el.style.display='none'; } }   /* the vista's own tap-to-continue path */
         else el.style.display='none';
         return;
       }
     }
     /* the character screen (v1.5) is keyboard-openable — Escape closes it too */
     try{ if(typeof sheetOpen!=='undefined' && sheetOpen){ closeSheet(); return; } }catch(_){ }
+    /* then the PANELS registry — Atlas, Compendium, Charters, Shipyard,
+       Records, Notifications, Events: whichever is open yields */
+    try{
+      if(typeof PANELS!=='undefined'){
+        for(const p of PANELS){ if(p.open && p.open()){ p.close(); try{ syncSelState(); }catch(_){ } return; } }
+      }
+    }catch(_){ }
   }
 });
 
@@ -5392,6 +5458,9 @@ function checkTransitions(){
             _apprLatch=pl.P.seed;
             _orbFrozenAt=tNow;             /* hold the orbit where the planet now sits */
             _descCleared=null;             /* the clearance is spent on this landing */
+            /* FLEET v1.7.2 (button-masher): a double-tap-zoom chain could land you
+               with no press and no announcement — assist landings say so */
+            if(performance.now()-_assistGlideT<700){ try{ playSurveyPing(); toast('🛬 Landing Assist', 'The approach steadied and set you down on '+esc(pl.name||'the world')+'.'); }catch(_){ } }
             _performLanding(pl);
           }
           return;
@@ -5406,6 +5475,7 @@ function checkTransitions(){
        (see zoomAt) — never while the player pans or pinches, and it honors
        Motion: Reduced by stepping instantly instead of animating */
     if(assist && !dragging && !pinching && performance.now()-_assistArm<450){
+      _assistGlideT=performance.now();   /* FLEET v1.7.2: remember the glide so an assist-landing can announce itself */
       if(motionOK()){
         c.x += (assist.px-c.x)*0.14;
         c.y += (assist.py-c.y)*0.14;
@@ -7263,10 +7333,12 @@ function drawSystem(time){
     const ux=x/dist, uy=y/dist;
     const tg=ctx.createLinearGradient(x,y,x+ux*tailLen,y+uy*tailLen);
     tg.addColorStop(0,'rgba(200,230,255,0.8)'); tg.addColorStop(1,'transparent');
-    ctx.strokeStyle=tg; ctx.lineWidth=2.2; ctx.lineCap='round';
+    /* FLEET v1.7.2: divide by zoom like the label does — at planet zoom the
+       un-compensated tail rendered as an opaque grey girder across the sky */
+    ctx.strokeStyle=tg; ctx.lineWidth=2.2/Math.max(0.2,c.z); ctx.lineCap='round';
     ctx.beginPath(); ctx.moveTo(x,y); ctx.lineTo(x+ux*tailLen,y+uy*tailLen); ctx.stroke();
     /* the white-hot coma the thumb always had (HD coverage pass) */
-    ctx.drawImage(_comaSpr(), x-3.4, y-3.4, 6.8, 6.8);
+    { const _cs=6.8/Math.max(0.2,Math.sqrt(c.z)); ctx.drawImage(_comaSpr(), x-_cs/2, y-_cs/2, _cs, _cs); }
     if(c.z>minWH/520){
       const cname='Comet '+properName(hashInt(st.star.seed, 31+ci, 17), 2);
       ctx.font=`italic ${9/c.z}px Georgia,serif`; ctx.textAlign='center';
@@ -7277,10 +7349,12 @@ function drawSystem(time){
   ctx.restore();
   const gname=galaxyName(st.gal.seed);
   setTrail([gname, starName(st.star.seed)]); setHint('system');
-  const desc=KIND_DESC[sys.kind]||'';
+  /* FLEET v1.7.2: Sol is never 'a yellow sun-like star' — it IS the sun; and
+     the caption stops repeating the landing verb the hint pill already owns */
+  const desc=(st.star.seed===SOL_SEED)?'Sol — humanity’s own yellow star':(KIND_DESC[sys.kind]||'');
   const extra=sys.binary?' · a binary pair — two suns share this sky':'';
   setCtxText(sys.planets.length
-    ? sys.planets.length+' worlds orbit '+desc+extra+' — zoom into one to land'
+    ? sys.planets.length+' worlds orbit '+desc+extra
     : desc+extra+' — no planets here; zoom out and try another star');
 }
 
@@ -12438,7 +12512,8 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
   if(wb5 && wb5.k==='abyssal'){
     const cvA=_hdAbyssScene({seed:P.seed, aqua:(xtra&&xtra.aqua)||0,
       genes:(xtra&&xtra.aquaGenes)||[]});   /* review fix: the deep's own species (the proof sheets passed genes; the game never did) */
-    const headA='The deep — '+wb5.n;
+    const _vwnA=(function(){ try{ const q=(st.sys&&st.sys.planets)?st.sys.planets.find(x=>x&&x.P&&x.P.seed===P.seed):null; return (q&&q.name)||null; }catch(_){ return null; } })();
+    const headA='The deep — '+(_vwnA?_vwnA+' · '+String(wb5.n).toLowerCase():wb5.n);
     const vtTxtA='beneath the surface — tap to continue';
     _vistaMount(headA, cvA, vtTxtA);
     _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
@@ -12455,7 +12530,8 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
   if(wb5 && wb5.k==='coral'){
     const cvR=_hdReefScene({seed:P.seed,
       genes:(xtra&&xtra.aquaGenes)||[]});   /* review fix: the reef swims the world's AQUA species — genes held the LAND herd (land beasts swam, real fish stayed invisible) */
-    const headR='The reef — '+wb5.n;
+    const _vwnR=(function(){ try{ const q=(st.sys&&st.sys.planets)?st.sys.planets.find(x=>x&&x.P&&x.P.seed===P.seed):null; return (q&&q.name)||null; }catch(_){ return null; } })();
+    const headR='The reef — '+(_vwnR?_vwnR+' · '+String(wb5.n).toLowerCase():wb5.n);
     const vtTxtR='beneath the shallows — tap to continue';
     _vistaMount(headR, cvR, vtTxtR);
     _lastVista={P:P, tod:tod, wx:wx, era:era, genes:genes, aurora:aurora,
@@ -12475,7 +12551,12 @@ function showVistaBox(P, tod, wx, era, genes, aurora, flora, climSnow, water, xt
     ring:!!(xtra&&xtra.ring), stc:(xtra&&xtra.stc)||null, herd:(xtra&&xtra.herd)||0,
     aqua:(xtra&&xtra.aqua)||0, air:(xtra&&xtra.air)||0, wb:wb5?wb5.k:null,
     evt:evt5, titan:!!(xtra&&xtra.titan), salt:_vistaSalt()});
-  const head5='Planetfall — '+((wb5&&wb5.n)||TYPE_LABEL[type]||'World');
+  /* FLEET v1.7.2: 'PLANETFALL — CARBON WORLD' vs the card's 'CRATERED WORLD'
+     read as a contradiction — the header now leads with the world's NAME and
+     the landing region follows lowercase, visibly subordinate */
+  const _vwn=(function(){ try{ const q=(st.sys&&st.sys.planets)?st.sys.planets.find(x=>x&&x.P&&x.P.seed===P.seed):null;
+    return (q&&q.name)||null; }catch(_){ return null; } })();
+  const head5='Planetfall — '+(_vwn?_vwn+' · '+String((wb5&&wb5.n)||TYPE_LABEL[type]||'world').toLowerCase():((wb5&&wb5.n)||TYPE_LABEL[type]||'World'));
   const WXW={rain:'rain',snow:'snowfall',dust:'dust storm',ash:'ashfall',haze:'haze'};
   const vtTxt5='local '+tod+(wx?' · '+(WXW[wx]||wx):'')+
     (evt5?' · '+WX_EVENT_WORD[evt5]:'')+' — tap to continue';
@@ -13449,7 +13530,7 @@ function renderPanel(p, isLocked){
     /* every world in the sky is landable — one plain Land button, always
        (Nick: no flavored labels). Zooming in by hand still works. */
     if(!glance && d.planetSeed!=null && st.mode!=='surface'){
-      landBtn='<button class="act" data-act="landcta" data-guide="survey" data-tip="Drop out of orbit and stand on this world — ground surveys open a world&#8217;s secrets.">Land</button>';
+      landBtn='<button class="act primary" data-act="landcta" data-guide="survey" data-tip="Drop out of orbit and stand on this world — ground surveys open a world&#8217;s secrets.">Land</button>';   /* FLEET v1.7.2: the ONE gold primary on the card — five identical pills gave no read on the next step */
     }
     /* the landing panorama is re-viewable from the surface card — the
        art is no longer see-once (graphics overhaul B1) */
@@ -13800,10 +13881,10 @@ function renderLog(){
       '<div class="lacts">'+
         '<button class="lfav'+(it.fav?' on':'')+'" data-fav="'+it.id+'" title="'+(it.fav?'Remove favorite':'Favorite')+'">'+(it.fav?'★':'☆')+'</button>'+
         '<button class="lhome'+(isHome?' on':'')+'" data-home="'+it.id+'" title="'+(isHome?'Clear home':'Set as home')+'">⌂</button>'+
-        '<button class="del" data-del="'+it.id+'" title="Remove">&times;</button>'+
+        '<button class="del" data-del="'+it.id+'" data-tip="Remove from Star Atlas" title="Remove">&times;</button>'+
       '</div></div>';
   }
-  html+='<div class="sub-hint">tap an entry to travel · ☆ favorite · ⌂ home</div>';
+  html+='<div class="sub-hint">tap an entry to travel · ☆ favorite · ⌂ home · × remove</div>';
   logEl.innerHTML=html;
 }
 logEl.addEventListener('click', e=>{
@@ -13825,13 +13906,20 @@ logEl.addEventListener('click', e=>{
   }
   const del=e.target.closest('[data-del]');
   if(del){
-    if(homeId===del.dataset.del) homeId=null;
-    logMap.delete(del.dataset.del);
+    /* FLEET v1.7.2: an unlabeled × inside a travel-tap row deleted with no
+       guard — the removal is now UNDOABLE for a few seconds via the toast */
+    const _delId=del.dataset.del, _delEntry=logMap.get(_delId), _delWasHome=homeId===_delId;
+    if(_delWasHome) homeId=null;
+    logMap.delete(_delId);
     logCountEl.textContent=logMap.size;
     _panelKey=null;
     renderLog();
     refocus(logEl, '.item');
     queueSave();
+    if(_delEntry){
+      _lastAtlasDel={entry:_delEntry, wasHome:_delWasHome, t:Date.now()};
+      toast('🗑 Removed from Atlas', esc(_delEntry.title||'Entry')+' un-charted. <b>Tap to undo.</b>', 'undo-atlas');
+    }
     return;
   }
   const item=e.target.closest('.item');
@@ -14925,6 +15013,17 @@ function evClass(tt){
   return 'info';
 }
 function _showToast(title, msg, go){
+  /* FLEET v1.7.2: on phones an open board OWNS the screen — toast cards hold
+     back (everything already lands in the 🔔 tray, and the badge says so).
+     This is the report's own remedy for toasts burying the very panel the
+     player just opened. */
+  try{
+    if(window.innerWidth<=700){
+      const busy=(typeof sheetOpen!=='undefined'&&sheetOpen) ||
+        (typeof PANELS!=='undefined'&&PANELS.some(p=>{ try{ return p.open&&p.open(); }catch(_){ return false; } }));
+      if(busy) return;
+    }
+  }catch(_){ }
   const el=document.createElement('div'); el.className='tst tk-'+evClass(title);
   el.innerHTML='<div class="tt">'+title+(go?' ›':'')+'</div>'+msg;
   /* linger long enough to actually read: ~reading speed, 4.2s—9s */
@@ -14935,12 +15034,29 @@ function _showToast(title, msg, go){
   /* v1.5.2 deep link (S9): a toast that names a surface takes you there —
      the tap still dismisses either way */
   el.addEventListener('click', ()=>{ if(go) _goSurface(go); dismiss(); });
+  /* FLEET CRITICAL #1 (v1.7.2): on phones the arrival burst (4 toasts in 5s)
+     buried the dock, the control hint and any open panel — narrow viewports
+     show ONE card at a time; older cards yield (they all live in the 🔔 tray) */
+  try{ if(window.innerWidth<=420){ while(toastEl.children.length>=1) toastEl.firstChild.remove(); } }catch(_){ }
   toastEl.appendChild(el);
   setTimeout(dismiss, hold);
 }
 let _lastSalvage=null;   /* {id, ret, t} — QoL m undo window */
+let _lastAtlasDel=null;  /* FLEET v1.7.2: {entry, wasHome, t} — atlas × undo window */
 function _goSurface(name){
   try{
+    if(name==='undo-atlas' && _lastAtlasDel && Date.now()-_lastAtlasDel.t<8000){
+      const u=_lastAtlasDel; _lastAtlasDel=null;
+      if(u.entry && u.entry.id && !logMap.has(u.entry.id)){
+        logMap.set(u.entry.id, u.entry);
+        if(u.wasHome) homeId=u.entry.id;
+        logCountEl.textContent=logMap.size;
+        try{ if(logOpen) renderLog(); }catch(_){ }
+        toast('🗺 Re-charted', esc(u.entry.title||'Entry')+' is back in your Star Atlas.');
+        queueSave();
+      }
+      return;
+    }
     if(name==='charters' && chBtn && !chOpen) chBtn.click();
     else if(name==='undo-salvage' && _lastSalvage && Date.now()-_lastSalvage.t<6000){
       const u=_lastSalvage;
@@ -15032,7 +15148,11 @@ function renderTray(){
 bellEl.addEventListener('click', ()=>{
   trayOpen=!trayOpen;
   trayEl.style.display=trayOpen?'block':'none';
-  if(trayOpen){ closePanels('tray'); renderTray(); }
+  if(trayOpen){ closePanels('tray'); renderTray();
+    /* FLEET v1.7.2: opening the tray counts as reading — the red badge cleared
+       only through 9px text links before */
+    setTimeout(()=>{ try{ for(const n of notifications) n.read=true; renderBell(); queueSave(); }catch(_){ } }, 900);
+  }
   gameEvent('tray', {open:trayOpen});
 });
 trayList.addEventListener('click', e=>{
@@ -15045,7 +15165,14 @@ document.getElementById('trayread').addEventListener('click', ()=>{
   for(const n of notifications) n.read=true;
   renderBell(); renderTray(); queueSave();
 });
-document.getElementById('trayclear').addEventListener('click', ()=>{
+document.getElementById('trayclear').addEventListener('click', (e)=>{
+  /* FLEET v1.7.2: an 8px-tall instant destroyer sat one middle-dot from a safe
+     action — clear-all ARMS on the first tap and fires on the second */
+  const el=e.currentTarget;
+  if(el.dataset.arm!=='1'){ el.dataset.arm='1'; el.textContent='clear all? — confirm';
+    setTimeout(()=>{ try{ el.dataset.arm=''; el.textContent='clear all'; }catch(_){ } }, 4000);
+    return; }
+  el.dataset.arm=''; el.textContent='clear all';
   notifications.length=0;
   renderBell(); renderTray(); queueSave();
 });
@@ -15488,6 +15615,7 @@ function readLegacySave(){
 function legacyFarewell(){ return _farewell; }
 let _saveT=0, _wiping=false;
 let _saveFailWarned=false;
+let _savedChip=false;   /* FLEET v1.7.2: the FIRST successful autosave of a fresh expedition says so, once */
 function queueSave(){ if(_loading||_wiping) return; clearTimeout(_saveT); _saveT=setTimeout(doSave, 900); }
 function doSave(){
   if(_wiping) return;   /* a reset is in progress — never re-create the save on unload */
@@ -15549,6 +15677,11 @@ function doSave(){
       prime:primeFill, frontier:frontierUnlocked?1:0, ending:frontierEnding, guide:seenGuide?1:0, tut:tutDone?1:0, rn:_rnSeen,
       codex:[...codex.values()].map(e=>({g:e.genome, f:e.from, w:e.where||null})),
     }));
+    /* FLEET v1.7.2 (cautious-newbie): the FIRST successful save of a fresh
+       expedition announces itself once — the only save messaging used to be a
+       data-loss warning sitting above the red Reset button */
+    if(!_savedChip){ _savedChip=true;
+      try{ toast('✓ Expedition saved', 'Progress saves automatically on this device — no account needed.'); }catch(_){ } }
   }catch(_){
     /* private mode or quota — session continues unsaved */
     if(!_saveFailWarned){ _saveFailWarned=true;
@@ -15832,6 +15965,7 @@ function loadSave(){
        (which would then SAVE over the real progress). Thumbs no longer ride
        the save, so the copy is small. */
     try{ localStorage.setItem(SAVE_KEY+'_bak', raw); }catch(_){ }
+    _savedChip=true;   /* a loaded save has already proven persistence — no chip needed */
     return true;
   }catch(_){ _loading=false; }
   return false;
@@ -17937,7 +18071,7 @@ const GUIDE=[
  {id:'codes', t:'Share codes (CF1 / CFB)', k:'share code link friend cf1 cfb copy multiplayer social', body:
   '<p>There is no server — the universe is mathematics, identical on every device. A share code is just an address into that shared math:</p><ul><li><b>⇪ Share this discovery</b> on a survey card copies a <b>CF1-</b> code/link. Anyone who opens it lands on the exact same world, with your name for it attached.</li><li><b>⇪ Code</b> on a creature card copies a <b>CFB-</b> code carrying the full genome — the identical creature, stats and all, appears on your friend’s device for a duel.</li></ul><p>Codes are sanitized on arrival; a tampered code can’t hurt your save.</p>'},
  {id:'charters', t:'Expedition Charters', k:'charter charters hunt board weekly goals task starter reward stardust', body:
-  '<p>The <b>Charters</b> board (top left, under the shelf) always has work for an explorer. Charters arrive in <b>chains</b> that reveal one link at a time: the five <b>trades</b> (planetfall, prospecting, discovering life, naming a Field Scout, conquest) and the <b>Sol tour</b>, a guided lap of the home system that pays its way in starter gear. Completing a link reveals the next — and a link your ring can&#8217;t reach yet stays off the board until the sky opens.</p><p><b>Accept to begin.</b> A revealed charter tracks nothing until you press <b>Accept</b> — three may ride at once. Accept a deed the frontier has already seen you do and it completes on the spot, <em>already proven</em>; counting charters count from the accept and say so. Each pays <b>☄ Stardust</b> — some pay <b>gear</b> — the moment it completes.</p><p>Once the five trades are learned, the board turns weekly: three charters a week, identical for every explorer in the universe — deterministic, like everything else out here. Compare boards with a friend; they match.</p>'},
+  '<p>The <b>Charters</b> board (the 📜 pill — left rail on desktop, dock on phones) always has work for an explorer. Charters arrive in <b>chains</b> that reveal one link at a time: the five <b>trades</b> (planetfall, prospecting, discovering life, naming a Field Scout, conquest) and the <b>Sol tour</b>, a guided lap of the home system that pays its way in starter gear. Completing a link reveals the next — and a link your ring can&#8217;t reach yet stays off the board until the sky opens.</p><p><b>Accept to begin.</b> A revealed charter tracks nothing until you press <b>Accept</b> — three may ride at once. Accept a deed the frontier has already seen you do and it completes on the spot, <em>already proven</em>; counting charters count from the accept and say so. Each pays <b>☄ Stardust</b> — some pay <b>gear</b> — the moment it completes.</p><p>Once the five trades are learned, the board turns weekly: three charters a week, identical for every explorer in the universe — deterministic, like everything else out here. Compare boards with a friend; they match.</p>'},
  {id:'beacon', t:'Traveler’s Beacon', k:'beacon daily random destination five minutes', body:
   '<p>The <b>Traveler’s Beacon</b> (left rail) offers a fresh destination every <b>5 minutes</b> — always somewhere <b>inside your charter</b>: it walks Sol while Sol is your world, the Neighborhood once you can jump, the whole galaxy once the Array is up, and the wider cosmos beyond the Rim. Picked deterministically, so every explorer on your ring is pointed at the same place at the same moment. An easy way to see something new when the infinite feels too big.</p>'},
  {id:'atlas', t:'The Star Atlas', k:'atlas bookmark favorite home save place travel star log', body:
@@ -18213,6 +18347,16 @@ function openGuideTopic(id){
     return _hpop;
   }
   function toggleHelp(){
+    /* FLEET v1.7.2 (6 testers): ? is the button pressed when LOST — post-
+       training it opens the Guide DIRECTLY (the popover handed the lost a
+       build hash first). During training the popover stays: the Guide is
+       locked and the version line is the one thing ? can honestly offer.
+       The version still lives in the Guide's footer. */
+    if(!(typeof _tutHook!=='undefined' && _tutHook)){
+      const p0=_helpPop(); if(p0.style.display==='block'){ p0.style.display='none'; }
+      try{ closePanels(); }catch(_){ }
+      openGuide(); return;
+    }
     const p=_helpPop();
     if(p.style.display==='block'){ p.style.display='none'; return; }
     try{ closePanels(); }catch(_){ }   /* one surface at a time - settings under the ? popover was Nick's overlap */
@@ -18247,6 +18391,15 @@ function showTip(target){
   if(!tipsOn || !target) return;
   if(_trainingUp()) return;   /* training keeps a single voice — the guidance card */
   const txt=target.dataset.tip; if(!txt) return;
+  /* FLEET v1.7.2 (3 testers): a board button's tooltip painted OVER the very
+     panel it had just opened (the ? case hid 'Open the Guide' entirely) —
+     while a trigger's own panel is open, its tooltip stays quiet */
+  try{
+    if(typeof PANELS!=='undefined'){
+      for(const p of PANELS){ if(p.btn && target.closest && target.closest(p.btn) && p.open && p.open()) return; }
+    }
+    if(target.id==='helpbtn' && document.getElementById('helppop') && document.getElementById('helppop').style.display==='block') return;
+  }catch(_){ }
   tipEl.innerHTML=txt.replace(/[<>]/g,'');
   tipEl.style.display='block';
   const r=target.getBoundingClientRect();
@@ -18254,6 +18407,22 @@ function showTip(target){
   let x=clamp(r.left+r.width/2-bw/2, 8, W-bw-8);
   let y=r.top-bh-8;
   if(y<8) y=Math.min(H-bh-8, r.bottom+8);
+  /* FLEET v1.7.2: a bubble that would land INSIDE an open panel flips to the
+     trigger's other side — bottom-corner buttons drew over their own boards */
+  try{
+    if(typeof PANELS!=='undefined'){
+      const bx={l:x,t:y,r:x+bw,b:y+bh};
+      for(const p of PANELS){
+        const el=(typeof p.el==='function')?p.el():p.el; if(!el || !(p.open&&p.open())) continue;
+        const pr=el.getBoundingClientRect();
+        if(bx.l<pr.right && bx.r>pr.left && bx.t<pr.bottom && bx.b>pr.top){
+          const flipY=(y<r.top)?Math.min(H-bh-8, r.bottom+8):Math.max(8, r.top-bh-8);
+          if(!(flipY<pr.bottom && flipY+bh>pr.top)) y=flipY;
+          break;
+        }
+      }
+    }
+  }catch(_){ }
   tipEl.style.left=Math.round(x)+'px'; tipEl.style.top=Math.round(y)+'px';
   _tipFor=target;
 }
@@ -18321,10 +18490,30 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.1';
+const GAME_VERSION='1.7.2';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.2', title:'The Field Patch', date:'July 2026', sections:[
+ ['🖱 UI Enhancements', [
+  '📜 THE TITANS SPEAK — every Prime Codex titan now tells its own story (Terrakoth stands where the crust runs richest; Sylphrend rides the cloud decks…), the guidance lines wrap instead of cutting mid-word, and locked rows read clearly.',
+  '🔔 TOASTS KNOW THEIR PLACE — on phones they dock at the top, show one at a time, and step aside entirely while a board is open (everything still lands in the 🔔 tray). And they&#8217;re finally <b>tappable</b>: the › deep links work now.',
+  '🛬 LAND WEARS THE GOLD — the survey card&#8217;s primary action stands out, every hint names the same landing verb, and the Sun is introduced as Sol, not &#8220;a sun-like star&#8221;.',
+  '🛠 THE FABRICATOR ALWAYS HAS A VERB — unaffordable recipes show a disabled Craft button naming exactly what&#8217;s missing (&#8220;Need 3× Iron&#8221;), and every group shows its craftable count.',
+  '⎋ ESCAPE CLOSES EVERYTHING — one press dismisses whichever board or dialog is on top, on every panel, even (safely) during training.'],
+ ],
+ ['🎮 Gameplay', [
+  '🎓 TRAINING IS REVERSIBLE — skipping now leads with &#8220;Keep Training&#8221; in gold, plain words explain you lose nothing, and Settings › Gameplay can restart the 21 lessons any time.',
+  '📖 A FRESH EXPEDITION SKIPS THE CHANGELOG — release notes greet returning explorers only; new pilots go straight to the stars.',
+  '🖱 PLANETS ARE EASIER TO CATCH — mouse clicks get the same forgiving pick radius touch always had, and an assisted landing announces itself.'],
+ ],
+ ['🐛 Bug Fixes', [
+  '🗒 the Expedition Journal reads &#8220;Mercury · Carbon world · 7/26&#8221; instead of &#8220;Mercurycarbon&#8221;, and the Planetside header names the world before its landing region.',
+  '☄ a comet&#8217;s tail no longer renders as a giant grey beam at planet zoom.',
+  '🏷 the ? button opens the Guide directly; the Star Atlas ✕ explains itself and removal can be undone; clearing notifications asks first; the notification badge clears when you read the tray.',
+  '📱 the top bar clears the Dynamic Island, panels keep their close buttons out of the status strip, and the name gate explains itself if a name can&#8217;t be used.'],
+ ],
+]},
 {v:'1.7.1', title:'The Pocket Patch', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '📱 THE PHONE SCREEN FITS AGAIN — on iPhone, typing your name (or searching) could make Safari zoom the whole page and never let go: your nameplate and HP slid off the top, panels spilled past the edges, the Shipyard&#8217;s ✕ went unreachable, and taps on planets landed beside them (training&#8217;s &#8220;tap Earth&#8221; included). The viewport is locked again and text fields no longer trigger the zoom. Pinch-zoom for accessibility still works — iOS never gives that up.'],
@@ -20848,6 +21037,18 @@ if(typeof cargoEl!=='undefined' && cargoEl) cargoEl.addEventListener('click', e=
    Shipyard rail button (v1.5.2b: the ship is off the doll). ---- */
 let yardOpen=false, yardView='fab';
 const _fabOpen=new Set(['part']);
+/* FLEET v1.7.2: name the ONE thing stopping a craft — the first missing
+   material (with count), missing part, gate item, or Signature lock */
+function _craftNeed(it, sigLock, gatedBy){
+  try{
+    if(sigLock) return '🔒 '+sigLock;
+    if(gatedBy) return 'Needs '+gatedBy;
+    for(const k in (it.cost||{})){ const short=it.cost[k]-(cargo.get(k)||0); if(short>0) return 'Need '+short+'× '+matName(k); }
+    for(const k in (it.parts||{})){ const short=it.parts[k]-itemCount(k); if(short>0) return 'Need '+short+'× '+((ITEM_BY.get(k)||{}).name||k); }
+    if(it.sd && essence<it.sd) return 'Need ☄ '+(it.sd-essence)+' more';
+  }catch(_){ }
+  return 'Missing materials';
+}
 function _fabHTML(){
   let html='';
   const GROUPS=[['part','Basic Parts — T1'],['comp','Components — T2'],['sys','Ship Systems — T3'],['gear','Explorer Gear'],['relic','Signature Relics — a master’s reward']];
@@ -20858,7 +21059,7 @@ function _fabHTML(){
     const craftable=list.filter(it=>_canCraft(it) && !(it.cat==='sys'&&itemCount(it.id)>0)).length;
     html+='<div class="fabgrp'+(open?' open':'')+'" data-fg="'+cat+'">'+
       '<div class="fghead" role="button" tabindex="0"><span>'+label+'</span>'+
-      '<span class="cnt">'+(craftable?craftable+' craftable':'')+'</span><span class="wchev"></span></div>'+
+      '<span class="cnt"'+(craftable?'':' style="opacity:.5"')+'>'+craftable+' craftable</span><span class="wchev"></span></div>'+
       '<div class="fgbody">';
     if(cat==='relic') html+='<div class="ambient" style="font-size:10px;color:var(--faint);font-style:italic;margin:0 6px 6px">Nine blueprints, one per element you have mastered — a titan&#8217;s power, forged into gear only a master can make.</div>';
     for(const it of list){
@@ -20887,7 +21088,9 @@ function _fabHTML(){
         (own&&it.cat!=='sys'?' <span style="color:#7fe6a0">×'+own+'</span>':'')+' — '+it.d+
         (built?'':'<br><span class="bcnt">'+(sigLock?'🔒 the blueprint waits on the '+sigLock+' (Prime Codex)':(gatedBy?'requires '+gatedBy:bits.join(' + ')))+'</span>')+'</span>'+
         (built?'<span class="bclaimed">online ✓</span>'
-              :(can?'<button class="bclaim" data-craft="'+it.id+'" type="button">Craft</button>'+((it.cat==='part'||it.cat==='comp')?'<button class="bclaim b5" data-craft5="'+it.id+'" type="button" title="Craft up to five in one press">×5</button>':''):''))+
+              :(can?'<button class="bclaim" data-craft="'+it.id+'" type="button">Craft</button>'+((it.cat==='part'||it.cat==='comp')?'<button class="bclaim b5" data-craft5="'+it.id+'" type="button" title="Craft up to five in one press">×5</button>':'')
+              /* FLEET v1.7.2: unaffordable ≠ invisible — the disabled button NAMES the binding shortfall */
+              :'<button class="bclaim need" type="button" disabled>'+esc(_craftNeed(it, sigLock, gatedBy))+'</button>'))+
         (built?'':'<button class="bpin'+(pinnedRecipe===it.id?' on':'')+'" data-pin="'+it.id+'" type="button" title="'+(pinnedRecipe===it.id?'Unpin this recipe':'Pin — a chip tracks the missing materials while you mine')+'">📌</button>')+
         '</div>';
     }
@@ -21879,6 +22082,10 @@ const SIGS=[
     hint:'an extreme volcanic world', lore:'Pyraxis coils on a molten shore, breathing furnace-light. Quench it, take the Fire.', reach:'near \u2014 the molten worlds of the inner rings'},
   {id:'sky',   el:'Air', tier:1, icon:'\ud83c\udf2c\ufe0f', name:'Air Signature', verb:'Conquer', guardian:'Sylphrend, the Gale Sovereign',
     hint:'an aerial or gas-giant ecosystem', lore:'Sylphrend rides the cloud decks, never once touching ground. Ground it, take the Air.', reach:'near \u2014 the gas giants and aerial worlds'},
+  /* FLEET wants 'Wind'\u2192'Stellar' here ('Air' + 'Wind' as two of nine elements
+     reads as a mistake; this one was always the SOLAR wind). DEFERRED: the
+     `sigs` probe pins these names \u2014 the rename needs a Nick-authorized
+     one-probe re-pin. The lore line already tells the stellar story. */
   {id:'star',  el:'Wind', tier:1, icon:'\ud83c\udf00', name:'Wind Signature', verb:'Conquer', guardian:'Zephyrmaw, the Stellar Squall',
     hint:'a world scoured by a dying star\u2019s solar wind', lore:'Zephyrmaw is born of stellar wind, a storm given shape near the extreme stars. Still it, take the Wind.', reach:'near \u2014 worlds under the fiercest stars'},
   {id:'ocean', el:'Water', tier:1, icon:'\ud83c\udf0a', name:'Water Signature', verb:'Conquer', guardian:'Abyssleth, the Tide Devout',
@@ -21989,10 +22196,15 @@ function renderPrime(){
     /* the resonance is a live TRACK when the element is in reach \u2014 tapping
        flies the hunter to the nearest world its titan waits on (stage 3) */
     const track=_res.reachable;
+    /* FLEET v1.7.2 (lore-reader: "trust its own prose"): each titan's bespoke
+       lore \u2014 written since v1.5 and never rendered \u2014 is the row's description;
+       the reach line replaces the one-size resonance sentence when the element
+       is out of reach. The resonance stays as the small live-track status. */
     return '<div class="psig locked'+(track?' goable':'')+'"'+(track?' data-tgo="'+s.id+'"':'')+'><div class="pic">'+s.icon+'</div>'+
       '<div class="pm"><div class="pn">'+s.name+'</div>'+
       (s.guardian?'<div class="psub2" style="color:#ff8a72">\u2694 Guarded by <b>'+s.guardian+'</b></div>':'')+
-      '<div class="psub2" style="color:'+_res.col+'">\ud83d\udce1 '+_res.text+(track?' \u00b7 <b>tap to track \u2197</b>':'')+'</div>'+
+      (s.lore?'<div class="plore">'+s.lore+'</div>':'')+
+      '<div class="psub2" style="color:'+_res.col+'">\ud83d\udce1 '+(track?_res.text+' \u00b7 <b>tap to track \u2197</b>':(s.reach||_res.text))+'</div>'+
       (relic?'<div class="psub2" style="color:var(--faint)">relic blueprint on the claim</div>':'')+
       '</div><div class="pchk">\u25cb</div></div>';
   }).join('');
@@ -22002,7 +22214,7 @@ function renderPrime(){
   const fb=document.getElementById('prime-frontier'); if(fb) fb.style.display=(n>=9)?'block':'none';
 }
 function updatePrimeBtn(){
-  const c=document.getElementById('pcdxcount'); if(c) c.textContent=primeCount()+'/9';
+  const c=document.getElementById('pcdxcount'); if(c) c.textContent=primeCount()+' / 9';   /* FLEET v1.7.2: one fraction format everywhere ('0 / 9') */
   const b=document.getElementById('pcdxbtn'); if(b) b.classList.toggle('done', primeCount()>=9);
 }
 /* ---- the Celestial Frontier: the final choice (legacy titles; the galaxy stays open) ---- */
@@ -22069,7 +22281,7 @@ function askExplorerName(initial){
   const nn=nameBox.querySelector('.nnote'); if(nn) nn.innerHTML = initial
     ? 'First, what shall the stars call you?'
     : 'What shall the stars call you?';
-  const ok=document.getElementById('nameok'); if(ok){ ok.textContent=initial?'Begin the expedition':'Save name'; ok.disabled=!nameIn.value.trim(); }
+  const ok=document.getElementById('nameok'); if(ok){ ok.textContent=initial?'Begin the expedition':'Save name'; ok.disabled=!cleanName(nameIn.value||''); }
   const nc=document.getElementById('namecancel'); if(nc) nc.style.display = initial ? 'none' : 'block';   /* only the FIRST naming is mandatory */
   nameBox.style.display='flex';
   try{ nameIn.focus(); }catch(_){}
@@ -22081,14 +22293,23 @@ function askRenameSpecies(entry){
   const h=nameBox.querySelector('h3'); if(h) h.textContent='Rename '+(entry.kind||'creature');
   const lore=nameBox.querySelector('.lore'); if(lore) lore.style.display='none';
   const nn=nameBox.querySelector('.nnote'); if(nn) nn.innerHTML='Give this discovery a name of your own.';
-  const ok=document.getElementById('nameok'); if(ok){ ok.textContent='Save name'; ok.disabled=!nameIn.value.trim(); }
+  const ok=document.getElementById('nameok'); if(ok){ ok.textContent='Save name'; ok.disabled=!cleanName(nameIn.value||''); }
   const nc=document.getElementById('namecancel'); if(nc) nc.style.display='block';
   nameBox.style.display='flex';
   try{ nameIn.focus(); nameIn.select&&nameIn.select(); }catch(_){}
 }
 function commitExplorerName(){
   let nm=cleanName(nameIn.value||'');
-  if(!_renameTarget && !nm){ try{ nameIn.focus(); }catch(_){} return; }   /* an explorer needs a name */
+  if(!_renameTarget && !nm){
+    /* FLEET v1.7.2: say WHY nothing happened — the very first interaction of
+       the game was a silent dead end for punctuation-probing players */
+    try{ const nn=nameBox.querySelector('.nnote');
+      if(nn) nn.innerHTML='<span style="color:#ff9a86">Those characters can’t ride in a name — try letters, numbers or an emoji.</span>';
+      nameIn.style.borderColor='#ff7a5a'; setTimeout(()=>{ try{ nameIn.style.borderColor=''; }catch(_){ } }, 1200);
+      nameIn.focus();
+    }catch(_){ }
+    return;
+  }
   if(_renameTarget){
     const entry=_renameTarget; _renameTarget=null;
     nameBox.style.display='none';
@@ -22111,8 +22332,14 @@ function commitExplorerName(){
   toast('Welcome, '+explorerName, 'The frontier is yours. Your name rides on everything you discover and share.');
   if(_nameInitial){
     _nameInitial=false;
-    /* every fresh expedition reads the latest bulletin, THEN trains */
-    if(!tutDone) setTimeout(()=>{ try{ openReleaseNotes('latest', startTutorial); }catch(_){ try{ startTutorial(); }catch(__){} } }, 450);
+    /* FLEET v1.7.2 (4 testers, 'most likely tab-close point'): a CHANGELOG is
+       for returning players — a fresh expedition goes STRAIGHT to training.
+       The bulletin stays reachable from the ? popover / Guide footer, and
+       marking this version as seen keeps it from firing on the next boot. */
+    if(!tutDone){
+      _rnSeen=GAME_VERSION; queueSave();
+      setTimeout(()=>{ try{ startTutorial(); }catch(_){ } }, 450);
+    }
     else if(!seenGuide) setTimeout(openGuide, 450);
   }
 }
@@ -22123,7 +22350,7 @@ document.getElementById('nameok').addEventListener('click', commitExplorerName);
   });
 })();
 nameIn.addEventListener('keydown', e=>{ if(e.key==='Enter' && nameIn.value.trim()) commitExplorerName(); });
-nameIn.addEventListener('input', ()=>{ const ok=document.getElementById('nameok'); if(ok) ok.disabled=!nameIn.value.trim(); });
+nameIn.addEventListener('input', ()=>{ const ok=document.getElementById('nameok'); if(ok) ok.disabled=!cleanName(nameIn.value||''); });   /* FLEET v1.7.2: test the CLEANED name — quote-only input lit a button that then did nothing */
 
 /* ================= THE NAMEPLATE MENU =================
    @section nameplate-ui [app] — name + plate colour, opened from Settings →
@@ -22360,7 +22587,7 @@ function nextStepGoal(){
       if(g){
         const p=Math.min(ascProg[g.id]||0, g.n);
         return {key:'asc:'+g.id, tt:'🧭 Next Step — '+ch.name.replace(/^Chapter \d+ — /,''), go:'charters',
-          ms:g.t.replace(/&#8217;/g,'’')+(g.n>1?' ('+p+' / '+g.n+')':'')+'. The chapter rides atop your Charters board (top left).'};
+          ms:g.t.replace(/&#8217;/g,'’')+(g.n>1?' ('+p+' / '+g.n+')':'')+'. The chapter rides atop your 📜 Charters board.'};
       }
     }
     /* v1.5.2 the chain speaks: an accepted charter first; else the next
@@ -22375,7 +22602,7 @@ function nextStepGoal(){
     if(avN.length){
       const c=avN[0];
       return {key:'chacc:'+c.id+(c.id[0]==='w'?':'+chWeek:''), tt:'🧭 A Charter Awaits — '+c.t, go:'charters',
-        ms:'Accept it on the Charters board (top left) — pays +'+c.sd+' ☄.'};
+        ms:'Accept it on the 📜 Charters board — pays +'+c.sd+' ☄.'};
     }
     if(primeCount()<9){
       return {key:'prime:'+primeCount(), tt:'🧭 The Long Road',
@@ -22436,8 +22663,11 @@ function renderCharters(){
         '<div class="ambient">'+ch.intro+'</div>';
       for(const g of ch.goals){
         const p=Math.min(ascProg[g.id]||0, g.n), done=p>=g.n;
+        /* FLEET v1.7.2 (completionist): binary goals show '0 / 1' too — four
+           counted rows trained the eye to the right edge and the fifth, the one
+           gating the chapter, was blank */
         h+='<div class="ch'+(done?' done':'')+'"><div class="ct">'+(done?'<span class="chk">✓</span> ':'')+g.t+
-          (g.n>1?' <span class="cp">'+p+' / '+g.n+'</span>':'')+'</div></div>';
+          ' <span class="cp">'+p+' / '+g.n+'</span></div></div>';
       }
       h+='</div>';
     } else if(typeof ascCh!=='undefined' && ascCh>=ASC_CHAPTERS.length && (itemCount('igdrive')||itemCount('array')||itemCount('jumpdrive'))){
@@ -23113,9 +23343,12 @@ tutEl.addEventListener('click', e=>{
     return;
   }
   if(id==='tut-skip'){
+    /* FLEET v1.7.2: the SAFE choice wears the gold — the old layout steered a
+       first-timer's thumb toward permanently discarding all 21 lessons. Plain
+       words replace the jargon, and training is restartable from Settings now. */
     tutEl.innerHTML='<div class="tt"><span>🧭 Field Training</span></div>'+
-      '<div class="tx">Skip training? You can always learn from the <b>? Guide</b> instead. Practice specimens return to the order; Earth stays charted in your Atlas.</div>'+
-      '<div class="tbtns"><button id="tut-skip-yes" type="button">Skip — I’ve Flown Before</button><button id="tut-skip-no" type="button">Keep Training</button></div>';
+      '<div class="tx">Skip training? You keep nothing from the lessons either way — skipping just jumps straight to the frontier. The <b>? Guide</b> teaches everything too, and you can restart training any time from ⚙ Settings › Gameplay.</div>'+
+      '<div class="tbtns"><button id="tut-skip-no" type="button" class="tut-primary">Keep Training</button><button id="tut-skip-yes" type="button">Skip — I’ve flown before</button></div>';
     return;
   }
   if(id==='tut-skip-yes'){ _tutCleanup(); _tutFinish(); return; }
@@ -23234,6 +23467,19 @@ setPanel.addEventListener('click', e=>{
     salvageConfirm=!salvageConfirm;
     e.target.classList.toggle('on', salvageConfirm);
     e.target.textContent=salvageConfirm?'On':'Off';
+    queueSave();
+    return;
+  }
+  if(e.target && e.target.id==='retrainopt'){
+    /* FLEET v1.7.2: the skip decision is REVERSIBLE now — two taps to restart
+       the 21 lessons; the expedition itself is untouched (the sandbox always
+       reclaimed its loaners and restored real stats on the way out) */
+    if(e.target.dataset.arm!=='1'){ e.target.dataset.arm='1'; e.target.textContent='Restart? — confirm'; return; }
+    e.target.dataset.arm=''; e.target.textContent='Restart';
+    try{ closePanels(); }catch(_){ }
+    setPanel.style.display='none';
+    tutDone=false;
+    setTimeout(()=>{ try{ startTutorial(); }catch(_){ } }, 200);
     queueSave();
     return;
   }
@@ -23492,9 +23738,17 @@ const PANELS=[
 ];
 function closePanels(except){
   for(const p of PANELS){ try{ if(p.id!==except && p.open()) p.close(); }catch(_){ } }
+  /* FLEET v1.7.2: on phones a board OPENING claims the screen — any toast
+     cards still standing yield immediately (every one lives in the 🔔 tray).
+     `except` is truthy exactly when a panel is opening. */
+  try{
+    if(except && window.innerWidth<=700 && typeof toastEl!=='undefined'){
+      while(toastEl.firstChild) toastEl.firstChild.remove();
+    }
+  }catch(_){ }
 }
 /* modals keep their own explicit buttons — the manager never touches them */
-const MODAL_SEL='#reveal,#pickbox,#duelbox,#sharebox,#namebox,#platebox,#itemcard,#deathbox,#endingbox,#relbox,#tutbox,#helppop,#vistabox,#toasts,#descbox';
+const MODAL_SEL='#reveal,#pickbox,#duelbox,#sharebox,#namebox,#platebox,#itemcard,#deathbox,#endingbox,#relbox,#tutbox,#helppop,#vistabox,#toast,#descbox';
 document.addEventListener('pointerdown', e=>{
   if(!tutDone) return;                     /* training keeps its own locks */
   const t=e.target;
@@ -23583,7 +23837,7 @@ function renderRecords(){
   let html='<div class="chead" style="color:#ffd96a">🏆 Records</div>';
   html+='<h4>Rarity ladder</h4><div class="tiers">'+RARITY_V17.map(T=>{
     const n = T.t<9 ? tierHave[T.t] : (tierHave[9]+tierHave[10]+tierHave[11]+tierHave[12]+tierHave[13]+tierHave[14]);   /* Transcendent folds raw 9–14 */
-    return '<div class="tier" style="border-color:'+T.hex+(n?'':'44')+';color:'+T.hex+(n?'':'66')+'"><div class="c">'+n+'</div>'+T.name+'</div>';
+    return '<div class="tier" style="border-color:'+T.hex+(n?'':'44')+';color:'+T.hex+'"><div class="c">'+n+'</div>'+T.name+'</div>';
   }).join('')+'</div>';
   /* EXPEDITION JOURNAL (QoL a2): the trophy room remembers where you set
      foot — newest first, the rolled landing region beside each world */
@@ -23592,8 +23846,14 @@ function renderRecords(){
     const _jf=(t)=>{ try{ const d=new Date(t); return (d.getMonth()+1)+'/'+d.getDate(); }catch(_){ return ''; } };
     for(let ji=journal.length-1; ji>=Math.max(0,journal.length-12); ji--){
       const j=journal[ji];
+      /* FLEET v1.7.2 ('Mercurycarbon · 7/26'): the stored key resolves to its
+         display name, and the row reads as a sentence with real separators */
+      const _jn=(function(k){ if(!k) return '';
+        try{ const hit=(typeof BIOME_SETS!=='undefined')?[].concat(...Object.values(BIOME_SETS)).find(b=>b&&b.k===k):null;
+          if(hit&&hit.n) return hit.n; }catch(_){ }
+        return k.charAt(0).toUpperCase()+k.slice(1)+' region'; })(j.w);
       html+='<div class="srow"><span class="k">'+esc(j.n)+'</span><span>'+
-        (j.w?esc(j.w)+' · ':'')+'<span style="color:var(--faint)">'+_jf(j.t)+'</span></span></div>';
+        (_jn?esc(_jn)+' · ':'')+'<span style="color:var(--faint)">'+_jf(j.t)+'</span></span></div>';
     }
   }
   /* v1.5.2c (Nick): the Statistics ledger lives HERE now — the trophy
