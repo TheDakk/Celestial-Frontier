@@ -1101,3 +1101,22 @@
 ##   §5 instance-rarity (generation-touching, careful) · §22 gear×tier + ship-hull masters (art
 ##   sessions). Then v1.8 Connection (holding) → 1.9 consolidation → 2.0 engine arc (Nick: PixiJS
 ##   port SAVED FOR 2.0; art ports as canvas→texture masters, logic split is the prep).
+## ▶▶▶ 2026-07-26 ★ v1.7.10 "THE LISTENING POST" LIVE (build 338b000) — Nick's live-play findings
+##   + the SAVE-HEALTH CORE, same-day loop (Nick playing live, feeding screenshots). LIVE FIXES:
+##   search results under the box + 100vmax scrim (supersedes 1.7.2's fixed lane; box lit via
+##   focus-within z-bump) · Compendium/Fabricator shelves ship CLOSED, session-remembered
+##   (training seeds the lesson's shelf: codex auto-open !tutDone-only; forge.enter adds 'part') ·
+##   #codex desktop top +98 (glow ring sat on its own chip) · vista ⛶ hidden during training
+##   (zoom deliberately inert there; visible dead button reads broken) · training feed/breed/heal
+##   DISMISS the standing card (_tutDropReveal — Nick's step-10/14 screenshots). SAVE-HEALTH
+##   (CF16-005 done): speciesThumb 132px list-thumb split w/ own 600-LRU; artOf NEVER pins full
+##   portraits on entries (500 species retained ~150MB before); reveal/duel flip to genome-fresh
+##   speciesPortrait; discoverSpecies art:null; ThumbArt FIFO→LRU. CF16-004 (thumb strip) + CF16-013
+##   (Atlas whitelist) verified ALREADY DONE by earlier security batches — 4 smoke sentinels added
+##   so bloat can't return. Gates: fp MATCH 50/50, smoke 454/0, layout 546/9, sim ui 100/100.
+##   ⚖ AWAITING NICK (design, not built): (1) QUEST-LOG RETHINK — Nick: the post-accept "Make
+##   planetfall" dock pill just opens the board ("pointless"), and the pinned Chapter-1 goal list
+##   reads as pre-accepted quests; BRAINSTORM FIRST, options proposed in chat (next-goal TEXT chip
+##   vs objective tracker vs chapter restyle). (2) Binder → Records move (recommended: yes, it's a
+##   collection view — but it's a restructure, Nick to confirm). (3) Land button GOLD is the 1.7.2
+##   one-primary decision — explained to Nick, revert on their word.
