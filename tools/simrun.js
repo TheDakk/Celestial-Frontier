@@ -1,7 +1,7 @@
 // Synthetic playthrough harness (v1.4 "Report Pack").
 //
 // Tiers:
-//   ui    — full-fidelity jsdom sessions driving the real 20-step Field
+//   ui    — full-fidelity jsdom sessions driving the real 21-step Field
 //           Training through the DOM (seeded random choices; a slice takes
 //           the Skip path), then a short live expedition.
 //   chaos — the ui tier with an adversary at the controls: random clicks on
@@ -151,7 +151,7 @@ function weightedPick(r, weights) {
   return 'mine';
 }
 
-async function expedition(sess, seed, nActions, deep) {
+async function expedition(sess, seed, nActions, deep, modeLabel) {   /* CF-SIM-002: the true cohort label rides along */
   const { w, doc, errors } = sess;
   const H = w.__PROBE_HOOK__;
   const r = mulberry(seed);
@@ -159,7 +159,7 @@ async function expedition(sess, seed, nActions, deep) {
   const weights = personaWeights(persona, deep);
   const clickEl = (el) => el && el.dispatchEvent(new w.MouseEvent('click', { bubbles: true, cancelable: true, view: w }));
   const run = {
-    mode: deep ? 'deep' : 'fast', seed, persona, actions: 0, errors: [], violations: [],
+    mode: modeLabel || (deep ? 'deep' : 'fast'), seed, persona, actions: 0, errors: [], violations: [],
     landings: 0, waveoffs: 0, crafts: 0, scans: 0, scanHits: 0,
     feeds: 0, poisons: 0, breeds: 0, hybrids: 0, heals: 0, healPoisons: 0, deaths: 0,
     conquests: 0, conquestsLost: 0, duelsW: 0, duelsL: 0, richStrikes: 0, biomeVeinLoads: 0,
@@ -635,9 +635,9 @@ async function uiTraining(seed, chaos) {
   try {
     type(doc.getElementById('namein'), 'Sim' + (seed % 9999));
     click(doc.getElementById('nameok'));
-    await stall(() => visible(doc.getElementById('relbox')), 5000, 'fresh bulletin');
+    /* v1.7.2+: a FRESH save goes straight to training — no changelog gate
+       (the old relbox wait produced false 'fresh bulletin' stalls) */
     chaosBurst();
-    click(doc.getElementById('relok'));
     await stall(() => tutAt(1), 5000, 'step 1');
 
     if (!chaos && r() < 0.25) {
@@ -836,8 +836,7 @@ async function bootToSandbox() {
   const nameEl = doc.getElementById('namein');
   if (nameEl) { nameEl.value = 'Sim'; nameEl.dispatchEvent(new w.Event('input', { bubbles: true })); }
   clickEl(doc.getElementById('nameok'));
-  await until(() => { const rb = doc.getElementById('relbox'); return rb && rb.style.display && rb.style.display !== 'none'; }, 5000);
-  clickEl(doc.getElementById('relok'));
+  /* v1.7.2+: fresh saves skip the changelog — straight to the training card */
   await until(() => { const tb = doc.getElementById('tutbox'); return tb && tb.style.display && tb.style.display !== 'none'; }, 5000);
   clickEl(doc.getElementById('tut-act'));
   await sleep(150);
@@ -864,7 +863,7 @@ async function childMain(mode, n, seed0) {
                     : mode === 'deep' ? 450 + ((seed >>> 4) % 450)
                     : mode === 'medium' ? 220 + ((seed >>> 4) % 200)
                     : 120 + ((seed >>> 4) % 300);
-        out = await expedition(sess, seed, nActs, mode === 'deep' || mode === 'medium' || mode === 'veteran');
+        out = await expedition(sess, seed, nActs, mode === 'deep' || mode === 'medium' || mode === 'veteran', mode);
         try { sess.w.close(); } catch (_) {}
       }
     } catch (e) { out = { mode, seed, fatal: String(e && e.message) }; }

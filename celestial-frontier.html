@@ -1564,6 +1564,7 @@
     font:500 10.5px/1.5 var(--ui);color:var(--dim);padding:7px 9px;border-radius:9px;
     border:1px solid var(--line);margin-bottom:6px}
   .bset.done{border-color:rgba(127,230,160,0.4)}
+  #searchres .sr.kbsel{background:rgba(255,217,106,0.16);border-color:rgba(255,217,106,0.7)}
   .undorow{margin:4px 6px;padding:10px 12px;border-radius:10px;cursor:pointer;font:600 11px var(--ui);
     color:#ffcf8a;background:rgba(255,207,138,0.08);border:1px dashed rgba(255,207,138,0.45)}
   .fabcta{margin:2px 8px 8px;padding:9px 12px;border-radius:11px;font:600 10.5px var(--ui);color:#cfe0ff;
@@ -1623,7 +1624,10 @@
   /* ---- Tier 2 accessibility (Emerson playtest): volume, motion, keyboard, touch ---- */
   #volslider{width:112px;height:22px;margin:0;padding:0;accent-color:#f0c86e;background:transparent;cursor:pointer}
   /* keyboard travelers see where they stand — mouse/touch stays outline-free */
-  [role="button"]:focus-visible{outline:1px solid rgba(240,200,110,0.85);outline-offset:2px}
+  /* Batch C: 2px ring (WCAG 2.2) on EVERY focusable kind — the 1px ring was
+     scoped to role=button only, so native buttons and the canvas had none */
+  [role="button"]:focus-visible,button:focus-visible,a:focus-visible,[tabindex]:focus-visible,input:focus-visible{outline:2px solid rgba(240,200,110,0.9);outline-offset:2px}
+  #cosmos:focus-visible{outline-offset:-3px}
   /* Motion: Reduced — the decorative loops stand still (the travel tunnel,
      screen shake and confetti bursts are gated in JS via motionOn) */
   body.rmotion #updatepill, body.rmotion #cinema .rays, body.rmotion #eventsbtn .dot, body.rmotion #chbtn .dot,
@@ -1895,7 +1899,8 @@
 </style>
 </head>
 <body>
-<canvas id="cosmos"></canvas>
+<canvas id="cosmos" tabindex="0"></canvas>
+<div id="live" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap"></div>
 
 <div id="topbar">
   <div id="brand">
@@ -5327,6 +5332,53 @@ cv.addEventListener('touchend', e=>{
 });
 cv.addEventListener('touchcancel', e=>{ activeTouches=e.touches?e.touches.length:0; pinch=null; pinching=false; pinchEndT=performance.now(); dragging=false; });
 cv.addEventListener('pointercancel', ()=>{ dragging=false; pinch=null; pinching=false; });
+/* ================================================================
+   Batch C (a11y, fleet CF170-C1): THE BOARD SPEAKS — a roving keyboard
+   cursor over the live picks[]. ←/→ (or Tab-within) cycle the pickable
+   bodies nearest-first, Enter surveys (the same lock a click takes, so it
+   earns survey credit), Escape releases, +/- zoom on the focused body.
+   The cursor is drawn by the frame loop; every move is announced to the
+   aria-live region (the canvas itself stays out of the a11y tree — the
+   Edge-crash guard above — so the live region IS its voice). */
+let _kbSel=null;   /* {kind, key} identity of the focused pick */
+function _announce(msg){ try{ const l=document.getElementById('live'); if(l){ l.textContent=''; setTimeout(()=>{ l.textContent=msg; },30); } }catch(_){ } }
+function _pickKey(p){ try{
+  if(p.kind==='planet') return 'p'+p.data.P.seed;
+  if(p.kind==='moon') return 'm'+p.data.pl.P.seed+'_'+p.data.m;
+  if(p.kind==='galaxy'||p.kind==='quasar'||p.kind==='radio') return 'g'+p.data.seed;
+  if(p.kind==='star'||p.kind==='starsys') return 's'+(p.data.seed!=null?p.data.seed:'x');
+  return p.kind; }catch(_){ return p.kind; } }
+function _kbFind(){ if(!_kbSel) return null; return picks.find(q=>q.kind===_kbSel.kind && _pickKey(q)===_kbSel.key)||null; }
+function _kbName(p){ try{ const d=describePick(p); return d?(d.title+(d.sub?', '+d.sub:'')):p.kind; }catch(_){ return p.kind; } }
+function _kbCycle(dir){
+  if(!picks.length){ _announce('Nothing in reach — zoom or pan the map.'); return; }
+  const cx=W/2, cy=H/2;
+  const sorted=[...picks].filter(p=>p.sx>-40&&p.sx<W+40&&p.sy>-40&&p.sy<H+40)
+    .sort((a,b)=>Math.hypot(a.sx-cx,a.sy-cy)-Math.hypot(b.sx-cx,b.sy-cy));
+  if(!sorted.length){ _announce('Nothing on screen — zoom out for targets.'); return; }
+  const cur=_kbFind();
+  let i=cur?sorted.findIndex(q=>q===cur||( _pickKey(q)===_kbSel.key&&q.kind===_kbSel.kind)):-1;
+  i=(i+dir+sorted.length)%sorted.length;
+  const p=sorted[i];
+  _kbSel={kind:p.kind, key:_pickKey(p)};
+  _announce(_kbName(p)+' — '+(i+1)+' of '+sorted.length+'. Enter to survey.');
+}
+cv.addEventListener('keydown', e=>{
+  if(_trainingUp && typeof _trainingUp==='function' && !tutDone){ /* training keeps its own script */ }
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'){ e.preventDefault(); _kbCycle(1); return; }
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp'){ e.preventDefault(); _kbCycle(-1); return; }
+  if(e.key==='Enter'||e.key===' '){
+    const p=_kbFind(); if(!p) { _kbCycle(1); return; }
+    e.preventDefault();
+    if(!tutDone){ const s9=TUT_STEPS[_tutStep]; if(!(s9&&s9.pick&&s9.pick(p))) { _announce('The lesson wants a different target.'); return; } }
+    locked={ data:p.data, kind:p.kind, sx:p.sx, sy:p.sy };
+    playSurveyPing(); _announce('Surveying '+_kbName(p));
+    return;
+  }
+  if(e.key==='Escape'){ if(locked){ locked=null; _announce('Survey released.'); } _kbSel=null; return; }
+  if(e.key==='+'||e.key==='='){ e.preventDefault(); const p=_kbFind(); zoomAt(1.35, p?p.sx:W/2, p?p.sy:H/2); return; }
+  if(e.key==='-'||e.key==='_'){ e.preventDefault(); const p=_kbFind(); zoomAt(1/1.35, p?p.sx:W/2, p?p.sy:H/2); return; }
+});
 /* keyboard access for the HUD's button-role controls */
 document.addEventListener('keydown', e=>{
   if((e.key==='Enter'||e.key===' ') && e.target && e.target.getAttribute && e.target.getAttribute('role')==='button'){
@@ -5397,7 +5449,7 @@ document.addEventListener('keydown', e=>{
        Records, Notifications, Events: whichever is open yields */
     try{
       if(typeof PANELS!=='undefined'){
-        for(const p of PANELS){ if(p.open && p.open()){ p.close(); try{ syncSelState(); }catch(_){ } return; } }
+        for(const p of PANELS){ if(p.open && p.open()){ p.close(); try{ syncSelState(); _restoreFocus(); }catch(_){ } return; } }
       }
     }catch(_){ }
   }
@@ -13300,7 +13352,12 @@ function renderPanel(p, isLocked){
          save restored directly onto a surface) */
       if(st.mode==='surface' && d.planetSeed!=null) noteLanding(d.planetSeed);
       /* first-landing field samples ride the next render of this card */
-      if(_pendingSample!=null && _pendingSample===d.planetSeed){ _pendingSample=null; grantFieldSamples(d); }
+      if(_pendingSample!=null && _pendingSample===d.planetSeed){ _pendingSample=null; grantFieldSamples(d);
+        /* v1.7.7 (Nick decision b): planetfall AUTO-CHARTS the world — the
+           explorer persona: 'every world I forget to bookmark is gone'. The
+           manual + button stays for orbital bookmarks; a ⛳ Visited filter
+           keeps auto-entries from crowding hand-picked favorites. */
+        try{ if(d.logId && !logMap.has(d.logId)) addToLog(d); }catch(_){ } }
       /* so does the first-contact attempt (once per landing; re-land to
          retry). The flag clears even during training — a stale seed must
          never roll a contact later from orbit (review catch) */
@@ -13931,6 +13988,7 @@ function renderLog(){
   if(homeId && !logMap.has(homeId)) homeId=null;
   let items=[...logMap.values()];
   if(logFilter==='fav') items=items.filter(it=>it.fav || it.id===homeId);
+  else if(logFilter==='visited') items=items.filter(it=>it.id[0]==='p' && landed.has(+it.id.slice(1)));
   /* QoL n: two more lenses — settled worlds, and civilized/living finds */
   else if(logFilter==='won') items=items.filter(it=>it.id[0]==='p' && conquered.has(+it.id.slice(1)));
   else if(logFilter==='life') items=items.filter(it=>!!it.badge);
@@ -13944,6 +14002,7 @@ function renderLog(){
     '<div class="lfilt">'+
       '<button data-filt="all" class="'+(logFilter==='all'?'on':'')+'">All</button>'+
       '<button data-filt="fav" class="'+(logFilter==='fav'?'on':'')+'">★ '+favCount+'</button>'+
+      '<button data-filt="visited" class="'+(logFilter==='visited'?'on':'')+'" title="Worlds you have stood on — planetfall charts them automatically">⛳</button>'+
       '<button data-filt="won" class="'+(logFilter==='won'?'on':'')+'" title="Worlds you have settled">🏴</button>'+
       '<button data-filt="life" class="'+(logFilter==='life'?'on':'')+'" title="Life, signals & civilizations">❋</button>'+
     '</div>'+
@@ -15105,6 +15164,7 @@ function evClass(tt){
   return 'info';
 }
 function _showToast(title, msg, go){
+  try{ _announce(String(title).replace(/<[^>]*>/g,'')+'. '+String(msg).replace(/<[^>]*>/g,'')); }catch(_){ }   /* Batch C: toasts are announced — the file had ZERO aria-live before */
   /* FLEET v1.7.2: on phones an open board OWNS the screen — toast cards hold
      back (everything already lands in the 🔔 tray, and the badge says so).
      This is the report's own remedy for toasts burying the very panel the
@@ -16327,7 +16387,8 @@ function runSearch(qRaw){
   } else {
     /* CF-CR-001: names/origins flow from SAVED data — escape at the sink like
        every other panel (a crafted save's <img onerror> ran here otherwise) */
-    searchRes.innerHTML=_srOut.map((o,i)=>'<div class="sr" data-sri="'+i+'">'+
+    searchRes.setAttribute('role','listbox');
+    searchRes.innerHTML=_srOut.map((o,i)=>'<div class="sr" role="option" aria-selected="false" data-sri="'+i+'">'+
       (o.thumb?'<img src="'+esc(o.thumb)+'" alt="">':'<img alt="">')+
       '<div class="m"><div class="nm">'+esc(o.nm)+'</div><div class="ds">'+esc(o.ds)+'</div></div></div>').join('');
   }
@@ -16335,13 +16396,26 @@ function runSearch(qRaw){
   gameEvent('searched', {q:String(qRaw||''), n:_srOut.length});
 }
 searchIn.addEventListener('input', ()=>runSearch(searchIn.value));
+/* Batch C (fleet: 'the one non-canvas navigation path dead-ends'): ↑/↓ walk
+   the results, Enter commits the highlighted row — a keyboard user can now
+   originate a destination instead of only pasting someone else's code */
+let _srSel=-1;
+function _srHighlight(){
+  const rows=[...searchRes.querySelectorAll('[data-sri]')];
+  rows.forEach((r,i)=>{ r.classList.toggle('kbsel', i===_srSel); r.setAttribute('aria-selected', i===_srSel?'true':'false'); });
+  if(_srSel>=0 && rows[_srSel]){ try{ rows[_srSel].scrollIntoView({block:'nearest'}); _announce(rows[_srSel].textContent.slice(0,80)); }catch(_){ } }
+}
 searchIn.addEventListener('keydown', e=>{
+  const rows=searchRes.querySelectorAll('[data-sri]');
+  if(e.key==='ArrowDown' && rows.length){ e.preventDefault(); _srSel=Math.min(_srSel+1, rows.length-1); _srHighlight(); return; }
+  if(e.key==='ArrowUp' && rows.length){ e.preventDefault(); _srSel=Math.max(_srSel-1, 0); _srHighlight(); return; }
   if(e.key==='Enter'){
+    if(_srSel>=0 && rows[_srSel]){ e.preventDefault(); rows[_srSel].click(); _srSel=-1; return; }
     const v=searchIn.value;
     if(/cf1-/i.test(v)){ if(travelToCode(v)){ searchIn.value=''; searchRes.style.display='none'; searchIn.blur(); } }
-    else runSearch(v);
+    else { _srSel=-1; runSearch(v); }
   }
-  if(e.key==='Escape'){ searchRes.style.display='none'; searchIn.blur(); }
+  if(e.key==='Escape'){ searchRes.style.display='none'; searchIn.blur(); _srSel=-1; }
 });
 searchRes.addEventListener('click', e=>{
   const el=e.target.closest('[data-sri]'); if(!el) return;
@@ -18589,10 +18663,17 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.6';
+const GAME_VERSION='1.7.7';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.7', title:'The Open Door', date:'July 2026', sections:[
+ ['✦ New Features & Systems', [
+  '⌨ THE BOARD ANSWERS THE KEYBOARD — focus the star map and the arrow keys cycle every pickable body nearest-first (a gold dashed ring marks your target), <b>Enter surveys it</b> with full credit, +/− zoom on it, Escape releases. The universe is no longer mouse-only.',
+  '🗣 THE GAME SPEAKS — every toast, target change and survey is announced to assistive technology through a live region; boards move focus in when they open and hand it back when they close; Tab stays inside open dialogs; search results walk with ↑/↓ and commit on Enter.',
+  '⛳ PLANETFALL CHARTS ITSELF — every world you stand on joins your Star Atlas automatically (the + button stays for orbital bookmarks), and a new ⛳ Visited filter keeps your hand-picked favorites uncrowded. No more losing a world because you forgot to file paperwork.'],
+ ],
+]},
 {v:'1.7.6', title:'The Regression Round', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🛑 A CRASH, CAUGHT — zooming out of a system with a survey card open could throw an error every frame; the card now closes cleanly when its star leaves the view.',
@@ -23892,6 +23973,44 @@ function syncSelState(){
 }
 document.addEventListener('click', ()=>setTimeout(syncSelState,0), true);
 document.addEventListener('keydown', ()=>setTimeout(syncSelState,0), true);
+/* ================================================================
+   Batch C (a11y): FOCUS MANAGEMENT — round 2's #1 new critical. Opening a
+   board moves focus INTO it (its ✕ first, else the panel itself); closing
+   restores focus to whatever opened it. Tab is CONTAINED inside the five
+   aria-modal dialogs (their semantics promised inertness the page never
+   delivered). Wired once, centrally — every surface inherits it. */
+let _focusReturn=null;
+document.addEventListener('click', (e)=>{ setTimeout(()=>{ try{
+  if(!e.target || !e.target.closest) return;
+  for(const p of PANELS){
+    if(p.btn && e.target.closest(p.btn) && p.open()){
+      const el=(typeof p.el==='function')?p.el():p.el; if(!el) return;
+      _focusReturn=document.querySelector(p.btn);
+      if(!el.hasAttribute('tabindex')) el.setAttribute('tabindex','-1');
+      const x=el.querySelector('.pnx, button, [tabindex], input, [role="button"]');
+      (x||el).focus({preventScroll:true});
+      return;
+    }
+  }
+}catch(_){ } },60); }, true);
+function _restoreFocus(){ try{ if(_focusReturn && document.contains(_focusReturn)){ _focusReturn.focus({preventScroll:true}); } _focusReturn=null; }catch(_){ } }
+document.addEventListener('keydown', (e)=>{
+  if(e.key!=='Tab') return;
+  try{
+    const MODALS=['guidebox','primebox','setpanel','duelbox','sheet'];
+    for(const id of MODALS){
+      const el=document.getElementById(id);
+      if(!el || !el.style.display || el.style.display==='none') continue;
+      const f=[...el.querySelectorAll('button,[tabindex]:not([tabindex="-1"]),input,select,a,[role="button"]')].filter(x=>x.offsetParent!==null);
+      if(!f.length) return;
+      if(!el.contains(document.activeElement)){ e.preventDefault(); f[0].focus(); return; }
+      const i=f.indexOf(document.activeElement);
+      if(e.shiftKey && (i<=0)){ e.preventDefault(); f[f.length-1].focus(); }
+      else if(!e.shiftKey && (i===f.length-1 || i<0)){ e.preventDefault(); f[0].focus(); }
+      return;
+    }
+  }catch(_){ }
+}, true);
 const PANELS=[
   {id:'log',      el:()=>logEl,    btn:'#logbtn',    x:1, open:()=>logOpen,    close:()=>{ logOpen=false;    logEl.style.display='none'; }},
   {id:'codex',    el:()=>codexEl,  btn:'#codexbtn',  x:1, open:()=>codexOpen,  close:()=>{ codexOpen=false;  codexEl.style.display='none'; }},
@@ -23925,6 +24044,7 @@ const PANELS=[
     close:()=>{ try{ locked=null; stickyPick=null; }catch(_){ } panelEl.style.display='none'; panelRect=null; _panelKey=null; }},
 ];
 function closePanels(except){
+  if(!except) _restoreFocus();   /* Batch C: a full close hands focus back */
   /* v1.7.6: during training the LESSON owns the survey card's lifecycle — the
      atlas-open step would otherwise close the card the land step needs */
   for(const p of PANELS){ try{ if(p.id!==except && !(p.id==='panel' && !tutDone) && p.open()) p.close(); }catch(_){ } }
@@ -24418,8 +24538,20 @@ function frameInner(){
   renderPanel(hovered, !!locked);
 }
 let _frameErrs=0, _rafPaused=false;
+function _drawKbRing(){
+  /* Batch C: the keyboard cursor's visible ring — tracks the live pick each frame */
+  try{
+    if(!_kbSel || document.activeElement!==cv) return;
+    const p=_kbFind(); if(!p) return;
+    ctx.save(); ctx.setTransform(DPR,0,0,DPR,0,0);
+    const r=Math.max(16,(p.r||12)+6);
+    ctx.strokeStyle='rgba(240,200,110,0.95)'; ctx.lineWidth=2;
+    ctx.setLineDash([6,5]); ctx.beginPath(); ctx.arc(p.sx,p.sy,r,0,TAU); ctx.stroke();
+    ctx.restore();
+  }catch(_){ }
+}
 function frame(){
-  try{ frameInner(); _frameErrs=0; }
+  try{ frameInner(); _drawKbRing(); _frameErrs=0; }
   catch(err){
     /* one bad frame must never kill the universe; if errors persist, recover to a safe view */
     if(++_frameErrs===1){ try{ console.error('frame error', err); }catch(_){}}
