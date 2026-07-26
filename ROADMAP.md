@@ -996,3 +996,11 @@
 ##   judged under the dock model — the gate's laws are layout-agnostic and it passed unchanged).
 ##   REMAINING from fleet: Batch C a11y (canvas keyboard/AT — the big one) · notification-casing
 ##   audit · Atlas chart pane (feature) · v1.8 folds. Nick's iPhone re-verify now covers 1.7.1-3.
+## ▶▶▶ 2026-07-26 ★ v1.7.4 "THE QUIET DOCK" LIVE (build 0bfc49e) — Nick's option 3: dock captions
+##   are a TEACHING layer. body.recruit mirrors !tutDone (_syncRecruit @ boot/_tutFinish/retrain):
+##   recruits see named chips; graduation restores the clean v11 icon dock (Prime keeps 0 / 9);
+##   Settings›Restart Training brings labels back. Proofed both states. DESIGN PRINCIPLE PINNED:
+##   onboarding affordances may be LOUD for recruits and silent for veterans — gate on tutDone,
+##   don't compromise the veteran aesthetic for the newcomer or vice versa.
+##   LIVE LADDER TODAY: 1.7.1 viewport → 1.7.2 Field Patch → 1.7.3 Tablet Tier + Stellar → 1.7.4.
+##   ▶ NEXT: Nick iPhone re-verify (all four patches, one pass) · fleet Batch C a11y · v1.8 holding.
