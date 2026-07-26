@@ -8,15 +8,38 @@
 //
 // The full test battery (validate + smoke + uilayout) runs FIRST and a
 // failure aborts the deploy — the gate is enforced, not a comment
-// (CF-CR-014). Skip only with --skip-gate (emergencies; think twice).
+// (CF-CR-014). --skip-gate additionally requires the CF_EMERGENCY_DEPLOY
+// env acknowledgement so bypassing can never become casual (CF-RR review).
+// The deploy REQUIRES an explicit --release X.Y.Z that must match BOTH
+// GAME_VERSION and package.json — no more shipping under a stale version.
 //
-// Usage: node tools/deploy.js [path-to-site-repo] [--skip-gate]
+// Usage: node tools/deploy.js [path-to-site-repo] --release 1.7.0
 'use strict';
 const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const root = path.join(__dirname, '..');
 
+{ // release-target gate (CF-RR-003): deploying is an explicit, versioned act
+  const ri = process.argv.indexOf('--release');
+  const target = ri > 0 ? process.argv[ri + 1] : null;
+  if (!target || !/^\d+\.\d+(\.\d+)?$/.test(target)) {
+    console.error('DEPLOY ABORTED — pass an explicit release target: node tools/deploy.js [site] --release X.Y.Z');
+    process.exit(1);
+  }
+  const html = fs.readFileSync(path.join(root, 'celestial-frontier.html'), 'utf8');
+  const gv = (html.match(/const GAME_VERSION='([^']+)'/) || [])[1];
+  const pv = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8')).version;
+  if (gv !== target || pv !== target) {
+    console.error('DEPLOY ABORTED — release target ' + target + ' does not match GAME_VERSION ' + gv + ' / package.json ' + pv + '.');
+    process.exit(1);
+  }
+}
+
+if (process.argv.includes('--skip-gate') && process.env.CF_EMERGENCY_DEPLOY !== 'I_ACCEPT_UNTESTED_RELEASE') {
+  console.error('DEPLOY ABORTED — --skip-gate requires CF_EMERGENCY_DEPLOY=I_ACCEPT_UNTESTED_RELEASE in the environment.');
+  process.exit(1);
+}
 if (!process.argv.includes('--skip-gate')) {
   for (const t of ['validate.js', 'smoke.js', 'uilayout.js']) {
     console.log('deploy gate — running tools/' + t + ' …');
@@ -31,7 +54,9 @@ if (!process.argv.includes('--skip-gate')) {
 }
 const SITE_REPO = 'https://github.com/CelestialFrontier/celestialfrontier.github.io.git';
 const SITE_URL = 'https://celestialfrontier.github.io/';
-const site = process.argv[2] || path.join(root, '..', 'celestialfrontier.github.io');
+/* the site path is the first NON-flag argument (release target and flags are consumed above) */
+const _pos = process.argv.slice(2).filter((a, i, all) => a[0] !== '-' && all[i - 1] !== '--release');
+const site = _pos[0] || path.join(root, '..', 'celestialfrontier.github.io');
 
 if (!fs.existsSync(path.join(site, '.git'))) {
   console.log('site repo not found locally — cloning ' + SITE_REPO);
