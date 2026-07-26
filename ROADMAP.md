@@ -878,8 +878,12 @@
 ##   ▶ IN FLIGHT: 1,000-tester sim (fast 600 + deep 200 + chaos 140 + ui 60) → feedback report to
 ##   Nick. THEN: Nick's real-iPhone pass on LIVE v1.7.0 · watch CI run at aeccae8 · post-Forge queue
 ##   (§24 knee retune if wanted, instance gear, a11y Navigator, module split, save schema).
-## ▶▶▶ 2026-07-26 POST-RELEASE DESIGN QUEUE — "THE CONNECTION PASS" (v1.7.1 candidate; Nick: queue
-##   it, WAIT FOR MORE FEEDBACK before building). Source: PATH_TO_10_2026-07-26.md ("Path to 10/10",
+## ▶▶▶ 2026-07-26 POST-RELEASE DESIGN QUEUE — ★ v1.8 "THE CONNECTION" ARC (Nick 2026-07-26: the
+##   feedback work is its OWN NAMED ARC, not a 1.7 patch — working title "The Living Bond" TBD).
+##   VERSIONING LAW REAFFIRMED: minor lines = themed arcs; 1.7.x stays FREE for Forge-era hotfixes
+##   (iPhone pass / live findings ship as 1.7.1+ without waiting on feature work). The SIX quick
+##   items OPEN the 1.8 line; the deeper feedback items continue as 1.8.x. Same HOLD & BUNDLE
+##   cadence. WAIT FOR MORE FEEDBACK before building. Source: PATH_TO_10_2026-07-26.md ("Path to 10/10",
 ##   built on synthetic-campaign data). THESIS ACCEPTED: better CONNECTIONS between existing
 ##   systems, not new systems — the creature loop's pieces don't feed each other (XP only flows
 ##   from wins → 55/200 deep sims hit creature L3, ONE hit L6; Rancher persona breeds 4,575 times
