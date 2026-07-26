@@ -19,8 +19,17 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
 
-const mainSrc = fs.readFileSync(path.join(ROOT, 'main.js'), 'utf8');
 const htmlSrc = fs.readFileSync(path.join(ROOT, 'celestial-frontier.html'), 'utf8');
+/* main.js is the LOCAL extraction and is gitignored — on CI (or any fresh
+   checkout) fall back to the html's own embedded script, which is the same
+   content by construction (build.js assembles the html FROM main.js). */
+const mainSrc = fs.existsSync(path.join(ROOT, 'main.js'))
+  ? fs.readFileSync(path.join(ROOT, 'main.js'), 'utf8')
+  : (() => {
+      const a = htmlSrc.indexOf('<script>'), b = htmlSrc.lastIndexOf('</script>');
+      if (a < 0 || b <= a) { console.error('no main.js and no embedded script found'); process.exit(1); }
+      return htmlSrc.slice(a + '<script>'.length, b);
+    })();
 
 /* html minus its main <script> body (the script is main.js; we want markup+CSS only) */
 const scriptStart = htmlSrc.indexOf('<script>');
