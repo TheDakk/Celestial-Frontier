@@ -304,9 +304,15 @@
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
   #searchin::placeholder{color:var(--faint)}
   #searchin:focus{border-color:rgba(143,180,255,0.5)}
+  /* Nick live 2026-07-26: results drop STRAIGHT under the box, and the rest
+     of the UI falls into shadow (the sheets' 100vmax scrim idiom) so the
+     search is the lit thing on screen */
   #searchres{position:absolute;top:36px;right:0;width:290px;max-height:52vh;overflow-y:auto;display:none;z-index:40;
     background:var(--glass);border:1px solid var(--glass-brd);border-radius:13px;padding:5px;
-    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 16px 50px rgba(0,0,0,0.6)}
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    box-shadow:0 0 0 100vmax rgba(4,6,13,0.55), 0 16px 50px rgba(0,0,0,0.6)}
+  /* the box itself stays in normal light above the scrim while results show */
+  #searchwrap:focus-within #searchin{position:relative;z-index:41;border-color:rgba(143,180,255,0.5)}
   #searchres .sr{display:flex;gap:9px;align-items:center;padding:7px 9px;border-radius:9px;cursor:pointer;transition:background .15s}
   #searchres .sr:hover{background:rgba(143,180,255,0.1)}
   #searchres .sr img{width:28px;height:28px;border-radius:7px;flex:none;background:#05060c}
@@ -1829,8 +1835,10 @@
     #codexbtn{left:18px;right:auto;top:calc(var(--topbar-h,100px) + 50px)}
     #logbtn{right:18px;top:calc(var(--topbar-h,100px) + 8px)}
     #cargobtn{right:18px;top:calc(var(--topbar-h,100px) + 50px)}
-    /* panels drop from the command line */
-    #codex{left:18px;right:auto;top:calc(var(--topbar-h,100px) + 88px)}
+    /* panels drop from the command line — the Compendium clears its own chip
+       (bottom ≈ topbar+85): +88 left 3px and the board's glow ring sat over
+       the word "Compendium" (Nick live, 2026-07-26) */
+    #codex{left:18px;right:auto;top:calc(var(--topbar-h,100px) + 98px)}
     #log{top:calc(var(--topbar-h,100px) + 88px)}
     #chpanel{top:calc(var(--topbar-h,100px) + 88px)}
     /* UI v9 (Nick): utilities live in the BOTTOM-RIGHT corner on tablet+desktop,
@@ -1843,9 +1851,9 @@
     #setpanel{left:50%;right:auto;top:50%;bottom:auto;transform:translate(-50%,-50%)}
     /* both stacks share one metric: equal pill heights, uniform 42px pitch */
     #chbtn,#codexbtn,#logbtn,#cargobtn{font-size:11px;padding:8px 13px}
-    /* SEARCH RESULTS get their own lane BELOW the right stack — typing never
-       covers 🌍 Star Atlas / 🛠 Shipyard (Nick) */
-    #searchres{position:fixed;top:calc(var(--topbar-h,100px) + 92px);right:18px;left:auto;width:300px}
+    /* Nick live 2026-07-26 (supersedes the fixed lane): results anchor STRAIGHT
+       under the search box; the scrim de-emphasizes the chips they may cover */
+    #searchres{width:300px}
     /* 🏆 Records rides the corner as a trophy CIRCLE — no label competing
        with the caption on tablet portrait (Nick) */
     #recbtn .lbl{display:none}
@@ -2930,9 +2938,16 @@ function _thumbSet(key,url){
   if(thumbCache.size>500){ thumbCache.delete(thumbCache.keys().next().value); }
   thumbCache.set(key,url);
 }
+/* CF16-005: a HIT re-files to the tail — the cache was FIFO in LRU clothing,
+   so a hot Atlas page could evict its own rows on every scroll */
+function _thumbGet(key){
+  if(!thumbCache.has(key)) return null;
+  const u=thumbCache.get(key); thumbCache.delete(key); thumbCache.set(key,u);
+  return u;
+}
 function planetThumb(P){
   const key='p'+P.seed+'|'+_cardSig(P);
-  if(thumbCache.has(key)) return thumbCache.get(key);
+  { const _u=_thumbGet(key); if(_u) return _u; }
   const s=getPlanetSprite(P);
   const T=128, c=document.createElement('canvas'); c.width=c.height=T;
   const g=c.getContext('2d');
@@ -2965,7 +2980,7 @@ function planetThumb(P){
 }
 function starThumb(kind,col,binCol){
   const key='s'+kind+col+(binCol?'~'+binCol:'');
-  if(thumbCache.has(key)) return thumbCache.get(key);
+  { const _u=_thumbGet(key); if(_u) return _u; }
   const T=128, c=document.createElement('canvas'); c.width=c.height=T;
   const g=c.getContext('2d'); g.translate(T/2,T/2);
   if(kind==='BH'){
@@ -3036,7 +3051,7 @@ function starThumb(kind,col,binCol){
 }
 function galaxyThumb(g){
   const key='g'+g.seed+'_'+g.sp+(g.quasar?'q':'');
-  if(thumbCache.has(key)) return thumbCache.get(key);
+  { const _u=_thumbGet(key); if(_u) return _u; }
   const T=128, c=document.createElement('canvas'); c.width=c.height=T;
   const ctx2=c.getContext('2d');
   if(g.quasar){
@@ -3055,7 +3070,7 @@ function moonThumb(ti,mseed){
   /* per-moon seeded (HD coverage pass): every rocky moon in the universe
      used to share one identical crater layout */
   const key='mn'+ti+'_'+((mseed||0)>>>0)%997;
-  if(thumbCache.has(key)) return thumbCache.get(key);
+  { const _u=_thumbGet(key); if(_u) return _u; }
   const T=128, c=document.createElement('canvas'); c.width=c.height=T;
   const g=c.getContext('2d');
   const cols=['#b9bcc6','#cfe4f2','#e0c060','#8d8678'];
@@ -3071,7 +3086,7 @@ function moonThumb(ti,mseed){
   const url=c.toDataURL(); _thumbSet(key,url); return url;
 }
 function cometThumb(){
-  const key='cmt'; if(thumbCache.has(key)) return thumbCache.get(key);
+  const key='cmt'; { const _u=_thumbGet(key); if(_u) return _u; }
   const T=128, c=document.createElement('canvas'); c.width=c.height=T;
   const g=c.getContext('2d');
   const tg=g.createLinearGradient(T*0.32,T*0.6,T*0.95,T*0.12);
@@ -3084,7 +3099,7 @@ function cometThumb(){
   const url=c.toDataURL(); _thumbSet(key,url); return url;
 }
 function beltThumb(){
-  const key='blt'; if(thumbCache.has(key)) return thumbCache.get(key);
+  const key='blt'; { const _u=_thumbGet(key); if(_u) return _u; }
   const T=128, c=document.createElement('canvas'); c.width=c.height=T;
   const g=c.getContext('2d'); const r=mulberry32(7);
   /* irregular lumps, not squares (v1.3.11) — each a tiny shaded polygon */
@@ -4401,7 +4416,7 @@ var HD_PORTRAITS=true;   /* HD is always on (v1.3 ship decision) */
 /* ================================================================
    @module SpeciesArt [app] — per-kingdom painterly canvas portraits & specimen cards (cache capped 1,200; the old SVG set is long gone — banner corrected v1.4)
    Deps: SpeciesTraits, Rand, EncUtil, input, Genome, player-state, viewport
-   API:  speciesPortrait
+   API:  speciesPortrait, speciesThumb
    ================================================================ */
 const SpeciesArt=(()=>{
 const speciesArtCache=new Map();
@@ -4431,9 +4446,37 @@ function speciesPortrait(g){
   speciesArtCache.set(key,url);
   return url;
 }
-return Object.freeze({speciesPortrait});
+/* CF16-005 (the SPLIT, save-health pass): shelf rows, search results and
+   pickers show a 132px LIST THUMB, not the 440px portrait. Before this,
+   artOf() pinned the full ~300KB portrait onto every codex entry FOREVER —
+   500 catalogued species retained ~150MB no matter what the LRU evicted.
+   Now nothing pins: the small copies live in their own LRU (~12KB each),
+   and full portraits are pay-per-view through the bounded portrait cache.
+   The downscale decodes async (painters return data URLs), so the FIRST
+   paint serves the portrait and the small copy takes over next render. */
+const speciesThumbCache=new Map();
+function speciesThumb(g){
+  const key=g.seed+'_'+(g.gen||0)+'_'+g.kingdom+(g.apex?'_A':'')+(g.par?'_P':'');
+  if(speciesThumbCache.has(key)){ const u=speciesThumbCache.get(key); speciesThumbCache.delete(key); speciesThumbCache.set(key,u); return u; }
+  const full=speciesPortrait(g);
+  try{
+    const im=new Image();
+    im.onload=()=>{ try{
+      const T=132, c=document.createElement('canvas'); c.width=c.height=T;
+      c.getContext('2d').drawImage(im,0,0,T,T);
+      const u=c.toDataURL();
+      if(u && u.length>30){
+        if(speciesThumbCache.size>=600){ const k=speciesThumbCache.keys().next().value; speciesThumbCache.delete(k); }
+        speciesThumbCache.set(key,u);
+      }
+    }catch(_){ } };
+    im.src=full;
+  }catch(_){ }
+  return full;
+}
+return Object.freeze({speciesPortrait, speciesThumb});
 })();
-const {speciesPortrait}=SpeciesArt;
+const {speciesPortrait, speciesThumb}=SpeciesArt;
 /* @end SpeciesArt */
 
 /* evolution: advance a genome through N epochs, each nudging one trait.
@@ -12340,13 +12383,18 @@ function _vistaExtras(host){
      tap — tapping the image still zooms too) beside ⇪ Save postcard. Tapping
      anywhere while zoomed steps back out; the ✕ closes everything. */
   const row=document.createElement('div');row.className='vrow';
-  const fsb=document.createElement('div');fsb.className='vpc vfs';
-  fsb.setAttribute('role','button');fsb.tabIndex=0;
-  fsb.textContent='⛶ Full screen';
-  const _fsGo=(e)=>{ e.stopPropagation(); if(!tutDone) return; vistaBox.classList.add('zoom'); };
-  fsb.addEventListener('click',_fsGo);
-  fsb.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); _fsGo(e); } });
-  row.appendChild(fsb);
+  /* Nick live (2026-07-26): during training zoom is deliberately inert (the
+     cache lesson waits on tap-to-continue) — so the ⛶ pill must not SHOW
+     there. A visible button that does nothing reads as broken. */
+  if(tutDone){
+    const fsb=document.createElement('div');fsb.className='vpc vfs';
+    fsb.setAttribute('role','button');fsb.tabIndex=0;
+    fsb.textContent='⛶ Full screen';
+    const _fsGo=(e)=>{ e.stopPropagation(); vistaBox.classList.add('zoom'); };
+    fsb.addEventListener('click',_fsGo);
+    fsb.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); _fsGo(e); } });
+    row.appendChild(fsb);
+  }
   const pc=document.createElement('div');pc.className='vpc';
   pc.setAttribute('role','button');pc.tabIndex=0;
   pc.textContent='⇪ Save postcard';
@@ -14138,7 +14186,11 @@ const codex=new Map();         /* id -> {id, name, kind, desc, diet, gen, genome
 let codexOpen=false;
 const KIND_ICON={Flora:'🌿', Fungi:'🍄', Microbe:'🦠', Fauna:'🐾'};
 function codexId(g){ return 's'+g.seed; }
-function artOf(en){ return en.art||(en.art=en.genome?speciesPortrait(en.genome):''); }
+/* CF16-005: the LIST accessor — small thumbs via the bounded thumb LRU,
+   NEVER pinned on the entry (the old en.art assignment retained every
+   catalogued portrait forever). Detail surfaces (reveal, duels, farewell)
+   call speciesPortrait(genome) directly for the full 440px art. */
+function artOf(en){ return en.genome?speciesThumb(en.genome):(en.art||''); }
 /* ================= THE RING SPECTRUM (v1.4.1, Nick's progression law) =====
    Rarity EXPANDS with the rings: the sky near home rolls the same dice as
    everywhere, but a find's CATALOGUED grade is capped by where it lives —
@@ -14264,7 +14316,7 @@ function _storeSpecies(g, from, where, deferArt){
       gen:g.gen||1, traits:traits, anc:g._earthBlend||null };
   }
   const entry={id, name:d.name, kind:d.kind, desc:d.desc, diet:d.diet||null,
-    detail:d.detail||'', art:deferArt?null:speciesPortrait(g), grade:ringGrade(g, d.grade, where||null),
+    detail:d.detail||'', art:null,   /* CF16-005: never pinned — consumers pay per view via artOf (thumb) or speciesPortrait (detail); deferArt kept for signature compatibility */ grade:ringGrade(g, d.grade, where||null),
     gen:g.gen||0, genome:g, from:from||'Unknown world', where:where||null, hybrid:!!g.parents, lineage:lineage,
     realm:classifyRealm(g), role:ecologyRole(g), biome:realmBiome(g), mods:realmModifiers(g),
     sapient:sapienceTier(g)};
@@ -14472,7 +14524,7 @@ function showReveal(entry, isHybrid){
   document.getElementById('rev-t').textContent = (isHybrid||entry.hybrid)?'Hybrid specimen':'Compendium specimen';
   const xEl=document.getElementById('rev-x');
   if(xEl) xEl.textContent = pendingReveals.length? ('tap to continue · '+pendingReveals.length+' more — hold to skip all') : 'tap to continue';
-  document.getElementById('rev-img').src = entry.art || (entry.genome?speciesPortrait(entry.genome):'');
+  document.getElementById('rev-img').src = (entry.genome?speciesPortrait(entry.genome):entry.art||'');   /* CF16-005: the reveal is a DETAIL surface — full portrait, never the list thumb */
   /* a soft biome-coloured aura behind the portrait: ability theme for fauna,
      nourished-stat colour for flora, plasma blue for everything else */
   try{
@@ -14729,9 +14781,10 @@ function renderCodex(){
   for(const rm in groups) if(order.indexOf(rm)<0) order.push(rm);   /* any future shelf still shows */
   /* v1.5.2 (Nick's live pass): a Compendium with EVERY shelf folded looks
      empty — the training cache rolled no Land Fauna and the specimen
-     lesson pointed at a list of closed drawers. The first shelf with
-     anything in it always opens itself. */
-  if(order.length && !order.some(rm=>_cdxOpen.has(rm))) _cdxOpen.add(order[0]);
+     lesson pointed at a list of closed drawers. The first shelf opens
+     itself DURING TRAINING ONLY — Nick live 2026-07-26: veterans open to
+     tidy closed shelves; whatever they expand is remembered in-session. */
+  if(!tutDone && order.length && !order.some(rm=>_cdxOpen.has(rm))) _cdxOpen.add(order[0]);
   for(const rm of order){
     const group=groups[rm];
     const open=_cdxOpen.has(rm) || codexKing!=='all' || codexRare>0;   /* a filtered kingdom/rarity lays its shelves open */
@@ -14745,7 +14798,7 @@ function renderCodex(){
   }
   codexEl.innerHTML=html;
 }
-const _cdxOpen=new Set(['Land Fauna']);
+const _cdxOpen=new Set();   /* Nick live 2026-07-26: no shelf opens by default — expansions are remembered for the session */
 /* realm → display shelf. Fauna shelves all read "<Habitat> Fauna"; the
    showcase realms (Megafauna, Anomalous Life) stand as their own shelves. */
 const _SHELF_OF={
@@ -17446,8 +17499,8 @@ function fightNow(mine, theirs, opts){
     '<div class="hp"><i id="'+id+'" style="width:100%"></i></div>'+
     '<div class="ab" style="color:'+(S.ab.col||'#ffd96a')+'">✧ '+S.ab.n+'</div>'+
     statBars(S));
-  document.getElementById('duel-a').innerHTML=sideHtml(mine.name, mine.art||speciesPortrait(mine.genome), res.A, 'hpA', !!mine.isPlayer, mine.grade);
-  document.getElementById('duel-b').innerHTML=sideHtml(theirs.name, theirs.art||speciesPortrait(theirs.genome), res.B, 'hpB', !!theirs.isPlayer, theirs.grade);
+  document.getElementById('duel-a').innerHTML=sideHtml(mine.name, (mine.genome?speciesPortrait(mine.genome):mine.art), res.A, 'hpA', !!mine.isPlayer, mine.grade);
+  document.getElementById('duel-b').innerHTML=sideHtml(theirs.name, (theirs.genome?speciesPortrait(theirs.genome):theirs.art), res.B, 'hpB', !!theirs.isPlayer, theirs.grade);
   const lg=document.getElementById('duel-log');
   /* ---- THE CHRONICLE (1.0): a duel is a story, not a damage feed. The
      narrator is seeded by the matchup, so the same fight tells the same tale
@@ -17594,7 +17647,7 @@ function duelSideCard(nm, art, S){
 }
 function startDuelWithCode(entry){
   setArenaBackdrop(null);   /* friendly duels are neutral ground — never a stale conquest arena */
-  _duelMine={name:entry.name, genome:entry.genome, art:entry.art||speciesPortrait(entry.genome)};
+  _duelMine={name:entry.name, genome:entry.genome, art:(entry.genome?speciesPortrait(entry.genome):entry.art)};   /* CF16-005: duels are DETAIL surfaces */
   _duelTheirs=null;
   document.getElementById('duel-a').innerHTML=duelSideCard(_duelMine.name, _duelMine.art, battleStats(_duelMine.genome));
   document.getElementById('duel-b').innerHTML='<div class="awaiting">Awaiting a challenger —<br>paste a CFB- code below</div>';
@@ -18704,10 +18757,24 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.9';
+const GAME_VERSION='1.7.10';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.10', title:'The Listening Post', date:'July 2026', sections:[
+ ['🖱 UI Enhancements', [
+  '🔎 SEARCH TAKES THE STAGE — results now drop directly beneath the search box, and everything else falls into shadow while you type, so the answer is the one lit thing on screen.',
+  '🗂 TIDY SHELVES EVERYWHERE — the Compendium and the Shipyard&#8217;s Fabricator now open with every shelf and category folded closed; whatever you expand stays expanded for the session. (Training still lays open the shelf a lesson needs.)',
+  '📖 THE COMPENDIUM CLEARS ITS OWN NAME — the board no longer rides up over the Compendium chip that opened it.'],
+ ],
+ ['🧭 Gameplay', [
+  '🎓 LESSONS CLEAR THE STAGE — the feed, breed and heal lessons now put away the specimen card left standing by the previous lesson, so &#8220;Open a beast&#8221; is true when you read it and the ❤ heart isn&#8217;t hiding behind a card.',
+  '🖼 NO DEAD BUTTONS — the Planetside&#8217;s ⛶ Full screen pill no longer shows during training, where zoom is deliberately paused so the tap can continue the lesson.'],
+ ],
+ ['🔧 Under the Hood', [
+  '🧠 A LIGHTER MEMORY — species lists, search results and roster images now use small thumbnails instead of retaining every full-size portrait; long collecting sessions on phones hold dramatically less memory with no visual change on cards, duels or reveals.'],
+ ],
+]},
 {v:'1.7.9', title:'The Courtesy Pass', date:'July 2026', sections:[
  ['🖱 UI Enhancements', [
   '⬆ LEAVE THIS WORLD — every world you&#8217;ve stood on now carries an explicit button that pulls the camera back to the system overview. No gesture knowledge required; one press and the whole sky returns.',
@@ -21340,7 +21407,11 @@ if(typeof cargoEl!=='undefined' && cargoEl) cargoEl.addEventListener('click', e=
    Research Bench beneath, recipes folded by category. Opened by the 🛠
    Shipyard rail button (v1.5.2b: the ship is off the doll). ---- */
 let yardOpen=false, yardView='fab';
-const _fabOpen=new Set(['part']);
+/* Nick live 2026-07-26: every category ships CLOSED — a veteran opens to a
+   tidy index, and whatever they expand is remembered for the session. The
+   forge LESSON still lays Basic Parts open (the recruit must see the Iron
+   Plate row to craft it) — seeded in the forge step's enter(). */
+const _fabOpen=new Set();
 /* FLEET v1.7.2: name the ONE thing stopping a craft — the first missing
    material (with count), missing part, gate item, or Signature lock */
 function _craftNeed(it, sigLock, gatedBy){
@@ -23194,6 +23265,15 @@ function gameEvent(type, detail){
   try{ if(type!=='ascent-chapter') ascEvent(type, detail||{}); }catch(_){}
 }
 
+/* dismiss a standing specimen reveal as a lesson takes the stage — the same
+   idiom the Escape stack uses (queue cleared so the next card isn't stale) */
+function _tutDropReveal(){
+  try{
+    pendingReveals.length=0;
+    const rv=document.getElementById('reveal');
+    if(rv && rv.style.display && rv.style.display!=='none'){ rv.style.display='none'; if(codexOpen) renderCodex(); }
+  }catch(_){ }
+}
 const TUT_STEPS=[
  {id:'welcome', btn:'Begin Training',
   text:()=>'Welcome to <b>Sol</b>, '+(explorerName||'Explorer')+' — humanity’s cradle and your first charter. The order asks one thing of every new Pathfinder first: <b>Field Training</b>.<br>It’s all real practice, and nothing you lose in training follows you out.'},
@@ -23236,10 +23316,15 @@ const TUT_STEPS=[
   when:(t)=>t==='specimen'},
  {id:'card-tour', spot:'#reveal .card', btn:'Got It', rev:'scout',   /* the tour's one live verb — reversible, and it IS on the card */
   text:()=>'Read it like a Pathfinder: five stat bars and total Power; its ✧ ability; the rarity grade tinting the card. Rarer life fights harder, breeds stronger, heals — or poisons — more. Beasts also list the flora flavours they ♥ love and ⊘ dislike.'},
- {id:'feed', bottom:true, allow:['#codex','#codexbtn'], rev:'feed', enter:()=>{ _tutRig={feed:0.99}; },   /* feedPair poisons on LOW rolls — 0.99 is the safe, best-event roll (v1.3.11: the old -1 rig GUARANTEED the training poisoning Nick screenshotted). bottom:true (Nick's step-10 screenshot, 2026-07-24): if the recruit closes the Compendium mid-step, a TOP card sat exactly over the rail pills the step needs tappable — pin it to the bottom like the specimen step */
+ /* Nick live 2026-07-26 (steps 10/14 screenshots): the specimen card from the
+    PREVIOUS lesson lingered over these steps — "it says open a beast, but the
+    card's already open". Each lesson that says "Open a …" now takes the stage
+    with the standing card DISMISSED (same one-lesson-one-voice law as the
+    hazard step dismissing the duel result). */
+ {id:'feed', bottom:true, allow:['#codex','#codexbtn'], rev:'feed', enter:()=>{ _tutRig={feed:0.99}; _tutDropReveal(); },   /* feedPair poisons on LOW rolls — 0.99 is the safe, best-event roll (v1.3.11: the old -1 rig GUARANTEED the training poisoning Nick screenshotted). bottom:true (Nick's step-10 screenshot, 2026-07-24): if the recruit closes the Compendium mid-step, a TOP card sat exactly over the rail pills the step needs tappable — pin it to the bottom like the specimen step */
   text:()=>'Time for a meal. Open a 🐾 beast in the Compendium, tap <b>Feed</b>, and pick a plant. The plant is always consumed — a welcome meal grows the beast’s bloodline permanently.',
   when:(t)=>t==='fed'},
- {id:'breed', bottom:true, allow:['#codex','#codexbtn'], rev:'breed', enter:()=>{ _tutRig={breed:-1}; },   /* bottom:true — same rail-blocking fix as the feed step */
+ {id:'breed', bottom:true, allow:['#codex','#codexbtn'], rev:'breed', enter:()=>{ _tutRig={breed:-1}; _tutDropReveal(); },   /* bottom:true — same rail-blocking fix as the feed step */
   text:()=>'Now forge a bloodline. Open a 🐾 beast, tap <b>Breed</b>, and choose a mate. Both parents are always consumed by the union. (This training pair is a sure thing.)',
   when:(t)=>t==='bred'},
  {id:'duel', btn:'⚔ Begin Training Duel', stay:true,
@@ -23254,7 +23339,7 @@ const TUT_STEPS=[
   enter:()=>{ try{ duelBox.style.display='none'; setArenaBackdrop(null); }catch(_){ }
     clearTimeout(_tutHazT); _tutHazT=setTimeout(()=>{ _tutHazT=0; try{ const st=TUT_STEPS[_tutStep]; /* CF-003: only bite if STILL on the hazard step during training — never after cleanup/skip */ if(_tutHook && st && st.id==='hazard' && hp>20) damageExplorer(Math.min(15, hp-5), 'Your training rival got a parting nip in.'); }catch(_){} }, 400); },
   text:()=>'…and your rival got a parting nip in. That bar up top is your HP. Hostile bioscans, toxic meals and fighting your own conquests can all wound you. At 0 HP the expedition ends.'},
- {id:'heal', spot:'#hpheart', allow:['#hpwrap'], enter:()=>{ _tutRig={heal:0.95}; },
+ {id:'heal', spot:'#hpheart', allow:['#hpwrap'], enter:()=>{ _tutRig={heal:0.95}; _tutDropReveal(); },   /* Nick live: the newborn's card covered the heart lesson */
   text:()=>'Heal up. Tap the <b>❤ heart</b> by your HP bar and eat a flora. Medicine restores HP and permanently grows one of your five battle stats — the deadliest medicine heals hardest.',
   when:(t,d)=>t==='healed'&&d.ok},
  {id:'tray', spot:'#bell', allow:['#bell','#tray'],
@@ -23281,6 +23366,7 @@ const TUT_STEPS=[
        is blocking me"). Close it on the way in so the rail is revealed. */
     if(typeof closeSheet==='function' && sheetOpen) closeSheet();
     cargo.set('Fe',(cargo.get('Fe')||0)+6); cargo.set('Al',(cargo.get('Al')||0)+4); cargo.set('Si',(cargo.get('Si')||0)+4);
+    _fabOpen.add('part');   /* the lesson's Iron Plate row must be visible (categories ship closed now) */
     showCargoBtn();
   }catch(_){ } },
   text:()=>'The engineer&#8217;s trade: the order has loaned you a pinch of ore — nothing to mine for this lesson. Open the <b>🛠 Shipyard</b> (the dock) and craft an <b>Iron Plate</b> at the Fabricator. (Training is a sandbox — the loaned ore and plate return to the order when you graduate. Out in the field, <b>⛏ Mine</b> fills the hold for real.)',

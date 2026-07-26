@@ -1451,13 +1451,14 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     await until(() => sk.doc.getElementById('yard').style.display === 'flex', 2000, 'yard for fab');
     click2(sk.doc.querySelector('#yardbench [data-yt="fab"]'), sk.w);   // the tab is remembered — pick fab explicitly
     const yb4 = sk.doc.getElementById('yardbench');
-    check('v1.5.2 Fabricator: category folds list recipes with craft buttons (T1 open by default)',
+    // v1.7.10 (Nick live): EVERY category ships closed — a tidy index; the
+    // forge training lesson seeds Basic Parts open separately (its enter())
+    check('v1.7.10 Fabricator: every category fold ships CLOSED post-training',
       yb4.textContent.includes('Basic Parts') && yb4.textContent.includes('Ship Systems')
-      && !!yb4.querySelector('.fabgrp.open [data-craft]'));
-    // fold discipline: T2 ships closed, opens on its header
-    click2(yb4.querySelector('.fabgrp[data-fg="comp"] .fghead'), sk.w);
-    check('v1.5.2 Fabricator: a closed category opens on its header',
-      !!sk.doc.querySelector('#yardbench .fabgrp[data-fg="comp"].open'));
+      && !yb4.querySelector('.fabgrp.open'));
+    click2(yb4.querySelector('.fabgrp[data-fg="part"] .fghead'), sk.w);
+    check('v1.5.2 Fabricator: a closed category opens on its header (craft buttons live)',
+      !!sk.doc.querySelector('#yardbench .fabgrp[data-fg="part"].open [data-craft]'));
     click2(sk.doc.getElementById('rank'), sk.w);   // sheet back (yard yields) for the paperdoll block
     // gear: craft the Mining Rig chain's first tool and see it socket + boost
     skH.cargo.set('H', 12); skH.cargo.set('O', 12); skH.cargo.set('Cr', 6);
@@ -1718,6 +1719,19 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       gG.apex = 12;
       const kept = skH.ringGrade(gG, fake, near);
       check('ring spectrum: an Apex Guardian keeps its summit crown', kept && kept.tier === 9);
+    }
+    // ===== SAVE-HEALTH sentinels (CF-002/CF16-004/005: the save stays LEAN) =====
+    {
+      await sleep(1100);   /* let the queueSave debounce flush */
+      const raw = sk.w.localStorage.getItem('cfcc_save_v2') || '';
+      check('save-health: a save exists after the session', raw.length > 100, 'len ' + raw.length);
+      check('save-health: no portrait art is EVER serialized (no "art" key in the save)', raw.indexOf('"art":') < 0);
+      let sj = null; try { sj = JSON.parse(raw); } catch (_) {}
+      const regen = (sj && sj.log ? sj.log : []).filter((e) => e && /^[psmcb]/.test(String(e.id || '')));
+      check('save-health: regenerable Atlas rows carry NO stored thumbs (rebuilt from seed)',
+        regen.length > 0 && regen.every((e) => !e.thumb), 'rows: ' + regen.length);
+      check('save-health: the split list-thumb pipeline is wired (speciesThumb exported)',
+        typeof skH.speciesThumb === 'function');
     }
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
     sk.w.close();
