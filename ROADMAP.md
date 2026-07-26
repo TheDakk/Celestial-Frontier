@@ -1057,3 +1057,16 @@
 ##   REMAINING Batch-C tail (roadmap): full inert on modal backgrounds · 'Leave this world' button ·
 ##   Records journal aria · vista tap-dead-420ms · Reset button placement · notification casing.
 ##   ▶ Next fleet re-run will score the a11y persona against 2.5; targets: overlaps ≤85, JS errors 0.
+## ▶▶▶ 2026-07-26 ★ STEP-6 LANDING LOCK fixed in SOURCE (bb56edc) — Nick hit it LIVE on v1.7.7:
+##   the survey card closed between atlas-add and land with no allowed reopen. THREE closers, one
+##   trap: (1) the 1.7.6 PANELS registration's grace-dismiss killed the card on the REAL pointerdown
+##   of the Atlas tap → training sweep now SKIPS the panel entry (the canvas needsCard sweep owns the
+##   card during training); (2) land step now carries pick(Earth-133) like find-earth so tap-Earth-to-
+##   reopen is REAL (also covers goTo: the atlas-open lesson invites tapping the Earth row, which
+##   travels + clears the lock); (3) FOCUS LOCKDOWN, KEYBOARD EDITION — Batch C's cv keydown was never
+##   lesson-gated (Escape released the card; ± zoomed the mode over): canvas keys now act only when
+##   the lesson opens #cosmos, like taps/wheel. FULL-FLOW AUDIT ran: every other step's completion
+##   surface is dock/HUD/tutbox or has an allowed reopen (#codexbtn / _tutSpot auto-reopen) — this
+##   was the only lock class left. Smoke +7 (439/0) incl. the real-pointerdown repro click() never
+##   fired (⚠ LESSON: jsdom click() ≠ pointerdown — dismiss-on-pointerdown paths need the real event).
+##   ⚠ NOT DEPLOYED — awaiting Nick's word for the v1.7.8 hotfix (bump + RELEASES entry at deploy).
