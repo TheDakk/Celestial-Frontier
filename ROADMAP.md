@@ -927,3 +927,37 @@
 ##   viewport dynamics) — REAL-DEVICE PASS REMAINS MANDATORY before any mobile-facing release.
 ##   ▶ Nick to re-verify on iPhone (fresh load / hard refresh): intro typing must not zoom;
 ##   training two taps Earth; tray/Shipyard fit + close. 1000-tester baseline still in flight.
+## ▶▶▶ 2026-07-26 FLEET REPORT TRIAGE (FLEET_REPORT_v1.7.0_2026-07-26.html — 1,000 bot sessions ·
+##   21 devices · 12 personas · 49 issues vs LIVE v1.7.0; fun 4.9/12-persona mean, 9/12 would
+##   replay; ZERO js errors / soft-locks fleet-wide; viewport bug already fixed in 1.7.1).
+##   TRIAGE (batches, AWAITING NICK's pick):
+##   ★ BATCH A "FIELD PATCH" (v1.7.2, ~25 quick fixes, days): toast lane (cap 1 <420px, dock above
+##     chrome, suppress over open panels) · #toast pointer-events:auto on .tst + MODAL_SEL '#toasts'
+##     →'#toast' TYPO (deep-links dead — 2-line real bugs) · Prime Codex psub2 WRAP + render the
+##     UNUSED SIGS.lore per titan (huge lore win, ~2 lines) · #records .srow selector (run-on
+##     'Mercurycarbon') + journal biome DISPLAY name · ?-button opens Guide directly · release
+##     bulletin GATED to returning saves (design change; retune smoke intent) · craft button always
+##     visible w/ shortfall label + group '0 craftable' · landing-verb copy unification · safe-area-
+##     inset-top on topbar/panel heads · skip-confirm emphasis inversion + Settings 'Restart
+##     Training' · atlas ×/clear-all confirms+undo · name-gate: enable from cleanName + inline
+##     reason · Escape = ordered overlay stack (all 9 panels; keep training guard) · mouse PICK_F
+##     1.2 + hover halo + double-tap hint/ping · tooltip collision flip + suppress-when-open ·
+##     bell mark-read on open + 44px tacts · scroll fades/scrollbars (primebox/records/shipyard
+##     hero collapse) · vista/card taxonomy wording ('carbon flats of Mercury') · Sol special-case
+##     caption · progress-format helper · notification casing/icons · comet tail lineWidth /z
+##     (1-line) · 'top left' layout-aware copy · save-reassurance line + one-time saved chip ·
+##     ⚠ Air/Wind rename ('star' label → Stellar) NEEDS fp check (SIGS is probed).
+##   ★ BATCH B "THE TABLET TIER" (layout arc): 701–900px breakpoint · ONE panel model (sheets w/
+##     scrim) · survey-card/panel collision rules · ultrawide space use · 44px touch-target sweep ·
+##     dock chip captions · panel heights vs dock · vista default size on tablets.
+##   ★ BATCH C "THE BOARD SPEAKS" (a11y, RE-RANKED CRITICAL by the report — persona fun 1.5, total
+##     block): canvas roving keyboard focus over picks[] (arrows/Enter/Escape, +/- zoomAt) · Leave-
+##     world button · aria-live mirror for toasts/picks · dialog focus traps/inert + aria names ·
+##     search results keyboard-reachable · contrast floors (tier '66' alpha, psig.locked) + Text
+##     tone reaching inline hexes · fs-lg/xl root-var refactor. (Was 'deferred Navigator batch' —
+##     the report measured it as a hard block; recommend folding INTO or ahead of v1.8.)
+##   ★ INTO v1.8 (Connection arc, already specced): recipe OUTPUT lines + common-material source
+##     map (their min-maxer asks = our actionable-denials/matchup items) · already-satisfied
+##     charters auto-honour (banked-state law care) · onboarding pacing beyond bulletin gating.
+##   CONFIRMED CLEAN by fleet: 0 js errors, 0 soft-locks, save/paste hardening 'armoured', 45+ fps
+##   worst case (their earlier 11fps was THEIR harness artifact, retracted), 791ms load.
