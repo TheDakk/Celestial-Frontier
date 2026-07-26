@@ -913,3 +913,17 @@
 ##   housing, faction threats, seasonal regions, audio motifs (→ procedural-audio arc; agree sound
 ##   now outranks another art pass), persona routes, midgame/endgame structures.
 ##   ▶ HOLDING for Nick's word + more feedback (tester report lands when the run finishes).
+## ▶▶▶ 2026-07-26 HOTFIX — ★ v1.7.1 "THE POCKET PATCH" LIVE (build c51c8c6). Nick's real-iPhone
+##   pass found ONE root cause wearing four masks: the CF-CR-011 viewport zoom unlock let iOS
+##   AUTO-ZOOM on input focus (namein 14px / searchin 12px < the 16px threshold) and never release
+##   → visual/layout viewport split → nameplate+HP+search cut off top, tray/sheets overflowing the
+##   window, Shipyard ✕ unreachable, AND canvas taps OFFSET from picks = the training-two "can't
+##   tap Earth" stuck. FIX: viewport lock restored (iOS ignores user-scalable=no for USER pinch —
+##   a11y zoom intact; the a11y reviewer's ask cost nothing to revert) + 16px phone input floor.
+##   ⚠ LESSON: on iOS, `user-scalable=no` isn't (just) about zoom — it PINS the layout viewport;
+##   removing it re-enables input-focus auto-zoom which BREAKS fixed-position app UIs and canvas
+##   hit-testing. Never remove it from a canvas-app page; a11y reviewers' zoom asks are satisfied
+##   by iOS's forced pinch-zoom anyway. Smoke/uilayout/uishot CANNOT see this class (no real iOS
+##   viewport dynamics) — REAL-DEVICE PASS REMAINS MANDATORY before any mobile-facing release.
+##   ▶ Nick to re-verify on iPhone (fresh load / hard refresh): intro typing must not zoom;
+##   training two taps Earth; tray/Shipyard fit + close. 1000-tester baseline still in flight.
