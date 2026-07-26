@@ -981,3 +981,18 @@
 ##   (fp MISMATCH on rename, reverted). Needs an authorized ONE-PROBE re-pin; the new lore line
 ##   already tells the stellar story meanwhile. NOT IN A: notification casing audit (polish list),
 ##   Batch B tablet tier, Batch C a11y (canvas keyboard/AT), v1.8 folds.
+## ▶▶▶ 2026-07-26 ★ v1.7.3 "THE TABLET TIER" — BATCH B + THE STELLAR RENAME (deploying).
+##   ⚖ FIRST RE-PIN OF THE ARC (Nick-authorized): Wind→Stellar Signature. Field-diff proof: ONE
+##   probe (sigs) / ONE entry (index 3, id 'star') / ONE field differed across all 50 probes.
+##   Surgical re-pin recorded in baseline.json `repins[]` (probe, date, authorizedBy, reason).
+##   PROCESS PIN: this is how ALL future intended fingerprint changes go — field-diff first,
+##   re-pin ONLY the proven probe, record authorization in the baseline itself.
+##   BATCH B SHIPPED: 701–900px joins the DOCK+SHEET model (breakpoints flipped html+JS; the
+##   96-portrait art-cache stays at 700 — memory budget ≠ layout) · ONE panel model ≤900: titled
+##   sheets (::before headers), scrim (100vmax shadow), min-height 42dvh · tablet sheets center at
+##   600px · ultrawide ≥1600 panels widen · vista 72vh on tablets · dock chips CAPTIONED + 44px
+##   floor · 44px touch sweep (Accept/☆/⌂/×/fsopt/closers) · corner circles 44 · uishot seeds read
+##   GAME_VERSION from the build. Gates: fp MATCH 50/50, smoke 429/0, layout 546/9 (ipad-port now
+##   judged under the dock model — the gate's laws are layout-agnostic and it passed unchanged).
+##   REMAINING from fleet: Batch C a11y (canvas keyboard/AT — the big one) · notification-casing
+##   audit · Atlas chart pane (feature) · v1.8 folds. Nick's iPhone re-verify now covers 1.7.1-3.
