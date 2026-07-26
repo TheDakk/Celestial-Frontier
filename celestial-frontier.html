@@ -195,10 +195,13 @@
   #setpanel .sgrp.on{display:block}
   #helppop .hpv{cursor:pointer}
   #helppop .hpv:hover{color:var(--ink)}
-  #setpanel #resetbtn{width:100%;padding:8px 0;font:600 10.5px var(--ui);letter-spacing:.06em;cursor:pointer;
+  /* Batch-C tail (fleet: Reset placement): the destructive control keeps its
+     distance from the harmless "Restart" training row above it — a clear gap
+     plus muted-until-intent styling; the two-step confirm still guards it */
+  #setpanel #resetbtn{width:100%;padding:8px 0;margin-top:14px;font:600 10.5px var(--ui);letter-spacing:.06em;cursor:pointer;
     color:#ff9e8e;background:rgba(255,120,110,0.08);border:1px solid rgba(255,120,110,0.32);border-radius:9px;
-    transition:background .15s,color .15s}
-  #setpanel #resetbtn:hover{background:rgba(255,120,110,0.16);color:#ffb8ac}
+    opacity:.72;transition:background .15s,color .15s,opacity .15s}
+  #setpanel #resetbtn:hover,#setpanel #resetbtn:focus-visible{background:rgba(255,120,110,0.16);color:#ffb8ac;opacity:1}
   #setpanel #resetconfirm{display:none;margin-top:9px}
   #setpanel .rcnote{font-size:10px;line-height:1.5;color:var(--faint);margin-bottom:8px}
   #setpanel .rcrow{display:flex;gap:6px}
@@ -5443,7 +5446,14 @@ document.addEventListener('keydown', e=>{
       const el=document.getElementById(id);
       if(el && el.style.display && el.style.display!=='none'){
         if(id==='reveal'){ try{ pendingReveals.length=0; }catch(_){} el.style.display='none'; try{ if(codexOpen) renderCodex(); }catch(_){} }
-        else if(id==='vistabox'){ try{ el.click(); }catch(_){ el.style.display='none'; } }   /* the vista's own tap-to-continue path */
+        else if(id==='vistabox'){
+          /* Escape mirrors the backdrop tap, minus the ghost guard (a key is
+             never a synthesized click): zoomed → step out; else dismiss */
+          try{
+            if(el.classList.contains('zoom')) el.classList.remove('zoom');
+            else _vistaDismiss();
+          }catch(_){ el.style.display='none'; }
+        }
         else el.style.display='none';
         return;
       }
@@ -12257,13 +12267,29 @@ function hdVista(opts){
    longer see-once: the last landing's args are cached so the surface
    card can reopen it (graphics overhaul B1) */
 const vistaBox=document.createElement('div');vistaBox.id='vistabox';document.body.appendChild(vistaBox);
-let _lastVista=null, _vistaHideT=0, _vistaShowSeq=0, _vistaArmedAt=0;
+let _lastVista=null, _vistaHideT=0, _vistaShowSeq=0, _vistaArmedAt=0, _vistaPD=0;
+/* GHOST vs GENUINE (Batch-C tail — the fleet clocked the old 420ms blanket
+   as a dead window: quick real taps did nothing and the vista "felt stuck").
+   A ghost click is synthesized from the SAME gesture that pressed Land — its
+   pointerdown landed on the button, before this overlay existed. A genuine
+   tap BEGINS here. So: dismissal needs a pointerdown on the overlay after
+   the show, and real taps work instantly; only the ghost is filtered. */
+vistaBox.addEventListener('pointerdown', ()=>{ _vistaPD=performance.now(); });
+function _vistaDismiss(){
+  /* a show's fade-in rides a queued animation frame — bump the sequence so
+     a lightning-fast tap can't lose the race and strand the view open */
+  _vistaShowSeq++;
+  vistaBox.classList.remove('on','zoom');   /* dismissing also drops any zoom */
+  clearTimeout(_vistaHideT);
+  _vistaHideT=setTimeout(()=>{ if(!vistaBox.classList.contains('on')) vistaBox.style.display='none'; }, 460);
+}
 vistaBox.addEventListener('click', (e)=>{
   /* GHOST-CLICK GUARD (Nick: "the vista popped up and then closed"): on
      touch, the tap that pressed LAND synthesizes a click a beat later —
      it landed on the freshly-mounted overlay and dismissed the payoff.
-     The dismiss arms 420ms after the show; the birth-tap passes through. */
-  if(performance.now()-_vistaArmedAt<420) return;
+     (80ms same-tick floor: a mount mid-gesture must never race the arm.
+     Escape bypasses this via _vistaDismiss — a key is never a ghost.) */
+  if(_vistaPD<=_vistaArmedAt || performance.now()-_vistaArmedAt<80) return;
   /* FULL-SCREEN semantics (Nick): while zoomed, tapping ANYWHERE steps back
      OUT of full screen to the windowed card — it never slams the whole view
      shut. Only the ✕ closes everything from full screen. */
@@ -12271,12 +12297,7 @@ vistaBox.addEventListener('click', (e)=>{
     vistaBox.classList.remove('zoom');
     return;
   }
-  /* a show's fade-in rides a queued animation frame — bump the sequence so
-     a lightning-fast tap can't lose the race and strand the view open */
-  _vistaShowSeq++;
-  vistaBox.classList.remove('on','zoom');   /* dismissing also drops any zoom */
-  clearTimeout(_vistaHideT);
-  _vistaHideT=setTimeout(()=>{ if(!vistaBox.classList.contains('on')) vistaBox.style.display='none'; }, 460);
+  _vistaDismiss();
 });
 function savePostcard(){
   if(!_lastVista||!_lastVista.cv) return;
@@ -12301,7 +12322,7 @@ function savePostcard(){
     if(revoke) setTimeout(()=>URL.revokeObjectURL(href), 4000); };
   if(cv.toBlob) cv.toBlob(b2=>{ if(b2) fire(URL.createObjectURL(b2), true); else fire(cv.toDataURL('image/png')); }, 'image/png');
   else fire(cv.toDataURL('image/png'));
-  toast('⇪ Postcard saved','The view and its share code are baked into the image — send it to a friend.');
+  toast('⇪ Postcard Saved','The view and its share code are baked into the image — send it to a friend.');
 }
 function _vistaExtras(host){
   /* the corner ✕ — same language as every card and panel (v1.3.5).
@@ -12350,7 +12371,7 @@ function _vistaMount(headHtml, cv, vtTxt){
      it), so zoom is live-play only; there the tap bubbles to the dismiss. */
   cv.addEventListener('click', (e)=>{
     if(!tutDone) return;                 /* training: let the tap bubble → continue */
-    if(performance.now()-_vistaArmedAt<420) return;   /* same ghost-click guard as dismiss */
+    if(_vistaPD<=_vistaArmedAt || performance.now()-_vistaArmedAt<80) return;   /* same ghost-vs-genuine guard as dismiss */
     e.stopPropagation();
     vistaBox.classList.toggle('zoom');
   });
@@ -12764,11 +12785,11 @@ function routeHit(dmg, why){
       scoutId=null;                 /* before removal — one toast, not two */
       removeFromCodex(sc.id);
       if(codexOpen) renderCodex();
-      toast('☠ Scout lost', nm+' took the strike meant for you — and had nothing left. It is gone.');
+      toast('☠ Scout Lost', nm+' took the strike meant for you — and had nothing left. It is gone.');
     } else {
       sc.genome.hurt=Math.min(0.95, h0+w);
       const cc2=creatureCondition(sc.genome);
-      toast('🐾 Scout wounded', sc.name+' took the strike meant for you — now '+cc2.label+' ('+Math.round(cc2.h*100)+'% hurt). Feed it flora it loves to mend.');
+      toast('🐾 Scout Wounded', sc.name+' took the strike meant for you — now '+cc2.label+' ('+Math.round(cc2.h*100)+'% hurt). Feed it flora it loves to mend.');
     }
     playFailTone(); checkAch(); queueSave();
     return false;
@@ -12786,7 +12807,7 @@ function attemptContact(d){
   if(Math.random()<Math.min(0.98, 0.7+_equipBonus('contact')/100)){
     contacted.add(seed);
     playRaritySting(2);
-    toast('🤝 First contact', 'They meet you at the landing site — the census of '+(d.title||'this world')+' is yours to read.');
+    toast('🤝 First Contact', 'They meet you at the landing site — the census of '+(d.title||'this world')+' is yours to read.');
   } else {
     /* v1.5.2 (audit): contact fires automatically on landing, so its wound
        joins the wave-off family — it can beat you to the brink, never
@@ -12808,7 +12829,7 @@ function noteLanding(seed){
   gameEvent('landfall', {planetSeed:seed});
   if(seed!==133){
     if(tutDone) _pendingSample=seed;   /* samples arrive with the card render */
-    else toast('⛳ Ground survey', 'Boots on the ground — this world’s census and mineral veins are yours to read.');
+    else toast('⛳ Ground Survey', 'Boots on the ground — this world’s census and mineral veins are yours to read.');
   }
   queueSave();
 }
@@ -13049,7 +13070,7 @@ function _descRoll(pl){
     _descCleared=pl.P.seed;
     _waveOffs.delete(pl.P.seed);
     if(d.biome && d.biome.land<=30 && !landed.has(pl.P.seed))
-      toast('🏆 Through the fire', (pl.name||'A hostile world')+' let you in — few explorers ever stand here.');
+      toast('🏆 Through the Fire', (pl.name||'A hostile world')+' let you in — few explorers ever stand here.');
     queueSave();
     return true;
   }
@@ -13297,7 +13318,7 @@ function grantFieldSamples(d){
   essence+=sd; stats.essenceEarned=(stats.essenceEarned||0)+sd;
   stats.landings=(stats.landings||0)+1;
   playRaritySting(1);
-  toast('⛳ Ground survey', 'Boots on the ground — field samples: '+got.join(' · ')+' · +'+sd+' ☄ Stardust. This world’s census and veins are yours to read.');
+  toast('⛳ Ground Survey', 'Boots on the ground — field samples: '+got.join(' · ')+' · +'+sd+' ☄ Stardust. This world’s census and veins are yours to read.');
   showCargoBtn(); if(cargoOpen) renderCargo();
   checkAch(); renderRank(); queueSave();
 }
@@ -13685,6 +13706,13 @@ function renderPanel(p, isLocked){
     if(!glance && hdOn && d.planetSeed!=null && landed.has(d.planetSeed) && st.mode==='system'){
       vistaBtn='<button class="act" data-act="vista" data-tip="Look out over your landing site again">Planetside</button>';
     }
+    /* Batch-C tail (fleet a11y ask): an EXPLICIT way off a world — zoom
+       gestures aside, one button pulls the camera back to the system
+       overview. Grounded cards only (that's where "leave" means something). */
+    let leaveBtn='';
+    if(!glance && d.planetSeed!=null && landed.has(d.planetSeed) && st.mode==='system'){
+      leaveBtn='<button class="act" data-act="depart" data-tip="Pull back to the system overview — the whole sky at a glance">⬆ Leave this world</button>';
+    }
     /* v1.7 §8: a star card offers a Skim action when the class yields a stellar
        cosmic — a limited run of samples (☀), the star analogue of ⛏ Mine */
     let skimBtn='';
@@ -13699,7 +13727,7 @@ function renderPanel(p, isLocked){
             : '<button class="act in" data-act="skim" data-tip="This star’s reachable corona is spent.">☀ Corona Spent</button>');
       }
     }
-    const btn = glance ? '' : atlasRow + conqBtn + landBtn + mineBtn + skimBtn + vistaBtn +
+    const btn = glance ? '' : atlasRow + conqBtn + landBtn + mineBtn + skimBtn + vistaBtn + leaveBtn +
       (d.where ? '<button class="act" data-act="share" data-guide="codes" data-tip="Copy a code — friends land on this exact world">⇪ Share this discovery</button>' : '');
     /* actions live at the TOP of the body (1.1.2): on phones the old
        bottom placement put "+ Add to Star Atlas" below the fold — a
@@ -13831,6 +13859,14 @@ panelEl.addEventListener('click', e=>{
       const plV=st.sys.planets.find(x=>x.P&&x.P.seed===_lastDesc.planetSeed);
       if(plV){ try{ openLandingVista(plV); }catch(_){ } }
     }
+    return;
+  }
+  const dep=e.target.closest('[data-act="depart"]');
+  if(dep){
+    /* leave = a camera move, nothing more — drills keep pulling exactly as
+       they do when you scroll away by hand */
+    if(st.mode==='system' && st.sz0){ st.scam.x=0; st.scam.y=0; st.scam.z=st.sz0*1.05; }
+    try{ _announce('Back to the system overview.'); }catch(_){ }
     return;
   }
   const gt=e.target.closest('[data-gtoggle]');
@@ -15845,7 +15881,7 @@ function doSave(){
        expedition announces itself once — the only save messaging used to be a
        data-loss warning sitting above the red Reset button */
     if(!_savedChip && tutDone){ _savedChip=true;   /* v1.7.6 CF173-06: recruits get this at graduation — it used to mount 2px behind the training card and expire unread */
-      try{ toast('✓ Expedition saved', 'Progress saves automatically on this device — no account needed.'); }catch(_){ } }
+      try{ toast('✓ Expedition Saved', 'Progress saves automatically on this device — no account needed.'); }catch(_){ } }
   }catch(_){
     /* private mode or quota — session continues unsaved */
     if(!_saveFailWarned){ _saveFailWarned=true;
@@ -17781,7 +17817,7 @@ function removeFromCodex(id){
      pass through here) */
   if(scoutId===id){
     scoutId=null;
-    toast('Scout stands down','Your Field Scout is gone from the Compendium — hostile bioscans risk your own HP again.');
+    toast('Scout Stands Down','Your Field Scout is gone from the Compendium — hostile bioscans risk your own HP again.');
     queueSave();
   }
   codexCountEl.textContent=codex.size;
@@ -17983,7 +18019,7 @@ pickList.addEventListener('click', e=>{
          the brink — the 5,000-bot round died 344 times re-queuing this
          exact fight at 1 HP. Send a beast, or mend first. */
       if(hp<Math.ceil(HP_MAX*0.25)){
-        toast('⚔ Too Wounded To Lead','Below a quarter health you cannot champion a conquest yourself — eat flora (the ❤ by your HP bar), or send a beast in your place.');
+        toast('⚔ Too Wounded to Lead','Below a quarter health you cannot champion a conquest yourself — eat flora (the ❤ by your HP bar), or send a beast in your place.');
         return;
       }
       champ=playerCombatant();
@@ -18668,10 +18704,22 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.8';
+const GAME_VERSION='1.7.9';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.9', title:'The Courtesy Pass', date:'July 2026', sections:[
+ ['🖱 UI Enhancements', [
+  '⬆ LEAVE THIS WORLD — every world you&#8217;ve stood on now carries an explicit button that pulls the camera back to the system overview. No gesture knowledge required; one press and the whole sky returns.',
+  '🖼 PLANETSIDE ANSWERS INSTANTLY — the landing panorama no longer ignores quick taps (an anti-ghost timer used to eat everything in its first half-second); real taps act immediately, and Escape closes or un-zooms it like everything else.',
+  '↺ THE RESET BUTTON KEEPS ITS DISTANCE — a clear gap and quieter styling separate &#8220;erase everything&#8221; from the harmless Restart-Training row above it. The two-step confirm still stands guard.'],
+ ],
+ ['♿ Accessibility', [
+  '🔇 TRUE MODAL SILENCE — while the Guide, Prime Codex or a duel is up, the world behind the glass is now genuinely unreachable to screen readers and stray taps, and it wakes back up the moment the dialog closes.',
+  '🗒 THE JOURNAL READS ALOUD — the Expedition journal announces itself as a proper list, one landing per row, to assistive technology.',
+  '🏷 NOTIFICATIONS SPEAK WITH ONE VOICE — every notification title now follows the same casing, so nothing reads like it came from a different game.'],
+ ],
+]},
 {v:'1.7.8', title:'The Courier', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🧭 TRAINING STEP 6, UNSTUCK — Earth&#8217;s survey card could vanish between the Atlas lesson and the landing lesson with no way to bring it back (opening the Atlas, travelling from its Earth row, or a keyboard Escape could each close it). The card now rides safely into the landing step, tapping Earth always reopens it, and keyboard shortcuts respect the lesson like taps do.',
@@ -19626,7 +19674,7 @@ function runConquestBattle(d, champ, native){
           const nS=battleStats(native.genome);
           const _cd=Math.min(Math.round(16+nS.total/24), Math.max(0, hp-1));
           if(_cd>0) damageExplorer(_cd, hazardFlavor(d, native.name));   /* flavored + shows HP lost */
-          else toast('\u2694 Beaten To The Brink', native.name+' left you at 1 HP \u2014 mend before you fight anything else.');
+          else toast('\u2694 Beaten to the Brink', native.name+' left you at 1 HP \u2014 mend before you fight anything else.');
         } else if(champ.id){
           const _en=codex.get(champ.id);
           /* v1.5.2 (post-deploy audit): mercy belongs to bloodlines YOU
@@ -24021,6 +24069,34 @@ eventsEl.addEventListener('click', e=>{
 function syncSelState(){
   try{ for(const p of PANELS){ const b=document.querySelector(p.btn);
     if(b) b.classList.toggle('sel', !!p.open()); } }catch(_){ }
+  _syncInert();
+}
+/* Batch-C tail: FULL INERTNESS — the five aria-modal dialogs promised an
+   unreachable background; Tab containment delivered it for the keyboard only,
+   so AT virtual cursors and stray taps could still land behind the glass.
+   While any of the five is open, every other body-level region is inert +
+   aria-hidden. The training layer, the live announcer, the update pill and
+   the true-modal overlays (MODAL_SEL) stay live. Rides the syncSelState
+   pulse (every click/keydown), so it self-heals on the next input. */
+function _syncInert(){
+  try{
+    /* TRUE overlays only: the sheet and Settings deliberately stay out — the
+       dock swaps boards while the sheet is open, and Settings closes on an
+       outside tap; pointer-inert backgrounds would kill both flows. Those two
+       keep Tab containment + aria; enforcement is for the full-screen three. */
+    const MODALS=['guidebox','primebox','duelbox'];
+    const openIds=MODALS.filter(id=>{ const el=document.getElementById(id); return el && el.style.display && el.style.display!=='none'; });
+    const on=openIds.length>0;
+    for(const ch of document.body.children){
+      if(!ch || !ch.getAttribute || !ch.matches) continue;
+      const keep=!on
+        || openIds.some(id=>{ const el=document.getElementById(id); return el && (ch===el || ch.contains(el)); })
+        || ch.matches(MODAL_SEL)
+        || /^(tutbox|tutspot|live|updatepill|farewellbox)$/.test(ch.id||'');
+      if(!keep){ ch.setAttribute('inert',''); ch.setAttribute('aria-hidden','true'); }
+      else if(ch.hasAttribute('inert')){ ch.removeAttribute('inert'); ch.removeAttribute('aria-hidden'); }
+    }
+  }catch(_){ }
 }
 document.addEventListener('click', ()=>setTimeout(syncSelState,0), true);
 document.addEventListener('keydown', ()=>setTimeout(syncSelState,0), true);
@@ -24203,7 +24279,9 @@ function renderRecords(){
   /* EXPEDITION JOURNAL (QoL a2): the trophy room remembers where you set
      foot — newest first, the rolled landing region beside each world */
   if(journal.length){
-    html+='<h4>Expedition journal</h4>';
+    /* Batch-C tail: the journal is a real LIST to assistive tech — rows carry
+       the sentence a sighted reader assembles from the columns */
+    html+='<h4 id="jrnh">Expedition journal</h4><div role="list" aria-labelledby="jrnh">';
     const _jf=(t)=>{ try{ const d=new Date(t); return (d.getMonth()+1)+'/'+d.getDate(); }catch(_){ return ''; } };
     for(let ji=journal.length-1; ji>=Math.max(0,journal.length-12); ji--){
       const j=journal[ji];
@@ -24213,9 +24291,10 @@ function renderRecords(){
         try{ const hit=(typeof BIOME_SETS!=='undefined')?[].concat(...Object.values(BIOME_SETS)).find(b=>b&&b.k===k):null;
           if(hit&&hit.n) return hit.n; }catch(_){ }
         return k.charAt(0).toUpperCase()+k.slice(1)+' region'; })(j.w);
-      html+='<div class="srow"><span class="k">'+esc(j.n)+'</span><span>'+
+      html+='<div class="srow" role="listitem" aria-label="'+esc('Landed on '+j.n+(_jn?', '+_jn:'')+(_jf(j.t)?', '+_jf(j.t):''))+'"><span class="k">'+esc(j.n)+'</span><span>'+
         (_jn?esc(_jn)+' · ':'')+'<span style="color:var(--faint)">'+_jf(j.t)+'</span></span></div>';
     }
+    html+='</div>';
   }
   /* v1.5.2c (Nick): the Statistics ledger lives HERE now — the trophy
      room keeps the numbers; the character sheet keeps the mirror */

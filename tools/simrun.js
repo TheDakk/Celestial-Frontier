@@ -240,7 +240,10 @@ async function expedition(sess, seed, nActions, deep, modeLabel) {   /* CF-SIM-0
     }
     if (tries > 12) return null;
     try { H._performLanding(pl); } catch (e) { run.errors.push('performLanding: ' + e.message); }
-    try { const vb = doc.getElementById('vistabox'); if (vb && vb.style.display !== 'none') { setTimeout(() => { try { vb.click(); } catch (_) {} }, 500); } } catch (_) {}   /* deferred past the 420ms ghost-click arming window (landOn is not async) */
+    try { const vb = doc.getElementById('vistabox'); if (vb && vb.style.display !== 'none') { setTimeout(() => { try {
+      vb.dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, cancelable: true, view: w }));   /* v1.7.9 ghost guard keys on a REAL pointerdown on the overlay */
+      vb.click();
+    } catch (_) {} }, 500); } } catch (_) {}
     try { if (pl.P && pl.P.type) _ptSim.add(pl.P.type); } catch (_) { }
     run.landings++;
     if (pct0 <= 35) { run.hostileGroundings++; note('grounded a hostile world (' + pct0 + '%): ' + (d.title || '')); }
@@ -793,10 +796,11 @@ async function uiTraining(seed, chaos) {
       if (okL) {
         H._performLanding(pl);
         await sleep(150);
-        await sleep(460);   /* outlive the vista's ghost-click arming window */
+        await sleep(160);   /* outlive the same-tick mount floor (v1.7.9: the 420ms blanket is gone) */
         const vb = doc.getElementById('vistabox');
         if (visible(vb)) {
           if (!vb.querySelector('.vcard .vxc')) run.breaks.push('vista lost its windowed card frame');
+          vb.dispatchEvent(new w.MouseEvent('pointerdown', { bubbles: true, cancelable: true, view: w }));   /* the ghost guard keys on a real pointerdown */
           vb.click();
           const closed = await until(() => !visible(doc.getElementById('vistabox')), 3000);
           if (!closed) run.breaks.push('vista would not close on tap');

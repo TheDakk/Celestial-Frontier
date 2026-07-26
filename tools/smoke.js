@@ -47,6 +47,12 @@ function check(name, ok, detail) {
   if (!ok) failed++;
 }
 const click = (el) => el && el.dispatchEvent(new w.MouseEvent('click', { bubbles: true, cancelable: true, view: w }));
+// a REAL tap = pointerdown then click (every device sends both). The vista's
+// ghost-click guard (v1.7.9) tells ghosts from genuine taps by the pointerdown,
+// so vista interactions must use tap(); click() alone now models the ghost.
+const tap = (el, win) => { win = win || w; if (!el) return;
+  el.dispatchEvent(new win.MouseEvent('pointerdown', { bubbles: true, cancelable: true, view: win }));
+  el.dispatchEvent(new win.MouseEvent('click', { bubbles: true, cancelable: true, view: win })); };
 const type = (el, text, win) => { win = win || w; el.value = text; el.dispatchEvent(new win.Event('input', { bubbles: true })); };
 const visible = (el) => !!(el && el.style.display && el.style.display !== 'none');
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -474,7 +480,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     await sleep(700);
     check('landing lesson: the vista holds until dismissed (no auto-close)', visible(doc.getElementById('vistabox')));
     // an armed tap dismisses it and yields the stage to the Compendium lesson
-    click(doc.getElementById('vistabox'));
+    tap(doc.getElementById('vistabox'));
     check('landing lesson: tapping the vista dismisses it', await until(() =>
       !visible(doc.getElementById('vistabox')), 4000, 'vista dismiss'));
     check('training cache granted (6 specimens)', doc.getElementById('codexcount').textContent === '6');
@@ -725,6 +731,12 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('? opens the Guide directly (no build-hash popover in the way)', visible(gbox));
     check('the version popover did NOT appear post-training', !visible(doc.getElementById('helppop')));
     check('guide title renamed', gbox.textContent.includes('Guide to the Universe'));
+    // Batch-C tail: FULL INERTNESS — while a true overlay (Guide/Prime/duel)
+    // is open, the background is inert+aria-hidden; closing releases it.
+    await sleep(80);   /* the sync rides the click pulse (setTimeout 0) */
+    check('a11y: the background is INERT while the Guide is open',
+      !!doc.getElementById('cosmos').closest('[inert]'));
+    check('a11y: the Guide itself is never inert', !gbox.closest('[inert]'));
     const cats = doc.querySelectorAll('#guidebody .gcat');
     check('guide menu lists categories', cats.length >= 8, String(cats.length));
     click(cats[0]);
@@ -764,6 +776,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
 
     click(doc.getElementById('guideok'));
     check('guide closes via Continue', !visible(gbox));
+    await sleep(80);
+    check('a11y: closing the Guide RELEASES the background inertness',
+      !doc.getElementById('cosmos').closest('[inert]'));
 
     // ====== ADVANCED BRIEFINGS (v1.7 — five opt-in drills from the Guide) ======
     click(doc.getElementById('helpbtn'));   /* v1.7.2: ? goes straight to the Guide now */
@@ -894,7 +909,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
     /* CI parity: allow an async beat — the close may ride a listener queued
        behind the dispatch on slower runners (intent unchanged: it MUST close) */
-    check('Escape closes the Nameplate menu', await until(() => !visible(pbox), 1500, 'esc close'));
+    check('Escape closes the Nameplate menu', await until(() => !visible(pbox), 1500, 'esc close'),
+      'visible overlays ahead in the stack: ' + ['reveal','pickbox','duelbox','sharebox','itemcard'].filter((id) => visible(doc.getElementById(id))).join(',') || 'none');
 
     // ===== Batch C (a11y): the board answers the keyboard =====
     {
@@ -1064,19 +1080,21 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('v1.3.8: the view holds — landing never leaves the system view', skH.st.mode === 'system');
     check('HD vista: planetfall opens the landing panorama', await until(() =>
       sk.doc.getElementById('vistabox').style.display === 'flex', 5000, 'vista overlay'));
-    // the dismiss ARMS 420ms after the show (ghost-click guard: the landing
-    // tap's synthesized click must never dismiss the payoff it opened)
+    // GHOST vs GENUINE (v1.7.9): a ghost click carries NO pointerdown on the
+    // overlay (its gesture began on the Land button) — click2 alone models it
+    // exactly. Genuine taps (tap = pointerdown + click) work instantly now;
+    // the fleet clocked the old 420ms blanket as a dead window.
     click2(sk.doc.getElementById('vistabox'), sk.w);
-    check('HD vista: the birth-tap does NOT dismiss (ghost-click guard)',
+    check('HD vista: the ghost click does NOT dismiss (no pointerdown on the overlay)',
       sk.doc.getElementById('vistabox').style.display === 'flex');
-    await new Promise((r) => setTimeout(r, 480));
+    await new Promise((r) => setTimeout(r, 120));
     // v1.7 (Nick): in live play tapping the vista IMAGE zooms it full-size
     // instead of dismissing — a real look at the world; the ✕/backdrop still close
     const _vcanvas = sk.doc.querySelector('#vistabox .vcard canvas');
-    click2(_vcanvas, sk.w);
-    check('v1.7 vista: tapping the image ZOOMS it full-size (does not dismiss)',
+    tap(_vcanvas, sk.w);
+    check('v1.7 vista: a GENUINE early tap zooms instantly (no 420ms dead window)',
       sk.doc.getElementById('vistabox').classList.contains('zoom') && sk.doc.getElementById('vistabox').style.display === 'flex');
-    click2(_vcanvas, sk.w);
+    tap(_vcanvas, sk.w);
     check('v1.7 vista: tapping the zoomed image returns from zoom',
       !sk.doc.getElementById('vistabox').classList.contains('zoom'));
     // the VISIBLE full-screen pill (Nick) — and while zoomed, a backdrop tap
@@ -1085,10 +1103,10 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('v1.7 vista: a visible ⛶ Full screen button rides the card', !!fsb && /Full screen/.test(fsb.textContent));
     click2(fsb, sk.w);
     check('v1.7 vista: the Full screen button zooms', sk.doc.getElementById('vistabox').classList.contains('zoom'));
-    click2(sk.doc.getElementById('vistabox'), sk.w);
+    tap(sk.doc.getElementById('vistabox'), sk.w);
     check('v1.7 vista: tapping off while zoomed exits zoom (does NOT dismiss)',
       !sk.doc.getElementById('vistabox').classList.contains('zoom') && sk.doc.getElementById('vistabox').style.display === 'flex');
-    click2(sk.doc.getElementById('vistabox'), sk.w);
+    tap(sk.doc.getElementById('vistabox'), sk.w);
     check('HD vista: an armed tap dismisses the panorama (fade-out)', await until(() =>
       sk.doc.getElementById('vistabox').style.display === 'none', 4000, 'vista fade-out'));
     check('v1.7 vista: dismissing also clears the zoom state',
@@ -1111,7 +1129,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       !!sk.doc.querySelector('#vistabox .vcard canvas') && !!sk.doc.querySelector('#vistabox .vcard .vh'));
     check('v1.3.11 vista window: the X sits on the card, not the screen',
       !!sk.doc.querySelector('#vistabox .vcard .vxc'));
-    click2(sk.doc.getElementById('vistabox'), sk.w);
+    tap(sk.doc.getElementById('vistabox'), sk.w);
     await until(() => sk.doc.getElementById('vistabox').style.display === 'none', 4000, 'vista re-dismiss');
     // v1.3 iteration 2 — every new scene must render a full-size canvas without throwing
     for (const [nm, o] of [
@@ -1153,10 +1171,18 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       const vb = sk.doc.getElementById('vistabox');
       check('gas giant planetfall opens the Cloud deck vista', vb.style.display === 'flex'
         && vb.textContent.includes('Cloud deck'), vb.textContent.slice(0, 60));
-      await new Promise((r) => setTimeout(r, 480));   // outlive the ghost-click arming window
-      click2(vb, sk.w);
+      await new Promise((r) => setTimeout(r, 120));   // outlive the same-tick mount floor
+      tap(vb, sk.w);
       await until(() => vb.style.display === 'none', 4000, 'deck dismiss');
       check('cloud deck dismisses like every vista', vb.style.display === 'none');
+      // v1.7.9: Escape must bypass the ghost guard — a key is never a
+      // synthesized click (the old stack path went through el.click() and
+      // the new guard would have filtered it as a ghost)
+      skH.showVistaBox(gasP, 'day', null, 'none', null, true, false, false, 'none', { air: 1 });
+      await new Promise((r) => setTimeout(r, 60));
+      sk.doc.dispatchEvent(new sk.w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+      check('Escape dismisses the vista directly (no pointerdown needed)', await until(() =>
+        vb.style.display === 'none', 3000, 'esc vista'));
     }
     // ============ v1.3.5 Batch 4: THE DESCENT ============
     {
@@ -1352,7 +1378,7 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // landing pays (v1.2): first footfall grants field samples + stardust
     const groundToasts = [...sk.doc.querySelectorAll('#toast .tst')].map((t) => t.textContent).join('|');
     check('discovery: first landing grants field samples (toast + stardust)',
-      groundToasts.includes('Ground survey') && groundToasts.includes('Stardust'), groundToasts);
+      groundToasts.includes('Ground Survey') && groundToasts.includes('Stardust'), groundToasts);   /* v1.7.9 casing audit: toast titles are Title Case */
     check('MUD events: the samples toast wears the gain tint', !!sk.doc.querySelector('#toast .tst.tk-gain'));
     check('discovery: samples reach the Cargo hold (button appears)',
       sk.doc.getElementById('cargobtn').style.display === 'flex');
@@ -1369,6 +1395,19 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       pan3.textContent.includes('Ground-surveyed') && !!pan3.querySelector('[data-act="mine"]'), 5000, 'ground card from orbit'));
     check('discovery: a grounded world still offers plain Land (revisits + sightseeing)',
       !!pan3.querySelector('[data-act="landcta"]'));
+    // Batch-C tail (fleet a11y): a grounded card offers an EXPLICIT way off
+    // the world — "Leave this world" pulls the camera to the system overview
+    check('a11y: a grounded card carries the Leave-this-world button',
+      !!pan3.querySelector('[data-act="depart"]'));
+    {
+      skH.st.scam.x = 40; skH.st.scam.y = -25; skH.st.scam.z = skH.st.sz0 * 6;   /* park deep on the world */
+      click2(pan3.querySelector('[data-act="depart"]'), sk.w);
+      const sc = skH.st.scam;
+      check('a11y: Leave this world resets the camera to the system overview',
+        sc.x === 0 && sc.y === 0 && Math.abs(sc.z - skH.st.sz0 * 1.05) < 1e-9,
+        JSON.stringify({ x: sc.x, y: sc.y, z: sc.z, sz0: skH.st.sz0 }));
+      check('a11y: leaving never closes the card or leaves the system', skH.st.mode === 'system');
+    }
 
     // ============ v1.5.2b MINING: one press runs the drills ============
     skH.mineStop();   // the charter check above may have left a run alive — clean slate
@@ -1520,6 +1559,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       visible(recEl) && recEl.querySelectorAll('.tier').length === 10 && recEl.querySelectorAll('.agrp').length >= 5);   // v1.7: the ladder is the 10-tier universal rarity
     check('records: the character sheet no longer carries the trophies',
       !sk.doc.getElementById('stats').textContent.includes('Rarity ladder'));
+    // Batch-C tail: the journal reads as a real LIST to assistive tech
+    check('a11y: the Expedition journal is a list with labelled rows',
+      !!recEl.querySelector('[role="list"][aria-labelledby="jrnh"]')
+      && !!recEl.querySelector('[role="list"] .srow[role="listitem"][aria-label]'),
+      'journal rows: ' + recEl.querySelectorAll('[role="listitem"]').length);
     click2(sk.doc.getElementById('recbtn'), sk.w);
     check('records: the button toggles it closed', !visible(recEl));
     // v1.5 THE PAPERDOLL: one centered character screen — sockets ON the body
