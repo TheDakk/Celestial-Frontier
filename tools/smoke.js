@@ -856,6 +856,20 @@ const tutAct = () => click(doc.getElementById('tut-act'));
        behind the dispatch on slower runners (intent unchanged: it MUST close) */
     check('Escape closes the Nameplate menu', await until(() => !visible(pbox), 1500, 'esc close'));
 
+    // ===== Batch C (a11y): the board answers the keyboard =====
+    {
+      const cvA = doc.getElementById('cosmos');
+      check('a11y: the canvas is focusable', cvA.getAttribute('tabindex') === '0');
+      cvA.focus();
+      cvA.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true, cancelable: true }));
+      await sleep(120);
+      const liveA = doc.getElementById('live');
+      check('a11y: cycling targets speaks to the live region', await until(() => liveA && liveA.textContent.length > 0, 2000, 'live'));
+      cvA.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true }));
+      check('a11y: Enter surveys the focused body (the click path, with credit)', await until(() =>
+        visible(doc.getElementById('panel')), 3000, 'kb survey'));
+      cvA.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }));
+    }
     check('no errors after all interactions', errors.length === 0, errors.slice(0, 3).join(' | '));
     w.close();
 
