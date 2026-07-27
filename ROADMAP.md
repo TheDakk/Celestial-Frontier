@@ -1132,3 +1132,23 @@
 ##   (459/0) incl. binder-on-records block, chapter-restyle assert (no .ch inside .ascbox), chip-
 ##   tracks-chapter. Gold Land: Nick informed it's the 1.7.2 one-primary decision — STANDS unless
 ##   they say revert. Gates: fp MATCH 50/50, smoke 459/0, layout 546/9, sim ui 100/100.
+## ▶▶▶ 2026-07-26 ★ THE FULL QUEUE RUN (Nick: "proceed with all of this" + audio→v1.8) — v1.7.13
+##   "THE CARTOGRAPHER" LIVE (build 9d07a74): (1) ATLAS CHART PANE ✔ (List|Chart tabs, painterly
+##   universe chart, cluster halos, tap-to-travel, filters apply — Batch-C tail COMPLETE).
+##   (2) §24 POWER-CURVE ✔ (smite 58.7%→53.5% + roulette re-banded, ALL 17 archetypes in 42-58;
+##   dead relics Graven Aegis/Prismatic Lathe → true sidegrades; balance-sim JOINED THE DEPLOY
+##   GATE — deterministic, first live gate run PASSED). (3) CF-008 EPITHETS ✔ (notable worlds,
+##   deterministic, ~1.1% near home scaling with region; Earth exempt; fp MATCH — no re-pin
+##   needed) + Favours→Favors/flavors text pass (historical RELEASES untouched). (4) P2-005
+##   RARE-VEIN DEDUP ✔ (0 dups/7,048 rolls, rng stream identical) + §5 PER-DEPOSIT RESOLVER ✔
+##   (resolvedDepositTier, grounded cards grade each vein). (5) §22 GEAR WAVE 1 in SOURCE
+##   (e5023d6, NOT deployed — ⚖ AWAITING NICK's proof-sheet sign-off): _GEAR_ART registry, 11
+##   masters (rigs/suits/helms), proof sheet tools/sheets/gear-wave1.js; self-review flags: suit
+##   shoulder taper · hazmat hood seating · voidglass starfield brightness. WAVE 2: struts/anchor/
+##   ears/necklace/gloves/legs/boots (14) + relics (9) + cosmic gear (7) + SHIP HULL tiers.
+##   ★ NAMEPLATE-ESCAPE FLAKE SOLVED (instrumented bubbleReached + 2nd-press probes): a late
+##   queued specimen reveal popped over the open menu and correctly ATE the first Escape —
+##   harness drains stack-ahead overlays; GAME FOLLOW-UP QUEUED: reveals must not pop over open
+##   modals (v1.7.14 candidate). ⚠ LESSONS: proofsheet runner injects TAU (never lift it);
+##   sheet helpers ride liftBetween verbatim (const-lift truncates at inner semicolons).
+##   ★ AUDIO PASS → v1.8 "The Connection" (Nick's call, this session).
