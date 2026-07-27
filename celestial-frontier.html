@@ -18928,10 +18928,24 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.12';
+const GAME_VERSION='1.7.13';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.13', title:'The Cartographer', date:'July 2026', sections:[
+ ['✦ New Features & Systems', [
+  '🗺 THE STAR CHART — your Atlas gains a second view: every charted place painted across the universe on one deep-space chart, clustered by galaxy, favorites starred, home marked, a quiet crosshair where you stand. Tap any light to travel there. Your filters apply to the chart too.',
+  '🏷 WORLDS OF RENOWN — the rarest worlds now carry names worth saying twice: &#8220;the Shrouded&#8221;, &#8220;the Ringed Court&#8221;, &#8220;the Sky Forever&#8221;. Rare near home, commoner out in the deep field where legends live. The same world bears the same name for every explorer, forever.',
+  '⛏ VEINS WORTH READING — stand on a world and its mineral veins now show their grade for that ground; Primordial worlds enrich every seam one step.'],
+ ],
+ ['⚖ Balancing', [
+  '⚔ THE ARENA LEVELED — two fighting styles had quietly drifted stronger than the field (Smite and Roulette); both are back inside the fair band, measured across thousands of simulated duels. Every archetype now wins between 42% and 58% against the field.',
+  '🏆 NO DEAD RELICS — the Graven Aegis and the Prismatic Lathe were weaker than ordinary gear in their own slots; both are now true sidegrades with their own identity (the Aegis holds the protection line with steadier landings; the Lathe trades peak yield for the best rich-strike luck in the game).'],
+ ],
+ ['🐛 Bug Fixes', [
+  '⛏ THE DOUBLE VEIN — metal and lava worlds could list the same mineral twice on their survey card; every vein now appears once.'],
+ ],
+]},
 {v:'1.7.12', title:'Quiet Gold', date:'July 2026', sections:[
  ['🖱 UI Enhancements', [
   '🥇 THE PRIMARY SPEAKS SOFTLY — the survey card&#8217;s Land button trades its solid gold slab for a gold outline and gold lettering on the shared dark pill. Still unmistakably the next step; no longer shouting over the card.'],
