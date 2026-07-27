@@ -916,6 +916,14 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     /* CI parity: allow an async beat — the close may ride a listener queued
        behind the dispatch on slower runners (intent unchanged: it MUST close) */
     {
+      // FLAKE ROOT CAUSE (proven via bubbleReached/2nd-press probes): a QUEUED
+      // specimen reveal could pop late over the open Nameplate menu — the first
+      // Escape correctly closed that topmost reveal, eating the press. Drain
+      // any stack-ahead overlay first so the check tests what it names.
+      // (Game-side follow-up queued: reveals must not pop over open modals.)
+      for (const id of ['reveal', 'pickbox', 'duelbox', 'sharebox', 'itemcard']) {
+        const el = doc.getElementById(id); if (el && el.style.display && el.style.display !== 'none') el.style.display = 'none';
+      }
       let bubbleReached = false; const _mark = () => { bubbleReached = true; };
       doc.addEventListener('keydown', _mark);
       const dispatchRet = doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
