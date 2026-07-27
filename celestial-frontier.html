@@ -14670,6 +14670,25 @@ function speciesDetails(g){
 }
 /* a queue so the new-species card and its auto-hybrid card show one after another */
 const pendingReveals=[];
+function _revealBlocked(){
+  try{
+    for(const id of ['platebox','namebox','setpanel','guidebox','duelbox','sharebox','deathbox','endingbox','descbox','farewellbox']){
+      const el=document.getElementById(id);
+      if(el && el.style.display && el.style.display!=='none') return true;
+    }
+  }catch(_){ }
+  return false;
+}
+/* the modal's close FLUSHES the deferred reveal — rides the input pulse
+   (every click/keydown), so nothing ever strands in the queue */
+function _revealFlush(){
+  try{
+    if(!pendingReveals.length || _revealBlocked()) return;
+    const rv=document.getElementById('reveal');
+    if(rv && rv.style.display && rv.style.display!=='none') return;   /* one already up — its tap drains the queue */
+    showReveal(pendingReveals.shift(), true);
+  }catch(_){ }
+}
 /* passive evolution: each cosmic epoch, two known species drift into a new hybrid */
 function passiveDrift(){
   const all=[...codex.values()];
@@ -14686,6 +14705,11 @@ function passiveDrift(){
    Save field `seen` (ids only, intersected with the codex on save). */
 const seenSp=new Set();
 function showReveal(entry, isHybrid){
+  /* ONE VOICE (v1.7.14 — the proven Nameplate-Escape flake): a reveal must
+     never POP OVER an open modal (it stole the top of the Escape stack and
+     ate the player's key). While one of these is up, the reveal QUEUES and
+     the modal's close flushes it via the pendingReveals machinery. */
+  if(_revealBlocked()){ pendingReveals.push(entry); return; }
   const gr=entry.grade;
   if(entry.id && !seenSp.has(entry.id)){ seenSp.add(entry.id); queueSave(); }   /* dot clears on the next natural list render (no mid-scroll re-render) */
   document.getElementById('rev-t').textContent = (isHybrid||entry.hybrid)?'Hybrid specimen':'Compendium specimen';
@@ -18928,10 +18952,19 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.13';
+const GAME_VERSION='1.7.14';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.14', title:'The Outfitter', date:'July 2026', sections:[
+ ['✦ New Features & Systems', [
+  '🛠 EVERY PIECE OF GEAR, HAND-PAINTED — all 41 gear pieces now wear bespoke painterly masters: the rig line grows from a worn pick to a plasma lance, the five suits are true identities on one chassis, four necklaces you can tell apart at a glance, and every Signature relic tells its Beacon&#8217;s story. The seven cosmic pieces look like nothing else in the hold — a world being born inside the Genesis Locket, clock hands that disagree about now, a drill bit that is an absence bending light.',
+  '🚀 THE HULL REMEMBERS EVERY REFIT — the survey-fleet era now marks the ship itself with a gold registry band and navigation strobes, completing the ladder from bare scout to luminous intergalactic craft.'],
+ ],
+ ['🐛 Bug Fixes', [
+  '🤫 DISCOVERIES WAIT THEIR TURN — a new-species reveal no longer pops over an open menu or dialog (it could steal your Escape key); it waits quietly and appears the moment you close what you were doing.'],
+ ],
+]},
 {v:'1.7.13', title:'The Cartographer', date:'July 2026', sections:[
  ['✦ New Features & Systems', [
   '🗺 THE STAR CHART — your Atlas gains a second view: every charted place painted across the universe on one deep-space chart, clustered by galaxy, favorites starred, home marked, a quiet crosshair where you stand. Tap any light to travel there. Your filters apply to the chart too.',
@@ -23063,6 +23096,17 @@ function shipImage(){
     g.beginPath(); g.moveTo(cx+120,cy); g.quadraticCurveTo(cx+108,cy-6,cx+96,cy-7);
     g.quadraticCurveTo(cx+106,cy-1,cx+96,cy+5); g.quadraticCurveTo(cx+108,cy+5,cx+120,cy); g.closePath(); g.fill();
   }
+  if(arr){
+    /* survey-fleet refit (§22 ladder gap: the Array era only bolted on its
+       dish — now the hull itself says "charted space"): a gold registry
+       band along the flank + navigation strobes fore and aft */
+    g.fillStyle='rgba(240,207,138,0.55)';
+    g.beginPath(); g.moveTo(cx-70,cy+3); g.quadraticCurveTo(cx+10,cy+11,cx+90,cy+4);
+    g.lineTo(cx+90,cy+7); g.quadraticCurveTo(cx+10,cy+14,cx-70,cy+6); g.closePath(); g.fill();
+    g.fillStyle='rgba(255,240,190,0.9)';
+    g.beginPath(); g.arc(cx+96,cy+3,1.4,0,TAU); g.fill();
+    g.beginPath(); g.arc(cx-52,cy+8,1.4,0,TAU); g.fill();
+  }
   if(ig){
     /* intergalactic refit: the hull runs LUMINOUS seams (the drive's own
        light, the bells' magenta) + wingtip beacons on both fins */
@@ -24824,6 +24868,7 @@ function syncSelState(){
   try{ for(const p of PANELS){ const b=document.querySelector(p.btn);
     if(b) b.classList.toggle('sel', !!p.open()); } }catch(_){ }
   _syncInert();
+  try{ setTimeout(_revealFlush, 80); }catch(_){ }   /* v1.7.14: a modal's close releases any deferred reveal */
 }
 /* Batch-C tail: FULL INERTNESS — the five aria-modal dialogs promised an
    unreachable background; Tab containment delivered it for the keyboard only,
