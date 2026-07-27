@@ -1120,3 +1120,15 @@
 ##   vs objective tracker vs chapter restyle). (2) Binder → Records move (recommended: yes, it's a
 ##   collection view — but it's a restructure, Nick to confirm). (3) Land button GOLD is the 1.7.2
 ##   one-primary decision — explained to Nick, revert on their word.
+## ▶▶▶ 2026-07-26 ★ v1.7.11 "THE WAYPOINT" LIVE (build 283f0ca) — Nick approved: Binder move +
+##   quest-log OPTIONS 1+3 (option 2 tracker-stack rejected). OBJECTIVE CHIP: #chchip = live
+##   tracker (accepted charter outranks chapter; else Ascent next-goal; p/n + chipbump pulse on
+##   progress, rmotion-safe; tap→board) — the game always answers "what's next". MAINLINE
+##   RESTYLE: .asckick kicker ("The Ascent — your mainline · no accepting needed") + .ascgoal slim
+##   progress LINES w/ 3px bars — visually distinct from Accept-bearing charter pills. BINDER →
+##   RECORDS: renderBinder(target) into #records behind Trophies|Binder tabs (_recTabs/recView);
+##   _binderClicks delegation moved to the records listener (paragon travel closes Records);
+##   Compendium is SPECIES-ONLY (codexView kept for compat); Guide topic updated. Smoke +5 net
+##   (459/0) incl. binder-on-records block, chapter-restyle assert (no .ch inside .ascbox), chip-
+##   tracks-chapter. Gold Land: Nick informed it's the 1.7.2 one-primary decision — STANDS unless
+##   they say revert. Gates: fp MATCH 50/50, smoke 459/0, layout 546/9, sim ui 100/100.
