@@ -1215,3 +1215,20 @@
 ##   546/9 · BALANCE PASS (17+55). ▶ NEXT: Nick playtests 1.7.18 · v1.8 "The Connection" spec now
 ##   ABSORBS: matchup meter w/ real simulated odds (-09), XP economy table, no-op contract,
 ##   direct thumbnails, transition controller, audio pass, §7 visual spike. HOLDING for the word.
+## ▶▶▶ 2026-07-27 ★ v1.7.19 "TRUST, VERIFIED" LIVE (build 2ec37b0) — the round-4 correction pass.
+##   Round 4's humbling finding: THREE v1.7.18 fixes were correct but placed where they couldn't
+##   run (2 CSS blocks in the FIRST <style> — the file has TWO; 1 helper scoped inside loadSave's
+##   module) and all failed SILENTLY. All corrected + the round's real deliverable: ASSERT-WHAT-
+##   YOU-FIX is now law — new smoke journey boots a tsnap save and walks reload→restart→restore
+##   (it immediately caught my SECOND wrong hoist into SaveSystem scope), + static cascade-order
+##   sentinels. Also fixed: tie coin executes (mine/theirs seeds), hybrids double-count (_loading
+##   guard), Earth entry stashed whole, tutspot z59, tsnap clamps, sysSeen 900th pays, chWeek
+##   forward clamp, focus-theft guard, role=img, last contrast inks, srow2. ⚠ LESSONS FOR THE
+##   AGES: (1) the html has TWO style elements — appended CSS must land in the LAST one (sentinel
+##   now enforces); (2) helpers live in module scopes — verify the CALLER's scope, and the smoke
+##   journey is the only proof that counts; (3) in runDuel A/B are STAT BLOCKS, mine/theirs are
+##   the combatants. ▶ PUSHED TO v1.8 (Nick's triage): CF1715-09 conquest meter · -27 death lines
+##   · -29 spoils slot · -35 stacking contexts · -37 step-13 copy · -06 fer<20 tail (walls-don't-
+##   win accepted for now) · CF1718-10 full per-modal focus memory · ambush IV/V high-mag gate ·
+##   direct 132px thumbnails · XP economy · no-op contract · transition controller · audio · §7
+##   spike. Gates: fp MATCH 50/50 · smoke 487/0 · layout 546/9 · BALANCE PASS (17+55).
