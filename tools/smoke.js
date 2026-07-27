@@ -1855,7 +1855,40 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       check("CF1715-05: no class names a dead archetype ('stun'/'gambit' are gone)",
         !src.includes("'stun'") && !src.includes("'gambit'"));
     }
+    // ===== CF1718-01/03 (round 4's law: ASSERT THE THING YOU JUST FIXED) =====
+    {
+      const src = require('fs').readFileSync(require('path').join(__dirname, '..', 'celestial-frontier.html'), 'utf8');
+      check('CF1718-03: the hardening CSS lives in the LAST stylesheet (cascade-safe)',
+        src.indexOf('the audit batch') > src.indexOf('</style>'));
+      check('CF1718-08: the spotlight outranks the training survey card',
+        src.includes('body.training #tutspot{z-index:59}'));
+      check('CF1718-04: the titan clamp carries the emitting selector', src.includes('.psig .pby{display:-webkit-box'));
+    }
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
+
+    // ============ CF1718-01: a MID-TRAINING RELOAD must restore the expedition ============
+    {
+      const tr = boot((win) => {
+        win.localStorage.setItem('cfcc_save_v2', JSON.stringify({ v: 4, me: 'Vet', tut: 0,
+          hp: 100, essence: 50,
+          tsnap: { st: { mines: 3 }, ps: { vit: 12, fer: 11, res: 10, agi: 10, ins: 10 }, ac: [], es: 4321,
+            c: [], ca: [['Fe', 5], ['Au', 2]], cx: [['Fe', 1]], it: [['plate', 2]], eq: {}, ea: {} } }));
+      });
+      await sleep(1600);
+      const trH = tr.w.__PROBE_HOOK__;
+      check('CF1718-01: the reload RESTARTS training (no swallowed ReferenceError)',
+        visible(tr.doc.getElementById('tutbox')), 'errors: ' + tr.errors.slice(0, 2).join('|'));
+      click2(tr.doc.getElementById('tut-skip'), tr.w);
+      click2(tr.doc.getElementById('tut-skip-yes'), tr.w);
+      await until(() => !visible(tr.doc.getElementById('tutbox')), 4000, 'tsnap skip');
+      check('CF1718-01: the persisted snapshot restores cargo through the reload',
+        trH.cargo.get('Fe') === 5 && trH.cargo.get('Au') === 2 && (trH.cgx.get('Fe') || 0) === 1,
+        'Fe=' + trH.cargo.get('Fe') + ' Au=' + trH.cargo.get('Au'));
+      check('CF1718-01: items + essence ride too', trH.itemCount('plate') === 2 && trH.essence === 4321);
+      check('CF1718-09: rehydrated pstats are clamped and complete', trH.pstats.vit === 12 && trH.pstats.ins === 10);
+      check('tsnap session boots clean', tr.errors.length === 0, tr.errors.slice(0, 2).join(' | '));
+      tr.w.close();
+    }
     sk.w.close();
 
     // ============ BOOT 4: half-finished training saved in deep space resumes AT SOL ============
