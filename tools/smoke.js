@@ -685,6 +685,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     const tapOutside = () => doc.body.dispatchEvent(new w.Event('pointerdown', { bubbles: true }));
     click(doc.getElementById('codexbtn'));
     check('panelman: Compendium opens', visible(doc.getElementById('codex')));
+    check('graduation clears the training shelf seeds (no shelf pre-expanded for the fresh veteran)',
+      !doc.querySelector('#codex .cgrp.open'));
     click(doc.getElementById('logbtn'));
     check('panelman: opening Atlas closes Compendium', visible(doc.getElementById('log'))
       && !visible(doc.getElementById('codex')));

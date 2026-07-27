@@ -1824,6 +1824,12 @@
     padding:6px 11px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,207,138,0.35);
     backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);max-width:min(62vw,340px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #chchip b{color:#f0cf8a;font-weight:600}
+  /* Nick live 2026-07-26 ("the nameplate step got skipped"): the character
+     sheet (z 50) buried the training card (z 24) — on phones the full-screen
+     sheet hid the step's own Got It. While training runs, the card and its
+     ring outrank every board. */
+  body.training #tutbox{z-index:60}
+  body.training #tutspot{z-index:59}
   /* the objective chip celebrates its own progress (Nick 2026-07-26) */
   @keyframes chipbump{0%{transform:scale(1)}35%{transform:scale(1.08);box-shadow:0 0 18px rgba(240,207,138,0.45)}100%{transform:scale(1)}}
   #chchip.bump{animation:chipbump .5s ease}
@@ -18952,10 +18958,17 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.15';
+const GAME_VERSION='1.7.16';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.16', title:'Clean Slate', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🗂 TRAINING TIDIES UP AFTER ITSELF — the lessons open the shelf they teach (Compendium, Fabricator), but those shelves stayed expanded after graduation; a fresh veteran now opens both to the tidy closed index.',
+  '🎓 THE NAMEPLATE LESSON STAYS ON TOP — the character sheet was covering the training card (and its Got It button) on phones, making the step look like it vanished; during training the card now outranks every board.',
+  '⛳ EVERY OBJECTIVE WEARS ITS COUNT — one-shot charters on the dock chip showed no progress digits and read like the old dead pill; the tracker now always shows 0 / 1 → 1 / 1.'],
+ ],
+]},
 {v:'1.7.15', title:'The Field Manual', date:'July 2026', sections:[
  ['🖱 UI Enhancements', [
   '📖 THE GUIDE CATCHES UP WITH v1.7 — the Star Atlas topic teaches the 🗺 Chart view, auto-charting and the in-list undo; the survey topic covers worlds of renown, on-the-ground vein grades and ⬆ Leave this world; the Charters topic explains the live objective chip and the always-yours mainline. Search keywords updated to match.'],
@@ -23764,7 +23777,7 @@ function _chBadge(){
       document.body.appendChild(el);
     }
     el.innerHTML=g.ic+' <b>'+esc(String(g.t).replace(/&#8217;/g,'’').slice(0,34))+'</b>'+
-      (g.n>1?' · '+g.p+' / '+g.n:'')+
+      ' · '+g.p+' / '+g.n+   /* Nick live: binary charters showed NO digits and read as the old dead pill — every objective now wears its count */
       (g.more?' <span style="opacity:.55">+'+g.more+'</span>':'');
     el.style.display='flex';
     if(_chipLast && _chipLast.key===g.key && g.p>_chipLast.p){
@@ -24432,6 +24445,11 @@ function _tutFinish(){
   document.body.classList.remove('training');
   tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT); clearTimeout(_tutSpotD);
   _tutHook=null; _tutStep=-1; _tutRig=null;
+  /* Nick live 2026-07-26: the lessons SEED shelves open (codex first-shelf,
+     forge 'part') and those seeds LEAKED past graduation — a fresh veteran
+     opened the Compendium to an expanded Flora shelf. Training's furniture
+     leaves with training; the tidy-shelves default belongs to live play. */
+  try{ _cdxOpen.clear(); _fabOpen.clear(); }catch(_){ }
   if(!tutDone){
     tutDone=true;
     try{ _syncRecruit(); }catch(_){ }
