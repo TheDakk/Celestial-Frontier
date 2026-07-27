@@ -982,8 +982,11 @@
   #panel .act:hover{background:rgba(143,180,255,0.18)}
   /* FLEET v1.7.2: the card's ONE primary — gold fill like BEGIN/ACCEPT/CONTINUE
      (five identical dim pills gave a first-timer no read on the next step) */
-  #panel .act.primary{background:linear-gradient(96deg,rgba(240,198,116,0.92),rgba(255,217,140,0.85));color:#1a1408;font-weight:700;border-color:rgba(255,217,106,0.9)}
-  #panel .act.primary:hover{background:linear-gradient(96deg,rgba(255,215,140,1),rgba(255,228,168,0.95))}
+  /* Nick 2026-07-26: the filled gold slab was TOO LOUD — the primary keeps
+     its rank with a gold OUTLINE + gold ink on the shared dark pill instead;
+     hover restores a whisper of the fill */
+  #panel .act.primary{background:rgba(240,198,116,0.10);color:#ffd96a;font-weight:700;border-color:rgba(255,217,106,0.75)}
+  #panel .act.primary:hover{background:rgba(240,198,116,0.22);color:#ffe49a}
   /* uniform bookmark controls on every survey card: add + favorite + home */
   #panel .atlasrow{display:flex;gap:6px;margin-top:9px;align-items:stretch}
   #panel .atlasrow .act{margin-top:0;flex:1}
@@ -18779,10 +18782,15 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.11';
+const GAME_VERSION='1.7.12';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.12', title:'Quiet Gold', date:'July 2026', sections:[
+ ['🖱 UI Enhancements', [
+  '🥇 THE PRIMARY SPEAKS SOFTLY — the survey card&#8217;s Land button trades its solid gold slab for a gold outline and gold lettering on the shared dark pill. Still unmistakably the next step; no longer shouting over the card.'],
+ ],
+]},
 {v:'1.7.11', title:'The Waypoint', date:'July 2026', sections:[
  ['✦ New Features & Systems', [
   '⛳ THE OBJECTIVE CHIP — the pill under the dock is now a real quest tracker: it always carries the thing you&#8217;re doing <i>right now</i> with live progress (&#8220;⬆ Mine Sol&#8217;s dead worlds · 3 / 8&#8221;), pulses when your count moves, follows your accepted charter first and the story chapter otherwise, and opens the board for details.'],
