@@ -18,9 +18,9 @@ const { JSDOM } = require('jsdom');
 const MAG = Math.max(0, Math.min(4, parseInt(process.argv[2] || '2', 10)));
 const ARCH = {
   smite:   m => ({dmg:1.12+m*0.045}),
-  aegis:   m => ({taken:0.90-m*0.030}),
-  dot:     m => ({burn:0.015+m*0.0035}),
-  fury:    m => ({ramp:0.024+m*0.006}),
+  aegis:   m => ({taken:0.92-m*0.026}),
+  dot:     m => ({burn:0.022+m*0.005}),
+  fury:    m => ({ramp:0.029+m*0.0072}),
   ambush:  m => ({first:1.60+m*0.15}),
   eye:     m => ({critB:0.190+m*0.038}),
   veil:    m => ({dodge:0.100+m*0.022}),
@@ -32,10 +32,16 @@ const ARCH = {
   reck:    m => ({execB:0.28+m*0.09}),
   bulwark: m => ({cap:0.28-m*0.015}),
   shock:   m => ({stun:0.095+m*0.024}),
-  roulette:m => ({gambit:0.42+m*0.09}),
+  roulette:m => ({gambit:0.34+m*0.07}),
   enrage:  m => ({enrage:0.16+m*0.05}),
 };
 
+// v1.7.18 (CF1715-03's lesson): the archetype band was measured while the
+// ROLLED ability pool went unwatched — Cinderburn sat at 98.3% vs no-ability
+// because burn ticked per half-turn. Every ABILITY_THEMES art is now measured
+// vs an ability-less mirror; the band is asymmetric on purpose (a flavor art
+// MAY be strong) but nothing gets to be an auto-win or an auto-loss.
+const THEME_BAND = [8, 92];
 const html = fs.readFileSync(path.join(__dirname, 'probe-build.html'), 'utf8');
 const errs = [];
 const { installFakeCanvas } = require('./fake2d.js');
@@ -82,6 +88,21 @@ setTimeout(() => {
   const hh = Object.entries(grid).map(([k,v]) => [k, Math.abs(v-50)]).sort((a,b)=>b[1]-a[1]).slice(0,5);
   console.log('sharpest counters (allowed, for the record):');
   for (const [k, d] of hh) console.log('  ' + k + '  ±' + d.toFixed(1));
-  console.log(pass ? 'BALANCE PASS' : 'BALANCE FAIL');
-  process.exit(pass ? 0 : 1);
+  // ===== the rolled ABILITY_THEMES pool (v1.7.18) =====
+  const AT=H.ABILITY_THEMES||{}; let tFails=0, tN=0; const tWorst=[];
+  for(const th in AT){ for(const art of (AT[th].list||[])){
+    const hooks={}; for(const k in art) if(!['id','n','d'].includes(k)) hooks[k]=art[k];
+    if(!Object.keys(hooks).length) continue;
+    let w=0, n=0;
+    for(let i=0;i<120;i++){
+      const res=H.runDuel(mk(hooks, 40000+i*7), mk({}, 90000+i*11));
+      if(res.winner==='A') w++; if(res.winner) n++;
+    }
+    const rate=n?100*w/n:50; tN++;
+    if(rate<THEME_BAND[0]||rate>THEME_BAND[1]){ tFails++; tWorst.push(art.n+' '+rate.toFixed(1)+'%'); }
+  }}
+  console.log('theme arts measured: '+tN+' — out of ['+THEME_BAND.join(',')+'] band: '+tFails+(tWorst.length?('  ('+tWorst.slice(0,5).join(' · ')+')'):''));
+  const allPass=pass && tFails===0;
+  console.log(allPass ? 'BALANCE PASS' : 'BALANCE FAIL');
+  process.exit(allPass ? 0 : 1);
 }, 1500);

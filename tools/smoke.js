@@ -1822,6 +1822,39 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       const earthD = skH.planetDescriptor(skH.planetParams(133), null, { name: 'Earth', orb: 149 });
       check('CF-008: Earth is Earth — the cradle never wears an epithet', earthD.title === 'Earth');
     }
+    // ===== CF1715-01/02 (the audit's criticals): RESTART TRAINING must keep its promise =====
+    {
+      // stock the veteran: creatures, cargo, exceptional stock, items, equipment
+      skH.cargo.set('Fe', 9); skH.cargo.set('Au', 2); skH.cgx.set('Fe', 1);
+      skH.craftItem('plate');
+      const _preCodex = skH.codex.size, _preItems = [...skH.items.values()].reduce((a, b) => a + b, 0), _preCgx = skH.cgx.get('Fe') || 0;
+      const _preFe = skH.cargo.get('Fe'), _preLog = +sk.doc.getElementById('logcount').textContent;
+      check('restart precondition: the veteran owns things', _preCodex > 0 && _preItems > 0 && _preFe > 0);
+      // the real journey: Settings → Gameplay → Restart (twice: it self-confirms)
+      click2(sk.doc.getElementById('setbtn'), sk.w);
+      click2(sk.doc.getElementById('retrainopt'), sk.w);
+      click2(sk.doc.getElementById('retrainopt'), sk.w);
+      await until(() => visible(sk.doc.getElementById('tutbox')), 4000, 'retrain starts');
+      check('CF1715-02: restarting un-charts Earth so step 4 is winnable again',
+        !skH.logMap.has('p133'));
+      // leave through Skip — the exact path that used to wipe everything
+      click2(sk.doc.getElementById('tut-skip'), sk.w);
+      click2(sk.doc.getElementById('tut-skip-yes'), sk.w);
+      await until(() => !visible(sk.doc.getElementById('tutbox')), 4000, 'retrain exits');
+      check('CF1715-01: the Compendium SURVIVES a training restart', skH.codex.size === _preCodex,
+        'codex ' + _preCodex + ' -> ' + skH.codex.size);
+      check('CF1715-01: cargo + exceptional stock survive', skH.cargo.get('Fe') === _preFe && (skH.cgx.get('Fe') || 0) === _preCgx,   /* crafting spends exceptional stock FIRST (by design) — compare post-craft */
+        'Fe ' + _preFe + ' -> ' + skH.cargo.get('Fe'));
+      check('CF1715-01: crafted items survive', [...skH.items.values()].reduce((a, b) => a + b, 0) === _preItems);
+      check('CF1715-02: Earth is re-charted by the training exit (the Atlas heals)',
+        skH.logMap.has('p133') && +sk.doc.getElementById('logcount').textContent >= 1, 'log ' + _preLog);
+    }
+    // ===== CF1715-05: every class verb resolves to a real archetype (static) =====
+    {
+      const src = require('fs').readFileSync(require('path').join(__dirname, '..', 'celestial-frontier.html'), 'utf8');
+      check("CF1715-05: no class names a dead archetype ('stun'/'gambit' are gone)",
+        !src.includes("'stun'") && !src.includes("'gambit'"));
+    }
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
     sk.w.close();
 
