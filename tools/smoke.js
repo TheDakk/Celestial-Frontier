@@ -981,6 +981,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click2(sk.doc.getElementById('tut-skip-yes'), sk.w);
     check('skip closes tutorial', !visible(sk.doc.getElementById('tutbox')));
     check('skip: Earth charted in Atlas', sk.doc.getElementById('logcount').textContent === '1');
+    // ===== ATLAS CHART PANE (Batch-C tail feature, Nick greenlit) =====
+    click2(sk.doc.getElementById('logbtn'), sk.w);
+    check('atlas chart: the Atlas carries a List | Chart tab row', !!sk.doc.querySelector('#log [data-lvw="chart"]'));
+    click2(sk.doc.querySelector('#log [data-lvw="chart"]'), sk.w);
+    check('atlas chart: the Chart view paints every charted light (hit-targets registered)',
+      !!sk.doc.getElementById('atlaschart') && +(sk.doc.getElementById('atlaschart').dataset.n || 0) >= 1,
+      'n=' + (sk.doc.getElementById('atlaschart') || { dataset: {} }).dataset.n);
+    click2(sk.doc.querySelector('#log [data-lvw="list"]'), sk.w);
+    check('atlas chart: List returns to the rows', !!sk.doc.querySelector('#log .item'));
+    click2(sk.doc.getElementById('logbtn'), sk.w);
     check('skip: Compendium empty', sk.doc.getElementById('codexcount').textContent === '0');
     // v1.7.8 UPDATE WATCH (Nick live: "the build is not refreshing"): the old
     // pill tapped into location.reload(), which re-serves the CACHED document

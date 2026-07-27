@@ -1557,6 +1557,9 @@
   .plate.auto{display:flex;align-items:center;justify-content:center;background:rgba(150,162,210,0.18);color:var(--dim);font:700 10px var(--ui)}
   /* ---- the Binder (1.0): type-collection pages, sets, the Fifty Paragons ---- */
   .cvtabs{display:flex;gap:6px;margin:0 0 10px}
+  /* the Atlas chart pane (Batch-C tail) */
+  #log .chartwrap{margin-top:9px}
+  #atlaschart{display:block;max-width:100%;border:1px solid rgba(150,162,210,0.22);border-radius:12px;cursor:pointer;background:#04050c}
   /* kingdom shelf language (v1.3.10): plants and animals stop blurring —
      filter chips + each shelf header wears its kingdom's color */
   .cktabs{display:flex;gap:5px;margin:0 0 10px;flex-wrap:wrap}
@@ -14086,6 +14089,95 @@ function addToLog(d){
   gameEvent('atlas-add', {id:d.logId});
   queueSave();
 }
+let logView='list';   /* Atlas views: 'list' | 'chart' (Batch-C tail feature) */
+let _chartPts=[];     /* hit-targets from the last chart paint: {x,y,id} in css px */
+function _paintAtlasChart(items){
+  const cv=document.getElementById('atlaschart'); if(!cv) return;
+  _chartPts=[];
+  const W2=Math.max(240,(logEl.clientWidth||300)-26), H2=Math.round(W2*0.94);
+  const dpr=Math.min(2, window.devicePixelRatio||1);
+  cv.width=Math.round(W2*dpr); cv.height=Math.round(H2*dpr);
+  cv.style.width=W2+'px'; cv.style.height=H2+'px';
+  const g=cv.getContext('2d'); if(!g) return;
+  g.scale(dpr,dpr);
+  /* painterly deep space — FIXED seed, so the chart is the same panorama
+     every open (engine law: canvas washes + glows, no flat primitives) */
+  const r=mulberry32(777001);
+  const bgv=g.createLinearGradient(0,0,0,H2);
+  bgv.addColorStop(0,'#070a16'); bgv.addColorStop(1,'#04050c');
+  g.fillStyle=bgv; g.fillRect(0,0,W2,H2);
+  const NEB=['143,120,255','80,160,255','255,150,190'];
+  for(let i=0;i<3;i++){
+    const nx=r()*W2, ny=r()*H2, nr=W2*(0.28+r()*0.3);
+    const ng=g.createRadialGradient(nx,ny,0,nx,ny,nr);
+    ng.addColorStop(0,'rgba('+NEB[i]+',0.055)'); ng.addColorStop(1,'rgba(0,0,0,0)');
+    g.fillStyle=ng; g.fillRect(0,0,W2,H2);
+  }
+  for(let i=0;i<140;i++){
+    g.fillStyle='rgba(220,228,255,'+(0.10+r()*0.45).toFixed(2)+')';
+    g.fillRect(r()*W2, r()*H2, (r()<0.1?1.6:1), 1);
+  }
+  /* cluster the entries by host galaxy */
+  const cl=new Map();
+  for(const it of items){
+    const gx=it.where&&it.where.gal; if(!gx || !Number.isFinite(gx.x) || !Number.isFinite(gx.y)) continue;
+    const k=Math.round(gx.x*10)+'|'+Math.round(gx.y*10);
+    if(!cl.has(k)) cl.set(k, {x:gx.x, y:gx.y, list:[]});
+    cl.get(k).list.push(it);
+  }
+  if(!cl.size){ g.fillStyle='#7c86ae'; g.font='11px sans-serif'; g.textAlign='center';
+    g.fillText('Nothing charted with a mapped location yet.', W2/2, H2/2); return; }
+  /* fit: bbox over clusters + the current view position, generous margins */
+  let minX=1e15,maxX=-1e15,minY=1e15,maxY=-1e15;
+  const _inc=(x,y)=>{ if(x<minX)minX=x; if(x>maxX)maxX=x; if(y<minY)minY=y; if(y>maxY)maxY=y; };
+  for(const c of cl.values()) _inc(c.x, c.y);
+  let here=null;
+  try{ const v=whereOfView(); if(v&&v.gal&&Number.isFinite(v.gal.x)){ here={x:v.gal.x,y:v.gal.y}; _inc(here.x,here.y); } }catch(_){ }
+  const span=Math.max(maxX-minX, maxY-minY, 24), pad=44;
+  const sc=(Math.min(W2,H2)-pad*2)/span;
+  const ox=(W2-(maxX-minX)*sc)/2 - minX*sc, oy=(H2-(maxY-minY)*sc)/2 - minY*sc;
+  const P=(x,y)=>({x:x*sc+ox, y:y*sc+oy});
+  const KIND_HEX={p:'#7fe6a0', s:'#ffd96a', m:'#9fb6d6', c:'#bfe8ff', b:'#c8b28a', g:'#cdbcff', r:'#cdbcff'};
+  /* the current view — a quiet crosshair, drawn under the lights */
+  if(here){
+    const h=P(here.x,here.y);
+    g.strokeStyle='rgba(200,210,240,0.35)'; g.lineWidth=1;
+    g.beginPath(); g.arc(h.x,h.y,9,0,TAU); g.stroke();
+    g.beginPath(); g.moveTo(h.x-14,h.y); g.lineTo(h.x-5,h.y); g.moveTo(h.x+5,h.y); g.lineTo(h.x+14,h.y);
+    g.moveTo(h.x,h.y-14); g.lineTo(h.x,h.y-5); g.moveTo(h.x,h.y+5); g.lineTo(h.x,h.y+14); g.stroke();
+    g.fillStyle='rgba(200,210,240,0.5)'; g.font='8px sans-serif'; g.textAlign='center';
+    g.fillText('you', h.x, h.y+22);
+  }
+  let labeled=0;
+  for(const c of cl.values()){
+    const base=P(c.x,c.y), n=c.list.length;
+    /* the cluster's halo breathes with how much is charted there */
+    const halo=g.createRadialGradient(base.x,base.y,0,base.x,base.y,14+4*Math.sqrt(n));
+    halo.addColorStop(0,'rgba(150,170,255,'+Math.min(0.5,0.16+n*0.05)+')'); halo.addColorStop(1,'rgba(0,0,0,0)');
+    g.fillStyle=halo; g.beginPath(); g.arc(base.x,base.y,14+4*Math.sqrt(n),0,TAU); g.fill();
+    for(let i=0;i<n;i++){
+      const it=c.list[i];
+      /* first entry sits on the core; the rest ring it, golden-angle spaced */
+      const ang=i*2.399963, rad=i===0?0:(9+((i*7)%3)*2.4);
+      const p={x:base.x+Math.cos(ang)*rad, y:base.y+Math.sin(ang)*rad};
+      const hex=KIND_HEX[String(it.id)[0]]||'#cfd6f2';
+      const isHome=it.id===homeId;
+      const gl=g.createRadialGradient(p.x,p.y,0,p.x,p.y,isHome?7:5);
+      gl.addColorStop(0,hex); gl.addColorStop(0.55,hex+'aa'); gl.addColorStop(1,'rgba(0,0,0,0)');
+      g.fillStyle=gl; g.beginPath(); g.arc(p.x,p.y,isHome?7:5,0,TAU); g.fill();
+      if(it.fav){ g.strokeStyle=hex; g.lineWidth=1; g.beginPath(); g.arc(p.x,p.y,7.5,0,TAU); g.stroke(); }
+      if(isHome){
+        g.fillStyle='#f0cf8a'; g.font='700 9px sans-serif'; g.textAlign='center';
+        g.fillText('⌂ '+String(it.title||'').slice(0,14), p.x, p.y-11); labeled++;
+      } else if(it.fav && labeled<7){
+        g.fillStyle=hex; g.font='8.5px sans-serif'; g.textAlign='center';
+        g.fillText('★ '+String(it.title||'').slice(0,12), p.x, p.y-10); labeled++;
+      }
+      _chartPts.push({x:p.x, y:p.y, id:it.id});
+    }
+  }
+  cv.dataset.n=String(_chartPts.length);
+}
 function renderLog(){
   /* v1.7.6 (round 2): the undo lives IN the list where the row was — the toast
      alone put it ~400px from the finger that mis-tapped */
@@ -14108,7 +14200,12 @@ function renderLog(){
     return ra!==rb ? rb-ra : b.t-a.t;
   });
   const favCount=[...logMap.values()].filter(it=>it.fav).length;
-  let html='<div class="log-head">'+
+  /* THE CHART PANE (Batch-C tail, Nick greenlit 2026-07-26): the Atlas's
+     second view — every charted place plotted across the universe on a
+     painterly star chart, clustered by galaxy, tap a light to travel. */
+  let html='<div class="cvtabs"><span class="cvt'+(logView==='list'?' on':'')+'" data-lvw="list" role="button" tabindex="0">📋 List</span>'+
+    '<span class="cvt'+(logView==='chart'?' on':'')+'" data-lvw="chart" role="button" tabindex="0">🗺 Chart</span></div>';
+  html+='<div class="log-head">'+
     '<div class="lfilt">'+
       '<button data-filt="all" class="'+(logFilter==='all'?'on':'')+'">All</button>'+
       '<button data-filt="fav" class="'+(logFilter==='fav'?'on':'')+'">★ '+favCount+'</button>'+
@@ -14118,6 +14215,13 @@ function renderLog(){
     '</div>'+
     ((homeId&&logMap.has(homeId))?'<button class="lgohome" data-gohome="1" title="Travel to your home">⌂ Travel Home</button>':'')+
   '</div>';
+  if(logView==='chart'){
+    html+='<div class="chartwrap"><canvas id="atlaschart" role="img" aria-label="Star chart of your charted places — use the List view for full keyboard access"></canvas>'+
+      '<div class="sub-hint">your reach across the universe · tap a light to travel · brighter = more charted there</div></div>';
+    logEl.innerHTML=_undoRow+html;
+    try{ _paintAtlasChart(items); }catch(_){ }
+    return;
+  }
   if(!items.length){
     html+='<div class="empty">'+(logFilter==='won'?'No settled worlds bookmarked yet — conquer one and add it here.':(logFilter==='life'?'No living or civilized finds bookmarked yet.':'No favorites yet — tap ☆ on any entry to star it.'))+'</div>';
   }
@@ -14147,6 +14251,20 @@ function renderLog(){
   logEl.innerHTML=html;
 }
 logEl.addEventListener('click', e=>{
+  const lvw=e.target.closest('[data-lvw]');
+  if(lvw){ logView=lvw.dataset.lvw; renderLog(); refocus(logEl, '.cvt[data-lvw="'+logView+'"]'); return; }
+  const cch=e.target.closest('#atlaschart');
+  if(cch){
+    /* tap a light → travel there (nearest hit-target within a fingertip) */
+    try{
+      const rc=cch.getBoundingClientRect();
+      const mx=e.clientX-rc.left, my=e.clientY-rc.top;
+      let best=null, bd=1e9;
+      for(const p of _chartPts){ const d=Math.hypot(p.x-mx, p.y-my); if(d<bd){ bd=d; best=p; } }
+      if(best && bd<=16){ const en=logMap.get(best.id); if(en && en.where) travelTo(en.where); }
+    }catch(_){ }
+    return;
+  }
   const filt=e.target.closest('[data-filt]');
   if(filt){ logFilter=filt.dataset.filt; renderLog(); refocus(logEl, '[data-filt="'+logFilter+'"]'); return; }
   const gh=e.target.closest('[data-gohome]');
