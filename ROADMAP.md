@@ -1198,3 +1198,20 @@
 ##     consolidation = PHASE 0/1 (module split BECOMES the TS extraction; save schema/Zod +
 ##     share-code migration policy; payload budget gate; art-direction doc + golden screen) →
 ##     v2.0 port Phases 2+ under the milestone gates. §28.5's "nothing blocks Phase 1" is right.
+## ▶▶▶ 2026-07-27 ★ v1.7.18 "THE HONEST FRONTIER" LIVE (build 76dd136) — the ENTIRE v1.7.15
+##   third-round audit in ONE bundle (Nick's call). 35 of 38 findings + expanded-audit hardening
+##   shipped; deferred BY PLAN to v1.8: CF1715-09 (conquest meter — strengthens the specced item),
+##   -27 burn death-lines, -29 spoils slot, -35 stacking contexts, -37 step-13 copy, + audit P1s
+##   (progression XP economy, no-op contract, direct 132px thumbnails, training transition
+##   controller). ★ PROCESS WINS THIS ROUND: (1) the restart-training criticals were invisible to
+##   472 checks because NOTHING walked Settings→Restart on a stocked veteran — smoke now walks the
+##   exact journey (+8 checks incl. tsnap persistence); (2) the balance sim was blind to the
+##   ROLLED ability pool — now measures all 55 ABILITY_THEMES arts ([8,92] band) every deploy;
+##   (3) SECOND-EVER re-pins (battleStats, runDuel) via full field-diff — 'non-magnitude delta:
+##   NONE' proven before pinning, authorization recorded in baseline repins[]. Archetypes retuned
+##   into 42-58 under the corrected formula. ⚠ LESSONS: journey coverage beats volume (their
+##   report's live-browser repro found what our fleet couldn't); every measuring stick needs an
+##   inventory of what it DOESN'T measure. Gates at ship: fp MATCH 50/50 · smoke 479/0 · layout
+##   546/9 · BALANCE PASS (17+55). ▶ NEXT: Nick playtests 1.7.18 · v1.8 "The Connection" spec now
+##   ABSORBS: matchup meter w/ real simulated odds (-09), XP economy table, no-op contract,
+##   direct thumbnails, transition controller, audio pass, §7 visual spike. HOLDING for the word.
