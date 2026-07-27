@@ -913,11 +913,24 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.getElementById('setbtn'));
     click(doc.getElementById('nameplateopt'));
     check('Nameplate menu reopens', visible(pbox));
-    doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
     /* CI parity: allow an async beat — the close may ride a listener queued
        behind the dispatch on slower runners (intent unchanged: it MUST close) */
-    check('Escape closes the Nameplate menu', await until(() => !visible(pbox), 1500, 'esc close'),
-      'visible overlays ahead in the stack: ' + ['reveal','pickbox','duelbox','sharebox','itemcard'].filter((id) => visible(doc.getElementById(id))).join(',') || 'none');
+    {
+      let bubbleReached = false; const _mark = () => { bubbleReached = true; };
+      doc.addEventListener('keydown', _mark);
+      const dispatchRet = doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+      doc.removeEventListener('keydown', _mark);
+      const escClosed = await until(() => !visible(pbox), 1500, 'esc close');
+      let second = '';
+      if (!escClosed) {
+        doc.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+        second = (await until(() => !visible(pbox), 800, 'esc 2nd')) ? ' — 2nd press CLOSED it (one-shot consumer ate the 1st)' : ' — 2nd press ALSO ignored (dead handler)';
+      }
+      check('Escape closes the Nameplate menu', escClosed,
+        'ahead-visible: [' + ['namebox','descbox','reveal','pickbox','duelbox','sharebox','itemcard'].filter((id) => visible(doc.getElementById(id))).join(',') + '] platebox.display=' + pbox.style.display
+        + ' tutDone=' + H.tutDone + ' activeEl=' + (doc.activeElement && (doc.activeElement.id || doc.activeElement.tagName))
+        + ' bubbleReached=' + bubbleReached + ' dispatchRet=' + dispatchRet + second);
+    }
 
     // ===== Batch C (a11y): the board answers the keyboard =====
     {
@@ -1771,6 +1784,21 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         regen.length > 0 && regen.every((e) => !e.thumb), 'rows: ' + regen.length);
       check('save-health: the split list-thumb pipeline is wired (speciesThumb exported)',
         typeof skH.speciesThumb === 'function');
+    }
+    // ===== P2-005 + §5 (queue item 4): vein dedup + the per-deposit resolver =====
+    {
+      let dup = 0;
+      for (let s = 100; s < 8000; s += 23) for (const ty of ['metal', 'lava', 'rocky']) {
+        const dl = skH.depositsFor(s, ty, 4);
+        if (new Set(dl).size !== dl.length) dup++;
+      }
+      check('P2-005: no world ever lists the same vein twice (dedup across metal/lava/rocky)', dup === 0, dup + ' dup lists');
+      check('§5 resolver: a vein reads its substance base grade on ordinary ground',
+        skH.resolvedDepositTier('Fe', 0) === skH.matBaseTier('Fe')
+        && skH.resolvedDepositTier('Au', 0) === skH.matBaseTier('Au'));
+      check('§5 resolver: Primordial+ ground raises the grade one step, semantic cap 6',
+        skH.resolvedDepositTier('Au', 8) === skH.matBaseTier('Au') + 1
+        && skH.resolvedDepositTier('Vg', 9) <= 6);
     }
     // ===== CF-008 NAME VARIETY (queue item 3): deterministic world epithets =====
     {
