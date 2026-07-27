@@ -6,8 +6,10 @@ family/tier/class/job), and the economy is now **wired**: all 7 cosmics are obta
 world-cosmics via tier-gated veins (`cosmicVeinFor`, §6 note), the 2 stellar via star skimming (`skimStar`,
 §8 note), each anchoring an endgame gear piece (`cg-*`, §17 note). This landed **fp-SAFE (no re-pin)** — the
 cosmics are a separate lit vein, so `depositsFor` and every existing world stay byte-identical. **Still design
-(not yet built):** the §5 per-deposit instance-rarity resolver, §22 gear×tier + ship-hull art, and the §24
-power-curve tuning. **Build phase:** the vocabulary rode Phase A; the Forge economy is Phase B (source-only,
+(not yet built):** the §22 gear×tier + ship-hull art. *(2026-07-26: the §5 per-deposit resolver shipped —
+`resolvedDepositTier`, grounded cards grade each vein for that world; the §24 power-curve pass ran — archetype
+band restored via the balance sim, two dead relics retuned as sidegrades, sim joined the deploy gate.)*
+**Build phase:** the vocabulary rode Phase A; the Forge economy is Phase B (source-only,
 bundled — live is v1.6.4).
 **Related:** `RARITY_UNIVERSAL.md`, `FORGE_AND_DISCOVERY.md`, `ECONOMY_LOOT_CRAFTING.md`.
 

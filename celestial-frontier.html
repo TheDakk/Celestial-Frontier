@@ -13766,7 +13766,13 @@ function renderPanel(p, isLocked){
         /* §5: the exceptional vein is a LANDING payoff too — prospecting from
            orbit names the palette, boots on the ground find the pure seam */
         const _xv=grounded ? exVeinFor(d.planetSeed, d.ptype, _mTier) : null;
-        rows+='<div class="splabel"><span class="k">Mineral veins</span><span class="v">'+_dp.map(s=>matName(s)).join(' · ')+
+        /* §5 resolver: on the GROUND each vein wears its resolved grade for
+           this world (orbit keeps plain names — the worth is a landing payoff) */
+        rows+='<div class="splabel"><span class="k">Mineral veins</span><span class="v">'+_dp.map(s=>{
+          if(!grounded) return matName(s);
+          const _rr=displayRarity(resolvedDepositTier(s, _mTier));
+          return '<span style="color:'+_rr.hex+'" data-tip="'+matName(s)+' — '+_rr.name+'-grade in these veins">'+matName(s)+'</span>';
+        }).join(' · ')+
           (_bv?' · <span style="color:'+matColor(_bv)+'">'+matName(_bv)+' ✦</span>':'')+
           (_cv?' · <span style="color:'+matColor(_cv)+'">'+matName(_cv)+' ✦</span>':'')+
           (_xv?' · <span style="color:'+displayRarity(exTierOf(_xv)).hex+'">✦ exceptional '+matName(_xv)+'</span>':'')+
@@ -20001,9 +20007,24 @@ function depositsFor(seed, type, tier){
   const n=3+((r()*3)|0);
   const pool=prof.slice(), picks=[];
   for(let i=0;i<n && pool.length;i++) picks.push(pool.splice((r()*pool.length)|0, 1)[0]);
-  if(r() < 0.10+(tier||0)*0.05)                       /* a rare vein — richer on rarer worlds */
-    picks.push(RARE_VEIN[Math.min(RARE_VEIN.length-1, (r()*(1+(tier||0)))|0)]);
+  if(r() < 0.10+(tier||0)*0.05){                      /* a rare vein — richer on rarer worlds */
+    /* P2-005 DEDUP (v1.7, queue item 4): metal worlds carry Ag/Au/Pt/Ir in
+       their own pool and lava carries U — the vein roll could DOUBLE a row
+       already picked. Skip-on-dup keeps the rng stream identical (same r()
+       draws), so only the formerly-doubled worlds change: they lose the
+       duplicate line, nothing else in the universe moves. */
+    const rv=RARE_VEIN[Math.min(RARE_VEIN.length-1, (r()*(1+(tier||0)))|0)];
+    if(picks.indexOf(rv)<0) picks.push(rv);
+  }
   return picks;
+}
+/* §5 PER-DEPOSIT RESOLVER (queue item 4, the doc's last unbuilt §5 piece):
+   a vein's worth AT THIS WORLD — its substance base grade, raised one step
+   on Primordial+ ground (world rarity influences richness, §6), clamped at
+   the semantic cap 6 (only explicit cosmics sit above materials science).
+   Display/economic language only — generation is untouched. */
+function resolvedDepositTier(sym, wtier){
+  return Math.min(6, matBaseTier(sym) + ((wtier||0)>=8?1:0));
 }
 /* v1.4 BIOME-GATED VEINS (Nick: "rarer worlds' veins gate rarer recipes —
    do it"): four showpiece biomes are the LIVING SOURCES of the four
