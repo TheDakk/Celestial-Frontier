@@ -1772,6 +1772,18 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       check('save-health: the split list-thumb pipeline is wired (speciesThumb exported)',
         typeof skH.speciesThumb === 'function');
     }
+    // ===== CF-008 NAME VARIETY (queue item 3): deterministic world epithets =====
+    {
+      const eP = skH.planetParams(17714);   /* a proven Legendary+ venus world */
+      const eD = skH.planetDescriptor(eP, null, { name: 'Testholm', orb: 120 });
+      check('CF-008: a notable world wears its epithet', / — the /.test(eD.title), eD.title);
+      const e2 = skH.planetDescriptor(eP, null, { name: 'Testholm', orb: 120 });
+      check('CF-008: the epithet is deterministic (same seed → same title)', eD.title === e2.title);
+      const ordinary = skH.planetDescriptor(skH.planetParams(5013), null, { name: 'Plainholm', orb: 120 });
+      check('CF-008: ordinary worlds stay plainly named', !/ — the /.test(ordinary.title), ordinary.title);
+      const earthD = skH.planetDescriptor(skH.planetParams(133), null, { name: 'Earth', orb: 149 });
+      check('CF-008: Earth is Earth — the cradle never wears an epithet', earthD.title === 'Earth');
+    }
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
     sk.w.close();
 

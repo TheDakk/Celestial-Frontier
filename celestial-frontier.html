@@ -4904,7 +4904,29 @@ function planetDescriptor(P, sys, pl){
   const desig = spectral(dom, P.seed,
     {salt:P.seed===133?0:3, boost:lifeBoost+(P.seed===133?0:Math.floor(_dreg/2)), force:P.seed===133?5:undefined});
   rows.unshift(['Spectral class', desig.label+' — '+desig.name, 'grade']);
-  return {title:(pl&&pl.name)||'Planet',
+  /* CF-008 NAME VARIETY (v1.7, Nick's queue 2026-07-26): a NOTABLE world wears
+     a deterministic EPITHET — "Vethara — the Shrouded". Legendary+ designations
+     only, hash-gated under half of those so the honor stays an event; the
+     vocabulary keys to the world's hue family so the name says what the eye
+     will meet. Earth is Earth (Nick's law) — the cradle never re-labels. */
+  let _epi='';
+  if(P.seed!==133 && desig.tier>=5){
+    const EPI={
+      lava:['the Burning','the Emberheld','the Unquenched','the Cinderborn'],
+      venus:['the Shrouded','the Veiled Furnace','the Cauldron','the Smokebound'],
+      ice:['the Stillwhite','the Frozen Vigil','the Glasswind','the Last Winter'],
+      ocean:['the Drowned','the Deepsworn','the Tideveiled','the Endless Shore'],
+      teal:['the Drowned','the Deepsworn','the Tideveiled','the Endless Shore'],
+      desert:['the Sunscoured','the Glasslands','the Parched Crown','the Duneheld'],
+      gas:['the Stormcrowned','the Bannered','the Ringed Court','the Sky Forever'],
+      rocky:['the Grey Sentinel','the Cratered Watch','the Silent','the Unbowed'],
+      terran:['the Verdant','the Blooming','the Second Cradle','the Kindled'],
+      verdant:['the Verdant','the Blooming','the Second Cradle','the Kindled'],
+    };
+    const _er=mulberry32(hashInt(P.seed, 0xE917, 0x2B)>>>0);
+    if(_er()<0.45){ const _l=EPI[dom]||EPI.rocky; _epi=' — '+_l[(_er()*_l.length)|0]; }
+  }
+  return {title:((pl&&pl.name)||'Planet')+_epi,
     sub:(TYPE_LABEL[P.type]||'World'),
     thumb:planetThumb(P), rows, species, planetSeed:P.seed, planetName:(pl&&pl.name)||'Planet',
     ptype:P.type,
@@ -14770,7 +14792,7 @@ function showReveal(entry, isHybrid){
       }
       if(entry.kind==='Fauna'){
         const _t=faunaTastes(entry.genome);
-        stEl.innerHTML+='<div class="abil" style="font-size:9.5px;opacity:.95"><span style="color:#7fe6a0">♥ Favours</span> '+_t.likes.map(k=>STAT_META[k].name).join(', ')+' · <span style="color:#ffd96a">⊘ Dislikes</span> '+STAT_META[_t.dislikes[0]].name+'-rich flora</div>';
+        stEl.innerHTML+='<div class="abil" style="font-size:9.5px;opacity:.95"><span style="color:#7fe6a0">♥ Favors</span> '+_t.likes.map(k=>STAT_META[k].name).join(', ')+' · <span style="color:#ffd96a">⊘ Dislikes</span> '+STAT_META[_t.dislikes[0]].name+'-rich flora</div>';
       }
     }
     if(acts){
@@ -18497,7 +18519,7 @@ const GUIDE=[
  {id:'rarity', t:'Rarity & grades', k:'rarity grade tier common uncommon notable rare exotic legendary mythic celestial primordial transcendent spectrum color', body:
   '<p>Every species wears one of ten grades on a single ladder shared by creatures, plants, worlds and stars alike: <b>Common → Uncommon → Notable → Rare → Exotic → Legendary → Mythic → Celestial → Primordial → Transcendent</b>. Most expeditions live in the lower bands; the top grades grow vanishingly rare, and a <b>Transcendent</b> is a one-in-a-million roll — the province of master bloodlines and <span data-gt="guardians">Apex Guardians</span>. Rarity tints the card, pitches the discovery chime, and matters mechanically:</p><ul><li>Rarer flora heal more — and poison more. Rarer pairs are harder to breed but forge stronger bloodlines.</li><li>Finding a Legendary-or-better species pays a ☄ Stardust bonus (first discovery only).</li><li>Stars and worlds carry rarity too — but a world hides its grade until you <b>land</b> and stand on it; a star reveals its grade on <b>survey</b>. Rarer worlds yield richer conquest spoils.</li><li>Chasing the rare grades? Size, glow, wild apex blood and deep hybrid generations all push a creature’s grade upward — a master bloodline can climb far past what nature rolls.</li></ul>'},
  {id:'specimen', t:'Reading a specimen card', k:'specimen card stats power ability bloodline brood fed gen hybrid tastes', body:
-  '<p>Tap any species in the Compendium to open its card:</p><ul><li><b>Five stat bars + Power</b> — its battle strength, rolled deterministically from its genome (see <span data-gt="stats">The five stats</span>).</li><li><b>❤ HP & Condition</b> — its battle pool, and whether it’s Healthy, Bruised, Injured or Critical. Wounds persist and dull every stat — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>✧ Ability</b> — its biome-themed combat trick (see <span data-gt="abilities">Abilities</span>).</li><li><b>♥ Favours / ⊘ Dislikes</b> — its feeding tastes (fauna only).</li><li><b>♞ Bloodline</b> — <em>brood</em> (generations bred) and <em>fed</em> (meals taken) both permanently raise its stats.</li><li>Buttons: <b>⇪ Code</b> (share), <b>⚔ Duel</b>, <b>🧬 Breed</b>, <b>🌿 Feed</b>, <b>✎ Rename</b>.</li></ul>'},
+  '<p>Tap any species in the Compendium to open its card:</p><ul><li><b>Five stat bars + Power</b> — its battle strength, rolled deterministically from its genome (see <span data-gt="stats">The five stats</span>).</li><li><b>❤ HP & Condition</b> — its battle pool, and whether it’s Healthy, Bruised, Injured or Critical. Wounds persist and dull every stat — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>✧ Ability</b> — its biome-themed combat trick (see <span data-gt="abilities">Abilities</span>).</li><li><b>♥ Favors / ⊘ Dislikes</b> — its feeding tastes (fauna only).</li><li><b>♞ Bloodline</b> — <em>brood</em> (generations bred) and <em>fed</em> (meals taken) both permanently raise its stats.</li><li>Buttons: <b>⇪ Code</b> (share), <b>⚔ Duel</b>, <b>🧬 Breed</b>, <b>🌿 Feed</b>, <b>✎ Rename</b>.</li></ul>'},
  {id:'drift', t:'Passive evolution', k:'drift evolve hybrid automatic epoch cosmic clock', body:
   '<p>Your Compendium is alive. As the cosmic clock ticks (one epoch ≈ every 4 minutes of play), two of your species quietly drift into a new hybrid on their own — the collection keeps surprising you the more you explore. Drift pauses at 500 species so your save stays healthy.</p>'},
  {id:'sapience', t:'Sapience & civilizations', k:'sapient intelligence civilization advanced eras mind signature', body:
@@ -18507,9 +18529,9 @@ const GUIDE=[
  {id:'breeding', t:'Breeding', k:'breed pair parents consumed odds hybrid bloodline stardust boost union', body:
   '<p>Pick a specimen, press <b>Breed</b>, choose a same-kingdom mate. Both parents are consumed by the union — win or lose.</p><ul><li>The odds shown depend on the pair’s rarity — rare pairs are long shots.</li><li>☄ Stardust you’ve earned passively boosts odds (up to +15%) — see <span data-gt="stardust">Stardust</span>.</li><li>Success forges a <b>new bloodline</b>: a hybrid child with boosted stats (+1 brood). Chain generations for monsters.</li><li>Failure loses both parents. Breed your spares, not your champions.</li><li>Two extremophile parents breed a true extremophile; a mixed pair breeds back toward ordinary stock. A creature&#8217;s two-tone hide follows its accent gene, so children visibly carry their parents&#8217; colors.</li></ul>'},
  {id:'feeding', t:'Feeding beasts', k:'feed flora meal tastes loved disliked poison toxic dead bloodline fed mend medicine', body:
-  '<p>Fauna can be fed flora from your Compendium (<b>Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavours it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength.</li><li>Feeding is also medicine: a welcome meal mends a wounded beast, and loved flavours mend most. A disliked meal that goes badly can wound it further — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll poisons the beast, biting off a chunk of its condition; rarer flora bite far deeper. Only a beast whose strength is already spent dies of it — at zero, it’s gone. The Iron Gut ability shrugs toxins off.</li></ul>'},
+  '<p>Fauna can be fed flora from your Compendium (<b>Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavors it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength.</li><li>Feeding is also medicine: a welcome meal mends a wounded beast, and loved flavors mend most. A disliked meal that goes badly can wound it further — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll poisons the beast, biting off a chunk of its condition; rarer flora bite far deeper. Only a beast whose strength is already spent dies of it — at zero, it’s gone. The Iron Gut ability shrugs toxins off.</li></ul>'},
  {id:'injuries', t:'Injuries & recovery', k:'injury wound hurt condition bruised critical mend recover heal scars medicine', body:
-  '<p>Wounds persist. A creature’s condition — <b style="color:#7fe6a0">Healthy</b> → <b style="color:#ffd96a">Bruised</b> → <b style="color:#ff8a72">Injured</b> → <b style="color:#ff5a4a">Critical</b> — lives on its specimen card, and the wounded fight below their strength (nearly half power at the brink).</p><ul><li><b>How they get hurt:</b> winning a conquest by a thread leaves scars, and a disliked meal that goes badly can wound. Friendly duels are still pure sport — no harm done.</li><li><b>How they heal:</b> feed them. A welcome meal mends, the flavours a beast ♥ loves mend most, and rarer flora mend deeper. Wounds never fade on their own — medicine is a deliberate act.</li><li>Injuries don’t travel in CFB codes — a shared creature arrives fresh.</li><li>Newborn hybrids are born unhurt, whatever shape their parents were in.</li></ul>'},
+  '<p>Wounds persist. A creature’s condition — <b style="color:#7fe6a0">Healthy</b> → <b style="color:#ffd96a">Bruised</b> → <b style="color:#ff8a72">Injured</b> → <b style="color:#ff5a4a">Critical</b> — lives on its specimen card, and the wounded fight below their strength (nearly half power at the brink).</p><ul><li><b>How they get hurt:</b> winning a conquest by a thread leaves scars, and a disliked meal that goes badly can wound. Friendly duels are still pure sport — no harm done.</li><li><b>How they heal:</b> feed them. A welcome meal mends, the flavors a beast ♥ loves mend most, and rarer flora mend deeper. Wounds never fade on their own — medicine is a deliberate act.</li><li>Injuries don’t travel in CFB codes — a shared creature arrives fresh.</li><li>Newborn hybrids are born unhurt, whatever shape their parents were in.</li></ul>'},
  {id:'eating', t:'Eating flora (healing)', k:'heal eat flora hp medicine poison stat growth heart nourish', body:
   '<p>Tap the <b>❤ heart</b> by your HP bar to eat flora yourself. The plant is consumed and two things happen:</p><ul><li>You heal. Rarer flora restore more HP — but their poison chance is higher, and a toxic roll wounds you instead. The deadliest medicine heals hardest.</li><li>You grow. Each plant nourishes one specific battle stat permanently (shown on its card). Vitality meals also raise your max HP.</li></ul><p>See <span data-gt="stats">The five stats</span>.</p>'},
 ]},
@@ -23499,7 +23521,7 @@ const TUT_STEPS=[
   text:()=>'Fighters, breeders and medicine all live here, shelved by realm. <b>Tap any specimen</b> to open its card.',
   when:(t)=>t==='specimen'},
  {id:'card-tour', spot:'#reveal .card', btn:'Got It', rev:'scout',   /* the tour's one live verb — reversible, and it IS on the card */
-  text:()=>'Read it like a Pathfinder: five stat bars and total Power; its ✧ ability; the rarity grade tinting the card. Rarer life fights harder, breeds stronger, heals — or poisons — more. Beasts also list the flora flavours they ♥ love and ⊘ dislike.'},
+  text:()=>'Read it like a Pathfinder: five stat bars and total Power; its ✧ ability; the rarity grade tinting the card. Rarer life fights harder, breeds stronger, heals — or poisons — more. Beasts also list the flora flavors they ♥ love and ⊘ dislike.'},
  /* Nick live 2026-07-26 (steps 10/14 screenshots): the specimen card from the
     PREVIOUS lesson lingered over these steps — "it says open a beast, but the
     card's already open". Each lesson that says "Open a …" now takes the stage
