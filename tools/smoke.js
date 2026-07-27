@@ -796,15 +796,22 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       !visible(doc.getElementById('tutbox')) && !visible(doc.getElementById('tutspot')));
     try{ if(H.sheetOpen) doc.getElementById('rank').click(); }catch(_){ }
 
-    // ====== BINDER (CF16-P2-001: renderBinder read ABILITY_THEMES from outer scope -> ReferenceError crash) ======
+    // ====== BINDER — moved to 🏆 RECORDS (Nick 2026-07-26: it's a collection
+    // view; the Compendium is species only). CF16-P2-001 regression rides along.
     click(doc.getElementById('codexbtn'));
     check('Compendium opens (post-training)', visible(doc.getElementById('codex')));
-    const binderTab = doc.querySelector('#codex [data-cvw="binder"]');
-    if (binderTab) click(binderTab);
-    check('Binder view renders without throwing (ABILITY_THEMES now exported)',
-      !!doc.querySelector('#codex .bgrid, #codex .bind-head'), errors.slice(0, 2).join(' | '));
+    check('Compendium no longer carries the Binder tab', !doc.querySelector('#codex [data-cvw="binder"]'));
     click(doc.getElementById('codexbtn'));
-    check('Compendium closes after Binder', !visible(doc.getElementById('codex')));
+    click(doc.getElementById('recbtn'));
+    check('Records opens with the Trophies | Binder tab row', visible(doc.getElementById('records'))
+      && !!doc.querySelector('#records [data-rvw="binder"]'));
+    click(doc.querySelector('#records [data-rvw="binder"]'));
+    check('Binder view renders on Records without throwing (ABILITY_THEMES exported)',
+      !!doc.querySelector('#records .bgrid, #records .bind-head'), errors.slice(0, 2).join(' | '));
+    click(doc.querySelector('#records [data-rvw="rec"]'));
+    check('Records tab returns to the trophy shelves', !!doc.querySelector('#records .tier'));
+    click(doc.getElementById('recbtn'));
+    check('Records closes after the Binder visit', !visible(doc.getElementById('records')));
 
     // ============ TOOLTIPS ============
     await sleep(600);   // the outside-tap pointerdown above suppresses focus-tooltips for 500ms (by design) — let it lapse
@@ -1441,12 +1448,23 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     if (!visible(chp)) click2(sk.doc.getElementById('chbtn'), sk.w);
     check('v1.4 Ascent: Chapter 1 pinned atop the charter board', chp.textContent.includes('Off the Rock')
       && !!chp.querySelector('.ascbox'));
+    // v1.7.11 (Nick, quest-log option 3): the mainline reads as STORY — kicker
+    // line + slim progress bars, no charter-pill rows inside the chapter box
+    check('quest-log: the chapter wears the mainline kicker + progress bars',
+      !!chp.querySelector('.ascbox .asckick') && chp.querySelectorAll('.ascbox .ascgoal .agbar').length >= 4
+      && !chp.querySelector('.ascbox .ch'));
     // the Fabricator: grant ore through the hook, craft a T1 part for real
     skH.cargo.set('Fe', 20); skH.cargo.set('Al', 12); skH.cargo.set('Si', 12);
     skH.craftItem('plate');
     check('v1.4 Fabricator: crafting consumes elements and yields the part',
       skH.itemCount('plate') === 1 && skH.cargo.get('Fe') === 16);
     check('v1.4 Ascent: crafting advances the chapter goal', (skH.ascProg['c1-part'] || 0) >= 1);
+    // v1.7.11 (Nick, quest-log option 1): the dock chip is a LIVE objective
+    // tracker — with nothing accepted it carries the chapter's next goal
+    check('quest-log: the objective chip tracks the chapter when no charter is accepted',
+      (() => { const c = sk.doc.getElementById('chchip');
+        return !!c && c.style.display !== 'none' && c.textContent.includes('⬆') && / \d+ \/ \d+/.test(c.textContent); })(),
+      (sk.doc.getElementById('chchip') || {}).textContent);
     if (sk.doc.getElementById('yard').style.display !== 'flex') click2(sk.doc.getElementById('cargobtn'), sk.w);
     await until(() => sk.doc.getElementById('yard').style.display === 'flex', 2000, 'yard for fab');
     click2(sk.doc.querySelector('#yardbench [data-yt="fab"]'), sk.w);   // the tab is remembered — pick fab explicitly

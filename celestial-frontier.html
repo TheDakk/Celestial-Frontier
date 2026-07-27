@@ -677,6 +677,20 @@
     background:linear-gradient(180deg,rgba(127,208,255,0.07),rgba(6,8,16,0.3));box-shadow:0 0 14px rgba(127,208,255,0.08)}
   #chpanel .ascbox .ehead{margin-bottom:5px}
   #chpanel .ascbox .ambient{margin-bottom:7px}
+  /* the MAINLINE reads as story, not as pre-accepted quests (Nick 2026-07-26):
+     kicker line + slim progress LINES with bars — visually a different species
+     from the charter pills (which carry Accept buttons) below */
+  #chpanel .asckick{font:600 8.5px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:rgba(127,208,255,0.75);margin:0 0 6px}
+  #chpanel .ascgoal{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline;padding:5px 2px 6px;border-bottom:1px solid rgba(127,208,255,0.10)}
+  #chpanel .ascgoal:last-child{border-bottom:none}
+  #chpanel .ascgoal .agt{font-size:11px;color:var(--ink);line-height:1.35}
+  #chpanel .ascgoal .agp{font:600 10px var(--ui);color:#7fd0ff;white-space:nowrap}
+  #chpanel .ascgoal .agbar{grid-column:1 / -1;display:block;height:3px;border-radius:99px;background:rgba(127,208,255,0.14);overflow:hidden}
+  #chpanel .ascgoal .agbar b{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#5aa8e8,#7fd0ff)}
+  #chpanel .ascgoal.done .agt{color:var(--dim)}
+  #chpanel .ascgoal.done .agp{color:#7fe6a0}
+  #chpanel .ascgoal.done .agbar b{background:#4a9a70}
+  #chpanel .ascgoal .chk{color:#7fe6a0}
   /* the active Field Scout wears its cyan tag in the Compendium roster */
   #codex .sp .scouttag{font:600 8px var(--ui);letter-spacing:.09em;color:#6fd3ff;
     border:1px solid rgba(111,211,255,0.5);border-radius:999px;padding:1px 6px;margin-left:5px;vertical-align:1px;white-space:nowrap}
@@ -1804,6 +1818,10 @@
     padding:6px 11px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,207,138,0.35);
     backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);max-width:min(62vw,340px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   #chchip b{color:#f0cf8a;font-weight:600}
+  /* the objective chip celebrates its own progress (Nick 2026-07-26) */
+  @keyframes chipbump{0%{transform:scale(1)}35%{transform:scale(1.08);box-shadow:0 0 18px rgba(240,207,138,0.45)}100%{transform:scale(1)}}
+  #chchip.bump{animation:chipbump .5s ease}
+  body.rmotion #chchip.bump{animation:none}
   /* Advanced Briefings launcher row in the Guide */
   .gbrief{display:flex;gap:11px;align-items:flex-start;padding:10px 11px;border-radius:12px;text-align:left;
     background:rgba(127,208,255,0.06);border:1px solid rgba(127,208,255,0.25);margin-bottom:10px}
@@ -14713,7 +14731,7 @@ function flashCodex(){
   _flashT=setTimeout(()=>{ codexBtn.style.borderColor=''; }, 450);
 }
 function renderCodex(){
-  if(codexView==='binder'){ renderBinder(); return; }
+  /* (binder branch removed — the Binder renders on 🏆 Records now) */
   if(codex.size===0){
     codexEl.innerHTML=_codexTabs()+'<div class="empty">Your Compendium is empty.<br><br>Land on a living world and survey its biosphere — then <b>🐾 Tame</b> its beasts and <b>🌿 Scavenge</b> its growth. Every catch earns its page here; the rare ones will make you work for it.<br><br>Your catches then interbreed and evolve on their own, so new hybrids keep appearing the more you explore.</div>';
     return;
@@ -14925,10 +14943,9 @@ const BINDER_SETS=[
  {id:'court',    name:'The Apex Court',     d:'Claim Apex Guardians of all three summit crowns — every guardian bears one', sd:150, prog:()=>_courtProg(), done:()=>_courtN()>=3},
  {id:'para10',   name:'Seeker of Legends',  d:'Find 10 of the Fifty Paragons', sd:120, prog:()=>paragonsOwned()+' / 10', done:()=>paragonsOwned()>=10},
 ];
-let codexView='list';
+let codexView='list';   /* Nick 2026-07-26: the Binder MOVED to 🏆 Records (it's a collection view) — the Compendium is species only now; codexView kept for save/back-compat */
 function _codexTabs(){
-  let h='<div class="cvtabs"><span class="cvt'+(codexView==='list'?' on':'')+'" data-cvw="list" role="button" tabindex="0">📖 Species</span>'+
-    '<span class="cvt'+(codexView==='binder'?' on':'')+'" data-cvw="binder" role="button" tabindex="0">🗂 Binder</span></div>';
+  let h='';
   if(codexView==='list' && tutDone && codex.size>0){
     const K=[['all','All'],['Fauna','🐾 Fauna'],['Flora','🌿 Flora'],['Fungi','🍄 Fungi'],['Microbe','🦠 Microbes']];
     h+='<div class="cktabs">'+K.map(k=>
@@ -14941,7 +14958,11 @@ function _codexTabs(){
   }
   return h;
 }
-function renderBinder(){
+function renderBinder(target){
+  /* Nick 2026-07-26: the Binder lives on the 🏆 Records board now — it is a
+     collection view (types, sets, Paragons), and Records is the trophy room */
+  target=target||document.getElementById('records');
+  if(!target) return;
   const own={tiers:new Set(), realms:new Set(), bodies:new Set(), themes:new Set(), flavors:new Set(), kinds:new Set(), sizes:new Set(), xeno:false};
   for(const e of codex.values()){
     if(e.grade) own.tiers.add(e.grade.tier);
@@ -14959,7 +14980,7 @@ function renderBinder(){
     {ic:'🌿', name:'Flora Flavors',     slots:STAT_KEYS.map(k=>({label:STAT_META[k].name, hex:STAT_META[k].col, have:own.flavors.has(k)}))},
     {ic:'📏', name:'Size Classes',       slots:FA_SIZE.map((s,i)=>({label:s, hex:'#cfd6f2', have:own.sizes.has(i)}))},
   ];
-  let html=_codexTabs()+'<div class="bind-head">Collect types, not individuals — the slots are the same for every explorer; your universe decides which specimen fills each.</div>';
+  let html=_recTabs()+'<div class="bind-head">Collect types, not individuals — the slots are the same for every explorer; your universe decides which specimen fills each.</div>';
   for(const p of pages){
     const got=p.slots.filter(s=>s.have).length;
     html+='<h4 class="bh">'+p.ic+' '+p.name+' <span class="bcnt">'+got+' / '+p.slots.length+'</span></h4><div class="bgrid">'+
@@ -14983,15 +15004,15 @@ function renderBinder(){
         :(done?'<button class="bclaim" data-claimset="'+s.id+'" type="button">Claim ☄ '+s.sd+'</button>'
               :'<span class="bcnt">'+s.prog(own)+'</span>'))+'</div>';
   }
-  codexEl.innerHTML=html;
+  target.innerHTML=html;
 }
-codexEl.addEventListener('click', e=>{
-  const tab=e.target.closest('[data-cvw]');
-  if(tab){ codexView=tab.dataset.cvw; renderCodex(); refocus(codexEl, '.cvt[data-cvw="'+codexView+'"]'); return; }
+/* the Binder's interactions ride the RECORDS board now (Nick 2026-07-26);
+   shared handler so the records listener stays one delegation */
+function _binderClicks(e){
   const par=e.target.closest('[data-par]');
   if(par){
     const i=+par.dataset.par;
-    if(codex.has('s'+paragonSeed(i))){ showReveal(codex.get('s'+paragonSeed(i)), false); return; }
+    if(codex.has('s'+paragonSeed(i))){ showReveal(codex.get('s'+paragonSeed(i)), false); return true; }
     const w=paragonWhere(i);
     if(w && typeof ascAllows==='function' && !ascAllows(w)){
       /* v1.4 review catch: the legend's world is drive-gated — keep the
@@ -14999,11 +15020,11 @@ codexEl.addEventListener('click', e=>{
       ascBlock();
     } else if(w){
       if(w.pseed!=null && !_parSites.has(w.pseed)) _parSites.set(w.pseed, i);
-      codexOpen=false; codexEl.style.display='none';
+      try{ recOpen=false; const _re=document.getElementById('records'); if(_re) _re.style.display='none'; }catch(_){ }
       travelTo(w);
       toast('🜲 Paragon #'+(i+1), 'Last sighting: '+galaxyName(w.gal.seed)+'. Land, survey the living world, and <b>Discover Life</b> to catalogue the legend.');
     } else toast('🜲 Paragon #'+(i+1), 'The trail is cold — this legend resists the charts. Try again.');
-    return;
+    return true;
   }
   const cl=e.target.closest('[data-claimset]');
   if(cl){
@@ -15015,9 +15036,10 @@ codexEl.addEventListener('click', e=>{
       toast('🏅 Set Complete — '+s.name, '+'+s.sd+' ☄ Stardust claimed. Total: '+essence+'.');
       renderBinder(); checkAch(); renderRank(); queueSave();
     }
-    return;
+    return true;
   }
-});
+  return false;
+}
 
 /* teleport to a logged object: galaxy, star, or planet */
 /* ----------------------------------------------------------------
@@ -18390,7 +18412,7 @@ const GUIDE=[
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
   '<p>Any world with fauna can be conquered. Press <b>Conquer Planet</b> on its survey card and choose one champion — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries wounds home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a wild-caught creature:</b> it is gone forever.</li><li><b>Lose with a bred champion:</b> your bloodline crawls home <b>Critical</b> — broken, not dead. Mend it with flora it ♥ loves — a champion fielded while still Critical will not crawl home twice.</li><li><b>Lose fighting yourself:</b> you take the wound instead — it can beat you to the brink but never kill you, and below a quarter health you cannot lead a conquest at all (send a beast, or mend first).</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
  {id:'binder', t:'The Binder & the Fifty Paragons', k:'binder collection sets slots types paragon fifty silhouette claim stardust', body:
-  '<p>Open the Compendium and switch to the <b>🗂 Binder</b> tab. You cannot collect individuals out of an infinite universe — so the Binder collects types: fixed pages of slots (every grade, every realm, every body plan, every ability theme…) that are the same for every explorer; your universe decides which specimen fills each.</p><ul><li><b>Sets</b> are curated collections that pay a one-time ☄ Stardust bounty — claim them in the Binder when complete.</li><li><b>The Fifty Paragons</b> are named, one-of-a-kind deep-spectrum legends living on fixed worlds — the same fifty worlds for every explorer. Tap a silhouette to plot a course to its last-known world, then land and <b>Discover Life</b> to catalogue it. Share the coordinates — your friend hunts the very same legend.</li></ul>'},
+  '<p>Open <b>🏆 Records</b> and switch to the <b>🗂 Binder</b> tab. You cannot collect individuals out of an infinite universe — so the Binder collects types: fixed pages of slots (every grade, every realm, every body plan, every ability theme…) that are the same for every explorer; your universe decides which specimen fills each.</p><ul><li><b>Sets</b> are curated collections that pay a one-time ☄ Stardust bounty — claim them in the Binder when complete.</li><li><b>The Fifty Paragons</b> are named, one-of-a-kind deep-spectrum legends living on fixed worlds — the same fifty worlds for every explorer. Tap a silhouette to plot a course to its last-known world, then land and <b>Discover Life</b> to catalogue it. Share the coordinates — your friend hunts the very same legend.</li></ul>'},
  {id:'guardians', t:'Apex Guardians', k:'guardian apex named ruler challenge summit empyrean eternal singular crown titan', body:
   '<p>About one fauna-bearing world in forty is ruled by a <b>👑 named Apex Guardian</b> — a one-of-a-kind luminous titan wearing the ladder’s <b>Transcendent</b> summit, forced rather than rolled. The same guardian rules the same world for every explorer — share the coordinates and a friend faces the very same beast.</p><ul><li>A guarded world’s survey card names its ruler, grade and Power, and its conquest becomes a <b>guardian challenge</b>.</li><li>Defeat it and the world is settled, the spoils pay a ruler’s ransom, and the guardian itself joins your Compendium — the fighter’s road to Transcendent.</li><li><b>Lose</b> and the usual price is paid: a champion creature is lost forever, or you take the wound.</li><li>The breeder’s road also leads up: size, glow, wild blood and deep hybrid generations can push a bloodline to the summit without ever drawing a blade.</li></ul>'},
 ]},
@@ -18757,10 +18779,19 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.10';
+const GAME_VERSION='1.7.11';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.11', title:'The Waypoint', date:'July 2026', sections:[
+ ['✦ New Features & Systems', [
+  '⛳ THE OBJECTIVE CHIP — the pill under the dock is now a real quest tracker: it always carries the thing you&#8217;re doing <i>right now</i> with live progress (&#8220;⬆ Mine Sol&#8217;s dead worlds · 3 / 8&#8221;), pulses when your count moves, follows your accepted charter first and the story chapter otherwise, and opens the board for details.'],
+ ],
+ ['🖱 UI Enhancements', [
+  '📖 THE MAINLINE READS AS STORY — the chapter pinned atop the Charters board no longer looks like a stack of pre-accepted quests: it wears its own &#8220;The Ascent — your mainline&#8221; framing with slim progress bars, clearly apart from the optional charters (the ones with Accept buttons) below.',
+  '🗂 THE BINDER MOVES TO RECORDS — type collections, Sets and the Fifty Paragons now live where they belong: a tab on the 🏆 Records board, beside your trophies. The Compendium is purely your living catalogue.'],
+ ],
+]},
 {v:'1.7.10', title:'The Listening Post', date:'July 2026', sections:[
  ['🖱 UI Enhancements', [
   '🔎 SEARCH TAKES THE STAGE — results now drop directly beneath the search box, and everything else falls into shadow while you type, so the answer is the one lit thing on screen.',
@@ -23041,25 +23072,46 @@ setInterval(()=>{ try{
   if(Date.now()-_lastActT>5*6e4){ _questNudge(); _lastActT=Date.now(); }   /* idle: 5 quiet minutes earn one pointer */
 }catch(_){ } }, 6e4);
 const chBtn=document.getElementById('chbtn'), chPanel=document.getElementById('chpanel');
+let _chipLast=null;   /* {key,p} — the chip pulses when its own goal's progress moves */
 function _chBadge(){
   /* v1.7 UI v11: board status dots retired (Nick: "don't serve any purpose") —
      the badge is now only the charter chip below */
-  /* CHARTER CHIP (QoL q): the first accepted contract's live progress as a
-     one-line chip under the charter button — kills the "what was I doing?"
-     reopen loop. Tap → the board. Post-training only; hides when idle. */
+  /* THE OBJECTIVE CHIP (Nick 2026-07-26, quest-log rethink — option 1): the
+     dock pill IS the quest log's one line — the thing you're doing NOW with
+     LIVE progress, pulsing when it moves. An accepted charter outranks the
+     chapter (it was chosen); with none accepted, the Ascent chapter's next
+     goal keeps the line filled — the game always answers "what's next?".
+     Tap → the board for details. Post-training only. */
   try{
     let el=document.getElementById('chchip');
-    const acc=tutDone?_chAccepted():[];
-    if(!acc.length){ if(el) el.style.display='none'; return; }
+    let g=null;
+    if(tutDone){
+      const acc=_chAccepted();
+      if(acc.length){
+        const c=acc[0];
+        g={key:'ch:'+c.id, ic:'📜', t:c.t||c.d||'Contract', p:Math.min(chProg[c.id]||0,c.n), n:c.n||1, more:acc.length-1};
+      } else {
+        const ch=(typeof _ascActive==='function')?_ascActive():null;
+        if(ch){
+          const gg=ch.goals.find(x=>(ascProg[x.id]||0)<x.n);
+          if(gg) g={key:'asc:'+gg.id, ic:'⬆', t:gg.t, p:Math.min(ascProg[gg.id]||0,gg.n), n:gg.n, more:0};
+        }
+      }
+    }
+    if(!g){ if(el) el.style.display='none'; _chipLast=null; return; }
     if(!el){
       el=document.createElement('div'); el.id='chchip'; el.setAttribute('role','button'); el.tabIndex=0;
       el.addEventListener('click', ()=>{ try{ if(!chOpen) chBtn.click(); }catch(_){ } });
       document.body.appendChild(el);
     }
-    const c=acc[0];
-    const prog=c.id[0]==='s'?'':(' · '+Math.min(chProg[c.id]||0,c.n)+'/'+c.n);
-    el.innerHTML='📜 <b>'+esc(String(c.t||c.d||'Contract').slice(0,30))+'</b>'+prog+(acc.length>1?' <span style="opacity:.55">+'+(acc.length-1)+'</span>':'');
+    el.innerHTML=g.ic+' <b>'+esc(String(g.t).replace(/&#8217;/g,'’').slice(0,34))+'</b>'+
+      (g.n>1?' · '+g.p+' / '+g.n:'')+
+      (g.more?' <span style="opacity:.55">+'+g.more+'</span>':'');
     el.style.display='flex';
+    if(_chipLast && _chipLast.key===g.key && g.p>_chipLast.p){
+      el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump');   /* progress moved — a small celebration */
+    }
+    _chipLast={key:g.key, p:g.p};
   }catch(_){ }
 }
 function renderCharters(){
@@ -23070,15 +23122,21 @@ function renderCharters(){
   {
     const ch=(typeof _ascActive==='function')?_ascActive():null;
     if(ch){
-      h+='<div class="ascbox"><div class="ehead" style="color:#7fd0ff">⬆ '+ch.name+'</div>'+
+      /* Nick 2026-07-26 (quest-log rethink — option 3): the chapter must read
+         as THE MAIN STORY, not a stack of pre-accepted quests. Its goals are
+         slim progress LINES with bars — a different visual species from the
+         charter pills below, which carry Accept buttons and pay stardust. */
+      h+='<div class="ascbox"><div class="asckick">The Ascent — your mainline · no accepting needed, it is always yours</div>'+
+        '<div class="ehead" style="color:#7fd0ff">⬆ '+ch.name+'</div>'+
         '<div class="ambient">'+ch.intro+'</div>';
       for(const g of ch.goals){
         const p=Math.min(ascProg[g.id]||0, g.n), done=p>=g.n;
         /* FLEET v1.7.2 (completionist): binary goals show '0 / 1' too — four
            counted rows trained the eye to the right edge and the fifth, the one
            gating the chapter, was blank */
-        h+='<div class="ch'+(done?' done':'')+'"><div class="ct">'+(done?'<span class="chk">✓</span> ':'')+g.t+
-          ' <span class="cp">'+p+' / '+g.n+'</span></div></div>';
+        h+='<div class="ascgoal'+(done?' done':'')+'"><span class="agt">'+(done?'<span class="chk">✓</span> ':'')+g.t+'</span>'+
+          '<span class="agp">'+p+' / '+g.n+'</span>'+
+          '<i class="agbar"><b style="width:'+Math.round(p/(g.n||1)*100)+'%"></b></i></div>';
       }
       h+='</div>';
     } else if(typeof ascCh!=='undefined' && ascCh>=ASC_CHAPTERS.length && (itemCount('igdrive')||itemCount('array')||itemCount('jumpdrive'))){
@@ -24353,11 +24411,19 @@ function renderStats(){
    achievement shelves, out of the character sheet and into their own
    right-rail panel — the trophy room, not the mirror. ---- */
 let recOpen=false;
+/* Nick 2026-07-26: Records carries two views — the trophy shelves and the
+   🗂 Binder (moved here from the Compendium; it's a collection thing) */
+let recView='rec';
+function _recTabs(){
+  return '<div class="cvtabs"><span class="cvt'+(recView==='rec'?' on':'')+'" data-rvw="rec" role="button" tabindex="0">🏆 Trophies</span>'+
+    '<span class="cvt'+(recView==='binder'?' on':'')+'" data-rvw="binder" role="button" tabindex="0">🗂 Binder</span></div>';
+}
 function renderRecords(){
   const el=document.getElementById('records'); if(!el) return;
+  if(recView==='binder'){ renderBinder(el); return; }
   const tierHave=new Array(GRADE_TIERS.length).fill(0);
   for(const e of codex.values()) if(e.grade) tierHave[e.grade.tier]++;
-  let html='';   /* v1.7.6 CF173-08: the panel ::before title is the ONE heading (this inner chead doubled it) */
+  let html=_recTabs();   /* v1.7.6 CF173-08: the panel ::before title is the ONE heading (this inner chead doubled it) */
   html+='<h4>Rarity ladder</h4><div class="tiers">'+RARITY_V17.map(T=>{
     const n = T.t<9 ? tierHave[T.t] : (tierHave[9]+tierHave[10]+tierHave[11]+tierHave[12]+tierHave[13]+tierHave[14]);   /* Transcendent folds raw 9–14 */
     return '<div class="tier" style="border-color:'+T.hex+(n?'':'44')+';color:'+T.hex+'"><div class="c">'+n+'</div>'+T.name+'</div>';
@@ -24438,6 +24504,9 @@ function renderRecords(){
       if(recOpen){ closePanels('records'); renderRecords(); }
     });
     re.addEventListener('click', e=>{
+      const tb=e.target.closest('[data-rvw]');
+      if(tb){ recView=tb.dataset.rvw; renderRecords(); refocus(re, '.cvt[data-rvw="'+recView+'"]'); return; }
+      if(_binderClicks(e)) return;   /* Nick 2026-07-26: the Binder lives here now */
       const h=e.target.closest('.aghead'); if(!h) return;
       const grp=h.closest('.agrp'); if(!grp) return;
       const cat=grp.dataset.ag;
