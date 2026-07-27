@@ -1508,6 +1508,17 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     skH.craftItem('rl-star');
     check('trail: the claimed Signature IS the blueprint (relic forges + self-equips)',
       skH.itemCount('rl-star') === 1 && skH.equip.helmet === 'rl-star');
+    // §24 power-curve sentinels (queue item 2, 2026-07-26): a Signature relic
+    // must never be a DEAD CHOICE — an in-slot sidegrade at worst, never a
+    // strict downgrade (Graven Aegis sat at half the Hazmat's protection;
+    // the Prismatic Lathe yielded a sixth of the Plasma Bore)
+    check('§24: Graven Aegis holds the suit ladder protection line (+ its own steadiness)',
+      skH.ITEM_BY.get('rl-stone').eff.scut >= skH.ITEM_BY.get('hazmat').eff.scut
+      && (skH.ITEM_BY.get('rl-stone').eff.struts || 0) > 0);
+    check('§24: the Prismatic Lathe is a strike-specialist SIDEGRADE (above Rig II, below Bore III, best strike)',
+      skH.ITEM_BY.get('rl-prism').eff.yield > skH.ITEM_BY.get('rig2').eff.yield
+      && skH.ITEM_BY.get('rl-prism').eff.yield < skH.ITEM_BY.get('rig3').eff.yield
+      && skH.ITEM_BY.get('rl-prism').eff.strike > skH.ITEM_BY.get('rig3').eff.strike);
     // v1.7 5d: the world-cosmics earn their job — each anchors one endgame piece
     check('cosmics 5d: five cosmic gear recipes exist, each defined by a world-cosmic',
       ['cg-proto', 'cg-genesis', 'cg-void', 'cg-chron', 'cg-dark'].every((id) => {

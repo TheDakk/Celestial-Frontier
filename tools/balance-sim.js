@@ -17,7 +17,7 @@ const { JSDOM } = require('jsdom');
 
 const MAG = Math.max(0, Math.min(4, parseInt(process.argv[2] || '2', 10)));
 const ARCH = {
-  smite:   m => ({dmg:1.14+m*0.050}),
+  smite:   m => ({dmg:1.12+m*0.045}),
   aegis:   m => ({taken:0.90-m*0.030}),
   dot:     m => ({burn:0.015+m*0.0035}),
   fury:    m => ({ramp:0.024+m*0.006}),
@@ -32,7 +32,7 @@ const ARCH = {
   reck:    m => ({execB:0.28+m*0.09}),
   bulwark: m => ({cap:0.28-m*0.015}),
   shock:   m => ({stun:0.095+m*0.024}),
-  roulette:m => ({gambit:0.45+m*0.10}),
+  roulette:m => ({gambit:0.42+m*0.09}),
   enrage:  m => ({enrage:0.16+m*0.05}),
 };
 

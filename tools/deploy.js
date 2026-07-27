@@ -41,7 +41,11 @@ if (process.argv.includes('--skip-gate') && process.env.CF_EMERGENCY_DEPLOY !== 
   process.exit(1);
 }
 if (!process.argv.includes('--skip-gate')) {
-  for (const t of ['validate.js', 'smoke.js', 'uilayout.js']) {
+  /* balance-sim joined the gate 2026-07-26 (§24 pass): archetype win rates
+     drifted out of the 42-58 band unnoticed because nothing was watching.
+     It is deterministic (fixed trial seeds), so it can gate without flaking.
+     It reads tools/probe-build.html, which validate.js writes first. */
+  for (const t of ['validate.js', 'smoke.js', 'uilayout.js', 'balance-sim.js']) {
     console.log('deploy gate — running tools/' + t + ' …');
     try {
       execFileSync(process.execPath, [path.join(__dirname, t)], { cwd: root, stdio: 'inherit', timeout: 600000 });
