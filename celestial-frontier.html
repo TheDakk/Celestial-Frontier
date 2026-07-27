@@ -1828,8 +1828,12 @@
      sheet (z 50) buried the training card (z 24) — on phones the full-screen
      sheet hid the step's own Got It. While training runs, the card and its
      ring outrank every board. */
-  body.training #tutbox{z-index:60}
-  body.training #tutspot{z-index:59}
+  #tutbox.overtop{z-index:60}
+  #tutspot.overtop{z-index:59}
+  /* Nick's phone screenshots (2026-07-26 night): during training the LESSON'S
+     SURFACES must outrank the boards — Earth's survey card sat behind the dock
+     and the Atlas sheet on the land step */
+  body.training #panel{z-index:58}
   /* the objective chip celebrates its own progress (Nick 2026-07-26) */
   @keyframes chipbump{0%{transform:scale(1)}35%{transform:scale(1.08);box-shadow:0 0 18px rgba(240,207,138,0.45)}100%{transform:scale(1)}}
   #chchip.bump{animation:chipbump .5s ease}
@@ -1903,6 +1907,9 @@
      with the restored viewport lock as belt-and-braces. */
   @media (max-width:900px){
     #namein,#searchin{font-size:16px}
+    /* Nick's phone pass: the search pill read oversized beside the nameplate —
+       slimmer width + padding; the 16px font (the iOS zoom law) is untouchable */
+    #searchin{max-width:37vw;padding:5px 11px}
   }
   /* CF-RR-007: users (or their OS battery saver) asking for reduced transparency
      get flat panels — backdrop blur is the single costliest compositing effect
@@ -18958,10 +18965,16 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.16';
+const GAME_VERSION='1.7.17';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.17', title:'Front and Center', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🎓 LESSONS SHOW THEIR WORK — during training the survey card and lesson surfaces now sit above the boards and dock instead of behind them (Earth&#8217;s card was buried on the landing step), and the training dialogue only takes the very top on the one step whose full-screen sheet demanded it.',
+  '🔎 A SLIMMER SEARCH — the phone search pill trades some width and padding for a tidier top bar; the 16px type that keeps iOS from zooming stays.'],
+ ],
+]},
 {v:'1.7.16', title:'Clean Slate', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🗂 TRAINING TIDIES UP AFTER ITSELF — the lessons open the shelf they teach (Compendium, Fabricator), but those shelves stayed expanded after graduation; a fresh veteran now opens both to the tidy closed index.',
@@ -24161,6 +24174,11 @@ function _tutShow(){
       (_tutStep<TUT_STEPS.length-1?'<button id="tut-skip" type="button">Skip training</button>':'')+
     '</div>';
   tutEl.style.display='block';
+  /* z-scope (Nick's phone screenshots): the card outranks the boards ONLY on
+     the sheet step (whose full-screen sheet buried the Got It at z50) — a
+     blanket raise put the dialogue over the very cards the lessons teach */
+  tutEl.classList.toggle('overtop', !!(s&&s.id==='sheet'));
+  tutSpotEl.classList.toggle('overtop', !!(s&&s.id==='sheet'));
   /* the ring WAITS for the new step's UI to actually exist — repainting it
      the instant a step advances haloed empty space until the target rendered
      (Dakk playtest). Hide, give the layout a beat, then track live. */
