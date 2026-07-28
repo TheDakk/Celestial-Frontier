@@ -16228,6 +16228,7 @@ function doSave(){
       at:Date.now(),   /* wall-clock save stamp — anchors offline-accrual clamps on load */
       cargo:[...cargo], cgx:[...cgx], jrn:journal.slice(-24), pin:pinnedRecipe||undefined, ctb:cargoTab, seen:[...seenSp].filter(id=>codex.has(id)), minedw:[...mined], mx:[...mineX], skx:[...skimX], bx:[...bioX], tech:[...techOwned], mines:stats.mines||0,
       items:[...items], eq:equip, ea:equipAff, crafts:stats.crafts||0, minedout:stats.minedout||0,
+      xpf:[...xpFirsts].slice(-4000),   /* v1.8: the one-shot XP ledger */
       skims:stats.skims||0, cosmics:stats.cosmics||0,   /* v1.7 (review catch: unsaved, the counters reset each session) */
       asc:ascCh, ascp:ascProg,
       names:[...customNames],
@@ -16432,6 +16433,7 @@ function loadSave(){
     stats.surveys=surveyedSet.size;
     for(const s of _capA(data.gals,20000)) galSeen.add(s);
     for(const s of _capA(data.surf,60000)) surfSeen.add(s);
+    for(const s of _capA(data.xpf,4000)) if(typeof s==='string') xpFirsts.add(s.slice(0,64));   /* v1.8 (absent ⇒ the firsts are earnable again — safe) */
     for(const s of _capA(data.sysv,60000)){ const n=+s; if(Number.isFinite(n)) sysSeen.add(n); }   /* absent ⇒ arrivals pay fresh (safe) */
     for(const s of _capA(data.starK,200)) starKindsSeen.add(s);
     for(const s of _capA(data.ptypes,200)) ptypesSeen.add(s);
@@ -17787,14 +17789,25 @@ document.addEventListener('click', e=>{
   }
 });
 /* class XP lands only on victories — duels +8, conquests +20, guardians +60 */
-function awardXP(id, n){
+/* v1.8: one-shot XP ledger — 'firsts' pay once per creature, forever.
+   Absent-safe: an old save simply has an empty set and earns them again. */
+const xpFirsts=new Set();
+function awardXPOnce(id, key, n, why){
+  if(!id) return false;
+  const k=id+'|'+key;
+  if(xpFirsts.has(k)) return false;
+  xpFirsts.add(k);
+  awardXP(id, n, why);
+  return true;
+}
+function awardXP(id, n, why){
   const en=codex.get(id); if(!en || en.kind!=='Fauna') return;
   const g=en.genome, before=levelOf(g);
   g.xp=Math.min(1e6, ((+g.xp)||0)+n);
   const after=levelOf(g);
   if(after>before){
     playRaritySting(4); fxBurst(FX_GOLD,22);
-    toast('🛡 Level '+after+' — '+en.name, (after===3||after===6)?'A new innate art awakens!':'Its legend grows with every victory.');
+    toast('🛡 Level '+after+' — '+en.name, (after===3||after===6)?'A new innate art awakens!':(why?'Earned '+why+'.':'Its legend grows.'));
   }
   queueSave();
 }
@@ -17936,9 +17949,17 @@ function fightNow(mine, theirs, opts){
            free sport; the PROGRESSION credit (win tally + class XP) is throttled
            to once per 30s, so casual duels count but a farm loop does not. App-
            layer cooldown (Date.now fine here — never feeds generation). */
+        /* v1.8: PARTICIPATION teaches — a hard-fought loss is experience too,
+           on the same throttle so it can never become a farm loop. */
+        if(res.winner!=='A' && mine && mine.id){
+          const _dl=Date.now();
+          if(_dl-_lastDuelCredit>30000){ _lastDuelCredit=_dl;
+            const _close=(res.hpB/Math.max(1,res.maxB))<0.25;
+            awardXP(mine.id, _close?3:2, _close?'a fight taken to the wire':'a bout survived'); }
+        }
         if(res.winner==='A'){
           const _dn=Date.now();
-          if(_dn-_lastDuelCredit>30000){ _lastDuelCredit=_dn; stats.duelwins++; if(mine && mine.id) awardXP(mine.id, 8); }
+          if(_dn-_lastDuelCredit>30000){ _lastDuelCredit=_dn; stats.duelwins++; if(mine && mine.id) awardXP(mine.id, 8, 'a duel won'); }
           else toast('⚔ Sparring Cooldown','A win this soon after the last pays no ledger credit or XP — give it '+Math.ceil((30000-(_dn-_lastDuelCredit))/1000)+'s between counted bouts.');   /* review fix: never silently uncredited */
         }
         playRaritySting(res.winner==='A'?5:2);
@@ -18210,6 +18231,13 @@ function breedPair(aEntry, bEntry, roll){
     removeFromCodex(aEntry.id); removeFromCodex(bEntry.id);
     return {ok:false, odds};
   }
+  /* v1.8: care counts — a successful union pays both parents' line, and a
+     lineage combination you have never made before pays a discovery bonus */
+  try{
+    const _pk=[aEntry.kind,bEntry.kind].sort().join('+');
+    awardXP(aEntry.id, 2, 'a successful union');
+    awardXPOnce(aEntry.id, 'lineage:'+_pk, 5, 'a first-of-its-kind lineage');
+  }catch(_){ }
   let child=evolveGenome(crossGenome(aEntry.genome, bEntry.genome), 1);
   child.brood=(aEntry.genome.brood||0)+(bEntry.genome.brood||0)+1;
   /* v1.6 Pass 8 ANCESTRY: remember the two parents by name for the lineage card (breedPair is
@@ -18257,6 +18285,7 @@ const FEED_EVENTS={
   ]
 };
 function feedPair(faunaEntry, floraEntry, roll){
+  const _fid=faunaEntry&&faunaEntry.id;
   removeFromCodex(floraEntry.id);                  /* the meal is always consumed */
   const S=battleStats(faunaEntry.genome);
   const tF=(floraEntry.grade?floraEntry.grade.tier:0);
@@ -18298,6 +18327,13 @@ function feedPair(faunaEntry, floraEntry, roll){
   if(wound>0) g.hurt=Math.min(0.85, h0+wound);
   if(g.hurt===0) delete g.hurt;
   const h1=(+g.hurt)||0;
+  /* v1.8: care counts — a CORRECT meal teaches the keeper, and learning a
+     beast's taste for the first time is a real discovery. Anti-farm: the
+     taste bonus pays once per creature per flavor, forever. */
+  try{
+    if(pref==='loved'){ awardXP(_fid, 1, 'a welcome meal');
+      awardXPOnce(_fid, 'taste:'+ftype, 2, 'a taste discovered'); }
+  }catch(_){ }
   return {ok:true, pois, pref, ftype, ev, delta, gut:S.ab.gutsy,
     mended:h1<h0, wounded:h1>h0, cond:creatureCondition(g)};
 }
@@ -20119,11 +20155,18 @@ function runConquestBattle(d, champ, native){
     onResolve:(res)=>{
       if(conquered.has(d.planetSeed)) return;   /* CF16-P2-003: idempotent — a re-fired resolve on an already-settled world must not re-pay Stardust/wins/loot */
       stats.duels++;
+      /* v1.8: a conquest LOSS pays intel — a champion that took the world's
+         defender to the brink learned the most. Never a farm: one world can
+         only be attempted meaningfully while it stays unconquered. */
+      if(res.winner!=='A' && !champ.isPlayer && champ.id){
+        const _cl=(res.hpB/Math.max(1,res.maxB))<0.3;
+        awardXP(champ.id, _cl?5:3, _cl?'a defender nearly broken':'a hard lesson');
+      }
       if(res.winner==='A'){
         stats.duelwins++;
         /* v1.5.2 D3 (Nick): conquest XP scales with the world's tier —
            leveling finally opens up with distance, like everything else */
-        if(!champ.isPlayer && champ.id) awardXP(champ.id, (native.guardian?60:20)+(d.designation?d.designation.tier:0));
+        if(!champ.isPlayer && champ.id) awardXP(champ.id, (native.guardian?60:20)+(d.designation?d.designation.tier:0), 'a world taken');
         conquered.set(d.planetSeed, {t:0, tier:(d.designation?d.designation.tier:1)});
         gameEvent('conquest', {planetSeed:d.planetSeed});
         /* v1.6 AFFIX/LOOT CORE faucet: the spoils imbue a worn piece with a
