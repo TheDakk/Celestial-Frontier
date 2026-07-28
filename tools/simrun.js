@@ -164,6 +164,8 @@ async function expedition(sess, seed, nActions, deep, modeLabel) {   /* CF-SIM-0
     feeds: 0, poisons: 0, breeds: 0, hybrids: 0, heals: 0, healPoisons: 0, deaths: 0,
     conquests: 0, conquestsLost: 0, duelsW: 0, duelsL: 0, richStrikes: 0, biomeVeinLoads: 0,
     hostileGroundings: 0, gateBlocks: 0, noops: 0,
+    /* v1.8 Momentum: streak = consecutive actions yielding NO progress of any kind */
+    maxStreak: 0, stalls: 0, progressed: 0,
     minedOut: 0, jumpAt: -1, arrayAt: -1, igAt: -1, ascChEnd: 0, stageEnd: 0,
     hpMin: 999, essenceEnd: 0, saveOk: false, softlock: null,
     gearTimeline: [], log: [],
@@ -201,6 +203,7 @@ async function expedition(sess, seed, nActions, deep, modeLabel) {   /* CF-SIM-0
   // v1.5.2 progression review: variety the run actually TOUCHED (bots
   // bypass the survey-panel path that feeds the game's own seen-sets)
   const _ptSim = new Set(), _skSim = new Set();
+  let _streak = 0;   /* v1.8 Momentum */
   try { _skSim.add(H.starClass(SOL.seed).kind); } catch (_) { }
   /* retention instrument state (drought + grammar-novelty) */
   let _lastJoyAt = 0, _maxDrought = 0, _joyPrev = 0;
@@ -293,6 +296,14 @@ async function expedition(sess, seed, nActions, deep, modeLabel) {   /* CF-SIM-0
         else if (plan.income) a = (H.codex.size ? 'conquer' : (stage >= 1 ? 'scan' : 'harvest'));
       } else if (r() < 0.4) a = 'craft';   // ladder done — gear up
     }
+    /* v1.8 Momentum: snapshot what "progress" means BEFORE the action */
+    const _prog = () => { try {
+      let xp = 0; for (const e of H.codex.values()) xp += ((e.genome && e.genome.xp) || 0);
+      return [H.codex.size, H.items.size, H.cargo.size, H.logMap.size, Math.round(H.essence || 0),
+        (H.stats.mines || 0), (H.stats.crafts || 0), (H.stats.duelwins || 0), (H.stats.charters || 0),
+        H.landed.size, H.conquered.size, xp].join(',');
+    } catch (_) { return 'err'; } };
+    const _p0 = _prog();
     run.actions++;
     // v1.5.2 accept-to-activate (S8): the engaged player keeps the slate
     // full — accept every revealed link (proven ones complete on the spot)
@@ -520,6 +531,14 @@ async function expedition(sess, seed, nActions, deep, modeLabel) {   /* CF-SIM-0
       });
     } else run.noops++;
     if (H.hp < run.hpMin) run.hpMin = H.hp;
+    /* v1.8 Momentum: did anything a player would notice actually change? */
+    try {
+      if (_prog() === _p0) {
+        _streak++;
+        if (_streak > run.maxStreak) run.maxStreak = _streak;
+        if (_streak === 6) run.stalls++;   /* 6 dead actions in a row = the shape of a rage quit */
+      } else { _streak = 0; run.progressed++; }
+    } catch (_) { }
     /* retention instruments (Nick's month-two directive): the drought
        detector (longest joy gap) and the grammar-novelty curve — kinds,
        not instances: new world type, star class, recipe, drive, region */
@@ -956,6 +975,13 @@ function aggregate(mode, runs) {
     rep.bestCreatureTier = num(tiers);
     rep.bestCreatureSamples = runs.filter((r) => r.bestCreature && r.bestCreature.tier >= 5)
       .slice(0, 12).map((r) => r.bestCreature.grade + ' ' + r.bestCreature.name + ' (' + r.persona + ')');
+    /* v1.8 MOMENTUM headline (targets: noop <15% overall, stalls <=3/1000 runs) */
+    rep.momentum = {
+      noopPct: +(100 * runs.reduce((a, r) => a + (r.noops || 0), 0) / Math.max(1, runs.reduce((a, r) => a + (r.actions || 0), 0))).toFixed(1),
+      maxStreak: Math.max(0, ...runs.map((r) => r.maxStreak || 0)),
+      stallRuns: runs.filter((r) => (r.stalls || 0) > 0).length,
+      runs: runs.length,
+    };
     rep.byPersona = {};
     for (const p of PERSONAS) {
       const rs = runs.filter((r) => r.persona === p);
@@ -974,6 +1000,11 @@ function aggregate(mode, runs) {
         deaths: rs.filter((r) => r.deaths > 0).length,
         hostileGroundings: rs.reduce((a, r) => a + (r.hostileGroundings || 0), 0),
         richStrikes: rs.reduce((a, r) => a + (r.richStrikes || 0), 0),
+        /* v1.8 MOMENTUM — the metrics the external fleet reports as no-op rate and
+           rage quits, measured here so we never ship-and-believe again */
+        noopPct: +(100 * rs.reduce((a, r) => a + (r.noops || 0), 0) / Math.max(1, rs.reduce((a, r) => a + (r.actions || 0), 0))).toFixed(1),
+        maxStreak: Math.max(...rs.map((r) => r.maxStreak || 0)),
+        stallRuns: rs.filter((r) => (r.stalls || 0) > 0).length,
       };
     }
     // a few full sample logs for the critics
