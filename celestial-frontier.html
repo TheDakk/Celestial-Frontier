@@ -17776,6 +17776,7 @@ function setArenaBackdrop(d){
 }
 let _lastDuelText='';
 let _lastDuelCredit=0;   /* anti-farm: friendly-duel progression credit throttle */
+let _lastDuelPart=0;     /* v1.8: participation XP rides its OWN window so it can never eat a win's */
 let _tutHadEarthLanded=false;   /* the land-step drill records Earth's prior landed state to restore it */
 document.addEventListener('click', e=>{
   if(e.target && e.target.id==='duel-share-log' && _lastDuelText){
@@ -17953,7 +17954,10 @@ function fightNow(mine, theirs, opts){
            on the same throttle so it can never become a farm loop. */
         if(res.winner!=='A' && mine && mine.id){
           const _dl=Date.now();
-          if(_dl-_lastDuelCredit>30000){ _lastDuelCredit=_dl;
+          /* v1.8 A/B CATCH: participation MUST NOT share the win throttle — a loss
+             consumed the 30s window a subsequent win needed, so adding XP could
+             SUBTRACT it. Its own timer, same anti-farm interval. */
+          if(_dl-_lastDuelPart>30000){ _lastDuelPart=_dl;
             const _close=(res.hpB/Math.max(1,res.maxB))<0.25;
             awardXP(mine.id, _close?3:2, _close?'a fight taken to the wire':'a bout survived'); }
         }
