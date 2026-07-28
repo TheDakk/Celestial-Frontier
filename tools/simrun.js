@@ -1025,8 +1025,13 @@ function aggregate(mode, runs) {
 }
 
 async function parentMain(mode, total) {
+  /* v1.8: CF_SRC measures ANY build, so a fix can be A/B'd against the exact
+     commit before it on the SAME harness — an after-number with no matched
+     before-number is not evidence, it is a hope. */
+  const _src = process.env.CF_SRC || path.join(root, 'celestial-frontier.html');
+  if (process.env.CF_SRC) console.log('measuring build:', _src);
   execFileSync(process.execPath, [path.join(__dirname, 'make-probe-build.js'),
-    path.join(root, 'celestial-frontier.html'), path.join(__dirname, 'probe-build.html')], { stdio: 'pipe' });
+    _src, path.join(__dirname, 'probe-build.html')], { stdio: 'pipe' });
   const workers = Math.max(2, Math.min(8, os.cpus().length - 2));
   const per = Math.ceil(total / workers);
   const runs = [];
