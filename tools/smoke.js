@@ -1830,6 +1830,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       const _preCodex = skH.codex.size, _preItems = [...skH.items.values()].reduce((a, b) => a + b, 0), _preCgx = skH.cgx.get('Fe') || 0;
       const _preFe = skH.cargo.get('Fe'), _preLog = +sk.doc.getElementById('logcount').textContent;
       check('restart precondition: the veteran owns things', _preCodex > 0 && _preItems > 0 && _preFe > 0);
+      /* CF1719-02: give Earth an identity the restart must preserve */
+      const _e0 = skH.logMap.get('p133'); if (_e0) { _e0.fav = true; _e0.t = 1234567890; }
+      const _earthT = _e0 ? _e0.t : 0;
       // the real journey: Settings → Gameplay → Restart (twice: it self-confirms)
       click2(sk.doc.getElementById('setbtn'), sk.w);
       click2(sk.doc.getElementById('retrainopt'), sk.w);
@@ -1846,6 +1849,9 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       check('CF1715-01: cargo + exceptional stock survive', skH.cargo.get('Fe') === _preFe && (skH.cgx.get('Fe') || 0) === _preCgx,   /* crafting spends exceptional stock FIRST (by design) — compare post-craft */
         'Fe ' + _preFe + ' -> ' + skH.cargo.get('Fe'));
       check('CF1715-01: crafted items survive', [...skH.items.values()].reduce((a, b) => a + b, 0) === _preItems);
+      check('CF1719-02: Earth&apos;s Atlas entry is RESTORED, not rebuilt (timestamp + ☆ survive)',
+        (() => { const e = skH.logMap.get('p133'); return !!e && e.t === _earthT && e.fav === true; })(),
+        JSON.stringify({ t: (skH.logMap.get('p133')||{}).t, want: _earthT, fav: (skH.logMap.get('p133')||{}).fav }));
       check('CF1715-02: Earth is re-charted by the training exit (the Atlas heals)',
         skH.logMap.has('p133') && +sk.doc.getElementById('logcount').textContent >= 1, 'log ' + _preLog);
     }
@@ -1872,7 +1878,10 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         win.localStorage.setItem('cfcc_save_v2', JSON.stringify({ v: 4, me: 'Vet', tut: 0,
           hp: 100, essence: 50,
           tsnap: { st: { mines: 3 }, ps: { vit: 12, fer: 11, res: 10, agi: 10, ins: 10 }, ac: [], es: 4321,
-            c: [], ca: [['Fe', 5], ['Au', 2]], cx: [['Fe', 1]], it: [['plate', 2]], eq: {}, ea: {} } }));
+            /* CF1719-01: the v1.7.19 journey passed WITH THE BUG LIVE because c was
+             EMPTY — the sanitizer line never ran. A real creature is the whole test. */
+          c: [{ g: { seed: 4242, kingdom: 'fauna', gen: 0, brood: 2, fed: 1 }, f: 'Testworld', w: null }],
+          ca: [['Fe', 5], ['Au', 2]], cx: [['Fe', 1]], it: [['plate', 2]], eq: {}, ea: {} } }));
       });
       await sleep(1600);
       const trH = tr.w.__PROBE_HOOK__;
@@ -1885,6 +1894,10 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         trH.cargo.get('Fe') === 5 && trH.cargo.get('Au') === 2 && (trH.cgx.get('Fe') || 0) === 1,
         'Fe=' + trH.cargo.get('Fe') + ' Au=' + trH.cargo.get('Au'));
       check('CF1718-01: items + essence ride too', trH.itemCount('plate') === 2 && trH.essence === 4321);
+      check('CF1719-01: THE COMPENDIUM CAME BACK through the reload (the outcome, not the code path)',
+        trH.codex.size === 1, 'codex=' + trH.codex.size);
+      check('CF1719-01: no recovery toast lied — training really did start',
+        ![...tr.doc.querySelectorAll('#toast .tst, #tray .titem')].some((t) => /Recovery Incomplete/.test(t.textContent)));
       check('CF1718-09: rehydrated pstats are clamped and complete', trH.pstats.vit === 12 && trH.pstats.ins === 10);
       check('tsnap session boots clean', tr.errors.length === 0, tr.errors.slice(0, 2).join(' | '));
       tr.w.close();
