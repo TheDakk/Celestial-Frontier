@@ -1278,3 +1278,38 @@
 ##   currently learn these numbers only when an external report arrives — ship-and-believe is
 ##   exactly the trap that ran rounds 2-5. TARGETS (from the audits): overall no-op <15% ·
 ##   Rancher no-op <20% · rage quits ≤3/1000 · creature Level 3 common in a first real session.
+## ▶▶▶ 2026-07-28 ★ v1.8 "THE CONNECTION" — THE SIX ARE BUILT (source only, NOT deployed), AND
+##   THE ARC-WIDE A/B RETURNED A NULL RESULT THAT IS ABOUT THE INSTRUMENT, NOT THE WORK.
+##   BUILT + outcome-tested (smoke 505/0, fp MATCH 50/50, layout 561/9, BALANCE PASS):
+##   (0) momentum instrument · (1) denial contract (prevention on the button face + explanation
+##   with a real destination) · (2) broadened XP w/ per-creature anti-farm ledger (save field xpf)
+##   · (3) STALL DETECTOR (interactions since last progress → chip changes VOICE → _nextBest()
+##   never suggests the unavailable) · (4) conquest MATCHUP METER via trueOdds() 160 seeded duels
+##   — CF1715-09 CLOSED, proven on the audit's own case (40% shown → 0% true → 'Overwhelming')
+##   · (5) breeding anticipation (ranges, never the roll) · (6) personality + survey spotlight.
+##   ★★ THE A/B (medium tier, 100 runs each, CF_SRC-matched):
+##       pre-v1.8      noop 35.3%  maxStreak 59  stalls 100/100  L3 16
+##       full v1.8     noop 35.4%  maxStreak 62  stalls 100/100  L3 14  (meanTopXP 30.4→31.8)
+##   NOTHING MOVED. Two findings, and the second is the important one:
+##   (A) NOISE FLOOR MEASURED BY ACCIDENT: two builds that are IDENTICAL from the sim's point of
+##       view (instrument-only vs +denial-contract, which is UI-only) returned L3 16 vs 10. So the
+##       harness's own noise on L3 at n=100 is ~±6 — which means my earlier "broadened XP did
+##       nothing (10→9)" was NOT a null result, it was noise I over-read. Always run a same-build
+##       repeat before attributing a delta. noop% and stalls ARE stable (35.3/35.3/35.0/35.4 and
+##       100/100 every run) — those are the trustworthy signals, and they are flat.
+##   (B) ★ THE INSTRUMENT IS STRUCTURALLY BLIND TO v1.8. simrun drives the game through PROBE
+##       HOOKS (H.breedPair, H.craftItem, H.chAccept…), not the DOM. Every v1.8 item is UI-layer:
+##       the denial contract renders into surfaces the sim never opens, and the stall detector
+##       counts pointerdown events the sim never fires — its counter cannot even increment there.
+##       So the flat result says NOTHING about whether the work helps a human. What the instrument
+##       actually measures is the SIM'S OWN action-selection success (its blind attempts), which
+##       is a property of the persona logic, not of the game's guidance.
+##   ▶ WHAT THIS COSTS / WHAT IT BUYS: v1.8 is unit-proven at the OUTCOME level (every item has
+##   assertions that fail without it — the denial CTA opens its destination, the chip changes
+##   voice and clears on progress, the meter reports 0% where the ratio said 40%) but it is
+##   UNVALIDATED at the player level. Validation must come from a UI-DRIVEN harness — which is
+##   exactly what the external fleet does (Playwright, real clicks) and exactly what the v2.0 port
+##   plan already mandates (Vitest + Playwright, §6). ▶ NEXT: (1) do NOT claim v1.8 works until a
+##   UI-driven run says so — the next external fleet report is the real verdict; (2) consider a
+##   DOM-driven tier for simrun (slower, fewer runs, but it would see the UI layer); (3) raise
+##   runs-per-arm or fixed-seed pairing so L3 stops swinging ±6.
