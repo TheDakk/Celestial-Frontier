@@ -1251,3 +1251,30 @@
 ##   v1.8, unchanged): CF1715-09 meter · -27 · -29 · -35 · -37 · -06 fer<20 tail · direct 132px
 ##   thumbnails · XP economy · no-op contract · transition controller · audio · §7 spike · the
 ##   auditors' reload-at-every-lesson×1000 randomized regression (worth building into the harness).
+## ▶▶▶ 2026-07-28 ★ v1.8 ITEM ADDED — "MOMENTUM" (Nick approved). THE RULE: never let a tap cost
+##   nothing. Rationale: the fleet's rage-quit metric IS a no-progress streak (3→5→7 across the
+##   last three rounds while every other metric improved — the one thing trending wrong), and its
+##   precursor is the no-op rate (45.25% Rancher / 29.24% newer cohort). Four components:
+##   (1) ACTIONABLE-DENIAL CONTRACT (already specced, now the CORE of this item): every blocked
+##       action returns {ok:false, reason, missing[], next[], targetSurface} and renders as a
+##       sentence + a "Take me there" button. Dead tap → lead.
+##   (2) PREVENTION BEFORE EXPLANATION: disable impossible actions before selection; sort valid
+##       candidates first in every picker; put the binding shortfall ON the button face (the
+##       Fabricator's "Need 3× Iron + 1× Chromium" pattern, extended to breed/feed/duel/conquer).
+##   (3) ★ STALL DETECTOR ON THE OBJECTIVE CHIP — THE NEW BUILD. _questNudge fires on an IDLE
+##       timer (5 quiet minutes); a rage-quitting player is BUSY and getting nothing, so the
+##       opposite trigger is needed. Count consecutive actions yielding NO progress of any kind
+##       (no XP, no charter tick, no discovery, no material, no atlas/codex change); at a
+##       threshold the chip escalates from TRACKING to SUGGESTING — one concrete reachable step
+##       with tap-to-go. Same surface the player already reads, new job when they're stuck.
+##       Reset the counter on any progress event. Must obey the one-voice law (never over a
+##       modal/lesson) and be silent during training.
+##   (4) BROADENED CREATURE XP as the statistical floor — once feeding/breeding/first-lineage/
+##       habitat/close-loss all pay something, most actions produce a visible number, which
+##       collapses streak LENGTH before the detector is ever needed.
+##   ★ ACCEPTANCE GATE — BUILD THE MEASURING STICK FIRST (the lesson of the whole audit arc):
+##   simrun must COUNT no-op rate and no-progress-streak length itself and report them per
+##   persona, and the deploy gate watches them the way it now watches archetype balance. We
+##   currently learn these numbers only when an external report arrives — ship-and-believe is
+##   exactly the trap that ran rounds 2-5. TARGETS (from the audits): overall no-op <15% ·
+##   Rancher no-op <20% · rage quits ≤3/1000 · creature Level 3 common in a first real session.
