@@ -1232,3 +1232,22 @@
 ##   win accepted for now) · CF1718-10 full per-modal focus memory · ambush IV/V high-mag gate ·
 ##   direct 132px thumbnails · XP economy · no-op contract · transition controller · audio · §7
 ##   spike. Gates: fp MATCH 50/50 · smoke 487/0 · layout 546/9 · BALANCE PASS (17+55).
+## ▶▶▶ 2026-07-28 ★ v1.7.20 "THE PROOF" LIVE (build b2549bf) — round-5 corrections AND the
+##   assertion discipline that ends the five-round bug class. THE PATTERN (their words): five
+##   rounds, five fixes that were CORRECT CODE placed where it could not run — CSS in the wrong
+##   <style> ×2, a helper outside scope ×2, a restore in the wrong function ×1. ROOT CAUSE OF THE
+##   MISSES: our harness asserted the CODE PATH RAN, not the OUTCOME THE FIX PROMISED. The 1.7.19
+##   reload journey passed with the bug LIVE because its tsnap carried an EMPTY creature list, so
+##   the throwing sanitizer line never executed. ★ NOW LAW (both harnesses): smoke's reload
+##   journey carries a REAL genome and asserts codex.size===1 + Earth's timestamp/☆ SURVIVE + no
+##   recovery toast lied; uilayout gained a REAL-BROWSER COMPUTED-BOX gate (bell/setbtn/helpbtn/
+##   recbtn/hpheart ≥44 on coarse pointers + 16px input floor) — 546→560 checks. Neither
+##   stylesheet-placement failure could have survived it. FIXES: sanitizer exported, pending
+##   snapshot survives its own literal, recovery restores-then-claims (honest 'Incomplete' toast
+##   + do-not-reload guidance when it can't), Earth restore in _tutEnsureEarth + stash nulled,
+##   chWeek never lowers a banked week, focus guard tests p.btn, role=application restored, heal
+##   44×44, tutbox z60, namein 16px, paragon hover, reveal state signal by weight. Gates: fp
+##   MATCH 50/50 · smoke 490/0 · layout 560/9 · BALANCE PASS (17+55). ▶ REMAINING BACKLOG (all
+##   v1.8, unchanged): CF1715-09 meter · -27 · -29 · -35 · -37 · -06 fer<20 tail · direct 132px
+##   thumbnails · XP economy · no-op contract · transition controller · audio · §7 spike · the
+##   auditors' reload-at-every-lesson×1000 randomized regression (worth building into the harness).
