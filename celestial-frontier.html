@@ -2004,7 +2004,11 @@
   /* CF1720-03: a real 44px BOX cost ~26px of topbar on every device (88→115 on
      an iPhone, a 31% taller header). Asymmetric padding+negative margin gives the
      same measured 44×44 hit area with ZERO layout cost — their correction, taken. */
-  #hpheart{display:inline-flex;align-items:center;justify-content:center;padding:16px 15px;margin:-16px -15px;cursor:pointer;line-height:1}
+  /* SYMMETRIC 16px, both axes: the ❤ glyph's intrinsic size differs by browser
+     (14×12 in Edge, 12×14 in Chrome — CI caught the asymmetric version at 42×46),
+     so the padding must clear 44 from the SMALLER metric on EITHER axis. 12+32=44.
+     The matching negative margin keeps the layout cost at exactly zero. */
+  #hpheart{display:inline-flex;align-items:center;justify-content:center;padding:16px;margin:-16px;cursor:pointer;line-height:1}
   </style>
 </head>
 <body>
@@ -19064,10 +19068,20 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.20';
+const GAME_VERSION='1.7.21';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.21', title:'Right Values', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🌍 EARTH REALLY KEEPS ITS HISTORY — the last fix only held if you skipped training early. Training step 4 asks you to re-chart Earth, so on any completed run your original entry was quietly replaced by a fresh one. Your ☆ favourite, discovery date, badge and notes now merge back onto it every time, and they ride the save so a mid-training reload keeps them too.',
+  '🧬 TRAINING NO LONGER LEAVES A MARK — an emergency restore could bake the practice lessons permanently into your record (hybrid counts, feeding and breeding tallies, even the heal step&#8217;s stat growth). It now restores the numbers you had before you started.',
+  '❤ A REAL HEART, FOR FREE — the 44px heal target is back to costing zero layout: v1.7.20 bought it with ~26px of permanent header height on every device.',
+  '🛟 AN HONEST FAILURE MESSAGE — if a restore ever cannot complete, the game no longer points you toward the button that erases everything.',
+  '⏰ CLOCK SANITY, FINAL FORM — weekly charters are no longer &#8220;repaired&#8221; at startup, which is exactly when a device clock is least trustworthy; a lagging clock can no longer wipe a week you were part-way through.',
+  '🎓 THE LESSON CARD KEEPS ITS PLACE — the spotlight ring no longer outranks the card that explains it, and the ? popover is reachable during training again.'],
+ ],
+]},
 {v:'1.7.20', title:'The Proof', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🛟 THE RELOAD PATH, PROVEN — the mid-training reload restore is finally whole: the genome sanitizer it needed is now shared across the codebase, the snapshot survives a failure anywhere in its own construction, and recovery restores your Compendium before it says a word. If it ever cannot, it now tells you the truth instead of a comforting lie.',
