@@ -2128,6 +2128,10 @@
   <div class="sgrp" data-sg="a">
     <div class="srow2"><span>Sound</span>
       <span class="opts"><span id="sndopt" class="fsopt on" role="button" tabindex="0">On</span></span></div>
+    <div class="srow2"><span>Creature voices</span>
+      <span class="opts"><span id="voiceopt" class="fsopt on" role="button" tabindex="0" data-tip="Every creature has its own voice, generated from its genome — Earth animals sound like what they are, and a hybrid inherits both parents. Off silences them.">On</span></span></div>
+    <div class="srow2"><span>Battle sound</span>
+      <span class="opts"><span id="combatopt" class="fsopt on" role="button" tabindex="0" data-tip="Blow-by-blow impacts, critical hits and ability strikes during duels and conquests. Off keeps fights silent.">On</span></span></div>
     <div class="srow2"><span>Volume</span>
       <span class="opts"><input id="volslider" type="range" min="0" max="100" step="5" value="100" aria-label="Sound effects volume"></span></div>
   </div>
@@ -14849,7 +14853,9 @@ function showReveal(entry, isHybrid){
   document.getElementById('rev-t').textContent = (isHybrid||entry.hybrid)?'Hybrid specimen':'Compendium specimen';
   const xEl=document.getElementById('rev-x');
   if(xEl) xEl.textContent = pendingReveals.length? ('tap to continue · '+pendingReveals.length+' more — hold to skip all') : 'tap to continue';
-  document.getElementById('rev-img').src = (entry.genome?speciesPortrait(entry.genome):entry.art||'');   /* CF16-005: the reveal is a DETAIL surface — full portrait, never the list thumb */
+  document.getElementById('rev-img').src = (entry.genome?speciesPortrait(entry.genome):entry.art||'');
+  /* v1.8: a creature SPEAKS when you meet it — its own voice, every time */
+  try{ if(entry.genome) setTimeout(()=>playVoice(entry.genome, 0.45), 90); }catch(_){ }   /* CF16-005: the reveal is a DETAIL surface — full portrait, never the list thumb */
   /* a soft biome-coloured aura behind the portrait: ability theme for fauna,
      nourished-stat colour for flora, plasma blue for everything else */
   try{
@@ -15800,6 +15806,7 @@ let motionMode=-1;       /* -1 Auto (follow the OS reduce-motion preference, liv
                             Auto is the default AND is what gets saved unless the player explicitly
                             picks Full/Reduced — so the OS preference is never frozen into the save. */
 let _sfxBus=null;
+let voiceOn=true, combatSfxOn=true;   /* v1.8: creature voices + battle sound, independently switchable */
 function motionOK(){ return motionMode===-1 ? !_sysReduced : motionMode===0; }
 function sfxOut(a){
   /* every synth exits through one shared gain so a single slider rules them all */
@@ -15847,6 +15854,110 @@ function ac(){
 document.addEventListener('visibilitychange', ()=>{
   if(document.visibilityState==='visible' && AC && AC.state!=='running' && sndOn){ try{ AC.resume().catch(()=>{}); }catch(_){} }
 });
+/* the eighteen rig families, each with a voice ARCHETYPE. kind drives the
+   synthesis shape; the numbers are its character. */
+const _VOICE={
+  mammal:   {kind:'roar',  f0:150, rich:0.85, nz:0.30, vib:4.5, vibD:0.03, dur:0.55, sweep:-0.30},
+  primate:  {kind:'hoot',  f0:330, rich:0.55, nz:0.18, vib:7.0, vibD:0.06, dur:0.40, sweep:+0.18},
+  bird:     {kind:'chirp', f0:2100,rich:0.30, nz:0.06, vib:14,  vibD:0.16, dur:0.22, sweep:+0.55},
+  bat:      {kind:'chirp', f0:5200,rich:0.16, nz:0.05, vib:22,  vibD:0.20, dur:0.10, sweep:-0.60},
+  reptile:  {kind:'hiss',  f0:520, rich:0.20, nz:0.88, vib:2.0, vibD:0.02, dur:0.50, sweep:-0.06},
+  serpent:  {kind:'hiss',  f0:640, rich:0.10, nz:0.95, vib:1.5, vibD:0.01, dur:0.60, sweep:-0.04},
+  amphibian:{kind:'croak', f0:210, rich:0.70, nz:0.28, vib:26,  vibD:0.30, dur:0.34, sweep:-0.10},
+  turtle:   {kind:'grunt', f0:170, rich:0.60, nz:0.35, vib:3.0, vibD:0.02, dur:0.30, sweep:-0.16},
+  fish:     {kind:'thrum', f0:120, rich:0.35, nz:0.42, vib:5.0, vibD:0.04, dur:0.24, sweep:-0.10},
+  marine:   {kind:'song',  f0:190, rich:0.45, nz:0.10, vib:2.2, vibD:0.10, dur:1.10, sweep:+0.75},
+  ceph:     {kind:'jet',   f0:280, rich:0.15, nz:0.92, vib:1.0, vibD:0.01, dur:0.30, sweep:-0.35},
+  insect:   {kind:'buzz',  f0:420, rich:0.55, nz:0.22, vib:58,  vibD:0.42, dur:0.42, sweep:0.00},
+  arachnid: {kind:'rasp',  f0:340, rich:0.30, nz:0.70, vib:40,  vibD:0.34, dur:0.26, sweep:-0.05},
+  crust:    {kind:'click', f0:900, rich:0.12, nz:0.55, vib:0,   vibD:0,    dur:0.12, sweep:-0.20},
+  gastropod:{kind:'thrum', f0:150, rich:0.20, nz:0.30, vib:1.0, vibD:0.02, dur:0.30, sweep:-0.08},
+  jelly:    {kind:'pulse', f0:110, rich:0.10, nz:0.40, vib:1.6, vibD:0.14, dur:0.70, sweep:+0.10},
+  sessile:  {kind:'pulse', f0:95,  rich:0.12, nz:0.34, vib:0.8, vibD:0.08, dur:0.80, sweep:+0.04},
+  legacy:   {kind:'roar',  f0:220, rich:0.60, nz:0.35, vib:6.0, vibD:0.05, dur:0.42, sweep:-0.18},
+};
+const _VOICE_KEYS=Object.keys(_VOICE);
+function _blendVoice(A,B,t){   /* t=0 → all A, t=1 → all B */
+  const o={kind:(t<0.5?A.kind:B.kind)};
+  for(const k of ['f0','rich','nz','vib','vibD','dur','sweep']) o[k]=A[k]+(B[k]-A[k])*t;
+  return o;
+}
+/* the voice a genome carries. Pure, deterministic, no rng consumed. */
+function voiceOf(g){
+  try{
+    if(!g) return _VOICE.legacy;
+    const sizeF=1/(0.55+((+g.size||0)%6)*0.22);          /* bigger body → lower voice */
+    const bold=((+g.behavior||0)%5)/4;                    /* temperament tilts the character */
+    let base=null;
+    /* 1. a named Earth animal sounds like ITSELF, via the art's own taxonomy */
+    const en=g._earthName||g._earthBlend;
+    if(en){
+      let rig='legacy';
+      try{ const o=_earthArt(String(en)); if(o&&o.rig&&_VOICE[o.rig]) rig=o.rig; }catch(_){ }
+      base=_VOICE[rig];
+      /* 2. a HYBRID drifts off its Earth anchor toward its alien half — the same
+         anchor law the renderer uses to graft alien phenotype onto an Earth rig */
+      const anchor=(g._earthName!=null)?1:(g._anchorVal!=null?+g._anchorVal:0.85);
+      if(anchor<0.999){
+        const alien=_VOICE[_VOICE_KEYS[(hashInt((g.seed>>>0),0x5F0C,0x2D)>>>4)%_VOICE_KEYS.length]];
+        base=_blendVoice(base, alien, Math.max(0, Math.min(1, 1-anchor)));
+      }
+    } else {
+      /* 3. a wholly procedural creature: its body plan picks the family */
+      base=_VOICE[_VOICE_KEYS[(hashInt((g.seed>>>0),0x5F0C,0x2D)>>>4)%_VOICE_KEYS.length]];
+    }
+    return {kind:base.kind,
+      f0:Math.max(60, Math.min(6000, base.f0*sizeF*(0.9+bold*0.3))),
+      rich:Math.max(0,Math.min(1, base.rich*(0.85+bold*0.4))),
+      nz:Math.max(0,Math.min(1, base.nz)),
+      vib:base.vib, vibD:base.vibD,
+      dur:Math.max(0.08, Math.min(1.4, base.dur*(1.15-bold*0.25))),
+      sweep:base.sweep};
+  }catch(_){ return _VOICE.legacy; }
+}
+/* synthesis — one short utterance, entirely procedural (no payload) */
+function playVoice(g, gain){
+  try{
+    const a=ac(); if(!a || a.state!=='running' || !voiceOn) return;
+    const v=voiceOf(g), t0=a.currentTime+0.02, d=v.dur;
+    const out=a.createGain();
+    out.gain.setValueAtTime(0.0001, t0);
+    out.gain.exponentialRampToValueAtTime(Math.max(0.0002,(gain==null?0.5:gain)), t0+Math.min(0.06, d*0.2));
+    out.gain.exponentialRampToValueAtTime(0.0001, t0+d);
+    out.connect(sfxOut(a));
+    /* the voiced part */
+    if(v.nz<0.9){
+      const osc=a.createOscillator();
+      osc.type = v.kind==='chirp'?'sine' : (v.kind==='buzz'?'sawtooth' : (v.rich>0.5?'sawtooth':'triangle'));
+      osc.frequency.setValueAtTime(v.f0, t0);
+      osc.frequency.exponentialRampToValueAtTime(Math.max(40, v.f0*(1+v.sweep)), t0+d);
+      const tone=a.createGain(); tone.gain.value=1-v.nz*0.6;
+      /* vibrato / wingbeat / croak-pulse all come from the same LFO */
+      if(v.vib>0 && v.vibD>0){
+        const lfo=a.createOscillator(), lg=a.createGain();
+        lfo.frequency.value=v.vib; lg.gain.value=v.f0*v.vibD;
+        lfo.connect(lg); lg.connect(osc.frequency); lfo.start(t0); lfo.stop(t0+d);
+      }
+      const lp=a.createBiquadFilter(); lp.type='lowpass';
+      lp.frequency.value=Math.max(300, v.f0*(2+v.rich*8));
+      osc.connect(tone); tone.connect(lp); lp.connect(out);
+      osc.start(t0); osc.stop(t0+d);
+    }
+    /* the breath / hiss / rasp */
+    if(v.nz>0.05){
+      const n=Math.max(1, Math.floor(a.sampleRate*d));
+      const buf=a.createBuffer(1, n, a.sampleRate), ch=buf.getChannelData(0);
+      let last=0;
+      for(let i=0;i<n;i++){ const w=Math.random()*2-1; last=(last+w*0.22)/1.22; ch[i]=last*(1-i/n); }
+      const src=a.createBufferSource(); src.buffer=buf;
+      const bp=a.createBiquadFilter(); bp.type='bandpass';
+      bp.frequency.value=Math.max(200, v.f0*1.6); bp.Q.value=v.kind==='hiss'?1.2:3.5;
+      const ng=a.createGain(); ng.gain.value=v.nz*0.5;
+      src.connect(bp); bp.connect(ng); ng.connect(out);
+      src.start(t0); src.stop(t0+d);
+    }
+  }catch(_){ }
+}
 function playRaritySting(tier){
   /* celestial tones: soft detuned sine pairs climbing a pentatonic ladder,
      airy harmonics above, and a deep drone beneath the rarest finds.
@@ -16239,6 +16350,7 @@ function doSave(){
       view:whereOfView(),
       hp:hp, pstats:pstats, fs:fsMode, tone:toneMode, font:fontMode, snd:sndOn?1:0, fx:fxOn?1:0, chart:chartsOn?1:0, shake:shakeOn?1:0, sv:salvageConfirm?1:0, notif:notifOn?1:0, tips:tipsOn?1:0,
       vol:Math.round(sfxVol*100), gt:Math.round(glassTint*100), rm:motionMode, cx:cardExpand,
+      vce:voiceOn?1:0, cbx:combatSfxOn?1:0,   /* v1.8 audio toggles (absent ⇒ on) */
       land:(()=>{ /* union in settled/mined worlds so cap eviction can never
         re-hide a census you demonstrably hold (review catch); insertion
         order keeps oldest-first eviction */
@@ -16489,6 +16601,8 @@ function loadSave(){
     /* CF1715-01: a save written MID-TRAINING carries the pre-training
        expedition in `tsnap` — hand it to startTutorial so the restart's
        promise survives a reload. Absent ⇒ null (every pre-1.7.18 save). */
+    if(data.vce!=null) voiceOn=!!data.vce;   /* v1.8: absent ⇒ stays on */
+    if(data.cbx!=null) combatSfxOn=!!data.cbx;
     if(data.tsnap && typeof data.tsnap==='object' && !data.tut) _tutSnapPending=data.tsnap;
     /* the field scout must still exist in the Compendium (it may have been
        bred away, fed away, or lost) — a stale id silently stands down */
@@ -18016,6 +18130,13 @@ function fightNow(mine, theirs, opts){
     do{
       const L=res.log[i++];
       narrate(L);
+      /* v1.8: the fight is no longer silent — every blow lands, scaled by how
+         hard it hit, with crits and ability procs carrying their own voice.
+         Skipped playback stays quiet (no machine-gun burst). */
+      try{ if(!_skip && !L.tick && L.dmg>0){
+        const _mx=(L.side==='A')?res.maxB:res.maxA;
+        playHit(L.dmg/Math.max(1,_mx), !!L.crit, !!(L.fs||L.ex||L.stp));
+      } }catch(_){ }
       if(eA) eA.style.width=Math.round(L.hpA/res.maxA*100)+'%';
       if(eB) eB.style.width=Math.round(L.hpB/res.maxB*100)+'%';
     } while(_skip && i<res.log.length);
@@ -18189,6 +18310,52 @@ function playFanfare(){
       g.gain.setValueAtTime(0.0001,t0); g.gain.exponentialRampToValueAtTime(0.1,t0+0.03); g.gain.exponentialRampToValueAtTime(0.0001,t0+0.95);
       o.connect(g); g.connect(master); o.start(t0); o.stop(t0+1.0);} });
   }catch(_){}
+}
+/* v1.8: the fight itself, blow by blow. Damage scales weight, a crit cracks,
+   an ability lands with a tone of its own, and the loser's last hit lands
+   heavier. All procedural, all through the shared bus. */
+function playHit(frac, crit, ability){
+  try{
+    const a=ac(); if(!a || a.state!=='running' || !combatSfxOn) return;
+    const t=a.currentTime+0.01;
+    const heavy=Math.max(0.15, Math.min(1, frac||0.3));
+    const out=a.createGain();
+    out.gain.setValueAtTime(0.0001,t);
+    out.gain.exponentialRampToValueAtTime(0.16+heavy*0.3, t+0.008);
+    out.gain.exponentialRampToValueAtTime(0.0001, t+0.10+heavy*0.22);
+    out.connect(sfxOut(a));
+    /* body: a short pitched thump, lower the heavier the blow */
+    const o=a.createOscillator(); o.type='triangle';
+    o.frequency.setValueAtTime(220-heavy*120, t);
+    o.frequency.exponentialRampToValueAtTime(Math.max(40,70-heavy*25), t+0.09+heavy*0.14);
+    o.connect(out); o.start(t); o.stop(t+0.12+heavy*0.22);
+    /* impact: filtered noise burst */
+    const n=Math.max(1,Math.floor(a.sampleRate*0.07));
+    const buf=a.createBuffer(1,n,a.sampleRate), ch=buf.getChannelData(0);
+    for(let i=0;i<n;i++) ch[i]=(Math.random()*2-1)*(1-i/n);
+    const src=a.createBufferSource(); src.buffer=buf;
+    const bp=a.createBiquadFilter(); bp.type='bandpass';
+    bp.frequency.value=crit?2600:(900+heavy*700); bp.Q.value=crit?2.2:1.1;
+    const ng=a.createGain(); ng.gain.value=crit?0.5:0.28;
+    src.connect(bp); bp.connect(ng); ng.connect(out); src.start(t); src.stop(t+0.08);
+    /* a crit rings above the blow */
+    if(crit){
+      const c=a.createOscillator(), cg=a.createGain(); c.type='sine';
+      c.frequency.setValueAtTime(1760,t); c.frequency.exponentialRampToValueAtTime(2640,t+0.14);
+      cg.gain.setValueAtTime(0.0001,t); cg.gain.exponentialRampToValueAtTime(0.14,t+0.02);
+      cg.gain.exponentialRampToValueAtTime(0.0001,t+0.20);
+      c.connect(cg); cg.connect(sfxOut(a)); c.start(t); c.stop(t+0.22);
+    }
+    /* an ability proc gets its own colour */
+    if(ability){
+      const p=a.createOscillator(), pg=a.createGain(); p.type='sawtooth';
+      p.frequency.setValueAtTime(330,t+0.02); p.frequency.exponentialRampToValueAtTime(880,t+0.16);
+      pg.gain.setValueAtTime(0.0001,t+0.02); pg.gain.exponentialRampToValueAtTime(0.08,t+0.05);
+      pg.gain.exponentialRampToValueAtTime(0.0001,t+0.22);
+      const f=a.createBiquadFilter(); f.type='bandpass'; f.frequency.value=1200; f.Q.value=4;
+      p.connect(f); f.connect(pg); pg.connect(sfxOut(a)); p.start(t+0.02); p.stop(t+0.24);
+    }
+  }catch(_){ }
 }
 function playThud(){
   const a=ac(); if(!a||a.state!=='running') return;
@@ -25062,6 +25229,10 @@ document.getElementById('setbtn').addEventListener('click', ()=>{
   if(opening){ resetSettingsView(); closePanels('set'); }
   setPanel.style.display = opening ? 'block' : 'none';
   applyFs(); applyTone(); applyFont();
+  const vo=document.getElementById('voiceopt');
+  if(vo){ vo.classList.toggle('on', voiceOn); vo.textContent=voiceOn?'On':'Off'; }
+  const co=document.getElementById('combatopt');
+  if(co){ co.classList.toggle('on', combatSfxOn); co.textContent=combatSfxOn?'On':'Off'; }
   const so=document.getElementById('sndopt');
   if(so){ so.classList.toggle('on', sndOn); so.textContent=sndOn?'On':'Off'; }
   const co9=document.getElementById('chartopt');
@@ -25167,6 +25338,16 @@ setPanel.addEventListener('click', e=>{
     e.target.textContent=tipsOn?'On':'Off';
     queueSave();
     return;
+  }
+  if(e.target && e.target.id==='voiceopt'){
+    voiceOn=!voiceOn; e.target.classList.toggle('on', voiceOn); e.target.textContent=voiceOn?'On':'Off';
+    if(voiceOn){ try{ const any=[...codex.values()].find(x=>x.kind==='Fauna'); if(any) playVoice(any.genome, 0.4); }catch(_){ } }
+    queueSave(); return;
+  }
+  if(e.target && e.target.id==='combatopt'){
+    combatSfxOn=!combatSfxOn; e.target.classList.toggle('on', combatSfxOn); e.target.textContent=combatSfxOn?'On':'Off';
+    if(combatSfxOn) try{ playHit(0.6, true, false); }catch(_){ }
+    queueSave(); return;
   }
   if(e.target && e.target.id==='resetbtn'){
     document.getElementById('resetconfirm').style.display='block';
