@@ -1951,6 +1951,35 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       check('v1.8 meter: the odds are deterministic per matchup (memoised, replayable)',
         skH.trueOdds(wall, { genome: striker.genome, stats: striker.stats }).p === truth.p);
     }
+    // ===== v1.8 CREATURE VOICES: identity, inheritance, and the toggles =====
+    {
+      const mk = (seed, extra) => Object.assign({ seed, kingdom: 'fauna', size: 2, behavior: 1 }, extra || {});
+      const wolf = skH.voiceOf(mk(11, { _earthName: 'Gray Wolf' }));
+      const spar = skH.voiceOf(mk(12, { _earthName: 'House Sparrow' }));
+      const whal = skH.voiceOf(mk(13, { _earthName: 'Blue Whale' }));
+      check('v1.8 voice: Earth animals sound like WHAT THEY ARE (wolf roars, sparrow chirps, whale sings)',
+        wolf.kind === 'roar' && spar.kind === 'chirp' && whal.kind === 'song',
+        [wolf.kind, spar.kind, whal.kind].join('/'));
+      check('v1.8 voice: a sparrow pitches far above a whale', spar.f0 > whal.f0 * 3,
+        Math.round(spar.f0) + 'Hz vs ' + Math.round(whal.f0) + 'Hz');
+      check('v1.8 voice: it is DETERMINISTIC — the same genome always speaks the same',
+        skH.voiceOf(mk(11, { _earthName: 'Gray Wolf' })).f0 === wolf.f0);
+      /* inheritance: a hybrid holds its Earth anchor, and drifts as the anchor weakens */
+      const near = skH.voiceOf(mk(77, { _earthBlend: 'Gray Wolf', _anchorVal: 0.95 }));
+      const far  = skH.voiceOf(mk(77, { _earthBlend: 'Gray Wolf', _anchorVal: 0.15 }));
+      check('v1.8 voice: a hybrid INHERITS its Earth ancestor and DRIFTS as the anchor weakens',
+        near.f0 !== far.f0, Math.round(near.f0) + 'Hz -> ' + Math.round(far.f0) + 'Hz');
+      /* the toggles exist and are reachable */
+      click2(sk.doc.getElementById('setbtn'), sk.w);
+      check('v1.8 audio: Settings offers Creature voices and Battle sound toggles',
+        !!sk.doc.getElementById('voiceopt') && !!sk.doc.getElementById('combatopt'));
+      click2(sk.doc.getElementById('voiceopt'), sk.w);
+      check('v1.8 audio: the voice toggle flips Off', sk.doc.getElementById('voiceopt').textContent === 'Off');
+      click2(sk.doc.getElementById('combatopt'), sk.w);
+      check('v1.8 audio: the battle-sound toggle flips Off', sk.doc.getElementById('combatopt').textContent === 'Off');
+      click2(sk.doc.getElementById('voiceopt'), sk.w); click2(sk.doc.getElementById('combatopt'), sk.w);
+      click2(sk.doc.getElementById('setbtn'), sk.w);
+    }
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
 
     // ============ CF1718-01: a MID-TRAINING RELOAD must restore the expedition ============
