@@ -1987,6 +1987,18 @@
   /* CF1715-16 (the two survivors): explicit inks instead of stacked multipliers */
   .bslot.miss{opacity:1;color:#8b93ad;border-color:rgba(150,162,210,0.35)}
   #reveal .rgrp.open .rghead .v{opacity:1;color:#9aa3bd}
+    /* ===== v1.7.20 — round-5 corrections (all in the LAST stylesheet) ===== */
+  /* CF1719-06: #namein needs the emitting selector to beat #namebox #namein */
+  #namebox #namein{font-size:16px}
+  /* CF1719-07: empty paragon slots are clickable — hover must BRIGHTEN */
+  .bslot.pslot.miss:hover{opacity:1}
+  /* CF1719-08: the ring must not outrank the card that explains it */
+  body.training #tutbox{z-index:60}
+  /* CF1719-09: keep the contrast AND the open-state signal (weight, not opacity) */
+  #reveal .rgrp.open .rghead .v{font-weight:600;letter-spacing:.02em}
+  #reveal .rgrp:not(.open) .rghead .v{font-weight:400}
+  /* audit P1: the heal control needs a MEASURED 44x44 box, not padding+margin */
+  #hpheart{width:44px;min-width:44px;height:44px;min-height:44px;padding:0;margin:0;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;line-height:1}
   </style>
 </head>
 <body>
@@ -2345,7 +2357,7 @@ const cv = document.getElementById('cosmos');
    UnrecoverableAccessibilityError while assistive tech was attached).
    The canvas exposes nothing readable, and hiding it from the a11y tree
    removes the highest-churn node the browser was trying to track. */
-try{ cv.setAttribute('role','img');   /* CF1718-13: role=img + label — 'application' suppressed browse mode on the page's first tab stop. NOTE the old Edge-crash comment above described why aria-hidden once existed; the churn concern is now mitigated by the announcer living in #live, not the canvas node. */
+try{ cv.setAttribute('role','application');   /* CF1719-05: back to role=application — role=img made the canvas a STATIC graphic, so browse mode ate the very arrow/Enter/± keys the label advertises. Suppressing browse mode on exactly one keyboard-driven node is the correct trade. NOTE the old Edge-crash comment above described why aria-hidden once existed; the churn concern is now mitigated by the announcer living in #live, not the canvas node. */
   cv.setAttribute('aria-label','Star map. Arrow keys cycle bodies, Enter surveys, plus and minus zoom, Escape releases.'); }catch(_){ }
 const ctx = cv.getContext('2d');
 const trailEl = document.getElementById('trail');
@@ -5602,7 +5614,7 @@ document.addEventListener('keydown', e=>{
           }catch(_){ el.style.display='none'; }
         }
         else el.style.display='none';
-        try{ if(typeof PANELS==='undefined' || !PANELS.some(p=>{ try{ return p.open(); }catch(_){ return false; } })) _restoreFocus(); }catch(_){ }   /* CF1718-10: never STEAL the return target while a board is still open under the overlay */
+        try{ if(typeof PANELS==='undefined' || !PANELS.some(p=>{ try{ return p.btn && p.open(); }catch(_){ return false; } })) _restoreFocus(); }catch(_){ }   /* CF1719-04: the survey card (btn:null) can never BE a return target — including it skipped the restore for the most common flow */   /* CF1718-10: never STEAL the return target while a board is still open under the overlay */
         return;
       }
     }
@@ -15431,7 +15443,6 @@ function startNewGame(){
          the tutorial walks them through adding it; tutAbort/finale backstop it */
       if(tutDone){
         const where={type:'planet', gal:slimGal(st.gal), star:{x:solStar.x,y:solStar.y,seed:SOL_SEED}, pseed:133};
-        if(!logMap.has('p133') && _tutEarthEntry){ logMap.set('p133', _tutEarthEntry); _tutEarthEntry=null; }
     if(!logMap.has('p133')){
           logMap.set('p133', {id:'p133', title:'Earth', sub:'Terran World', thumb:planetThumb(earth.P), sq:null,
             badge:'Home', star:'', where, t:Date.now()});
@@ -16407,7 +16418,7 @@ function loadSave(){
     stats.landings=num(data.landings);
     stats.charters=num(data.charters);
     for(const s of _capA(data.chs,500)) if(CHARTER_STARTERS.some(c=>c.id===s)) chDone.add(s);
-    chWeek=Math.min(num(data.chw,-1), Math.floor(Date.now()/6048e5))   /* CF1718-12: a forward clock jump banked a huge week and froze the slate forever */;
+    chWeek=(()=>{ const _w=num(data.chw,-1), _n=Math.floor(Date.now()/6048e5); return (_w>_n+1)?_n:_w; })()   /* CF1719-03: Math.min LOWERED a legitimate week whenever the device clock lagged — that re-armed wk>chWeek (re-roll exploit) and silently wiped in-progress weeklies on any briefly-wrong clock. Only an impossible future is corrupt. */;
     if(data.chp && typeof data.chp==='object'){
       for(const k in data.chp){ const v=+data.chp[k]; if(typeof k==='string' && k.length<24 && Number.isFinite(v) && v>=0) chProg[k]=Math.min(v|0, 999); }
     }
@@ -16587,9 +16598,9 @@ function wipeSaveAndReload(){
 window.addEventListener('beforeunload', doSave);
 window.addEventListener('pageshow', e=>{ if(e && e.persisted) location.reload(); });
 document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') doSave(); });
-return Object.freeze({queueSave, wipeSaveAndReload, loadSave, loadSaveWithRecovery, SAVE_KEY, readLegacySave, legacyFarewell});
+return Object.freeze({queueSave, wipeSaveAndReload, loadSave, loadSaveWithRecovery, SAVE_KEY, readLegacySave, legacyFarewell, _sanitizeSavedGenome});   /* CF1719-01: startTutorial rehydrates tsnap genomes through the SAME sanitizer — module-private meant the reload path threw */
 })();
-const {queueSave, wipeSaveAndReload, loadSave, loadSaveWithRecovery, SAVE_KEY, readLegacySave, legacyFarewell}=SaveSystem;
+const {queueSave, wipeSaveAndReload, loadSave, loadSaveWithRecovery, SAVE_KEY, readLegacySave, legacyFarewell, _sanitizeSavedGenome}=SaveSystem;
 /* @end SaveSystem */
 
 /* ---- share codes: a pointer into the one shared universe ----
@@ -19032,10 +19043,19 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.19';
+const GAME_VERSION='1.7.20';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.7.20', title:'The Proof', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🛟 THE RELOAD PATH, PROVEN — the mid-training reload restore is finally whole: the genome sanitizer it needed is now shared across the codebase, the snapshot survives a failure anywhere in its own construction, and recovery restores your Compendium before it says a word. If it ever cannot, it now tells you the truth instead of a comforting lie.',
+  '🌍 EARTH KEEPS ITS HISTORY — restarting training restores your Atlas entry for Earth exactly as it was, ☆ favourite and all, instead of rebuilding it as a fresh stub.',
+  '⏰ CLOCKS CAN&#8217;T TOUCH YOUR CHARTERS — a lagging device clock no longer rewinds your weekly slate (which both wiped honest progress and let the week be re-rolled).',
+  '⌨ FOCUS AND KEYS — closing a dialog over an open survey card now returns your focus properly, the star map accepts its advertised arrow/Enter/zoom keys under a screen reader again, and the name field holds the 16px floor that stops iPad Safari zooming.',
+  '❤ A REAL HEAL TARGET — the heart now measures a true 44×44 on every device, and the training spotlight no longer draws over the lesson card that explains it.'],
+ ],
+]},
 {v:'1.7.19', title:'Trust, Verified', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🛟 THE RELOAD PATH, TRULY SAFE — round four of testing caught three of our fixes placed where they couldn&#8217;t run. The worst let a mid-training reload wipe the Compendium; the restart snapshot now restores through any reload, proven by a new automated journey that walks that exact path on every release.',
@@ -24545,6 +24565,10 @@ function _tutCleanup(){
 /* Earth in the Atlas, flagged home — however training ended */
 function _tutEnsureEarth(){
   try{
+    /* CF1719-02: put the REAL entry back (☆ flag, original timestamp, badge) —
+       the v1.7.19 restore landed in startNewGame, behind an if(tutDone) that is
+       false at both call sites, so Earth was rebuilt as a stub every restart */
+    if(_tutEarthEntry && !logMap.has('p133')){ logMap.set('p133', _tutEarthEntry); _tutEarthEntry=null; logCountEl.textContent=logMap.size; }
     conquered.set(133, conquered.get(133)||{t:0, tier:5});
     /* review catch: the land-step drill does landed.delete(133) to re-fire the
        landfall event for veterans — restore it ONLY if it was landed before the
@@ -24606,7 +24630,7 @@ function tutAbort(){
   _tutGateOff();
   document.body.classList.remove('training');
   tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT); clearTimeout(_tutSpotD);
-  _tutHook=null; _tutStep=-1; _tutRig=null; _tutSnap=null; _tutPreIds=null;
+  _tutHook=null; _tutStep=-1; _tutRig=null; _tutSnap=null; _tutPreIds=null; _tutEarthEntry=null;   /* CF1719-02: a stale stash must never leak into the next expedition */
 }
 function startTutorial(){
   if(_tutHook || tutDone) return;
@@ -24626,7 +24650,7 @@ function startTutorial(){
      A mid-training reload survives too: the snapshot persists in the save
      (`tsnap`) and rehydrates here through the same sanitizers as the loader. */
   if(_tutSnapPending){
-    const p=_tutSnapPending; _tutSnapPending=null;
+    const p=_tutSnapPending;   /* CF1719-01 part 2: do NOT null until the assignment succeeds — the throw happened INSIDE the object literal, so the recovery handler found nothing to restore from and told the player their expedition was safe while the Compendium sat empty */
     _tutSnap={stats:(p.st&&typeof p.st==='object')?{...p.st}:{...stats},
       pstats:(()=>{ const _src=(p.ps&&typeof p.ps==='object')?p.ps:pstats; const _o={};
         for(const k of ['vit','fer','res','agi','ins']){ const v=+_src[k]; _o[k]=Number.isFinite(v)?Math.max(1,Math.min(330,v)):(+pstats[k]||10); } return _o; })(),   /* CF1718-09: same clamps as the loader — a truncated tsnap.ps made hpMaxFromVit() NaN */
@@ -24636,6 +24660,7 @@ function startTutorial(){
         return _sg?{g:_sg, f:String(e.f||'').replace(/[<>&"']/g,'').slice(0,48)||null, w:_sanitizeView(e.w)||null}:null; }).filter(Boolean),
       cargo:_capA(p.ca,200), cgx:_capA(p.cx,200), items:_capA(p.it,300),
       eq:(p.eq&&typeof p.eq==='object')?{...p.eq}:{}, ea:(p.ea&&typeof p.ea==='object')?JSON.parse(JSON.stringify(p.ea)):{}};
+    _tutSnapPending=null;   /* survived the literal — safe to consume now */
   } else {
     _tutSnap={stats:{...stats}, pstats:{...pstats}, ach:[...unlocked], essence:essence,
       codexSnap:[...codex.values()].map(e=>({g:e.genome, f:e.from, w:e.where||null})),
@@ -25555,8 +25580,25 @@ if(location.hash && /cf1-/i.test(location.hash)){
 if(_hadSave && !tutDone && explorerName && explorerName!=='Explorer'){
   setTimeout(()=>{ try{ startTutorial(); }catch(e){
     /* CF1718-01: a silent catch around a RESTORE path is what let the scope bug ship — report, restore what the snapshot holds, and never strand the player */
-    try{ console.error('training start failed', e); if(_tutSnap||_tutSnapPending){ _tutSnap=_tutSnap||null; _tutCleanup(); } tutDone=true; _syncRecruit(); queueSave();
-      toast('🛟 Training Recovery','Something interrupted training — your expedition was restored safely.'); }catch(_){ }
+    try{ console.error('training start failed', e);
+      /* CF1719-01: REBUILD from the pending payload, restore, and only then
+         claim success — the old handler announced 'restored safely' having
+         restored nothing, because the throw happened inside the literal. */
+      let _ok=false;
+      try{ const p=_tutSnapPending;
+        if(p && !_tutSnap){
+          _tutSnap={ stats:{...stats}, pstats:{...pstats}, ach:[...unlocked], essence:essence,
+            codexSnap:_capA(p.c,1500).map(x=>{ try{ const g=x&&x.g&&_sanitizeSavedGenome(x.g); return g?{g, f:String(x.f||'').slice(0,48)||null, w:_sanitizeView(x.w)||null}:null; }catch(_){ return null; } }).filter(Boolean),
+            cargo:_capA(p.ca,200), cgx:_capA(p.cx,200), items:_capA(p.it,300),
+            eq:(p.eq&&typeof p.eq==='object')?{...p.eq}:{}, ea:(p.ea&&typeof p.ea==='object')?{...p.ea}:{} };
+        }
+        if(_tutSnap){ _tutCleanup(); _ok = codex.size>0 || !(_tutSnap.codexSnap||[]).length; }
+      }catch(e2){ try{ console.error('snapshot recovery failed', e2); }catch(_){ } }
+      _tutSnapPending=null;
+      tutDone=true; _syncRecruit(); queueSave();
+      toast(_ok?'🛟 Training Recovery':'⚠ Training Recovery Incomplete',
+        _ok?'Something interrupted training — your expedition was restored.'
+           :'Training could not start, and part of your expedition could not be restored. Do not reload — check ⚙ Settings for your backup.'); }catch(_){ }
   } }, 800);
 }
 /* a returning explorer whose game was updated gets the bulletin, once */

@@ -186,6 +186,37 @@ async function main() {
         if (rh[id] !== 'ok' && rh[id] !== '(hidden)') check(vp, 'rail-' + phase, id + ' pixels belong to it', false, 'eaten by ' + rh[id]);
       }
       check(vp, 'rail-' + phase, 'rail buttons all reachable', Object.values(rh).every((v) => v === 'ok' || v === '(hidden)'));
+    // ===== v1.7.20 (round-5 law): ASSERT THE MEASURED OUTCOME OF A CSS FIX =====
+    // Five rounds, five fixes that were correct code in a place it could not run.
+    // Two were stylesheet-placement failures that no assertion covered. These
+    // read the COMPUTED box in a real browser, so a dead rule can never pass.
+    if (phase === 'cold') {
+      const tt = await evalIn(sess, `(()=>{
+        const out={coarse:matchMedia('(pointer:coarse)').matches, w:innerWidth};
+        for(const id of ['bell','setbtn','helpbtn','recbtn','hpheart']){
+          const e=document.getElementById(id);
+          if(!e){ out[id]=null; continue; }
+          const r=e.getBoundingClientRect(); out[id]=[Math.round(r.width),Math.round(r.height)];
+        }
+        const ni=document.getElementById('namein'), si=document.getElementById('searchin');
+        out.namein=ni?getComputedStyle(ni).fontSize:null;
+        out.searchin=si?getComputedStyle(si).fontSize:null;
+        return out;
+      })()`);
+      if (tt && tt.coarse && tt.w >= 901) {
+        for (const id of ['bell', 'setbtn', 'helpbtn', 'recbtn', 'hpheart']) {
+          const box = tt[id];
+          if (!box) continue;
+          check(vp, 'touch', id + ' measures 44x44 on a coarse pointer',
+            box[0] >= 44 && box[1] >= 44, box.join('x'));
+        }
+        check(vp, 'touch', 'name + search inputs hold the 16px iOS floor',
+          parseFloat(tt.namein) >= 16 && parseFloat(tt.searchin) >= 16, tt.namein + ' / ' + tt.searchin);
+      } else if (tt && tt.hpheart) {
+        check(vp, 'touch', 'heal control measures 44x44 everywhere',
+          tt.hpheart[0] >= 44 && tt.hpheart[1] >= 44, tt.hpheart.join('x'));
+      }
+    }
     }
     for (const s of SURFACES) {
       const r = await evalIn(sess, `(async()=>{
