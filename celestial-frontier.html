@@ -2009,6 +2009,16 @@
      so the padding must clear 44 from the SMALLER metric on EITHER axis. 12+32=44.
      The matching negative margin keeps the layout cost at exactly zero. */
   #hpheart{display:inline-flex;align-items:center;justify-content:center;padding:16px;margin:-16px;cursor:pointer;line-height:1}
+    /* ===== v1.8 the denial contract — a blocked action hands back a LEAD ===== */
+  .denial{padding:14px 13px;text-align:left}
+  .denial .dw{font-size:11.5px;line-height:1.6;color:var(--dim)}
+  .denial .dw b{color:var(--ink)}
+  .denial .dcta{display:block;width:100%;margin-top:11px;padding:10px 12px;min-height:44px;box-sizing:border-box;
+    font:600 11.5px var(--ui);letter-spacing:.03em;cursor:pointer;border-radius:10px;
+    color:#ffd96a;background:rgba(240,198,116,0.10);border:1px solid rgba(255,217,106,0.55)}
+  .denial .dcta:hover,.denial .dcta:focus-visible{background:rgba(240,198,116,0.2);color:#ffe49a}
+  /* the same language the Fabricator uses for an unaffordable recipe */
+  #reveal .acts button.needs{color:var(--faint);border-color:rgba(150,162,210,0.22);cursor:help;font-size:9.5px}
   </style>
 </head>
 <body>
@@ -14925,8 +14935,12 @@ function showReveal(entry, isHybrid){
       acts.style.display='grid';   /* was 'flex' — inline flex overrode the CSS grid and crushed 7-8 verbs into one row ("RenamRecord"); grid wraps them tidily at every resolution */
       /* verb order (Nick): Breed · Feed · Duel · Scout · Code · [Champion] · [Record]; Rename moved to the ✎ icon by the name */
       acts.innerHTML=
-        (codex.has(entry.id) ? '<button id="rev-breed" type="button" data-guide="breeding" data-tip="Forge a new bloodline — both parents are consumed, win or lose.">Breed</button>' : '')+
-        (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A welcome meal grows its bloodline and mends its wounds — a toxic one poisons, and can finish a beast with nothing left.">Feed</button>' : '')+
+        (codex.has(entry.id) ? (()=>{ const d=_denial('breed', entry);
+          return d ? '<button id="rev-breed" type="button" class="needs" aria-disabled="true" data-guide="breeding" data-tip="'+esc(d.why.replace(/<[^>]*>/g,''))+'">'+esc(d.short)+'</button>'
+                   : '<button id="rev-breed" type="button" data-guide="breeding" data-tip="Forge a new bloodline — both parents are consumed, win or lose.">Breed</button>'; })() : '')+
+        (entry.kind==='Fauna' && codex.has(entry.id) ? (()=>{ const d=_denial('feed', entry);
+          return d ? '<button id="rev-feed" type="button" class="needs" aria-disabled="true" data-guide="feeding" data-tip="'+esc(d.why.replace(/<[^>]*>/g,''))+'">'+esc(d.short)+'</button>'
+                   : '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A welcome meal grows its bloodline and mends its wounds — a toxic one poisons, and can finish a beast with nothing left.">Feed</button>'; })() : '')+
         '<button id="rev-duel" type="button" data-guide="duels" data-tip="A friendly duel — sport only, nothing is lost.">Duel</button>'+
         (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-scout" type="button"'+(scoutId===entry.id?' class="on"':'')+' data-guide="discover" data-tip="Your Field Scout takes the hit when a bioscan turns hostile — wounds and all. A scout with nothing left is lost forever.">'+(scoutId===entry.id?'Scouting ✓':'Scout')+'</button>' : '')+
         '<button id="rev-share" type="button" data-guide="codes" data-tip="Copy a CFB code — the identical creature, stats and all, on any device.">⇪ Code</button>'+
@@ -18295,6 +18309,34 @@ function feedPair(faunaEntry, floraEntry, roll){
 const pickBox=document.getElementById('pickbox');
 const pickList=document.getElementById('pick-list');
 let _pickMode=null, _pickBase=null;
+/* v1.8 MOMENTUM — the denial contract. Returns null when the action is
+   available; otherwise {short, why, cta, go} where "short" fits on a button
+   face, "why" is a full sentence, and "go" names a surface worth opening.
+   The rule: a blocked action must always hand back a lead. */
+function _denial(mode, base){
+  try{
+    if(mode==='breed'){
+      if(!base || !codex.has(base.id)) return {short:'Not in your Compendium', why:'This specimen is not in your Compendium, so it has nothing to breed with.', cta:null, go:null};
+      const mates=[...codex.values()].filter(e=>e.kind===base.kind && e.id!==base.id);
+      if(!mates.length) return {short:'Needs another '+String(base.kind||'creature').toLowerCase(),
+        why:'A union needs two of the same kingdom, and '+base.name+' is your only '+String(base.kind||'creature').toLowerCase()+'. Land on a living world and <b>Discover Life</b> to tame another.',
+        cta:'🌍 Open the Star Atlas', go:'log'};
+    }
+    if(mode==='feed' || mode==='heal'){
+      const flora=[...codex.values()].filter(e=>e.kind==='Flora' && (!base || e.id!==base.id));
+      if(!flora.length) return {short:'Needs flora',
+        why:'Meals come from your own catalogue and you hold no flora yet. Land on a green world and <b>Scavenge</b> its plants — they feed beasts and mend you both.',
+        cta:'🌍 Open the Star Atlas', go:'log'};
+    }
+  }catch(_){ }
+  return null;
+}
+/* the contract's other half: render it as a real surface with a destination */
+function _denialHTML(d){
+  if(!d) return '';
+  return '<div class="denial"><div class="dw">'+d.why+'</div>'+
+    (d.cta?'<button type="button" class="dcta" data-deny-go="'+esc(d.go||'')+'">'+esc(d.cta)+'</button>':'')+'</div>';
+}
 function openPicker(mode, base){
   _pickMode=mode; _pickBase=base;
   const isBreed=mode==='breed', isHeal=mode==='heal';
@@ -18347,8 +18389,10 @@ function openPicker(mode, base){
     : 'Choose a flora to feed it. The plant is always consumed. A good meal grants permanent strength — a toxic one poisons it, costing real condition; a beast with nothing left to lose dies. Rarer flora: bigger gains, deeper venom.';
   document.getElementById('pick-result').innerHTML='';
   if(!cands.length){
-    pickList.innerHTML='<div style="font-size:11px;color:var(--faint);padding:12px;text-align:center">'+
-      (isBreed?'No other fauna in your Compendium — tame more wildlife first.':'No flora in your Compendium — survey green worlds and scavenge medicine.')+'</div>';
+    /* v1.8: the dead end becomes a lead — name the gap, and offer the way there */
+    const _d=_denial(isBreed?'breed':(isHeal?'heal':'feed'), base) ||
+      {why:isBreed?'No other creature of this kingdom is in your Compendium yet.':'No flora in your Compendium yet.', cta:'🌍 Open the Star Atlas', go:'log'};
+    pickList.innerHTML=_denialHTML(_d);
   } else {
     cands.sort((x,y)=>((y.grade?y.grade.tier:0)-(x.grade?x.grade.tier:0)));
     pickList.innerHTML=cands.slice(0,30).map(e=>{
@@ -18468,7 +18512,12 @@ pickList.addEventListener('click', e=>{
   checkAch(); renderRank(); queueSave();
 });
 document.getElementById('pickclose').addEventListener('click', ()=>{ pickBox.style.display='none'; });
-pickBox.addEventListener('click', e=>{ if(e.target===pickBox) pickBox.style.display='none'; });
+pickBox.addEventListener('click', e=>{
+  /* v1.8 denial contract: the CTA is a real destination, not decoration */
+  const _dg=e.target.closest&&e.target.closest('[data-deny-go]');
+  if(_dg){ const go=_dg.dataset.denyGo; pickBox.style.display='none';
+    try{ if(go==='log'){ if(!logOpen) logBtn.click(); } }catch(_){ }
+    return; } if(e.target===pickBox) pickBox.style.display='none'; });
 
 /* ================= EXPLORER HITPOINTS =================
    The frontier bites back. Scanning life on hostile worlds can wound you;

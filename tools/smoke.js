@@ -1893,6 +1893,33 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         src.includes('body.training #tutspot{z-index:49}') && !src.includes('body.training #tutbox{z-index:60}'));
       check('CF1718-04: the titan clamp carries the emitting selector', src.includes('.psig .pby{display:-webkit-box'));
     }
+    // ===== v1.8 MOMENTUM: a blocked action must hand back a LEAD =====
+    {
+      const lone = [...skH.codex.values()].filter((e) => e.kind === 'Fauna')[0];
+      if (lone) {
+        /* strip the catalogue to ONE fauna and no flora — the exact dead end */
+        for (const e of [...skH.codex.values()]) if (e.id !== lone.id) skH.codex.delete(e.id);
+        skH.openPicker('breed', lone);
+        await sleep(150);
+        const pl = sk.doc.getElementById('pick-list');
+        check('v1.8 denial: the empty breed picker NAMES the gap instead of dead-ending',
+          !!pl.querySelector('.denial') && /Discover Life|only/i.test(pl.textContent), pl.textContent.slice(0, 90));
+        check('v1.8 denial: it offers a real destination (tap-to-go)',
+          !!pl.querySelector('[data-deny-go]'));
+        click2(pl.querySelector('[data-deny-go]'), sk.w);
+        await sleep(200);
+        check('v1.8 denial: the CTA actually opens the Star Atlas', visible(sk.doc.getElementById('log')));
+        click2(sk.doc.getElementById('logbtn'), sk.w);
+        /* prevention: the card verb wears the shortfall before you ever tap it */
+        skH.openPicker('feed', lone); await sleep(100);
+        sk.doc.getElementById('pickbox').style.display = 'none';
+        skH.showReveal(lone, false); await sleep(150);
+        const bb = sk.doc.getElementById('rev-breed');
+        check('v1.8 prevention: the Breed verb names its shortfall on the button face',
+          !!bb && bb.classList.contains('needs') && /Needs another/i.test(bb.textContent), bb && bb.textContent);
+        sk.doc.getElementById('reveal').style.display = 'none';
+      }
+    }
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
 
     // ============ CF1718-01: a MID-TRAINING RELOAD must restore the expedition ============
