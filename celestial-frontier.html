@@ -2023,6 +2023,14 @@
      it stops restating a goal the player knows they are failing and offers a way on */
   #chchip.stalled{border-color:rgba(255,217,106,0.6);background:rgba(240,198,116,0.14);color:#ffe49a}
   #chchip.stalled b{color:#ffd96a}
+    /* v1.8 the matchup meter: a band you can act on + the true number + why */
+  #pick-list .cand .odds{display:flex;flex-direction:column;align-items:flex-end;line-height:1.25;text-align:right}
+  #pick-list .cand .odds b{font:700 10.5px var(--ui);letter-spacing:.05em;text-transform:uppercase}
+  #pick-list .cand .odds i{font-style:normal;font-size:9.5px;opacity:.75}
+  #pick-list .cand .ds.why{font-size:9.5px;color:var(--faint);margin-top:1px}
+    /* v1.8 spotlight + breeding anticipation */
+  #panel .spot{display:inline-block;margin-top:3px;font-size:10.5px;color:var(--dim)}
+  #panel .spot b{color:var(--ink)}
   </style>
 </head>
 <body>
@@ -13550,6 +13558,20 @@ function renderPanel(p, isLocked){
      (persistent, rides surveyedSet), then 🐾 Tame / 🌿 Scavenge are how
      species enter the Compendium (v1.5.2c, Nick's capture design) */
   const lifeScanned = d.species && d.species.length && ((d.planetSeed!=null && surveyedSet.has(d.planetSeed)) || d.species.every(g=>codex.has(codexId(g))));
+  /* v1.8 SPOTLIGHT: name the world's most notable resident up front — rarest,
+     ties broken by raw power. Presentation ONLY (the audits' rule: 'an unusual
+     creature in 5 minutes' must be presentation, never generation). */
+  try{
+    if(lifeScanned && d.species && d.species.length>1){
+      let best=null, bt=-1, bp=-1;
+      for(const g of d.species){
+        const gr=(typeof speciesGrade==='function')?speciesGrade(g):null, t=gr?gr.tier:0;
+        const p=battleStats(g).total;
+        if(t>bt || (t===bt && p>bp)){ bt=t; bp=p; best=g; }
+      }
+      d._spot=best?{n:(best._earthName||describeSpecies(best).name), t:bt}:null;
+    }
+  }catch(_){ }
   const lifeOpen = d.species && d.species.length && (lifeScanned || _spExpanded===d.logId);
   if(lifeOpen && !d._spArt){ d._spArt={}; for(const g of d.species) d._spArt[g.seed]=speciesPortrait(g); }
   const inLog=logMap.has(d.logId);
@@ -13757,7 +13779,9 @@ function renderPanel(p, isLocked){
         ? 'Hostile wildlife may wound you for '+dz.dmg+' HP — conquer the world first to discover life safely'
         : 'Discover &amp; catalogue this world\u2019s species')+'">'+
         '<span class="thumbmini" style="background:rgba(127,230,160,0.14)"></span>'+
-        '<span class="spk"></span><span class="v"><b>Discover Life</b> — '+spRows.length+' life forms detected'+dzTxt+'</span></div>';
+        '<span class="spk"></span><span class="v"><b>Discover Life</b> — '+spRows.length+' life forms detected'+dzTxt+
+          (d._spot?'<br><span class="spot">✦ Notable: <b>'+esc(d._spot.n)+'</b>'+((GRADE_TIERS[d._spot.t]||{}).name?' · <span style="color:'+GRADE_TIERS[d._spot.t].hex+'">'+GRADE_TIERS[d._spot.t].name+'</span>':'')+'</span>':'')+
+          '</span></div>';
     } else if(!glance && spRows.length){
       /* THE LIFE FORMS FOLD (Nick, v1.5.2c): the surveyed roster and its
          🐾 Tame / 🌿 Scavenge actions collapse behind the card's expand/close
@@ -15244,6 +15268,15 @@ function _codexTabs(){
       (r[0]>0?' style="color:'+RARITY_V17[r[0]].hex+'"':'')+'>'+r[1]+'</span>').join('')+'</div>';
   }
   return h;
+}
+/* v1.8: the temperament a genome already implies, spoken aloud. Pure display —
+   derived from existing genes, so nothing about generation changes. */
+const _TEMPER=['curious','wary','bold','placid','territorial','playful','patient','skittish','stoic','sociable'];
+function temperamentOf(g){
+  try{
+    const i=(hashInt((g.seed>>>0), 0x7E3D, 0x11)>>>3)%_TEMPER.length;
+    return _TEMPER[i];
+  }catch(_){ return 'wary'; }
 }
 function _binderOwn(){
   const own={tiers:new Set(), realms:new Set(), bodies:new Set(), themes:new Set(), flavors:new Set(), kinds:new Set(), sizes:new Set(), xeno:false};
@@ -18444,9 +18477,18 @@ function openPicker(mode, base){
     cands.sort((x,y)=>((y.grade?y.grade.tier:0)-(x.grade?x.grade.tier:0)));
     pickList.innerHTML=cands.slice(0,30).map(e=>{
       const t=(e.grade?e.grade.tier:0);
-      let oddsTxt, oddsCol;
+      let oddsTxt, oddsCol, _hint='';
       if(isBreed){
         const o=breedOdds(base,e); oddsTxt=Math.round(o*100)+'% success'; oddsCol=o>0.6?'#7fe6a0':(o>0.3?'#ffd96a':'#ff8a72');
+        /* v1.8: what the union COULD become — the band the child lands in and
+           the rarity it could reach. Never the roll itself. */
+        try{
+          const A=battleStats(base.genome), B=battleStats(e.genome);
+          const lo=Math.round(Math.min(A.total,B.total)*0.95), hi=Math.round(Math.max(A.total,B.total)*1.18);
+          const tA=(base.grade?base.grade.tier:0), tB=(e.grade?e.grade.tier:0);
+          const tHi=Math.min(TIER_MAX, Math.max(tA,tB)+1);
+          _hint='Child ≈ '+lo+'–'+hi+' power · up to <span style="color:'+(GRADE_TIERS[tHi]||{}).hex+'">'+((GRADE_TIERS[tHi]||{}).name||'')+'</span>';
+        }catch(_){ _hint=''; }
       } else if(isHeal){
         const p=clamp(0.08+t*0.07,0.05,0.6);
         const h=Math.round(12+t*9+p*30);
@@ -18458,7 +18500,9 @@ function openPicker(mode, base){
       }
       return '<div class="cand" data-pk="'+e.id+'"><img src="'+(e.art||(e.genome?artOf(e):e.art))+'" alt="">'+
         '<div class="m"><div class="nm" style="color:'+(e.grade?e.grade.hex:'')+'">'+e.name+'</div>'+
-        '<div class="ds">'+(e.grade?e.grade.name:'')+' · '+e.kind+(e.hybrid?' · hybrid':'')+'</div></div>'+
+        '<div class="ds">'+(e.grade?e.grade.name:'')+' · '+e.kind+(e.hybrid?' · hybrid':'')+
+          (e.genome?' · <span style="color:var(--faint)">'+temperamentOf(e.genome)+'</span>':'')+'</div>'+
+        (_hint?'<div class="ds why">'+_hint+'</div>':'')+'</div>'+
         '<span class="odds" style="color:'+oddsCol+'">'+oddsTxt+'</span></div>';
     }).join('');
   }
@@ -20104,6 +20148,57 @@ function winEstimate(champ, native){
   const A=champ.stats||battleStats(champ.genome), B=battleStats(native.genome);
   return clamp(A.total/(A.total+B.total), 0.05, 0.95);
 }
+/* v1.8 / CF1715-09: the TRUE odds, by simulation. Deterministic per matchup
+   (seeded off both genomes), memoised, and bounded so the picker stays instant.
+   Falls back to the ratio only if anything throws. */
+const _oddsMemo=new Map();
+function trueOdds(champ, native, n){
+  try{
+    const cs=(champ.genome&&champ.genome.seed)||(champ.isPlayer?PLAYER_SEED:1);
+    const ns=(native.genome&&native.genome.seed)||2;
+    const key=cs+'|'+ns+'|'+((champ.genome&&champ.genome.xp)||0)+'|'+((champ.genome&&champ.genome.hurt)||0);
+    if(_oddsMemo.has(key)) return _oddsMemo.get(key);
+    const N=n||160;
+    let w=0, tot=0, close=0;
+    for(let i=0;i<N;i++){
+      const a={name:'a', genome:champ.genome||{seed:cs}, stats:champ.stats||battleStats(champ.genome), isPlayer:champ.isPlayer};
+      const b={name:'b', genome:native.genome||{seed:ns}, stats:battleStats(native.genome)};
+      /* vary the pairing seed so the sample spans the matchup's real spread */
+      a.genome={...a.genome, seed:(hashInt(cs, i, 0x51EE)>>>0)};
+      const r=runDuel(a,b);
+      if(!r.winner) continue;
+      tot++;
+      if(r.winner==='A') w++;
+      if(Math.abs(r.hpA/Math.max(1,r.maxA) - r.hpB/Math.max(1,r.maxB))<0.15) close++;
+    }
+    const o={p:tot?w/tot:0.5, close:tot?close/tot:0, n:tot};
+    if(_oddsMemo.size>400) _oddsMemo.clear();
+    _oddsMemo.set(key,o);
+    return o;
+  }catch(_){ return {p:winEstimate(champ,native), close:0, n:0}; }
+}
+/* the band a player can act on, not a number that implies false precision */
+function oddsBand(p){
+  if(p>=0.75) return {t:'Favored',      col:'#7fe6a0'};
+  if(p>=0.45) return {t:'Even',         col:'#ffd96a'};
+  if(p>=0.15) return {t:'Dangerous',    col:'#ff8a72'};
+  return         {t:'Overwhelming', col:'#ff5a4a'};
+}
+/* one factor line: WHY the band reads the way it does */
+function oddsWhy(champ, native){
+  try{
+    const A=champ.stats||battleStats(champ.genome), B=battleStats(native.genome);
+    const bits=[];
+    if(A.agi>B.agi+8) bits.push('you strike first');
+    else if(B.agi>A.agi+8) bits.push('it strikes first');
+    if(A.fer-B.res*0.45 > B.fer-A.res*0.45) bits.push('your blows land harder');
+    else bits.push('its blows land harder');
+    if(A.vit*3 > B.vit*3*1.25) bits.push('you outlast it');
+    else if(B.vit*3 > A.vit*3*1.25) bits.push('it outlasts you');
+    if(A.ab&&A.ab.n) bits.push('✧ '+A.ab.n);
+    return bits.slice(0,3).join(' · ');
+  }catch(_){ return ''; }
+}
 let _conquerTarget=null, _conquerNative=null;
 function conquerPlanet(d){
   const native=apexNative(d);
@@ -20128,14 +20223,16 @@ function openConquestPicker(d, native){
   document.getElementById('pick-result').innerHTML='';
   pickList.innerHTML=champs.map(c=>{
     const S=c.stats||battleStats(c.genome);
-    const wc=winEstimate(c, native);
-    const col=wc>0.6?'#7fe6a0':(wc>0.38?'#ffd96a':'#ff8a72');
+    const _o=trueOdds(c, native);
+    const wc=_o.p, _bd=oddsBand(wc), col=_bd.col;
+    const _why=oddsWhy(c, native);
     const pid=c.isPlayer?'__self__':c.id;
     const cc=(!c.isPlayer&&c.genome)?creatureCondition(c.genome):null;
     return '<div class="cand" data-pk="'+pid+'"><img src="'+(c.art||speciesPortrait(c.genome))+'" alt="">'+
       '<div class="m"><div class="nm" style="color:'+S.hex+'">'+(c.isPlayer?'★ '+c.name+' (you)':c.name)+'</div>'+
-      '<div class="ds">Power '+S.total+' · ✧ '+S.ab.n+(cc&&cc.h>0?' · <span style="color:'+cc.col+'">'+cc.label+'</span>':'')+'</div></div>'+
-      '<span class="odds" style="color:'+col+'">'+Math.round(wc*100)+'% win</span></div>';
+      '<div class="ds">Power '+S.total+' · ✧ '+S.ab.n+(cc&&cc.h>0?' · <span style="color:'+cc.col+'">'+cc.label+'</span>':'')+'</div>'+
+      (_why?'<div class="ds why">'+esc(_why)+'</div>':'')+'</div>'+
+      '<span class="odds" style="color:'+col+'"><b>'+_bd.t+'</b><i>'+Math.round(wc*100)+'%</i></span></div>';
   }).join('');
   pickBox.style.display='flex';
 }
