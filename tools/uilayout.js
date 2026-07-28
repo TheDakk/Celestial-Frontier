@@ -210,6 +210,12 @@ async function main() {
           check(vp, 'touch', id + ' measures 44x44 on a coarse pointer',
             box[0] >= 44 && box[1] >= 44, box.join('x'));
         }
+        /* CF1720-03's general form (their words): when a fix changes a SIZE,
+           assert that nothing ELSE changed size. A 44px hit area must not be
+           bought with permanent viewport — the v1.7.20 box cost ~26px of topbar
+           on every device (88→115 on an iPhone). */
+        const th = await evalIn(sess, `(()=>{ const t=document.getElementById('topbar'); return t?Math.round(t.getBoundingClientRect().height):null; })()`);
+        check(vp, 'touch', 'the 44px hit areas cost NO extra topbar height', th !== null && th <= 112, 'topbar ' + th + 'px');
         check(vp, 'touch', 'name + search inputs hold the 16px iOS floor',
           parseFloat(tt.namein) >= 16 && parseFloat(tt.searchin) >= 16, tt.namein + ' / ' + tt.searchin);
       } else if (tt && tt.hpheart) {

@@ -1982,8 +1982,9 @@
     /* CF1715-23: phone toasts yield the top box to an open survey card */
   @media (max-width:900px){ #toast.undercard{top:auto;bottom:calc(150px + env(safe-area-inset-bottom,0px))} }
   
-  /* CF1718-08: the training survey card must never bury the SPOTLIGHT ring */
-  body.training #tutspot{z-index:59}
+  /* CF1718-08 + CF1720-07: the ring clears the survey card (z58 → the card is
+     geometrically avoided via --tut-bot) but never the lesson card itself */
+  body.training #tutspot{z-index:49}
   /* CF1715-16 (the two survivors): explicit inks instead of stacked multipliers */
   .bslot.miss{opacity:1;color:#8b93ad;border-color:rgba(150,162,210,0.35)}
   #reveal .rgrp.open .rghead .v{opacity:1;color:#9aa3bd}
@@ -1992,13 +1993,18 @@
   #namebox #namein{font-size:16px}
   /* CF1719-07: empty paragon slots are clickable — hover must BRIGHTEN */
   .bslot.pslot.miss:hover{opacity:1}
-  /* CF1719-08: the ring must not outrank the card that explains it */
-  body.training #tutbox{z-index:60}
+  /* CF1720-07: lower the RING instead of blanket-raising the card — the blanket
+     rule out-specified #tutbox.overtop (killing the per-step toggle the codebase
+     deliberately added) and buried #helppop (z51) under the lesson card. */
+  body.training #tutspot{z-index:49}
   /* CF1719-09: keep the contrast AND the open-state signal (weight, not opacity) */
   #reveal .rgrp.open .rghead .v{font-weight:600;letter-spacing:.02em}
   #reveal .rgrp:not(.open) .rghead .v{font-weight:400}
   /* audit P1: the heal control needs a MEASURED 44x44 box, not padding+margin */
-  #hpheart{width:44px;min-width:44px;height:44px;min-height:44px;padding:0;margin:0;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;line-height:1}
+  /* CF1720-03: a real 44px BOX cost ~26px of topbar on every device (88→115 on
+     an iPhone, a 31% taller header). Asymmetric padding+negative margin gives the
+     same measured 44×44 hit area with ZERO layout cost — their correction, taken. */
+  #hpheart{display:inline-flex;align-items:center;justify-content:center;padding:16px 15px;margin:-16px -15px;cursor:pointer;line-height:1}
   </style>
 </head>
 <body>
@@ -2418,6 +2424,21 @@ let picks=[];                      // hoverable objects rebuilt each frame
 let mouse={x:null,y:null};         // cursor in screen pixels
 let _lastMode=null;
 let locked=null;                   // click-locked object: {data, sx, sy} — panel stays put & clickable
+/* CF1720-01: the veteran's Earth Atlas row (☆, sub, badge, star class, original
+   timestamp, where) rides the TRAINING SNAPSHOT so it survives a mid-training
+   RELOAD, not just a same-session restart. Same field discipline as the save
+   loader; the thumb is dropped on purpose — atlasThumb rebuilds it from the
+   seed (CF16-004). Top-level by design: startTutorial and doSave both need it. */
+function _sanitizeAtlasEntry(e){
+  if(!e || typeof e!=='object') return null;
+  const _s=(v,n)=>String(v==null?'':v).replace(/[<>&"']/g,'').slice(0,n);
+  const id=_s(e.id,24); if(!id) return null;
+  const o={id, title:_s(e.title,60)||'Charted place', sub:_s(e.sub,120),
+    badge:_s(e.badge,18), star:_s(e.star,24), sq:!!e.sq, fav:!!e.fav,
+    t:(Number.isFinite(+e.t)?Math.max(0,Math.min(4102444800000,+e.t)):Date.now())};
+  try{ const w=(typeof _sanitizeView==='function')?_sanitizeView(e.where):null; if(w) o.where=w; }catch(_){ }
+  return o;
+}
 const _capA=(a,n)=>Array.isArray(a)?a.slice(0,n):[];   /* CF1718-01: startTutorial needs this at TOP level — the first hoist landed inside the SaveSystem module and the reload path still threw (caught by the new smoke journey) */
 /* ----------------------------------------------------------------
    @section viewport [app] — canvas sizing, DPR cap (3) & topbar height sync (--topbar-h/--row1-h)
@@ -16205,7 +16226,7 @@ function doSave(){
       prime:primeFill, frontier:frontierUnlocked?1:0, ending:frontierEnding, guide:seenGuide?1:0, tut:tutDone?1:0, rn:_rnSeen,
       codex:[...codex.values()].map(e=>({g:e.genome, f:e.from, w:e.where||null})),
       /* CF1715-01: while training runs, the pre-training expedition rides the save — a reload mid-retrain must not lose it */
-      tsnap:(_tutHook&&_tutSnap)?{st:_tutSnap.stats, ps:_tutSnap.pstats, ac:_tutSnap.ach, es:_tutSnap.essence, c:_tutSnap.codexSnap, ca:_tutSnap.cargo, cx:_tutSnap.cgx, it:_tutSnap.items, eq:_tutSnap.eq, ea:_tutSnap.ea}:undefined,
+      tsnap:(_tutHook&&_tutSnap)?{st:_tutSnap.stats, ps:_tutSnap.pstats, ac:_tutSnap.ach, es:_tutSnap.essence, c:_tutSnap.codexSnap, ca:_tutSnap.cargo, cx:_tutSnap.cgx, it:_tutSnap.items, eq:_tutSnap.eq, ea:_tutSnap.ea, e:(_tutEarthEntry?_sanitizeAtlasEntry(_tutEarthEntry):(_tutSnap.earth||null))}:undefined,   /* CF1720-01: the Earth row rides the save */
     }));
     /* FLEET v1.7.2 (cautious-newbie): the FIRST successful save of a fresh
        expedition announces itself once — the only save messaging used to be a
@@ -16418,7 +16439,7 @@ function loadSave(){
     stats.landings=num(data.landings);
     stats.charters=num(data.charters);
     for(const s of _capA(data.chs,500)) if(CHARTER_STARTERS.some(c=>c.id===s)) chDone.add(s);
-    chWeek=(()=>{ const _w=num(data.chw,-1), _n=Math.floor(Date.now()/6048e5); return (_w>_n+1)?_n:_w; })()   /* CF1719-03: Math.min LOWERED a legitimate week whenever the device clock lagged — that re-armed wk>chWeek (re-roll exploit) and silently wiped in-progress weeklies on any briefly-wrong clock. Only an impossible future is corrupt. */;
+    chWeek=num(data.chw,-1)   /* CF1720-06: no load-time repair — boot is when Date.now() is LEAST trustworthy (pre-NTP), and a >=2wk lag still rewound the banked week and wiped in-progress weeklies. _chRoll clamps an impossible future once the clock has settled. */   /* CF1719-03: Math.min LOWERED a legitimate week whenever the device clock lagged — that re-armed wk>chWeek (re-roll exploit) and silently wiped in-progress weeklies on any briefly-wrong clock. Only an impossible future is corrupt. */;
     if(data.chp && typeof data.chp==='object'){
       for(const k in data.chp){ const v=+data.chp[k]; if(typeof k==='string' && k.length<24 && Number.isFinite(v) && v>=0) chProg[k]=Math.min(v|0, 999); }
     }
@@ -23696,6 +23717,7 @@ let chOpen=false;
 function _chNow(){ return Math.floor(Date.now()/6048e5); }
 function _chRoll(){
   const wk=_chNow();
+  if(chWeek>wk+1) chWeek=wk;   /* CF1720-06: an impossible-FUTURE bank is repaired HERE, after the clock has settled — never at load, where a pre-NTP Date.now() rewound honest weeks */
   if(wk>chWeek){   /* CF1715-12: !== re-rolled the weekly slate on a BACKWARD clock change — replayed banked landfalls paid on the accept click */
     chWeek=wk;
     for(const k in chProg) if(k[0]==='w') delete chProg[k];
@@ -24568,7 +24590,19 @@ function _tutEnsureEarth(){
     /* CF1719-02: put the REAL entry back (☆ flag, original timestamp, badge) —
        the v1.7.19 restore landed in startNewGame, behind an if(tutDone) that is
        false at both call sites, so Earth was rebuilt as a stub every restart */
-    if(_tutEarthEntry && !logMap.has('p133')){ logMap.set('p133', _tutEarthEntry); _tutEarthEntry=null; logCountEl.textContent=logMap.size; }
+    if(_tutEarthEntry){
+      /* CF1720-01: the old `&& !logMap.has('p133')` guard was false on every
+         COMPLETED training — step 4 requires the recruit to re-chart Earth, so
+         a fresh stub always sat there and the veteran's row was silently
+         dropped. Merge the identity fields onto whichever row exists. */
+      const _cur=logMap.get('p133');
+      logMap.set('p133', _cur?Object.assign({}, _cur, {
+          fav:_tutEarthEntry.fav, t:_tutEarthEntry.t,
+          badge:_tutEarthEntry.badge||_cur.badge, sub:_tutEarthEntry.sub||_cur.sub,
+          star:_tutEarthEntry.star||_cur.star})
+        :_tutEarthEntry);
+      _tutEarthEntry=null; logCountEl.textContent=logMap.size;
+    }
     conquered.set(133, conquered.get(133)||{t:0, tier:5});
     /* review catch: the land-step drill does landed.delete(133) to re-fire the
        landfall event for veterans — restore it ONLY if it was landed before the
@@ -24659,13 +24693,15 @@ function startTutorial(){
       codexSnap:_capA(p.c,1500).map(e=>{ const _sg=e&&e.g&&_sanitizeSavedGenome(e.g);
         return _sg?{g:_sg, f:String(e.f||'').replace(/[<>&"']/g,'').slice(0,48)||null, w:_sanitizeView(e.w)||null}:null; }).filter(Boolean),
       cargo:_capA(p.ca,200), cgx:_capA(p.cx,200), items:_capA(p.it,300),
-      eq:(p.eq&&typeof p.eq==='object')?{...p.eq}:{}, ea:(p.ea&&typeof p.ea==='object')?JSON.parse(JSON.stringify(p.ea)):{}};
+      eq:(p.eq&&typeof p.eq==='object')?{...p.eq}:{}, ea:(p.ea&&typeof p.ea==='object')?JSON.parse(JSON.stringify(p.ea)):{},
+      earth:_sanitizeAtlasEntry(p.e)};   /* CF1720-01 */
     _tutSnapPending=null;   /* survived the literal — safe to consume now */
   } else {
     _tutSnap={stats:{...stats}, pstats:{...pstats}, ach:[...unlocked], essence:essence,
       codexSnap:[...codex.values()].map(e=>({g:e.genome, f:e.from, w:e.where||null})),
       cargo:[...cargo], cgx:[...cgx], items:[...items],
-      eq:{...equip}, ea:JSON.parse(JSON.stringify(equipAff||{}))};
+      eq:{...equip}, ea:JSON.parse(JSON.stringify(equipAff||{})),
+      earth:_sanitizeAtlasEntry(logMap.get('p133'))};   /* CF1720-01: one snapshot field serves BOTH paths */
   }
   /* a resumed half-finished training leaves only practice debris — clear it
      (the expedition itself is safe in the snapshot above) */
@@ -24675,7 +24711,7 @@ function startTutorial(){
      training end, and step 4 asks the recruit to chart it — addToLog refuses
      the duplicate, the spot matches nothing, and training dead-ends at 4/21.
      Restarting un-charts home; the step re-charts it minutes later. */
-  try{ _tutEarthEntry=logMap.get('p133')||null;   /* CF1718-07: the delete cost the ☆ flag, timestamp and badge — stash and restore the real entry */
+  try{ _tutEarthEntry=logMap.get('p133')||(_tutSnap&&_tutSnap.earth)||_tutEarthEntry||null;   /* CF1720-01: on a RELOAD the live Atlas no longer holds p133 (training removed it before the save) — fall back to the snapshot copy rather than stashing null. CF1718-07: the delete cost the ☆ flag, timestamp and badge — stash and restore the real entry */
     logMap.delete('p133'); if(homeId==='p133') homeId=null; logCountEl.textContent=logMap.size; if(logOpen) renderLog(); }catch(_){ }
   _tutHook=(type,detail)=>{
     const s=TUT_STEPS[_tutStep];
@@ -25587,10 +25623,20 @@ if(_hadSave && !tutDone && explorerName && explorerName!=='Explorer'){
       let _ok=false;
       try{ const p=_tutSnapPending;
         if(p && !_tutSnap){
-          _tutSnap={ stats:{...stats}, pstats:{...pstats}, ach:[...unlocked], essence:essence,
-            codexSnap:_capA(p.c,1500).map(x=>{ try{ const g=x&&x.g&&_sanitizeSavedGenome(x.g); return g?{g, f:String(x.f||'').slice(0,48)||null, w:_sanitizeView(x.w)||null}:null; }catch(_){ return null; } }).filter(Boolean),
+          _tutSnap={ /* CF1720-02: these four read the PAYLOAD, mirroring startTutorial —
+                        reading the LIVE values baked every training mutation in permanently
+                        (hybrids/best/maxGen, feed+breed counters, the heal step's stat growth
+                        and its inflated HP_MAX) and neutered the key-deletion sweep. */
+            stats:(p.st&&typeof p.st==='object')?{...p.st}:{...stats},
+            pstats:(()=>{ const _src=(p.ps&&typeof p.ps==='object')?p.ps:pstats; const _o={};
+              for(const k of ['vit','fer','res','agi','ins']){ const v=+_src[k]; _o[k]=Number.isFinite(v)?Math.max(1,Math.min(330,v)):(+pstats[k]||10); } return _o; })(),
+            ach:Array.isArray(p.ac)?p.ac.slice(0,500):[...unlocked],
+            essence:Number.isFinite(+p.es)?Math.max(0,Math.min(1e9,+p.es)):essence,
+            codexSnap:_capA(p.c,1500).map(x=>{ try{ const g=x&&x.g&&_sanitizeSavedGenome(x.g); return g?{g, f:String(x.f||'').replace(/[<>&"']/g,'').slice(0,48)||null, w:_sanitizeView(x.w)||null}:null;   /* CF1720-05: `from` is an innerHTML sink — strip like every other hydration site */ }catch(_){ return null; } }).filter(Boolean),
             cargo:_capA(p.ca,200), cgx:_capA(p.cx,200), items:_capA(p.it,300),
-            eq:(p.eq&&typeof p.eq==='object')?{...p.eq}:{}, ea:(p.ea&&typeof p.ea==='object')?{...p.ea}:{} };
+            eq:(p.eq&&typeof p.eq==='object')?{...p.eq}:{}, ea:(p.ea&&typeof p.ea==='object')?{...p.ea}:{},
+            earth:_sanitizeAtlasEntry(p.e) };
+          if(_tutSnap.earth && !_tutEarthEntry) _tutEarthEntry=_tutSnap.earth;   /* CF1720-01: even the failure path keeps Earth's history */
         }
         if(_tutSnap){ _tutCleanup(); _ok = codex.size>0 || !(_tutSnap.codexSnap||[]).length; }
       }catch(e2){ try{ console.error('snapshot recovery failed', e2); }catch(_){ } }
@@ -25598,7 +25644,7 @@ if(_hadSave && !tutDone && explorerName && explorerName!=='Explorer'){
       tutDone=true; _syncRecruit(); queueSave();
       toast(_ok?'🛟 Training Recovery':'⚠ Training Recovery Incomplete',
         _ok?'Something interrupted training — your expedition was restored.'
-           :'Training could not start, and part of your expedition could not be restored. Do not reload — check ⚙ Settings for your backup.'); }catch(_){ }
+           :'Training could not start, and part of your expedition could not be restored. Everything else is saved — please report this, and do not reset the game.'); }catch(_){ }   /* CF1720-04: there IS no backup control in Settings; the old copy steered toward Reset */
   } }, 800);
 }
 /* a returning explorer whose game was updated gets the bulletin, once */

@@ -1854,6 +1854,29 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         JSON.stringify({ t: (skH.logMap.get('p133')||{}).t, want: _earthT, fav: (skH.logMap.get('p133')||{}).fav }));
       check('CF1715-02: Earth is re-charted by the training exit (the Atlas heals)',
         skH.logMap.has('p133') && +sk.doc.getElementById('logcount').textContent >= 1, 'log ' + _preLog);
+      /* CF1720-01: PAST STEP 4 is the path a real player takes — step 4 makes the
+         recruit re-chart Earth, so a fresh stub exists and the old guard silently
+         dropped the veteran's row. Re-run the restart, advance through the chart
+         lesson, then leave, and assert the identity STILL merged through. */
+      {
+        const _e1 = skH.logMap.get('p133'); if (_e1) { _e1.fav = true; _e1.t = 555000111; _e1.badge = 'Homecoming'; }
+        click2(sk.doc.getElementById('setbtn'), sk.w);
+        click2(sk.doc.getElementById('retrainopt'), sk.w);
+        click2(sk.doc.getElementById('retrainopt'), sk.w);
+        await until(() => visible(sk.doc.getElementById('tutbox')), 4000, 'retrain2');
+        /* drive the atlas-add lesson for real: the recruit re-charts Earth */
+        skH.logMap.set('p133', { id: 'p133', title: 'Earth', sub: 'Terran World', badge: 'Home', where: null, t: Date.now() });   /* exactly the stub step 4 leaves behind */
+        await sleep(150);
+        check('CF1720-01 precondition: the recruit re-charted Earth (a stub now sits there)',
+          skH.logMap.has('p133') && (skH.logMap.get('p133').fav !== true));
+        click2(sk.doc.getElementById('tut-skip'), sk.w);
+        click2(sk.doc.getElementById('tut-skip-yes'), sk.w);
+        await until(() => !visible(sk.doc.getElementById('tutbox')), 4000, 'retrain2 exit');
+        check('CF1720-01: Earth&apos;s identity MERGES onto the recruit stub (the completed-training path)',
+          (() => { const e = skH.logMap.get('p133');
+            return !!e && e.fav === true && e.t === 555000111 && e.badge === 'Homecoming'; })(),
+          JSON.stringify(skH.logMap.get('p133') || null));
+      }
     }
     // ===== CF1715-05: every class verb resolves to a real archetype (static) =====
     {
@@ -1866,8 +1889,8 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       const src = require('fs').readFileSync(require('path').join(__dirname, '..', 'celestial-frontier.html'), 'utf8');
       check('CF1718-03: the hardening CSS lives in the LAST stylesheet (cascade-safe)',
         src.indexOf('the audit batch') > src.indexOf('</style>'));
-      check('CF1718-08: the spotlight outranks the training survey card',
-        src.includes('body.training #tutspot{z-index:59}'));
+      check('CF1720-07: the ring sits BELOW the lesson card and no blanket raise kills the per-step toggle',
+        src.includes('body.training #tutspot{z-index:49}') && !src.includes('body.training #tutbox{z-index:60}'));
       check('CF1718-04: the titan clamp carries the emitting selector', src.includes('.psig .pby{display:-webkit-box'));
     }
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
@@ -1881,6 +1904,11 @@ const tutAct = () => click(doc.getElementById('tut-act'));
             /* CF1719-01: the v1.7.19 journey passed WITH THE BUG LIVE because c was
              EMPTY — the sanitizer line never ran. A real creature is the whole test. */
           c: [{ g: { seed: 4242, kingdom: 'fauna', gen: 0, brood: 2, fed: 1 }, f: 'Testworld', w: null }],
+          /* CF1720-01: the veteran's Earth row must survive the RELOAD path too —
+             v1.7.20 asserted this outcome on the same-session path ONLY, which is
+             the path that already worked. Assert every path the promise covers. */
+          e: { id: 'p133', title: 'Earth', sub: 'Terran World \u00b7 Veteran History', badge: 'Homecoming',
+               star: 'G2V', fav: true, t: 1234567890 },
           ca: [['Fe', 5], ['Au', 2]], cx: [['Fe', 1]], it: [['plate', 2]], eq: {}, ea: {} } }));
       });
       await sleep(1600);
@@ -1896,9 +1924,16 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       check('CF1718-01: items + essence ride too', trH.itemCount('plate') === 2 && trH.essence === 4321);
       check('CF1719-01: THE COMPENDIUM CAME BACK through the reload (the outcome, not the code path)',
         trH.codex.size === 1, 'codex=' + trH.codex.size);
+      check('CF1720-01: Earth\u2019s history SURVIVES THE RELOAD (\u2606, subtitle, badge, star, timestamp)',
+        (() => { const e = trH.logMap.get('p133');
+          return !!e && e.fav === true && e.t === 1234567890 && e.badge === 'Homecoming'
+            && e.star === 'G2V' && /Veteran History/.test(e.sub || ''); })(),
+        JSON.stringify(trH.logMap.get('p133') || null));
       check('CF1719-01: no recovery toast lied — training really did start',
         ![...tr.doc.querySelectorAll('#toast .tst, #tray .titem')].some((t) => /Recovery Incomplete/.test(t.textContent)));
       check('CF1718-09: rehydrated pstats are clamped and complete', trH.pstats.vit === 12 && trH.pstats.ins === 10);
+      check('CF1720-02: the restore uses the PAYLOAD stats, not the live mid-training ones',
+        trH.stats.mines === 3, 'mines=' + trH.stats.mines);
       check('tsnap session boots clean', tr.errors.length === 0, tr.errors.slice(0, 2).join(' | '));
       tr.w.close();
     }
