@@ -1920,6 +1920,24 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         sk.doc.getElementById('reveal').style.display = 'none';
       }
     }
+    // ===== v1.8 THE STALL DETECTOR: busy-and-getting-nothing must be answered =====
+    {
+      const chip = () => sk.doc.getElementById('chchip');
+      /* ten interactions with no progress event — the shape of a quit */
+      for (let i = 0; i < 11; i++) sk.doc.dispatchEvent(new sk.w.MouseEvent('pointerdown', { bubbles: true, view: sk.w }));
+      await sleep(200);
+      check('v1.8 stall: the chip changes VOICE when nothing is moving',
+        !!chip() && chip().classList.contains('stalled'), chip() && chip().textContent);
+      check('v1.8 stall: it names a concrete next action, not the goal being failed',
+        !!chip() && /Accept|Craft|Land|Travel|Survey/i.test(chip().textContent), chip() && chip().textContent);
+      check('v1.8 stall: the suggestion carries a destination',
+        !!chip() && typeof chip().dataset.go === 'string');
+      /* a real progress event must clear it — the detector is not a nag */
+      skH.gameEvent('crafted', {});
+      await sleep(200);
+      check('v1.8 stall: progress CLEARS the suggestion (never a nag)',
+        !!chip() && !chip().classList.contains('stalled'), chip() && chip().textContent);
+    }
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
 
     // ============ CF1718-01: a MID-TRAINING RELOAD must restore the expedition ============

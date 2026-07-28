@@ -2019,6 +2019,10 @@
   .denial .dcta:hover,.denial .dcta:focus-visible{background:rgba(240,198,116,0.2);color:#ffe49a}
   /* the same language the Fabricator uses for an unaffordable recipe */
   #reveal .acts button.needs{color:var(--faint);border-color:rgba(150,162,210,0.22);cursor:help;font-size:9.5px}
+    /* v1.8 the stall detector: the chip changes VOICE when nothing is moving —
+     it stops restating a goal the player knows they are failing and offers a way on */
+  #chchip.stalled{border-color:rgba(255,217,106,0.6);background:rgba(240,198,116,0.14);color:#ffe49a}
+  #chchip.stalled b{color:#ffd96a}
   </style>
 </head>
 <body>
@@ -16841,7 +16845,10 @@ searchRes.addEventListener('click', e=>{
   else if(o.go.sp){ const sp=codex.get(o.go.sp); if(sp) showReveal(sp, sp.hybrid); }
 });
 document.addEventListener('pointerdown', e=>{
-  if(!e.target.closest('#searchwrap')) searchRes.style.display='none';
+  /* v1.8: a global handler must never assume its target is an Element — a
+     synthetic or retargeted event (document/window) has no .closest and threw
+     an uncaught TypeError out of the capture phase (caught by the new stall test) */
+  if(!(e.target && e.target.closest && e.target.closest('#searchwrap'))) searchRes.style.display='none';
 });
 
 /* ---- traveler's beacon: a fresh random destination every 5 minutes ---- */
@@ -23992,7 +23999,10 @@ function _questNudge(){
   _nudged.add(g.key);
   toast(g.tt, g.ms, g.go);
 }
-document.addEventListener('pointerdown', ()=>{ _lastActT=Date.now(); }, {passive:true, capture:true});
+document.addEventListener('pointerdown', ()=>{ _lastActT=Date.now();
+  /* v1.8: 10 interactions with nothing to show for them is the shape of a quit */
+  if(tutDone){ _stall++; if(_stall>=10 && _stall-_stallShown>=10){ _stallShown=_stall; try{ _chBadge(); }catch(_){ } } }
+}, {passive:true, capture:true});
 document.addEventListener('keydown', ()=>{ _lastActT=Date.now(); }, {passive:true, capture:true});
 setTimeout(()=>{ try{ _questNudge(); }catch(_){ } }, 14000);         /* login: the plan, once the dust settles */
 setInterval(()=>{ try{
@@ -24028,9 +24038,27 @@ function _chBadge(){
     if(!g){ if(el) el.style.display='none'; _chipLast=null; return; }
     if(!el){
       el=document.createElement('div'); el.id='chchip'; el.setAttribute('role','button'); el.tabIndex=0;
-      el.addEventListener('click', ()=>{ try{ if(!chOpen) chBtn.click(); }catch(_){ } });
+      el.addEventListener('click', ()=>{ try{
+        const go=el.dataset.go;
+        _stall=0; _stallShown=0;   /* acting on it clears the stall either way */
+        if(go==='yard'){ const b=document.getElementById('cargobtn'); if(b&&b.style.display!=='none'){ b.click(); return; } }
+        if(go==='log'){ if(!logOpen) logBtn.click(); return; }
+        if(!chOpen) chBtn.click();
+      }catch(_){ } });
       document.body.appendChild(el);
     }
+    /* v1.8 STALL: nothing has moved in a while — offer the way forward instead
+       of restating the goal the player already knows they are failing */
+    const _nb=(_stall>=10)?_nextBest():null;
+    if(_nb){
+      el.classList.add('stalled');
+      el.innerHTML='💡 <b>'+esc(String(_nb.t).slice(0,44))+'</b>';
+      el.style.display='flex';
+      el.dataset.go=_nb.go||'';
+      _chipLast={key:'stall', p:0};
+      return;
+    }
+    el.classList.remove('stalled'); el.dataset.go='';
     el.innerHTML=g.ic+' <b>'+esc(String(g.t).replace(/&#8217;/g,'’').slice(0,34))+'</b>'+
       ' · '+g.p+' / '+g.n+   /* Nick live: binary charters showed NO digits and read as the old dead pill — every objective now wears its count */
       (g.more?' <span style="opacity:.55">+'+g.more+'</span>':'');
@@ -24244,7 +24272,34 @@ function ascEvent(type, detail){
   if(chOpen) renderCharters();
   _chBadge(); checkAch(); renderRank(); queueSave();
 }
+/* the progress signal: any event a player would call "something happened" */
+const _PROGRESS_EVT=new Set(['survey','landfall','fed','bred','crafted','atlas-add','conquest',
+  'specimen','searched','healed','mined','skim','tray','duel-done','chaccept','ascent-chapter']);
+let _stall=0, _stallShown=0;
+/* the best action AVAILABLE NOW — never suggest what the player cannot do */
+function _nextBest(){
+  try{
+    if(!tutDone) return null;
+    const fauna=[...codex.values()].filter(e=>e.kind==='Fauna').length;
+    const flora=[...codex.values()].filter(e=>e.kind==='Flora').length;
+    /* 1. a charter waiting to be accepted is always the cheapest forward step */
+    try{ const av=_chAvailable(); if(av && av.length && _chAccepted().length<3)
+      return {t:'Accept a charter — '+av[0].t, go:'ch'}; }catch(_){ }
+    /* 2. something you can afford to build */
+    try{ for(const it of ITEMS){ if(it.cat==='sys'&&itemCount(it.id)>0) continue;
+      if(it.sig && !primeFill[it.sig]) continue;
+      if(it.req && itemCount(it.req)<1) continue;
+      if(_canCraft(it)) return {t:'Craft '+it.name+' at the Shipyard', go:'yard'}; } }catch(_){ }
+    /* 3. the catalogue gaps that gate the creature loop (the A/B's finding) */
+    if(!flora) return {t:'Land on a living world and Scavenge for flora', go:'log'};
+    if(fauna<2) return {t:'Land on a living world and Discover Life', go:'log'};
+    /* 4. otherwise: go somewhere */
+    if(logMap.size) return {t:'Travel from your Star Atlas', go:'log'};
+    return {t:'Survey a world and press Land', go:null};
+  }catch(_){ return null; }
+}
 function gameEvent(type, detail){
+  if(_PROGRESS_EVT.has(type)){ _stall=0; _stallShown=0; try{ _chBadge(); }catch(_){ } }
   try{ if(_tutHook) _tutHook(type, detail||{}); }catch(_){}
   try{ charterEvent(type, detail||{}); }catch(_){}
   try{ if(type!=='ascent-chapter') ascEvent(type, detail||{}); }catch(_){}
