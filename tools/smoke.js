@@ -1938,6 +1938,19 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       check('v1.8 stall: progress CLEARS the suggestion (never a nag)',
         !!chip() && !chip().classList.contains('stalled'), chip() && chip().textContent);
     }
+    // ===== v1.8 / CF1715-09: the conquest meter must tell the TRUTH =====
+    {
+      const mk = (v, f, r, a, i, seed) => ({ name: 'x', genome: { seed, kingdom: 'fauna' },
+        stats: { vit: v, fer: f, res: r, agi: a, ins: i, total: v + f + r + a + i, hex: '#fff', name: 'x', ab: { n: 't', d: 't' } } });
+      const wall = mk(90, 10, 80, 8, 8, 4242), striker = mk(20, 80, 20, 40, 36, 9999);
+      const flat = skH.winEstimate(wall, { genome: striker.genome, stats: striker.stats });
+      const truth = skH.trueOdds(wall, { genome: striker.genome, stats: striker.stats });
+      check('CF1715-09: the meter reports SIMULATED odds, not a power ratio',
+        truth.p < 0.1 && flat > 0.3, 'ratio ' + Math.round(flat * 100) + '% vs measured ' + Math.round(truth.p * 100) + '%');
+      check('CF1715-09: a hopeless matchup reads as Overwhelming', skH.oddsBand(truth.p).t === 'Overwhelming');
+      check('v1.8 meter: the odds are deterministic per matchup (memoised, replayable)',
+        skH.trueOdds(wall, { genome: striker.genome, stats: striker.stats }).p === truth.p);
+    }
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
 
     // ============ CF1718-01: a MID-TRAINING RELOAD must restore the expedition ============
