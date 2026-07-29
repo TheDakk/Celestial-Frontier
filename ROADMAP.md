@@ -4,7 +4,7 @@
 ## The per-system docs at repo root (WORLD_GENERATION · BIOME_ATLAS · ART_DIRECTION ·
 ## SPECIES_AND_GENOME · RARITY_AND_GRADES · CAPTURE_AND_BIOSPHERE · COMBAT_AND_CONQUEST ·
 ## PROGRESSION · ECONOMY_LOOT_CRAFTING · QUESTS_AND_CHAPTERS · BREEDING_AND_SHARING ·
-## DETERMINISM · SAVE_SYSTEM · UI_PRESENTATION) are the SOURCE OF TRUTH we pull from for a
+## DETERMINISM · SAVE_SYSTEM · UI_PRESENTATION · AUDIO) are the SOURCE OF TRUTH we pull from for a
 ## full-system review/edit later. RULE: whenever we change a system, update its doc IN THE
 ## SAME BATCH (and bump its "matches code as of" marker) — the same way we run validate and
 ## update this roadmap. A change isn't done until its markdown reflects it. Also keep
@@ -1464,3 +1464,33 @@
 ##   quits, the first round where the mechanism has actually been addressed; (3) human listening test
 ##   now that -19/-20/-21 are done; (4) CF1802-08 repro sequence; (5) fed-inheritance design call;
 ##   (6) cold-boot outlier; (7) then v1.9 consolidation → v2.0 PixiJS.
+##   ▶ DOC SWEEP (same batch, Nick: "make sure everything is in the roadmap and all the documents
+##   are updated"). Audited every markdown against the shipped build; 11 doc claims spot-checked
+##   against celestial-frontier.html and all 11 verified.
+##   ★ NEW: AUDIO.md — the ENTIRE v1.8 audio layer (the largest single feature of the arc) had NO
+##   doc at all. Now covers: the never-a-sample rule + why (the instant-link property; +8ms load /
+##   +2.4% gzip measured externally), the ac()/sfxOut plumbing and the ONE exception to the ac()
+##   mute gate (a looping node outlives its trigger — the CF1802-19 lesson generalised), the 4
+##   toggles + save fields, voiceOf's model incl. the 540→millions vocabulary widening and the
+##   temper-vs-behavior gene fix, combat/planetfall/ambience lifecycles, the feedback grammar +
+##   the _denyPress/_okPress SCOPE TRAP, code anchors, and an honest section on what no harness
+##   here can test (Playwright runs muted — only a human listening test can answer it).
+##   ★ UPDATED: CAPTURE_AND_BIOSPHERE (CF1802-09 + the lesson that the GUIDE was right and the
+##   CODE had drifted — "the survey reveals the roster; it catalogues nothing" was already the
+##   documented promise), ECONOMY_LOOT_CRAFTING (monotonic harvest rule + the dead craft button;
+##   general rule recorded: any cooldown gating a reward needs a monotonic clock, the wall clock is
+##   user input), COMBAT_AND_CONQUEST (conqloss ledger + trueOdds hoist), BREEDING_AND_SHARING
+##   (fed does not travel; preview fixed; inheritance left as Nick's design call),
+##   UI_PRESENTATION (round-7 addenda: the specificity trap confirmed TWICE in one week, setpanel
+##   z60, the 744px band), PROGRESSION / SAVE_SYSTEM / QUESTS_AND_CHAPTERS (earlier this batch).
+##   ★ celestial-frontier-codebase-reference.md §9 Audio predated the whole v1.8 layer → now points
+##   at AUDIO.md and lists the new fns + the scope trap; §12 corrected 49→50 probes and rewritten
+##   as the FOUR-suite battery table (the old text still called a real-browser suite "the highest-
+##   value addition if work resumes" — uilayout.js has existed for weeks).
+##   ★★ FIXED A DOC HAZARD: tools/README.md, README.md AND CLAUDE.md all instructed
+##   `node tools/extract.js` as step 1 of the edit loop — the ONE command that regenerates main.js
+##   FROM the html and silently destroys every uncommitted edit (main.js is gitignored). All three
+##   now warn explicitly and name `build.js` as the everyday command. CLAUDE.md rule 4 is now that
+##   warning + the CSS-lives-only-in-the-html / LAST-<style> rule; rules renumbered 1-11; the smoke
+##   description corrected (20→21 steps, ~380→550+ checks) and uilayout.js added as a required run.
+##   AUDIO.md registered in the PINNED per-system list (CLAUDE.md + ROADMAP).

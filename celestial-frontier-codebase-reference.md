@@ -478,6 +478,24 @@ Compendium / Star Atlas / Cosmic Events / Settings.
 ---
 
 ## 9. Audio
+
+> **See `AUDIO.md` for the full system** (creature voices, combat, ambience, the
+> feedback grammar, the toggles, and the traps). This section is the code map only.
+
+**v1.8 "The Connection" added the largest part of this layer** and it is not
+described below: `voiceOf`/`playVoice` (deterministic per-genome creature voices
+over 18 rig archetypes, blending across a bloodline's Earth anchor),
+`playHit` (per-blow combat sound scaled to damage, with crits and ability procs),
+`playArrival` + `ambienceStart`/`ambienceStop` (planetfall and bounded biome beds),
+and `playBlip`/`playDeny`/`playConfirm` with the `_denyPress`/`_okPress`
+press-level wrappers. Two independent toggles — `voiceOn` (`vce`) and
+`combatSfxOn` (`cbx`) — ride the master `sndOn`; absent ⇒ on.
+
+⚠ `_denyPress`/`_okPress` live at **true top level, after the `Fx` destructure** —
+not inside the Fx IIFE. Putting them beside `playDeny` threw `ReferenceError` at
+every app-layer caller. A helper belongs in the scope of its **callers**.
+
+The v1.0/v1.1 originals, still present:
 Web Audio oscillators — hand-rolled, asset-free. `ac()` resumes the context
 (persistent gesture + visibilitychange re-arm for iOS backgrounding).
 `playRaritySting(tier)` (discoveries & celebrations; pitch/steps/harmonics/
@@ -570,9 +588,24 @@ for a name.
 The original v1.0 assertion suites (`phaseAtest` … `finaltest`, `esc_check`) were lost
 with the previous working environment. They are superseded by `tools/validate.js`
 (see §2 and `tools/README.md`): syntax check, CSS brace balance, duplicate-id check,
-domain-determinism grep, headless jsdom boot with zero errors, and a 49-probe
+version consistency, class→rig binding, colour atlas, biome profiles, render audit,
+domain-determinism grep, headless jsdom boot with zero errors, and a **50-probe**
 fingerprint over the deterministic core (world-gen, descriptors, genomes, duels,
 share codes) that must match the v1.0 baseline byte for byte.
+
+**The battery is now four suites, not one:**
+
+| Suite | What it can see |
+|---|---|
+| `validate.js` | build + 9 static gates + the 50-probe fingerprint |
+| `smoke.js` | jsdom: real flows, the full 21-step training, ~553 checks |
+| `uilayout.js` | **a real headless browser**: computed boxes, 44px touch floors, and `elementFromPoint` hit-tests across 10 viewports (~683 checks) |
+| `balance-sim.js` | 17 archetype win-rate band + 55 ability-theme art band |
+
+`uilayout.js` exists because jsdom has no layout: a rule can be present, correct
+and **completely inert**, and only a real browser can tell you. It accepts
+`--url=FILE`, so a new gate can be replayed against an older build to prove it
+catches the bug it was written for.
 
 When an edit intentionally changes behavior a probe captures, regenerate the baseline
 **deliberately and say so** (don't weaken the intent of a check). A browser smoke test

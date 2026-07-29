@@ -1,6 +1,6 @@
 # Celestial Frontier — UI / Presentation System
 
-**STATUS:** matches code as of 2026-07-28 (verified against main.js + tools/).
+**STATUS:** matches code as of 2026-07-29 (verified against main.js + tools/).
 **Purpose:** the mobile-first presentation layer — the unified topbar, the one-panel-at-
 a-time manager, the "fold language", the vista box, the cards, and the platform caps —
 plus the headless layout gate that guards them.
@@ -309,3 +309,41 @@ mirror `TUT_PRI_SURF`; **change one and change the other.**
   dock chips, each open board, the card on the LAND step, and Settings › Audio.
   Replayed against the v1.8.2 build with `--url=`, it reproduces the original report on all three
   phone viewports — which is the only reason to trust it.
+
+## 2026-07-29 ROUND 7 ADDENDA — the stack law, extended (v1.8.4)
+
+Three additions to the training-stack law recorded above, all from round 7.
+
+### The specificity trap, confirmed twice in one week
+
+The law's own implementation hit it (`body.training .tutpri` — 0 ids / 2 classes — losing to
+`#panel{z-index:9}`), and an external round found the *same* trap in shipped code:
+
+```css
+body.training #tutspot{z-index:49}   /* (1,1,1) */
+#tutspot.overtop{z-index:59}         /* (1,1,0) — permanently DEAD */
+```
+
+`CF1720-07` was declared fixed and verified by a check that asserted the **source string of the
+dead rule**. Now `body.training #tutspot.overtop{z-index:59}` — a rule that can actually win.
+
+> **Two rules, both earned:**
+> 1. A class-level override cannot govern surfaces that declare their layer through an **id**.
+> 2. Never assert a selector's *spelling*. Assert the **law** it implements — a computed
+>    comparison, or better, a hit-test.
+
+### Settings outranks the lesson
+
+`body.training #setpanel{z-index:60}` — above the lesson card (50) and above any raised surface
+(58). Settings is deliberately reachable during training (`TUT_ALWAYS`), and an external round
+measured its Audio tab as unclickable on 4 of 5 viewports. Gated by **clickability**, per viewport,
+the way they measured it — not by a z-index assertion.
+
+### The 744px band
+
+`744×1133` is now a permanent layout-gate viewport. An external harness found **no spotlight ring
+at all** there at step 5, where every phone and desktop profile rendered one. It sits just under
+the 900px dock breakpoint — the dock layout applies but the tablet band's sheet widths do not,
+which is exactly the seam a bug hides in. We believe the missing ring was downstream of the stack
+bug (`_tutSpot` deliberately draws nothing when its target's centre is covered), and the band
+passes now, but it stays in the gate because no one was watching it before.

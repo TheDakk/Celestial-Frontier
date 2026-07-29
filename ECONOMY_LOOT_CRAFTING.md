@@ -1,6 +1,6 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-**STATUS:** matches code as of 2026-07-23 (verified against main.js).
+**STATUS:** matches code as of 2026-07-29 (verified against main.js).
 **Purpose:** The material economy — mining dead worlds into Cargo, spending it at the Shipyard (Fabricator + Research), crafting the gear/relic ladder, the item tooltip card, and the v1.6 AFFIX/LOOT core that imbues worn gear with seeded bonus stats.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 **Cross-reference (v1.7):** the full v1.7 Forge economy — the 47-material registry with
@@ -127,3 +127,33 @@ Two currencies feed it: mined **elements** (hard, finite per world) and **☄ St
 - Burst size is documented as "the future upgrade knob (rigs/recipes may extend it)" — no recipe extends `MINE_BURST` today; pending design.
 - Only **one** affix faucet exists (conquest spoils, 40%). Additional faucets (rich-strike loot, guardian drops) are open design space; the core supports them.
 - `_equipBonus('scut')` is clamped 0..0.7 at the callsite; affix + gear + hull stacking should be re-checked against that ceiling when new scut sources ship.
+
+## ⚠ v1.8.4 — the harvest clock, and the Fabricator's dead button
+
+### Harvest cooldown is no longer wall-clock-only
+
+`HARVEST_CD = 3600e3`. The **load** path was already hardened (`_hvFloor = max(0, _atL - HARVEST_CD)`,
+`_atL` clamped ≤ now), so editing a save buys exactly one cycle. It did not cover a **running
+session**: advancing the OS clock one hour made every settled world ready at once — measured at
+~1,140 ☄ per step across thirty tier-8 worlds, a ~3,600× speedup.
+
+`doHarvest` now also consults `_hvMono`, an in-memory `Map` of `planetSeed → perfTime()`.
+`perfTime()` is monotonic from boot and cannot be wound forward, so **both** clocks must agree.
+In-memory only — the load path's `_hvFloor` already covers reloads, so this needs no save-shape
+change.
+
+**General rule: any cooldown that gates a reward must be checked against a monotonic clock as well
+as the wall clock.** The wall clock is a user input.
+
+### The craft shortfall button had no handler at all
+
+`<button class="bclaim need" aria-disabled="true" data-tip="Need 2× Iron">` carries **no**
+`data-craft`, so the yard delegate's `closest('[data-craft]')` missed it entirely: pressing it did
+nothing — no panel, no toast, no sound. On desktop a hover tooltip repeated what the button face
+already said; on touch there is no hover, so it was simply a dead button that named a gap and
+offered no way to close it.
+
+It now answers on press: the refusal tone plus a toast naming what is missing. (The
+`aria-disabled` there is *correct* — that button is genuinely inert as an action. The specimen-card
+`.needs` buttons are different: they are focusable and *do* act, so their `aria-disabled` was
+removed in v1.8.3.)

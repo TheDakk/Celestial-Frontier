@@ -1,6 +1,6 @@
 # Celestial Frontier — Breeding & Sharing
 
-**STATUS:** matches code as of 2026-07-28 (verified against main.js).
+**STATUS:** matches code as of 2026-07-29 (verified against main.js).
 **See also:** `LINEAGE_AND_BREEDING.md` — the v1.6 Earth-lineage layer on top of `breedPair`:
 a child of an Earth parent keeps that parent's Earth RIG + wears the child's alien palette
 (`_earthBlend`); the Earth-anchor strength drifts alien organically by the MATE's alienness
@@ -97,3 +97,21 @@ Per-creature genome fields that persist (in `codex` entries, save `codex[]`):
 - **`exhibit` creatures are duel-only** — confirm every ownership path (feed/breed/scout/conquer champion) rejects `entry.exhibit`; the flag is set on decode but this doc doesn't audit every consumer.
 - **Discovery record gating:** `recordCreature` is described as "Legendary+"; the function itself doesn't enforce a grade floor — the gate lives at the call site (verify).
 - **Iron Gut interaction:** a `gutsy` beast has `pois = 0` in `feedPair`, so it can never be wounded/killed by food; intended, but means such beasts also never trigger the `disliked` wound path.
+
+## ⚠ v1.8.4 — `fed` does not travel, and the preview stopped pretending it does
+
+`crossGenome`'s field set has no `fed`. `breedPair` sums `brood` across both parents but nothing
+carries `fed`, so **a hybrid of two well-fed parents starts at `fed = 0`** — up to ~2,000 power of
+investment, silently gone.
+
+That is arguably a design choice. What was unambiguously a **bug** is that the v1.8 breeding
+preview quoted a range built from `battleStats` totals, which *include* the `fed` bonus the child
+cannot inherit — measured at up to **6.2× overstated**. The v1.8 promise was "ranges only, never
+the roll"; the range itself was wrong.
+
+**Now:** the band is computed from stats with `fed` stripped from both parents, and when either
+parent carries `fed` the card says so outright — *"fed bloodline does not carry over"*.
+
+⏳ **OPEN DESIGN QUESTION (Nick's call, not changed):** *should* a child inherit some `fed`?
+`brood` is summed, so the inconsistency is real. It interacts with the `fed` ceiling added in the
+same release (see PROGRESSION.md). Deliberately left alone rather than changed quietly.

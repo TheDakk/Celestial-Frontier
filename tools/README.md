@@ -7,13 +7,29 @@ deterministic core.
 
 Requires Node ≥ 18 and `npm install` at the repo root (acorn + jsdom).
 
+> ## ⚠ NEVER run `tools/extract.js` after editing `main.js`
+>
+> `extract.js` regenerates `main.js` **from the html**. `main.js` is the source of
+> truth and is gitignored, so running it after an edit **silently discards every
+> change you have made since the last build.** It exists only to bootstrap
+> `main.js` on a fresh clone, once.
+>
+> The everyday command is `node tools/build.js` (main.js → html). If in doubt,
+> use `validate.js`, which builds for you.
+
 ## The loop (run after every batch of edits)
 
 ```
-node tools/extract.js          # html -> main.js (edit main.js, not the html)
-# ...edit main.js...
-node tools/validate.js         # main.js -> html, then ALL checks below
+# ...edit main.js (it is the SOURCE OF TRUTH; the html is a build artifact)...
+node tools/build.js            # main.js -> html
+node tools/validate.js         # builds, then ALL checks below + the fingerprint
 node tools/smoke.js            # jsdom interaction suite (incl. full tutorial)
+node tools/uilayout.js         # REAL headless browser: computed boxes + hit-tests
+                               #   across 10 viewports (add --shots for screenshots,
+                               #   --vp=iphone,desktop to narrow, --url=FILE to
+                               #   replay the gate against another build)
+node tools/balance-sim.js      # archetype win-rate band + ability-theme art band
+node tools/deploy.js --release X.Y.Z   # runs the whole battery, then ships
 node tools/deploy.js           # ship to https://celestialfrontier.github.io/ — stamps
                                #   BUILD_ID with the git sha and publishes
                                #   version.json so live sessions detect updates
