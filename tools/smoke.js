@@ -2010,6 +2010,19 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       click2(chip, sk.w); await sleep(150);
       check('playtest: the chip folds it away again', !!ql && ql.style.display === 'none');
     }
+    // ===== Nick playtest 2: the feed/breed lessons keep their card =====
+    {
+      const src = require('fs').readFileSync(require('path').join(__dirname, '..', 'celestial-frontier.html'), 'utf8');
+      check('playtest: the feed + breed lessons LEAVE the specimen card open (the card IS the target)',
+        src.includes("{id:'feed', bottom:true, allow:['#codex','#codexbtn','#reveal']") && src.includes('_tutRig={feed:0.99}; },'));
+      check('playtest: their copy no longer says Open a beast when one is already open',
+        src.includes('Tap <b>Feed</b> on the open card'));
+      check('playtest: the heal lesson still clears the card (there it covers the heart)',
+        src.includes('_tutRig={heal:0.95}; _tutDropReveal();'));
+      check('playtest: the heart keeps a 44px TARGET but a glyph-sized highlight',
+        src.includes('outline-offset:-13px') && src.includes('padding:16px;margin:-16px'));
+      check('playtest: the HP fill can never paint past its track', src.includes('#hpbar{overflow:hidden;'));
+    }
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
 
     // ============ CF1718-01: a MID-TRAINING RELOAD must restore the expedition ============

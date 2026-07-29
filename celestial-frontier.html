@@ -125,8 +125,12 @@
     border:1px solid var(--glass-brd);border-radius:999px;padding:4px 11px 4px 9px;
     backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
   #hpheart{font-size:15px;cursor:pointer;filter:drop-shadow(0 0 7px rgba(255,90,74,0.8));transition:transform .15s}
-  #hpheart:hover{transform:scale(1.25)}
-  #hpbar{position:relative;width:158px;height:13px;border-radius:99px;background:rgba(150,162,210,0.2);overflow:hidden;
+  /* Nick 2026-07-28: the 44px HIT area stays (it is an accessibility floor),
+     but the visible feedback must hug the GLYPH, not the box — scaling the whole
+     box reached across the HP pill, and the focus ring drew a 44px rectangle. */
+  #hpheart:hover{transform:none;filter:drop-shadow(0 0 10px rgba(255,90,74,1)) brightness(1.25)}
+  #hpheart:focus-visible{outline-offset:-13px;border-radius:50%}
+  #hpbar{overflow:hidden;position:relative;width:158px;height:13px;border-radius:99px;background:rgba(150,162,210,0.2);overflow:hidden;
     box-shadow:inset 0 1px 2px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.05)}
   /* HP polish (Nick v11): quarter TICKS make the trough read as an instrument */
   #hpbar::after{content:'';position:absolute;inset:0;border-radius:99px;pointer-events:none;
@@ -18966,6 +18970,7 @@ function renderHP(){
   /* the bar reads your danger at a glance: pure green ONLY at full health —
      any wound starts the slide toward amber, then red (continuous, by HP
      fraction, not chunky thresholds) */
+  if(hp>HP_MAX) hp=HP_MAX;   /* Nick 2026-07-28: the bar can never read past full — clamp at the RENDER too, so no writer can ever show >100% */
   const f=clamp(hp/Math.max(1,HP_MAX), 0, 1);
   const hue=Math.round(8 + f*f*128);                  /* 136=green at full → 8=red at empty */
   const c0='hsl('+hue+',72%,58%)', c1='hsl('+hue+',80%,72%)';
@@ -19492,10 +19497,17 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.8.1';
+const GAME_VERSION='1.8.2';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.8.2', title:'Steady Hands', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🍽 THE MEAL AND THE UNION KEEP THEIR CARD — the feed and breed lessons were closing the specimen card and then asking you to open one again. The card stays open now (its own <b>Feed</b> and <b>Breed</b> buttons are the target), and if you close it, reopening any beast works just as well.',
+  '❤ A CALMER HEART — the ❤ keeps its full-size touch target, but its glow and focus ring now hug the heart itself instead of drawing a large box across the HP bar.',
+  '📊 THE HP BAR STAYS IN ITS TRACK — the fill can no longer paint past its own edge.'],
+ ],
+]},
 {v:'1.8.1', title:'The Field Test', date:'July 2026', sections:[
  ['✦ New Features & Systems', [
   '📋 A REAL QUEST LOG — the objective pill was one line with a bare &#8220;+1&#8221;. Tap it now and it unfolds into a compact log: your chapter goal and every accepted charter, each with live progress, and a way straight to the board. Tap again to fold it away.'],
@@ -24809,11 +24821,11 @@ const TUT_STEPS=[
     card's already open". Each lesson that says "Open a …" now takes the stage
     with the standing card DISMISSED (same one-lesson-one-voice law as the
     hazard step dismissing the duel result). */
- {id:'feed', bottom:true, allow:['#codex','#codexbtn'], rev:'feed', enter:()=>{ _tutRig={feed:0.99}; _tutDropReveal(); },   /* feedPair poisons on LOW rolls — 0.99 is the safe, best-event roll (v1.3.11: the old -1 rig GUARANTEED the training poisoning Nick screenshotted). bottom:true (Nick's step-10 screenshot, 2026-07-24): if the recruit closes the Compendium mid-step, a TOP card sat exactly over the rail pills the step needs tappable — pin it to the bottom like the specimen step */
-  text:()=>'Time for a meal. Open a 🐾 beast in the Compendium, tap <b>Feed</b>, and pick a plant. The plant is always consumed — a welcome meal grows the beast’s bloodline permanently.',
+ {id:'feed', bottom:true, allow:['#codex','#codexbtn','#reveal'], rev:'feed', enter:()=>{ _tutRig={feed:0.99}; },   /* feedPair poisons on LOW rolls — 0.99 is the safe, best-event roll (v1.3.11: the old -1 rig GUARANTEED the training poisoning Nick screenshotted). bottom:true (Nick's step-10 screenshot, 2026-07-24): if the recruit closes the Compendium mid-step, a TOP card sat exactly over the rail pills the step needs tappable — pin it to the bottom like the specimen step */
+  text:()=>'Time for a meal. Tap <b>Feed</b> on the open card — or reopen any 🐾 beast in the Compendium — and pick a plant. The plant is always consumed — a welcome meal grows the beast’s bloodline permanently.',
   when:(t)=>t==='fed'},
- {id:'breed', bottom:true, allow:['#codex','#codexbtn'], rev:'breed', enter:()=>{ _tutRig={breed:-1}; _tutDropReveal(); },   /* bottom:true — same rail-blocking fix as the feed step */
-  text:()=>'Now forge a bloodline. Open a 🐾 beast, tap <b>Breed</b>, and choose a mate. Both parents are always consumed by the union. (This training pair is a sure thing.)',
+ {id:'breed', bottom:true, allow:['#codex','#codexbtn','#reveal'], rev:'breed', enter:()=>{ _tutRig={breed:-1}; },   /* bottom:true — same rail-blocking fix as the feed step */
+  text:()=>'Now forge a bloodline. Tap <b>Breed</b> on the open card — or reopen any 🐾 beast — and choose a mate. Both parents are always consumed by the union. (This training pair is a sure thing.)',
   when:(t)=>t==='bred'},
  {id:'duel', btn:'⚔ Begin Training Duel',
   text:()=>'A new creature, born of two! Let’s see it fight. Duels run round by round on the five stats and abilities — and the same matchup plays out identically on every device. Press the button when ready.',
