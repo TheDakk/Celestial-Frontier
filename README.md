@@ -30,7 +30,8 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 
 ```
 npm install                # once (acorn + jsdom, dev-only)
-node tools/extract.js      # html  -> main.js  (edit main.js)
+node tools/build.js        # main.js -> html   (⚠ NEVER extract.js after editing main.js —
+                           #   it regenerates main.js FROM the html and discards your edits)
 node tools/validate.js     # main.js -> html, then all checks:
                            #   syntax, CSS braces, duplicate ids,
                            #   determinism grep, headless boot,

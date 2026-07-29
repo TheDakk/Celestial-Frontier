@@ -1,6 +1,6 @@
 # Celestial Frontier — Combat & Conquest
 
-**STATUS:** matches code as of 2026-07-28 (verified against main.js).
+**STATUS:** matches code as of 2026-07-29 (verified against main.js).
 **Purpose:** How creatures fight — the stat budget, seeded duel resolution, innate arts (classes + archetypes), and named Apex Guardians — and how conquest settles a world: the mercy law, re-win prevention, and the depth tax that grades every field wound by distance.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -197,3 +197,29 @@ A maxed 200/200 bloodline lands +1,500 → ≈2,250 total power on a summit cham
 hardest fights). Monotonic (feeding/breeding always help), integer, deterministic,
 fingerprint-proven identity for probe genomes. Knee/asymptote are the single knob
 for the §24 power-curve pass. Smoke asserts the knee identity and the maxed delta.
+
+## ⚠ v1.8.4 — losing is recorded, and the meter got cheaper
+
+### A lost conquest now costs the farm
+
+`conquered.set` fires **only on a win**, and `conquerPlanet` blocks only on `conquered.has(...)`.
+Nothing anywhere recorded a loss — so the consolation awards ("a hard lesson" +3, "a defender
+nearly broken" +5) paid on **every attempt against the same world, forever**.
+
+The designed brake — a bred champion pinned to `hurt = 0.85` on loss, and deleted on a second loss
+while still ≥ 0.85 — is defeated by a single meal (`feedPair` mends 0.10 for neutral flora, 0.22+
+for a loved one). That made a stationary XP farm: +3 to +5 per ~15 s cycle, on one planet, without
+moving.
+
+The source comment read *"Never a farm: one world can only be attempted meaningfully while it
+stays unconquered."* An external round pointed out it had the logic backwards: **losing is what
+keeps it unconquered.**
+
+Both awards are now `awardXPOnce(champ.id, 'conqloss:' + d.planetSeed, ...)` — a first **per
+creature, per world**, banked in the persisted `xpFirsts` ledger.
+
+### `trueOdds` cost
+
+160 `runDuel` replays is not the expense — one duel measures ~0.0006 ms. The cost was **320
+redundant `battleStats` calls per row**: both combatants were rebuilt inside the 160-iteration
+loop although neither varies with `i` (only the pairing seed does). Both are now hoisted out.

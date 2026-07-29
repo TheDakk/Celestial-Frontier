@@ -1,6 +1,6 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
-**STATUS:** matches code as of 2026-07-23 (verified against main.js).
+**STATUS:** matches code as of 2026-07-29 (verified against main.js).
 **Purpose:** How a surveyed world's revealed life earns Compendium pages — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -147,3 +147,29 @@ const TAME_ODDS=[0.60,0.45,0.36,0.27,0.19,0.13,0.09,0.06,0.04,0.025,0.015,0.010,
 - **Rare-find stardust only for genuinely-new species** — enforced: `discoverSpecies` early-returns when `_storeSpecies` finds the species already catalogued, so the tier-5+ stardust bonus and cinematic never re-fire on a duplicate catch (~L8784-8797).
 - **Conquered can't re-win** — capture is unaffected by conquest, but note settled worlds mark `conquered` and their surveys are always safe (cross-ref COMBAT_AND_CONQUEST §7).
 - **Pending/uncertain**: the biosphere-recovery "evolved on return" promise relies on `planetSpecies` re-rolling per epoch — verify that the roster the player re-scans post-recovery actually differs (the recovery path resets the *pool*; the *roster* refresh is a separate epoch-keyed generation, asserted by comment but worth a targeted test). No cap on how far a single epoch can be skipped — a long absence recovers in one step, by design.
+
+## ⚠ v1.8.4 — a roster row is a SIGHTING, not a catch
+
+The world card's Life-forms fold lists **every** species on the world, caught or not, and each row
+carries `data-sp`. Until v1.8.4 the handler read:
+
+```js
+const entry = codex.get(codexId(g)) || _storeSpecies(g, ...);
+```
+
+That `|| _storeSpecies(...)` **minted an uncaught species into the Compendium on a tap** — no
+`tryCapture` (so no finite `bioLeft` attempt spent), no `captureOdds` roll (which bottoms out at
+0.0025 for tier 14), and repeatable indefinitely, because `_storeSpecies` refuses only on
+`codex.has(id)` and feeding the specimen away frees the id again. Roughly one specimen per second.
+
+It bypassed *acquisition* only — `ringGrade` still applied, so the rarity spectrum held — but it
+was the **supply line** for three other exploits: unbounded `fed` power (PROGRESSION.md), the
+repeatable conquest-loss XP farm (COMBAT_AND_CONQUEST.md), and grade-uncapped breeding, whose only
+designed brake is that a failed pairing destroys both parents.
+
+**Now:** only a catalogued row opens a card. An uncaught one names the verb that earns it
+(🐾 Tame / 🌿 Scavenge) and refuses audibly.
+
+**Note for future work:** the Guide has always said *"The survey reveals the roster; it catalogues
+nothing."* The documentation was correct and the code had drifted away from it. When a doc and the
+code disagree, that is a finding either way — not automatically a stale doc.
