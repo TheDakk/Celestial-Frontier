@@ -111,6 +111,14 @@
 ## ⚠ RE-PIN PROCESS unchanged: field-diff proof → surgical single-probe re-pin → authorization
 ##   recorded in baseline.json repins[]. Never regenerate the baseline to make a failure pass.
 ## ⚠ DEPLOY = TWO PUSHES: deploy.js ships the SITE repo only; `git push origin main` syncs source.
+## ⚠ LINE ENDINGS ARE PART OF THE BUILD CONTRACT — .gitattributes pins LF. Without it a fresh
+##   clone on Windows (autocrlf=true) checks out CRLF, and make-probe-build.js cannot find the game
+##   IIFE anchor "
+})();
+</script>" → validate/smoke/fingerprint/deploy-gate ALL fail, plus a
+##   26,717-byte payload tax. Found 2026-07-29 by cloning cold and running the battery; the tool now
+##   also tolerates CRLF. VERIFIED: a clone forced with core.autocrlf=true still checks out LF and
+##   the full battery passes on it. If you ever touch .gitattributes, re-run that test.
 ## ⚠ DOC/CODE DISAGREEMENT IS A FINDING EITHER WAY. CF1802-09 (free cataloguing) was a case where
 ##   the GUIDE was right — "the survey reveals the roster; it catalogues nothing" — and the CODE
 ##   had drifted. Check which one is wrong before "updating" the doc.
