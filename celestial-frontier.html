@@ -12487,6 +12487,7 @@ let _lastVista=null, _vistaHideT=0, _vistaShowSeq=0, _vistaArmedAt=0, _vistaPD=0
    the show, and real taps work instantly; only the ghost is filtered. */
 vistaBox.addEventListener('pointerdown', ()=>{ _vistaPD=performance.now(); });
 function _vistaDismiss(){
+  try{ ambienceStop(); }catch(_){ }
   /* a show's fade-in rides a queued animation frame — bump the sequence so
      a lightning-fast tap can't lose the race and strand the view open */
   _vistaShowSeq++;
@@ -12576,6 +12577,11 @@ function _vistaExtras(host){
    framed card floating over the game, ✕ on the frame). One mount path for
    every scene family + the re-view. */
 function _vistaMount(headHtml, cv, vtTxt){
+  /* v1.8: planetfall ARRIVES, and the world speaks under it */
+  try{ playArrival((_lastVista&&_lastVista.xtra&&_lastVista.xtra.tier)||0);
+    const _bk=(_lastVista&&_lastVista.xtra&&_lastVista.xtra.biome)||null;
+    ambienceStart(_bk);
+  }catch(_){ }
   _vistaArmedAt=performance.now();   /* the dismiss arms shortly AFTER the show */
   vistaBox.innerHTML='';
   const card=document.createElement('div'); card.className='vcard';
@@ -18357,6 +18363,89 @@ function playHit(frac, crit, ability){
     }
   }catch(_){ }
 }
+/* PLANETFALL: the game's signature moment deserves an arrival, and then the
+   world's own voice underneath it. Both procedural; the bed is BOUNDED to the
+   vista being open and stops on close, on hidden tab, and on sound-off, so it
+   can never become a background CPU or battery cost. */
+function playArrival(tier){
+  try{
+    const a=ac(); if(!a || a.state!=='running') return;
+    const t=a.currentTime+0.02, root=110*Math.pow(2,((tier||0)%5)/12);
+    const m=a.createGain();
+    m.gain.setValueAtTime(0.0001,t);
+    m.gain.exponentialRampToValueAtTime(0.30,t+0.35);
+    m.gain.exponentialRampToValueAtTime(0.0001,t+2.0);
+    m.connect(sfxOut(a));
+    [1,1.5,2,3].forEach((mult,i)=>{
+      const o=a.createOscillator(), g2=a.createGain();
+      o.type=i?'sine':'triangle'; o.frequency.value=root*mult;
+      o.detune.value=(i%2?6:-6);
+      g2.gain.value=0.5/(i+1);
+      o.connect(g2); g2.connect(m); o.start(t+i*0.06); o.stop(t+2.0);
+    });
+  }catch(_){ }
+}
+/* the biome bed: filtered noise shaped by the world underfoot */
+let _amb=null;
+const _AMB={
+  ice:{f:520,q:0.7,g:0.055,lfo:0.11}, tundra:{f:600,q:0.6,g:0.05,lfo:0.13},
+  desert:{f:420,q:0.5,g:0.05,lfo:0.07}, glass:{f:900,q:1.1,g:0.04,lfo:0.09},
+  ocean:{f:260,q:0.8,g:0.07,lfo:0.16}, coral:{f:300,q:0.9,g:0.06,lfo:0.18},
+  lava:{f:110,q:1.4,g:0.075,lfo:0.05}, magmasea:{f:95,q:1.5,g:0.08,lfo:0.04},
+  swamp:{f:340,q:1.0,g:0.055,lfo:0.2}, jungle:{f:700,q:1.2,g:0.05,lfo:0.24},
+  gas:{f:180,q:0.6,g:0.06,lfo:0.06}, carbon:{f:240,q:0.8,g:0.045,lfo:0.08},
+  _def:{f:380,q:0.7,g:0.045,lfo:0.1}
+};
+function ambienceStart(key){
+  try{
+    ambienceStop();
+    const a=ac(); if(!a || a.state!=='running' || !sndOn) return;
+    const p=_AMB[key]||_AMB._def, t=a.currentTime;
+    /* two seconds of pink-ish noise, looped — cheaper than a long buffer */
+    const n=Math.floor(a.sampleRate*2), buf=a.createBuffer(1,n,a.sampleRate), ch=buf.getChannelData(0);
+    let last=0;
+    for(let i=0;i<n;i++){ const w=Math.random()*2-1; last=(last+w*0.14)/1.14; ch[i]=last*3.2; }
+    const src=a.createBufferSource(); src.buffer=buf; src.loop=true;
+    const bp=a.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=p.f; bp.Q.value=p.q;
+    const g2=a.createGain(); g2.gain.setValueAtTime(0.0001,t);
+    g2.gain.exponentialRampToValueAtTime(p.g,t+1.2);
+    /* a slow breath so the bed never sits flat */
+    const lfo=a.createOscillator(), lg=a.createGain();
+    lfo.frequency.value=p.lfo; lg.gain.value=p.f*0.25;
+    lfo.connect(lg); lg.connect(bp.frequency); lfo.start(t);
+    src.connect(bp); bp.connect(g2); g2.connect(sfxOut(a)); src.start(t);
+    _amb={src,g:g2,lfo,a};
+  }catch(_){ }
+}
+function ambienceStop(){
+  try{
+    if(!_amb) return;
+    const {src,g:g2,lfo,a}=_amb; _amb=null;
+    const t=a.currentTime;
+    try{ g2.gain.cancelScheduledValues(t); g2.gain.setValueAtTime(Math.max(0.0001,g2.gain.value),t);
+      g2.gain.exponentialRampToValueAtTime(0.0001,t+0.5); }catch(_){ }
+    setTimeout(()=>{ try{ src.stop(); lfo.stop(); }catch(_){ } }, 700);
+  }catch(_){ }
+}
+/* the bed must never outlive the tab's attention */
+try{ document.addEventListener('visibilitychange', ()=>{ if(document.hidden) ambienceStop(); }); }catch(_){ }
+
+/* ===== the feedback grammar — the "did that work?" moments ===== */
+function playBlip(f, dur, type, vol){
+  try{
+    const a=ac(); if(!a || a.state!=='running') return;
+    const t=a.currentTime+0.01, o=a.createOscillator(), g2=a.createGain();
+    o.type=type||'sine'; o.frequency.setValueAtTime(f,t);
+    g2.gain.setValueAtTime(0.0001,t);
+    g2.gain.exponentialRampToValueAtTime(vol==null?0.16:vol,t+0.012);
+    g2.gain.exponentialRampToValueAtTime(0.0001,t+(dur||0.12));
+    o.connect(g2); g2.connect(sfxOut(a)); o.start(t); o.stop(t+(dur||0.12)+0.02);
+  }catch(_){ }
+}
+/* v1.8 MOMENTUM's audio half: a BLOCKED action must sound unmistakably unlike a
+   successful one, so a dead tap is recognisable before the words are read */
+function playDeny(){ playBlip(200,0.10,'triangle',0.13); setTimeout(()=>playBlip(150,0.14,'triangle',0.11),80); }
+function playConfirm(){ playBlip(660,0.09,'sine',0.13); setTimeout(()=>playBlip(990,0.12,'sine',0.11),70); }
 function playThud(){
   const a=ac(); if(!a||a.state!=='running') return;
   try{
@@ -18366,9 +18455,11 @@ function playThud(){
     o.connect(g); g.connect(sfxOut(a)); o.start(t); o.stop(t+0.75);
   }catch(_){}
 }
-return Object.freeze({fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud, fxShake, FX_RED});
+return Object.freeze({fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud, fxShake, FX_RED,
+  /* v1.8 audio: these live in Fx and are used across the app — export them, do not strand them (the module-scope trap that cost rounds 4 and 5) */
+  playHit, playArrival, ambienceStart, ambienceStop, playBlip, playDeny, playConfirm});
 })();
-const {fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud, fxShake, FX_RED}=Fx;
+const {fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud, fxShake, FX_RED, playHit, playArrival, ambienceStart, ambienceStop, playBlip, playDeny, playConfirm}=Fx;
 /* @end Fx */
 
 /* ----------------------------------------------------------------
@@ -18581,6 +18672,7 @@ function _denial(mode, base){
 /* the contract's other half: render it as a real surface with a destination */
 function _denialHTML(d){
   if(!d) return '';
+  try{ playDeny(); }catch(_){ }
   return '<div class="denial"><div class="dw">'+d.why+'</div>'+
     (d.cta?'<button type="button" class="dcta" data-deny-go="'+esc(d.go||'')+'">'+esc(d.cta)+'</button>':'')+'</div>';
 }
@@ -19375,10 +19467,28 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.7.21';
+const GAME_VERSION='1.8.0';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.8.0', title:'The Connection', date:'July 2026', sections:[
+ ['✦ New Features & Systems', [
+  '🗣 EVERY CREATURE HAS A VOICE — and it is truly its own. Earth&#8217;s animals sound like what they are: wolves roar, sparrows chirp, whales sing, rattlesnakes hiss, cicadas drone. Alien life speaks from its own genome. And when you <b>breed</b>, the child inherits BOTH parents&#8217; voices — a roarer crossed with a chirper carries each of them, and its descendants drift further into the unknown with every generation. No two bloodlines sound alike, and the same creature sounds identical for every explorer who holds its code.',
+  '⚔ THE FIGHT HAS A SOUND — duels and conquests were nearly silent. Every blow now lands with weight, critical hits ring above the impact, and ability strikes carry their own voice.',
+  '🪐 PLANETFALL ARRIVES — dropping onto a world opens with a chord, and the world itself murmurs underneath while you look out over it: wind on the tundra, surf on the ocean shelves, a low furnace on the magma seas.',
+  '💡 THE GAME TELLS YOU WHAT TO DO NEXT — when nothing has moved for a while, the objective chip stops repeating your goal and offers a concrete next step you can actually take right now, and takes you there.'],
+ ],
+ ['🧭 Gameplay', [
+  '🚫 NO MORE DEAD TAPS — every &#8220;can&#8217;t&#8221; now names what is missing, why, and where to get it, with a button that takes you there. Breed and Feed wear their shortfall on the button before you press them, and a blocked action sounds different from a successful one.',
+  '⚖ HONEST CONQUEST ODDS — the win estimate was a rough power comparison that could read 50% when the truth was zero, printed beside a warning that losing costs your champion forever. It now runs the real fight hundreds of times behind the scenes and reports what actually happens: Favored, Even, Dangerous or Overwhelming, with the reason why.',
+  '🧬 CARE COUNTS — creatures now gain experience from a welcome meal, a taste discovered, a successful union, a first-of-its-kind lineage, a bout survived, a fight taken to the wire and a conquest lost, not from victories alone.',
+  '🔮 BREEDING SHOWS ITS PROMISE — a mate&#8217;s row now previews the power band and the rarity a child could reach. Never the exact result: the reveal is the point.',
+  '✦ WORLDS NAME THEIR MOST NOTABLE RESIDENT, and every creature card speaks its temperament.'],
+ ],
+ ['🖱 UI Enhancements', [
+  '🔊 TWO NEW SWITCHES — Settings › Audio can silence creature voices and battle sound independently. Both start on.'],
+ ],
+]},
 {v:'1.7.21', title:'Right Values', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🌍 EARTH REALLY KEEPS ITS HISTORY — the last fix only held if you skipped training early. Training step 4 asks you to re-chart Earth, so on any completed run your original entry was quietly replaced by a fresh one. Your ☆ favourite, discovery date, badge and notes now merge back onto it every time, and they ride the save so a mid-training reload keeps them too.',
