@@ -1,0 +1,15 @@
+{
+  "bytes": 1909672,
+  "lines": 26421,
+  "sha256": "bb64ecabe9d0592018da161f417eba2c9d0e2a0f2a94f13599b5db71d29825dc",
+  "innerHTML_assignments": 95,
+  "insertAdjacentHTML": 2,
+  "backdrop_filter": 85,
+  "blur_tokens": 100,
+  "box_shadow": 97,
+  "setInterval": 6,
+  "requestAnimationFrame": 8,
+  "addEventListener": 150,
+  "eval": 0,
+  "newFunction": 0
+}

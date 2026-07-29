@@ -1,0 +1,1377 @@
+{
+ "iphone-se": [
+  {
+   "step": 1,
+   "text": "Welcome to Sol, Dakk — humanity’s cradle and your first charter. The order asks one thing ",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 2,
+   "text": "First, find home. Drag and zoom to Earth — the blue world, third from the Sun — and tap it",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 3,
+   "text": "This is a survey card — every world, star and galaxy has one: atmosphere, climate, life, h",
+   "spot": {
+    "x": 158,
+    "y": 493
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 4,
+   "text": "Chart it. Tap + Add to Star Atlas on Earth’s card — the Atlas is how you find your way bac",
+   "spot": {
+    "x": 114,
+    "y": 384
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 5,
+   "text": "Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock — or the right ",
+   "spot": {
+    "x": 316,
+    "y": 585
+   },
+   "spotTop": "#logbtn",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 6,
+   "text": "Now stand on it. Press Land on Earth’s card — home never waves you off. Planetside opens: ",
+   "spot": {
+    "x": 158,
+    "y": 502
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": {
+     "z": "22",
+     "onscreen": 100,
+     "reach": 15,
+     "blockedBy": [
+      "#panel(35)",
+      "#tutbox(6)"
+     ]
+    },
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 7,
+   "text": "A training cache just arrived: three Earth beasts and three Earth flora, on loan from the ",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": {
+     "z": "22",
+     "onscreen": 100,
+     "reach": 0,
+     "blockedBy": [
+      "#vistabox(48)"
+     ]
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": {
+     "z": "44",
+     "onscreen": 98,
+     "reach": 75,
+     "blockedBy": [
+      "#tutbox(10)",
+      "#tut-skip(2)"
+     ]
+    },
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 7,
+   "stuck": true,
+   "why": "A training cache just arrived: three Earth beasts and three Earth flora, on loan from the ",
+   "hadSpot": false,
+   "hadBtn": false
+  }
+ ],
+ "iphone-14-pro": [
+  {
+   "step": 1,
+   "text": "Welcome to Sol, Dakk — humanity’s cradle and your first charter. The order asks one thing ",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 2,
+   "text": "First, find home. Drag and zoom to Earth — the blue world, third from the Sun — and tap it",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 3,
+   "text": "This is a survey card — every world, star and galaxy has one: atmosphere, climate, life, h",
+   "spot": {
+    "x": 158,
+    "y": 586
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 4,
+   "text": "Chart it. Tap + Add to Star Atlas on Earth’s card — the Atlas is how you find your way bac",
+   "spot": {
+    "x": 114,
+    "y": 177
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 5,
+   "text": "Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock — or the right ",
+   "spot": {
+    "x": 325,
+    "y": 770
+   },
+   "spotTop": "#logbtn",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 6,
+   "text": "Now stand on it. Press Land on Earth’s card — home never waves you off. Planetside opens: ",
+   "spot": {
+    "x": 158,
+    "y": 502
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": {
+     "z": "22",
+     "onscreen": 100,
+     "reach": 17,
+     "blockedBy": [
+      "#panel(40)"
+     ]
+    },
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 7,
+   "text": "A training cache just arrived: three Earth beasts and three Earth flora, on loan from the ",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": {
+     "z": "22",
+     "onscreen": 100,
+     "reach": 0,
+     "blockedBy": [
+      "#vistabox(48)"
+     ]
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": {
+     "z": "44",
+     "onscreen": 99,
+     "reach": 75,
+     "blockedBy": [
+      "#tutbox(12)"
+     ]
+    },
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 7,
+   "stuck": true,
+   "why": "A training cache just arrived: three Earth beasts and three Earth flora, on loan from the ",
+   "hadSpot": false,
+   "hadBtn": false
+  }
+ ],
+ "iphone-15-pmax": [
+  {
+   "step": 1,
+   "text": "Welcome to Sol, Dakk — humanity’s cradle and your first charter. The order asks one thing ",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 2,
+   "text": "First, find home. Drag and zoom to Earth — the blue world, third from the Sun — and tap it",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 3,
+   "text": "This is a survey card — every world, star and galaxy has one: atmosphere, climate, life, h",
+   "spot": {
+    "x": 158,
+    "y": 626
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 4,
+   "text": "Chart it. Tap + Add to Star Atlas on Earth’s card — the Atlas is how you find your way bac",
+   "spot": {
+    "x": 114,
+    "y": 177
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 5,
+   "text": "Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock — or the right ",
+   "spot": {
+    "x": 343,
+    "y": 850
+   },
+   "spotTop": "#logbtn",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 6,
+   "text": "Now stand on it. Press Land on Earth’s card — home never waves you off. Planetside opens: ",
+   "spot": {
+    "x": 158,
+    "y": 483
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": {
+     "z": "22",
+     "onscreen": 100,
+     "reach": 17,
+     "blockedBy": [
+      "#panel(40)"
+     ]
+    },
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 7,
+   "text": "A training cache just arrived: three Earth beasts and three Earth flora, on loan from the ",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": {
+     "z": "22",
+     "onscreen": 100,
+     "reach": 0,
+     "blockedBy": [
+      "#vistabox(48)"
+     ]
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": {
+     "z": "44",
+     "onscreen": 99,
+     "reach": 75,
+     "blockedBy": [
+      "#tutbox(10)",
+      "#tut-skip(2)"
+     ]
+    },
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 7,
+   "stuck": true,
+   "why": "A training cache just arrived: three Earth beasts and three Earth flora, on loan from the ",
+   "hadSpot": false,
+   "hadBtn": false
+  }
+ ],
+ "galaxy-s8": [
+  {
+   "step": 1,
+   "text": "Welcome to Sol, Dakk — humanity’s cradle and your first charter. The order asks one thing ",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 2,
+   "text": "First, find home. Drag and zoom to Earth — the blue world, third from the Sun — and tap it",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 3,
+   "text": "This is a survey card — every world, star and galaxy has one: atmosphere, climate, life, h",
+   "spot": {
+    "x": 158,
+    "y": 539
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 4,
+   "text": "Chart it. Tap + Add to Star Atlas on Earth’s card — the Atlas is how you find your way bac",
+   "spot": {
+    "x": 114,
+    "y": 384
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 5,
+   "text": "Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock — or the right ",
+   "spot": {
+    "x": 308,
+    "y": 658
+   },
+   "spotTop": "#logbtn",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 6,
+   "text": "Now stand on it. Press Land on Earth’s card — home never waves you off. Planetside opens: ",
+   "spot": {
+    "x": 158,
+    "y": 502
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": {
+     "z": "22",
+     "onscreen": 100,
+     "reach": 0,
+     "blockedBy": [
+      "#panel(48)"
+     ]
+    },
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 7,
+   "text": "A training cache just arrived: three Earth beasts and three Earth flora, on loan from the ",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": {
+     "z": "22",
+     "onscreen": 100,
+     "reach": 0,
+     "blockedBy": [
+      "#vistabox(48)"
+     ]
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": {
+     "z": "44",
+     "onscreen": 98,
+     "reach": 75,
+     "blockedBy": [
+      "#tutbox(10)",
+      "#tut-skip(2)"
+     ]
+    },
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 7,
+   "stuck": true,
+   "why": "A training cache just arrived: three Earth beasts and three Earth flora, on loan from the ",
+   "hadSpot": false,
+   "hadBtn": false
+  }
+ ],
+ "ipad-mini": [
+  {
+   "step": 1,
+   "text": "Welcome to Sol, Dakk — humanity’s cradle and your first charter. The order asks one thing ",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 2,
+   "text": "First, find home. Drag and zoom to Earth — the blue world, third from the Sun — and tap it",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 3,
+   "text": "This is a survey card — every world, star and galaxy has one: atmosphere, climate, life, h",
+   "spot": {
+    "x": 476,
+    "y": 402
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 4,
+   "text": "Chart it. Tap + Add to Star Atlas on Earth’s card — the Atlas is how you find your way bac",
+   "spot": {
+    "x": 432,
+    "y": 177
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 5,
+   "text": "Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock — or the right ",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 5,
+   "stuck": true,
+   "why": "Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock — or the right ",
+   "hadSpot": false,
+   "hadBtn": false
+  }
+ ],
+ "desktop-1440": [
+  {
+   "step": 1,
+   "text": "Welcome to Sol, Dakk — humanity’s cradle and your first charter. The order asks one thing ",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 2,
+   "text": "First, find home. Drag and zoom to Earth — the blue world, third from the Sun — and tap it",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 3,
+   "text": "This is a survey card — every world, star and galaxy has one: atmosphere, climate, life, h",
+   "spot": {
+    "x": 779,
+    "y": 595
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 4,
+   "text": "Chart it. Tap + Add to Star Atlas on Earth’s card — the Atlas is how you find your way bac",
+   "spot": {
+    "x": 735,
+    "y": 180
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 5,
+   "text": "Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock — or the right ",
+   "spot": {
+    "x": 1366,
+    "y": 121
+   },
+   "spotTop": "#logbtn",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 6,
+   "text": "Now stand on it. Press Land on Earth’s card — home never waves you off. Planetside opens: ",
+   "spot": {
+    "x": 779,
+    "y": 260
+   },
+   "spotTop": "#panel",
+   "surfaces": {
+    "#panel": {
+     "z": "58",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#log": {
+     "z": "22",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 7,
+   "text": "A training cache just arrived: three Earth beasts and three Earth flora, on loan from the ",
+   "spot": null,
+   "spotTop": null,
+   "surfaces": {
+    "#panel": {
+     "z": "22",
+     "onscreen": 100,
+     "reach": 0,
+     "blockedBy": [
+      "#vistabox(48)"
+     ]
+    },
+    "#log": null,
+    "#codex": null,
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": {
+     "z": "44",
+     "onscreen": 99,
+     "reach": 92,
+     "blockedBy": [
+      "#tutbox(4)"
+     ]
+    },
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 8,
+   "text": "Fighters, breeders and medicine all live here, shelved by realm. Open a shelf, then tap an",
+   "spot": {
+    "x": 178,
+    "y": 366
+   },
+   "spotTop": "#codex",
+   "surfaces": {
+    "#panel": null,
+    "#log": null,
+    "#codex": {
+     "z": "22",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#sheet": null,
+    "#yard": null,
+    "#chpanel": null,
+    "#tray": null,
+    "#searchres": null,
+    "#reveal": null,
+    "#vistabox": null,
+    "#tutbox": {
+     "z": "50",
+     "onscreen": 100,
+     "reach": 100,
+     "blockedBy": []
+    },
+    "#pickbox": null
+   }
+  },
+  {
+   "step": 8,
+   "stuck": true,
+   "why": "Fighters, breeders and medicine all live here, shelved by realm. Open a shelf, then tap an",
+   "hadSpot": true,
+   "hadBtn": false
+  }
+ ]
+}

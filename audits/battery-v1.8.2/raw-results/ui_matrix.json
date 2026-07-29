@@ -1,0 +1,1487 @@
+[
+  {
+    "vp": [
+      320,
+      568
+    ],
+    "panel": "#chpanel",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 105,
+      "r": 312,
+      "b": 426,
+      "w": 304,
+      "h": 321
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      320,
+      568
+    ],
+    "panel": "#log",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 187.453125,
+      "r": 312,
+      "b": 426,
+      "w": 304,
+      "h": 238.546875
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      320,
+      568
+    ],
+    "panel": "#codex",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 164.875,
+      "r": 312,
+      "b": 426,
+      "w": 304,
+      "h": 261.125
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      320,
+      568
+    ],
+    "panel": "#records",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 105,
+      "r": 312,
+      "b": 426,
+      "w": 304,
+      "h": 321
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      320,
+      568
+    ],
+    "panel": "#setpanel",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 105,
+      "r": 296,
+      "b": 426,
+      "w": 288,
+      "h": 321
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      320,
+      568
+    ],
+    "panel": "#yard",
+    "opened": true,
+    "rect": {
+      "l": 0,
+      "t": 0,
+      "r": 320,
+      "b": 568,
+      "w": 320,
+      "h": 568
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      320,
+      568
+    ],
+    "summary": true,
+    "overflow": false,
+    "targets": {
+      "hpheart": {
+        "w": 43.734375,
+        "h": 46,
+        "vis": true
+      },
+      "bell": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "setbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "helpbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "recbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "chbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "logbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "codexbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "cargobtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      }
+    },
+    "errors": [],
+    "consoleErrors": []
+  },
+  {
+    "vp": [
+      375,
+      667
+    ],
+    "panel": "#chpanel",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 105,
+      "r": 367,
+      "b": 525,
+      "w": 359,
+      "h": 420
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      375,
+      667
+    ],
+    "panel": "#log",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 244.875,
+      "r": 367,
+      "b": 525,
+      "w": 359,
+      "h": 280.125
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      375,
+      667
+    ],
+    "panel": "#codex",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 244.875,
+      "r": 367,
+      "b": 525,
+      "w": 359,
+      "h": 280.125
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      375,
+      667
+    ],
+    "panel": "#records",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 105,
+      "r": 367,
+      "b": 525,
+      "w": 359,
+      "h": 420
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      375,
+      667
+    ],
+    "panel": "#setpanel",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 105,
+      "r": 351,
+      "b": 525,
+      "w": 343,
+      "h": 420
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      375,
+      667
+    ],
+    "panel": "#yard",
+    "opened": true,
+    "rect": {
+      "l": 0,
+      "t": 0,
+      "r": 375,
+      "b": 667,
+      "w": 375,
+      "h": 667
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      375,
+      667
+    ],
+    "summary": true,
+    "overflow": false,
+    "targets": {
+      "hpheart": {
+        "w": 43.734375,
+        "h": 46,
+        "vis": true
+      },
+      "bell": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "setbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "helpbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "recbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "chbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "logbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "codexbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "cargobtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      }
+    },
+    "errors": [],
+    "consoleErrors": []
+  },
+  {
+    "vp": [
+      390,
+      844
+    ],
+    "panel": "#chpanel",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 139.53125,
+      "r": 382,
+      "b": 702,
+      "w": 374,
+      "h": 562.46875
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      390,
+      844
+    ],
+    "panel": "#log",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 347.53125,
+      "r": 382,
+      "b": 702,
+      "w": 374,
+      "h": 354.46875
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      390,
+      844
+    ],
+    "panel": "#codex",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 347.53125,
+      "r": 382,
+      "b": 702,
+      "w": 374,
+      "h": 354.46875
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      390,
+      844
+    ],
+    "panel": "#records",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 105,
+      "r": 382,
+      "b": 702,
+      "w": 374,
+      "h": 597
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      390,
+      844
+    ],
+    "panel": "#setpanel",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 238,
+      "r": 366,
+      "b": 702,
+      "w": 358,
+      "h": 464
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      390,
+      844
+    ],
+    "panel": "#yard",
+    "opened": true,
+    "rect": {
+      "l": 0,
+      "t": 0,
+      "r": 390,
+      "b": 844,
+      "w": 390,
+      "h": 844
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      390,
+      844
+    ],
+    "summary": true,
+    "overflow": false,
+    "targets": {
+      "hpheart": {
+        "w": 43.734375,
+        "h": 46,
+        "vis": true
+      },
+      "bell": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "setbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "helpbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "recbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "chbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "logbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "codexbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "cargobtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      }
+    },
+    "errors": [],
+    "consoleErrors": []
+  },
+  {
+    "vp": [
+      430,
+      932
+    ],
+    "panel": "#chpanel",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 243.28125,
+      "r": 422,
+      "b": 790,
+      "w": 414,
+      "h": 546.71875
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      430,
+      932
+    ],
+    "panel": "#log",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 410,
+      "r": 422,
+      "b": 790,
+      "w": 414,
+      "h": 380
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      430,
+      932
+    ],
+    "panel": "#codex",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 410,
+      "r": 422,
+      "b": 790,
+      "w": 414,
+      "h": 380
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      430,
+      932
+    ],
+    "panel": "#records",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 105,
+      "r": 422,
+      "b": 790,
+      "w": 414,
+      "h": 685
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      430,
+      932
+    ],
+    "panel": "#setpanel",
+    "opened": true,
+    "rect": {
+      "l": 8,
+      "t": 341,
+      "r": 406,
+      "b": 790,
+      "w": 398,
+      "h": 449
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      430,
+      932
+    ],
+    "panel": "#yard",
+    "opened": true,
+    "rect": {
+      "l": 0,
+      "t": 0,
+      "r": 430,
+      "b": 932,
+      "w": 430,
+      "h": 932
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      430,
+      932
+    ],
+    "summary": true,
+    "overflow": false,
+    "targets": {
+      "hpheart": {
+        "w": 43.734375,
+        "h": 46,
+        "vis": true
+      },
+      "bell": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "setbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "helpbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "recbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "chbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "logbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "codexbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "cargobtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      }
+    },
+    "errors": [],
+    "consoleErrors": []
+  },
+  {
+    "vp": [
+      768,
+      1024
+    ],
+    "panel": "#chpanel",
+    "opened": true,
+    "rect": {
+      "l": 84,
+      "t": 345.28125,
+      "r": 684,
+      "b": 882,
+      "w": 600,
+      "h": 536.71875
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      768,
+      1024
+    ],
+    "panel": "#log",
+    "opened": true,
+    "rect": {
+      "l": 84,
+      "t": 502,
+      "r": 684,
+      "b": 882,
+      "w": 600,
+      "h": 380
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      768,
+      1024
+    ],
+    "panel": "#codex",
+    "opened": true,
+    "rect": {
+      "l": 84,
+      "t": 502,
+      "r": 684,
+      "b": 882,
+      "w": 600,
+      "h": 380
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      768,
+      1024
+    ],
+    "panel": "#records",
+    "opened": true,
+    "rect": {
+      "l": 84,
+      "t": 105,
+      "r": 684,
+      "b": 882,
+      "w": 600,
+      "h": 777
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      768,
+      1024
+    ],
+    "panel": "#setpanel",
+    "opened": true,
+    "rect": {
+      "l": 84,
+      "t": 433,
+      "r": 684,
+      "b": 882,
+      "w": 600,
+      "h": 449
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      768,
+      1024
+    ],
+    "panel": "#yard",
+    "opened": true,
+    "rect": {
+      "l": 0,
+      "t": 0,
+      "r": 768,
+      "b": 1024,
+      "w": 768,
+      "h": 1024
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      768,
+      1024
+    ],
+    "summary": true,
+    "overflow": false,
+    "targets": {
+      "hpheart": {
+        "w": 43.734375,
+        "h": 46,
+        "vis": true
+      },
+      "bell": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "setbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "helpbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "recbtn": {
+        "w": 44,
+        "h": 44,
+        "vis": true
+      },
+      "chbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "logbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "codexbtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      },
+      "cargobtn": {
+        "w": 60,
+        "h": 44,
+        "vis": true
+      }
+    },
+    "errors": [],
+    "consoleErrors": []
+  },
+  {
+    "vp": [
+      1024,
+      768
+    ],
+    "panel": "#chpanel",
+    "opened": true,
+    "rect": {
+      "l": 18,
+      "t": 185,
+      "r": 336,
+      "b": 645.796875,
+      "w": 318,
+      "h": 460.796875
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1024,
+      768
+    ],
+    "panel": "#log",
+    "opened": true,
+    "rect": {
+      "l": 706,
+      "t": 185,
+      "r": 1006,
+      "b": 354.25,
+      "w": 300,
+      "h": 169.25
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      1024,
+      768
+    ],
+    "panel": "#codex",
+    "opened": true,
+    "rect": {
+      "l": 18,
+      "t": 195,
+      "r": 338,
+      "b": 456.125,
+      "w": 320,
+      "h": 261.125
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      1024,
+      768
+    ],
+    "panel": "#records",
+    "opened": true,
+    "rect": {
+      "l": 694,
+      "t": 206,
+      "r": 1012,
+      "b": 708,
+      "w": 318,
+      "h": 502
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1024,
+      768
+    ],
+    "panel": "#setpanel",
+    "opened": true,
+    "rect": {
+      "l": 394,
+      "t": 201.5,
+      "r": 630,
+      "b": 566.5,
+      "w": 236,
+      "h": 365
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1024,
+      768
+    ],
+    "panel": "#yard",
+    "opened": true,
+    "rect": {
+      "l": 0,
+      "t": 0,
+      "r": 1024,
+      "b": 768,
+      "w": 1024,
+      "h": 768
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1024,
+      768
+    ],
+    "summary": true,
+    "overflow": false,
+    "targets": {
+      "hpheart": {
+        "w": 44.578125,
+        "h": 47,
+        "vis": true
+      },
+      "bell": {
+        "w": 34,
+        "h": 34,
+        "vis": true
+      },
+      "setbtn": {
+        "w": 34,
+        "h": 34,
+        "vis": true
+      },
+      "helpbtn": {
+        "w": 34,
+        "h": 34,
+        "vis": true
+      },
+      "recbtn": {
+        "w": 36,
+        "h": 36,
+        "vis": true
+      },
+      "chbtn": {
+        "w": 101.578125,
+        "h": 32,
+        "vis": true
+      },
+      "logbtn": {
+        "w": 111.140625,
+        "h": 32,
+        "vis": true
+      },
+      "codexbtn": {
+        "w": 126.875,
+        "h": 32,
+        "vis": true
+      },
+      "cargobtn": {
+        "w": 100.09375,
+        "h": 32,
+        "vis": true
+      }
+    },
+    "errors": [],
+    "consoleErrors": []
+  },
+  {
+    "vp": [
+      1366,
+      720
+    ],
+    "panel": "#chpanel",
+    "opened": true,
+    "rect": {
+      "l": 18,
+      "t": 185,
+      "r": 336,
+      "b": 617,
+      "w": 318,
+      "h": 432
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1366,
+      720
+    ],
+    "panel": "#log",
+    "opened": true,
+    "rect": {
+      "l": 1048,
+      "t": 185,
+      "r": 1348,
+      "b": 354.25,
+      "w": 300,
+      "h": 169.25
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      1366,
+      720
+    ],
+    "panel": "#codex",
+    "opened": true,
+    "rect": {
+      "l": 18,
+      "t": 195,
+      "r": 338,
+      "b": 456.125,
+      "w": 320,
+      "h": 261.125
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      1366,
+      720
+    ],
+    "panel": "#records",
+    "opened": true,
+    "rect": {
+      "l": 1036,
+      "t": 206,
+      "r": 1354,
+      "b": 660,
+      "w": 318,
+      "h": 454
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1366,
+      720
+    ],
+    "panel": "#setpanel",
+    "opened": true,
+    "rect": {
+      "l": 565,
+      "t": 177.5,
+      "r": 801,
+      "b": 542.5,
+      "w": 236,
+      "h": 365
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1366,
+      720
+    ],
+    "panel": "#yard",
+    "opened": true,
+    "rect": {
+      "l": 0,
+      "t": 0,
+      "r": 1366,
+      "b": 720,
+      "w": 1366,
+      "h": 720
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1366,
+      720
+    ],
+    "summary": true,
+    "overflow": false,
+    "targets": {
+      "hpheart": {
+        "w": 44.578125,
+        "h": 47,
+        "vis": true
+      },
+      "bell": {
+        "w": 34,
+        "h": 34,
+        "vis": true
+      },
+      "setbtn": {
+        "w": 34,
+        "h": 34,
+        "vis": true
+      },
+      "helpbtn": {
+        "w": 34,
+        "h": 34,
+        "vis": true
+      },
+      "recbtn": {
+        "w": 36,
+        "h": 36,
+        "vis": true
+      },
+      "chbtn": {
+        "w": 101.578125,
+        "h": 32,
+        "vis": true
+      },
+      "logbtn": {
+        "w": 111.140625,
+        "h": 32,
+        "vis": true
+      },
+      "codexbtn": {
+        "w": 126.875,
+        "h": 32,
+        "vis": true
+      },
+      "cargobtn": {
+        "w": 100.09375,
+        "h": 32,
+        "vis": true
+      }
+    },
+    "errors": [],
+    "consoleErrors": []
+  },
+  {
+    "vp": [
+      1440,
+      900
+    ],
+    "panel": "#chpanel",
+    "opened": true,
+    "rect": {
+      "l": 18,
+      "t": 185,
+      "r": 336,
+      "b": 705,
+      "w": 318,
+      "h": 520
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1440,
+      900
+    ],
+    "panel": "#log",
+    "opened": true,
+    "rect": {
+      "l": 1122,
+      "t": 185,
+      "r": 1422,
+      "b": 354.25,
+      "w": 300,
+      "h": 169.25
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      1440,
+      900
+    ],
+    "panel": "#codex",
+    "opened": true,
+    "rect": {
+      "l": 18,
+      "t": 195,
+      "r": 338,
+      "b": 456.125,
+      "w": 320,
+      "h": 261.125
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      1440,
+      900
+    ],
+    "panel": "#records",
+    "opened": true,
+    "rect": {
+      "l": 1110,
+      "t": 300,
+      "r": 1428,
+      "b": 840,
+      "w": 318,
+      "h": 540
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1440,
+      900
+    ],
+    "panel": "#setpanel",
+    "opened": true,
+    "rect": {
+      "l": 602,
+      "t": 267.5,
+      "r": 838,
+      "b": 632.5,
+      "w": 236,
+      "h": 365
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1440,
+      900
+    ],
+    "panel": "#yard",
+    "opened": true,
+    "rect": {
+      "l": 0,
+      "t": 0,
+      "r": 1440,
+      "b": 900,
+      "w": 1440,
+      "h": 900
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1440,
+      900
+    ],
+    "summary": true,
+    "overflow": false,
+    "targets": {
+      "hpheart": {
+        "w": 44.578125,
+        "h": 47,
+        "vis": true
+      },
+      "bell": {
+        "w": 34,
+        "h": 34,
+        "vis": true
+      },
+      "setbtn": {
+        "w": 34,
+        "h": 34,
+        "vis": true
+      },
+      "helpbtn": {
+        "w": 34,
+        "h": 34,
+        "vis": true
+      },
+      "recbtn": {
+        "w": 36,
+        "h": 36,
+        "vis": true
+      },
+      "chbtn": {
+        "w": 101.578125,
+        "h": 32,
+        "vis": true
+      },
+      "logbtn": {
+        "w": 111.140625,
+        "h": 32,
+        "vis": true
+      },
+      "codexbtn": {
+        "w": 126.875,
+        "h": 32,
+        "vis": true
+      },
+      "cargobtn": {
+        "w": 100.09375,
+        "h": 32,
+        "vis": true
+      }
+    },
+    "errors": [],
+    "consoleErrors": []
+  },
+  {
+    "vp": [
+      1920,
+      1080
+    ],
+    "panel": "#chpanel",
+    "opened": true,
+    "rect": {
+      "l": 18,
+      "t": 185,
+      "r": 398,
+      "b": 691.46875,
+      "w": 380,
+      "h": 506.46875
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1920,
+      1080
+    ],
+    "panel": "#log",
+    "opened": true,
+    "rect": {
+      "l": 1502,
+      "t": 185,
+      "r": 1902,
+      "b": 337,
+      "w": 400,
+      "h": 152
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      1920,
+      1080
+    ],
+    "panel": "#codex",
+    "opened": true,
+    "rect": {
+      "l": 18,
+      "t": 195,
+      "r": 418,
+      "b": 420.5,
+      "w": 400,
+      "h": 225.5
+    },
+    "inside": true,
+    "closeCandidate": false
+  },
+  {
+    "vp": [
+      1920,
+      1080
+    ],
+    "panel": "#records",
+    "opened": true,
+    "rect": {
+      "l": 1528,
+      "t": 480,
+      "r": 1908,
+      "b": 1020,
+      "w": 380,
+      "h": 540
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1920,
+      1080
+    ],
+    "panel": "#setpanel",
+    "opened": true,
+    "rect": {
+      "l": 842,
+      "t": 357.5,
+      "r": 1078,
+      "b": 722.5,
+      "w": 236,
+      "h": 365
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1920,
+      1080
+    ],
+    "panel": "#yard",
+    "opened": true,
+    "rect": {
+      "l": 0,
+      "t": 0,
+      "r": 1920,
+      "b": 1080,
+      "w": 1920,
+      "h": 1080
+    },
+    "inside": true,
+    "closeCandidate": true
+  },
+  {
+    "vp": [
+      1920,
+      1080
+    ],
+    "summary": true,
+    "overflow": false,
+    "targets": {
+      "hpheart": {
+        "w": 44.578125,
+        "h": 47,
+        "vis": true
+      },
+      "bell": {
+        "w": 34,
+        "h": 34,
+        "vis": true
+      },
+      "setbtn": {
+        "w": 34,
+        "h": 34,
+        "vis": true
+      },
+      "helpbtn": {
+        "w": 34,
+        "h": 34,
+        "vis": true
+      },
+      "recbtn": {
+        "w": 36,
+        "h": 36,
+        "vis": true
+      },
+      "chbtn": {
+        "w": 101.578125,
+        "h": 32,
+        "vis": true
+      },
+      "logbtn": {
+        "w": 111.140625,
+        "h": 32,
+        "vis": true
+      },
+      "codexbtn": {
+        "w": 126.875,
+        "h": 32,
+        "vis": true
+      },
+      "cargobtn": {
+        "w": 100.09375,
+        "h": 32,
+        "vis": true
+      }
+    },
+    "errors": [],
+    "consoleErrors": []
+  }
+]

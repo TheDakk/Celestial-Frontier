@@ -1,0 +1,80 @@
+TRAINING REACHABILITY — CF1802-01
+Walks the real 21-step Field Training on each viewport. At every step, for every visible surface,
+samples a 7x9 grid inside its on-screen rect and asks document.elementFromPoint who wins the hit
+test. "reachable = N%" is the fraction of sample points where the element (or a descendant) is
+topmost. 0% means nothing inside it can be pressed.
+Harness: harness/tutreach3.mjs  (surface-level data: data/tutreach.json, from tutreach2.mjs)
+
+######## iphone-14-pro 393x852 ########
+  --- step 1: Welcome to Sol, Dakk ...
+      #codexbtn  z=14  rect=103,748,60,44   reachable= 95%  #cosmos(3)
+      #logbtn    z=14  rect=295,748,60,44   reachable= 95%  #cosmos(3)
+  --- step 3: This is a survey card ...
+      #panel     z=58  rect=8,325,300,521   reachable=100%
+      #codexbtn  z=14  rect=103,748,60,44   reachable=  0%  #panel(63)   <-- FULLY BURIED
+      #logbtn    z=14  rect=295,748,60,44   reachable= 83%  #panel(9) #cosmos(2)
+  --- step 4: Chart it. Tap + Add to Star Atlas ...
+      #panel     z=58  rect=8,61,300,478    reachable=100%
+      #codexbtn  z=14  reachable= 95%       (the card scrolls up here -- the only gap in the wall)
+      #logbtn    z=14  reachable= 95%
+  --- step 5: Open the Star Atlas (the dock) ...
+      #panel     z=58  rect=8,287,300,559   reachable=100%
+      #codexbtn  z=14  reachable=  0%  #panel(63)   <-- FULLY BURIED
+      #logbtn    z=14  reachable= 83%  #panel(9)
+  --- step 6: Press Land on Earth's card ...
+      #panel     z=58  rect=8,306,300,540   reachable=100%
+      #log       z=22  rect=8,352,377,358   reachable= 14%  #panel(54)   <-- mostly buried
+      #codexbtn  z=14  reachable=  0%  #panel(63)   <-- FULLY BURIED
+      #logbtn    z=14  reachable= 83%  #panel(9)
+  --- step 7: A training cache just arrived ... open your Compendium ...
+      #panel     z=22  reachable=  0%  #vistabox(63)     (by design -- body.vista drops it to 22)
+      #codexbtn  z=14  reachable=  0%  #vistabox(63)
+      #logbtn    z=14  reachable=  0%  #vistabox(63)
+
+######## galaxy-s8 360x740 ########
+  step 3-6:  #codexbtn reachable=  0%  #panel(63)     <-- FULLY BURIED at every step
+             #logbtn   reachable= 54%  #panel(27)
+             #log      reachable= 14%  #panel(54)     (step 6, once opened)
+             #panel    reachable=100%
+
+######## iphone-se 375x667 ########
+  step 3-6:  #codexbtn reachable=  0%  #panel(63)     <-- FULLY BURIED at every step
+             #logbtn   reachable= 68%  #panel(18)
+             #log      reachable= 22%  #panel(42) #tutbox(5)   (step 6)
+             #panel    reachable=100%
+
+######## desktop-1440 1440x900 ########
+  step 1-6:  #codexbtn z=8  rect=18,147,127,32     reachable=100%   at every step
+             #logbtn   z=8  rect=1310,105,112,32   reachable=100%   at every step
+             #log      z=22 rect=1122,185,300,222  reachable=100%
+             #panel    z=58 rect=641,64,300,574    reachable=100%
+  -- no overlap at all: #panel sits at x=641, the dock at x=18 and x=1310.
+  -- this is why neither harness saw it.
+
+MECHANISM
+  line 1841   body.training:not(.vista) #panel{z-index:58}
+  line 1018   #codexbtn{... right:18px; z-index:8}      (z-index:14 on coarse-pointer/bottom dock)
+  line 1011   #logbtn  {... right:18px; z-index:8}
+  line 1280   #codex{... right:18px; z-index:22; width:320px}
+  line 1374   #log  {... right:18px; z-index:22; width:300px}
+  line 1518   @media (max-width:900px){ #codexbtn,#logbtn,#codex,#log,#cargobtn{right:14px} }
+  line 1528   @media (max-width:900px){ #panel{width:min(300px,calc(100vw - 20px))} }
+  line 1529   @media (max-width:900px){ #codex,#log{width:min(300px,calc(100vw - 20px))} }
+  Under 900px the panel and the two boards get the same width at the same right offset, so they
+  occupy an identical band and z-index decides outright. Above 900px they never overlap.
+
+FLEET CORROBORATION -- training stall points by step, same harness across five rounds
+  v1.7.15  {2:4, 6:3}
+  v1.7.18  {2:1, 7:2}
+  v1.7.19  {2:4, 7:2}
+  v1.7.20  {2:4, 7:2}
+  v1.8.2   {2:1, 5:5, 7:3, 8:8}      <-- steps 5 and 8 are NEW
+  Step 5 = atlas-open (spot #logbtn, allow #logbtn/#log)
+  Step 8 = specimen   (spot #codex,  allow #codex/#codexbtn)
+  Both are steps whose lesson surface is a board.
+
+NOTE ON A NUMBER THAT IS *NOT* A FINDING
+  tutorialCompleted is 0/498 in this round -- and 0.0% in ALL SIX audited rounds, including builds
+  whose own CI reported "training sims 100/100, zero stalls". The bot has never finished training.
+  That is a harness limit, not a build regression. The reportable signal is the stall-point
+  DISTRIBUTION, which is comparable across rounds under an unchanged harness.

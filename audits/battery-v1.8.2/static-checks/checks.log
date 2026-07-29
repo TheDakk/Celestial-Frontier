@@ -1,0 +1,4 @@
+PASS  script syntax (node --check)
+PASS  css brace balance  — 2 { vs 2 }
+PASS  no duplicate element ids  — 157 ids
+PASS  no Math.random/Date.now in domain modules  — clean

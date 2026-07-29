@@ -1,0 +1,462 @@
+{
+  "affixes": {
+    "result": {
+      "n": 1000000,
+      "invalid": 0,
+      "counts": {
+        "contact": 166835,
+        "heal": 166731,
+        "strike": 166869,
+        "yield": 166809,
+        "scut": 166447,
+        "land": 166309
+      }
+    },
+    "errors": [],
+    "console": []
+  },
+  "audioLifecycle": {
+    "soundOff": {
+      "before": {
+        "starts": 2,
+        "stops": 0,
+        "loops": 1,
+        "events": [
+          [
+            "start",
+            "osc",
+            0,
+            false,
+            0.16
+          ],
+          [
+            "start",
+            "buffer",
+            0,
+            true,
+            440
+          ]
+        ]
+      },
+      "after": {
+        "starts": 2,
+        "stops": 0,
+        "loops": 1,
+        "events": [
+          [
+            "start",
+            "osc",
+            0,
+            false,
+            0.16
+          ],
+          [
+            "start",
+            "buffer",
+            0,
+            true,
+            440
+          ]
+        ]
+      }
+    },
+    "hidden": {
+      "starts": 2,
+      "stops": 2,
+      "loops": 1,
+      "events": [
+        [
+          "start",
+          "osc",
+          0,
+          false,
+          0.24
+        ],
+        [
+          "start",
+          "buffer",
+          0,
+          true,
+          440
+        ],
+        [
+          "stop",
+          "buffer",
+          0
+        ],
+        [
+          "stop",
+          "osc",
+          0
+        ]
+      ]
+    },
+    "hiddenConfigurable": true,
+    "hiddenError": null,
+    "saved": {
+      "vce": 0,
+      "cbx": 0,
+      "snd": 1
+    },
+    "reloadUI": {
+      "voice": "Off",
+      "combat": "Off",
+      "sound": "On"
+    },
+    "errors": [],
+    "console": []
+  },
+  "careXp": {
+    "feed": {
+      "likes": [
+        "fer",
+        "agi"
+      ],
+      "floraCount": 3,
+      "ftypes": [
+        "agi",
+        "agi",
+        "fer"
+      ],
+      "xp": [
+        0,
+        3,
+        4,
+        7
+      ],
+      "deltas": [
+        3,
+        1,
+        3
+      ],
+      "results": [
+        {
+          "ok": true,
+          "pois": 0.03875000000000001,
+          "pref": "loved",
+          "ftype": "agi",
+          "ev": {
+            "d": "is delighted, bonding to you and toughening up",
+            "fed": 2
+          },
+          "delta": 2,
+          "gut": null,
+          "mended": false,
+          "wounded": false,
+          "cond": {
+            "h": 0,
+            "label": "Healthy",
+            "col": "#7fe6a0"
+          }
+        },
+        {
+          "ok": true,
+          "pois": 0.03375,
+          "pref": "loved",
+          "ftype": "agi",
+          "ev": {
+            "d": "is delighted, bonding to you and toughening up",
+            "fed": 2
+          },
+          "delta": 2,
+          "gut": null,
+          "mended": false,
+          "wounded": false,
+          "cond": {
+            "h": 0,
+            "label": "Healthy",
+            "col": "#7fe6a0"
+          }
+        },
+        {
+          "ok": true,
+          "pois": 0.12875000000000003,
+          "pref": "loved",
+          "ftype": "fer",
+          "ev": {
+            "d": "is delighted, bonding to you and toughening up",
+            "fed": 2
+          },
+          "delta": 2,
+          "gut": null,
+          "mended": false,
+          "wounded": false,
+          "cond": {
+            "h": 0,
+            "label": "Healthy",
+            "col": "#7fe6a0"
+          }
+        }
+      ],
+      "level": 1
+    },
+    "breed": {
+      "ok": true,
+      "parentXpAfter": 7,
+      "parentDelta": 7,
+      "bornXp": 0,
+      "born": "Velyxan"
+    },
+    "savedFirstLedgerCount": 3,
+    "errors": [],
+    "console": []
+  },
+  "questDenial": {
+    "normalChip": {
+      "chip": "\ud83d\udcdc\nMake planetfall\n\u00b7 0 / 1",
+      "go": ""
+    },
+    "questLog": {
+      "visible": true,
+      "text": "QUEST LOG\n\u2b06 Make planetfall on 2 worlds of Sol\n0 / 2\n\ud83d\udcdc Make planetfall\n0 / 1\n\ud83d\udcdc Open the Charters board",
+      "rect": {
+        "l": 8,
+        "t": 515.3125,
+        "r": 382,
+        "b": 648,
+        "w": 374,
+        "h": 132.6875
+      }
+    },
+    "denialSemantics": {
+      "aria": "true",
+      "disabled": false,
+      "tabIndex": 0,
+      "text": "Needs another fauna"
+    },
+    "keyboardActivates": true,
+    "denialText": "A union needs two of the same kingdom, and Wolf is your only fauna. Land on a living world and Discover Life to tame another.\n\ud83c\udf0d Open the Star Atlas",
+    "errors": [],
+    "console": [
+      {
+        "type": "warning",
+        "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+      }
+    ]
+  },
+  "trainingSettings": [
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "clicked": true,
+      "clickError": "",
+      "geometry": {
+        "tut": {
+          "l": 0,
+          "t": 0,
+          "r": 0,
+          "b": 0,
+          "w": 0,
+          "h": 0,
+          "vis": false
+        },
+        "settings": {
+          "l": 8,
+          "t": 105,
+          "r": 296,
+          "b": 426,
+          "w": 288,
+          "h": 321,
+          "vis": true
+        },
+        "audioTab": {
+          "l": 154.5,
+          "t": 137,
+          "r": 216.25,
+          "b": 164,
+          "w": 61.75,
+          "h": 27,
+          "vis": true
+        },
+        "audioGroup": {
+          "l": 21,
+          "t": 173,
+          "r": 283,
+          "b": 336,
+          "w": 262,
+          "h": 163,
+          "vis": true
+        }
+      },
+      "errors": [],
+      "console": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "clicked": true,
+      "clickError": "",
+      "geometry": {
+        "tut": {
+          "l": 0,
+          "t": 0,
+          "r": 0,
+          "b": 0,
+          "w": 0,
+          "h": 0,
+          "vis": false
+        },
+        "settings": {
+          "l": 8,
+          "t": 347.53125,
+          "r": 366,
+          "b": 702,
+          "w": 358,
+          "h": 354.46875,
+          "vis": true
+        },
+        "audioTab": {
+          "l": 189.5,
+          "t": 379.53125,
+          "r": 268.75,
+          "b": 406.53125,
+          "w": 79.25,
+          "h": 27,
+          "vis": true
+        },
+        "audioGroup": {
+          "l": 21,
+          "t": 415.53125,
+          "r": 353,
+          "b": 578.53125,
+          "w": 332,
+          "h": 163,
+          "vis": true
+        }
+      },
+      "errors": [],
+      "console": []
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "clicked": true,
+      "clickError": "",
+      "geometry": {
+        "tut": {
+          "l": 0,
+          "t": 0,
+          "r": 0,
+          "b": 0,
+          "w": 0,
+          "h": 0,
+          "vis": false
+        },
+        "settings": {
+          "l": 394,
+          "t": 229,
+          "r": 630,
+          "b": 539,
+          "w": 236,
+          "h": 310,
+          "vis": true
+        },
+        "audioTab": {
+          "l": 511.953125,
+          "t": 261,
+          "r": 558.46875,
+          "b": 288,
+          "w": 46.515625,
+          "h": 27,
+          "vis": true
+        },
+        "audioGroup": {
+          "l": 407,
+          "t": 297,
+          "r": 617,
+          "b": 403,
+          "w": 210,
+          "h": 106,
+          "vis": true
+        }
+      },
+      "errors": [],
+      "console": []
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "clicked": true,
+      "clickError": "",
+      "geometry": {
+        "tut": {
+          "l": 0,
+          "t": 0,
+          "r": 0,
+          "b": 0,
+          "w": 0,
+          "h": 0,
+          "vis": false
+        },
+        "settings": {
+          "l": 565,
+          "t": 229,
+          "r": 801,
+          "b": 539,
+          "w": 236,
+          "h": 310,
+          "vis": true
+        },
+        "audioTab": {
+          "l": 682.953125,
+          "t": 261,
+          "r": 729.46875,
+          "b": 288,
+          "w": 46.515625,
+          "h": 27,
+          "vis": true
+        },
+        "audioGroup": {
+          "l": 578,
+          "t": 297,
+          "r": 788,
+          "b": 403,
+          "w": 210,
+          "h": 106,
+          "vis": true
+        }
+      },
+      "errors": [],
+      "console": []
+    }
+  ],
+  "collapsedDrawers": {
+    "compendium": {
+      "openShelves": [],
+      "visibleSpecimens": 0,
+      "text": "\u2715\nAll\n\ud83d\udc3e Fauna\n\ud83c\udf3f Flora\n\ud83c\udf44 Fungi\n\ud83e\udda0 Microbes\nAll\nRare+\nLegendary+\nMythic+\n\u2697 COMPENDIUM\nSurvey a world\u2019s biosphere, then tame and scavenge its species \u2014 every catch earns its page. Your catches interbreed on their own and keep evolving as the cosmos ages \u2014 so the collection is endless. Rarest: Notable Glauornine\n6 SPECIES \u00b7 0 HYBRIDS BRED\n\ud83c\udf3f Flora\n2\n\ud83d\udc3e Land Fauna\n1\n\ud83d\udc1f Aquatic Fauna\n1\n\ud83d\udd73\ufe0f Cave Fauna\n1\n\ud83c\udf0b Extremophile Fauna\n1"
+    },
+    "shipyard": {
+      "visibleCategories": 0,
+      "text": ""
+    },
+    "errors": [],
+    "console": []
+  },
+  "chaosFleet": [],
+  "payload": {
+    "v1720": {
+      "raw": 1864723,
+      "compressed": 639536,
+      "gzip": 637577,
+      "audioAssets": []
+    },
+    "v182": {
+      "raw": 1909672,
+      "compressed": 654572,
+      "gzip": 652545,
+      "audioAssets": []
+    },
+    "rawDelta": 44949,
+    "gzipDelta": 14968,
+    "zipDelta": 22875
+  }
+}

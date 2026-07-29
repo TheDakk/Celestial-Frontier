@@ -1,0 +1,1672 @@
+{
+  "core": {
+    "pageErrors": [],
+    "console": [],
+    "creatures": {
+      "initial": 100000,
+      "hybrids": 60000,
+      "bad": [],
+      "badCount": 0,
+      "tiers": {
+        "0": 19090,
+        "1": 24767,
+        "2": 23341,
+        "3": 16153,
+        "4": 8942,
+        "5": 4467,
+        "6": 2208,
+        "7": 761,
+        "8": 225,
+        "9": 40,
+        "10": 6
+      },
+      "maxPower": 597,
+      "breedMismatch": 0,
+      "duelMismatch": 0,
+      "codeFails": 0
+    },
+    "mirror": {
+      "n": 50000,
+      "A": 24940,
+      "B": 24916,
+      "draw": 144,
+      "errors": 0
+    },
+    "randomDuels": {
+      "n": 100000,
+      "A": 49880,
+      "B": 49886,
+      "draw": 234,
+      "errors": 0
+    },
+    "systems": {
+      "systems": 10000,
+      "planets": 28237,
+      "moons": 0,
+      "invalid": 0
+    },
+    "affixes": {
+      "n": 1000000,
+      "invalid": 1000000,
+      "counts": {}
+    }
+  },
+  "audio": {
+    "pageErrors": [],
+    "console": [],
+    "voices": {
+      "rows": [
+        {
+          "name": "Wolf",
+          "voice": {
+            "kind": "roar",
+            "f0": 189.93506493506493,
+            "rich": 0.8075,
+            "nz": 0.3,
+            "vib": 4.5,
+            "vibD": 0.03,
+            "dur": 0.598125,
+            "sweep": -0.3
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Chimpanzee",
+          "voice": {
+            "kind": "hoot",
+            "f0": 276.9230769230769,
+            "rich": 0.6875,
+            "nz": 0.18,
+            "vib": 7,
+            "vibD": 0.06,
+            "dur": 0.36,
+            "sweep": 0.18
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Sparrow",
+          "voice": {
+            "kind": "chirp",
+            "f0": 3068.181818181818,
+            "rich": 0.345,
+            "nz": 0.06,
+            "vib": 14,
+            "vibD": 0.16,
+            "dur": 0.21175,
+            "sweep": 0.55
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Fruit Bat",
+          "voice": {
+            "kind": "chirp",
+            "f0": 4190.082644628099,
+            "rich": 0.152,
+            "nz": 0.05,
+            "vib": 22,
+            "vibD": 0.2,
+            "dur": 0.10875,
+            "sweep": -0.6
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Komodo Dragon",
+          "voice": {
+            "kind": "hiss",
+            "f0": 921.8181818181818,
+            "rich": 0.19,
+            "nz": 0.88,
+            "vib": 2,
+            "vibD": 0.02,
+            "dur": 0.54375,
+            "sweep": -0.06
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Rattlesnake",
+          "voice": {
+            "kind": "hiss",
+            "f0": 581.8181818181819,
+            "rich": 0.085,
+            "nz": 0.95,
+            "vib": 1.5,
+            "vibD": 0.01,
+            "dur": 0.69,
+            "sweep": -0.04
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Bullfrog",
+          "voice": {
+            "kind": "croak",
+            "f0": 265.90909090909093,
+            "rich": 0.6649999999999999,
+            "nz": 0.28,
+            "vib": 26,
+            "vibD": 0.3,
+            "dur": 0.36975,
+            "sweep": -0.1
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Green Sea Turtle",
+          "voice": {
+            "kind": "grunt",
+            "f0": 198.7012987012987,
+            "rich": 0.51,
+            "nz": 0.35,
+            "vib": 3,
+            "vibD": 0.02,
+            "dur": 0.345,
+            "sweep": -0.16
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Salmon",
+          "voice": {
+            "kind": "thrum",
+            "f0": 81.81818181818181,
+            "rich": 0.33249999999999996,
+            "nz": 0.42,
+            "vib": 5,
+            "vibD": 0.04,
+            "dur": 0.26099999999999995,
+            "sweep": -0.1
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Humpback Whale",
+          "voice": {
+            "kind": "song",
+            "f0": 120.90909090909089,
+            "rich": 0.47250000000000003,
+            "nz": 0.1,
+            "vib": 2.2,
+            "vibD": 0.1,
+            "dur": 1.1275,
+            "sweep": 0.75
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Giant Squid",
+          "voice": {
+            "kind": "jet",
+            "f0": 190.90909090909088,
+            "rich": 0.1425,
+            "nz": 0.92,
+            "vib": 1,
+            "vibD": 0.01,
+            "dur": 0.32625,
+            "sweep": -0.35
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Honey Bee",
+          "voice": {
+            "kind": "buzz",
+            "f0": 352.4475524475524,
+            "rich": 0.6875,
+            "nz": 0.22,
+            "vib": 58,
+            "vibD": 0.42,
+            "dur": 0.37799999999999995,
+            "sweep": 0
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Tarantula",
+          "voice": {
+            "kind": "rasp",
+            "f0": 360.6060606060607,
+            "rich": 0.315,
+            "nz": 0.7,
+            "vib": 40,
+            "vibD": 0.34,
+            "dur": 0.26649999999999996,
+            "sweep": -0.05
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Blue Crab",
+          "voice": {
+            "kind": "click",
+            "f0": 660.8391608391609,
+            "rich": 0.126,
+            "nz": 0.55,
+            "vib": 0,
+            "vibD": 0,
+            "dur": 0.12299999999999998,
+            "sweep": -0.2
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Garden Snail",
+          "voice": {
+            "kind": "thrum",
+            "f0": 204.54545454545456,
+            "rich": 0.21000000000000002,
+            "nz": 0.3,
+            "vib": 1,
+            "vibD": 0.02,
+            "dur": 0.30749999999999994,
+            "sweep": -0.08
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Moon Jelly",
+          "voice": {
+            "kind": "pulse",
+            "f0": 79.99999999999999,
+            "rich": 0.125,
+            "nz": 0.4,
+            "vib": 1.6,
+            "vibD": 0.14,
+            "dur": 0.6299999999999999,
+            "sweep": 0.1
+          },
+          "deterministic": true
+        },
+        {
+          "name": "Coral",
+          "voice": {
+            "kind": "pulse",
+            "f0": 70.66115702479338,
+            "rich": 0.102,
+            "nz": 0.34,
+            "vib": 0.8,
+            "vibD": 0.08,
+            "dur": 0.9199999999999999,
+            "sweep": 0.04
+          },
+          "deterministic": true
+        }
+      ],
+      "shared": true,
+      "drift": [
+        {
+          "anchor": 1,
+          "v": {
+            "kind": "roar",
+            "f0": 245.45454545454544,
+            "rich": 0.7224999999999999,
+            "nz": 0.3,
+            "vib": 4.5,
+            "vibD": 0.03,
+            "dur": 0.6325,
+            "sweep": -0.3
+          }
+        },
+        {
+          "anchor": 0.85,
+          "v": {
+            "kind": "roar",
+            "f0": 724.0909090909091,
+            "rich": 0.6523749999999999,
+            "nz": 0.264,
+            "vib": 5.925000000000001,
+            "vibD": 0.0495,
+            "dur": 0.5755750000000001,
+            "sweep": -0.17249999999999996
+          }
+        },
+        {
+          "anchor": 0.5,
+          "v": {
+            "kind": "chirp",
+            "f0": 1840.909090909091,
+            "rich": 0.48874999999999996,
+            "nz": 0.18,
+            "vib": 9.25,
+            "vibD": 0.095,
+            "dur": 0.44275,
+            "sweep": 0.12500000000000006
+          }
+        },
+        {
+          "anchor": 0.1,
+          "v": {
+            "kind": "chirp",
+            "f0": 3117.272727272727,
+            "rich": 0.3017499999999999,
+            "nz": 0.08399999999999999,
+            "vib": 13.05,
+            "vibD": 0.14700000000000002,
+            "dur": 0.29094999999999993,
+            "sweep": 0.46500000000000014
+          }
+        }
+      ]
+    },
+    "eventGrammar": {
+      "voice": {
+        "starts": 3,
+        "stops": 3,
+        "loops": 0,
+        "events": [
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            14
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            2219.3181818181815
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "buffer",
+            0.02,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.25925
+          ]
+        ]
+      },
+      "light": {
+        "starts": 5,
+        "stops": 5,
+        "loops": 0,
+        "events": [
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            14
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            2219.3181818181815
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "buffer",
+            0.02,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            65
+          ],
+          [
+            "stop",
+            "osc",
+            0.17400000000000002
+          ],
+          [
+            "start",
+            "buffer",
+            0.01,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.09
+          ]
+        ]
+      },
+      "heavy": {
+        "starts": 9,
+        "stops": 9,
+        "loops": 0,
+        "events": [
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            14
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            2219.3181818181815
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "buffer",
+            0.02,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            65
+          ],
+          [
+            "stop",
+            "osc",
+            0.17400000000000002
+          ],
+          [
+            "start",
+            "buffer",
+            0.01,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.09
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            47.5
+          ],
+          [
+            "stop",
+            "osc",
+            0.328
+          ],
+          [
+            "start",
+            "buffer",
+            0.01,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.09
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            2640
+          ],
+          [
+            "stop",
+            "osc",
+            0.23
+          ],
+          [
+            "start",
+            "osc",
+            0.03,
+            false,
+            880
+          ],
+          [
+            "stop",
+            "osc",
+            0.25
+          ]
+        ]
+      },
+      "deny": {
+        "starts": 11,
+        "stops": 11,
+        "loops": 0,
+        "events": [
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            14
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            2219.3181818181815
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "buffer",
+            0.02,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            65
+          ],
+          [
+            "stop",
+            "osc",
+            0.17400000000000002
+          ],
+          [
+            "start",
+            "buffer",
+            0.01,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.09
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            47.5
+          ],
+          [
+            "stop",
+            "osc",
+            0.328
+          ],
+          [
+            "start",
+            "buffer",
+            0.01,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.09
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            2640
+          ],
+          [
+            "stop",
+            "osc",
+            0.23
+          ],
+          [
+            "start",
+            "osc",
+            0.03,
+            false,
+            880
+          ],
+          [
+            "stop",
+            "osc",
+            0.25
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            200
+          ],
+          [
+            "stop",
+            "osc",
+            0.13
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            150
+          ],
+          [
+            "stop",
+            "osc",
+            0.17
+          ]
+        ]
+      },
+      "confirm": {
+        "starts": 13,
+        "stops": 13,
+        "loops": 0,
+        "events": [
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            14
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            2219.3181818181815
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "buffer",
+            0.02,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            65
+          ],
+          [
+            "stop",
+            "osc",
+            0.17400000000000002
+          ],
+          [
+            "start",
+            "buffer",
+            0.01,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.09
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            47.5
+          ],
+          [
+            "stop",
+            "osc",
+            0.328
+          ],
+          [
+            "start",
+            "buffer",
+            0.01,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.09
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            2640
+          ],
+          [
+            "stop",
+            "osc",
+            0.23
+          ],
+          [
+            "start",
+            "osc",
+            0.03,
+            false,
+            880
+          ],
+          [
+            "stop",
+            "osc",
+            0.25
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            200
+          ],
+          [
+            "stop",
+            "osc",
+            0.13
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            150
+          ],
+          [
+            "stop",
+            "osc",
+            0.17
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            660
+          ],
+          [
+            "stop",
+            "osc",
+            0.12
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            990
+          ],
+          [
+            "stop",
+            "osc",
+            0.15
+          ]
+        ]
+      },
+      "arrival": {
+        "starts": 17,
+        "stops": 17,
+        "loops": 0,
+        "events": [
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            14
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            2219.3181818181815
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "buffer",
+            0.02,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            65
+          ],
+          [
+            "stop",
+            "osc",
+            0.17400000000000002
+          ],
+          [
+            "start",
+            "buffer",
+            0.01,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.09
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            47.5
+          ],
+          [
+            "stop",
+            "osc",
+            0.328
+          ],
+          [
+            "start",
+            "buffer",
+            0.01,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.09
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            2640
+          ],
+          [
+            "stop",
+            "osc",
+            0.23
+          ],
+          [
+            "start",
+            "osc",
+            0.03,
+            false,
+            880
+          ],
+          [
+            "stop",
+            "osc",
+            0.25
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            200
+          ],
+          [
+            "stop",
+            "osc",
+            0.13
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            150
+          ],
+          [
+            "stop",
+            "osc",
+            0.17
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            660
+          ],
+          [
+            "stop",
+            "osc",
+            0.12
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            990
+          ],
+          [
+            "stop",
+            "osc",
+            0.15
+          ],
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            116.54094037952248
+          ],
+          [
+            "stop",
+            "osc",
+            2.02
+          ],
+          [
+            "start",
+            "osc",
+            0.08,
+            false,
+            174.81141056928374
+          ],
+          [
+            "stop",
+            "osc",
+            2.02
+          ],
+          [
+            "start",
+            "osc",
+            0.13999999999999999,
+            false,
+            233.08188075904496
+          ],
+          [
+            "stop",
+            "osc",
+            2.02
+          ],
+          [
+            "start",
+            "osc",
+            0.19999999999999998,
+            false,
+            349.6228211385675
+          ],
+          [
+            "stop",
+            "osc",
+            2.02
+          ]
+        ]
+      },
+      "ambience": {
+        "starts": 19,
+        "stops": 17,
+        "loops": 1,
+        "events": [
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            14
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            2219.3181818181815
+          ],
+          [
+            "stop",
+            "osc",
+            0.25925
+          ],
+          [
+            "start",
+            "buffer",
+            0.02,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.25925
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            65
+          ],
+          [
+            "stop",
+            "osc",
+            0.17400000000000002
+          ],
+          [
+            "start",
+            "buffer",
+            0.01,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.09
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            47.5
+          ],
+          [
+            "stop",
+            "osc",
+            0.328
+          ],
+          [
+            "start",
+            "buffer",
+            0.01,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.09
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            2640
+          ],
+          [
+            "stop",
+            "osc",
+            0.23
+          ],
+          [
+            "start",
+            "osc",
+            0.03,
+            false,
+            880
+          ],
+          [
+            "stop",
+            "osc",
+            0.25
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            200
+          ],
+          [
+            "stop",
+            "osc",
+            0.13
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            150
+          ],
+          [
+            "stop",
+            "osc",
+            0.17
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            660
+          ],
+          [
+            "stop",
+            "osc",
+            0.12
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            990
+          ],
+          [
+            "stop",
+            "osc",
+            0.15
+          ],
+          [
+            "start",
+            "osc",
+            0.02,
+            false,
+            116.54094037952248
+          ],
+          [
+            "stop",
+            "osc",
+            2.02
+          ],
+          [
+            "start",
+            "osc",
+            0.08,
+            false,
+            174.81141056928374
+          ],
+          [
+            "stop",
+            "osc",
+            2.02
+          ],
+          [
+            "start",
+            "osc",
+            0.13999999999999999,
+            false,
+            233.08188075904496
+          ],
+          [
+            "stop",
+            "osc",
+            2.02
+          ],
+          [
+            "start",
+            "osc",
+            0.19999999999999998,
+            false,
+            349.6228211385675
+          ],
+          [
+            "stop",
+            "osc",
+            2.02
+          ],
+          [
+            "start",
+            "osc",
+            0,
+            false,
+            0.16
+          ],
+          [
+            "start",
+            "buffer",
+            0,
+            true,
+            440
+          ]
+        ]
+      }
+    },
+    "toggles": {
+      "before": {
+        "v": "On",
+        "c": "On",
+        "s": "On"
+      },
+      "toggled": {
+        "v": "Off",
+        "c": "Off",
+        "save": {
+          "cfcc_save_v2": "{\"v\":4,\"epoch\":0,\"view\":{\"type\":\"star\",\"gal\":{\"x\":90,\"y\":-60,\"size\":78,\"sp\":0,\"tilt\":0.62,\"rot\":0.5,\"seed\":999,\"home\":true,\"quasar\":false,\"dwarf\":false},\"star\":{\"x\":560,\"y\":170,\"seed\":424242}},\"hp\":100,\"pstats\":{\"vit\":50,\"fer\":50,\"res\":50,\"agi\":50,\"ins\":50},\"fs\":\"\",\"tone\":\"\",\"font\":\"\",\"snd\":1,\"fx\":1,\"chart\":0,\"shake\":1,\"sv\":1,\"notif\":1,\"tips\":1,\"vol\":100,\"gt\":72,\"rm\":-1,\"cx\":0,\"vce\":1,\"cbx\":1,\"land\":[133],\"scout\":null,\"landings\":0,\"wvo\":[],\"cont\":[],\"chs\":[],\"chw\":2951,\"chp\":{},\"chacc\":[\"st-land\"],\"charters\":0,\"notifs\":[{\"id\":4,\"tt\":\"\u2b06 Chapter 1 \u2014 Off the Rock\",\"ms\":\"Sol is your charter for now. Sol is yours to learn \u2014 the rest of the sky is charts and longing. Mine the dead worlds, feed the Fabricator, and build the Jump Drive. (Pinned atop your Charters board.)\",\"t\":1785288957543,\"read\":false},{\"id\":3,\"tt\":\"Expedition Charters\",\"ms\":\"Your charter board is open (\ud83d\udcdc Charters) \u2014 your first charter is accepted: Make planetfall. New charters are accepted from the board as each one reveals the next.\",\"t\":1785288957543,\"read\":false},{\"id\":2,\"tt\":\"\u2726 Welcome to the Frontier\",\"ms\":\"Training complete. Fly far, Audio Tester \u2014 the Guide (?) is always at hand.\",\"t\":1785288957543,\"read\":false},{\"id\":1,\"tt\":\"Welcome, Audio Tester\",\"ms\":\"The frontier is yours. Your name rides on everything you discover and share.\",\"t\":1785288956906,\"read\":false}],\"me\":\"Audio Tester\",\"essence\":0,\"conq\":[[133,{\"t\":0,\"tier\":5}]],\"breeds\":0,\"breedwins\":0,\"feeds\":0,\"feedfails\":0,\"harvests\":0,\"essenceEarned\":0,\"guardians\":0,\"paragons\":0,\"nh\":-1,\"br\":0,\"setsc\":[],\"at\":1785288958444,\"cargo\":[],\"cgx\":[],\"jrn\":[],\"ctb\":\"mat\",\"seen\":[],\"minedw\":[],\"mx\":[],\"skx\":[],\"bx\":[],\"tech\":[],\"mines\":0,\"items\":[],\"eq\":{},\"ea\":{},\"crafts\":0,\"minedout\":0,\"xpf\":[],\"skims\":0,\"cosmics\":0,\"asc\":0,\"ascp\":{},\"names\":[],\"shares\":0,\"jumps\":0,\"anomalies\":0,\"anomKey\":null,\"events\":0,\"duels\":0,\"duelwins\":0,\"surveyed\":[],\"gals\":[999],\"surf\":[],\"sysv\":[],\"starK\":[],\"ptypes\":[],\"evts\":[],\"evann\":[],\"ach\":[],\"log\":[{\"id\":\"p133\",\"title\":\"Earth\",\"sub\":\"Terran World\",\"thumb\":null,\"sq\":null,\"badge\":\"Home\",\"star\":\"\",\"where\":{\"type\":\"planet\",\"gal\":{\"x\":90,\"y\":-60,\"size\":78,\"sp\":0,\"tilt\":0.62,\"rot\":0.5,\"seed\":999,\"home\":true},\"star\":{\"x\":560,\"y\":170,\"seed\":424242},\"pseed\":133},\"t\":1785288957542}],\"home\":\"p133\",\"prime\":{},\"frontier\":0,\"ending\":null,\"guide\":1,\"tut\":1,\"rn\":\"1.8.2\",\"codex\":[]}"
+        }
+      },
+      "suppression": {
+        "before": 19,
+        "afterVoice": 19,
+        "afterHit": 19
+      },
+      "ambienceBefore": {
+        "starts": 24,
+        "stops": 20
+      },
+      "soundOff": {
+        "starts": 24,
+        "stops": 22,
+        "events": [
+          [
+            "start",
+            "osc",
+            0,
+            false,
+            0.16
+          ],
+          [
+            "start",
+            "buffer",
+            0,
+            true,
+            440
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            55
+          ],
+          [
+            "stop",
+            "osc",
+            0.262
+          ],
+          [
+            "start",
+            "buffer",
+            0.01,
+            false,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0.09
+          ],
+          [
+            "start",
+            "osc",
+            0.01,
+            false,
+            2640
+          ],
+          [
+            "stop",
+            "osc",
+            0.23
+          ],
+          [
+            "start",
+            "osc",
+            0,
+            false,
+            0.16
+          ],
+          [
+            "start",
+            "buffer",
+            0,
+            true,
+            440
+          ],
+          [
+            "stop",
+            "buffer",
+            0
+          ],
+          [
+            "stop",
+            "osc",
+            0
+          ]
+        ],
+        "save": {
+          "cfcc_save_v2": "{\"v\":4,\"epoch\":0,\"view\":{\"type\":\"star\",\"gal\":{\"x\":90,\"y\":-60,\"size\":78,\"sp\":0,\"tilt\":0.62,\"rot\":0.5,\"seed\":999,\"home\":true,\"quasar\":false,\"dwarf\":false},\"star\":{\"x\":560,\"y\":170,\"seed\":424242}},\"hp\":100,\"pstats\":{\"vit\":50,\"fer\":50,\"res\":50,\"agi\":50,\"ins\":50},\"fs\":\"\",\"tone\":\"\",\"font\":\"\",\"snd\":0,\"fx\":1,\"chart\":0,\"shake\":1,\"sv\":1,\"notif\":1,\"tips\":1,\"vol\":100,\"gt\":72,\"rm\":-1,\"cx\":0,\"vce\":1,\"cbx\":1,\"land\":[133],\"scout\":null,\"landings\":0,\"wvo\":[],\"cont\":[],\"chs\":[],\"chw\":2951,\"chp\":{},\"chacc\":[\"st-land\"],\"charters\":0,\"notifs\":[{\"id\":5,\"tt\":\"\u2713 Expedition Saved\",\"ms\":\"Progress saves automatically on this device \u2014 no account needed.\",\"t\":1785288958445,\"read\":false},{\"id\":4,\"tt\":\"\u2b06 Chapter 1 \u2014 Off the Rock\",\"ms\":\"Sol is your charter for now. Sol is yours to learn \u2014 the rest of the sky is charts and longing. Mine the dead worlds, feed the Fabricator, and build the Jump Drive. (Pinned atop your Charters board.)\",\"t\":1785288957543,\"read\":false},{\"id\":3,\"tt\":\"Expedition Charters\",\"ms\":\"Your charter board is open (\ud83d\udcdc Charters) \u2014 your first charter is accepted: Make planetfall. New charters are accepted from the board as each one reveals the next.\",\"t\":1785288957543,\"read\":false},{\"id\":2,\"tt\":\"\u2726 Welcome to the Frontier\",\"ms\":\"Training complete. Fly far, Audio Tester \u2014 the Guide (?) is always at hand.\",\"t\":1785288957543,\"read\":false},{\"id\":1,\"tt\":\"Welcome, Audio Tester\",\"ms\":\"The frontier is yours. Your name rides on everything you discover and share.\",\"t\":1785288956906,\"read\":false}],\"me\":\"Audio Tester\",\"essence\":0,\"conq\":[[133,{\"t\":0,\"tier\":5}]],\"breeds\":0,\"breedwins\":0,\"feeds\":0,\"feedfails\":0,\"harvests\":0,\"essenceEarned\":0,\"guardians\":0,\"paragons\":0,\"nh\":-1,\"br\":0,\"setsc\":[],\"at\":1785288959848,\"cargo\":[],\"cgx\":[],\"jrn\":[],\"ctb\":\"mat\",\"seen\":[],\"minedw\":[],\"mx\":[],\"skx\":[],\"bx\":[],\"tech\":[],\"mines\":0,\"items\":[],\"eq\":{},\"ea\":{},\"crafts\":0,\"minedout\":0,\"xpf\":[],\"skims\":0,\"cosmics\":0,\"asc\":0,\"ascp\":{},\"names\":[],\"shares\":0,\"jumps\":0,\"anomalies\":0,\"anomKey\":null,\"events\":0,\"duels\":0,\"duelwins\":0,\"surveyed\":[],\"gals\":[999],\"surf\":[],\"sysv\":[],\"starK\":[],\"ptypes\":[],\"evts\":[],\"evann\":[],\"ach\":[],\"log\":[{\"id\":\"p133\",\"title\":\"Earth\",\"sub\":\"Terran World\",\"thumb\":null,\"sq\":null,\"badge\":\"Home\",\"star\":\"\",\"where\":{\"type\":\"planet\",\"gal\":{\"x\":90,\"y\":-60,\"size\":78,\"sp\":0,\"tilt\":0.62,\"rot\":0.5,\"seed\":999,\"home\":true},\"star\":{\"x\":560,\"y\":170,\"seed\":424242},\"pseed\":133},\"t\":1785288957542}],\"home\":\"p133\",\"prime\":{},\"frontier\":0,\"ending\":null,\"guide\":1,\"tut\":1,\"rn\":\"1.8.2\",\"codex\":[]}"
+        }
+      }
+    }
+  },
+  "ux": {
+    "pageErrors": [],
+    "console": [
+      {
+        "type": "warning",
+        "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+      },
+      {
+        "type": "warning",
+        "text": "Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+      }
+    ],
+    "initialCodex": "\u2715\nAll\n\ud83d\udc3e Fauna\n\ud83c\udf3f Flora\n\ud83c\udf44 Fungi\n\ud83e\udda0 Microbes\nAll\nRare+\nLegendary+\nMythic+\n\u2697 COMPENDIUM\nSurvey a world\u2019s biosphere, then tame and scavenge its species \u2014 every catch earns its page. Your catches interbreed on their own and keep evolving as the cosmos ages \u2014 so the collection is endless.\n1 SPECIES \u00b7 0 HYBRIDS BRED\n\ud83d\udc38 Amphibious Fauna\n1",
+    "denialButtons": {
+      "breed": "Needs another fauna",
+      "feed": "Needs flora",
+      "bAria": "true",
+      "fAria": "true"
+    },
+    "breedDenial": {
+      "text": "A union needs two of the same kingdom, and Wolf is your only fauna. Land on a living world and Discover Life to tame another.\n\ud83c\udf0d Open the Star Atlas",
+      "cta": "\ud83c\udf0d Open the Star Atlas",
+      "go": "log"
+    },
+    "breedCtaOpenedAtlas": true,
+    "feedDenial": {
+      "text": "Meals come from your own catalogue and you hold no flora yet. Land on a green world and Scavenge its plants \u2014 they feed beasts and mend you both.\n\ud83c\udf0d Open the Star Atlas",
+      "cta": "\ud83c\udf0d Open the Star Atlas"
+    },
+    "breedPreview": {
+      "rows": [
+        "Fox\nCommon \u00b7 Fauna \u00b7 stoic\nChild \u2248 166\u2013237 power \u00b7 up to Uncommon\n95% success"
+      ],
+      "hasPower": true,
+      "hasRarity": true,
+      "hasTemperament": false
+    },
+    "careXp": {
+      "before": 0,
+      "after": 0,
+      "delta": 0,
+      "result": "\ud83c\udf7d Wolf spits it out and refuses, no worse for it. It dislikes Vitality-rich flora \u2014 no change."
+    },
+    "stallChip": {
+      "exists": true,
+      "stalled": true,
+      "text": "\ud83d\udca1\nAccept a charter \u2014 First footfall: Mercury",
+      "go": "ch"
+    },
+    "questLog": {
+      "visible": null,
+      "text": null
+    }
+  },
+  "odds": {
+    "pageErrors": [],
+    "console": [],
+    "calibration": {
+      "n": 120,
+      "meanAbsError": 0.007261568858888944,
+      "maxAbsError": 0.07400000000000001,
+      "oldRatioBandMismatches": 113,
+      "rows": [
+        {
+          "i": 0,
+          "est": 0.46794871794871795,
+          "actual": 0.536734693877551,
+          "ratio": 0.500780031201248,
+          "band": "Even",
+          "trueBand": "Even",
+          "why": ""
+        },
+        {
+          "i": 1,
+          "est": 1,
+          "actual": 1,
+          "ratio": 0.573051948051948,
+          "band": "Favored",
+          "trueBand": "Favored",
+          "why": ""
+        },
+        {
+          "i": 2,
+          "est": 0.34375,
+          "actual": 0.301,
+          "ratio": 0.4675324675324675,
+          "band": "Dangerous",
+          "trueBand": "Dangerous",
+          "why": ""
+        },
+        {
+          "i": 3,
+          "est": 0.22077922077922077,
+          "actual": 0.17862674238513165,
+          "ratio": 0.5025295109612141,
+          "band": "Dangerous",
+          "trueBand": "Dangerous",
+          "why": ""
+        },
+        {
+          "i": 4,
+          "est": 0.08125,
+          "actual": 0.0715,
+          "ratio": 0.47192982456140353,
+          "band": "Overwhelming",
+          "trueBand": "Overwhelming",
+          "why": ""
+        },
+        {
+          "i": 5,
+          "est": 0,
+          "actual": 0,
+          "ratio": 0.45243619489559167,
+          "band": "Overwhelming",
+          "trueBand": "Overwhelming",
+          "why": ""
+        },
+        {
+          "i": 6,
+          "est": 0.0875,
+          "actual": 0.0985,
+          "ratio": 0.4904109589041096,
+          "band": "Overwhelming",
+          "trueBand": "Overwhelming",
+          "why": ""
+        },
+        {
+          "i": 7,
+          "est": 0.018867924528301886,
+          "actual": 0.03731719616742309,
+          "ratio": 0.5,
+          "band": "Overwhelming",
+          "trueBand": "Overwhelming",
+          "why": ""
+        },
+        {
+          "i": 8,
+          "est": 0.9625,
+          "actual": 0.974,
+          "ratio": 0.5755258126195029,
+          "band": "Favored",
+          "trueBand": "Favored",
+          "why": ""
+        },
+        {
+          "i": 9,
+          "est": 0.9875,
+          "actual": 0.9899497487437185,
+          "ratio": 0.5317725752508361,
+          "band": "Favored",
+          "trueBand": "Favored",
+          "why": ""
+        },
+        {
+          "i": 10,
+          "est": 1,
+          "actual": 1,
+          "ratio": 0.5930735930735931,
+          "band": "Favored",
+          "trueBand": "Favored",
+          "why": ""
+        },
+        {
+          "i": 11,
+          "est": 0.98125,
+          "actual": 0.994,
+          "ratio": 0.5527522935779816,
+          "band": "Favored",
+          "trueBand": "Favored",
+          "why": ""
+        },
+        {
+          "i": 12,
+          "est": 1,
+          "actual": 1,
+          "ratio": 0.7035830618892508,
+          "band": "Favored",
+          "trueBand": "Favored",
+          "why": ""
+        },
+        {
+          "i": 13,
+          "est": 0.975,
+          "actual": 0.9695,
+          "ratio": 0.5086848635235732,
+          "band": "Favored",
+          "trueBand": "Favored",
+          "why": ""
+        },
+        {
+          "i": 14,
+          "est": 0.225,
+          "actual": 0.201,
+          "ratio": 0.4860248447204969,
+          "band": "Dangerous",
+          "trueBand": "Dangerous",
+          "why": ""
+        },
+        {
+          "i": 15,
+          "est": 1,
+          "actual": 1,
+          "ratio": 0.610032362459547,
+          "band": "Favored",
+          "trueBand": "Favored",
+          "why": ""
+        },
+        {
+          "i": 16,
+          "est": 1,
+          "actual": 1,
+          "ratio": 0.6335504885993485,
+          "band": "Favored",
+          "trueBand": "Favored",
+          "why": ""
+        },
+        {
+          "i": 17,
+          "est": 1,
+          "actual": 0.9995,
+          "ratio": 0.5510688836104513,
+          "band": "Favored",
+          "trueBand": "Favored",
+          "why": ""
+        },
+        {
+          "i": 18,
+          "est": 0.0875,
+          "actual": 0.0865,
+          "ratio": 0.49094202898550726,
+          "band": "Overwhelming",
+          "trueBand": "Overwhelming",
+          "why": ""
+        },
+        {
+          "i": 19,
+          "est": 0,
+          "actual": 0,
+          "ratio": 0.4605263157894737,
+          "band": "Overwhelming",
+          "trueBand": "Overwhelming",
+          "why": ""
+        }
+      ]
+    }
+  }
+}

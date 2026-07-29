@@ -1,0 +1,61 @@
+{
+  "version": "1.8.2",
+  "title": "Steady Hands",
+  "build": "a9a13c7",
+  "source_sha256": "bb64ecabe9d0592018da161f417eba2c9d0e2a0f2a94f13599b5db71d29825dc",
+  "generated_utc": "2026-07-29T02:04:36.310417+00:00",
+  "review_outputs": [
+    "Celestial_Frontier_v1.8.2_Full_Battery_Summary.md",
+    "Celestial_Frontier_v1.8.2_Review_1_Technical_Security.md",
+    "Celestial_Frontier_v1.8.2_Review_2_Training_UI_Momentum.md",
+    "Celestial_Frontier_v1.8.2_Review_3_Creature_Audio_Fun_Personas.md",
+    "Celestial_Frontier_v1.8.2_Review_4_Performance_Release_Readiness.md"
+  ],
+  "fresh_scale": {
+    "initial_creatures": 100000,
+    "hybrids": 60000,
+    "mirror_duels": 50000,
+    "random_duels": 100000,
+    "star_systems": 10000,
+    "planets": 28237,
+    "affix_rolls_corrected": 1000000,
+    "rarity_seeds": 60000000,
+    "conquest_matchups": 120,
+    "conquest_ground_truth_runs_each": 2000,
+    "ui_panel_opens": 54,
+    "ui_viewports": 9,
+    "earth_voice_archetypes": 17
+  },
+  "confirmed_p1": [
+    "Breeding XP is awarded to a consumed parent and provides no lasting progression.",
+    "Master Sound Off does not stop an already-active ambience loop."
+  ],
+  "confirmed_p2": [
+    "Training card blocks Settings Audio at four of five tested viewports.",
+    "Actionable denial buttons use contradictory aria-disabled semantics."
+  ],
+  "strong_passes": [
+    "Core creature generation and breeding determinism",
+    "Combat fairness",
+    "Universe generation",
+    "Rarity invariant",
+    "Corrected affix generation",
+    "Save/injection hardening",
+    "Affix resurrection regression",
+    "Actionable denial CTA",
+    "Stall detector",
+    "Quest log",
+    "Conquest matchup estimator",
+    "Closed drawers",
+    "Feed-care XP",
+    "Audio determinism and hidden-tab stop",
+    "Responsive panel matrix"
+  ],
+  "limitations": [
+    "No physical iOS/iPadOS Safari run.",
+    "Audio was structurally validated but not subjectively heard by human reviewers.",
+    "No defensible new numeric rage-quit result was produced.",
+    "Full npm/jsdom suite could not be freshly reproduced because installed dependencies were absent.",
+    "Cold-boot timing attempts were invalid and excluded."
+  ]
+}

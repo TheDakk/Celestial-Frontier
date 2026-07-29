@@ -1,0 +1,199 @@
+{
+  "build": "v1.8.2 a9a13c7",
+  "sessions": 1000,
+  "health": {
+    "ok": 1000,
+    "fatal": 0,
+    "uncaughtErrors": 0,
+    "rejections": 0,
+    "storageFail": 0,
+    "stuckOverlay": 0
+  },
+  "perf": {
+    "fps": {
+      "n": 1000,
+      "min": 4.1,
+      "p10": 17.9,
+      "median": 34.8,
+      "p90": 47.5,
+      "max": 57
+    },
+    "bootMs": {
+      "n": 1000,
+      "min": 399,
+      "p10": 491,
+      "median": 581,
+      "p90": 807,
+      "max": 1657
+    },
+    "p95Frame": {
+      "n": 1000,
+      "min": 16.8,
+      "p10": 33.2,
+      "median": 50.1,
+      "p90": 216.7,
+      "max": 1450
+    },
+    "longTaskMs": {
+      "n": 1000,
+      "min": 1462,
+      "p10": 2233,
+      "median": 3420,
+      "p90": 7227,
+      "max": 80180
+    }
+  },
+  "rageQuit": {
+    "count": 10,
+    "ratePer1000": 10,
+    "allSkippedTraining": true,
+    "byPersona": {
+      "speedrunner": 4,
+      "button-masher": 3,
+      "skimmer": 3
+    },
+    "reasons": {
+      "no-progress-streak:8": 4,
+      "no-progress-streak:7": 3,
+      "no-progress-streak:6": 3
+    },
+    "sessions": [
+      {
+        "id": "D0001",
+        "persona": "speedrunner",
+        "device": "ipad-10",
+        "actions": 46,
+        "deadClicks": 21,
+        "reason": "no-progress-streak:8"
+      },
+      {
+        "id": "D0004",
+        "persona": "button-masher",
+        "device": "ipad-mini",
+        "actions": 91,
+        "deadClicks": 45,
+        "reason": "no-progress-streak:7"
+      },
+      {
+        "id": "D0018",
+        "persona": "skimmer",
+        "device": "pixel-7",
+        "actions": 91,
+        "deadClicks": 25,
+        "reason": "no-progress-streak:6"
+      },
+      {
+        "id": "D0021",
+        "persona": "speedrunner",
+        "device": "galaxy-s21",
+        "actions": 43,
+        "deadClicks": 21,
+        "reason": "no-progress-streak:8"
+      },
+      {
+        "id": "D0024",
+        "persona": "button-masher",
+        "device": "iphone-se",
+        "actions": 80,
+        "deadClicks": 31,
+        "reason": "no-progress-streak:7"
+      },
+      {
+        "id": "D0028",
+        "persona": "skimmer",
+        "device": "ipad-land",
+        "actions": 18,
+        "deadClicks": 8,
+        "reason": "no-progress-streak:6"
+      },
+      {
+        "id": "D0031",
+        "persona": "speedrunner",
+        "device": "ipad-land",
+        "actions": 226,
+        "deadClicks": 145,
+        "reason": "no-progress-streak:8"
+      },
+      {
+        "id": "D0051",
+        "persona": "speedrunner",
+        "device": "iphone-16-pro-max",
+        "actions": 19,
+        "deadClicks": 7,
+        "reason": "no-progress-streak:8"
+      },
+      {
+        "id": "D0058",
+        "persona": "skimmer",
+        "device": "surface-pro",
+        "actions": 12,
+        "deadClicks": 7,
+        "reason": "no-progress-streak:6"
+      },
+      {
+        "id": "B0654",
+        "persona": "button-masher",
+        "device": "ipad-land",
+        "actions": 11,
+        "deadClicks": 9,
+        "reason": "no-progress-streak:7"
+      }
+    ]
+  },
+  "training": {
+    "took": 498,
+    "skipped": 502,
+    "completed": 0,
+    "completedNote": "0% in all six audited rounds — a harness limit, not a build regression",
+    "stallsByStep": {
+      "2": 1,
+      "5": 5,
+      "7": 3,
+      "8": 8
+    },
+    "maxStepReached": {
+      "0": 19,
+      "1": 94,
+      "2": 345,
+      "3": 1,
+      "5": 9,
+      "7": 15,
+      "8": 15
+    }
+  },
+  "personas": {
+    "speedrunner": 100,
+    "completionist": 100,
+    "lore-reader": 100,
+    "explorer": 100,
+    "cautious-newbie": 100,
+    "button-masher": 100,
+    "accessibility": 100,
+    "min-maxer": 100,
+    "stress-tester": 100,
+    "skimmer": 100
+  },
+  "devices": {
+    "ipad-10": 21,
+    "galaxy-s21": 57,
+    "iphone-se": 59,
+    "ultrawide": 61,
+    "desktop-1440": 57,
+    "ipad-mini": 22,
+    "ipad-air": 24,
+    "iphone-15-pro": 49,
+    "laptop-mbp14": 68,
+    "surface-pro": 33,
+    "ipad-land": 25,
+    "pixel-7": 48,
+    "galaxy-fold": 57,
+    "desktop-1080": 55,
+    "laptop-768": 59,
+    "iphone-16-pro-max": 64,
+    "iphone-14": 50,
+    "iphone-13-mini": 42,
+    "iphone-14-plus": 63,
+    "laptop-720": 61,
+    "ipad-pro-13": 25
+  }
+}

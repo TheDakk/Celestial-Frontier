@@ -1,0 +1,282 @@
+[
+  {
+    "vp": [
+      320,
+      568
+    ],
+    "clicked": false,
+    "message": "Locator.click: Timeout 1500ms exceeded.",
+    "geom": {
+      "tut": {
+        "l": 12,
+        "t": 91,
+        "r": 308,
+        "b": 307.125,
+        "w": 296,
+        "h": 216.125,
+        "vis": true,
+        "z": "50"
+      },
+      "settings": {
+        "l": 8,
+        "t": 105,
+        "r": 296,
+        "b": 426,
+        "w": 288,
+        "h": 321,
+        "vis": true,
+        "z": "14"
+      },
+      "tab": {
+        "l": 154.5,
+        "t": 137,
+        "r": 216.25,
+        "b": 164,
+        "w": 61.75,
+        "h": 27,
+        "vis": true,
+        "z": "auto"
+      },
+      "group": {
+        "l": 0,
+        "t": 0,
+        "r": 0,
+        "b": 0,
+        "w": 0,
+        "h": 0,
+        "vis": false,
+        "z": "auto"
+      },
+      "point": {
+        "id": "",
+        "cls": "tx",
+        "tag": "DIV"
+      }
+    },
+    "errors": []
+  },
+  {
+    "vp": [
+      390,
+      844
+    ],
+    "clicked": false,
+    "message": "Locator.click: Timeout 1500ms exceeded.",
+    "geom": {
+      "tut": {
+        "l": 12,
+        "t": 91,
+        "r": 378,
+        "b": 287.9375,
+        "w": 366,
+        "h": 196.9375,
+        "vis": true,
+        "z": "50"
+      },
+      "settings": {
+        "l": 8,
+        "t": 238,
+        "r": 366,
+        "b": 702,
+        "w": 358,
+        "h": 464,
+        "vis": true,
+        "z": "14"
+      },
+      "tab": {
+        "l": 189.5,
+        "t": 270,
+        "r": 268.75,
+        "b": 297,
+        "w": 79.25,
+        "h": 27,
+        "vis": true,
+        "z": "auto"
+      },
+      "group": {
+        "l": 0,
+        "t": 0,
+        "r": 0,
+        "b": 0,
+        "w": 0,
+        "h": 0,
+        "vis": false,
+        "z": "auto"
+      },
+      "point": {
+        "id": "tutbox",
+        "cls": "",
+        "tag": "DIV"
+      }
+    },
+    "errors": []
+  },
+  {
+    "vp": [
+      768,
+      1024
+    ],
+    "clicked": true,
+    "message": "",
+    "geom": {
+      "tut": {
+        "l": 194,
+        "t": 91,
+        "r": 574,
+        "b": 287.9375,
+        "w": 380,
+        "h": 196.9375,
+        "vis": true,
+        "z": "50"
+      },
+      "settings": {
+        "l": 84,
+        "t": 502,
+        "r": 684,
+        "b": 882,
+        "w": 600,
+        "h": 380,
+        "vis": true,
+        "z": "14"
+      },
+      "tab": {
+        "l": 386.5,
+        "t": 534,
+        "r": 526.25,
+        "b": 561,
+        "w": 139.75,
+        "h": 27,
+        "vis": true,
+        "z": "auto"
+      },
+      "group": {
+        "l": 97,
+        "t": 570,
+        "r": 671,
+        "b": 733,
+        "w": 574,
+        "h": 163,
+        "vis": true,
+        "z": "auto"
+      },
+      "point": {
+        "id": "",
+        "cls": "stab on",
+        "tag": "SPAN"
+      }
+    },
+    "errors": []
+  },
+  {
+    "vp": [
+      1024,
+      768
+    ],
+    "clicked": false,
+    "message": "Locator.click: Timeout 1500ms exceeded.",
+    "geom": {
+      "tut": {
+        "l": 277,
+        "t": 54,
+        "r": 747,
+        "b": 278.46875,
+        "w": 470,
+        "h": 224.46875,
+        "vis": true,
+        "z": "50"
+      },
+      "settings": {
+        "l": 394,
+        "t": 201.5,
+        "r": 630,
+        "b": 566.5,
+        "w": 236,
+        "h": 365,
+        "vis": true,
+        "z": "14"
+      },
+      "tab": {
+        "l": 511.953125,
+        "t": 233.5,
+        "r": 558.46875,
+        "b": 260.5,
+        "w": 46.515625,
+        "h": 27,
+        "vis": true,
+        "z": "auto"
+      },
+      "group": {
+        "l": 0,
+        "t": 0,
+        "r": 0,
+        "b": 0,
+        "w": 0,
+        "h": 0,
+        "vis": false,
+        "z": "auto"
+      },
+      "point": {
+        "id": "tut-act",
+        "cls": "",
+        "tag": "BUTTON"
+      }
+    },
+    "errors": []
+  },
+  {
+    "vp": [
+      1366,
+      768
+    ],
+    "clicked": false,
+    "message": "Locator.click: Timeout 1500ms exceeded.",
+    "geom": {
+      "tut": {
+        "l": 448,
+        "t": 54,
+        "r": 918,
+        "b": 278.46875,
+        "w": 470,
+        "h": 224.46875,
+        "vis": true,
+        "z": "50"
+      },
+      "settings": {
+        "l": 565,
+        "t": 201.5,
+        "r": 801,
+        "b": 566.5,
+        "w": 236,
+        "h": 365,
+        "vis": true,
+        "z": "14"
+      },
+      "tab": {
+        "l": 682.953125,
+        "t": 233.5,
+        "r": 729.46875,
+        "b": 260.5,
+        "w": 46.515625,
+        "h": 27,
+        "vis": true,
+        "z": "auto"
+      },
+      "group": {
+        "l": 0,
+        "t": 0,
+        "r": 0,
+        "b": 0,
+        "w": 0,
+        "h": 0,
+        "vis": false,
+        "z": "auto"
+      },
+      "point": {
+        "id": "tut-act",
+        "cls": "",
+        "tag": "BUTTON"
+      }
+    },
+    "errors": []
+  }
+]

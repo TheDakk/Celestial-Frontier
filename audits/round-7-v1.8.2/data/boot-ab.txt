@@ -1,0 +1,43 @@
+Paired cold-boot A/B: v1.7.20 vs v1.8.2, alternating on the same host, fresh browser context each
+rep (no cache carry-over), 8 reps, run on an IDLE host after the 1,000-session fleet finished.
+Only the paired delta is meaningful. Harness: harness/ab_boot7.mjs
+
+rep0 v1.7.20  load= 399ms  ready= 550ms  DCL= 392ms  FCP= 532ms
+rep0 v1.8.2   load= 409ms  ready=2258ms  DCL= 384ms  FCP= 520ms
+rep1 v1.7.20  load= 392ms  ready= 490ms  DCL= 389ms  FCP=  96ms
+rep1 v1.8.2   load= 397ms  ready=2111ms  DCL= 389ms  FCP= 492ms
+rep2 v1.7.20  load= 355ms  ready= 477ms  DCL= 350ms  FCP=  64ms
+rep2 v1.8.2   load= 397ms  ready=2142ms  DCL= 377ms  FCP=  76ms
+rep3 v1.7.20  load= 390ms  ready= 493ms  DCL= 374ms  FCP= 508ms
+rep3 v1.8.2   load= 374ms  ready= 470ms  DCL= 357ms  FCP=  64ms
+rep4 v1.7.20  load= 359ms  ready= 465ms  DCL= 351ms  FCP=  92ms
+rep4 v1.8.2   load= 375ms  ready= 477ms  DCL= 366ms  FCP=  96ms
+rep5 v1.7.20  load= 391ms  ready= 497ms  DCL= 368ms  FCP= 484ms
+rep5 v1.8.2   load= 380ms  ready= 484ms  DCL= 372ms  FCP=  84ms
+rep6 v1.7.20  load= 391ms  ready= 484ms  DCL= 376ms  FCP=  72ms
+rep6 v1.8.2   load= 397ms  ready= 494ms  DCL= 378ms  FCP= 100ms
+rep7 v1.7.20  load= 390ms  ready= 490ms  DCL= 361ms  FCP=  88ms
+rep7 v1.8.2   load= 405ms  ready= 530ms  DCL= 392ms  FCP=  88ms
+
+metric  v1.7.20 median   v1.8.2 median   paired delta median   spread of paired deltas   sign
+load        390.5ms          397ms              +8ms              -16 to +42ms           6/8
+DCL           371ms        377.5ms              +3ms              -17 to +31ms           5/8
+ready         490ms          512ms             +26ms            -23 to +1708ms           6/8
+
+CONCLUSION: audio cost essentially nothing at boot (+8ms load, +3ms DCL), consistent with the
++2.4% gzip payload. Flagged not claimed: reps 0-2 show v1.8.2 reaching an interactive name gate
+in ~2.1s vs ~0.5s; reps 3-7 are within 40ms. Possibly first-load cache warming on the larger
+file; 8 reps cannot separate that from a real first-load regression.
+
+For contrast, the SAME measurement run while the 1,000-session fleet saturated both cores:
+  load  583ms -> 728ms   paired delta median +206ms   spread -259 to +293ms
+That is host noise, not a build difference. It is why only the idle-host numbers are reported.
+
+PAYLOAD
+                      raw bytes      gzip -9
+  v1.7.20             1,864,727      637,783
+  v1.8.2              1,909,676      653,268
+  delta              +44,949 (+2.4%)  +15,485 (+2.4%)
+  audio assets (.mp3/.ogg/.wav/.m4a):  0
+  decodeAudioData calls:               0
+  external URL references in the file: 1   (instant-link property intact)

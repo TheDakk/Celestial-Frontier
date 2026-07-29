@@ -122,8 +122,11 @@
 ## Not touched this arc (still accurate, older markers): WORLD_GENERATION · RARITY_AND_GRADES ·
 ## SPECIES_AND_GENOME · ART_DIRECTION · DETERMINISM.
 ## Reviewer-facing: REVIEWER_NOTES_v1.8.2.md · REVIEWER_NOTES_v1.8.4.md (the round-7 response).
-## Round-7 bundle itself is NOT in the repo — it is at
-## scratchpad/r7/celestial-frontier-v1.8.2-round7/ (fix list, evidence PNGs, harness, raw data).
+## ★ audits/ (NEW 2026-07-29) — external bundles are now COMMITTED, not left in a session-scoped
+##   scratchpad: audits/round-7-v1.8.2/ (the 25-item fix list + evidence PNGs + their harness + the
+##   1,000-session fleet, voice-model and boot-A/B raw data) and audits/battery-v1.8.2/ (the four
+##   review lenses + raw results). audits/README.md indexes both and records how to recover an OLD
+##   build from git to negative-control a new gate (uilayout.js --url=FILE).
 ##
 
 ## ▶▶▶ 2026-07-28 ★ v1.8.3 "CLEAR GROUND" — the external battery's four defects + Nick's phone blocker.

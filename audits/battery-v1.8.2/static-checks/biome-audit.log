@@ -1,0 +1,6 @@
+biome-layer audit:
+  life-bearing biomes:      37 (each with a distinct Earth lineage anchor + procedural counterpart)
+  fauna-free (whitelisted): 2 [acidhaze, abyssgreen]
+  gas (Earth unsupported):  4 [stormeye, hotglow, ammonia, banded] — native aerial life only
+  empty-purity gates:       3 checked (fauna draws gated on genes)
+PASS  biome-layer audit — empty=no fauna, every life-bearing biome populated, Earth != procedural lineage

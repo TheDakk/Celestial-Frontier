@@ -1,0 +1,23 @@
+{
+  "test": "confirmed-final-copy-salvage-and-reacquire",
+  "before": {
+    "count": 1,
+    "equip": "rig1",
+    "affix": {
+      "forId": "rig1",
+      "k": "yield",
+      "v": 0.12
+    }
+  },
+  "after_confirmed_salvage": {
+    "count": 0,
+    "equip": null,
+    "affix": null
+  },
+  "after_reacquire_and_equip": {
+    "count": 1,
+    "equip": "rig1",
+    "affix": null
+  },
+  "result": "PASS"
+}

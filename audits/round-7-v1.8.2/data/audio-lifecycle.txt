@@ -1,0 +1,35 @@
+Ambience lifecycle — does the biome bed stop on close, on hidden tab, and on sound-off?
+Instrument: Proxy on the AudioContext constructor; every BufferSource/Oscillator/Gain/BiquadFilter
+wrapped, `loop` intercepted, start()/stop() timestamped. Reached the vista via the real training
+flow (which lands on Earth at step 6). Harness: harness/amb3.mjs
+
+vista open: true
+A. planetfall       : {"ctx":"running","total":113,"loops":1,"live":1,
+                       "detail":["loop#105 started@14075 stopped=NEVER"]}
+   settings reachable during the vista: true
+
+B. Sound toggle On -> Off
+   after sound OFF  : {"ctx":"running","total":113,"loops":1,"live":1,
+                       "detail":["loop#105 started@14075 stopped=NEVER"]}
+   -> THE BED IS STILL PLAYING after the player switched Sound off
+   +3s later        : live loops = 1  (still running)
+
+C. tab hidden       : {"ctx":"running","total":113,"loops":1,"live":0,
+                       "detail":["loop#105 started@14075 stopped=@26878"]}
+   -> stops on hidden tab  OK
+
+node log (tail):
+  start Oscillator#103
+  stop  Oscillator#103
+  start Oscillator#108          <- the bed's LFO
+  start BufferSource#105 LOOP   <- the bed
+  start BufferSource#110
+  stop  BufferSource#110
+  stop  BufferSource#105        <- only at the hidden-tab event, 12.8s after Sound went Off
+  stop  Oscillator#108
+
+CONCLUSION (CF1802-19): of the three claimed exits, close and hidden-tab hold; sound-off does not.
+ambienceStop() has exactly three call sites -- inside ambienceStart (18430), _vistaDismiss (12517),
+and the visibilitychange handler (18460). The sndopt handler at 25462 sets sndOn=false and nothing
+else. ac() gates only NEW sounds; the bed is an already-running looped BufferSource on the shared
+_sfxBus, and its LFO keeps the context alive too.
