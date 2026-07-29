@@ -1313,3 +1313,28 @@
 ##   UI-driven run says so — the next external fleet report is the real verdict; (2) consider a
 ##   DOM-driven tier for simrun (slower, fewer runs, but it would see the UI layer); (3) raise
 ##   runs-per-arm or fixed-seed pairing so L3 stops swinging ±6.
+## ▶▶▶ 2026-07-28 ★★ v1.8.0 "THE CONNECTION" LIVE (build 5009d4d) — THE ARC IS COMPLETE.
+##   SHIPPED: momentum instrument · denial contract (prevention + explanation + destination, with
+##   an audible deny tone) · broadened XP (care counts; per-creature anti-farm ledger) · STALL
+##   DETECTOR (chip changes voice, _nextBest never suggests the unavailable) · CONQUEST MATCHUP
+##   METER via trueOdds() 160 seeded duels — CF1715-09 CLOSED · breeding anticipation (ranges,
+##   never the roll) · personality · survey spotlight · ★ CREATURE VOICES (18 rig archetypes so
+##   Earth's 631 fauna sound like what they are; alien voices from genome; HYBRIDS INHERIT AND
+##   DRIFT on the art's own _earthBlend/_anchorVal law — zero payload, deterministic) · COMBAT
+##   SOUND (per-blow weight, crits, ability procs) · PLANETFALL arrival + bounded biome beds ·
+##   two independent audio toggles (vce/cbx, absent ⇒ on).
+##   Gates at ship: fp MATCH 50/50 · smoke 515/0 · layout 561/9 · BALANCE PASS (17+55) · sim ui
+##   100/100 · CI green.
+##   ⚠⚠ THE HONEST CAVEAT, CARRIED FORWARD: v1.8 is OUTCOME-proven (every item has assertions
+##   that fail without it) but PLAYER-UNVALIDATED. Our simrun drives PROBE HOOKS, not the DOM, so
+##   it is structurally blind to every UI item in this arc — the flat A/B (noop 35.3→35.4,
+##   stalls 100/100) says nothing about human benefit. The verdict must come from a UI-DRIVEN
+##   run: the external fleet's Playwright personas. DO NOT claim v1.8 works until that lands.
+##   Also unresolved: the harness's own noise floor on L3 is ±6 at n=100 — raise runs-per-arm or
+##   pair seeds before scoring anything at that granularity again.
+##   ▶ NEXT: (1) external fleet round on 1.8.0 — the real verdict, and the first round that can
+##   hear audio at all (their persona reviews were screenshot-based and blind to sound; this is
+##   the cheap audio playtest §15 asked for before committing 10-18 weeks); (2) a DOM-driven
+##   simrun tier so this blind spot closes permanently; (3) v1.8.x for whatever the round finds;
+##   (4) then v1.9 consolidation = Phase 0/1 of the port (saves/Zod, module split = the TS
+##   extraction, payload budget, art-direction doc) → v2.0 PixiJS.
