@@ -1,0 +1,60 @@
+=== 1. 20000 procedural fauna ===
+families used : 18 / 18 
+family spread : jelly:1157 mammal:1150 gastropod:1146 primate:1137 reptile:1134 marine:1133 fish:1131 bird:1115 sessile:1110 turtle:1103 insect:1102 crust:1099 legacy:1094 arachnid:1085 bat:1085 amphibian:1081 serpent:1074 ceph:1064
+               expected 1111 each; min 1064 max 1157
+kinds         : thrum:2277 pulse:2267 roar:2244 hiss:2208 chirp:2200 hoot:1137 song:1133 grunt:1103 buzz:1102 click:1099 rasp:1085 croak:1081 jet:1064
+f0 range      : 60Hz .. 6000Hz  (median 260Hz)
+  at floor(60): 180   at ceiling(6000): 384
+distinct voices: 533 of 20000  → 97.3% of creatures share a voice with another (19467 collisions)
+most common voice occurs 101× (0.51%)
+
+=== 2. "A wolf roars, a sparrow chirps, a whale sings, a rattlesnake hisses" ===
+  Wolf          rig=mammal     kind=roar   f0=  148Hz nz=0.30 dur=0.60s
+  Sparrow       rig=bird       kind=chirp  f0= 2068Hz nz=0.06 dur=0.24s
+  Blue Whale    rig=marine     kind=song   f0=  187Hz nz=0.10 dur=1.20s
+  Rattlesnake   rig=serpent    kind=hiss   f0=  630Hz nz=0.95 dur=0.65s
+  Tiger         rig=mammal     kind=roar   f0=  148Hz nz=0.30 dur=0.60s
+  Bat           rig=bat        kind=chirp  f0= 5121Hz nz=0.05 dur=0.11s
+  Cobra         rig=serpent    kind=hiss   f0=  630Hz nz=0.95 dur=0.65s
+  Bullfrog      rig=amphibian  kind=croak  f0=  207Hz nz=0.28 dur=0.37s
+  Honeybee      rig=insect     kind=buzz   f0=  414Hz nz=0.22 dur=0.46s
+  Octopus       rig=ceph       kind=jet    f0=  276Hz nz=0.92 dur=0.33s
+  Tarantula     rig=arachnid   kind=rasp   f0=  335Hz nz=0.70 dur=0.28s
+  Sea Turtle    rig=turtle     kind=grunt  f0=  167Hz nz=0.35 dur=0.33s
+  Chimpanzee    rig=primate    kind=hoot   f0=  325Hz nz=0.18 dur=0.43s
+
+=== 3. "temperament tilts the character" — which gene actually drives it? ===
+  voiceOf reads  g.behavior % 5     (FA_BEHAVIOR has 12 entries)
+  the card shows FA_TEMPER[g.temper % 10]  — voiceOf never reads g.temper
+   bold=0: behaviours 0,5,10  → "hunting in coordinated pac" / "grazing in vast placid her" / "following seasonal blooms"
+   bold=1: behaviours 4,9  → "ambushing from camouflage" / "active only at night"
+   bold=0.25: behaviours 1,6,11  → "migrating across whole con" / "fiercely territorial" / "solitary and elusive"
+   bold=0.5: behaviours 2,7  → "building elaborate nests" / "tending symbiotic flora"
+   bold=0.75: behaviours 3,8  → "communicating in low infra" / "mimicking other species"
+  audible span: f0 173→230Hz (33%), dur 1.26→0.99s
+  of 5000 creatures, 238 read as aggressive on the card but carry a below-median voice tilt
+
+=== 4. does pitch track the size the card shows? ===
+  size gene 0 → card says "tiny"  f0=363Hz
+  size gene 1 → card says "small"  f0=259Hz
+  size gene 2 → card says "dog-sized"  f0=202Hz
+  size gene 3 → card says "large"  f0=165Hz
+  size gene 4 → card says "massive"  f0=140Hz
+  size gene 5 → card says "titanic"  f0=121Hz
+  size gene 6 → card says "tiny"  f0=363Hz
+  size gene 7 → card says "small"  f0=259Hz
+
+=== 5. breeding: does the voice drift alien over generations? ===
+  gen0  anchor=1.00 (pure Earth)   kind=roar  f0=126Hz
+  gen1  anchor=0.73  blend t=0.27  kind=roar   f0=  296Hz   (alien half would be click)
+  gen2  anchor=0.46  blend t=0.54  kind=roar   f0=  109Hz   (alien half would be roar)
+  gen3  anchor=0.22  blend t=0.78  kind=roar   f0=  109Hz   (alien half would be roar)
+  gen4  anchor=0.22  blend t=0.78  kind=grunt  f0=  164Hz   (alien half would be grunt)
+  gen5  anchor=0.22  blend t=0.78  kind=chirp  f0= 1346Hz   (alien half would be chirp)
+  gen6  anchor=0.22  blend t=0.78  kind=click  f0= 1303Hz   (alien half would be click)
+
+  Earth × Earth (both anchored):
+  gen1  anchor=0.90  kind=roar  f0=310Hz
+  gen2  anchor=0.90  kind=roar  f0=291Hz
+  gen3  anchor=0.90  kind=roar  f0=245Hz
+  gen4  anchor=0.90  kind=roar  f0=263Hz

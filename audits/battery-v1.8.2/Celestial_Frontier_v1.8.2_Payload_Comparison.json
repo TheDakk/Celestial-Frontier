@@ -1,0 +1,21 @@
+{
+  "v1.7.20": {
+    "html_raw": 1864723,
+    "html_zip_member": 639536,
+    "html_gzip_equivalent": 637577,
+    "repository_zip": 56374690
+  },
+  "v1.8.2": {
+    "html_raw": 1909672,
+    "html_zip_member": 654572,
+    "html_gzip_equivalent": 652545,
+    "repository_zip": 56397565
+  },
+  "delta": {
+    "html_raw": 44949,
+    "html_zip_member": 15036,
+    "html_gzip_equivalent": 14968,
+    "repository_zip": 22875
+  },
+  "audio_media_files_added": 0
+}

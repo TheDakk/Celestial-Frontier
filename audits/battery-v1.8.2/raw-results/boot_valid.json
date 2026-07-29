@@ -1,0 +1,58 @@
+{
+  "1.7.20": {
+    "timesMs": [
+      402.04033000009076,
+      293.28735600029177,
+      282.7930249995916,
+      343.3746299997438,
+      304.59941599974627,
+      299.23435999990033,
+      288.1920199997694,
+      314.1165910001291,
+      285.57222599965826,
+      294.3731129998923
+    ],
+    "medianMs": 296.80373649989633,
+    "meanMs": 310.75830669988136,
+    "errors": [
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'"
+    ]
+  },
+  "1.8.2": {
+    "timesMs": [
+      305.60291500023595,
+      306.3948369999707,
+      291.58876899964525,
+      290.5906670002878,
+      310.62014400004045,
+      417.85498499984897,
+      327.4256049999167,
+      313.01995200010424,
+      317.0374169999377,
+      310.6592220001403
+    ],
+    "medianMs": 310.6396830000904,
+    "meanMs": 319.0794513000128,
+    "errors": [
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'",
+      "Failed to execute 'write' on 'Document': Unexpected token ')'"
+    ]
+  }
+}

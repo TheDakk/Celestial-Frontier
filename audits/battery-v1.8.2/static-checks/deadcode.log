@@ -1,0 +1,6 @@
+=== JS symbols declared in main.js with no other in-game reference ===
+(inMain counts include the declaration itself; inExtra = tests/probes/sheets)
+   646  function resolveMapDot                      main:1 shell:0 tools:4   ← REFERENCED BY TOOLING (check probes!)
+ 17942  function _titanElemOf                       main:1 shell:0 tools:1   ← REFERENCED BY TOOLING (check probes!)
+ 18716  const    ELEM_ICES                          main:1 shell:0 tools:1   ← REFERENCED BY TOOLING (check probes!)
+3 candidates (2312 symbols scanned)

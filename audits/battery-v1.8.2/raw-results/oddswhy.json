@@ -1,0 +1,156 @@
+{
+  "n": 100,
+  "nonempty": 100,
+  "rows": [
+    {
+      "p": 0.46794871794871795,
+      "band": "Even",
+      "why": "it strikes first \u00b7 your blows land harder \u00b7 it outlasts you"
+    },
+    {
+      "p": 1,
+      "band": "Favored",
+      "why": "you strike first \u00b7 your blows land harder \u00b7 you outlast it"
+    },
+    {
+      "p": 0.34375,
+      "band": "Dangerous",
+      "why": "its blows land harder \u00b7 \u2727 Stone Reckoning I"
+    },
+    {
+      "p": 0.22077922077922077,
+      "band": "Dangerous",
+      "why": "its blows land harder \u00b7 \u2727 Psionic Thorns II"
+    },
+    {
+      "p": 0.08125,
+      "band": "Overwhelming",
+      "why": "it strikes first \u00b7 its blows land harder \u00b7 it outlasts you"
+    },
+    {
+      "p": 0,
+      "band": "Overwhelming",
+      "why": "it strikes first \u00b7 your blows land harder \u00b7 it outlasts you"
+    },
+    {
+      "p": 0.0875,
+      "band": "Overwhelming",
+      "why": "its blows land harder \u00b7 \u2727 Tide Aegis I"
+    },
+    {
+      "p": 0.018867924528301886,
+      "band": "Overwhelming",
+      "why": "its blows land harder \u00b7 \u2727 Glacial Hide"
+    },
+    {
+      "p": 0.9625,
+      "band": "Favored",
+      "why": "you strike first \u00b7 your blows land harder \u00b7 you outlast it"
+    },
+    {
+      "p": 0.9875,
+      "band": "Favored",
+      "why": "your blows land harder \u00b7 you outlast it \u00b7 \u2727 Psionic Echo II"
+    },
+    {
+      "p": 1,
+      "band": "Favored",
+      "why": "you strike first \u00b7 your blows land harder \u00b7 you outlast it"
+    },
+    {
+      "p": 0.98125,
+      "band": "Favored",
+      "why": "your blows land harder \u00b7 you outlast it \u00b7 \u2727 Tide Aegis I"
+    },
+    {
+      "p": 1,
+      "band": "Favored",
+      "why": "you strike first \u00b7 your blows land harder \u00b7 you outlast it"
+    },
+    {
+      "p": 0.975,
+      "band": "Favored",
+      "why": "your blows land harder \u00b7 you outlast it \u00b7 \u2727 Stone Veil I"
+    },
+    {
+      "p": 0.225,
+      "band": "Dangerous",
+      "why": "it strikes first \u00b7 its blows land harder \u00b7 you outlast it"
+    },
+    {
+      "p": 1,
+      "band": "Favored",
+      "why": "you strike first \u00b7 your blows land harder \u00b7 you outlast it"
+    },
+    {
+      "p": 1,
+      "band": "Favored",
+      "why": "you strike first \u00b7 your blows land harder \u00b7 \u2727 Stone Aegis II"
+    },
+    {
+      "p": 1,
+      "band": "Favored",
+      "why": "your blows land harder \u00b7 you outlast it \u00b7 \u2727 Venom Roulette I"
+    },
+    {
+      "p": 0.0875,
+      "band": "Overwhelming",
+      "why": "it strikes first \u00b7 its blows land harder \u00b7 \u2727 Ember Coat"
+    },
+    {
+      "p": 0,
+      "band": "Overwhelming",
+      "why": "it strikes first \u00b7 its blows land harder \u00b7 \u2727 Wild Mending I"
+    },
+    {
+      "p": 1,
+      "band": "Favored",
+      "why": "you strike first \u00b7 your blows land harder \u00b7 you outlast it"
+    },
+    {
+      "p": 0,
+      "band": "Overwhelming",
+      "why": "you strike first \u00b7 its blows land harder \u00b7 it outlasts you"
+    },
+    {
+      "p": 0.025,
+      "band": "Overwhelming",
+      "why": "your blows land harder \u00b7 it outlasts you \u00b7 \u2727 Storm Echo I"
+    },
+    {
+      "p": 0.1830065359477124,
+      "band": "Dangerous",
+      "why": "its blows land harder \u00b7 \u2727 Sunsear"
+    },
+    {
+      "p": 0.9875,
+      "band": "Favored",
+      "why": "it strikes first \u00b7 your blows land harder \u00b7 you outlast it"
+    },
+    {
+      "p": 0.9625,
+      "band": "Favored",
+      "why": "it strikes first \u00b7 your blows land harder \u00b7 you outlast it"
+    },
+    {
+      "p": 0.7375,
+      "band": "Even",
+      "why": "it strikes first \u00b7 its blows land harder \u00b7 you outlast it"
+    },
+    {
+      "p": 0.99375,
+      "band": "Favored",
+      "why": "you strike first \u00b7 your blows land harder \u00b7 \u2727 Tide Affliction II"
+    },
+    {
+      "p": 0.00625,
+      "band": "Overwhelming",
+      "why": "it strikes first \u00b7 its blows land harder \u00b7 it outlasts you"
+    },
+    {
+      "p": 0,
+      "band": "Overwhelming",
+      "why": "its blows land harder \u00b7 \u2727 Tide Roulette I"
+    }
+  ]
+}
