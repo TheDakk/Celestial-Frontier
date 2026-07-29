@@ -1980,6 +1980,13 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       click2(sk.doc.getElementById('voiceopt'), sk.w); click2(sk.doc.getElementById('combatopt'), sk.w);
       click2(sk.doc.getElementById('setbtn'), sk.w);
     }
+    // ===== v1.8 audio tiers 3-5: planetfall, ambience, feedback grammar =====
+    check('v1.8 audio: planetfall has an arrival and the world has a bed',
+      typeof skH.playArrival === 'function' && typeof skH.ambienceStart === 'function');
+    check('v1.8 audio: the ambience bed can always be stopped (bounded, never background cost)',
+      typeof skH.ambienceStop === 'function' && (skH.ambienceStop(), true));
+    check('v1.8 audio: a BLOCKED action has its own tone (Momentum, audible half)',
+      typeof skH.playDeny === 'function');
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
 
     // ============ CF1718-01: a MID-TRAINING RELOAD must restore the expedition ============
