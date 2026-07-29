@@ -1,6 +1,6 @@
 # Celestial Frontier — Breeding & Sharing
 
-**STATUS:** matches code as of 2026-07-21 (verified against main.js).
+**STATUS:** matches code as of 2026-07-28 (verified against main.js).
 **See also:** `LINEAGE_AND_BREEDING.md` — the v1.6 Earth-lineage layer on top of `breedPair`:
 a child of an Earth parent keeps that parent's Earth RIG + wears the child's alien palette
 (`_earthBlend`); the Earth-anchor strength drifts alien organically by the MATE's alienness
@@ -30,6 +30,7 @@ Two coupled systems:
 3. De-collide the seed against existing `codex` ids (LCG step until unique); store via `_storeSpecies` named "A × B (bred)".
 4. **Remove both parents regardless of outcome** — the union always consumes them.
 5. Two Legendary-tier (tier ≥5) parents unlock the `bredlegend` achievement.
+6. **The union's XP goes to the CHILD** (v1.8.3): `awardXP(born.id, 2)` + `awardXPPair(born.id, [a.id,b.id].sort().join('+'), 5)`, run *after* `_storeSpecies` — both parents are gone by then (step 4). Before v1.8.3 both awards landed on `aEntry` and vanished with it, and the lineage key was `[a.kind,b.kind]` (always `'Fauna+Fauna'`), so the "first-of-its-kind" bonus paid once per parent rather than once per cross. See PROGRESSION.md § Creature XP & leveling.
 - Live `roll = Math.random()`; during training `roll = -1` (guaranteed success). `stats.breeds`/`breedwins` tracked; fires `gameEvent('bred', {ok})`.
 
 ### Feeding (`feedPair`, ~L11893)
