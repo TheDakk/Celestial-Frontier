@@ -308,6 +308,91 @@ async function main() {
         } catch (_) {}
       }
     }
+    /* ---- the training stack: is the lesson's target actually REACHABLE? ---- */
+    const stack = await evalIn(sess, `(()=>{
+      const out={};
+      const panel=document.getElementById('panel'), log=document.getElementById('log'),
+            codex=document.getElementById('codex'), logbtn=document.getElementById('logbtn'),
+            cdxbtn=document.getElementById('codexbtn');
+      /* stand the page up the way the lesson does: training on, Earth's survey
+         card open. Content is representative so the card has real height. */
+      document.body.classList.add('training');
+      /* the lesson card is what publishes --tut-bot/--tut-cap (see _tutSpot):
+         without it every surface below lays out against a 150px fallback and
+         the geometry under test is fiction */
+      const tb=document.getElementById('tutbox');
+      tb.innerHTML='<div class="tt"><span>Field Training</span><span>5 / 21</span></div>'+
+        '<div class="tx">Earth is charted. Open the <b>Star Atlas</b> from the dock.</div>'+
+        '<div class="tbtns"><button type="button">Skip training</button></div>';
+      tb.style.display='block';
+      const _cr=tb.getBoundingClientRect();
+      document.documentElement.style.setProperty('--tut-bot', Math.round(_cr.bottom+10)+'px');
+      document.documentElement.style.setProperty('--tut-cap', Math.max(140, Math.round(innerHeight-_cr.bottom-24))+'px');
+      panel.style.left='16px';   /* where placePanel parks it (surface mode / clamped min) */
+      panel.innerHTML='<div class="head">Earth</div>'+'<div style="padding:14px">'+'row<br>'.repeat(40)+'</div>';
+      panel.style.display='block';
+      const mid=(r)=>[Math.round((r.left+r.right)/2), Math.round((r.top+r.bottom)/2)];
+      const hit=(el)=>{ const r=el.getBoundingClientRect();
+        if(r.width<1||r.height<1) return {ok:false, why:'zero-size'};
+        const p=mid(r);
+        if(p[0]<0||p[1]<0||p[0]>innerWidth||p[1]>innerHeight) return {ok:false, why:'offscreen'};
+        const e=document.elementFromPoint(p[0],p[1]);
+        return {ok: !!(e && (el===e || el.contains(e) || e.contains(el))),
+                by: e?((e.id||e.className||e.tagName)+''):'(nothing)'};
+      };
+      /* STEP 5 — "open the Star Atlas". The dock chip must be tappable with the
+         survey card standing. This is Nick's screenshot: the chip half-buried. */
+      out.dockAtlas=hit(logbtn);
+      out.dockCodex=hit(cdxbtn);
+      /* …and once the Atlas is open and carries the lesson's mark, the board —
+         not the survey card — must be what a finger lands on. */
+      log.style.display='block'; log.classList.add('tutpri');
+      out.atlasOpen=hit(log);
+      log.classList.remove('tutpri'); log.style.display='none';
+      /* STEP 7/8 — the Compendium, the step Nick got stuck on outright */
+      codex.style.display='block'; codex.classList.add('tutpri');
+      out.codexOpen=hit(codex);
+      codex.classList.remove('tutpri'); codex.style.display='none';
+      /* external battery v1.8.2 (P2): "the training card blocks Settings › Audio"
+         — measured, as they measured it, by whether the tab can actually be hit
+         while a lesson is on screen. */
+      const sp=document.getElementById('setpanel');
+      if(sp){
+        sp.style.display='block';
+        const tab=sp.querySelector('[data-stab="a"]')
+          || [...sp.querySelectorAll('*')].find(e=>/^audio$/i.test((e.textContent||'').trim()) && e.children.length===0);
+        out.audioTab = tab ? hit(tab) : {ok:false, why:'no audio tab found'};
+        out.settingsPanel = hit(sp);
+        sp.style.display='none';
+      }
+      /* STEP 6 — the LAND press: with a board still open, the survey card must
+         win, or fixing step 5 simply moves the breakage to step 6. */
+      log.style.display='block'; panel.classList.add('tutpri');
+      out.landCard=hit(panel);
+      panel.classList.remove('tutpri'); log.style.display='none';
+      panel.style.display='none'; document.body.classList.remove('training');
+      tb.style.display='none'; tb.innerHTML='';
+      document.documentElement.style.removeProperty('--tut-bot');
+      document.documentElement.style.removeProperty('--tut-cap');
+      return out;
+    })()`);
+    if (stack) {
+      check(vp, 'training', 'step 5: the Atlas dock chip is tappable behind the survey card',
+        !!(stack.dockAtlas && stack.dockAtlas.ok), 'covered by ' + (stack.dockAtlas && (stack.dockAtlas.by || stack.dockAtlas.why)));
+      check(vp, 'training', 'step 7: the Compendium dock chip is tappable behind the survey card',
+        !!(stack.dockCodex && stack.dockCodex.ok), 'covered by ' + (stack.dockCodex && (stack.dockCodex.by || stack.dockCodex.why)));
+      check(vp, 'training', 'step 5: the OPEN Atlas outranks the survey card',
+        !!(stack.atlasOpen && stack.atlasOpen.ok), 'covered by ' + (stack.atlasOpen && (stack.atlasOpen.by || stack.atlasOpen.why)));
+      check(vp, 'training', 'step 8: the OPEN Compendium outranks the survey card',
+        !!(stack.codexOpen && stack.codexOpen.ok), 'covered by ' + (stack.codexOpen && (stack.codexOpen.by || stack.codexOpen.why)));
+      check(vp, 'training', 'battery P2: Settings › Audio is clickable during a lesson',
+        !!(stack.audioTab && stack.audioTab.ok), 'blocked by ' + (stack.audioTab && (stack.audioTab.by || stack.audioTab.why)));
+      check(vp, 'training', 'step 6: the survey card still outranks an open board for the LAND press',
+        !!(stack.landCard && stack.landCard.ok), 'covered by ' + (stack.landCard && (stack.landCard.by || stack.landCard.why)));
+    } else {
+      check(vp, 'training', 'training stack probe ran', false, 'probe returned nothing');
+    }
+
     await send('Target.closeTarget', { targetId: t.targetId });
   }
 

@@ -39,8 +39,10 @@ plan is its largest section at 904 lines, against evidence from 2 of 24 testers,
 substantive — an absence of evidence, not evidence of absence. This release is the cheap audio
 playtest that annotation asked for, *before* anyone commits 10–18 weeks of audio production.
 
-Everything is **procedural Web Audio — zero added payload.** Cold boot and the instant-link
-property are unchanged (please verify).
+Everything is **procedural Web Audio — no audio media files at all.** (Our first draft of this
+line said "zero added payload", which your battery correctly called out as an overstatement: the
+synthesis code itself is ~45 KB raw / ~15 KB gzipped. Zero *sample* payload, not zero bytes.)
+Cold boot and the instant-link property should be unchanged — please verify.
 
 - **Creature voices.** A voice is a parameter set, never a sample, and it is deterministic per
   genome — the same creature sounds identical on every device and through every shared code.

@@ -23,6 +23,13 @@
   },
   {
    "vp": "iphone-se",
+   "surf": "touch",
+   "name": "heal control measures 44x44 everywhere",
+   "ok": true,
+   "detail": "46x46"
+  },
+  {
+   "vp": "iphone-se",
    "surf": "rail-after-tray",
    "name": "rail buttons all reachable",
    "ok": true,
@@ -426,6 +433,48 @@
    "name": "no clipped headers",
    "ok": true,
    "detail": ""
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "step 5: the Atlas dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by ico"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "step 7: the Compendium dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by ico"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "step 5: the OPEN Atlas outranks the survey card",
+   "ok": true,
+   "detail": "covered by nm"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "step 8: the OPEN Compendium outranks the survey card",
+   "ok": true,
+   "detail": "covered by empty"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "battery P2: Settings › Audio is clickable during a lesson",
+   "ok": true,
+   "detail": "blocked by stab"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "step 6: the survey card still outranks an open board for the LAND press",
+   "ok": true,
+   "detail": "covered by DIV"
   },
   {
    "vp": "iphone",
@@ -450,6 +499,13 @@
   },
   {
    "vp": "iphone",
+   "surf": "touch",
+   "name": "heal control measures 44x44 everywhere",
+   "ok": true,
+   "detail": "46x46"
+  },
+  {
+   "vp": "iphone",
    "surf": "rail-after-tray",
    "name": "rail buttons all reachable",
    "ok": true,
@@ -853,6 +909,48 @@
    "name": "no clipped headers",
    "ok": true,
    "detail": ""
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "step 5: the Atlas dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by ico"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "step 7: the Compendium dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by ico"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "step 5: the OPEN Atlas outranks the survey card",
+   "ok": true,
+   "detail": "covered by lacts"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "step 8: the OPEN Compendium outranks the survey card",
+   "ok": true,
+   "detail": "covered by empty"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "battery P2: Settings › Audio is clickable during a lesson",
+   "ok": true,
+   "detail": "blocked by stab"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "step 6: the survey card still outranks an open board for the LAND press",
+   "ok": true,
+   "detail": "covered by DIV"
   },
   {
    "vp": "iphone-max",
@@ -877,6 +975,13 @@
   },
   {
    "vp": "iphone-max",
+   "surf": "touch",
+   "name": "heal control measures 44x44 everywhere",
+   "ok": true,
+   "detail": "46x46"
+  },
+  {
+   "vp": "iphone-max",
    "surf": "rail-after-tray",
    "name": "rail buttons all reachable",
    "ok": true,
@@ -1280,6 +1385,48 @@
    "name": "no clipped headers",
    "ok": true,
    "detail": ""
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "step 5: the Atlas dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by ico"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "step 7: the Compendium dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by ico"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "step 5: the OPEN Atlas outranks the survey card",
+   "ok": true,
+   "detail": "covered by sub-hint"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "step 8: the OPEN Compendium outranks the survey card",
+   "ok": true,
+   "detail": "covered by empty"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "battery P2: Settings › Audio is clickable during a lesson",
+   "ok": true,
+   "detail": "blocked by stab"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "step 6: the survey card still outranks an open board for the LAND press",
+   "ok": true,
+   "detail": "covered by DIV"
   },
   {
    "vp": "android",
@@ -1304,6 +1451,13 @@
   },
   {
    "vp": "android",
+   "surf": "touch",
+   "name": "heal control measures 44x44 everywhere",
+   "ok": true,
+   "detail": "46x46"
+  },
+  {
+   "vp": "android",
    "surf": "rail-after-tray",
    "name": "rail buttons all reachable",
    "ok": true,
@@ -1707,6 +1861,48 @@
    "name": "no clipped headers",
    "ok": true,
    "detail": ""
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "step 5: the Atlas dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by ico"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "step 7: the Compendium dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by ico"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "step 5: the OPEN Atlas outranks the survey card",
+   "ok": true,
+   "detail": "covered by sub-hint"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "step 8: the OPEN Compendium outranks the survey card",
+   "ok": true,
+   "detail": "covered by empty"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "battery P2: Settings › Audio is clickable during a lesson",
+   "ok": true,
+   "detail": "blocked by stab"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "step 6: the survey card still outranks an open board for the LAND press",
+   "ok": true,
+   "detail": "covered by DIV"
   },
   {
    "vp": "ipad-port",
@@ -1731,6 +1927,13 @@
   },
   {
    "vp": "ipad-port",
+   "surf": "touch",
+   "name": "heal control measures 44x44 everywhere",
+   "ok": true,
+   "detail": "46x46"
+  },
+  {
+   "vp": "ipad-port",
    "surf": "rail-after-tray",
    "name": "rail buttons all reachable",
    "ok": true,
@@ -2134,6 +2337,48 @@
    "name": "no clipped headers",
    "ok": true,
    "detail": ""
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "step 5: the Atlas dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by ico"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "step 7: the Compendium dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by ico"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "step 5: the OPEN Atlas outranks the survey card",
+   "ok": true,
+   "detail": "covered by sub-hint"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "step 8: the OPEN Compendium outranks the survey card",
+   "ok": true,
+   "detail": "covered by empty"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "battery P2: Settings › Audio is clickable during a lesson",
+   "ok": true,
+   "detail": "blocked by stab"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "step 6: the survey card still outranks an open board for the LAND press",
+   "ok": true,
+   "detail": "covered by DIV"
   },
   {
    "vp": "ipad-land",
@@ -2158,6 +2403,55 @@
   },
   {
    "vp": "ipad-land",
+   "surf": "touch",
+   "name": "bell measures 44x44 on a coarse pointer",
+   "ok": true,
+   "detail": "44x44"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "touch",
+   "name": "setbtn measures 44x44 on a coarse pointer",
+   "ok": true,
+   "detail": "44x44"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "touch",
+   "name": "helpbtn measures 44x44 on a coarse pointer",
+   "ok": true,
+   "detail": "44x44"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "touch",
+   "name": "recbtn measures 44x44 on a coarse pointer",
+   "ok": true,
+   "detail": "44x44"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "touch",
+   "name": "hpheart measures 44x44 on a coarse pointer",
+   "ok": true,
+   "detail": "47x47"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "touch",
+   "name": "the 44px hit areas cost NO extra topbar height",
+   "ok": true,
+   "detail": "topbar 96px"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "touch",
+   "name": "name + search inputs hold the 16px iOS floor",
+   "ok": true,
+   "detail": "16px / 16px"
+  },
+  {
+   "vp": "ipad-land",
    "surf": "rail-after-tray",
    "name": "rail buttons all reachable",
    "ok": true,
@@ -2561,6 +2855,48 @@
    "name": "no clipped headers",
    "ok": true,
    "detail": ""
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "step 5: the Atlas dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by lbl"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "step 7: the Compendium dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by lbl"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "step 5: the OPEN Atlas outranks the survey card",
+   "ok": true,
+   "detail": "covered by log-head"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "step 8: the OPEN Compendium outranks the survey card",
+   "ok": true,
+   "detail": "covered by empty"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "battery P2: Settings › Audio is clickable during a lesson",
+   "ok": true,
+   "detail": "blocked by stab"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "step 6: the survey card still outranks an open board for the LAND press",
+   "ok": true,
+   "detail": "covered by DIV"
   },
   {
    "vp": "laptop",
@@ -2578,6 +2914,13 @@
   },
   {
    "vp": "laptop",
+   "surf": "touch",
+   "name": "heal control measures 44x44 everywhere",
+   "ok": true,
+   "detail": "47x47"
+  },
+  {
+   "vp": "laptop",
    "surf": "rail-after-tray",
    "name": "rail buttons all reachable",
    "ok": true,
@@ -2981,6 +3324,48 @@
    "name": "no clipped headers",
    "ok": true,
    "detail": ""
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "step 5: the Atlas dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by lbl"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "step 7: the Compendium dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by lbl"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "step 5: the OPEN Atlas outranks the survey card",
+   "ok": true,
+   "detail": "covered by BUTTON"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "step 8: the OPEN Compendium outranks the survey card",
+   "ok": true,
+   "detail": "covered by empty"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "battery P2: Settings › Audio is clickable during a lesson",
+   "ok": true,
+   "detail": "blocked by stab"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "step 6: the survey card still outranks an open board for the LAND press",
+   "ok": true,
+   "detail": "covered by DIV"
   },
   {
    "vp": "desktop",
@@ -2998,6 +3383,13 @@
   },
   {
    "vp": "desktop",
+   "surf": "touch",
+   "name": "heal control measures 44x44 everywhere",
+   "ok": true,
+   "detail": "47x47"
+  },
+  {
+   "vp": "desktop",
    "surf": "rail-after-tray",
    "name": "rail buttons all reachable",
    "ok": true,
@@ -3401,6 +3793,48 @@
    "name": "no clipped headers",
    "ok": true,
    "detail": ""
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "step 5: the Atlas dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by lbl"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "step 7: the Compendium dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by lbl"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "step 5: the OPEN Atlas outranks the survey card",
+   "ok": true,
+   "detail": "covered by log-head"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "step 8: the OPEN Compendium outranks the survey card",
+   "ok": true,
+   "detail": "covered by B"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "battery P2: Settings › Audio is clickable during a lesson",
+   "ok": true,
+   "detail": "blocked by stab"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "step 6: the survey card still outranks an open board for the LAND press",
+   "ok": true,
+   "detail": "covered by DIV"
   },
   {
    "vp": "wide",
@@ -3418,6 +3852,13 @@
   },
   {
    "vp": "wide",
+   "surf": "touch",
+   "name": "heal control measures 44x44 everywhere",
+   "ok": true,
+   "detail": "47x47"
+  },
+  {
+   "vp": "wide",
    "surf": "rail-after-tray",
    "name": "rail buttons all reachable",
    "ok": true,
@@ -3821,6 +4262,48 @@
    "name": "no clipped headers",
    "ok": true,
    "detail": ""
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "step 5: the Atlas dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by lbl"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "step 7: the Compendium dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by lbl"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "step 5: the OPEN Atlas outranks the survey card",
+   "ok": true,
+   "detail": "covered by log-head"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "step 8: the OPEN Compendium outranks the survey card",
+   "ok": true,
+   "detail": "covered by B"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "battery P2: Settings › Audio is clickable during a lesson",
+   "ok": true,
+   "detail": "blocked by stab"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "step 6: the survey card still outranks an open board for the LAND press",
+   "ok": true,
+   "detail": "covered by DIV"
   }
  ]
 }

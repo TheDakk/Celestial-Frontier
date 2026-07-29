@@ -411,6 +411,15 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('every world is tap-to-landable (Earth carries a plain Land button)',
       !!doc.querySelector('#panel [data-act="landcta"]'));
     // v1.3.7: the card answers only the lesson — Land must be inert here
+    // the LAND lesson is why the blanket raise was added (v1.7.17: an open board
+    // buried Earth's card). Per-step priority must keep that win, or the fix for
+    // Nick's step 5 would simply move the breakage to step 6.
+    check('step 6 priority: Earth\'s card outranks any open board for the land press',
+      doc.getElementById('panel').classList.contains('tutpri')
+      && !doc.getElementById('log').classList.contains('tutpri'),
+      (() => { const m = ['panel','log','codex','chpanel','records','vistabox']
+      .filter((i) => { const e = doc.getElementById(i); return e && e.classList.contains('tutpri'); });
+      return m.join(',') || '(none)'; })());
     click(doc.querySelector('#panel [data-act="landcta"]'));
     await sleep(250);
     check('training: off-lesson card buttons are inert (Land does nothing at step 4)',
@@ -425,6 +434,20 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.querySelector('#panel [data-act="add"]'));
     check('adding Earth to Atlas completes step 4', await until(() => tutAt(5), 3000, 'step5'));
     check('Atlas count is 1 (Earth)', doc.getElementById('logcount').textContent === '1');
+    // Nick 2026-07-28 (phone): "the Star Atlas is kind of hidden after you click
+    // it in that step". The lesson's own surface takes the stack — the survey
+    // card must not, or it buries the very board the step just asked for.
+    check('step 5 priority: the Star Atlas owns the stack, not Earth\'s card',
+      (() => { const m = ['panel','log','codex','chpanel','records','vistabox']
+      .filter((i) => { const e = doc.getElementById(i); return e && e.classList.contains('tutpri'); });
+      return m.join(',') || '(none)'; })() === 'log', (() => { const m = ['panel','log','codex','chpanel','records','vistabox']
+      .filter((i) => { const e = doc.getElementById(i); return e && e.classList.contains('tutpri'); });
+      return m.join(',') || '(none)'; })());
+    // EXACT-TOKEN control: the step allows '#logbtn' too, and a substring match
+    // would have lit '#log' off the BUTTON rather than the board it names.
+    check('step 5 priority: #logbtn never masquerades as #log (token match)',
+      !!doc.getElementById('log').classList.contains('tutpri')
+      && !doc.getElementById('panel').classList.contains('tutpri'));
     // REGRESSION (v1.6.4): a returning player already has Earth in `landed`
     // (samples long since read). noteLanding(133) early-returns on a repeat
     // land, so the landfall event the land step waits on never fires — the
@@ -492,6 +515,14 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       && doc.getElementById('bellct').textContent !== '0');
     click(doc.getElementById('codexbtn'));
     check('opening Compendium completes step 6', await until(() => tutAt(8), 3000, 'step7'));
+    // Nick 2026-07-28 (phone): the Compendium opened UNDER Earth's card and the
+    // recruit was stuck on the step with no way through.
+    check('step 8 priority: the Compendium owns the stack, not Earth\'s card',
+      (() => { const m = ['panel','log','codex','chpanel','records','vistabox']
+      .filter((i) => { const e = doc.getElementById(i); return e && e.classList.contains('tutpri'); });
+      return m.join(',') || '(none)'; })() === 'codex', (() => { const m = ['panel','log','codex','chpanel','records','vistabox']
+      .filter((i) => { const e = doc.getElementById(i); return e && e.classList.contains('tutpri'); });
+      return m.join(',') || '(none)'; })());
     check('kingdoms: filter chips stay hidden during training (one voice)',
       !doc.querySelector('#codex [data-ck]'));
     // v1.7 OPPOSITE-HALF DODGE (Nick): the Compendium lesson spotlights the
@@ -558,6 +589,22 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     click(doc.querySelector('#pick-list [data-pk]'));
     check('breeding completes step 10', await until(() => tutAt(12), 3000, 'step11'));
     check('rigged training breed succeeded', doc.getElementById('pick-result').textContent.includes('born'));
+    // ===== external battery v1.8.2, P1 — asserted at the OUTCOME =====
+    // The award used to land on aEntry, which removeFromCodex consumes moments
+    // later: the XP existed in the log and nowhere else. The only creature that
+    // survives a union is the newborn, so the newborn is who must hold it.
+    {
+      const born = [...H.codex.values()].find((e) => / × /.test(e.from || '') && /\(bred\)/.test(e.from || ''));
+      const bxp = born ? (+born.genome.xp) || 0 : -1;
+      check('battery P1: the union XP lands on the NEWBORN, not the consumed parent',
+        bxp >= 2, 'newborn xp=' + bxp + (born ? '' : ' (no bred entry found)'));
+      // +2 union and +5 first-of-its-kind lineage both belong to the child.
+      // The lineage key used to be [kind,kind] — always 'Fauna+Fauna', since
+      // breeding is always fauna x fauna — so it paid once per PARENT and never
+      // meant what it said. It now keys on the two parent species.
+      check('battery P1: the first-of-its-kind lineage bonus reaches it too (+2 +5)',
+        bxp >= 7, 'newborn xp=' + bxp);
+    }
     click(doc.getElementById('pickclose'));
 
     tutAct();                                                       // begin training duel
@@ -696,6 +743,12 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     check('panelman: ✕ closes the Atlas', !visible(doc.getElementById('log')));
     click(doc.getElementById('chbtn'));
     click(doc.getElementById('codexbtn'));
+    check('priority marks clear when training ends (no stale z-order in live play)',
+      (() => { const m = ['panel','log','codex','chpanel','records','vistabox']
+      .filter((i) => { const e = doc.getElementById(i); return e && e.classList.contains('tutpri'); });
+      return m.join(',') || '(none)'; })() === '(none)', (() => { const m = ['panel','log','codex','chpanel','records','vistabox']
+      .filter((i) => { const e = doc.getElementById(i); return e && e.classList.contains('tutpri'); });
+      return m.join(',') || '(none)'; })());
     check('panelman: Compendium closes Charters (a pair that used to stack)',
       visible(doc.getElementById('codex')) && !visible(doc.getElementById('chpanel')));
     tapOutside();
@@ -1608,6 +1661,24 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       const _tp = skH.battleStats(nat.genome).total;
       check('titans: a titan is a hard boss — above a summit champion, not unwinnable',
         _tp > 800 && _tp < 1000, 'titan power ' + _tp);
+      // ===== external battery v1.8.2: the meter must not claim certainty =====
+      // 160 sampled duels cannot tell 0% from 0.6%, so a bare "0%" asserts a
+      // precision the estimate does not own. A titan against the starting
+      // champion is the guaranteed hopeless matchup, so this reads the REAL
+      // rendered cells — an earlier version of this check called the formatter
+      // directly and passed against a build whose render site had regressed.
+      skH.openConquestPicker({ title: 'Meter Test' }, nat);
+      {
+        const cells = [...sk.doc.querySelectorAll('#pick-list .odds i')].map((e) => e.textContent.trim());
+        check('battery: the conquest meter rendered at least one hopeless matchup',
+          cells.length > 0, 'cells=' + JSON.stringify(cells));
+        check('battery: the matchup meter never prints an absolute 0% or 100%',
+          cells.length > 0 && !cells.some((c) => c === '0%' || c === '100%'),
+          JSON.stringify(cells));
+        check('battery: a hopeless matchup reads <1%, not a false 0%',
+          cells.some((c) => c === '<1%'), JSON.stringify(cells));
+      }
+      sk.doc.getElementById('pickbox').style.display = 'none';
       // fell it → the element is claimed, and its titans stand down everywhere
       skH.claimSignature('flame', { title: 'Fire — test', sub: 'titan felled', tier: 14, hex: '#ffd96a', where: null }, true);
       check('titans: felling the titan claims its element',
@@ -1914,6 +1985,18 @@ const tutAct = () => click(doc.getElementById('tut-act'));
         skH.openPicker('feed', lone); await sleep(100);
         sk.doc.getElementById('pickbox').style.display = 'none';
         skH.showReveal(lone, false); await sleep(150);
+        {
+          const _nb = sk.doc.getElementById('rev-breed');
+          // external battery v1.8.2 (P2): these shortfall buttons are focusable
+          // and DO act on Enter (they open the guidance that explains the gap) —
+          // aria-disabled told assistive tech the exact opposite.
+          if (_nb && _nb.classList.contains('needs')) {
+            check('battery P2: the breed shortfall button never claims to be disabled',
+              _nb.getAttribute('aria-disabled') === null, _nb.outerHTML.slice(0, 120));
+            check('battery P2: …and carries an accessible name for what it DOES',
+              /guidance/i.test(_nb.getAttribute('aria-label') || ''), _nb.getAttribute('aria-label') || '(none)');
+          }
+        }
         const bb = sk.doc.getElementById('rev-breed');
         check('v1.8 prevention: the Breed verb names its shortfall on the button face',
           !!bb && bb.classList.contains('needs') && /Needs another/i.test(bb.textContent), bb && bb.textContent);
@@ -1990,8 +2073,40 @@ const tutAct = () => click(doc.getElementById('tut-act'));
     // ===== Nick's 1.8.0 playtest: four fixes, asserted at the outcome =====
     {
       const src = require('fs').readFileSync(require('path').join(__dirname, '..', 'celestial-frontier.html'), 'utf8');
+      /* the LAW, not the spelling: whatever the selectors are called, the survey
+         card must declare a lower layer than the Planetside it would otherwise
+         cover. (The old form asserted a literal source string and failed the
+         instant that selector was refactored — a code-path echo, not a check.) */
+      const zOf = (sel) => {
+        /* a FUNCTION replacer, never '\\$&' — a literal $& in a replacement
+           string expands to the whole match (which is how this very line got
+           mangled once) */
+        const esc = sel.replace(/[.*+?^${}()|[\]\\]/g, (c) => '\\' + c);
+        const m = src.match(new RegExp(esc + '\\{[^}]*z-index:(\\d+)'));
+        return m ? +m[1] : NaN;
+      };
       check('playtest: the survey card yields to the Planetside (never covers the payoff)',
-        src.includes('body.vista #panel{z-index:22}') && src.includes('body.training:not(.vista) #panel'));
+        zOf('body.vista #panel') < zOf('#vistabox'),
+        'panel=' + zOf('body.vista #panel') + ' vista=' + zOf('#vistabox'));
+      // external battery v1.8.2 (P2): Settings is reachable during training, so
+      // it must outrank BOTH the lesson card and the lesson's raised surface —
+      // the Audio tab sat under the card on 4 of 5 tested viewports.
+      /* the highest layer any rule mentioning `needle` declares — robust to how
+         the selector is spelled, which an exact-selector lookup is not (this
+         check broke once when .tutpri grew id-level specificity) */
+      const zMaxOf = (needle) => {
+        let max = NaN, m;
+        const re = /([^{}]*)\{([^}]*)\}/g;
+        while ((m = re.exec(src))) {
+          if (!m[1].includes(needle)) continue;
+          const z = m[2].match(/z-index:(\d+)/);
+          if (z) max = isNaN(max) ? +z[1] : Math.max(max, +z[1]);
+        }
+        return max;
+      };
+      check('battery P2: Settings outranks the lesson card during training',
+        zMaxOf('#setpanel') > zOf('#tutbox') && zMaxOf('#setpanel') > zMaxOf('.tutpri'),
+        'set=' + zMaxOf('#setpanel') + ' tut=' + zOf('#tutbox') + ' pri=' + zMaxOf('.tutpri'));
       check('playtest: NOTHING auto-opens a Compendium shelf any more, training included',
         !src.includes("_cdxOpen.add(order[0])"));
       check('playtest: NOTHING auto-opens a Fabricator category any more',

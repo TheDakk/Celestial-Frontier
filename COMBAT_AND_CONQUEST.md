@@ -1,6 +1,6 @@
 # Celestial Frontier — Combat & Conquest
 
-**STATUS:** matches code as of 2026-07-23 (verified against main.js).
+**STATUS:** matches code as of 2026-07-28 (verified against main.js).
 **Purpose:** How creatures fight — the stat budget, seeded duel resolution, innate arts (classes + archetypes), and named Apex Guardians — and how conquest settles a world: the mercy law, re-win prevention, and the depth tax that grades every field wound by distance.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -85,7 +85,8 @@ Priority: **Titan** (elemental, `_mult = 1.15 + region*0.03`, wears its element 
 
 ### 2.6 `conquerPlanet(d)` → picker → `runConquestBattle`
 1. `conquerPlanet`: `native = apexNative(d)`; if none → "nothing to conquer"; **if `conquered.has(planetSeed)` → "You already hold this world." (re-win prevention).** Else open the champion picker.
-2. Picker lists you (`playerCombatant`) + all Compendium fauna with a `winEstimate` per candidate (`A.total/(A.total+B.total)`, clamped 0.05–0.95).
+2. Picker lists you (`playerCombatant`) + all Compendium fauna. **Odds come from `trueOdds(champ, native, 160)`** (v1.8, closing CF1715-09): 160 seeded `runDuel` replays with the pairing seed varied per sample, memoised per matchup (cache cleared past 400 entries), returning `{p, close, n}`. `oddsBand(p)` maps it to **Favored ≥0.75 · Even ≥0.45 · Dangerous ≥0.15 · Overwhelming**, and `oddsWhy` names up to three deciding factors. The old `winEstimate` (`A.total/(A.total+B.total)`, clamped 0.05–0.95) survives **only as the `catch` fallback** — an external audit found it disagreed with the true band in **113 of 120** matchups.
+   - **Presentation (v1.8.3):** `_oddsPct` prints **`<1%`** and **`>99%`** rather than a rounded 0% or 100% — 160 samples cannot distinguish 0 from ~0.6%, and an absolute claims certainty the estimate does not have.
 3. `runConquestBattle` runs `fightNow(champ, native)`; `onResolve`:
    - **Win**: `conquered.set(planetSeed, {t:0, tier})`, `gameEvent('conquest')`, a 40%-chance **loot affix** on a worn item, guardian → stored to Compendium, titan → `claimSignature`, Stardust `sd = 8 + tier*5 + (guardian?40:0)`, XP (`guardian?60:20 + tier`). A champion that won at **<55% HP** takes a scar: `hurt += (0.55-frac)*0.7`, capped 0.85.
    - **Loss**: see the mercy law (§2.7).

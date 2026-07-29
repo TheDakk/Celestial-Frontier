@@ -1,6 +1,6 @@
 # Celestial Frontier — UI / Presentation System
 
-**STATUS:** matches code as of 2026-07-24 (verified against main.js + tools/).
+**STATUS:** matches code as of 2026-07-28 (verified against main.js + tools/).
 **Purpose:** the mobile-first presentation layer — the unified topbar, the one-panel-at-
 a-time manager, the "fold language", the vista box, the cards, and the platform caps —
 plus the headless layout gate that guards them.
@@ -257,3 +257,55 @@ wheel and touch drag both work. `tools/uishot.js` now also carries `SEED_FULL`, 
 (5 material families + ✦ exceptionals, craftables, mixed-tier loadout worn with affixes) powering
 the Shipyard/inventory/paperdoll proof shots — outDir must be ABSOLUTE (headless Edge silently
 drops relative screenshot paths).
+
+## 2026-07-28 THE TRAINING STACK LAW (v1.8.3 — matches code as of 2026-07-28)
+
+**The law: during training, the surface the CURRENT lesson points at is the top surface.**
+Nothing else is raised, and nothing is raised for the whole of training.
+
+### Why a static z-index cannot work
+Training has two opposite needs on adjacent steps:
+- **Step 5 / 7** ("open the Star Atlas" / "open your Compendium") — the *board* must win, or the
+  lesson opens it underneath Earth's survey card and the recruit is stuck with no way through.
+- **Step 6** ("press Land on Earth's card") — the *card* must win, or a board still open from
+  step 5 buries the button the lesson names.
+
+v1.7.17 answered the second with a blanket `body.training #panel{z-index:58}`, which broke the
+first. On desktop nothing collided (the card owns its own column); on a phone every board shares
+that column, so the card buried whichever surface the lesson had just asked for. Nick hit it on a
+physical iPhone at both steps.
+
+### How it works
+`_tutPri()` (main.js, beside `_tutShow`) reads the current step's own `spot` + `allow` selectors
+and marks any surface in `TUT_PRI_SURF` — `#panel #log #codex #chpanel #records #vistabox` — with
+`.tutpri`. It runs on step change *and* on the spotlight's 200 ms tick, so a board opened
+mid-step takes the stack as soon as it exists, and clears every mark when training ends.
+
+Matching is **exact-token**: `#log` must not be lit by a step that only allows `#logbtn`
+(`new RegExp(id + '(?![\w-])')`) — the same trap the focus-lockdown token set documents.
+
+### ⚠ The specificity trap (this cost a full gate cycle)
+The CSS rule **cannot** be written `body.training .tutpri{z-index:58}`. That scores 0 ids / 2
+classes, and every surface it must override declares its layer through an **id**
+(`#panel{z-index:9}`, `#codex{z-index:22}`) — **one id outranks any number of classes.** The mark
+applied, the class-level tests passed, and the fix did nothing. It is written as an explicit
+per-surface list (`body.training #panel.tutpri, body.training #log.tutpri, …`) whose members
+mirror `TUT_PRI_SURF`; **change one and change the other.**
+
+### Companions
+- `body.training #setpanel{z-index:60}` — Settings is deliberately reachable mid-training
+  (it is in `TUT_ALWAYS`), so it must outrank both the lesson card (50) and any raised surface (58).
+- `body.training #vistabox{justify-content:flex-start}` + a `--tut-bot` margin on `.vcard` —
+  the Planetside joins `#reveal`/`#pickbox`/`#namebox` in yielding *below* the lesson. Putting it
+  *above* the card (the intuitive fix) hides the sentence telling you to tap it. `.zoom` is exempt.
+- On ≤900px the survey card's `max-height` reserves the bottom dock (126px + safe-area), because
+  steps 5 and 7 point at chips down there.
+
+### How it is gated
+- **smoke** proves the JS half: at steps 5 / 6 / 8 the right surface carries `.tutpri`, `#logbtn`
+  never masquerades as `#log`, and the marks clear at graduation.
+- **tools/uilayout.js** proves the half smoke cannot see — a `training` probe on all 9 viewports
+  that publishes `--tut-bot` the way `_tutSpot` does, then **hit-tests** (`elementFromPoint`) the
+  dock chips, each open board, the card on the LAND step, and Settings › Audio.
+  Replayed against the v1.8.2 build with `--url=`, it reproduces the original report on all three
+  phone viewports — which is the only reason to trust it.

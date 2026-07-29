@@ -1254,6 +1254,14 @@
   body.training #reveal .card{margin-top:var(--tut-bot,160px);max-height:var(--tut-cap,calc(100dvh - var(--tut-bot,160px) - 14px))}
   body.training #pickbox .card{margin-top:var(--tut-bot,160px);max-height:var(--tut-cap,calc(100dvh - var(--tut-bot,160px) - 14px))}
   /* the rename dialog (Settings → Explorer name) is reachable mid-training too */
+  /* Nick 2026-07-28: the Planetside yields below the lesson like its siblings */
+  body.training #vistabox{justify-content:flex-start}
+  body.training #vistabox .vcard{margin-top:var(--tut-bot,160px);
+    max-height:var(--tut-cap,calc(100dvh - var(--tut-bot,160px) - 14px))}
+  body.training #vistabox canvas{max-height:min(64vh,calc(100dvh - var(--tut-bot,160px) - 132px))}
+  /* the full-screen zoom owns the screen by definition — exempt */
+  body.training #vistabox.zoom .vcard{margin-top:0;max-height:none}
+  body.training #vistabox.zoom canvas{max-height:100vh}
   body.training #namebox{align-items:flex-start}
   body.training #namebox .card{margin-top:var(--tut-bot,160px);max-height:var(--tut-cap,calc(100dvh - var(--tut-bot,160px) - 14px))}
   #tutbox #tut-skip:hover,#tutbox #tut-skip-yes:hover{color:var(--ink)}
@@ -1783,6 +1791,9 @@
     box-shadow:0 0 0 100vmax rgba(4,6,13,0.45), 0 18px 50px rgba(0,0,0,0.5)}
   /* bottom-pinned training cards clear the dock AND the raised hint pill */
   #tutbox.dodge{bottom:calc(170px + env(safe-area-inset-bottom,0px))}
+  /* Nick 2026-07-28: steps 5 and 7 point at dock chips — the card ends above them */
+  body.training #panel{max-height:min(var(--tut-cap,60dvh),
+    calc(100dvh - var(--tut-bot,150px) - 126px - env(safe-area-inset-bottom,0px))) !important}
   }
   /* BATCH B: the 701–900px TABLET band — dock furniture, but sheets don't
      stretch wall-to-wall on a 900px canvas; they center at a readable width */
@@ -1838,7 +1849,19 @@
   /* Nick's phone screenshots (2026-07-26 night): during training the LESSON'S
      SURFACES must outrank the boards — Earth's survey card sat behind the dock
      and the Atlas sheet on the land step */
-  body.training:not(.vista) #panel{z-index:58}
+  /* Nick's phone pass 2026-07-28 — see _tutPri(). The blanket
+     `body.training #panel{z-index:58}` buried the Star Atlas, the Compendium
+     and the bottom dock (z14) the moment a lesson pointed at them, because on a
+     phone the boards share the survey card's single column. Now only the
+     lesson's OWN surface rises, so the card wins the LAND step (which is why
+     the raise existed) and loses the ATLAS and CACHE steps (which is what Nick
+     hit). body.vista #panel below still outranks this by specificity. */
+  body.training #panel.tutpri, body.training #log.tutpri, body.training #codex.tutpri,
+  body.training #chpanel.tutpri, body.training #records.tutpri, body.training #vistabox.tutpri{z-index:58}
+  /* external battery v1.8.2 (P2): the recruit can open Settings mid-training —
+     so Settings must outrank the lesson card (z50) AND the lesson's own raised
+     surface (z58), or its Audio tab sits under the card that sent them there. */
+  body.training #setpanel{z-index:60}
   /* Nick live 2026-07-28: while the Planetside is open it owns the screen —
      the survey card drops back so it can never cover the payoff (the training
      card at 50 still reads above the vista's 44, which is what the lesson needs) */
@@ -15004,10 +15027,10 @@ function showReveal(entry, isHybrid){
       /* verb order (Nick): Breed · Feed · Duel · Scout · Code · [Champion] · [Record]; Rename moved to the ✎ icon by the name */
       acts.innerHTML=
         (codex.has(entry.id) ? (()=>{ const d=_denial('breed', entry);
-          return d ? '<button id="rev-breed" type="button" class="needs" aria-disabled="true" data-guide="breeding" data-tip="'+esc(d.why.replace(/<[^>]*>/g,''))+'">'+esc(d.short)+'</button>'
+          return d ? '<button id="rev-breed" type="button" class="needs" aria-label="Breeding unavailable — open guidance" data-guide="breeding" data-tip="'+esc(d.why.replace(/<[^>]*>/g,''))+'">'+esc(d.short)+'</button>'
                    : '<button id="rev-breed" type="button" data-guide="breeding" data-tip="Forge a new bloodline — both parents are consumed, win or lose.">Breed</button>'; })() : '')+
         (entry.kind==='Fauna' && codex.has(entry.id) ? (()=>{ const d=_denial('feed', entry);
-          return d ? '<button id="rev-feed" type="button" class="needs" aria-disabled="true" data-guide="feeding" data-tip="'+esc(d.why.replace(/<[^>]*>/g,''))+'">'+esc(d.short)+'</button>'
+          return d ? '<button id="rev-feed" type="button" class="needs" aria-label="Feeding unavailable — open guidance" data-guide="feeding" data-tip="'+esc(d.why.replace(/<[^>]*>/g,''))+'">'+esc(d.short)+'</button>'
                    : '<button id="rev-feed" type="button" data-guide="feeding" data-tip="A welcome meal grows its bloodline and mends its wounds — a toxic one poisons, and can finish a beast with nothing left.">Feed</button>'; })() : '')+
         '<button id="rev-duel" type="button" data-guide="duels" data-tip="A friendly duel — sport only, nothing is lost.">Duel</button>'+
         (entry.kind==='Fauna' && codex.has(entry.id) ? '<button id="rev-scout" type="button"'+(scoutId===entry.id?' class="on"':'')+' data-guide="discover" data-tip="Your Field Scout takes the hit when a bioscan turns hostile — wounds and all. A scout with nothing left is lost forever.">'+(scoutId===entry.id?'Scouting ✓':'Scout')+'</button>' : '')+
@@ -17990,6 +18013,21 @@ function awardXPOnce(id, key, n, why){
   awardXP(id, n, why);
   return true;
 }
+/* a lineage FIRST belongs to the pairing, not to a creature — keyed on the two
+   parent species and banked in the same persisted ledger under its own
+   namespace, so one cross can never pay twice. The key is HASHED short on
+   purpose: the ledger truncates each entry to 64 chars on load, and two raw
+   codex ids concatenated can exceed that — which would silently collide
+   different crosses into one "already paid" entry across sessions. */
+function awardXPPair(childId, pairKey, n, why){
+  let hv=2166136261;
+  for(let i=0;i<pairKey.length;i++){ hv^=pairKey.charCodeAt(i); hv=Math.imul(hv,16777619); }
+  const k='pair|'+(hv>>>0).toString(36);
+  if(xpFirsts.has(k)) return false;
+  xpFirsts.add(k);
+  awardXP(childId, n, why);
+  return true;
+}
 function awardXP(id, n, why){
   const en=codex.get(id); if(!en || en.kind!=='Fauna') return;
   const g=en.genome, before=levelOf(g);
@@ -18562,13 +18600,8 @@ function breedPair(aEntry, bEntry, roll){
     removeFromCodex(aEntry.id); removeFromCodex(bEntry.id);
     return {ok:false, odds};
   }
-  /* v1.8: care counts — a successful union pays both parents' line, and a
-     lineage combination you have never made before pays a discovery bonus */
-  try{
-    const _pk=[aEntry.kind,bEntry.kind].sort().join('+');
-    awardXP(aEntry.id, 2, 'a successful union');
-    awardXPOnce(aEntry.id, 'lineage:'+_pk, 5, 'a first-of-its-kind lineage');
-  }catch(_){ }
+  /* v1.8 care counts — paid to the CHILD, below, once it exists (external
+     battery v1.8.2 P1: paying aEntry here threw the XP away with the parent) */
   let child=evolveGenome(crossGenome(aEntry.genome, bEntry.genome), 1);
   child.brood=(aEntry.genome.brood||0)+(bEntry.genome.brood||0)+1;
   /* v1.6 Pass 8 ANCESTRY: remember the two parents by name for the lineage card (breedPair is
@@ -18579,6 +18612,15 @@ function breedPair(aEntry, bEntry, roll){
   while(codex.has(codexId(child))) child.seed=(child.seed*1664525+1013904223)>>>0;
   const born=_storeSpecies(child, aEntry.name+' × '+bEntry.name+' (bred)', null);
   removeFromCodex(aEntry.id); removeFromCodex(bEntry.id);   /* both parents are consumed by the union — win or lose */
+  /* care counts, and it has to SURVIVE: the newborn carries the union's XP,
+     because both parents are gone by this line. The lineage bonus is a first
+     for the PAIRING, not for any one creature. */
+  try{
+    if(born){
+      awardXP(born.id, 2, 'a successful union');
+      awardXPPair(born.id, [aEntry.id,bEntry.id].sort().join('+'), 5, 'a first-of-its-kind lineage');
+    }
+  }catch(_){ }
   return {ok:true, odds, born};
 }
 function faunaTastes(g){
@@ -19102,7 +19144,7 @@ const GUIDE=[
 ]},
 {icon:'🌿', cat:'Breeding & Feeding', blurb:'Bloodlines, meals, medicine', topics:[
  {id:'breeding', t:'Breeding', k:'breed pair parents consumed odds hybrid bloodline stardust boost union', body:
-  '<p>Pick a specimen, press <b>Breed</b>, choose a same-kingdom mate. Both parents are consumed by the union — win or lose.</p><ul><li>The odds shown depend on the pair’s rarity — rare pairs are long shots.</li><li>☄ Stardust you’ve earned passively boosts odds (up to +15%) — see <span data-gt="stardust">Stardust</span>.</li><li>Success forges a <b>new bloodline</b>: a hybrid child with boosted stats (+1 brood). Chain generations for monsters.</li><li>Failure loses both parents. Breed your spares, not your champions.</li><li>Two extremophile parents breed a true extremophile; a mixed pair breeds back toward ordinary stock. A creature&#8217;s two-tone hide follows its accent gene, so children visibly carry their parents&#8217; colors.</li></ul>'},
+  '<p>Pick a specimen, press <b>Breed</b>, choose a same-kingdom mate. Both parents are consumed by the union — win or lose.</p><ul><li>The odds shown depend on the pair’s rarity — rare pairs are long shots.</li><li>☄ Stardust you’ve earned passively boosts odds (up to +15%) — see <span data-gt="stardust">Stardust</span>.</li><li>Success forges a <b>new bloodline</b>: a hybrid child with boosted stats (+1 brood). Chain generations for monsters.</li><li>The union&#8217;s experience goes to the <b>child</b> (+2, and +5 the first time you cross two particular species) — the parents are gone, so the newborn inherits the credit for them.</li><li>Failure loses both parents. Breed your spares, not your champions.</li><li>Two extremophile parents breed a true extremophile; a mixed pair breeds back toward ordinary stock. A creature&#8217;s two-tone hide follows its accent gene, so children visibly carry their parents&#8217; colors.</li></ul>'},
  {id:'feeding', t:'Feeding beasts', k:'feed flora meal tastes loved disliked poison toxic dead bloodline fed mend medicine', body:
   '<p>Fauna can be fed flora from your Compendium (<b>Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavors it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength.</li><li>Feeding is also medicine: a welcome meal mends a wounded beast, and loved flavors mend most. A disliked meal that goes badly can wound it further — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll poisons the beast, biting off a chunk of its condition; rarer flora bite far deeper. Only a beast whose strength is already spent dies of it — at zero, it’s gone. The Iron Gut ability shrugs toxins off.</li></ul>'},
  {id:'injuries', t:'Injuries & recovery', k:'injury wound hurt condition bruised critical mend recover heal scars medicine', body:
@@ -19126,9 +19168,9 @@ const GUIDE=[
  {id:'abilities', t:'Abilities & biome themes', k:'ability theme fire frost storm tide stone venom void sand chem psionic wild burn regen crit dodge', body:
   '<p>Every creature carries one ability from its habitat’s theme — <em>fire, frost, storm, tide, stone, venom, void, sand, chem, psionic, wild</em> (gliders lean storm, swimmers tide, burrowers stone…). Beside each theme’s named classics lives the <b>ability matrix</b>: sixteen archetype verbs — Smite, Aegis, Affliction, Fury, Ambush, Eye, Veil, Mending, Echo, Thirst, <b>Thorns, Rend, Reckoning, Bulwark, Shock, Roulette</b> — at five magnitudes (I–V) that climb with rarity: hundreds of abilities in all (“Fire Reckoning III”). Hybrids usually inherit their other parent’s archetype; sometimes they mutate something new. Apex Guardians fight with <b>Sovereign</b> arts at full magnitude. Every verb is balanced empirically — equal-stat win rates pinned near 50%, with honest counters. The ability is printed on the specimen card.</p>'},
  {id:'classes', t:'Classes, XP & levels', k:'class level xp experience innate warrior mage berserker paladin assassin fusion wins', body:
-  '<p>Every beast is born to a <b>class</b> — Warrior, Berserker, Necromancer, Assassin, Druid… over a hundred, with the legendary ones (<b>Titan, Worldbreaker, Avatar, Chosen One</b>) reserved for summit-grade creatures. A class grants <b>innate arts</b>: always-on powers that need no roll, printed on the specimen card.</p><ul><li>Power is built through wins. Victories feed the XP bar — duels +8; conquests +20 and guardians +60, each climbing with the conquered world&#8217;s tier — and cataloguing a genuinely new species teaches your standing Field Scout +2. Levels wake more innate arts (slots at level 3 and 6), never raw stats.</li><li><b>Breeding fuses bloodlines:</b> a hybrid usually inherits a class from its parents’ lineages — a Caster line crossed with a Martial line breeds toward Spellswords and Battlemages.</li><li>Levels are <em>your</em> creature’s story — a shared code arrives at level 1.</li></ul>'},
+  '<p>Every beast is born to a <b>class</b> — Warrior, Berserker, Necromancer, Assassin, Druid… over a hundred, with the legendary ones (<b>Titan, Worldbreaker, Avatar, Chosen One</b>) reserved for summit-grade creatures. A class grants <b>innate arts</b>: always-on powers that need no roll, printed on the specimen card.</p><ul><li>Power is built through wins <em>and through care</em>. Victories feed the XP bar — duels +8; conquests +20 and guardians +60, each climbing with the conquered world&#8217;s tier — and cataloguing a genuinely new species teaches your standing Field Scout +2. Keeping also counts: a welcome meal +1, a taste discovered +2, a bout survived +2, a fight taken to the wire +3, a conquest lost +3, and a defender pushed to the brink +5. Levels wake more innate arts (slots at level 3 and 6), never raw stats.</li><li>A union pays its XP to the <b>newborn</b> — both parents are consumed, so the child is the only one left to carry it: +2 for the union, and +5 the first time you cross two particular species.</li><li><b>Breeding fuses bloodlines:</b> a hybrid usually inherits a class from its parents’ lineages — a Caster line crossed with a Martial line breeds toward Spellswords and Battlemages.</li><li>Levels are <em>your</em> creature’s story — a shared code arrives at level 1.</li></ul>'},
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
-  '<p>Any world with fauna can be conquered. Press <b>Conquer Planet</b> on its survey card and choose one champion — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries wounds home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a wild-caught creature:</b> it is gone forever.</li><li><b>Lose with a bred champion:</b> your bloodline crawls home <b>Critical</b> — broken, not dead. Mend it with flora it ♥ loves — a champion fielded while still Critical will not crawl home twice.</li><li><b>Lose fighting yourself:</b> you take the wound instead — it can beat you to the brink but never kill you, and below a quarter health you cannot lead a conquest at all (send a beast, or mend first).</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
+  '<p>Any world with fauna can be conquered. Press <b>Conquer Planet</b> on its survey card and choose one champion — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li>The picker&#8217;s reading is <b>simulated, not estimated</b>: it runs the matchup 160 times and reports a band — <b>Favored · Even · Dangerous · Overwhelming</b> — with the sampled percentage and one line saying why. A sample that size cannot tell 0% from a half-percent, so it shows <b>&lt;1%</b> and <b>&gt;99%</b> rather than claiming a certainty it does not have.</li><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries wounds home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a wild-caught creature:</b> it is gone forever.</li><li><b>Lose with a bred champion:</b> your bloodline crawls home <b>Critical</b> — broken, not dead. Mend it with flora it ♥ loves — a champion fielded while still Critical will not crawl home twice.</li><li><b>Lose fighting yourself:</b> you take the wound instead — it can beat you to the brink but never kill you, and below a quarter health you cannot lead a conquest at all (send a beast, or mend first).</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
  {id:'binder', t:'The Binder & the Fifty Paragons', k:'binder collection sets slots types paragon fifty silhouette claim stardust', body:
   '<p>Open <b>🏆 Records</b> and switch to the <b>🗂 Binder</b> tab. You cannot collect individuals out of an infinite universe — so the Binder collects types: fixed pages of slots (every grade, every realm, every body plan, every ability theme…) that are the same for every explorer; your universe decides which specimen fills each.</p><ul><li><b>Sets</b> are curated collections that pay a one-time ☄ Stardust bounty — claim them in the Binder when complete.</li><li><b>The Fifty Paragons</b> are named, one-of-a-kind deep-spectrum legends living on fixed worlds — the same fifty worlds for every explorer. Tap a silhouette to plot a course to its last-known world, then land and <b>Discover Life</b> to catalogue it. Share the coordinates — your friend hunts the very same legend.</li></ul>'},
  {id:'guardians', t:'Apex Guardians', k:'guardian apex named ruler challenge summit empyrean eternal singular crown titan', body:
@@ -19168,7 +19210,7 @@ const GUIDE=[
 ]},
 {icon:'⚙', cat:'Settings & Saving', blurb:'Toggles, tooltips, your save', topics:[
  {id:'settings', t:'Settings', k:'settings text size sound effects shake notifications tooltips toggle options', body:
-  '<p><b>The dock</b> holds your five boards — it rides the BOTTOM edge on phones and the RIGHT rail on desktop, with ⚙ Settings and the ? Guide beside it either way.</p><p>The ⚙ panel (dock ⚙) has four tabs.</p><ul><li><b>Display</b>: <b>Text size</b> (A/A+/A++), <b>Text tone</b> (Soft / Bright / Max — brighter tones lift body text toward white and shift bold to gold), <b>Font</b> (Grotesk / System / Mono), <b>Explorer name</b>, and <b>Tooltips</b> (the short hints on hover, keyboard focus, or long-press — turn them off once you’re fluent).</li><li><b>Graphics</b>: <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, <b>Motion</b> (Auto follows your device’s reduce-motion preference; Reduced stills the travel tunnel, shake, confetti and shimmer), and <b>Panel tint</b> (a glass slider — drag from airy liquid glass to a near-solid backing; a floor keeps text readable).</li><li><b>Gameplay</b>: <b>Confirm before salvaging</b> — the guard that asks before an item (or Salvage All) breaks gear down for parts.</li><li><b>Audio</b>: <b>Sound</b>, the <b>Volume</b> slider, and <b>Notifications</b> (silences pop-ups; the 🔔 tray still logs everything).</li></ul><p>All persist with your save.</p>'},
+  '<p><b>The dock</b> holds your five boards — it rides the BOTTOM edge on phones and the RIGHT rail on desktop, with ⚙ Settings and the ? Guide beside it either way.</p><p>The ⚙ panel (dock ⚙) has four tabs.</p><ul><li><b>Display</b>: <b>Text size</b> (A/A+/A++), <b>Text tone</b> (Soft / Bright / Max — brighter tones lift body text toward white and shift bold to gold), <b>Font</b> (Grotesk / System / Mono), <b>Explorer name</b>, and <b>Tooltips</b> (the short hints on hover, keyboard focus, or long-press — turn them off once you’re fluent).</li><li><b>Graphics</b>: <b>Visual effects</b> (particle bursts), <b>Screen shake</b>, <b>Motion</b> (Auto follows your device’s reduce-motion preference; Reduced stills the travel tunnel, shake, confetti and shimmer), and <b>Panel tint</b> (a glass slider — drag from airy liquid glass to a near-solid backing; a floor keeps text readable).</li><li><b>Gameplay</b>: <b>Confirm before salvaging</b> — the guard that asks before an item (or Salvage All) breaks gear down for parts.</li><li><b>Audio</b>: <b>Sound</b> (the master — off silences everything at once, including a world&#8217;s ambience), the <b>Volume</b> slider, <b>Creature voices</b> (every beast has its own call, inherited and blended when you breed), <b>Battle sound</b> (blow-by-blow impact in duels and conquests), and <b>Notifications</b> (silences pop-ups; the 🔔 tray still logs everything).</li></ul><p>All persist with your save.</p>'},
  {id:'saving', t:'Your save & reset', k:'save localstorage reset erase wipe browser device local', body:
   '<p>Your expedition saves automatically to this browser on this device — no account, no cloud. Clearing site data clears the expedition, so export your best creatures as CFB codes if you’re attached. <b>↺ Reset Game</b> in Settings erases everything after a confirm — the universe itself is unharmed; it’s math.</p>'},
 ]}];
@@ -19497,10 +19539,25 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.8.2';
+const GAME_VERSION='1.8.3';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.8.3', title:'Clear Ground', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🗺 THE LESSON&#8217;S OWN SCREEN COMES FORWARD — on phones, Earth&#8217;s survey card sat on top of every board, so the two lessons that ask you to open the <b>Star Atlas</b> and the <b>Compendium</b> opened them underneath it, with no way through. Whatever the current lesson points at now takes the front, and the card steps back — except on the landing step, where the card is the thing you need.',
+  '📱 THE DOCK IS NEVER BURIED — the survey card now stops above the bottom dock instead of running over the chips a lesson is pointing at.',
+  '🪐 THE PLANETSIDE READS CLEARLY DURING TRAINING — the landing view was sliding under the guidance card, hiding its own heading. It now settles below the lesson, the way every other dialog does, so you can read both.',
+  '⚙ SETTINGS OPENS OVER A LESSON — the guidance card was covering the Settings panel (the Audio tab especially) on almost every screen size. Settings you opened yourself now comes to the front.',
+  '🧬 A UNION&#8217;S EXPERIENCE REACHES THE CHILD — both parents are consumed by breeding, and the experience was being paid to one of them, so it vanished the moment it was earned. The newborn now carries it: +2 for the union, +5 the first time you cross two particular species. (That bonus also only ever recognised &#8220;fauna with fauna&#8221; before, so it never meant what it said.)',
+  '🔇 SOUND OFF MEANS OFF — switching Sound off left a world&#8217;s ambience still playing underneath. It stops immediately now.',
+  '⚔ THE MATCHUP METER STOPS ROUNDING TO CERTAINTY — 160 simulated duels cannot tell 0% from a half-percent, so hopeless and near-certain matchups now read <b>&lt;1%</b> and <b>&gt;99%</b> instead of a flat 0% or 100%.',
+  '♿ GUIDANCE BUTTONS NO LONGER CLAIM TO BE DISABLED — the <b>Breed</b> and <b>Feed</b> buttons that explain what you are missing are pressable and always were, but they told screen readers the opposite. They now announce what they actually do.'],
+ ],
+ ['📖 Guide', [
+  '📖 THE GUIDE CATCHES UP — the class topic now covers experience earned through <em>care</em>, not victories alone, and says where a union&#8217;s experience lands; breeding repeats it where a breeder will look; conquest explains that the meter is simulated rather than estimated; and Settings lists the <b>Creature voices</b> and <b>Battle sound</b> switches.'],
+ ],
+]},
 {v:'1.8.2', title:'Steady Hands', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🍽 THE MEAL AND THE UNION KEEP THEIR CARD — the feed and breed lessons were closing the specimen card and then asking you to open one again. The card stays open now (its own <b>Feed</b> and <b>Breed</b> buttons are the target), and if you close it, reopening any beast works just as well.',
@@ -20500,6 +20557,12 @@ function trueOdds(champ, native, n){
     return o;
   }catch(_){ return {p:winEstimate(champ,native), close:0, n:0}; }
 }
+/* 160 duels cannot distinguish 0% from 0.6% — an absolute would claim a
+   certainty the sample does not have (external battery v1.8.2) */
+function _oddsPct(p){
+  const r=Math.round(p*100);
+  return r<=0?'&lt;1%':(r>=100?'&gt;99%':r+'%');
+}
 /* the band a player can act on, not a number that implies false precision */
 function oddsBand(p){
   if(p>=0.75) return {t:'Favored',      col:'#7fe6a0'};
@@ -20555,7 +20618,7 @@ function openConquestPicker(d, native){
       '<div class="m"><div class="nm" style="color:'+S.hex+'">'+(c.isPlayer?'★ '+c.name+' (you)':c.name)+'</div>'+
       '<div class="ds">Power '+S.total+' · ✧ '+S.ab.n+(cc&&cc.h>0?' · <span style="color:'+cc.col+'">'+cc.label+'</span>':'')+'</div>'+
       (_why?'<div class="ds why">'+esc(_why)+'</div>':'')+'</div>'+
-      '<span class="odds" style="color:'+col+'"><b>'+_bd.t+'</b><i>'+Math.round(wc*100)+'%</i></span></div>';
+      '<span class="odds" style="color:'+col+'"><b>'+_bd.t+'</b><i>'+_oddsPct(wc)+'</i></span></div>';
   }).join('');
   pickBox.style.display='flex';
 }
@@ -24922,7 +24985,24 @@ function _tutGateOff(){ for(const ev of TUT_GATE_EVTS) document.removeEventListe
 let _tutSpotT=0, _tutSpotD=0, _tutFlipT=0, _tutFlipOvr=-1;   /* the spotlight tracks its target LIVE — layouts
                       shift when dialogs open, text size changes or the topbar
                       reflows, and a once-per-step ring strands at stale spots */
+/* the surfaces that can contest the stack during training. Buttons are absent
+   on purpose — priority is about which SHEET wins, not which chip. */
+const TUT_PRI_SURF=['#panel','#log','#codex','#chpanel','#records','#vistabox'];
+function _tutPri(){
+  try{
+    const s=(_tutStep>=0)?TUT_STEPS[_tutStep]:null;
+    const sels=(s&&_tutHook)?[s.spot].concat(s.allow||[]).filter(Boolean):[];
+    for(const id of TUT_PRI_SURF){
+      const el=document.querySelector(id); if(!el) continue;
+      /* EXACT-TOKEN match — '#logbtn' must never light '#log' (the same trap the
+         focus-lockdown's token set already documents) */
+      const re=new RegExp(id+'(?![\\w-])');
+      el.classList.toggle('tutpri', sels.some(x=>re.test(x)));
+    }
+  }catch(_){ }
+}
 function _tutShow(){
+  _tutPri();   /* before the early return: a finished tutorial clears every mark */
   _tutFlipOvr=-1;   /* each step's card starts on its ruled side; the flip latch is per-step */
   const s=TUT_STEPS[_tutStep]; if(!s){ tutEl.style.display='none'; tutSpotEl.style.display='none'; clearInterval(_tutSpotT); clearTimeout(_tutSpotD); return; }
   tutEl.innerHTML='<div class="tt"><span>🧭 Field Training</span><span>'+(_tutStep+1)+' / '+TUT_STEPS.length+'</span></div>'+
@@ -24956,6 +25036,7 @@ function _tutSpot(){
     const _vis=id=>{ const e=document.getElementById(id); return e && getComputedStyle(e).display!=='none'; };
     if(!['setpanel','helppop','relbox','sharebox','guidebox','namebox','deathbox','pickbox','duelbox','vistabox','descbox'].some(_vis)){ try{ codexBtn.click(); }catch(_){} }
   }
+  _tutPri();   /* re-assert: a board opened mid-step must take the stack the moment it exists */
   const el=s&&s.spot?document.querySelector(s.spot):null;
   let r=null;
   if(el){
@@ -25461,6 +25542,11 @@ setPanel.addEventListener('click', e=>{
   if(fnt){ fontMode=fnt.dataset.font||''; applyFont(); queueSave(); return; }
   if(e.target && e.target.id==='sndopt'){
     sndOn=!sndOn;
+    /* external battery v1.8.2 (P1): muting stopped every FUTURE sound (ac()
+       returns null) but never the LOOP already playing — the bed sang on with
+       the sound switched off. Nothing else needs telling: the one-shots are
+       sub-second and cannot start while muted. */
+    if(!sndOn){ try{ ambienceStop(); }catch(_){ } }
     e.target.classList.toggle('on', sndOn);
     e.target.textContent=sndOn?'On':'Off';
     queueSave();

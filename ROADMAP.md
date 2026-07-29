@@ -1338,3 +1338,61 @@
 ##   simrun tier so this blind spot closes permanently; (3) v1.8.x for whatever the round finds;
 ##   (4) then v1.9 consolidation = Phase 0/1 of the port (saves/Zod, module split = the TS
 ##   extraction, payload budget, art-direction doc) → v2.0 PixiJS.
+## ▶▶▶ 2026-07-28 ★ v1.8.3 "CLEAR GROUND" — the external battery's four defects + Nick's phone blocker.
+##   TWO INPUTS THIS BATCH: (a) Nick's real-iPhone screenshots (steps 5 and 7 STUCK), (b) the external
+##   v1.8.2 Full Battery ("Conditional Gold ~94%", 2 P1 + 2 P2).
+##   ★ THE PHONE BLOCKER (Nick): the Star Atlas + Compendium lessons opened their board UNDERNEATH
+##   Earth's survey card, with no way through. ROOT CAUSE: v1.7.17's blanket `body.training #panel
+##   {z-index:58}` (added because the boards buried the card on the LAND step) outranks every board
+##   (#log/#codex/#chpanel/#records = 22) AND the phone dock (14). Desktop never collided — the card
+##   has its own column; on a phone they share one. Neither surface can statically win.
+##   THE LAW NOW: the surface THIS lesson points at is the top surface — _tutPri() derives it from the
+##   step's own spot/allow (exact-token match, so '#logbtn' never lights '#log'), so it holds for all
+##   21 steps and any step added later. Also: #vistabox joined the yield-below-the-lesson family it was
+##   the only modal missing (Nick: "the vista is behind the training dialogue"); the survey card now
+##   stops ABOVE the dock. NOTE Nick asked whether the vista should go ON TOP of the dialogue — it
+##   shouldn't: that hides the sentence telling you to tap it. Below, like every other dialog.
+##   ★ BATTERY P1 (breeding XP): awardXP(aEntry) then removeFromCodex(aEntry) 11 lines later — the XP
+##   vanished as it was earned. Now paid to the NEWBORN. Their suggested patch was NOT taken verbatim:
+##   awardXPOnce keys on id|key, so born.id makes every child fresh and the +5 would fire EVERY birth.
+##   Fixing that exposed a defect they missed — the lineage key was [aEntry.kind,bEntry.kind], and
+##   breeding is always Fauna×Fauna, so it could ONLY ever read 'Fauna+Fauna'. A once-per-parent payout
+##   wearing a lineage's name, and it would read as "working" in any log. Now keys on the two parent
+##   SPECIES via awardXPPair (FNV-hashed short — the ledger truncates to 64 chars on load, and two raw
+##   codexIds concatenated exceed that → silent cross-session collisions).
+##   ★ BATTERY P1 (ambience): Sound Off left the bed looping. ac() already returns null when muted, so
+##   the bed was the ONLY leak (it outlives its trigger) — no other envelope needed chasing.
+##   ★ BATTERY P2: Settings › Audio was under the lesson card on 4/5 of their viewports → body.training
+##   #setpanel{z-index:60}. ★ BATTERY P2: aria-disabled removed from the actionable Breed/Feed shortfall
+##   buttons (+ real accessible names); the inert `bclaim need` KEEPS its aria-disabled (correct there).
+##   ★ Meter: <1% / >99% instead of absolutes — 160 samples can't tell 0% from 0.6%.
+##   ★★ TWO PROCESS LESSONS, both earned the hard way this batch:
+##   (1) SPECIFICITY BEAT ME. `body.training .tutpri{z-index:58}` scored 0 ids/2 classes against
+##   #panel{z-index:9} and #codex{z-index:22} — ONE ID BEATS ANY NUMBER OF CLASSES. The mark applied,
+##   smoke's class assertions passed, and the fix did NOTHING. Only the new real-browser
+##   elementFromPoint gate caught it. Rule reinforced: a class-level override cannot govern surfaces
+##   that declare their layer through an id. Now `body.training #panel.tutpri, …` (list mirrors
+##   TUT_PRI_SURF).
+##   (2) A CHECK THAT ECHOES THE SOURCE STRING IS NOT A CHECK. The v1.8.1 vista check asserted the
+##   literal text 'body.training:not(.vista) #panel' and failed on a refactor while the LAW was fine;
+##   my first meter check called _oddsPct() directly and PASSED against a build whose render site had
+##   regressed to Math.round. Both now assert the law/rendered outcome. Third instance of this class.
+##   NEW GATES (all negative-controlled — each proven to FAIL on a deliberately broken build):
+##   smoke +13 (step 5/6/8 priority + token control + mark-clearing; union XP reaches the newborn incl.
+##   the +5; aria; meter read from the RENDERED DOM via a titan matchup) · uilayout +54 (a training-stack
+##   probe on all 9 viewports: dock chips tappable, open board outranks the card, card still wins the
+##   LAND press, Settings › Audio clickable — measured by hit-test the way the battery measured it).
+##   ⚠ THE DECISIVE PROOF: replayed against the v1.8.2 build Nick was playing, the new layout gate
+##   REPRODUCES his report on all three phone viewports (Compendium chip untappable, both boards buried).
+##   GUIDE UPDATED (Nick's standing rule): classes topic now covers care XP + where a union's XP lands;
+##   breeding repeats it; conquest explains the meter is simulated; Settings lists Creature voices +
+##   Battle sound (the tab had never been updated for v1.8.0).
+##   CORRECTED OUR OWN CLAIM: "zero added payload" was an overstatement the battery caught — it is zero
+##   AUDIO-MEDIA payload (~45KB raw / ~15KB gzip of synthesis code). REVIEWER_NOTES_v1.8.2.md fixed;
+##   REVIEWER_NOTES_v1.8.3.md written as the response doc.
+##   Gates: fp MATCH 50/50 · smoke 540/0 · layout 615 checks/9 viewports · BALANCE PASS · validate 9/9.
+##   ▶ NEXT: (1) NICK'S iPHONE RE-VERIFY of steps 5/6/7 — the fix is gate-proven but the device is the
+##   judge; (2) next external round on 1.8.3 (ask them to re-check the lineage bonus specifically —
+##   "pays once per species pair EVER" won't distinguish from the old bug in a single session);
+##   (3) rage-quit measurement still unproduced — the one metric moving the wrong way (3→5→7);
+##   (4) human audio A/B before scaling §15; (5) DOM-driven simrun tier; (6) then v1.9 → v2.0 PixiJS.
