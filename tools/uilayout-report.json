@@ -26,7 +26,7 @@
    "surf": "touch",
    "name": "heal control measures 44x44 everywhere",
    "ok": true,
-   "detail": "46x46"
+   "detail": "44x44"
   },
   {
    "vp": "iphone-se",
@@ -502,7 +502,7 @@
    "surf": "touch",
    "name": "heal control measures 44x44 everywhere",
    "ok": true,
-   "detail": "46x46"
+   "detail": "44x44"
   },
   {
    "vp": "iphone",
@@ -978,7 +978,7 @@
    "surf": "touch",
    "name": "heal control measures 44x44 everywhere",
    "ok": true,
-   "detail": "46x46"
+   "detail": "44x44"
   },
   {
    "vp": "iphone-max",
@@ -1454,7 +1454,7 @@
    "surf": "touch",
    "name": "heal control measures 44x44 everywhere",
    "ok": true,
-   "detail": "46x46"
+   "detail": "44x44"
   },
   {
    "vp": "android",
@@ -1930,7 +1930,7 @@
    "surf": "touch",
    "name": "heal control measures 44x44 everywhere",
    "ok": true,
-   "detail": "46x46"
+   "detail": "44x44"
   },
   {
    "vp": "ipad-port",
@@ -2375,6 +2375,482 @@
   },
   {
    "vp": "ipad-port",
+   "surf": "training",
+   "name": "step 6: the survey card still outranks an open board for the LAND press",
+   "ok": true,
+   "detail": "covered by DIV"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "boot",
+   "name": "coarse-pointer emulation active",
+   "ok": true,
+   "detail": "pnx touch sizing rules apply"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "boot",
+   "name": "boots and training skips",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "rail-cold",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "touch",
+   "name": "heal control measures 44x44 everywhere",
+   "ok": true,
+   "detail": "44x44"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "rail-after-tray",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "rail-after-search",
+   "name": "rail buttons all reachable",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "charters",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "charters",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "charters",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "charters",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "charters",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "charters",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "charters",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "compendium",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "compendium",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "compendium",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "compendium",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "compendium",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "compendium",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "compendium",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "atlas",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "atlas",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "atlas",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "atlas",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "atlas",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "atlas",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "atlas",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "records",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "records",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "records",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "records",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "records",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "records",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "records",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "sheet",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "sheet",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "sheet",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "sheet",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "sheet",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "sheet",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "sheet",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "shipyard",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "shipyard",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "shipyard",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "shipyard",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "shipyard",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "shipyard",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "shipyard",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "settings",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "settings",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "settings",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "settings",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "settings",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "settings",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "settings",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "tray",
+   "name": "opens",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "tray",
+   "name": "✕ sits inside the corner",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "tray",
+   "name": "✕ clear of header text",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "tray",
+   "name": "✕ is hittable (top of stack)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "tray",
+   "name": "panel is top of stack (z-order law)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "tray",
+   "name": "no horizontal page scroll",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "tray",
+   "name": "no clipped headers",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "step 5: the Atlas dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by ico"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "step 7: the Compendium dock chip is tappable behind the survey card",
+   "ok": true,
+   "detail": "covered by ico"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "step 5: the OPEN Atlas outranks the survey card",
+   "ok": true,
+   "detail": "covered by sub-hint"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "step 8: the OPEN Compendium outranks the survey card",
+   "ok": true,
+   "detail": "covered by empty"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "battery P2: Settings › Audio is clickable during a lesson",
+   "ok": true,
+   "detail": "blocked by stab"
+  },
+  {
+   "vp": "ipad-mini",
    "surf": "training",
    "name": "step 6: the survey card still outranks an open board for the LAND press",
    "ok": true,
@@ -2434,14 +2910,14 @@
    "surf": "touch",
    "name": "hpheart measures 44x44 on a coarse pointer",
    "ok": true,
-   "detail": "47x47"
+   "detail": "44x44"
   },
   {
    "vp": "ipad-land",
    "surf": "touch",
    "name": "the 44px hit areas cost NO extra topbar height",
    "ok": true,
-   "detail": "topbar 96px"
+   "detail": "topbar 94px"
   },
   {
    "vp": "ipad-land",
@@ -2917,7 +3393,7 @@
    "surf": "touch",
    "name": "heal control measures 44x44 everywhere",
    "ok": true,
-   "detail": "47x47"
+   "detail": "44x44"
   },
   {
    "vp": "laptop",
@@ -3386,7 +3862,7 @@
    "surf": "touch",
    "name": "heal control measures 44x44 everywhere",
    "ok": true,
-   "detail": "47x47"
+   "detail": "44x44"
   },
   {
    "vp": "desktop",
@@ -3855,7 +4331,7 @@
    "surf": "touch",
    "name": "heal control measures 44x44 everywhere",
    "ok": true,
-   "detail": "47x47"
+   "detail": "44x44"
   },
   {
    "vp": "wide",

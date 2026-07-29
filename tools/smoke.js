@@ -1960,9 +1960,124 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       const src = require('fs').readFileSync(require('path').join(__dirname, '..', 'celestial-frontier.html'), 'utf8');
       check('CF1718-03: the hardening CSS lives in the LAST stylesheet (cascade-safe)',
         src.indexOf('the audit batch') > src.indexOf('</style>'));
-      check('CF1720-07: the ring sits BELOW the lesson card and no blanket raise kills the per-step toggle',
-        src.includes('body.training #tutspot{z-index:49}') && !src.includes('body.training #tutbox{z-index:60}'));
+      /* ROUND 7 CF1720-07: the old form asserted the literal rule text and
+         passed while the per-step toggle it protects was DEAD — the blanket
+         'body.training #tutspot' (1,1,1) out-specifies '#tutspot.overtop'
+         (1,1,0). The overtop rule must now carry an id of its own. */
+      check('CF1720-07: the ring per-step toggle can actually win the cascade',
+        src.includes('body.training #tutspot.overtop{z-index:59}') && !src.includes('body.training #tutbox{z-index:60}'));
       check('CF1718-04: the titan clamp carries the emitting selector', src.includes('.psig .pby{display:-webkit-box'));
+    }
+    // ===== ROUND 7: the economy exploits =====
+    {
+      // CF1802-15: an edited save must not mint a 1000x champion. The share-code
+      // path already stripped these; the LOAD path did not, and battleStats
+      // multiplies by _mult unbounded while abilityOf grants apex the Sovereign art.
+      const dirty = { seed: 4242, kingdom: 'fauna', _mult: 1000, _wf: 9, apex: 14, brood: 9e9, fed: 9e9, xp: 9e9, hurt: 5 };
+      const clean = skH._sanitizeSavedGenome({ ...dirty });
+      check('CF1802-15: a saved genome cannot carry battlefield multipliers home',
+        clean && clean._mult === undefined && clean._wf === undefined,
+        JSON.stringify(clean));
+      check('CF1802-15: a forged apex band is rejected, a genuine one survives',
+        skH._sanitizeSavedGenome({ seed: 1, apex: 3 }).apex === undefined
+        && skH._sanitizeSavedGenome({ seed: 1, apex: 13 }).apex === 13);
+      check('CF1802-15: the numeric fields still clamp', clean.brood === 200 && clean.fed === 200 && clean.xp === 486 && clean.hurt === 1);
+      // CF1802-05: the stall detector must not fire while the player is actively skimming
+      check('CF1802-05: skimming counts as PROGRESS (the set held an event never emitted)',
+        skH._PROGRESS_EVT.has('skimmed') && !skH._PROGRESS_EVT.has('skim'),
+        [...skH._PROGRESS_EVT].join(','));
+      // CF1802-04: never send a player to an empty Atlas, and never return a null destination
+      {
+        const before = new Map(skH.logMap);
+        skH.logMap.clear();
+        const nb = skH._nextBest();
+        check('CF1802-04: with an empty Atlas the suggestion never points AT the Atlas',
+          !nb || nb.go !== 'log', JSON.stringify(nb));
+        check('CF1802-04: every suggestion carries a real destination (go:null toggled the log)',
+          !nb || (typeof nb.go === 'string' && nb.go.length > 0), JSON.stringify(nb));
+        for (const [k, v] of before) skH.logMap.set(k, v);
+      }
+      // CF1802-21: the voice reads the gene the CARD prints
+      check('CF1802-21: temperament boldness has one entry per FA_TEMPER entry',
+        Array.isArray(skH._TEMPER_BOLD) && skH._TEMPER_BOLD.length === skH.FA_TEMPER.length,
+        'bold=' + (skH._TEMPER_BOLD || []).length + ' temper=' + skH.FA_TEMPER.length);
+      check('CF1802-21: the most aggressive temperament is the boldest voice',
+        (() => { const i = skH.FA_TEMPER.findIndex((t) => /aggressively territorial/.test(t));
+          return i >= 0 && skH._TEMPER_BOLD[i] === Math.max(...skH._TEMPER_BOLD); })());
+      // CF1802-20: two creatures differing ONLY in a gene the old model ignored
+      // must now sound different. The old voiceOf read family+size+behaviour only.
+      check('CF1802-20: the voice reads more of the genome than family, size and temper',
+        (() => {
+          const a = skH.makeGenome(777001, 'fauna', 0.5);
+          const b = { ...a, trait: (a.trait || 0) + 1, diet: (a.diet || 0) + 1, loco: (a.loco || 0) + 1 };
+          const va = skH.voiceOf(a), vb = skH.voiceOf(b);
+          return va.f0 !== vb.f0 || va.dur !== vb.dur || va.rich !== vb.rich;
+        })());
+      // CF1802-24: no family should sit ON the clamp, where size and temper stop mattering
+      check('CF1802-24: a bat-family voice still moves with size (not pinned at the 6kHz clamp)',
+        (() => {
+          const g1 = { seed: 5, kingdom: 'fauna', _earthName: 'Little Brown Bat', size: 0, temper: 0 };
+          const g2 = { ...g1, size: 5 };
+          const f1 = skH.voiceOf(g1).f0, f2 = skH.voiceOf(g2).f0;
+          return f1 < 6000 && f2 < 6000 && f1 !== f2;
+        })());
+    }
+    // CF1802-03: THE most consequential item of the round. renderChip returned at
+    // `if(!g)` — no accepted charter and no Ascent goal means no objective — so
+    // the stall suggestion could never render for a player with nothing on. That
+    // population was 50% of the fleet and 100% of the rage quits: the players
+    // most in need of a nudge were the only ones who could not be given one.
+    {
+      const accBefore = [...skH.chacc];
+      skH.chacc.clear();
+      // The no-objective state is BOTH conditions, not just one: no accepted
+      // charter AND no outstanding Ascent goal. Clearing only chacc leaves the
+      // chapter goal standing, `g` truthy, and the whole test vacuous — which is
+      // exactly what the first cut of this check did (it passed against a build
+      // with the fix reverted).
+      const chNow = skH._ascActive && skH._ascActive();
+      const progBefore = {};
+      if (chNow) for (const go of chNow.goals) { progBefore[go.id] = skH.ascProg[go.id]; skH.ascProg[go.id] = go.n; }
+      // twelve fruitless interactions — the shape of a quit
+      for (let i = 0; i < 12; i++) sk.doc.dispatchEvent(new sk.w.MouseEvent('pointerdown', { bubbles: true, view: sk.w }));
+      await sleep(350);
+      const chip = sk.doc.getElementById('chchip');
+      const shown = !!(chip && chip.style.display && chip.style.display !== 'none');
+      check('CF1802-03: a stalled player with NO objective still gets a next step',
+        shown && /💡/.test((chip && chip.innerHTML) || ''),
+        'shown=' + shown + ' html=' + (chip ? (chip.innerHTML || '').slice(0, 70) : '(no chip)'));
+      check('CF1802-03: …and that suggestion carries somewhere to go',
+        !shown || ((chip.dataset.go || '').length > 0), 'go=' + (chip ? chip.dataset.go : ''));
+      for (const id of accBefore) skH.chacc.add(id);
+      for (const k in progBefore) { if (progBefore[k] === undefined) delete skH.ascProg[k]; else skH.ascProg[k] = progBefore[k]; }
+    }
+    // CF1802-08: viewing one specimen must not close the Compendium behind it.
+    // Measured rather than asserted from the source: browsing a collection was
+    // reported as open-Compendium -> tap -> dismiss -> open-Compendium, once per
+    // creature, and plausibly part of the 8 new step-8 stalls.
+    {
+      const sp = [...skH.codex.values()][0];
+      if (sp) {
+        if (!skH.codexOpen) click2(sk.doc.getElementById('codexbtn'), sk.w);
+        await sleep(120);
+        const openedBefore = skH.codexOpen;
+        /* drive it the way a player does — open a shelf, tap the ROW — not by
+           calling showReveal, so the whole click path is under test */
+        const shelf = sk.doc.querySelector('#codex .cgh');
+        if (shelf) { tap(shelf, sk.w); await sleep(120); }
+        const row = sk.doc.querySelector('#codex [data-pick]');
+        if (row) tap(row, sk.w); else skH.showReveal(sp, false);
+        await sleep(180);
+        const revUp = sk.doc.getElementById('reveal').style.display !== 'none';
+        /* a REAL tap: the outside-close manager listens on pointerdown, so a bare
+           click() never exercises it — the same trap that hid the step-6 training
+           lock in v1.6.4, and it made the first cut of this very check pass. */
+        tap(sk.doc.getElementById('reveal'), sk.w);
+        await sleep(200);
+        check('CF1802-08: viewing a specimen leaves the Compendium open behind it',
+          openedBefore && revUp && skH.codexOpen === true,
+          'openedBefore=' + openedBefore + ' revealShown=' + revUp + ' codexOpenAfter=' + skH.codexOpen);
+      }
     }
     // ===== v1.8 MOMENTUM: a blocked action must hand back a LEAD =====
     {

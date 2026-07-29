@@ -1,6 +1,6 @@
 # Celestial Frontier — Player Progression
 
-**STATUS:** matches code as of 2026-07-28 (verified against main.js).
+**STATUS:** matches code as of 2026-07-29 (verified against main.js).
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -27,7 +27,7 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
   - **Conquest** win: **+20 + world tier**
   - **Guardian/Titan** conquest win: **+60 + world tier**
   - Cataloguing a **genuinely new species** teaches your standing **Field Scout** creature **+2** (a single-catalogue path to XP that needs no fight).
-  - **Care faucets (v1.8):** welcome meal **+1** · taste discovered **+2** (once per creature per flavour) · bout survived **+2** · fight taken to the wire **+3** · conquest lost **+3** · defender pushed to the brink **+5**. Anti-farm is a **per-creature ledger** (`xpFirsts`, persisted as `xpf`, capped 4000 entries of ≤64 chars), not a global cooldown.
+  - **Care faucets (v1.8; ledgering CORRECTED in v1.8.4):** welcome meal **+1** *(once per creature — it was a bare unledgered `awardXP` paying on every loved meal until v1.8.4)* · taste discovered **+2** (once per creature per flavour) · bout survived **+2** · fight taken to the wire **+3** *(both unreachable until v1.8.4: the guard read `mine.id`, which no `fightNow` call site sets — the identity is now derived from the genome)* · conquest lost **+3** · defender pushed to the brink **+5** *(both now keyed per creature per world; unledgered, an unconquered world paid on every attempt forever, and one meal undoes the `hurt=0.85` brake)*. Anti-farm is a **per-creature ledger** (`xpFirsts`, persisted as `xpf`, capped 4000 entries of ≤64 chars), not a global cooldown.
   - **Union (v1.8, CORRECTED in v1.8.3):** a successful breed pays **+2** to the **newborn**, plus **+5** the first time a given *species pair* is crossed (`awardXPPair`). Until v1.8.3 both awards landed on `aEntry` — which the union consumes moments later, so the XP was destroyed as it was earned. The lineage key was also `[a.kind,b.kind]`, and breeding is always Fauna×Fauna, so it could only ever read `'Fauna+Fauna'`: a once-per-parent payout wearing a lineage's name. It now keys on the two parent **species**, FNV-hashed short so it survives the ledger's 64-char load truncation.
 - **Level-ups wake innate arts, not stats.** `classKit` grants `1 + (lvl≥3) + (lvl≥6)` innate-art slots → **1 / 2 / 3 arts** at levels 1 / 3 / 6. A level-up at 3 or 6 toasts "A new innate art awakens!"
 - Levels are *your* creature's story: a **shared code arrives at level 1** (`normGenome` strips `xp`); an **exhibit** code may carry `xp` clamped to `6·81 = 486` (exactly the L9 threshold).
