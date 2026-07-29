@@ -1,0 +1,38 @@
+# LINE ENDINGS ARE PART OF THE BUILD CONTRACT — do not remove this file.
+#
+# Found 2026-07-29 by cloning the repo cold and running the battery: the clone
+# checked out CRLF (Git for Windows defaults core.autocrlf=true) and everything
+# downstream broke.
+#
+#   * make-probe-build.js locates the game IIFE by the exact string
+#     "\n})();\n</script>". Under CRLF that anchor does not exist, so it exits
+#     "IIFE close not found" -> validate.js fails -> smoke, the fingerprint and
+#     the deploy gate all fail. A fresh clone could not verify anything.
+#   * celestial-frontier.html grew 26,717 bytes (1,935,361 -> 1,962,078) purely
+#     in carriage returns. The whole project is built around one small file on
+#     one link; a 1.4% payload tax for nothing is not acceptable.
+#   * main.js is gitignored and regenerated from the html by extract.js, so a
+#     CRLF html silently produces a CRLF main.js and every byte-exact string
+#     anchor in the tooling becomes unreliable.
+#
+# The tool was also made line-ending tolerant, so this is belt and braces — but
+# the artifact itself must stay LF, because it is what ships.
+
+* text=auto eol=lf
+
+# binaries must never be touched
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.webp  binary
+*.gz    binary
+*.zip   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.mp3   binary
+*.wav   binary
+*.ogg   binary
