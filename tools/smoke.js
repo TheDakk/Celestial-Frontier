@@ -1987,6 +1987,29 @@ const tutAct = () => click(doc.getElementById('tut-act'));
       typeof skH.ambienceStop === 'function' && (skH.ambienceStop(), true));
     check('v1.8 audio: a BLOCKED action has its own tone (Momentum, audible half)',
       typeof skH.playDeny === 'function');
+    // ===== Nick's 1.8.0 playtest: four fixes, asserted at the outcome =====
+    {
+      const src = require('fs').readFileSync(require('path').join(__dirname, '..', 'celestial-frontier.html'), 'utf8');
+      check('playtest: the survey card yields to the Planetside (never covers the payoff)',
+        src.includes('body.vista #panel{z-index:22}') && src.includes('body.training:not(.vista) #panel'));
+      check('playtest: NOTHING auto-opens a Compendium shelf any more, training included',
+        !src.includes("_cdxOpen.add(order[0])"));
+      check('playtest: NOTHING auto-opens a Fabricator category any more',
+        !src.includes("_fabOpen.add('part')"));
+      /* the mini quest log: real rows with live progress, not a pill with a +1 */
+      skH.chAccept(( skH._chAvailable()[0]||{id:'st-land'} ).id);
+      await sleep(150);
+      const chip = sk.doc.getElementById('chchip');
+      click2(chip, sk.w); await sleep(200);
+      const ql = sk.doc.getElementById('questlog');
+      check('playtest: the chip opens a real MINI QUEST LOG', !!ql && ql.style.display === 'block');
+      check('playtest: the log lists objectives with live progress bars',
+        !!ql && ql.querySelectorAll('.qr').length >= 1 && !!ql.querySelector('.qb'),
+        ql && ql.querySelectorAll('.qr').length + ' rows');
+      check('playtest: the log offers the full board', !!ql && !!ql.querySelector('.qf'));
+      click2(chip, sk.w); await sleep(150);
+      check('playtest: the chip folds it away again', !!ql && ql.style.display === 'none');
+    }
     check('skip: boots clean', sk.errors.length === 0, sk.errors.slice(0, 2).join(' | '));
 
     // ============ CF1718-01: a MID-TRAINING RELOAD must restore the expedition ============

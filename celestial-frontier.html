@@ -1834,7 +1834,11 @@
   /* Nick's phone screenshots (2026-07-26 night): during training the LESSON'S
      SURFACES must outrank the boards — Earth's survey card sat behind the dock
      and the Atlas sheet on the land step */
-  body.training #panel{z-index:58}
+  body.training:not(.vista) #panel{z-index:58}
+  /* Nick live 2026-07-28: while the Planetside is open it owns the screen —
+     the survey card drops back so it can never cover the payoff (the training
+     card at 50 still reads above the vista's 44, which is what the lesson needs) */
+  body.vista #panel{z-index:22}
   /* the objective chip celebrates its own progress (Nick 2026-07-26) */
   @keyframes chipbump{0%{transform:scale(1)}35%{transform:scale(1.08);box-shadow:0 0 18px rgba(240,207,138,0.45)}100%{transform:scale(1)}}
   #chchip.bump{animation:chipbump .5s ease}
@@ -2031,6 +2035,25 @@
     /* v1.8 spotlight + breeding anticipation */
   #panel .spot{display:inline-block;margin-top:3px;font-size:10.5px;color:var(--dim)}
   #panel .spot b{color:var(--ink)}
+    /* Nick 2026-07-28 — the MINI QUEST LOG: the chip is its handle, this is the list */
+  #questlog{position:fixed;left:18px;top:calc(var(--topbar-h,100px) + 168px);z-index:9;display:none;
+    width:min(268px,calc(100vw - 36px));padding:8px 9px 9px;border-radius:13px;
+    background:var(--glass);border:1px solid var(--glass-brd);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    box-shadow:0 14px 40px rgba(0,0,0,0.5)}
+  #questlog .qh{font:700 8.5px var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:1px 2px 6px}
+  #questlog .qr{display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:baseline;
+    padding:5px 4px 6px;border-radius:8px;cursor:pointer}
+  #questlog .qr:hover{background:rgba(143,180,255,0.08)}
+  #questlog .qr .qt{font-size:11px;color:var(--ink);line-height:1.35}
+  #questlog .qr .qp{font:600 10px var(--ui);color:#f0cf8a;white-space:nowrap}
+  #questlog .qr.main .qp{color:#7fd0ff}
+  #questlog .qb{grid-column:1 / -1;display:block;height:3px;border-radius:99px;background:rgba(150,162,210,0.16);overflow:hidden;margin-top:3px}
+  #questlog .qb b{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#c9a24a,#f0cf8a)}
+  #questlog .qr.main .qb b{background:linear-gradient(90deg,#5aa8e8,#7fd0ff)}
+  #questlog .qf{margin-top:6px;padding:7px 4px 2px;border-top:1px solid rgba(150,162,210,0.14);
+    font-size:10.5px;color:#8fb4ff;cursor:pointer}
+  #questlog .qf:hover{color:#b9cdf0}
+  @media (max-width:900px){ #questlog{left:8px;right:8px;width:auto;top:auto;bottom:calc(196px + env(safe-area-inset-bottom,0px))} }
   </style>
 </head>
 <body>
@@ -12487,7 +12510,7 @@ let _lastVista=null, _vistaHideT=0, _vistaShowSeq=0, _vistaArmedAt=0, _vistaPD=0
    the show, and real taps work instantly; only the ghost is filtered. */
 vistaBox.addEventListener('pointerdown', ()=>{ _vistaPD=performance.now(); });
 function _vistaDismiss(){
-  try{ ambienceStop(); }catch(_){ }
+  try{ ambienceStop(); document.body.classList.remove('vista'); }catch(_){ }
   /* a show's fade-in rides a queued animation frame — bump the sequence so
      a lightning-fast tap can't lose the race and strand the view open */
   _vistaShowSeq++;
@@ -12577,6 +12600,7 @@ function _vistaExtras(host){
    framed card floating over the game, ✕ on the frame). One mount path for
    every scene family + the re-view. */
 function _vistaMount(headHtml, cv, vtTxt){
+  try{ document.body.classList.add('vista'); }catch(_){ }
   /* v1.8: planetfall ARRIVES, and the world speaks under it */
   try{ playArrival((_lastVista&&_lastVista.xtra&&_lastVista.xtra.tier)||0);
     const _bk=(_lastVista&&_lastVista.xtra&&_lastVista.xtra.biome)||null;
@@ -15125,7 +15149,8 @@ function renderCodex(){
      lesson pointed at a list of closed drawers. The first shelf opens
      itself DURING TRAINING ONLY — Nick live 2026-07-26: veterans open to
      tidy closed shelves; whatever they expand is remembered in-session. */
-  if(!tutDone && order.length && !order.some(rm=>_cdxOpen.has(rm))) _cdxOpen.add(order[0]);
+  /* Nick 2026-07-28: nothing opens itself, training included — the lesson asks
+     the recruit to open a shelf, which is a better first lesson anyway */
   for(const rm of order){
     const group=groups[rm];
     const open=_cdxOpen.has(rm) || codexKing!=='all' || codexRare>0;   /* a filtered kingdom/rarity lays its shelves open */
@@ -19467,10 +19492,19 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.8.0';
+const GAME_VERSION='1.8.1';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.8.1', title:'The Field Test', date:'July 2026', sections:[
+ ['✦ New Features & Systems', [
+  '📋 A REAL QUEST LOG — the objective pill was one line with a bare &#8220;+1&#8221;. Tap it now and it unfolds into a compact log: your chapter goal and every accepted charter, each with live progress, and a way straight to the board. Tap again to fold it away.'],
+ ],
+ ['🐛 Bug Fixes', [
+  '🪐 THE PLANETSIDE IS NEVER COVERED — during training the survey card could sit on top of the landing view, hiding the very payoff the lesson is about. The card now yields the screen whenever the Planetside is open.',
+  '🗂 NOTHING OPENS ITSELF — the Compendium&#8217;s shelves and the Fabricator&#8217;s categories now start closed everywhere, training included; the two lessons that relied on a pre-opened drawer simply ask you to open one, which is a better lesson anyway.'],
+ ],
+]},
 {v:'1.8.0', title:'The Connection', date:'July 2026', sections:[
  ['✦ New Features & Systems', [
   '🗣 EVERY CREATURE HAS A VOICE — and it is truly its own. Earth&#8217;s animals sound like what they are: wolves roar, sparrows chirp, whales sing, rattlesnakes hiss, cicadas drone. Alien life speaks from its own genome. And when you <b>breed</b>, the child inherits BOTH parents&#8217; voices — a roarer crossed with a chirper carries each of them, and its descendants drift further into the unknown with every generation. No two bloodlines sound alike, and the same creature sounds identical for every explorer who holds its code.',
@@ -24415,6 +24449,7 @@ function _chBadge(){
       el.addEventListener('click', ()=>{ try{
         const go=el.dataset.go;
         _stall=0; _stallShown=0;   /* acting on it clears the stall either way */
+        if(!el.dataset.go){ questLogOpen=!questLogOpen; renderQuestLog(); return; }   /* the chip is the log's handle */
         if(go==='yard'){ const b=document.getElementById('cargobtn'); if(b&&b.style.display!=='none'){ b.click(); return; } }
         if(go==='log'){ if(!logOpen) logBtn.click(); return; }
         if(!chOpen) chBtn.click();
@@ -24441,6 +24476,44 @@ function _chBadge(){
       el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump');   /* progress moved — a small celebration */
     }
     _chipLast={key:g.key, p:g.p};
+  }catch(_){ }
+}
+/* Nick 2026-07-28: "the quest log basically just has the first quest and a +1
+   next to it — I thought we were going to have a mini quest log". This is it:
+   a compact, always-current list under the chip. Tap the chip to fold it. */
+let questLogOpen=false;
+function renderQuestLog(){
+  try{
+    let el=document.getElementById('questlog');
+    if(!tutDone || !questLogOpen){ if(el) el.style.display='none'; return; }
+    if(!el){
+      el=document.createElement('div'); el.id='questlog';
+      el.addEventListener('click', (e)=>{
+        const r=e.target.closest&&e.target.closest('[data-qgo]');
+        if(r){ try{ if(!chOpen) chBtn.click(); }catch(_){ } }
+      });
+      document.body.appendChild(el);
+    }
+    let rows='';
+    try{
+      const ch=(typeof _ascActive==='function')?_ascActive():null;
+      if(ch){
+        const g=ch.goals.find(x=>(ascProg[x.id]||0)<x.n);
+        if(g){ const p=Math.min(ascProg[g.id]||0,g.n);
+          rows+='<div class="qr main" data-qgo="1"><span class="qt">⬆ '+esc(g.t.replace(/&#8217;/g,'’'))+'</span>'+
+            '<span class="qp">'+p+' / '+g.n+'</span><i class="qb"><b style="width:'+Math.round(p/(g.n||1)*100)+'%"></b></i></div>'; }
+      }
+    }catch(_){ }
+    try{
+      for(const c of _chAccepted()){
+        const p=Math.min(chProg[c.id]||0, c.n||1), n=c.n||1;
+        rows+='<div class="qr" data-qgo="1"><span class="qt">📜 '+esc(String(c.t||'Contract'))+'</span>'+
+          '<span class="qp">'+p+' / '+n+'</span><i class="qb"><b style="width:'+Math.round(p/n*100)+'%"></b></i></div>';
+      }
+    }catch(_){ }
+    if(!rows) rows='<div class="qr"><span class="qt" style="opacity:.7">No contract accepted — open the board and take one.</span></div>';
+    el.innerHTML='<div class="qh">Quest log</div>'+rows+'<div class="qf" data-qgo="1">📜 Open the Charters board</div>';
+    el.style.display='block';
   }catch(_){ }
 }
 function renderCharters(){
@@ -24644,6 +24717,7 @@ function ascEvent(type, detail){
     gameEvent('ascent-chapter', {done:ch.id, now:ascCh});
   }
   if(chOpen) renderCharters();
+  renderQuestLog();
   _chBadge(); checkAch(); renderRank(); queueSave();
 }
 /* the progress signal: any event a player would call "something happened" */
@@ -24726,7 +24800,7 @@ const TUT_STEPS=[
   text:()=>'A training cache just arrived: three Earth beasts and three Earth flora, on loan from the order. Tap the Planetside to continue, then open your <b>Compendium</b> to meet them.',
   when:(t,d)=>t==='codex-open'&&!!d.open},
  {id:'specimen', spot:'#codex', bottom:true, allow:['#codex','#codexbtn'],   /* bottom:true → the whole Compendium is the spotlight, so pin the card to the BOTTOM: it clears the ✕/close toggle + list header at the top (Nick: the top-pinned card blocked closing the menu), and the list scrolls under it (overscroll-behavior:contain makes the ends reachable) */
-  text:()=>'Fighters, breeders and medicine all live here, shelved by realm. <b>Tap any specimen</b> to open its card.',
+  text:()=>'Fighters, breeders and medicine all live here, shelved by realm. <b>Open a shelf</b>, then <b>tap any specimen</b> to open its card.',
   when:(t)=>t==='specimen'},
  {id:'card-tour', spot:'#reveal .card', btn:'Got It', rev:'scout',   /* the tour's one live verb — reversible, and it IS on the card */
   text:()=>'Read it like a Pathfinder: five stat bars and total Power; its ✧ ability; the rarity grade tinting the card. Rarer life fights harder, breeds stronger, heals — or poisons — more. Beasts also list the flora flavors they ♥ love and ⊘ dislike.'},
@@ -24780,10 +24854,11 @@ const TUT_STEPS=[
        is blocking me"). Close it on the way in so the rail is revealed. */
     if(typeof closeSheet==='function' && sheetOpen) closeSheet();
     cargo.set('Fe',(cargo.get('Fe')||0)+6); cargo.set('Al',(cargo.get('Al')||0)+4); cargo.set('Si',(cargo.get('Si')||0)+4);
-    _fabOpen.add('part');   /* the lesson's Iron Plate row must be visible (categories ship closed now) */
+    /* Nick 2026-07-28: the Fabricator opens closed here too — the step text asks
+       the recruit to open Basic Parts */
     showCargoBtn();
   }catch(_){ } },
-  text:()=>'The engineer&#8217;s trade: the order has loaned you a pinch of ore — nothing to mine for this lesson. Open the <b>🛠 Shipyard</b> (the dock — or the right rail on desktop) and craft an <b>Iron Plate</b> at the Fabricator. (Training is a sandbox — the loaned ore and plate return to the order when you graduate. Out in the field, <b>⛏ Mine</b> fills the hold for real.)',
+  text:()=>'The engineer&#8217;s trade: the order has loaned you a pinch of ore — nothing to mine for this lesson. Open the <b>🛠 Shipyard</b> (the dock — or the right rail on desktop) and open <b>Basic Parts</b> and craft an <b>Iron Plate</b> at the Fabricator. (Training is a sandbox — the loaned ore and plate return to the order when you graduate. Out in the field, <b>⛏ Mine</b> fills the hold for real.)',
   when:(t)=>t==='crafted'},
  {id:'horizon', spot:'#pcdxbtn', btn:'Got It',
   /* Nick 2026-07-24: teach the GUARDIANS here, not just point at the pill —
