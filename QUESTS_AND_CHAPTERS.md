@@ -1,8 +1,33 @@
 # Celestial Frontier — Quests & Chapters
 
-**STATUS:** matches code as of 2026-07-20 (verified against main.js).
+**STATUS:** matches code as of 2026-07-29 (verified against main.js).
 **Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and the Field Training tutorial (18 counted steps — UI renders `/18`; `TUT_STEPS` array holds 20 entries, 2 being non-counted intro/conditional cards).
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
+
+## ⚠ v1.8.4 — weekly charters, the clock, and the objective chip
+
+**The banked-landfall law is now STARTER-ONLY.** `chAccept` replays the persisted `landed` set
+through a charter's filter so "First footfall: Mercury", accepted while standing on Mercury,
+completes on the spot. That is right for the starter chain (a one-time story) and wrong for
+**weeklies**, which re-roll: stepping the clock forward a week, opening the board and accepting
+paid out from worlds visited long ago — measured at ~20.8 ☄ per clock step against a designed
+78 ☄ per real week. Weeklies (`id[0]==='w'`) now count only landings made while they are held.
+
+**`_chRoll` no longer runs on the boot tick.** CF1720-06 moved the `chWeek` repair out of
+`loadSave`, but `_chBadge()` → `_chAccepted()` → `_chRoll()` still fired during load for every
+`tutDone` save — evaluating the clamp against exactly the pre-NTP `Date.now()` the fix calls
+untrustworthy. The roll is now **armed** by the first real gesture (or 8 s), by which time the
+clock has settled.
+
+**The objective chip renders for a player with NO objective.** `renderChip` returned at
+`if(!g)` — no accepted charter and no outstanding Ascent goal — *above* the stall branch, so the
+one player who most needed a suggestion (50% of an external 1,000-session fleet, and 100% of its
+rage quits) was the only one who could never be given one. The stall suggestion now stands in for
+a missing goal rather than being gated behind one.
+
+**The quest log is live.** `renderQuestLog` had two call sites (the chip click, and `ascEvent`),
+so per-charter progress — the only thing the log adds over the chip — never refreshed. It now
+rides `_chBadge`, closes on Escape, and cannot strand on screen after the chip hides.
 
 ## 1. Overview
 Three layers of directed play sit on one event bus:

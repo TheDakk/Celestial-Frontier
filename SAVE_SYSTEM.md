@@ -1,10 +1,23 @@
 # Celestial Frontier — Save System
 
-**STATUS:** matches code as of 2026-07-24 (verified against main.js + tools/).
+**STATUS:** matches code as of 2026-07-29 (verified against main.js + tools/).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated
 from seeds) to `localStorage` under one hardened key, with load-time coerce/clamp so a
 tampered or truncated save can never inject markup or poison the numbers.
 **Source of truth:** this doc is the DESIGN spec; main.js + tools/ implement it.
+
+## ⚠ v1.8.4 — `_sanitizeSavedGenome` mirrors `normGenome`
+
+The load path clamped `brood`/`fed`/`xp`/`hurt` and let `_mult`, `_wf` and `apex`
+round-trip untouched, because the codex is written wholesale. `battleStats` multiplies by
+`_mult` with no bound and `abilityOf` grants `apex` the Sovereign art at max magnitude, so an
+edited `localStorage` save minted a ~1000× champion for free. The share-code path (`normGenome`)
+had always validated all three; **the load path now does the same**: `_mult`/`_wf` deleted,
+`apex` honoured only in 12..TIER_MAX, `par` only in 8..11.
+
+Rule of thumb going forward: **anything `normGenome` strips from a shared creature must also be
+stripped from a loaded one.** They are the same trust boundary — one is another player's bytes,
+the other is the player's own editable bytes.
 
 ## 1. Overview
 Module `SaveSystem [app]` (main.js 10000–10359) owns a debounced write, a hardened

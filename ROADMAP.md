@@ -1396,3 +1396,71 @@
 ##   "pays once per species pair EVER" won't distinguish from the old bug in a single session);
 ##   (3) rage-quit measurement still unproduced — the one metric moving the wrong way (3→5→7);
 ##   (4) human audio A/B before scaling §15; (5) DOM-driven simrun tier; (6) then v1.9 → v2.0 PixiJS.
+## ▶▶▶ 2026-07-29 ★★ v1.8.4 "CLEAR GROUND" — round 7 (25 findings) + Nick's phone blocker, ONE BUNDLE.
+##   Nick's call: "hold, fix everything, ship one bundle" — so 1.8.3 never deployed; it is folded in here.
+##   ROUND 7 was the strongest external round yet: 1,000-session fleet (10 personas x 21 devices),
+##   training-reachability sweep, Web Audio node instrumentation, a 200k-genome voice model extracted
+##   VERBATIM from the build, paired idle-host boot A/B. 23 of 25 fixed, 1 not reproducible, 1 = design.
+##   ★ CF1802-01 (their P0) = Nick's phone blocker, independently reproduced + MEASURED: #codexbtn 0%
+##   reachable on iPhone SE/14 Pro/Galaxy S8 at steps 3-6 (63/63 points blocked by #panel); #logbtn
+##   54-83%; desktop 100% (which is why both harnesses missed it). Their fleet corroborated: stall
+##   points {2,7} for three builds, then {2:1, 5:5, 7:3, 8:8} in v1.8.2 — steps 5 and 8 appearing for
+##   the FIRST time, exactly the two whose lesson surface is a board. We had already fixed it (v1.8.3)
+##   and did NOT take their patch: theirs hardcodes 3 step ids and drifts on any step rename; ours
+##   derives from each step's own spot/allow. Their recommended assert IS the gate we built.
+##   ★★★ THE LESSON OF THE ROUND — SPECIFICITY, TWICE, INDEPENDENTLY:
+##   (a) OUR fix `body.training .tutpri{z-index:58}` (0 ids/2 classes) LOST to #panel{z-index:9} and
+##   #codex{z-index:22} — ONE ID BEATS ANY NUMBER OF CLASSES. Mark applied, smoke's class assertions
+##   passed, fix did NOTHING. Only the new real-browser elementFromPoint gate caught it.
+##   (b) THEIR CF1720-07: `body.training #tutspot{z-index:49}` (1,1,1) out-specifies
+##   `#tutspot.overtop{z-index:59}` (1,1,0) → line 1837 permanently DEAD. Same trap, same week, and
+##   our own CF1720-07 check passed because it asserted the SOURCE STRING of the dead rule.
+##   RULE NOW IN UI_PRESENTATION.md: a class-level override cannot govern surfaces that declare their
+##   layer through an id; and NEVER assert a selector's spelling — assert the law it implements.
+##   ★ EXPLOITS (all 7): CF1802-09 tapping a life-form row MINTED an uncaught species (`codex.get() ||
+##   _storeSpecies()`) — no bioLeft spent, no odds rolled, repeatable; it was the SUPPLY LINE for -10,
+##   -11, -12. NOTE the Guide already promised the right behaviour ("the survey reveals the roster; it
+##   catalogues nothing") — the DOC was right and the CODE had drifted. CF1802-10 welcome meal was a
+##   bare unledgered awardXP + `fed` unbounded (fed=100 → +1000 power vs a tier-14 apex's ~717 budget)
+##   → welcome is now a FIRST. CF1802-11 a LOST conquest was never recorded → per-creature-per-world
+##   ledger ("losing is what keeps it unconquered" — their line, and it was exactly right). CF1802-12
+##   mitigated AT SOURCE by -09 (a mate costs a capture again; grade-uncapped bred children stay
+##   intentional). CF1802-13 weekly landfall charters self-completed from the PERSISTED landed set on
+##   every clock step (~20.8☄/step vs 78☄/real week) → banked-landfall law is now STARTER-ONLY.
+##   CF1802-13b _chRoll still ran on the boot tick via _chBadge→_chAccepted (CF1720-06 only half
+##   fixed) → now ARMED by first gesture or 8s. CF1802-14 harvest cooldown → monotonic perfTime too,
+##   in-memory, no save-shape change. CF1802-15 sanitiser missed _mult/_wf/apex → mirrors normGenome.
+##   STANDING RULE recorded in SAVE_SYSTEM.md: anything normGenome strips from a SHARED creature must
+##   be stripped from a LOADED one — same trust boundary.
+##   ★ MOMENTUM: CF1802-03 is the round's most consequential item — renderChip returned at if(!g)
+##   ABOVE the stall branch, so the player with NO objective (50% of the fleet, 100% of the rage
+##   quits) was the ONLY one who could never be nudged. Rage quits 3→5→7→10 across four builds
+##   (z=1.06 vs v1.7.20 — not significant step-to-step, but four builds have failed to move it and
+##   this is the first change aimed at the MECHANISM). Also -04 (both Atlas suggestions now gated on
+##   logMap; go:null → real destination), -05 ('skim' vs emitted 'skimmed' — an active skimmer was
+##   told to go do something else), -06 (quest log was a SNAPSHOT: now rides _chBadge, Escape-closable,
+##   can't strand), -07 (the Fabricator shortfall button had NO handler at all; the 3 silent training
+##   returns now refuse audibly via _tutRefuse).
+##   ★ CF1802-08 NOT REPRODUCIBLE — drove the real path (shelf → row tap → real pointerdown dismiss);
+##   codexOpen stays true. First cut of that check passed VACUOUSLY because click() alone never fires
+##   the outside-close manager (the v1.6.4 trap again). Gate kept regardless; asked them for the repro.
+##   ★ AUDIO — their 3 prerequisites for any listening test, all done: -19 bed stops on Sound-off,
+##   -20 vocabulary was 533 DISTINCT VOICES TOTAL (91.3% chance of a twin at 50 creatures) → now folds
+##   trait/body/loco/diet/sense as bounded multipliers, -21 `bold` read g.behavior%5 = the WRONG GENE
+##   under the WRONG modulus (FA_BEHAVIOR has 12) → now g.temper%FA_TEMPER.length with an explicit
+##   boldness map. Plus -22 playConfirm had ZERO call sites, -23 deny tone fired from a MARKUP BUILDER,
+##   -24 bat f0 5200 pinned ~2% of all creatures at the 6kHz clamp → 3600 + taper above 4kHz.
+##   ★ Their measured wins to keep: boot +8ms load / +3ms DCL on an idle host (audio cost ~nothing);
+##   payload +2.4% gzip for the WHOLE arc; meter MAE 0.73pp with old power-ratio wrong in 113/120.
+##   Meter perf fixed per their ask #4: 320 redundant battleStats per row hoisted out of the loop.
+##   ⏳ NOT FIXED, DELIBERATELY: CF1802-17 fed INHERITANCE is a design call for Nick (the preview BUG
+##   — up to 6.2x overstated — is fixed; the card now says fed does not carry over). Cold-boot outlier
+##   (3 of 8 reps ~2.1-2.3s to interactive) not chased. Ambience does not restart on tab-return.
+##   Gates: fp MATCH 50/50 · smoke 553/0 · layout 683 checks/10 viewports (NEW 744x1133 band, their
+##   CF1802-02) · BALANCE PASS · validate 9/9. Every new check negative-controlled; TWO of those
+##   controls changed what shipped (the .tutpri specificity miss, and the vacuous CF1802-03 state).
+##   ▶ NEXT: (1) NICK'S iPHONE re-verify — steps 5/6/7 especially; (2) round 8 on 1.8.4: re-run the 7
+##   exploits (the lineage bonus needs a MULTI-session probe — "once per species pair EVER"), and rage
+##   quits, the first round where the mechanism has actually been addressed; (3) human listening test
+##   now that -19/-20/-21 are done; (4) CF1802-08 repro sequence; (5) fed-inheritance design call;
+##   (6) cold-boot outlier; (7) then v1.9 consolidation → v2.0 PixiJS.

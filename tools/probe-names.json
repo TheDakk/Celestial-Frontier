@@ -243,5 +243,13 @@
   "_oddsPct",
   "awardXPPair",
   "xpFirsts",
-  "openConquestPicker"
+  "openConquestPicker",
+  "codexOpen",
+  "_TEMPER_BOLD",
+  "_nextBest",
+  "renderQuestLog",
+  "_PROGRESS_EVT",
+  "FA_TEMPER",
+  "_sanitizeSavedGenome",
+  "_ascActive"
 ]

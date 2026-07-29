@@ -1990,7 +1990,14 @@
   }
   /* CF1715-11: the ❤ heal control measured 12x18 on every device — and step 14
      tells the recruit to press it. Padded hit area, same visual position. */
-  #hpheart{display:inline-flex;align-items:center;justify-content:center;padding:13px;margin:-13px;cursor:pointer}
+  /* ROUND 7 CF1802-25: padding around an inline glyph makes the box depend on
+     that glyph's advance width, which varies by platform (the ❤ here has no
+     U+FE0F, so text-vs-emoji presentation differs) — measured ~43px on the phone
+     band, under the 44px floor this rule exists to hold. An explicit box is
+     metric-independent by construction; the negative margin keeps the layout
+     cost at zero, which is what CF1720-03 bought. */
+  #hpheart{display:inline-flex;align-items:center;justify-content:center;
+    width:44px;height:44px;padding:0;margin:-15px;box-sizing:border-box;cursor:pointer}
   /* CF1715-22: 3x44px of atlas actions crushed the name to ~32px on small
      phones — the actions wrap to their own row instead */
   @media (max-width:400px){
@@ -2016,6 +2023,10 @@
   /* CF1718-08 + CF1720-07: the ring clears the survey card (z58 → the card is
      geometrically avoided via --tut-bot) but never the lesson card itself */
   body.training #tutspot{z-index:49}
+  /* ROUND 7 CF1720-07: the blanket rule above out-specifies #tutspot.overtop
+     (1,1,1 beats 1,1,0), which made the per-step toggle dead. Restore it with a
+     rule that can actually win. */
+  body.training #tutspot.overtop{z-index:59}
   /* CF1715-16 (the two survivors): explicit inks instead of stacked multipliers */
   .bslot.miss{opacity:1;color:#8b93ad;border-color:rgba(150,162,210,0.35)}
   #reveal .rgrp.open .rghead .v{opacity:1;color:#9aa3bd}
@@ -2028,6 +2039,10 @@
      rule out-specified #tutbox.overtop (killing the per-step toggle the codebase
      deliberately added) and buried #helppop (z51) under the lesson card. */
   body.training #tutspot{z-index:49}
+  /* ROUND 7 CF1720-07: the blanket rule above out-specifies #tutspot.overtop
+     (1,1,1 beats 1,1,0), which made the per-step toggle dead. Restore it with a
+     rule that can actually win. */
+  body.training #tutspot.overtop{z-index:59}
   /* CF1719-09: keep the contrast AND the open-state signal (weight, not opacity) */
   #reveal .rgrp.open .rghead .v{font-weight:600;letter-spacing:.02em}
   #reveal .rgrp:not(.open) .rghead .v{font-weight:400}
@@ -5669,6 +5684,13 @@ function refocus(container, sel){
 }
 document.addEventListener('keydown', e=>{
   if(e.key==='Escape'){
+    /* ROUND 7 CF1802-06: the quest log was reachable by Escape from nowhere —
+       it is a panel the player opened, so it closes like one. Above the modal
+       cases below because it is the shallowest thing on screen. */
+    if(typeof questLogOpen!=='undefined' && questLogOpen){
+      const ql=document.getElementById('questlog');
+      if(ql && ql.style.display && ql.style.display!=='none'){ questLogOpen=false; try{ renderQuestLog(); }catch(_){ } return; }
+    }
     /* the rename dialog cancels on Escape — but the INITIAL name prompt must
        still insist on a name (a fresh expedition can't fly anonymous) */
     const nb=document.getElementById('namebox');
@@ -14141,7 +14163,7 @@ panelEl.addEventListener('click', e=>{
       const a0=b0.dataset.act;
       if(a0!=='close' && a0!=='gtoggle'){
         const s0=TUT_STEPS[_tutStep];
-        if(!(s0 && s0.acts && s0.acts.includes(a0))) return;
+        if(!(s0 && s0.acts && s0.acts.includes(a0))){ _tutRefuse(); return; }   /* ROUND 7 CF1802-07: was a silent drop */
       }
     }
   }
@@ -14210,8 +14232,21 @@ panelEl.addEventListener('click', e=>{
   if(sp && _lastDesc && _lastDesc.species){
     const spId=+sp.dataset.sp;
     const g=_lastDesc.species.find(x=>x.seed===spId);
-    if(g){ const entry=codex.get(codexId(g)) || _storeSpecies(g, _lastDesc.planetName||_lastDesc.title, _lastDesc.where);
-      if(entry) showReveal(entry, false); }
+    if(g){
+      /* ROUND 7 CF1802-09: the `|| _storeSpecies(...)` here MINTED an uncaught
+         species on a tap — no capture attempt spent (tryCapture's finite
+         bioLeft), no odds rolled (captureOdds bottoms at 0.0025 for tier 14),
+         and repeatable forever once the specimen was fed away. It was also the
+         supply line for the fed farm, the conquest-loss farm and the breeding
+         slot machine. Only a CATALOGUED row opens a card now; an uncaught one
+         names the two verbs that earn it. */
+      const entry=codex.get(codexId(g));
+      if(entry) showReveal(entry, false);
+      else{
+        try{ playDeny(); }catch(_){ }
+        toast('Not yet catalogued', 'You have only seen this one from orbit — 🐾 <b>Tame</b> it (fauna) or 🌿 <b>Scavenge</b> it (flora) on the ground to earn its page.');
+      }
+    }
     return;
   }
   const b=e.target.closest('[data-act]');
@@ -15053,7 +15088,7 @@ revealEl.addEventListener('click', (e)=>{
   if(!tutDone && e.target && /^rev-(share|duel|breed|feed|scout|rename|record)$/.test(e.target.id||'')){
     const s0=TUT_STEPS[_tutStep];
     const want='rev-'+((s0&&s0.rev)||'');
-    if(e.target.id!==want) return;
+    if(e.target.id!==want){ _tutRefuse(); return; }   /* ROUND 7 CF1802-07: was a silent drop */
   }
   /* v1.5 field-notes fold: the header toggles (remembered, cx bit 4);
      reading inside the fold never dismisses the card */
@@ -15914,11 +15949,15 @@ document.addEventListener('visibilitychange', ()=>{
 });
 /* the eighteen rig families, each with a voice ARCHETYPE. kind drives the
    synthesis shape; the numbers are its character. */
+/* ROUND 7 CF1802-21: boldness per FA_TEMPER entry, in FA_TEMPER's own order —
+   placid · skittish · aggressively territorial · docile · wary · fiercely
+   protective · indifferent · playful · ill-tempered · eerily calm */
+const _TEMPER_BOLD=[0.45, 0.08, 1.00, 0.18, 0.38, 0.86, 0.50, 0.68, 0.92, 0.26];
 const _VOICE={
   mammal:   {kind:'roar',  f0:150, rich:0.85, nz:0.30, vib:4.5, vibD:0.03, dur:0.55, sweep:-0.30},
   primate:  {kind:'hoot',  f0:330, rich:0.55, nz:0.18, vib:7.0, vibD:0.06, dur:0.40, sweep:+0.18},
   bird:     {kind:'chirp', f0:2100,rich:0.30, nz:0.06, vib:14,  vibD:0.16, dur:0.22, sweep:+0.55},
-  bat:      {kind:'chirp', f0:5200,rich:0.16, nz:0.05, vib:22,  vibD:0.20, dur:0.10, sweep:-0.60},
+  bat:      {kind:'chirp', f0:3600,rich:0.16, nz:0.05, vib:22,  vibD:0.20, dur:0.10, sweep:-0.60},   /* ROUND 7 CF1802-24: was 5200 — within one size step of the 6kHz clamp, so ~2% of all creatures pinned there and sounded identical (and shrill) */
   reptile:  {kind:'hiss',  f0:520, rich:0.20, nz:0.88, vib:2.0, vibD:0.02, dur:0.50, sweep:-0.06},
   serpent:  {kind:'hiss',  f0:640, rich:0.10, nz:0.95, vib:1.5, vibD:0.01, dur:0.60, sweep:-0.04},
   amphibian:{kind:'croak', f0:210, rich:0.70, nz:0.28, vib:26,  vibD:0.30, dur:0.34, sweep:-0.10},
@@ -15945,7 +15984,11 @@ function voiceOf(g){
   try{
     if(!g) return _VOICE.legacy;
     const sizeF=1/(0.55+((+g.size||0)%6)*0.22);          /* bigger body → lower voice */
-    const bold=((+g.behavior||0)%5)/4;                    /* temperament tilts the character */
+    /* ROUND 7 CF1802-21: was ((+g.behavior||0)%5)/4 — the wrong gene (behaviour,
+       not temperament) under the wrong modulus (FA_BEHAVIOR has 12 entries).
+       Read the gene the CARD prints, and map each temperament to how forward it
+       actually sounds rather than to its arbitrary index. */
+    const bold=_TEMPER_BOLD[((+g.temper||0)%FA_TEMPER.length)];
     let base=null;
     /* 1. a named Earth animal sounds like ITSELF, via the art's own taxonomy */
     const en=g._earthName||g._earthBlend;
@@ -15964,12 +16007,20 @@ function voiceOf(g){
       /* 3. a wholly procedural creature: its body plan picks the family */
       base=_VOICE[_VOICE_KEYS[(hashInt((g.seed>>>0),0x5F0C,0x2D)>>>4)%_VOICE_KEYS.length]];
     }
+    /* ROUND 7 CF1802-20: fold four more genes in as bounded multipliers so the
+       voice reads the genome at something closer to the portrait's resolution.
+       _vw returns 1 +/- amt/2 across the gene's range — deterministic, cheap,
+       and it cannot push any parameter outside the clamps below. */
+    const _vw=(v,n,amt)=>1+(((((+v||0)%n)/(n-1))-0.5)*amt);
+    const fTrait=_vw(g.trait,7,0.20), fBody=_vw(g.body,9,0.14),
+          fLoco=_vw(g.loco,6,0.18), fDiet=_vw(g.diet,5,0.22),
+          fSense=_vw(g.sense,6,0.12);
     return {kind:base.kind,
-      f0:Math.max(60, Math.min(6000, base.f0*sizeF*(0.9+bold*0.3))),
-      rich:Math.max(0,Math.min(1, base.rich*(0.85+bold*0.4))),
-      nz:Math.max(0,Math.min(1, base.nz)),
-      vib:base.vib, vibD:base.vibD,
-      dur:Math.max(0.08, Math.min(1.4, base.dur*(1.15-bold*0.25))),
+      f0:Math.max(60, Math.min(6000, base.f0*sizeF*(0.9+bold*0.3)*fTrait*fBody)),
+      rich:Math.max(0,Math.min(1, base.rich*(0.85+bold*0.4)*fDiet)),
+      nz:Math.max(0,Math.min(1, base.nz*fSense)),
+      vib:base.vib*fSense, vibD:base.vibD,
+      dur:Math.max(0.08, Math.min(1.4, base.dur*(1.15-bold*0.25)*fLoco)),
       sweep:base.sweep};
   }catch(_){ return _VOICE.legacy; }
 }
@@ -15978,9 +16029,12 @@ function playVoice(g, gain){
   try{
     const a=ac(); if(!a || a.state!=='running' || !voiceOn) return;
     const v=voiceOf(g), t0=a.currentTime+0.02, d=v.dur;
+    /* ROUND 7 CF1802-24: taper above ~4kHz — equal amplitude is not equal
+       loudness up there, and a bright voice read as a spike */
+    const _hiTaper=v.f0>4000 ? Math.max(0.55, 1-(v.f0-4000)/8000) : 1;
     const out=a.createGain();
     out.gain.setValueAtTime(0.0001, t0);
-    out.gain.exponentialRampToValueAtTime(Math.max(0.0002,(gain==null?0.5:gain)), t0+Math.min(0.06, d*0.2));
+    out.gain.exponentialRampToValueAtTime(Math.max(0.0002,(gain==null?0.5:gain)*_hiTaper), t0+Math.min(0.06, d*0.2));
     out.gain.exponentialRampToValueAtTime(0.0001, t0+d);
     out.connect(sfxOut(a));
     /* the voiced part */
@@ -16478,6 +16532,12 @@ function _sanitizeSavedGenome(g){
   if('fed' in g) g.fed=cl(g.fed,0,200);
   if('xp' in g) g.xp=cl(g.xp,0,486);   /* CF-CR-003: level 9 is xp 486 (levelOf √(xp/6) caps at 9) — 1e6 bought nothing but save bloat */
   if('hurt' in g) g.hurt=cl(g.hurt,0,1);
+  /* ROUND 7 CF1802-15: mirror normGenome — battlefield modifiers never survive
+     a save any more than they survive a share code, and the guardian bands are
+     honoured only where they are genuine. */
+  delete g._mult; delete g._wf;
+  if(g.apex!=null){ const a=(+g.apex)|0; if(a>=12 && a<=TIER_MAX) g.apex=a; else delete g.apex; }
+  if(g.par!=null){ const a=(+g.par)|0; if(a>=8 && a<=11) g.par=a; else delete g.par; }
   return g;
 }
 function loadSave(){
@@ -18179,7 +18239,11 @@ function fightNow(mine, theirs, opts){
            layer cooldown (Date.now fine here — never feeds generation). */
         /* v1.8: PARTICIPATION teaches — a hard-fought loss is experience too,
            on the same throttle so it can never become a farm loop. */
-        if(res.winner!=='A' && mine && mine.id){
+        /* ROUND 7 CF1802-18: mine.id is set at no reachable call site — derive
+           the catalogue identity from the genome instead, so participation XP
+           stops depending on each caller remembering a field. */
+        const _mid=(mine && (mine.id || (mine.genome && !mine.isPlayer ? codexId(mine.genome) : null)));
+        if(res.winner!=='A' && _mid && codex.has(_mid)){
           const _dl=Date.now();
           /* v1.8 A/B CATCH: participation MUST NOT share the win throttle — a loss
              consumed the 30s window a subsequent win needed, so adding XP could
@@ -18510,7 +18574,10 @@ function playBlip(f, dur, type, vol){
   }catch(_){ }
 }
 /* v1.8 MOMENTUM's audio half: a BLOCKED action must sound unmistakably unlike a
-   successful one, so a dead tap is recognisable before the words are read */
+   successful one, so a dead tap is recognisable before the words are read.
+   ROUND 7 CF1802-22/23: playConfirm had ZERO call sites — the contrast this
+   grammar is built on only ever had one side wired — and the deny tone fired
+   from a string builder. Both now belong to real presses. */
 function playDeny(){ playBlip(200,0.10,'triangle',0.13); setTimeout(()=>playBlip(150,0.14,'triangle',0.11),80); }
 function playConfirm(){ playBlip(660,0.09,'sine',0.13); setTimeout(()=>playBlip(990,0.12,'sine',0.11),70); }
 function playThud(){
@@ -18527,6 +18594,28 @@ return Object.freeze({fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud
   playHit, playArrival, ambienceStart, ambienceStop, playBlip, playDeny, playConfirm});
 })();
 const {fxBurst, FX_GOLD, FX_GREEN, playFanfare, FX_PURP, playThud, fxShake, FX_RED, playHit, playArrival, ambienceStart, ambienceStop, playBlip, playDeny, playConfirm}=Fx;
+/* ROUND 7 CF1802-07: a lesson-blocked verb answers instead of vanishing. The
+   nudge re-points at the current step; throttled so a mashed button cannot
+   machine-gun the tone or the card. */
+let _tutRefuseT=0;
+function _tutRefuse(){
+  try{
+    const now=(typeof performance!=='undefined')?performance.now():0;
+    if(now-_tutRefuseT<600) return;
+    _tutRefuseT=now;
+    _denyPress();
+    const el=document.getElementById('tutbox');
+    if(el){ el.classList.remove('nudge'); void el.offsetWidth; el.classList.add('nudge'); }
+  }catch(_){ }
+}
+/* ROUND 7 CF1802-22/23 — the press-level feedback grammar. Defined at TRUE top
+   level, AFTER the Fx destructure: the first cut put these INSIDE the Fx IIFE,
+   where playDeny lives, and every app-layer caller threw ReferenceError. That is
+   the exact trap the export comment three lines above warns about, and it caught
+   me anyway — the rule is that a helper belongs in the scope of its CALLERS, not
+   its callees. */
+function _denyPress(){ try{ playDeny(); }catch(_){ } }
+function _okPress(){ try{ playConfirm(); }catch(_){ } }
 /* @end Fx */
 
 /* ----------------------------------------------------------------
@@ -18617,6 +18706,7 @@ function breedPair(aEntry, bEntry, roll){
      for the PAIRING, not for any one creature. */
   try{
     if(born){
+      _okPress();
       awardXP(born.id, 2, 'a successful union');
       awardXPPair(born.id, [aEntry.id,bEntry.id].sort().join('+'), 5, 'a first-of-its-kind lineage');
     }
@@ -18704,12 +18794,25 @@ function feedPair(faunaEntry, floraEntry, roll){
      beast's taste for the first time is a real discovery. Anti-farm: the
      taste bonus pays once per creature per flavor, forever. */
   try{
-    if(pref==='loved'){ awardXP(_fid, 1, 'a welcome meal');
+    if(pref==='loved'){
+      /* ROUND 7 CF1802-10: this was a bare awardXP — no key, no ledger, no
+         cooldown — so a loved meal paid +1 forever. Its own name says what it
+         should be: the FIRST welcome, once per creature. */
+      awardXPOnce(_fid, 'welcome', 1, 'a welcome meal');
       awardXPOnce(_fid, 'taste:'+ftype, 2, 'a taste discovered'); }
   }catch(_){ }
   return {ok:true, pois, pref, ftype, ev, delta, gut:S.ab.gutsy,
     mended:h1<h0, wounded:h1>h0, cond:creatureCondition(g)};
 }
+/* ROUND 7 CF1802-07/22/23: a shortfall button on a specimen card answers with
+   the refusal tone as well as the guidance it already opened. Delegated, so it
+   covers both verbs and anything added later that wears .needs. */
+try{
+  document.addEventListener('click', (e)=>{
+    const n=e.target && e.target.closest && e.target.closest('button.needs');
+    if(n) _denyPress();
+  }, true);
+}catch(_){ }
 /* ---- the picker dialog drives both flows ---- */
 /* ----------------------------------------------------------------
    @section ui-picker [app] — breed/feed/heal specimen picker modal
@@ -18743,7 +18846,9 @@ function _denial(mode, base){
 /* the contract's other half: render it as a real surface with a destination */
 function _denialHTML(d){
   if(!d) return '';
-  try{ playDeny(); }catch(_){ }
+  /* ROUND 7 CF1802-23: the deny tone used to be emitted HERE, while building
+     markup — any future render path would have played a sound with no player
+     action behind it. It now fires from the press, in _denyPress(). */
   return '<div class="denial"><div class="dw">'+d.why+'</div>'+
     (d.cta?'<button type="button" class="dcta" data-deny-go="'+esc(d.go||'')+'">'+esc(d.cta)+'</button>':'')+'</div>';
 }
@@ -18803,6 +18908,7 @@ function openPicker(mode, base){
     const _d=_denial(isBreed?'breed':(isHeal?'heal':'feed'), base) ||
       {why:isBreed?'No other creature of this kingdom is in your Compendium yet.':'No flora in your Compendium yet.', cta:'🌍 Open the Star Atlas', go:'log'};
     pickList.innerHTML=_denialHTML(_d);
+    _denyPress();   /* ROUND 7 CF1802-23: sounded from the press, not from the markup builder */
   } else {
     cands.sort((x,y)=>((y.grade?y.grade.tier:0)-(x.grade?x.grade.tier:0)));
     pickList.innerHTML=cands.slice(0,30).map(e=>{
@@ -18813,11 +18919,17 @@ function openPicker(mode, base){
         /* v1.8: what the union COULD become — the band the child lands in and
            the rarity it could reach. Never the roll itself. */
         try{
-          const A=battleStats(base.genome), B=battleStats(e.genome);
+          /* ROUND 7 CF1802-17: build the band from stats WITHOUT the parents'
+             fed bonus — a hybrid inherits brood but never fed, so quoting the
+             fed-inflated totals overstated the child by up to 6.2x. */
+          const _unfed=(gn)=>{ const g2={...gn}; delete g2.fed; return battleStats(g2); };
+          const A=_unfed(base.genome), B=_unfed(e.genome);
           const lo=Math.round(Math.min(A.total,B.total)*0.95), hi=Math.round(Math.max(A.total,B.total)*1.18);
+          const _fedLost=(((+base.genome.fed)||0)+((+e.genome.fed)||0))>0;
           const tA=(base.grade?base.grade.tier:0), tB=(e.grade?e.grade.tier:0);
           const tHi=Math.min(TIER_MAX, Math.max(tA,tB)+1);
-          _hint='Child ≈ '+lo+'–'+hi+' power · up to <span style="color:'+(GRADE_TIERS[tHi]||{}).hex+'">'+((GRADE_TIERS[tHi]||{}).name||'')+'</span>';
+          _hint='Child ≈ '+lo+'–'+hi+' power · up to <span style="color:'+(GRADE_TIERS[tHi]||{}).hex+'">'+((GRADE_TIERS[tHi]||{}).name||'')+'</span>'+
+            (_fedLost?' · <span style="color:#ffb37a">fed bloodline does not carry over</span>':'');
         }catch(_){ _hint=''; }
       } else if(isHeal){
         const p=clamp(0.08+t*0.07,0.05,0.6);
@@ -19119,7 +19231,7 @@ const GUIDE=[
   '<p>The search box (top bar) hunts across everything you’ve already discovered: Atlas places and Compendium species. It also accepts pasted codes:</p><ul><li><b>CF1-…</b> world codes — jump straight to a friend’s discovery.</li><li><b>CFB-…</b> creature codes — load a friend’s creature for a duel.</li><li>Worlds bookmark under their biome — searching <b>swamp</b> or <b>carbon</b> finds every one you&#8217;ve saved since v1.3.5.</li></ul><p>See <span data-gt="codes">Share codes</span>.</p>'},
  {id:'codes', t:'Share codes (CF1 / CFB)', k:'share code link friend cf1 cfb copy multiplayer social', body:
   '<p>There is no server — the universe is mathematics, identical on every device. A share code is just an address into that shared math:</p><ul><li><b>⇪ Share this discovery</b> on a survey card copies a <b>CF1-</b> code/link. Anyone who opens it lands on the exact same world, with your name for it attached.</li><li><b>⇪ Code</b> on a creature card copies a <b>CFB-</b> code carrying the full genome — the identical creature, stats and all, appears on your friend’s device for a duel.</li></ul><p>Codes are sanitized on arrival; a tampered code can’t hurt your save.</p>'},
- {id:'charters', t:'Expedition Charters', k:'charter charters hunt board weekly goals task starter reward stardust chip tracker objective mainline ascent', body:
+ {id:'charters', t:'Expedition Charters', k:'charter charters hunt board weekly goals task starter reward stardust chip week reroll tracker objective mainline ascent', body:
   '<p>The <b>Charters</b> board (the 📜 pill — left rail on desktop, dock on phones) always has work for an explorer. Charters arrive in <b>chains</b> that reveal one link at a time: the five <b>trades</b> (planetfall, prospecting, discovering life, naming a Field Scout, conquest) and the <b>Sol tour</b>, a guided lap of the home system that pays its way in starter gear. Completing a link reveals the next — and a link your ring can&#8217;t reach yet stays off the board until the sky opens.</p><p><b>Accept to begin.</b> A revealed charter tracks nothing until you press <b>Accept</b> — three may ride at once. Accept a deed the frontier has already seen you do and it completes on the spot, <em>already proven</em>; counting charters count from the accept and say so. Each pays <b>☄ Stardust</b> — some pay <b>gear</b> — the moment it completes.</p><p>Once the five trades are learned, the board turns weekly: three charters a week, identical for every explorer in the universe — deterministic, like everything else out here. Compare boards with a friend; they match.</p><p><b>The objective chip (v1.7):</b> the pill under the dock is a live tracker — your accepted charter first, otherwise the chapter&#8217;s next goal, with running progress that pulses when it moves. Tap it for the board. The pinned <b>Ascent chapter</b> above the charters is your mainline story: no accepting needed, it is always yours.</p>'},
  {id:'beacon', t:'Traveler’s Beacon', k:'beacon daily random destination five minutes', body:
   '<p>The <b>Traveler’s Beacon</b> (left rail) offers a fresh destination every <b>5 minutes</b> — always somewhere <b>inside your charter</b>: it walks Sol while Sol is your world, the Neighborhood once you can jump, the whole galaxy once the Array is up, and the wider cosmos beyond the Rim. Picked deterministically, so every explorer on your ring is pointed at the same place at the same moment. An easy way to see something new when the infinite feels too big.</p>'},
@@ -19129,7 +19241,7 @@ const GUIDE=[
   '<p>The expedition speaks in color, old-school MUD style — a tint means the same thing everywhere, and the words always carry the meaning too, so nothing is lost if you read past the color.</p><ul><li>Pop-ups and the <b>🔔 tray</b> tint by event: red for harm and loss, gold for milestones and first contact, green for harvests, samples and mined hauls, calm blue for everything else.</li><li>In <b>the Chronicle</b>, your champion reads cyan and the foe ember on every line; damage is yellow, criticals gold, misses dim, staggers flash, burns glow orange, mending green, lifesteal violet, thorns lime — a felled combatant falls in red, and the verdict wears its outcome: victory gold, defeat red.</li><li>A world&#8217;s long-range glance tints each reading by family — water cyan, life green, signals violet.</li><li>Elsewhere the language holds: the <b>Compendium</b> marks your <b>Field Scout</b> in cyan, the <b>Star Atlas</b> tints its badges, <b>Cosmic Events</b> wear their nature&#8217;s color, and a creature&#8217;s condition runs green → yellow → red as wounds deepen.</li><li>A <b>wave-off</b> lands in harm red — a scrape, never a death. Field samples and touchdowns keep their gain green, and a landing that beats a hostile world arrives in milestone gold.</li></ul>'},
 ]},
 {icon:'🧬', cat:'Life & the Compendium', blurb:'Kingdoms, discovery, rarity, specimen cards', topics:[
- {id:'discover', t:'Discovering life', k:'discover life scan bioscan species danger wound hp catalogue', body:
+ {id:'discover', t:'Discovering life', k:'discover life scan bioscan species danger wound hp catalogue roster sighting tame scavenge', body:
   '<p>From orbit a living world shows only its <b>life signatures</b> — the card blossoms when you land. Ground the world, then <b>survey its biosphere</b>: a deliberate act with teeth on hostile worlds — the danger percentage is your chance of being wounded by wildlife mid-survey, and <b>wounds deepen with distance</b> (a scrape in the home galaxy is survivable naked; the same claws in the Deep Field bite double and worse — scouts, the Reinforced Hull and crafted suits are how the far rings are survived). The survey always completes — you earned it.</p><ul><li>The survey <b>reveals</b> the roster; it catalogues nothing. Press <b>🐾 Tame</b> for beasts and <b>🌿 Scavenge</b> for flora, fungi and microbes — each attempt names its odds, rarer species resist harder, and crafted gear tips the hand. Every catch earns its Compendium page; there is no limit on trying.</li><li>Or send a beast ahead: press <b>Scout</b> on any of your fauna&#8217;s cards to name it your <b>Field Scout</b> — it takes the hit in your place, wounds and all, mended the usual way with ♥ loved flora. A scout with nothing left is lost forever.</li><li>A fresh scan can spark a spontaneous <b>auto-hybrid</b> with your existing collection.</li><li>Conquered worlds scan safely — see <span data-gt="conquest">Conquest</span>.</li><li>A thin slice of hostile worlds — molten, frozen, crushing — carries actual creatures, not just microbes. The odds run from about 1-in-70 on the friendliest extremes to 1-in-10,000 on the magma seas: the hardest landings hide the strangest finds.</li></ul>'},
  {id:'kingdoms', t:'The four kingdoms', k:'kingdom microbe flora fauna fungi realm biome classification', body:
   '<p>All life belongs to one of four kingdoms — <b>🦠 Microbe, 🌿 Flora, 🍄 Fungi, 🐾 Fauna</b> — and is shelved in the Compendium by realm (Land Fauna, Aquatic Fauna, Colonial Life…). Kingdom decides what a creature can do:</p><ul><li><b>Fauna</b> fight duels, defend worlds, and can be fed.</li><li><b>Flora</b> are medicine and meals — eaten by you or fed to beasts.</li><li>All kingdoms can breed within their own kind.</li><li>The sea grows kelp towers, reef-builders and sargassum rafts now; aerial-life worlds fly drifting veils. Extremophiles come with their own ways of living — vent-clingers, magma-swimmers, storm-riders — and worlds whose roster runs titanic sometimes show it breaking the horizon.</li></ul>'},
@@ -19144,9 +19256,9 @@ const GUIDE=[
 ]},
 {icon:'🌿', cat:'Breeding & Feeding', blurb:'Bloodlines, meals, medicine', topics:[
  {id:'breeding', t:'Breeding', k:'breed pair parents consumed odds hybrid bloodline stardust boost union', body:
-  '<p>Pick a specimen, press <b>Breed</b>, choose a same-kingdom mate. Both parents are consumed by the union — win or lose.</p><ul><li>The odds shown depend on the pair’s rarity — rare pairs are long shots.</li><li>☄ Stardust you’ve earned passively boosts odds (up to +15%) — see <span data-gt="stardust">Stardust</span>.</li><li>Success forges a <b>new bloodline</b>: a hybrid child with boosted stats (+1 brood). Chain generations for monsters.</li><li>The union&#8217;s experience goes to the <b>child</b> (+2, and +5 the first time you cross two particular species) — the parents are gone, so the newborn inherits the credit for them.</li><li>Failure loses both parents. Breed your spares, not your champions.</li><li>Two extremophile parents breed a true extremophile; a mixed pair breeds back toward ordinary stock. A creature&#8217;s two-tone hide follows its accent gene, so children visibly carry their parents&#8217; colors.</li></ul>'},
+  '<p>Pick a specimen, press <b>Breed</b>, choose a same-kingdom mate. Both parents are consumed by the union — win or lose.</p><ul><li>The odds shown depend on the pair’s rarity — rare pairs are long shots.</li><li>☄ Stardust you’ve earned passively boosts odds (up to +15%) — see <span data-gt="stardust">Stardust</span>.</li><li>Success forges a <b>new bloodline</b>: a hybrid child with boosted stats (+1 brood). Chain generations for monsters.</li><li>The union&#8217;s experience goes to the <b>child</b> (+2, and +5 the first time you cross two particular species) — the parents are gone, so the newborn inherits the credit for them.</li><li>A child inherits its parents&#8217; <b>brood</b> but <b>not</b> their fed bloodline — a well-fed pair does not pass that strength on, and the preview says so before you commit.</li><li>Failure loses both parents. Breed your spares, not your champions.</li><li>Two extremophile parents breed a true extremophile; a mixed pair breeds back toward ordinary stock. A creature&#8217;s two-tone hide follows its accent gene, so children visibly carry their parents&#8217; colors.</li></ul>'},
  {id:'feeding', t:'Feeding beasts', k:'feed flora meal tastes loved disliked poison toxic dead bloodline fed mend medicine', body:
-  '<p>Fauna can be fed flora from your Compendium (<b>Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavors it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength.</li><li>Feeding is also medicine: a welcome meal mends a wounded beast, and loved flavors mend most. A disliked meal that goes badly can wound it further — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll poisons the beast, biting off a chunk of its condition; rarer flora bite far deeper. Only a beast whose strength is already spent dies of it — at zero, it’s gone. The Iron Gut ability shrugs toxins off.</li></ul>'},
+  '<p>Fauna can be fed flora from your Compendium (<b>Feed</b> on their card). The plant is always consumed. Every beast has <b>tastes</b> — two stat-flavors it loves, one it dislikes (shown on its card):</p><ul><li>A loved meal grows its <b>fed bloodline</b> — permanent strength, up to a ceiling. The first welcome meal and each new flavour discovered also teach the beast directly.</li><li>Feeding is also medicine: a welcome meal mends a wounded beast, and loved flavors mend most. A disliked meal that goes badly can wound it further — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li>Every meal carries a <b>poison chance</b> (worse for rare flora and disliked tastes) — a toxic roll poisons the beast, biting off a chunk of its condition; rarer flora bite far deeper. Only a beast whose strength is already spent dies of it — at zero, it’s gone. The Iron Gut ability shrugs toxins off.</li></ul>'},
  {id:'injuries', t:'Injuries & recovery', k:'injury wound hurt condition bruised critical mend recover heal scars medicine', body:
   '<p>Wounds persist. A creature’s condition — <b style="color:#7fe6a0">Healthy</b> → <b style="color:#ffd96a">Bruised</b> → <b style="color:#ff8a72">Injured</b> → <b style="color:#ff5a4a">Critical</b> — lives on its specimen card, and the wounded fight below their strength (nearly half power at the brink).</p><ul><li><b>How they get hurt:</b> winning a conquest by a thread leaves scars, and a disliked meal that goes badly can wound. Friendly duels are still pure sport — no harm done.</li><li><b>How they heal:</b> feed them. A welcome meal mends, the flavors a beast ♥ loves mend most, and rarer flora mend deeper. Wounds never fade on their own — medicine is a deliberate act.</li><li>Injuries don’t travel in CFB codes — a shared creature arrives fresh.</li><li>Newborn hybrids are born unhurt, whatever shape their parents were in.</li></ul>'},
  {id:'eating', t:'Eating flora (healing)', k:'heal eat flora hp medicine poison stat growth heart nourish', body:
@@ -19170,7 +19282,7 @@ const GUIDE=[
  {id:'classes', t:'Classes, XP & levels', k:'class level xp experience innate warrior mage berserker paladin assassin fusion wins', body:
   '<p>Every beast is born to a <b>class</b> — Warrior, Berserker, Necromancer, Assassin, Druid… over a hundred, with the legendary ones (<b>Titan, Worldbreaker, Avatar, Chosen One</b>) reserved for summit-grade creatures. A class grants <b>innate arts</b>: always-on powers that need no roll, printed on the specimen card.</p><ul><li>Power is built through wins <em>and through care</em>. Victories feed the XP bar — duels +8; conquests +20 and guardians +60, each climbing with the conquered world&#8217;s tier — and cataloguing a genuinely new species teaches your standing Field Scout +2. Keeping also counts: a welcome meal +1, a taste discovered +2, a bout survived +2, a fight taken to the wire +3, a conquest lost +3, and a defender pushed to the brink +5. Levels wake more innate arts (slots at level 3 and 6), never raw stats.</li><li>A union pays its XP to the <b>newborn</b> — both parents are consumed, so the child is the only one left to carry it: +2 for the union, and +5 the first time you cross two particular species.</li><li><b>Breeding fuses bloodlines:</b> a hybrid usually inherits a class from its parents’ lineages — a Caster line crossed with a Martial line breeds toward Spellswords and Battlemages.</li><li>Levels are <em>your</em> creature’s story — a shared code arrives at level 1.</li></ul>'},
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
-  '<p>Any world with fauna can be conquered. Press <b>Conquer Planet</b> on its survey card and choose one champion — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li>The picker&#8217;s reading is <b>simulated, not estimated</b>: it runs the matchup 160 times and reports a band — <b>Favored · Even · Dangerous · Overwhelming</b> — with the sampled percentage and one line saying why. A sample that size cannot tell 0% from a half-percent, so it shows <b>&lt;1%</b> and <b>&gt;99%</b> rather than claiming a certainty it does not have.</li><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries wounds home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a wild-caught creature:</b> it is gone forever.</li><li><b>Lose with a bred champion:</b> your bloodline crawls home <b>Critical</b> — broken, not dead. Mend it with flora it ♥ loves — a champion fielded while still Critical will not crawl home twice.</li><li><b>Lose fighting yourself:</b> you take the wound instead — it can beat you to the brink but never kill you, and below a quarter health you cannot lead a conquest at all (send a beast, or mend first).</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
+  '<p>Any world with fauna can be conquered. Press <b>Conquer Planet</b> on its survey card and choose one champion — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li>The picker&#8217;s reading is <b>simulated, not estimated</b>: it runs the matchup 160 times and reports a band — <b>Favored · Even · Dangerous · Overwhelming</b> — with the sampled percentage and one line saying why. A sample that size cannot tell 0% from a half-percent, so it shows <b>&lt;1%</b> and <b>&gt;99%</b> rather than claiming a certainty it does not have.</li><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries wounds home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a wild-caught creature:</b> it is gone forever.</li><li>A hard-fought loss teaches your champion something — but a world only teaches it <b>once</b>.</li><li><b>Lose with a bred champion:</b> your bloodline crawls home <b>Critical</b> — broken, not dead. Mend it with flora it ♥ loves — a champion fielded while still Critical will not crawl home twice.</li><li><b>Lose fighting yourself:</b> you take the wound instead — it can beat you to the brink but never kill you, and below a quarter health you cannot lead a conquest at all (send a beast, or mend first).</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
  {id:'binder', t:'The Binder & the Fifty Paragons', k:'binder collection sets slots types paragon fifty silhouette claim stardust', body:
   '<p>Open <b>🏆 Records</b> and switch to the <b>🗂 Binder</b> tab. You cannot collect individuals out of an infinite universe — so the Binder collects types: fixed pages of slots (every grade, every realm, every body plan, every ability theme…) that are the same for every explorer; your universe decides which specimen fills each.</p><ul><li><b>Sets</b> are curated collections that pay a one-time ☄ Stardust bounty — claim them in the Binder when complete.</li><li><b>The Fifty Paragons</b> are named, one-of-a-kind deep-spectrum legends living on fixed worlds — the same fifty worlds for every explorer. Tap a silhouette to plot a course to its last-known world, then land and <b>Discover Life</b> to catalogue it. Share the coordinates — your friend hunts the very same legend.</li></ul>'},
  {id:'guardians', t:'Apex Guardians', k:'guardian apex named ruler challenge summit empyrean eternal singular crown titan', body:
@@ -19539,11 +19651,46 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.8.3';
+const GAME_VERSION='1.8.4';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
-{v:'1.8.3', title:'Clear Ground', date:'July 2026', sections:[
+{v:'1.8.4', title:'Clear Ground', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🗺 THE LESSON&#8217;S OWN SCREEN COMES FORWARD — on phones, Earth&#8217;s survey card sat on top of every board, so the two lessons that ask you to open the <b>Star Atlas</b> and the <b>Compendium</b> opened them underneath it. The Compendium button could not be pressed at all. Whatever the current lesson points at now takes the front — except on the landing step, where the card is the thing you need.',
+  '📱 THE DOCK IS NEVER BURIED — the survey card stops above the bottom dock instead of running over the buttons a lesson is pointing at.',
+  '🪐 THE PLANETSIDE READS CLEARLY DURING TRAINING — the landing view was sliding under the guidance card, hiding its own heading. It settles below the lesson now, so you can read both.',
+  '⚙ SETTINGS OPENS OVER A LESSON — the guidance card was covering the Settings panel, the Audio tab especially, on almost every screen size.',
+  '🧬 A UNION&#8217;S EXPERIENCE REACHES THE CHILD — both parents are consumed by breeding, and the experience was paid to one of them, so it vanished as it was earned. The newborn carries it now: +2 for the union, +5 the first time you cross two particular species.',
+  '🛡 A BOUT SURVIVED FINALLY COUNTS — two of the eight ways a creature earns experience (surviving a bout, and a fight taken to the wire) could never actually pay out. They do now.',
+  '💡 THE NUDGE REACHES THE PLAYERS WHO NEED IT — the suggestion that appears when nothing has moved for a while could only ever show for someone who already had a goal. The player with nothing on — the one most likely to give up — was the only one who could never be offered a next step.',
+  '☄ SKIMMING A CORONA IS PROGRESS — the game was treating an active skim as if you had stopped playing, and suggested you go do something else.',
+  '📋 THE QUEST LOG IS LIVE — it was a snapshot taken when you opened it: charter progress never moved while you watched. It now updates with the objective, closes on Escape, and never strands on screen without a handle.',
+  '🔇 SOUND OFF MEANS OFF — switching Sound off left a world&#8217;s ambience playing underneath.',
+  '⚔ THE MATCHUP METER STOPS ROUNDING TO CERTAINTY — hopeless and near-certain matchups read <b>&lt;1%</b> and <b>&gt;99%</b> instead of a flat 0% or 100%, and the picker builds its estimate far more cheaply.',
+  '❤ THE HEAL TARGET IS A FIXED SIZE — it was sized from the heart glyph, whose width varies by device, and computed under the 44px minimum on phones.',
+  '♿ GUIDANCE BUTTONS NO LONGER CLAIM TO BE DISABLED, AND NO LONGER GO DEAD — the shortfall buttons on a specimen card and in the Fabricator now answer when pressed, name what is missing, and sound like a refusal. A verb a lesson has blocked answers too, instead of doing nothing at all.'],
+ ],
+ ['⚖ Balancing', [
+  '🔒 A SPECIES MUST BE CAUGHT TO BE CATALOGUED — tapping a life-form in a world&#8217;s roster added it to your Compendium outright, skipping the tame or scavenge attempt entirely. It now points you at the verb that earns it.',
+  '🍽 A WELCOME MEAL IS THE FIRST ONE — the welcome-meal bonus paid on every loved meal forever, and a creature&#8217;s fed bloodline had no ceiling, so a card could promise strength the fighter did not have.',
+  '⚔ A LESSON IS LEARNED FROM A WORLD ONCE — losing a conquest was never recorded, so the same world paid its consolation experience on every attempt, indefinitely.',
+  '📜 WEEKLY CHARTERS NO LONGER PAY FOR OLD GROUND — a weekly landfall charter completed the moment you accepted it, from worlds you had visited long before, and re-rolled on every clock change.',
+  '🌍 HARVESTS KEEP THEIR OWN CLOCK — a settled world&#8217;s hourly harvest measured only the device clock.',
+  '💾 A SAVED CREATURE CANNOT CARRY BATTLEFIELD MODIFIERS HOME — the same fields a shared code has always stripped are now stripped on load.',
+  '🧪 THE BREEDING PREVIEW TELLS THE TRUTH — the child&#8217;s power range was built from the parents&#8217; fed bloodlines, which a child does not inherit. The range now reflects what the child will actually be, and the card says so.'],
+ ],
+ ['🔊 Audio', [
+  '🐾 CREATURES SOUND FAR MORE LIKE THEMSELVES — the voice read only three things about a creature, so the whole vocabulary was 540 calls: in a collection of fifty, nine in ten had a twin. It now reads its trait, build, gait, diet and senses too.',
+  '🎭 TEMPERAMENT IS THE GENE THE CARD PRINTS — the voice&#8217;s character was keyed to the wrong gene entirely, so the most aggressive creatures in the game carried some of the meekest voices.',
+  '🦇 NO CREATURE IS PINNED AT THE CEILING — about one in fifty voiced at the top of the range, all of them bats, where size and temperament stopped mattering and the call was simply shrill.',
+  '✅ A SUCCESSFUL ACTION SOUNDS LIKE ONE — the confirming tone existed but was never once played, so the contrast the refusal tone depends on only had one side.'],
+ ],
+ ['📖 Guide', [
+  '📖 THE GUIDE CATCHES UP — the class topic covers experience earned through <em>care</em> and says where a union&#8217;s experience lands; breeding repeats it where a breeder will look; conquest explains that the meter is simulated rather than estimated; and Settings lists the <b>Creature voices</b> and <b>Battle sound</b> switches.'],
+ ],
+]},
+{v:'1.8.3', title:'Clear Ground (source only)', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🗺 THE LESSON&#8217;S OWN SCREEN COMES FORWARD — on phones, Earth&#8217;s survey card sat on top of every board, so the two lessons that ask you to open the <b>Star Atlas</b> and the <b>Compendium</b> opened them underneath it, with no way through. Whatever the current lesson points at now takes the front, and the card steps back — except on the landing step, where the card is the thing you need.',
   '📱 THE DOCK IS NEVER BURIED — the survey card now stops above the bottom dock instead of running over the chips a lesson is pointing at.',
@@ -20540,9 +20687,12 @@ function trueOdds(champ, native, n){
     if(_oddsMemo.has(key)) return _oddsMemo.get(key);
     const N=n||160;
     let w=0, tot=0, close=0;
+    /* ROUND 7 (ask #4): these two were rebuilt on EVERY iteration — 320 redundant
+       battleStats per row. They do not vary with i; only the pairing seed does. */
+    const _sa=champ.stats||battleStats(champ.genome), _sb=battleStats(native.genome);
     for(let i=0;i<N;i++){
-      const a={name:'a', genome:champ.genome||{seed:cs}, stats:champ.stats||battleStats(champ.genome), isPlayer:champ.isPlayer};
-      const b={name:'b', genome:native.genome||{seed:ns}, stats:battleStats(native.genome)};
+      const a={name:'a', genome:champ.genome||{seed:cs}, stats:_sa, isPlayer:champ.isPlayer};
+      const b={name:'b', genome:native.genome||{seed:ns}, stats:_sb};
       /* vary the pairing seed so the sample spans the matchup's real spread */
       a.genome={...a.genome, seed:(hashInt(cs, i, 0x51EE)>>>0)};
       const r=runDuel(a,b);
@@ -20654,7 +20804,10 @@ function runConquestBattle(d, champ, native){
          only be attempted meaningfully while it stays unconquered. */
       if(res.winner!=='A' && !champ.isPlayer && champ.id){
         const _cl=(res.hpB/Math.max(1,res.maxB))<0.3;
-        awardXP(champ.id, _cl?5:3, _cl?'a defender nearly broken':'a hard lesson');
+        /* ROUND 7 CF1802-11: unledgered, this paid every attempt on the same
+           world forever — and one meal undoes the hurt=0.85 brake, so it was a
+           stationary XP farm. A lesson is learned from a world ONCE. */
+        awardXPOnce(champ.id, 'conqloss:'+d.planetSeed, _cl?5:3, _cl?'a defender nearly broken':'a hard lesson');
       }
       if(res.winner==='A'){
         stats.duelwins++;
@@ -20764,14 +20917,25 @@ function runConquestBattle(d, champ, native){
     }
   });
 }
+/* ROUND 7 CF1802-14: perfTime() is monotonic from boot — the OS clock is not.
+   An in-session harvest must satisfy BOTH, so winding the device clock forward
+   buys nothing. In-memory only: the load path's _hvFloor already covers reloads,
+   so this needs no save-shape change. */
+const _hvMono=new Map();
 function doHarvest(d){
   const c=conquered.get(d.planetSeed); if(!c) return;
   const now=Date.now();
+  const _mp=_hvMono.get(d.planetSeed);
+  if(_mp!=null && (perfTime()-_mp)*1000<HARVEST_CD){
+    toast('Harvest','This world is still replenishing — ready in '+fmtRemain(HARVEST_CD-(perfTime()-_mp)*1000)+'.');
+    return;
+  }
   if(now-c.t<HARVEST_CD){
     toast('Harvest','This world is still replenishing — ready in '+fmtRemain(HARVEST_CD-(now-c.t))+'.');
     return;
   }
   c.t=now;
+  _hvMono.set(d.planetSeed, perfTime());
   const yieldN=6+(c.tier||0)*4;
   essence+=yieldN;
   stats.essenceEarned=(stats.essenceEarned||0)+yieldN;
@@ -22571,10 +22735,17 @@ if(cargoBtn){
       const c5=e.target.closest('[data-craft5]');
       if(c5){ const id5=c5.dataset.craft5, it5=ITEM_BY.get(id5); let n5=0;
         while(n5<5 && it5 && _canCraft(it5)){ craftItem(id5, true); n5++; }
-        if(n5){ playRaritySting(2); toast('🛠 Crafted', (it5?it5.name:'Item')+' ×'+n5+' — in your 🧰 Cargo hold.'); }
+        if(n5){ playRaritySting(2); _okPress(); toast('🛠 Crafted', (it5?it5.name:'Item')+' ×'+n5+' — in your 🧰 Cargo hold.'); }
         if(yardOpen) renderYard(); return; }
+      /* ROUND 7 CF1802-07: the shortfall button had no handler of any kind —
+         a dead press with no panel, no toast and no sound. The denial contract
+         reaches it now: it says what is missing and sounds like a refusal. */
+      const nd=e.target.closest('.bclaim.need');
+      if(nd){ _denyPress(); toast('Not yet', (nd.dataset.tip||'You are short of materials.')+''); return; }
       const cr=e.target.closest('[data-craft]');
-      if(cr){ craftItem(cr.dataset.craft); if(yardOpen) renderYard(); }   /* re-render so spent-out recipes drop their Craft button (Nick) */
+      if(cr){ const _before=itemCount(cr.dataset.craft); craftItem(cr.dataset.craft);
+        if(itemCount(cr.dataset.craft)>_before) _okPress();
+        if(yardOpen) renderYard(); }   /* re-render so spent-out recipes drop their Craft button (Nick) */
     });
   }
 }
@@ -24315,7 +24486,19 @@ let chWeek=-1;                 /* rotation week (save chw) */
 let chProg={};                 /* charter id → count (save chp; weekly keys reset on rollover) */
 let chOpen=false;
 function _chNow(){ return Math.floor(Date.now()/6048e5); }
+/* ROUND 7 CF1802-13b: the week roll must not run on the boot tick — a device
+   clock is at its least trustworthy before NTP settles, and a bad roll wipes
+   every in-progress weekly. Armed by the first real gesture (by which time the
+   clock is settled) or a few seconds in, whichever lands first. */
+let _chArmed=false;
+try{
+  const _arm=()=>{ _chArmed=true; };
+  document.addEventListener('pointerdown', _arm, {once:true, capture:true});
+  document.addEventListener('keydown', _arm, {once:true, capture:true});
+  setTimeout(_arm, 8000);
+}catch(_){ _chArmed=true; }
 function _chRoll(){
+  if(!_chArmed) return;
   const wk=_chNow();
   if(chWeek>wk+1) chWeek=wk;   /* CF1720-06: an impossible-FUTURE bank is repaired HERE, after the clock has settled — never at load, where a pre-NTP Date.now() rewound honest weeks */
   if(wk>chWeek){   /* CF1715-12: !== re-rolled the weekly slate on a BACKWARD clock change — replayed banked landfalls paid on the accept click */
@@ -24394,7 +24577,7 @@ function chAccept(id){
      where accepting your first contract IS the final step (Nick's order of
      operations: training ends on the accept, never auto-accepted) */
   const _gradStep=(typeof _tutStep!=='undefined' && typeof TUT_STEPS!=='undefined' && TUT_STEPS[_tutStep] && TUT_STEPS[_tutStep].id==='charter-first');
-  if(!tutDone && !_gradStep) return;
+  if(!tutDone && !_gradStep){ _tutRefuse(); return; }   /* ROUND 7 CF1802-07: was a silent drop */
   const c=_chById(id);
   if(!c || chacc.has(id) || _chDoneOf(c)) return;
   if(_chAccepted().length>=CH_CAP){ toast('Charter Board', 'Three charters is a full slate — see one through first.'); return; }
@@ -24407,7 +24590,7 @@ function chAccept(id){
      landed set is replayed through the charter's own filter, so 'First
      footfall: Mercury' accepted while standing there completes on the spot
      (the banked-state law, extended from chk() charters to landfall events) */
-  if(tutDone && !proven && c.ev==='landfall'){
+  if(tutDone && !proven && c.ev==='landfall' && id[0]!=='w'){   /* ROUND 7 CF1802-13: starters bank, weeklies do not — a re-rolling charter that honours a permanent set pays out on every clock step */
     try{
       let n=0; for(const sd of landed){ if(!c.filt || c.filt({planetSeed:sd})) n++; if(n>=c.n) break; }
       if(n>=c.n) proven=true; else if(n>0) chProg[id]=n;
@@ -24518,22 +24701,36 @@ function _chBadge(){
         }
       }
     }
-    if(!g){ if(el) el.style.display='none'; _chipLast=null; return; }
+    /* ROUND 7 CF1802-03: this early return sat ABOVE the stall branch, so a
+       player with no objective at all — the one most likely to quit — could
+       never be offered a next step. The stall suggestion is now allowed to
+       stand in for a missing goal rather than being gated behind one. */
+    const _nbEarly=(!g && _stall>=10)?_nextBest():null;
+    if(!g && !_nbEarly){ if(el) el.style.display='none'; _chipLast=null;
+      /* ROUND 7 CF1802-06: the chip hiding used to strand an OPEN log on screen
+         with no handle and no way out */
+      questLogOpen=false; try{ renderQuestLog(); }catch(_){ }
+      return; }
     if(!el){
       el=document.createElement('div'); el.id='chchip'; el.setAttribute('role','button'); el.tabIndex=0;
       el.addEventListener('click', ()=>{ try{
         const go=el.dataset.go;
         _stall=0; _stallShown=0;   /* acting on it clears the stall either way */
-        if(!el.dataset.go){ questLogOpen=!questLogOpen; renderQuestLog(); return; }   /* the chip is the log's handle */
+        /* ROUND 7 CF1802-06: an OPEN log always closes first — while stalled,
+           dataset.go is truthy, so the destination branch ran and the chip
+           could no longer close the log it had opened. */
+        if(questLogOpen){ questLogOpen=false; renderQuestLog(); if(!go) return; }
+        else if(!go){ questLogOpen=true; renderQuestLog(); return; }   /* the chip is the log's handle */
         if(go==='yard'){ const b=document.getElementById('cargobtn'); if(b&&b.style.display!=='none'){ b.click(); return; } }
         if(go==='log'){ if(!logOpen) logBtn.click(); return; }
+        if(go==='cosmos'){ try{ for(const p of PANELS) if(p.open()) p.close(); }catch(_){ } return; }   /* ROUND 7: clear the boards so the map is actually visible */
         if(!chOpen) chBtn.click();
       }catch(_){ } });
       document.body.appendChild(el);
     }
     /* v1.8 STALL: nothing has moved in a while — offer the way forward instead
        of restating the goal the player already knows they are failing */
-    const _nb=(_stall>=10)?_nextBest():null;
+    const _nb=_nbEarly || ((_stall>=10)?_nextBest():null);
     if(_nb){
       el.classList.add('stalled');
       el.innerHTML='💡 <b>'+esc(String(_nb.t).slice(0,44))+'</b>';
@@ -24542,6 +24739,7 @@ function _chBadge(){
       _chipLast={key:'stall', p:0};
       return;
     }
+    if(!g){ el.style.display='none'; _chipLast=null; return; }   /* stall cleared and still no objective */
     el.classList.remove('stalled'); el.dataset.go='';
     el.innerHTML=g.ic+' <b>'+esc(String(g.t).replace(/&#8217;/g,'’').slice(0,34))+'</b>'+
       ' · '+g.p+' / '+g.n+   /* Nick live: binary charters showed NO digits and read as the old dead pill — every objective now wears its count */
@@ -24551,6 +24749,11 @@ function _chBadge(){
       el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump');   /* progress moved — a small celebration */
     }
     _chipLast={key:g.key, p:g.p};
+    /* ROUND 7 CF1802-06: the log refreshes WITH the chip. It had exactly two
+       call sites — the chip click and ascEvent — so per-charter progress, the
+       one thing the log adds over the chip, was the one thing that never moved.
+       _chBadge already runs on every progress event, so this is where it goes. */
+    try{ renderQuestLog(); }catch(_){ }
   }catch(_){ }
 }
 /* Nick 2026-07-28: "the quest log basically just has the first quest and a +1
@@ -24797,7 +25000,7 @@ function ascEvent(type, detail){
 }
 /* the progress signal: any event a player would call "something happened" */
 const _PROGRESS_EVT=new Set(['survey','landfall','fed','bred','crafted','atlas-add','conquest',
-  'specimen','searched','healed','mined','skim','tray','duel-done','chaccept','ascent-chapter']);
+  'specimen','searched','healed','mined','skimmed','tray','duel-done','chaccept','ascent-chapter']);   /* ROUND 7 CF1802-05: was 'skim' — the game emits 'skimmed', so active skimming counted as a STALL */
 let _stall=0, _stallShown=0;
 /* the best action AVAILABLE NOW — never suggest what the player cannot do */
 function _nextBest(){
@@ -24813,12 +25016,20 @@ function _nextBest(){
       if(it.sig && !primeFill[it.sig]) continue;
       if(it.req && itemCount(it.req)<1) continue;
       if(_canCraft(it)) return {t:'Craft '+it.name+' at the Shipyard', go:'yard'}; } }catch(_){ }
-    /* 3. the catalogue gaps that gate the creature loop (the A/B's finding) */
-    if(!flora) return {t:'Land on a living world and Scavenge for flora', go:'log'};
-    if(fauna<2) return {t:'Land on a living world and Discover Life', go:'log'};
+    /* 3. the catalogue gaps that gate the creature loop (the A/B's finding).
+       ROUND 7 CF1802-04: these two sent the player to the Star Atlas without
+       checking there was anything IN it — the CTA landed on "Nothing saved
+       yet." Both are now gated on the same logMap the destination reads. */
+    if(logMap.size){
+      if(!flora) return {t:'Land on a living world and Scavenge for flora', go:'log'};
+      if(fauna<2) return {t:'Land on a living world and Discover Life', go:'log'};
+    }
     /* 4. otherwise: go somewhere */
     if(logMap.size) return {t:'Travel from your Star Atlas', go:'log'};
-    return {t:'Survey a world and press Land', go:null};
+    /* ROUND 7 CF1802-04: go:null became dataset.go='' — which the chip reads as
+       "no destination" and answers by toggling the quest log. With an empty
+       Atlas the honest destination is the map itself. */
+    return {t:'Survey a world and press Land', go:'cosmos'};
   }catch(_){ return null; }
 }
 function gameEvent(type, detail){

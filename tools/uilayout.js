@@ -42,6 +42,12 @@ const VIEWPORTS = [
   { id: 'iphone-max',  w: 430,  h: 932,  mobile: true,  dpr: 3 },
   { id: 'android',     w: 412,  h: 915,  mobile: true,  dpr: 2.6 },
   { id: 'ipad-port',   w: 768,  h: 1024, mobile: true,  dpr: 2 },
+  /* ROUND 7 CF1802-02: the external harness found NO spotlight ring at all at
+     744x1133 on training step 5, where every phone and desktop profile rendered
+     one — a width neither of our gates covered. It sits just under the 900px
+     dock breakpoint, so the dock layout applies but the tablet band's sheet
+     widths do not: exactly the seam a bug hides in. */
+  { id: 'ipad-mini',   w: 744,  h: 1133, mobile: true,  dpr: 2 },
   { id: 'ipad-land',   w: 1024, h: 768,  mobile: true,  dpr: 2 },
   { id: 'laptop',      w: 1366, h: 768,  mobile: false, dpr: 1 },
   { id: 'desktop',     w: 1920, h: 1080, mobile: false, dpr: 1 },
