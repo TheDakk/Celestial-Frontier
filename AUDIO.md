@@ -1,6 +1,6 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
-**STATUS:** matches code as of 2026-07-29 (verified against main.js).
+**STATUS:** matches code as of 2026-07-30 (verified against main.js). Carries a v1.8.6 (external round 8) update — see the ⚠ v1.8.6 notes inline.
 **Shipped:** v1.8.0 "The Connection" · corrected and widened in v1.8.4 "Clear Ground".
 
 **Purpose:** everything the game makes a sound with. Written after an external round found the
@@ -97,15 +97,31 @@ voice.** The portrait reads fifteen-plus genes; the voice read two and a hash.
 v1.8.4 folds in five more as **bounded multipliers** (`_vw(v, n, amt)` returns `1 ± amt/2` across
 the gene's range, so nothing can escape the clamps):
 
-| Gene | Affects | Amount |
-|---|---|---|
-| `trait` | `f0` | 0.20 |
-| `body` | `f0` | 0.14 |
-| `loco` | `dur` | 0.18 |
-| `diet` | `rich` | 0.22 |
-| `sense` | `nz`, `vib` | 0.12 |
+| Gene | Affects | Amount | Modulus | Vocabulary |
+|---|---|---|---|---|
+| `trait` | `f0` | 0.20 | `FA_TRAIT.length` | 25 |
+| `body` | `f0` | 0.14 | `FA_BODY.length` | 16 |
+| `loco` | `dur` | 0.18 | `FA_LOCO.length` | 18 |
+| `diet` | `rich` | 0.22 | `FA_DIET.length` | 6 |
+| `sense` | `nz`, `vib` | 0.12 | `FA_SENSE.length` | 10 |
 
 No new branching, no payload, determinism untouched.
+
+> ⚠ **v1.8.6 (CF1805-03) — all five moduli were wrong when this shipped**, and the table above
+> records the corrected form. v1.8.4 hand-typed `7 / 9 / 6 / 5 / 6`, and not one of them matched
+> its array. The effects were not uniform: `trait` folded **25** values onto 7 non-uniformly, so
+> traits 0–3 were four times as common in the voice as 4–6; `diet`'s `%5` against **6** values made
+> omnivore sound identical to herbivore. The vocabulary genuinely widened — CF1802-20 was
+> substantially fixed — but it was not the clean traversal the design intended.
+>
+> The correct idiom (`% FA_TEMPER.length`) sat **three lines above** the wrong ones, on the
+> temperament fix that landed in the same release. That is the lesson worth keeping: a
+> hand-typed modulus is a silent, self-consistent lie. **Read the length from the array**, so a
+> gene can never drift out of step with its own vocabulary.
+>
+> Fingerprint-safe: `voiceOf` is not one of the 50 determinism probes. Voices are derived, never
+> persisted — so the vocabulary can be corrected without a re-pin. A creature's voice changes; its
+> identity does not. See DETERMINISM.md's 2026-07-30 addendum.
 
 ### Size and temperament
 
@@ -130,6 +146,19 @@ external run found **1.98% of 200,000 creatures pinned at 6000 Hz, every one of 
 (f0 was 5200, within one size step of the ceiling) and 0.93% at the 60 Hz floor (sessile, jelly).
 Bat is now 3600, and `playVoice` tapers gain above 4 kHz — equal amplitude is not equal loudness
 in the shrillest band of human hearing.
+
+> ⚠ **STILL OPEN as of v1.8.6 — the population number hid it.** Across the whole 200,000-genome
+> run the ceiling rate fell from 1.98% to about 0.80%, which reads like a fix. A **focused sample
+> of 10,000 named Bats** does not: **14.38% still land exactly on 6000 Hz** and 38.73% sit above
+> 4 kHz (mean f0 ≈ 3,779). The rig is still frequently hard-clamped, so different Bat genomes
+> converge on the same voice.
+>
+> Two things to carry forward. First, `_hiTaper` makes the pinned voices **quieter, not distinct** —
+> it is an amplitude taper, so it improves comfort and does nothing for identity. Second, and more
+> useful: **test each named Earth rig family independently, not only the global population.** A
+> per-family defect is invisible in an aggregate where that family is 4 of 631 classified fauna.
+> Candidate fixes: lower the Bat base further, or replace the hard clip with soft saturation so
+> the top of the range compresses instead of collapsing. Needs the human listening test either way.
 
 ---
 

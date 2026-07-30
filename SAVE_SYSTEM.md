@@ -1,6 +1,6 @@
 # Celestial Frontier — Save System
 
-**STATUS:** matches code as of 2026-07-29 (verified against main.js + tools/).
+**STATUS:** matches code as of 2026-07-30 (verified against main.js). Carries a v1.8.6 (external round 8) update — see the ⚠ v1.8.6 notes inline.
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated
 from seeds) to `localStorage` under one hardened key, with load-time coerce/clamp so a
 tampered or truncated save can never inject markup or poison the numbers.
@@ -18,6 +18,38 @@ had always validated all three; **the load path now does the same**: `_mult`/`_w
 Rule of thumb going forward: **anything `normGenome` strips from a shared creature must also be
 stripped from a loaded one.** They are the same trust boundary — one is another player's bytes,
 the other is the player's own editable bytes.
+
+## ⚠ v1.8.6 — the same rule, applied to a field nobody thought of as a stat
+
+v1.8.4 mirrored `normGenome`'s handling of *battlefield modifiers*. It did **not** mirror
+`normGenome`'s coercion of the **24 trait indices** — and one of those is a linear power term:
+
+```js
+const sz = (g.size || 0);
+s[0] += sz * 4;  s[3] = Math.max(6, s[3] - sz * 2);   /* battleStats */
+```
+
+`_sanitizeSavedGenome` clamped `brood`, `fed`, `xp`, `hurt`, `_mult`, `_wf`, `apex`, `par` —
+**precisely the fields that had been exploited before** — and never touched `size`. Legitimate
+range is 0–5. Editing one codex entry to `size: 1000000` bought **+4,000,000 vitality**, and
+because `runDuel` decides a capped fight on HP *fraction*, a 12-million-HP pool cannot be dented
+in 26 rounds. It travelled, too: `encodeCreature` serialises the raw genome and `normGenome`'s
+`Math.abs((+o.size)|0)` preserves `1e6` intact, so a crafted share code presented a
+four-million-power challenger in another player's duel box.
+
+The load path now clamps `size` to `0..FA_SIZE.length-1` alongside the rest.
+
+> **The lesson is about how the previous clamp list was chosen.** Every field on it had been
+> exploited first. That makes the list a record of past incidents rather than a statement of the
+> trust boundary — and a field graduates from "cosmetic index" to "power term" the moment any
+> consumer multiplies by it. Audit by **what battleStats reads**, not by what has burned us.
+>
+> ⚠ Related and still open: `crossGenome`'s mutation list includes `size` and never wraps it, so
+> size drifts above 5 in ordinary breeding. That is not a save problem and is **not** fixed —
+> `crossGenome` and `evolveGenome` are both determinism-fingerprint probes, so wrapping the
+> mutation breaks the v1.0 baseline. v1.8.6 closed the player-visible half at `battleStats`
+> (which now reads the same `% FA_SIZE.length` the card prints). See COMBAT_AND_CONQUEST.md and
+> DETERMINISM.md, both 2026-07-30 addenda.
 
 ## 1. Overview
 Module `SaveSystem [app]` (main.js 10000–10359) owns a debounced write, a hardened
