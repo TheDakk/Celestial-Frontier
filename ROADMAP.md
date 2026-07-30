@@ -25,14 +25,15 @@
 ##   state → the v2.0 plan. Source AND site pushed; full battery green.
 ##
 ## ═══ WHERE THINGS STAND ═══
-## ★ SINCE THE v1.8.4 SHIP (2026-07-29) — two NEXT items closed, both COMMITTED AND PUSHED,
-##   but NOT deployed and NOT version-bumped (Nick's call; see 6c for the drafted release bullet):
+## ★ v1.8.5 "FIRST TOUCH" SHIPPED 2026-07-29 (Nick's call: "deploy it as 1.85"). Two NEXT items:
 ##   · #6 cold boot (commit 94bcfba) — tools/bootperf.js + `_hdLater`. TTI on a 4x-throttled
-##     phone 6440ms -> 1905ms. Full battery re-run green.
-##   · #7 DOM tier — tools/simrun.js `dom` mode. Tooling only; no game code touched, so the
-##     battery is unaffected by it.
+##     phone 6440ms -> 1905ms. THE player-visible content of this release.
+##   · #7 DOM reachability tier — tools/simrun.js `dom` mode. Tooling only, no game code.
 ##   BOTH found bugs in THEMSELVES before they found any in the build (see the ⚠⚠ notes in 6
-##   and 7). That is now five instances of a check passing while the thing it guarded was broken.
+##   and 7). That is now SIX instances of a check passing while the thing it guarded was broken,
+##   and the 2026-07-29 corollary is earned: WHEN A NEW INSTRUMENT FIRES, SUSPECT THE INSTRUMENT
+##   FIRST. Make every finding carry its own diagnosis — "no control for {id}" was a bug report
+##   nobody could action; adding the surrounding state cracked it in minutes.
 ## LIVE: v1.8.4 (build 66e0516) at https://celestialfrontier.github.io/. Source repo pushed.
 ## GATES AT SHIP: fingerprint MATCH 50/50 · smoke 553/0 · uilayout 683 checks / 10 viewports ·
 ##   balance PASS · validate 9/9 · deadcode 3 candidates (all tooling-referenced, fine).
@@ -114,13 +115,13 @@
 ##    frameInner also runs gameplay logic (epoch ticks, checkTransitions, queueSave) and `picks`
 ##    feeds hit-testing, so it is frame-loop surgery for a partial win — and it changes what the
 ##    player sees behind the intro (live starfield vs frozen), which is Nick's art call. NOT DONE.
-## 6c. RELEASE NOTE NOT WRITTEN — deliberately. RELEASES[0] is v1.8.4, which is ALREADY LIVE, so
-##    appending there would credit shipped notes with a fix live players never got; opening a
-##    v1.8.5 entry is a GAME_VERSION bump and those happen only on Nick's word (CLAUDE.md rule 8).
-##    Drafted bullet, awaiting a version call:
-##    🚀 THE FIRST SCREEN ANSWERS AT ONCE — on a phone, a brand-new expedition spent several
-##    seconds building world art you could not see yet, behind the naming screen, so the very
-##    first thing you touched did not respond. The art now waits its turn.
+## 6c. ✔ RELEASE NOTE WRITTEN AND SHIPPED as v1.8.5 "First Touch" — a NEW RELEASES[0] entry, not
+##    an append to v1.8.4's (which was already live; appending there would have credited shipped
+##    notes with a fix live players never received). One Bug Fixes bullet (the first screen answers
+##    at once) + two Under the Hood bullets (the cold-boot gate, the fleet pressing real buttons).
+##    ⚠ TITLE WAS MINE, NOT NICK'S — "First Touch". He said only "deploy it as 1.85"; the release
+##    schema needs a title and the update popup fires on deploy, so it was picked rather than
+##    blocked on. Rename freely; it is one string in RELEASES[0] plus a redeploy.
 ## 7. ✔ DOM-DRIVEN simrun tier — BUILT 2026-07-29 as `node tools/simrun.js dom N`.
 ##    FIRST, A CORRECTION: the old wording here ("simrun drives PROBE HOOKS, not the DOM") was
 ##    half wrong. The `ui`/`chaos` tiers ALREADY drive the DOM and use the probe hook only to
