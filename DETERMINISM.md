@@ -1,6 +1,8 @@
 # Celestial Frontier — Determinism Discipline
 
-**STATUS:** matches code as of 2026-07-20 (verified against main.js + tools/).
+**STATUS:** matches code as of 2026-07-30 (verified against main.js + tools/). The 2026-07-30
+pass added §6's "WHEN art is drawn is not fingerprint input", corrected the layout gate to 10
+viewports, and registered `bootperf.js` + `simrun dom` in the battery.
 **Purpose:** the single law that governs the whole game — every world, genome, descriptor, portrait, duel and share code is a pure function of seeds, so the same address regenerates byte-for-byte on every device, forever, with no server.
 **Source of truth:** this doc is the DESIGN spec; main.js + tools/ implement it.
 
@@ -163,9 +165,27 @@ byte-identical, or be an authorized single-key re-pin. Practical guide:
 - **`tools/balance-sim.js`** — archetype fairness: every ability's overall win rate vs
   the field must sit in the 42–58% band (head-to-head counters allowed).
 - **`tools/uilayout.js`** — the LAYOUT gate: drives real headless Edge over CDP across
-  **9 viewports** (see UI_PRESENTATION.md).
+  **10 viewports** (~683 checks; the 744×1133 band joined in v1.8.4). See UI_PRESENTATION.md.
+- **`tools/bootperf.js`** — cold boot in a real browser: separates *painted* from
+  *answerable* and enforces the art-hold law. Fingerprint-neutral by construction (below).
+- **`tools/simrun.js dom`** — UI reachability: drives the real controls instead of the
+  probe hooks. Fingerprint-neutral (it changes *how* actions are invoked, not their maths).
 - Supporting: `build.js`, `checks.js`, `make-probe-build.js`, `harness.js`, `probe.js`,
   `fake2d.js`, plus `rarity-sanity.js` / `simrun.js` sims.
+
+### WHEN art is drawn is not fingerprint input (2026-07-30)
+
+A rule worth stating because a v1.8.5 change leaned on it: **sprites derive from seeds, never
+from the moment they are rendered.** `_hdLater()` defers every HD sprite upgrade while the
+first-run naming screen is up (UI_PRESENTATION § THE ART-HOLD LAW) — a change purely to
+*scheduling* — and the fingerprint stayed MATCH 50/50, exactly as predicted.
+
+The general form: **deferring, batching, dropping or re-ordering a RENDER can never move the
+fingerprint; changing what a seed produces always can.** So a perf change confined to
+scheduling needs no re-pin, and if such a change *does* shift a probe, that is the alarm —
+it means render code is feeding generation, which is the one thing this discipline forbids.
+(The live counter-example remains art itself: procedural art *is* fingerprinted, so changing
+a generator's output requires an authorized re-pin. Timing is not output.)
 
 ## 7. Open questions / pending
 - `ROADMAP.md` tracks a pending **procedural-art coherence** pass that WILL change the

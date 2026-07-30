@@ -603,25 +603,47 @@ domain-determinism grep, headless jsdom boot with zero errors, and a **50-probe*
 fingerprint over the deterministic core (world-gen, descriptors, genomes, duels,
 share codes) that must match the v1.0 baseline byte for byte.
 
-**The battery is now four suites, not one:**
+**The battery is now SIX suites, not one** (four gate every batch and `deploy.js`
+enforces them; the last two are run on demand):
 
-| Suite | What it can see |
-|---|---|
-| `validate.js` | build + 9 static gates + the 50-probe fingerprint |
-| `smoke.js` | jsdom: real flows, the full 21-step training, ~553 checks |
-| `uilayout.js` | **a real headless browser**: computed boxes, 44px touch floors, and `elementFromPoint` hit-tests across 10 viewports (~683 checks) |
-| `balance-sim.js` | 17 archetype win-rate band + 55 ability-theme art band |
+| Suite | What it can see | Gate? |
+|---|---|---|
+| `validate.js` | build + 9 static gates + the 50-probe fingerprint | every batch |
+| `smoke.js` | jsdom: real flows, the full 21-step training, ~553 checks | every batch |
+| `uilayout.js` | **a real headless browser**: computed boxes, 44px touch floors, and `elementFromPoint` hit-tests across 10 viewports (~683 checks) | every batch |
+| `balance-sim.js` | 17 archetype win-rate band + 55 ability-theme art band | every batch |
+| `bootperf.js` | **cold boot in a real browser over gzipped HTTP**: decomposes first-interactive into network / in-DOM / painted / **answerable**, plus a longtask census split at the gate. `--assert` enforces the art-hold law | on demand |
+| `simrun.js dom` | **UI reachability**: takes actions through the real controls and proves the press *landed*; reports `absent` / `disabled` / `dead` / `uncovered` | on demand |
 
 `uilayout.js` exists because jsdom has no layout: a rule can be present, correct
 and **completely inert**, and only a real browser can tell you. It accepts
 `--url=FILE`, so a new gate can be replayed against an older build to prove it
 catches the bug it was written for.
 
+`bootperf.js` and `simrun.js dom` close two blind spots that were *structural*, not
+oversights. **Painted ≠ answerable**: a gate can be drawn and hit-testable while the
+main thread is too busy to respond, and `waitForSelector(visible)` cannot tell the
+difference — that ambiguity misdiagnosed the cold-boot outlier for three builds.
+**API ≠ reachable**: the high-volume expedition tiers call ~28 probe hooks directly,
+so a bot calling `craftItem()` could never notice a dead Craft button (CF1802-07).
+Neither jsdom nor the fingerprint can see either problem by construction.
+
+⚠ Both were **negative-controlled in both directions** before being believed, and both
+found bugs in *themselves* first. Do not trust a green run from either until you have
+re-broken a build on purpose — `tools/README.md` records the two traps that made
+`bootperf` pass vacuously (an observation window that closed at TTI, and a `setTimeout`
+block that cannot preempt the parser).
+
 When an edit intentionally changes behavior a probe captures, regenerate the baseline
-**deliberately and say so** (don't weaken the intent of a check). A browser smoke test
-(Playwright) exercising every panel, the settings toggles, Escape handling, search, the
-heal picker and the reset flow remains the highest-value addition if sustained work
-resumes — the jsdom boot covers load-time wiring, not interaction flows.
+**deliberately and say so** (don't weaken the intent of a check).
+
+⚠ **A stale claim removed here twice — do not let it return.** This section used to end
+"a browser smoke test (Playwright) exercising every panel … remains the highest-value
+addition if sustained work resumes". `uilayout.js` has driven a real browser for weeks,
+and `bootperf.js` now drives one too. The v1.8.4 sweep believed it had deleted that
+sentence and had not; it survived to 2026-07-30. The highest-value *remaining* addition
+is **widening `simrun dom` coverage past `craft`** — `capture` first (CF1802-09's own
+surface), since panel/picker actions are the ones no harness here drives yet.
 
 ---
 

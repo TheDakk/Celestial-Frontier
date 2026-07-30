@@ -565,3 +565,29 @@ scenes consume it. `aerFloraG` also de-wrapped from `hdGenesFor` (raw genomes �
 never fired on the exact flow it was built for (re-landing the same world). LESSON: audit the GAME
 call site, not just the proof sheet — a sheet that passes the parameter the game omits certifies
 art the player never sees.
+
+## 2026-07-30 WHEN art is generated is an art-direction constraint (v1.8.5)
+
+*Scope note: the top-of-file `matches code as of 2026-07-24` marker stands — this addendum was
+verified against the art **scheduling** path only, not re-verified against every generator.*
+
+Painterly masters are expensive on purpose, and this file has always governed *what* they look
+like. v1.8.5 established that **when** they are synthesised is also a direction constraint, because
+it can cost the player the only control on screen:
+
+- A brand-new expedition queued one HD upgrade **per body** in Sol plus the galaxy face — each a
+  300–800ms main-thread block (`n2` → `fbm` → `renderPlanetSprite` / `makeGalaxySprite`) — entirely
+  **behind the full-screen naming modal**. On a 4×-throttled phone the naming screen was painted at
+  393ms and could not answer a tap until **6440ms**.
+- **THE LAW:** HD synthesis yields to any blocking full-screen surface. `_hdLater()` re-polls while
+  `_introUp()`. Full statement and measurements in UI_PRESENTATION.md § *THE ART-HOLD LAW*.
+- **This does not weaken the art.** Nothing about the masters changed — the low-res placeholder was
+  already the house pattern, and the HD upgrade still lands, just not while the player is locked out.
+  Determinism is untouched because sprites derive from seeds, never from when they are drawn
+  (DETERMINISM.md § *WHEN art is drawn is not fingerprint input*); fingerprint stayed MATCH 50/50.
+
+**Carry this into the v2.0 port rubric.** The 1.9MB inline script already costs ~2s of V8 compile at
+4× throttle, and PixiJS texture uploads are the same class of cost as canvas noise loops: budget art
+generation against *time-to-answerable*, not against frame rate alone. A texture the player is
+waiting behind is worse than a texture that arrives a frame late. `tools/bootperf.js` is the
+instrument, and its `--assert` mode should survive the port.

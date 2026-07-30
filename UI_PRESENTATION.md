@@ -1,6 +1,9 @@
 # Celestial Frontier — UI / Presentation System
 
-**STATUS:** matches code as of 2026-07-29 (verified against main.js + tools/).
+**STATUS:** matches code as of 2026-07-30 (verified against main.js + tools/). The 2026-07-30 pass
+added **THE ART-HOLD LAW** (shipped in v1.8.5) at the end of this file — nothing expensive may be
+synthesised behind a blocking full-screen surface — and the *painted ≠ answerable* distinction that
+found it.
 **Purpose:** the mobile-first presentation layer — the unified topbar, the one-panel-at-
 a-time manager, the "fold language", the vista box, the cards, and the platform caps —
 plus the headless layout gate that guards them.
@@ -348,7 +351,7 @@ which is exactly the seam a bug hides in. We believe the missing ring was downst
 bug (`_tutSpot` deliberately draws nothing when its target's centre is covered), and the band
 passes now, but it stays in the gate because no one was watching it before.
 
-## 2026-07-29 THE ART-HOLD LAW (matches code as of 2026-07-29)
+## 2026-07-29/30 THE ART-HOLD LAW (shipped in v1.8.5 "First Touch" — matches code as of 2026-07-30)
 
 **Nothing expensive may be synthesised behind a blocking full-screen screen.** A surface the
 player cannot see is not worth a frame, and on the first run the thing hidden behind it is the
