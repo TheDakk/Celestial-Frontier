@@ -281,9 +281,17 @@
 ##   bootperf.js (cold boot / answerability) and simrun `dom` (UI reachability). The first four gate
 ##   every batch and deploy.js enforces them; the last two are run on demand. tools/README.md
 ##   documents all six, including the two traps that made bootperf pass vacuously at first.
-## Reviewer-facing: REVIEWER_NOTES_v1.8.2.md · REVIEWER_NOTES_v1.8.4.md (the round-7 response).
-##   ⚠ There is NO REVIEWER_NOTES_v1.8.5.md — round 8 has not been asked for yet (NEXT #2). Write
-##   one when it is, and lead with 2(e): their boot A/B must be re-run THROTTLED.
+## Reviewer-facing: REVIEWER_NOTES_v1.8.2.md · REVIEWER_NOTES_v1.8.4.md (round 7) ·
+##   ★ REVIEWER_NOTES_v1.8.6.md (round 8, written 2026-07-30 — READY FOR ROUND 9). It leads with
+##   what we fixed, then §2 what we did NOT fix and why (CF1805-05 is open BY DECISION and their
+##   proposed fix is not implementable), §3 where their reports were incomplete AND the one place
+##   we were wrong about them, §4 our own gate failing its control, and §5 what we want next.
+##   ⚠ THE TWO STANDING ASKS THEY HAVE NOT DELIVERED: physical iOS/iPadOS Safari (three rounds
+##   running) and their cold-boot A/B RE-RUN THROTTLED — they skipped it in round 8, so the
+##   v1.8.5 boot fix is still verified only by our own instrument. Lead round 9 with both.
+##   ⚠ There is NO REVIEWER_NOTES_v1.8.5.md and there never will be — round 8 audited v1.8.5 and
+##   our response shipped as v1.8.6, so the notes are numbered for the build that ANSWERS a round,
+##   not the one that was audited. (v1.8.4 followed the same rule for round 7.)
 ## ★ audits/ (NEW 2026-07-29) — external bundles are now COMMITTED, not left in a session-scoped
 ##   scratchpad: audits/round-7-v1.8.2/ (the 25-item fix list + evidence PNGs + their harness + the
 ##   1,000-session fleet, voice-model and boot-A/B raw data) and audits/battery-v1.8.2/ (the four
