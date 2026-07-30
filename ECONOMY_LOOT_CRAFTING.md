@@ -130,6 +130,14 @@ Two currencies feed it: mined **elements** (hard, finite per world) and **☄ St
 
 ## ⚠ v1.8.4 — the harvest clock, and the Fabricator's dead button
 
+> **v1.8.5 FOLLOW-UP — the Fabricator's buttons now have a GATE, not just a fix.** The dead-button
+> class of defect below had to be found by an external round because every high-volume harness tier
+> called `craftItem()` directly and so could never press a button at all. `node tools/simrun.js dom N`
+> now drives the real path — open the Shipyard, pick the **Fabricator** tab (it holds two benches and
+> renders one at a time), expand the recipe's category (all closed since v1.7), press **Craft** — and
+> requires the press to *land*. Negative-controlled: neutralise the handler and it reports 183 `dead`;
+> rename `data-craft` away and it reports 178 `absent`. See `tools/README.md`.
+
 ### Harvest cooldown is no longer wall-clock-only
 
 `HARVEST_CD = 3600e3`. The **load** path was already hardened (`_hvFloor = max(0, _atL - HARVEST_CD)`,

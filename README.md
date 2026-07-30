@@ -32,14 +32,40 @@ deterministic **domain modules** (`@module … [domain]`), **art/service modules
 npm install                # once (acorn + jsdom, dev-only)
 node tools/build.js        # main.js -> html   (⚠ NEVER extract.js after editing main.js —
                            #   it regenerates main.js FROM the html and discards your edits)
-node tools/validate.js     # main.js -> html, then all checks:
-                           #   syntax, CSS braces, duplicate ids,
-                           #   determinism grep, headless boot,
-                           #   49-probe fingerprint vs the v1.0 baseline
-node tools/smoke.js        # jsdom interaction suite (64 checks incl.
-                           #   the full Field Training tutorial)
-node tools/deploy.js       # copy the build into ../celestialfrontier.github.io
-                           #   and push -> live at https://celestialfrontier.github.io/
+node tools/validate.js     # main.js -> html, then all checks: syntax, CSS braces,
+                           #   duplicate ids, version consistency, class->rig,
+                           #   colour atlas, biome profiles, render audit,
+                           #   determinism grep, headless boot, and the
+                           #   50-probe fingerprint vs the v1.0 baseline
+node tools/smoke.js        # jsdom interaction suite (~553 checks incl. the
+                           #   full 21-step Field Training tutorial)
+node tools/uilayout.js     # a REAL headless browser: computed boxes + 44px touch
+                           #   floors + elementFromPoint hit-tests across 10
+                           #   viewports (~683 checks). jsdom has NO layout, so
+                           #   this is the only gate that sees a CSS rule which is
+                           #   present, correct and completely inert.
+node tools/balance-sim.js  # archetype win-rate band + ability-theme art band
+node tools/deploy.js --release X.Y.Z
+                           # re-runs the whole gate, then copies the build into
+                           #   ../celestialfrontier.github.io and pushes -> live.
+                           #   The release target must match GAME_VERSION AND
+                           #   package.json. ⚠ THEN `git push origin main` — deploy
+                           #   ships the SITE repo only, so every release is TWO pushes.
+```
+
+Run on demand rather than every batch — each closes a blind spot the four gates above
+cannot see by construction:
+
+```
+node tools/bootperf.js --save=none --cpu=4 --cpuprofile --assert
+                           # COLD BOOT. Separates painted from ANSWERABLE: a gate can
+                           #   be drawn and hit-testable while the main thread is too
+                           #   busy to reply. Enforces the art-hold law.
+node tools/simrun.js dom 24
+                           # UI REACHABILITY. Takes actions through the real controls
+                           #   and proves the press LANDED, so a button that exists but
+                           #   is wired to nothing fails here. The other simrun tiers
+                           #   call probe hooks and cannot see that.
 ```
 
 **Play it live:** https://celestialfrontier.github.io/ — this repo is the source of
