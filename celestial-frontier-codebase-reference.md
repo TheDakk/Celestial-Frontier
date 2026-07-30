@@ -41,23 +41,39 @@ find + a deep Compendium). The universe remains open and playable after winning.
 
 | File | Purpose |
 |---|---|
-| `celestial-frontier.html` | **The entire game.** ~8,000 lines, ~462 KB. Single file: `<style>` + markup + one big `<script>` (starts ~line 948, ~7,050 lines of JS organized into SOLID modules — see §3). |
+| `main.js` | **The source of truth** (~24,300 lines). **Gitignored** — recoverable from the committed html, see below. |
+| `celestial-frontier.html` | **The build artifact, and the entire shipped game.** ~26,750 lines, ~1.93 MB. **TWO** `<style>` elements (append new CSS to the **LAST**), then markup, then one `<script>` from ~line 2,420. **All CSS lives here — there is none in `main.js`.** |
 | `original/celestial-frontier-v1.0.html` | Pristine pre-refactor v1.0 build (source of the determinism baseline). |
 | `tools/` | Verification toolkit (`npm install` once; see `tools/README.md`). |
 | `celestial-frontier-codebase-reference.md` | **This file.** |
 
-### Working method (important for future edits)
-Edit the extracted script, not the html in place, and validate before shipping:
+*(Counts corrected 2026-07-30. This table read "~8,000 lines, ~462 KB … one `<style>` … `<script>` starts ~line 948" — off by more than 3× and wrong about the number of `<style>` elements, which matters because appending CSS to the first one silently does nothing.)*
 
-1. `node tools/extract.js` — pulls the `<script>` body out to `main.js`.
-2. Edit `main.js` via exact, unique string matches (a bad match must never
-   silently corrupt the file).
-3. `node tools/validate.js` — reassembles the html from `main.js`, then runs
-   `node --check`, CSS brace balance, duplicate-id check, the
-   no-`Math.random`/`Date.now`-in-domain-modules grep, a headless **jsdom boot**
-   (zero errors required), and a **49-probe determinism fingerprint** that must
-   match the v1.0 baseline (`tools/baseline.json`) byte for byte.
-4. Ship the updated `celestial-frontier.html` only when everything passes.
+### Working method (important for future edits)
+Edit `main.js`, never the html in place, and validate before shipping:
+
+1. Edit `main.js` via exact, unique string matches (a bad match must never
+   silently corrupt the file). **CSS is the exception — it lives only in the html**;
+   append to the **LAST** `<style>` element. `build.js` preserves it.
+2. `node tools/build.js` — assembles `main.js` (+ the html's own CSS/markup) into
+   `celestial-frontier.html`.
+3. `node tools/validate.js` — rebuilds, then runs `node --check`, CSS brace balance,
+   duplicate-id check, version consistency, class→rig binding, colour atlas, biome
+   profiles, render audit, the no-`Math.random`/`Date.now`-in-domain-modules grep, a
+   headless **jsdom boot** (zero errors required), and a **50-probe determinism
+   fingerprint** that must match the v1.0 baseline (`tools/baseline.json`) byte for byte.
+4. Ship the updated `celestial-frontier.html` only when everything passes (§12 lists
+   the full seven-suite battery and which four gate every batch).
+
+> ⚠ **`node tools/extract.js` is NOT part of this loop.** This section used to open with
+> it as step 1, which is the most dangerous stale instruction this file has ever carried:
+> `extract.js` regenerates `main.js` **from the html** and silently discards every edit
+> made since the last build. It is a **one-time bootstrap for a fresh clone**, and the
+> reason `main.js` can be gitignored safely (`node tools/extract.js celestial-frontier.html <out.js>`
+> recovers it — always pass an explicit output path). The everyday command is `build.js`.
+> CLAUDE.md rule 4 has carried this warning for some time while this file still
+> recommended the opposite — a reminder that a correction must be applied everywhere the
+> old claim lives, not just where it was noticed.
 
 **Encoding caution:** the source mixes encodings — some unicode is stored as literal
 backslash-u escape *text* in JS strings (renders at runtime), some as real UTF-8 chars
@@ -460,7 +476,7 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   shown on specimen cards, Compendium rows and the conquest picker.
   `normGenome` deletes `hurt` (injuries don't travel in CFB codes); hybrids
   are born unhurt (crossGenome never copies it). Friendly duels stay harmless.
-- **Field Training** (`@section tutorial`): an 18-step, event-gated tutorial for
+- **Field Training** (`@section tutorial`): a 21-step, event-gated tutorial for
   brand-new expeditions only (`tut` save field; absent = veteran, never shown;
   reset → training again; reload mid-training restarts it). Game systems report
   through one funnel — `gameEvent(type, detail)` (no-op unless training is
@@ -679,7 +695,7 @@ surface), since panel/picker actions are the ones no harness here drives yet.
   a verification toolkit (`tools/`) — behavior identical, 49-probe fingerprint pinned.
 - **v1.1 (June 2026):** **Guide to the Universe** (searchable 26-topic manual replaces
   the Primer); **tooltip system** (`data-tip`/`data-guide`, Settings toggle, long-press
-  on touch); **Field Training** — an 18-step, event-gated, fully sandboxed new-player
+  on touch); **Field Training** — a 21-step, event-gated, fully sandboxed new-player
   tutorial (Earth charting, training cache, feed/breed/duel/heal practice, scripted
   hazard, cleanup that restores the record). New optional save fields `tips`, `tut`.
   jsdom smoke suite drives the entire tutorial end-to-end.

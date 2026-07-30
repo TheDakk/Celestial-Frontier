@@ -220,7 +220,7 @@ contract is the one UI-adjacent path that needs a re-pin — see DETERMINISM.md.
   unchanged. Dock reads: ⚙ | Prime Codex · Star Atlas · Compendium · Shipyard · Records | ?
 - **TEXT SYNC**: 5 stale position refs updated to the dock era (charters "top left, under
   the shelf"; ⚙ "bottom dock, left edge"; Prime Codex + ? Guide "bottom dock"; shipyard
-  comment). Training's focus lockdown verified end-to-end (smoke drives all 20 steps).
+  comment). Training's focus lockdown verified end-to-end (smoke drives all 21 steps).
 - **PROOF RIG**: `tools/uishot.js` — headless-Edge UI screenshots via an exactly-sized
   IFRAME (window-size is unreliable under Windows display scaling; the iframe gives a true
   CSS viewport). Seeds a veteran save (`{me, tut:1, rn:GAME_VERSION}`) so the live UI boots

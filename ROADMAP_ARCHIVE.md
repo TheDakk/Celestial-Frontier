@@ -7,6 +7,72 @@
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
 
+## ══════════ ARCHIVED 2026-07-30 (v1.8.6 "Kept Promises" ship) — the v1.8.5 batch ══════════
+## Moved VERBATIM from ROADMAP.md under the pinned HYGIENE rule (nothing deleted). v1.8.5
+## "First Touch" was live for exactly one day: external round 8 arrived the next morning and
+## v1.8.6 superseded it. The block below is the full v1.8.5 log — the cold-boot diagnosis
+## (NOT cache warming) and the two gates it added, bootperf.js and the simrun dom tier.
+## ▶▶▶ 2026-07-29/30 ★ v1.8.5 "FIRST TOUCH" LIVE (build e20d62c) — NEXT #6 + #7, then ship.
+##   Nick: "go ahead and commit all items" → "push for now and the simrun tier" → "deploy it as 1.85".
+##   THE PLAYER-VISIBLE CONTENT IS ONE FIX. Everything else this batch is instrumentation, and the
+##   release notes say so (one 🐛 bullet + two 🔧 Under the Hood bullets).
+##   ★ #6 THE COLD-BOOT OUTLIER WAS MISDIAGNOSED IN THIS VERY FILE. The old item read "may be page
+##   cache warming on the larger file". The external round's OWN data ruled that out and we had all
+##   of it: in their SLOW reps load=409ms and DCL=384ms — indistinguishable from the fast reps. The
+##   file was fully downloaded, parsed AND executed at ~400ms every time. Cache warming would move
+##   responseEnd/load/DCL; it moved none of them. The tell we had not drawn out: askExplorerName(true)
+##   runs SYNCHRONOUSLY in boot, so the gate is in the DOM before DCL, and a visibility poll runs IN
+##   THE PAGE — so the only way it reports late is a BLOCKED MAIN THREAD. Painted ≠ answerable.
+##   ROOT CAUSE: the house "instant lo → async hi" art pattern. A new expedition calls startNewGame()
+##   at +120ms → goTo()s Sol → queues one HD upgrade PER BODY plus the galaxy face, each a 300-800ms
+##   block (n2 / fbm / renderPlanetSprite / makeGalaxySprite), ALL of it behind a full-screen naming
+##   modal. 4x-throttled iPhone-class profile: painted 393ms, ANSWERABLE 6440ms, 5818ms blocked.
+##   The returning player — who never builds a system — blocked 0ms, and THAT is what named the cause.
+##   FIX `_hdLater()`: re-poll while _introUp() instead of rendering. 6440ms → ~1880ms. Precedent not
+##   invention — toasts ALREADY wait on _introUp() (_toastQ, "held while the title / explorer-name
+##   screen is up"). Determinism-safe BY CONSTRUCTION (sprites derive from seeds, not from when they
+##   are drawn) — fingerprint MATCH 50/50 confirms it. Scope law honoured: _hdLater sits at game-IIFE
+##   top level because its two callers live in DIFFERENT nested module IIFEs.
+##   ★ #7 THE DOM TIER, and a CORRECTION to the old item's premise: "simrun drives PROBE HOOKS, not
+##   the DOM" was half wrong. ui/chaos ALREADY drive the DOM and use the hook only to OBSERVE. It is
+##   the EXPEDITION tiers (fast/deep/medium/veteran — the high-volume ones behind every metric) that
+##   call ~28 hooks directly. THAT is the blind spot, and it is why a bot calling craftItem() could
+##   never notice a dead Craft button: CF1802-07 and CF1802-09 both had to come from outside.
+##   `dom` mode drives the real control and the press must LAND (before/after effect snapshot).
+##   Findings kept apart: absent · disabled · dead. ADJUDICATING `dead` IS THE DESIGN — "pressed it
+##   and nothing changed" is ALSO what an unavailable action looks like, so `dead` is recorded only
+##   if the API then succeeds from the same state. A harness that cries wolf gets ignored.
+##   ★★ THE LESSON OF THE BATCH — BOTH NEW GATES FOUND BUGS IN THEMSELVES FIRST, and neither found
+##   one in the build. bootperf's first cut stopped observing at TTI, so a deliberate 1500ms block at
+##   600ms reported 0ms and PASSED (a longtask census whose window closes at TTI is not a census);
+##   its second control used setTimeout, which CANNOT preempt the parser, so it ran after the gate had
+##   legitimately painted and proved nothing — only a SYNCHRONOUS block before the game <script>
+##   manufactures a painted-but-unanswerable gate. The dom tier reported 141, then 106, then 85
+##   findings across four iterations, EVERY ONE its own fault: a stale Shipyard (the bot mines via
+##   H.mineWorld, which never fires the UI's ore-arrival re-render) and then the Research Bench being
+##   up instead of the Fabricator (yardView renders ONE bench at a time and BOTH use .bset rows, so
+##   the wrong one looks superficially like a rendered Fabricator — .fabgrp is the tell).
+##   THAT IS SIX INSTANCES of a check passing while the thing it guarded was broken. NEW COROLLARY,
+##   now in the process laws: WHEN A NEW INSTRUMENT FIRES, SUSPECT THE INSTRUMENT FIRST — and make
+##   every finding carry its own diagnosis. "no control for {id}" was a bug report nobody could
+##   action; adding the surrounding state (why()) cracked it in minutes.
+##   BOTH GATES NEGATIVE-CONTROLLED BOTH WAYS against deliberately broken builds: bootperf 3611ms
+##   exit 1 unfixed / 495ms exit 0 fixed (budget 900ms clear of both) · dom tier 183 dead when the
+##   handler is neutralised, 178 absent when the attribute is renamed away, and it DISTINGUISHES the
+##   two. The unfixed build came from git (the shipped v1.8.4), which is the cheapest control there is.
+##   DOCS THIS BATCH: UI_PRESENTATION "THE ART-HOLD LAW" · tools/README (bootperf metrics table + the
+##   dom tier + both traps) · codebase-reference (_hdLater + the battery table) · DETERMINISM (render
+##   timing is not fingerprint input) · CLAUDE.md (the two new tools) · this file (hygiene + #6/#7).
+##   ⏳ NOT DONE, DELIBERATELY, all measured: 6a the remaining ~1.9s is `(program)` ≈2s = V8 compiling
+##   the 1.9MB inline script at 4x — the v2.0 PAYLOAD problem, and the best evidence yet for the
+##   module split; 6b drawSystem burns ~416ms/boot painting BEHIND the modal, but frameInner also runs
+##   epoch ticks / checkTransitions / queueSave and `picks` feeds hit-testing, so it is frame-loop
+##   surgery for a partial win AND it changes what shows behind the intro (live vs frozen starfield),
+##   which is Nick's art call; 7a dom coverage is `craft` only — capture/equip/feed/breed/heal need
+##   panel/picker state the expedition never establishes and are reported as `uncovered`, never
+##   silently skipped. NEXT most valuable there is `capture`, CF1802-09's own surface.
+
+
 ## ══════════ ARCHIVED 2026-07-30 (v1.8.5 "First Touch" ship) — v1.8.3 + v1.8.4 ══════════
 ## Moved VERBATIM from ROADMAP.md under the pinned HYGIENE rule (nothing deleted). These two
 ## blocks were the live agenda through the v1.8.4 ship; v1.8.5 superseded them as the live

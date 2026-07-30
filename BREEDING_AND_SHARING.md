@@ -1,6 +1,6 @@
 # Celestial Frontier — Breeding & Sharing
 
-**STATUS:** matches code as of 2026-07-29 (verified against main.js).
+**STATUS:** matches code as of 2026-07-30 (verified against main.js). Carries a v1.8.6 (external round 8) update — see the ⚠ v1.8.6 notes inline.
 **See also:** `LINEAGE_AND_BREEDING.md` — the v1.6 Earth-lineage layer on top of `breedPair`:
 a child of an Earth parent keeps that parent's Earth RIG + wears the child's alien palette
 (`_earthBlend`); the Earth-anchor strength drifts alien organically by the MATE's alienness
@@ -26,11 +26,15 @@ Two coupled systems:
 
 ### Breeding (`breedPair`, ~L11845)
 1. `odds = breedOdds(a, b)`. If `roll >= odds` → **fail**: remove both parents, return `{ok:false, odds}`.
-2. On success: `child = evolveGenome(crossGenome(a.genome, b.genome), 1)`; `child.brood = a.brood + b.brood + 1`.
+2. On success: `child = evolveGenome(crossGenome(a.genome, b.genome), 1)`; `child.brood = Math.min(200, a.brood + b.brood + 1)`.
+   - ⚠ **v1.8.6:** the sum was previously uncapped, so two 200/200 parents produced a child reading `brood 401` that silently snapped back to 200 on the next reload. Never a stat exploit — `battleStats`, `normGenome` and `_sanitizeSavedGenome` all already clamped at 200 — purely a card quoting a number the game does not honour. Clamped at the point the value is *made*, so live, saved and imported now agree.
 3. De-collide the seed against existing `codex` ids (LCG step until unique); store via `_storeSpecies` named "A × B (bred)".
 4. **Remove both parents regardless of outcome** — the union always consumes them.
 5. Two Legendary-tier (tier ≥5) parents unlock the `bredlegend` achievement.
-6. **The union's XP goes to the CHILD** (v1.8.3): `awardXP(born.id, 2)` + `awardXPPair(born.id, [a.id,b.id].sort().join('+'), 5)`, run *after* `_storeSpecies` — both parents are gone by then (step 4). Before v1.8.3 both awards landed on `aEntry` and vanished with it, and the lineage key was `[a.kind,b.kind]` (always `'Fauna+Fauna'`), so the "first-of-its-kind" bonus paid once per parent rather than once per cross. See PROGRESSION.md § Creature XP & leveling.
+6. **The union's XP goes to the CHILD** (v1.8.3): `awardXP(born.id, 2)` + `awardXPPair(born.id, [a.name,b.name].sort().join(' × '), 5)`, run *after* `_storeSpecies` — both parents are gone by then (step 4). See PROGRESSION.md § Creature XP & leveling.
+   - **The lineage key has been wrong twice, in opposite directions.** Before v1.8.3 both awards landed on `aEntry` and vanished with it, and the key was `[a.kind,b.kind]` — always `'Fauna+Fauna'` — so the bonus paid once per *parent* rather than once per cross. v1.8.3 then keyed it on `[a.id,b.id]`, which looks right and is worse: `codexId` is `'s'+seed`, i.e. **per individual**, and both parents are consumed one line above. **That key can never repeat**, so from v1.8.3 to v1.8.5 "a first-of-its-kind lineage" fired on *every* successful breed — the one-shot ledger worked perfectly and guarded nothing.
+   - v1.8.6 keys it on the parents' **names**, which outlive the parents, matching what the code's own comment always said it meant: *a first for the PAIRING*. Never affected the numbers (7 XP is `levelOf` 1, mechanically identical to 0) — the toast was simply lying every time.
+   - ⚠ **This still wants a multi-session probe.** One session cannot distinguish "pays once per pair, ever" from the old behaviour; that is exactly why the defect survived a round of external testing and was eventually found by *reading* the key rather than exercising it.
 - Live `roll = Math.random()`; during training `roll = -1` (guaranteed success). `stats.breeds`/`breedwins` tracked; fires `gameEvent('bred', {ok})`.
 
 ### Feeding (`feedPair`, ~L11893)
@@ -38,7 +42,8 @@ Two coupled systems:
 2. Taste: `faunaTastes` → the beast `loved`/`neutral`/`disliked`s the flora's stat flavour (`floraStat`).
 3. Poison chance `pois` = `0` if the beast has **Iron Gut** (`ab.gutsy`), else `clamp((disliked?0.16:0.05) + tier*0.05 − res/800, 0.02, 0.5)`.
 4. `roll < pois` → **toxic**: wound `dmg = clamp(0.16 + severity*0.22 + tier*0.045, 0.1, 0.92)` added to `genome.hurt`. If `hurt + dmg >= 1` the beast **dies** (removed from codex). Poison wounds, it doesn't execute — only a beast already spent dies.
-5. Otherwise a `FEED_EVENTS[pref]` event applies `fed` delta to `genome.fed` (loved meals of tier ≥4 get +1). Loved/neutral meals also **mend** existing `hurt`; a bad disliked meal can add a small wound.
+5. Otherwise a `FEED_EVENTS[pref]` event applies `fed` delta to `genome.fed`, **clamped to 0..200** (loved meals of tier ≥4 get +1). Loved/neutral meals also **mend** existing `hurt`; a bad disliked meal can add a small wound.
+   - ⚠ **v1.8.6:** the increment was previously uncapped — 120 loved meals drove the live value to `fed 240` against the 200 ceiling every consumer honours, so the card read a number that snapped back after a reload. The `delta` re-derived on the next line is taken *after* the clamp, so the "+n" the toast reports stays truthful once the ceiling is reached. Same class of divergence as `child.brood` above, fixed the same way: clamp where the value is made.
 
 ### Healing the explorer (`healExplorer`, ~L12181)
 1. **Flora consumed** (`removeFromCodex`).

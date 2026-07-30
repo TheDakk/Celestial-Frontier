@@ -1,7 +1,7 @@
 # Celestial Frontier — Quests & Chapters
 
-**STATUS:** matches code as of 2026-07-29 (verified against main.js).
-**Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and the Field Training tutorial (18 counted steps — UI renders `/18`; `TUT_STEPS` array holds 20 entries, 2 being non-counted intro/conditional cards).
+**STATUS:** matches code as of 2026-07-30 (verified against main.js). Carries a v1.8.6 (external round 8) update — see the ⚠ v1.8.6 notes inline.
+**Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and the Field Training tutorial (**21 steps**, all counted).
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
 ## ⚠ v1.8.4 — weekly charters, the clock, and the objective chip
@@ -29,12 +29,45 @@ a missing goal rather than being gated behind one.
 so per-charter progress — the only thing the log adds over the chip — never refreshed. It now
 rides `_chBadge`, closes on Escape, and cannot strand on screen after the chip hides.
 
+## ⚠ v1.8.6 — the two fixes above each grew a tail
+
+**The chip lost the quest log exactly when a stalled player wanted it (CF1805-04).** The chip is
+the log's *only* handle, and it toggles the log only when `dataset.go` is falsy. CF1802-04 replaced
+`_nextBest()`'s last `go:null` return with `go:'cosmos'` — so **every** path now returns a truthy
+destination, and while the stall suggestion is showing the chip can only ever navigate.
+
+The mechanism is narrower than it first looks, and that narrowed the fix. The click handler
+*already* clears the stall (`_stall=0`), which would return the chip to its objective state where
+`dataset.go` is `''` and the handle works — but **nothing repainted the chip**, so it kept the
+suggestion's markup and kept routing forever. For a stalled player, progress events are precisely
+what is not happening, so nothing else was going to repaint it either. The fix is a deferred
+`_chBadge()` after the click settles. One-tap routing — CF1802-03's measured win — survives intact.
+
+**A forward clock still re-rolled the weekly slate (CF1805-07).** `_chArmed` correctly defers the
+roll past the boot tick, but nothing limited how *often* it can run afterward, and **any board
+render triggers it**. `_chRoll` clears every weekly `chProg` key and every weekly `chacc` entry
+when `wk > chWeek`, and `_chDoneOf` for a weekly is `(chProg[c.id]||0) >= c.n` — so deleting those
+keys makes **every already-completed weekly claimable again**, and `_chWeekly()` reseeds a fresh
+slate. Measured over 200 forward week-steps: every pool id recurs in 33–42% of weeks, at an average
+**77.5 ☄ per step** — the value the design intends per *real* week, arriving every one to three
+minutes.
+
+`_chRoll` now allows **one roll per 10 monotonic minutes** (`perfTime()`, which no clock change can
+wind). ⚠ **This is a rate limit, not a fix, and the source comment says so.** The root cause is
+that an offline game cannot verify a wall clock; the same limit is why the harvest version of this
+exploit is open by decision. See ECONOMY_LOOT_CRAFTING.md's 2026-07-30 addendum for the full
+argument — it is the one place this reasoning is written out.
+
 ## 1. Overview
 Three layers of directed play sit on one event bus:
 
 - **Chapters (mainline)** — `ASC_CHAPTERS`, an ordered 3-chapter campaign whose capstone in each chapter is a **ship system whose existence IS the ring unlock** (Jump Drive → Long-Range Array → Intergalactic Drive). Rides *pinned above* the charter board. New saves start **locked to Sol** (travel is gated, curiosity/looking never is). Internally still called "the Ascent" (`asc*` names, save fields `asc`/`ascp`); it is *presented* as "Chapters".
 - **Expedition Charters (side board)** — a hunt board on the left rail. **Starter charters** (5 core-trade chain + 5 Sol-tour chain) teach the trades and tour the home system; then a **weekly board** of 3 rotating charters, seeded identically for every explorer. Progressive reveal + accept-to-activate + gear rewards (below).
-- **Field Training tutorial** — `TUT_STEPS` (20 array entries), presented to the player as **18 counted steps** (UI renders a literal `/18`; 2 entries are non-counted intro/conditional cards — CLAUDE.md's "18-step" is correct), with a focus-lockdown gate.
+- **Field Training tutorial** — `TUT_STEPS`, **21 entries, all of them counted**, with a focus-lockdown gate. The counter is rendered from the array itself (`(_tutStep+1) + ' / ' + TUT_STEPS.length`), so it cannot drift from the real length.
+
+  > ⚠ **Corrected 2026-07-30.** This line previously read "20 array entries, presented as **18 counted steps**, UI renders a literal `/18`, 2 non-counted intro/conditional cards — CLAUDE.md's '18-step' is correct." **Every clause of that was false**, and the last one vouched for a number CLAUDE.md does not contain (it says 21). There is no literal `/18` in the source; the ids are `welcome · find-earth · survey-tour · atlas-add · atlas-open · land · cache · specimen · card-tour · feed · breed · duel · hazard · heal · tray · search · sheet · forge · horizon · charter-first · finale` — twenty-one, none conditional. External round 8's own screenshots read *"Field Training 8 / 21"*, and its §3.1 argues from "twenty-one steps is a lot to ask", so the real number was sitting in evidence we had already read.
+  >
+  > Worth keeping as a caution: a doc that **cross-certifies another doc** ("CLAUDE.md's 18-step is correct") manufactures false confidence. Re-derive counts from the source, and prefer citing the expression that produces them over the number itself.
 
 One funnel: `gameEvent(type, detail)` (main.js ~L15309) fans every system event to the tutorial hook, `charterEvent`, and `ascEvent`.
 
@@ -67,7 +100,7 @@ One funnel: `gameEvent(type, detail)` (main.js ~L15309) fans every system event 
 - Silent during training (`!tutDone`) and while any listed modal is open. Never fires twice for the same goal key in a session (`_nudged` set). Login nudge at **14 s** after boot; idle nudge after **5 quiet minutes** (`5*6e4`), polled each 60 s.
 
 ### Field Training (`TUT_STEPS`, ~L15315)
-- 20 steps (see §7). Each step: `{id, text(), spot?, allow?, acts?, btn?, when?, enter?, rev?, pick?}`.
+- 21 steps (see §7). Each step: `{id, text(), spot?, allow?, acts?, btn?, when?, enter?, rev?, pick?}`.
 - **Focus lockdown** (`_tutGate`, ~L15391): only `TUT_ALWAYS` surfaces + the current step's `allow` list accept pointer/click/touch/wheel; everything else is `preventDefault`'d with a "nudge" flash. `_tutPanelSweep` closes panels the new step doesn't own, with a one-beat grace so the completing click's own panel still paints.
 - **Landing lesson** (`land`→`cache`, steps 6–7): press Land on Earth; a training cache grants 3 Earth beasts + 3 Earth flora on loan (`_tutGrant`); the Planetside vista *holds* until tapped (no auto-close), then yields to the Compendium.
 - **Forge lesson** (`forge`, step 18): the order loans ore (`cargo` gets Fe/Al/Si), player crafts an Iron Plate at the Shipyard. `finale` (`_tutCleanup`) returns the loaned cache/ore/plate and heals wounds — "nothing you lose in training follows you out".
@@ -141,7 +174,7 @@ Quests are mostly app-layer, but the parts that must be identical cross-device a
 - Save write `chs/chw/chp/chacc` L10067, `asc/ascp` L10083, `tut` L10095 · load L10230–10238, L10178–10179, L10270
 
 ## 7. Open questions / pending
-- **Step-count discrepancy (real):** `TUT_STEPS` contains **20** steps and the UI header renders `N / TUT_STEPS.length` (= "/ 20"). CLAUDE.md, the smoke harness, and this task all say "18-step Field Training". The "18" label is stale — the two extra steps are the `duel` and `search`/`sheet`-era additions. Either the label or the array should be reconciled; code currently ships 20.
+- ~~**Step-count discrepancy (real):**~~ **RESOLVED 2026-07-30.** `TUT_STEPS` contains **21** steps; the header renders `N / TUT_STEPS.length`, so the displayed count is always the real one and there is nothing to reconcile in code. Every stale label has been corrected (this doc, `celestial-frontier-codebase-reference.md`, `README.md`, `UI_PRESENTATION.md`). CLAUDE.md and the smoke harness already said 21. **The discrepancy this entry described was between two documents, never between a document and the code** — which is why it sat open long enough to be restated as "18", then "20", then cross-certified by a sibling doc. Counts belong in exactly one place: the expression that computes them.
 - **Gear rewards are static-only:** `_chGrant` pays fixed existing item ids. The "deeper loot later" phase (rolled/tiered charter loot) is described in comments but not implemented.
 - **Sol-tour gear:** `earpiece`, `headlamp`, `magboots`, `meteor`, `fieldlegs` must exist in `ITEM_BY`/`ITEMS` for `_chGrant` to pay out; verify none were renamed in a later item pass.
 - **Weekly expiry UX:** accepted weeklies silently expire at rollover (`_chRoll`); no in-progress warning. Intentional but worth noting for players mid-charter at week's end.

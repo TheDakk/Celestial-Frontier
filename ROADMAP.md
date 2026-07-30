@@ -9,6 +9,8 @@
 ## SAME BATCH (and bump its "matches code as of" marker) — the same way we run validate and
 ## update this roadmap. A change isn't done until its markdown reflects it. Also keep
 ## celestial-frontier-codebase-reference.md (code map) in sync when functions move/appear.
+## ★ PROCESS_LAWS.md (extracted from this file 2026-07-30) is the other standing reference —
+## READ IT BEFORE TOUCHING UI OR TESTS. Same discipline: refreshed in place, never archived.
 
 ## 📌 PINNED — ROADMAP HYGIENE (Nick, 2026-07-21): KEEP THIS FILE LEAN. This doc holds ONLY the
 ## live SESSION HANDOFF (state / what's done / NEXT backlog / process). Completed batch logs and
@@ -19,29 +21,41 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF — as of 2026-07-30. ★ v1.8.5 "FIRST TOUCH" IS LIVE (build e20d62c) ◀◀◀
-## ★ SUPERSEDED SAME DAY: v1.8.6 "KEPT PROMISES" IS NOW LIVE — external round 8 landed
-##   2026-07-30, was answered the same day (12 fixes + 2 instruments) and SHIPPED on Nick's call
-##   ("deploy, version bump, and get ready for more testing"). Read the 2026-07-30 ROUND 8
-##   RESPONSE batch log FIRST — it also lists what was deliberately NOT fixed and why, including
-##   CF1805-05 (harvest), which is NOT CLOSABLE offline and needs a design decision, not a patch.
-## [HYGIENE 2026-07-30] The v1.8.3 + v1.8.4 batch blocks moved VERBATIM to the top of
-##   ROADMAP_ARCHIVE.md (this file had reached 423 lines; it is ~368 now, and 157 lines of it
-##   are the two archived blocks' replacement: a single v1.8.5 log). Structure is
-##   pins → this handoff → the v1.8.5 batch log → the v2.0 plan. Source AND site pushed;
-##   full battery green; the live site was verified end-to-end after deploy, not assumed.
+## ▶▶▶ SESSION HANDOFF — as of 2026-07-30. ★ v1.8.6 "KEPT PROMISES" IS LIVE (build 0bfc904) ◀◀◀
+## [HYGIENE 2026-07-30, second run today] Two moves, and the second one is structural.
+##   (1) The v1.8.5 batch block moved VERBATIM to the top of ROADMAP_ARCHIVE.md (this file had
+##   reached 496 lines). Earlier the same day the v1.8.3 + v1.8.4 blocks were archived on the
+##   v1.8.5 ship, and the shipped NEXT items 6 / 6c / 7 were collapsed to pointers — their full
+##   story, including every negative control, is in that archived block.
+##   (2) ★ PROCESS LAWS MOVED OUT to **PROCESS_LAWS.md**. At 88 lines it was the largest section
+##   in a file whose own pin says it holds ONLY the live agenda, and it grew every single batch.
+##   Archiving could never fix it: the laws are a REFERENCE, not a log, and CLAUDE.md's hygiene
+##   principle is "logs archive, references refresh". The agenda was sinking underneath them.
+##   THIS FILE IS NOW 363 LINES, comfortably inside the ~400 pin, and the reduction is structural
+##   rather than a trim — nothing was shortened, one thing was put where it belongs.
+##   Structure is pins → this handoff → NEXT → doc map → the v1.8.6 batch log → the v2.0 plan.
+##   Source AND site pushed; full battery green; live verified end-to-end after deploy, not assumed.
 ##
 ## ═══ WHERE THINGS STAND ═══
-## ★ v1.8.5 "FIRST TOUCH" SHIPPED 2026-07-29 (Nick's call: "deploy it as 1.85"). Two NEXT items:
-##   · #6 cold boot (commit 94bcfba) — tools/bootperf.js + `_hdLater`. TTI on a 4x-throttled
-##     phone 6440ms -> ~1880ms (1905ms pre-release, 1878ms measured on the shipped build; both
-##     are real runs, the spread is host noise). THE player-visible content of this release.
-##   · #7 DOM reachability tier — tools/simrun.js `dom` mode. Tooling only, no game code.
-##   BOTH found bugs in THEMSELVES before they found any in the build (see the ⚠⚠ notes in 6
-##   and 7). That is now SIX instances of a check passing while the thing it guarded was broken,
-##   and the 2026-07-29 corollary is earned: WHEN A NEW INSTRUMENT FIRES, SUSPECT THE INSTRUMENT
-##   FIRST. Make every finding carry its own diagnosis — "no control for {id}" was a bug report
-##   nobody could action; adding the surrounding state cracked it in minutes.
+## ★ v1.8.6 "KEPT PROMISES" SHIPPED 2026-07-30 — the external round-8 response, written and
+##   deployed the SAME DAY the feedback landed. Nick: "Let's go ahead deploy, version bump, and
+##   get ready for more testing." 12 fixes from TWO independent audit bundles + 2 new instruments.
+##   READ THE 2026-07-30 BATCH LOG FIRST. It carries what was deliberately NOT fixed and why —
+##   including CF1805-05 (harvest), which is NOT CLOSABLE offline and needs a DESIGN DECISION,
+##   not a patch. Do not "fix" it in a later session without reading ECONOMY_LOOT_CRAFTING's
+##   2026-07-30 addendum, which is where that argument is written out in full.
+##   THE TWO HEADLINES: (1) v1.8.4's own P0 fix had a MIRROR IMAGE — raising a lesson's surface
+##   also raised it above the lesson CARD, so on iPad mini step 8 the instruction and its Skip
+##   button were 0% reachable, 63/63 blocked by #codex; (2) THE +8 DUEL WIN HAD NEVER PAID IN ANY
+##   BUILD — round 7 derived a correct identity, guarded on it, and awarded to a different one.
+##   ⚠ SEVEN instances now of a check passing while the thing it guarded was broken. The newest is
+##   the sharpest: our new reachability gate AGREED WITH THE BUG REPORT BY ACCIDENT, measuring a
+##   top-pinned lesson card when the reported one had DODGED to the bottom, so it came back clean
+##   on the very case it was written for. The corollary is upgraded: WHEN A NEW INSTRUMENT FIRES
+##   — OR PASSES — SUSPECT THE INSTRUMENT FIRST, and reproduce the REPORTED geometry, not a
+##   convenient one. Its sibling: ASSERT THE OUTCOME, NOT THE CODE PATH — smoke.js had a duel-XP
+##   check that called awardXP() directly, which is exactly why a reward the game never granted
+##   passed it in every build.
 ## LIVE: v1.8.6 "Kept Promises" at https://celestialfrontier.github.io/ (shipped 2026-07-30).
 ##   The predecessor was v1.8.5 "First Touch" (build e20d62c), live for one day.
 ## GATES AT SHIP (v1.8.6): validate 9/9 · fingerprint MATCH 50/50 · smoke 553/0 · uilayout
@@ -57,18 +71,23 @@
 ##   NONE in v1.8.5 (the art hold is pure scheduling) and NONE in v1.8.6 — but note that v1.8.6
 ##   CLAMPS two live fields on save/load (`fed`, `brood` to 200; `size` to 0-5), so a save that
 ##   was carrying an out-of-range value will read back clamped. That is the intended fix, not drift.
-## ⚠ TITLE CAVEAT: "First Touch" was CHOSEN BY CLAUDE, not specified — Nick asked only for
-##   "1.85". Renaming is one string in RELEASES[0] plus a redeploy. See 6c.
+## ⚠ TITLE CAVEAT (now twice running): "Kept Promises" — like "First Touch" before it — was
+##   CHOSEN BY CLAUDE, not specified. Nick asked only for a bump. Renaming is one string in
+##   RELEASES[0] plus a redeploy. Worth ASKING next time rather than assuming the pattern holds.
 ##
 ## ═══ ▶ NEXT — the actionable list, highest value first ═══
-## 1. ★ NICK'S iPHONE RE-VERIFY of v1.8.5 — (a) training steps 5 / 6 / 7, still unverified on a
-##    device since the v1.8.3 fix; (b) NEW — the FIRST 10 SECONDS of a brand-new expedition on a
-##    real phone. v1.8.5 took the naming screen from unanswerable-for-6.4s to ~1.9s on a
-##    4x-throttled profile, and that is precisely the window a new player judges the game in.
-##    Clear the save (or use a fresh browser profile) so it is a genuine first run. The mobile
-##    training wall is gate-proven from both ends (smoke proves the marking, uilayout proves the
-##    target is hittable on 10 viewports, and the gate reproduces the bug on the OLD build), but
-##    a physical iPhone is still the only judge that has ever caught this class of defect.
+## 1. ★ NICK'S iPHONE / iPAD RE-VERIFY of v1.8.6 — now THREE things, and (c) is new and the most
+##    valuable, because it is the only one an instrument has never seen:
+##    (a) training steps 5 / 6 / 7, still unverified on a device since the v1.8.3 fix;
+##    (b) the FIRST 10 SECONDS of a brand-new expedition. v1.8.5 took the naming screen from
+##        unanswerable-for-6.4s to ~1.9s on a 4x-throttled profile — the window a new player
+##        judges the game in. Clear the save (or a fresh browser profile) so it is a genuine
+##        first run;
+##    (c) ★ TRAINING STEP 8 ON AN iPAD — "open a shelf, then tap a specimen". This is CF1805-01,
+##        the v1.8.6 headline: the lesson card was 0% reachable behind the raised Compendium and
+##        29 of 117 fleet sessions stalled there. Our gate now measures it on 10 viewports in both
+##        card positions AND reproduces the bug on the old build, but the defect was found on a
+##        real iPad and the whole class has only ever been caught on real hardware.
 ## 2. ✔ EXTERNAL ROUND 8 — DELIVERED 2026-07-30, and answered the same day (see the batch log).
 ##    TWO independent bundles arrived: the round-8 fleet review (18 archetypes · 12 goal-directed
 ##    verbs · 214 sessions, 7 new CF1805-xx items) and a separate full-battery audit (1,000
@@ -109,39 +128,12 @@
 ##    inherited is a balance change, deliberately not made quietly. See BREEDING_AND_SHARING.md.
 ## 5. ⏳ NICK'S DESIGN CALL — should the biome ambience restart when the tab becomes visible
 ##    again? Today it stops on hide and stays silent on return. See AUDIO.md §5.
-## 6. ✔ COLD-BOOT OUTLIER — CHASED, DIAGNOSED AND FIXED 2026-07-29 (was: "worth one look").
-##    IT WAS NOT CACHE WARMING. Their own data already ruled that out and we misread it: in the
-##    SLOW reps load=409ms and DCL=384ms, INDISTINGUISHABLE from the fast reps. The file was
-##    fully downloaded, parsed AND executed at ~400ms every single time. Nothing about the
-##    network or the payload differed. And `askExplorerName(true)` runs SYNCHRONOUSLY in boot,
-##    so the gate is in the DOM before DCL — a visibility poll runs IN THE PAGE, so the only way
-##    it reports late is a BLOCKED MAIN THREAD. Different defect, different fix.
-##    ROOT CAUSE: both art modules use the house "instant lo → async hi" pattern (setTimeout
-##    30ms/45ms). A brand-new expedition calls startNewGame() at +120ms, which goTo()s Sol and
-##    queues one HD upgrade PER BODY plus the galaxy face — each a 300-800ms block
-##    (n2/fbm/renderPlanetSprite/makeGalaxySprite). All of it INVISIBLE behind the naming screen,
-##    which is the only control on screen. MEASURED on a 4x-throttled iPhone-class profile:
-##      new player      gate painted 393ms · ANSWERABLE 6440ms · 5818ms blocked
-##      returning player                                         · 0ms blocked  <-- named the cause
-##    FIX: `_hdLater()` (main.js, top of the game IIFE after @end PlanetGen) re-polls while
-##    _introUp() instead of rendering. TTI 6440ms -> 1905ms. Precedent, not invention: toasts
-##    ALREADY wait on _introUp() (_toastQ, "held while the title / explorer-name screen is up").
-##    Determinism-safe by construction (sprites derive from seeds, not from when they are drawn)
-##    — fingerprint MATCH 50/50. Full battery green: smoke 553/0 · uilayout 683/10 · balance PASS.
-##    NEW GATE tools/bootperf.js — decomposes first-interactive (network / in-DOM / painted /
-##    ANSWERABLE / blocked pre-gate / blocked post-gate) in a real browser over gzipped HTTP.
-##    Sound WITHOUT clock correlation: --save=none never types a name, so the intro is up for the
-##    whole window and art self-time over the profile IS art time behind the intro.
-##    NEGATIVE-CONTROLLED BOTH WAYS against the shipped v1.8.4 recovered from git: 3611ms exit 1
-##    unfixed, 495ms exit 0 fixed, budget 900ms clear of both.
-##    ⚠⚠ AND IT CAUGHT TWO BUGS IN ITSELF FIRST — the fifth instance of a check passing while the
-##    thing it guarded was broken, and the first that was a PERF gate: (a) it stopped observing at
-##    TTI, so a deliberate 1500ms block at 600ms reported 0ms and PASSED — a longtask census whose
-##    window closes at TTI is not a census (fixed: --settle, default 2500ms past load);
-##    (b) a setTimeout block CANNOT preempt the parser, so it ran after the gate legitimately
-##    painted and proved nothing — only a SYNCHRONOUS block before the game <script> manufactures
-##    a painted-but-unanswerable gate. Both controls found the instrument wrong, not the build.
-##    ▶ STILL OPEN, measured and deliberately NOT done (see 6a/6b below).
+## 6. ✔ COLD-BOOT — DIAGNOSED AND FIXED, SHIPPED IN v1.8.5. It was NOT cache warming; the
+##    external round’s own data ruled that out (load/DCL identical in their slow reps). It was HD
+##    sprite synthesis behind the first-run naming screen: 4x-throttled, the gate painted at 393ms
+##    and would not answer a tap until 6440ms. `_hdLater()` fixed it (TTI ~1.9s) and tools/bootperf.js
+##    was built to measure it. FULL STORY + both negative controls: ROADMAP_ARCHIVE.md, the v1.8.5
+##    batch block. Still open below as 6a / 6b.
 ## 6a. REMAINING 1905ms is dominated by `(program)` ~2s = V8 compiling the 1.9MB inline script at
 ##    4x throttle. That is the PAYLOAD problem the v2.0 port plan already owns (payload budget
 ##    gate, Phase 0) — not a boot bug. Best evidence yet for prioritising the module split.
@@ -150,43 +142,14 @@
 ##    frameInner also runs gameplay logic (epoch ticks, checkTransitions, queueSave) and `picks`
 ##    feeds hit-testing, so it is frame-loop surgery for a partial win — and it changes what the
 ##    player sees behind the intro (live starfield vs frozen), which is Nick's art call. NOT DONE.
-## 6c. ✔ RELEASE NOTE WRITTEN AND SHIPPED as v1.8.5 "First Touch" — a NEW RELEASES[0] entry, not
-##    an append to v1.8.4's (which was already live; appending there would have credited shipped
-##    notes with a fix live players never received). One Bug Fixes bullet (the first screen answers
-##    at once) + two Under the Hood bullets (the cold-boot gate, the fleet pressing real buttons).
-##    ⚠ TITLE WAS MINE, NOT NICK'S — "First Touch". He said only "deploy it as 1.85"; the release
-##    schema needs a title and the update popup fires on deploy, so it was picked rather than
-##    blocked on. Rename freely; it is one string in RELEASES[0] plus a redeploy.
-## 7. ✔ DOM-DRIVEN simrun tier — BUILT 2026-07-29 as `node tools/simrun.js dom N`.
-##    FIRST, A CORRECTION: the old wording here ("simrun drives PROBE HOOKS, not the DOM") was
-##    half wrong. The `ui`/`chaos` tiers ALREADY drive the DOM and use the probe hook only to
-##    OBSERVE. It is the EXPEDITION tiers (fast/deep/medium/veteran) — the high-volume ones that
-##    produce every metric — that call ~28 hooks directly. That is the real blind spot, and it is
-##    why a bot calling craftItem() could never notice a dead Craft button: CF1802-07 (a Fabricator
-##    button with NO handler) and CF1802-09 (a roster row that minted a species) both had to be
-##    found by an external round.
-##    THE TIER: a covered action is driven through the real control and the press must LAND, proven
-##    by a before/after effect snapshot — never by the fact that a click was dispatched. Three
-##    findings, kept apart because they have three different fixes: `absent` (no control for an
-##    action the API says is possible) · `disabled` (control refuses, API accepts) · `dead`
-##    (control accepts the press, nothing happens).
-##    ★ ADJUDICATING `dead` IS THE WHOLE DESIGN. "Pressed it and nothing changed" is ALSO what a
-##    legitimately-unavailable action looks like, so a naive check cries wolf on every unaffordable
-##    recipe. `dead` is recorded ONLY if the API path then succeeds from the same state. A harness
-##    that cries wolf gets ignored, and an ignored harness is worse than none.
-##    NEGATIVE-CONTROLLED BOTH WAYS via the existing CF_SRC env var, and it DISTINGUISHES the two:
-##    handler neutralised -> 183 dead / 0 absent · attribute renamed away -> 178 absent / 0 dead ·
-##    real build (24 runs, 1,488 presses) -> 99.3% landed, 0 findings, PASS.
-##    ⚠⚠ THE LESSON, AND IT IS THE SAME ONE AGAIN: the first FOUR iterations reported 141, then
-##    106, then 85 findings — EVERY ONE the harness's own fault. A stale Shipyard (the bot mines
-##    via H.mineWorld, which never fires the UI's ore-arrival re-render) and then the Research
-##    Bench being up instead of the Fabricator (yardView renders one bench at a time, and BOTH use
-##    .bset rows, so the wrong one looks superficially like a rendered Fabricator — .fabgrp is the
-##    tell). Findings that carry their own diagnosis (`why()`) are what cracked it; the first
-##    version's "no control for {id}" was a bug report nobody could action.
-##    ⚠ SCOPE, stated so the report is never read as more than it is: jsdom has NO LAYOUT, so this
-##    proves a LIVE HANDLER, not that the control is on screen or tappable. uilayout.js owns that
-##    half. Together they cover reachability; neither does alone.
+## 7. ✔ DOM-DRIVEN simrun tier — BUILT AND SHIPPED in v1.8.5 as `node tools/simrun.js dom N`.
+##    The EXPEDITION tiers call ~28 probe hooks directly, so they could never see a control that is
+##    absent / disabled-but-possible / present-with-no-handler. A press must be proven to LAND by a
+##    before/after effect snapshot, and `dead` is recorded only if the API then succeeds from the
+##    same state — a harness that cries wolf gets ignored. FULL STORY, the design of the `dead`
+##    adjudication, both negative controls and the four phantom-finding iterations: ROADMAP_ARCHIVE.md,
+##    the v1.8.5 batch block. ⚠ SCOPE: jsdom has NO LAYOUT — this proves a LIVE HANDLER, not that the
+##    control is on screen. uilayout.js owns that half; neither covers reachability alone.
 ## 7a. COVERAGE IS ONE ACTION SO FAR — `craft`. `capture`, `equip`, `feed`, `breed`, `heal` need
 ##    panel/picker state the expedition never establishes; they stay API-driven and are counted as
 ##    `uncovered` in the report rather than quietly omitted (a tier that silently skips what it
@@ -209,78 +172,51 @@
 ##    counts against the current build before Phase 0 (it audited ~21.8k lines / a 15-tier ladder;
 ##    we are now ~25k lines / 10-tier + a _GEAR_ART layer).
 ##
-## ═══ ▶ PROCESS LAWS EARNED THE HARD WAY (read before touching UI or tests) ═══
-## ⚠⚠ WHEN A NEW INSTRUMENT FIRES, SUSPECT THE INSTRUMENT FIRST (2026-07-30, learned twice in one
-##   session). Both gates built that day found bugs in THEMSELVES before finding any in the build:
-##   bootperf's window closed at the moment it was measuring, and the dom tier reported 141 phantom
-##   findings from its own stale/wrong-tab DOM. Corollaries: (a) an observation window must outlive
-##   the thing it observes — pass --settle, don't stop at the first success; (b) MAKE EVERY FINDING
-##   CARRY ITS OWN DIAGNOSIS. "no control for {id}" was a bug report nobody could action; adding the
-##   surrounding state (a `why()` hook) turned days of guessing into minutes; (c) prefer a
-##   DETERMINISTIC path over a clever one — "always reopen the panel" beat four rounds of trying to
-##   deduce whether the DOM was current enough to trust.
-## ⚠ PAINTED ≠ ANSWERABLE. A gate can be drawn, hit-testable and completely unable to respond,
-##   because the main thread is busy. `waitForSelector(visible)` cannot tell the two apart, and that
-##   ambiguity is what sent the cold-boot investigation to "cache warming" for three builds. Time
-##   ANSWERABILITY (first frame within 50ms of its predecessor), and split the longtask census at
-##   that moment: blocked-before-gate delays interactivity, blocked-after-gate is a different defect.
-## ⚠ NOTHING EXPENSIVE RUNS BEHIND A BLOCKING FULL-SCREEN SURFACE. Invisible work still costs the
-##   player the only control they can reach. `_hdLater` + `_introUp` is the pattern; toasts had it
-##   first (_toastQ). See UI_PRESENTATION "THE ART-HOLD LAW".
-## ⚠ A HARNESS THAT CRIES WOLF GETS IGNORED, and an ignored harness is worse than none. When a
-##   negative signal is ambiguous ("pressed it and nothing happened" is also what an unavailable
-##   action looks like), make the harness ADJUDICATE before it reports — the dom tier records `dead`
-##   only if the API path then succeeds from the same state.
-## ⚠ NEVER run `node tools/extract.js` after editing main.js — it regenerates main.js FROM the
-##   html and silently destroys uncommitted work (main.js is gitignored). Use `node tools/build.js`.
-##   Three docs used to instruct exactly that; all three now warn (fixed 2026-07-29).
-## ⚠ CSS lives ONLY in the html, and there are TWO <style> elements — append to the LAST one.
-## ⚠ SPECIFICITY: one ID beats any number of classes. `body.training .tutpri{z-index:58}` LOST to
-##   `#panel{z-index:9}`; the mark applied, class-level tests passed, and the fix did NOTHING.
-##   An external round found the identical trap in shipped code the same week (CF1720-07).
-##   A class-level override cannot govern surfaces that declare their layer through an id.
-## ⚠ ASSERT THE OUTCOME, NOT THE CODE PATH — and never assert a selector's SPELLING. Three checks
-##   have now passed while the thing they guarded was broken: the v1.8.1 vista check (matched
-##   literal selector text), the first meter check (called the formatter directly and passed
-##   against a regressed render site), and CF1720-07's own check (asserted the dead rule's text).
-## ⚠ NEGATIVE-CONTROL EVERY NEW CHECK — break the build on purpose and confirm the check fails.
-##   Two controls changed what shipped this round: the .tutpri specificity miss, and a stall-detector
-##   test that passed against a reverted build because it never constructed the no-objective state.
-## ⚠ jsdom has NO LAYOUT. A CSS rule can be present, correct and completely inert. tools/uilayout.js
-##   (real headless browser, elementFromPoint hit-tests, 10 viewports) is the only gate that sees
-##   this. It takes --url=FILE, so replay a new gate against an OLD build to prove it catches the bug.
-## ⚠ A bare click() never fires the outside-close manager or the tap-dismiss — use a real
-##   pointerdown+click. This has produced vacuous passes twice (the v1.6.4 step-6 lock, CF1802-08).
-## ⚠ MODULE SCOPE: a helper belongs in the scope of its CALLERS, not its callees. _denyPress/_okPress
-##   went inside the Fx IIFE next to playDeny and threw ReferenceError everywhere — three lines under
-##   a comment warning about that exact trap.
-## ⚠ RE-PIN PROCESS unchanged: field-diff proof → surgical single-probe re-pin → authorization
-##   recorded in baseline.json repins[]. Never regenerate the baseline to make a failure pass.
-## ⚠ DEPLOY = TWO PUSHES: deploy.js ships the SITE repo only; `git push origin main` syncs source.
-## ⚠ LINE ENDINGS ARE PART OF THE BUILD CONTRACT — .gitattributes pins LF. Without it a fresh
-##   clone on Windows (autocrlf=true) checks out CRLF, and make-probe-build.js cannot find the game
-##   IIFE anchor "
-})();
-</script>" → validate/smoke/fingerprint/deploy-gate ALL fail, plus a
-##   26,717-byte payload tax. Found 2026-07-29 by cloning cold and running the battery; the tool now
-##   also tolerates CRLF. VERIFIED: a clone forced with core.autocrlf=true still checks out LF and
-##   the full battery passes on it. If you ever touch .gitattributes, re-run that test.
-## ⚠ DOC/CODE DISAGREEMENT IS A FINDING EITHER WAY. CF1802-09 (free cataloguing) was a case where
-##   the GUIDE was right — "the survey reveals the roster; it catalogues nothing" — and the CODE
-##   had drifted. Check which one is wrong before "updating" the doc.
-##
+## ═══ ▶ PROCESS LAWS — MOVED 2026-07-30 ═══
+## ★ They now live in PROCESS_LAWS.md, verbatim. READ IT BEFORE TOUCHING UI OR TESTS.
+## Why it moved: at 88 lines it was the largest section in a file whose pin says it holds ONLY the
+## live agenda — and being a REFERENCE rather than a log, the hygiene rule could never archive it
+## (CLAUDE.md: “logs archive, references refresh”). It was growing every batch and sinking the
+## agenda beneath it. In its own doc it gets refreshed in place instead.
+## The headline four, so a cold start knows what it is walking into:
+##   1. WHEN A NEW INSTRUMENT FIRES — OR PASSES — SUSPECT THE INSTRUMENT FIRST (7 instances).
+##   2. ASSERT THE OUTCOME, NOT THE CODE PATH (the +8 duel win had never paid in any build).
+##   3. PAINTED ≠ ANSWERABLE (a gate can be drawn, hit-testable and unable to respond).
+##   4. ONE ID BEATS ANY NUMBER OF CLASSES — and in CSS, min-height beats max-height.
+
 ## ═══ ▶ DOC MAP (all verified against the shipped build; markers current 2026-07-30) ═══
-## Per-system docs current as of 2026-07-30: UI_PRESENTATION (+ THE ART-HOLD LAW) · DETERMINISM
-## (+ render timing is not fingerprint input).
-## Current as of 2026-07-29 (the v1.8.4 sweep): AUDIO (was NEW that batch — v1.8's whole audio layer
-## had no doc) · PROGRESSION · SAVE_SYSTEM · QUESTS_AND_CHAPTERS · COMBAT_AND_CONQUEST ·
-## BREEDING_AND_SHARING · CAPTURE_AND_BIOSPHERE · ECONOMY_LOOT_CRAFTING.
-## Not touched since (still accurate, older markers): WORLD_GENERATION · RARITY_AND_GRADES ·
-## SPECIES_AND_GENOME · ART_DIRECTION · BIOME_ATLAS.
-## ★ THE BATTERY IS NOW SIX SUITES, not four — validate · smoke · uilayout · balance-sim, plus
-##   bootperf.js (cold boot / answerability) and simrun `dom` (UI reachability). The first four gate
-##   every batch and deploy.js enforces them; the last two are run on demand. tools/README.md
-##   documents all six, including the two traps that made bootperf pass vacuously at first.
+## THE NINE SYSTEM DOCS the v1.8.6 sweep touched (plus the codebase reference) are marked
+##   2026-07-30 and were re-verified against the SHIPPED build, not against the diff:
+##   UI_PRESENTATION (+ THE ART-HOLD LAW, + THE TRAINING
+##   LAYOUT CONTRACT) · DETERMINISM (+ why three changes to generated content did NOT move the
+##   fingerprint) · COMBAT_AND_CONQUEST (odds signature, the `size` term) · PROGRESSION (the awards
+##   that were advertised and never paid) · ECONOMY_LOOT_CRAFTING (two clock exploits, and why only
+##   one closed) · SAVE_SYSTEM (the clamp list was a record of past incidents, not a trust boundary)
+##   · AUDIO (five wrong moduli; the Bat ceiling is STILL OPEN and the population number hid it) ·
+##   QUESTS_AND_CHAPTERS (both v1.8.4 fixes grew a tail; step count corrected 20/18 → 21) ·
+##   BREEDING_AND_SHARING (the lineage key has now been wrong twice, in opposite directions) ·
+##   celestial-frontier-codebase-reference (§2 rewritten — see below).
+## Not touched by this sweep, checked and still accurate: CAPTURE_AND_BIOSPHERE (2026-07-29 — the
+##   `fed` clamp is documented at `feedPair` in BREEDING_AND_SHARING, which is where feeding lives;
+##   it is deliberately NOT duplicated here) · WORLD_GENERATION · RARITY_AND_GRADES ·
+##   SPECIES_AND_GENOME · ART_DIRECTION · BIOME_ATLAS.
+## ★ THE BATTERY IS NOW SEVEN SUITES, not four — validate · smoke · uilayout · balance-sim gate
+##   every batch (deploy.js enforces them); bootperf.js (cold boot / answerability), simrun `dom`
+##   (UI reachability) and duelxp-check.js (reward OUTCOMES) run on demand. tools/README.md
+##   documents all seven, including the traps that made bootperf pass vacuously and the one that
+##   made the training-card gate pass by accident.
+## ⚠ THREE STALE CLAIMS FOUND AND KILLED IN THE 2026-07-30 SWEEP, all in preambles nobody re-reads —
+##   which is exactly where drift hides, and the same pattern the previous sweep found:
+##   (1) codebase-reference §2 listed `node tools/extract.js` as STEP 1 of the everyday workflow.
+##       That is the single most dangerous stale instruction this repo has carried — extract.js
+##       regenerates main.js FROM the html and silently discards every edit since the last build.
+##       CLAUDE.md rule 4 has warned about it for some time while this file recommended it.
+##       Same section also had the html at "~8,000 lines, ~462 KB, one <style>, script ~line 948"
+##       (really ~26,750 / 1.93 MB / TWO <style> / ~line 2,420) and a "49-probe" fingerprint (50).
+##   (2) The Field Training step count was wrong in FOUR docs at once (18 / 20 / "literal /18"),
+##       and QUESTS_AND_CHAPTERS carried it as a documented "known discrepancy" that vouched for
+##       CLAUDE.md — which said 21. It is 21, rendered from `TUT_STEPS.length`.
+##   (3) README described a "20-step" tutorial two lines from its own "21-step" reference.
 ## Reviewer-facing: REVIEWER_NOTES_v1.8.2.md · REVIEWER_NOTES_v1.8.4.md (round 7) ·
 ##   ★ REVIEWER_NOTES_v1.8.6.md (round 8, written 2026-07-30 — READY FOR ROUND 9). It leads with
 ##   what we fixed, then §2 what we did NOT fix and why (CF1805-05 is open BY DECISION and their
@@ -396,66 +332,6 @@
 ##     uilayout dodge pass) · codebase-reference §12 (SEVEN suites) · ECONOMY_LOOT_CRAFTING
 ##     (charter rate-limit + the harvest limit) · COMBAT_AND_CONQUEST (odds signature, size) ·
 ##     PROGRESSION (the XP awards that now pay) · DETERMINISM (why these were fingerprint-safe).
-
-## ▶▶▶ 2026-07-29/30 ★ v1.8.5 "FIRST TOUCH" LIVE (build e20d62c) — NEXT #6 + #7, then ship.
-##   Nick: "go ahead and commit all items" → "push for now and the simrun tier" → "deploy it as 1.85".
-##   THE PLAYER-VISIBLE CONTENT IS ONE FIX. Everything else this batch is instrumentation, and the
-##   release notes say so (one 🐛 bullet + two 🔧 Under the Hood bullets).
-##   ★ #6 THE COLD-BOOT OUTLIER WAS MISDIAGNOSED IN THIS VERY FILE. The old item read "may be page
-##   cache warming on the larger file". The external round's OWN data ruled that out and we had all
-##   of it: in their SLOW reps load=409ms and DCL=384ms — indistinguishable from the fast reps. The
-##   file was fully downloaded, parsed AND executed at ~400ms every time. Cache warming would move
-##   responseEnd/load/DCL; it moved none of them. The tell we had not drawn out: askExplorerName(true)
-##   runs SYNCHRONOUSLY in boot, so the gate is in the DOM before DCL, and a visibility poll runs IN
-##   THE PAGE — so the only way it reports late is a BLOCKED MAIN THREAD. Painted ≠ answerable.
-##   ROOT CAUSE: the house "instant lo → async hi" art pattern. A new expedition calls startNewGame()
-##   at +120ms → goTo()s Sol → queues one HD upgrade PER BODY plus the galaxy face, each a 300-800ms
-##   block (n2 / fbm / renderPlanetSprite / makeGalaxySprite), ALL of it behind a full-screen naming
-##   modal. 4x-throttled iPhone-class profile: painted 393ms, ANSWERABLE 6440ms, 5818ms blocked.
-##   The returning player — who never builds a system — blocked 0ms, and THAT is what named the cause.
-##   FIX `_hdLater()`: re-poll while _introUp() instead of rendering. 6440ms → ~1880ms. Precedent not
-##   invention — toasts ALREADY wait on _introUp() (_toastQ, "held while the title / explorer-name
-##   screen is up"). Determinism-safe BY CONSTRUCTION (sprites derive from seeds, not from when they
-##   are drawn) — fingerprint MATCH 50/50 confirms it. Scope law honoured: _hdLater sits at game-IIFE
-##   top level because its two callers live in DIFFERENT nested module IIFEs.
-##   ★ #7 THE DOM TIER, and a CORRECTION to the old item's premise: "simrun drives PROBE HOOKS, not
-##   the DOM" was half wrong. ui/chaos ALREADY drive the DOM and use the hook only to OBSERVE. It is
-##   the EXPEDITION tiers (fast/deep/medium/veteran — the high-volume ones behind every metric) that
-##   call ~28 hooks directly. THAT is the blind spot, and it is why a bot calling craftItem() could
-##   never notice a dead Craft button: CF1802-07 and CF1802-09 both had to come from outside.
-##   `dom` mode drives the real control and the press must LAND (before/after effect snapshot).
-##   Findings kept apart: absent · disabled · dead. ADJUDICATING `dead` IS THE DESIGN — "pressed it
-##   and nothing changed" is ALSO what an unavailable action looks like, so `dead` is recorded only
-##   if the API then succeeds from the same state. A harness that cries wolf gets ignored.
-##   ★★ THE LESSON OF THE BATCH — BOTH NEW GATES FOUND BUGS IN THEMSELVES FIRST, and neither found
-##   one in the build. bootperf's first cut stopped observing at TTI, so a deliberate 1500ms block at
-##   600ms reported 0ms and PASSED (a longtask census whose window closes at TTI is not a census);
-##   its second control used setTimeout, which CANNOT preempt the parser, so it ran after the gate had
-##   legitimately painted and proved nothing — only a SYNCHRONOUS block before the game <script>
-##   manufactures a painted-but-unanswerable gate. The dom tier reported 141, then 106, then 85
-##   findings across four iterations, EVERY ONE its own fault: a stale Shipyard (the bot mines via
-##   H.mineWorld, which never fires the UI's ore-arrival re-render) and then the Research Bench being
-##   up instead of the Fabricator (yardView renders ONE bench at a time and BOTH use .bset rows, so
-##   the wrong one looks superficially like a rendered Fabricator — .fabgrp is the tell).
-##   THAT IS SIX INSTANCES of a check passing while the thing it guarded was broken. NEW COROLLARY,
-##   now in the process laws: WHEN A NEW INSTRUMENT FIRES, SUSPECT THE INSTRUMENT FIRST — and make
-##   every finding carry its own diagnosis. "no control for {id}" was a bug report nobody could
-##   action; adding the surrounding state (why()) cracked it in minutes.
-##   BOTH GATES NEGATIVE-CONTROLLED BOTH WAYS against deliberately broken builds: bootperf 3611ms
-##   exit 1 unfixed / 495ms exit 0 fixed (budget 900ms clear of both) · dom tier 183 dead when the
-##   handler is neutralised, 178 absent when the attribute is renamed away, and it DISTINGUISHES the
-##   two. The unfixed build came from git (the shipped v1.8.4), which is the cheapest control there is.
-##   DOCS THIS BATCH: UI_PRESENTATION "THE ART-HOLD LAW" · tools/README (bootperf metrics table + the
-##   dom tier + both traps) · codebase-reference (_hdLater + the battery table) · DETERMINISM (render
-##   timing is not fingerprint input) · CLAUDE.md (the two new tools) · this file (hygiene + #6/#7).
-##   ⏳ NOT DONE, DELIBERATELY, all measured: 6a the remaining ~1.9s is `(program)` ≈2s = V8 compiling
-##   the 1.9MB inline script at 4x — the v2.0 PAYLOAD problem, and the best evidence yet for the
-##   module split; 6b drawSystem burns ~416ms/boot painting BEHIND the modal, but frameInner also runs
-##   epoch ticks / checkTransitions / queueSave and `picks` feeds hit-testing, so it is frame-loop
-##   surgery for a partial win AND it changes what shows behind the intro (live vs frozen starfield),
-##   which is Nick's art call; 7a dom coverage is `craft` only — capture/equip/feed/breed/heal need
-##   panel/picker state the expedition never establishes and are reported as `uncovered`, never
-##   silently skipped. NEXT most valuable there is `capture`, CF1802-09's own surface.
 
 ## ▶▶▶ 2026-07-26 ★ v2.0 ENGINE PLAN REVIEWED (upload: FULL_ENGINE...PORT_PLAN_v3.3_STACK_LOCKED
 ##   — TS + PixiJS 8 + Spine 2D + HTML/CSS(+React/Lit opt) + Vite + IndexedDB + Zod + WebAudio +

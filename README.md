@@ -11,7 +11,7 @@ the Prime Codex.
 Open `celestial-frontier.html` in any modern browser. No build, no server,
 no dependencies. Saves live in `localStorage`.
 
-New expeditions begin with **Field Training** — a 20-step, fully sandboxed
+New expeditions begin with **Field Training** — a 21-step, fully sandboxed
 tutorial that teaches every system by playing it (skippable). The **? Guide
 to the Universe** is a searchable manual of every mechanic, and short
 tooltips (long-press on touch, hover on desktop) link into it everywhere —
@@ -41,7 +41,7 @@ node tools/smoke.js        # jsdom interaction suite (~553 checks incl. the
                            #   full 21-step Field Training tutorial)
 node tools/uilayout.js     # a REAL headless browser: computed boxes + 44px touch
                            #   floors + elementFromPoint hit-tests across 10
-                           #   viewports (~683 checks). jsdom has NO layout, so
+                           #   viewports (~763 checks). jsdom has NO layout, so
                            #   this is the only gate that sees a CSS rule which is
                            #   present, correct and completely inert.
 node tools/balance-sim.js  # archetype win-rate band + ability-theme art band
@@ -66,7 +66,16 @@ node tools/simrun.js dom 24
                            #   and proves the press LANDED, so a button that exists but
                            #   is wired to nothing fails here. The other simrun tiers
                            #   call probe hooks and cannot see that.
+node tools/duelxp-check.js # REWARD OUTCOMES. Plays a real duel through the arena UI,
+                           #   then reads the ledger to prove the XP ARRIVED. The old
+                           #   check called awardXP() directly and so stayed green
+                           #   through every build in which the duel paid nothing.
 ```
+
+Each of the above accepts a build to test (`--url=` / `--src=`), so a new check can be
+replayed against an older build to prove it catches the bug it was written for. Do that
+before believing a pass: seven checks in this project's history have gone green while the
+thing they guarded was broken.
 
 **Play it live:** https://celestialfrontier.github.io/ — this repo is the source of
 truth; the user-site repo is just the deploy target.
