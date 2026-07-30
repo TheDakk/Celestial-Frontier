@@ -1858,6 +1858,27 @@
      hit). body.vista #panel below still outranks this by specificity. */
   body.training #panel.tutpri, body.training #log.tutpri, body.training #codex.tutpri,
   body.training #chpanel.tutpri, body.training #records.tutpri, body.training #vistabox.tutpri{z-index:58}
+  /* ROUND 8 CF1805-01 — the mirror image of the fix above. Raising a lesson's own
+     surface to 58 also raised it above the LESSON CARD at 50. #panel was the only
+     board that had ever joined the --tut-bot positioning contract, so it renders
+     BELOW the card; #log, #codex, #chpanel and #records had the raise and not the
+     geometry, so they rendered THROUGH it. On iPad mini step 8 ("open a shelf,
+     then tap a specimen") the card measured 0% reachable, 63/63 sample points
+     blocked by #codex — the instruction and its Skip button both invisible. The
+     fleet saw the same wall from the player's side: stalls at step 8 went 8 → 29
+     the moment steps 5 and 7 were cleared.
+     _tutSpot publishes --tut-bot/--tut-cap for BOTH card positions (card at top →
+     the free band below it; card dodged to the bottom → the free band above it),
+     so this one rule keeps a raised board clear either way. bottom/min-height must
+     be released explicitly: under @media (max-width:900px) these four are pinned
+     `top:auto !important` with a min-height, and min-height beats max-height — a
+     top-only rule would have been present, correct and completely inert. */
+  body.training #log.tutpri, body.training #codex.tutpri,
+  body.training #chpanel.tutpri, body.training #records.tutpri{
+    top:calc(var(--tut-bot,150px) + 8px) !important;
+    bottom:auto !important;
+    min-height:0 !important;
+    max-height:var(--tut-cap,calc(100dvh - var(--tut-bot,150px) - 24px)) !important}
   /* external battery v1.8.2 (P2): the recruit can open Settings mid-training —
      so Settings must outrank the lesson card (z50) AND the lesson's own raised
      surface (z58), or its Audio tab sits under the card that sent them there. */
@@ -15076,7 +15097,10 @@ function showReveal(entry, isHybrid){
         stEl.innerHTML+='<div class="abil"><b>'+S.cls+'</b> · Level '+_lv+(_lv>=9?' · MAX':'')+
           ' — innate arts, always on ('+(1+(_lv>=3?1:0)+(_lv>=6?1:0))+' of 3 awake)'+
           '<div class="xpbar"><i style="width:'+Math.max(2,Math.min(100,_pct))+'%"></i></div>'+
-          '<span style="font-size:9px;color:var(--faint)">XP '+_xp+' — victories feed it: duels +8 · conquests +20 · guardians +60</span></div>';
+          /* ROUND 8 (external battery P1): "victories feed it" predates v1.8's care
+             XP and made feeding and breeding progression invisible on the one card
+             a player reads to understand a creature. Name both halves. */
+          '<span style="font-size:9px;color:var(--faint)">XP '+_xp+' — care and challenge feed it: first tastes, unions and new lineages · duels +8 · conquests +20 · guardians +60</span></div>';
       }
       if(entry.kind==='Fauna'){
         const _t=faunaTastes(entry.genome);
@@ -16038,9 +16062,15 @@ function voiceOf(g){
        _vw returns 1 +/- amt/2 across the gene's range — deterministic, cheap,
        and it cannot push any parameter outside the clamps below. */
     const _vw=(v,n,amt)=>1+(((((+v||0)%n)/(n-1))-0.5)*amt);
-    const fTrait=_vw(g.trait,7,0.20), fBody=_vw(g.body,9,0.14),
-          fLoco=_vw(g.loco,6,0.18), fDiet=_vw(g.diet,5,0.22),
-          fSense=_vw(g.sense,6,0.12);
+    /* ROUND 8 CF1805-03: these five carried hand-typed moduli (7/9/6/5/6) that
+       matched NO array — trait folded 25 values onto 7 (so traits 0-3 were four
+       times as common in the voice as 4-6), and diet's %5 made omnivore sound
+       identical to herbivore. The correct idiom was three lines above, on the
+       very fix that landed last round. Read the length from the array itself so
+       a gene can never drift out of step with its own vocabulary again. */
+    const fTrait=_vw(g.trait,FA_TRAIT.length,0.20), fBody=_vw(g.body,FA_BODY.length,0.14),
+          fLoco=_vw(g.loco,FA_LOCO.length,0.18), fDiet=_vw(g.diet,FA_DIET.length,0.22),
+          fSense=_vw(g.sense,FA_SENSE.length,0.12);
     return {kind:base.kind,
       f0:Math.max(60, Math.min(6000, base.f0*sizeF*(0.9+bold*0.3)*fTrait*fBody)),
       rich:Math.max(0,Math.min(1, base.rich*(0.85+bold*0.4)*fDiet)),
@@ -16558,6 +16588,12 @@ function _sanitizeSavedGenome(g){
   if('fed' in g) g.fed=cl(g.fed,0,200);
   if('xp' in g) g.xp=cl(g.xp,0,486);   /* CF-CR-003: level 9 is xp 486 (levelOf √(xp/6) caps at 9) — 1e6 bought nothing but save bloat */
   if('hurt' in g) g.hurt=cl(g.hurt,0,1);
+  /* ROUND 8 CF1805-06: CF1802-15 mirrored normGenome's BATTLEFIELD modifiers but
+     not its coercion of the trait indices — and size is a linear power term
+     (battleStats adds size*4 vitality). It was the one such term nothing clamped,
+     so a hand-edited size:1e6 bought +4,000,000 vitality, and encodeCreature
+     carried it into another player's duel box intact. Legitimate range is 0-5. */
+  if('size' in g) g.size=cl(g.size,0,FA_SIZE.length-1);
   /* ROUND 7 CF1802-15: mirror normGenome — battlefield modifiers never survive
      a save any more than they survive a share code, and the guardian bands are
      honoured only where they are genuine. */
@@ -17849,7 +17885,14 @@ function battleStats(g){
   let sum=0; for(let i=0;i<5;i++){ raw[i]*=W[i]; sum+=raw[i]; }
   const s=raw.map(x=>Math.max(8, Math.round(budget*x/sum)));
   /* size: bigger bodies carry more vitality, less agility */
-  const sz=(g.size||0);
+  /* ROUND 8 CF1805-06: size was the one linear power term read RAW while the
+     card printed pick(FA_SIZE, g.size) — i.e. mod 6. crossGenome's mutation list
+     includes size and never wraps it, so size drifts past 5 in ordinary breeding
+     and a size-9 beast read "dog-sized" on the card while fighting with +36
+     vitality. Read the same value the card shows, so the sheet cannot lie about
+     the fight. (makeGenome yields 0-5, so this is identity for every unbred
+     genome — the determinism fingerprint is unmoved.) */
+  const sz=((+g.size||0)%FA_SIZE.length+FA_SIZE.length)%FA_SIZE.length;
   s[0]+=sz*4; s[3]=Math.max(6, s[3]-sz*2);
   /* diet sharpens ferocity a touch */
   s[1]+=Math.min(10,(g.diet||0)*2);
@@ -18276,11 +18319,17 @@ function fightNow(mine, theirs, opts){
              SUBTRACT it. Its own timer, same anti-farm interval. */
           if(_dl-_lastDuelPart>30000){ _lastDuelPart=_dl;
             const _close=(res.hpB/Math.max(1,res.maxB))<0.25;
-            awardXP(mine.id, _close?3:2, _close?'a fight taken to the wire':'a bout survived'); }
+            awardXP(_mid, _close?3:2, _close?'a fight taken to the wire':'a bout survived'); }
         }
         if(res.winner==='A'){
           const _dn=Date.now();
-          if(_dn-_lastDuelCredit>30000){ _lastDuelCredit=_dn; stats.duelwins++; if(mine && mine.id) awardXP(mine.id, 8, 'a duel won'); }
+          /* ROUND 8 CF1805-02: round 7 derived _mid, guarded on _mid, and then
+             awarded to mine.id anyway — which is undefined at every reachable
+             call site (both friendly-duel callers build {name,genome,art}). So
+             the +8 win had NEVER paid in any build, and participation was worse
+             than before: the guard fired, consumed the 30s window, paid nothing.
+             The identity that guards MUST be the identity that pays. */
+          if(_dn-_lastDuelCredit>30000){ _lastDuelCredit=_dn; stats.duelwins++; if(_mid && codex.has(_mid)) awardXP(_mid, 8, 'a duel won'); }
           else toast('⚔ Sparring Cooldown','A win this soon after the last pays no ledger credit or XP — give it '+Math.ceil((30000-(_dn-_lastDuelCredit))/1000)+'s between counted bouts.');   /* review fix: never silently uncredited */
         }
         playRaritySting(res.winner==='A'?5:2);
@@ -18718,7 +18767,13 @@ function breedPair(aEntry, bEntry, roll){
   /* v1.8 care counts — paid to the CHILD, below, once it exists (external
      battery v1.8.2 P1: paying aEntry here threw the XP away with the parent) */
   let child=evolveGenome(crossGenome(aEntry.genome, bEntry.genome), 1);
-  child.brood=(aEntry.genome.brood||0)+(bEntry.genome.brood||0)+1;
+  /* ROUND 8 (external battery P1): 200 is the cap the load path, the share-code
+     domain and battleStats all already enforce — but the LIVE value was summed
+     uncapped, so two 200/200 parents produced a child reading brood 401 that
+     silently snapped back to 200 on the next reload. No stat exploit (every
+     consumer clamps), just a card telling the player a number the game does not
+     honour. Clamp where the value is MADE, so live, saved and imported agree. */
+  child.brood=Math.min(200,(aEntry.genome.brood||0)+(bEntry.genome.brood||0)+1);
   /* v1.6 Pass 8 ANCESTRY: remember the two parents by name for the lineage card (breedPair is
      never fingerprinted, so parent-name strings on the child are safe). crossGenome already
      recorded which parent each gene came from (child._src). */
@@ -18734,7 +18789,14 @@ function breedPair(aEntry, bEntry, roll){
     if(born){
       _okPress();
       awardXP(born.id, 2, 'a successful union');
-      awardXPPair(born.id, [aEntry.id,bEntry.id].sort().join('+'), 5, 'a first-of-its-kind lineage');
+      /* ROUND 8 CF1802-16: the key was [aEntry.id,bEntry.id] — and codexId is
+         's'+seed, i.e. per-INDIVIDUAL, while both parents are consumed on the
+         line above. That key can never repeat, so "a first-of-its-kind lineage"
+         fired on EVERY successful breed: the ledger worked perfectly and guarded
+         nothing. Harmless to the numbers (7 XP is still level 1) but the toast
+         was telling a lie every time. Key it on what the comment above already
+         says it means — the PAIRING — using the names, which outlive the parents. */
+      awardXPPair(born.id, [String(aEntry.name||''),String(bEntry.name||'')].sort().join(' × '), 5, 'a first-of-its-kind lineage');
     }
   }catch(_){ }
   return {ok:true, odds, born};
@@ -18802,7 +18864,11 @@ function feedPair(faunaEntry, floraEntry, roll){
   const ev=bank[idx];
   const before=faunaEntry.genome.fed||0;
   let delta=ev.fed + (pref==='loved' && tF>=4 ? 1 : 0);
-  faunaEntry.genome.fed=Math.max(0, before+delta);
+  /* ROUND 8 (external battery P1 / CF1802-10): same divergence as brood — 120
+     loved meals drove the live value to 240 against a 200 cap every consumer
+     honours. delta is re-derived on the line below, so the clamp also keeps the
+     "+n" the toast reports truthful once the ceiling is reached. */
+  faunaEntry.genome.fed=Math.min(200, Math.max(0, before+delta));
   delta=faunaEntry.genome.fed-before;
   /* meals are medicine: welcome food mends old wounds (loved mends most);
      a resented meal that goes badly can deal a new one */
@@ -19677,10 +19743,32 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.8.5';
+const GAME_VERSION='1.8.6';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.8.6', title:'Kept Promises', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🎓 THE LESSON CARD STAYS READABLE — opening the Compendium, Star Atlas, Charters or Records during Field Training could draw the board straight over the lesson you were following, hiding both the instruction and the Skip button. On a tablet at the "open a shelf, then tap a specimen" step the card was completely buried. Boards now always make room for the lesson.',
+  '⚔ DUEL VICTORIES FINALLY PAY — winning a friendly duel awarded your creature nothing at all. Neither did surviving a bout or taking one to the wire. All three now land the XP the Guide has always advertised, and a win no longer quietly eats the cooldown that the next one needed.',
+  '🎯 THE CONQUEST ODDS TELL THE TRUTH — the matchup meter cached its estimate too aggressively, so feeding or breeding a champion (or a defender picking up a world bonus) could leave it showing the old number — occasionally the exact opposite of the real result.',
+  '🧬 A FIRST-OF-ITS-KIND LINEAGE IS ACTUALLY A FIRST — the lineage bonus announced itself on every successful pairing instead of the first of each kind.',
+  '📋 THE QUEST LOG KEEPS ITS HANDLE — while the objective chip was showing a "you seem stuck" suggestion, tapping it could no longer open the quest log — exactly when you would want to check what you were meant to be doing.',
+  '📏 SIZE READS THE SAME ON THE CARD AND IN THE FIGHT — a heavily bred creature could describe itself as one size on its specimen sheet while fighting at another.',
+  '❤ BLOODLINE NUMBERS STOP OVERSHOOTING — a very well-fed beast, or a child of two large broods, could display a fed/brood count above the game’s own 200 ceiling and then snap back after a reload.'],
+ ],
+ ['🎨 UI Enhancements', [
+  '🐣 THE SPECIMEN SHEET EXPLAINS CARE — the XP line still said victories were the only thing that fed a creature, which has not been true since The Connection. It now names first tastes, unions and new lineages alongside duels, conquests and guardians.'],
+ ],
+ ['⚖ Balancing', [
+  '🗓 WEEKLY CHARTERS KEEP THEIR CADENCE — the weekly slate could be persuaded to reroll far more often than weekly, making completed contracts claimable again.',
+  '🔊 CREATURE VOICES USE THEIR FULL RANGE — five of the traits that colour a voice were being folded into far fewer variations than they have, so different creatures sounded more alike than they should. Diets in particular now sound distinct.'],
+ ],
+ ['🔧 Under the Hood', [
+  '🧪 REWARDS ARE NOW TESTED BY OUTCOME — a new check plays a real duel and then reads the ledger to confirm the XP arrived. The previous test called the award function directly, which is why a reward that the game never actually granted could pass it in every build.',
+  '📐 THE LAYOUT GATE MEASURES THE LESSON CARD — the browser-based gate grew 80 checks that sample the training card across ten viewports with each board raised, in both card positions.'],
+ ],
+]},
 {v:'1.8.5', title:'First Touch', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🚀 THE FIRST SCREEN ANSWERS AT ONCE — on a phone, a brand-new expedition spent several seconds building world art you could not see yet, behind the naming screen, so the very first thing you touched did not respond. The art now waits its turn.'],
@@ -20718,13 +20806,28 @@ function trueOdds(champ, native, n){
   try{
     const cs=(champ.genome&&champ.genome.seed)||(champ.isPlayer?PLAYER_SEED:1);
     const ns=(native.genome&&native.genome.seed)||2;
-    const key=cs+'|'+ns+'|'+((champ.genome&&champ.genome.xp)||0)+'|'+((champ.genome&&champ.genome.hurt)||0);
-    if(_oddsMemo.has(key)) return _oddsMemo.get(key);
     const N=n||160;
     let w=0, tot=0, close=0;
     /* ROUND 7 (ask #4): these two were rebuilt on EVERY iteration — 320 redundant
        battleStats per row. They do not vary with i; only the pairing seed does. */
     const _sa=champ.stats||battleStats(champ.genome), _sb=battleStats(native.genome);
+    /* ROUND 8 (external battery P0): the key was seed|seed|xp|hurt, which names
+       FOUR of the inputs this simulation actually reads. Feeding a champion, or a
+       defender picking up a world multiplier, moved the real outcome without
+       moving the key — so the meter kept showing a stale number, demonstrably 0%
+       when the truth had become 100% and 100% when it had become 0%. A meter that
+       exists to stop a misleading decision was making one.
+       Key off the SIMULATION'S OWN INPUTS — the battle-stat vector, level and
+       ability set that runDuel consumes, plus both seeds and the sample count —
+       rather than a hand-listed subset of genome fields. fed, brood, hurt, xp,
+       _mult and _wf all reach combat THROUGH these, so they are covered without
+       being named, and a future stat input cannot silently escape the key the way
+       these six did. */
+    const _fnv=(s)=>{ let h=2166136261; for(let i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619); } return (h>>>0).toString(36); };
+    const _sig=(sd,s)=>[sd>>>0, s.vit, s.fer, s.res, s.agi, s.ins, s.total, s.lvl||0,
+      _fnv(JSON.stringify(s.ab||null))].join(',');
+    const key=_sig(cs,_sa)+'|'+_sig(ns,_sb)+'|'+N;
+    if(_oddsMemo.has(key)) return _oddsMemo.get(key);
     for(let i=0;i<N;i++){
       const a={name:'a', genome:champ.genome||{seed:cs}, stats:_sa, isPlayer:champ.isPlayer};
       const b={name:'b', genome:native.genome||{seed:ns}, stats:_sb};
@@ -24532,11 +24635,23 @@ try{
   document.addEventListener('keydown', _arm, {once:true, capture:true});
   setTimeout(_arm, 8000);
 }catch(_){ _chArmed=true; }
+let _chRollMono=-1e9;   /* ROUND 8 CF1805-07: monotonic stamp of the last week roll */
 function _chRoll(){
   if(!_chArmed) return;
   const wk=_chNow();
   if(chWeek>wk+1) chWeek=wk;   /* CF1720-06: an impossible-FUTURE bank is repaired HERE, after the clock has settled — never at load, where a pre-NTP Date.now() rewound honest weeks */
   if(wk>chWeek){   /* CF1715-12: !== re-rolled the weekly slate on a BACKWARD clock change — replayed banked landfalls paid on the accept click */
+    /* ROUND 8 CF1805-07: _chArmed defers the roll past boot but never limits how
+       OFTEN it can run, and any board render triggers it — so stepping the OS
+       clock forward a week at a time reseeds the slate and makes every completed
+       weekly claimable again, ~77.5 ☄ per step. A device clock cannot be verified
+       offline, so this does not CLOSE the loop; it rate-limits it to one roll per
+       10 monotonic minutes, which no honest player can reach (a real week boundary
+       is crossed at most once a session) and which costs a cheater 10 minutes of
+       real time per slate. perfTime() is monotonic from boot and unwindable. */
+    const _rm=perfTime();
+    if(_chRollMono>-1e8 && (_rm-_chRollMono)<600) return;
+    _chRollMono=_rm;
     chWeek=wk;
     for(const k in chProg) if(k[0]==='w') delete chProg[k];
     for(const id of [...chacc]) if(id[0]==='w') chacc.delete(id);   /* last week's slate expires */
@@ -24751,6 +24866,15 @@ function _chBadge(){
       el.addEventListener('click', ()=>{ try{
         const go=el.dataset.go;
         _stall=0; _stallShown=0;   /* acting on it clears the stall either way */
+        /* ROUND 8 CF1805-04: the chip is the quest log's ONLY handle, and while
+           stalled dataset.go is always truthy (CF1802-04 removed _nextBest's
+           last go:null), so the log could not be opened in exactly the state a
+           lost player wants it. The stall is cleared on the line above — but
+           NOTHING repainted the chip, so it kept the suggestion's markup and
+           kept routing forever: a stalled player never got the handle back.
+           Repaint after the click settles and the chip returns to its objective
+           state, where dataset.go is '' and the handle works again. */
+        setTimeout(()=>{ try{ _chBadge(); }catch(_){ } }, 0);
         /* ROUND 7 CF1802-06: an OPEN log always closes first — while stalled,
            dataset.go is truthy, so the destination branch ran and the chip
            could no longer close the log it had opened. */

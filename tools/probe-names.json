@@ -251,5 +251,6 @@
   "_PROGRESS_EVT",
   "FA_TEMPER",
   "_sanitizeSavedGenome",
-  "_ascActive"
+  "_ascActive",
+  "startDuelWithCode"
 ]

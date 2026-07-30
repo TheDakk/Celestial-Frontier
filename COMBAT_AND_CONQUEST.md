@@ -1,6 +1,6 @@
 # Celestial Frontier — Combat & Conquest
 
-**STATUS:** matches code as of 2026-07-29 (verified against main.js).
+**STATUS:** matches code as of 2026-07-30 (verified against main.js). See the 2026-07-30 addendum at the end for the odds-cache signature and the `size` clamp.
 **Purpose:** How creatures fight — the stat budget, seeded duel resolution, innate arts (classes + archetypes), and named Apex Guardians — and how conquest settles a world: the mercy law, re-win prevention, and the depth tax that grades every field wound by distance.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -223,3 +223,42 @@ creature, per world**, banked in the persisted `xpFirsts` ledger.
 160 `runDuel` replays is not the expense — one duel measures ~0.0006 ms. The cost was **320
 redundant `battleStats` calls per row**: both combatants were rebuilt inside the 160-iteration
 loop although neither varies with `i` (only the pairing seed does). Both are now hoisted out.
+
+---
+
+## ADDENDUM 2026-07-30 — round 8: the odds meter, and the one unclamped power term
+
+**The conquest matchup meter could show the opposite of the truth.** `trueOdds`
+memoised on `seed|seed|xp|hurt` — four of the ten inputs that actually move the
+result. Feeding or breeding a champion, or a defender picking up a world
+multiplier or field, changed the outcome without changing the key, so the picker
+kept serving a stale number. The external battery demonstrated a matchup displayed
+at **0%** after the real result had become **100%**, and one displayed at **100%**
+after it had become **0%**. A meter whose whole job is to prevent a misleading
+decision was making one.
+
+The key is now built from **the simulation's own inputs** rather than a hand-listed
+subset of genome fields: the battle-stat vector, level and ability set that
+`runDuel` consumes, plus both seeds and the sample count. `fed`, `brood`, `hurt`,
+`xp`, `_mult` and `_wf` all reach combat *through* those, so they are covered
+without being named — and a future stat input cannot silently escape the key the
+way these six did. That property is the point of the change; the bug fix is a
+consequence of it.
+
+**`size` was the one linear power term nothing clamped.** `battleStats` adds
+`size*4` vitality and subtracts `size*2` agility, reading the gene **raw**, while
+the specimen card prints `pick(FA_SIZE, g.size)` — i.e. mod 6. `crossGenome`'s
+mutation list includes `size` and never wraps it, so size drifts above 5 in
+ordinary breeding and a size-9 creature read *"dog-sized"* on the card while
+fighting with +36 vitality. Combat now reads the same modulus the card prints, so
+the sheet cannot lie about the fight. `makeGenome` yields 0–5, so this is identity
+for every unbred genome and the determinism fingerprint did not move.
+
+⚠ **The drift itself is unfixed and is a design decision.** Wrapping `size` inside
+`crossGenome` would change every bred creature — and `crossGenome`/`evolveGenome`
+are both fingerprint probes, so it breaks the v1.0 baseline. That is a balance
+call, not a quiet patch. See ROADMAP's 2026-07-30 batch log.
+
+A save-load clamp was also added (`_sanitizeSavedGenome`), because a hand-edited
+`size:1e6` bought +4,000,000 vitality and `encodeCreature` carried it intact into
+another player's duel box.

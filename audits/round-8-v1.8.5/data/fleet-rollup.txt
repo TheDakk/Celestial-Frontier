@@ -1,0 +1,66 @@
+=== v1.8.5 ROUND 8 — 214 sessions (144 deep, 70 broad) ===
+
+HEALTH
+  completed            214 / 214
+  fatal                0
+  uncaught errors      0
+  unhandled rejections 0
+  storage failures     0
+  stuck overlays       0
+  rage quits           11  (51.4 per 1000)
+    by archetype       {"button-masher":3,"miner":1,"economist":1,"stress-tester":2,"casual":1,"skimmer":1,"min-maxer":1,"breeder":1}
+    skipped training   9 / 11
+  fps                  median 23.5  p10 12.3
+  boot                 median 723ms  p90 873ms
+
+SYSTEM REACH — deep tier, all archetypes
+  verb        saw    did   reach   top failure
+  mine         34     33     97%   nocard ×91
+  harvest      15     15    100%   nocard ×147
+  scavenge     10     10    100%   nocard ×134
+  tame         10     10    100%   nocard ×131
+  conquer       7      6     86%   nocard ×67
+  craft        65     33     51%   allgated ×38
+  breed        33     28     85%   nospecimen ×65
+  feed         29     25     86%   nospecimen ×86
+  charter      73     73    100%   noboard ×51
+  sheet        62     23     37%   noopen ×46
+  idle         26     26    100%   —
+  backout       8      8    100%   noopen:log ×4
+
+PER-ARCHETYPE — deep sessions, verbs completed
+  archetype        n  seed  acts/s  Δcodex  Δ☄   systems touched
+  hardcore         8     4      18      -6    64   craft:9 charter:5 breed:3 feed:3 mine:2 harvest:1 scavenge:1
+  collector        8     4      15     -10    59   charter:7 breed:6 craft:2 feed:1 mine:1 harvest:1 sheet:1
+  completionist    8     4      21      -9    48   charter:5 sheet:5 breed:4 craft:4 feed:3 mine:1
+  min-maxer        8     4      22     -17    40   feed:6 sheet:5 charter:4 craft:4 breed:3 mine:1
+  accessibility    8     0      18       1    65   charter:5 harvest:3 scavenge:3 mine:1 tame:1 sheet:1
+  breeder          8     4      16     -21    78   breed:10 feed:9 harvest:2 charter:2 tame:2 sheet:1
+  backtracker      8     0      20       0    80   backout:8 charter:5 harvest:2 tame:1 mine:1 sheet:1
+  speedrunner      8     0      22       5    66   conquer:4 charter:3 tame:3 mine:3 scavenge:2
+  explorer         8     0      12       1    85   scavenge:2 tame:2 charter:1 mine:1 harvest:1
+  button-masher    8     0      16       1   108   charter:6 mine:5 sheet:1 scavenge:1 craft:1
+  idler            8     4      19      -1    74   idle:26 charter:7 craft:3 breed:2 mine:2
+  cautious-newbie  8     0      11       0    82   mine:5 charter:4 sheet:1 harvest:1
+  miner            8     4      26       0    38   sheet:6 craft:4 mine:4 charter:1
+  economist        8     4      24      -4    46   charter:7 craft:6 feed:3 mine:3
+  stress-tester    8     0      30      -6    41   charter:5 sheet:1 mine:1
+  skimmer          8     0      21       0    79   charter:5 mine:2 conquer:2
+  casual           8     0      14       1    67   harvest:4 scavenge:1 tame:1
+  lore-reader      8     0      12       0    13   charter:1
+
+FRICTION
+  action-throw:panel                      2
+  action-throw:pan                        2
+  shelf-wont-open:🐟 Aquatic Fauna        1
+  action-throw:conquer                    1
+  action-throw:inspect                    1
+  shelf-wont-open:🦣 Mega Fauna           1
+
+TRAINING
+  took 117 · skipped 97 (45%)
+  stalls by step  {"2":3,"8":29,"10":2}
+  max step reached {"0":20,"1":6,"2":41,"8":41,"10":9}
+
+DEVICE COVERAGE
+  21 profiles, 3–18 sessions each

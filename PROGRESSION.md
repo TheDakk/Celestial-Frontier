@@ -1,6 +1,6 @@
 # Celestial Frontier — Player Progression
 
-**STATUS:** matches code as of 2026-07-29 (verified against main.js).
+**STATUS:** matches code as of 2026-07-30 (verified against main.js). See the 2026-07-30 addendum at the end — three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -127,3 +127,51 @@ First catalogue of tier ≥ 5 → **`tier − 3`** ☄ (Legendary=5→+2, up thr
 - Field Scout XP path (+2) requires a scout to be *set* and to be a different fauna than the fresh catch; a run with no scout set banks nothing from cataloguing — intended.
 - XP has a 1e6 hard cap but L9 is reached at 486; everything above 486 is inert. Fine today; note if a soft "prestige past 9" is ever wanted.
 - Depth Tax tops out at ×2.5 (Frontier). No open balance flag, but it's the main survivability knob — watch alongside gear scut/hull.
+
+---
+
+## ADDENDUM 2026-07-30 — round 8: the awards that were advertised and never paid
+
+Of the nine XP awards the Guide advertises, **three were dead** as of round 8 — and
+the largest of them had never paid in any shipped build.
+
+| award | status after 2026-07-30 |
+|---|---|
+| welcome meal +1 | ✓ fixed v1.8.5, ledgered |
+| taste discovered +2 | ✓ always worked |
+| successful union +2 | ✓ fixed v1.8.5 |
+| first-of-its-kind lineage +5 | ✓ **now genuinely once per pairing** (was firing on every breed) |
+| bout survived +2 | ✓ **fixed 2026-07-30** |
+| fight taken to the wire +3 | ✓ **fixed 2026-07-30** |
+| conquest lost +3 | ✓ fixed v1.8.5 |
+| defender nearly broken +5 | ✓ fixed v1.8.5 (⚠ still foreclosed by an earlier +3 — the ledger key omits the near-brink flag) |
+| **duel won +8** | ✓ **fixed 2026-07-30 — had never paid in ANY build** |
+
+**The duel awards (CF1805-02).** Round 7 correctly diagnosed that `mine.id` is set
+at no reachable call site, derived a catalogue identity `_mid` from the genome, and
+guarded on it — then passed `mine.id` to `awardXP` anyway. `awardXP(undefined, …)`
+hits `codex.get(undefined)` and returns. Both friendly-duel callers build
+`{name, genome, art}` with no `id`.
+
+For participation this made the build **strictly worse than before the fix**: the
+guard now fired, consumed the 30-second throttle, and paid nothing, so the next
+qualifying bout inside the window was blocked too. Previously the guard never fired
+and the throttle was never touched. `stats.duelwins++` sits *outside* the guard, so
+a win counted toward rank and achievements while the creature that won it got
+nothing.
+
+**The lineage bonus (CF1802-16)** paid on *every* successful breed. The ledger key
+was `[aEntry.id, bEntry.id]`, and `codexId` is `'s'+seed` — per **individual** —
+while both parents are consumed one line above. That key can never repeat, so the
+one-shot ledger worked perfectly and guarded nothing. It is now keyed on the
+pairing, which is what the code's own comment always said it meant. The numbers
+were never affected (7 XP is still level 1); the toast was lying every time.
+
+**The lesson, and the standing rule it earns.** The external round has recommended
+the same thing for five rounds: *assert that the XP arrived, not that the code path
+ran.* `smoke.js` did have a duel-XP check — it called `awardXP()` directly, so it
+stayed green through every build in which the friendly duel paid nothing at all.
+`tools/duelxp-check.js` now drives the real arena and reads the ledger afterwards.
+
+⚠ **Only the duel awards have an outcome test today.** The other six deserve the
+same treatment; that work is open. See ROADMAP's 2026-07-30 batch log.

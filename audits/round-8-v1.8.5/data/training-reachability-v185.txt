@@ -1,0 +1,363 @@
+
+######## iphone-14-pro 393x852 ########
+  --- step 1: Welcome to Sol, Dakk — humanity’s cradle and your first charter. The order
+      #tutbox    z=50   rect=12,89,369,197        reachable=100% 
+      #codexbtn  z=14   rect=103,748,60,44        reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=295,748,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=231,748,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=39,748,60,44         reachable= 95% #cosmos(3)
+  --- step 2: First, find home. Drag and zoom to Earth — the blue world, third from the 
+      #tutbox    z=50   rect=12,89,369,139        reachable=100% 
+      #codexbtn  z=14   rect=103,748,60,44        reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=295,748,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=231,748,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=39,748,60,44         reachable= 95% #cosmos(3)
+  --- step 3: This is a survey card — every world, star and galaxy has one: atmosphere, 
+      #panel     z=58   rect=8,323,300,411        reachable=100% 
+      #tutbox    z=50   rect=12,89,369,216        reachable=100% 
+      #codexbtn  z=14   rect=103,748,60,44        reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=295,748,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=231,748,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=39,748,60,44         reachable= 95% #cosmos(3)
+  --- step 4: Chart it. Tap + Add to Star Atlas on Earth’s card — the Atlas is how you f
+      #panel     z=58   rect=8,61,300,478         reachable=100% 
+      #tutbox    z=50   rect=12,543,369,139       reachable=100% 
+      #codexbtn  z=14   rect=103,748,60,44        reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=295,748,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=231,748,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=39,748,60,44         reachable= 95% #cosmos(3)
+  --- step 5: Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock
+      #panel     z=9    rect=8,285,300,449        reachable=100% 
+      #tutbox    z=50   rect=12,89,369,178        reachable=100% 
+      #codexbtn  z=14   rect=103,748,60,44        reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=295,748,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=231,748,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=39,748,60,44         reachable= 95% #cosmos(3)
+  --- step 6: Now stand on it. Press Land on Earth’s card — home never waves you off. Pl
+      #panel     z=58   rect=8,304,300,430        reachable=100% 
+      #log       z=22   rect=8,352,377,358        reachable= 14% #panel(54)  ✗ mostly buried
+      #tutbox    z=50   rect=12,89,369,197        reachable=100% 
+      #codexbtn  z=14   rect=103,748,60,44        reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=295,748,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=231,748,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=39,748,60,44         reachable= 95% #cosmos(3)
+  --- step 7: A training cache just arrived: three Earth beasts and three Earth flora, o
+      #panel     z=22   rect=8,285,300,449        reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #vistabox  z=44   rect=0,0,393,852          reachable= 78% #tutbox(14)
+      #tutbox    z=50   rect=12,89,369,178        reachable=100% 
+      #codexbtn  z=14   rect=103,748,60,44        reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #logbtn    z=14   rect=295,748,60,44        reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #cargobtn  z=14   rect=231,748,60,44        reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #chbtn     z=14   rect=39,748,60,44         reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+  *** WALLED UP at step 7 ***
+
+######## galaxy-s8 360x740 ########
+  --- step 1: Welcome to Sol, Dakk — humanity’s cradle and your first charter. The order
+      #tutbox    z=50   rect=12,89,336,197        reachable=100% 
+      #codexbtn  z=14   rect=86,636,60,44         reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=278,636,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=214,636,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=22,636,60,44         reachable= 95% #cosmos(3)
+  --- step 2: First, find home. Drag and zoom to Earth — the blue world, third from the 
+      #tutbox    z=50   rect=12,89,336,159        reachable=100% 
+      #codexbtn  z=14   rect=86,636,60,44         reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=278,636,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=214,636,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=22,636,60,44         reachable= 95% #cosmos(3)
+  --- step 3: This is a survey card — every world, star and galaxy has one: atmosphere, 
+      #panel     z=58   rect=8,342,300,280        reachable=100% 
+      #tutbox    z=50   rect=12,89,336,235        reachable=100% 
+      #codexbtn  z=14   rect=86,636,60,44         reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=278,636,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=214,636,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=22,636,60,44         reachable= 95% #cosmos(3)
+  --- step 4: Chart it. Tap + Add to Star Atlas on Earth’s card — the Atlas is how you f
+      #panel     z=58   rect=8,266,300,356        reachable=100% 
+      #tutbox    z=50   rect=12,89,336,159        reachable=100% 
+      #codexbtn  z=14   rect=86,636,60,44         reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=278,636,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=214,636,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=22,636,60,44         reachable= 95% #cosmos(3)
+  --- step 5: Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock
+      #panel     z=9    rect=8,285,300,337        reachable=100% 
+      #tutbox    z=50   rect=12,89,336,178        reachable=100% 
+      #codexbtn  z=14   rect=86,636,60,44         reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=278,636,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=214,636,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=22,636,60,44         reachable= 95% #cosmos(3)
+  --- step 6: Now stand on it. Press Land on Earth’s card — home never waves you off. Pl
+      #panel     z=58   rect=8,304,300,318        reachable=100% 
+      #log       z=22   rect=8,287,344,311        reachable= 14% #panel(54)  ✗ mostly buried
+      #tutbox    z=50   rect=12,89,336,197        reachable=100% 
+      #codexbtn  z=14   rect=86,636,60,44         reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=278,636,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=214,636,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=22,636,60,44         reachable= 95% #cosmos(3)
+  --- step 7: A training cache just arrived: three Earth beasts and three Earth flora, o
+      #panel     z=22   rect=8,285,300,337        reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #vistabox  z=44   rect=0,0,360,740          reachable= 78% #tutbox(12) #tut-skip(2)
+      #tutbox    z=50   rect=12,89,336,178        reachable=100% 
+      #codexbtn  z=14   rect=86,636,60,44         reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #logbtn    z=14   rect=278,636,60,44        reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #cargobtn  z=14   rect=214,636,60,44        reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #chbtn     z=14   rect=22,636,60,44         reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+  *** WALLED UP at step 7 ***
+
+######## iphone-se 375x667 ########
+  --- step 1: Welcome to Sol, Dakk — humanity’s cradle and your first charter. The order
+      #tutbox    z=50   rect=12,89,351,197        reachable=100% 
+      #codexbtn  z=14   rect=94,563,60,44         reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=286,563,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=222,563,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=30,563,60,44         reachable= 95% #cosmos(3)
+  --- step 2: First, find home. Drag and zoom to Earth — the blue world, third from the 
+      #tutbox    z=50   rect=12,89,351,159        reachable=100% 
+      #codexbtn  z=14   rect=94,563,60,44         reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=286,563,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=222,563,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=30,563,60,44         reachable= 95% #cosmos(3)
+  --- step 3: This is a survey card — every world, star and galaxy has one: atmosphere, 
+      #panel     z=58   rect=8,323,300,226        reachable=100% 
+      #tutbox    z=50   rect=12,89,351,216        reachable=100% 
+      #codexbtn  z=14   rect=94,563,60,44         reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=286,563,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=222,563,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=30,563,60,44         reachable= 95% #cosmos(3)
+  --- step 4: Chart it. Tap + Add to Star Atlas on Earth’s card — the Atlas is how you f
+      #panel     z=58   rect=8,266,300,283        reachable=100% 
+      #tutbox    z=50   rect=12,89,351,159        reachable=100% 
+      #codexbtn  z=14   rect=94,563,60,44         reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=286,563,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=222,563,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=30,563,60,44         reachable= 95% #cosmos(3)
+  --- step 5: Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock
+      #panel     z=9    rect=8,285,300,264        reachable=100% 
+      #tutbox    z=50   rect=12,89,351,178        reachable=100% 
+      #codexbtn  z=14   rect=94,563,60,44         reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=286,563,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=222,563,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=30,563,60,44         reachable= 95% #cosmos(3)
+  --- step 6: Now stand on it. Press Land on Earth’s card — home never waves you off. Pl
+      #panel     z=58   rect=8,304,300,245        reachable=100% 
+      #log       z=22   rect=8,245,359,280        reachable= 22% #panel(42) #tutbox(7)  ✗ mostly buried
+      #tutbox    z=50   rect=12,89,351,197        reachable=100% 
+      #codexbtn  z=14   rect=94,563,60,44         reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=286,563,60,44        reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=222,563,60,44        reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=30,563,60,44         reachable= 95% #cosmos(3)
+  --- step 7: A training cache just arrived: three Earth beasts and three Earth flora, o
+      #panel     z=22   rect=8,285,300,264        reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #vistabox  z=44   rect=0,0,375,667          reachable= 78% #tutbox(14)
+      #tutbox    z=50   rect=12,89,351,178        reachable=100% 
+      #codexbtn  z=14   rect=94,563,60,44         reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #logbtn    z=14   rect=286,563,60,44        reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #cargobtn  z=14   rect=222,563,60,44        reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #chbtn     z=14   rect=30,563,60,44         reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+  *** WALLED UP at step 7 ***
+
+######## ipad-mini 744x1133 ########
+  --- step 1: Welcome to Sol, Dakk — humanity’s cradle and your first charter. The order
+      #tutbox    z=50   rect=182,89,380,197       reachable=100% 
+      #codexbtn  z=14   rect=278,1029,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=470,1029,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=406,1029,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=214,1029,60,44       reachable= 95% #cosmos(3)
+  --- step 2: First, find home. Drag and zoom to Earth — the blue world, third from the 
+      #tutbox    z=50   rect=182,89,380,139       reachable=100% 
+      #codexbtn  z=14   rect=278,1029,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=470,1029,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=406,1029,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=214,1029,60,44       reachable= 95% #cosmos(3)
+  --- step 3: This is a survey card — every world, star and galaxy has one: atmosphere, 
+      #panel     z=58   rect=313,61,340,682       reachable=100% 
+      #tutbox    z=50   rect=182,747,380,216      reachable=100% 
+      #codexbtn  z=14   rect=278,1029,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=470,1029,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=406,1029,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=214,1029,60,44       reachable= 95% #cosmos(3)
+  --- step 4: Chart it. Tap + Add to Star Atlas on Earth’s card — the Atlas is how you f
+      #panel     z=58   rect=313,61,340,759       reachable=100% 
+      #tutbox    z=50   rect=182,824,380,139      reachable=100% 
+      #codexbtn  z=14   rect=278,1029,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=470,1029,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=406,1029,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=214,1029,60,44       reachable= 95% #cosmos(3)
+  --- step 5: Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock
+      #panel     z=9    rect=313,285,340,730      reachable=100% 
+      #tutbox    z=50   rect=182,89,380,178       reachable=100% 
+      #codexbtn  z=14   rect=278,1029,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=470,1029,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=406,1029,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=214,1029,60,44       reachable= 95% #cosmos(3)
+  --- step 6: Now stand on it. Press Land on Earth’s card — home never waves you off. Pl
+      #panel     z=58   rect=313,61,340,720       reachable=100% 
+      #log       z=22   rect=72,611,600,380       reachable= 35% #tutbox(24) #panel(16)  ✗ mostly buried
+      #tutbox    z=50   rect=182,785,380,178      reachable=100% 
+      #codexbtn  z=14   rect=278,1029,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=470,1029,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=406,1029,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=214,1029,60,44       reachable= 95% #cosmos(3)
+  --- step 7: A training cache just arrived: three Earth beasts and three Earth flora, o
+      #panel     z=22   rect=313,61,340,739       reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #vistabox  z=44   rect=0,0,744,1133         reachable= 92% #tutbox(4) #tut-skip(1)
+      #tutbox    z=50   rect=182,804,380,159      reachable=100% 
+      #codexbtn  z=14   rect=278,1029,60,44       reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #logbtn    z=14   rect=470,1029,60,44       reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #cargobtn  z=14   rect=406,1029,60,44       reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #chbtn     z=14   rect=214,1029,60,44       reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+  --- step 8: Fighters, breeders and medicine all live here, shelved by realm. Open a sh
+      #codex     z=58   rect=72,611,600,380       reachable=100% 
+      #tutbox    z=50   rect=182,824,380,139      reachable=  0% #codex(63)  ✗✗ FULLY BURIED
+      #codexbtn  z=14   rect=278,1029,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=470,1029,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=406,1029,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=214,1029,60,44       reachable= 95% #cosmos(3)
+  --- step 9: Read it like a Pathfinder: five stat bars and total Power; its ✧ ability; 
+      #codex     z=22   rect=72,383,600,608       reachable=  0% #reveal(32) #tutbox(11)  ✗✗ FULLY BURIED
+      #reveal    z=30   rect=0,0,744,1133         reachable= 84% #tutbox(9) #tut-skip(1)
+      #tutbox    z=50   rect=182,785,380,178      reachable=100% 
+      #codexbtn  z=14   rect=278,1029,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+      #logbtn    z=14   rect=470,1029,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+      #cargobtn  z=14   rect=406,1029,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+      #chbtn     z=14   rect=214,1029,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+  --- step 10: Time for a meal. Tap Feed on the open card — or reopen any 🐾 beast in the
+      #reveal    z=30   rect=0,0,744,1133         reachable= 84% #tutbox(9) #tut-skip(1)
+      #tutbox    z=50   rect=182,785,380,178      reachable=100% 
+      #codexbtn  z=14   rect=278,1029,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+      #logbtn    z=14   rect=470,1029,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+      #cargobtn  z=14   rect=406,1029,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+      #chbtn     z=14   rect=214,1029,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+  *** WALLED UP at step 10 ***
+
+######## ipad-air 820x1180 ########
+  --- step 1: Welcome to Sol, Dakk — humanity’s cradle and your first charter. The order
+      #tutbox    z=50   rect=220,89,380,197       reachable=100% 
+      #codexbtn  z=14   rect=316,1076,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=508,1076,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=444,1076,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=252,1076,60,44       reachable= 95% #cosmos(3)
+  --- step 2: First, find home. Drag and zoom to Earth — the blue world, third from the 
+      #tutbox    z=50   rect=220,89,380,139       reachable=100% 
+      #codexbtn  z=14   rect=316,1076,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=508,1076,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=444,1076,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=252,1076,60,44       reachable= 95% #cosmos(3)
+  --- step 3: This is a survey card — every world, star and galaxy has one: atmosphere, 
+      #panel     z=58   rect=344,61,340,729       reachable=100% 
+      #tutbox    z=50   rect=220,794,380,216      reachable=100% 
+      #codexbtn  z=14   rect=316,1076,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=508,1076,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=444,1076,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=252,1076,60,44       reachable= 95% #cosmos(3)
+  --- step 4: Chart it. Tap + Add to Star Atlas on Earth’s card — the Atlas is how you f
+      #panel     z=58   rect=344,61,340,806       reachable=100% 
+      #tutbox    z=50   rect=220,871,380,139      reachable=100% 
+      #codexbtn  z=14   rect=316,1076,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=508,1076,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=444,1076,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=252,1076,60,44       reachable= 95% #cosmos(3)
+  --- step 5: Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock
+      #panel     z=9    rect=344,285,340,777      reachable=100% 
+      #tutbox    z=50   rect=220,89,380,178       reachable=100% 
+      #codexbtn  z=14   rect=316,1076,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=508,1076,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=444,1076,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=252,1076,60,44       reachable= 95% #cosmos(3)
+  --- step 6: Now stand on it. Press Land on Earth’s card — home never waves you off. Pl
+      #panel     z=58   rect=344,61,340,767       reachable=100% 
+      #log       z=22   rect=110,658,600,380      reachable= 35% #tutbox(24) #panel(16)  ✗ mostly buried
+      #tutbox    z=50   rect=220,832,380,178      reachable=100% 
+      #codexbtn  z=14   rect=316,1076,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=508,1076,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=444,1076,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=252,1076,60,44       reachable= 95% #cosmos(3)
+  --- step 7: A training cache just arrived: three Earth beasts and three Earth flora, o
+      #panel     z=22   rect=344,61,340,786       reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #vistabox  z=44   rect=0,0,820,1180         reachable= 95% #tutbox(3)
+      #tutbox    z=50   rect=220,851,380,159      reachable=100% 
+      #codexbtn  z=14   rect=316,1076,60,44       reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #logbtn    z=14   rect=508,1076,60,44       reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #cargobtn  z=14   rect=444,1076,60,44       reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #chbtn     z=14   rect=252,1076,60,44       reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+  --- step 8: Fighters, breeders and medicine all live here, shelved by realm. Open a sh
+      #codex     z=58   rect=110,658,600,380      reachable=100% 
+      #tutbox    z=50   rect=220,871,380,139      reachable=  0% #codex(63)  ✗✗ FULLY BURIED
+      #codexbtn  z=14   rect=316,1076,60,44       reachable= 95% #cosmos(3)
+      #logbtn    z=14   rect=508,1076,60,44       reachable= 95% #cosmos(3)
+      #cargobtn  z=14   rect=444,1076,60,44       reachable= 95% #cosmos(3)
+      #chbtn     z=14   rect=252,1076,60,44       reachable= 95% #cosmos(3)
+  --- step 9: Read it like a Pathfinder: five stat bars and total Power; its ✧ ability; 
+      #codex     z=22   rect=110,448,600,590      reachable=  0% #reveal(39) #tutbox(11)  ✗✗ FULLY BURIED
+      #reveal    z=30   rect=0,0,820,1180         reachable= 95% #tutbox(3)
+      #tutbox    z=50   rect=220,832,380,178      reachable=100% 
+      #codexbtn  z=14   rect=316,1076,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+      #logbtn    z=14   rect=508,1076,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+      #cargobtn  z=14   rect=444,1076,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+      #chbtn     z=14   rect=252,1076,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+  --- step 10: Time for a meal. Tap Feed on the open card — or reopen any 🐾 beast in the
+      #reveal    z=30   rect=0,0,820,1180         reachable= 95% #tutbox(3)
+      #tutbox    z=50   rect=220,832,380,178      reachable=100% 
+      #codexbtn  z=14   rect=316,1076,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+      #logbtn    z=14   rect=508,1076,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+      #cargobtn  z=14   rect=444,1076,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+      #chbtn     z=14   rect=252,1076,60,44       reachable=  0% #reveal(63)  ✗✗ FULLY BURIED
+  *** WALLED UP at step 10 ***
+
+######## desktop-1440 1440x900 ########
+  --- step 1: Welcome to Sol, Dakk — humanity’s cradle and your first charter. The order
+      #tutbox    z=50   rect=485,54,470,224       reachable=100% 
+      #codexbtn  z=8    rect=18,145,127,32        reachable=100% 
+      #logbtn    z=8    rect=1310,103,112,32      reachable=100% 
+      #cargobtn  z=8    rect=1321,145,101,32      reachable=100% 
+      #chbtn     z=9    rect=18,103,101,32        reachable=100% 
+  --- step 2: First, find home. Drag and zoom to Earth — the blue world, third from the 
+      #tutbox    z=50   rect=485,54,470,158       reachable=100% 
+      #codexbtn  z=8    rect=18,145,127,32        reachable=100% 
+      #logbtn    z=8    rect=1310,103,112,32      reachable=100% 
+      #cargobtn  z=8    rect=1321,145,101,32      reachable=100% 
+      #chbtn     z=9    rect=18,103,101,32        reachable=100% 
+  --- step 3: This is a survey card — every world, star and galaxy has one: atmosphere, 
+      #panel     z=58   rect=642,296,300,598      reachable=100% 
+      #tutbox    z=50   rect=485,54,470,224       reachable=100% 
+      #codexbtn  z=8    rect=18,145,127,32        reachable=100% 
+      #logbtn    z=8    rect=1310,103,112,32      reachable=100% 
+      #cargobtn  z=8    rect=1321,145,101,32      reachable=100% 
+      #chbtn     z=9    rect=18,103,101,32        reachable=100% 
+  --- step 4: Chart it. Tap + Add to Star Atlas on Earth’s card — the Atlas is how you f
+      #panel     z=58   rect=642,64,300,574       reachable=100% 
+      #tutbox    z=50   rect=485,642,470,158      reachable=100% 
+      #codexbtn  z=8    rect=18,145,127,32        reachable=100% 
+      #logbtn    z=8    rect=1310,103,112,32      reachable=100% 
+      #cargobtn  z=8    rect=1321,145,101,32      reachable=100% 
+      #chbtn     z=9    rect=18,103,101,32        reachable=100% 
+  --- step 5: Earth is charted — your Atlas’s first entry. Open the Star Atlas (the dock
+      #panel     z=9    rect=642,64,300,552       reachable=100% 
+      #tutbox    z=50   rect=485,620,470,180      reachable=100% 
+      #codexbtn  z=8    rect=18,145,127,32        reachable=100% 
+      #logbtn    z=8    rect=1310,103,112,32      reachable=100% 
+      #cargobtn  z=8    rect=1321,145,101,32      reachable=100% 
+      #chbtn     z=9    rect=18,103,101,32        reachable=100% 
+  --- step 6: Now stand on it. Press Land on Earth’s card — home never waves you off. Pl
+      #panel     z=58   rect=642,64,300,530       reachable=100% 
+      #log       z=22   rect=1122,183,300,222     reachable=100% 
+      #tutbox    z=50   rect=485,598,470,202      reachable=100% 
+      #codexbtn  z=8    rect=18,145,127,32        reachable=100% 
+      #logbtn    z=8    rect=1310,103,112,32      reachable=100% 
+      #cargobtn  z=8    rect=1321,145,101,32      reachable=100% 
+      #chbtn     z=9    rect=18,103,101,32        reachable=100% 
+  --- step 7: A training cache just arrived: three Earth beasts and three Earth flora, o
+      #panel     z=22   rect=642,64,300,552       reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #vistabox  z=44   rect=0,0,1440,900         reachable= 90% #tutbox(6)
+      #tutbox    z=50   rect=485,620,470,180      reachable=100% 
+      #codexbtn  z=8    rect=18,145,127,32        reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #logbtn    z=8    rect=1310,103,112,32      reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #cargobtn  z=8    rect=1321,145,101,32      reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+      #chbtn     z=9    rect=18,103,101,32        reachable=  0% #vistabox(63)  ✗✗ FULLY BURIED
+  --- step 8: Fighters, breeders and medicine all live here, shelved by realm. Open a sh
+      #codex     z=58   rect=18,193,320,301       reachable=100% 
+      #tutbox    z=50   rect=485,642,470,158      reachable=100% 
+      #codexbtn  z=8    rect=18,145,127,32        reachable=100% 
+      #logbtn    z=8    rect=1310,103,112,32      reachable=100% 
+      #cargobtn  z=8    rect=1321,145,101,32      reachable=100% 
+      #chbtn     z=9    rect=18,103,101,32        reachable=100% 
+  *** WALLED UP at step 8 ***

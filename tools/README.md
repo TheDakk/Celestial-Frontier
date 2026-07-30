@@ -157,6 +157,59 @@ Bench being up instead of the Fabricator (`yardView` renders one bench at a time
 both use `.bset` rows, so the wrong one looks superficially right — `.fabgrp` is the
 tell). Distrust this tier's first findings until the controls above pass.
 
+## duelxp-check.js — asserting that a reward ARRIVED
+
+```
+node tools/duelxp-check.js              # the current build
+node tools/duelxp-check.js --src=<html> # any build, for negative controls
+```
+
+Added 2026-07-30 (round 8, CF1805-02). It boots the game, catalogues a champion,
+drives the **real** friendly-duel flow — arena → paste a challenger code → Fight →
+Skip — and then reads the catalogue entry's XP.
+
+It exists because of a specific, embarrassing gap. `smoke.js` already had a
+duel-XP check; it called `awardXP()` **directly**, so it stayed green through every
+build in which the friendly duel paid nothing at all. The +8 "a duel won" award had
+never paid in **any** shipped build: the guard derived a correct identity and the
+award used a different one that is `undefined` at every reachable call site. A test
+that calls the reward function proves the reward function works. It says nothing
+about whether the game ever calls it.
+
+| build | result |
+|---|---|
+| pre-fix (`awardXP(mine.id, 8, …)`) | **FAIL** — `xp 0 -> 0`, while `duelwins` still increments |
+| fixed (`awardXP(_mid, 8, …)`) | **PASS** — 6/6 |
+
+The negative control matters more than the pass here: it reproduces the exact
+reported shape, where the win counts toward rank and achievements while the
+creature that won it gets nothing.
+
+`startDuelWithCode` was added to `probe-names.json` for this (254 names) — the
+sanctioned way to reach a binding inside the game IIFE.
+
+**The generalisation, which is still open work:** the external round has asked five
+times for this treatment across *all* nine advertised XP awards. Three were dead as
+of round 8. Only the duel ones have an outcome test today.
+
+## uilayout.js — the training-card reachability pass
+
+Four raisable surfaces (`#log` `#codex` `#chpanel` `#records`) × two lesson-card
+positions × 10 viewports = 40 checks, sampling a 63-point grid per element so the
+numbers are directly comparable to the external round's.
+
+⚠ **Read this before trusting a green run.** The first version of this pass measured
+with the card pinned at the **top**, and came back clean on the very case round 8
+reported — a top-pinned card and a bottom-anchored board never share a band on a
+tablet. Their card had **dodged to the bottom** (the opposite-half rule), which is
+exactly where those boards live under `@media (max-width:900px)`. Adding the dodge
+pass reproduced their measurement verbatim: `ipad-mini · Compendium · 0% reachable ·
+63/63 blocked by #codex`.
+
+A gate that agrees with a bug report by accident is worth nothing. Reproduce the
+**reported geometry**, not a convenient one — and negative-control it by stripping
+the fix (`--url=` a patched copy) before believing the pass.
+
 ## One-time refactor tooling (kept for the record)
 
 `refactor/` holds the scripts that performed the 2026-06 SOLID restructure:

@@ -193,3 +193,42 @@ a generator's output requires an authorized re-pin. Timing is not output.)
   color-atlas / biome-profile work ahead of it is designed to stay fingerprint-safe.
 - The "49 vs 50" phrasing lives on in older `note_*` entries; the live suite is 50.
   No action needed — the notes are historical and count *other* probes.
+
+---
+
+## ADDENDUM 2026-07-30 — round 8: three changes to generated content, none of which moved the fingerprint
+
+Round 8 touched voices, combat stats and save loading. All 50 probes stayed
+byte-identical, and the *reasons* are worth recording, because they are the test
+for whether a future change of the same shape is safe.
+
+**1. `voiceOf`'s five wrong moduli (CF1805-03) — safe because voice is not probed.**
+Five gene folds used hand-typed moduli that matched no array (`trait %7` against 25
+entries, `diet %5` against 6, and three more). They now read `FA_X.length`. Voices
+are deterministic and derived, never persisted, and **`voiceOf` is not a fingerprint
+probe** — so the vocabulary can be corrected without a re-pin. A creature's voice
+does change; its identity does not.
+
+**2. `battleStats` now reads `size % FA_SIZE.length` (CF1805-06) — safe by
+IDENTITY, not by exemption.** `battleStats` *is* a probe, and its probe genomes come
+from `makeGenome`, which yields `size` in 0–5. Over that range the modulus is the
+identity function, so the probe output cannot move. The change only alters genomes
+whose `size` has drifted past 5 — which happens only through `crossGenome`'s
+unwrapped mutation, i.e. only for bred creatures, which the probes do not feed to
+`battleStats`.
+
+> **The test this generalises to:** a clamp or fold is fingerprint-safe when it is
+> the identity function *over the probe inputs*. Verify that claim by running
+> `validate.js`, not by reasoning about it alone — and if a probe moves, the clamp
+> was reachable from generated content and the change is a re-pin, not a fix.
+
+**3. What was NOT done, for exactly this reason.** Wrapping `size` inside
+`crossGenome` would close the underlying drift — but `crossGenome` *and*
+`evolveGenome` are both probes, and their outputs contain `size` directly. Wrapping
+the mutation changes every bred creature and breaks the v1.0 baseline. It is
+therefore a balance decision requiring a deliberate re-pin, not a bug fix. It was
+left undone and recorded. See ROADMAP's 2026-07-30 batch log.
+
+Related and unchanged: **the conquest odds memo is a cache, not a generator.**
+Rekeying it (round 8's P0) alters which cached value is returned, never what
+`runDuel` computes — `runDuel` and `winEstimate` are both probes and both held.

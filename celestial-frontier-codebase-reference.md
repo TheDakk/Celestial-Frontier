@@ -603,17 +603,18 @@ domain-determinism grep, headless jsdom boot with zero errors, and a **50-probe*
 fingerprint over the deterministic core (world-gen, descriptors, genomes, duels,
 share codes) that must match the v1.0 baseline byte for byte.
 
-**The battery is now SIX suites, not one** (four gate every batch and `deploy.js`
-enforces them; the last two are run on demand):
+**The battery is now SEVEN suites, not one** (four gate every batch and `deploy.js`
+enforces them; the last three are run on demand):
 
 | Suite | What it can see | Gate? |
 |---|---|---|
 | `validate.js` | build + 9 static gates + the 50-probe fingerprint | every batch |
 | `smoke.js` | jsdom: real flows, the full 21-step training, ~553 checks | every batch |
-| `uilayout.js` | **a real headless browser**: computed boxes, 44px touch floors, and `elementFromPoint` hit-tests across 10 viewports (~683 checks) | every batch |
+| `uilayout.js` | **a real headless browser**: computed boxes, 44px touch floors, and `elementFromPoint` hit-tests across 10 viewports (~763 checks, incl. a 63-point reachability grid on the training card against each raisable surface in **both** card positions) | every batch |
 | `balance-sim.js` | 17 archetype win-rate band + 55 ability-theme art band | every batch |
 | `bootperf.js` | **cold boot in a real browser over gzipped HTTP**: decomposes first-interactive into network / in-DOM / painted / **answerable**, plus a longtask census split at the gate. `--assert` enforces the art-hold law | on demand |
 | `simrun.js dom` | **UI reachability**: takes actions through the real controls and proves the press *landed*; reports `absent` / `disabled` / `dead` / `uncovered` | on demand |
+| `duelxp-check.js` | **reward outcomes**: drives the real friendly-duel arena and reads the ledger afterwards — proves the XP *arrived*, not that `awardXP` works | on demand |
 
 `uilayout.js` exists because jsdom has no layout: a rule can be present, correct
 and **completely inert**, and only a real browser can tell you. It accepts
