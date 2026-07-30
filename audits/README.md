@@ -48,6 +48,53 @@ v1.8.3/v1.8.4.
 **Our response:** `../REVIEWER_NOTES_v1.8.2.md` (corrected after they caught us overstating
 "zero added payload").
 
+### `round-8-v1.8.5/` — round 8, audited build `e20d62c` (v1.8.5 "First Touch")
+
+**Start with `v1.8.5-review.md`.** Organised as a path to 10/10 rather than a bug list: §1 the
+obstacles · §2 the archetypes · §3 the path · §4 the pattern. 7 new CF1805 findings, plus a residue
+table on the round-7 partials.
+
+The harness was **rebuilt** for this round, and that is the story of the bundle: 18 archetypes (was
+10) and — the part that mattered — **12 goal-directed verbs** (`mine · harvest · scavenge · tame ·
+conquer · craft · breed · feed · charter · sheet · idle · backout`) driven off the game's own
+`data-act`/`data-craft`/`data-chacc` hooks, replacing eight generic actions that all poked the same
+map. That is why five previous rounds never reached mid-game. Half the deep sessions boot from a
+seeded veteran save built with the build's **own** `makeGenome`.
+
+| Path | What it is |
+|---|---|
+| `v1.8.5-review.md` | The report |
+| `evidence/tr_ipad-mini_step8.png` | CF1805-01 — the Compendium up, the training card gone |
+| `evidence/tr_ipad-mini_step5/6/7/9.png` | The surrounding steps, for context |
+| `data/fleet-rollup.txt` | 214 sessions: health, per-archetype reach, **saw vs did** |
+| `data/training-reachability-v185.txt` | 6 viewports × 17 surfaces, every training step |
+| `data/fleet-214-sessions.jsonl.gz` | Raw session records |
+| `data/fleet-plan.json` · `veteran-save.json` | The seeded plan (re-runnable) + the mid-game save |
+| `harness/*.mjs` | The rebuilt instrument, incl. `tutreach8.mjs` (found both P0s) |
+| `prior-rounds/*.md` | v1.7.15 → v1.8.2 fix lists |
+
+**`saw` vs `did` is the metric to carry forward.** "The affordance existed when we looked" vs "the
+verb completed and the world changed" — a system nobody can find is as broken as one that errors,
+and nothing in our own battery measures it. Their §2.4 finding: once an affordance is on screen the
+game does the thing (100% for six verbs, 85%+ for four more). The barrier is entirely `nocard` —
+the land-first chain fails about nine times out of ten. That is the mid-game reachability problem,
+measured for the first time.
+
+**Our response:** `../REVIEWER_NOTES_v1.8.6.md`.
+**What we shipped from it:** v1.8.6 "Kept Promises" — 10 of the 12 fixes are player-visible.
+CF1805-05 (harvest) is open **by decision** and the notes explain why it is not closable offline.
+
+### `battery-v1.8.5/` — the independent full battery on the same build
+
+Arrived separately the same day, and agrees with round 8 on almost nothing — which is what made the
+pair useful. Its P0 is the **conquest odds cache**, which round 8 did not find at all: the memo key
+named four of the ten inputs that move the result, so the meter could display 0% when the true
+matchup had become 100%. Reproductions A and B are in the report. Both bundles independently found
+the live `fed`/`brood` overshoot.
+
+- `Celestial_Frontier_v1.8.5_Full_Battery_Audit.md` — the report (verdict, 14-point Gold checklist)
+- `Celestial_Frontier_v1.8.5_Review_1..4_*.md` — the four analytical lenses
+
 ## Two things worth carrying forward
 
 **Their method beat ours twice.** They verify by *reachability* — does the code exist **and** can it

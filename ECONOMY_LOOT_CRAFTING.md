@@ -1,6 +1,6 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-**STATUS:** matches code as of 2026-07-29 (verified against main.js).
+**STATUS:** matches code as of 2026-07-30 (verified against main.js). See the 2026-07-30 addendum at the end — the charter clock exploit is rate-limited, the harvest one is OPEN by decision.
 **Purpose:** The material economy — mining dead worlds into Cargo, spending it at the Shipyard (Fabricator + Research), crafting the gear/relic ladder, the item tooltip card, and the v1.6 AFFIX/LOOT core that imbues worn gear with seeded bonus stats.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 **Cross-reference (v1.7):** the full v1.7 Forge economy — the 47-material registry with
@@ -165,3 +165,49 @@ It now answers on press: the refusal tone plus a toast naming what is missing. (
 `aria-disabled` there is *correct* — that button is genuinely inert as an action. The specimen-card
 `.needs` buttons are different: they are focusable and *do* act, so their `aria-disabled` was
 removed in v1.8.3.)
+
+---
+
+## ADDENDUM 2026-07-30 — round 8: two clock exploits, and why only one of them closed
+
+Both findings share a root cause worth stating plainly: **an offline game cannot
+verify the wall clock.** There is no trusted time source, and `performance` time is
+monotonic only *within* a page load — it restarts at every reload. That single fact
+decides what is fixable here.
+
+**Weekly charters (CF1805-07) — rate-limited, not closed.** `_chArmed` correctly
+defers the week roll past the boot tick (CF1720-06), but nothing limited how *often*
+the roll could run, and any board render triggers it. Stepping the OS clock forward
+a week at a time cleared every weekly `chProg` key and every weekly `chacc` entry,
+making already-completed weeklies claimable again and reseeding a fresh slate —
+measured by the reviewer at **~77.5 ☄ per step**, which is the value the design
+intends per *real* week, arriving every one to three minutes.
+
+`_chRoll` now allows **one roll per 10 monotonic minutes**. No honest player can
+reach that ceiling (a real week boundary is crossed at most once in a session), and
+it costs a cheater ten minutes of real time per slate. This is a **mitigation, and
+the comment in the source says so** — it raises the cost, it does not close the door.
+
+**Harvest (CF1805-05) — NOT FIXED, and not fixable as proposed.** The in-session
+monotonic gate added in v1.8.4 is real and stays: winding the clock forward *while
+playing* buys nothing. The reload path is open — harvest, wind the clock forward an
+hour, reload, harvest again, at roughly **6,200 ☄/hour against 26 by design**.
+
+The proposed fix ("persist the monotonic stamps") **cannot work**: a persisted
+monotonic stamp is meaningless on the far side of the reload that defeats it,
+because the monotonic clock restarts at zero. And the deeper problem is that a
+forward clock jump is *indistinguishable* from a genuine hour away — every bound
+tight enough to stop the exploit also punishes a player who legitimately closed the
+tab. Note that harvest does not accumulate: an hour away and a week away both yield
+exactly one cycle, so there is no offline-progress cap to lean on either.
+
+That leaves two honest options, both Nick's:
+
+1. **Accept it.** Single-player, offline, no leaderboard, no monetisation — this is
+   self-cheating, and it costs a deliberate trip to the OS date settings per cycle.
+2. **Change the design** so harvest yield derives from engagement rather than wall
+   time, which removes the incentive instead of policing it.
+
+What must *not* happen is a patch that looks like a fix and is not — that is exactly
+the round-8 pattern the reviewer named (a correct diagnosis in a comment, with the
+code doing something else).

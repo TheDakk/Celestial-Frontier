@@ -465,6 +465,62 @@
   {
    "vp": "iphone-se",
    "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
    "name": "battery P2: Settings › Audio is clickable during a lesson",
    "ok": true,
    "detail": "blocked by stab"
@@ -929,14 +985,70 @@
    "surf": "training",
    "name": "step 5: the OPEN Atlas outranks the survey card",
    "ok": true,
-   "detail": "covered by lacts"
+   "detail": "covered by nm"
   },
   {
    "vp": "iphone",
    "surf": "training",
    "name": "step 8: the OPEN Compendium outranks the survey card",
    "ok": true,
-   "detail": "covered by empty"
+   "detail": "covered by B"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
   },
   {
    "vp": "iphone",
@@ -1405,14 +1517,70 @@
    "surf": "training",
    "name": "step 5: the OPEN Atlas outranks the survey card",
    "ok": true,
-   "detail": "covered by sub-hint"
+   "detail": "covered by log-head"
   },
   {
    "vp": "iphone-max",
    "surf": "training",
    "name": "step 8: the OPEN Compendium outranks the survey card",
    "ok": true,
-   "detail": "covered by empty"
+   "detail": "covered by B"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
   },
   {
    "vp": "iphone-max",
@@ -1881,14 +2049,70 @@
    "surf": "training",
    "name": "step 5: the OPEN Atlas outranks the survey card",
    "ok": true,
-   "detail": "covered by sub-hint"
+   "detail": "covered by log-head"
   },
   {
    "vp": "android",
    "surf": "training",
    "name": "step 8: the OPEN Compendium outranks the survey card",
    "ok": true,
-   "detail": "covered by empty"
+   "detail": "covered by B"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
   },
   {
    "vp": "android",
@@ -2357,7 +2581,7 @@
    "surf": "training",
    "name": "step 5: the OPEN Atlas outranks the survey card",
    "ok": true,
-   "detail": "covered by sub-hint"
+   "detail": "covered by log-head"
   },
   {
    "vp": "ipad-port",
@@ -2365,6 +2589,62 @@
    "name": "step 8: the OPEN Compendium outranks the survey card",
    "ok": true,
    "detail": "covered by empty"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
   },
   {
    "vp": "ipad-port",
@@ -2833,7 +3113,7 @@
    "surf": "training",
    "name": "step 5: the OPEN Atlas outranks the survey card",
    "ok": true,
-   "detail": "covered by sub-hint"
+   "detail": "covered by log-head"
   },
   {
    "vp": "ipad-mini",
@@ -2841,6 +3121,62 @@
    "name": "step 8: the OPEN Compendium outranks the survey card",
    "ok": true,
    "detail": "covered by empty"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
   },
   {
    "vp": "ipad-mini",
@@ -3363,6 +3699,62 @@
   {
    "vp": "ipad-land",
    "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-land",
+   "surf": "training",
    "name": "battery P2: Settings › Audio is clickable during a lesson",
    "ok": true,
    "detail": "blocked by stab"
@@ -3832,6 +4224,62 @@
   {
    "vp": "laptop",
    "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "laptop",
+   "surf": "training",
    "name": "battery P2: Settings › Audio is clickable during a lesson",
    "ok": true,
    "detail": "blocked by stab"
@@ -4301,6 +4749,62 @@
   {
    "vp": "desktop",
    "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "desktop",
+   "surf": "training",
    "name": "battery P2: Settings › Audio is clickable during a lesson",
    "ok": true,
    "detail": "blocked by stab"
@@ -4766,6 +5270,62 @@
    "name": "step 8: the OPEN Compendium outranks the survey card",
    "ok": true,
    "detail": "covered by B"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Atlas (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Compendium (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Charters (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "wide",
+   "surf": "training",
+   "name": "CF1805-01: the lesson card survives a raised Records (card dodged)",
+   "ok": true,
+   "detail": "100% reachable (63/63)"
   },
   {
    "vp": "wide",

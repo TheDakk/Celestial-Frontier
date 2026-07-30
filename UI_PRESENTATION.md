@@ -1,9 +1,10 @@
 # Celestial Frontier — UI / Presentation System
 
-**STATUS:** matches code as of 2026-07-30 (verified against main.js + tools/). The 2026-07-30 pass
-added **THE ART-HOLD LAW** (shipped in v1.8.5) at the end of this file — nothing expensive may be
-synthesised behind a blocking full-screen surface — and the *painted ≠ answerable* distinction that
-found it.
+**STATUS:** matches code as of 2026-07-30 (verified against main.js + the html). Two addenda sit at
+the end of this file: **THE ART-HOLD LAW** (shipped in v1.8.5) — nothing expensive may be synthesised
+behind a blocking full-screen surface — with the *painted ≠ answerable* distinction that found it;
+and **THE TRAINING LAYOUT CONTRACT** (round 8, CF1805-01) — a surface that can be raised above the
+lesson card must also join the `--tut-bot` positioning contract, or the raise buries the instruction.
 **Purpose:** the mobile-first presentation layer — the unified topbar, the one-panel-at-
 a-time manager, the "fold language", the vista box, the cards, and the platform caps —
 plus the headless layout gate that guards them.
@@ -418,3 +419,42 @@ nothing — only a **synchronous** block placed before the game script manufactu
 Both controls found bugs in the instrument, not the build. This is the fourth time on this project
 that a check has passed while the thing it guarded was broken; it is the first time the check was
 a performance gate.
+
+---
+
+## ADDENDUM 2026-07-30 — THE TRAINING LAYOUT CONTRACT (round 8, CF1805-01)
+
+**The rule:** any surface that `_tutPri()` can raise above the lesson card MUST
+also join the `--tut-bot` / `--tut-cap` positioning contract. A raise without the
+geometry does not reorder two surfaces — it *buries the instruction*.
+
+v1.8.4 fixed the mobile training wall by raising a lesson's own surface to
+`z-index:58`. The lesson **card** sits at 50. `#panel` was the only board that had
+ever joined the positioning contract, so it renders *below* the card; `#log`,
+`#codex`, `#chpanel` and `#records` got the raise and not the geometry, so they
+rendered *through* it. On iPad mini at step 8 the card measured **0% reachable,
+63/63 sample points blocked by `#codex`** — the instruction and its Skip button both
+invisible, with no way forward. The fleet saw the same wall from the player's side:
+once steps 5 and 7 were cleared, stalls at step 8 went **8 → 29**.
+
+Two things make this contract work, and both are easy to get wrong:
+
+**`--tut-bot` already encodes both card positions.** `_tutSpot()` publishes the free
+band: card at the top → the band *below* it; card dodged to the bottom → the band
+*above* it. So one rule (`top: var(--tut-bot)`, `max-height: var(--tut-cap)`) keeps a
+raised board clear either way. There is no need to branch on the card's side.
+
+**`bottom` and `min-height` must be released explicitly.** Under
+`@media (max-width:900px)` those four boards are pinned `top:auto !important` with a
+`min-height`, and in CSS **`min-height` beats `max-height`**. A `top:`-only rule
+would have been present, correct and completely inert — this project's signature
+failure mode, and the reason `uilayout.js` exists.
+
+**The gate.** `uilayout.js` now measures the card's reachability on a 63-point grid
+against each of the four surfaces, in **both** card positions, across 10 viewports.
+
+⚠ The first version of that gate measured only the top-pinned card and came back
+**clean on the exact case the round reported**, because a top-pinned card and a
+bottom-anchored board never share a band on a tablet. Their card had dodged. Adding
+the dodge pass reproduced their measurement verbatim. *Reproduce the reported
+geometry, not a convenient one.*

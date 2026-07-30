@@ -346,6 +346,24 @@ async function main() {
         return {ok: !!(e && (el===e || el.contains(e) || e.contains(el))),
                 by: e?((e.id||e.className||e.tagName)+''):'(nothing)'};
       };
+      /* ROUND 8 CF1805-01: a CENTRE-POINT hit says the board won the stack. It
+         cannot say whether the board ate the LESSON CARD, which is what actually
+         stranded the player. Sample a 63-point grid the way the external round
+         did, so our number is directly comparable to theirs. */
+      const reach=(el)=>{ const r=el.getBoundingClientRect();
+        if(r.width<1||r.height<1) return {pct:0, by:'zero-size'};
+        let ok=0, tot=0; const by={};
+        for(let i=1;i<=9;i++) for(let j=1;j<=7;j++){
+          const x=Math.round(r.left+r.width*i/10), y=Math.round(r.top+r.height*j/8);
+          if(x<0||y<0||x>innerWidth||y>innerHeight) continue;
+          tot++;
+          const e=document.elementFromPoint(x,y);
+          if(e && (el===e||el.contains(e)||e.contains(el))) ok++;
+          else { const k=e?((e.id||e.className||e.tagName)+''):'(nothing)'; by[k]=(by[k]||0)+1; }
+        }
+        const top=Object.entries(by).sort((a,b)=>b[1]-a[1])[0];
+        return {pct: tot?Math.round(ok/tot*100):0, ok:ok, tot:tot, by: top?(top[0]+' '+top[1]+'/'+tot):''};
+      };
       /* STEP 5 — "open the Star Atlas". The dock chip must be tappable with the
          survey card standing. This is Nick's screenshot: the chip half-buried. */
       out.dockAtlas=hit(logbtn);
@@ -354,11 +372,44 @@ async function main() {
          not the survey card — must be what a finger lands on. */
       log.style.display='block'; log.classList.add('tutpri');
       out.atlasOpen=hit(log);
+      out.cardVsAtlas=reach(tb);
       log.classList.remove('tutpri'); log.style.display='none';
       /* STEP 7/8 — the Compendium, the step Nick got stuck on outright */
       codex.style.display='block'; codex.classList.add('tutpri');
       out.codexOpen=hit(codex);
+      out.cardVsCodex=reach(tb);
       codex.classList.remove('tutpri'); codex.style.display='none';
+      /* the other two raisable surfaces in TUT_PRI_SURF. They are measured not
+         because a lesson points at them today but so that the NEXT surface added
+         to that list cannot inherit the raise without the geometry. */
+      const chp=document.getElementById('chpanel'), rec=document.getElementById('records');
+      if(chp){ chp.style.display='block'; chp.classList.add('tutpri');
+        out.cardVsCharters=reach(tb);
+        chp.classList.remove('tutpri'); chp.style.display='none'; }
+      if(rec){ rec.style.display='block'; rec.classList.add('tutpri');
+        out.cardVsRecords=reach(tb);
+        rec.classList.remove('tutpri'); rec.style.display='none'; }
+      /* THE DODGE PASS — and the reason it exists. Measured with the card pinned
+         at the TOP (above), a bottom-anchored board and the card never share a
+         band on a tablet, so the Compendium case the external round actually
+         reported came back CLEAN. Their iPad mini card had dodged to the BOTTOM
+         (the opposite-half rule), which is exactly where the boards live under
+         @media (max-width:900px). Re-publish the vars the way _tutSpot does for a
+         dodged card — dialogs rise ABOVE it — and re-measure all four. */
+      tb.classList.add('dodge');
+      {
+        const _r1=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--row1-h'))||58;
+        const _cr2=tb.getBoundingClientRect(), _top=Math.round(_r1+12);
+        document.documentElement.style.setProperty('--tut-bot', _top+'px');
+        document.documentElement.style.setProperty('--tut-cap', Math.max(140, Math.round(_cr2.top-_top-12))+'px');
+      }
+      for(const [k,el2] of [['Atlas',log],['Codex',codex],['Charters',chp],['Records',rec]]){
+        if(!el2) continue;
+        el2.style.display='block'; el2.classList.add('tutpri');
+        out['dodge'+k]=reach(tb);
+        el2.classList.remove('tutpri'); el2.style.display='none';
+      }
+      tb.classList.remove('dodge');
       /* external battery v1.8.2 (P2): "the training card blocks Settings › Audio"
          — measured, as they measured it, by whether the tab can actually be hit
          while a lesson is on screen. */
@@ -391,6 +442,21 @@ async function main() {
         !!(stack.atlasOpen && stack.atlasOpen.ok), 'covered by ' + (stack.atlasOpen && (stack.atlasOpen.by || stack.atlasOpen.why)));
       check(vp, 'training', 'step 8: the OPEN Compendium outranks the survey card',
         !!(stack.codexOpen && stack.codexOpen.ok), 'covered by ' + (stack.codexOpen && (stack.codexOpen.by || stack.codexOpen.why)));
+      /* ROUND 8 CF1805-01 — the assertion the four checks above could not make.
+         Raising the lesson's own surface to z58 put it over the lesson CARD at
+         z50: on iPad mini step 8 the card measured 0% reachable, 63/63 blocked
+         by #codex, and the fleet's stalls at that step went 8 → 29. The card is
+         where the instruction and the Skip button live, so a buried card is a
+         dead end, not a cosmetic overlap. */
+      for (const [k, lbl] of [['cardVsAtlas', 'Atlas'], ['cardVsCodex', 'Compendium'],
+                              ['cardVsCharters', 'Charters'], ['cardVsRecords', 'Records'],
+                              ['dodgeAtlas', 'Atlas (card dodged)'], ['dodgeCodex', 'Compendium (card dodged)'],
+                              ['dodgeCharters', 'Charters (card dodged)'], ['dodgeRecords', 'Records (card dodged)']]) {
+        const m = stack[k];
+        if (!m) continue;
+        check(vp, 'training', 'CF1805-01: the lesson card survives a raised ' + lbl,
+          m.pct >= 90, m.pct + '% reachable (' + m.ok + '/' + m.tot + ')' + (m.by ? ' — blocked by ' + m.by : ''));
+      }
       check(vp, 'training', 'battery P2: Settings › Audio is clickable during a lesson',
         !!(stack.audioTab && stack.audioTab.ok), 'blocked by ' + (stack.audioTab && (stack.audioTab.by || stack.audioTab.why)));
       check(vp, 'training', 'step 6: the survey card still outranks an open board for the LAND press',
