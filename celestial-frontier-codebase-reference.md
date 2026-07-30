@@ -692,7 +692,8 @@ surface), since panel/picker actions are the ones no harness here drives yet.
   backdrop close; global **Escape** closes overlays; full security/perf audit.
 - **Final:** intro button → **BEGIN THE EXPEDITION** ("Survey" kept as the game's verb).
 - **SOLID restructure (June 2026):** script reorganized into domain/app modules with
-  a verification toolkit (`tools/`) — behavior identical, 49-probe fingerprint pinned.
+  a verification toolkit (`tools/`) — behavior identical, fingerprint pinned (49 probes at the
+  time; the baseline has since grown to **50** — see §12).
 - **v1.1 (June 2026):** **Guide to the Universe** (searchable 26-topic manual replaces
   the Primer); **tooltip system** (`data-tip`/`data-guide`, Settings toggle, long-press
   on touch); **Field Training** — a 21-step, event-gated, fully sandboxed new-player
