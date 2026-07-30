@@ -97,6 +97,66 @@ Two traps, both of which bit this tool before it worked:
 Both controls found bugs in the instrument rather than the build — worth repeating before trusting
 any change to it.
 
+## simrun.js `dom` — the reachability tier
+
+```
+node tools/simrun.js dom 24        # → tools/simreport-dom.json
+CF_SRC=/path/to/other.html node tools/simrun.js dom 24    # A/B another build
+```
+
+Every other expedition tier (`fast`, `deep`, `medium`, `veteran`) takes its actions
+by calling a probe hook — `H.craftItem()`, `H.tryCapture()`, `H.equipItem()`. That
+proves the **action** works. It cannot prove a **player could reach it**, which is
+why 1,000-session tiers were structurally blind to CF1802-07 (a Fabricator button
+with no handler at all) and CF1802-09 (a roster row that minted a species). Both had
+to be found by an external round.
+
+In `dom` mode a covered action is driven through the real control, and the press must
+**land** — proven by a before/after effect snapshot, never by the fact that a click was
+dispatched. Three findings, kept apart because they have three different fixes:
+
+| finding | meaning |
+|---|---|
+| `absent` | no control for an action the API says is possible |
+| `disabled` | the control refuses while the API accepts (a gating disagreement) |
+| `dead` | the control accepts the press and nothing happens |
+
+**Adjudicating `dead` is the whole design.** "Pressed it and nothing changed" is *also*
+what a legitimately-unavailable action looks like, so a naive before/after check cries
+wolf on every unaffordable recipe. The tier records `dead` only if the API path then
+succeeds from the same state. A harness that cries wolf gets ignored, and an ignored
+harness is worse than none.
+
+`uncovered` is reported on purpose. A tier that silently skips what it cannot drive
+reads as "all clear" when it really means "did not look". Currently covered: **craft**.
+`capture`, `equip`, `feed`, `breed` and `heal` need panel/picker state the expedition
+never establishes — they stay API-driven and are counted, not quietly omitted.
+
+Adding an action means adding a `UI_PATHS` entry: `open()` makes the surface reachable
+(idempotent), `find()` returns the control a player would press, `effect()` returns a
+comparable snapshot the action must change, optional `why()` makes a finding
+self-diagnosing.
+
+⚠ **Scope.** jsdom has NO LAYOUT, so this tier proves a *live handler* exists — not that
+the control is on screen, unburied or tappable. `tools/uilayout.js` owns that half, in a
+real browser with hit-tests. Together they cover reachability; neither does alone.
+
+**Negative-controlled both ways** via `CF_SRC` against deliberately broken builds — the
+only reason a `PASS` here means anything:
+
+| build | ok | absent | dead | verdict |
+|---|---|---|---|---|
+| craft handler neutralised (`const cr=null`) | 0 | 0 | **183** | FAIL |
+| `data-craft` attribute renamed away | 0 | **178** | 0 | FAIL |
+| real build (24 runs, 1,488 presses) | 99.3% | 0 | 0 | **PASS** |
+
+A caution worth repeating: the first four iterations of this tier reported 141, then
+106, then 85 findings, **all of them the harness's own fault** — a stale Shipyard (the
+bot mines via API, which never fires the UI's ore-arrival re-render) and the Research
+Bench being up instead of the Fabricator (`yardView` renders one bench at a time, and
+both use `.bset` rows, so the wrong one looks superficially right — `.fabgrp` is the
+tell). Distrust this tier's first findings until the controls above pass.
+
 ## One-time refactor tooling (kept for the record)
 
 `refactor/` holds the scripts that performed the 2026-06 SOLID restructure:
