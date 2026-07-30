@@ -25,11 +25,14 @@
 ##   state → the v2.0 plan. Source AND site pushed; full battery green.
 ##
 ## ═══ WHERE THINGS STAND ═══
-## ⚠ UNCOMMITTED WORK IN THE TREE (2026-07-29, after the v1.8.4 ship): NEXT #6 is done —
-##   tools/bootperf.js (new cold-boot gate) + main.js `_hdLater` (the art-hold fix, TTI on a
-##   4x-throttled phone 6440ms -> 1905ms) + UI_PRESENTATION/tools-README/codebase-reference.
-##   Full battery re-run green. NOT deployed, NOT version-bumped, no release-note bullet — all
-##   three are Nick's call. See item 6 below for the full diagnosis and 6c for the drafted bullet.
+## ★ SINCE THE v1.8.4 SHIP (2026-07-29) — two NEXT items closed, both COMMITTED AND PUSHED,
+##   but NOT deployed and NOT version-bumped (Nick's call; see 6c for the drafted release bullet):
+##   · #6 cold boot (commit 94bcfba) — tools/bootperf.js + `_hdLater`. TTI on a 4x-throttled
+##     phone 6440ms -> 1905ms. Full battery re-run green.
+##   · #7 DOM tier — tools/simrun.js `dom` mode. Tooling only; no game code touched, so the
+##     battery is unaffected by it.
+##   BOTH found bugs in THEMSELVES before they found any in the build (see the ⚠⚠ notes in 6
+##   and 7). That is now five instances of a check passing while the thing it guarded was broken.
 ## LIVE: v1.8.4 (build 66e0516) at https://celestialfrontier.github.io/. Source repo pushed.
 ## GATES AT SHIP: fingerprint MATCH 50/50 · smoke 553/0 · uilayout 683 checks / 10 viewports ·
 ##   balance PASS · validate 9/9 · deadcode 3 candidates (all tooling-referenced, fine).
@@ -118,8 +121,41 @@
 ##    🚀 THE FIRST SCREEN ANSWERS AT ONCE — on a phone, a brand-new expedition spent several
 ##    seconds building world art you could not see yet, behind the naming screen, so the very
 ##    first thing you touched did not respond. The art now waits its turn.
-## 7. DOM-DRIVEN simrun tier. simrun drives PROBE HOOKS, not the DOM, so it is structurally blind
-##    to every UI feature v1.8 shipped. Closing this permanently removes a whole blind spot.
+## 7. ✔ DOM-DRIVEN simrun tier — BUILT 2026-07-29 as `node tools/simrun.js dom N`.
+##    FIRST, A CORRECTION: the old wording here ("simrun drives PROBE HOOKS, not the DOM") was
+##    half wrong. The `ui`/`chaos` tiers ALREADY drive the DOM and use the probe hook only to
+##    OBSERVE. It is the EXPEDITION tiers (fast/deep/medium/veteran) — the high-volume ones that
+##    produce every metric — that call ~28 hooks directly. That is the real blind spot, and it is
+##    why a bot calling craftItem() could never notice a dead Craft button: CF1802-07 (a Fabricator
+##    button with NO handler) and CF1802-09 (a roster row that minted a species) both had to be
+##    found by an external round.
+##    THE TIER: a covered action is driven through the real control and the press must LAND, proven
+##    by a before/after effect snapshot — never by the fact that a click was dispatched. Three
+##    findings, kept apart because they have three different fixes: `absent` (no control for an
+##    action the API says is possible) · `disabled` (control refuses, API accepts) · `dead`
+##    (control accepts the press, nothing happens).
+##    ★ ADJUDICATING `dead` IS THE WHOLE DESIGN. "Pressed it and nothing changed" is ALSO what a
+##    legitimately-unavailable action looks like, so a naive check cries wolf on every unaffordable
+##    recipe. `dead` is recorded ONLY if the API path then succeeds from the same state. A harness
+##    that cries wolf gets ignored, and an ignored harness is worse than none.
+##    NEGATIVE-CONTROLLED BOTH WAYS via the existing CF_SRC env var, and it DISTINGUISHES the two:
+##    handler neutralised -> 183 dead / 0 absent · attribute renamed away -> 178 absent / 0 dead ·
+##    real build (24 runs, 1,488 presses) -> 99.3% landed, 0 findings, PASS.
+##    ⚠⚠ THE LESSON, AND IT IS THE SAME ONE AGAIN: the first FOUR iterations reported 141, then
+##    106, then 85 findings — EVERY ONE the harness's own fault. A stale Shipyard (the bot mines
+##    via H.mineWorld, which never fires the UI's ore-arrival re-render) and then the Research
+##    Bench being up instead of the Fabricator (yardView renders one bench at a time, and BOTH use
+##    .bset rows, so the wrong one looks superficially like a rendered Fabricator — .fabgrp is the
+##    tell). Findings that carry their own diagnosis (`why()`) are what cracked it; the first
+##    version's "no control for {id}" was a bug report nobody could action.
+##    ⚠ SCOPE, stated so the report is never read as more than it is: jsdom has NO LAYOUT, so this
+##    proves a LIVE HANDLER, not that the control is on screen or tappable. uilayout.js owns that
+##    half. Together they cover reachability; neither does alone.
+## 7a. COVERAGE IS ONE ACTION SO FAR — `craft`. `capture`, `equip`, `feed`, `breed`, `heal` need
+##    panel/picker state the expedition never establishes; they stay API-driven and are counted as
+##    `uncovered` in the report rather than quietly omitted (a tier that silently skips what it
+##    cannot drive reads as "all clear" when it means "did not look"). Adding one is a UI_PATHS
+##    entry: open/find/effect/why. NEXT most valuable: `capture` (CF1802-09's own surface).
 ## 8. HARNESS NOISE FLOOR: ±6 on "creatures reaching L3" at n=100 (found when two sim-identical
 ##    builds returned 16 and 10). Raise runs-per-arm or pair seeds before scoring at that
 ##    granularity again. The no-op and stall counters ARE stable (35.3/35.3/35.0/35.4).

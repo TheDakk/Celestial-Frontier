@@ -12,6 +12,14 @@
 //   fast  — jsdom boot + skip-training, then a persona-driven expedition of
 //           direct API calls (land/mine/craft/equip/scan/feed/breed/heal/
 //           harvest/beacon/jump) with invariants checked per action.
+//   dom   — the fast tier with its HANDS TIED: every covered action must be
+//           taken through the real control, and the press must be proven to have
+//           LANDED. The other expedition tiers call probe hooks (H.craftItem,
+//           H.tryCapture, H.equipItem), which proves the ACTION works but never
+//           that a player could reach it — so this harness was structurally
+//           blind to CF1802-07 (a Fabricator button with no handler at all) and
+//           CF1802-09 (a roster row that minted a species). Both had to be found
+//           by an external round. See "THE DOM TIER" in expedition().
 //   deep  — the fast tier grown up: longer sessions, a bill-of-materials
 //           planner that chases the whole drive ladder (Jump → Array → IG),
 //           real conquests (through the picker + duel UI), friendly duels,
@@ -197,6 +205,157 @@ async function expedition(sess, seed, nActions, deep, modeLabel) {   /* CF-SIM-0
     inv(H, doc, label);
   };
 
+  /* ================= THE DOM TIER (ROADMAP NEXT #7) =================
+     Everything else in this function takes its actions by calling a probe hook.
+     That proves the ACTION works. It cannot prove a PLAYER could ever reach it,
+     which is why this harness — 1,000-session tiers and all — was structurally
+     blind to a whole class of defect. CF1802-07 (the Fabricator shortfall button
+     had NO handler at all) and CF1802-09 (tapping a roster row minted an
+     uncaught species) both had to be found by an external round. A bot calling
+     craftItem() will never notice a dead Craft button.
+
+     In `dom` mode a covered action is driven through the real control, and the
+     press must LAND — proven by a before/after effect snapshot, never by the
+     fact that a click was dispatched.
+
+     THREE FINDINGS, kept separate because they have three different fixes:
+       absent   — no control for an action the API says is possible
+       disabled — the control refuses while the API accepts (a gating disagreement)
+       dead     — the control accepts the press and nothing happens
+
+     ADJUDICATING `dead` IS THE WHOLE DESIGN. "Pressed it and nothing changed" is
+     ALSO exactly what a legitimately-unavailable action looks like, so a naive
+     before/after check would cry wolf on every unaffordable recipe. The tier
+     records `dead` ONLY if the API path then succeeds from the same state — i.e.
+     the action really was possible and only the control failed. Anything else is
+     an ordinary noop. A harness that cries wolf gets ignored, and an ignored
+     harness is worse than none.
+
+     ⚠ SCOPE, stated so the report is never read as more than it is: jsdom has NO
+     LAYOUT. This tier proves a LIVE HANDLER exists — not that the control is on
+     screen, unburied or tappable. tools/uilayout.js owns that half, in a real
+     browser with hit-tests. Together they cover reachability; neither does alone.
+
+     Actions with no UI_PATHS entry stay API-driven and are counted as
+     `uncovered`, so the report says plainly what the tier did NOT prove. Adding
+     one means adding an entry: open() makes the surface reachable (idempotent),
+     find() returns the control a player would press, effect() returns a
+     comparable snapshot that the action must change. */
+  const domMode = (modeLabel === 'dom');
+  run.ui = { tried: 0, ok: 0, absent: 0, disabled: 0, dead: 0, noop: 0, uncovered: 0, byAction: {} };
+  run.uiFindings = [];
+  /* a bare click() never fires the outside-close manager or a tap-dismiss — this
+     project has produced vacuous passes twice that way (the v1.6.4 step-6 lock,
+     CF1802-08), so every press this tier makes is a real pointer sequence. */
+  const _mev = (el, type) => el.dispatchEvent(new w.MouseEvent(type, { bubbles: true, cancelable: true, view: w, button: 0 }));
+  const press = (el) => { if (!el) return false; _mev(el, 'pointerdown'); _mev(el, 'pointerup'); _mev(el, 'click'); return true; };
+  /* aria-disabled counts: v1.8.4 fixed buttons that CLAIMED to be disabled while
+     being actionable, so a tier that ignored the attribute would miss the inverse */
+  const isOff = (el) => !!(el.disabled || el.getAttribute('aria-disabled') === 'true');
+  const $ = (sel) => { try { return doc.querySelector(sel); } catch (_) { return null; } };
+
+  const UI_PATHS = {
+    /* CRAFT — the CF1802-07 surface. A real player: open the Shipyard, expand the
+       recipe's category (they all start CLOSED since v1.7), press Craft. */
+    craft: {
+      /* ALWAYS arrive at a freshly rendered Fabricator, by closing it first if it
+         is open. Trying to deduce whether the DOM was current enough to trust was
+         a dead end: renderYard() only runs on open and on craft/pin, while the bot
+         gains its ore through H.mineWorld(), so an open Shipyard can hold markup
+         from before the materials landed. Correctness over cleverness — the extra
+         press costs nothing and removes a whole class of phantom findings. */
+      open(ctx) {
+        const cb = doc.getElementById('cargobtn');
+        const yard = doc.getElementById('yard');
+        const isOpen = () => !!yard && yard.style.display === 'flex';
+        if (isOpen()) press(cb);            /* close, so the reopen re-renders */
+        press(cb);                          /* open -> renderYard() with CURRENT ore */
+        if (!isOpen()) press(cb);           /* flag/DOM disagreed once — settle it */
+        /* pick the Fabricator tab. The Shipyard holds TWO benches (Fabricator and
+           Research) and renders only one — `yardView`. With the Research Bench up,
+           the Craft button is legitimately not in the DOM, and the tier was
+           reporting that as a missing control. A player picks the bench they
+           want; so does the tier. (Both views use .bset rows, which is why the
+           wrong one looks superficially like a rendered Fabricator — .fabgrp is
+           the tell.) */
+        if (!$('#yard .fabgrp')) press($('#yard [data-yt="fab"]'));
+        const it = H.ITEM_BY.get(ctx.id);
+        const grp = it && $('.fabgrp[data-fg="' + it.cat + '"]');
+        /* the disclosure is part of the path, not an obstacle to route around:
+           every category ships CLOSED since v1.7, so a player must expand it */
+        if (grp && !/\bopen\b/.test(grp.className || '')) press(grp.querySelector('.fghead'));
+      },
+      find: (ctx) => $('#yard [data-craft="' + ctx.id + '"]'),
+      /* WHY A REFRESH STEP EXISTS, and why it is not a fig leaf: the bot acquires
+         its ore through H.mineWorld(), which does not fire the UI's ore-arrival
+         re-render ("THE FORGE READS YOUR HOLD", v1.7). So the open Shipyard holds
+         markup from before the materials landed and the Craft button is genuinely
+         not in the DOM — a stale view, not a missing control. A player who mined
+         through the UI would be looking at a fresh Fabricator. Closing and
+         reopening is a real player action and is the honest way to get there.
+         Without this the tier reported 141 phantom `absent` findings in 6 runs. */
+      refresh(ctx) { press(doc.getElementById('cargobtn')); press(doc.getElementById('cargobtn')); this.open(ctx); },
+      effect: (ctx) => (H.stats.crafts || 0) + ':' + (H.items.get(ctx.id) || 0),
+      why(ctx) {
+        const y = doc.getElementById('yard');
+        const it = H.ITEM_BY.get(ctx.id) || {};
+        const grp = $('.fabgrp[data-fg="' + it.cat + '"]');
+        let can = null; try { can = H._canCraft(it); } catch (_) {}
+        return 'yard=' + (y ? (y.style.display || 'unset') : 'missing') +
+          ' cat=' + it.cat + ' grp=' + (grp ? grp.className : 'missing') +
+          ' nCraftBtns=' + doc.querySelectorAll('#yard [data-craft]').length +
+          ' canCraftNow=' + can + ' need=' + !!$('#yard .bclaim.need') +
+          ' benchLen=' + (doc.getElementById('yardbench') ? doc.getElementById('yardbench').innerHTML.length : 'no-el') +
+          ' ctabs=' + !!$('#yard .ctabs') + ' nBset=' + doc.querySelectorAll('#yard .bset').length;
+      },
+    },
+  };
+
+  /* Drive `action` through the UI. apiFn is the probe-hook path: it is the
+     fallback that keeps the session alive AND the adjudicator for `dead`. */
+  function uiDo(action, ctx, apiFn) {
+    const p = UI_PATHS[action];
+    const slot = run.ui.byAction[action] ||
+      (run.ui.byAction[action] = { tried: 0, ok: 0, absent: 0, disabled: 0, dead: 0, noop: 0 });
+    if (!p) { run.ui.uncovered++; if (apiFn) apiFn(); return 'uncovered'; }
+    run.ui.tried++; slot.tried++;
+    const fail = (kind, detail) => {
+      run.ui[kind]++; slot[kind]++;
+      if (run.uiFindings.length < 40) run.uiFindings.push({ action, kind, at: run.actions, detail: detail || '' });
+      return kind;
+    };
+    try { p.open(ctx); } catch (e) { run.errors.push('ui-open ' + action + ': ' + (e && e.message)); }
+    let el = p.find(ctx);
+    /* one refresh, then believe the answer — a surface can be stale for reasons
+       that are the harness's fault, not the build's (see craft.refresh) */
+    if (!el && p.refresh) {
+      try { p.refresh(ctx); } catch (e) { run.errors.push('ui-refresh ' + action + ': ' + (e && e.message)); }
+      el = p.find(ctx);
+      if (el) slot.refreshed = (slot.refreshed || 0) + 1;
+    }
+    if (!el) {
+      /* absent is only a finding if the action was actually possible — same
+         adjudication as `dead`, for the same reason */
+      /* a finding must carry enough to diagnose itself — "no control" with no
+         context is a bug report nobody can action */
+      const b = p.effect(ctx); if (apiFn) apiFn();
+      return p.effect(ctx) !== b ? fail('absent', 'no control for ' + JSON.stringify(ctx) + ' | ' + (p.why ? p.why(ctx) : '')) : (slot.noop++, run.ui.noop++, 'noop');
+    }
+    if (isOff(el)) {
+      const b = p.effect(ctx); if (apiFn) apiFn();
+      return p.effect(ctx) !== b ? fail('disabled', 'control refused but the API accepted') : (slot.noop++, run.ui.noop++, 'noop');
+    }
+    const before = p.effect(ctx);
+    press(el);
+    if (p.effect(ctx) !== before) { run.ui.ok++; slot.ok++; return 'ok'; }
+    /* pressed, nothing moved. Let the API decide whether that was a dead control
+       or simply an action that was never available. */
+    const b2 = p.effect(ctx); if (apiFn) apiFn();
+    return p.effect(ctx) !== b2
+      ? fail('dead', 'control present and enabled, press did nothing, API succeeded')
+      : (slot.noop++, run.ui.noop++, 'noop');
+  }
+
   const solSys = H.systemFor(SOL.seed);
   let farStars = [];
   let curStar = { x: SOL.x, y: SOL.y, seed: SOL.seed }, curSys = solSys;
@@ -348,7 +507,11 @@ async function expedition(sess, seed, nActions, deep, modeLabel) {   /* CF-SIM-0
         if (!id && deep) id = GEAR_WISHLIST.find((g) => ids.includes(g) && (H.items.get(g) || 0) < 1) || null;
         if (!id) id = ids[(r() * ids.length) | 0];
         const before = H.stats.crafts || 0;
-        H.craftItem(id);
+        /* dom tier: press the real Craft button. uiDo falls back to craftItem()
+           itself, so the session continues either way and a dead control is
+           recorded rather than silently papered over. */
+        if (domMode) uiDo('craft', { id }, () => H.craftItem(id));
+        else H.craftItem(id);
         if ((H.stats.crafts || 0) > before) {
           run.crafts++;
           const it = H.ITEM_BY.get(id);
@@ -882,11 +1045,15 @@ async function childMain(mode, n, seed0) {
            between-sessions length. */
         /* 'veteran' — one save played far past the honeymoon: the
            staleness/retention tier (Nick's month-two instrument) */
+        /* 'dom' — the reachability tier. Deep-tier behaviours (it must reach the
+           Shipyard, expand a category, press a real Craft button) at a fast-tier
+           length, because each action now costs real DOM work. */
         const nActs = mode === 'veteran' ? 2000 + ((seed >>> 4) % 400)
                     : mode === 'deep' ? 450 + ((seed >>> 4) % 450)
                     : mode === 'medium' ? 220 + ((seed >>> 4) % 200)
+                    : mode === 'dom' ? 150 + ((seed >>> 4) % 150)
                     : 120 + ((seed >>> 4) % 300);
-        out = await expedition(sess, seed, nActs, mode === 'deep' || mode === 'medium' || mode === 'veteran', mode);
+        out = await expedition(sess, seed, nActs, mode === 'deep' || mode === 'medium' || mode === 'veteran' || mode === 'dom', mode);
         try { sess.w.close(); } catch (_) {}
       }
     } catch (e) { out = { mode, seed, fatal: String(e && e.message) }; }
@@ -906,7 +1073,37 @@ function aggregate(mode, runs) {
     const k = String(e).slice(0, 140); errTable[k] = (errTable[k] || 0) + 1;
   }
   const rep = { mode, runs: runs.length, generatedFrom: 'tools/simrun.js', errorTable: errTable };
-  if (mode === 'fast' || mode === 'deep' || mode === 'medium' || mode === 'veteran') {
+  /* ---- the DOM tier's own verdict: reachability, reported per action ----
+     `uncovered` is printed on purpose. A tier that silently skips what it cannot
+     drive reads as "all clear" when it is really "did not look". */
+  if (mode === 'dom') {
+    const sum = { tried: 0, ok: 0, absent: 0, disabled: 0, dead: 0, noop: 0, uncovered: 0 };
+    const byAction = {};
+    const findings = {};
+    for (const r of runs) {
+      if (!r.ui) continue;
+      for (const k in sum) sum[k] += (r.ui[k] || 0);
+      for (const a in (r.ui.byAction || {})) {
+        const s = byAction[a] || (byAction[a] = { tried: 0, ok: 0, absent: 0, disabled: 0, dead: 0, noop: 0 });
+        for (const k in s) s[k] += (r.ui.byAction[a][k] || 0);
+      }
+      for (const f of (r.uiFindings || [])) {
+        const k = f.action + ' :: ' + f.kind + ' :: ' + f.detail;
+        findings[k] = (findings[k] || 0) + 1;
+      }
+    }
+    rep.uiReachability = sum;
+    rep.uiByAction = byAction;
+    rep.uiFindings = findings;
+    /* the headline: a press that landed, out of every press attempted */
+    rep.uiLandedPct = sum.tried ? +((100 * sum.ok / sum.tried).toFixed(1)) : null;
+    rep.uiVerdict = (sum.absent + sum.disabled + sum.dead) === 0
+      ? 'PASS — every covered action was reachable through its own control'
+      : 'FAIL — ' + (sum.dead + ' dead, ' + sum.absent + ' absent, ' + sum.disabled + ' disabled');
+    rep.uiCovered = Object.keys(byAction);
+    rep.uiNote = 'jsdom has NO LAYOUT: this proves a live handler, not that the control is on screen. tools/uilayout.js owns that half.';
+  }
+  if (mode === 'fast' || mode === 'deep' || mode === 'medium' || mode === 'veteran' || mode === 'dom') {
     rep.deaths = runs.filter((r) => r.deaths > 0).length;
     /* v1.5.1 death-curve audit: deaths must ramp with depth, not sit flat */
     rep.deathsByStage = {};
