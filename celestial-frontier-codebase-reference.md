@@ -92,6 +92,16 @@ The script is one strict-mode IIFE organized into three strata (full map in the
    destructured module export would not propagate reassignment, so a module may
    only own a `let` that no other section reassigns.
 
+**`_hdLater(fn, ms)`** (2026-07-29) sits at game-IIFE top level, immediately after
+`@end PlanetGen`, and is the one scheduler both art modules use for their
+"instant lo → async hi" upgrade. While `_introUp()` is true it re-polls at 250ms
+instead of rendering, because HD synthesis behind the first-run naming screen is
+invisible *and* blocks the only control on screen (measured: 6440ms → 1905ms to an
+answerable gate on a 4×-throttled phone profile). It lives at top level on purpose —
+its callers are in two *different* nested module IIFEs (`ThumbArt.getPlanetSprite`,
+`GalaxyArt.getGalaxySprite`), and a helper belongs in the scope of its **callers**.
+See UI_PRESENTATION.md § "THE ART-HOLD LAW" and `tools/bootperf.js`.
+
 Names not in a module's `API:` list are module-private (interface segregation).
 To export another name, extend all three: the banner `API:` line, the
 `Object.freeze({...})` return, and the destructuring line after the IIFE.

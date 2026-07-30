@@ -25,6 +25,11 @@
 ##   state → the v2.0 plan. Source AND site pushed; full battery green.
 ##
 ## ═══ WHERE THINGS STAND ═══
+## ⚠ UNCOMMITTED WORK IN THE TREE (2026-07-29, after the v1.8.4 ship): NEXT #6 is done —
+##   tools/bootperf.js (new cold-boot gate) + main.js `_hdLater` (the art-hold fix, TTI on a
+##   4x-throttled phone 6440ms -> 1905ms) + UI_PRESENTATION/tools-README/codebase-reference.
+##   Full battery re-run green. NOT deployed, NOT version-bumped, no release-note bullet — all
+##   three are Nick's call. See item 6 below for the full diagnosis and 6c for the drafted bullet.
 ## LIVE: v1.8.4 (build 66e0516) at https://celestialfrontier.github.io/. Source repo pushed.
 ## GATES AT SHIP: fingerprint MATCH 50/50 · smoke 553/0 · uilayout 683 checks / 10 viewports ·
 ##   balance PASS · validate 9/9 · deadcode 3 candidates (all tooling-referenced, fine).
@@ -47,7 +52,12 @@
 ##        with no objective — 50% of their fleet, 100% of the rage quits) rather than the symptom;
 ##    (c) CF1802-08 repro sequence — we could NOT reproduce it (real path, real pointerdown;
 ##        codexOpen stays true) and the gate is in place either way;
-##    (d) physical iOS/iPadOS Safari, still outside both harnesses.
+##    (d) physical iOS/iPadOS Safari, still outside both harnesses;
+##    (e) NEW — re-run their boot A/B, but THROTTLED (they ran an idle desktop host). Item 6 shows
+##        the effect is CPU-bound, not cache-bound: at 4x it is a 6.4s unanswerable first screen,
+##        which is very likely what their 3 slow reps were seeing on a host still recovering from
+##        the 1,000-session fleet. Ask them to measure ANSWERABILITY, not just paint — and note
+##        their harness's `waitForSelector(visible)` cannot tell the two apart.
 ## 3. ★ HUMAN LISTENING TEST for audio. Their three prerequisites are now done (mute lifecycle,
 ##    the 540→millions voice vocabulary, the temperament gene). No automated fleet can score this
 ##    — Playwright runs with --mute-audio. 12-24 players, audio on vs off, headphones + phone
@@ -60,11 +70,54 @@
 ##    inherited is a balance change, deliberately not made quietly. See BREEDING_AND_SHARING.md.
 ## 5. ⏳ NICK'S DESIGN CALL — should the biome ambience restart when the tab becomes visible
 ##    again? Today it stops on hide and stays silent on return. See AUDIO.md §5.
-## 6. COLD-BOOT OUTLIER, unchased: an external paired A/B saw 3 of 8 reps take ~2.1-2.3 s to an
-##    interactive name gate vs ~0.5 s, the other 5 within 40 ms. The three slow ones were the
-##    first three reps, so it may be page-cache warming on the larger file — 8 reps cannot
-##    separate that from a real first-load regression. Worth one look: a 2-second first-interactive
-##    on a cold cache is exactly the difference between an instant link and a slow one.
+## 6. ✔ COLD-BOOT OUTLIER — CHASED, DIAGNOSED AND FIXED 2026-07-29 (was: "worth one look").
+##    IT WAS NOT CACHE WARMING. Their own data already ruled that out and we misread it: in the
+##    SLOW reps load=409ms and DCL=384ms, INDISTINGUISHABLE from the fast reps. The file was
+##    fully downloaded, parsed AND executed at ~400ms every single time. Nothing about the
+##    network or the payload differed. And `askExplorerName(true)` runs SYNCHRONOUSLY in boot,
+##    so the gate is in the DOM before DCL — a visibility poll runs IN THE PAGE, so the only way
+##    it reports late is a BLOCKED MAIN THREAD. Different defect, different fix.
+##    ROOT CAUSE: both art modules use the house "instant lo → async hi" pattern (setTimeout
+##    30ms/45ms). A brand-new expedition calls startNewGame() at +120ms, which goTo()s Sol and
+##    queues one HD upgrade PER BODY plus the galaxy face — each a 300-800ms block
+##    (n2/fbm/renderPlanetSprite/makeGalaxySprite). All of it INVISIBLE behind the naming screen,
+##    which is the only control on screen. MEASURED on a 4x-throttled iPhone-class profile:
+##      new player      gate painted 393ms · ANSWERABLE 6440ms · 5818ms blocked
+##      returning player                                         · 0ms blocked  <-- named the cause
+##    FIX: `_hdLater()` (main.js, top of the game IIFE after @end PlanetGen) re-polls while
+##    _introUp() instead of rendering. TTI 6440ms -> 1905ms. Precedent, not invention: toasts
+##    ALREADY wait on _introUp() (_toastQ, "held while the title / explorer-name screen is up").
+##    Determinism-safe by construction (sprites derive from seeds, not from when they are drawn)
+##    — fingerprint MATCH 50/50. Full battery green: smoke 553/0 · uilayout 683/10 · balance PASS.
+##    NEW GATE tools/bootperf.js — decomposes first-interactive (network / in-DOM / painted /
+##    ANSWERABLE / blocked pre-gate / blocked post-gate) in a real browser over gzipped HTTP.
+##    Sound WITHOUT clock correlation: --save=none never types a name, so the intro is up for the
+##    whole window and art self-time over the profile IS art time behind the intro.
+##    NEGATIVE-CONTROLLED BOTH WAYS against the shipped v1.8.4 recovered from git: 3611ms exit 1
+##    unfixed, 495ms exit 0 fixed, budget 900ms clear of both.
+##    ⚠⚠ AND IT CAUGHT TWO BUGS IN ITSELF FIRST — the fifth instance of a check passing while the
+##    thing it guarded was broken, and the first that was a PERF gate: (a) it stopped observing at
+##    TTI, so a deliberate 1500ms block at 600ms reported 0ms and PASSED — a longtask census whose
+##    window closes at TTI is not a census (fixed: --settle, default 2500ms past load);
+##    (b) a setTimeout block CANNOT preempt the parser, so it ran after the gate legitimately
+##    painted and proved nothing — only a SYNCHRONOUS block before the game <script> manufactures
+##    a painted-but-unanswerable gate. Both controls found the instrument wrong, not the build.
+##    ▶ STILL OPEN, measured and deliberately NOT done (see 6a/6b below).
+## 6a. REMAINING 1905ms is dominated by `(program)` ~2s = V8 compiling the 1.9MB inline script at
+##    4x throttle. That is the PAYLOAD problem the v2.0 port plan already owns (payload budget
+##    gate, Phase 0) — not a boot bug. Best evidence yet for prioritising the module split.
+## 6b. `drawSystem` burns ~416ms/boot painting the world BEHIND the full-screen naming modal
+##    (78% opaque + 6px blur). Skipping the painter while _introUp() would recover most of it, but
+##    frameInner also runs gameplay logic (epoch ticks, checkTransitions, queueSave) and `picks`
+##    feeds hit-testing, so it is frame-loop surgery for a partial win — and it changes what the
+##    player sees behind the intro (live starfield vs frozen), which is Nick's art call. NOT DONE.
+## 6c. RELEASE NOTE NOT WRITTEN — deliberately. RELEASES[0] is v1.8.4, which is ALREADY LIVE, so
+##    appending there would credit shipped notes with a fix live players never got; opening a
+##    v1.8.5 entry is a GAME_VERSION bump and those happen only on Nick's word (CLAUDE.md rule 8).
+##    Drafted bullet, awaiting a version call:
+##    🚀 THE FIRST SCREEN ANSWERS AT ONCE — on a phone, a brand-new expedition spent several
+##    seconds building world art you could not see yet, behind the naming screen, so the very
+##    first thing you touched did not respond. The art now waits its turn.
 ## 7. DOM-DRIVEN simrun tier. simrun drives PROBE HOOKS, not the DOM, so it is structurally blind
 ##    to every UI feature v1.8 shipped. Closing this permanently removes a whole blind spot.
 ## 8. HARNESS NOISE FLOOR: ±6 on "creatures reaching L3" at n=100 (found when two sim-identical

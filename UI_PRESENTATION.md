@@ -347,3 +347,71 @@ the 900px dock breakpoint — the dock layout applies but the tablet band's shee
 which is exactly the seam a bug hides in. We believe the missing ring was downstream of the stack
 bug (`_tutSpot` deliberately draws nothing when its target's centre is covered), and the band
 passes now, but it stays in the gate because no one was watching it before.
+
+## 2026-07-29 THE ART-HOLD LAW (matches code as of 2026-07-29)
+
+**Nothing expensive may be synthesised behind a blocking full-screen screen.** A surface the
+player cannot see is not worth a frame, and on the first run the thing hidden behind it is the
+*only* control on screen.
+
+### What was happening
+
+`ThumbArt.getPlanetSprite` and `GalaxyArt.getGalaxySprite` both use the house "instant lo → async
+hi" pattern: return a cheap sprite now, schedule the HD master on a short timer (30ms / 45ms).
+A brand-new expedition calls `startNewGame()` 120ms into boot, which `goTo()`s Sol and queues one
+HD upgrade **per body**, plus the galaxy face. Each HD render is a 300–800ms main-thread block
+(`n2` → `fbm` → `renderPlanetSprite` / `makeGalaxySprite`).
+
+Meanwhile `askExplorerName(true)` runs *synchronously* in boot, so the naming screen is in the DOM
+before `DOMContentLoaded`. Measured on a 4× CPU-throttled iPhone-class profile
+(`tools/bootperf.js`):
+
+| arm | gate painted | gate **answerable** | main thread blocked first |
+|---|---|---|---|
+| new player (`--save=none`) | 393ms | **6440ms** | 5818ms |
+| returning player (`--save=done`) | n/a | n/a | **0ms** |
+
+The gate was painted at 0.4s and would not answer a tap until 6.4s. The returning player, who
+never builds a new system, blocked 0ms — which is what named the cause. After the fix: **1905ms**,
+and the remainder is V8 compiling the 1.9MB inline script (`(program)` ≈ 2s at 4×), which is the
+payload problem the v2.0 port plan owns, not this one.
+
+### The law in code
+
+`_hdLater(fn, ms)` (main.js, top of the game IIFE, just after `@end PlanetGen`) replaces the bare
+`setTimeout` at both upgrade sites. While `_introUp()` is true it re-polls at 250ms instead of
+rendering.
+
+- **Precedent, not invention.** Toasts already wait on exactly this condition — see the notify
+  section's `_toastQ`, *"toasts held while the title / explorer-name screen is up"*. Art now waits
+  on the same predicate.
+- **Scope.** Defined at game-IIFE top level deliberately: both callers live inside *different*
+  nested module IIFEs (`ThumbArt`, `GalaxyArt`), and a helper belongs in the scope of its
+  **callers**, not its callees. (The `_denyPress`/`_okPress` ReferenceError was this trap.)
+- **A re-poll, not a flush queue.** The hold lifts however the screen closes — commit, cancel or
+  Escape — so there is no hook to forget. One pending sprite costs one timer.
+- **Determinism-safe by construction.** Sprites derive from seeds, never from *when* they are
+  drawn, so deferring one cannot move the fingerprint. Confirmed: MATCH 50/50.
+
+### The gate
+
+`node tools/bootperf.js --save=none --cpu=4 --cpuprofile --assert` fails if art self-time behind
+the intro exceeds 900ms. **Why it needs no clock correlation:** in the `--save=none` arm the
+harness never types a name, so the intro is up for the whole observed window — art self-time over
+the entire CPU profile *is* art time spent behind the intro. Mapping profiler microseconds onto
+`performance.now()` is exactly where such a check would otherwise quietly go wrong.
+
+Negative-controlled in both directions against the shipped v1.8.4 build recovered from git:
+**3611ms → exit 1** unfixed, **495ms → exit 0** fixed, with the 900ms budget clear of both rather
+than hugging either.
+
+### What this cost us to learn about our own gates
+
+The first cut of `bootperf.js` stopped observing the moment the gate went responsive, so a
+deliberate 1500ms block injected at 600ms reported **0ms and passed**. A longtask census whose
+window closes at TTI is not a census. A second control was equally instructive: a `setTimeout`
+block *cannot* preempt the parser, so it ran after the gate had legitimately painted and proved
+nothing — only a **synchronous** block placed before the game script manufactures the real defect.
+Both controls found bugs in the instrument, not the build. This is the fourth time on this project
+that a check has passed while the thing it guarded was broken; it is the first time the check was
+a performance gate.

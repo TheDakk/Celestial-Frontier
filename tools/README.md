@@ -29,6 +29,14 @@ node tools/uilayout.js         # REAL headless browser: computed boxes + hit-tes
                                #   --vp=iphone,desktop to narrow, --url=FILE to
                                #   replay the gate against another build)
 node tools/balance-sim.js      # archetype win-rate band + ability-theme art band
+node tools/bootperf.js         # COLD BOOT: decomposes first-interactive in a real
+                               #   browser over gzipped HTTP. Not "how fast is boot"
+                               #   but "is the first screen ANSWERABLE" — a gate can
+                               #   be painted and still refuse a tap. Run the art-hold
+                               #   assertion with:
+                               #     --save=none --cpu=4 --cpuprofile --assert
+                               #   Other flags: --reps=N --profile=fresh|warm
+                               #   --gate=SEL --settle=MS --url=FILE --verbose
 node tools/deploy.js --release X.Y.Z   # runs the whole battery, then ships
 node tools/deploy.js           # ship to https://celestialfrontier.github.io/ — stamps
                                #   BUILD_ID with the git sha and publishes
@@ -54,6 +62,40 @@ node tools/deploy.js           # ship to https://celestialfrontier.github.io/ �
    `node tools/make-probe-build.js celestial-frontier.html tools/probe-build.html
    && node tools/harness.js tools/probe-build.html tools/baseline.json`
    and say so in the commit.)
+
+## bootperf.js — what its numbers mean
+
+A gate can be **painted** and still refuse a tap. Timing "first interactive" with one number
+cannot tell a slow network from a blocked main thread, and that ambiguity is what produced the
+"maybe it's cache warming on the larger file" hypothesis for the round-7 cold-boot outlier. It
+was not cache: in the slow reps their own `load`/`DCL` were indistinguishable from the fast ones,
+so the file was fully downloaded, parsed *and executed* at ~400ms every time.
+
+So this tool decomposes instead of timing:
+
+| column | means |
+|---|---|
+| `resp_end` / `transfer` | the network is done; bytes actually crossed the wire |
+| `DCL` | the inline script has run — `askExplorerName` is synchronous, so the gate exists |
+| `painted` | first rAF frame where the gate has a real laid-out box |
+| `TTI` | first frame **within 50ms of its predecessor** at/after the paint — the thread is free |
+| `blocked pre-gate` | longtask time standing between the player and their first tap |
+| `blocked post-gate` | jank *after* the gate is up — a real but different defect |
+
+`--profile=warm` serves the file from cache (`0 B over the wire`) with no TTI benefit, which is
+the direct falsification of the cache story. `--cpu=4` matters more than any of it: the iPhone is
+the primary device, and a desktop-speed number is the best case, not the case.
+
+Two traps, both of which bit this tool before it worked:
+
+- **Do not stop observing at TTI.** The first cut did, so a 1500ms block injected at 600ms
+  reported `0ms` and passed. `--settle=MS` (default 2500) keeps the window open past `load`.
+- **A `setTimeout` block cannot preempt the parser.** It runs *after* the gate legitimately
+  paints, so it proves nothing. Only a **synchronous** block placed before the game `<script>`
+  manufactures a painted-but-unanswerable gate.
+
+Both controls found bugs in the instrument rather than the build — worth repeating before trusting
+any change to it.
 
 ## One-time refactor tooling (kept for the record)
 
