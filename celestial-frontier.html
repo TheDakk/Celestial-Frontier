@@ -19677,10 +19677,19 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.8.4';
+const GAME_VERSION='1.8.5';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.8.5', title:'First Touch', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🚀 THE FIRST SCREEN ANSWERS AT ONCE — on a phone, a brand-new expedition spent several seconds building world art you could not see yet, behind the naming screen, so the very first thing you touched did not respond. The art now waits its turn.'],
+ ],
+ ['🔧 Under the Hood', [
+  '⏱ A COLD-BOOT GATE — the moment the first screen becomes <i>answerable</i> is now measured in a real browser on a throttled phone, because a screen that is drawn is not the same as a screen that answers. That difference was five seconds, and nothing here was watching for it.',
+  '🤖 THE PLAYTEST FLEET PRESSES REAL BUTTONS — a new harness tier takes its actions through the same controls you use instead of reaching past them, so a button that is present but wired to nothing fails here first.'],
+ ],
+]},
 {v:'1.8.4', title:'Clear Ground', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🗺 THE LESSON&#8217;S OWN SCREEN COMES FORWARD — on phones, Earth&#8217;s survey card sat on top of every board, so the two lessons that ask you to open the <b>Star Atlas</b> and the <b>Compendium</b> opened them underneath it. The Compendium button could not be pressed at all. Whatever the current lesson points at now takes the front — except on the landing step, where the card is the thing you need.',
