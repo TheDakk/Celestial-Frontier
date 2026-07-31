@@ -1,8 +1,8 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
 ## 📌 PINNED — STANDING PROCEDURE (Nick, 2026-07-20): UPDATE THE MARKDOWN DOCS AS WE GO.
-## The per-system docs at repo root (WORLD_GENERATION · ART_DIRECTION ·
-## SPECIES_AND_GENOME · RARITY_AND_GRADES · CAPTURE_AND_BIOSPHERE · COMBAT_AND_CONQUEST ·
+## The per-system docs at repo root (WORLD_GENERATION · ART_DIRECTION · BIOME_ATLAS ·
+## SPECIES_AND_GENOME · RARITY_AND_GRADES · RARITY_UNIVERSAL · CAPTURE_AND_BIOSPHERE · COMBAT_AND_CONQUEST ·
 ## PROGRESSION · ECONOMY_LOOT_CRAFTING · QUESTS_AND_CHAPTERS · BREEDING_AND_SHARING ·
 ## DETERMINISM · SAVE_SYSTEM · UI_PRESENTATION · AUDIO) are the SOURCE OF TRUTH we pull from for a
 ## full-system review/edit later. RULE: whenever we change a system, update its doc IN THE
@@ -21,13 +21,15 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF — as of 2026-07-31. ★ v1.8.9 "ONE MEASURE" IS LIVE ◀◀◀
+## ▶▶▶ SESSION HANDOFF — as of 2026-07-31. ★ v1.8.9 "ONE MEASURE" IS LIVE · ★ PHASE 0 HAS STARTED ◀◀◀
 ## [HYGIENE 2026-07-31, three runs today] The v1.8.6, v1.8.7 and v1.8.8 batch blocks are all in
 ##   ROADMAP_ARCHIVE.md, VERBATIM. v1.8.6 is worth reading if you ever wonder why "two correct
 ##   fixes for one bug can disagree" is a law — its own CF1805-06 entry describes both halves of
 ##   a save-corrupting change approvingly. v1.8.8 is worth reading for the harvest-clock reasoning.
-##   Structure is pins → this handoff → the v1.9 START HERE block → WHERE THINGS STAND → NEXT →
-##   doc map → the v1.8.9 batch log → the v2.0 plan.
+##   [HYGIENE 2026-07-31, second pass] The v1.8.9 batch block is NOW ARCHIVED TOO, verbatim — moved
+##   when this file crossed the ~400-line threshold while Phase 0 progress was being recorded.
+##   Structure is now pins → this handoff → the v1.9 START HERE block → PHASE 0 PROGRESS →
+##   WHERE THINGS STAND → NEXT (incl. the 9x findings) → doc map. All batch logs are in the archive.
 ##   PROCESS_LAWS.md (extracted 2026-07-30) holds the laws; it is a reference and is never archived.
 ##   Source AND site pushed; full battery green; live verified end-to-end after deploy, not assumed.
 ##
@@ -87,9 +89,42 @@
 ##   inheritance · ambience resume · legacy voice family · bat ceiling · raw/display rarity ·
 ##   the re-pin permission (recorded as "available, unused for v1.8.9 — spend only on an approved
 ##   generator change") · desktop training rail overlap (our NEXT #11) · remaining backlog triage.
-##   STILL OURS TO DO FIRST: 9c BIOME_ATLAS (Phase 0 wants system docs AS RUBRICS, and this one
-##   does not exist) and 9d the RARITY_AND_GRADES refresh — which §3.6/§16.3 make urgent, because
-##   that doc still describes the superseded 15-name ladder as if players see it.
+##   ✔ 9c BIOME_ATLAS and 9d RARITY_AND_GRADES are BOTH DONE (2026-07-31) — see their entries below.
+##   Both premises turned out to be wrong: the atlas already existed (in tools/), and there is no
+##   15-NAME ladder to correct. Read 9c/9d before trusting any older wording about either.
+##
+## ═══ ★ PHASE 0 PROGRESS — started 2026-07-31, on Nick's go ═══
+## ✔ GATE A, FIRST DELIVERABLE — THE BASELINE IS TAGGED. Annotated tag `v1.8.9` at 92098e9, pushed.
+##   Carries the gate results, the recovery procedure and the freeze-rule note in the tag message.
+##   VERIFIED FOUR WAYS, not assumed: object type is `tag` not `commit` · points at 92098e9 ·
+##   `git show v1.8.9:celestial-frontier.html` is byte-identical to the working tree (sha256
+##   9f90f506…, 1,963,584 bytes) · AND validate was RE-RUN against it — 9/9 PASS, FINGERPRINT
+##   MATCH 50/50. That last one is the point: the roadmap's own "50/50" was a claim from the day
+##   before, and this project has SEVEN logged cases of a check passing while the thing it guarded
+##   was broken. A gate figure transcribed is a claim; observed, it is evidence.
+## ✔ TAG BACKFILL — tagging had lapsed after v1.8.2; v1.8.3-v1.8.8 shipped UNTAGGED. All six are now
+##   annotated tags on the remote, so the whole v1.8 line is addressable. v1.8.5 was the hard one:
+##   commit e20d62c, which used a different message convention (`release: v1.8.5 "…"`) and so was
+##   invisible to the obvious grep. Releases were identified by checking that package.json AND
+##   GAME_VERSION inside the built html both read the expected version — 7/7 agreed — not by trusting
+##   commit subjects. The tags SAY they were backfilled today, so the tagger date is not mistaken for
+##   the ship date. This matters operationally: audits/README documents recovering an old build from
+##   git to negative-control a new gate, and sizedrift-check must FAIL on v1.8.6 and pass on v1.8.7.
+## ✔ GATE A EVIDENCE ARCHIVE — port/baseline-v1.8.9/ (fdf2dc3): README, environment.json, the
+##   fingerprint output, the uilayout report. Three gates RE-VERIFIED in-environment (validate 9/9,
+##   fingerprint 50/50, uilayout PASS 787/10); the other seven are listed under `gates_not_re_run`
+##   so the archive cannot overstate itself. Deliberately NOT under releases/ — that directory is
+##   gitignored, and the one archive living there exists on a single machine, which is the failure
+##   mode that lost the v3.x port plan. Deliberately does NOT duplicate the html or tools/baseline.json
+##   — both are tracked at the tag, so git reproduces them byte-exact; referenced by sha256 instead.
+## ✔ 9c BIOME_ATLAS + 9d RARITY docs — see those entries. Both premises were false.
+## ▶ NEXT IN PHASE 0: declare + pin the browser dependency (9h) · capture the 10,000 golden seeds ·
+##   saves / share codes / champion codes / migration fixtures · fixed-seed golden screens · audio
+##   profiles · bundle/answerability/memory/GPU/audio-node budgets · the Canvas/Pixi spike · the
+##   human listening test · the four §23 design decisions. NOT a code phase — no TypeScript.
+## ⚠ FOUR NEW FINDINGS LOGGED THIS BATCH, none fixed: 9e (biome→fauna filter is dead code) ·
+##   9f (a stale premise guarding the `size` load decision — NICK'S CALL) · 9g (the rarity display
+##   collapse is an unguarded data invariant) · 9h (the browser is an undeclared dependency).
 ## ═══════════════════════════════════════════════════════════════════════════════════
 
 ## ═══ WHERE THINGS STAND ═══
@@ -247,6 +282,40 @@
 ##    memory (partial) · Ambush at magnitudes IV/V · direct 132px thumbnail rendering (first paint
 ##    still generates HD) · willReadFrequently on the two hot canvas contexts · the `legacy` voice
 ##    archetype is a first-class 18th family in the wild (~5.5%), probably not intended.
+## 9e. ⚠ NEW 2026-07-31, FOUND DURING PHASE 0 CAPTURE, NOT FIXED (Nick's call: log, don't fix) —
+##    THE BIOME→FAUNA FILTER IS DEAD CODE. main.js:11112 reads `wbRoll.fauna`, but `wbRoll` is a
+##    BIOME_SETS entry and that table has NO fauna field (verified: zero occurrences in the whole
+##    block). So `_wbFauna` is always null, `_matched` always [], and `standable` always falls through
+##    to an unfiltered shuffle — A JUNGLE LANDING CAN SHOW GLACIER FAUNA. The data it wants is one
+##    table over: BIOME_PROFILES[wbRoll.k].fauna. Candidate fix is one line, but it CHANGES WHICH
+##    CREATURES APPEAR, so it is a gameplay change needing a re-baseline decision against the tag.
+##    ⚠ This is the "present, correct and completely inert" shape from PROCESS_LAWS — the same family
+##    as the CSS min-height/max-height and earlier-in-the-sheet laws. NO GATE CAUGHT IT because no
+##    gate asserts the OUTCOME (which creatures a biome yields); biome-audit checks the manifest, not
+##    the runtime path. Related: BIOME_PROFILES' sig/fauna/flora have NO runtime reader at all — only
+##    weather/hazard are consumed (_hdVistaEco). The ecology data is currently aspirational.
+## 9f. ⚠ NEW 2026-07-31 — A STALE PREMISE GUARDING THE `size` DECISION. main.js:14180 justifies NOT
+##    wrapping size at load with: "speciesGrade/rarityRoll/sapience read `g.size` RAW (>=3, >=4, >=5)".
+##    FALSE in v1.8.9: speciesGrade (2143-44) and sapienceTier (2036) both go through `_szOf`, and
+##    rarityRoll never reads size at all. Nothing is broken — but our OWN v1.8.9 fix invalidated the
+##    reasoning that a load-path decision rests on, and nobody updated the note. This is the exact
+##    field that caused the v1.8.6 save corruption, so per CLAUDE.md rule 7 it wants a DELIBERATE
+##    re-decision, not a quiet edit. The conclusion may well still hold for other reasons; the stated
+##    reason is no longer one of them. ⏳ NICK'S CALL.
+## 9g. ⚠ NEW 2026-07-31 — THE DISPLAY COLLAPSE IS AN UNGUARDED DATA INVARIANT. Creature rarity names
+##    come from GRADE_TIERS via colorGrade, NOT from displayRarity — and `spectral` has no clamp at
+##    all. Correctness rests entirely on GRADE_TIERS rows 10-14 staying collapsed to "Transcendent".
+##    Restore the old names there and every creature surface silently reverts while displayRarity keeps
+##    clamping correctly and every test exercising it keeps passing. No test guards the invariant.
+##    Highest-value item for the port to change — §16.3's explicit RawGradeTier -> DisplayRarityTier.
+## 9h. ⚠ NEW 2026-07-31 — THE BROWSER IS AN UNDECLARED DEPENDENCY (Gate A gap). package.json declares
+##    only acorn + jsdom, but uilayout.js and bootperf.js spawn a REAL system browser over CDP; there
+##    is no Playwright/Puppeteer anywhere in tools/. `npm install` on a clean clone therefore CANNOT
+##    run two of the nine suites. Resolution order is CF_BROWSER env -> local Windows Edge -> common
+##    Linux/macOS Chrome paths, so CI is possible today but undeclared and undocumented. The binary
+##    here was Microsoft Edge 150.0.4078.83, which AUTO-UPDATES SILENTLY and is pinned nowhere;
+##    Addendum D warns layout thresholds set on one revision drift on the next. Version now recorded in
+##    port/baseline-v1.8.9/environment.json. Phase 0 owes the declaration + pin.
 ## 9b. ✔ RESOLVED 2026-07-31 — THE PORT PLAN IS COMMITTED at port/ (commit ca2e9d1). Nick supplied
 ##    v4.0, which SUPERSEDES the lost v3.1 and is audited against v1.8.9 rather than v1.6.4, plus
 ##    addenda A–D and a v1.9 delta. It will not be lost again.
@@ -258,15 +327,38 @@
 ##    ⚠ SECTION NUMBERS MOVED between v3.1 and v4.0 — older roadmap/archive entries citing §26
 ##    step 2, §27.3 or §28.5 refer to the LOST v3.1. In v4.0 the equivalents are §20 (execution
 ##    phases), §22 (Gates A–I), §23 (open items) and §24 (risks). Do not chase the old numbers.
-## 9c. ⚠ BIOME_ATLAS.md HAS NEVER EXISTED, despite being cited in five live places — ART_DIRECTION
-##    §6.1 plus three others, and this file’s own PINNED list. Corrected 2026-07-31 so nothing lies.
-##    It is a REAL Phase-0 deliverable, not just a broken link: §28.5 wants the art-direction doc +
-##    golden screen before generation work, and a content catalog is what a re-implementation
-##    checks itself against. GENERATE it from source — tools/biome-audit.js already walks the data
-##    and validate reports "43 live biomes, all covered".
-## 9d. ⚠ RARITY_AND_GRADES.md is THREE MINORS BEHIND and says so at its own top: it documents the
-##    LIVE v1.6.4 15-grade ladder, superseded by the canonical 10-tier ladder in v1.7 source.
-##    Honest, but a port rubric cannot use it as-is. Refresh before Phase 0.
+## 9c. ✔ DONE 2026-07-31 (07c562d) — AND THE PREMISE WAS FALSE. This entry used to read "BIOME_ATLAS.md
+##    HAS NEVER EXISTED … Corrected 2026-07-31 so nothing lies." ⚠ IT DID EXIST — at tools/BIOME_ATLAS.md,
+##    TRACKED IN GIT since 2026-07-21, 734 lines / 45 KB. The check that declared it missing looked only
+##    in the repo ROOT, and that check was itself written the same day under the banner "so nothing lies".
+##    ⚠⚠ THE LESSON, which is the eighth instance of this shape: A CORRECTION IS A CLAIM LIKE ANY OTHER.
+##    This one shipped a NEW false statement while fixing an old one, and survived a day because nobody
+##    re-checked the correction either. Had we generated a fresh atlas as planned, the repo would hold
+##    two competing ones — and the NEW one would have been WORSE: §§2-4 (93 Earth + 315 non-Earth +
+##    Additional) come from uploaded design-pack CSVs and CANNOT be regenerated from main.js. Those are
+##    also where the "93 + 315" figures quoted in ART_DIRECTION §6.1 come from — DESIGN SCOPE, not
+##    shipped content. Only the 43 is source-derivable. Never cite 93/315 as source facts.
+##    WHAT WAS DONE: audited, corrected, promoted to root as BIOME_ATLAS.md (git mv, history kept).
+##    Verified BEFORE promoting — all 43 sig hexes extracted from BIOME_PROFILES and diffed against §1
+##    (43/43 exact, no extras); BIOME_PROFILES vs BIOME_SETS keyed 43/43 both ways, no orphans. Added
+##    §1.1, a source-GENERATED per-biome catalog merging both tables. Corrected "fauna-free" from 2 to
+##    4 (acidhaze, abyssgreen, magmasea, hotglow). Stale anchors fixed across ART_DIRECTION and
+##    WORLD_GENERATION (BIOME_SETS ~7477 -> 10763 etc., ~3,300 lines off). Removed `biomeProfile` and
+##    `colorDNAFor` from ART_DIRECTION — zero hits in main.js, they never existed.
+## 9d. ✔ DONE 2026-07-31 (b0d5998) — and the dual-ladder framing was wrong, INCLUDING OURS.
+##    There is NO 15-NAME ladder. GRADE_TIERS (1752) kept its 15-ROW shape — rarityRoll still returns
+##    0-14, apex/paragon forces still target 8-14 — but every row's NAME and HEX were collapsed onto
+##    the 10-tier set: rows 9-14 all read Transcendent / #F7F1FF. The old names survive ONLY in the
+##    `pre` column, feeding ART labels ("Empyrean Black"), never rarity. Raw 0-14 INDEX -> 10 NAME,
+##    collapsed IN THE DATA. Source calls it "collapse, don't remap" (1729-1731).
+##    OLD DOC WAS WRONG ON: every name from tier 6 up · all 15 hexes · the star column (glyphs retired)
+##    · every line anchor by 350-4,000 lines. VERIFIED UNCHANGED: 14 thresholds, six merit boosts,
+##    guardian split + epithets, paragon numbers, TAME_ODDS, apex/par load bounds.
+##    ⚠ DID NOT DELETE IT despite its own header ordering deletion on the v1.7 deploy (shipped three
+##    minors ago). The raw ladder is still rolled, persisted and read for sorting/achievements/_courtProg
+##    CROWNS I/II/III; this is its only record, and §16.3 requires RawGradeTier and DisplayRarityTier be
+##    documented SEPARATELY. The two rarity docs now split explicitly: RARITY_AND_GRADES = raw ladder,
+##    RARITY_UNIVERSAL = 10-name display ladder. Neither supersedes the other.
 ## 10. ▶ v1.9 = PORT PHASE 0. The plan is port/PORT_MASTER_PLAN_v4.0.md §20; the START HERE block
 ##    at the top of this file summarises it. Phase 0 is 2–4 weeks and is mostly CAPTURE work —
 ##    tag the baseline, reproduce deps in clean CI, capture fixtures (the 50 probes, 10,000 golden
@@ -318,8 +410,14 @@
 ## Not touched by this sweep, checked and still accurate: CAPTURE_AND_BIOSPHERE (2026-07-29 — the
 ##   `fed` clamp is documented at `feedPair` in BREEDING_AND_SHARING, which is where feeding lives;
 ##   it is deliberately NOT duplicated here) · WORLD_GENERATION · RARITY_AND_GRADES ·
-##   SPECIES_AND_GENOME · ART_DIRECTION. (⚠ BIOME_ATLAS.md has NEVER EXISTED despite being cited
-##   in five places — see ART_DIRECTION §6.1; it is a Phase-0 deliverable, generated from source.)
+##   SPECIES_AND_GENOME · ART_DIRECTION. ⚠ THE LAST THREE OF THOSE WERE ALL TOUCHED 2026-07-31 —
+##   RARITY_AND_GRADES was refreshed (9d), and WORLD_GENERATION + ART_DIRECTION took corrections for
+##   the BIOME_ATLAS retraction and ~3,300-line-stale anchors (9c). Re-read them rather than trusting
+##   this line's older "still accurate" claim.
+## ★ BIOME_ATLAS.md — NOW AT THE REPO ROOT (promoted 2026-07-31, 07c562d). It ALWAYS existed, at
+##   tools/BIOME_ATLAS.md, tracked since 2026-07-21; this file previously said it never had. §1 + the
+##   new source-generated §1.1 are the biome CONTENT catalog; §§2-4 are design-pack scope that CANNOT
+##   be regenerated from main.js. See 9c.
 ## ★ THE BATTERY IS NOW SEVEN SUITES, not four — validate · smoke · uilayout · balance-sim gate
 ##   every batch (deploy.js enforces them); bootperf.js (cold boot / answerability), simrun `dom`
 ##   (UI reachability) and duelxp-check.js (reward OUTCOMES) run on demand. tools/README.md
@@ -354,40 +452,3 @@
 ##   review lenses + raw results). audits/README.md indexes both and records how to recover an OLD
 ##   build from git to negative-control a new gate (uilayout.js --url=FILE).
 ##
-
-## ▶▶▶ 2026-07-31 ★ v1.8.9 "ONE MEASURE" — the `size` arc CLOSED, and WITHOUT a re-pin.
-##   Nick: "nobody's really played the game, so I'm not terribly concerned about breaking the
-##   fingerprint if it means re-fingerprinting it." → "go ahead and submit as 1.8.9".
-##   ★ THE PERMISSION WAS GRANTED AND TURNED OUT NOT TO BE NEEDED. The last piece of the size
-##   story was `sapienceTier` / `classifyRealm` / `speciesGrade` (x2) / the titan roster check
-##   reading `g.size` RAW while the card printed `% FA_SIZE.length`. A bred size-6 creature
-##   printed "tiny" and was classified MEGAFAUNA with the full rarity boost — MEASURED at
-##   vit 68 against 52 for a genuine size-0. All six now share one helper, `_szOf`.
-##   FINGERPRINT-SAFE BY IDENTITY, NOT EXEMPTION: those probes are fed makeGenome outputs whose
-##   size is already 0-5, so the wrap is the identity function over every probe input. Verified
-##   with validate (MATCH 50/50), not reasoned about.
-##   ⚠ SO THE WHOLE size ARC CLOSED WITH THE v1.0 BASELINE INTACT: v1.8.6 wrapped combat and
-##   wrongly clamped the save · v1.8.7 reverted the clamp · v1.8.9 wrapped the classifiers. The
-##   drift in crossGenome is UNTOUCHED and now HARMLESS — the same resolution the other thirteen
-##   drifting genes have always had (genes drift, consumers wrap). Do not "fix" the mutation.
-##   ⚠⚠ SMOKE CAUGHT ME MID-FLIGHT (553 → 551). I declared `_szOf` inside the Genome domain
-##   module and called it from `@section descent` — module-private, so the landing path threw.
-##   validate's jsdom boot PASSED, because nothing throws until you actually land on a world.
-##   That is the clearest demonstration yet of why the suites are not redundant: validate proves
-##   the build boots, smoke proves the game can be PLAYED. Exported properly (all three places:
-##   banner API line, Object.freeze return, destructuring) rather than inlining a second copy —
-##   a duplicate wrap would recreate the exact two-places-one-truth bug being fixed.
-##   GATES: validate 9/9 · fingerprint MATCH 50/50 · smoke 553/0 · uilayout 787/10 · balance PASS ·
-##   sizedrift 8/8 (4 new checks; they FAIL on v1.8.8 with the vit 68-vs-52 numbers) ·
-##   harvestclock 5/5 · duelxp 6/0.
-##   ═══ ON THE RE-PIN PERMISSION, since it is now standing ═══
-##   Nothing in the CURRENT backlog needs it — the bat ceiling and the `legacy` voice family are
-##   not fingerprinted either. Its real value is PHASE ZERO: porting generation to TS while
-##   holding 50 probes byte-exact is expensive and constrains the design. BANK IT FOR THAT.
-##   Two costs to weigh when spending it: (a) each re-pin trades a HISTORICAL guarantee for a
-##   present one — today's baseline still proves the June SOLID restructure did not change
-##   behaviour vs the pre-refactor v1.0 build, and a re-pinned probe only proves "unchanged since
-##   the re-pin"; (b) Nick HAS a save on his iPhone, so a re-pin touching WORLD-GEN would change
-##   his Atlas, while one touching only crossGenome would not. Know which kind before doing it.
-##   The baseline already carries SEVEN deliberate re-pin notes — the rule was never "never
-##   re-pin", it is "never re-pin SILENTLY to make a failure pass".

@@ -7,6 +7,50 @@
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
 
+## ══════════ ARCHIVED 2026-07-31 — the v1.8.9 batch block, aged out during port Phase 0 ══════════
+## Moved VERBATIM from ROADMAP.md when that file crossed the ~400-line hygiene threshold (489 lines)
+## while Phase 0 progress was being recorded. Nothing changed. v1.8.9 remains LIVE and is now also
+## the tagged port parity baseline (annotated tag v1.8.9 at 92098e9) — see ROADMAP.md PHASE 0
+## PROGRESS and port/baseline-v1.8.9/ for the Gate A evidence.
+
+## ▶▶▶ 2026-07-31 ★ v1.8.9 "ONE MEASURE" — the `size` arc CLOSED, and WITHOUT a re-pin.
+##   Nick: "nobody's really played the game, so I'm not terribly concerned about breaking the
+##   fingerprint if it means re-fingerprinting it." → "go ahead and submit as 1.8.9".
+##   ★ THE PERMISSION WAS GRANTED AND TURNED OUT NOT TO BE NEEDED. The last piece of the size
+##   story was `sapienceTier` / `classifyRealm` / `speciesGrade` (x2) / the titan roster check
+##   reading `g.size` RAW while the card printed `% FA_SIZE.length`. A bred size-6 creature
+##   printed "tiny" and was classified MEGAFAUNA with the full rarity boost — MEASURED at
+##   vit 68 against 52 for a genuine size-0. All six now share one helper, `_szOf`.
+##   FINGERPRINT-SAFE BY IDENTITY, NOT EXEMPTION: those probes are fed makeGenome outputs whose
+##   size is already 0-5, so the wrap is the identity function over every probe input. Verified
+##   with validate (MATCH 50/50), not reasoned about.
+##   ⚠ SO THE WHOLE size ARC CLOSED WITH THE v1.0 BASELINE INTACT: v1.8.6 wrapped combat and
+##   wrongly clamped the save · v1.8.7 reverted the clamp · v1.8.9 wrapped the classifiers. The
+##   drift in crossGenome is UNTOUCHED and now HARMLESS — the same resolution the other thirteen
+##   drifting genes have always had (genes drift, consumers wrap). Do not "fix" the mutation.
+##   ⚠⚠ SMOKE CAUGHT ME MID-FLIGHT (553 → 551). I declared `_szOf` inside the Genome domain
+##   module and called it from `@section descent` — module-private, so the landing path threw.
+##   validate's jsdom boot PASSED, because nothing throws until you actually land on a world.
+##   That is the clearest demonstration yet of why the suites are not redundant: validate proves
+##   the build boots, smoke proves the game can be PLAYED. Exported properly (all three places:
+##   banner API line, Object.freeze return, destructuring) rather than inlining a second copy —
+##   a duplicate wrap would recreate the exact two-places-one-truth bug being fixed.
+##   GATES: validate 9/9 · fingerprint MATCH 50/50 · smoke 553/0 · uilayout 787/10 · balance PASS ·
+##   sizedrift 8/8 (4 new checks; they FAIL on v1.8.8 with the vit 68-vs-52 numbers) ·
+##   harvestclock 5/5 · duelxp 6/0.
+##   ═══ ON THE RE-PIN PERMISSION, since it is now standing ═══
+##   Nothing in the CURRENT backlog needs it — the bat ceiling and the `legacy` voice family are
+##   not fingerprinted either. Its real value is PHASE ZERO: porting generation to TS while
+##   holding 50 probes byte-exact is expensive and constrains the design. BANK IT FOR THAT.
+##   Two costs to weigh when spending it: (a) each re-pin trades a HISTORICAL guarantee for a
+##   present one — today's baseline still proves the June SOLID restructure did not change
+##   behaviour vs the pre-refactor v1.0 build, and a re-pinned probe only proves "unchanged since
+##   the re-pin"; (b) Nick HAS a save on his iPhone, so a re-pin touching WORLD-GEN would change
+##   his Atlas, while one touching only crossGenome would not. Know which kind before doing it.
+##   The baseline already carries SEVEN deliberate re-pin notes — the rule was never "never
+##   re-pin", it is "never re-pin SILENTLY to make a failure pass".
+
+
 ## ══════════ ARCHIVED 2026-07-31 — the 2026-07-26 v2.0 ENGINE PLAN REVIEW (of the LOST v3.1) ══════════
 ## Moved from ROADMAP.md because it is now SUPERSEDED and actively misleading if read as current.
 ## It reviews PORT_PLAN_v3.3/v3.1, a session-scoped upload that was lost; v4.0 (committed at
