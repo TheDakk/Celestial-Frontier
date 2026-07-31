@@ -7,6 +7,54 @@
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
 
+## ══════════ ARCHIVED 2026-07-31 — the 2026-07-26 v2.0 ENGINE PLAN REVIEW (of the LOST v3.1) ══════════
+## Moved from ROADMAP.md because it is now SUPERSEDED and actively misleading if read as current.
+## It reviews PORT_PLAN_v3.3/v3.1, a session-scoped upload that was lost; v4.0 (committed at
+## port/PORT_MASTER_PLAN_v4.0.md, 2026-07-31) supersedes it and is audited against v1.8.9 rather
+## than v1.6.4. ⚠ ITS SECTION NUMBERS DO NOT MAP: §26 step 2, §27.3 and §28.5 here refer to v3.1.
+## In v4.0 the equivalents are §20 (execution phases), §22 (Gates A–I), §23 (open items), §24
+## (risks). Kept verbatim because the REVIEW JUDGEMENTS still hold and several were adopted into
+## v4.0 — the no-freeze call, the Canvas2D visual spike, the determinism-landmine assessment, and
+## elevating ART_DIRECTION.md to the port rubric all appear in v4.0 in some form.
+## ▶▶▶ 2026-07-26 ★ v2.0 ENGINE PLAN REVIEWED (upload: FULL_ENGINE...PORT_PLAN_v3.3_STACK_LOCKED
+##   — TS + PixiJS 8 + Spine 2D + HTML/CSS(+React/Lit opt) + Vite + IndexedDB + Zod + WebAudio +
+##   Vitest/Playwright; WebGL baseline, WebGPU opt-in). MY REVIEW (recorded for the arc):
+##   ✔ ENDORSE the stack lock — matches the 2.0 assessment already on this roadmap (painterly
+##     masters port as canvas→texture; hybrid DOM UI; deterministic core untouched).
+##   ✔ §26 SEQUENCING ("cheap work first, port inherits validated answers"): STEP 1 IS ALREADY
+##     SUBSTANTIALLY DONE — the plan was annotated against v1.7.0/1.7.3; since then 1.7.4→1.7.15
+##     shipped the legibility/onboarding/a11y work it prescribes (keyboard canvas w/ survey
+##     credit, aria-live, focus mgmt + inert, panel model, objective chip). The port inherits a
+##     VALIDATED design, per the plan's own argument. Its "freeze" framing is obsolete — we
+##     never froze and shipped 12 releases; recommend NO freeze until Phase-4 parity.
+##   ✔ §26 STEP 2 (the falsifiable Canvas2D visual prototype — planet rotation + ring occlusion,
+##     re-run personas, compare vs the +0.79 legibility delta): ADOPT — run it DURING v1.8 as its
+##     own two-week spike. Either outcome is decisive and cheap.
+##   ✔ §27.3 DETERMINISM LANDMINE: correct in principle, but the LOCKED STACK largely defuses it
+##     — TypeScript compiles to the SAME JS numerics (doubles, int32 bitwise, mulberry32/hashInt
+##     integer paths), so bit-identity survives TS migration nearly free. The cross-language
+##     conformance suite (10k golden seeds in CI) matters only if D2 (Unreal/Unity) ever reopens
+##     — adopt it as a cheap insurance line in Phase 0 anyway. Render seeds vs identity seeds:
+##     already our law.
+##   ✔ ACCESSIBILITY TO PHASE 4: agree — and it's already BUILT here, which is the strongest
+##     version of that argument (retrofit cost paid once, in the cheap codebase).
+##   ✔ D4 "AI AS THE ARTIST": the described loop (rubric → generate → vision critique → revise
+##     the GENERATOR → diff on fixed seeds) is literally this project's proof-sheet workflow —
+##     the §28.5 call to write the ART-DIRECTION DOC + GOLDEN SCREEN first is right; ART_DIRECTION.md
+##     exists in-repo and should be ELEVATED to the port rubric (highest-leverage open item).
+##   ⚠ HONESTY ON TIMELINE: team is not 5-7 people — the solo/duo rows (20-34/15-24 months
+##     hand-built) govern, BUT the D4 generator model + this session's throughput argue those
+##     rows overstate: art is generators not assets here. Plan by MILESTONE GATES, not calendar.
+##   ⚠ AUDIO WEIGHTING (§15 = 904 lines, evidence-blind): Nick already moved a SMALL audio pass
+##     into v1.8 — that IS the audio playtest the annotation demands. Ship it cheap, measure,
+##     THEN size §15.
+##   ⚠ PLAN'S AUDIT DRIFT (15-tier ladder, 21.8k lines): re-run all §3 counts against v1.7.15
+##     before Phase 0 (now ~25k lines, 10-tier ladder, +_GEAR_ART layer).
+##   ▶ SEQUENCE INTO OUR ARCS: v1.8 Connection (+ audio pass + §7 visual spike) → v1.9
+##     consolidation = PHASE 0/1 (module split BECOMES the TS extraction; save schema/Zod +
+##     share-code migration policy; payload budget gate; art-direction doc + golden screen) →
+##     v2.0 port Phases 2+ under the milestone gates. §28.5's "nothing blocks Phase 1" is right.
+
 ## ══════════ ARCHIVED 2026-07-31 (v1.8.9 ship, 2nd run) — the v1.8.8 batch ══════════
 ## Moved VERBATIM under the pinned HYGIENE rule. v1.8.8 closed CF1805-05 — the harvest clock
 ## exploit three external rounds could not kill — by moving harvest onto COSMIC_EPOCH (play

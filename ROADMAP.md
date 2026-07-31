@@ -32,37 +32,64 @@
 ##   Source AND site pushed; full battery green; live verified end-to-end after deploy, not assumed.
 ##
 ## ═══════════════════════════════════════════════════════════════════════════════════
-## ▶▶▶ STARTING v1.9 / THE PORT? READ THIS BLOCK, THEN NEXT #10, THEN 9b/9c/9d. ◀◀◀
-## The v1.8 arc is CLOSED and shipped. v1.9 = PORT PHASE 0/1. Before writing any port code:
+## ▶▶▶ STARTING v1.9 / THE PORT? THE PLAN IS IN `port/`. READ IT FIRST. ◀◀◀
+## The v1.8 arc is CLOSED and shipped. v1.9 = PORT PHASE 0.
 ##
-## ⚠⚠ 1. THE PORT PLAN DOCUMENT IS NOT IN THIS REPO. This is BLOCKING and it is the first
-##    thing to resolve. The v2.0 block at the BOTTOM of this file reviews an upload
-##    ("FULL_ENGINE...PORT_PLAN_v3.3_STACK_LOCKED") that was session-scoped and is GONE.
-##    What survives is our ANNOTATIONS on it, which cite §3 / §7 / §15 / §26 / §27.3 / §28.5 /
-##    D2 / D4 by number — none of which exist on disk. ASK NICK TO RE-UPLOAD IT, then COMMIT
-##    IT (suggest port/, the way audits/ was fixed). See 9b for the full note.
+## ★ THE DOCUMENTS (committed 2026-07-31, ca2e9d1 — they were LOST once; never rely on an upload):
+##   port/PORT_MASTER_PLAN_v4.0.md   3,164 lines. v4.0 SUPERSEDES v3.1 and is audited against
+##                                   v1.8.9, not the v1.6.4 the old review used. §20 = phases,
+##                                   §22 = Gates A–I, §23 = open items, §16 = data architecture.
+##   port/v1.9-port-update.md        the reviewer’s DELTA against v4.0 — read second, it is short.
+##   port/ADDENDUM-A..D              art scope + creature rubric · implementation topics ·
+##                                   portability and sizing · technology verification.
 ##
-## 2. WHAT v1.9 IS, and it is already decided (from the surviving review):
-##    STACK LOCKED — TypeScript + PixiJS 8 + Spine 2D + HTML/CSS UI (React/Lit optional) +
-##    Vite + IndexedDB + Zod + WebAudio + Vitest/Playwright. WebGL baseline, WebGPU opt-in.
-##    PHASE 0/1 DELIVERABLES — (a) the module split BECOMES the TS extraction; (b) save schema
-##    + Zod + a share-code migration policy; (c) a payload budget gate; (d) ART_DIRECTION.md
-##    elevated to the port rubric + a golden screen.
-##    CARRIED CALLS — NO code freeze until Phase-4 parity (the plan’s freeze framing predates
-##    twelve shipped releases); adopt the cross-language conformance suite as cheap insurance
-##    even though TS compiles to the same JS numerics, which largely defuses §27.3.
+## ★ PHASE 0 = "v1.8.9 baseline and decision lock", 2–4 weeks (§20). Deliverables verbatim:
+##   tag + archive the exact v1.8.9 baseline · reproduce all executable deps in clean CI ·
+##   capture the 50 fingerprint probes · add 10,000 cross-language golden seeds · capture saves,
+##   share codes, champion codes and migration fixtures · capture fixed-seed visual golden screens
+##   and proof sheets · capture audio-profile outputs for representative genomes · establish
+##   bundle / answerability / memory / GPU / audio-node budgets · ELEVATE ART_DIRECTION.md,
+##   AUDIO.md, PROCESS_LAWS.md AND THE SYSTEM DOCS INTO ACCEPTANCE RUBRICS · run the two-week
+##   Canvas/Pixi visual spike (rotating planet, ring occlusion, one creature, one layered biome) ·
+##   RUN THE HUMAN AUDIO LISTENING TEST before expanding audio scope · decide the four open design
+##   items (fed inheritance, ambience resume, legacy voice family, bat pitch).
+##   GATE A: baseline + every approved intentional deviation documented and reproducible.
+##   ⚠ NOTE THE FREEZE RULE CHANGED: the old plan wanted a hard freeze. v4.0 §20 and §23 say
+##   freeze AFTER Phase 4 UI parity — until then the HTML build stays the reference product and
+##   the emergency fallback, and may keep taking critical fixes.
 ##
-## 3. TWO DOC DELIVERABLES BEFORE GENERATION WORK (9c/9d): BIOME_ATLAS.md has NEVER EXISTED
-##    despite five citations — GENERATE it from source (tools/biome-audit.js walks the data).
-##    RARITY_AND_GRADES.md is three minors behind (documents the v1.6.4 15-grade ladder).
+## ★ WHAT THE REVIEWER ADDS THAT v4.0 DOES NOT CARRY (port/v1.9-port-update.md §2) — five items:
+##   1. SessionRNG. §16.2 makes the UNIVERSE reproducible; nothing makes a PLAYER OUTCOME
+##      reproducible. 11 outcome rolls (tryCapture, openPicker, _descRoll, attemptContact,
+##      hazardFlavor, _tutGrant, _tutDuel) draw from bare Math.random(), so no test can pin a
+##      capture and no bug report can be replayed. Two named domains: WorldRNG (seeded, pure) and
+##      SessionRNG (seeded once per session from a stored value, in the save + diagnostics export).
+##      Outcomes stay unpredictable to the PLAYER and become replayable to a TEST.
+##   2. Reachability has units. Once an affordance is on screen the game WORKS (deep-tier reach
+##      100% for nine verbs, breed 96%, craft 94%) — but almost nothing gets on screen: harvest
+##      found no card 109 times against 9 successes, tame 89 vs 2, scavenge 84 vs 3. Same shape in
+##      the economy: 52 of 62 recipes need intermediate parts and every Fabricator fold starts
+##      closed. A DESIGN finding, cheap to fix while Phase 4 rebuilds those surfaces.
+##   3. Archetype economics: the archetypes engaging most deeply LOSE on both counters (breeder
+##      Δcodex −21, miner Δ☄ 28) against a button-masher at Δ☄ 108. Arithmetically correct,
+##      never framed on screen as progress. Belongs in §23 as a deliberate balance decision.
+##   4. Gate H should carry reach thresholds: did/saw ≥95% per verb, and saw/attempt not
+##      materially worse than the v1.8.9 baseline — that second one is what stops the port
+##      quietly LOSING reachability during the component rewrite.
+##   5. The audio vocabulary measurement that justifies §15: 533 distinct voices → 199,707 of
+##      200,000; duplicate-in-50-creatures 91.3% → 0.6%. THE LISTENING TEST IS NOW UNBLOCKED.
+##   ⚠ Their own two corrections: they had conflated the DUAL RARITY ladders (raw 15-band vs
+##   display 10-name) across rounds 7–9, so read their old tier labels as RawGradeTier; and they
+##   state COSMIC_EPOCH is strictly better than the load-time bound they proposed, and should be
+##   "the port’s single time authority" for every cooldown.
 ##
-## 4. THE RE-PIN PERMISSION IS STANDING (Nick, 2026-07-31): "nobody’s really played the game,
-##    so I’m not terribly concerned about breaking the fingerprint if it means re-fingerprinting
-##    it." ⚠ TEST BEFORE SPENDING IT — v1.8.9 looked like it needed a re-pin and did not.
-##    Its real value is holding 50 probes byte-exact across the TS port. See WHERE THINGS STAND.
-##
-## 5. RE-RUN THE PLAN’S §3 AUDIT COUNTS FIRST — it audited ~21.8k lines and a 15-tier ladder;
-##    the build is now ~26.7k lines (html), a 10-tier ladder, plus a _GEAR_ART layer.
+## ★ OUR OPEN ITEMS ARE ALREADY IN THE PLAN (§23), which is a good sign the two agree: fed
+##   inheritance · ambience resume · legacy voice family · bat ceiling · raw/display rarity ·
+##   the re-pin permission (recorded as "available, unused for v1.8.9 — spend only on an approved
+##   generator change") · desktop training rail overlap (our NEXT #11) · remaining backlog triage.
+##   STILL OURS TO DO FIRST: 9c BIOME_ATLAS (Phase 0 wants system docs AS RUBRICS, and this one
+##   does not exist) and 9d the RARITY_AND_GRADES refresh — which §3.6/§16.3 make urgent, because
+##   that doc still describes the superseded 15-name ladder as if players see it.
 ## ═══════════════════════════════════════════════════════════════════════════════════
 
 ## ═══ WHERE THINGS STAND ═══
@@ -220,22 +247,17 @@
 ##    memory (partial) · Ambush at magnitudes IV/V · direct 132px thumbnail rendering (first paint
 ##    still generates HD) · willReadFrequently on the two hot canvas contexts · the `legacy` voice
 ##    archetype is a first-class 18th family in the wild (~5.5%), probably not intended.
-## 11. ⚠ NEW, FOUND BY THE ROUND-9 GATE AND NOT FIXED: on laptop/desktop/ipad-land, a raised
-##    training board overlaps #codexbtn and #chbtn. PRE-EXISTING — v1.8.5 reports the same 2
-##    controls buried, so it is NOT the CF1806-02 regression and was deliberately not folded in
-##    behind that name (a gate that conflates two defects behind one label teaches nobody
-##    anything). Above 900px those ids are RAIL buttons, not a dock, so the right assertion is a
-##    different one. The dock pass is scoped <=900px until someone decides what desktop should do.
-## 9b. ⚠⚠ THE v2.0 PORT PLAN DOCUMENT IS NOT IN THIS REPO — BLOCKING FOR PHASE 0.
-##    The 2026-07-26 block below reviews an upload ("FULL_ENGINE...PORT_PLAN_v3.3_STACK_LOCKED")
-##    that was SESSION-SCOPED and is gone. What survives is MY ANNOTATIONS ON IT, not the plan:
-##    the block cites §3, §7, §15, §26, §27.3, §28.5, D2 and D4 by number, and none of those
-##    sections exist anywhere on disk. A cold session has my opinions about a document it cannot
-##    read. THIS IS THE EXACT FAILURE audits/README.md was created to stop — uploads vanish, only
-##    what is committed survives — and we never applied that lesson to the most important upload.
-##    ▶ ACTION: ask Nick to re-upload it, then COMMIT IT (suggest port/ alongside audits/).
-##    If unrecoverable, the annotations are a serviceable skeleton, but the stack lock, the phase
-##    breakdown and the §3 audit counts would all have to be rebuilt from scratch.
+## 9b. ✔ RESOLVED 2026-07-31 — THE PORT PLAN IS COMMITTED at port/ (commit ca2e9d1). Nick supplied
+##    v4.0, which SUPERSEDES the lost v3.1 and is audited against v1.8.9 rather than v1.6.4, plus
+##    addenda A–D and a v1.9 delta. It will not be lost again.
+##    ⚠ KEEP THE LESSON, NOT JUST THE FILE: the v3.x plan was reviewed in 2026-07-26 as a
+##    session-scoped upload and vanished with that session, leaving annotations that cited §3/§7/
+##    §15/§26/§28.5 of a document nobody could read. audits/README.md existed specifically to stop
+##    that and had never been applied to the most important upload. ANY document we reason about
+##    gets committed the same day.
+##    ⚠ SECTION NUMBERS MOVED between v3.1 and v4.0 — older roadmap/archive entries citing §26
+##    step 2, §27.3 or §28.5 refer to the LOST v3.1. In v4.0 the equivalents are §20 (execution
+##    phases), §22 (Gates A–I), §23 (open items) and §24 (risks). Do not chase the old numbers.
 ## 9c. ⚠ BIOME_ATLAS.md HAS NEVER EXISTED, despite being cited in five live places — ART_DIRECTION
 ##    §6.1 plus three others, and this file’s own PINNED list. Corrected 2026-07-31 so nothing lies.
 ##    It is a REAL Phase-0 deliverable, not just a broken link: §28.5 wants the art-direction doc +
@@ -245,13 +267,24 @@
 ## 9d. ⚠ RARITY_AND_GRADES.md is THREE MINORS BEHIND and says so at its own top: it documents the
 ##    LIVE v1.6.4 15-grade ladder, superseded by the canonical 10-tier ladder in v1.7 source.
 ##    Honest, but a port rubric cannot use it as-is. Refresh before Phase 0.
-## 10. THEN v1.9 CONSOLIDATION = PORT PHASE 0/1 → v2.0 PixiJS. See the v2.0 block at the bottom
-##    of this file: save schema + Zod, module split BECOMES the TS extraction, payload budget gate,
-##    ART_DIRECTION.md elevated to the port rubric + a golden screen. Also still open from that
-##    review: the falsifiable Canvas2D visual spike (§26 step 2), and re-running the plan's §3
-##    counts against the current build before Phase 0 (it audited ~21.8k lines / a 15-tier ladder;
-##    we are now ~25k lines / 10-tier + a _GEAR_ART layer).
-##
+## 10. ▶ v1.9 = PORT PHASE 0. The plan is port/PORT_MASTER_PLAN_v4.0.md §20; the START HERE block
+##    at the top of this file summarises it. Phase 0 is 2–4 weeks and is mostly CAPTURE work —
+##    tag the baseline, reproduce deps in clean CI, capture fixtures (the 50 probes, 10,000 golden
+##    seeds, saves, share/champion codes, fixed-seed golden screens, audio profiles), set bundle /
+##    answerability / memory / GPU / audio-node budgets, elevate the docs to acceptance rubrics,
+##    run the Canvas/Pixi spike and the human listening test, and decide four design items.
+##    ⚠ IT IS NOT A CODE PHASE. No TypeScript is written until Phase 1 (§20). The temptation to
+##    start the rewrite before the fixtures exist is exactly what Gate A prevents — without them
+##    there is nothing to prove parity AGAINST, which is the whole thesis of §4.1.
+##    ⚠ THE FREEZE RULE CHANGED in v4.0: freeze the HTML build AFTER Phase 4 UI parity, not
+##    before. Until then it stays the reference product and the emergency fallback.
+
+## 11. ⚠ NEW, FOUND BY THE ROUND-9 GATE AND NOT FIXED: on laptop/desktop/ipad-land, a raised
+##    training board overlaps #codexbtn and #chbtn. PRE-EXISTING — v1.8.5 reports the same 2
+##    controls buried, so it is NOT the CF1806-02 regression and was deliberately not folded in
+##    behind that name (a gate that conflates two defects behind one label teaches nobody
+##    anything). Above 900px those ids are RAIL buttons, not a dock, so the right assertion is a
+##    different one. The dock pass is scoped <=900px until someone decides what desktop should do.
 ## ═══ ▶ PROCESS LAWS — MOVED 2026-07-30 ═══
 ## ★ They now live in PROCESS_LAWS.md, verbatim. READ IT BEFORE TOUCHING UI OR TESTS.
 ## Why it moved: at 88 lines it was the largest section in a file whose pin says it holds ONLY the
@@ -265,6 +298,10 @@
 ##   4. ONE ID BEATS ANY NUMBER OF CLASSES — and in CSS, min-height beats max-height.
 
 ## ═══ ▶ DOC MAP (verified against the shipped build; markers current 2026-07-31) ═══
+## ★ port/ (NEW 2026-07-31, ca2e9d1) — THE v2.0 PORT PLAN, committed so it cannot be lost a
+##   second time. PORT_MASTER_PLAN_v4.0.md (3,164 lines, supersedes v3.1, audited against v1.8.9) ·
+##   v1.9-port-update.md (the reviewer delta — 5 additions + 2 self-corrections) · ADDENDUM-A..D ·
+##   source-checks/. The v1.9 START HERE block at the top of this file is the summary.
 ## ⚠ PORT-READINESS AUDIT RAN 2026-07-31 — read 9b / 9c / 9d before trusting this map. Two docs
 ##   it used to list DO NOT EXIST or are three minors behind, and the port plan itself is missing.
 ## THE NINE SYSTEM DOCS the v1.8.6 sweep touched (plus the codebase reference) are marked
@@ -354,42 +391,3 @@
 ##   his Atlas, while one touching only crossGenome would not. Know which kind before doing it.
 ##   The baseline already carries SEVEN deliberate re-pin notes — the rule was never "never
 ##   re-pin", it is "never re-pin SILENTLY to make a failure pass".
-
-## ▶▶▶ 2026-07-26 ★ v2.0 ENGINE PLAN REVIEWED (upload: FULL_ENGINE...PORT_PLAN_v3.3_STACK_LOCKED
-##   — TS + PixiJS 8 + Spine 2D + HTML/CSS(+React/Lit opt) + Vite + IndexedDB + Zod + WebAudio +
-##   Vitest/Playwright; WebGL baseline, WebGPU opt-in). MY REVIEW (recorded for the arc):
-##   ✔ ENDORSE the stack lock — matches the 2.0 assessment already on this roadmap (painterly
-##     masters port as canvas→texture; hybrid DOM UI; deterministic core untouched).
-##   ✔ §26 SEQUENCING ("cheap work first, port inherits validated answers"): STEP 1 IS ALREADY
-##     SUBSTANTIALLY DONE — the plan was annotated against v1.7.0/1.7.3; since then 1.7.4→1.7.15
-##     shipped the legibility/onboarding/a11y work it prescribes (keyboard canvas w/ survey
-##     credit, aria-live, focus mgmt + inert, panel model, objective chip). The port inherits a
-##     VALIDATED design, per the plan's own argument. Its "freeze" framing is obsolete — we
-##     never froze and shipped 12 releases; recommend NO freeze until Phase-4 parity.
-##   ✔ §26 STEP 2 (the falsifiable Canvas2D visual prototype — planet rotation + ring occlusion,
-##     re-run personas, compare vs the +0.79 legibility delta): ADOPT — run it DURING v1.8 as its
-##     own two-week spike. Either outcome is decisive and cheap.
-##   ✔ §27.3 DETERMINISM LANDMINE: correct in principle, but the LOCKED STACK largely defuses it
-##     — TypeScript compiles to the SAME JS numerics (doubles, int32 bitwise, mulberry32/hashInt
-##     integer paths), so bit-identity survives TS migration nearly free. The cross-language
-##     conformance suite (10k golden seeds in CI) matters only if D2 (Unreal/Unity) ever reopens
-##     — adopt it as a cheap insurance line in Phase 0 anyway. Render seeds vs identity seeds:
-##     already our law.
-##   ✔ ACCESSIBILITY TO PHASE 4: agree — and it's already BUILT here, which is the strongest
-##     version of that argument (retrofit cost paid once, in the cheap codebase).
-##   ✔ D4 "AI AS THE ARTIST": the described loop (rubric → generate → vision critique → revise
-##     the GENERATOR → diff on fixed seeds) is literally this project's proof-sheet workflow —
-##     the §28.5 call to write the ART-DIRECTION DOC + GOLDEN SCREEN first is right; ART_DIRECTION.md
-##     exists in-repo and should be ELEVATED to the port rubric (highest-leverage open item).
-##   ⚠ HONESTY ON TIMELINE: team is not 5-7 people — the solo/duo rows (20-34/15-24 months
-##     hand-built) govern, BUT the D4 generator model + this session's throughput argue those
-##     rows overstate: art is generators not assets here. Plan by MILESTONE GATES, not calendar.
-##   ⚠ AUDIO WEIGHTING (§15 = 904 lines, evidence-blind): Nick already moved a SMALL audio pass
-##     into v1.8 — that IS the audio playtest the annotation demands. Ship it cheap, measure,
-##     THEN size §15.
-##   ⚠ PLAN'S AUDIT DRIFT (15-tier ladder, 21.8k lines): re-run all §3 counts against v1.7.15
-##     before Phase 0 (now ~25k lines, 10-tier ladder, +_GEAR_ART layer).
-##   ▶ SEQUENCE INTO OUR ARCS: v1.8 Connection (+ audio pass + §7 visual spike) → v1.9
-##     consolidation = PHASE 0/1 (module split BECOMES the TS extraction; save schema/Zod +
-##     share-code migration policy; payload budget gate; art-direction doc + golden screen) →
-##     v2.0 port Phases 2+ under the milestone gates. §28.5's "nothing blocks Phase 1" is right.
