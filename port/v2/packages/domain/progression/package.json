@@ -1,0 +1,4 @@
+{ "name": "@cf/domain-progression", "private": true, "version": "0.0.0", "type": "module",
+  "description": "Progression domain (plan §18). First occupant: the COSMIC_EPOCH play-time clock + conquest harvest readiness — the port's single time authority (reviewer correction: COSMIC_EPOCH beats any load-time bound for every cooldown).",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@cf/domain-rand": "*" } }
