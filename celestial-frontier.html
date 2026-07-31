@@ -4419,7 +4419,7 @@ const {SP_COLOR, FA_BODY, FA_LOCO, FA_TRAIT, FA_SIZE, FA_DIET, FA_HEAD, FA_LIMBS
 /* ================================================================
    @module Genome [domain] — genome synthesis, classification & species description
    Deps: Rand, SpeciesTraits
-   API:  describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade, guardianFor, GUARDIAN_EPITHETS
+   API:  describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade, guardianFor, GUARDIAN_EPITHETS, _szOf
    ================================================================ */
 const Genome=(()=>{
 /* the genome: indices into the trait tables. kingdom decides which tables apply. */
@@ -4470,6 +4470,17 @@ const REALM_ICON={'Microbial Life':'\ud83e\udda0','Colonial Life':'\ud83c\udf10'
   'Intelligent Natural Life':'\ud83e\udde0'};
 /* ---- the Mind hunt: rare fauna cross into true cognition. Derived from the genome
         (cognition-marker genes gated by a rare deterministic roll) so it's stable. ---- */
+/* v1.8.9 (round 9 §2.1 tail): the ONE remaining place `size` was read raw.
+   crossGenome mutates `size` without wrapping, so bred genomes carry size>5 —
+   measured at 12.4% of lineages by generation 5. Every OTHER drifting gene
+   (color/form/body/loco/trait/diet/head/skin/tail/pattern/eyes/behavior/habitat)
+   is read `% ARRAY.length` everywhere; size was the exception, and the exception
+   was visible: a bred size-6 creature printed "tiny" on its card while these
+   readers saw 6 and classified it MEGAFAUNA with the full rarity boost (+13
+   vitality, measured). One helper so the card and the classifier cannot disagree.
+   Fingerprint-safe by IDENTITY, not exemption: speciesGrade/sapience/realm are
+   probed with makeGenome outputs, whose size is already 0-5. Verified by validate. */
+function _szOf(g){ return ((+(g&&g.size)||0)%FA_SIZE.length+FA_SIZE.length)%FA_SIZE.length; }
 function sapienceTier(g){
   if(!g || g.kingdom!=='fauna') return 0;
   const beh=FA_BEHAVIOR[(g.behavior||0)%FA_BEHAVIOR.length]||'';
@@ -4480,7 +4491,7 @@ function sapienceTier(g){
   else if(/migrating|territorial|seasonal/.test(beh)) c+=1;
   if(/echolocation|magnetic|electroreception/.test(sense)) c+=1;
   if(/harmonic|sing|signal/.test(tr)) c+=1;
-  if((g.size||0)>=3) c+=1;
+  if(_szOf(g)>=3) c+=1;
   const roll=mulberry32(hashInt(g.seed>>>0,0x5A91,3)>>>0)();
   if(c>=4 && roll<0.06) return 4;   /* Sapient — a true mind, vanishingly rare */
   if(c>=3 && roll<0.18) return 3;   /* Semi-sapient — fills the Mind Signature */
@@ -4506,7 +4517,7 @@ function classifyRealm(g){
   const hab=habOf(g);
   const loco=locoOf(g);
   if(sapienceTier(g)>=3) return 'Intelligent Natural Life';
-  if((g.size||0)>=5) return 'Megafauna';
+  if(_szOf(g)>=5) return 'Megafauna';
   if(g.x){                        /* extremophiles claim the realms built for them */
     if(/deck/.test(hab)) return 'Gas Giant Life';
     if(/cave/.test(hab)) return 'Subterranean Life';
@@ -4540,7 +4551,7 @@ function realmModifiers(g){
   const mods=[];
   if(g.lumin) mods.push('Bioluminescent');
   if(g.kingdom==='fauna'){
-    if((g.size||0)>=4) mods.push('Megafauna');
+    if(_szOf(g)>=4) mods.push('Megafauna');
     const beh=FA_BEHAVIOR[(g.behavior||0)%FA_BEHAVIOR.length]||'';
     if(/symbiotic/.test(beh)) mods.push('Symbiotic');
     const hab=habOf(g);
@@ -4587,8 +4598,8 @@ function speciesGrade(g){
   /* the Fifty Paragons wear forced deep-spectrum grades (8–11) the same way */
   if(g.par) return colorGrade(dom, g.seed, {salt:0x10F, force:Math.min(11, Math.max(8, g.par|0))});
   let boost=0;
-  if((g.size||0)>=4) boost++;
-  if((g.size||0)>=5) boost++;
+  if(_szOf(g)>=4) boost++;
+  if(_szOf(g)>=5) boost++;
   if(g.lumin) boost++;
   if((g.gen||0)>=2) boost++;
   if((g.gen||0)>=5) boost++;
@@ -4640,9 +4651,9 @@ function guardianFor(pseed){
   g.ep=hashInt(pseed>>>0, 0x6A2D, 0x44)%GUARDIAN_EPITHETS.length;
   return {genome:g, tier, name:describeSpecies(g).name};
 }
-return Object.freeze({describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade, guardianFor, GUARDIAN_EPITHETS});
+return Object.freeze({describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade, guardianFor, GUARDIAN_EPITHETS, _szOf});
 })();
-const {describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade, guardianFor, GUARDIAN_EPITHETS}=Genome;
+const {describeSpecies, makeGenome, sapienceTier, classifyRealm, ecologyRole, realmBiome, realmModifiers, REALM_ICON, REALM_ORDER, faunaDesc, speciesGrade, guardianFor, GUARDIAN_EPITHETS, _szOf}=Genome;
 /* @end Genome */
 /* Unicode-safe base64 for SVG data URIs — native btoa throws on chars > U+00FF
    (e.g. the '·' and '—' in specimen labels), which was breaking creature images. */
@@ -13584,7 +13595,7 @@ function openLandingVista(pl, _journal){
      rock' matched the 'rivers' test and drew a WATER river with sun
      glints across lava worlds — molten is never water */
   const waterV=/Molten/i.test(waterTxt)?'none':(/Liquid|rivers|ocean/i.test(waterTxt)?'liquid':(/Frozen/i.test(waterTxt)?'frozen':(waterRow?'none':'liquid')));
-  const _tit=roster.some(gg=>(gg.size||0)>=5) && (mulberry32((P.seed^0x717B)>>>0)()<0.30);
+  const _tit=roster.some(gg=>_szOf(gg)>=5) && (mulberry32((P.seed^0x717B)>>>0)()<0.30);
   showVistaBox(P, tod, (env.wx&&wxNow)?effWx:null, era, genes, env.hasField,
     floraOk, env.wx&&effWx==='snow', waterV,
     {ring:P.ring, stc:(st.star&&st.star.c)||null, herd:standable.length,
@@ -19797,10 +19808,19 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.8.8';
+const GAME_VERSION='1.8.9';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.8.9', title:'One Measure', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🐘 A CREATURE IS ONE SIZE EVERYWHERE — a beast from a long bloodline could be described as “tiny” on its card while the game quietly classified it as Megafauna, handing it a rarity boost and noticeably more vitality than its size should allow. Size now means the same thing on the card, in the fight, in its habitat classification and in the Compendium’s Size Classes.',
+  '🏝 SIZE CLASSES AND HABITAT READINGS AGREE WITH THE CARD — the same mismatch could file a bred creature under the wrong realm, or count it toward a world’s megafauna when it was nothing of the kind.'],
+ ],
+ ['🔧 Under the Hood', [
+  '📐 ONE DEFINITION OF SIZE — the six places that read the size gene now share a single helper rather than each deciding for themselves. The check that guards it proves a bred creature and its equivalent smaller size are treated identically, and it fails against the previous build.'],
+ ],
+]},
 {v:'1.8.8', title:'Paid for Playing', date:'July 2026', sections:[
  ['⚖ Balancing', [
   '🌍 SETTLED WORLDS NOW PAY YOU FOR EXPLORING, NOT FOR WAITING — a conquered world used to replenish on the calendar: one harvest per hour, whether you were playing or the game was closed. It now replenishes as you explore, roughly forty minutes of play per world. If you play, you earn faster than before. If you leave the game closed for a week, your empire waits for you rather than paying out for time you did not spend. This is the same clock your biosphere pools and creature evolution have always used.',
