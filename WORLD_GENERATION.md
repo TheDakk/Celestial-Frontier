@@ -2,7 +2,7 @@
 
 **STATUS:** matches code as of 2026-07-23 (verified against main.js).
 **Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.
-**Source of truth:** this doc is the DESIGN spec; main.js implements it. Art rules in ART_DIRECTION.md. ⚠ A separate biome CONTENT catalog is referenced across these docs as BIOME_ATLAS.md but has never existed — see ART_DIRECTION §6.1; it is a Phase-0 deliverable.
+**Source of truth:** this doc is the DESIGN spec; main.js implements it. Art rules in ART_DIRECTION.md. The biome CONTENT catalog is `BIOME_ATLAS.md` at the repo root (audited and promoted there from `tools/` on 2026-07-31; it had existed since 2026-07-21, and an earlier same-day note in these docs wrongly declared it missing — see ART_DIRECTION §6.1).
 
 ## 1. Overview
 
@@ -87,12 +87,12 @@ Attaches one of `temperate | hot | cold | frozen`, in priority order:
 
 The band drives every survey phrase (`atmosphereText`, `climateText`, `waterText`, ~1317–1349) and, crucially, filters the biome pool.
 
-### 2.7 Biome — `biomeFor(P, band)` (~7538)
+### 2.7 Biome — `biomeFor(P, band)` (~10824)
 A pure layer *inside* each of the 8 types, seeded from its **own** hash stream so it can never change a world's type or perturb the determinism fingerprint:
 - **Earth returns `null`** — home is never re-labeled.
 - Candidates = `BIOME_SETS[P.type]` filtered to those whose `bands` include the current band (`frozen` reads as `cold`); if none qualify, the full set is used.
 - Weighted pick via `r = mulberry32(hashInt(P.seed, 0xB10E, 7))`. Rare biomes (`rare:1`) carry tiny weights, so wonders stay wonders.
-- The chosen biome supplies the card's Biome flavor line, its `land` % (feeds the landing/descent ladder, `descentTierFromPct` ~7550), and the vista's scene key.
+- The chosen biome supplies the card's Biome flavor line, its `land` % (feeds the landing/descent ladder, `descentTierFromPct` ~10899), and the vista's scene key.
 
 ### 2.7a The landing roll — `biomeForLanding(P, band, salt)`
 Distinct from the anchor biome above, this rolls the **touch-down region** you actually descend into, `%`-weighted by the world's `biomeComposition`, and is now **re-rolled PER LANDING** via a salt of `epoch*997 + stats.landings` (was per-20-min-epoch only, so repeat descents in the same epoch always looked identical).
@@ -119,7 +119,7 @@ On planetfall the descriptor's facts (band, biome, water state, life, civ era, s
 | venus | Venusian hothouse |
 | lava | Molten world |
 
-**`BIOME_SETS`** (~7477) — biome catalog per type (name · weight `w` · `land%` · band gate · `rare`). Full flavor text lives in the source (the BIOME_ATLAS.md catalog is unwritten — ART_DIRECTION §6.1); the design shape:
+**`BIOME_SETS`** (**~10763** — corrected 2026-07-31 from a stale `~7477`, which dated from when the html was the source of truth) — biome catalog per type (name · weight `w` · `land%` · band gate · `rare` · flavor `f`). ⚠ `land` **doubles as the descent-success base** in `descentFor`, so it is not a purely cosmetic figure. Full flavor text lives in the source and is now also enumerated per biome in `BIOME_ATLAS.md` §1.1; the design shape:
 
 - **terran** (11): temperate·24, savanna·12 (temp/hot), jungle·10, marsh·8, swamp·7, mangrove·5, tundra·12 (cold), karst·5, saltflat·8 (hot), **fungal·1.6 rare**, **crystalsteppe·1.4 rare**.
 - **ocean** (7): opensea·20, archipelago·14, coral·10 (temp), stormsea·8, volcisle·5, abyssal·7, **milksea·1.4 rare**.
@@ -186,7 +186,7 @@ The first `moons`/`ring` rolls are discarded values but their RNG consumption is
 - **`@module WorldGen`** (~918): `galaxiesInCell` (928), `galaxyProfile` (992), `galaxyWormhole` (998), `supernovaSites` (1017), `galaxyHaze` (1047), `fineStarsInCell` (1118), `starsInCell` (1148), `systemFor`/`_systemFor` (1216/1224), `genRocks` (919).
 - **`@module SurveyPhrases`** (~1303): `TYPE_LABEL` (1305), `COMP` (1307), `atmosphereText` (1317), `climateText` (1331), `waterText` (1343), `gravityText` (1350), `climateBand` (1356).
 - **`planetDescriptor`** (2192) and `starDescriptor` (2297) — assemble the survey cards; `CARD_FACTS`/`_cardFactsSet` (357–363).
-- **`@section biomes`** (~7464): `BIOME_SETS` (7477), `biomeFor` (7538), `descentTierFromPct` (7550).
+- **`@section biomes`** (~10750): `BIOME_SETS` (10763), `biomeFor` (10824), `biomeComposition` (10836), `biomeForLanding` (10886), `descentTierFromPct` (10899), `descentFor` (10963). *(All corrected 2026-07-31; the previous ~7464/7477/7538/7550 dated from when the html was the source of truth and were stale by ~3,300 lines.)*
 - **Vista (art, reference only):** `@section` around 4328; `_hdAbyssScene` (6118), `hdVista` (6260), `_hdDeckScene` (7120); `planetThumb` (472).
 
 ## 8. Open questions / pending

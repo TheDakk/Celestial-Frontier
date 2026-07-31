@@ -1,16 +1,48 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
-_Generated 2026-07-20 from: live `BIOME_SETS` (main.js) + data-pack CSVs (01_EARTH 93 · 02_NON_EARTH 315) + Additional Biomes file. Colors are PROPOSED signatures for the biome→dot / biome→vista tint._
+**STATUS:** §1 verified against code as of **2026-07-31 (v1.8.9)**. §§2–4 are design-pack content and are
+NOT derivable from source — see PROVENANCE below. Audited and promoted from `tools/` to the repo root
+during port **Phase 0** (Gate A); the file itself dates from 2026-07-20.
+
+_Originally generated 2026-07-20 from: live `BIOME_SETS` (main.js) + data-pack CSVs (01_EARTH 93 ·
+02_NON_EARTH 315) + Additional Biomes file. Colors are PROPOSED signatures for the biome→dot /
+biome→vista tint._
+
+> ## ⚠ PROVENANCE — read before quoting any number here
+>
+> This document has **two halves with different evidence standards**, and conflating them is how the
+> "93 Earth + 315 non-Earth" figures ended up cited elsewhere as though source produced them.
+>
+> - **§1 (43 live biomes) is SOURCE-DERIVED and verified.** All 43 signature hexes were re-checked
+>   against `BIOME_PROFILES` (main.js ~694) on 2026-07-31 by extracting both sets and diffing them:
+>   43 of 43 match exactly, with no extraneous hexes. This half is safe to treat as a rubric.
+> - **§§2–4 (93 Earth · 315 non-Earth · Additional) are DESIGN-PACK content.** They come from uploaded
+>   CSVs and the Additional Biomes file. **They do not exist in `main.js` and cannot be regenerated
+>   from it.** That is precisely why this file matters — and why those counts must never be quoted as
+>   source facts. They describe intended scope, not shipped content.
+>
+> **⚠ This file was believed not to exist.** ROADMAP 9c and ART_DIRECTION §6.1 both asserted
+> "BIOME_ATLAS.md has never existed" (corrected 2026-07-31). It did — here, tracked, since 2026-07-21.
+> The check looked only in the repo root. Both claims are now retracted; the file lives at the root.
 
 > **VISTA/LANDING coverage as of v1.6 Batch 15.5 (render-only):** all 43 BIOME_PROFILES (= 39 surface/
 > ocean + 4 gas giants) render as landing vistas, verified in three modes via `tools/sheets/biome-coverage.js`
 > (`MODE=earth`|`proc`, `EMPTY=1`) and gated by `tools/biome-audit.js`. Coral→`_hdReefScene`, abyssal→
 > `_hdAbyssScene` (both draw fauna only when populated), gas→`_hdDeckScene` (native aerial life; Earth life
 > unsupported). `_hdBiomeDress` cases strengthened for canyon (walls), glass (shards), saltflat vs saltpan,
-> and the rocky cluster (geode amethyst crystals etc.). ICE/GREY/HAZE worlds now place creatures. Fauna-free
-> by design: **acidhaze, abyssgreen** (`fauna:[]`). Remaining look-alike-cluster differentiation
+> and the rocky cluster (geode amethyst crystals etc.). ICE/GREY/HAZE worlds now place creatures.
+> Remaining look-alike-cluster differentiation
 > (marsh/swamp/mangrove · ice family · rocky boulder/graben/carbon · sulfur/acid/abyssgreen · ember family)
 > is tracked as NON-BLOCKING post-lock polish.
+
+> **⚠ CORRECTED 2026-07-31 — "fauna-free by design" was understated.** This file previously said
+> **acidhaze, abyssgreen**. Source has **four** biomes with `fauna:[]`: **acidhaze, abyssgreen,
+> magmasea, hotglow** (verified by extracting every profile and testing the array). Two caveats:
+> `tools/biome-audit.js` whitelists only the first two as `FAUNA_FREE` while *also* assigning
+> `magmasea` an Earth anchor (Lava Crab) — so the audit manifest and `BIOME_PROFILES` disagree about
+> `magmasea`. And `hotglow` sits in the audit's `GAS` list, whose other three members (`banded`,
+> `ammonia`, `stormeye`) do carry floater fauna — `hotglow` carries none, making it a fifth case
+> rather than a gas-biome norm. Separately, **17** biomes carry `flora:[]`.
 
 ## 1 · LIVE biomes (43, in the game now — colored FIRST in Phase 4)
 
@@ -29,6 +61,79 @@ _Generated 2026-07-20 from: live `BIOME_SETS` (main.js) + data-pack CSVs (01_EAR
 **Lava 🌋** — Ash-Waste `gray ash #7a7570` · Ember-Field `orange-red #c05028` · Obsidian `black glass #2a2428` · Magma-Sea `molten orange #e06020`
 
 **Gas giant 🪐** — Banded `cream-tan bands #c8b090` · Pastel-Ammonia `soft pastel #d0c8d8` · Storm-Eye `deep red-brown #a0604a` · Ember giant (rare) `sullen red #b04030`
+
+### 1.1 · Per-biome content catalog — SOURCE-DERIVED
+
+_Generated 2026-07-31 from v1.8.9 by extracting both tables and merging on key. Not hand-transcribed._
+
+Merges **`BIOME_PROFILES`** (main.js ~694 — art/ecology metadata) with **`BIOME_SETS`** (~10763 —
+generation and card text). The two are keyed identically and the coverage gate `tools/biomeprofile-check.js`
+enforces both directions — verified here as 43/43 with no orphans in either table. **They do not
+reference each other at runtime**; they are parallel tables joined only by string key.
+
+- `w` — selection weight within the world type (`biomeFor` does a plain weighted roll).
+- `land` — land percentage, which **doubles as the descent-success base** in `descentFor`.
+- `bands` — climate-band gate; `any` means eligible in every band.
+- `rare` — the wonder-class flag, rendered violet on the survey card. **8** biomes carry it.
+
+> ⚠ **`sig`, `fauna` and `flora` have NO runtime reader.** Only `weather` and `hazard` are consumed
+> (by `_hdVistaEco`). The signature colors are *authored reference values, not applied colors* — the
+> map dot and vista tint resolve through `CA_BODY` / `CA_CLASSRING` instead. Treat this table as the
+> intended content contract, which is exactly what a re-implementation should be checked against —
+> but do not assume the shipped renderer currently honours the fauna/flora columns. See the
+> dead-filter note below.
+
+> ⚠ **The biome→fauna link is currently dead code.** `main.js:11112` reads `wbRoll.fauna`, but
+> `wbRoll` is a **`BIOME_SETS`** entry and that table has no `fauna` field (verified: zero occurrences
+> in the whole block). So the biome-matched species filter always falls through to an unfiltered
+> shuffle, and a jungle landing can show glacier fauna. The data it wants is one table over, on
+> `BIOME_PROFILES[wbRoll.k].fauna`. Logged in ROADMAP; deliberately NOT fixed during Phase 0 capture.
+
+| biome | type | display name | sig | w | land | bands | rare | fauna (rig families) | flora (forms) | hazard | weather |
+|---|---|---|---|---:|---:|---|---|---|---|---|---|
+| `temperate` | terran | Temperate world | `#6f9a52` | 24 | 100 | temperate |  | mammal bird insect amphibian | tree shrub flower grass fern | — | mild |
+| `savanna` | terran | Savanna world | `#c9a24a` | 12 | 100 | temperate hot |  | mammal bird insect | grass tree shrub | drought | dry-heat |
+| `jungle` | terran | Jungle world | `#2f7d4f` | 10 | 85 | temperate |  | primate bird reptile insect amphibian | tree vine fern flower palm | — | humid |
+| `marsh` | terran | Marsh world | `#7f8a45` | 8 | 90 | temperate |  | bird amphibian insect fish | grass herb flower | mire | mist |
+| `swamp` | terran | Swamp world | `#4a5940` | 7 | 80 | temperate |  | reptile amphibian insect fish | tree moss vine | mire | mist |
+| `mangrove` | terran | Mangrove world | `#5c7a4a` | 5 | 90 | temperate |  | crust fish bird reptile | tree palm grass | — | humid |
+| `tundra` | terran | Tundra world | `#9fb0a0` | 12 | 90 | cold |  | mammal bird | moss shrub grass | cold | wind-cold |
+| `karst` | terran | Karst world | `#b8b0a0` | 5 | 80 | temperate cold hot |  | mammal arachnid insect | fern moss shrub | sinkhole | mild |
+| `saltflat` | terran | Salt-Flat world | `#e8e6dc` | 8 | 85 | hot |  | insect arachnid bird | cactus herb | salt-glare | dry-heat |
+| `fungal` | terran | Fungal world | `#9a6fb0` | 1.6 | 85 | temperate cold | **rare** | insect gastropod amphibian | moss fern | spore | still |
+| `crystalsteppe` | terran | Crystal Steppe world | `#7fb0c0` | 1.4 | 85 | temperate cold hot | **rare** | insect arachnid mammal | grass cactus | shard | wind |
+| `opensea` | ocean | Open-Sea world | `#2a5a8a` | 20 | 90 | any |  | fish marine jelly ceph | seaweed | — | swell |
+| `archipelago` | ocean | Archipelago world | `#3a8a80` | 14 | 95 | any |  | bird crust fish reptile | palm tree grass | — | trade-wind |
+| `coral` | ocean | Coral-Shallows world | `#40c0b0` | 10 | 100 | temperate |  | fish sessile crust ceph gastropod | seaweed | — | calm |
+| `stormsea` | ocean | Storm-Sea world | `#4a5a70` | 8 | 60 | any |  | fish marine bird | seaweed | storm | squall |
+| `volcisle` | ocean | Volcanic-Archipelago world | `#2a6a6a` | 5 | 70 | any |  | crust fish bird | palm fern | ashfall | humid |
+| `abyssal` | ocean | Abyssal world | `#16283e` | 7 | 75 | any |  | fish ceph jelly sessile | — | pressure | lightless |
+| `milksea` | ocean | Milk-Sea world | `#a0d0d0` | 1.4 | 90 | any | **rare** | jelly ceph fish | seaweed | — | glow-calm |
+| `glacier` | ice | Glacier world | `#cfe0ea` | 18 | 90 | any |  | marine bird mammal | moss | cold | wind-cold |
+| `packice` | ice | Pack-Ice world | `#a0b8c8` | 12 | 85 | any |  | marine bird fish | — | cold | wind-cold |
+| `cryogeyser` | ice | Cryogeyser world | `#b0d0d8` | 8 | 70 | any |  | crust fish | moss | cryo-jet | steam-cold |
+| `blueice` | ice | Blue-Ice world | `#6fa8d0` | 2 | 55 | any | **rare** | marine fish | — | crevasse | still-cold |
+| `dunesea` | desert | Dune-Sea world | `#d8b878` | 18 | 90 | any |  | reptile arachnid insect mammal | cactus shrub | sandstorm | dry-heat |
+| `canyon` | desert | Canyon world | `#b06a48` | 10 | 85 | any |  | reptile bird mammal | shrub cactus | flash-flood | dry |
+| `saltpan` | desert | Salt-Pan world | `#ded8c8` | 8 | 85 | hot |  | insect bird | herb | salt-glare | mirage-heat |
+| `oxide` | desert | Oxide-Waste world | `#b0603a` | 10 | 75 | any |  | arachnid insect reptile | cactus | dust-devil | dry |
+| `glass` | desert | Glass-Desert world | `#c8b0a0` | 1.6 | 50 | any | **rare** | arachnid insect | — | glass-shard | dry-heat |
+| `cratered` | rocky | Cratered world | `#9a9a94` | 18 | 95 | any |  | arachnid insect | moss | meteor | airless |
+| `boulder` | rocky | Boulder-Field world | `#a8a090` | 10 | 90 | any |  | reptile arachnid mammal | moss shrub | rockfall | dry |
+| `graben` | rocky | Graben-Canyon world | `#78787a` | 8 | 85 | any |  | arachnid reptile | moss | fault | still |
+| `geode` | rocky | Geode world | `#9a6fc0` | 2.4 | 80 | any | **rare** | insect arachnid | — | shard | still |
+| `carbon` | rocky | Carbon world | `#2a2a2e` | 1.6 | 60 | any | **rare** | arachnid insect | — | soot | still |
+| `sulfurdeck` | venus | Sulfur-Storm world | `#b0a040` | 10 | 30 | any |  | insect | — | acid | sulfur-storm |
+| `acidhaze` | venus | Acid-Haze world | `#b8a850` | 12 | 25 | any |  | **(none)** | — | acid | acid-haze |
+| `abyssgreen` | venus | Greenhouse-Abyss world | `#6a6030` | 4 | 10 | any |  | **(none)** | — | heat | greenhouse |
+| `ashwaste` | lava | Ash-Waste world | `#7a7570` | 10 | 35 | any |  | arachnid insect | — | ashfall | ash |
+| `emberfield` | lava | Ember-Field world | `#c05028` | 10 | 25 | any |  | insect | — | ember | ember-wind |
+| `obsidian` | lava | Obsidian world | `#2a2428` | 7 | 20 | any |  | arachnid | — | glass-shard | still-heat |
+| `magmasea` | lava | Magma-Sea world | `#e06020` | 4 | 10 | any |  | **(none)** | — | magma | heat-shimmer |
+| `banded` | gas | Banded giant | `#c8b090` | 16 | 65 | any |  | jelly ceph | — | storm | band-wind |
+| `ammonia` | gas | Pastel-Ammonia giant | `#d0c8d8` | 8 | 75 | any |  | jelly | — | cold | pastel-cloud |
+| `stormeye` | gas | Storm-Eye giant | `#a0604a` | 4 | 30 | any |  | jelly ceph | — | megastorm | cyclone |
+| `hotglow` | gas | Ember giant | `#b04030` | 3 | 15 | any | **rare** | **(none)** | — | heat | ember-cloud |
 
 ## 2 · EARTH biomes — data pack (93, by family)
 
