@@ -21,13 +21,8 @@
 'use strict';
 const fs = require('fs');
 const path = require('path');
-const { execFileSync } = require('child_process');
-const { JSDOM, VirtualConsole } = require('jsdom');
-const { makeFake2D } = require('./fake2d.js');
+const { bootProbe, root } = require('./_probeboot.js');
 
-const root = path.join(__dirname, '..');
-const HTML = path.join(root, 'celestial-frontier.html');
-const PROBE_BUILD = path.join(__dirname, 'probe-build.html');
 const OUT = path.join(root, 'port', 'baseline-v1.8.9', 'golden-seeds.json');
 
 const argOf = (n, d) => {
@@ -60,46 +55,16 @@ if (CHECK && fs.existsSync(OUT)) {
   } catch (_) { /* a corrupt fixture is caught below with a clearer message */ }
 }
 
-/* probe-build.html is generated from the html; rebuild if missing or stale. */
-if (!fs.existsSync(PROBE_BUILD) || fs.statSync(PROBE_BUILD).mtimeMs < fs.statSync(HTML).mtimeMs) {
-  console.log('regenerating probe-build.html …');
-  execFileSync(process.execPath, [path.join(__dirname, 'make-probe-build.js'), HTML, PROBE_BUILD], { stdio: 'inherit' });
-}
-
-const errors = [];
-const vc = new VirtualConsole();
-vc.on('jsdomError', (e) => errors.push('jsdomError: ' + (e && e.message)));
-vc.on('error', (...a) => errors.push('console.error: ' + a.map(String).join(' ')));
-
-const dom = new JSDOM(fs.readFileSync(PROBE_BUILD, 'utf8'), {
-  runScripts: 'dangerously',
-  pretendToBeVisual: true,
-  url: 'file:///game/celestial-frontier.html',
-  virtualConsole: vc,
-  beforeParse(window) {
-    const proto = window.HTMLCanvasElement.prototype;
-    proto.getContext = function (kind) {
-      if (kind !== '2d') return null;
-      if (!this.__fake2d) this.__fake2d = makeFake2D(this);
-      return this.__fake2d;
-    };
-    proto.toDataURL = function () { return 'data:image/png;base64,'; };
-    window.addEventListener('error', (ev) => errors.push('window.onerror: ' + (ev.message || String(ev.error))));
-  },
-});
-const { window } = dom;
-
 const started = Date.now();
-setTimeout(() => {
-  try {
-    window.__GOLDEN_CFG__ = CFG;
-    const s = window.document.createElement('script');
-    s.textContent = fs.readFileSync(path.join(__dirname, 'goldenseeds-probe.js'), 'utf8');
-    window.document.body.appendChild(s);
-  } catch (e) { errors.push('probe-inject: ' + e.message); }
 
-  setTimeout(() => {
-    const G = window.__GOLDEN__;
+/* jsdom boot lives in _probeboot.js — shared with codefixtures.js so the two
+   fixtures are guaranteed to describe the SAME realm. */
+bootProbe({
+  probe: 'goldenseeds-probe.js',
+  global: '__GOLDEN__',
+  pre: (w) => { w.__GOLDEN_CFG__ = CFG; },
+}).then(({ value: G, errors, window }) => {
+  {
     if (!G || G.error) {
       console.error('GOLDEN SEEDS: probe failed —', (G && G.error) || 'no result');
       if (errors.length) console.error(errors.slice(0, 5).join('\n'));
@@ -185,5 +150,5 @@ setTimeout(() => {
     else console.log('GOLDEN SEEDS: PASS — ' + gnames.length + ' generators, ' + gnames.reduce((a, n) => a + G.generators[n].cases, 0).toLocaleString() + ' cases, all rollups identical (' + secs + 's)');
     window.close();
     process.exit(bad ? 1 : 0);
-  }, 400);
-}, 400);
+  }
+}).catch((e) => { console.error('GOLDEN SEEDS: ' + ((e && e.stack) || e)); process.exit(1); });

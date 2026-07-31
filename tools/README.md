@@ -103,6 +103,41 @@ Lives at `port/baseline-v1.8.9/golden-seeds.json` (~4.3 MB). Captures in ~7s.
 > "26 generators diverged" — a **false alarm**, and a check that cries wolf gets ignored.
 > `--check` now takes its counts from the fixture unless `--count` is passed explicitly.
 
+## codefixtures.js — the codec and load-path hardening corpus
+
+```
+npm run codefixtures            # re-run and compare (a GATE)
+npm run codefixtures:capture
+```
+
+Pins `encodeCreature`/`decodeCreature` (share **and** champion codes — same function,
+`champ` is the 2nd arg and carries xp), `encodeWhere`/`decodeWhere`, `normGenome`
+(untrusted import hardening) and `_sanitizeSavedGenome` (load-path hardening).
+108 curated cases at `port/baseline-v1.8.9/code-fixtures.json`.
+
+**Curated, not random — deliberately.** `golden-seeds.json` covers volume. A codec and
+a hardener need the opposite: named adversarial edges with stated expectations. A random
+corpus will never contain `size: 1e6`, a `__proto__` key, or a 400-character name.
+
+**⚠ The `size_*` cases are the point.** `crossGenome` mutates `size` without wrapping, so
+honestly-bred genomes carry `size > 5`. v1.8.6 added a load-path clamp that permanently
+rewrote ~12% of bred creatures into titanic ones; v1.8.7 reverted it. The fixture asserts
+**six `sizePreserved` invariants outright** — `_sanitizeSavedGenome` leaves `size`
+unchanged for 0, 5, 6, 12, −3 and 1e6. A port that "tidies" `size` here re-creates the
+save-corruption bug. `normGenome` *does* coerce (`Math.abs((+v)|0)`, so −3 → 3) — the two
+hardeners differ on purpose, and both behaviours are recorded.
+
+> **⚠ Scope, stated honestly.** `buildSave`/`loadSave` are app-layer and not reachable
+> from the probe realm, so this does **not** capture a full save round-trip. Gate C's
+> *"a real veteran save imports successfully"* stays **open** — a synthetic save generated
+> by the same code that reads it proves very little.
+
+> **A shared-`WeakSet` bug was found here and fixed in both probes.** `san()`'s cycle
+> guard was module-level, so the *second* canonicalisation of any object returned
+> `«cycle»` — silently dropping fields. It corrupted this fixture (a recorded `size: -3`
+> vanished) and was latent in `goldenseeds`; re-capturing there produced 25 of 25
+> identical rollups, confirming it never bit that corpus. `seen` is now per-call in both.
+
 ## The loop (run after every batch of edits)
 
 ```
