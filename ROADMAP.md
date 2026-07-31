@@ -220,10 +220,32 @@
 ##   but Gate F's SCREEN requirement is met by this set. Also absent: landing vistas and encounter
 ##   screens, which need a world landed on rather than a panel clicked; add them when the
 ##   Canvas/Pixi spike needs a before/after.
-## ▶ NEXT IN PHASE 0 — MINE, and this is now the WHOLE of my remaining list: elevate the remaining
-##   system docs into ACCEPTANCE RUBRICS (ART_DIRECTION · AUDIO · PROCESS_LAWS + the system docs —
-##   9c/9d did two of them) · run the two-week CANVAS/PIXI SPIKE (rotating planet, ring occlusion,
-##   one creature, one layered biome). Everything else on my side is captured.
+## ✔ ACCEPTANCE RUBRICS WRITTEN (2026-07-31). port/RUBRICS.md — gates A-I, every criterion tagged
+##   [EXEC] (a command that passes/fails) · [EXEC-TODO] (should be executable, does not exist yet) ·
+##   [HUMAN] (a person must look, listen or play). ⚠ [HUMAN] IS NOT A WEAKER CRITERION, IT IS AN
+##   IRREDUCIBLE ONE — nine logged green-but-wrong cases here all share one shape: something that
+##   FELT checkable got a check, the check went green, nobody looked.
+##   THE HONEST TALLY: ~half executable today, a third EXEC-TODO, the rest human-only. AND THE TWO
+##   THAT MOST BLOCK PHASE 0 — a real veteran save (Gate C) and the listening test (Gate G) — ARE
+##   BOTH [HUMAN]. Neither can be worked around by building a better tool.
+## ✔ CANVAS/PIXI SPIKE — DAY ONE DONE (2026-07-31). port/spike/ + spike-proof.png. ⚠ A ONE-SITTING
+##   spike, NOT the two-week one; it answers the STRUCTURAL questions and NOT the art-quality one.
+##   ✅ RING OCCLUSION WORKS — back half behind the planet, front half over it, via two masked
+##      containers and painter's order. The item most likely to force a different architecture
+##      did not. Parallax layering works. Pixi 8 renders WebGL headlessly.
+##   ⚠ THE PLANET TERMINATOR AND RING SHADOW CAME OUT AS HARD-EDGED BLOCKS — MY bug: shading built
+##      from ~26 stacked translucent Graphics circles bands and seams. SOFT SHADING BELONGS IN A
+##      SHADER OR FILTER, not stacked alpha. Cheap lesson, transfers to Phases 3 and 6.
+##   ❌ The creature looks like a cartoon spider. ⚠ NOT a Pixi verdict — a verdict on building
+##      creatures from PRIMITIVES, which CONFIRMS the plan's own premise (§10 / Addendum A call for
+##      authored art + rig families + mesh deformation precisely because primitives will not do).
+##   ⛔ NOT ANSWERED: the painterly quality bar (no shaders/filters/authored textures were used) ·
+##      phone performance (headless Edge ran a SOFTWARE rasteriser — any FPS here is meaningless) ·
+##      mesh-deformation integration (decision D3, $379/seat). ⚠ NICK'S ART VERDICT SHOULD WAIT —
+##      judging the visual ceiling on that creature panel would be judging my primitives, not Pixi.
+##   ⚠ Pixi pinned 8.19.0 in an ISOLATED port/spike/package.json (root deps stay acorn+jsdom).
+##      That is ALREADY DRIFT: Addendum D verified 8.18.1 as current stable the same day.
+## ▶▶ MY PHASE 0 LIST IS NOW EMPTY. Everything remaining is Nick's — see below.
 ## ✔★ THE FOUR §23 DESIGN DECISIONS ARE MADE (Nick, 2026-07-31). Recorded in port/DECISIONS.md —
 ##   a NEW live record, so the supplied v4.0 plan stays the reference it was delivered as.
 ##     1. bred `fed` → INHERIT 50% OF THE LOWER PARENT. Breeding is not sharing: BOTH parents are
