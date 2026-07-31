@@ -22,14 +22,49 @@
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
 ## ▶▶▶ SESSION HANDOFF — as of 2026-07-31. ★ v1.8.9 "ONE MEASURE" IS LIVE ◀◀◀
-## [HYGIENE 2026-07-31] The v1.8.6 batch block moved VERBATIM to the top of ROADMAP_ARCHIVE.md
-##   (this file had reached 443 lines; it is ~348 now). It is kept in full for one reason worth
-##   naming: it is the clearest example on record of TWO CORRECT FIXES FOR ONE BUG, SHIPPED
-##   TOGETHER, THAT DISAGREE — its own CF1805-06 entry describes both halves approvingly.
-##   Structure is pins → this handoff → NEXT → doc map → the v1.8.7 batch log → the v2.0 plan.
+## [HYGIENE 2026-07-31, three runs today] The v1.8.6, v1.8.7 and v1.8.8 batch blocks are all in
+##   ROADMAP_ARCHIVE.md, VERBATIM. v1.8.6 is worth reading if you ever wonder why "two correct
+##   fixes for one bug can disagree" is a law — its own CF1805-06 entry describes both halves of
+##   a save-corrupting change approvingly. v1.8.8 is worth reading for the harvest-clock reasoning.
+##   Structure is pins → this handoff → the v1.9 START HERE block → WHERE THINGS STAND → NEXT →
+##   doc map → the v1.8.9 batch log → the v2.0 plan.
 ##   PROCESS_LAWS.md (extracted 2026-07-30) holds the laws; it is a reference and is never archived.
 ##   Source AND site pushed; full battery green; live verified end-to-end after deploy, not assumed.
 ##
+## ═══════════════════════════════════════════════════════════════════════════════════
+## ▶▶▶ STARTING v1.9 / THE PORT? READ THIS BLOCK, THEN NEXT #10, THEN 9b/9c/9d. ◀◀◀
+## The v1.8 arc is CLOSED and shipped. v1.9 = PORT PHASE 0/1. Before writing any port code:
+##
+## ⚠⚠ 1. THE PORT PLAN DOCUMENT IS NOT IN THIS REPO. This is BLOCKING and it is the first
+##    thing to resolve. The v2.0 block at the BOTTOM of this file reviews an upload
+##    ("FULL_ENGINE...PORT_PLAN_v3.3_STACK_LOCKED") that was session-scoped and is GONE.
+##    What survives is our ANNOTATIONS on it, which cite §3 / §7 / §15 / §26 / §27.3 / §28.5 /
+##    D2 / D4 by number — none of which exist on disk. ASK NICK TO RE-UPLOAD IT, then COMMIT
+##    IT (suggest port/, the way audits/ was fixed). See 9b for the full note.
+##
+## 2. WHAT v1.9 IS, and it is already decided (from the surviving review):
+##    STACK LOCKED — TypeScript + PixiJS 8 + Spine 2D + HTML/CSS UI (React/Lit optional) +
+##    Vite + IndexedDB + Zod + WebAudio + Vitest/Playwright. WebGL baseline, WebGPU opt-in.
+##    PHASE 0/1 DELIVERABLES — (a) the module split BECOMES the TS extraction; (b) save schema
+##    + Zod + a share-code migration policy; (c) a payload budget gate; (d) ART_DIRECTION.md
+##    elevated to the port rubric + a golden screen.
+##    CARRIED CALLS — NO code freeze until Phase-4 parity (the plan’s freeze framing predates
+##    twelve shipped releases); adopt the cross-language conformance suite as cheap insurance
+##    even though TS compiles to the same JS numerics, which largely defuses §27.3.
+##
+## 3. TWO DOC DELIVERABLES BEFORE GENERATION WORK (9c/9d): BIOME_ATLAS.md has NEVER EXISTED
+##    despite five citations — GENERATE it from source (tools/biome-audit.js walks the data).
+##    RARITY_AND_GRADES.md is three minors behind (documents the v1.6.4 15-grade ladder).
+##
+## 4. THE RE-PIN PERMISSION IS STANDING (Nick, 2026-07-31): "nobody’s really played the game,
+##    so I’m not terribly concerned about breaking the fingerprint if it means re-fingerprinting
+##    it." ⚠ TEST BEFORE SPENDING IT — v1.8.9 looked like it needed a re-pin and did not.
+##    Its real value is holding 50 probes byte-exact across the TS port. See WHERE THINGS STAND.
+##
+## 5. RE-RUN THE PLAN’S §3 AUDIT COUNTS FIRST — it audited ~21.8k lines and a 15-tier ladder;
+##    the build is now ~26.7k lines (html), a 10-tier ladder, plus a _GEAR_ART layer.
+## ═══════════════════════════════════════════════════════════════════════════════════
+
 ## ═══ WHERE THINGS STAND ═══
 ## ★ THREE RELEASES SHIPPED 2026-07-31, in order. READ THE BATCH LOGS.
 ##   · v1.8.7 "True to Form" — the round-9 response, and above all a REGRESSION FIX. Round 9
@@ -229,7 +264,9 @@
 ##   3. PAINTED ≠ ANSWERABLE (a gate can be drawn, hit-testable and unable to respond).
 ##   4. ONE ID BEATS ANY NUMBER OF CLASSES — and in CSS, min-height beats max-height.
 
-## ═══ ▶ DOC MAP (all verified against the shipped build; markers current 2026-07-30) ═══
+## ═══ ▶ DOC MAP (verified against the shipped build; markers current 2026-07-31) ═══
+## ⚠ PORT-READINESS AUDIT RAN 2026-07-31 — read 9b / 9c / 9d before trusting this map. Two docs
+##   it used to list DO NOT EXIST or are three minors behind, and the port plan itself is missing.
 ## THE NINE SYSTEM DOCS the v1.8.6 sweep touched (plus the codebase reference) are marked
 ##   2026-07-30 and were re-verified against the SHIPPED build, not against the diff:
 ##   UI_PRESENTATION (+ THE ART-HOLD LAW, + THE TRAINING
@@ -317,45 +354,6 @@
 ##   his Atlas, while one touching only crossGenome would not. Know which kind before doing it.
 ##   The baseline already carries SEVEN deliberate re-pin notes — the rule was never "never
 ##   re-pin", it is "never re-pin SILENTLY to make a failure pass".
-
-## ▶▶▶ 2026-07-31 ★ v1.8.8 "PAID FOR PLAYING" — CF1805-05 CLOSED. THE LAST OPEN EXPLOIT.
-##   Nick: "Should we yield track engagement rather than the wall... I want to get these fixes in so
-##   we can move with the port over." → "go ahead with 1.8".
-##   ★ THE ANSWER WAS ALREADY IN THE CODEBASE. Rounds 7, 8 and 9 chased a wall-clock harvest exploit
-##   through THREE mitigations (CF1802-14's in-session monotonic gate, _hvFloor's load clamp,
-##   CF1805-07's rate limit) and none could close it — because the defect was never in the guard,
-##   it was in the CLOCK. An offline game cannot verify Date.now().
-##   COSMIC_EPOCH is a PERSISTED, MONOTONIC PLAY-TIME accumulator: EPOCH_BASE (saved as `epoch`)
-##   plus perfTime()/EPOCH_TICK this session. It never reads the OS clock, survives a reload, and
-##   cannot be wound. BIOSPHERE POOLS AND EVOLUTION HAVE RUN ON IT SINCE v1.7, when EPOCH_TICK was
-##   deliberately slowed 240→1200 as an ANTI-FARM change. Harvest was the ONLY regeneration system
-##   still keyed to the wall. So this is not a new mechanic — it makes the outlier match the pattern
-##   the game already chose, and there is no Date.now() left in the path to defend.
-##   · HARVEST_EPOCHS=2 (~40 min of PLAY per world) is the single knob. An engaged player earns
-##     slightly FASTER than the old 1-hour wall cadence; an idle one no longer accrues while away.
-##     "The empire pays you for playing, not for waiting."
-##   · SAVE: `conq[].e` is additive and ABSENT-SAFE — a ≤v1.8.7 empire reads ready and pays one
-##     cycle per world on first load (deliberate; the alternative penalises it for our change).
-##     On load `e` is clamped to [0, EPOCH_BASE] — a future-epoch save would hold a world hostage.
-##   · ONE PREDICATE, FOUR CALL SITES. `_harvestReady` is read by the button face, the survey card,
-##     the panel cache key AND doHarvest. That is the round-9 lesson applied prospectively: v1.8.6
-##     computed the same truth about `size` in two places and they disagreed. A world can no longer
-##     look ready and then refuse.
-##   · COPY: the Guide, both tooltips and the conquest toast no longer promise an hourly harvest.
-##     ⚠ Release-note history (v1.7/v1.8 entries) still says "hourly" and MUST STAY — those are
-##     accurate records of what those releases shipped.
-##   · `_hvMono` deleted. `HARVEST_CD` survives only as the load-path DISPLAY clamp and gates nothing.
-##   NEW GATE tools/harvestclock-check.js — winds a simulated device clock forward a FULL DAY and
-##   asserts no payout, then asserts readiness DOES arrive on play time, then that HARVEST_CD is
-##   gone from doHarvest entirely. 5/5 here; on v1.8.7 it reports 3 failures including the payout.
-##   ⚠⚠ AND IT CAUGHT ITSELF FIRST, AGAIN. Its original last check ("Date.now() is never compared to
-##   HARVEST_CD") PASSED on v1.8.7 where the exploit was live, because the two sit on different
-##   statements. A check that passes for the wrong reason is worse than none — replaced with
-##   "HARVEST_CD does not appear in doHarvest", which discriminates.
-##   GATES: validate 9/9 · fingerprint MATCH 50/50 · smoke 553/0 · uilayout 787/10 · balance PASS ·
-##   duelxp 6/0 · sizedrift 4/4 · harvestclock 5/5.
-##   ⚠ TITLE: "Paid for Playing" chosen by Claude (fourth running). Nick has still never named one.
-##   ▶ NEXT PER NICK: gather more external reviews to double-check this batch, THEN Phase Zero.
 
 ## ▶▶▶ 2026-07-26 ★ v2.0 ENGINE PLAN REVIEWED (upload: FULL_ENGINE...PORT_PLAN_v3.3_STACK_LOCKED
 ##   — TS + PixiJS 8 + Spine 2D + HTML/CSS(+React/Lit opt) + Vite + IndexedDB + Zod + WebAudio +

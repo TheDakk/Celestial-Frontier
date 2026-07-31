@@ -7,6 +7,51 @@
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
 
+## ══════════ ARCHIVED 2026-07-31 (v1.8.9 ship, 2nd run) — the v1.8.8 batch ══════════
+## Moved VERBATIM under the pinned HYGIENE rule. v1.8.8 closed CF1805-05 — the harvest clock
+## exploit three external rounds could not kill — by moving harvest onto COSMIC_EPOCH (play
+## time) instead of hardening around Date.now(). Kept in full because the reasoning generalises:
+## when a defence keeps failing, check whether you are defending the wrong thing.
+## ▶▶▶ 2026-07-31 ★ v1.8.8 "PAID FOR PLAYING" — CF1805-05 CLOSED. THE LAST OPEN EXPLOIT.
+##   Nick: "Should we yield track engagement rather than the wall... I want to get these fixes in so
+##   we can move with the port over." → "go ahead with 1.8".
+##   ★ THE ANSWER WAS ALREADY IN THE CODEBASE. Rounds 7, 8 and 9 chased a wall-clock harvest exploit
+##   through THREE mitigations (CF1802-14's in-session monotonic gate, _hvFloor's load clamp,
+##   CF1805-07's rate limit) and none could close it — because the defect was never in the guard,
+##   it was in the CLOCK. An offline game cannot verify Date.now().
+##   COSMIC_EPOCH is a PERSISTED, MONOTONIC PLAY-TIME accumulator: EPOCH_BASE (saved as `epoch`)
+##   plus perfTime()/EPOCH_TICK this session. It never reads the OS clock, survives a reload, and
+##   cannot be wound. BIOSPHERE POOLS AND EVOLUTION HAVE RUN ON IT SINCE v1.7, when EPOCH_TICK was
+##   deliberately slowed 240→1200 as an ANTI-FARM change. Harvest was the ONLY regeneration system
+##   still keyed to the wall. So this is not a new mechanic — it makes the outlier match the pattern
+##   the game already chose, and there is no Date.now() left in the path to defend.
+##   · HARVEST_EPOCHS=2 (~40 min of PLAY per world) is the single knob. An engaged player earns
+##     slightly FASTER than the old 1-hour wall cadence; an idle one no longer accrues while away.
+##     "The empire pays you for playing, not for waiting."
+##   · SAVE: `conq[].e` is additive and ABSENT-SAFE — a ≤v1.8.7 empire reads ready and pays one
+##     cycle per world on first load (deliberate; the alternative penalises it for our change).
+##     On load `e` is clamped to [0, EPOCH_BASE] — a future-epoch save would hold a world hostage.
+##   · ONE PREDICATE, FOUR CALL SITES. `_harvestReady` is read by the button face, the survey card,
+##     the panel cache key AND doHarvest. That is the round-9 lesson applied prospectively: v1.8.6
+##     computed the same truth about `size` in two places and they disagreed. A world can no longer
+##     look ready and then refuse.
+##   · COPY: the Guide, both tooltips and the conquest toast no longer promise an hourly harvest.
+##     ⚠ Release-note history (v1.7/v1.8 entries) still says "hourly" and MUST STAY — those are
+##     accurate records of what those releases shipped.
+##   · `_hvMono` deleted. `HARVEST_CD` survives only as the load-path DISPLAY clamp and gates nothing.
+##   NEW GATE tools/harvestclock-check.js — winds a simulated device clock forward a FULL DAY and
+##   asserts no payout, then asserts readiness DOES arrive on play time, then that HARVEST_CD is
+##   gone from doHarvest entirely. 5/5 here; on v1.8.7 it reports 3 failures including the payout.
+##   ⚠⚠ AND IT CAUGHT ITSELF FIRST, AGAIN. Its original last check ("Date.now() is never compared to
+##   HARVEST_CD") PASSED on v1.8.7 where the exploit was live, because the two sit on different
+##   statements. A check that passes for the wrong reason is worse than none — replaced with
+##   "HARVEST_CD does not appear in doHarvest", which discriminates.
+##   GATES: validate 9/9 · fingerprint MATCH 50/50 · smoke 553/0 · uilayout 787/10 · balance PASS ·
+##   duelxp 6/0 · sizedrift 4/4 · harvestclock 5/5.
+##   ⚠ TITLE: "Paid for Playing" chosen by Claude (fourth running). Nick has still never named one.
+##   ▶ NEXT PER NICK: gather more external reviews to double-check this batch, THEN Phase Zero.
+
+
 ## ══════════ ARCHIVED 2026-07-31 (v1.8.9 ship) — the v1.8.7 batch ══════════
 ## Moved VERBATIM under the pinned HYGIENE rule. v1.8.7 was the round-9 response and the release
 ## that REVERTED our own save-corrupting `size` clamp. Its full story — including the four
