@@ -1,0 +1,4 @@
+{ "name": "@cf/domain-encutil", "private": true, "version": "0.0.0", "type": "module",
+  "description": "Module 10/14: base64/UTF-8, SVG data-URI & color shade utilities. Hand-ported from main.js @module EncUtil (v1.8.9).",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {} }
