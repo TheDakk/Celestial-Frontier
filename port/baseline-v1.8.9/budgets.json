@@ -1,0 +1,131 @@
+{
+  "_comment": [
+    "PERFORMANCE BUDGETS — port Phase 0 / Gate A deliverable:",
+    "'establish bundle, answerability, memory, GPU, and audio-node budgets'.",
+    "",
+    "THREE KINDS OF ENTRY, kept strictly separate so this file cannot overstate itself:",
+    "  measured  — observed on v1.8.9 in this environment, with the command that produced it",
+    "  budget    — a TARGET for the port, with the reasoning that sets it",
+    "  unmeasured— explicitly NOT known, and WHY. A budget invented for something that",
+    "              cannot be measured yet is a number nobody will honour.",
+    "",
+    "⚠ EVERY LATENCY NUMBER IS PAIRED, 1x AND 4x CPU. The roadmap's own rule: Nick's",
+    "primary device is an iPhone, so a desktop number is the best case, not the case.",
+    "The two differ by 12x here, and the whole cold-boot arc (v1.8.5) existed because",
+    "the desktop number looked fine."
+  ],
+
+  "capturedAt": "2026-07-31",
+  "capturedAgainst": "v1.8.9 (tag v1.8.9, commit 92098e9)",
+  "environment": {
+    "browser": "Microsoft Edge 150.0.4078.83 (see tools/deps.pinned.json)",
+    "os": "Windows 11 Pro 10.0.26200",
+    "node": "v26.5.1",
+    "_comment": "Latency figures are environment-bound. Re-measure on a version bump; treat movement as a re-baseline decision, not a regression (Addendum D)."
+  },
+
+  "bundle": {
+    "measured": {
+      "rawBytes": 1963584,
+      "rawMB": 1.87,
+      "overTheWireBytes": 675421,
+      "overTheWireKB": 660,
+      "compressionRatio": 0.344,
+      "files": 1,
+      "inlineScripts": 1,
+      "styleElements": 2,
+      "command": "node tools/bootperf.js --reps=5 --profile=fresh --save=none --cpu=4",
+      "_comment": "One file, one inline script. Transfer is NOT the problem — the network finishes in ~46ms. Compiling the script is."
+    },
+    "budget": {
+      "initialRouteJS_overTheWire": "≤ 250 KB",
+      "totalInitialParseCompile_4x": "≤ 400 ms",
+      "_rationale": [
+        "The current build ships 100% of the game before the first screen can answer.",
+        "ROADMAP 6a: the residual ~1.9s of cold boot is dominated by V8 compiling the",
+        "1.9MB inline script at 4x — 'the PAYLOAD problem the v2.0 port plan already owns'.",
+        "So the port's bundle budget is not really about bytes, it is about how much",
+        "CODE MUST COMPILE BEFORE THE FIRST INTERACTION. Code-splitting is the fix; the",
+        "250 KB figure is a starting target for the initial route, to be re-forecast",
+        "after the Phase 3 engine proof."
+      ]
+    }
+  },
+
+  "answerability": {
+    "_comment": "PAINTED IS NOT ANSWERABLE — PROCESS_LAWS law 3. A gate can be drawn, hit-testable, and unable to reply because the main thread is blocked. bootperf measures both.",
+    "measured": {
+      "unthrottled_1x": { "networkDone": 54, "painted": 111, "answerable": 160, "worstRep": 377, "mainThreadBlockedPreGate": 38, "worstLongtask": 174 },
+      "throttled_4x":   { "networkDone": 46, "painted": 355, "answerable": 1944, "worstRep": 2236, "mainThreadBlockedPreGate": 1730, "worstLongtask": 754 },
+      "units": "ms",
+      "reps": 5,
+      "profile": "fresh (cold HTTP + cold V8 code cache), no save — the genuine first-run path",
+      "_comment": "12x spread between 1x and 4x. Painted is fine at both (111 / 355). ANSWERABLE is where it falls apart: 160 -> 1944. v1.8.5 already cut this from ~6440ms via _hdLater(); what remains is compile time."
+    },
+    "budget": {
+      "painted_4x": "≤ 400 ms",
+      "answerable_4x": "≤ 1000 ms",
+      "worstLongtask_4x": "≤ 200 ms",
+      "_rationale": [
+        "answerable_4x ≤ 1000ms is a ~2x improvement on today's 1944ms and is the single",
+        "most player-visible number in the port — it is the window a new player judges",
+        "the game in. It should FALL, not hold: module splitting is the entire point.",
+        "worstLongtask ≤ 200ms keeps any single task under the threshold at which input",
+        "feels dropped; today's worst is 754ms at 4x."
+      ]
+    }
+  },
+
+  "audioNodes": {
+    "measured": {
+      "nodesPerVoiceUtterance": 10,
+      "breakdown": { "createGain": 4, "createOscillator": 2, "createBiquadFilter": 2, "createBufferSource": 1, "createBuffer": 1 },
+      "creationSitesAcrossAudioCode": { "createGain": 25, "createOscillator": 16, "createBiquadFilter": 6, "createBufferSource": 4, "createBuffer": 4 },
+      "shippedAudioAssets": 0,
+      "concurrencyCap": null,
+      "_comment": "⚠ THERE IS NO CONCURRENCY CAP. Greps for maxVoices / MAX_VOICE / activeVoices / concurrent find nothing. Audio is fully procedural (zero shipped .mp3/.ogg/.wav), so every utterance allocates its 10 nodes fresh. Nothing bounds how many can be in flight at once."
+    },
+    "budget": {
+      "concurrentVoices_phone": "≤ 8",
+      "totalLiveNodes_phone": "≤ 120",
+      "_rationale": [
+        "§15 calls for mobile concurrency and streaming budgets and there is currently no",
+        "cap of any kind. 8 concurrent voices at 10 nodes each is 80, leaving headroom for",
+        "ambience and UI within a 120-node ceiling. These are STARTING targets — the",
+        "human listening test and a real phone profile should refine them.",
+        "Capping voices is also an audio-quality decision, not only a performance one:",
+        "a voice dropped because of a cap must be dropped gracefully."
+      ]
+    }
+  },
+
+  "memory": {
+    "unmeasured": true,
+    "_why": [
+      "A meaningful memory budget needs the thing being measured to exist. Today's build",
+      "is immediate-mode Canvas 2D with an art cache capped at 1,200 entries and DPR",
+      "3 desktop / 2 touch (CLAUDE.md rule 9). The port's memory profile is dominated by",
+      "PixiJS textures, render targets and Spine-or-equivalent rigs — none of which exist",
+      "yet. Setting a JS-heap number now would be measuring the wrong program.",
+      "SET THIS AT THE PHASE 3 ENGINE PROOF, when there is a Pixi scene to profile."
+    ],
+    "carryForward": { "artCacheCap": 1200, "dprDesktop": 3, "dprTouch": 2, "_comment": "Nick's 'phone runs hot' mandate — audited invariants that the port must not quietly relax." }
+  },
+
+  "gpu": {
+    "unmeasured": true,
+    "_why": [
+      "The current build uses NO WebGL — it is 2D canvas throughout, so there is no GPU",
+      "baseline to measure and nothing to compare a port number against. WebGL/WebGL2 is",
+      "the port's production baseline (§2.4), with WebGPU optional and never required.",
+      "SET THIS AT THE PHASE 3 ENGINE PROOF: draw calls, texture memory, and render-target",
+      "count per scene, measured on a phone."
+    ]
+  },
+
+  "howToReMeasure": {
+    "bundleAndAnswerability": "node tools/bootperf.js --reps=5 --profile=fresh --save=none --cpu=4",
+    "unthrottledPair": "node tools/bootperf.js --reps=5 --profile=fresh --save=none --cpu=1",
+    "_comment": "Always run BOTH arms. A single unthrottled number is what let the round-7 cold-boot outlier hide."
+  }
+}

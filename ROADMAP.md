@@ -180,6 +180,29 @@
 ##   CF1805-03 fixed five of exactly those. It is correct TODAY only because FA_SIZE.length is 6
 ##   (verified). Add one size word and the voice silently drifts out of step. It also does not use
 ##   `_szOf`, so it is a sixth raw-ish size reader — harmless now, worth folding in during the port.
+## ✔ BUDGETS SET (2026-07-31). port/baseline-v1.8.9/budgets.json — THREE KINDS OF ENTRY, kept
+##   strictly apart so the file cannot overstate itself: `measured` (observed, with the command
+##   that produced it) · `budget` (a TARGET, with the reasoning) · `unmeasured` (explicitly not
+##   known, and WHY — a budget invented for something unmeasurable is a number nobody honours).
+##   MEASURED, both arms, because a desktop number is the best case and not the case:
+##     bundle       1,963,584 B raw · 675,421 B over the wire · ONE file, ONE inline script.
+##                  Transfer is NOT the problem — the network finishes in ~46ms.
+##     answerable   1x: painted 111ms, TTI 160ms  ·  4x: painted 355ms, TTI 1944ms (worst 2236)
+##                  A 12x SPREAD. Painted is fine at both; ANSWERABLE is where it falls apart,
+##                  with 1730ms of pre-gate main-thread block. Confirms 6a: it is V8 compiling
+##                  the 1.9MB inline script, i.e. the payload problem the port already owns.
+##     audio nodes  10 PER VOICE UTTERANCE (4 gain · 2 osc · 2 biquad · 1 bufferSource · 1 buffer),
+##                  zero shipped audio assets — fully procedural.
+##   ⚠ NEW FINDING: THERE IS NO AUDIO CONCURRENCY CAP AT ALL. Greps for maxVoices / MAX_VOICES /
+##   activeVoices / voiceCap / concurrentVoice return ZERO. Every utterance allocates 10 fresh
+##   nodes and nothing bounds how many are in flight. §15 explicitly calls for mobile concurrency
+##   budgets; there are none today. Proposed starting targets: <=8 concurrent voices, <=120 live
+##   nodes on a phone — to be refined by the listening test and a real device profile.
+##   ⛔ MEMORY and GPU are DELIBERATELY LEFT UNMEASURED, with the reason recorded: today's build is
+##   immediate-mode Canvas 2D and uses NO WebGL, so there is no GPU baseline to compare against,
+##   and the port's memory profile will be dominated by Pixi textures/render-targets that do not
+##   exist yet. SET BOTH AT THE PHASE 3 ENGINE PROOF. Carried forward as invariants the port must
+##   not quietly relax: art cache 1,200 · DPR 3 desktop / 2 touch (Nick's "phone runs hot" mandate).
 ## ▶ NEXT IN PHASE 0 — MINE: fixed-seed golden screens + proof sheets ·
 ##   bundle / answerability / memory / GPU / audio-node budgets · elevate the remaining system
 ##   docs into rubrics.
