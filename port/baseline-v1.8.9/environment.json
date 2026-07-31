@@ -1,0 +1,96 @@
+{
+  "_comment": "Gate A evidence — the environment the v1.8.9 baseline gates were verified in. Captured during port Phase 0. See README.md in this directory.",
+
+  "baseline": {
+    "tag": "v1.8.9",
+    "tag_type": "annotated",
+    "commit": "92098e91ddc2028cbab9149293b58166f483764c",
+    "release_title": "One Measure",
+    "shipped": "2026-07-31",
+    "evidence_captured": "2026-07-31T08:35:56-04:00"
+  },
+
+  "artifact": {
+    "path": "celestial-frontier.html",
+    "bytes": 1963584,
+    "chars": 1953684,
+    "sha256": "9f90f506a7cfcf5b721d80e7b956e0ef717edf04d004edf825ddb4f0303b3c88",
+    "_comment": "bytes > chars because the source mixes real UTF-8 multibyte characters into JS strings (see CLAUDE.md rule 3). Both figures recorded so a future reproducer is not surprised by the 9,900 delta."
+  },
+
+  "toolchain": {
+    "node": "v26.5.1",
+    "npm": "11.17.0",
+    "os": "Windows 11 Pro 10.0.26200",
+    "dependencies": {
+      "acorn": "^8.17.0",
+      "jsdom": "^29.1.1"
+    }
+  },
+
+  "browser": {
+    "_comment": "⚠ UNDECLARED DEPENDENCY. uilayout.js and bootperf.js do NOT use an npm browser driver — they spawn a system browser binary directly over CDP. It is not in package.json, so `npm install` on a clean clone does NOT provision it. This is a Gate A gap; see README.md §3.",
+    "engine": "Microsoft Edge (headless, driven over CDP)",
+    "version": "150.0.4078.83",
+    "resolved_path": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+    "override_env_var": "CF_BROWSER",
+    "fallback_paths": [
+      "C:/Program Files/Microsoft/Edge/Application/msedge.exe",
+      "/usr/bin/google-chrome",
+      "/usr/bin/chromium-browser",
+      "/usr/bin/chromium",
+      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    ],
+    "auto_updates": true,
+    "why_pinned_here": "Addendum D: a layout gate whose thresholds were set on one browser revision drifts on the next. uilayout compares against stored numbers, so the 787/10 result below is only reproducible against this revision. Treat a version bump as an explicit re-baseline, not a regression."
+  },
+
+  "gates_verified": {
+    "_comment": "Re-run against the tagged baseline on 2026-07-31, NOT copied from the roadmap. Each figure below was observed in this environment.",
+    "validate": {
+      "result": "PASS",
+      "checks": "9/9",
+      "detail": [
+        "script syntax (node --check)",
+        "css brace balance — 2 { vs 2 }",
+        "no duplicate element ids — 157 ids",
+        "no Math.random/Date.now in domain modules",
+        "version consistency — v1.8.9 (GAME_VERSION = package.json)",
+        "class->rig binding — 631 fauna classified, 193 sentinels",
+        "color atlas — 32 body/star combos",
+        "biome profiles — 43 live biomes, all covered",
+        "render audit — 1010 Earth species rendered clean"
+      ]
+    },
+    "fingerprint": {
+      "result": "MATCH",
+      "probes": "50/50",
+      "against": "tools/baseline.json (captured from original/celestial-frontier-v1.0.html)",
+      "artifact": "fingerprint-current.json",
+      "sha256": "68fe34328c6c11eea65cf2d39b2e74c6e0e442e0453229a685315adc25996690"
+    },
+    "uilayout": {
+      "result": "PASS",
+      "checks": 787,
+      "viewports": 10,
+      "artifact": "uilayout-report.json",
+      "sha256": "9703a1f584200a1e8babd27c6abe79eaa2685958649cf79aa8294315d553c080",
+      "per_viewport": {
+        "iphone-se": 80, "iphone": 80, "iphone-max": 80, "android": 80,
+        "ipad-port": 80, "ipad-mini": 80, "ipad-land": 82,
+        "laptop": 75, "desktop": 75, "wide": 75
+      }
+    }
+  },
+
+  "gates_not_re_run": {
+    "_comment": "Claimed PASS in ROADMAP.md at ship but NOT independently re-verified during this capture. Listed so the archive does not overstate what it proves.",
+    "smoke": "553/0",
+    "balance": "PASS",
+    "simrun_dom": "0 findings",
+    "duelxp": "6/0",
+    "sizedrift": "8/8",
+    "harvestclock": "5/5",
+    "bootperf": "not re-run at ship either; the v1.8.5 PASS was carried forward"
+  }
+}
