@@ -22,28 +22,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { REGISTRY } from './registry.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..', '..', '..');
 const main = fs.readFileSync(path.join(root, 'main.js'), 'utf8');
 
-const REGISTRY = {
-  '@cf/domain-rand': ['mulberry32', 'clamp', 'mix', 'makeNoise', 'TAU', 'hashInt', 'cellRng'],
-  '@cf/domain-worldconfig': ['HOME_GAL_SEED', 'SOL_SEED', 'UCELL', 'HOME_POS', 'GR', 'GCELL', 'SOL_POS', 'SYS_R', 'OBS_R'],
-  '@cf/domain-naming': ['properName', 'starName', 'galaxyName'],
-  '@cf/domain-starcatalog': ['starClass', 'SOL_PLANETS', 'KIND_DESC'],
-  '@cf/domain-planetgen': ['surfaceColor', 'planetParams'],
-  '@cf/domain-worldgen': ['galaxiesInCell', 'galaxyProfile', 'galaxyWormhole', 'starsInCell', 'fineStarsInCell', 'systemFor', 'supernovaSites'],
-  '@cf/domain-surveyphrases': ['climateBand', 'COMP', 'atmosphereText', 'climateText', 'waterText', 'gravityText', 'TYPE_LABEL'],
-  '@cf/domain-speciestraits': ['SP_COLOR', 'FA_BODY', 'FA_LOCO', 'FA_TRAIT', 'FA_SIZE', 'FA_DIET', 'FA_HEAD', 'FA_LIMBS', 'FA_SKIN', 'FA_TAIL', 'FA_PATTERN', 'FA_EYES', 'FA_BEHAVIOR', 'FA_HABITAT', 'FLORA_DETAIL', 'FA_TEMPER', 'FA_SENSE', 'FA_REPRO', 'FA_LIFE', 'FA_METAB', 'FLORA_FORM', 'FUNGI_FORM', 'MICROBE_FORM', 'speciesName', 'colorGrade', 'SP_HEX', 'FA_SIZE_M', 'SPECTRA', 'spectral', 'GRADE_TIERS', 'TIER_MAX', 'RARITY_V17', 'displayRarity', 'rarityRoll', 'EX_HABITAT', 'EX_LOCO', 'AQ_FLORA_FORM', 'AIR_FLORA_FORM', 'habOf', 'locoOf', 'floraFormOf'],
-  '@cf/domain-genome': ['describeSpecies', 'makeGenome', 'sapienceTier', 'classifyRealm', 'ecologyRole', 'realmBiome', 'realmModifiers', 'REALM_ICON', 'REALM_ORDER', 'faunaDesc', 'speciesGrade', 'guardianFor', 'GUARDIAN_EPITHETS', '_szOf'],
-  '@cf/domain-encutil': ['shade', 'svgURI', 'b64encUtf8', 'b64decUtf8'],
-  '@cf/domain-genetics': ['evolveGenome', 'crossGenome'],
-  '@cf/domain-ecology': ['biosphere', 'civilization', 'planetSpecies'],
-  '@cf/domain-descriptors': ['galaxyStats', 'fmtBig', 'roman', 'describePick', 'slimGal', 'starDescriptor', 'planetDescriptor', 'moonDescriptor', 'galaxyDescriptor', 'wormholeDescriptor', 'cmbDescriptor', 'oortDescriptor', 'kuiperDescriptor', 'visitorDescriptor', 'beltDescriptor', 'SOL_MOONS'],
-  '@cf/domain-strays': ['cleanName'],
-};
-
+/* REGISTRY moved to tools/registry.mjs (shared with lift-strays.mjs) */
 const [, , name, outDir] = process.argv;
 if (!name || !outDir) { console.error('usage: node tools/lift.mjs <ModuleName> <outDir>'); process.exit(2); }
 

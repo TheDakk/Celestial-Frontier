@@ -10,10 +10,12 @@
    typecheck can still shift every world in the universe.
 
    Verified against port/baseline-v1.8.9/golden-seeds.json by test/parity.test.ts:
-   hashInt · mulberry32 · cellRng — 10,000 seeds each, per-seed FNV hashes + rollups.
-   ⚠ makeNoise / clamp / mix / TAU are NOT yet fixture-covered (the golden corpus
-   does not sample them; in-game `noise` is pinned only by the 50-probe
-   fingerprint). Extending the corpus is a recorded follow-up, not a silent gap. */
+   hashInt · mulberry32 · cellRng · makeNoise — 10,000 seeds each, per-seed FNV
+   hashes + rollups. ★ makeNoise was a recorded gap from module 1 until
+   2026-07-31, when the corpus was EXTENDED (addition-only, diff-verified: all
+   25 pre-existing generators byte-identical). clamp / mix / TAU remain
+   corpus-unsampled but are pinned transitively by every consumer (surfaceColor,
+   crossGenome anchor drift, the noise fBm itself). */
 
 export const TAU: number = Math.PI * 2;
 

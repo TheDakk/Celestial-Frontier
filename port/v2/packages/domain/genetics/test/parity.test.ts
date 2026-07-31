@@ -7,9 +7,13 @@ import { hashInt } from '@cf/domain-rand';
 
 const fx = loadFixture();
 
-describe('@cf/domain-genetics — golden ×10,000', () => {
+describe('@cf/domain-genetics — golden ×20,000', () => {
   it('crossGenome: 10,000 seed pairs', () => {
     const r = checkGenerator(fx, 'crossGenome', (s) => crossGenome(makeGenome(s, 'fauna', 0.4), makeGenome(s + 1, 'fauna', 0.6)));
+    expect(r.mismatches).toEqual([]); expect(r.rollupOk).toBe(true);
+  });
+  it('★ crossGenome_uncorrelated: 10,000 hashed-seed pairs — the blind spot found below, now VALUE-pinned (corpus extension 2026-07-31)', () => {
+    const r = checkGenerator(fx, 'crossGenome_uncorrelated', (s) => crossGenome(makeGenome(hashInt(s, 12345, 1) >>> 0, 'fauna', 0.4), makeGenome(hashInt(s, 54321, 2) >>> 0, 'fauna', 0.6)));
     expect(r.mismatches).toEqual([]); expect(r.rollupOk).toBe(true);
   });
 });
