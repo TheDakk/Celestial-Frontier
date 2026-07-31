@@ -314,8 +314,23 @@
 ##    run two of the nine suites. Resolution order is CF_BROWSER env -> local Windows Edge -> common
 ##    Linux/macOS Chrome paths, so CI is possible today but undeclared and undocumented. The binary
 ##    here was Microsoft Edge 150.0.4078.83, which AUTO-UPDATES SILENTLY and is pinned nowhere;
-##    Addendum D warns layout thresholds set on one revision drift on the next. Version now recorded in
-##    port/baseline-v1.8.9/environment.json. Phase 0 owes the declaration + pin.
+##    Addendum D warns layout thresholds set on one revision drift on the next.
+##    ✔ RESOLVED 2026-07-31 — Gate A deliverable #2 now has an instrument. `tools/deps.pinned.json`
+##    DECLARES the executable deps (node floor, packages, and the browser with its full resolution
+##    order + pinned revision); `tools/preflight.js` VERIFIES a machine against it. `npm run preflight`
+##    (drift WARNS) · `npm run preflight:ci --assert-pin` (drift FAILS). Drift warns by default on
+##    purpose: per Addendum D a bump is a RE-BASELINE DECISION, not a regression, and failing by
+##    default would train people to ignore it. Documented in tools/README.md.
+##    ⚠⚠ THE NINTH GREEN-BUT-WRONG, AND IT WAS IN THE NEW CHECK ITSELF. preflight v1 trusted
+##    $CF_BROWSER without testing that the path existed — so `CF_BROWSER=/nope` reported PASS and
+##    exit 0 while uilayout.js hard-exits(2) on exactly that value. A check written to prevent
+##    green-but-wrong shipped green-but-wrong, and ONLY the rule-7 negative control caught it, before
+##    it ever landed. Fixed to match uilayout.js:83. THREE CONTROLS MUST KEEP HOLDING: normal -> exit
+##    0 · bogus CF_BROWSER -> exit 1 · drift under --assert-pin -> exit 1.
+##    ⚠ STILL OPEN (not fixed, deliberately): the browser resolution list is DUPLICATED VERBATIM in
+##    uilayout.js (~24), bootperf.js (~56) and now preflight.js — three copies of one truth. If they
+##    diverge, preflight silently stops describing what the gates actually run. The port should have
+##    ONE resolver; touching the gates during capture is not worth it.
 ## 9b. ✔ RESOLVED 2026-07-31 — THE PORT PLAN IS COMMITTED at port/ (commit ca2e9d1). Nick supplied
 ##    v4.0, which SUPERSEDES the lost v3.1 and is audited against v1.8.9 rather than v1.6.4, plus
 ##    addenda A–D and a v1.9 delta. It will not be lost again.

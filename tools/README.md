@@ -7,6 +7,53 @@ deterministic core.
 
 Requires Node ≥ 18 and `npm install` at the repo root (acorn + jsdom).
 
+> ## ⚠ `npm install` IS NOT ENOUGH — two suites need a real browser
+>
+> **Run `npm run preflight` on any new machine before trusting the battery.**
+>
+> `package.json` declares only **acorn** and **jsdom**. But `uilayout.js` and
+> `bootperf.js` drive a **real browser** — they `spawn` a system binary headless and
+> talk to it over CDP. There is no Playwright, no Puppeteer, no npm browser driver
+> anywhere in `tools/`. So a clean clone that runs `npm install` gets **seven of the
+> nine suites**, and the two that need a browser fail with `Edge not found` — or, worse,
+> simply never get run and the battery looks complete.
+>
+> This went undeclared until **2026-07-31**, when port Phase 0's Gate A deliverable
+> *"reproduce all executable dependencies in a clean CI environment"* surfaced it
+> (ROADMAP 9h).
+>
+> **Resolution order** (identical in both files, and repeated in `preflight.js`):
+> `$CF_BROWSER` → Windows Edge → `/usr/bin/google-chrome` → `chromium-browser` →
+> `chromium` → macOS Chrome. So CI works today — set `CF_BROWSER` — it was just never
+> written down.
+>
+> **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
+> / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,
+> and Edge **auto-updates silently on Windows**. The pinned revision lives in
+> `tools/deps.pinned.json`. **A version bump is an explicit re-baseline decision, not a
+> regression** — which is why `preflight` only *warns* on drift by default, and fails
+> only under `--assert-pin` (use that in CI).
+
+## preflight.js — can this machine run the battery at all?
+
+```
+npm run preflight            # check + report; drift warns
+npm run preflight:ci         # drift is a hard failure
+node tools/preflight.js --json
+```
+
+Checks node against the declared minimum, confirms the npm packages resolve, then
+resolves the browser exactly the way the gates do and compares its version to the pin.
+Exit 0 = everything required is present; exit 1 = a suite cannot run.
+
+> **Negative-controlled in both directions before it shipped, and it caught itself.**
+> The first version trusted `$CF_BROWSER` without checking the path existed, so
+> `CF_BROWSER=/nope` reported **PASS, exit 0** — while `uilayout.js` would hard-exit(2)
+> on the same value. A green-but-wrong state *inside the check written to prevent green-
+> but-wrong states*. Fixed to match `uilayout.js:83`. The three controls that must keep
+> holding: normal run → exit 0 · bogus `CF_BROWSER` → exit 1 · drift under
+> `--assert-pin` → exit 1.
+
 > ## ⚠ NEVER run `tools/extract.js` after editing `main.js`
 >
 > `extract.js` regenerates `main.js` **from the html**. `main.js` is the source of
