@@ -1,0 +1,4 @@
+{ "name": "@cf/domain-strays", "private": true, "version": "0.0.0", "type": "module",
+  "description": "Domain-pure functions living OUTSIDE the 14 [domain] modules in main.js (cleanName; Gate B adds biomeFor, where-codecs, winEstimate, floraStat, hdGenesFor, _sanitizeSavedGenome). AUTO-LIFTED.",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {} }

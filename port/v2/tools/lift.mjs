@@ -41,6 +41,7 @@ const REGISTRY = {
   '@cf/domain-genetics': ['evolveGenome', 'crossGenome'],
   '@cf/domain-ecology': ['biosphere', 'civilization', 'planetSpecies'],
   '@cf/domain-descriptors': ['galaxyStats', 'fmtBig', 'roman', 'describePick', 'slimGal', 'starDescriptor', 'planetDescriptor', 'moonDescriptor', 'galaxyDescriptor', 'wormholeDescriptor', 'cmbDescriptor', 'oortDescriptor', 'kuiperDescriptor', 'visitorDescriptor', 'beltDescriptor', 'SOL_MOONS'],
+  '@cf/domain-strays': ['cleanName'],
 };
 
 const [, , name, outDir] = process.argv;
