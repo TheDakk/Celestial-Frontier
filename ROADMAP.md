@@ -146,9 +146,26 @@
 ##   SpeciesArt, Phase 4 art port; strays d.ts) · combatcore app-coupled exports need an app
 ##   layer (index.ts) · COSMIC_EPOCH reads 0 in lifts (= capture condition; app wires it
 ##   Phase 2+) · SessionRNG call-site wiring (Phase 2+).
-## ▶▶▶ NEXT: Phase 1 is done — Phase 2 per PORT_MASTER_PLAN v4.0 §20 (app-layer/service
-##   conversion; Gate C needs NICK's real veteran save). Cold start: this block →
-##   port/v2/README.md (module table + Gate B section) → plan §20.
+## ▶▶▶ ★ PHASE 2 HAS STARTED (same day, after a full re-verification: vitest 161 green ·
+##   tsc clean · goldenseeds/codefixtures/audioprofiles/preflight PASS · validate FINGERPRINT
+##   MATCH 50/50). Phase 2 = plan §20 "Persistence, sharing, and parity harness"; share/champion
+##   codes + genome sanitization already landed in Phase 1 (modules 14/strays).
+##   LANDED (6d03e81): @cf/domain-progression (COSMIC_EPOCH clock, injected play-time source —
+##   harvestclock invariant BY CONSTRUCTION; v1.8.8 load clamp; exact-boundary readiness) ·
+##   @cf/persistence (§19.3 stores · CF-RR-002 recovery repository · in-memory + IndexedDB
+##   backends; IDB end-to-end proof deliberately deferred to Phase 3's browser slice).
+##   ⚠ LESSON, same shape as ever: the reset-law test PASSED its own negative control with the
+##   defect live (recover() short-circuits on missing primary — vacuous assertion). Rewritten to
+##   drive the real resurrection scenario; ALSO the first sed perturbation silently didn't match —
+##   A CONTROL MUST VERIFY ITS PERTURBATION LANDED.
+## ▶ NEXT IN PHASE 2, in order: (1) the v1.8.9 SAVE IMPORTER — build tools/savefixtures.js at
+##   root first (codefixtures pattern): curated saves through the REAL loadSave in jsdom,
+##   captured post-load state (via the buildSave round trip) becomes the fixture the TS importer
+##   is tested against — the importer must never be tested against itself. Every loadSave clamp
+##   is a shipped-defect lesson (main.js 14202-14484); size NEVER clamped; tut absent ⇒ done;
+##   conq[].e absent ⇒ READY. (2) training snapshots (tsnap) · (3) outcome tests around domain
+##   APIs · (4) defect-injection controls formalized. Gate C still needs NICK's real veteran
+##   save. Cold start: this block → port/v2/README.md → plan §20 Phase 2.
 ## ✔★ THE FOUR §23 DESIGN DECISIONS ARE MADE (Nick, 2026-07-31). Recorded in port/DECISIONS.md —
 ##   a NEW live record, so the supplied v4.0 plan stays the reference it was delivered as.
 ##     1. bred `fed` → INHERIT 50% OF THE LOWER PARENT. Breeding is not sharing: BOTH parents are
