@@ -1,0 +1,9 @@
+{
+  "name": "cf-pixi-spike",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Port Phase 0 Canvas/Pixi visual spike — ISOLATED from the game's dependency set on purpose (tools/deps.pinned.json declares acorn+jsdom only; adding pixi to the root would invalidate that the moment it was written).",
+  "type": "module",
+  "scripts": { "render": "node render.mjs" },
+  "dependencies": { "pixi.js": "8.19.0" }
+}

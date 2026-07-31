@@ -1,0 +1,246 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>spike-loading</title>
+<style>
+  html,body{margin:0;background:#05070d;color:#8fa3bf;font:12px/1.4 ui-monospace,monospace}
+  #grid{display:grid;grid-template-columns:520px 520px;gap:2px;padding:2px}
+  .cell{position:relative}
+  .cap{position:absolute;left:8px;top:6px;z-index:2;color:#cfe0ff;text-shadow:0 1px 3px #000;font-weight:600}
+  .sub{position:absolute;left:8px;top:22px;z-index:2;color:#7f93b3;text-shadow:0 1px 3px #000}
+</style>
+<div id="grid"></div>
+<!-- classic UMD build on purpose: Chromium blocks ES-module imports from file://,
+     so a module build silently never executes and the page sits at its loading
+     title. The UMD bundle loads fine, which keeps the spike a single file:// open
+     with no server — and no server means no --virtual-time-budget hang. -->
+<script src="./node_modules/pixi.js/dist/pixi.min.js"></script>
+<script>
+(async () => {
+const { Application, Container, Graphics } = PIXI;
+
+const W = 520, H = 340;
+const cells = [
+  ['1 · ROTATING PLANET',   'procedural surface + terminator + atmosphere rim'],
+  ['2 · RING OCCLUSION',    'back ring behind, front ring over, planet shadow on rings'],
+  ['3 · CREATURE',          'layered limbed body — the phenotype-to-rig question'],
+  ['4 · LAYERED BIOME',     'parallax depth: sky / far / mid / near / canopy'],
+];
+
+const grid = document.getElementById('grid');
+const apps = [];
+for (const [cap, sub] of cells) {
+  const d = document.createElement('div'); d.className = 'cell';
+  d.innerHTML = `<div class="cap">${cap}</div><div class="sub">${sub}</div>`;
+  grid.appendChild(d);
+  const app = new Application();
+  await app.init({ width: W, height: H, background: '#05070d', antialias: true, preference: 'webgl' });
+  d.appendChild(app.canvas);
+  apps.push(app);
+}
+
+/* deterministic noise so the spike is reproducible */
+let _s = 1234567;
+const rnd = () => (_s = (_s * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+
+/* ---------- 1. rotating planet ---------- */
+{
+  const app = apps[0], cx = W / 2, cy = H / 2, R = 108;
+  const planet = new Container(); planet.x = cx; planet.y = cy;
+
+  /* surface: banded procedural continents, clipped to the disc */
+  const surf = new Container();
+  const base = new Graphics().circle(0, 0, R).fill({ color: 0x1d4a6b });
+  surf.addChild(base);
+  const land = new Graphics();
+  for (let i = 0; i < 90; i++) {
+    const a = rnd() * Math.PI * 2, r = Math.sqrt(rnd()) * R * 0.96;
+    const x = Math.cos(a) * r, y = Math.sin(a) * r * 0.98;
+    const s = 8 + rnd() * 30;
+    land.ellipse(x, y, s, s * (0.5 + rnd() * 0.5)).fill({ color: rnd() > 0.45 ? 0x2f6b3d : 0x3f7a48, alpha: 0.85 });
+  }
+  surf.addChild(land);
+  const ice = new Graphics();
+  ice.ellipse(0, -R * 0.86, R * 0.55, R * 0.20).fill({ color: 0xdfeaf5, alpha: 0.9 });
+  ice.ellipse(0,  R * 0.88, R * 0.46, R * 0.16).fill({ color: 0xdfeaf5, alpha: 0.85 });
+  surf.addChild(ice);
+  const clip = new Graphics().circle(0, 0, R).fill({ color: 0xffffff });
+  surf.mask = clip; surf.addChild(clip);
+  planet.addChild(surf);
+
+  /* terminator: a soft day/night wedge, clipped to the same disc */
+  const night = new Container();
+  const shade = new Graphics();
+  for (let i = 0; i < 26; i++) {
+    const t = i / 25;
+    shade.circle(R * (0.30 + t * 1.25), 0, R * 1.32).fill({ color: 0x000208, alpha: 0.055 });
+  }
+  night.addChild(shade);
+  const nclip = new Graphics().circle(0, 0, R).fill({ color: 0xffffff });
+  night.mask = nclip; night.addChild(nclip);
+  planet.addChild(night);
+
+  /* atmosphere rim */
+  const rim = new Graphics();
+  for (let i = 0; i < 16; i++) rim.circle(0, 0, R + i * 1.7).stroke({ color: 0x6fc2ff, alpha: 0.055 - i * 0.003, width: 2.2 });
+  planet.addChild(rim);
+
+  app.stage.addChild(planet);
+  /* prove it ROTATES: advance the surface a fixed amount, not a live ticker */
+  surf.rotation = 0.42;
+  land.x = -14;
+}
+
+/* ---------- 2. ring occlusion ---------- */
+{
+  const app = apps[1], cx = W / 2, cy = H / 2 + 8, R = 74;
+  const scene = new Container(); scene.x = cx; scene.y = cy;
+  const TILT = 0.30;                       /* vertical squash of the ring plane */
+
+  const ringBand = (from, to, color, alpha) => {
+    const g = new Graphics();
+    for (let r = from; r < to; r += 1.6) {
+      const a = alpha * (0.55 + 0.45 * Math.sin(r * 0.6));
+      g.ellipse(0, 0, r, r * TILT).stroke({ color, alpha: a, width: 1.5 });
+    }
+    return g;
+  };
+
+  /* BACK half — drawn first, then clipped to y<0 so the planet covers its middle */
+  const back = ringBand(R * 1.25, R * 2.15, 0xcbb894, 0.55);
+  const backClip = new Graphics().rect(-R * 2.4, -R * 2.4, R * 4.8, R * 2.4).fill({ color: 0xffffff });
+  back.mask = backClip; scene.addChild(back); scene.addChild(backClip);
+
+  /* the planet itself */
+  const p = new Container();
+  p.addChild(new Graphics().circle(0, 0, R).fill({ color: 0xc9a86a }));
+  const bands = new Graphics();
+  for (let i = -R; i < R; i += 7) bands.rect(-R, i, R * 2, 3.4).fill({ color: i % 14 ? 0xb08f55 : 0xd9bd85, alpha: 0.5 });
+  const pclip = new Graphics().circle(0, 0, R).fill({ color: 0xffffff });
+  bands.mask = pclip; p.addChild(bands); p.addChild(pclip);
+  const pnight = new Graphics();
+  for (let i = 0; i < 20; i++) pnight.circle(R * (0.35 + i / 20 * 1.2), 0, R * 1.3).fill({ color: 0x000208, alpha: 0.06 });
+  const nclip2 = new Graphics().circle(0, 0, R).fill({ color: 0xffffff });
+  pnight.mask = nclip2; p.addChild(pnight); p.addChild(nclip2);
+  scene.addChild(p);
+
+  /* FRONT half — over the planet, clipped to y>0 */
+  const front = ringBand(R * 1.25, R * 2.15, 0xe0cda6, 0.62);
+  const frontClip = new Graphics().rect(-R * 2.4, 0, R * 4.8, R * 2.4).fill({ color: 0xffffff });
+  front.mask = frontClip; scene.addChild(front); scene.addChild(frontClip);
+
+  /* THE HARD PART: the planet's shadow falling ACROSS the front rings */
+  const shadow = new Graphics();
+  shadow.ellipse(R * 0.95, 0, R * 1.05, R * 2.2 * TILT + R * 0.5).fill({ color: 0x000208, alpha: 0.55 });
+  shadow.mask = frontClip;
+  scene.addChild(shadow);
+
+  app.stage.addChild(scene);
+}
+
+/* ---------- 3. creature ---------- */
+{
+  const app = apps[2], cx = W / 2 - 10, cy = H / 2 + 30;
+  const body = new Container(); body.x = cx; body.y = cy;
+  const skin = 0x7d5a8c, skin2 = 0x9a6fa8, accent = 0x4fd1c5;
+
+  const limb = (x, y, len, ang, w, seg) => {
+    const c = new Container(); c.x = x; c.y = y; c.rotation = ang;
+    let px = 0, py = 0, a = 0;
+    for (let i = 0; i < seg; i++) {
+      const l = len / seg, tw = w * (1 - i / (seg + 1));
+      const g = new Graphics().roundRect(-tw / 2, 0, tw, l + 2, tw / 2).fill({ color: i % 2 ? skin : skin2 });
+      const j = new Container(); j.x = px; j.y = py; j.rotation = a;
+      j.addChild(g); c.addChild(j);
+      px = j.x + Math.sin(a) * -0 ; py = py + l; a += 0.22;
+    }
+    return c;
+  };
+
+  /* tail, back legs, torso, front legs, head — painter's order = depth */
+  body.addChild(limb(-6, -34, 74, 2.5, 15, 4));
+  const bl1 = limb(-24, -18, 60, 0.35, 17, 3); bl1.alpha = 0.82; body.addChild(bl1);
+  const bl2 = limb(24, -18, 60, -0.35, 17, 3); bl2.alpha = 0.82; body.addChild(bl2);
+
+  const torso = new Graphics()
+    .ellipse(0, -46, 46, 34).fill({ color: skin })
+    .ellipse(0, -60, 34, 24).fill({ color: skin2, alpha: 0.7 });
+  body.addChild(torso);
+  for (let i = 0; i < 7; i++) {
+    const s = new Graphics().moveTo(-3, 0).lineTo(0, -13 - (i === 3 ? 7 : 0)).lineTo(3, 0).fill({ color: accent, alpha: 0.75 });
+    s.x = -26 + i * 9; s.y = -74; s.rotation = (i - 3) * 0.10; body.addChild(s);
+  }
+  body.addChild(limb(-30, -52, 52, 0.7, 14, 3));
+  body.addChild(limb(30, -52, 52, -0.7, 14, 3));
+
+  const head = new Container(); head.x = 0; head.y = -96;
+  head.addChild(new Graphics().ellipse(0, 0, 30, 25).fill({ color: skin2 }));
+  head.addChild(new Graphics().ellipse(0, 9, 20, 13).fill({ color: skin }));
+  for (const s of [-1, 1]) {
+    head.addChild(new Graphics().circle(s * 12, -4, 7.5).fill({ color: 0xf7f4ff }));
+    head.addChild(new Graphics().circle(s * 12 + s * 1.5, -4, 4).fill({ color: 0x101018 }));
+    head.addChild(new Graphics().circle(s * 12 + s * 3, -6.5, 1.6).fill({ color: 0xffffff, alpha: 0.9 }));
+    const horn = new Graphics().moveTo(0, 0).lineTo(s * 5, -22).lineTo(s * 10, 0).fill({ color: accent, alpha: 0.85 });
+    horn.x = s * 14; horn.y = -18; head.addChild(horn);
+  }
+  body.addChild(head);
+  app.stage.addChild(body);
+}
+
+/* ---------- 4. layered biome ---------- */
+{
+  const app = apps[3];
+  const sky = new Graphics();
+  for (let i = 0; i < 34; i++) {
+    const t = i / 33;
+    sky.rect(0, i * (H / 34), W, H / 34 + 1).fill({ color: lerpC(0x1b2b52, 0xd88c5a, t * t), alpha: 1 });
+  }
+  app.stage.addChild(sky);
+  const sun = new Graphics();
+  for (let i = 12; i > 0; i--) sun.circle(W * 0.72, H * 0.52, i * 6).fill({ color: 0xffd9a0, alpha: 0.05 });
+  sun.circle(W * 0.72, H * 0.52, 17).fill({ color: 0xfff0cf });
+  app.stage.addChild(sun);
+
+  const ridge = (y, amp, color, alpha, step) => {
+    const g = new Graphics(); g.moveTo(0, H);
+    for (let x = 0; x <= W; x += step) g.lineTo(x, y + Math.sin(x * 0.011 + y) * amp + Math.sin(x * 0.031 + y * 2) * amp * 0.45);
+    g.lineTo(W, H).fill({ color, alpha });
+    return g;
+  };
+  app.stage.addChild(ridge(H * 0.60, 16, 0x4a5f86, 0.55, 8));
+  app.stage.addChild(ridge(H * 0.70, 22, 0x36486a, 0.75, 6));
+  app.stage.addChild(ridge(H * 0.82, 14, 0x22304a, 0.92, 5));
+
+  /* mid: trees, scaled by depth */
+  for (let i = 0; i < 26; i++) {
+    const x = rnd() * W, d = 0.35 + rnd() * 0.65, y = H * 0.80 + d * 26;
+    const t = new Graphics();
+    t.rect(-2 * d, 0, 4 * d, -26 * d).fill({ color: 0x14202f });
+    for (let k = 0; k < 3; k++) t.ellipse(0, -26 * d - k * 9 * d, (17 - k * 4) * d, (11 - k * 2) * d).fill({ color: k ? 0x1c3a2b : 0x244834 });
+    t.x = x; t.y = y; app.stage.addChild(t);
+  }
+  /* near: silhouette canopy */
+  const can = new Graphics();
+  for (let i = 0; i < 16; i++) can.ellipse(rnd() * W, -8 + rnd() * 34, 46 + rnd() * 54, 26 + rnd() * 22).fill({ color: 0x070d12, alpha: 0.96 });
+  app.stage.addChild(can);
+  const fg = new Graphics();
+  for (let i = 0; i < 9; i++) {
+    const x = rnd() * W;
+    fg.moveTo(x, H).lineTo(x - 22, H - 60 - rnd() * 50).lineTo(x + 6, H - 40 - rnd() * 40).fill({ color: 0x050a0e, alpha: 0.95 });
+  }
+  app.stage.addChild(fg);
+}
+
+function lerpC(a, b, t) {
+  const ar = a >> 16 & 255, ag = a >> 8 & 255, ab = a & 255;
+  const br = b >> 16 & 255, bg = b >> 8 & 255, bb = b & 255;
+  return ((ar + (br - ar) * t) << 16 | (ag + (bg - ag) * t) << 8 | (ab + (bb - ab) * t)) & 0xffffff;
+}
+
+/* let one frame present, then signal the harness */
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  const gl = apps[0].renderer;
+  document.title = 'spike-ready|renderer=' + (gl && gl.type !== undefined ? gl.type : '?');
+}));
+
+})().catch((e) => { document.title = 'spike-error|' + (e && e.message ? e.message : e); });
+</script>
