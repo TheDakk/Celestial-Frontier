@@ -2,28 +2,44 @@
 <meta charset="utf-8">
 <title>spike-loading</title>
 <style>
-  html,body{margin:0;background:#05070d;color:#8fa3bf;font:12px/1.4 ui-monospace,monospace}
+  html,body{margin:0;background:#080b12;color:#8fa3bf;font:12px/1.4 ui-monospace,monospace}
   #grid{display:grid;grid-template-columns:520px 520px;gap:2px;padding:2px}
   .cell{position:relative}
-  .cap{position:absolute;left:8px;top:6px;z-index:2;color:#cfe0ff;text-shadow:0 1px 3px #000;font-weight:600}
-  .sub{position:absolute;left:8px;top:22px;z-index:2;color:#7f93b3;text-shadow:0 1px 3px #000}
+  .cap{position:absolute;left:10px;top:8px;z-index:2;color:#e8d9a8;text-shadow:0 1px 4px #000;font-weight:700;letter-spacing:.04em}
+  .sub{position:absolute;left:10px;top:25px;z-index:2;color:#8fa3bf;text-shadow:0 1px 4px #000}
 </style>
 <div id="grid"></div>
-<!-- classic UMD build on purpose: Chromium blocks ES-module imports from file://,
-     so a module build silently never executes and the page sits at its loading
-     title. The UMD bundle loads fine, which keeps the spike a single file:// open
-     with no server — and no server means no --virtual-time-budget hang. -->
+<!-- classic UMD build: Chromium blocks ES-module imports from file://, and serving
+     over HTTP makes --virtual-time-budget hang. UMD + file:// avoids both. -->
 <script src="./node_modules/pixi.js/dist/pixi.min.js"></script>
 <script>
 (async () => {
-const { Application, Container, Graphics } = PIXI;
+const { Application, Container, Graphics, Sprite, Texture, FillGradient, BlurFilter } = PIXI;
+
+/* ══ REBUILD NOTE ══════════════════════════════════════════════════════════════
+   The first version of this spike drew everything with flat .fill() calls and
+   stacked translucent circles. Next to the shipped Canvas-2D art (see
+   tools/uisheets/vista-1-terran.png and rig-mammal1.png) it looked amateurish —
+   correctly called out.
+
+   The mistake was NOT "Pixi can't do it". The shipped engine reaches its bar in
+   plain Canvas 2D using gradients, soft shadow, rim light, mottling and
+   atmospheric haze. I simply had not ported those TECHNIQUES.
+
+   This version uses the same technique stack, expressed in Pixi:
+     · FillGradient (radial + linear) for form shading instead of flat fills
+     · BlurFilter for glow, soft shadow, atmospheric haze and terminator falloff
+     · additive blend for rim light and bloom
+     · low-alpha mottling under blur for pelt / surface texture
+     · contact shadows so subjects sit in the scene rather than float
+   ═══════════════════════════════════════════════════════════════════════════ */
 
 const W = 520, H = 340;
 const cells = [
-  ['1 · ROTATING PLANET',   'procedural surface + terminator + atmosphere rim'],
-  ['2 · RING OCCLUSION',    'back ring behind, front ring over, planet shadow on rings'],
-  ['3 · CREATURE',          'layered limbed body — the phenotype-to-rig question'],
-  ['4 · LAYERED BIOME',     'parallax depth: sky / far / mid / near / canopy'],
+  ['1 · PLANET',         'radial form-shading · soft terminator · atmosphere bloom'],
+  ['2 · RING OCCLUSION', 'back behind / front over · BLURRED umbra, not a hard block'],
+  ['3 · CREATURE',       'gradient body · rim light · mottled pelt · contact shadow'],
+  ['4 · LAYERED BIOME',  'atmospheric haze between ridges · sun bloom · specular water'],
 ];
 
 const grid = document.getElementById('grid');
@@ -33,214 +49,297 @@ for (const [cap, sub] of cells) {
   d.innerHTML = `<div class="cap">${cap}</div><div class="sub">${sub}</div>`;
   grid.appendChild(d);
   const app = new Application();
-  await app.init({ width: W, height: H, background: '#05070d', antialias: true, preference: 'webgl' });
+  await app.init({ width: W, height: H, background: '#080b12', antialias: true, preference: 'webgl' });
   d.appendChild(app.canvas);
   apps.push(app);
 }
 
-/* deterministic noise so the spike is reproducible */
-let _s = 1234567;
+let _s = 20260731;
 const rnd = () => (_s = (_s * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
 
-/* ---------- 1. rotating planet ---------- */
+/* radial gradient helper — normalised to the shape's own bounds */
+const radial = (stops, cx = 0.5, cy = 0.5, r = 0.5) => new FillGradient({
+  type: 'radial', center: { x: cx, y: cy }, innerCenter: { x: cx, y: cy },
+  innerRadius: 0, outerRadius: r, colorStops: stops, textureSpace: 'local',
+});
+const linear = (stops, x0 = 0.5, y0 = 0, x1 = 0.5, y1 = 1) => new FillGradient({
+  type: 'linear', start: { x: x0, y: y0 }, end: { x: x1, y: y1 },
+  colorStops: stops, textureSpace: 'local',
+});
+/* a blurred layer = the soft-shadow / glow primitive the shipped art leans on */
+const soft = (child, strength) => { const c = new Container(); c.addChild(child); c.filters = [new BlurFilter({ strength })]; return c; };
+
+/* ─────────── 1 · PLANET ─────────── */
 {
-  const app = apps[0], cx = W / 2, cy = H / 2, R = 108;
-  const planet = new Container(); planet.x = cx; planet.y = cy;
-
-  /* surface: banded procedural continents, clipped to the disc */
-  const surf = new Container();
-  const base = new Graphics().circle(0, 0, R).fill({ color: 0x1d4a6b });
-  surf.addChild(base);
-  const land = new Graphics();
-  for (let i = 0; i < 90; i++) {
-    const a = rnd() * Math.PI * 2, r = Math.sqrt(rnd()) * R * 0.96;
-    const x = Math.cos(a) * r, y = Math.sin(a) * r * 0.98;
-    const s = 8 + rnd() * 30;
-    land.ellipse(x, y, s, s * (0.5 + rnd() * 0.5)).fill({ color: rnd() > 0.45 ? 0x2f6b3d : 0x3f7a48, alpha: 0.85 });
-  }
-  surf.addChild(land);
-  const ice = new Graphics();
-  ice.ellipse(0, -R * 0.86, R * 0.55, R * 0.20).fill({ color: 0xdfeaf5, alpha: 0.9 });
-  ice.ellipse(0,  R * 0.88, R * 0.46, R * 0.16).fill({ color: 0xdfeaf5, alpha: 0.85 });
-  surf.addChild(ice);
-  const clip = new Graphics().circle(0, 0, R).fill({ color: 0xffffff });
-  surf.mask = clip; surf.addChild(clip);
-  planet.addChild(surf);
-
-  /* terminator: a soft day/night wedge, clipped to the same disc */
-  const night = new Container();
-  const shade = new Graphics();
-  for (let i = 0; i < 26; i++) {
-    const t = i / 25;
-    shade.circle(R * (0.30 + t * 1.25), 0, R * 1.32).fill({ color: 0x000208, alpha: 0.055 });
-  }
-  night.addChild(shade);
-  const nclip = new Graphics().circle(0, 0, R).fill({ color: 0xffffff });
-  night.mask = nclip; night.addChild(nclip);
-  planet.addChild(night);
-
-  /* atmosphere rim */
-  const rim = new Graphics();
-  for (let i = 0; i < 16; i++) rim.circle(0, 0, R + i * 1.7).stroke({ color: 0x6fc2ff, alpha: 0.055 - i * 0.003, width: 2.2 });
-  planet.addChild(rim);
-
-  app.stage.addChild(planet);
-  /* prove it ROTATES: advance the surface a fixed amount, not a live ticker */
-  surf.rotation = 0.42;
-  land.x = -14;
-}
-
-/* ---------- 2. ring occlusion ---------- */
-{
-  const app = apps[1], cx = W / 2, cy = H / 2 + 8, R = 74;
+  const app = apps[0], cx = W / 2, cy = H / 2, R = 104;
   const scene = new Container(); scene.x = cx; scene.y = cy;
-  const TILT = 0.30;                       /* vertical squash of the ring plane */
 
-  const ringBand = (from, to, color, alpha) => {
-    const g = new Graphics();
-    for (let r = from; r < to; r += 1.6) {
-      const a = alpha * (0.55 + 0.45 * Math.sin(r * 0.6));
-      g.ellipse(0, 0, r, r * TILT).stroke({ color, alpha: a, width: 1.5 });
-    }
-    return g;
-  };
+  /* atmosphere bloom BEHIND the disc — blurred ring, additive */
+  const halo = new Graphics().circle(0, 0, R * 1.16).fill({ color: 0x5aa9ff, alpha: 0.55 });
+  const haloC = soft(halo, 26); haloC.blendMode = 'add'; haloC.alpha = 0.75; scene.addChild(haloC);
 
-  /* BACK half — drawn first, then clipped to y<0 so the planet covers its middle */
-  const back = ringBand(R * 1.25, R * 2.15, 0xcbb894, 0.55);
-  const backClip = new Graphics().rect(-R * 2.4, -R * 2.4, R * 4.8, R * 2.4).fill({ color: 0xffffff });
-  back.mask = backClip; scene.addChild(back); scene.addChild(backClip);
+  /* the sphere: radial gradient lit from upper-left = form, not a flat disc */
+  const body = new Graphics().circle(0, 0, R).fill(radial([
+    { offset: 0.00, color: '#4d94c4' }, { offset: 0.42, color: '#2f6f9c' },
+    { offset: 0.78, color: '#164a70' }, { offset: 1.00, color: '#0a2740' },
+  ], 0.34, 0.30, 0.72));
+  scene.addChild(body);
 
-  /* the planet itself */
-  const p = new Container();
-  p.addChild(new Graphics().circle(0, 0, R).fill({ color: 0xc9a86a }));
-  const bands = new Graphics();
-  for (let i = -R; i < R; i += 7) bands.rect(-R, i, R * 2, 3.4).fill({ color: i % 14 ? 0xb08f55 : 0xd9bd85, alpha: 0.5 });
-  const pclip = new Graphics().circle(0, 0, R).fill({ color: 0xffffff });
-  bands.mask = pclip; p.addChild(bands); p.addChild(pclip);
-  const pnight = new Graphics();
-  for (let i = 0; i < 20; i++) pnight.circle(R * (0.35 + i / 20 * 1.2), 0, R * 1.3).fill({ color: 0x000208, alpha: 0.06 });
-  const nclip2 = new Graphics().circle(0, 0, R).fill({ color: 0xffffff });
-  pnight.mask = nclip2; p.addChild(pnight); p.addChild(nclip2);
-  scene.addChild(p);
+  /* continents — soft-edged, clipped to the disc */
+  const landC = new Container();
+  const land = new Graphics();
+  for (let i = 0; i < 70; i++) {
+    const a = rnd() * Math.PI * 2, r = Math.sqrt(rnd()) * R * 0.92;
+    const x = Math.cos(a) * r, y = Math.sin(a) * r * 0.96, s = 10 + rnd() * 26;
+    land.ellipse(x, y, s, s * (0.42 + rnd() * 0.5))
+        .fill({ color: rnd() > 0.5 ? 0x2f6b41 : 0x3d7a4a, alpha: 0.55 + rnd() * 0.3 });
+  }
+  const lb = soft(land, 3); landC.addChild(lb);
+  /* polar ice, softened the same way */
+  const ice = new Graphics();
+  ice.ellipse(0, -R * 0.84, R * 0.52, R * 0.19).fill({ color: 0xe8f2fb, alpha: 0.8 });
+  ice.ellipse(0, R * 0.86, R * 0.44, R * 0.15).fill({ color: 0xe8f2fb, alpha: 0.72 });
+  landC.addChild(soft(ice, 5));
+  const lclip = new Graphics().circle(0, 0, R).fill({ color: 0xffffff });
+  landC.mask = lclip; scene.addChild(landC); scene.addChild(lclip);
 
-  /* FRONT half — over the planet, clipped to y>0 */
-  const front = ringBand(R * 1.25, R * 2.15, 0xe0cda6, 0.62);
-  const frontClip = new Graphics().rect(-R * 2.4, 0, R * 4.8, R * 2.4).fill({ color: 0xffffff });
-  front.mask = frontClip; scene.addChild(front); scene.addChild(frontClip);
+  /* TERMINATOR — one blurred gradient wedge, not 26 stacked circles.
+     This is the exact thing that banded in v1 of the spike. */
+  const nightC = new Container();
+  const night = new Graphics().circle(0, 0, R).fill(linear([
+    { offset: 0.00, color: 'rgba(2,6,14,0)' }, { offset: 0.34, color: 'rgba(2,6,14,0.10)' },
+    { offset: 0.62, color: 'rgba(2,6,14,0.72)' }, { offset: 1.00, color: 'rgba(2,6,14,0.94)' },
+  ], 0.05, 0.15, 1.0, 0.9));
+  nightC.addChild(soft(night, 8));
+  const nclip = new Graphics().circle(0, 0, R).fill({ color: 0xffffff });
+  nightC.mask = nclip; scene.addChild(nightC); scene.addChild(nclip);
 
-  /* THE HARD PART: the planet's shadow falling ACROSS the front rings */
-  const shadow = new Graphics();
-  shadow.ellipse(R * 0.95, 0, R * 1.05, R * 2.2 * TILT + R * 0.5).fill({ color: 0x000208, alpha: 0.55 });
-  shadow.mask = frontClip;
-  scene.addChild(shadow);
+  /* limb rim light on the sunlit edge */
+  const rim = new Graphics().circle(0, 0, R).stroke({ color: 0xbfe4ff, alpha: 0.55, width: 3 });
+  const rimC = soft(rim, 5); rimC.blendMode = 'add';
+  const rclip = new Graphics().circle(-R * 0.18, -R * 0.20, R * 1.02).fill({ color: 0xffffff });
+  rimC.mask = rclip; scene.addChild(rimC); scene.addChild(rclip);
 
   app.stage.addChild(scene);
 }
 
-/* ---------- 3. creature ---------- */
+/* ─────────── 2 · RING OCCLUSION ─────────── */
 {
-  const app = apps[2], cx = W / 2 - 10, cy = H / 2 + 30;
-  const body = new Container(); body.x = cx; body.y = cy;
-  const skin = 0x7d5a8c, skin2 = 0x9a6fa8, accent = 0x4fd1c5;
+  const app = apps[1], cx = W / 2, cy = H / 2 + 6, R = 70, TILT = 0.29;
+  const scene = new Container(); scene.x = cx; scene.y = cy;
 
-  const limb = (x, y, len, ang, w, seg) => {
-    const c = new Container(); c.x = x; c.y = y; c.rotation = ang;
-    let px = 0, py = 0, a = 0;
-    for (let i = 0; i < seg; i++) {
-      const l = len / seg, tw = w * (1 - i / (seg + 1));
-      const g = new Graphics().roundRect(-tw / 2, 0, tw, l + 2, tw / 2).fill({ color: i % 2 ? skin : skin2 });
-      const j = new Container(); j.x = px; j.y = py; j.rotation = a;
-      j.addChild(g); c.addChild(j);
-      px = j.x + Math.sin(a) * -0 ; py = py + l; a += 0.22;
+  const band = (from, to, alphaMul) => {
+    const g = new Graphics();
+    for (let r = from; r < to; r += 1.5) {
+      const t = (r - from) / (to - from);
+      const gap = 0.45 + 0.55 * Math.abs(Math.sin(r * 0.55));
+      const col = t < 0.35 ? 0xd9c39a : (t < 0.72 ? 0xefe0bd : 0xb9a074);
+      g.ellipse(0, 0, r, r * TILT).stroke({ color: col, alpha: 0.5 * gap * alphaMul, width: 1.5 });
     }
-    return c;
-  };
-
-  /* tail, back legs, torso, front legs, head — painter's order = depth */
-  body.addChild(limb(-6, -34, 74, 2.5, 15, 4));
-  const bl1 = limb(-24, -18, 60, 0.35, 17, 3); bl1.alpha = 0.82; body.addChild(bl1);
-  const bl2 = limb(24, -18, 60, -0.35, 17, 3); bl2.alpha = 0.82; body.addChild(bl2);
-
-  const torso = new Graphics()
-    .ellipse(0, -46, 46, 34).fill({ color: skin })
-    .ellipse(0, -60, 34, 24).fill({ color: skin2, alpha: 0.7 });
-  body.addChild(torso);
-  for (let i = 0; i < 7; i++) {
-    const s = new Graphics().moveTo(-3, 0).lineTo(0, -13 - (i === 3 ? 7 : 0)).lineTo(3, 0).fill({ color: accent, alpha: 0.75 });
-    s.x = -26 + i * 9; s.y = -74; s.rotation = (i - 3) * 0.10; body.addChild(s);
-  }
-  body.addChild(limb(-30, -52, 52, 0.7, 14, 3));
-  body.addChild(limb(30, -52, 52, -0.7, 14, 3));
-
-  const head = new Container(); head.x = 0; head.y = -96;
-  head.addChild(new Graphics().ellipse(0, 0, 30, 25).fill({ color: skin2 }));
-  head.addChild(new Graphics().ellipse(0, 9, 20, 13).fill({ color: skin }));
-  for (const s of [-1, 1]) {
-    head.addChild(new Graphics().circle(s * 12, -4, 7.5).fill({ color: 0xf7f4ff }));
-    head.addChild(new Graphics().circle(s * 12 + s * 1.5, -4, 4).fill({ color: 0x101018 }));
-    head.addChild(new Graphics().circle(s * 12 + s * 3, -6.5, 1.6).fill({ color: 0xffffff, alpha: 0.9 }));
-    const horn = new Graphics().moveTo(0, 0).lineTo(s * 5, -22).lineTo(s * 10, 0).fill({ color: accent, alpha: 0.85 });
-    horn.x = s * 14; horn.y = -18; head.addChild(horn);
-  }
-  body.addChild(head);
-  app.stage.addChild(body);
-}
-
-/* ---------- 4. layered biome ---------- */
-{
-  const app = apps[3];
-  const sky = new Graphics();
-  for (let i = 0; i < 34; i++) {
-    const t = i / 33;
-    sky.rect(0, i * (H / 34), W, H / 34 + 1).fill({ color: lerpC(0x1b2b52, 0xd88c5a, t * t), alpha: 1 });
-  }
-  app.stage.addChild(sky);
-  const sun = new Graphics();
-  for (let i = 12; i > 0; i--) sun.circle(W * 0.72, H * 0.52, i * 6).fill({ color: 0xffd9a0, alpha: 0.05 });
-  sun.circle(W * 0.72, H * 0.52, 17).fill({ color: 0xfff0cf });
-  app.stage.addChild(sun);
-
-  const ridge = (y, amp, color, alpha, step) => {
-    const g = new Graphics(); g.moveTo(0, H);
-    for (let x = 0; x <= W; x += step) g.lineTo(x, y + Math.sin(x * 0.011 + y) * amp + Math.sin(x * 0.031 + y * 2) * amp * 0.45);
-    g.lineTo(W, H).fill({ color, alpha });
     return g;
   };
-  app.stage.addChild(ridge(H * 0.60, 16, 0x4a5f86, 0.55, 8));
-  app.stage.addChild(ridge(H * 0.70, 22, 0x36486a, 0.75, 6));
-  app.stage.addChild(ridge(H * 0.82, 14, 0x22304a, 0.92, 5));
 
-  /* mid: trees, scaled by depth */
-  for (let i = 0; i < 26; i++) {
-    const x = rnd() * W, d = 0.35 + rnd() * 0.65, y = H * 0.80 + d * 26;
-    const t = new Graphics();
-    t.rect(-2 * d, 0, 4 * d, -26 * d).fill({ color: 0x14202f });
-    for (let k = 0; k < 3; k++) t.ellipse(0, -26 * d - k * 9 * d, (17 - k * 4) * d, (11 - k * 2) * d).fill({ color: k ? 0x1c3a2b : 0x244834 });
-    t.x = x; t.y = y; app.stage.addChild(t);
-  }
-  /* near: silhouette canopy */
-  const can = new Graphics();
-  for (let i = 0; i < 16; i++) can.ellipse(rnd() * W, -8 + rnd() * 34, 46 + rnd() * 54, 26 + rnd() * 22).fill({ color: 0x070d12, alpha: 0.96 });
-  app.stage.addChild(can);
-  const fg = new Graphics();
-  for (let i = 0; i < 9; i++) {
-    const x = rnd() * W;
-    fg.moveTo(x, H).lineTo(x - 22, H - 60 - rnd() * 50).lineTo(x + 6, H - 40 - rnd() * 40).fill({ color: 0x050a0e, alpha: 0.95 });
-  }
-  app.stage.addChild(fg);
+  const backClip = new Graphics().rect(-R * 2.6, -R * 2.6, R * 5.2, R * 2.6).fill({ color: 0xffffff });
+  const back = band(R * 1.26, R * 2.18, 0.75); back.mask = backClip;
+  scene.addChild(back); scene.addChild(backClip);
+
+  /* the planet — gradient body + banding + soft terminator */
+  const p = new Container();
+  p.addChild(new Graphics().circle(0, 0, R).fill(radial([
+    { offset: 0, color: '#e3c489' }, { offset: 0.5, color: '#c9a55f' },
+    { offset: 0.85, color: '#8f7038' }, { offset: 1, color: '#5c4720' },
+  ], 0.34, 0.30, 0.74)));
+  const bands = new Graphics();
+  for (let i = -R; i < R; i += 6) bands.rect(-R, i, R * 2, 2.6).fill({ color: i % 12 ? 0xa8863f : 0xe6cd94, alpha: 0.28 });
+  const bclip = new Graphics().circle(0, 0, R).fill({ color: 0xffffff });
+  const bandsS = soft(bands, 2); bandsS.mask = bclip; p.addChild(bandsS); p.addChild(bclip);
+  const pn = new Graphics().circle(0, 0, R).fill(linear([
+    { offset: 0, color: 'rgba(3,6,12,0)' }, { offset: 0.55, color: 'rgba(3,6,12,0.55)' }, { offset: 1, color: 'rgba(3,6,12,0.92)' },
+  ], 0.1, 0.2, 1, 0.85));
+  const pnc = new Graphics().circle(0, 0, R).fill({ color: 0xffffff });
+  const pnS = soft(pn, 7); pnS.mask = pnc; p.addChild(pnS); p.addChild(pnc);
+  scene.addChild(p);
+
+  const frontClip = new Graphics().rect(-R * 2.6, 0, R * 5.2, R * 2.6).fill({ color: 0xffffff });
+  const front = band(R * 1.26, R * 2.18, 1.0); front.mask = frontClip;
+  scene.addChild(front); scene.addChild(frontClip);
+
+  /* THE UMBRA — blurred, elongated away from the light. v1 drew a hard block. */
+  const umbra = new Graphics()
+    .ellipse(R * 1.35, R * 0.10, R * 0.86, R * 0.62).fill({ color: 0x03060c, alpha: 0.72 });
+  const umbraS = soft(umbra, 16);
+  const uclip = new Graphics().rect(-R * 2.6, 0, R * 5.2, R * 2.6).fill({ color: 0xffffff });
+  umbraS.mask = uclip; scene.addChild(umbraS); scene.addChild(uclip);
+
+  app.stage.addChild(scene);
 }
 
-function lerpC(a, b, t) {
-  const ar = a >> 16 & 255, ag = a >> 8 & 255, ab = a & 255;
-  const br = b >> 16 & 255, bg = b >> 8 & 255, bb = b & 255;
-  return ((ar + (br - ar) * t) << 16 | (ag + (bg - ag) * t) << 8 | (ab + (bb - ab) * t)) & 0xffffff;
+/* ─────────── 3 · CREATURE ─────────── */
+{
+  const app = apps[2], cx = W / 2, cy = H / 2 + 52;
+  const scene = new Container(); scene.x = cx; scene.y = cy;
+
+  /* per-species ambient glow behind — the shipped rig sheets all carry one */
+  const amb = new Graphics().ellipse(0, -70, 150, 105).fill({ color: 0x2b6f5e, alpha: 0.5 });
+  const ambC = soft(amb, 40); ambC.blendMode = 'add'; ambC.alpha = 0.5; scene.addChild(ambC);
+
+  /* contact shadow so it sits on ground instead of floating */
+  const sh = new Graphics().ellipse(4, 4, 96, 15).fill({ color: 0x000308, alpha: 0.72 });
+  scene.addChild(soft(sh, 11));
+
+  const HIDE = [{ offset: 0, color: '#c69a63' }, { offset: 0.45, color: '#9c6f42' }, { offset: 0.85, color: '#5f4224' }, { offset: 1, color: '#3a2716' }];
+
+  const leg = (x, topY, len, lean, w) => {
+    const g = new Graphics();
+    g.moveTo(x - w / 2, topY)
+     .quadraticCurveTo(x + lean * 0.5 - w / 2, topY + len * 0.55, x + lean - w * 0.34, topY + len)
+     .lineTo(x + lean + w * 0.34, topY + len)
+     .quadraticCurveTo(x + lean * 0.5 + w / 2, topY + len * 0.55, x + w / 2, topY)
+     .fill(linear([{ offset: 0, color: '#8a6238' }, { offset: 1, color: '#2e2013' }], 0.5, 0, 0.5, 1));
+    return g;
+  };
+
+  /* far legs first, darkened — depth by value, as the shipped rigs do */
+  const far = new Container();
+  far.addChild(leg(-34, -52, 62, -7, 13));
+  far.addChild(leg(40, -52, 62, 6, 13));
+  far.alpha = 0.55; scene.addChild(far);
+
+  /* body: one gradient-filled mass, light on the back, dark under the belly */
+  const bodyG = new Graphics()
+    .ellipse(0, -78, 84, 46).fill(radial(HIDE, 0.40, 0.24, 0.78));
+  scene.addChild(bodyG);
+
+  /* mottled pelt — low-alpha blobs under blur */
+  const mott = new Graphics();
+  for (let i = 0; i < 34; i++) {
+    const a = rnd() * Math.PI * 2, r = Math.sqrt(rnd());
+    mott.ellipse(Math.cos(a) * r * 74, -78 + Math.sin(a) * r * 38, 5 + rnd() * 12, 4 + rnd() * 8)
+        .fill({ color: rnd() > 0.5 ? 0x6b4a29 : 0xd8ac74, alpha: 0.12 + rnd() * 0.12 });
+  }
+  const mottC = soft(mott, 4);
+  const mclip = new Graphics().ellipse(0, -78, 84, 46).fill({ color: 0xffffff });
+  mottC.mask = mclip; scene.addChild(mottC); scene.addChild(mclip);
+
+  /* neck + head, same gradient family so it reads as one animal */
+  const neck = new Graphics()
+    .moveTo(58, -96).quadraticCurveTo(88, -104, 96, -132).lineTo(112, -128)
+    .quadraticCurveTo(104, -96, 72, -80).fill(radial(HIDE, 0.3, 0.25, 0.9));
+  scene.addChild(neck);
+  const head = new Container(); head.x = 108; head.y = -140;
+  head.addChild(new Graphics().ellipse(0, 0, 27, 18).fill(radial(HIDE, 0.35, 0.28, 0.8)));
+  head.addChild(new Graphics().ellipse(18, 5, 13, 9).fill(radial([{ offset: 0, color: '#8a6238' }, { offset: 1, color: '#3d2a17' }], 0.4, 0.3, 0.8)));
+  /* ear */
+  head.addChild(new Graphics().moveTo(-8, -12).quadraticCurveTo(-16, -30, -2, -22).fill({ color: 0x7a5432 }));
+  /* eye with highlight */
+  head.addChild(new Graphics().circle(8, -4, 4.2).fill({ color: 0x120d08 }));
+  const gl = new Graphics().circle(9.4, -5.4, 1.7).fill({ color: 0xffffff, alpha: 0.95 });
+  head.addChild(gl);
+  scene.addChild(head);
+
+  /* near legs, full value */
+  scene.addChild(leg(-46, -56, 68, -9, 15));
+  scene.addChild(leg(28, -56, 68, 8, 15));
+
+  /* tail */
+  const tail = new Graphics().moveTo(-80, -92).quadraticCurveTo(-116, -86, -122, -50)
+    .lineTo(-114, -48).quadraticCurveTo(-108, -80, -78, -84).fill({ color: 0x6d4c2b });
+  scene.addChild(tail);
+
+  /* RIM LIGHT — offset lighter silhouette, blurred, additive, clipped to the body.
+     This is what makes the shipped rigs read as lit rather than as flat shapes. */
+  const rim = new Container();
+  const rimG = new Graphics()
+    .ellipse(-4, -84, 84, 46).fill({ color: 0xffe6b8, alpha: 0.85 })
+    .ellipse(104, -146, 27, 18).fill({ color: 0xffe6b8, alpha: 0.7 });
+  rim.addChild(soft(rimG, 7));
+  const rimCut = new Graphics()
+    .ellipse(2, -76, 82, 45).fill({ color: 0xffffff })
+    .ellipse(110, -138, 26, 17).fill({ color: 0xffffff });
+  /* keep only the sliver that pokes past the body edge */
+  const rimHolder = new Container(); rimHolder.addChild(rim);
+  rimHolder.blendMode = 'add'; rimHolder.alpha = 0.55;
+  const keep = new Graphics().ellipse(-6, -88, 88, 49).fill({ color: 0xffffff }).ellipse(102, -150, 30, 21).fill({ color: 0xffffff });
+  rimHolder.mask = keep; scene.addChild(rimHolder); scene.addChild(keep);
+  rimCut.alpha = 0; scene.addChild(rimCut);
+
+  app.stage.addChild(scene);
 }
 
-/* let one frame present, then signal the harness */
-requestAnimationFrame(() => requestAnimationFrame(() => {
-  const gl = apps[0].renderer;
-  document.title = 'spike-ready|renderer=' + (gl && gl.type !== undefined ? gl.type : '?');
-}));
+/* ─────────── 4 · LAYERED BIOME ─────────── */
+{
+  const app = apps[3];
+
+  /* sky: ONE linear gradient, not 34 rects */
+  app.stage.addChild(new Graphics().rect(0, 0, W, H).fill(linear([
+    { offset: 0.00, color: '#101f3f' }, { offset: 0.34, color: '#2c4a72' },
+    { offset: 0.62, color: '#7d8fa6' }, { offset: 0.82, color: '#e0a273' }, { offset: 1.00, color: '#f0c393' },
+  ], 0.5, 0, 0.5, 1)));
+
+  /* sun + bloom */
+  const sunX = W * 0.70, sunY = H * 0.56;
+  const bloom = new Graphics().circle(sunX, sunY, 74).fill({ color: 0xffdca8, alpha: 0.55 });
+  const bloomC = soft(bloom, 34); bloomC.blendMode = 'add'; app.stage.addChild(bloomC);
+  const disc = new Graphics().circle(sunX, sunY, 15).fill({ color: 0xfff3d8 });
+  const discC = soft(disc, 3); discC.blendMode = 'add'; app.stage.addChild(discC);
+
+  const ridge = (y, amp, colTop, colBot, alpha, seedShift) => {
+    const g = new Graphics(); g.moveTo(0, H);
+    for (let x = 0; x <= W; x += 4) {
+      const yy = y + Math.sin(x * 0.0102 + seedShift) * amp + Math.sin(x * 0.0281 + seedShift * 2) * amp * 0.45 + Math.sin(x * 0.061 + seedShift) * amp * 0.16;
+      g.lineTo(x, yy);
+    }
+    g.lineTo(W, H).fill(linear([{ offset: 0, color: colTop }, { offset: 1, color: colBot }], 0.5, 0, 0.5, 1));
+    g.alpha = alpha; return g;
+  };
+  /* ATMOSPHERIC PERSPECTIVE: a blurred haze band between each ridge — the thing
+     that makes the shipped vistas read as depth rather than as stacked cutouts */
+  const haze = (y, h, alpha) => {
+    const g = new Graphics().rect(0, y, W, h).fill({ color: 0xcfdcea, alpha });
+    return soft(g, 22);
+  };
+
+  app.stage.addChild(ridge(H * 0.575, 13, '#6f86a8', '#5a7093', 0.5, 1.2));
+  app.stage.addChild(haze(H * 0.55, 38, 0.30));
+  app.stage.addChild(ridge(H * 0.645, 18, '#4e6486', '#3d5070', 0.72, 3.1));
+  app.stage.addChild(haze(H * 0.62, 34, 0.22));
+  app.stage.addChild(ridge(H * 0.735, 20, '#33445f', '#26344a', 0.88, 5.7));
+  app.stage.addChild(haze(H * 0.71, 28, 0.15));
+  app.stage.addChild(ridge(H * 0.825, 14, '#1e2b3d', '#141d2b', 1.0, 8.3));
+
+  /* river with specular — a lit ribbon, like the shipped vistas */
+  const riv = new Graphics();
+  riv.moveTo(W * 0.42, H).quadraticCurveTo(W * 0.50, H * 0.90, W * 0.545, H * 0.835)
+     .lineTo(W * 0.575, H * 0.835).quadraticCurveTo(W * 0.55, H * 0.90, W * 0.50, H)
+     .fill(linear([{ offset: 0, color: '#cfe4f5' }, { offset: 1, color: '#6f93b4' }], 0.5, 1, 0.5, 0));
+  app.stage.addChild(riv);
+  const spec = new Graphics();
+  for (let i = 0; i < 16; i++) {
+    const t = i / 15, y = H - t * (H * 0.165);
+    spec.ellipse(W * (0.463 + t * 0.086) + (rnd() - 0.5) * 7, y, 5 - t * 3.2, 1.5).fill({ color: 0xffffff, alpha: 0.55 - t * 0.3 });
+  }
+  const specC = soft(spec, 2); specC.blendMode = 'add'; app.stage.addChild(specC);
+
+  /* near ground + grass tufts (v1 lost these entirely) */
+  app.stage.addChild(new Graphics().rect(0, H * 0.885, W, H * 0.115).fill(linear([
+    { offset: 0, color: '#16202e' }, { offset: 1, color: '#0a1018' }], 0.5, 0, 0.5, 1)));
+  const grass = new Graphics();
+  for (let i = 0; i < 240; i++) {
+    const x = rnd() * W, h = 5 + rnd() * 13, lean = (rnd() - 0.5) * 6;
+    const y0 = H * 0.885 + rnd() * 8;
+    grass.moveTo(x, y0).quadraticCurveTo(x + lean * 0.5, y0 - h * 0.6, x + lean, y0 - h)
+         .stroke({ color: rnd() > 0.6 ? 0x2c4234 : 0x1a2a20, alpha: 0.75, width: 1.2 });
+  }
+  app.stage.addChild(grass);
+
+  app.stage.addChild(new Graphics().rect(0, 0, W, H).fill(radial([
+    { offset: 0.55, color: 'rgba(0,0,0,0)' }, { offset: 1, color: 'rgba(0,0,0,0.42)' },
+  ], 0.5, 0.5, 0.78)));
+}
+
+requestAnimationFrame(() => requestAnimationFrame(() => requestAnimationFrame(() => {
+  document.title = 'spike-ready|renderer=' + (apps[0].renderer && apps[0].renderer.type !== undefined ? apps[0].renderer.type : '?');
+})));
 
 })().catch((e) => { document.title = 'spike-error|' + (e && e.message ? e.message : e); });
 </script>

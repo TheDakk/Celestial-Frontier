@@ -12,6 +12,13 @@ ring occlusion, one creature, one layered biome."*
 > verdict below with that in front of you — overstating a spike is how a plan gets approved
 > on evidence that was never there.
 
+> ## ▶▶ READ §"ATTEMPT 2" AT THE BOTTOM FIRST
+>
+> The panel-by-panel verdict below describes **attempt 1**, which Nick correctly called
+> amateurish next to the shipped art. Attempt 2 rebuilt it with the real technique stack and
+> **still missed** — improving two panels and *regressing* a third. That second failure is
+> the more useful result, and it changes what the remaining spike time should be spent on.
+
 ---
 
 ## Setup notes worth keeping
@@ -102,3 +109,75 @@ exactly where this one failed — a shader-based planet terminator and soft ring
 creature built from authored art on a real rig rather than primitives, and a run on actual
 hardware. **Nick's art verdict should wait for that**, because judging the port's visual
 ceiling on the creature panel above would be judging my primitives, not Pixi.
+
+---
+
+# ATTEMPT 2 — the real technique stack, and why it still missed
+
+**Trigger:** Nick compared attempt 1 against the shipped art and called it amateurish. He was
+right. The reference points are `tools/uisheets/vista-1-terran.png` (11 terran vistas) and
+`tools/uisheets/rig-mammal1.png` (24 mammal sub-rigs).
+
+**What the shipped art actually does**, which attempt 1 did none of:
+
+| | Shipped Canvas-2D engine | Attempt 1 |
+|---|---|---|
+| Form | radial gradient shading, light from one side | flat `.fill()` |
+| Depth | atmospheric haze bands *between* ridge layers | hard-edged stacked shapes |
+| Light | rim light along the lit edge, additive | none |
+| Grounding | soft contact shadow under every subject | none |
+| Texture | mottling / pelt variation under blur | none |
+| Falloff | true gradients | ~26 stacked translucent circles |
+
+**The critical correction: this was never a Pixi limitation.** The shipped engine reaches that
+bar in **plain Canvas 2D**. Attempt 1 did not prove "primitives can't get there" — it proved I
+had not ported the *techniques*.
+
+## What attempt 2 changed
+
+Rebuilt using `FillGradient` (radial + linear), `BlurFilter`, additive blend for rim light and
+bloom, mottling under blur, and contact shadows. All confirmed present in Pixi 8.19.0.
+
+## Result: two panels better, one WORSE
+
+- **Planet** — much better form; reads as a lit sphere. ⚠ The terminator all but vanished and
+  the ice caps blurred into white smears.
+- **Ring occlusion** — the planet now reads as a sphere. ⚠ The umbra is **still a hard-edged
+  notch**, and the fine ring banding was lost.
+- **Creature** — a large improvement: gradient body, contact shadow, legible silhouette. Still
+  well short of the shipped rigs, whose species identity comes from *silhouette*, not shading.
+- **Biome — REGRESSED.** Over-blurring destroyed it: ridge definition gone, river gone, grass
+  gone, sun bloom a dim smear. Attempt 1's version was better.
+
+## ★ The finding that actually matters
+
+**I am re-inventing art direction from scratch and getting worse at it under time pressure.**
+The shipped engine encodes a long tuning history — specific palettes, layer counts, blur radii,
+silhouette rules, per-biome grading. Two attempts of hand-rolled approximation produced two
+different kinds of wrong. **A third would too.**
+
+So the remaining spike time should not go into more hand-drawn Pixi scenes. It should answer
+the question the port actually turns on:
+
+> **Can the existing Canvas-2D painters be carried into Pixi, rather than re-authored?**
+
+Two candidate paths, and this is the real architectural fork:
+
+1. **Re-express each painter as Pixi `Graphics`/shaders.** Full GPU benefit, but every painter
+   is re-authored — and these two attempts are direct evidence of how much quality is lost when
+   art code is re-written rather than moved.
+2. **Run the existing painters on an offscreen Canvas 2D and upload the result as a Pixi
+   texture.** The art arrives *pixel-identical* — no re-authoring, no quality loss — at the cost
+   of texture upload and giving up per-pixel GPU effects on those layers.
+
+`tools/proofsheet.js` already lifts named functions **verbatim** from `main.js` into a
+standalone page, so path 2 is directly testable with machinery that already exists. **That is
+the spike worth running**, and it is a far better use of the remaining budget than a third
+attempt at drawing a planet by hand.
+
+## Standing recommendation, unchanged and now stronger
+
+**Do not take an art verdict from this spike.** Neither attempt represents what the port would
+look like — attempt 1 because it ignored the techniques, attempt 2 because it re-invented them
+badly. The shipped art in `tools/uisheets/` is the bar, and the open question is how to *move*
+it, not how to *redraw* it.
