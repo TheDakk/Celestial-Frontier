@@ -16635,10 +16635,20 @@ function _sanitizeSavedGenome(g){
      against a LEGITIMATE maximum of 70 at size 5. normGenome's Math.abs((+o.size)|0) feeds
      the same wrapped reader, so the share-code path is closed by the wrap too.
      ⚠ Note for anyone tempted to "finish" this by wrapping size at load instead: don't.
-     speciesGrade/rarityRoll/sapience read `g.size` RAW (>=3, >=4, >=5), so a stored 6 is NOT
-     equivalent to a stored 0 — wrapping on load would also rewrite honest data, just less
-     visibly. The drift itself is a BALANCE question and crossGenome is a fingerprint probe.
-     See ROADMAP's 2026-07-31 batch log and SAVE_SYSTEM.md. */
+     Wrapping on load would REWRITE HONEST DATA — the same mistake as the clamp, just less
+     visibly. crossGenome legitimately produces size>5 (12.4% of lineages by gen 5); the
+     stored value is the creature's real gene and the save is not the place to edit it. The
+     drift itself is a BALANCE question, and crossGenome is a fingerprint probe.
+     ⚠ CORRECTED 2026-07-31 (port Phase 0, ROADMAP 9f). This note used to justify the rule
+     with "speciesGrade/rarityRoll/sapience read `g.size` RAW (>=3, >=4, >=5), so a stored 6
+     is NOT equivalent to a stored 0". THAT IS FALSE SINCE v1.8.9 — our own _szOf fix routed
+     speciesGrade (~2143) and sapienceTier (~2036) through the wrap, and rarityRoll never
+     read size at all. The RULE is unchanged and now rests on the reason above; what changed
+     is that wrapping at load would today buy NOTHING, because every reader already wraps.
+     The lesson is the point: a fix can invalidate the stated reason for a decision made
+     elsewhere, and nobody re-reads the note. When a change touches a value, grep every
+     reader AND every comment that reasons about it (CLAUDE.md rule 7).
+     See port/DECISIONS.md §5, ROADMAP 9f, and SAVE_SYSTEM.md. */
   /* ROUND 7 CF1802-15: mirror normGenome — battlefield modifiers never survive
      a save any more than they survive a share code, and the guardian bands are
      honoured only where they are genuine. */

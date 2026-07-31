@@ -206,10 +206,26 @@
 ## ▶ NEXT IN PHASE 0 — MINE: fixed-seed golden screens + proof sheets ·
 ##   bundle / answerability / memory / GPU / audio-node budgets · elevate the remaining system
 ##   docs into rubrics.
-## ▶ NEXT IN PHASE 0 — NICK'S, and Phase 0 CANNOT CLOSE without them: the four §23 design decisions
-##   (fed inheritance · ambience resume · legacy voice family · bat pitch ceiling) · the HUMAN
-##   LISTENING TEST (12-24 players; no automated fleet can score it — Playwright runs --mute-audio) ·
-##   the Canvas/Pixi spike's ART VERDICT · and 9f. NOT a code phase — no TypeScript until Phase 1.
+## ✔★ THE FOUR §23 DESIGN DECISIONS ARE MADE (Nick, 2026-07-31). Recorded in port/DECISIONS.md —
+##   a NEW live record, so the supplied v4.0 plan stays the reference it was delivered as.
+##     1. bred `fed` → INHERIT 50% OF THE LOWER PARENT. Breeding is not sharing: BOTH parents are
+##        consumed, so nothing is duplicated. Lower-parent stops it being farmed by feeding one
+##        side. Answers the round-8 finding that breeders lose on both counters (Δcodex -21).
+##     2. ambience on tab return → RESTART. Silence on return reads as a bug and Gate G requires a
+##        clean background/mute/resume lifecycle anyway. ⚠ resume must stay gesture-safe.
+##     3. `legacy` voice family → FALLBACK ONLY. It is 1-in-18 BY CONSTRUCTION (_VOICE_KEYS is
+##        Object.keys(_VOICE)), measured 5.543%. Costs no variety to drop — voices are already
+##        99.855% unique. Keep the definition, exclude it from selection; cheap to reverse.
+##     4. f0 clamp → SOFT SATURATION AT BOTH ENDS, curve tuned AFTER the listening test. Both
+##        bounds pin (0.874% ceiling, 0.612% floor) and a pinned voice stops varying.
+##   ⚠⚠ DECIDED ≠ IMPLEMENTED, DELIBERATELY. All four are implemented IN THE PORT, not in a v1.8.x
+##   release. Implementing now would move fixtures just pinned (voiceOf invalidates audio-profiles;
+##   `fed` moves breeding parity in golden-seeds) — trading the port's safety net for a change
+##   nobody is waiting on. And none is a CRITICAL fix, which is all the freeze rule permits.
+## ▶ NEXT IN PHASE 0 — NICK'S, and Phase 0 CANNOT CLOSE without them: the HUMAN LISTENING TEST
+##   (12-24 players; no automated fleet can score it — Playwright runs --mute-audio) · a REAL
+##   VETERAN SAVE for Gate C · the Canvas/Pixi spike's ART VERDICT.
+##   NOT a code phase — no TypeScript until Phase 1.
 ## ⚠ FOUR NEW FINDINGS LOGGED THIS BATCH, none fixed: 9e (biome→fauna filter is dead code) ·
 ##   9f (a stale premise guarding the `size` load decision — NICK'S CALL) · 9g (the rarity display
 ##   collapse is an unguarded data invariant) · 9h (the browser is an undeclared dependency).
@@ -389,7 +405,15 @@
 ##    reasoning that a load-path decision rests on, and nobody updated the note. This is the exact
 ##    field that caused the v1.8.6 save corruption, so per CLAUDE.md rule 7 it wants a DELIBERATE
 ##    re-decision, not a quiet edit. The conclusion may well still hold for other reasons; the stated
-##    reason is no longer one of them. ⏳ NICK'S CALL.
+##    reason is no longer one of them.
+##    ✔ DECIDED + DONE 2026-07-31 (Nick): KEEP THE BEHAVIOUR, FIX ONLY THE COMMENT. The rule is
+##    unchanged — the load path still does NOT wrap `size` — and it now rests on the correct reason:
+##    wrapping at load would REWRITE HONEST DATA, and since every reader already wraps via _szOf it
+##    would today buy NOTHING. Comment-only edit at main.js ~14179; fingerprint held MATCH 50/50,
+##    smoke 553/0, sizedrift 8/8. See port/DECISIONS.md §5.
+##    ⚠ KEEP THE LESSON: a fix can invalidate the stated REASON for a decision made elsewhere, and
+##    nobody re-reads the note. CLAUDE.md rule 7 says grep every reader and writer of a field —
+##    this adds: grep every COMMENT that reasons about it too.
 ## 9g. ⚠ NEW 2026-07-31 — THE DISPLAY COLLAPSE IS AN UNGUARDED DATA INVARIANT. Creature rarity names
 ##    come from GRADE_TIERS via colorGrade, NOT from displayRarity — and `spectral` has no clamp at
 ##    all. Correctness rests entirely on GRADE_TIERS rows 10-14 staying collapsed to "Transcendent".
