@@ -51,6 +51,12 @@ the same release already closed that: measured, `size:1e6` yields **vit 66 again
 maximum of 70** at size 5. `normGenome` feeds the same wrapped reader, so the share-code path is
 closed by the wrap too.
 
+> ✅ **RESOLVED IN v1.8.9, and not by wrapping at load.** The six *readers* that took `size` raw
+> (`sapienceTier`, `classifyRealm`, `speciesGrade` ×2, the titan roster check) now share one helper.
+> That closes the divergence without touching stored data at all — the load path still does not,
+> and must not, rewrite `size`. Fingerprint held: those probes are fed `makeGenome` outputs whose
+> size is already 0-5, so the wrap is the identity function over every probe input.
+>
 > ⚠ **Do not "finish" this by wrapping at load instead.** `speciesGrade`, `rarityRoll` and
 > `sapience` read `g.size` **raw** (`>=3`, `>=4`, `>=5`), so a stored 6 is *not* equivalent to a
 > stored 0 — wrapping on load would also rewrite honest data, just less visibly. The drift is a

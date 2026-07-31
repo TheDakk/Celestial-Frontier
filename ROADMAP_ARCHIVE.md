@@ -7,6 +7,74 @@
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
 
+## ══════════ ARCHIVED 2026-07-31 (v1.8.9 ship) — the v1.8.7 batch ══════════
+## Moved VERBATIM under the pinned HYGIENE rule. v1.8.7 was the round-9 response and the release
+## that REVERTED our own save-corrupting `size` clamp. Its full story — including the four
+## green-but-wrong states inside one new gate — is below; the size arc finished two releases
+## later in v1.8.9, with the v1.0 fingerprint still intact.
+## ▶▶▶ 2026-07-31 ★ v1.8.7 "TRUE TO FORM" — ROUND 9 RESPONSE. A REGRESSION FIX, and it was OURS.
+##   Nick: "I think we finally got some great feedback... Check this out." → "Yes please let's do it."
+##   Round 9 reviewed v1.8.6's 152-line delta hunk by hunk and closed 6 of 7 round-8 findings, two
+##   "better than I asked for". It also found that ONE LINE WE SHIPPED WAS CORRUPTING LIVE SAVES.
+##   ★★ CF1806-01 — THE HEADLINE, AND THE MOST IMPORTANT THING IN THIS BLOCK.
+##   v1.8.6 shipped TWO fixes for ONE problem and they contradicted each other: battleStats began
+##   WRAPPING `size` (% FA_SIZE.length) and _sanitizeSavedGenome began CLAMPING it to 0-5.
+##   crossGenome mutates `size` and never wraps it, so HONEST saves carry size>5 — measured on our
+##   own functions at 12.4% of lineages by generation 5 (max 10). The clamp rewrote every one of
+##   them PERMANENTLY on the next load: a "tiny" size-6 creature came back "titanic" with vit 70,
+##   and its portrait scale, voice pitch and Size-Classes slot moved with it. A share code exported
+##   before the reload no longer matched one exported after.
+##   AND THE CLAMP BOUGHT NOTHING: its own justification was a crafted size:1e6 save, and the wrap
+##   in the SAME release already closed that — measured, 1e6 yields vit 66 against a LEGITIMATE
+##   maximum of 70. Deleted. Guarded by tools/sizedrift-check.js, which FAILS on v1.8.6
+##   (size 9 -> 5, vit 80 -> 88) and passes here.
+##   ⚠ ONE WRINKLE THE REVIEW MISSED, worth knowing before anyone "finishes" this: `size` is NOT
+##   uniformly wrapped. speciesGrade/rarityRoll/sapience read it RAW (>=3/>=4/>=5), so a stored 6
+##   is NOT equivalent to a stored 0 (vit 50 vs 37) — wrapping at LOAD would also rewrite honest
+##   data, just less visibly. The drift is a BALANCE question and crossGenome is a fingerprint probe.
+##   ═══ ALSO FIXED ═══
+##   · CF1806-02 (P1, phones) — our v1.8.6 training-layout rule released `bottom` (those boards are
+##     pinned bottom:142px precisely to clear the dock) and reserved a flat 24px, so a raised board
+##     grew straight down over the dock: iPhone SE and Galaxy S8 measured 0% reachability on ALL SIX
+##     dock controls at step 20. Fixed with a --tut-dock variable (126px below the 900px breakpoint,
+##     24px above), NOT a second rule — see the process law below for why the obvious fix failed.
+##   · CF1806-04 — v1.8.6's chip repaint made the chip VANISH for a player with no objective, the
+##     exact population CF1802-03 exists for. An objective-less player now gets a suggestion
+##     unconditionally, which is what CF1802-03 always claimed to do (it was still half-gated).
+##   · CF1806-03 — the weekly-charter limit costs ONE RELOAD, not ten monotonic minutes; _chRollMono
+##     is a module `let` and resets per load. The CODE is unchanged and correct; the COMMENT now
+##     states the real bound. Round 8's wording overstated it — which is round 8's own pattern.
+##   · Round-9 §2.5 smalls: the lineage-pair key is keyed on the GENOME (_earthName || speciesName)
+##     instead of the player-renamable display name; trueOdds no longer rebuilds the invariant
+##     native battleStats once per picker row (the P0 rekey had moved the cache check below it).
+##   ═══ THE GATE THAT MISSED CF1806-02, AND WHAT IT COST TO FIX ═══
+##   uilayout.js now asserts EVERY DOCK CONTROL is topmost at its own coordinates while each of the
+##   four boards is raised, on every viewport <=900px (763 -> 787 checks). Scoped there on purpose:
+##   above the breakpoint those ids are rail buttons and laptop/desktop report overlaps on v1.8.5
+##   TOO — pre-existing, filed as NEXT #11, deliberately not folded in behind the same name.
+##   ⚠⚠ IT TOOK THREE CORRECTIONS BEFORE IT MEASURED ANYTHING REAL, and in its first two forms it
+##   PASSED against the shipped v1.8.6 the round had already proven broken: (a) a key collision
+##   (out.dockAtlas was taken) that silently clobbered an existing check; (b) it measured EMPTY
+##   boards, which collapse under the very min-height:0 the fix sets and never reach the dock;
+##   (c) it read --tut-bot left at the DODGED value (53px) from the previous pass. Then the FIX
+##   itself failed its own gate — the first CSS attempt was a duplicate rule EARLIER in the sheet
+##   with equal specificity, so it lost. Four green-but-wrong states in one afternoon.
+##   ═══ STILL OPEN FROM ROUND 9 ═══ CF1802-08 (renderCodex byte-identical for a THIRD build —
+##   dismissing a specimen still closes the Compendium) · CF1802-17 (a hybrid of two well-fed
+##   parents still starts fed=0; disclosed, not fixed) · CF1805-05 harvest (open BY DECISION).
+##   ═══ THE GOOD NEWS ═══ THE AUDIO ARC IS CLOSED. Their 200k-genome re-run: distinct voices
+##   533/20,000 -> 199,707/200,000; creatures sharing a voice 97.3% -> 0.15%; a 50-creature
+##   collection holding a duplicate 91.3% -> 0.6%. The listening test's precondition is met (NEXT #3).
+##   Rage quits fell for a SECOND consecutive build (112.5 -> 76.4 -> 71.4 per 1000, deep tier).
+##   ⚠ AND THEY RETRACTED A HEADLINE OF THEIR OWN: round 8 blamed the step-8 training wall on
+##   CF1805-01. The card is now measurably readable (0% -> 100%) and the stall rate did NOT move
+##   (25% -> 27%). The burial was real and fixing it was right; it was not the cause of that number.
+##   Step 8's stall rate is currently UNMEASURED, not defective — their driver is weakest exactly
+##   there. Do not treat 26/98 as a known bug.
+##   ⚠ TITLE: "True to Form" was CHOSEN BY CLAUDE again. Nick said "Yes please let's do it" without
+##   naming one; flagged rather than blocked on. One string in RELEASES[0] + a redeploy to change.
+
+
 ## ══════════ ARCHIVED 2026-07-31 (v1.8.7 "True to Form" ship) — the v1.8.6 batch ══════════
 ## Moved VERBATIM from ROADMAP.md under the pinned HYGIENE rule (nothing deleted). v1.8.6 was
 ## live for ONE DAY: external round 9 reviewed it hunk by hunk the same evening and found that

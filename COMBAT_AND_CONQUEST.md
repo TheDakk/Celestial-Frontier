@@ -1,6 +1,6 @@
 # Celestial Frontier — Combat & Conquest
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js). See the 2026-07-30 and 2026-07-31 addenda — the odds-cache signature, and why the v1.8.6 `size` clamp was reverted.
+**STATUS:** matches code as of 2026-07-31 (verified against main.js). The `size` arc CLOSED in v1.8.9 — see the 2026-07-31 addendum; all six readers now share one helper and the fingerprint held.
 **Purpose:** How creatures fight — the stat budget, seeded duel resolution, innate arts (classes + archetypes), and named Apex Guardians — and how conquest settles a world: the mercy law, re-win prevention, and the depth tax that grades every field wound by distance.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -274,11 +274,22 @@ lineages by generation 5, and the clamp rewrote every one of them into a **titan
 creature on the next load. Full reasoning and the measurements live in SAVE_SYSTEM.md's v1.8.7
 section; the guard is `node tools/sizedrift-check.js`.
 
-⚠ Note for anyone auditing `size`: it is **not** uniformly wrapped. `speciesGrade`, `rarityRoll` and
-`sapience` read it **raw** (`>=3`, `>=4`, `>=5`), so a drifted size-6 creature is not equivalent to a
-size-0 one — it carries a rarity/grade boost that lifts its whole stat budget. Measured: size 6 gives
-vit 50 where size 0 gives 37. That is pre-existing behaviour of the unwrapped mutation, not something
-either release introduced, and it is a **balance** question rather than a defect.
+⚠ ~~Note for anyone auditing `size`: it is not uniformly wrapped…~~ **CLOSED IN v1.8.9.** That note
+recorded the last inconsistency: `sapienceTier`, `classifyRealm` and `speciesGrade` read `size`
+**raw** (`>=3`, `>=4`, `>=5`), so a bred size-6 creature printed **"tiny"** on its card while those
+readers classified it **Megafauna** and handed it the full rarity boost — measured at **vit 68
+against 52** for a genuine size-0. All six raw readers now go through one helper, `_szOf`, exported
+from the Genome module.
+
+**Fingerprint-safe by IDENTITY, not exemption** — and this is the useful part: `speciesGrade`,
+`sapienceTier` and `classifyRealm` are all probed with `makeGenome` outputs, whose `size` is already
+0-5, so the wrap is the identity function over every probe input. Verified with `validate`, not
+reasoned about. The v1.0 baseline held.
+
+So the whole `size` arc closed **without** re-pinning: v1.8.6 wrapped combat (and wrongly clamped
+the save), v1.8.7 reverted the clamp, v1.8.9 wrapped the remaining classifiers. The underlying
+drift in `crossGenome` is untouched and is now **harmless** — which is the same resolution the
+other thirteen drifting genes have always had.
 
 **`trueOdds` — a perf regression the P0 fix introduced, now closed.** Rekeying the memo on the stat
 vectors necessarily moved the cache check *below* the two `battleStats` calls that build the key, so

@@ -80,7 +80,18 @@ setTimeout(() => {
     vitOf(before) === vitOf((roundTripped && roundTripped.size) | 0),
     'vit ' + vitOf(before) + ' -> ' + vitOf((roundTripped && roundTripped.size) | 0));
 
-  // ---- 3. THE WRAP STILL BOUNDS THE EXPLOIT THE CLAMP WAS WRITTEN FOR ----
+  // ---- 3. A DRIFTED SIZE IS THE SAME CREATURE AS ITS WRAPPED EQUIVALENT ----
+  // v1.8.9: size was read RAW by sapienceTier / classifyRealm / speciesGrade, so a
+  // bred size-6 creature printed "tiny" on its card and was classified MEGAFAUNA
+  // with the full rarity boost. 6 % 6 === 0, so these must now be indistinguishable.
+  for (const [drift, base] of [[6, 0], [7, 1], [9, 3], [12, 0]]) {
+    check('CF1806-01: a bred size-' + drift + ' creature is treated exactly as size-' + base +
+      ' (the card and the classifier agree)',
+      vitOf(drift) === vitOf(base),
+      'vit ' + vitOf(drift) + ' vs ' + vitOf(base) + ' — a raw `g.size` reader is back');
+  }
+
+  // ---- 4. THE WRAP STILL BOUNDS THE EXPLOIT THE CLAMP WAS WRITTEN FOR ----
   const legitMax = Math.max(...[0, 1, 2, 3, 4, 5].map(vitOf));
   const crafted = vitOf(1000000);
   check('CF1806-01: a crafted size:1e6 stays within the legitimate range (the wrap alone closes it)',

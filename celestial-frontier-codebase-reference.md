@@ -118,6 +118,19 @@ its callers are in two *different* nested module IIFEs (`ThumbArt.getPlanetSprit
 `GalaxyArt.getGalaxySprite`), and a helper belongs in the scope of its **callers**.
 See UI_PRESENTATION.md § "THE ART-HOLD LAW" and `tools/bootperf.js`.
 
+**`_szOf(g)`** (v1.8.9) is exported from `Genome` and is the single definition of "what size
+means": `size % FA_SIZE.length`, the value the card prints. `crossGenome` mutates `size` without
+wrapping, so bred genomes drift past 5 (~12% by generation 5); six readers used to take it raw and
+classified a "tiny" creature as Megafauna with the full rarity boost (vit 68 vs 52, measured). It is
+exported rather than duplicated **because a second inline copy is exactly the bug it fixes** —
+v1.8.6 computed the same truth about `size` in two places and they disagreed. Guarded by
+`tools/sizedrift-check.js`.
+
+⚠ It was first written as a module-private helper and called from `@section descent`, which threw on
+the landing path. `validate`'s jsdom boot passed, because nothing throws until you actually land on a
+world — **`smoke` caught it** (553 → 551). Exporting one more name means all three places: the banner
+`API:` line, the `Object.freeze({…})` return, and the destructuring line beneath it.
+
 Names not in a module's `API:` list are module-private (interface segregation).
 To export another name, extend all three: the banner `API:` line, the
 `Object.freeze({...})` return, and the destructuring line after the IIFE.
