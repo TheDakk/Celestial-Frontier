@@ -1,7 +1,43 @@
 # Celestial Frontier — Universal Rarity (v1.7)
 
-**Status:** Phase A **BUILT in source** (2026-07-22, atop v1.6.4) — awaiting Nick's deploy call; Phase B still design.
-**Matches code as of:** 2026-07-22 (Phase A §3 items 1–12 ALL implemented; core relabel surgically re-pinned,
+**Status:** Phase A **SHIPPED** (in v1.7; live since well before v1.8.9). Phase B still design.
+**Matches code as of:** re-verified **2026-07-31 (v1.8.9)** during port Phase 0 — see the ⚠ block below for
+two places where the shipped implementation differs from the §3 plan, and one instruction that is retracted.
+*(Previously: "awaiting Nick's deploy call", matched-as-of 2026-07-22 — both stale.)*
+
+> ### ⚠ RE-VERIFIED 2026-07-31 — the plan and the implementation differ in mechanism
+>
+> **1. Names/colors are NOT routed through `displayRarity`.** §3 item 4 specifies that `speciesGrade`,
+> `spectral` and `colorGrade` resolve names/colors via `displayRarity` / `RARITY_V17`. **They do not.**
+> All three read `GRADE_TIERS` directly (`colorGrade` main.js **1810**; `spectral` **1857/1860**;
+> `speciesGrade` **2133–2150** delegates entirely to `colorGrade`). The collapse was implemented by
+> rewriting rows 9–14 of `GRADE_TIERS` to read `Transcendent`/`#F7F1FF` — **in the data, not via a
+> conversion function.** The outcome matches the spec; the mechanism does not.
+>
+> **Why it matters:** `spectral` has **no clamp call at all**, so display correctness rests entirely on
+> those table rows staying collapsed. Restore the old names to rows 10–14 and every creature surface
+> silently reverts, while `displayRarity` keeps clamping correctly and every test that exercises it
+> keeps passing. **The port should implement the explicit `RawGradeTier → DisplayRarityTier` conversion
+> this section originally specified** (plan §16.3), rather than carrying the collapse in the table.
+>
+> **2. The old names were not fully deleted.** §0 calls for deleting Anomalous / Unique / Empyrean /
+> Eternal / Omnipotent. They are gone as *rarity names*, but survive as `GRADE_TIERS[*].pre` (**1767–1771**)
+> and are still emitted into **art/spectral labels** ("Empyrean Black") by `spectral` **1860** and
+> `_clampSpectral` **12270**. That is deliberate — `pre` keeps planet/star art designations
+> byte-identical — but the doc should not claim the words are gone.
+>
+> **3. ⚠ RETRACTED: "delete `RARITY_AND_GRADES.md` on Phase-A deploy".** Phase A shipped; the file was
+> not deleted, and on 2026-07-31 it was decided it **must not be**. The raw 0–14 ladder is still rolled,
+> still persisted, and still used for sorting, achievements and `_courtProg`'s CROWNS I/II/III — and
+> that file is the only detailed record of it. Port plan §16.3 requires `RawGradeTier` and
+> `DisplayRarityTier` be documented *separately*, which deleting it would have made impossible. It has
+> been refreshed against v1.8.9 instead and remains the raw-ladder reference; **this file remains
+> canonical for the 10-name display ladder.**
+>
+> **4. Star glyphs.** §3 item 6 says drop `entry.grade.star`. `star` is `''` on every tier so the output
+> is correct, but **16023** still concatenates the field. Harmless; noted so the doc does not overstate.
+
+**Historical status line, kept for context —** Phase A §3 items 1–12 ALL implemented; core relabel surgically re-pinned,
 presentation layer is fp-safe/UI-only). §3.10 discovery GATING: a world hides its grade until you LAND — the
 survey card's "Spectral class" row shows a "land to reveal" teaser and the card border stays neutral from orbit
 (gated on the existing `grounded` flag in `renderPanel`); stars/galaxies still reveal on survey (gate keys on
@@ -17,13 +53,21 @@ so planet/star ART labels don't move); `rarityRoll` UNTOUCHED. Surgical re-pin c
 (gradeTiers/speciesGrade/colorGrade/describeSpecies/faunaDesc/battleStats/runDuel) — every delta proven to be a
 rarity field only (name/hex/star/label), zero generation-text or combat-number change. Sentinels live in `smoke.js`
 (10-tier ladder, collapse 6→Mythic/7→Celestial, clamp 10+→Transcendent, no ★/✦/✧/❖, no old names, no ALL-CAPS).
-**On Phase-A DEPLOY (not yet):** delete `RARITY_AND_GRADES.md` + repoint its cross-refs (it still describes the LIVE
-v1.6.4 game until Phase A goes live).
-**Canonical-doc plan (Nick, 2026-07-22):** THIS file becomes THE single canonical rarity doc. The old
-`RARITY_AND_GRADES.md` (current 15-tier system) is kept ONLY until Phase A ships — it still accurately
-describes the LIVE game that v1.6 runs, so it must not be deleted early. **On Phase-A ship: delete
-`RARITY_AND_GRADES.md`, and update the cross-references** that point to it (the PINNED per-system list in
-`ROADMAP.md`, `CLAUDE.md`, `celestial-frontier-codebase-reference.md`) to point here instead.
+**~~On Phase-A DEPLOY: delete `RARITY_AND_GRADES.md`.~~ RETRACTED 2026-07-31 — see the ⚠ block at the top.**
+Phase A shipped in v1.7 and the file was never deleted. On review during port Phase 0 it was decided it
+**must not be**: the raw 0–14 ladder is still rolled, still persisted, and still read for sorting,
+achievements and `_courtProg`'s CROWNS I/II/III, and that file is the only detailed record of it. Deleting
+it would also have made port plan §16.3 — which requires `RawGradeTier` and `DisplayRarityTier` be
+documented separately — impossible to satisfy.
+
+**Canonical-doc split (superseding the 2026-07-22 single-doc plan):**
+- **`RARITY_UNIVERSAL.md` (this file)** — canonical for the **10-name display ladder** (`RARITY_V17`,
+  `displayRarity`) and the Phase A/B design intent.
+- **`RARITY_AND_GRADES.md`** — canonical for the **raw 0–14 ladder** (`GRADE_TIERS`, `rarityRoll`,
+  merit boosts, ring caps, guardians, paragons). Refreshed against v1.8.9 on 2026-07-31.
+
+Neither supersedes the other; they document the two halves of one system. Cross-references in
+`ROADMAP.md`, `CLAUDE.md` and `celestial-frontier-codebase-reference.md` should point to **both**.
 **Design basis:** the "V1.7 Universal Rarity, Color, and Modifier Specification" (Nick's uploaded doc) is
 the exhaustive design source; this file is the repo-canonical, implementation-facing distillation + the
 locked decisions.
