@@ -1,0 +1,30 @@
+REUSE DERIVATION — from v4.0 §3.1 total and §3.2 layer table
+
+extracted JavaScript, v1.8.9 (§3.1)              24569
+
+A near-direct TypeScript conversion              2982    12.1%
+    14 deterministic domain modules              2982
+B rules+data reusable, UI rebuilt                6990    28.5%
+    Materials registry                           1433
+    Fabricator                                   1318
+    Descent/planetfall                           1006
+    Compendium                                    896
+    Ascent/chapter engine                         784
+    SaveSystem                                    553
+    Charters                                      504
+    Conquest                                      496
+C rebuilt against the design                     7619    31.0%
+    hdart procedural art/vista                   5221
+    Renderer                                     1884
+    Audio section                                 290
+    Fx                                            224
+D remaining app/UI sections (~31)                6978    28.4%
+                                              -------
+total                                           24569   100.0%
+
+v3.1 §18 claimed near-direct reuse of 20-30%.
+v3.1 §18 also stated ~2,900 domain lines against §3's 21,808 JS lines = 13.3%.
+The two numbers in v3.1 disagreed; 20-30% was not derivable from its own body text.
+
+AMBIGUITY: §3.2 lists CombatCore separately at 814 while §3.4 lists it among the 14.
+  if the 814 is NOT already inside the 2,982:  A = 15.5%,  D = 25.1%
