@@ -1,6 +1,6 @@
 # Celestial Frontier — Species & Genome System
 
-**STATUS:** matches code as of 2026-07-21 (v1.6 Batch 15.5, verified against main.js).
+**STATUS:** matches code as of 2026-07-31 (verified against main.js). ⚠ v1.8.9: every reader of the `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -54,12 +54,23 @@ Builds two strings:
 ### 2.4 Codex taxonomy (the realm layer, on top of the four kingdoms)
 `classifyRealm(g)` maps a genome to one of 16 **realms** (`REALM_ORDER`) deterministically from its genes:
 - flora→Flora, fungi→Fungi; microbe→`Colonial Life` if its form matches `swarm|colony|bloom|mat|film`, else `Microbial Life`.
-- fauna: `sapienceTier>=3` → Intelligent Natural Life; `size>=5` → Megafauna; extremophiles (`g.x`) claim Gas Giant / Subterranean / Extreme-World by habitat; hot-world vent/lava → Exotic Biochemistry; then habitat/locomotion keywords resolve Subterranean, Gas Giant, Extreme-World, Amphibious, Aerial, Aquatic, else Land Fauna.
+- fauna: `sapienceTier>=3` → Intelligent Natural Life; `_szOf(g)>=5` → Megafauna; extremophiles (`g.x`) claim Gas Giant / Subterranean / Extreme-World by habitat; hot-world vent/lava → Exotic Biochemistry; then habitat/locomotion keywords resolve Subterranean, Gas Giant, Extreme-World, Amphibious, Aerial, Aquatic, else Land Fauna.
+
+> ⚠ **`_szOf`, not `g.size` (v1.8.9).** Every reader of the size gene goes through
+> `_szOf(g) = size % FA_SIZE.length` — the value the card prints. This matters because
+> `crossGenome` mutates `size` **without wrapping**, so bred genomes legitimately carry
+> `size > 5` (~12% of lineages by generation 5). Until v1.8.9 this line and `sapienceTier`,
+> `speciesGrade` and the titan roster check read it **raw**, so a bred size-6 creature printed
+> *"tiny"* on its card and was classified **Megafauna** with the full rarity boost — measured at
+> vit 68 against 52 for a genuine size-0. `_szOf` is exported from `@module Genome`; see
+> COMBAT_AND_CONQUEST.md and SAVE_SYSTEM.md (2026-07-31), and `tools/sizedrift-check.js`.
+> **Do not "fix" the drift in `crossGenome`** — genes drift and consumers wrap is this codebase's
+> idiom for all fourteen mutable trait indices, and `crossGenome` is a fingerprint probe.
 
 `ecologyRole(g)` gives the food-web role (Producer / Decomposer / Predator / Grazer / Filter feeder / Scavenger / Chemosynthetic / Omnivore). `realmBiome(g)` gives the habitat/form phrase. `realmModifiers(g)` collects tags: Bioluminescent, Megafauna, Symbiotic, Extremophile, Magnetic navigator, Echolocator, Pressure-adapted, Heat-/Cold-adapted, Wild crossbreed, "Gen N (hybrid)".
 
 ### 2.5 Sapience — `sapienceTier(g)` (0–4)
-Fauna-only. Scores cognition markers from behavior/sense/trait/size genes (`c`), then gates the top two tiers behind a rare deterministic roll (`mulberry32(hashInt(seed,0x5A91,3))`): `c>=4 && roll<0.06` → 4 Sapient; `c>=3 && roll<0.18` → 3 Semi-sapient; `c>=2` → 2 Tool-curious; `c>=1` → 1 Social; else 0 Instinctive. Tier ≥3 promotes the creature to the **Intelligent Natural Life** realm.
+Fauna-only. Scores cognition markers from behavior/sense/trait/size genes (`c`, size read via `_szOf` since v1.8.9), then gates the top two tiers behind a rare deterministic roll (`mulberry32(hashInt(seed,0x5A91,3))`): `c>=4 && roll<0.06` → 4 Sapient; `c>=3 && roll<0.18` → 3 Semi-sapient; `c>=2` → 2 Tool-curious; `c>=1` → 1 Social; else 0 Instinctive. Tier ≥3 promotes the creature to the **Intelligent Natural Life** realm.
 
 ### 2.6 The pinned-pool law
 The comment at ~1524 is a hard invariant: the original `FLORA_FORM`/`FUNGI_FORM`/`MICROBE_FORM`/`FA_*` pools **must never grow** — their lengths are baked into every genome's index rolls, so extending one re-rolls the whole universe. New species branches instead carry markers (`x`/`aq`/`af`) and read *parallel* pools (`EX_HABITAT`, `EX_LOCO`, `AQ_FLORA_FORM`, `AIR_FLORA_FORM`) through the `habOf`/`locoOf`/`floraFormOf` helpers.

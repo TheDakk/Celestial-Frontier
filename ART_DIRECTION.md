@@ -1,10 +1,10 @@
 # Celestial Frontier — Master Art Direction
 
-**STATUS:** matches code as of 2026-07-24 (verified against main.js).
+**STATUS:** matches code as of 2026-07-24 (art rules verified against main.js; NOT re-verified since — the v1.8.x releases changed no art code). ⚠ §6.1 corrected 2026-07-31: the `BIOME_ATLAS.md` catalog it cites has never existed and is a Phase-0 deliverable.
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the
-decisions we actually made). Content catalogs (`BIOME_ATLAS.md`, the fauna/flora
+decisions we actually made). Content catalogs (the biome catalog — NOT YET WRITTEN, see §6.1 — the fauna/flora
 data-pack CSVs) remain the *content* source of truth; this is the *direction* source
 of truth.
 
@@ -19,7 +19,7 @@ of truth.
 3. **Head & Face Supplement** (`06`) — heads as a first-class identity system.
 4. **Complete Art-Source Review & Fix Plan** — card-by-card review; the P0 wrong-class
    bindings + validation-gate idea.
-5. **Deterministic Cosmic Color Atlas** — the "Color DNA" upgrade to `BIOME_ATLAS.md`.
+5. **Deterministic Cosmic Color Atlas** — the "Color DNA" upgrade to the biome catalog (§6.1; the catalog itself is unwritten).
 6. **Procedural Organism Integration & Flora Addendum** — curated-ecosystem procedural.
 7. **Flora Review & Recommendations** — botanical specificity second pass.
 8. **Biome Vista Integration & Color Application** — vistas as living ecosystems.
@@ -291,7 +291,22 @@ patterned) stays a secondary layer, never replaces species identity.
 
 ## 6. BIOMES & COLOR (Phase 4)
 
-### 6.1 Content: `BIOME_ATLAS.md` — the biome catalog (43 live + 93 Earth + 315 non-Earth + additional)
+### 6.1 Content: the biome catalog (43 live + 93 Earth + 315 non-Earth + additional)
+
+> ⚠ **`BIOME_ATLAS.md` DOES NOT EXIST — corrected 2026-07-31.** This heading, three other lines in
+> this file and the ROADMAP's PINNED source-of-truth list all cited it as though it were on disk.
+> It never was. A doc that cites a document nobody has checked for is the same failure as a doc
+> that cross-certifies another doc's numbers: it manufactures confidence that nothing supports.
+>
+> **Where the content actually lives today:** the biome *rules* are in WORLD_GENERATION.md §2.7
+> (`biomeFor`, `biomeForLanding`) and the *visual* contract is §3 of this file (the Biome Profile)
+> plus §7 (vistas). The 43 live biomes are enumerable from the source — `tools/biome-audit.js`
+> checks them and `validate` reports *"43 live biomes, all covered; sigs + families valid"*.
+>
+> **It is a genuine Phase-0 deliverable, not just a broken link.** §28.5 of the port plan calls for
+> the art-direction doc + golden screen *before* generation work, and a content catalog is what a
+> re-implementation checks itself against. Generating it from the source (rather than writing it by
+> hand) is the right move, and the audit tool already walks the data.
 
 ### 6.2 Color: the Deterministic Cosmic Color Atlas = color-resolution source of truth
 
@@ -441,7 +456,7 @@ procedural flora = one canopy-tree, palette-swapped. The fix:
 ## 10. BUILD ORDER & STATUS
 
 **DONE this session (all fingerprint-safe, 50/50 held):** 15 fauna rigs + family-distinct
-heads · flora growth-form rebuild + plant-stat · `BIOME_ATLAS.md` · full proof-sheet set
+heads · flora growth-form rebuild + plant-stat · the biome catalog (§6.1, unwritten) · full proof-sheet set
 (fauna per-type, flora Earth+procedural, all vistas) · classifier collision hardening.
 
 **PENDING, in order:**
