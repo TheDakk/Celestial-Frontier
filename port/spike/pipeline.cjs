@@ -65,6 +65,54 @@ ${lifted}
   const ABC=['#6fd3ff','#ff9fe0','#7fe6a0','#ffd96a','#d6a0ff','#ff8a72'];
   window.battleStats=(x)=>({ab:{col:ABC[(x.trait||0)%ABC.length]}, vit:150, tier:0});
 
+  /* ── SPIKE-ONLY PLACEMENT POLISH (Nick: 'weird shading around the animal') ──
+     The shipped pass draws near-black occlusion tufts at alpha 0.92 plus a wide
+     0.46-alpha shadow pool; against 2x-crisp terrain they read as a smudge.
+     This variant: tufts fewer/thinner/taller-tapered at ~half alpha with a
+     green-tinted color, shadow pool tightened and softened. HOT-SWAPPED per
+     cell so A1/A2 are an honest shipped-vs-polished A/B on the same seed.
+     main.js is NOT touched; if Nick approves, this becomes a recorded port
+     delta, not a silent change. */
+  const _placeShipped=_hdPlaceBeast;
+  const _placePolished=function(g,bcv,x,groundY,scale,flip,hazeAmt,warm,tuft,hazeCol){
+    const S=bcv.width,w=S*scale,h=S*scale;
+    const work=document.createElement('canvas');work.width=work.height=S;
+    const wg=work.getContext('2d');
+    wg.drawImage(bcv,0,0);
+    wg.globalCompositeOperation='source-atop';
+    if(warm>0){wg.fillStyle='rgba(255,218,168,'+warm+')';wg.fillRect(0,0,S,S);}
+    if(hazeAmt>0){wg.fillStyle='rgba('+(hazeCol||'127,162,196')+','+hazeAmt+')';wg.fillRect(0,0,S,S);}
+    /* tighter, softer contact shadow: pool 0.46->0.30 and 12% narrower */
+    const shA=0.30*(1-hazeAmt*0.65);
+    const rx=Math.max(6,w*0.33);
+    const sgd2=g.createRadialGradient(x,groundY+2,1,x,groundY+2,rx);
+    sgd2.addColorStop(0,'rgba(0,0,0,'+shA.toFixed(3)+')');sgd2.addColorStop(0.55,'rgba(0,0,0,'+(shA*0.45).toFixed(3)+')');sgd2.addColorStop(1,'rgba(0,0,0,0)');
+    g.fillStyle=sgd2;g.beginPath();g.ellipse(x,groundY+2,rx,Math.max(2,h*0.05),0,0,7);g.fill();
+    g.fillStyle='rgba(0,0,0,'+(shA*0.55).toFixed(3)+')';
+    g.beginPath();g.ellipse(x,groundY+2,w*0.19,h*0.026,0,0,7);g.fill();
+    g.save();g.translate(x,groundY-bcv._feetY*h);
+    if(flip)g.scale(-1,1);
+    g.drawImage(work,-w/2,0,w,h);g.restore();
+    /* occlusion tufts: 30% fewer, thinner, ~half alpha, green-tinted, and
+       TAPERED — a second thinner pass over the top half so blades fade out
+       instead of ending as blunt dark bars */
+    const nT=Math.max(3,(8*scale*4)|0);
+    const tuftCol=(tuft||'22,44,26');
+    for(let tf=0;tf<nT;tf++){
+      const gx=x+(tf/nT-0.5)*w*0.66+(_hdHash(tf,x|0,7)-0.5)*8;
+      const tall=(tf%4===0);
+      const gh=(4+_hdHash(tf,3,9)*7)*scale*3.2*(tall?1.7:1);
+      const midx=gx+(_hdHash(tf,5,3)-0.5)*6, midy=groundY+3-gh*0.6;
+      const tipx=gx+(_hdHash(tf,8,5)-0.5)*10, tipy=groundY+3-gh;
+      g.strokeStyle='rgba('+tuftCol+','+(0.58-hazeAmt*0.35).toFixed(3)+')';
+      g.lineWidth=Math.max(1,1.25*scale*4);
+      g.beginPath();g.moveTo(gx,groundY+3);g.quadraticCurveTo(midx,midy,tipx,tipy);g.stroke();
+      g.strokeStyle='rgba('+tuftCol+','+(0.26-hazeAmt*0.15).toFixed(3)+')';
+      g.lineWidth=Math.max(0.6,0.6*scale*4);
+      g.beginPath();g.moveTo(midx,midy);g.quadraticCurveTo((midx+tipx)/2,(midy+tipy)/2,tipx,tipy);g.stroke();
+    }
+  };
+
   let sd=5000;
   const mk=(nm)=>{ const gg={seed:sd++, kingdom:'fauna', color:(sd*3)%17, accent:(sd*5)%17,
     form:sd%18, body:(sd*5)%16, loco:sd%13, trait:(sd*7)%25, size:2, head:sd%10,
@@ -108,18 +156,18 @@ ${lifted}
      top-left quarter of the painting — big sun, cropped deer). Deleting the
      instance properties re-exposes the prototype accessors and the true
      1920×860 backing size. */
-  const paint=(opts, scaled)=>{ shimOn=!!scaled; const cv=hdVista(opts); shimOn=false;
+  const paint=(opts, scaled, polish)=>{ _hdPlaceBeast = polish ? _placePolished : _placeShipped; shimOn=!!scaled; const cv=hdVista(opts); shimOn=false; _hdPlaceBeast=_placeShipped;
     if(scaled){ delete cv.width; delete cv.height; } return cv; };
 
   /* ── the cells: same seeds native vs 2×, then 2×+shader across biomes ── */
   const CW=507, CH=227, PAD=2, CAP=18;
   const cells=[
-    { t:'A1 · NATIVE 960×430 → Pixi texture', o:{seed:1000, pal:'day', wb:'temperate', biome:'land', flora:true, water:'liquid', moons:1, era:'none', genes:['Red Deer','Fox'].map(mk), herd:2}, scaled:false, shader:false },
-    { t:'A2 · SAME SEED · 2× SHIM (1920×860)', o:{seed:1000, pal:'day', wb:'temperate', biome:'land', flora:true, water:'liquid', moons:1, era:'none', genes:['Red Deer','Fox'].map(mk), herd:2}, scaled:true, shader:false },
-    { t:'B1 · 2× + GPU SHADER · jungle', o:{seed:1097, pal:'day', wb:'jungle', biome:'land', flora:true, water:'liquid', moons:1, era:'none', genes:['Jaguar','Toucan'].map(mk), herd:2}, scaled:true, shader:true },
-    { t:'B2 · 2× + GPU SHADER · dune sea', o:{seed:1291, pal:'sand', wb:'dunesea', biome:'land', flora:true, water:'none', moons:1, era:'none', genes:['Camel'].map(mk), herd:1}, scaled:true, shader:true },
-    { t:'C1 · 2× + GPU SHADER · coral shallows', o:{seed:1388, pal:'day', wb:'coral', biome:'island', flora:true, water:'liquid', moons:1, era:'none', genes:['Sea Turtle','Clownfish'].map(mk), herd:2}, scaled:true, shader:true },
-    { t:'C2 · 2× + GPU SHADER · glacier · night', o:{seed:1485, pal:'snow', wb:'glacier', biome:'land', flora:true, water:'frozen', moons:1, era:'none', nightize:true, genes:['Polar Bear'].map(mk), herd:1}, scaled:true, shader:true },
+    { t:'A1 · SHIPPED placement (native)', o:{seed:1000, pal:'day', wb:'temperate', biome:'land', flora:true, water:'liquid', moons:1, era:'none', genes:['Red Deer','Fox'].map(mk), herd:2}, scaled:false, shader:false, polish:false },
+    { t:'A2 · POLISHED placement · SAME SEED', o:{seed:1000, pal:'day', wb:'temperate', biome:'land', flora:true, water:'liquid', moons:1, era:'none', genes:['Red Deer','Fox'].map(mk), herd:2}, scaled:false, shader:false, polish:true },
+    { t:'B1 · polished · 2x + shader · jungle', o:{seed:1097, pal:'day', wb:'jungle', biome:'land', flora:true, water:'liquid', moons:1, era:'none', genes:['Jaguar','Toucan'].map(mk), herd:2}, scaled:true, shader:true, polish:true },
+    { t:'B2 · polished · 2x + shader · dune sea', o:{seed:1291, pal:'sand', wb:'dunesea', biome:'land', flora:true, water:'none', moons:1, era:'none', genes:['Camel'].map(mk), herd:1}, scaled:true, shader:true, polish:true },
+    { t:'C1 · polished · 2x + shader · coral', o:{seed:1388, pal:'day', wb:'coral', biome:'island', flora:true, water:'liquid', moons:1, era:'none', genes:['Sea Turtle','Clownfish'].map(mk), herd:2}, scaled:true, shader:true, polish:true },
+    { t:'C2 · polished · 2x + shader · glacier night', o:{seed:1485, pal:'snow', wb:'glacier', biome:'land', flora:true, water:'frozen', moons:1, era:'none', nightize:true, genes:['Polar Bear'].map(mk), herd:1}, scaled:true, shader:true, polish:true },
   ];
 
   const { Application, Container, Sprite, Texture, Filter, GlProgram, ColorMatrixFilter, Text } = PIXI;
@@ -162,7 +210,7 @@ ${lifted}
   cells.forEach((c,idx)=>{
     const col=idx%2, row=(idx/2)|0;
     const x=PAD+col*(CW+PAD), y=PAD+row*(CH+CAP+PAD);
-    let cv; try{ cv=paint(c.o, c.scaled); }catch(e){
+    let cv; try{ sd=5000; cv=paint(c.o, c.scaled, c.polish); }catch(e){
       const t=new Text({ text:'ERR '+e.message, style:{ fill:0xff6666, fontSize:12 }}); t.x=x+8; t.y=y+8; app.stage.addChild(t); return; }
     const spr=new Sprite(Texture.from(cv));
     spr.x=x; spr.y=y; spr.width=CW; spr.height=CH;

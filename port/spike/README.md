@@ -237,3 +237,27 @@ The full sweep this pipeline scales to: `hdVista`'s scene painters, `speciesPort
 each lifted, DPR-parameterised, rendered into Pixi textures/render-targets, with the GLSL
 grade layer per scene. That is Phases 3–6 of the plan, and it now has a proven mechanism
 instead of a hope. Nothing gets hand-redrawn.
+
+---
+
+# ATTEMPT 4 — placement polish (Nick: "weird shading around the animal")
+
+**Diagnosis first, by controlled diff** (same seed, with vs without creatures, abs-diff ×4):
+the beast pass adds exactly three things — the creature, its contact shadow, and the
+occlusion tufts. No rectangle, no glow bug. What reads as "weird shading" is the shipped
+pass itself at proof scale: **near-black occlusion tufts at alpha 0.92** scribbled over the
+legs, a **wide 0.46-alpha shadow pool**, and (for the far pair) the vista's own river-source
+mist behind them.
+
+**The fix is a TUNED PLACEMENT PASS, spike-only, hot-swapped per cell** so the proof sheet
+itself is the A/B: same seed, same genes, shipped vs polished (`placement-ab-zoom.png`).
+
+| | shipped | polished |
+|---|---|---|
+| tufts | alpha 0.92, near-black `9,24,13`, blunt ends | alpha ~0.58, green-tinted `22,44,26`, 30% fewer, thinner, **tapered** (second fading pass over the tip half) |
+| shadow pool | 0.46 alpha, 0.38·w radius | 0.30 alpha, 0.33·w radius, softer mid-stop |
+| beast art, camo, haze | untouched | untouched |
+
+**`main.js` is NOT touched.** If Nick approves the A/B, this becomes a recorded port delta
+(and optionally a live-build fix — his call, since it changes shipped art). The river-source
+mist is scene composition, not an artifact — noted, not "fixed".
