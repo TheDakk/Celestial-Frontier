@@ -1,0 +1,1270 @@
+{
+ "_comment": [
+  "AUDIO PROFILE FIXTURE + VOICE VOCABULARY MEASUREMENT — Phase 0 / Gate A.",
+  "",
+  "voiceOf(g) -> {kind, f0, rich, nz, vib, vibD, dur, sweep}. Deterministic",
+  "per genome; no audio is synthesised here. Canonical form and FNV-1a hash",
+  "match golden-seeds.json, so all three fixtures agree on \"equal\".",
+  "",
+  "`fixture` is the parity corpus and MUST NOT MOVE — --check asserts it.",
+  "`measurement` is a population statistic, reported for the record and NOT",
+  "asserted, because a statistic drifting is not the same event as a",
+  "generator changing behaviour.",
+  "",
+  "TWO OPEN §23 DECISIONS ARE EVIDENCED HERE (both Nick’s):",
+  "  · the `legacy` voice family — _VOICE_KEYS is Object.keys(_VOICE) and",
+  "    _VOICE includes `legacy`, so procedural creatures are assigned it as",
+  "    a first-class family. `families` below shows how often.",
+  "  · the f0 ceiling — voiceOf clamps f0 to [60, 6000]. `pinnedAtCeiling`",
+  "    counts creatures whose voice stops varying at the top of that range."
+ ],
+ "capturedAt": "2026-07-31",
+ "capturedAgainst": "v1.8.9 (tag v1.8.9, commit 92098e9)",
+ "config": {
+  "fixture": 200,
+  "population": 200000,
+  "collection": 50,
+  "trials": 400,
+  "voiceKeys": [
+   "mammal",
+   "primate",
+   "bird",
+   "bat",
+   "reptile",
+   "serpent",
+   "amphibian",
+   "turtle",
+   "fish",
+   "marine",
+   "ceph",
+   "insect",
+   "arachnid",
+   "crust",
+   "gastropod",
+   "jelly",
+   "sessile",
+   "legacy"
+  ]
+ },
+ "fixture": {
+  "perCase": [
+   {
+    "seed": 524351894,
+    "kingdom": "fauna",
+    "h": "be05ccc33d451e8f"
+   },
+   {
+    "seed": 736752472,
+    "kingdom": "flora",
+    "h": "7cdaeb9b6a566abf"
+   },
+   {
+    "seed": 478058746,
+    "kingdom": "fungi",
+    "h": "bcb051ae718aee5a"
+   },
+   {
+    "seed": 1413665981,
+    "kingdom": "microbe",
+    "h": "137ba8c3122f0b77"
+   },
+   {
+    "seed": 828292746,
+    "kingdom": "fauna",
+    "h": "e548d8e499c1a300"
+   },
+   {
+    "seed": 2953810104,
+    "kingdom": "flora",
+    "h": "806a285705fc4543"
+   },
+   {
+    "seed": 3565143960,
+    "kingdom": "fungi",
+    "h": "0fcfbfdb238012bf"
+   },
+   {
+    "seed": 2621361345,
+    "kingdom": "microbe",
+    "h": "6a555088d66d9d34"
+   },
+   {
+    "seed": 4180886408,
+    "kingdom": "fauna",
+    "h": "4c0e6dff2a6dbb73"
+   },
+   {
+    "seed": 2890073316,
+    "kingdom": "flora",
+    "h": "c1c5fa28c83569dc"
+   },
+   {
+    "seed": 1707126357,
+    "kingdom": "fungi",
+    "h": "6d54a9e71e2312fb"
+   },
+   {
+    "seed": 2756770006,
+    "kingdom": "microbe",
+    "h": "14aab59f02fe3543"
+   },
+   {
+    "seed": 269872466,
+    "kingdom": "fauna",
+    "h": "9c454f4d905dda79"
+   },
+   {
+    "seed": 3560480943,
+    "kingdom": "flora",
+    "h": "bbd01a9d5fa03079"
+   },
+   {
+    "seed": 3221223204,
+    "kingdom": "fungi",
+    "h": "552bb5936bb5fbcf"
+   },
+   {
+    "seed": 109626328,
+    "kingdom": "microbe",
+    "h": "b60559bd3d8ca581"
+   },
+   {
+    "seed": 1896485933,
+    "kingdom": "fauna",
+    "h": "383df5f73f2e3483"
+   },
+   {
+    "seed": 3048376946,
+    "kingdom": "flora",
+    "h": "0a67d60b6fce5f17"
+   },
+   {
+    "seed": 3636571438,
+    "kingdom": "fungi",
+    "h": "735d14190b8597cd"
+   },
+   {
+    "seed": 2141472641,
+    "kingdom": "microbe",
+    "h": "34dd9d38df90a39c"
+   },
+   {
+    "seed": 4139958331,
+    "kingdom": "fauna",
+    "h": "3e9c368e18b8d72a"
+   },
+   {
+    "seed": 174455365,
+    "kingdom": "flora",
+    "h": "dcf20660a1b11adc"
+   },
+   {
+    "seed": 1568075982,
+    "kingdom": "fungi",
+    "h": "c9bc57e497c9b038"
+   },
+   {
+    "seed": 1009855533,
+    "kingdom": "microbe",
+    "h": "8b3ae01f50a72e1b"
+   },
+   {
+    "seed": 4179890617,
+    "kingdom": "fauna",
+    "h": "bf134bb73ac70173"
+   },
+   {
+    "seed": 939018569,
+    "kingdom": "flora",
+    "h": "5b0f69efc3aed1fb"
+   },
+   {
+    "seed": 1865452153,
+    "kingdom": "fungi",
+    "h": "67ec5cda752893fe"
+   },
+   {
+    "seed": 1950828325,
+    "kingdom": "microbe",
+    "h": "1ed0a6cb8ad0c1c7"
+   },
+   {
+    "seed": 950050363,
+    "kingdom": "fauna",
+    "h": "133bf47544d4d451"
+   },
+   {
+    "seed": 718083453,
+    "kingdom": "flora",
+    "h": "83071bf2221ac2ae"
+   },
+   {
+    "seed": 3590808802,
+    "kingdom": "fungi",
+    "h": "03074c4a296e1896"
+   },
+   {
+    "seed": 3829547051,
+    "kingdom": "microbe",
+    "h": "9bd7b9622b76c40e"
+   },
+   {
+    "seed": 1285386134,
+    "kingdom": "fauna",
+    "h": "e0687bfdd8bdc531"
+   },
+   {
+    "seed": 2894431666,
+    "kingdom": "flora",
+    "h": "d6747b2adbbcbb1e"
+   },
+   {
+    "seed": 591249462,
+    "kingdom": "fungi",
+    "h": "3e97c3ff1cd3e6a3"
+   },
+   {
+    "seed": 1542785109,
+    "kingdom": "microbe",
+    "h": "642749a72f4deab3"
+   },
+   {
+    "seed": 2221339970,
+    "kingdom": "fauna",
+    "h": "ff073f9af94977ce"
+   },
+   {
+    "seed": 3418685869,
+    "kingdom": "flora",
+    "h": "1140cba6d2c92e4a"
+   },
+   {
+    "seed": 1872497936,
+    "kingdom": "fungi",
+    "h": "b984201684bb667a"
+   },
+   {
+    "seed": 3893739772,
+    "kingdom": "microbe",
+    "h": "2391cd50a0f4ad9c"
+   },
+   {
+    "seed": 331659766,
+    "kingdom": "fauna",
+    "h": "5d818aca38bbfd4e"
+   },
+   {
+    "seed": 2911610198,
+    "kingdom": "flora",
+    "h": "311a6a14731f95a0"
+   },
+   {
+    "seed": 3998236332,
+    "kingdom": "fungi",
+    "h": "e709d591db21ef4d"
+   },
+   {
+    "seed": 865214821,
+    "kingdom": "microbe",
+    "h": "426cfd079b85b64b"
+   },
+   {
+    "seed": 2571533573,
+    "kingdom": "fauna",
+    "h": "3300ebb4c563a180"
+   },
+   {
+    "seed": 857408613,
+    "kingdom": "flora",
+    "h": "b8493e5391063317"
+   },
+   {
+    "seed": 1219763802,
+    "kingdom": "fungi",
+    "h": "f8dc847ad84cb15e"
+   },
+   {
+    "seed": 764308199,
+    "kingdom": "microbe",
+    "h": "b617c13564e7db79"
+   },
+   {
+    "seed": 2866538185,
+    "kingdom": "fauna",
+    "h": "4cc4bda46e8b91e0"
+   },
+   {
+    "seed": 871408572,
+    "kingdom": "flora",
+    "h": "cc5ffbf9fdcbae1d"
+   },
+   {
+    "seed": 3726835107,
+    "kingdom": "fungi",
+    "h": "eb622e6c3d516950"
+   },
+   {
+    "seed": 2559643348,
+    "kingdom": "microbe",
+    "h": "09de44d4bbfdcfa8"
+   },
+   {
+    "seed": 1350507007,
+    "kingdom": "fauna",
+    "h": "262758b86dae3a7c"
+   },
+   {
+    "seed": 122079738,
+    "kingdom": "flora",
+    "h": "afa20f7e4abe12a2"
+   },
+   {
+    "seed": 3697019715,
+    "kingdom": "fungi",
+    "h": "16a01d96fc6de22a"
+   },
+   {
+    "seed": 4170670815,
+    "kingdom": "microbe",
+    "h": "4b21cb02628baab6"
+   },
+   {
+    "seed": 2475981713,
+    "kingdom": "fauna",
+    "h": "867111bc2491f3e8"
+   },
+   {
+    "seed": 3934674638,
+    "kingdom": "flora",
+    "h": "0cef07d7ac41eeab"
+   },
+   {
+    "seed": 2043392529,
+    "kingdom": "fungi",
+    "h": "55deda46d7cdf9c2"
+   },
+   {
+    "seed": 2170754739,
+    "kingdom": "microbe",
+    "h": "228ce0e12cec56b5"
+   },
+   {
+    "seed": 4024792073,
+    "kingdom": "fauna",
+    "h": "841e1ac2f1c0ad96"
+   },
+   {
+    "seed": 1482985653,
+    "kingdom": "flora",
+    "h": "25c13e2b059e52cf"
+   },
+   {
+    "seed": 2399681719,
+    "kingdom": "fungi",
+    "h": "c28be08a1f1fa21e"
+   },
+   {
+    "seed": 548392286,
+    "kingdom": "microbe",
+    "h": "cae3082dfbbedf09"
+   },
+   {
+    "seed": 2964055073,
+    "kingdom": "fauna",
+    "h": "ab5098d034cc0e4c"
+   },
+   {
+    "seed": 1827782243,
+    "kingdom": "flora",
+    "h": "e61ee83b1c3ac2df"
+   },
+   {
+    "seed": 2166575300,
+    "kingdom": "fungi",
+    "h": "fbdfef2ded5b73c1"
+   },
+   {
+    "seed": 616688470,
+    "kingdom": "microbe",
+    "h": "50ab0431edaaf38d"
+   },
+   {
+    "seed": 3541408367,
+    "kingdom": "fauna",
+    "h": "f7ab6774a7b0fa68"
+   },
+   {
+    "seed": 4085864502,
+    "kingdom": "flora",
+    "h": "aba164c6347bccea"
+   },
+   {
+    "seed": 107345464,
+    "kingdom": "fungi",
+    "h": "f7b7dbb87694befc"
+   },
+   {
+    "seed": 4106680674,
+    "kingdom": "microbe",
+    "h": "ebab73e6e5f09162"
+   },
+   {
+    "seed": 60415633,
+    "kingdom": "fauna",
+    "h": "2b2e154b150e6437"
+   },
+   {
+    "seed": 4098983854,
+    "kingdom": "flora",
+    "h": "12d817a50e0c0cb1"
+   },
+   {
+    "seed": 1427936998,
+    "kingdom": "fungi",
+    "h": "ff454757f02dd90b"
+   },
+   {
+    "seed": 3262073002,
+    "kingdom": "microbe",
+    "h": "021bf0ca0543716e"
+   },
+   {
+    "seed": 2984433159,
+    "kingdom": "fauna",
+    "h": "61111e71d8917d05"
+   },
+   {
+    "seed": 2445284850,
+    "kingdom": "flora",
+    "h": "125c38cd7b0a6349"
+   },
+   {
+    "seed": 1238541911,
+    "kingdom": "fungi",
+    "h": "573e1a411f71a7ed"
+   },
+   {
+    "seed": 4061213234,
+    "kingdom": "microbe",
+    "h": "b5348459c68be3bd"
+   },
+   {
+    "seed": 3992164564,
+    "kingdom": "fauna",
+    "h": "3aa59abaa4447aee"
+   },
+   {
+    "seed": 1594540291,
+    "kingdom": "flora",
+    "h": "539fe90c7b99a120"
+   },
+   {
+    "seed": 2509854357,
+    "kingdom": "fungi",
+    "h": "4d0160d7f4af2bdb"
+   },
+   {
+    "seed": 2157382870,
+    "kingdom": "microbe",
+    "h": "94dd2e009617e4dc"
+   },
+   {
+    "seed": 2750208916,
+    "kingdom": "fauna",
+    "h": "6d265443438702ff"
+   },
+   {
+    "seed": 607833188,
+    "kingdom": "flora",
+    "h": "ec8f5ecad7bb8e66"
+   },
+   {
+    "seed": 56681363,
+    "kingdom": "fungi",
+    "h": "a567dc1076e2f234"
+   },
+   {
+    "seed": 2225248150,
+    "kingdom": "microbe",
+    "h": "3b503ded508382d1"
+   },
+   {
+    "seed": 4254932846,
+    "kingdom": "fauna",
+    "h": "d3c469c572a31021"
+   },
+   {
+    "seed": 4228220330,
+    "kingdom": "flora",
+    "h": "91a24bac734ddea8"
+   },
+   {
+    "seed": 3684787689,
+    "kingdom": "fungi",
+    "h": "171179884923deec"
+   },
+   {
+    "seed": 4216118988,
+    "kingdom": "microbe",
+    "h": "7e83c53a7d001e56"
+   },
+   {
+    "seed": 3293890254,
+    "kingdom": "fauna",
+    "h": "b8724baa28764e56"
+   },
+   {
+    "seed": 3607830321,
+    "kingdom": "flora",
+    "h": "b5857b0fc4f8c9cb"
+   },
+   {
+    "seed": 2482011443,
+    "kingdom": "fungi",
+    "h": "51cbc2411634badd"
+   },
+   {
+    "seed": 3849034848,
+    "kingdom": "microbe",
+    "h": "45a9736bf212cae7"
+   },
+   {
+    "seed": 378593155,
+    "kingdom": "fauna",
+    "h": "68392b83f96e68c7"
+   },
+   {
+    "seed": 1043973146,
+    "kingdom": "flora",
+    "h": "1e8a2463e1140c27"
+   },
+   {
+    "seed": 306131651,
+    "kingdom": "fungi",
+    "h": "4d5f6c102c4f770c"
+   },
+   {
+    "seed": 3247354121,
+    "kingdom": "microbe",
+    "h": "b9f00cb71c286d0b"
+   },
+   {
+    "seed": 922713443,
+    "kingdom": "fauna",
+    "h": "66d11bbffecf1d3b"
+   },
+   {
+    "seed": 1385785978,
+    "kingdom": "flora",
+    "h": "a89479c77e5fb1bb"
+   },
+   {
+    "seed": 3957656907,
+    "kingdom": "fungi",
+    "h": "ce2e12a2fface186"
+   },
+   {
+    "seed": 468135949,
+    "kingdom": "microbe",
+    "h": "1cddc353fd704dbf"
+   },
+   {
+    "seed": 1910528961,
+    "kingdom": "fauna",
+    "h": "d285740137c4c085"
+   },
+   {
+    "seed": 2336117836,
+    "kingdom": "flora",
+    "h": "0e5cd76f3550cb43"
+   },
+   {
+    "seed": 691427446,
+    "kingdom": "fungi",
+    "h": "c0d9bea315e83d4f"
+   },
+   {
+    "seed": 599672455,
+    "kingdom": "microbe",
+    "h": "386fdd8cc907abc0"
+   },
+   {
+    "seed": 3813705746,
+    "kingdom": "fauna",
+    "h": "f725f02db9c49ca1"
+   },
+   {
+    "seed": 4284622299,
+    "kingdom": "flora",
+    "h": "28860fa7a39176c3"
+   },
+   {
+    "seed": 3278518001,
+    "kingdom": "fungi",
+    "h": "0aab605a03455646"
+   },
+   {
+    "seed": 1300439801,
+    "kingdom": "microbe",
+    "h": "d729257a64d6451e"
+   },
+   {
+    "seed": 3811988481,
+    "kingdom": "fauna",
+    "h": "b598bb6306af52af"
+   },
+   {
+    "seed": 326532550,
+    "kingdom": "flora",
+    "h": "9d7b2d3a05c7cc46"
+   },
+   {
+    "seed": 175390280,
+    "kingdom": "fungi",
+    "h": "c1328b4295e4c4ae"
+   },
+   {
+    "seed": 2092834441,
+    "kingdom": "microbe",
+    "h": "462d3c6f7753a57b"
+   },
+   {
+    "seed": 409381870,
+    "kingdom": "fauna",
+    "h": "e64808ff12720d63"
+   },
+   {
+    "seed": 3074031449,
+    "kingdom": "flora",
+    "h": "8a5f09444c258c18"
+   },
+   {
+    "seed": 844151237,
+    "kingdom": "fungi",
+    "h": "d7326c01613b753d"
+   },
+   {
+    "seed": 3556819295,
+    "kingdom": "microbe",
+    "h": "9389a143901fe82f"
+   },
+   {
+    "seed": 892543292,
+    "kingdom": "fauna",
+    "h": "93ad650654645ac2"
+   },
+   {
+    "seed": 3154285408,
+    "kingdom": "flora",
+    "h": "a3849f5bdb0192b7"
+   },
+   {
+    "seed": 2979276282,
+    "kingdom": "fungi",
+    "h": "8a582a22402dab86"
+   },
+   {
+    "seed": 2190649768,
+    "kingdom": "microbe",
+    "h": "9af20bdbc086267f"
+   },
+   {
+    "seed": 1137580107,
+    "kingdom": "fauna",
+    "h": "219b9f0288f7f76e"
+   },
+   {
+    "seed": 3856448937,
+    "kingdom": "flora",
+    "h": "df8dc45f5fc92d33"
+   },
+   {
+    "seed": 1655974331,
+    "kingdom": "fungi",
+    "h": "4fa831839384dd9f"
+   },
+   {
+    "seed": 3956821130,
+    "kingdom": "microbe",
+    "h": "d4f92a588b7661f4"
+   },
+   {
+    "seed": 9146119,
+    "kingdom": "fauna",
+    "h": "0f9455e6ff2a1032"
+   },
+   {
+    "seed": 4217727374,
+    "kingdom": "flora",
+    "h": "864ecc6e08919fb2"
+   },
+   {
+    "seed": 932261698,
+    "kingdom": "fungi",
+    "h": "c458c8798a7fefe5"
+   },
+   {
+    "seed": 3003143266,
+    "kingdom": "microbe",
+    "h": "cde81e0297baa9d6"
+   },
+   {
+    "seed": 3788868565,
+    "kingdom": "fauna",
+    "h": "245f723bf68053f7"
+   },
+   {
+    "seed": 3142658559,
+    "kingdom": "flora",
+    "h": "53a70f2b3cd9768f"
+   },
+   {
+    "seed": 980191830,
+    "kingdom": "fungi",
+    "h": "abef3e0995defa55"
+   },
+   {
+    "seed": 3177867463,
+    "kingdom": "microbe",
+    "h": "088542fc65f142f0"
+   },
+   {
+    "seed": 245342351,
+    "kingdom": "fauna",
+    "h": "4bb4810abaa7cf1e"
+   },
+   {
+    "seed": 2241317001,
+    "kingdom": "flora",
+    "h": "d16906647ceca268"
+   },
+   {
+    "seed": 301220570,
+    "kingdom": "fungi",
+    "h": "8356048d162cda49"
+   },
+   {
+    "seed": 1711949849,
+    "kingdom": "microbe",
+    "h": "797a11dc996b59b0"
+   },
+   {
+    "seed": 384955611,
+    "kingdom": "fauna",
+    "h": "a987c2e330ddb7af"
+   },
+   {
+    "seed": 3633573783,
+    "kingdom": "flora",
+    "h": "c6fad9ca1af1dcfe"
+   },
+   {
+    "seed": 389763297,
+    "kingdom": "fungi",
+    "h": "339ee67111ac1b25"
+   },
+   {
+    "seed": 1983520925,
+    "kingdom": "microbe",
+    "h": "6e85289a0a7f991e"
+   },
+   {
+    "seed": 1601857691,
+    "kingdom": "fauna",
+    "h": "98b3aa54483da7c8"
+   },
+   {
+    "seed": 1623621974,
+    "kingdom": "flora",
+    "h": "55b047bc81ae5f48"
+   },
+   {
+    "seed": 2770200184,
+    "kingdom": "fungi",
+    "h": "bac947435d443f67"
+   },
+   {
+    "seed": 2359125294,
+    "kingdom": "microbe",
+    "h": "89530fce9223bbc2"
+   },
+   {
+    "seed": 246764087,
+    "kingdom": "fauna",
+    "h": "c89429172aca904b"
+   },
+   {
+    "seed": 1641645095,
+    "kingdom": "flora",
+    "h": "497502359ca710d9"
+   },
+   {
+    "seed": 2879940432,
+    "kingdom": "fungi",
+    "h": "d3a19eea08996036"
+   },
+   {
+    "seed": 3675918301,
+    "kingdom": "microbe",
+    "h": "b98570ded2943d8a"
+   },
+   {
+    "seed": 4045248256,
+    "kingdom": "fauna",
+    "h": "26eb869cbd42d900"
+   },
+   {
+    "seed": 3232076787,
+    "kingdom": "flora",
+    "h": "386da9e4448d0408"
+   },
+   {
+    "seed": 3578784786,
+    "kingdom": "fungi",
+    "h": "459cfcd27264b53e"
+   },
+   {
+    "seed": 4102981388,
+    "kingdom": "microbe",
+    "h": "5f83134023d9c454"
+   },
+   {
+    "seed": 2281546023,
+    "kingdom": "fauna",
+    "h": "2a22f77a6464251e"
+   },
+   {
+    "seed": 4011239492,
+    "kingdom": "flora",
+    "h": "c51a452c8020f710"
+   },
+   {
+    "seed": 3683630921,
+    "kingdom": "fungi",
+    "h": "0698a0257f3b4179"
+   },
+   {
+    "seed": 398349536,
+    "kingdom": "microbe",
+    "h": "8e152e5d4ba19cc1"
+   },
+   {
+    "seed": 3298527889,
+    "kingdom": "fauna",
+    "h": "6367e79565af3cc9"
+   },
+   {
+    "seed": 200045522,
+    "kingdom": "flora",
+    "h": "651b01fc4fcf1188"
+   },
+   {
+    "seed": 1167582413,
+    "kingdom": "fungi",
+    "h": "76a2f463d7ccd0ff"
+   },
+   {
+    "seed": 848113025,
+    "kingdom": "microbe",
+    "h": "7b92afe86ba15ccc"
+   },
+   {
+    "seed": 3224249752,
+    "kingdom": "fauna",
+    "h": "40fcd0f2aeafb836"
+   },
+   {
+    "seed": 3938919274,
+    "kingdom": "flora",
+    "h": "a70dc708f3adcdd4"
+   },
+   {
+    "seed": 497999717,
+    "kingdom": "fungi",
+    "h": "da7959d6ce1d2f8a"
+   },
+   {
+    "seed": 359230660,
+    "kingdom": "microbe",
+    "h": "7d41f330a758499c"
+   },
+   {
+    "seed": 4006107528,
+    "kingdom": "fauna",
+    "h": "b64fb9a650d8bc9a"
+   },
+   {
+    "seed": 534015022,
+    "kingdom": "flora",
+    "h": "223c889d9ff62431"
+   },
+   {
+    "seed": 2341752508,
+    "kingdom": "fungi",
+    "h": "d63abf520a40b6de"
+   },
+   {
+    "seed": 1952610305,
+    "kingdom": "microbe",
+    "h": "b0c300aadf5aed1e"
+   },
+   {
+    "seed": 2513388447,
+    "kingdom": "fauna",
+    "h": "4fdd110420bb2d38"
+   },
+   {
+    "seed": 462225282,
+    "kingdom": "flora",
+    "h": "5887c6adffa0c939"
+   },
+   {
+    "seed": 4178668096,
+    "kingdom": "fungi",
+    "h": "49fb5c884d7e9964"
+   },
+   {
+    "seed": 1814697743,
+    "kingdom": "microbe",
+    "h": "571a4782463f43ce"
+   },
+   {
+    "seed": 1347358577,
+    "kingdom": "fauna",
+    "h": "6b1cb2d80eee3cf4"
+   },
+   {
+    "seed": 1126698743,
+    "kingdom": "flora",
+    "h": "02963e84e880f500"
+   },
+   {
+    "seed": 2373922746,
+    "kingdom": "fungi",
+    "h": "6ac91c6728f252eb"
+   },
+   {
+    "seed": 1135488025,
+    "kingdom": "microbe",
+    "h": "059e0ec20ef9d08e"
+   },
+   {
+    "seed": 1108467595,
+    "kingdom": "fauna",
+    "h": "bb46ffeabcc712ce"
+   },
+   {
+    "seed": 3416892224,
+    "kingdom": "flora",
+    "h": "852f9eed9f0baa01"
+   },
+   {
+    "seed": 3422031882,
+    "kingdom": "fungi",
+    "h": "12aeee96678d78d2"
+   },
+   {
+    "seed": 2040950365,
+    "kingdom": "microbe",
+    "h": "c0123d4f2e1472d3"
+   },
+   {
+    "seed": 3319816239,
+    "kingdom": "fauna",
+    "h": "03261c71a434bdf5"
+   },
+   {
+    "seed": 1496750837,
+    "kingdom": "flora",
+    "h": "ec408ab70e450083"
+   },
+   {
+    "seed": 1031049636,
+    "kingdom": "fungi",
+    "h": "4144086e653fd222"
+   },
+   {
+    "seed": 1242885740,
+    "kingdom": "microbe",
+    "h": "7905e9065d00b772"
+   },
+   {
+    "seed": 3971327621,
+    "kingdom": "fauna",
+    "h": "886c4a268ca0dcc2"
+   },
+   {
+    "seed": 714324069,
+    "kingdom": "flora",
+    "h": "79eaf3fe4cc3ce1a"
+   },
+   {
+    "seed": 365349209,
+    "kingdom": "fungi",
+    "h": "59349bb39a197017"
+   },
+   {
+    "seed": 295759989,
+    "kingdom": "microbe",
+    "h": "6047ef538f170117"
+   },
+   {
+    "seed": 4148647988,
+    "kingdom": "fauna",
+    "h": "9525fd589623ab84"
+   },
+   {
+    "seed": 3443057412,
+    "kingdom": "flora",
+    "h": "3f2e6b7ac1358796"
+   },
+   {
+    "seed": 3308857698,
+    "kingdom": "fungi",
+    "h": "8da8f1cf99210fd3"
+   },
+   {
+    "seed": 263193106,
+    "kingdom": "microbe",
+    "h": "def5734f78f19883"
+   },
+   {
+    "seed": 2664308461,
+    "kingdom": "fauna",
+    "h": "d5cc31e2165d341e"
+   },
+   {
+    "seed": 4244418715,
+    "kingdom": "flora",
+    "h": "02a4ac5cd11f1418"
+   },
+   {
+    "seed": 2960285867,
+    "kingdom": "fungi",
+    "h": "8ee7cfcaf087e9fe"
+   },
+   {
+    "seed": 3297173304,
+    "kingdom": "microbe",
+    "h": "3e15b2b9852148fd"
+   }
+  ],
+  "rollup": "d4427ec53e5f5701"
+ },
+ "samples": [
+  {
+   "seed": 524351894,
+   "kingdom": "fauna",
+   "profile": "{\"dur\":0.803785882,\"f0\":66.567922121,\"kind\":\"pulse\",\"nz\":0.351333333,\"rich\":0.12288528,\"sweep\":0.04,\"vib\":0.826666667,\"vibD\":0.08}"
+  },
+  {
+   "seed": 736752472,
+   "kingdom": "flora",
+   "profile": "{\"dur\":0.546458971,\"f0\":193.802396104,\"kind\":\"roar\",\"nz\":0.314,\"rich\":0.8704374,\"sweep\":-0.3,\"vib\":4.71,\"vibD\":0.03}"
+  },
+  {
+   "seed": 478058746,
+   "kingdom": "fungi",
+   "profile": "{\"dur\":0.240466353,\"f0\":257.659857778,\"kind\":\"rasp\",\"nz\":0.732666667,\"rich\":0.405594,\"sweep\":-0.05,\"vib\":41.866666667,\"vibD\":0.34}"
+  },
+  {
+   "seed": 1413665981,
+   "kingdom": "microbe",
+   "profile": "{\"dur\":0.696895294,\"f0\":136.722222222,\"kind\":\"pulse\",\"nz\":0.418666667,\"rich\":0.1196052,\"sweep\":0.1,\"vib\":1.674666667,\"vibD\":0.14}"
+  },
+  {
+   "seed": 828292746,
+   "kingdom": "fauna",
+   "profile": "{\"dur\":0.361335,\"f0\":266.121672727,\"kind\":\"jet\",\"nz\":0.9016,\"rich\":0.1291722,\"sweep\":-0.35,\"vib\":0.98,\"vibD\":0.01}"
+  },
+  {
+   "seed": 2953810104,
+   "kingdom": "flora",
+   "profile": "{\"dur\":0.297917647,\"f0\":142.574648951,\"kind\":\"grunt\",\"nz\":0.343,\"rich\":0.7790328,\"sweep\":-0.16,\"vib\":2.94,\"vibD\":0.02}"
+  }
+ ],
+ "measurement": {
+  "population": 200000,
+  "distinctVoices": 199709,
+  "distinctPct": 99.855,
+  "creaturesSharingAVoice": 567,
+  "creaturesSharingAVoicePct": 0.283,
+  "collectionSize": 50,
+  "collectionsTested": 400,
+  "collectionsWithDuplicate": 0,
+  "collectionsWithDuplicatePct": 0,
+  "f0": {
+   "clampLow": 60,
+   "clampHigh": 6000,
+   "observedMin": 60,
+   "observedMax": 6000,
+   "mean": 638.304,
+   "pinnedAtCeiling": 1748,
+   "pinnedAtCeilingPct": 0.874,
+   "pinnedAtFloor": 1224,
+   "pinnedAtFloorPct": 0.612
+  },
+  "kinds": [
+   {
+    "kind": "buzz",
+    "count": 11190,
+    "pct": 5.595
+   },
+   {
+    "kind": "chirp",
+    "count": 22215,
+    "pct": 11.107
+   },
+   {
+    "kind": "click",
+    "count": 11100,
+    "pct": 5.55
+   },
+   {
+    "kind": "croak",
+    "count": 11096,
+    "pct": 5.548
+   },
+   {
+    "kind": "grunt",
+    "count": 11297,
+    "pct": 5.649
+   },
+   {
+    "kind": "hiss",
+    "count": 22252,
+    "pct": 11.126
+   },
+   {
+    "kind": "hoot",
+    "count": 11060,
+    "pct": 5.53
+   },
+   {
+    "kind": "jet",
+    "count": 10870,
+    "pct": 5.435
+   },
+   {
+    "kind": "pulse",
+    "count": 22246,
+    "pct": 11.123
+   },
+   {
+    "kind": "rasp",
+    "count": 11135,
+    "pct": 5.567
+   },
+   {
+    "kind": "roar",
+    "count": 22260,
+    "pct": 11.13
+   },
+   {
+    "kind": "song",
+    "count": 11060,
+    "pct": 5.53
+   },
+   {
+    "kind": "thrum",
+    "count": 22219,
+    "pct": 11.11
+   }
+  ],
+  "kindCount": 13,
+  "families": [
+   {
+    "family": "amphibian",
+    "count": 11096,
+    "pct": 5.548
+   },
+   {
+    "family": "arachnid",
+    "count": 11135,
+    "pct": 5.567
+   },
+   {
+    "family": "bat",
+    "count": 11075,
+    "pct": 5.537
+   },
+   {
+    "family": "bird",
+    "count": 11140,
+    "pct": 5.57
+   },
+   {
+    "family": "ceph",
+    "count": 10870,
+    "pct": 5.435
+   },
+   {
+    "family": "crust",
+    "count": 11100,
+    "pct": 5.55
+   },
+   {
+    "family": "fish",
+    "count": 11226,
+    "pct": 5.613
+   },
+   {
+    "family": "gastropod",
+    "count": 10993,
+    "pct": 5.497
+   },
+   {
+    "family": "insect",
+    "count": 11190,
+    "pct": 5.595
+   },
+   {
+    "family": "jelly",
+    "count": 10960,
+    "pct": 5.48
+   },
+   {
+    "family": "legacy",
+    "count": 11086,
+    "pct": 5.543
+   },
+   {
+    "family": "mammal",
+    "count": 11174,
+    "pct": 5.587
+   },
+   {
+    "family": "marine",
+    "count": 11060,
+    "pct": 5.53
+   },
+   {
+    "family": "primate",
+    "count": 11060,
+    "pct": 5.53
+   },
+   {
+    "family": "reptile",
+    "count": 11097,
+    "pct": 5.548
+   },
+   {
+    "family": "serpent",
+    "count": 11155,
+    "pct": 5.577
+   },
+   {
+    "family": "sessile",
+    "count": 11286,
+    "pct": 5.643
+   },
+   {
+    "family": "turtle",
+    "count": 11297,
+    "pct": 5.649
+   }
+  ],
+  "familyCount": 18,
+  "familySource": "read from main.js _VOICE (18 keys)"
+ }
+}
