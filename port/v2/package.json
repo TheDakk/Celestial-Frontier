@@ -1,0 +1,19 @@
+{
+  "name": "cf-v2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Celestial Frontier v2 port — Phase 1 TypeScript workspace. Laid out per PORT_MASTER_PLAN_v4.0.md §18 (packages/domain/*). Isolated from the game's dependency set (tools/deps.pinned.json stays acorn+jsdom).",
+  "workspaces": [
+    "packages/domain/*"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "26.1.2",
+    "typescript": "7.0.2",
+    "vitest": "4.1.10"
+  }
+}

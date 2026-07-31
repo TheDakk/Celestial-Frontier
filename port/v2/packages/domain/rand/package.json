@@ -1,0 +1,8 @@
+{
+  "name": "@cf/domain-rand",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Module 1 of 14: deterministic PRNG, hashing & noise — the root of all generation. Ported from main.js @module Rand (lines 157–201, v1.8.9 @ tag v1.8.9).",
+  "exports": { ".": "./src/index.ts" }
+}
