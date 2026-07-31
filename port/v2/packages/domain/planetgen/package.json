@@ -1,0 +1,4 @@
+{ "name": "@cf/domain-planetgen", "private": true, "version": "0.0.0", "type": "module",
+  "description": "Module 5/14: planet archetypes & surface color synthesis. AUTO-LIFTED verbatim from main.js @module PlanetGen (v1.8.9); typed facade in index.ts.",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@cf/domain-rand": "*" } }
