@@ -1,6 +1,6 @@
 # Celestial Frontier — Master Art Direction
 
-**STATUS:** matches code as of 2026-07-24 (art rules verified against main.js; NOT re-verified since — the v1.8.x releases changed no art code). ⚠ §6.1 corrected 2026-07-31: the `BIOME_ATLAS.md` catalog it cites has never existed and is a Phase-0 deliverable.
+**STATUS:** matches code as of 2026-07-24 (art rules verified against main.js; NOT re-verified since — the v1.8.x releases changed no art code). ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the
@@ -74,7 +74,7 @@ needs a Nick-authorized baseline RE-PIN.** That is the ONLY hard gate remaining.
 >
 > **v1.6 BUILT (2026-07-20):** `COLOR_ATLAS` (`resolveBodyPalette`/`resolveVistaTint`/
 > `resolveMapDot`, pure lookup, physical hexes are swappable defaults for the authored
-> atlas) · `BIOME_PROFILES` (§3, 43 live biomes) + `biomeProfile`/`colorDNAFor` · flora
+> atlas) · `BIOME_PROFILES` (§3, 43 live biomes, main.js ~694) · flora
 > per-species differentiation (§5). Gated by `tools/{coloratlas,biomeprofile,render}-audit`.
 > vista integration BUILT (`_hdVistaEco` in `hdVista`: biome-native flora+fauna rig
 > silhouettes + atmosphere fx, driven by `BIOME_PROFILES[opts.wb]`, render-only).
@@ -293,20 +293,29 @@ patterned) stays a secondary layer, never replaces species identity.
 
 ### 6.1 Content: the biome catalog (43 live + 93 Earth + 315 non-Earth + additional)
 
-> ⚠ **`BIOME_ATLAS.md` DOES NOT EXIST — corrected 2026-07-31.** This heading, three other lines in
-> this file and the ROADMAP's PINNED source-of-truth list all cited it as though it were on disk.
-> It never was. A doc that cites a document nobody has checked for is the same failure as a doc
-> that cross-certifies another doc's numbers: it manufactures confidence that nothing supports.
+> ✔ **`BIOME_ATLAS.md` EXISTS — see the repo root. RESOLVED 2026-07-31 during port Phase 0.**
 >
-> **Where the content actually lives today:** the biome *rules* are in WORLD_GENERATION.md §2.7
-> (`biomeFor`, `biomeForLanding`) and the *visual* contract is §3 of this file (the Biome Profile)
-> plus §7 (vistas). The 43 live biomes are enumerable from the source — `tools/biome-audit.js`
-> checks them and `validate` reports *"43 live biomes, all covered; sigs + families valid"*.
+> ⚠ **This block previously said the opposite, and that is the lesson worth keeping.** Earlier the
+> same day it read *"`BIOME_ATLAS.md` DOES NOT EXIST — corrected 2026-07-31 … It never was,"* on the
+> reasoning that a doc citing a document nobody has checked for manufactures confidence nothing
+> supports. The reasoning was right; the check was not. It looked in the repo root only. The file
+> had been sitting at **`tools/BIOME_ATLAS.md`**, tracked in git, since 2026-07-21 — 734 lines,
+> 45 KB, generated 2026-07-20. **A correction written so that nothing lies introduced a new false
+> statement, and it survived a day because nobody re-checked the correction either.**
 >
-> **It is a genuine Phase-0 deliverable, not just a broken link.** §28.5 of the port plan calls for
-> the art-direction doc + golden screen *before* generation work, and a content catalog is what a
-> re-implementation checks itself against. Generating it from the source (rather than writing it by
-> hand) is the right move, and the audit tool already walks the data.
+> **What it contains, and the provenance split that matters:** §1 enumerates the 43 live biomes with
+> signature colors — re-verified 2026-07-31 by extracting every `sig` from `BIOME_PROFILES` and
+> diffing: 43 of 43 match exactly. §1.1 (added during the audit) is a source-generated per-biome
+> catalog merging `BIOME_PROFILES` with `BIOME_SETS`. §§2–4 hold the **93 Earth + 315 non-Earth +
+> Additional** design-pack content — which comes from uploaded CSVs and **cannot be regenerated from
+> `main.js`**. That is why the file was worth recovering rather than rewriting, and it is also the
+> source of the "93 + 315" figures quoted in §6.1's own heading: they are *design scope*, not
+> shipped content. Do not cite them as source facts.
+>
+> **The rest of the split still stands:** biome *rules* live in WORLD_GENERATION.md §3
+> (`biomeFor`, `biomeForLanding`, `BIOME_SETS`); the *visual* contract is §3 of this file (the Biome
+> Profile) plus §7 (vistas); the *content catalog* is BIOME_ATLAS.md. `validate` reports
+> *"43 live biomes, all covered; sigs + families valid"*, gated by `tools/biome-audit.js`.
 
 ### 6.2 Color: the Deterministic Cosmic Color Atlas = color-resolution source of truth
 
@@ -481,7 +490,7 @@ heads · flora growth-form rebuild + plant-stat · the biome catalog (§6.1, unw
   `_rig*` functions (see §4.1) each return `{hp,hips,shoulders,feetMax,noEye}`.
 - **Flora:** `_hdPlantBare(seed,sp)` ~L5488 (dispatches on `sp.form`); `hdPortraitFlora`
   ~L5763 injects `_earthFlora` + plant-stat accent.
-- **Biomes/vistas:** `BIOME_SETS` ~L7477 (43 live biomes × 8 types) · `hdVista(opts)`
+- **Biomes/vistas:** `BIOME_SETS` ~L10763 (43 live biomes × 8 types; corrected 2026-07-31 from a stale ~L7477) · `BIOME_PROFILES` ~L694 · `hdVista(opts)`
   ~L6260 (960×430 surface scene) · `_hdDeckScene` (gas giant) · `_hdAbyssScene` (deep).
 - **Tools (`scratchpad/` + `tools/`):** `classify-audit.js`, `rig-audit.js` (→ the gate),
   `shot-cat.js "Name,…" LABEL out.png`, `shot-flora.js`, `shot-proc.js`, `shot-proc-flora.js`,
