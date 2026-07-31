@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (Phase 1+)
 
-**Status: modules 1–11 of 14 ported and parity-green** (2026-07-31). This workspace is the
+**Status: modules 1–12 of 14 ported and parity-green** (2026-07-31). This workspace is the
 port itself; everything else under `port/` is plan, evidence, and decisions.
 
 ```
@@ -60,7 +60,8 @@ syntax-broken test file is silently not collected — **count the test files, no
 | 9 | genome | 71k golden (makeGenome ×4 kingdoms, speciesGrade, sapienceTier, classifyRealm, guardianFor, describeSpecies) + 7 probes | **9g part 2**: the collapse now guarded END-TO-END through speciesGrade incl. forced apex tiers 12–14. lift.mjs REGISTRY rows for surveyphrases/speciestraits/genome filled (were placeholders) |
 | 10 | encutil | independent-truth (Node Buffer b64 as second implementation + hand-computed shade values) | ⚠ no fixture samples EncUtil directly — recorded in src; b64 pinned transitively when CombatCore's codec probes land |
 | 11 | genetics | crossGenome ×10k + crossGenome/evolveGenome probes + outcome invariants | ⚠ **NEW FIXTURE BLIND SPOT FOUND**: the golden recipe's consecutive parent seeds (s, s+1) collapse the mutation draw — the size-mutation branch is NEVER executed across all 10k cases (color 80% · trait 12.5% · size 0). Uniform with uncorrelated parents, so the game is fine; the corpus is not. Remedy queued for Gate B: ADD an uncorrelated-pair generator (never re-capture). Until then the invariant suite covers the branch with hashed-seed pairs |
-| 12–14 | ecology · descriptors · combatcore | — | next; Descriptors ~2,800 lines, lift only |
+| 12 | ecology | planetSpecies probe (⚠ VACUOUS BY CAPTURE — probe.js passes level=2 vs string levels, stored value is literally `[]` since v1.0) + outcome invariants | ⚠ salt-perturbation negative control PASSES today (measured — no value pinning until planetDescriptor ×1k lands with module 13). COSMIC_EPOCH reads 0 in the lift (= capture condition); app layer wires the real epoch in Phase 2+. ★ `biomeFor` (golden ×1k) lives at main.js:10824 OUTSIDE the 14 domain modules — slimGal-style relocation, queued for Gate B |
+| 13–14 | descriptors · combatcore | — | next; Descriptors ~2,800 lines, lift only |
 
 **Then Gate B close-out:** no-DOM-imports lint · SessionRNG (reviewer §2.1) · extend the
 golden corpus with a noise generator (an intended *addition*, never re-capture-to-pass) ·
