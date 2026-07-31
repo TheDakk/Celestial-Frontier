@@ -246,6 +246,19 @@
 ##   ⚠ Pixi pinned 8.19.0 in an ISOLATED port/spike/package.json (root deps stay acorn+jsdom).
 ##      That is ALREADY DRIFT: Addendum D verified 8.18.1 as current stable the same day.
 ## ▶▶ MY PHASE 0 LIST IS NOW EMPTY. Everything remaining is Nick's — see below.
+## ═══ ★★ PHASE 1 HAS BEGUN (2026-07-31, Nick's go) — TypeScript domain conversion ═══
+## The two open Phase 0 items are NICK-ONLY and gate LATER phases (real save -> Gate C in Phase 2;
+## listening test -> Phase 7 audio scope). Domain conversion is blocked by neither.
+## ✔ MODULE 1/14: @cf/domain-rand (port/v2/, laid out per plan §18, typescript 7.0.2 + vitest
+##   4.1.10 pinned exact, strict). Function bodies VERBATIM from main.js 157-201 + types only.
+##   ★ PARITY: 30,000 golden cases (hashInt/mulberry32/cellRng x 10,000 seeds) ALL GREEN on the
+##   first run, 297ms — the fixture thesis paying off on day one. Negative-controlled: one prime
+##   perturbed by 1 -> fails naming exact seeds; reverted -> green. Typecheck clean.
+##   ⚠ makeNoise/clamp/mix not fixture-covered yet (corpus never sampled them) — recorded gap,
+##   extending the corpus with a noise generator is an intended follow-up, not re-capture-to-pass.
+## ▶ ORDER AHEAD (deps first): Rand ✔ · WorldConfig · Naming · StarCatalog · PlanetGen · WorldGen ·
+##   SurveyPhrases · SpeciesTraits · Genome · EncUtil · Genetics · Ecology · Descriptors · CombatCore.
+##   Rule per §20: run parity fixtures after EVERY module.
 ## ✔★ THE FOUR §23 DESIGN DECISIONS ARE MADE (Nick, 2026-07-31). Recorded in port/DECISIONS.md —
 ##   a NEW live record, so the supplied v4.0 plan stays the reference it was delivered as.
 ##     1. bred `fed` → INHERIT 50% OF THE LOWER PARENT. Breeding is not sharing: BOTH parents are
