@@ -1,0 +1,3 @@
+{ "name": "@cf/domain-surveyphrases", "private": true, "version": "0.0.0", "type": "module",
+  "description": "Module 7/14: survey-card phrase builders. AUTO-LIFTED from main.js @module SurveyPhrases (v1.8.9).",
+  "exports": { ".": "./src/index.ts" } }
