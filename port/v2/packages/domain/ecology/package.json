@@ -1,0 +1,4 @@
+{ "name": "@cf/domain-ecology", "private": true, "version": "0.0.0", "type": "module",
+  "description": "Module 12/14: biospheres, species rosters & civilizations per world. AUTO-LIFTED from main.js @module Ecology (v1.8.9).",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@cf/domain-rand": "*", "@cf/domain-naming": "*", "@cf/domain-genome": "*", "@cf/domain-genetics": "*" } }
