@@ -26,6 +26,11 @@ description); instead carry a `matches code as of <date>` marker and update them
 BATCH as the code (per rule at top of ROADMAP.md). When a doc grows unreadable, first ask which
 kind it is — the answer picks the fix.
 
+## The v2.0 port
+**`port/`** holds the committed port plan — `PORT_MASTER_PLAN_v4.0.md` (§20 execution phases, §22 Gates A–I, §23 open items, §16 data architecture), the reviewer delta `v1.9-port-update.md`, and addenda A–D. **v1.9 = Phase 0**, which is capture/fixture work, *not* a code phase — no TypeScript until Phase 1.
+⚠ The plan was lost once as a session-scoped upload, leaving annotations that cited sections of a document nobody could read. **Anything we reason about gets committed the same day** (the rule `audits/` already encodes for external review bundles).
+⚠ Section numbers from the older v3.1 (§26 / §27.3 / §28.5, quoted throughout ROADMAP_ARCHIVE) do **not** map to v4.0.
+
 ## Project layout
 - `celestial-frontier.html` — the entire game (**~26,750 lines / ~1.93 MB**; **TWO** `<style>` elements — append to the **LAST** — then markup, then one `<script>` from **~line 2,420**). `main.js` is ~24,330 lines. No build step, no runtime dependencies. Run by opening in a browser. *(Counts corrected 2026-07-30: this line still said "~8,000 lines; one `<style>`, one `<script>` from ~line 948", which was off by 3× and contradicted rule 4's own two-`<style>` warning. Re-measure it when it next feels wrong rather than trusting it.)*
 - The script is organized on SOLID lines (see the ARCHITECTURE comment at its top): `@module … [domain]` blocks are pure/deterministic revealing-module IIFEs (Rand → WorldGen → Genome → Descriptors → CombatCore, …); `@module … [app]` blocks are art/service modules (ThumbArt, GalaxyArt, SpeciesArt, Fx, SaveSystem, Renderer); `@section` blocks are UI/state/wiring. Put new code in the unit that owns the concern. A module's non-exported names are private; to export one more, extend the banner's `API:` line, the `Object.freeze({...})` return, and the destructuring line beneath it (all three list the same names).
