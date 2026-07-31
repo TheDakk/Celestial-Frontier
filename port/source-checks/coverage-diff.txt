@@ -1,0 +1,27 @@
+COVERAGE CHECK — v3.1 original vs v4.0 (v1.8.9)
+Method: extract each top-level section, strip blanks and rules, compare line lists.
+
+  § section                                        v3.1   v4.0  verdict
+  7 Full-Universe Visual Upgrade                    206    206  IDENTICAL
+  8 Biome and Vista Upgrade                         115    115  IDENTICAL
+  9 Complete Earth Catalog Upgrade                  145    145  IDENTICAL
+ 10 Procedural Creature Upgrade                     214    214  IDENTICAL
+ 11 Procedural Flora, Fungi, and Microbe Upgrade     51     51  IDENTICAL
+ 12 Living Ecology Upgrade                           34     34  IDENTICAL
+ 13 Materials, Gear, Ships, and Player Presentat     44     44  IDENTICAL
+ 14 UI, Codex, and Discovery Upgrade                 49     49  IDENTICAL
+ 15 Complete Audio and Music System                 698    702  96.3% identical, +4 lines
+
+SUBSECTION CHECK — every v3.1 subsection outside §7-15, keyword-matched into v4.0
+  subsections checked: 41
+  with no keyword match in v4.0: 1
+    §4 — 4.5 Browser-audio groundwork   (absorbed by v4.0 §15.1)
+
+ANNOTATION PROVENANCE — was v4.0 built from v3.1 or from the annotated v3.3?
+  §7: v3.1=206  v3.3=235  v4.0=206   -> matches v3.1
+  §9: v3.1=145  v3.3=192  v4.0=145   -> matches v3.1
+  §14: v3.1=49  v3.3=78  v4.0=49   -> matches v3.1
+  §15: v3.1=698  v3.3=746  v4.0=702   -> matches neither
+
+  Conclusion: v4.0 was rebuilt from v3.1. The ~1,044 lines of v3.3 annotation did not
+  carry as text, though their conclusions did (v4.0 §4.3, §4.4, §23, Risks 5/11/12).
