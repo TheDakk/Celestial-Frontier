@@ -1,0 +1,654 @@
+{
+ "_comment": [
+  "CODEC + HARDENING FIXTURES — port Phase 0 / Gate A, feeding Gate C.",
+  "",
+  "Curated adversarial cases, deliberately NOT a volume corpus —",
+  "golden-seeds.json already covers volume. A random corpus will never",
+  "contain size:1e6 or a __proto__ key; a codec needs named edges with",
+  "stated expectations.",
+  "",
+  "⚠ THE size_* CASES ARE THE POINT. crossGenome mutates `size` without",
+  "wrapping, so honestly-bred genomes carry size>5 (12.4% of lineages by",
+  "generation 5). v1.8.6 added a load-path clamp that permanently rewrote",
+  "them into titanic, maximum-vitality creatures; v1.8.7 reverted it. The",
+  "port MUST reproduce the v1.8.7 behaviour: _sanitizeSavedGenome leaves",
+  "`size` UNCHANGED. `invariants` below asserts this outright.",
+  "",
+  "CANONICAL FORM matches goldenseeds-probe.js: numbers rounded to 1e-9,",
+  "object keys sorted, undefined -> null.",
+  "",
+  "SCOPE: codec + hardening only. buildSave/loadSave are app-layer and not",
+  "reachable from the probe realm, so a FULL save round-trip is not captured",
+  "here and Gate C stays open pending a real veteran save.",
+  "",
+  "⚠ DO NOT REGENERATE THIS TO MAKE A FAILING --check PASS."
+ ],
+ "capturedAt": "2026-07-31",
+ "capturedAgainst": "v1.8.9 (tag v1.8.9, commit 92098e9)",
+ "cases": 108,
+ "invariants": [
+  {
+   "name": "sizePreserved:size_0",
+   "ok": true,
+   "detail": "0 -> 0"
+  },
+  {
+   "name": "sizePreserved:size_12_drifted",
+   "ok": true,
+   "detail": "12 -> 12"
+  },
+  {
+   "name": "sizePreserved:size_5",
+   "ok": true,
+   "detail": "5 -> 5"
+  },
+  {
+   "name": "sizePreserved:size_6_drifted",
+   "ok": true,
+   "detail": "6 -> 6"
+  },
+  {
+   "name": "sizePreserved:size_huge",
+   "ok": true,
+   "detail": "1000000 -> 1000000"
+  },
+  {
+   "name": "sizePreserved:size_negative",
+   "ok": true,
+   "detail": "-3 -> -3"
+  }
+ ],
+ "creatureCodes": {
+  "apex_12": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOnRydWUsImdlbiI6MCwiaGVhdCI6MC41LCJhcGV4IjoxMiwid2lsZCI6MX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"apex\":12,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":true,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"wild\":1},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "apex_invalid": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwiYXBleCI6M30sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "fauna_basic": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "flora_basic": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmbG9yYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuM30sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"flora\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "fungi_basic": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmdW5naSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuN30sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fungi\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "gen5_hybrid": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOnRydWUsImdlbiI6NSwiaGVhdCI6MC41LCJ3aWxkIjoxfSwibiI6IlRlc3RsaW5nIn0",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":5,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":true,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"wild\":1},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "hostile_empty": {
+   "code": "CFB-eyJnIjp7fSwibiI6IlRlc3RsaW5nIn0",
+   "decoded": "null",
+   "roundTripGenome": false
+  },
+  "hostile_extrakeys": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwiX211bHQiOjk5LCJfd2YiOjEsIl9fZXZpbCI6IngiLCJmZWQiOjk5OTk5LCJicm9vZCI6OTk5OTl9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"__evil\":\"x\",\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":200,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":200,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "hostile_infinity": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjpudWxsLCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwieHAiOm51bGx9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":0,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "hostile_missing": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjd9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"accent\":0,\"behavior\":0,\"body\":0,\"brood\":0,\"color\":0,\"detail\":0,\"diet\":0,\"eyes\":0,\"fed\":0,\"form\":0,\"gen\":0,\"habitat\":0,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":0,\"loco\":0,\"lumin\":false,\"metab\":0,\"pattern\":0,\"repro\":0,\"seed\":7,\"sense\":0,\"size\":0,\"skin\":0,\"tail\":0,\"temper\":0,\"trait\":0},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "hostile_nan": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjpudWxsLCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwiZmVyIjpudWxsLCJ4cCI6bnVsbH0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"fer\":null,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":0,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "hostile_strings": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjoiNCIsImRpZXQiOjEsImhlYWQiOjAsImxpbWJzIjoxLCJza2luIjo2LCJ0YWlsIjoyLCJwYXR0ZXJuIjozLCJleWVzIjowLCJiZWhhdmlvciI6MTAsImhhYml0YXQiOjEzLCJkZXRhaWwiOjksImFjY2VudCI6OSwidGVtcGVyIjoxLCJzZW5zZSI6NywicmVwcm8iOjYsImxpZmUiOjAsIm1ldGFiIjoyLCJsdW1pbiI6ZmFsc2UsImdlbiI6IjIiLCJoZWF0IjowLjUsInhwIjoiOTk5In0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":2,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "microbe_basic": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJtaWNyb2JlIiwiY29sb3IiOjksImZvcm0iOjEzLCJib2R5Ijo1LCJsb2NvIjoxMSwidHJhaXQiOjcsInNpemUiOjQsImRpZXQiOjEsImhlYWQiOjAsImxpbWJzIjoxLCJza2luIjo2LCJ0YWlsIjoyLCJwYXR0ZXJuIjozLCJleWVzIjowLCJiZWhhdmlvciI6MTAsImhhYml0YXQiOjEzLCJkZXRhaWwiOjksImFjY2VudCI6OSwidGVtcGVyIjoxLCJzZW5zZSI6NywicmVwcm8iOjYsImxpZmUiOjAsIm1ldGFiIjoyLCJsdW1pbiI6ZmFsc2UsImdlbiI6MCwiaGVhdCI6MC4xfSwibiI6IlRlc3RsaW5nIn0",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"microbe\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "par_8": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwicGFyIjo4fSwibiI6IlRlc3RsaW5nIn0",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"par\":8,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "par_invalid": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwicGFyIjo5OX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "size_0": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjowLCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":0,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "size_12_drifted": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjoxMiwiZGlldCI6MSwiaGVhZCI6MCwibGltYnMiOjEsInNraW4iOjYsInRhaWwiOjIsInBhdHRlcm4iOjMsImV5ZXMiOjAsImJlaGF2aW9yIjoxMCwiaGFiaXRhdCI6MTMsImRldGFpbCI6OSwiYWNjZW50Ijo5LCJ0ZW1wZXIiOjEsInNlbnNlIjo3LCJyZXBybyI6NiwibGlmZSI6MCwibWV0YWIiOjIsImx1bWluIjpmYWxzZSwiZ2VuIjo1LCJoZWF0IjowLjV9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":5,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":12,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "size_5": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo1LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":5,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "size_6_drifted": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo2LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjMsImhlYXQiOjAuNX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":3,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":6,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "size_huge": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjoxMDAwMDAwLCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":1000000,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "size_negative": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjotMywiZGlldCI6MSwiaGVhZCI6MCwibGltYnMiOjEsInNraW4iOjYsInRhaWwiOjIsInBhdHRlcm4iOjMsImV5ZXMiOjAsImJlaGF2aW9yIjoxMCwiaGFiaXRhdCI6MTMsImRldGFpbCI6OSwiYWNjZW50Ijo5LCJ0ZW1wZXIiOjEsInNlbnNlIjo3LCJyZXBybyI6NiwibGlmZSI6MCwibWV0YWIiOjIsImx1bWluIjpmYWxzZSwiZ2VuIjowLCJoZWF0IjowLjV9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":3,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "xp_leveled": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwieHAiOjQyMDB9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "xp_zero": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwieHAiOjB9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "name_empty": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiIifQ",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Challenger\"}",
+   "roundTripGenome": false
+  },
+  "name_html": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiI8Yj5FdmlsJlwiTmFtZSc8L2I-IHdpdGggYSB2ZXJ5IGxvbmcgdGFpbCBiZXlvbmQgdGhlIGNhcCJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"bEvilName/b with a very \"}",
+   "roundTripGenome": false
+  },
+  "name_plain": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "name_spaces": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiIgICBwYWRkZWQgICAifQ",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"padded\"}",
+   "roundTripGenome": false
+  },
+  "name_unicode": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiJab8OrIOKAlCDOqeaYnyDwn5yPIn0",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Zoë — Ω星 🜏\"}",
+   "roundTripGenome": false
+  },
+  "name_very_long": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiJ4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHgifQ",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"xxxxxxxxxxxxxxxxxxxxxxxx\"}",
+   "roundTripGenome": false
+  }
+ },
+ "championCodes": {
+  "apex_12": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOnRydWUsImdlbiI6MCwiaGVhdCI6MC41LCJhcGV4IjoxMiwid2lsZCI6MX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"apex\":12,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":true,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"wild\":1},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "apex_invalid": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwiYXBleCI6M30sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "fauna_basic": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "flora_basic": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmbG9yYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuM30sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"flora\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "fungi_basic": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmdW5naSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuN30sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fungi\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "gen5_hybrid": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOnRydWUsImdlbiI6NSwiaGVhdCI6MC41LCJ3aWxkIjoxfSwibiI6IlRlc3RsaW5nIn0",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":5,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":true,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"wild\":1},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "hostile_empty": {
+   "code": "CFB-eyJnIjp7fSwibiI6IlRlc3RsaW5nIn0",
+   "decoded": "null",
+   "roundTripGenome": false
+  },
+  "hostile_extrakeys": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwiX211bHQiOjk5LCJfd2YiOjEsIl9fZXZpbCI6IngiLCJmZWQiOjk5OTk5LCJicm9vZCI6OTk5OTl9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"__evil\":\"x\",\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":200,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":200,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "hostile_infinity": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjpudWxsLCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwieHAiOm51bGx9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":0,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "hostile_missing": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjd9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"accent\":0,\"behavior\":0,\"body\":0,\"brood\":0,\"color\":0,\"detail\":0,\"diet\":0,\"eyes\":0,\"fed\":0,\"form\":0,\"gen\":0,\"habitat\":0,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":0,\"loco\":0,\"lumin\":false,\"metab\":0,\"pattern\":0,\"repro\":0,\"seed\":7,\"sense\":0,\"size\":0,\"skin\":0,\"tail\":0,\"temper\":0,\"trait\":0},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "hostile_nan": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjpudWxsLCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwiZmVyIjpudWxsLCJ4cCI6bnVsbH0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"fer\":null,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":0,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "hostile_strings": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjoiNCIsImRpZXQiOjEsImhlYWQiOjAsImxpbWJzIjoxLCJza2luIjo2LCJ0YWlsIjoyLCJwYXR0ZXJuIjozLCJleWVzIjowLCJiZWhhdmlvciI6MTAsImhhYml0YXQiOjEzLCJkZXRhaWwiOjksImFjY2VudCI6OSwidGVtcGVyIjoxLCJzZW5zZSI6NywicmVwcm8iOjYsImxpZmUiOjAsIm1ldGFiIjoyLCJsdW1pbiI6ZmFsc2UsImdlbiI6IjIiLCJoZWF0IjowLjUsInhwIjoiOTk5In0sIm4iOiJUZXN0bGluZyIsIngiOjk5OX0",
+   "decoded": "{\"exhibit\":true,\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":2,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":486},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "microbe_basic": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJtaWNyb2JlIiwiY29sb3IiOjksImZvcm0iOjEzLCJib2R5Ijo1LCJsb2NvIjoxMSwidHJhaXQiOjcsInNpemUiOjQsImRpZXQiOjEsImhlYWQiOjAsImxpbWJzIjoxLCJza2luIjo2LCJ0YWlsIjoyLCJwYXR0ZXJuIjozLCJleWVzIjowLCJiZWhhdmlvciI6MTAsImhhYml0YXQiOjEzLCJkZXRhaWwiOjksImFjY2VudCI6OSwidGVtcGVyIjoxLCJzZW5zZSI6NywicmVwcm8iOjYsImxpZmUiOjAsIm1ldGFiIjoyLCJsdW1pbiI6ZmFsc2UsImdlbiI6MCwiaGVhdCI6MC4xfSwibiI6IlRlc3RsaW5nIn0",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"microbe\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "par_8": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwicGFyIjo4fSwibiI6IlRlc3RsaW5nIn0",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"par\":8,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "par_invalid": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwicGFyIjo5OX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "size_0": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjowLCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":0,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "size_12_drifted": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjoxMiwiZGlldCI6MSwiaGVhZCI6MCwibGltYnMiOjEsInNraW4iOjYsInRhaWwiOjIsInBhdHRlcm4iOjMsImV5ZXMiOjAsImJlaGF2aW9yIjoxMCwiaGFiaXRhdCI6MTMsImRldGFpbCI6OSwiYWNjZW50Ijo5LCJ0ZW1wZXIiOjEsInNlbnNlIjo3LCJyZXBybyI6NiwibGlmZSI6MCwibWV0YWIiOjIsImx1bWluIjpmYWxzZSwiZ2VuIjo1LCJoZWF0IjowLjV9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":5,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":12,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "size_5": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo1LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":5,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "size_6_drifted": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo2LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjMsImhlYXQiOjAuNX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":3,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":6,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "size_huge": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjoxMDAwMDAwLCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNX0sIm4iOiJUZXN0bGluZyJ9",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":1000000,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "size_negative": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjotMywiZGlldCI6MSwiaGVhZCI6MCwibGltYnMiOjEsInNraW4iOjYsInRhaWwiOjIsInBhdHRlcm4iOjMsImV5ZXMiOjAsImJlaGF2aW9yIjoxMCwiaGFiaXRhdCI6MTMsImRldGFpbCI6OSwiYWNjZW50Ijo5LCJ0ZW1wZXIiOjEsInNlbnNlIjo3LCJyZXBybyI6NiwibGlmZSI6MCwibWV0YWIiOjIsImx1bWluIjpmYWxzZSwiZ2VuIjowLCJoZWF0IjowLjV9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":3,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "xp_leveled": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwieHAiOjQyMDB9LCJuIjoiVGVzdGxpbmciLCJ4Ijo0MjAwfQ",
+   "decoded": "{\"exhibit\":true,\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":486},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  },
+  "xp_zero": {
+   "code": "CFB-eyJnIjp7InNlZWQiOjEyMzQsImtpbmdkb20iOiJmYXVuYSIsImNvbG9yIjo5LCJmb3JtIjoxMywiYm9keSI6NSwibG9jbyI6MTEsInRyYWl0Ijo3LCJzaXplIjo0LCJkaWV0IjoxLCJoZWFkIjowLCJsaW1icyI6MSwic2tpbiI6NiwidGFpbCI6MiwicGF0dGVybiI6MywiZXllcyI6MCwiYmVoYXZpb3IiOjEwLCJoYWJpdGF0IjoxMywiZGV0YWlsIjo5LCJhY2NlbnQiOjksInRlbXBlciI6MSwic2Vuc2UiOjcsInJlcHJvIjo2LCJsaWZlIjowLCJtZXRhYiI6MiwibHVtaW4iOmZhbHNlLCJnZW4iOjAsImhlYXQiOjAuNSwieHAiOjB9LCJuIjoiVGVzdGxpbmcifQ",
+   "decoded": "{\"genome\":{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"name\":\"Testling\"}",
+   "roundTripGenome": false
+  }
+ },
+ "whereCodes": {
+  "deep_region": {
+   "code": "CF1-eyJ0IjoicCIsImciOls4MTAwLC00MjAwLDkuMjUsMSwwLjEsMi45LDMxMzM3LDBdLCJzIjpbLTEyLDQ0LDddLCJwIjo0MjQyLCJuIjoiVGVzdCBQbGFjZSJ9",
+   "decoded": "{\"name\":\"Test Place\",\"where\":{\"gal\":{\"dwarf\":false,\"home\":false,\"quasar\":false,\"rot\":2.9,\"seed\":31337,\"size\":9.25,\"sp\":1,\"tilt\":0.1,\"x\":8100,\"y\":-4200},\"pseed\":4242,\"star\":{\"seed\":7,\"x\":-12,\"y\":44},\"type\":\"planet\"}}"
+  },
+  "home_planet": {
+   "code": "CF1-eyJ0IjoicCIsImciOls5MCwtNjAsMTQuNSw0LDAuNjIsMS4xMyw5OTksMV0sInMiOls1NjAsMTcwLDQyNDI0Ml0sInAiOjEzMywibiI6IlRlc3QgUGxhY2UifQ",
+   "decoded": "{\"name\":\"Test Place\",\"where\":{\"gal\":{\"dwarf\":false,\"home\":true,\"quasar\":false,\"rot\":1.13,\"seed\":999,\"size\":14.5,\"sp\":4,\"tilt\":0.62,\"x\":90,\"y\":-60},\"pseed\":133,\"star\":{\"seed\":424242,\"x\":560,\"y\":170},\"type\":\"planet\"}}"
+  },
+  "minimal": {
+   "code": "THROW:Cannot read properties of undefined (reading 'x')",
+   "decoded": "null"
+  },
+  "star_only": {
+   "code": "CF1-eyJ0IjoicyIsImciOlswLDAsMTAsMCwwLDAsMSwwXSwicyI6WzEsMiw5OV0sIm4iOiJUZXN0IFBsYWNlIn0",
+   "decoded": "{\"name\":\"Test Place\",\"where\":{\"gal\":{\"dwarf\":false,\"home\":false,\"quasar\":false,\"rot\":0,\"seed\":1,\"size\":10,\"sp\":0,\"tilt\":0,\"x\":0,\"y\":0},\"star\":{\"seed\":99,\"x\":1,\"y\":2},\"type\":\"star\"}}"
+  }
+ },
+ "normGenome": {
+  "apex_12": {
+   "input": "{\"accent\":9,\"apex\":12,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":true,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"wild\":1}",
+   "output": "{\"accent\":9,\"apex\":12,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":true,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"wild\":1}",
+   "changed": true
+  },
+  "apex_invalid": {
+   "input": "{\"accent\":9,\"apex\":3,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "fauna_basic": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "flora_basic": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.3,\"kingdom\":\"flora\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"flora\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "fungi_basic": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.7,\"kingdom\":\"fungi\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fungi\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "gen5_hybrid": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":5,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":true,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"wild\":1}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":5,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":true,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"wild\":1}",
+   "changed": true
+  },
+  "hostile_empty": {
+   "input": "{}",
+   "output": "{\"accent\":0,\"behavior\":0,\"body\":0,\"brood\":0,\"color\":0,\"detail\":0,\"diet\":0,\"eyes\":0,\"fed\":0,\"form\":0,\"gen\":0,\"habitat\":0,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":0,\"loco\":0,\"lumin\":false,\"metab\":0,\"pattern\":0,\"repro\":0,\"seed\":0,\"sense\":0,\"size\":0,\"skin\":0,\"tail\":0,\"temper\":0,\"trait\":0}",
+   "changed": true
+  },
+  "hostile_extrakeys": {
+   "input": "{\"__evil\":\"x\",\"_mult\":99,\"_wf\":1,\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":99999,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":99999,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"__evil\":\"x\",\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":200,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":200,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "hostile_infinity": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":\"Infinity\",\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":\"-Infinity\"}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":0,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "hostile_missing": {
+   "input": "{\"seed\":7}",
+   "output": "{\"accent\":0,\"behavior\":0,\"body\":0,\"brood\":0,\"color\":0,\"detail\":0,\"diet\":0,\"eyes\":0,\"fed\":0,\"form\":0,\"gen\":0,\"habitat\":0,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":0,\"loco\":0,\"lumin\":false,\"metab\":0,\"pattern\":0,\"repro\":0,\"seed\":7,\"sense\":0,\"size\":0,\"skin\":0,\"tail\":0,\"temper\":0,\"trait\":0}",
+   "changed": true
+  },
+  "hostile_nan": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fer\":\"NaN\",\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":\"NaN\",\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":\"NaN\"}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"fer\":null,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":0,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "hostile_strings": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":\"2\",\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":\"4\",\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":\"999\"}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":2,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "microbe_basic": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.1,\"kingdom\":\"microbe\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"microbe\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "par_8": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"par\":8,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"par\":8,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "par_invalid": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"par\":99,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "size_0": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":0,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":0,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "size_12_drifted": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":5,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":12,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":5,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":12,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "size_5": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":5,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":5,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "size_6_drifted": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":3,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":6,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":3,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":6,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "size_huge": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":1000000,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":1000000,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "size_negative": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":-3,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":3,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "xp_leveled": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":4200}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  },
+  "xp_zero": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":0}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":0,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true
+  }
+ },
+ "sanitizeSavedGenome": {
+  "apex_12": {
+   "input": "{\"accent\":9,\"apex\":12,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":true,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"wild\":1}",
+   "output": "{\"accent\":9,\"apex\":12,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":true,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"wild\":1}",
+   "changed": false,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  },
+  "apex_invalid": {
+   "input": "{\"accent\":9,\"apex\":3,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  },
+  "fauna_basic": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": false,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  },
+  "flora_basic": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.3,\"kingdom\":\"flora\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.3,\"kingdom\":\"flora\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": false,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  },
+  "fungi_basic": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.7,\"kingdom\":\"fungi\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.7,\"kingdom\":\"fungi\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": false,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  },
+  "gen5_hybrid": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":5,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":true,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"wild\":1}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":5,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":true,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"wild\":1}",
+   "changed": false,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  },
+  "hostile_empty": {
+   "input": "{}",
+   "output": "null",
+   "changed": true,
+   "sizeIn": null,
+   "sizeOut": null,
+   "sizePreserved": false
+  },
+  "hostile_extrakeys": {
+   "input": "{\"__evil\":\"x\",\"_mult\":99,\"_wf\":1,\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":99999,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":99999,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"__evil\":\"x\",\"accent\":9,\"behavior\":10,\"body\":5,\"brood\":200,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fed\":200,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  },
+  "hostile_infinity": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":\"Infinity\",\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":\"-Infinity\"}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":null,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":0}",
+   "changed": true,
+   "sizeIn": "Infinity",
+   "sizeOut": "null",
+   "sizePreserved": false
+  },
+  "hostile_missing": {
+   "input": "{\"seed\":7}",
+   "output": "{\"seed\":7}",
+   "changed": false,
+   "sizeIn": null,
+   "sizeOut": null,
+   "sizePreserved": true
+  },
+  "hostile_nan": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fer\":\"NaN\",\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":\"NaN\",\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":\"NaN\"}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"fer\":null,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":null,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":0}",
+   "changed": true,
+   "sizeIn": "NaN",
+   "sizeOut": "null",
+   "sizePreserved": false
+  },
+  "hostile_strings": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":\"2\",\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":\"4\",\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":\"999\"}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":\"2\",\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":\"4\",\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":486}",
+   "changed": true,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  },
+  "microbe_basic": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.1,\"kingdom\":\"microbe\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.1,\"kingdom\":\"microbe\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": false,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  },
+  "par_8": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"par\":8,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"par\":8,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": false,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  },
+  "par_invalid": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"par\":99,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": true,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  },
+  "size_0": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":0,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":0,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": false,
+   "sizeIn": "0",
+   "sizeOut": "0",
+   "sizePreserved": true
+  },
+  "size_12_drifted": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":5,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":12,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":5,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":12,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": false,
+   "sizeIn": "12",
+   "sizeOut": "12",
+   "sizePreserved": true
+  },
+  "size_5": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":5,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":5,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": false,
+   "sizeIn": "5",
+   "sizeOut": "5",
+   "sizePreserved": true
+  },
+  "size_6_drifted": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":3,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":6,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":3,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":6,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": false,
+   "sizeIn": "6",
+   "sizeOut": "6",
+   "sizePreserved": true
+  },
+  "size_huge": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":1000000,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":1000000,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": false,
+   "sizeIn": "1000000",
+   "sizeOut": "1000000",
+   "sizePreserved": true
+  },
+  "size_negative": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":-3,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":-3,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7}",
+   "changed": false,
+   "sizeIn": "-3",
+   "sizeOut": "-3",
+   "sizePreserved": true
+  },
+  "xp_leveled": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":4200}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":486}",
+   "changed": true,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  },
+  "xp_zero": {
+   "input": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":0}",
+   "output": "{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7,\"xp\":0}",
+   "changed": false,
+   "sizeIn": "4",
+   "sizeOut": "4",
+   "sizePreserved": true
+  }
+ },
+ "cleanName": {
+  "empty": "\"\"",
+  "html": "\"bEvilName/b with a very \"",
+  "plain": "\"Testling\"",
+  "spaces": "\"padded\"",
+  "unicode": "\"Zoë — Ω星 🜏\"",
+  "very_long": "\"xxxxxxxxxxxxxxxxxxxxxxxx\""
+ }
+}

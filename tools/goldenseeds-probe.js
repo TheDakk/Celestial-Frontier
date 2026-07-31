@@ -39,10 +39,17 @@
     guardianFor, planetParams, planetDescriptor, systemFor, starDescriptor, biomeFor,
   } = H;
 
-  /* ---------- canonical form (mirrors tools/probe.js san()) ---------- */
-  const seen = new WeakSet();
-  function san(v, d) {
+  /* ---------- canonical form (mirrors tools/probe.js san()) ----------
+     ⚠ `seen` MUST be per-canon-call, not module-level. tools/probe.js keeps one
+     WeakSet for the whole run, which is safe there because each probe canonicalises
+     freshly-built values exactly once. Here the same object can legitimately be
+     canonicalised more than once (caches, shared sub-objects across seeds), and a
+     shared WeakSet would emit "«cycle»" for the SECOND and later sightings —
+     silently baking a placeholder into the corpus instead of the real value.
+     Found by inspecting a captured fixture and noticing a field had vanished. */
+  function san(v, d, seen) {
     d = d || 0;
+    seen = seen || new WeakSet();
     if (d > 8) return '«deep»';
     if (v === undefined) return null;
     if (v === null) return null;
@@ -51,17 +58,17 @@
     if (t === 'string' || t === 'boolean') return v;
     if (t === 'function') return '«fn»';
     if (t === 'object') {
-      if (Array.isArray(v)) return v.map(function (e) { return san(e, d + 1); });
+      if (Array.isArray(v)) return v.map(function (e) { return san(e, d + 1, seen); });
       if (seen.has(v)) return '«cycle»';
       seen.add(v);
       const o = {};
       const ks = Object.keys(v).sort();
-      for (let i = 0; i < ks.length; i++) o[ks[i]] = san(v[ks[i]], d + 1);
+      for (let i = 0; i < ks.length; i++) o[ks[i]] = san(v[ks[i]], d + 1, seen);
       return o;
     }
     return String(v);
   }
-  const canon = function (v) { try { return JSON.stringify(san(v, 0)); } catch (e) { return 'ERR:' + (e && e.message); } };
+  const canon = function (v) { try { return JSON.stringify(san(v, 0, new WeakSet())); } catch (e) { return 'ERR:' + (e && e.message); } };
 
   /* ---------- FNV-1a 32, doubled -> 16 hex chars ---------- */
   function fnv(s, base) {
