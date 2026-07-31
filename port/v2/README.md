@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (Phase 1+)
 
-**Status: modules 1–8 of 14 ported and parity-green** (2026-07-31). This workspace is the
+**Status: modules 1–9 of 14 ported and parity-green** (2026-07-31). This workspace is the
 port itself; everything else under `port/` is plan, evidence, and decisions.
 
 ```
@@ -57,7 +57,8 @@ syntax-broken test file is silently not collected — **count the test files, no
 | 6 | worldgen | systemFor ×1k + 6 probes | ⚠ `systemSol` probe **deferred**: fingerprint value encodes probe-order mutation (`_pal` cached by descriptor probes onto memoized P). Descriptors owes the replay. `slimGal` carried here temporarily (main.js:3014). |
 | 7 | surveyphrases | climateBand ×1k | phrase builders pinned via planetDescriptor later |
 | 8 | speciestraits | 30k golden + 3 probes + **the 9g invariant guard** | GRADE_TIERS collapse finally has a test |
-| 9–14 | genome · encutil · genetics · ecology · descriptors · combatcore | — | next; Descriptors ~2,800 lines, lift only |
+| 9 | genome | 71k golden (makeGenome ×4 kingdoms, speciesGrade, sapienceTier, classifyRealm, guardianFor, describeSpecies) + 7 probes | **9g part 2**: the collapse now guarded END-TO-END through speciesGrade incl. forced apex tiers 12–14. lift.mjs REGISTRY rows for surveyphrases/speciestraits/genome filled (were placeholders) |
+| 10–14 | encutil · genetics · ecology · descriptors · combatcore | — | next; Descriptors ~2,800 lines, lift only |
 
 **Then Gate B close-out:** no-DOM-imports lint · SessionRNG (reviewer §2.1) · extend the
 golden corpus with a noise generator (an intended *addition*, never re-capture-to-pass) ·
