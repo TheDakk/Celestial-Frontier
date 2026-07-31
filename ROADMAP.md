@@ -21,7 +21,7 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF — as of 2026-07-31. ★ v1.8.7 "TRUE TO FORM" IS LIVE ◀◀◀
+## ▶▶▶ SESSION HANDOFF — as of 2026-07-31. ★ v1.8.8 "PAID FOR PLAYING" IS LIVE ◀◀◀
 ## [HYGIENE 2026-07-31] The v1.8.6 batch block moved VERBATIM to the top of ROADMAP_ARCHIVE.md
 ##   (this file had reached 443 lines; it is ~348 now). It is kept in full for one reason worth
 ##   naming: it is the clearest example on record of TWO CORRECT FIXES FOR ONE BUG, SHIPPED
@@ -31,13 +31,18 @@
 ##   Source AND site pushed; full battery green; live verified end-to-end after deploy, not assumed.
 ##
 ## ═══ WHERE THINGS STAND ═══
-## ★ v1.8.7 "TRUE TO FORM" SHIPPED 2026-07-31 — the round-9 response, and above all a REGRESSION
-##   FIX. Round 9 reviewed v1.8.6 hunk by hunk, closed 6 of 7 round-8 findings, and caught that
-##   ONE LINE WE HAD SHIPPED WAS CORRUPTING LIVE SAVES: v1.8.6 fixed `size` TWICE, in the same
-##   release, and the two fixes disagreed. ~12% of bred creatures were being rewritten into
-##   titanic, maximum-vitality ones on their next load. READ THE 2026-07-31 BATCH LOG FIRST.
-##   ⚠ THE STANDING DESIGN CALL IS UNCHANGED: CF1805-05 (harvest) is NOT CLOSABLE offline and needs
-##   a decision, not a patch — see ECONOMY_LOOT_CRAFTING's addendum before touching it.
+## ★ TWO RELEASES SHIPPED 2026-07-31, in order. READ BOTH BATCH LOGS.
+##   · v1.8.7 "True to Form" — the round-9 response, and above all a REGRESSION FIX. Round 9
+##     reviewed v1.8.6 hunk by hunk and caught that ONE LINE WE HAD SHIPPED WAS CORRUPTING LIVE
+##     SAVES: v1.8.6 fixed `size` TWICE, in the same release, and the two fixes disagreed. ~12% of
+##     bred creatures were being rewritten into titanic, maximum-vitality ones on their next load.
+##   · v1.8.8 "Paid for Playing" — ★ CF1805-05 CLOSED, on Nick's design call ("yield tracks
+##     engagement rather than the wall"). THE PREVIOUS ENTRY HERE SAID THIS WAS "NOT CLOSABLE
+##     OFFLINE", and that was true only of the WALL CLOCK. Harvest now runs on COSMIC_EPOCH — a
+##     persisted, monotonic PLAY-TIME accumulator the game has used for biosphere recovery since
+##     v1.7 — so there is no Date.now() left in the path to defend. Three rounds of mitigations
+##     were replaced by removing the untrustworthy clock instead of hardening around it.
+##     ⚠ THE LESSON: when a defence keeps failing, check whether you are defending the wrong thing.
 ##   ═══ THE LESSON COUNT, WHICH IS THE POINT OF THIS SECTION ═══
 ##   SEVEN times a check here has passed while the thing it guarded was broken — and round 9 added
 ##   FOUR MORE green-but-wrong states in a single afternoon, all in ONE new gate and its fix:
@@ -49,31 +54,35 @@
 ##   THE LAWS THAT FOLLOW, now in PROCESS_LAWS.md: WHEN A NEW INSTRUMENT FIRES — OR PASSES —
 ##   SUSPECT THE INSTRUMENT FIRST · REPRODUCE THE REPORTED GEOMETRY, NOT A CONVENIENT ONE ·
 ##   ASSERT THE OUTCOME, NOT THE CODE PATH · TWO CORRECT FIXES FOR ONE BUG CAN DISAGREE.
-## LIVE: v1.8.7 "True to Form" at https://celestialfrontier.github.io/ (shipped 2026-07-31) —
-##   the round-9 response, and a REGRESSION FIX for a v1.8.6 line that was corrupting live saves.
-##   Predecessors: v1.8.6 "Kept Promises" (0bfc904) and v1.8.5 "First Touch" (e20d62c), one day each.
-## GATES AT SHIP (v1.8.7): validate 9/9 · fingerprint MATCH 50/50 · smoke 553/0 · uilayout
+## LIVE: v1.8.8 "Paid for Playing" at https://celestialfrontier.github.io/ (shipped 2026-07-31) —
+##   CF1805-05 CLOSED: harvest now runs on PLAY time, so the last open exploit has nowhere to
+##   stand. Predecessors: v1.8.7 "True to Form" (4ee4016, the round-9 regression fix), v1.8.6 and
+##   v1.8.5 — three releases in two days, each answering an external round.
+## GATES AT SHIP (v1.8.8): validate 9/9 · fingerprint MATCH 50/50 · smoke 553/0 · uilayout
 ##   787 checks / 10 viewports (was 763 — the new training-DOCK pass) · balance PASS ·
-##   simrun dom 0 findings · duelxp-check 6/0 · sizedrift-check 4/4. bootperf NOT re-run: nothing
+##   simrun dom 0 findings · duelxp 6/0 · sizedrift 4/4 · harvestclock 5/5. bootperf NOT re-run: nothing
 ##   in this batch touches boot, art scheduling or the first-run path (v1.8.5's PASS still stands).
 ## ARC STATE: v1.7 "The Forge" COMPLETE and archived. v1.8 "The Connection" COMPLETE
 ##   (v1.8.0 arc → v1.8.1/.2 playtest → v1.8.3 external battery → v1.8.4 round 7 → v1.8.5
-##   the cold-boot fix + two new gates → v1.8.6 round 8 → v1.8.7 round 9). v1.8.3/.4/.5 batch
+##   the cold-boot fix → v1.8.6 round 8 → v1.8.7 round 9 → v1.8.8 the harvest clock). Older batch
 ##   logs are in ROADMAP_ARCHIVE.md.
-## SAVE FIELDS added across v1.8: vce/cbx (audio toggles), xpf (one-shot XP ledger). All
-##   absent-safe. NO save-shape change in v1.8.4 / .5 / .6 / .7.
+## SAVE FIELDS added across v1.8: vce/cbx (audio toggles), xpf (one-shot XP ledger), and
+##   ★ v1.8.8 conq[].e (the epoch at last harvest). All absent-safe. No shape change in .4/.5/.6/.7.
+##   ⚠ conq[].e ABSENT ⇒ READY, so a pre-v1.8.8 empire pays one cycle per world on first load —
+##   deliberate and one-time. On load it is clamped to [0, EPOCH_BASE]: a future-epoch save would
+##   otherwise hold a world hostage forever.
 ##   ⚠ SAVE-VALUE clamps, stated carefully because this is where v1.8.6 went wrong: `fed` and
 ##   `brood` ARE clamped to 200 at their mutation sites (every consumer already enforced that
 ##   ceiling, so it only stops the card quoting a number the game does not honour). `size` is
 ##   **NOT** clamped and MUST NOT BE — v1.8.6 clamped it and permanently rewrote ~12% of bred
 ##   creatures. See SAVE_SYSTEM.md's v1.8.7 section; guarded by tools/sizedrift-check.js.
-## ⚠ TITLE CAVEAT (three releases running): "True to Form" — like "Kept Promises" and "First
-##   Touch" — was CHOSEN BY CLAUDE. Nick has never named one. Flagged rather than blocked on,
-##   since he had said go; one string in RELEASES[0] + a redeploy to change. ASK next time.
+## ⚠ TITLE CAVEAT (FOUR releases running): "Paid for Playing", "True to Form", "Kept Promises"
+##   and "First Touch" were all CHOSEN BY CLAUDE. Nick has never named one and has never objected,
+##   but he has never been asked either. One string in RELEASES[0] + a redeploy. ASK next time.
 ##
 ## ═══ ▶ NEXT — the actionable list, highest value first ═══
-## 1. ★ NICK'S iPHONE / iPAD RE-VERIFY of v1.8.7 — now THREE things, and (c) is new and the most
-##    valuable, because it is the only one an instrument has never seen:
+## 1. ★ NICK'S iPHONE / iPAD RE-VERIFY of v1.8.8 — now FOUR things, and (c)/(d) are the ones no
+##    instrument has ever seen:
 ##    (a) training steps 5 / 6 / 7, still unverified on a device since the v1.8.3 fix;
 ##    (b) the FIRST 10 SECONDS of a brand-new expedition. v1.8.5 took the naming screen from
 ##        unanswerable-for-6.4s to ~1.9s on a 4x-throttled profile — the window a new player
@@ -88,6 +97,12 @@
 ##        budge (25% -> 27%), so the burial was real and was not what was walling players. Their
 ##        driver is weakest exactly there, so step 8 is currently UNMEASURED, not defective.
 ##        What a device pass can settle that no instrument has: whether a human gets past it.
+##    (d) ★ NEW — THE HARVEST CADENCE, PLAYED. v1.8.8 moved harvest onto PLAY time
+##        (HARVEST_EPOCHS=2 ≈ 40 min of exploring per world). The gate proves it cannot be wound
+##        and that readiness arrives; it CANNOT tell you whether the cadence FEELS right. Play a
+##        real session with a few settled worlds and answer one question: does the empire pay often
+##        enough to feel worth conquering, without paying so often it trivialises stardust?
+##        HARVEST_EPOCHS is the single knob. This is a balance call and it is yours.
 ## 2. ✔ EXTERNAL ROUND 8 — DELIVERED 2026-07-30, and answered the same day (see the batch log).
 ##    TWO independent bundles arrived: the round-8 fleet review (18 archetypes · 12 goal-directed
 ##    verbs · 214 sessions, 7 new CF1805-xx items) and a separate full-battery audit (1,000
@@ -240,6 +255,45 @@
 ##   review lenses + raw results). audits/README.md indexes both and records how to recover an OLD
 ##   build from git to negative-control a new gate (uilayout.js --url=FILE).
 ##
+
+## ▶▶▶ 2026-07-31 ★ v1.8.8 "PAID FOR PLAYING" — CF1805-05 CLOSED. THE LAST OPEN EXPLOIT.
+##   Nick: "Should we yield track engagement rather than the wall... I want to get these fixes in so
+##   we can move with the port over." → "go ahead with 1.8".
+##   ★ THE ANSWER WAS ALREADY IN THE CODEBASE. Rounds 7, 8 and 9 chased a wall-clock harvest exploit
+##   through THREE mitigations (CF1802-14's in-session monotonic gate, _hvFloor's load clamp,
+##   CF1805-07's rate limit) and none could close it — because the defect was never in the guard,
+##   it was in the CLOCK. An offline game cannot verify Date.now().
+##   COSMIC_EPOCH is a PERSISTED, MONOTONIC PLAY-TIME accumulator: EPOCH_BASE (saved as `epoch`)
+##   plus perfTime()/EPOCH_TICK this session. It never reads the OS clock, survives a reload, and
+##   cannot be wound. BIOSPHERE POOLS AND EVOLUTION HAVE RUN ON IT SINCE v1.7, when EPOCH_TICK was
+##   deliberately slowed 240→1200 as an ANTI-FARM change. Harvest was the ONLY regeneration system
+##   still keyed to the wall. So this is not a new mechanic — it makes the outlier match the pattern
+##   the game already chose, and there is no Date.now() left in the path to defend.
+##   · HARVEST_EPOCHS=2 (~40 min of PLAY per world) is the single knob. An engaged player earns
+##     slightly FASTER than the old 1-hour wall cadence; an idle one no longer accrues while away.
+##     "The empire pays you for playing, not for waiting."
+##   · SAVE: `conq[].e` is additive and ABSENT-SAFE — a ≤v1.8.7 empire reads ready and pays one
+##     cycle per world on first load (deliberate; the alternative penalises it for our change).
+##     On load `e` is clamped to [0, EPOCH_BASE] — a future-epoch save would hold a world hostage.
+##   · ONE PREDICATE, FOUR CALL SITES. `_harvestReady` is read by the button face, the survey card,
+##     the panel cache key AND doHarvest. That is the round-9 lesson applied prospectively: v1.8.6
+##     computed the same truth about `size` in two places and they disagreed. A world can no longer
+##     look ready and then refuse.
+##   · COPY: the Guide, both tooltips and the conquest toast no longer promise an hourly harvest.
+##     ⚠ Release-note history (v1.7/v1.8 entries) still says "hourly" and MUST STAY — those are
+##     accurate records of what those releases shipped.
+##   · `_hvMono` deleted. `HARVEST_CD` survives only as the load-path DISPLAY clamp and gates nothing.
+##   NEW GATE tools/harvestclock-check.js — winds a simulated device clock forward a FULL DAY and
+##   asserts no payout, then asserts readiness DOES arrive on play time, then that HARVEST_CD is
+##   gone from doHarvest entirely. 5/5 here; on v1.8.7 it reports 3 failures including the payout.
+##   ⚠⚠ AND IT CAUGHT ITSELF FIRST, AGAIN. Its original last check ("Date.now() is never compared to
+##   HARVEST_CD") PASSED on v1.8.7 where the exploit was live, because the two sit on different
+##   statements. A check that passes for the wrong reason is worse than none — replaced with
+##   "HARVEST_CD does not appear in doHarvest", which discriminates.
+##   GATES: validate 9/9 · fingerprint MATCH 50/50 · smoke 553/0 · uilayout 787/10 · balance PASS ·
+##   duelxp 6/0 · sizedrift 4/4 · harvestclock 5/5.
+##   ⚠ TITLE: "Paid for Playing" chosen by Claude (fourth running). Nick has still never named one.
+##   ▶ NEXT PER NICK: gather more external reviews to double-check this batch, THEN Phase Zero.
 
 ## ▶▶▶ 2026-07-31 ★ v1.8.7 "TRUE TO FORM" — ROUND 9 RESPONSE. A REGRESSION FIX, and it was OURS.
 ##   Nick: "I think we finally got some great feedback... Check this out." → "Yes please let's do it."

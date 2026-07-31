@@ -253,5 +253,8 @@
   "_sanitizeSavedGenome",
   "_ascActive",
   "startDuelWithCode",
-  "FA_SIZE"
+  "FA_SIZE",
+  "COSMIC_EPOCH",
+  "HARVEST_EPOCHS",
+  "_harvestReady"
 ]

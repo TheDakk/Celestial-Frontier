@@ -1,6 +1,6 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js). See the 2026-07-30 addendum and its 2026-07-31 CORRECTION — the harvest exploit is OPEN by decision, and the charter limit costs a reload, not ten minutes.
+**STATUS:** matches code as of 2026-07-31 (verified against main.js). ⭐ Read the v1.8.8 RESOLVED section at the end FIRST — harvest now runs on PLAY time, and the long-open CF1805-05 clock exploit is closed by removing the wall clock rather than defending it.
 **Purpose:** The material economy — mining dead worlds into Cargo, spending it at the Shipyard (Fabricator + Research), crafting the gear/relic ladder, the item tooltip card, and the v1.6 AFFIX/LOOT core that imbues worn gear with seeded bonus stats.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 **Cross-reference (v1.7):** the full v1.7 Forge economy — the 47-material registry with
@@ -232,3 +232,55 @@ stamp cannot survive a reload at all, because `perfTime()` restarts at zero.
 The limit is kept because it is free and it binds the in-session case honestly. The **comment in
 the source now states the real bound** rather than the aspirational one — which is the whole point,
 given that round 8's own pattern was *a comment that claims more than the code delivers*.
+
+---
+
+## ⭐ RESOLVED 2026-07-31 (v1.8.8) — HARVEST RUNS ON THE EPOCH CLOCK
+
+**CF1805-05 is closed.** Nick's call: *"yield tracks engagement rather than the wall."* The two
+addenda above describe three rounds of trying to defend a wall-clock cooldown and concluding it
+could not be done. Both remain accurate about *why*; this section supersedes their conclusion.
+
+**The defect was never in the guard — it was in the clock.** An offline game cannot verify
+`Date.now()`, so every mitigation was a rate limit at best. The fix removes the wall clock from the
+path rather than defending it.
+
+**It is not a new mechanic.** `COSMIC_EPOCH` is already a *persisted, monotonic play-time
+accumulator*: `EPOCH_BASE` (saved as `epoch`) plus `perfTime()/EPOCH_TICK` for the current session.
+It never reads the OS clock, it survives a reload, and it cannot be wound. **Biosphere pools and
+creature evolution have run on it since v1.7**, when `EPOCH_TICK` was deliberately slowed 240 → 1200
+as an anti-farm change. Harvest was the *only* regeneration system still keyed to the wall — this
+makes the outlier match the pattern the game already chose.
+
+```js
+const HARVEST_EPOCHS = 2;        /* ≈ 40 minutes of PLAY per world — the single knob */
+function _harvestReady(c){ return !!c && (c.e == null || (COSMIC_EPOCH - (+c.e||0)) >= HARVEST_EPOCHS); }
+```
+
+| | before (v1.8.7) | after (v1.8.8) |
+|---|---|---|
+| clock | `Date.now()` vs `HARVEST_CD` | `COSMIC_EPOCH` (play time) |
+| wind the device clock +1 day | **a free harvest per reload** | **nothing** |
+| idle a week with the game closed | full payout on return | nothing accrues |
+| play 40 minutes | ~0.7 cycles/world | 1 cycle/world |
+
+**Balance.** Two epochs is slightly *more* generous than the old 1-hour wall cadence for someone
+actually playing, and removes idle accrual entirely. That trade is the design statement: **the
+empire pays you for playing, not for waiting.** `HARVEST_EPOCHS` is the only knob.
+
+**Save shape.** `conq[].e` is additive and **absent-safe**: a save from ≤v1.8.7 has no `e`, reads as
+ready, and pays one cycle per world on its first load. Deliberate and one-time — the alternative is
+penalising an existing empire for our clock change. On load, `e` is clamped to `[0, EPOCH_BASE]`: a
+save claiming a future epoch would otherwise hold a world hostage forever.
+
+**One predicate, four call sites.** The button face, the survey card, the panel's cache key and
+`doHarvest` all read `_harvestReady`. That is a direct consequence of the round-9 lesson — v1.8.6
+computed the same truth about `size` in two places and they disagreed. Here a world can never look
+ready and then refuse.
+
+**Guarded by `node tools/harvestclock-check.js`**, which winds a simulated device clock forward a
+full day and asserts no payout, then asserts readiness *does* arrive on play time. It fails on
+v1.8.7 and passes on v1.8.8.
+
+⚠ **`HARVEST_CD` still exists** as the legacy constant and is used by the *load-path display clamp*
+only. It gates nothing. If it ever reappears inside `doHarvest`, the gate above fails by design.

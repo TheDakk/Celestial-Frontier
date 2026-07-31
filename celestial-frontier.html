@@ -13728,7 +13728,7 @@ function renderPanel(p, isLocked){
   const codexStamp=codex.size;
   const _cq=d.planetSeed!=null?conquered.get(d.planetSeed):null;
   const key=d.logId+'|'+st.mode+'|'+(inLog?1:0)+'|'+(isLocked?'L':'')+'|'+codexStamp+'|'+(lifeOpen?'X':'')+(_lifeExpanded===d.logId?'x':'')+
-    '|'+(_cq?('C'+(Date.now()-_cq.t>=HARVEST_CD?'R':'W')):'')+'|'+(d._nameKey?(customNames.get(d._nameKey)||''):'')+'|'+(_favOn?'F':'')+(_homeOn?'H':'')+
+    '|'+(_cq?('C'+(_harvestReady(_cq)?'R':'W')):'')+'|'+(d._nameKey?(customNames.get(d._nameKey)||''):'')+'|'+(_favOn?'F':'')+(_homeOn?'H':'')+
     '|'+(d.planetSeed!=null&&(d.planetSeed===133||landed.has(d.planetSeed)||conquered.has(d.planetSeed))?'G':'')+   /* ground-surveyed (v1.2) */
     '|'+(d.planetSeed!=null&&contacted.has(d.planetSeed)?'K':'')+   /* census known via first contact (v1.2.2) */
     '|'+(tutDone?'':'t')+   /* the ✕ appears only after training */
@@ -14009,8 +14009,8 @@ function renderPanel(p, isLocked){
       } else if(!c){
         conqBtn='<button class="act" data-act="conq" data-guide="conquest" data-tip="Choose a champion — you or a Compendium creature — and battle this world\u2019s apex native">Conquer Planet</button>';
       } else {
-        const ready=Date.now()-c.t>=HARVEST_CD;
-        conqBtn='<button class="act'+(ready?'':' in')+'" data-act="harv" data-guide="harvest" data-tip="Settled worlds yield ☄ Stardust once an hour — and their bioscans are always safe.">'+
+        const ready=_harvestReady(c);
+        conqBtn='<button class="act'+(ready?'':' in')+'" data-act="harv" data-guide="harvest" data-tip="Settled worlds yield ☄ Stardust as you explore — and their bioscans are always safe.">'+
           (ready?'Harvest Stardust — ready':'Settled — replenishing')+'</button>';
       }
     } else if(!glance && d.planetSeed===133 && conquered.has(133)){
@@ -14019,8 +14019,8 @@ function renderPanel(p, isLocked){
          never entered the conquest block — the one settlement a Sol-locked
          explorer HAS never paid. Home pays like any settled world now. */
       const cE=conquered.get(133);
-      const readyE=Date.now()-cE.t>=HARVEST_CD;
-      conqBtn='<button class="act'+(readyE?'':' in')+'" data-act="harv" data-guide="harvest" data-tip="Home pays its keep — ☄ Stardust once an hour, like every settled world.">'+
+      const readyE=_harvestReady(cE);
+      conqBtn='<button class="act'+(readyE?'':' in')+'" data-act="harv" data-guide="harvest" data-tip="Home pays its keep — ☄ Stardust as you explore, like every settled world.">'+
         (readyE?'Harvest Stardust — ready':'Settled — replenishing')+'</button>';
     }
     /* lifeless worlds carry the elements — the dead-world loop. Prospecting
@@ -16666,10 +16666,19 @@ function loadSave(){
        to at most one HARVEST_CD before the save's own stamp: a genuinely long-
        away player still gets exactly one ready harvest per world; a mass edit
        gets the same (one cycle), not an infinite empire-wide payout. */
+    /* v1.8.8: the anti-edit clamp on `t` retires with the wall clock — `t` is now a
+       DISPLAY stamp and gates nothing, so there is nothing to defend by clamping it.
+       Readiness rides `e`, an EPOCH count, which is bounded to the epoch clock's own
+       range: a save claiming a future epoch would otherwise hold a world hostage
+       forever, and one claiming a wildly negative epoch would grant a free harvest.
+       ABSENT `e` ⇒ null ⇒ READY (a pre-v1.8.8 empire pays one cycle per world on its
+       first load; deliberate, and the alternative is punishing it for our change). */
     const _hvFloor=Math.max(0, _atL-HARVEST_CD);
     for(const kv of _capA(data.conq,20000)){
       if(!kv || kv[0]==null || !kv[1]) continue;
-      conquered.set(kv[0], {t:clamp(num(kv[1].t), _hvFloor, _nowL), tier:clamp(num(kv[1].tier), 0, TIER_MAX)});
+      const _row={t:clamp(num(kv[1].t), _hvFloor, _nowL), tier:clamp(num(kv[1].tier), 0, TIER_MAX)};
+      if(kv[1].e!=null) _row.e=clamp(num(kv[1].e), 0, EPOCH_BASE);
+      conquered.set(kv[0], _row);
     }
     stats.breeds=num(data.breeds); stats.breedwins=num(data.breedwins);
     stats.feeds=num(data.feeds); stats.feedfails=num(data.feedfails);
@@ -19419,7 +19428,7 @@ const GUIDE=[
  {id:'classes', t:'Classes, XP & levels', k:'class level xp experience innate warrior mage berserker paladin assassin fusion wins', body:
   '<p>Every beast is born to a <b>class</b> — Warrior, Berserker, Necromancer, Assassin, Druid… over a hundred, with the legendary ones (<b>Titan, Worldbreaker, Avatar, Chosen One</b>) reserved for summit-grade creatures. A class grants <b>innate arts</b>: always-on powers that need no roll, printed on the specimen card.</p><ul><li>Power is built through wins <em>and through care</em>. Victories feed the XP bar — duels +8; conquests +20 and guardians +60, each climbing with the conquered world&#8217;s tier — and cataloguing a genuinely new species teaches your standing Field Scout +2. Keeping also counts: a welcome meal +1, a taste discovered +2, a bout survived +2, a fight taken to the wire +3, a conquest lost +3, and a defender pushed to the brink +5. Levels wake more innate arts (slots at level 3 and 6), never raw stats.</li><li>A union pays its XP to the <b>newborn</b> — both parents are consumed, so the child is the only one left to carry it: +2 for the union, and +5 the first time you cross two particular species.</li><li><b>Breeding fuses bloodlines:</b> a hybrid usually inherits a class from its parents’ lineages — a Caster line crossed with a Martial line breeds toward Spellswords and Battlemages.</li><li>Levels are <em>your</em> creature’s story — a shared code arrives at level 1.</li></ul>'},
  {id:'conquest', t:'Conquering worlds', k:'conquer settle apex native champion lose forever flag world battle', body:
-  '<p>Any world with fauna can be conquered. Press <b>Conquer Planet</b> on its survey card and choose one champion — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li>The picker&#8217;s reading is <b>simulated, not estimated</b>: it runs the matchup 160 times and reports a band — <b>Favored · Even · Dangerous · Overwhelming</b> — with the sampled percentage and one line saying why. A sample that size cannot tell 0% from a half-percent, so it shows <b>&lt;1%</b> and <b>&gt;99%</b> rather than claiming a certainty it does not have.</li><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested hourly.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries wounds home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a wild-caught creature:</b> it is gone forever.</li><li>A hard-fought loss teaches your champion something — but a world only teaches it <b>once</b>.</li><li><b>Lose with a bred champion:</b> your bloodline crawls home <b>Critical</b> — broken, not dead. Mend it with flora it ♥ loves — a champion fielded while still Critical will not crawl home twice.</li><li><b>Lose fighting yourself:</b> you take the wound instead — it can beat you to the brink but never kill you, and below a quarter health you cannot lead a conquest at all (send a beast, or mend first).</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
+  '<p>Any world with fauna can be conquered. Press <b>Conquer Planet</b> on its survey card and choose one champion — yourself, or any fauna from your Compendium — to face the world’s <b>apex native</b> (its toughest beast; the picker shows your odds).</p><ul><li>The picker&#8217;s reading is <b>simulated, not estimated</b>: it runs the matchup 160 times and reports a band — <b>Favored · Even · Dangerous · Overwhelming</b> — with the sampled percentage and one line saying why. A sample that size cannot tell 0% from a half-percent, so it shows <b>&lt;1%</b> and <b>&gt;99%</b> rather than claiming a certainty it does not have.</li><li><b>Win:</b> the world flies your flag — bioscans are safe forever, ☄ Spoils of Conquest pay out, and the world can be harvested as you explore.</li><li><b>Win ugly, pay for it:</b> a champion that barely survives carries wounds home and fights below strength until mended — see <span data-gt="injuries">Injuries &amp; recovery</span>.</li><li><b>Lose with a wild-caught creature:</b> it is gone forever.</li><li>A hard-fought loss teaches your champion something — but a world only teaches it <b>once</b>.</li><li><b>Lose with a bred champion:</b> your bloodline crawls home <b>Critical</b> — broken, not dead. Mend it with flora it ♥ loves — a champion fielded while still Critical will not crawl home twice.</li><li><b>Lose fighting yourself:</b> you take the wound instead — it can beat you to the brink but never kill you, and below a quarter health you cannot lead a conquest at all (send a beast, or mend first).</li><li>Worlds in farther frontier regions field tougher apex defenders.</li></ul><p>Conquest is also how most Signatures are claimed — see <span data-gt="signatures">The nine Signatures</span>.</p>'},
  {id:'binder', t:'The Binder & the Fifty Paragons', k:'binder collection sets slots types paragon fifty silhouette claim stardust', body:
   '<p>Open <b>🏆 Records</b> and switch to the <b>🗂 Binder</b> tab. You cannot collect individuals out of an infinite universe — so the Binder collects types: fixed pages of slots (every grade, every realm, every body plan, every ability theme…) that are the same for every explorer; your universe decides which specimen fills each.</p><ul><li><b>Sets</b> are curated collections that pay a one-time ☄ Stardust bounty — claim them in the Binder when complete.</li><li><b>The Fifty Paragons</b> are named, one-of-a-kind deep-spectrum legends living on fixed worlds — the same fifty worlds for every explorer. Tap a silhouette to plot a course to its last-known world, then land and <b>Discover Life</b> to catalogue it. Share the coordinates — your friend hunts the very same legend.</li></ul>'},
  {id:'guardians', t:'Apex Guardians', k:'guardian apex named ruler challenge summit empyrean eternal singular crown titan', body:
@@ -19428,8 +19437,8 @@ const GUIDE=[
 {icon:'☄', cat:'Stardust & Progression', blurb:'Economy, harvests, spoils', topics:[
  {id:'stardust', t:'Stardust', k:'stardust essence currency economy breeding odds boost earn', body:
   '<p>☄ Stardust is the expedition’s soft currency. Lifetime Stardust earned passively raises your breeding odds (+1% per 50 earned, up to +15%). The faucets:</p><ul><li><b>⛏ Harvests</b> from settled worlds — see <span data-gt="harvest">Harvesting</span>.</li><li><b>Spoils of Conquest</b> — every world you settle pays out (rarer worlds pay more).</li><li><b>Rare Find Bonus</b> — first discovery of any Legendary+ species.</li><li><b>First Arrival</b> — reaching a system no expedition record precedes you in pays a small +2 ☄.</li></ul>'},
- {id:'harvest', t:'Harvesting', k:'harvest hourly cooldown settled world replenish stardust', body:
-  '<p>Every settled world can be harvested for Stardust once per hour (rarer worlds yield more). The button lives on the world’s survey card — “Settled — replenishing” means come back later. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
+ {id:'harvest', t:'Harvesting', k:'harvest cooldown settled world replenish stardust epoch exploring', body:
+  '<p>Every settled world can be harvested for Stardust (rarer worlds yield more). A world replenishes <b>as you explore</b> — roughly 40 minutes of play, not 40 minutes of waiting — so an empire pays you for playing rather than for the calendar. The button lives on the world’s survey card; “Settled — replenishing” means keep exploring and come back. An empire of settled worlds is a steady Stardust income; visit your conquests.</p>'},
  {id:'mining', t:'Mining & the Cargo hold', k:'mine mining elements minerals deposits cargo hold dead lifeless world vein iron gold prismatium samples field landing inventory icons', body:
   '<p>Dead worlds carry the elements. Every lifeless planet has a deterministic mineral profile by type — iron and titanium in rock, ices and helium-3 on frozen worlds, hydrogen in the gas giants, precious metals in metal worlds — and rarer worlds hide richer veins, up to exotics like Voidglass and Prismatium.</p><ul><li><b>Landing pays.</b> Your first footfall on any world (home aside) collects <b>field samples</b> — a pinch of up to two of its elements and a few ☄ Stardust, richer on rarer worlds. Exploration stocks the hold all by itself.</li><li>Prospecting takes boots on the ground: press a lifeless world&#8217;s <b>Land</b> button, or dive in and confirm the descent — planetfall is a <b>ground survey</b>, and the Mine Deposits button opens with it. (Gas giants, hothouses and molten worlds will fight the landing — see <span data-gt="landing">Landing</span>.) (🛰 Deep Scanners read the veins from orbit, but the drills still need a surface under them.)</li><li><b>The drills run in bursts.</b> Press ⛏ Mine once and the rig pulls a <b>burst</b> — up to ten pulls over a quarter minute — then the drills stand down and want another press. Stop early anytime; a vein can still run dry mid-burst. Every haul varies, and sometimes a <b>rich strike</b> hits a rare pocket. <b>Reserves are finite:</b> the card counts the pulls left, and a world mined to nothing stays mined out forever (there are always more worlds). Crafted mining rigs multiply every haul, and the Auto-Extractor keeps pulling while you&#8217;re away — collect on your next visit.</li><li>Everything lands in your <b>🧰 Cargo hold</b> — it lives on your <b>character screen</b> now, beneath the paperdoll (tap your nameplate, or the 🧰 shortcut that appears with your first cargo). The hold is a Diablo bag under your portrait: a grid of slots — ingots for metals, shards for ices, flasks for gases, cut gems for the exotics. Spending them happens at the <b>🛠 Shipyard</b> (the dock — or the right rail on desktop): the Fabricator and the Research Bench live with the ship they build — and a crafted pack in your Module socket grows the bags themselves. See <span data-gt="research">Research &amp; ships</span>.</li></ul>'},
  {id:'skimming', t:'Stellar skimming & the veins', k:'skim corona star plasma coronium scoop remnant cosmic vein exceptional vein rare materials stellar extraction', body:
@@ -19788,10 +19797,23 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.8.7';
+const GAME_VERSION='1.8.8';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.8.8', title:'Paid for Playing', date:'July 2026', sections:[
+ ['⚖ Balancing', [
+  '🌍 SETTLED WORLDS NOW PAY YOU FOR EXPLORING, NOT FOR WAITING — a conquered world used to replenish on the calendar: one harvest per hour, whether you were playing or the game was closed. It now replenishes as you explore, roughly forty minutes of play per world. If you play, you earn faster than before. If you leave the game closed for a week, your empire waits for you rather than paying out for time you did not spend. This is the same clock your biosphere pools and creature evolution have always used.',
+  '☄ AN EMPIRE YOU LEFT BEHIND PAYS ONCE ON YOUR RETURN — every settled world is ready the first time you open this version, so a long-standing empire is not penalised for the change.'],
+ ],
+ ['🐛 Bug Fixes', [
+  '⏱ THE HARVEST TIMER NO LONGER TRUSTS YOUR DEVICE CLOCK — changing your device’s date could persuade a settled world it had been replenishing for hours. Harvest no longer reads the device clock at all, so there is nothing left to persuade.',
+  '🔘 THE HARVEST BUTTON AND THE HARVEST AGREE — the button face, the survey card and the action itself now read readiness from one place, so a world can never look ready and then refuse.'],
+ ],
+ ['🔧 Under the Hood', [
+  '🧪 A NEW CHECK PROVES THE CLOCK CANNOT BE WOUND — it moves a simulated device clock forward a full day and asserts that a settled world stays exactly as ready as the play-time it has earned. It fails against the previous build, which is the only reason to trust it.'],
+ ],
+]},
 {v:'1.8.7', title:'True to Form', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🧬 YOUR BRED CREATURES KEEP THEIR SIZE — a creature from a long bloodline could come back from a reload as a different size entirely, usually the largest one, with the vitality and portrait to match. Its voice, its body and its Size Classes slot all moved with it. Bloodlines now read the same before and after a reload, and a creature you exported yesterday still matches the one in your Compendium today.',
@@ -20686,12 +20708,21 @@ document.getElementById('deathok').addEventListener('click', wipeSaveAndReload);
 /* ================= PLANETARY CONQUEST & HARVEST =================
    Tame fauna by scanning worlds, then send your three strongest against a
    world's three strongest natives. Win the series and the world is settled —
-   harvest ☄ Stardust from it every hour. */
+   harvest ☄ Stardust from it as you explore (v1.8.8: epochs of PLAY, not wall time). */
 /* ----------------------------------------------------------------
-   @section conquest [app] — planetary conquest & the hourly stardust harvest
-   Owns: HARVEST_CD, apexNative, winEstimate, _conquerTarget, _conquerNative, conquerPlanet, openConquestPicker, runConquestBattle, doHarvest
+   @section conquest [app] — planetary conquest & the play-time stardust harvest
+   Owns: HARVEST_CD, HARVEST_EPOCHS, _harvestReady, apexNative, winEstimate, _conquerTarget, _conquerNative, conquerPlanet, openConquestPicker, runConquestBattle, doHarvest
    ---------------------------------------------------------------- */
-const HARVEST_CD=3600e3;
+const HARVEST_CD=3600e3;   /* legacy wall-clock cadence — RETIRED as a gate in v1.8.8, see doHarvest */
+/* v1.8.8: harvest readiness in EPOCHS of play (EPOCH_TICK = 1200s), not wall time.
+   2 ≈ 40 minutes of exploring per world. The single balance knob. */
+const HARVEST_EPOCHS=2;
+/* ONE predicate, four call sites. The button face, the panel's cache key and
+   doHarvest itself all have to agree about "ready" — and round 9 was a lesson in
+   what happens when two places compute the same truth separately (the `size` wrap
+   and the `size` clamp). If this ever needs to change, it changes once.
+   `e` absent ⇒ ready: a pre-v1.8.8 save has no epoch stamp. */
+function _harvestReady(c){ return !!c && (c.e==null || (COSMIC_EPOCH-(+c.e||0))>=HARVEST_EPOCHS); }
 /* the single toughest native fauna — the champion you must beat to take the world */
 /* ================= THE ELEMENTAL TITANS (v1.5.2c, Nick's Prime Codex
    hunt) ================= Nine named titans, one per element, each
@@ -21059,7 +21090,7 @@ function runConquestBattle(d, champ, native){
           claimSignature(native.titan, {title:(_sg?_sg.el+' — '+native.name:native.name), sub:'titan felled',
             tier:14, hex:'#ffd96a', where:d.where||null});
         }
-        toast('\ud83c\udff4 '+(d.title||'World')+' Settled', champ.name+' overcame '+native.name+'. The world flies your flag \u2014 bioscans here are safe, and you can \u26cf harvest Stardust every hour.');
+        toast('\ud83c\udff4 '+(d.title||'World')+' Settled', champ.name+' overcame '+native.name+'. The world flies your flag \u2014 bioscans here are safe, and you can \u26cf harvest Stardust as you explore.');
         const sd=8+(((d.designation&&d.designation.tier)||1))*5+(native.guardian?40:0);   /* guarded worlds pay a ruler's ransom */
         essence+=sd; stats.essenceEarned=(stats.essenceEarned||0)+sd;
         setTimeout(()=>toast('\u2604 Spoils of Conquest','+'+sd+' Stardust claimed with the world. Total: '+essence+'.'), 1200);
@@ -21122,25 +21153,42 @@ function runConquestBattle(d, champ, native){
     }
   });
 }
-/* ROUND 7 CF1802-14: perfTime() is monotonic from boot — the OS clock is not.
-   An in-session harvest must satisfy BOTH, so winding the device clock forward
-   buys nothing. In-memory only: the load path's _hvFloor already covers reloads,
-   so this needs no save-shape change. */
-const _hvMono=new Map();
+/* v1.8.8 — HARVEST RUNS ON THE EPOCH CLOCK. Nick's call, 2026-07-31: "yield tracks
+   engagement rather than the wall".
+   THE PROBLEM THIS ENDS. Rounds 7-9 chased a wall-clock exploit through three
+   mitigations (CF1802-14 monotonic in-session gate, _hvFloor's load clamp,
+   CF1805-05) and none could close it, because the defect was never in the guard —
+   it was in the CLOCK. An offline game cannot verify Date.now(): winding the device
+   clock forward an hour is indistinguishable from waiting an hour, and every bound
+   tight enough to stop the cheat also punishes an honest player who closed the tab.
+   ~6,200 ☄/hr against 26 by design, and un-fixable as long as the wall clock was
+   the source of truth.
+   THE FIX IS NOT A NEW MECHANIC. COSMIC_EPOCH is already a PERSISTED, MONOTONIC
+   PLAY-TIME accumulator — EPOCH_BASE (saved as `epoch`) plus perfTime()/EPOCH_TICK
+   this session. It never reads the OS clock, it survives a reload, and it cannot be
+   wound. Biosphere pools and evolution have run on it since v1.7, when EPOCH_TICK
+   was deliberately slowed 240→1200 as an ANTI-FARM change. Harvest was the only
+   regeneration system still keyed to the wall, so this makes the outlier match the
+   pattern the game already chose.
+   There is no Date.now() left in this path. The exploit is not mitigated; it has
+   nowhere to stand. `_hvMono` and the load path's harvest clamp both retire with it.
+   SAVE SHAPE: `conq[].e` is additive and ABSENT-SAFE — a save from ≤v1.8.7 has no
+   `e`, reads as ready, and pays one cycle per world on first load. Deliberate and
+   one-time; the alternative is punishing existing empires for our clock change.
+   BALANCE: 2 epochs ≈ 40 minutes of PLAY per world. An engaged player earns slightly
+   faster than the old 1-hour wall cadence; an idle one no longer accrues while away.
+   That trade is the point — the empire pays you for playing, not for waiting.
+   HARVEST_EPOCHS is the single knob. See ECONOMY_LOOT_CRAFTING.md. */
 function doHarvest(d){
   const c=conquered.get(d.planetSeed); if(!c) return;
-  const now=Date.now();
-  const _mp=_hvMono.get(d.planetSeed);
-  if(_mp!=null && (perfTime()-_mp)*1000<HARVEST_CD){
-    toast('Harvest','This world is still replenishing — ready in '+fmtRemain(HARVEST_CD-(perfTime()-_mp)*1000)+'.');
+  const _e=(c.e==null)?null:(+c.e||0);
+  if(_e!=null && (COSMIC_EPOCH-_e)<HARVEST_EPOCHS){
+    const _left=HARVEST_EPOCHS-(COSMIC_EPOCH-_e);
+    toast('Harvest','This world is still replenishing — about '+Math.ceil(_left*EPOCH_TICK/60)+' more minutes of exploring.');
     return;
   }
-  if(now-c.t<HARVEST_CD){
-    toast('Harvest','This world is still replenishing — ready in '+fmtRemain(HARVEST_CD-(now-c.t))+'.');
-    return;
-  }
-  c.t=now;
-  _hvMono.set(d.planetSeed, perfTime());
+  c.e=COSMIC_EPOCH;
+  c.t=Date.now();   /* display only — "last harvested" on the card; never gates anything */
   const yieldN=6+(c.tier||0)*4;
   essence+=yieldN;
   stats.essenceEarned=(stats.essenceEarned||0)+yieldN;

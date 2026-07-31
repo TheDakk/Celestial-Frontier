@@ -1,6 +1,6 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
-**STATUS:** matches code as of 2026-07-29 (verified against main.js).
+**STATUS:** matches code as of 2026-07-31 (verified against main.js). See the 2026-07-31 addendum — the epoch clock now drives the stardust harvest as well as biosphere recovery, so EPOCH_TICK is a shared knob.
 **Purpose:** How a surveyed world's revealed life earns Compendium pages — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -173,3 +173,26 @@ designed brake is that a failed pairing destroys both parents.
 **Note for future work:** the Guide has always said *"The survey reveals the roster; it catalogues
 nothing."* The documentation was correct and the code had drifted away from it. When a doc and the
 code disagree, that is a finding either way — not automatically a stale doc.
+
+---
+
+## ADDENDUM 2026-07-31 (v1.8.8) — the epoch clock now has a second consumer
+
+`COSMIC_EPOCH` was described above as *"the one clock-driven value in the game"*. As of v1.8.8 it
+drives **two** systems: biosphere recovery (as before) and **the settled-world stardust harvest**.
+
+That was not a new mechanic but a correction. Harvest had run on `Date.now()` since it shipped, and
+three external rounds proved a wall-clock cooldown cannot be defended in an offline game. The epoch
+clock already had every property the harvest needed and the biosphere had relied on since v1.7:
+persisted across reloads (`EPOCH_BASE`), monotonic within a session (`perfTime`), and **never reads
+the OS clock**, so it cannot be wound.
+
+> **Worth generalising:** if a system needs "time has passed" and the answer must survive a reload
+> *and* resist tampering, `COSMIC_EPOCH` is the answer this codebase already chose. `EPOCH_TICK`
+> (1200s of play) is the shared cadence; a consumer picks its own multiple —
+> `HARVEST_EPOCHS = 2` ≈ 40 minutes of play.
+
+⚠ **The shared cadence is now a shared dependency.** `EPOCH_TICK` was tuned once for biosphere
+recovery (240 → 1200 in v1.7, an anti-farm change). Changing it now also changes harvest income.
+Retune with both in view — `tools/harvestclock-check.js` and `tools/balance-sim.js` cover the two
+sides. See ECONOMY_LOOT_CRAFTING.md's v1.8.8 section.
