@@ -1,2 +1,21 @@
-/* Hand-written types for the auto-lifted strays. */
+/* Hand-written types for the auto-lifted strays.
+   ⚠ hdGenesFor: the Earth-bestiary branch calls _earthArt (SpeciesArt app
+   module, Phase 4 art port) as a free identifier inside try/catch. No fixture
+   genome carries _earthName/_earthBlend, so parity is unaffected; an
+   Earth-NAMED portrait through THIS lift would silently skip its recipe.
+   Recorded gap — closes with the SpeciesArt port, not Gate B. */
+import type { Genome } from '@cf/domain-genome';
+import type { BattleStats, Combatant } from '@cf/domain-combatcore';
+
 export function cleanName(s: unknown, n?: number): string;
+export function _r2(n: number): number;
+export interface Where { type: string; gal?: Record<string, unknown>; star?: Record<string, unknown>; pseed?: number; }
+export function encodeWhere(w: Where, name?: string): string;
+export function decodeWhere(code: string): { where: Where; name: string | null } | null;
+export function winEstimate(champ: Partial<Combatant> & { genome?: unknown; stats?: BattleStats }, native: { genome: unknown; stats?: BattleStats; [k: string]: unknown }): number;
+export const STAT_KEYS: readonly string[];
+export function floraStat(g: { seed?: number } | null | undefined): string;
+export const BIOME_SETS: Readonly<Record<string, ReadonlyArray<Record<string, unknown>>>>;
+export function biomeFor(P: { seed: number; type?: string }, band: string): Record<string, unknown> | null;
+export function hdGenesFor(g: Genome | Record<string, unknown>): Record<string, unknown>;
+export function _sanitizeSavedGenome(g: unknown): Record<string, unknown> | null;

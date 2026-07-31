@@ -5,7 +5,7 @@
    same call shapes, same seed masking. They are part of the fixture contract. */
 import { describe, it, expect } from 'vitest';
 import { loadFixture, checkGenerator, fnvHash } from '../../../../tests/parity.js';
-import { mulberry32, hashInt, cellRng } from '../src/index.js';
+import { mulberry32, hashInt, cellRng, makeNoise } from '../src/index.js';
 
 const fx = loadFixture();
 
@@ -13,6 +13,9 @@ const GENS: Record<string, (s: number) => unknown> = {
   hashInt: (s) => [hashInt(s, 1, 2), hashInt(s, 0, 0), hashInt(s, 0xFFFF, 7)],
   mulberry32: (s) => { const r = mulberry32(s >>> 0); return [r(), r(), r(), r(), r()]; },
   cellRng: (s) => { const r = cellRng(s & 0xFFFF, (s >>> 16) & 0xFFFF, 3); return [r(), r(), r()]; },
+  /* ★ 2026-07-31: the gap recorded in src/index.ts since module 1 CLOSES —
+     the corpus was extended (addition-only, diff-verified) with makeNoise. */
+  makeNoise: (s) => { const n = makeNoise(s >>> 0); return [n(0.3, 0.7), n(12.5, -4.2), n(100, 100), n((s % 89) * 0.13, (s % 71) * -0.29, 3)]; },
 };
 
 describe('parity spec self-check', () => {
@@ -26,7 +29,7 @@ describe('parity spec self-check', () => {
   });
 });
 
-describe('@cf/domain-rand — 30,000-case golden parity (Gate B)', () => {
+describe('@cf/domain-rand — 40,000-case golden parity (Gate B)', () => {
   for (const name of Object.keys(GENS)) {
     it(`${name}: 10,000 seeds, per-seed + rollup`, () => {
       const r = checkGenerator(fx, name, GENS[name]!);

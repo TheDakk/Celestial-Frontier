@@ -1,4 +1,4 @@
 { "name": "@cf/domain-strays", "private": true, "version": "0.0.0", "type": "module",
-  "description": "Domain-pure functions living OUTSIDE the 14 [domain] modules in main.js (cleanName; Gate B adds biomeFor, where-codecs, winEstimate, floraStat, hdGenesFor, _sanitizeSavedGenome). AUTO-LIFTED.",
+  "description": "Domain-pure functions living OUTSIDE the 14 [domain] modules in main.js: cleanName, where-codecs, winEstimate, floraStat, biomeFor+BIOME_SETS, hdGenesFor, _sanitizeSavedGenome. AUTO-LIFTED (tools/lift-strays.mjs).",
   "exports": { ".": "./src/index.ts" },
-  "dependencies": {} }
+  "dependencies": { "@cf/domain-rand": "*", "@cf/domain-speciestraits": "*", "@cf/domain-encutil": "*", "@cf/domain-combatcore": "*" } }

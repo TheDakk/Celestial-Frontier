@@ -37,6 +37,7 @@
     makeGenome, crossGenome, speciesGrade, colorGrade, spectral, sapienceTier,
     classifyRealm, realmBiome, describeSpecies, battleStats, hdGenesFor,
     guardianFor, planetParams, planetDescriptor, systemFor, starDescriptor, biomeFor,
+    makeNoise,
   } = H;
 
   /* ---------- canonical form (mirrors tools/probe.js san()) ----------
@@ -111,6 +112,21 @@
     classifyRealm:function (s) { return [classifyRealm(makeGenome(s, 'fauna', 0.5)), realmBiome(makeGenome(s, 'fauna', 0.5))]; },
     guardianFor:  function (s) { return guardianFor(s); },
     crossGenome:  function (s) { return crossGenome(makeGenome(s, 'fauna', 0.4), makeGenome(s + 1, 'fauna', 0.6)); },
+    /* ═══ EXTENSIONS 2026-07-31 (port Phase 1, Gate B) — ADDITIONS ONLY; every
+       pre-existing generator's perSeed/rollup must be byte-identical after a
+       re-capture, verified by diff. Never re-capture to make a check pass. ═══ */
+    /* makeNoise was a RECORDED coverage gap since module 1: the golden corpus
+       never sampled it; in-game noise was pinned only by the 50-probe
+       fingerprint's three points. Four points per seed incl. an explicit
+       octave arg. */
+    makeNoise: function (s) { const n = makeNoise(s >>> 0); return [n(0.3, 0.7), n(12.5, -4.2), n(100, 100), n((s % 89) * 0.13, (s % 71) * -0.29, 3)]; },
+    /* crossGenome_uncorrelated closes the module-11 finding: the original
+       recipe's CONSECUTIVE parent seeds (s, s+1) bias the mutation-index draw
+       so hard that the size-mutation branch NEVER executes in 10,000 cases
+       (measured: color 80% · trait 12.5% · size 0%). Hashed parent seeds make
+       the pick uniform — the real-game shape — so the mutation branch is
+       finally value-pinned. */
+    crossGenome_uncorrelated: function (s) { return crossGenome(makeGenome(hashInt(s, 12345, 1) >>> 0, 'fauna', 0.4), makeGenome(hashInt(s, 54321, 2) >>> 0, 'fauna', 0.6)); },
   };
 
   const HEAVY = {

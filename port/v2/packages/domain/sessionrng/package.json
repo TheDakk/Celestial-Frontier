@@ -1,0 +1,4 @@
+{ "name": "@cf/domain-sessionrng", "private": true, "version": "0.0.0", "type": "module",
+  "description": "SessionRNG (reviewer v1.9-port-update §2.1): replayable player-outcome rolls. NEW code — a Gate B deliverable, not a lift.",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@cf/domain-rand": "*" } }
