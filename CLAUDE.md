@@ -26,8 +26,9 @@ description); instead carry a `matches code as of <date>` marker and update them
 BATCH as the code (per rule at top of ROADMAP.md). When a doc grows unreadable, first ask which
 kind it is — the answer picks the fix.
 
-## The v2.0 port
-**`port/`** holds the committed port plan — `PORT_MASTER_PLAN_v4.0.md` (§20 execution phases, §22 Gates A–I, §23 open items, §16 data architecture), the reviewer delta `v1.9-port-update.md`, and addenda A–D. **v1.9 = Phase 0**, which is capture/fixture work, *not* a code phase — no TypeScript until Phase 1.
+## The v2.0 port — ★ PHASE 1 IS UNDERWAY
+**`port/`** holds the committed port plan — `PORT_MASTER_PLAN_v4.0.md` (§20 execution phases, §22 Gates A–I, §23 open items, §16 data architecture), the reviewer delta `v1.9-port-update.md`, addenda A–D, **`DECISIONS.md`** (Nick's resolutions to §23 — decided ≠ implemented; they land in the port), **`RUBRICS.md`** (gates A–I as [EXEC]/[EXEC-TODO]/[HUMAN] criteria), and **`baseline-v1.8.9/`** (Gate A evidence: golden seeds, code fixtures, audio profiles, budgets, 28 golden screens).
+**Phase 0 is COMPLETE on the automatable side; Phase 1 (TypeScript domain conversion) is underway in `port/v2/`** — modules 1–8 of 14 ported and parity-green (~72,000 golden cases). The ROADMAP's PHASE 1 block is the cold-start guide: the verbatim port rule, the lifter (`port/v2/tools/lift.mjs`), the two fixture sources, and the open threads (systemSol replay, slimGal relocation, uncovered helpers). Gates from `port/v2/`: `npx vitest run` + `npx tsc --noEmit`. Root-level fixture gates: `npm run preflight` / `goldenseeds` / `codefixtures` / `audioprofiles`.
 ⚠ The plan was lost once as a session-scoped upload, leaving annotations that cited sections of a document nobody could read. **Anything we reason about gets committed the same day** (the rule `audits/` already encodes for external review bundles).
 ⚠ Section numbers from the older v3.1 (§26 / §27.3 / §28.5, quoted throughout ROADMAP_ARCHIVE) do **not** map to v4.0.
 

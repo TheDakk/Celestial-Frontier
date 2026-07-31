@@ -249,16 +249,47 @@
 ## ═══ ★★ PHASE 1 HAS BEGUN (2026-07-31, Nick's go) — TypeScript domain conversion ═══
 ## The two open Phase 0 items are NICK-ONLY and gate LATER phases (real save -> Gate C in Phase 2;
 ## listening test -> Phase 7 audio scope). Domain conversion is blocked by neither.
-## ✔ MODULE 1/14: @cf/domain-rand (port/v2/, laid out per plan §18, typescript 7.0.2 + vitest
-##   4.1.10 pinned exact, strict). Function bodies VERBATIM from main.js 157-201 + types only.
-##   ★ PARITY: 30,000 golden cases (hashInt/mulberry32/cellRng x 10,000 seeds) ALL GREEN on the
-##   first run, 297ms — the fixture thesis paying off on day one. Negative-controlled: one prime
-##   perturbed by 1 -> fails naming exact seeds; reverted -> green. Typecheck clean.
-##   ⚠ makeNoise/clamp/mix not fixture-covered yet (corpus never sampled them) — recorded gap,
-##   extending the corpus with a noise generator is an intended follow-up, not re-capture-to-pass.
-## ▶ ORDER AHEAD (deps first): Rand ✔ · WorldConfig · Naming · StarCatalog · PlanetGen · WorldGen ·
-##   SurveyPhrases · SpeciesTraits · Genome · EncUtil · Genetics · Ecology · Descriptors · CombatCore.
-##   Rule per §20: run parity fixtures after EVERY module.
+## ★★★ MODULES 1–8 OF 14 ARE DONE AND PARITY-GREEN (one session, 2026-07-31):
+##   Rand ✔ WorldConfig ✔ Naming ✔ StarCatalog ✔ PlanetGen ✔ WorldGen ✔ SurveyPhrases ✔
+##   SpeciesTraits ✔ — 6 test files, 31 passing + 1 skipped-with-reason, ~72,000 golden cases +
+##   15 fingerprint probes, tsc strict clean. Each module committed + pushed individually.
+## ▶▶▶ COLD-START GUIDE FOR THE NEXT SESSION — read this before touching port/v2:
+##   · WORKSPACE: port/v2/ (plan §18 layout, packages/domain/*). typescript 7.0.2 · vitest 4.1.10 ·
+##     @types/node, all pinned exact. Commands: `npx vitest run` and `npx tsc --noEmit` from port/v2.
+##   · THE PORT RULE: bodies VERBATIM + types only. |0, Math.imul, >>> and /4294967296 are the
+##     determinism contract — a "cleanup" that passes typecheck can still shift every world.
+##   · SMALL modules are hand-ported TS; BIG modules go through port/v2/tools/lift.mjs — byte-
+##     verbatim extraction with auto-detected imports, source line range + body sha in the header,
+##     DO NOT EDIT marker. Typed surface lives in index.ts + a hand-written .verbatim.d.ts.
+##     ⚠ Register each new package's exports in lift.mjs's REGISTRY as you go — auto-imports
+##     depend on it (surveyphrases/speciestraits/genome rows are still empty placeholders).
+##   · TWO FIXTURE SOURCES: tests/parity.ts (golden-seeds, VOLUME — canon+FNV per the fixture's
+##     own spec) and tests/baseline.ts (the 50-probe fingerprint, BREADTH). ⚠ Fingerprint values
+##     are stored as JSON STRINGS — compare canon(ours) === storedString, never deep-equal.
+##     Test recipes MUST mirror tools/probe.js and tools/goldenseeds-probe.js exactly.
+##   · NEGATIVE-CONTROL every new module once (perturb a constant -> parity must fail naming
+##     seeds -> revert). Two lifter bugs and one false "10 passed" were caught exactly this way —
+##     COUNT THE TEST FILES, not just the tests: a syntax-broken file is silently not collected.
+## ▶ REMAINING (deps first): 9 Genome (richest: makeGenome x4 kingdoms, speciesGrade, sapienceTier,
+##   classifyRealm, guardianFor, describeSpecies, _szOf — ~50,000 golden cases waiting) ·
+##   10 EncUtil · 11 Genetics (crossGenome x10k) · 12 Ecology · 13 Descriptors (~2,800 lines,
+##   owes the systemSol REPLAY — see below) · 14 CombatCore (battleStats x1k + code fixtures).
+##   Then Gate B close: no-DOM lint · SessionRNG (reviewer §2.1) · noise-generator corpus
+##   extension · full 25-generator sweep from TS.
+## ⚠ OPEN THREADS carried into the next session, each recorded in code comments too:
+##   · systemSol probe DEFERRED (worldgen test, it.skip with full reason): the fingerprint value
+##     encodes PROBE-ORDER MUTATION — descriptor probes cache _pal onto memoized P objects before
+##     systemSol was captured. Descriptors module must replay planetDescriptor over Sol first.
+##     PORT LESSON: memoized generators make call order observable — TS port should not share
+##     mutable cached objects across callers.
+##   · slimGal carried in @cf/domain-worldgen temporarily (it lives at main.js:3014, app section,
+##     but the galaxiesInCell probe needs it) — recorded relocation.
+##   · makeNoise/clamp/mix/surfaceColor/atmosphereText+3 not directly fixture-covered — each gap
+##     is recorded IN THE TEST FILE where it belongs, none silent. surfaceColor + phrase builders
+##     get pinned transitively when Descriptors lands.
+##   · ★ 9g IS NOW GUARDED: SpeciesTraits' invariant suite pins the GRADE_TIERS collapse (rows
+##     9-14 Transcendent/#F7F1FF, rows 0-9 ≡ RARITY_V17, stars '', displayRarity clamps). The
+##     explicit RawGradeTier->DisplayRarityTier conversion function lands with Genome/speciesGrade.
 ## ✔★ THE FOUR §23 DESIGN DECISIONS ARE MADE (Nick, 2026-07-31). Recorded in port/DECISIONS.md —
 ##   a NEW live record, so the supplied v4.0 plan stays the reference it was delivered as.
 ##     1. bred `fed` → INHERIT 50% OF THE LOWER PARENT. Breeding is not sharing: BOTH parents are
