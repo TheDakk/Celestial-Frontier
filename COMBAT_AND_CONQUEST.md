@@ -1,6 +1,6 @@
 # Celestial Frontier — Combat & Conquest
 
-**STATUS:** matches code as of 2026-07-30 (verified against main.js). See the 2026-07-30 addendum at the end for the odds-cache signature and the `size` clamp.
+**STATUS:** matches code as of 2026-07-31 (verified against main.js). See the 2026-07-30 and 2026-07-31 addenda — the odds-cache signature, and why the v1.8.6 `size` clamp was reverted.
 **Purpose:** How creatures fight — the stat budget, seeded duel resolution, innate arts (classes + archetypes), and named Apex Guardians — and how conquest settles a world: the mercy law, re-win prevention, and the depth tax that grades every field wound by distance.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -262,3 +262,32 @@ call, not a quiet patch. See ROADMAP's 2026-07-30 batch log.
 A save-load clamp was also added (`_sanitizeSavedGenome`), because a hand-edited
 `size:1e6` bought +4,000,000 vitality and `encodeCreature` carried it intact into
 another player's duel box.
+
+---
+
+## ADDENDUM 2026-07-31 — round 9: `size` settled, and a perf cost the P0 fix introduced
+
+**The `size` story ends here, and only half of what v1.8.6 did survives.** `battleStats` reading
+`% FA_SIZE.length` — the value the card prints — is correct and stays. The *load-path clamp* shipped
+in the same release was wrong and has been removed: honest breeding drifts `size` past 5 in ~12% of
+lineages by generation 5, and the clamp rewrote every one of them into a **titanic, maximum-vitality**
+creature on the next load. Full reasoning and the measurements live in SAVE_SYSTEM.md's v1.8.7
+section; the guard is `node tools/sizedrift-check.js`.
+
+⚠ Note for anyone auditing `size`: it is **not** uniformly wrapped. `speciesGrade`, `rarityRoll` and
+`sapience` read it **raw** (`>=3`, `>=4`, `>=5`), so a drifted size-6 creature is not equivalent to a
+size-0 one — it carries a rarity/grade boost that lifts its whole stat budget. Measured: size 6 gives
+vit 50 where size 0 gives 37. That is pre-existing behaviour of the unwrapped mutation, not something
+either release introduced, and it is a **balance** question rather than a defect.
+
+**`trueOdds` — a perf regression the P0 fix introduced, now closed.** Rekeying the memo on the stat
+vectors necessarily moved the cache check *below* the two `battleStats` calls that build the key, so
+a full cache hit still paid for `battleStats(native.genome)` **once per picker row** — and the native
+is invariant across the entire list. `openConquestPicker` now hands its own `nS` down
+(`native.stats = nS`), and `trueOdds` reads `native.stats || battleStats(native.genome)`, mirroring
+the line that has always existed for the champion. `battleStats` is pure, so this is the value it
+would have computed anyway.
+
+> The general shape is worth keeping: **a cache key derived from expensive values cannot short-circuit
+> the work that produces them.** If the key needs the stats, the stats must be hoisted to the caller
+> or the memo saves nothing on the hit path.

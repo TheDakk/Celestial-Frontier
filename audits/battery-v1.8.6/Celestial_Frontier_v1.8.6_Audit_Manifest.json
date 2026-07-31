@@ -1,0 +1,58 @@
+{
+  "build": "1.8.6",
+  "title": "Kept Promises",
+  "source_sha256": "38d4885c80f4d87b88c68f0f95fb1c209b7a9987bd1f10029ef5b32594425aef",
+  "generated_utc": "2026-07-30T22:11:26.449543+00:00",
+  "fresh_test_counts": {
+    "initial_creatures": 100000,
+    "hybrids": 60000,
+    "deterministic_duels": 10000,
+    "mirror_duels": 50000,
+    "random_ability_duels": 100000,
+    "systems": 10000,
+    "planets": 28184,
+    "creature_codes": 10000,
+    "affix_rolls": 1000000,
+    "voice_models": 200000,
+    "bat_voice_samples": 10000,
+    "rarity_seeds": 60000000,
+    "conquest_cache_mutations": 10000,
+    "responsive_viewports": 10,
+    "tutorial_reachability_states": 20,
+    "synthetic_player_profiles": 1000,
+    "cold_boot_runs": 4,
+    "friendly_duel_ui_outcomes": 1,
+    "lineage_sessions": 2
+  },
+  "release_recommendation": "Release Gold / Code Gold for release-critical behavior; not a literal zero-defect certification because known low-priority audio, thumbnail, and offline-clock backlog remains.",
+  "new_release_blockers": [],
+  "known_non_blocking_backlog": [
+    {
+      "severity": "low",
+      "title": "Named Bat voices still hard-clamp at 6000 Hz",
+      "demonstration": "1552/10000 (15.52%)"
+    },
+    {
+      "severity": "optimization",
+      "title": "First list-thumbnail request still returns a full portrait before async downscale",
+      "demonstration": "Average first-return encoded length 292020 characters"
+    },
+    {
+      "severity": "accepted design risk",
+      "title": "Offline harvest wall-clock reload self-cheat remains possible",
+      "note": "Single-player/offline, no leaderboard; project notes explicitly leave this open by decision."
+    },
+    {
+      "severity": "accepted compatibility decision",
+      "title": "crossGenome size drift remains in the deterministic baseline",
+      "note": "Player-visible save/card/combat domains clamp size."
+    }
+  ],
+  "limitations": [
+    "Physical iOS/iPadOS Safari was not available.",
+    "Audio synthesis was stress-tested and instrumented, not subjectively heard through real speakers/headphones.",
+    "The 1,000-profile campaign is a deterministic decision model, not 1,000 human participants.",
+    "The full npm/jsdom suite could not be installed because the available dependency registry returned a package 404.",
+    "A complete independent 21-step action-driven training fleet was not rerun; the reported fresh tutorial result is the requested step-8 reachability matrix across both card positions."
+  ]
+}

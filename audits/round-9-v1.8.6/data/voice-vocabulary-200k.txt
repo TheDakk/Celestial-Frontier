@@ -1,0 +1,12 @@
+corpus            200000 procedural fauna
+distinct voices   199707   (v1.8.2 measured 533 of 20,000)
+collision rate    0.15% share a voice with another
+most common       3x  (0.002%)
+f0 at 6000 ceiling 1655 (0.83%)   at 60 floor 1277 (0.64%)
+
+chance a collection contains an exact duplicate voice:
+    10 creatures  0.0%
+    25 creatures  0.2%
+    50 creatures  0.6%
+   100 creatures  2.5%
+   250 creatures  14.5%

@@ -95,6 +95,41 @@ the live `fed`/`brood` overshoot.
 - `Celestial_Frontier_v1.8.5_Full_Battery_Audit.md` — the report (verdict, 14-point Gold checklist)
 - `Celestial_Frontier_v1.8.5_Review_1..4_*.md` — the four analytical lenses
 
+### `round-9-v1.8.6/` — round 9, audited build `0bfc904` (v1.8.6 "Kept Promises")
+
+**Start with `v1.8.6-review.md`.** The most useful review this project has received, and the
+method is why: **a 152-line delta reviewed hunk by hunk**, not another fleet run. Six of seven
+round-8 findings closed, and one line we had shipped found to be **corrupting live saves**.
+
+| Path | What it is |
+|---|---|
+| `v1.8.6-review.md` | The report |
+| `data/size-drift-simulation.txt` | CF1806-01 — 500 lineages through the build's own `crossGenome`, showing ~10% drift past size 5 |
+| `data/dock-clearance-measurement.txt` | CF1806-02 — forced-state dock reachability across four phone viewports |
+| `data/voice-vocabulary-200k.txt` | The audio arc closed: 533 → 199,707 distinct voices |
+| `data/training-reachability-v186.txt` | 6 viewports × every training step |
+| `data/fleet-180-sessions.jsonl.gz` · `fleet-rollup.txt` | 180 sessions, rage quits down a second build |
+| `evidence/v185_card_buried_BEFORE.png` | The CF1805-01 burial, for the before/after |
+| `harness/*.mjs` | Their instrument, incl. `sizedrift.mjs` and `dockclear.mjs` |
+
+**Why this round matters more than its size suggests.** The `size` corruption only manifests
+*across a reload boundary*, so no volume of sessions would have found it — and our own 787-check
+browser gate could not see it either. It took someone reading two lines of a diff and asking what
+they did to each other. **Delta review and fleet review find disjoint defect classes.**
+
+Round 9 also **retracted its own round-8 headline**: it had attributed the step-8 training wall to
+CF1805-01, and reports that the card went 0% → 100% reachable while the stall rate did not move
+(25% → 27%). Step 8 is recorded as *unmeasured*, not defective. Second consecutive round in which
+they withdrew a finding of their own before publishing.
+
+**Our response:** `../REVIEWER_NOTES_v1.8.7.md`.
+**What we shipped from it:** v1.8.7 "True to Form" — a regression fix, plus CF1806-02/03/04 and
+both §2.5 smalls.
+
+### `battery-v1.8.6/` — the independent Gold audit on the same build
+
+Arrived the same evening, separately, as in round 8.
+
 ## Two things worth carrying forward
 
 **Their method beat ours twice.** They verify by *reachability* — does the code exist **and** can it

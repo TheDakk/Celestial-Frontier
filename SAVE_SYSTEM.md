@@ -1,6 +1,6 @@
 # Celestial Frontier — Save System
 
-**STATUS:** matches code as of 2026-07-30 (verified against main.js). Carries a v1.8.6 (external round 8) update — see the ⚠ v1.8.6 notes inline.
+**STATUS:** matches code as of 2026-07-31 (verified against main.js). ⚠ Read the v1.8.7 section FIRST — it reverts a v1.8.6 clamp that corrupted honestly-bred creatures.
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated
 from seeds) to `localStorage` under one hardened key, with load-time coerce/clamp so a
 tampered or truncated save can never inject markup or poison the numbers.
@@ -19,7 +19,56 @@ Rule of thumb going forward: **anything `normGenome` strips from a shared creatu
 stripped from a loaded one.** They are the same trust boundary — one is another player's bytes,
 the other is the player's own editable bytes.
 
-## ⚠ v1.8.6 — the same rule, applied to a field nobody thought of as a stat
+## ⚠⚠ v1.8.7 — THE `size` CLAMP BELOW WAS WRONG AND HAS BEEN REMOVED. DO NOT RE-ADD IT.
+
+Read this before the v1.8.6 section, which describes a fix that lasted one release.
+
+v1.8.6 shipped **two fixes for one problem, in the same release, and they contradicted each
+other**: `battleStats` began *wrapping* `size` (`% FA_SIZE.length`, the value the card prints)
+and the load path began *clamping* it to 0–5. The wrap alone was correct. The clamp was
+actively harmful, and it corrupted real player data.
+
+**`crossGenome`'s mutation list includes `size` and never wraps it**, and `evolveGenome` mutates
+again on every breed — so **honest saves carry `size > 5`.** Measured on this build's own
+functions across 500 lineages: **12.4% past size 5 by generation 5**, max seen 10. Those are not
+edited saves; that is ordinary breeding.
+
+The clamp rewrote every one of them, permanently, on the next load — `_sanitizeSavedGenome`
+mutates in place, `_storeSpecies` keeps the genome by reference, and the writer persists it:
+
+| stored `size` | in session | after ONE reload |
+|---|---|---|
+| 6 | "tiny", vit 50 | **"titanic", vit 70** |
+| 9 | "large", vit 62 | **"titanic", vit 70** |
+| 12 | "tiny", vit 50 | **"titanic", vit 70** |
+
+Portrait scale, voice pitch (`sizeF` reads `size % 6`), the body-length dial and the "Size
+Classes" collection slot all moved with it, and a share code exported before the reload no
+longer matched one exported after.
+
+**And it bought nothing.** Its own justification was the crafted `size:1e6` save. The wrap in
+the same release already closed that: measured, `size:1e6` yields **vit 66 against a legitimate
+maximum of 70** at size 5. `normGenome` feeds the same wrapped reader, so the share-code path is
+closed by the wrap too.
+
+> ⚠ **Do not "finish" this by wrapping at load instead.** `speciesGrade`, `rarityRoll` and
+> `sapience` read `g.size` **raw** (`>=3`, `>=4`, `>=5`), so a stored 6 is *not* equivalent to a
+> stored 0 — wrapping on load would also rewrite honest data, just less visibly. The drift is a
+> **balance** question, and `crossGenome`/`evolveGenome` are determinism-fingerprint probes, so
+> changing the mutation needs a deliberate re-pin.
+
+**Guarded by `node tools/sizedrift-check.js`**, which asserts a drifted genome survives the load
+path unchanged and that the crafted-save exploit stays bounded. It fails on v1.8.6 (`size 9 → 5`,
+`vit 80 → 88`) and passes on v1.8.7 — a check that could not tell the two apart would be worthless.
+
+**The lesson (round 9's pattern):** *two correct fixes for one bug, shipped together, that
+disagree.* Neither line was wrong alone; nobody asked what the other one did. When a fix touches
+a value, grep every reader and writer of that field and make them agree — for `size` that is
+`battleStats`, `describeSpecies`, `speciesPortrait`, `voiceOf`, `speciesGrade`, `rarityRoll`,
+`sapience`, the collection slots, `normGenome` and `_sanitizeSavedGenome`. That grep is cheaper
+than the fix.
+
+## ⚠ v1.8.6 — the same rule, applied to a field nobody thought of as a stat *(SUPERSEDED — see above)*
 
 v1.8.4 mirrored `normGenome`'s handling of *battlefield modifiers*. It did **not** mirror
 `normGenome`'s coercion of the **24 trait indices** — and one of those is a linear power term:
@@ -37,7 +86,7 @@ in 26 rounds. It travelled, too: `encodeCreature` serialises the raw genome and 
 `Math.abs((+o.size)|0)` preserves `1e6` intact, so a crafted share code presented a
 four-million-power challenger in another player's duel box.
 
-The load path now clamps `size` to `0..FA_SIZE.length-1` alongside the rest.
+~~The load path now clamps `size` to `0..FA_SIZE.length-1` alongside the rest.~~ **REVERTED in v1.8.7 — see the section above.** The reasoning below about `size` being an unclamped power term is still correct; the remedy was not.
 
 > **The lesson is about how the previous clamp list was chosen.** Every field on it had been
 > exploited first. That makes the list a record of past incidents rather than a statement of the

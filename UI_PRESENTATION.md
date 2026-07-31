@@ -1,6 +1,6 @@
 # Celestial Frontier — UI / Presentation System
 
-**STATUS:** matches code as of 2026-07-30 (verified against main.js + the html). Two addenda sit at
+**STATUS:** matches code as of 2026-07-31 (verified against main.js + the html). Three addenda at the end: THE ART-HOLD LAW (v1.8.5), THE TRAINING LAYOUT CONTRACT (v1.8.6) and its part two (v1.8.7) — a raised board must clear BOTH the lesson card and the dock.
 the end of this file: **THE ART-HOLD LAW** (shipped in v1.8.5) — nothing expensive may be synthesised
 behind a blocking full-screen surface — with the *painted ≠ answerable* distinction that found it;
 and **THE TRAINING LAYOUT CONTRACT** (round 8, CF1805-01) — a surface that can be raised above the
@@ -458,3 +458,49 @@ against each of the four surfaces, in **both** card positions, across 10 viewpor
 bottom-anchored board never share a band on a tablet. Their card had dodged. Adding
 the dodge pass reproduced their measurement verbatim. *Reproduce the reported
 geometry, not a convenient one.*
+
+---
+
+## ADDENDUM 2026-07-31 — the training layout contract, part two (round 9, CF1806-02)
+
+The contract added in v1.8.6 (previous addendum) was right about the geometry and **dropped the
+reason those boards were pinned in the first place**.
+
+Under `@media (max-width:900px)`, `#log`/`#codex`/`#chpanel`/`#records` are pinned
+`bottom: calc(142px + env(safe-area-inset-bottom,0px))` **to clear the bottom dock**. The v1.8.6
+rule released `bottom` — correctly, so the board could sit in the free band — and then reserved a
+flat **24px**, so the board grew straight down over the dock instead. Measured with `#chpanel`
+raised (the state training step 20 `charter-first` creates):
+
+| device | dock reachability |
+|---|---|
+| iPhone SE (667) | **0%** — all six controls buried |
+| Galaxy S8 (740) | **0%** — all six |
+| iPhone 14 Pro (852) | 19% row 1 · 94% row 2 |
+| iPad mini (1133) | 95% — clear |
+
+`#panel` — the one board that had joined this contract before — has carried the allowance since
+2026-07-28: `126px + env(safe-area-inset-bottom)`. **A new rule must inherit the constraints of
+the sibling it is modelled on, not just its selector shape.**
+
+**The fix is a variable, not a second rule.** `--tut-dock` is `126px` below the breakpoint and
+`24px` above it, and the `.tutpri` rule reads it. That shape was chosen after the obvious one
+failed: the first attempt added a *duplicate* `max-height` inside the media block, which sits
+**earlier** in the sheet than the `.tutpri` rule at ~1876 and has **equal specificity**, so it
+lost and changed nothing. Both rules were `!important`; both were mine.
+
+> **Two CSS laws, earned one release apart, both about a rule that was present and inert:**
+> `min-height` beats `max-height` (v1.8.6), and **an equal-specificity override that appears
+> earlier in the sheet loses** (v1.8.7). Neither is exotic; both cost a release.
+
+**The gate.** `uilayout.js` now asserts, on every viewport at or below the 900px breakpoint and
+for each of the four raisable boards, that **every dock control is the topmost element at its own
+coordinates** — not merely that the lesson card survives. The card-only pass added in v1.8.6 is
+why CF1805-01 is genuinely fixed and is also exactly why this was missed: the card was fine
+throughout; it was everything *below* the board that was not.
+
+⚠ The new pass needed three corrections before it measured anything real — a key collision that
+silently clobbered an existing check, **empty** boards that collapse under `min-height:0` and never
+reach the dock, and stale `--tut-bot` left over from the dodge pass. In its first two forms it
+passed on the shipped build the external round had already proven broken. *Reproduce the reported
+geometry, populate the surface, and control against the broken build — every time.*
