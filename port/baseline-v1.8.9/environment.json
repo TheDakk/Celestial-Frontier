@@ -29,7 +29,7 @@
   },
 
   "browser": {
-    "_comment": "⚠ UNDECLARED DEPENDENCY. uilayout.js and bootperf.js do NOT use an npm browser driver — they spawn a system browser binary directly over CDP. It is not in package.json, so `npm install` on a clean clone does NOT provision it. This is a Gate A gap; see README.md §3.",
+    "_comment": "⚠ WAS AN UNDECLARED DEPENDENCY when this evidence was captured. uilayout.js and bootperf.js do NOT use an npm browser driver — they spawn a system browser binary directly over CDP, and it is not in package.json, so `npm install` on a clean clone does NOT provision it. RESOLVED later the same day: tools/deps.pinned.json now DECLARES it and tools/preflight.js VERIFIES it (`npm run preflight`, or `--assert-pin` in CI). deps.pinned.json is the authoritative pin from here on; this block records what the Gate A run actually used. See README.md §3 and ROADMAP 9h.",
     "engine": "Microsoft Edge (headless, driven over CDP)",
     "version": "150.0.4078.83",
     "resolved_path": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",

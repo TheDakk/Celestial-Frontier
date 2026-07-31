@@ -3,6 +3,8 @@
   "version": "1.8.9",
   "description": "Verification toolkit for the Celestial Frontier single-file game",
   "scripts": {
+    "preflight": "node tools/preflight.js",
+    "preflight:ci": "node tools/preflight.js --assert-pin",
     "extract": "node tools/extract.js",
     "validate": "node tools/validate.js",
     "smoke": "node tools/smoke.js",

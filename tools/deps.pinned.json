@@ -1,0 +1,68 @@
+{
+  "_comment": [
+    "DECLARED EXECUTABLE DEPENDENCIES — port Phase 0, Gate A deliverable #2:",
+    "'reproduce all executable dependencies in a clean CI environment'.",
+    "",
+    "WHY THIS FILE EXISTS (ROADMAP 9h): package.json declares only acorn and jsdom, but",
+    "tools/uilayout.js and tools/bootperf.js drive a REAL browser — they spawn a system",
+    "binary over CDP. There is no Playwright, no Puppeteer, no npm driver anywhere in",
+    "tools/. So `npm install` on a clean clone silently leaves TWO of the nine suites",
+    "unrunnable, and nothing said so until 2026-07-31.",
+    "",
+    "Verified by `node tools/preflight.js`. This file is the single source for the pin;",
+    "preflight reads it rather than hard-coding anything."
+  ],
+  "capturedAt": "2026-07-31",
+  "capturedAgainst": "v1.8.9 (tag v1.8.9, commit 92098e9)",
+  "node": {
+    "min": "20.0.0",
+    "verifiedWith": "v26.5.1",
+    "_comment": "min is the floor the toolkit is believed to need; verifiedWith is what Gate A evidence was actually produced on."
+  },
+  "npm": {
+    "verifiedWith": "11.17.0"
+  },
+  "packages": {
+    "_comment": "From package.json. `npm install` provisions these; preflight only confirms they resolve.",
+    "acorn": "^8.17.0",
+    "jsdom": "^29.1.1"
+  },
+  "browser": {
+    "required": true,
+    "_comment": [
+      "NOT an npm package. A system binary, spawned headless and driven over CDP.",
+      "⚠ Addendum D: a layout gate whose thresholds were set on one browser revision",
+      "drifts on the next. uilayout.js compares against STORED numbers (787 checks /",
+      "10 viewports), so that result is only meaningful against a known revision.",
+      "TREAT A VERSION BUMP AS AN EXPLICIT RE-BASELINE, NOT A REGRESSION."
+    ],
+    "usedBy": [
+      "tools/uilayout.js",
+      "tools/bootperf.js"
+    ],
+    "engine": "Chromium-family, headless, CDP",
+    "overrideEnv": "CF_BROWSER",
+    "pinned": {
+      "name": "Microsoft Edge",
+      "version": "150.0.4078.83",
+      "path": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+      "platform": "Windows 11 Pro 10.0.26200",
+      "autoUpdates": true,
+      "_comment": "Edge auto-updates silently on Windows. Expect drift; preflight WARNS rather than fails, because a bump is a decision, not a defect."
+    },
+    "resolutionOrder": [
+      "$CF_BROWSER",
+      "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
+      "C:/Program Files/Microsoft/Edge/Application/msedge.exe",
+      "/usr/bin/google-chrome",
+      "/usr/bin/chromium-browser",
+      "/usr/bin/chromium",
+      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+    ],
+    "_resolutionNote": "This list is DUPLICATED verbatim in uilayout.js (~24) and bootperf.js (~56). Preflight repeats it a third time so it can check without importing either. Two-sources-one-truth hazard — see ROADMAP 9h; the port should have one resolver."
+  },
+  "gatesRequiringBrowser": {
+    "uilayout": "PASS, 787 checks / 10 viewports (on the pinned revision)",
+    "bootperf": "not re-run for v1.8.9; the v1.8.5 PASS stands"
+  }
+}
