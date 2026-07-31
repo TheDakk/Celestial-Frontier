@@ -21,17 +21,17 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF — as of 2026-07-31. ★ v1.8.9 "ONE MEASURE" IS LIVE · ★ PHASE 0 HAS STARTED ◀◀◀
-## [HYGIENE 2026-07-31, three runs today] The v1.8.6, v1.8.7 and v1.8.8 batch blocks are all in
-##   ROADMAP_ARCHIVE.md, VERBATIM. v1.8.6 is worth reading if you ever wonder why "two correct
-##   fixes for one bug can disagree" is a law — its own CF1805-06 entry describes both halves of
-##   a save-corrupting change approvingly. v1.8.8 is worth reading for the harvest-clock reasoning.
-##   [HYGIENE 2026-07-31, second pass] The v1.8.9 batch block is NOW ARCHIVED TOO, verbatim — moved
-##   when this file crossed the ~400-line threshold while Phase 0 progress was being recorded.
-##   Structure is now pins → this handoff → the v1.9 START HERE block → PHASE 0 PROGRESS →
-##   WHERE THINGS STAND → NEXT (incl. the 9x findings) → doc map. All batch logs are in the archive.
+## ▶▶▶ SESSION HANDOFF — as of 2026-07-31. ★ v1.8.9 "ONE MEASURE" IS LIVE · ★★★ PHASE 1 IS
+## COMPLETE (all 14 domain modules + Gate B close-out) — see the PHASE 1 block below. ◀◀◀
+## [HYGIENE 2026-07-31, FOUR runs today] v1.8.6/.7/.8/.9 batch blocks AND the PHASE 0 PROGRESS
+##   deliverable log are all in ROADMAP_ARCHIVE.md, VERBATIM (the Phase 0 block moved on the
+##   fourth pass, when Phase 1 completed and this file re-crossed ~400 lines). v1.8.6 is worth
+##   reading if you wonder why "two correct fixes for one bug can disagree" is a law.
+##   Structure is now pins → this handoff → the v1.9 START HERE block → PHASE 0 pointer →
+##   ★ PHASE 1 COMPLETE block (the live cold-start guide) → WHERE THINGS STAND → NEXT → doc map.
 ##   PROCESS_LAWS.md (extracted 2026-07-30) holds the laws; it is a reference and is never archived.
-##   Source AND site pushed; full battery green; live verified end-to-end after deploy, not assumed.
+##   Source pushed after every module (9 commits this session); port suite 16 files/161 green;
+##   goldenseeds gate PASS at 27 generators; main.js/html untouched.
 ##
 ## ═══════════════════════════════════════════════════════════════════════════════════
 ## ▶▶▶ STARTING v1.9 / THE PORT? THE PLAN IS IN `port/`. READ IT FIRST. ◀◀◀
@@ -93,203 +93,62 @@
 ##   Both premises turned out to be wrong: the atlas already existed (in tools/), and there is no
 ##   15-NAME ladder to correct. Read 9c/9d before trusting any older wording about either.
 ##
-## ═══ ★ PHASE 0 PROGRESS — started 2026-07-31, on Nick's go ═══
-## ✔ GATE A, FIRST DELIVERABLE — THE BASELINE IS TAGGED. Annotated tag `v1.8.9` at 92098e9, pushed.
-##   Carries the gate results, the recovery procedure and the freeze-rule note in the tag message.
-##   VERIFIED FOUR WAYS, not assumed: object type is `tag` not `commit` · points at 92098e9 ·
-##   `git show v1.8.9:celestial-frontier.html` is byte-identical to the working tree (sha256
-##   9f90f506…, 1,963,584 bytes) · AND validate was RE-RUN against it — 9/9 PASS, FINGERPRINT
-##   MATCH 50/50. That last one is the point: the roadmap's own "50/50" was a claim from the day
-##   before, and this project has SEVEN logged cases of a check passing while the thing it guarded
-##   was broken. A gate figure transcribed is a claim; observed, it is evidence.
-## ✔ TAG BACKFILL — tagging had lapsed after v1.8.2; v1.8.3-v1.8.8 shipped UNTAGGED. All six are now
-##   annotated tags on the remote, so the whole v1.8 line is addressable. v1.8.5 was the hard one:
-##   commit e20d62c, which used a different message convention (`release: v1.8.5 "…"`) and so was
-##   invisible to the obvious grep. Releases were identified by checking that package.json AND
-##   GAME_VERSION inside the built html both read the expected version — 7/7 agreed — not by trusting
-##   commit subjects. The tags SAY they were backfilled today, so the tagger date is not mistaken for
-##   the ship date. This matters operationally: audits/README documents recovering an old build from
-##   git to negative-control a new gate, and sizedrift-check must FAIL on v1.8.6 and pass on v1.8.7.
-## ✔ GATE A EVIDENCE ARCHIVE — port/baseline-v1.8.9/ (fdf2dc3): README, environment.json, the
-##   fingerprint output, the uilayout report. Three gates RE-VERIFIED in-environment (validate 9/9,
-##   fingerprint 50/50, uilayout PASS 787/10); the other seven are listed under `gates_not_re_run`
-##   so the archive cannot overstate itself. Deliberately NOT under releases/ — that directory is
-##   gitignored, and the one archive living there exists on a single machine, which is the failure
-##   mode that lost the v3.x port plan. Deliberately does NOT duplicate the html or tools/baseline.json
-##   — both are tracked at the tag, so git reproduces them byte-exact; referenced by sha256 instead.
-## ✔ 9c BIOME_ATLAS + 9d RARITY docs — see those entries. Both premises were false.
-## ✔ THE 10,000 GOLDEN SEEDS ARE CAPTURED (2026-07-31). port/baseline-v1.8.9/golden-seeds.json —
-##   10,000 seeds × 25 generators = 178,000 cases, ~4.3 MB, captures and verifies in ~7s.
-##   `npm run goldenseeds` is a GATE. WHY IT IS NOT JUST A BIGGER baseline.json: the 50-probe
-##   fingerprint proves THIS build still matches v1.0; it cannot tell a TypeScript port WHICH input
-##   diverged. This corpus hashes PER SEED, so a failing port is pinpointed to one seed.
-##   CROSS-LANGUAGE BY CONSTRUCTION: seeds LISTED EXPLICITLY (a port must not reimplement a PRNG
-##   just to get inputs — that is a second source of divergence) · canonical form reuses probe.js's
-##   1e-9 rounding so both fixtures agree on "equal" · FNV-1a-32 x2, ~10 lines in any language, no
-##   crypto import. ⚠ NEVER re-capture to make a failing --check pass (same rule as baseline.json).
-##   ⚠ Negative-controlled both ways, and IT CAUGHT A BUG IN ITSELF: --check originally took the
-##   corpus size from CLI defaults, so checking a 50-case fixture re-ran 10,000 and reported
-##   "26 generators diverged" — a FALSE ALARM. A check that cries wolf gets ignored (the simrun
-##   `dead` lesson). --check now reads its counts from the fixture.
-## ✔ CODEC + HARDENING FIXTURES CAPTURED (2026-07-31). port/baseline-v1.8.9/code-fixtures.json —
-##   108 curated cases: encodeCreature/decodeCreature (share AND champion — one function, `champ`
-##   is the 2nd arg and carries xp), encodeWhere/decodeWhere, normGenome (untrusted import) and
-##   _sanitizeSavedGenome (load path). `npm run codefixtures` is a GATE.
-##   CURATED, NOT RANDOM, ON PURPOSE — golden-seeds covers volume; a codec needs named adversarial
-##   edges. A random corpus will never contain size:1e6, a __proto__ key, or a 400-char name.
-##   ⚠ SIX `sizePreserved` INVARIANTS ASSERTED OUTRIGHT: _sanitizeSavedGenome leaves `size`
-##   unchanged for 0 / 5 / 6 / 12 / -3 / 1e6. This is the v1.8.7 rule made EXECUTABLE — a port that
-##   "tidies" size here re-creates the v1.8.6 save corruption. normGenome DOES coerce (-3 -> 3);
-##   the two hardeners differ deliberately and both behaviours are recorded.
-##   ⚠ SCOPE, STATED HONESTLY: buildSave/loadSave are app-layer and unreachable from the probe
-##   realm, so NO full save round-trip is captured. GATE C STAYS OPEN — see the blocker below.
-##   ⚠⚠ A SHARED-WeakSet BUG WAS FOUND AND FIXED IN BOTH PROBES. san()'s cycle guard was
-##   module-level, so the SECOND canonicalisation of any object returned "«cycle»" and silently
-##   dropped fields. It DID corrupt code-fixtures (a recorded size:-3 vanished while the hardener
-##   bucket, reading the field directly, showed -3 — the disagreement is what exposed it). It was
-##   LATENT in golden-seeds: re-capturing gave 25/25 identical rollups, proving it never bit that
-##   corpus. Caught by READING a captured fixture, not by any gate. `seen` is now per-call.
-## ⛔ BLOCKED, NEEDS NICK — GATE C CANNOT CLOSE WITHOUT A REAL VETERAN SAVE. The single most
-##   valuable migration fixture is the save on Nick's iPhone: real Atlas, real lineages with real
-##   `size` drift, real conquest history. Gate C reads "real veteran saves and codes load with
-##   preserved creatures, worlds, stats, inventory, progression, audio settings, and lineages" — and
-##   a SYNTHETIC save cannot prove that, because it is generated by the same code that reads it.
-##   Ask: export it from Settings (diagnostics/export) and drop the JSON in. Until then Gate C is
-##   provisional and this is the reason.
-## ✔ AUDIO PROFILES CAPTURED + THE VOCABULARY RE-MEASURED (2026-07-31).
-##   port/baseline-v1.8.9/audio-profiles.json · `npm run audioprofiles` is a GATE (200 voiceOf
-##   profiles). The MEASUREMENT is reported, not asserted — a population statistic drifting is not
-##   the same event as a generator changing behaviour.
-##   ⚠ RE-MEASURED, NOT TRANSCRIBED. "The listening test is now unblocked" rested on the reviewer's
-##   v1.8.6 numbers. Re-derived against v1.8.9 over 200,000 genomes — AND THE CLAIM HOLDS:
-##     distinct voices  199,709 / 200,000 (99.855%)   [reviewer: 199,707]
-##     pinned at 6 kHz ceiling      0.874%            [reviewer: 0.83%]
-##     share a voice with another   0.283%            [reviewer: 0.15% — likely a different
-##                                                     definition; ours counts every member of a
-##                                                     duplicate group. Not treated as a discrepancy.]
-##     duplicate in a 50-collection 0% of 400 windows [reviewer: 0.6%]
-##   ★ SO THE HUMAN LISTENING TEST IS GENUINELY UNBLOCKED — verified, not inherited.
-##   ★ NEW EVIDENCE FOR TWO OF NICK'S §23 DECISIONS:
-##     · `legacy` IS a first-class 18th family at 5.543% of procedural fauna (roadmap guessed
-##       ~5.5%). _VOICE_KEYS is Object.keys(_VOICE) and _VOICE INCLUDES legacy, so 1-in-18 is
-##       structural, not accidental. Decide whether that is intended.
-##     · the f0 clamp is [60, 6000] and BOTH bounds pin: 0.874% at the ceiling AND 0.612% AT THE
-##       FLOOR. The floor was never reported before. If the bat ceiling gets lowered, the floor
-##       deserves the same look — a pinned voice stops varying at either end.
-##   ⚠ WATCH: voiceOf reads `(+g.size||0)%6` — a HAND-TYPED modulus, in the very function where
-##   CF1805-03 fixed five of exactly those. It is correct TODAY only because FA_SIZE.length is 6
-##   (verified). Add one size word and the voice silently drifts out of step. It also does not use
-##   `_szOf`, so it is a sixth raw-ish size reader — harmless now, worth folding in during the port.
-## ✔ BUDGETS SET (2026-07-31). port/baseline-v1.8.9/budgets.json — THREE KINDS OF ENTRY, kept
-##   strictly apart so the file cannot overstate itself: `measured` (observed, with the command
-##   that produced it) · `budget` (a TARGET, with the reasoning) · `unmeasured` (explicitly not
-##   known, and WHY — a budget invented for something unmeasurable is a number nobody honours).
-##   MEASURED, both arms, because a desktop number is the best case and not the case:
-##     bundle       1,963,584 B raw · 675,421 B over the wire · ONE file, ONE inline script.
-##                  Transfer is NOT the problem — the network finishes in ~46ms.
-##     answerable   1x: painted 111ms, TTI 160ms  ·  4x: painted 355ms, TTI 1944ms (worst 2236)
-##                  A 12x SPREAD. Painted is fine at both; ANSWERABLE is where it falls apart,
-##                  with 1730ms of pre-gate main-thread block. Confirms 6a: it is V8 compiling
-##                  the 1.9MB inline script, i.e. the payload problem the port already owns.
-##     audio nodes  10 PER VOICE UTTERANCE (4 gain · 2 osc · 2 biquad · 1 bufferSource · 1 buffer),
-##                  zero shipped audio assets — fully procedural.
-##   ⚠ NEW FINDING: THERE IS NO AUDIO CONCURRENCY CAP AT ALL. Greps for maxVoices / MAX_VOICES /
-##   activeVoices / voiceCap / concurrentVoice return ZERO. Every utterance allocates 10 fresh
-##   nodes and nothing bounds how many are in flight. §15 explicitly calls for mobile concurrency
-##   budgets; there are none today. Proposed starting targets: <=8 concurrent voices, <=120 live
-##   nodes on a phone — to be refined by the listening test and a real device profile.
-##   ⛔ MEMORY and GPU are DELIBERATELY LEFT UNMEASURED, with the reason recorded: today's build is
-##   immediate-mode Canvas 2D and uses NO WebGL, so there is no GPU baseline to compare against,
-##   and the port's memory profile will be dominated by Pixi textures/render-targets that do not
-##   exist yet. SET BOTH AT THE PHASE 3 ENGINE PROOF. Carried forward as invariants the port must
-##   not quietly relax: art cache 1,200 · DPR 3 desktop / 2 touch (Nick's "phone runs hot" mandate).
-## ✔ FIXED-SEED GOLDEN SCREENS CAPTURED (2026-07-31). port/baseline-v1.8.9/screens/ — 28 shots,
-##   6.1 MB, via `node tools/uishot.js`. MANIFEST.json records id / viewport / save type / bytes /
-##   sha256. Most panels at BOTH desktop and phone widths, deliberately: this project's UI defects
-##   have been overwhelmingly MOBILE-ONLY, and a desktop-only proof set would have missed every one
-##   (the buried training card, the dock behind the board, the rail overlap).
-##   ⚠⚠ THESE ARE A HUMAN REFERENCE, NOT AN AUTOMATED DIFF GATE — and the README says so loudly,
-##   because everything ELSE in that directory IS hash-compared and someone will eventually try.
-##   A browser screenshot is not byte-reproducible: it moves with browser revision, GPU/driver,
-##   font rasterisation, subpixel AA and DPR. The pinned Edge revision makes them COMPARABLE, not
-##   IDENTICAL. The sha256 in the manifest detects file corruption in git, NOT render drift; a
-##   mismatch after a browser update is expected and means nothing. Gate F is explicitly a HUMAN
-##   judgment — "fixed-seed screens pass art rubric", approved by eye against ART_DIRECTION.md.
-##   ⛔ NOT INCLUDED, deliberately: the 60+ art proof sheets in tools/sheets/ (gitignored today,
-##   far heavier than UI screens) — worth a curated set before the Phase 5 creature-quality gate,
-##   but Gate F's SCREEN requirement is met by this set. Also absent: landing vistas and encounter
-##   screens, which need a world landed on rather than a panel clicked; add them when the
-##   Canvas/Pixi spike needs a before/after.
-## ✔ ACCEPTANCE RUBRICS WRITTEN (2026-07-31). port/RUBRICS.md — gates A-I, every criterion tagged
-##   [EXEC] (a command that passes/fails) · [EXEC-TODO] (should be executable, does not exist yet) ·
-##   [HUMAN] (a person must look, listen or play). ⚠ [HUMAN] IS NOT A WEAKER CRITERION, IT IS AN
-##   IRREDUCIBLE ONE — nine logged green-but-wrong cases here all share one shape: something that
-##   FELT checkable got a check, the check went green, nobody looked.
-##   THE HONEST TALLY: ~half executable today, a third EXEC-TODO, the rest human-only. AND THE TWO
-##   THAT MOST BLOCK PHASE 0 — a real veteran save (Gate C) and the listening test (Gate G) — ARE
-##   BOTH [HUMAN]. Neither can be worked around by building a better tool.
-## ✔ CANVAS/PIXI SPIKE — DAY ONE DONE (2026-07-31). port/spike/ + spike-proof.png. ⚠ A ONE-SITTING
-##   spike, NOT the two-week one; it answers the STRUCTURAL questions and NOT the art-quality one.
-##   ✅ RING OCCLUSION WORKS — back half behind the planet, front half over it, via two masked
-##      containers and painter's order. The item most likely to force a different architecture
-##      did not. Parallax layering works. Pixi 8 renders WebGL headlessly.
-##   ⚠ THE PLANET TERMINATOR AND RING SHADOW CAME OUT AS HARD-EDGED BLOCKS — MY bug: shading built
-##      from ~26 stacked translucent Graphics circles bands and seams. SOFT SHADING BELONGS IN A
-##      SHADER OR FILTER, not stacked alpha. Cheap lesson, transfers to Phases 3 and 6.
-##   ❌ The creature looks like a cartoon spider. ⚠ NOT a Pixi verdict — a verdict on building
-##      creatures from PRIMITIVES, which CONFIRMS the plan's own premise (§10 / Addendum A call for
-##      authored art + rig families + mesh deformation precisely because primitives will not do).
-##   ⛔ NOT ANSWERED: the painterly quality bar (no shaders/filters/authored textures were used) ·
-##      phone performance (headless Edge ran a SOFTWARE rasteriser — any FPS here is meaningless) ·
-##      mesh-deformation integration (decision D3, $379/seat). ⚠ NICK'S ART VERDICT SHOULD WAIT —
-##      judging the visual ceiling on that creature panel would be judging my primitives, not Pixi.
-##   ⚠ Pixi pinned 8.19.0 in an ISOLATED port/spike/package.json (root deps stay acorn+jsdom).
-##      That is ALREADY DRIFT: Addendum D verified 8.18.1 as current stable the same day.
-## ▶▶ MY PHASE 0 LIST IS NOW EMPTY. Everything remaining is Nick's — see below.
-## ═══ ★★ PHASE 1 HAS BEGUN (2026-07-31, Nick's go) — TypeScript domain conversion ═══
-## The two open Phase 0 items are NICK-ONLY and gate LATER phases (real save -> Gate C in Phase 2;
-## listening test -> Phase 7 audio scope). Domain conversion is blocked by neither.
-## ★★★ MODULES 1–8 OF 14 ARE DONE AND PARITY-GREEN (one session, 2026-07-31):
-##   Rand ✔ WorldConfig ✔ Naming ✔ StarCatalog ✔ PlanetGen ✔ WorldGen ✔ SurveyPhrases ✔
-##   SpeciesTraits ✔ — 6 test files, 31 passing + 1 skipped-with-reason, ~72,000 golden cases +
-##   15 fingerprint probes, tsc strict clean. Each module committed + pushed individually.
-## ▶▶▶ COLD-START GUIDE FOR THE NEXT SESSION — read this before touching port/v2:
-##   · WORKSPACE: port/v2/ (plan §18 layout, packages/domain/*). typescript 7.0.2 · vitest 4.1.10 ·
-##     @types/node, all pinned exact. Commands: `npx vitest run` and `npx tsc --noEmit` from port/v2.
-##   · THE PORT RULE: bodies VERBATIM + types only. |0, Math.imul, >>> and /4294967296 are the
-##     determinism contract — a "cleanup" that passes typecheck can still shift every world.
-##   · SMALL modules are hand-ported TS; BIG modules go through port/v2/tools/lift.mjs — byte-
-##     verbatim extraction with auto-detected imports, source line range + body sha in the header,
-##     DO NOT EDIT marker. Typed surface lives in index.ts + a hand-written .verbatim.d.ts.
-##     ⚠ Register each new package's exports in lift.mjs's REGISTRY as you go — auto-imports
-##     depend on it (surveyphrases/speciestraits/genome rows are still empty placeholders).
-##   · TWO FIXTURE SOURCES: tests/parity.ts (golden-seeds, VOLUME — canon+FNV per the fixture's
-##     own spec) and tests/baseline.ts (the 50-probe fingerprint, BREADTH). ⚠ Fingerprint values
-##     are stored as JSON STRINGS — compare canon(ours) === storedString, never deep-equal.
-##     Test recipes MUST mirror tools/probe.js and tools/goldenseeds-probe.js exactly.
-##   · NEGATIVE-CONTROL every new module once (perturb a constant -> parity must fail naming
-##     seeds -> revert). Two lifter bugs and one false "10 passed" were caught exactly this way —
-##     COUNT THE TEST FILES, not just the tests: a syntax-broken file is silently not collected.
-## ▶ REMAINING (deps first): 9 Genome (richest: makeGenome x4 kingdoms, speciesGrade, sapienceTier,
-##   classifyRealm, guardianFor, describeSpecies, _szOf — ~50,000 golden cases waiting) ·
-##   10 EncUtil · 11 Genetics (crossGenome x10k) · 12 Ecology · 13 Descriptors (~2,800 lines,
-##   owes the systemSol REPLAY — see below) · 14 CombatCore (battleStats x1k + code fixtures).
-##   Then Gate B close: no-DOM lint · SessionRNG (reviewer §2.1) · noise-generator corpus
-##   extension · full 25-generator sweep from TS.
-## ⚠ OPEN THREADS carried into the next session, each recorded in code comments too:
-##   · systemSol probe DEFERRED (worldgen test, it.skip with full reason): the fingerprint value
-##     encodes PROBE-ORDER MUTATION — descriptor probes cache _pal onto memoized P objects before
-##     systemSol was captured. Descriptors module must replay planetDescriptor over Sol first.
-##     PORT LESSON: memoized generators make call order observable — TS port should not share
-##     mutable cached objects across callers.
-##   · slimGal carried in @cf/domain-worldgen temporarily (it lives at main.js:3014, app section,
-##     but the galaxiesInCell probe needs it) — recorded relocation.
-##   · makeNoise/clamp/mix/surfaceColor/atmosphereText+3 not directly fixture-covered — each gap
-##     is recorded IN THE TEST FILE where it belongs, none silent. surfaceColor + phrase builders
-##     get pinned transitively when Descriptors lands.
-##   · ★ 9g IS NOW GUARDED: SpeciesTraits' invariant suite pins the GRADE_TIERS collapse (rows
-##     9-14 Transcendent/#F7F1FF, rows 0-9 ≡ RARITY_V17, stars '', displayRarity clamps). The
-##     explicit RawGradeTier->DisplayRarityTier conversion function lands with Genome/speciesGrade.
+## ═══ ★ PHASE 0 PROGRESS (started + completed 2026-07-31) — ARCHIVED ═══
+## The full deliverable-by-deliverable log (Gate A tag · tag backfill · evidence archive ·
+## 10,000 golden seeds · code fixtures · audio profiles · budgets · golden screens · rubric
+## elevation · the Canvas/Pixi spike results) moved VERBATIM to ROADMAP_ARCHIVE.md on
+## 2026-07-31 when Phase 1 completed and this file passed the ~400-line threshold again.
+## Phase 0 is COMPLETE on the automatable side; the three NICK-ONLY items are listed below
+## after the Phase 1 block.
+## ═══ ★★★ PHASE 1 DOMAIN CONVERSION: COMPLETE (2026-07-31, one further session) ═══
+## ALL 14 MODULES PORTED AND PARITY-GREEN + GATE B CLOSE-OUT DONE (automatable side).
+##   Modules 9-14 landed this session: Genome ✔ (71k golden + 7 probes + the 9g end-to-end
+##   guard) · EncUtil ✔ (independent-truth: Node Buffer b64 + hand-computed shade) ·
+##   Genetics ✔ · Ecology ✔ · Descriptors ✔ (2k heavy golden + ★ the systemSol REPLAY —
+##   the deferred probe passes byte-for-byte) · CombatCore ✔ (battleStats x1k + the FULL
+##   code-fixtures corpus: share/champion codes x23 genomes, normGenome, cleanName).
+## ★ GATE B DELIVERABLES, all in port/v2: tests/sweep.test.ts (27-generator sweep from TS,
+##   198,000 cases, completeness-asserted) · tests/nodom.test.ts (no-DOM/no-nondeterminism
+##   lint, 2 reasoned exceptions) · @cf/domain-sessionrng (reviewer §2.1 — counter-per-domain,
+##   replayable, order-isolated; app wires the 11 Math.random() sites in Phase 2+) ·
+##   @cf/domain-strays (cleanName, where-codecs, winEstimate, floraStat, biomeFor+BIOME_SETS,
+##   hdGenesFor, _sanitizeSavedGenome — closes whereCodes + sanitizeSavedGenome buckets incl.
+##   the v1.8.7 sizePreserved invariant x23) · GOLDEN CORPUS EXTENDED addition-only,
+##   diff-verified 25/25 byte-identical (makeNoise x10k + crossGenome_uncorrelated x10k;
+##   npm run goldenseeds PASS, 27 generators / 198,000 cases).
+## GATES AT SESSION CLOSE: vitest 16 files / 161 passed / 1 documented skip · tsc strict clean ·
+##   npm run goldenseeds PASS. main.js/html UNTOUCHED (only tools/goldenseeds-probe.js gained
+##   the two new generators), so the validate battery stands as at v1.8.9.
+## ★ FINDINGS made this session, each recorded at its site (README module table + test files):
+##   · FIXTURE BLIND SPOT: the golden crossGenome recipe's CONSECUTIVE parent seeds bias the
+##     mutation draw — size-mutation branch executed ZERO times in 10k cases (color 80% /
+##     trait 12.5% / size 0%). Game unaffected (uniform with real uncorrelated seeds); corpus
+##     extension closes it. Lesson: input correlation can silently zero a branch's coverage.
+##   · GREEN-WHILE-BROKEN: worldgen's galaxiesInCell reads free GAL_SPRITES — all three probed
+##     cells are EMPTY, so parity stayed green while every POPULATED cell threw. Found by
+##     real-input structural tests; hooked + populated-cell test added. (Instrument-first law
+##     holds in the port too.)
+##   · VACUOUS PROBES, reproduced exactly and recorded: planetSpecies (level=2 vs string
+##     levels, stored "[]" since v1.0) · galaxyDescriptor (cell 0,0 empty) · moonDescriptor
+##     (no moons at that call shape). Ecology's 0xB105 salt hole was MEASURED open at module
+##     12 (perturbation passed 7/7) and VERIFIED closed at module 13 (fails 2 descriptor tests).
+##   · SOURCE LAYERING VIOLATION: galaxyHaze draws a 2048px canvas INSIDE the WorldGen [domain]
+##     module (main.js ~1373) — violates the file's own architecture rule; only the Renderer
+##     calls it. Lint exception with reason; RELOCATION CANDIDATE for a future main.js batch.
+##   · toLocaleString in civilization yearLabel is locale-dependent — captured under the
+##     capture machine's locale; a port machine with another default locale would diverge on
+##     descriptor text. Surfaced by planetDescriptor golden staying green here; note for CI.
+## ✔ OPEN THREADS FROM THE 1-8 SESSION, ALL CLOSED: systemSol replay (descriptors test) ·
+##   slimGal relocated worldgen→descriptors · lift.mjs REGISTRY placeholders filled (now
+##   tools/registry.mjs, shared by lift.mjs + lift-strays.mjs + lift-apphooks.mjs) ·
+##   makeNoise corpus gap · 9g part 2 (collapse guarded THROUGH speciesGrade incl. apex 12-14).
+## ⚠ STILL OPEN, recorded where they belong: _earthArt (hdGenesFor's Earth-bestiary branch —
+##   SpeciesArt, Phase 4 art port; strays d.ts) · combatcore app-coupled exports need an app
+##   layer (index.ts) · COSMIC_EPOCH reads 0 in lifts (= capture condition; app wires it
+##   Phase 2+) · SessionRNG call-site wiring (Phase 2+).
+## ▶▶▶ NEXT: Phase 1 is done — Phase 2 per PORT_MASTER_PLAN v4.0 §20 (app-layer/service
+##   conversion; Gate C needs NICK's real veteran save). Cold start: this block →
+##   port/v2/README.md (module table + Gate B section) → plan §20.
 ## ✔★ THE FOUR §23 DESIGN DECISIONS ARE MADE (Nick, 2026-07-31). Recorded in port/DECISIONS.md —
 ##   a NEW live record, so the supplied v4.0 plan stays the reference it was delivered as.
 ##     1. bred `fed` → INHERIT 50% OF THE LOWER PARENT. Breeding is not sharing: BOTH parents are
@@ -306,13 +165,15 @@
 ##   release. Implementing now would move fixtures just pinned (voiceOf invalidates audio-profiles;
 ##   `fed` moves breeding parity in golden-seeds) — trading the port's safety net for a change
 ##   nobody is waiting on. And none is a CRITICAL fix, which is all the freeze rule permits.
-## ▶ NEXT IN PHASE 0 — NICK'S, and Phase 0 CANNOT CLOSE without them: the HUMAN LISTENING TEST
+## ▶ STILL NICK'S, and Phase 0 CANNOT FULLY CLOSE without them: the HUMAN LISTENING TEST
 ##   (12-24 players; no automated fleet can score it — Playwright runs --mute-audio) · a REAL
-##   VETERAN SAVE for Gate C · the Canvas/Pixi spike's ART VERDICT.
-##   NOT a code phase — no TypeScript until Phase 1.
-## ⚠ FOUR NEW FINDINGS LOGGED THIS BATCH, none fixed: 9e (biome→fauna filter is dead code) ·
-##   9f (a stale premise guarding the `size` load decision — NICK'S CALL) · 9g (the rarity display
-##   collapse is an unguarded data invariant) · 9h (the browser is an undeclared dependency).
+##   VETERAN SAVE for Gate C (now the blocking input for Phase 2) · the Canvas/Pixi spike's
+##   ART VERDICT.
+## ⚠ THE 9x FINDINGS (2026-07-31), status: 9e (biome→fauna filter dead code — OPEN, main.js) ·
+##   9f (stale premise in the `size` note — CORRECTED in the _sanitizeSavedGenome comment,
+##   NICK'S CALL still open on the drift-balance question) · ✔ 9g CLOSED (guarded in the port:
+##   data invariant at module 8 + end-to-end through speciesGrade at module 9) ·
+##   9h (browser as undeclared dependency — OPEN, tools/preflight owns it).
 ## ═══════════════════════════════════════════════════════════════════════════════════
 
 ## ═══ WHERE THINGS STAND ═══
