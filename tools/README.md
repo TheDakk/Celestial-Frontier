@@ -64,6 +64,45 @@ Exit 0 = everything required is present; exit 1 = a suite cannot run.
 > The everyday command is `node tools/build.js` (main.js → html). If in doubt,
 > use `validate.js`, which builds for you.
 
+## goldenseeds.js — the 10,000-case parity corpus for the port
+
+```
+npm run goldenseeds              # re-run and compare (a GATE)
+npm run goldenseeds:capture      # rewrite the fixture — see the warning below
+node tools/goldenseeds.js --capture --count=500 --heavy=100   # quick pass
+```
+
+**Why this exists alongside `baseline.json`.** The 50-probe fingerprint proves *this
+build still behaves like v1.0*. It does **not** give a TypeScript re-implementation
+enough to check itself against: 50 hand-picked cases is a smoke test, and when it fails
+it cannot tell you *which input* diverged. `golden-seeds.json` is the parity corpus —
+**10,000 seeds × 25 generators = 178,000 cases**, with a hash per seed, so a failing
+port is pinpointed to one seed instead of one function.
+
+Lives at `port/baseline-v1.8.9/golden-seeds.json` (~4.3 MB). Captures in ~7s.
+
+**Cross-language by construction:**
+
+- **Seeds are listed explicitly.** A port must not have to reimplement a PRNG just to
+  obtain test inputs — that would be a second source of divergence.
+- **Canonical form** before hashing: numbers → `Math.round(v*1e9)/1e9` (non-finite →
+  `String(v)`), object keys sorted, `undefined` → `null`. This is the **same 1e-9
+  rounding `probe.js` uses**, reused deliberately so both fixtures agree on "equal".
+- **FNV-1a 32-bit run twice** (bases `0x811c9dc5`, `0x9e3779b9`), concatenated to 16 hex
+  chars — ~10 lines in any language, no crypto import.
+- **Rollup** per generator for the cheap check; **perSeed** to localise a failure.
+
+> ⚠ **Never re-capture to make a failing `--check` pass.** Exactly the `baseline.json`
+> rule: a mismatch means observable generator behavior changed. Re-capture only when the
+> change is intended and recorded.
+
+> **Negative-controlled both ways.** Corrupting one stored hash (and recomputing its
+> rollup, so only the per-seed value is wrong) makes `--check` fail *and name the exact
+> seed*. It also caught a bug in itself: the first version took the corpus size from CLI
+> defaults in `--check` too, so checking a 50-case fixture re-ran 10,000 and reported
+> "26 generators diverged" — a **false alarm**, and a check that cries wolf gets ignored.
+> `--check` now takes its counts from the fixture unless `--count` is passed explicitly.
+
 ## The loop (run after every batch of edits)
 
 ```

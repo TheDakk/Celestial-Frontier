@@ -118,10 +118,26 @@
 ##   mode that lost the v3.x port plan. Deliberately does NOT duplicate the html or tools/baseline.json
 ##   — both are tracked at the tag, so git reproduces them byte-exact; referenced by sha256 instead.
 ## ✔ 9c BIOME_ATLAS + 9d RARITY docs — see those entries. Both premises were false.
-## ▶ NEXT IN PHASE 0: declare + pin the browser dependency (9h) · capture the 10,000 golden seeds ·
-##   saves / share codes / champion codes / migration fixtures · fixed-seed golden screens · audio
-##   profiles · bundle/answerability/memory/GPU/audio-node budgets · the Canvas/Pixi spike · the
-##   human listening test · the four §23 design decisions. NOT a code phase — no TypeScript.
+## ✔ THE 10,000 GOLDEN SEEDS ARE CAPTURED (2026-07-31). port/baseline-v1.8.9/golden-seeds.json —
+##   10,000 seeds × 25 generators = 178,000 cases, ~4.3 MB, captures and verifies in ~7s.
+##   `npm run goldenseeds` is a GATE. WHY IT IS NOT JUST A BIGGER baseline.json: the 50-probe
+##   fingerprint proves THIS build still matches v1.0; it cannot tell a TypeScript port WHICH input
+##   diverged. This corpus hashes PER SEED, so a failing port is pinpointed to one seed.
+##   CROSS-LANGUAGE BY CONSTRUCTION: seeds LISTED EXPLICITLY (a port must not reimplement a PRNG
+##   just to get inputs — that is a second source of divergence) · canonical form reuses probe.js's
+##   1e-9 rounding so both fixtures agree on "equal" · FNV-1a-32 x2, ~10 lines in any language, no
+##   crypto import. ⚠ NEVER re-capture to make a failing --check pass (same rule as baseline.json).
+##   ⚠ Negative-controlled both ways, and IT CAUGHT A BUG IN ITSELF: --check originally took the
+##   corpus size from CLI defaults, so checking a 50-case fixture re-ran 10,000 and reported
+##   "26 generators diverged" — a FALSE ALARM. A check that cries wolf gets ignored (the simrun
+##   `dead` lesson). --check now reads its counts from the fixture.
+## ▶ NEXT IN PHASE 0 — MINE: saves / share codes / champion codes / migration fixtures ·
+##   fixed-seed golden screens + proof sheets · audio-profile outputs · bundle / answerability /
+##   memory / GPU / audio-node budgets · elevate the remaining system docs into rubrics.
+## ▶ NEXT IN PHASE 0 — NICK'S, and Phase 0 CANNOT CLOSE without them: the four §23 design decisions
+##   (fed inheritance · ambience resume · legacy voice family · bat pitch ceiling) · the HUMAN
+##   LISTENING TEST (12-24 players; no automated fleet can score it — Playwright runs --mute-audio) ·
+##   the Canvas/Pixi spike's ART VERDICT · and 9f. NOT a code phase — no TypeScript until Phase 1.
 ## ⚠ FOUR NEW FINDINGS LOGGED THIS BATCH, none fixed: 9e (biome→fauna filter is dead code) ·
 ##   9f (a stale premise guarding the `size` load decision — NICK'S CALL) · 9g (the rarity display
 ##   collapse is an unguarded data invariant) · 9h (the browser is an undeclared dependency).

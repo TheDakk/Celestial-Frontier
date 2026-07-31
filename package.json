@@ -5,6 +5,8 @@
   "scripts": {
     "preflight": "node tools/preflight.js",
     "preflight:ci": "node tools/preflight.js --assert-pin",
+    "goldenseeds": "node tools/goldenseeds.js --check",
+    "goldenseeds:capture": "node tools/goldenseeds.js --capture",
     "extract": "node tools/extract.js",
     "validate": "node tools/validate.js",
     "smoke": "node tools/smoke.js",
