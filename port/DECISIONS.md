@@ -118,3 +118,17 @@ correctly. Comment-only; no behavioural change.
 | Desktop training rail overlap | ROADMAP 11 — decide desktop behaviour before the Phase 4 UI parity gate. |
 | Archetype economics | The reviewer's §2.3 addition — deep-engagement archetypes lose on both counters. Decision 1 above is a partial answer, not the whole one. |
 | Remaining old backlog | Triage into fix-before-port vs inherit-and-fix. |
+
+### 6. Beast placement pass ("weird shading around the animal") — **PORT DELTA ONLY**
+
+*Not a §23 row; raised by Nick reviewing the Phase 0 pipeline spike (2026-07-31).*
+
+**Decision:** the tuned placement pass (tufts alpha 0.92 near-black → ~0.58 green-tinted,
+30% fewer, tapered; shadow pool 0.46 → 0.30, tighter) ships **in the port only**. The live
+HTML build keeps the shipped pass; `main.js` untouched.
+
+**Reasoning.** Diagnosed by controlled diff: the "weird shading" is the shipped occlusion
+tufts + shadow pool at proof scale, not a pipeline bug. It is shipped art, so changing it
+live would alter what players see for a change nobody is waiting on — and Phases 5/6 revisit
+creature/biome presentation anyway with proper time budgeted. A/B evidence:
+`port/spike/placement-ab-zoom.png`; the tuned pass lives in `port/spike/pipeline.cjs`.
