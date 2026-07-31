@@ -521,6 +521,34 @@
   {
    "vp": "iphone-se",
    "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Atlas",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Compendium",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Charters",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Records",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "iphone-se",
+   "surf": "training",
    "name": "battery P2: Settings › Audio is clickable during a lesson",
    "ok": true,
    "detail": "blocked by stab"
@@ -1053,6 +1081,34 @@
   {
    "vp": "iphone",
    "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Atlas",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Compendium",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Charters",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Records",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "iphone",
+   "surf": "training",
    "name": "battery P2: Settings › Audio is clickable during a lesson",
    "ok": true,
    "detail": "blocked by stab"
@@ -1585,6 +1641,34 @@
   {
    "vp": "iphone-max",
    "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Atlas",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Compendium",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Charters",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Records",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "iphone-max",
+   "surf": "training",
    "name": "battery P2: Settings › Audio is clickable during a lesson",
    "ok": true,
    "detail": "blocked by stab"
@@ -2117,6 +2201,34 @@
   {
    "vp": "android",
    "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Atlas",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Compendium",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Charters",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "android",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Records",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "android",
+   "surf": "training",
    "name": "battery P2: Settings › Audio is clickable during a lesson",
    "ok": true,
    "detail": "blocked by stab"
@@ -2649,6 +2761,34 @@
   {
    "vp": "ipad-port",
    "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Atlas",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Compendium",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Charters",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Records",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "ipad-port",
+   "surf": "training",
    "name": "battery P2: Settings › Audio is clickable during a lesson",
    "ok": true,
    "detail": "blocked by stab"
@@ -3177,6 +3317,34 @@
    "name": "CF1805-01: the lesson card survives a raised Records (card dodged)",
    "ok": true,
    "detail": "100% reachable (63/63)"
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Atlas",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Compendium",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Charters",
+   "ok": true,
+   "detail": "0 control(s) buried — "
+  },
+  {
+   "vp": "ipad-mini",
+   "surf": "training",
+   "name": "CF1806-02: the dock survives a raised Records",
+   "ok": true,
+   "detail": "0 control(s) buried — "
   },
   {
    "vp": "ipad-mini",

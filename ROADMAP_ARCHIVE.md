@@ -7,6 +7,112 @@
 > Append future completed batches to the TOP of the batch section here as they age out of ROADMAP.md.
 
 
+## ══════════ ARCHIVED 2026-07-31 (v1.8.7 "True to Form" ship) — the v1.8.6 batch ══════════
+## Moved VERBATIM from ROADMAP.md under the pinned HYGIENE rule (nothing deleted). v1.8.6 was
+## live for ONE DAY: external round 9 reviewed it hunk by hunk the same evening and found that
+## one line in it — the `size` load clamp — was corrupting live saves. The block below is the
+## full v1.8.6 log, including the CF1805-06 entry that shipped BOTH halves of the fix that
+## disagreed. Kept for exactly that reason: it is the clearest example on record of two correct
+## fixes for one bug, shipped together, contradicting each other.
+## ▶▶▶ 2026-07-30 ★ v1.8.6 "KEPT PROMISES" LIVE — ROUND 8 RESPONSE: 12 fixes, 2 new instruments.
+##   Nick: "here's the next batch of feedback. Let's get everything fixed up." → "Let's go ahead
+##   deploy, version bump, and get ready for more testing." Two bundles landed (see NEXT #2).
+##   EVERY claim was reproduced in source before a line was changed; three were reproduced with a
+##   controlled failure. Ten of the twelve are player-visible and carry release-notes bullets.
+##   ⚠ TITLE CAVEAT (same as v1.8.5's): "Kept Promises" was CHOSEN BY CLAUDE — Nick asked only for
+##   a bump. The theme is that things the game already advertised now actually happen: the duel
+##   awards pay, the odds meter tells the truth, the lesson card stays readable. Renaming is one
+##   string in RELEASES[0] plus a redeploy.
+##   ═══ FIXED (all gates green: validate 9/9 · fingerprint MATCH 50/50 · smoke 553/0 ·
+##       uilayout 763 checks / 10 viewports · simrun dom 2452 presses, 0 findings) ═══
+##   · CF1805-01 P1 — THE MIRROR IMAGE OF THE v1.8.4 P0 FIX, and the round's most valuable item.
+##     Raising a lesson's own surface to z58 raised it above the LESSON CARD at z50. Only #panel had
+##     ever joined the --tut-bot positioning contract; #log/#codex/#chpanel/#records got the raise
+##     and not the geometry, so they rendered THROUGH the card. On iPad mini step 8 the card measured
+##     0% reachable, 63/63 blocked by #codex — instruction AND Skip button both gone. The fleet saw
+##     the same wall independently: stalls at step 8 went 8 → 29 the moment 5 and 7 were cleared.
+##     Fix is CSS, in the html. bottom/min-height MUST be released explicitly — under
+##     @media (max-width:900px) those four are pinned `top:auto !important` WITH a min-height, and
+##     min-height beats max-height, so a top-only rule would have been present, correct and inert.
+##   · CF1805-02 high — THE +8 DUEL WIN HAD NEVER PAID, IN ANY BUILD. Round 7 derived `_mid`,
+##     guarded on `_mid`, then awarded to `mine.id` — undefined at every reachable call site
+##     (both friendly-duel callers build {name,genome,art}). Strictly WORSE than before for
+##     participation: the guard fired, consumed the 30s throttle, and paid nothing. One identifier,
+##     three places. `stats.duelwins++` sits outside the guard, so the win counted toward rank and
+##     achievements while the creature got nothing.
+##   · CF1805-03 — five wrong moduli in voiceOf (trait %7 of 25, body %9 of 16, loco %6 of 18,
+##     diet %5 of 6, sense %6 of 10). Now read FA_X.length, three lines below the fix that
+##     introduced the correct idiom. voiceOf is NOT a fingerprint probe, so this was free.
+##   · CF1805-04 — the quest log's only handle. While stalled dataset.go is always truthy
+##     (CF1802-04 removed _nextBest's last go:null), so the chip could not open the log in exactly
+##     the state a lost player wants it. ⚠ THE REPORT'S MECHANISM WAS INCOMPLETE: the click handler
+##     already clears the stall, but NOTHING repainted the chip, so it kept routing forever. The fix
+##     is a deferred _chBadge(), not a re-plumb — one-tap routing (CF1802-03's measured win) survives.
+##   · CF1805-06 — `size` was the one linear power term nothing clamped. Two halves, both shipped:
+##     a load-path clamp (a hand-edited size:1e6 bought +4,000,000 vitality and travelled in a share
+##     code), and battleStats now reads `%FA_SIZE.length` — the SAME value the card prints — so a
+##     bred size-9 beast can no longer read "dog-sized" while fighting with +36 vitality.
+##     makeGenome yields 0-5, so the modulus is identity there and the fingerprint did not move.
+##   · CF1805-07 — a forward clock re-rolled the weekly charter slate on any board render
+##     (~77.5 ☄ per step). RATE-LIMITED, not closed: one roll per 10 monotonic minutes. See below.
+##   · CF1802-16 — "a first-of-its-kind lineage" fired on EVERY breed. The key was per-individual
+##     (codexId = 's'+seed) and both parents are consumed one line above, so it could never repeat:
+##     the ledger worked perfectly and guarded nothing. Now keyed on the pairing, as its own comment
+##     always said it meant. Harmless to the numbers; the toast was lying every time.
+##   · P0 (battery) — the conquest odds memo could show the OPPOSITE truth: demonstrated 0% while
+##     the real matchup had become 100%, and 100% while it had become 0%. The key named four inputs
+##     (seed|seed|xp|hurt) out of the ten that move the result. Now keyed on the SIMULATION'S OWN
+##     INPUTS — the battle-stat vector, level and ability set runDuel consumes, plus both seeds and
+##     the sample count. fed/brood/hurt/xp/_mult/_wf all reach combat THROUGH those, so they are
+##     covered without being named and a future stat input cannot silently escape the key.
+##   · P1 (battery) — live `fed` and child `brood` clamped to 200 at the mutation site. Every
+##     consumer already clamped, so this was never a stat exploit — just a card quoting 240 / 401
+##     and snapping back after a reload.
+##   · P1 (battery) — the specimen sheet's "victories feed it" copy predated v1.8's care XP and
+##     made feeding and breeding progression invisible on the one card players read.
+##   ═══ NEW INSTRUMENTS ═══
+##   · tools/duelxp-check.js — an OUTCOME test for the duel rewards, and the direct answer to the
+##     recommendation they have now made five rounds running. smoke.js ALREADY had a duel-XP check;
+##     it called awardXP() directly, so it stayed green through every build in which the friendly
+##     duel paid nothing at all. This drives the real arena and reads the ledger. NEGATIVE-CONTROLLED:
+##     against the pre-fix build it reports `xp 0 -> 0` while duelwins still increments.
+##     ⚠ `startDuelWithCode` was added to probe-names.json (254 names) to reach the real flow.
+##   · uilayout.js — 4 surfaces × 2 card positions × 10 viewports = 40 new checks (683 → 763).
+##     ⚠⚠ THE CONTROL CAUGHT MY OWN GATE FIRST, AGAIN (that is SEVEN). My first version pinned the
+##     card at the TOP and came back CLEAN on the very case the round reported, because a top-pinned
+##     card and a bottom-anchored board never share a band on a tablet. Their card had DODGED to the
+##     bottom. Adding the dodge pass reproduced their number verbatim — ipad-mini, Compendium,
+##     0% reachable, 63/63 blocked by #codex. A gate that agrees with a bug report by accident is
+##     worth nothing; make it reproduce the REPORTED GEOMETRY, not a convenient one.
+##   ═══ DELIBERATELY NOT FIXED — these need Nick, or are not closable ═══
+##   · CF1805-05 harvest reload (~6,200 ☄/hr vs 26 by design). THE PROPOSED FIX IS NOT IMPLEMENTABLE:
+##     "persist the monotonic stamps" cannot work, because a browser has NO cross-reload monotonic
+##     clock — perfTime() restarts at every load, so a persisted monotonic stamp is meaningless on
+##     the far side of the reload that defeats it. More fundamentally, an offline game cannot
+##     distinguish "waited an hour" from "wound the clock an hour", and every bound that would close
+##     it also penalises a genuinely returning player. The in-session gate IS real and stays. Options
+##     for Nick: accept it (single-player, offline, no leaderboard — it is self-cheating), or change
+##     the DESIGN so harvest yield scales with engagement rather than wall time. Same root cause
+##     limits CF1805-07, which is why that one is rate-limited rather than fixed.
+##   · CF1805-06's third half — wrapping `size` in crossGenome. crossGenome AND evolveGenome are
+##     both fingerprint probes, so wrapping the mutation changes every bred creature and breaks the
+##     v1.0 baseline. NOT a quiet fix. The player-visible divergence is closed at battleStats
+##     instead; the drift itself is a balance decision.
+##   · CF1802-08 (the Compendium closes when a specimen card is dismissed — renderCodex is still
+##     byte-identical), CF1802-07's unaffordable Build button (not rendered at all, so there is
+##     nothing to press), the Bat voice ceiling (14.4% of named Bats still hard-clamp at 6 kHz),
+##     direct 132px thumbnails, and adaptive stall cadence. All real, all sized, none started.
+##   · §3.1 THE STRUCTURAL ONE — 50% of sessions skip Field Training, 100% of rage quits skipped it,
+##     and no bot has finished all 21 steps in six rounds. Their proposal: cut the mandatory path to
+##     five steps that unlock a loop and make the other sixteen contextual. That is a DESIGN CALL and
+##     the highest-leverage item on the whole list. Rage quits did fall for the first time in four
+##     builds (112.5 → 62.5 per 1000 on the deep tier, the only like-for-like slice).
+##   ═══ DOCS THIS BATCH ═══ ROADMAP (this block + NEXT #2) · tools/README (duelxp-check + the
+##     uilayout dodge pass) · codebase-reference §12 (SEVEN suites) · ECONOMY_LOOT_CRAFTING
+##     (charter rate-limit + the harvest limit) · COMBAT_AND_CONQUEST (odds signature, size) ·
+##     PROGRESSION (the XP awards that now pay) · DETERMINISM (why these were fingerprint-safe).
+
+
 ## ══════════ ARCHIVED 2026-07-30 (v1.8.6 "Kept Promises" ship) — the v1.8.5 batch ══════════
 ## Moved VERBATIM from ROADMAP.md under the pinned HYGIENE rule (nothing deleted). v1.8.5
 ## "First Touch" was live for exactly one day: external round 8 arrived the next morning and

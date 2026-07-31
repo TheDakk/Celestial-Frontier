@@ -410,6 +410,65 @@ async function main() {
         el2.classList.remove('tutpri'); el2.style.display='none';
       }
       tb.classList.remove('dodge');
+      /* ROUND 9 CF1806-02 — THE ASSERTION THE CARD-ONLY PASS COULD NOT MAKE.
+         The pass above proves a raised board does not bury the LESSON CARD. It says
+         nothing about everything BELOW the board — and CF1806-02 was exactly that: the
+         v1.8.6 rule released the bottom anchor (those boards are pinned bottom:142px
+         precisely to clear the dock) and reserved only 24px, so on the two shortest phones
+         a raised board covered ALL SIX dock controls, 63/63 blocked. The card was fine.
+         The right assertion is the general one: at any training state, every control the
+         player may legitimately press is the topmost element at its own coordinates. */
+      /* ⚠ RESTORE THE CARD-AT-TOP PUBLICATION FIRST. The dodge pass above left
+         --tut-bot at row1-h+12 (~53px), which parks the board high on the screen where
+         it cannot reach the dock at all — and the check then passed on a build already
+         proven broken. The dangerous geometry is the card at the TOP, because the board
+         hangs DOWNWARD from it toward the dock. This is the same trap as the dodge pass
+         itself, one level down: the state you forgot to set is the state the bug lives in. */
+      tb.style.display='block';
+      {
+        const _cr3=tb.getBoundingClientRect();
+        document.documentElement.style.setProperty('--tut-bot', Math.round(_cr3.bottom+10)+'px');
+        document.documentElement.style.setProperty('--tut-cap', Math.max(140, Math.round(innerHeight-_cr3.bottom-24))+'px');
+      }
+      const DOCK=['codexbtn','logbtn','cargobtn','chbtn','setbtn','helpbtn'];
+      for(const [k,el2] of [['Atlas',log],['Codex',codex],['Charters',chp],['Records',rec]]){
+        if(!el2) continue;
+        /* ⚠ THE BOARD MUST HAVE CONTENT. An EMPTY board collapses under the
+           min-height:0 the fix itself sets, never reaches the dock, and the check
+           passes on a build that is broken — measured: this returned clean on the
+           shipped v1.8.6 that the external round had already proven defective.
+           A real board at these steps is populated (the Charters board at step 20
+           carries the Ascent box plus the slate), so fill it the way the probe
+           already fills #panel above. */
+        const _keep=el2.innerHTML;
+        el2.innerHTML='<div style="padding:14px">'+'row<br>'.repeat(60)+'</div>';
+        el2.style.display='block'; el2.classList.add('tutpri');
+        const blocked=[];
+        for(const id of DOCK){
+          const b=document.getElementById(id);
+          if(!b) continue;
+          const r=b.getBoundingClientRect();
+          if(r.width<1||r.height<1) continue;          /* legitimately hidden — not a finding */
+          const h=hit(b);
+          if(!h.ok) blocked.push(id+'<-'+(h.by||h.why));
+        }
+        if(k==='Charters'){
+          const br=el2.getBoundingClientRect();
+          const cs=getComputedStyle(document.documentElement);
+          out.dockDiag={
+            vpH:innerHeight,
+            tutBot:cs.getPropertyValue('--tut-bot').trim(),
+            tutCap:cs.getPropertyValue('--tut-cap').trim(),
+            board:[Math.round(br.top),Math.round(br.bottom),Math.round(br.height)],
+            maxH:getComputedStyle(el2).maxHeight,
+            btns:DOCK.map(id=>{ const b=document.getElementById(id); if(!b) return id+':none';
+              const r=b.getBoundingClientRect();
+              return id+':'+Math.round(r.top)+'-'+Math.round(r.bottom)+'('+Math.round(r.width)+'x'+Math.round(r.height)+')'; })
+          };
+        }
+        out['dockClear'+k]={blocked:blocked, n:blocked.length};
+        el2.classList.remove('tutpri'); el2.style.display='none'; el2.innerHTML=_keep;
+      }
       /* external battery v1.8.2 (P2): "the training card blocks Settings › Audio"
          — measured, as they measured it, by whether the tab can actually be hit
          while a lesson is on screen. */
@@ -456,6 +515,25 @@ async function main() {
         if (!m) continue;
         check(vp, 'training', 'CF1805-01: the lesson card survives a raised ' + lbl,
           m.pct >= 90, m.pct + '% reachable (' + m.ok + '/' + m.tot + ')' + (m.by ? ' — blocked by ' + m.by : ''));
+      }
+      /* ROUND 9 CF1806-02 — the dock must survive a raised board. Steps 5 (#log),
+         8 (#codex) and 20 (#chpanel) all raise one, so this is the normal path.
+         ⚠ SCOPED TO <=900px ON PURPOSE — that is the exact breakpoint at which the
+         bottom dock exists and those four boards are pinned to clear it. Above it the
+         same ids are RAIL buttons with different layout, and a raised board overlapping
+         them is a DIFFERENT question with a different answer. Measured: laptop/desktop
+         report 2 buried on v1.8.5 as well, i.e. PRE-EXISTING and not this fix's doing —
+         it is filed in the roadmap rather than folded in here, because a gate that
+         conflates two defects behind one name teaches nobody anything. */
+      if (process.argv.includes('--diag') && stack.dockDiag) console.log('DIAG [' + vp.id + '] ' + JSON.stringify(stack.dockDiag));
+      if (vp.w <= 900) {
+        for (const [k, lbl] of [['dockClearAtlas', 'Atlas'], ['dockClearCodex', 'Compendium'],
+                                ['dockClearCharters', 'Charters'], ['dockClearRecords', 'Records']]) {
+          const m = stack[k];
+          if (!m) continue;
+          check(vp, 'training', 'CF1806-02: the dock survives a raised ' + lbl,
+            m.n === 0, m.n + ' control(s) buried — ' + m.blocked.join(' · '));
+        }
       }
       check(vp, 'training', 'battery P2: Settings › Audio is clickable during a lesson',
         !!(stack.audioTab && stack.audioTab.ok), 'blocked by ' + (stack.audioTab && (stack.audioTab.by || stack.audioTab.why)));

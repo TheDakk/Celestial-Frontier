@@ -1,6 +1,6 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-**STATUS:** matches code as of 2026-07-30 (verified against main.js). See the 2026-07-30 addendum at the end — the charter clock exploit is rate-limited, the harvest one is OPEN by decision.
+**STATUS:** matches code as of 2026-07-31 (verified against main.js). See the 2026-07-30 addendum and its 2026-07-31 CORRECTION — the harvest exploit is OPEN by decision, and the charter limit costs a reload, not ten minutes.
 **Purpose:** The material economy — mining dead worlds into Cargo, spending it at the Shipyard (Fabricator + Research), crafting the gear/relic ladder, the item tooltip card, and the v1.6 AFFIX/LOOT core that imbues worn gear with seeded bonus stats.
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 **Cross-reference (v1.7):** the full v1.7 Forge economy — the 47-material registry with
@@ -211,3 +211,24 @@ That leaves two honest options, both Nick's:
 What must *not* happen is a patch that looks like a fix and is not — that is exactly
 the round-8 pattern the reviewer named (a correct diagnosis in a comment, with the
 code doing something else).
+
+### ⚠ CORRECTION 2026-07-31 (round 9, CF1806-03) — what the charter limit actually costs
+
+The addendum above describes the weekly-charter mitigation as "one roll per 10 monotonic minutes".
+**That overstated it, and round 9 was right to say so.** `_chRollMono` is a plain module `let`: it
+resets on every page load, and the first roll of each load always passes. The true bound is **one
+roll per page load**, plus one per 10 monotonic minutes *within* a load — seconds, not ten minutes.
+
+Round 9 proposed a load-time bound derived from `_atL` (the save's own stamp), by analogy with
+`_hvFloor`. It does not transfer: `_hvFloor` defends against a *lowered* stamp inside a save the
+player edited, whereas this defends against a *raised* wall clock — and any wall-clock minimum
+written into the save is satisfied by the very forward wind that triggers the roll. A monotonic
+stamp cannot survive a reload at all, because `perfTime()` restarts at zero.
+
+> **A monotonic in-memory stamp is the right instinct and the wrong storage** — round 9's phrasing,
+> and worth keeping. The clock being defended against is the device clock, and whoever can wind
+> that can also press F5.
+
+The limit is kept because it is free and it binds the in-session case honestly. The **comment in
+the source now states the real bound** rather than the aspirational one — which is the whole point,
+given that round 8's own pattern was *a comment that claims more than the code delivers*.

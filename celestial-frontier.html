@@ -1794,6 +1794,14 @@
   /* Nick 2026-07-28: steps 5 and 7 point at dock chips — the card ends above them */
   body.training #panel{max-height:min(var(--tut-cap,60dvh),
     calc(100dvh - var(--tut-bot,150px) - 126px - env(safe-area-inset-bottom,0px))) !important}
+  /* ROUND 9 CF1806-02 — THE DOCK ALLOWANCE, as a knob rather than a duplicated rule.
+     Below 900px the bottom dock exists, so a training-raised board must end above it.
+     The .tutpri rule further down reads var(--tut-dock) and this is where it is set —
+     one declaration instead of a second copy of the max-height, which is what makes it
+     work at all: an override with EQUAL specificity that appears EARLIER in the sheet
+     loses, and the first attempt at this fix was exactly that (a duplicate rule here,
+     silently beaten by the .tutpri rule at 1876). */
+  body.training{--tut-dock:126px}
   }
   /* BATCH B: the 701–900px TABLET band — dock furniture, but sheets don't
      stretch wall-to-wall on a 900px canvas; they center at a readable width */
@@ -1878,7 +1886,17 @@
     top:calc(var(--tut-bot,150px) + 8px) !important;
     bottom:auto !important;
     min-height:0 !important;
-    max-height:var(--tut-cap,calc(100dvh - var(--tut-bot,150px) - 24px)) !important}
+    /* ROUND 9 CF1806-02: releasing `bottom` above dropped the reason those boards were
+       bottom-pinned in the first place — clearing the dock. v1.8.6 reserved a flat 24px,
+       so the board grew straight down over it: measured with #chpanel raised (the state
+       training step 20 `charter-first` creates), iPhone SE and Galaxy S8 reported 0%
+       reachability on ALL SIX dock controls. --tut-dock is 126px below the 900px
+       breakpoint (where the dock exists) and 24px above it; #panel two rules up has
+       encoded the same constraint since 2026-07-28.
+       min() not a var() fallback: --tut-cap is almost always SET, so a fallback never
+       applies — the allowance has to win by being the smaller of the two. */
+    max-height:min(var(--tut-cap,60dvh),
+      calc(100dvh - var(--tut-bot,150px) - var(--tut-dock,24px) - env(safe-area-inset-bottom,0px))) !important}
   /* external battery v1.8.2 (P2): the recruit can open Settings mid-training —
      so Settings must outrank the lesson card (z50) AND the lesson's own raised
      surface (z58), or its Audio tab sits under the card that sent them there. */
@@ -16588,12 +16606,28 @@ function _sanitizeSavedGenome(g){
   if('fed' in g) g.fed=cl(g.fed,0,200);
   if('xp' in g) g.xp=cl(g.xp,0,486);   /* CF-CR-003: level 9 is xp 486 (levelOf √(xp/6) caps at 9) — 1e6 bought nothing but save bloat */
   if('hurt' in g) g.hurt=cl(g.hurt,0,1);
-  /* ROUND 8 CF1805-06: CF1802-15 mirrored normGenome's BATTLEFIELD modifiers but
-     not its coercion of the trait indices — and size is a linear power term
-     (battleStats adds size*4 vitality). It was the one such term nothing clamped,
-     so a hand-edited size:1e6 bought +4,000,000 vitality, and encodeCreature
-     carried it into another player's duel box intact. Legitimate range is 0-5. */
-  if('size' in g) g.size=cl(g.size,0,FA_SIZE.length-1);
+  /* ROUND 9 CF1806-01 — THE SIZE CLAMP WAS REMOVED HERE, and must not come back.
+     v1.8.6 shipped TWO fixes for one problem: battleStats now WRAPS size (% FA_SIZE.length,
+     the same value the card prints) and this line CLAMPED it to 0..5 on load. The wrap
+     alone is correct and sufficient; the clamp was actively harmful.
+     WHY IT WAS HARMFUL: crossGenome's mutation list includes `size` and never wraps it, and
+     evolveGenome mutates again on every breed, so HONEST saves carry size > 5 — measured on
+     this build's own functions at 12.4% of lineages by generation 5 and 14.6% by generation 20
+     (max seen 11). This clamp rewrote every one of them, permanently, on the next load:
+       stored 6 -> card "tiny",  vit 50   becomes  card "titanic", vit 70
+       stored 9 -> card "large", vit 62   becomes  card "titanic", vit 70
+     Portrait scale, voice pitch (sizeF reads size % 6), the body-length dial and the
+     "Size Classes" collection slot all move with it, and a share code exported before the
+     reload no longer matches one exported after.
+     WHY IT BOUGHT NOTHING: its own justification was "a hand-edited size:1e6 bought
+     +4,000,000 vitality". The wrap already closes that — measured, size:1e6 yields vit 66
+     against a LEGITIMATE maximum of 70 at size 5. normGenome's Math.abs((+o.size)|0) feeds
+     the same wrapped reader, so the share-code path is closed by the wrap too.
+     ⚠ Note for anyone tempted to "finish" this by wrapping size at load instead: don't.
+     speciesGrade/rarityRoll/sapience read `g.size` RAW (>=3, >=4, >=5), so a stored 6 is NOT
+     equivalent to a stored 0 — wrapping on load would also rewrite honest data, just less
+     visibly. The drift itself is a BALANCE question and crossGenome is a fingerprint probe.
+     See ROADMAP's 2026-07-31 batch log and SAVE_SYSTEM.md. */
   /* ROUND 7 CF1802-15: mirror normGenome — battlefield modifiers never survive
      a save any more than they survive a share code, and the guardian bands are
      honoured only where they are genuine. */
@@ -18796,7 +18830,18 @@ function breedPair(aEntry, bEntry, roll){
          nothing. Harmless to the numbers (7 XP is still level 1) but the toast
          was telling a lie every time. Key it on what the comment above already
          says it means — the PAIRING — using the names, which outlive the parents. */
-      awardXPPair(born.id, [String(aEntry.name||''),String(bEntry.name||'')].sort().join(' × '), 5, 'a first-of-its-kind lineage');
+      /* ROUND 9 (round-8 review, §2.5): key on the GENOME-derived identity, not the
+         display name. `entry.name` is assigned directly by the rename handler, so the
+         old key let a player re-arm the +5 by renaming a parent — a ledger bypassable
+         by a UI action. `_earthName || speciesName(seed)` is the same string the
+         Compendium shows but is derived, not stored, so it cannot be edited.
+         ⚠ SEMANTICS, since they are not obvious: speciesName is seeded per INDIVIDUAL,
+         so this groups Earth-descended creatures ("Wolf × Bat" repeats and pays once)
+         while every procedural pairing is genuinely unique and pays every time. That is
+         correct for this game's fiction — each catalogued procedural creature IS its own
+         species — and the parents are consumed either way, so no pairing can be farmed. */
+      const _lin=(e)=>{ const g2=(e&&e.genome)||{}; return String(g2._earthName || speciesName((g2.seed>>>0)||0)); };
+      awardXPPair(born.id, [_lin(aEntry),_lin(bEntry)].sort().join(' × '), 5, 'a first-of-its-kind lineage');
     }
   }catch(_){ }
   return {ok:true, odds, born};
@@ -19743,10 +19788,24 @@ document.addEventListener('focusout', ()=>{ if(_tipFor) hideTip(); });
    @section release-notes [app] — versioned release notes, update popup + history
    Owns: GAME_VERSION, RELEASES, _rnSeen, openReleaseNotes
    ---------------------------------------------------------------- */
-const GAME_VERSION='1.8.6';
+const GAME_VERSION='1.8.7';
 const BUILD_ID='dev';   /* replaced with the git sha at deploy time */
 /* newest first; categories appear in the order listed */
 const RELEASES=[
+{v:'1.8.7', title:'True to Form', date:'July 2026', sections:[
+ ['🐛 Bug Fixes', [
+  '🧬 YOUR BRED CREATURES KEEP THEIR SIZE — a creature from a long bloodline could come back from a reload as a different size entirely, usually the largest one, with the vitality and portrait to match. Its voice, its body and its Size Classes slot all moved with it. Bloodlines now read the same before and after a reload, and a creature you exported yesterday still matches the one in your Compendium today.',
+  '📱 THE DOCK STAYS REACHABLE DURING TRAINING — on smaller phones, opening the Compendium, Star Atlas or Charters board during Field Training could cover the entire bottom dock, leaving no way to reach the Compendium, Atlas, Shipyard, Charters, Settings or Guide until the board was closed.',
+  '💡 THE "YOU SEEM STUCK" POINTER NO LONGER DISAPPEARS — acting on the suggestion chip could make it vanish for a player with no objective, which is exactly the player who needed it. If you have nothing on your slate, the chip now always offers a next step.'],
+ ],
+ ['⚖ Balancing', [
+  '🗓 WEEKLY CHARTERS — the limit added last release is honest about what it does now; the note in the code no longer claims more than the code delivers.'],
+ ],
+ ['🔧 Under the Hood', [
+  '⚔ FASTER CONQUEST PICKER — the odds meter rebuilt the defending creature’s stats once per row. It now computes them once for the whole list.',
+  '🧪 TWO MORE OUTCOME TESTS — one proves a long bloodline survives a save-and-reload with its size intact, the other proves the training dock stays pressable behind every raised board on every phone size. Both were checked against the previous build first, to confirm they actually catch the bug they were written for.'],
+ ],
+]},
 {v:'1.8.6', title:'Kept Promises', date:'July 2026', sections:[
  ['🐛 Bug Fixes', [
   '🎓 THE LESSON CARD STAYS READABLE — opening the Compendium, Star Atlas, Charters or Records during Field Training could draw the board straight over the lesson you were following, hiding both the instruction and the Skip button. On a tablet at the "open a shelf, then tap a specimen" step the card was completely buried. Boards now always make room for the lesson.',
@@ -20810,7 +20869,11 @@ function trueOdds(champ, native, n){
     let w=0, tot=0, close=0;
     /* ROUND 7 (ask #4): these two were rebuilt on EVERY iteration — 320 redundant
        battleStats per row. They do not vary with i; only the pairing seed does. */
-    const _sa=champ.stats||battleStats(champ.genome), _sb=battleStats(native.genome);
+    /* ROUND 9 (round-8 review, §2.5): `native.stats||` mirrors the champ line. Rekeying the
+       memo on the stat vectors necessarily moved the cache check BELOW these two calls, so a
+       full cache hit still paid for battleStats(native.genome) once per picker row — and the
+       native is invariant across the whole list. The picker now hands its own nS down. */
+    const _sa=champ.stats||battleStats(champ.genome), _sb=native.stats||battleStats(native.genome);
     /* ROUND 8 (external battery P0): the key was seed|seed|xp|hurt, which names
        FOUR of the inputs this simulation actually reads. Feeding a champion, or a
        defender picking up a world multiplier, moved the real outcome without
@@ -20884,6 +20947,10 @@ function conquerPlanet(d){
 function openConquestPicker(d, native){
   _pickMode='conquer'; _pickBase=null;
   const nS=battleStats(native.genome);
+  /* ROUND 9: hand the invariant native stats down so trueOdds does not rebuild them once
+     per row. battleStats is pure, so this is the value it would have computed anyway —
+     the same {name,genome,stats} shape every champ already carries. */
+  try{ native.stats=nS; }catch(_){ }
   const fauna=[...codex.values()].filter(e=>e.kind==='Fauna')
     .map(e=>({name:e.name, genome:e.genome, art:artOf(e), id:e.id, grade:e.grade}));
   const champs=[playerCombatant(), ...fauna];
@@ -24641,14 +24708,22 @@ function _chRoll(){
   const wk=_chNow();
   if(chWeek>wk+1) chWeek=wk;   /* CF1720-06: an impossible-FUTURE bank is repaired HERE, after the clock has settled — never at load, where a pre-NTP Date.now() rewound honest weeks */
   if(wk>chWeek){   /* CF1715-12: !== re-rolled the weekly slate on a BACKWARD clock change — replayed banked landfalls paid on the accept click */
-    /* ROUND 8 CF1805-07: _chArmed defers the roll past boot but never limits how
-       OFTEN it can run, and any board render triggers it — so stepping the OS
-       clock forward a week at a time reseeds the slate and makes every completed
-       weekly claimable again, ~77.5 ☄ per step. A device clock cannot be verified
-       offline, so this does not CLOSE the loop; it rate-limits it to one roll per
-       10 monotonic minutes, which no honest player can reach (a real week boundary
-       is crossed at most once a session) and which costs a cheater 10 minutes of
-       real time per slate. perfTime() is monotonic from boot and unwindable. */
+    /* ROUND 8 CF1805-07 / ROUND 9 CF1806-03: _chArmed defers the roll past boot but never
+       limited how OFTEN it can run, and any board render triggers it — so stepping the OS
+       clock forward a week at a time reseeds the slate and makes every completed weekly
+       claimable again, ~77.5 ☄ per step.
+       ⚠ WHAT THIS ACTUALLY COSTS AN ATTACKER — stated precisely, because round 8's comment
+       here did not. _chRollMono is a plain module `let`, so it resets on every page load and
+       the first roll of each load always passes. The real bound is therefore ONE ROLL PER
+       PAGE LOAD (plus one per 10 monotonic minutes WITHIN a load) — seconds, not ten minutes.
+       Round 8's wording ("one roll per 10 monotonic minutes") overstated it.
+       It is not fixable by persisting this stamp: any wall-clock minimum written to the save
+       is satisfied by the same forward wind that triggers the roll, and a monotonic stamp is
+       meaningless across a reload because perfTime() restarts at zero. A per-session limit
+       cannot bind an attacker who controls the session — whoever can wind the device clock
+       can also press F5. Same root cause as CF1805-05 (harvest), which is open by decision.
+       Kept because it is free and it does bind the in-session case honestly.
+       See ECONOMY_LOOT_CRAFTING.md's 2026-07-30 addendum for the full argument. */
     const _rm=perfTime();
     if(_chRollMono>-1e8 && (_rm-_chRollMono)<600) return;
     _chRollMono=_rm;
@@ -24855,7 +24930,18 @@ function _chBadge(){
        player with no objective at all — the one most likely to quit — could
        never be offered a next step. The stall suggestion is now allowed to
        stand in for a missing goal rather than being gated behind one. */
-    const _nbEarly=(!g && _stall>=10)?_nextBest():null;
+    /* ROUND 9 CF1806-04: v1.8.6's repaint (CF1805-04) had a hole exactly where CF1802-03
+       lives. With NO objective the suggestion was still gated behind _stall>=10, so the
+       repaint — which runs with _stall already cleared to 0 — landed in the early-out
+       below and the chip VANISHED, where before it had at least stayed on screen. The
+       player then waits ten more pointer events to get any pointer back, and that player
+       is the one CF1802-03 identified as most likely to quit.
+       An objective-less player gets a suggestion UNCONDITIONALLY now. That is what
+       CF1802-03 said it did ("the stall suggestion stands in for a missing goal rather
+       than being gated behind one") — it was still half-gated. There is nothing to nag
+       over here: `g` is null only when no charter is accepted AND no chapter goal is
+       outstanding, which is genuinely adrift, not merely idle. */
+    const _nbEarly=(!g)?_nextBest():null;
     if(!g && !_nbEarly){ if(el) el.style.display='none'; _chipLast=null;
       /* ROUND 7 CF1802-06: the chip hiding used to strand an OPEN log on screen
          with no handle and no way out */

@@ -70,6 +70,11 @@ node tools/duelxp-check.js # REWARD OUTCOMES. Plays a real duel through the aren
                            #   then reads the ledger to prove the XP ARRIVED. The old
                            #   check called awardXP() directly and so stayed green
                            #   through every build in which the duel paid nothing.
+node tools/sizedrift-check.js
+                           # SAVE ROUND-TRIP. Proves an honestly-bred genome survives
+                           #   load unchanged. A clamp added in one release rewrote
+                           #   ~12% of bred creatures into titanic ones on next load;
+                           #   this fails on that build and passes on the fix.
 ```
 
 Each of the above accepts a build to test (`--url=` / `--src=`), so a new check can be

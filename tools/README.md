@@ -37,6 +37,8 @@ node tools/bootperf.js         # COLD BOOT: decomposes first-interactive in a re
                                #     --save=none --cpu=4 --cpuprofile --assert
                                #   Other flags: --reps=N --profile=fresh|warm
                                #   --gate=SEL --settle=MS --url=FILE --verbose
+node tools/duelxp-check.js     # REWARD OUTCOMES: plays a real duel, reads the ledger
+node tools/sizedrift-check.js  # guards the size clamp regression (see below)
 node tools/deploy.js --release X.Y.Z   # runs the whole battery, then ships
 node tools/deploy.js           # ship to https://celestialfrontier.github.io/ — stamps
                                #   BUILD_ID with the git sha and publishes
@@ -53,7 +55,7 @@ node tools/deploy.js           # ship to https://celestialfrontier.github.io/ �
    `probe-names.json`) inside the game IIFE so the probe can reach them.
 4. **harness.js** — boots the probe build in jsdom (fake 2D canvas context,
    `pretendToBeVisual`), requires **zero boot errors**, then runs
-   `probe.js` in-page: 49 probes over the deterministic core (PRNG, naming,
+   `probe.js` in-page: 50 probes over the deterministic core (PRNG, naming,
    world-gen, descriptors, genomes, breeding, duels, share codes, constants).
 5. Compares every probe against `baseline.json` — captured from the original
    v1.0 file — and fails on any mismatch. **Do not regenerate the baseline to
@@ -218,3 +220,45 @@ shared-state analysis driven by `modules.json`), `wrap-modules.js` (wrapped
 line ranges into revealing-module IIFEs without touching statement bytes),
 `banner-sections.js` (app-layer section banners + architecture TOC). They are
 not needed for day-to-day work.
+
+## sizedrift-check.js — the guard against re-adding the `size` load clamp
+
+```
+node tools/sizedrift-check.js              # the current build
+node tools/sizedrift-check.js --src=<html> # any build, for negative controls
+```
+
+Added 2026-07-31 (round 9, CF1806-01). v1.8.6 shipped two fixes for one problem that contradicted
+each other — `battleStats` wraps `size`, the load path clamped it — and the clamp permanently
+rewrote honestly-bred creatures on their next load.
+
+It asserts the outcome in both directions:
+
+1. an honestly-drifted genome (built by the build's **own** `crossGenome`/`evolveGenome`) survives
+   `_sanitizeSavedGenome` **unchanged**, and its vitality does not move;
+2. a crafted `size:1e6` still lands inside the legitimate range — i.e. the wrap alone closes the
+   exploit the clamp was written for.
+
+| build | result |
+|---|---|
+| v1.8.6 (clamp present) | **FAIL** — `size 9 -> 5`, `vit 80 -> 88` |
+| v1.8.7 (clamp removed) | **PASS** — 4/4 |
+
+Check 3 passes on *both* builds, which is the point: it demonstrates the clamp was redundant as
+well as harmful. It also asserts its own premise (that breeding really does drift `size` past 5),
+so if `crossGenome` ever changes, the check reports that rather than silently testing nothing.
+
+## uilayout.js — the training DOCK pass
+
+Alongside the training-card pass, `uilayout.js` now asserts that **every dock control is the
+topmost element at its own coordinates** while each of the four raisable boards is up, on every
+viewport at or below the 900px dock breakpoint. Scoped there deliberately: above it those same ids
+are rail buttons with different layout, and a board overlapping them is a different question with a
+different answer (laptop/desktop report overlaps on v1.8.5 too — pre-existing, filed separately).
+
+⚠ **It took three corrections before it measured anything real**, and all three are recorded in
+PROCESS_LAWS.md: a key collision that clobbered an existing check, **empty** boards that collapse
+under `min-height:0` and never reach the dock, and stale `--tut-bot` left over from the dodge pass.
+In its first two forms it passed against the shipped build the external round had already proven
+broken. Run `--diag` to dump the geometry (viewport, `--tut-bot`/`--tut-cap`, board rect, every dock
+button rect) when a result looks too clean.

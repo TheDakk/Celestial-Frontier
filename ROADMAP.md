@@ -21,73 +21,73 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF — as of 2026-07-30. ★ v1.8.6 "KEPT PROMISES" IS LIVE (build 0bfc904) ◀◀◀
-## [HYGIENE 2026-07-30, second run today] Two moves, and the second one is structural.
-##   (1) The v1.8.5 batch block moved VERBATIM to the top of ROADMAP_ARCHIVE.md (this file had
-##   reached 496 lines). Earlier the same day the v1.8.3 + v1.8.4 blocks were archived on the
-##   v1.8.5 ship, and the shipped NEXT items 6 / 6c / 7 were collapsed to pointers — their full
-##   story, including every negative control, is in that archived block.
-##   (2) ★ PROCESS LAWS MOVED OUT to **PROCESS_LAWS.md**. At 88 lines it was the largest section
-##   in a file whose own pin says it holds ONLY the live agenda, and it grew every single batch.
-##   Archiving could never fix it: the laws are a REFERENCE, not a log, and CLAUDE.md's hygiene
-##   principle is "logs archive, references refresh". The agenda was sinking underneath them.
-##   THIS FILE IS NOW 363 LINES, comfortably inside the ~400 pin, and the reduction is structural
-##   rather than a trim — nothing was shortened, one thing was put where it belongs.
-##   Structure is pins → this handoff → NEXT → doc map → the v1.8.6 batch log → the v2.0 plan.
+## ▶▶▶ SESSION HANDOFF — as of 2026-07-31. ★ v1.8.7 "TRUE TO FORM" IS LIVE ◀◀◀
+## [HYGIENE 2026-07-31] The v1.8.6 batch block moved VERBATIM to the top of ROADMAP_ARCHIVE.md
+##   (this file had reached 443 lines; it is ~348 now). It is kept in full for one reason worth
+##   naming: it is the clearest example on record of TWO CORRECT FIXES FOR ONE BUG, SHIPPED
+##   TOGETHER, THAT DISAGREE — its own CF1805-06 entry describes both halves approvingly.
+##   Structure is pins → this handoff → NEXT → doc map → the v1.8.7 batch log → the v2.0 plan.
+##   PROCESS_LAWS.md (extracted 2026-07-30) holds the laws; it is a reference and is never archived.
 ##   Source AND site pushed; full battery green; live verified end-to-end after deploy, not assumed.
 ##
 ## ═══ WHERE THINGS STAND ═══
-## ★ v1.8.6 "KEPT PROMISES" SHIPPED 2026-07-30 — the external round-8 response, written and
-##   deployed the SAME DAY the feedback landed. Nick: "Let's go ahead deploy, version bump, and
-##   get ready for more testing." 12 fixes from TWO independent audit bundles + 2 new instruments.
-##   READ THE 2026-07-30 BATCH LOG FIRST. It carries what was deliberately NOT fixed and why —
-##   including CF1805-05 (harvest), which is NOT CLOSABLE offline and needs a DESIGN DECISION,
-##   not a patch. Do not "fix" it in a later session without reading ECONOMY_LOOT_CRAFTING's
-##   2026-07-30 addendum, which is where that argument is written out in full.
-##   THE TWO HEADLINES: (1) v1.8.4's own P0 fix had a MIRROR IMAGE — raising a lesson's surface
-##   also raised it above the lesson CARD, so on iPad mini step 8 the instruction and its Skip
-##   button were 0% reachable, 63/63 blocked by #codex; (2) THE +8 DUEL WIN HAD NEVER PAID IN ANY
-##   BUILD — round 7 derived a correct identity, guarded on it, and awarded to a different one.
-##   ⚠ SEVEN instances now of a check passing while the thing it guarded was broken. The newest is
-##   the sharpest: our new reachability gate AGREED WITH THE BUG REPORT BY ACCIDENT, measuring a
-##   top-pinned lesson card when the reported one had DODGED to the bottom, so it came back clean
-##   on the very case it was written for. The corollary is upgraded: WHEN A NEW INSTRUMENT FIRES
-##   — OR PASSES — SUSPECT THE INSTRUMENT FIRST, and reproduce the REPORTED geometry, not a
-##   convenient one. Its sibling: ASSERT THE OUTCOME, NOT THE CODE PATH — smoke.js had a duel-XP
-##   check that called awardXP() directly, which is exactly why a reward the game never granted
-##   passed it in every build.
-## LIVE: v1.8.6 "Kept Promises" at https://celestialfrontier.github.io/ (shipped 2026-07-30).
-##   The predecessor was v1.8.5 "First Touch" (build e20d62c), live for one day.
-## GATES AT SHIP (v1.8.6): validate 9/9 · fingerprint MATCH 50/50 · smoke 553/0 · uilayout
-##   763 checks / 10 viewports (was 683 — the new training-card reachability pass) · balance PASS ·
-##   simrun dom 2,452 presses / 0 findings · duelxp-check 6/0. bootperf NOT re-run: nothing in this
-##   batch touches boot, art scheduling or the first-run path (v1.8.5's PASS still stands).
+## ★ v1.8.7 "TRUE TO FORM" SHIPPED 2026-07-31 — the round-9 response, and above all a REGRESSION
+##   FIX. Round 9 reviewed v1.8.6 hunk by hunk, closed 6 of 7 round-8 findings, and caught that
+##   ONE LINE WE HAD SHIPPED WAS CORRUPTING LIVE SAVES: v1.8.6 fixed `size` TWICE, in the same
+##   release, and the two fixes disagreed. ~12% of bred creatures were being rewritten into
+##   titanic, maximum-vitality ones on their next load. READ THE 2026-07-31 BATCH LOG FIRST.
+##   ⚠ THE STANDING DESIGN CALL IS UNCHANGED: CF1805-05 (harvest) is NOT CLOSABLE offline and needs
+##   a decision, not a patch — see ECONOMY_LOOT_CRAFTING's addendum before touching it.
+##   ═══ THE LESSON COUNT, WHICH IS THE POINT OF THIS SECTION ═══
+##   SEVEN times a check here has passed while the thing it guarded was broken — and round 9 added
+##   FOUR MORE green-but-wrong states in a single afternoon, all in ONE new gate and its fix:
+##   a key collision that clobbered another check; a pass that measured EMPTY surfaces (which
+##   collapse under the very min-height:0 the fix sets); a pass reading a CSS var left at the
+##   previous pass's value; and then the CSS fix itself, placed EARLIER in the sheet than the rule
+##   it had to override, at equal specificity, so it did nothing. Each was caught only by running
+##   the check against the BROKEN build and demanding it fail.
+##   THE LAWS THAT FOLLOW, now in PROCESS_LAWS.md: WHEN A NEW INSTRUMENT FIRES — OR PASSES —
+##   SUSPECT THE INSTRUMENT FIRST · REPRODUCE THE REPORTED GEOMETRY, NOT A CONVENIENT ONE ·
+##   ASSERT THE OUTCOME, NOT THE CODE PATH · TWO CORRECT FIXES FOR ONE BUG CAN DISAGREE.
+## LIVE: v1.8.7 "True to Form" at https://celestialfrontier.github.io/ (shipped 2026-07-31) —
+##   the round-9 response, and a REGRESSION FIX for a v1.8.6 line that was corrupting live saves.
+##   Predecessors: v1.8.6 "Kept Promises" (0bfc904) and v1.8.5 "First Touch" (e20d62c), one day each.
+## GATES AT SHIP (v1.8.7): validate 9/9 · fingerprint MATCH 50/50 · smoke 553/0 · uilayout
+##   787 checks / 10 viewports (was 763 — the new training-DOCK pass) · balance PASS ·
+##   simrun dom 0 findings · duelxp-check 6/0 · sizedrift-check 4/4. bootperf NOT re-run: nothing
+##   in this batch touches boot, art scheduling or the first-run path (v1.8.5's PASS still stands).
 ## ARC STATE: v1.7 "The Forge" COMPLETE and archived. v1.8 "The Connection" COMPLETE
 ##   (v1.8.0 arc → v1.8.1/.2 playtest → v1.8.3 external battery → v1.8.4 round 7 → v1.8.5
-##   the cold-boot fix + two new gates → v1.8.6 the round-8 response). v1.8.3/.4 batch logs are
-##   in ROADMAP_ARCHIVE.md.
+##   the cold-boot fix + two new gates → v1.8.6 round 8 → v1.8.7 round 9). v1.8.3/.4/.5 batch
+##   logs are in ROADMAP_ARCHIVE.md.
 ## SAVE FIELDS added across v1.8: vce/cbx (audio toggles), xpf (one-shot XP ledger). All
-##   absent-safe. NO save-shape change in v1.8.4 (the monotonic harvest guard is in-memory),
-##   NONE in v1.8.5 (the art hold is pure scheduling) and NONE in v1.8.6 — but note that v1.8.6
-##   CLAMPS two live fields on save/load (`fed`, `brood` to 200; `size` to 0-5), so a save that
-##   was carrying an out-of-range value will read back clamped. That is the intended fix, not drift.
-## ⚠ TITLE CAVEAT (now twice running): "Kept Promises" — like "First Touch" before it — was
-##   CHOSEN BY CLAUDE, not specified. Nick asked only for a bump. Renaming is one string in
-##   RELEASES[0] plus a redeploy. Worth ASKING next time rather than assuming the pattern holds.
+##   absent-safe. NO save-shape change in v1.8.4 / .5 / .6 / .7.
+##   ⚠ SAVE-VALUE clamps, stated carefully because this is where v1.8.6 went wrong: `fed` and
+##   `brood` ARE clamped to 200 at their mutation sites (every consumer already enforced that
+##   ceiling, so it only stops the card quoting a number the game does not honour). `size` is
+##   **NOT** clamped and MUST NOT BE — v1.8.6 clamped it and permanently rewrote ~12% of bred
+##   creatures. See SAVE_SYSTEM.md's v1.8.7 section; guarded by tools/sizedrift-check.js.
+## ⚠ TITLE CAVEAT (three releases running): "True to Form" — like "Kept Promises" and "First
+##   Touch" — was CHOSEN BY CLAUDE. Nick has never named one. Flagged rather than blocked on,
+##   since he had said go; one string in RELEASES[0] + a redeploy to change. ASK next time.
 ##
 ## ═══ ▶ NEXT — the actionable list, highest value first ═══
-## 1. ★ NICK'S iPHONE / iPAD RE-VERIFY of v1.8.6 — now THREE things, and (c) is new and the most
+## 1. ★ NICK'S iPHONE / iPAD RE-VERIFY of v1.8.7 — now THREE things, and (c) is new and the most
 ##    valuable, because it is the only one an instrument has never seen:
 ##    (a) training steps 5 / 6 / 7, still unverified on a device since the v1.8.3 fix;
 ##    (b) the FIRST 10 SECONDS of a brand-new expedition. v1.8.5 took the naming screen from
 ##        unanswerable-for-6.4s to ~1.9s on a 4x-throttled profile — the window a new player
 ##        judges the game in. Clear the save (or a fresh browser profile) so it is a genuine
 ##        first run;
-##    (c) ★ TRAINING STEP 8 ON AN iPAD — "open a shelf, then tap a specimen". This is CF1805-01,
-##        the v1.8.6 headline: the lesson card was 0% reachable behind the raised Compendium and
-##        29 of 117 fleet sessions stalled there. Our gate now measures it on 10 viewports in both
-##        card positions AND reproduces the bug on the old build, but the defect was found on a
-##        real iPad and the whole class has only ever been caught on real hardware.
+##    (c) ★ TRAINING STEP 8 ON AN iPAD — "open a shelf, then tap a specimen", AND the DOCK on a
+##        small phone at step 20. Two different v1.8.x fixes meet here (CF1805-01 buried the lesson
+##        card; CF1806-02 buried the dock behind the board that fixed it), and both were found on
+##        real hardware by an outside party, never by us.
+##        ⚠ DO NOT expect the step-8 STALL RATE to move: round 9 RETRACTED its own round-8 claim
+##        that CF1805-01 caused it. The card went 0% -> 100% reachable and the stall rate did not
+##        budge (25% -> 27%), so the burial was real and was not what was walling players. Their
+##        driver is weakest exactly there, so step 8 is currently UNMEASURED, not defective.
+##        What a device pass can settle that no instrument has: whether a human gets past it.
 ## 2. ✔ EXTERNAL ROUND 8 — DELIVERED 2026-07-30, and answered the same day (see the batch log).
 ##    TWO independent bundles arrived: the round-8 fleet review (18 archetypes · 12 goal-directed
 ##    verbs · 214 sessions, 7 new CF1805-xx items) and a separate full-battery audit (1,000
@@ -165,6 +165,12 @@
 ##    memory (partial) · Ambush at magnitudes IV/V · direct 132px thumbnail rendering (first paint
 ##    still generates HD) · willReadFrequently on the two hot canvas contexts · the `legacy` voice
 ##    archetype is a first-class 18th family in the wild (~5.5%), probably not intended.
+## 11. ⚠ NEW, FOUND BY THE ROUND-9 GATE AND NOT FIXED: on laptop/desktop/ipad-land, a raised
+##    training board overlaps #codexbtn and #chbtn. PRE-EXISTING — v1.8.5 reports the same 2
+##    controls buried, so it is NOT the CF1806-02 regression and was deliberately not folded in
+##    behind that name (a gate that conflates two defects behind one label teaches nobody
+##    anything). Above 900px those ids are RAIL buttons, not a dock, so the right assertion is a
+##    different one. The dock pass is scoped <=900px until someone decides what desktop should do.
 ## 10. THEN v1.9 CONSOLIDATION = PORT PHASE 0/1 → v2.0 PixiJS. See the v2.0 block at the bottom
 ##    of this file: save schema + Zod, module split BECOMES the TS extraction, payload budget gate,
 ##    ART_DIRECTION.md elevated to the port rubric + a golden screen. Also still open from that
@@ -235,103 +241,67 @@
 ##   build from git to negative-control a new gate (uilayout.js --url=FILE).
 ##
 
-## ▶▶▶ 2026-07-30 ★ v1.8.6 "KEPT PROMISES" LIVE — ROUND 8 RESPONSE: 12 fixes, 2 new instruments.
-##   Nick: "here's the next batch of feedback. Let's get everything fixed up." → "Let's go ahead
-##   deploy, version bump, and get ready for more testing." Two bundles landed (see NEXT #2).
-##   EVERY claim was reproduced in source before a line was changed; three were reproduced with a
-##   controlled failure. Ten of the twelve are player-visible and carry release-notes bullets.
-##   ⚠ TITLE CAVEAT (same as v1.8.5's): "Kept Promises" was CHOSEN BY CLAUDE — Nick asked only for
-##   a bump. The theme is that things the game already advertised now actually happen: the duel
-##   awards pay, the odds meter tells the truth, the lesson card stays readable. Renaming is one
-##   string in RELEASES[0] plus a redeploy.
-##   ═══ FIXED (all gates green: validate 9/9 · fingerprint MATCH 50/50 · smoke 553/0 ·
-##       uilayout 763 checks / 10 viewports · simrun dom 2452 presses, 0 findings) ═══
-##   · CF1805-01 P1 — THE MIRROR IMAGE OF THE v1.8.4 P0 FIX, and the round's most valuable item.
-##     Raising a lesson's own surface to z58 raised it above the LESSON CARD at z50. Only #panel had
-##     ever joined the --tut-bot positioning contract; #log/#codex/#chpanel/#records got the raise
-##     and not the geometry, so they rendered THROUGH the card. On iPad mini step 8 the card measured
-##     0% reachable, 63/63 blocked by #codex — instruction AND Skip button both gone. The fleet saw
-##     the same wall independently: stalls at step 8 went 8 → 29 the moment 5 and 7 were cleared.
-##     Fix is CSS, in the html. bottom/min-height MUST be released explicitly — under
-##     @media (max-width:900px) those four are pinned `top:auto !important` WITH a min-height, and
-##     min-height beats max-height, so a top-only rule would have been present, correct and inert.
-##   · CF1805-02 high — THE +8 DUEL WIN HAD NEVER PAID, IN ANY BUILD. Round 7 derived `_mid`,
-##     guarded on `_mid`, then awarded to `mine.id` — undefined at every reachable call site
-##     (both friendly-duel callers build {name,genome,art}). Strictly WORSE than before for
-##     participation: the guard fired, consumed the 30s throttle, and paid nothing. One identifier,
-##     three places. `stats.duelwins++` sits outside the guard, so the win counted toward rank and
-##     achievements while the creature got nothing.
-##   · CF1805-03 — five wrong moduli in voiceOf (trait %7 of 25, body %9 of 16, loco %6 of 18,
-##     diet %5 of 6, sense %6 of 10). Now read FA_X.length, three lines below the fix that
-##     introduced the correct idiom. voiceOf is NOT a fingerprint probe, so this was free.
-##   · CF1805-04 — the quest log's only handle. While stalled dataset.go is always truthy
-##     (CF1802-04 removed _nextBest's last go:null), so the chip could not open the log in exactly
-##     the state a lost player wants it. ⚠ THE REPORT'S MECHANISM WAS INCOMPLETE: the click handler
-##     already clears the stall, but NOTHING repainted the chip, so it kept routing forever. The fix
-##     is a deferred _chBadge(), not a re-plumb — one-tap routing (CF1802-03's measured win) survives.
-##   · CF1805-06 — `size` was the one linear power term nothing clamped. Two halves, both shipped:
-##     a load-path clamp (a hand-edited size:1e6 bought +4,000,000 vitality and travelled in a share
-##     code), and battleStats now reads `%FA_SIZE.length` — the SAME value the card prints — so a
-##     bred size-9 beast can no longer read "dog-sized" while fighting with +36 vitality.
-##     makeGenome yields 0-5, so the modulus is identity there and the fingerprint did not move.
-##   · CF1805-07 — a forward clock re-rolled the weekly charter slate on any board render
-##     (~77.5 ☄ per step). RATE-LIMITED, not closed: one roll per 10 monotonic minutes. See below.
-##   · CF1802-16 — "a first-of-its-kind lineage" fired on EVERY breed. The key was per-individual
-##     (codexId = 's'+seed) and both parents are consumed one line above, so it could never repeat:
-##     the ledger worked perfectly and guarded nothing. Now keyed on the pairing, as its own comment
-##     always said it meant. Harmless to the numbers; the toast was lying every time.
-##   · P0 (battery) — the conquest odds memo could show the OPPOSITE truth: demonstrated 0% while
-##     the real matchup had become 100%, and 100% while it had become 0%. The key named four inputs
-##     (seed|seed|xp|hurt) out of the ten that move the result. Now keyed on the SIMULATION'S OWN
-##     INPUTS — the battle-stat vector, level and ability set runDuel consumes, plus both seeds and
-##     the sample count. fed/brood/hurt/xp/_mult/_wf all reach combat THROUGH those, so they are
-##     covered without being named and a future stat input cannot silently escape the key.
-##   · P1 (battery) — live `fed` and child `brood` clamped to 200 at the mutation site. Every
-##     consumer already clamped, so this was never a stat exploit — just a card quoting 240 / 401
-##     and snapping back after a reload.
-##   · P1 (battery) — the specimen sheet's "victories feed it" copy predated v1.8's care XP and
-##     made feeding and breeding progression invisible on the one card players read.
-##   ═══ NEW INSTRUMENTS ═══
-##   · tools/duelxp-check.js — an OUTCOME test for the duel rewards, and the direct answer to the
-##     recommendation they have now made five rounds running. smoke.js ALREADY had a duel-XP check;
-##     it called awardXP() directly, so it stayed green through every build in which the friendly
-##     duel paid nothing at all. This drives the real arena and reads the ledger. NEGATIVE-CONTROLLED:
-##     against the pre-fix build it reports `xp 0 -> 0` while duelwins still increments.
-##     ⚠ `startDuelWithCode` was added to probe-names.json (254 names) to reach the real flow.
-##   · uilayout.js — 4 surfaces × 2 card positions × 10 viewports = 40 new checks (683 → 763).
-##     ⚠⚠ THE CONTROL CAUGHT MY OWN GATE FIRST, AGAIN (that is SEVEN). My first version pinned the
-##     card at the TOP and came back CLEAN on the very case the round reported, because a top-pinned
-##     card and a bottom-anchored board never share a band on a tablet. Their card had DODGED to the
-##     bottom. Adding the dodge pass reproduced their number verbatim — ipad-mini, Compendium,
-##     0% reachable, 63/63 blocked by #codex. A gate that agrees with a bug report by accident is
-##     worth nothing; make it reproduce the REPORTED GEOMETRY, not a convenient one.
-##   ═══ DELIBERATELY NOT FIXED — these need Nick, or are not closable ═══
-##   · CF1805-05 harvest reload (~6,200 ☄/hr vs 26 by design). THE PROPOSED FIX IS NOT IMPLEMENTABLE:
-##     "persist the monotonic stamps" cannot work, because a browser has NO cross-reload monotonic
-##     clock — perfTime() restarts at every load, so a persisted monotonic stamp is meaningless on
-##     the far side of the reload that defeats it. More fundamentally, an offline game cannot
-##     distinguish "waited an hour" from "wound the clock an hour", and every bound that would close
-##     it also penalises a genuinely returning player. The in-session gate IS real and stays. Options
-##     for Nick: accept it (single-player, offline, no leaderboard — it is self-cheating), or change
-##     the DESIGN so harvest yield scales with engagement rather than wall time. Same root cause
-##     limits CF1805-07, which is why that one is rate-limited rather than fixed.
-##   · CF1805-06's third half — wrapping `size` in crossGenome. crossGenome AND evolveGenome are
-##     both fingerprint probes, so wrapping the mutation changes every bred creature and breaks the
-##     v1.0 baseline. NOT a quiet fix. The player-visible divergence is closed at battleStats
-##     instead; the drift itself is a balance decision.
-##   · CF1802-08 (the Compendium closes when a specimen card is dismissed — renderCodex is still
-##     byte-identical), CF1802-07's unaffordable Build button (not rendered at all, so there is
-##     nothing to press), the Bat voice ceiling (14.4% of named Bats still hard-clamp at 6 kHz),
-##     direct 132px thumbnails, and adaptive stall cadence. All real, all sized, none started.
-##   · §3.1 THE STRUCTURAL ONE — 50% of sessions skip Field Training, 100% of rage quits skipped it,
-##     and no bot has finished all 21 steps in six rounds. Their proposal: cut the mandatory path to
-##     five steps that unlock a loop and make the other sixteen contextual. That is a DESIGN CALL and
-##     the highest-leverage item on the whole list. Rage quits did fall for the first time in four
-##     builds (112.5 → 62.5 per 1000 on the deep tier, the only like-for-like slice).
-##   ═══ DOCS THIS BATCH ═══ ROADMAP (this block + NEXT #2) · tools/README (duelxp-check + the
-##     uilayout dodge pass) · codebase-reference §12 (SEVEN suites) · ECONOMY_LOOT_CRAFTING
-##     (charter rate-limit + the harvest limit) · COMBAT_AND_CONQUEST (odds signature, size) ·
-##     PROGRESSION (the XP awards that now pay) · DETERMINISM (why these were fingerprint-safe).
+## ▶▶▶ 2026-07-31 ★ v1.8.7 "TRUE TO FORM" — ROUND 9 RESPONSE. A REGRESSION FIX, and it was OURS.
+##   Nick: "I think we finally got some great feedback... Check this out." → "Yes please let's do it."
+##   Round 9 reviewed v1.8.6's 152-line delta hunk by hunk and closed 6 of 7 round-8 findings, two
+##   "better than I asked for". It also found that ONE LINE WE SHIPPED WAS CORRUPTING LIVE SAVES.
+##   ★★ CF1806-01 — THE HEADLINE, AND THE MOST IMPORTANT THING IN THIS BLOCK.
+##   v1.8.6 shipped TWO fixes for ONE problem and they contradicted each other: battleStats began
+##   WRAPPING `size` (% FA_SIZE.length) and _sanitizeSavedGenome began CLAMPING it to 0-5.
+##   crossGenome mutates `size` and never wraps it, so HONEST saves carry size>5 — measured on our
+##   own functions at 12.4% of lineages by generation 5 (max 10). The clamp rewrote every one of
+##   them PERMANENTLY on the next load: a "tiny" size-6 creature came back "titanic" with vit 70,
+##   and its portrait scale, voice pitch and Size-Classes slot moved with it. A share code exported
+##   before the reload no longer matched one exported after.
+##   AND THE CLAMP BOUGHT NOTHING: its own justification was a crafted size:1e6 save, and the wrap
+##   in the SAME release already closed that — measured, 1e6 yields vit 66 against a LEGITIMATE
+##   maximum of 70. Deleted. Guarded by tools/sizedrift-check.js, which FAILS on v1.8.6
+##   (size 9 -> 5, vit 80 -> 88) and passes here.
+##   ⚠ ONE WRINKLE THE REVIEW MISSED, worth knowing before anyone "finishes" this: `size` is NOT
+##   uniformly wrapped. speciesGrade/rarityRoll/sapience read it RAW (>=3/>=4/>=5), so a stored 6
+##   is NOT equivalent to a stored 0 (vit 50 vs 37) — wrapping at LOAD would also rewrite honest
+##   data, just less visibly. The drift is a BALANCE question and crossGenome is a fingerprint probe.
+##   ═══ ALSO FIXED ═══
+##   · CF1806-02 (P1, phones) — our v1.8.6 training-layout rule released `bottom` (those boards are
+##     pinned bottom:142px precisely to clear the dock) and reserved a flat 24px, so a raised board
+##     grew straight down over the dock: iPhone SE and Galaxy S8 measured 0% reachability on ALL SIX
+##     dock controls at step 20. Fixed with a --tut-dock variable (126px below the 900px breakpoint,
+##     24px above), NOT a second rule — see the process law below for why the obvious fix failed.
+##   · CF1806-04 — v1.8.6's chip repaint made the chip VANISH for a player with no objective, the
+##     exact population CF1802-03 exists for. An objective-less player now gets a suggestion
+##     unconditionally, which is what CF1802-03 always claimed to do (it was still half-gated).
+##   · CF1806-03 — the weekly-charter limit costs ONE RELOAD, not ten monotonic minutes; _chRollMono
+##     is a module `let` and resets per load. The CODE is unchanged and correct; the COMMENT now
+##     states the real bound. Round 8's wording overstated it — which is round 8's own pattern.
+##   · Round-9 §2.5 smalls: the lineage-pair key is keyed on the GENOME (_earthName || speciesName)
+##     instead of the player-renamable display name; trueOdds no longer rebuilds the invariant
+##     native battleStats once per picker row (the P0 rekey had moved the cache check below it).
+##   ═══ THE GATE THAT MISSED CF1806-02, AND WHAT IT COST TO FIX ═══
+##   uilayout.js now asserts EVERY DOCK CONTROL is topmost at its own coordinates while each of the
+##   four boards is raised, on every viewport <=900px (763 -> 787 checks). Scoped there on purpose:
+##   above the breakpoint those ids are rail buttons and laptop/desktop report overlaps on v1.8.5
+##   TOO — pre-existing, filed as NEXT #11, deliberately not folded in behind the same name.
+##   ⚠⚠ IT TOOK THREE CORRECTIONS BEFORE IT MEASURED ANYTHING REAL, and in its first two forms it
+##   PASSED against the shipped v1.8.6 the round had already proven broken: (a) a key collision
+##   (out.dockAtlas was taken) that silently clobbered an existing check; (b) it measured EMPTY
+##   boards, which collapse under the very min-height:0 the fix sets and never reach the dock;
+##   (c) it read --tut-bot left at the DODGED value (53px) from the previous pass. Then the FIX
+##   itself failed its own gate — the first CSS attempt was a duplicate rule EARLIER in the sheet
+##   with equal specificity, so it lost. Four green-but-wrong states in one afternoon.
+##   ═══ STILL OPEN FROM ROUND 9 ═══ CF1802-08 (renderCodex byte-identical for a THIRD build —
+##   dismissing a specimen still closes the Compendium) · CF1802-17 (a hybrid of two well-fed
+##   parents still starts fed=0; disclosed, not fixed) · CF1805-05 harvest (open BY DECISION).
+##   ═══ THE GOOD NEWS ═══ THE AUDIO ARC IS CLOSED. Their 200k-genome re-run: distinct voices
+##   533/20,000 -> 199,707/200,000; creatures sharing a voice 97.3% -> 0.15%; a 50-creature
+##   collection holding a duplicate 91.3% -> 0.6%. The listening test's precondition is met (NEXT #3).
+##   Rage quits fell for a SECOND consecutive build (112.5 -> 76.4 -> 71.4 per 1000, deep tier).
+##   ⚠ AND THEY RETRACTED A HEADLINE OF THEIR OWN: round 8 blamed the step-8 training wall on
+##   CF1805-01. The card is now measurably readable (0% -> 100%) and the stall rate did NOT move
+##   (25% -> 27%). The burial was real and fixing it was right; it was not the cause of that number.
+##   Step 8's stall rate is currently UNMEASURED, not defective — their driver is weakest exactly
+##   there. Do not treat 26/98 as a known bug.
+##   ⚠ TITLE: "True to Form" was CHOSEN BY CLAUDE again. Nick said "Yes please let's do it" without
+##   naming one; flagged rather than blocked on. One string in RELEASES[0] + a redeploy to change.
 
 ## ▶▶▶ 2026-07-26 ★ v2.0 ENGINE PLAN REVIEWED (upload: FULL_ENGINE...PORT_PLAN_v3.3_STACK_LOCKED
 ##   — TS + PixiJS 8 + Spine 2D + HTML/CSS(+React/Lit opt) + Vite + IndexedDB + Zod + WebAudio +

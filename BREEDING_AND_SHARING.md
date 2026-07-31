@@ -1,6 +1,6 @@
 # Celestial Frontier — Breeding & Sharing
 
-**STATUS:** matches code as of 2026-07-30 (verified against main.js). Carries a v1.8.6 (external round 8) update — see the ⚠ v1.8.6 notes inline.
+**STATUS:** matches code as of 2026-07-31 (verified against main.js). Carries v1.8.6 and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **See also:** `LINEAGE_AND_BREEDING.md` — the v1.6 Earth-lineage layer on top of `breedPair`:
 a child of an Earth parent keeps that parent's Earth RIG + wears the child's alien palette
 (`_earthBlend`); the Earth-anchor strength drifts alien organically by the MATE's alienness
@@ -120,3 +120,30 @@ parent carries `fed` the card says so outright — *"fed bloodline does not carr
 ⏳ **OPEN DESIGN QUESTION (Nick's call, not changed):** *should* a child inherit some `fed`?
 `brood` is summed, so the inconsistency is real. It interacts with the `fed` ceiling added in the
 same release (see PROGRESSION.md). Deliberately left alone rather than changed quietly.
+
+---
+
+## ⚠ v1.8.7 — round 9: the lineage key, third revision
+
+`awardXPPair`'s key is now built from the **genome**, not the display name:
+
+```js
+const _lin=(e)=>{ const g=(e&&e.genome)||{}; return String(g._earthName || speciesName((g.seed>>>0)||0)); };
+awardXPPair(born.id, [_lin(aEntry),_lin(bEntry)].sort().join(' × '), 5, 'a first-of-its-kind lineage');
+```
+
+v1.8.6 keyed on `aEntry.name` / `bEntry.name`, which fixed the real bug but left the ledger
+**bypassable by a UI action**: `entry.name` is assigned directly by the rename handler, so renaming
+either parent re-armed the +5. The value is trivial against the 486 XP ceiling — the objection is
+that a one-shot ledger should not be resettable from the interface. `_earthName || speciesName(seed)`
+is the same string the Compendium shows but is *derived*, not stored, so it cannot be edited.
+
+**The semantics, because they are not obvious and the key has now been wrong twice:**
+`speciesName` is seeded per **individual**, so this groups Earth-descended creatures (a "Wolf × Bat"
+pairing repeats and pays once) while every *procedural* pairing is genuinely unique and pays every
+time. That is correct for this game's fiction — each catalogued procedural creature **is** its own
+species — and both parents are consumed regardless, so no pairing can be farmed either way.
+
+⚠ Worth stating plainly, because it changes what "fixed" means here: CF1802-16's real defect was
+that the bonus fired on **every** breed including repeated Earth pairings. That is closed. It was
+never true that *all* pairings should be rationed.

@@ -252,5 +252,6 @@
   "FA_TEMPER",
   "_sanitizeSavedGenome",
   "_ascActive",
-  "startDuelWithCode"
+  "startDuelWithCode",
+  "FA_SIZE"
 ]

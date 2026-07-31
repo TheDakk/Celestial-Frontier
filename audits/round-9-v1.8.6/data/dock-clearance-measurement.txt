@@ -1,0 +1,33 @@
+device            vh  surface     rect(x,y,w,h)          reach   blockers
+iphone-se        667  #chpanel    8,218,359,433            100%  
+iphone-se        667  #codexbtn   94,563,60,44               0%  #chpanel(63)  <-- FULLY BURIED
+iphone-se        667  #logbtn     286,563,60,44              0%  #chpanel(63)  <-- FULLY BURIED
+iphone-se        667  #cargobtn   222,563,60,44              0%  #chpanel(63)  <-- FULLY BURIED
+iphone-se        667  #chbtn      30,563,60,44               0%  #chpanel(63)  <-- FULLY BURIED
+iphone-se        667  #setbtn     262,611,44,44              0%  #chpanel(63)  <-- FULLY BURIED
+iphone-se        667  #helpbtn    198,611,44,44              0%  #chpanel(63)  <-- FULLY BURIED
+
+galaxy-s8        740  #chpanel    8,218,344,506            100%  
+galaxy-s8        740  #codexbtn   86,636,60,44               0%  #chpanel(63)  <-- FULLY BURIED
+galaxy-s8        740  #logbtn     278,636,60,44              0%  #chpanel(63)  <-- FULLY BURIED
+galaxy-s8        740  #cargobtn   214,636,60,44              0%  #chpanel(63)  <-- FULLY BURIED
+galaxy-s8        740  #chbtn      22,636,60,44               0%  #chpanel(63)  <-- FULLY BURIED
+galaxy-s8        740  #setbtn     254,684,44,44              0%  #chpanel(63)  <-- FULLY BURIED
+galaxy-s8        740  #helpbtn    190,684,44,44              0%  #chpanel(63)  <-- FULLY BURIED
+
+iphone-14-pro    852  #chpanel    8,218,377,562            100%  
+iphone-14-pro    852  #codexbtn   103,748,60,44             19%  #chpanel(49) #cosmos(2)  <-- mostly buried
+iphone-14-pro    852  #logbtn     295,748,60,44             19%  #chpanel(49) #cosmos(2)  <-- mostly buried
+iphone-14-pro    852  #cargobtn   231,748,60,44             19%  #chpanel(49) #cosmos(2)  <-- mostly buried
+iphone-14-pro    852  #chbtn      39,748,60,44              19%  #chpanel(49) #cosmos(2)  <-- mostly buried
+iphone-14-pro    852  #setbtn     271,796,44,44             94%  #cosmos(4)
+iphone-14-pro    852  #helpbtn    207,796,44,44             94%  #cosmos(4)
+
+ipad-mini       1133  #chpanel    72,218,600,537           100%  
+ipad-mini       1133  #codexbtn   278,1029,60,44            95%  #cosmos(3)
+ipad-mini       1133  #logbtn     470,1029,60,44            95%  #cosmos(3)
+ipad-mini       1133  #cargobtn   406,1029,60,44            95%  #cosmos(3)
+ipad-mini       1133  #chbtn      214,1029,60,44            95%  #cosmos(3)
+ipad-mini       1133  #setbtn     446,1077,44,44            94%  #cosmos(4)
+ipad-mini       1133  #helpbtn    382,1077,44,44            94%  #cosmos(4)
+

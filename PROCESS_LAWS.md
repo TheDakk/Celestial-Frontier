@@ -97,3 +97,43 @@ roughly by how often they have bitten.
 ⚠ DOC/CODE DISAGREEMENT IS A FINDING EITHER WAY. CF1802-09 (free cataloguing) was a case where
   the GUIDE was right — "the survey reveals the roster; it catalogues nothing" — and the CODE
   had drifted. Check which one is wrong before "updating" the doc.
+
+---
+
+## Added 2026-07-31 (round 9)
+
+⚠⚠ **TWO CORRECT FIXES FOR ONE BUG, SHIPPED TOGETHER, CAN DISAGREE.** Round 9's pattern, and the
+first one that was not a mistake of reasoning. v1.8.6 fixed `size` twice: `battleStats` began
+*wrapping* it, and the load path began *clamping* it. Each line was defensible alone. Together the
+game computed one value in memory and stored another, and the difference was applied silently to
+~12% of bred creatures on their next load — turning a "tiny" creature into a **titanic** one with
+maximum vitality. Neither line was wrong; **nobody asked what the other line did.**
+> **The remedy, and it is cheaper than the fix:** when a change touches a value, grep every reader
+> and writer of that field and make them agree *before* shipping. For `size` that was ten call
+> sites, one of which disagreed with the other nine.
+
+⚠ **AN EQUAL-SPECIFICITY CSS OVERRIDE THAT APPEARS EARLIER IN THE SHEET LOSES.** The first attempt
+at CF1806-02 added a duplicate `max-height` inside a media block that sits *above* the rule it meant
+to override. Same specificity, both `!important`, both mine — it changed nothing and the gate still
+failed. Prefer **one rule with a variable** (`--tut-dock`) over a second copy of the rule. Sibling
+law to v1.8.6's *`min-height` beats `max-height`*: both produce a rule that is present, correct and
+completely inert.
+
+⚠ **A CHECK MEASURING AN EMPTY SURFACE IS VACUOUS.** The new dock-reachability pass measured boards
+with no content. They collapse under the very `min-height:0` the fix sets, never reach the dock, and
+the check went green against a build the external round had already proven broken. **Populate the
+surface** — the probe already did exactly this for `#panel` and the new code did not copy it.
+
+⚠ **RESTORE THE STATE YOUR PREVIOUS PASS MUTATED.** The same dock pass then read `--tut-bot` left at
+the *dodged* value (53px) from the pass before it, parking the board where it could never touch the
+dock. Two vacuous passes, one check, one afternoon. A probe that walks through several states must
+re-establish each one explicitly; the state you forgot to set is the state the bug lives in.
+
+⚠ **NAMESPACE YOUR PROBE OUTPUT.** `out.dockAtlas` was already taken; reusing it silently clobbered
+an existing check, which then reported `covered by undefined`. The gate caught it, but only because
+something else asserted on the same key.
+
+⚠ **A CACHE KEY DERIVED FROM EXPENSIVE VALUES CANNOT SHORT-CIRCUIT THE WORK THAT PRODUCES THEM.**
+Rekeying `trueOdds` on the stat vectors moved the cache check below the `battleStats` calls that
+build the key, so a cache *hit* still paid full price per row. Correctness was untouched, which is
+why nothing caught it. Hoist the invariant to the caller.

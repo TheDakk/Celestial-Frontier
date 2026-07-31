@@ -1,0 +1,10 @@
+gen  5:  size>5 in  52/500  (10.4%)   max 9
+gen 10:  size>5 in  50/500  (10.0%)   max 12
+gen 20:  size>5 in  56/500  (11.2%)   max 14
+
+what one reload does to a creature that legitimately drifted:
+  stored size  6  in-session "tiny     " vit + 0 agi - 0   →  after load (clamped to 5) "titanic" vit +20 agi -10
+  stored size  7  in-session "small    " vit + 4 agi - 2   →  after load (clamped to 5) "titanic" vit +20 agi -10
+  stored size  9  in-session "large    " vit +12 agi - 6   →  after load (clamped to 5) "titanic" vit +20 agi -10
+  stored size 11  in-session "titanic  " vit +20 agi -10   →  after load (clamped to 5) "titanic" vit +20 agi -10
+  stored size 12  in-session "tiny     " vit + 0 agi - 0   →  after load (clamped to 5) "titanic" vit +20 agi -10

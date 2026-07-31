@@ -1,6 +1,6 @@
 # Celestial Frontier — Quests & Chapters
 
-**STATUS:** matches code as of 2026-07-30 (verified against main.js). Carries a v1.8.6 (external round 8) update — see the ⚠ v1.8.6 notes inline.
+**STATUS:** matches code as of 2026-07-31 (verified against main.js). Carries v1.8.6 and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and the Field Training tutorial (**21 steps**, all counted).
 **Source of truth:** this doc is the DESIGN spec; main.js implements it.
 
@@ -52,11 +52,11 @@ slate. Measured over 200 forward week-steps: every pool id recurs in 33–42% of
 **77.5 ☄ per step** — the value the design intends per *real* week, arriving every one to three
 minutes.
 
-`_chRoll` now allows **one roll per 10 monotonic minutes** (`perfTime()`, which no clock change can
-wind). ⚠ **This is a rate limit, not a fix, and the source comment says so.** The root cause is
-that an offline game cannot verify a wall clock; the same limit is why the harvest version of this
-exploit is open by decision. See ECONOMY_LOOT_CRAFTING.md's 2026-07-30 addendum for the full
-argument — it is the one place this reasoning is written out.
+`_chRoll` now allows ~~one roll per 10 monotonic minutes~~ **one roll per page load** (plus one per
+10 monotonic minutes within a load — ⚠ **corrected in v1.8.7, see below;** the original wording here
+overstated what the code delivers). It is a rate limit, not a fix. The root cause is that an offline
+game cannot verify a wall clock; the same limit is why the harvest version of this exploit is open
+by decision. See ECONOMY_LOOT_CRAFTING.md — it is the one place this reasoning is written out.
 
 ## 1. Overview
 Three layers of directed play sit on one event bus:
@@ -208,3 +208,38 @@ already done is honored and the step advances instead of deadlocking. (2) *No fo
 `_tutFinish`'s v1.5.2 `chacc.add('st-land')` now runs ONLY when `chacc` is empty (the Skip path,
 which never saw the lesson); a graduate keeps exactly the contract they chose, and the closing
 notification matches whichever path ran.
+
+---
+
+## ⚠ v1.8.7 — round 9: the repaint had a hole, and the rate-limit note was overstated
+
+**CF1806-04 — the chip vanished for the one player it exists for.** v1.8.6's repaint fixed the
+stuck-router bug but ran with `_stall` already cleared to `0`, and the suggestion was still gated
+behind `_stall >= 10`:
+
+```js
+const _nbEarly = (!g && _stall>=10) ? _nextBest() : null;   /* v1.8.6 */
+if(!g && !_nbEarly){ /* hides the chip */ }
+```
+
+So for a player with **no objective at all**, the repaint landed in the early-out and the chip
+*disappeared*, where before it had at least stayed on screen. It returned only after ten more
+pointer events. That is precisely the population CF1802-03 identified as most likely to quit.
+
+An objective-less player now gets a suggestion **unconditionally** (`const _nbEarly = (!g) ?
+_nextBest() : null`). This is what CF1802-03 said it did — *"the stall suggestion stands in for a
+missing goal rather than being gated behind one"* — it was still half-gated. There is nothing to
+nag over: `g` is null only when no charter is accepted **and** no chapter goal is outstanding,
+which is genuinely adrift rather than merely idle.
+
+**CF1806-03 — the weekly rate-limit costs a reload, not ten minutes.** `_chRollMono` is a plain
+module `let`, so it resets on every page load and the first roll of each load always passes. The
+real bound is **one roll per page load** (plus one per 10 monotonic minutes *within* a load).
+Round 8's comment claimed "one roll per 10 monotonic minutes", which overstated it; the comment
+now states the true bound.
+
+It is not fixable by persisting the stamp: any wall-clock minimum written to the save is satisfied
+by the same forward wind that triggers the roll, and a monotonic stamp is meaningless across a
+reload because `perfTime()` restarts at zero. **A per-session limit cannot bind an attacker who
+controls the session** — whoever can wind the device clock can also press F5. Same root cause as
+CF1805-05 (harvest), open by decision. See ECONOMY_LOOT_CRAFTING.md.
