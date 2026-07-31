@@ -203,9 +203,27 @@
 ##   and the port's memory profile will be dominated by Pixi textures/render-targets that do not
 ##   exist yet. SET BOTH AT THE PHASE 3 ENGINE PROOF. Carried forward as invariants the port must
 ##   not quietly relax: art cache 1,200 · DPR 3 desktop / 2 touch (Nick's "phone runs hot" mandate).
-## ▶ NEXT IN PHASE 0 — MINE: fixed-seed golden screens + proof sheets ·
-##   bundle / answerability / memory / GPU / audio-node budgets · elevate the remaining system
-##   docs into rubrics.
+## ✔ FIXED-SEED GOLDEN SCREENS CAPTURED (2026-07-31). port/baseline-v1.8.9/screens/ — 28 shots,
+##   6.1 MB, via `node tools/uishot.js`. MANIFEST.json records id / viewport / save type / bytes /
+##   sha256. Most panels at BOTH desktop and phone widths, deliberately: this project's UI defects
+##   have been overwhelmingly MOBILE-ONLY, and a desktop-only proof set would have missed every one
+##   (the buried training card, the dock behind the board, the rail overlap).
+##   ⚠⚠ THESE ARE A HUMAN REFERENCE, NOT AN AUTOMATED DIFF GATE — and the README says so loudly,
+##   because everything ELSE in that directory IS hash-compared and someone will eventually try.
+##   A browser screenshot is not byte-reproducible: it moves with browser revision, GPU/driver,
+##   font rasterisation, subpixel AA and DPR. The pinned Edge revision makes them COMPARABLE, not
+##   IDENTICAL. The sha256 in the manifest detects file corruption in git, NOT render drift; a
+##   mismatch after a browser update is expected and means nothing. Gate F is explicitly a HUMAN
+##   judgment — "fixed-seed screens pass art rubric", approved by eye against ART_DIRECTION.md.
+##   ⛔ NOT INCLUDED, deliberately: the 60+ art proof sheets in tools/sheets/ (gitignored today,
+##   far heavier than UI screens) — worth a curated set before the Phase 5 creature-quality gate,
+##   but Gate F's SCREEN requirement is met by this set. Also absent: landing vistas and encounter
+##   screens, which need a world landed on rather than a panel clicked; add them when the
+##   Canvas/Pixi spike needs a before/after.
+## ▶ NEXT IN PHASE 0 — MINE, and this is now the WHOLE of my remaining list: elevate the remaining
+##   system docs into ACCEPTANCE RUBRICS (ART_DIRECTION · AUDIO · PROCESS_LAWS + the system docs —
+##   9c/9d did two of them) · run the two-week CANVAS/PIXI SPIKE (rotating planet, ring occlusion,
+##   one creature, one layered biome). Everything else on my side is captured.
 ## ✔★ THE FOUR §23 DESIGN DECISIONS ARE MADE (Nick, 2026-07-31). Recorded in port/DECISIONS.md —
 ##   a NEW live record, so the supplied v4.0 plan stays the reference it was delivered as.
 ##     1. bred `fed` → INHERIT 50% OF THE LOWER PARENT. Breeding is not sharing: BOTH parents are

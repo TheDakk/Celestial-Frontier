@@ -1,0 +1,228 @@
+{
+ "shots": [
+  {
+   "file": "ui-atlas-desktop.png",
+   "id": "atlas-desktop",
+   "viewport": "1440x900",
+   "populatedSave": false,
+   "bytes": 375506,
+   "sha256": "8fc80f3cb1ef8188754eb8d2126d694b3657a01642657dc0974b115ada9f2544"
+  },
+  {
+   "file": "ui-atlas-phone.png",
+   "id": "atlas-phone",
+   "viewport": "390x844",
+   "populatedSave": false,
+   "bytes": 95520,
+   "sha256": "8d05ae707ae653bd174c689607019e82f125a717884286b3d3afe47b541d3a01"
+  },
+  {
+   "file": "ui-charters-desktop.png",
+   "id": "charters-desktop",
+   "viewport": "1440x900",
+   "populatedSave": false,
+   "bytes": 399853,
+   "sha256": "100acbf4ea8a0904eb2fdb0561bea4667e249139423c538fee3bf32c37e4bcbc"
+  },
+  {
+   "file": "ui-charters-phone.png",
+   "id": "charters-phone",
+   "viewport": "390x844",
+   "populatedSave": false,
+   "bytes": 133965,
+   "sha256": "18202132c3b8fa4eee16a4ae75696d9d4987abe76004d30daf5704d76aa3562f"
+  },
+  {
+   "file": "ui-compendium-desktop.png",
+   "id": "compendium-desktop",
+   "viewport": "1440x900",
+   "populatedSave": false,
+   "bytes": 386626,
+   "sha256": "ef6d970c6ea59b179d67368949df57bf928edc6d81c5d424d8e063bdd96873b3"
+  },
+  {
+   "file": "ui-compendium-phone.png",
+   "id": "compendium-phone",
+   "viewport": "390x844",
+   "populatedSave": false,
+   "bytes": 107043,
+   "sha256": "d31e824588bea1f412d80094684e638c98ff280eb6b879ba658486a015c4b46a"
+  },
+  {
+   "file": "ui-guide-desktop.png",
+   "id": "guide-desktop",
+   "viewport": "1440x900",
+   "populatedSave": false,
+   "bytes": 160413,
+   "sha256": "254605aa2a2b13d535bde87245151f174a63f91c902bd2c386206a75e2eb8db3"
+  },
+  {
+   "file": "ui-guide-phone.png",
+   "id": "guide-phone",
+   "viewport": "390x844",
+   "populatedSave": false,
+   "bytes": 94002,
+   "sha256": "990dd0a702a6966b145c9a104e03fffc64cb391b2017f8d8f95c547100ed819f"
+  },
+  {
+   "file": "ui-inv-craftables-desktop.png",
+   "id": "inv-craftables-desktop",
+   "viewport": "1440x900",
+   "populatedSave": true,
+   "bytes": 320657,
+   "sha256": "558bab43659539e1b7ee5dec0239d42756e65daaa8f481c05e333bf7a8464df8"
+  },
+  {
+   "file": "ui-inv-gear-desktop.png",
+   "id": "inv-gear-desktop",
+   "viewport": "1440x900",
+   "populatedSave": true,
+   "bytes": 335679,
+   "sha256": "3bb25fe46956feecaa369b75e5492686651bce265008616cc9027680d4aee3f8"
+  },
+  {
+   "file": "ui-inv-gear-phone.png",
+   "id": "inv-gear-phone",
+   "viewport": "390x844",
+   "populatedSave": true,
+   "bytes": 175470,
+   "sha256": "a8b10f83faad2a2024235d2bd1b0c6fc729702ce928429952dadcf73e263004d"
+  },
+  {
+   "file": "ui-inv-materials-desktop.png",
+   "id": "inv-materials-desktop",
+   "viewport": "1440x900",
+   "populatedSave": true,
+   "bytes": 323225,
+   "sha256": "e92424a87f257ac8bd788e7d364bf183621e71729f6fe9a6e98056db4f2689f7"
+  },
+  {
+   "file": "ui-inv-materials-phone.png",
+   "id": "inv-materials-phone",
+   "viewport": "390x844",
+   "populatedSave": true,
+   "bytes": 173544,
+   "sha256": "82db74661ff12663b8c50b51ab74ca689572215e8a3e9a9265385d95239bb1cc"
+  },
+  {
+   "file": "ui-main-desktop.png",
+   "id": "main-desktop",
+   "viewport": "1440x900",
+   "populatedSave": false,
+   "bytes": 353309,
+   "sha256": "f7b457a9a1cc0692ebc47b2a9f5111bb578b90c029ce218d17bef30dcd3afab4"
+  },
+  {
+   "file": "ui-main-phone.png",
+   "id": "main-phone",
+   "viewport": "390x844",
+   "populatedSave": false,
+   "bytes": 148866,
+   "sha256": "2b4d8fc0dc19b0e5eb3185cf0bc5a1c3147252850c54d8a0259281b6e6e55bc7"
+  },
+  {
+   "file": "ui-main-tablet-portrait.png",
+   "id": "main-tablet-portrait",
+   "viewport": "834x1112",
+   "populatedSave": false,
+   "bytes": 260628,
+   "sha256": "35f407d2b117bb3c776dbd9a1e0450bd79f0cd83234a894e22b61cb7d5d4ac1d"
+  },
+  {
+   "file": "ui-main-tablet.png",
+   "id": "main-tablet",
+   "viewport": "834x1112",
+   "populatedSave": false,
+   "bytes": 260630,
+   "sha256": "b1b8eeb44600b3f8900c3d52783738ed68806e225634f0d02df64898b571082a"
+  },
+  {
+   "file": "ui-prime-desktop.png",
+   "id": "prime-desktop",
+   "viewport": "1440x900",
+   "populatedSave": false,
+   "bytes": 184582,
+   "sha256": "f194027a32eab95907ebc6cb588a9b702d1eb93a7ccf67a0181369145df99162"
+  },
+  {
+   "file": "ui-prime-phone.png",
+   "id": "prime-phone",
+   "viewport": "390x844",
+   "populatedSave": false,
+   "bytes": 110113,
+   "sha256": "06c970fb50a0b726be9ec4c06f56dada09c7ab48c0e175703a19ca38405fe274"
+  },
+  {
+   "file": "ui-records-desktop.png",
+   "id": "records-desktop",
+   "viewport": "1440x900",
+   "populatedSave": false,
+   "bytes": 389079,
+   "sha256": "4d7f7523750d9cf0426a94164c790fc20db35bd94f9ce820927e6febba23fa2e"
+  },
+  {
+   "file": "ui-records-phone.png",
+   "id": "records-phone",
+   "viewport": "390x844",
+   "populatedSave": false,
+   "bytes": 111974,
+   "sha256": "3b4d77081c3ad2d5081a8dc4946bd89190d6a224a8132d1ecba1eba0dc0b6237"
+  },
+  {
+   "file": "ui-search-earth-desktop.png",
+   "id": "search-earth-desktop",
+   "viewport": "1440x900",
+   "populatedSave": false,
+   "bytes": 262680,
+   "sha256": "a3ea70415d06db2b6d3d3b7e18b1227979a1256a68cd6e809ed746903d56fc71"
+  },
+  {
+   "file": "ui-settings-desktop.png",
+   "id": "settings-desktop",
+   "viewport": "1440x900",
+   "populatedSave": false,
+   "bytes": 369461,
+   "sha256": "7f029f5c424d33a625f751cf9e51900ac8eb4285679ba1185edce56c5d227155"
+  },
+  {
+   "file": "ui-settings-phone.png",
+   "id": "settings-phone",
+   "viewport": "390x844",
+   "populatedSave": false,
+   "bytes": 107875,
+   "sha256": "5946f7a76f50bcd121b17d9a5e473190342291f03968cc2833bc22b60abc6218"
+  },
+  {
+   "file": "ui-shipyard-desktop.png",
+   "id": "shipyard-desktop",
+   "viewport": "1440x900",
+   "populatedSave": true,
+   "bytes": 190868,
+   "sha256": "787feffecc5c35c4aded5c75085947bd6855fe9b0ad8dece3f76a45720b85cec"
+  },
+  {
+   "file": "ui-shipyard-phone.png",
+   "id": "shipyard-phone",
+   "viewport": "390x844",
+   "populatedSave": true,
+   "bytes": 109768,
+   "sha256": "2956649bfd61702794048373d4f442e8e4bc7bdd7d4cf6540b70070692486c82"
+  },
+  {
+   "file": "ui-tray-desktop.png",
+   "id": "tray-desktop",
+   "viewport": "1440x900",
+   "populatedSave": false,
+   "bytes": 359199,
+   "sha256": "47a990c1813ee1862afc6c5aa8d39b53ecc6390b510d12f83f2cdcb8082eae66"
+  },
+  {
+   "file": "ui-tray-phone.png",
+   "id": "tray-phone",
+   "viewport": "390x844",
+   "populatedSave": false,
+   "bytes": 85414,
+   "sha256": "56068091cc00b93c3c6413285dea6b2b119b47986697346471e92a3ecdd43d51"
+  }
+ ]
+}
