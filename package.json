@@ -9,6 +9,8 @@
     "goldenseeds:capture": "node tools/goldenseeds.js --capture",
     "codefixtures": "node tools/codefixtures.js --check",
     "codefixtures:capture": "node tools/codefixtures.js --capture",
+    "audioprofiles": "node tools/audioprofiles.js --check",
+    "audioprofiles:capture": "node tools/audioprofiles.js --capture",
     "extract": "node tools/extract.js",
     "validate": "node tools/validate.js",
     "smoke": "node tools/smoke.js",

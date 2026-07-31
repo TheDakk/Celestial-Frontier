@@ -138,6 +138,42 @@ hardeners differ on purpose, and both behaviours are recorded.
 > vanished) and was latent in `goldenseeds`; re-capturing there produced 25 of 25
 > identical rollups, confirming it never bit that corpus. `seen` is now per-call in both.
 
+## audioprofiles.js — voice fixtures, and the vocabulary measurement
+
+```
+npm run audioprofiles           # a GATE — 200 voiceOf profiles must not move
+npm run audioprofiles:capture   # fixture + the full 200,000-genome measurement
+```
+
+`voiceOf(g)` → `{kind, f0, rich, nz, vib, vibD, dur, sweep}` — deterministic per genome,
+no audio synthesised. Fixture at `port/baseline-v1.8.9/audio-profiles.json`.
+
+**Two jobs, and only one of them is asserted.** The 200-profile fixture is a parity
+corpus and `--check` enforces it. The population measurement is *reported for the
+record*, because a statistic drifting slightly is not the same event as a generator
+changing behaviour — conflating those would make the gate cry wolf.
+
+**Re-measured, not transcribed.** The claim that the human listening test is unblocked
+rested on an external reviewer's v1.8.6 figures. Re-derived over 200,000 genomes against
+v1.8.9, **the claim holds**: 199,709 distinct voices of 200,000 (99.855%), 0.874% pinned
+at the 6 kHz ceiling.
+
+**It also produces evidence for two open §23 decisions:**
+
+- **`legacy` is a first-class 18th voice family at 5.543%** of procedural fauna.
+  `_VOICE_KEYS` is `Object.keys(_VOICE)` and `_VOICE` *includes* `legacy`, so 1-in-18 is
+  structural, not accidental.
+- **`f0` is clamped to [60, 6000] and both bounds pin** — 0.874% at the ceiling and
+  **0.612% at the floor**. The floor had never been reported.
+
+> The family list is **read from `main.js`**, never hand-typed — a hand-typed vocabulary
+> drifting out of step with its array is the CF1805-03 defect, and it was found in
+> `voiceOf` itself. If the extraction fails, family shares are skipped rather than
+> computed against a wrong list.
+>
+> ⚠ Note `voiceOf` still reads `(+g.size||0)%6`, a hand-typed modulus, correct today only
+> because `FA_SIZE.length` is 6.
+
 ## The loop (run after every batch of edits)
 
 ```
