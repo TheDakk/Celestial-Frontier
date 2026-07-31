@@ -1,7 +1,7 @@
 # Celestial Frontier — Roadmap & Session Handoff
 
 ## 📌 PINNED — STANDING PROCEDURE (Nick, 2026-07-20): UPDATE THE MARKDOWN DOCS AS WE GO.
-## The per-system docs at repo root (WORLD_GENERATION · BIOME_ATLAS · ART_DIRECTION ·
+## The per-system docs at repo root (WORLD_GENERATION · ART_DIRECTION ·
 ## SPECIES_AND_GENOME · RARITY_AND_GRADES · CAPTURE_AND_BIOSPHERE · COMBAT_AND_CONQUEST ·
 ## PROGRESSION · ECONOMY_LOOT_CRAFTING · QUESTS_AND_CHAPTERS · BREEDING_AND_SHARING ·
 ## DETERMINISM · SAVE_SYSTEM · UI_PRESENTATION · AUDIO) are the SOURCE OF TRUTH we pull from for a
@@ -191,6 +191,25 @@
 ##    behind that name (a gate that conflates two defects behind one label teaches nobody
 ##    anything). Above 900px those ids are RAIL buttons, not a dock, so the right assertion is a
 ##    different one. The dock pass is scoped <=900px until someone decides what desktop should do.
+## 9b. ⚠⚠ THE v2.0 PORT PLAN DOCUMENT IS NOT IN THIS REPO — BLOCKING FOR PHASE 0.
+##    The 2026-07-26 block below reviews an upload ("FULL_ENGINE...PORT_PLAN_v3.3_STACK_LOCKED")
+##    that was SESSION-SCOPED and is gone. What survives is MY ANNOTATIONS ON IT, not the plan:
+##    the block cites §3, §7, §15, §26, §27.3, §28.5, D2 and D4 by number, and none of those
+##    sections exist anywhere on disk. A cold session has my opinions about a document it cannot
+##    read. THIS IS THE EXACT FAILURE audits/README.md was created to stop — uploads vanish, only
+##    what is committed survives — and we never applied that lesson to the most important upload.
+##    ▶ ACTION: ask Nick to re-upload it, then COMMIT IT (suggest port/ alongside audits/).
+##    If unrecoverable, the annotations are a serviceable skeleton, but the stack lock, the phase
+##    breakdown and the §3 audit counts would all have to be rebuilt from scratch.
+## 9c. ⚠ BIOME_ATLAS.md HAS NEVER EXISTED, despite being cited in five live places — ART_DIRECTION
+##    §6.1 plus three others, and this file’s own PINNED list. Corrected 2026-07-31 so nothing lies.
+##    It is a REAL Phase-0 deliverable, not just a broken link: §28.5 wants the art-direction doc +
+##    golden screen before generation work, and a content catalog is what a re-implementation
+##    checks itself against. GENERATE it from source — tools/biome-audit.js already walks the data
+##    and validate reports "43 live biomes, all covered".
+## 9d. ⚠ RARITY_AND_GRADES.md is THREE MINORS BEHIND and says so at its own top: it documents the
+##    LIVE v1.6.4 15-grade ladder, superseded by the canonical 10-tier ladder in v1.7 source.
+##    Honest, but a port rubric cannot use it as-is. Refresh before Phase 0.
 ## 10. THEN v1.9 CONSOLIDATION = PORT PHASE 0/1 → v2.0 PixiJS. See the v2.0 block at the bottom
 ##    of this file: save schema + Zod, module split BECOMES the TS extraction, payload budget gate,
 ##    ART_DIRECTION.md elevated to the port rubric + a golden screen. Also still open from that
@@ -225,7 +244,8 @@
 ## Not touched by this sweep, checked and still accurate: CAPTURE_AND_BIOSPHERE (2026-07-29 — the
 ##   `fed` clamp is documented at `feedPair` in BREEDING_AND_SHARING, which is where feeding lives;
 ##   it is deliberately NOT duplicated here) · WORLD_GENERATION · RARITY_AND_GRADES ·
-##   SPECIES_AND_GENOME · ART_DIRECTION · BIOME_ATLAS.
+##   SPECIES_AND_GENOME · ART_DIRECTION. (⚠ BIOME_ATLAS.md has NEVER EXISTED despite being cited
+##   in five places — see ART_DIRECTION §6.1; it is a Phase-0 deliverable, generated from source.)
 ## ★ THE BATTERY IS NOW SEVEN SUITES, not four — validate · smoke · uilayout · balance-sim gate
 ##   every batch (deploy.js enforces them); bootperf.js (cold boot / answerability), simrun `dom`
 ##   (UI reachability) and duelxp-check.js (reward OUTCOMES) run on demand. tools/README.md

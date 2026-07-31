@@ -2,7 +2,7 @@
 
 **STATUS:** matches code as of 2026-07-23 (verified against main.js).
 **Purpose:** the design contract for how Celestial Frontier grows an entire universe — galaxies, star systems, stars, planets, orbits, and the biome/climate layer — from nothing but seeds, on demand, identically for every player.
-**Source of truth:** this doc is the DESIGN spec; main.js implements it. Content catalogs live in BIOME_ATLAS.md; art rules in ART_DIRECTION.md.
+**Source of truth:** this doc is the DESIGN spec; main.js implements it. Art rules in ART_DIRECTION.md. ⚠ A separate biome CONTENT catalog is referenced across these docs as BIOME_ATLAS.md but has never existed — see ART_DIRECTION §6.1; it is a Phase-0 deliverable.
 
 ## 1. Overview
 
@@ -119,7 +119,7 @@ On planetfall the descriptor's facts (band, biome, water state, life, civ era, s
 | venus | Venusian hothouse |
 | lava | Molten world |
 
-**`BIOME_SETS`** (~7477) — biome catalog per type (name · weight `w` · `land%` · band gate · `rare`). Full flavor text lives in the source / BIOME_ATLAS.md; the design shape:
+**`BIOME_SETS`** (~7477) — biome catalog per type (name · weight `w` · `land%` · band gate · `rare`). Full flavor text lives in the source (the BIOME_ATLAS.md catalog is unwritten — ART_DIRECTION §6.1); the design shape:
 
 - **terran** (11): temperate·24, savanna·12 (temp/hot), jungle·10, marsh·8, swamp·7, mangrove·5, tundra·12 (cold), karst·5, saltflat·8 (hot), **fungal·1.6 rare**, **crystalsteppe·1.4 rare**.
 - **ocean** (7): opensea·20, archipelago·14, coral·10 (temp), stormsea·8, volcisle·5, abyssal·7, **milksea·1.4 rare**.
