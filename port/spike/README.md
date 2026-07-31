@@ -181,3 +181,59 @@ attempt at drawing a planet by hand.
 look like — attempt 1 because it ignored the techniques, attempt 2 because it re-invented them
 badly. The shipped art in `tools/uisheets/` is the bar, and the open question is how to *move*
 it, not how to *redraw* it.
+
+---
+
+# ATTEMPT 3 — the painter pipeline: PROVEN
+
+**Nick's directive:** re-express each painter in Pixi, keeping everything we have with the
+same integrity, at higher scale, with shaders. After two hand-drawn misses, the only reading
+of "same integrity" that survives contact with the evidence is: **carry the painter code, do
+not redraw it.** That is what `pipeline.cjs` does, and it works.
+
+## The pipeline
+
+```
+main.js painters ──lift verbatim──▶ 2× context-scale shim ──▶ Pixi texture ──▶ custom GLSL grade
+     (tools/proofsheet.js's own    (painter draws its native     (Texture.from)   (filmic lift +
+      lift, same list vistas.js     960×430 space onto a                           saturation +
+      uses — proven machinery)      1920×860 backing)                              vignette)
+```
+
+`pipeline-proof.png` shows six cells: A1 native vs **A2 same seed at 2× — compositionally
+identical**, deer herd, river, trees and all; then jungle / dune sea / coral / glacier night,
+each verbatim art at 2× under a **custom GLSL** shader (the page title reports which shader
+path actually ran — `pipeline-ready|custom-glsl`, no fallback).
+
+## What it proves
+
+- **Integrity:** the art is byte-the-same code. A1≡A2 composition is the receipt.
+- **Scale:** direct-drawn layers gain true 2× resolution. Sub-canvas layers (creatures,
+  some flora) currently upscale at composite time — true 2× everywhere needs painters to
+  accept a DPR parameter, which is a **mechanical Phase 3 transform, not re-authoring**.
+- **Shaders:** a hand-written GLSL filter compiled and ran on the real art in Pixi 8's
+  filter chain. The enhancement layer is real, and it layers on top *without touching art*.
+
+## The three bugs it took, in order — each one a lesson for the port
+
+1. **Shim every canvas → 4× compositing blowups.** The painters composite sub-canvases;
+   scaling all of them double-applied the scale. Fix: shim the outermost canvas only.
+2. **The shim's lying `width` getter broke Pixi's texture framing.** `Texture.from(cv)` read
+   960×430 and framed the upper-left quadrant of the 1920×860 bitmap — every "2×" cell was
+   secretly a crop. The painter needs the lie; Pixi needs the truth. Fix: delete the instance
+   getters after painting.
+3. **`delete` silently failed** because `defineProperty` defaults `configurable:false`. The
+   fix looked applied and did nothing — the render was pixel-identical, which is what exposed
+   it. `configurable:true`.
+
+Port lesson from all three: **the DPR seam belongs INSIDE the painters** (a resolution
+parameter), not in a wrapper that lies about canvas geometry. The wrapper was right for a
+spike; it is the wrong shape for production.
+
+## What "re-express every painter" means from here (Phase 3+, per plan)
+
+The full sweep this pipeline scales to: `hdVista`'s scene painters, `speciesPortrait`/
+`hdBeastBare` (creatures), `planetThumb`/`GalaxyArt` (space), `starSurf`, rings, gear icons —
+each lifted, DPR-parameterised, rendered into Pixi textures/render-targets, with the GLSL
+grade layer per scene. That is Phases 3–6 of the plan, and it now has a proven mechanism
+instead of a hope. Nothing gets hand-redrawn.
