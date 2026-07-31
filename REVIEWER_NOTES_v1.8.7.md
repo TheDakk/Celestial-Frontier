@@ -1,4 +1,33 @@
-# Celestial Frontier v1.8.7 "True to Form" — notes for round 10
+# Celestial Frontier v1.8.7 → v1.8.8 — notes for round 10
+
+> ## ⭐ SUPERSEDED IN PART: v1.8.8 "Paid for Playing" shipped the same day
+> **CF1805-05 (harvest) is CLOSED**, and §6.4 below (asking you for a view on it) is answered.
+> We did what you would call the third option: **we stopped defending the clock and changed which
+> clock it is.** Harvest now runs on `COSMIC_EPOCH` — a persisted, monotonic **play-time**
+> accumulator this codebase has used for biosphere recovery since v1.7, which never reads
+> `Date.now()`, survives a reload, and cannot be wound. `HARVEST_EPOCHS = 2` ≈ 40 minutes of
+> *playing* per world. There is no wall clock left in the path to attack.
+>
+> Your sentence is what unlocked it: *"a monotonic in-memory stamp is the right instinct and the
+> wrong storage."* The storage already existed; harvest was simply the one regeneration system
+> that had never been moved onto it.
+>
+> **What we would most like you to attack in round 10:**
+> 1. **Try to wind it.** Device clock forward a day, a week, a year; across reloads; with an edited
+>    save. Our gate (`tools/harvestclock-check.js`) asserts no payout and fails on v1.8.7 — please
+>    try to find the case it does not cover.
+> 2. **`conq[].e` on load.** Absent ⇒ ready (a pre-v1.8.8 empire pays one cycle per world, once, by
+>    design). Clamped to `[0, EPOCH_BASE]`. Attack a save claiming a future or negative epoch.
+> 3. **The cadence.** 2 epochs is a balance guess, not a measurement. An engaged player now earns
+>    slightly faster than the old hourly wall cadence; an idle one earns nothing while away. Tell
+>    us if that reads as generous, mean, or invisible.
+> 4. **`EPOCH_TICK` is now a shared knob** — it drives biosphere recovery *and* harvest income.
+>    If you see a tuning conflict between those two, that is a finding we cannot see from here.
+>
+> Everything below still stands as written for v1.8.7.
+
+---
+
 
 **Build:** see `version.json` at https://celestialfrontier.github.io/.
 **Predecessor audited:** v1.8.6 `0bfc904`. **Round 9 delivered and answered:** 2026-07-31, same day.

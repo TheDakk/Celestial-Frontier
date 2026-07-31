@@ -39,6 +39,7 @@ node tools/bootperf.js         # COLD BOOT: decomposes first-interactive in a re
                                #   --gate=SEL --settle=MS --url=FILE --verbose
 node tools/duelxp-check.js     # REWARD OUTCOMES: plays a real duel, reads the ledger
 node tools/sizedrift-check.js  # guards the size clamp regression (see below)
+node tools/harvestclock-check.js # proves the harvest clock cannot be wound
 node tools/deploy.js --release X.Y.Z   # runs the whole battery, then ships
 node tools/deploy.js           # ship to https://celestialfrontier.github.io/ — stamps
                                #   BUILD_ID with the git sha and publishes

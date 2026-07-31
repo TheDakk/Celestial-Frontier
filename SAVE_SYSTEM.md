@@ -1,6 +1,6 @@
 # Celestial Frontier — Save System
 
-**STATUS:** matches code as of 2026-07-31 (verified against main.js). ⚠ Read the v1.8.7 section FIRST — it reverts a v1.8.6 clamp that corrupted honestly-bred creatures.
+**STATUS:** matches code as of 2026-07-31 (verified against main.js). ⚠ Read the v1.8.7 section (a reverted `size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`, harvest on play time).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated
 from seeds) to `localStorage` under one hardened key, with load-time coerce/clamp so a
 tampered or truncated save can never inject markup or poison the numbers.
@@ -99,6 +99,26 @@ four-million-power challenger in another player's duel box.
 > mutation breaks the v1.0 baseline. v1.8.6 closed the player-visible half at `battleStats`
 > (which now reads the same `% FA_SIZE.length` the card prints). See COMBAT_AND_CONQUEST.md and
 > DETERMINISM.md, both 2026-07-30 addenda.
+
+## ⭐ v1.8.8 — `conq[].e`, and a clamp that retired with the clock it defended
+
+Harvest readiness moved from the wall clock to `COSMIC_EPOCH` (play time). Two consequences here:
+
+**New field, additive and absent-safe.** `conq[].e` is the epoch at last harvest. A save from
+≤v1.8.7 has no `e`, reads as **ready**, and pays one cycle per world on its first load —
+deliberate and one-time; the alternative is penalising an existing empire for our clock change.
+On load it is clamped to `[0, EPOCH_BASE]`: a save claiming a **future** epoch would otherwise hold
+a world hostage forever, and a wildly negative one would grant a free harvest.
+
+**The `_hvFloor` harvest clamp is now vestigial.** It floored `conq.t` to at most one `HARVEST_CD`
+before the save's own stamp, to stop a mass-edited `t` from paying out an empire at once. `t` is now
+a **display stamp that gates nothing**, so there is nothing left to defend by clamping it — it is
+kept only because `t` is still shown on the card. If `t` ever becomes load-bearing again, this
+reasoning has to be revisited.
+
+> The rule this batch adds to the ones above: **a guard's justification should be re-read whenever
+> the thing it guards changes shape.** Three rounds of hardening `t` were rendered moot in one
+> release — not by better hardening, but by making `t` stop mattering.
 
 ## 1. Overview
 Module `SaveSystem [app]` (main.js 10000–10359) owns a debounced write, a hardened
