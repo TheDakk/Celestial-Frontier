@@ -59,14 +59,18 @@ const body = main.slice(i0 + open.length, iRet);
 const retLine = main.slice(iRet, main.indexOf('});', iRet));   /* '});' — a bare ');' matches one char early and leaks a '}' into the last export name */
 const exportsList = retLine.replace('return Object.freeze({', '').split(',').map((s) => s.trim()).filter(Boolean);
 
-/* auto-detect imports: registry identifiers used in the body but not defined in it */
+/* auto-detect imports: registry identifiers used in the body but not defined in it.
+   ⚠ Detection scans a COMMENT-STRIPPED copy — a prose mention like "inherits a
+   mix" or "the makeGenome parents" must not fabricate an import (it did, on
+   Genetics, before this strip). The EMITTED body stays verbatim, comments and all. */
+const codeOnly = body.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/(^|[^:])\/\/.*$/gm, '$1');
 const defined = new Set(exportsList);
-for (const m of body.matchAll(/\bfunction\s+([A-Za-z_$][\w$]*)/g)) defined.add(m[1]);
-for (const m of body.matchAll(/\b(?:const|let|var)\s+([A-Za-z_$][\w$]*)/g)) defined.add(m[1]);
+for (const m of codeOnly.matchAll(/\bfunction\s+([A-Za-z_$][\w$]*)/g)) defined.add(m[1]);
+for (const m of codeOnly.matchAll(/\b(?:const|let|var)\s+([A-Za-z_$][\w$]*)/g)) defined.add(m[1]);
 const importLines = [];
 for (const [pkg, names] of Object.entries(REGISTRY)) {
   if (pkg.endsWith('-' + name.toLowerCase())) continue;   /* not from ourselves */
-  const used = names.filter((n) => !defined.has(n) && new RegExp('\\b' + n + '\\b').test(body));
+  const used = names.filter((n) => !defined.has(n) && new RegExp('\\b' + n + '\\b').test(codeOnly));
   if (used.length) importLines.push(`import { ${used.join(', ')} } from '${pkg}';`);
 }
 
