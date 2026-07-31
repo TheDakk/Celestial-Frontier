@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { loadFixture, checkGenerator, canon } from '../../../../tests/parity.js';
 import { probeRaw } from '../../../../tests/baseline.js';
-import { galaxiesInCell, slimGal, galaxyProfile, galaxyWormhole, starsInCell, fineStarsInCell, systemFor, supernovaSites } from '@cf/domain-worldgen';
+import { galaxiesInCell, galaxyProfile, galaxyWormhole, starsInCell, fineStarsInCell, systemFor, supernovaSites } from '@cf/domain-worldgen';
+import { slimGal } from '@cf/domain-descriptors';
 
 describe('@cf/domain-worldgen — golden ×1,000 + seven baseline probes', () => {
   it('systemFor: 1,000 golden seeds (heavy tier), per-seed + rollup', () => {
@@ -39,8 +40,13 @@ describe('@cf/domain-worldgen — golden ×1,000 + seven baseline probes', () =>
      and byte-parity requires replaying that order — possible only once
      planetDescriptor is ported. The golden systemFor x1,000 (captured with NO
      prior descriptor calls) passes above, which is what proves systemFor
-     itself. Re-enable in the Descriptors test with the replay. */
-  it.skip('systemSol — byte-for-byte (needs planetDescriptor replay; see comment)', () => {
+     itself. Re-enable in the Descriptors test with the replay.
+     ★ CLOSED 2026-07-31: the replay lives in descriptors/test/parity.test.ts
+     ("systemSol REPLAY") and passes byte-for-byte. This skip stays as the
+     record of WHY it cannot pass here: this file must keep proving systemFor
+     with NO prior descriptor calls — the exact state the golden x1,000 was
+     captured in. */
+  it.skip('systemSol — byte-for-byte (passes ONLY after descriptor replay; closed in descriptors/test)', () => {
     expect(canon(systemFor(424242))).toBe(probeRaw('systemSol'));
   });
   it('systemOther probe', () => {
@@ -48,5 +54,17 @@ describe('@cf/domain-worldgen — golden ×1,000 + seven baseline probes', () =>
   });
   it('supernovaSites probe', () => {
     expect(canon(supernovaSites(999, 3))).toBe(probeRaw('supernovaSites'));
+  });
+  it('★ galaxiesInCell on a POPULATED cell (found 2026-07-31: all three probed cells are EMPTY, so the probe was green while GAL_SPRITES — a free identifier — threw on every real cell)', async () => {
+    const { installCaptureHooks } = await import('@cf/domain-descriptors');
+    installCaptureHooks();
+    let found: unknown[] = [];
+    outer: for (let x = -6; x <= 6; x++) for (let y = -6; y <= 6; y++) {
+      const gals = galaxiesInCell(x, y) || [];
+      if (gals.length) { found = gals; break outer; }
+    }
+    expect(found.length, 'no populated cell in a 13×13 sweep — generation broken?').toBeGreaterThan(0);
+    const g = found[0] as Record<string, unknown>;
+    for (const k of ['x', 'y', 'size', 'sp', 'tilt', 'rot', 'seed']) expect(g[k], k).toBeDefined();
   });
 });

@@ -1,0 +1,8 @@
+{ "name": "@cf/domain-descriptors", "private": true, "version": "0.0.0", "type": "module",
+  "description": "Module 13/14: survey-card descriptors for every object kind. AUTO-LIFTED from main.js @module Descriptors (v1.8.9), plus capture-environment app hooks.",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {
+    "@cf/domain-rand": "*", "@cf/domain-worldconfig": "*", "@cf/domain-naming": "*",
+    "@cf/domain-starcatalog": "*", "@cf/domain-planetgen": "*", "@cf/domain-worldgen": "*",
+    "@cf/domain-surveyphrases": "*", "@cf/domain-speciestraits": "*", "@cf/domain-genome": "*",
+    "@cf/domain-genetics": "*", "@cf/domain-ecology": "*" } }

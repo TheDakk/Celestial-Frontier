@@ -33,13 +33,14 @@ const REGISTRY = {
   '@cf/domain-naming': ['properName', 'starName', 'galaxyName'],
   '@cf/domain-starcatalog': ['starClass', 'SOL_PLANETS', 'KIND_DESC'],
   '@cf/domain-planetgen': ['surfaceColor', 'planetParams'],
-  '@cf/domain-worldgen': ['galaxiesInCell', 'slimGal', 'galaxyProfile', 'galaxyWormhole', 'starsInCell', 'fineStarsInCell', 'systemFor', 'supernovaSites'],
+  '@cf/domain-worldgen': ['galaxiesInCell', 'galaxyProfile', 'galaxyWormhole', 'starsInCell', 'fineStarsInCell', 'systemFor', 'supernovaSites'],
   '@cf/domain-surveyphrases': ['climateBand', 'COMP', 'atmosphereText', 'climateText', 'waterText', 'gravityText', 'TYPE_LABEL'],
   '@cf/domain-speciestraits': ['SP_COLOR', 'FA_BODY', 'FA_LOCO', 'FA_TRAIT', 'FA_SIZE', 'FA_DIET', 'FA_HEAD', 'FA_LIMBS', 'FA_SKIN', 'FA_TAIL', 'FA_PATTERN', 'FA_EYES', 'FA_BEHAVIOR', 'FA_HABITAT', 'FLORA_DETAIL', 'FA_TEMPER', 'FA_SENSE', 'FA_REPRO', 'FA_LIFE', 'FA_METAB', 'FLORA_FORM', 'FUNGI_FORM', 'MICROBE_FORM', 'speciesName', 'colorGrade', 'SP_HEX', 'FA_SIZE_M', 'SPECTRA', 'spectral', 'GRADE_TIERS', 'TIER_MAX', 'RARITY_V17', 'displayRarity', 'rarityRoll', 'EX_HABITAT', 'EX_LOCO', 'AQ_FLORA_FORM', 'AIR_FLORA_FORM', 'habOf', 'locoOf', 'floraFormOf'],
   '@cf/domain-genome': ['describeSpecies', 'makeGenome', 'sapienceTier', 'classifyRealm', 'ecologyRole', 'realmBiome', 'realmModifiers', 'REALM_ICON', 'REALM_ORDER', 'faunaDesc', 'speciesGrade', 'guardianFor', 'GUARDIAN_EPITHETS', '_szOf'],
   '@cf/domain-encutil': ['shade', 'svgURI', 'b64encUtf8', 'b64decUtf8'],
   '@cf/domain-genetics': ['evolveGenome', 'crossGenome'],
-  '@cf/domain-ecology': [],
+  '@cf/domain-ecology': ['biosphere', 'civilization', 'planetSpecies'],
+  '@cf/domain-descriptors': ['galaxyStats', 'fmtBig', 'roman', 'describePick', 'slimGal', 'starDescriptor', 'planetDescriptor', 'moonDescriptor', 'galaxyDescriptor', 'wormholeDescriptor', 'cmbDescriptor', 'oortDescriptor', 'kuiperDescriptor', 'visitorDescriptor', 'beltDescriptor', 'SOL_MOONS'],
 };
 
 const [, , name, outDir] = process.argv;
