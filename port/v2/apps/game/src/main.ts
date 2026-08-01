@@ -23,7 +23,8 @@ import {
   _wormSpr, snSiteSprite, _bhDiscSpr, _protoSpr,
   _quasarSpr, _visitorSpr, _comaSpr, _vtrailSpr,
 } from '@cf/art';
-import { initAudio, playWhoosh, playSurveyPing } from '@cf/audio';
+import { initAudio, playWhoosh, playSurveyPing, applySfxGain } from '@cf/audio';
+import { registerPanel, fillPanel, togglePanel, closePanels, openPanelId } from './panels.js';
 import {
   NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, viewToNav,
   universeGalaxies, galaxyCell, galaxyCellWindow, systemScene,
@@ -161,13 +162,73 @@ document.getElementById('dockcharts')!.addEventListener('click', () => {
   save.chartsOn = !save.chartsOn;
   document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
   if (chartLayer) chartLayer.visible = save.chartsOn;
+  fillSettings();   /* the panel mirrors the dock (and vice versa) */
   void persistView();
 });
-document.getElementById('docksound')!.addEventListener('click', () => {
-  save.sndOn = !save.sndOn;
-  document.getElementById('docksound')!.classList.toggle('on', save.sndOn);
-  void persistView();
-});
+
+/* ---- SETTINGS (the first rail panel): every control drives a REAL save
+   field and persists through exportSaveV2 — sound, volume (the squared-
+   taper bus), charts, motion (Auto follows the OS), the glass tint ---- */
+function motionOK(): boolean {
+  /* main.js motionOK: Auto (-1) follows the OS preference LIVE */
+  return save.motionMode === -1 ? !matchMedia('(prefers-reduced-motion: reduce)').matches : save.motionMode === 0;
+}
+function applyGlass(): void {
+  const a = Math.min(Math.max(save.glassTint, 0.40), 0.98);
+  document.documentElement.style.setProperty('--glass-a', String(a));
+}
+function fillSettings(): void {
+  if (!save) return;   /* a click before boot finishes must not throw */
+  fillPanel('set',
+    '<h3>Settings</h3>' +
+    `<div class="row"><label>Sound</label><button id="setsnd" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'on' : 'off'}</button></div>` +
+    `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
+    `<div class="row"><label>Star charts</label><button id="setcharts" class="${save.chartsOn ? 'on' : ''}">${save.chartsOn ? 'on' : 'off'}</button></div>` +
+    `<div class="row"><label>Motion</label><span class="seg">` +
+    [[-1, 'Auto'], [0, 'Full'], [1, 'Reduced']].map(([v, t]) =>
+      `<button data-motion="${v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
+    '</span></div>' +
+    `<div class="row"><label>Panel tint</label><input id="setglass" type="range" min="40" max="98" value="${Math.round(save.glassTint * 100)}"></div>`);
+  const el = document.getElementById('setpanel')!;
+  el.querySelector('#setsnd')!.addEventListener('click', () => { save.sndOn = !save.sndOn; fillSettings(); void persistView(); });
+  el.querySelector('#setvol')!.addEventListener('input', (e) => {
+    save.sfxVol = (+(e.target as HTMLInputElement).value) / 100;
+    applySfxGain();   /* the shared bus retapers live */
+    void persistView();
+  });
+  el.querySelector('#setcharts')!.addEventListener('click', () => {
+    save.chartsOn = !save.chartsOn;
+    document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
+    if (chartLayer) chartLayer.visible = save.chartsOn;
+    fillSettings(); void persistView();
+  });
+  for (const b of el.querySelectorAll('[data-motion]')) b.addEventListener('click', () => {
+    save.motionMode = +(b as HTMLElement).dataset.motion!;
+    fillSettings(); void persistView();
+  });
+  el.querySelector('#setglass')!.addEventListener('input', (e) => {
+    save.glassTint = (+(e.target as HTMLInputElement).value) / 100;
+    applyGlass(); void persistView();
+  });
+}
+
+/* ---- COMPENDIUM (read-only over the save's codex — the real catalog).
+   Large catalogs get virtualization later (plan bullet); the list caps at
+   the save's own 1500-entry bound today. ---- */
+function fillCodex(): void {
+  if (!save) return;
+  const n = save.codex.length;
+  fillPanel('codex',
+    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${n}</span></h3>` +
+    (n === 0
+      ? '<div class="empty">No species yet — the Compendium fills as you discover life.</div>'
+      : save.codex.map(([, e]) =>
+        `<div class="centry" data-sel="codex-entry"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><div class="sub">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</div></div>`).join('')));
+}
+registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btn: document.getElementById('docksets'), onOpen: fillSettings });
+registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btn: document.getElementById('dockcodex'), onOpen: fillCodex });
+document.getElementById('docksets')!.addEventListener('click', () => togglePanel('set'));
+document.getElementById('dockcodex')!.addEventListener('click', () => togglePanel('codex'));
 sheet.querySelector('#importclose')!.addEventListener('click', () => { sheet.style.display = 'none'; });
 sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
   const f = (e.target as HTMLInputElement).files?.[0];
@@ -450,7 +511,6 @@ let sysStar: { seed: number; col: string; kind: string; starR: number } | null =
 let chartLayer: Container | null = null;   /* Star charts (chartsOn, OFF by default — v1.3.6, Nick's call) */
 let starSurfSpr: Sprite | null = null;
 let surfClouds: { a: Sprite; b: Sprite; w: number } | null = null;
-const MOTION_OK = !matchMedia('(prefers-reduced-motion: reduce)').matches;
 const baseR = (): number => Math.max(0.7 / cam.z, 0.55);   /* Renderer star sizing (main.js 4126) */
 
 function clearWorld(): void {
@@ -1224,7 +1284,7 @@ function drawSurface(p: PlanetNode): void {
   spr.anchor.set(0.5);
   spr.width = R * 2; spr.height = R * 2;
   world.addChild(spr);
-  if ((p.P.type === 'terran' || p.P.type === 'ocean') && MOTION_OK) {
+  if ((p.P.type === 'terran' || p.P.type === 'ocean') && motionOK()) {
     /* the drifting upper cloud deck (main.js 5256) — twin sprites wrap so
        the sliding edge never shows; drift rate scaled to the slice's fixed
        globe (the Renderer's rate is tuned to its 6px world masters) */
@@ -1366,9 +1426,9 @@ async function loadSave(): Promise<void> {
   epochClock = createEpochClock(save.EPOCH_BASE, playSeconds);
   (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
   initAudio({ sndOn: () => save.sndOn, sfxVol: () => save.sfxVol });   /* the save's own audio settings */
-  /* dock states mirror the save from the first frame */
+  /* dock + chrome mirror the save from the first frame */
   document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
-  document.getElementById('docksound')!.classList.toggle('on', save.sndOn);
+  applyGlass();
   syncTopbarH();
 }
 
@@ -1397,6 +1457,9 @@ async function loadSave(): Promise<void> {
         trail: trailEl.textContent || '', ctx: ctxEl.textContent || '',
         objective: objChipEl.textContent || '',
         chartsOn: save.chartsOn, chartsVisible: !!(chartLayer && chartLayer.visible),
+        panelOpen: openPanelId(), codexCount: save.codex.length,
+        sfxVol: save.sfxVol, motionMode: save.motionMode,
+        glassA: getComputedStyle(document.documentElement).getPropertyValue('--glass-a').trim(),
         topbarH: getComputedStyle(document.documentElement).getPropertyValue('--topbar-h'),
         save: {
           name: save.explorerName, essence: save.essence,
@@ -1447,7 +1510,7 @@ async function loadSave(): Promise<void> {
       for (const up of uniPulse) up.spr.alpha = 0.55 + 0.45 * Math.abs(Math.sin(t * 6 + up.seed % 10));
       /* drifting fog-of-war: the CLOUD PATTERN moves, the puffs stay put
          (main.js 3766 — noise phase drifts at 5/s) */
-      if (charterFx && charterFx.visible && fogFx.length) {
+      if (charterFx && charterFx.visible && fogFx.length && motionOK()) {
         const drift = t * 5;
         for (const F of fogFx) {
           const n = (UNOISE as (x: number, y: number, o: number) => number)((F.wx + drift) / UCELL * 0.16, (F.wy - drift * 0.4) / UCELL * 0.16, 3);
@@ -1456,8 +1519,8 @@ async function loadSave(): Promise<void> {
       }
     } else if (nav.mode === 'galaxy') {
       updateFineLayer(false);
-      /* the bright stars breathe (main.js 4165) */
-      for (const st of galTwinkle) st.spr.alpha = 0.82 + 0.18 * Math.sin(t * 2.4 + (st.seed % 97));
+      /* the bright stars breathe (main.js 4165) — stilled under reduced motion */
+      if (motionOK()) for (const st of galTwinkle) st.spr.alpha = 0.82 + 0.18 * Math.sin(t * 2.4 + (st.seed % 97));
       if (bhDisc) { bhDisc.rotation = t * 0.3; bhDisc.scale.y = bhDisc.scale.x * 0.55; }
       /* wormhole lensing · remnant cores · newborn protostars (main.js 4109/4218) */
       for (const ga of galAnims) {

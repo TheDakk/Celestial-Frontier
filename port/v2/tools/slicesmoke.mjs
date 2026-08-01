@@ -173,6 +173,36 @@ try {
   const chToggle = await evalIn(`(()=>{ document.getElementById('dockcharts').click(); const s=window.__CF_SLICE__.api.state(); return { on: s.chartsOn, vis: s.chartsVisible }; })()`);
   if (!chToggle.on || !chToggle.vis) fails.push('DOCK PRESS DID NOT LAND — charts toggle had no effect: ' + JSON.stringify(chToggle));
   await evalIn(`(()=>{ document.getElementById('dockcharts').click(); return 1; })()`);   /* back OFF for the visual record */
+  /* THE ONE-PANEL LAW (UI_PRESENTATION): settings opens → codex opens →
+     settings must CLOSE; tap empty space closes; the corner ✕ closes;
+     the volume slider drives the REAL save field through the shared bus. */
+  const law = await evalIn(`(async()=>{ const S=window.__CF_SLICE__; const st=()=>S.api.state();
+    document.getElementById('docksets').click();
+    const a = st().panelOpen;
+    document.getElementById('dockcodex').click();
+    const b = st().panelOpen;
+    const setsHidden = document.getElementById('setpanel').style.display === 'none';
+    document.getElementById('docksets').click();
+    const vol = document.getElementById('setvol');
+    vol.value = '30'; vol.dispatchEvent(new Event('input'));
+    const v = st().sfxVol;
+    document.querySelector('#setpanel [data-pnx]').click();
+    const c = st().panelOpen;
+    return { a, b, setsHidden, v, c }; })()`);
+  if (law.a !== 'set') fails.push('settings panel did not open: ' + JSON.stringify(law.a));
+  if (law.b !== 'codex' || !law.setsHidden) fails.push('ONE-PANEL LAW BROKEN — opening codex left settings up: ' + JSON.stringify(law));
+  if (Math.abs(law.v - 0.3) > 1e-9) fails.push('volume slider did not drive save.sfxVol: ' + JSON.stringify(law.v));
+  if (law.c !== null) fails.push('the corner ✕ did not close the panel: ' + JSON.stringify(law.c));
+  /* tap empty space closes (the document pointerdown law) */
+  await evalIn(`(()=>{ document.getElementById('docksets').click(); return 1; })()`);
+  await sleep(250);
+  const shotSet = await send('Page.captureScreenshot', { format: 'png' }, sess);
+  fs.writeFileSync(path.join(OUT, 'slice-settings.png'), Buffer.from(shotSet.data, 'base64'));
+  await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: 900, y: 300, button: 'left', clickCount: 1 }, sess);
+  await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: 900, y: 300, button: 'left', clickCount: 1 }, sess);
+  await sleep(200);
+  const tapClose = await evalIn(`window.__CF_SLICE__.api.state().panelOpen`);
+  if (tapClose !== null) fails.push('tap-empty-to-close did not close the panel: ' + JSON.stringify(tapClose));
   const shot3 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-sol.png'), Buffer.from(shot3.data, 'base64'));
   const surveyed = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
@@ -268,6 +298,7 @@ try {
   if (vet.save.name !== 'Dakk') fails.push('veteran import did not boot as Dakk: ' + JSON.stringify(vet.save.name));
   if (vet.save.essence !== 5000) fails.push('veteran essence wrong: ' + JSON.stringify(vet.save.essence));
   if (vet.mode !== 'surface') fails.push('veteran savedView (surface) not restored: ' + vet.mode);
+  if (vet.codexCount !== 3) fails.push('veteran Compendium count wrong (want 3): ' + JSON.stringify(vet.codexCount));
 
   /* 4d. THE PHONE LEG (emulated): 390×844 @ DPR 3, touch. The physical
      hand-feel stays Nick's; this catches layout, touch wiring and pinch. */

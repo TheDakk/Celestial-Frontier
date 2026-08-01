@@ -439,11 +439,28 @@
 ##   far, all still failing on demand).
 ##   Gates: vitest 22/220 (+banking suite) · tsc root+app clean · smoke PASS ·
 ##   proofsheet regenerated · main.js untouched.
-##   ▶ NEXT IN PHASE 4: the panel manager (one-panel law, sticky ✕, tap-empty-close)
-##   with the first rail panel (Settings: sound/charts/motion/volume over real save
-##   fields) · Compendium read-only over save.codex · the training port (--tut-bot
-##   contract) · playRaritySting on first-discovery · CMB band-pick.
-##   ⛔ Nick (unchanged minimum): PASTE the real save into ⛭ save · hold the phone ·
+##   ✔★★ THE PANEL SYSTEM LIVES (2026-08-01, batch 7): apps/game/src/panels.ts — THE
+##   ONE-PANEL LAW as its own module (opening one closes the rest · corner ✕ seated
+##   FIRST and STICKY, surviving refills via fillPanel · tap-empty-to-close with the
+##   modal exemption — main.js ~16019 semantics). TWO RAIL PANELS: · SETTINGS — every
+##   control drives a REAL save field and persists (sound · volume through the shared
+##   squared-taper bus, applySfxGain live · charts mirroring the dock both ways ·
+##   MOTION Auto/Full/Reduced — motionOK() is LIVE now, Auto follows the OS, and it
+##   stills the twinkle/fog-drift/cloud-deck · PANEL TINT driving --glass-a, the
+##   game's liquid-glass slider). · COMPENDIUM — read-only over save.codex (name/kind/
+##   tier/hybrid/realm rows, empty-state line; virtualization noted for Phase 4's
+##   large-catalog bullet; the veteran fixture's 3 entries asserted in the smoke).
+##   Dock grew codex+settings (sound moved into Settings). SMOKE: the one-panel law
+##   leg (set→codex closes set · ✕ closes · tap-empty closes · the volume slider
+##   drives save.sfxVol=0.3) — negative-controlled (closePanels disabled → 'ONE-PANEL
+##   LAW BROKEN' named FAIL); slice-settings.png joins the visual record.
+##   Gates: vitest 22/220 · tsc clean · smoke PASS (0 fails, 11 controls standing) ·
+##   proofsheet regenerated · main.js untouched.
+##   ▶ NEXT IN PHASE 4: Compendium detail cards (statBlockHTML needs the app seam) ·
+##   the training port (--tut-bot contract, 21 steps) · Records/Atlas read-only
+##   panels · playRaritySting on first-discovery · CMB band-pick · panel focus
+##   restoration + Escape order (the game's focus laws).
+##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone ·
 ##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
