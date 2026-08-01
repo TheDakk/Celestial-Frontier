@@ -12,3 +12,4 @@ export function _rogueSpr(): HTMLCanvasElement;
 export function _beamSpr(): HTMLCanvasElement;
 export function _nsCoreSpr(): HTMLCanvasElement;
 export function _bhSpr(): HTMLCanvasElement;
+export function _cloudSpr(P: Record<string, unknown>): HTMLCanvasElement;

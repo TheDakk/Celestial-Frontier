@@ -19,25 +19,43 @@ import { Application, Container, Graphics, Sprite, Texture, Text } from 'pixi.js
 import {
   galSpriteFor, decoSprite, getPlanetSprite, starSprite,
   _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr,
-  _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr,
+  _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr,
 } from '@cf/art';
 import {
-  NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView,
+  NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, viewToNav,
   homeUniverse, galaxyCell, galaxyCellWindow, systemScene,
   GR, GCELL, type NavState, type GalaxyNode, type PlanetNode,
 } from '@cf/scene';
 import { galaxyProfile, galaxyHaze, systemFor, fineStarsInCell, FCELL } from '@cf/domain-worldgen';
 import { SYS_R } from '@cf/domain-worldconfig';
 import { mulberry32, hashInt, TAU } from '@cf/domain-rand';
-import { installCaptureHooks, planetDescriptor, SOL_MOONS, type Descriptor } from '@cf/domain-descriptors';
-import { createSaveRepository, createIndexedDBBackend } from '@cf/persistence';
+import { installCaptureHooks, planetDescriptor, describePick, SOL_MOONS, type Descriptor } from '@cf/domain-descriptors';
+import {
+  createSaveRepository, createIndexedDBBackend,
+  importSaveV2, exportSaveV2, type SaveStateV2, type ContentRegistry,
+} from '@cf/persistence';
+import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
 installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt fully replaces the hooks */
+/* app-state seams the VERBATIM descriptor code reads as globals (D-ST in
+   DEVIATIONS — describePick reads `st`/`customNames` inside a [domain]
+   module; the port passes state explicitly when Phase 4 rebuilds the card
+   layer). The slice keeps them true: stSeam tracks nav below. */
+const REGISTRY = REGISTRY_JSON as unknown as ContentRegistry;
+const gSeam = globalThis as Record<string, unknown>;
+const stSeam: { gal: unknown; star: unknown } = { gal: null, star: null };
+gSeam.st ??= stSeam;
+gSeam.customNames ??= new Map();   /* player renames — Phase 4 wiring */
 
 const app = new Application();
 const hud = document.getElementById('hud')!;
 const repo = createSaveRepository(createIndexedDBBackend('cf-v2-slice'));
-const VIEW_KEY_NOTE = 'slice stores ONLY the nav view — real saves stay with importSaveV2';
+/* THE REAL SAVE LOOP: the slice persists a genuine cfcc_save_v2 blob through
+   importSaveV2/exportSaveV2 (the proven round-trip fixed point) — the nav
+   view rides in `view`, landings ride in `land`. An older slice store that
+   held only {nav,view} JSON migrates for free: importSaveV2 reads its `view`
+   and defaults everything else. */
+let save: SaveStateV2;
 const DPR = Math.min(devicePixelRatio, 3);
 const minWH = (): number => Math.min(innerWidth, innerHeight);
 
@@ -69,7 +87,8 @@ function hideSurvey(): void { card.style.display = 'none'; }
 
 function hudText(): void {
   const path = [nav.mode, nav.gal && 'gal ' + nav.gal.seed, nav.star && 'star ' + nav.star.seed].filter(Boolean).join(' · ');
-  hud.innerHTML = `<b>${path}</b><br>drag pan · wheel/pinch zoom — zoom IN to dive, OUT to rise · click descend · right-click ascend<br><i>${VIEW_KEY_NOTE}</i>`;
+  const who = `${save.explorerName || 'Explorer'} · ✦ ${save.essence} stardust · ${save.landed.length} worlds landed`;
+  hud.innerHTML = `<b>${path}</b><br>drag pan · wheel/pinch zoom — zoom IN to dive, OUT to rise · click descend · right-click ascend<br><i>${who} — the REAL save (importSaveV2 ⇄ exportSaveV2, IndexedDB)</i>`;
 }
 
 /* ---- slice-local bakes of Renderer inline gradients (verbatim stops) ---- */
@@ -107,6 +126,19 @@ function coronaSpr(col: string): HTMLCanvasElement {   /* main-sequence glow (ma
   g.fillStyle = sg; g.beginPath(); g.arc(C, C, C, 0, TAU); g.fill();
   _coronaC.set(col, cv); return cv;
 }
+let _moonTermC: HTMLCanvasElement | null = null;
+function moonTermSpr(): HTMLCanvasElement {
+  /* the moon terminator (main.js 5313): a dark offset disc clipped to the
+     globe — baked with the shadow at +x; the sprite rotates to the planet's
+     orbit angle so the dark limb faces away from the star */
+  if (_moonTermC) return _moonTermC;
+  const S = 64, cv = document.createElement('canvas'); cv.width = cv.height = S;
+  const g = cv.getContext('2d')!, C = S / 2;
+  g.beginPath(); g.arc(C, C, C, 0, TAU); g.clip();
+  g.fillStyle = 'rgba(4,6,18,0.55)';
+  g.beginPath(); g.arc(C + C * 0.55, C, C * 0.95, 0, TAU); g.fill();
+  return (_moonTermC = cv);
+}
 const _termC = new Map<string, HTMLCanvasElement>();
 function terminatorSpr(starCol: string): HTMLCanvasElement {
   /* the day/night overlay (main.js ~5264): lit tint at the starward point,
@@ -140,9 +172,13 @@ let fineLayer: Container | null = null;
 let fineWin: { fx0: number; fy0: number; fx1: number; fy1: number } | null = null;
 let lastZBucket = 0;
 const zBucket = (): number => Math.round(Math.log(cam.z) / Math.log(1.15));
-interface Orbiter { c: Container; kind: 'planet' | 'moon' | 'rock' | 'dwarf' | 'beam'; orb: number; sp?: number; a0?: number; mul?: number; face?: Sprite[]; }
+interface Orbiter { c: Container; kind: 'planet' | 'moon' | 'rock' | 'dwarf' | 'beam'; orb: number; sp?: number; a0?: number; mul?: number; pOrb?: number; face?: Sprite[]; }
 let orbiters: Orbiter[] = [];
 let sysLabels: Array<{ t: Text; getPos: (time: number) => { x: number; y: number } }> = [];
+let sysStar: { seed: number; col: string; kind: string; starR: number } | null = null;
+let starSurfSpr: Sprite | null = null;
+let surfClouds: { a: Sprite; b: Sprite; w: number } | null = null;
+const MOTION_OK = !matchMedia('(prefers-reduced-motion: reduce)').matches;
 const baseR = (): number => Math.max(0.7 / cam.z, 0.55);   /* Renderer star sizing (main.js 4126) */
 
 function clearWorld(): void {
@@ -150,7 +186,7 @@ function clearWorld(): void {
   galaxySpins.length = 0;
   galStars = []; galTwinkle = []; screenScaled = [];
   solMark = null; bhDisc = null; fineLayer = null; fineWin = null;
-  orbiters = []; sysLabels = [];
+  orbiters = []; sysLabels = []; sysStar = null; starSurfSpr = null; surfClouds = null;
 }
 
 /* ---- draw passes ---- */
@@ -195,10 +231,14 @@ function drawGalaxy(galSeed: number): void {
   const bR = baseR();
   /* deco pass UNDER the stars, Renderer sizes (main.js ~4131): nebulae ×2.3 ·
      planetary shells ×2.4 · remnants ×2.6 · open/glob star knots · rogue
-     planets · failed brown dwarfs. Deco is non-interactive in the slice
-     (the game surveys deco via picks — recorded gap). */
-  const decoLayer = new Container(); decoLayer.eventMode = 'none';
+     planets · failed brown dwarfs. Deco sprites are PICKABLE — the survey
+     card speaks through describePick, the game's own card router. */
+  const decoLayer = new Container();
   world.addChild(decoLayer);
+  const decoTap = (dc: Record<string, unknown>) => (): void => {
+    const d = describePick({ kind: 'deco', data: dc } as never);
+    if (d) showSurvey(d as unknown as Descriptor);
+  };
   for (let cx = w.cx0; cx <= w.cx1; cx++) for (let cy = w.cy0; cy <= w.cy1; cy++) {
     for (const dc of galaxyCell(galSeed, prof, cx, cy).deco) {
       if (dc.k === 'h2' || dc.k === 'neb' || dc.k === 'mol' || dc.k === 'plan' || dc.k === 'rem') {
@@ -208,6 +248,9 @@ function drawGalaxy(galSeed: number): void {
         const rr = (dc.rr as number) || 8;
         spr.position.set(dc.x, dc.y);
         spr.width = rr * 2 * f; spr.height = rr * 2 * f;
+        spr.eventMode = 'static';
+        spr.cursor = 'pointer';
+        spr.on('pointertap', decoTap(dc));
         decoLayer.addChild(spr);
       } else if ((dc.k === 'open' || dc.k === 'glob') && Array.isArray(dc.pts)) {
         /* star knots: loose young clusters / dense ancient globulars —
@@ -227,11 +270,15 @@ function drawGalaxy(galSeed: number): void {
         const s2 = new Sprite(Texture.from(_rogueSpr()));
         s2.anchor.set(0.5); s2.position.set(dc.x, dc.y);
         s2.width = 2.1; s2.height = 2.1;
+        s2.eventMode = 'static'; s2.cursor = 'pointer';
+        s2.on('pointertap', decoTap(dc));
         decoLayer.addChild(s2);
       } else if (dc.k === 'fbd') {
         const s2 = new Sprite(Texture.from(fbdSpr()));
         s2.anchor.set(0.5); s2.position.set(dc.x, dc.y);
         s2.width = 3.2; s2.height = 3.2;
+        s2.eventMode = 'static'; s2.cursor = 'pointer';
+        s2.on('pointertap', decoTap(dc));
         decoLayer.addChild(s2);
       }
     }
@@ -302,17 +349,20 @@ function updateFineLayer(force: boolean): void {
   if (!force && fineWin && win.fx0 === fineWin.fx0 && win.fy0 === fineWin.fy0 && win.fx1 === fineWin.fx1 && win.fy1 === fineWin.fy1) return;
   if (fineLayer) { world.removeChild(fineLayer); fineLayer.destroy({ children: true }); }
   fineLayer = new Container();
-  fineLayer.eventMode = 'none';
   const prof = galaxyProfile(nav.gal.seed) as Record<string, unknown>;
   const bR = baseR();
   for (let fx = win.fx0; fx <= win.fx1; fx++) for (let fy = win.fy0; fy <= win.fy1; fy++) {
-    for (const s of fineStarsInCell(nav.gal.seed, prof, fx, fy) as Array<{ x: number; y: number; c: string; s: number }>) {
+    for (const s of fineStarsInCell(nav.gal.seed, prof, fx, fy) as Array<{ x: number; y: number; c: string; s: number; seed: number }>) {
       const spr = new Sprite(Texture.from(starSprite(s.c, false)));
       spr.anchor.set(0.5);
       spr.blendMode = 'add';
       const D = s.s * bR * 6.5;
       spr.width = D; spr.height = D;
       spr.position.set(s.x, s.y);
+      /* fine stars are DIVEABLE, same as the game's picks (main.js 4193) */
+      spr.eventMode = 'static';
+      spr.cursor = 'pointer';
+      spr.on('pointertap', () => descendSystem({ seed: s.seed, x: s.x, y: s.y }));
       fineLayer.addChild(spr);
     }
   }
@@ -334,7 +384,22 @@ function updateZoomDependent(): void {
     if (solMark) solMark.visible = cam.z > minWH() / 900;
     if (bhDisc) bhDisc.visible = cam.z > minWH() / 700;
   }
-  if (nav.mode === 'system') rebuildSystemHD();
+  if (nav.mode === 'system') { rebuildSystemHD(); updateStarSurf(); }
+}
+function updateStarSurf(): void {
+  /* universe-crispness (main.js 5127): a CLOSE star shows its boiling
+     surface inside the corona — far views keep the pure gradient */
+  if (!sysStar) return;
+  const want = sysStar.starR * 2 * camT.z * DPR > 90;
+  if (want && !starSurfSpr) {
+    starSurfSpr = new Sprite(Texture.from(_starSurf(sysStar.seed, sysStar.col, sysStar.kind)));
+    starSurfSpr.anchor.set(0.5);
+    starSurfSpr.width = sysStar.starR * 2; starSurfSpr.height = sysStar.starR * 2;
+    starSurfSpr.eventMode = 'none';
+    world.addChildAt(starSurfSpr, 1);   /* over the corona, under everything else */
+  } else if (!want && starSurfSpr) {
+    world.removeChild(starSurfSpr); starSurfSpr.destroy(); starSurfSpr = null;
+  }
 }
 
 function drawSystem(starSeed: number): void {
@@ -371,6 +436,7 @@ function drawSystem(starSeed: number): void {
     corona.width = srad * 4.8; corona.height = srad * 4.8;   /* r = starR*2.4 */
     corona.eventMode = 'none';
     world.addChild(corona);
+    sysStar = { seed: starSeed, col, kind: sys.kind, starR: srad };   /* _starSurf close-up gate */
     if (raw.binary) {
       const b2 = new Sprite(Texture.from(coronaSpr(raw.binary.col2 || col)));
       b2.anchor.set(0.5);
@@ -432,12 +498,19 @@ function drawSystem(starSeed: number): void {
       const mr2 = mulberry32(hashInt(p.P.seed as number, m * 17 + 5, 91));
       const mt = solM[m] ? solM[m]!.t : Math.floor(mr2() * 4);
       const mrad = Math.max(0.5, pr * 0.108);
+      const moonC = new Container();
+      moonC.eventMode = 'none';
       const ms = new Sprite(Texture.from(_moonSpr(mt | 0, mrad * 2.18 * camT.z * DPR > 34)));
       ms.anchor.set(0.5);
       ms.width = mrad * 2.18; ms.height = mrad * 2.18;
-      ms.eventMode = 'none';
-      holder.addChild(ms);
-      orbiters.push({ c: ms, kind: 'moon', orb: 1.7 + m * 0.48, sp: 0.55, a0: m * 2.4, mul: pr });
+      moonC.addChild(ms);
+      /* the moon's dark side turns away from the star (main.js 5313) */
+      const mterm = new Sprite(Texture.from(moonTermSpr()));
+      mterm.anchor.set(0.5);
+      mterm.width = mrad * 2; mterm.height = mrad * 2;
+      moonC.addChild(mterm);
+      holder.addChild(moonC);
+      orbiters.push({ c: moonC, kind: 'moon', orb: 1.7 + m * 0.48, sp: 0.55, a0: m * 2.4, mul: pr, pOrb: p.orb, face: [mterm] });
     }
     const label = new Text({ text: p.name, style: { fontFamily: 'Georgia, serif', fontSize: 11, fill: 'rgba(220,226,255,0.8)' } });
     label.anchor.set(0.5, 0);
@@ -507,6 +580,7 @@ function rebuildSystemHD(): void {
 /* ---- navigation (every transition through the tested state machine) ---- */
 function rerender(): void {
   hideSurvey();
+  stSeam.gal = nav.gal; stSeam.star = nav.star;   /* the describePick seam stays true */
   if (nav.mode === 'universe') drawUniverse();
   else if (nav.mode === 'galaxy' && nav.gal) drawGalaxy(nav.gal.seed);
   else if (nav.mode === 'system' && nav.star) drawSystem(nav.star.seed);
@@ -546,17 +620,45 @@ function surveyAndLand(p: PlanetNode, starSeed: number): void {
   const sys = systemFor(starSeed);
   showSurvey(planetDescriptor(p.P, sys, { name: p.name, orb: p.orb } as never) as Descriptor);
   const r = land(nav, { seed: p.seed });
-  if (r.ok) { nav = r.state; drawSurface(p); hudText(); void persistView(); }
+  if (r.ok) {
+    nav = r.state;
+    if (!save.landed.includes(p.seed)) save.landed.push(p.seed);   /* the game's `land` set */
+    stSeam.gal = nav.gal; stSeam.star = nav.star;
+    drawSurface(p); hudText(); void persistView();
+  }
 }
 function drawSurface(p: PlanetNode): void {
   /* surface mode, slice edition: the world fills the view as its painterly
      surface (full biome scenes are Phase 6); the survey card carries the
      roster — every species row is real Ecology output */
   clearWorld();
+  const R = 210;
   const spr = new Sprite(Texture.from(getPlanetSprite(p.P, 1024)));
   spr.anchor.set(0.5);
-  spr.width = 420; spr.height = 420;
+  spr.width = R * 2; spr.height = R * 2;
   world.addChild(spr);
+  if ((p.P.type === 'terran' || p.P.type === 'ocean') && MOTION_OK) {
+    /* the drifting upper cloud deck (main.js 5256) — twin sprites wrap so
+       the sliding edge never shows; drift rate scaled to the slice's fixed
+       globe (the Renderer's rate is tuned to its 6px world masters) */
+    const tex = Texture.from(_cloudSpr(p.P));
+    const wrap = new Container();
+    wrap.eventMode = 'none';
+    const mk = (): Sprite => {
+      const s = new Sprite(tex);
+      s.anchor.set(0, 0.5);
+      s.width = R * 2; s.height = R * 2;
+      s.alpha = 0.45;
+      wrap.addChild(s);
+      return s;
+    };
+    const a = mk(), b = mk();
+    const mask = new Graphics().circle(0, 0, R).fill(0xffffff);
+    wrap.addChild(mask);
+    wrap.mask = mask;
+    world.addChild(wrap);
+    surfClouds = { a, b, w: R * 2 };
+  }
   cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0; camT.z = 1; cam.z = 0.8;
 }
 function goUp(): void {
@@ -629,28 +731,22 @@ function zoomLimits(): [number, number] {
   return [0.45, 6];
 }
 
-/* ---- the save/reload leg (IndexedDB's first browser proof) ---- */
+/* ---- the save/reload leg — THE REAL PIPELINE ---- */
 async function persistView(): Promise<void> {
-  try { await repo.write(JSON.stringify({ nav, view: navToView(nav) })); } catch { /* private mode: session continues unsaved */ }
-}
-function navValid(n: NavState): boolean {
-  /* a mode without its context (hand-edited/corrupt store) must fall back
-     to home, not render an empty stage */
-  const num = (v: unknown): boolean => Number.isFinite((v as { seed?: number } | null)?.seed);
-  if (n.mode === 'universe') return true;
-  if (n.mode === 'galaxy') return num(n.gal);
-  if (n.mode === 'system') return num(n.gal) && num(n.star);
-  if (n.mode === 'surface') return num(n.gal) && num(n.star) && num(n.planet);
-  return false;
-}
-async function restoreView(): Promise<void> {
   try {
-    const raw = await repo.readPrimary();
-    if (!raw) return;
-    const data = JSON.parse(raw) as { nav?: NavState };
-    if (data.nav && navValid(data.nav)) nav = data.nav;
-  } catch { /* corrupt slice view: start at home, never crash boot */ }
-  /* camera matches the restored mode's entry zoom */
+    save.savedView = navToView(nav);
+    await repo.write(exportSaveV2(save, Date.now()));
+  } catch { /* private mode: session continues unsaved */ }
+}
+async function loadSave(): Promise<void> {
+  let raw: string | null = null;
+  try { raw = (await repo.readPrimary()) ?? null; } catch { raw = null; }
+  const imp = importSaveV2(raw, REGISTRY, Date.now());
+  save = imp.ok ? imp.state
+    : (importSaveV2('{}', REGISTRY, Date.now()) as { ok: true; state: SaveStateV2 }).state;   /* fresh expedition */
+  /* the sanitized view → nav; viewToNav degrades toward home, so a
+     hand-edited/corrupt view can never render an empty stage */
+  nav = viewToNav(save.savedView);
   if (nav.mode === 'galaxy') { camT.z = gz0 * 1.05; cam.z = camT.z; }
   else if (nav.mode === 'system') { camT.z = sz0 * 1.05; cam.z = camT.z; }
 }
@@ -668,7 +764,13 @@ async function restoreView(): Promise<void> {
     /* test API for tools/slicesmoke.mjs — drives the SAME functions the
        pointer handlers call; no parallel logic to drift */
     api: {
-      state: () => ({ mode: nav.mode, fine: !!fineLayer, solVisible: !!(solMark && solMark.visible) }),
+      state: () => ({
+        mode: nav.mode, fine: !!fineLayer, solVisible: !!(solMark && solMark.visible),
+        save: {
+          name: save.explorerName, essence: save.essence,
+          landed: save.landed.slice(), viewType: (save.savedView as { type?: string } | null)?.type ?? null,
+        },
+      }),
       descendSystem,
       landOn: (i: number) => {
         if (nav.mode !== 'system' || !nav.star) return false;
@@ -679,7 +781,7 @@ async function restoreView(): Promise<void> {
       },
     },
   };
-  await restoreView();
+  await loadSave();
   rerender();
 
   app.ticker.add((tk) => {
@@ -711,6 +813,7 @@ async function restoreView(): Promise<void> {
           const ma = t * (0.55 / Math.pow(o.orb, 1.5)) + (o.a0 || 0);
           const mdist = (o.mul || 1) * o.orb;
           o.c.position.set(Math.cos(ma) * mdist, Math.sin(ma) * mdist * 0.4);
+          if (o.face && o.pOrb) o.face[0]!.rotation = planetAng(o.pOrb, t);   /* dark limb away from the star */
         } else if (o.kind === 'rock') {
           const a = (o.a0 || 0) + t * (o.sp || 0);
           o.c.position.set(Math.cos(a) * o.orb, Math.sin(a) * o.orb);
@@ -722,6 +825,10 @@ async function restoreView(): Promise<void> {
         }
       }
       for (const L of sysLabels) { const p = L.getPos(t); L.t.position.set(p.x, p.y); }
+    } else if (nav.mode === 'surface' && surfClouds) {
+      const co = (t * 9) % surfClouds.w;
+      surfClouds.a.position.x = -surfClouds.w / 2 + co;
+      surfClouds.b.position.x = -surfClouds.w / 2 + co - surfClouds.w;
     }
     /* screen-constant labels/markers (the Renderer's 1/c.z font trick) */
     for (const ss of screenScaled) ss.obj.scale.set(ss.f / Math.max(cam.z, 1e-6));

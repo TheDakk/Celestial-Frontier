@@ -19,7 +19,7 @@ export { GAL_SPRITES, GAL_KIND, makeGalaxySprite, GAL_SPRITE_SEEDS };
 export { decoSprite, _quasarSpr, starSprite };
 export {
   _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr,
-  _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr,
+  _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr,
 } from './artextras.verbatim.js';
 export { planetThumb, starThumb, galaxyThumb, moonThumb, cometThumb, beltThumb, getPlanetSprite } from './thumbart.verbatim.js';
 

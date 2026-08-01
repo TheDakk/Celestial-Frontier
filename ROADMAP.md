@@ -297,13 +297,38 @@
 ##   Negative-controlled BOTH directions: checkTransitions disabled in a control build →
 ##   6 named failures; restored → PASS. Gates at close: vitest 21 files/210 · tsc root+app
 ##   clean · smoke PASS · main.js/html UNTOUCHED (validate battery stands as at v1.8.9).
-##   ▶ NEXT IN PHASE 3/4: wire importSaveV2 saves into the slice (real save loop, not just
-##   nav view) · surface-mode planet spin + cloud deck (motionOK gates) · wormhole travel +
-##   charter/Ascent gating on dives (needs progression wiring) · deco/fine-star pick targets
-##   (survey cards for nebulae/remnants) · _starSurf close-up + moon terminator shading ·
-##   supernova sites/comets/visitor · HD texture rebuild thrash check on long zoom sessions.
-##   ⛔ Nick: veteran save (Gate C) · phone leg (pinch is IN — judge it) · art verdict
-##   (judgeable NOW: cd port/v2/apps/game && npx vite dev) · listening test.
+##   ✔★★★ THE SLICE RUNS ON THE REAL SAVE (2026-07-31, same session, next batch): the
+##   nav-view side JSON is GONE — the slice boots through importSaveV2 (fresh expedition =
+##   '{}' import), persists through exportSaveV2 (the proven round-trip fixed point), the
+##   nav view rides the save's `view` via navToView→_sanitizeView→viewToNav (viewToNav NEW
+##   in @cf/scene, DEGRADES toward home — planet-without-star is a galaxy view, no-gal is
+##   universe; round-trip tests through the REAL _sanitizeView), landings ride the `land`
+##   set, HUD speaks the save (explorer · stardust · worlds landed). An older slice store
+##   migrates free (importSaveV2 reads its `view`, defaults the rest).
+##   ★ FOUND: describePick (the game's card router, exported since the Descriptors lift)
+##   reads `st` AND `customNames` as free globals the capture hooks never installed — it
+##   would THROW on first real call (same green-while-broken shape as GAL_SPRITES). Slice
+##   installs the seam (D-ST in DEVIATIONS); real-input vitest coverage added (real
+##   home-galaxy nebula card · star card + _nameKey · customNames title ride · the
+##   CF173-01 null-star bail). ⚠ STALE-LIFT HAZARD recorded: re-lifting Descriptors after
+##   registry.mjs grew regionAt added a missing import the old lift left FREE — re-lift
+##   after any registry change. GRAPHICS POLISH: deco sprites PICKABLE (describePick cards
+##   for nebulae/shells/remnants/rogues/fbd) · fine stars DIVEABLE (main.js 4193 parity) ·
+##   _starSurf boiling-surface close-up at the Renderer's DPR gate · moon day/night
+##   terminator (baked disc, rotates with the planet's orbit angle) · drifting cloud deck
+##   on terran/ocean surfaces (twin-sprite wrap, reduced-motion gated) — _cloudSpr lifted
+##   (art extras now 14 painters). SMOKE grew the real-save leg (Earth 133 in `land` after
+##   reload · savedView.type='planet' · essence numeric) — negative-controlled BOTH ways
+##   (landed push disabled → named FAIL → restored → PASS). Gates: vitest 22 files/216 ·
+##   tsc root+app clean · smoke PASS · main.js/html untouched.
+##   ▶ NEXT IN PHASE 3/4: wormhole travel + charter/Ascent gating on dives (needs
+##   progression wiring) · supernova sites/comets/visitor (COSMIC_EPOCH wiring) · quasar
+##   card via describePick's quasar branch · surface-mode biome vista (Phase 6 scope) ·
+##   HD texture rebuild thrash check on long zoom sessions · consider SessionRNG wiring
+##   start (D-RNG) once an outcome roll exists in the slice.
+##   ⛔ Nick: veteran save (Gate C — drop the blob in and the slice will LOAD it) · phone
+##   leg (pinch is IN — judge it) · art verdict (cd port/v2/apps/game && npx vite dev) ·
+##   listening test.
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.

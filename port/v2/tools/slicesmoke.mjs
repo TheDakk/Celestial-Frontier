@@ -149,12 +149,21 @@ try {
   const shot4 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-earth.png'), Buffer.from(shot4.data, 'base64'));
 
-  /* 4. reload: the IndexedDB view survives (the save/reload leg, for real) */
+  /* 4. reload: the REAL SAVE survives (importSaveV2 ⇄ exportSaveV2 through
+     IndexedDB — not a side JSON). The view must come back AND the landing
+     must be in the save's `land` set. */
   await send('Page.navigate', { url: URL0 }, sess);
   await sleep(2500);
   const hud3 = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
   /* we landed on Earth before reloading — the SURFACE view must come back */
   if (!/surface · gal 999 · star 424242/.test(hud3)) fails.push('RELOAD lost the view — IndexedDB persistence failed: ' + JSON.stringify(hud3));
+  const saved = await evalIn(`window.__CF_SLICE__.api.state().save`);
+  if (!saved) fails.push('api.state().save missing');
+  else {
+    if (saved.viewType !== 'planet') fails.push('restored savedView.type is not "planet": ' + JSON.stringify(saved.viewType));
+    if (!Array.isArray(saved.landed) || !saved.landed.includes(133)) fails.push('Earth (133) not in the save’s landed set after reload: ' + JSON.stringify(saved.landed));
+    if (typeof saved.essence !== 'number') fails.push('save.essence is not a number — importSaveV2 did not run');
+  }
 
   /* 4b. THE ZOOM-DRIVEN TRANSITIONS (checkTransitions semantics) — the leg
      the click-descent tests structurally cannot see. We are on Earth's
@@ -211,6 +220,6 @@ try {
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · Milky Way · Sol · LANDED ON EARTH with the survey card speaking (Spectral class/Life/Civilization) · surface view SURVIVED RELOAD (IndexedDB) · ZOOM LADDER surface→system→galaxy→universe→galaxy→Sol (with the empty-space negative control) · Sun marker + fine stars at depth · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · Milky Way · Sol · LANDED ON EARTH with the survey card speaking (Spectral class/Life/Civilization) · THE REAL SAVE SURVIVED RELOAD (importSaveV2 ⇄ exportSaveV2 through IndexedDB; Earth in the landed set) · ZOOM LADDER surface→system→galaxy→universe→galaxy→Sol (with the empty-space negative control) · Sun marker + fine stars at depth · zero console errors.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-earth · slice-solmark');
 process.exit(0);

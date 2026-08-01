@@ -42,6 +42,16 @@ as any change that touches an entry.
   canvas (the source violates its own architecture comment; it is the no-DOM lint's
   documented exception). *Port fix:* render-layer ownership in Phase 3/4 scenes.
   Also a candidate one-move cleanup upstream in main.js.
+- ☐ **D-ST — `describePick` reads app globals inside a [domain] module.**
+  The card router (Descriptors, main.js ~3035) reads `st` (nav state) and
+  `customNames` (rename map) as FREE identifiers — exported by the lift but
+  throwing on first call until the slice installed a seam (2026-07-31; same
+  green-while-broken shape as worldgen's GAL_SPRITES). The slice keeps the
+  seam true from its nav state; *port fix:* pass state as parameters when
+  Phase 4 rebuilds the card layer. ⚠ Same find surfaced a STALE-LIFT hazard:
+  re-lifting Descriptors after the strays registry row grew `regionAt` added
+  a previously-missing import (the old lift left `regionAt` free — guarded by
+  `typeof st`, so capture-green). Re-lift after any registry change.
 - ☐ **D-STRAYS — domain-pure functions scattered through app sections**
   (biomeFor, hdGenesFor, where-codecs, winEstimate, floraStat, cleanName,
   `_sanitizeSavedGenome`, the ring-grade chain). The port already homes them in

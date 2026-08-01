@@ -68,3 +68,17 @@ export function navToView(s: NavState): Record<string, unknown> | null {
   if (s.planet) o.pseed = s.planet.seed;
   return o;
 }
+
+/** the inverse: a save's sanitized `view` (importSaveV2's savedView — the
+    _sanitizeView shape) back into a NavState. Degrades toward home rather
+    than inventing context: a 'planet' view without a star is a galaxy view;
+    no gal at all is the universe. */
+export function viewToNav(v: Record<string, unknown> | null | undefined): NavState {
+  if (!v || !v.gal || !Number.isFinite(+(v.gal as GalRef).seed)) return NAV_HOME;
+  const gal = v.gal as GalRef;
+  const star = (v.star && Number.isFinite(+(v.star as StarRef).seed)) ? (v.star as StarRef) : null;
+  const pseed = (v.pseed != null && Number.isFinite(+(v.pseed as number))) ? +(v.pseed as number) : null;
+  if (v.type === 'planet' && star && pseed != null) return { mode: 'surface', gal, star, planet: { seed: pseed } };
+  if ((v.type === 'star' || v.type === 'planet') && star) return { mode: 'system', gal, star, planet: null };
+  return { mode: 'galaxy', gal, star: null, planet: null };
+}
