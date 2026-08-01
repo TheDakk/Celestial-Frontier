@@ -404,13 +404,47 @@
 ##     rates) · import sheet + button are real DOM components with data-sel hooks.
 ##   Gates: vitest 22/219 · tsc root+app clean · smoke PASS (now 4c Gate-C rehearsal +
 ##   4d phone leg) · proofsheet generated · main.js untouched.
-##   ▶ NEXT IN PHASE 3/4: Phase 4 shell continues — topbar/dock components over the
-##   slice (the golden phone screen names the gap: objective chip, dock, search) ·
-##   playRaritySting (first-discovery flow) · CMB card (band-pick, not box-pick) ·
-##   SessionRNG start once an outcome roll exists · throttled-CPU profile.
-##   ⛔ Nick (the true minimum): PASTE the real save into ⛭ save (Gate C closes on
-##   the spot) · hold the phone (hand-feel) · look at proof-sheet.png + listen
-##   (npx vite dev) · recruit the 12-24 (LISTENING_TEST.md is the script).
+##   ✔★★★ THE PHASE 4 SHELL IS UP — THE SLICE READS LIKE THE GAME (2026-08-01, batch 6):
+##   index.html grew the GLASS SYSTEM (mobile-first, safe-areas, 44px floors) and main.ts
+##   fills real chrome: · THE UNIFIED TOPBAR — trail breadcrumb (setTrail: Cosmos ›
+##   Milky Way › Sun (Sol) › Earth via naming's galaxyName/starName), the PLAYER CHIP
+##   (name · ✦ stardust · ❤ hp/HP_MAX · worlds · charter region — all REAL save fields),
+##   and ★ THE OBJECTIVE CHIP: ASC_CHAPTERS as pure DATA in charter.ts (text verbatim,
+##   the two landfall filters as a scope field) + bankLandfall (the review-catch rule:
+##   credit BANKS for every chapter from the current on — TESTED, incl. future-chapter
+##   banking + the n-cap) + currentObjective; LANDING ON EARTH MOVES THE CHIP 0/2→1/2
+##   IN THE SMOKE, and chapter completion advances ascCh + toasts the unlockNote.
+##   Height MEASURED never guessed (--topbar-h via syncTopbarH + ResizeObserver — the
+##   game's own law); the survey card sits below it and RESERVES the dock's space (the
+##   CF1806-02 burial class prevented structurally, not by z-index luck). · THE HINT
+##   PILL + THE CAPTION LINE (setCtxText): the Renderer's own tails — universe ladder
+##   verbatim (grain-of-light / beyond-observable / cosmic-web), galaxyStats numbers in
+##   galaxy mode ('every dot is one of ~2.1M stars…'), '8 worlds orbit Sol — humanity's
+##   own yellow star' with the binary note. · THE DOCK: survey/charts/sound/save, every
+##   press proven by an EFFECT — charts toggles the new chartLayer (orbit rings + the
+##   HABITABLE ZONE band + belt caption, OFF by default per v1.3.6 Nick's call) and
+##   PERSISTS through exportSaveV2; sound flips save.sndOn live; save opens the Gate C
+##   sheet. Smoke: dead-button control (handler unwired → 'DOCK PRESS DID NOT LAND').
+##   · Smoke asserts REWRITTEN state-based (11 hud-text greps retired) + shell checks
+##   (topbar/trail/measured height/objective/captions/dock).
+##   ★ THE FIXES-CARRY-OVER LEDGER (Nick's ask — how v1.8.x fixes reach the port):
+##   (1) DOMAIN fixes carry by construction — the port's source IS v1.8.9 verbatim,
+##   pinned by 200k+ golden cases; bug-for-bug items live in DEVIATIONS.md until
+##   approved. (2) UI-LAW fixes carry as STRUCTURE, not patches: CF1806-02 (dock
+##   burial) → the card's CSS reserves dock space; the height-sync law → syncTopbarH
+##   from day one; one-panel law + tap-empty-close + sticky ✕ → land with the panel
+##   manager (next); CF1805-01 (--tut-bot) → lands with the training port; the
+##   art-hold law → owns Phase 4's boot sequence when heavy panels arrive. (3) The
+##   check battery carries as the smoke's negative-controlled asserts (9 controls so
+##   far, all still failing on demand).
+##   Gates: vitest 22/220 (+banking suite) · tsc root+app clean · smoke PASS ·
+##   proofsheet regenerated · main.js untouched.
+##   ▶ NEXT IN PHASE 4: the panel manager (one-panel law, sticky ✕, tap-empty-close)
+##   with the first rail panel (Settings: sound/charts/motion/volume over real save
+##   fields) · Compendium read-only over save.codex · the training port (--tut-bot
+##   contract) · playRaritySting on first-discovery · CMB band-pick.
+##   ⛔ Nick (unchanged minimum): PASTE the real save into ⛭ save · hold the phone ·
+##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.

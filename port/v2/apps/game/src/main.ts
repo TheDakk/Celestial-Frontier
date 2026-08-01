@@ -28,14 +28,15 @@ import {
   NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, viewToNav,
   universeGalaxies, galaxyCell, galaxyCellWindow, systemScene,
   ascStageOf, ascAllowsStar, reachRadiusOf, withinReachOf, currentRegionOf, ascHintFor,
+  bankLandfall, chapterGoalsDone, currentObjective, ASC_CHAPTERS_DATA,
   GR, GCELL, type NavState, type GalaxyNode, type PlanetNode,
 } from '@cf/scene';
 import { galaxyProfile, galaxyHaze, systemFor, fineStarsInCell, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
 import { SYS_R, UCELL, OBS_R, HOME_POS } from '@cf/domain-worldconfig';
-import { galaxyName, properName } from '@cf/domain-naming';
+import { galaxyName, starName, properName } from '@cf/domain-naming';
 import { createEpochClock, type EpochClock } from '@cf/domain-progression';
 import { mulberry32, hashInt, TAU } from '@cf/domain-rand';
-import { installCaptureHooks, planetDescriptor, describePick, SOL_MOONS, type Descriptor } from '@cf/domain-descriptors';
+import { installCaptureHooks, planetDescriptor, describePick, SOL_MOONS, galaxyStats, fmtBig, type Descriptor } from '@cf/domain-descriptors';
 import {
   createSaveRepository, createIndexedDBBackend,
   importSaveV2, exportSaveV2, type SaveStateV2, type ContentRegistry,
@@ -56,7 +57,29 @@ gSeam.customNames ??= new Map();   /* player renames — Phase 4 wiring */
 extensions.add(CullerPlugin);   /* offscreen sprites skip render — thousands of stars, one flag */
 
 const app = new Application();
-const hud = document.getElementById('hud')!;
+/* ---- THE PHASE 4 CHROME (UI_PRESENTATION contracts): the unified topbar
+   (trail · player chip · objective chip) publishing --topbar-h, the hint
+   pill, the Georgia-italic caption line, and the 44px dock. Static DOM in
+   index.html; this file only FILLS it. ---- */
+const trailEl = document.getElementById('trail')!;
+const playerChipEl = document.getElementById('playerchip')!;
+const objChipEl = document.getElementById('objchip')!;
+const ctxEl = document.getElementById('ctxbar')!;
+const hintEl = document.getElementById('hintpill')!;
+const topbarEl = document.getElementById('topbar')!;
+const esc = (s: unknown): string => String(s ?? '').replace(/[<>&"']/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c]!));
+function syncTopbarH(): void {
+  /* the game's height-sync law: MEASURED, never guessed (main.js 119) */
+  document.documentElement.style.setProperty('--topbar-h', topbarEl.offsetHeight + 'px');
+}
+new ResizeObserver(syncTopbarH).observe(topbarEl);
+addEventListener('resize', syncTopbarH);
+let _ctxTxt = '', _hintTxt = '';
+function setCtx(t: string): void { if (t !== _ctxTxt) { _ctxTxt = t; ctxEl.textContent = t; } }
+function setHint(t: string): void { if (t !== _hintTxt) { _hintTxt = t; hintEl.textContent = t; } }
+function setTrail(segs: string[]): void {
+  trailEl.innerHTML = segs.map(esc).join('<span class="sep">›</span>');
+}
 const repo = createSaveRepository(createIndexedDBBackend('cf-v2-slice'));
 /* THE REAL SAVE LOOP: the slice persists a genuine cfcc_save_v2 blob through
    importSaveV2/exportSaveV2 (the proven round-trip fixed point) — the nav
@@ -82,37 +105,32 @@ const world = new Container();
 let gz0 = 0.42 * minWH() / GR;
 let sz0 = 0.40 * minWH() / SYS_R;
 
-/* ---- the survey card: HTML over TYPED SELECTORS (Gate D contract) ---- */
+/* ---- the survey card: HTML over TYPED SELECTORS (Gate D contract).
+   Position/layout is CSS's (index.html #survey: below --topbar-h, clear of
+   the dock — the CF1806-02 burial class prevented structurally). esc covers
+   quotes: keys/classes land in ATTRIBUTES (2026-08-01 exploit pass). ---- */
 const card = document.createElement('aside');
 card.id = 'survey';
-card.style.cssText = 'position:fixed;top:0;right:0;bottom:0;width:min(340px,86vw);overflow:auto;' +
-  'background:rgba(8,12,22,0.92);color:#cfe0f4;font:13px/1.5 system-ui,sans-serif;' +
-  'padding:14px;box-sizing:border-box;display:none;border-left:1px solid #22304a';
+card.className = 'glass';
 document.body.appendChild(card);
 function showSurvey(d: Descriptor): void {
-  /* quotes included: keys/classes land in ATTRIBUTES (data-row="…"), where a
-     bare-minimum <>& escape still allows attribute breakout — hardened in the
-     2026-08-01 exploit pass before any untrusted text could ever reach here */
-  const esc = (s: unknown): string => String(s ?? '').replace(/[<>&"']/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c]!));
   card.innerHTML =
     `<h2 data-sel="title" style="margin:0 0 2px;font-size:17px;color:#f4f8ff">${esc(d.title)}</h2>` +
     `<div data-sel="sub" style="color:#8fa3c4;margin-bottom:10px">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
     (d.rows as Array<[string, string, string?]>).map(([k, v, cls]) =>
       `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" style="margin:4px 0"><span style="color:#8fa3c4">${esc(k)}</span><br>${esc(v)}</div>`).join('');
   card.style.display = 'block';
+  document.getElementById('docksurvey')!.classList.add('on');
 }
-function hideSurvey(): void { card.style.display = 'none'; }
+function hideSurvey(): void {
+  card.style.display = 'none';
+  document.getElementById('docksurvey')!.classList.remove('on');
+}
 
 /* ---- the save-import sheet (Phase 4's second UI component; GATE C's front
    door): paste or pick your cfcc_save_v2 blob — it is VALIDATED through the
    real importSaveV2 first, then stored VERBATIM (the fixture-#10 rule) and
    the slice reboots into it, Ascent stage and all. ---- */
-const importBtn = document.createElement('button');
-importBtn.id = 'importbtn';
-importBtn.textContent = '⛭ save';
-importBtn.style.cssText = 'position:fixed;top:8px;right:8px;z-index:10;background:rgba(10,16,30,0.9);' +
-  'color:#cfe0f4;font:12px system-ui,sans-serif;border:1px solid #2a3c5e;border-radius:8px;padding:6px 10px;cursor:pointer;min-height:44px';
-document.body.appendChild(importBtn);
 const sheet = document.createElement('div');
 sheet.id = 'importsheet';
 sheet.style.cssText = 'position:fixed;inset:0;background:rgba(4,6,12,0.7);display:none;z-index:11';
@@ -128,7 +146,28 @@ sheet.innerHTML =
   '<button id="importclose" style="background:transparent;color:#8fa3c4;border:1px solid #22304a;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">close</button>' +
   '</div><div id="importmsg" style="margin-top:8px;color:#e8a0a0"></div></div>';
 document.body.appendChild(sheet);
-importBtn.addEventListener('click', () => { sheet.style.display = 'block'; });
+/* ---- THE DOCK: four live controls, every press proven by an EFFECT (the
+   simrun-dom law — a dead button never ships). charts/sound flip the REAL
+   save fields and persist through exportSaveV2. ---- */
+document.getElementById('docksave')!.addEventListener('click', () => { sheet.style.display = 'block'; });
+document.getElementById('docksurvey')!.addEventListener('click', () => {
+  /* re-show the LAST card (no rebuild — the fold law's no-rebuild spirit) */
+  if (card.style.display === 'none' && card.innerHTML) {
+    card.style.display = 'block';
+    document.getElementById('docksurvey')!.classList.add('on');
+  } else hideSurvey();
+});
+document.getElementById('dockcharts')!.addEventListener('click', () => {
+  save.chartsOn = !save.chartsOn;
+  document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
+  if (chartLayer) chartLayer.visible = save.chartsOn;
+  void persistView();
+});
+document.getElementById('docksound')!.addEventListener('click', () => {
+  save.sndOn = !save.sndOn;
+  document.getElementById('docksound')!.classList.toggle('on', save.sndOn);
+  void persistView();
+});
 sheet.querySelector('#importclose')!.addEventListener('click', () => { sheet.style.display = 'none'; });
 sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
   const f = (e.target as HTMLInputElement).files?.[0];
@@ -159,7 +198,7 @@ sheet.querySelector('#importgo')!.addEventListener('click', () => {
 /* ---- the charter toast (main.js charterBlock/ascBlock: name the BUILD) ---- */
 const toastEl = document.createElement('div');
 toastEl.id = 'toast';
-toastEl.style.cssText = 'position:fixed;left:50%;bottom:9%;transform:translateX(-50%);max-width:min(480px,90vw);' +
+toastEl.style.cssText = 'position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 112px);transform:translateX(-50%);max-width:min(480px,90vw);' +
   'background:rgba(10,16,30,0.94);color:#cfe0f4;font:13px/1.5 system-ui,sans-serif;padding:10px 16px;' +
   'border:1px solid #2a3c5e;border-radius:10px;opacity:0;transition:opacity 0.35s;pointer-events:none';
 document.body.appendChild(toastEl);
@@ -176,10 +215,53 @@ function toast(title: string, msg: string): void {
 const primeCount = (): number => Object.keys(save.primeFill || {}).length;
 const ascStage = (): 0 | 1 | 2 | 3 => ascStageOf(save.items, save.ascCh);
 
+function updateChips(): void {
+  playerChipEl.innerHTML = `<b>${esc(save.explorerName || 'Explorer')}</b> · ✦ ${save.essence} · ❤ ${save.hp}/${save.HP_MAX} · ${save.landed.length} worlds · ${esc(currentRegionOf(primeCount()).name)}`;
+  const o = currentObjective(save.ascCh, save.ascProg);
+  objChipEl.innerHTML = o
+    ? `⬆ ${esc(o.text)} · <span class="prog" data-sel="objprog">${o.have} / ${o.need}</span>`
+    : '';
+  syncTopbarH();   /* the chip wraps on narrow phones — remeasure, never guess */
+}
 function hudText(): void {
-  const path = [nav.mode, nav.gal && 'gal ' + nav.gal.seed, nav.star && 'star ' + nav.star.seed].filter(Boolean).join(' · ');
-  const who = `${save.explorerName || 'Explorer'} · ✦ ${save.essence} stardust · ${save.landed.length} worlds landed · charter: ${currentRegionOf(primeCount()).name} (stage ${ascStage()})`;
-  hud.innerHTML = `<b>${path}</b><br>drag pan · wheel/pinch zoom — zoom IN to dive, OUT to rise · tap to SURVEY, tap twice to travel · right-click ascend<br><i>${who} — the REAL save (importSaveV2 ⇄ exportSaveV2, IndexedDB)</i>`;
+  /* the chrome per mode: trail (setTrail), hint pill, the caption line
+     (setCtxText) — strings carried from the Renderer's own tails */
+  updateChips();
+  if (nav.mode === 'universe') {
+    setTrail(['Cosmos']);
+    setHint('tap a galaxy to survey · tap twice or zoom in to dive');
+    updateUniverseCtx();
+  } else if (nav.mode === 'galaxy' && nav.gal) {
+    setTrail(['Cosmos', galaxyName(nav.gal.seed)]);
+    setHint('tap a star to survey · tap twice to dive · zoom out to rise');
+    const gs2 = galaxyStats(nav.gal as never) as { stars: number; planets: number };
+    setCtx('every dot is one of ~' + fmtBig(gs2.stars) + ' stars sharing ~' + fmtBig(gs2.planets) + ' worlds — zoom deeper and more keep resolving');
+  } else if (nav.mode === 'system' && nav.gal && nav.star) {
+    setTrail([galaxyName(nav.gal.seed), starName(nav.star.seed)]);
+    setHint('tap a world to survey & land · zoom out to rise');
+    const sys = systemScene(nav.star.seed);
+    const raw = systemFor(nav.star.seed) as { binary?: unknown };
+    const desc = nav.star.seed === 424242 ? 'Sol — humanity’s own yellow star' : 'this star';
+    const extra = raw.binary ? ' · a binary pair — two suns share this sky' : '';
+    setCtx(sys.planets.length
+      ? sys.planets.length + ' worlds orbit ' + desc + extra
+      : 'no planets here — zoom out and try another star');
+  } else if (nav.mode === 'surface' && nav.gal && nav.star && nav.planet) {
+    const p = systemScene(nav.star.seed).planets.find((q) => q.seed === nav.planet!.seed);
+    setTrail([galaxyName(nav.gal.seed), starName(nav.star.seed), p ? p.name : 'Surface']);
+    setHint('right-click or Escape to lift off');
+    setCtx('planetfall — the survey card carries the world’s roster');
+  }
+}
+function updateUniverseCtx(): void {
+  /* the Renderer's universe caption ladder (main.js 3788), verbatim text */
+  const zc = zCut();
+  const dist = Math.hypot(camT.x, camT.y);
+  setCtx(camT.z < zc * 0.8
+    ? 'each grain of light is an entire galaxy — filaments and voids weave the cosmic web, on and on without end'
+    : (dist > OBS_R
+      ? 'beyond the observable universe — hypothetical space no telescope can ever see'
+      : 'galaxies cluster along the cosmic web, leaving vast dark voids — the orange ring is the edge of the observable universe'));
 }
 
 /* ---- slice-local bakes of Renderer inline gradients (verbatim stops) ---- */
@@ -365,6 +447,7 @@ interface Orbiter { c: Container; kind: 'planet' | 'moon' | 'rock' | 'dwarf' | '
 let orbiters: Orbiter[] = [];
 let sysLabels: Array<{ t: Text; getPos: (time: number) => { x: number; y: number } }> = [];
 let sysStar: { seed: number; col: string; kind: string; starR: number } | null = null;
+let chartLayer: Container | null = null;   /* Star charts (chartsOn, OFF by default — v1.3.6, Nick's call) */
 let starSurfSpr: Sprite | null = null;
 let surfClouds: { a: Sprite; b: Sprite; w: number } | null = null;
 const MOTION_OK = !matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -375,7 +458,7 @@ function clearWorld(): void {
   galaxySpins.length = 0;
   galStars = []; galTwinkle = []; screenScaled = [];
   solMark = null; bhDisc = null; fineLayer = null; fineWin = null;
-  orbiters = []; sysLabels = []; sysStar = null; starSurfSpr = null; surfClouds = null;
+  orbiters = []; sysLabels = []; sysStar = null; starSurfSpr = null; surfClouds = null; chartLayer = null;
   galAnims = []; wormPos = null;
   uniLabels = []; uniPulse = []; charterFx = null; webLayer = null; fogFx = [];
   sysComets = []; visitorFx = null;
@@ -782,7 +865,7 @@ function updateZoomDependent(): void {
   const zb = zBucket();
   if (zb === lastZBucket) return;
   lastZBucket = zb;
-  if (nav.mode === 'universe') applyUniverseGates();
+  if (nav.mode === 'universe') { applyUniverseGates(); updateUniverseCtx(); }
   if (nav.mode === 'galaxy') {
     const bR = baseR();
     for (const st of galStars) { const D = st.s * bR * 8; st.spr.width = D; st.spr.height = D; }
@@ -868,10 +951,34 @@ function drawSystem(starSeed: number): void {
       orbiters.push({ c: spr, kind: 'rock', orb: b.rr, sp: b.sp * spMul, a0: b.a, mul: 1 });
     }
   }
+  /* STAR CHARTS layer (chartsOn-gated, main.js 5072/5106): orbit rings, the
+     habitable zone, the belt caption — the game's overlay, one toggle */
+  chartLayer = new Container();
+  chartLayer.eventMode = 'none';
+  chartLayer.visible = save.chartsOn;
+  world.addChild(chartLayer);
+  const hz = sys.hz as [number, number] | null;
+  if (hz) {
+    const band = new Graphics().circle(0, 0, hz[1]).fill({ color: 0x50d282, alpha: 0.055 }).circle(0, 0, hz[0]).cut();
+    chartLayer.addChild(band);
+    const hzl = new Text({ text: 'habitable zone', style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 10, fill: 'rgba(140,230,170,0.6)' } });
+    hzl.anchor.set(0.5);
+    hzl.position.set(0, -(hz[0] + hz[1]) / 2);
+    chartLayer.addChild(hzl);
+    screenScaled.push({ obj: hzl, f: 1 });
+  }
+  const beltR = (sys.belt as { r?: number } | null)?.r;
+  if (beltR) {
+    const bl = new Text({ text: 'asteroid belt', style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 9.5, fill: 'rgba(180,172,158,0.7)' } });
+    bl.anchor.set(0.5, 1);
+    bl.position.set(0, -beltR - 2);
+    chartLayer.addChild(bl);
+    screenScaled.push({ obj: bl, f: 1 });
+  }
   /* orbits & planets — Renderer angles/sizes: ang = orb·0.13 + t·0.05/(orb·0.012),
      pr = 6·sizeMul, sprite rotated so its baked light faces the star */
   for (const p of sys.planets) {
-    world.addChild(new Graphics().circle(0, 0, p.orb).stroke({ width: 0.5, color: 0x2a3a55 }));
+    chartLayer.addChild(new Graphics().circle(0, 0, p.orb).stroke({ width: 0.5, color: 0x2a3a55 }));
     const pr = 6 * ((p.P.sizeMul as number) || 1);
     const holder = new Container();
     const rg = ringGeom(p);
@@ -1095,6 +1202,13 @@ function surveyAndLand(p: PlanetNode, starSeed: number): void {
   if (r.ok) {
     nav = r.state;
     if (!save.landed.includes(p.seed)) save.landed.push(p.seed);   /* the game's `land` set */
+    /* the Ascent hears the landfall — credit BANKS for every chapter from
+       the current on (the review-catch rule, now pure in charter.ts) */
+    if (bankLandfall(save.ascCh, save.ascProg, p.seed) && chapterGoalsDone(save.ascCh, save.ascProg)) {
+      const done = ASC_CHAPTERS_DATA[save.ascCh]!;
+      save.ascCh++;
+      toast('★ ' + done.name + ' — complete', done.unlockNote);
+    }
     stSeam.gal = nav.gal; stSeam.star = nav.star;
     playWhoosh();   /* planetfall */
     drawSurface(p); hudText(); void persistView();
@@ -1252,6 +1366,10 @@ async function loadSave(): Promise<void> {
   epochClock = createEpochClock(save.EPOCH_BASE, playSeconds);
   (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
   initAudio({ sndOn: () => save.sndOn, sfxVol: () => save.sfxVol });   /* the save's own audio settings */
+  /* dock states mirror the save from the first frame */
+  document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
+  document.getElementById('docksound')!.classList.toggle('on', save.sndOn);
+  syncTopbarH();
 }
 
 /* ---- boot ---- */
@@ -1268,13 +1386,18 @@ async function loadSave(): Promise<void> {
        pointer handlers call; no parallel logic to drift */
     api: {
       state: () => ({
-        mode: nav.mode, fine: !!fineLayer, solVisible: !!(solMark && solMark.visible),
+        mode: nav.mode, gal: nav.gal?.seed ?? null, star: nav.star?.seed ?? null,
+        fine: !!fineLayer, solVisible: !!(solMark && solMark.visible),
         epoch: epochClock.current(),
         cardOpen: card.style.display !== 'none',
         cardTitle: card.querySelector('[data-sel=title]')?.textContent ?? null,
         stage: ascStage(), reach: reachRadiusOf(primeCount()),
         toastOn: toastEl.style.opacity === '1', toastText: toastEl.textContent || '',
         galaxyBuildMs: lastGalaxyBuildMs,
+        trail: trailEl.textContent || '', ctx: ctxEl.textContent || '',
+        objective: objChipEl.textContent || '',
+        chartsOn: save.chartsOn, chartsVisible: !!(chartLayer && chartLayer.visible),
+        topbarH: getComputedStyle(document.documentElement).getPropertyValue('--topbar-h'),
         save: {
           name: save.explorerName, essence: save.essence,
           landed: save.landed.slice(), viewType: (save.savedView as { type?: string } | null)?.type ?? null,

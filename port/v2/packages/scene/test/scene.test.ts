@@ -137,6 +137,29 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(ascAllowsStar(2, 1000, sol)).toBe(false);   /* foreign galaxy */
     expect(ascAllowsStar(3, 1000, sol)).toBe(true);
   });
+  it('★ landfall BANKING: credit lands in every chapter from the current on (the review catch)', async () => {
+    const { bankLandfall, currentObjective, chapterGoalsDone } = await import('@cf/scene');
+    const prog: Record<string, number> = {};
+    /* a Sol landing at chapter 0 banks c1-land only */
+    expect(bankLandfall(0, prog, 133)).toBe(true);
+    expect(prog['c1-land']).toBe(1);
+    expect(prog['c2-land']).toBeUndefined();
+    /* a NON-Sol landing at chapter 0 banks the FUTURE chapter's goal silently */
+    expect(bankLandfall(0, prog, 99999)).toBe(true);
+    expect(prog['c2-land']).toBe(1);
+    expect(prog['c1-land']).toBe(1);   /* sol goal untouched */
+    /* capped at n — no overshoot */
+    bankLandfall(0, prog, 134); bankLandfall(0, prog, 135);
+    expect(prog['c1-land']).toBe(2);
+    expect(bankLandfall(0, { 'c1-land': 2, 'c2-land': 3 }, 131)).toBe(false);
+    /* the chip shows the FIRST unfinished goal with true counts */
+    const o = currentObjective(0, prog)!;
+    expect(o.text).toMatch(/Mine Sol/);   /* c1-land done → next goal */
+    expect(currentObjective(0, {})!.text).toBe('Make planetfall on 2 worlds of Sol');
+    expect(currentObjective(3, {})).toBeNull();   /* Ascent complete */
+    expect(chapterGoalsDone(0, { 'c1-land': 2, 'c1-mine': 8, 'c1-part': 4, 'c1-comp': 2, 'c1-jump': 1 })).toBe(true);
+    expect(chapterGoalsDone(0, { 'c1-land': 2 })).toBe(false);
+  });
   it('reach grows by REGIONS as prime signatures land; home is always within reach', async () => {
     const { reachRadiusOf, withinReachOf, currentRegionOf } = await import('@cf/scene');
     const { REGIONS } = await import('@cf/domain-strays');

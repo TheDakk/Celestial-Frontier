@@ -93,9 +93,14 @@ try {
   };
 
   /* 1. booted: canvas mounted, HUD says universe */
-  const boot = await evalIn(`({ canvas: !!document.querySelector('canvas'), hud: (document.getElementById('hud')||{}).innerText || '' })`);
+  const boot = await evalIn(`({ canvas: !!document.querySelector('canvas'), topbar: !!document.getElementById('topbar'), st: window.__CF_SLICE__ ? window.__CF_SLICE__.api.state() : null })`);
   if (!boot.canvas) fails.push('no <canvas> — Pixi never mounted');
-  if (!/universe/.test(boot.hud)) fails.push('HUD not in universe mode: ' + JSON.stringify(boot.hud));
+  if (!boot.topbar) fails.push('no #topbar — the Phase 4 shell is missing');
+  if (!boot.st || boot.st.mode !== 'universe') fails.push('not in universe mode at boot: ' + JSON.stringify(boot.st && boot.st.mode));
+  if (boot.st && boot.st.trail !== 'Cosmos') fails.push('trail at boot is not Cosmos: ' + JSON.stringify(boot.st.trail));
+  if (boot.st && !(parseFloat(boot.st.topbarH) > 20)) fails.push('--topbar-h not measured: ' + JSON.stringify(boot.st.topbarH));
+  if (boot.st && !boot.st.ctx) fails.push('the caption line is empty at boot');
+  if (boot.st && !/Make planetfall on 2 worlds of Sol/.test(boot.st.objective)) fails.push('objective chip wrong at fresh boot: ' + JSON.stringify(boot.st.objective));
 
   /* 2. not blank — via Pixi's extract, which re-renders the stage (a WebGL
      canvas reads BLACK through 2D drawImage without preserveDrawingBuffer;
@@ -130,8 +135,10 @@ try {
   if (typeof st1.epoch !== 'number') fails.push('COSMIC_EPOCH clock not running: ' + JSON.stringify(st1.epoch));
   await click(); await click();   /* the quick double-tap = dive */
   await sleep(2500);   /* per-seed 512px painterly bake + star field */
-  const hud2 = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
-  if (!/galaxy · gal 999/.test(hud2)) fails.push('double-tap descent into the Milky Way did not happen: ' + JSON.stringify(hud2));
+  const st2 = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (st2.mode !== 'galaxy' || st2.gal !== 999) fails.push('double-tap descent into the Milky Way did not happen: ' + JSON.stringify([st2.mode, st2.gal]));
+  if (!/Milky Way/.test(st2.trail)) fails.push('galaxy trail missing Milky Way: ' + JSON.stringify(st2.trail));
+  if (!/stars sharing/.test(st2.ctx)) fails.push('galaxy caption (galaxyStats) missing: ' + JSON.stringify(st2.ctx));
   const shot2 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-galaxy.png'), Buffer.from(shot2.data, 'base64'));
 
@@ -155,8 +162,17 @@ try {
     return 'ok'; })()`);
   if (landed !== 'ok') fails.push('descendSystem: ' + landed);
   await sleep(1800);   /* eight painterly surfaces bake */
-  const hudSys = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
-  if (!/system · gal 999 · star 424242/.test(hudSys)) fails.push('Sol descent failed: ' + JSON.stringify(hudSys));
+  const stSys = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (stSys.mode !== 'system' || stSys.star !== 424242) fails.push('Sol descent failed: ' + JSON.stringify([stSys.mode, stSys.star]));
+  if (!stSys.trail.includes('Sun (Sol)')) fails.push('system trail missing Sun (Sol): ' + JSON.stringify(stSys.trail));
+  if (!/8 worlds orbit Sol/.test(stSys.ctx)) fails.push('Sol caption wrong: ' + JSON.stringify(stSys.ctx));
+  /* the DOCK press must LAND (simrun-dom law): charts OFF by default
+     (v1.3.6, Nick's call) → press → the chart layer becomes VISIBLE and the
+     save field flips */
+  if (stSys.chartsOn !== false || stSys.chartsVisible !== false) fails.push('charts not OFF by default: ' + JSON.stringify([stSys.chartsOn, stSys.chartsVisible]));
+  const chToggle = await evalIn(`(()=>{ document.getElementById('dockcharts').click(); const s=window.__CF_SLICE__.api.state(); return { on: s.chartsOn, vis: s.chartsVisible }; })()`);
+  if (!chToggle.on || !chToggle.vis) fails.push('DOCK PRESS DID NOT LAND — charts toggle had no effect: ' + JSON.stringify(chToggle));
+  await evalIn(`(()=>{ document.getElementById('dockcharts').click(); return 1; })()`);   /* back OFF for the visual record */
   const shot3 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-sol.png'), Buffer.from(shot3.data, 'base64'));
   const surveyed = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
@@ -172,8 +188,10 @@ try {
       if (!surveyed.rows.includes(want)) fails.push('survey card missing the "' + want + '" row (rows: ' + surveyed.rows.join(', ') + ')');
     }
   }
-  const hudSurf = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
-  if (!/surface/.test(hudSurf)) fails.push('landing did not reach surface mode: ' + JSON.stringify(hudSurf));
+  const stSurf = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (stSurf.mode !== 'surface') fails.push('landing did not reach surface mode: ' + stSurf.mode);
+  if (!/Earth/.test(stSurf.trail)) fails.push('surface trail missing Earth: ' + JSON.stringify(stSurf.trail));
+  if (!stSurf.objective.includes('1 / 2')) fails.push('objective chip did not bank the Sol landfall (want 1 / 2): ' + JSON.stringify(stSurf.objective));
   await sleep(900);
   const shot4 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-earth.png'), Buffer.from(shot4.data, 'base64'));
@@ -183,9 +201,9 @@ try {
      must be in the save's `land` set. */
   await send('Page.navigate', { url: URL0 }, sess);
   await sleep(2500);
-  const hud3 = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
+  const st3 = await evalIn(`window.__CF_SLICE__.api.state()`);
   /* we landed on Earth before reloading — the SURFACE view must come back */
-  if (!/surface · gal 999 · star 424242/.test(hud3)) fails.push('RELOAD lost the view — IndexedDB persistence failed: ' + JSON.stringify(hud3));
+  if (st3.mode !== 'surface' || st3.gal !== 999 || st3.star !== 424242) fails.push('RELOAD lost the view — IndexedDB persistence failed: ' + JSON.stringify([st3.mode, st3.gal, st3.star]));
   const saved = await evalIn(`window.__CF_SLICE__.api.state().save`);
   if (!saved) fails.push('api.state().save missing');
   else {
@@ -200,26 +218,26 @@ try {
      down to Sol. Every step reads camT (intent), exactly as the app does. */
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await sleep(700);
-  const hudEsc = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
-  if (!/system · gal 999/.test(hudEsc)) fails.push('Escape did not ascend surface→system: ' + JSON.stringify(hudEsc));
+  const stEsc = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (stEsc.mode !== 'system' || stEsc.gal !== 999) fails.push('Escape did not ascend surface→system: ' + JSON.stringify([stEsc.mode, stEsc.gal]));
   await evalIn(`(()=>{ window.__CF_SLICE__.camT.z = 0.01; return 1; })()`);   /* zoom out hard */
   await sleep(700);
-  const hudG = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
-  if (!/galaxy · gal 999/.test(hudG)) fails.push('zoom-out did not rise system→galaxy: ' + JSON.stringify(hudG));
+  const stG = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (stG.mode !== 'galaxy' || stG.gal !== 999) fails.push('zoom-out did not rise system→galaxy: ' + JSON.stringify([stG.mode, stG.gal]));
   await evalIn(`(()=>{ window.__CF_SLICE__.camT.z = 0.05; return 1; })()`);
   await sleep(700);
-  const hudU = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
-  if (!/^universe/.test(hudU)) fails.push('zoom-out did not rise galaxy→universe: ' + JSON.stringify(hudU));
+  const stU = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (stU.mode !== 'universe') fails.push('zoom-out did not rise galaxy→universe: ' + stU.mode);
   /* negative control: deep zoom in EMPTY space must NOT dive */
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=5000; S.camT.y=5000; S.camT.z=28; return 1; })()`);
   await sleep(700);
-  const hudEmpty = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
-  if (!/^universe/.test(hudEmpty)) fails.push('CONTROL FAILED — deep zoom in empty space dove somewhere: ' + JSON.stringify(hudEmpty));
+  const stEmpty = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (stEmpty.mode !== 'universe') fails.push('CONTROL FAILED — deep zoom in empty space dove somewhere: ' + stEmpty.mode);
   /* zoom INTO the Milky Way at HOME_POS → galaxy */
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=90; S.camT.y=-60; S.camT.z=28; return 1; })()`);
   await sleep(900);
-  const hudG2 = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
-  if (!/galaxy · gal 999/.test(hudG2)) fails.push('zoom-in did not dive universe→galaxy: ' + JSON.stringify(hudG2));
+  const stG2 = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (stG2.mode !== 'galaxy' || stG2.gal !== 999) fails.push('zoom-in did not dive universe→galaxy: ' + JSON.stringify([stG2.mode, stG2.gal]));
   /* hold deep over SOL_POS below the dive threshold: the Sun marker + the
      fine-star resolve layer must both be up (Renderer LOD gates) */
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=560; S.camT.y=170; S.camT.z=8; S.cam.x=560; S.cam.y=170; S.cam.z=8; return 1; })()`);
@@ -232,8 +250,8 @@ try {
   /* and the final dive: past starZ over the Sun → system 424242 */
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.z=30; return 1; })()`);
   await sleep(1200);
-  const hudS2 = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
-  if (!/system · gal 999 · star 424242/.test(hudS2)) fails.push('zoom-in over the Sun did not dive into Sol: ' + JSON.stringify(hudS2));
+  const stS2 = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (stS2.mode !== 'system' || stS2.star !== 424242) fails.push('zoom-in over the Sun did not dive into Sol: ' + JSON.stringify([stS2.mode, stS2.star]));
 
   /* 4c. GATE C's FRONT DOOR, rehearsed with the veteran fixture: the import
      sheet's own path (api.importBlob = the button's handler) must validate,
