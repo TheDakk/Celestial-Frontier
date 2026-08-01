@@ -257,12 +257,23 @@
 ##   surfaces. Art-hook seam installed with reasons (_hdLater→setTimeout · getGalaxySprite→
 ##   galSpriteFor · CARD_FACTS default map until D-STRAYS unification). 'open' clusters await
 ##   the starSprite painter (recorded). Smoke PASS; galaxy screenshot sent to Nick.
-##   ▶ NEXT IN PHASE 3: starSprite lift ('open' clusters + system-mode star draw) · surface
-##   mode (Ecology/Descriptors composition + biome scene) · camera EASING (goTo) · pinch
-##   input · the survey card (HTML over typed selectors) · zoom-level LOD (deco/haze fade
-##   like the Renderer's c.z gates) · slicesmoke into a standing gate.
-##   ⛔ Nick: veteran save (Gate C) · phone leg · art verdict (the slice now shows REAL art —
-##   the verdict is judgeable from vite dev) · listening test.
+##   ✔★★★ GATE D'S CORE LOOP RUNS (69e2054): universe → Milky Way → Sol → LANDED ON EARTH —
+##   clickable painterly planets · the HTML SURVEY CARD over typed selectors (data-sel/
+##   data-row), planetDescriptor speaking the whole domain stack (Earth: Green-Gold —
+##   Legendary · Home + cradle roster) · surface mode (the world's 1024 painterly master;
+##   biome scenes = Phase 6) · camera EASING (pan immediate, zoom eased) · starSprite lifted
+##   (open clusters render) · stale persisted seed falls back to home, never bricks boot.
+##   slicesmoke drives the FULL loop via a test API that calls the SAME functions as the
+##   pointer handlers; reload restores the SURFACE view. Sol + Earth screenshots sent to Nick.
+##   Instrument catches: row assertion sliced at 14 (missed Civilization past Earth's roster);
+##   Edge component extensions' "message channel closed" noise suppressed via LAUNCH FLAGS,
+##   never an error-text filter.
+##   ▶ NEXT IN PHASE 3/4: pinch input (touch parity) · zoom LOD (the Renderer's c.z gates) ·
+##   fineStarsInCell resolve layer at deep zoom · moons/belt/kuiper in system view · the
+##   in-galaxy Sol MARKER at SOL_POS (descend to Sol by clicking it, not via API) · wire
+##   importSaveV2 saves into the slice (real save loop, not just nav view) · slicesmoke as a
+##   standing gate beside vitest. ⛔ Nick: veteran save (Gate C) · phone leg · art verdict
+##   (judgeable NOW: cd port/v2/apps/game && npx vite dev) · listening test.
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.
