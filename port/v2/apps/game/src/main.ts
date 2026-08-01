@@ -39,6 +39,8 @@ import { createEpochClock, type EpochClock } from '@cf/domain-progression';
 import { mulberry32, hashInt, TAU } from '@cf/domain-rand';
 import { installCaptureHooks, planetDescriptor, describePick, SOL_MOONS, galaxyStats, fmtBig, type Descriptor } from '@cf/domain-descriptors';
 import { encodeWhere, decodeWhere, _sanitizeView } from '@cf/domain-strays';
+import { describeSpecies } from '@cf/domain-genome';
+import { battleStats, STAT_NAMES, STAT_HUES } from '@cf/domain-combatcore';
 import {
   createSaveRepository, createIndexedDBBackend,
   importSaveV2, exportSaveV2, type SaveStateV2, type ContentRegistry,
@@ -223,21 +225,83 @@ function fillSettings(): void {
 function fillCodex(filter?: string): void {
   if (!save) return;
   const f = (filter || '').toLowerCase();
-  const rows = f
-    ? save.codex.filter(([, e]) => (e.name + ' ' + e.kind + ' ' + e.realm).toLowerCase().includes(f))
-    : save.codex;
+  const rows = save.codex
+    .map(([, e], i) => ({ e, i }))
+    .filter(({ e }) => !f || (e.name + ' ' + e.kind + ' ' + e.realm).toLowerCase().includes(f));
   fillPanel('codex',
     `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${rows.length}</span>${f ? ` <span class="sub" style="color:#8fa3c4;font-size:12px">· “${esc(filter)}”</span>` : ''}</h3>` +
     (rows.length === 0
       ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — the Compendium fills as you discover life.'}</div>`
-      : rows.map(([, e]) =>
-        `<div class="centry" data-sel="codex-entry"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><div class="sub">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</div></div>`).join('')));
+      : rows.map(({ e, i }) =>
+        `<div class="centry" data-sel="codex-entry" data-ci="${i}" style="cursor:pointer"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><div class="sub">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</div></div>`).join('')));
+}
+/* the Compendium DETAIL CARD: the whole domain stack speaking for one
+   creature — describeSpecies (fixture-pinned sentences + fauna enrichments),
+   battleStats (the five stats as bars in their own hues), the grade badge.
+   The living portrait joins in Phase 5 (SpeciesArt). */
+function fillCodexDetail(idx: number): void {
+  if (!save) return;
+  const row = save.codex[idx];
+  if (!row) { fillCodex(); return; }
+  const e = row[1];
+  let body = '';
+  try {
+    const d = describeSpecies(e.g as never) as { grade?: { label?: string; hex?: string }; desc?: string; detail?: string; diet?: string; anatomy?: string; temper?: string; sense?: string; repro?: string; life?: string; metab?: string; habitat?: string; behavior?: string };
+    const st = battleStats(e.g as never) as Record<string, number>;
+    const KEYS = ['vit', 'fer', 'res', 'agi', 'ins'];   /* STAT_KEYS order — names/hues are position-indexed */
+    const mx = Math.max(1, ...KEYS.map((k) => st[k] || 0));
+    const names = STAT_NAMES as readonly string[], hues = STAT_HUES as readonly string[];
+    body =
+      `<div style="margin:4px 0 8px"><b style="font-size:16px;color:#f4f8ff">${esc(e.name)}</b>` +
+      (d.grade ? ` <span data-sel="detail-grade" style="border:1px solid ${esc(d.grade.hex || '#888')};color:${esc(d.grade.hex || '#ccc')};border-radius:999px;padding:1px 9px;font-size:11px">${esc(d.grade.label || '')}</span>` : '') +
+      `<div class="sub">${esc(e.kind)} · ${esc(e.realm)}${e.hybrid ? ' · hybrid' : ''}${e.from ? ' · ' + esc(e.from) : ''}</div></div>` +
+      `<div style="color:#b7c8e4;margin-bottom:8px" data-sel="detail-desc">${esc(d.desc || '')} ${esc(d.detail || '')}</div>` +
+      KEYS.map((k, i) => {
+        const v = st[k] || 0;
+        return `<div class="row" style="min-height:24px" data-sel="detail-stat"><label style="flex:0 0 84px">${esc(names[i] || k)}</label>` +
+          `<span style="flex:1;height:9px;border-radius:999px;background:#16202f;overflow:hidden"><span style="display:block;height:100%;width:${Math.round((v / mx) * 100)}%;background:${esc(hues[i] || '#7ec8f0')}"></span></span>` +
+          `<span style="flex:0 0 40px;text-align:right;color:#9fb6d6">${Math.round(v)}</span></div>`;
+      }).join('') +
+      (['diet', 'anatomy', 'temper', 'sense', 'repro', 'life', 'metab', 'habitat', 'behavior'] as const)
+        .filter((k) => (d as Record<string, unknown>)[k])
+        .map((k) => `<div class="centry"><span class="sub">${k}</span><br>${esc((d as Record<string, string>)[k])}</div>`).join('');
+  } catch {
+    body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
+  }
+  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#7ec8f0;cursor:pointer;font:13px system-ui;padding:4px 8px 4px 0">‹ Compendium</button></h3><div data-sel="codex-detail">${body}</div>`);
+  document.getElementById('codexback')!.addEventListener('click', () => fillCodex());
+}
+function fillRecords(): void {
+  if (!save) return;
+  const st = save.stats || {};
+  const counts: Array<[string, number]> = [
+    ['galaxies seen', save.galSeen.length], ['systems charted', save.sysSeen.length],
+    ['worlds landed', save.landed.length], ['world types met', save.ptypesSeen.length],
+    ['star kinds met', save.starKindsSeen.length], ['surveys', save.surveyedSet.length],
+  ];
+  const jr = save.journal.slice(-40).reverse();
+  fillPanel('rec',
+    '<h3>Records</h3>' +
+    counts.map(([k, v]) => `<div class="row" style="min-height:26px"><label>${esc(k)}</label><span style="color:#7ec8f0">${v}</span></div>`).join('') +
+    (st.essenceEarned ? `<div class="row" style="min-height:26px"><label>stardust earned</label><span style="color:#ffd9a0">✦ ${st.essenceEarned}</span></div>` : '') +
+    '<h3 style="margin-top:14px">Journal</h3>' +
+    (jr.length === 0
+      ? '<div class="empty" data-sel="journal-empty">No entries yet — the journal writes itself as you explore.</div>'
+      : jr.map((j) => `<div class="centry" data-sel="journal-entry"><b>${esc(j.n)}</b><div class="sub">${esc(j.w)}</div></div>`).join('')));
 }
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
-registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: fillCodex });
+registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: () => fillCodex() });
+registerPanel({ id: 'rec', el: document.getElementById('recpanel')!, btns: [document.getElementById('dockrecords'), document.getElementById('railrecords')], onOpen: fillRecords });
 document.getElementById('docksets')!.addEventListener('click', () => togglePanel('set'));
 document.getElementById('dockcodex')!.addEventListener('click', () => togglePanel('codex'));
 document.getElementById('railcodex')!.addEventListener('click', () => togglePanel('codex'));
+document.getElementById('dockrecords')!.addEventListener('click', () => togglePanel('rec'));
+document.getElementById('railrecords')!.addEventListener('click', () => togglePanel('rec'));
+/* codex list rows open the detail card (delegated — rows refill often) */
+document.getElementById('codexpanel')!.addEventListener('click', (e) => {
+  const row = (e.target as HTMLElement).closest('[data-ci]');
+  if (row) fillCodexDetail(+(row as HTMLElement).dataset.ci!);
+});
 
 /* ---- THE SEARCH BAR (the goldens' top-right slot): paste a CF1 where-code
    and TRAVEL there (decodeWhere → the sanitized view → the same charter
@@ -1548,6 +1612,17 @@ async function loadSave(): Promise<void> {
   };
   await loadSave();
   rerender();
+  /* the CMB band-pick (main.js ringPick): a tap on EMPTY space near the
+     observable-universe ring — and only there — opens the origin card */
+  app.stage.eventMode = 'static';
+  app.stage.hitArea = app.screen;
+  app.stage.on('pointertap', (e) => {
+    if (e.target !== app.stage || nav.mode !== 'universe') return;
+    const p = world.toLocal(e.global);
+    if (Math.abs(Math.hypot(p.x, p.y) - OBS_R) * cam.z < 30) {
+      surveyCard(describePick({ kind: 'cmb', data: {} } as never));
+    }
+  });
 
   app.ticker.add((tk) => {
     /* eased camera — exponential approach to the target, framerate-aware */

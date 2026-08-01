@@ -41,7 +41,11 @@ export function fillPanel(id: string, html: string): void {
   seatPnx(def);
 }
 
+let _opener: HTMLElement | null = null;   /* FOCUS RESTORATION: closing returns focus to what opened */
 export function openPanel(id: string): void {
+  if (!openPanelId() && document.activeElement instanceof HTMLElement && document.activeElement !== document.body) {
+    _opener = document.activeElement;
+  }
   closePanels(id);   /* the one-panel law */
   const def = PANELS.find((p) => p.id === id);
   if (!def) return;
@@ -55,6 +59,7 @@ export function closePanels(except?: string): void {
     p.el.style.display = 'none';
     for (const b of p.btns || []) b?.classList.remove('on');
   }
+  if (!except && _opener) { try { _opener.focus(); } catch { /* detached */ } _opener = null; }
 }
 export function togglePanel(id: string): void {
   const def = PANELS.find((p) => p.id === id);

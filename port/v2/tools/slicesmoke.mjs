@@ -229,6 +229,12 @@ try {
   if (law.b !== 'codex' || !law.setsHidden) fails.push('ONE-PANEL LAW BROKEN — opening codex left settings up: ' + JSON.stringify(law));
   if (Math.abs(law.v - 0.3) > 1e-9) fails.push('volume slider did not drive save.sfxVol: ' + JSON.stringify(law.v));
   if (law.c !== null) fails.push('the corner ✕ did not close the panel: ' + JSON.stringify(law.c));
+  /* FOCUS RESTORATION: closing returns focus to the opener button */
+  const focusBack = await evalIn(`(()=>{ const b=document.getElementById('docksets');
+    b.focus(); b.click();
+    document.querySelector('#setpanel [data-pnx]').click();
+    return document.activeElement && document.activeElement.id; })()`);
+  if (focusBack !== 'docksets') fails.push('closing a panel did not restore focus to its opener: ' + JSON.stringify(focusBack));
   /* tap empty space closes (the document pointerdown law) */
   await evalIn(`(()=>{ document.getElementById('docksets').click(); return 1; })()`);
   await sleep(250);
@@ -289,6 +295,23 @@ try {
   }
   const preJump = await evalIn(`window.__CF_SLICE__.api.state().mode`);
   if (preJump !== 'universe') fails.push('Escape ladder did not reach the universe before the code jump: ' + preJump);
+  /* THE CMB BAND-PICK, while we're at the universe: zoom out to the orange
+     ring and tap ON it — the origin card must speak; a tap far INSIDE the
+     ring must NOT (the band, not the box) */
+  await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=0; S.camT.y=0; S.cam.x=0; S.cam.y=0;
+    S.camT.z=0.07; S.cam.z=0.07; return 1; })()`);
+  await sleep(600);
+  const ringX = 1280 / 2 + Math.round(5200 * 0.07), ringY = 800 / 2;
+  for (const type of ['mousePressed', 'mouseReleased']) await send('Input.dispatchMouseEvent', { type, x: 640, y: 400, button: 'left', clickCount: 1 }, sess);
+  await sleep(300);
+  const inRing = await evalIn(`window.__CF_SLICE__.api.state().cardTitle`);
+  if (inRing === 'The Observable Universe') fails.push('a tap far INSIDE the ring opened the CMB card (band-pick became box-pick)');
+  for (const type of ['mousePressed', 'mouseReleased']) await send('Input.dispatchMouseEvent', { type, x: ringX, y: ringY, button: 'left', clickCount: 1 }, sess);
+  await sleep(400);
+  const cmb = await evalIn(`window.__CF_SLICE__.api.state().cardTitle`);
+  if (cmb !== 'The Observable Universe') fails.push('the CMB band tap did not open the origin card: ' + JSON.stringify(cmb));
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);   /* close the card (Escape order) */
+  await sleep(200);
   /* a NON-code string must only filter the codex, never move the camera */
   const nonCode = await evalIn(`(()=>{ const s=document.getElementById('searchbox');
     s.value='garbage that is not a code';
@@ -362,6 +385,39 @@ try {
   if (vet.save.essence !== 5000) fails.push('veteran essence wrong: ' + JSON.stringify(vet.save.essence));
   if (vet.mode !== 'surface') fails.push('veteran savedView (surface) not restored: ' + vet.mode);
   if (vet.codexCount !== 3) fails.push('veteran Compendium count wrong (want 3): ' + JSON.stringify(vet.codexCount));
+  /* 4c-detail. the Compendium DETAIL CARD: click a veteran species row →
+     describeSpecies + battleStats speak; ‹ back returns to the list */
+  const detail = await evalIn(`(()=>{ document.getElementById('dockcodex').click();
+    const row=document.querySelector('#codexpanel [data-ci]');
+    if(!row) return { ok:false, why:'no rows' };
+    row.click();
+    const det=document.querySelector('#codexpanel [data-sel=codex-detail]');
+    const stats=document.querySelectorAll('#codexpanel [data-sel=detail-stat]').length;
+    const desc=(document.querySelector('#codexpanel [data-sel=detail-desc]')||{}).textContent||'';
+    window.__CF_DETAIL_OPEN__=1;
+    return { ok:!!det, stats, descLen:desc.trim().length, backRows:-1, holdOpen:true }; })()`);
+  const shotDet = await send('Page.captureScreenshot', { format: 'png' }, sess);
+  fs.writeFileSync(path.join(OUT, 'slice-codex.png'), Buffer.from(shotDet.data, 'base64'));
+  const detailBack = await evalIn(`(()=>{ document.getElementById('codexback').click();
+    const backRows=document.querySelectorAll('#codexpanel [data-ci]').length;
+    document.querySelector('#codexpanel [data-pnx]').click();
+    return { backRows }; })()`);
+  detail.backRows = detailBack.backRows;
+  if (!detail.ok) fails.push('codex detail card did not open: ' + JSON.stringify(detail));
+  else {
+    if (detail.stats !== 5) fails.push('detail card missing the five stat bars: ' + detail.stats);
+    if (!(detail.descLen > 20)) fails.push('detail card description empty (describeSpecies silent): ' + detail.descLen);
+    if (detail.backRows !== 3) fails.push('‹ back did not return to the list: ' + detail.backRows);
+  }
+  /* 4c-records. Records over the real save: counts + the journal empty state */
+  const rec = await evalIn(`(()=>{ document.getElementById('dockrecords').click();
+    const landed=[...document.querySelectorAll('#recpanel .row')].map(r=>r.textContent).find(t=>/worlds landed/.test(t))||'';
+    const jempty=!!document.querySelector('#recpanel [data-sel=journal-empty]');
+    const jn=document.querySelectorAll('#recpanel [data-sel=journal-entry]').length;
+    document.querySelector('#recpanel [data-pnx]').click();
+    return { landed, jempty, jn }; })()`);
+  if (!/worlds landed2$/.test(rec.landed.trim())) fails.push('Records did not count the veteran’s 2 landed worlds (fixture land=[133,134]): ' + JSON.stringify(rec.landed));
+  if (!rec.jempty && rec.jn === 0) fails.push('Records journal rendered nothing at all');
 
   /* 4d. THE PHONE LEG (emulated): 390×844 @ DPR 3, touch. The physical
      hand-feel stays Nick's; this catches layout, touch wiring and pinch. */

@@ -496,9 +496,31 @@
 ##   Escape was correctly eaten by an open panel).
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS (full geometry on BOTH viewports,
 ##   13 standing controls) · proofsheet regenerated · main.js untouched.
-##   ▶ NEXT IN PHASE 4: Compendium detail cards (statBlockHTML seam) · the training
-##   port (--tut-bot contract, 21 steps) · Records/Atlas panels · playRaritySting ·
-##   CMB band-pick · focus RESTORATION (return focus to the opener).
+##   ✔★★★ THE COMPENDIUM SPEAKS + RECORDS + CMB + FOCUS (2026-08-01, batch 10):
+##   · COMPENDIUM DETAIL CARDS — tap a species row and the WHOLE DOMAIN STACK speaks
+##   for one creature: describeSpecies (the fixture-pinned prose incl. the fauna
+##   enrichments — diet/anatomy/temper/sense/repro/life/metab/habitat/behavior) +
+##   battleStats as FIVE STAT BARS in the game's own STAT_NAMES/STAT_HUES (position-
+##   indexed arrays, caught by tsc) + the grade badge in its grade hex. ‹ back
+##   returns to the list; rows are delegated (survive refills); the living portrait
+##   joins in Phase 5. Genome decode failures degrade to an honest line, never a
+##   crash. · RECORDS — the third rail panel (golden's RIGHT-rail slot on desktop,
+##   dock on phone): landed/seen/surveyed counts + stardust earned + the JOURNAL
+##   (newest-first, empty state). ⚠ The smoke's first Records assert wanted 6 landed
+##   worlds from a STALE screenshot memory; the fixture's truth is land=[133,134]=2
+##   — the check found ground truth, the expectation was wrong (corrected with the
+##   reason). · THE CMB BAND-PICK — a tap on empty space NEAR the observable-
+##   universe ring (|dist−OBS_R|·z < 30) opens the origin card; the smoke proves
+##   the BAND, not the box (a tap far inside must NOT fire — both directions). ·
+##   FOCUS RESTORATION in panels.ts — closing returns focus to the opener (smoke:
+##   focus docksets → open → ✕ → activeElement is docksets again). Panels now sit
+##   OVER chips/rails (z 22) like the game. slice-codex.png joins the record.
+##   Gates: vitest 22/220 · tsc clean · smoke PASS (15 standing controls incl. the
+##   detail-row dead-click control) · proofsheet regenerated · main.js untouched.
+##   ▶ NEXT IN PHASE 4: the training port (--tut-bot contract, 21 steps — the big
+##   one left) · Star Atlas panel (galSeen over galaxyName rows) · playRaritySting ·
+##   share-code button on the survey card (encodeHere exists) · panel virtualization
+##   when a real codex exceeds ~200 rows.
 ##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone ·
 ##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root

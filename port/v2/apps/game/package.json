@@ -20,7 +20,10 @@
     "@cf/domain-progression": "*",
     "@cf/domain-worldgen": "*",
     "@cf/domain-rand": "*",
-    "@cf/domain-naming": "*"
+    "@cf/domain-naming": "*",
+    "@cf/domain-genome": "*",
+    "@cf/domain-combatcore": "*",
+    "@cf/domain-strays": "*"
   },
   "devDependencies": {
     "vite": "8.2.0"
