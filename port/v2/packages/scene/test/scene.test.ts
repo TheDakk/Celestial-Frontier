@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, homeUniverse, HOME_GAL_SEED, type NavState } from '@cf/scene';
+import { NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, homeUniverse, systemScene, HOME_GAL_SEED, SOL_SEED, type NavState } from '@cf/scene';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 
 beforeAll(() => installCaptureHooks());
@@ -52,5 +52,29 @@ describe('@cf/scene — universe composition from the ported domain', () => {
   });
   it('composition is deterministic (two calls, identical nodes)', () => {
     expect(JSON.stringify(homeUniverse(1))).toBe(JSON.stringify(homeUniverse(1)));
+  });
+});
+
+describe('@cf/scene — system composition (the Gate D descent target)', () => {
+  it('★ Sol: eight planets Mercury→Neptune in orbit order, Earth seed 133, gas giants ringed/mooned', () => {
+    const s = systemScene(SOL_SEED);
+    expect(s.sol).toBe(true);
+    expect(s.planets.map((p) => p.name)).toEqual(['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']);
+    const earth = s.planets[2]!;
+    expect(earth.seed).toBe(133);
+    expect(earth.type).toBe('terran');
+    expect(s.planets[5]!.ring, 'Saturn wears its ring').toBe(true);
+    /* orbit order is the render ladder — strictly increasing */
+    for (let i = 1; i < s.planets.length; i++) expect(s.planets[i]!.orb).toBeGreaterThan(s.planets[i - 1]!.orb);
+  });
+  it('a procedural system is deterministic and orbit-sorted', () => {
+    const a = systemScene(31337), b = systemScene(31337);
+    expect(JSON.stringify(a.planets.map((p) => [p.seed, p.orb]))).toBe(JSON.stringify(b.planets.map((p) => [p.seed, p.orb])));
+    for (let i = 1; i < a.planets.length; i++) expect(a.planets[i]!.orb).toBeGreaterThanOrEqual(a.planets[i - 1]!.orb);
+  });
+  it('the P objects are the MEMOIZED originals — composition must not clone or mutate them (the systemSol lesson)', () => {
+    const s1 = systemScene(1);
+    const s2 = systemScene(1);
+    for (let i = 0; i < s1.planets.length; i++) expect(s1.planets[i]!.P).toBe(s2.planets[i]!.P);
   });
 });
