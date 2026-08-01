@@ -243,12 +243,20 @@
 ##   Circle marks = declared scaffolding (HD engine law governs SHIPPED art; painterly
 ##   pipeline replaces them Phases 4-6). pixi @webgpu/types vs TS7 lib.dom clash: skipLibCheck
 ##   APP-SCOPED, reason in the tsconfig, root strict.
-##   ▶ NEXT IN PHASE 3: run the slice in a real browser (npx vite dev from port/v2/apps/game —
-##   first human look; then Playwright automation per plan §20 Phase 1 CI note) · surface mode
-##   (landing scene composition via Ecology/Descriptors) · camera TRANSITIONS (the game's goTo
-##   easing) · pinch input · the survey card (HTML over typed selectors) · then Gate D's
-##   save→reload full-loop and NICK'S PHONE LEG. ⛔ Nick: veteran save (Gate C) · phone leg ·
-##   art verdict · listening test.
+##   ✔★★ REAL ART + REAL BROWSER (675255c): @cf/art carries GalaxyArt VERBATIM (16 archetypes,
+##   per-seed kind-locked faces via galSpriteFor — browser-only, sprites bake at module load);
+##   universe mode draws the true painterly sprites with the Renderer's exact transform + the
+##   Milky Way label. tools/slicesmoke.mjs (headless Edge, raw CDP, no new deps) PASSES:
+##   boot · painted stage (via Pixi extract — 2D drawImage reads a WebGL canvas BLACK, the
+##   run-1 instrument error) · real click-descent into gal 999 · ★ VIEW SURVIVES RELOAD through
+##   IndexedDB (Gate D's save/reload leg, first browser proof) · zero console errors.
+##   Screenshots at port/v2/apps/game/smoke/ (gitignored) — sent to Nick 2026-07-31.
+##   ▶ NEXT IN PHASE 3: galaxy-mode DECO in the slice (nebulae/clusters — data already in
+##   galaxyCell; and the haze belongs here per D-HAZE) · system-mode planetary art (painter
+##   pipeline: getPlanetSprite/planetThumb painters → textures) · surface mode (Ecology/
+##   Descriptors composition) · camera EASING (goTo) · pinch input · the survey card ·
+##   slicesmoke into CI cadence. ⛔ Nick: veteran save (Gate C) · phone leg · art verdict ·
+##   listening test.
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.
