@@ -24,7 +24,7 @@ const importOk = (raw: string): SaveStateV2 => {
 };
 
 const FIXTURES = ['empty_object', 'veteran_rich', 'hostile_shapes', 'hostile_markup_caps',
-  'pre_v17_veteran', 'tut_midtraining', 'settings_spread', 'equip_integrity'] as const;
+  'pre_v17_veteran', 'hostile_arrays_as_objects', 'tut_midtraining', 'settings_spread', 'equip_integrity'] as const;
 
 describe('import → export → import: the fixed point', () => {
   for (const name of FIXTURES) {
