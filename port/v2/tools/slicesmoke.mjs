@@ -449,6 +449,14 @@ try {
     return { landed, jempty, jn }; })()`);
   if (!/worlds landed2$/.test(rec.landed.trim())) fails.push('Records did not count the veteran’s 2 landed worlds (fixture land=[133,134]): ' + JSON.stringify(rec.landed));
   if (!rec.jempty && rec.jn === 0) fails.push('Records journal rendered nothing at all');
+  /* CHARTERS: the chapter book over live ascProg (the veteran's progress) */
+  const chp = await evalIn(`(()=>{ document.getElementById('dockcharters').click();
+    const chs=[...document.querySelectorAll('#chpanel [data-sel=charter-ch]')];
+    const cur=chs.find(c=>c.dataset.chstate==='current');
+    const goals=document.querySelectorAll('#chpanel [data-sel=charter-goal]').length;
+    document.querySelector('#chpanel [data-pnx]').click();
+    return { n:chs.length, cur:!!cur, goals }; })()`);
+  if (chp.n !== 3 || !chp.cur || !(chp.goals >= 4)) fails.push('Charters panel wrong: ' + JSON.stringify(chp));
 
   /* 4d. THE PHONE LEG (emulated): 390×844 @ DPR 3, touch. The physical
      hand-feel stays Nick's; this catches layout, touch wiring and pinch. */
