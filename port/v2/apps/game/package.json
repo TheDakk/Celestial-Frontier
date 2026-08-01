@@ -1,9 +1,23 @@
-{ "name": "@cf/game", "private": true, "version": "0.0.0", "type": "module",
+{
+  "name": "@cf/game",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "description": "Phase 3 vertical slice — the Pixi shell over @cf/scene. DUMB RENDERER BY DESIGN: composition, navigation and persistence logic live in the packages and stay under vitest; this app draws nodes and forwards input.",
-  "scripts": { "dev": "vite", "build": "vite build", "preview": "vite preview" },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "pixi.js": "8.19.0",
-    "@cf/scene": "*", "@cf/persistence": "*",
-    "@cf/domain-descriptors": "*", "@cf/domain-worldconfig": "*"
+    "@cf/scene": "*",
+    "@cf/persistence": "*",
+    "@cf/domain-descriptors": "*",
+    "@cf/domain-worldconfig": "*",
+    "@cf/art": "*"
   },
-  "devDependencies": { "vite": "8.2.0" } }
+  "devDependencies": {
+    "vite": "8.2.0"
+  }
+}

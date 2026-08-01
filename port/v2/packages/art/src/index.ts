@@ -1,0 +1,31 @@
+/* @cf/art — the painterly canvas engine, lifted VERBATIM (HD engine law:
+   everything visual uses the painterly canvas painters — no flat primitives
+   in shipped art). First occupant: GalaxyArt's 16-archetype sprite pool +
+   per-seed baker.
+
+   ⚠ BROWSER-ONLY: GAL_SPRITES bakes 16×512px canvases AT MODULE LOAD.
+   Import this from apps/*, never from vitest/node. (The lifted header says
+   [domain] — the lifter's fixed banner; GalaxyArt is an [app] module.)
+
+   galSpriteFor mirrors main.js getGalaxySprite's ART CONTRACT — per-seed
+   face, morphology KIND-LOCKED to the archetype so the sprite can never
+   contradict the card's Lenticular/Elliptical/Irregular row — without the
+   old build's deferred-bake machinery (that was a boot-perf device for a
+   1.9MB single file; the slice bakes on first sight and caches). */
+import { GAL_SPRITES, GAL_KIND, makeGalaxySprite, GAL_SPRITE_SEEDS } from './galaxyart.verbatim.js';
+
+export { GAL_SPRITES, GAL_KIND, makeGalaxySprite, GAL_SPRITE_SEEDS };
+
+const _GKIND_SHORT: Record<string, string> = { spiral: 'spiral', barred: 'barred', lenticular: 'lent', elliptical: 'ellip', irregular: 'irr' };
+const _cache = new Map<number, HTMLCanvasElement>();
+
+export function galSpriteFor(g: { seed: number; sp: number; quasar?: boolean }): HTMLCanvasElement {
+  if (g.quasar) return (GAL_SPRITES[g.sp] || GAL_SPRITES[0]) as HTMLCanvasElement;
+  const hit = _cache.get(g.seed);
+  if (hit) return hit;
+  const lock = _GKIND_SHORT[GAL_KIND[g.sp] as string] || 'spiral';
+  const spr = makeGalaxySprite((g.seed ^ 0x6A7A) >>> 0, lock) as HTMLCanvasElement;
+  if (_cache.size > 64) _cache.delete(_cache.keys().next().value as number);   /* the house cache cap convention */
+  _cache.set(g.seed, spr);
+  return spr;
+}

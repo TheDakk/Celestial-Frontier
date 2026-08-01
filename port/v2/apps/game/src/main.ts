@@ -9,7 +9,8 @@
    click), pan/wheel-zoom, save/reload of the nav view through
    @cf/persistence (IndexedDB — its first browser proof). Surface mode,
    survey cards and input parity land in later Phase 3/4 batches. */
-import { Application, Container, Graphics } from 'pixi.js';
+import { Application, Container, Graphics, Sprite, Texture, Text } from 'pixi.js';
+import { galSpriteFor } from '@cf/art';
 import {
   NAV_HOME, enterGalaxy, enterSystem, ascend, navToView,
   homeUniverse, galaxyCell, galaxyCellWindow, systemScene,
@@ -35,16 +36,32 @@ function hudText(): void {
   hud.innerHTML = `<b>${path}</b><br>drag pan · wheel zoom · click descend · right-click ascend<br><i>${VIEW_KEY_NOTE}</i>`;
 }
 
-/* ---- draw passes (placeholder marks; positions/sizes are the real data) ---- */
+/* ---- draw passes ---- */
+const galaxySpins: Array<{ spr: Sprite; base: number }> = [];
 function drawUniverse(): void {
   world.removeChildren();
+  galaxySpins.length = 0;
+  /* THE REAL ART: per-seed painterly sprites (verbatim GalaxyArt painters,
+     kind-locked), with the Renderer's exact transform — rotate(g.rot + slow
+     cosmic spin), scale(1, g.tilt), draw at ±g.size (main.js ~3741) */
   for (const g of homeUniverse(3)) {
-    const dot = new Graphics().circle(0, 0, Math.max(3, g.size / 4)).fill(g.home ? 0xffd96a : 0x9fb6d6);
-    dot.position.set(g.x, g.y);
-    dot.eventMode = 'static';
-    dot.cursor = 'pointer';
-    dot.on('pointertap', () => descendGalaxy(g));
-    world.addChild(dot);
+    const spr = new Sprite(Texture.from(galSpriteFor(g)));
+    spr.anchor.set(0.5);
+    spr.position.set(g.x, g.y);
+    const px = (g.size * 2) / 512;
+    spr.scale.set(px, px * g.tilt);
+    spr.rotation = g.rot;
+    spr.eventMode = 'static';
+    spr.cursor = 'pointer';
+    spr.on('pointertap', () => descendGalaxy(g));
+    world.addChild(spr);
+    galaxySpins.push({ spr, base: g.rot });
+    if (g.home) {
+      const label = new Text({ text: 'Milky Way — you are here', style: { fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: 12, fill: 0xffd9a0 } });
+      label.anchor.set(0.5, 0);
+      label.position.set(g.x, g.y + g.size * 1.15 + 4);
+      world.addChild(label);
+    }
   }
 }
 function drawGalaxy(galSeed: number): void {
@@ -115,12 +132,19 @@ async function restoreView(): Promise<void> {
   await app.init({ background: 0x05070d, resizeTo: window, antialias: true, resolution: Math.min(devicePixelRatio, 3) });
   document.body.appendChild(app.canvas);
   app.stage.addChild(world);
+  /* diagnostics handle for tools/slicesmoke.mjs — a WebGL canvas reads BLACK
+     through 2D drawImage without preserveDrawingBuffer, so the smoke asks
+     Pixi's extract (which re-renders) instead of scraping the canvas */
+  (window as unknown as Record<string, unknown>).__CF_SLICE__ = { app, world };
   await restoreView();
   rerender();
 
   app.ticker.add(() => {
     world.position.set(app.renderer.width / (2 * app.renderer.resolution) - cam.x * cam.z, app.renderer.height / (2 * app.renderer.resolution) - cam.y * cam.z);
     world.scale.set(cam.z);
+    /* galaxies turn on cosmic time — barely perceptible (main.js ~3742) */
+    const t = performance.now() * 0.001;
+    for (const gs of galaxySpins) gs.spr.rotation = gs.base + t * 0.0012;
   });
 
   /* input: drag pan · wheel zoom · right-click / Escape ascend */
