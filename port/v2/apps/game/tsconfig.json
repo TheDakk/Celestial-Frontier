@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": [],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true
+  },
+  "_skipLibCheckReason": "pixi.js bundles @webgpu/types, which collides with TypeScript 7's own lib.dom GPU declarations (duplicate GPUSupportedFeatures etc.). App-scoped only — the root tsconfig stays fully strict for every package.",
+  "include": ["src/**/*.ts", "vite.config.ts"]
+}
