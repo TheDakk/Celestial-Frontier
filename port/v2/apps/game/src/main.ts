@@ -12,13 +12,13 @@
 import { Application, Container, Graphics, Sprite, Texture, Text } from 'pixi.js';
 import { galSpriteFor } from '@cf/art';
 import {
-  NAV_HOME, enterGalaxy, enterSystem, ascend, navToView,
+  NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView,
   homeUniverse, galaxyCell, galaxyCellWindow, systemScene,
-  GR, GCELL, type NavState, type GalaxyNode,
+  GR, GCELL, type NavState, type GalaxyNode, type PlanetNode,
 } from '@cf/scene';
-import { galaxyProfile, galaxyHaze } from '@cf/domain-worldgen';
-import { decoSprite, getPlanetSprite } from '@cf/art';
-import { installCaptureHooks } from '@cf/domain-descriptors';
+import { galaxyProfile, galaxyHaze, systemFor } from '@cf/domain-worldgen';
+import { decoSprite, getPlanetSprite, starSprite } from '@cf/art';
+import { installCaptureHooks, planetDescriptor, type Descriptor } from '@cf/domain-descriptors';
 import { createSaveRepository, createIndexedDBBackend } from '@cf/persistence';
 
 installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt ports */
@@ -30,7 +30,26 @@ const VIEW_KEY_NOTE = 'slice stores ONLY the nav view — real saves stay with i
 
 let nav: NavState = NAV_HOME;
 const cam = { x: 0, y: 0, z: 1 };
+const camT = { x: 0, y: 0, z: 1 };   /* eased target — the goTo feel */
 const world = new Container();
+
+/* ---- the survey card: HTML over TYPED SELECTORS (Gate D contract) ---- */
+const card = document.createElement('aside');
+card.id = 'survey';
+card.style.cssText = 'position:fixed;top:0;right:0;bottom:0;width:min(340px,86vw);overflow:auto;' +
+  'background:rgba(8,12,22,0.92);color:#cfe0f4;font:13px/1.5 system-ui,sans-serif;' +
+  'padding:14px;box-sizing:border-box;display:none;border-left:1px solid #22304a';
+document.body.appendChild(card);
+function showSurvey(d: Descriptor): void {
+  const esc = (s: unknown): string => String(s ?? '').replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]!));
+  card.innerHTML =
+    `<h2 data-sel="title" style="margin:0 0 2px;font-size:17px;color:#f4f8ff">${esc(d.title)}</h2>` +
+    `<div data-sel="sub" style="color:#8fa3c4;margin-bottom:10px">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
+    (d.rows as Array<[string, string, string?]>).map(([k, v, cls]) =>
+      `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" style="margin:4px 0"><span style="color:#8fa3c4">${esc(k)}</span><br>${esc(v)}</div>`).join('');
+  card.style.display = 'block';
+}
+function hideSurvey(): void { card.style.display = 'none'; }
 
 function hudText(): void {
   const path = [nav.mode, nav.gal && 'gal ' + nav.gal.seed, nav.star && 'star ' + nav.star.seed].filter(Boolean).join(' · ');
@@ -88,6 +107,18 @@ function drawGalaxy(galSeed: number): void {
         spr.position.set(dc.x, dc.y);
         spr.width = rr * 2 * f; spr.height = rr * 2 * f;
         world.addChild(spr);
+      } else if (dc.k === 'open' && Array.isArray(dc.pts)) {
+        /* open clusters: loose knots of young stars — starSprite points at
+           the Renderer's recipe (baseR fixed at its floor for the slice) */
+        const tex = Texture.from(starSprite('#cfe4ff', false));
+        for (const pt of dc.pts as Array<[number, number, number]>) {
+          const d2 = pt[2] * 0.7 * 6;
+          const s2 = new Sprite(tex);
+          s2.anchor.set(0.5);
+          s2.position.set((dc.x as number) + pt[0], (dc.y as number) + pt[1]);
+          s2.width = d2; s2.height = d2;
+          world.addChild(s2);
+        }
       }
     }
   }
@@ -116,6 +147,9 @@ function drawSystem(starSeed: number): void {
     spr.anchor.set(0.5);
     spr.width = px; spr.height = px;
     spr.position.set(p.orb, 0);
+    spr.eventMode = 'static';
+    spr.cursor = 'pointer';
+    spr.on('pointertap', () => surveyAndLand(p, starSeed));
     world.addChild(spr);
     if (p.ring) {
       const ring = new Graphics().ellipse(0, 0, px * 1.1, px * 0.35).stroke({ width: 1, color: 0xcbb98a, alpha: 0.8 });
@@ -130,20 +164,46 @@ function rerender(): void {
   if (nav.mode === 'universe') drawUniverse();
   else if (nav.mode === 'galaxy' && nav.gal) drawGalaxy(nav.gal.seed);
   else if (nav.mode === 'system' && nav.star) drawSystem(nav.star.seed);
+  else if (nav.mode === 'surface' && nav.star && nav.planet) {
+    const p = systemScene(nav.star.seed).planets.find((q) => q.seed === nav.planet!.seed);
+    if (p) drawSurface(p); else { nav = NAV_HOME; drawUniverse(); }   /* a stale seed never bricks boot */
+  }
   hudText();
   void persistView();
 }
+/* descents EASE in: cam jumps wide, camT is the destination (the goTo feel) */
 function descendGalaxy(g: GalaxyNode): void {
   const r = enterGalaxy(nav, g);
-  if (r.ok) { nav = r.state; cam.x = 0; cam.y = 0; cam.z = 0.4; rerender(); }
+  if (r.ok) { nav = r.state; cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0; camT.z = 0.4; cam.z = 0.12; rerender(); }
 }
 function descendSystem(star: { seed: number; x: number; y: number }): void {
   const r = enterSystem(nav, star);
-  if (r.ok) { nav = r.state; cam.x = 0; cam.y = 0; cam.z = 1.2; rerender(); }
+  if (r.ok) { nav = r.state; cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0; camT.z = 1.2; cam.z = 0.4; rerender(); }
+}
+function surveyAndLand(p: PlanetNode, starSeed: number): void {
+  /* the survey card first (the real game's flow: survey, then land) —
+     planetDescriptor drives Ecology/SurveyPhrases/Genome underneath, so
+     this one call is the whole domain stack speaking */
+  const sys = systemFor(starSeed);
+  showSurvey(planetDescriptor(p.P, sys, { name: p.name, orb: p.orb } as never) as Descriptor);
+  const r = land(nav, { seed: p.seed });
+  if (r.ok) { nav = r.state; drawSurface(p); hudText(); void persistView(); }
+}
+function drawSurface(p: PlanetNode): void {
+  /* surface mode, slice edition: the world fills the view as its painterly
+     surface (full biome scenes are Phase 6); the survey card carries the
+     roster — every species row is real Ecology output */
+  world.removeChildren();
+  const spr = new Sprite(Texture.from(getPlanetSprite(p.P, 1024)));
+  spr.anchor.set(0.5);
+  spr.width = 420; spr.height = 420;
+  world.addChild(spr);
+  camT.x = 0; camT.y = 0; camT.z = 1;
 }
 function goUp(): void {
+  hideSurvey();
   const r = ascend(nav);
-  if (r.ok) { nav = r.state; cam.x = 0; cam.y = 0; cam.z = nav.mode === 'universe' ? 1 : 0.4; rerender(); }
+  if (r.ok) { nav = r.state; cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0; camT.z = nav.mode === 'universe' ? 1 : nav.mode === 'galaxy' ? 0.4 : 1.2; cam.z = camT.z * 0.8; rerender(); }
 }
 
 /* ---- the save/reload leg (IndexedDB's first browser proof) ---- */
@@ -167,11 +227,28 @@ async function restoreView(): Promise<void> {
   /* diagnostics handle for tools/slicesmoke.mjs — a WebGL canvas reads BLACK
      through 2D drawImage without preserveDrawingBuffer, so the smoke asks
      Pixi's extract (which re-renders) instead of scraping the canvas */
-  (window as unknown as Record<string, unknown>).__CF_SLICE__ = { app, world };
+  (window as unknown as Record<string, unknown>).__CF_SLICE__ = {
+    app, world,
+    /* test API for tools/slicesmoke.mjs — drives the SAME functions the
+       pointer handlers call; no parallel logic to drift */
+    api: {
+      descendSystem,
+      landOn: (i: number) => {
+        if (nav.mode !== 'system' || !nav.star) return false;
+        const p = systemScene(nav.star.seed).planets[i];
+        if (!p) return false;
+        surveyAndLand(p, nav.star.seed);
+        return true;
+      },
+    },
+  };
   await restoreView();
   rerender();
 
-  app.ticker.add(() => {
+  app.ticker.add((tk) => {
+    /* eased camera — exponential approach to the target, framerate-aware */
+    const k = 1 - Math.pow(0.0025, tk.deltaMS / 1000);
+    cam.x += (camT.x - cam.x) * k; cam.y += (camT.y - cam.y) * k; cam.z += (camT.z - cam.z) * k;
     world.position.set(app.renderer.width / (2 * app.renderer.resolution) - cam.x * cam.z, app.renderer.height / (2 * app.renderer.resolution) - cam.y * cam.z);
     world.scale.set(cam.z);
     /* galaxies turn on cosmic time — barely perceptible (main.js ~3742) */
@@ -185,13 +262,15 @@ async function restoreView(): Promise<void> {
   addEventListener('pointermove', (e) => {
     if (!dragging) return;
     moved += Math.abs(e.clientX - lx) + Math.abs(e.clientY - ly);
+    /* pan writes BOTH cam and target — immediate hand-feel; only zoom eases */
     cam.x -= (e.clientX - lx) / cam.z; cam.y -= (e.clientY - ly) / cam.z;
+    camT.x = cam.x; camT.y = cam.y;
     lx = e.clientX; ly = e.clientY;
   });
   addEventListener('pointerup', () => { dragging = false; });
   app.canvas.addEventListener('wheel', (e) => {
     e.preventDefault();
-    cam.z = Math.min(8, Math.max(0.05, cam.z * (e.deltaY > 0 ? 0.88 : 1.14)));
+    camT.z = Math.min(8, Math.max(0.05, camT.z * (e.deltaY > 0 ? 0.88 : 1.14)));
   }, { passive: false });
   app.canvas.addEventListener('contextmenu', (e) => { e.preventDefault(); goUp(); });
   addEventListener('keydown', (e) => { if (e.key === 'Escape') goUp(); });

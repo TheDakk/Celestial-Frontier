@@ -17,6 +17,8 @@ const root = path.join(here, '..', '..', '..');
 const lines = fs.readFileSync(path.join(root, 'main.js'), 'utf8').split('\n');
 
 const PIECES = [
+  ['_starSpr', 'const _starSpr=new Map();'],
+  ['starSprite', 'function starSprite(col, spike){'],
   ['_decoSpr', 'const _decoSpr=new WeakMap();'],
   ['decoSprite', 'function decoSprite(dc){'],
   ['_quasarSprC', 'let _quasarSprC=null;'],
@@ -52,6 +54,6 @@ const header = `/* AUTO-LIFTED VERBATIM renderer-section painters from main.js (
    body sha256/16 ${sha}. ⚠ DO NOT EDIT. Regenerate: node tools/lift-art-extras.mjs
    Browser-only (canvas). */
 `;
-const out = header + importLines.join('\n') + (importLines.length ? '\n\n' : '') + bodyOut + '\nexport { decoSprite, _quasarSpr };\n';
+const out = header + importLines.join('\n') + (importLines.length ? '\n\n' : '') + bodyOut + '\nexport { decoSprite, _quasarSpr, starSprite };\n';
 fs.writeFileSync(path.join(here, '..', 'packages', 'art', 'src', 'artextras.verbatim.js'), out);
 console.log('lifted art extras (sha ' + sha + '), imports: ' + (importLines.join(' | ') || 'none'));
