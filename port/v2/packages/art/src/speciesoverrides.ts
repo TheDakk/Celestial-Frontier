@@ -13,6 +13,7 @@
    species still belongs to its rarity/color roll — bodies, not recolors. */
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { SP_COLOR, SP_HEX } from '@cf/domain-speciestraits';
+import { FLORA_ICONIC, FLORA_DUPES, floraLadder, type Pal } from './floraoverrides.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -285,6 +286,19 @@ export function resolveOverride(g: G): string | null {
   const name = String((g as { _earthName?: string })._earthName || '').replace(/[’‘]/g, "'");
   if (!name) return null;
   const kingdom = g.kingdom as string;
+  /* FLORA (wave 2): iconic bespoke bodies first, then the name-seeded ladder
+     for every member of the 16 byte-duplicate groups */
+  if (kingdom === 'flora') {
+    const iconic = FLORA_ICONIC[name];
+    const dupe = !iconic && FLORA_DUPES.includes(name);
+    if (!iconic && !dupe) return null;
+    const { cv, c } = newCanvas();
+    vignette(c, false);
+    floorFade(c);
+    const p = palette(g) as Pal;
+    (iconic || floraLadder)(c, g, p, name);
+    return cv.toDataURL();
+  }
   const painter = kingdom === 'fungi' ? FUNGI_NAME[name] : kingdom === 'microbe' ? MICROBE_NAME[name] : undefined;
   if (!painter) return null;
   const { cv, c } = newCanvas();
@@ -296,4 +310,4 @@ export function resolveOverride(g: G): string | null {
 }
 
 /** How many species wave 1 corrects (for the record + the audit sentinel). */
-export const OVERRIDE_COUNT = new Set([...Object.keys(FUNGI_NAME), ...Object.keys(MICROBE_NAME)]).size;
+export const OVERRIDE_COUNT = new Set([...Object.keys(FUNGI_NAME), ...Object.keys(MICROBE_NAME), ...Object.keys(FLORA_ICONIC), ...FLORA_DUPES]).size;

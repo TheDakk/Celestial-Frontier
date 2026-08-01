@@ -22,6 +22,12 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   families, routed by name; true gilled mushrooms fall through verbatim.
 - ✔ **D-ART-7 — microbe morphologies (wave 1).** The 22 microbes were one bubble cluster.
   Now: tardigrade (with a contrast guarantee) · diatom · radiolarian · ciliate · amoeba.
+- ✔ **D-ART-8 — flora name-seeded anti-duplicate (wave 2).** ROOT CAUSE: the generic leaf
+  ladder is deterministic per form and never sees the species name, so 16 groups (38 files)
+  rendered byte-identical. Now every named species varies from a hash of its own name.
+  16 → 0 duplicate groups; a permanent sentinel in speciesaudit fails on any regression.
+- ✔ **D-ART-9 — iconic flora bodies (wave 2).** Rafflesia · Pineapple · Joshua Tree · Cotton ·
+  Dragon Fruit · Rhubarb · Tobacco · Cabbage now have real growth forms.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
