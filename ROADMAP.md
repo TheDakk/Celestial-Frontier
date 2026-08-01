@@ -232,11 +232,23 @@
 ##   beat, parity-first until Nick approves (D-9i string maxGen · D-9e dead fauna filter ·
 ##   D-LOC locale text · D-HAZE layering · D-RNG SessionRNG wiring · D-NOTIF-T · D-AUDIO-CAP),
 ##   plus what's already structurally better at zero parity cost.
-##   ▶ NEXT IN PHASE 3: galaxy-mode composition — ⚠ READ THE RENDERER'S CELL ITERATION FIRST
-##   (main.js drawGalaxy/starsInCell caller): naive small-cell scans return empty; do not
-##   enshrine a guessed convention · apps/game scaffold (Vite 8.2.0 + Pixi 8.19.0 shell over
-##   @cf/scene; add 'apps/*' to port/v2 workspaces) · camera math · input mapping · the
-##   save/reload leg via @cf/persistence + IndexedDB (its browser proof).
+##   ✔ galaxy-mode LANDED (30b6bc6): the cell convention READ from the Renderer (~4120) —
+##   {stars,deco} in galaxy-local px, GCELL=42, content gated on CELL CENTERS within GR=1200,
+##   clip ±(HALO/GCELL+1), HALO=GR*1.7. The "empty cells" were the black hole's void (rad<34
+##   swallowed) + an instrument error (.length on an object). Soft disc edge: the gate is on
+##   centers, stars scatter up to a cell past GR (test corrected WITH the reason).
+##   ✔ apps/game SHELL BUILDS (e960e21): Vite 8.2.0 + pixi 8.19.0 pinned; universe→galaxy→
+##   system descent through the TESTED nav machine; pan/zoom; Escape/right-click ascent; nav
+##   view persists via IndexedDB (its first browser wiring). vite build 260ms, 45KB gzip main.
+##   Circle marks = declared scaffolding (HD engine law governs SHIPPED art; painterly
+##   pipeline replaces them Phases 4-6). pixi @webgpu/types vs TS7 lib.dom clash: skipLibCheck
+##   APP-SCOPED, reason in the tsconfig, root strict.
+##   ▶ NEXT IN PHASE 3: run the slice in a real browser (npx vite dev from port/v2/apps/game —
+##   first human look; then Playwright automation per plan §20 Phase 1 CI note) · surface mode
+##   (landing scene composition via Ecology/Descriptors) · camera TRANSITIONS (the game's goTo
+##   easing) · pinch input · the survey card (HTML over typed selectors) · then Gate D's
+##   save→reload full-loop and NICK'S PHONE LEG. ⛔ Nick: veteran save (Gate C) · phone leg ·
+##   art verdict · listening test.
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.
