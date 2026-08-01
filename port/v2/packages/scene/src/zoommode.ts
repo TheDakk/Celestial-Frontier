@@ -7,9 +7,12 @@
 
 export type ZoomMode = 'universe' | 'galaxy' | 'system' | 'surface';
 
-export interface GalRef { seed: number; x: number; y: number; [k: string]: unknown; }
-export interface StarRef { seed: number; x: number; y: number; [k: string]: unknown; }
-export interface PlanetRef { seed: number; [k: string]: unknown; }
+/* named optional fields, NOT an index signature — an index signature makes
+   concrete node types (GalaxyNode) unassignable, and the save-view spread
+   only needs the slimGal field set anyway */
+export interface GalRef { seed: number; x: number; y: number; size?: number; sp?: number; tilt?: number; rot?: number; home?: boolean; quasar?: boolean; dwarf?: boolean; }
+export interface StarRef { seed: number; x: number; y: number; }
+export interface PlanetRef { seed: number; }
 
 export interface NavState {
   mode: ZoomMode;

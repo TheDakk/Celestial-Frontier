@@ -7,7 +7,8 @@
   "workspaces": [
     "packages/domain/*",
     "packages/persistence",
-    "packages/scene"
+    "packages/scene",
+    "apps/*"
   ],
   "scripts": {
     "test": "vitest run",
