@@ -1,0 +1,4 @@
+{ "name": "@cf/scene", "private": true, "version": "0.0.0", "type": "module",
+  "description": "Phase 3: the PURE scene-model layer — zoom-mode state machine + scene composition from domain data. No Pixi, no DOM: everything here is vitest-testable; apps/game is the thin renderer over it.",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@cf/domain-worldgen": "*", "@cf/domain-worldconfig": "*", "@cf/domain-descriptors": "*" } }
