@@ -341,6 +341,29 @@ document.getElementById('atlaspanel')!.addEventListener('click', (e) => {
     jumpToView(hit[1].where as Record<string, unknown>);
   }
 });
+/* CHARTERS — the Ascent's chapter book over the pure data + the save's
+   own progress (ascProg); the current chapter leads, done chapters fold */
+function fillCharters(): void {
+  if (!save) return;
+  fillPanel('ch',
+    '<h3>Charters — the Ascent</h3>' +
+    ASC_CHAPTERS_DATA.map((ch, ci) => {
+      const state = ci < save.ascCh ? 'done' : (ci === save.ascCh ? 'current' : 'ahead');
+      const goals = ch.goals.map((g) => {
+        const have = Math.min(save.ascProg[g.id] || 0, g.n);
+        const pct = Math.round((have / g.n) * 100);
+        return `<div class="row" style="min-height:24px" data-sel="charter-goal"><label style="font-size:12px">${esc(g.t)}</label>` +
+          `<span style="flex:0 0 90px;display:flex;align-items:center;gap:6px"><span style="flex:1;height:7px;border-radius:999px;background:#16202f;overflow:hidden"><span style="display:block;height:100%;width:${pct}%;background:${have >= g.n ? '#caa24f' : '#7ec8f0'}"></span></span><span style="color:#8fa3c4;font-size:11px">${have}/${g.n}</span></span></div>`;
+      }).join('');
+      return `<div class="centry" data-sel="charter-ch" data-chstate="${state}" style="${state === 'ahead' ? 'opacity:0.55' : ''}">` +
+        `<b style="${state === 'current' ? 'color:#ffd9a0' : ''}">${state === 'done' ? '✓ ' : ''}${esc(ch.name)}</b>` +
+        `<div class="sub" style="margin:2px 0 6px">${esc(ch.intro)}</div>` +
+        (state === 'ahead' ? '' : goals) + '</div>';
+    }).join(''));
+}
+registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: fillCharters });
+document.getElementById('dockcharters')!.addEventListener('click', () => togglePanel('ch'));
+document.getElementById('railcharters')!.addEventListener('click', () => togglePanel('ch'));
 registerPanel({ id: 'atlas', el: document.getElementById('atlaspanel')!, btns: [document.getElementById('dockatlas'), document.getElementById('railatlas')], onOpen: () => { fillAtlas(); gameEvent('atlas-open', { open: true }); } });
 document.getElementById('dockatlas')!.addEventListener('click', () => togglePanel('atlas'));
 document.getElementById('railatlas')!.addEventListener('click', () => togglePanel('atlas'));
@@ -688,7 +711,7 @@ let fineLayer: Container | null = null;
 let fineWin: { fx0: number; fy0: number; fx1: number; fy1: number } | null = null;
 let lastZBucket = 0;
 const zBucket = (): number => Math.round(Math.log(cam.z) / Math.log(1.15));
-interface Orbiter { c: Container; kind: 'planet' | 'moon' | 'rock' | 'dwarf' | 'beam'; orb: number; sp?: number; a0?: number; mul?: number; pOrb?: number; face?: Sprite[]; }
+interface Orbiter { c: Container; kind: 'planet' | 'moon' | 'rock' | 'dwarf' | 'beam'; orb: number; sp?: number; a0?: number; mul?: number; pOrb?: number; face?: Sprite[]; cloud?: { wrap: Container; a: Sprite; b: Sprite; pr: number }; }
 let orbiters: Orbiter[] = [];
 let sysLabels: Array<{ t: Text; getPos: (time: number) => { x: number; y: number } }> = [];
 let sysStar: { seed: number; col: string; kind: string; starR: number } | null = null;
@@ -1251,6 +1274,20 @@ function drawSystem(starSeed: number): void {
     holder.on('pointertap', () => surveyPlanet(p, starSeed));   /* survey; LAND is the card's own act */
     world.addChild(holder);
     const ent: Orbiter = { c: holder, kind: 'planet', orb: p.orb, face: [spr, term] };
+    /* the drifting upper cloud deck (main.js 5256): terran/ocean close-ups
+       only, motion-gated, twin-sprite wrap so the edge never seams */
+    if (p.P.type === 'terran' || p.P.type === 'ocean') {
+      const cw = new Container();
+      cw.eventMode = 'none';
+      const ctex = Texture.from(_cloudSpr(p.P));
+      const mkc = (): Sprite => { const s = new Sprite(ctex); s.anchor.set(0, 0.5); s.width = pr * 2; s.height = pr * 2; s.alpha = 0.45; cw.addChild(s); return s; };
+      const ca = mkc(), cb = mkc();
+      const cm = new Graphics().circle(0, 0, pr).fill(0xffffff);
+      cw.addChild(cm); cw.mask = cm;
+      cw.visible = false;
+      holder.addChildAt(cw, holder.getChildIndex(term));   /* clouds UNDER the terminator (Renderer order — night shades them) */
+      ent.cloud = { wrap: cw, a: ca, b: cb, pr };
+    }
     orbiters.push(ent);
     /* moons — typed lit spheres on Kepler-ish drifts (main.js ~5290) */
     const solM = (SOL_MOONS as Record<string, Array<{ t: number }>>)[String(p.P.seed)] || [];
@@ -1940,6 +1977,15 @@ async function loadSave(): Promise<void> {
           const a = planetAng(o.orb, t);
           o.c.position.set(Math.cos(a) * o.orb, Math.sin(a) * o.orb);
           if (o.face) { const aim = a + Math.PI + 2.522; o.face[0]!.rotation = aim; o.face[1]!.rotation = a; }
+          if (o.cloud) {
+            const vis = o.cloud.pr * cam.z > 22 && motionOK();   /* the Renderer's close-up gate */
+            o.cloud.wrap.visible = vis;
+            if (vis) {
+              const co = (t * 1.6) % (o.cloud.pr * 2);
+              o.cloud.a.position.x = -o.cloud.pr + co;
+              o.cloud.b.position.x = -o.cloud.pr + co - o.cloud.pr * 2;
+            }
+          }
         } else if (o.kind === 'moon') {
           const ma = t * (0.55 / Math.pow(o.orb, 1.5)) + (o.a0 || 0);
           const mdist = (o.mul || 1) * o.orb;
