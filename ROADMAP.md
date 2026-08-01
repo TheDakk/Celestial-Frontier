@@ -585,10 +585,33 @@
 ##   galaxy first, like a player. slice-training.png joins the record.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS (17 standing controls) ·
 ##   proofsheet regenerated · main.js untouched.
-##   ▶ NEXT IN PHASE 4: Settings gains "Restart training" (the game's promise —
-##   one line now that tutDone round-trips) · the cache/specimen/feed/breed/duel
-##   lessons land with Phase 5's living Compendium · Charters panel (chapter list
-##   over ASC_CHAPTERS_DATA + ascProg) · playRaritySting · codex virtualization.
+##   ✔★★★ PHASE 5 OPENS — THE LIVING PORTRAITS (2026-08-01, batch 13): the ENTIRE
+##   @section hdart [app] (main.js 5427-10647, ~380KB — the HD painterly creature/
+##   vista engine) lifted VERBATIM in one range (tools/lift-hdart.mjs, sha-stamped;
+##   auto-imports resolved across FIVE domain packages). ⚠ SCOPE HONESTY up front
+##   (the GAL_SPRITES rule applied BEFORE it could bite): only the four PORTRAIT
+##   painters (hdPortraitFauna/Flora/Fungi/Microbe) are exported and only they are
+##   real-render-proven; the vista half rides along DORMANT (its app free
+##   identifiers wake in Phase 6); hdGenesFor is a recorded byte-identical duplicate
+##   of strays' fixture-pinned copy. The SpeciesArt LRU wrapper HAND-PORTED (bodies
+##   verbatim incl. CF-RR-006's device-following cache budget and CF16-005's
+##   portrait/thumb split — the ~150MB pinning fix carries). THE COMPENDIUM IS
+##   ALIVE: detail cards crowned by the genome's painterly portrait (Dakk's
+##   Toruneeus, Neon Green badge, whiskers and all), list rows wear 132px thumbs;
+##   painter failures degrade to the text card, never a crash. SMOKE: the portrait
+##   src length real-render assert (>5KB data URL = the engine truly painted) +
+##   ★ THE RESOLUTION MATRIX — the golden-geometry contract now runs on FOUR
+##   viewports (desktop 1280×800 · phone 390×844@3x · tablet-portrait 820×1180 ·
+##   small-phone 360×640), the uilayout matrix discipline arriving in the slice.
+##   Perf re-profiled after the 380KB ride-along: painted 1,725ms / answerable
+##   1,814ms @4× throttle — the bar still holds (bundle code-split noted for the
+##   Phase 4 payload budget).
+##   Gates: vitest 22/220 · tsc clean · smoke PASS (18 controls) · proofsheet
+##   regenerated · main.js untouched.
+##   ▶ NEXT: Phase 5 proper — the encounter/duel surfaces over the portrait engine ·
+##   the cache/specimen/feed/breed lessons the training arc waits on · Settings
+##   "Restart training" · Charters panel · playRaritySting on discovery · bundle
+##   code-split (hdart lazy) · codex virtualization.
 ##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone ·
 ##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root

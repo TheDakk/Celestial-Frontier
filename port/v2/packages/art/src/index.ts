@@ -23,6 +23,8 @@ export {
   _wormSpr, snSiteSprite, _bhDiscSpr, _protoSpr,
   _visitorSpr, _comaSpr, _vtrailSpr,
 } from './artextras.verbatim.js';
+/* Phase 5: the living portraits (hdart engine + the SpeciesArt LRU) */
+export { speciesPortrait, speciesThumb } from './speciesart.js';
 export { planetThumb, starThumb, galaxyThumb, moonThumb, cometThumb, beltThumb, getPlanetSprite } from './thumbart.verbatim.js';
 
 const _GKIND_SHORT: Record<string, string> = { spiral: 'spiral', barred: 'barred', lenticular: 'lent', elliptical: 'ellip', irregular: 'irr' };
