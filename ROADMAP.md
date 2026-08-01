@@ -181,13 +181,39 @@
 ##   regionAt, gradeCapAt, ringGrade); the extractor counts both bracket kinds now.
 ##   ★ It FOUND 9i (string maxGen poisoning — see the findings list) — the parity harness
 ##   paying for itself on its first real assignment.
-## ▶ NEXT IN PHASE 2: (1) the EXPORTER (buildSave mirror) + round-trip invariant
-##   import→export→import fixed-point · (2) training snapshots (tsnap rehydration) ·
-##   (3) outcome tests around domain APIs · (4) wire importSaveV2 to the repository
-##   (readPrimary→import→promoteLastKnownGood→recover chain as one tested flow).
-##   Gate C still needs NICK's real veteran save — once it exists, drop it in as fixture #10
-##   (savefixtures.js takes it verbatim; timestamps in a real save are past ⇒ deterministic).
-##   Cold start: this block → port/v2/README.md → plan §20 Phase 2.
+## ✔★★★ PHASE 2 AUTOMATABLE SIDE COMPLETE (92c54c8, same day). The final pieces:
+##   exportSaveV2 (doSave's write path pure: thumb strip · land union · seen filter · every
+##   bounded slice) + THE ROUND-TRIP FIXED POINT (import→export→import stable from round two;
+##   round one moves exactly what a live doSave moves, each transform asserted; codex genomes
+##   byte-identical incl. drifted size:9; conquest tier/e exact — `t` rides the anti-edit
+##   floor BY DESIGN, a spec error the test caught in itself) + the repository flow end-to-end
+##   (write→import→promote→corrupt→recover→import, veteran survives byte-identical).
+##   §20 Phase 2 ledger: importer ✔ · IDB repository+recovery ✔ (browser proof = Phase 3) ·
+##   codes ✔ (Phase 1 module 14) · sanitization+backup ✔ · COSMIC_EPOCH+harvest ✔ · tsnap
+##   rides the round trip ✔ (live rehydration = app layer, Phase 4) · defect injection ✔.
+##   ⛔ GATE C: machinery complete; blocked SOLELY on NICK's real veteran save → fixture #10
+##   (tools/savefixtures.js takes it verbatim; real timestamps are past ⇒ deterministic).
+##   ⚠ Twice-recorded tooling trap: sed restores near twin-shaped lines corrupt the twin
+##   (cargo/cgx, twice). Hand-edit restores; the suite caught it both times.
+## ═══ ▶▶▶ PHASE 3 IS NEXT — Pixi universe-navigation vertical slice (plan §20) ═══
+##   Gate D: open game → navigate universe → Sol → Earth → land → leave → save → reload,
+##   desktop AND phone. Scope: Pixi app + renderer selection + resolution policy · scene
+##   containers (universe/galaxy/system/surface) · camera & zoom-mode transitions · one
+##   galaxy + Sol + Earth + one procedural system · stars/planets/moons/rings with correct
+##   occlusion · pointer/touch/wheel/pinch/keyboard input parity · worker pre-generation ·
+##   HTML survey card via typed selectors.
+##   STARTING ASSETS: every domain module ported+green (worldgen/planetgen/descriptors feed
+##   scenes directly) · @cf/persistence closes the save/reload leg · the spike PROVED the
+##   painter→Pixi pipeline (port/spike/pipeline.cjs — verbatim painters, 2× shim, custom GLSL;
+##   ring occlusion works with no special architecture; soft shading needs a shader).
+##   ⚠ OPEN DECISIONS AT KICKOFF: Pixi PIN (Addendum D verified 8.18.1; the spike drifted to
+##   8.19.0 — re-verify current stable, pin exact, record) · Vite version pin · where the app
+##   workspace lives (plan §18 tree: apps/game with rendering/ui/input/audio/persistence/
+##   workers) · headless test story for scenes (Playwright is in the plan for Phase 1 CI;
+##   bootperf/uilayout patterns exist for the old build). ⛔ Nick-only: the Gate D phone leg,
+##   the Pixi ART verdict (still unjudged — the spike's creature panel was primitives, not
+##   Pixi's ceiling), veteran save (Gate C), listening test (Gate G).
+##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.
 ## ✔★ THE FOUR §23 DESIGN DECISIONS ARE MADE (Nick, 2026-07-31). Recorded in port/DECISIONS.md —
 ##   a NEW live record, so the supplied v4.0 plan stays the reference it was delivered as.
 ##     1. bred `fed` → INHERIT 50% OF THE LOWER PARENT. Breeding is not sharing: BOTH parents are
