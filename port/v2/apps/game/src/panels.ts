@@ -7,7 +7,8 @@
 export interface PanelDef {
   id: string;
   el: HTMLElement;
-  btn?: HTMLElement | null;
+  /* a surface can have several homes (dock on phone, rail on desktop) */
+  btns?: Array<HTMLElement | null>;
   onOpen?: () => void;
 }
 
@@ -46,13 +47,13 @@ export function openPanel(id: string): void {
   if (!def) return;
   def.onOpen?.();
   def.el.style.display = 'block';
-  def.btn?.classList.add('on');
+  for (const b of def.btns || []) b?.classList.add('on');
 }
 export function closePanels(except?: string): void {
   for (const p of PANELS) {
     if (p.id === except) continue;
     p.el.style.display = 'none';
-    p.btn?.classList.remove('on');
+    for (const b of p.btns || []) b?.classList.remove('on');
   }
 }
 export function togglePanel(id: string): void {
@@ -71,9 +72,9 @@ document.addEventListener('pointerdown', (e) => {
   if (t.closest(MODAL_SEL)) return;
   for (const p of PANELS) {
     if (p.el.contains(t)) return;
-    if (p.btn && p.btn.contains(t)) return;
+    for (const b of p.btns || []) if (b && b.contains(t)) return;
   }
-  if (t.closest('#dock') || t.closest('#survey') || t.closest('#topbar')) return;
+  if (t.closest('#dock') || t.closest('#survey') || t.closest('#topbar') || t.closest('#raillft')) return;
   closePanels();
 });
 document.addEventListener('click', (e) => {

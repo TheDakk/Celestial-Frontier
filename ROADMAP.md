@@ -456,10 +456,32 @@
 ##   LAW BROKEN' named FAIL); slice-settings.png joins the visual record.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS (0 fails, 11 controls standing) ·
 ##   proofsheet regenerated · main.js untouched.
-##   ▶ NEXT IN PHASE 4: Compendium detail cards (statBlockHTML needs the app seam) ·
-##   the training port (--tut-bot contract, 21 steps) · Records/Atlas read-only
-##   panels · playRaritySting on first-discovery · CMB band-pick · panel focus
-##   restoration + Escape order (the game's focus laws).
+##   ✔★★★ GOLDEN-LAYOUT PARITY (2026-08-01, batch 8 — Nick: "keep the positioning we
+##   paid for"): the chrome RE-HOMED to the golden screens' exact geometry, checked
+##   against ui-main-desktop/phone.png at full res — the top is FLOATING PILLS on the
+##   canvas, NOT a solid bar (the first shell's glass header was a divergence; killed).
+##   Player chip top-LEFT (uppercase letter-spaced, the game's voice) with the ❤ HP
+##   BAR beneath (green-gradient track — an inline-span height collapse briefly
+##   rendered 100/100 as EMPTY; display:block, the min-height-law family) · ✦ Prime
+##   Codex n/9 pill top-CENTER (gold border, live primeFill count; display-only until
+##   the prime panel ports — no dead buttons) · the TRAIL beneath it, centered
+##   small-caps with the current segment lit (#trail's own markup semantics) ·
+##   objective chip LEFT @26vh (both goldens) · caption ABOVE hint pill, bottom-center
+##   · ≤900px: the round-icon DOCK bottom-center (phone golden) · >900px: Compendium
+##   rides the LEFT RAIL, the round cluster sits BOTTOM-RIGHT, dock-codex hides (the
+##   ROADMAP-#11 rail lesson made structural). panels.ts grew multi-home buttons
+##   (dock + rail share one panel, both light up). ★ THE GEOMETRY CONTRACT is a smoke
+##   leg now (uilayout discipline): real bounding boxes vs the golden positions on
+##   BOTH viewports, WITH a live self-control — the checker moves the objective chip,
+##   must catch it, restores (reproduce-the-reported-geometry law) — so a silent
+##   layout drift fails the run by name. Determinism cameo: 'Seizecy Galaxy' renders
+##   at the golden's exact spot with the golden's exact name.
+##   Gates: vitest 22/220 · tsc clean · smoke PASS (12 standing controls) ·
+##   proofsheet regenerated · main.js untouched.
+##   ▶ NEXT IN PHASE 4: Compendium detail cards (statBlockHTML seam) · the training
+##   port (--tut-bot contract, 21 steps) · search bar (top-right golden slot; needs
+##   decodeWhere paste flow) · Records/Atlas panels · focus restoration + Escape
+##   order · playRaritySting · CMB band-pick.
 ##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone ·
 ##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
