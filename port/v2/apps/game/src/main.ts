@@ -16,7 +16,8 @@ import {
   homeUniverse, galaxyCell, galaxyCellWindow, systemScene,
   GR, GCELL, type NavState, type GalaxyNode,
 } from '@cf/scene';
-import { galaxyProfile } from '@cf/domain-worldgen';
+import { galaxyProfile, galaxyHaze } from '@cf/domain-worldgen';
+import { decoSprite, getPlanetSprite } from '@cf/art';
 import { installCaptureHooks } from '@cf/domain-descriptors';
 import { createSaveRepository, createIndexedDBBackend } from '@cf/persistence';
 
@@ -67,7 +68,29 @@ function drawUniverse(): void {
 function drawGalaxy(galSeed: number): void {
   world.removeChildren();
   const prof = galaxyProfile(galSeed) as Record<string, unknown>;
+  /* THE HAZE — unresolved starlight matching the exact star-density math
+     (verbatim galaxyHaze; D-HAZE's render-layer ownership starts here) */
+  const hazeSpr = new Sprite(Texture.from(galaxyHaze(galSeed, prof) as HTMLCanvasElement));
+  hazeSpr.anchor.set(0.5);
+  hazeSpr.scale.set((2 * GR) / 2048);
+  world.addChild(hazeSpr);
   const w = galaxyCellWindow(-GR * 1.2, -GR * 1.2, GR * 1.2, GR * 1.2);
+  /* deco pass UNDER the stars, Renderer sizes (main.js ~4131): nebulae ×2.3
+     at −1.15·rr, planetary shells ×2.4 at −1.2·rr. 'open' clusters need the
+     starSprite painter (not yet lifted — recorded); skipped this pass. */
+  for (let cx = w.cx0; cx <= w.cx1; cx++) for (let cy = w.cy0; cy <= w.cy1; cy++) {
+    for (const dc of galaxyCell(galSeed, prof, cx, cy).deco) {
+      if (dc.k === 'h2' || dc.k === 'neb' || dc.k === 'mol' || dc.k === 'plan' || dc.k === 'rem') {
+        const f = dc.k === 'plan' ? 1.2 : 1.15;
+        const spr = new Sprite(Texture.from(decoSprite(dc)));
+        spr.anchor.set(0.5);
+        const rr = (dc.rr as number) || 8;
+        spr.position.set(dc.x, dc.y);
+        spr.width = rr * 2 * f; spr.height = rr * 2 * f;
+        world.addChild(spr);
+      }
+    }
+  }
   for (let cx = w.cx0; cx <= w.cx1; cx++) for (let cy = w.cy0; cy <= w.cy1; cy++) {
     for (const s of galaxyCell(galSeed, prof, cx, cy).stars) {
       const dot = new Graphics().circle(0, 0, s.s * 1.6).fill(s.c);
@@ -86,10 +109,19 @@ function drawSystem(starSeed: number): void {
   world.addChild(star);
   for (const p of sys.planets) {
     world.addChild(new Graphics().circle(0, 0, p.orb).stroke({ width: 0.5, color: 0x2a3a55 }));
-    const dot = new Graphics().circle(0, 0, 4).fill(p.type === 'gas' ? 0xd8b27e : p.type === 'terran' ? 0x7fc4e8 : 0x9aa7bb);
-    dot.position.set(p.orb, 0);
-    if (p.ring) dot.addChild(new Graphics().ellipse(0, 0, 9, 3).stroke({ width: 1, color: 0xcbb98a }));
-    world.addChild(dot);
+    /* THE REAL SURFACES: verbatim getPlanetSprite painters (noise-lit,
+       type-true), sized by the world's own sizeMul */
+    const px = 12 * ((p.P.sizeMul as number) || 1);
+    const spr = new Sprite(Texture.from(getPlanetSprite(p.P)));
+    spr.anchor.set(0.5);
+    spr.width = px; spr.height = px;
+    spr.position.set(p.orb, 0);
+    world.addChild(spr);
+    if (p.ring) {
+      const ring = new Graphics().ellipse(0, 0, px * 1.1, px * 0.35).stroke({ width: 1, color: 0xcbb98a, alpha: 0.8 });
+      ring.position.set(p.orb, 0);
+      world.addChild(ring);
+    }
   }
 }
 
