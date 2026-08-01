@@ -9,6 +9,6 @@ export function starsInCell(seed: number, prof: Record<string, unknown>, cx: num
 export function fineStarsInCell(seed: number, prof: Record<string, unknown>, cx: number, cy: number): unknown;
 export function systemFor(seed: number): StarSystem;
 export function supernovaSites(seed: number, n: number): unknown;
-export function galaxyHaze(seed: number): unknown;
+export function galaxyHaze(seed: number, prof: Record<string, unknown>): unknown;   /* browser-only (canvas) — the lint's documented exception */
 export const FCELL: number;
 export const UNOISE: unknown;

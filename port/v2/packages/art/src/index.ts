@@ -13,11 +13,30 @@
    old build's deferred-bake machinery (that was a boot-perf device for a
    1.9MB single file; the slice bakes on first sight and caches). */
 import { GAL_SPRITES, GAL_KIND, makeGalaxySprite, GAL_SPRITE_SEEDS } from './galaxyart.verbatim.js';
+import { decoSprite, _quasarSpr } from './artextras.verbatim.js';
 
 export { GAL_SPRITES, GAL_KIND, makeGalaxySprite, GAL_SPRITE_SEEDS };
+export { decoSprite, _quasarSpr };
+export { planetThumb, starThumb, galaxyThumb, moonThumb, cometThumb, beltThumb, getPlanetSprite } from './thumbart.verbatim.js';
 
 const _GKIND_SHORT: Record<string, string> = { spiral: 'spiral', barred: 'barred', lenticular: 'lent', elliptical: 'ellip', irregular: 'irr' };
 const _cache = new Map<number, HTMLCanvasElement>();
+
+/* ThumbArt's verbatim bodies reach four app-layer names as FREE identifiers.
+   Installed here at MODULE LOAD (this package is browser-only anyway):
+   - _hdLater: the old build's deferred-HD-bake scheduler → plain setTimeout
+   - getGalaxySprite: → galSpriteFor (per-seed always — the deferral was a
+     1.9MB-boot device the slice does not need)
+   - CARD_FACTS: the survey-card tint cache. ⚠ descriptors' _cardFactsSet
+     writes to ITS OWN module map, not this global — until they are unified
+     (recorded in DEVIATIONS as part of D-STRAYS), thumbs painted BEFORE a
+     descriptor runs use the deterministic default tint. Honest state.
+   - _quasarSpr: lifted verbatim (artextras). */
+const g0 = globalThis as unknown as Record<string, unknown>;
+g0._hdLater ??= (fn: () => void, ms: number) => setTimeout(fn, ms);
+g0.getGalaxySprite ??= (g: { seed: number; sp: number; quasar?: boolean }) => galSpriteFor(g);
+g0.CARD_FACTS ??= new Map();
+g0._quasarSpr ??= _quasarSpr;
 
 export function galSpriteFor(g: { seed: number; sp: number; quasar?: boolean }): HTMLCanvasElement {
   if (g.quasar) return (GAL_SPRITES[g.sp] || GAL_SPRITES[0]) as HTMLCanvasElement;
