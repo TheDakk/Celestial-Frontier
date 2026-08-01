@@ -16,3 +16,4 @@
      the backup" (CF-RR-002's reset law). */
 export * from './repository.js';
 export * from './import-v2.js';
+export * from './export-v2.js';
