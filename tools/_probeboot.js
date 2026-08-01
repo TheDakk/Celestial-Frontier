@@ -52,7 +52,11 @@ function bootProbe(opts) {
   const dom = new JSDOM(fs.readFileSync(PROBE_BUILD, 'utf8'), {
     runScripts: 'dangerously',
     pretendToBeVisual: true,
-    url: 'file:///game/celestial-frontier.html',
+    /* default stays file:// (the fingerprint/golden realm). ⚠ file:// is an
+       OPAQUE ORIGIN in jsdom — localStorage THROWS there. A caller that needs
+       working storage (savefixtures.js) passes the same non-opaque origin
+       smoke.js's pre-seeded boots already use. */
+    url: opts.url || 'file:///game/celestial-frontier.html',
     virtualConsole: vc,
     beforeParse(window) {
       const proto = window.HTMLCanvasElement.prototype;
@@ -63,6 +67,12 @@ function bootProbe(opts) {
       };
       proto.toDataURL = function () { return 'data:image/png;base64,'; };
       window.addEventListener('error', (ev) => errors.push('window.onerror: ' + (ev.message || String(ev.error))));
+      /* OPTIONAL pre-boot hook (savefixtures.js): runs BEFORE any game script
+         executes — the only place a fixture save can be seeded into
+         localStorage so the game's own boot-time loadSaveWithRecovery loads
+         it, exactly as on a player device. `pre` (below) is post-boot and
+         cannot do this. Existing callers pass nothing and are unaffected. */
+      if (opts.beforeBoot) { try { opts.beforeBoot(window); } catch (e) { errors.push('beforeBoot: ' + e.message); } }
     },
   });
   const { window } = dom;
