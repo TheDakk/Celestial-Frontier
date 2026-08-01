@@ -43,6 +43,9 @@ export interface ContentRegistry {
 export interface CodexEntry {
   id: string; name: string; kind: string; tier: number | null;
   realm: string; sapient: number; from: string; hybrid: boolean; g: Record<string, unknown>;
+  /* not in the probe snapshot (never captured) but buildSave re-writes it —
+     carried so export→import round-trips; parity projection excludes it */
+  where: Record<string, unknown> | null;
 }
 export interface SaveStateV2 {
   EPOCH_BASE: number; essence: number; explorerName: string; lastAnomKey: string | null;
@@ -257,7 +260,7 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
         id, name, kind: d.kind, tier: grade && typeof grade.tier === 'number' ? grade.tier : null,
         realm: classifyRealm(g), sapient: sapienceTier(g),
         from: from || 'Unknown world', hybrid: !!(g as { parents?: unknown }).parents,
-        g: _sg as Record<string, unknown>,
+        g: _sg as Record<string, unknown>, where,
       };
       codex.set(id, entry);
       /* onSpeciesStored's DERIVED stats — recomputed as the codex restores,
