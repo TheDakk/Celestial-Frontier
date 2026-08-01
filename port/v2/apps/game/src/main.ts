@@ -24,7 +24,7 @@ import {
   _quasarSpr, _visitorSpr, _comaSpr, _vtrailSpr,
 } from '@cf/art';
 import { initAudio, playWhoosh, playSurveyPing, applySfxGain } from '@cf/audio';
-import { registerPanel, fillPanel, togglePanel, closePanels, openPanelId } from './panels.js';
+import { registerPanel, fillPanel, togglePanel, openPanel, closePanels, openPanelId } from './panels.js';
 import {
   NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, viewToNav,
   universeGalaxies, galaxyCell, galaxyCellWindow, systemScene,
@@ -38,6 +38,7 @@ import { galaxyName, starName, properName } from '@cf/domain-naming';
 import { createEpochClock, type EpochClock } from '@cf/domain-progression';
 import { mulberry32, hashInt, TAU } from '@cf/domain-rand';
 import { installCaptureHooks, planetDescriptor, describePick, SOL_MOONS, galaxyStats, fmtBig, type Descriptor } from '@cf/domain-descriptors';
+import { encodeWhere, decodeWhere, _sanitizeView } from '@cf/domain-strays';
 import {
   createSaveRepository, createIndexedDBBackend,
   importSaveV2, exportSaveV2, type SaveStateV2, type ContentRegistry,
@@ -219,14 +220,17 @@ function fillSettings(): void {
 /* ---- COMPENDIUM (read-only over the save's codex — the real catalog).
    Large catalogs get virtualization later (plan bullet); the list caps at
    the save's own 1500-entry bound today. ---- */
-function fillCodex(): void {
+function fillCodex(filter?: string): void {
   if (!save) return;
-  const n = save.codex.length;
+  const f = (filter || '').toLowerCase();
+  const rows = f
+    ? save.codex.filter(([, e]) => (e.name + ' ' + e.kind + ' ' + e.realm).toLowerCase().includes(f))
+    : save.codex;
   fillPanel('codex',
-    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${n}</span></h3>` +
-    (n === 0
-      ? '<div class="empty">No species yet — the Compendium fills as you discover life.</div>'
-      : save.codex.map(([, e]) =>
+    `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${rows.length}</span>${f ? ` <span class="sub" style="color:#8fa3c4;font-size:12px">· “${esc(filter)}”</span>` : ''}</h3>` +
+    (rows.length === 0
+      ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — the Compendium fills as you discover life.'}</div>`
+      : rows.map(([, e]) =>
         `<div class="centry" data-sel="codex-entry"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><div class="sub">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</div></div>`).join('')));
 }
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
@@ -234,6 +238,53 @@ registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [
 document.getElementById('docksets')!.addEventListener('click', () => togglePanel('set'));
 document.getElementById('dockcodex')!.addEventListener('click', () => togglePanel('codex'));
 document.getElementById('railcodex')!.addEventListener('click', () => togglePanel('codex'));
+
+/* ---- THE SEARCH BAR (the goldens' top-right slot): paste a CF1 where-code
+   and TRAVEL there (decodeWhere → the sanitized view → the same charter
+   gates as every other descent), or type a name to filter the Compendium. */
+const searchEl = document.getElementById('searchbox') as HTMLInputElement;
+function encodeHere(): string | null {
+  const v = navToView(nav);
+  if (!v) return null;
+  return encodeWhere(v as never) as string;
+}
+function jumpToView(view: Record<string, unknown>): boolean {
+  const v = _sanitizeView(view);
+  if (!v) return false;
+  const n2 = viewToNav(v);
+  if (n2.mode !== 'universe' && n2.gal) {
+    if (!withinReachOf(primeCount(), n2.gal.x, n2.gal.y)) {
+      toast('⬆ Beyond Your Charter', ascHintFor(ascStage()));
+      return false;
+    }
+    if (n2.star && !ascAllowsStar(ascStage(), n2.gal.seed, n2.star)) {
+      toast('⬆ Beyond Your Charter', ascHintFor(ascStage()));
+      return false;
+    }
+  }
+  nav = n2;
+  if (nav.mode === 'galaxy') { gz0 = 0.42 * minWH() / GR; camT.z = gz0 * 1.05; }
+  else if (nav.mode === 'system') { sz0 = 0.40 * minWH() / SYS_R; camT.z = sz0 * 1.05; }
+  else camT.z = 1;
+  cam.z = camT.z * 0.7; cam.x = camT.x = 0; cam.y = camT.y = 0;
+  playWhoosh();
+  rerender();
+  return true;
+}
+searchEl.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const q = searchEl.value.trim();
+  if (!q) return;
+  const dec = decodeWhere(q) as { where: Record<string, unknown>; name: string | null } | null;
+  if (dec && dec.where) {
+    if (jumpToView(dec.where)) searchEl.value = '';
+    searchEl.blur();
+    return;
+  }
+  /* not a code — a Compendium name filter */
+  openPanel('codex');
+  fillCodex(q);
+});
 sheet.querySelector('#importclose')!.addEventListener('click', () => { sheet.style.display = 'none'; });
 sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
   const f = (e.target as HTMLInputElement).files?.[0];
@@ -1285,9 +1336,12 @@ function surveyAndLand(p: PlanetNode, starSeed: number): void {
 function drawSurface(p: PlanetNode): void {
   /* surface mode, slice edition: the world fills the view as its painterly
      surface (full biome scenes are Phase 6); the survey card carries the
-     roster — every species row is real Ecology output */
+     roster — every species row is real Ecology output.
+     FIT the globe to the viewport (phone catch: at z=1 the 420px master
+     overfilled a 390px screen as blur; the globe should present itself) */
   clearWorld();
   const R = 210;
+  const fitZ = Math.min(1, (minWH() * 0.78) / (R * 2));
   const spr = new Sprite(Texture.from(getPlanetSprite(p.P, 1024)));
   spr.anchor.set(0.5);
   spr.width = R * 2; spr.height = R * 2;
@@ -1314,7 +1368,7 @@ function drawSurface(p: PlanetNode): void {
     world.addChild(wrap);
     surfClouds = { a, b, w: R * 2 };
   }
-  cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0; camT.z = 1; cam.z = 0.8;
+  cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0; camT.z = fitZ; cam.z = fitZ * 0.8;
 }
 function goUp(): void {
   const wasGal = nav.gal, wasStar = nav.star;
@@ -1475,6 +1529,7 @@ async function loadSave(): Promise<void> {
         },
       }),
       importBlob,   /* Gate C's front door, drivable by the smoke */
+      encodeHere,   /* the share-code round trip, drivable by the smoke */
       descendGalaxy: (seed: number) => {
         const g = uniNodes.find((n) => n.seed === seed);
         if (!g) return false;
@@ -1646,5 +1701,13 @@ async function loadSave(): Promise<void> {
     camT.z = z2;
   }, { passive: false });
   app.canvas.addEventListener('contextmenu', (e) => { e.preventDefault(); hideSurvey(); goUp(); });
-  addEventListener('keydown', (e) => { if (e.key === 'Escape') { hideSurvey(); goUp(); } });
+  addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    /* the Escape ORDER (the game's focus law): a focused search field
+       yields first, then panels, then the survey card, then ascent */
+    if (document.activeElement === searchEl) { searchEl.blur(); return; }
+    if (openPanelId()) { closePanels(); return; }
+    if (card.style.display !== 'none') { hideSurvey(); return; }
+    goUp();
+  });
 })();
