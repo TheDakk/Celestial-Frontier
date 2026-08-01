@@ -221,10 +221,22 @@
 ##   ARCHITECTURE RULE: composition pure under vitest; apps/game (NOT yet created) is a dumb
 ##   Pixi renderer over it. ✔ PIN DECIDED: pixi.js 8.19.0 (stable caught up to the spike —
 ##   Addendum D's drift note resolved) · vite 8.2.0.
-##   ▶ NEXT IN PHASE 3: apps/game scaffold (Vite+Pixi shell drawing universe nodes; add
-##   'apps/*' to port/v2 workspaces) · galaxy-mode composition (starsInCell) · system-mode
-##   (systemFor: planets/rings/moons + occlusion order as PURE z-order data) · camera math ·
-##   input mapping · the save/reload leg via @cf/persistence + IndexedDB (its browser proof).
+##   ✔ system-mode composition LANDED (3148db6): systemScene — Sol pins its own descent
+##   (8 planets in strict orbit order, Earth 133, Saturn ringed; P objects asserted to be the
+##   MEMOIZED originals — the systemSol lesson as a structural test).
+##   ★ QUALITY PASS same stretch (ad82b65): mechanical field differential importer/exporter vs
+##   loadSave/doSave = complete both ways; found+fixed ONE real parity bug (chp/ascp/prime:
+##   the game's typeof gates let ARRAYS pass — chp:[7] ⇒ chProg:{'0':7}; my stricter guards
+##   dropped it; new fixture hostile_arrays_as_objects pins the class, controlled both ways).
+##   ★ port/v2/DEVIATIONS.md — THE IMPROVEMENT LEDGER: every found imperfection the port can
+##   beat, parity-first until Nick approves (D-9i string maxGen · D-9e dead fauna filter ·
+##   D-LOC locale text · D-HAZE layering · D-RNG SessionRNG wiring · D-NOTIF-T · D-AUDIO-CAP),
+##   plus what's already structurally better at zero parity cost.
+##   ▶ NEXT IN PHASE 3: galaxy-mode composition — ⚠ READ THE RENDERER'S CELL ITERATION FIRST
+##   (main.js drawGalaxy/starsInCell caller): naive small-cell scans return empty; do not
+##   enshrine a guessed convention · apps/game scaffold (Vite 8.2.0 + Pixi 8.19.0 shell over
+##   @cf/scene; add 'apps/*' to port/v2 workspaces) · camera math · input mapping · the
+##   save/reload leg via @cf/persistence + IndexedDB (its browser proof).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.
