@@ -279,6 +279,15 @@ try {
       if (!surveyed.rows.includes(want)) fails.push('survey card missing the "' + want + '" row (rows: ' + surveyed.rows.join(', ') + ')');
     }
   }
+  /* THE LIVING PLANETSIDE: Earth's ground survey shows its real roster,
+     each specimen wearing an hdart portrait */
+  const side = await evalIn(`(()=>{ const el=document.getElementById('planetside');
+    if(!el || el.style.display==='none') return { on:false };
+    const sp=[...el.querySelectorAll('[data-sel=planetside-sp]')];
+    const imgs=sp.filter(x=>x.querySelector('img') && String(x.querySelector('img').src||'').length>2000).length;
+    return { on:true, n:sp.length, imgs }; })()`);
+  if (!side.on || !(side.n >= 3)) fails.push('the planetside strip did not show Earth’s roster: ' + JSON.stringify(side));
+  else if (!(side.imgs >= 3)) fails.push('planetside portraits did not paint: ' + JSON.stringify(side));
   const stSurf = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (stSurf.mode !== 'surface') fails.push('landing did not reach surface mode: ' + stSurf.mode);
   if (!/Earth/.test(stSurf.trail)) fails.push('surface trail missing Earth: ' + JSON.stringify(stSurf.trail));

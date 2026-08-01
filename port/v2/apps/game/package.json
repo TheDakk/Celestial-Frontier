@@ -23,7 +23,9 @@
     "@cf/domain-naming": "*",
     "@cf/domain-genome": "*",
     "@cf/domain-combatcore": "*",
-    "@cf/domain-strays": "*"
+    "@cf/domain-strays": "*",
+    "@cf/domain-ecology": "*",
+    "@cf/domain-surveyphrases": "*"
   },
   "devDependencies": {
     "vite": "8.2.0"
