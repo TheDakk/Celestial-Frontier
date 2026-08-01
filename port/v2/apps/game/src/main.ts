@@ -36,6 +36,8 @@ import {
   GR, GCELL, type NavState, type GalaxyNode, type PlanetNode,
 } from '@cf/scene';
 import { galaxyProfile, galaxyHaze, systemFor, fineStarsInCell, FCELL, galaxyWormhole, supernovaSites, galaxiesInCell, UNOISE } from '@cf/domain-worldgen';
+import { planetSpecies } from '@cf/domain-ecology';
+import { climateBand } from '@cf/domain-surveyphrases';
 import { SYS_R, UCELL, OBS_R, HOME_POS } from '@cf/domain-worldconfig';
 import { galaxyName, starName, properName } from '@cf/domain-naming';
 import { createEpochClock, type EpochClock } from '@cf/domain-progression';
@@ -1377,6 +1379,7 @@ function rebuildSystemHD(): void {
 /* ---- navigation (every transition through the tested state machine) ---- */
 function rerender(): void {
   hideSurvey();
+  if (nav.mode !== 'surface') sideEl.style.display = 'none';
   stSeam.gal = nav.gal; stSeam.star = nav.star;   /* the describePick seam stays true */
   if (nav.mode === 'universe') drawUniverse();
   else if (nav.mode === 'galaxy' && nav.gal) drawGalaxy(nav.gal.seed);
@@ -1429,6 +1432,50 @@ function descendSystem(star: { seed: number; x: number; y: number }): void {
     rerender();
   }
 }
+/* the biosphere REPLICA (the game's own endorsed pattern, main.js 4338:
+   "same rng stream (seed^0x1234567), same draw order — the values are
+   identical"). Body verbatim from main.js 2486-2519; only the level→key
+   pair is consumed here. */
+function biosphereReplica(P: Record<string, unknown>, sys: Record<string, unknown>, band: string, r: () => number): { key: string } {
+  if (P.seed === 133) return { key: 'earth' };
+  if (sys && (sys as { sol?: boolean }).sol) return { key: 'none' };
+  if (P.seed === 134) return { key: 'microbial' };
+  let level: string;
+  const type = P.type as string;
+  if (type === 'terran' && band === 'temperate') level = r() < 0.82 ? 'complex' : 'flora';
+  else if (type === 'terran' && band === 'cold') level = r() < 0.55 ? 'sparse' : (r() < 0.7 ? 'flora' : 'microbial');
+  else if (type === 'terran' && band === 'hot') level = r() < 0.4 ? 'sparse' : (r() < 0.7 ? 'microbial' : 'none');
+  else if (type === 'ocean' && band === 'temperate') level = r() < 0.78 ? 'aquatic' : 'flora';
+  else if (type === 'ocean' && band === 'cold') level = r() < 0.55 ? 'aquatic' : 'subsurface';
+  else if (type === 'ocean' && band === 'hot') { const v = r(); level = v < 0.01 ? 'xfauna' : (v < 0.35 ? 'microbial' : 'none'); }
+  else if (type === 'desert' && band === 'temperate') { const v = r(); level = v < 0.6 ? 'sparse' : (v < 0.615 ? 'xfauna' : 'microbial'); }
+  else if (type === 'desert') { const v = r(); level = v < 0.3 ? 'sparse' : (v < 0.315 ? 'xfauna' : 'microbial'); }
+  else if (type === 'ice') { const v = r(); level = v < 0.012 ? 'xfauna' : (v < 0.5 ? 'subsurface' : (r() < 0.7 ? 'microbial' : 'none')); }
+  else if (type === 'rocky') { const v = r(); level = v < 0.003 ? 'xfauna' : (v < 0.18 ? 'microbial' : 'none'); }
+  else if (type === 'venus') { const v = r(); level = v < 0.001 ? 'xfauna' : (v < 0.12 ? 'aerial' : 'none'); }
+  else if (type === 'lava') { const v = r(); level = v < 0.0004 ? 'xfauna' : (v < 0.1 ? 'microbial' : 'none'); }
+  else if (type === 'gas') { const v = r(); level = v < 0.0025 ? 'xfauna' : (v < 0.14 ? 'aerial' : 'none'); }
+  else level = 'none';
+  return { key: level };
+}
+function worldRoster(p: PlanetNode, starSeed: number): Array<Record<string, unknown>> {
+  try {
+    const sys = systemFor(starSeed) as Record<string, unknown>;
+    const P = p.P;
+    const r = mulberry32(((P.seed as number) ^ 0x1234567) >>> 0);
+    const band = climateBand(P as never, sys as never, p.orb) as string;
+    const bio = biosphereReplica(P, sys, band, r);
+    let species: Array<Record<string, unknown>> = [];
+    if (P.seed === 133) {
+      species = planetSpecies(P as never, sys as never, band, 'complex') as never;
+      (globalThis as { _earthNamePass?: (s: unknown) => void })._earthNamePass?.(species);
+    } else if (bio.key !== 'none') {
+      species = planetSpecies(P as never, sys as never, band, bio.key) as never;
+    }
+    return species.slice(0, 8);
+  } catch { return []; }
+}
+
 /* THE GAME'S TRUE TWO-STEP (find-earth/land training steps depend on it):
    a tap SURVEYS — the card opens with its ACTION ROW (Land · + Add to Star
    Atlas · ⧉ share code); pressing LAND is its own act. */
@@ -1505,6 +1552,31 @@ card.addEventListener('click', (e) => {
     }
   }
 });
+const sideEl = document.createElement('div');
+sideEl.id = 'planetside';
+sideEl.className = 'glass';
+sideEl.style.cssText = 'position:fixed;left:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 148px);' +
+  'max-width:min(560px,72vw);display:none;z-index:14;border-radius:12px;padding:8px 10px;' +
+  'overflow-x:auto;white-space:nowrap;scrollbar-width:thin';
+document.body.appendChild(sideEl);
+function fillPlanetside(p: PlanetNode, starSeed: number): void {
+  /* THE LIVING PLANETSIDE: the world's REAL roster (planetSpecies through
+     the biosphere replica), each wearing its hdart portrait — the strip is
+     Phase 4 chrome; the full walkable vista is Phase 6's. */
+  const roster = worldRoster(p, starSeed);
+  if (!roster.length) { sideEl.style.display = 'none'; return; }
+  sideEl.innerHTML = '<div style="font-size:10.5px;letter-spacing:0.06em;color:#8fa3c4;margin:0 0 6px">PLANETSIDE — the ground survey</div>' +
+    roster.map((g) => {
+      let th = '';
+      try { th = speciesThumb(g as never); } catch { /* text chip still reads */ }
+      let nm = String((g as { _earthName?: string })._earthName || '');
+      if (!nm) { try { nm = String((describeSpecies(g as never) as { name?: string }).name || ''); } catch { nm = 'specimen'; } }
+      return '<span data-sel="planetside-sp" style="display:inline-block;text-align:center;margin-right:8px;vertical-align:top">' +
+        (th ? '<img src="' + th + '" alt="" style="width:64px;height:64px;border-radius:10px;border:1px solid #22304a;background:#0b1220">' : '') +
+        '<div style="font-size:10px;color:#b7c8e4;max-width:72px;overflow:hidden;text-overflow:ellipsis">' + esc(nm) + '</div></span>';
+    }).join('');
+  sideEl.style.display = 'block';
+}
 function drawSurface(p: PlanetNode): void {
   /* surface mode, slice edition: the world fills the view as its painterly
      surface (full biome scenes are Phase 6); the survey card carries the
@@ -1541,6 +1613,7 @@ function drawSurface(p: PlanetNode): void {
     surfClouds = { a, b, w: R * 2 };
   }
   cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0; camT.z = fitZ; cam.z = fitZ * 0.8;
+  if (nav.star) fillPlanetside(p, nav.star.seed);
 }
 function goUp(): void {
   const wasGal = nav.gal, wasStar = nav.star;
@@ -1707,6 +1780,36 @@ async function loadSave(): Promise<void> {
 (async () => {
   await app.init({ background: 0x05070d, resizeTo: window, antialias: true, resolution: DPR });
   document.body.appendChild(app.canvas);
+  /* THE BACKDROP (drawBackdrop, main.js 3560 — verbatim recipe): the seeded
+     900-star field under a deep radial wash, rebuilt per viewport, screen-
+     space behind the world. The flat black is gone at every mode. */
+  const bgSpr = new Sprite();
+  bgSpr.eventMode = 'none';
+  app.stage.addChild(bgSpr);
+  const bgStars: Array<{ x: number; y: number; s: number; o: number }> = [];
+  { const r = mulberry32(5); for (let i = 0; i < 900; i++) bgStars.push({ x: r(), y: r(), s: r() * 1.1 + 0.2, o: r() * 0.5 + 0.15 }); }
+  let _bgKey = '';
+  const rebuildBackdrop = (): void => {
+    const W = app.screen.width, H = app.screen.height;
+    const k = W + '|' + H;
+    if (k === _bgKey || W < 2) return;
+    _bgKey = k;
+    const cv = document.createElement('canvas');
+    cv.width = Math.max(1, Math.round(W * DPR)); cv.height = Math.max(1, Math.round(H * DPR));
+    const g = cv.getContext('2d')!; g.scale(DPR, DPR);
+    const bg = g.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, Math.max(W, H) * 0.75);
+    bg.addColorStop(0, '#0a0a1e'); bg.addColorStop(0.6, '#05050f'); bg.addColorStop(1, '#020208');
+    g.fillStyle = bg; g.fillRect(0, 0, W, H);
+    g.fillStyle = '#aab4e0';
+    for (const s of bgStars) { g.globalAlpha = s.o * 0.5; g.fillRect(s.x * W, s.y * H, s.s, s.s); }
+    g.globalAlpha = 1;
+    const old = bgSpr.texture;
+    bgSpr.texture = Texture.from(cv);
+    bgSpr.width = W; bgSpr.height = H;
+    if (old && old !== Texture.EMPTY) old.destroy(true);
+  };
+  rebuildBackdrop();
+  addEventListener('resize', () => setTimeout(rebuildBackdrop, 50));
   app.stage.addChild(world);
   /* diagnostics handle for tools/slicesmoke.mjs — a WebGL canvas reads BLACK
      through 2D drawImage without preserveDrawingBuffer, so the smoke asks

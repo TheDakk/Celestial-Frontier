@@ -608,10 +608,26 @@
 ##   Phase 4 payload budget).
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS (18 controls) · proofsheet
 ##   regenerated · main.js untouched.
-##   ▶ NEXT: Phase 5 proper — the encounter/duel surfaces over the portrait engine ·
-##   the cache/specimen/feed/breed lessons the training arc waits on · Settings
-##   "Restart training" · Charters panel · playRaritySting on discovery · bundle
-##   code-split (hdart lazy) · codex virtualization.
+##   ✔★★★ THE UNIVERSE FILLS IN (2026-08-01, batch 14): · THE BACKDROP (drawBackdrop,
+##   main.js 3560 — verbatim recipe): the seeded 900-star field under the deep radial
+##   wash, screen-space behind the world, rebuilt per viewport — the flat black is
+##   gone at every mode. · ★ THE LIVING PLANETSIDE: landing now shows the world's
+##   REAL roster — planetSpecies through a BIOSPHERE REPLICA (the game's own
+##   endorsed pattern, main.js 4338: "same rng stream, same draw order — identical
+##   values"; body verbatim 2486-2519), Earth's cradle roster through _earthNamePass
+##   (Edelweiss · Milkweed · Green Algae · Mangosteen · Mildew · Giant Puffball…),
+##   every specimen wearing its hdart portrait in a planetside strip (Phase 4
+##   chrome; Phase 6 owns the walkable vista). Epoch-aware by construction — the
+##   roster evolves as COSMIC_EPOCH climbs. SMOKE: strip ≥3 species with ≥3 REAL
+##   painted portraits (>2KB srcs) asserted on Earth. Perf: painted 1,200ms /
+##   answerable 1,875ms @4× (the backdrop actually paints EARLIER now — first pixels
+##   before the painterly bake).
+##   Gates: vitest 22/220 · tsc clean · smoke PASS (19 asserted behaviors under
+##   control) · proofsheet regenerated · main.js untouched.
+##   ▶ NEXT: system-view close-up cloud decks (motion-gated, pr·z>22 — _cloudSpr is
+##   lifted, the wiring remains) · encounter/duel surfaces over the portrait engine ·
+##   the Phase-5 training lessons · Settings "Restart training" · Charters panel ·
+##   playRaritySting · hdart lazy-load (payload budget) · codex virtualization.
 ##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone ·
 ##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
