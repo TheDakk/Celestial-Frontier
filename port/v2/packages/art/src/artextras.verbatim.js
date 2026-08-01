@@ -1,9 +1,39 @@
 /* AUTO-LIFTED VERBATIM renderer-section painters from main.js (v1.8.9):
-   _decoSpr (3833-3833) · decoSprite (3834-4008) · _quasarSprC (4804-4804) · _quasarSpr (4805-4878).
-   body sha256/16 bfca20b0a9fabc51. ⚠ DO NOT EDIT. Regenerate: node tools/lift-art-extras.mjs
+   _starSpr (3799-3799) · starSprite (3800-3828) · _decoSpr (3833-3833) · decoSprite (3834-4008) · _quasarSprC (4804-4804) · _quasarSpr (4805-4878).
+   body sha256/16 65e2c50cf4eda859. ⚠ DO NOT EDIT. Regenerate: node tools/lift-art-extras.mjs
    Browser-only (canvas). */
 import { mulberry32, TAU, hashInt } from '@cf/domain-rand';
 
+const _starSpr=new Map();
+function starSprite(col, spike){
+  const key=col+(spike?'+':'');
+  let sp=_starSpr.get(key);
+  if(sp) return sp;
+  const S=64, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  const n=parseInt(col.slice(1),16), cr=(n>>16)&255, cg=(n>>8)&255, cb=n&255;
+  const halo=g.createRadialGradient(C,C,0.4,C,C,C);
+  halo.addColorStop(0,'rgba(255,255,255,0.95)');
+  halo.addColorStop(0.12,'rgba('+cr+','+cg+','+cb+',0.9)');
+  halo.addColorStop(0.30,'rgba('+cr+','+cg+','+cb+',0.28)');
+  halo.addColorStop(0.62,'rgba('+cr+','+cg+','+cb+',0.07)');
+  halo.addColorStop(1,'rgba('+cr+','+cg+','+cb+',0)');
+  g.fillStyle=halo; g.fillRect(0,0,S,S);
+  if(spike){
+    g.globalCompositeOperation='lighter';
+    const sg2=g.createLinearGradient(0,C,S,C);
+    sg2.addColorStop(0,'rgba('+cr+','+cg+','+cb+',0)');
+    sg2.addColorStop(0.5,'rgba(255,255,255,0.55)');
+    sg2.addColorStop(1,'rgba('+cr+','+cg+','+cb+',0)');
+    g.fillStyle=sg2;
+    g.fillRect(0,C-0.7,S,1.4);
+    g.save();g.translate(C,C);g.rotate(Math.PI/2);g.translate(-C,-C);
+    g.fillRect(0,C-0.7,S,1.4);
+    g.restore();
+  }
+  _starSpr.set(key,cv);
+  return cv;
+}
 const _decoSpr=new WeakMap();
 function decoSprite(dc){
   let sp=_decoSpr.get(dc);
@@ -255,4 +285,4 @@ function _quasarSpr(){
   g.fillStyle=q; g.beginPath(); g.arc(C,C,S*0.19,0,TAU); g.fill();
   return _quasarSprC=cv;
 }
-export { decoSprite, _quasarSpr };
+export { decoSprite, _quasarSpr, starSprite };

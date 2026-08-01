@@ -47,6 +47,12 @@ const URL0 = 'http://127.0.0.1:' + server.address().port + '/';
 const udd = path.join(os.tmpdir(), 'cf-slicesmoke-' + Date.now());
 const port = 9333 + (process.pid % 500);
 const edge = spawn(EDGE, ['--headless=new', '--no-sandbox', '--no-first-run',
+  /* Edge's bundled component extensions emit "message channel closed"
+     uncaught rejections into the page on longer runs — browser noise that
+     would fail the zero-error bar for the wrong reason. Suppress the
+     components rather than filtering the error text (a filter would also
+     hide a REAL app error that happened to match). */
+  '--disable-component-extensions-with-background-pages', '--disable-component-update', '--disable-background-networking',
   '--remote-debugging-port=' + port, '--user-data-dir=' + udd, 'about:blank'], { stdio: 'ignore' });
 let browserWs = null;
 for (let t = 0; t < 60 && !browserWs; t++) {
@@ -114,11 +120,41 @@ try {
   const shot2 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-galaxy.png'), Buffer.from(shot2.data, 'base64'));
 
+  /* 3b. THE FULL GATE D DESCENT: into Sol, land on EARTH, the survey card speaks */
+  const landed = await evalIn(`(()=>{ const S=window.__CF_SLICE__; if(!S||!S.api) return 'no api';
+    S.api.descendSystem({ seed: 424242, x: 0, y: 0 });
+    return 'ok'; })()`);
+  if (landed !== 'ok') fails.push('descendSystem: ' + landed);
+  await sleep(1800);   /* eight painterly surfaces bake */
+  const hudSys = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
+  if (!/system · gal 999 · star 424242/.test(hudSys)) fails.push('Sol descent failed: ' + JSON.stringify(hudSys));
+  const shot3 = await send('Page.captureScreenshot', { format: 'png' }, sess);
+  fs.writeFileSync(path.join(OUT, 'slice-sol.png'), Buffer.from(shot3.data, 'base64'));
+  const surveyed = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
+    if(!S.api.landOn(2)) return { ok:false, why:'landOn refused' };
+    const card=document.getElementById('survey');
+    const rows=[...card.querySelectorAll('[data-row]')].map(r=>r.getAttribute('data-row'));
+    const title=(card.querySelector('[data-sel=title]')||{}).textContent;
+    return { ok:true, visible:card.style.display!=='none', title, rows, n:rows.length }; })()`);
+  if (!surveyed.ok || !surveyed.visible) fails.push('survey card did not open: ' + JSON.stringify(surveyed));
+  else {
+    if (surveyed.title !== 'Earth') fails.push('landed planet 2 of Sol but the card says: ' + JSON.stringify(surveyed.title));
+    for (const want of ['Spectral class', 'Life', 'Civilization']) {
+      if (!surveyed.rows.includes(want)) fails.push('survey card missing the "' + want + '" row (rows: ' + surveyed.rows.join(', ') + ')');
+    }
+  }
+  const hudSurf = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
+  if (!/surface/.test(hudSurf)) fails.push('landing did not reach surface mode: ' + JSON.stringify(hudSurf));
+  await sleep(900);
+  const shot4 = await send('Page.captureScreenshot', { format: 'png' }, sess);
+  fs.writeFileSync(path.join(OUT, 'slice-earth.png'), Buffer.from(shot4.data, 'base64'));
+
   /* 4. reload: the IndexedDB view survives (the save/reload leg, for real) */
   await send('Page.navigate', { url: URL0 }, sess);
   await sleep(2500);
   const hud3 = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
-  if (!/galaxy · gal 999/.test(hud3)) fails.push('RELOAD lost the view — IndexedDB persistence failed: ' + JSON.stringify(hud3));
+  /* we landed on Earth before reloading — the SURFACE view must come back */
+  if (!/surface · gal 999 · star 424242/.test(hud3)) fails.push('RELOAD lost the view — IndexedDB persistence failed: ' + JSON.stringify(hud3));
 
   /* 5. zero console errors / exceptions across the whole run */
   const errs = events.filter((e) =>
@@ -134,6 +170,6 @@ try {
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
-console.log('SLICE SMOKE: PASS — booted, painted, descended into the Milky Way, view SURVIVED RELOAD (IndexedDB), zero console errors.');
-console.log('screenshots: apps/game/smoke/slice-universe.png · slice-galaxy.png');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · Milky Way · Sol · LANDED ON EARTH with the survey card speaking (Spectral class/Life/Civilization) · surface view SURVIVED RELOAD (IndexedDB) · zero console errors.');
+console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-earth');
 process.exit(0);
