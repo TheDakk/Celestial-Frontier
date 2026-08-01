@@ -96,7 +96,24 @@ async function run(): Promise<void> {
     sheetUrls[sh.key] = cv.toDataURL('image/png');
   }
   (window as unknown as { __CF_FULL__: { done: boolean } }).__CF_FULL__.done = true;
-  say(`DONE — ${ok}/${total} painted, ${fails.length} failures`);
-  (window as unknown as Record<string, unknown>).__CF_AUDIT__ = { done: true, total, ok, fails, sheetUrls };
+  /* ★ THE DUPLICATE SENTINEL (Nick's Blocker 3, made permanent): two
+     DIFFERENTLY-NAMED Earth species must never render identical pixels.
+     Hash every Earth portrait; any collision fails the audit by name. */
+  const seen = new Map<string, string>();
+  const dupes: string[] = [];
+  for (const sh of sheets) {
+    if (!sh.key.startsWith('earth-')) continue;
+    for (const cell of sh.cells) {
+      if (!cell.url) continue;
+      let h = 0x811C9DC5;
+      for (let i = 0; i < cell.url.length; i += 7) h = Math.imul(h ^ cell.url.charCodeAt(i), 0x01000193) >>> 0;
+      const key = sh.key + ':' + h.toString(16) + ':' + cell.url.length;
+      const prev = seen.get(key);
+      if (prev && prev !== cell.name) dupes.push(prev + ' = ' + cell.name);
+      else seen.set(key, cell.name);
+    }
+  }
+  say(`DONE — ${ok}/${total} painted, ${fails.length} failures, ${dupes.length} duplicate pairs`);
+  (window as unknown as Record<string, unknown>).__CF_AUDIT__ = { done: true, total, ok, fails, dupes, sheetUrls };
 }
 void run();

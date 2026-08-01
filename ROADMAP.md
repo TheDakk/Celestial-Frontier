@@ -686,6 +686,19 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 2 — THE FLORA DUPLICATES DIE (2026-08-01, batch 21). ★ ROOT CAUSE
+##   PROVEN for Blocker 3: the verbatim flora painter’s generic LEAF LADDER is deterministic
+##   per FORM and the species NAME never reaches it — Acai/Milkweed/Salmonberry have DIFFERENT
+##   genomes (form 12/10/1) yet rendered byte-identical. A code-shape problem, not art taste.
+##   FIX (packages/art/src/floraoverrides.ts): a NAME-SEEDED painter — leaf count, phyllotaxy,
+##   angle, stem lean, fruiting organ all hash from the species’ OWN NAME xor its genome seed,
+##   so two labels can never collide again STRUCTURALLY. Result: 16 groups → 0, 38 files → 0,
+##   all 334 flora unique. ICONIC PLANTS (Blocker 5) got real bodies: Rafflesia (5 spotted
+##   lobes, no stem), Pineapple (rosette+crosshatched fruit+crown), Joshua Tree, Cotton bolls,
+##   Dragon Fruit, Rhubarb/Tobacco petioles, Cabbage head. ★ THE DUPLICATE SENTINEL IS NOW
+##   PERMANENT (Nick §17): speciesaudit hashes every Earth portrait and EXITS 1 naming any two
+##   species that render identically. Gates: 1,254/1,254 · 0 failures · 0 dupes · vitest 22/220
+##   · tsc · slicesmoke PASS · hdart.verbatim.js STILL UNTOUCHED. D-ART-8/9 in DEVIATIONS.
 ##   ✔★★★ THE MORPHOLOGY PASS — WAVE 1 LANDED (2026-08-01, batch 20 — Nick: "go the whole
 ##   slate, it all begins with the art"). The plan is port/MORPHOLOGY_PASS.md (the cold-start
 ##   guide). ARCHITECTURE: corrections live in packages/art/src/speciesoverrides.ts ATOP the

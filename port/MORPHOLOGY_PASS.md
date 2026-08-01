@@ -88,3 +88,36 @@ specialist fish bodies · aquatic inverts · iconic flora · the flower-head fam
 daisy) → P3 fauna family polish (defining-feature guarantees; the agents' weakest-list is the
 worklist) → P4 procedural body plans + heat-as-design + the cold-flora blur bug. Each wave =
 its own batch: override painters → audit re-run → sheets → gate → commit.
+
+---
+
+# WAVE 2 — LANDED 2026-08-01 (flora: the duplicates die, the icons earn their labels)
+
+**★ ROOT CAUSE PROVEN for Blocker 3 (the 16 byte-duplicate groups / 38 files):** the verbatim
+flora painter's generic "leaf ladder" is deterministic per FORM and consumes no per-species
+variation — the species NAME never reaches the painter. Acai/Milkweed/Salmonberry have
+genuinely DIFFERENT genomes (form 12 / 10 / 1) and still rendered byte-identical pixels.
+Not an art-taste problem: a code-shape problem.
+
+**The fix (`packages/art/src/floraoverrides.ts`):** a NAME-SEEDED painter. Leaf count,
+phyllotaxy (alternate vs opposite), leaf angle/shape, stem lean, and the fruiting organ
+(berries vs seed head) all derive from a hash of the species' OWN NAME xor'd with its genome
+seed — so two different labels can never collide again, structurally rather than by luck.
+All 37 names from the 16 groups route through it.
+
+**Iconic plants (Blocker 5) with bespoke bodies:** Rafflesia (five fleshy spotted lobes at
+ground level, central well, NO stem) · Pineapple (basal rosette + crosshatched fruit +
+spiky crown) · Joshua Tree (branching woody trunk + terminal spike rosettes) · Cotton
+(branching plant hung with white bolls) · Dragon Fruit (climbing ribbed cactus stems +
+hanging fruit) · Rhubarb (broad basal leaves on RED petioles) · Tobacco (broad leaves, green
+petioles) · Cabbage (layered ground head).
+
+**★ THE DUPLICATE SENTINEL IS NOW PERMANENT (Nick §17 regression):** `speciesaudit` hashes
+every Earth portrait and FAILS (exit 1) naming any two differently-named species that render
+identical pixels. Blocker 3 cannot return silently.
+
+**Proof:** flora duplicate groups **16 → 0**, files **38 → 0**, all 334 flora unique;
+`speciesaudit` 1,254/1,254 painted · 0 failures · 0 duplicate pairs. Gates: vitest 22/220 ·
+tsc clean · slicesmoke PASS. `hdart.verbatim.js` STILL UNTOUCHED.
+
+**Ledger:** D-ART-8 (flora name-seeded anti-duplicate) · D-ART-9 (iconic flora bodies).
