@@ -20,6 +20,7 @@ export { decoSprite, _quasarSpr, starSprite };
 export {
   _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr,
   _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr,
+  _wormSpr, snSiteSprite, _bhDiscSpr, _protoSpr,
 } from './artextras.verbatim.js';
 export { planetThumb, starThumb, galaxyThumb, moonThumb, cometThumb, beltThumb, getPlanetSprite } from './thumbart.verbatim.js';
 

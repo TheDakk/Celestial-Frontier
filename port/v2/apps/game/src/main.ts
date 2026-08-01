@@ -15,19 +15,22 @@
    charter/Ascent gating on dives, ring↔planet mutual shadows, drifting cloud
    deck, moon terminator shading, comets/visitor, PROTO star disk (corona
    fallback), supernova sites, deco/fine-star pick targets. */
-import { Application, Container, Graphics, Sprite, Texture, Text } from 'pixi.js';
+import { Application, Container, Graphics, Sprite, Texture, Text, extensions, CullerPlugin } from 'pixi.js';
 import {
   galSpriteFor, decoSprite, getPlanetSprite, starSprite,
   _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr,
   _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr,
+  _wormSpr, snSiteSprite, _bhDiscSpr, _protoSpr,
 } from '@cf/art';
+import { initAudio, playWhoosh, playSurveyPing } from '@cf/audio';
 import {
   NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, viewToNav,
-  homeUniverse, galaxyCell, galaxyCellWindow, systemScene,
+  homeUniverse, universeGalaxies, galaxyCell, galaxyCellWindow, systemScene,
   GR, GCELL, type NavState, type GalaxyNode, type PlanetNode,
 } from '@cf/scene';
-import { galaxyProfile, galaxyHaze, systemFor, fineStarsInCell, FCELL } from '@cf/domain-worldgen';
-import { SYS_R } from '@cf/domain-worldconfig';
+import { galaxyProfile, galaxyHaze, systemFor, fineStarsInCell, FCELL, galaxyWormhole, supernovaSites } from '@cf/domain-worldgen';
+import { SYS_R, UCELL, OBS_R } from '@cf/domain-worldconfig';
+import { createEpochClock, type EpochClock } from '@cf/domain-progression';
 import { mulberry32, hashInt, TAU } from '@cf/domain-rand';
 import { installCaptureHooks, planetDescriptor, describePick, SOL_MOONS, type Descriptor } from '@cf/domain-descriptors';
 import {
@@ -47,6 +50,8 @@ const stSeam: { gal: unknown; star: unknown } = { gal: null, star: null };
 gSeam.st ??= stSeam;
 gSeam.customNames ??= new Map();   /* player renames — Phase 4 wiring */
 
+extensions.add(CullerPlugin);   /* offscreen sprites skip render — thousands of stars, one flag */
+
 const app = new Application();
 const hud = document.getElementById('hud')!;
 const repo = createSaveRepository(createIndexedDBBackend('cf-v2-slice'));
@@ -56,6 +61,13 @@ const repo = createSaveRepository(createIndexedDBBackend('cf-v2-slice'));
    held only {nav,view} JSON migrates for free: importSaveV2 reads its `view`
    and defaults everything else. */
 let save: SaveStateV2;
+/* COSMIC_EPOCH, for real: base from the save, advanced by PLAY seconds only
+   (the harvestclock invariant by construction — no wall clock anywhere).
+   Ecology reads the global (typeof-guarded in the verbatim), so biospheres
+   age in the browser exactly as they do in the game. */
+let epochClock: EpochClock = createEpochClock(0, () => 0);
+let playT0 = 0;
+const playSeconds = (): number => (performance.now() - playT0) / 1000;
 const DPR = Math.min(devicePixelRatio, 3);
 const minWH = (): number => Math.min(innerWidth, innerHeight);
 
@@ -75,7 +87,10 @@ card.style.cssText = 'position:fixed;top:0;right:0;bottom:0;width:min(340px,86vw
   'padding:14px;box-sizing:border-box;display:none;border-left:1px solid #22304a';
 document.body.appendChild(card);
 function showSurvey(d: Descriptor): void {
-  const esc = (s: unknown): string => String(s ?? '').replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]!));
+  /* quotes included: keys/classes land in ATTRIBUTES (data-row="…"), where a
+     bare-minimum <>& escape still allows attribute breakout — hardened in the
+     2026-08-01 exploit pass before any untrusted text could ever reach here */
+  const esc = (s: unknown): string => String(s ?? '').replace(/[<>&"']/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&#39;' }[c]!));
   card.innerHTML =
     `<h2 data-sel="title" style="margin:0 0 2px;font-size:17px;color:#f4f8ff">${esc(d.title)}</h2>` +
     `<div data-sel="sub" style="color:#8fa3c4;margin-bottom:10px">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
@@ -88,7 +103,7 @@ function hideSurvey(): void { card.style.display = 'none'; }
 function hudText(): void {
   const path = [nav.mode, nav.gal && 'gal ' + nav.gal.seed, nav.star && 'star ' + nav.star.seed].filter(Boolean).join(' · ');
   const who = `${save.explorerName || 'Explorer'} · ✦ ${save.essence} stardust · ${save.landed.length} worlds landed`;
-  hud.innerHTML = `<b>${path}</b><br>drag pan · wheel/pinch zoom — zoom IN to dive, OUT to rise · click descend · right-click ascend<br><i>${who} — the REAL save (importSaveV2 ⇄ exportSaveV2, IndexedDB)</i>`;
+  hud.innerHTML = `<b>${path}</b><br>drag pan · wheel/pinch zoom — zoom IN to dive, OUT to rise · tap to SURVEY, tap twice to travel · right-click ascend<br><i>${who} — the REAL save (importSaveV2 ⇄ exportSaveV2, IndexedDB)</i>`;
 }
 
 /* ---- slice-local bakes of Renderer inline gradients (verbatim stops) ---- */
@@ -163,11 +178,28 @@ interface StarEntry { spr: Sprite; s: number; seed: number; }
 interface ScreenScaled { obj: Container; f: number; }   /* scale = f / cam.z */
 const galaxySpins: Array<{ spr: Sprite; base: number }> = [];
 let uniNodes: GalaxyNode[] = [];   /* cached universe composition — checkTransitions runs per tick */
+let uniCell: { ux: number; uy: number } | null = null;   /* the streamed window's anchor cell */
+/* SURVEY-FIRST (the game's own flow): a tap SURVEYS — the card opens with a
+   sonar ping; travel is zooming in (checkTransitions) or a quick second tap
+   on the same thing. No silent teleports. */
+let lastTap: { key: string; t: number } = { key: '', t: -1e9 };
+function tapTwice(key: string): boolean {
+  const now = performance.now();
+  const twice = lastTap.key === key && now - lastTap.t < 400;
+  lastTap = twice ? { key: '', t: -1e9 } : { key, t: now };
+  return twice;
+}
+function surveyCard(d: unknown): void {
+  if (d) { showSurvey(d as Descriptor); playSurveyPing(); }
+}
 let galStars: StarEntry[] = [];
 let galTwinkle: StarEntry[] = [];
 let screenScaled: ScreenScaled[] = [];
 let solMark: Container | null = null;
 let bhDisc: Sprite | null = null;
+interface GalAnim { spr: Container; kind: 'bhdisc' | 'nsbeam' | 'proto' | 'worm'; seed: number; }
+let galAnims: GalAnim[] = [];
+let wormPos: { x: number; y: number } | null = null;
 let fineLayer: Container | null = null;
 let fineWin: { fx0: number; fy0: number; fx1: number; fy1: number } | null = null;
 let lastZBucket = 0;
@@ -187,6 +219,7 @@ function clearWorld(): void {
   galStars = []; galTwinkle = []; screenScaled = [];
   solMark = null; bhDisc = null; fineLayer = null; fineWin = null;
   orbiters = []; sysLabels = []; sysStar = null; starSurfSpr = null; surfClouds = null;
+  galAnims = []; wormPos = null;
 }
 
 /* ---- draw passes ---- */
@@ -194,8 +227,11 @@ function drawUniverse(): void {
   clearWorld();
   /* THE REAL ART: per-seed painterly sprites (verbatim GalaxyArt painters,
      kind-locked), with the Renderer's exact transform — rotate(g.rot + slow
-     cosmic spin), scale(1, g.tilt), draw at ±g.size (main.js ~3741) */
-  uniNodes = homeUniverse(3);
+     cosmic spin), scale(1, g.tilt), draw at ±g.size (main.js ~3741).
+     STREAMED: the window is built around the CAMERA, not home — pan (or a
+     wormhole jump) and new galaxies keep resolving, like the game. */
+  uniCell = { ux: Math.floor(camT.x / UCELL), uy: Math.floor(camT.y / UCELL) };
+  uniNodes = universeGalaxies(camT.x, camT.y, 3);
   for (const g of uniNodes) {
     const spr = new Sprite(Texture.from(galSpriteFor(g)));
     spr.anchor.set(0.5);
@@ -203,9 +239,14 @@ function drawUniverse(): void {
     const px = (g.size * 2) / 512;
     spr.scale.set(px, px * g.tilt);
     spr.rotation = g.rot;
+    spr.cullable = true;
     spr.eventMode = 'static';
     spr.cursor = 'pointer';
-    spr.on('pointertap', () => descendGalaxy(g));
+    /* tap = the galaxy/quasar SURVEY CARD; tap again (or zoom) to dive */
+    spr.on('pointertap', () => {
+      if (tapTwice('g' + g.seed)) descendGalaxy(g);
+      else surveyCard(describePick({ kind: g.quasar ? 'quasar' : 'galaxy', data: g } as never));
+    });
     world.addChild(spr);
     galaxySpins.push({ spr, base: g.rot });
     if (g.home) {
@@ -248,6 +289,7 @@ function drawGalaxy(galSeed: number): void {
         const rr = (dc.rr as number) || 8;
         spr.position.set(dc.x, dc.y);
         spr.width = rr * 2 * f; spr.height = rr * 2 * f;
+        spr.cullable = true;
         spr.eventMode = 'static';
         spr.cursor = 'pointer';
         spr.on('pointertap', decoTap(dc));
@@ -264,6 +306,7 @@ function drawGalaxy(galSeed: number): void {
           s2.blendMode = 'add';
           s2.position.set((dc.x as number) + pt[0], (dc.y as number) + pt[1]);
           s2.width = d2; s2.height = d2;
+          s2.cullable = true;
           decoLayer.addChild(s2);
         }
       } else if (dc.k === 'rogue') {
@@ -293,14 +336,79 @@ function drawGalaxy(galSeed: number): void {
       const D = s.s * bR * 8;
       spr.width = D; spr.height = D;
       spr.position.set(s.x, s.y);
+      spr.cullable = true;
       spr.eventMode = 'static';
       spr.cursor = 'pointer';
-      spr.on('pointertap', () => descendSystem({ seed: s.seed, x: s.x, y: s.y }));
+      spr.on('pointertap', () => {
+        if (tapTwice('s' + s.seed)) descendSystem({ seed: s.seed, x: s.x, y: s.y });
+        else surveyCard(describePick({ kind: 'star', data: s } as never));
+      });
       world.addChild(spr);
       const entry = { spr, s: s.s, seed: s.seed };
       galStars.push(entry);
       if (s.s > 1.3) galTwinkle.push(entry);
       if ((s as { sol?: boolean }).sol) buildSolMark(s.x, s.y);
+    }
+  }
+  /* the wormhole — one hides in a few galaxies; survey it, or fly in and be
+     hurled somewhere unimaginably distant (main.js 3415: the jump is seeded
+     from the galaxy, identical for every explorer; the charter's reach clamp
+     lands with progression wiring — recorded) */
+  const wh = galaxyWormhole(galSeed) as { x: number; y: number } | null;
+  if (wh) {
+    const ws = new Sprite(Texture.from(_wormSpr()));
+    ws.anchor.set(0.5);
+    ws.position.set(wh.x, wh.y);
+    ws.width = 30; ws.height = 30;
+    ws.eventMode = 'static';
+    ws.cursor = 'pointer';
+    ws.on('pointertap', () => surveyCard(describePick({ kind: 'worm', data: wh } as never)));
+    world.addChild(ws);
+    galAnims.push({ spr: ws, kind: 'worm', seed: galSeed });
+    wormPos = wh;
+  }
+  /* supernova aftermath — epoch-anchored: sites shift as COSMIC_EPOCH climbs
+     (main.js 4214). Every death is a cloud; remnants keep their cores. */
+  for (const site of supernovaSites(galSeed, epochClock.current()) as Array<Record<string, unknown> & { x: number; y: number; seed: number; remnant: string; births: Array<{ x: number; y: number; seed: number }> }>) {
+    const ss = new Sprite(Texture.from(snSiteSprite(site.seed)));
+    ss.anchor.set(0.5);
+    ss.position.set(site.x, site.y);
+    ss.width = 48; ss.height = 48;
+    ss.eventMode = 'static';
+    ss.cursor = 'pointer';
+    ss.on('pointertap', () => surveyCard(describePick({ kind: 'snova', data: site } as never)));
+    world.addChild(ss);
+    if (site.remnant === 'BH') {
+      const bd = new Sprite(Texture.from(_bhDiscSpr()));
+      bd.anchor.set(0.5); bd.position.set(site.x, site.y);
+      bd.width = 14; bd.height = 14; bd.eventMode = 'none';
+      world.addChild(bd);
+      galAnims.push({ spr: bd, kind: 'bhdisc', seed: site.seed });
+    } else if (site.remnant === 'NS') {
+      const beams = new Container(); beams.eventMode = 'none';
+      beams.position.set(site.x, site.y);
+      for (const rot of [0, Math.PI]) {
+        const bm = new Sprite(Texture.from(_beamSpr()));
+        bm.anchor.set(0, 0.5); bm.position.set(0.9 * Math.cos(rot), 0.9 * Math.sin(rot));
+        bm.width = 6.8; bm.height = 1.6; bm.rotation = rot; bm.alpha = 0.8;
+        beams.addChild(bm);
+      }
+      world.addChild(beams);
+      galAnims.push({ spr: beams, kind: 'nsbeam', seed: site.seed });
+      const core = new Sprite(Texture.from(_nsCoreSpr()));
+      core.anchor.set(0.5); core.position.set(site.x, site.y);
+      core.width = 3.2; core.height = 3.2; core.eventMode = 'none';
+      world.addChild(core);
+    }
+    for (const b of site.births) {
+      const ps = new Sprite(Texture.from(_protoSpr()));
+      ps.anchor.set(0.5); ps.position.set(b.x, b.y);
+      ps.width = 6.8; ps.height = 6.8;
+      ps.eventMode = 'static';
+      ps.cursor = 'pointer';
+      ps.on('pointertap', () => surveyCard(describePick({ kind: 'protostar', data: b } as never)));
+      world.addChild(ps);
+      galAnims.push({ spr: ps, kind: 'proto', seed: b.seed });
     }
   }
   /* the supermassive black hole — over every star layer: light stops here */
@@ -359,6 +467,7 @@ function updateFineLayer(force: boolean): void {
       const D = s.s * bR * 6.5;
       spr.width = D; spr.height = D;
       spr.position.set(s.x, s.y);
+      spr.cullable = true;
       /* fine stars are DIVEABLE, same as the game's picks (main.js 4193) */
       spr.eventMode = 'static';
       spr.cursor = 'pointer';
@@ -573,7 +682,12 @@ function rebuildSystemHD(): void {
     const p = sys.planets.find((q) => Math.abs(q.orb - o.orb) < 1e-9);
     if (!p) continue;
     const pr = 6 * ((p.P.sizeMul as number) || 1);
-    o.face[0]!.texture = Texture.from(getPlanetSprite(p.P, Math.max(64, pr * 2 * camT.z * DPR)));
+    const next = Texture.from(getPlanetSprite(p.P, Math.max(64, pr * 2 * camT.z * DPR)));
+    const prev = o.face[0]!.texture;
+    if (next !== prev) {
+      o.face[0]!.texture = next;
+      prev.destroy();   /* evict the old tier from Pixi's cache — no GPU-texture creep on long zoom sessions */
+    }
   }
 }
 
@@ -600,6 +714,7 @@ function descendGalaxy(g: GalaxyNode): void {
     gz0 = 0.42 * minWH() / GR;
     cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0;
     camT.z = gz0 * 1.05; cam.z = gz0 * 0.35;
+    playWhoosh();   /* travel & planetfall breathe (main.js: the shipped sting) */
     rerender();
   }
 }
@@ -610,6 +725,7 @@ function descendSystem(star: { seed: number; x: number; y: number }): void {
     sz0 = 0.40 * minWH() / SYS_R;
     cam.x = 0; cam.y = 0; camT.x = 0; camT.y = 0;
     camT.z = sz0 * 1.05; cam.z = sz0 * 0.35;
+    playWhoosh();
     rerender();
   }
 }
@@ -619,11 +735,13 @@ function surveyAndLand(p: PlanetNode, starSeed: number): void {
      this one call is the whole domain stack speaking */
   const sys = systemFor(starSeed);
   showSurvey(planetDescriptor(p.P, sys, { name: p.name, orb: p.orb } as never) as Descriptor);
+  playSurveyPing();   /* the ACT of surveying answers back (main.js) */
   const r = land(nav, { seed: p.seed });
   if (r.ok) {
     nav = r.state;
     if (!save.landed.includes(p.seed)) save.landed.push(p.seed);   /* the game's `land` set */
     stSeam.gal = nav.gal; stSeam.star = nav.star;
+    playWhoosh();   /* planetfall */
     drawSurface(p); hudText(); void persistView();
   }
 }
@@ -666,6 +784,7 @@ function goUp(): void {
   const r = ascend(nav);
   if (!r.ok) return;
   nav = r.state;
+  playWhoosh();
   /* ascent camera: the game re-centers the outer view on what you left
      (main.js 3404/3474) — universe at the galaxy, galaxy at the star */
   if (nav.mode === 'universe' && wasGal) {
@@ -697,6 +816,23 @@ function checkTransitions(): void {
     if (best && best.size * camT.z > 0.55 * mw && bd * camT.z < 0.4 * mw) descendGalaxy(best);
   } else if (nav.mode === 'galaxy' && nav.gal) {
     if (camT.z < gz0 * 0.62) { goUp(); return; }
+    /* flying into the wormhole hurls you somewhere unimaginably distant —
+       destination seeded from the galaxy, identical for every explorer
+       (main.js 3415; the charter reach clamp lands with progression) */
+    if (wormPos && camT.z > mw / 60 && Math.hypot(wormPos.x - camT.x, wormPos.y - camT.y) * camT.z < 120) {
+      const wj = mulberry32((nav.gal.seed ^ 0xC0FFEE) >>> 0);
+      const a2 = wj() * TAU, d2 = OBS_R * (2 + wj() * 10);
+      const r = ascend(nav);
+      if (r.ok) {
+        nav = r.state;
+        cam.x = camT.x = Math.cos(a2) * d2;   /* the verbatim raw destination; the reach clamp toward HOME_POS is progression's */
+        cam.y = camT.y = Math.sin(a2) * d2;
+        camT.z = 1.1; cam.z = 0.3;
+        playWhoosh();
+        rerender();
+      }
+      return;
+    }
     const starZ = mw / 34;
     if (camT.z > starZ) {
       const prof = galaxyProfile(nav.gal.seed) as Record<string, unknown>;
@@ -735,6 +871,7 @@ function zoomLimits(): [number, number] {
 async function persistView(): Promise<void> {
   try {
     save.savedView = navToView(nav);
+    save.EPOCH_BASE = epochClock.current();   /* play time accumulates across sessions (doSave writes COSMIC_EPOCH) */
     await repo.write(exportSaveV2(save, Date.now()));
   } catch { /* private mode: session continues unsaved */ }
 }
@@ -749,6 +886,10 @@ async function loadSave(): Promise<void> {
   nav = viewToNav(save.savedView);
   if (nav.mode === 'galaxy') { camT.z = gz0 * 1.05; cam.z = camT.z; }
   else if (nav.mode === 'system') { camT.z = sz0 * 1.05; cam.z = camT.z; }
+  playT0 = performance.now();
+  epochClock = createEpochClock(save.EPOCH_BASE, playSeconds);
+  (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
+  initAudio({ sndOn: () => save.sndOn, sfxVol: () => save.sfxVol });   /* the save's own audio settings */
 }
 
 /* ---- boot ---- */
@@ -766,11 +907,20 @@ async function loadSave(): Promise<void> {
     api: {
       state: () => ({
         mode: nav.mode, fine: !!fineLayer, solVisible: !!(solMark && solMark.visible),
+        epoch: epochClock.current(),
+        cardOpen: card.style.display !== 'none',
+        cardTitle: card.querySelector('[data-sel=title]')?.textContent ?? null,
         save: {
           name: save.explorerName, essence: save.essence,
           landed: save.landed.slice(), viewType: (save.savedView as { type?: string } | null)?.type ?? null,
         },
       }),
+      descendGalaxy: (seed: number) => {
+        const g = uniNodes.find((n) => n.seed === seed);
+        if (!g) return false;
+        descendGalaxy(g);
+        return true;
+      },
       descendSystem,
       landOn: (i: number) => {
         if (nav.mode !== 'system' || !nav.star) return false;
@@ -792,15 +942,30 @@ async function loadSave(): Promise<void> {
     world.scale.set(cam.z);
     if (world.alpha < 1) world.alpha = Math.min(1, world.alpha + tk.deltaMS / 400);
     const t = performance.now() * 0.001;
+    /* the biological clock ticks on PLAY time (ecology reads the global) */
+    (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
     /* galaxies turn on cosmic time — barely perceptible (main.js ~3742) */
     for (const gs of galaxySpins) gs.spr.rotation = gs.base + t * 0.0012;
     checkTransitions();
     updateZoomDependent();
-    if (nav.mode === 'galaxy') {
+    if (nav.mode === 'universe') {
+      /* STREAM the universe: crossing a cell boundary rebuilds the window
+         around the camera — pan far enough (or ride a wormhole) and new
+         galaxies keep resolving */
+      const ux = Math.floor(camT.x / UCELL), uy = Math.floor(camT.y / UCELL);
+      if (!uniCell || ux !== uniCell.ux || uy !== uniCell.uy) drawUniverse();
+    } else if (nav.mode === 'galaxy') {
       updateFineLayer(false);
       /* the bright stars breathe (main.js 4165) */
       for (const st of galTwinkle) st.spr.alpha = 0.82 + 0.18 * Math.sin(t * 2.4 + (st.seed % 97));
       if (bhDisc) { bhDisc.rotation = t * 0.3; bhDisc.scale.y = bhDisc.scale.x * 0.55; }
+      /* wormhole lensing · remnant cores · newborn protostars (main.js 4109/4218) */
+      for (const ga of galAnims) {
+        if (ga.kind === 'worm') ga.spr.rotation = t * 1.2;
+        else if (ga.kind === 'bhdisc') { ga.spr.rotation = t * 0.3; ga.spr.scale.y = ga.spr.scale.x * 0.5; }
+        else if (ga.kind === 'nsbeam') ga.spr.rotation = t * 2.2;
+        else if (ga.kind === 'proto') ga.spr.alpha = 0.7 + 0.3 * Math.sin(t * 3 + (ga.seed % 7));
+      }
     } else if (nav.mode === 'system') {
       /* live orbits — planets on the Renderer's angle law, moons Kepler-ish,
          belt rocks on their own drifts, beams spinning */
