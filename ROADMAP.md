@@ -158,14 +158,30 @@
 ##   defect live (recover() short-circuits on missing primary — vacuous assertion). Rewritten to
 ##   drive the real resurrection scenario; ALSO the first sed perturbation silently didn't match —
 ##   A CONTROL MUST VERIFY ITS PERTURBATION LANDED.
-## ▶ NEXT IN PHASE 2, in order: (1) the v1.8.9 SAVE IMPORTER — build tools/savefixtures.js at
-##   root first (codefixtures pattern): curated saves through the REAL loadSave in jsdom,
-##   captured post-load state (via the buildSave round trip) becomes the fixture the TS importer
-##   is tested against — the importer must never be tested against itself. Every loadSave clamp
-##   is a shipped-defect lesson (main.js 14202-14484); size NEVER clamped; tut absent ⇒ done;
-##   conq[].e absent ⇒ READY. (2) training snapshots (tsnap) · (3) outcome tests around domain
-##   APIs · (4) defect-injection controls formalized. Gate C still needs NICK's real veteran
-##   save. Cold start: this block → port/v2/README.md → plan §20 Phase 2.
+## ✔★ THE SAVE-FIXTURE HARNESS IS BUILT AND GATED (e27e37a): tools/savefixtures.js seeds 9
+##   curated saves into localStorage BEFORE boot (bootProbe gained beforeBoot + a url override —
+##   jsdom's file:// realm is an OPAQUE ORIGIN where localStorage THROWS; smoke.js's
+##   https://game.local precedent), so the REAL boot-time loadSaveWithRecovery loads them,
+##   recovery path included. The probe snapshots 72 load-observable fields through the hook
+##   (probe-names.json 258→301; validate re-verified 50/50 after regeneration). `npm run
+##   savefixtures` is a GATE (+ :capture). Double-boot determinism self-checks on the rich AND
+##   recovery fixtures; the recovery path's own minted notification carried Date.now() and is
+##   normalized to «minted-at-boot» — the check caught its own leak on the first re-run.
+##   Truths pinned: conq e:1e9→EPOCH_BASE while absent-e stays absent · bred size:9 survives
+##   UNWRAPPED through the real path · illegal equips + affixes rejected · notifs 70→60 ·
+##   hostile {}-for-array loses one field, never the save · backup restore pays out (essence 777).
+## ▶ NEXT IN PHASE 2, in order:
+##   (1) ★ CONTENT-TABLE LIFT — the importer's discovered prerequisite: id validation needs
+##       MATERIALS · ITEMS/ITEM_BY · TECHS · BINDER_SETS · CHARTER_STARTERS/POOL · AFFIX_DEFS ·
+##       EQ_SLOTS · ACH · SIGS/SIG_IDS · RANK_HUES · ASC_CHAPTERS (data-only, app sections —
+##       lift-strays/apphooks pattern, or plan §18's packages/content).
+##   (2) the TS importer importSaveV2 in @cf/persistence, tested FIELD-BY-FIELD against
+##       save-fixtures.json results (never against itself); unimplemented fields listed
+##       explicitly per increment — recorded, not silent. Injected `now` for the future-t
+##       clamp (deliberately NOT fixture-pinned — it would encode capture time).
+##   (3) training snapshots (tsnap rehydration path) · (4) outcome tests around domain APIs.
+##   Gate C still needs NICK's real veteran save — once it exists, drop it in as fixture #10.
+##   Cold start: this block → port/v2/README.md → plan §20 Phase 2.
 ## ✔★ THE FOUR §23 DESIGN DECISIONS ARE MADE (Nick, 2026-07-31). Recorded in port/DECISIONS.md —
 ##   a NEW live record, so the supplied v4.0 plan stays the reference it was delivered as.
 ##     1. bred `fed` → INHERIT 50% OF THE LOWER PARENT. Breeding is not sharing: BOTH parents are
