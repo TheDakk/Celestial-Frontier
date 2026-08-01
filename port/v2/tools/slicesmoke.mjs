@@ -101,7 +101,12 @@ try {
      canvas reads BLACK through 2D drawImage without preserveDrawingBuffer;
      the first run failed on exactly that instrument error) */
   const painted = await evalIn(`(async()=>{ const S=window.__CF_SLICE__; if(!S) return -1;
-    const px=await S.app.renderer.extract.pixels(S.app.stage); const d=px.pixels||px;
+    /* frame-bounded: the stage's LOCAL bounds now span the observable
+       universe (~10,700px) — an unframed extract exceeds the max texture
+       size and reads back black while the SCREEN is fine (instrument-first:
+       the check went red with a healthy build; renderer.screen bounds it) */
+    const px=await S.app.renderer.extract.pixels({ target: S.app.stage, frame: S.app.renderer.screen });
+    const d=px.pixels||px;
     let lit=0; for(let i=0;i<d.length;i+=4){ if(d[i]+d[i+1]+d[i+2]>60) lit++; } return lit; })()`);
   if (painted === -1) fails.push('__CF_SLICE__ diagnostics handle missing');
   else if (!(painted > 500)) fails.push('stage nearly blank — ' + painted + ' lit pixels (painters did not paint?)');
@@ -129,6 +134,20 @@ try {
   if (!/galaxy · gal 999/.test(hud2)) fails.push('double-tap descent into the Milky Way did not happen: ' + JSON.stringify(hud2));
   const shot2 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-galaxy.png'), Buffer.from(shot2.data, 'base64'));
+
+  /* 3a-charter. THE ASCENT GATE, fresh save = stage 0 = SOL ONLY: a non-Sol
+     dive must be REFUSED with the charter toast naming the build. This
+     doubles as the gate's live negative control — if gating ever breaks,
+     this dive succeeds and fails the run. */
+  const gated = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
+    S.api.descendSystem({ seed: 31337, x: 300, y: 300 });
+    const st=S.api.state();
+    return { mode: st.mode, stage: st.stage, toastOn: st.toastOn, toastText: st.toastText }; })()`);
+  if (gated.stage !== 0) fails.push('fresh save is not charter stage 0: ' + JSON.stringify(gated.stage));
+  if (gated.mode !== 'galaxy') fails.push('CHARTER GATE BROKEN — a stage-0 save dove into a non-Sol star: ' + gated.mode);
+  if (!gated.toastOn || !/Charter/.test(gated.toastText)) fails.push('charter block did not toast the build hint: ' + JSON.stringify(gated.toastText));
+  const perf = await evalIn(`window.__CF_SLICE__.api.state().galaxyBuildMs`);
+  console.log('  (galaxy rebuild: ' + (typeof perf === 'number' ? perf.toFixed(0) : '?') + 'ms)');
 
   /* 3b. THE FULL GATE D DESCENT: into Sol, land on EARTH, the survey card speaks */
   const landed = await evalIn(`(()=>{ const S=window.__CF_SLICE__; if(!S||!S.api) return 'no api';

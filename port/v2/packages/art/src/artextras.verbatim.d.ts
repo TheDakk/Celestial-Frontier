@@ -17,3 +17,6 @@ export function _wormSpr(): HTMLCanvasElement;
 export function snSiteSprite(seed: number): HTMLCanvasElement;
 export function _bhDiscSpr(): HTMLCanvasElement;
 export function _protoSpr(): HTMLCanvasElement;
+export function _visitorSpr(): HTMLCanvasElement;
+export function _comaSpr(): HTMLCanvasElement;
+export function _vtrailSpr(): HTMLCanvasElement;

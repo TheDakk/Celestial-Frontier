@@ -112,6 +112,43 @@ describe('@cf/scene — galaxy composition (the Renderer cell convention, verifi
   });
 });
 
+describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22814)', () => {
+  it('the stage ladder: the built system IS the key', async () => {
+    const { ascStageOf } = await import('@cf/scene');
+    expect(ascStageOf([], 0)).toBe(0);
+    expect(ascStageOf([['jumpdrive', 1]], 0)).toBe(1);
+    expect(ascStageOf([['array', 1]], 0)).toBe(2);
+    expect(ascStageOf([['igdrive', 1]], 0)).toBe(3);
+    expect(ascStageOf([['array', 1], ['igdrive', 1]], 0)).toBe(3);   /* highest wins */
+    expect(ascStageOf([], 3)).toBe(3);   /* all chapters done = free */
+  });
+  it('★ stage 0 is SOL ONLY; stage 1 the Neighborhood ring; foreign stars wait for the IG drive', async () => {
+    const { ascAllowsStar } = await import('@cf/scene');
+    const { SOL_POS } = await import('@cf/domain-worldconfig');
+    const { ASC_RING_R } = await import('@cf/domain-strays');
+    const sol = { x: SOL_POS.x, y: SOL_POS.y, seed: 424242 };
+    const near = { x: SOL_POS.x + (ASC_RING_R as number) * 0.9, y: SOL_POS.y, seed: 7 };
+    const far = { x: SOL_POS.x + (ASC_RING_R as number) * 1.1, y: SOL_POS.y, seed: 8 };
+    expect(ascAllowsStar(0, 999, sol)).toBe(true);
+    expect(ascAllowsStar(0, 999, near)).toBe(false);
+    expect(ascAllowsStar(1, 999, near)).toBe(true);
+    expect(ascAllowsStar(1, 999, far)).toBe(false);
+    expect(ascAllowsStar(2, 999, far)).toBe(true);
+    expect(ascAllowsStar(2, 1000, sol)).toBe(false);   /* foreign galaxy */
+    expect(ascAllowsStar(3, 1000, sol)).toBe(true);
+  });
+  it('reach grows by REGIONS as prime signatures land; home is always within reach', async () => {
+    const { reachRadiusOf, withinReachOf, currentRegionOf } = await import('@cf/scene');
+    const { REGIONS } = await import('@cf/domain-strays');
+    const rows = REGIONS as Array<{ sigs: number; r: number; name: string }>;
+    expect(reachRadiusOf(0)).toBe(rows[0]!.r);
+    expect(reachRadiusOf(rows[rows.length - 1]!.sigs)).toBe(rows[rows.length - 1]!.r);
+    for (let i = 1; i < rows.length; i++) expect(reachRadiusOf(rows[i]!.sigs)).toBeGreaterThan(reachRadiusOf(rows[i - 1]!.sigs));
+    expect(withinReachOf(0, 90, -60)).toBe(true);   /* the Milky Way is home */
+    expect(currentRegionOf(0).name).toBe(rows[0]!.name);
+  });
+});
+
 describe('@cf/scene — system composition (the Gate D descent target)', () => {
   it('★ Sol: eight planets Mercury→Neptune in orbit order, Earth seed 133, gas giants ringed/mooned', () => {
     const s = systemScene(SOL_SEED);

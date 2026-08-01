@@ -8,6 +8,9 @@ export interface GalaxyNode {
   seed: number; x: number; y: number; size: number;
   sp: number; tilt: number; rot: number;
   home: boolean; quasar: boolean; dwarf: boolean;
+  /* special populations, passed through for the renderer's bespoke draws */
+  radio: boolean; blazar: boolean;
+  bridge: { x2: number; y2: number } | null;
 }
 
 /** Galaxy nodes for the (2r+1)² cells centered on world position (cx,cy).
@@ -22,6 +25,8 @@ export function universeGalaxies(cx: number, cy: number, r: number): GalaxyNode[
         seed: g.seed as number, x: g.x as number, y: g.y as number, size: g.size as number,
         sp: g.sp as number, tilt: g.tilt as number, rot: g.rot as number,
         home: !!g.home, quasar: !!g.quasar, dwarf: !!g.dwarf,
+        radio: !!g.radio, blazar: !!g.blazar,
+        bridge: (g.bridge && typeof g.bridge === 'object') ? (g.bridge as { x2: number; y2: number }) : null,
       });
     }
   }
