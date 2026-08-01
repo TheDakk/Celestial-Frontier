@@ -53,6 +53,13 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   zero alpha; organic patches are clusters of overlapping soft lobes. Giraffe patches (the
   "octagons") rebuilt at 84 marks over the full torso and neck; spots, rosettes and stripes
   all rewritten the same way. Applies to every patterned creature, this wave and after.
+- ✔ **D-ART-17 — the PRE-CLIP fix + the CLIP SENTINEL (wave 6).** Wave 5's fit pass measured
+  ink on a 440 layer, but a painter reaching past 440 was cut by the canvas edge BEFORE the
+  measurement — it centred an already-severed muzzle. The ink layer is now 2S with the origin
+  offset by S/2, and fitInk records any subject still touching the layer edge; speciesaudit
+  exits 1 naming them. Current: 0 clipped across 1,254.
+- ✔ **D-ART-18 — the barrel snout (wave 6).** jaw:'barrel' (Hippo) draws a blunt rounded block
+  with a domed end and nostril pads, not a tapered ellipse.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

@@ -54,7 +54,7 @@ const evalIn = async (expr) => {
 let done = null;
 for (let i = 0; i < 900; i++) {   /* up to ~7.5 min — the full catalog is >1000 paints */
   await sleep(500);
-  const st = await evalIn(`(()=>{ const A=window.__CF_AUDIT__; if(A&&A.done) return { total:A.total, ok:A.ok, fails:A.fails.slice(0,20), nf:A.fails.length, dupes:(A.dupes||[]).slice(0,12), nd:(A.dupes||[]).length, keys:Object.keys(A.sheetUrls) };
+  const st = await evalIn(`(()=>{ const A=window.__CF_AUDIT__; if(A&&A.done) return { total:A.total, ok:A.ok, fails:A.fails.slice(0,20), nf:A.fails.length, dupes:(A.dupes||[]).slice(0,12), nd:(A.dupes||[]).length, clipped:(A.clipped||[]).slice(0,12), nc:(A.clipped||[]).length, keys:Object.keys(A.sheetUrls) };
     return { progress: (document.getElementById('log')||{}).textContent||'' }; })()`).catch(() => null);
   if (st && st.total !== undefined) { done = st; break; }
   if (st && i % 20 === 0) console.log('  …' + (st.progress || '').slice(0, 80));
@@ -64,9 +64,10 @@ for (const key of done.keys) {
   const url = await evalIn(`window.__CF_AUDIT__.sheetUrls[${JSON.stringify(key)}]`);
   fs.writeFileSync(path.join(OUT, 'sheet-' + key + '.png'), Buffer.from(url.split(',')[1], 'base64'));
 }
-console.log(`SPECIES AUDIT: ${done.ok}/${done.total} painted · ${done.nf} failures · ${done.nd} duplicate pairs`);
+console.log(`SPECIES AUDIT: ${done.ok}/${done.total} painted · ${done.nf} failures · ${done.nd} duplicate pairs · ${done.nc} clipped`);
 if (done.nf) { console.error('  first failures: ' + done.fails.join(' · ')); }
 if (done.nd) { console.error('  ★ DUPLICATE EARTH SPECIES (Blocker 3 regression): ' + done.dupes.join(' · ')); }
+if (done.nc) { console.error('  ★ CLIPPED SUBJECTS (cut at draw time — the frame law): ' + done.clipped.join(' · ')); }
 console.log('contact sheets: ' + done.keys.map((k) => 'smoke/sheet-' + k + '.png').join(' · '));
 ws.close(); edge.kill(); server.close();
-process.exit((done.nf || done.nd) ? 1 : 0);
+process.exit((done.nf || done.nd || done.nc) ? 1 : 0);

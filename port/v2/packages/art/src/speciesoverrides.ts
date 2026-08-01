@@ -34,19 +34,34 @@ function newCanvas(): { cv: HTMLCanvasElement; c: Ctx } {
     override painter, so NO subject can ever clip again — backward and
     forward at once. */
 const FIT_MARGIN = 0.90;
-function fitInk(src: HTMLCanvasElement, dst: Ctx): void {
+const INK = S * 2;            /* the oversized ink layer */
+const INK_OFF = S * 0.5;      /* painter origin, so overflow in EVERY direction survives */
+/** an ink layer a painter cannot overflow: 2S canvas, origin offset by S/2 */
+function newInk(): { cv: HTMLCanvasElement; c: Ctx } {
+  const cv = document.createElement('canvas'); cv.width = cv.height = INK;
+  const c = cv.getContext('2d')!;
+  c.translate(INK_OFF, INK_OFF);
+  return { cv, c };
+}
+/** ★ diagnostic for the audit's CLIP SENTINEL: set when a subject's ink
+    reaches the ink layer's own edge — i.e. it was cut at DRAW time and no
+    amount of fitting can restore it. Should always stay empty. */
+export const CLIPPED: string[] = [];
+function fitInk(src: HTMLCanvasElement, dst: Ctx, who: string): void {
   const sc = src.getContext('2d')!;
-  const data = sc.getImageData(0, 0, S, S).data;
-  let x0 = S, y0 = S, x1 = -1, y1 = -1;
-  for (let y = 0; y < S; y++) {
-    for (let x = 0; x < S; x++) {
-      if (data[(y * S + x) * 4 + 3]! > 12) {
+  const data = sc.getImageData(0, 0, INK, INK).data;
+  let x0 = INK, y0 = INK, x1 = -1, y1 = -1;
+  for (let y = 0; y < INK; y++) {
+    const row = y * INK;
+    for (let x = 0; x < INK; x++) {
+      if (data[(row + x) * 4 + 3]! > 12) {
         if (x < x0) x0 = x; if (x > x1) x1 = x;
         if (y < y0) y0 = y; if (y > y1) y1 = y;
       }
     }
   }
   if (x1 < 0) return;                       /* nothing drawn — leave the frame */
+  if (x0 <= 0 || y0 <= 0 || x1 >= INK - 1 || y1 >= INK - 1) CLIPPED.push(who);
   const w = x1 - x0 + 1, h = y1 - y0 + 1;
   const target = S * FIT_MARGIN;
   const k = Math.min(1, target / w, target / h);   /* only ever shrink */
@@ -324,9 +339,9 @@ export function resolveOverride(g: G): string | null {
     const { cv, c } = newCanvas();
     vignette(c, false);
     floorFade(c);
-    const ink = newCanvas();
+    const ink = newInk();
     (iconic || floraLadder)(ink.c, g, palette(g) as Pal, name);
-    fitInk(ink.cv, c);
+    fitInk(ink.cv, c, 'flora:' + name);
     return cv.toDataURL();
   }
   /* FAUNA (wave 3): species whose defining anatomy was categorically wrong */
@@ -337,10 +352,10 @@ export function resolveOverride(g: G): string | null {
     const { cv, c } = newCanvas();
     vignette(c, false);
     floorFade(c);
-    const ink = newCanvas();
+    const ink = newInk();
     if (fp) fp(ink.c, g, palette(g) as Pal, name);
     else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!);
-    fitInk(ink.cv, c);
+    fitInk(ink.cv, c, 'fauna:' + name);
     return cv.toDataURL();
   }
   const painter = kingdom === 'fungi' ? FUNGI_NAME[name] : kingdom === 'microbe' ? MICROBE_NAME[name] : undefined;
@@ -348,9 +363,9 @@ export function resolveOverride(g: G): string | null {
   const { cv, c } = newCanvas();
   vignette(c, kingdom === 'fungi');
   floorFade(c);
-  const ink = newCanvas();
+  const ink = newInk();
   painter(ink.c, g, palette(g));
-  fitInk(ink.cv, c);
+  fitInk(ink.cv, c, kingdom + ':' + name);
   return cv.toDataURL();
 }
 
