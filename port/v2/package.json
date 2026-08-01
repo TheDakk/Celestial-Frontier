@@ -17,7 +17,8 @@
     "typecheck": "tsc --noEmit",
     "smoke": "node tools/slicesmoke.mjs",
     "proofsheet": "node tools/proofsheet.mjs",
-    "perf": "node tools/sliceperf.mjs"
+    "perf": "node tools/sliceperf.mjs",
+    "speciesaudit": "node tools/speciesaudit.mjs"
   },
   "devDependencies": {
     "@types/node": "26.1.2",
