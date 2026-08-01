@@ -28,6 +28,15 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   16 → 0 duplicate groups; a permanent sentinel in speciesaudit fails on any regression.
 - ✔ **D-ART-9 — iconic flora bodies (wave 2).** Rafflesia · Pineapple · Joshua Tree · Cotton ·
   Dragon Fruit · Rhubarb · Tobacco · Cabbage now have real growth forms.
+- ✔ **D-ART-10 — insect life stages + arthropod body plans (wave 3).** Fly Larvae/Maggot/
+  Caterpillar were WINGED ADULTS; Dragonfly/Damselfly had no wings at all; Springtail was a
+  winged insect; Fiddler Crab had symmetric claws. All corrected by body plan.
+- ✔ **D-ART-11 — specialist fish/marine bodies (wave 3).** Flatfish (both eyes upper side),
+  Angelfish, Lionfish, cephalopods (8 arms + fin skirt + squid tentacles), cetaceans (a
+  HORIZONTAL fluke and per-species dorsals — Blue Whale no longer equals Dolphin).
+- ✔ **D-ART-12 — the bird wing (wave 3).** NO bird among 631 fauna showed a wing silhouette.
+  faunaBird now draws layered coverts + primaries, with bill shape and leg length as species
+  parameters (raptor/wader/spoonbill/huge-bill/flightless).
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

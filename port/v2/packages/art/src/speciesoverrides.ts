@@ -14,6 +14,7 @@
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { SP_COLOR, SP_HEX } from '@cf/domain-speciestraits';
 import { FLORA_ICONIC, FLORA_DUPES, floraLadder, type Pal } from './floraoverrides.js';
+import { FAUNA_NAME } from './faunaoverrides.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -299,6 +300,16 @@ export function resolveOverride(g: G): string | null {
     (iconic || floraLadder)(c, g, p, name);
     return cv.toDataURL();
   }
+  /* FAUNA (wave 3): species whose defining anatomy was categorically wrong */
+  if (kingdom === 'fauna') {
+    const fp = FAUNA_NAME[name];
+    if (!fp) return null;
+    const { cv, c } = newCanvas();
+    vignette(c, false);
+    floorFade(c);
+    fp(c, g, palette(g) as Pal, name);
+    return cv.toDataURL();
+  }
   const painter = kingdom === 'fungi' ? FUNGI_NAME[name] : kingdom === 'microbe' ? MICROBE_NAME[name] : undefined;
   if (!painter) return null;
   const { cv, c } = newCanvas();
@@ -310,4 +321,4 @@ export function resolveOverride(g: G): string | null {
 }
 
 /** How many species wave 1 corrects (for the record + the audit sentinel). */
-export const OVERRIDE_COUNT = new Set([...Object.keys(FUNGI_NAME), ...Object.keys(MICROBE_NAME), ...Object.keys(FLORA_ICONIC), ...FLORA_DUPES]).size;
+export const OVERRIDE_COUNT = new Set([...Object.keys(FUNGI_NAME), ...Object.keys(MICROBE_NAME), ...Object.keys(FLORA_ICONIC), ...FLORA_DUPES, ...Object.keys(FAUNA_NAME)]).size;
