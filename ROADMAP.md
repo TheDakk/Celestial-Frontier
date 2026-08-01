@@ -213,6 +213,20 @@
 ##   bootperf/uilayout patterns exist for the old build). ⛔ Nick-only: the Gate D phone leg,
 ##   the Pixi ART verdict (still unjudged — the spike's creature panel was primitives, not
 ##   Pixi's ceiling), veteran save (Gate C), listening test (Gate G).
+##   ★ PHASE 3 FIRST COMMIT IS IN (1591dc3): @cf/scene — the PURE scene-model layer.
+##   zoommode.ts (the four st.mode values as a typed state machine; illegal jumps rejected —
+##   the st.star-null and NaN-camera crash classes prevented structurally; navToView emits the
+##   _sanitizeView shape, closing the loop with persistence) + universe.ts (galaxy nodes from
+##   ported galaxiesInCell; test pins that the home view CONTAINS home galaxy 999).
+##   ARCHITECTURE RULE: composition pure under vitest; apps/game (NOT yet created) is a dumb
+##   Pixi renderer over it. ✔ PIN DECIDED: pixi.js 8.19.0 (stable caught up to the spike —
+##   Addendum D's drift note resolved) · vite 8.2.0.
+##   ▶ NEXT IN PHASE 3: apps/game scaffold (Vite+Pixi shell drawing universe nodes; add
+##   'apps/*' to port/v2 workspaces) · galaxy-mode composition (starsInCell) · system-mode
+##   (systemFor: planets/rings/moons + occlusion order as PURE z-order data) · camera math ·
+##   input mapping · the save/reload leg via @cf/persistence + IndexedDB (its browser proof).
+##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
+##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.
 ## ✔★ THE FOUR §23 DESIGN DECISIONS ARE MADE (Nick, 2026-07-31). Recorded in port/DECISIONS.md —
 ##   a NEW live record, so the supplied v4.0 plan stays the reference it was delivered as.
