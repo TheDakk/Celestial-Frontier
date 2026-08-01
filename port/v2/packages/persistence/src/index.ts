@@ -15,3 +15,4 @@
    - a RESET removes primary AND backup — "a reset must not resurrect via
      the backup" (CF-RR-002's reset law). */
 export * from './repository.js';
+export * from './import-v2.js';

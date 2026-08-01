@@ -1,9 +1,10 @@
 /* AUTO-LIFTED VERBATIM domain-pure strays from main.js (v1.8.9) — functions
    living OUTSIDE the 14 [domain] modules that fixtures pin or domain code
-   calls: cleanName (13274-13274) · _r2 (14592-14592) · encodeWhere (14593-14601) · decodeWhere (14615-14636) · winEstimate (18459-18462) · STAT_KEYS (16772-16772) · floraStat (16782-16782) · BIOME_SETS (10763-10823) · biomeFor (10824-10835) · hdGenesFor (5605-5701) · _sanitizeSavedGenome (14153-14201).
-   body sha256/16 5abcca3cda9b35c5. ⚠ DO NOT EDIT. Regenerate: node tools/lift-strays.mjs */
+   calls: cleanName (13274-13274) · _r2 (14592-14592) · encodeWhere (14593-14601) · decodeWhere (14615-14636) · winEstimate (18459-18462) · STAT_KEYS (16772-16772) · floraStat (16782-16782) · BIOME_SETS (10763-10823) · biomeFor (10824-10835) · hdGenesFor (5605-5701) · _sanitizeSavedGenome (14153-14201) · _sanitizeView (14604-14614) · REGIONS (21951-21958) · RING_SPECTRUM (12219-12226) · ASC_RING_R (22757-22757) · regionAt (21963-21963) · gradeCapAt (12227-12237) · ringGrade (12238-12246).
+   body sha256/16 2b3bbea82355f98f. ⚠ DO NOT EDIT. Regenerate: node tools/lift-strays.mjs */
 import { mulberry32, clamp, hashInt } from '@cf/domain-rand';
-import { SP_COLOR, FA_TRAIT, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_HABITAT, SP_HEX, FA_SIZE_M, TIER_MAX, habOf, locoOf } from '@cf/domain-speciestraits';
+import { HOME_GAL_SEED, UCELL, HOME_POS, GR, SOL_POS } from '@cf/domain-worldconfig';
+import { SP_COLOR, FA_TRAIT, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_HABITAT, colorGrade, SP_HEX, FA_SIZE_M, TIER_MAX, habOf, locoOf } from '@cf/domain-speciestraits';
 import { b64encUtf8, b64decUtf8 } from '@cf/domain-encutil';
 import { battleStats } from '@cf/domain-combatcore';
 
@@ -265,4 +266,53 @@ function _sanitizeSavedGenome(g){
   if(g.par!=null){ const a=(+g.par)|0; if(a>=8 && a<=11) g.par=a; else delete g.par; }
   return g;
 }
-export { cleanName, _r2, encodeWhere, decodeWhere, winEstimate, STAT_KEYS, floraStat, BIOME_SETS, biomeFor, hdGenesFor, _sanitizeSavedGenome };
+function _sanitizeView(v){
+  if(!v || !v.gal) return null;
+  const g=v.gal, _n=(x,d,lo,hi)=>{ const q=+x; return isFinite(q)?clamp(q,lo,hi):d; };
+  const gal={x:_n(g.x,0,-1e7,1e7),y:_n(g.y,0,-1e7,1e7),size:_n(g.size,60,8,4000),
+    sp:_n(g.sp,0,0,3e5),tilt:_n(g.tilt,0.5,-7,7),rot:_n(g.rot,0,-7,7),seed:_n(g.seed,1,0,4294967295)>>>0,
+    home:!!g.home, quasar:!!g.quasar, dwarf:!!g.dwarf};
+  const out={type:v.type, gal};
+  if(v.star && typeof v.star==='object') out.star={x:_n(v.star.x,0,-1e7,1e7),y:_n(v.star.y,0,-1e7,1e7),seed:_n(v.star.seed,1,0,4294967295)>>>0};
+  if(v.pseed!=null && isFinite(+v.pseed)) out.pseed=clamp(+v.pseed,0,4294967295)>>>0;
+  return out;
+}
+const REGIONS=[
+  {name:'the Solar Reach',   sigs:0, r:UCELL*2.2},
+  {name:'the Local Cluster', sigs:2, r:UCELL*4.5},
+  {name:'the Near Field',    sigs:4, r:UCELL*7},
+  {name:'the Deep Field',    sigs:6, r:UCELL*10},
+  {name:'the Outer Dark',    sigs:8, r:UCELL*14},
+  {name:'the Frontier',      sigs:9, r:UCELL*20},
+];
+const RING_SPECTRUM=[
+  {cap:5,  n:'the Neighborhood',   note:'up to Legendary'},
+  {cap:8,  n:'the home galaxy',    note:'up to Primordial'},
+  {cap:9,  n:'the Solar Reach',    note:'up to Transcendent'},
+  {cap:10, n:'the Local Cluster',  note:'Transcendent, less rare'},
+  {cap:11, n:'the Near Field',     note:'Transcendent, rarer still'},
+  {cap:14, n:'the Deep Field and beyond', note:'the full spectrum — where Transcendent worlds are least rare'},
+];
+const ASC_RING_R=GR*0.25;      /* stage-1 "Neighborhood" slice of the home galaxy */
+function regionAt(x,y){ const d=Math.hypot(x-HOME_POS.x, y-HOME_POS.y); for(let i=0;i<REGIONS.length;i++) if(d<=REGIONS[i].r) return i; return REGIONS.length-1; }
+function gradeCapAt(where){
+  if(!where || !where.gal) return TIER_MAX;          /* bred / imported / unplaced: never capped */
+  try{
+    if(where.gal.seed===HOME_GAL_SEED){
+      if(where.star && Math.hypot(where.star.x-SOL_POS.x, where.star.y-SOL_POS.y)<=ASC_RING_R) return RING_SPECTRUM[0].cap;
+      return RING_SPECTRUM[1].cap;
+    }
+    const reg=regionAt(where.gal.x, where.gal.y);
+    return reg<=0?RING_SPECTRUM[2].cap : reg===1?RING_SPECTRUM[3].cap : reg===2?RING_SPECTRUM[4].cap : TIER_MAX;
+  }catch(_){ return TIER_MAX; }
+}
+function ringGrade(g, grade, where){
+  if(!grade || (g && (g.apex||g.par))) return grade;   /* the named legends keep their crowns */
+  /* THE CRADLE LAW (v1.5.2c, Nick): Earth's beasts are starters wherever
+     they travel — grade clamps at Uncommon, budgets stay honest */
+  const cap=(g && g._cradle) ? Math.min(2, gradeCapAt(where)) : gradeCapAt(where);
+  if(grade.tier<=cap) return grade;
+  const dom=g.kingdom==='fauna'?'life':(g.kingdom==='flora'?'forest':(g.kingdom==='fungi'?'fungal':'life'));
+  return colorGrade(dom, g.seed, {salt:0x10F, force:cap});
+}
+export { cleanName, _r2, encodeWhere, decodeWhere, winEstimate, STAT_KEYS, floraStat, BIOME_SETS, biomeFor, hdGenesFor, _sanitizeSavedGenome, _sanitizeView, REGIONS, RING_SPECTRUM, ASC_RING_R, regionAt, gradeCapAt, ringGrade };
