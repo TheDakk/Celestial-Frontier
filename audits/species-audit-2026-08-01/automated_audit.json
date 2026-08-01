@@ -1,0 +1,211 @@
+{
+  "fauna": {
+    "count": 631,
+    "dimensions": {
+      "(440, 440)": 631
+    },
+    "modes": {
+      "RGBA": 631
+    },
+    "corrupt": [],
+    "exact_duplicate_groups": [],
+    "exact_duplicate_files": 0,
+    "edge_touch_candidates": [],
+    "low_content_candidates": [
+      [
+        "Black_Bear",
+        0.009400826446280992,
+        [
+          48,
+          147,
+          391,
+          364
+        ]
+      ]
+    ]
+  },
+  "flora": {
+    "count": 334,
+    "dimensions": {
+      "(440, 440)": 334
+    },
+    "modes": {
+      "RGBA": 334
+    },
+    "corrupt": [],
+    "exact_duplicate_groups": [
+      [
+        "Acai",
+        "Milkweed",
+        "Salmonberry"
+      ],
+      [
+        "Anise",
+        "Yerba_Mate"
+      ],
+      [
+        "Arrowhead",
+        "Clover",
+        "Fenugreek"
+      ],
+      [
+        "Beach_Pea",
+        "Bog_Myrtle",
+        "Breadnut",
+        "Castor_Bean"
+      ],
+      [
+        "Bilberry",
+        "Cloudberry",
+        "Sesame"
+      ],
+      [
+        "Bull_Kelp",
+        "Kelp"
+      ],
+      [
+        "Crowberry",
+        "Licorice"
+      ],
+      [
+        "Devil's_Club",
+        "Rainforest_Nettle"
+      ],
+      [
+        "Dulse",
+        "Green_Algae"
+      ],
+      [
+        "Flax",
+        "Rhubarb"
+      ],
+      [
+        "Huckleberry",
+        "Monkshood"
+      ],
+      [
+        "Ice_Algae",
+        "Snow_Algae"
+      ],
+      [
+        "Licorice_Fern",
+        "Maidenhair_Fern"
+      ],
+      [
+        "Lingonberry",
+        "Wild_Chive"
+      ],
+      [
+        "Oleander",
+        "Peanut",
+        "Tea_Tree"
+      ],
+      [
+        "Saltbush",
+        "Tamarisk"
+      ]
+    ],
+    "exact_duplicate_files": 38,
+    "edge_touch_candidates": [],
+    "low_content_candidates": [
+      [
+        "Acacia",
+        0.007066115702479339,
+        [
+          78,
+          36,
+          339,
+          65
+        ]
+      ],
+      [
+        "Pineapple",
+        0.002236570247933884,
+        [
+          191,
+          297,
+          243,
+          324
+        ]
+      ]
+    ]
+  },
+  "fungi": {
+    "count": 27,
+    "dimensions": {
+      "(440, 440)": 27
+    },
+    "modes": {
+      "RGBA": 27
+    },
+    "corrupt": [],
+    "exact_duplicate_groups": [],
+    "exact_duplicate_files": 0,
+    "edge_touch_candidates": [],
+    "low_content_candidates": []
+  },
+  "microbe": {
+    "count": 22,
+    "dimensions": {
+      "(440, 440)": 22
+    },
+    "modes": {
+      "RGBA": 22
+    },
+    "corrupt": [],
+    "exact_duplicate_groups": [],
+    "exact_duplicate_files": 0,
+    "edge_touch_candidates": [],
+    "low_content_candidates": []
+  },
+  "procedural": {
+    "count": 240,
+    "dimensions": {
+      "(440, 440)": 240
+    },
+    "modes": {
+      "RGBA": 240
+    },
+    "corrupt": [],
+    "exact_duplicate_groups": [],
+    "exact_duplicate_files": 0,
+    "edge_touch_candidates": [],
+    "low_content_candidates": [
+      [
+        "flora-h0-s3",
+        0.008161157024793388,
+        [
+          91,
+          38,
+          347,
+          60
+        ]
+      ]
+    ]
+  },
+  "procedural_matrix": {
+    "microbe": {
+      "count": 60,
+      "missing": []
+    },
+    "fauna": {
+      "count": 60,
+      "missing": []
+    },
+    "flora": {
+      "count": 60,
+      "missing": []
+    },
+    "fungi": {
+      "count": 60,
+      "missing": []
+    }
+  },
+  "procedural_bad_names": [],
+  "non_ascii_names": [
+    [
+      "fungi",
+      "Lion\udcd4\udcc7\udcd6s_Mane.png"
+    ]
+  ]
+}

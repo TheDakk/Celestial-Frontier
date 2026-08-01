@@ -78,3 +78,38 @@ fungi-h2-s6 (bioluminescent trio) · fauna-h2-s9 (urchin) · fauna-h0-s11 (jelly
 `npm run speciesaudit` (1,254 painted, exit-1 on misses, 5 contact sheets) ·
 `npm run speciesexport` (full-size zips for external review). Any approved deviation gets
 before/after sheets + a re-run of both before it lands.
+
+---
+
+# MERGED VERDICT — Nick's system audit + the three-agent review (2026-08-01)
+
+Nick's full audit is committed at `audits/species-audit-2026-08-01/` (md + json). The two
+reviews CONVERGE on every systemic finding — fungi mono-template, microbe mono-template,
+defining-anatomy failures, roll-driven color fighting realism, contrast floor, procedural
+fauna strongest / fungi+microbes color-only — and his automated layer caught four things
+visual sampling structurally could not:
+
+- **★ 16 exact BYTE-DUPLICATE flora groups (38 files)** — e.g. Acai=Milkweed=Salmonberry,
+  Flax=Rhubarb, Oleander=Peanut=Tea Tree. Release blocker; visual review can't see hashes.
+- **★ Life-stage errors**: Fly Larvae drawn as a winged ADULT (+ Springtail/Scorpionfly).
+- **★ Filename mojibake** (Lion's_Mane → LionÔÇÖs_Mane) — OUR exporter's bug, FIXED same
+  day (speciesexport safe() is ASCII-normalizing now).
+- **★ The 1,014 vs 1,010 count**: 1,010 is `tools/render-audit.js`'s DYNAMIC count of its
+  own enumeration; 1,014 is the full `_EARTH_NAMES` roster. VERIFY the 4-name delta by
+  diffing the two lists before any manifest locks (open item).
+
+## The combined slate (supersedes D-ART-1..5; all awaiting Nick's go)
+
+Nick's Blockers 1–8 + correction order (his §15) IS the plan of record; the agent findings
+slot in as detail. Order: **(P1)** integrity — count canon, filenames, kill the 16 duplicate
+groups, expected-family metadata + automated expected-vs-resolved tests (his §16 manifest =
+the right shape) → **(P2)** systemic renderers — fungi structural families (his 15-family
+list), microbe morphologies (his 15), insect life-stage, specialist fish bodies, aquatic
+inverts, iconic-flora overrides → **(P3)** family fauna polish (mammals/birds/fish/
+reptiles/arthropods/marine) with the agents' weakest-list as the worklist → **(P4)**
+procedural completion (fungi/microbe body plans, flora organs, limb grouping, heat as a
+design lever, the cold-flora blur bug). Regression: his §17 sentinel sheets fold into
+`speciesaudit` as per-family asserts.
+
+**Shared bottom line: the technical pipeline passed everything; the art needs a canonical
+morphology pass that makes every Earth label visually earned. Not recolors — bodies.**
