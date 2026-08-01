@@ -1,20 +1,21 @@
-/* Phase 3 vertical-slice — a Pixi renderer over @cf/scene, speaking the
-   Renderer's own visual language (main.js ~3380-5340 recipes, sizes and LOD
-   gates carried number-for-number). Everything that can be wrong lives in the
-   tested packages; this file draws nodes, moves a camera, and forwards input
-   into the nav state machine.
+/* THE SLICE (Phases 3–4) — a Pixi renderer over @cf/scene speaking the
+   Renderer's visual language (main.js recipes number-for-number), wearing
+   the game's chrome at the GOLDEN SCREENS' geometry. Everything that can be
+   wrong lives in the tested packages; this file draws, moves a camera, and
+   forwards input into the tested state machines.
 
-   Slice status: universe → galaxy → system → surface descent + ascent, with
-   the game's ZOOM-DRIVEN transitions (checkTransitions semantics: zoom into
-   a galaxy to dive, zoom out past gz0*0.62 to rise), painterly stars/deco/
-   planets/rings/moons/belt via the lifted @cf/art painters, pan/wheel/pinch,
-   survey card over typed selectors, save/reload of the nav view through
-   @cf/persistence (IndexedDB).
+   Live today: the full descent ladder with zoom-driven transitions ·
+   survey-first input (tap = describePick card, double-tap dives) · the
+   charter/Ascent gates (toasting the build that opens the ring) · wormhole
+   travel (reach-clamped) · comets/visitor/supernovae/moon terminators/cloud
+   deck · THE REAL SAVE LOOP (importSaveV2 ⇄ exportSaveV2 over IndexedDB,
+   with CF-RR-002 recovery wired) · panels (one-panel law/focus restoration)
+   · Settings/Compendium/Records · search (code-paste travel) · the shipped
+   audio stings · COSMIC_EPOCH on play time.
 
-   Recorded slice gaps (not parity bugs — Phase 4+ scope): wormhole travel,
-   charter/Ascent gating on dives, ring↔planet mutual shadows, drifting cloud
-   deck, moon terminator shading, comets/visitor, PROTO star disk (corona
-   fallback), supernova sites, deco/fine-star pick targets. */
+   Still ahead (recorded in ROADMAP's NEXT): the 21-step training port,
+   Star Atlas, rarity stings, ring↔planet mutual shadows, PROTO star disk,
+   biome vista surfaces (Phase 6), living portraits (Phase 5). */
 import { Application, Container, Graphics, Sprite, Texture, Text, extensions, CullerPlugin } from 'pixi.js';
 import {
   galSpriteFor, decoSprite, getPlanetSprite, starSprite,
@@ -80,7 +81,13 @@ function syncTopbarH(): void {
   document.documentElement.style.setProperty('--topbar-h', topbarEl.offsetHeight + 'px');
 }
 new ResizeObserver(syncTopbarH).observe(topbarEl);
-addEventListener('resize', syncTopbarH);
+addEventListener('resize', () => {
+  syncTopbarH();
+  /* rotation moves minWH while the ascend floors read gz0/sz0 live (audit
+     #8) — recompute for the mode you are IN so the thresholds agree */
+  if (nav.mode === 'galaxy') gz0 = 0.42 * minWH() / GR;
+  else if (nav.mode === 'system') sz0 = 0.40 * minWH() / SYS_R;
+});
 let _ctxTxt = '', _hintTxt = '';
 function setCtx(t: string): void { if (t !== _ctxTxt) { _ctxTxt = t; ctxEl.textContent = t; } }
 function setHint(t: string): void { if (t !== _hintTxt) { _hintTxt = t; hintEl.textContent = t; } }
@@ -103,7 +110,7 @@ let epochClock: EpochClock = createEpochClock(0, () => 0);
 let playT0 = 0;
 const playSeconds = (): number => (performance.now() - playT0) / 1000;
 const DPR = Math.min(devicePixelRatio, 3);
-const minWH = (): number => Math.min(innerWidth, innerHeight);
+const minWH = (): number => Math.max(80, Math.min(innerWidth, innerHeight));   /* floor: a zero-sized window must not mint z=0 → NaN cameras (audit #8) */
 
 let nav: NavState = NAV_HOME;
 const cam = { x: 0, y: 0, z: 1 };
@@ -136,9 +143,10 @@ function hideSurvey(): void {
 }
 
 /* ---- the save-import sheet (Phase 4's second UI component; GATE C's front
-   door): paste or pick your cfcc_save_v2 blob — it is VALIDATED through the
-   real importSaveV2 first, then stored VERBATIM (the fixture-#10 rule) and
-   the slice reboots into it, Ascent stage and all. ---- */
+   door): paste or pick your cfcc_save_v2 blob — VALIDATED through the real
+   importSaveV2 first, stored verbatim, and the ORIGINAL kept as an untouched
+   keepsake in cf_v2_import_original (the live save evolves through
+   exportSaveV2 from the first boot — audit #2's honest wording). ---- */
 const sheet = document.createElement('div');
 sheet.id = 'importsheet';
 sheet.style.cssText = 'position:fixed;inset:0;background:rgba(4,6,12,0.7);display:none;z-index:11';
@@ -166,6 +174,7 @@ document.getElementById('docksurvey')!.addEventListener('click', () => {
   } else hideSurvey();
 });
 document.getElementById('dockcharts')!.addEventListener('click', () => {
+  if (!save) return;   /* pre-boot click (audit #3) */
   save.chartsOn = !save.chartsOn;
   document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
   if (chartLayer) chartLayer.visible = save.chartsOn;
@@ -201,7 +210,7 @@ function fillSettings(): void {
   el.querySelector('#setvol')!.addEventListener('input', (e) => {
     save.sfxVol = (+(e.target as HTMLInputElement).value) / 100;
     applySfxGain();   /* the shared bus retapers live */
-    void persistView();
+    persistSoon();
   });
   el.querySelector('#setcharts')!.addEventListener('click', () => {
     save.chartsOn = !save.chartsOn;
@@ -215,7 +224,7 @@ function fillSettings(): void {
   });
   el.querySelector('#setglass')!.addEventListener('input', (e) => {
     save.glassTint = (+(e.target as HTMLInputElement).value) / 100;
-    applyGlass(); void persistView();
+    applyGlass(); persistSoon();
   });
 }
 
@@ -313,6 +322,7 @@ function encodeHere(): string | null {
   return encodeWhere(v as never) as string;
 }
 function jumpToView(view: Record<string, unknown>): boolean {
+  if (!save) return false;   /* pre-boot paste (audit #3) */
   const v = _sanitizeView(view);
   if (!v) return false;
   const n2 = viewToNav(v);
@@ -368,6 +378,11 @@ async function importBlob(raw: string): Promise<string | null> {
     if (!KNOWN.some((k) => k in o)) return 'That parses, but carries no save fields — nothing was stored.';
   } catch { return 'That does not load as a Celestial Frontier save — nothing was stored.'; }
   try { await repo.write(raw); } catch { return 'Storage refused the write (private mode?).'; }
+  /* the ORIGINAL paste is kept as an untouched keepsake (audit #2): the live
+     save evolves through exportSaveV2 from the first frame, so any field the
+     port's schema does not yet carry would otherwise be unrecoverable —
+     exactly the wrong failure mode for Gate C's real veteran save */
+  try { localStorage.setItem('cf_v2_import_original', raw); } catch { /* keepsake only */ }
   location.reload();
   return null;
 }
@@ -388,7 +403,7 @@ function toast(title: string, msg: string): void {
   const now = performance.now();
   if (now - _toastT < 1800) return;   /* the game's re-fire guard (review catch: parking inside a gate) */
   _toastT = now;
-  toastEl.innerHTML = `<b data-sel="toast-title">${title}</b><br>${msg}`;
+  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><br>${esc(msg)}`;   /* every sink escapes (audit #6) */
   toastEl.style.opacity = '1';
   clearTimeout(_toastHide);
   _toastHide = window.setTimeout(() => { toastEl.style.opacity = '0'; }, 3600);
@@ -620,7 +635,7 @@ interface CometFx { coma: Sprite; tail: Sprite; label: Text; cm: { off: number; 
 let sysComets: CometFx[] = [];
 let visitorFx: { wrap: Container; body: Sprite; label: Text; v: { speed: number; off: number; ang: number; b: number } } | null = null;
 const zCut = (): number => {
-  const W = app.renderer.width / app.renderer.resolution, H = app.renderer.height / app.renderer.resolution;
+  const W = app.screen.width, H = app.screen.height;   /* logical CSS px — renderer.width/resolution DOUBLE-divided on DPR-3 phones (the off-center-scene bug the perf probe caught) */
   return Math.sqrt((W * H) / (UCELL * UCELL * 3600));   /* main.js 3620 */
 };
 let fineLayer: Container | null = null;
@@ -637,7 +652,11 @@ let surfClouds: { a: Sprite; b: Sprite; w: number } | null = null;
 const baseR = (): number => Math.max(0.7 / cam.z, 0.55);   /* Renderer star sizing (main.js 4126) */
 
 function clearWorld(): void {
-  world.removeChildren();
+  /* DESTROY, don't just detach (audit #4): Texts own their canvas textures
+     and the universe rebuilds on every pan cell-crossing — undisposed
+     children climb GPU memory. Shared sprite textures survive (destroy()
+     leaves textures alone by default). */
+  for (const c of world.removeChildren()) c.destroy({ children: true });
   galaxySpins.length = 0;
   galStars = []; galTwinkle = []; screenScaled = [];
   solMark = null; bhDisc = null; fineLayer = null; fineWin = null;
@@ -913,8 +932,7 @@ function drawGalaxy(galSeed: number): void {
   }
   /* the wormhole — one hides in a few galaxies; survey it, or fly in and be
      hurled somewhere unimaginably distant (main.js 3415: the jump is seeded
-     from the galaxy, identical for every explorer; the charter's reach clamp
-     lands with progression wiring — recorded) */
+     from the galaxy, identical for every explorer, reach-clamped toward home) */
   const wh = galaxyWormhole(galSeed) as { x: number; y: number } | null;
   if (wh) {
     const ws = new Sprite(Texture.from(_wormSpr()));
@@ -1000,14 +1018,14 @@ function buildSolMark(x: number, y: number): void {
 function updateFineLayer(force: boolean): void {
   /* fine star layer (main.js 4182): keep resolving stars the deeper you
      zoom — gate c.z > minWH/260, FCELL cells, viewport-windowed, clamped
-     to the disc. Non-interactive in the slice (recorded gap). */
+     to the disc. Diveable, same as the game's picks. */
   if (nav.mode !== 'galaxy' || !nav.gal) return;
   const on = cam.z > minWH() / 260;
   if (!on) {
     if (fineLayer) { world.removeChild(fineLayer); fineLayer.destroy({ children: true }); fineLayer = null; fineWin = null; }
     return;
   }
-  const W = app.renderer.width / app.renderer.resolution, H = app.renderer.height / app.renderer.resolution;
+  const W = app.screen.width, H = app.screen.height;   /* logical CSS px — renderer.width/resolution DOUBLE-divided on DPR-3 phones (the off-center-scene bug the perf probe caught) */
   const x0 = cam.x - (W / 2) / cam.z, y0 = cam.y - (H / 2) / cam.z;
   const x1 = cam.x + (W / 2) / cam.z, y1 = cam.y + (H / 2) / cam.z;
   const win = {
@@ -1531,16 +1549,43 @@ function zoomLimits(): [number, number] {
 
 /* ---- the save/reload leg — THE REAL PIPELINE ---- */
 async function persistView(): Promise<void> {
+  if (persistHold) return;   /* a failed boot read holds writes until the player acts */
   try {
     save.savedView = navToView(nav);
     save.EPOCH_BASE = epochClock.current();   /* play time accumulates across sessions (doSave writes COSMIC_EPOCH) */
     await repo.write(exportSaveV2(save, Date.now()));
   } catch { /* private mode: session continues unsaved */ }
 }
+let _persistT = 0;
+function persistSoon(): void {
+  /* slider-friendly: one export per drag, not one per input event (audit #5) */
+  clearTimeout(_persistT);
+  _persistT = window.setTimeout(() => { void persistView(); }, 400);
+}
+let persistHold = false;   /* a FAILED boot read must not let the boot persist overwrite evidence */
 async function loadSave(): Promise<void> {
+  /* THE RECOVERY CONTRACT, finally wired (audit finding #1 — the CF-RR-002
+     path was built and tested in the repository but never called):
+     primary unreadable/corrupt → recover() restores the backup ONCE; a
+     payload that PROVES it loads is promoted to last-known-good, exactly
+     the v1.8.9 loadSave semantic. A read that THREW (infra, not absence)
+     holds all persists until a user action, so the boot's own write can
+     never destroy the evidence. */
   let raw: string | null = null;
-  try { raw = (await repo.readPrimary()) ?? null; } catch { raw = null; }
-  const imp = importSaveV2(raw, REGISTRY, Date.now());
+  let readThrew = false;
+  try { raw = (await repo.readPrimary()) ?? null; } catch { readThrew = true; }
+  let imp = importSaveV2(raw, REGISTRY, Date.now());
+  if (!imp.ok && (raw !== null || readThrew)) {
+    /* primary corrupt or unreadable — CF-RR-002: the backup takes its place ONCE */
+    try {
+      const rec = await repo.recover();
+      if (rec !== undefined) { raw = rec; imp = importSaveV2(raw, REGISTRY, Date.now()); }
+    } catch { /* backup unreachable too */ }
+  }
+  if (imp.ok && raw) {
+    try { await repo.promoteLastKnownGood(raw); } catch { /* keepsake only */ }
+  }
+  persistHold = readThrew && !imp.ok;
   save = imp.ok ? imp.state
     : (importSaveV2('{}', REGISTRY, Date.now()) as { ok: true; state: SaveStateV2 }).state;   /* fresh expedition */
   /* the sanitized view → nav; viewToNav degrades toward home, so a
@@ -1628,7 +1673,7 @@ async function loadSave(): Promise<void> {
     /* eased camera — exponential approach to the target, framerate-aware */
     const k = 1 - Math.pow(0.0025, tk.deltaMS / 1000);
     cam.x += (camT.x - cam.x) * k; cam.y += (camT.y - cam.y) * k; cam.z += (camT.z - cam.z) * k;
-    world.position.set(app.renderer.width / (2 * app.renderer.resolution) - cam.x * cam.z, app.renderer.height / (2 * app.renderer.resolution) - cam.y * cam.z);
+    world.position.set(app.screen.width / 2 - cam.x * cam.z, app.screen.height / 2 - cam.y * cam.z);
     world.scale.set(cam.z);
     if (world.alpha < 1) world.alpha = Math.min(1, world.alpha + tk.deltaMS / 400);
     const t = performance.now() * 0.001;
@@ -1737,6 +1782,7 @@ async function loadSave(): Promise<void> {
   let pinchD = 0;
   app.canvas.style.touchAction = 'none';
   app.canvas.addEventListener('pointerdown', (e) => {
+    persistHold = false;   /* the player is HERE — writes may resume */
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     if (pointers.size === 2) {
       const [a, b] = [...pointers.values()];
