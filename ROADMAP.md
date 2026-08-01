@@ -624,10 +624,33 @@
 ##   before the painterly bake).
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS (19 asserted behaviors under
 ##   control) · proofsheet regenerated · main.js untouched.
-##   ▶ NEXT: system-view close-up cloud decks (motion-gated, pr·z>22 — _cloudSpr is
-##   lifted, the wiring remains) · encounter/duel surfaces over the portrait engine ·
-##   the Phase-5 training lessons · Settings "Restart training" · Charters panel ·
-##   playRaritySting · hdart lazy-load (payload budget) · codex virtualization.
+##   ★★★ NICK'S FIRST UI VERDICT + THE BOT CRITIQUE + THE CLEANLINESS PASS
+##   (2026-08-01, batch 15). THE VERDICT, recorded first-class: "not as clean as the
+##   old UI — things overlap and aren't as organized." He'll play more; treat the old
+##   UI as the bar until he says otherwise. A DESIGN-CRITIQUE SUBAGENT then compared
+##   the six slice screens against four goldens ("what the bots think") and ranked 12
+##   concrete deltas — its #1 matched Nick's addendum word-for-word: OVERLAPS (three
+##   live collisions: captions bleeding through the charter/training cards, rails
+##   sitting on the survey card's buttons). The golden's three laws, named: ONE
+##   ACCENT (gold marks state; blue only instructs) · CONTENT-HUGGING FLOATING CARDS
+##   (own silhouette, never touch a neighbor) · NOTHING NAKED (no raw text, no OS
+##   scrollbars, no labels under icons). FIXED SAME BATCH (items 1-8, 10, 12):
+##   survey card = floating rounded shadowed panel (edge-weld gone), rails+captions
+##   YIELD to open cards (body.card-open / body.training) · panels hug content
+##   (bottom:auto + max-height + shadow) · scrollbars disciplined thin everywhere ·
+##   dock = quiet 44px icon-only circles · .on states all GOLD (the steel-blue
+##   second accent retired incl. the Land button) · HP text INSIDE the fill (one
+##   object, golden's compact pill) · panel headers = gold letter-spaced caps with
+##   hairline · trail wears a pill (never naked text) · hint verbs light blue.
+##   Items 9/11 (button-weight sweep · settings ghost rows) queued with the polish
+##   backlog; Nick's replay + the fleet's opinion decide what's next.
+##   Gates: vitest 22/220 · tsc clean · smoke PASS (geometry contract green on all
+##   four viewports through the restyle) · proofsheet regenerated · main.js
+##   untouched.
+##   ▶ NEXT: Nick replays + fleet UI pass scores the cleanliness work · button-weight
+##   sweep (critique #9/#11) · system close-up cloud decks · encounter surfaces ·
+##   Phase-5 training lessons · Charters panel · raritySting · hdart lazy-load ·
+##   codex virtualization.
 ##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone ·
 ##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root

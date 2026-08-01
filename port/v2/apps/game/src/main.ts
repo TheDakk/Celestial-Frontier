@@ -94,7 +94,12 @@ addEventListener('resize', () => {
 });
 let _ctxTxt = '', _hintTxt = '';
 function setCtx(t: string): void { if (t !== _ctxTxt) { _ctxTxt = t; ctxEl.textContent = t; } }
-function setHint(t: string): void { if (t !== _hintTxt) { _hintTxt = t; hintEl.textContent = t; } }
+function setHint(t: string): void {
+  if (t === _hintTxt) return;
+  _hintTxt = t;
+  /* verbs light up blue — the golden's scanability (static strings only) */
+  hintEl.innerHTML = t.replace(/(tap|drag|zoom|press|right-click|Escape|wheel|pinch)/gi, '<b class="kw">$1</b>');
+}
 function setTrail(segs: string[]): void {
   trailEl.innerHTML = segs.map((s, i) =>
     `<span class="seg${i === segs.length - 1 ? ' cur' : ''}">${esc(s)}</span>`).join('<span class="sep">›</span>');
@@ -142,10 +147,12 @@ function showSurvey(d: Descriptor, actionsHtml?: string): void {
     (d.rows as Array<[string, string, string?]>).map(([k, v, cls]) =>
       `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" style="margin:4px 0"><span style="color:#8fa3c4">${esc(k)}</span><br>${esc(v)}</div>`).join('');
   card.style.display = 'block';
+  document.body.classList.add('card-open');
   document.getElementById('docksurvey')!.classList.add('on');
 }
 function hideSurvey(): void {
   card.style.display = 'none';
+  document.body.classList.remove('card-open');
   document.getElementById('docksurvey')!.classList.remove('on');
 }
 
@@ -204,9 +211,9 @@ function fillSettings(): void {
   if (!save) return;   /* a click before boot finishes must not throw */
   fillPanel('set',
     '<h3>Settings</h3>' +
-    `<div class="row"><label>Sound</label><button id="setsnd" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'on' : 'off'}</button></div>` +
+    `<div class="row"><label>Sound</label><button id="setsnd" class="${save.sndOn ? 'on' : ''}" data-sel="set-sound">${save.sndOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Volume</label><input id="setvol" data-sel="set-vol" type="range" min="0" max="100" value="${Math.round(save.sfxVol * 100)}"></div>` +
-    `<div class="row"><label>Star charts</label><button id="setcharts" class="${save.chartsOn ? 'on' : ''}">${save.chartsOn ? 'on' : 'off'}</button></div>` +
+    `<div class="row"><label>Star charts</label><button id="setcharts" class="${save.chartsOn ? 'on' : ''}">${save.chartsOn ? 'On' : 'Off'}</button></div>` +
     `<div class="row"><label>Motion</label><span class="seg">` +
     [[-1, 'Auto'], [0, 'Full'], [1, 'Reduced']].map(([v, t]) =>
       `<button data-motion="${v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
@@ -1491,7 +1498,7 @@ function surveyPlanet(p: PlanetNode, starSeed: number): void {
 function buildCardActions(p: PlanetNode): string {
   const charted = save && save.logMap.some(([id]) => id === 'p' + p.seed);
   return '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px">' +
-    '<button data-act="landcta" style="background:#1d3a5e;color:#eaf2ff;border:1px solid #3a5c8e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:40px;font:12px system-ui">⛳ Land</button>' +
+    '<button data-act="landcta" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:40px;font:12px system-ui">⛳ Land</button>' +
     (charted
       ? '<span style="color:#8fa3c4;align-self:center;font-size:12px">★ charted</span>'
       : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:40px;font:12px system-ui">+ Add to Star Atlas</button>') +
