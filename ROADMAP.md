@@ -557,12 +557,40 @@
 ##   Root gates re-proven same batch: goldenseeds/savefixtures/contentregistry/
 ##   codefixtures/audioprofiles PASS · validate FINGERPRINT MATCH 50/50.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
-##   ▶ NEXT IN PHASE 4: the training port (--tut-bot, 21 steps — the big one left) ·
-##   Star Atlas panel (galSeen accrual on descent + rows) · share-code button on the
-##   survey card · playRaritySting · codex virtualization past ~200 rows.
-##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone
-##   (canvas taps especially — see the headless touch note) · proof-sheet.png +
-##   listen · recruit the 12-24 (LISTENING_TEST.md).
+##   ✔★★★ FIELD TRAINING LIVES + THE ATLAS + THE CARD'S ACTION ROW (2026-08-01,
+##   batch 12): · THE TRAINING FRAMEWORK (training.ts) with the first SIX lessons,
+##   texts VERBATIM from TUT_STEPS — welcome · find-earth · survey-tour · atlas-add ·
+##   atlas-open · land — then an honest graduation ("the cache/feed/breed/duel arc
+##   trains the systems, so it waits for the systems — Phase 5"). The LAWS carried:
+##   the lesson card publishes --tut-bot (CF1805-01) and structurally CLEARS the dock
+##   (CF1806-02 family — smoke-asserted geometry) · `allow` locks chrome to the
+##   lesson's own affordances, canvas free only when #cosmos is allowed · the
+##   spotlight ring follows its `spot` through layout changes · steps advance ONLY on
+##   the REAL gameEvents live play emits (survey/atlas-add/atlas-open/landfall) —
+##   never a timer · "Skip training — you lose nothing" is the game's own promise,
+##   persists as tut:1 through exportSaveV2 · a truly EMPTY store = a NEW EXPEDITION
+##   trains (the absent-⇒-done default keeps protecting held saves, verbatim
+##   importer semantics). · THE STAR ATLAS ('log'): save.logMap rows, tap = TRAVEL
+##   through jumpToView (the same charter gates), dock ≤900 (7 buttons wrap into the
+##   phone golden's two tiers) + the golden's RIGHT-rail slot on desktop. · THE
+##   SURVEY CARD'S ACTION ROW restores the game's TRUE two-step: a tap SURVEYS
+##   (⛳ Land · + Add to Star Atlas → ★ charted · ⧉ share code → clipboard + toast);
+##   pressing LAND is its own act (landfall banking/whoosh ride it). · SMOKE: the
+##   fresh-boot main origin now TRAINS and the classic legs skip like a veteran
+##   (skip persists); a SECOND ORIGIN (own IndexedDB = a new expedition) runs the
+##   full six-step drill end-to-end incl. graduation-persists-across-reload —
+##   negative-controlled (event bus severed → 'DRILL: surveying Earth did not
+##   advance', by name). ⚠ The drill's first run caught its own choreography bug:
+##   descendSystem from universe was correctly REFUSED by the state machine —
+##   galaxy first, like a player. slice-training.png joins the record.
+##   Gates: vitest 22/220 · tsc clean · smoke PASS (17 standing controls) ·
+##   proofsheet regenerated · main.js untouched.
+##   ▶ NEXT IN PHASE 4: Settings gains "Restart training" (the game's promise —
+##   one line now that tutDone round-trips) · the cache/specimen/feed/breed/duel
+##   lessons land with Phase 5's living Compendium · Charters panel (chapter list
+##   over ASC_CHAPTERS_DATA + ascProg) · playRaritySting · codex virtualization.
+##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone ·
+##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.

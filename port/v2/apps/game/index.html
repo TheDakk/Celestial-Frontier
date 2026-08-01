@@ -91,7 +91,8 @@
     /* ---- the dock: ROUND icon buttons (phone golden), bottom-center ---- */
     #dock { position: fixed; left: 50%; transform: translateX(-50%);
       bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); z-index: 20;
-      display: flex; gap: 10px; background: none; border: 0; }
+      display: flex; gap: 10px; background: none; border: 0;
+      flex-wrap: wrap; justify-content: center; max-width: 330px; }   /* 7 buttons wrap into the phone golden's two tiers */
     #dock button { width: 52px; height: 52px; border-radius: 50%;
       border: 1px solid #2a3c5e; background: rgba(14, 22, 40, 0.88); color: #9fb6d6;
       cursor: pointer; font: 9px system-ui, sans-serif; padding: 0; }
@@ -116,7 +117,7 @@
     #railrgt button.on { background: #1d3a5e; border-color: #caa24f; }
     @media (min-width: 901px) {
       #dock { left: auto; right: 14px; transform: none; }
-      #dock #dockcodex, #dock #dockrecords { display: none; }   /* rails own them on desktop */
+      #dock #dockcodex, #dock #dockrecords, #dock #dockatlas { display: none; }   /* rails own them on desktop */
       #raillft, #railrgt { display: flex; }
     }
 
@@ -157,12 +158,14 @@
     <button id="railcodex" aria-label="Compendium">📘 Compendium</button>
   </nav>
   <nav id="railrgt" aria-label="right rail">
+    <button id="railatlas" aria-label="Star Atlas">🌐 Star Atlas</button>
     <button id="railrecords" aria-label="Records">📜 Records</button>
   </nav>
   <nav id="dock" aria-label="dock">
     <button id="docksurvey" aria-label="survey card"><span class="ico">🔭</span>survey</button>
     <button id="dockcodex" aria-label="Compendium"><span class="ico">📘</span>codex</button>
     <button id="dockrecords" aria-label="Records"><span class="ico">📜</span>records</button>
+    <button id="dockatlas" aria-label="Star Atlas"><span class="ico">🌐</span>atlas</button>
     <button id="dockcharts" aria-label="star charts"><span class="ico">📈</span>charts</button>
     <button id="docksets" aria-label="settings"><span class="ico">⚙</span>settings</button>
     <button id="docksave" aria-label="save import"><span class="ico">📥</span>save</button>
@@ -170,6 +173,7 @@
   <aside id="setpanel" class="glass panel" aria-label="Settings"></aside>
   <aside id="codexpanel" class="glass panel" aria-label="Compendium"></aside>
   <aside id="recpanel" class="glass panel" aria-label="Records"></aside>
+  <aside id="atlaspanel" class="glass panel" aria-label="Star Atlas"></aside>
   <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

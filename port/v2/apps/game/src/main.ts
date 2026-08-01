@@ -26,6 +26,7 @@ import {
 } from '@cf/art';
 import { initAudio, playWhoosh, playSurveyPing, applySfxGain } from '@cf/audio';
 import { registerPanel, fillPanel, togglePanel, openPanel, closePanels, openPanelId } from './panels.js';
+import { initTraining, gameEvent, trainingActive, trainingStepId } from './training.js';
 import {
   NAV_HOME, enterGalaxy, enterSystem, land, ascend, navToView, viewToNav,
   universeGalaxies, galaxyCell, galaxyCellWindow, systemScene,
@@ -128,10 +129,13 @@ const card = document.createElement('aside');
 card.id = 'survey';
 card.className = 'glass';
 document.body.appendChild(card);
-function showSurvey(d: Descriptor): void {
+let lastCard: Descriptor | null = null;
+function showSurvey(d: Descriptor, actionsHtml?: string): void {
+  lastCard = d;
   card.innerHTML =
     `<h2 data-sel="title" style="margin:0 0 2px;font-size:17px;color:#f4f8ff">${esc(d.title)}</h2>` +
     `<div data-sel="sub" style="color:#8fa3c4;margin-bottom:10px">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
+    (actionsHtml || '') +   /* the card's ACTION ROW (Land · +Atlas · share) — buttons are trusted markup, never save text */
     (d.rows as Array<[string, string, string?]>).map(([k, v, cls]) =>
       `<div data-row="${esc(k)}" data-cls="${esc(cls || '')}" style="margin:4px 0"><span style="color:#8fa3c4">${esc(k)}</span><br>${esc(v)}</div>`).join('');
   card.style.display = 'block';
@@ -298,6 +302,30 @@ function fillRecords(): void {
       ? '<div class="empty" data-sel="journal-empty">No entries yet — the journal writes itself as you explore.</div>'
       : jr.map((j) => `<div class="centry" data-sel="journal-entry"><b>${esc(j.n)}</b><div class="sub">${esc(j.w)}</div></div>`).join('')));
 }
+/* THE STAR ATLAS ('log' in the game): every charted place, tap to TRAVEL
+   (jumpToView — the same charter gates as everything else) */
+function fillAtlas(): void {
+  if (!save) return;
+  const rows = save.logMap;
+  fillPanel('atlas',
+    `<h3>Star Atlas <span style="color:#7ec8f0" data-sel="atlas-count">${rows.length}</span></h3>` +
+    (rows.length === 0
+      ? '<div class="empty" data-sel="atlas-empty">Nothing charted yet — tap “+ Add to Star Atlas” on any survey card.</div>'
+      : rows.map(([id, e]) =>
+        `<div class="centry" data-sel="atlas-entry" data-aid="${esc(id)}" style="cursor:pointer"><b>${esc(String(e.title || id))}</b>${e.badge ? ` <span class="sub">· ${esc(String(e.badge))}</span>` : ''}<div class="sub">${esc(String(e.sub || ''))}</div></div>`).join('')));
+}
+document.getElementById('atlaspanel')!.addEventListener('click', (e) => {
+  const row = (e.target as HTMLElement).closest('[data-aid]');
+  if (!row || !save) return;
+  const hit = save.logMap.find(([id]) => id === (row as HTMLElement).dataset.aid);
+  if (hit && hit[1].where) {
+    closePanels();
+    jumpToView(hit[1].where as Record<string, unknown>);
+  }
+});
+registerPanel({ id: 'atlas', el: document.getElementById('atlaspanel')!, btns: [document.getElementById('dockatlas'), document.getElementById('railatlas')], onOpen: () => { fillAtlas(); gameEvent('atlas-open', { open: true }); } });
+document.getElementById('dockatlas')!.addEventListener('click', () => togglePanel('atlas'));
+document.getElementById('railatlas')!.addEventListener('click', () => togglePanel('atlas'));
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
 registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: () => fillCodex() });
 registerPanel({ id: 'rec', el: document.getElementById('recpanel')!, btns: [document.getElementById('dockrecords'), document.getElementById('railrecords')], onOpen: fillRecords });
@@ -1202,7 +1230,7 @@ function drawSystem(starSeed: number): void {
     }
     holder.eventMode = 'static';
     holder.cursor = 'pointer';
-    holder.on('pointertap', () => surveyAndLand(p, starSeed));
+    holder.on('pointertap', () => surveyPlanet(p, starSeed));   /* survey; LAND is the card's own act */
     world.addChild(holder);
     const ent: Orbiter = { c: holder, kind: 'planet', orb: p.orb, face: [spr, term] };
     orbiters.push(ent);
@@ -1392,13 +1420,36 @@ function descendSystem(star: { seed: number; x: number; y: number }): void {
     rerender();
   }
 }
-function surveyAndLand(p: PlanetNode, starSeed: number): void {
-  /* the survey card first (the real game's flow: survey, then land) —
-     planetDescriptor drives Ecology/SurveyPhrases/Genome underneath, so
-     this one call is the whole domain stack speaking */
+/* THE GAME'S TRUE TWO-STEP (find-earth/land training steps depend on it):
+   a tap SURVEYS — the card opens with its ACTION ROW (Land · + Add to Star
+   Atlas · ⧉ share code); pressing LAND is its own act. */
+let cardCtx: { p: PlanetNode; starSeed: number } | null = null;
+function surveyPlanet(p: PlanetNode, starSeed: number): void {
   const sys = systemFor(starSeed);
-  showSurvey(planetDescriptor(p.P, sys, { name: p.name, orb: p.orb } as never) as Descriptor);
+  const d = planetDescriptor(p.P, sys, { name: p.name, orb: p.orb } as never) as Descriptor;
+  cardCtx = { p, starSeed };
+  showSurvey(d, buildCardActions(p));
   playSurveyPing();   /* the ACT of surveying answers back (main.js) */
+  gameEvent('survey', { planetSeed: p.seed });
+}
+function buildCardActions(p: PlanetNode): string {
+  const charted = save && save.logMap.some(([id]) => id === 'p' + p.seed);
+  return '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px">' +
+    '<button data-act="landcta" style="background:#1d3a5e;color:#eaf2ff;border:1px solid #3a5c8e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:40px;font:12px system-ui">⛳ Land</button>' +
+    (charted
+      ? '<span style="color:#8fa3c4;align-self:center;font-size:12px">★ charted</span>'
+      : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:40px;font:12px system-ui">+ Add to Star Atlas</button>') +
+    '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:40px;font:12px system-ui">⧉ share code</button>' +
+    '</div>';
+}
+function surveyAndLand(p: PlanetNode, starSeed: number): void {
+  /* the api's one-call path (smoke compatibility): survey, then land */
+  surveyPlanet(p, starSeed);
+  doLand();
+}
+function doLand(): void {
+  if (!cardCtx) return;
+  const p = cardCtx.p;
   const r = land(nav, { seed: p.seed });
   if (r.ok) {
     nav = r.state;
@@ -1413,8 +1464,38 @@ function surveyAndLand(p: PlanetNode, starSeed: number): void {
     stSeam.gal = nav.gal; stSeam.star = nav.star;
     playWhoosh();   /* planetfall */
     drawSurface(p); hudText(); void persistView();
+    gameEvent('landfall', { planetSeed: p.seed });
   }
 }
+function addToAtlas(): void {
+  if (!cardCtx || !save || !nav.gal || !nav.star) return;
+  const p = cardCtx.p;
+  const id = 'p' + p.seed;
+  if (!save.logMap.some(([k]) => k === id)) {
+    const d = card.querySelector('[data-sel=title]')?.textContent || p.name;
+    const sub = card.querySelector('[data-sel=sub]')?.textContent || '';
+    const where = { type: 'planet', gal: { ...nav.gal }, star: { x: nav.star.x, y: nav.star.y, seed: nav.star.seed }, pseed: p.seed };
+    save.logMap.push([id, { id, title: d, sub, where }]);
+    void persistView();
+    toast('★ Charted', d + ' joined your Star Atlas.');
+  }
+  gameEvent('atlas-add', { id });
+  if (cardCtx) showSurvey(lastCard!, buildCardActions(p));   /* refresh: the button becomes ★ charted */
+}
+card.addEventListener('click', (e) => {
+  const act = (e.target as HTMLElement).closest('[data-act]');
+  if (!act) return;
+  const a = (act as HTMLElement).dataset.act;
+  if (a === 'landcta') doLand();
+  else if (a === 'add') addToAtlas();
+  else if (a === 'share') {
+    const code = encodeHere() || (cardCtx ? (encodeWhere({ type: 'planet', gal: nav.gal, star: nav.star, pseed: cardCtx.p.seed } as never) as string) : null);
+    if (code) {
+      void navigator.clipboard?.writeText(code).catch(() => { /* headless */ });
+      toast('⧉ Share code copied', 'Paste it into any explorer’s search bar to guide them here.');
+    }
+  }
+});
 function drawSurface(p: PlanetNode): void {
   /* surface mode, slice edition: the world fills the view as its painterly
      surface (full biome scenes are Phase 6); the survey card carries the
@@ -1593,6 +1674,10 @@ async function loadSave(): Promise<void> {
   nav = viewToNav(save.savedView);
   if (nav.mode === 'galaxy') { camT.z = gz0 * 1.05; cam.z = camT.z; }
   else if (nav.mode === 'system') { camT.z = sz0 * 1.05; cam.z = camT.z; }
+  /* a truly EMPTY store is a NEW EXPEDITION — training runs, exactly like
+     the game's new-run init (the absent-⇒-done default protects HELD saves,
+     not fresh ones) */
+  if (raw === null && !readThrew) save.tutDone = false;
   playT0 = performance.now();
   epochClock = createEpochClock(save.EPOCH_BASE, playSeconds);
   (globalThis as Record<string, unknown>).COSMIC_EPOCH = epochClock.current();
@@ -1601,6 +1686,12 @@ async function loadSave(): Promise<void> {
   document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
   applyGlass();
   syncTopbarH();
+  initTraining({
+    explorerName: () => save.explorerName,
+    isDone: () => save.tutDone,
+    setDone: (v) => { save.tutDone = v; },
+    persist: () => { void persistView(); },
+  });
 }
 
 /* ---- boot ---- */
@@ -1629,6 +1720,8 @@ async function loadSave(): Promise<void> {
         objective: objChipEl.textContent || '',
         chartsOn: save.chartsOn, chartsVisible: !!(chartLayer && chartLayer.visible),
         panelOpen: openPanelId(), codexCount: save.codex.length,
+        tutActive: trainingActive(), tutStep: trainingStepId(), tutDone: save.tutDone,
+        atlasCount: save.logMap.length,
         sfxVol: save.sfxVol, motionMode: save.motionMode,
         glassA: getComputedStyle(document.documentElement).getPropertyValue('--glass-a').trim(),
         topbarH: getComputedStyle(document.documentElement).getPropertyValue('--topbar-h'),
@@ -1646,6 +1739,14 @@ async function loadSave(): Promise<void> {
         return true;
       },
       descendSystem,
+      surveyOn: (i: number) => {
+        if (nav.mode !== 'system' || !nav.star) return false;
+        const p = systemScene(nav.star.seed).planets[i];
+        if (!p) return false;
+        surveyPlanet(p, nav.star.seed);
+        return true;
+      },
+      landHere: () => { doLand(); return true; },
       landOn: (i: number) => {
         if (nav.mode !== 'system' || !nav.star) return false;
         const p = systemScene(nav.star.seed).planets[i];

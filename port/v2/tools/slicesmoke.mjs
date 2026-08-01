@@ -42,6 +42,9 @@ const server = http.createServer((req, res) => {
 });
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
 const URL0 = 'http://127.0.0.1:' + server.address().port + '/';
+const server2 = http.createServer(server.listeners('request')[0]);
+await new Promise((r) => server2.listen(0, '127.0.0.1', r));
+const URL2 = 'http://127.0.0.1:' + server2.address().port + '/';   /* different origin ⇒ fresh IndexedDB ⇒ a NEW expedition */
 
 /* ---- headless Edge + CDP ---- */
 const udd = path.join(os.tmpdir(), 'cf-slicesmoke-' + Date.now());
@@ -101,6 +104,22 @@ try {
   if (boot.st && !(parseFloat(boot.st.topbarH) > 20)) fails.push('--topbar-h not measured: ' + JSON.stringify(boot.st.topbarH));
   if (boot.st && !boot.st.ctx) fails.push('the caption line is empty at boot');
   if (boot.st && !/Make planetfall on 2 worlds of Sol/.test(boot.st.objective)) fails.push('objective chip wrong at fresh boot: ' + JSON.stringify(boot.st.objective));
+
+  /* 1a-training. a FRESH boot TRAINS (the game's new-expedition rule); the
+     classic legs run as a veteran — Skip first, the game's own path, and
+     skipping must persist. The full six-step drill runs later on its own
+     fresh origin. */
+  const tut0 = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (!tut0.tutActive || tut0.tutStep !== 'welcome') fails.push('a fresh boot did not open Field Training at welcome: ' + JSON.stringify([tut0.tutActive, tut0.tutStep]));
+  const tutCardDock = await evalIn(`(()=>{ const c=document.getElementById('tutcard'); const d=document.getElementById('dock');
+    if(!c||!d) return null; const cr=c.getBoundingClientRect(), dr=d.getBoundingClientRect();
+    return { clear: cr.bottom <= dr.top + 2, tutBot: getComputedStyle(document.documentElement).getPropertyValue('--tut-bot') }; })()`);
+  if (!tutCardDock || !tutCardDock.clear) fails.push('the lesson card covers the dock (CF1806-02 family): ' + JSON.stringify(tutCardDock));
+  if (!tutCardDock || !/px/.test(tutCardDock.tutBot)) fails.push('--tut-bot not published (CF1805-01 contract): ' + JSON.stringify(tutCardDock && tutCardDock.tutBot));
+  await evalIn(`(()=>{ document.querySelector('[data-sel=tutskip]').click(); return 1; })()`);
+  await sleep(300);
+  const tut1 = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (tut1.tutActive || !tut1.tutDone) fails.push('Skip training did not close + mark done: ' + JSON.stringify([tut1.tutActive, tut1.tutDone]));
 
   /* 1b. THE GOLDEN-LAYOUT GEOMETRY CONTRACT (ui-main-desktop.png positions;
      uilayout.js discipline: measure the REAL boxes, then prove the checker
@@ -460,6 +479,59 @@ try {
   if (!(z1 > z0 * 1.15)) fails.push('PHONE: pinch-out did not zoom (z ' + z0 + ' → ' + z1 + ')');
   const shotPh = await send('Page.captureScreenshot', { format: 'png' }, ph);
   fs.writeFileSync(path.join(OUT, 'slice-phone.png'), Buffer.from(shotPh.data, 'base64'));
+
+  /* 4e. THE TRAINING DRILL — the six live lessons end-to-end on a FRESH
+     ORIGIN (its own IndexedDB ⇒ a new expedition): welcome → find-earth →
+     survey-tour → atlas-add → atlas-open → land → graduation, every advance
+     on the REAL gameEvent the lesson teaches. */
+  const t3 = await send('Target.createTarget', { url: 'about:blank' });
+  const at3 = await send('Target.attachToTarget', { targetId: t3.targetId, flatten: true });
+  const tr = at3.sessionId;
+  await send('Runtime.enable', {}, tr);
+  await send('Page.enable', {}, tr);
+  await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false }, tr);
+  await send('Page.navigate', { url: URL2 }, tr);
+  await sleep(3000);
+  const evalT = async (expr) => {
+    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, tr);
+    if (r.exceptionDetails) throw new Error('training eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
+    return r.result.value;
+  };
+  const step = async () => evalT(`window.__CF_SLICE__.api.state().tutStep`);
+  if (await step() !== 'welcome') fails.push('DRILL: no welcome on the fresh origin: ' + await step());
+  await evalT(`(()=>{ document.querySelector('[data-sel=tutbtn]').click(); return 1; })()`);
+  if (await step() !== 'find-earth') fails.push('DRILL: Begin did not reach find-earth: ' + await step());
+  await evalT(`(()=>{ window.__CF_SLICE__.api.descendGalaxy(999); return 1; })()`);
+  await sleep(2200);
+  await evalT(`(()=>{ const S=window.__CF_SLICE__; S.api.descendSystem({ seed: 424242, x: 0, y: 0 }); return 1; })()`);
+  await sleep(1500);
+  await evalT(`(()=>{ window.__CF_SLICE__.api.surveyOn(2); return 1; })()`);   /* tap Earth = survey */
+  if (await step() !== 'survey-tour') fails.push('DRILL: surveying Earth did not advance find-earth: ' + await step());
+  const shotTut = await send('Page.captureScreenshot', { format: 'png' }, tr);
+  fs.writeFileSync(path.join(OUT, 'slice-training.png'), Buffer.from(shotTut.data, 'base64'));
+  await evalT(`(()=>{ document.querySelector('[data-sel=tutbtn]').click(); return 1; })()`);
+  if (await step() !== 'atlas-add') fails.push('DRILL: Got It did not reach atlas-add: ' + await step());
+  await evalT(`(()=>{ document.querySelector('#survey [data-act=add]').click(); return 1; })()`);
+  if (await step() !== 'atlas-open') fails.push('DRILL: +Add did not advance (atlas-add event): ' + await step());
+  const atl = await evalT(`window.__CF_SLICE__.api.state().atlasCount`);
+  if (atl !== 1) fails.push('DRILL: Earth did not land in the Atlas: ' + atl);
+  await evalT(`(()=>{ document.getElementById('railatlas').click(); return 1; })()`);
+  await sleep(200);
+  if (await step() !== 'land') fails.push('DRILL: opening the Atlas did not advance: ' + await step());
+  await evalT(`(()=>{ document.querySelector('#atlaspanel [data-pnx]').click(); return 1; })()`);
+  await evalT(`(()=>{ document.querySelector('#survey [data-act=landcta]').click(); return 1; })()`);
+  await sleep(700);
+  if (await step() !== 'grad') fails.push('DRILL: landing on Earth did not graduate: ' + await step());
+  await evalT(`(()=>{ document.querySelector('[data-sel=tutbtn]').click(); return 1; })()`);
+  await sleep(400);
+  const done3 = await evalT(`window.__CF_SLICE__.api.state()`);
+  if (done3.tutActive || !done3.tutDone) fails.push('DRILL: graduation did not close training: ' + JSON.stringify([done3.tutActive, done3.tutDone]));
+  if (done3.mode !== 'surface') fails.push('DRILL: the drill should end planetside: ' + done3.mode);
+  /* the promise: training persists as DONE across reload */
+  await send('Page.navigate', { url: URL2 }, tr);
+  await sleep(2500);
+  const done4 = await evalT(`window.__CF_SLICE__.api.state()`);
+  if (done4.tutActive) fails.push('DRILL: training re-opened after graduation + reload');
 
   /* 5. zero console errors / exceptions across the whole run */
   const errs = events.filter((e) =>
