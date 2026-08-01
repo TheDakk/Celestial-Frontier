@@ -4,6 +4,7 @@
    CF16-005 portrait/thumb SPLIT (the ~150MB pinning fix). Browser-only. */
 import { hdPortraitFauna, hdPortraitFlora, hdPortraitFungi, hdPortraitMicrobe } from './hdart.verbatim.js';
 import { resolveOverride } from './speciesoverrides.js';
+export { CLIPPED } from './speciesoverrides.js';   /* the audit's clip sentinel */
 
 const speciesArtCache = new Map<string, string>();
 function _artCacheCap(): number {

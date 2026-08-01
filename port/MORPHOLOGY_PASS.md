@@ -247,3 +247,51 @@ edge, never as an animal (same family as wave 4's faceted-back and hard-rim fixe
 **Proof:** speciesaudit 1,254/1,254 · 0 failures · 0 duplicate pairs. Gates: vitest 22/220 ·
 tsc clean · slicesmoke PASS. hdart.verbatim.js STILL UNTOUCHED.
 **Ledger:** D-ART-15 (the fit pass) · D-ART-16 (the pattern-blending law).
+
+---
+
+# WAVE 6 — LANDED 2026-08-01 (the PRE-CLIP bug + the CLIP SENTINEL + coverage map)
+
+Nick: *"the hippo's nose is still getting cut off. It's not round. We're gonna go back and
+check that on all the artwork … are we done with all the creatures yet?"*
+
+## ★ THE PRE-CLIP BUG — why wave 5's fit pass wasn't enough
+Wave 5 measured the subject's ink and centred it. But the ink was measured on a **440 layer**,
+and a painter reaching past 440 is **cut by the canvas edge BEFORE the measurement happens** —
+so fitInk was faithfully centring an already-severed muzzle. A fit pass can only rescale what
+survived the draw.
+**Fix:** the ink layer is now **OVERSIZED (2S = 880) with the painter's origin offset by S/2**,
+so overflow in every direction survives; the measurement then sees the WHOLE subject before
+it is scaled into frame. (Same shape as the port's other instrument lessons: the check was
+honest, the thing it measured was already broken upstream.)
+
+## ★ THE CLIP SENTINEL — "check that on ALL the artwork", automated forever
+`fitInk` records any subject whose ink reaches the oversized layer's own edge — i.e. cut at
+DRAW time, which no fitting can undo. The audit surfaces it and **`speciesaudit` now exits 1
+naming the offenders**, alongside the paint and duplicate sentinels. Current run:
+**1,254/1,254 painted · 0 failures · 0 duplicate pairs · 0 clipped.**
+
+## The hippo's snout is ROUND
+`jaw: 'barrel'` no longer draws a tapered ellipse: it draws a blunt rounded block with a domed
+end and two nostril pads on top — a hippo muzzle, not a snout.
+
+## ★ COVERAGE MAP (Nick asked "are we done with all the creatures?") — honest answer: NO
+| group | corrected |
+|---|---:|
+| fungi families | 5 routes covering all 27 |
+| microbe morphologies | 4 routes |
+| flora iconic | 8 |
+| flora anti-duplicate | 37 |
+| fauna specialists (insects/fish/marine/birds) | 66 |
+| quadruped system | 40 |
+| **TOTAL** | **160 of 1,014 Earth species (15.8%)** |
+
+The other **854 still render on the byte-verbatim engine** — which is the correct default: the
+reviews found the engine's *coherent* set with specific failures, and the override table is
+for the failing (D-ART-14: never override what already excels). REMAINING WORK, in the order
+the reviews ranked it: reptiles/amphibians · rodents/small mammals · the remaining fish and
+shellfish · primates · the long tail of birds · procedural fungi/microbe body plans (Nick's
+audit §12/§13) · flower-head families beyond the daisy · the 43 biome-scene painters (Phase 6).
+
+**Proof:** gates vitest 22/220 · tsc clean · slicesmoke PASS · hdart.verbatim.js UNTOUCHED.
+**Ledger:** D-ART-17 (the pre-clip fix + clip sentinel) · D-ART-18 (the barrel snout).

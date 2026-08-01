@@ -2,7 +2,7 @@
    ported): every Earth-catalog name + a procedural spread through the
    VERBATIM hdart engine — counted, failures named, contact sheets baked.
    Driven headless by tools/speciesaudit.mjs; also runnable by hand. */
-import { speciesPortrait } from '@cf/art/species';
+import { speciesPortrait, CLIPPED } from '@cf/art/species';
 import { _EARTH_NAMES } from '@cf/domain-descriptors';
 import { makeGenome } from '@cf/domain-genome';
 import { hashInt } from '@cf/domain-rand';
@@ -113,7 +113,12 @@ async function run(): Promise<void> {
       else seen.set(key, cell.name);
     }
   }
-  say(`DONE — ${ok}/${total} painted, ${fails.length} failures, ${dupes.length} duplicate pairs`);
-  (window as unknown as Record<string, unknown>).__CF_AUDIT__ = { done: true, total, ok, fails, dupes, sheetUrls };
+  say(`DONE — ${ok}/${total} painted, ${fails.length} failures, ${dupes.length} duplicate pairs, ${new Set(CLIPPED).size} clipped`);
+  /* ★ THE CLIP SENTINEL (Nick 2026-08-01: "make sure the noses and everything
+     fit within the frame … go back and check that on ALL the artwork"). The
+     fit pass records any subject whose ink reached the oversized layer's own
+     edge — i.e. cut at DRAW time, which no fitting can undo. Must stay empty. */
+  const clipped = [...new Set(CLIPPED)];
+  (window as unknown as Record<string, unknown>).__CF_AUDIT__ = { done: true, total, ok, fails, dupes, clipped, sheetUrls };
 }
 void run();

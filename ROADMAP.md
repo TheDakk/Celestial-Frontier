@@ -686,6 +686,23 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 6 — THE PRE-CLIP BUG + THE CLIP SENTINEL (2026-08-01, batch 25).
+##   Nick: "the hippo's nose is STILL cut off, it's not round — check that on ALL the artwork".
+##   ★ROOT CAUSE: wave 5's fit pass measured ink on a 440 layer, but a painter reaching past
+##   440 is CUT BY THE CANVAS EDGE BEFORE the measurement — fitInk was faithfully centring an
+##   already-severed muzzle (a fit can only rescale what survived the draw). FIX: the ink layer
+##   is OVERSIZED (2S) with the painter origin offset by S/2, so overflow in every direction
+##   survives and the measurement sees the WHOLE subject. ★THE CLIP SENTINEL: fitInk records
+##   any subject whose ink still reaches the layer edge and speciesaudit EXITS 1 naming them —
+##   "check all the artwork" automated forever. Run: 1,254/1,254 · 0 fails · 0 dupes · 0
+##   CLIPPED. Hippo's jaw:'barrel' now draws a blunt ROUND block with nostril pads.
+##   ★ COVERAGE (Nick asked if the creatures are done — honest answer NO): 160 of 1,014 Earth
+##   species corrected (15.8%) = 5 fungi routes (all 27) · 4 microbe · 8 iconic flora · 37
+##   anti-dupe flora · 66 fauna specialists · 40 quadrupeds. The other 854 stay on the
+##   byte-verbatim engine BY DESIGN (D-ART-14). NEXT in rank order: reptiles/amphibians ·
+##   rodents · remaining fish/shellfish · primates · the bird long tail · procedural fungi +
+##   microbe body plans (audit §12/§13) · flower-head families · the 43 biome scenes (Phase 6).
+##   D-ART-17/18. Gates: vitest 22/220 · tsc · slicesmoke PASS · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 5 — NICK'S TWO LAWS: FIT THE FRAME · BLEND THE PATTERN (2026-08-01,
 ##   batch 24). From his wave-4 review ("the hippo's nose is off screen, same with the giraffe
 ##   … the spots are like octagons — make them blend into the skin, that's how it should look

@@ -250,7 +250,25 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
   if (mz > 0.05) {
     c.fillStyle = p.base;
     const mw = headR * (0.7 + mz * 1.5), mh = headR * (spec.jaw === 'barrel' ? 0.86 : spec.jaw === 'broad' ? 0.66 : 0.46);
-    c.beginPath(); c.ellipse(headX + headR * 0.55 + mw * 0.35, headY + headR * 0.22, mw * 0.6, mh * 0.6, 0.12, 0, TAU); c.fill();
+    const mxc = headX + headR * 0.55 + mw * 0.35, myc = headY + headR * 0.22;
+    if (spec.jaw === 'barrel') {
+      /* a hippo's snout is a BLUNT ROUND BLOCK, not a taper (Nick: "it's not
+         round") — a rounded-rectangle muzzle with a domed end */
+      const bw = mw * 0.62, bh = mh * 0.66;
+      c.beginPath();
+      c.moveTo(mxc - bw, myc - bh * 0.72);
+      c.lineTo(mxc + bw * 0.34, myc - bh * 0.88);
+      c.quadraticCurveTo(mxc + bw * 1.06, myc - bh * 0.82, mxc + bw * 1.06, myc);
+      c.quadraticCurveTo(mxc + bw * 1.06, myc + bh * 0.86, mxc + bw * 0.34, myc + bh * 0.92);
+      c.lineTo(mxc - bw, myc + bh * 0.8);
+      c.closePath(); c.fill();
+      /* the two nostril pads on top of the blunt end */
+      c.fillStyle = 'rgba(24,16,18,0.5)';
+      for (const s2 of [-1, 1] as const) { c.beginPath(); c.ellipse(mxc + bw * 0.72, myc + s2 * bh * 0.34, bh * 0.16, bh * 0.12, 0, 0, TAU); c.fill(); }
+      c.fillStyle = p.base;
+    } else {
+      c.beginPath(); c.ellipse(mxc, myc, mw * 0.6, mh * 0.6, 0.12, 0, TAU); c.fill();
+    }
     c.fillStyle = 'rgba(20,14,16,0.75)';   /* the nose */
     c.beginPath(); c.ellipse(headX + headR * 0.55 + mw * 0.85, headY + headR * 0.16, mh * 0.26, mh * 0.20, 0, 0, TAU); c.fill();
     if (spec.jaw === 'barrel') {   /* hippo: the vast mouth line */
