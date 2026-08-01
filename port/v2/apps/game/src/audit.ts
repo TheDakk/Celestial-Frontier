@@ -9,6 +9,18 @@ import { hashInt } from '@cf/domain-rand';
 
 const log = document.getElementById('log')!;
 const say = (t: string): void => { log.textContent = t; };
+/* FULL-SIZE EXPORT MODE (?full=1): stream every portrait at the engine's
+   NATIVE resolution through a pull-buffer for the driver to write to disk
+   (Nick's system-check deliverable — no downscales, no re-encodes). */
+const FULL = location.search.includes('full');
+interface FullItem { k: string; name: string; url: string }
+const fullQ: FullItem[] = [];
+(window as unknown as Record<string, unknown>).__CF_FULL__ = { q: fullQ, done: false };
+async function pushFull(k: string, name: string, url: string | null): Promise<void> {
+  if (!FULL || !url) return;
+  fullQ.push({ k, name, url });
+  while (fullQ.length > 12) await new Promise((r) => setTimeout(r, 80));   /* let the driver drain */
+}
 interface SheetSpec { key: string; cells: Array<{ name: string; url: string | null }> }
 
 async function run(): Promise<void> {
@@ -32,6 +44,7 @@ async function run(): Promise<void> {
         if (!url || url.length < 3000) { url = null; throw new Error('thin paint'); }
         ok++;
       } catch (e) { fails.push(kingdom + ':' + name + ' — ' + (e as Error).message); }
+      await pushFull('earth-' + kingdom, name, url);
       cells.push({ name, url });
       if (i % 25 === 0) { say(`Earth ${kingdom}: ${i}/${pool.length} (ok ${ok}/${total})`); await new Promise((r) => setTimeout(r, 0)); }
     }
@@ -51,6 +64,7 @@ async function run(): Promise<void> {
           if (!url || url.length < 3000) { url = null; throw new Error('thin paint'); }
           ok++;
         } catch (e) { fails.push('proc:' + kingdom + '/h' + heat + '/s' + s + ' — ' + (e as Error).message); }
+        await pushFull('procedural', kingdom + '-h' + heat + '-s' + s, url);
         proc.push({ name: kingdom[0]! + heat + '·' + s, url });
       }
       say(`procedural ${kingdom} heat ${heat} (ok ${ok}/${total})`);
@@ -81,6 +95,7 @@ async function run(): Promise<void> {
     }
     sheetUrls[sh.key] = cv.toDataURL('image/png');
   }
+  (window as unknown as { __CF_FULL__: { done: boolean } }).__CF_FULL__.done = true;
   say(`DONE — ${ok}/${total} painted, ${fails.length} failures`);
   (window as unknown as Record<string, unknown>).__CF_AUDIT__ = { done: true, total, ok, fails, sheetUrls };
 }
