@@ -647,10 +647,22 @@
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS (geometry contract green on all
 ##   four viewports through the restyle) · proofsheet regenerated · main.js
 ##   untouched.
-##   ▶ NEXT: Nick replays + fleet UI pass scores the cleanliness work · button-weight
-##   sweep (critique #9/#11) · system close-up cloud decks · encounter surfaces ·
-##   Phase-5 training lessons · Charters panel · raritySting · hdart lazy-load ·
-##   codex virtualization.
+##   ✔★★ CHARTERS + CLOUD DECKS + THE PILL SWEEP (2026-08-01, batch 16): · THE
+##   CHARTERS PANEL — the Ascent's chapter book over ASC_CHAPTERS_DATA + the save's
+##   LIVE ascProg: current chapter leads in gold, done chapters ✓, future chapters
+##   dim with goals folded, every goal a progress bar (gold at complete); the
+##   golden's TOP-left-rail slot on desktop, dock on phone; smoke asserts 3 chapters/
+##   current/live goal rows. · THE DRIFTING CLOUD DECKS reach the SYSTEM view
+##   (main.js 5256): terran/ocean close-ups, the Renderer's pr·z>22 gate, motion-
+##   gated, twin-sprite wrap UNDER the terminator (night shades the clouds — the
+##   z-order caught in review). · Critique #9 DONE: the outline-pill button language
+##   everywhere (near-transparent bodies, full radius, 34-36px heights).
+##   Gates: vitest 22/220 · tsc clean · smoke PASS (20 asserted behaviors) ·
+##   proofsheet regenerated · main.js untouched.
+##   ▶ NEXT: Nick replays + fleet UI pass scores cleanliness · encounter surfaces
+##   over the portrait engine · Phase-5 training lessons · Settings "Restart
+##   training" · raritySting · hdart lazy-load · codex virtualization ·
+##   settings ghost-rows check (critique #11 — verify it wasn't a stale screenshot).
 ##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone ·
 ##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
