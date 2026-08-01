@@ -192,7 +192,7 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     }
     const ascCh = clamp(num(data.asc), 0, registry.ascChaptersLen) | 0;
     const ascProg: Record<string, number> = {};
-    if (data.ascp && typeof data.ascp === 'object' && !Array.isArray(data.ascp)) {
+    if (data.ascp && typeof data.ascp === 'object' /* arrays PASS in the game — typeof gate only */) {
       for (const k in data.ascp as Record<string, unknown>) { const v = +((data.ascp as Record<string, unknown>)[k] as number); if (typeof k === 'string' && k.length < 24 && Number.isFinite(v) && v >= 0) ascProg[k] = Math.min(v | 0, 999); }
     }
     const nameHue = Number.isFinite(+(data.nh as number)) ? clamp((+(data.nh as number)) | 0, -1, registry.rankHuesLen - 1) : -1;
@@ -290,7 +290,7 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     for (const s of _capA(data.chs, 500)) if (registry.charterStarters.includes(s as string)) chDone.push(s as string);
     const chWeek = num(data.chw, -1);
     const chProg: Record<string, number> = {};
-    if (data.chp && typeof data.chp === 'object' && !Array.isArray(data.chp)) {
+    if (data.chp && typeof data.chp === 'object' /* arrays PASS in the game — typeof gate only */) {
       for (const k in data.chp as Record<string, unknown>) { const v = +((data.chp as Record<string, unknown>)[k] as number); if (typeof k === 'string' && k.length < 24 && Number.isFinite(v) && v >= 0) chProg[k] = Math.min(v | 0, 999); }
     }
     const chacc: string[] = [];
@@ -341,7 +341,7 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       if (Number.isFinite(s2) && n2 > 0) waveOffs.push([s2, n2]);
     }
     const primeFill: SaveStateV2['primeFill'] = {};
-    if (data.prime && typeof data.prime === 'object' && !Array.isArray(data.prime)) {
+    if (data.prime && typeof data.prime === 'object' /* arrays PASS in the game — typeof gate only */) {
       const _sanS = (v: unknown, n2: number): string => String(v == null ? '' : v).replace(/[<>&"']/g, '').slice(0, n2);
       for (const k in data.prime as Record<string, unknown>) {
         const f = (data.prime as Record<string, Record<string, unknown>>)[k];

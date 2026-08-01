@@ -74,7 +74,7 @@ const FIELD_MAP: Record<string, Snap> = {
 const UNIMPLEMENTED: Record<string, string> = {};
 
 const FIXTURE_NAMES = ['empty_object', 'veteran_rich', 'hostile_shapes', 'hostile_markup_caps',
-  'pre_v17_veteran', 'tut_midtraining', 'settings_spread', 'equip_integrity'] as const;
+  'pre_v17_veteran', 'hostile_arrays_as_objects', 'tut_midtraining', 'settings_spread', 'equip_integrity'] as const;
 
 describe('importSaveV2 — parity against the REAL load path (save-fixtures.json)', () => {
   it('every snapshot field is mapped or explicitly unimplemented (no silent gaps)', () => {

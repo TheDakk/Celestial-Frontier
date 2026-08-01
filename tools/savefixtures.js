@@ -108,6 +108,15 @@ const FIXTURES = {
     codex: [{ g: G_HOSTILE, f: '<b>Bad</b>Place' }],
   },
 
+  /* ⚠ arrays where OBJECTS belong: the game's chp/ascp/prime gates are
+     `typeof === 'object'` — ARRAYS PASS, and for..in walks their indices
+     (chp:[7] ⇒ chProg['0']=7). Found 2026-07-31 when the port importer
+     added stricter !Array.isArray guards and drifted; this fixture pins
+     the permissive truth so no future rewrite "fixes" it silently. */
+  hostile_arrays_as_objects: {
+    at: AT, chp: [7], ascp: [3, 9], prime: ['x'],
+  },
+
   /* pre-v1.7 veteran: no `seen` field ⇒ every catalogued species backfills
      as viewed; conq rows without `e` ⇒ the one-time READY migration */
   pre_v17_veteran: {
