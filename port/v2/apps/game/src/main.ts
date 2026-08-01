@@ -64,6 +64,9 @@ const app = new Application();
    index.html; this file only FILLS it. ---- */
 const trailEl = document.getElementById('trail')!;
 const playerChipEl = document.getElementById('playerchip')!;
+const primeChipEl = document.getElementById('primechip')!;
+const hpFillEl = document.querySelector('#hpbar .fill') as HTMLElement;
+const hpTxtEl = document.querySelector('#hpbar .txt') as HTMLElement;
 const objChipEl = document.getElementById('objchip')!;
 const ctxEl = document.getElementById('ctxbar')!;
 const hintEl = document.getElementById('hintpill')!;
@@ -79,7 +82,8 @@ let _ctxTxt = '', _hintTxt = '';
 function setCtx(t: string): void { if (t !== _ctxTxt) { _ctxTxt = t; ctxEl.textContent = t; } }
 function setHint(t: string): void { if (t !== _hintTxt) { _hintTxt = t; hintEl.textContent = t; } }
 function setTrail(segs: string[]): void {
-  trailEl.innerHTML = segs.map(esc).join('<span class="sep">›</span>');
+  trailEl.innerHTML = segs.map((s, i) =>
+    `<span class="seg${i === segs.length - 1 ? ' cur' : ''}">${esc(s)}</span>`).join('<span class="sep">›</span>');
 }
 const repo = createSaveRepository(createIndexedDBBackend('cf-v2-slice'));
 /* THE REAL SAVE LOOP: the slice persists a genuine cfcc_save_v2 blob through
@@ -225,10 +229,11 @@ function fillCodex(): void {
       : save.codex.map(([, e]) =>
         `<div class="centry" data-sel="codex-entry"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><div class="sub">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</div></div>`).join('')));
 }
-registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btn: document.getElementById('docksets'), onOpen: fillSettings });
-registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btn: document.getElementById('dockcodex'), onOpen: fillCodex });
+registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
+registerPanel({ id: 'codex', el: document.getElementById('codexpanel')!, btns: [document.getElementById('dockcodex'), document.getElementById('railcodex')], onOpen: fillCodex });
 document.getElementById('docksets')!.addEventListener('click', () => togglePanel('set'));
 document.getElementById('dockcodex')!.addEventListener('click', () => togglePanel('codex'));
+document.getElementById('railcodex')!.addEventListener('click', () => togglePanel('codex'));
 sheet.querySelector('#importclose')!.addEventListener('click', () => { sheet.style.display = 'none'; });
 sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
   const f = (e.target as HTMLInputElement).files?.[0];
@@ -277,7 +282,10 @@ const primeCount = (): number => Object.keys(save.primeFill || {}).length;
 const ascStage = (): 0 | 1 | 2 | 3 => ascStageOf(save.items, save.ascCh);
 
 function updateChips(): void {
-  playerChipEl.innerHTML = `<b>${esc(save.explorerName || 'Explorer')}</b> · ✦ ${save.essence} · ❤ ${save.hp}/${save.HP_MAX} · ${save.landed.length} worlds · ${esc(currentRegionOf(primeCount()).name)}`;
+  playerChipEl.innerHTML = `⚙ ${esc(save.explorerName || 'Explorer')} <span class="dim">— ✦ ${save.essence} · ${save.landed.length} worlds</span>`;
+  hpFillEl.style.width = Math.max(0, Math.min(100, (save.hp / Math.max(1, save.HP_MAX)) * 100)) + '%';
+  hpTxtEl.textContent = `${save.hp}/${save.HP_MAX} HP`;
+  primeChipEl.textContent = `✦ Prime Codex ${primeCount()} / 9`;
   const o = currentObjective(save.ascCh, save.ascProg);
   objChipEl.innerHTML = o
     ? `⬆ ${esc(o.text)} · <span class="prog" data-sel="objprog">${o.have} / ${o.need}</span>`

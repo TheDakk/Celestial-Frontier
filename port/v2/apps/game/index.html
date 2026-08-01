@@ -5,49 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Celestial Frontier v2 — Phase 4 shell</title>
   <style>
-    /* THE GLASS SYSTEM (UI_PRESENTATION §1): mobile-first, one measured
-       topbar publishing --topbar-h, glass panels on the MUD-dark palette,
-       Georgia italics for flavor, system-ui for chrome, 44px touch floors. */
-    :root { --glass-a: 0.72; --topbar-h: 56px; }
+    /* THE GLASS SYSTEM — POSITION PARITY WITH THE GOLDEN SCREENS
+       (port/baseline-v1.8.9/screens/ui-main-*.png): the top is FLOATING
+       PILLS on the canvas, not a solid bar — player chip top-left with the
+       HP bar under it, Prime Codex pill top-center, trail beneath it,
+       objective chip left at ~26vh, caption + hint stacked bottom-center.
+       ≤900px: the round-button DOCK bottom-center (the phone golden).
+       >900px: Compendium rides the LEFT RAIL and the round cluster sits
+       BOTTOM-RIGHT (the desktop golden; the dock lesson of ROADMAP #11 —
+       above 900px these are rail surfaces, not a dock). */
+    :root { --glass-a: 0.72; --topbar-h: 96px; }
     html, body { margin: 0; height: 100%; background: #05070d; overflow: hidden;
       font: 13px/1.5 system-ui, sans-serif; color: #cfe0f4;
       -webkit-user-select: none; user-select: none; }
     .glass { background: rgba(10, 16, 30, var(--glass-a)); border: 1px solid #22304a;
       backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+    .pill { border-radius: 999px; }
 
-    /* ---- the unified topbar (height measured → --topbar-h) ---- */
-    #topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 20;
-      padding: calc(env(safe-area-inset-top, 0px) + 6px) 10px 6px;
-      display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center;
-      border-width: 0 0 1px 0; border-radius: 0; }
-    #trail { font-weight: 600; color: #f4f8ff; white-space: nowrap; overflow: hidden;
-      text-overflow: ellipsis; max-width: 46vw; }
-    #trail .sep { color: #5a6f95; padding: 0 3px; font-weight: 400; }
-    #playerchip { margin-left: auto; color: #9fb6d6; white-space: nowrap; font-size: 12px; }
-    #playerchip b { color: #ffd9a0; font-weight: 600; }
-    #objchip { flex-basis: 100%; font-size: 12px; color: #aee0ff; }
+    /* ---- top-left: the explorer chip + the HP bar (golden position) ---- */
+    #topbar { position: fixed; top: 0; left: 0; z-index: 20; pointer-events: none;
+      padding: calc(env(safe-area-inset-top, 0px) + 10px) 0 0 12px; background: none; border: 0; }
+    #playerchip { display: inline-block; padding: 6px 16px; font-size: 11.5px;
+      letter-spacing: 0.08em; text-transform: uppercase; color: #dbe7f8; font-weight: 600; }
+    #playerchip .dim { color: #8fa3c4; }
+    #hpbar { display: flex; align-items: center; gap: 6px; margin-top: 6px;
+      padding: 3px 10px 3px 6px; width: max-content; }
+    #hpbar .track { display: block; width: 128px; height: 12px; border-radius: 999px;
+      background: #16202f; overflow: hidden; border: 1px solid #22304a; }
+    #hpbar .fill { display: block; height: 100%; background: linear-gradient(180deg, #7fe08a, #3fae52);
+      border-radius: 999px; }
+    #hpbar .txt { font-size: 10.5px; color: #cfe0f4; }
+
+    /* ---- top-center: the Prime Codex pill + the trail beneath ---- */
+    #primechip { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 12px);
+      left: 50%; transform: translateX(-50%); z-index: 20; pointer-events: none;
+      padding: 5px 16px; font-size: 12px; font-weight: 600; color: #ffd9a0;
+      border-color: #6e5a30; }
+    #trail { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 48px);
+      left: 50%; transform: translateX(-50%); z-index: 19; pointer-events: none;
+      font-size: 11px; letter-spacing: 0.06em; color: #8fa3c4; white-space: nowrap; }
+    #trail .cur { color: #aee0ff; }
+    #trail .sep { color: #5a6f95; padding: 0 5px; font-size: 9px; }
+
+    /* ---- the objective chip: LEFT, ~26vh (both goldens) ---- */
+    #objchip { position: fixed; left: 12px; top: 26vh; z-index: 18;
+      padding: 6px 14px; font-size: 12px; color: #ffd9a0; max-width: min(340px, 80vw); }
     #objchip:empty { display: none; }
     #objchip .prog { color: #7ec8f0; font-weight: 600; }
 
-    /* ---- the survey card: below the topbar, never under the dock ---- */
+    /* ---- the survey card: below the chip stack, clear of the bottom chrome ---- */
     #survey { position: fixed; top: var(--topbar-h); right: 0;
-      bottom: calc(env(safe-area-inset-bottom, 0px) + 64px);
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 128px);
       width: min(340px, 86vw); overflow: auto; z-index: 15;
       color: #cfe0f4; padding: 14px; box-sizing: border-box; display: none;
       border-width: 0 0 0 1px; border-radius: 0; }
 
-    /* ---- the caption line: the universe speaks (Georgia italic) ---- */
+    /* ---- bottom-center: caption ABOVE the hint pill (golden order) ---- */
     #ctxbar { position: fixed; left: 50%; transform: translateX(-50%);
-      bottom: calc(env(safe-area-inset-bottom, 0px) + 66px);
-      max-width: min(560px, 92vw); text-align: center; pointer-events: none; z-index: 12;
-      font: italic 12.5px Georgia, serif; color: #8fa3c4; text-shadow: 0 1px 3px #000; }
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 118px);
+      max-width: min(560px, 88vw); text-align: center; pointer-events: none; z-index: 12;
+      font-size: 12.5px; color: #9fb6d6; text-shadow: 0 1px 3px #000; }
     #hintpill { position: fixed; left: 50%; transform: translateX(-50%);
-      top: calc(var(--topbar-h) + 6px); z-index: 12; pointer-events: none;
-      font-size: 11.5px; color: #7f96ba; padding: 3px 12px; border-radius: 999px; }
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 88px); z-index: 12; pointer-events: none;
+      font-size: 11.5px; color: #7f96ba; padding: 4px 14px; white-space: nowrap;
+      max-width: 92vw; overflow: hidden; text-overflow: ellipsis; }
+
+    /* ---- the dock: ROUND icon buttons (phone golden), bottom-center ---- */
+    #dock { position: fixed; left: 50%; transform: translateX(-50%);
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); z-index: 20;
+      display: flex; gap: 10px; background: none; border: 0; }
+    #dock button { width: 52px; height: 52px; border-radius: 50%;
+      border: 1px solid #2a3c5e; background: rgba(14, 22, 40, 0.88); color: #9fb6d6;
+      cursor: pointer; font: 9px system-ui, sans-serif; padding: 0; }
+    #dock button .ico { display: block; font-size: 17px; line-height: 1.1; margin-top: 4px; }
+    #dock button.on { background: #1d3a5e; color: #eaf2ff; border-color: #caa24f; }
+
+    /* ---- >900px: the desktop golden — Compendium on the LEFT RAIL, the
+       round cluster BOTTOM-RIGHT (rails, not a dock; ROADMAP #11) ---- */
+    #raillft { position: fixed; left: 12px; top: calc(env(safe-area-inset-top, 0px) + 108px);
+      z-index: 20; display: none; flex-direction: column; gap: 8px; }
+    #raillft button { display: flex; align-items: center; gap: 8px; min-height: 44px;
+      padding: 6px 16px; border-radius: 999px; border: 1px solid #2a3c5e;
+      background: rgba(14, 22, 40, 0.88); color: #cfe0f4; cursor: pointer;
+      font: 12px system-ui, sans-serif; }
+    #raillft button.on { background: #1d3a5e; border-color: #caa24f; }
+    @media (min-width: 901px) {
+      #dock { left: auto; right: 14px; transform: none; }
+      #dock #dockcodex { display: none; }   /* the desktop home for codex is the rail */
+      #raillft { display: flex; }
+    }
 
     /* ---- rail panels (the one-panel law lives in panels.ts) ---- */
     .panel { position: fixed; top: calc(var(--topbar-h) + 6px); left: 8px;
-      bottom: calc(env(safe-area-inset-bottom, 0px) + 64px);
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 76px);
       width: min(360px, 92vw); overflow: auto; z-index: 16;
       border-radius: 12px; padding: 10px 14px 14px; box-sizing: border-box; }
     .panel h3 { margin: 2px 0 10px; font-size: 15px; color: #f4f8ff; }
@@ -64,27 +114,22 @@
     .panel .centry b { color: #eaf2ff; }
     .panel .centry .sub { color: #8fa3c4; font-size: 12px; }
     .panel .empty { color: #7f96ba; font-style: italic; padding: 12px 0; }
-
-    /* ---- the dock: bottom center, every target ≥44px ---- */
-    #dock { position: fixed; left: 50%; transform: translateX(-50%);
-      bottom: calc(env(safe-area-inset-bottom, 0px) + 10px); z-index: 20;
-      display: flex; gap: 6px; padding: 6px; border-radius: 16px; }
-    #dock button { min-width: 52px; min-height: 44px; border: 1px solid #2a3c5e;
-      border-radius: 11px; background: rgba(14, 22, 40, 0.85); color: #9fb6d6;
-      font: 11px system-ui, sans-serif; cursor: pointer; padding: 4px 8px; }
-    #dock button .ico { display: block; font-size: 16px; line-height: 1.3; }
-    #dock button.on { background: #1d3a5e; color: #eaf2ff; border-color: #3a5c8e; }
   </style>
 </head>
 <body>
-  <header id="topbar" class="glass">
-    <span id="trail">Cosmos</span>
-    <span id="playerchip"></span>
-    <span id="objchip"></span>
+  <header id="topbar">
+    <span id="playerchip" class="glass pill"></span>
+    <div id="hpbar" class="glass pill"><span>❤</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="txt"></span></div>
   </header>
-  <div id="hintpill" class="glass"></div>
+  <span id="primechip" class="glass pill"></span>
+  <div id="trail"></div>
+  <span id="objchip" class="glass pill"></span>
   <div id="ctxbar"></div>
-  <nav id="dock" class="glass" aria-label="dock">
+  <div id="hintpill" class="glass pill"></div>
+  <nav id="raillft" aria-label="rail">
+    <button id="railcodex" aria-label="Compendium">📘 Compendium</button>
+  </nav>
+  <nav id="dock" aria-label="dock">
     <button id="docksurvey" aria-label="survey card"><span class="ico">🔭</span>survey</button>
     <button id="dockcodex" aria-label="Compendium"><span class="ico">📘</span>codex</button>
     <button id="dockcharts" aria-label="star charts"><span class="ico">📈</span>charts</button>

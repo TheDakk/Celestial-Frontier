@@ -102,6 +102,38 @@ try {
   if (boot.st && !boot.st.ctx) fails.push('the caption line is empty at boot');
   if (boot.st && !/Make planetfall on 2 worlds of Sol/.test(boot.st.objective)) fails.push('objective chip wrong at fresh boot: ' + JSON.stringify(boot.st.objective));
 
+  /* 1b. THE GOLDEN-LAYOUT GEOMETRY CONTRACT (ui-main-desktop.png positions;
+     uilayout.js discipline: measure the REAL boxes, then prove the checker
+     can catch a moved element before trusting its pass). */
+  const geoCheck = `(()=>{ const W=innerWidth, H=innerHeight;
+    const r=(id)=>{ const el=document.getElementById(id); if(!el) return null;
+      const b=el.getBoundingClientRect(); return { l:b.left, t:b.top, r:b.right, b:b.bottom, cx:(b.left+b.right)/2, w:b.width, vis: b.width>0&&b.height>0 }; };
+    const pc=r('playerchip'), hp=r('hpbar'), pr=r('primechip'), obj=r('objchip'),
+      hint=r('hintpill'), ctx=r('ctxbar'), dock=r('dock'), rail=r('raillft'), dcx=r('dockcodex');
+    const bad=[];
+    if(!pc || pc.l>80 || pc.t>60) bad.push('playerchip not top-left');
+    if(!hp || !pc || hp.t < pc.b-4) bad.push('HP bar not under the player chip');
+    if(!pr || Math.abs(pr.cx-W/2)>70 || pr.t>60) bad.push('Prime Codex pill not top-center');
+    if(!obj || obj.l>40 || obj.t<H*0.18 || obj.t>H*0.42) bad.push('objective chip not left @~26vh: '+JSON.stringify(obj));
+    if(!hint || Math.abs(hint.cx-W/2)>90 || hint.b<H-160) bad.push('hint pill not bottom-center');
+    if(ctx && hint && ctx.b>hint.t+6) bad.push('caption not ABOVE the hint pill');
+    if(W>900){
+      if(!dock || dock.cx<W*0.6) bad.push('desktop cluster not bottom-RIGHT (ROADMAP #11 rail lesson)');
+      if(!rail || !rail.vis) bad.push('left rail missing on desktop');
+      if(dcx && dcx.vis) bad.push('dock codex should hide on desktop (rail owns it)');
+    } else {
+      if(!dock || Math.abs(dock.cx-W/2)>60) bad.push('phone dock not bottom-center');
+      if(rail && rail.vis) bad.push('left rail should hide on phone');
+    }
+    return bad; })()`;
+  const geo = await evalIn(geoCheck);
+  if (geo.length) fails.push('GOLDEN LAYOUT drift: ' + geo.join(' · '));
+  /* the self-control: move the objective chip to the right, the checker
+     MUST see it (reproduce-the-reported-geometry law), then restore */
+  const geoCtl = await evalIn(`(()=>{ const o=document.getElementById('objchip'); o.style.left='900px';
+    const bad=${geoCheck}; o.style.left=''; return bad; })()`);
+  if (!geoCtl.some((b) => b.includes('objective chip'))) fails.push('GEOMETRY CHECKER CONTROL FAILED — a moved objective chip went unseen');
+
   /* 2. not blank — via Pixi's extract, which re-renders the stage (a WebGL
      canvas reads BLACK through 2D drawImage without preserveDrawingBuffer;
      the first run failed on exactly that instrument error) */
@@ -320,6 +352,15 @@ try {
   if (!phBoot.canvas) fails.push('PHONE: no canvas');
   if (phBoot.w !== 390) fails.push('PHONE: viewport not 390: ' + phBoot.w);
   if (phBoot.name !== 'Dakk') fails.push('PHONE: the veteran save did not follow across targets (IndexedDB): ' + JSON.stringify(phBoot.name));
+  /* the phone golden: dock bottom-center, rail hidden, codex in the dock */
+  const phGeo = await evalPh(`(()=>{ const W=innerWidth;
+    const d=document.getElementById('dock').getBoundingClientRect();
+    const rail=document.getElementById('raillft').getBoundingClientRect();
+    const dcx=document.getElementById('dockcodex').getBoundingClientRect();
+    return { dockCx:(d.left+d.right)/2, W, railVis: rail.width>0, dcxVis: dcx.width>0 }; })()`);
+  if (Math.abs(phGeo.dockCx - phGeo.W / 2) > 60) fails.push('PHONE: dock not bottom-center: ' + JSON.stringify(phGeo));
+  if (phGeo.railVis) fails.push('PHONE: the desktop rail is visible');
+  if (!phGeo.dcxVis) fails.push('PHONE: codex missing from the dock');
   const phPainted = await evalPh(`(async()=>{ const S=window.__CF_SLICE__;
     const px=await S.app.renderer.extract.pixels({ target: S.app.stage, frame: S.app.renderer.screen });
     const d=px.pixels||px; let lit=0; for(let i=0;i<d.length;i+=4){ if(d[i]+d[i+1]+d[i+2]>60) lit++; } return lit; })()`);
