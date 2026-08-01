@@ -8,6 +8,7 @@
     "packages/domain/*",
     "packages/persistence",
     "packages/scene",
+    "packages/art",
     "apps/*"
   ],
   "scripts": {
