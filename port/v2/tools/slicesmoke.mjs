@@ -235,6 +235,60 @@ try {
   const hudS2 = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
   if (!/system · gal 999 · star 424242/.test(hudS2)) fails.push('zoom-in over the Sun did not dive into Sol: ' + JSON.stringify(hudS2));
 
+  /* 4c. GATE C's FRONT DOOR, rehearsed with the veteran fixture: the import
+     sheet's own path (api.importBlob = the button's handler) must validate,
+     store VERBATIM, and reboot into the veteran — name, stardust and view. */
+  const vrRaw = JSON.stringify(JSON.parse(fs.readFileSync(path.join(here, '..', '..', 'baseline-v1.8.9', 'save-fixtures.json'), 'utf8')).inputs.veteran_rich);
+  /* a garbage blob must be REFUSED with nothing stored */
+  const refuse = await evalIn(`window.__CF_SLICE__.api.importBlob('{"not":"a save"' )`).catch(() => 'navigated');
+  if (refuse === null || refuse === 'navigated') fails.push('importBlob accepted garbage (or reloaded on it)');
+  try {
+    await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(vrRaw)})`);
+  } catch { /* success path reloads the page — the eval context dies with it */ }
+  await sleep(2800);
+  const vet = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (vet.save.name !== 'Dakk') fails.push('veteran import did not boot as Dakk: ' + JSON.stringify(vet.save.name));
+  if (vet.save.essence !== 5000) fails.push('veteran essence wrong: ' + JSON.stringify(vet.save.essence));
+  if (vet.mode !== 'surface') fails.push('veteran savedView (surface) not restored: ' + vet.mode);
+
+  /* 4d. THE PHONE LEG (emulated): 390×844 @ DPR 3, touch. The physical
+     hand-feel stays Nick's; this catches layout, touch wiring and pinch. */
+  const t2 = await send('Target.createTarget', { url: 'about:blank' });
+  const at2 = await send('Target.attachToTarget', { targetId: t2.targetId, flatten: true });
+  const ph = at2.sessionId;
+  await send('Runtime.enable', {}, ph);
+  await send('Page.enable', {}, ph);
+  await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true }, ph);
+  await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 }, ph);
+  await send('Page.navigate', { url: URL0 }, ph);
+  await sleep(3000);
+  const evalPh = async (expr) => {
+    const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, ph);
+    if (r.exceptionDetails) throw new Error('phone eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
+    return r.result.value;
+  };
+  const phBoot = await evalPh(`({ canvas: !!document.querySelector('canvas'), name: window.__CF_SLICE__ ? window.__CF_SLICE__.api.state().save.name : null, w: innerWidth })`);
+  if (!phBoot.canvas) fails.push('PHONE: no canvas');
+  if (phBoot.w !== 390) fails.push('PHONE: viewport not 390: ' + phBoot.w);
+  if (phBoot.name !== 'Dakk') fails.push('PHONE: the veteran save did not follow across targets (IndexedDB): ' + JSON.stringify(phBoot.name));
+  const phPainted = await evalPh(`(async()=>{ const S=window.__CF_SLICE__;
+    const px=await S.app.renderer.extract.pixels({ target: S.app.stage, frame: S.app.renderer.screen });
+    const d=px.pixels||px; let lit=0; for(let i=0;i<d.length;i+=4){ if(d[i]+d[i+1]+d[i+2]>60) lit++; } return lit; })()`);
+  if (!(phPainted > 300)) fails.push('PHONE: stage nearly blank — ' + phPainted);
+  /* pinch: two fingers spread → camT.z must grow (the touch input path, live) */
+  const z0 = await evalPh(`window.__CF_SLICE__.camT.z`);
+  await send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: 150, y: 400, id: 1 }, { x: 240, y: 400, id: 2 }] }, ph);
+  for (let s = 1; s <= 4; s++) {
+    await send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: 150 - s * 15, y: 400, id: 1 }, { x: 240 + s * 15, y: 400, id: 2 }] }, ph);
+    await sleep(40);
+  }
+  await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }, ph);
+  await sleep(300);
+  const z1 = await evalPh(`window.__CF_SLICE__.camT.z`);
+  if (!(z1 > z0 * 1.15)) fails.push('PHONE: pinch-out did not zoom (z ' + z0 + ' → ' + z1 + ')');
+  const shotPh = await send('Page.captureScreenshot', { format: 'png' }, ph);
+  fs.writeFileSync(path.join(OUT, 'slice-phone.png'), Buffer.from(shotPh.data, 'base64'));
+
   /* 5. zero console errors / exceptions across the whole run */
   const errs = events.filter((e) =>
     (e.method === 'Runtime.exceptionThrown') ||
@@ -249,6 +303,6 @@ try {
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · SURVEY-FIRST (one tap = the galaxy card + ping, double-tap dives; COSMIC_EPOCH ticking) · Milky Way · Sol · LANDED ON EARTH with the survey card speaking (Spectral class/Life/Civilization) · THE REAL SAVE SURVIVED RELOAD (importSaveV2 ⇄ exportSaveV2 through IndexedDB; Earth in the landed set) · ZOOM LADDER surface→system→galaxy→universe→galaxy→Sol (with the empty-space negative control) · Sun marker + fine stars at depth · zero console errors.');
-console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-earth · slice-solmark');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · SURVEY-FIRST (one tap = the galaxy card + ping, double-tap dives; COSMIC_EPOCH ticking) · CHARTER stage-0 gate live · Milky Way · Sol · LANDED ON EARTH with the survey card speaking · THE REAL SAVE SURVIVED RELOAD (importSaveV2 ⇄ exportSaveV2 through IndexedDB) · ZOOM LADDER with the empty-space control · Sun marker + fine stars at depth · GATE C REHEARSED (garbage refused; the veteran fixture imported through the sheet path and booted as Dakk, surface view restored) · THE PHONE LEG (390×844 @3x, touch): veteran followed across targets, painted, pinch zooms · zero console errors.');
+console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-earth · slice-solmark · slice-phone');
 process.exit(0);

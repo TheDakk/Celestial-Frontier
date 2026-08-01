@@ -103,6 +103,59 @@ function showSurvey(d: Descriptor): void {
 }
 function hideSurvey(): void { card.style.display = 'none'; }
 
+/* ---- the save-import sheet (Phase 4's second UI component; GATE C's front
+   door): paste or pick your cfcc_save_v2 blob — it is VALIDATED through the
+   real importSaveV2 first, then stored VERBATIM (the fixture-#10 rule) and
+   the slice reboots into it, Ascent stage and all. ---- */
+const importBtn = document.createElement('button');
+importBtn.id = 'importbtn';
+importBtn.textContent = '⛭ save';
+importBtn.style.cssText = 'position:fixed;top:8px;right:8px;z-index:10;background:rgba(10,16,30,0.9);' +
+  'color:#cfe0f4;font:12px system-ui,sans-serif;border:1px solid #2a3c5e;border-radius:8px;padding:6px 10px;cursor:pointer;min-height:44px';
+document.body.appendChild(importBtn);
+const sheet = document.createElement('div');
+sheet.id = 'importsheet';
+sheet.style.cssText = 'position:fixed;inset:0;background:rgba(4,6,12,0.7);display:none;z-index:11';
+sheet.innerHTML =
+  '<div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,92vw);' +
+  'background:rgba(10,16,30,0.97);border:1px solid #2a3c5e;border-radius:12px;padding:18px;color:#cfe0f4;font:13px/1.5 system-ui,sans-serif">' +
+  '<b style="font-size:15px">Bring your expedition</b><br>' +
+  '<span style="color:#8fa3c4">Paste your save below (in the live game: DevTools → Application → Local Storage → <code>cfcc_save_v2</code> — copy the value), or pick a file. It is checked by the real loader before anything is stored; your blob is kept byte-for-byte.</span>' +
+  '<textarea id="importtext" style="width:100%;height:120px;margin:10px 0;background:#0b1220;color:#cfe0f4;border:1px solid #22304a;border-radius:8px;padding:8px;box-sizing:border-box;font:12px monospace"></textarea>' +
+  '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
+  '<button id="importgo" style="background:#1d3a5e;color:#eaf2ff;border:1px solid #3a5c8e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Import & reload</button>' +
+  '<label style="background:#14233c;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px;display:inline-flex;align-items:center">pick file<input id="importfile" type="file" accept=".json,.txt" style="display:none"></label>' +
+  '<button id="importclose" style="background:transparent;color:#8fa3c4;border:1px solid #22304a;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">close</button>' +
+  '</div><div id="importmsg" style="margin-top:8px;color:#e8a0a0"></div></div>';
+document.body.appendChild(sheet);
+importBtn.addEventListener('click', () => { sheet.style.display = 'block'; });
+sheet.querySelector('#importclose')!.addEventListener('click', () => { sheet.style.display = 'none'; });
+sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
+  const f = (e.target as HTMLInputElement).files?.[0];
+  if (!f) return;
+  void f.text().then((txt) => { (sheet.querySelector('#importtext') as HTMLTextAreaElement).value = txt; });
+});
+async function importBlob(raw: string): Promise<string | null> {
+  /* returns an error message, or null on success (then we reload) */
+  const imp = importSaveV2(raw, REGISTRY, Date.now());
+  if (!imp.ok) return 'That does not load as a Celestial Frontier save — nothing was stored.';
+  /* the real loader hardens ANY object into a fresh save — fine at boot,
+     dangerous in an import sheet (an accidental "{}" would wipe the stored
+     expedition). Require a face we recognize before we overwrite. */
+  try {
+    const o = JSON.parse(raw) as Record<string, unknown>;
+    const KNOWN = ['me', 'essence', 'view', 'codex', 'land', 'stats', 'cargo', 'epoch', 'tut'];
+    if (!KNOWN.some((k) => k in o)) return 'That parses, but carries no save fields — nothing was stored.';
+  } catch { return 'That does not load as a Celestial Frontier save — nothing was stored.'; }
+  try { await repo.write(raw); } catch { return 'Storage refused the write (private mode?).'; }
+  location.reload();
+  return null;
+}
+sheet.querySelector('#importgo')!.addEventListener('click', () => {
+  const raw = (sheet.querySelector('#importtext') as HTMLTextAreaElement).value.trim();
+  void importBlob(raw).then((err) => { if (err) (sheet.querySelector('#importmsg') as HTMLElement).textContent = err; });
+});
+
 /* ---- the charter toast (main.js charterBlock/ascBlock: name the BUILD) ---- */
 const toastEl = document.createElement('div');
 toastEl.id = 'toast';
@@ -295,6 +348,7 @@ let uniLabels: Array<{ t: Text; size: number; gate: number }> = [];   /* gate 0 
 let uniPulse: Array<{ spr: Sprite; seed: number }> = [];
 let charterFx: Container | null = null;
 let webLayer: Container | null = null;
+let fogFx: Array<{ spr: Sprite; wx: number; wy: number; ramp: number }> = [];
 let lastGalaxyBuildMs = 0;
 interface CometFx { coma: Sprite; tail: Sprite; label: Text; cm: { off: number; period: number; aMaj: number; ecc: number; tilt: number }; }
 let sysComets: CometFx[] = [];
@@ -323,7 +377,7 @@ function clearWorld(): void {
   solMark = null; bhDisc = null; fineLayer = null; fineWin = null;
   orbiters = []; sysLabels = []; sysStar = null; starSurfSpr = null; surfClouds = null;
   galAnims = []; wormPos = null;
-  uniLabels = []; uniPulse = []; charterFx = null; webLayer = null;
+  uniLabels = []; uniPulse = []; charterFx = null; webLayer = null; fogFx = [];
   sysComets = []; visitorFx = null;
 }
 
@@ -462,9 +516,10 @@ function drawUniverse(): void {
     const wx = fx * FC + FC * 0.5, wy = fy * FC + FC * 0.5;
     const dd = Math.hypot(wx - HOME_POS.x, wy - HOME_POS.y);
     if (dd < rr * 1.04) continue;
+    const ramp = Math.min(Math.max((dd - rr) / (rr * 0.55), 0), 1);
     const n = (UNOISE as (x: number, y: number, o: number) => number)(wx / UCELL * 0.16, wy / UCELL * 0.16, 3);
-    const a = Math.min(Math.max((n - 0.32) * 1.1, 0), 0.7) * Math.min(Math.max((dd - rr) / (rr * 0.55), 0), 1);
-    if (a <= 0.03) continue;
+    const a = Math.min(Math.max((n - 0.32) * 1.1, 0), 0.7) * ramp;
+    if (a <= 0.03 && ramp <= 0) continue;
     const f = new Sprite(Texture.from(fogBlobSpr()));
     f.anchor.set(0.5);
     f.position.set(wx, wy);
@@ -472,6 +527,7 @@ function drawUniverse(): void {
     f.alpha = a;
     f.cullable = true;
     charterFx.addChild(f);
+    fogFx.push({ spr: f, wx, wy, ramp });   /* the drift re-samples the noise per tick */
   }
   const ring = new Graphics().circle(HOME_POS.x, HOME_POS.y, rr).stroke({ width: Math.max(rr * 0.0035, 1.2), color: 0x96beff, alpha: 0.5 });
   charterFx.addChild(ring);
@@ -1167,7 +1223,10 @@ function zoomLimits(): [number, number] {
   if (nav.mode === 'universe') return [0.0024, 40];
   if (nav.mode === 'galaxy') return [gz0 * 0.5, mw / 2.5];
   if (nav.mode === 'system') return [sz0 * 0.5, mw / 3];
-  return [0.45, 6];
+  /* the game's 6× cap assumes real ground tiles; the slice surface is a
+     420px painterly globe — cap where IT stays crisp (found by the phone
+     leg's pinch: at 6× the master smears). Phase 6's vista retunes this. */
+  return [0.45, Math.max(0.9, (mw / 420) * 1.6)];
 }
 
 /* ---- the save/reload leg — THE REAL PIPELINE ---- */
@@ -1221,6 +1280,7 @@ async function loadSave(): Promise<void> {
           landed: save.landed.slice(), viewType: (save.savedView as { type?: string } | null)?.type ?? null,
         },
       }),
+      importBlob,   /* Gate C's front door, drivable by the smoke */
       descendGalaxy: (seed: number) => {
         const g = uniNodes.find((n) => n.seed === seed);
         if (!g) return false;
@@ -1262,6 +1322,15 @@ async function loadSave(): Promise<void> {
       if (!uniCell || ux !== uniCell.ux || uy !== uniCell.uy) drawUniverse();
       /* blazars pulse — a jet aimed straight at you (main.js 3715) */
       for (const up of uniPulse) up.spr.alpha = 0.55 + 0.45 * Math.abs(Math.sin(t * 6 + up.seed % 10));
+      /* drifting fog-of-war: the CLOUD PATTERN moves, the puffs stay put
+         (main.js 3766 — noise phase drifts at 5/s) */
+      if (charterFx && charterFx.visible && fogFx.length) {
+        const drift = t * 5;
+        for (const F of fogFx) {
+          const n = (UNOISE as (x: number, y: number, o: number) => number)((F.wx + drift) / UCELL * 0.16, (F.wy - drift * 0.4) / UCELL * 0.16, 3);
+          F.spr.alpha = Math.min(Math.max((n - 0.32) * 1.1, 0), 0.7) * F.ramp;
+        }
+      }
     } else if (nav.mode === 'galaxy') {
       updateFineLayer(false);
       /* the bright stars breathe (main.js 4165) */

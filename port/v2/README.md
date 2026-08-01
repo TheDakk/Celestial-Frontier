@@ -16,7 +16,9 @@ port itself; everything else under `port/` is plan, evidence, and decisions.
 ```
 npx vitest run        # the parity suite — ~72,000 golden cases + fingerprint probes
 npx tsc --noEmit      # strict typecheck (also run in apps/game for the slice)
-npm run smoke         # the slice in a REAL browser — Gate D loop + zoom ladder
+npm run smoke         # the slice in a REAL browser — Gate D loop, zoom ladder,
+                      #   charter gate, Gate-C import rehearsal, the PHONE leg
+npm run proofsheet    # the art+sound verdict sheet (golden vs slice, one page)
 ```
 
 Layout per `PORT_MASTER_PLAN_v4.0.md` §18: `packages/domain/<module>/`. Toolchain pinned

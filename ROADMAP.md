@@ -374,13 +374,43 @@
 ##   failed against a healthy build; fixed by framing the extract to renderer.screen.
 ##   Gates: vitest 22/219 (+3 charter) · tsc root+app clean · smoke PASS · main.js
 ##   untouched.
-##   ▶ NEXT IN PHASE 3/4: playRaritySting wiring (first-discovery flow, Phase 4) ·
-##   surface-mode biome vista (Phase 6) · SessionRNG wiring start (D-RNG) once an
-##   outcome roll exists · fog-of-war drift animation · CMB card at the OBS_R ring
-##   (describePick 'cmb' branch is ready) · throttled-CPU bootperf-style profile.
-##   ⛔ Nick: veteran save (Gate C — drop the blob in and the slice will LOAD it,
-##   Ascent stage and all) · phone leg · art + sound verdicts
-##   (cd port/v2/apps/game && npx vite dev) · listening test.
+##   ✔★★★ THE NICK-ONLY LIST COLLAPSED TO ITS MINIMUM (2026-08-01, batch 5 — "do the
+##   still-yours"): every ⛔ item now has its machine half DONE, so what remains is
+##   genuinely judgment/hardware only.
+##   · GATE C's FRONT DOOR IS BUILT AND REHEARSED: the slice grew a save-import sheet
+##     (⛭ save, top-right — Phase 4's second UI component after the survey card; 44px
+##     floors): paste or file-pick your cfcc_save_v2 → VALIDATED through the real
+##     importSaveV2 → stored VERBATIM (the fixture-#10 rule) → reboots into it, Ascent
+##     stage and all. ⚠ Guard added: the real loader hardens ANY object into a fresh
+##     save — right at boot, WRONG in an import sheet (an accidental "{}" would wipe
+##     the expedition); the sheet requires known save fields before overwriting.
+##     SMOKE REHEARSES THE EXACT FLOW: garbage refused (nothing stored) · the
+##     veteran_rich fixture imported through the sheet's own handler → boots as Dakk,
+##     ✦5000, surface view restored. Nick's remaining step is literally paste-and-tap.
+##   · THE PHONE LEG (emulated half): the smoke now runs a SECOND target at 390×844
+##     @ DPR 3 with touch emulation — veteran save FOLLOWS across targets (IndexedDB),
+##     stage painted, real two-finger PINCH zooms via the touch path. ★ IT FOUND A
+##     REAL BUG: the surface zoom cap of 6× assumed the game's ground tiles; on the
+##     slice's 420px globe a pinch-out smeared the master — cap now scales to the
+##     sprite's crisp range (Phase 6's vista retunes it). Physical hand-feel = Nick.
+##   · THE ART+SOUND VERDICT SHEET: `npm run proofsheet` (tools/proofsheet.mjs) bakes
+##     golden-screen vs slice side-by-sides + the two verdict questions into ONE page
+##     (apps/game/smoke/proof-sheet.png, headless Edge over file://). Judging is
+##     minutes now, not archaeology.
+##   · THE LISTENING TEST IS RUNNABLE THE DAY PLAYERS EXIST: port/LISTENING_TEST.md —
+##     arms, devices, the two sessions, the 8 questions, and exactly which decisions
+##     hang on each answer (f0 curve · legacy voice · ambience resume · §15 sizing).
+##   · Also landed: fog-of-war DRIFTS (noise phase re-sampled per tick, verbatim
+##     rates) · import sheet + button are real DOM components with data-sel hooks.
+##   Gates: vitest 22/219 · tsc root+app clean · smoke PASS (now 4c Gate-C rehearsal +
+##   4d phone leg) · proofsheet generated · main.js untouched.
+##   ▶ NEXT IN PHASE 3/4: Phase 4 shell continues — topbar/dock components over the
+##   slice (the golden phone screen names the gap: objective chip, dock, search) ·
+##   playRaritySting (first-discovery flow) · CMB card (band-pick, not box-pick) ·
+##   SessionRNG start once an outcome roll exists · throttled-CPU profile.
+##   ⛔ Nick (the true minimum): PASTE the real save into ⛭ save (Gate C closes on
+##   the spot) · hold the phone (hand-feel) · look at proof-sheet.png + listen
+##   (npx vite dev) · recruit the 12-24 (LISTENING_TEST.md is the script).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.
