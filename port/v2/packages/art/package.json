@@ -1,4 +1,17 @@
-{ "name": "@cf/art", "private": true, "version": "0.0.0", "type": "module",
+{
+  "name": "@cf/art",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "description": "Painterly canvas art, AUTO-LIFTED verbatim (GalaxyArt first). ⚠ BROWSER-ONLY: sprites bake at module load via document.createElement('canvas') — never import from node/vitest.",
-  "exports": { ".": "./src/index.ts" },
-  "dependencies": { "@cf/domain-rand": "*" } }
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@cf/domain-rand": "*",
+    "@cf/domain-surveyphrases": "*",
+    "@cf/domain-speciestraits": "*",
+    "@cf/domain-combatcore": "*",
+    "@cf/domain-strays": "*"
+  }
+}

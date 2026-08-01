@@ -18,6 +18,7 @@
    biome vista surfaces (Phase 6), living portraits (Phase 5). */
 import { Application, Container, Graphics, Sprite, Texture, Text, extensions, CullerPlugin } from 'pixi.js';
 import {
+  speciesPortrait, speciesThumb,
   galSpriteFor, decoSprite, getPlanetSprite, starSprite,
   _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr,
   _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr,
@@ -245,8 +246,13 @@ function fillCodex(filter?: string): void {
     `<h3>Compendium <span style="color:#7ec8f0" data-sel="codex-count">${rows.length}</span>${f ? ` <span class="sub" style="color:#8fa3c4;font-size:12px">· “${esc(filter)}”</span>` : ''}</h3>` +
     (rows.length === 0
       ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — the Compendium fills as you discover life.'}</div>`
-      : rows.map(({ e, i }) =>
-        `<div class="centry" data-sel="codex-entry" data-ci="${i}" style="cursor:pointer"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><div class="sub">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</div></div>`).join('')));
+      : rows.map(({ e, i }) => {
+        let th = '';
+        try { th = speciesThumb(e.g as never); } catch { /* text row still reads */ }
+        return `<div class="centry" data-sel="codex-entry" data-ci="${i}" style="cursor:pointer;display:flex;gap:10px;align-items:center">` +
+          (th ? `<img src="${th}" alt="" style="width:44px;height:44px;border-radius:8px;border:1px solid #22304a;background:#0b1220;flex:0 0 44px">` : '') +
+          `<span style="min-width:0"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><div class="sub">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</div></span></div>`;
+      }).join('')));
 }
 /* the Compendium DETAIL CARD: the whole domain stack speaking for one
    creature — describeSpecies (fixture-pinned sentences + fauna enrichments),
@@ -264,7 +270,10 @@ function fillCodexDetail(idx: number): void {
     const KEYS = ['vit', 'fer', 'res', 'agi', 'ins'];   /* STAT_KEYS order — names/hues are position-indexed */
     const mx = Math.max(1, ...KEYS.map((k) => st[k] || 0));
     const names = STAT_NAMES as readonly string[], hues = STAT_HUES as readonly string[];
+    let portrait = '';
+    try { portrait = speciesPortrait(e.g as never); } catch { /* a genome the painter cannot dress — the card still reads */ }
     body =
+      (portrait ? `<img data-sel="detail-portrait" src="${portrait}" alt="" style="width:100%;border-radius:10px;border:1px solid #22304a;margin:2px 0 8px;background:#0b1220">` : '') +
       `<div style="margin:4px 0 8px"><b style="font-size:16px;color:#f4f8ff">${esc(e.name)}</b>` +
       (d.grade ? ` <span data-sel="detail-grade" style="border:1px solid ${esc(d.grade.hex || '#888')};color:${esc(d.grade.hex || '#ccc')};border-radius:999px;padding:1px 9px;font-size:11px">${esc(d.grade.label || '')}</span>` : '') +
       `<div class="sub">${esc(e.kind)} · ${esc(e.realm)}${e.hybrid ? ' · hybrid' : ''}${e.from ? ' · ' + esc(e.from) : ''}</div></div>` +

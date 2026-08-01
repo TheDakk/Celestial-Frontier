@@ -413,8 +413,10 @@ try {
     const det=document.querySelector('#codexpanel [data-sel=codex-detail]');
     const stats=document.querySelectorAll('#codexpanel [data-sel=detail-stat]').length;
     const desc=(document.querySelector('#codexpanel [data-sel=detail-desc]')||{}).textContent||'';
+    const port=document.querySelector('#codexpanel [data-sel=detail-portrait]');
+    const portLen=port?String(port.getAttribute('src')||'').length:0;
     window.__CF_DETAIL_OPEN__=1;
-    return { ok:!!det, stats, descLen:desc.trim().length, backRows:-1, holdOpen:true }; })()`);
+    return { ok:!!det, stats, descLen:desc.trim().length, portLen, backRows:-1, holdOpen:true }; })()`);
   const shotDet = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-codex.png'), Buffer.from(shotDet.data, 'base64'));
   const detailBack = await evalIn(`(()=>{ document.getElementById('codexback').click();
@@ -423,6 +425,7 @@ try {
     return { backRows }; })()`);
   detail.backRows = detailBack.backRows;
   if (!detail.ok) fails.push('codex detail card did not open: ' + JSON.stringify(detail));
+  if (detail.ok && !(detail.portLen > 5000)) fails.push('THE LIVING PORTRAIT did not paint (hdart real-render proof): src length ' + detail.portLen);
   else {
     if (detail.stats !== 5) fails.push('detail card missing the five stat bars: ' + detail.stats);
     if (!(detail.descLen > 20)) fails.push('detail card description empty (describeSpecies silent): ' + detail.descLen);
@@ -479,6 +482,28 @@ try {
   if (!(z1 > z0 * 1.15)) fails.push('PHONE: pinch-out did not zoom (z ' + z0 + ' → ' + z1 + ')');
   const shotPh = await send('Page.captureScreenshot', { format: 'png' }, ph);
   fs.writeFileSync(path.join(OUT, 'slice-phone.png'), Buffer.from(shotPh.data, 'base64'));
+
+  /* 4d2. THE RESOLUTION MATRIX (uilayout discipline, first slice tier):
+     the geometry contract on tablet-portrait and a small phone too — the
+     window furniture must sit in the golden places at EVERY size. */
+  for (const [vw, vh, name] of [[820, 1180, 'tablet-portrait'], [360, 640, 'small-phone']]) {
+    const tR = await send('Target.createTarget', { url: 'about:blank' });
+    const aR = await send('Target.attachToTarget', { targetId: tR.targetId, flatten: true });
+    const sR = aR.sessionId;
+    await send('Runtime.enable', {}, sR);
+    await send('Page.enable', {}, sR);
+    await send('Emulation.setDeviceMetricsOverride', { width: vw, height: vh, deviceScaleFactor: 2, mobile: true }, sR);
+    await send('Page.navigate', { url: URL0 }, sR);
+    await sleep(2600);
+    const evalR = async (expr) => {
+      const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, sR);
+      if (r.exceptionDetails) throw new Error(name + ' eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
+      return r.result.value;
+    };
+    const g = await evalR(geoCheck).catch((e) => ['harness: ' + e.message]);
+    if (g.length) fails.push('MATRIX ' + name + ' (' + vw + '×' + vh + ') layout drift: ' + g.join(' · '));
+    await send('Target.closeTarget', { targetId: tR.targetId });
+  }
 
   /* 4e. THE TRAINING DRILL — the six live lessons end-to-end on a FRESH
      ORIGIN (its own IndexedDB ⇒ a new expedition): welcome → find-earth →
