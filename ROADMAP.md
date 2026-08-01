@@ -517,12 +517,52 @@
 ##   OVER chips/rails (z 22) like the game. slice-codex.png joins the record.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS (15 standing controls incl. the
 ##   detail-row dead-click control) · proofsheet regenerated · main.js untouched.
-##   ▶ NEXT IN PHASE 4: the training port (--tut-bot contract, 21 steps — the big
-##   one left) · Star Atlas panel (galSeen over galaxyName rows) · playRaritySting ·
-##   share-code button on the survey card (encodeHere exists) · panel virtualization
-##   when a real codex exceeds ~200 rows.
-##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone ·
-##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
+##   ✔★★★ THE AUDIT SWEEP (2026-08-01, batch 11 — "the full 100 yards"): a fresh-eyes
+##   subagent audit of the whole slice + a new throttled-CPU profile, EIGHT findings,
+##   all fixed the same batch:
+##   · #1 HIGH: THE RECOVERY CONTRACT WAS NEVER WIRED — repo.recover()/
+##     promoteLastKnownGood (CF-RR-002, built AND tested in Phase 2) had zero call
+##     sites; a transient IDB read failure at boot fell through to a fresh save and
+##     the boot's own persist overwrote the evidence within one frame. NOW: corrupt/
+##     unreadable primary → recover() restores the backup ONCE; a payload that proves
+##     it loads is promoted to last-known-good (the v1.8.9 loadSave semantic); a read
+##     that THREW holds all persists until the player acts. The green-while-broken
+##     ledger gains a new shape: A SAFETY NET FULLY BUILT, FULLY TESTED, AND NEVER
+##     ATTACHED — the tests proved the net, nothing proved the attachment.
+##   · #2 Gate C risk: "stored byte-for-byte" was true for ONE FRAME — the first boot
+##     persist rewrites the store through exportSaveV2, silently dropping any field
+##     the port's schema doesn't carry. The ORIGINAL paste now survives as an
+##     untouched keepsake (cf_v2_import_original) and the sheet says so honestly.
+##   · #3 pre-boot clicks on charts/search threw on `save` before load — guarded.
+##   · #4 clearWorld DETACHED but never DESTROYED — Texts own their canvas textures
+##     and the universe rebuilds per pan cell-crossing → GPU creep; children are
+##     destroyed now (shared textures survive by default).
+##   · #5 sliders exported the whole save per input event — debounced (persistSoon).
+##   · #6 toast was the one unescaped innerHTML sink (unexploitable today) — esc'd.
+##   · #7 five stale comments contradicting shipped behavior — refreshed, header too.
+##   · #8 gz0/sz0 staled across rotation (ascend floor vs dive threshold drift) —
+##     recomputed on resize; minWH floored so a zero-sized window can't mint z=0.
+##   ★★ THE PERF PROBE FOUND ITS OWN BUG FIRST (instrument law, again): the scene
+##   centered at (65,141) on DPR-3 phones — renderer.width is ALREADY logical in
+##   Pixi v8, so /(2·resolution) divided twice; invisible on desktop (res 1), wrong
+##   on EVERY phone, and the phone smoke's paint/pinch checks were blind to it by
+##   construction. Fixed via app.screen at all three sites.
+##   ★ `npm run perf` (tools/sliceperf.mjs): 4×-throttled DPR-3 phone — PAINTED
+##   1,658ms · ANSWERABLE 1,749ms (press→panel 82ms). The old build's pre-fix window
+##   was painted-393ms/answerable-6,440ms; the port meets the v1.8.5 bar with the
+##   FULL painterly bake. Galaxy rebuild throttled ~420ms (desktop ~70ms).
+##   ⚠ RECORDED for the hardware leg: Pixi pointertap does not fire from CDP-emulated
+##   touch in headless (raw pointer events DO — the pinch proves the path); canvas
+##   taps on a REAL phone are Nick's to verify.
+##   Root gates re-proven same batch: goldenseeds/savefixtures/contentregistry/
+##   codefixtures/audioprofiles PASS · validate FINGERPRINT MATCH 50/50.
+##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ▶ NEXT IN PHASE 4: the training port (--tut-bot, 21 steps — the big one left) ·
+##   Star Atlas panel (galSeen accrual on descent + rows) · share-code button on the
+##   survey card · playRaritySting · codex virtualization past ~200 rows.
+##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone
+##   (canvas taps especially — see the headless touch note) · proof-sheet.png +
+##   listen · recruit the 12-24 (LISTENING_TEST.md).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.
