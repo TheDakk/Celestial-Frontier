@@ -268,11 +268,41 @@
 ##   Instrument catches: row assertion sliced at 14 (missed Civilization past Earth's roster);
 ##   Edge component extensions' "message channel closed" noise suppressed via LAUNCH FLAGS,
 ##   never an error-text filter.
-##   ▶ NEXT IN PHASE 3/4: pinch input (touch parity) · zoom LOD (the Renderer's c.z gates) ·
-##   fineStarsInCell resolve layer at deep zoom · moons/belt/kuiper in system view · the
-##   in-galaxy Sol MARKER at SOL_POS (descend to Sol by clicking it, not via API) · wire
-##   importSaveV2 saves into the slice (real save loop, not just nav view) · slicesmoke as a
-##   standing gate beside vitest. ⛔ Nick: veteran save (Gate C) · phone leg · art verdict
+##   ✔★★ THE SLICE SPEAKS THE RENDERER'S VISUAL LANGUAGE (2026-07-31, the quality/graphics
+##   batch): the previous NEXT list landed IN ONE PASS, recipes carried number-for-number
+##   from main.js 3380-5340. · ZOOM-DRIVEN TRANSITIONS (checkTransitions semantics: dive by
+##   zooming into a thing, rise past gz0*0.62/sz0*0.62 floors, starZ=minWH/34 star dives,
+##   per-mode zoomLimits, ascent re-centers the outer view on what you left) — ⚠ transitions
+##   read camT (INTENT), not the eased cam: a descent's ease-in starts BELOW the ascend floor
+##   and would bounce straight back (caught in review before it ever ran) · GALAXY LOD: stars
+##   are starSprite painters now (additive, baseR=max(0.7/z,0.55), spiked giants ≥1.5,
+##   twinkle >1.3) — the slice's LAST flat-primitive stars are gone · fineStarsInCell resolve
+##   layer at z>minWH/260, viewport-windowed, rebuilt on window/bucket change · the Sun
+##   marker at SOL_POS (ring 9/z + 'Sun — our star', z>minWH/900 gate; the sol flag rides
+##   starsInCell from the domain) · deco pass CORRECTED + COMPLETED (rem was ×2.3, is ×2.6;
+##   glob/rogue/fbd were silently SKIPPED — the review found both) · the black-hole disc over
+##   the star layers · SYSTEM VIEW PAINTERLY: corona gradient (verbatim stops) + BH/NS/MAG
+##   sprites via newly-lifted painters, planets at the Renderer's live orbit angles rotated
+##   so their baked light faces the star, day/night terminator overlay, _ringSprite banded
+##   rings split back/front around the globe, typed _moonSpr moons on Kepler drifts
+##   (SOL_MOONS honored), _rockSet belt+kuiper (110 rocks each, live), _dwarfSpr dwarfs,
+##   binary companions orbiting · PINCH ZOOM + cursor-anchored wheel · restoreView VALIDATES
+##   mode-context (a mode without its gal/star/planet falls back home, never a blank stage).
+##   lift-art-extras.mjs grew 9 painters (_rockSet _ringSprite _starSurf _moonSpr _dwarfSpr
+##   _rogueSpr _beamSpr _nsCoreSpr _bhSpr), all self-contained, sha-stamped.
+##   ✔ SLICESMOKE IS A STANDING GATE (`npm run smoke` in port/v2) and grew the ZOOM-LADDER
+##   leg: surface→Esc→system→zoomout→galaxy→zoomout→universe→EMPTY-SPACE NEGATIVE CONTROL
+##   (deep zoom in nothing must NOT dive)→zoomin→Milky Way→hold at z=8 over SOL_POS
+##   (asserts fine layer BUILT + Sun marker VISIBLE, screenshot slice-solmark)→zoomin→Sol.
+##   Negative-controlled BOTH directions: checkTransitions disabled in a control build →
+##   6 named failures; restored → PASS. Gates at close: vitest 21 files/210 · tsc root+app
+##   clean · smoke PASS · main.js/html UNTOUCHED (validate battery stands as at v1.8.9).
+##   ▶ NEXT IN PHASE 3/4: wire importSaveV2 saves into the slice (real save loop, not just
+##   nav view) · surface-mode planet spin + cloud deck (motionOK gates) · wormhole travel +
+##   charter/Ascent gating on dives (needs progression wiring) · deco/fine-star pick targets
+##   (survey cards for nebulae/remnants) · _starSurf close-up + moon terminator shading ·
+##   supernova sites/comets/visitor · HD texture rebuild thrash check on long zoom sessions.
+##   ⛔ Nick: veteran save (Gate C) · phone leg (pinch is IN — judge it) · art verdict
 ##   (judgeable NOW: cd port/v2/apps/game && npx vite dev) · listening test.
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.

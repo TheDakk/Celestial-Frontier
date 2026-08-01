@@ -23,6 +23,26 @@ const PIECES = [
   ['decoSprite', 'function decoSprite(dc){'],
   ['_quasarSprC', 'let _quasarSprC=null;'],
   ['_quasarSpr', 'function _quasarSpr(){'],
+  /* system-view small-body painters (v1.4 HD coverage pass) — the slice's
+     system mode joins the painterly engine */
+  ['_rockSprites', 'const _rockSprites={};'],
+  ['_rockSet', 'function _rockSet(kind){'],
+  ['_ringSprCache', 'const _ringSprCache=new Map();'],
+  ['_ringSprite', 'function _ringSprite(seed, hue){'],
+  ['_starSurfCache', 'const _starSurfCache=new Map();'],
+  ['_starSurf', 'function _starSurf(seed, col, kind){'],
+  ['_moonSprs', 'const _moonSprs={};'],
+  ['_moonSpr', 'function _moonSpr(ti, hd){'],
+  ['_dwarfSprs', 'const _dwarfSprs=[];'],
+  ['_dwarfSpr', 'function _dwarfSpr(v){'],
+  ['_rogueSprC', 'let _rogueSprC=null;'],
+  ['_rogueSpr', 'function _rogueSpr(){'],
+  ['_beamSprC', 'let _beamSprC=null;'],
+  ['_beamSpr', 'function _beamSpr(){'],
+  ['_nsCoreSprC', 'let _nsCoreSprC=null;'],
+  ['_nsCoreSpr', 'function _nsCoreSpr(){'],
+  ['_bhSprC', 'let _bhSprC=null;'],
+  ['_bhSpr', 'function _bhSpr(){'],
 ];
 function extract(anchor) {
   const i0 = lines.findIndex((l) => l.includes(anchor));
@@ -54,6 +74,7 @@ const header = `/* AUTO-LIFTED VERBATIM renderer-section painters from main.js (
    body sha256/16 ${sha}. ⚠ DO NOT EDIT. Regenerate: node tools/lift-art-extras.mjs
    Browser-only (canvas). */
 `;
-const out = header + importLines.join('\n') + (importLines.length ? '\n\n' : '') + bodyOut + '\nexport { decoSprite, _quasarSpr, starSprite };\n';
+const out = header + importLines.join('\n') + (importLines.length ? '\n\n' : '') + bodyOut +
+  '\nexport { decoSprite, _quasarSpr, starSprite, _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr, _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr };\n';
 fs.writeFileSync(path.join(here, '..', 'packages', 'art', 'src', 'artextras.verbatim.js'), out);
 console.log('lifted art extras (sha ' + sha + '), imports: ' + (importLines.join(' | ') || 'none'));

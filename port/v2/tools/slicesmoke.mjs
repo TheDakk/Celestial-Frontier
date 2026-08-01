@@ -156,6 +156,47 @@ try {
   /* we landed on Earth before reloading — the SURFACE view must come back */
   if (!/surface · gal 999 · star 424242/.test(hud3)) fails.push('RELOAD lost the view — IndexedDB persistence failed: ' + JSON.stringify(hud3));
 
+  /* 4b. THE ZOOM-DRIVEN TRANSITIONS (checkTransitions semantics) — the leg
+     the click-descent tests structurally cannot see. We are on Earth's
+     surface after the reload; ride the zoom ladder all the way up and back
+     down to Sol. Every step reads camT (intent), exactly as the app does. */
+  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
+  await sleep(700);
+  const hudEsc = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
+  if (!/system · gal 999/.test(hudEsc)) fails.push('Escape did not ascend surface→system: ' + JSON.stringify(hudEsc));
+  await evalIn(`(()=>{ window.__CF_SLICE__.camT.z = 0.01; return 1; })()`);   /* zoom out hard */
+  await sleep(700);
+  const hudG = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
+  if (!/galaxy · gal 999/.test(hudG)) fails.push('zoom-out did not rise system→galaxy: ' + JSON.stringify(hudG));
+  await evalIn(`(()=>{ window.__CF_SLICE__.camT.z = 0.05; return 1; })()`);
+  await sleep(700);
+  const hudU = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
+  if (!/^universe/.test(hudU)) fails.push('zoom-out did not rise galaxy→universe: ' + JSON.stringify(hudU));
+  /* negative control: deep zoom in EMPTY space must NOT dive */
+  await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=5000; S.camT.y=5000; S.camT.z=28; return 1; })()`);
+  await sleep(700);
+  const hudEmpty = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
+  if (!/^universe/.test(hudEmpty)) fails.push('CONTROL FAILED — deep zoom in empty space dove somewhere: ' + JSON.stringify(hudEmpty));
+  /* zoom INTO the Milky Way at HOME_POS → galaxy */
+  await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=90; S.camT.y=-60; S.camT.z=28; return 1; })()`);
+  await sleep(900);
+  const hudG2 = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
+  if (!/galaxy · gal 999/.test(hudG2)) fails.push('zoom-in did not dive universe→galaxy: ' + JSON.stringify(hudG2));
+  /* hold deep over SOL_POS below the dive threshold: the Sun marker + the
+     fine-star resolve layer must both be up (Renderer LOD gates) */
+  await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=560; S.camT.y=170; S.camT.z=8; S.cam.x=560; S.cam.y=170; S.cam.z=8; return 1; })()`);
+  await sleep(1600);
+  const deep = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (!deep.fine) fails.push('deep zoom did not build the fine-star layer');
+  if (!deep.solVisible) fails.push('Sun marker not visible at deep zoom over SOL_POS');
+  const shot5 = await send('Page.captureScreenshot', { format: 'png' }, sess);
+  fs.writeFileSync(path.join(OUT, 'slice-solmark.png'), Buffer.from(shot5.data, 'base64'));
+  /* and the final dive: past starZ over the Sun → system 424242 */
+  await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.z=30; return 1; })()`);
+  await sleep(1200);
+  const hudS2 = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
+  if (!/system · gal 999 · star 424242/.test(hudS2)) fails.push('zoom-in over the Sun did not dive into Sol: ' + JSON.stringify(hudS2));
+
   /* 5. zero console errors / exceptions across the whole run */
   const errs = events.filter((e) =>
     (e.method === 'Runtime.exceptionThrown') ||
@@ -170,6 +211,6 @@ try {
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · Milky Way · Sol · LANDED ON EARTH with the survey card speaking (Spectral class/Life/Civilization) · surface view SURVIVED RELOAD (IndexedDB) · zero console errors.');
-console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-earth');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · Milky Way · Sol · LANDED ON EARTH with the survey card speaking (Spectral class/Life/Civilization) · surface view SURVIVED RELOAD (IndexedDB) · ZOOM LADDER surface→system→galaxy→universe→galaxy→Sol (with the empty-space negative control) · Sun marker + fine stars at depth · zero console errors.');
+console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-earth · slice-solmark');
 process.exit(0);
