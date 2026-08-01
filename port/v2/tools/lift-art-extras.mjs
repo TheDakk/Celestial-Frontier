@@ -54,6 +54,13 @@ const PIECES = [
   ['_bhDiscSpr', 'function _bhDiscSpr(){'],
   ['_proto', 'let _proto=null;'],
   ['_protoSpr', 'function _protoSpr(){'],
+  /* system small-visitor painters: interstellar object + comet coma/trail */
+  ['_visitorSprC', 'let _visitorSprC=null;'],
+  ['_visitorSpr', 'function _visitorSpr(){'],
+  ['_comaSprC', 'let _comaSprC=null;'],
+  ['_comaSpr', 'function _comaSpr(){'],
+  ['_vtrailSprC', 'let _vtrailSprC=null;'],
+  ['_vtrailSpr', 'function _vtrailSpr(){'],
 ];
 function extract(anchor) {
   const i0 = lines.findIndex((l) => l.includes(anchor));
@@ -86,6 +93,6 @@ const header = `/* AUTO-LIFTED VERBATIM renderer-section painters from main.js (
    Browser-only (canvas). */
 `;
 const out = header + importLines.join('\n') + (importLines.length ? '\n\n' : '') + bodyOut +
-  '\nexport { decoSprite, _quasarSpr, starSprite, _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr, _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr, _wormSpr, snSiteSprite, _bhDiscSpr, _protoSpr };\n';
+  '\nexport { decoSprite, _quasarSpr, starSprite, _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr, _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr, _wormSpr, snSiteSprite, _bhDiscSpr, _protoSpr, _visitorSpr, _comaSpr, _vtrailSpr };\n';
 fs.writeFileSync(path.join(here, '..', 'packages', 'art', 'src', 'artextras.verbatim.js'), out);
 console.log('lifted art extras (sha ' + sha + '), imports: ' + (importLines.join(' | ') || 'none'));

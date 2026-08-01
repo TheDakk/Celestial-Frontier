@@ -1,6 +1,6 @@
 /* AUTO-LIFTED VERBATIM renderer-section painters from main.js (v1.8.9):
-   _starSpr (3799-3799) · starSprite (3800-3828) · _decoSpr (3833-3833) · decoSprite (3834-4008) · _quasarSprC (4804-4804) · _quasarSpr (4805-4878) · _rockSprites (4353-4353) · _rockSet (4354-4381) · _ringSprCache (4386-4386) · _ringSprite (4387-4446) · _starSurfCache (4454-4454) · _starSurf (4455-4516) · _moonSprs (4517-4517) · _moonSpr (4518-4697) · _dwarfSprs (4698-4698) · _dwarfSpr (4699-4711) · _rogueSprC (4755-4755) · _rogueSpr (4756-4766) · _beamSprC (4767-4767) · _beamSpr (4768-4779) · _nsCoreSprC (4780-4780) · _nsCoreSpr (4781-4791) · _bhSprC (4910-4910) · _bhSpr (4911-4991) · _cloudSprCache (4883-4883) · _cloudSpr (4884-4909) · _wormSprC (4992-4992) · _wormSpr (4993-5051) · _snSprCache (4013-4013) · snSiteSprite (4014-4043) · _bhDisc (4044-4044) · _bhDiscSpr (4045-4053) · _proto (4054-4054) · _protoSpr (4055-4063).
-   body sha256/16 afed95cd97f841af. ⚠ DO NOT EDIT. Regenerate: node tools/lift-art-extras.mjs
+   _starSpr (3799-3799) · starSprite (3800-3828) · _decoSpr (3833-3833) · decoSprite (3834-4008) · _quasarSprC (4804-4804) · _quasarSpr (4805-4878) · _rockSprites (4353-4353) · _rockSet (4354-4381) · _ringSprCache (4386-4386) · _ringSprite (4387-4446) · _starSurfCache (4454-4454) · _starSurf (4455-4516) · _moonSprs (4517-4517) · _moonSpr (4518-4697) · _dwarfSprs (4698-4698) · _dwarfSpr (4699-4711) · _rogueSprC (4755-4755) · _rogueSpr (4756-4766) · _beamSprC (4767-4767) · _beamSpr (4768-4779) · _nsCoreSprC (4780-4780) · _nsCoreSpr (4781-4791) · _bhSprC (4910-4910) · _bhSpr (4911-4991) · _cloudSprCache (4883-4883) · _cloudSpr (4884-4909) · _wormSprC (4992-4992) · _wormSpr (4993-5051) · _snSprCache (4013-4013) · snSiteSprite (4014-4043) · _bhDisc (4044-4044) · _bhDiscSpr (4045-4053) · _proto (4054-4054) · _protoSpr (4055-4063) · _visitorSprC (4712-4712) · _visitorSpr (4713-4738) · _comaSprC (4739-4739) · _comaSpr (4740-4752) · _vtrailSprC (4792-4792) · _vtrailSpr (4793-4803).
+   body sha256/16 c4fa11dc28675c58. ⚠ DO NOT EDIT. Regenerate: node tools/lift-art-extras.mjs
    Browser-only (canvas). */
 import { mulberry32, clamp, makeNoise, TAU, hashInt } from '@cf/domain-rand';
 
@@ -890,4 +890,57 @@ function _protoSpr(){
   g.fillStyle=pg; g.beginPath(); g.arc(C,C,C,0,TAU); g.fill();
   return (_proto=cv);
 }
-export { decoSprite, _quasarSpr, starSprite, _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr, _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr, _wormSpr, snSiteSprite, _bhDiscSpr, _protoSpr };
+let _visitorSprC=null;
+function _visitorSpr(){
+  /* the hyperbolic visitor: an 'Oumuamua-style tumbling sliver — the
+     rock-lump recipe stretched ~3:1 (was: a literal fillRect) */
+  if(_visitorSprC) return _visitorSprC;
+  const S=48, H2=18, cv=document.createElement('canvas'); cv.width=S; cv.height=H2;
+  const g=cv.getContext('2d'), r=mulberry32(0x0A31A);
+  const cx=S/2, cy=H2/2, n=9, pts=[];
+  for(let i=0;i<n;i++){
+    const a=i/n*TAU;
+    pts.push([cx+Math.cos(a)*S*0.42*(0.72+r()*0.4), cy+Math.sin(a)*H2*0.36*(0.65+r()*0.5)]);
+  }
+  g.fillStyle='#8a6f58';
+  g.beginPath(); g.moveTo(pts[0][0],pts[0][1]);
+  for(let i=1;i<n;i++) g.lineTo(pts[i][0],pts[i][1]);
+  g.closePath(); g.fill();
+  g.globalCompositeOperation='source-atop';
+  const lg2=g.createLinearGradient(0,0,S,H2);
+  lg2.addColorStop(0,'#d6a684'); lg2.addColorStop(0.5,'rgba(0,0,0,0)'); lg2.addColorStop(1,'rgba(20,10,6,0.6)');
+  g.fillStyle=lg2; g.fillRect(0,0,S,H2);
+  for(let i=0;i<3;i++){
+    g.fillStyle='rgba(0,0,0,'+(0.16+r()*0.14).toFixed(2)+')';
+    g.beginPath(); g.arc(cx+(r()-0.5)*S*0.6, cy+(r()-0.5)*H2*0.5, 0.7+r()*1.3, 0, TAU); g.fill();
+  }
+  g.globalCompositeOperation='source-over';
+  return _visitorSprC=cv;
+}
+let _comaSprC=null;
+function _comaSpr(){
+  /* a comet's white-hot coma (the live head was a flat dot; the thumb
+     always had one) */
+  if(_comaSprC) return _comaSprC;
+  const S=24, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  const cg2=g.createRadialGradient(C,C,0,C,C,C);
+  cg2.addColorStop(0,'rgba(255,255,255,0.95)');
+  cg2.addColorStop(0.28,'rgba(207,230,255,0.75)');
+  cg2.addColorStop(1,'rgba(180,215,255,0)');
+  g.fillStyle=cg2; g.beginPath(); g.arc(C,C,C,0,TAU); g.fill();
+  return _comaSprC=cv;
+}
+let _vtrailSprC=null;
+function _vtrailSpr(){
+  /* the visitor's outgassing trail, fading toward -x */
+  if(_vtrailSprC) return _vtrailSprC;
+  const W2=44, H2=8, cv=document.createElement('canvas'); cv.width=W2; cv.height=H2;
+  const g=cv.getContext('2d');
+  const tg2=g.createLinearGradient(0,0,W2,0);
+  tg2.addColorStop(0,'rgba(214,170,140,0)'); tg2.addColorStop(1,'rgba(214,170,140,0.55)');
+  g.strokeStyle=tg2; g.lineWidth=2.2; g.lineCap='round';
+  g.beginPath(); g.moveTo(2,H2/2); g.lineTo(W2-2,H2/2); g.stroke();
+  return _vtrailSprC=cv;
+}
+export { decoSprite, _quasarSpr, starSprite, _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr, _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr, _wormSpr, snSiteSprite, _bhDiscSpr, _protoSpr, _visitorSpr, _comaSpr, _vtrailSpr };

@@ -19,7 +19,8 @@
     "@cf/audio": "*",
     "@cf/domain-progression": "*",
     "@cf/domain-worldgen": "*",
-    "@cf/domain-rand": "*"
+    "@cf/domain-rand": "*",
+    "@cf/domain-naming": "*"
   },
   "devDependencies": {
     "vite": "8.2.0"

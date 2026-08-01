@@ -345,15 +345,42 @@
 ##   painters (+_wormSpr, snSiteSprite, _bhDiscSpr, _protoSpr).
 ##   Gates: vitest 22/216 · tsc root+app clean · smoke PASS (survey-first + epoch
 ##   asserts added) · main.js/html untouched.
-##   ▶ NEXT IN PHASE 3/4: charter/Ascent reach gating (progression wiring — wormhole
-##   clamp + dive permissions) · comets/visitor in system view · playRaritySting wiring
-##   (first-discovery flow, Phase 4 scope) · surface-mode biome vista (Phase 6) ·
-##   SessionRNG wiring start (D-RNG) once an outcome roll exists in the slice ·
-##   consider a quick perf profile of the galaxy rebuild on a throttled CPU.
-##   ⛔ Nick: veteran save (Gate C — drop the blob in and the slice will LOAD it) · phone
-##   leg (pinch is IN — judge it) · art verdict + now a SOUND verdict (headphones:
-##   cd port/v2/apps/game && npx vite dev — tap things, dive, listen) · listening test
-##   (still the gate for ALL further audio scope).
+##   ✔★★★ THE CHARTER GATES TRAVEL · THE UNIVERSE IS COMPLETE (2026-08-01, batch 4):
+##   · ASCENT/CHARTER GATING IS LIVE AND PURE: @cf/scene/charter.ts (ascStageOf —
+##   "the built system IS the key", reads save.items/ascCh · ascAllowsStar verbatim
+##   ladder: stage 0 Sol only / 1 the ASC_RING_R Neighborhood / 2 home galaxy / 3
+##   everywhere · reachRadiusOf/withinReachOf/currentRegionOf over strays' REGIONS —
+##   state as PARAMETERS, the D-ST lesson applied at birth; 3 new vitest suites).
+##   Wired at the descend CHOKE POINTS (every path: tap, zoom, api): blocked dives
+##   park BELOW the trigger (the game's *0.97 anti-refire precedent) and TOAST the
+##   build that opens the ring (ascHintFor verbatim strings). Wormhole jump wears the
+##   verbatim reach clamp toward HOME_POS. SMOKE: fresh save = stage 0 proven live
+##   (non-Sol dive REFUSED + charter toast; control: gate disabled → 'CHARTER GATE
+##   BROKEN' named FAIL). · UNIVERSE VISUAL COMPLETION (main.js 3578-3795 recipes):
+##   cosmic-web breath (WEB_BLOB per cell, web>0.5) + cluster/void far-zoom captions ·
+##   QUASARS wear _quasarSpr (the slice had been drawing them as plain galaxies — a
+##   parity gap the batch found) with blazar pulse · radio galaxies get baked jet
+##   lobes + rotated hosts · tidal bridges between colliding pairs · every non-dwarf
+##   galaxy earns its NAME at sz·z>34 · the charter ring + veil + fog-of-war beyond
+##   (fog static per rebuild — drift recorded) + 'your charter — {region}' · the
+##   observable-universe orange ring at OBS_R. · SYSTEM: comets on stretched orbits
+##   (eccentric math verbatim, tails away from the star, zoom-compensated widths,
+##   'Comet {properName}' labels) + the tumbling interstellar visitor with its
+##   outgassing trail (_visitorSpr/_comaSpr/_vtrailSpr lifted; art extras = 21).
+##   · HUD shows the charter region + stage; galaxy rebuild profiled ~70ms (logged
+##   by the smoke each run). ⚠ INSTRUMENT LESSON №10-adjacent: the OBS_R ring blew
+##   the stage's LOCAL bounds past the max texture size and the smoke's UNFRAMED
+##   extract.pixels read back BLACK while the screen was perfect — the painted check
+##   failed against a healthy build; fixed by framing the extract to renderer.screen.
+##   Gates: vitest 22/219 (+3 charter) · tsc root+app clean · smoke PASS · main.js
+##   untouched.
+##   ▶ NEXT IN PHASE 3/4: playRaritySting wiring (first-discovery flow, Phase 4) ·
+##   surface-mode biome vista (Phase 6) · SessionRNG wiring start (D-RNG) once an
+##   outcome roll exists · fog-of-war drift animation · CMB card at the OBS_R ring
+##   (describePick 'cmb' branch is ready) · throttled-CPU bootperf-style profile.
+##   ⛔ Nick: veteran save (Gate C — drop the blob in and the slice will LOAD it,
+##   Ascent stage and all) · phone leg · art + sound verdicts
+##   (cd port/v2/apps/game && npx vite dev) · listening test.
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.
