@@ -37,6 +37,13 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
 - ✔ **D-ART-12 — the bird wing (wave 3).** NO bird among 631 fauna showed a wing silhouette.
   faunaBird now draws layered coverts + primaries, with bill shape and leg length as species
   parameters (raptor/wader/spoonbill/huge-bill/flightless).
+- ✔ **D-ART-13 — the quadruped system (wave 4).** One parameterized mammal painter (leg/depth/
+  neck/back-profile/muzzle/jaw/ears/tail/coat/signature-organ) over 40 species. Rhino ≠ Hippo at
+  last; Camel has humps and a neck; Giraffe patches its neck; the bears differentiate.
+- ✔ **D-ART-14 — THE OVERRIDE LAW: never override what already excels.** The generic quadruped
+  made the verbatim Elephant (4.5/5) WORSE — Elephant variants, Zebra, Tiger, Lion, Red Panda and
+  Raccoon were removed from the table and keep the bespoke painter. Governs every future wave.
+  Also: the back line was smoothed (was faceted) and the spine rim feathered (was a hard edge).
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

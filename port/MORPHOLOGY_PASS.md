@@ -161,3 +161,51 @@ today, just under-differentiated, whereas wave 3 fixed species that were categor
 22/220 · tsc clean · slicesmoke PASS. `hdart.verbatim.js` STILL UNTOUCHED.
 **Ledger:** D-ART-10 (insect life stages + arthropod plans) · D-ART-11 (specialist fish +
 cephalopod + cetacean bodies) · D-ART-12 (the bird wing + bill/leg species parameters).
+
+---
+
+# WAVE 4 — LANDED 2026-08-01 (the quadruped system + THE OVERRIDE LAW)
+
+**Nick's instruction:** carry wave 3's structure "to everything, forward and backward."
+
+**THE QUADRUPED SYSTEM (`packages/art/src/quadrupedoverrides.ts`).** One parameterized mammal
+painter whose SPEC *is* the species: leg length · body depth/length · neck length · BACK PROFILE
+(level/humped/sloped/arched) · muzzle projection · jaw (fine/broad/barrel) · ear family
+(tiny→huge) · tail family (stub/tuft/bushy/plume/banded/long) · coat (spots/rosettes/stripes/
+patches/panda/shaggy/banded) · signature organ (nose horn / twin horn / ossicone / palmate
+antler / branched antler / tusks up or down / curled horn / humps / trunk). **Proportion carries
+identity before decoration does.** Coats are CLIPPED to the torso so they read as fur rather than
+stickers; a species-true hue overrides the roll ONLY where the animal's color IS its identity
+(white Polar Bear, the Panda's blocking, Cheetah tan) — everything else keeps its rarity palette.
+40 species routed: the pixel-siblings finally separate (Rhino: twin nose horns, longer legs;
+Hippo: barrel jaw, stub legs, tiny ears), Camel/Bactrian get humps and a long curved neck,
+Giraffe carries patches UP the neck with ossicones over a sloped back, Moose gets palmate antlers
+on a humped shoulder, Bison a shoulder hump and shaggy front, Cheetah spots + tear lines, Fennec
+huge ears, Hyena a sloping back, Koala round ears, and the bears differentiate (Grizzly hump /
+Polar long neck + white / Sloth shag).
+
+**THE OVERRIDE LAW, learned the hard way this wave:**
+> **NEVER OVERRIDE WHAT ALREADY EXCELS.** A generic system cannot beat bespoke work.
+
+Caught in review: the generic quadruped made the **Elephant WORSE** — the verbatim engine's
+Elephant scored 4.5/5 (one of the catalog's best, with a real curled trunk), and Nick's audit
+lists Zebra/Tiger/Lion/Red Panda among its "stronger reads". All were REMOVED from the override
+table and keep the verbatim painter. This law governs every future wave: the override table is
+for the FAILING, never for the strong.
+
+**Two painterly fixes from the same review:** the back line was a faceted polyline (a sloped back
+read as a table edge) → sampled and joined through midpoint quadratics; the spine rim light was a
+flat bright stroke (another hard edge) → now a gradient that FADES at both ends, like light falls.
+
+**Proof:** speciesaudit 1,254/1,254 · 0 failures · 0 duplicate pairs. Gates: vitest 22/220 · tsc
+clean · slicesmoke PASS. hdart.verbatim.js STILL UNTOUCHED.
+**Ledger:** D-ART-13 (quadruped proportion/coat/signature system) · D-ART-14 (the override law +
+the two profile fixes).
+
+## Backward check (Nick's "forward and backward")
+Waves 1–2 hold the same structure: fungi families draw real growth habits (shelves on wood with
+concentric bands, branching coral, honeycomb morel, fuzzy mold), microbes draw real morphology
+(segmented tardigrade with clawed legs, ribbed diatom glass, ciliated slipper), flora varies per
+name with bespoke iconic bodies. All keep the shared furniture (vignette, grounding shadow, rim
+separation, genome palette). No backward rework needed; the remaining gap is the UNTOUCHED long
+tail, which the audit tracks.

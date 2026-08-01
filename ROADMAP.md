@@ -686,6 +686,22 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 4 — THE QUADRUPED SYSTEM + THE OVERRIDE LAW (2026-08-01, batch 23;
+##   Nick: carry wave 3's structure "to everything, forward and backward"). ONE parameterized
+##   mammal painter whose SPEC is the species: leg/depth/neck/BACK PROFILE (level/humped/sloped/
+##   arched)/muzzle/jaw/ears/tail/coat/SIGNATURE ORGAN (nose horn, ossicone, palmate + branched
+##   antlers, tusks, curled horn, humps, trunk). PROPORTION CARRIES IDENTITY BEFORE DECORATION;
+##   coats CLIPPED to the torso (fur, not stickers); species-true hue only where color IS
+##   identity (white Polar Bear, Panda blocking). 40 species: Rhino ≠ Hippo at last (twin horns
+##   + longer legs vs barrel jaw + stub legs + tiny ears), Camel humps + curved neck, Giraffe
+##   patches UP the neck + ossicones, Moose palmate antlers on a humped shoulder, Bison hump +
+##   shag, Cheetah spots + tear lines, Fennec huge ears, Hyena sloped back, bears differentiated.
+##   ★★ THE OVERRIDE LAW, LEARNED THE HARD WAY: NEVER OVERRIDE WHAT ALREADY EXCELS — the generic
+##   quadruped made the verbatim ELEPHANT (4.5/5, real curled trunk) WORSE; Elephants/Zebra/
+##   Tiger/Lion/Red Panda/Raccoon REMOVED, keeping the bespoke painter. Governs all future waves.
+##   Two painterly fixes same review: faceted back line → midpoint-quadratic smoothing; flat
+##   spine rim → gradient that FADES at both ends. D-ART-13/14. Gates: 1,254/1,254 · 0 fails ·
+##   0 dupes · vitest 22/220 · slicesmoke PASS · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 3 — FAUNA SPECIALISTS + THE WING (2026-08-01, batch 22).
 ##   BLOCKER 4 (life stages): Fly Larvae/Maggot/Caterpillar were drawn as WINGED ADULTS →
 ##   now legless segmented grubs; Dragonfly/Damselfly had NO WINGS → now two venated wing
