@@ -55,6 +55,33 @@ describe('@cf/scene — universe composition from the ported domain', () => {
   });
 });
 
+describe('@cf/scene — galaxy composition (the Renderer cell convention, verified)', () => {
+  it('★ the home galaxy has a real star field, and the black hole KEEPS its void', async () => {
+    const { galaxyScene, GR } = await import('@cf/scene');
+    const g = galaxyScene(999);
+    expect(g.stars.length).toBeGreaterThan(500);
+    for (const s of g.stars) {
+      const rad = Math.hypot(s.x, s.y);
+      /* the rad<GR gate is on the CELL CENTER; stars scatter within their
+         42px cell, so the disc edge is soft by up to a cell diagonal —
+         source truth, first asserted too strictly */
+      expect(rad, 'star outside the soft disc edge').toBeLessThan(GR + 42);
+      expect(rad, 'star inside the supermassive black hole void — the astronomy that fooled the first scan').toBeGreaterThanOrEqual(34);
+    }
+    /* deterministic: the field is the same universe every time */
+    const h = g.stars.reduce((a, s) => (a * 31 + s.seed) >>> 0, 0);
+    expect(g.stars.length).toBe(galaxyScene(999).stars.length);
+    expect(galaxyScene(999).stars.reduce((a, s) => (a * 31 + s.seed) >>> 0, 0)).toBe(h);
+  });
+  it('the viewport window clamps to the halo exactly as the Renderer does', async () => {
+    const { galaxyCellWindow, HALO_CELLS, GCELL } = await import('@cf/scene');
+    const w = galaxyCellWindow(-1e9, -1e9, 1e9, 1e9);
+    expect(w).toEqual({ cx0: -HALO_CELLS - 1, cy0: -HALO_CELLS - 1, cx1: HALO_CELLS + 1, cy1: HALO_CELLS + 1 });
+    const t = galaxyCellWindow(0, 0, GCELL * 2 + 1, GCELL - 1);
+    expect(t).toEqual({ cx0: 0, cy0: 0, cx1: 2, cy1: 0 });
+  });
+});
+
 describe('@cf/scene — system composition (the Gate D descent target)', () => {
   it('★ Sol: eight planets Mercury→Neptune in orbit order, Earth seed 133, gas giants ringed/mooned', () => {
     const s = systemScene(SOL_SEED);
