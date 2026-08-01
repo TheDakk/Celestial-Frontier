@@ -9,6 +9,24 @@ or caught by a parity instrument. Status: ☐ proposed (parity preserved today) 
 Companion to `port/DECISIONS.md` (Nick's §23 design calls). Update IN THE SAME BATCH
 as any change that touches an entry.
 
+## Species art — THE MORPHOLOGY PASS (approved by Nick 2026-08-01)
+
+The species-art surface is the one place the verbatim-parity boundary is OPEN, under Nick's
+approval after the full-catalog review (`port/ART_REVIEW_SPECIES_2026-08-01.md` +
+`audits/species-audit-2026-08-01/`). Corrections live in `packages/art/src/speciesoverrides.ts`
+ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
+`port/MORPHOLOGY_PASS.md`. Gate: `npm run speciesaudit` (1,254/1,254 every batch).
+
+- ✔ **D-ART-6 — fungi structural families (wave 1).** The 27 Earth fungi were one mushroom
+  recolored (release blocker). Now: bracket/shelf · puffball · coral · morel · mold · earthstar
+  families, routed by name; true gilled mushrooms fall through verbatim.
+- ✔ **D-ART-7 — microbe morphologies (wave 1).** The 22 microbes were one bubble cluster.
+  Now: tardigrade (with a contrast guarantee) · diatom · radiolarian · ciliate · amoeba.
+- ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
+  contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
+  depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
+  flora → P3 fauna family polish → P4 procedural). Tracked in MORPHOLOGY_PASS.md.
+
 ## Correctness
 
 - ☐ **D-9i — string `maxGen` poisoning.** `_sanitizeSavedGenome` clamps

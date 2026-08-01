@@ -686,6 +686,21 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ THE MORPHOLOGY PASS — WAVE 1 LANDED (2026-08-01, batch 20 — Nick: "go the whole
+##   slate, it all begins with the art"). The plan is port/MORPHOLOGY_PASS.md (the cold-start
+##   guide). ARCHITECTURE: corrections live in packages/art/src/speciesoverrides.ts ATOP the
+##   verbatim engine — speciesPortrait consults it first by _earthName (curly-apostrophe
+##   normalized, catching the Lion’s-Mane mojibake), unmatched species stay BYTE-VERBATIM
+##   so the hdart lift stays pristine + re-liftable. Palette read exactly as the engine does
+##   → bodies, not recolors. WAVE 1 broke the two mono-templates Nick flagged as blockers:
+##   FUNGI now bracket/shelf/puffball/coral/morel/mold/earthstar families (Black Truffle =
+##   round ball, Turkey Tail = shelves on wood, Coral/Lion’s-Mane/Cordyceps branch, Morel
+##   honeycombed, Mold/Yeast fuzzy) with true gilled mushrooms falling through; MICROBES now
+##   tardigrade (contrast-guaranteed amber water bear)/diatom/radiolarian/ciliate/amoeba.
+##   D-ART-6 + D-ART-7 in DEVIATIONS. PROOF: speciesaudit 1,254/1,254 painted 0 failures
+##   (parity held) · the fungi/microbe contact sheets are before/after · vitest 22/220 · tsc
+##   clean · slicesmoke PASS. REMAINING WAVES tracked in MORPHOLOGY_PASS.md (P1 dupes/manifest
+##   → P2 fauna specialists/iconic flora → P3 fauna family polish → P4 procedural depth).
 ##   ★★★ THE SPECIES ART REVIEW IS IN (2026-08-01, batch 19): three independent
 ##   review agents over the FULL-SIZE exports → port/ART_REVIEW_SPECIES_2026-08-01.md.
 ##   Headline: the painterly language is coherent and the best pieces prove the engine

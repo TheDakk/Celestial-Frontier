@@ -3,6 +3,7 @@
    2249-2308 incl. the CF-RR-006 device-following cache budget and the
    CF16-005 portrait/thumb SPLIT (the ~150MB pinning fix). Browser-only. */
 import { hdPortraitFauna, hdPortraitFlora, hdPortraitFungi, hdPortraitMicrobe } from './hdart.verbatim.js';
+import { resolveOverride } from './speciesoverrides.js';
 
 const speciesArtCache = new Map<string, string>();
 function _artCacheCap(): number {
@@ -11,11 +12,15 @@ function _artCacheCap(): number {
 try { window.addEventListener('pagehide', () => { try { speciesArtCache.clear(); } catch { /* verbatim guard */ } }); } catch { /* non-window */ }
 
 export function speciesPortrait(g: Record<string, unknown>): string {
-  const key = g.seed + '_' + (g.gen || 0) + '_' + g.kingdom + (g.apex ? '_A' : '') + (g.par ? '_P' : '');
+  /* THE MORPHOLOGY PASS: a name-keyed override wins first; the key folds in
+     _earthName so a corrected species caches distinctly from its fallback */
+  const nm = (g as { _earthName?: string })._earthName || '';
+  const key = g.seed + '_' + (g.gen || 0) + '_' + g.kingdom + (g.apex ? '_A' : '') + (g.par ? '_P' : '') + (nm ? '_' + nm : '');
   if (speciesArtCache.has(key)) { const u = speciesArtCache.get(key)!; speciesArtCache.delete(key); speciesArtCache.set(key, u); return u; }
-  const url = g.kingdom === 'fauna' ? hdPortraitFauna(g)
-    : (g.kingdom === 'flora' ? hdPortraitFlora(g)
-      : (g.kingdom === 'fungi' ? hdPortraitFungi(g) : hdPortraitMicrobe(g)));
+  const url = resolveOverride(g)   /* corrected morphology, or null → verbatim engine (parity for the untouched) */
+    ?? (g.kingdom === 'fauna' ? hdPortraitFauna(g)
+      : (g.kingdom === 'flora' ? hdPortraitFlora(g)
+        : (g.kingdom === 'fungi' ? hdPortraitFungi(g) : hdPortraitMicrobe(g))));
   if (speciesArtCache.size >= _artCacheCap()) { const k = speciesArtCache.keys().next().value as string; speciesArtCache.delete(k); }
   speciesArtCache.set(key, url);
   return url;
