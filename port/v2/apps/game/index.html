@@ -107,16 +107,23 @@
       background: rgba(14, 22, 40, 0.88); color: #cfe0f4; cursor: pointer;
       font: 12px system-ui, sans-serif; }
     #raillft button.on { background: #1d3a5e; border-color: #caa24f; }
+    #railrgt { position: fixed; right: 12px; top: calc(env(safe-area-inset-top, 0px) + 108px);
+      z-index: 20; display: none; flex-direction: column; gap: 8px; align-items: flex-end; }
+    #railrgt button { display: flex; align-items: center; gap: 8px; min-height: 44px;
+      padding: 6px 16px; border-radius: 999px; border: 1px solid #2a3c5e;
+      background: rgba(14, 22, 40, 0.88); color: #cfe0f4; cursor: pointer;
+      font: 12px system-ui, sans-serif; }
+    #railrgt button.on { background: #1d3a5e; border-color: #caa24f; }
     @media (min-width: 901px) {
       #dock { left: auto; right: 14px; transform: none; }
-      #dock #dockcodex { display: none; }   /* the desktop home for codex is the rail */
-      #raillft { display: flex; }
+      #dock #dockcodex, #dock #dockrecords { display: none; }   /* rails own them on desktop */
+      #raillft, #railrgt { display: flex; }
     }
 
     /* ---- rail panels (the one-panel law lives in panels.ts) ---- */
     .panel { position: fixed; top: calc(var(--topbar-h) + 6px); left: 8px;
       bottom: calc(env(safe-area-inset-bottom, 0px) + 76px);
-      width: min(360px, 92vw); overflow: auto; z-index: 16;
+      width: min(360px, 92vw); overflow: auto; z-index: 22;   /* over chips + rails; the dock stays clear below */
       border-radius: 12px; padding: 10px 14px 14px; box-sizing: border-box; }
     .panel h3 { margin: 2px 0 10px; font-size: 15px; color: #f4f8ff; }
     .panel .row { display: flex; align-items: center; gap: 10px; margin: 8px 0;
@@ -149,15 +156,20 @@
   <nav id="raillft" aria-label="rail">
     <button id="railcodex" aria-label="Compendium">📘 Compendium</button>
   </nav>
+  <nav id="railrgt" aria-label="right rail">
+    <button id="railrecords" aria-label="Records">📜 Records</button>
+  </nav>
   <nav id="dock" aria-label="dock">
     <button id="docksurvey" aria-label="survey card"><span class="ico">🔭</span>survey</button>
     <button id="dockcodex" aria-label="Compendium"><span class="ico">📘</span>codex</button>
+    <button id="dockrecords" aria-label="Records"><span class="ico">📜</span>records</button>
     <button id="dockcharts" aria-label="star charts"><span class="ico">📈</span>charts</button>
     <button id="docksets" aria-label="settings"><span class="ico">⚙</span>settings</button>
     <button id="docksave" aria-label="save import"><span class="ico">📥</span>save</button>
   </nav>
   <aside id="setpanel" class="glass panel" aria-label="Settings"></aside>
   <aside id="codexpanel" class="glass panel" aria-label="Compendium"></aside>
+  <aside id="recpanel" class="glass panel" aria-label="Records"></aside>
   <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
