@@ -671,11 +671,27 @@
 ##   Nick's replay (likely a stale-screenshot artifact).
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS (21 asserted behaviors) ·
 ##   perf painted 1,380ms @4× · main.js untouched.
-##   ▶ NEXT: Nick replays + fleet UI pass scores cleanliness · encounter surfaces
-##   over the portrait engine · the Phase-5 training lessons · raritySting ·
-##   codex virtualization · #11 verify.
+##   ✔★★★ THE ENTIRE EARTH CATALOG + THE PROCEDURAL SPREAD, PAINTED (2026-08-01,
+##   batch 18 — Nick: "get to the Earth catalog and procedural generation part"):
+##   ★ 1,254 / 1,254 PAINTED, ZERO FAILURES — the FULL Earth roster (631 fauna ·
+##   334 flora · 27 fungi · 22 microbes = 1,014 named species via _EARTH_NAMES +
+##   makeGenome + _earthName overrides, the hdart module's own _earthArt resolving
+##   module-locally) PLUS a 240-portrait procedural spread (4 kingdoms × 3 heats ×
+##   20 seeds) — all through the VERBATIM engine in a real browser. This is the
+##   game's own "1,010 rendered clean" render-audit gate, PORTED AND EXCEEDED.
+##   · `npm run speciesaudit` (audit.html + src/audit.ts, a second vite page +
+##   tools/speciesaudit.mjs headless driver): counts, failures BY NAME, and FIVE
+##   CONTACT SHEETS baked for the art verdict (smoke/sheet-earth-{fauna,flora,
+##   fungi,microbe}.png + sheet-procedural.png — the fungi sheet alone: Chanterelle
+##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
+##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
+##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ▶ NEXT: Nick's art verdict over the five sheets (the Phase 5 quality gate
+##   wants THREE radically different procedural archetypes judged) · encounter
+##   surfaces · the Phase-5 training lessons · raritySting · codex virtualization ·
+##   evolveGenome epoch sweep in the audit (aged forms) · #11 verify.
 ##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone ·
-##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
+##   the five sheets + proof-sheet.png + listen · recruit the 12-24.
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.

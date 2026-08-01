@@ -3,3 +3,4 @@
    installCaptureHooks() (or install real app implementations) BEFORE use. */
 export * from './descriptors.verbatim.js';
 export { installCaptureHooks, CAPTURE_THUMB } from './apphooks.js';
+export { _EARTH_NAMES } from './apphooks.verbatim.js';
