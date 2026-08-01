@@ -18,7 +18,6 @@
    biome vista surfaces (Phase 6), living portraits (Phase 5). */
 import { Application, Container, Graphics, Sprite, Texture, Text, extensions, CullerPlugin } from 'pixi.js';
 import {
-  speciesPortrait, speciesThumb,
   galSpriteFor, decoSprite, getPlanetSprite, starSprite,
   _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr,
   _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr,
@@ -53,6 +52,20 @@ import {
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
 installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt fully replaces the hooks */
+/* THE PORTRAIT ENGINE IS A LAZY CHUNK: 380KB of hdart stays off the boot
+   path; the first Compendium/planetside view kicks the load and refills
+   itself when the painters arrive (idle-prefetched after boot). */
+type SArt = { speciesPortrait: (g: Record<string, unknown>) => string; speciesThumb: (g: Record<string, unknown>) => string };
+let SA: SArt | null = null;
+let _saKicked = false;
+function ensureSA(onReady: () => void): boolean {
+  if (SA) return true;
+  if (!_saKicked) {
+    _saKicked = true;
+    void import('@cf/art/species').then((mod) => { SA = mod as unknown as SArt; onReady(); }).catch(() => { _saKicked = false; });
+  }
+  return false;
+}
 /* app-state seams the VERBATIM descriptor code reads as globals (D-ST in
    DEVIATIONS — describePick reads `st`/`customNames` inside a [domain]
    module; the port passes state explicitly when Phase 4 rebuilds the card
@@ -218,7 +231,8 @@ function fillSettings(): void {
     [[-1, 'Auto'], [0, 'Full'], [1, 'Reduced']].map(([v, t]) =>
       `<button data-motion="${v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
     '</span></div>' +
-    `<div class="row"><label>Panel tint</label><input id="setglass" type="range" min="40" max="98" value="${Math.round(save.glassTint * 100)}"></div>`);
+    `<div class="row"><label>Panel tint</label><input id="setglass" type="range" min="40" max="98" value="${Math.round(save.glassTint * 100)}"></div>` +
+    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>`);
   const el = document.getElementById('setpanel')!;
   el.querySelector('#setsnd')!.addEventListener('click', () => { save.sndOn = !save.sndOn; fillSettings(); void persistView(); });
   el.querySelector('#setvol')!.addEventListener('input', (e) => {
@@ -235,6 +249,12 @@ function fillSettings(): void {
   for (const b of el.querySelectorAll('[data-motion]')) b.addEventListener('click', () => {
     save.motionMode = +(b as HTMLElement).dataset.motion!;
     fillSettings(); void persistView();
+  });
+  el.querySelector('#setrestart')!.addEventListener('click', () => {
+    /* the game's promise: Settings can restart the lessons any time */
+    save.tutDone = false;
+    void persistView();
+    location.reload();
   });
   el.querySelector('#setglass')!.addEventListener('input', (e) => {
     save.glassTint = (+(e.target as HTMLInputElement).value) / 100;
@@ -257,7 +277,8 @@ function fillCodex(filter?: string): void {
       ? `<div class="empty">${f ? 'Nothing matches — the search also takes CF1 share codes.' : 'No species yet — the Compendium fills as you discover life.'}</div>`
       : rows.map(({ e, i }) => {
         let th = '';
-        try { th = speciesThumb(e.g as never); } catch { /* text row still reads */ }
+        if (SA) { try { th = SA.speciesThumb(e.g as never); } catch { /* text row still reads */ } }
+        else ensureSA(() => { if (openPanelId() === 'codex') fillCodex(filter); });
         return `<div class="centry" data-sel="codex-entry" data-ci="${i}" style="cursor:pointer;display:flex;gap:10px;align-items:center">` +
           (th ? `<img src="${th}" alt="" style="width:44px;height:44px;border-radius:8px;border:1px solid #22304a;background:#0b1220;flex:0 0 44px">` : '') +
           `<span style="min-width:0"><b>${esc(e.name)}</b> <span class="sub">· ${esc(e.kind)}${e.tier != null ? ' · tier ' + e.tier : ''}${e.hybrid ? ' · hybrid' : ''}</span><div class="sub">${esc(e.realm)}${e.from ? ' — ' + esc(e.from) : ''}</div></span></div>`;
@@ -280,7 +301,10 @@ function fillCodexDetail(idx: number): void {
     const mx = Math.max(1, ...KEYS.map((k) => st[k] || 0));
     const names = STAT_NAMES as readonly string[], hues = STAT_HUES as readonly string[];
     let portrait = '';
-    try { portrait = speciesPortrait(e.g as never); } catch { /* a genome the painter cannot dress — the card still reads */ }
+    const idx0 = idx;
+    if (ensureSA(() => { if (openPanelId() === 'codex') fillCodexDetail(idx0); })) {
+      try { portrait = SA!.speciesPortrait(e.g as never); } catch { /* a genome the painter cannot dress — the card still reads */ }
+    }
     body =
       (portrait ? `<img data-sel="detail-portrait" src="${portrait}" alt="" style="width:100%;border-radius:10px;border:1px solid #22304a;margin:2px 0 8px;background:#0b1220">` : '') +
       `<div style="margin:4px 0 8px"><b style="font-size:16px;color:#f4f8ff">${esc(e.name)}</b>` +
@@ -1612,7 +1636,8 @@ function fillPlanetside(p: PlanetNode, starSeed: number): void {
   sideEl.innerHTML = '<div style="font-size:10.5px;letter-spacing:0.06em;color:#8fa3c4;margin:0 0 6px">PLANETSIDE — the ground survey</div>' +
     roster.map((g) => {
       let th = '';
-      try { th = speciesThumb(g as never); } catch { /* text chip still reads */ }
+      if (SA) { try { th = SA.speciesThumb(g as never); } catch { /* text chip still reads */ } }
+      else if (nav.star) { const p0 = p, s0 = starSeed; ensureSA(() => { if (nav.mode === 'surface') fillPlanetside(p0, s0); }); }
       let nm = String((g as { _earthName?: string })._earthName || '');
       if (!nm) { try { nm = String((describeSpecies(g as never) as { name?: string }).name || ''); } catch { nm = 'specimen'; } }
       return '<span data-sel="planetside-sp" style="display:inline-block;text-align:center;margin-right:8px;vertical-align:top">' +
@@ -1812,6 +1837,7 @@ async function loadSave(): Promise<void> {
   document.getElementById('dockcharts')!.classList.toggle('on', save.chartsOn);
   applyGlass();
   syncTopbarH();
+  setTimeout(() => ensureSA(() => { /* idle prefetch — warm before first use */ }), 3000);
   initTraining({
     explorerName: () => save.explorerName,
     isDone: () => save.tutDone,

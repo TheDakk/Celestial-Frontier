@@ -659,10 +659,21 @@
 ##   everywhere (near-transparent bodies, full radius, 34-36px heights).
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS (20 asserted behaviors) ·
 ##   proofsheet regenerated · main.js untouched.
+##   ✔★★ THE PAYLOAD SPLIT + RESTART TRAINING (2026-08-01, batch 17): · THE PORTRAIT
+##   ENGINE IS A LAZY CHUNK — @cf/art grew a './species' subpath; hdart's 380KB
+##   (164KB chunk / 49KB gzip) is OFF THE BOOT PATH, idle-prefetched 3s after boot;
+##   Compendium/planetside REFILL THEMSELVES when the painters arrive (no blank
+##   waits, text renders first — the game's own instant-lo→async-hi pattern). Main
+##   chunk 373KB. · SETTINGS → FIELD TRAINING → RESTART: the game's promise
+##   ("Settings › Gameplay can restart the 21 lessons any time") — tutDone=false +
+##   persist + reload; smoke asserts the control exists (pressing = the fresh-boot
+##   training flow, already the drill's own leg). · Critique #11 stays queued for
+##   Nick's replay (likely a stale-screenshot artifact).
+##   Gates: vitest 22/220 · tsc clean · smoke PASS (21 asserted behaviors) ·
+##   perf painted 1,380ms @4× · main.js untouched.
 ##   ▶ NEXT: Nick replays + fleet UI pass scores cleanliness · encounter surfaces
-##   over the portrait engine · Phase-5 training lessons · Settings "Restart
-##   training" · raritySting · hdart lazy-load · codex virtualization ·
-##   settings ghost-rows check (critique #11 — verify it wasn't a stale screenshot).
+##   over the portrait engine · the Phase-5 training lessons · raritySting ·
+##   codex virtualization · #11 verify.
 ##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone ·
 ##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root

@@ -5,7 +5,8 @@
   "type": "module",
   "description": "Painterly canvas art, AUTO-LIFTED verbatim (GalaxyArt first). ⚠ BROWSER-ONLY: sprites bake at module load via document.createElement('canvas') — never import from node/vitest.",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./species": "./src/speciesart.ts"
   },
   "dependencies": {
     "@cf/domain-rand": "*",

@@ -238,16 +238,18 @@ try {
     const b = st().panelOpen;
     const setsHidden = document.getElementById('setpanel').style.display === 'none';
     document.getElementById('docksets').click();
+    const rst = !!document.getElementById('setrestart');
     const vol = document.getElementById('setvol');
     vol.value = '30'; vol.dispatchEvent(new Event('input'));
     const v = st().sfxVol;
     document.querySelector('#setpanel [data-pnx]').click();
     const c = st().panelOpen;
-    return { a, b, setsHidden, v, c }; })()`);
+    return { a, b, setsHidden, v, c, rst }; })()`);
   if (law.a !== 'set') fails.push('settings panel did not open: ' + JSON.stringify(law.a));
   if (law.b !== 'codex' || !law.setsHidden) fails.push('ONE-PANEL LAW BROKEN — opening codex left settings up: ' + JSON.stringify(law));
   if (Math.abs(law.v - 0.3) > 1e-9) fails.push('volume slider did not drive save.sfxVol: ' + JSON.stringify(law.v));
   if (law.c !== null) fails.push('the corner ✕ did not close the panel: ' + JSON.stringify(law.c));
+  if (!law.rst) fails.push('Settings lost the Restart-training control (the game promise)');
   /* FOCUS RESTORATION: closing returns focus to the opener button */
   const focusBack = await evalIn(`(()=>{ const b=document.getElementById('docksets');
     b.focus(); b.click();
