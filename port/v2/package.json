@@ -15,7 +15,8 @@
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "smoke": "node tools/slicesmoke.mjs"
+    "smoke": "node tools/slicesmoke.mjs",
+    "proofsheet": "node tools/proofsheet.mjs"
   },
   "devDependencies": {
     "@types/node": "26.1.2",
