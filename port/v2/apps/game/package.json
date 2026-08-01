@@ -15,7 +15,11 @@
     "@cf/persistence": "*",
     "@cf/domain-descriptors": "*",
     "@cf/domain-worldconfig": "*",
-    "@cf/art": "*"
+    "@cf/art": "*",
+    "@cf/audio": "*",
+    "@cf/domain-progression": "*",
+    "@cf/domain-worldgen": "*",
+    "@cf/domain-rand": "*"
   },
   "devDependencies": {
     "vite": "8.2.0"

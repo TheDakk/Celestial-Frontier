@@ -321,14 +321,39 @@
 ##   reload · savedView.type='planet' · essence numeric) — negative-controlled BOTH ways
 ##   (landed push disabled → named FAIL → restored → PASS). Gates: vitest 22 files/216 ·
 ##   tsc root+app clean · smoke PASS · main.js/html untouched.
-##   ▶ NEXT IN PHASE 3/4: wormhole travel + charter/Ascent gating on dives (needs
-##   progression wiring) · supernova sites/comets/visitor (COSMIC_EPOCH wiring) · quasar
-##   card via describePick's quasar branch · surface-mode biome vista (Phase 6 scope) ·
-##   HD texture rebuild thrash check on long zoom sessions · consider SessionRNG wiring
-##   start (D-RNG) once an outcome roll exists in the slice.
+##   ✔★★★ SOUND · SURVEY-FIRST · THE UNIVERSE STREAMS (2026-08-01 batch): production-value
+##   pass, everything through the shipped recipes. · @cf/audio IS BORN (tools/lift-audio.mjs
+##   — playWhoosh/playSurveyPing/playRaritySting + the sfxOut shared-gain bus, VERBATIM;
+##   initAudio installs the ac/sfxVol seam over the REAL save's sndOn/sfxVol; ⚠ SCOPE LAW:
+##   §15 voices/ambience/mixer stay GATED behind Nick's listening test — this package
+##   deliberately carries only the shipped UI stings). Whoosh on every travel/planetfall,
+##   sonar ping on every survey lock. · SURVEY-FIRST INTERACTION (the game's own flow):
+##   one tap = the survey card (galaxy/quasar/star/deco/wormhole/supernova/protostar via
+##   describePick), a quick second tap dives — no more silent teleports; smoke asserts a
+##   single tap does NOT descend (negative-controlled: forced single-tap descent → named
+##   FAIL). · THE UNIVERSE STREAMS: the window builds around the CAMERA (UCELL crossings
+##   rebuild), so panning — or riding the WORMHOLE (verbatim seeded jump, lensing sprite,
+##   card; reach clamp = progression's, recorded) — keeps resolving new galaxies. ·
+##   COSMIC_EPOCH RUNS FOR REAL: @cf/domain-progression's clock (base from the save,
+##   advanced by PLAY seconds only — harvestclock-safe), global installed for ecology's
+##   guarded reads, EPOCH_BASE accumulates through exportSaveV2. Supernova sites render
+##   epoch-anchored (snSiteSprite/remnant cores/protostar births, all pickable). ·
+##   EXPLOIT PASS: showSurvey's esc() hardened for ATTRIBUTE context (quotes) — defense
+##   in depth; cleanName upstream already strips quotes. · PERF: CullerPlugin + cullable
+##   on stars/deco/fine (offscreen sprites skip render) · rebuildSystemHD destroys the
+##   outgoing texture tier (no GPU creep on long zoom sessions). · Art extras = 18
+##   painters (+_wormSpr, snSiteSprite, _bhDiscSpr, _protoSpr).
+##   Gates: vitest 22/216 · tsc root+app clean · smoke PASS (survey-first + epoch
+##   asserts added) · main.js/html untouched.
+##   ▶ NEXT IN PHASE 3/4: charter/Ascent reach gating (progression wiring — wormhole
+##   clamp + dive permissions) · comets/visitor in system view · playRaritySting wiring
+##   (first-discovery flow, Phase 4 scope) · surface-mode biome vista (Phase 6) ·
+##   SessionRNG wiring start (D-RNG) once an outcome roll exists in the slice ·
+##   consider a quick perf profile of the galaxy rebuild on a throttled CPU.
 ##   ⛔ Nick: veteran save (Gate C — drop the blob in and the slice will LOAD it) · phone
-##   leg (pinch is IN — judge it) · art verdict (cd port/v2/apps/game && npx vite dev) ·
-##   listening test.
+##   leg (pinch is IN — judge it) · art verdict + now a SOUND verdict (headphones:
+##   cd port/v2/apps/game && npx vite dev — tap things, dive, listen) · listening test
+##   (still the gate for ALL further audio scope).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.

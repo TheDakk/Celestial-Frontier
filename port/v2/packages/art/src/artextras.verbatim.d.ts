@@ -13,3 +13,7 @@ export function _beamSpr(): HTMLCanvasElement;
 export function _nsCoreSpr(): HTMLCanvasElement;
 export function _bhSpr(): HTMLCanvasElement;
 export function _cloudSpr(P: Record<string, unknown>): HTMLCanvasElement;
+export function _wormSpr(): HTMLCanvasElement;
+export function snSiteSprite(seed: number): HTMLCanvasElement;
+export function _bhDiscSpr(): HTMLCanvasElement;
+export function _protoSpr(): HTMLCanvasElement;

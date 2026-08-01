@@ -9,6 +9,7 @@
     "packages/persistence",
     "packages/scene",
     "packages/art",
+    "packages/audio",
     "apps/*"
   ],
   "scripts": {

@@ -109,14 +109,24 @@ try {
   const shot1 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-universe.png'), Buffer.from(shot1.data, 'base64'));
 
-  /* 3. descend: click the Milky Way (world 90,-60 → screen center + offset) */
+  /* 3. SURVEY-FIRST (the game's flow): ONE tap on the Milky Way opens its
+     survey card — it must NOT teleport; a quick second tap dives. */
   const cx = 1280 / 2 + 90, cy = 800 / 2 - 60;
-  for (const type of ['mousePressed', 'mouseReleased']) {
-    await send('Input.dispatchMouseEvent', { type, x: cx, y: cy, button: 'left', clickCount: 1 }, sess);
-  }
+  const click = async () => {
+    for (const type of ['mousePressed', 'mouseReleased']) {
+      await send('Input.dispatchMouseEvent', { type, x: cx, y: cy, button: 'left', clickCount: 1 }, sess);
+    }
+  };
+  await click();
+  await sleep(700);
+  const st1 = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (st1.mode !== 'universe') fails.push('a SINGLE tap descended (survey-first broken): ' + st1.mode);
+  if (!st1.cardOpen || !st1.cardTitle) fails.push('single tap did not open the galaxy survey card: ' + JSON.stringify({ open: st1.cardOpen, title: st1.cardTitle }));
+  if (typeof st1.epoch !== 'number') fails.push('COSMIC_EPOCH clock not running: ' + JSON.stringify(st1.epoch));
+  await click(); await click();   /* the quick double-tap = dive */
   await sleep(2500);   /* per-seed 512px painterly bake + star field */
   const hud2 = await evalIn(`(document.getElementById('hud')||{}).innerText || ''`);
-  if (!/galaxy · gal 999/.test(hud2)) fails.push('descent into the Milky Way did not happen: ' + JSON.stringify(hud2));
+  if (!/galaxy · gal 999/.test(hud2)) fails.push('double-tap descent into the Milky Way did not happen: ' + JSON.stringify(hud2));
   const shot2 = await send('Page.captureScreenshot', { format: 'png' }, sess);
   fs.writeFileSync(path.join(OUT, 'slice-galaxy.png'), Buffer.from(shot2.data, 'base64'));
 
@@ -220,6 +230,6 @@ try {
 }
 
 if (fails.length) { console.error('SLICE SMOKE: FAIL\n  - ' + fails.join('\n  - ')); process.exit(1); }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · Milky Way · Sol · LANDED ON EARTH with the survey card speaking (Spectral class/Life/Civilization) · THE REAL SAVE SURVIVED RELOAD (importSaveV2 ⇄ exportSaveV2 through IndexedDB; Earth in the landed set) · ZOOM LADDER surface→system→galaxy→universe→galaxy→Sol (with the empty-space negative control) · Sun marker + fine stars at depth · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · SURVEY-FIRST (one tap = the galaxy card + ping, double-tap dives; COSMIC_EPOCH ticking) · Milky Way · Sol · LANDED ON EARTH with the survey card speaking (Spectral class/Life/Civilization) · THE REAL SAVE SURVIVED RELOAD (importSaveV2 ⇄ exportSaveV2 through IndexedDB; Earth in the landed set) · ZOOM LADDER surface→system→galaxy→universe→galaxy→Sol (with the empty-space negative control) · Sun marker + fine stars at depth · zero console errors.');
 console.log('screenshots: apps/game/smoke/ slice-universe · slice-galaxy · slice-sol · slice-earth · slice-solmark');
 process.exit(0);

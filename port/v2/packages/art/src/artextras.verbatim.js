@@ -1,6 +1,6 @@
 /* AUTO-LIFTED VERBATIM renderer-section painters from main.js (v1.8.9):
-   _starSpr (3799-3799) · starSprite (3800-3828) · _decoSpr (3833-3833) · decoSprite (3834-4008) · _quasarSprC (4804-4804) · _quasarSpr (4805-4878) · _rockSprites (4353-4353) · _rockSet (4354-4381) · _ringSprCache (4386-4386) · _ringSprite (4387-4446) · _starSurfCache (4454-4454) · _starSurf (4455-4516) · _moonSprs (4517-4517) · _moonSpr (4518-4697) · _dwarfSprs (4698-4698) · _dwarfSpr (4699-4711) · _rogueSprC (4755-4755) · _rogueSpr (4756-4766) · _beamSprC (4767-4767) · _beamSpr (4768-4779) · _nsCoreSprC (4780-4780) · _nsCoreSpr (4781-4791) · _bhSprC (4910-4910) · _bhSpr (4911-4991) · _cloudSprCache (4883-4883) · _cloudSpr (4884-4909).
-   body sha256/16 aa06054db71ba330. ⚠ DO NOT EDIT. Regenerate: node tools/lift-art-extras.mjs
+   _starSpr (3799-3799) · starSprite (3800-3828) · _decoSpr (3833-3833) · decoSprite (3834-4008) · _quasarSprC (4804-4804) · _quasarSpr (4805-4878) · _rockSprites (4353-4353) · _rockSet (4354-4381) · _ringSprCache (4386-4386) · _ringSprite (4387-4446) · _starSurfCache (4454-4454) · _starSurf (4455-4516) · _moonSprs (4517-4517) · _moonSpr (4518-4697) · _dwarfSprs (4698-4698) · _dwarfSpr (4699-4711) · _rogueSprC (4755-4755) · _rogueSpr (4756-4766) · _beamSprC (4767-4767) · _beamSpr (4768-4779) · _nsCoreSprC (4780-4780) · _nsCoreSpr (4781-4791) · _bhSprC (4910-4910) · _bhSpr (4911-4991) · _cloudSprCache (4883-4883) · _cloudSpr (4884-4909) · _wormSprC (4992-4992) · _wormSpr (4993-5051) · _snSprCache (4013-4013) · snSiteSprite (4014-4043) · _bhDisc (4044-4044) · _bhDiscSpr (4045-4053) · _proto (4054-4054) · _protoSpr (4055-4063).
+   body sha256/16 afed95cd97f841af. ⚠ DO NOT EDIT. Regenerate: node tools/lift-art-extras.mjs
    Browser-only (canvas). */
 import { mulberry32, clamp, makeNoise, TAU, hashInt } from '@cf/domain-rand';
 
@@ -779,4 +779,115 @@ function _cloudSpr(P){
   _cloudSprCache.set(P.seed, cv);
   return sp=cv;
 }
-export { decoSprite, _quasarSpr, starSprite, _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr, _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr };
+let _wormSprC=null;
+function _wormSpr(){
+  /* the wormhole as gravitational lensing: a dark throat inside a warped
+     Einstein ring of smeared violet/cyan starlight (was: two stroked
+     ellipses — chart chrome on a physical landmark) */
+  if(_wormSprC) return _wormSprC;
+  /* 192 master (2026-07-24 deep-space crispness) — the throat zoomed-in went
+     soft at 96; blob radii scale with the master (U) */
+  const S=192, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2, r=mulberry32(0x3072), U=S/96;
+  const RX=S*0.30, RY=S*0.135;
+  /* wave-2 rework (Gold Master): CONTINUOUS lensing — tangential smeared arcs
+     along the Einstein ellipse, not bead blobs */
+  g.globalCompositeOperation='lighter';
+  g.lineCap='round';
+  for(let i=0;i<70;i++){
+    const a0=r()*TAU, alen=0.25+r()*0.85;
+    const rx=RX*(0.92+r()*0.22), ry=RY*(0.92+r()*0.22);
+    const col=r()<0.5?'190,150,255':'120,220,255';
+    g.strokeStyle='rgba('+col+','+(0.05+r()*0.14).toFixed(3)+')';
+    g.lineWidth=(0.8+r()*3.0)*U;
+    g.beginPath();
+    for(let t=0;t<=14;t++){ const a=a0+alen*t/14;
+      const px=C+Math.cos(a)*rx, py=C+Math.sin(a)*ry;
+      if(t) g.lineTo(px,py); else g.moveTo(px,py); }
+    g.stroke();
+  }
+  /* WARPED BACKGROUND STARS: trails bend around the throat, star at the head */
+  for(let i=0;i<26;i++){
+    const a0=r()*TAU, d=0.55+r()*0.75, bend=0.10+r()*0.22;
+    const rx=RX*d*1.5, ry=RY*d*1.9+S*0.02;
+    g.strokeStyle='rgba(210,225,255,'+(0.10+r()*0.20).toFixed(3)+')';
+    g.lineWidth=(0.5+r()*0.9)*U;
+    g.beginPath();
+    for(let t=0;t<=8;t++){ const a=a0+bend*t/8;
+      const px=C+Math.cos(a)*rx, py=C+Math.sin(a)*ry;
+      if(t) g.lineTo(px,py); else g.moveTo(px,py); }
+    g.stroke();
+    g.fillStyle='rgba(230,240,255,'+(0.3+r()*0.4).toFixed(2)+')';
+    g.beginPath(); g.arc(C+Math.cos(a0+bend)*rx, C+Math.sin(a0+bend)*ry, (0.6+r()*0.8)*U, 0, TAU); g.fill();
+  }
+  g.globalCompositeOperation='source-over';
+  /* THE THROAT: opaque deep core, a far-side glimpse (tunnel depth), and a
+     thin doubled rim where grazing light wraps the mouth */
+  const tg2=g.createRadialGradient(C,C,0,C,C,S*0.16);
+  tg2.addColorStop(0,'rgba(4,2,12,1)');
+  tg2.addColorStop(0.75,'rgba(10,6,26,0.92)');
+  tg2.addColorStop(1,'rgba(10,6,26,0)');
+  g.fillStyle=tg2; g.beginPath(); g.arc(C,C,S*0.16,0,TAU); g.fill();
+  g.globalCompositeOperation='lighter';
+  const fs2=g.createRadialGradient(C+S*0.025,C-S*0.012,0,C+S*0.025,C-S*0.012,S*0.05);
+  fs2.addColorStop(0,'rgba(150,200,255,0.30)'); fs2.addColorStop(1,'rgba(150,200,255,0)');
+  g.fillStyle=fs2; g.beginPath(); g.arc(C+S*0.025,C-S*0.012,S*0.05,0,TAU); g.fill();
+  g.strokeStyle='rgba(210,190,255,0.55)'; g.lineWidth=1.1*U;
+  g.beginPath(); g.ellipse(C,C,S*0.135,S*0.115,0,0,TAU); g.stroke();
+  g.strokeStyle='rgba(140,220,255,0.30)'; g.lineWidth=2.2*U;
+  g.beginPath(); g.ellipse(C,C,S*0.145,S*0.125,-0.2,0,TAU); g.stroke();
+  g.globalCompositeOperation='source-over';
+  return _wormSprC=cv;
+}
+const _snSprCache=new Map();
+function snSiteSprite(seed){
+  let sp=_snSprCache.get(seed);
+  if(sp) return sp;
+  if(_snSprCache.size>60) _snSprCache.clear();   /* sites are few; rebuild is cheap */
+  const S=96, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2, r=mulberry32(seed>>>0);
+  g.globalCompositeOperation='lighter';
+  /* the blue breath of shocked gas — small cool wisps, never one disc
+     (a disc reads as a splotch against dark space) */
+  for(let w=0;w<6;w++){
+    const aw=r()*TAU, dw=Math.pow(r(),1.4)*C*0.4;
+    const wx=C+Math.cos(aw)*dw, wy=C+Math.sin(aw)*dw, wr=C*(0.08+r()*0.12);
+    const wg=g.createRadialGradient(wx,wy,0,wx,wy,wr);
+    wg.addColorStop(0,'rgba(120,180,255,'+(0.08+r()*0.08).toFixed(3)+')');
+    wg.addColorStop(1,'rgba(120,180,255,0)');
+    g.fillStyle=wg; g.beginPath(); g.arc(wx,wy,wr,0,TAU); g.fill();
+  }
+  /* the torn shell — warm puffs, uneven, shredding outward */
+  for(let i=0;i<18;i++){
+    const a=r()*TAU, rr=C*(0.52+(r()-0.5)*0.26);
+    const bx=C+Math.cos(a)*rr, by=C+Math.sin(a)*rr, br=C*(0.09+r()*0.15);
+    const hue=14+r()*26;
+    const ng=g.createRadialGradient(bx,by,0,bx,by,br);
+    ng.addColorStop(0,'hsla('+hue+',88%,'+(56+r()*12)+'%,'+(0.10+r()*0.13).toFixed(3)+')');
+    ng.addColorStop(1,'hsla('+hue+',88%,55%,0)');
+    g.fillStyle=ng; g.beginPath(); g.arc(bx,by,br,0,TAU); g.fill();
+  }
+  _snSprCache.set(seed,cv);
+  return cv;
+}
+let _bhDisc=null;
+function _bhDiscSpr(){
+  if(_bhDisc) return _bhDisc;
+  const S=28, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  const ad=g.createRadialGradient(C,C,0,C,C,C);
+  ad.addColorStop(0,'#000'); ad.addColorStop(0.55,'rgba(255,160,60,0.7)'); ad.addColorStop(1,'rgba(255,160,60,0)');
+  g.fillStyle=ad; g.beginPath(); g.arc(C,C,C,0,TAU); g.fill();
+  return (_bhDisc=cv);
+}
+let _proto=null;
+function _protoSpr(){
+  if(_proto) return _proto;
+  const S=24, cv=document.createElement('canvas'); cv.width=cv.height=S;
+  const g=cv.getContext('2d'), C=S/2;
+  const pg=g.createRadialGradient(C,C,0,C,C,C);
+  pg.addColorStop(0,'rgba(255,210,160,1)'); pg.addColorStop(0.5,'rgba(255,150,80,0.6)'); pg.addColorStop(1,'rgba(255,150,80,0)');
+  g.fillStyle=pg; g.beginPath(); g.arc(C,C,C,0,TAU); g.fill();
+  return (_proto=cv);
+}
+export { decoSprite, _quasarSpr, starSprite, _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr, _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr, _wormSpr, snSiteSprite, _bhDiscSpr, _protoSpr };
