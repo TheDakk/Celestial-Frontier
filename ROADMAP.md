@@ -686,6 +686,21 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 3 — FAUNA SPECIALISTS + THE WING (2026-08-01, batch 22).
+##   BLOCKER 4 (life stages): Fly Larvae/Maggot/Caterpillar were drawn as WINGED ADULTS →
+##   now legless segmented grubs; Dragonfly/Damselfly had NO WINGS → now two venated wing
+##   pairs + compound eyes + 6 legs; Springtail wingless w/ furcula; Ladybug/Firefly/Diving
+##   Beetle get real elytra (spots/glow/paddle legs); Fiddler Crab ONE huge claw; Horseshoe
+##   Crab carapace+spine. BLOCKER 6 (specialist bodies): flatfish lie FLAT with BOTH EYES
+##   UPPER (Flounder/Halibut/Sole); Angelfish deep+tall-finned; Lionfish spine fan;
+##   cephalopods get 8 arms + fin skirt (+2 squid tentacles); cetaceans get a HORIZONTAL
+##   FLUKE + per-species dorsal (Blue Whale ≠ Dolphin at last). ★ THE WING — the agents’ #1
+##   systemic (NO bird in 631 had one): faunaBird draws layered coverts + primaries, with
+##   BILL SHAPE and LEG LENGTH as species params (raptor/wader/spoon/huge/flightless);
+##   ⚠ review catch — the leg math kept the body at fixed height so a Flamingo didn’t tower;
+##   body now rides legLen above a fixed ground line. Wave 4 = the quadruped polish (Rhino vs
+##   Hippo, cheetah spots) — right FAMILY today, just under-differentiated. D-ART-10/11/12.
+##   Gates: 1,254/1,254 · 0 fails · 0 dupes · vitest 22/220 · slicesmoke PASS · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 2 — THE FLORA DUPLICATES DIE (2026-08-01, batch 21). ★ ROOT CAUSE
 ##   PROVEN for Blocker 3: the verbatim flora painter’s generic LEAF LADDER is deterministic
 ##   per FORM and the species NAME never reaches it — Acai/Milkweed/Salmonberry have DIFFERENT

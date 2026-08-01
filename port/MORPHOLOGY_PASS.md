@@ -121,3 +121,43 @@ identical pixels. Blocker 3 cannot return silently.
 tsc clean · slicesmoke PASS. `hdart.verbatim.js` STILL UNTOUCHED.
 
 **Ledger:** D-ART-8 (flora name-seeded anti-duplicate) · D-ART-9 (iconic flora bodies).
+
+---
+
+# WAVE 3 — LANDED 2026-08-01 (fauna specialists: life stages, body plans, THE WING)
+
+**Blocker 4 — life-stage + arthropod body plans.** `faunaLarva` (legless segmented grub with
+a dark head capsule — Fly Larvae/Maggot/Caterpillar/Grub were drawn as WINGED ADULTS) ·
+`faunaWingedInsect` (TWO WING PAIRS with venation, long segmented abdomen, compound eyes, six
+thoracic legs; `open` for Dragonfly, folded+slim for Damselfly/Mayfly, Scorpionfly) ·
+`faunaBeetle` (domed elytra + seam; spots for Ladybug, luminous abdomen for Firefly, paddle
+hind legs for Diving Beetle) · `faunaSpringtail` (WINGLESS, compact, with the furcula spring)
+· `faunaFiddler` (ONE dramatically enlarged claw + one small — the whole point) ·
+`faunaHorseshoe` (horseshoe carapace + rigid tail spine).
+
+**Blocker 6 — specialist fish + marine bodies.** `faunaFlatfish` (lying flat, continuous fin
+fringe, BOTH EYES ON THE UPPER SIDE — Flounder/Halibut/Sole) · `faunaAngelfish` (deep
+laterally-compressed body, tall dorsal+anal fins, trailing filaments) · `faunaLionfish`
+(radiating venomous spine fan + bold bands) · `faunaCephalopod` (mantle + lateral fin skirt +
+EIGHT arms, plus two long feeding tentacles for squid) · `faunaCetacean` (long body with a
+HORIZONTAL FLUKE — never a vertical fish tail — blowhole, pectoral flipper, and a per-species
+dorsal: tall for Orca, small for Blue/Humpback/Dolphin, none for Sperm/Right/Gray/Beluga,
+blunt heads where the species has one).
+
+**★ THE WING, AT LAST (the agents' #1 systemic: NO bird in 631 fauna showed one).**
+`faunaBird` draws a real FOLDED WING — three layered covert bands plus six primaries fanning
+to the tail — and takes leg length + bill shape as species parameters: hooked raptor bills
+(Eagle/Harpy/Hawk/Falcon/Vulture/Secretary), long probing bills (Heron/Crane/Stork/Ibis/
+Snipe/Godwit/Albatross), the spoonbill's spatula, huge bills (Pelican/Toucan/Kookaburra/
+Hornbill), stout bills, crests, and flightless posture (Kiwi/Cassowary/Ostrich/Emu/Kakapo).
+⚠ Fixed in review: the leg math had the body at a fixed height so a Flamingo didn't tower —
+the body now rides legLen ABOVE a fixed ground line, so wader vs raptor reads instantly.
+
+**Scope discipline (recorded):** the quadruped mega-template polish (Rhino vs Hippo
+proportions, cheetah spots, Camel's neck) is WAVE 4 — those read as the right animal FAMILY
+today, just under-differentiated, whereas wave 3 fixed species that were categorically wrong.
+
+**Proof:** `speciesaudit` 1,254/1,254 painted · 0 failures · 0 duplicate pairs. Gates: vitest
+22/220 · tsc clean · slicesmoke PASS. `hdart.verbatim.js` STILL UNTOUCHED.
+**Ledger:** D-ART-10 (insect life stages + arthropod plans) · D-ART-11 (specialist fish +
+cephalopod + cetacean bodies) · D-ART-12 (the bird wing + bill/leg species parameters).
