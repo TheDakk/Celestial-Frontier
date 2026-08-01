@@ -686,6 +686,21 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ★★★ THE SPECIES ART REVIEW IS IN (2026-08-01, batch 19): three independent
+##   review agents over the FULL-SIZE exports → port/ART_REVIEW_SPECIES_2026-08-01.md.
+##   Headline: the painterly language is coherent and the best pieces prove the engine
+##   (Elephant/Owl/Chameleon/Scorpion · Sunflower/Fern/Corn/Flytrap); the lever is
+##   PER-SPECIES DIFFERENTIATION, not style. The systemic five (D-ART-1..5, ALL
+##   deviations awaiting Nick): defining-feature guarantees (no bird in 631 has a wing
+##   silhouette; Rhino≈Hippo; Camel 1/5) · pattern/color legibility (no cheetah spots,
+##   grey polar bear) · a contrast floor (dark subjects vanish) · break the three
+##   mono-templates (27 fungi = ONE mushroom recolored; 22 microbes = ONE bubble
+##   cluster — Tardigrade invisible; all flower heads = one daisy) · procedural depth
+##   (heat is palette-only; COLD-FLORA BLUR BUG — likely real code; a flat-vector
+##   conifer violates the HD law). Phase-5 archetype bar: CLEARS (fish/jellyfish/
+##   urchin/metaball-quadruped), carried by fauna. Flora is the best kingdom (~20 true
+##   growth habits). RECONVENE: Nick runs his system over the zips; the two reviews
+##   merge into the approved deviation slate.
 ##   ▶ NEXT: Nick's art verdict over the five sheets (the Phase 5 quality gate
 ##   wants THREE radically different procedural archetypes judged) · encounter
 ##   surfaces · the Phase-5 training lessons · raritySting · codex virtualization ·
