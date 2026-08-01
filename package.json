@@ -16,7 +16,9 @@
     "smoke": "node tools/smoke.js",
     "layout": "node tools/uilayout.js",
     "test": "node tools/validate.js && node tools/smoke.js && node tools/uilayout.js",
-    "deploy": "node tools/deploy.js"
+    "deploy": "node tools/deploy.js",
+    "savefixtures": "node tools/savefixtures.js --check",
+    "savefixtures:capture": "node tools/savefixtures.js --capture"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,2178 @@
+{
+ "_comment": "LOAD-PATH fixtures: curated cfcc_save_v2 inputs (inputs{}) and the observable post-boot state the REAL loadSaveWithRecovery produced (results{}). The TS importer must reproduce results from inputs. Canonical form + FNV rules match codefixtures. NEVER re-capture to make a failing --check pass.",
+ "capturedAt": "2026-08-01T00:44:56.821Z",
+ "capturedAgainst": "v1.8.9",
+ "inputs": {
+  "empty_object": {},
+  "veteran_rich": {
+   "epoch": 12,
+   "at": 1753900000000,
+   "me": "Dakk",
+   "essence": 5000,
+   "shares": 3,
+   "jumps": 41,
+   "anomalies": 2,
+   "anomKey": "k1",
+   "events": 5,
+   "duels": 7,
+   "duelwins": 4,
+   "breeds": 2,
+   "breedwins": 1,
+   "feeds": 9,
+   "feedfails": 1,
+   "harvests": 6,
+   "essenceEarned": 9000,
+   "guardians": 1,
+   "paragons": 0,
+   "mines": 14,
+   "crafts": 3,
+   "minedout": 1,
+   "skims": 2,
+   "cosmics": 1,
+   "landings": 12,
+   "charters": 2,
+   "surveys": 0,
+   "names": [
+    [
+     "p133",
+     "Homeworld"
+    ],
+    [
+     "c1234",
+     "<b>Rex</b>"
+    ],
+    [
+     "s424242",
+     "Sol Prime"
+    ]
+   ],
+   "conq": [
+    [
+     101,
+     {
+      "t": 1753896400000,
+      "tier": 4,
+      "e": 5
+     }
+    ],
+    [
+     102,
+     {
+      "t": 1753892800000,
+      "tier": 2
+     }
+    ],
+    [
+     103,
+     {
+      "t": 1753899940000,
+      "tier": 9,
+      "e": 1000000000
+     }
+    ]
+   ],
+   "cargo": [
+    [
+     "Fe",
+     40
+    ],
+    [
+     "Si",
+     12
+    ]
+   ],
+   "cgx": [
+    [
+     "Fe",
+     5
+    ],
+    [
+     "Si",
+     99
+    ]
+   ],
+   "items": [
+    [
+     "plate",
+     3
+    ],
+    [
+     "lens",
+     1
+    ],
+    [
+     "cell",
+     2
+    ],
+    [
+     "headlamp",
+     1
+    ]
+   ],
+   "eq": {
+    "helmet": "headlamp"
+   },
+   "ea": {
+    "helmet": {
+     "k": "strike",
+     "v": 0.05,
+     "forId": "headlamp"
+    }
+   },
+   "pin": "plate",
+   "ctb": "craft",
+   "seen": [
+    "f1234"
+   ],
+   "jrn": [
+    {
+     "s": 1,
+     "n": "Testling",
+     "w": "Earth",
+     "t": 1753899000000
+    },
+    {
+     "s": 2,
+     "n": "Verdant",
+     "w": "Mars",
+     "t": 1753898000000
+    }
+   ],
+   "minedw": [
+    [
+     201,
+     1753898800000
+    ]
+   ],
+   "mx": [
+    [
+     201,
+     4
+    ]
+   ],
+   "skx": [
+    [
+     424242,
+     2
+    ]
+   ],
+   "bx": [
+    [
+     301,
+     [
+      3,
+      2
+     ]
+    ]
+   ],
+   "tech": [
+    "scan1",
+    "hull1",
+    "nope"
+   ],
+   "setsc": [
+    "kingdoms",
+    "bogus"
+   ],
+   "asc": 2,
+   "ascp": {
+    "land": 3,
+    "scan": 12
+   },
+   "nh": 2,
+   "br": 3,
+   "view": {
+    "type": "planet",
+    "gal": {
+     "x": 90,
+     "y": -60,
+     "size": 14.5,
+     "sp": 4,
+     "tilt": 0.62,
+     "rot": 1.13,
+     "seed": 999,
+     "home": true
+    },
+    "star": {
+     "x": 560,
+     "y": 170,
+     "seed": 424242
+    },
+    "pseed": 133
+   },
+   "pstats": {
+    "vit": 80,
+    "fer": 60,
+    "res": 70,
+    "agi": 50,
+    "ins": 40
+   },
+   "hp": 55,
+   "fs": "fs-lg",
+   "tone": "tone-bright",
+   "font": "font-mono",
+   "snd": 0,
+   "fx": 1,
+   "chart": 1,
+   "shake": 0,
+   "sv": 1,
+   "notif": 1,
+   "tips": 0,
+   "vol": 37,
+   "gt": 55,
+   "rm": 1,
+   "cx": 21,
+   "vce": 0,
+   "cbx": 1,
+   "notifs": [
+    {
+     "id": 1,
+     "tt": "Hello",
+     "ms": "World",
+     "t": 1753899500000,
+     "read": true
+    },
+    {
+     "id": 4,
+     "tt": "Second",
+     "ms": "",
+     "t": 1753899600000,
+     "read": false
+    }
+   ],
+   "surveyed": [
+    "a1",
+    "a2"
+   ],
+   "gals": [
+    999
+   ],
+   "surf": [
+    11,
+    12
+   ],
+   "xpf": [
+    "land:first"
+   ],
+   "sysv": [
+    424242,
+    31337
+   ],
+   "starK": [
+    "G",
+    "M"
+   ],
+   "ptypes": [
+    "terran",
+    "gas"
+   ],
+   "evts": [
+    "e1"
+   ],
+   "evann": [
+    "e1"
+   ],
+   "ach": [
+    "first",
+    "field10",
+    "fake"
+   ],
+   "codex": [
+    {
+     "g": {
+      "seed": 1234,
+      "kingdom": "fauna",
+      "color": 9,
+      "form": 13,
+      "body": 5,
+      "loco": 11,
+      "trait": 7,
+      "size": 4,
+      "diet": 1,
+      "head": 0,
+      "limbs": 1,
+      "skin": 6,
+      "tail": 2,
+      "pattern": 3,
+      "eyes": 0,
+      "behavior": 10,
+      "habitat": 13,
+      "detail": 9,
+      "accent": 9,
+      "temper": 1,
+      "sense": 7,
+      "repro": 6,
+      "life": 0,
+      "metab": 2,
+      "lumin": false,
+      "gen": 0,
+      "heat": 0.5
+     },
+     "f": "Earth",
+     "w": {
+      "type": "planet",
+      "gal": {
+       "x": 90,
+       "y": -60,
+       "size": 14.5,
+       "sp": 4,
+       "tilt": 0.62,
+       "rot": 1.13,
+       "seed": 999,
+       "home": true
+      },
+      "star": {
+       "x": 560,
+       "y": 170,
+       "seed": 424242
+      },
+      "pseed": 133
+     }
+    },
+    {
+     "g": {
+      "seed": 777,
+      "kingdom": "flora",
+      "color": 7,
+      "form": 4,
+      "body": 7,
+      "loco": 11,
+      "trait": 2,
+      "size": 4,
+      "diet": 3,
+      "head": 2,
+      "limbs": 5,
+      "skin": 8,
+      "tail": 4,
+      "pattern": 1,
+      "eyes": 2,
+      "behavior": 6,
+      "habitat": 10,
+      "detail": 4,
+      "accent": 12,
+      "temper": 8,
+      "sense": 4,
+      "repro": 0,
+      "life": 4,
+      "metab": 3,
+      "lumin": false,
+      "gen": 0,
+      "heat": 0.3
+     },
+     "f": "Mars"
+    },
+    {
+     "g": {
+      "seed": 4242,
+      "kingdom": "fauna",
+      "color": 14,
+      "form": 7,
+      "body": 14,
+      "loco": 17,
+      "trait": 2,
+      "size": 9,
+      "diet": 3,
+      "head": 9,
+      "limbs": 2,
+      "skin": 3,
+      "tail": 1,
+      "pattern": 2,
+      "eyes": 3,
+      "behavior": 6,
+      "habitat": 6,
+      "detail": 2,
+      "accent": 13,
+      "temper": 6,
+      "sense": 0,
+      "repro": 3,
+      "life": 2,
+      "metab": 3,
+      "lumin": true,
+      "gen": 3,
+      "heat": 0.6,
+      "parents": [
+       1,
+       2
+      ]
+     },
+     "f": "Kepler"
+    }
+   ],
+   "scout": "nonexistent-id",
+   "chs": [
+    "st-land"
+   ],
+   "chw": 5,
+   "chp": {
+    "st-mine": 2
+   },
+   "chacc": [
+    "st-mine"
+   ],
+   "log": [
+    {
+     "id": "p133",
+     "title": "Earth",
+     "sub": "The cradle",
+     "badge": "Home",
+     "where": {
+      "type": "planet",
+      "gal": {
+       "x": 90,
+       "y": -60,
+       "size": 14.5,
+       "sp": 4,
+       "tilt": 0.62,
+       "rot": 1.13,
+       "seed": 999,
+       "home": true
+      },
+      "star": {
+       "x": 560,
+       "y": 170,
+       "seed": 424242
+      },
+      "pseed": 133
+     },
+     "fav": true,
+     "t": 1753899100000,
+     "thumb": "data:image/png;base64,AAAA"
+    }
+   ],
+   "home": "p133",
+   "land": [
+    133,
+    134
+   ],
+   "cont": [
+    55
+   ],
+   "wvo": [
+    [
+     901,
+     3
+    ],
+    [
+     902,
+     9
+    ]
+   ],
+   "prime": {
+    "stone": {
+     "title": "First Stone",
+     "sub": "stub",
+     "tier": 3,
+     "hex": "#a0b0c0",
+     "where": {
+      "type": "planet",
+      "gal": {
+       "x": 90,
+       "y": -60,
+       "size": 14.5,
+       "sp": 4,
+       "tilt": 0.62,
+       "rot": 1.13,
+       "seed": 999,
+       "home": true
+      },
+      "star": {
+       "x": 560,
+       "y": 170,
+       "seed": 424242
+      },
+      "pseed": 133
+     }
+    },
+    "bogus": {
+     "title": "x"
+    }
+   },
+   "frontier": 1,
+   "ending": "dawn",
+   "guide": 1,
+   "tut": 1,
+   "rn": "1.8.9"
+  },
+  "hostile_shapes": {
+   "epoch": "x",
+   "at": "y",
+   "me": 42,
+   "essence": -5,
+   "names": {},
+   "conq": {},
+   "cargo": "x",
+   "cgx": 9,
+   "items": 4,
+   "eq": 7,
+   "ea": "z",
+   "seen": 3,
+   "jrn": {},
+   "minedw": {},
+   "mx": "n",
+   "skx": {},
+   "bx": "b",
+   "tech": {},
+   "setsc": 0,
+   "ascp": [],
+   "view": {
+    "gal": {
+     "x": "NaN",
+     "size": "huge"
+    }
+   },
+   "pstats": {
+    "vit": "9",
+    "fer": 1000000000
+   },
+   "hp": "x",
+   "notifs": "y",
+   "surveyed": {},
+   "codex": {},
+   "log": 5,
+   "prime": 3,
+   "chp": [],
+   "tut": 0,
+   "tsnap": {
+    "not": "an-expedition"
+   }
+  },
+  "hostile_markup_caps": {
+   "at": 1753900000000,
+   "me": "<img onerror=x>Evil",
+   "epoch": 2,
+   "names": [
+    [
+     "k0",
+     "<b>Bad</b>"
+    ],
+    [
+     "k1",
+     "Name1"
+    ],
+    [
+     "k2",
+     "Name2"
+    ],
+    [
+     "k3",
+     "Name3"
+    ],
+    [
+     "k4",
+     "Name4"
+    ],
+    [
+     "k5",
+     "Name5"
+    ],
+    [
+     "k6",
+     "Name6"
+    ],
+    [
+     "k7",
+     "Name7"
+    ],
+    [
+     "k8",
+     "Name8"
+    ],
+    [
+     "k9",
+     "Name9"
+    ],
+    [
+     "k10",
+     "Name10"
+    ],
+    [
+     "k11",
+     "Name11"
+    ]
+   ],
+   "jrn": [
+    {
+     "s": 0,
+     "n": "N<i>0",
+     "w": "W0",
+     "t": 1753900000000
+    },
+    {
+     "s": 1,
+     "n": "N<i>1",
+     "w": "W1",
+     "t": 1753899999000
+    },
+    {
+     "s": 2,
+     "n": "N<i>2",
+     "w": "W2",
+     "t": 1753899998000
+    },
+    {
+     "s": 3,
+     "n": "N<i>3",
+     "w": "W3",
+     "t": 1753899997000
+    },
+    {
+     "s": 4,
+     "n": "N<i>4",
+     "w": "W4",
+     "t": 1753899996000
+    },
+    {
+     "s": 5,
+     "n": "N<i>5",
+     "w": "W5",
+     "t": 1753899995000
+    },
+    {
+     "s": 6,
+     "n": "N<i>6",
+     "w": "W6",
+     "t": 1753899994000
+    },
+    {
+     "s": 7,
+     "n": "N<i>7",
+     "w": "W7",
+     "t": 1753899993000
+    },
+    {
+     "s": 8,
+     "n": "N<i>8",
+     "w": "W8",
+     "t": 1753899992000
+    },
+    {
+     "s": 9,
+     "n": "N<i>9",
+     "w": "W9",
+     "t": 1753899991000
+    },
+    {
+     "s": 10,
+     "n": "N<i>10",
+     "w": "W10",
+     "t": 1753899990000
+    },
+    {
+     "s": 11,
+     "n": "N<i>11",
+     "w": "W11",
+     "t": 1753899989000
+    },
+    {
+     "s": 12,
+     "n": "N<i>12",
+     "w": "W12",
+     "t": 1753899988000
+    },
+    {
+     "s": 13,
+     "n": "N<i>13",
+     "w": "W13",
+     "t": 1753899987000
+    },
+    {
+     "s": 14,
+     "n": "N<i>14",
+     "w": "W14",
+     "t": 1753899986000
+    },
+    {
+     "s": 15,
+     "n": "N<i>15",
+     "w": "W15",
+     "t": 1753899985000
+    },
+    {
+     "s": 16,
+     "n": "N<i>16",
+     "w": "W16",
+     "t": 1753899984000
+    },
+    {
+     "s": 17,
+     "n": "N<i>17",
+     "w": "W17",
+     "t": 1753899983000
+    },
+    {
+     "s": 18,
+     "n": "N<i>18",
+     "w": "W18",
+     "t": 1753899982000
+    },
+    {
+     "s": 19,
+     "n": "N<i>19",
+     "w": "W19",
+     "t": 1753899981000
+    },
+    {
+     "s": 20,
+     "n": "N<i>20",
+     "w": "W20",
+     "t": 1753899980000
+    },
+    {
+     "s": 21,
+     "n": "N<i>21",
+     "w": "W21",
+     "t": 1753899979000
+    },
+    {
+     "s": 22,
+     "n": "N<i>22",
+     "w": "W22",
+     "t": 1753899978000
+    },
+    {
+     "s": 23,
+     "n": "N<i>23",
+     "w": "W23",
+     "t": 1753899977000
+    },
+    {
+     "s": 24,
+     "n": "N<i>24",
+     "w": "W24",
+     "t": 1753899976000
+    },
+    {
+     "s": 25,
+     "n": "N<i>25",
+     "w": "W25",
+     "t": 1753899975000
+    },
+    {
+     "s": 26,
+     "n": "N<i>26",
+     "w": "W26",
+     "t": 1753899974000
+    },
+    {
+     "s": 27,
+     "n": "N<i>27",
+     "w": "W27",
+     "t": 1753899973000
+    },
+    {
+     "s": 28,
+     "n": "N<i>28",
+     "w": "W28",
+     "t": 1753899972000
+    },
+    {
+     "s": 29,
+     "n": "N<i>29",
+     "w": "W29",
+     "t": 1753899971000
+    }
+   ],
+   "notifs": [
+    {
+     "id": 0,
+     "tt": "T0",
+     "ms": "M0",
+     "t": 1753900000000,
+     "read": false
+    },
+    {
+     "id": 1,
+     "tt": "T1",
+     "ms": "M1",
+     "t": 1753899999000,
+     "read": false
+    },
+    {
+     "id": 2,
+     "tt": "T2",
+     "ms": "M2",
+     "t": 1753899998000,
+     "read": false
+    },
+    {
+     "id": 3,
+     "tt": "T3",
+     "ms": "M3",
+     "t": 1753899997000,
+     "read": false
+    },
+    {
+     "id": 4,
+     "tt": "T4",
+     "ms": "M4",
+     "t": 1753899996000,
+     "read": false
+    },
+    {
+     "id": 5,
+     "tt": "T5",
+     "ms": "M5",
+     "t": 1753899995000,
+     "read": false
+    },
+    {
+     "id": 6,
+     "tt": "T6",
+     "ms": "M6",
+     "t": 1753899994000,
+     "read": false
+    },
+    {
+     "id": 7,
+     "tt": "T7",
+     "ms": "M7",
+     "t": 1753899993000,
+     "read": false
+    },
+    {
+     "id": 8,
+     "tt": "T8",
+     "ms": "M8",
+     "t": 1753899992000,
+     "read": false
+    },
+    {
+     "id": 9,
+     "tt": "T9",
+     "ms": "M9",
+     "t": 1753899991000,
+     "read": false
+    },
+    {
+     "id": 10,
+     "tt": "T10",
+     "ms": "M10",
+     "t": 1753899990000,
+     "read": false
+    },
+    {
+     "id": 11,
+     "tt": "T11",
+     "ms": "M11",
+     "t": 1753899989000,
+     "read": false
+    },
+    {
+     "id": 12,
+     "tt": "T12",
+     "ms": "M12",
+     "t": 1753899988000,
+     "read": false
+    },
+    {
+     "id": 13,
+     "tt": "T13",
+     "ms": "M13",
+     "t": 1753899987000,
+     "read": false
+    },
+    {
+     "id": 14,
+     "tt": "T14",
+     "ms": "M14",
+     "t": 1753899986000,
+     "read": false
+    },
+    {
+     "id": 15,
+     "tt": "T15",
+     "ms": "M15",
+     "t": 1753899985000,
+     "read": false
+    },
+    {
+     "id": 16,
+     "tt": "T16",
+     "ms": "M16",
+     "t": 1753899984000,
+     "read": false
+    },
+    {
+     "id": 17,
+     "tt": "T17",
+     "ms": "M17",
+     "t": 1753899983000,
+     "read": false
+    },
+    {
+     "id": 18,
+     "tt": "T18",
+     "ms": "M18",
+     "t": 1753899982000,
+     "read": false
+    },
+    {
+     "id": 19,
+     "tt": "T19",
+     "ms": "M19",
+     "t": 1753899981000,
+     "read": false
+    },
+    {
+     "id": 20,
+     "tt": "T20",
+     "ms": "M20",
+     "t": 1753899980000,
+     "read": false
+    },
+    {
+     "id": 21,
+     "tt": "T21",
+     "ms": "M21",
+     "t": 1753899979000,
+     "read": false
+    },
+    {
+     "id": 22,
+     "tt": "T22",
+     "ms": "M22",
+     "t": 1753899978000,
+     "read": false
+    },
+    {
+     "id": 23,
+     "tt": "T23",
+     "ms": "M23",
+     "t": 1753899977000,
+     "read": false
+    },
+    {
+     "id": 24,
+     "tt": "T24",
+     "ms": "M24",
+     "t": 1753899976000,
+     "read": false
+    },
+    {
+     "id": 25,
+     "tt": "T25",
+     "ms": "M25",
+     "t": 1753899975000,
+     "read": false
+    },
+    {
+     "id": 26,
+     "tt": "T26",
+     "ms": "M26",
+     "t": 1753899974000,
+     "read": false
+    },
+    {
+     "id": 27,
+     "tt": "T27",
+     "ms": "M27",
+     "t": 1753899973000,
+     "read": false
+    },
+    {
+     "id": 28,
+     "tt": "T28",
+     "ms": "M28",
+     "t": 1753899972000,
+     "read": false
+    },
+    {
+     "id": 29,
+     "tt": "T29",
+     "ms": "M29",
+     "t": 1753899971000,
+     "read": false
+    },
+    {
+     "id": 30,
+     "tt": "T30",
+     "ms": "M30",
+     "t": 1753899970000,
+     "read": false
+    },
+    {
+     "id": 31,
+     "tt": "T31",
+     "ms": "M31",
+     "t": 1753899969000,
+     "read": false
+    },
+    {
+     "id": 32,
+     "tt": "T32",
+     "ms": "M32",
+     "t": 1753899968000,
+     "read": false
+    },
+    {
+     "id": 33,
+     "tt": "T33",
+     "ms": "M33",
+     "t": 1753899967000,
+     "read": false
+    },
+    {
+     "id": 34,
+     "tt": "T34",
+     "ms": "M34",
+     "t": 1753899966000,
+     "read": false
+    },
+    {
+     "id": 35,
+     "tt": "T35",
+     "ms": "M35",
+     "t": 1753899965000,
+     "read": false
+    },
+    {
+     "id": 36,
+     "tt": "T36",
+     "ms": "M36",
+     "t": 1753899964000,
+     "read": false
+    },
+    {
+     "id": 37,
+     "tt": "T37",
+     "ms": "M37",
+     "t": 1753899963000,
+     "read": false
+    },
+    {
+     "id": 38,
+     "tt": "T38",
+     "ms": "M38",
+     "t": 1753899962000,
+     "read": false
+    },
+    {
+     "id": 39,
+     "tt": "T39",
+     "ms": "M39",
+     "t": 1753899961000,
+     "read": false
+    },
+    {
+     "id": 40,
+     "tt": "T40",
+     "ms": "M40",
+     "t": 1753899960000,
+     "read": false
+    },
+    {
+     "id": 41,
+     "tt": "T41",
+     "ms": "M41",
+     "t": 1753899959000,
+     "read": false
+    },
+    {
+     "id": 42,
+     "tt": "T42",
+     "ms": "M42",
+     "t": 1753899958000,
+     "read": false
+    },
+    {
+     "id": 43,
+     "tt": "T43",
+     "ms": "M43",
+     "t": 1753899957000,
+     "read": false
+    },
+    {
+     "id": 44,
+     "tt": "T44",
+     "ms": "M44",
+     "t": 1753899956000,
+     "read": false
+    },
+    {
+     "id": 45,
+     "tt": "T45",
+     "ms": "M45",
+     "t": 1753899955000,
+     "read": false
+    },
+    {
+     "id": 46,
+     "tt": "T46",
+     "ms": "M46",
+     "t": 1753899954000,
+     "read": false
+    },
+    {
+     "id": 47,
+     "tt": "T47",
+     "ms": "M47",
+     "t": 1753899953000,
+     "read": false
+    },
+    {
+     "id": 48,
+     "tt": "T48",
+     "ms": "M48",
+     "t": 1753899952000,
+     "read": false
+    },
+    {
+     "id": 49,
+     "tt": "T49",
+     "ms": "M49",
+     "t": 1753899951000,
+     "read": false
+    },
+    {
+     "id": 50,
+     "tt": "T50",
+     "ms": "M50",
+     "t": 1753899950000,
+     "read": false
+    },
+    {
+     "id": 51,
+     "tt": "T51",
+     "ms": "M51",
+     "t": 1753899949000,
+     "read": false
+    },
+    {
+     "id": 52,
+     "tt": "T52",
+     "ms": "M52",
+     "t": 1753899948000,
+     "read": false
+    },
+    {
+     "id": 53,
+     "tt": "T53",
+     "ms": "M53",
+     "t": 1753899947000,
+     "read": false
+    },
+    {
+     "id": 54,
+     "tt": "T54",
+     "ms": "M54",
+     "t": 1753899946000,
+     "read": false
+    },
+    {
+     "id": 55,
+     "tt": "T55",
+     "ms": "M55",
+     "t": 1753899945000,
+     "read": false
+    },
+    {
+     "id": 56,
+     "tt": "T56",
+     "ms": "M56",
+     "t": 1753899944000,
+     "read": false
+    },
+    {
+     "id": 57,
+     "tt": "T57",
+     "ms": "M57",
+     "t": 1753899943000,
+     "read": false
+    },
+    {
+     "id": 58,
+     "tt": "T58",
+     "ms": "M58",
+     "t": 1753899942000,
+     "read": false
+    },
+    {
+     "id": 59,
+     "tt": "T59",
+     "ms": "M59",
+     "t": 1753899941000,
+     "read": false
+    },
+    {
+     "id": 60,
+     "tt": "T60",
+     "ms": "M60",
+     "t": 1753899940000,
+     "read": false
+    },
+    {
+     "id": 61,
+     "tt": "T61",
+     "ms": "M61",
+     "t": 1753899939000,
+     "read": false
+    },
+    {
+     "id": 62,
+     "tt": "T62",
+     "ms": "M62",
+     "t": 1753899938000,
+     "read": false
+    },
+    {
+     "id": 63,
+     "tt": "T63",
+     "ms": "M63",
+     "t": 1753899937000,
+     "read": false
+    },
+    {
+     "id": 64,
+     "tt": "T64",
+     "ms": "M64",
+     "t": 1753899936000,
+     "read": false
+    },
+    {
+     "id": 65,
+     "tt": "T65",
+     "ms": "M65",
+     "t": 1753899935000,
+     "read": false
+    },
+    {
+     "id": 66,
+     "tt": "T66",
+     "ms": "M66",
+     "t": 1753899934000,
+     "read": false
+    },
+    {
+     "id": 67,
+     "tt": "T67",
+     "ms": "M67",
+     "t": 1753899933000,
+     "read": false
+    },
+    {
+     "id": 68,
+     "tt": "T68",
+     "ms": "M68",
+     "t": 1753899932000,
+     "read": false
+    },
+    {
+     "id": 69,
+     "tt": "T69",
+     "ms": "M69",
+     "t": 1753899931000,
+     "read": false
+    }
+   ],
+   "log": [
+    {
+     "id": "<b>x</b>1",
+     "title": "T<script>",
+     "sub": "S&\"",
+     "badge": "VeryLongBadgeName!",
+     "where": {
+      "type": "planet",
+      "gal": {
+       "x": 90,
+       "y": -60,
+       "size": 14.5,
+       "sp": 4,
+       "tilt": 0.62,
+       "rot": 1.13,
+       "seed": 999,
+       "home": true
+      },
+      "star": {
+       "x": 560,
+       "y": 170,
+       "seed": 424242
+      },
+      "pseed": 133
+     },
+     "t": 1753899900000,
+     "thumb": "data:image/png;base64,x\" onerror=\"alert(1)"
+    },
+    {
+     "id": "<>&\"'",
+     "title": "AllStripped",
+     "t": 1753899900000
+    }
+   ],
+   "codex": [
+    {
+     "g": {
+      "seed": 99,
+      "kingdom": "fauna",
+      "size": 1000000,
+      "gen": "2",
+      "color": 3,
+      "form": 1,
+      "body": 1,
+      "loco": 1,
+      "trait": 1,
+      "diet": 1,
+      "head": 1,
+      "limbs": 1,
+      "skin": 1,
+      "tail": 1,
+      "pattern": 1,
+      "eyes": 1,
+      "behavior": 1,
+      "habitat": 1,
+      "detail": 1,
+      "accent": 1,
+      "temper": 1,
+      "sense": 1,
+      "repro": 1,
+      "life": 1,
+      "metab": 1,
+      "lumin": false,
+      "heat": 1,
+      "apex": 3,
+      "fed": 99999
+     },
+     "f": "<b>Bad</b>Place"
+    }
+   ]
+  },
+  "pre_v17_veteran": {
+   "epoch": 8,
+   "at": 1753900000000,
+   "essence": 100,
+   "conq": [
+    [
+     501,
+     {
+      "t": 1753895000000,
+      "tier": 1
+     }
+    ],
+    [
+     502,
+     {
+      "t": 1753894000000,
+      "tier": 3
+     }
+    ]
+   ],
+   "codex": [
+    {
+     "g": {
+      "seed": 1234,
+      "kingdom": "fauna",
+      "color": 9,
+      "form": 13,
+      "body": 5,
+      "loco": 11,
+      "trait": 7,
+      "size": 4,
+      "diet": 1,
+      "head": 0,
+      "limbs": 1,
+      "skin": 6,
+      "tail": 2,
+      "pattern": 3,
+      "eyes": 0,
+      "behavior": 10,
+      "habitat": 13,
+      "detail": 9,
+      "accent": 9,
+      "temper": 1,
+      "sense": 7,
+      "repro": 6,
+      "life": 0,
+      "metab": 2,
+      "lumin": false,
+      "gen": 0,
+      "heat": 0.5
+     },
+     "f": "Old"
+    },
+    {
+     "g": {
+      "seed": 777,
+      "kingdom": "flora",
+      "color": 7,
+      "form": 4,
+      "body": 7,
+      "loco": 11,
+      "trait": 2,
+      "size": 4,
+      "diet": 3,
+      "head": 2,
+      "limbs": 5,
+      "skin": 8,
+      "tail": 4,
+      "pattern": 1,
+      "eyes": 2,
+      "behavior": 6,
+      "habitat": 10,
+      "detail": 4,
+      "accent": 12,
+      "temper": 8,
+      "sense": 4,
+      "repro": 0,
+      "life": 4,
+      "metab": 3,
+      "lumin": false,
+      "gen": 0,
+      "heat": 0.3
+     },
+     "f": "Old"
+    }
+   ]
+  },
+  "tut_midtraining": {
+   "epoch": 0,
+   "at": 1753900000000,
+   "tut": 0,
+   "tsnap": {
+    "codex": [],
+    "essence": 10,
+    "marker": "pre-training-expedition"
+   }
+  },
+  "settings_spread": {
+   "at": 1753900000000,
+   "fs": "fs-xl",
+   "tone": "tone-nope",
+   "font": "font-sys",
+   "snd": 1,
+   "fx": 0,
+   "chart": 0,
+   "shake": 1,
+   "sv": 0,
+   "notif": 0,
+   "tips": 1,
+   "vol": 200,
+   "gt": 900,
+   "rm": 0,
+   "cx": 99,
+   "nh": 99,
+   "hd": 0
+  },
+  "equip_integrity": {
+   "at": 1753900000000,
+   "items": [
+    [
+     "visor",
+     0
+    ],
+    [
+     "headlamp",
+     1
+    ]
+   ],
+   "eq": {
+    "helmet": "visor",
+    "suit": "fieldsuit"
+   },
+   "ea": {
+    "helmet": {
+     "k": "strike",
+     "v": 99,
+     "forId": "visor"
+    }
+   }
+  },
+  "recovery_from_backup": {
+   "primary": "###corrupted-not-json###",
+   "backup": "{\"epoch\":4,\"at\":1753900000000,\"essence\":777,\"me\":\"Recovered\"}"
+  }
+ },
+ "results": {
+  "empty_object": {
+   "EPOCH_BASE": "0",
+   "COSMIC_EPOCH": "0",
+   "essence": "0",
+   "explorerName": "\"\"",
+   "lastAnomKey": "null",
+   "stats": "{\"anomalies\":0,\"best\":0,\"bestRank\":0,\"breeds\":0,\"breedwins\":0,\"charters\":0,\"cosmics\":0,\"crafts\":0,\"duels\":0,\"duelwins\":0,\"essenceEarned\":0,\"events\":0,\"feedfails\":0,\"feeds\":0,\"guardians\":0,\"harvests\":0,\"hybrids\":0,\"jumps\":0,\"landings\":0,\"maxGen\":0,\"minedout\":0,\"mines\":0,\"paragons\":0,\"shares\":0,\"skims\":0,\"surveys\":0}",
+   "pstats": "{\"agi\":50,\"fer\":50,\"ins\":50,\"res\":50,\"vit\":50}",
+   "hp": "100",
+   "HP_MAX": "100",
+   "customNames": "[]",
+   "conquered": "[]",
+   "cargo": "[]",
+   "cgx": "[]",
+   "items": "[]",
+   "equip": "{}",
+   "equipAff": "{}",
+   "pinnedRecipe": "null",
+   "cargoTab": "\"mat\"",
+   "seenSp": "[]",
+   "journal": "[]",
+   "mined": "[]",
+   "mineX": "[]",
+   "skimX": "[]",
+   "bioX": "[]",
+   "techOwned": "[]",
+   "claimedSets": "[]",
+   "ascCh": "0",
+   "ascProg": "{}",
+   "nameHue": "-1",
+   "_savedView": "null",
+   "fsMode": "\"\"",
+   "toneMode": "\"\"",
+   "fontMode": "\"\"",
+   "sndOn": "true",
+   "fxOn": "true",
+   "chartsOn": "false",
+   "shakeOn": "true",
+   "salvageConfirm": "true",
+   "notifOn": "true",
+   "tipsOn": "true",
+   "sfxVol": "1",
+   "glassTint": "0.72",
+   "motionMode": "-1",
+   "cardExpand": "0",
+   "notifications": "[]",
+   "surveyedSet": "[]",
+   "galSeen": "[]",
+   "surfSeen": "[]",
+   "xpFirsts": "[]",
+   "sysSeen": "[]",
+   "starKindsSeen": "[]",
+   "ptypesSeen": "[]",
+   "eventKeysSeen": "[]",
+   "_evAnnounced": "[]",
+   "unlocked": "[]",
+   "landed": "[]",
+   "contacted": "[]",
+   "_waveOffs": "[]",
+   "primeFill": "{}",
+   "frontierUnlocked": "false",
+   "frontierEnding": "null",
+   "seenGuide": "false",
+   "tutDone": "true",
+   "_rnSeen": "\"0\"",
+   "_tutSnapPending": "null",
+   "scoutId": "null",
+   "chWeek": "-1",
+   "chProg": "{}",
+   "chacc": "[]",
+   "chDone": "[]",
+   "homeId": "null",
+   "voiceOn": "true",
+   "combatSfxOn": "true",
+   "logMap": "[]",
+   "codex": "[]"
+  },
+  "veteran_rich": {
+   "EPOCH_BASE": "12",
+   "COSMIC_EPOCH": "12",
+   "essence": "5000",
+   "explorerName": "\"Dakk\"",
+   "lastAnomKey": "\"k1\"",
+   "stats": "{\"anomalies\":2,\"best\":4,\"bestRank\":3,\"breeds\":2,\"breedwins\":1,\"charters\":2,\"cosmics\":1,\"crafts\":3,\"duels\":7,\"duelwins\":4,\"essenceEarned\":9000,\"events\":5,\"feedfails\":1,\"feeds\":9,\"guardians\":1,\"harvests\":6,\"hybrids\":1,\"jumps\":41,\"landings\":12,\"maxGen\":3,\"minedout\":1,\"mines\":14,\"paragons\":0,\"shares\":3,\"skims\":2,\"surveys\":2}",
+   "pstats": "{\"agi\":50,\"fer\":60,\"ins\":40,\"res\":70,\"vit\":80}",
+   "hp": "55",
+   "HP_MAX": "160",
+   "customNames": "[[\"p133\",\"Homeworld\"],[\"c1234\",\"bRex/b\"],[\"s424242\",\"Sol Prime\"]]",
+   "conquered": "[[101,{\"e\":5,\"t\":1753896400000,\"tier\":4}],[102,{\"t\":1753896400000,\"tier\":2}],[103,{\"e\":12,\"t\":1753899940000,\"tier\":9}]]",
+   "cargo": "[[\"Fe\",40],[\"Si\",12]]",
+   "cgx": "[[\"Fe\",5],[\"Si\",12]]",
+   "items": "[[\"plate\",3],[\"lens\",1],[\"cell\",2],[\"headlamp\",1]]",
+   "equip": "{\"helmet\":\"headlamp\"}",
+   "equipAff": "{\"helmet\":{\"forId\":\"headlamp\",\"k\":\"strike\",\"v\":0.05}}",
+   "pinnedRecipe": "\"plate\"",
+   "cargoTab": "\"craft\"",
+   "seenSp": "[\"f1234\"]",
+   "journal": "[{\"n\":\"Testling\",\"s\":1,\"t\":1753899000000,\"w\":\"Earth\"},{\"n\":\"Verdant\",\"s\":2,\"t\":1753898000000,\"w\":\"Mars\"}]",
+   "mined": "[[201,1753898800000]]",
+   "mineX": "[[201,4]]",
+   "skimX": "[[424242,2]]",
+   "bioX": "[[301,[3,2]]]",
+   "techOwned": "[\"scan1\",\"hull1\"]",
+   "claimedSets": "[\"kingdoms\"]",
+   "ascCh": "2",
+   "ascProg": "{\"land\":3,\"scan\":12}",
+   "nameHue": "2",
+   "_savedView": "{\"gal\":{\"dwarf\":false,\"home\":true,\"quasar\":false,\"rot\":1.13,\"seed\":999,\"size\":14.5,\"sp\":4,\"tilt\":0.62,\"x\":90,\"y\":-60},\"pseed\":133,\"star\":{\"seed\":424242,\"x\":560,\"y\":170},\"type\":\"planet\"}",
+   "fsMode": "\"fs-lg\"",
+   "toneMode": "\"tone-bright\"",
+   "fontMode": "\"font-mono\"",
+   "sndOn": "false",
+   "fxOn": "true",
+   "chartsOn": "true",
+   "shakeOn": "false",
+   "salvageConfirm": "true",
+   "notifOn": "true",
+   "tipsOn": "false",
+   "sfxVol": "0.37",
+   "glassTint": "0.55",
+   "motionMode": "1",
+   "cardExpand": "21",
+   "notifications": "[{\"id\":1,\"ms\":\"World\",\"read\":true,\"t\":1753899500000,\"tt\":\"Hello\"},{\"id\":4,\"ms\":\"\",\"read\":false,\"t\":1753899600000,\"tt\":\"Second\"}]",
+   "surveyedSet": "[\"a1\",\"a2\"]",
+   "galSeen": "[999]",
+   "surfSeen": "[11,12]",
+   "xpFirsts": "[\"land:first\"]",
+   "sysSeen": "[424242,31337]",
+   "starKindsSeen": "[\"G\",\"M\"]",
+   "ptypesSeen": "[\"terran\",\"gas\"]",
+   "eventKeysSeen": "[\"e1\"]",
+   "_evAnnounced": "[\"e1\"]",
+   "unlocked": "[\"first\",\"field10\",\"fake\"]",
+   "landed": "[133,134]",
+   "contacted": "[55]",
+   "_waveOffs": "[[901,3],[902,5]]",
+   "primeFill": "{\"stone\":{\"hex\":\"#a0b0c0\",\"sub\":\"stub\",\"tier\":3,\"title\":\"First Stone\",\"where\":{\"gal\":{\"dwarf\":false,\"home\":true,\"quasar\":false,\"rot\":1.13,\"seed\":999,\"size\":14.5,\"sp\":4,\"tilt\":0.62,\"x\":90,\"y\":-60},\"pseed\":133,\"star\":{\"seed\":424242,\"x\":560,\"y\":170},\"type\":\"planet\"}}}",
+   "frontierUnlocked": "true",
+   "frontierEnding": "\"dawn\"",
+   "seenGuide": "true",
+   "tutDone": "true",
+   "_rnSeen": "\"1.8.9\"",
+   "_tutSnapPending": "null",
+   "scoutId": "null",
+   "chWeek": "5",
+   "chProg": "{\"st-mine\":2}",
+   "chacc": "[\"st-mine\"]",
+   "chDone": "[\"st-land\"]",
+   "homeId": "\"p133\"",
+   "voiceOn": "false",
+   "combatSfxOn": "true",
+   "logMap": "[[\"p133\",{\"badge\":\"Home\",\"fav\":true,\"id\":\"p133\",\"sq\":false,\"sub\":\"The cradle\",\"t\":1753899100000,\"thumb\":\"data:image/png;base64,AAAA\",\"title\":\"Earth\",\"where\":{\"gal\":{\"home\":true,\"rot\":1.13,\"seed\":999,\"size\":14.5,\"sp\":4,\"tilt\":0.62,\"x\":90,\"y\":-60},\"m\":0,\"orb\":0,\"pi\":0,\"pseed\":133,\"seed\":0,\"sseed\":0,\"star\":{\"seed\":424242},\"type\":\"planet\"}}]]",
+   "codex": "[[\"s1234\",{\"from\":\"Earth\",\"g\":{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"hybrid\":false,\"kind\":\"Fauna\",\"name\":\"Toruneeus\",\"realm\":\"Aquatic Fauna\",\"sapient\":2,\"tier\":4}],[\"s777\",{\"from\":\"Mars\",\"g\":{\"accent\":12,\"behavior\":6,\"body\":7,\"color\":7,\"detail\":4,\"diet\":3,\"eyes\":2,\"form\":4,\"gen\":0,\"habitat\":10,\"head\":2,\"heat\":0.3,\"kingdom\":\"flora\",\"life\":4,\"limbs\":5,\"loco\":11,\"lumin\":false,\"metab\":3,\"pattern\":1,\"repro\":0,\"seed\":777,\"sense\":4,\"size\":4,\"skin\":8,\"tail\":4,\"temper\":8,\"trait\":2},\"hybrid\":false,\"kind\":\"Flora\",\"name\":\"Morovoent\",\"realm\":\"Flora\",\"sapient\":0,\"tier\":2}],[\"s4242\",{\"from\":\"Kepler\",\"g\":{\"accent\":13,\"behavior\":6,\"body\":14,\"color\":14,\"detail\":2,\"diet\":3,\"eyes\":3,\"form\":7,\"gen\":3,\"habitat\":6,\"head\":9,\"heat\":0.6,\"kingdom\":\"fauna\",\"life\":2,\"limbs\":2,\"loco\":17,\"lumin\":true,\"metab\":3,\"parents\":[1,2],\"pattern\":2,\"repro\":3,\"seed\":4242,\"sense\":0,\"size\":9,\"skin\":3,\"tail\":1,\"temper\":6,\"trait\":2},\"hybrid\":true,\"kind\":\"Fauna\",\"name\":\"Umbraemnora\",\"realm\":\"Extreme-World Life\",\"sapient\":2,\"tier\":2}]]"
+  },
+  "hostile_shapes": {
+   "EPOCH_BASE": "0",
+   "COSMIC_EPOCH": "0",
+   "essence": "0",
+   "explorerName": "\"42\"",
+   "lastAnomKey": "null",
+   "stats": "{\"anomalies\":0,\"best\":0,\"bestRank\":0,\"breeds\":0,\"breedwins\":0,\"charters\":0,\"cosmics\":0,\"crafts\":0,\"duels\":0,\"duelwins\":0,\"essenceEarned\":0,\"events\":0,\"feedfails\":0,\"feeds\":0,\"guardians\":0,\"harvests\":0,\"hybrids\":0,\"jumps\":0,\"landings\":0,\"maxGen\":0,\"minedout\":0,\"mines\":0,\"paragons\":0,\"shares\":0,\"skims\":0,\"surveys\":0}",
+   "pstats": "{\"agi\":50,\"fer\":330,\"ins\":50,\"res\":50,\"vit\":50}",
+   "hp": "100",
+   "HP_MAX": "100",
+   "customNames": "[]",
+   "conquered": "[]",
+   "cargo": "[]",
+   "cgx": "[]",
+   "items": "[]",
+   "equip": "{}",
+   "equipAff": "{}",
+   "pinnedRecipe": "null",
+   "cargoTab": "\"mat\"",
+   "seenSp": "[]",
+   "journal": "[]",
+   "mined": "[]",
+   "mineX": "[]",
+   "skimX": "[]",
+   "bioX": "[]",
+   "techOwned": "[]",
+   "claimedSets": "[]",
+   "ascCh": "0",
+   "ascProg": "{}",
+   "nameHue": "-1",
+   "_savedView": "{\"gal\":{\"dwarf\":false,\"home\":false,\"quasar\":false,\"rot\":0,\"seed\":1,\"size\":60,\"sp\":0,\"tilt\":0.5,\"x\":0,\"y\":0},\"type\":null}",
+   "fsMode": "\"\"",
+   "toneMode": "\"\"",
+   "fontMode": "\"\"",
+   "sndOn": "true",
+   "fxOn": "true",
+   "chartsOn": "false",
+   "shakeOn": "true",
+   "salvageConfirm": "true",
+   "notifOn": "true",
+   "tipsOn": "true",
+   "sfxVol": "1",
+   "glassTint": "0.72",
+   "motionMode": "-1",
+   "cardExpand": "0",
+   "notifications": "[]",
+   "surveyedSet": "[]",
+   "galSeen": "[]",
+   "surfSeen": "[]",
+   "xpFirsts": "[]",
+   "sysSeen": "[]",
+   "starKindsSeen": "[]",
+   "ptypesSeen": "[]",
+   "eventKeysSeen": "[]",
+   "_evAnnounced": "[]",
+   "unlocked": "[]",
+   "landed": "[]",
+   "contacted": "[]",
+   "_waveOffs": "[]",
+   "primeFill": "{}",
+   "frontierUnlocked": "false",
+   "frontierEnding": "null",
+   "seenGuide": "false",
+   "tutDone": "false",
+   "_rnSeen": "\"0\"",
+   "_tutSnapPending": "{\"not\":\"an-expedition\"}",
+   "scoutId": "null",
+   "chWeek": "-1",
+   "chProg": "{}",
+   "chacc": "[]",
+   "chDone": "[]",
+   "homeId": "null",
+   "voiceOn": "true",
+   "combatSfxOn": "true",
+   "logMap": "[]",
+   "codex": "[]"
+  },
+  "hostile_markup_caps": {
+   "EPOCH_BASE": "2",
+   "COSMIC_EPOCH": "2",
+   "essence": "0",
+   "explorerName": "\"img onerror=xEvil\"",
+   "lastAnomKey": "null",
+   "stats": "{\"anomalies\":0,\"best\":2,\"bestRank\":0,\"breeds\":0,\"breedwins\":0,\"charters\":0,\"cosmics\":0,\"crafts\":0,\"duels\":0,\"duelwins\":0,\"essenceEarned\":0,\"events\":0,\"feedfails\":0,\"feeds\":0,\"guardians\":0,\"harvests\":0,\"hybrids\":0,\"jumps\":0,\"landings\":0,\"maxGen\":\"2\",\"minedout\":0,\"mines\":0,\"paragons\":0,\"shares\":0,\"skims\":0,\"surveys\":0}",
+   "pstats": "{\"agi\":50,\"fer\":50,\"ins\":50,\"res\":50,\"vit\":50}",
+   "hp": "100",
+   "HP_MAX": "100",
+   "customNames": "[[\"k0\",\"bBad/b\"],[\"k1\",\"Name1\"],[\"k2\",\"Name2\"],[\"k3\",\"Name3\"],[\"k4\",\"Name4\"],[\"k5\",\"Name5\"],[\"k6\",\"Name6\"],[\"k7\",\"Name7\"],[\"k8\",\"Name8\"],[\"k9\",\"Name9\"],[\"k10\",\"Name10\"],[\"k11\",\"Name11\"]]",
+   "conquered": "[]",
+   "cargo": "[]",
+   "cgx": "[]",
+   "items": "[]",
+   "equip": "{}",
+   "equipAff": "{}",
+   "pinnedRecipe": "null",
+   "cargoTab": "\"mat\"",
+   "seenSp": "[\"s99\"]",
+   "journal": "[{\"n\":\"N<i>6\",\"s\":6,\"t\":1753899994000,\"w\":\"W6\"},{\"n\":\"N<i>7\",\"s\":7,\"t\":1753899993000,\"w\":\"W7\"},{\"n\":\"N<i>8\",\"s\":8,\"t\":1753899992000,\"w\":\"W8\"},{\"n\":\"N<i>9\",\"s\":9,\"t\":1753899991000,\"w\":\"W9\"},{\"n\":\"N<i>10\",\"s\":10,\"t\":1753899990000,\"w\":\"W10\"},{\"n\":\"N<i>11\",\"s\":11,\"t\":1753899989000,\"w\":\"W11\"},{\"n\":\"N<i>12\",\"s\":12,\"t\":1753899988000,\"w\":\"W12\"},{\"n\":\"N<i>13\",\"s\":13,\"t\":1753899987000,\"w\":\"W13\"},{\"n\":\"N<i>14\",\"s\":14,\"t\":1753899986000,\"w\":\"W14\"},{\"n\":\"N<i>15\",\"s\":15,\"t\":1753899985000.0002,\"w\":\"W15\"},{\"n\":\"N<i>16\",\"s\":16,\"t\":1753899984000,\"w\":\"W16\"},{\"n\":\"N<i>17\",\"s\":17,\"t\":1753899983000,\"w\":\"W17\"},{\"n\":\"N<i>18\",\"s\":18,\"t\":1753899982000,\"w\":\"W18\"},{\"n\":\"N<i>19\",\"s\":19,\"t\":1753899981000,\"w\":\"W19\"},{\"n\":\"N<i>20\",\"s\":20,\"t\":1753899980000,\"w\":\"W20\"},{\"n\":\"N<i>21\",\"s\":21,\"t\":1753899979000,\"w\":\"W21\"},{\"n\":\"N<i>22\",\"s\":22,\"t\":1753899978000,\"w\":\"W22\"},{\"n\":\"N<i>23\",\"s\":23,\"t\":1753899977000,\"w\":\"W23\"},{\"n\":\"N<i>24\",\"s\":24,\"t\":1753899976000,\"w\":\"W24\"},{\"n\":\"N<i>25\",\"s\":25,\"t\":1753899975000,\"w\":\"W25\"},{\"n\":\"N<i>26\",\"s\":26,\"t\":1753899974000,\"w\":\"W26\"},{\"n\":\"N<i>27\",\"s\":27,\"t\":1753899973000,\"w\":\"W27\"},{\"n\":\"N<i>28\",\"s\":28,\"t\":1753899972000,\"w\":\"W28\"},{\"n\":\"N<i>29\",\"s\":29,\"t\":1753899971000,\"w\":\"W29\"}]",
+   "mined": "[]",
+   "mineX": "[]",
+   "skimX": "[]",
+   "bioX": "[]",
+   "techOwned": "[]",
+   "claimedSets": "[]",
+   "ascCh": "0",
+   "ascProg": "{}",
+   "nameHue": "-1",
+   "_savedView": "null",
+   "fsMode": "\"\"",
+   "toneMode": "\"\"",
+   "fontMode": "\"\"",
+   "sndOn": "true",
+   "fxOn": "true",
+   "chartsOn": "false",
+   "shakeOn": "true",
+   "salvageConfirm": "true",
+   "notifOn": "true",
+   "tipsOn": "true",
+   "sfxVol": "1",
+   "glassTint": "0.72",
+   "motionMode": "-1",
+   "cardExpand": "0",
+   "notifications": "[{\"id\":0,\"ms\":\"M0\",\"read\":false,\"t\":1753900000000.0002,\"tt\":\"T0\"},{\"id\":1,\"ms\":\"M1\",\"read\":false,\"t\":1753899999000,\"tt\":\"T1\"},{\"id\":2,\"ms\":\"M2\",\"read\":false,\"t\":1753899998000,\"tt\":\"T2\"},{\"id\":3,\"ms\":\"M3\",\"read\":false,\"t\":1753899997000,\"tt\":\"T3\"},{\"id\":4,\"ms\":\"M4\",\"read\":false,\"t\":1753899996000,\"tt\":\"T4\"},{\"id\":5,\"ms\":\"M5\",\"read\":false,\"t\":1753899995000,\"tt\":\"T5\"},{\"id\":6,\"ms\":\"M6\",\"read\":false,\"t\":1753899994000,\"tt\":\"T6\"},{\"id\":7,\"ms\":\"M7\",\"read\":false,\"t\":1753899993000,\"tt\":\"T7\"},{\"id\":8,\"ms\":\"M8\",\"read\":false,\"t\":1753899992000,\"tt\":\"T8\"},{\"id\":9,\"ms\":\"M9\",\"read\":false,\"t\":1753899991000,\"tt\":\"T9\"},{\"id\":10,\"ms\":\"M10\",\"read\":false,\"t\":1753899990000,\"tt\":\"T10\"},{\"id\":11,\"ms\":\"M11\",\"read\":false,\"t\":1753899989000,\"tt\":\"T11\"},{\"id\":12,\"ms\":\"M12\",\"read\":false,\"t\":1753899988000,\"tt\":\"T12\"},{\"id\":13,\"ms\":\"M13\",\"read\":false,\"t\":1753899987000,\"tt\":\"T13\"},{\"id\":14,\"ms\":\"M14\",\"read\":false,\"t\":1753899986000,\"tt\":\"T14\"},{\"id\":15,\"ms\":\"M15\",\"read\":false,\"t\":1753899985000.0002,\"tt\":\"T15\"},{\"id\":16,\"ms\":\"M16\",\"read\":false,\"t\":1753899984000,\"tt\":\"T16\"},{\"id\":17,\"ms\":\"M17\",\"read\":false,\"t\":1753899983000,\"tt\":\"T17\"},{\"id\":18,\"ms\":\"M18\",\"read\":false,\"t\":1753899982000,\"tt\":\"T18\"},{\"id\":19,\"ms\":\"M19\",\"read\":false,\"t\":1753899981000,\"tt\":\"T19\"},{\"id\":20,\"ms\":\"M20\",\"read\":false,\"t\":1753899980000,\"tt\":\"T20\"},{\"id\":21,\"ms\":\"M21\",\"read\":false,\"t\":1753899979000,\"tt\":\"T21\"},{\"id\":22,\"ms\":\"M22\",\"read\":false,\"t\":1753899978000,\"tt\":\"T22\"},{\"id\":23,\"ms\":\"M23\",\"read\":false,\"t\":1753899977000,\"tt\":\"T23\"},{\"id\":24,\"ms\":\"M24\",\"read\":false,\"t\":1753899976000,\"tt\":\"T24\"},{\"id\":25,\"ms\":\"M25\",\"read\":false,\"t\":1753899975000,\"tt\":\"T25\"},{\"id\":26,\"ms\":\"M26\",\"read\":false,\"t\":1753899974000,\"tt\":\"T26\"},{\"id\":27,\"ms\":\"M27\",\"read\":false,\"t\":1753899973000,\"tt\":\"T27\"},{\"id\":28,\"ms\":\"M28\",\"read\":false,\"t\":1753899972000,\"tt\":\"T28\"},{\"id\":29,\"ms\":\"M29\",\"read\":false,\"t\":1753899971000,\"tt\":\"T29\"},{\"id\":30,\"ms\":\"M30\",\"read\":false,\"t\":1753899970000.0002,\"tt\":\"T30\"},{\"id\":31,\"ms\":\"M31\",\"read\":false,\"t\":1753899969000,\"tt\":\"T31\"},{\"id\":32,\"ms\":\"M32\",\"read\":false,\"t\":1753899968000,\"tt\":\"T32\"},{\"id\":33,\"ms\":\"M33\",\"read\":false,\"t\":1753899967000,\"tt\":\"T33\"},{\"id\":34,\"ms\":\"M34\",\"read\":false,\"t\":1753899965999.9998,\"tt\":\"T34\"},{\"id\":35,\"ms\":\"M35\",\"read\":false,\"t\":1753899965000,\"tt\":\"T35\"},{\"id\":36,\"ms\":\"M36\",\"read\":false,\"t\":1753899964000,\"tt\":\"T36\"},{\"id\":37,\"ms\":\"M37\",\"read\":false,\"t\":1753899963000,\"tt\":\"T37\"},{\"id\":38,\"ms\":\"M38\",\"read\":false,\"t\":1753899962000,\"tt\":\"T38\"},{\"id\":39,\"ms\":\"M39\",\"read\":false,\"t\":1753899961000,\"tt\":\"T39\"},{\"id\":40,\"ms\":\"M40\",\"read\":false,\"t\":1753899960000,\"tt\":\"T40\"},{\"id\":41,\"ms\":\"M41\",\"read\":false,\"t\":1753899959000,\"tt\":\"T41\"},{\"id\":42,\"ms\":\"M42\",\"read\":false,\"t\":1753899958000,\"tt\":\"T42\"},{\"id\":43,\"ms\":\"M43\",\"read\":false,\"t\":1753899957000,\"tt\":\"T43\"},{\"id\":44,\"ms\":\"M44\",\"read\":false,\"t\":1753899956000,\"tt\":\"T44\"},{\"id\":45,\"ms\":\"M45\",\"read\":false,\"t\":1753899955000,\"tt\":\"T45\"},{\"id\":46,\"ms\":\"M46\",\"read\":false,\"t\":1753899954000,\"tt\":\"T46\"},{\"id\":47,\"ms\":\"M47\",\"read\":false,\"t\":1753899953000,\"tt\":\"T47\"},{\"id\":48,\"ms\":\"M48\",\"read\":false,\"t\":1753899952000,\"tt\":\"T48\"},{\"id\":49,\"ms\":\"M49\",\"read\":false,\"t\":1753899950999.9998,\"tt\":\"T49\"},{\"id\":50,\"ms\":\"M50\",\"read\":false,\"t\":1753899950000,\"tt\":\"T50\"},{\"id\":51,\"ms\":\"M51\",\"read\":false,\"t\":1753899949000,\"tt\":\"T51\"},{\"id\":52,\"ms\":\"M52\",\"read\":false,\"t\":1753899948000,\"tt\":\"T52\"},{\"id\":53,\"ms\":\"M53\",\"read\":false,\"t\":1753899947000,\"tt\":\"T53\"},{\"id\":54,\"ms\":\"M54\",\"read\":false,\"t\":1753899946000,\"tt\":\"T54\"},{\"id\":55,\"ms\":\"M55\",\"read\":false,\"t\":1753899945000,\"tt\":\"T55\"},{\"id\":56,\"ms\":\"M56\",\"read\":false,\"t\":1753899944000,\"tt\":\"T56\"},{\"id\":57,\"ms\":\"M57\",\"read\":false,\"t\":1753899943000,\"tt\":\"T57\"},{\"id\":58,\"ms\":\"M58\",\"read\":false,\"t\":1753899942000,\"tt\":\"T58\"},{\"id\":59,\"ms\":\"M59\",\"read\":false,\"t\":1753899941000,\"tt\":\"T59\"}]",
+   "surveyedSet": "[]",
+   "galSeen": "[]",
+   "surfSeen": "[]",
+   "xpFirsts": "[]",
+   "sysSeen": "[]",
+   "starKindsSeen": "[]",
+   "ptypesSeen": "[]",
+   "eventKeysSeen": "[]",
+   "_evAnnounced": "[]",
+   "unlocked": "[]",
+   "landed": "[]",
+   "contacted": "[]",
+   "_waveOffs": "[]",
+   "primeFill": "{}",
+   "frontierUnlocked": "false",
+   "frontierEnding": "null",
+   "seenGuide": "false",
+   "tutDone": "true",
+   "_rnSeen": "\"0\"",
+   "_tutSnapPending": "null",
+   "scoutId": "null",
+   "chWeek": "-1",
+   "chProg": "{}",
+   "chacc": "[]",
+   "chDone": "[]",
+   "homeId": "null",
+   "voiceOn": "true",
+   "combatSfxOn": "true",
+   "logMap": "[[\"bx/b1\",{\"badge\":\"VeryLongBadgeName!\",\"fav\":false,\"id\":\"bx/b1\",\"sq\":false,\"sub\":\"S\",\"t\":1753899900000,\"thumb\":null,\"title\":\"Tscript\",\"where\":{\"gal\":{\"home\":true,\"rot\":1.13,\"seed\":999,\"size\":14.5,\"sp\":4,\"tilt\":0.62,\"x\":90,\"y\":-60},\"m\":0,\"orb\":0,\"pi\":0,\"pseed\":133,\"seed\":0,\"sseed\":0,\"star\":{\"seed\":424242},\"type\":\"planet\"}}]]",
+   "codex": "[[\"s99\",{\"from\":\"bBad/bPlace\",\"g\":{\"accent\":1,\"behavior\":1,\"body\":1,\"color\":3,\"detail\":1,\"diet\":1,\"eyes\":1,\"fed\":200,\"form\":1,\"gen\":\"2\",\"habitat\":1,\"head\":1,\"heat\":1,\"kingdom\":\"fauna\",\"life\":1,\"limbs\":1,\"loco\":1,\"lumin\":false,\"metab\":1,\"pattern\":1,\"repro\":1,\"seed\":99,\"sense\":1,\"size\":1000000,\"skin\":1,\"tail\":1,\"temper\":1,\"trait\":1},\"hybrid\":false,\"kind\":\"Fauna\",\"name\":\"Nyxothoid\",\"realm\":\"Land Fauna\",\"sapient\":2,\"tier\":2}]]"
+  },
+  "pre_v17_veteran": {
+   "EPOCH_BASE": "8",
+   "COSMIC_EPOCH": "8",
+   "essence": "100",
+   "explorerName": "\"\"",
+   "lastAnomKey": "null",
+   "stats": "{\"anomalies\":0,\"best\":4,\"bestRank\":1,\"breeds\":0,\"breedwins\":0,\"charters\":0,\"cosmics\":0,\"crafts\":0,\"duels\":0,\"duelwins\":0,\"essenceEarned\":0,\"events\":0,\"feedfails\":0,\"feeds\":0,\"guardians\":0,\"harvests\":0,\"hybrids\":0,\"jumps\":0,\"landings\":0,\"maxGen\":0,\"minedout\":0,\"mines\":0,\"paragons\":0,\"shares\":0,\"skims\":0,\"surveys\":0}",
+   "pstats": "{\"agi\":50,\"fer\":50,\"ins\":50,\"res\":50,\"vit\":50}",
+   "hp": "100",
+   "HP_MAX": "100",
+   "customNames": "[]",
+   "conquered": "[[501,{\"t\":1753896400000,\"tier\":1}],[502,{\"t\":1753896400000,\"tier\":3}]]",
+   "cargo": "[]",
+   "cgx": "[]",
+   "items": "[]",
+   "equip": "{}",
+   "equipAff": "{}",
+   "pinnedRecipe": "null",
+   "cargoTab": "\"mat\"",
+   "seenSp": "[\"s1234\",\"s777\"]",
+   "journal": "[]",
+   "mined": "[]",
+   "mineX": "[]",
+   "skimX": "[]",
+   "bioX": "[]",
+   "techOwned": "[]",
+   "claimedSets": "[]",
+   "ascCh": "0",
+   "ascProg": "{}",
+   "nameHue": "-1",
+   "_savedView": "null",
+   "fsMode": "\"\"",
+   "toneMode": "\"\"",
+   "fontMode": "\"\"",
+   "sndOn": "true",
+   "fxOn": "true",
+   "chartsOn": "false",
+   "shakeOn": "true",
+   "salvageConfirm": "true",
+   "notifOn": "true",
+   "tipsOn": "true",
+   "sfxVol": "1",
+   "glassTint": "0.72",
+   "motionMode": "-1",
+   "cardExpand": "0",
+   "notifications": "[]",
+   "surveyedSet": "[]",
+   "galSeen": "[]",
+   "surfSeen": "[]",
+   "xpFirsts": "[]",
+   "sysSeen": "[]",
+   "starKindsSeen": "[]",
+   "ptypesSeen": "[]",
+   "eventKeysSeen": "[]",
+   "_evAnnounced": "[]",
+   "unlocked": "[]",
+   "landed": "[]",
+   "contacted": "[]",
+   "_waveOffs": "[]",
+   "primeFill": "{}",
+   "frontierUnlocked": "false",
+   "frontierEnding": "null",
+   "seenGuide": "false",
+   "tutDone": "true",
+   "_rnSeen": "\"0\"",
+   "_tutSnapPending": "null",
+   "scoutId": "null",
+   "chWeek": "-1",
+   "chProg": "{}",
+   "chacc": "[]",
+   "chDone": "[]",
+   "homeId": "null",
+   "voiceOn": "true",
+   "combatSfxOn": "true",
+   "logMap": "[]",
+   "codex": "[[\"s1234\",{\"from\":\"Old\",\"g\":{\"accent\":9,\"behavior\":10,\"body\":5,\"color\":9,\"detail\":9,\"diet\":1,\"eyes\":0,\"form\":13,\"gen\":0,\"habitat\":13,\"head\":0,\"heat\":0.5,\"kingdom\":\"fauna\",\"life\":0,\"limbs\":1,\"loco\":11,\"lumin\":false,\"metab\":2,\"pattern\":3,\"repro\":6,\"seed\":1234,\"sense\":7,\"size\":4,\"skin\":6,\"tail\":2,\"temper\":1,\"trait\":7},\"hybrid\":false,\"kind\":\"Fauna\",\"name\":\"Toruneeus\",\"realm\":\"Aquatic Fauna\",\"sapient\":2,\"tier\":4}],[\"s777\",{\"from\":\"Old\",\"g\":{\"accent\":12,\"behavior\":6,\"body\":7,\"color\":7,\"detail\":4,\"diet\":3,\"eyes\":2,\"form\":4,\"gen\":0,\"habitat\":10,\"head\":2,\"heat\":0.3,\"kingdom\":\"flora\",\"life\":4,\"limbs\":5,\"loco\":11,\"lumin\":false,\"metab\":3,\"pattern\":1,\"repro\":0,\"seed\":777,\"sense\":4,\"size\":4,\"skin\":8,\"tail\":4,\"temper\":8,\"trait\":2},\"hybrid\":false,\"kind\":\"Flora\",\"name\":\"Morovoent\",\"realm\":\"Flora\",\"sapient\":0,\"tier\":2}]]"
+  },
+  "tut_midtraining": {
+   "EPOCH_BASE": "0",
+   "COSMIC_EPOCH": "0",
+   "essence": "0",
+   "explorerName": "\"\"",
+   "lastAnomKey": "null",
+   "stats": "{\"anomalies\":0,\"best\":0,\"bestRank\":0,\"breeds\":0,\"breedwins\":0,\"charters\":0,\"cosmics\":0,\"crafts\":0,\"duels\":0,\"duelwins\":0,\"essenceEarned\":0,\"events\":0,\"feedfails\":0,\"feeds\":0,\"guardians\":0,\"harvests\":0,\"hybrids\":0,\"jumps\":0,\"landings\":0,\"maxGen\":0,\"minedout\":0,\"mines\":0,\"paragons\":0,\"shares\":0,\"skims\":0,\"surveys\":0}",
+   "pstats": "{\"agi\":50,\"fer\":50,\"ins\":50,\"res\":50,\"vit\":50}",
+   "hp": "100",
+   "HP_MAX": "100",
+   "customNames": "[]",
+   "conquered": "[]",
+   "cargo": "[]",
+   "cgx": "[]",
+   "items": "[]",
+   "equip": "{}",
+   "equipAff": "{}",
+   "pinnedRecipe": "null",
+   "cargoTab": "\"mat\"",
+   "seenSp": "[]",
+   "journal": "[]",
+   "mined": "[]",
+   "mineX": "[]",
+   "skimX": "[]",
+   "bioX": "[]",
+   "techOwned": "[]",
+   "claimedSets": "[]",
+   "ascCh": "0",
+   "ascProg": "{}",
+   "nameHue": "-1",
+   "_savedView": "null",
+   "fsMode": "\"\"",
+   "toneMode": "\"\"",
+   "fontMode": "\"\"",
+   "sndOn": "true",
+   "fxOn": "true",
+   "chartsOn": "false",
+   "shakeOn": "true",
+   "salvageConfirm": "true",
+   "notifOn": "true",
+   "tipsOn": "true",
+   "sfxVol": "1",
+   "glassTint": "0.72",
+   "motionMode": "-1",
+   "cardExpand": "0",
+   "notifications": "[]",
+   "surveyedSet": "[]",
+   "galSeen": "[]",
+   "surfSeen": "[]",
+   "xpFirsts": "[]",
+   "sysSeen": "[]",
+   "starKindsSeen": "[]",
+   "ptypesSeen": "[]",
+   "eventKeysSeen": "[]",
+   "_evAnnounced": "[]",
+   "unlocked": "[]",
+   "landed": "[]",
+   "contacted": "[]",
+   "_waveOffs": "[]",
+   "primeFill": "{}",
+   "frontierUnlocked": "false",
+   "frontierEnding": "null",
+   "seenGuide": "false",
+   "tutDone": "false",
+   "_rnSeen": "\"0\"",
+   "_tutSnapPending": "{\"codex\":[],\"essence\":10,\"marker\":\"pre-training-expedition\"}",
+   "scoutId": "null",
+   "chWeek": "-1",
+   "chProg": "{}",
+   "chacc": "[]",
+   "chDone": "[]",
+   "homeId": "null",
+   "voiceOn": "true",
+   "combatSfxOn": "true",
+   "logMap": "[]",
+   "codex": "[]"
+  },
+  "settings_spread": {
+   "EPOCH_BASE": "0",
+   "COSMIC_EPOCH": "0",
+   "essence": "0",
+   "explorerName": "\"\"",
+   "lastAnomKey": "null",
+   "stats": "{\"anomalies\":0,\"best\":0,\"bestRank\":0,\"breeds\":0,\"breedwins\":0,\"charters\":0,\"cosmics\":0,\"crafts\":0,\"duels\":0,\"duelwins\":0,\"essenceEarned\":0,\"events\":0,\"feedfails\":0,\"feeds\":0,\"guardians\":0,\"harvests\":0,\"hybrids\":0,\"jumps\":0,\"landings\":0,\"maxGen\":0,\"minedout\":0,\"mines\":0,\"paragons\":0,\"shares\":0,\"skims\":0,\"surveys\":0}",
+   "pstats": "{\"agi\":50,\"fer\":50,\"ins\":50,\"res\":50,\"vit\":50}",
+   "hp": "100",
+   "HP_MAX": "100",
+   "customNames": "[]",
+   "conquered": "[]",
+   "cargo": "[]",
+   "cgx": "[]",
+   "items": "[]",
+   "equip": "{}",
+   "equipAff": "{}",
+   "pinnedRecipe": "null",
+   "cargoTab": "\"mat\"",
+   "seenSp": "[]",
+   "journal": "[]",
+   "mined": "[]",
+   "mineX": "[]",
+   "skimX": "[]",
+   "bioX": "[]",
+   "techOwned": "[]",
+   "claimedSets": "[]",
+   "ascCh": "0",
+   "ascProg": "{}",
+   "nameHue": "9",
+   "_savedView": "null",
+   "fsMode": "\"fs-xl\"",
+   "toneMode": "\"\"",
+   "fontMode": "\"font-sys\"",
+   "sndOn": "true",
+   "fxOn": "false",
+   "chartsOn": "false",
+   "shakeOn": "true",
+   "salvageConfirm": "false",
+   "notifOn": "false",
+   "tipsOn": "true",
+   "sfxVol": "1",
+   "glassTint": "0.98",
+   "motionMode": "0",
+   "cardExpand": "31",
+   "notifications": "[]",
+   "surveyedSet": "[]",
+   "galSeen": "[]",
+   "surfSeen": "[]",
+   "xpFirsts": "[]",
+   "sysSeen": "[]",
+   "starKindsSeen": "[]",
+   "ptypesSeen": "[]",
+   "eventKeysSeen": "[]",
+   "_evAnnounced": "[]",
+   "unlocked": "[]",
+   "landed": "[]",
+   "contacted": "[]",
+   "_waveOffs": "[]",
+   "primeFill": "{}",
+   "frontierUnlocked": "false",
+   "frontierEnding": "null",
+   "seenGuide": "false",
+   "tutDone": "true",
+   "_rnSeen": "\"0\"",
+   "_tutSnapPending": "null",
+   "scoutId": "null",
+   "chWeek": "-1",
+   "chProg": "{}",
+   "chacc": "[]",
+   "chDone": "[]",
+   "homeId": "null",
+   "voiceOn": "true",
+   "combatSfxOn": "true",
+   "logMap": "[]",
+   "codex": "[]"
+  },
+  "equip_integrity": {
+   "EPOCH_BASE": "0",
+   "COSMIC_EPOCH": "0",
+   "essence": "0",
+   "explorerName": "\"\"",
+   "lastAnomKey": "null",
+   "stats": "{\"anomalies\":0,\"best\":0,\"bestRank\":0,\"breeds\":0,\"breedwins\":0,\"charters\":0,\"cosmics\":0,\"crafts\":0,\"duels\":0,\"duelwins\":0,\"essenceEarned\":0,\"events\":0,\"feedfails\":0,\"feeds\":0,\"guardians\":0,\"harvests\":0,\"hybrids\":0,\"jumps\":0,\"landings\":0,\"maxGen\":0,\"minedout\":0,\"mines\":0,\"paragons\":0,\"shares\":0,\"skims\":0,\"surveys\":0}",
+   "pstats": "{\"agi\":50,\"fer\":50,\"ins\":50,\"res\":50,\"vit\":50}",
+   "hp": "100",
+   "HP_MAX": "100",
+   "customNames": "[]",
+   "conquered": "[]",
+   "cargo": "[]",
+   "cgx": "[]",
+   "items": "[[\"visor\",0],[\"headlamp\",1]]",
+   "equip": "{}",
+   "equipAff": "{}",
+   "pinnedRecipe": "null",
+   "cargoTab": "\"mat\"",
+   "seenSp": "[]",
+   "journal": "[]",
+   "mined": "[]",
+   "mineX": "[]",
+   "skimX": "[]",
+   "bioX": "[]",
+   "techOwned": "[]",
+   "claimedSets": "[]",
+   "ascCh": "0",
+   "ascProg": "{}",
+   "nameHue": "-1",
+   "_savedView": "null",
+   "fsMode": "\"\"",
+   "toneMode": "\"\"",
+   "fontMode": "\"\"",
+   "sndOn": "true",
+   "fxOn": "true",
+   "chartsOn": "false",
+   "shakeOn": "true",
+   "salvageConfirm": "true",
+   "notifOn": "true",
+   "tipsOn": "true",
+   "sfxVol": "1",
+   "glassTint": "0.72",
+   "motionMode": "-1",
+   "cardExpand": "0",
+   "notifications": "[]",
+   "surveyedSet": "[]",
+   "galSeen": "[]",
+   "surfSeen": "[]",
+   "xpFirsts": "[]",
+   "sysSeen": "[]",
+   "starKindsSeen": "[]",
+   "ptypesSeen": "[]",
+   "eventKeysSeen": "[]",
+   "_evAnnounced": "[]",
+   "unlocked": "[]",
+   "landed": "[]",
+   "contacted": "[]",
+   "_waveOffs": "[]",
+   "primeFill": "{}",
+   "frontierUnlocked": "false",
+   "frontierEnding": "null",
+   "seenGuide": "false",
+   "tutDone": "true",
+   "_rnSeen": "\"0\"",
+   "_tutSnapPending": "null",
+   "scoutId": "null",
+   "chWeek": "-1",
+   "chProg": "{}",
+   "chacc": "[]",
+   "chDone": "[]",
+   "homeId": "null",
+   "voiceOn": "true",
+   "combatSfxOn": "true",
+   "logMap": "[]",
+   "codex": "[]"
+  },
+  "recovery_from_backup": {
+   "EPOCH_BASE": "4",
+   "COSMIC_EPOCH": "4",
+   "essence": "777",
+   "explorerName": "\"Recovered\"",
+   "lastAnomKey": "null",
+   "stats": "{\"anomalies\":0,\"best\":0,\"bestRank\":0,\"breeds\":0,\"breedwins\":0,\"charters\":0,\"cosmics\":0,\"crafts\":0,\"duels\":0,\"duelwins\":0,\"essenceEarned\":0,\"events\":0,\"feedfails\":0,\"feeds\":0,\"guardians\":0,\"harvests\":0,\"hybrids\":0,\"jumps\":0,\"landings\":0,\"maxGen\":0,\"minedout\":0,\"mines\":0,\"paragons\":0,\"shares\":0,\"skims\":0,\"surveys\":0}",
+   "pstats": "{\"agi\":50,\"fer\":50,\"ins\":50,\"res\":50,\"vit\":50}",
+   "hp": "100",
+   "HP_MAX": "100",
+   "customNames": "[]",
+   "conquered": "[]",
+   "cargo": "[]",
+   "cgx": "[]",
+   "items": "[]",
+   "equip": "{}",
+   "equipAff": "{}",
+   "pinnedRecipe": "null",
+   "cargoTab": "\"mat\"",
+   "seenSp": "[]",
+   "journal": "[]",
+   "mined": "[]",
+   "mineX": "[]",
+   "skimX": "[]",
+   "bioX": "[]",
+   "techOwned": "[]",
+   "claimedSets": "[]",
+   "ascCh": "0",
+   "ascProg": "{}",
+   "nameHue": "-1",
+   "_savedView": "null",
+   "fsMode": "\"\"",
+   "toneMode": "\"\"",
+   "fontMode": "\"\"",
+   "sndOn": "true",
+   "fxOn": "true",
+   "chartsOn": "false",
+   "shakeOn": "true",
+   "salvageConfirm": "true",
+   "notifOn": "true",
+   "tipsOn": "true",
+   "sfxVol": "1",
+   "glassTint": "0.72",
+   "motionMode": "-1",
+   "cardExpand": "0",
+   "notifications": "[{\"id\":1,\"ms\":\"Your save data was damaged — the last good copy from a previous session was restored.\",\"read\":false,\"t\":\"«minted-at-boot»\",\"tt\":\"🛟 Save Recovered\"}]",
+   "surveyedSet": "[]",
+   "galSeen": "[]",
+   "surfSeen": "[]",
+   "xpFirsts": "[]",
+   "sysSeen": "[]",
+   "starKindsSeen": "[]",
+   "ptypesSeen": "[]",
+   "eventKeysSeen": "[]",
+   "_evAnnounced": "[]",
+   "unlocked": "[]",
+   "landed": "[]",
+   "contacted": "[]",
+   "_waveOffs": "[]",
+   "primeFill": "{}",
+   "frontierUnlocked": "false",
+   "frontierEnding": "null",
+   "seenGuide": "false",
+   "tutDone": "true",
+   "_rnSeen": "\"0\"",
+   "_tutSnapPending": "null",
+   "scoutId": "null",
+   "chWeek": "-1",
+   "chProg": "{}",
+   "chacc": "[]",
+   "chDone": "[]",
+   "homeId": "null",
+   "voiceOn": "true",
+   "combatSfxOn": "true",
+   "logMap": "[]",
+   "codex": "[]"
+  }
+ }
+}
