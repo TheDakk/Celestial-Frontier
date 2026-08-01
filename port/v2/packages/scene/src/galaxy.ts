@@ -12,7 +12,7 @@
 import { starsInCell, galaxyProfile } from '@cf/domain-worldgen';
 import { GR, GCELL } from '@cf/domain-worldconfig';
 
-export interface StarNode { x: number; y: number; c: string; s: number; seed: number; }
+export interface StarNode { x: number; y: number; c: string; s: number; seed: number; sol?: boolean; }   /* sol: the Sun, injected at SOL_POS (main.js 1531) */
 export interface DecoNode { k: string; x: number; y: number; [k: string]: unknown; }
 export interface GalaxyCellContent { stars: StarNode[]; deco: DecoNode[]; }
 
