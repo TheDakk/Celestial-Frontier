@@ -109,11 +109,15 @@ try {
     const r=(id)=>{ const el=document.getElementById(id); if(!el) return null;
       const b=el.getBoundingClientRect(); return { l:b.left, t:b.top, r:b.right, b:b.bottom, cx:(b.left+b.right)/2, w:b.width, vis: b.width>0&&b.height>0 }; };
     const pc=r('playerchip'), hp=r('hpbar'), pr=r('primechip'), obj=r('objchip'),
-      hint=r('hintpill'), ctx=r('ctxbar'), dock=r('dock'), rail=r('raillft'), dcx=r('dockcodex');
+      hint=r('hintpill'), ctx=r('ctxbar'), dock=r('dock'), rail=r('raillft'), dcx=r('dockcodex'),
+      srch=r('searchbox');
     const bad=[];
     if(!pc || pc.l>80 || pc.t>60) bad.push('playerchip not top-left');
     if(!hp || !pc || hp.t < pc.b-4) bad.push('HP bar not under the player chip');
-    if(!pr || Math.abs(pr.cx-W/2)>70 || pr.t>60) bad.push('Prime Codex pill not top-center');
+    if(!srch || !srch.vis || W-srch.r>40 || srch.t>60) bad.push('search bar not top-right');
+    if(srch && pc && pc.r > srch.l+4) bad.push('player chip overlaps the search bar');
+    if(W>900 && (!pr || Math.abs(pr.cx-W/2)>70 || pr.t>60)) bad.push('Prime Codex pill not top-center');
+    if(W<=900 && pr && pr.vis) bad.push('Prime pill should hide on phone (it rides the dock tier in the golden)');
     if(!obj || obj.l>40 || obj.t<H*0.18 || obj.t>H*0.42) bad.push('objective chip not left @~26vh: '+JSON.stringify(obj));
     if(!hint || Math.abs(hint.cx-W/2)>90 || hint.b<H-160) bad.push('hint pill not bottom-center');
     if(ctx && hint && ctx.b>hint.t+6) bad.push('caption not ABOVE the hint pill');
@@ -274,6 +278,33 @@ try {
     if (typeof saved.essence !== 'number') fails.push('save.essence is not a number — importSaveV2 did not run');
   }
 
+  /* 4a-search. THE SHARE-CODE ROUND TRIP: encode Earth's surface, climb to
+     the universe, paste the code in the search bar → travel straight back
+     (decodeWhere → the sanitized view → the same charter gates). */
+  const shareCode = await evalIn(`window.__CF_SLICE__.api.encodeHere()`);
+  if (!shareCode || !/^CF1-/.test(shareCode)) fails.push('encodeHere did not produce a CF1 code: ' + JSON.stringify(shareCode));
+  for (let i = 0; i < 3; i++) {   /* surface → system → galaxy → universe */
+    await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
+    await sleep(500);
+  }
+  const preJump = await evalIn(`window.__CF_SLICE__.api.state().mode`);
+  if (preJump !== 'universe') fails.push('Escape ladder did not reach the universe before the code jump: ' + preJump);
+  /* a NON-code string must only filter the codex, never move the camera */
+  const nonCode = await evalIn(`(()=>{ const s=document.getElementById('searchbox');
+    s.value='garbage that is not a code';
+    s.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}));
+    const st=window.__CF_SLICE__.api.state(); return { mode: st.mode, panel: st.panelOpen }; })()`);
+  if (nonCode.mode !== preJump) fails.push('a NON-code search string moved the camera: ' + nonCode.mode);
+  if (nonCode.panel !== 'codex') fails.push('a NON-code search did not open the Compendium filter: ' + JSON.stringify(nonCode.panel));
+  await evalIn(`(()=>{ document.querySelector('#codexpanel [data-pnx]').click(); return 1; })()`);   /* the ✕, so the next Escape reaches nav */
+  await evalIn(`(()=>{ const s=document.getElementById('searchbox');
+    s.value=${JSON.stringify(String(shareCode))};
+    s.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true}));
+    return 1; })()`);
+  await sleep(1500);
+  const back = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (back.mode !== 'surface' || back.star !== 424242) fails.push('the share code did not travel back to Earth: ' + JSON.stringify([back.mode, back.star]));
+
   /* 4b. THE ZOOM-DRIVEN TRANSITIONS (checkTransitions semantics) — the leg
      the click-descent tests structurally cannot see. We are on Earth's
      surface after the reload; ride the zoom ladder all the way up and back
@@ -352,15 +383,10 @@ try {
   if (!phBoot.canvas) fails.push('PHONE: no canvas');
   if (phBoot.w !== 390) fails.push('PHONE: viewport not 390: ' + phBoot.w);
   if (phBoot.name !== 'Dakk') fails.push('PHONE: the veteran save did not follow across targets (IndexedDB): ' + JSON.stringify(phBoot.name));
-  /* the phone golden: dock bottom-center, rail hidden, codex in the dock */
-  const phGeo = await evalPh(`(()=>{ const W=innerWidth;
-    const d=document.getElementById('dock').getBoundingClientRect();
-    const rail=document.getElementById('raillft').getBoundingClientRect();
-    const dcx=document.getElementById('dockcodex').getBoundingClientRect();
-    return { dockCx:(d.left+d.right)/2, W, railVis: rail.width>0, dcxVis: dcx.width>0 }; })()`);
-  if (Math.abs(phGeo.dockCx - phGeo.W / 2) > 60) fails.push('PHONE: dock not bottom-center: ' + JSON.stringify(phGeo));
-  if (phGeo.railVis) fails.push('PHONE: the desktop rail is visible');
-  if (!phGeo.dcxVis) fails.push('PHONE: codex missing from the dock');
+  /* the phone golden: the FULL geometry contract runs here too — the
+     player-chip/search overlap hid in a phone-only branch the first time */
+  const phGeo = await evalPh(geoCheck);
+  if (phGeo.length) fails.push('PHONE GOLDEN LAYOUT drift: ' + phGeo.join(' · '));
   const phPainted = await evalPh(`(async()=>{ const S=window.__CF_SLICE__;
     const px=await S.app.renderer.extract.pixels({ target: S.app.stage, frame: S.app.renderer.screen });
     const d=px.pixels||px; let lit=0; for(let i=0;i<d.length;i+=4){ if(d[i]+d[i+1]+d[i+2]>60) lit++; } return lit; })()`);

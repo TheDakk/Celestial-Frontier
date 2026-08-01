@@ -478,10 +478,27 @@
 ##   at the golden's exact spot with the golden's exact name.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS (12 standing controls) ·
 ##   proofsheet regenerated · main.js untouched.
+##   ✔★★ THE PHONE PORTRAIT FIXED + SEARCH LIVES (2026-08-01, batch 9 — Nick flagged
+##   the portrait misalignment): · the Prime pill was COLLIDING with the player chip
+##   on phones — in the phone golden Prime rides the dock tier, so ≤900px hides the
+##   top pill · the trail clipped off-right — now centered below the chip rows with
+##   ellipsis · the veteran surface OVERFILLED the phone as blur — drawSurface now
+##   FITS the globe (fitZ = 0.78·minWH/420) · the player chip ran under the search
+##   bar (padding past max-width; box-sizing'd — AND the check that should have seen
+##   it only ran on desktop: the PHONE now runs the FULL geometry contract, the
+##   instrument-first law again). · ★ THE SEARCH BAR (both goldens' top-right slot):
+##   paste a CF1 code → decodeWhere → the SANITIZED view → the SAME charter gates →
+##   TRAVEL (encodeWhere/decodeWhere round trip smoke-proven: encode Earth, Escape
+##   to the universe, paste, land back on Earth); a non-code string filters the
+##   Compendium by name (opens the panel with the filter chip); garbage NEVER moves
+##   the camera (asserted). · THE ESCAPE ORDER law lands (search field yields →
+##   panels → survey card → ascent) — the smoke's choreography adapted (its first
+##   Escape was correctly eaten by an open panel).
+##   Gates: vitest 22/220 · tsc clean · smoke PASS (full geometry on BOTH viewports,
+##   13 standing controls) · proofsheet regenerated · main.js untouched.
 ##   ▶ NEXT IN PHASE 4: Compendium detail cards (statBlockHTML seam) · the training
-##   port (--tut-bot contract, 21 steps) · search bar (top-right golden slot; needs
-##   decodeWhere paste flow) · Records/Atlas panels · focus restoration + Escape
-##   order · playRaritySting · CMB band-pick.
+##   port (--tut-bot contract, 21 steps) · Records/Atlas panels · playRaritySting ·
+##   CMB band-pick · focus RESTORATION (return focus to the opener).
 ##   ⛔ Nick (unchanged minimum): PASTE the real save into 📥 save · hold the phone ·
 ##   proof-sheet.png + listen · recruit the 12-24 (LISTENING_TEST.md).
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root

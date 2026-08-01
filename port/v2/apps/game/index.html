@@ -43,9 +43,27 @@
       border-color: #6e5a30; }
     #trail { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 48px);
       left: 50%; transform: translateX(-50%); z-index: 19; pointer-events: none;
-      font-size: 11px; letter-spacing: 0.06em; color: #8fa3c4; white-space: nowrap; }
+      font-size: 11px; letter-spacing: 0.06em; color: #8fa3c4; white-space: nowrap;
+      max-width: 92vw; overflow: hidden; text-overflow: ellipsis; }
     #trail .cur { color: #aee0ff; }
     #trail .sep { color: #5a6f95; padding: 0 5px; font-size: 9px; }
+
+    /* ---- top-right: the search bar (both goldens' slot) ---- */
+    #searchbox { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 10px);
+      right: 12px; z-index: 21; width: min(300px, 40vw); box-sizing: border-box;
+      padding: 8px 16px; font: 12.5px system-ui, sans-serif; color: #cfe0f4;
+      outline: none; }
+    #searchbox::placeholder { color: #6d84a8; }
+
+    /* the PHONE golden: Prime rides the dock tier there, not the top — and
+       the player chip yields room to the search bar */
+    @media (max-width: 900px) {
+      #primechip { display: none; }
+      #trail { top: calc(env(safe-area-inset-top, 0px) + 96px); }
+      #playerchip { box-sizing: border-box; max-width: calc(58vw - 32px);
+        overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; }
+      #searchbox { width: 42vw; }
+    }
 
     /* ---- the objective chip: LEFT, ~26vh (both goldens) ---- */
     #objchip { position: fixed; left: 12px; top: 26vh; z-index: 18;
@@ -122,6 +140,8 @@
     <div id="hpbar" class="glass pill"><span>❤</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="txt"></span></div>
   </header>
   <span id="primechip" class="glass pill"></span>
+  <input id="searchbox" class="glass pill" type="search" autocomplete="off" spellcheck="false"
+    placeholder="Search discoveries or paste code" aria-label="search or paste a code" />
   <div id="trail"></div>
   <span id="objchip" class="glass pill"></span>
   <div id="ctxbar"></div>
