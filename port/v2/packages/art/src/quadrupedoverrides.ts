@@ -72,6 +72,23 @@ function traceBody(c: Ctx, cx: number, cy: number, bodyW: number, bodyH: number,
   c.closePath();
 }
 
+/** ★ THE PATTERN LAW (Nick 2026-08-01): a coat mark must BLEND into the
+    skin at its edges — never a hard-edged polygon stamped on top. Every
+    mark is a radial gradient whose alpha falls to zero at the rim, and
+    organic patches are built from OVERLAPPING soft marks so their outline
+    is irregular the way a real coat is. Applies to every patterned
+    creature, in this wave and every wave after. */
+function softMark(c: Ctx, x: number, y: number, rx: number, ry: number, rgb: string, a: number, rot = 0): void {
+  c.save(); c.translate(x, y); c.rotate(rot); c.scale(1, ry / rx);
+  const gg = c.createRadialGradient(0, 0, rx * 0.10, 0, 0, rx);
+  gg.addColorStop(0, `rgba(${rgb},${a})`);
+  gg.addColorStop(0.55, `rgba(${rgb},${a * 0.82})`);
+  gg.addColorStop(0.82, `rgba(${rgb},${a * 0.34})`);
+  gg.addColorStop(1, `rgba(${rgb},0)`);
+  c.fillStyle = gg; c.beginPath(); c.arc(0, 0, rx, 0, TAU); c.fill();
+  c.restore();
+}
+
 export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
   const r = mulberry32(((g.seed as number) ^ 0x9AD4) >>> 0);
   const p = pal(p0, spec);
@@ -104,7 +121,9 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
     if (back === 'humped') return cy - bodyH * (0.55 + 0.42 * Math.pow(t, 2.2));
     if (back === 'sloped') return cy - bodyH * (0.40 + 0.55 * t);
     if (back === 'arched') return cy - bodyH * (0.52 + 0.30 * Math.sin(t * Math.PI));
-    return cy - bodyH * (0.52 + 0.06 * t);
+    /* even a level back gets a gentle withers-to-rump curve — a ruler
+       straight spine reads as a table edge, never as an animal */
+    return cy - bodyH * (0.50 + 0.08 * t + 0.07 * Math.sin(t * Math.PI));
   };
   const bodyGrad = c.createLinearGradient(cx, cy - bodyH, cx, cy + bodyH * 0.6);
   bodyGrad.addColorStop(0, p.lit); bodyGrad.addColorStop(0.55, p.base); bodyGrad.addColorStop(1, p.dark);
@@ -119,29 +138,46 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
   c.clip();
   const coat = spec.coat ?? 'plain';
   if (coat === 'spots') {
-    c.fillStyle = 'rgba(24,18,10,0.62)';
-    for (let i = 0; i < 46; i++) { const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 0.55 + r() * bodyH * 1.2; c.beginPath(); c.ellipse(x, y, 4 + r() * 4, 3.4 + r() * 3, r(), 0, TAU); c.fill(); }
+    for (let i = 0; i < 78; i++) {
+      const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 1.0 + r() * bodyH * 1.85;
+      const rr = 5 + r() * 5;
+      softMark(c, x, y, rr, rr * (0.7 + r() * 0.4), '24,18,10', 0.55 + r() * 0.18, r() * 3);
+    }
   } else if (coat === 'rosettes') {
-    for (let i = 0; i < 26; i++) {
-      const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 0.55 + r() * bodyH * 1.2, rad = 7 + r() * 6;
-      c.strokeStyle = 'rgba(28,20,10,0.66)'; c.lineWidth = 3.2;
-      c.beginPath(); c.arc(x, y, rad, 0.4, 5.6); c.stroke();
-      c.fillStyle = 'rgba(28,20,10,0.35)'; c.beginPath(); c.arc(x + 2, y + 1, rad * 0.34, 0, TAU); c.fill();
+    for (let i = 0; i < 38; i++) {
+      const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 1.0 + r() * bodyH * 1.85, rad = 8 + r() * 6;
+      /* the ring as 4-6 soft marks around a circle — broken and blended,
+         the way a real rosette sits in the fur */
+      const n = 4 + (r() * 3 | 0);
+      for (let k = 0; k < n; k++) {
+        const a = (k / n) * TAU + r() * 0.5;
+        softMark(c, x + Math.cos(a) * rad * 0.78, y + Math.sin(a) * rad * 0.66, rad * 0.42, rad * 0.34, '28,20,10', 0.5 + r() * 0.16, a);
+      }
+      softMark(c, x + 1, y + 1, rad * 0.34, rad * 0.28, '46,32,14', 0.30);
     }
   } else if (coat === 'stripes') {
-    c.fillStyle = 'rgba(20,14,8,0.72)';
-    for (let i = 0; i < 13; i++) {
-      const x = cx - bodyW + (i / 12) * bodyW * 2 + (r() - 0.5) * 8;
-      c.save(); c.translate(x, cy); c.rotate((r() - 0.5) * 0.4);
-      c.beginPath(); c.ellipse(0, 0, 4 + r() * 3, bodyH * 0.85, 0, 0, TAU); c.fill(); c.restore();
+    for (let i = 0; i < 15; i++) {
+      const x = cx - bodyW + (i / 14) * bodyW * 2 + (r() - 0.5) * 8;
+      const rot = (r() - 0.5) * 0.4, w = 5 + r() * 3, h = bodyH * (0.6 + r() * 0.35);
+      /* a band built from stacked soft marks — edges melt into the coat */
+      for (let k = 0; k < 5; k++) {
+        const t = (k / 4 - 0.5) * 2;
+        softMark(c, x + Math.sin(rot) * -t * h * 0.5, cy + t * h * 0.5, w, w * 1.25, '20,14,8', 0.62, rot);
+      }
     }
   } else if (coat === 'patches') {
-    c.fillStyle = 'rgba(120,72,26,0.75)';
-    for (let i = 0; i < 22; i++) {
-      const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 0.55 + r() * bodyH * 1.2, rad = 11 + r() * 9;
-      c.beginPath();
-      for (let k = 0; k < 6; k++) { const a = (k / 6) * TAU, rr = rad * (0.7 + r() * 0.5); const px = x + Math.cos(a) * rr, py = y + Math.sin(a) * rr * 0.85; k ? c.lineTo(px, py) : c.moveTo(px, py); }
-      c.closePath(); c.fill();
+    /* Nick 2026-08-01: "the giraffe could use a LOT more spots, and they
+       read as octagons" — the old 6-gon stamp is gone. Each patch is a
+       CLUSTER of overlapping soft marks, so its outline is irregular and
+       its edge dissolves into the hide. */
+    for (let i = 0; i < 84; i++) {
+      const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 1.05 + r() * bodyH * 1.9;
+      const rad = 8 + r() * 8;
+      const lobes = 3 + (r() * 3 | 0);
+      for (let k = 0; k < lobes; k++) {
+        const a = r() * TAU, d = rad * 0.42 * r();
+        softMark(c, x + Math.cos(a) * d, y + Math.sin(a) * d * 0.8, rad * (0.62 + r() * 0.34), rad * (0.5 + r() * 0.3), '122,74,28', 0.60 + r() * 0.16, r() * 3);
+      }
     }
   } else if (coat === 'panda') {
     c.fillStyle = '#15181e';   /* the shoulder band + forelimb blocking */
@@ -193,11 +229,17 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
   c.beginPath(); c.moveTo(shoulderX - bodyW * 0.1, shoulderY + bodyH * 0.2);
   c.quadraticCurveTo(shoulderX + neckLen * 0.30, shoulderY - neckLen * 0.45, headX, headY);
   c.stroke();
-  if ((spec.coat ?? 'plain') === 'patches') {   /* the giraffe's neck keeps its patches */
-    c.save(); c.strokeStyle = 'rgba(120,72,26,0.6)'; c.lineWidth = Math.max(6, bodyH * 0.22);
-    c.setLineDash([13, 9]);
-    c.beginPath(); c.moveTo(shoulderX - bodyW * 0.1, shoulderY + bodyH * 0.2);
-    c.quadraticCurveTo(shoulderX + neckLen * 0.30, shoulderY - neckLen * 0.45, headX, headY); c.stroke(); c.restore();
+  if ((spec.coat ?? 'plain') === 'patches') {
+    /* the neck carries the same SOFT patches (was a dashed stroke — a hard
+       edge, exactly what Nick flagged) */
+    const nSteps = 12;
+    for (let i = 1; i < nSteps; i++) {
+      const t = i / nSteps, mt = 1 - t;
+      const nx = mt * mt * (shoulderX - bodyW * 0.1) + 2 * mt * t * (shoulderX + neckLen * 0.30) + t * t * headX;
+      const ny = mt * mt * (shoulderY + bodyH * 0.2) + 2 * mt * t * (shoulderY - neckLen * 0.45) + t * t * headY;
+      const rr = Math.max(6, bodyH * 0.16);
+      softMark(c, nx + (r() - 0.5) * 6, ny + (r() - 0.5) * 6, rr * (0.8 + r() * 0.5), rr * (0.7 + r() * 0.4), '122,74,28', 0.55 + r() * 0.15, r() * 3);
+    }
   }
   const headGrad = c.createRadialGradient(headX - headR * 0.3, headY - headR * 0.35, 2, headX, headY, headR * 1.3);
   headGrad.addColorStop(0, p.lit); headGrad.addColorStop(0.6, p.base); headGrad.addColorStop(1, p.dark);

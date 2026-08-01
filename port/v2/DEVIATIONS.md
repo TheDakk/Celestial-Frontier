@@ -44,6 +44,15 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   made the verbatim Elephant (4.5/5) WORSE — Elephant variants, Zebra, Tiger, Lion, Red Panda and
   Raccoon were removed from the table and keep the bespoke painter. Governs every future wave.
   Also: the back line was smoothed (was faceted) and the spine rim feathered (was a hard edge).
+- ✔ **D-ART-15 — THE FIT PASS (wave 5, Nick's law).** Every override subject is painted to a
+  transparent layer, measured, and scaled+centred into the frame at a 0.90 margin (shrink
+  only). The verbatim engine's _fitPlant convention generalised to every painter — a clipped
+  subject (Hippo's muzzle, Giraffe's head) can no longer happen in any kingdom.
+- ✔ **D-ART-16 — THE PATTERN LAW (wave 5, Nick's law).** A coat mark must BLEND into the skin
+  at its edges, never a hard polygon stamped on top. softMark() = radial gradient falling to
+  zero alpha; organic patches are clusters of overlapping soft lobes. Giraffe patches (the
+  "octagons") rebuilt at 84 marks over the full torso and neck; spots, rosettes and stripes
+  all rewritten the same way. Applies to every patterned creature, this wave and after.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

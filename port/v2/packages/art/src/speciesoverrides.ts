@@ -26,6 +26,33 @@ function newCanvas(): { cv: HTMLCanvasElement; c: Ctx } {
   const cv = document.createElement('canvas'); cv.width = cv.height = S;
   return { cv, c: cv.getContext('2d')! };
 }
+/** ★ THE FIT PASS (Nick 2026-08-01: "make sure the animals fit within the
+    window" — Hippo's muzzle and Giraffe's head were running off frame).
+    The subject is painted to a TRANSPARENT layer, its ink measured, then
+    scaled+centred into the frame with a margin. This is the verbatim
+    engine's own convention for flora (_fitPlant) generalised to every
+    override painter, so NO subject can ever clip again — backward and
+    forward at once. */
+const FIT_MARGIN = 0.90;
+function fitInk(src: HTMLCanvasElement, dst: Ctx): void {
+  const sc = src.getContext('2d')!;
+  const data = sc.getImageData(0, 0, S, S).data;
+  let x0 = S, y0 = S, x1 = -1, y1 = -1;
+  for (let y = 0; y < S; y++) {
+    for (let x = 0; x < S; x++) {
+      if (data[(y * S + x) * 4 + 3]! > 12) {
+        if (x < x0) x0 = x; if (x > x1) x1 = x;
+        if (y < y0) y0 = y; if (y > y1) y1 = y;
+      }
+    }
+  }
+  if (x1 < 0) return;                       /* nothing drawn — leave the frame */
+  const w = x1 - x0 + 1, h = y1 - y0 + 1;
+  const target = S * FIT_MARGIN;
+  const k = Math.min(1, target / w, target / h);   /* only ever shrink */
+  const dw = w * k, dh = h * k;
+  dst.drawImage(src, x0, y0, w, h, (S - dw) / 2, (S - dh) / 2, dw, dh);
+}
 function palette(g: G): { base: string; cr: number; cg: number; cb: number; lit: string; dark: string } {
   /* mirror the verbatim engine's color read EXACTLY (hdart.verbatim.js:201):
      SP_HEX[ SP_COLOR[ color % SP_COLOR.length ] ] */
@@ -297,8 +324,9 @@ export function resolveOverride(g: G): string | null {
     const { cv, c } = newCanvas();
     vignette(c, false);
     floorFade(c);
-    const p = palette(g) as Pal;
-    (iconic || floraLadder)(c, g, p, name);
+    const ink = newCanvas();
+    (iconic || floraLadder)(ink.c, g, palette(g) as Pal, name);
+    fitInk(ink.cv, c);
     return cv.toDataURL();
   }
   /* FAUNA (wave 3): species whose defining anatomy was categorically wrong */
@@ -309,8 +337,10 @@ export function resolveOverride(g: G): string | null {
     const { cv, c } = newCanvas();
     vignette(c, false);
     floorFade(c);
-    if (fp) fp(c, g, palette(g) as Pal, name);
-    else faunaQuadruped(c, g, palette(g) as Pal, quad!);
+    const ink = newCanvas();
+    if (fp) fp(ink.c, g, palette(g) as Pal, name);
+    else faunaQuadruped(ink.c, g, palette(g) as Pal, quad!);
+    fitInk(ink.cv, c);
     return cv.toDataURL();
   }
   const painter = kingdom === 'fungi' ? FUNGI_NAME[name] : kingdom === 'microbe' ? MICROBE_NAME[name] : undefined;
@@ -318,8 +348,9 @@ export function resolveOverride(g: G): string | null {
   const { cv, c } = newCanvas();
   vignette(c, kingdom === 'fungi');
   floorFade(c);
-  const p = palette(g);
-  painter(c, g, p);
+  const ink = newCanvas();
+  painter(ink.c, g, palette(g));
+  fitInk(ink.cv, c);
   return cv.toDataURL();
 }
 

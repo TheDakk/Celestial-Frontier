@@ -686,6 +686,21 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 5 — NICK'S TWO LAWS: FIT THE FRAME · BLEND THE PATTERN (2026-08-01,
+##   batch 24). From his wave-4 review ("the hippo's nose is off screen, same with the giraffe
+##   … the spots are like octagons — make them blend into the skin, that's how it should look
+##   on ALL creatures"). ★LAW 1 THE FIT PASS: resolveOverride paints every subject to a
+##   TRANSPARENT layer, measures its ink bounds, and scales+centres it into the frame at a 0.90
+##   margin (shrink-only) — the verbatim engine's own _fitPlant convention generalised to EVERY
+##   override painter across all four kingdoms, so a clipped subject cannot happen again.
+##   ★LAW 2 THE PATTERN LAW: softMark() draws every coat mark as a radial gradient falling to
+##   ZERO alpha at the rim, and organic patches are CLUSTERS of overlapping soft lobes — the
+##   6-gon giraffe stamp is gone, replaced by 84 blended patches over the FULL torso (the old
+##   range missed the upper back) and carried up the neck as soft marks (was a dashed stroke).
+##   Spots (78), rosettes (broken soft rings + core) and stripes all rewritten the same way.
+##   Also: 'level' backs got a gentle withers-to-rump curve — a ruler-straight spine reads as a
+##   table edge, never an animal. D-ART-15/16. Gates: 1,254/1,254 · 0 fails · 0 dupes ·
+##   vitest 22/220 · slicesmoke PASS · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 4 — THE QUADRUPED SYSTEM + THE OVERRIDE LAW (2026-08-01, batch 23;
 ##   Nick: carry wave 3's structure "to everything, forward and backward"). ONE parameterized
 ##   mammal painter whose SPEC is the species: leg/depth/neck/BACK PROFILE (level/humped/sloped/

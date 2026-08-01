@@ -209,3 +209,41 @@ concentric bands, branching coral, honeycomb morel, fuzzy mold), microbes draw r
 name with bespoke iconic bodies. All keep the shared furniture (vignette, grounding shadow, rim
 separation, genome palette). No backward rework needed; the remaining gap is the UNTOUCHED long
 tail, which the audit tracks.
+
+---
+
+# WAVE 5 — LANDED 2026-08-01 (Nick's two laws: FIT THE FRAME · BLEND THE PATTERN)
+
+Nick's review of wave 4: *"the animals must fit within the window — the hippo's nose is off
+screen, same with the giraffe … the giraffe could use a lot more spots, the spots are like
+octagons right now. Make them blend into the creature's skin around the edges. That's the way
+it should look on all creatures."* Both became universal laws, applied backward and forward.
+
+## ★ LAW 1 — THE FIT PASS (no subject may ever clip)
+`resolveOverride` no longer lets a painter draw straight into the frame. Every override
+subject is painted to a TRANSPARENT layer, its ink bounds are measured, and it is
+scaled + centred into the frame at a 0.90 margin (shrink-only — a small creature is never
+blown up). This is the verbatim engine's own `_fitPlant` convention generalised to EVERY
+override painter, so the clip class cannot exist again — fungi, microbes, flora and fauna all
+route through it. Hippo's muzzle and Giraffe's head now sit fully in frame with air around
+them.
+
+## ★ LAW 2 — THE PATTERN LAW (a mark blends into the skin)
+A coat mark is never a hard-edged polygon stamped on the body. `softMark()` draws each mark
+as a radial gradient whose alpha falls to zero at the rim, and organic patches are built from
+OVERLAPPING soft marks so the outline is irregular the way a real coat is. Rewritten with it:
+- **patches** (Giraffe) — the 6-gon stamp that read as octagons is GONE; 84 patches, each a
+  cluster of 3-5 soft lobes, now covering the FULL torso (the old y-range missed the upper
+  back) and carried up the neck as soft marks (was a dashed stroke — another hard edge).
+- **spots** (Cheetah/Deer/Hyena/Lynx) — 78 soft marks, varied radii and rotation.
+- **rosettes** (Jaguar/Leopard/Snow Leopard) — the ring is 4-6 soft marks around a circle
+  with a soft core: broken and blended, the way a rosette sits in fur.
+- **stripes** — bands stacked from soft marks so their edges melt into the coat.
+
+## Also this wave
+The 'level' back got a gentle withers-to-rump curve: a ruler-straight spine reads as a table
+edge, never as an animal (same family as wave 4's faceted-back and hard-rim fixes).
+
+**Proof:** speciesaudit 1,254/1,254 · 0 failures · 0 duplicate pairs. Gates: vitest 22/220 ·
+tsc clean · slicesmoke PASS. hdart.verbatim.js STILL UNTOUCHED.
+**Ledger:** D-ART-15 (the fit pass) · D-ART-16 (the pattern-blending law).
