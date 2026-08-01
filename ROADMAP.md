@@ -251,12 +251,18 @@
 ##   run-1 instrument error) · real click-descent into gal 999 · ★ VIEW SURVIVES RELOAD through
 ##   IndexedDB (Gate D's save/reload leg, first browser proof) · zero console errors.
 ##   Screenshots at port/v2/apps/game/smoke/ (gitignored) — sent to Nick 2026-07-31.
-##   ▶ NEXT IN PHASE 3: galaxy-mode DECO in the slice (nebulae/clusters — data already in
-##   galaxyCell; and the haze belongs here per D-HAZE) · system-mode planetary art (painter
-##   pipeline: getPlanetSprite/planetThumb painters → textures) · surface mode (Ecology/
-##   Descriptors composition) · camera EASING (goTo) · pinch input · the survey card ·
-##   slicesmoke into CI cadence. ⛔ Nick: veteran save (Gate C) · phone leg · art verdict ·
-##   listening test.
+##   ✔★ THE GALAXY LOOKS LIKE THE GAME (78c61f2): ThumbArt + decoSprite/_quasarSpr lifted
+##   verbatim into @cf/art (lift-art-extras.mjs); slice layers galaxyHaze + nebulae/shells/
+##   remnants at Renderer size factors + star field; system mode draws real getPlanetSprite
+##   surfaces. Art-hook seam installed with reasons (_hdLater→setTimeout · getGalaxySprite→
+##   galSpriteFor · CARD_FACTS default map until D-STRAYS unification). 'open' clusters await
+##   the starSprite painter (recorded). Smoke PASS; galaxy screenshot sent to Nick.
+##   ▶ NEXT IN PHASE 3: starSprite lift ('open' clusters + system-mode star draw) · surface
+##   mode (Ecology/Descriptors composition + biome scene) · camera EASING (goTo) · pinch
+##   input · the survey card (HTML over typed selectors) · zoom-level LOD (deco/haze fade
+##   like the Renderer's c.z gates) · slicesmoke into a standing gate.
+##   ⛔ Nick: veteran save (Gate C) · phone leg · art verdict (the slice now shows REAL art —
+##   the verdict is judgeable from vite dev) · listening test.
 ##   ⚠ THRICE-RECORDED THIS SESSION: wrong-cwd commands damaged root files twice and a root
 ##   npm install once — ALWAYS cd explicitly before root-file or package.json work.
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 3 + §18 tree + Addendum D.
