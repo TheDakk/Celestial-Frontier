@@ -170,17 +170,23 @@
 ##   Truths pinned: conq e:1e9→EPOCH_BASE while absent-e stays absent · bred size:9 survives
 ##   UNWRAPPED through the real path · illegal equips + affixes rejected · notifs 70→60 ·
 ##   hostile {}-for-array loses one field, never the save · backup restore pays out (essence 777).
-## ▶ NEXT IN PHASE 2, in order:
-##   (1) ★ CONTENT-TABLE LIFT — the importer's discovered prerequisite: id validation needs
-##       MATERIALS · ITEMS/ITEM_BY · TECHS · BINDER_SETS · CHARTER_STARTERS/POOL · AFFIX_DEFS ·
-##       EQ_SLOTS · ACH · SIGS/SIG_IDS · RANK_HUES · ASC_CHAPTERS (data-only, app sections —
-##       lift-strays/apphooks pattern, or plan §18's packages/content).
-##   (2) the TS importer importSaveV2 in @cf/persistence, tested FIELD-BY-FIELD against
-##       save-fixtures.json results (never against itself); unimplemented fields listed
-##       explicitly per increment — recorded, not silent. Injected `now` for the future-t
-##       clamp (deliberately NOT fixture-pinned — it would encode capture time).
-##   (3) training snapshots (tsnap rehydration path) · (4) outcome tests around domain APIs.
-##   Gate C still needs NICK's real veteran save — once it exists, drop it in as fixture #10.
+## ✔★★ THE IMPORTER IS DONE AND PARITY-GREEN (46b317d): @cf/persistence importSaveV2 —
+##   the full load path as a pure function (injected now + content registry), 11/11 against
+##   save-fixtures.json across the 72-field surface with a completeness assertion. Derived-at-
+##   load semantics mirrored (onSpeciesStored rebuilds hybrids/best/maxGen; applyNameplate's
+##   rank raise lifts bestRank via the rankInfo score). The content VALIDATION SURFACE is its
+##   own gated fixture now: tools/contentregistry.js → port/baseline-v1.8.9/content-registry.json
+##   (62 items · 47 materials · 6 techs · tierMax 14; re-captures WITH content changes only).
+##   Strays grew the codex grade chain (_sanitizeView, REGIONS, RING_SPECTRUM, ASC_RING_R,
+##   regionAt, gradeCapAt, ringGrade); the extractor counts both bracket kinds now.
+##   ★ It FOUND 9i (string maxGen poisoning — see the findings list) — the parity harness
+##   paying for itself on its first real assignment.
+## ▶ NEXT IN PHASE 2: (1) the EXPORTER (buildSave mirror) + round-trip invariant
+##   import→export→import fixed-point · (2) training snapshots (tsnap rehydration) ·
+##   (3) outcome tests around domain APIs · (4) wire importSaveV2 to the repository
+##   (readPrimary→import→promoteLastKnownGood→recover chain as one tested flow).
+##   Gate C still needs NICK's real veteran save — once it exists, drop it in as fixture #10
+##   (savefixtures.js takes it verbatim; timestamps in a real save are past ⇒ deterministic).
 ##   Cold start: this block → port/v2/README.md → plan §20 Phase 2.
 ## ✔★ THE FOUR §23 DESIGN DECISIONS ARE MADE (Nick, 2026-07-31). Recorded in port/DECISIONS.md —
 ##   a NEW live record, so the supplied v4.0 plan stays the reference it was delivered as.
@@ -206,7 +212,14 @@
 ##   9f (stale premise in the `size` note — CORRECTED in the _sanitizeSavedGenome comment,
 ##   NICK'S CALL still open on the drift-balance question) · ✔ 9g CLOSED (guarded in the port:
 ##   data invariant at module 8 + end-to-end through speciesGrade at module 9) ·
-##   9h (browser as undeclared dependency — OPEN, tools/preflight owns it).
+##   9h (browser as undeclared dependency — OPEN, tools/preflight owns it) ·
+##   ★ 9i NEW (found BY the importer parity test, 2026-07-31): _sanitizeSavedGenome clamps
+##   brood/fed/xp/hurt but NOT `gen`; onSpeciesStored (main.js ~14018) compares coercively and
+##   assigns entry.gen RAW — a hostile save's gen:'2' (string) lands in stats.maxGen and
+##   PERSISTS into every future save (any maxGen+1 would concatenate to '21'). Candidate
+##   one-line fix (coerce gen at the comparison or add gen to the sanitizer's clamp list) is
+##   a DELIBERATE v1.9 change, not a critical fix — the freeze rule holds; the port reproduces
+##   it bug-for-bug until then (save-fixtures pins the string; both sides flagged in code).
 ## ═══════════════════════════════════════════════════════════════════════════════════
 
 ## ═══ WHERE THINGS STAND ═══
