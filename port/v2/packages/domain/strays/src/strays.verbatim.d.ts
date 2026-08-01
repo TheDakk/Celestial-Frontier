@@ -19,3 +19,11 @@ export const BIOME_SETS: Readonly<Record<string, ReadonlyArray<Record<string, un
 export function biomeFor(P: { seed: number; type?: string }, band: string): Record<string, unknown> | null;
 export function hdGenesFor(g: Genome | Record<string, unknown>): Record<string, unknown>;
 export function _sanitizeSavedGenome(g: unknown): Record<string, unknown> | null;
+/* Phase 2 additions — the codex-import grade path + the view sanitizer */
+export function _sanitizeView(v: unknown): Record<string, unknown> | null;
+export const REGIONS: ReadonlyArray<{ name: string; sigs: number; r: number }>;
+export const RING_SPECTRUM: ReadonlyArray<{ cap: number; n: string; note: string }>;
+export const ASC_RING_R: number;
+export function regionAt(x: number, y: number): number;
+export function gradeCapAt(where: unknown): number;
+export function ringGrade(g: Record<string, unknown> | null | undefined, grade: Record<string, unknown> | null | undefined, where: unknown): Record<string, unknown> | null | undefined;

@@ -35,20 +35,35 @@ const STRAYS = [
   ['biomeFor', 'function biomeFor(P, band){'],
   ['hdGenesFor', 'function hdGenesFor(g){'],
   ['_sanitizeSavedGenome', 'function _sanitizeSavedGenome(g){'],
+  /* Phase 2 additions — the codex-import grade path + the view sanitizer */
+  ['_sanitizeView', 'function _sanitizeView(v){'],
+  ['REGIONS', 'const REGIONS=['],
+  ['RING_SPECTRUM', 'const RING_SPECTRUM=['],
+  ['ASC_RING_R', 'const ASC_RING_R='],
+  ['regionAt', 'function regionAt(x,y){'],
+  ['gradeCapAt', 'function gradeCapAt(where){'],
+  ['ringGrade', 'function ringGrade(g, grade, where){'],
 ];
 
 function extract(anchor) {
   const i0 = lines.findIndex((l) => l.includes(anchor));
   if (i0 < 0) throw new Error('anchor not found: ' + anchor);
-  if (!lines[i0].includes('{')) return { text: lines[i0], from: i0 + 1, to: i0 + 1 };  /* braceless one-liner (data const) */
+  /* one-liner consts (no bracket of either kind opens a block) */
+  if (!lines[i0].includes('{') && !lines[i0].includes('[')) return { text: lines[i0], from: i0 + 1, to: i0 + 1 };
+  /* balanced scan over BOTH bracket kinds — `const X=[{…},{…}];` closes on
+     `];`, and counting only braces cut the final `];` off (found when
+     REGIONS/RING_SPECTRUM joined the roster) */
   let depth = 0, started = false;
   const body = [];
   for (let i = i0; i < lines.length; i++) {
     body.push(lines[i]);
-    for (const ch of lines[i]) { if (ch === '{') { depth++; started = true; } else if (ch === '}') depth--; }
+    for (const ch of lines[i]) {
+      if (ch === '{' || ch === '[') { depth++; started = true; }
+      else if (ch === '}' || ch === ']') depth--;
+    }
     if (started && depth <= 0) return { text: body.join('\n'), from: i0 + 1, to: i + 1 };
   }
-  throw new Error('unbalanced braces from anchor: ' + anchor);
+  throw new Error('unbalanced brackets from anchor: ' + anchor);
 }
 
 const parts = STRAYS.map(([name, anchor]) => ({ name, ...extract(anchor) }));
