@@ -18,7 +18,8 @@
     "smoke": "node tools/slicesmoke.mjs",
     "proofsheet": "node tools/proofsheet.mjs",
     "perf": "node tools/sliceperf.mjs",
-    "speciesaudit": "node tools/speciesaudit.mjs"
+    "speciesaudit": "node tools/speciesaudit.mjs",
+    "speciesexport": "node tools/speciesexport.mjs"
   },
   "devDependencies": {
     "@types/node": "26.1.2",
