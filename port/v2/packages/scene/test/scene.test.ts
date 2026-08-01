@@ -40,6 +40,36 @@ describe('@cf/scene — zoom-mode state machine (Gate D navigation core)', () =>
     expect((v.star as { seed: number }).seed).toBe(424242);
     expect(v.pseed).toBe(133);
   });
+  it('★ viewToNav round-trips through the REAL _sanitizeView (the save pipeline contract)', async () => {
+    const { viewToNav } = await import('@cf/scene');
+    const { _sanitizeView } = await import('@cf/domain-strays');
+    const gal = { seed: 999, x: 90, y: -60, size: 14.5, sp: 4, tilt: 0.62, rot: 1.13, home: true };
+    let s = (enterGalaxy(NAV_HOME, gal) as { ok: true; state: NavState }).state;
+    s = (enterSystem(s, { seed: 424242, x: 560, y: 170 }) as { ok: true; state: NavState }).state;
+    s = (land(s, { seed: 133 }) as { ok: true; state: NavState }).state;
+    /* surface → view → sanitize → nav: mode and every seed survive */
+    const back = viewToNav(_sanitizeView(navToView(s)));
+    expect(back.mode).toBe('surface');
+    expect(back.gal!.seed).toBe(999);
+    expect(back.star!.seed).toBe(424242);
+    expect(back.planet!.seed).toBe(133);
+    /* system (no planet) and galaxy tiers round-trip too */
+    const sys = (ascend(s) as { ok: true; state: NavState }).state;
+    expect(viewToNav(_sanitizeView(navToView(sys))).mode).toBe('system');
+    const galOnly = (ascend(sys) as { ok: true; state: NavState }).state;
+    expect(viewToNav(_sanitizeView(navToView(galOnly))).mode).toBe('galaxy');
+  });
+  it('viewToNav DEGRADES toward home instead of inventing context', async () => {
+    const { viewToNav, NAV_HOME: HOME } = await import('@cf/scene');
+    expect(viewToNav(null)).toBe(HOME);
+    expect(viewToNav({})).toBe(HOME);
+    /* a planet view with no star cannot be a surface — it is a galaxy view */
+    expect(viewToNav({ type: 'planet', gal: { seed: 7, x: 0, y: 0 }, pseed: 3 }).mode).toBe('galaxy');
+    /* a star view with a garbage star seed is a galaxy view */
+    expect(viewToNav({ type: 'star', gal: { seed: 7, x: 0, y: 0 }, star: { seed: NaN, x: 0, y: 0 } }).mode).toBe('galaxy');
+    /* no gal at all — universe, whatever the type claims */
+    expect(viewToNav({ type: 'planet', star: { seed: 1, x: 0, y: 0 }, pseed: 3 }).mode).toBe('universe');
+  });
 });
 
 describe('@cf/scene — universe composition from the ported domain', () => {

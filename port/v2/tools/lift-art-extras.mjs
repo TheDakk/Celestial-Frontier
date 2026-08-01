@@ -43,6 +43,8 @@ const PIECES = [
   ['_nsCoreSpr', 'function _nsCoreSpr(){'],
   ['_bhSprC', 'let _bhSprC=null;'],
   ['_bhSpr', 'function _bhSpr(){'],
+  ['_cloudSprCache', 'const _cloudSprCache=new Map();'],
+  ['_cloudSpr', 'function _cloudSpr(P){'],
 ];
 function extract(anchor) {
   const i0 = lines.findIndex((l) => l.includes(anchor));
@@ -75,6 +77,6 @@ const header = `/* AUTO-LIFTED VERBATIM renderer-section painters from main.js (
    Browser-only (canvas). */
 `;
 const out = header + importLines.join('\n') + (importLines.length ? '\n\n' : '') + bodyOut +
-  '\nexport { decoSprite, _quasarSpr, starSprite, _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr, _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr };\n';
+  '\nexport { decoSprite, _quasarSpr, starSprite, _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr, _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr };\n';
 fs.writeFileSync(path.join(here, '..', 'packages', 'art', 'src', 'artextras.verbatim.js'), out);
 console.log('lifted art extras (sha ' + sha + '), imports: ' + (importLines.join(' | ') || 'none'));

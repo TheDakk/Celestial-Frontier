@@ -13,6 +13,7 @@ import { SPECTRA, spectral } from '@cf/domain-speciestraits';
 import { describeSpecies, makeGenome, sapienceTier } from '@cf/domain-genome';
 import { evolveGenome } from '@cf/domain-genetics';
 import { biosphere, civilization, planetSpecies } from '@cf/domain-ecology';
+import { regionAt } from '@cf/domain-strays';
 
 
 function magnetText(P){

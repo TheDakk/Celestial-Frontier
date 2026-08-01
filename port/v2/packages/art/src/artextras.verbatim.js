@@ -1,6 +1,6 @@
 /* AUTO-LIFTED VERBATIM renderer-section painters from main.js (v1.8.9):
-   _starSpr (3799-3799) · starSprite (3800-3828) · _decoSpr (3833-3833) · decoSprite (3834-4008) · _quasarSprC (4804-4804) · _quasarSpr (4805-4878) · _rockSprites (4353-4353) · _rockSet (4354-4381) · _ringSprCache (4386-4386) · _ringSprite (4387-4446) · _starSurfCache (4454-4454) · _starSurf (4455-4516) · _moonSprs (4517-4517) · _moonSpr (4518-4697) · _dwarfSprs (4698-4698) · _dwarfSpr (4699-4711) · _rogueSprC (4755-4755) · _rogueSpr (4756-4766) · _beamSprC (4767-4767) · _beamSpr (4768-4779) · _nsCoreSprC (4780-4780) · _nsCoreSpr (4781-4791) · _bhSprC (4910-4910) · _bhSpr (4911-4991).
-   body sha256/16 62d6691350cb72db. ⚠ DO NOT EDIT. Regenerate: node tools/lift-art-extras.mjs
+   _starSpr (3799-3799) · starSprite (3800-3828) · _decoSpr (3833-3833) · decoSprite (3834-4008) · _quasarSprC (4804-4804) · _quasarSpr (4805-4878) · _rockSprites (4353-4353) · _rockSet (4354-4381) · _ringSprCache (4386-4386) · _ringSprite (4387-4446) · _starSurfCache (4454-4454) · _starSurf (4455-4516) · _moonSprs (4517-4517) · _moonSpr (4518-4697) · _dwarfSprs (4698-4698) · _dwarfSpr (4699-4711) · _rogueSprC (4755-4755) · _rogueSpr (4756-4766) · _beamSprC (4767-4767) · _beamSpr (4768-4779) · _nsCoreSprC (4780-4780) · _nsCoreSpr (4781-4791) · _bhSprC (4910-4910) · _bhSpr (4911-4991) · _cloudSprCache (4883-4883) · _cloudSpr (4884-4909).
+   body sha256/16 aa06054db71ba330. ⚠ DO NOT EDIT. Regenerate: node tools/lift-art-extras.mjs
    Browser-only (canvas). */
 import { mulberry32, clamp, makeNoise, TAU, hashInt } from '@cf/domain-rand';
 
@@ -752,4 +752,31 @@ function _bhSpr(){
   g.setTransform(1,0,0,1,0,0);
   return _bhSprC=cv;
 }
-export { decoSprite, _quasarSpr, starSprite, _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr, _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr };
+const _cloudSprCache=new Map();
+function _cloudSpr(P){
+  let sp=_cloudSprCache.get(P.seed); if(sp) return sp;
+  if(_cloudSprCache.size>12){ _cloudSprCache.delete(_cloudSprCache.keys().next().value); }
+  const PX=256, cv=document.createElement('canvas'); cv.width=cv.height=PX;
+  const g=cv.getContext('2d');
+  const img=g.createImageData(PX,PX), d=img.data;
+  const fbm=makeNoise((P.seed^0xC10D)>>>0);
+  const R0=PX/2;
+  for(let y=0;y<PX;y++){
+    const dy=(y-R0)/R0;
+    for(let x=0;x<PX;x++){
+      const dx=(x-R0)/R0, rr2=dx*dx+dy*dy, i=(y*PX+x)*4;
+      if(rr2>1){ d[i+3]=0; continue; }
+      const z=Math.sqrt(1-rr2), u=Math.atan2(dx,z)*1.4;
+      const wf3=0.55+((hashInt(P.seed>>>0,0x33D,2)&255)/255)*0.5;
+      const cl=fbm(u*2.2*wf3+7, dy*2.2/(0.75+wf3*0.35)+11, 4);
+      let a=cl>0.60 ? Math.min((cl-0.60)*3.0, 0.8) : 0;
+      const rr=Math.sqrt(rr2);
+      if(rr>0.82) a*=Math.max(0,(1-rr)/0.18);   /* taper well before the limb */
+      d[i]=250; d[i+1]=252; d[i+2]=255; d[i+3]=(a*255)|0;
+    }
+  }
+  g.putImageData(img,0,0);
+  _cloudSprCache.set(P.seed, cv);
+  return sp=cv;
+}
+export { decoSprite, _quasarSpr, starSprite, _rockSet, _ringSprite, _starSurf, _moonSpr, _dwarfSpr, _rogueSpr, _beamSpr, _nsCoreSpr, _bhSpr, _cloudSpr };
