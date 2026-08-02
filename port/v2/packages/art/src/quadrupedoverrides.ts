@@ -17,6 +17,7 @@
    Everything unlisted still falls through to the byte-verbatim engine. */
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { formMark, furRim, rootedSpine, ellipsePts, type Form } from './surface.js';
+import { alienEyes, alienSkin, alienGlow, alienSail, alienArmor, type AlienTraits } from './alientraits.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -39,6 +40,12 @@ export interface QuadSpec {
   humps?: 1 | 2;
   trunk?: boolean;
   hue?: string;                 /* species-true color where color IS identity */
+  /* ★ wave 14: strangeness INSIDE our rendering language. An alien trait is
+     an ADDITION to a body this system already draws well, never a
+     replacement — a six-legged creature still gets the jointed limbs, deep
+     chest and tucked waist, it simply has three pairs. Earth species leave
+     this undefined and are byte-unchanged. */
+  alien?: AlienTraits;
   face?: 'mask' | 'tears' | 'none';
 }
 
@@ -148,8 +155,17 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.fillStyle = col;   /* the foot */
     c.beginPath(); c.ellipse(footX + 1, groundY, legW * 0.52, legW * 0.30, 0, 0, TAU); c.fill();
   };
-  drawLeg(cx - bodyW * 0.52, 0.8, legLen, true); drawLeg(cx + bodyW * 0.46, 0.8, legLen, false);
-  drawLeg(cx - bodyW * 0.62, 1, legLen, true); drawLeg(cx + bodyW * 0.56, 1, legLen, false);
+  /* ★ LIMB PAIRS. The genome's locomotion genes have described many-legged
+     creatures since v1.0 and the art has only ever drawn four legs. Pairs are
+     spaced along the torso so a six- or eight-legged animal still reads as
+     one body, not a train of hips. */
+  const pairs = spec.alien?.legPairs ?? 2;
+  for (let i = 0; i < pairs; i++) {
+    const t = i / (pairs - 1);                            /* 0 = rear, 1 = front */
+    const back = -0.62 + t * 1.18;
+    drawLeg(cx + bodyW * back, 0.8, legLen, t < 0.5);      /* far side, shaded */
+    drawLeg(cx + bodyW * (back + 0.10), 1, legLen, t < 0.5);
+  }
 
   /* ---- the torso: a profile whose BACK LINE is the species ---- */
   const topY = (t: number): number => {
@@ -227,11 +243,19 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 0.9 + r() * bodyH * 1.8;
       formMark(c, x, y, 7 + r() * 7, 4 + r() * 4, r() < 0.6 ? '28,20,12' : '236,228,208', 0.16 + r() * 0.18, torsoForm);
     }
-  } else if (coat === 'banded') {
+  } else if (coat === 'banded' && !spec.alien?.skin) {
     c.fillStyle = 'rgba(26,20,14,0.5)';
     for (let i = 0; i < 5; i++) { c.beginPath(); c.ellipse(cx - bodyW * 0.6 + i * bodyW * 0.35, cy + bodyH * 0.1, bodyW * 0.10, bodyH * 0.8, 0.25, 0, TAU); c.fill(); }
   }
+  /* an alien SKIN FINISH replaces the coat treatment, inside the same clip
+     so it reads as the animal's own surface and obeys the surface laws */
+  if (spec.alien?.skin) alienSkin(c, spec.alien.skin, torsoForm, p, r);
   c.restore();
+  if (spec.alien?.sail) {
+    alienSail(c, cx + bodyW * 0.05, topY(0.5) + bodyH * 0.05, bodyW * 0.62, bodyH * 1.5, p);
+  }
+  if (spec.alien?.armor) alienArmor(c, torsoForm, p);
+  if (spec.alien?.lumin) alienGlow(c, torsoForm, p, r, 10);
   if (coat === 'shaggy') {
     /* ★ THE FUR RIM — tufts pushed THROUGH the outline. Without this a
        "shaggy" coat is noise inside a machined edge, and the silhouette
@@ -360,9 +384,25 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.strokeStyle = 'rgba(22,16,10,0.8)'; c.lineWidth = 3;
     c.beginPath(); c.moveTo(headX + headR * 0.05, headY - headR * 0.05); c.quadraticCurveTo(headX + headR * 0.5, headY + headR * 0.3, headX + headR * 0.85, headY + headR * 0.35); c.stroke();
   }
-  /* the eye, last so it always reads */
-  c.fillStyle = '#0d1016'; c.beginPath(); c.arc(headX + headR * 0.08, headY - headR * 0.12, headR * 0.16, 0, TAU); c.fill();
-  c.fillStyle = 'rgba(255,255,255,0.85)'; c.beginPath(); c.arc(headX + headR * 0.03, headY - headR * 0.18, headR * 0.06, 0, TAU); c.fill();
+  /* the eye, last so it always reads — and an alien eye is the single most
+     alien thing a face can do, so it routes here rather than replacing the head */
+  if (spec.alien?.eyes && spec.alien.eyes !== 'normal') {
+    alienEyes(c, headX + headR * 0.08, headY - headR * 0.12, headR * 0.16, spec.alien.eyes, p);
+    if (spec.alien.tendrils) {   /* the tendril-fringed head gene */
+      c.strokeStyle = p.dark; c.lineCap = 'round'; c.lineWidth = Math.max(2, headR * 0.09);
+      for (let i = 0; i < 6; i++) {
+        const a2 = -0.9 + i * 0.34;
+        const bx2 = headX + headR * (0.6 + mz * 0.6), by2 = headY + headR * 0.28;
+        c.beginPath(); c.moveTo(bx2, by2);
+        c.quadraticCurveTo(bx2 + headR * 0.7, by2 + Math.sin(a2) * headR * 0.7,
+          bx2 + headR * 1.25, by2 + Math.sin(a2) * headR * 1.35);
+        c.stroke();
+      }
+    }
+  } else {
+    c.fillStyle = '#0d1016'; c.beginPath(); c.arc(headX + headR * 0.08, headY - headR * 0.12, headR * 0.16, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(255,255,255,0.85)'; c.beginPath(); c.arc(headX + headR * 0.03, headY - headR * 0.18, headR * 0.06, 0, TAU); c.fill();
+  }
 
   /* ---- the signature organ ---- */
   const horn = spec.horn;

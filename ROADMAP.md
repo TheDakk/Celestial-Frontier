@@ -686,6 +686,30 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 14 — STRANGENESS INSIDE OUR LANGUAGE (2026-08-01, batch 35).
+##   Nick chose OPTION (b) from wave 13: don't accept a more Earth-like procedural world in
+##   exchange for coherence — push the strangeness back IN. ★THE RULE THAT KEEPS IT FROM
+##   UNDOING WAVE 13: an alien trait is an ADDITION to a body our systems already draw well,
+##   NEVER a replacement. A six-legged creature is still built on the quadruped's jointed
+##   limbs, deep chest and tucked waist — it simply has three pairs. That is what makes an
+##   alien animal look like an ANIMAL rather than a pile of shapes, and it is why the Earth
+##   pass had to come first: we had to know how a real leg attaches before giving something
+##   six of them. ★packages/art/src/alientraits.ts — each trait driven by a gene THE ART NEVER
+##   SHOWED: legPairs 2/3/4 from loco (pairs spaced along the torso so 6 or 8 legs read as ONE
+##   body, not a train of hips) · STALKED eyes · eye CLUSTER · BLIND (a sensory PIT, so the
+##   face reads as perceiving not missing) · TENDRILS · plated/chitinous/crystalline/
+##   TRANSLUCENT (the shadow of what is INSIDE — the clearest cue a body is not flesh)/warty
+##   skins · a membranous DORSAL SAIL · segmented ARMOUR bands. ★★AND THE LUMIN FLAG: every
+##   genome since v1.0 has carried it and NO painter had ever drawn it — bioluminescence now
+##   renders OUTSIDE the body clip so the glow spills past the silhouette, which is the entire
+##   point of a glow. Every skin finish obeys the SURFACE LAWS (wrapped to the form, lit by it)
+##   because a plate that ignores the light is exactly the sticker wave 12 killed. ★THE EARTH
+##   CATALOGUE IS UNTOUCHED: alien is optional and undefined for every named species — verified
+##   by strip vs Giraffe/Hippo/Rhino/Camel/Moose/Wolf/Leopard/Cheetah/Musk Ox/Oryx and by 0
+##   duplicate pairs across 1,254. ★DETERMINISM HOLDS: traits selected from genome fields only;
+##   goldenseeds 198,000 + v1.0 FINGERPRINT MATCH still passing. D-ART-48/49.
+##   GATES: vitest 220 · tsc · artbattery 5/5 · speciesaudit 1254/1254 0 dupes 0 clipped ·
+##   slicesmoke PASS · perf 1479/2203ms · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 13 — THE PROCEDURAL CREATURES (2026-08-01, batch 34).
 ##   ★FIRST AN INSTRUMENT GAP: we had NEVER ONCE LOOKED at a procedural creature — every
 ##   instrument took a species NAME, so 12 waves were judged entirely on the Earth catalogue.

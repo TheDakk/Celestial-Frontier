@@ -28,6 +28,7 @@ import type { FishSpec } from './faunaoverrides3.js';
 import type { InsectSpec } from './invertoverrides.js';
 import type { BirdSpec } from './faunaoverrides.js';
 import type { PlantSpec } from './floraoverrides2.js';
+import type { AlienTraits } from './alientraits.js';
 
 type G = Record<string, unknown>;
 const idx = (g: G, k: string, n: number): number => (((g[k] as number) || 0) % n + n) % n;
@@ -130,6 +131,26 @@ export function planFor(g: G): ProcPlan {
       },
     };
     case 0: case 1: case 2: case 10: case 11: case 12: case 13: {
+      /* ★ WAVE 14 (Nick chose option b): the strangeness goes back IN. Each
+         trait is driven by a gene the genome has always carried and the art
+         has never shown — many-legged locomotion, tendril-fringed and
+         domed-and-bulbous heads, chitinous/plated/crystalline/translucent
+         skins, and the lumin flag that has been in every genome since v1.0
+         and was never once drawn. */
+      const alien: AlienTraits = {
+        legPairs: (loco === 5 || loco === 11 || loco === 17) ? 4
+          : (loco === 1 || loco === 7 || loco === 14 || body === 1) ? 3 : 2,
+        eyes: head === 2 ? 'blind' : head === 7 ? 'cluster' : head === 5 ? 'stalked' : 'normal',
+        ...(skin === 2 ? { skin: 'chitinous' as const }
+          : skin === 4 ? { skin: 'plated' as const }
+          : skin === 8 ? { skin: 'crystalline' as const }
+          : skin === 7 ? { skin: 'translucent' as const }
+          : skin === 5 ? { skin: 'warty' as const } : {}),
+        tendrils: head === 5,
+        lumin: Boolean(g.lumin),
+        sail: body === 12 && loco !== 4,
+        armor: body === 1,
+      };
       /* the limbed plans — our quadruped system, proportioned from the genes */
       const stilt = body === 2, squat = body === 13, spindly = body === 12;
       return {
@@ -145,6 +166,7 @@ export function planFor(g: G): ProcPlan {
           ears: (['tiny', 'small', 'round', 'large', 'huge'] as const)[head % 5]!,
           tail: (['none', 'stub', 'tuft', 'bushy', 'long', 'plume', 'banded'] as const)[tail]!,
           coat: body === 1 ? 'banded' : COAT[pattern]!,
+          alien,
           ...(body === 10 ? { horn: (tail % 2 ? 'tuskup' : 'tuskdown') as NonNullable<QuadSpec['horn']> }
             : body === 11 ? { horn: HORN[head % HORN.length]! } : {}),
         },

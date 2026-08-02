@@ -868,3 +868,49 @@ Two ways forward, and this one is Nick's call:
 0 duplicate pairs · 0 clipped (the 240 procedural portraits included) · slicesmoke PASS ·
 perf 1391/2112ms · goldenseeds 198,000 · validate FINGERPRINT MATCH.
 `hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-46 · D-ART-47.
+
+---
+
+# WAVE 14 — LANDED 2026-08-01 (STRANGENESS INSIDE OUR RENDERING LANGUAGE)
+
+Nick chose **option (b)** from wave 13's decision: rather than accept a more Earth-like
+procedural world in exchange for coherence, push the strangeness back **in**.
+
+## The rule that keeps this from undoing wave 13
+**An alien trait is an ADDITION to a body our systems already draw well, never a replacement
+for it.** A six-legged creature is still built on the quadruped's jointed limbs, deep chest
+and tucked waist — it simply has three pairs. That is what makes an alien animal look like an
+ANIMAL rather than a pile of shapes, and it is the whole reason the Earth pass had to come
+first: we had to know how a real leg attaches before we could give something six of them.
+
+## `packages/art/src/alientraits.ts` — each trait driven by a gene the art never showed
+| trait | the gene behind it | what it does |
+|---|---|---|
+| **legPairs 2·3·4** | `loco` (burrowers · leapers · wall-clingers · pack hunters · climbers · tentacle-walkers) | pairs spaced along the torso so six or eight legs still read as ONE body, not a train of hips |
+| **stalked eyes** | `head` = tendril-fringed | eyes on flexible stalks, each with its own highlight |
+| **eye cluster** | `head` = domed and bulbous | five asymmetric eyes |
+| **blind** | `head` = eyeless and smooth | a sensory PIT, so the face still reads as perceiving rather than missing |
+| **tendrils** | `head` = tendril-fringed | a fringe of feelers off the muzzle |
+| **plated · chitinous** | `skin` | overlapping plates following the body's long axis |
+| **crystalline** | `skin` | faceted growths with their own specular edge |
+| **translucent** | `skin` | the shadow of what is INSIDE — the clearest cue a body is not flesh |
+| **warty** | `skin` | lit bumps rather than flat dots |
+| **bioluminescence** | `lumin` | **has been in every genome since v1.0 and was never once drawn.** Rendered OUTSIDE the body clip so the glow spills past the silhouette, which is the entire point of a glow |
+| **dorsal sail** | `body` = spindly, non-swimmers | a membrane on visible spines |
+| **armour bands** | `body` = armored | segmented plates over the spine |
+
+Every skin finish obeys the surface laws — wrapped to the form, lit by it — because a plate
+that ignores the light is exactly the sticker wave 12 was written to kill.
+
+## The Earth catalogue is untouched
+`alien` is optional and undefined for every Earth species, so they take the same code paths.
+Verified by strip against Giraffe, Hippopotamus, Rhinoceros, Camel, Moose, Wolf, Leopard,
+Cheetah, Musk Ox and Oryx — and by the audit staying at 1,254/1,254 with 0 duplicate pairs.
+
+## Determinism holds
+Every trait is selected from genome fields only. Same genome, same creature, on every device —
+confirmed by the 198,000-case golden-seed sweep and the v1.0 fingerprint still matching.
+
+**Gates:** vitest 220 ✓ · tsc clean · artbattery **5/5** · speciesaudit 1254/1254 ·
+0 duplicate pairs · 0 clipped · slicesmoke PASS · perf 1479/2203ms · goldenseeds 198,000 ·
+validate FINGERPRINT MATCH. `hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-48 · D-ART-49.

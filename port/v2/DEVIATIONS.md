@@ -213,6 +213,18 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   flora habits (crystalline growths, spore-towers, balloon-pods, mirror-bark giants) are the
   reason procedural life reads as alien at all. The verbatim engine draws them better than a
   forced mapping would. D-ART-14 applied to a whole rendering path, not one species.
+- ✔ **D-ART-48 — ALIEN TRAITS ADD, THEY DO NOT REPLACE (wave 14).** Nick chose option (b) from
+  wave 13: keep our rendering language AND the strangeness. packages/art/src/alientraits.ts
+  adds limb pairs (2/3/4), stalked and clustered and blind eyes, tendrils, plated/chitinous/
+  crystalline/translucent/warty skins, a membranous dorsal sail and segmented armour — each
+  driven by a gene the genome already carried. The rule: an alien trait is an ADDITION to a
+  body our systems draw well, never a replacement, so a six-legged creature still gets jointed
+  limbs, a deep chest and a tucked waist. Every skin finish obeys the surface laws.
+- ✔ **D-ART-49 — THE LUMIN FLAG WAS NEVER DRAWN (wave 14).** Every genome since v1.0 has
+  carried a `lumin` boolean and no painter had ever rendered it. Bioluminescent spots now
+  render OUTSIDE the body clip so the glow spills past the silhouette — the point of a glow.
+  The Earth catalogue is untouched: `alien` is undefined for every named species, verified by
+  strip against ten wave-4 quadrupeds and by 0 duplicate pairs across 1,254.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
