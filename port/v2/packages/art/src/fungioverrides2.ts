@@ -227,6 +227,7 @@ export function microbeForam(c: Ctx, g: G, pIn: Pal): void {
 }
 
 /* ── the canonical TARDIGRADE: a plump 8-legged water bear with claws ── */
+function shade2(p: Pal, m: number): string { return `rgb(${p.cr * m | 0},${p.cg * m | 0},${p.cb * m | 0})`; }
 export function tardigrade(c: Ctx, g: G, p: Pal): void {
   const r = seeded(g, 0x7A16);
   const cx = S * 0.46, cy = S * 0.52, bw = S * 0.20, bh = S * 0.135;
@@ -236,11 +237,16 @@ export function tardigrade(c: Ctx, g: G, p: Pal): void {
   for (let i = 0; i < 4; i++) {
     const lx = cx - bw * 0.66 + i * bw * 0.44;
     for (const s of [-1, 1] as const) {
-      const ly = cy + bh * (s < 0 ? 0.55 : 0.62);
-      c.strokeStyle = p.dark; c.lineWidth = bh * 0.30;
-      c.beginPath(); c.moveTo(lx, cy + bh * 0.3); c.quadraticCurveTo(lx + s * bh * 0.1, ly, lx - bh * 0.14, ly + bh * 0.42); c.stroke();
+      /* ⚠ the far leg of each pair was drawn at the SAME lx with a 4px vertical
+         nudge, so it vanished inside the near leg and eight legs read as four.
+         Offset it BACK and darken it, the way every other paired limb in this
+         codebase is handled. */
+      const lo = s < 0 ? -bh * 0.30 : 0;
+      const ly = cy + bh * (s < 0 ? 0.50 : 0.64);
+      c.strokeStyle = s < 0 ? shade2(p, 0.55) : p.dark; c.lineWidth = bh * (s < 0 ? 0.24 : 0.30);
+      c.beginPath(); c.moveTo(lx + lo, cy + bh * 0.3); c.quadraticCurveTo(lx + lo + s * bh * 0.1, ly, lx + lo - bh * 0.14, ly + bh * 0.42); c.stroke();
       c.strokeStyle = p.dark; c.lineWidth = 2;   /* the claws */
-      for (let k = -1; k <= 1; k++) { c.beginPath(); c.moveTo(lx - bh * 0.14, ly + bh * 0.42); c.lineTo(lx - bh * 0.14 + k * 4, ly + bh * 0.60); c.stroke(); }
+      for (let k = -1; k <= 1; k++) { c.beginPath(); c.moveTo(lx + lo - bh * 0.14, ly + bh * 0.42); c.lineTo(lx + lo - bh * 0.14 + k * 4, ly + bh * 0.60); c.stroke(); }
     }
   }
   /* the plump segmented body */

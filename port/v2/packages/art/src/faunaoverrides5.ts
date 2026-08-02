@@ -770,3 +770,137 @@ export function faunaLamprey(c: Ctx, g: G, p: Pal): void {
   /* the small round eye behind the disc */
   eye(c, hx - dr * 0.42, hy - dr * 0.36, 4.2);
 }
+
+/** ★ WAVE 8 — THE BAT. A WRONG-CLASS BLOCKER, and the most embarrassing kind:
+    `Insect-Eating Bat` was routed into the INVERTEBRATE painter and rendered
+    as a bee — three bead segments, antennae, spindly legs — because the word
+    "Insect" appears in its name. It is a mammal. Nick's audit caught it in one
+    look; nothing in the engine could, because every gate we own asks "did it
+    paint?" and it painted beautifully.
+
+    A bat IS its wing: a membrane stretched between enormously elongated finger
+    bones, running from the shoulder out to the wingtip and back down to the
+    ankle. Nothing else about the animal carries as much — a furry body with
+    big ears is a mouse until that membrane is hanging off it. So the wing is
+    built from the actual skeleton: an arm to the WRIST, then four fingers
+    fanning out from it, membrane filled between them, and the trailing edge
+    scalloped where it sags from strut to strut. */
+export function faunaBat(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0x8A71);
+  const fruit = /fruit|flying fox/i.test(name);
+  const vamp = /vampire/i.test(name);
+  const cx = S * 0.50, cy = S * 0.44;
+  const bodyL = S * (fruit ? 0.15 : 0.115), bodyR = S * (fruit ? 0.045 : 0.034);
+  const span = S * (fruit ? 0.235 : 0.205);
+  shadow(c, cx, S * 0.80, S * 0.10, 0.34);
+
+  const memb = (side: -1 | 1, dark: number): void => {
+    /* the shoulder, the elbow, and the WRIST — everything beyond the wrist is
+       finger, and getting that proportion right is most of the read */
+    const sh: [number, number] = [cx + side * bodyR * 0.7, cy - bodyL * 0.18];
+    const el: [number, number] = [sh[0] + side * span * 0.34, cy - bodyL * 0.52];
+    const wr: [number, number] = [sh[0] + side * span * 0.70, cy - bodyL * 0.30];
+    const tips: Array<[number, number]> = [];
+    for (let i = 0; i < 4; i++) {
+      const t = i / 3;
+      const a = -0.82 + t * 2.20;
+      const len = span * (0.60 - t * 0.20);
+      tips.push([wr[0] + side * Math.cos(a) * len, wr[1] + Math.sin(a) * len]);
+    }
+    const ankle: [number, number] = [cx + side * bodyR * 0.6, cy + bodyL * 0.62];
+    const gg = c.createLinearGradient(sh[0], sh[1], tips[2]![0], tips[2]![1]);
+    gg.addColorStop(0, `rgba(${(p.cr * 0.62 * dark) | 0},${(p.cg * 0.44 * dark) | 0},${(p.cb * 0.46 * dark) | 0},0.95)`);
+    gg.addColorStop(1, `rgba(${Math.min(255, p.cr * 0.92 * dark) | 0},${(p.cg * 0.58 * dark) | 0},${(p.cb * 0.60 * dark) | 0},0.82)`);
+    c.fillStyle = gg;
+    c.beginPath();
+    c.moveTo(sh[0], sh[1]);
+    c.quadraticCurveTo(el[0], el[1] - bodyR * 0.4, wr[0], wr[1]);
+    c.lineTo(tips[0]![0], tips[0]![1]);
+    /* the trailing edge SCALLOPS between finger tips — a bat's wing is not a
+       smooth triangle, it sags between every strut */
+    for (let i = 1; i < 4; i++) {
+      const a2 = tips[i - 1]!, b2 = tips[i]!;
+      c.quadraticCurveTo((a2[0] + b2[0]) / 2 - side * span * 0.05, (a2[1] + b2[1]) / 2 + span * 0.115, b2[0], b2[1]);
+    }
+    c.quadraticCurveTo((tips[3]![0] + ankle[0]) / 2 - side * span * 0.06, (tips[3]![1] + ankle[1]) / 2 + span * 0.05, ankle[0], ankle[1]);
+    c.closePath(); c.fill();
+    /* the finger bones themselves, and the arm out to the wrist */
+    c.strokeStyle = `rgba(${(p.cr * 0.34 * dark) | 0},${(p.cg * 0.26 * dark) | 0},${(p.cb * 0.28 * dark) | 0},0.85)`;
+    c.lineCap = 'round';
+    c.lineWidth = Math.max(1.6, bodyR * 0.20);
+    c.beginPath(); c.moveTo(sh[0], sh[1]); c.quadraticCurveTo(el[0], el[1], wr[0], wr[1]); c.stroke();
+    c.lineWidth = Math.max(1.2, bodyR * 0.14);
+    for (const t2 of tips) { c.beginPath(); c.moveTo(wr[0], wr[1]); c.lineTo(t2[0], t2[1]); c.stroke(); }
+    /* the fine vein network that makes it read as skin rather than paper */
+    c.strokeStyle = `rgba(${(p.cr * 0.42 * dark) | 0},${(p.cg * 0.30 * dark) | 0},${(p.cb * 0.32 * dark) | 0},0.35)`;
+    c.lineWidth = 1;
+    for (let i = 0; i < 14; i++) {
+      const t = r();
+      const fx = wr[0] + (sh[0] - wr[0]) * t * 0.7, fy = wr[1] + (sh[1] - wr[1]) * t * 0.7;
+      const to = tips[(r() * 4) | 0]!;
+      const k = 0.4 + r() * 0.5;
+      c.beginPath(); c.moveTo(fx, fy); c.lineTo(fx + (to[0] - fx) * k, fy + (to[1] - fy) * k); c.stroke();
+    }
+  };
+  memb(-1, 0.55);          /* the far wing, behind the body and in shadow */
+
+  /* the body: a small furry spindle slung between the wings */
+  const bg = c.createLinearGradient(cx - bodyR, cy, cx + bodyR, cy);
+  bg.addColorStop(0, p.lit); bg.addColorStop(0.5, p.base); bg.addColorStop(1, p.dark);
+  c.fillStyle = bg;
+  c.beginPath(); c.ellipse(cx, cy + bodyL * 0.10, bodyR, bodyL * 0.62, 0, 0, TAU); c.fill();
+  /* fur breaking the outline, so the body is not a smooth capsule */
+  c.strokeStyle = p.dark; c.lineWidth = 1.2; c.lineCap = 'round';
+  for (let i = 0; i < 46; i++) {
+    const a = r() * TAU;
+    const ex = cx + Math.cos(a) * bodyR, ey = cy + bodyL * 0.10 + Math.sin(a) * bodyL * 0.62;
+    const L = bodyR * (0.16 + r() * 0.22);
+    c.beginPath(); c.moveTo(ex, ey); c.lineTo(ex + Math.cos(a) * L, ey + Math.sin(a) * L); c.stroke();
+  }
+  /* the hind feet and the tail membrane stretched between them */
+  c.fillStyle = `rgba(${(p.cr * 0.52) | 0},${(p.cg * 0.38) | 0},${(p.cb * 0.40) | 0},0.9)`;
+  c.beginPath();
+  c.moveTo(cx - bodyR * 0.9, cy + bodyL * 0.60);
+  c.quadraticCurveTo(cx, cy + bodyL * (fruit ? 0.74 : 0.98), cx + bodyR * 0.9, cy + bodyL * 0.60);
+  c.closePath(); c.fill();
+
+  /* the head — and EARS that on an echolocating bat are half the animal */
+  const hy = cy - bodyL * 0.56, hr = bodyR * 1.05;
+  const earH = hr * (vamp ? 2.5 : fruit ? 1.05 : 2.1);
+  for (const s of [-1, 1] as const) {
+    c.fillStyle = s < 0 ? shade(p, 0.46) : p.dark;
+    c.save(); c.translate(cx + s * hr * 0.62, hy - hr * 0.42); c.rotate(s * 0.34);
+    c.beginPath(); c.ellipse(0, -earH * 0.44, hr * 0.50, earH * 0.56, 0, 0, TAU); c.fill();
+    c.fillStyle = `rgba(${Math.min(255, p.cr * 1.1) | 0},${(p.cg * 0.62) | 0},${(p.cb * 0.62) | 0},0.5)`;
+    c.beginPath(); c.ellipse(0, -earH * 0.42, hr * 0.26, earH * 0.38, 0, 0, TAU); c.fill();
+    c.restore();
+  }
+  c.fillStyle = volume(c, p, cx, hy, hr * 1.3);
+  c.beginPath(); c.ellipse(cx, hy, hr, hr * 0.92, 0, 0, TAU); c.fill();
+  if (fruit) {   /* a flying fox has a dog's muzzle, not a nose leaf */
+    c.fillStyle = p.base;
+    c.beginPath(); c.ellipse(cx, hy + hr * 0.66, hr * 0.44, hr * 0.52, 0, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(18,12,12,0.8)';
+    c.beginPath(); c.ellipse(cx, hy + hr * 1.02, hr * 0.20, hr * 0.14, 0, 0, TAU); c.fill();
+  } else {
+    c.fillStyle = `rgba(${Math.min(255, p.cr * 1.12) | 0},${(p.cg * 0.70) | 0},${(p.cb * 0.72) | 0},0.95)`;
+    c.beginPath();
+    c.moveTo(cx - hr * 0.24, hy + hr * 0.52);
+    c.quadraticCurveTo(cx, hy + hr * 1.20, cx + hr * 0.24, hy + hr * 0.52);
+    c.closePath(); c.fill();
+    c.fillStyle = 'rgba(18,12,12,0.7)';
+    for (const s of [-1, 1] as const) { c.beginPath(); c.arc(cx + s * hr * 0.11, hy + hr * 0.62, hr * 0.07, 0, TAU); c.fill(); }
+  }
+  if (vamp) {   /* the two blades, which are the whole point of the animal */
+    c.fillStyle = '#f2ece0';
+    for (const s of [-1, 1] as const) {
+      c.beginPath();
+      c.moveTo(cx + s * hr * 0.16, hy + hr * 0.74);
+      c.lineTo(cx + s * hr * 0.32, hy + hr * 0.70);
+      c.lineTo(cx + s * hr * 0.21, hy + hr * 1.14);
+      c.closePath(); c.fill();
+    }
+  }
+  for (const s of [-1, 1] as const) eye(c, cx + s * hr * 0.36, hy - hr * 0.12, Math.max(3, hr * 0.15));
+  memb(1, 1);              /* the near wing, over the body */
+}
