@@ -1086,3 +1086,52 @@ family for the many, a hand-drawn form for the few that define themselves.
 vitest 220 · tsc clean · artbattery 5/5 · speciesaudit 1254/1254 · 0 dupes · 0 clipped ·
 slicesmoke PASS. hdart UNTOUCHED. 10 of 28 release blockers cleared; count delta closed.
 Ledger: D-ART-58..60. NEXT: bucket C (flora iconic, 10) then bucket D (fauna, 6), then re-export.
+
+---
+
+# WAVE 19 — LANDED 2026-08-02 (ALL 28 PLATINUM RELEASE BLOCKERS CLEARED)
+
+Buckets C + D of port/AUDIT_PLATINUM_PLAN.md. With wave 18's buckets A + B this closes
+**every one of the audit's 28 named RELEASE_BLOCKERS**: fauna 6, flora 12, fungi 6, microbe 4.
+
+## Bucket C — the 8 iconic flora (floraoverrides3.ts)
+Cabbage (overlapping WRAPPED lobes — the first attempt drew concentric rings and read as a
+snail shell) · Carrot (a tapered orange root + fine feathery umbellifer tops) · Corn (a tall
+stalk, strap leaves, tassel, one husked ear) · Hemp (palmate 7-leaflet leaves on a branched
+herb) · Tobacco (broad basal leaves + a tall flowering spike) · Watermelon (a creeping vine,
+lobed leaves, a striped fruit on the ground) · Wild Strawberry (trifoliate leaves, runners,
+white flowers, red fruit) · Kiwi Fruit (a woody vine with fuzzy brown fruit cut to green flesh).
+
+★ THE FOLIAGE GREEN BIAS WENT 0.55 → 0.82. Hemp and Tobacco were rendering PINK and BROWN
+leaves. A leaf's green is identity in the same way macroalgal green is (D-ART-60): the genome
+tint is admitted as the variation ON that green, never as a replacement for it.
+
+## Bucket D — the 5 fauna signatures + the foram (faunaoverrides4.ts)
+Kiwi · Mudskipper · Pyrosome · Salp · Tripod Fish, plus a rebuilt microbe Foraminiferan.
+
+★ D-ART-61 THE IDENTITY ANCHOR, generalised from D-ART-60. anchor(p, r,g,b, k) blends the
+genome tint toward a colour the real organism is DEFINED by. The kiwi rendered LIME GREEN on
+first pass and simply stopped being a kiwi; it is now anchored 72% to brown. Foram tests are
+anchored 55% to calcite. Use this ONLY where colour is identity — it costs palette variety.
+
+★ Three first-pass failures the eyeball instrument caught, each a law we already had:
+  1. KIWI PLUMAGE radiated straight out of the outline → a spiky ball, not a shaggy bird.
+     Fixed by seating each shaft INSIDE the body (0.52..0.98 of the radius) and giving every
+     one the same downward-back DRAPE vector, lit by the key. THE SURFACE LAWS, verbatim.
+  2. SALP read as a coiled spring: it was drawn as line work over an almost-empty fill, so the
+     five hoop ellipses WERE the animal. Fixed by filling the drum first and laying 3 hoops on
+     it as foreshortened ARCS. A hoop is a mark on a surface; it cannot BE the surface.
+  3. TRIPOD FISH stood on three thick pure-white struts. A fin ray is a tapered filament —
+     walked in 14 segments, thinning 3.2px → 1.2px and fading toward the seabed.
+
+## Foraminiferan
+The audit called it an amorphous cell. The old test was 9 chambers at S*0.028 scattered on a
+spiral — loose bubbles. Now a real trochospiral: 8 chambers each 22.5% larger than the last,
+spaced at 1.52x their own radius so they OVERLAP and fuse into one shell, with soft sutures
+(not outlines), a perforate wall, an aperture in the final chamber, and 76 fine pseudopodia.
+
+## Gates
+vitest 220 · tsc clean · overridecheck 930/930 reach real species, 0 dead · 7/7 controls ·
+artbattery 5/5 · speciesaudit 1254/1254 painted, 0 failures, 0 dupes, 0 clipped. hdart UNTOUCHED.
+NEXT: wave 20 = the 165 NEEDS_FIX polish sweep; wave 21 = procedural fungi + microbe families;
+then re-export all five zips and re-run the Platinum audit.

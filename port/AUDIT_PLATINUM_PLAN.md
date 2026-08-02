@@ -85,3 +85,15 @@ truffle · mold · **lichen** · **parasitic club**. Microbes: expand from 4 →
 
 Every wave: strip-verify each fixed species · `npm run artbattery` (5/5) · never touch what
 already excels (D-ART-14) · record in MORPHOLOGY_PASS / DEVIATIONS / ROADMAP · commit + push.
+
+
+---
+## STATUS 2026-08-02 — BUCKETS A/B/C/D COMPLETE
+All 28 RELEASE_BLOCKERS cleared across waves 18 (A: canonical 4 organisms x kingdoms; B: 6
+bespoke fungi) and 19 (C: 8 iconic flora; D: 5 fauna signatures + Foraminiferan).
+Remaining on the path to Platinum:
+  · wave 20 — the 165 NEEDS_FIX rows (fauna 25, flora 17, fungi 2, microbe 1, procedural 120)
+  · wave 21 — procedural FUNGI families (shelf/coral/puffball/earthstar/tooth/jelly/truffle/
+    mold/lichen/parasitic club) and procedural MICROBE families (rods/spirals/filaments/chains/
+    shells/flagellates/ciliates/plates/mats/biofilms/micro-animals) — both still mono-template
+  · then re-export all five zips and re-run this exact audit

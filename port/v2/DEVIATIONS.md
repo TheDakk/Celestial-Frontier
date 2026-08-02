@@ -274,6 +274,17 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
 - ✔ **D-ART-60 — MACROALGAE ARE GREEN (wave 18).** Sea Lettuce and flora Green Algae render as
   green sheets: the palette is blended 62% toward a sea-green anchor because green is the
   organism's real-world identity.
+- ✔ **D-ART-61 — THE IDENTITY ANCHOR (wave 19).** `anchor(p, r,g,b, k)` blends the genome tint
+  toward a colour the organism is DEFINED by, generalising D-ART-60's macroalgae rule. Kiwi 72%
+  brown (it rendered lime green and stopped being a kiwi); foram tests 55% calcite; foliage green
+  0.82 (Hemp and Tobacco had pink and brown leaves). Use only where colour IS identity.
+- ✔ **D-ART-62 — A MARK CANNOT BE THE SURFACE (wave 19).** The salp was drawn as hoops over an
+  almost-empty fill, so the hoops were the whole animal and it read as a coiled spring. Fill the
+  volume first, then lay bands on it as foreshortened arcs. Same class as the kiwi's plumage
+  radiating out of its outline instead of draping on its body.
+- ✔ **D-ART-63 — BUCKETS C + D: ALL 28 RELEASE BLOCKERS CLEARED (wave 19).** 8 iconic flora
+  (floraoverrides3.ts) + 5 fauna signatures and the foraminiferan (faunaoverrides4.ts). With
+  wave 18 that is fauna 6 / flora 12 / fungi 6 / microbe 4 = the audit's full blocker list.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

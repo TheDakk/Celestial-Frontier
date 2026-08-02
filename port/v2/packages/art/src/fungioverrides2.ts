@@ -170,28 +170,60 @@ export function lichenMat(c: Ctx, g: G, _p: Pal): void {
 }
 
 /* ── FORAMINIFERAN: a chambered spiral test with radiating pseudopodia ── */
-export function microbeForam(c: Ctx, g: G, p: Pal): void {
+export function microbeForam(c: Ctx, g: G, pIn: Pal): void {
+  /* a foram's test is CALCITE — pale and translucent is the identity, so the
+     genome tint is admitted only as a wash over it (the macroalgae rule) */
+  const p = greenBias(pIn, 226, 212, 186, 0.55);
   const r = seeded(g, 0xF04A);
-  const cx = S * 0.5, cy = S * 0.5;
-  /* the fine radiating pseudopodia (drawn first, behind) */
-  c.strokeStyle = `rgba(${p.cr},${p.cg},${p.cb},0.30)`; c.lineWidth = 1.3; c.lineCap = 'round';
-  for (let i = 0; i < 40; i++) {
-    const a = (i / 40) * TAU + r() * 0.1, len = S * (0.14 + r() * 0.14);
-    c.beginPath(); c.moveTo(cx + Math.cos(a) * S * 0.10, cy + Math.sin(a) * S * 0.10);
-    c.lineTo(cx + Math.cos(a) * (S * 0.10 + len), cy + Math.sin(a) * (S * 0.10 + len)); c.stroke();
+  const cx = S * 0.47, cy = S * 0.52;
+  /* the chambers of a trochospiral test: each ~22% larger than the last and
+     placed so it OVERLAPS its neighbour — they must fuse into one shell, not
+     read as a handful of loose bubbles (the audit's "amorphous cell") */
+  const N = 8, grow = 1.225;
+  const cham: Array<[number, number, number]> = [];
+  let rr = S * 0.0185;
+  for (let i = 0; i < N; i++) {
+    const a = 0.7 + i * 0.86;
+    const d = rr * 1.52;
+    cham.push([cx + Math.cos(a) * d, cy + Math.sin(a) * d, rr]);
+    rr *= grow;
   }
-  /* the test: a spiral of chambers, each smaller toward the centre */
-  const N = 9;
-  for (let i = N - 1; i >= 0; i--) {
-    const t = i / (N - 1), a = t * TAU * 1.3 + 0.5, rad = S * 0.11 * t;
-    const x = cx + Math.cos(a) * rad, y = cy + Math.sin(a) * rad;
-    const rr = S * 0.028 * (0.4 + t * 0.8);
-    const gg = c.createRadialGradient(x - rr * 0.3, y - rr * 0.35, 1, x, y, rr);
-    gg.addColorStop(0, `rgb(${Math.min(255, p.cr * 1.4 | 0)},${Math.min(255, p.cg * 1.4 | 0)},${Math.min(255, p.cb * 1.4 | 0)})`);
-    gg.addColorStop(0.65, p.base); gg.addColorStop(1, `rgb(${p.cr * 0.5 | 0},${p.cg * 0.5 | 0},${p.cb * 0.5 | 0})`);
-    c.fillStyle = gg; c.beginPath(); c.arc(x, y, rr, 0, TAU); c.fill();
-    c.strokeStyle = 'rgba(255,255,255,0.28)'; c.lineWidth = 1; c.beginPath(); c.arc(x, y, rr, 0, TAU); c.stroke();
+  /* the fine radiating pseudopodia — they stream from the APERTURE side and
+     all around the test, thinning to nothing */
+  c.lineCap = 'round';
+  for (let i = 0; i < 76; i++) {
+    const a = (i / 76) * TAU + r() * 0.06;
+    const r0 = S * (0.085 + r() * 0.05), len = S * (0.10 + r() * 0.15);
+    c.strokeStyle = `rgba(${Math.min(255, p.cr + 20)},${Math.min(255, p.cg + 20)},${Math.min(255, p.cb + 24)},${0.10 + r() * 0.18})`;
+    c.lineWidth = 0.9;
+    c.beginPath(); c.moveTo(cx + Math.cos(a) * r0, cy + Math.sin(a) * r0);
+    c.lineTo(cx + Math.cos(a) * (r0 + len), cy + Math.sin(a) * (r0 + len)); c.stroke();
   }
+  /* oldest chamber first so the newest sits proud on top, as it grew */
+  for (let i = 0; i < N; i++) {
+    const [x, y, q] = cham[i]!;
+    const gg = c.createRadialGradient(x - q * 0.34, y - q * 0.4, 1, x, y, q * 1.05);
+    gg.addColorStop(0, `rgb(${Math.min(255, p.cr * 1.28 | 0)},${Math.min(255, p.cg * 1.28 | 0)},${Math.min(255, p.cb * 1.28 | 0)})`);
+    gg.addColorStop(0.62, p.base); gg.addColorStop(1, `rgb(${p.cr * 0.58 | 0},${p.cg * 0.58 | 0},${p.cb * 0.56 | 0})`);
+    c.fillStyle = gg; c.beginPath(); c.arc(x, y, q, 0, TAU); c.fill();
+    /* the SUTURE — a soft seam, not an outline: it only reads where this
+       chamber meets the shell, so the test stays one solid body */
+    c.strokeStyle = `rgba(${p.cr * 0.5 | 0},${p.cg * 0.5 | 0},${p.cb * 0.48 | 0},0.55)`;
+    c.lineWidth = 1.4; c.beginPath(); c.arc(x, y, q, 0, TAU); c.stroke();
+    /* the perforate wall — a foram test is punched with fine pores */
+    for (let k = 0; k < 14; k++) {
+      const pa = r() * TAU, pd = Math.sqrt(r()) * q * 0.82;
+      c.fillStyle = `rgba(${p.cr * 0.62 | 0},${p.cg * 0.62 | 0},${p.cb * 0.6 | 0},0.30)`;
+      c.beginPath(); c.arc(x + Math.cos(pa) * pd, y + Math.sin(pa) * pd, 0.9, 0, TAU); c.fill();
+    }
+  }
+  /* THE APERTURE — the single opening in the final chamber the pseudopodia
+     stream out of */
+  const [lx, ly, lq] = cham[N - 1]!;
+  const aa = Math.atan2(ly - cy, lx - cx) + 0.9;
+  c.fillStyle = 'rgba(24,20,14,0.62)';
+  c.save(); c.translate(lx + Math.cos(aa) * lq * 0.62, ly + Math.sin(aa) * lq * 0.62); c.rotate(aa);
+  c.beginPath(); c.ellipse(0, 0, lq * 0.16, lq * 0.34, 0, 0, TAU); c.fill(); c.restore();
 }
 
 /* ── the canonical TARDIGRADE: a plump 8-legged water bear with claws ── */
@@ -229,8 +261,9 @@ export function tardigrade(c: Ctx, g: G, p: Pal): void {
 }
 
 /* ── MACROALGAE: a green sheet/mat (Sea Lettuce, Green Algae-as-flora) ── */
-function greenBias(p: Pal, gr: number, gg: number, gb: number): Pal {
-  const cr = (gr * 0.62 + p.cr * 0.38) | 0, cg = (gg * 0.62 + p.cg * 0.38) | 0, cb = (gb * 0.62 + p.cb * 0.38) | 0;
+function greenBias(p: Pal, gr: number, gg: number, gb: number, k = 0.62): Pal {
+  const j = 1 - k;
+  const cr = (gr * k + p.cr * j) | 0, cg = (gg * k + p.cg * j) | 0, cb = (gb * k + p.cb * j) | 0;
   return {
     base: `rgb(${cr},${cg},${cb})`, cr, cg, cb,
     lit: `rgb(${Math.min(255, cr * 1.4 | 0)},${Math.min(255, cg * 1.4 | 0)},${Math.min(255, cb * 1.4 | 0)})`,
