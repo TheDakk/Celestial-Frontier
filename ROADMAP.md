@@ -686,6 +686,32 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 10b — THE INVERTEBRATES + THREE INSTRUMENT BUGS (2026-08-01,
+##   batch 30). 83 routes from FIVE body-plan painters — an arthropod is legible from its
+##   TAGMATA and LEG COUNT: insect (3 sections/6 legs/antennae + petiole, bee pile, mantis
+##   raptorial strike, grasshopper jumping femur, moth plumes, FOUR big wings) · arachnid
+##   (2 sections/8 legs/NO antennae + scorpion telson, harvestman span) · myriapod ·
+##   crab (claws FORWARD — drawn before the shell they were buried under it) · shrimp (the
+##   abdomen CURLS: a shrimp at rest is a comma, never a rod) · plus worms, nudibranch
+##   cerata, jellies with TRAILING tentacles, ctenophore comb rows, coral, sponge.
+##   ★★★ONE DUPLICATE (Copepod = Tadpole Shrimp) UNCOVERED THREE INSTRUMENT BUGS:
+##   (1) ★SCALE IS INVISIBLE — every painter varied by name in OVERALL SIZE, and the FIT PASS
+##   rescales every subject to fill the frame, erasing it. Anti-duplicate variation must
+##   change a RATIO (aspect/angle/count), never a scale. (2) ★THE DEGENERATE SALT, retroactive
+##   to EVERY wave since 7: the helper did ((hash ^ salt) >>> 0) / 2^32, and XOR-ing a small
+##   salt moves only the LOWEST byte (~1e-7 after the divide) — so six "independent" axes
+##   were ONE axis six times, in waves 7/8/9/10a/10b; near-neighbour hashes also made
+##   near-identical animals. Fixed with a murmur3-finalizer AVALANCHE in all five copies.
+##   (3) ★★THE AUDIT READ A STALE BUNDLE ALL SESSION — speciesaudit built only if audit.html
+##   was MISSING, so once dist/ existed it never rebuilt and every run measured the bundle,
+##   not the repo. It reported a duplicate the source had already fixed and would as happily
+##   have reported PASS for code that no longer existed. (The strip tool always rebuilt, so
+##   every VISUAL check this session was honest.) Audit+export ALWAYS build now, plus a
+##   FRESHNESS GUARD that exits 2 if dist is older than any art source. NINTH LESSON: a check
+##   that reads a build artefact must prove the artefact is current. ★COVERAGE MEASURED:
+##   652/1,010 (64.6%) — fauna 582 · flora 45 · fungi 16 · microbe 9. D-ART-33..36.
+##   GATES: vitest 220 · tsc · speciesaudit 1254/1254 0 dupes 0 clipped · overridecheck
+##   652/652 · overridecontrol 6/6 · slicesmoke PASS · perf 1321/1973ms · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 10a — THE MAMMAL REMAINDER + THE FIRST SWEEPING PASS (2026-08-01,
 ##   batch 29). Re-measuring changed the plan again: hiding in the "other" bucket were ~95
 ##   MAMMALS — bovids/canids/felids/mustelids/bears/pigs/equids/domestics — every one a body

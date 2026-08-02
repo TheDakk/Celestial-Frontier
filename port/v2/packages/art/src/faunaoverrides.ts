@@ -383,13 +383,25 @@ export interface BirdSpec {
   swim?: boolean;                                  /** rides a waterline; legs hidden */
   upright?: boolean;                               /** penguin/auk stance, flipper not wing */
 }
+/** THE AVALANCHE. XOR-ing a small salt into a hash and dividing by 2^32
+    perturbs only the lowest bits, so every "independent" variation axis
+    collapsed to the same number and near-neighbour names produced
+    near-identical animals. Mix the salt in with a large odd multiplier and
+    scramble, so one bit of change rewrites the whole value. */
+function mixSaltB(h: number, salt: number): number {
+  let x = (h ^ Math.imul(salt | 1, 0x9E3779B1)) >>> 0;
+  x = (x ^ (x >>> 16)) >>> 0; x = Math.imul(x, 0x7FEB352D) >>> 0;
+  x = (x ^ (x >>> 15)) >>> 0; x = Math.imul(x, 0x846CA68B) >>> 0;
+  x = (x ^ (x >>> 16)) >>> 0;
+  return x >>> 0;
+}
 export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void {
   /* NAME-SEEDED (D-ART-20): Hawk and Falcon carry identical options, and
      wave 7 proved that two labels sharing a spec eventually collide. */
   let h = 0xB12D;
   for (let i = 0; i < name.length; i++) h = Math.imul(h ^ name.charCodeAt(i), 0x85EB) >>> 0;
   const r = mulberry32((((g.seed as number) ^ h) >>> 0));
-  const nv = (salt: number, amt: number): number => 1 + ((((h ^ salt) >>> 0) % 1000) / 1000 - 0.5) * 2 * amt;
+  const nv = (salt: number, amt: number): number => 1 + (mixSaltB(h, salt) / 4294967296 - 0.5) * 2 * amt;
 
   const sz = (opts.size ?? 1) * nv(0x11, 0.07);
   /* the body rides legLen ABOVE a fixed ground line, so a wader towers and a
@@ -401,10 +413,28 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
 
   /* legs — hidden on a swimming bird, which rides its waterline instead */
   if (!opts.swim) {
-    c.strokeStyle = '#c9a24f'; c.lineWidth = (legLen > S * 0.10 ? 5 : 7) * Math.min(1.4, sz); c.lineCap = 'round';
+    /* THE BACKWARD ANKLE. A bird's visible joint is the ankle, not a knee,
+       and it folds the opposite way to ours — on a flamingo, a heron or an
+       ostrich that reversed bend IS the silhouette. Two straight strokes
+       (which is what these were) throw the whole read away. The bird faces
+       LEFT here, so "back" is +x. */
+    const thighY = by + bh * 0.72;
+    const ankleY = thighY + (groundY - thighY) * 0.52;
     for (const s of [-1, 1] as const) {
-      c.beginPath(); c.moveTo(bx + s * 8 * sz, by + bh * 0.75); c.lineTo(bx + s * 10 * sz, groundY); c.stroke();
-      c.beginPath(); c.moveTo(bx + s * 10 * sz, groundY); c.lineTo(bx + s * 18 * sz, groundY + 4); c.stroke();
+      const hipX = bx + s * 8 * sz;
+      const ankX = hipX + (7 + legLen * 0.10) * sz;    /* the ankle kicks BACK */
+      const toeX = hipX - 2 * sz;                       /* the foot lands under the bird */
+      c.strokeStyle = '#c9a24f'; c.lineCap = 'round';
+      c.lineWidth = (legLen > S * 0.10 ? 6.5 : 8) * Math.min(1.4, sz);   /* the drumstick */
+      c.beginPath(); c.moveTo(hipX, thighY); c.quadraticCurveTo(hipX + (ankX - hipX) * 0.5, thighY + (ankleY - thighY) * 0.62, ankX, ankleY); c.stroke();
+      c.lineWidth = (legLen > S * 0.10 ? 4 : 5.5) * Math.min(1.4, sz);   /* the shank is THIN */
+      c.beginPath(); c.moveTo(ankX, ankleY); c.quadraticCurveTo(ankX + (toeX - ankX) * 0.55, ankleY + (groundY - ankleY) * 0.55, toeX, groundY); c.stroke();
+      c.lineWidth = 3.4 * Math.min(1.4, sz);            /* three toes forward, one back */
+      for (const d of [-1, 0, 1]) {
+        c.beginPath(); c.moveTo(toeX, groundY);
+        c.lineTo(toeX - (13 + d * 3) * sz, groundY + 4 + d * 2.4); c.stroke();
+      }
+      c.beginPath(); c.moveTo(toeX, groundY); c.lineTo(toeX + 8 * sz, groundY + 3); c.stroke();
     }
   }
 

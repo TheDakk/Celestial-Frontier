@@ -16,7 +16,12 @@ const OUT = path.join(appDir, 'smoke', 'species-fullsize');
 const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-if (!fs.existsSync(path.join(dist, 'audit.html'))) execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
+/* ★ ALWAYS REBUILD. This was 'build only if audit.html is missing', so
+   once dist existed the audit measured a STALE BUNDLE forever — it spent a
+   whole batch reporting a duplicate pair that the source had already fixed,
+   and would just as happily have reported a PASS for code that no longer
+   existed. An instrument that reads yesterday's build is not an instrument. */
+execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
 fs.rmSync(OUT, { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 

@@ -173,3 +173,22 @@ gate.** The looking gate found the dead routes too.
 ⚠ **A ROUTING TABLE WRITTEN FROM MEMORY DRIFTS FROM THE DATA IT ROUTES.** All 24 dead routes have
 one cause: the tables were written from knowledge of *what animals exist* instead of from the
 catalog file. Read the data, then write the table — and keep a check that re-proves the join.
+
+
+⚠⚠ **A CHECK THAT READS A BUILD ARTEFACT MUST PROVE THE ARTEFACT IS CURRENT.** The ninth
+green-while-broken state, and the longest-lived: `speciesaudit` built the bundle *only if it
+was missing*, so once `dist/` existed it never rebuilt. For an entire session it reported on
+whatever code happened to be compiled, not the code in the repo — including a duplicate-species
+failure the source had already fixed. It would have reported a clean PASS for code that no
+longer existed just as readily.
+> **The remedy:** build unconditionally, and assert freshness anyway — compare the artefact's
+> mtime against the newest source it claims to cover and refuse to report if it is older. The
+> sibling tool that always rebuilt (`speciesstrip`) was honest all session; the difference was
+> one `if`.
+
+⚠ **"INDEPENDENT" PARAMETERS THAT SHARE A DERIVATION ARE ONE PARAMETER.** Six variation axes
+were computed as `(hash ^ salt) / 2^32` with salts 0x11, 0x22, 0x33… XOR-ing a small salt
+perturbs only the lowest byte, so after the divide all six returned the same number to seven
+decimal places. The code read as six independent knobs and was one knob wired six times.
+> **The remedy:** when deriving several values from one seed, run each through an avalanche
+> (a proper finalizer) and *spot-check that they actually differ* before trusting them.

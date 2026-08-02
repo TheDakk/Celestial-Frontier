@@ -29,9 +29,20 @@ function nrng(g: G, name: string, salt: number): () => number {
   return mulberry32((((g.seed as number) ^ nameSeed(name) ^ salt) >>> 0));
 }
 /** a name-driven multiplier in [1-amt, 1+amt] — proportion varies per species */
+/** THE AVALANCHE. XOR-ing a small salt into a hash and dividing by 2^32
+    perturbs only the lowest bits, so every "independent" variation axis
+    collapsed to the same number and near-neighbour names produced
+    near-identical animals. Mix the salt in with a large odd multiplier and
+    scramble, so one bit of change rewrites the whole value. */
+function mixSalt(h: number, salt: number): number {
+  let x = (h ^ Math.imul(salt | 1, 0x9E3779B1)) >>> 0;
+  x = (x ^ (x >>> 16)) >>> 0; x = Math.imul(x, 0x7FEB352D) >>> 0;
+  x = (x ^ (x >>> 15)) >>> 0; x = Math.imul(x, 0x846CA68B) >>> 0;
+  x = (x ^ (x >>> 16)) >>> 0;
+  return x >>> 0;
+}
 function nvar(name: string, salt: number, amt: number): number {
-  const h = (nameSeed(name) ^ salt) >>> 0;
-  return 1 + ((h % 1000) / 1000 - 0.5) * 2 * amt;
+  return 1 + (mixSalt(nameSeed(name), salt) / 4294967296 - 0.5) * 2 * amt;
 }
 function ground(c: Ctx, cx: number, cy: number, rx: number): void {
   c.fillStyle = 'rgba(0,0,0,0.5)';
