@@ -1,8 +1,8 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-**Written 2026-08-02 at the end of waves 4–10.**
+**Written 2026-08-02 at the end of waves 4–11.**
 The live work is **THE PROPORTION ARC** — making every organism in the Earth catalogue look
-like the real thing, on Nick's instruction. Waves 4–10 have landed. The structural queue below is four-fifths done.
+like the real thing, on Nick's instruction. Waves 4–11 have landed. The structural queue below is four-fifths done.
 
 ---
 
@@ -156,7 +156,7 @@ future material/texture pass provably cannot fix), and defer the surface ones.
    elephant's Asian topline and knee-height trunk, the walrus's legs.
 5. ▶ **The unrouted** (wave 10, PARTIAL). 951 → 968 of 1,014. Crocodilians,
    pinnipeds, poultry and the missing cetaceans are done. **46 remain** —
-   `node tools/coveragegap.mjs`. The biggest fauna clusters left:
+   `node tools/coveragegap.mjs` (46 left). The biggest fauna clusters left:
    Kangaroo/Wallaby (a bipedal hopper — needs a new pose, not a new spec),
    Platypus/Echidna, Vampire Squid/Deep-Sea Octopus, and the singletons
    (Chameleon, Frilled Lizard, Seahorse, Poison Dart Frog, Caecilian).
@@ -173,13 +173,16 @@ future material/texture pass provably cannot fix), and defer the surface ones.
    bottleneck; every FEATURE on it — one ear asset, one white-ringed eye, one
    nose dot — is still shared catalogue-wide (D-ART-99). Wave 11 is ears and
    eyes per species. **This is the biggest open art item.**
-2. **The 19 remaining hard look-alike pairs.** No longer birds — now fish and
-   invertebrates: Snail ≈ Freshwater Snail, Otter ≈ River Otter, Walleye ≈
-   Mullet, Cave Fish ≈ Anchovy, Arctic Cod ≈ Cold-Water Fish, Coot ≈ Moorhen,
-   Centipede ≈ Giant Centipede. **The fix is the same one that worked for the
-   songbirds**: per-species colour, then shape, derived from each row — the
-   fish and invert tables have the same "band instead of a species" problem the
-   bird table had.
+2. **The 9 remaining hard look-alike pairs** (was 33 this morning, then 19). The
+   fish, the coot/moorhen and the otters are done. What is left is the
+   INVERTEBRATE table, which has the same "band instead of a species" problem
+   the bird and fish tables had: Freshwater Snail ≈ Snail, Fairy Shrimp ≈
+   Tadpole Shrimp ≈ Brine Shrimp, Centipede ≈ Giant Centipede, Water Strider ≈
+   Mite, Krill ≈ Amphipod, Water Flea ≈ Pseudoscorpion, Barnacle ≈ Sponge, plus
+   the flora pair Water Mint ≈ Chicory. **The recipe is proven three times now:
+   read the mustReads, add the missing spec axes, re-derive each row from its
+   own reference.** ⚠ Check FIRST whether the invert spec has an inert field
+   like FishSpec.hue did (D-ART-100) — render one asset with an absurd value.
 3. **The 46 unrouted** (item 5 above).
 4. **The 23 rows Nick's audit says are STILL NOT FIXED**
    (`reference/nick-audit-recheck.json`). Several are now done by waves 8–10
