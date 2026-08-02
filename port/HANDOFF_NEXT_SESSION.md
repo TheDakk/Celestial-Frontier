@@ -1,8 +1,8 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-**Written 2026-08-02 at the end of waves 4–11.**
+**Written 2026-08-02 at the end of waves 4–12.**
 The live work is **THE PROPORTION ARC** — making every organism in the Earth catalogue look
-like the real thing, on Nick's instruction. Waves 4–11 have landed. The structural queue below is four-fifths done.
+like the real thing, on Nick's instruction. Waves 4–12 have landed. The structural queue below is four-fifths done.
 
 ---
 
@@ -171,69 +171,17 @@ future material/texture pass provably cannot fix), and defer the surface ones.
 1. **★ THE HEADS ARE STILL NOT UNIQUE — 20 of 141** (measured before waves 7–10,
    so re-measure). Skull SHAPE differs between families and is no longer the
    bottleneck; every FEATURE on it — one ear asset, one white-ringed eye, one
-   nose dot — is still shared catalogue-wide (D-ART-99). Wave 11 is ears and
+   nose dot — is still shared catalogue-wide (D-ART-99). Wave 13 is ears and
    eyes per species. **This is the biggest open art item.**
-2. **The 9 remaining hard look-alike pairs** (was 33 this morning, then 19). The
-   fish, the coot/moorhen and the otters are done. What is left is the
-   INVERTEBRATE table, which has the same "band instead of a species" problem
-   the bird and fish tables had: Freshwater Snail ≈ Snail, Fairy Shrimp ≈
-   Tadpole Shrimp ≈ Brine Shrimp, Centipede ≈ Giant Centipede, Water Strider ≈
-   Mite, Krill ≈ Amphipod, Water Flea ≈ Pseudoscorpion, Barnacle ≈ Sponge, plus
-   the flora pair Water Mint ≈ Chicory. **The recipe is proven three times now:
-   read the mustReads, add the missing spec axes, re-derive each row from its
-   own reference.** ⚠ Check FIRST whether the invert spec has an inert field
-   like FishSpec.hue did (D-ART-100) — render one asset with an absurd value.
-3. **The 46 unrouted** (item 5 above).
-4. **The 23 rows Nick's audit says are STILL NOT FIXED**
-   (`reference/nick-audit-recheck.json`). Several are now done by waves 8–10
-   (Alligator, Caiman, Rooster, Ostrich, Whale, Orca) — **re-run the recheck
-   workflow against a fresh export before working the list.**
-5. **Nick's 55 quadruped fix-queue rows have still never been re-checked**, and
-   the mammal audit predates waves 7–10. Both want a fresh pass.
-6. The 17 flora NEEDS_FIX rows (Platinum task #24), never started.
-7. **Deferred to the material pass, by decision** — do NOT hand-fix these with
-   more gradient tricks, which is what waves 4–7 kept doing and paying for:
-   everything the audits describe as airbrushed, flat, plastic, sprayed-on,
-   machined-edged, or lacking fur volume. ~86% of open findings mention surface
-   quality; they cannot close until the surface changes.
-8. The `[A]` eye sensor in `conformance.mjs` is still suppressed and still
-   untrustworthy (8/20). The visual audit has superseded it — consider deleting.
-
----
-
-## COMMANDS
-
-```bash
-cd C:/Projects/Celestial-Frontier/port/v2
-
-# LOOK AT THE ART. this is the instrument.
-node tools/speciesstrip.mjs "Wolf,Lion,Cheetah,Hippopotamus,Elephant" check.png
-#   then Read apps/game/smoke/check.png
-
-# the safety net — run it on every art change
-node tools/artlock.mjs --selftest
-node tools/artlock.mjs --touching=quadruped
-node tools/artlock.mjs --bless --class=quadruped     # only after you looked
-
-# build visual-audit work packets, then fan agents over them
-node tools/auditcards.mjs fauna --per=8
-
-# the gate battery — ALL of these before any commit
-npx vitest run && npx tsc --noEmit -p apps/game
-npm run artbattery && npm run smoke
-node tools/overridecheck.mjs && node tools/overridecheck.control.mjs
-node tools/artaudit.mjs && node tools/referencecheck.mjs && node tools/coveragegap.mjs
-
-node tools/speciesexport.mjs      # fresh prints for Nick (1,254 PNGs + 5 zips)
-```
-
-⚠ The export in `apps/game/smoke/species-fullsize/` is **pre-wave-4** and therefore stale for
-mammals. Re-run `speciesexport.mjs` before auditing them or before handing Nick new prints.
-
----
-
-## WHAT TO SAY TO START THE NEXT SESSION
-
-> Continue the Celestial Frontier proportion arc. Read port/HANDOFF_NEXT_SESSION.md first —
-> especially the part about being able to see the art, and the artlock safety net.
-> Start with wave 6: the head, and re-check Nick's anatomy audit against the current render.
+2. **ONE hard look-alike pair left: Water Mint ≈ Chicory** (was 33 at the start
+   of 2026-08-02, then 19 after the birds, 9 after the fish, 1 after the
+   invertebrates). Their reference rows are far apart — a square stem with a
+   single round lilac pompom versus stiff wiry NEAR-NAKED branching stems with
+   sky-blue ray flowers sitting almost directly on them — but the flora painter
+   has **no axis for a bare branching stem**, so both still draw the same leaf
+   ladder. That is a painter job, not a table job, and it was left rather than
+   bodged. The next tier under it: Crow ≈ Frigatebird, Grasshopper ≈ Thrips,
+   Loon ≈ Cormorant, Electric Eel ≈ Lungfish.
+   **The recipe is proven four times now** — read the mustReads, add the missing
+   spec axes, re-derive each row from its own reference — and
+   `node tools/speccheck.mjs` now guards the step that kept going wrong.
