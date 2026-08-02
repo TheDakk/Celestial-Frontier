@@ -23,7 +23,9 @@
     "overridecheck": "node tools/overridecheck.mjs",
     "strip": "node tools/speciesstrip.mjs",
     "overridecontrol": "node tools/overridecheck.control.mjs",
-    "coveragegap": "node tools/coveragegap.mjs"
+    "coveragegap": "node tools/coveragegap.mjs",
+    "artaudit": "node tools/artaudit.mjs",
+    "artbattery": "node tools/artbattery.mjs"
   },
   "devDependencies": {
     "@types/node": "26.1.2",

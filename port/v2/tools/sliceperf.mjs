@@ -18,7 +18,11 @@ const dist = path.join(appDir, 'dist');
 const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-if (!fs.existsSync(path.join(dist, 'index.html'))) execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
+/* ALWAYS REBUILD. This was "build only if index.html is missing", so once
+   dist/ existed the perf probe measured whatever bundle happened to be on
+   disk — a boot time for code nobody is running. Second tool caught doing
+   it (D-ART-36); the art audit now checks for the pattern. */
+execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
 
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.map': 'application/json' };
 const server = http.createServer((req, res) => {

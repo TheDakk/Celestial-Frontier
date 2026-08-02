@@ -344,6 +344,14 @@ export function myriapod(c: Ctx, g: G, p: Pal, opts: { flat?: boolean; coil?: bo
     c.beginPath(); c.moveTo(hx - segR * 1.2, hy + s * segR * 0.2);
     c.quadraticCurveTo(hx - segR * 3.0, hy + s * segR * 0.8, hx - segR * 4.0, hy + s * segR * 0.3); c.stroke();
   }
+  /* SEGMENT TINT — a myriapod's plates alternate subtly along the body,
+     which is what makes the segmentation read at a glance */
+  for (let i = 0; i < N; i += 1) {
+    if (r() < 0.45) continue;
+    const [sx2, sy2] = path(i);
+    softMark(c, sx2, sy2 - segR * 0.2, segR * (0.5 + r() * 0.4), segR * (0.3 + r() * 0.3),
+      r() < 0.5 ? '22,16,10' : '248,240,220', 0.10 + r() * 0.12);
+  }
   if (opts.flat) {   /* the centipede's venom claws */
     c.strokeStyle = '#d8a24a'; c.lineWidth = 3.4;
     for (const s of [-1, 1] as const) {
@@ -351,7 +359,6 @@ export function myriapod(c: Ctx, g: G, p: Pal, opts: { flat?: boolean; coil?: bo
       c.quadraticCurveTo(hx - segR * 2.4, hy + s * segR * 1.1, hx - segR * 1.9, hy + s * segR * 1.5); c.stroke();
     }
   }
-  void r;
 }
 
 /* ═══════════════ CRUSTACEANS ═══════════════ */
@@ -473,7 +480,14 @@ export function shrimpBody(c: Ctx, g: G, p: Pal, opts: { claws?: boolean; stout?
     c.beginPath(); c.moveTo(ox, cy + h * 0.7); c.lineTo(ox - h * 0.3, cy + h * 1.9); c.stroke();
   }
   eyeDot(c, cx - L * 0.62, cy - h * 0.5, h * 0.24);
-  void r;
+  /* CARAPACE SPECKLE — the mottling that separates one crustacean from the
+     next when both are the same silhouette */
+  for (let i = 0; i < 20; i++) {
+    const a = r() * TAU, d = r() ** 0.7;
+    softMark(c, cx - L * 0.18 + Math.cos(a) * h * 1.4 * d, cy - h * 0.18 + Math.sin(a) * h * d,
+      h * (0.14 + r() * 0.16), h * (0.10 + r() * 0.12),
+      r() < 0.55 ? '26,18,12' : '250,240,220', 0.10 + r() * 0.14);
+  }
 }
 
 /* ═══════════════ SOFT BODIES ═══════════════ */
