@@ -1487,3 +1487,48 @@ Seahorse, Poison Dart Frog, Caecilian, Vampire Squid, Deep-Sea Octopus, Porpoise
 ## Gates
 vitest 225 · tsc clean · artaudit 0 findings · overridecheck 951/951 0 dead · artbattery 5/5 ·
 speciesaudit 1254/1254 0 dupes 0 clipped · slicesmoke PASS. hdart UNTOUCHED.
+
+---
+
+# ARC STAGE 3, WAVE 2 — LANDED 2026-08-02 (THE JAGGED REAR WAS AN ORPHANED SUBPATH)
+
+Nick: "the backside, the rear hump of the animals, is still kind of jagged. We want to make
+sure it's all nice and uniform and round… they're not pointy polygon-looking; they're round."
+
+## ★★ WAVE 1's REAR FIX WAS NEVER CONNECTED TO THE BODY
+`smoothTop()` — the function that draws the spine — BEGINS WITH `moveTo`, and moveTo starts a
+NEW SUBPATH. Wave 1 rebuilt the rump as one continuous bezier and then called smoothTop
+immediately afterwards, so that bezier was orphaned in a subpath of its own and canvas closed
+it with a STRAIGHT CHORD across the haunch.
+
+**That chord is the jagged rear hump.** The curve I reported as fixing it in wave 1 was drawn,
+but it was never attached to the animal. Nick saw the flat edge in the very next render.
+
+Two fixes, both in smoothTop:
+- it takes a `continuing` flag and joins to the CURRENT POINT instead of starting a subpath;
+- its final span used `lineTo` where every other span used a quadratic — a flat facet right at
+  the shoulder on every mammal. The whole spine is now one smooth chain, 18 samples end to end.
+
+The torso path now runs: rear point → spine → chest → belly tuck → rump → one bezier back to
+the rear point. No moveTo inside it, so there is nowhere for a straight closing line to appear.
+
+## THE LESSON, GENERALISED
+★ **A DRAWING FIX IS NOT DONE UNTIL YOU LOOK AT THE PIXELS IT PRODUCES.** Wave 1's rear bezier
+was correct geometry attached to nothing, and it was reported as landed on the strength of the
+code reading right. The strip is the instrument; the code is not. This is the drawing-side twin
+of D-ART-81 (a control on the decision layer says nothing about the sensor layer).
+
+## Gates
+vitest 225 · tsc clean · artaudit 0 findings · overridecheck 951/951 0 dead · artbattery 5/5 ·
+speciesaudit 1254/1254 0 dupes 0 clipped. hdart UNTOUCHED.
+
+## ⚠ STILL OPEN — Nick's list, unfixed, carried forward
+- **THE LEGS DO NOT BLEND.** They are strokes drawn before the torso, so their roots are covered
+  but there is no shoulder or haunch MASS wrapping them. They read as sticks pushed into a body.
+  This is the single biggest remaining "not a real animal" tell.
+- **The cheetah is not cat-like.** Proportion is closer now but the silhouette has no small
+  round skull, no deep chest over a tucked waist, no long spine curve.
+- **The hippo is blobby.** Correct ratio, wrong shape: it needs a barrel body slung between
+  short pillar legs and a huge square muzzle, not a smooth lozenge.
+- Giraffe legs spindly · thin necks at the shoulder on the big cats · the 'stripes' coat renders
+  as blobs rather than vertical bars (Tiger, Zebra) · 26 fauna still unrouted.

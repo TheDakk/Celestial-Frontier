@@ -107,6 +107,16 @@ attempt used a shared band and made every four-legged animal the same shape).
 Never from a band, a family default, or a neighbour. Nick: "take every animal's unique picture…
 make sure you're using that to update and really get that feel and look."
 
+**Wave 2 (batch 48):** the jagged rear was an ORPHANED SUBPATH — smoothTop begins with moveTo,
+so wave 1's rear bezier was never connected and canvas closed it with a straight chord across
+the haunch (D-ART-87). Also fixed a flat lineTo facet at the shoulder. Rears are round now.
+
+**★ THE NEXT WAVE IS THE LIMB-TO-BODY JOIN.** Nick: "the legs also don't blend in properly into
+the animal… the cheetah doesn't look cat-like enough, and the hippo is just way too blobby."
+Legs are bare strokes with no shoulder or haunch MASS around them, so they read as sticks
+pushed into a torso. That is the biggest remaining "not a real animal" tell, and it is one
+change to the shared system that every quadruped inherits.
+
 **Still open after wave 1:** giraffe legs spindly · hippo too long · thin necks at the shoulder
 on the big cats · the 'stripes' coat renders as blobs not vertical bars (Tiger, Zebra) · 26
 fauna still unrouted (crocodilians, bats, pinnipeds, Kangaroo/Wallaby, Platypus/Echidna,

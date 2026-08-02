@@ -395,6 +395,14 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   elephant got two upright rabbit ears on its crown. 'fan' hangs a broad veined ear down the
   side of the head. Same class as D-ART-78: a feature belongs to the right body part, drawn the
   way that animal actually wears it.
+- ✔ **D-ART-87 — moveTo INSIDE A PATH ORPHANS EVERYTHING BEFORE IT (arc stage 3 wave 2).**
+  `smoothTop` opened with moveTo, so wave 1's continuous rear bezier ended up in its own
+  subpath and canvas closed it with a STRAIGHT CHORD across the haunch — the jagged rear hump
+  Nick reported twice. The fix I shipped in wave 1 was correct geometry attached to nothing.
+  Sub-path builders must join to the current point when continuing an open path.
+- ✔ **D-ART-88 — A DRAWING FIX IS NOT DONE UNTIL YOU LOOK AT THE PIXELS (arc stage 3 wave 2).**
+  Wave 1's rear fix was reported as landed because the code read correctly. It never drew.
+  The strip is the instrument; the source is not. Drawing-side twin of D-ART-81.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

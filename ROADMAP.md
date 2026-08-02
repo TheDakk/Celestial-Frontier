@@ -686,6 +686,21 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ▶★★★ ARC STAGE 3 WAVE 2 — THE JAGGED REAR (2026-08-02, batch 48). Nick, twice: "the rear
+##   hump is still kind of jagged… they're not pointy polygon-looking, they're round."
+##   ★★WAVE 1's FIX WAS NEVER CONNECTED TO THE BODY. smoothTop() BEGINS WITH moveTo, and moveTo
+##   STARTS A NEW SUBPATH — so wave 1's continuous rear bezier was orphaned and canvas closed it
+##   with a STRAIGHT CHORD across the haunch. That chord IS the jagged hump. The geometry was
+##   right and attached to nothing. Fixed: smoothTop takes a 'continuing' flag and joins to the
+##   current point; its final span also used lineTo where every other span used a quadratic, a
+##   flat facet at the shoulder on every mammal. D-ART-87 · D-ART-88: A DRAWING FIX IS NOT DONE
+##   UNTIL YOU LOOK AT THE PIXELS — the strip is the instrument, the source is not (drawing-side
+##   twin of D-ART-81). ⚠NEXT WAVE = THE LIMB-TO-BODY JOIN: legs are bare strokes with no
+##   shoulder/haunch MASS, so they read as sticks pushed into a torso — Nick's "the legs don't
+##   blend in properly", and the biggest remaining "not a real animal" tell. Also open: cheetah
+##   not cat-like · hippo blobby · giraffe legs spindly · thin necks on big cats · 'stripes'
+##   renders as blobs · 26 fauna unrouted. GATES: vitest 225 · tsc · artaudit 0 · overridecheck
+##   951/951 0 dead · artbattery 5/5 · speciesaudit 1254/1254 · hdart UNTOUCHED.
 ##   ▶★★★ ARC STAGE 3 WAVE 1 — THE UNROUTED ICONICS + THE TORSO (2026-08-02, batch 47).
 ##   19 iconic mammals had NO ROUTE AT ALL (Tiger · Zebra · Raccoon · Beaver · Red Panda · both
 ##   Hyenas · Wombat · Tasmanian Devil · Quoll · Elephant x4 · Armadillo · Giant Anteater ·

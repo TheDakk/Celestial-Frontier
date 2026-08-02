@@ -68,16 +68,28 @@ function pal(p: Pal, spec: QuadSpec): Pal {
 
 /** the back line as a SMOOTH curve — sampled then joined through midpoints,
     so a sloped or humped back never reads as a faceted table edge */
-function smoothTop(c: Ctx, cx: number, bodyW: number, topY: (t: number) => number): void {
-  const N = 14, pts: Array<[number, number]> = [];
+function smoothTop(c: Ctx, cx: number, bodyW: number, topY: (t: number) => number, continuing = false): void {
+  /* ★ ARC STAGE 3 WAVE 2 (Nick: "the rear hump is still kind of jagged… they're
+     not pointy polygon-looking, they're round").
+     THIS FUNCTION BEGAN WITH moveTo, WHICH STARTS A NEW SUBPATH. Wave 1 rebuilt
+     the rear as one continuous bezier and then called this immediately after —
+     so the bezier was orphaned in its own subpath and canvas closed it with a
+     STRAIGHT LINE across the haunch. That straight chord is the jagged rear
+     hump; the curve I "fixed" it with was never even connected to the body.
+     When continuing an open path, join to the current point instead.
+     Also: the first and last spans used quadratics through midpoints but the
+     LAST point was reached with lineTo — a flat segment right at the shoulder.
+     The whole spine is now one smooth chain end to end. */
+  const N = 18, pts: Array<[number, number]> = [];
   for (let i = 0; i <= N; i++) { const t = i / N; pts.push([cx - bodyW + bodyW * 2 * t, topY(t)]); }
-  c.moveTo(pts[0]![0], pts[0]![1]);
+  if (continuing) c.lineTo(pts[0]![0], pts[0]![1]);
+  else c.moveTo(pts[0]![0], pts[0]![1]);
   for (let i = 1; i < pts.length - 1; i++) {
     const a = pts[i]!, b = pts[i + 1]!;
     c.quadraticCurveTo(a[0], a[1], (a[0] + b[0]) / 2, (a[1] + b[1]) / 2);
   }
-  const last = pts[pts.length - 1]!;
-  c.lineTo(last[0], last[1]);
+  const last = pts[pts.length - 1]!, prev = pts[pts.length - 2]!;
+  c.quadraticCurveTo(prev[0], prev[1], last[0], last[1]);
 }
 function traceBody(c: Ctx, cx: number, cy: number, bodyW: number, bodyH: number, topY: (t: number) => number): void {
   /* ★ WAVE 22b — Nick: "the bodies… are not proportionate". The chest, waist
@@ -100,10 +112,9 @@ function traceBody(c: Ctx, cx: number, cy: number, bodyW: number, bodyH: number,
      rump, on every mammal in the catalogue. The rear is now one continuous
      bezier that sweeps from the underside all the way round to the back line
      with no closing seam, so there is nowhere for a corner to form. */
-  const backStart = topY(0.05);
   c.beginPath();
-  c.moveTo(cx - bodyW * 0.90, backStart);
-  smoothTop(c, cx, bodyW, topY);
+  c.moveTo(cx - bodyW, topY(0));
+  smoothTop(c, cx, bodyW, topY, true);
   /* down the shoulder into a DEEP CHEST (the brisket hangs lowest here) */
   c.bezierCurveTo(cx + bodyW * 1.16, cy - bodyH * 0.04, cx + bodyW * 1.12, cy + bodyH * (chest * 0.62), cx + bodyW * 0.90, cy + bodyH * chest);
   /* forward of the ribs the belly TUCKS UP — the single line that stops a
@@ -114,7 +125,7 @@ function traceBody(c: Ctx, cx: number, cy: number, bodyW: number, bodyH: number,
   /* ONE sweep round the haunch and back up to where the spine began. Both
      control points sit outside the body, so the curve bulges — a rump is the
      roundest part of a mammal, never the sharpest. */
-  c.bezierCurveTo(cx - bodyW * 1.12, cy + bodyH * 0.40, cx - bodyW * 1.14, cy - bodyH * 0.10, cx - bodyW * 0.90, backStart);
+  c.bezierCurveTo(cx - bodyW * 1.15, cy + bodyH * 0.42, cx - bodyW * 1.18, cy - bodyH * 0.06, cx - bodyW, topY(0));
   c.closePath();
 }
 
