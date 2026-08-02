@@ -1,8 +1,8 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-**Written 2026-08-02 at the end of waves 4–17.**
+**Written 2026-08-02 at the end of waves 4–18.**
 The live work is **THE PROPORTION ARC** — making every organism in the Earth catalogue look
-like the real thing, on Nick's instruction. Waves 4–17 have landed. The structural queue below is four-fifths done.
+like the real thing, on Nick's instruction. Waves 4–18 have landed. ★ EARTH COVERAGE IS 1014/1014. The structural queue below is four-fifths done.
 
 ---
 
@@ -154,15 +154,18 @@ future material/texture pass provably cannot fix), and defer the surface ones.
    pinniped, burrower, plus 'claw' and 'flipper' feet. 21 species off 'generic'.
 4. ✔ **The named regressions** (wave 9): the rectangular tail base, the
    elephant's Asian topline and knee-height trunk, the walrus's legs.
-5. ▶ **The unrouted** (wave 10, PARTIAL). 951 → 968 of 1,014. Crocodilians,
-   pinnipeds, poultry and the missing cetaceans are done. **46 remain** —
-   `node tools/coveragegap.mjs` (46 left). The biggest fauna clusters left:
-   Kangaroo/Wallaby (a bipedal hopper — needs a new pose, not a new spec),
-   Platypus/Echidna, Vampire Squid/Deep-Sea Octopus, and the singletons
-   (Chameleon, Frilled Lizard, Seahorse, Poison Dart Frog, Caecilian).
-   Plus flora 13, fungi 7, microbe 12.
+5. ✔ **The unrouted — DONE.** 1014/1014. Every Earth organism has a real
+   painter and nothing falls to the verbatim engine. The arc opened at 930.
 
-**Then, and only then, the material pass** — see the strategic note above.
+**BUCKET A IS CLOSED.** All five structural items are done. What remains before
+the material decision: the 72 mammal heads that are still generic (TABLE work —
+inverted or missing family traits, itemised per animal), the ONE hard look-alike
+pair (Water Mint ≈ Chicory, needs a bare-branching-stem axis), and the
+non-mammal audit backlog.
+
+**Then the material pass** — see the strategic note above. The gate for it is
+ in reference/mammalaudit.json: 0 → 1 of 144 so far, so anatomy is
+still binding. When it climbs, pivot.
 
 ---
 
