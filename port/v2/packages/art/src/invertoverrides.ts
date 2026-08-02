@@ -52,6 +52,21 @@ function mixSalt(h: number, salt: number): number {
 const nv = (name: string, salt: number, amt: number): number =>
   1 + (mixSalt(nseed(name), salt) / 4294967296 - 0.5) * 2 * amt;
 
+/** ★ WAVE 12 — SPECIES-TRUE COLOUR. None of the invertebrate families could
+    say what colour the animal is, so every one of them took its rarity roll and
+    the only thing separating two identical specs was a name hash. Colour is the
+    cheapest strong separator there is, and for a krill or a water flea —
+    translucent things with visible innards — it is most of the identity. */
+function hued(pIn: Pal, hue?: string): Pal {
+  if (!hue) return pIn;
+  const n = parseInt(hue.slice(1), 16);
+  const hr = (n >> 16) & 255, hg = (n >> 8) & 255, hb = n & 255;
+  const f = (a: number, b: number, d: number): string => 'rgb(' + (a | 0) + ',' + (b | 0) + ',' + (d | 0) + ')';
+  return { cr: hr, cg: hg, cb: hb, base: hue,
+    lit: f(Math.min(255, hr * 1.32), Math.min(255, hg * 1.30), Math.min(255, hb * 1.28)),
+    dark: f(hr * 0.42, hg * 0.44, hb * 0.48) };
+}
+
 function shadow(c: Ctx, cx: number, cy: number, rx: number): void {
   c.fillStyle = 'rgba(0,0,0,0.42)';
   c.beginPath(); c.ellipse(cx, cy, rx, S * 0.026, 0, 0, TAU); c.fill();
@@ -99,6 +114,11 @@ export interface InsectSpec {
   raptor?: boolean;           /** mantis forelegs */
   jumper?: boolean;           /** the huge hind femur of a grasshopper */
   stick?: boolean;            /** absurdly elongated everything */
+  /** ★ wave 12 — THE LEGS ALONE ARE THE ANIMAL. A water strider's middle and
+      hind legs are several times its body and splayed flat on the surface film;
+      it shared a picture with a MITE until it could say so. `stick` elongates
+      the whole insect, which is a different creature entirely. */
+  legSpan?: number;
   fuzzy?: boolean;            /** the bee/bumblebee pile */
   pattern?: 'bands' | 'spots';
 }
@@ -117,8 +137,8 @@ export function insectBody(c: Ctx, g: G, p: Pal, spec: InsectSpec, name = ''): v
   for (const s of [-1, 1] as const) {
     for (let i = 0; i < 3; i++) {
       const bx = cx - th * 0.8 + i * th * 0.9;
-      const spread = (0.9 + i * 0.32) * th * (spec.stick ? 3.2 : 1.9);
-      const drop = th * (1.5 + i * 0.30);
+      const spread = (0.9 + i * 0.32) * th * (spec.stick ? 3.2 : 1.9) * (spec.legSpan ?? 1);
+      const drop = th * (1.5 + i * 0.30) * (spec.legSpan ? 0.55 : 1);
       const jump = spec.jumper && i === 2;
       if (jump) {   /* THE JUMPING FEMUR — a grasshopper's whole silhouette */
         c.fillStyle = shell(c, p, bx + s * th * 0.3, cy + th * 0.2, th * 0.9);
@@ -246,10 +266,12 @@ export function insectBody(c: Ctx, g: G, p: Pal, spec: InsectSpec, name = ''): v
 }
 
 /* ═══════════════ ARACHNIDS: two tagmata, eight legs, NO antennae ═══════════════ */
-export function arachnid(c: Ctx, g: G, p: Pal, opts: { big?: boolean; hairy?: boolean; sting?: boolean; longleg?: boolean; claws?: boolean }, name = ''): void {
+export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: boolean; sting?: boolean;
+  longleg?: boolean; claws?: boolean; hue?: string; scale?: number }, name = ''): void {
+  const p = hued(pIn, opts.hue);
   const r = nrng(g, name, 0xA8AC);
   const cx = S * 0.50, cy = S * 0.52;
-  const b = S * 0.050 * (opts.big ? 1.25 : 1) * nv(name, 0x21, 0.12);
+  const b = S * 0.050 * (opts.big ? 1.25 : 1) * 1.30 * (opts.scale ?? 1) * nv(name, 0x21, 0.12);
   const squat = nv(name, 0x22, 0.22);         /* abdomen aspect — a RATIO, so the fit pass keeps it */
   const splay = nv(name, 0x23, 0.20);         /* how far the legs reach relative to the body */
   shadow(c, cx, cy + b * 2.4, S * 0.16);
@@ -312,12 +334,17 @@ export function arachnid(c: Ctx, g: G, p: Pal, opts: { big?: boolean; hairy?: bo
 }
 
 /* ═══════════════ MYRIAPODS: many segments, a leg pair on each ═══════════════ */
-export function myriapod(c: Ctx, g: G, p: Pal, opts: { flat?: boolean; coil?: boolean }, name = ''): void {
+export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: boolean;
+  hue?: string; segs?: number; scale?: number }, name = ''): void {
+  const p = hued(pIn, opts.hue);
   const r = nrng(g, name, 0x33DD);
   const cx = S * 0.48, cy = S * 0.52;
   /* the SEGMENT COUNT is a ratio the fit pass cannot flatten */
-  const N = (opts.flat ? 17 : 24) + Math.round((nv(name, 0x32, 1) - 1) * 5);
-  const segR = S * (opts.flat ? 0.028 : 0.024) * nv(name, 0x31, 0.12);
+  /* the SEGMENT COUNT is a ratio the fit pass cannot flatten — and a giant
+     centipede has visibly MORE of them than a common one, which is the only
+     honest way to draw "giant" on a subject that gets fitted to the frame */
+  const N = (opts.segs ?? (opts.flat ? 17 : 24)) + Math.round((nv(name, 0x32, 1) - 1) * 5);
+  const segR = S * (opts.flat ? 0.028 : 0.024) * (opts.scale ?? 1) * nv(name, 0x31, 0.12);
   shadow(c, cx, cy + segR * 3.4, S * 0.20);
   const path = (i: number): [number, number] => {
     const u = i / (N - 1);
@@ -426,10 +453,53 @@ export function crabBody(c: Ctx, g: G, p: Pal, opts: { wide?: boolean; hermit?: 
   }
 }
 
-export function shrimpBody(c: Ctx, g: G, p: Pal, opts: { claws?: boolean; stout?: boolean; tiny?: boolean }, name = ''): void {
+export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stout?: boolean; tiny?: boolean;
+  hue?: string; shield?: boolean; stalks?: boolean; gills?: boolean; scale?: number }, name = ''): void {
+  const p = hued(pIn, opts.hue);
   const r = nrng(g, name, 0x5E1D);
   const cx = S * 0.50, cy = S * 0.50;
-  const L = S * 0.145 * (opts.tiny ? 0.66 : 1) * nv(name, 0x51, 0.12);
+  /* ⚠ the same defect the small birds had: a krill was drawn at its true size
+     RELATIVE to a lobster, so it used a tenth of its 440px frame and every
+     feature that identifies it was three pixels across. The fit pass only ever
+     shrinks (D-ART-15), so nothing rescued it. Relative scale is invisible when
+     each species is framed alone; the range is compressed, not flattened. */
+  const L = S * 0.145 * (opts.tiny ? 1.22 : 1) * (opts.scale ?? 1) * nv(name, 0x51, 0.12);
+  const sigShrimp = (): void => {
+    /* the three signatures that tell the small crustaceans apart, each straight
+       off its own reference row */
+    if (opts.shield) {
+      /* a tadpole shrimp is half-covered by a broad flat SHIELD CARAPACE */
+      c.fillStyle = 'rgba(' + (p.cr * 0.86 | 0) + ',' + (p.cg * 0.86 | 0) + ',' + (p.cb * 0.84 | 0) + ',0.94)';
+      c.beginPath(); c.ellipse(cx - L * 0.30, cy - L * 0.06, L * 0.72, L * 0.46, -0.06, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(240,246,252,0.30)'; c.lineWidth = 2;
+      c.beginPath(); c.ellipse(cx - L * 0.30, cy - L * 0.06, L * 0.72, L * 0.46, -0.06, -2.7, 0.3); c.stroke();
+    }
+    if (opts.gills) {
+      /* a krill wears its gills OUTSIDE the shell — the one thing everybody
+         who has seen one remembers */
+      c.strokeStyle = 'rgba(232,238,244,0.52)'; c.lineWidth = 1.2; c.lineCap = 'round';
+      for (let i = 0; i < 7; i++) {
+        const t = i / 6, bx = cx - L * 0.5 + t * L * 0.9, by = cy + L * 0.30;
+        for (let k = -1; k <= 1; k++) {
+          c.beginPath(); c.moveTo(bx, by);
+          c.quadraticCurveTo(bx + k * L * 0.06, by + L * 0.14, bx + k * L * 0.11, by + L * 0.24);
+          c.stroke();
+        }
+      }
+    }
+    if (opts.stalks) {
+      /* eyes on STALKS, held clear of the head */
+      for (const sgn of [-1, 1]) {
+        const ex = cx + L * 0.78, ey = cy - L * 0.10 + sgn * L * 0.12;
+        c.strokeStyle = p.dark; c.lineWidth = Math.max(1.4, L * 0.045); c.lineCap = 'round';
+        c.beginPath(); c.moveTo(cx + L * 0.58, cy - L * 0.02); c.lineTo(ex, ey); c.stroke();
+        c.fillStyle = '#14161c';
+        c.beginPath(); c.arc(ex, ey, Math.max(2, L * 0.075), 0, TAU); c.fill();
+        c.fillStyle = 'rgba(255,255,255,0.72)';
+        c.beginPath(); c.arc(ex - L * 0.02, ey - L * 0.025, Math.max(1, L * 0.026), 0, TAU); c.fill();
+      }
+    }
+  };
   /* RATIO, not scale — the fit pass would erase a size-only difference */
   const h = L * (opts.stout ? 0.42 : 0.30) * nv(name, 0x52, 0.20);
   const curl = nv(name, 0x53, 0.24);          /* how tightly the abdomen comma-curls */
@@ -496,6 +566,7 @@ export function shrimpBody(c: Ctx, g: G, p: Pal, opts: { claws?: boolean; stout?
       r() < 0.55 ? '26,18,12' : '250,240,220', 0.10 + r() * 0.14);
   }
   c.restore();
+  sigShrimp();
 }
 
 /* ═══════════════ SOFT BODIES ═══════════════ */
@@ -629,10 +700,55 @@ export function jellyBody(c: Ctx, g: G, p: Pal, opts: { comb?: boolean; float?: 
   }
 }
 
-export function sessileBody(c: Ctx, g: G, p: Pal, opts: { kind: 'branch' | 'tube' | 'fan' | 'sac' }, name = ''): void {
+export function sessileBody(c: Ctx, g: G, pIn: Pal, opts: { kind: 'branch' | 'tube' | 'fan' | 'sac' | 'volcano';
+  hue?: string; pores?: boolean }, name = ''): void {
+  const p = hued(pIn, opts.hue);
   const r = nrng(g, name, 0x5E55);
   const cx = S * 0.50, base = S * 0.76;
   const H = S * 0.30 * nv(name, 0x91, 0.16);
+  if (opts.kind === 'volcano') {
+    /* ★ A BARNACLE IS NOT A TUBE. Its reference row calls it a "volcano-shaped
+       chalky cone of fused plates with trapdoor plates at the summit", and it
+       was sharing a spec with the Sponge — an irregular porous vase. They are
+       not the same shape, the same colour, or the same height. */
+    const w = S * 0.155, h = H * 0.62;
+    const gg = c.createLinearGradient(cx - w, 0, cx + w, 0);
+    gg.addColorStop(0, p.lit); gg.addColorStop(0.45, p.base); gg.addColorStop(1, p.dark);
+    shadow(c, cx, base + 4, w * 1.05);
+    c.fillStyle = gg;
+    c.beginPath();
+    c.moveTo(cx - w, base);
+    c.quadraticCurveTo(cx - w * 0.72, base - h * 0.72, cx - w * 0.34, base - h);
+    c.lineTo(cx + w * 0.34, base - h);
+    c.quadraticCurveTo(cx + w * 0.72, base - h * 0.72, cx + w, base);
+    c.closePath(); c.fill();
+    /* the fused plates: seams radiating from the summit down to the rim */
+    c.strokeStyle = 'rgba(58,52,44,0.42)'; c.lineCap = 'round';
+    for (let i = -3; i <= 3; i++) {
+      c.lineWidth = 1.6;
+      c.beginPath();
+      c.moveTo(cx + (i / 3) * w * 0.34, base - h);
+      c.lineTo(cx + (i / 3) * w, base);
+      c.stroke();
+    }
+    /* the trapdoor at the summit, slightly open */
+    c.fillStyle = 'rgba(30,28,24,0.72)';
+    c.beginPath(); c.ellipse(cx, base - h, w * 0.34, h * 0.09, 0, 0, TAU); c.fill();
+    c.fillStyle = p.lit;
+    for (const sgn of [-1, 1]) {
+      c.beginPath();
+      c.moveTo(cx + sgn * w * 0.05, base - h - h * 0.02);
+      c.lineTo(cx + sgn * w * 0.33, base - h + h * 0.03);
+      c.lineTo(cx + sgn * w * 0.05, base - h + h * 0.07);
+      c.closePath(); c.fill();
+    }
+    c.strokeStyle = 'rgba(236,242,250,0.26)'; c.lineWidth = 2;
+    c.beginPath();
+    c.moveTo(cx - w, base);
+    c.quadraticCurveTo(cx - w * 0.72, base - h * 0.72, cx - w * 0.34, base - h);
+    c.stroke();
+    return;
+  }
   shadow(c, cx, base + 4, S * 0.16);
   if (opts.kind === 'branch') {   /* a coral colony: recursive, thickening down */
     const draw = (x: number, y: number, a: number, len: number, w: number, d: number): void => {
@@ -653,6 +769,21 @@ export function sessileBody(c: Ctx, g: G, p: Pal, opts: { kind: 'branch' | 'tube
         `${Math.min(255, p.cr * 0.5 + 120 | 0)},${Math.min(255, p.cg * 0.6 + 60 | 0)},${Math.min(255, p.cb * 0.5 + 90 | 0)}`, 0.5);
     }
   } else if (opts.kind === 'tube') {   /* a sponge: a thick chimney with an osculum */
+    if (opts.pores) {
+      /* its reference row: "large OSCULUM HOLES on the surface". A sponge is
+         defined by being full of holes, and ours had none. */
+      c.save();
+      for (let i = 0; i < 26; i++) {
+        const u = r(), v = r();
+        const px = cx + (u - 0.5) * S * 0.20, py = base - v * H * 0.86;
+        const pr = S * (0.006 + r() * 0.011);
+        c.fillStyle = "rgba(28,22,18," + (0.26 + r() * 0.30).toFixed(2) + ")";
+        c.beginPath(); c.ellipse(px, py, pr, pr * 0.82, 0, 0, TAU); c.fill();
+        c.strokeStyle = "rgba(250,244,232,0.16)"; c.lineWidth = 1;
+        c.beginPath(); c.ellipse(px, py - pr * 0.22, pr * 0.9, pr * 0.66, 0, Math.PI, TAU); c.stroke();
+      }
+      c.restore();
+    }
     const w = S * 0.095;
     const gg = c.createLinearGradient(cx - w, 0, cx + w, 0);
     gg.addColorStop(0, p.dark); gg.addColorStop(0.42, p.base); gg.addColorStop(1, p.dark);
@@ -731,7 +862,8 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Black Fly': I({ abdomen: 0.8, wings: 'lace', antennae: 'short' }),
   'Fly': I({ abdomen: 0.85, wings: 'lace', antennae: 'short' }),
   'Stick Insect': I({ abdomen: 2.4, antennae: 'long', stick: true }),
-  'Water Strider': I({ abdomen: 1.0, antennae: 'long', stick: true }),
+  /* a2 · extremely long splayed middle and hind legs on a narrow boat body */
+  'Water Strider': I({ abdomen: 0.7, antennae: 'long', legSpan: 3.1 }),
   'Giant Water Bug': I({ abdomen: 1.3, antennae: 'short', raptor: true }),
   'Cold-Adapted Insect': I({ abdomen: 1.0, antennae: 'short', fuzzy: true }),
   'Insect-Eating Bat': I({ abdomen: 1.0, wings: 'open', antennae: 'none' }),
@@ -742,12 +874,12 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Sea Spider': A({ longleg: true }),
   'Harvestman': A({ longleg: true }),
   'Scorpion': A({ big: true, sting: true, claws: true }),
-  'Pseudoscorpion': A({ claws: true }),
+  'Pseudoscorpion': A({ claws: true, scale: 0.92, hue: '#5d4630' }),
   'Deer Tick': A({ big: true }),
-  'Mite': A({}),
+  'Mite': A({ scale: 0.62, hue: '#9a6a4a' }),
   /* ── MYRIAPODS ── */
-  'Centipede': M({ flat: true }),
-  'Giant Centipede': M({ flat: true }),
+  'Centipede': M({ flat: true, hue: '#b06a2c' }),
+  'Giant Centipede': M({ flat: true, scale: 1.34, segs: 22, hue: '#7d2f28' }),
   'Millipede': M({ coil: true }),
   /* ── CRABS ── */
   'Crab': C({ wide: true }),
@@ -760,20 +892,20 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Shrimp': P({}),
   'Prawn': P({}),
   'Freshwater Shrimp': P({}),
-  'Brine Shrimp': P({ tiny: true }),
-  'Fairy Shrimp': P({ tiny: true }),
-  'Tadpole Shrimp': P({ tiny: true, stout: true }),
+  'Brine Shrimp': P({ tiny: true, stalks: true, scale: 0.90, hue: '#d98a5c' }),
+  'Fairy Shrimp': P({ tiny: true, scale: 1.20, hue: '#e8c9a0' }),
+  'Tadpole Shrimp': P({ tiny: true, stout: true, shield: true, scale: 1.05, hue: '#8a6f45' }),
   'Cave Shrimp': P({}),
   'Vent Shrimp': P({}),
-  'Krill': P({ tiny: true }),
+  'Krill': P({ tiny: true, gills: true, stalks: true, scale: 1.00, hue: '#e2705a' }),
   'Copepod': P({ tiny: true, stout: true }),
-  'Amphipod': P({ tiny: true, stout: true }),
-  'Water Flea': P({ tiny: true, stout: true }),
+  'Amphipod': P({ tiny: true, stout: true, scale: 0.74, hue: '#b9a274' }),
+  'Water Flea': P({ tiny: true, stout: true, scale: 0.58, hue: '#bcd6c4' }),
   'Isopod': P({ stout: true }),
   'Giant Isopod': P({ stout: true }),
   'Lobster': P({ claws: true }),
   'Crayfish': P({ claws: true }),
-  'Barnacle': X({ kind: 'tube' }),
+  'Barnacle': X({ kind: 'volcano', hue: '#d8d2c4' }),
   /* ── WORMS ── */
   'Earthworm': W({}),
   'Ice Worm': W({}),
@@ -796,7 +928,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Coral': X({ kind: 'branch' }),
   'Cold-Water Coral': X({ kind: 'branch' }),
   'Deep-Water Coral': X({ kind: 'branch' }),
-  'Sponge': X({ kind: 'tube' }),
+  'Sponge': X({ kind: 'tube', pores: true, hue: '#c8823f' }),
   'Sea Squirt': X({ kind: 'fan' }),
   'Sea Cucumber': X({ kind: 'sac' }),
   'Lancelet': W({}),
