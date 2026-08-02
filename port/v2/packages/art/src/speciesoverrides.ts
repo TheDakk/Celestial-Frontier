@@ -23,6 +23,7 @@ import { QUAD2_SPEC } from './mammaloverrides.js';
 import { INVERT_NAME } from './invertoverrides.js';
 import { FLORA2_SPEC } from './florarost.js';
 import { planFor } from './proceduraloverrides.js';
+import { fungiFlyAgaric, fungiLionsMane, fungiMaitake, fungiStinkhorn, fungiCordyceps, lichenMat, microbeForam, tardigrade, macroAlgaeSheet, microAlgaeCell, algaeBloom } from './fungioverrides2.js';
 import { fishBody } from './faunaoverrides3.js';
 import { insectBody, myriapod } from './invertoverrides.js';
 import { plantBody } from './floraoverrides2.js';
@@ -242,44 +243,6 @@ function fungiMorel(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
 }
 
 /* ============================ MICROBE FAMILIES ============================ */
-/* Nick audit §9: replace the bubble cluster with named morphologies. */
-function microbeTardigrade(c: Ctx, g: G, p0: ReturnType<typeof palette>): void {
-  /* the water bear — plump segmented barrel, 8 stubby clawed legs. THE icon.
-     ⚠ contrast guarantee: a dull/dark roll makes the icon vanish, so warm
-     the body toward the real translucent-amber water bear when the rolled
-     palette is too desaturated (the D-ART-3 floor, applied at the source) */
-  const lum = (p0.cr + p0.cg + p0.cb) / 3;
-  const sat = Math.max(p0.cr, p0.cg, p0.cb) - Math.min(p0.cr, p0.cg, p0.cb);
-  const p = (lum < 150 || sat < 40)
-    ? palette({ ...g, color: undefined, _forceHex: '#d6b483' } as G) as ReturnType<typeof palette>
-    : p0;
-  const cx = S * 0.46, cy = S * 0.52, bl = S * 0.30, bh = S * 0.17;
-  /* legs first (behind body), 4 visible pairs */
-  c.fillStyle = p.dark;
-  for (let i = 0; i < 4; i++) {
-    const lx = cx - bl * 0.42 + i * (bl * 0.26), ly = cy + bh * 0.55;
-    for (const s of [-1, 1] as const) {
-      c.save(); c.translate(lx, ly); c.rotate(s * 0.25 + (i - 1.5) * 0.06);
-      c.beginPath(); c.ellipse(0, S * 0.045, S * 0.028, S * 0.05, 0, 0, TAU); c.fill();
-      c.fillStyle = 'rgba(20,14,10,0.9)';   /* tiny claws */
-      for (const cw of [-1, 0, 1]) { c.beginPath(); c.arc(cw * 5, S * 0.09, 2.2, 0, TAU); c.fill(); }
-      c.fillStyle = p.dark; c.restore();
-    }
-  }
-  /* the plush body — segmented, front-tapered */
-  const bg = c.createRadialGradient(cx - bl * 0.3, cy - bh * 0.4, 4, cx, cy, bl);
-  bg.addColorStop(0, p.lit); bg.addColorStop(0.7, p.base); bg.addColorStop(1, p.dark);
-  c.fillStyle = bg;
-  c.beginPath(); c.ellipse(cx, cy, bl, bh, 0, 0, TAU); c.fill();
-  rimStroke(c, () => c.ellipse(cx, cy, bl, bh, 0, -2.6, 0.4), 'rgba(220,228,244,0.5)', 2.4);
-  /* body segments */
-  c.strokeStyle = 'rgba(0,0,0,0.22)'; c.lineWidth = 2;
-  for (let i = 1; i < 5; i++) { const sx = cx - bl * 0.5 + i * (bl * 0.28); c.beginPath(); c.ellipse(sx, cy, bh * 0.5, bh * 0.92, 0, -1.2, 1.2); c.stroke(); }
-  /* snout + mouth at the front */
-  const snout = cx - bl * 0.92;
-  c.fillStyle = p.base; c.beginPath(); c.ellipse(snout, cy, bh * 0.42, bh * 0.6, 0, 0, TAU); c.fill();
-  c.fillStyle = 'rgba(0,0,0,0.55)'; c.beginPath(); c.arc(snout - bh * 0.2, cy, bh * 0.18, 0, TAU); c.fill();   /* the terminal mouth */
-}
 function microbeDiatom(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   /* rigid geometric silica shell — radial or bilateral glass */
   const r = mulberry32(((g.seed as number) ^ 0xD1A7) >>> 0);
@@ -343,12 +306,19 @@ type Painter = (c: Ctx, g: G, p: ReturnType<typeof palette>) => void;
 const FUNGI_NAME: Record<string, Painter> = {
   'Turkey Tail': fungiBracket, 'Bracket Fungus': fungiBracket, 'Shelf Fungus': fungiBracket, 'Chicken-of-the-Woods': fungiBracket, 'Oyster Mushroom': fungiBracket, 'Reindeer Lichen': fungiBracket,
   'Giant Puffball': fungiPuffball, 'Earthstar': fungiEarthstar, 'Black Truffle': fungiPuffball,
-  'Coral Fungus': fungiCoral, "Lion's Mane": fungiCoral, 'Cordyceps': fungiCoral,
+  'Coral Fungus': fungiCoral,
   'Morel': fungiMorel,
   'Mold': fungiMold, 'Mildew': fungiMold, 'Yeast': fungiMold,
+  /* wave 18 — the Platinum-audit bespoke fungi, whose signature the shared
+     families cannot express (a family for the many, a hand form for the few) */
+  'Fly Agaric': fungiFlyAgaric,
+  "Lion's Mane": fungiLionsMane,
+  'Maitake': fungiMaitake,
+  'Stinkhorn': fungiStinkhorn,
+  'Cordyceps': fungiCordyceps,
 };
 const MICROBE_NAME: Record<string, Painter> = {
-  'Tardigrade': microbeTardigrade,
+  'Tardigrade': tardigrade,   /* wave 18: the canonical 8-legged water bear */
   'Diatom': microbeDiatom, 'Radiolarian': microbeDiatom, 'Dinoflagellate': microbeDiatom,
   'Paramecium': microbeCiliate, 'Euglena': microbeCiliate,
   'Amoeba': microbeAmoeba, 'Foraminiferan': microbeAmoeba, 'Green Algae': microbeAmoeba,
@@ -356,6 +326,23 @@ const MICROBE_NAME: Record<string, Painter> = {
 
 /** Return a corrected portrait data URL, or null to fall through to the
     verbatim engine. Matches by the genome's _earthName. */
+/** Cross-kingdom + iconic bespoke routing (wave 18, the Platinum audit). */
+const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
+  /* Tardigrade is an ANIMAL in both kingdoms it appears in (audit canonical) */
+  'fauna|Tardigrade': tardigrade,
+  /* Foraminiferan gets its chambered test */
+  'microbe|Foraminiferan': microbeForam,
+  /* Green Algae: MACRO in flora (a green sheet), MICRO in microbe (a cell) */
+  'flora|Green Algae': macroAlgaeSheet,
+  'microbe|Green Algae': microAlgaeCell,
+  /* Snow / Ice Algae: a tinted bloom field in each kingdom it appears in */
+  'flora|Snow Algae': algaeBloom, 'microbe|Snow Algae': algaeBloom,
+  'flora|Ice Algae': algaeBloom, 'microbe|Ice Algae': algaeBloom,
+  /* Reindeer Lichen: one canonical pale branching mat across flora + fungi */
+  'flora|Reindeer Lichen': lichenMat, 'fungi|Reindeer Lichen': lichenMat,
+  /* Sea Lettuce: a green macroalgal sheet, not a purple strap */
+  'flora|Sea Lettuce': macroAlgaeSheet,
+};
 export function resolveOverride(g: G): string | null {
   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it
      (Lion's Mane), which is exactly the mojibake Nick's audit caught */
@@ -368,6 +355,21 @@ export function resolveOverride(g: G): string | null {
   if (!name) return resolveProcedural(g);
   if (!name) return null;
   const kingdom = g.kingdom as string;
+  /* ★ WAVE 18 — CANONICAL + CROSS-KINGDOM audit blockers. Four organisms live
+     in TWO kingdoms each (the 1,014-vs-1,010 count delta), and a few iconic
+     species need a bespoke painter regardless of which family the kingdom
+     branch would pick. This map runs FIRST, keyed by kingdom+name, so each
+     copy renders correctly for its role. */
+  const canon = CANON[kingdom + '|' + name];
+  if (canon) {
+    const { cv, c } = newCanvas();
+    vignette(c, kingdom === 'fungi');
+    floorFade(c);
+    const ink = newInk();
+    canon(ink.c, g, palette(g) as Pal);
+    fitInk(ink.cv, c, kingdom + ':' + name);
+    return cv.toDataURL();
+  }
   /* FLORA (wave 2): iconic bespoke bodies first, then the name-seeded ladder
      for every member of the 16 byte-duplicate groups */
   if (kingdom === 'flora') {
@@ -431,7 +433,7 @@ export function resolveProcedural(g: G): string | null {
     const form = (((g.form as number) || 0) % 18 + 18) % 18;
     const painter = kingdom === 'fungi'
       ? [fungiBracket, fungiPuffball, fungiCoral, fungiMorel, fungiMold, fungiEarthstar][form % 6]!
-      : [microbeTardigrade, microbeDiatom, microbeCiliate, microbeAmoeba][form % 4]!;
+      : [tardigrade, microbeDiatom, microbeCiliate, microbeAmoeba][form % 4]!;
     const { cv, c } = newCanvas();
     vignette(c, kingdom === 'fungi');
     floorFade(c);

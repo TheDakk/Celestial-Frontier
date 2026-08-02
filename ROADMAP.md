@@ -686,6 +686,23 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 18 — THE PLATINUM AUDIT: CANONICAL + FUNGI (2026-08-02, batch 39).
+##   The 2nd full audit came back — pipeline CLEAN (1,254 open, 440x440, no clip, no byte-dupe,
+##   matrix complete), 28 named RELEASE_BLOCKERS. Plan in port/AUDIT_PLATINUM_PLAN.md. Wave 18
+##   = buckets A (canonical) + B (fungi), 10 of 28. ★★THE 1,014-vs-1,010 COUNT DELTA IS SOLVED
+##   (task #14): the audit's cross-library conflicts name 4 organisms each in 2 kingdom lists
+##   (Tardigrade fauna+microbe · Green Algae flora+microbe · Snow Algae flora+microbe ·
+##   Reindeer Lichen flora+fungi) = 1,014 rows - 4 dupes = 1,010 unique. Fix = a CANON map in
+##   resolveOverride keyed by kingdom+name, each copy rendered for its ROLE: Tardigrade an
+##   8-legged animal in both; Green Algae a macroalgal sheet (flora) vs a micro cell (microbe);
+##   Snow/Ice Algae a bloom field; Reindeer Lichen one canonical lichen mat; Sea Lettuce a
+##   green sheet (macroalgae green-biased since green is identity). ★BUCKET B — 6 bespoke fungi
+##   whose SIGNATURE the shared families cannot express: Fly Agaric (red cap + white warts) ·
+##   Lion's Mane (white pom-pom of tooth-spines) · Maitake (frond rosette) · Stinkhorn (upright
+##   stalk + dark gleba) · Cordyceps (clubs on a host). The override law as designed. D-ART-58..60.
+##   GATES: vitest 220 · tsc · artbattery 5/5 · speciesaudit 1254/1254 0 dupes 0 clipped ·
+##   slicesmoke PASS · hdart UNTOUCHED. NEXT: bucket C (flora iconic 10) · bucket D (fauna 6) ·
+##   re-export + re-audit.
 ##   ✔★★★ MORPHOLOGY WAVE 17 — THE LAST MONO-TEMPLATE (2026-08-02, batch 38). Nick's audit
 ##   §12/§13 named two mono-templates (27 fungi = 1 mushroom, 22 microbes = 1 bubble). Wave 1
 ##   fixed them for NAMED species — but NEVER for the PROCEDURAL spread, and nothing had ever

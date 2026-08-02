@@ -1050,3 +1050,39 @@ carrying it.
 **Gates:** vitest 220 ✓ · tsc clean · artbattery **5/5** · speciesaudit 1254/1254 ·
 0 duplicate pairs · 0 clipped · slicesmoke PASS · perf 1347/2087ms.
 `hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-56 · D-ART-57. **Task 19 CLOSED.**
+
+---
+
+# WAVE 18 — LANDED 2026-08-02 (THE PLATINUM AUDIT: canonical + fungi blockers)
+
+The second full audit ("Platinum Species Audit") came back — pipeline CLEAN (all 1,254 open,
+440x440 RGBA, no clipping, no byte-dupes, matrix complete), with 28 named RELEASE_BLOCKERS. The
+plan is in port/AUDIT_PLATINUM_PLAN.md. Wave 18 = buckets A (canonical) + B (fungi).
+
+## THE 1,014-vs-1,010 COUNT DELTA IS SOLVED (task #14, investigation half)
+The audit's cross-library conflicts name FOUR organisms each in TWO kingdom lists — Tardigrade
+(fauna+microbe), Green Algae (flora+microbe), Snow Algae (flora+microbe), Reindeer Lichen
+(flora+fungi). 1,014 catalog rows - 4 duplicated organisms = 1,010 unique. The delta,
+explained. The fix is not to delete rows (the catalog is verbatim main.js) but to render each
+kingdom's copy correctly for its ROLE, via a new CANON map in resolveOverride keyed by
+kingdom+name.
+
+## Bucket A — canonical
+- Tardigrade = an ANIMAL in both kingdoms: a plump 8-legged water bear with visible claws and
+  cuticle segments (the audit flagged the legs as nearly invisible).
+- Green Algae: flora = a green MACROalgal sheet; microbe = a single MICRO cell with a cup
+  chloroplast.
+- Snow / Ice Algae: a tinted bloom field on a pale snow ground, in each kingdom.
+- Reindeer Lichen: ONE canonical pale densely-branched lichen mat across flora + fungi.
+- Sea Lettuce: a green macroalgal sheet. Macroalgae are green-biased since green is identity.
+
+## Bucket B — the six bespoke fungi
+Fly Agaric (red cap + white warts) · Lion's Mane (a white pom-pom of hanging tooth-spines) ·
+Maitake (a dense rosette of overlapping fronds) · Stinkhorn (an upright pale stalk + dark
+dripping gleba) · Cordyceps (orange clubs erupting from a buried host). The override law: a
+family for the many, a hand-drawn form for the few that define themselves.
+
+## Gates
+vitest 220 · tsc clean · artbattery 5/5 · speciesaudit 1254/1254 · 0 dupes · 0 clipped ·
+slicesmoke PASS. hdart UNTOUCHED. 10 of 28 release blockers cleared; count delta closed.
+Ledger: D-ART-58..60. NEXT: bucket C (flora iconic, 10) then bucket D (fauna, 6), then re-export.
