@@ -134,6 +134,26 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   before any marking is drawn. Also: humps are seated on the back line at their own x rather
   than floating above it (a Bactrian's rear hump hovered over a spine it never touched).
   Verified no regression against Giraffe, Hippo, Rhino, Camel, Moose, Wolf, Leopard, Cheetah.
+- ✔ **D-ART-33 — THE INVERTEBRATE BODY PLANS (wave 10b).** 83 routes from five painters keyed
+  on tagmata and leg count: insect (6 legs, petiole, pile, raptorial strike, jumping femur,
+  four wings), arachnid (8 legs, no antennae, scorpion telson), myriapod, crab (claws FORWARD),
+  shrimp (the abdomen curls into a comma), plus worms, slugs with cerata, jellies with trailing
+  tentacles, coral, sponge.
+- ✔ **D-ART-34 — SCALE IS INVISIBLE; VARY A RATIO (wave 10b).** Name-seeded variation of
+  OVERALL SIZE does nothing: the fit pass rescales every subject to fill the frame, erasing it.
+  Anti-duplicate variation must change an aspect, an angle or a count. Every invertebrate
+  painter now varies a ratio.
+- ✔ **D-ART-35 — THE DEGENERATE SALT (wave 10b, retroactive to waves 7-10a).** The variation
+  helper XOR-ed a small salt into the name hash then divided by 2^32, so the salt only moved
+  the lowest byte (~1e-7 of the result). Six "independent" axes were one axis six times, in
+  every wave since 7; near-neighbour hashes also produced near-identical animals. Replaced with
+  a murmur3-finalizer avalanche in all five copies.
+- ✔ **D-ART-36 — ★ THE AUDIT READ A STALE BUNDLE ALL SESSION (wave 10b).** speciesaudit built
+  only if audit.html was missing, so once dist/ existed it never rebuilt: every run measured
+  the bundle, not the repo. It reported a duplicate the source had already fixed, and would
+  have reported PASS for code that no longer existed. Both audit and export now ALWAYS build,
+  with a freshness guard that exits 2 if dist is older than any art source. A check that reads
+  a build artefact must prove the artefact is current.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

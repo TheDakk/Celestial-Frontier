@@ -95,11 +95,32 @@ function softMark(c: Ctx, x: number, y: number, rx: number, ry: number, rgb: str
   c.restore();
 }
 
-export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
-  const r = mulberry32(((g.seed as number) ^ 0x9AD4) >>> 0);
+/** THE AVALANCHE. XOR-ing a small salt into a hash and dividing by 2^32
+    perturbs only the lowest bits, so every "independent" variation axis
+    collapsed to the same number and near-neighbour names produced
+    near-identical animals. Mix the salt in with a large odd multiplier and
+    scramble, so one bit of change rewrites the whole value. */
+function mixSaltQ(h: number, salt: number): number {
+  let x = (h ^ Math.imul(salt | 1, 0x9E3779B1)) >>> 0;
+  x = (x ^ (x >>> 16)) >>> 0; x = Math.imul(x, 0x7FEB352D) >>> 0;
+  x = (x ^ (x >>> 15)) >>> 0; x = Math.imul(x, 0x846CA68B) >>> 0;
+  x = (x ^ (x >>> 16)) >>> 0;
+  return x >>> 0;
+}
+export function nameSeedQ(name: string): number {
+  let h = 0x4D3F;
+  for (let i = 0; i < name.length; i++) h = Math.imul(h ^ name.charCodeAt(i), 0x85EB) >>> 0;
+  return h >>> 0;
+}
+export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = ''): void {
+  const r = mulberry32((((g.seed as number) ^ 0x9AD4 ^ nameSeedQ(name)) >>> 0));
+  /* the species NAME varies real proportion, so two specs that happen to
+     match cannot render the same animal — D-ART-20 applied back to wave 4,
+     now the largest table in the game at ~130 species */
+  const nvq = (salt: number, amt: number): number => 1 + (mixSaltQ(nameSeedQ(name), salt) / 4294967296 - 0.5) * 2 * amt;
   const p = pal(p0, spec);
   const groundY = S * 0.80;
-  const legLen = S * spec.legs;
+  const legLen = S * spec.legs * nvq(0x11, 0.06);
   const bodyH = S * spec.depth;
   const bodyW = S * (spec.len ?? 0.30);
   const cy = groundY - legLen - bodyH * 0.55;

@@ -16,7 +16,29 @@ const OUT = path.join(appDir, 'smoke');
 const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-if (!fs.existsSync(path.join(dist, 'audit.html'))) execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
+/* ★ ALWAYS REBUILD. This was 'build only if audit.html is missing', so
+   once dist existed the audit measured a STALE BUNDLE forever — it spent a
+   whole batch reporting a duplicate pair that the source had already fixed,
+   and would just as happily have reported a PASS for code that no longer
+   existed. An instrument that reads yesterday's build is not an instrument. */
+execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
+
+/* THE FRESHNESS GUARD — belt and braces for the bug above. Even with an
+   unconditional build, assert the bundle is newer than every art source, so
+   a future 'optimisation' that skips the build cannot silently reintroduce a
+   check that reports on code nobody is running. */
+{
+  const newest = (dir) => fs.readdirSync(dir, { withFileTypes: true }).reduce((acc, e) => {
+    const p = path.join(dir, e.name);
+    return Math.max(acc, e.isDirectory() ? newest(p) : fs.statSync(p).mtimeMs);
+  }, 0);
+  const srcMs = newest(path.join(here, '..', 'packages', 'art', 'src'));
+  const distMs = fs.statSync(path.join(dist, 'audit.html')).mtimeMs;
+  if (distMs < srcMs) {
+    console.error('speciesaudit: THE BUNDLE IS STALE — art source is newer than dist. Refusing to report on code nobody is running.');
+    process.exit(2);
+  }
+}
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.map': 'application/json' };
 const server = http.createServer((req, res) => {
   const p = path.join(dist, req.url === '/' ? 'index.html' : req.url.split('?')[0]);

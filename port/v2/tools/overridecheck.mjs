@@ -72,7 +72,7 @@ const TABLE_KINGDOM = {
   FUNGI_NAME: 'fungi', MICROBE_NAME: 'microbe',
   FLORA_ICONIC: 'flora', FLORA_DUPES: 'flora',
   FAUNA_NAME: 'fauna', FAUNA2_NAME: 'fauna', FAUNA3_NAME: 'fauna',
-  BIRD_NAME: 'fauna', QUAD_SPEC: 'fauna', QUAD2_SPEC: 'fauna',
+  BIRD_NAME: 'fauna', QUAD_SPEC: 'fauna', QUAD2_SPEC: 'fauna', INVERT_NAME: 'fauna',
 };
 const keys = new Map();   /* "kingdom|name" → "file:TABLE" */
 const dupes = [];

@@ -555,3 +555,70 @@ microbe body plans · flower-head families · the 43 biome scenes.
 **Gates:** vitest 220 ✓ · tsc clean · speciesaudit 1254/1254 · 0/0/0 · overridecheck 569/569 ·
 0 dead · overridecontrol 6/6 · slicesmoke PASS · perf 1354/2128ms. `hdart.verbatim.js`
 UNTOUCHED. **Ledger:** D-ART-30 … D-ART-32.
+
+---
+
+# WAVE 10b — LANDED 2026-08-01 (THE INVERTEBRATES + three instrument bugs,
+# one of which had been lying to us all session)
+
+## The last large uncovered block
+~67 arthropods and ~22 soft-bodied and radial animals, none of which had a body
+plan. **83 new routes**, built as five body-plan painters, because an arthropod is
+legible almost entirely from its **tagmata and leg count**:
+· **insect** 3 sections · 6 legs · antennae — with the wasp/ant **petiole**, the bee's
+**pile**, the mantis's **raptorial strike**, the grasshopper's **jumping femur**, the moth's
+**plumed antennae**, and four big wings for butterflies (a butterfly is wings with an insect
+attached — sized off the abdomen they came out smaller than the body they hang from)
+· **arachnid** 2 sections · **8 legs** · NO antennae — the scorpion's segmented tail and
+telson, the tarantula's hair, the harvestman's span (the span IS the animal)
+· **myriapod** many segments, a leg pair on each; centipede venom claws, millipede coil
+· **crab** one wide carapace, **claws forward** (drawn before the shell they were buried
+under it), 8 walking legs, eyestalks, and the hermit's borrowed spiral
+· **shrimp** the abdomen **curls** — a shrimp at rest is a comma, never a rod — ending in a
+tail fan, with lobster/crayfish chelae
+and the soft-bodied ones from how they hold water: worm segments and parapodia, the slug's
+foot and the nudibranch's **cerata**, the jelly's bell and **trailing** tentacles, the
+ctenophore's iridescent comb rows, coral branching, the sponge's osculum.
+
+## ★★★ THREE INSTRUMENT BUGS, FOUND BY ONE DUPLICATE
+The audit reported **Copepod = Tadpole Shrimp**. Chasing it turned up three real defects,
+each hidden behind the last:
+
+**1 · THE SCALE-IS-INVISIBLE LAW.** Every one of these painters varied by name in
+*overall size* — and **the fit pass (D-ART-15/17) rescales every subject to fill the frame**.
+A pure scale difference is erased by the very pass that frames the art. Anti-duplicate
+variation must change a **RATIO** — an aspect, an angle, a segment count — never just how big
+the thing is drawn. Every invertebrate painter now varies a ratio.
+
+**2 · THE DEGENERATE SALT — and it was in every wave from 7 onward.** The helper computed
+`((nameHash ^ salt) >>> 0) / 4294967296`. XOR-ing a small salt only perturbs the LOWEST byte,
+which after the divide moves the result by ~1e-7. So a painter that appeared to vary six
+independent ways — girth, length, dome, ear, reach, whorl — **varied ONE way, six times**, in
+waves 7, 8, 9, 10a and 10b. It also made near-neighbour hashes near-identical animals:
+Copepod and Tadpole Shrimp hash 0.27% apart, giving a 0.1% difference in every ratio.
+Fixed with a proper **avalanche** (the murmur3 finalizer) in all five copies.
+
+**3 · ★ THE AUDIT WAS READING A STALE BUNDLE — ALL SESSION.**
+`speciesaudit.mjs` built *only if `audit.html` was missing*. Once `dist/` existed it never
+rebuilt again, so **every audit run since measured whatever code happened to be in the
+bundle**, not the code in the repo. It spent this entire batch reporting a duplicate the
+source had already fixed — and it would just as happily have reported a clean PASS for code
+that no longer existed. *(The strip tool always rebuilt, which is why every visual check in
+this session was honest.)*
+**Fix:** `speciesaudit` and `speciesexport` now **always build**, plus a **freshness guard**
+that exits 2 if the bundle is older than any art source — so a future "optimisation" that
+skips the build cannot silently bring the bug back.
+
+> The project's eighth green-while-broken lesson has a ninth sibling: **a check that reads a
+> build artefact must prove the artefact is current.** Ours did not, for an entire session.
+
+## Coverage after wave 10b — MEASURED
+**652 of 1,010 Earth species (64.6%)** — fauna 582 · flora 45 · fungi 16 · microbe 9.
+
+Remaining: marsupials · pinnipeds · the cetacean and bat remainder (posture painters, not
+table rows) · procedural fungi + microbe body plans · flower-head families · the 43 biome
+scenes.
+
+**Gates:** vitest 220 ✓ · tsc clean · speciesaudit 1254/1254 · **0 duplicate pairs** ·
+0 clipped · overridecheck 652/652 · 0 dead · overridecontrol 6/6 · slicesmoke PASS ·
+perf 1321/1973ms. `hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-33 … D-ART-36.
