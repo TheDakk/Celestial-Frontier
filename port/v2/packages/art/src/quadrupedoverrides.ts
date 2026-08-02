@@ -84,6 +84,11 @@ export interface QuadSpec {
      head". An ear category is a SHAPE; this is the multiplier on its scale,
      for the handful of animals whose feature is outsized for their family. */
   earScale?: number;
+  /** ★ wave 13 — an ear has a SHAPE, not only a size. Defaults per family. */
+  earShape?: 'round' | 'point' | 'tuft' | 'leaf' | 'drop' | 'spoon' | 'hidden';
+  /** ★ wave 13 — and an eye has a PUPIL, which no mammal here had. */
+  pupil?: 'round' | 'slit' | 'bar';
+  iris?: string;
   tailScale?: number;
   /* ★ wave 22b — a mane is drawn BEHIND and BACK from the head, never centred
      on it: centred, it swallows the muzzle and eyes and the animal loses the
@@ -125,26 +130,26 @@ const SKULL: Record<string, {
   nose: 'wet' | 'disc' | 'nostril';
   tilt: number;      /* how far the muzzle points down off the neck */
 }> = {
-  felid: { len: 1.70, cranium: 1.00, stop: 0.62, muzzle: 0.46, jaw: 0.34, eyeU: 0.50, eyePhi: 0.22, eyeR: 0.175, nose: 'wet', tilt: 0.06 },
-  canid: { len: 2.45, cranium: 0.86, stop: 0.44, muzzle: 0.28, jaw: 0.26, eyeU: 0.40, eyePhi: 0.34, eyeR: 0.15, nose: 'wet', tilt: 0.10 },
-  ursid: { len: 2.00, cranium: 1.06, stop: 0.20, muzzle: 0.46, jaw: 0.36, eyeU: 0.36, eyePhi: 0.28, eyeR: 0.13, nose: 'wet', tilt: 0.12 },
-  bovid: { len: 2.40, cranium: 0.80, stop: 0.10, muzzle: 0.44, jaw: 0.34, eyeU: 0.32, eyePhi: 0.74, eyeR: 0.16, nose: 'nostril', tilt: 0.16 },
-  cervid: { len: 2.30, cranium: 0.78, stop: 0.16, muzzle: 0.36, jaw: 0.28, eyeU: 0.31, eyePhi: 0.72, eyeR: 0.17, nose: 'wet', tilt: 0.16 },
-  equid: { len: 2.85, cranium: 0.82, stop: 0.05, muzzle: 0.50, jaw: 0.42, eyeU: 0.28, eyePhi: 0.70, eyeR: 0.15, nose: 'nostril', tilt: 0.18 },
-  camelid: { len: 2.10, cranium: 0.72, stop: 0.26, muzzle: 0.38, jaw: 0.34, eyeU: 0.33, eyePhi: 0.62, eyeR: 0.165, nose: 'nostril', tilt: 0.10 },
+  felid: { len: 1.70, cranium: 1.00, stop: 0.62, muzzle: 0.46, jaw: 0.34, eyeU: 0.50, eyePhi: 0.22, eyeR: 0.235, nose: 'wet', tilt: 0.06 },
+  canid: { len: 2.45, cranium: 0.86, stop: 0.44, muzzle: 0.28, jaw: 0.26, eyeU: 0.40, eyePhi: 0.34, eyeR: 0.205, nose: 'wet', tilt: 0.10 },
+  ursid: { len: 2.00, cranium: 1.06, stop: 0.20, muzzle: 0.46, jaw: 0.36, eyeU: 0.36, eyePhi: 0.28, eyeR: 0.175, nose: 'wet', tilt: 0.12 },
+  bovid: { len: 2.40, cranium: 0.80, stop: 0.10, muzzle: 0.44, jaw: 0.34, eyeU: 0.32, eyePhi: 0.74, eyeR: 0.215, nose: 'nostril', tilt: 0.16 },
+  cervid: { len: 2.30, cranium: 0.78, stop: 0.16, muzzle: 0.36, jaw: 0.28, eyeU: 0.31, eyePhi: 0.72, eyeR: 0.225, nose: 'wet', tilt: 0.16 },
+  equid: { len: 2.85, cranium: 0.82, stop: 0.05, muzzle: 0.50, jaw: 0.42, eyeU: 0.28, eyePhi: 0.70, eyeR: 0.205, nose: 'nostril', tilt: 0.18 },
+  camelid: { len: 2.10, cranium: 0.72, stop: 0.26, muzzle: 0.38, jaw: 0.34, eyeU: 0.33, eyePhi: 0.62, eyeR: 0.22, nose: 'nostril', tilt: 0.10 },
   /* a pig's snout ends in a flat cartilage DISC, and that disc is the animal */
-  suid: { len: 2.25, cranium: 0.86, stop: 0.04, muzzle: 0.52, jaw: 0.40, eyeU: 0.28, eyePhi: 0.58, eyeR: 0.11, nose: 'disc', tilt: 0.20 },
-  mustelid: { len: 1.80, cranium: 0.84, stop: 0.38, muzzle: 0.32, jaw: 0.24, eyeU: 0.46, eyePhi: 0.36, eyeR: 0.15, nose: 'wet', tilt: 0.08 },
-  rodent: { len: 1.70, cranium: 0.98, stop: 0.46, muzzle: 0.32, jaw: 0.26, eyeU: 0.46, eyePhi: 0.44, eyeR: 0.195, nose: 'wet', tilt: 0.10 },
-  pachyderm: { len: 1.95, cranium: 1.16, stop: 0.34, muzzle: 0.54, jaw: 0.40, eyeU: 0.38, eyePhi: 0.56, eyeR: 0.10, nose: 'nostril', tilt: 0.10 },
-  marsupial: { len: 1.85, cranium: 0.96, stop: 0.34, muzzle: 0.40, jaw: 0.32, eyeU: 0.44, eyePhi: 0.46, eyeR: 0.20, nose: 'wet', tilt: 0.12 },
-  procyonid: { len: 1.95, cranium: 0.92, stop: 0.36, muzzle: 0.34, jaw: 0.26, eyeU: 0.44, eyePhi: 0.38, eyeR: 0.19, nose: 'wet', tilt: 0.14 },
+  suid: { len: 2.25, cranium: 0.86, stop: 0.04, muzzle: 0.52, jaw: 0.40, eyeU: 0.28, eyePhi: 0.58, eyeR: 0.155, nose: 'disc', tilt: 0.20 },
+  mustelid: { len: 1.80, cranium: 0.84, stop: 0.38, muzzle: 0.32, jaw: 0.24, eyeU: 0.46, eyePhi: 0.36, eyeR: 0.2, nose: 'wet', tilt: 0.08 },
+  rodent: { len: 1.70, cranium: 0.98, stop: 0.46, muzzle: 0.32, jaw: 0.26, eyeU: 0.46, eyePhi: 0.44, eyeR: 0.25, nose: 'wet', tilt: 0.10 },
+  pachyderm: { len: 1.95, cranium: 1.16, stop: 0.34, muzzle: 0.54, jaw: 0.40, eyeU: 0.38, eyePhi: 0.56, eyeR: 0.140, nose: 'nostril', tilt: 0.10 },
+  marsupial: { len: 1.85, cranium: 0.96, stop: 0.34, muzzle: 0.40, jaw: 0.32, eyeU: 0.44, eyePhi: 0.46, eyeR: 0.250, nose: 'wet', tilt: 0.12 },
+  procyonid: { len: 1.95, cranium: 0.92, stop: 0.36, muzzle: 0.34, jaw: 0.26, eyeU: 0.44, eyePhi: 0.38, eyeR: 0.24, nose: 'wet', tilt: 0.14 },
   /* an anteater or a pangolin is almost all snout, and the eye is tiny and far
      back — that proportion alone is the whole group's silhouette */
-  xenarthran: { len: 3.10, cranium: 0.70, stop: 0.06, muzzle: 0.22, jaw: 0.14, eyeU: 0.24, eyePhi: 0.50, eyeR: 0.09, nose: 'wet', tilt: 0.22 },
-  pinniped: { len: 1.70, cranium: 1.05, stop: 0.30, muzzle: 0.52, jaw: 0.30, eyeU: 0.42, eyePhi: 0.30, eyeR: 0.22, nose: 'wet', tilt: 0.06 },
-  burrower: { len: 2.95, cranium: 0.74, stop: 0.08, muzzle: 0.26, jaw: 0.18, eyeU: 0.26, eyePhi: 0.52, eyeR: 0.08, nose: 'wet', tilt: 0.24 },
-  generic: { len: 2.00, cranium: 0.94, stop: 0.30, muzzle: 0.42, jaw: 0.34, eyeU: 0.40, eyePhi: 0.40, eyeR: 0.19, nose: 'wet', tilt: 0.10 },
+  xenarthran: { len: 3.10, cranium: 0.70, stop: 0.06, muzzle: 0.22, jaw: 0.14, eyeU: 0.24, eyePhi: 0.50, eyeR: 0.13, nose: 'wet', tilt: 0.22 },
+  pinniped: { len: 1.70, cranium: 1.05, stop: 0.30, muzzle: 0.52, jaw: 0.30, eyeU: 0.42, eyePhi: 0.30, eyeR: 0.275, nose: 'wet', tilt: 0.06 },
+  burrower: { len: 2.95, cranium: 0.74, stop: 0.08, muzzle: 0.26, jaw: 0.18, eyeU: 0.26, eyePhi: 0.52, eyeR: 0.12, nose: 'wet', tilt: 0.24 },
+  generic: { len: 2.00, cranium: 0.94, stop: 0.30, muzzle: 0.42, jaw: 0.34, eyeU: 0.40, eyePhi: 0.40, eyeR: 0.235, nose: 'wet', tilt: 0.10 },
 };
 
 /** ★ WAVE 5 — THE FAMILY BODY PLANS.
@@ -167,41 +172,44 @@ const SKULL: Record<string, {
 const FAMILY: Record<string, {
   waist: number; muscle: number; chest: number; rump: number;
   foot: 'hoof' | 'cloven' | 'paw' | 'plantigrade' | 'pad' | 'claw' | 'flipper';
+  ear: 'round' | 'point' | 'tuft' | 'leaf' | 'drop' | 'spoon' | 'hidden';
+  pupil: 'round' | 'slit' | 'bar';
+  iris: string;
   cannon: number;    /* 1 = pencil cannon bone, 0 = a column with no ankle */
   crouch: number;    /* 1 = folded and low, 0 = straight-legged and tall */
 }> = {
   /* a cat is a deep chest and a tucked waist over a short folded limb */
-  felid: { waist: 0.74, muscle: 0.88, chest: 0.80, rump: 0.60, foot: 'paw', cannon: 0.52, crouch: 0.74 },
+  felid: { waist: 0.74, muscle: 0.88, chest: 0.80, rump: 0.60, foot: 'paw', cannon: 0.52, crouch: 0.74, ear: 'round', pupil: 'slit', iris: '#c9a233' },
   /* a dog is leggier and narrower than a cat, and it still has paws */
-  canid: { waist: 0.60, muscle: 0.58, chest: 0.84, rump: 0.46, foot: 'paw', cannon: 0.64, crouch: 0.52 },
+  canid: { waist: 0.60, muscle: 0.58, chest: 0.84, rump: 0.46, foot: 'paw', cannon: 0.64, crouch: 0.52, ear: 'point', pupil: 'round', iris: '#a97a34' },
   /* a bear is a shoulder hump, a heavy rump, no waist at all, and soles */
-  ursid: { waist: 0.10, muscle: 0.96, chest: 0.70, rump: 0.90, foot: 'plantigrade', cannon: 0.16, crouch: 0.78 },
-  bovid: { waist: 0.30, muscle: 0.52, chest: 0.62, rump: 0.66, foot: 'cloven', cannon: 0.90, crouch: 0.26 },
-  cervid: { waist: 0.56, muscle: 0.36, chest: 0.50, rump: 0.44, foot: 'cloven', cannon: 1.00, crouch: 0.22 },
-  equid: { waist: 0.32, muscle: 0.74, chest: 0.70, rump: 0.82, foot: 'hoof', cannon: 0.98, crouch: 0.20 },
+  ursid: { waist: 0.10, muscle: 0.96, chest: 0.70, rump: 0.90, foot: 'plantigrade', cannon: 0.16, crouch: 0.78, ear: 'round', pupil: 'round', iris: '#4a3524' },
+  bovid: { waist: 0.30, muscle: 0.52, chest: 0.62, rump: 0.66, foot: 'cloven', cannon: 0.90, crouch: 0.26, ear: 'spoon', pupil: 'bar', iris: '#5a4326' },
+  cervid: { waist: 0.56, muscle: 0.36, chest: 0.50, rump: 0.44, foot: 'cloven', cannon: 1.00, crouch: 0.22, ear: 'leaf', pupil: 'bar', iris: '#3f2c1a' },
+  equid: { waist: 0.32, muscle: 0.74, chest: 0.70, rump: 0.82, foot: 'hoof', cannon: 0.98, crouch: 0.20, ear: 'point', pupil: 'bar', iris: '#3a2a1c' },
   /* a camel carries a high chest on long soft-padded legs */
-  camelid: { waist: 0.44, muscle: 0.42, chest: 0.78, rump: 0.40, foot: 'pad', cannon: 0.82, crouch: 0.32 },
-  suid: { waist: 0.08, muscle: 0.62, chest: 0.82, rump: 0.50, foot: 'cloven', cannon: 0.70, crouch: 0.40 },
+  camelid: { waist: 0.44, muscle: 0.42, chest: 0.78, rump: 0.40, foot: 'pad', cannon: 0.82, crouch: 0.32, ear: 'leaf', pupil: 'bar', iris: '#4a3220' },
+  suid: { waist: 0.08, muscle: 0.62, chest: 0.82, rump: 0.50, foot: 'cloven', cannon: 0.70, crouch: 0.40, ear: 'drop', pupil: 'round', iris: '#4d3826' },
   /* a long low tube on very short legs */
-  mustelid: { waist: 0.82, muscle: 0.38, chest: 0.46, rump: 0.38, foot: 'paw', cannon: 0.34, crouch: 0.70 },
-  rodent: { waist: 0.38, muscle: 0.34, chest: 0.42, rump: 0.74, foot: 'paw', cannon: 0.38, crouch: 0.66 },
-  pachyderm: { waist: 0.04, muscle: 0.72, chest: 0.66, rump: 0.70, foot: 'pad', cannon: 0.10, crouch: 0.08 },
+  mustelid: { waist: 0.82, muscle: 0.38, chest: 0.46, rump: 0.38, foot: 'paw', cannon: 0.34, crouch: 0.70, ear: 'round', pupil: 'round', iris: '#2b2118' },
+  rodent: { waist: 0.38, muscle: 0.34, chest: 0.42, rump: 0.74, foot: 'paw', cannon: 0.38, crouch: 0.66, ear: 'round', pupil: 'round', iris: '#241a12' },
+  pachyderm: { waist: 0.04, muscle: 0.72, chest: 0.66, rump: 0.70, foot: 'pad', cannon: 0.10, crouch: 0.08, ear: 'round', pupil: 'round', iris: '#553f28' },
   /* unfamilied species keep exactly the wave-4 behaviour, so nothing that
      was already good moves without someone choosing to move it (D-ART-14) */
   /* a marsupial carries its weight BEHIND — heavy haunches, a thick tail
      base, short forelimbs, and it sits low */
-  marsupial: { waist: 0.40, muscle: 0.52, chest: 0.50, rump: 0.86, foot: 'paw', cannon: 0.26, crouch: 0.70 },
+  marsupial: { waist: 0.40, muscle: 0.52, chest: 0.50, rump: 0.86, foot: 'paw', cannon: 0.26, crouch: 0.70, ear: 'round', pupil: 'round', iris: '#2a1f16' },
   /* a raccoon walks on its soles with an arched back and a hunched shoulder */
-  procyonid: { waist: 0.54, muscle: 0.44, chest: 0.56, rump: 0.62, foot: 'plantigrade', cannon: 0.28, crouch: 0.66 },
+  procyonid: { waist: 0.54, muscle: 0.44, chest: 0.56, rump: 0.62, foot: 'plantigrade', cannon: 0.28, crouch: 0.66, ear: 'round', pupil: 'round', iris: '#2f2418' },
   /* sloths, armadillos, anteaters, pangolins: a low deep body on short limbs
      ending in the enormous digging or hooking CLAWS that define the group */
-  xenarthran: { waist: 0.26, muscle: 0.54, chest: 0.62, rump: 0.60, foot: 'claw', cannon: 0.30, crouch: 0.58 },
+  xenarthran: { waist: 0.26, muscle: 0.54, chest: 0.62, rump: 0.60, foot: 'claw', cannon: 0.30, crouch: 0.58, ear: 'round', pupil: 'round', iris: '#221a14' },
   /* a seal or a walrus has no standing limb at all — it is a torpedo resting
      on the ground with flippers, and drawing it four legs is the whole error */
-  pinniped: { waist: 0.06, muscle: 0.34, chest: 0.72, rump: 0.30, foot: 'flipper', cannon: 0.04, crouch: 0.04 },
+  pinniped: { waist: 0.06, muscle: 0.34, chest: 0.72, rump: 0.30, foot: 'flipper', cannon: 0.04, crouch: 0.04, ear: 'hidden', pupil: 'round', iris: '#14120f' },
   /* an aardvark or a mole: an arched back over powerful short digging forelimbs */
-  burrower: { waist: 0.18, muscle: 0.70, chest: 0.58, rump: 0.66, foot: 'claw', cannon: 0.22, crouch: 0.62 },
-  generic: { waist: -1, muscle: -1, chest: -1, rump: -1, foot: 'paw', cannon: 0.62, crouch: 0.45 },
+  burrower: { waist: 0.18, muscle: 0.70, chest: 0.58, rump: 0.66, foot: 'claw', cannon: 0.22, crouch: 0.62, ear: 'round', pupil: 'round', iris: '#1d1610' },
+  generic: { waist: -1, muscle: -1, chest: -1, rump: -1, foot: 'paw', cannon: 0.62, crouch: 0.45, ear: 'round', pupil: 'round', iris: '#3a2b1c' },
 };
 
 function pal(p: Pal, spec: QuadSpec): Pal {
@@ -848,6 +856,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      discs wider than the skull merged into a fluffy cloud on the top of every
      cat and bear in the catalogue. A round ear is a small cup set at the
      TOP-BACK of the head; the ear is the read on a fennec, never on a tiger. */
+  const earShape = spec.earShape ?? FAM0.ear;
   const earR = headR * (ears === 'huge' ? 1.15 : ears === 'large' ? 0.62 : ears === 'round' ? 0.38 : ears === 'small' ? 0.30 : 0.17) * (spec.earScale ?? 1);
   if (ears === 'fan') {
     /* ★ ARC STAGE 3 — AN ELEPHANT'S EAR IS NOT A RABBIT'S. Routed as 'huge' it
@@ -907,10 +916,62 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
         c.beginPath(); c.ellipse(0, -earR * 0.5, earR * 0.28, earR * 0.68, 0, 0, TAU); c.fill();
         c.restore();
       } else {
-        /* a cup, not a disc: the pinna with a paler inner bowl */
-        c.beginPath(); c.ellipse(ex, ey, earR * 0.92, earR, -s * 0.2, 0, TAU); c.fill();
-        c.fillStyle = `rgba(${Math.min(255, p.cr * 1.02) | 0},${Math.min(255, p.cg * 0.84) | 0},${Math.min(255, p.cb * 0.82) | 0},${0.45 * m})`;
-        c.beginPath(); c.ellipse(ex, ey + earR * 0.08, earR * 0.52, earR * 0.60, -s * 0.2, 0, TAU); c.fill();
+        /* ★ WAVE 13 — THE EAR SHAPE. Everything here used to be one rounded cup
+           at four sizes, which is most of why a wolf, a deer and a bear read as
+           the same head. Each shape below is a family signature legible at
+           thumbnail size, and it is the FIRST thing that differs. */
+        const inner = `rgba(${Math.min(255, p.cr * 1.02) | 0},${Math.min(255, p.cg * 0.84) | 0},${Math.min(255, p.cb * 0.82) | 0},${0.45 * m})`;
+        c.save(); c.translate(ex, ey); c.rotate(-s * 0.18);
+        if (earShape === 'point' || earShape === 'tuft') {
+          /* a canid/equid triangle: straight sides to a sharp tip */
+          c.beginPath();
+          c.moveTo(-earR * 0.72, earR * 0.52);
+          c.lineTo(0, -earR * 1.15);
+          c.lineTo(earR * 0.72, earR * 0.46);
+          c.closePath(); c.fill();
+          c.fillStyle = inner;
+          c.beginPath();
+          c.moveTo(-earR * 0.36, earR * 0.30);
+          c.lineTo(0, -earR * 0.72);
+          c.lineTo(earR * 0.36, earR * 0.26);
+          c.closePath(); c.fill();
+          if (earShape === 'tuft') {
+            /* the black brush a lynx and a caracal wear on the tip, which is
+               the entire difference between them and any other cat */
+            c.strokeStyle = `rgba(18,15,12,${0.9 * m})`; c.lineCap = 'round';
+            for (let i = -1; i <= 1; i++) {
+              c.lineWidth = Math.max(1.4, earR * 0.13);
+              c.beginPath(); c.moveTo(i * earR * 0.14, -earR * 1.05);
+              c.lineTo(i * earR * 0.30, -earR * 1.85); c.stroke();
+            }
+          }
+        } else if (earShape === 'leaf') {
+          /* a deer's long oval, held out sideways and cupped forward */
+          c.rotate(-s * 0.22);
+          c.beginPath(); c.ellipse(0, -earR * 0.30, earR * 0.52, earR * 1.10, 0, 0, TAU); c.fill();
+          c.fillStyle = inner;
+          c.beginPath(); c.ellipse(0, -earR * 0.28, earR * 0.28, earR * 0.78, 0, 0, TAU); c.fill();
+        } else if (earShape === 'spoon') {
+          /* a bovid's ear points OUT to the side, not up */
+          c.rotate(s * 0.95);
+          c.beginPath(); c.ellipse(0, -earR * 0.42, earR * 0.44, earR * 0.94, 0, 0, TAU); c.fill();
+          c.fillStyle = inner;
+          c.beginPath(); c.ellipse(0, -earR * 0.40, earR * 0.24, earR * 0.66, 0, 0, TAU); c.fill();
+        } else if (earShape === 'drop') {
+          /* a pig's ear flops FORWARD over the eye */
+          c.rotate(s * 0.30 + 0.55);
+          c.beginPath();
+          c.moveTo(-earR * 0.60, -earR * 0.40);
+          c.quadraticCurveTo(earR * 0.75, -earR * 0.55, earR * 0.42, earR * 0.85);
+          c.quadraticCurveTo(-earR * 0.10, earR * 0.50, -earR * 0.60, -earR * 0.40);
+          c.closePath(); c.fill();
+        } else {
+          /* the rounded cup — a cat, a bear, a rodent */
+          c.beginPath(); c.ellipse(0, 0, earR * 0.92, earR, 0, 0, TAU); c.fill();
+          c.fillStyle = inner;
+          c.beginPath(); c.ellipse(0, earR * 0.08, earR * 0.52, earR * 0.60, 0, 0, TAU); c.fill();
+        }
+        c.restore();
       }
     }
   }
@@ -960,7 +1021,22 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     /* a soft socket, so the eye is SET INTO the skull rather than stuck on */
     softMark(c, ex, ey + er * 0.1, er * 2.1, er * 1.7, '18,14,10', 0.34);
     c.fillStyle = '#f2efe6'; c.beginPath(); c.arc(ex, ey, er, 0, TAU); c.fill();
-    c.fillStyle = '#0d1016'; c.beginPath(); c.arc(ex, ey, er * 0.62, 0, TAU); c.fill();
+    /* ★ WAVE 13 — THE IRIS AND THE PUPIL. Every mammal in the catalogue had the
+       same round black dot on the same white disc. A pupil is one of the
+       strongest tells in nature — a cat's vertical slit, a goat's or a horse's
+       HORIZONTAL BAR, which is the most recognisable eye any grazing animal has
+       and was simply not drawn. */
+    c.fillStyle = spec.iris ?? FAM0.iris;
+    c.beginPath(); c.arc(ex, ey, er * 0.80, 0, TAU); c.fill();
+    const pup = spec.pupil ?? FAM0.pupil;
+    c.fillStyle = '#0b0d12';
+    if (pup === 'slit') {
+      c.beginPath(); c.ellipse(ex, ey, er * 0.22, er * 0.74, 0, 0, TAU); c.fill();
+    } else if (pup === 'bar') {
+      c.beginPath(); c.ellipse(ex, ey, er * 0.74, er * 0.26, 0, 0, TAU); c.fill();
+    } else {
+      c.beginPath(); c.arc(ex, ey, er * 0.52, 0, TAU); c.fill();
+    }
     c.fillStyle = 'rgba(255,255,255,0.9)';
     c.beginPath(); c.arc(ex - er * 0.30, ey - er * 0.35, er * 0.24, 0, TAU); c.fill();
     /* the lid line — the one stroke that stops an eye reading as a bead */
@@ -1199,7 +1275,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Snow Leopard': { legs: 0.1221, depth: 0.133, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'plume', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' },
   'Cheetah': { legs: 0.1938, depth: 0.1205, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid' },
   'Cougar': { legs: 0.1482, depth: 0.1268, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid' },
-  'Lynx': { legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid' },
+  'Lynx': { legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft' },
   /* the pixel-siblings, separated */
   'Rhinoceros': { legs: 0.0835, depth: 0.1886, len: 0.263, neck: 0.045, muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#8b8b8e', family: 'pachyderm' },
   'Wild Sheep': { legs: 0.1345, depth: 0.1529, len: 0.1881, neck: 0.075, muzzle: 0.35, ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#9d8a6e', family: 'bovid' },
@@ -1233,7 +1309,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* ★ wave 21 — the audit: "ears should dominate the head; reduce body size and
      increase bushy tail". A fennec is a desert fox scaled DOWN around ears that
      were not scaled down with it. */
-  'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.85, tailScale: 1.6, family: 'canid' },
+  'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.85, tailScale: 1.6, family: 'canid', earShape: 'point' },
   'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid' },
   'Hyena': { legs: 0.1442, depth: 0.1492, len: 0.208, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63', family: 'canid' },
   'Koala': { legs: 0.0551, depth: 0.1434, len: 0.1506, neck: 0.03, muzzle: 0.20, jaw: 'broad', ears: 'huge', tail: 'none', hue: '#a8adb4', family: 'marsupial' },
@@ -1244,7 +1320,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Walrus': { legs: 0.0303, depth: 0.1631, len: 0.2943, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f', family: 'pinniped'  },
   /* equines + swine */
   'Horse': { legs: 0.1964, depth: 0.1524, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'plume', hue: '#8a5a35', family: 'equid' },
-  'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e', family: 'suid' },
-  'Warthog': { legs: 0.1087, depth: 0.1405, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', hue: '#6b5647', family: 'suid' },
+  'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e', family: 'suid', earShape: 'point' },
+  'Warthog': { legs: 0.1087, depth: 0.1405, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', hue: '#6b5647', family: 'suid', earShape: 'point' },
   'Tapir': { legs: 0.1099, depth: 0.1542, len: 0.2276, neck: 0.05, muzzle: 0.48, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#4a4348', family: 'suid' },
 };
