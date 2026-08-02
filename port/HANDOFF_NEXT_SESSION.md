@@ -1,8 +1,8 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-**Written 2026-08-02 at the end of waves 4–13.**
+**Written 2026-08-02 at the end of waves 4–14.**
 The live work is **THE PROPORTION ARC** — making every organism in the Earth catalogue look
-like the real thing, on Nick's instruction. Waves 4–13 have landed. The structural queue below is four-fifths done.
+like the real thing, on Nick's instruction. Waves 4–14 have landed. The structural queue below is four-fifths done.
 
 ---
 
@@ -168,14 +168,14 @@ future material/texture pass provably cannot fix), and defer the surface ones.
 
 ## OPEN, IN PRIORITY ORDER
 
-1. **★ RE-MEASURE THE HEADS.** The 20-of-141 figure predates waves 7–13 and is stale.
-   Wave 6 gave every family its own skull profile; **wave 13 gave the ear a SHAPE (seven of
-   them) and the eye an IRIS AND A PUPIL** — a cat's slit, a grazer's horizontal bar — which
-   were the two assets the audit named as still shared catalogue-wide. Re-run the mammal audit
-   against the fresh export and get a real number before doing more head work.
-   ⚠ artlock reported ZERO drift for all of wave 13 — see **D-ART-103**. That is the
-   fingerprint being body-scale, not evidence nothing changed. Verify feature work by opening
-   a native-size PNG.
+1. **★ THE HEADS: 52 of 144 unique** (re-measured after wave 13; was 20/141).
+   Waves 6 and 13 more than doubled it. **92 still generic** — read
+   `reference/mammalaudit.json`, which names the reason per animal.
+   ⚠ **surfaceOnly is 0 of 144**: not one mammal has ONLY surface complaints
+   left, so anatomy is still the binding constraint and the material pass is
+   NOT yet the bottleneck. Watch that number — when it climbs, the pivot is due.
+   ⚠ artlock reports ZERO drift for feature-scale work (D-ART-103). Verify ears
+   and eyes by opening a native-size PNG, never by the lock.
 2. **ONE hard look-alike pair left: Water Mint ≈ Chicory** (was 33 at the start
    of 2026-08-02, then 19 after the birds, 9 after the fish, 1 after the
    invertebrates). Their reference rows are far apart — a square stem with a
