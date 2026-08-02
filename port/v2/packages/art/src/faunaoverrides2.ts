@@ -297,7 +297,9 @@ export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horn
   }
 }
 /** TURTLE/TORTOISE: domed scuted shell, stump legs, retracted neck */
-export function reptTurtle(c: Ctx, g: G, p: Pal, opts: { flippers?: boolean }, name = ''): void {
+export function reptTurtle(c: Ctx, g: G, pIn: Pal, opts: { flippers?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x7011);
   const cx = S * 0.48, cy = S * 0.54, sw = S * 0.21 * nvar(name, 0x66, 0.14),
     sh = S * 0.135 * nvar(name, 0x77, 0.20);   /* dome height per species */
@@ -361,7 +363,9 @@ export function reptTurtle(c: Ctx, g: G, p: Pal, opts: { flippers?: boolean }, n
   eye(c, hx + sh * 0.06, hy - sh * 0.1, 4.5);
 }
 /** FROG: crouched haunches, long folded hind legs, wide mouth, domed eyes */
-export function amphFrog(c: Ctx, g: G, p: Pal, opts: { warty?: boolean }, name = ''): void {
+export function amphFrog(c: Ctx, g: G, pIn: Pal, opts: { warty?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0xF209);
   const cx = S * 0.5, cy = S * 0.56, bw = S * 0.155 * nvar(name, 0x88, 0.16),
     bh = S * 0.125 * nvar(name, 0x99, 0.20);
@@ -630,7 +634,9 @@ export function primate(c: Ctx, g: G, pIn: Pal, opts: { build: 'great' | 'lesser
 
 /* ============================ MARINE REMAINDER ============================ */
 /** RAY: a flat diamond disc with wing-like pectorals and a whip tail */
-export function marineRay(c: Ctx, g: G, p: Pal, opts: { sting?: boolean }, name = ''): void {
+export function marineRay(c: Ctx, g: G, pIn: Pal, opts: { sting?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x2A17);
   const cx = S * 0.48, cy = S * 0.50, w = S * 0.27 * nvar(name, 0xF2, 0.16),
     h = S * 0.15 * nvar(name, 0xF3, 0.20);   /* disc sweep per species */
@@ -760,7 +766,9 @@ export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 's
 
 /** SALAMANDER/NEWT: not a lizard — smooth moist skin, no claws, a blunt
     round head, a paddle tail, and (for the axolotl) external gill fronds. */
-export function amphSalamander(c: Ctx, g: G, p: Pal, opts: { gills?: boolean; stout?: boolean }, name = ''): void {
+export function amphSalamander(c: Ctx, g: G, pIn: Pal, opts: { gills?: boolean; stout?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x5A1A);
   const cy = S * 0.55, cx = S * 0.44;
   const bw = S * (opts.stout ? 0.19 : 0.165) * nvar(name, 0x21, 0.14), bh = S * 0.058 * nvar(name, 0x22, 0.20);
@@ -805,7 +813,9 @@ export function amphSalamander(c: Ctx, g: G, p: Pal, opts: { gills?: boolean; st
 }
 
 /** STARFISH / BRITTLE STAR: five radial arms from a low central disc */
-export function marineStar(c: Ctx, g: G, p: Pal, opts: { brittle?: boolean }, name = ''): void {
+export function marineStar(c: Ctx, g: G, pIn: Pal, opts: { brittle?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x57A1);
   const cx = S * 0.5, cy = S * 0.52, R = S * 0.215 * nvar(name, 0x31, 0.14);
   const arms = 5, aw = opts.brittle ? 0.22 : 0.68;   /* plump, not spiky */
@@ -867,7 +877,9 @@ export function marineUrchin(c: Ctx, g: G, p: Pal, opts: { long?: boolean }, nam
 }
 
 /** SEA ANEMONE: a column crowned with a ring of drifting tentacles */
-export function marineAnemone(c: Ctx, g: G, p: Pal, opts: { tall?: boolean }, name = ''): void {
+export function marineAnemone(c: Ctx, g: G, pIn: Pal, opts: { tall?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0xA11E);
   const cx = S * 0.5, colH = S * (opts.tall ? 0.20 : 0.145) * nvar(name, 0x51, 0.16);
   const base = S * 0.74, top = base - colH, colW = S * 0.085 * nvar(name, 0x52, 0.18);
@@ -948,29 +960,29 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Coastal Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#b0a486', stout: 1.30, tail: 0.86 }, n),
   'Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#8a7b62', stout: 1.25, tail: 0.90 }, n),
   /* ── TURTLES ── the domed scuted shell */
-  'Tortoise': (c, g, p, n) => reptTurtle(c, g, p, {}, n),
-  'Turtle': (c, g, p, n) => reptTurtle(c, g, p, {}, n),
-  'Pond Turtle': (c, g, p, n) => reptTurtle(c, g, p, {}, n),
-  'Box Turtle': (c, g, p, n) => reptTurtle(c, g, p, {}, n),
-  'Snapping Turtle': (c, g, p, n) => reptTurtle(c, g, p, {}, n),
-  'Softshell Turtle': (c, g, p, n) => reptTurtle(c, g, p, {}, n),
-  'Sea Turtle': (c, g, p, n) => reptTurtle(c, g, p, { flippers: true }, n),
+  'Tortoise': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#a58253', }, n),
+  'Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#6b7a3a', }, n),
+  'Pond Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#3a4a35', }, n),
+  'Box Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#7d5b1a', }, n),
+  'Snapping Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#38392d', }, n),
+  'Softshell Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#97977a', }, n),
+  'Sea Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#8f7331', flippers: true }, n),
   /* ── FROGS & TOADS ── folded haunches, domed eyes, wide mouth */
-  'Frog': (c, g, p, n) => amphFrog(c, g, p, {}, n),
-  'Tree Frog': (c, g, p, n) => amphFrog(c, g, p, {}, n),
-  'Glass Frog': (c, g, p, n) => amphFrog(c, g, p, {}, n),
-  'Wood Frog': (c, g, p, n) => amphFrog(c, g, p, {}, n),
-  'Cave Frog': (c, g, p, n) => amphFrog(c, g, p, {}, n),
-  'Bullfrog': (c, g, p, n) => amphFrog(c, g, p, {}, n),
-  'Toad': (c, g, p, n) => amphFrog(c, g, p, { warty: true }, n),
+  'Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#4c9a3f', }, n),
+  'Tree Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#63c832', }, n),
+  'Glass Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#a9d9a0', }, n),
+  'Wood Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#a4642f', }, n),
+  'Cave Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#ded8c6', }, n),
+  'Bullfrog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#3f5e2e', }, n),
+  'Toad': (c, g, p, n) => amphFrog(c, g, p, { hue: '#857052', warty: true }, n),
   /* ── SALAMANDERS ── smooth skin, paddle tail, NOT lizards */
-  'Salamander': (c, g, p, n) => amphSalamander(c, g, p, {}, n),
-  'Giant Salamander': (c, g, p, n) => amphSalamander(c, g, p, { stout: true }, n),
-  'Alpine Salamander': (c, g, p, n) => amphSalamander(c, g, p, {}, n),
-  'Blind Salamander': (c, g, p, n) => amphSalamander(c, g, p, {}, n),
-  'Newt': (c, g, p, n) => amphSalamander(c, g, p, {}, n),
-  'Olm': (c, g, p, n) => amphSalamander(c, g, p, { gills: true }, n),
-  'Axolotl': (c, g, p, n) => amphSalamander(c, g, p, { gills: true, stout: true }, n),
+  'Salamander': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#251a12', }, n),
+  'Giant Salamander': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#5e4b38', stout: true }, n),
+  'Alpine Salamander': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#08090c', }, n),
+  'Blind Salamander': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#f3e2dc', }, n),
+  'Newt': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#857c3e', }, n),
+  'Olm': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#ecd5cd', gills: true }, n),
+  'Axolotl': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#f0b8bf', gills: true, stout: true }, n),
   /* ── RODENTS & SMALL MAMMALS ── incisors, haunch, ear, whisker */
   'Mouse': (c, g, p, n) => smallRodent(c, g, p, { hue: '#8a7d6b', tail: 'long', ears: 0.85 }, n),
   'Rat': (c, g, p, n) => smallRodent(c, g, p, { hue: '#6b6157', tail: 'long', ears: 0.70 }, n),
@@ -1020,10 +1032,10 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Lemur': (c, g, p, n) => primate(c, g, p, { hue: '#a9a49b', build: 'monkey', tail: true, ruff: true }, n),
   'Aye-Aye': (c, g, p, n) => primate(c, g, p, { hue: '#241f1d', build: 'monkey', tail: true, ruff: true }, n),
   /* ── RAYS ── the flat disc and the whip tail */
-  'Manta Ray': (c, g, p, n) => marineRay(c, g, p, {}, n),
-  'Eagle Ray': (c, g, p, n) => marineRay(c, g, p, {}, n),
-  'Stingray': (c, g, p, n) => marineRay(c, g, p, { sting: true }, n),
-  'Ray': (c, g, p, n) => marineRay(c, g, p, { sting: true }, n),
+  'Manta Ray': (c, g, p, n) => marineRay(c, g, p, { hue: '#2b3a4a', }, n),
+  'Eagle Ray': (c, g, p, n) => marineRay(c, g, p, { hue: '#4a5a68', }, n),
+  'Stingray': (c, g, p, n) => marineRay(c, g, p, { hue: '#93866c', sting: true }, n),
+  'Ray': (c, g, p, n) => marineRay(c, g, p, { hue: '#6d7377', sting: true }, n),
   /* ── SHELLS & THE ANIMALS INSIDE THEM ── */
   'Scallop': (c, g, p, n) => marineShell(c, g, p, { hue: '#c98a6b', kind: 'scallop' }, n),
   'Oyster': (c, g, p, n) => marineShell(c, g, p, { hue: '#8e8d84', kind: 'scallop' }, n),
@@ -1042,11 +1054,11 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Water Snail': (c, g, p, n) => marineShell(c, g, p, { hue: '#7e6a33', kind: 'snail' }, n),
   'Freshwater Snail': (c, g, p, n) => marineShell(c, g, p, { kind: 'snail', hue: '#4a5a4e', scale: 0.86 }, n),
   /* ── RADIAL INVERTEBRATES ── body plans nothing else in the game had ── */
-  'Starfish': (c, g, p, n) => marineStar(c, g, p, {}, n),
-  'Brittle Star': (c, g, p, n) => marineStar(c, g, p, { brittle: true }, n),
-  'Sand Dollar': (c, g, p, n) => marineStar(c, g, p, { brittle: false }, n),
+  'Starfish': (c, g, p, n) => marineStar(c, g, p, { hue: '#d96a2b', }, n),
+  'Brittle Star': (c, g, p, n) => marineStar(c, g, p, { hue: '#96604f', brittle: true }, n),
+  'Sand Dollar': (c, g, p, n) => marineStar(c, g, p, { hue: '#dcd0b4', brittle: false }, n),
   'Sea Urchin': (c, g, p, n) => marineUrchin(c, g, p, { long: true }, n),
-  'Sea Anemone': (c, g, p, n) => marineAnemone(c, g, p, {}, n),
-  'Tube Worm': (c, g, p, n) => marineAnemone(c, g, p, { tall: true }, n),
-  'Giant Tube Worm': (c, g, p, n) => marineAnemone(c, g, p, { tall: true }, n),
+  'Sea Anemone': (c, g, p, n) => marineAnemone(c, g, p, { hue: '#dc5f57', }, n),
+  'Tube Worm': (c, g, p, n) => marineAnemone(c, g, p, { hue: '#ccbfa0', tall: true }, n),
+  'Giant Tube Worm': (c, g, p, n) => marineAnemone(c, g, p, { hue: '#e6e8da', tall: true }, n),
 };

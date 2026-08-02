@@ -5,26 +5,8 @@
    "Fly Larvae",
    "Cave Cricket"
   ],
-  "faunaWingedInsect": [
-   "Dragonfly",
-   "Damselfly",
-   "Mayfly",
-   "Caddisfly",
-   "Stonefly",
-   "Dobsonfly",
-   "Scorpionfly"
-  ],
   "faunaSpringtail": [
    "Springtail"
-  ],
-  "faunaBeetle": [
-   "Ladybug",
-   "Firefly",
-   "Diving Beetle",
-   "Dung Beetle",
-   "Carrion Beetle",
-   "Water Beetle",
-   "Beetle"
   ],
   "faunaFiddler": [
    "Fiddler Crab"
@@ -43,58 +25,8 @@
   "faunaLionfish": [
    "Lionfish"
   ],
-  "faunaCephalopod": [
-   "Octopus",
-   "Giant Octopus",
-   "Cuttlefish",
-   "Squid",
-   "Giant Squid"
-  ],
-  "reptTurtle": [
-   "Tortoise",
-   "Turtle",
-   "Pond Turtle",
-   "Box Turtle",
-   "Snapping Turtle",
-   "Softshell Turtle",
-   "Sea Turtle"
-  ],
-  "amphFrog": [
-   "Frog",
-   "Tree Frog",
-   "Glass Frog",
-   "Wood Frog",
-   "Cave Frog",
-   "Bullfrog",
-   "Toad"
-  ],
-  "amphSalamander": [
-   "Salamander",
-   "Giant Salamander",
-   "Alpine Salamander",
-   "Blind Salamander",
-   "Newt",
-   "Olm",
-   "Axolotl"
-  ],
-  "marineRay": [
-   "Manta Ray",
-   "Eagle Ray",
-   "Stingray",
-   "Ray"
-  ],
-  "marineStar": [
-   "Starfish",
-   "Brittle Star",
-   "Sand Dollar"
-  ],
   "marineUrchin": [
    "Sea Urchin"
-  ],
-  "marineAnemone": [
-   "Sea Anemone",
-   "Tube Worm",
-   "Giant Tube Worm"
   ],
   "floraRafflesia": [
    "Rafflesia"
@@ -116,78 +48,66 @@
    "Tobacco",
    "Cabbage"
   ],
-  "crabBody": [
-   "Crab",
-   "Mud Crab",
-   "Freshwater Crab",
-   "Vent Crab",
-   "Hermit Crab",
-   "Coconut Crab"
+  "fungiJellyBrain": [
+   "Jelly Fungus"
   ],
-  "wormBody": [
-   "Earthworm",
-   "Ice Worm",
-   "Marine Worm",
-   "Polychaete Worm",
-   "Scale Worm",
-   "Flatworm",
-   "Leech",
-   "Lancelet"
+  "fungiBracket": [
+   "Turkey Tail"
   ],
-  "slugBody": [
-   "Banana Slug",
-   "Nudibranch",
-   "Chiton"
+  "fungiTruffle": [
+   "Giant Puffball"
   ],
-  "jellyBody": [
-   "Jellyfish",
-   "Comb Jelly",
-   "Portuguese Man-of-War",
-   "Salp",
-   "Pyrosome"
+  "fungiEnoki": [
+   "Enoki"
+  ],
+  "fungiCoral": [
+   "Coral Fungus"
+  ],
+  "fungiMorel": [
+   "Morel"
+  ],
+  "fungiMold": [
+   "Mold"
+  ],
+  "fungiFlyAgaric": [
+   "Fly Agaric"
+  ],
+  "fungiLionsMane": [
+   "Lion's Mane"
+  ],
+  "fungiMaitake": [
+   "Maitake"
+  ],
+  "fungiStinkhorn": [
+   "Stinkhorn"
+  ],
+  "fungiCordyceps": [
+   "Cordyceps"
   ],
   "?": [
-   "Antelope",
-   "Cattle",
-   "Dog",
-   "Cat",
-   "Bear",
-   "Jelly Fungus",
-   "Turkey Tail",
-   "Giant Puffball",
-   "Enoki",
-   "Coral Fungus",
-   "Morel",
-   "Mold",
-   "Fly Agaric",
-   "Lion's Mane",
-   "Maitake",
-   "Stinkhorn",
-   "Cordyceps",
-   "Tardigrade",
-   "Diatom",
-   "Paramecium",
-   "Amoeba",
-   "Foraminiferan",
-   "Green Algae",
-   "Snow Algae",
-   "Ice Algae",
-   "Reindeer Lichen",
-   "Cyanobacteria",
-   "Beaked Whale"
+   "Tardigrade"
   ],
-  "tint": [
-   "Methanogen",
-   "Sulfur-Oxidizing Bacteria",
-   "Iron-Oxidizing Bacteria",
-   "Nitrogen-Fixing Bacteria",
-   "Halophile",
-   "Thermophile",
-   "Acidophile",
-   "Cryophile",
-   "Radiation-Resistant Microbe",
-   "Bioluminescent Plankton",
-   "Red-Tide Algae"
+  "microbeDiatom": [
+   "Diatom"
+  ],
+  "microbeCiliate": [
+   "Paramecium"
+  ],
+  "microbeAmoeba": [
+   "Amoeba"
+  ],
+  "microbeForam": [
+   "Foraminiferan"
+  ],
+  "macroAlgaeSheet": [
+   "Green Algae"
+  ],
+  "algaeBloom": [
+   "Snow Algae",
+   "Ice Algae"
+  ],
+  "lichenMat": [
+   "Reindeer Lichen"
   ],
   "floraFlytrap": [
    "Venus Flytrap"
@@ -200,6 +120,9 @@
   ],
   "floraFloatingAlgae": [
    "Floating Green Algae"
+  ],
+  "microbeFilament": [
+   "Cyanobacteria"
   ],
   "faunaSirenian": [
    "Dugong",
@@ -231,6 +154,9 @@
   "faunaCloakSquid": [
    "Vampire Squid",
    "Deep-Sea Octopus"
+  ],
+  "faunaBeakedWhale": [
+   "Beaked Whale"
   ],
   "faunaBat": [
    "Bat",

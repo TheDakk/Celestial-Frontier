@@ -77,6 +77,30 @@ for (const txt of Object.values(text))
   for (const m of txt.matchAll(/const (\w+)\s*[:=][^=]*=>\s*(?:\([^)]*\)\s*=>\s*)?(\w+)\(/g)) alias[m[1]] = m[2];
 const resolve = (fn, d = 0) => (d > 4 || !alias[fn] ? fn : resolve(alias[fn], d + 1));
 
+/* which painter consumes each spec TYPE — `spec: QuadSpec` → faunaQuadruped */
+const consumer = {};
+for (const txt of Object.values(text))
+  for (const m of txt.matchAll(/function (\w+)\s*\([^)]*\bspec:\s*(\w+)/g))
+    if (!consumer[m[2]]) consumer[m[2]] = m[1];
+
+/** the element type of the table containing line `ln` of file `f`, if it is
+    declared as Record<string, XSpec> */
+const tableDecl = {};
+for (const f of files) {
+  const lines = text[f].split('\n');
+  lines.forEach((l, i) => {
+    const m = l.match(/(?:const|let)\s+[A-Z][A-Z0-9_]*\s*:\s*Record<[^,]+,\s*([A-Za-z_]\w*)\s*>/);
+    if (m) (tableDecl[f] ||= []).push([i, m[1]]);
+  });
+}
+const specTypeOf = (f, ln) => {
+  const d = tableDecl[f];
+  if (!d) return null;
+  let best = null;
+  for (const [at, ty] of d) if (at <= ln) best = ty;
+  return best;
+};
+
 /* ── which organisms already carry an explicit hue, and who paints the rest ── */
 const hued = new Set(), rows = [];
 for (const f of files) {
@@ -94,8 +118,37 @@ for (const f of files) {
        a duplicate property, where the later one wins, so the new hex would
        have been inert even if TypeScript had not rejected it. It did reject
        it (TS1117), which is the only reason this was cheap to find. */
-    if (/\bhue:/.test(line)) { hued.add(key); return; }
+    /* ⚠ THIS TEST HAS NOW BEEN WRONG THREE TIMES, always the same way: it
+       judged "has a species colour" by ONE SPELLING and missed the others.
+         · `fhue:` on 270 flora was matched as if it were a body hue (it is the
+           FRUIT colour) — overstating progress by 270.
+         · `hue: [226, 228, 230]`, the RGB-array form faunaCetacean takes, was
+           read as no colour — and acting on that wrote a duplicate key.
+         · `tint(p, '#7f9aa6')`, the call-site recolour 11 microbes use, was
+           read as no colour — filing 11 finished organisms as outstanding.
+       The lesson is that "coloured" is a property of the RENDER, not of a
+       syntax, so every known spelling has to be listed here. Add to this list
+       rather than assuming the roster is worse than it is. */
+    if (/\bhue:/.test(line) || /\btint\(\s*\w+\s*,\s*['"]#/.test(line)) { hued.add(key); return; }
     const painters = [...line.matchAll(/([A-Za-z_]\w*)\s*\(/g)].map((x) => resolve(x[1]));
+    /* ⚠ NOT EVERY TABLE ROW IS A CALL, and assuming so filed 28 organisms —
+       Dog, Cat, Bear, Antelope, Cattle among them — as "painter has no hue
+       axis" when faunaQuadruped has had one all along. Two other shapes exist:
+         'Dog': { legs: 0.14, … }      a bare SPEC OBJECT
+         'Jelly Fungus': fungiJellyBrain   a bare PAINTER REFERENCE
+       Both resolve fine once you look for them, and a worklist that quietly
+       overstates what is blocked sends the next wave at the wrong problem. */
+    if (!painters.length) {
+      const bare = line.match(/:\s*([A-Za-z_]\w*)\s*,?\s*$/);
+      if (bare) painters.push(resolve(bare[1]));
+      else if (/:\s*\{/.test(line)) {
+        /* a spec object — the table's element TYPE names the painter that
+           consumes it, e.g. Record<string, QuadSpec> → the function whose
+           signature reads `spec: QuadSpec` */
+        const t = specTypeOf(f, i);
+        if (t && consumer[t]) painters.push(consumer[t]);
+      }
+    }
     rows.push({ name: key, file: f, line: i + 1, painters });
   });
 }

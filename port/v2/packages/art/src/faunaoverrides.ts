@@ -13,6 +13,7 @@
    Style law preserved: rim-lit painterly figurine, grounding shadow,
    palette from the genome. Bodies, not recolors. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { speciesHue } from './surface.js';
 import { ellipseTube } from './torso.js';
 import { coatMaterial } from './skin.js';
 
@@ -79,7 +80,9 @@ export function faunaLarva(c: Ctx, g: G, p: Pal): void {
 }
 /** an ADULT WINGED INSECT: two wing pairs, long abdomen, compound eyes.
     open = wings held out (dragonfly); folded = along the body (damselfly) */
-export function faunaWingedInsect(c: Ctx, g: G, p: Pal, opts: { open: boolean; slim: boolean; body?: number }): void {
+export function faunaWingedInsect(c: Ctx, g: G, pIn: Pal, opts: { open: boolean; slim: boolean; body?: number; hue?: string }): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = mulberry32(((g.seed as number) ^ 0x2C4E) >>> 0);
   const cx = S * 0.5, cy = S * 0.5;
   ground(c, cx, S * 0.82, S * 0.18);
@@ -145,7 +148,9 @@ export function faunaWingedInsect(c: Ctx, g: G, p: Pal, opts: { open: boolean; s
   void r;
 }
 /** a BEETLE: domed elytra shell, short legs (Ladybug/Firefly/Diving Beetle) */
-export function faunaBeetle(c: Ctx, g: G, p: Pal, opts: { spots?: boolean; glow?: boolean; paddle?: boolean }): void {
+export function faunaBeetle(c: Ctx, g: G, pIn: Pal, opts: { spots?: boolean; glow?: boolean; paddle?: boolean; hue?: string }): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = mulberry32(((g.seed as number) ^ 0xBEE7) >>> 0);
   const cx = S * 0.5, cy = S * 0.52, rw = S * 0.17, rh = S * 0.20;
   ground(c, cx, cy + rh + 12, S * 0.16);
@@ -334,7 +339,9 @@ export function faunaLionfish(c: Ctx, g: G, p: Pal): void {
   eye(c, cx - w * 0.66, cy - h * 0.25, 5.5);
 }
 /** CEPHALOPOD: mantle + fin skirt + eight arms (+2 feeding tentacles) */
-export function faunaCephalopod(c: Ctx, g: G, p: Pal, opts: { squid: boolean }): void {
+export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; hue?: string }): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = mulberry32(((g.seed as number) ^ 0xCEFA) >>> 0);
   const cx = S * 0.5, my = opts.squid ? S * 0.34 : S * 0.36;
   const mw = S * (opts.squid ? 0.11 : 0.15), mh = S * (opts.squid ? 0.20 : 0.16);
@@ -882,21 +889,27 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   /* Blocker 4 — life stage + arthropod body plans */
   'Fly Larvae': (c, g, p) => faunaLarva(c, g, p),
   'Cave Cricket': (c, g, p) => faunaLarva(c, g, p),
-  'Dragonfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: true, slim: false }),
-  'Damselfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: false, slim: true, body: 1.05 }),
-  'Mayfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: false, slim: true, body: 0.82 }),
-  'Caddisfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: true, slim: true, body: 0.60 }),
-  'Stonefly': (c, g, p) => faunaWingedInsect(c, g, p, { open: true, slim: true, body: 0.70 }),
-  'Dobsonfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: true, slim: true, body: 0.88 }),
-  'Scorpionfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: false, slim: false, body: 0.74 }),
+  'Dragonfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#1e7fa8', open: true, slim: false }),
+  'Damselfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#4aa8e0', open: false, slim: true, body: 1.05 }),
+  'Mayfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#d8c48a', open: false, slim: true, body: 0.82 }),
+  /* ★ WAVE 23 — Caddisfly, Stonefly and Dobsonfly went HARD look-alike: three
+     drab browns on a length dial, the same defect the ants had. They are not
+     alike. A caddisfly is MOTH-like with hairy wings tented over the body. */
+  'Caddisfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#7d4f22', open: false, slim: true, body: 0.55 }),
+  /* a stonefly holds its wings FLAT along a dark slender body */
+  'Stonefly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#38423f', open: false, slim: true, body: 0.86 }),
+  /* a dobsonfly is BIG — the largest of these by a wide margin, pale grey,
+     with long soft wings held out */
+  'Dobsonfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#9d968a', open: true, slim: false, body: 1.45 }),
+  'Scorpionfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#e8a81c', open: false, slim: false, body: 0.95 }),
   'Springtail': (c, g, p) => faunaSpringtail(c, g, p),
-  'Ladybug': (c, g, p) => faunaBeetle(c, g, p, { spots: true }),
-  'Firefly': (c, g, p) => faunaBeetle(c, g, p, { glow: true }),
-  'Diving Beetle': (c, g, p) => faunaBeetle(c, g, p, { paddle: true }),
-  'Dung Beetle': (c, g, p) => faunaBeetle(c, g, p, {}),
-  'Carrion Beetle': (c, g, p) => faunaBeetle(c, g, p, {}),
-  'Water Beetle': (c, g, p) => faunaBeetle(c, g, p, { paddle: true }),
-  'Beetle': (c, g, p) => faunaBeetle(c, g, p, {}),
+  'Ladybug': (c, g, p) => faunaBeetle(c, g, p, { hue: '#c62828', spots: true }),
+  'Firefly': (c, g, p) => faunaBeetle(c, g, p, { hue: '#382c1f', glow: true }),
+  'Diving Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#414f1e', paddle: true }),
+  'Dung Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#151515', }),
+  'Carrion Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#221f22', }),
+  'Water Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#55402c', paddle: true }),
+  'Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#96551f', }),
   'Fiddler Crab': (c, g, p) => faunaFiddler(c, g, p),
   'Horseshoe Crab': (c, g, p) => faunaHorseshoe(c, g, p),
   /* Blocker 6 — specialist fish + marine bodies */
@@ -905,11 +918,11 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Mudskipper': (c, g, p) => faunaFlatfish(c, g, p),
   'Angelfish': (c, g, p) => faunaAngelfish(c, g, p),
   'Lionfish': (c, g, p) => faunaLionfish(c, g, p),
-  'Octopus': (c, g, p) => faunaCephalopod(c, g, p, { squid: false }),
-  'Giant Octopus': (c, g, p) => faunaCephalopod(c, g, p, { squid: false }),
-  'Cuttlefish': (c, g, p) => faunaCephalopod(c, g, p, { squid: false }),
-  'Squid': (c, g, p) => faunaCephalopod(c, g, p, { squid: true }),
-  'Giant Squid': (c, g, p) => faunaCephalopod(c, g, p, { squid: true }),
+  'Octopus': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#a65f52', squid: false }),
+  'Giant Octopus': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#b03a26', squid: false }),
+  'Cuttlefish': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#a89070', squid: false }),
+  'Squid': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#d69a92', squid: true }),
+  'Giant Squid': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#8c2f3a', squid: true }),
   /* its row: a TINY nub dorsal set far back, and a broad flat U rostrum —
      'Whale' now takes the no-dorsal blunt form so the two are not one animal */
   'Blue Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [92, 108, 132], long: 1.30, bulk: 0.80 }),
