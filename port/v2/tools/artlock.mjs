@@ -339,6 +339,16 @@ const CONFUSABLE = Number(val('confusable', '1.5'));
     console.log('   ' + d.toFixed(2).padStart(6) + '  ' + a.slice(a.indexOf('|') + 1) + '  ≈  ' + b.slice(b.indexOf('|') + 1));
   }
   if (pairs.length > 15) console.log('   … and ' + (pairs.length - 15) + ' more pairs to work through');
+  /* ★ WAVE 22 — the whole list, to a file. Fifteen lines on screen is right
+     for a gate, but the look-alike work needs every pair: the fix for a
+     confusable pair is usually ANATOMICAL (two species drawn the same shape,
+     with colour asked to carry a distinction it cannot), and that can only be
+     worked from the full list. */
+  fs.writeFileSync(path.join(root, 'reference/samepairs.json'), JSON.stringify(
+    pairs.map(([a, b, d]) => ({
+      a: a.slice(a.indexOf('|') + 1), b: b.slice(b.indexOf('|') + 1),
+      d: Number(d.toFixed(3)), tier: d < HARD ? 'hard' : d < 1.5 ? 'confusable' : 'watch',
+    })), null, 0));
   /* ⚠ HARD IS A RATCHET TOO, and it has to be. There are 33 of these today —
      mostly the songbird cluster, which Nick's own audit found independently —
      so gating on "must be zero" would leave this red from the day it shipped,
