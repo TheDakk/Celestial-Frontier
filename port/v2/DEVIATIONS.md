@@ -85,6 +85,21 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
 - ✔ **D-ART-23 — THE EYEBALL INSTRUMENT (wave 7).** `tools/speciesstrip.mjs` renders any named
   species list big and labelled through the audit's own genome. The audit proves 1,254 paint;
   the strip is how a human judges a handful, and it is what exposed D-ART-19/21/22.
+- ✔ **D-ART-24 — THE FISH SYSTEM (wave 8).** 106 of the catalog's 631 fauna were fish and nothing
+  reached them: the largest uncovered group in the game, larger than the birds. One traced body
+  (`fishBody`) whose profile/len/depth/tail/snout/dorsal/pattern are the species — 105 routes,
+  no per-species painters — plus shark anatomy (heterocercal tail, five gill slits, swept
+  pectorals), the anglerfish lure, photophore rows, countershading, lateral line and operculum.
+- ✔ **D-ART-25 — A FIN IS SIZED BY WHAT IT GROWS FROM (wave 8).** Three sizing bugs with one
+  root: fins scaled from the body's MAXIMUM depth. An eel got a tuna's tail (the Gar wore a
+  green dinner plate), a deep-bodied tang's tail was taller than the tang, and `round`/`fan`
+  was a free-standing ellipse touching the fish nowhere. Fins are now measured at the peduncle,
+  clamped to the body's own height, and traced from the body's edge.
+- ✔ **D-ART-26 — THE SENTINEL'S HARDCODED FILE LIST (wave 8).** `overridecheck` read a fixed
+  list of override files, so wave 8's new `faunaoverrides3.ts` was invisible and it reported
+  "no change" while 105 new routes went unchecked — the tool's own blindness, of exactly the
+  class it exists to catch. It reads the directory now, and `tools/overridecheck.control.mjs`
+  (`npm run overridecontrol`) is a committed control set whose control C is precisely this bug.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
