@@ -174,18 +174,29 @@ export function reptSnake(c: Ctx, g: G, p: Pal, opts: { hood?: boolean; rattle?:
   }
 }
 /** LIZARD/MONITOR: low sprawled body, four splayed legs, long tapering tail */
-export function reptLizard(c: Ctx, g: G, p: Pal, opts: { crest?: boolean; long?: boolean }, name = ''): void {
+export function reptLizard(c: Ctx, g: G, p: Pal, opts: { crest?: boolean; long?: boolean; stout?: number; tail?: number }, name = ''): void {
+  /* ★ WAVE 22 — THE PROPORTION PASS. tools/proportioncheck.mjs measured every
+     one of the 631 fauna and found ten lizards bunched at 2.9-3.7 wide-to-tall,
+     all within 40px of the SAME 360x110 box: the system had exactly two body
+     lengths and a fixed 2.6x tail, so a horned lizard (squat, near as wide as
+     it is long) came out the same shape as a whiptail (genuinely a ribbon).
+     `stout` deepens the body and `tail` scales its reach. */
   const r = nrng(g, name, 0x112A);
-  const cy = S * 0.56, bw = S * (opts.long ? 0.20 : 0.17) * nvar(name, 0x44, 0.16),
-    bh = S * 0.072 * nvar(name, 0x55, 0.22), cx = S * 0.44;
+  const stout = opts.stout ?? 1;
+  const cy = S * 0.56, bw = S * (opts.long ? 0.20 : 0.17) * nvar(name, 0x44, 0.16) / Math.sqrt(stout),
+    bh = S * 0.072 * nvar(name, 0x55, 0.22) * stout, cx = S * 0.44;
+  const TL = opts.tail ?? 1;
   ground(c, cx, cy + bh + S * 0.06, S * 0.24);
   /* tail first, behind the body */
   c.strokeStyle = p.base; c.lineWidth = bh * 1.1; c.lineCap = 'round';
+  /* the tail's LIFT is a fraction of its own reach, never of body depth — tied
+     to bh it swung up over the back like a scorpion the moment `stout` grew */
+  const tipY = cy - bw * TL * 0.36;
   c.beginPath(); c.moveTo(cx - bw * 0.8, cy);
-  c.quadraticCurveTo(cx - bw * 2.0, cy + bh * 0.6, cx - bw * 2.6, cy - bh * 1.4); c.stroke();
+  c.quadraticCurveTo(cx - bw * 2.0 * TL, cy + bh * 0.45, cx - bw * 2.6 * TL, tipY); c.stroke();
   c.strokeStyle = p.dark; c.lineWidth = bh * 0.5;
-  c.beginPath(); c.moveTo(cx - bw * 1.6, cy + bh * 0.35);
-  c.quadraticCurveTo(cx - bw * 2.2, cy + bh * 0.2, cx - bw * 2.6, cy - bh * 1.4); c.stroke();
+  c.beginPath(); c.moveTo(cx - bw * 1.6 * TL, cy + bh * 0.30);
+  c.quadraticCurveTo(cx - bw * 2.2 * TL, cy + bh * 0.15, cx - bw * 2.6 * TL, tipY); c.stroke();
   /* the sprawled legs — elbows OUT, the reptile read */
   c.strokeStyle = p.dark; c.lineWidth = bh * 0.42; c.lineCap = 'round';
   for (const sx of [-0.55, 0.55]) for (const sy of [-1, 1] as const) {
@@ -825,24 +836,25 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Racer': (c, g, p, n) => reptSnake(c, g, p, {}, n),
   'Snake': (c, g, p, n) => reptSnake(c, g, p, {}, n),
   /* ── LIZARDS ── the sprawled stance: elbows OUT, belly low, tail long */
-  'Monitor Lizard': (c, g, p, n) => reptLizard(c, g, p, { long: true }, n),
-  'Komodo Dragon': (c, g, p, n) => reptLizard(c, g, p, { long: true }, n),
-  'Gila Monster': (c, g, p, n) => reptLizard(c, g, p, {}, n),
-  'Tegu': (c, g, p, n) => reptLizard(c, g, p, { long: true }, n),
-  'Gecko': (c, g, p, n) => reptLizard(c, g, p, {}, n),
-  'Skink': (c, g, p, n) => reptLizard(c, g, p, {}, n),
-  'Anole': (c, g, p, n) => reptLizard(c, g, p, {}, n),
-  'Agama': (c, g, p, n) => reptLizard(c, g, p, { crest: true }, n),
-  'Whiptail': (c, g, p, n) => reptLizard(c, g, p, { long: true }, n),
+  'Monitor Lizard': (c, g, p, n) => reptLizard(c, g, p, { long: true, stout: 1.30, tail: 1.05 }, n),
+  'Komodo Dragon': (c, g, p, n) => reptLizard(c, g, p, { long: true, stout: 1.62, tail: 0.92 }, n),
+  'Gila Monster': (c, g, p, n) => reptLizard(c, g, p, { stout: 1.72, tail: 0.62 }, n),
+  'Tegu': (c, g, p, n) => reptLizard(c, g, p, { long: true, stout: 1.45, tail: 0.95 }, n),
+  'Gecko': (c, g, p, n) => reptLizard(c, g, p, { stout: 1.28, tail: 0.72 }, n),
+  'Skink': (c, g, p, n) => reptLizard(c, g, p, { stout: 1.06, tail: 1.12 }, n),
+  'Anole': (c, g, p, n) => reptLizard(c, g, p, { stout: 1.20, tail: 0.98 }, n),
+  'Agama': (c, g, p, n) => reptLizard(c, g, p, { crest: true, stout: 1.42, tail: 0.82 }, n),
+  'Whiptail': (c, g, p, n) => reptLizard(c, g, p, { long: true, tail: 1.30 }, n),
   'Iguana': (c, g, p, n) => reptLizard(c, g, p, { crest: true, long: true }, n),
   'Marine Iguana': (c, g, p, n) => reptLizard(c, g, p, { crest: true, long: true }, n),
   'Land Iguana': (c, g, p, n) => reptLizard(c, g, p, { crest: true, long: true }, n),
-  'Horned Lizard': (c, g, p, n) => reptLizard(c, g, p, { crest: true }, n),
-  'Alligator Lizard': (c, g, p, n) => reptLizard(c, g, p, { long: true }, n),
-  'Mountain Lizard': (c, g, p, n) => reptLizard(c, g, p, {}, n),
-  'Wall Lizard': (c, g, p, n) => reptLizard(c, g, p, {}, n),
-  'Coastal Lizard': (c, g, p, n) => reptLizard(c, g, p, {}, n),
-  'Lizard': (c, g, p, n) => reptLizard(c, g, p, {}, n),
+  /* a horned lizard is nearly as wide as it is long — the squattest lizard alive */
+  'Horned Lizard': (c, g, p, n) => reptLizard(c, g, p, { crest: true, stout: 2.15, tail: 0.42 }, n),
+  'Alligator Lizard': (c, g, p, n) => reptLizard(c, g, p, { long: true, tail: 1.15 }, n),
+  'Mountain Lizard': (c, g, p, n) => reptLizard(c, g, p, { stout: 1.38, tail: 0.80 }, n),
+  'Wall Lizard': (c, g, p, n) => reptLizard(c, g, p, { stout: 1.22, tail: 0.95 }, n),
+  'Coastal Lizard': (c, g, p, n) => reptLizard(c, g, p, { stout: 1.30, tail: 0.86 }, n),
+  'Lizard': (c, g, p, n) => reptLizard(c, g, p, { stout: 1.25, tail: 0.90 }, n),
   /* ── TURTLES ── the domed scuted shell */
   'Tortoise': (c, g, p, n) => reptTurtle(c, g, p, {}, n),
   'Turtle': (c, g, p, n) => reptTurtle(c, g, p, {}, n),

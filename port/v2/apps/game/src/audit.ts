@@ -79,7 +79,70 @@ async function strip(names: string[]): Promise<void> {
   (window as unknown as Record<string, unknown>).__CF_STRIP__ = { done: true, url: cv.toDataURL() };
 }
 
+/* ★ PROPORTION MODE (?prop=<kingdom>) — WAVE 22. Nick: "the bodies on a lot of
+   the creatures are not proportionate… some seem way too elongated, especially
+   on mammals."
+
+   Every instrument we have answers a yes/no about a single asset: did it paint,
+   is it a duplicate, does it clip. None of them could see a SHAPE that is wrong
+   across a whole family, because each animal is individually fine-looking until
+   you line up its aspect ratio against its relatives. This measures the ink
+   bounding box of every species in a kingdom and reports width/height.
+
+   The fit pass scales uniformly (k = min(target/w, target/h)), so aspect ratio
+   SURVIVES it — what this measures is the true proportion the painter drew. */
+async function proportions(kingdom: string): Promise<void> {
+  const NAMES = _EARTH_NAMES as unknown as Record<string, string[]>;
+  const ki = Object.keys(NAMES).indexOf(kingdom);
+  const pool = NAMES[kingdom] || [];
+  const rows: Array<{ name: string; w: number; h: number; aspect: number }> = [];
+  const cv = document.createElement('canvas'); cv.width = cv.height = 440;
+  const cc = cv.getContext('2d', { willReadFrequently: true })!;
+  for (const [i, name] of pool.entries()) {
+    const g = makeGenome((hashInt(0xEA47, i, ki) >>> 0), kingdom, 1) as Record<string, unknown>;
+    g._earthName = name;
+    let url: string | null = null;
+    try { url = speciesPortrait(g); } catch { url = null; }
+    if (!url) continue;
+    await new Promise<void>((res) => {
+      const im = new Image();
+      im.onload = () => {
+        cc.clearRect(0, 0, 440, 440); cc.drawImage(im, 0, 0);
+        const d = cc.getImageData(0, 0, 440, 440).data;
+        /* the portrait has a painted vignette background, so alpha cannot find
+           the subject — measure against the BACKGROUND COLOUR instead, taking
+           the frame's own corner as the reference. A threshold on luminance
+           alone would have called the vignette's bright centre "subject". */
+        const br = d[0]!, bg2 = d[1]!, bb = d[2]!;
+        let x0 = 440, y0 = 440, x1 = -1, y1 = -1;
+        for (let y = 0; y < 440; y++) {
+          for (let x = 0; x < 440; x++) {
+            const o = (y * 440 + x) * 4;
+            const dr = d[o]! - br, dg = d[o + 1]! - bg2, db = d[o + 2]! - bb;
+            if (dr * dr + dg * dg + db * db > 1500) {
+              if (x < x0) x0 = x; if (x > x1) x1 = x;
+              if (y < y0) y0 = y; if (y > y1) y1 = y;
+            }
+          }
+        }
+        if (x1 >= 0) {
+          const w = x1 - x0 + 1, h = y1 - y0 + 1;
+          rows.push({ name, w, h, aspect: Math.round((w / h) * 1000) / 1000 });
+        }
+        res();
+      };
+      im.onerror = () => res();
+      im.src = url!;
+    });
+    if (i % 40 === 0) { say(`proportions ${kingdom}: ${i}/${pool.length}`); await new Promise((r) => setTimeout(r, 0)); }
+  }
+  say(`proportions ${kingdom}: ${rows.length} measured`);
+  (window as unknown as Record<string, unknown>).__CF_PROP__ = { done: true, kingdom, rows };
+}
+
 async function run(): Promise<void> {
+  const pq = new URLSearchParams(location.search).get('prop');
+  if (pq) { await proportions(pq); return; }
   const sp = new URLSearchParams(location.search).get('strip');
   if (sp) { await strip(sp.split(',')); return; }
   const NAMES = _EARTH_NAMES as unknown as Record<string, string[]>;

@@ -320,6 +320,22 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
 - ✔ **D-ART-71 — SIRENIANS HAD NO ROUTE (wave 21).** Dugong and Manatee fell through to the
   verbatim engine as spheres. A missing route is invisible to the dead-route sentinel, which
   only proves that keys we DID write reach real species — it cannot know what we never wrote.
+- ✔ **D-ART-72 — THE PROPORTION INSTRUMENT (wave 22a, Nick's catch).** Every check we had
+  answers a yes/no about ONE asset, so a shape wrong across a whole FAMILY was invisible:
+  each animal looks fine until its aspect ratio is lined up against its relatives.
+  tools/proportioncheck.mjs measures ink bbox aspect across a kingdom. First run: 37 of 631
+  fauna outside the land-vertebrate envelope, and CLUSTERED — ten lizards inside 40px of one
+  360x110 box, six winged insects at the same 197px width to the pixel. Now 8, all legitimate.
+  It measures against the frame's CORNER COLOUR, because alpha cannot find a subject painted
+  over a vignette, and it PRINTS its exclusion count so narrowing scope cannot read as "clean".
+- ✔ **D-ART-73 — TWO BOOLEANS ARE NOT A BODY PLAN (wave 22a).** reptLizard had `long` or not
+  and a fixed tail, so the squattest lizard alive rendered the same shape as a whip-tailed one;
+  faunaWingedInsect had `open`/`slim`, so six species came out identical to the pixel. Both
+  gained a continuous proportion parameter, defaulted so the painters that already excel are
+  byte-unchanged (D-ART-14).
+- ✔ **D-ART-74 — A PROP MUST NEVER OUT-MEASURE ITS SUBJECT (wave 22a).** The koala's trunk ran
+  the full frame, so the fit pass measured the TREE and shrank the koala — aspect 0.44, the
+  worst of 631. Substrate is context; it is never the thing being framed.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

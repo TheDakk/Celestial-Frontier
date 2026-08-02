@@ -149,11 +149,14 @@ export function faunaKoala(c: Ctx, g: G, pIn: Pal): void {
   /* the trunk it is clamped to — a koala is almost never on the ground */
   const tg = c.createLinearGradient(cx - S * 0.10, 0, cx + S * 0.10, 0);
   tg.addColorStop(0, '#3a2b20'); tg.addColorStop(0.45, '#5b4634'); tg.addColorStop(1, '#2b2018');
-  c.fillStyle = tg; c.fillRect(cx - S * 0.085, S * 0.04, S * 0.17, S * 0.92);
+  /* ★ wave 22 — the trunk ran the full frame, so the fit pass measured the TREE
+     and shrank the koala to nothing (proportioncheck: aspect 0.44, the worst in
+     631). A prop must never out-measure its subject. */
+  c.fillStyle = tg; c.fillRect(cx - S * 0.085, S * 0.20, S * 0.17, S * 0.62);
   c.strokeStyle = 'rgba(24,18,12,0.45)'; c.lineWidth = 2;
   for (let i = 0; i < 7; i++) {
     const x = cx - S * 0.07 + r() * S * 0.14;
-    c.beginPath(); c.moveTo(x, S * 0.06); c.lineTo(x + (r() - 0.5) * 10, S * 0.94); c.stroke();
+    c.beginPath(); c.moveTo(x, S * 0.21); c.lineTo(x + (r() - 0.5) * 10, S * 0.81); c.stroke();
   }
   /* the compact body, squatting against the bark */
   const bw = S * 0.135, bh = S * 0.155;

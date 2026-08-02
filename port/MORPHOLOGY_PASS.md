@@ -1257,3 +1257,55 @@ now vary tubercle scatter, zebra-band phase and body-wave phase respectively.
 vitest 225 · tsc clean · overridecheck 931/931 0 dead · 7/7 controls · artaudit 21 sources
 0 findings · artbattery 5/5 · speciesaudit 1254/1254 0 dupes 0 clipped · slicesmoke PASS.
 hdart UNTOUCHED. NEXT: the 17 flora NEEDS_FIX rows, then re-export + re-audit.
+
+---
+
+# WAVE 22a — LANDED 2026-08-02 (THE PROPORTION PASS — Nick's catch)
+
+Nick, on the wave-21 strip: "the bodies on a lot of the creatures are not proportionate… some
+seem way too elongated, especially on mammals. Should we double check this all?"
+
+Yes — and not by eye. ★ NEW INSTRUMENT: tools/proportioncheck.mjs (+ ?prop=<kingdom> in
+apps/game/src/audit.ts). Every instrument this project had answers a yes/no about ONE asset:
+did it paint, is it a duplicate, does it clip. NONE of them can see a shape that is wrong
+across a whole FAMILY, because each animal looks individually fine until you line its aspect
+ratio up against its relatives. This renders a whole kingdom, measures each subject's ink
+bounding box against the frame's own corner colour (alpha cannot find a subject painted over a
+vignette), and reports the distribution plus every outlier. The fit pass scales UNIFORMLY, so
+aspect ratio survives it — what this measures is the proportion the painter actually drew.
+
+## What it found — Nick was right, and it was CLUSTERED, not random
+FIRST RUN: 631 fauna measured, median aspect 1.74, **37 outliers above 2.80**.
+- ★ TEN LIZARDS bunched at 2.9–3.7, all inside 40px of the SAME 360x110 box. reptLizard had
+  exactly TWO body lengths (`long` or not) and a fixed 2.6x tail, so a HORNED LIZARD — the
+  squattest lizard alive, nearly as wide as it is long — came out the same shape as a WHIPTAIL,
+  which is genuinely a ribbon. Added `stout` (deepens the body, narrows the length) and `tail`
+  (scales its reach), then set all 15 from life.
+- ★ SIX WINGED INSECTS at the SAME 197px width TO THE PIXEL — Mayfly, Damselfly, Caddisfly,
+  Stonefly, Dobsonfly, Scorpionfly. Two booleans cannot express six body plans. Added `body`,
+  defaulting to 1 so the DRAGONFLY — the painter Nick called near-perfect — is byte-unchanged
+  (D-ART-14 held).
+- ★ KOALA at 0.44, the worst in 631: my own wave-21 trunk ran the full frame height, so the fit
+  pass measured the TREE and shrank the animal to nothing. A prop must never out-measure its
+  subject.
+- Mongoose was specced 0.23 long by 0.058 deep — four times as long as deep.
+
+AFTER: **37 outliers → 8**, and every one of the 8 is a lizard whose tail is genuinely that
+long, plus Platypus (which has no override route and falls through to the verbatim engine).
+The five "too tall" are all correct: Gorilla and Gibbon are upright apes, the horseshoe crab is
+drawn from above, the man-of-war hangs.
+
+## A regression the strip caught mid-fix
+Scaling `stout` made the tails swing UP OVER THE BACK like a scorpion, because the tail's
+vertical lift was expressed as a fraction of BODY DEPTH — which I had just doubled. A tail's
+lift belongs to the tail's own reach. (Same class as D-ART-69: a feature must be expressed in
+terms of the thing it is attached to.)
+
+## Honesty in the instrument
+The envelope is a land-vertebrate one, so eels, snakes, whales, fish, slugs and long-legged
+arachnids are excluded — and the tool now PRINTS HOW MANY it excluded (222) rather than
+quietly dropping them. A check that silently narrows its own scope reads as "all clear".
+
+## Gates
+vitest 225 · tsc clean · overridecheck 931/931 0 dead · artbattery 5/5 · speciesaudit
+1254/1254 0 dupes 0 clipped. hdart UNTOUCHED.

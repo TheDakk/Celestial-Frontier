@@ -686,6 +686,27 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 22a — THE PROPORTION PASS (2026-08-02, batch 43). Nick on the wave-21
+##   strip: "the bodies on a lot of the creatures are not proportionate… especially on mammals.
+##   Should we double check this all?" ★NEW INSTRUMENT tools/proportioncheck.mjs (+ ?prop= in
+##   audit.ts): every other check answers a yes/no about ONE asset, so a shape wrong across a
+##   whole FAMILY was invisible — each animal looks fine until its aspect is lined up against
+##   its relatives. Measures ink bbox against the frame's CORNER COLOUR (alpha cannot find a
+##   subject painted over a vignette); the fit pass scales uniformly so aspect SURVIVES it.
+##   ★FIRST RUN: 37 of 631 outside the envelope, and CLUSTERED — TEN LIZARDS inside 40px of the
+##   same 360x110 box (reptLizard had two body lengths and a fixed 2.6x tail, so a HORNED LIZARD
+##   came out the shape of a WHIPTAIL), SIX WINGED INSECTS at the same 197px width TO THE PIXEL,
+##   and the KOALA at 0.44 because my own wave-21 trunk ran the full frame so the fit pass
+##   measured the TREE. Fixes: reptLizard gained stout+tail (all 15 set from life),
+##   faunaWingedInsect gained body (defaulted to 1 so the DRAGONFLY is byte-unchanged, D-ART-14),
+##   the trunk trimmed, Mongoose re-specced from 4:1. ★37 -> 8, and all 8 are lizards whose tails
+##   really are that long plus Platypus (no route, falls through). The 5 "too tall" are correct:
+##   upright apes, a top-view horseshoe crab, a hanging man-of-war. ★A REGRESSION THE STRIP
+##   CAUGHT MID-FIX: scaling stout swung the tails UP OVER THE BACK, because the tail's lift was
+##   a fraction of BODY DEPTH which I had just doubled — a tail's lift belongs to its own reach.
+##   ★The tool PRINTS its exclusion count (222) so narrowing scope cannot read as "clean".
+##   D-ART-72..74. GATES: vitest 225 · tsc · overridecheck 931/931 0 dead · artbattery 5/5 ·
+##   speciesaudit 1254/1254 0 dupes 0 clipped · hdart UNTOUCHED. NEXT: the 17 flora NEEDS_FIX.
 ##   ✔★★★ MORPHOLOGY WAVE 21 — THE NAMED-SPECIES NEEDS_FIX, FAUNA HALF (2026-08-02, batch 42).
 ##   Every fauna finding read "generic silhouette; add <the one thing>", so the fix splits two
 ##   ways. ★TAUGHT TO THE SYSTEMS (so siblings stay coherent): FishSpec gained wings/dome/droop/

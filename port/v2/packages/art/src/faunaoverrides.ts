@@ -71,11 +71,17 @@ export function faunaLarva(c: Ctx, g: G, p: Pal): void {
 }
 /** an ADULT WINGED INSECT: two wing pairs, long abdomen, compound eyes.
     open = wings held out (dragonfly); folded = along the body (damselfly) */
-export function faunaWingedInsect(c: Ctx, g: G, p: Pal, opts: { open: boolean; slim: boolean }): void {
+export function faunaWingedInsect(c: Ctx, g: G, p: Pal, opts: { open: boolean; slim: boolean; body?: number }): void {
   const r = mulberry32(((g.seed as number) ^ 0x2C4E) >>> 0);
   const cx = S * 0.5, cy = S * 0.5;
   ground(c, cx, S * 0.82, S * 0.18);
-  const abLen = S * (opts.slim ? 0.30 : 0.26), abW = S * (opts.slim ? 0.022 : 0.034);
+  /* ★ WAVE 22 — proportioncheck measured Mayfly, Damselfly, Caddisfly, Stonefly,
+     Dobsonfly and Scorpionfly at the SAME 197px width to the pixel: two boolean
+     flags cannot express six body plans. `body` scales the abdomen, and it
+     defaults to 1 so the dragonfly — the painter Nick called near-perfect — is
+     byte-unchanged (D-ART-14). */
+  const bodyK = opts.body ?? 1;
+  const abLen = S * (opts.slim ? 0.30 : 0.26) * bodyK, abW = S * (opts.slim ? 0.022 : 0.034) / Math.sqrt(bodyK);
   /* WINGS FIRST, behind the body — the feature the whole catalog lacked */
   const wing = (ax: number, ay: number, len: number, ang: number, s: number): void => {
     c.save(); c.translate(ax, ay); c.rotate(ang * s); c.scale(1, s);
@@ -697,12 +703,12 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Fly Larvae': (c, g, p) => faunaLarva(c, g, p),
   'Cave Cricket': (c, g, p) => faunaLarva(c, g, p),
   'Dragonfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: true, slim: false }),
-  'Damselfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: false, slim: true }),
-  'Mayfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: false, slim: true }),
-  'Caddisfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: true, slim: true }),
-  'Stonefly': (c, g, p) => faunaWingedInsect(c, g, p, { open: true, slim: true }),
-  'Dobsonfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: true, slim: true }),
-  'Scorpionfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: false, slim: false }),
+  'Damselfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: false, slim: true, body: 1.05 }),
+  'Mayfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: false, slim: true, body: 0.82 }),
+  'Caddisfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: true, slim: true, body: 0.60 }),
+  'Stonefly': (c, g, p) => faunaWingedInsect(c, g, p, { open: true, slim: true, body: 0.70 }),
+  'Dobsonfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: true, slim: true, body: 0.88 }),
+  'Scorpionfly': (c, g, p) => faunaWingedInsect(c, g, p, { open: false, slim: false, body: 0.74 }),
   'Springtail': (c, g, p) => faunaSpringtail(c, g, p),
   'Ladybug': (c, g, p) => faunaBeetle(c, g, p, { spots: true }),
   'Firefly': (c, g, p) => faunaBeetle(c, g, p, { glow: true }),
