@@ -1,0 +1,27 @@
+expected_growth_family,BLOCKER,FAIL,HOLD,PASS,total
+10. Flowering Herbs and Wildflowers,0,0,10,0,10
+11. Vines and Climbing Plants,0,1,2,0,3
+12. Succulents and Desert Plants,0,0,5,0,5
+13. Carnivorous Plants,0,0,3,0,3
+14. Aquatic and Wetland Plants,0,0,6,1,7
+15. Ferns and Fern Allies,0,0,2,0,2
+17. Parasitic and Unusual Plants,0,0,1,1,2
+2. Conifers and Other Seed Plants,0,0,5,0,5
+3. Palms and Palm-Like Plants,0,0,1,0,1
+4. Fruit and Nut Trees,0,0,31,1,32
+5. Shrubs and Bushes,0,0,12,0,12
+6. Grasses and Grass-Like Plants,0,0,1,0,1
+7. Grain and Staple Crops,0,1,14,1,16
+9. Herbs and Spices,0,4,15,0,19
+Algae,1,1,2,0,4
+Bulb and stem vegetables,0,0,3,0,3
+Coastal trees,0,0,1,0,1
+Fruiting vegetables,0,1,1,0,2
+Leaf vegetables,0,0,1,1,2
+Legumes,0,1,0,0,1
+Lichens,1,0,0,0,1
+Mediterranean and dry-climate trees,0,0,1,0,1
+Other plant or harvest type,1,8,177,8,194
+Root vegetables,0,0,1,1,2
+Temperate broadleaf trees,0,0,2,0,2
+Tropical trees,0,0,2,1,3
