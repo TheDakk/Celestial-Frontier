@@ -27,10 +27,10 @@ import { faunaKiwi, faunaMudskipper, faunaPyrosome, faunaSalp, faunaTripodFish }
 import { floraCabbage, floraCarrot, floraCorn, floraHemp, floraTobacco, floraWatermelon, floraStrawberry, floraKiwiFruit } from './floraoverrides3.js';
 import { fungiFlyAgaric, fungiLionsMane, fungiMaitake, fungiStinkhorn, fungiCordyceps, fungiCap, fungiJellyBrain, lichenMat, microbeForam, tardigrade, macroAlgaeSheet, microAlgaeCell, algaeBloom } from './fungioverrides2.js';
 import { fungiEnoki, procFamilyIndex, FAMILY_COUNT, fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiClub, microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate, microbePlates, microbeMat } from './proceduralfamilies.js';
-import { faunaBear, faunaKoala, faunaSirenian, faunaHumpback, faunaBeakedWhale, faunaCuttlefish, faunaHorseshoeCrab, faunaSeaSquirt, faunaLamprey, faunaBat, faunaCroc, faunaHopper, faunaMonotreme } from './faunaoverrides5.js';
+import { faunaBear, faunaKoala, faunaSirenian, faunaHumpback, faunaBeakedWhale, faunaCuttlefish, faunaHorseshoeCrab, faunaSeaSquirt, faunaLamprey, faunaBat, faunaCroc, faunaHopper, faunaMonotreme, faunaChameleon, faunaFrilled, faunaSeahorse, faunaCaecilian, faunaDartFrog, faunaCloakSquid } from './faunaoverrides5.js';
 import { fishBody } from './faunaoverrides3.js';
 import { insectBody, myriapod } from './invertoverrides.js';
-import { plantBody } from './floraoverrides2.js';
+import { plantBody, floraFlytrap, floraPitcher, floraSundew, floraFloatingAlgae } from './floraoverrides2.js';
 import { reptSnake, reptTurtle } from './faunaoverrides2.js';
 import { faunaBird } from './faunaoverrides.js';
 
@@ -335,6 +335,20 @@ function microbeAmoeba(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
 
 /* ---- family routing by Earth-species NAME (audit-driven), then draw ---- */
 type Painter = (c: Ctx, g: G, p: ReturnType<typeof palette>) => void;
+/** ★ WAVE 18 — tint a palette at the CALL SITE. For an extremophile the colour
+    IS the observation — a halophile stains its brine hot pink, an acidophile
+    sits in rust-red iron, a red tide discolours the whole water — and the
+    shared family painters must not be edited to say so, because the procedural
+    system uses the same ones (D-ART-14). */
+function tint(p: Pal, hex: string): Pal {
+  const n = parseInt(hex.slice(1), 16);
+  const hr = (n >> 16) & 255, hg = (n >> 8) & 255, hb = n & 255;
+  const mk = (a: number, b: number, d: number): string => 'rgb(' + (a | 0) + ',' + (b | 0) + ',' + (d | 0) + ')';
+  return { cr: hr, cg: hg, cb: hb, base: hex,
+    lit: mk(Math.min(255, hr * 1.34), Math.min(255, hg * 1.32), Math.min(255, hb * 1.30)),
+    dark: mk(hr * 0.42, hg * 0.44, hb * 0.48) };
+}
+
 const FUNGI_NAME: Record<string, Painter> = {
   /* ★ WAVE 17 — the seven unrouted fungi, five of them on Nick's own
      still-not-fixed list. Colour is FORCED on the amanitas: for a Death Cap
@@ -362,6 +376,22 @@ const FUNGI_NAME: Record<string, Painter> = {
   'Cordyceps': fungiCordyceps,
 };
 const MICROBE_NAME: Record<string, Painter> = {
+  /* ★ WAVE 18 — the eleven unrouted microbes. Every one of them already had a
+     structural FAMILY in its reference row (rod · filament · coccus ·
+     flagellate · plated) and the painters for all five already existed — they
+     were simply never wired. What separates extremophiles from one another is
+     colour, and colour is what their rows are mostly about. */
+  'Methanogen': (c, g, p) => microbeRods(c, g, tint(p, '#7f9aa6')),
+  'Sulfur-Oxidizing Bacteria': (c, g, p) => microbeFilament(c, g, tint(p, '#e8dc86')),
+  'Iron-Oxidizing Bacteria': (c, g, p) => microbeFilament(c, g, tint(p, '#b4642a')),
+  'Nitrogen-Fixing Bacteria': (c, g, p) => microbeRods(c, g, tint(p, '#c46f7a')),
+  'Halophile': (c, g, p) => microbeRods(c, g, tint(p, '#e0409a')),
+  'Thermophile': (c, g, p) => microbeRods(c, g, tint(p, '#e07a26')),
+  'Acidophile': (c, g, p) => microbeRods(c, g, tint(p, '#a83a22')),
+  'Cryophile': (c, g, p) => microbeRods(c, g, tint(p, '#9fd4e8')),
+  'Radiation-Resistant Microbe': (c, g, p) => microbeChain(c, g, tint(p, '#d8a83a')),
+  'Bioluminescent Plankton': (c, g, p) => microbeFlagellate(c, g, tint(p, '#6ee0c0')),
+  'Red-Tide Algae': (c, g, p) => microbePlates(c, g, tint(p, '#b03428')),
   'Tardigrade': tardigrade,   /* wave 18: the canonical 8-legged water bear */
   'Diatom': microbeDiatom, 'Radiolarian': microbeDiatom, 'Dinoflagellate': microbeDiatom,
   'Paramecium': microbeCiliate, 'Euglena': microbeCiliate,
@@ -386,6 +416,13 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'flora|Reindeer Lichen': lichenMat, 'fungi|Reindeer Lichen': lichenMat,
   /* Sea Lettuce: a green macroalgal sheet, not a purple strap */
   'flora|Sea Lettuce': macroAlgaeSheet,
+  /* ★ WAVE 18 — the carnivores. A hinged clamshell trap, an upright pitcher
+     with a hood, and a rosette of dew-tipped tentacles are not 'a herb with
+     leaves' at any setting, which is why all three looked generic. */
+  'flora|Venus Flytrap': (c, g, p) => floraFlytrap(c, g, p, 'Venus Flytrap'),
+  'flora|Pitcher Plant': (c, g, p) => floraPitcher(c, g, p, 'Pitcher Plant'),
+  'flora|Sundew': (c, g, p) => floraSundew(c, g, p, 'Sundew'),
+  'flora|Floating Green Algae': (c, g, p) => floraFloatingAlgae(c, g, p, 'Floating Green Algae'),
   /* ★ wave 19 — the iconic flora whose GROWTH FORM is the name (audit bucket C) */
   'flora|Cabbage': floraCabbage,
   'flora|Carrot': floraCarrot,
@@ -430,6 +467,16 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'fauna|Wallaby': (c, g, pp) => faunaHopper(c, g, pp, 'Wallaby'),
   'fauna|Platypus': (c, g, pp) => faunaMonotreme(c, g, pp, 'Platypus'),
   'fauna|Echidna': (c, g, pp) => faunaMonotreme(c, g, pp, 'Echidna'),
+  /* ★ WAVE 18 — the last seven fauna. Each is a body plan no shared system
+     here can express, which is why all seven survived seventeen waves on the
+     verbatim engine. */
+  'fauna|Chameleon': (c, g, pp) => faunaChameleon(c, g, pp, 'Chameleon'),
+  'fauna|Frilled Lizard': (c, g, pp) => faunaFrilled(c, g, pp, 'Frilled Lizard'),
+  'fauna|Seahorse': (c, g, pp) => faunaSeahorse(c, g, pp, 'Seahorse'),
+  'fauna|Caecilian': (c, g, pp) => faunaCaecilian(c, g, pp, 'Caecilian'),
+  'fauna|Poison Dart Frog': (c, g, pp) => faunaDartFrog(c, g, pp, 'Poison Dart Frog'),
+  'fauna|Vampire Squid': (c, g, pp) => faunaCloakSquid(c, g, pp, 'Vampire Squid'),
+  'fauna|Deep-Sea Octopus': (c, g, pp) => faunaCloakSquid(c, g, pp, 'Deep-Sea Octopus'),
   'fauna|Humpback Whale': faunaHumpback,
   'fauna|Beaked Whale': faunaBeakedWhale,
   'fauna|Cuttlefish': faunaCuttlefish,

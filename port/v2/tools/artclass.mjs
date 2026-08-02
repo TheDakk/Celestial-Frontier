@@ -49,11 +49,19 @@ function keysIn(file) {
   if (!fs.existsSync(p)) return [];
   const s = fs.readFileSync(p, 'utf8');
   const out = new Set();
-  for (const m of s.matchAll(/^ {2}'([^']+)':/gm)) {
+  /* ⚠ THIS ONLY MATCHED SINGLE-QUOTED KEYS. Four plants have an apostrophe in
+     their name — Angel's Trumpet, Solomon's Seal, Miner's Lettuce, Devil's
+     Claw — so their rows MUST be double-quoted, and this scanner could not see
+     them. They were classed verbatim-flora and the lock correctly failed the
+     commit for undeclared drift. Third scanner this session to assume one
+     surface form of a key (artclass prefixes, coveragegap prefixes, and now
+     quoting): when a key can be written two ways, read both. */
+  for (const m of s.matchAll(/^ {2}(?:'([^']+)'|"([^"]+)")\s*:/gm)) {
+    const key = m[1] ?? m[2];
     /* ⚠ the CANON table is keyed 'kingdom|Name', so a species routed there was
        invisible to this map and fell through to 'verbatim-*' — which would have
        failed the lock as UNDECLARED drift the first time anyone edited one. */
-    out.add(m[1].includes('|') ? m[1].slice(m[1].indexOf('|') + 1) : m[1]);
+    out.add(key.includes('|') ? key.slice(key.indexOf('|') + 1) : key);
   }
   /* the string-array route lists (FLORA_DUPES and friends) */
   for (const m of s.matchAll(/^ {2}'([^']+)',/gm)) out.add(m[1]);

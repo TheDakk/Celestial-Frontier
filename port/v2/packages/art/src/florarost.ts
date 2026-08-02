@@ -324,4 +324,14 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Orchid Pods': T({ habit: 'herb', leaf: 'lance', fruit: 'pod', fhue: '#5a4a2c' }),
   'Roselle': T({ habit: 'shrub', leaf: 'palmate', flower: 'head', fhue: '#c02c4a' }),
   'Daisy': T({ habit: 'herb', leaf: 'lance', flower: 'head', fhue: '#f4f2e8' }),
+  /* ★ WAVE 18 — the last of the unrouted flora, each read off its own row */
+  "Angel's Trumpet": T({ habit: 'shrub', leaf: 'broad', flower: 'bell', fhue: '#f6e6cf' }),
+  'Tree Tomato': T({ habit: 'tree', leaf: 'heart', fruit: 'berry', fhue: '#c8402a' }),
+  "Solomon's Seal": T({ habit: 'herb', leaf: 'broad', flower: 'bell', fhue: '#f2f4ea' }),
+  "Miner's Lettuce": T({ habit: 'herb', leaf: 'pad', flower: 'head', fhue: '#f4f6ef' }),
+  "Devil's Claw": T({ habit: 'herb', leaf: 'broad', fruit: 'pod', fhue: '#4a3a26' }),
+  'Licorice Root': T({ habit: 'herb', leaf: 'pinnate', flower: 'spike', fhue: '#a9a6d8' }),
+  'Pampas Herb': T({ habit: 'grass', leaf: 'blade', flower: 'catkin', fhue: '#efeade', tall: true }),
+  'Plantain Herb': T({ habit: 'rosette', leaf: 'lance', flower: 'spike', fhue: '#8f9a6a' }),
+  'Sea Rocket': T({ habit: 'herb', leaf: 'broad', flower: 'head', fhue: '#c9b6d8' }),
 };

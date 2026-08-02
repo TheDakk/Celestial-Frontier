@@ -49,7 +49,11 @@ function topLevelKeys(body) {
     if (ch === "'" || ch === '"') {
       let j = i + 1, s = '';
       while (j < body.length && body[j] !== ch) { if (body[j] === '\\') { s += body[j + 1]; j += 2; } else s += body[j++]; }
-      if (depth === 1) out.push(s);       /* depth 1 = inside the table itself */
+      /* ⚠ a route VALUE can contain string literals too, and parentheses are
+         not brace depth — so an inline tint(p, '#e0409a') put a COLOUR through
+         here as a species key and the tool reported eight hex codes as "not in
+         this kingdom". A species name is not a colour. */
+      if (depth === 1 && !/^#[0-9a-fA-F]{3,8}$/.test(s)) out.push(s);
       i = j + 1; continue;
     }
     i++;
