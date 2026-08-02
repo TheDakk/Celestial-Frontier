@@ -19,6 +19,7 @@ import { QUAD_SPEC, faunaQuadruped } from './quadrupedoverrides.js';
 import { FAUNA2_NAME } from './faunaoverrides2.js';
 import { FAUNA3_NAME } from './faunaoverrides3.js';
 import { BIRD_NAME } from './birdoverrides.js';
+import { QUAD2_SPEC } from './mammaloverrides.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -350,7 +351,7 @@ export function resolveOverride(g: G): string | null {
   /* FAUNA (wave 3): species whose defining anatomy was categorically wrong */
   if (kingdom === 'fauna') {
     const fp = FAUNA_NAME[name] || FAUNA2_NAME[name] || FAUNA3_NAME[name] || BIRD_NAME[name];
-    const quad = !fp ? QUAD_SPEC[name] : undefined;   /* wave 4: the mammal system */
+    const quad = !fp ? (QUAD_SPEC[name] || QUAD2_SPEC[name]) : undefined;   /* wave 4: the mammal system */
     if (!fp && !quad) return null;
     const { cv, c } = newCanvas();
     vignette(c, false);
@@ -373,4 +374,4 @@ export function resolveOverride(g: G): string | null {
 }
 
 /** How many species wave 1 corrects (for the record + the audit sentinel). */
-export const OVERRIDE_COUNT = new Set([...Object.keys(FUNGI_NAME), ...Object.keys(MICROBE_NAME), ...Object.keys(FLORA_ICONIC), ...FLORA_DUPES, ...Object.keys(FAUNA_NAME), ...Object.keys(FAUNA2_NAME), ...Object.keys(FAUNA3_NAME), ...Object.keys(BIRD_NAME), ...Object.keys(QUAD_SPEC)]).size;
+export const OVERRIDE_COUNT = new Set([...Object.keys(FUNGI_NAME), ...Object.keys(MICROBE_NAME), ...Object.keys(FLORA_ICONIC), ...FLORA_DUPES, ...Object.keys(FAUNA_NAME), ...Object.keys(FAUNA2_NAME), ...Object.keys(FAUNA3_NAME), ...Object.keys(BIRD_NAME), ...Object.keys(QUAD_SPEC), ...Object.keys(QUAD2_SPEC)]).size;

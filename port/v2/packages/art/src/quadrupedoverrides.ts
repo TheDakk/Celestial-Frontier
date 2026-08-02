@@ -33,7 +33,8 @@ export interface QuadSpec {
   ears?: 'tiny' | 'small' | 'round' | 'large' | 'huge';
   tail?: 'none' | 'stub' | 'tuft' | 'bushy' | 'long' | 'plume' | 'banded';
   coat?: 'plain' | 'spots' | 'rosettes' | 'stripes' | 'patches' | 'panda' | 'shaggy' | 'banded';
-  horn?: 'nose' | 'twinnose' | 'ossicone' | 'palmate' | 'branched' | 'tuskup' | 'tuskdown' | 'curl';
+  horn?: 'nose' | 'twinnose' | 'ossicone' | 'palmate' | 'branched' | 'tuskup' | 'tuskdown' | 'curl'
+    | 'straight' | 'spiral' | 'lyre' | 'prong' | 'shorthorn';   /* wave 10: the bovid horn is the species */
   humps?: 1 | 2;
   trunk?: boolean;
   hue?: string;                 /* species-true color where color IS identity */
@@ -64,11 +65,16 @@ function smoothTop(c: Ctx, cx: number, bodyW: number, topY: (t: number) => numbe
 function traceBody(c: Ctx, cx: number, cy: number, bodyW: number, bodyH: number, topY: (t: number) => number): void {
   c.beginPath();
   c.moveTo(cx - bodyW, cy + bodyH * 0.1);
-  c.quadraticCurveTo(cx - bodyW * 1.02, cy - bodyH * 0.2, cx - bodyW * 0.94, topY(0.04));
+  c.quadraticCurveTo(cx - bodyW * 1.04, cy - bodyH * 0.22, cx - bodyW * 0.94, topY(0.04));
   smoothTop(c, cx, bodyW, topY);
-  c.quadraticCurveTo(cx + bodyW * 1.06, cy + bodyH * 0.2, cx + bodyW * 0.88, cy + bodyH * 0.52);
-  c.quadraticCurveTo(cx, cy + bodyH * 0.76, cx - bodyW * 0.9, cy + bodyH * 0.5);
-  c.quadraticCurveTo(cx - bodyW * 1.06, cy + bodyH * 0.3, cx - bodyW, cy + bodyH * 0.1);
+  /* down the shoulder into a DEEP CHEST (the brisket hangs lowest here) */
+  c.quadraticCurveTo(cx + bodyW * 1.10, cy + bodyH * 0.26, cx + bodyW * 0.86, cy + bodyH * 0.70);
+  /* forward of the ribs the belly TUCKS UP — the single line that stops a
+     torso being a slab */
+  c.quadraticCurveTo(cx + bodyW * 0.36, cy + bodyH * 0.86, cx - bodyW * 0.02, cy + bodyH * 0.50);
+  /* and swells again into the ROUNDED RUMP over the hind leg */
+  c.quadraticCurveTo(cx - bodyW * 0.52, cy + bodyH * 0.30, cx - bodyW * 0.86, cy + bodyH * 0.58);
+  c.quadraticCurveTo(cx - bodyW * 1.08, cy + bodyH * 0.36, cx - bodyW, cy + bodyH * 0.1);
   c.closePath();
 }
 
@@ -105,15 +111,23 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
 
   /* ---- legs: back pair first (depth), then front ---- */
   const legW = Math.max(7, bodyH * 0.30);
-  const drawLeg = (lx: number, shade: number, len: number): void => {
-    c.strokeStyle = shade < 1 ? p.dark : p.base;
-    c.lineWidth = legW * (shade < 1 ? 0.86 : 1); c.lineCap = 'round';
-    c.beginPath(); c.moveTo(lx, cy + bodyH * 0.45); c.lineTo(lx + (r() - 0.5) * 4, groundY - len * 0.05); c.stroke();
-    c.fillStyle = shade < 1 ? p.dark : p.base;   /* the foot */
-    c.beginPath(); c.ellipse(lx + 2, groundY, legW * 0.55, legW * 0.30, 0, 0, TAU); c.fill();
+  const drawLeg = (lx: number, shade: number, len: number, hind: boolean): void => {
+    const col = shade < 1 ? p.dark : p.base;
+    const top = cy + bodyH * 0.42, jitter = (r() - 0.5) * 3;
+    /* the joint sits below mid-limb; a hock kicks BACK, a knee eases forward */
+    const kneeY = top + (groundY - top) * 0.54;
+    const kneeX = lx + (hind ? -legW * 0.42 : legW * 0.26);
+    const footX = lx + jitter + (hind ? legW * 0.12 : -legW * 0.04);
+    c.strokeStyle = col; c.lineCap = 'round'; c.lineJoin = 'round';
+    c.lineWidth = legW * (shade < 1 ? 1.02 : 1.20);          /* the upper limb carries muscle */
+    c.beginPath(); c.moveTo(lx, top); c.quadraticCurveTo(lx + (kneeX - lx) * 0.6, top + (kneeY - top) * 0.55, kneeX, kneeY); c.stroke();
+    c.lineWidth = legW * (shade < 1 ? 0.56 : 0.66);          /* the cannon bone is THIN */
+    c.beginPath(); c.moveTo(kneeX, kneeY); c.quadraticCurveTo(kneeX + (footX - kneeX) * 0.5, kneeY + (groundY - kneeY) * 0.5, footX, groundY - len * 0.04); c.stroke();
+    c.fillStyle = col;   /* the foot */
+    c.beginPath(); c.ellipse(footX + 1, groundY, legW * 0.52, legW * 0.30, 0, 0, TAU); c.fill();
   };
-  drawLeg(cx - bodyW * 0.52, 0.8, legLen); drawLeg(cx + bodyW * 0.46, 0.8, legLen);
-  drawLeg(cx - bodyW * 0.62, 1, legLen); drawLeg(cx + bodyW * 0.56, 1, legLen);
+  drawLeg(cx - bodyW * 0.52, 0.8, legLen, true); drawLeg(cx + bodyW * 0.46, 0.8, legLen, false);
+  drawLeg(cx - bodyW * 0.62, 1, legLen, true); drawLeg(cx + bodyW * 0.56, 1, legLen, false);
 
   /* ---- the torso: a profile whose BACK LINE is the species ---- */
   const topY = (t: number): number => {
@@ -207,17 +221,21 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
 
   /* ---- humps (camel) sit ON the back line ---- */
   if (spec.humps) {
+    /* A HUMP GROWS OUT OF THE BACK. Both were seated at topY(0.5) minus a
+       fixed offset, so each floated in a gap above the spine — and with two
+       humps the rear one hovered over a back line it never touched. Each
+       hump is now seated at the back line AT ITS OWN x, sunk slightly in. */
+    const hxs = spec.humps === 1 ? [0.5] : [0.32, 0.68];
+    const seat = (u: number): [number, number] => {
+      const hx = cx - bodyW + 2 * bodyW * u;
+      return [hx, topY(u) + bodyH * 0.06];
+    };
     c.fillStyle = p.base;
-    for (let h = 0; h < spec.humps; h++) {
-      const hx = cx + (spec.humps === 1 ? 0 : (h - 0.5) * bodyW * 0.7);
-      c.beginPath(); c.ellipse(hx, topY(0.5) - bodyH * 0.22, bodyW * 0.30, bodyH * 0.42, 0, Math.PI, TAU); c.fill();
-    }
+    for (const u of hxs) { const [hx, hy] = seat(u); c.beginPath(); c.ellipse(hx, hy, bodyW * 0.30, bodyH * 0.46, 0, Math.PI, TAU); c.fill(); }
     c.strokeStyle = 'rgba(220,232,250,0.32)'; c.lineWidth = 2;
-    for (let h = 0; h < spec.humps; h++) {
-      const hx = cx + (spec.humps === 1 ? 0 : (h - 0.5) * bodyW * 0.7);
-      c.beginPath(); c.ellipse(hx, topY(0.5) - bodyH * 0.22, bodyW * 0.30, bodyH * 0.42, 0, Math.PI, TAU); c.stroke();
-    }
+    for (const u of hxs) { const [hx, hy] = seat(u); c.beginPath(); c.ellipse(hx, hy, bodyW * 0.30, bodyH * 0.46, 0, Math.PI, TAU); c.stroke(); }
   }
+
 
   /* ---- neck + head: where most species are actually recognized ---- */
   const neckLen = S * spec.neck;
@@ -344,6 +362,45 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
     c.strokeStyle = '#c2ae8e'; c.lineWidth = 9; c.lineCap = 'round';
     for (const s of [-1, 1] as const) {
       c.beginPath(); c.arc(headX - headR * 0.1 + s * headR * 0.5, headY - headR * 0.2, headR * 0.66, -0.4, 4.2, s < 0); c.stroke();
+    }
+  } else if (horn === 'straight' || horn === 'spiral' || horn === 'lyre' || horn === 'prong' || horn === 'shorthorn') {
+    /* THE BOVID HORN. An antelope IS its horns: an oryx's metre-long
+       straight rapiers, a kudu's corkscrew, an impala's lyre. Drawn as one
+       generic spike they all became the same goat. */
+    c.strokeStyle = '#cbb894'; c.lineCap = 'round';
+    const HL = headR * (horn === 'straight' ? 2.5 : horn === 'spiral' ? 2.0 : horn === 'lyre' ? 1.7 : horn === 'prong' ? 1.0 : 0.72);
+    c.lineWidth = horn === 'shorthorn' ? 7 : 8;
+    for (const s of [-1, 1] as const) {
+      const bx2 = headX - headR * 0.15 + s * headR * 0.34, by2 = headY - headR * 0.62;
+      if (horn === 'spiral') {   /* the kudu corkscrew: a swept curve with turns */
+        c.beginPath(); c.moveTo(bx2, by2);
+        for (let i = 1; i <= 22; i++) {
+          const u = i / 22;
+          c.lineTo(bx2 + s * (Math.sin(u * 9) * headR * 0.22 + u * headR * 0.30), by2 - u * HL);
+        }
+        c.stroke();
+      } else if (horn === 'lyre') {   /* out, then sweeping back up */
+        c.beginPath(); c.moveTo(bx2, by2);
+        c.bezierCurveTo(bx2 + s * headR * 0.9, by2 - HL * 0.42, bx2 - s * headR * 0.2, by2 - HL * 0.80, bx2 + s * headR * 0.7, by2 - HL);
+        c.stroke();
+      } else if (horn === 'prong') {
+        c.beginPath(); c.moveTo(bx2, by2); c.lineTo(bx2 + s * headR * 0.16, by2 - HL); c.stroke();
+        c.lineWidth = 5;
+        c.beginPath(); c.moveTo(bx2 + s * headR * 0.10, by2 - HL * 0.58); c.lineTo(bx2 + s * headR * 0.62, by2 - HL * 0.74); c.stroke();
+        c.lineWidth = 8;
+      } else {   /* straight rapier / short goat horn, angled back */
+        c.beginPath(); c.moveTo(bx2, by2);
+        c.quadraticCurveTo(bx2 + s * headR * 0.10, by2 - HL * 0.6, bx2 - headR * 0.30 + s * headR * 0.34, by2 - HL);
+        c.stroke();
+      }
+      if (horn === 'straight' || horn === 'spiral') {   /* the annulations */
+        c.strokeStyle = 'rgba(60,48,30,0.30)'; c.lineWidth = 2;
+        for (let i = 1; i < 7; i++) {
+          const yy = by2 - (HL * i) / 7;
+          c.beginPath(); c.moveTo(bx2 - 5 + s * i, yy); c.lineTo(bx2 + 5 + s * i, yy); c.stroke();
+        }
+        c.strokeStyle = '#cbb894'; c.lineWidth = 8;
+      }
     }
   } else if (horn === 'tuskup' || horn === 'tuskdown') {
     c.fillStyle = '#efe6d4';

@@ -508,3 +508,50 @@ families · the 43 biome scenes (Phase 6).
 **Gates:** vitest 220 ✓ · tsc clean · speciesaudit 1254/1254 · 0/0/0 · overridecheck 488/488 ·
 0 dead · **overridecontrol 6/6 fire** · slicesmoke PASS · perf 1479/2254ms.
 `hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-27 … D-ART-29.
+
+---
+
+# WAVE 10a — LANDED 2026-08-01 (THE MAMMAL REMAINDER + the first SWEEPING PASS)
+
+## Measuring again changed the plan again
+Wave 9 ended pointing at the arthropods (67). Re-running the catalog diff showed something
+larger hiding in the "other" bucket: **~95 mammals** — bovids, canids, felids, mustelids,
+bears, pigs, equids, the domestics — every one a body plan **wave 4's quadruped system
+already knew how to draw**. 82 new routes landed as TABLE work, which is exactly what a good
+parameterised system should make a large gap feel like.
+
+## The one painter change: THE BOVID HORN
+An antelope IS its horns. Drawn as one generic spike, an oryx, a kudu, an impala and a
+pronghorn are all the same goat. New: **straight** (the oryx's metre-long annulated rapiers) ·
+**spiral** (the kudu corkscrew) · **lyre** (impala/gazelle: out, then sweeping back up) ·
+**prong** (the pronghorn's forward tine) · **shorthorn**.
+
+## ★ THE SENTINEL CAUGHT FIVE OF MY OWN MISTAKES BEFORE THEY SHIPPED
+The wave-9 shadow check earned its keep on its first real use: **Red Fox, Arctic Fox, Horse
+and Tapir were already in wave 4's QUAD_SPEC**, so my new specs would have been written,
+listed and never once drawn. Plus one dead key — *Gemsbok-like Antelope*, a name I invented
+rather than read. Five findings, one run, before a single pixel was rendered.
+
+## ★★ THE FIRST SWEEPING PASS — and what 130 species at once made visible
+Adding 82 mammals to a system that already had ~48 exposed two flaws that were survivable at
+40 species and glaring at 130. Both were fixed in the SHARED painter, so **every quadruped in
+the game improved at once**:
+
+| the strip said | the cause | the fix |
+|---|---|---|
+| every mammal is a LOG ON POSTS | four straight strokes of even thickness | **a leg has a joint**: thick upper limb, a **thin cannon bone** below it, a hoof — and **front and hind bend in OPPOSITE directions** (a hock kicks back, a knee eases forward), which is most of what separates a mammal from a piece of furniture |
+| every torso is a SLAB | the underline ran nearly straight from brisket to groin, so the body was a rounded rectangle | a **deep chest** at the shoulder, a **tucked waist** behind the ribs, a **rounded rump** — the shape that makes a wolf read as a wolf at thumbnail size before a single marking is drawn |
+| the camel's hump FLOATS | both humps were seated at `topY(0.5)` minus a fixed offset, so each hovered in a gap above the spine — and the rear hump of a Bactrian hovered over a back line it never touched | each hump is seated at the back line **at its own x**, sunk slightly in |
+
+Verified against the species the reviews already scored well — Giraffe, Hippopotamus,
+Rhinoceros, Camel, Moose, Wolf, Leopard, Cheetah — all held or improved. **No regression.**
+
+## Coverage after wave 10a — MEASURED
+**569 of 1,010 Earth species (56.3%)** — fauna 499 · flora 45 · fungi 16 · microbe 9.
+**Past halfway.** Remaining: arthropods 67 · worms/cnidaria 22 · marsupials + pinnipeds +
+cetacean remainder (these need real posture painters, not table rows) · procedural fungi +
+microbe body plans · flower-head families · the 43 biome scenes.
+
+**Gates:** vitest 220 ✓ · tsc clean · speciesaudit 1254/1254 · 0/0/0 · overridecheck 569/569 ·
+0 dead · overridecontrol 6/6 · slicesmoke PASS · perf 1354/2128ms. `hdart.verbatim.js`
+UNTOUCHED. **Ledger:** D-ART-30 … D-ART-32.

@@ -686,6 +686,29 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 10a — THE MAMMAL REMAINDER + THE FIRST SWEEPING PASS (2026-08-01,
+##   batch 29). Re-measuring changed the plan again: hiding in the "other" bucket were ~95
+##   MAMMALS — bovids/canids/felids/mustelids/bears/pigs/equids/domestics — every one a body
+##   plan wave 4's quadruped system already knew. 82 new routes as pure TABLE work. One
+##   painter change: ★THE BOVID HORN (straight oryx rapiers · spiral kudu corkscrew · lyre
+##   impala · prong pronghorn · shorthorn) because as one generic spike every antelope is the
+##   same goat. ★★THE WAVE-9 SHADOW SENTINEL CAUGHT FIVE OF MY OWN MISTAKES BEFORE ANY PIXEL
+##   RENDERED: Red Fox, Arctic Fox, Horse and Tapir were ALREADY in QUAD_SPEC (would have been
+##   written, listed, never drawn) + one invented name (Gemsbok-like Antelope). ★★★THE FIRST
+##   SWEEPING PASS — 130 quadrupeds at once made two survivable-at-40 flaws glaring, both
+##   fixed in the SHARED painter so EVERY quadruped improved at once: (1) A LEG HAS A JOINT —
+##   four straight even strokes read as a TABLE; limbs now carry a thick upper segment, a THIN
+##   cannon bone and a foot, with front and hind bending in OPPOSITE directions (hock back,
+##   knee forward). (2) A TORSO IS NOT A SLAB — the underline ran straight from brisket to
+##   groin; now a deep chest, a TUCKED WAIST behind the ribs, a rounded rump = the silhouette
+##   that makes a wolf read as a wolf before any marking. (3) humps seated ON the back line at
+##   their own x (a Bactrian's rear hump hovered over a spine it never touched). NO REGRESSION:
+##   verified against Giraffe/Hippo/Rhino/Camel/Moose/Wolf/Leopard/Cheetah. ★COVERAGE MEASURED:
+##   569/1,010 (56.3%) — PAST HALFWAY — fauna 499 · flora 45 · fungi 16 · microbe 9. REMAINING:
+##   arthropods 67 · worms/cnidaria 22 · marsupials+pinnipeds+cetacean remainder (need posture
+##   painters, not table rows) · procedural fungi+microbe · flower-heads · 43 biome scenes.
+##   D-ART-30..32. GATES: vitest 220 · tsc · speciesaudit 1254/1254 0/0/0 · overridecheck
+##   569/569 0 dead · overridecontrol 6/6 · slicesmoke PASS · perf 1354/2128ms · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 9 — THE BIRDS + A THIRD KIND OF DEAD ROUTE (2026-08-01, batch 28).
 ##   73 new bird routes by EXTENDING wave 3's faunaBird, not replacing it (D-ART-14). New
 ##   axes, all optional+defaulted so the 28 wave-3 birds are byte-unchanged: SIZE (a

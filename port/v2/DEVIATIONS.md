@@ -117,6 +117,23 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   now, which also made 'dead' catch mis-kingdomed keys and made coverage count per kingdom.
   Four self-inflicted bugs from one tool before it found anything real. Controls: six, all
   firing, incl. E — a table the tool cannot classify is REPORTED, never skipped silently.
+- ✔ **D-ART-30 — THE MAMMAL REMAINDER + THE BOVID HORN (wave 10a).** 82 new routes as pure
+  table work against wave 4's quadruped system. One painter change: the bovid horn —
+  straight (oryx rapiers, annulated), spiral (kudu corkscrew), lyre (impala/gazelle), prong
+  (pronghorn), shorthorn — because drawn as one generic spike every antelope is the same goat.
+  The wave-9 shadow sentinel caught five of my own mistakes first: Red Fox, Arctic Fox, Horse
+  and Tapir were already in QUAD_SPEC (written, listed, never drawn), plus one invented name.
+- ✔ **D-ART-31 — A LEG HAS A JOINT (wave 10a, sweeping pass).** Four straight strokes of even
+  thickness read as a table, and at 130 species that is one table repainted 130 times. Limbs
+  now carry a thick upper segment, a THIN cannon bone, and a foot — with front and hind bending
+  in OPPOSITE directions (hock back, knee forward). Applied in the shared painter, so every
+  quadruped improved at once.
+- ✔ **D-ART-32 — A TORSO IS NOT A SLAB (wave 10a, sweeping pass).** The body underline ran
+  nearly straight from brisket to groin. It now has a deep chest at the shoulder, a tucked
+  waist behind the ribs and a rounded rump — the silhouette that makes a wolf read as a wolf
+  before any marking is drawn. Also: humps are seated on the back line at their own x rather
+  than floating above it (a Bactrian's rear hump hovered over a spine it never touched).
+  Verified no regression against Giraffe, Hippo, Rhino, Camel, Moose, Wolf, Leopard, Cheetah.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
