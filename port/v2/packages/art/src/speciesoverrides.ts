@@ -91,10 +91,29 @@ function palette(g: G): { base: string; cr: number; cg: number; cb: number; lit:
   const spc = SP_COLOR as readonly number[], sph = SP_HEX as readonly string[];
   const forced = (g as { _forceHex?: string })._forceHex;
   const hex = forced || sph[spc[((g.color as number) || 0) % spc.length] as number] || '#b08a6a';
-  const n = parseInt(hex.slice(1), 16), cr = (n >> 16) & 255, cg = (n >> 8) & 255, cb = n & 255;
+  const n = parseInt(hex.slice(1), 16);
+  let cr = (n >> 16) & 255, cg = (n >> 8) & 255, cb = n & 255;
+  /* ★ THE EARTH COLOUR RULE (Nick, 2026-08-02, ratified) — AND WHY THERE IS NO
+     CODE HERE. The rule is right: an Earth species should render in a plausible
+     Earth colour and only the procedural aliens should take the rarity roll.
+     Three formulaic implementations were built and all three were REVERTED,
+     each rejected by the sameness guard:
+       · pull every saturated roll toward its own grey  → watch 3,393 → 5,433,
+         identical pairs 1 → 12
+       · map the whole cool half of the wheel into the warm band → 1 → 5
+       · rotate ONLY the impossible violets and magentas → 1 → 3
+     The finding is the same each time and it is worth writing down: THE RARITY
+     ROLL WAS DOING THE WORK OF SEPARATING SPECIES. Colour is the strongest
+     signal in these portraits, so ANY squeeze of the gamut trades neon animals
+     for animals that look alike — and the second defect is worse than the first.
+     A clamp can only ever lose information.
+     The rule can only be delivered by SPECIES-TRUE COLOUR PER ORGANISM, which
+     separates better than a random roll because real species genuinely differ.
+     ~100 already have one (see the hue fields through the override tables); the
+     remaining ~900 are a data job, not a formula. Do not re-derive a clamp. */
   const lit = `rgb(${Math.min(255, cr * 1.4 | 0)},${Math.min(255, cg * 1.4 | 0)},${Math.min(255, cb * 1.4 | 0)})`;
   const dark = `rgb(${cr * 0.42 | 0},${cg * 0.42 | 0},${cb * 0.42 | 0})`;
-  return { base: hex, cr, cg, cb, lit, dark };
+  return { base: `rgb(${cr | 0},${cg | 0},${cb | 0})`, cr, cg, cb, lit, dark };
 }
 function vignette(c: Ctx, warm = false): void {
   const bg = c.createRadialGradient(S * 0.5, S * 0.44, 20, S * 0.5, S * 0.5, S * 0.62);
