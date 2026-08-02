@@ -19,12 +19,17 @@ import { mulberry32, TAU } from '@cf/domain-rand';
 import { type Form } from './surface.js';
 import { alienEyes, alienSkin, alienGlow, alienSail, alienArmor, type AlienTraits } from './alientraits.js';
 import { Tube, pathThrough, spline } from './torso.js';
-import { countershade, coatSpots, coatRosettes, coatBars, coatPatches, coatBlotches, coatBrindle, coatShaggy, shaggyRim, coatBlocks } from './skin.js';
+import { coatMaterial, type Material, countershade, coatSpots, coatRosettes, coatBars, coatPatches, coatBlotches, coatBrindle, coatShaggy, shaggyRim, coatBlocks } from './skin.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
 const S = 440;
+/** ★ how much fine material detail every mammal gets. 0 reproduces the old
+    flat look exactly; 1 is the full coat. Portraits are generated at runtime
+    and cached, there is an art-hold law about boot responsiveness and a
+    standing phone-heat mandate, so this exists to be turned DOWN. */
+const MAT_DETAIL = 1;
 
 export interface QuadSpec {
   legs: number;                 /* leg length as a fraction of S */
@@ -84,6 +89,7 @@ export interface QuadSpec {
      head". An ear category is a SHAPE; this is the multiplier on its scale,
      for the handful of animals whose feature is outsized for their family. */
   earScale?: number;
+  mat?: Material;
   /** ★ wave 13 — an ear has a SHAPE, not only a size. Defaults per family. */
   earShape?: 'round' | 'point' | 'tuft' | 'leaf' | 'drop' | 'spoon' | 'hidden';
   /** ★ wave 13 — and an eye has a PUPIL, which no mammal here had. */
@@ -178,43 +184,44 @@ const FAMILY: Record<string, {
   waist: number; muscle: number; chest: number; rump: number;
   foot: 'hoof' | 'cloven' | 'paw' | 'plantigrade' | 'pad' | 'claw' | 'flipper';
   ear: 'round' | 'point' | 'tuft' | 'leaf' | 'drop' | 'spoon' | 'hidden';
+  mat: Material;
   pupil: 'round' | 'slit' | 'bar';
   iris: string;
   cannon: number;    /* 1 = pencil cannon bone, 0 = a column with no ankle */
   crouch: number;    /* 1 = folded and low, 0 = straight-legged and tall */
 }> = {
   /* a cat is a deep chest and a tucked waist over a short folded limb */
-  felid: { waist: 0.74, muscle: 0.88, chest: 0.80, rump: 0.60, foot: 'paw', cannon: 0.52, crouch: 0.74, ear: 'round', pupil: 'slit', iris: '#c9a233' },
+  felid: { waist: 0.74, muscle: 0.88, chest: 0.80, rump: 0.60, foot: 'paw', cannon: 0.52, crouch: 0.74, ear: 'round', pupil: 'slit', iris: '#c9a233', mat: 'fur' },
   /* a dog is leggier and narrower than a cat, and it still has paws */
-  canid: { waist: 0.60, muscle: 0.58, chest: 0.84, rump: 0.46, foot: 'paw', cannon: 0.64, crouch: 0.52, ear: 'point', pupil: 'round', iris: '#a97a34' },
+  canid: { waist: 0.60, muscle: 0.58, chest: 0.84, rump: 0.46, foot: 'paw', cannon: 0.64, crouch: 0.52, ear: 'point', pupil: 'round', iris: '#a97a34', mat: 'fur' },
   /* a bear is a shoulder hump, a heavy rump, no waist at all, and soles */
-  ursid: { waist: 0.10, muscle: 0.96, chest: 0.70, rump: 0.90, foot: 'plantigrade', cannon: 0.16, crouch: 0.78, ear: 'round', pupil: 'round', iris: '#4a3524' },
-  bovid: { waist: 0.30, muscle: 0.52, chest: 0.62, rump: 0.66, foot: 'cloven', cannon: 0.90, crouch: 0.26, ear: 'spoon', pupil: 'bar', iris: '#5a4326' },
-  cervid: { waist: 0.56, muscle: 0.36, chest: 0.50, rump: 0.44, foot: 'cloven', cannon: 1.00, crouch: 0.22, ear: 'leaf', pupil: 'bar', iris: '#3f2c1a' },
-  equid: { waist: 0.32, muscle: 0.74, chest: 0.70, rump: 0.82, foot: 'hoof', cannon: 0.98, crouch: 0.20, ear: 'point', pupil: 'bar', iris: '#3a2a1c' },
+  ursid: { waist: 0.10, muscle: 0.96, chest: 0.70, rump: 0.90, foot: 'plantigrade', cannon: 0.16, crouch: 0.78, ear: 'round', pupil: 'round', iris: '#4a3524', mat: 'pelt' },
+  bovid: { waist: 0.30, muscle: 0.52, chest: 0.62, rump: 0.66, foot: 'cloven', cannon: 0.90, crouch: 0.26, ear: 'spoon', pupil: 'bar', iris: '#5a4326', mat: 'fur' },
+  cervid: { waist: 0.56, muscle: 0.36, chest: 0.50, rump: 0.44, foot: 'cloven', cannon: 1.00, crouch: 0.22, ear: 'leaf', pupil: 'bar', iris: '#3f2c1a', mat: 'fur' },
+  equid: { waist: 0.32, muscle: 0.74, chest: 0.70, rump: 0.82, foot: 'hoof', cannon: 0.98, crouch: 0.20, ear: 'point', pupil: 'bar', iris: '#3a2a1c', mat: 'fur' },
   /* a camel carries a high chest on long soft-padded legs */
-  camelid: { waist: 0.44, muscle: 0.42, chest: 0.78, rump: 0.40, foot: 'pad', cannon: 0.82, crouch: 0.32, ear: 'leaf', pupil: 'bar', iris: '#4a3220' },
-  suid: { waist: 0.08, muscle: 0.62, chest: 0.82, rump: 0.50, foot: 'cloven', cannon: 0.70, crouch: 0.40, ear: 'drop', pupil: 'round', iris: '#4d3826' },
+  camelid: { waist: 0.44, muscle: 0.42, chest: 0.78, rump: 0.40, foot: 'pad', cannon: 0.82, crouch: 0.32, ear: 'leaf', pupil: 'bar', iris: '#4a3220', mat: 'pelt' },
+  suid: { waist: 0.08, muscle: 0.62, chest: 0.82, rump: 0.50, foot: 'cloven', cannon: 0.70, crouch: 0.40, ear: 'drop', pupil: 'round', iris: '#4d3826', mat: 'fur' },
   /* a long low tube on very short legs */
-  mustelid: { waist: 0.82, muscle: 0.38, chest: 0.46, rump: 0.38, foot: 'paw', cannon: 0.34, crouch: 0.70, ear: 'round', pupil: 'round', iris: '#2b2118' },
-  rodent: { waist: 0.38, muscle: 0.34, chest: 0.42, rump: 0.74, foot: 'paw', cannon: 0.38, crouch: 0.66, ear: 'round', pupil: 'round', iris: '#241a12' },
-  pachyderm: { waist: 0.04, muscle: 0.72, chest: 0.66, rump: 0.70, foot: 'pad', cannon: 0.10, crouch: 0.08, ear: 'round', pupil: 'round', iris: '#553f28' },
+  mustelid: { waist: 0.82, muscle: 0.38, chest: 0.46, rump: 0.38, foot: 'paw', cannon: 0.34, crouch: 0.70, ear: 'round', pupil: 'round', iris: '#2b2118', mat: 'fur' },
+  rodent: { waist: 0.38, muscle: 0.34, chest: 0.42, rump: 0.74, foot: 'paw', cannon: 0.38, crouch: 0.66, ear: 'round', pupil: 'round', iris: '#241a12', mat: 'fur' },
+  pachyderm: { waist: 0.04, muscle: 0.72, chest: 0.66, rump: 0.70, foot: 'pad', cannon: 0.10, crouch: 0.08, ear: 'round', pupil: 'round', iris: '#553f28', mat: 'hide' },
   /* unfamilied species keep exactly the wave-4 behaviour, so nothing that
      was already good moves without someone choosing to move it (D-ART-14) */
   /* a marsupial carries its weight BEHIND — heavy haunches, a thick tail
      base, short forelimbs, and it sits low */
-  marsupial: { waist: 0.40, muscle: 0.52, chest: 0.50, rump: 0.86, foot: 'paw', cannon: 0.26, crouch: 0.70, ear: 'round', pupil: 'round', iris: '#2a1f16' },
+  marsupial: { waist: 0.40, muscle: 0.52, chest: 0.50, rump: 0.86, foot: 'paw', cannon: 0.26, crouch: 0.70, ear: 'round', pupil: 'round', iris: '#2a1f16', mat: 'fur' },
   /* a raccoon walks on its soles with an arched back and a hunched shoulder */
-  procyonid: { waist: 0.54, muscle: 0.44, chest: 0.56, rump: 0.62, foot: 'plantigrade', cannon: 0.28, crouch: 0.66, ear: 'round', pupil: 'round', iris: '#2f2418' },
+  procyonid: { waist: 0.54, muscle: 0.44, chest: 0.56, rump: 0.62, foot: 'plantigrade', cannon: 0.28, crouch: 0.66, ear: 'round', pupil: 'round', iris: '#2f2418', mat: 'pelt' },
   /* sloths, armadillos, anteaters, pangolins: a low deep body on short limbs
      ending in the enormous digging or hooking CLAWS that define the group */
-  xenarthran: { waist: 0.26, muscle: 0.54, chest: 0.62, rump: 0.60, foot: 'claw', cannon: 0.30, crouch: 0.58, ear: 'round', pupil: 'round', iris: '#221a14' },
+  xenarthran: { waist: 0.26, muscle: 0.54, chest: 0.62, rump: 0.60, foot: 'claw', cannon: 0.30, crouch: 0.58, ear: 'round', pupil: 'round', iris: '#221a14', mat: 'hide' },
   /* a seal or a walrus has no standing limb at all — it is a torpedo resting
      on the ground with flippers, and drawing it four legs is the whole error */
-  pinniped: { waist: 0.06, muscle: 0.34, chest: 0.72, rump: 0.30, foot: 'flipper', cannon: 0.04, crouch: 0.04, ear: 'hidden', pupil: 'round', iris: '#14120f' },
+  pinniped: { waist: 0.06, muscle: 0.34, chest: 0.72, rump: 0.30, foot: 'flipper', cannon: 0.04, crouch: 0.04, ear: 'hidden', pupil: 'round', iris: '#14120f', mat: 'fur' },
   /* an aardvark or a mole: an arched back over powerful short digging forelimbs */
-  burrower: { waist: 0.18, muscle: 0.70, chest: 0.58, rump: 0.66, foot: 'claw', cannon: 0.22, crouch: 0.62, ear: 'round', pupil: 'round', iris: '#1d1610' },
-  generic: { waist: -1, muscle: -1, chest: -1, rump: -1, foot: 'paw', cannon: 0.62, crouch: 0.45, ear: 'round', pupil: 'round', iris: '#3a2b1c' },
+  burrower: { waist: 0.18, muscle: 0.70, chest: 0.58, rump: 0.66, foot: 'claw', cannon: 0.22, crouch: 0.62, ear: 'round', pupil: 'round', iris: '#1d1610', mat: 'fur' },
+  generic: { waist: -1, muscle: -1, chest: -1, rump: -1, foot: 'paw', cannon: 0.62, crouch: 0.45, ear: 'round', pupil: 'round', iris: '#3a2b1c', mat: 'fur' },
 };
 
 function pal(p: Pal, spec: QuadSpec): Pal {
@@ -516,6 +523,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.beginPath(); limb.trace(c, 40); c.fill();
     c.save(); c.beginPath(); limb.trace(c, 40); c.clip();
     countershade(c, limb, lp, 0.85);
+    if (!spec.alien?.skin) coatMaterial(c, limb, r, lp, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL * 0.45, len: 0.6 });
     c.restore();
     /* ⚠ AN ATTEMPT TO BLEND THE NEAR LEG BY REPAINTING ITS ROOT IN FLANK COLOUR
        PUT A PALE OVAL ON EVERY ANIMAL'S SHOULDER AND HAUNCH. It could not
@@ -592,6 +600,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   c.beginPath(); neckTube.trace(c, 44); c.fill();
   c.save(); c.beginPath(); neckTube.trace(c, 44); c.clip();
   if (!spec.alien?.skin) countershade(c, neckTube, p, 0.9);
+  if (!spec.alien?.skin) coatMaterial(c, neckTube, r, p, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL * 0.55 });
   /* the coat CONTINUES onto the neck — a giraffe's patches run up it, a
      tiger's bars cross it. A pattern that stops at the shoulder is a shirt. */
   if (coat === 'patches') coatPatches(c, neckTube, r, p, { nu: 7, nphi: 4, seam: 0.78, rgb: [126, 74, 26] });
@@ -616,6 +625,10 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      and not one of ours had it — which is most of why they read as cut-outs
      with a gradient rather than as solids. */
   if (!spec.alien?.skin) countershade(c, body, p, 1);
+  /* ★ THE MATERIAL LAYER, between the shading and the markings — fur, pelt or
+     hide laid in the body own coordinates so it wraps the form. This is the
+     prototype for the graphics upgrade; MAT_DETAIL is the cost dial. */
+  if (!spec.alien?.skin) coatMaterial(c, body, r, p, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL });
   if (coat === 'spots') {
     coatSpots(c, body, r, p, { count: 150, size: 0.92, soft: 0.13, rgb: [24, 17, 10] });
   } else if (coat === 'fawn') {
@@ -817,6 +830,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   c.beginPath(); head.trace(c, 52); c.fill();
   c.save(); c.beginPath(); head.trace(c, 52); c.clip();
   if (!spec.alien?.skin) countershade(c, head, p, 0.92);
+  if (!spec.alien?.skin) coatMaterial(c, head, r, p, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL * 0.40, len: 0.7 });
   /* the coat runs onto the face — a tiger is striped across the cheek, a
      giraffe patched over the crown. A pattern that stops at the ears is a hood. */
   if (coat === 'patches') coatPatches(c, head, r, p, { nu: 4, nphi: 3, seam: 0.76, rgb: [126, 74, 26] });
