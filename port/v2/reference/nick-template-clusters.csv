@@ -1,0 +1,22 @@
+cluster_id,size,members
+1,11,Finch | Lark | Plover | Robin | Sparrow | Spider | Starling | Swallow | Swift | Tanager | Weaverbird
+2,7,Aphid | Black_Fly | Cicada | Cold-Adapted_Insect | Orchid_Bee | Termite | Thrips
+3,5,Brine_Shrimp | Fairy_Shrimp | Goby | Hummingbird | Lanternfish
+4,4,Beluga | Narwhal | Right_Whale | Sperm_Whale
+5,3,Blue_Whale | Dolphin | River_Dolphin
+6,3,Carrion_Beetle | Dung_Beetle | Ladybug
+7,3,Mite | Mole | Pseudoscorpion
+8,2,Anaconda | Whip_Snake
+9,2,Blind_Fish | Wrasse
+10,2,Cave_Snake | Cottonmouth
+11,2,Chiton | Water_Strider
+12,2,Diving_Beetle | Water_Beetle
+13,2,Dove | Pigeon
+14,2,Dragonfish | Eel
+15,2,Flounder | Halibut
+16,2,Freshwater_Snail | Snail
+17,2,Garter_Snake | Sand_Boa
+18,2,Hawk | Osprey
+19,2,Otter | River_Otter
+20,2,Partridge | Sandgrouse
+21,2,Rail | Sandpiper

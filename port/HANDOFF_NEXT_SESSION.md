@@ -1,114 +1,129 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-**Written 2026-08-02 at the end of batch 49. HEAD = `095e28e`.**
+**Written 2026-08-02 at the end of waves 4–5. HEAD = `e7fe38a`.**
 The live work is **THE PROPORTION ARC** — making every organism in the Earth catalogue look
-like the real thing, on Nick's instruction. Nothing is half-applied; every batch below is
-committed and gate-green. The next session picks up at **STAGE 3, WAVE 4**.
+like the real thing, on Nick's instruction. The next session picks up at **STAGE 3, WAVE 6:
+THE HEAD**, and at the two big worklists described below.
 
 ---
 
-## READ IN THIS ORDER (5 minutes)
+## ★★ THE ONE THING THAT CHANGES EVERYTHING — READ THIS FIRST
+
+**YOU CAN SEE THE ART.** The previous four handoffs said the opposite, in bold, and it was
+wrong. The exported portraits are PNG files on disk and the **Read tool renders them**:
+
+```
+Read C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/species-fullsize/earth-fauna/Cheetah.png
+```
+
+One look found four defects that four waves of geometry reasoning had missed. **Subagents can
+see them too** — that is how 1,113 organisms were audited this session.
+
+Every real catch in this arc came from looking at a picture. Not one came from an instrument.
+**Look before you reason, and look again before you claim anything is fixed** (D-ART-88).
+
+---
+
+## READ IN THIS ORDER
 
 1. **this file**
-2. `port/PROPORTION_ARC.md` — the arc plan, all four stages, what has landed, what is open
-3. `port/v2/DEVIATIONS.md` — the laws (D-ART-1..88). Read **D-ART-83 and D-ART-88 first**; they
-   are the two that cost the most this session.
-4. `ROADMAP.md` — the batch log, newest first
-5. `PROCESS_LAWS.md` — the project-wide laws about checks that pass while broken
+2. `port/v2/DEVIATIONS.md` — the laws. Start at **D-ART-89 … D-ART-95**; they are this
+   session's and they are the expensive ones.
+3. `port/PROPORTION_ARC.md` — the arc plan
+4. `ROADMAP.md` · `PROCESS_LAWS.md`
 
-Do **not** read `port/MORPHOLOGY_PASS.md` end to end; it is a long append-only log. Grep it.
-
----
-
-## WHERE WE ACTUALLY ARE
-
-**Coverage: 951 / 1,010 Earth species routed (94.2%).** 1,254 assets paint, 0 duplicates,
-0 clipped. `hdart.verbatim.js` untouched, as always.
-
-### What is BUILT and working
-- `port/v2/reference/{fauna,flora,other}.json` — **1,014 reference rows**, exact one-to-one with
-  the catalog, zero UNKNOWNs. Per species: proportion, head fraction, eye prominence, posture,
-  growth form, leaf/colour/harvest, and 1–3 `mustRead` features. The `note` column names how
-  each organism is **commonly drawn wrong**, and is the most useful field in the table.
-- `tools/referencecheck.mjs` — gates that table. Negative-controlled both ways.
-- `tools/conformance.mjs` — renders every species, measures it, diffs it against its reference
-  row. `--selftest` holds 7/7. **This is the report that drives the work.**
-- `tools/proportioncheck.mjs` — aspect + end-lobe measurement across a kingdom.
-- The usual battery: `npx vitest run`, `npx tsc --noEmit`, `npm run artbattery`, `npm run smoke`,
-  `node tools/overridecheck.mjs`, `node tools/artaudit.mjs`, `node tools/coveragegap.mjs`.
-
-### What Nick has asked for and is NOT DONE — this is the wave-4 list
-1. **★ THE LEGS DO NOT BLEND INTO THE BODY.** Nick: *"there's a line between their body, almost
-   like it looks like the legs are hooked in."* The legs are bare strokes drawn before the
-   torso, so their roots are covered but there is no **shoulder or haunch MASS** wrapping them.
-   A real limb emerges from a bulge of muscle continuous with the trunk. **This is the single
-   biggest "not a real animal" tell.** One change to the shared quadruped system; every mammal
-   inherits it.
-2. **★ THE PATTERNS ARE SPRAY-PAINTED, NOT SKINS.** Nick: *"think of it like a skin, not like
-   you're painting on top of the animal… a lot of games have skins."* Marks are currently soft
-   blobs clipped to the body outline. A skin must: follow the body's contours, **foreshorten as
-   it wraps toward the silhouette**, darken where the body turns from the light, and take the
-   right SHAPE per species — a tiger's bars are vertical and break over the flank; a zebra's
-   bands continue onto the legs and belly; a giraffe's patches are hard-edged with pale seams.
-   The reference rows already name the pattern per species. **Build a real skin system.**
-3. **The elephant regressed** across three global passes and is worse than the version Nick
-   liked. Its good spec is in git — `git show e66dca4:port/v2/packages/art/src/mammaloverrides.ts`
-   has the pre-band values. **Recover it rather than re-deriving it.**
-4. Cheetah is not cat-like · hippo is blobby · giraffe legs spindly · thin necks at the shoulder
-   on the big cats.
-5. **26 fauna still unrouted** (drawn by the verbatim engine, so their `mustRead` features
-   cannot be expressed at all): crocodilians (Crocodile, Alligator, Caiman, Gharial), bats
-   (Bat, Fruit Bat, Vampire Bat), pinnipeds (Seal, Fur Seal, Sea Lion), Kangaroo, Wallaby,
-   Platypus, Echidna, Chameleon, Frilled Lizard, Chicken, Rooster, Seahorse, Poison Dart Frog,
-   Caecilian, Vampire Squid, Deep-Sea Octopus, Porpoise, Whale.
-6. **The 17 flora NEEDS_FIX rows** from the Platinum audit (task #24) — never started.
-7. **The eye sensor in `conformance.mjs` is NOT TRUSTWORTHY** (8/20 against ground truth) and
-   its `[A]` finding class is deliberately SUPPRESSED. It needs a fifth rebuild before it gates.
+Do **not** read `port/MORPHOLOGY_PASS.md` end to end. Grep it.
 
 ---
 
-## ⚠ THE FOUR MISTAKES THIS SESSION MADE — do not repeat them
+## THE SAFETY NET — RUN IT, AND UNDERSTAND WHY IT IS SHAPED THIS WAY
 
-1. **A BAND IS NOT A REFERENCE (D-ART-83).** I clamped 127 quadruped torsos into a 1.5–2.0
-   ratio band. Almost every spec was outside it, so almost every spec snapped to the **same
-   boundary value**, and Nick immediately saw that *"every animal on four legs has kind of the
-   same body type… the elephant has adopted the wolf body."* **Derive every spec from that
-   species' own reference row. Never from a band, a family default, or a neighbour.**
-2. **A DRAWING FIX IS NOT DONE UNTIL YOU LOOK AT THE PIXELS (D-ART-88).** I reported the rear
-   cusp as fixed because the code read correctly. `smoothTop()` opens with `moveTo`, which
-   starts a new subpath, so the "fix" was orphaned geometry that never drew — and canvas closed
-   it with a straight chord. **Render a strip and look at it before claiming anything.**
-3. **A CONTROL ON THE DECISION LAYER SAYS NOTHING ABOUT THE SENSOR (D-ART-81).** conformance's
-   self-test held 7/7 while the eye detector feeding it was 40% accurate.
-4. **STOP RUNNING GLOBAL PASSES.** Three successive arithmetic sweeps turned a good elephant
-   bad and made 127 animals identical. Go **per animal, verified against a render**.
+`node tools/artlock.mjs --touching=<class>` fingerprints all 1,254 rendered assets and answers
+the two questions no other gate here could:
 
----
+- **[DRIFT], scoped by painter class.** Nick: *"It only needs to apply to the organisms that
+  we're dealing with in that class… we just want to make it so that the global passes don't
+  retroactively affect all the earth work we put in."* Declare what you are editing. Drift
+  inside the declared classes is the work; **drift outside them is the failure**, because that
+  is exactly what a global pass looks like. Declare nothing and nothing may move.
+  - `procedural` is **advisory** — that library is meant to keep changing while we iterate on
+    the generator, so it never fails the gate.
+  - `verbatim-*` is the opposite: those species are drawn by `hdart.verbatim.js`, which nobody
+    may edit, so **any** movement there is a real bug.
+  - `--bless --class=quadruped` re-blesses ONE class. That is the mechanism that lets you run
+    an intentional retroactive pass over one family without unpinning the rest of the Earth
+    catalogue.
+- **[SAME], Earth only, two ratchets.** `WATCH 2.5` (worth fixing) and `HARD 0.6` (the same
+  picture with two labels). Both may only ever go DOWN. Today: **4,322 watch pairs, 33 hard.**
+  The hard list is a worklist, not a regression — the ratchet is the guard.
 
-## ⚠ ON REFERENCES — TELL NICK THE TRUTH
+Calibrated against ground truth, not guessed: Nick's audit engine independently listed 22
+template-sharing clusters (115 pairs); at WATCH=2.5 this catches 95 of them while flagging
+0.9% of all other pairs. `--selftest` holds 9/9 on the decision layer. ⚠ D-ART-81: that says
+nothing about the fingerprint sensor — the sensor's control is that a bless-then-rerun reports
+zero drift, which it does.
 
-**I cannot see images.** Not from the internet, not from search. The "reference" table is text
-generated from model knowledge — a second opinion from the same kind of source that draws the
-art. Nick asked repeatedly for real photos; that ask has **not** been satisfied and he should
-not be left believing otherwise.
-
-**The single biggest upgrade to this loop: ask Nick to drop reference images into the repo.**
-Those *can* be read directly. Short of that, fetch descriptive sources per animal rather than
-recalling from memory — and do it one animal at a time.
-
-Every real catch this session came from Nick looking at a strip, not from any instrument.
+**NEVER bless to turn a red report green.** A blessing is a claim that a person looked.
 
 ---
 
-## THE EXPORT NICK IS REVIEWING
+## WHAT LANDED THIS SESSION
 
-`port/v2/apps/game/smoke/species-fullsize/` — five zips + unzipped folders, 1,254 portraits at
-native 440×440, current as of `095e28e`. Fauna (95 MB), flora (56.5), fungi (5.1), microbe
-(4.2), procedural (43.7). Three exceed the 30 MiB chat upload limit; they are local files.
-Regenerate any time with `node tools/speciesexport.mjs`.
+- **`torso.ts` — the torso is a SOLID.** A generalized cylinder (spine + radius profile).
+  Silhouette, shoulder/haunch mass, foreshortening and per-point lighting all come from it.
+  `smoothTop()`/`traceBody()` deleted; the whole class of cusp/seam/tangent bugs is unreachable.
+- **`skin.ts` — the coat is a SKIN.** Marks authored in (u along spine, phi around girth):
+  real tapered stripe bands, Voronoi giraffe patches with pale seams, zebra bands crossing the
+  belly, rosettes, brindle, shaggy with a broken silhouette, and **countershading on every
+  mammal** — which alone did more than any marking.
+- **Family body plans.** 11 families carrying only what is anatomically true of all members
+  (mass distribution, cannon-bone thinness, crouch, and the foot: hoof / cloven / paw /
+  plantigrade sole / soft pad). 116 species tagged. Every per-species NUMBER untouched.
+- **`tools/artlock.mjs` + `tools/artclass.mjs`** — the safety net above.
+- **`tools/auditcards.mjs`** — builds the per-organism work packets for a visual audit.
+- **`reference/visualaudit.json`** — 1,111 rows, one per non-quadruped organism, each judged by
+  an agent that opened the picture: severity, what it *reads as* to a stranger, the defect, and
+  a concrete fix. **964 blockers.** This is a worklist for many sessions.
 
-In that export: every mammal has changed; fish, birds, insects, reptiles, flora, fungi and
-microbes were untouched by this arc and are the useful control.
+---
+
+## ⚠ THE TWO WORKLISTS THE NEXT SESSION SHOULD DRIVE FROM
+
+1. **`reference/visualaudit.json`** (mine, above) — non-quadruped organisms only. The 141
+   quadruped-routed mammals were deliberately excluded because waves 4–5 were rewriting them;
+   **they still need their own visual pass against the new render.**
+2. **Nick's anatomy-first audit** — he uploaded
+   `Celestial_Frontier_Anatomy_First_Audit_Engine_Package.zip` (xlsx + per-species CSVs +
+   contact sheets). It was run against the **pre-wave-4** export, so **some of it is already
+   fixed and it has NOT yet been re-checked one-by-one against current art — Nick explicitly
+   asked for that comparison and it is the top outstanding request.** Its headline finding
+   (global passes gave unrelated species the same scaffold) drove wave 5. Its remaining
+   uncorrected items: specialist insects, specialist fish, crocodilians, flightless birds,
+   the 19 iconic flora, 10 fungi, 4 microbes, and 4 canonical-ownership duplicates
+   (Tardigrade, Reindeer Lichen, Green Algae, Snow Algae).
+
+Both agree on the same top defects, which is the strongest signal available here.
+
+---
+
+## OPEN, IN PRIORITY ORDER
+
+1. **★ WAVE 6 — THE HEAD.** Now the weakest thing on every mammal by a wide margin, and the
+   next "not a real animal" tell. It is still one ellipse plus a snout ellipse plus blob ears
+   for a cat, a bear, a horse and a hippo alike. Needs skull families the way wave 5 gave limb
+   families. **The neck/head also still shows a tonal seam where the neck tube crosses the
+   shoulder** — the body's countershade and the neck's do not agree (a cousin of D-ART-91).
+2. **The 33 HARD look-alike pairs** — mostly one songbird cluster (Lark/Robin/Weaverbird/
+   Swift/Starling/Sparrow/Finch), which Nick's audit found independently. Birds need what
+   mammals just got.
+3. **The Elephant is visibly broken** (a huge grey head disc over a small body). Its good spec
+   is in git: `git show e66dca4:port/v2/packages/art/src/mammaloverrides.ts`. **Recover it.**
+4. **59 Earth species still unrouted** (`node tools/coveragegap.mjs`) — crocodilians, bats,
+   pinnipeds, Kangaroo/Wallaby, Platypus/Echidna, Chameleon, Chicken/Rooster, Seahorse, etc.
+5. The 17 flora NEEDS_FIX rows (Platinum task #24), never started.
+6. The `[A]` eye sensor in `conformance.mjs` is still suppressed and still untrustworthy
+   (8/20). Honestly: **the visual audit has superseded it.** Consider deleting rather than
+   rebuilding it a fifth time.
 
 ---
 
@@ -117,32 +132,34 @@ microbes were untouched by this arc and are the useful control.
 ```bash
 cd C:/Projects/Celestial-Frontier/port/v2
 
-# see the work list — THIS DRIVES WAVE 4
-node tools/conformance.mjs fauna --json conf.json
-node tools/conformance.mjs flora --json conf-flora.json
-
-# look at specific animals (the only instrument that has actually worked)
+# LOOK AT THE ART. this is the instrument.
 node tools/speciesstrip.mjs "Wolf,Lion,Cheetah,Hippopotamus,Elephant" check.png
+#   then Read apps/game/smoke/check.png
 
-# what still has no route
-node tools/coveragegap.mjs
+# the safety net — run it on every art change
+node tools/artlock.mjs --selftest
+node tools/artlock.mjs --touching=quadruped
+node tools/artlock.mjs --bless --class=quadruped     # only after you looked
 
-# the gate battery — run ALL of these before any commit
-npx vitest run
-npx tsc --noEmit           # from apps/game
-npm run artbattery         # 5 stages incl. speciesaudit 1254/1254
-npm run smoke
+# build visual-audit work packets, then fan agents over them
+node tools/auditcards.mjs fauna --per=8
+
+# the gate battery — ALL of these before any commit
+npx vitest run && npx tsc --noEmit -p apps/game
+npm run artbattery && npm run smoke
 node tools/overridecheck.mjs && node tools/overridecheck.control.mjs
-node tools/artaudit.mjs
-node tools/referencecheck.mjs
+node tools/artaudit.mjs && node tools/referencecheck.mjs && node tools/coveragegap.mjs
 
-# hand Nick a fresh set of prints
-node tools/speciesexport.mjs
+node tools/speciesexport.mjs      # fresh prints for Nick (1,254 PNGs + 5 zips)
 ```
+
+⚠ The export in `apps/game/smoke/species-fullsize/` is **pre-wave-4** and therefore stale for
+mammals. Re-run `speciesexport.mjs` before auditing them or before handing Nick new prints.
 
 ---
 
 ## WHAT TO SAY TO START THE NEXT SESSION
 
-> Continue the Celestial Frontier proportion arc. Read port/HANDOFF_NEXT_SESSION.md first.
-> Start with wave 4: the limb-to-body blend and the skin system.
+> Continue the Celestial Frontier proportion arc. Read port/HANDOFF_NEXT_SESSION.md first —
+> especially the part about being able to see the art, and the artlock safety net.
+> Start with wave 6: the head, and re-check Nick's anatomy audit against the current render.
