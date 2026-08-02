@@ -573,6 +573,23 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   muzzle leaves the skull as a plank. **A feature shared by every member of a catalogue is
   invisible to any per-asset check and is exactly what makes a catalogue look samey.**
 
+- ✔ **D-ART-107 — 100% EARTH COVERAGE, AND FOUR SCANNERS THAT COULD NOT SEE A KEY (wave 18).**
+  All 1,014 Earth organisms are routed. Getting the last 38 there broke FOUR tools in the same
+  way — each assumed one surface form for a species key:
+  · `coveragegap` stored CANON keys as `fauna|Whale` and never stripped the kingdom prefix, so
+    every CANON-routed species counted as unrouted. It also printed counts and no NAMES.
+  · `artclass` had the same prefix bug (fixed earlier), then turned out to match only
+    SINGLE-quoted keys — and four plants have an apostrophe in their name, so their rows must
+    be double-quoted. They were classed `verbatim-flora` and the lock correctly failed the
+    commit for undeclared drift.
+  · `overridecheck` treats every depth-1 string in a route table as a species key, and
+    parentheses are not brace depth — so an inline `tint(p, '#e0409a')` put a COLOUR through
+    as a key and it reported eight hex codes as "not in this kingdom".
+  **When a key can be written more than one way — prefixed, quoted either way, or embedded in
+  a value — every scanner that reads it must read all of them.** Three of the four were found
+  by USING the tools, not by reading them; the fourth was found by the art lock refusing a
+  commit. That is the guards working, and it is why they exist.
+
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

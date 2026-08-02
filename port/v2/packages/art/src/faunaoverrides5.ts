@@ -1322,3 +1322,384 @@ export function faunaMonotreme(c: Ctx, g: G, pIn: Pal, name = ''): void {
   c.globalAlpha = 1;
   eye(c, cx + bw * 0.56, cy - bh * 0.30, 3.6);
 }
+
+/** ★ WAVE 18 — THE LAST SEVEN FAUNA. Each is a body plan no shared system in
+    the catalogue can express, which is why all seven were still falling to the
+    verbatim engine after seventeen waves. Every value below is off that
+    species' own reference row. */
+
+/** a chameleon: a laterally flattened leaf on a branch, a helmet casque, cone
+    eye turrets, and a tail wound into a tight spiral */
+export function faunaChameleon(c: Ctx, g: G, p: Pal, name = ''): void {
+  const r = nrng(g, name, 0x0C1A);
+  const cx = S * 0.46, cy = S * 0.48;
+  const bw = S * 0.115, bh = S * 0.088;
+  shadow(c, cx, S * 0.78, S * 0.13, 0.30);
+  /* the branch it grips — a chameleon on nothing reads as a lizard */
+  c.strokeStyle = '#5a4632'; c.lineWidth = S * 0.020; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(S * 0.14, S * 0.70); c.quadraticCurveTo(S * 0.5, S * 0.66, S * 0.88, S * 0.72); c.stroke();
+
+  /* THE SPIRAL TAIL, wound tight — drawn first so the body overlaps its root */
+  const tcx = cx - bw * 1.28, tcy = cy + bh * 0.52;
+  c.strokeStyle = shade(p, 0.82); c.lineCap = 'round';
+  for (let i = 40; i >= 0; i--) {
+    const t = i / 40;
+    const a = -1.2 + t * Math.PI * 2.7;
+    const rad = bh * (0.62 - t * 0.50);
+    const x = tcx + Math.cos(a) * rad, y = tcy + Math.sin(a) * rad;
+    c.lineWidth = bh * (0.30 - t * 0.22);
+    if (i === 40) { c.beginPath(); c.moveTo(x, y); } else c.lineTo(x, y);
+  }
+  c.stroke();
+
+  /* the body: LATERALLY FLATTENED — deep and thin, like a leaf seen edge-on */
+  const bg = c.createLinearGradient(0, cy - bh, 0, cy + bh);
+  bg.addColorStop(0, p.lit); bg.addColorStop(0.5, p.base); bg.addColorStop(1, shade(p, 0.46));
+  c.fillStyle = bg;
+  c.beginPath();
+  c.moveTo(cx - bw, cy + bh * 0.10);
+  c.quadraticCurveTo(cx - bw * 0.4, cy - bh * 1.02, cx + bw * 0.62, cy - bh * 0.58);
+  c.quadraticCurveTo(cx + bw * 1.02, cy - bh * 0.30, cx + bw * 0.96, cy + bh * 0.10);
+  c.quadraticCurveTo(cx + bw * 0.2, cy + bh * 1.00, cx - bw, cy + bh * 0.10);
+  c.closePath(); c.fill();
+  /* the dorsal crest of small scales along the top edge */
+  c.fillStyle = shade(p, 1.15);
+  for (let i = 0; i < 16; i++) {
+    const t = i / 15;
+    const x = cx - bw * 0.9 + t * bw * 1.6;
+    const y = cy - bh * (0.62 + 0.34 * Math.sin(t * Math.PI));
+    c.beginPath(); c.moveTo(x - 2.5, y + 3); c.lineTo(x, y - bh * 0.14); c.lineTo(x + 2.5, y + 3); c.closePath(); c.fill();
+  }
+  /* the mottled skin, in patches that follow the flank */
+  for (let i = 0; i < 34; i++) {
+    const px = cx - bw + r() * bw * 1.9, py = cy - bh * 0.8 + r() * bh * 1.6;
+    c.fillStyle = `rgba(${Math.min(255, p.cr * (0.6 + r() * 0.9)) | 0},${Math.min(255, p.cg * (0.6 + r() * 0.9)) | 0},${Math.min(255, p.cb * (0.5 + r() * 0.8)) | 0},${0.20 + r() * 0.26})`;
+    c.beginPath(); c.ellipse(px, py, bw * (0.06 + r() * 0.10), bh * (0.05 + r() * 0.09), r() * 3, 0, TAU); c.fill();
+  }
+  /* the zygodactyl feet — two toes opposing two, gripping the branch */
+  c.strokeStyle = shade(p, 0.62); c.lineWidth = bh * 0.13; c.lineCap = 'round';
+  for (const d of [-0.42, 0.42]) {
+    const fx = cx + bw * d;
+    c.beginPath(); c.moveTo(fx, cy + bh * 0.55); c.lineTo(fx + bw * 0.10, S * 0.70 - bh * 0.10); c.stroke();
+    for (const s2 of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(fx + bw * 0.10, S * 0.70 - bh * 0.10);
+      c.lineTo(fx + bw * 0.10 + s2 * bw * 0.13, S * 0.70 + bh * 0.10); c.stroke();
+    }
+  }
+  /* the head: a HELMET CASQUE rising off the back of the skull */
+  const hx = cx + bw * 0.94, hy = cy - bh * 0.30, hr = bh * 0.48;
+  c.fillStyle = bg;
+  c.beginPath(); c.ellipse(hx, hy, hr * 1.25, hr * 0.92, -0.12, 0, TAU); c.fill();
+  c.fillStyle = shade(p, 1.05);
+  c.beginPath();
+  c.moveTo(hx - hr * 1.10, hy - hr * 0.20);
+  c.quadraticCurveTo(hx - hr * 0.55, hy - hr * 2.10, hx + hr * 0.45, hy - hr * 0.72);
+  c.closePath(); c.fill();
+  /* THE CONE EYE TURRET — a whole cone of skin with a pinhole pupil */
+  const ex = hx + hr * 0.18, ey = hy - hr * 0.14;
+  c.fillStyle = shade(p, 0.92);
+  c.beginPath(); c.ellipse(ex, ey, hr * 0.52, hr * 0.50, 0, 0, TAU); c.fill();
+  c.strokeStyle = shade(p, 0.55); c.lineWidth = 1.2;
+  for (let i = 0; i < 7; i++) {
+    const a = (i / 7) * TAU;
+    c.beginPath(); c.moveTo(ex + Math.cos(a) * hr * 0.20, ey + Math.sin(a) * hr * 0.20);
+    c.lineTo(ex + Math.cos(a) * hr * 0.50, ey + Math.sin(a) * hr * 0.48); c.stroke();
+  }
+  c.fillStyle = '#c8a63a';
+  c.beginPath(); c.arc(ex + hr * 0.10, ey, hr * 0.17, 0, TAU); c.fill();
+  c.fillStyle = '#100e0c';
+  c.beginPath(); c.arc(ex + hr * 0.12, ey, hr * 0.07, 0, TAU); c.fill();
+  /* the mouth line running back under the turret */
+  c.strokeStyle = 'rgba(20,16,12,0.42)'; c.lineWidth = 1.6;
+  c.beginPath(); c.moveTo(hx - hr * 0.6, hy + hr * 0.42);
+  c.quadraticCurveTo(hx + hr * 0.6, hy + hr * 0.56, hx + hr * 1.20, hy + hr * 0.24); c.stroke();
+}
+
+/** a frilled lizard: the frill IS the animal, fanned out behind a gaping mouth */
+export function faunaFrilled(c: Ctx, g: G, p: Pal, name = ''): void {
+  const r = nrng(g, name, 0x0F71);
+  const gy = S * 0.74;
+  const bw = S * 0.088, bh = S * 0.042;
+  const cx = S * 0.42, cy = gy - bh * 1.6;
+  shadow(c, cx + S * 0.04, gy + 4, S * 0.16, 0.34);
+  /* the whip tail, over half the total length */
+  c.strokeStyle = shade(p, 0.78); c.lineCap = 'round';
+  for (let i = 0; i < 26; i++) {
+    const t = i / 25;
+    const x = cx - bw * 0.9 - t * S * 0.30;
+    const y = cy + bh * 0.4 + Math.sin(t * 3.4) * bh * 1.5;
+    c.lineWidth = bh * (0.62 - t * 0.56);
+    if (!i) { c.beginPath(); c.moveTo(x, y); } else c.lineTo(x, y);
+  }
+  c.stroke();
+  /* the sprawling limbs */
+  c.strokeStyle = shade(p, 0.66); c.lineWidth = bh * 0.42;
+  for (const [lx, back] of [[-0.5, true], [0.5, false]] as Array<[number, boolean]>) {
+    for (const s2 of [-1, 1] as const) {
+      c.beginPath();
+      c.moveTo(cx + bw * lx, cy + bh * 0.5);
+      c.quadraticCurveTo(cx + bw * lx + s2 * bw * (back ? 0.9 : 0.8), cy + bh * 1.6,
+        cx + bw * lx + s2 * bw * (back ? 1.1 : 1.0) + (back ? -bw * 0.3 : bw * 0.3), gy);
+      c.stroke();
+    }
+  }
+  /* THE FRILL — a huge circular sheet of skin, fanned, with radiating ribs.
+     It is drawn BEFORE the head so the skull sits in the middle of it. */
+  /* the frill varies per species: the seed drives its real radius, not noise */
+  const fx = cx + bw * 1.30, fy = cy - bh * 0.30, fr = S * 0.115 * (0.90 + r() * 0.20);
+  const fg = c.createRadialGradient(fx, fy, fr * 0.15, fx, fy, fr);
+  fg.addColorStop(0, `rgb(${Math.min(255, p.cr * 1.25) | 0},${(p.cg * 0.78) | 0},${(p.cb * 0.56) | 0})`);
+  fg.addColorStop(0.6, `rgb(${Math.min(255, p.cr * 1.05) | 0},${(p.cg * 0.62) | 0},${(p.cb * 0.42) | 0})`);
+  fg.addColorStop(1, shade(p, 0.52));
+  c.fillStyle = fg;
+  c.beginPath();
+  for (let i = 0; i <= 26; i++) {
+    const a = -Math.PI * 0.86 + (i / 26) * Math.PI * 1.72;
+    const wob = 1 + Math.sin(i * 1.7) * 0.055;
+    c.lineTo(fx + Math.cos(a) * fr * wob, fy + Math.sin(a) * fr * 1.06 * wob);
+  }
+  c.closePath(); c.fill();
+  c.strokeStyle = `rgba(${(p.cr * 0.42) | 0},${(p.cg * 0.34) | 0},${(p.cb * 0.28) | 0},0.55)`;
+  c.lineWidth = 1.4;
+  for (let i = 0; i <= 11; i++) {
+    const a = -Math.PI * 0.82 + (i / 11) * Math.PI * 1.64;
+    c.beginPath(); c.moveTo(fx, fy);
+    c.lineTo(fx + Math.cos(a) * fr * 0.96, fy + Math.sin(a) * fr * 1.02); c.stroke();
+  }
+  /* the body */
+  c.fillStyle = volume(c, p, cx, cy, bw);
+  c.beginPath(); c.ellipse(cx, cy, bw, bh, -0.06, 0, TAU); c.fill();
+  /* the head with the GAPING PINK MOUTH at the frill's centre */
+  c.fillStyle = shade(p, 1.0);
+  c.beginPath(); c.ellipse(fx + fr * 0.10, fy, bh * 1.25, bh * 0.92, 0, 0, TAU); c.fill();
+  c.fillStyle = '#c4525c';
+  c.beginPath();
+  c.moveTo(fx - bh * 0.5, fy + bh * 0.10);
+  c.quadraticCurveTo(fx + bh * 1.5, fy - bh * 0.55, fx + bh * 1.9, fy + bh * 0.10);
+  c.quadraticCurveTo(fx + bh * 1.4, fy + bh * 0.95, fx - bh * 0.5, fy + bh * 0.10);
+  c.closePath(); c.fill();
+  c.fillStyle = '#f2ece0';
+  for (let i = 0; i < 6; i++) {
+    const t = i / 5;
+    c.beginPath(); c.arc(fx + bh * (0.1 + t * 1.5), fy - bh * (0.26 - t * 0.16), 1.5, 0, TAU); c.fill();
+  }
+  eye(c, fx + fr * 0.02, fy - bh * 0.42, Math.max(3, bh * 0.34));
+}
+
+/** a seahorse: a horse head at RIGHT ANGLES to a ringed upright body, ending
+    in a curled prehensile tail with no fin at all */
+export function faunaSeahorse(c: Ctx, g: G, p: Pal, name = ''): void {
+  const r = nrng(g, name, 0x5EA4);
+  const cx = S * 0.50, top = S * 0.20;
+  const H = S * 0.34 * (0.92 + r() * 0.16), w = S * 0.048 * (0.92 + r() * 0.16);
+  shadow(c, cx, S * 0.80, S * 0.09, 0.26);
+  /* the body: an S-curve running down into a tight coil */
+  const spine = pathThrough([
+    [cx + w * 0.3, top + H * 0.10],
+    [cx - w * 0.5, top + H * 0.42],
+    [cx + w * 0.4, top + H * 0.74],
+    [cx + w * 1.5, top + H * 1.02],
+    [cx + w * 1.1, top + H * 1.30],
+    [cx + w * 0.2, top + H * 1.16],
+  ]);
+  const tube = new Tube({ P: spine, R: (t) => w * (1.02 - t * 0.86) });
+  c.fillStyle = p.base;
+  c.beginPath(); tube.trace(c, 44); c.fill();
+  c.save(); c.beginPath(); tube.trace(c, 44); c.clip();
+  countershade(c, tube, p, 0.95);
+  /* THE BONY RINGS — a seahorse is armour plating, not skin */
+  c.strokeStyle = `rgba(${(p.cr * 0.42) | 0},${(p.cg * 0.44) | 0},${(p.cb * 0.36) | 0},0.62)`;
+  c.lineWidth = 1.6;
+  for (let i = 1; i < 20; i++) {
+    const u = i / 20, f = tube.frame(u);
+    c.beginPath();
+    c.moveTo(f.x + f.nx * f.r * 1.1, f.y + f.ny * f.r * 1.1);
+    c.lineTo(f.x - f.nx * f.r * 1.1, f.y - f.ny * f.r * 1.1);
+    c.stroke();
+  }
+  c.restore();
+  /* the tiny dorsal fin, the only fin it has */
+  c.fillStyle = `rgba(${Math.min(255, p.cr * 1.2) | 0},${Math.min(255, p.cg * 1.2) | 0},${Math.min(255, p.cb * 1.1) | 0},0.55)`;
+  const df = tube.frame(0.44);
+  c.beginPath();
+  c.ellipse(df.x - df.nx * w * 1.3, df.y - df.ny * w * 1.3, w * 0.9, w * 0.42, Math.atan2(df.ty, df.tx), 0, TAU);
+  c.fill();
+  /* THE HEAD, held at a RIGHT ANGLE to the body — the whole recognition */
+  const hx = cx + w * 0.5, hy = top + H * 0.04;
+  c.fillStyle = p.base;
+  c.beginPath(); c.ellipse(hx, hy, w * 0.86, w * 0.70, -0.3, 0, TAU); c.fill();
+  /* the long tubular snout, pointing forward and down */
+  c.strokeStyle = p.base; c.lineCap = 'round'; c.lineWidth = w * 0.44;
+  c.beginPath(); c.moveTo(hx + w * 0.5, hy + w * 0.16);
+  c.lineTo(hx + w * 1.75, hy + w * 0.62); c.stroke();
+  /* the coronet on the crown */
+  c.fillStyle = shade(p, 1.2);
+  for (let i = -1; i <= 1; i++) {
+    c.beginPath();
+    c.moveTo(hx - w * 0.2 + i * w * 0.22, hy - w * 0.6);
+    c.lineTo(hx - w * 0.1 + i * w * 0.24, hy - w * 1.15);
+    c.lineTo(hx + i * w * 0.26, hy - w * 0.58);
+    c.closePath(); c.fill();
+  }
+  eye(c, hx + w * 0.16, hy - w * 0.10, Math.max(3, w * 0.24));
+}
+
+/** a caecilian: a limbless ringed worm with a bullet head and no eyes */
+export function faunaCaecilian(c: Ctx, g: G, p: Pal, name = ''): void {
+  const r = nrng(g, name, 0xCEC1);
+  const cy = S * 0.50;
+  shadow(c, S * 0.5, S * 0.70, S * 0.26, 0.30);
+  /* how many body waves it lies in — a caecilian is never twice the same */
+  const waves = 2.2 + r() * 1.0;
+  const spine = (u: number): [number, number] =>
+    [S * 0.10 + u * S * 0.80, cy + Math.sin(u * Math.PI * waves) * S * 0.075];
+  const tube = new Tube({ P: spine, R: (u) => S * 0.026 * (0.55 + Math.sin(Math.min(1, 0.08 + u) * Math.PI) * 0.72) });
+  c.fillStyle = p.base;
+  c.beginPath(); tube.trace(c, 60); c.fill();
+  c.save(); c.beginPath(); tube.trace(c, 60); c.clip();
+  countershade(c, tube, p, 1);
+  /* THE ANNULAR GROOVES — the rings that make it a caecilian and not an eel */
+  c.strokeStyle = `rgba(${(p.cr * 0.38) | 0},${(p.cg * 0.38) | 0},${(p.cb * 0.40) | 0},0.55)`;
+  c.lineWidth = 1.5;
+  for (let i = 1; i < 46; i++) {
+    const u = i / 46, f = tube.frame(u);
+    c.beginPath();
+    c.moveTo(f.x + f.nx * f.r * 1.15, f.y + f.ny * f.r * 1.15);
+    c.lineTo(f.x - f.nx * f.r * 1.15, f.y - f.ny * f.r * 1.15);
+    c.stroke();
+  }
+  c.restore();
+  /* the blunt bullet head — NO eyes, one tiny sensory tentacle */
+  const h = tube.frame(0.985);
+  c.fillStyle = shade(p, 0.92);
+  c.beginPath(); c.ellipse(h.x + h.r * 0.5, h.y, h.r * 1.25, h.r * 1.05, 0, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(24,18,18,0.5)';
+  c.beginPath(); c.ellipse(h.x + h.r * 1.2, h.y + h.r * 0.22, h.r * 0.26, h.r * 0.16, 0, 0, TAU); c.fill();
+  c.fillStyle = shade(p, 1.25);
+  c.beginPath(); c.arc(h.x + h.r * 0.9, h.y - h.r * 0.34, h.r * 0.17, 0, TAU); c.fill();
+}
+
+/** a poison dart frog: a tiny smooth body in vivid warning colour with bold
+    contrasting blotches — the colour IS the animal, so it is forced */
+export function faunaDartFrog(c: Ctx, g: G, pIn: Pal, name = ''): void {
+  const r = nrng(g, name, 0xDA27);
+  /* aposematic colour: the point of the animal is that it SHOUTS */
+  const hues: Array<[number, number, number]> = [[218, 44, 40], [232, 176, 26], [26, 132, 214], [40, 190, 96]];
+  const hv = hues[Math.floor(r() * hues.length)]!;
+  const p = anchor(pIn, hv[0], hv[1], hv[2], 0.88);
+  const cx = S * 0.50, gy = S * 0.70;
+  const bw = S * 0.115, bh = S * 0.082;
+  const cy = gy - bh * 0.86;
+  shadow(c, cx, gy + 4, bw * 1.0, 0.34);
+  /* the folded hind legs, drawn wide */
+  c.fillStyle = shade(p, 0.78);
+  for (const s of [-1, 1] as const) {
+    c.beginPath();
+    c.ellipse(cx + s * bw * 0.72, cy + bh * 0.52, bw * 0.42, bh * 0.34, s * 0.5, 0, TAU);
+    c.fill();
+    for (let i = -1; i <= 1; i++) {
+      c.beginPath();
+      c.ellipse(cx + s * bw * (1.10 + Math.abs(i) * 0.10), gy - bh * 0.06 + i * bh * 0.14, bw * 0.16, bh * 0.07, 0, 0, TAU);
+      c.fill();
+    }
+  }
+  const bg = c.createRadialGradient(cx - bw * 0.3, cy - bh * 0.5, 2, cx, cy, bw * 1.3);
+  bg.addColorStop(0, p.lit); bg.addColorStop(0.6, p.base); bg.addColorStop(1, shade(p, 0.46));
+  c.fillStyle = bg;
+  c.beginPath(); c.ellipse(cx, cy, bw, bh, 0, 0, TAU); c.fill();
+  /* the bold contrasting blotches its row names */
+  for (let i = 0; i < 9; i++) {
+    const a = r() * TAU, d = Math.sqrt(r()) * 0.82;
+    c.fillStyle = `rgba(14,12,16,${0.62 + r() * 0.28})`;
+    c.beginPath();
+    c.ellipse(cx + Math.cos(a) * bw * d, cy + Math.sin(a) * bh * d,
+      bw * (0.10 + r() * 0.13), bh * (0.10 + r() * 0.14), r() * 3, 0, TAU);
+    c.fill();
+  }
+  c.strokeStyle = 'rgba(255,255,255,0.30)'; c.lineWidth = 2;
+  c.beginPath(); c.ellipse(cx, cy, bw * 0.96, bh * 0.94, 0, -2.7, -0.2); c.stroke();
+  /* the rounded blunt snout and the jet-black eyes */
+  for (const s of [-1, 1] as const) {
+    const ex = cx + bw * 0.52, ey = cy - bh * (0.52 + (s < 0 ? 0.08 : 0));
+    c.fillStyle = s < 0 ? shade(p, 0.7) : p.base;
+    c.beginPath(); c.arc(ex - (s < 0 ? bw * 0.22 : 0), ey, bh * 0.30, 0, TAU); c.fill();
+    c.fillStyle = '#0b0a0c';
+    c.beginPath(); c.arc(ex - (s < 0 ? bw * 0.22 : 0), ey, bh * 0.21, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(255,255,255,0.8)';
+    c.beginPath(); c.arc(ex - (s < 0 ? bw * 0.22 : 0) - bh * 0.06, ey - bh * 0.08, bh * 0.06, 0, TAU); c.fill();
+  }
+  c.strokeStyle = 'rgba(12,10,12,0.42)'; c.lineWidth = 2;
+  c.beginPath(); c.moveTo(cx + bw * 0.20, cy + bh * 0.28);
+  c.quadraticCurveTo(cx + bw * 0.74, cy + bh * 0.30, cx + bw * 0.95, cy + bh * 0.02); c.stroke();
+}
+
+/** the two deep-sea cephalopods: a WEBBED CLOAK joining all eight arms, and
+    ear-like fins flapping off the top of the mantle. Nothing else in the
+    catalogue has a cape. */
+export function faunaCloakSquid(c: Ctx, g: G, pIn: Pal, name = ''): void {
+  const r = nrng(g, name, 0x7C10);
+  const vamp = /vampire/i.test(name);
+  const p = vamp ? anchor(pIn, 128, 34, 48, 0.72) : anchor(pIn, 152, 122, 142, 0.62);
+  const cx = S * 0.50, my = S * 0.34;
+  const mw = S * 0.085, mh = S * 0.115;
+  shadow(c, cx, S * 0.80, S * 0.14, 0.24);
+  /* the EAR FINS on top of the mantle */
+  c.fillStyle = `rgba(${Math.min(255, p.cr * 1.1) | 0},${(p.cg * 0.8) | 0},${(p.cb * 0.9) | 0},0.85)`;
+  for (const s of [-1, 1] as const) {
+    c.save(); c.translate(cx + s * mw * 0.86, my - mh * 0.52); c.rotate(s * 0.55);
+    c.beginPath(); c.ellipse(0, 0, mw * 0.66, mh * 0.30, 0, 0, TAU); c.fill();
+    c.restore();
+  }
+  /* the mantle */
+  const mg = c.createLinearGradient(cx - mw, 0, cx + mw, 0);
+  mg.addColorStop(0, p.lit); mg.addColorStop(0.45, p.base); mg.addColorStop(1, shade(p, 0.44));
+  c.fillStyle = mg;
+  c.beginPath(); c.ellipse(cx, my, mw, mh, 0, 0, TAU); c.fill();
+  /* THE CLOAK — one continuous web joining all eight arms into a cape, which
+     is the single thing that makes this animal not an octopus */
+  const armTip: Array<[number, number]> = [];
+  for (let i = 0; i < 8; i++) {
+    const t = i / 7;
+    const a = Math.PI * (0.16 + t * 0.68);
+    const L = S * (0.20 + Math.sin(t * Math.PI) * 0.07);
+    armTip.push([cx + Math.cos(a) * L * 1.05, my + mh * 0.55 + Math.sin(a) * L]);
+  }
+  const wg = c.createLinearGradient(0, my + mh * 0.4, 0, S * 0.76);
+  wg.addColorStop(0, `rgba(${(p.cr * 0.9) | 0},${(p.cg * 0.55) | 0},${(p.cb * 0.66) | 0},0.90)`);
+  wg.addColorStop(1, `rgba(${(p.cr * 0.42) | 0},${(p.cg * 0.24) | 0},${(p.cb * 0.32) | 0},0.72)`);
+  c.fillStyle = wg;
+  c.beginPath();
+  c.moveTo(cx - mw * 0.9, my + mh * 0.55);
+  for (let i = 0; i < armTip.length; i++) {
+    const [ax, ay] = armTip[i]!;
+    const prev: [number, number] = i ? armTip[i - 1]! : [cx - mw * 0.9, my + mh * 0.55];
+    c.quadraticCurveTo((prev[0] + ax) / 2, (prev[1] + ay) / 2 + S * 0.045, ax, ay);
+  }
+  c.lineTo(cx + mw * 0.9, my + mh * 0.55);
+  c.closePath(); c.fill();
+  /* the arms themselves, as ribs inside the cloak */
+  c.strokeStyle = `rgba(${(p.cr * 0.5) | 0},${(p.cg * 0.28) | 0},${(p.cb * 0.36) | 0},0.85)`;
+  c.lineCap = 'round';
+  for (const [ax, ay] of armTip) {
+    c.lineWidth = mw * 0.16;
+    c.beginPath(); c.moveTo(cx, my + mh * 0.5);
+    c.quadraticCurveTo((cx + ax) / 2, (my + ay) / 2 + S * 0.02, ax, ay);
+    c.stroke();
+  }
+  /* the HUGE eye — a vampire squid has the largest eye for its size of any animal */
+  const er = mw * (vamp ? 0.52 : 0.40);
+  c.fillStyle = vamp ? '#e04a3c' : '#d8d2c4';
+  c.beginPath(); c.arc(cx + mw * 0.34, my + mh * 0.10, er, 0, TAU); c.fill();
+  c.fillStyle = '#100c10';
+  c.beginPath(); c.arc(cx + mw * 0.34, my + mh * 0.10, er * 0.52, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(255,255,255,0.8)';
+  c.beginPath(); c.arc(cx + mw * 0.22, my + mh * 0.02, er * 0.20, 0, TAU); c.fill();
+  if (vamp) {
+    /* the photophore sparks a vampire squid fires instead of ink */
+    for (let i = 0; i < 16; i++) {
+      const a = r() * TAU, d = S * (0.12 + r() * 0.14);
+      c.fillStyle = `rgba(150,220,255,${0.20 + r() * 0.4})`;
+      c.beginPath(); c.arc(cx + Math.cos(a) * d, my + mh * 0.6 + Math.sin(a) * d * 0.6, 1 + r() * 1.6, 0, TAU); c.fill();
+    }
+  }
+}

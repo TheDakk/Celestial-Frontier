@@ -62,6 +62,12 @@ function ground(c: Ctx, cx: number, cy: number, rx: number): void {
   c.beginPath(); c.ellipse(cx, cy, rx, S * 0.024, 0, 0, TAU); c.fill();
 }
 
+function nrng(g: G, name: string, salt: number): () => number {
+  let h = salt >>> 0;
+  for (let i = 0; i < name.length; i++) h = Math.imul(h ^ name.charCodeAt(i), 0x85EB) >>> 0;
+  return mulberry32((((g.seed as number) ^ h) >>> 0));
+}
+
 export interface PlantSpec {
   habit: 'tree' | 'shrub' | 'herb' | 'grass' | 'vine' | 'succulent' | 'fern' | 'aquatic' | 'rosette' | 'palm' | 'cane';
   leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad';
@@ -547,5 +553,150 @@ export function plantBody(c: Ctx, g: G, p: Pal, spec: PlantSpec, name = ''): voi
     }
     if (spec.flower && spec.flower !== 'none') drawFlower(c, p, cx + lean * S * 0.06, base - H * 1.02, S * 0.036, spec.flower, spec.fhue, r);
     if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, cx + lean * S * 0.06, base - H * 0.92, S * 0.032, spec.fruit, spec.fhue, r);
+  }
+}
+
+
+/** ★ WAVE 18 — THE CARNIVORES. Three plants whose whole identity is a trap.
+    None is expressible as habit + leaf + flower at any setting, which is why
+    all three have rendered as generic rosettes for as long as the catalogue
+    has existed. */
+export function floraFlytrap(c: Ctx, g: G, p: Pal, name = ''): void {
+  const r = nrng(g, name, 0x71A9);
+  const cx = S * 0.50, base = S * 0.76;
+  ground(c, cx, base + 4, S * 0.16);
+  for (let i = 0; i < 5; i++) {
+    const a = -Math.PI * (0.20 + (i / 4) * 0.60) + (r() - 0.5) * 0.14;
+    const L = S * (0.15 + r() * 0.07);
+    const ex = cx + Math.cos(a) * L, ey = base + Math.sin(a) * L;
+    c.strokeStyle = leafGrad(c, p, cx, base, L);
+    c.lineWidth = S * 0.016; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx, base);
+    c.quadraticCurveTo((cx + ex) / 2, (base + ey) / 2 + S * 0.02, ex, ey); c.stroke();
+    /* THE TRAP: two hinged lobes held open, red glandular inside, with
+       interlocking spiky teeth along the rim — the reason anyone knows it */
+    const tw = S * 0.052, open = 0.44 + r() * 0.26;
+    c.save(); c.translate(ex, ey); c.rotate(a + Math.PI / 2);
+    for (const s of [-1, 1] as const) {
+      c.save(); c.rotate(s * open);
+      const lg = c.createLinearGradient(0, 0, 0, -tw * 1.5);
+      lg.addColorStop(0, '#b8332e');
+      lg.addColorStop(0.55, '#8e2a30');
+      lg.addColorStop(1, 'rgb(' + ((p.cr * 0.72) | 0) + ',' + ((p.cg * 0.92) | 0) + ',' + ((p.cb * 0.55) | 0) + ')');
+      c.fillStyle = lg;
+      c.beginPath(); c.ellipse(0, -tw * 0.72, tw * 0.66, tw * 0.86, 0, 0, TAU); c.fill();
+      c.strokeStyle = '#d8e0b4'; c.lineWidth = 1.6; c.lineCap = 'round';
+      for (let k = 0; k < 8; k++) {
+        const t = k / 7, ta = Math.PI * (0.10 + t * 0.80);
+        const bx = Math.cos(ta) * tw * 0.62, by = -tw * 0.72 - Math.sin(ta) * tw * 0.82;
+        c.beginPath(); c.moveTo(bx, by);
+        c.lineTo(bx + Math.cos(ta) * tw * 0.30, by - Math.sin(ta) * tw * 0.34);
+        c.stroke();
+      }
+      c.restore();
+    }
+    c.restore();
+  }
+}
+
+export function floraPitcher(c: Ctx, g: G, p: Pal, name = ''): void {
+  const r = nrng(g, name, 0x9177);
+  const cx = S * 0.50, base = S * 0.78;
+  const rgb = (a: number, b: number, d: number): string => 'rgb(' + (a | 0) + ',' + (b | 0) + ',' + (d | 0) + ')';
+  ground(c, cx, base + 4, S * 0.17);
+  for (let i = 0; i < 4; i++) {
+    const t = i / 3;
+    const px = cx + (t - 0.5) * S * 0.20 + (r() - 0.5) * S * 0.02;
+    const H = S * (0.30 + r() * 0.14) * (0.72 + Math.sin(t * Math.PI) * 0.5);
+    const w = S * (0.030 + r() * 0.012);
+    /* the TRUMPET: narrow at the foot, FLARING at the mouth */
+    const pg = c.createLinearGradient(px - w * 1.6, 0, px + w * 1.6, 0);
+    pg.addColorStop(0, rgb(p.cr * 0.62, p.cg * 0.86, p.cb * 0.48));
+    pg.addColorStop(0.45, rgb(Math.min(255, p.cr * 1.05), Math.min(255, p.cg * 1.02), p.cb * 0.60));
+    pg.addColorStop(1, rgb(p.cr * 0.40, p.cg * 0.52, p.cb * 0.30));
+    c.fillStyle = pg;
+    c.beginPath();
+    c.moveTo(px - w * 0.52, base);
+    c.quadraticCurveTo(px - w * 0.90, base - H * 0.55, px - w * 1.55, base - H);
+    c.lineTo(px + w * 1.55, base - H);
+    c.quadraticCurveTo(px + w * 0.90, base - H * 0.55, px + w * 0.52, base);
+    c.closePath(); c.fill();
+    /* the red veining that walks an insect down the tube */
+    c.strokeStyle = 'rgba(150,40,44,0.42)'; c.lineWidth = 1.2;
+    for (let k = -2; k <= 2; k++) {
+      c.beginPath();
+      c.moveTo(px + k * w * 0.30, base - H * 0.08);
+      c.lineTo(px + k * w * 0.66, base - H * 0.94);
+      c.stroke();
+    }
+    c.fillStyle = '#3c2a22';
+    c.beginPath(); c.ellipse(px, base - H, w * 1.55, w * 0.50, 0, 0, TAU); c.fill();
+    c.strokeStyle = '#c8404a'; c.lineWidth = 2.4;
+    c.beginPath(); c.ellipse(px, base - H, w * 1.55, w * 0.50, 0, 0, TAU); c.stroke();
+    /* THE HOOD arching over the mouth — the feature that names the plant */
+    c.fillStyle = rgb(Math.min(255, p.cr * 1.12), Math.min(255, p.cg * 1.02), p.cb * 0.56);
+    c.beginPath();
+    c.moveTo(px - w * 1.45, base - H - w * 0.10);
+    c.quadraticCurveTo(px - w * 0.5, base - H - w * 2.30, px + w * 1.30, base - H - w * 0.80);
+    c.quadraticCurveTo(px + w * 0.4, base - H - w * 0.90, px - w * 1.45, base - H - w * 0.10);
+    c.closePath(); c.fill();
+  }
+}
+
+export function floraSundew(c: Ctx, g: G, p: Pal, name = ''): void {
+  const r = nrng(g, name, 0x5D14);
+  const cx = S * 0.50, cy = S * 0.62;
+  const rgb = (a: number, b: number, d: number): string => 'rgb(' + (a | 0) + ',' + (b | 0) + ',' + (d | 0) + ')';
+  ground(c, cx, cy + S * 0.06, S * 0.19);
+  /* a FLAT GROUND-LEVEL ROSETTE of paddle leaves */
+  for (let i = 0; i < 9; i++) {
+    const a = (i / 9) * TAU + r() * 0.2;
+    const L = S * (0.11 + r() * 0.05);
+    const ex = cx + Math.cos(a) * L, ey = cy + Math.sin(a) * L * 0.52;
+    c.strokeStyle = leafGrad(c, p, cx, cy, L);
+    c.lineWidth = S * 0.011; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx, cy); c.lineTo(ex, ey); c.stroke();
+    c.fillStyle = rgb(Math.min(255, p.cr * 1.05), p.cg * 0.80, p.cb * 0.62);
+    c.beginPath(); c.ellipse(ex, ey, S * 0.026, S * 0.019, a, 0, TAU); c.fill();
+    /* THE TENTACLE HAIRS, each ending in a glistening dew droplet. Without the
+       dew this is a small red rosette and nothing more — the drop IS the plant. */
+    for (let k = 0; k < 11; k++) {
+      const ta = a + (k / 10 - 0.5) * 2.4;
+      const hl = S * (0.012 + r() * 0.014);
+      const hx = ex + Math.cos(ta) * S * 0.020, hy = ey + Math.sin(ta) * S * 0.014;
+      const tx = hx + Math.cos(ta) * hl, ty = hy + Math.sin(ta) * hl - hl * 0.3;
+      c.strokeStyle = '#c0392f'; c.lineWidth = 1.2;
+      c.beginPath(); c.moveTo(hx, hy); c.lineTo(tx, ty); c.stroke();
+      const dg = c.createRadialGradient(tx - 1, ty - 1, 0.4, tx, ty, 2.8);
+      dg.addColorStop(0, 'rgba(255,255,255,0.95)');
+      dg.addColorStop(0.6, 'rgba(220,240,255,0.70)');
+      dg.addColorStop(1, 'rgba(190,220,255,0.10)');
+      c.fillStyle = dg;
+      c.beginPath(); c.arc(tx, ty, 2.8, 0, TAU); c.fill();
+    }
+  }
+}
+
+/** a formless floating blanket — no stem, no holdfast, hair-fine filaments */
+export function floraFloatingAlgae(c: Ctx, g: G, p: Pal, name = ''): void {
+  const r = nrng(g, name, 0xA16E);
+  const cy = S * 0.50;
+  const wg = c.createLinearGradient(0, cy - S * 0.06, 0, cy + S * 0.16);
+  wg.addColorStop(0, 'rgba(40,70,86,0)');
+  wg.addColorStop(0.4, 'rgba(38,66,84,0.45)');
+  wg.addColorStop(1, 'rgba(24,44,58,0.20)');
+  c.fillStyle = wg;
+  c.fillRect(0, cy - S * 0.06, S, S * 0.22);
+  for (let i = 0; i < 220; i++) {
+    const x0 = S * (0.10 + r() * 0.80), y0 = cy + (r() - 0.5) * S * 0.10;
+    const L = S * (0.03 + r() * 0.09), a = (r() - 0.5) * 1.5;
+    const m = 0.6 + r() * 0.7;
+    c.strokeStyle = 'rgba(' + (Math.min(255, p.cr * m) | 0) + ',' + (Math.min(255, p.cg * m) | 0)
+      + ',' + (Math.min(255, p.cb * m * 0.8) | 0) + ',' + (0.30 + r() * 0.45).toFixed(2) + ')';
+    c.lineWidth = 0.9 + r() * 1.0; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(x0, y0);
+    c.quadraticCurveTo(x0 + Math.cos(a) * L * 0.6, y0 + Math.sin(a) * L * 0.6 - L * 0.2,
+      x0 + Math.cos(a) * L, y0 + Math.sin(a) * L);
+    c.stroke();
   }
 }
