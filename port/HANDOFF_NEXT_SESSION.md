@@ -121,10 +121,21 @@ Both agree on the same top defects, which is the strongest signal available here
 
 ## OPEN, IN PRIORITY ORDER
 
-1. **★ THE MAMMAL VISUAL AUDIT HAS NEVER RUN.** The 141 quadruped-routed species were excluded
-   from every audit this session because waves 4–6 were rewriting them. Re-export, then fan
-   agents over them exactly as `tools/auditcards.mjs` + the workflow did for the rest. **Also
-   still unchecked: the 55 quadruped rows of Nick's own fix queue.**
+⚠ **Read `reference/mammalaudit.json` and `reference/visualaudit.json` before starting.** Both
+were produced by agents that opened every portrait. They are harsh by instruction — "blocker"
+there means "fails a must-read feature", not "unshippable" — so **work the per-row text, never
+the severity counts.**
+
+
+1. **★ THE HEADS ARE STILL NOT UNIQUE — 20 of 141.** The mammal visual audit HAS now run
+   (`reference/mammalaudit.json`, all 141 judged against the post-wave-6 export) and it answers
+   Nick's complaint directly: **only 20 of 141 heads read as specific to their species.** Wave 6
+   made skulls differ BETWEEN families and that is visible; it did nothing WITHIN a family, and
+   the audit is blunt about why — *"same two-tone leaf ear pair, same big white-ringed cartoon
+   eye at the same position, same wedge muzzle, same dark nose dot, same single mouth line."*
+   **The ear and the eye are still one asset for every mammal alive.** That is wave 7: ears and
+   eyes per species, then muzzle/nose detail. Skull SHAPE is no longer the bottleneck.
+   Still unchecked: the 55 quadruped rows of Nick's own fix queue.
 2. **The 23 rows Nick's audit says are STILL NOT FIXED** (see `reference/nick-audit-recheck.json`):
    Sargassum · Acai · Shiitake · Yeast · Chanterelle · Death Cap · Destroying Angel · Jelly
    Fungus · Cave Cricket · Hammerhead Shark · Vampire Squid · Whale · Orca · Flying Squirrel ·
@@ -135,9 +146,15 @@ Both agree on the same top defects, which is the strongest signal available here
    what mammals just got**: a solid body, a skin, family plans, and a skull.
 4. **The Elephant is visibly broken** (a huge grey head disc over a small body). Its good spec
    is in git: `git show e66dca4:port/v2/packages/art/src/mammaloverrides.ts`. **Recover it.**
-5. **Known cosmetic debt from wave 6, recorded rather than chased:** the bear's head merges into
-   its shoulder mass; the camel's hump reads as a ball sitting on the back; a faint pale lens is
-   still visible over the shoulder/haunch bulge on pale-coated animals.
+5. **What the mammal audit says is wrong catalogue-wide** (`reference/mammalaudit.json`; 131
+   blocker / 9 major / 1 minor, on a deliberately harsh scale — read the rows, not the labels):
+   - **the tail base is a hard-edged RECTANGLE pasted on the rump** on many species. Real bug.
+   - **the shoulder and haunch read as grey airbrushed spheres bulging BELOW the belly line**,
+     which is my pale-lens artefact and it is worse than I judged it from a strip.
+   - shaggy coats are outward BRISTLES that add no volume — fleece should fatten the silhouette.
+   - the elephant's back is convex with the skull as its highest point (that is the Asian
+     profile; the reference note explicitly excludes it) and the trunk stops at knee height.
+   - the bear's head merges into its shoulder mass; the camel's hump reads as a ball.
 6. **59 Earth species still unrouted** (`node tools/coveragegap.mjs`) — crocodilians, bats,
    pinnipeds, Kangaroo/Wallaby, Platypus/Echidna, Chameleon, Chicken/Rooster, Seahorse, etc.
    Several of these are also on Nick's not-fixed list, so routing them fixes both.

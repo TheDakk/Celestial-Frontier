@@ -40,8 +40,8 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Goat': { legs: 0.1389, depth: 0.1269, len: 0.1561, neck: 0.08, muzzle: 0.34, ears: 'large', tail: 'stub', horn: 'curl', hue: '#b9ac95', family: 'bovid' },
   'Musk Ox': { legs: 0.1154, depth: 0.1753, len: 0.2157, neck: 0.06, back: 'humped', muzzle: 0.38, jaw: 'broad', ears: 'tiny', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#5a4634', family: 'bovid' },
   'Yak': { legs: 0.1203, depth: 0.1727, len: 0.2266, neck: 0.06, back: 'humped', muzzle: 0.40, jaw: 'broad', ears: 'small', tail: 'plume', horn: 'curl', coat: 'shaggy', hue: '#4c4038', family: 'bovid' },
-  'Cattle': { legs: 0.1489, depth: 0.1717, len: 0.2112, neck: 0.07, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'shorthorn', coat: 'patches', family: 'bovid' },
-  'Cow': { legs: 0.1462, depth: 0.1662, len: 0.2181, neck: 0.07, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', coat: 'patches', hue: '#e8e2d6', family: 'bovid' },
+  'Cattle': { legs: 0.1489, depth: 0.1717, len: 0.2112, neck: 0.07, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'shorthorn', coat: 'blotches', family: 'bovid' },
+  'Cow': { legs: 0.1462, depth: 0.1662, len: 0.2181, neck: 0.07, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', coat: 'blotches', hue: '#e8e2d6', family: 'bovid' },
   'Bull': { legs: 0.1398, depth: 0.1848, len: 0.2273, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'shorthorn', hue: '#4a3b31', family: 'bovid' },
   'Wildebeest': { legs: 0.1745, depth: 0.147, len: 0.1929, neck: 0.08, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'plume', horn: 'curl', coat: 'stripes', hue: '#5f5a55', family: 'bovid' },
   /* ── CANIDS: the long muzzle, the pricked ear, the brush tail ── */
@@ -50,7 +50,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Fox': { legs: 0.1193, depth: 0.1009, len: 0.1903, neck: 0.06, muzzle: 0.50, ears: 'large', tail: 'bushy', hue: '#c4642a', family: 'canid' },
   'Pampas Fox': { legs: 0.1276, depth: 0.1082, len: 0.1775, neck: 0.06, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#9c8f7c' },
   'Maned Wolf': { legs: 0.2583, depth: 0.1363, len: 0.1431, neck: 0.09, muzzle: 0.50, ears: 'huge', tail: 'bushy', hue: '#c2662a', family: 'canid' },
-  'African Wild Dog': { legs: 0.1565, depth: 0.1191, len: 0.1855, neck: 0.07, muzzle: 0.44, ears: 'huge', tail: 'plume', coat: 'patches', hue: '#9a6f3c', family: 'canid' },
+  'African Wild Dog': { legs: 0.1565, depth: 0.1191, len: 0.1855, neck: 0.07, muzzle: 0.44, ears: 'huge', tail: 'plume', coat: 'blotches', hue: '#9a6f3c', family: 'canid' },
   'Dingo': { legs: 0.1563, depth: 0.1321, len: 0.1733, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#c08b4c', family: 'canid' },
   'Dog': { legs: 0.1423, depth: 0.1325, len: 0.163, neck: 0.07, muzzle: 0.44, ears: 'large', tail: 'bushy', family: 'canid' },
   /* ── FELIDS: short muzzle, round ear, long tail; rosettes where they belong ── */
@@ -145,5 +145,5 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* "gliding membrane between the limbs · black eye-stripe · long plume tail" */
   'Sugar Glider': { legs: 0.0535, depth: 0.0779, len: 0.115, neck: 0.028, muzzle: 0.24, ears: 'large', tail: 'plume', face: 'mask', hue: '#9aa0a8' },
   /* "gliding membrane · huge forward eyes · mottled bark-coloured coat" */
-  'Colugo': { legs: 0.0578, depth: 0.0937, len: 0.1229, neck: 0.030, muzzle: 0.26, ears: 'small', tail: 'long', coat: 'patches', hue: '#8b7a63' },
+  'Colugo': { legs: 0.0578, depth: 0.0937, len: 0.1229, neck: 0.030, muzzle: 0.26, ears: 'small', tail: 'long', coat: 'blotches', hue: '#8b7a63' },
 };

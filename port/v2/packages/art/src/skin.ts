@@ -322,6 +322,41 @@ export function coatPatches(c: Ctx, t: Tube, r: RNG, p: Coatable, o: {
   }
 }
 
+/** BLOTCHES — an African wild dog, a Friesian cow, a colugo. Large irregular
+    patches of a second colour with RAGGED edges and no shared borders, which is
+    the opposite of the giraffe's tiling: a blotch is a spill, a patch is a tile.
+    Each one is a cluster of overlapping lobes so its outline never reads as a
+    stamp, and it wraps the body like every other mark here. */
+export function coatBlotches(c: Ctx, t: Tube, r: RNG, p: Coatable, o: {
+  count?: number; rgb?: [number, number, number]; size?: number;
+} = {}): void {
+  const count = o.count ?? 22, dark = o.rgb ?? [46, 30, 16], size = o.size ?? 1;
+  for (let i = 0; i < count; i++) {
+    const u = 0.03 + r() * 0.93, phi = -1.15 + r() * 2.7;
+    if (t.facing(u, phi) < 0.05) continue;
+    const rad = t.radius(u) * 0.30 * size * (0.55 + r() * 0.95);
+    const { col, a } = markTone(t, u, phi, dark, p);
+    const lobes = 3 + (r() * 4 | 0);
+    t.withMark(c, u, phi, (cc) => {
+      cc.fillStyle = `rgba(${col.slice(4, -1)},${a})`;
+      cc.beginPath();
+      /* one closed ragged outline rather than N discs, so the blotch has a
+         single irregular edge instead of a bubbly one */
+      const N = 30;
+      const wob: number[] = [];
+      for (let k = 0; k < lobes; k++) wob.push(r() * TAU);
+      for (let k = 0; k <= N; k++) {
+        const ang = (k / N) * TAU;
+        let rr = 0.62;
+        for (let w = 0; w < lobes; w++) rr += 0.30 * Math.cos(ang * (2 + w) + wob[w]!) / (w + 1);
+        const x = Math.cos(ang) * rad * rr, y = Math.sin(ang) * rad * rr * 0.82;
+        if (k === 0) cc.moveTo(x, y); else cc.lineTo(x, y);
+      }
+      cc.closePath(); cc.fill();
+    });
+  }
+}
+
 /** BRINDLE / fine ticking — hyena, wild dog, agouti fur. Short streaks that
     run along the girth and break up a flat flank. */
 export function coatBrindle(c: Ctx, t: Tube, r: RNG, p: Coatable, o: {

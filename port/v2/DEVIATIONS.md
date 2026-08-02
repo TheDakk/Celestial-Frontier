@@ -484,6 +484,25 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   separates the two populations; and make every failing gate print the specific rows it means,
   because "32 more" is not something anyone can action.**
 
+- ✔ **D-ART-98 — REDEFINING A SHARED ENUM VALUE SILENTLY RE-SKINS EVERY EXISTING USER (wave 6).**
+  `coat: 'patches'` meant "soft irregular blotches", so an African Wild Dog, a Friesian cow and
+  a colugo all used it quite reasonably. Wave 4 redefined it as the GIRAFFE's reticulated
+  tiling and changed nobody's spec — and the visual audit came straight back with *"the African
+  Wild Dog reads as a young giraffe"*, which it did. Nothing failed; every gate was green; the
+  species had simply been re-skinned by a change to a word. **When you sharpen the meaning of a
+  shared value, grep its users and give the ones you did not mean a name of their own** — the
+  same law as "grep every reader and writer of a field" in the project's CSS/save rules,
+  applied to an art vocabulary. `'blotches'` now exists and the giraffe keeps `'patches'`.
+
+- ✔ **D-ART-99 — A SHAPE SYSTEM DOES NOT MAKE A FACE UNIQUE; THE FEATURES ON IT DO (wave 6).**
+  Wave 6 gave every family its own skull profile and it plainly worked *between* families. The
+  mammal visual audit then measured the thing Nick actually asked about and returned **20 of
+  141 heads unique**, with the reason stated plainly: *"same two-tone leaf ear pair, same big
+  white-ringed cartoon eye at the same position, same wedge muzzle, same dark nose dot, same
+  single mouth line."* The silhouette was per-family; every FEATURE drawn on it was still one
+  asset shared by the entire catalogue. **Fixing the underlying form is necessary and is not
+  sufficient — check whether the parts you left alone are now the thing carrying the sameness.**
+
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
