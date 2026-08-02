@@ -15,6 +15,12 @@
    from knowledge of what fish exist — the wave-7 lesson, enforced by
    tools/overridecheck.mjs. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { profileTube } from './torso.js';
+import { coatMaterial } from './skin.js';
+
+/** the cost dial for fish scales — see BIRD_MAT_DETAIL / MAT_DETAIL. 0 is free
+    and restores the pre-wave-21 flat body exactly. */
+const FISH_MAT_DETAIL = 1;
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -394,6 +400,23 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
   c.fillStyle = bg2;   /* dark above, pale below — the real countershading */
   c.beginPath(); trace(); c.fill();
   void bg;
+
+  /* ★ WAVE 21 — THE SCALES. A fish needed no new geometry to earn the
+     material layer: `heightAt(profile, t, depth)` already IS a radius profile
+     down the body, which is the one thing a Tube wants. profileTube wraps it,
+     and the scale rows then curve with the girth instead of tiling flatly
+     across the silhouette — the difference between a fish and a fish-shaped
+     piece of wallpaper.
+
+     Scaled by `depth`: the material's default density suits a mammal-sized
+     torso, and an anchovy is a tenth of one. Left unscaled, a small fish gets
+     scales the size of its own head. */
+  {
+    const scaleTube = profileTube(ped, nose, cy, (t) => heightAt(spec.profile, t, depth));
+    c.save(); c.beginPath(); trace(); c.clip();
+    coatMaterial(c, scaleTube, r, p, 'scale', { detail: FISH_MAT_DETAIL });
+    c.restore();
+  }
 
   /* the pattern, clipped to the body so marks are SKIN not stickers */
   c.save(); c.beginPath(); trace(); c.clip();

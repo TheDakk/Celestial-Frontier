@@ -13,6 +13,14 @@
    Style law preserved: rim-lit painterly figurine, grounding shadow,
    palette from the genome. Bodies, not recolors. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { ellipseTube } from './torso.js';
+import { coatMaterial } from './skin.js';
+
+/* the cost dial for bird plumage, matching MAT_DETAIL in quadrupedoverrides.
+   Portraits are generated at runtime under an art-hold law and a standing
+   "phone runs hot" mandate, so the density has to be turnable from one place.
+   0 reproduces the pre-wave-21 flat body exactly. */
+const BIRD_MAT_DETAIL = 1;
 
 /** THE PATTERN LAW (D-ART-16): every mark falls off to zero alpha, so it
     melts into the surface instead of sitting on it as a sticker. */
@@ -154,6 +162,18 @@ export function faunaBeetle(c: Ctx, g: G, p: Pal, opts: { spots?: boolean; glow?
   c.fillStyle = shell;
   c.beginPath(); c.ellipse(cx, cy, rw, rh, 0, 0, TAU); c.fill();
   rim(c, () => c.ellipse(cx, cy, rw, rh, 0, -2.7, 0.35), 2.2);
+  /* ★ WAVE 21 — the elytra get the shell material. Note the axis: a beetle is
+     drawn from ABOVE, so the body runs head-to-tail down the screen and the
+     tube has to be rotated a quarter turn. Built with the screen axis instead
+     (the obvious way) the segment seams run the length of the beetle rather
+     than across it, which reads as a crack rather than as segmentation. */
+  {
+    c.save();
+    c.beginPath(); c.ellipse(cx, cy, rw, rh, 0, 0, TAU); c.clip();
+    coatMaterial(c, ellipseTube(cx, cy, rh, rw, Math.PI / 2), r, p, 'chitin',
+      { detail: BIRD_MAT_DETAIL, seams: false });
+    c.restore();
+  }
   c.strokeStyle = 'rgba(0,0,0,0.45)'; c.lineWidth = 2.2;   /* the elytra seam */
   c.beginPath(); c.moveTo(cx, cy - rh * 0.75); c.lineTo(cx, cy + rh * 0.9); c.stroke();
   if (opts.spots) {
@@ -584,6 +604,25 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
 
   c.fillStyle = bodyGrad(c, p, bx, by, bw);
   c.beginPath(); c.ellipse(bx, by, bw, bh, -0.15, 0, TAU); c.fill();
+
+  /* ★ WAVE 21 — THE PLUMAGE. The body was a gradient-filled ellipse, which is
+     the flattest surface in the catalogue and sat next to 144 mammals that
+     had gained real fur — so every bird read as the unfinished one. The
+     ellipse is handed to ellipseTube (an ellipse IS a swept circle) and the
+     material layer tiles contour feathers onto it in the body's own
+     coordinates, carrying the −0.15 rad tilt so the tracts follow the bird
+     rather than the screen.
+
+     Clipped to the same ellipse: the material deliberately overshoots the
+     silhouette so feathers reach the edge instead of stopping short of it,
+     and the clip is what keeps that from becoming a fringe. */
+  {
+    const bodyTube = ellipseTube(bx, by, bw, bh, -0.15);
+    c.save();
+    c.beginPath(); c.ellipse(bx, by, bw, bh, -0.15, 0, TAU); c.clip();
+    coatMaterial(c, bodyTube, r, p, 'feather', { detail: BIRD_MAT_DETAIL });
+    c.restore();
+  }
   /* ★ WAVE 8 — THE MARKS, clipped to the body so they are plumage and not
      stickers. Between them and the bill these are what a birder actually uses
      to tell two brown songbirds apart at twenty metres. */
@@ -680,6 +719,23 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       const lw = bw * (0.95 - layer * 0.16), lh = bh * (0.62 - layer * 0.10);
       c.fillStyle = layer === 0 ? p.dark : (layer === 1 ? p.base : p.lit);
       c.beginPath(); c.ellipse(0, layer * 3, lw, lh, 0, 0, TAU); c.fill();
+    }
+    /* ★ WAVE 21 — THE WING IS WHERE THE PLUMAGE HAS TO GO.
+       Feathers were added to the body ellipse first, and the drift guard
+       measured no change at all across 105 birds. The render said why: the
+       FOLDED WING covers most of the torso, so a coat painted on the body is
+       almost entirely occluded by the time the wing lands on top of it. The
+       wing is the largest surface a viewer actually sees on a perched bird,
+       and it is the one made of the biggest, most legible feathers. */
+    {
+      /* the outermost covert layer, matching the last iteration of the loop
+         above (layer 2) — clip and tube must agree or the coat fringes */
+      const wx = 0, wy = 2 * 3, wrx = bw * 0.63, wry = bh * 0.42;
+      c.save();
+      c.beginPath(); c.ellipse(wx, wy, wrx, wry, 0, 0, TAU); c.clip();
+      coatMaterial(c, ellipseTube(wx, wy, wrx, wry, 0), r, p, 'feather',
+        { detail: BIRD_MAT_DETAIL * 0.85 });
+      c.restore();
     }
     c.strokeStyle = 'rgba(0,0,0,0.3)'; c.lineWidth = 1.4;
     for (let i = 0; i < 6; i++) {   /* primaries fanning to the tail */

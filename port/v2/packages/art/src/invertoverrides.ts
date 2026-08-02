@@ -19,6 +19,13 @@
    by tools/overridecheck.mjs; the shadow check keeps it from re-covering
    what waves 3 and 7 already own. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { ellipseTube } from './torso.js';
+import { coatMaterial } from './skin.js';
+
+/** the cost dial for arthropod shell — see BIRD_MAT_DETAIL / FISH_MAT_DETAIL.
+    Lower than the others on purpose: chitin is SMOOTH, so its material is a
+    handful of seams and one tight specular rather than a thousand hairs. */
+const CHITIN_DETAIL = 1;
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -216,6 +223,19 @@ export function insectBody(c: Ctx, g: G, p: Pal, spec: InsectSpec, name = ''): v
   c.fillStyle = shell(c, p, ax, cy + th * 0.1, abL * 0.5);
   c.beginPath(); c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92), 0.06, 0, TAU); c.fill();
   rim(c, () => c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92), 0.06, -2.8, 0.3));
+  /* ★ WAVE 21 — SHELL. The abdomen is the largest flat area on an insect and
+     it carried a plain gradient. Chitin's read is segment seams plus a tight
+     specular, NOT texture — an insect's cuticle is smooth, so the fur-style
+     treatment that suits a mammal would be actively wrong here. Skipped on a
+     fuzzy body: a bumblebee's pile is drawn just below and shell seams under
+     fur is a contradiction. */
+  if (!spec.fuzzy) {
+    const abTube = ellipseTube(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92), 0.06);
+    c.save();
+    c.beginPath(); c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92), 0.06, 0, TAU); c.clip();
+    coatMaterial(c, abTube, r, p, 'chitin', { detail: CHITIN_DETAIL });
+    c.restore();
+  }
   if (spec.pattern === 'bands') {
     for (let i = 0; i < 4; i++) softMark(c, ax - abL * 0.34 + i * abL * 0.26, cy + th * 0.12, abL * 0.11, th * 0.85, '24,20,12', 0.55);
   } else if (spec.pattern === 'spots') {
@@ -431,6 +451,17 @@ export function crabBody(c: Ctx, g: G, p: Pal, opts: { wide?: boolean; hermit?: 
   c.fillStyle = shell(c, p, cx, cy, cw);
   c.beginPath(); carap(); c.closePath(); c.fill();
   rim(c, () => { carap(); c.closePath(); }, 2.4);
+  /* ★ WAVE 21 — the carapace is the crab, so it gets the shell treatment. The
+     tube is fitted to the carapace's own box rather than reusing a body
+     ellipse: the outline is a four-arc curve, not an ellipse, and the clip
+     below is what reconciles the two. */
+  {
+    const carapTube = ellipseTube(cx, cy - ch * 0.03, cw, ch * 1.02, 0);
+    c.save();
+    c.beginPath(); carap(); c.closePath(); c.clip();
+    coatMaterial(c, carapTube, r, p, 'chitin', { detail: CHITIN_DETAIL });
+    c.restore();
+  }
   for (let i = 0; i < 12; i++) softMark(c, cx - cw * 0.8 + r() * cw * 1.6, cy - ch * 0.6 + r() * ch * 1.3, 7 + r() * 6, 5 + r() * 4, '26,20,14', 0.24);
   /* THE CLAWS, IN FRONT of the carapace — a crab holds its chelae forward,
      and drawn before the shell they were buried underneath it */

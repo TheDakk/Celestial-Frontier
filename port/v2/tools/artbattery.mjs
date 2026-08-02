@@ -19,7 +19,21 @@ const STAGES = [
   ['coveragegap', 'node tools/coveragegap.mjs',
     'what remains uncovered, measured from the catalog rather than remembered'],
   ['speciesaudit', 'node tools/speciesaudit.mjs',
-    'all 1,254 portraits paint, none duplicate, none clip — through a bundle proven fresh'],
+    'all 1,250 portraits paint, none duplicate, none clip — through a bundle proven fresh'],
+  /* ★ WAVE 21 — ARTLOCK WAS NEVER IN THE BATTERY.
+     The safety net was built to stop a global pass from silently undoing
+     signed-off work, it was documented as part of "the art gate", and the
+     handoff called this command "the 5-stage art gate" — but `npm run
+     artbattery` never ran it. It only ever fired when someone remembered to
+     type it, which is precisely the failure mode it was built to remove: the
+     guard you have to remember is not a guard. Found when a wave that
+     repainted 500+ organisms came back 5/5 green and artlock, run by hand
+     thirty seconds later, said FAIL.
+
+     Last of the stages on purpose — it renders the whole catalogue twice and
+     is by far the slowest, so a cheap static failure should surface first. */
+  ['artlock', 'node tools/artlock.mjs',
+    'the safety net: nothing drifted outside the classes this change declared, and no two Earth species collapsed into the same picture'],
 ];
 
 let failed = 0;
