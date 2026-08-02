@@ -192,3 +192,19 @@ perturbs only the lowest byte, so after the divide all six returned the same num
 decimal places. The code read as six independent knobs and was one knob wired six times.
 > **The remedy:** when deriving several values from one seed, run each through an avalanche
 > (a proper finalizer) and *spot-check that they actually differ* before trusting them.
+
+
+⚠⚠ **"THE DATA IS VALID" IS NOT "THE CODE RUNS IT."** Wave 11 added 280 plant routes, imported
+the table into the router, and never called it. Every key was checked and valid; the sentinel
+reported 927/927 with zero dead routes; all 280 painters were unreachable. A validator that
+inspects a table proves things about the *table*. Whether anything *reads* the table is a
+different claim, and it is the one that decides if the code does anything.
+> **The remedy:** for any lookup table, assert that its consumer references it — a one-line
+> grep of the router is enough — and negative-control that assertion by unwiring it on purpose.
+
+⚠ **THE DISCOVERY RULE IS ITSELF AN ASSUMPTION.** The same tool missed work four times running,
+each time because of how it decided *what to look at*: a hardcoded file list, then an
+`export const`-only scan, then a `*overrides.ts` filename glob, then not checking wiring at
+all. Every fix widened the rule and the next fix widened it again.
+> **The remedy:** when a tool enumerates things, enumerate everything and filter late — and
+> when a check comes back clean right after you added work, suspect the enumeration first.

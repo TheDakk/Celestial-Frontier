@@ -154,6 +154,23 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   have reported PASS for code that no longer existed. Both audit and export now ALWAYS build,
   with a freshness guard that exits 2 if dist is older than any art source. A check that reads
   a build artefact must prove the artefact is current.
+- ✔ **D-ART-37 — THE PLANT SYSTEM (wave 11).** 280 routes from one plant whose habit, leaf,
+  flower and fruit are the species: tree (three-pass crown), shrub (many stems from the
+  ground), herb, grass (filled tapering blades), cane, vine (tendrils), succulent, fern
+  (filled pinnae + fiddlehead), aquatic (straps + gas bladders), rosette, palm. Ten leaf
+  shapes, eleven fruit types, six flower architectures — the answer to "every flower is the
+  same daisy".
+- ✔ **D-ART-38 — THE COVERAGE TOOL WAS STEERING THE PLAN WITH STALE DATA (wave 11).** The
+  scratch gap script carried the same hardcoded file list overridecheck shipped with, so after
+  four new override files it reported ~250 covered species as uncovered. Promoted to
+  tools/coveragegap.mjs, reading the directory. Corrected, it showed the largest uncovered
+  block was the PLANTS (288 of 334), not the animals.
+- ✔ **D-ART-39 — ★ THE UNWIRED TABLE (wave 11).** FLORA2_SPEC was imported into
+  speciesoverrides.ts and never consulted by resolveOverride: every key resolved, overridecheck
+  reported 927/927 and 0 dead, and all 280 routes were unreachable. Only the duplicate sentinel
+  noticed, via a 15-pair regression. overridecheck now reports unwired tables; control F proves
+  it fires. Also widened file discovery from a NAME PATTERN to every art source — the third
+  time the discovery rule itself was the bug.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

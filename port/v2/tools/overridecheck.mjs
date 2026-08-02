@@ -57,12 +57,17 @@ function topLevelKeys(body) {
   return out;
 }
 
-/* EVERY override file, read from the DIRECTORY. A hardcoded list is the same
-   blindness this tool exists to catch: wave 8 added faunaoverrides3.ts and the
-   check reported "no change" — 106 new routes it could not see. */
+/* EVERY source file in the art package — not a list, and not a NAME PATTERN
+   either. This blindness has now arrived three times in the same shape:
+     1. a hardcoded file list missed faunaoverrides3.ts (105 routes unchecked)
+     2. an `export const`-only scan missed both module-private tables
+     3. a `*overrides.ts` glob missed florarost.ts (280 routes unchecked)
+   Each time the fix was to widen the discovery rule, and each time the RULE
+   ITSELF was the assumption. Scan everything; the table-name filter below is
+   what decides relevance. */
 const FILES = fs.readdirSync(path.join(root, 'packages/art/src'))
-  .filter((n) => /overrides\d*\.ts$/.test(n)).sort();
-if (FILES.length < 5) { console.error('overridecheck: found only ' + FILES.length + ' override files — the PARSER is broken'); process.exit(2); }
+  .filter((n) => n.endsWith('.ts') && !n.endsWith('.d.ts')).sort();
+if (FILES.length < 6) { console.error('overridecheck: found only ' + FILES.length + ' art sources — the PARSER is broken'); process.exit(2); }
 /* Which kingdom branch of resolveOverride each table serves. Shadowing is
    only possible WITHIN a branch: 'Green Algae' is in both the flora and the
    microbe catalogs and is correctly keyed in a table for each — the check's
@@ -70,7 +75,7 @@ if (FILES.length < 5) { console.error('overridecheck: found only ' + FILES.lengt
    false positive, found the first time it ran. Again.) */
 const TABLE_KINGDOM = {
   FUNGI_NAME: 'fungi', MICROBE_NAME: 'microbe',
-  FLORA_ICONIC: 'flora', FLORA_DUPES: 'flora',
+  FLORA_ICONIC: 'flora', FLORA_DUPES: 'flora', FLORA2_SPEC: 'flora',
   FAUNA_NAME: 'fauna', FAUNA2_NAME: 'fauna', FAUNA3_NAME: 'fauna',
   BIRD_NAME: 'fauna', QUAD_SPEC: 'fauna', QUAD2_SPEC: 'fauna', INVERT_NAME: 'fauna',
 };
@@ -112,6 +117,26 @@ for (const f of FILES) {
         keys.set(kk, f + ':' + table);
       }
     }
+  }
+}
+/* IS THE TABLE ACTUALLY WIRED? A fourth blindness class, and the costliest
+   yet: wave 11's FLORA2_SPEC was imported into speciesoverrides.ts and never
+   consulted by resolveOverride. Every key resolved to a real catalog
+   species, so this tool reported 927/927 with 0 dead — while all 280 of its
+   routes were unreachable. "The key names a real species" and "the router
+   ever looks at this table" are DIFFERENT CLAIMS, and only the second one
+   makes a painter run. The duplicate sentinel was the only thing that
+   noticed, and only because retiring the superseded anti-duplicate entries
+   regressed 15 pairs. */
+{
+  const router = src('packages/art/src/speciesoverrides.ts');
+  const body = router.slice(router.indexOf('export function resolveOverride'));
+  const tables = [...new Set([...keys.values()].map((v) => v.split(':')[1]))];
+  const unwired = tables.filter((tbl) => !new RegExp('\\b' + tbl + '\\b').test(body));
+  if (unwired.length) {
+    console.error('  ★ UNWIRED TABLES — every key resolves, but resolveOverride never consults them:');
+    for (const u of unwired) console.error('    ' + u + '   (imported but never read — all its routes are dead)');
+    process.exitCode = 1;
   }
 }
 if (keys.size < 150) { console.error('overridecheck: only ' + keys.size + ' table keys found — the PARSER is broken'); process.exit(2); }
