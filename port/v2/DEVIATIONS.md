@@ -532,6 +532,16 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   moving together drives it sharply up — and still prints the newly-created pairs as the
   worklist. **A one-sided criterion on a two-sided quantity blocks the work it should approve.**
 
+- ✔ **D-ART-103 — THE ART LOCK IS BODY-SCALE AND CANNOT SEE A FEATURE (wave 13).**
+  Wave 13 changed the EAR SHAPE and the EYE of all 141 quadrupeds and artlock reported
+  **zero drift**. Nothing was broken: a head is a small part of a 440px portrait and an ear is
+  a small part of a head, so a per-feature change lands well under the 16x16 fingerprint
+  threshold that is tuned to catch a catalogue-wide body pass. The guard is doing its job and
+  its job is not this. **Never read "0 drift" as "nothing changed" — read it as "nothing
+  changed at the scale this instrument resolves", and verify a feature change by looking at a
+  native-size render** (D-ART-88). Recorded rather than fixed: raising the sensitivity enough
+  to see an ear would make every rng jitter register as drift and destroy the signal.
+
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
