@@ -362,6 +362,23 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   instead; the discovery guard is what proved the diagnosis wrong, because CANON still did not
   appear. **A fix that does not make the guard go green is not the fix.** The tool now asserts
   CANON is discovered and prints every uppercase const it skipped.
+- ✔ **D-ART-80 — THE MAMMALS HAD NO WHITES IN THEIR EYES (arc stage 2).** Every other painter
+  family draws sclera + pupil + catchlight; the quadruped system — the largest family in the
+  catalogue — drew a single dark dot. ~200 mammals had no readable face and four green gates
+  never saw it. Fixed with a three-layer eye, a soft socket, a lid line, and radius 0.16 ->
+  0.21 x headR: an eye a player cannot locate at thumbnail size is not an eye.
+- ✔ **D-ART-81 — A CONTROL ON THE DECISION LAYER SAYS NOTHING ABOUT THE SENSOR (arc stage 2).**
+  conformance's self-test held 7/7 while the eye detector feeding it was 40% accurate, because
+  the test drove the JUDGEMENT with synthetic numbers and never the MEASUREMENT. The detector
+  was wrong four consecutive times (tusks counted as eyes; a fixed enclosure ring that samples
+  back into the sclera on small eyes and made it WORSE; a cluster floor that rejected the one
+  surviving pixel of a real catchlight). Every sensor now needs GROUND TRUTH a human has
+  looked at, scored every run.
+- ✔ **D-ART-82 — A CHECK THAT CANNOT ANSWER MUST DECLINE, NOT GUESS (arc stage 2).** Bbox
+  aspect carries no information about a coiled body, and comparing our correctly-coiled snakes
+  and worms to a straight-line reference produced ~38 findings that were purely the tool's
+  fault. Below a trust floor, a finding class is SUPPRESSED and says so — false findings send
+  the next session chasing ghosts, which is the same failure as a vacuous pass, reversed.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
