@@ -1,8 +1,8 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-**Written 2026-08-02 at the end of waves 4–15.**
+**Written 2026-08-02 at the end of waves 4–16.**
 The live work is **THE PROPORTION ARC** — making every organism in the Earth catalogue look
-like the real thing, on Nick's instruction. Waves 4–15 have landed. The structural queue below is four-fifths done.
+like the real thing, on Nick's instruction. Waves 4–16 have landed. The structural queue below is four-fifths done.
 
 ---
 
@@ -168,14 +168,18 @@ future material/texture pass provably cannot fix), and defer the surface ones.
 
 ## OPEN, IN PRIORITY ORDER
 
-1. **★ THE HEADS: 52 of 144 unique** (re-measured after wave 13; was 20/141).
-   Waves 6 and 13 more than doubled it. **92 still generic** — read
-   `reference/mammalaudit.json`, which names the reason per animal.
-   ⚠ **surfaceOnly is 0 of 144**: not one mammal has ONLY surface complaints
-   left, so anatomy is still the binding constraint and the material pass is
-   NOT yet the bottleneck. Watch that number — when it climbs, the pivot is due.
-   ⚠ artlock reports ZERO drift for feature-scale work (D-ART-103). Verify ears
-   and eyes by opening a native-size PNG, never by the lock.
+1. **★ RE-MEASURE THE HEADS AGAIN.** 20/141 → 52/144 after waves 6+13. Waves 14
+   and 16 then fixed the three things that re-measure named as the reasons a
+   head stays generic — the ear (83 of 92 heads), the eye (83) and the MUZZLE
+   (81) — so **52/144 is now stale in the same way 20/141 was.** Re-run the
+   workflow against the fresh export before doing more head work; the number,
+   not an opinion, decides whether heads are done.
+   ⚠ **surfaceOnly was 0 of 144** at the last measure: not one mammal had ONLY
+   surface complaints, so anatomy was still the binding constraint. **That is
+   the number that decides when to pivot to the material pass.** Watch it.
+   ⚠ artlock reports ZERO drift for feature-scale work (D-ART-103) — verify ears,
+   eyes and muzzles by opening a native-size PNG, and use `--expect` when you
+   edit spec rows (D-ART-104).
 2. **ONE hard look-alike pair left: Water Mint ≈ Chicory** (was 33 at the start
    of 2026-08-02, then 19 after the birds, 9 after the fish, 1 after the
    invertebrates). Their reference rows are far apart — a square stem with a
