@@ -75,7 +75,9 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'River Otter': { legs: 0.055, depth: 0.075, len: 0.26, neck: 0.05, muzzle: 0.30, ears: 'tiny', tail: 'long', hue: '#6f5239' },
   'Giant Otter': { legs: 0.060, depth: 0.088, len: 0.29, neck: 0.06, muzzle: 0.32, ears: 'tiny', tail: 'long', hue: '#54402e' },
   'Sea Otter': { legs: 0.050, depth: 0.090, len: 0.25, neck: 0.05, muzzle: 0.28, ears: 'tiny', tail: 'stub', coat: 'shaggy', hue: '#6a5340' },
-  'Mongoose': { legs: 0.062, depth: 0.058, len: 0.23, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#9a8a6c' },
+  /* ★ wave 22 — proportioncheck had it at 3.06 wide-to-tall on a 0.23/0.058
+     spec, i.e. four times as long as deep. A mongoose is lithe, not a ribbon. */
+  'Mongoose': { legs: 0.062, depth: 0.074, len: 0.195, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#9a8a6c' },
   'Meerkat': { legs: 0.070, depth: 0.058, len: 0.18, neck: 0.08, muzzle: 0.32, ears: 'round', tail: 'long', hue: '#b5a184' },
   'Civet': { legs: 0.080, depth: 0.070, len: 0.24, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'banded', coat: 'spots', face: 'mask', hue: '#a8996f' },
   'Coati': { legs: 0.085, depth: 0.072, len: 0.24, neck: 0.06, muzzle: 0.54, ears: 'round', tail: 'banded', hue: '#8e6440' },
