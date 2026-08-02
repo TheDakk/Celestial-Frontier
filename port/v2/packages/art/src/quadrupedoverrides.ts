@@ -19,7 +19,7 @@ import { mulberry32, TAU } from '@cf/domain-rand';
 import { type Form } from './surface.js';
 import { alienEyes, alienSkin, alienGlow, alienSail, alienArmor, type AlienTraits } from './alientraits.js';
 import { Tube, mammalProfile, pathThrough, spline } from './torso.js';
-import { countershade, coatSpots, coatRosettes, coatBars, coatPatches, coatBrindle, coatShaggy, shaggyRim, coatBlocks } from './skin.js';
+import { countershade, coatSpots, coatRosettes, coatBars, coatPatches, coatBlotches, coatBrindle, coatShaggy, shaggyRim, coatBlocks } from './skin.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -37,7 +37,7 @@ export interface QuadSpec {
   ears?: 'tiny' | 'small' | 'round' | 'large' | 'huge' | 'fan';
   tail?: 'none' | 'stub' | 'tuft' | 'bushy' | 'long' | 'plume' | 'banded' | 'paddle';
   coat?: 'plain' | 'spots' | 'rosettes' | 'stripes' | 'patches' | 'panda' | 'shaggy' | 'banded'
-    | 'bands' | 'brindle' | 'fawn';
+    | 'bands' | 'brindle' | 'fawn' | 'blotches';
   /* ★ ARC STAGE 3 WAVE 4 — WHERE THE MASS SITS. The torso is a solid now
      (torso.ts), and these four numbers place its anatomy: how far the flank
      tucks up, how far the shoulder and haunch stand proud, how deep the
@@ -535,6 +535,15 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     /* the zebra: full contrast, and the bands CROSS the belly rather than
        stopping at it, which is the difference between a zebra and a tiger */
     coatBars(c, body, r, p, { count: 21, width: 1.25, phiTop: 1.66, phiEnd: -1.42, lean: 0.03, forkRate: 0.12, hard: true, rgb: [18, 15, 16] });
+  } else if (coat === 'blotches') {
+    /* ⚠ WAVE 6 — A COAT NAME WHOSE MEANING CHANGED UNDER ITS USERS. 'patches'
+       used to mean soft irregular blotches, so a wild dog, a Friesian cow and
+       a colugo all used it quite reasonably. Wave 4 redefined it as the
+       GIRAFFE's reticulated tiling — and the visual audit came straight back
+       with 'the African Wild Dog reads as a young giraffe', which it did.
+       Redefining a shared enum value silently re-skins every existing user:
+       the giraffe keeps 'patches', the blotched animals get their own name. */
+    coatBlotches(c, body, r, p, { count: 22, rgb: [46, 30, 16] });
   } else if (coat === 'patches') {
     /* ★ THE GIRAFFE. Its patches are a TILING with pale seams between them,
        not a scatter of blobs — so they are Voronoi cells in skin space,
