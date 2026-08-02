@@ -686,6 +686,36 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 11 — THE PLANT SYSTEM + THE UNWIRED TABLE (2026-08-01, batch 31).
+##   ★THE GAP REPORT WAS WRONG AND HAD BEEN STEERING THE PLAN: the scratch script picking each
+##   wave's target carried the SAME hardcoded file list overridecheck shipped with, so after
+##   waves 8-10 it reported ~250 covered species as uncovered. Promoted to
+##   tools/coveragegap.mjs (reads the directory). Corrected, it said the largest uncovered
+##   block was never the animals — it was the PLANTS, 288 of 334. ★THE PLANT SYSTEM: 280
+##   routes from ONE plant whose HABIT/LEAF/FLOWER/FRUIT are the species — tree (tapering
+##   forking trunk + a THREE-PASS crown: deep mass, lit upper surface, leaves filling it) ·
+##   shrub (MANY STEMS FROM THE GROUND = the whole difference from a tree) · herb · grass
+##   (FILLED blades, wide at the crown, tapering, bending under their own weight) · cane ·
+##   vine (sinuous stem + coiled tendrils) · succulent (ribbed column or pads) · fern (filled
+##   pinnae + fiddlehead) · aquatic (straps + kelp gas bladders) · rosette · palm. 10 leaf
+##   shapes · 11 fruit types (incl. citrus, grain with awns, cone, pod) · 6 flower
+##   architectures (head = ray florets round a disc, umbel, spike, bell, star, catkin) — the
+##   answer to "every flower is the same daisy". ★★THE FOURTH BLINDNESS CLASS — THE UNWIRED
+##   TABLE: FLORA2_SPEC was imported into speciesoverrides.ts and NEVER CONSULTED by
+##   resolveOverride. Every key resolved, so overridecheck reported 927/927 0 dead — while ALL
+##   280 ROUTES WERE UNREACHABLE. "The key names a real species" and "the router ever looks at
+##   this table" are DIFFERENT CLAIMS. Only the DUPLICATE SENTINEL noticed, via a 15-pair
+##   regression when the superseded anti-duplicate entries were retired. overridecheck reports
+##   UNWIRED TABLES now; control F proves it fires (7/7 controls). Also: file discovery widened
+##   from a NAME PATTERN to every art source — the THIRD time the discovery rule itself was the
+##   bug (hardcoded list → export-const-only → *overrides.ts glob). ★COVERAGE MEASURED:
+##   927/1,010 (91.8%) — fauna 582 · flora 320 · fungi 16 · microbe 9. ⚠KNOWN+RECORDED: tree
+##   crowns read inconsistently across PALETTES (a green oak is beautiful; a pale palette reads
+##   as a mop) because crown masses and leaves share the species hue — wave 12 should give the
+##   crown its own value structure. D-ART-37..39. GATES: vitest 220 · tsc · speciesaudit
+##   1254/1254 0 dupes 0 clipped · overridecheck 927/927 0 dead 0 shadowed 0 unwired ·
+##   overridecontrol 7/7 · slicesmoke PASS · perf 1224/1842ms · goldenseeds 198,000 · validate
+##   FINGERPRINT MATCH · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 10b — THE INVERTEBRATES + THREE INSTRUMENT BUGS (2026-08-01,
 ##   batch 30). 83 routes from FIVE body-plan painters — an arthropod is legible from its
 ##   TAGMATA and LEG COUNT: insect (3 sections/6 legs/antennae + petiole, bee pile, mantis

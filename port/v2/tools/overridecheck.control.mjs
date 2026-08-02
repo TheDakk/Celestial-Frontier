@@ -58,6 +58,14 @@ try {
   check('E: a table this tool cannot classify is reported, not skipped silently', run(), 'fail');
   fs.unlinkSync(TMP);
 
+  /* F: a table whose keys all resolve but which resolveOverride never reads —
+     the wave-11 bug: 280 routes written, imported, and unreachable */
+  const ROUTER = path.join(SRC, 'speciesoverrides.ts');
+  const routerOrig = fs.readFileSync(ROUTER, 'utf8');
+  fs.writeFileSync(ROUTER, routerOrig.replace('FLORA_ICONIC[name] || FLORA2_SPEC[name]', 'FLORA_ICONIC[name]'));
+  check('F: a table imported but never consulted by the router', run(), 'fail');
+  fs.writeFileSync(ROUTER, routerOrig);
+
   check('restored: clean tables again', run(), 'pass');
 } finally { restore(); }
 process.exit(pass ? 0 : 1);

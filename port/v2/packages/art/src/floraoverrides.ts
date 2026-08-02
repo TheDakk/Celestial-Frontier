@@ -252,10 +252,4 @@ export const FLORA_ICONIC: Record<string, FloraPainter> = {
 /** every name in the 16 byte-duplicate groups → the NAME-SEEDED ladder, so
     two different labels can never render identically again (Blocker 3) */
 export const FLORA_DUPES: readonly string[] = [
-  'Acai', 'Milkweed', 'Salmonberry', 'Anise', 'Yerba Mate', 'Arrowhead', 'Clover', 'Fenugreek',
-  'Beach Pea', 'Bog Myrtle', 'Breadnut', 'Castor Bean', 'Bilberry', 'Cloudberry', 'Sesame',
-  'Bull Kelp', 'Kelp', 'Crowberry', 'Licorice', "Devil's Club", 'Rainforest Nettle', 'Dulse',
-  'Green Algae', 'Flax', 'Huckleberry', 'Monkshood', 'Ice Algae', 'Snow Algae', 'Licorice Fern',
-  'Maidenhair Fern', 'Lingonberry', 'Wild Chive', 'Oleander', 'Peanut', 'Tea Tree', 'Saltbush',
-  'Tamarisk',
-];
+  'Acai', 'Salmonberry', 'Licorice', "Devil's Club", 'Green Algae', 'Ice Algae', 'Snow Algae', ];

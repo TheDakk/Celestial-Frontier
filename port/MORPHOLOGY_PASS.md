@@ -622,3 +622,65 @@ scenes.
 **Gates:** vitest 220 ✓ · tsc clean · speciesaudit 1254/1254 · **0 duplicate pairs** ·
 0 clipped · overridecheck 652/652 · 0 dead · overridecontrol 6/6 · slicesmoke PASS ·
 perf 1321/1973ms. `hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-33 … D-ART-36.
+
+---
+
+# WAVE 11 — LANDED 2026-08-01 (THE PLANT SYSTEM + the coverage tool's own lie)
+
+## ★ THE GAP REPORT WAS WRONG, AND IT HAD BEEN STEERING THE PLAN
+The scratch script used to pick each wave's target had **the same hardcoded file list**
+`overridecheck` shipped with. After waves 8-10 added four new override files it could not see
+them, so it reported ~250 already-covered species as uncovered — and wave 11 was about to be
+planned from that. Promoted to `tools/coveragegap.mjs` (`npm run coveragegap`), reading the
+directory. Corrected, it said something the animal waves had hidden: **the largest uncovered
+block in the game was never the animals — it was the PLANTS. 288 of 334.**
+
+## THE PLANT SYSTEM
+One plant whose **HABIT · LEAF · FLOWER · FRUIT** are the species — 280 routes.
+Habit first, because that is what a plant is legible from before anything else:
+**tree** (a tapering trunk that forks into a three-pass crown: a deep mass, a lit upper
+surface, then leaves filling it) · **shrub** (many stems from the ground — the whole
+difference from a tree) · **herb** · **grass** (filled blades, wide at the crown, tapering,
+bending under their own weight) · **cane** (culms with nodes) · **vine** (a sinuous stem with
+coiled tendrils) · **succulent** (ribbed column or thick pads; the plant IS its water tank) ·
+**fern** (arching fronds with filled pinnae, and a rolled fiddlehead) · **aquatic** (straps
+streaming up from a holdfast, with a kelp's gas bladders) · **rosette** · **palm** (no canopy:
+a crown of fronds).
+Leaves: broad · lance · needle · **pinnate** (leaflets up a rachis) · **palmate** · blade ·
+frond · scale · heart · pad. Fruits: berry · drupe · pome · **citrus** · pod · nut · cone ·
+**grain** (with awns) · melon · fig · cluster. Flowers: **head** (ray florets round a disc) ·
+spike · **umbel** · bell · star · catkin.
+
+## ★★ THE FOURTH BLINDNESS CLASS: THE TABLE WAS NEVER WIRED
+`FLORA2_SPEC` was imported into `speciesoverrides.ts` and **never consulted by
+`resolveOverride`**. Every key resolved to a real catalog species, so `overridecheck`
+reported **927/927 · 0 dead** — while **all 280 routes were unreachable**.
+*"The key names a real species"* and *"the router ever looks at this table"* are different
+claims, and only the second one makes a painter run.
+**Nothing caught it but the duplicate sentinel**, and only because retiring the superseded
+anti-duplicate entries regressed **15 duplicate pairs**. `overridecheck` now reports
+**unwired tables**, with control F to prove it fires.
+
+### The discovery rule is itself an assumption — three times, then four
+1. a hardcoded file list missed `faunaoverrides3.ts` (105 routes unchecked)
+2. an `export const`-only scan missed both module-private tables
+3. a `*overrides.ts` glob missed `florarost.ts` (280 routes unchecked)
+4. and even scanning every file, the tool still could not see whether the router *reads* them
+Each fix widened the rule; each time the RULE was the thing that was wrong.
+
+## Coverage after wave 11 — MEASURED
+**927 of 1,010 Earth species (91.8%)** — fauna 582 · flora 320 · fungi 16 · microbe 9.
+Remaining: ~35 deliberately-excluded excellent species (Elephants, Tiger, Lion, Zebra,
+Chameleon, Seahorse, Pangolin…), marsupials/pinnipeds/cetaceans needing posture painters,
+11 fungi, 12 microbes, and the procedural body plans.
+
+## ⚠ KNOWN, RECORDED, NOT YET FIXED
+Tree crowns read **inconsistently across palettes**: a green oak reads beautifully, a
+white/pale palette reads as a mop of pale leaves because the crown's soft masses and its
+leaves carry the same hue. Wave 12 should give the crown its own value structure independent
+of the species hue. Logged rather than left to be rediscovered.
+
+**Gates:** vitest 220 ✓ · tsc clean · speciesaudit 1254/1254 · **0 duplicate pairs** ·
+0 clipped · overridecheck 927/927 · 0 dead · 0 shadowed · 0 unwired · overridecontrol **7/7** ·
+slicesmoke PASS · perf 1224/1842ms · goldenseeds 198,000 · validate FINGERPRINT MATCH.
+`hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-37 … D-ART-39.

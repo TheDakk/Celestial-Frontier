@@ -21,6 +21,7 @@ import { FAUNA3_NAME } from './faunaoverrides3.js';
 import { BIRD_NAME } from './birdoverrides.js';
 import { QUAD2_SPEC } from './mammaloverrides.js';
 import { INVERT_NAME } from './invertoverrides.js';
+import { FLORA2_SPEC } from './florarost.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -338,7 +339,9 @@ export function resolveOverride(g: G): string | null {
   /* FLORA (wave 2): iconic bespoke bodies first, then the name-seeded ladder
      for every member of the 16 byte-duplicate groups */
   if (kingdom === 'flora') {
-    const iconic = FLORA_ICONIC[name];
+    /* wave 2's bespoke painters win, then wave 11's plant system, then the
+       wave-2 anti-duplicate ladder for anything neither covers */
+    const iconic = FLORA_ICONIC[name] || FLORA2_SPEC[name];
     const dupe = !iconic && FLORA_DUPES.includes(name);
     if (!iconic && !dupe) return null;
     const { cv, c } = newCanvas();

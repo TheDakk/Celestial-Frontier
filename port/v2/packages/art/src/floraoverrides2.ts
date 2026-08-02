@@ -1,0 +1,495 @@
+/* floraoverrides2.ts — THE MORPHOLOGY PASS, wave 11: THE PLANT SYSTEM.
+   The coverage instrument, once fixed, said the largest uncovered block in
+   the game was never the animals — it was the PLANTS: 288 of 334 flora
+   still running the verbatim engine's generic leaf ladder, which is why
+   Nick's audit found that every flower is the same daisy.
+
+   Built like the quadruped and fish systems: ONE plant whose HABIT, LEAF,
+   FLOWER and FRUIT are the species. A plant is legible from its habit
+   before anything else — a tree is a trunk holding a canopy, a shrub is
+   many stems from the ground, a grass is blades from a crown, a vine
+   hangs, a succulent stores water in its own body, a fern unrolls fronds.
+
+   Laws carried in from the animal waves:
+   · proportion before decoration (wave 4)
+   · every mark BLENDS (wave 5)
+   · the painter may overflow; the fit pass frames it (wave 6)
+   · vary a RATIO, never a scale — the fit pass erases size (D-ART-34)
+   · derive each variation axis through an AVALANCHE (D-ART-35)
+   · never override what already excels (D-ART-14) — wave 2's Rafflesia,
+     Pineapple, Joshua Tree, Cotton, Dragon Fruit and the anti-duplicate
+     ladder species are ABSENT here, and the shadow check enforces it. */
+import { mulberry32, TAU } from '@cf/domain-rand';
+
+type G = Record<string, unknown>;
+type Ctx = CanvasRenderingContext2D;
+export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
+export type PainterF = (c: Ctx, g: G, p: Pal, name: string) => void;
+const S = 440;
+
+function nseedF(name: string): number {
+  let h = 0x63A1;
+  for (let i = 0; i < name.length; i++) h = Math.imul(h ^ name.charCodeAt(i), 0x85EB) >>> 0;
+  return h >>> 0;
+}
+/** the avalanche (D-ART-35) — without it every "axis" is the same number */
+function mixF(h: number, salt: number): number {
+  let x = (h ^ Math.imul(salt | 1, 0x9E3779B1)) >>> 0;
+  x = (x ^ (x >>> 16)) >>> 0; x = Math.imul(x, 0x7FEB352D) >>> 0;
+  x = (x ^ (x >>> 15)) >>> 0; x = Math.imul(x, 0x846CA68B) >>> 0;
+  x = (x ^ (x >>> 16)) >>> 0;
+  return x >>> 0;
+}
+const nvf = (name: string, salt: number, amt: number): number =>
+  1 + (mixF(nseedF(name), salt) / 4294967296 - 0.5) * 2 * amt;
+const rngF = (g: G, name: string, salt: number): (() => number) =>
+  mulberry32((((g.seed as number) ^ mixF(nseedF(name), salt)) >>> 0));
+
+function leafGrad(c: Ctx, p: Pal, x: number, y: number, r: number): CanvasGradient {
+  const gg = c.createRadialGradient(x - r * 0.32, y - r * 0.36, 1, x, y, r * 1.2);
+  gg.addColorStop(0, p.lit); gg.addColorStop(0.56, p.base); gg.addColorStop(1, p.dark);
+  return gg;
+}
+function softMark(c: Ctx, x: number, y: number, rx: number, ry: number, rgb: string, a: number, rot = 0): void {
+  c.save(); c.translate(x, y); c.rotate(rot); c.scale(1, ry / rx);
+  const gg = c.createRadialGradient(0, 0, rx * 0.1, 0, 0, rx);
+  gg.addColorStop(0, `rgba(${rgb},${a})`); gg.addColorStop(0.55, `rgba(${rgb},${a * 0.8})`);
+  gg.addColorStop(0.82, `rgba(${rgb},${a * 0.32})`); gg.addColorStop(1, `rgba(${rgb},0)`);
+  c.fillStyle = gg; c.beginPath(); c.arc(0, 0, rx, 0, TAU); c.fill(); c.restore();
+}
+function ground(c: Ctx, cx: number, cy: number, rx: number): void {
+  c.fillStyle = 'rgba(0,0,0,0.42)';
+  c.beginPath(); c.ellipse(cx, cy, rx, S * 0.024, 0, 0, TAU); c.fill();
+}
+
+export interface PlantSpec {
+  habit: 'tree' | 'shrub' | 'herb' | 'grass' | 'vine' | 'succulent' | 'fern' | 'aquatic' | 'rosette' | 'palm' | 'cane';
+  leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad';
+  flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin';
+  fruit?: 'none' | 'berry' | 'drupe' | 'pome' | 'citrus' | 'pod' | 'nut' | 'cone' | 'grain' | 'melon' | 'fig' | 'cluster';
+  fhue?: string;      /** flower/fruit colour where colour IS the identity */
+  thorns?: boolean;
+  tall?: boolean;
+}
+
+/** one leaf, drawn along a direction — the shape IS the family */
+function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number, kind: PlantSpec['leaf']): void {
+  c.save(); c.translate(x, y); c.rotate(ang);
+  const w = len * (kind === 'lance' ? 0.16 : kind === 'blade' ? 0.09 : kind === 'heart' ? 0.52 : 0.34);
+  c.fillStyle = leafGrad(c, p, len * 0.45, 0, len * 0.5);
+  if (kind === 'needle' || kind === 'scale') {
+    c.strokeStyle = p.base; c.lineWidth = Math.max(2, len * 0.07); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(0, 0); c.lineTo(len, 0); c.stroke();
+    c.restore(); return;
+  }
+  if (kind === 'pinnate') {   /* a compound leaf: leaflets in pairs up a rachis */
+    c.strokeStyle = p.dark; c.lineWidth = Math.max(1.6, len * 0.045);
+    c.beginPath(); c.moveTo(0, 0); c.lineTo(len, 0); c.stroke();
+    for (let i = 1; i <= 6; i++) {
+      const u = i / 6.5, lx = len * u, ll = len * 0.26 * (1 - u * 0.35);
+      for (const s of [-1, 1] as const) {
+        c.fillStyle = leafGrad(c, p, lx, s * ll * 0.5, ll);
+        c.beginPath(); c.ellipse(lx + ll * 0.25, s * ll * 0.55, ll * 0.42, ll * 0.20, s * 0.5, 0, TAU); c.fill();
+      }
+    }
+    c.restore(); return;
+  }
+  if (kind === 'palmate') {   /* fingers from one point — maple, castor, cassava */
+    for (let i = -2; i <= 2; i++) {
+      c.save(); c.rotate(i * 0.42);
+      c.fillStyle = leafGrad(c, p, len * 0.5, 0, len * 0.42);
+      c.beginPath(); c.moveTo(0, 0);
+      c.quadraticCurveTo(len * 0.5, -len * 0.20, len * (0.94 - Math.abs(i) * 0.10), 0);
+      c.quadraticCurveTo(len * 0.5, len * 0.20, 0, 0);
+      c.closePath(); c.fill(); c.restore();
+    }
+    c.restore(); return;
+  }
+  if (kind === 'frond') {   /* an arching fern/palm frond */
+    c.strokeStyle = p.dark; c.lineWidth = Math.max(2, len * 0.05);
+    c.beginPath(); c.moveTo(0, 0); c.quadraticCurveTo(len * 0.55, -len * 0.12, len, len * 0.20); c.stroke();
+    for (let i = 1; i <= 11; i++) {
+      const u = i / 12;
+      const px = len * u, py = -len * 0.12 * Math.sin(u * Math.PI) + len * 0.20 * u * u;
+      const ll = len * 0.22 * Math.sin(Math.PI * u) + len * 0.05;
+      for (const s of [-1, 1] as const) {
+        c.fillStyle = leafGrad(c, p, px + ll * 0.3, py + s * ll * 0.5, ll * 0.7);
+        c.save(); c.translate(px, py); c.rotate(s * 1.05);
+        c.beginPath(); c.ellipse(ll * 0.55, 0, ll * 0.62, ll * 0.24, 0, 0, TAU); c.fill();
+        c.restore();
+      }
+    }
+    c.restore(); return;
+  }
+  if (kind === 'pad') {   /* a succulent's thick water-storing pad */
+    c.fillStyle = leafGrad(c, p, len * 0.5, 0, len * 0.5);
+    c.beginPath(); c.ellipse(len * 0.5, 0, len * 0.5, len * 0.30, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(240,250,240,0.30)'; c.lineWidth = 1.6;
+    c.beginPath(); c.ellipse(len * 0.5, 0, len * 0.5, len * 0.30, 0, -2.6, 0.4); c.stroke();
+    c.restore(); return;
+  }
+  /* broad · lance · blade · heart — one blade with a midrib */
+  c.beginPath();
+  c.moveTo(0, 0);
+  if (kind === 'heart') {
+    c.bezierCurveTo(len * 0.30, -w * 1.5, len * 1.12, -w * 0.9, len, 0);
+    c.bezierCurveTo(len * 1.12, w * 0.9, len * 0.30, w * 1.5, 0, 0);
+  } else {
+    c.quadraticCurveTo(len * 0.42, -w, len, 0);
+    c.quadraticCurveTo(len * 0.42, w, 0, 0);
+  }
+  c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(20,32,18,0.34)'; c.lineWidth = 1.5;
+  c.beginPath(); c.moveTo(0, 0); c.lineTo(len * 0.94, 0); c.stroke();
+  c.restore();
+}
+
+function drawFruit(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNullable<PlantSpec['fruit']>, hue: string | undefined, r: () => number): void {
+  const col = hue ?? '#c2452f';
+  const shade = (xx: number, yy: number, rr: number): CanvasGradient => {
+    const gg = c.createRadialGradient(xx - rr * 0.35, yy - rr * 0.4, 1, xx, yy, rr * 1.15);
+    gg.addColorStop(0, 'rgba(255,255,255,0.55)'); gg.addColorStop(0.42, col); gg.addColorStop(1, 'rgba(0,0,0,0.45)');
+    return gg;
+  };
+  if (kind === 'berry' || kind === 'cluster') {
+    const n = kind === 'cluster' ? 11 : 5;
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * TAU, d = R * (kind === 'cluster' ? 0.9 : 0.6) * (0.4 + r() * 0.6);
+      const bx = x + Math.cos(a) * d, by = y + Math.sin(a) * d * 0.8;
+      c.fillStyle = shade(bx, by, R * 0.34);
+      c.beginPath(); c.arc(bx, by, R * 0.34, 0, TAU); c.fill();
+    }
+  } else if (kind === 'pome' || kind === 'drupe' || kind === 'citrus' || kind === 'melon' || kind === 'fig') {
+    const rr = R * (kind === 'melon' ? 1.25 : kind === 'fig' ? 0.85 : 0.95);
+    c.fillStyle = shade(x, y, rr);
+    c.beginPath(); c.ellipse(x, y, rr, rr * (kind === 'fig' ? 1.15 : kind === 'citrus' ? 0.95 : 1.02), 0, 0, TAU); c.fill();
+    if (kind === 'melon') { c.strokeStyle = 'rgba(20,40,20,0.35)'; c.lineWidth = 2; for (let i = -1; i <= 1; i++) { c.beginPath(); c.ellipse(x, y, rr * (0.35 + i * 0.28), rr, 0, 0, TAU); c.stroke(); } }
+    if (kind === 'citrus') softMark(c, x - rr * 0.3, y - rr * 0.35, rr * 0.4, rr * 0.3, '255,255,220', 0.35);
+    c.strokeStyle = '#4a3a22'; c.lineWidth = 2.4; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(x, y - rr * 0.95); c.lineTo(x + rr * 0.16, y - rr * 1.45); c.stroke();
+  } else if (kind === 'pod') {
+    c.fillStyle = shade(x, y, R * 0.8);
+    c.save(); c.translate(x, y); c.rotate(0.5);
+    c.beginPath(); c.ellipse(0, 0, R * 1.1, R * 0.26, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(30,26,12,0.35)'; c.lineWidth = 1.6;
+    for (let i = -2; i <= 2; i++) { c.beginPath(); c.arc(i * R * 0.4, 0, R * 0.16, 0, TAU); c.stroke(); }
+    c.restore();
+  } else if (kind === 'nut') {
+    c.fillStyle = shade(x, y, R * 0.7);
+    c.beginPath(); c.ellipse(x, y, R * 0.62, R * 0.72, 0, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(40,30,16,0.5)';
+    c.beginPath(); c.ellipse(x, y + R * 0.42, R * 0.5, R * 0.26, 0, 0, TAU); c.fill();
+  } else if (kind === 'cone') {
+    c.fillStyle = '#6b4b2a';
+    for (let i = 0; i < 6; i++) {
+      const yy = y - R * 0.7 + i * R * 0.28;
+      c.beginPath(); c.ellipse(x, yy, R * (0.50 - i * 0.05), R * 0.17, 0, 0, TAU); c.fill();
+    }
+  } else if (kind === 'grain') {
+    c.fillStyle = col;
+    for (let i = 0; i < 12; i++) {
+      const yy = y - R * 1.2 + i * R * 0.22;
+      for (const s of [-1, 1] as const) {
+        c.beginPath(); c.ellipse(x + s * R * 0.20, yy, R * 0.16, R * 0.09, s * 0.5, 0, TAU); c.fill();
+      }
+    }
+    c.strokeStyle = col; c.lineWidth = 1.6;   /* the awns */
+    for (let i = 0; i < 7; i++) { c.beginPath(); c.moveTo(x, y - R * 1.2); c.lineTo(x + (i - 3) * R * 0.16, y - R * 2.1); c.stroke(); }
+  }
+}
+
+function drawFlower(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNullable<PlantSpec['flower']>, hue: string | undefined, r: () => number): void {
+  const col = hue ?? '#e6d98f';
+  if (kind === 'head') {          /* a composite: ray florets round a disc */
+    const n = 12;
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * TAU;
+      c.fillStyle = col;
+      c.save(); c.translate(x, y); c.rotate(a);
+      c.beginPath(); c.ellipse(R * 0.62, 0, R * 0.46, R * 0.17, 0, 0, TAU); c.fill();
+      c.restore();
+    }
+    c.fillStyle = '#6b5320'; c.beginPath(); c.arc(x, y, R * 0.34, 0, TAU); c.fill();
+    softMark(c, x, y, R * 0.30, R * 0.30, '40,30,10', 0.4);
+  } else if (kind === 'spike' || kind === 'catkin') {
+    for (let i = 0; i < 9; i++) {
+      const yy = y - R * 1.4 + i * R * 0.32;
+      c.fillStyle = col;
+      c.beginPath(); c.ellipse(x + (r() - 0.5) * R * 0.2, yy, R * (kind === 'catkin' ? 0.22 : 0.26), R * 0.17, 0, 0, TAU); c.fill();
+    }
+  } else if (kind === 'umbel') {
+    c.strokeStyle = p.dark; c.lineWidth = 1.6;
+    for (let i = 0; i < 11; i++) {
+      const a = -2.6 + (i / 10) * 2.0, ex = x + Math.cos(a) * R * 0.95, ey = y + Math.sin(a) * R * 0.72;
+      c.beginPath(); c.moveTo(x, y); c.lineTo(ex, ey); c.stroke();
+      c.fillStyle = col; c.beginPath(); c.arc(ex, ey, R * 0.18, 0, TAU); c.fill();
+    }
+  } else if (kind === 'bell') {
+    for (let i = 0; i < 4; i++) {
+      const yy = y - R * 0.8 + i * R * 0.55, xx = x + (i % 2 ? R * 0.28 : -R * 0.28);
+      c.fillStyle = col;
+      c.beginPath(); c.moveTo(xx - R * 0.24, yy);
+      c.quadraticCurveTo(xx - R * 0.30, yy + R * 0.62, xx, yy + R * 0.68);
+      c.quadraticCurveTo(xx + R * 0.30, yy + R * 0.62, xx + R * 0.24, yy);
+      c.closePath(); c.fill();
+    }
+  } else if (kind === 'star') {
+    for (let i = 0; i < 6; i++) {
+      const a = (i / 6) * TAU;
+      c.fillStyle = col;
+      c.save(); c.translate(x, y); c.rotate(a);
+      c.beginPath(); c.moveTo(0, 0);
+      c.quadraticCurveTo(R * 0.45, -R * 0.34, R, 0);
+      c.quadraticCurveTo(R * 0.45, R * 0.34, 0, 0);
+      c.closePath(); c.fill(); c.restore();
+    }
+    c.fillStyle = '#f3e6a8'; c.beginPath(); c.arc(x, y, R * 0.20, 0, TAU); c.fill();
+  }
+}
+
+/** THE PLANT. One body; the spec is the species. */
+export function plantBody(c: Ctx, g: G, p: Pal, spec: PlantSpec, name = ''): void {
+  const r = rngF(g, name, 0x9101);
+  const cx = S * 0.50, base = S * 0.84;
+  /* RATIOS, never scales — the fit pass erases a size-only difference */
+  const H = S * (spec.tall ? 0.62 : 0.52) * nvf(name, 0x11, 0.14);
+  const spread = nvf(name, 0x22, 0.20);
+  const leafN = Math.max(5, Math.round((spec.habit === 'grass' ? 13 : 9) * nvf(name, 0x33, 0.30)));
+  const lean = (nvf(name, 0x44, 1) - 1) * 0.20;
+  ground(c, cx, base + 4, S * 0.17 * spread);
+
+  const stemCol = `rgb(${Math.max(30, p.cr * 0.5 | 0)},${Math.max(34, p.cg * 0.42 + 24 | 0)},${Math.max(24, p.cb * 0.35 | 0)})`;
+  const topY = base - H;
+
+  if (spec.habit === 'tree' || spec.habit === 'palm') {
+    /* A TREE IS A TRUNK HOLDING A CANOPY — and the trunk TAPERS and forks,
+       which is what stops it reading as a lollipop on a stick. */
+    const tw = S * 0.030 * nvf(name, 0x55, 0.24);
+    c.strokeStyle = stemCol; c.lineCap = 'round';
+    c.lineWidth = tw * 2;
+    c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.05, base - H * 0.5, cx + lean * S * 0.10, topY + H * 0.22); c.stroke();
+    c.lineWidth = tw * 1.15;
+    for (const s of [-1, 1] as const) {   /* two boughs into the canopy */
+      c.beginPath(); c.moveTo(cx + lean * S * 0.06, base - H * 0.45);
+      c.quadraticCurveTo(cx + s * S * 0.05, base - H * 0.72, cx + s * S * 0.085 * spread, topY + H * 0.20); c.stroke();
+    }
+    if (spec.habit === 'palm') {   /* a palm has NO canopy: a crown of fronds */
+      for (let i = 0; i < 8; i++) {
+        const a = -Math.PI / 2 + (i - 3.5) * 0.42;
+        drawLeaf(c, p, cx + lean * S * 0.10, topY + H * 0.18, a, H * 0.46 * spread, 'frond');
+      }
+      if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, cx + lean * S * 0.10, topY + H * 0.24, S * 0.032, spec.fruit, spec.fhue, r);
+    } else {
+      /* the canopy: overlapping soft masses, then leaves on the rim, so the
+         crown has depth instead of being one flat blob */
+      const cw = S * 0.21 * spread, chh = S * 0.16 * nvf(name, 0x66, 0.22);
+      const ccx = cx + lean * S * 0.10, ccy = topY + H * 0.14;
+      /* pass 1 — the deep mass that gives the crown a body */
+      for (let i = 0; i < 34; i++) {
+        const a = r() * TAU, d = r() ** 0.6;
+        softMark(c, ccx + Math.cos(a) * cw * d, ccy + Math.sin(a) * chh * d,
+          cw * 0.50, chh * 0.50, `${Math.max(0, p.cr * 0.55 | 0)},${Math.max(0, p.cg * 0.6 | 0)},${Math.max(0, p.cb * 0.5 | 0)}`, 0.62);
+      }
+      /* pass 2 — the lit upper surface, offset toward the light */
+      for (let i = 0; i < 22; i++) {
+        const a = r() * TAU, d = r() ** 0.7;
+        softMark(c, ccx + Math.cos(a) * cw * 0.78 * d - cw * 0.10, ccy + Math.sin(a) * chh * 0.72 * d - chh * 0.22,
+          cw * 0.36, chh * 0.36, `${p.cr},${p.cg},${p.cb}`, 0.5);
+      }
+      /* pass 3 — leaves ON THE RIM, which is where a crown's silhouette is */
+      const leafL = S * 0.078 * nvf(name, 0x77, 0.2);
+      for (let i = 0; i < leafN * 3 + 16; i++) {
+        /* fill the WHOLE crown, not just its fringe — leaves only on the
+           rim left the middle as bare soft-mask haze */
+        const a = r() * TAU, d = 0.30 + r() ** 0.55 * 0.78;
+        const lx = ccx + Math.cos(a) * cw * d, ly = ccy + Math.sin(a) * chh * d;
+        drawLeaf(c, p, lx, ly, a + (r() - 0.5) * 0.8, leafL * (0.7 + r() * 0.5), spec.leaf);
+      }
+      if (spec.flower && spec.flower !== 'none') {
+        for (let i = 0; i < 5; i++) {
+          const a = r() * TAU, d = 0.4 + r() * 0.6;
+          drawFlower(c, p, cx + Math.cos(a) * cw * d + lean * S * 0.10, topY + H * 0.14 + Math.sin(a) * chh * d, S * 0.030, spec.flower, spec.fhue, r);
+        }
+      }
+      if (spec.fruit && spec.fruit !== 'none') {
+        for (let i = 0; i < 4; i++) {
+          const a = r() * TAU, d = 0.45 + r() * 0.55;
+          drawFruit(c, p, cx + Math.cos(a) * cw * d + lean * S * 0.10, topY + H * 0.16 + Math.sin(a) * chh * d, S * 0.034, spec.fruit, spec.fhue, r);
+        }
+      }
+    }
+  } else if (spec.habit === 'shrub') {
+    /* MANY STEMS FROM THE GROUND — that is the whole difference from a tree */
+    const stems = 5;
+    for (let k = 0; k < stems; k++) {
+      const s = (k - (stems - 1) / 2) / stems;
+      const tipX = cx + s * S * 0.16 * spread * 2, tipY = base - H * (0.72 + r() * 0.28);
+      c.strokeStyle = stemCol; c.lineWidth = S * 0.010; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(cx + s * S * 0.02, base); c.quadraticCurveTo(cx + s * S * 0.10, base - H * 0.5, tipX, tipY); c.stroke();
+      for (let i = 0; i < leafN; i++) {
+        const u = 0.25 + (i / leafN) * 0.75;
+        const lx = cx + s * S * 0.02 + (tipX - cx - s * S * 0.02) * u;
+        const ly = base + (tipY - base) * u;
+        drawLeaf(c, p, lx, ly, (i % 2 ? -0.7 : -2.4) + s, S * 0.062 * nvf(name, 0x77, 0.2), spec.leaf);
+      }
+      if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, tipX, tipY + S * 0.012, S * 0.030, spec.fruit, spec.fhue, r);
+      if (spec.flower && spec.flower !== 'none') drawFlower(c, p, tipX, tipY - S * 0.010, S * 0.028, spec.flower, spec.fhue, r);
+    }
+  } else if (spec.habit === 'grass' || spec.habit === 'cane') {
+    /* BLADES FROM A CROWN, arcing outward and drooping at the tip */
+    const cane = spec.habit === 'cane';
+    for (let i = 0; i < leafN + 4; i++) {
+      const u = (i / (leafN + 3)) - 0.5;
+      const a = -Math.PI / 2 + u * 1.5 * spread;
+      const L = H * (0.72 + r() * 0.4);
+      const tipX = cx + Math.cos(a) * L * 1.1, tipY = base - L * (0.72 - Math.abs(u) * 0.5);
+      const midX = cx + Math.cos(a) * L * 0.5, midY = base - L * 0.72;
+      if (cane) {
+        c.strokeStyle = i % 2 ? p.base : p.dark; c.lineWidth = S * 0.014; c.lineCap = 'round';
+        c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(midX, midY, tipX, tipY); c.stroke();
+      } else {
+        /* a filled blade: wide at the crown, tapering to a drooping point */
+        const wBase = S * 0.016 * (0.7 + Math.abs(u) * 0.3);
+        c.fillStyle = leafGrad(c, p, midX, midY, L * 0.5);
+        c.beginPath();
+        c.moveTo(cx - wBase, base);
+        c.quadraticCurveTo(midX - wBase * 0.4, midY, tipX, tipY);
+        c.quadraticCurveTo(midX + wBase * 0.6, midY + wBase * 0.6, cx + wBase, base);
+        c.closePath(); c.fill();
+        c.strokeStyle = 'rgba(20,32,18,0.24)'; c.lineWidth = 1.2;
+        c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(midX, midY, tipX, tipY); c.stroke();
+      }
+      if (cane) {   /* the nodes of a bamboo/reed culm */
+        c.strokeStyle = p.lit; c.lineWidth = S * 0.004;
+        for (let k = 1; k <= 4; k++) {
+          const v = k / 5;
+          c.beginPath();
+          c.moveTo(cx + Math.cos(a) * L * 0.55 * v - 5, base - L * 0.72 * v);
+          c.lineTo(cx + Math.cos(a) * L * 0.55 * v + 5, base - L * 0.72 * v); c.stroke();
+        }
+      }
+    }
+    if (spec.fruit === 'grain') drawFruit(c, p, cx + S * 0.02, base - H * 0.92, S * 0.034, 'grain', spec.fhue, r);
+    else if (spec.flower && spec.flower !== 'none') drawFlower(c, p, cx, base - H * 0.92, S * 0.030, spec.flower, spec.fhue, r);
+  } else if (spec.habit === 'vine') {
+    /* A VINE HANGS AND CLINGS — a sinuous stem with tendrils, not a stalk */
+    c.strokeStyle = stemCol; c.lineWidth = S * 0.011; c.lineCap = 'round';
+    const pts: Array<[number, number]> = [];
+    for (let i = 0; i <= 24; i++) {
+      const u = i / 24;
+      pts.push([cx + Math.sin(u * 6.0 + lean) * S * 0.11 * spread, base - u * H]);
+    }
+    c.beginPath(); c.moveTo(pts[0]![0], pts[0]![1]);
+    for (let i = 1; i < pts.length; i++) c.lineTo(pts[i]![0], pts[i]![1]);
+    c.stroke();
+    for (let i = 2; i < pts.length; i += 3) {
+      const [x, y] = pts[i]!;
+      drawLeaf(c, p, x, y, (i % 2 ? 0.3 : Math.PI - 0.3), S * 0.070 * nvf(name, 0x77, 0.2), spec.leaf);
+      c.strokeStyle = p.dark; c.lineWidth = 2;   /* the tendril */
+      c.beginPath();
+      for (let k = 0; k < 12; k++) {
+        const a = k * 0.9, rr = 5 + k * 0.6;
+        c.lineTo(x + (i % 2 ? -1 : 1) * (14 + Math.cos(a) * rr), y + Math.sin(a) * rr * 0.5);
+      }
+      c.stroke();
+      c.strokeStyle = stemCol; c.lineWidth = S * 0.011;
+    }
+    if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, pts[16]![0] + S * 0.03, pts[16]![1], S * 0.034, spec.fruit, spec.fhue, r);
+  } else if (spec.habit === 'succulent') {
+    /* THE PLANT IS ITS OWN WATER TANK: thick pads or a ribbed column */
+    if (spec.leaf === 'pad') {
+      for (let i = 0; i < 4; i++) {
+        const a = -Math.PI / 2 + (i - 1.5) * 0.55;
+        drawLeaf(c, p, cx, base - H * 0.12, a, H * 0.55 * spread, 'pad');
+      }
+    } else {
+      const w = S * 0.055 * spread;
+      const gg = c.createLinearGradient(cx - w, 0, cx + w, 0);
+      gg.addColorStop(0, p.dark); gg.addColorStop(0.42, p.base); gg.addColorStop(1, p.dark);
+      c.fillStyle = gg;
+      c.beginPath();
+      c.moveTo(cx - w, base);
+      c.quadraticCurveTo(cx - w * 1.1, base - H * 0.6, cx, base - H);
+      c.quadraticCurveTo(cx + w * 1.1, base - H * 0.6, cx + w, base);
+      c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(20,40,20,0.30)'; c.lineWidth = 2;
+      for (let i = -2; i <= 2; i++) {
+        c.beginPath(); c.moveTo(cx + i * w * 0.36, base);
+        c.quadraticCurveTo(cx + i * w * 0.30, base - H * 0.6, cx + i * w * 0.10, base - H * 0.95); c.stroke();
+      }
+      if (spec.thorns) {
+        c.strokeStyle = '#e8dcbe'; c.lineWidth = 1.8;
+        for (let i = 0; i < 26; i++) {
+          const u = r(), yy = base - u * H, s = r() < 0.5 ? -1 : 1;
+          const xx = cx + s * w * (1 - u * 0.35);
+          c.beginPath(); c.moveTo(xx, yy); c.lineTo(xx + s * 9, yy - 4); c.stroke();
+        }
+      }
+    }
+    if (spec.flower && spec.flower !== 'none') drawFlower(c, p, cx, base - H * 1.02, S * 0.032, spec.flower, spec.fhue, r);
+    if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, cx + S * 0.03, base - H * 0.9, S * 0.030, spec.fruit, spec.fhue, r);
+  } else if (spec.habit === 'fern') {
+    for (let i = 0; i < 7; i++) {
+      const a = -Math.PI / 2 + (i - 3) * 0.36 * spread;
+      drawLeaf(c, p, cx, base - S * 0.02, a, H * 0.80, 'frond');
+    }
+    /* the fiddlehead — a fern's own signature, a frond still rolled up */
+    c.strokeStyle = p.lit; c.lineWidth = S * 0.010; c.lineCap = 'round';
+    c.beginPath();
+    for (let k = 0; k < 18; k++) {
+      const a = k * 0.55, rr = S * 0.030 * (1 - k / 22);
+      c.lineTo(cx + S * 0.075 + Math.cos(a) * rr, base - H * 0.52 + Math.sin(a) * rr);
+    }
+    c.stroke();
+  } else if (spec.habit === 'aquatic') {
+    /* held up by water, not by wood: straps rising from a holdfast */
+    for (let i = 0; i < leafN; i++) {
+      const u = (i / (leafN - 1)) - 0.5;
+      c.strokeStyle = i % 2 ? p.base : p.dark;
+      c.lineWidth = S * (spec.leaf === 'blade' ? 0.030 : 0.018);   /* a STRAP has width */
+      c.lineCap = 'round'; c.lineJoin = 'round';
+      const sway = u * S * 0.17 * spread;
+      c.beginPath(); c.moveTo(cx + u * S * 0.02, base);
+      c.bezierCurveTo(cx + sway * 0.5, base - H * 0.40,
+        cx + sway * 1.25, base - H * 0.74, cx + sway * 0.85, base - H * (0.92 + r() * 0.12));
+      c.stroke();
+      c.strokeStyle = 'rgba(255,255,255,0.12)'; c.lineWidth = S * 0.008;   /* the wet sheen */
+      c.beginPath(); c.moveTo(cx + u * S * 0.02, base);
+      c.bezierCurveTo(cx + sway * 0.5, base - H * 0.40,
+        cx + sway * 1.25, base - H * 0.74, cx + sway * 0.85, base - H * (0.92 + r() * 0.12));
+      c.stroke();
+      if (spec.leaf === 'blade') {   /* the gas bladders of a kelp */
+        for (let k = 1; k <= 3; k++) {
+          const v = k / 4;
+          c.fillStyle = p.lit;
+          c.beginPath(); c.ellipse(cx + u * S * 0.12 * spread * v, base - H * v, S * 0.011, S * 0.017, 0, 0, TAU); c.fill();
+        }
+      }
+    }
+  } else if (spec.habit === 'rosette') {
+    /* leaves radiating from a crown at ground level — dandelion, aloe, cabbage */
+    for (let i = 0; i < leafN + 3; i++) {
+      const a = -Math.PI / 2 + ((i / (leafN + 2)) - 0.5) * 2.6 * spread;
+      drawLeaf(c, p, cx, base - S * 0.015, a, H * (0.52 + r() * 0.22), spec.leaf);
+    }
+    if (spec.flower && spec.flower !== 'none') {
+      c.strokeStyle = stemCol; c.lineWidth = S * 0.008;
+      c.beginPath(); c.moveTo(cx, base - S * 0.02); c.lineTo(cx + lean * S * 0.04, base - H * 0.95); c.stroke();
+      drawFlower(c, p, cx + lean * S * 0.04, base - H * 1.0, S * 0.036, spec.flower, spec.fhue, r);
+    }
+    if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, cx + S * 0.035, base - H * 0.35, S * 0.032, spec.fruit, spec.fhue, r);
+  } else {
+    /* HERB: an upright stem with paired leaves and a terminal flower */
+    c.strokeStyle = stemCol; c.lineWidth = S * 0.009; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.04, base - H * 0.5, cx + lean * S * 0.06, base - H); c.stroke();
+    for (let i = 0; i < leafN; i++) {
+      const u = 0.15 + (i / leafN) * 0.78;
+      const sx = cx + lean * S * 0.06 * u, sy = base - H * u;
+      for (const s of [-1, 1] as const) {
+        drawLeaf(c, p, sx, sy, s < 0 ? Math.PI + 0.45 : -0.45, S * 0.062 * spread * nvf(name, 0x77, 0.2), spec.leaf);
+      }
+    }
+    if (spec.flower && spec.flower !== 'none') drawFlower(c, p, cx + lean * S * 0.06, base - H * 1.02, S * 0.036, spec.flower, spec.fhue, r);
+    if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, cx + lean * S * 0.06, base - H * 0.92, S * 0.032, spec.fruit, spec.fhue, r);
+  }
+}
