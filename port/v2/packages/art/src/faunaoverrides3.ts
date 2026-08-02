@@ -226,25 +226,33 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     }
   }
   if (spec.dorsal === 'none' && (spec.profile === 'eel' || spec.profile === 'ribbon')) {
-    /* the continuous median fin — an eel's whole read */
-    c.fillStyle = `rgba(${p.cr},${p.cg},${p.cb},0.72)`;
+    /* THE CONTINUOUS MEDIAN FIN. The first cut filled a body-coloured shape
+       extending 0.72·depth past a thin eel at 0.72 alpha — its lower lobe
+       floated below the belly and read as a translucent SECOND eel (Nick's
+       "going off the animal"). It is now a low pale MEMBRANE that HUGS the
+       edge: a soft frill reaching only ~0.30·depth, translucent and lit, so
+       it belongs to the body instead of doubling it. */
+    const fin = `rgba(${Math.min(255, p.cr * 0.6 + 90 | 0)},${Math.min(255, p.cg * 0.6 + 96 | 0)},${Math.min(255, p.cb * 0.6 + 110 | 0)},0.34)`;
     for (const side of [-1, 1] as const) {
+      c.fillStyle = fin;
       c.beginPath();
       for (let i = 0; i <= 30; i++) {
-        const tt = 0.06 + (0.84 * i) / 30;
+        const tt = 0.08 + (0.80 * i) / 30;
         const x = ped + (nose - ped) * tt;
         const h = heightAt(spec.profile, tt, depth);
-        const y = cy + side * h * (side < 0 ? 1.04 : 0.92);
+        const y = cy + side * h * (side < 0 ? 1.02 : 0.94);
         if (!i) c.moveTo(x, y);
-        else c.lineTo(x, y + side * depth * (0.42 + 0.30 * Math.sin(tt * Math.PI)));
+        else c.lineTo(x, y + side * depth * 0.30 * Math.sin(tt * Math.PI));   /* hugs, ≤0.30·depth */
       }
       for (let i = 30; i >= 0; i--) {
-        const tt = 0.06 + (0.84 * i) / 30;
+        const tt = 0.08 + (0.80 * i) / 30;
         const x = ped + (nose - ped) * tt;
         const h = heightAt(spec.profile, tt, depth);
-        c.lineTo(x, cy + side * h * (side < 0 ? 1.04 : 0.92));
+        c.lineTo(x, cy + side * h * (side < 0 ? 1.02 : 0.94));
       }
       c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(230,240,255,0.20)'; c.lineWidth = 1;   /* the fin's soft edge */
+      c.stroke();
     }
   }
   /* the anal fin, mirrored below */

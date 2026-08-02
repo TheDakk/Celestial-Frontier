@@ -349,7 +349,7 @@ export function myriapod(c: Ctx, g: G, p: Pal, opts: { flat?: boolean; coil?: bo
   for (let i = 0; i < N; i += 1) {
     if (r() < 0.45) continue;
     const [sx2, sy2] = path(i);
-    softMark(c, sx2, sy2 - segR * 0.2, segR * (0.5 + r() * 0.4), segR * (0.3 + r() * 0.3),
+    softMark(c, sx2, sy2 - segR * 0.15, segR * (0.35 + r() * 0.25), segR * (0.25 + r() * 0.2),
       r() < 0.5 ? '22,16,10' : '248,240,220', 0.10 + r() * 0.12);
   }
   if (opts.flat) {   /* the centipede's venom claws */
@@ -480,14 +480,17 @@ export function shrimpBody(c: Ctx, g: G, p: Pal, opts: { claws?: boolean; stout?
     c.beginPath(); c.moveTo(ox, cy + h * 0.7); c.lineTo(ox - h * 0.3, cy + h * 1.9); c.stroke();
   }
   eyeDot(c, cx - L * 0.62, cy - h * 0.5, h * 0.24);
-  /* CARAPACE SPECKLE — the mottling that separates one crustacean from the
-     next when both are the same silhouette */
+  /* CARAPACE SPECKLE — CLIPPED to the carapace it decorates, so no mark
+     can drift off the body (Nick's artifact report) */
+  c.save();
+  c.beginPath(); c.ellipse(cx - L * 0.18, cy - h * 0.18, h * 1.55, h * 1.15, -0.16, 0, TAU); c.clip();
   for (let i = 0; i < 20; i++) {
     const a = r() * TAU, d = r() ** 0.7;
-    softMark(c, cx - L * 0.18 + Math.cos(a) * h * 1.4 * d, cy - h * 0.18 + Math.sin(a) * h * d,
+    softMark(c, cx - L * 0.18 + Math.cos(a) * h * 1.3 * d, cy - h * 0.18 + Math.sin(a) * h * 0.9 * d,
       h * (0.14 + r() * 0.16), h * (0.10 + r() * 0.12),
       r() < 0.55 ? '26,18,12' : '250,240,220', 0.10 + r() * 0.14);
   }
+  c.restore();
 }
 
 /* ═══════════════ SOFT BODIES ═══════════════ */

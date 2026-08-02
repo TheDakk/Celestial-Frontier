@@ -105,17 +105,24 @@ function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number
     }
     c.restore(); return;
   }
-  if (kind === 'frond') {   /* an arching fern/palm frond */
-    c.strokeStyle = p.dark; c.lineWidth = Math.max(2, len * 0.05);
-    c.beginPath(); c.moveTo(0, 0); c.quadraticCurveTo(len * 0.55, -len * 0.12, len, len * 0.20); c.stroke();
-    for (let i = 1; i <= 11; i++) {
-      const u = i / 12;
-      const px = len * u, py = -len * 0.12 * Math.sin(u * Math.PI) + len * 0.20 * u * u;
-      const ll = len * 0.22 * Math.sin(Math.PI * u) + len * 0.05;
+  if (kind === 'frond') {   /* an arching, feathered fern/palm frond */
+    /* the rachis */
+    c.strokeStyle = p.dark; c.lineWidth = Math.max(2.5, len * 0.045); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(0, 0); c.quadraticCurveTo(len * 0.5, -len * 0.18, len, len * 0.10); c.stroke();
+    /* pinnae as overlapping tapered blades at a SHALLOW angle, so they merge
+       into a feather rather than sticking out as spikes */
+    for (let i = 1; i <= 16; i++) {
+      const u = i / 17;
+      const px = len * u, py = -len * 0.18 * Math.sin(u * Math.PI) + len * 0.10 * u * u;
+      const ll = (len * 0.30 * Math.sin(Math.PI * u) + len * 0.05);
       for (const s of [-1, 1] as const) {
-        c.fillStyle = leafGrad(c, p, px + ll * 0.3, py + s * ll * 0.5, ll * 0.7);
-        c.save(); c.translate(px, py); c.rotate(s * 1.05);
-        c.beginPath(); c.ellipse(ll * 0.55, 0, ll * 0.62, ll * 0.24, 0, 0, TAU); c.fill();
+        c.save(); c.translate(px, py); c.rotate(s * 0.42 - 0.15);
+        c.fillStyle = leafGrad(c, p, ll * 0.5, 0, ll * 0.6);
+        c.beginPath();
+        c.moveTo(0, 0);
+        c.quadraticCurveTo(ll * 0.5, -ll * 0.14, ll, 0);
+        c.quadraticCurveTo(ll * 0.5, ll * 0.10, 0, 0);
+        c.closePath(); c.fill();
         c.restore();
       }
     }
@@ -284,26 +291,44 @@ export function plantBody(c: Ctx, g: G, p: Pal, spec: PlantSpec, name = ''): voi
          crown has depth instead of being one flat blob */
       const cw = S * 0.21 * spread, chh = S * 0.16 * nvf(name, 0x66, 0.22);
       const ccx = cx + lean * S * 0.10, ccy = topY + H * 0.14;
+      /* foliage TONES with their own value structure, independent of how pale
+         the species hue is — the fix for pale-palette "mop" crowns (task 21).
+         A leaf canopy is never lighter than mid-value even when its flowers
+         are white, so the hue is scaled toward fixed dark/mid/light values
+         and biased slightly green, which is what makes a canopy read. */
+      /* a foliage GREEN, tinted 40% by the species hue — always reads as
+         leaves, keeps some palette variety (a 'blue' tree goes teal, a 'red'
+         tree olive) */
+      const gA = [52, 104, 44];
+      const fmix = (ch: number, anchor: number): number => anchor * 0.6 + ch * 0.4;
+      const fBase = [fmix(p.cr, gA[0]!), fmix(p.cg, gA[1]!), fmix(p.cb, gA[2]!)];
+      const fol = (v: number): string => `${Math.min(255, fBase[0]! * v | 0)},${Math.min(255, fBase[1]! * v | 0)},${Math.min(255, fBase[2]! * v | 0)}`;
+      const folDark = fol(0.5), folMid = fol(0.95), folLit = fol(1.6);
       /* pass 1 — the deep mass that gives the crown a body */
       for (let i = 0; i < 34; i++) {
         const a = r() * TAU, d = r() ** 0.6;
-        softMark(c, ccx + Math.cos(a) * cw * d, ccy + Math.sin(a) * chh * d,
-          cw * 0.50, chh * 0.50, `${Math.max(0, p.cr * 0.55 | 0)},${Math.max(0, p.cg * 0.6 | 0)},${Math.max(0, p.cb * 0.5 | 0)}`, 0.62);
+        softMark(c, ccx + Math.cos(a) * cw * d, ccy + Math.sin(a) * chh * d, cw * 0.50, chh * 0.50, folDark, 0.70);
       }
       /* pass 2 — the lit upper surface, offset toward the light */
       for (let i = 0; i < 22; i++) {
         const a = r() * TAU, d = r() ** 0.7;
-        softMark(c, ccx + Math.cos(a) * cw * 0.78 * d - cw * 0.10, ccy + Math.sin(a) * chh * 0.72 * d - chh * 0.22,
-          cw * 0.36, chh * 0.36, `${p.cr},${p.cg},${p.cb}`, 0.5);
+        softMark(c, ccx + Math.cos(a) * cw * 0.78 * d - cw * 0.10, ccy + Math.sin(a) * chh * 0.72 * d - chh * 0.22, cw * 0.36, chh * 0.36, folMid, 0.55);
+      }
+      /* pass 2b — a compact lit highlight cluster, upper-left, so the canopy
+         has a clear light source instead of an even wash */
+      for (let i = 0; i < 10; i++) {
+        const a = r() * TAU, d = r() ** 0.8;
+        softMark(c, ccx + Math.cos(a) * cw * 0.5 * d - cw * 0.16, ccy + Math.sin(a) * chh * 0.5 * d - chh * 0.30, cw * 0.24, chh * 0.24, folLit, 0.40);
       }
       /* pass 3 — leaves ON THE RIM, which is where a crown's silhouette is */
       const leafL = S * 0.078 * nvf(name, 0x77, 0.2);
+      const folP: Pal = { base: `rgb(${folMid})`, cr: p.cr, cg: p.cg, cb: p.cb, lit: `rgb(${folLit})`, dark: `rgb(${folDark})` };
       for (let i = 0; i < leafN * 3 + 16; i++) {
         /* fill the WHOLE crown, not just its fringe — leaves only on the
            rim left the middle as bare soft-mask haze */
         const a = r() * TAU, d = 0.30 + r() ** 0.55 * 0.78;
         const lx = ccx + Math.cos(a) * cw * d, ly = ccy + Math.sin(a) * chh * d;
-        drawLeaf(c, p, lx, ly, a + (r() - 0.5) * 0.8, leafL * (0.7 + r() * 0.5), spec.leaf);
+        drawLeaf(c, folP, lx, ly, a + (r() - 0.5) * 0.8, leafL * (0.7 + r() * 0.5), spec.leaf);
       }
       if (spec.flower && spec.flower !== 'none') {
         for (let i = 0; i < 5; i++) {
@@ -369,8 +394,15 @@ export function plantBody(c: Ctx, g: G, p: Pal, spec: PlantSpec, name = ''): voi
         }
       }
     }
-    if (spec.fruit === 'grain') drawFruit(c, p, cx + S * 0.02, base - H * 0.92, S * 0.034, 'grain', spec.fhue, r);
-    else if (spec.flower && spec.flower !== 'none') drawFlower(c, p, cx, base - H * 0.92, S * 0.030, spec.flower, spec.fhue, r);
+    /* the head rides the tallest blade, JOINED to the crown by its own stalk
+       — it used to float disconnected above the grass (Nick's review) */
+    if ((spec.fruit === 'grain') || (spec.flower && spec.flower !== 'none')) {
+      const headY = base - H * 0.80;
+      c.strokeStyle = stemCol; c.lineWidth = S * 0.007; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.03, base - H * 0.5, cx + S * 0.01, headY + S * 0.03); c.stroke();
+      if (spec.fruit === 'grain') drawFruit(c, p, cx + S * 0.01, headY, S * 0.034, 'grain', spec.fhue, r);
+      else drawFlower(c, p, cx + S * 0.01, headY, S * 0.030, spec.flower!, spec.fhue, r);
+    }
   } else if (spec.habit === 'vine') {
     /* A VINE HANGS AND CLINGS — a sinuous stem with tendrils, not a stalk */
     c.strokeStyle = stemCol; c.lineWidth = S * 0.011; c.lineCap = 'round';
@@ -429,16 +461,19 @@ export function plantBody(c: Ctx, g: G, p: Pal, spec: PlantSpec, name = ''): voi
     if (spec.flower && spec.flower !== 'none') drawFlower(c, p, cx, base - H * 1.02, S * 0.032, spec.flower, spec.fhue, r);
     if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, cx + S * 0.03, base - H * 0.9, S * 0.030, spec.fruit, spec.fhue, r);
   } else if (spec.habit === 'fern') {
-    for (let i = 0; i < 7; i++) {
-      const a = -Math.PI / 2 + (i - 3) * 0.36 * spread;
-      drawLeaf(c, p, cx, base - S * 0.02, a, H * 0.80, 'frond');
+    /* a rosette of clearly ARCHING fronds — spread wide and drawn from a
+       low crown so they read as a fern, not a spiny ball (Nick's review) */
+    const nf = 6;
+    for (let i = 0; i < nf; i++) {
+      const a = -Math.PI / 2 + ((i / (nf - 1)) - 0.5) * 2.1 * spread;
+      drawLeaf(c, p, cx, base - S * 0.01, a, H * 0.86, 'frond');
     }
-    /* the fiddlehead — a fern's own signature, a frond still rolled up */
-    c.strokeStyle = p.lit; c.lineWidth = S * 0.010; c.lineCap = 'round';
+    /* one small fiddlehead tucked low at the crown, not floating over them */
+    c.strokeStyle = p.lit; c.lineWidth = S * 0.008; c.lineCap = 'round';
     c.beginPath();
-    for (let k = 0; k < 18; k++) {
-      const a = k * 0.55, rr = S * 0.030 * (1 - k / 22);
-      c.lineTo(cx + S * 0.075 + Math.cos(a) * rr, base - H * 0.52 + Math.sin(a) * rr);
+    for (let k = 0; k < 14; k++) {
+      const a = k * 0.6, rr = S * 0.020 * (1 - k / 18);
+      c.lineTo(cx + S * 0.02 + Math.cos(a) * rr, base - S * 0.10 + Math.sin(a) * rr);
     }
     c.stroke();
   } else if (spec.habit === 'aquatic') {

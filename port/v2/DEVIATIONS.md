@@ -225,6 +225,19 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   render OUTSIDE the body clip so the glow spills past the silhouette — the point of a glow.
   The Earth catalogue is untouched: `alien` is undefined for every named species, verified by
   strip against ten wave-4 quadrupeds and by 0 duplicate pairs across 1,254.
+- ✔ **D-ART-50 — UNCLIPPED TEXTURE PASSES DRIFT OFF THE BODY (wave 15).** Nick's #1 review
+  concern. Three retrospective texture passes (snake mottle, myriapod tint, shrimp speckle) were
+  unclipped and could spill past the silhouette. Snake/myriapod marks pulled to the body core
+  and sized to its girth; shrimp speckle clipped to the carapace. The other texture passes were
+  clipped from the start and were clean.
+- ✔ **D-ART-51 — THE TURTLE SHELL IS GROOVES, NOT A DRAWN NET (wave 15).** Nick by name. Scute
+  boundaries were a hard stroke; now each is a groove — wide soft shadow, thin dark centre, lit
+  lip, weakest at the lit crown — with each scute's centre raised so the shell reads as plates.
+- ✔ **D-ART-52 — REVIEW FIXES: EEL FIN · TREE CANOPY · GRASS HEAD · FRONDS (wave 15).** The
+  eel median fin doubled the body (a translucent ghost eel) → a hugging pale membrane. Tree
+  canopies were a pale mop on light palettes (task 21) → a foliage green tinted 40% by the hue
+  with real value structure. Grass/grain heads floated free → seated on a stalk joined to the
+  crown. Ferns/palms were spiky/grey → the frond is now a feathered arching blade.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

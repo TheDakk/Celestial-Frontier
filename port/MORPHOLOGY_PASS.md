@@ -914,3 +914,54 @@ confirmed by the 198,000-case golden-seed sweep and the v1.0 fingerprint still m
 **Gates:** vitest 220 ✓ · tsc clean · artbattery **5/5** · speciesaudit 1254/1254 ·
 0 duplicate pairs · 0 clipped · slicesmoke PASS · perf 1479/2203ms · goldenseeds 198,000 ·
 validate FINGERPRINT MATCH. `hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-48 · D-ART-49.
+
+---
+
+# WAVE 15 — LANDED 2026-08-01 (THE SYSTEMATIC REVIEW: artifacts hunted category by category)
+
+Nick asked for a full render for his own review AND a systematic pass: "go through each animal
+one by one… look for artifacts… make sure the hair and spikes and turtle-shell lines are
+blended… everything stays within the body… not painted on with MS Paint." Rendered dense
+review strips per category and went through them. The findings, and their fixes:
+
+## ★ NICK'S #1 CONCERN: MARKS GOING OFF THE ANIMAL
+Root cause found and fixed: THREE texture passes added in the retrospective (D-ART-40) were
+UNCLIPPED — the snake scale mottle, the myriapod segment tint and the shrimp carapace
+speckle. Their soft marks could drift past the body edge, the exact "painted on" failure the
+marks were meant to cure. The snake/myriapod marks are now pulled to the body core and sized
+to stay inside its girth; the shrimp speckle is CLIPPED to the carapace. (The quadruped coat,
+bird plumage, primate fur and turtle scutes were clipped from day one and were clean.)
+
+## ★ THE TURTLE SHELL — Nick by name: "the lines are all blended together"
+The scute grid was a hard 2.4px stroke — a drawn-on net, not a shell. Each boundary is now a
+GROOVE: a wide soft shadow under a thin darker centre with a lit lip, weakest at the dome's
+crown where the light falls, and each scute's centre rises slightly so the shell reads as
+plates rather than a balloon with a net on it.
+
+## ★ THE EEL GHOST BODY
+Moray, Electric, Gulper and Oarfish showed a faint translucent SECOND body below the belly.
+Cause: the continuous median fin filled a body-coloured shape extending 0.72·depth past a thin
+eel at 0.72 alpha, so its lower lobe floated free. It is now a low pale MEMBRANE that hugs the
+edge (≤0.30·depth, translucent, lit) — a fin that belongs to the body instead of doubling it.
+
+## ★ THE PLANTS — three defects the review surfaced
+- **Tree canopies were a pale "mop" on light palettes** (the wave-12 known defect / task 21).
+  Fixed: the canopy is now a foliage GREEN tinted 40% by the species hue, with its own
+  dark/mid/lit value structure — so a white-flowered apple still has green leaves and a red
+  apple, which is what a real tree does. Rim leaves carry the foliage tone too.
+- **Grass and grain heads floated disconnected** above the blades. Now the head rides a stalk
+  joined to the crown.
+- **Ferns rendered as a spiky ball** and palm crowns as a grey mop. The 'frond' shape was a
+  rachis with pinnae rotated ~60° into spikes; it is now a feathered arching blade with
+  overlapping shallow-angle pinnae. Ferns read as ferns and palms as palms.
+
+## What the review found CLEAN
+Birds (folded wings, waterlines, owl discs, peacock, penguin flipper) · the fish system
+(sharks, billfish, pufferfish, anglerfish all excellent) · the textured mammals (spots wrap
+the form, stripes follow the barrel, fur breaks the silhouette) · hedgehog/porcupine rooted
+quills · and — the standout — the PROCEDURAL creatures with their wave-14 alien traits: six
+and eight legs, bioluminescence, armour, translucency, all on our jointed limbs.
+
+**Gates:** vitest 220 ✓ · tsc clean · artbattery **5/5** · speciesaudit 1254/1254 ·
+0 duplicate pairs · 0 clipped · slicesmoke PASS. `hdart.verbatim.js` UNTOUCHED.
+**Ledger:** D-ART-50 … D-ART-52. **Task 21 (tree crown value structure) CLOSED.**

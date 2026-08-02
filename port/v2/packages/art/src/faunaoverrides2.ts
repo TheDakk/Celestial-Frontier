@@ -162,8 +162,10 @@ export function reptSnake(c: Ctx, g: G, p: Pal, opts: { hood?: boolean; rattle?:
   for (let i = 0; i < 40; i++) {
     const k = Math.floor(r() * (pts.length - 1));
     const q = pts[k]!;
-    softMark(c, q.x + (r() - 0.5) * q.w, q.y + (r() - 0.5) * q.w * 0.8,
-      q.w * (0.32 + r() * 0.34), q.w * (0.22 + r() * 0.24),
+    /* INSIDE the ribbon: offset ≤ 0.3·w and radius ≤ 0.35·w keeps every
+       mark's falloff within the body's girth (Nick's artifact report) */
+    softMark(c, q.x + (r() - 0.5) * q.w * 0.6, q.y + (r() - 0.5) * q.w * 0.5,
+      q.w * (0.20 + r() * 0.15), q.w * (0.16 + r() * 0.12),
       r() < 0.55 ? '24,18,12' : '250,248,236', 0.10 + r() * 0.12);
   }
   if (opts.rattle) {
@@ -235,9 +237,23 @@ export function reptTurtle(c: Ctx, g: G, p: Pal, opts: { flippers?: boolean }, n
   c.fillStyle = p.dark;
   c.beginPath(); c.ellipse(cx, cy, sw, sh * 0.30, 0, 0, Math.PI); c.fill();
   c.save(); c.beginPath(); c.ellipse(cx, cy, sw, sh, 0, Math.PI, TAU); c.clip();
-  c.strokeStyle = 'rgba(28,22,14,0.45)'; c.lineWidth = 2.4;
-  for (let i = -2; i <= 2; i++) { c.beginPath(); c.ellipse(cx, cy, sw * (0.28 + Math.abs(i) * 0.26), sh * (0.30 + Math.abs(i) * 0.28), 0, Math.PI, TAU); c.stroke(); }
-  for (let i = -3; i <= 3; i++) { c.beginPath(); c.moveTo(cx + i * sw * 0.26, cy); c.lineTo(cx + i * sw * 0.34, cy - sh); c.stroke(); }
+  /* scute boundaries as GROOVES, not drawn-on lines (Nick: "the lines on
+     turtle shells are all blended together"): a wide soft shadow under a
+     thin darker centre, weakest at the dome's lit crown */
+  const seam = (draw: () => void): void => {
+    c.strokeStyle = 'rgba(24,18,12,0.14)'; c.lineWidth = 6; c.beginPath(); draw(); c.stroke();
+    c.strokeStyle = 'rgba(24,18,12,0.26)'; c.lineWidth = 2.2; c.beginPath(); draw(); c.stroke();
+    c.strokeStyle = 'rgba(240,236,220,0.10)'; c.lineWidth = 1.2;   /* the groove's lit lip */
+    c.save(); c.translate(0, -1.4); c.beginPath(); draw(); c.stroke(); c.restore();
+  };
+  for (let i = -2; i <= 2; i++) seam(() => c.ellipse(cx, cy, sw * (0.28 + Math.abs(i) * 0.26), sh * (0.30 + Math.abs(i) * 0.28), 0, Math.PI, TAU));
+  for (let i = -3; i <= 3; i++) seam(() => { c.moveTo(cx + i * sw * 0.26, cy); c.quadraticCurveTo(cx + i * sw * 0.30, cy - sh * 0.55, cx + i * sw * 0.34, cy - sh); });
+  /* and each scute's centre rises slightly — the shell reads as plates, not
+     as a balloon with a net drawn on it */
+  for (let i = -2; i <= 2; i++) for (let k = 0; k < 3; k++) {
+    const ex = cx + i * sw * 0.30, ey = cy - sh * (0.25 + k * 0.26);
+    softMark(c, ex, ey, sw * 0.10, sh * 0.08, '250,246,232', 0.10);
+  }
   c.restore();
   rim(c, () => c.ellipse(cx, cy, sw, sh, 0, Math.PI, TAU), 2.4);
   /* SCUTE WEAR — the plates of a shell are not uniform; the older centre

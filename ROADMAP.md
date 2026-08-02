@@ -686,6 +686,27 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 15 — THE SYSTEMATIC REVIEW (2026-08-01, batch 36). Nick asked for a
+##   full render for his review AND a category-by-category artifact hunt: "the hair, the
+##   spikes, the turtle-shell lines all blended… everything stays within the body… not painted
+##   on with MS Paint". Rendered dense review strips per category and went through them.
+##   ★NICK'S #1 CONCERN — MARKS OFF THE ANIMAL: three retrospective texture passes (snake
+##   mottle, myriapod tint, shrimp speckle) were UNCLIPPED and could drift past the silhouette;
+##   pulled to the body core / sized to girth / clipped to the carapace. (Quadruped coat, bird
+##   plumage, primate fur, turtle scutes were clipped from day one — clean.) ★THE TURTLE SHELL
+##   (Nick by name, "lines all blended"): the scute grid was a hard 2.4px stroke = a drawn-on
+##   net; now each boundary is a GROOVE (wide soft shadow + thin dark centre + lit lip, weakest
+##   at the lit crown) with each scute centre raised so it reads as PLATES. ★THE EEL GHOST
+##   BODY: Moray/Electric/Gulper/Oarfish showed a translucent SECOND body — the median fin
+##   filled a body-coloured shape 0.72·depth past a thin eel; now a hugging pale MEMBRANE
+##   (≤0.30·depth). ★PLANTS (3 defects): tree canopies were a pale MOP on light palettes
+##   (task 21 — CLOSED) → foliage GREEN tinted 40% by the hue with its own value structure;
+##   grass/grain heads floated free → seated on a stalk joined to the crown; ferns were spiky
+##   balls + palms grey mops → the frond is now a feathered arching blade. ★CLEAN in review:
+##   birds · fish · textured mammals · rooted quills · and the standout, the PROCEDURAL
+##   creatures with wave-14 alien traits. D-ART-50..52. GATES: vitest 220 · tsc · artbattery
+##   5/5 · speciesaudit 1254/1254 0 dupes 0 clipped · slicesmoke PASS · hdart UNTOUCHED.
+##   FULL-SIZE EXPORT re-run for Nick's system review.
 ##   ✔★★★ MORPHOLOGY WAVE 14 — STRANGENESS INSIDE OUR LANGUAGE (2026-08-01, batch 35).
 ##   Nick chose OPTION (b) from wave 13: don't accept a more Earth-like procedural world in
 ##   exchange for coherence — push the strangeness back IN. ★THE RULE THAT KEEPS IT FROM
