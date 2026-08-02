@@ -1,8 +1,8 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-**Written 2026-08-02 at the end of waves 4–12.**
+**Written 2026-08-02 at the end of waves 4–13.**
 The live work is **THE PROPORTION ARC** — making every organism in the Earth catalogue look
-like the real thing, on Nick's instruction. Waves 4–12 have landed. The structural queue below is four-fifths done.
+like the real thing, on Nick's instruction. Waves 4–13 have landed. The structural queue below is four-fifths done.
 
 ---
 
@@ -168,11 +168,14 @@ future material/texture pass provably cannot fix), and defer the surface ones.
 
 ## OPEN, IN PRIORITY ORDER
 
-1. **★ THE HEADS ARE STILL NOT UNIQUE — 20 of 141** (measured before waves 7–10,
-   so re-measure). Skull SHAPE differs between families and is no longer the
-   bottleneck; every FEATURE on it — one ear asset, one white-ringed eye, one
-   nose dot — is still shared catalogue-wide (D-ART-99). Wave 13 is ears and
-   eyes per species. **This is the biggest open art item.**
+1. **★ RE-MEASURE THE HEADS.** The 20-of-141 figure predates waves 7–13 and is stale.
+   Wave 6 gave every family its own skull profile; **wave 13 gave the ear a SHAPE (seven of
+   them) and the eye an IRIS AND A PUPIL** — a cat's slit, a grazer's horizontal bar — which
+   were the two assets the audit named as still shared catalogue-wide. Re-run the mammal audit
+   against the fresh export and get a real number before doing more head work.
+   ⚠ artlock reported ZERO drift for all of wave 13 — see **D-ART-103**. That is the
+   fingerprint being body-scale, not evidence nothing changed. Verify feature work by opening
+   a native-size PNG.
 2. **ONE hard look-alike pair left: Water Mint ≈ Chicory** (was 33 at the start
    of 2026-08-02, then 19 after the birds, 9 after the fish, 1 after the
    invertebrates). Their reference rows are far apart — a square stem with a
