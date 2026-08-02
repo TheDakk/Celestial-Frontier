@@ -128,28 +128,33 @@ const SKULL: Record<string, {
   eyePhi: number;    /* 0 = forward-facing predator, 1 = high and lateral prey */
   eyeR: number;      /* x headR */
   nose: 'wet' | 'disc' | 'nostril';
+  /** ★ wave 13/16 — how big the nose pad is against the muzzle end, and how the
+      lip runs. A dog's pad is a quarter of its snout; a cat's is a stud. */
+  nosePad: number;
+  lip: 'straight' | 'curl' | 'droop' | 'cleft';
+  cheek: number;   /** the cheek/jowl mass that stops a muzzle reading as a plank */
   tilt: number;      /* how far the muzzle points down off the neck */
 }> = {
-  felid: { len: 1.70, cranium: 1.00, stop: 0.62, muzzle: 0.46, jaw: 0.34, eyeU: 0.50, eyePhi: 0.22, eyeR: 0.235, nose: 'wet', tilt: 0.06 },
-  canid: { len: 2.45, cranium: 0.86, stop: 0.44, muzzle: 0.28, jaw: 0.26, eyeU: 0.40, eyePhi: 0.34, eyeR: 0.205, nose: 'wet', tilt: 0.10 },
-  ursid: { len: 2.00, cranium: 1.06, stop: 0.20, muzzle: 0.46, jaw: 0.36, eyeU: 0.36, eyePhi: 0.28, eyeR: 0.175, nose: 'wet', tilt: 0.12 },
-  bovid: { len: 2.40, cranium: 0.80, stop: 0.10, muzzle: 0.44, jaw: 0.34, eyeU: 0.32, eyePhi: 0.74, eyeR: 0.215, nose: 'nostril', tilt: 0.16 },
-  cervid: { len: 2.30, cranium: 0.78, stop: 0.16, muzzle: 0.36, jaw: 0.28, eyeU: 0.31, eyePhi: 0.72, eyeR: 0.225, nose: 'wet', tilt: 0.16 },
-  equid: { len: 2.85, cranium: 0.82, stop: 0.05, muzzle: 0.50, jaw: 0.42, eyeU: 0.28, eyePhi: 0.70, eyeR: 0.205, nose: 'nostril', tilt: 0.18 },
-  camelid: { len: 2.10, cranium: 0.72, stop: 0.26, muzzle: 0.38, jaw: 0.34, eyeU: 0.33, eyePhi: 0.62, eyeR: 0.22, nose: 'nostril', tilt: 0.10 },
+  felid: { len: 1.70, cranium: 1.00, stop: 0.62, muzzle: 0.46, jaw: 0.34, eyeU: 0.50, eyePhi: 0.22, eyeR: 0.235, nose: 'wet', tilt: 0.06, nosePad: 0.62, lip: 'curl', cheek: 0.95 },
+  canid: { len: 2.45, cranium: 0.86, stop: 0.44, muzzle: 0.28, jaw: 0.26, eyeU: 0.40, eyePhi: 0.34, eyeR: 0.205, nose: 'wet', tilt: 0.10, nosePad: 1.05, lip: 'straight', cheek: 0.42 },
+  ursid: { len: 2.00, cranium: 1.06, stop: 0.20, muzzle: 0.46, jaw: 0.36, eyeU: 0.36, eyePhi: 0.28, eyeR: 0.175, nose: 'wet', tilt: 0.12, nosePad: 1.15, lip: 'droop', cheek: 0.72 },
+  bovid: { len: 2.40, cranium: 0.80, stop: 0.10, muzzle: 0.44, jaw: 0.34, eyeU: 0.32, eyePhi: 0.74, eyeR: 0.215, nose: 'nostril', tilt: 0.16, nosePad: 0.80, lip: 'droop', cheek: 0.66 },
+  cervid: { len: 2.30, cranium: 0.78, stop: 0.16, muzzle: 0.36, jaw: 0.28, eyeU: 0.31, eyePhi: 0.72, eyeR: 0.225, nose: 'wet', tilt: 0.16, nosePad: 0.72, lip: 'straight', cheek: 0.48 },
+  equid: { len: 2.85, cranium: 0.82, stop: 0.05, muzzle: 0.50, jaw: 0.42, eyeU: 0.28, eyePhi: 0.70, eyeR: 0.205, nose: 'nostril', tilt: 0.18, nosePad: 0.90, lip: 'droop', cheek: 0.78 },
+  camelid: { len: 2.10, cranium: 0.72, stop: 0.26, muzzle: 0.38, jaw: 0.34, eyeU: 0.33, eyePhi: 0.62, eyeR: 0.22, nose: 'nostril', tilt: 0.10, nosePad: 0.66, lip: 'cleft', cheek: 0.44 },
   /* a pig's snout ends in a flat cartilage DISC, and that disc is the animal */
-  suid: { len: 2.25, cranium: 0.86, stop: 0.04, muzzle: 0.52, jaw: 0.40, eyeU: 0.28, eyePhi: 0.58, eyeR: 0.155, nose: 'disc', tilt: 0.20 },
-  mustelid: { len: 1.80, cranium: 0.84, stop: 0.38, muzzle: 0.32, jaw: 0.24, eyeU: 0.46, eyePhi: 0.36, eyeR: 0.2, nose: 'wet', tilt: 0.08 },
-  rodent: { len: 1.70, cranium: 0.98, stop: 0.46, muzzle: 0.32, jaw: 0.26, eyeU: 0.46, eyePhi: 0.44, eyeR: 0.25, nose: 'wet', tilt: 0.10 },
-  pachyderm: { len: 1.95, cranium: 1.16, stop: 0.34, muzzle: 0.54, jaw: 0.40, eyeU: 0.38, eyePhi: 0.56, eyeR: 0.140, nose: 'nostril', tilt: 0.10 },
-  marsupial: { len: 1.85, cranium: 0.96, stop: 0.34, muzzle: 0.40, jaw: 0.32, eyeU: 0.44, eyePhi: 0.46, eyeR: 0.250, nose: 'wet', tilt: 0.12 },
-  procyonid: { len: 1.95, cranium: 0.92, stop: 0.36, muzzle: 0.34, jaw: 0.26, eyeU: 0.44, eyePhi: 0.38, eyeR: 0.24, nose: 'wet', tilt: 0.14 },
+  suid: { len: 2.25, cranium: 0.86, stop: 0.04, muzzle: 0.52, jaw: 0.40, eyeU: 0.28, eyePhi: 0.58, eyeR: 0.155, nose: 'disc', tilt: 0.20, nosePad: 1.30, lip: 'straight', cheek: 0.60 },
+  mustelid: { len: 1.80, cranium: 0.84, stop: 0.38, muzzle: 0.32, jaw: 0.24, eyeU: 0.46, eyePhi: 0.36, eyeR: 0.2, nose: 'wet', tilt: 0.08, nosePad: 0.78, lip: 'curl', cheek: 0.36 },
+  rodent: { len: 1.70, cranium: 0.98, stop: 0.46, muzzle: 0.32, jaw: 0.26, eyeU: 0.46, eyePhi: 0.44, eyeR: 0.25, nose: 'wet', tilt: 0.10, nosePad: 0.58, lip: 'cleft', cheek: 0.40 },
+  pachyderm: { len: 1.95, cranium: 1.16, stop: 0.34, muzzle: 0.54, jaw: 0.40, eyeU: 0.38, eyePhi: 0.56, eyeR: 0.140, nose: 'nostril', tilt: 0.10, nosePad: 0.70, lip: 'droop', cheek: 0.90 },
+  marsupial: { len: 1.85, cranium: 0.96, stop: 0.34, muzzle: 0.40, jaw: 0.32, eyeU: 0.44, eyePhi: 0.46, eyeR: 0.250, nose: 'wet', tilt: 0.12, nosePad: 0.74, lip: 'straight', cheek: 0.44 },
+  procyonid: { len: 1.95, cranium: 0.92, stop: 0.36, muzzle: 0.34, jaw: 0.26, eyeU: 0.44, eyePhi: 0.38, eyeR: 0.24, nose: 'wet', tilt: 0.14, nosePad: 0.84, lip: 'straight', cheek: 0.38 },
   /* an anteater or a pangolin is almost all snout, and the eye is tiny and far
      back — that proportion alone is the whole group's silhouette */
-  xenarthran: { len: 3.10, cranium: 0.70, stop: 0.06, muzzle: 0.22, jaw: 0.14, eyeU: 0.24, eyePhi: 0.50, eyeR: 0.13, nose: 'wet', tilt: 0.22 },
-  pinniped: { len: 1.70, cranium: 1.05, stop: 0.30, muzzle: 0.52, jaw: 0.30, eyeU: 0.42, eyePhi: 0.30, eyeR: 0.275, nose: 'wet', tilt: 0.06 },
-  burrower: { len: 2.95, cranium: 0.74, stop: 0.08, muzzle: 0.26, jaw: 0.18, eyeU: 0.26, eyePhi: 0.52, eyeR: 0.12, nose: 'wet', tilt: 0.24 },
-  generic: { len: 2.00, cranium: 0.94, stop: 0.30, muzzle: 0.42, jaw: 0.34, eyeU: 0.40, eyePhi: 0.40, eyeR: 0.235, nose: 'wet', tilt: 0.10 },
+  xenarthran: { len: 3.10, cranium: 0.70, stop: 0.06, muzzle: 0.22, jaw: 0.14, eyeU: 0.24, eyePhi: 0.50, eyeR: 0.13, nose: 'wet', tilt: 0.22, nosePad: 0.44, lip: 'straight', cheek: 0.14 },
+  pinniped: { len: 1.70, cranium: 1.05, stop: 0.30, muzzle: 0.52, jaw: 0.30, eyeU: 0.42, eyePhi: 0.30, eyeR: 0.275, nose: 'wet', tilt: 0.06, nosePad: 0.86, lip: 'curl', cheek: 0.82 },
+  burrower: { len: 2.95, cranium: 0.74, stop: 0.08, muzzle: 0.26, jaw: 0.18, eyeU: 0.26, eyePhi: 0.52, eyeR: 0.12, nose: 'wet', tilt: 0.24, nosePad: 0.52, lip: 'straight', cheek: 0.16 },
+  generic: { len: 2.00, cranium: 0.94, stop: 0.30, muzzle: 0.42, jaw: 0.34, eyeU: 0.40, eyePhi: 0.40, eyeR: 0.235, nose: 'wet', tilt: 0.10, nosePad: 0.80, lip: 'straight', cheek: 0.50 },
 };
 
 /** ★ WAVE 5 — THE FAMILY BODY PLANS.
@@ -820,6 +825,22 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   else if (coat === 'rosettes') coatRosettes(c, head, r, p, { count: 7, size: 0.6 });
   else if (coat === 'shaggy') coatShaggy(c, head, r, p, { count: 34 });
   c.restore();
+  /* ★ WAVE 16 — THE CHEEK. Without a jowl the muzzle leaves the skull as a
+     plank: the audit's words on animal after animal. A cat's broad cheek ruff,
+     a horse's masseter, a bear's heavy jaw — all the same mass in different
+     amounts, and it is what makes a head read as a skull with meat on it. */
+  if (SK.cheek > 0.05) {
+    const ck = head.pt(0.34, -0.30);
+    const cr2 = headR * SK.cheek * 0.66;
+    const cg2 = c.createRadialGradient(ck[0], ck[1], cr2 * 0.1, ck[0], ck[1], cr2);
+    const cl = body.light(0.95, -0.2);
+    const cm = 0.62 + cl * 0.62;
+    cg2.addColorStop(0, `rgba(${Math.min(255, p.cr * cm) | 0},${Math.min(255, p.cg * cm) | 0},${Math.min(255, p.cb * cm) | 0},0.85)`);
+    cg2.addColorStop(1, `rgba(${Math.min(255, p.cr * cm) | 0},${Math.min(255, p.cg * cm) | 0},${Math.min(255, p.cb * cm) | 0},0)`);
+    c.fillStyle = cg2;
+    c.beginPath(); c.ellipse(ck[0], ck[1], cr2 * 1.15, cr2 * 0.92, -0.12, 0, TAU); c.fill();
+  }
+
   /* the nose, ON the end of the muzzle rather than beside it */
   const nosePt = head.pt(0.965, -0.10);
   if (SK.nose === 'disc') {
@@ -838,17 +859,56 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.quadraticCurveTo(nosePt[0] - skMuz * 0.02, nosePt[1] - skMuz * 0.30, nosePt[0] + skMuz * 0.14, nosePt[1] - skMuz * 0.04);
     c.stroke();
   } else {
-    c.fillStyle = 'rgba(20,14,16,0.82)';
-    c.beginPath(); c.ellipse(nosePt[0], nosePt[1] - skMuz * 0.12, skMuz * 0.40, skMuz * 0.32, ang, 0, TAU); c.fill();
+    /* ⚠ EVERY MAMMAL HAD THE SAME SMALL DARK DOT. A nose pad is sized against
+       the muzzle it sits on — a dog's takes a quarter of its snout end, a
+       bear's is enormous, a cat's is a stud — and the audit called it "a dot
+       nose" on animal after animal. */
+    const np = skMuz * 0.46 * SK.nosePad;
+    c.fillStyle = 'rgba(20,14,16,0.86)';
+    c.beginPath(); c.ellipse(nosePt[0], nosePt[1] - np * 0.24, np, np * 0.80, ang, 0, TAU); c.fill();
+    /* the two nostril slits, which is what makes it a NOSE and not a bead */
+    c.fillStyle = 'rgba(0,0,0,0.55)';
+    for (const s2 of [-1, 1] as const) {
+      c.beginPath();
+      c.ellipse(nosePt[0] - np * 0.10, nosePt[1] - np * 0.24 + s2 * np * 0.34, np * 0.22, np * 0.13, ang + s2 * 0.5, 0, TAU);
+      c.fill();
+    }
     c.fillStyle = 'rgba(255,255,255,0.20)';
     c.beginPath(); c.ellipse(nosePt[0] - skMuz * 0.12, nosePt[1] - skMuz * 0.26, skMuz * 0.15, skMuz * 0.10, ang, 0, TAU); c.fill();
   }
-  /* the mouth line, following the jaw rather than ruled across the face */
-  c.strokeStyle = 'rgba(18,12,12,0.34)';
-  c.lineWidth = Math.max(1.4, headR * (spec.jaw === 'barrel' ? 0.13 : 0.06));
-  c.beginPath();
-  const m0 = head.pt(0.44, -0.92), m1 = head.pt(0.72, -1.0), m2 = head.pt(0.94, -0.62);
-  c.moveTo(m0[0], m0[1]); c.quadraticCurveTo(m1[0], m1[1], m2[0], m2[1]); c.stroke();
+/* ★ WAVE 16 — THE LIP. One ruled quadratic across the face was "a straight
+     mouth seam" in the audit's words on nearly every animal. A real mouth line
+     starts at the corner under the cheek, runs forward along the jaw, and ends
+     in a shape the family owns: a cat's upcurl, a horse's or a bear's droop, a
+     camel's and a rodent's cleft upper lip. */
+  const lipCol = 'rgba(18,12,12,0.42)';
+  c.strokeStyle = lipCol;
+  c.lineWidth = Math.max(1.4, headR * (spec.jaw === 'barrel' ? 0.13 : 0.062));
+  c.lineCap = 'round';
+  const q0 = head.pt(0.40, -0.86), q1 = head.pt(0.70, -1.02), q2 = head.pt(0.93, -0.70);
+  c.beginPath(); c.moveTo(q0[0], q0[1]); c.quadraticCurveTo(q1[0], q1[1], q2[0], q2[1]); c.stroke();
+  if (SK.lip === 'curl') {
+    /* the corner hooks UP — the thing that makes a cat look like a cat */
+    c.beginPath(); c.moveTo(q0[0], q0[1]);
+    c.quadraticCurveTo(q0[0] - headR * 0.14, q0[1] - headR * 0.02, q0[0] - headR * 0.20, q0[1] - headR * 0.13);
+    c.stroke();
+  } else if (SK.lip === 'droop') {
+    /* a heavy hanging lower lip: horse, bear, bovid */
+    c.beginPath(); c.moveTo(q2[0], q2[1]);
+    c.quadraticCurveTo(q2[0] + headR * 0.10, q2[1] + headR * 0.24, q2[0] - headR * 0.06, q2[1] + headR * 0.30);
+    c.stroke();
+  } else if (SK.lip === 'cleft') {
+    /* the split upper lip of a camel or a rodent */
+    c.beginPath(); c.moveTo(q2[0] - headR * 0.02, q2[1] - headR * 0.16);
+    c.lineTo(q2[0] - headR * 0.02, q2[1] + headR * 0.05); c.stroke();
+  }
+  /* THE CHIN — a lower jaw that ends in something. Without it the muzzle has
+     no depth and reads as a rectangle glued to the face. */
+  if (SK.jaw > 0.10) {
+    const ch = head.pt(0.80, -1.30);
+    c.fillStyle = `rgb(${(p.cr * 0.70) | 0},${(p.cg * 0.70) | 0},${(p.cb * 0.72) | 0})`;
+    c.beginPath(); c.ellipse(ch[0], ch[1], headR * 0.20 * SK.jaw * 3, headR * 0.13 * SK.jaw * 3, ang, 0, TAU); c.fill();
+  }
 
   /* ---- ears: family-defining (fennec vs hippo vs koala) ---- */
   const ears = spec.ears ?? 'small';

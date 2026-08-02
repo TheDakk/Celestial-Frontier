@@ -562,6 +562,17 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   correct guard report false failures. When you reuse a threshold, re-derive it from the new
   question rather than inheriting it from the old one.
 
+- ✔ **D-ART-106 — THE THIRD SHARED HEAD TOKEN WAS THE MUZZLE (wave 16).**
+  The re-measure named exactly three reasons a head reads as generic — the ear (83 of 92), the
+  eye (83) and the MUZZLE (81) — and was specific: *"a thin plank muzzle with a dot nose and a
+  straight mouth seam"*, *"a rectangle stuck to the face … no lower jaw, so the skull has no
+  cheek"*. Three things were missing from every mammal: a NOSE PAD with a family size (a dog's
+  takes a quarter of its snout end, a cat's is a stud, a bear's is enormous) with real nostril
+  slits; a LIP that starts at the corner under the cheek and ends in a shape the family owns
+  (a cat's upcurl, a horse's droop, a camel's cleft); and a CHEEK and CHIN, without which a
+  muzzle leaves the skull as a plank. **A feature shared by every member of a catalogue is
+  invisible to any per-asset check and is exactly what makes a catalogue look samey.**
+
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
