@@ -22,6 +22,12 @@ import { BIRD_NAME } from './birdoverrides.js';
 import { QUAD2_SPEC } from './mammaloverrides.js';
 import { INVERT_NAME } from './invertoverrides.js';
 import { FLORA2_SPEC } from './florarost.js';
+import { planFor } from './proceduraloverrides.js';
+import { fishBody } from './faunaoverrides3.js';
+import { insectBody, myriapod } from './invertoverrides.js';
+import { plantBody } from './floraoverrides2.js';
+import { reptSnake, reptTurtle } from './faunaoverrides2.js';
+import { faunaBird } from './faunaoverrides.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -334,6 +340,12 @@ export function resolveOverride(g: G): string | null {
   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it
      (Lion's Mane), which is exactly the mojibake Nick's audit caught */
   const name = String((g as { _earthName?: string })._earthName || '').replace(/[’‘]/g, "'");
+  /* ★ WAVE 13: a genome with NO Earth name — every procedural species and
+     every creature a player breeds — used to fall straight through to the
+     verbatim engine, which meant twelve waves of work stopped at the edge of
+     the Earth catalogue. It now picks a body plan FROM THE GENOME, and only
+     falls through when the plan has no Earth analogue worth forcing. */
+  if (!name) return resolveProcedural(g);
   if (!name) return null;
   const kingdom = g.kingdom as string;
   /* FLORA (wave 2): iconic bespoke bodies first, then the name-seeded ladder
@@ -379,3 +391,36 @@ export function resolveOverride(g: G): string | null {
 
 /** How many species wave 1 corrects (for the record + the audit sentinel). */
 export const OVERRIDE_COUNT = new Set([...Object.keys(FUNGI_NAME), ...Object.keys(MICROBE_NAME), ...Object.keys(FLORA_ICONIC), ...FLORA_DUPES, ...Object.keys(FAUNA_NAME), ...Object.keys(FAUNA2_NAME), ...Object.keys(FAUNA3_NAME), ...Object.keys(BIRD_NAME), ...Object.keys(INVERT_NAME), ...Object.keys(QUAD_SPEC), ...Object.keys(QUAD2_SPEC)]).size;
+
+/* ★ THE PROCEDURAL PATH (wave 13). Draws a genome that has no Earth name
+   through whichever of our systems its own genes describe, so a bred
+   creature inherits the fit pass, the pattern law and the surface laws.
+   Returns null — i.e. falls through to the verbatim engine — for the body
+   plans with no Earth analogue, which the verbatim engine draws better than
+   a forced mapping would (D-ART-14 applied to a whole rendering path). */
+export function resolveProcedural(g: G): string | null {
+  const plan = planFor(g as Record<string, unknown>);
+  if (!plan) return null;
+  const pal = palette(g) as Pal;
+  const isFlora = plan.kind === 'plant';
+  const { cv, c } = newCanvas();
+  vignette(c, false);
+  floorFade(c);
+  const ink = newInk();
+  /* the label is the plan, not a species — it keeps fitInk's clip reporting
+     actionable without pretending a procedural creature has a name */
+  const who = 'proc:' + plan.kind + ':' + String(g.seed);
+  switch (plan.kind) {
+    case 'quad': faunaQuadruped(ink.c, g, pal, plan.spec, who); break;
+    case 'fish': fishBody(ink.c, g, pal, plan.spec, who); break;
+    case 'insect': insectBody(ink.c, g, pal, plan.spec, who); break;
+    case 'bird': faunaBird(ink.c, g, pal, plan.spec, who); break;
+    case 'snake': reptSnake(ink.c, g, pal, { banded: plan.banded }, who); break;
+    case 'myriapod': myriapod(ink.c, g, pal, { flat: plan.flat }, who); break;
+    case 'turtle': reptTurtle(ink.c, g, pal, {}, who); break;
+    case 'plant': plantBody(ink.c, g, pal, plan.spec, who); break;
+  }
+  fitInk(ink.cv, c, who);
+  void isFlora;
+  return cv.toDataURL();
+}

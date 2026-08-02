@@ -811,3 +811,60 @@ genes → the same PlantSpec / FishSpec / QuadSpec / InsectSpec structures), so 
 is drawn by the same systems and inherits the same surface laws. That is what makes the whole
 world cohere rather than splitting into "Earth species look right, everything else looks like
 the old engine".
+
+---
+
+# WAVE 13 — LANDED 2026-08-01 (THE PROCEDURAL CREATURES — and the breeding programme)
+
+## ★ FIRST, AN INSTRUMENT GAP: we had never once LOOKED at a procedural creature
+Twelve waves were judged entirely on the Earth catalogue, because every instrument we built
+took a species NAME. `speciesstrip` now accepts `proc:<kingdom>:h<heat>:s<seed>`, which
+renders a genome with **no `_earthName`** — the exact path every bred creature takes. The
+first render was the most useful picture of the session.
+
+## What it showed — better and more awkward than expected
+**The procedural art is not bad.** The verbatim engine reads `body`, `head`, `pattern` and
+`size` and draws sixteen genuinely alien body plans with care. What it does **not** share is
+the VISUAL LANGUAGE: coloured habitat glows instead of our vignette, flat shading instead of
+form shading with rim light, and none of the surface laws. Side by side in one compendium that
+reads as two games — which is precisely the "mixed and matched" Nick asked us to avoid.
+
+**So wave 13 is a ROUTER, not a replacement.** A genome with no Earth name now picks a body
+plan **from its own genes** and is drawn by whichever of our systems honestly fits:
+| genome says | drawn by |
+|---|---|
+| swimmers · jet-propelled swimmers | the **fish** system |
+| four-winged + gliders | the **bird** system |
+| four-winged | the **insect** system |
+| serpentine | the **snake** painter |
+| many-segmented | the **myriapod** painter |
+| shelled | the **turtle** painter |
+| sturdy-limbed · armored · stilt-legged · tusked · horned · spindly · squat heavy-boned | the **quadruped** system |
+| flora forms with a terrestrial habit (fern · reed · moss · vine · shrub · sail-leafed · razor-grass · cushion · umbrella-canopy · tube-stalk) | the **plant** system |
+
+**And it deliberately does NOT map five plans** — tentacled, membranous, crystalline-plated,
+gelatinous, radially symmetric — plus the alien flora habits (crystalline growths,
+spore-towers, balloon-pods, mirror-bark giants). They have no Earth analogue, the verbatim
+engine draws them better than a forced mapping would, and they are the reason procedural life
+looks *alien*. **That is D-ART-14 applied to an entire rendering path rather than one species.**
+
+## Determinism was the load-bearing constraint
+Every decision in `planFor()` reads only fields already on the genome — no `Math.random`, no
+`Date`, no ambient state — so the same genome yields the same portrait on every device.
+Break that and share codes and cross-device parity break with it (hard rule 1). Verified by
+grep and by the 198,000-case golden-seed sweep still passing.
+
+## ⚠ A TASTE DECISION FOR NICK, NOT A BUG
+The mapped plans now read markedly more **Earth-like** — a procedural quadruped looks like a
+plausible animal rather than a segmented alien with stalked eyes. That is exactly the
+coherence that was asked for, and it is also a real loss of strangeness on 11 of 16 plans.
+Two ways forward, and this one is Nick's call:
+  **(a)** keep it as-is — maximum coherence with the Earth catalogue;
+  **(b)** push alien features back INTO our systems — extra limb pairs from `loco`, stalked or
+  clustered eyes from `head`, plated/crystalline skins from `skin` — so procedural life keeps
+  our rendering language *and* its strangeness. (b) is more work and is the better end state.
+
+**Gates:** vitest 220 ✓ · tsc clean · artbattery **5/5** · speciesaudit 1254/1254 ·
+0 duplicate pairs · 0 clipped (the 240 procedural portraits included) · slicesmoke PASS ·
+perf 1391/2112ms · goldenseeds 198,000 · validate FINGERPRINT MATCH.
+`hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-46 · D-ART-47.

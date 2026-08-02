@@ -686,6 +686,33 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 13 — THE PROCEDURAL CREATURES (2026-08-01, batch 34).
+##   ★FIRST AN INSTRUMENT GAP: we had NEVER ONCE LOOKED at a procedural creature — every
+##   instrument took a species NAME, so 12 waves were judged entirely on the Earth catalogue.
+##   speciesstrip now accepts proc:<kingdom>:h<heat>:s<seed>, rendering a genome with NO
+##   _earthName = the exact path every BRED creature takes. ★WHAT IT SHOWED: the procedural art
+##   is NOT bad — the verbatim engine reads body/head/pattern/size and draws 16 genuinely alien
+##   plans with care. What it does NOT share is the VISUAL LANGUAGE: coloured habitat glows vs
+##   our vignette, flat shading vs form shading with rim light, and none of the surface laws.
+##   Side by side that reads as TWO GAMES = exactly the "mixed and matched" to avoid.
+##   ★SO WAVE 13 IS A ROUTER, NOT A REPLACEMENT: a nameless genome picks a plan FROM ITS OWN
+##   GENES — swimmers→fish · four-winged+gliders→bird · four-winged→insect · serpentine→snake ·
+##   many-segmented→myriapod · shelled→turtle · sturdy/armored/stilt/tusked/horned/spindly/squat
+##   →quadruped · terrestrial flora habits→plant system — inheriting the fit pass, the pattern
+##   law and the surface laws. ★★AND IT DELIBERATELY DOES NOT MAP FIVE PLANS (tentacled,
+##   membranous, crystalline-plated, gelatinous, radially symmetric) + the alien flora habits:
+##   no Earth analogue, verbatim draws them better, and they are WHY procedural life looks
+##   alien = D-ART-14 applied to a whole RENDERING PATH. ★DETERMINISM was load-bearing:
+##   planFor() reads only genome fields — no Math.random/Date — verified by grep and by
+##   goldenseeds 198,000 still passing; break it and share codes + cross-device parity break.
+##   ⚠★A TASTE DECISION FOR NICK, NOT A BUG: mapped plans now read markedly more EARTH-LIKE —
+##   the coherence asked for, but a real loss of strangeness on 11 of 16 plans. (a) keep as-is,
+##   or (b) push alien features back INTO our systems (extra limb pairs from loco, stalked/
+##   clustered eyes from head, plated/crystalline skins from skin) so procedural life keeps our
+##   language AND its strangeness. (b) is more work and the better end state. D-ART-46/47.
+##   GATES: vitest 220 · tsc · artbattery 5/5 · speciesaudit 1254/1254 0 dupes 0 clipped (240
+##   procedural included) · slicesmoke PASS · perf 1391/2112ms · goldenseeds 198,000 ·
+##   validate FINGERPRINT MATCH · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 12 — THE SURFACE LAWS (2026-08-01, batch 33). Nick: "the fur, the
 ##   spikes, everything just looks like it's part of the animal and not just painted on".
 ##   packages/art/src/surface.ts names the THREE GEOMETRIC causes of "painted on" and fixes

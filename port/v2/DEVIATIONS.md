@@ -200,6 +200,19 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   reads. furRim() pushes tufts THROUGH the outline, each starting inside the body. rootedSpine()
   gives every quill a dark socket where it leaves the skin, a two-segment taper, and depth
   sorting. Every change was rendered against a known-good species first (D-ART-41).
+- ✔ **D-ART-46 — THE PROCEDURAL PATH (wave 13).** A genome with no _earthName used to fall
+  straight through to the verbatim engine, so twelve waves of work stopped at the edge of the
+  Earth catalogue — 240 of the audit's portraits AND every creature a player breeds.
+  resolveProcedural() now picks a body plan from the genome's own genes (body · loco · size ·
+  head · tail · skin · pattern · form) and draws it with our quadruped / fish / insect / bird /
+  snake / myriapod / turtle / plant systems, inheriting the fit pass, the pattern law and the
+  surface laws. Pure and deterministic — no Math.random, no Date — because share codes and
+  cross-device parity depend on it.
+- ✔ **D-ART-47 — FIVE PLANS DELIBERATELY LEFT VERBATIM (wave 13).** Tentacled, membranous,
+  crystalline-plated, gelatinous and radially symmetric have no Earth analogue, and the alien
+  flora habits (crystalline growths, spore-towers, balloon-pods, mirror-bark giants) are the
+  reason procedural life reads as alien at all. The verbatim engine draws them better than a
+  forced mapping would. D-ART-14 applied to a whole rendering path, not one species.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
