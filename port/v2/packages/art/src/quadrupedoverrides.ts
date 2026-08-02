@@ -47,6 +47,11 @@ export interface QuadSpec {
      this undefined and are byte-unchanged. */
   alien?: AlienTraits;
   face?: 'mask' | 'tears' | 'none';
+  /* ★ wave 21 — the Platinum audit on the fennec: "ears should dominate the
+     head". An ear category is a SHAPE; this is the multiplier on its scale,
+     for the handful of animals whose feature is outsized for their family. */
+  earScale?: number;
+  tailScale?: number;
 }
 
 function pal(p: Pal, spec: QuadSpec): Pal {
@@ -360,7 +365,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
 
   /* ---- ears: family-defining (fennec vs hippo vs koala) ---- */
   const ears = spec.ears ?? 'small';
-  const earR = headR * (ears === 'huge' ? 1.25 : ears === 'large' ? 0.75 : ears === 'round' ? 0.62 : ears === 'small' ? 0.4 : 0.22);
+  const earR = headR * (ears === 'huge' ? 1.25 : ears === 'large' ? 0.75 : ears === 'round' ? 0.62 : ears === 'small' ? 0.4 : 0.22) * (spec.earScale ?? 1);
   if (ears !== 'tiny' || true) {
     for (const s of [-1, 1] as const) {
       const ex = headX - headR * 0.25 + s * headR * 0.42, ey = headY - headR * (ears === 'huge' ? 0.85 : 0.72);
@@ -504,10 +509,55 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   const tail = spec.tail ?? 'stub';
   const tx0 = cx - bodyW * 0.98, ty0 = cy - bodyH * 0.1;
   if (tail === 'bushy' || tail === 'plume') {
-    c.strokeStyle = p.base; c.lineWidth = bodyH * (tail === 'plume' ? 0.55 : 0.44); c.lineCap = 'round';
-    c.beginPath(); c.moveTo(tx0, ty0); c.quadraticCurveTo(tx0 - bodyW * 0.4, ty0 + bodyH * 0.2, tx0 - bodyW * 0.5, ty0 + bodyH * 0.85); c.stroke();
-    c.strokeStyle = p.lit; c.lineWidth = bodyH * 0.16;
-    c.beginPath(); c.moveTo(tx0 - bodyW * 0.42, ty0 + bodyH * 0.5); c.lineTo(tx0 - bodyW * 0.5, ty0 + bodyH * 0.85); c.stroke();
+    /* ★ WAVE 21 — A BRUSH IS NOT A TUBE. One constant-width round-capped stroke
+       gave every fox, snow leopard and fennec in the catalogue an orange PIPE
+       lying behind it. A plume tapers from a narrow root, swells through its
+       length, and finishes in loose hair that breaks the outline. */
+    const k = (tail === 'plume' ? 0.52 : 0.42) * (spec.tailScale ?? 1);
+    /* the same sweep the original stroke traced — the shape was never the
+       problem, the constant width and the round cap were */
+    const at = (t: number): [number, number] => {
+      const m = 1 - t;
+      return [m * m * tx0 + 2 * m * t * (tx0 - bodyW * 0.40) + t * t * (tx0 - bodyW * 0.50),
+        m * m * ty0 + 2 * m * t * (ty0 + bodyH * 0.20) + t * t * (ty0 + bodyH * 0.85)];
+    };
+    const widthAt = (t: number): number => bodyH * k * (0.34 + Math.sin(t * Math.PI * 0.86 + 0.20) * 0.80);
+    c.lineCap = 'round';
+    const SEG = 20;
+    for (let i = 0; i < SEG; i++) {
+      const t0 = i / SEG, t1 = (i + 1) / SEG;
+      const [ax, ay] = at(t0), [bxp, byp] = at(t1);
+      c.lineWidth = widthAt(t0);
+      c.strokeStyle = i < SEG * 0.4 ? p.base : (i < SEG * 0.78 ? p.lit : p.base);
+      c.beginPath(); c.moveTo(ax, ay); c.lineTo(bxp, byp); c.stroke();
+    }
+    /* THE GUARD HAIRS. Sprayed at a random angle they made a starburst — the
+       kiwi's mistake, again. Every hair leaves the tail SIDEWAYS off the local
+       tangent and sweeps toward the tip, so the brush lies along the tail. */
+    const hr = mulberry32((((g.seed as number) ^ 0x7A17) >>> 0));
+    c.lineWidth = 1.5;
+    for (let i = 0; i < 110; i++) {
+      const t = 0.12 + hr() * 0.86;
+      const [hx2, hy2] = at(t);
+      const [nx2, ny2] = at(Math.min(1, t + 0.02));
+      const tanA = Math.atan2(ny2 - hy2, nx2 - hx2);
+      const side = hr() < 0.5 ? 1 : -1;
+      const w = widthAt(t);
+      const L = w * (0.35 + hr() * 0.55);
+      const px = Math.cos(tanA + side * Math.PI / 2), py = Math.sin(tanA + side * Math.PI / 2);
+      const ux = px * 0.72 + Math.cos(tanA) * 0.68, uy = py * 0.72 + Math.sin(tanA) * 0.68;
+      c.strokeStyle = side > 0 ? p.lit : p.dark;
+      c.globalAlpha = 0.22 + hr() * 0.40;
+      c.beginPath();
+      c.moveTo(hx2 + px * w * 0.25, hy2 + py * w * 0.25);
+      c.lineTo(hx2 + px * w * 0.55 + ux * L, hy2 + py * w * 0.55 + uy * L);
+      c.stroke();
+    }
+    c.globalAlpha = 1;
+    /* the pale tip most brush-tailed carnivores wear */
+    const [tipx, tipy] = at(1);
+    c.fillStyle = 'rgba(246,244,238,0.50)';
+    c.beginPath(); c.ellipse(tipx, tipy, widthAt(1) * 0.60, widthAt(1) * 0.50, 0.3, 0, TAU); c.fill();
   } else if (tail === 'long' || tail === 'tuft') {
     c.strokeStyle = p.base; c.lineWidth = bodyH * 0.18; c.lineCap = 'round';
     c.beginPath(); c.moveTo(tx0, ty0); c.quadraticCurveTo(tx0 - bodyW * 0.5, ty0 + bodyH * 0.1, tx0 - bodyW * 0.42, ty0 + bodyH * 0.9); c.stroke();
@@ -565,7 +615,10 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* canids + small mammals where ears/tails are the read */
   'Red Fox': { legs: 0.10, depth: 0.085, len: 0.24, neck: 0.06, muzzle: 0.44, jaw: 'fine', ears: 'large', tail: 'plume', hue: '#d1651f' },
   'Arctic Fox': { legs: 0.095, depth: 0.09, len: 0.22, neck: 0.06, muzzle: 0.36, ears: 'small', tail: 'plume', hue: '#eaf0f5' },
-  'Fennec Fox': { legs: 0.085, depth: 0.075, len: 0.18, neck: 0.05, muzzle: 0.34, ears: 'huge', tail: 'plume', hue: '#e6cfa4' },
+  /* ★ wave 21 — the audit: "ears should dominate the head; reduce body size and
+     increase bushy tail". A fennec is a desert fox scaled DOWN around ears that
+     were not scaled down with it. */
+  'Fennec Fox': { legs: 0.058, depth: 0.062, len: 0.135, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.85, tailScale: 1.6 },
   'Wolf': { legs: 0.13, depth: 0.10, len: 0.28, neck: 0.08, muzzle: 0.46, ears: 'large', tail: 'bushy', hue: '#7d7f86' },
   'Hyena': { legs: 0.125, depth: 0.115, len: 0.27, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63' },
   'Koala': { legs: 0.05, depth: 0.12, len: 0.18, neck: 0.03, muzzle: 0.20, jaw: 'broad', ears: 'huge', tail: 'none', hue: '#a8adb4' },

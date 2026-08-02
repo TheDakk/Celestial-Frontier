@@ -686,6 +686,31 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 21 — THE NAMED-SPECIES NEEDS_FIX, FAUNA HALF (2026-08-02, batch 42).
+##   Every fauna finding read "generic silhouette; add <the one thing>", so the fix splits two
+##   ways. ★TAUGHT TO THE SYSTEMS (so siblings stay coherent): FishSpec gained wings/dome/droop/
+##   gape/bighead/paddle/eyespot — Flying Fish + Flying Gurnard (pectorals so enlarged they ARE
+##   the animal) · Barreleye (a transparent dome over upward TUBULAR eyes) · Blobfish · Basking
+##   Shark (a cavernous filter mouth) · Fangtooth + Viperfish · Paddlefish · Butterflyfish.
+##   BirdSpec gained wings:'soaring' + headMass — Albatross · Kookaburra · Secretary Bird ·
+##   Spoonbill. QuadSpec gained earScale/tailScale (Fennec Fox), InsectSpec wingScale (Wasp).
+##   ★BESPOKE where no parameter reaches (faunaoverrides5.ts): Bear (was a spiky yellow sausage;
+##   now MASS — shoulder hump, low heavy head, plantigrade paws) · Koala (read rabbit-like) ·
+##   ★★Dugong + Manatee HAD NO ROUTE AT ALL and fell through as SPHERES (D-ART-71: a missing
+##   route is invisible to the dead-route sentinel — it only proves keys we DID write reach real
+##   species) · Humpback (flippers a third of the animal, pleats, tubercles) · Beaked Whale ·
+##   Cuttlefish (mantle + fin skirt + W pupil) · Horseshoe Crab (FROM ABOVE) · Sea Squirt ·
+##   Lamprey (oral disc + gill pores). Plus Enoki, Black Truffle -> the wave-20 truffle, and
+##   Cyanobacteria -> the wave-20 trichome. ★THREE REPEATS OF ONE MISTAKE IN ONE WAVE: the wings
+##   VANISHED at 1.35x/0.2 alpha (D-ART-68 scale is the signature); the skull/rostrum/gape read
+##   as parts GLUED ON (D-ART-69 wear the body's light, taper in, an aperture is a TUNNEL not a
+##   wedge — the gape read as a BROOM until it was); the brush tail's guard hairs made a
+##   STARBURST, the kiwi's wave-19 failure verbatim (D-ART-70). ★The brush tail was a
+##   CATALOGUE-WIDE defect: one constant-width round-capped stroke gave every fox and snow
+##   leopard an orange PIPE. ★artaudit caught 3 of 9 new painters seeding an rng and discarding
+##   it. GATES: vitest 225 · tsc · overridecheck 931/931 0 dead · 7/7 controls · artaudit 0
+##   findings · artbattery 5/5 · speciesaudit 1254/1254 0 dupes 0 clipped · slicesmoke PASS ·
+##   hdart UNTOUCHED. NEXT: the 17 flora NEEDS_FIX rows, then re-export + re-audit.
 ##   ✔★★★ MORPHOLOGY WAVE 20 — THE PROCEDURAL FAMILIES (2026-08-02, batch 41). 120 of the
 ##   audit's 165 NEEDS_FIX rows were procedural fungi + microbes, both judged "all 60 outputs
 ##   remain variations of the same template". TWO things were wrong. (1) TOO FEW FAMILIES —
