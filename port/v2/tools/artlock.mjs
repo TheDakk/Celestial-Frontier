@@ -382,7 +382,20 @@ const CONFUSABLE = Number(val('confusable', '1.5'));
         if (dist(lock.fp[earth[i]], lock.fp[earth[j]]) < WATCH) before.add(key(earth[i], earth[j]));
       }
     }
+    /* ⚠ THIS REPORTED "0 newly so" WHILE FAILING FOR A RISE OF 2, which is a
+       self-contradicting message and therefore useless. The bug: `created` was
+       "newly under WATCH", then filtered by CONFUSABLE — so a pair already
+       under watch at 1.6 that the change pushed to 1.4 was invisible to it,
+       even though that is exactly the event being gated. Ask the question the
+       gate is actually asking: newly under CONFUSABLE. */
     const created = pairs.filter((q) => !before.has(key(q[0], q[1])));
+    const beforeConf = new Set();
+    for (let i = 0; i < earth.length; i++) {
+      for (let j = i + 1; j < earth.length; j++) {
+        if (dist(lock.fp[earth[i]], lock.fp[earth[j]]) < CONFUSABLE) beforeConf.add(key(earth[i], earth[j]));
+      }
+    }
+    const newlyConf = pairs.filter((q) => q[2] < CONFUSABLE && !beforeConf.has(key(q[0], q[1])));
     /* ⚠ AND THE GATE WAS MIS-SPECIFIED. It failed on any pair the change pushed
        below CONFUSABLE while ignoring every pair the same change pushed APART —
        so a wave that halved the identical-looking pairs (19 -> 9) was blocked by
@@ -400,8 +413,8 @@ const CONFUSABLE = Number(val('confusable', '1.5'));
       }
     }
     console.log('   confusable (<' + CONFUSABLE + ') ' + wasConf + ' -> ' + nowConf
-      + '  ·  ' + created.filter((q) => q[2] < CONFUSABLE).length + ' of them newly so');
-    for (const [a, b, dd] of created.slice(0, 8)) {
+      + '  ·  ' + newlyConf.length + ' newly confusable');
+    for (const [a, b, dd] of (newlyConf.length ? newlyConf : created).slice(0, 8)) {
       console.log('        ' + dd.toFixed(2) + '  ' + a.slice(a.indexOf('|') + 1) + '  ~  ' + b.slice(b.indexOf('|') + 1));
     }
     if (nowConf > wasConf) {

@@ -438,3 +438,135 @@ export function coatBlocks(c: Ctx, t: Tube, p: Coatable, blocks: Array<{ u0: num
     c.closePath(); c.fill();
   }
 }
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ★ THE MATERIAL LAYER — the prototype for the graphics upgrade.
+
+   Every surface in this game is a flat gradient. That single fact is the
+   biggest "cheap vector art" tell in the catalogue, bigger than any anatomy
+   error, and it is what ~86% of the open audit findings are describing when
+   they say "airbrushed", "plastic", "flat", "machined edge".
+
+   Waves 4–7 accidentally built the prerequisite. Every point on a body now has
+   a (u along the spine, phi around the girth), a surface normal, a
+   foreshortening factor and a lighting value — which is exactly what you need
+   to lay fur, hide or scales ONTO a body so they wrap it rather than sit on
+   it. This is §6.7's "shader/material profiles" done with the machinery that
+   already exists.
+
+   ⚠ COST IS THE WHOLE QUESTION. Portraits are generated at runtime and cached
+   (cap 1,200), there is an art-hold law about keeping the main thread
+   answerable during boot, and there is a standing "phone runs hot" mandate.
+   So every material takes a `detail` multiplier and the caller can turn it
+   down; `detail: 0` is free and reproduces the old flat look exactly.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+export type Material = 'fur' | 'pelt' | 'hide' | 'scale' | 'plate';
+
+/** the fine structure of a surface, laid in the body's own coordinates */
+export function coatMaterial(
+  c: Ctx, t: Tube, r: RNG, p: Coatable, kind: Material,
+  o: { detail?: number; rgb?: [number, number, number]; len?: number } = {},
+): void {
+  const detail = o.detail ?? 1;
+  if (detail <= 0) return;
+
+  /* the tone a hair or a scale takes where it sits: the body's own light, so
+     the material is DESCRIBING the form rather than decorating it */
+  const tone = (u: number, phi: number, k: number): string => {
+    const L = t.light(u, phi);
+    const m = 0.40 + L * 1.05 * k;
+    return 'rgb(' + (Math.min(255, p.cr * m) | 0) + ',' + (Math.min(255, p.cg * m) | 0)
+      + ',' + (Math.min(255, p.cb * m) | 0) + ')';
+  };
+
+  if (kind === 'fur' || kind === 'pelt') {
+    /* FUR. Two layers, because one never reads: a soft dense undercoat that
+       breaks the flat fill, then finer guard hairs that catch the light. Every
+       hair lies ALONG the girth and is foreshortened with the surface, so the
+       coat turns with the body instead of lying flat across it. */
+    const N = Math.round((kind === 'pelt' ? 1500 : 950) * detail);
+    c.lineCap = 'round';
+    for (let i = 0; i < N; i++) {
+      const u = 0.02 + r() * 0.96;
+      const phi = -1.45 + r() * 2.95;
+      const F = t.facing(u, phi);
+      if (F < 0.05) continue;
+      /* the hair runs down the girth and trails backward a little */
+      const dphi = -(0.09 + r() * 0.26);
+      const du = -(0.006 + r() * 0.016);
+      const A = t.pt(u, phi);
+      const B = t.pt(Math.max(0, u + du), Math.max(-1.55, phi + dphi));
+      const lit = r() < 0.34;
+      c.strokeStyle = tone(u, phi, lit ? 1.55 : 0.62);
+      c.globalAlpha = (lit ? 0.30 : 0.26) + r() * 0.26;
+      c.lineWidth = t.radius(u) * (0.018 + r() * 0.034) * (o.len ?? 1);
+      c.beginPath(); c.moveTo(A[0], A[1]);
+      c.lineTo(B[0], B[1]);
+      c.stroke();
+    }
+    c.globalAlpha = 1;
+    /* the coat must break the OUTLINE too: fur inside a machined edge still
+       reads as plastic, because the silhouette is what the eye reads first. */
+    shaggyRim(c, t, r, p, Math.max(3, t.radius(0.5) * 0.10 * (o.len ?? 1)), 0.34 * detail);
+    return;
+  }
+
+  if (kind === 'hide') {
+    /* HIDE — an elephant, a rhino, a hippo. No hair: a network of CRACKS with
+       pores between them, deepest where the skin folds. */
+    const N = Math.round(220 * detail);
+    c.lineCap = 'round';
+    for (let i = 0; i < N; i++) {
+      const u = 0.02 + r() * 0.96, phi = -1.35 + r() * 2.8;
+      if (t.facing(u, phi) < 0.06) continue;
+      const L = t.light(u, phi);
+      c.strokeStyle = 'rgba(' + ((p.cr * 0.34) | 0) + ',' + ((p.cg * 0.34) | 0) + ','
+        + ((p.cb * 0.36) | 0) + ',' + (0.10 + (1 - L) * 0.26).toFixed(2) + ')';
+      c.lineWidth = 1 + r() * 0.9;
+      const A = t.pt(u, phi);
+      const B = t.pt(u + (r() - 0.5) * 0.05, phi + (r() - 0.5) * 0.42);
+      c.beginPath(); c.moveTo(A[0], A[1]);
+      c.lineTo(B[0], B[1]); c.stroke();
+    }
+    /* the highlight side gets a dry dusty sheen, which is most of what makes
+       hide read as hide rather than as rubber */
+    for (let i = 0; i < Math.round(90 * detail); i++) {
+      const u = 0.05 + r() * 0.9, phi = 0.3 + r() * 1.0;
+      const A = t.pt(u, phi);
+      c.fillStyle = 'rgba(236,230,216,' + (0.03 + r() * 0.07).toFixed(2) + ')';
+      c.beginPath(); c.ellipse(A[0], A[1], t.radius(u) * 0.07, t.radius(u) * 0.045, 0, 0, TAU); c.fill();
+    }
+    return;
+  }
+
+  /* SCALE / PLATE — overlapping rows that follow the girth. A scale row is a
+     ring, not a grid, and that is why scales painted as a texture always look
+     like wallpaper: they have to curve with the animal. */
+  const rows = Math.round((kind === 'plate' ? 12 : 20) * Math.min(1.4, detail));
+  const perRow = Math.round((kind === 'plate' ? 14 : 26) * Math.min(1.4, detail));
+  for (let ri = 0; ri < rows; ri++) {
+    const phi = 1.45 - (ri / rows) * 2.9;
+    for (let k = 0; k < perRow; k++) {
+      const u = 0.02 + ((k + (ri % 2) * 0.5) / perRow) * 0.96;
+      const F = t.facing(u, phi);
+      if (F < 0.07) continue;
+      const rad = t.radius(u) * (kind === 'plate' ? 0.20 : 0.115);
+      const L = t.light(u, phi);
+      t.withMark(c, u, phi, (cc) => {
+        const m = 0.55 + L * 0.85;
+        cc.fillStyle = 'rgb(' + (Math.min(255, p.cr * m) | 0) + ',' + (Math.min(255, p.cg * m) | 0)
+          + ',' + (Math.min(255, p.cb * m) | 0) + ')';
+        cc.beginPath();
+        cc.ellipse(0, 0, rad * 0.62, rad * 0.48, 0, Math.PI, TAU);
+        cc.fill();
+        cc.strokeStyle = 'rgba(0,0,0,0.18)';
+        cc.lineWidth = 0.9;
+        cc.beginPath();
+        cc.ellipse(0, 0, rad * 0.62, rad * 0.48, 0, Math.PI, TAU);
+        cc.stroke();
+      });
+    }
+  }
+}

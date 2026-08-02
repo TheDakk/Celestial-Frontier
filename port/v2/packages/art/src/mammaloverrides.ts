@@ -54,14 +54,14 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Dingo': { legs: 0.1563, depth: 0.1321, len: 0.1733, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#c08b4c', family: 'canid' },
   'Dog': { legs: 0.1423, depth: 0.1325, len: 0.163, neck: 0.07, muzzle: 0.44, ears: 'large', tail: 'bushy', family: 'canid' },
   /* ── FELIDS: short muzzle, round ear, long tail; rosettes where they belong ── */
-  'Bobcat': { legs: 0.1268, depth: 0.114, len: 0.1776, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'stub', coat: 'spots', hue: '#b08a5e', family: 'felid' },
+  'Bobcat': { legs: 0.1268, depth: 0.114, len: 0.1776, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'stub', coat: 'spots', hue: '#c39a63', family: 'felid', earShape: 'tuft' },
   'Caracal': { legs: 0.1413, depth: 0.1144, len: 0.1783, neck: 0.06, muzzle: 0.28, ears: 'huge', tail: 'long', hue: '#c08e58', family: 'felid', earShape: 'tuft' },
   'Serval': { legs: 0.1702, depth: 0.1141, len: 0.1684, neck: 0.07, muzzle: 0.28, ears: 'huge', tail: 'long', coat: 'spots', hue: '#d0a45c', family: 'felid' },
   'Ocelot': { legs: 0.1202, depth: 0.1088, len: 0.1874, neck: 0.06, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#c79a5c', family: 'felid' },
   'Clouded Leopard': { legs: 0.1118, depth: 0.1126, len: 0.2124, neck: 0.06, muzzle: 0.30, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#b8975f', family: 'felid' },
   'Wildcat': { legs: 0.1145, depth: 0.1049, len: 0.172, neck: 0.06, muzzle: 0.28, ears: 'round', tail: 'banded', coat: 'stripes', hue: '#a09077', family: 'felid' },
   'Sand Cat': { legs: 0.1046, depth: 0.1025, len: 0.1598, neck: 0.05, muzzle: 0.26, ears: 'huge', tail: 'banded', hue: '#d6bd8e', family: 'felid', earShape: 'round' },
-  'Fishing Cat': { legs: 0.113, depth: 0.1123, len: 0.1842, neck: 0.06, muzzle: 0.30, ears: 'round', tail: 'stub', coat: 'spots', hue: '#93856d', family: 'felid' },
+  'Fishing Cat': { legs: 0.101, depth: 0.1265, len: 0.1905, neck: 0.055, muzzle: 0.30, ears: 'round', tail: 'stub', coat: 'spots', hue: '#6f7455', family: 'felid' },
   'Cat': { legs: 0.0992, depth: 0.093, len: 0.1677, neck: 0.05, muzzle: 0.24, ears: 'large', tail: 'long', coat: 'stripes', family: 'felid' },
   /* ── MUSTELIDS & small carnivores: long body, short legs ── */
   'Badger': { legs: 0.0743, depth: 0.1093, len: 0.2151, neck: 0.04, muzzle: 0.38, ears: 'tiny', tail: 'stub', coat: 'stripes', face: 'mask', hue: '#8d8a84', family: 'mustelid' },
@@ -83,7 +83,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Civet': { legs: 0.0994, depth: 0.1039, len: 0.1618, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'banded', coat: 'spots', face: 'mask', hue: '#a8996f', family: 'mustelid' },
   'Coati': { legs: 0.1047, depth: 0.1053, len: 0.1641, neck: 0.06, muzzle: 0.54, ears: 'round', tail: 'banded', hue: '#8e6440', family: 'procyonid' },
   'Kinkajou': { legs: 0.096, depth: 0.1095, len: 0.1437, neck: 0.05, muzzle: 0.30, ears: 'round', tail: 'banded', hue: '#a06e3c', family: 'procyonid' },
-  'Mole': { legs: 0.0295, depth: 0.0682, len: 0.1454, neck: 0.02, muzzle: 0.46, ears: 'tiny', tail: 'stub', hue: '#4a423c', family: 'burrower', earShape: 'hidden' },
+  'Mole': { legs: 0.0295, depth: 0.0790, len: 0.1610, neck: 0.02, muzzle: 0.46, ears: 'tiny', tail: 'stub', hue: '#39322e', family: 'burrower', earShape: 'hidden', foot: 'claw' },
   'Hyrax': { legs: 0.0595, depth: 0.0899, len: 0.1474, neck: 0.03, back: 'arched', muzzle: 0.28, ears: 'round', tail: 'none', hue: '#8b7a63', family: 'rodent' },
   'Aardvark': { legs: 0.1078, depth: 0.1259, len: 0.2065, neck: 0.06, back: 'arched', muzzle: 0.80, ears: 'huge', tail: 'long', hue: '#b09c85', family: 'burrower', earShape: 'leaf' },
   /* ── BEARS, PIGS, EQUIDS ── */
