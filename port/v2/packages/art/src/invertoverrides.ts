@@ -88,6 +88,10 @@ function limb(c: Ctx, x0: number, y0: number, x1: number, y1: number, kx: number
 /* ═══════════════ INSECTS: three tagmata, six legs, antennae ═══════════════ */
 export interface InsectSpec {
   wings?: 'none' | 'folded' | 'open' | 'lace';
+  /* ★ wave 21 — the audit on the wasp: "lacks clearly readable wings". A folded
+     wing scaled off the abdomen is invisible on a species whose wings extend
+     well past it. */
+  wingScale?: number;
   waist?: boolean;            /** the wasp/ant petiole */
   abdomen: number;            /** abdomen length multiplier */
   antennae?: 'short' | 'long' | 'feather' | 'none';
@@ -149,8 +153,9 @@ export function insectBody(c: Ctx, g: G, p: Pal, spec: InsectSpec, name = ''): v
     /* an OPEN wing is a display surface, not a flap: scale it off the THORAX
        and give it a real span. Sized off the abdomen it came out smaller
        than the body it hangs from. */
-    const wl = open ? th * 5.2 : abL * 1.25;
-    const wh = open ? th * 2.9 : th * 0.85;
+    const ws = spec.wingScale ?? 1;
+    const wl = (open ? th * 5.2 : abL * 1.25) * ws;
+    const wh = (open ? th * 2.9 : th * 0.85) * (ws > 1 ? 1.25 : 1);
     for (const s of [-1, 1] as const) {
       c.save(); c.translate(cx + th * (open ? -0.1 : 0.4), cy - th * (open ? 0.5 : 0.35));
       c.rotate(open ? s * 0.30 : s * 0.16);
@@ -711,7 +716,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Honeybee': I({ abdomen: 0.95, wings: 'lace', antennae: 'short', sting: true, fuzzy: true, pattern: 'bands' }),
   'Bumblebee': I({ abdomen: 1.05, wings: 'lace', antennae: 'short', sting: true, fuzzy: true, pattern: 'bands' }),
   'Orchid Bee': I({ abdomen: 0.9, wings: 'lace', antennae: 'short', fuzzy: true, pattern: 'bands' }),
-  'Wasp': I({ abdomen: 1.0, waist: true, wings: 'lace', antennae: 'short', sting: true, pattern: 'bands' }),
+  'Wasp': I({ abdomen: 1.15, waist: true, wings: 'lace', antennae: 'short', sting: true, pattern: 'bands', wingScale: 1.6 }),
   'Moth': I({ abdomen: 1.0, wings: 'open', antennae: 'feather', fuzzy: true }),
   'Butterfly': I({ abdomen: 0.9, wings: 'open', antennae: 'long', pattern: 'spots' }),
   'Cicada': I({ abdomen: 1.1, wings: 'folded', antennae: 'short' }),

@@ -26,7 +26,8 @@ import { planFor } from './proceduraloverrides.js';
 import { faunaKiwi, faunaMudskipper, faunaPyrosome, faunaSalp, faunaTripodFish } from './faunaoverrides4.js';
 import { floraCabbage, floraCarrot, floraCorn, floraHemp, floraTobacco, floraWatermelon, floraStrawberry, floraKiwiFruit } from './floraoverrides3.js';
 import { fungiFlyAgaric, fungiLionsMane, fungiMaitake, fungiStinkhorn, fungiCordyceps, lichenMat, microbeForam, tardigrade, macroAlgaeSheet, microAlgaeCell, algaeBloom } from './fungioverrides2.js';
-import { procFamilyIndex, FAMILY_COUNT, fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiClub, microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate, microbePlates, microbeMat } from './proceduralfamilies.js';
+import { fungiEnoki, procFamilyIndex, FAMILY_COUNT, fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiClub, microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate, microbePlates, microbeMat } from './proceduralfamilies.js';
+import { faunaBear, faunaKoala, faunaSirenian, faunaHumpback, faunaBeakedWhale, faunaCuttlefish, faunaHorseshoeCrab, faunaSeaSquirt, faunaLamprey } from './faunaoverrides5.js';
 import { fishBody } from './faunaoverrides3.js';
 import { insectBody, myriapod } from './invertoverrides.js';
 import { plantBody } from './floraoverrides2.js';
@@ -336,7 +337,9 @@ function microbeAmoeba(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
 type Painter = (c: Ctx, g: G, p: ReturnType<typeof palette>) => void;
 const FUNGI_NAME: Record<string, Painter> = {
   'Turkey Tail': fungiBracket, 'Bracket Fungus': fungiBracket, 'Shelf Fungus': fungiBracket, 'Chicken-of-the-Woods': fungiBracket, 'Oyster Mushroom': fungiBracket, 'Reindeer Lichen': fungiBracket,
-  'Giant Puffball': fungiPuffball, 'Earthstar': fungiEarthstar, 'Black Truffle': fungiPuffball,
+  'Giant Puffball': fungiPuffball, 'Earthstar': fungiEarthstar, 'Black Truffle': fungiTruffle,
+  /* ★ wave 21 — the audit's last two named fungi */
+  'Enoki': fungiEnoki,
   'Coral Fungus': fungiCoral,
   'Morel': fungiMorel,
   'Mold': fungiMold, 'Mildew': fungiMold, 'Yeast': fungiMold,
@@ -388,7 +391,22 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'fauna|Mudskipper': faunaMudskipper,
   'fauna|Pyrosome': faunaPyrosome,
   'fauna|Salp': faunaSalp,
+  /* ★ wave 21 — Cyanobacteria: the audit wants "filamentous chains, mats, or
+     bead-like trichomes", which is exactly the trichome wave 20 built */
+  'microbe|Cyanobacteria': microbeFilament,
   'fauna|Tripod Fish': faunaTripodFish,
+  /* ★ wave 21 — the named-species NEEDS_FIX fauna the shared systems route but
+     cannot say (the sirenians had no route at all and fell through as spheres) */
+  'fauna|Bear': faunaBear,
+  'fauna|Koala': faunaKoala,
+  'fauna|Dugong': (c, g, p) => faunaSirenian(c, g, p, 'Dugong'),
+  'fauna|Manatee': (c, g, p) => faunaSirenian(c, g, p, 'Manatee'),
+  'fauna|Humpback Whale': faunaHumpback,
+  'fauna|Beaked Whale': faunaBeakedWhale,
+  'fauna|Cuttlefish': faunaCuttlefish,
+  'fauna|Horseshoe Crab': faunaHorseshoeCrab,
+  'fauna|Sea Squirt': faunaSeaSquirt,
+  'fauna|Lamprey': faunaLamprey,
 };
 export function resolveOverride(g: G): string | null {
   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it

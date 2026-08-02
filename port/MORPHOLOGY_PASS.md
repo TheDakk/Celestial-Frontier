@@ -1193,3 +1193,67 @@ broken on purpose, then to pass again restored.
 vitest 225 (5 new) · tsc clean · overridecheck 930/930 0 dead · 7/7 controls · artbattery 5/5 ·
 speciesaudit 1254/1254 painted 0 failures 0 dupes 0 clipped · slicesmoke PASS. hdart UNTOUCHED.
 NEXT: wave 21 = the 45 named-species NEEDS_FIX rows; then re-export the five zips and re-audit.
+
+---
+
+# WAVE 21 — LANDED 2026-08-02 (THE NAMED-SPECIES NEEDS_FIX: FAUNA + FUNGI + MICROBE)
+
+The audit's 45 named NEEDS_FIX rows, fauna half. Every fauna finding had the same shape —
+"current silhouette is generic; add <the one thing>" — so the fix splits two ways: where a
+shared system COULD carry the signature it was taught to, and where it could not, a bespoke
+painter. That split is the whole design of this wave.
+
+## Taught to the systems (every sibling benefits, so the roster stays coherent)
+★ FISH — FishSpec gained wings / dome / droop / gape / bighead / paddle / eyespot.
+  Flying Fish + Flying Gurnard (pectorals so enlarged they ARE the animal) · Barreleye (a
+  transparent cranial dome over two upward TUBULAR eyes) · Blobfish (loose sagging gelatinous
+  face) · Basking Shark (a cavernous open filter mouth) · Fangtooth + Viperfish (a skull built
+  around a mouth, with fangs closing outside it) · Paddlefish (a broad flat rostrum) ·
+  Butterflyfish (a false eyespot near the tail and a bar hiding the true eye).
+★ BIRDS — BirdSpec gained wings:'soaring' and headMass.
+  Albatross (the wingspan IS the bird) · Kookaburra (an oversized kingfisher head) · Secretary
+  Bird (long raptor legs + crest) · Spoonbill (the spatula now dominates the head).
+★ QuadSpec gained earScale + tailScale; InsectSpec gained wingScale.
+  Fennec Fox (ears now dominate a body scaled down around them) · Wasp (readable wings).
+
+## Bespoke, because no parameter reaches them (faunaoverrides5.ts)
+Bear (it was a spiky yellow sausage: now MASS — a shoulder hump higher than the rump, a low
+heavy head, plantigrade paws) · Koala (read rabbit-like: now huge fringed ears, a big leathery
+nose, grasping a trunk) · Dugong + Manatee (★ THEY HAD NO ROUTE AT ALL and fell through to the
+verbatim engine as SPHERES) · Humpback Whale (flippers a third of the animal, scalloped leading
+edge, ventral pleats, tubercles) · Beaked Whale (a body that runs SMOOTHLY into the beak, melon,
+tusks, rake scars) · Cuttlefish (a broad mantle with a continuous fin skirt and the W pupil) ·
+Horseshoe Crab (seen FROM ABOVE, because the horseshoe and the telson only exist in that view) ·
+Sea Squirt (an attached sac with two siphons) · Lamprey (the oral disc's rings of horny teeth
+and the seven gill pores).
+
+## Fungi + microbe
+Enoki (a sheaf of very long thin stems with tiny caps — THE STEM RATIO is the species) ·
+Black Truffle rerouted from puffball to the wave-20 truffle · Cyanobacteria routed to the
+wave-20 trichome, which is exactly what the audit asked for.
+
+## ★ THE SAME MISTAKE, THREE TIMES, IN ONE WAVE
+1. THE WINGS VANISHED. First cut: len*1.35 at 0.20 alpha, drawn behind the body. That is the
+   audit's complaint restated, not fixed. Scale is the signature — 1.85x, lit, near wing OVER
+   the body.
+2. THE SIGNATURES READ AS GLUED-ON PARTS. The deep-sea skull was shaded on its own radial ramp
+   and came out a grey box bolted to an orange fish; the paddlefish rostrum was a plank taped to
+   a nose; the basking shark's gape was a black wedge raked with pale lines and read as a BROOM.
+   All three fixed the same way: wear the body's light, taper into the body, and make an
+   aperture a TUNNEL (dark at the throat, catching light at the rim) rather than a wedge.
+3. THE GUARD HAIRS MADE A STARBURST. The new brush tail sprayed hairs at random angles and every
+   fox grew a spiky ball. This is the kiwi's wave-19 failure verbatim. Hairs leave the tail
+   SIDEWAYS off the local tangent and sweep toward the tip.
+
+★ AND THE BRUSH TAIL WAS A CATALOGUE-WIDE DEFECT, not a fennec one: one constant-width
+round-capped stroke gave every fox, snow leopard and fennec an orange PIPE. A plume tapers from
+a narrow root, swells, and finishes in loose hair. Fixed for all of them at once.
+
+★ THE ART AUDIT CAUGHT ME: three of the nine new painters seeded an rng and discarded it with
+`void r` — humpback, cuttlefish, lamprey — so their per-species randomness did nothing. They
+now vary tubercle scatter, zebra-band phase and body-wave phase respectively.
+
+## Gates
+vitest 225 · tsc clean · overridecheck 931/931 0 dead · 7/7 controls · artaudit 21 sources
+0 findings · artbattery 5/5 · speciesaudit 1254/1254 0 dupes 0 clipped · slicesmoke PASS.
+hdart UNTOUCHED. NEXT: the 17 flora NEEDS_FIX rows, then re-export + re-audit.

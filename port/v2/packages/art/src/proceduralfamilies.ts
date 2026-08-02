@@ -533,3 +533,49 @@ export function microbeMat(c: Ctx, g: G, p: Pal): void {
     c.strokeStyle = 'rgba(255,255,255,0.24)'; c.lineWidth = 1; c.beginPath(); c.arc(x, y, q, -2.5, -0.6); c.stroke();
   }
 }
+
+/** ENOKI: a dense sheaf of very long thin stems with tiny caps — the audit's
+    "current broad caps/stems are too generic". The STEM RATIO is the species. */
+export function fungiEnoki(c: Ctx, g: G, p: Pal): void {
+  const r = seeded(g, 0xE110);
+  ground(c, S * 0.5, S * 0.90, S * 0.13);
+  /* the clump they all rise from */
+  c.fillStyle = 'rgba(46,38,28,0.9)';
+  c.beginPath(); c.ellipse(S * 0.5, S * 0.88, S * 0.11, S * 0.035, 0, 0, TAU); c.fill();
+  const n = 22 + (r() * 10 | 0);
+  const stems: Array<[number, number, number, number]> = [];
+  for (let i = 0; i < n; i++) {
+    const u = (i / (n - 1)) * 2 - 1;
+    const bx = S * 0.5 + u * S * 0.075 + (r() - 0.5) * 8;
+    const H = S * (0.50 + r() * 0.26) * (1 - Math.abs(u) * 0.22);
+    const lean = u * 0.30 + (r() - 0.5) * 0.16;
+    stems.push([bx, H, lean, r()]);
+  }
+  stems.sort((a, b) => a[3] - b[3]);
+  for (const [bx, H, lean, q] of stems) {
+    const tx = bx + Math.sin(lean) * H, ty = S * 0.88 - Math.cos(lean) * H;
+    const w = S * (0.0075 + q * 0.004);
+    const gg = c.createLinearGradient(bx - w * 2, 0, bx + w * 2, 0);
+    gg.addColorStop(0, p.dark); gg.addColorStop(0.42, p.lit); gg.addColorStop(1, p.base);
+    c.strokeStyle = gg; c.lineWidth = w * 2; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(bx, S * 0.88);
+    c.quadraticCurveTo(bx + Math.sin(lean) * H * 0.4, S * 0.88 - H * 0.55, tx, ty);
+    c.stroke();
+    /* the dark velvety base an enoki's stipe always has */
+    c.strokeStyle = `rgba(${p.cr * 0.32 | 0},${p.cg * 0.30 | 0},${p.cb * 0.26 | 0},0.75)`;
+    c.lineWidth = w * 2.1;
+    c.beginPath(); c.moveTo(bx, S * 0.88); c.lineTo(bx + Math.sin(lean) * H * 0.12, S * 0.88 - H * 0.12); c.stroke();
+    /* THE CAP — tiny, barely wider than the stem it caps */
+    const cw = w * (2.4 + q * 1.5);
+    c.fillStyle = lump(c, p, tx, ty, cw);
+    c.beginPath();
+    c.moveTo(tx - cw, ty + cw * 0.20);
+    c.quadraticCurveTo(tx - cw * 0.9, ty - cw * 1.15, tx, ty - cw * 1.10);
+    c.quadraticCurveTo(tx + cw * 0.9, ty - cw * 1.15, tx + cw, ty + cw * 0.20);
+    c.quadraticCurveTo(tx, ty + cw * 0.50, tx - cw, ty + cw * 0.20);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(255,255,255,0.24)'; c.lineWidth = 1.1;
+    c.beginPath(); c.moveTo(tx - cw * 0.8, ty - cw * 0.2);
+    c.quadraticCurveTo(tx - cw * 0.2, ty - cw * 1.05, tx + cw * 0.6, ty - cw * 0.5); c.stroke();
+  }
+}

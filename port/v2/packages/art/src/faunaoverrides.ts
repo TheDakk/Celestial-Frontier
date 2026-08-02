@@ -420,6 +420,9 @@ export interface BirdSpec {
   owl?: boolean;                                   /** round head, facial disc, forward eyes */
   swim?: boolean;                                  /** rides a waterline; legs hidden */
   upright?: boolean;                               /** penguin/auk stance, flipper not wing */
+  /* ── wave 21: the Platinum audit's bird findings, each "add <the one thing>" ── */
+  wings?: 'soaring';                              /** wings so long they ARE the bird (albatross) */
+  headMass?: number;                               /** an oversized head (kingfisher, kookaburra) */
 }
 /** THE AVALANCHE. XOR-ing a small salt into a hash and dividing by 2^32
     perturbs only the lowest bits, so every "independent" variation axis
@@ -516,7 +519,49 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
   rim(c, () => c.ellipse(bx, by, bw, bh, -0.15, -2.8, 0.3), 2.2);
 
   /* ★ THE FOLDED WING — layered coverts + primaries, the missing feature */
-  if (opts.upright) {   /* a penguin has a FLIPPER: one stiff blade, no primaries */
+  if (opts.wings === 'soaring') {
+    /* ★ WAVE 21 — AN ALBATROSS IS ITS WINGSPAN. Folded like every other bird it
+       read as "a compact waterbird" (the audit's words); held out, the span is
+       the recognition. Two wings, the far one behind and dimmer, so the bird
+       has depth instead of one flat cutout. */
+    const spanW = bw * 3.5, spanH = bh * 0.46;
+    const feather = (sx: number, sy: number, ang: number, k: number, dim: number): void => {
+      c.save(); c.translate(sx, sy); c.rotate(ang);
+      const wg = c.createLinearGradient(0, 0, spanW * k, 0);
+      wg.addColorStop(0, p.base); wg.addColorStop(0.55, p.dark);
+      wg.addColorStop(1, `rgb(${p.cr * 0.24 | 0},${p.cg * 0.24 | 0},${p.cb * 0.26 | 0})`);
+      c.globalAlpha = dim;
+      c.fillStyle = wg;
+      /* THE TAPER IS THE WING. A constant-chord blade with a squared-off end is
+         a plank; an albatross's wing narrows the whole way out and finishes on
+         a point, and that outline alone says "seabird". */
+      c.beginPath();
+      c.moveTo(0, -spanH * 0.60);
+      c.bezierCurveTo(spanW * k * 0.40, -spanH * 0.98, spanW * k * 0.78, -spanH * 0.72, spanW * k, -spanH * 0.10);
+      c.bezierCurveTo(spanW * k * 0.72, spanH * 0.34, spanW * k * 0.34, spanH * 0.60, 0, spanH * 0.62);
+      c.closePath(); c.fill();
+      /* the primaries as separated fingers, splitting OFF the tapered tip */
+      c.strokeStyle = `rgba(${p.cr * 0.22 | 0},${p.cg * 0.22 | 0},${p.cb * 0.24 | 0},0.9)`;
+      c.lineCap = 'round';
+      for (let i = 0; i < 5; i++) {
+        const u = i / 4;
+        c.lineWidth = 3.4 - u * 1.6;
+        c.beginPath(); c.moveTo(spanW * k * 0.72, -spanH * 0.52 + u * spanH * 0.9);
+        c.quadraticCurveTo(spanW * k * (0.90 + u * 0.03), -spanH * 0.44 + u * spanH * 0.9,
+          spanW * k * (1.02 - u * 0.06), -spanH * (0.30 - u * 0.42));
+        c.stroke();
+      }
+      /* the covert row where the wing meets the shoulder — it belongs to a body */
+      c.fillStyle = `rgba(${Math.min(255, p.cr * 1.3 | 0)},${Math.min(255, p.cg * 1.3 | 0)},${Math.min(255, p.cb * 1.3 | 0)},0.5)`;
+      c.beginPath(); c.ellipse(spanW * k * 0.14, 0, spanW * k * 0.17, spanH * 0.52, 0, 0, TAU); c.fill();
+      c.globalAlpha = 1;
+      c.restore();
+    };
+    /* one wing sweeping back on each side. The far one is shorter and dimmer
+       because it is going away from us — two identical wings read as a cutout. */
+    feather(bx - bw * 0.05, by - bh * 0.22, Math.PI - 0.22, 0.72, 0.55);   /* far, going away */
+    feather(bx + bw * 0.05, by + bh * 0.02, 0.14, 1, 1);                   /* near, toward us */
+  } else if (opts.upright) {   /* a penguin has a FLIPPER: one stiff blade, no primaries */
     c.fillStyle = p.dark;
     c.save(); c.translate(bx + bw * 0.30, by - bh * 0.10); c.rotate(0.30);
     c.beginPath(); c.ellipse(0, bh * 0.30, bw * 0.30, bh * 0.62, 0, 0, TAU); c.fill();
@@ -540,7 +585,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
 
   /* ── neck + head ── */
   const neck = opts.neck ?? 'short';
-  const hr = 20 * sz * (opts.owl ? 1.55 : 1);
+  const hr = 20 * sz * (opts.owl ? 1.55 : 1) * (opts.headMass ?? 1);
   let hx = bx - bw * 0.72, hy = by - bh * 0.95;
   if (neck === 'none') { hx = bx - bw * 0.55; hy = by - bh * 0.80; }
   else if (neck === 'long') { hx = bx - bw * 0.86; hy = by - bh * 1.70; }
@@ -593,7 +638,17 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     c.fillStyle = '#e0b13c';
     if (opts.bill === 'hook') { c.beginPath(); c.moveTo(hx - 16 * B, hy - 6 * B); c.quadraticCurveTo(hx - 40 * B, hy - 4 * B, hx - 34 * B, hy + 12 * B); c.quadraticCurveTo(hx - 26 * B, hy + 4 * B, hx - 14 * B, hy + 6 * B); c.closePath(); c.fill(); }
     else if (opts.bill === 'long') { c.beginPath(); c.moveTo(hx - 14 * B, hy - 4 * B); c.lineTo(hx - 78 * B, hy + 2 * B); c.lineTo(hx - 14 * B, hy + 7 * B); c.closePath(); c.fill(); }
-    else if (opts.bill === 'spoon') { c.beginPath(); c.moveTo(hx - 14 * B, hy - 3 * B); c.lineTo(hx - 56 * B, hy + 1 * B); c.lineTo(hx - 14 * B, hy + 6 * B); c.closePath(); c.fill(); c.beginPath(); c.ellipse(hx - 60 * B, hy + 2 * B, 13 * B, 8 * B, 0, 0, TAU); c.fill(); }
+    else if (opts.bill === 'spoon') {
+      /* ★ wave 21 — the spatula has to DOMINATE the head: a long shaft that
+         flares into a broad flat disc, with the two mandibles' seam across it */
+      c.beginPath(); c.moveTo(hx - 12 * B, hy - 5 * B); c.lineTo(hx - 62 * B, hy - 2 * B);
+      c.lineTo(hx - 62 * B, hy + 6 * B); c.lineTo(hx - 12 * B, hy + 8 * B); c.closePath(); c.fill();
+      c.beginPath(); c.ellipse(hx - 74 * B, hy + 2 * B, 22 * B, 13 * B, 0.06, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(255,255,255,0.28)'; c.lineWidth = 1.8;
+      c.beginPath(); c.moveTo(hx - 14 * B, hy + 1 * B); c.lineTo(hx - 92 * B, hy + 3 * B); c.stroke();
+      c.fillStyle = 'rgba(0,0,0,0.22)';
+      c.beginPath(); c.ellipse(hx - 74 * B, hy + 7 * B, 20 * B, 6 * B, 0.06, 0, Math.PI); c.fill();
+    }
     else if (opts.bill === 'huge') { c.beginPath(); c.moveTo(hx - 14 * B, hy - 12 * B); c.quadraticCurveTo(hx - 66 * B, hy - 10 * B, hx - 72 * B, hy + 6 * B); c.quadraticCurveTo(hx - 40 * B, hy + 16 * B, hx - 12 * B, hy + 10 * B); c.closePath(); c.fill(); }
     else if (opts.bill === 'short') {   /* the seed-cracking cone of a finch */
       c.beginPath(); c.moveTo(hx - 13 * B, hy - 6 * B); c.lineTo(hx - 30 * B, hy + 2 * B); c.lineTo(hx - 13 * B, hy + 9 * B); c.closePath(); c.fill();
@@ -686,7 +741,7 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Hawk': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'hook' }, n),
   'Falcon': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'hook' }, n),
   'Vulture': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.03, bill: 'hook' }, n),
-  'Albatross': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.01, bill: 'long' }, n),
+  'Albatross': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.01, bill: 'hook', wings: 'soaring', size: 1.05 }, n),
   'Flamingo': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.14, bill: 'stout' }, n),
   'Heron': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.13, bill: 'long' }, n),
   'Crane': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.13, bill: 'long', crest: true }, n),
@@ -698,14 +753,14 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Godwit': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.08, bill: 'long' }, n),
   'Pelican': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.03, bill: 'huge' }, n),
   'Toucan': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge' }, n),
-  'Kookaburra': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge' }, n),
+  'Kookaburra': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge', headMass: 1.55, neck: 'none', size: 0.92 }, n),
   'Hornbill': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge', crest: true }, n),
   'Kiwi': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.01, bill: 'long', flightless: true }, n),
   'Cassowary': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.10, bill: 'stout', crest: true, flightless: true }, n),
   'Ostrich': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.14, bill: 'stout', flightless: true }, n),
   'Emu': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.13, bill: 'stout', flightless: true }, n),
   'Kakapo': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'stout', flightless: true }, n),
-  'Secretary Bird': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.13, bill: 'hook', crest: true }, n),
+  'Secretary Bird': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.24, bill: 'hook', crest: true, neck: 'long', tail: 'long', size: 0.95 }, n),
   'Hoatzin': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.04, bill: 'stout', crest: true }, n),
   'Puffin': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'stout' }, n),
 };

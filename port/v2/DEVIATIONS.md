@@ -300,6 +300,26 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   A filament is one continuous tube with cross-walls laid on it. Related: substrate rectangles
   (microbeMat, fungiTooth) are the loudest "painted on" tell in the library — substrates are
   ragged organic fields and rounded boughs now, never boxes.
+- ✔ **D-ART-67 — TEACH THE SYSTEM BEFORE YOU FORK IT (wave 21).** Every one of the audit's fish
+  findings was "generic silhouette; add <one thing>", so FishSpec gained wings/dome/droop/gape/
+  bighead/paddle/eyespot rather than nine bespoke painters — a Flying Fish and a Flying Gurnard
+  stay recognisably siblings. Same for BirdSpec (wings:'soaring', headMass), QuadSpec (earScale,
+  tailScale) and InsectSpec (wingScale). Fork only where no parameter reaches the signature.
+- ✔ **D-ART-68 — SCALE IS THE SIGNATURE (wave 21).** The first cut of the gliding pectorals used
+  len*1.35 at 0.20 alpha behind the body and they vanished — the audit's complaint restated, not
+  fixed. A feature the animal IS gets drawn at the size it is (1.85x, lit, over the body).
+- ✔ **D-ART-69 — A SIGNATURE MUST WEAR THE BODY'S LIGHT (wave 21).** The deep-sea skull shaded
+  on its own radial ramp read as a grey box bolted to an orange fish; the paddle rostrum as a
+  plank taped to a nose. Carry the body's countershading and taper INTO it. An aperture is a
+  TUNNEL — dark at the throat, catching light at the rim — never a wedge (the basking shark's
+  gape read as a broom until it was).
+- ✔ **D-ART-70 — THE BRUSH TAIL (wave 21).** One constant-width round-capped stroke gave every
+  fox, snow leopard and fennec in the catalogue an orange PIPE. A plume tapers from a narrow
+  root, swells, and ends in loose hair — and those hairs leave SIDEWAYS off the local tangent,
+  because sprayed at random angles they make a starburst (D-ART-61's kiwi failure, verbatim).
+- ✔ **D-ART-71 — SIRENIANS HAD NO ROUTE (wave 21).** Dugong and Manatee fell through to the
+  verbatim engine as spheres. A missing route is invisible to the dead-route sentinel, which
+  only proves that keys we DID write reach real species — it cannot know what we never wrote.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

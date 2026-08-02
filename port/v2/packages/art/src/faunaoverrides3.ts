@@ -75,6 +75,18 @@ export interface FishSpec {
   glow?: boolean;     /** photophore rows */
   teeth?: boolean;
   hue?: string;       /** only where colour IS the identity */
+  /* ★ WAVE 21 — THE SIGNATURES. The Platinum audit's fish findings were all the
+     same shape: "current fish silhouette is generic; add <the one thing>." Each
+     of these is that one thing, expressed IN THE SYSTEM rather than as a
+     bespoke painter, so the whole roster can reach for it and a Flying Fish and
+     a Flying Gurnard stay recognisably siblings. */
+  wings?: 'glide' | 'fan';   /** pectorals so enlarged they ARE the animal */
+  dome?: boolean;            /** a transparent cranial dome over upward tubular eyes */
+  droop?: boolean;           /** loose gelatinous face — the blobfish read */
+  gape?: boolean;            /** an enormous open filter-feeding mouth + broad gills */
+  bighead?: number;          /** head mass multiplier for the deep-sea predators */
+  paddle?: boolean;          /** a broad flat rostrum, not a spike */
+  eyespot?: boolean;         /** the false eye near the tail + a true-eye mask */
 }
 
 /** the half-height of the body at t (0 = tail peduncle, 1 = snout tip) */
@@ -264,8 +276,83 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     c.closePath(); c.fill();
   }
 
+  /* ★ WAVE 21 — THE WINGS, behind the body so they grow out from under it.
+     A flying fish or a gurnard IS its pectorals; drawn at ordinary fin scale
+     the audit rightly called both silhouettes generic. */
+  const glide = spec.wings === 'glide';
+  const wing = (side: -1 | 1): void => {
+    if (!spec.wings) return;
+    const wx = ped + (nose - ped) * 0.64, wy = cy + depth * 0.16;
+    /* SCALE IS THE SIGNATURE. The first cut used len*1.35 at 0.2 alpha and the
+       wings vanished under the body — the audit's exact complaint, unchanged. */
+    const span = glide ? len * 1.85 : len * 1.30;
+    const chord = glide ? depth * 2.10 : depth * 3.60;
+    const near = side > 0;
+    c.save(); c.translate(wx, wy);
+    c.rotate(glide ? side * 0.34 : side * 0.46);
+    /* a fin membrane is TRANSLUCENT AND LIT — pale at the trailing edge, and
+       tinted with the body's own colour at the root so it belongs to the fish */
+    const wg = c.createLinearGradient(0, 0, -span, -chord * 0.3);
+    const a0 = near ? 0.80 : 0.46, a1 = near ? 0.44 : 0.24;
+    wg.addColorStop(0, `rgba(${p.cr},${p.cg},${p.cb},${a0})`);
+    wg.addColorStop(0.5, `rgba(${Math.min(255, p.cr + 70)},${Math.min(255, p.cg + 80)},${Math.min(255, p.cb + 100)},${a0 * 0.72})`);
+    wg.addColorStop(1, `rgba(${Math.min(255, p.cr + 120)},${Math.min(255, p.cg + 130)},255,${a1})`);
+    c.fillStyle = wg;
+    c.beginPath();
+    c.moveTo(0, -chord * 0.12);
+    /* a glider's wing is long and narrow; a gurnard's is a broad round fan */
+    c.quadraticCurveTo(-span * 0.52, -chord * (glide ? 0.55 : 0.85), -span, -chord * (glide ? 0.10 : 0.14));
+    c.quadraticCurveTo(-span * 0.58, chord * (glide ? 0.34 : 0.86), 0, chord * 0.22);
+    c.closePath(); c.fill();
+    /* THE RAYS — a pectoral fin is a fan of rays in a membrane, and without
+       them a wing this size reads as a painted flap */
+    c.strokeStyle = `rgba(${Math.min(255, p.cr * 0.45 + 60 | 0)},${Math.min(255, p.cg * 0.45 + 70 | 0)},${Math.min(255, p.cb * 0.45 + 90 | 0)},${near ? 0.62 : 0.34})`;
+    c.lineWidth = 1.7;
+    for (let i = 0; i <= 11; i++) {
+      const u = i / 11;
+      const ey = -chord * (glide ? 0.22 : 0.55) + u * chord * (glide ? 0.55 : 1.42);
+      c.beginPath(); c.moveTo(0, 0);
+      c.quadraticCurveTo(-span * 0.5, ey * 0.7, -span * (0.95 - u * 0.08), ey);
+      c.stroke();
+    }
+    if (!glide) {   /* the gurnard's membrane is spotted, and the spots wrap it */
+      for (let i = 0; i < 26; i++) {
+        const u = r(), v = r();
+        softMark(c, -span * (0.18 + u * 0.72), (-0.55 + v * 1.35) * chord * (0.3 + u * 0.7),
+          4 + r() * 5, 4 + r() * 5, '24,40,96', near ? 0.42 : 0.22);
+      }
+    }
+    c.restore();
+  };
+  wing(-1);   /* the far wing, behind the body */
+
   /* ── the BILL / long jaw, drawn before the body so it seats in the head ── */
-  if (spec.snout === 'bill') {
+  if (spec.paddle) {
+    /* ★ a paddlefish rostrum is a BROAD FLAT BLADE, a third of the animal —
+       drawn as the generic 'bill' spike it disappeared entirely */
+    const TIP = nose + len * 0.92;
+    /* the rostrum carries the BODY's countershading straight out of the head —
+       a separately-shaded blade reads as a plank taped to a fish */
+    const pg = c.createLinearGradient(0, cy - depth * 0.8, 0, cy + depth * 0.8);
+    pg.addColorStop(0, p.dark); pg.addColorStop(0.46, p.base); pg.addColorStop(1, p.lit);
+    c.fillStyle = pg;
+    c.beginPath();
+    c.moveTo(nose - depth * 2.0, cy - depth * 0.52);
+    c.bezierCurveTo(nose + len * 0.30, cy - depth * 0.44, nose + len * 0.70, cy - depth * 0.24, TIP, cy - depth * 0.03);
+    c.quadraticCurveTo(TIP + depth * 0.22, cy, TIP, cy + depth * 0.06);
+    c.bezierCurveTo(nose + len * 0.70, cy + depth * 0.34, nose + len * 0.30, cy + depth * 0.50, nose - depth * 2.0, cy + depth * 0.58);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(226,236,252,0.24)'; c.lineWidth = 2;
+    c.beginPath(); c.moveTo(nose - depth * 0.6, cy - depth * 0.60);
+    c.bezierCurveTo(nose + len * 0.32, cy - depth * 0.48, nose + len * 0.70, cy - depth * 0.24, TIP - depth * 0.2, cy - depth * 0.02);
+    c.stroke();
+    /* the electroreceptor pitting, thinning toward the tip as the blade does */
+    for (let i = 0; i < 44; i++) {
+      const u = Math.sqrt(r());
+      const half = depth * (0.80 - u * 0.72);
+      softMark(c, nose - depth * 0.6 + u * (TIP - nose + depth * 0.6), cy + (r() - 0.5) * 2 * half, 3, 2.4, '18,24,32', 0.26);
+    }
+  } else if (spec.snout === 'bill') {
     c.fillStyle = p.dark;
     c.beginPath();
     c.moveTo(nose - depth * 0.1, cy - depth * 0.16);
@@ -335,7 +422,11 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
   c.strokeStyle = 'rgba(214,228,248,0.30)'; c.lineWidth = 2;   /* the rim */
   c.beginPath(); trace(); c.stroke();
 
+  wing(1);   /* the near wing, OVER the body — this is the one that reads */
+
   /* ── the PECTORAL fin, in front of the body ── */
+  if (spec.wings) { /* the wings ARE the pectorals; a second pair would double them */ }
+  else {
   const pfx = ped + (nose - ped) * (spec.shark ? 0.62 : 0.66);
   const pfy = cy + heightAt(spec.profile, 0.66, depth) * 0.30;
   c.fillStyle = `rgba(${p.cr},${p.cg},${p.cb},0.86)`;
@@ -350,6 +441,7 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     for (let i = -2; i <= 2; i++) { c.beginPath(); c.moveTo(0, 0); c.lineTo(-len * 0.20, i * depth * 0.14); c.stroke(); }
   }
   c.restore();
+  }
 
   /* ── the HEAD: jaw line, teeth, eye, and the angler's lure ── */
   const hx = nose - depth * 0.55, hy = cy;
@@ -388,8 +480,185 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     c.quadraticCurveTo(ox - depth * 0.30, cy, ox + depth * 0.10, cy + heightAt(spec.profile, 0.74, depth) * 0.86);
     c.stroke();
   }
-  eye(c, nose - depth * (spec.profile === 'eel' ? 0.9 : 0.70), cy - depth * 0.34,
-    Math.max(4, depth * (spec.profile === 'globe' ? 0.22 : 0.18)));
+  /* ═══ ★ WAVE 21 — THE HEAD SIGNATURES ═══ */
+
+  if (spec.gape) {
+    /* BASKING SHARK: the mouth is the animal. A cavernous open gape at the
+       front and a gill region so broad it nearly girdles the body. */
+    /* A BASKING SHARK'S OPEN MOUTH IS A TUNNEL, not a wedge. The first cut drew
+       a black triangle raked with pale lines and read as a broom. It is now a
+       round opening with an inner gradient — dark at the throat, catching light
+       at the rim — which is what makes an aperture read as a hole in a body. */
+    const mx = nose - depth * 0.55, my = cy + depth * 0.12;
+    const mrx = depth * 1.05, mry = depth * 1.62;
+    const mg = c.createRadialGradient(mx - mrx * 0.3, my, mrx * 0.15, mx, my, mrx * 2.2);
+    mg.addColorStop(0, 'rgba(4,7,11,0.96)');
+    mg.addColorStop(0.62, 'rgba(12,18,26,0.92)');
+    mg.addColorStop(1, 'rgba(36,46,60,0.80)');
+    c.fillStyle = mg;
+    c.save(); c.translate(mx, my); c.rotate(-0.16);
+    c.beginPath(); c.ellipse(0, 0, mrx, mry, 0, 0, TAU); c.fill();
+    /* the gill rakers, a faint comb ON the far wall of the throat */
+    c.save(); c.clip();
+    c.strokeStyle = 'rgba(140,158,180,0.13)'; c.lineWidth = 1.1;
+    for (let i = 0; i < 11; i++) {
+      const u = i / 10;
+      c.beginPath(); c.moveTo(-mrx * 0.9, -mry + u * mry * 2); c.lineTo(mrx * 0.5, -mry * 0.9 + u * mry * 1.8); c.stroke();
+    }
+    c.restore();
+    /* THE LIP: a thick pale ring all the way round, brightest on the upper jaw */
+    c.strokeStyle = 'rgba(236,244,255,0.46)'; c.lineWidth = 4;
+    c.beginPath(); c.ellipse(0, 0, mrx, mry, 0, -1.9, 1.2); c.stroke();
+    c.strokeStyle = 'rgba(200,214,232,0.30)'; c.lineWidth = 3;
+    c.beginPath(); c.ellipse(0, 0, mrx, mry, 0, 1.2, TAU - 1.9); c.stroke();
+    c.restore();
+    /* the broad gill region: slits running nearly the full depth of the body */
+    c.strokeStyle = 'rgba(14,20,28,0.52)'; c.lineWidth = 3.2; c.lineCap = 'round';
+    for (let i = 0; i < 5; i++) {
+      const x = ped + (nose - ped) * (0.60 + i * 0.045);
+      const h = heightAt(spec.profile, 0.60 + i * 0.045, depth);
+      c.beginPath(); c.moveTo(x + depth * 0.14, cy - h * 0.86);
+      c.quadraticCurveTo(x - depth * 0.18, cy, x + depth * 0.10, cy + h * 0.88); c.stroke();
+    }
+  }
+
+  if (spec.droop) {
+    /* BLOBFISH: gelatinous, low-density flesh that SAGS. The bulbous nose,
+       the loose brow shelf and the downturned mouth are the whole read. */
+    const nx = nose - depth * 0.18, ny = cy + depth * 0.22;
+    const dg = c.createRadialGradient(nx - depth * 0.2, ny - depth * 0.3, 2, nx, ny, depth * 0.95);
+    dg.addColorStop(0, p.lit); dg.addColorStop(0.6, p.base); dg.addColorStop(1, p.dark);
+    c.fillStyle = dg;
+    c.beginPath(); c.ellipse(nx, ny, depth * 0.82, depth * 0.66, -0.22, 0, TAU); c.fill();
+    /* the sagging brow, overhanging the eye */
+    c.fillStyle = `rgba(${p.cr},${p.cg},${p.cb},0.9)`;
+    c.beginPath();
+    c.moveTo(nose - depth * 1.7, cy - depth * 0.72);
+    c.quadraticCurveTo(nose - depth * 0.5, cy - depth * 1.05, nose - depth * 0.05, cy - depth * 0.30);
+    c.quadraticCurveTo(nose - depth * 0.8, cy - depth * 0.34, nose - depth * 1.7, cy - depth * 0.30);
+    c.closePath(); c.fill();
+    /* the mouth, turned down at both corners */
+    c.strokeStyle = 'rgba(14,18,24,0.55)'; c.lineWidth = 3; c.lineCap = 'round';
+    c.beginPath();
+    c.moveTo(nose - depth * 0.10, cy + depth * 0.34);
+    c.quadraticCurveTo(nose - depth * 1.0, cy + depth * 0.98, nose - depth * 1.9, cy + depth * 0.30);
+    c.stroke();
+    /* loose skin folds — the flesh hangs off the frame */
+    c.strokeStyle = `rgba(${p.cr * 0.5 | 0},${p.cg * 0.5 | 0},${p.cb * 0.5 | 0},0.34)`; c.lineWidth = 2;
+    for (let i = 0; i < 3; i++) {
+      const x0 = nose - depth * (1.6 + i * 0.9);
+      c.beginPath(); c.moveTo(x0, cy + depth * (0.30 + i * 0.10));
+      c.quadraticCurveTo(x0 - depth * 0.5, cy + depth * (1.0 + i * 0.12), x0 - depth * 1.1, cy + depth * (0.42 + i * 0.10));
+      c.stroke();
+    }
+  }
+
+  if (spec.bighead) {
+    /* FANGTOOTH / VIPERFISH: the deep sea builds a head around a mouth. The
+       skull is enlarged over the traced body and the fangs are long enough to
+       close OUTSIDE it — that overbite is the recognition. */
+    const k = spec.bighead;
+    const hxx = nose - depth * 0.9, hyy = cy;
+    /* THE HEAD MUST WEAR THE BODY'S LIGHT. Shaded on its own radial ramp it
+       read as a grey box bolted to an orange fish; it now carries the same
+       dark-above/pale-below countershading the traced body does, so the two
+       are one animal seen under one lamp. */
+    const hg = c.createLinearGradient(0, cy - depth * k * 1.4, 0, cy + depth * k * 1.4);
+    hg.addColorStop(0, p.dark); hg.addColorStop(0.46, p.base); hg.addColorStop(1, p.lit);
+    c.fillStyle = hg;
+    void hxx; void hyy;
+    /* the head TAPERS BACK INTO THE BODY. Ending it on a curve left a rounded
+       box parked on a thin fish; the rear now runs back to where the traced
+       body is as deep as the skull, so the two meet without a seam. */
+    const back = ped + (nose - ped) * 0.34;
+    const bh = heightAt(spec.profile, 0.34, depth);
+    const skull = (): void => {
+      c.beginPath();
+      c.moveTo(nose + depth * 0.15, cy - depth * 0.10);
+      c.bezierCurveTo(nose - depth * 0.2, cy - depth * k * 1.30, hxx - depth * k * 1.0, cy - depth * k * 1.05, back, cy - bh * 1.02);
+      c.lineTo(back, cy + bh * 0.94);
+      c.bezierCurveTo(hxx - depth * k * 1.0, cy + depth * k * 1.15, nose - depth * 0.3, cy + depth * k * 1.34, nose + depth * 0.15, cy + depth * 0.12);
+      c.closePath();
+    };
+    skull(); c.fill();
+    c.strokeStyle = 'rgba(214,228,248,0.24)'; c.lineWidth = 2;
+    c.beginPath();
+    c.moveTo(nose + depth * 0.15, cy - depth * 0.10);
+    c.bezierCurveTo(nose - depth * 0.2, cy - depth * k * 1.30, hxx - depth * k * 1.0, cy - depth * k * 1.05, back, cy - bh * 1.02);
+    c.stroke();
+    /* the gaping jaw hinge, set far back behind the eye */
+    c.strokeStyle = 'rgba(10,14,20,0.62)'; c.lineWidth = 3;
+    c.beginPath(); c.moveTo(nose + depth * 0.10, cy + depth * 0.04);
+    c.quadraticCurveTo(hxx - depth * k * 0.2, cy + depth * k * 0.55, hxx - depth * k * 1.05, cy + depth * k * 0.20);
+    c.stroke();
+    /* THE FANGS — upper and lower, interlocking, past the lip line */
+    c.fillStyle = '#f4f1e4';
+    for (let i = 0; i < 6; i++) {
+      const u = i / 5;
+      const x = nose - depth * 0.05 - u * depth * k * 1.5;
+      const L = depth * k * (0.78 - u * 0.32) * (i % 2 ? 0.62 : 1);
+      c.beginPath(); c.moveTo(x - depth * 0.12, cy + depth * k * 0.14);
+      c.lineTo(x, cy + depth * k * 0.14 + L); c.lineTo(x + depth * 0.12, cy + depth * k * 0.14); c.closePath(); c.fill();
+      const L2 = L * 0.78;
+      c.beginPath(); c.moveTo(x - depth * 0.10, cy + depth * k * 0.28);
+      c.lineTo(x + depth * 0.02, cy + depth * k * 0.28 - L2); c.lineTo(x + depth * 0.14, cy + depth * k * 0.30); c.closePath(); c.fill();
+    }
+  }
+
+  if (spec.dome) {
+    /* BARRELEYE: two upward-pointing TUBULAR eyes inside a transparent
+       cranial dome. Drawn last so the glass sits over everything. */
+    const dx = nose - depth * 1.05, dy = cy - depth * 0.30, dr = depth * 1.35;
+    for (const s of [-0.34, 0.34] as const) {
+      const ex = dx + s * depth * 0.62;
+      c.fillStyle = 'rgba(96,214,142,0.92)';
+      c.beginPath();   /* the barrel: a cylinder standing on end, looking UP */
+      c.moveTo(ex - depth * 0.30, dy + dr * 0.42);
+      c.lineTo(ex - depth * 0.30, dy - dr * 0.34);
+      c.quadraticCurveTo(ex, dy - dr * 0.66, ex + depth * 0.30, dy - dr * 0.34);
+      c.lineTo(ex + depth * 0.30, dy + dr * 0.42);
+      c.closePath(); c.fill();
+      c.fillStyle = 'rgba(18,58,34,0.85)';
+      c.beginPath(); c.ellipse(ex, dy - dr * 0.36, depth * 0.30, depth * 0.13, 0, 0, TAU); c.fill();
+      c.fillStyle = 'rgba(230,255,238,0.8)';
+      c.beginPath(); c.ellipse(ex - depth * 0.08, dy - dr * 0.40, depth * 0.10, depth * 0.05, 0, 0, TAU); c.fill();
+    }
+    /* the fluid-filled transparent shield over them */
+    const gd = c.createRadialGradient(dx - dr * 0.3, dy - dr * 0.4, 2, dx, dy, dr);
+    gd.addColorStop(0, 'rgba(232,246,255,0.30)');
+    gd.addColorStop(0.72, 'rgba(190,225,250,0.13)');
+    gd.addColorStop(1, 'rgba(170,210,240,0.05)');
+    c.fillStyle = gd;
+    c.beginPath(); c.ellipse(dx, dy, dr * 1.05, dr * 0.86, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(226,242,255,0.42)'; c.lineWidth = 2;
+    c.beginPath(); c.ellipse(dx, dy, dr * 1.05, dr * 0.86, 0, 0, TAU); c.stroke();
+    c.strokeStyle = 'rgba(255,255,255,0.55)'; c.lineWidth = 2.2;
+    c.beginPath(); c.ellipse(dx, dy, dr * 0.92, dr * 0.74, 0, -2.5, -1.1); c.stroke();
+  }
+
+  if (spec.eyespot) {
+    /* BUTTERFLYFISH: a false eye near the tail and a dark bar hiding the real
+       one — a reef fish's entire predator-confusion strategy, and its look. */
+    const sx = ped + (nose - ped) * 0.20, sy = cy - depth * 0.30;
+    softMark(c, sx, sy, depth * 0.60, depth * 0.60, '18,22,30', 0.75);
+    c.fillStyle = 'rgba(12,16,22,0.85)';
+    c.beginPath(); c.arc(sx, sy, depth * 0.30, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(248,244,222,0.75)'; c.lineWidth = 2.4;
+    c.beginPath(); c.arc(sx, sy, depth * 0.34, 0, TAU); c.stroke();
+    c.save(); c.beginPath(); trace(); c.clip();
+    c.fillStyle = 'rgba(14,18,26,0.55)';
+    const bx = nose - depth * 0.70;
+    c.beginPath();
+    c.moveTo(bx + depth * 0.34, cy - depth * 2.2); c.lineTo(bx - depth * 0.16, cy - depth * 2.2);
+    c.lineTo(bx - depth * 0.50, cy + depth * 2.2); c.lineTo(bx, cy + depth * 2.2);
+    c.closePath(); c.fill();
+    c.restore();
+  }
+
+  if (!spec.dome) {
+    eye(c, nose - depth * (spec.profile === 'eel' ? 0.9 : 0.70), cy - depth * 0.34,
+      Math.max(4, depth * (spec.profile === 'globe' ? 0.22 : spec.bighead ? 0.30 : 0.18)));
+  }
 }
 
 /* ── the roster: every key read out of the catalog ── */
@@ -408,7 +677,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Marlin': F({ profile: 'fusiform', len: 0.25, depth: 0.072, tail: 'lunate', snout: 'bill', dorsal: 'sail' }),
   'Sailfish': F({ profile: 'fusiform', len: 0.25, depth: 0.068, tail: 'lunate', snout: 'bill', dorsal: 'sail' }),
   'Swordfish': F({ profile: 'fusiform', len: 0.25, depth: 0.070, tail: 'lunate', snout: 'bill', dorsal: 'one' }),
-  'Flying Fish': F({ profile: 'fusiform', len: 0.22, depth: 0.052, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
+  'Flying Fish': F({ profile: 'fusiform', len: 0.22, depth: 0.052, tail: 'forked', snout: 'blunt', dorsal: 'one', wings: 'glide' }),
   'Remora': F({ profile: 'fusiform', len: 0.23, depth: 0.050, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
   /* ── cold and temperate food fish ── */
   'Cod': F({ profile: 'fusiform', len: 0.23, depth: 0.078, tail: 'round', snout: 'blunt', dorsal: 'two', pattern: 'mottle' }),
@@ -452,7 +721,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Small Fish': F({ profile: 'fusiform', len: 0.17, depth: 0.048, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
   /* ── ancient and armoured ── */
   'Sturgeon': F({ profile: 'fusiform', len: 0.27, depth: 0.058, tail: 'shark', snout: 'shovel', dorsal: 'one' }),
-  'Paddlefish': F({ profile: 'fusiform', len: 0.26, depth: 0.058, tail: 'shark', snout: 'bill', dorsal: 'one' }),
+  'Paddlefish': F({ profile: 'fusiform', len: 0.24, depth: 0.062, tail: 'shark', snout: 'blunt', dorsal: 'one', paddle: true }),
   'Gar': F({ profile: 'eel', len: 0.27, depth: 0.052, tail: 'round', snout: 'jaw', dorsal: 'none', teeth: true }),
   'Bowfin': F({ profile: 'fusiform', len: 0.24, depth: 0.062, tail: 'round', snout: 'jaw', dorsal: 'sail', pattern: 'mottle' }),
   'Coelacanth': F({ profile: 'fusiform', len: 0.23, depth: 0.084, tail: 'fan', snout: 'blunt', dorsal: 'two', pattern: 'spots' }),
@@ -467,7 +736,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   /* ── reef ── */
   'Clownfish': F({ profile: 'deep', len: 0.16, depth: 0.070, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'bands' }),
   'Damselfish': F({ profile: 'deep', len: 0.15, depth: 0.066, tail: 'forked', snout: 'blunt', dorsal: 'spiny' }),
-  'Butterflyfish': F({ profile: 'deep', len: 0.16, depth: 0.086, tail: 'fan', snout: 'tube', dorsal: 'spiny', pattern: 'bands' }),
+  'Butterflyfish': F({ profile: 'deep', len: 0.145, depth: 0.100, tail: 'fan', snout: 'tube', dorsal: 'spiny', pattern: 'bands', eyespot: true }),
   'Surgeonfish': F({ profile: 'deep', len: 0.17, depth: 0.086, tail: 'lunate', snout: 'blunt', dorsal: 'spiny' }),
   'Tang': F({ profile: 'deep', len: 0.16, depth: 0.090, tail: 'lunate', snout: 'blunt', dorsal: 'spiny' }),
   'Triggerfish': F({ profile: 'deep', len: 0.17, depth: 0.084, tail: 'fan', snout: 'blunt', dorsal: 'two', pattern: 'mottle' }),
@@ -483,20 +752,20 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Barracuda': F({ profile: 'fusiform', len: 0.27, depth: 0.050, tail: 'forked', snout: 'jaw', dorsal: 'two', teeth: true }),
   'Goby': F({ profile: 'fusiform', len: 0.16, depth: 0.048, tail: 'round', snout: 'blunt', dorsal: 'two' }),
   'Blenny': F({ profile: 'eel', len: 0.19, depth: 0.042, tail: 'round', snout: 'blunt', dorsal: 'spiny' }),
-  'Flying Gurnard': F({ profile: 'fusiform', len: 0.19, depth: 0.062, tail: 'fan', snout: 'blunt', dorsal: 'sail', pattern: 'spots' }),
+  'Flying Gurnard': F({ profile: 'fusiform', len: 0.19, depth: 0.062, tail: 'fan', snout: 'blunt', dorsal: 'one', pattern: 'spots', wings: 'fan' }),
   /* ── inflatable and boxy ── */
   'Pufferfish': F({ profile: 'globe', len: 0.15, depth: 0.070, tail: 'fan', snout: 'blunt', dorsal: 'one', pattern: 'spots' }),
   'Boxfish': F({ profile: 'box', len: 0.15, depth: 0.070, tail: 'fan', snout: 'blunt', dorsal: 'one', pattern: 'spots' }),
-  'Blobfish': F({ profile: 'globe', len: 0.17, depth: 0.062, tail: 'round', snout: 'blunt', dorsal: 'none' }),
+  'Blobfish': F({ profile: 'globe', len: 0.17, depth: 0.066, tail: 'round', snout: 'blunt', dorsal: 'none', droop: true }),
   'Ocean Sunfish': F({ profile: 'globe', len: 0.16, depth: 0.098, tail: 'none', snout: 'blunt', dorsal: 'one' }),
   'Snailfish': F({ profile: 'globe', len: 0.17, depth: 0.055, tail: 'round', snout: 'blunt', dorsal: 'none' }),
   /* ── the deep: lures, photophores, teeth ── */
   'Anglerfish': F({ profile: 'globe', len: 0.16, depth: 0.078, tail: 'round', snout: 'jaw', dorsal: 'none', lure: true, teeth: true }),
   'Lanternfish': F({ profile: 'fusiform', len: 0.18, depth: 0.052, tail: 'forked', snout: 'blunt', dorsal: 'one', glow: true }),
-  'Viperfish': F({ profile: 'eel', len: 0.24, depth: 0.046, tail: 'forked', snout: 'jaw', dorsal: 'one', glow: true, teeth: true }),
-  'Fangtooth': F({ profile: 'deep', len: 0.16, depth: 0.070, tail: 'forked', snout: 'jaw', dorsal: 'one', teeth: true }),
+  'Viperfish': F({ profile: 'eel', len: 0.24, depth: 0.052, tail: 'forked', snout: 'jaw', dorsal: 'one', glow: true, bighead: 1.15 }),
+  'Fangtooth': F({ profile: 'deep', len: 0.155, depth: 0.072, tail: 'forked', snout: 'jaw', dorsal: 'one', bighead: 1.35 }),
   'Dragonfish': F({ profile: 'eel', len: 0.24, depth: 0.044, tail: 'point', snout: 'jaw', dorsal: 'none', glow: true, teeth: true }),
-  'Barreleye': F({ profile: 'fusiform', len: 0.18, depth: 0.062, tail: 'fan', snout: 'blunt', dorsal: 'one', glow: true }),
+  'Barreleye': F({ profile: 'fusiform', len: 0.18, depth: 0.062, tail: 'fan', snout: 'blunt', dorsal: 'one', glow: true, dome: true }),
   'Tripod Fish': F({ profile: 'fusiform', len: 0.20, depth: 0.046, tail: 'point', snout: 'blunt', dorsal: 'one' }),
   'Deep-Sea Fish': F({ profile: 'fusiform', len: 0.19, depth: 0.058, tail: 'forked', snout: 'jaw', dorsal: 'one', glow: true }),
   'Monkfish': F({ profile: 'globe', len: 0.19, depth: 0.062, tail: 'round', snout: 'jaw', dorsal: 'none', lure: true, teeth: true, pattern: 'mottle' }),
@@ -508,6 +777,6 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Tiger Shark': F({ profile: 'fusiform', len: 0.26, depth: 0.080, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, pattern: 'bands', teeth: true }),
   'Mako Shark': F({ profile: 'fusiform', len: 0.26, depth: 0.070, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, teeth: true }),
   'Whale Shark': F({ profile: 'fusiform', len: 0.28, depth: 0.092, tail: 'shark', snout: 'blunt', dorsal: 'sharkfin', shark: true, pattern: 'spots' }),
-  'Basking Shark': F({ profile: 'fusiform', len: 0.28, depth: 0.086, tail: 'shark', snout: 'blunt', dorsal: 'sharkfin', shark: true }),
+  'Basking Shark': F({ profile: 'fusiform', len: 0.28, depth: 0.092, tail: 'shark', snout: 'blunt', dorsal: 'sharkfin', shark: true, gape: true }),
   'Hammerhead Shark': F({ profile: 'fusiform', len: 0.26, depth: 0.070, tail: 'shark', snout: 'hammer', dorsal: 'sharkfin', shark: true }),
 };
