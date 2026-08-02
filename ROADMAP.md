@@ -686,6 +686,34 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 9 — THE BIRDS + A THIRD KIND OF DEAD ROUTE (2026-08-01, batch 28).
+##   73 new bird routes by EXTENDING wave 3's faunaBird, not replacing it (D-ART-14). New
+##   axes, all optional+defaulted so the 28 wave-3 birds are byte-unchanged: SIZE (a
+##   hummingbird is not an ostrich — body scale said so NOWHERE; every bird was one size with
+##   different legs) · NECK incl. the swan S-CURVE · TAIL incl. peacock OCELLI · OWL (facial
+##   disc + FORWARD-FACING eyes + ear tufts — the one head that does not read in profile) ·
+##   SWIM (THE WATERLINE, why a duck reads as a duck and not a bird standing in a hole) ·
+##   UPRIGHT (penguin/auk: a stiff FLIPPER, not a wing) · bills short/chisel/needle/duck.
+##   Wave-3 birds name-seeded too (Hawk and Falcon shared a spec). A BILL DOES NOT SCALE WITH
+##   THE BIRD: linear scaling shrank the hummingbird's needle — as long as its body in life —
+##   to a dot; bills keep most of their length when small (exactly 1.0 at sz=1, so no
+##   regression). ★★A THIRD KIND OF DEAD ROUTE — SHADOWED: wave 9's swan-necked Swan would
+##   NEVER HAVE RUN, because wave 3 already keyed 'Swan' in a table resolveOverride consults
+##   first. Both keys resolve to a real species, so the dead-route check was blind BY
+##   CONSTRUCTION and the audit stayed 1,254/1,254. overridecheck reports shadowed routes now.
+##   ⚠THE INSTRUMENT'S FOURTH SELF-INFLICTED BUG: the shadow check's first run flagged 'Green
+##   Algae [FLORA_DUPES shadows MICROBE_NAME]' — NOT a shadow (that name is in BOTH catalogs
+##   and resolveOverride branches on KINGDOM first). Kingdom-aware now, which also made 'dead'
+##   catch MIS-KINGDOMED keys and coverage count per kingdom. Four self-inflicted bugs from
+##   one tool before it found anything real — READ AN INSTRUMENT'S FIRST REPORT AS A BUG
+##   REPORT ABOUT THE INSTRUMENT. npm run overridecontrol = SIX controls, all firing (A dead
+##   key · B duplicate · C a whole new FILE · D a shadowed species · E an unclassifiable table
+##   is REPORTED not silently skipped). ★COVERAGE MEASURED: 488/1,010 (48.3%) — fauna 418 ·
+##   flora 45 · fungi 16 · microbe 9. NEARLY HALF the catalog on corrected morphology.
+##   REMAINING BY MEASURED SIZE: arthropods 67 · worms/cnidaria 22 · mammal+reptile remainder ·
+##   procedural fungi+microbe body plans · flower-heads · 43 biome scenes. D-ART-27..29.
+##   GATES: vitest 220 · tsc · speciesaudit 1254/1254 0/0/0 · overridecheck 488/488 0 dead ·
+##   overridecontrol 6/6 · slicesmoke PASS · perf 1479/2254ms · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 8 — THE FISH SYSTEM (2026-08-01, batch 27). The gap was MEASURED
 ##   first (catalog diffed against every table, the wave-7 lesson applied to planning): FISH
 ##   were the largest uncovered group in the game at 106 species, MORE than the birds (77).

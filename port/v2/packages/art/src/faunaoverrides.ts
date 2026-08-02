@@ -367,58 +367,193 @@ export function faunaCetacean(c: Ctx, g: G, p: Pal, opts: { dorsal: 'tall' | 'sm
 
 /* ---------------- the wing that the whole catalog lacked ---------------- */
 /** BIRD with a real folded wing, species bill and leg length */
-export function faunaBird(c: Ctx, g: G, p: Pal, opts: { legs: number; bill: 'hook' | 'long' | 'spoon' | 'stout' | 'huge'; crest?: boolean; flightless?: boolean }): void {
-  const r = mulberry32(((g.seed as number) ^ 0xB12D) >>> 0);
+export interface BirdSpec {
+  legs: number;
+  bill: 'hook' | 'long' | 'spoon' | 'stout' | 'huge' | 'short' | 'chisel' | 'needle' | 'duck';
+  crest?: boolean;
+  flightless?: boolean;
+  /* ── wave 9 additions. All OPTIONAL and defaulted, so the wave-3 birds —
+     which the reviews scored well — take exactly the code paths they took
+     before (D-ART-14: never override what already excels). ── */
+  size?: number;                                   /** body scale; a hummingbird is not an ostrich */
+  neck?: 'short' | 'long' | 'swan' | 'none';
+  tail?: 'short' | 'fan' | 'long' | 'forked';
+  eyespots?: boolean;                              /** the peacock train */
+  owl?: boolean;                                   /** round head, facial disc, forward eyes */
+  swim?: boolean;                                  /** rides a waterline; legs hidden */
+  upright?: boolean;                               /** penguin/auk stance, flipper not wing */
+}
+export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void {
+  /* NAME-SEEDED (D-ART-20): Hawk and Falcon carry identical options, and
+     wave 7 proved that two labels sharing a spec eventually collide. */
+  let h = 0xB12D;
+  for (let i = 0; i < name.length; i++) h = Math.imul(h ^ name.charCodeAt(i), 0x85EB) >>> 0;
+  const r = mulberry32((((g.seed as number) ^ h) >>> 0));
+  const nv = (salt: number, amt: number): number => 1 + ((((h ^ salt) >>> 0) % 1000) / 1000 - 0.5) * 2 * amt;
+
+  const sz = (opts.size ?? 1) * nv(0x11, 0.07);
   /* the body rides legLen ABOVE a fixed ground line, so a wader towers and a
      raptor squats — leg length is the species read (Flamingo vs Eagle) */
   const bx = S * 0.5, legLen = S * opts.legs, groundY = S * 0.80;
-  const bw = S * 0.15, bh = S * 0.12;
+  const bw = S * 0.15 * sz * (opts.upright ? 0.78 : 1), bh = S * 0.12 * sz * (opts.upright ? 1.45 : 1);
   const by = groundY - legLen - bh;
-  ground(c, bx, groundY + 4, S * 0.16);
-  c.strokeStyle = '#c9a24f'; c.lineWidth = legLen > S * 0.10 ? 5 : 7; c.lineCap = 'round';
-  for (const s of [-1, 1] as const) {
-    c.beginPath(); c.moveTo(bx + s * 8, by + bh * 0.75); c.lineTo(bx + s * 10, groundY); c.stroke();
-    c.beginPath(); c.moveTo(bx + s * 10, groundY); c.lineTo(bx + s * 18, groundY + 4); c.stroke();
+  ground(c, bx, groundY + 4, S * 0.16 * sz);
+
+  /* legs — hidden on a swimming bird, which rides its waterline instead */
+  if (!opts.swim) {
+    c.strokeStyle = '#c9a24f'; c.lineWidth = (legLen > S * 0.10 ? 5 : 7) * Math.min(1.4, sz); c.lineCap = 'round';
+    for (const s of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(bx + s * 8 * sz, by + bh * 0.75); c.lineTo(bx + s * 10 * sz, groundY); c.stroke();
+      c.beginPath(); c.moveTo(bx + s * 10 * sz, groundY); c.lineTo(bx + s * 18 * sz, groundY + 4); c.stroke();
+    }
   }
+
+  /* ── the TAIL, behind the body ── */
+  c.fillStyle = p.dark;
+  const tail = opts.tail ?? 'short';
+  if (tail === 'fan') {
+    for (let i = -4; i <= 4; i++) {
+      c.save(); c.translate(bx + bw * 0.66, by + bh * 0.24); c.rotate(i * 0.13 + 0.30);
+      c.fillStyle = i % 2 ? p.dark : p.base;
+      c.beginPath(); c.ellipse(bw * 0.85, 0, bw * 0.85, bh * 0.17, 0, 0, TAU); c.fill();
+      if (opts.eyespots) {   /* the peacock's ocelli */
+        c.fillStyle = 'rgba(30,90,120,0.85)';
+        c.beginPath(); c.arc(bw * 1.45, 0, bh * 0.13, 0, TAU); c.fill();
+        c.fillStyle = 'rgba(210,180,60,0.9)';
+        c.beginPath(); c.arc(bw * 1.45, 0, bh * 0.07, 0, TAU); c.fill();
+      }
+      c.restore();
+    }
+  } else if (tail === 'long') {
+    for (let i = -1; i <= 1; i++) {
+      c.strokeStyle = i ? p.dark : p.base; c.lineWidth = bh * (i ? 0.13 : 0.19); c.lineCap = 'round';
+      c.beginPath(); c.moveTo(bx + bw * 0.66, by + bh * 0.22);
+      c.quadraticCurveTo(bx + bw * 1.9, by + bh * (0.42 + i * 0.16), bx + bw * 2.9, by + bh * (0.95 + i * 0.42));
+      c.stroke();
+    }
+  } else if (tail === 'forked') {
+    for (const s of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(bx + bw * 0.68, by + bh * 0.14);
+      c.lineTo(bx + bw * 1.85, by + bh * (0.40 + s * 0.42));
+      c.lineTo(bx + bw * 0.74, by + bh * 0.50); c.closePath(); c.fill();
+    }
+  } else {
+    c.beginPath(); c.moveTo(bx + bw * 0.7, by + bh * 0.1);
+    c.lineTo(bx + bw * 1.75, by + bh * (opts.flightless ? 0.4 : 0.55));
+    c.lineTo(bx + bw * 0.75, by + bh * 0.62); c.closePath(); c.fill();
+  }
+
   c.fillStyle = bodyGrad(c, p, bx, by, bw);
   c.beginPath(); c.ellipse(bx, by, bw, bh, -0.15, 0, TAU); c.fill();
   rim(c, () => c.ellipse(bx, by, bw, bh, -0.15, -2.8, 0.3), 2.2);
+
   /* ★ THE FOLDED WING — layered coverts + primaries, the missing feature */
-  c.save(); c.translate(bx + bw * 0.12, by + bh * 0.05); c.rotate(0.22);
-  for (let layer = 0; layer < 3; layer++) {
-    const lw = bw * (0.95 - layer * 0.16), lh = bh * (0.62 - layer * 0.10);
-    c.fillStyle = layer === 0 ? p.dark : (layer === 1 ? p.base : p.lit);
-    c.beginPath(); c.ellipse(0, layer * 3, lw, lh, 0, 0, TAU); c.fill();
+  if (opts.upright) {   /* a penguin has a FLIPPER: one stiff blade, no primaries */
+    c.fillStyle = p.dark;
+    c.save(); c.translate(bx + bw * 0.30, by - bh * 0.10); c.rotate(0.30);
+    c.beginPath(); c.ellipse(0, bh * 0.30, bw * 0.30, bh * 0.62, 0, 0, TAU); c.fill();
+    c.restore();
+    c.fillStyle = 'rgba(244,240,228,0.90)';   /* the pale front */
+    c.beginPath(); c.ellipse(bx - bw * 0.26, by + bh * 0.14, bw * 0.52, bh * 0.70, -0.12, 0, TAU); c.fill();
+  } else {
+    c.save(); c.translate(bx + bw * 0.12, by + bh * 0.05); c.rotate(0.22);
+    for (let layer = 0; layer < 3; layer++) {
+      const lw = bw * (0.95 - layer * 0.16), lh = bh * (0.62 - layer * 0.10);
+      c.fillStyle = layer === 0 ? p.dark : (layer === 1 ? p.base : p.lit);
+      c.beginPath(); c.ellipse(0, layer * 3, lw, lh, 0, 0, TAU); c.fill();
+    }
+    c.strokeStyle = 'rgba(0,0,0,0.3)'; c.lineWidth = 1.4;
+    for (let i = 0; i < 6; i++) {   /* primaries fanning to the tail */
+      c.beginPath(); c.moveTo(-bw * 0.1 + i * 4, 0);
+      c.quadraticCurveTo(bw * 0.6, bh * 0.2 + i * 2, bw * 1.15 - i * 3, bh * 0.35 + i * 4); c.stroke();
+    }
+    c.restore();
   }
-  c.strokeStyle = 'rgba(0,0,0,0.3)'; c.lineWidth = 1.4;
-  for (let i = 0; i < 6; i++) {   /* primaries fanning to the tail */
-    c.beginPath(); c.moveTo(-bw * 0.1 + i * 4, 0);
-    c.quadraticCurveTo(bw * 0.6, bh * 0.2 + i * 2, bw * 1.15 - i * 3, bh * 0.35 + i * 4); c.stroke();
+
+  /* ── neck + head ── */
+  const neck = opts.neck ?? 'short';
+  const hr = 20 * sz * (opts.owl ? 1.55 : 1);
+  let hx = bx - bw * 0.72, hy = by - bh * 0.95;
+  if (neck === 'none') { hx = bx - bw * 0.55; hy = by - bh * 0.80; }
+  else if (neck === 'long') { hx = bx - bw * 0.86; hy = by - bh * 1.70; }
+  else if (neck === 'swan') { hx = bx - bw * 1.05; hy = by - bh * 2.05; }
+  if (neck !== 'none') {
+    c.strokeStyle = p.base; c.lineWidth = 15 * sz * (neck === 'swan' ? 0.62 : neck === 'long' ? 0.76 : 1);
+    c.beginPath(); c.moveTo(bx - bw * 0.35, by - bh * 0.35);
+    if (neck === 'swan') {   /* the S-curve is the whole bird */
+      c.bezierCurveTo(bx - bw * 1.30, by - bh * 0.60, bx - bw * 0.35, by - bh * 1.85, hx, hy);
+    } else {
+      c.quadraticCurveTo(hx - 4 * sz, by - bh * 0.6, hx, hy);
+    }
+    c.stroke();
   }
-  c.restore();
-  /* tail */
-  c.fillStyle = p.dark;
-  c.beginPath(); c.moveTo(bx + bw * 0.7, by + bh * 0.1);
-  c.lineTo(bx + bw * 1.75, by + bh * (opts.flightless ? 0.4 : 0.55));
-  c.lineTo(bx + bw * 0.75, by + bh * 0.62); c.closePath(); c.fill();
-  /* neck + head */
-  const hx = bx - bw * 0.72, hy = by - bh * 0.95;
-  c.strokeStyle = p.base; c.lineWidth = 15;
-  c.beginPath(); c.moveTo(bx - bw * 0.35, by - bh * 0.35); c.quadraticCurveTo(hx - 4, by - bh * 0.6, hx, hy); c.stroke();
-  c.fillStyle = bodyGrad(c, p, hx, hy, 22);
-  c.beginPath(); c.arc(hx, hy, 20, 0, TAU); c.fill();
-  rim(c, () => c.arc(hx, hy, 20, -2.7, 0.3), 1.8);
-  eye(c, hx - 5, hy - 4, 4.5);
+  c.fillStyle = bodyGrad(c, p, hx, hy, hr * 1.1);
+  c.beginPath(); c.arc(hx, hy, hr, 0, TAU); c.fill();
+  rim(c, () => c.arc(hx, hy, hr, -2.7, 0.3), 1.8);
+  if (opts.owl) {
+    /* THE FACIAL DISC + forward-facing eyes — an owl's entire identity, and
+       the one head in the catalog that does not read in profile */
+    c.fillStyle = `rgba(${Math.min(255, p.cr * 0.55 + 96 | 0)},${Math.min(255, p.cg * 0.55 + 88 | 0)},${Math.min(255, p.cb * 0.55 + 76 | 0)},0.55)`;
+    c.beginPath(); c.ellipse(hx - hr * 0.16, hy + hr * 0.06, hr * 0.86, hr * 0.90, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(30,24,18,0.30)'; c.lineWidth = 2;
+    c.beginPath(); c.arc(hx - hr * 0.42, hy + hr * 0.02, hr * 0.40, 0, TAU); c.stroke();
+    c.beginPath(); c.arc(hx + hr * 0.16, hy + hr * 0.02, hr * 0.40, 0, TAU); c.stroke();
+    eye(c, hx - hr * 0.42, hy + hr * 0.02, hr * 0.24);
+    eye(c, hx + hr * 0.16, hy + hr * 0.02, hr * 0.24);
+    c.fillStyle = '#e0b13c';
+    c.beginPath(); c.moveTo(hx - hr * 0.14, hy + hr * 0.24); c.lineTo(hx - hr * 0.30, hy + hr * 0.66); c.lineTo(hx + hr * 0.02, hy + hr * 0.34); c.closePath(); c.fill();
+    if (opts.crest) {   /* ear tufts */
+      c.fillStyle = p.dark;
+      for (const s of [-1, 1] as const) {
+        c.beginPath(); c.moveTo(hx + s * hr * 0.52, hy - hr * 0.62);
+        c.lineTo(hx + s * hr * 0.80, hy - hr * 1.34); c.lineTo(hx + s * hr * 0.18, hy - hr * 0.86);
+        c.closePath(); c.fill();
+      }
+    }
+  } else {
+    eye(c, hx - 5 * sz, hy - 4 * sz, 4.5 * sz);
+  }
+
   /* the species bill */
-  c.fillStyle = '#e0b13c';
-  if (opts.bill === 'hook') { c.beginPath(); c.moveTo(hx - 16, hy - 6); c.quadraticCurveTo(hx - 40, hy - 4, hx - 34, hy + 12); c.quadraticCurveTo(hx - 26, hy + 4, hx - 14, hy + 6); c.closePath(); c.fill(); }
-  else if (opts.bill === 'long') { c.beginPath(); c.moveTo(hx - 14, hy - 4); c.lineTo(hx - 78, hy + 2); c.lineTo(hx - 14, hy + 7); c.closePath(); c.fill(); }
-  else if (opts.bill === 'spoon') { c.beginPath(); c.moveTo(hx - 14, hy - 3); c.lineTo(hx - 56, hy + 1); c.lineTo(hx - 14, hy + 6); c.closePath(); c.fill(); c.beginPath(); c.ellipse(hx - 60, hy + 2, 13, 8, 0, 0, TAU); c.fill(); }
-  else if (opts.bill === 'huge') { c.beginPath(); c.moveTo(hx - 14, hy - 12); c.quadraticCurveTo(hx - 66, hy - 10, hx - 72, hy + 6); c.quadraticCurveTo(hx - 40, hy + 16, hx - 12, hy + 10); c.closePath(); c.fill(); }
-  else { c.beginPath(); c.moveTo(hx - 14, hy - 5); c.lineTo(hx - 36, hy + 1); c.lineTo(hx - 14, hy + 8); c.closePath(); c.fill(); }
-  if (opts.crest) {
-    c.strokeStyle = p.lit; c.lineWidth = 3.4; c.lineCap = 'round';
-    for (let i = 0; i < 5; i++) { const a = -1.9 + i * 0.22; c.beginPath(); c.moveTo(hx + 2, hy - 16); c.quadraticCurveTo(hx + 10 + Math.cos(a) * 18, hy - 34, hx + 6 + Math.cos(a) * 30, hy - 40 + i * 3); c.stroke(); }
+  if (!opts.owl) {
+    /* A BILL DOES NOT SCALE WITH THE BIRD. Scaled linearly, a hummingbird's
+       needle — which is as long as its body in life — shrank to a dot, and
+       every songbird lost the cone that identifies it. Bills keep most of
+       their length at small sizes; at sz = 1 this is exactly 1, so the
+       wave-3 birds are untouched. */
+    const B = 0.55 + 0.45 * sz;
+    c.fillStyle = '#e0b13c';
+    if (opts.bill === 'hook') { c.beginPath(); c.moveTo(hx - 16 * B, hy - 6 * B); c.quadraticCurveTo(hx - 40 * B, hy - 4 * B, hx - 34 * B, hy + 12 * B); c.quadraticCurveTo(hx - 26 * B, hy + 4 * B, hx - 14 * B, hy + 6 * B); c.closePath(); c.fill(); }
+    else if (opts.bill === 'long') { c.beginPath(); c.moveTo(hx - 14 * B, hy - 4 * B); c.lineTo(hx - 78 * B, hy + 2 * B); c.lineTo(hx - 14 * B, hy + 7 * B); c.closePath(); c.fill(); }
+    else if (opts.bill === 'spoon') { c.beginPath(); c.moveTo(hx - 14 * B, hy - 3 * B); c.lineTo(hx - 56 * B, hy + 1 * B); c.lineTo(hx - 14 * B, hy + 6 * B); c.closePath(); c.fill(); c.beginPath(); c.ellipse(hx - 60 * B, hy + 2 * B, 13 * B, 8 * B, 0, 0, TAU); c.fill(); }
+    else if (opts.bill === 'huge') { c.beginPath(); c.moveTo(hx - 14 * B, hy - 12 * B); c.quadraticCurveTo(hx - 66 * B, hy - 10 * B, hx - 72 * B, hy + 6 * B); c.quadraticCurveTo(hx - 40 * B, hy + 16 * B, hx - 12 * B, hy + 10 * B); c.closePath(); c.fill(); }
+    else if (opts.bill === 'short') {   /* the seed-cracking cone of a finch */
+      c.beginPath(); c.moveTo(hx - 13 * B, hy - 6 * B); c.lineTo(hx - 30 * B, hy + 2 * B); c.lineTo(hx - 13 * B, hy + 9 * B); c.closePath(); c.fill();
+    } else if (opts.bill === 'chisel') {   /* a woodpecker drives a straight spike */
+      c.beginPath(); c.moveTo(hx - 13 * B, hy - 5 * B); c.lineTo(hx - 52 * B, hy - 1 * B); c.lineTo(hx - 52 * B, hy + 3 * B); c.lineTo(hx - 13 * B, hy + 6 * B); c.closePath(); c.fill();
+    } else if (opts.bill === 'needle') {   /* a hummingbird's whole face */
+      c.strokeStyle = '#2b2118'; c.lineWidth = 3.4 * B; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(hx - 12 * B, hy + 1 * B); c.lineTo(hx - 96 * B, hy + 5 * B); c.stroke();
+    } else if (opts.bill === 'duck') {   /* spatulate: broad, flat, rounded off */
+      c.beginPath(); c.moveTo(hx - 12 * B, hy - 6 * B);
+      c.quadraticCurveTo(hx - 48 * B, hy - 8 * B, hx - 54 * B, hy + 1 * B);
+      c.quadraticCurveTo(hx - 48 * B, hy + 10 * B, hx - 12 * B, hy + 8 * B);
+      c.closePath(); c.fill();
+    } else { c.beginPath(); c.moveTo(hx - 14 * B, hy - 5 * B); c.lineTo(hx - 36 * B, hy + 1 * B); c.lineTo(hx - 14 * B, hy + 8 * B); c.closePath(); c.fill(); }
+  }
+  if (opts.crest && !opts.owl) {
+    c.strokeStyle = p.lit; c.lineWidth = 3.4 * sz; c.lineCap = 'round';
+    for (let i = 0; i < 5; i++) { const a = -1.9 + i * 0.22; c.beginPath(); c.moveTo(hx + 2 * sz, hy - 16 * sz); c.quadraticCurveTo(hx + (10 + Math.cos(a) * 18) * sz, hy - 34 * sz, hx + (6 + Math.cos(a) * 30) * sz, hy - (40 - i * 3) * sz); c.stroke(); }
+  }
+  /* THE WATERLINE — a swimming bird is cut by the surface, which is why a
+     duck reads as a duck and not as a bird standing in a hole */
+  if (opts.swim) {
+    const wl = by + bh * 0.30;
+    c.fillStyle = 'rgba(28,52,78,0.72)';
+    c.beginPath(); c.ellipse(bx, wl + bh * 0.55, bw * 1.55, bh * 0.46, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(150,200,240,0.34)'; c.lineWidth = 2.4;
+    c.beginPath(); c.ellipse(bx, wl + bh * 0.10, bw * 1.42, bh * 0.20, 0, 0, TAU); c.stroke();
+    c.beginPath(); c.ellipse(bx, wl + bh * 0.10, bw * 1.95, bh * 0.28, 0, 0, TAU); c.stroke();
   }
   void r;
 }
@@ -468,32 +603,31 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Pilot Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: true }),
   'Narwhal': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true }),
   /* the wing, at last — birds by bill + leg length */
-  'Eagle': (c, g, p) => faunaBird(c, g, p, { legs: 0.02, bill: 'hook' }),
-  'Harpy Eagle': (c, g, p) => faunaBird(c, g, p, { legs: 0.02, bill: 'hook', crest: true }),
-  'Hawk': (c, g, p) => faunaBird(c, g, p, { legs: 0.02, bill: 'hook' }),
-  'Falcon': (c, g, p) => faunaBird(c, g, p, { legs: 0.02, bill: 'hook' }),
-  'Vulture': (c, g, p) => faunaBird(c, g, p, { legs: 0.03, bill: 'hook' }),
-  'Albatross': (c, g, p) => faunaBird(c, g, p, { legs: 0.01, bill: 'long' }),
-  'Flamingo': (c, g, p) => faunaBird(c, g, p, { legs: 0.14, bill: 'stout' }),
-  'Heron': (c, g, p) => faunaBird(c, g, p, { legs: 0.13, bill: 'long' }),
-  'Crane': (c, g, p) => faunaBird(c, g, p, { legs: 0.13, bill: 'long', crest: true }),
-  'Stork': (c, g, p) => faunaBird(c, g, p, { legs: 0.12, bill: 'long' }),
-  'Spoonbill': (c, g, p) => faunaBird(c, g, p, { legs: 0.11, bill: 'spoon' }),
-  'Avocet': (c, g, p) => faunaBird(c, g, p, { legs: 0.11, bill: 'long' }),
-  'Ibis': (c, g, p) => faunaBird(c, g, p, { legs: 0.10, bill: 'long' }),
-  'Snipe': (c, g, p) => faunaBird(c, g, p, { legs: 0.06, bill: 'long' }),
-  'Godwit': (c, g, p) => faunaBird(c, g, p, { legs: 0.08, bill: 'long' }),
-  'Pelican': (c, g, p) => faunaBird(c, g, p, { legs: 0.03, bill: 'huge' }),
-  'Toucan': (c, g, p) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge' }),
-  'Kookaburra': (c, g, p) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge' }),
-  'Hornbill': (c, g, p) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge', crest: true }),
-  'Kiwi': (c, g, p) => faunaBird(c, g, p, { legs: 0.01, bill: 'long', flightless: true }),
-  'Cassowary': (c, g, p) => faunaBird(c, g, p, { legs: 0.10, bill: 'stout', crest: true, flightless: true }),
-  'Ostrich': (c, g, p) => faunaBird(c, g, p, { legs: 0.14, bill: 'stout', flightless: true }),
-  'Emu': (c, g, p) => faunaBird(c, g, p, { legs: 0.13, bill: 'stout', flightless: true }),
-  'Kakapo': (c, g, p) => faunaBird(c, g, p, { legs: 0.02, bill: 'stout', flightless: true }),
-  'Secretary Bird': (c, g, p) => faunaBird(c, g, p, { legs: 0.13, bill: 'hook', crest: true }),
-  'Hoatzin': (c, g, p) => faunaBird(c, g, p, { legs: 0.04, bill: 'stout', crest: true }),
-  'Swan': (c, g, p) => faunaBird(c, g, p, { legs: 0.02, bill: 'stout' }),
-  'Puffin': (c, g, p) => faunaBird(c, g, p, { legs: 0.02, bill: 'stout' }),
+  'Eagle': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'hook' }, n),
+  'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'hook', crest: true }, n),
+  'Hawk': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'hook' }, n),
+  'Falcon': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'hook' }, n),
+  'Vulture': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.03, bill: 'hook' }, n),
+  'Albatross': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.01, bill: 'long' }, n),
+  'Flamingo': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.14, bill: 'stout' }, n),
+  'Heron': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.13, bill: 'long' }, n),
+  'Crane': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.13, bill: 'long', crest: true }, n),
+  'Stork': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.12, bill: 'long' }, n),
+  'Spoonbill': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.11, bill: 'spoon' }, n),
+  'Avocet': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.11, bill: 'long' }, n),
+  'Ibis': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.10, bill: 'long' }, n),
+  'Snipe': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.06, bill: 'long' }, n),
+  'Godwit': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.08, bill: 'long' }, n),
+  'Pelican': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.03, bill: 'huge' }, n),
+  'Toucan': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge' }, n),
+  'Kookaburra': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge' }, n),
+  'Hornbill': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge', crest: true }, n),
+  'Kiwi': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.01, bill: 'long', flightless: true }, n),
+  'Cassowary': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.10, bill: 'stout', crest: true, flightless: true }, n),
+  'Ostrich': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.14, bill: 'stout', flightless: true }, n),
+  'Emu': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.13, bill: 'stout', flightless: true }, n),
+  'Kakapo': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'stout', flightless: true }, n),
+  'Secretary Bird': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.13, bill: 'hook', crest: true }, n),
+  'Hoatzin': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.04, bill: 'stout', crest: true }, n),
+  'Puffin': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'stout' }, n),
 };

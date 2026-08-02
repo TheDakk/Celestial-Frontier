@@ -21,10 +21,13 @@ const src = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 const desc = src('packages/domain/descriptors/src/apphooks.verbatim.js');
 const catalog = new Set();
 const kingdomOf = new Map();
+const kingdomsOf = new Map();
 for (const m of desc.matchAll(/(fauna|flora|fungi|microbe)\s*:\s*\[([\s\S]*?)\]/g)) {
   for (const s of m[2].matchAll(/'((?:[^'\\]|\\.)*)'/g)) {
     const n = s[1].replace(/\\x([0-9a-fA-F]{2})/g, (_m, h) => String.fromCharCode(parseInt(h, 16))).replace(/\\'/g, "'").replace(/[''’‘]/g, "'");
     catalog.add(n); kingdomOf.set(n, m[1]);
+    if (!kingdomsOf.has(n)) kingdomsOf.set(n, new Set());
+    kingdomsOf.get(n).add(m[1]);   /* a name can live in TWO kingdoms (Green Algae, Tardigrade) */
   }
 }
 if (catalog.size < 500) { console.error('overridecheck: catalog parse found only ' + catalog.size + ' names — the PARSER is broken, not the tables'); process.exit(2); }
@@ -60,8 +63,21 @@ function topLevelKeys(body) {
 const FILES = fs.readdirSync(path.join(root, 'packages/art/src'))
   .filter((n) => /overrides\d*\.ts$/.test(n)).sort();
 if (FILES.length < 5) { console.error('overridecheck: found only ' + FILES.length + ' override files — the PARSER is broken'); process.exit(2); }
-const keys = new Map();   /* name → "file:TABLE" */
+/* Which kingdom branch of resolveOverride each table serves. Shadowing is
+   only possible WITHIN a branch: 'Green Algae' is in both the flora and the
+   microbe catalogs and is correctly keyed in a table for each — the check's
+   first cut called that a shadow, which it is not. (The instrument's own
+   false positive, found the first time it ran. Again.) */
+const TABLE_KINGDOM = {
+  FUNGI_NAME: 'fungi', MICROBE_NAME: 'microbe',
+  FLORA_ICONIC: 'flora', FLORA_DUPES: 'flora',
+  FAUNA_NAME: 'fauna', FAUNA2_NAME: 'fauna', FAUNA3_NAME: 'fauna',
+  BIRD_NAME: 'fauna', QUAD_SPEC: 'fauna',
+};
+const keys = new Map();   /* "kingdom|name" → "file:TABLE" */
 const dupes = [];
+const shadowed = [];
+const unclassified = [];
 for (const f of FILES) {
   const t = src('packages/art/src/' + f);
   /* module-PRIVATE tables count too: FUNGI_NAME and MICROBE_NAME are not
@@ -74,6 +90,8 @@ for (const f of FILES) {
     /* slice the balanced literal */
     let d = 0, e = open;
     for (; e < t.length; e++) { const c = t[e]; if (c === '{' || c === '[') d++; else if (c === '}' || c === ']') { d--; if (!d) break; } }
+    const kingdom = TABLE_KINGDOM[table];
+    if (!kingdom) { unclassified.push(`${f}:${table}`); continue; }
     const seen = new Set();
     for (const k of topLevelKeys(t.slice(open, e + 1))) {
       const n = k.replace(/[''’‘]/g, "'");
@@ -81,7 +99,17 @@ for (const f of FILES) {
         /* a repeated key is not an error in JS — the LAST one silently wins,
            so a painter can be written, listed, and never once called */
         if (seen.has(n)) dupes.push(`${n}  [${f}:${table}]`);
-        seen.add(n); keys.set(n, f + ':' + table);
+        seen.add(n);
+        /* THE THIRD KIND OF DEAD ROUTE: the same species keyed in two tables
+           OF THE SAME KINGDOM. resolveOverride consults them in a fixed order,
+           so the later table's painter never runs — and both keys resolve to a
+           real species, which is why the dead-route check alone cannot see it.
+           Wave 9 wrote a swan-necked Swan that wave 3's plain Swan shadowed. */
+        const kk = kingdom + '|' + n;
+        if (keys.has(kk) && keys.get(kk) !== f + ':' + table) {
+          shadowed.push(`${n} (${kingdom})  [${keys.get(kk)} SHADOWS ${f}:${table}]`);
+        }
+        keys.set(kk, f + ':' + table);
       }
     }
   }
@@ -103,23 +131,35 @@ function nearest(n) {
   return bs >= 20 ? best : null;
 }
 
+if (shadowed.length) {
+  console.error('  ★ SHADOWED ROUTES — the same species keyed in two tables; only the first runs:');
+  for (const s of shadowed) console.error('    ' + s);
+}
 if (dupes.length) {
   console.error('  ★ DUPLICATE TABLE KEYS — the later entry silently wins:');
   for (const d of dupes) console.error('    ' + d);
 }
-const dead = [...keys.keys()].filter((n) => !catalog.has(n)).sort();
+/* a key is dead if its species is absent from the catalog ENTIRELY, or
+   present but not in the kingdom whose table claims it (a flora painter for
+   a microbe is never reached — resolveOverride branches on kingdom first) */
+const dead = [...keys.keys()].filter((kk) => { const [k, n] = kk.split('|'); return !(kingdomsOf.get(n) || new Set()).has(k); })
+  .map((kk) => kk.split('|')[1] + '  (' + kk.split('|')[0] + ')').sort();
 const live = keys.size - dead.length;
 const byKingdom = {};
-for (const n of keys.keys()) if (catalog.has(n)) byKingdom[kingdomOf.get(n)] = (byKingdom[kingdomOf.get(n)] || 0) + 1;
+for (const kk of keys.keys()) { const [k, n] = kk.split('|'); if ((kingdomsOf.get(n) || new Set()).has(k)) byKingdom[k] = (byKingdom[k] || 0) + 1; }
 console.log(`OVERRIDE CHECK: ${keys.size} table keys · ${live} reach a real catalog species · ${dead.length} dead`);
 console.log('  coverage: ' + Object.entries(byKingdom).sort().map(([k, v]) => `${k} ${v}`).join(' · ')
   + ` = ${live}/${catalog.size} Earth species (${(live / catalog.size * 100).toFixed(1)}%)`);
-if (dead.length || dupes.length) {
+if (unclassified.length) {
+  console.error('  ★ UNCLASSIFIED TABLE — this tool does not know which kingdom branch serves it, so its keys went UNCHECKED:');
+  for (const u of unclassified) console.error('    ' + u + '   (add it to TABLE_KINGDOM)');
+}
+if (dead.length || dupes.length || shadowed.length || unclassified.length) {
   if (!dead.length) process.exit(1);
   console.error('  ★ DEAD OVERRIDE ROUTES — painter written, species does not exist:');
   for (const n of dead) {
-    const near = nearest(n);
-    console.error(`    ${n}  [${keys.get(n)}]` + (near ? `  → did you mean "${near}"?` : '  → no near match in catalog'));
+    const near = nearest(n.split('  (')[0]);
+    console.error(`    ${n}` + (near ? `  → did you mean "${near}"?` : '  → not in this kingdom'));
   }
   process.exit(1);
 }

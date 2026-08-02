@@ -1,11 +1,14 @@
 /* THE NEGATIVE CONTROLS for tools/overridecheck.mjs.
    Project law: a check that has never failed has never been shown to work.
    Each control breaks the guarded thing on purpose and requires exit 1.
-   Control C exists because the tool's FIRST version read a hardcoded file
-   list, so wave 8's new faunaoverrides3.ts was invisible to it — it happily
-   reported "no change" while 106 new routes went unchecked. The same
-   blindness the tool exists to catch, inside the tool.
-   Usage: node tools/overridecheck.control.mjs  (exit 0 = all controls fire) */
+
+   C exists because the tool's first version read a HARDCODED file list, so
+   wave 8's new faunaoverrides3.ts was invisible — it reported "no change"
+   while 105 new routes went unchecked. D exists because wave 9 found a THIRD
+   kind of dead route: a species keyed in two tables of the same kingdom, where
+   only the first table's painter ever runs and BOTH keys resolve to a real
+   species — invisible to the dead-route check by construction.
+   Usage: node tools/overridecheck.control.mjs  (exit 0 = every control fires) */
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
@@ -26,6 +29,9 @@ const check = (label, code, want) => {
   if (!ok) pass = false;
 };
 const restore = () => { fs.writeFileSync(VICTIM, orig); try { fs.unlinkSync(TMP); } catch { /* absent */ } };
+/* a temp override FILE whose table name the tool classifies, so the key
+   inside it is actually checked rather than skipped as unclassified */
+const tmpTable = (key) => `export const FAUNA3_NAME: Record<string, unknown> = {\n  '${key}': 1,\n};\n`;
 
 try {
   check('baseline: clean tables', run(), 'pass');
@@ -40,9 +46,16 @@ try {
   check('B: a duplicate key (the later entry silently wins)', run(), 'fail');
   fs.writeFileSync(VICTIM, orig);
 
-  /* C: a WHOLE NEW override file must be seen — the hardcoded-list bug */
-  fs.writeFileSync(TMP, `export const ZZTMP_NAME: Record<string, number> = {\n  'Zzz Phantom Species': 1,\n};\n`);
+  fs.writeFileSync(TMP, tmpTable('Zzz Phantom Species'));
   check('C: a NEW override file with a dead key is not invisible', run(), 'fail');
+  fs.unlinkSync(TMP);
+
+  fs.writeFileSync(TMP, tmpTable('Cobra'));
+  check('D: a species shadowed by another table of the same kingdom', run(), 'fail');
+  fs.unlinkSync(TMP);
+
+  fs.writeFileSync(TMP, `export const ZZUNKNOWN_NAME: Record<string, unknown> = {\n  'Cobra': 1,\n};\n`);
+  check('E: a table this tool cannot classify is reported, not skipped silently', run(), 'fail');
   fs.unlinkSync(TMP);
 
   check('restored: clean tables again', run(), 'pass');
