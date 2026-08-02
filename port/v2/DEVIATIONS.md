@@ -352,6 +352,16 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   identical triangles that ignored the back line, the animal's size, and where along the body
   they sat — and a HORNED LIZARD wore it only because `crest` was the sole spiky option. Spines
   are rooted in the surface they grow from, graded along it, and belong to the right body part.
+- ✔ **D-ART-79 — A REGEX THAT STOPS AT THE FIRST  CANNOT SEE A FUNCTION TYPE (2026-08-02).**
+  coveragegap discovered route tables with , which stops at the  inside
+  . The wave-18 CANON map is typed , so the ENTIRE map
+  was invisible — ~30 routes by wave 21 (Bear, Koala, Dugong, Manatee, Cuttlefish, Lamprey, Sea
+  Squirt, eight iconic flora, Enoki, Cyanobacteria) reported as UNROUTED, and the proportion
+  arc's plan was about to be drawn from that number. Third time this tool has nearly mis-planned
+  a wave off its own blind spot. ⚠ I first blamed the table-NAME filter and fixed that
+  instead; the discovery guard is what proved the diagnosis wrong, because CANON still did not
+  appear. **A fix that does not make the guard go green is not the fix.** The tool now asserts
+  CANON is discovered and prints every uppercase const it skipped.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
