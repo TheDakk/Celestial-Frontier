@@ -686,6 +686,30 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 8 — THE FISH SYSTEM (2026-08-01, batch 27). The gap was MEASURED
+##   first (catalog diffed against every table, the wave-7 lesson applied to planning): FISH
+##   were the largest uncovered group in the game at 106 species, MORE than the birds (77).
+##   ★ONE TRACED BODY, parameterised like wave 4's quadruped: profile (fusiform/deep/eel/
+##   globe/box/ribbon) · len · depth · tail (forked/lunate/round/point/SHARK heterocercal/fan)
+##   · snout (blunt/jaw/BILL/shovel/tube/HAMMER) · dorsal (one/SAIL/two/spiny/sharkfin) ·
+##   pattern — 105 routes, no per-species painters. Shark anatomy (5 gill slits, swept
+##   pectorals), the anglerfish LURE on its illicium, photophore rows, teeth, countershading
+##   dark-above/pale-below, lateral line, operculum; patterns CLIPPED to the body.
+##   ★THREE SIZING BUGS, ONE ROOT (fins scaled from the body's MAXIMUM depth): an eel got a
+##   tuna's tail (the Gar wore a green dinner plate); a deep-bodied tang's tail was taller
+##   than the tang; round/fan was a free-standing ellipse touching the fish nowhere. Fins are
+##   measured AT THE PEDUNCLE, clamped to the body's own height, traced from its edge. Also:
+##   an eel with no fin is a stick → the continuous median fin down back and belly.
+##   ★★THE SENTINEL WAS BLIND TO ITS OWN CLASS OF BUG: wave 8 added faunaoverrides3.ts and
+##   overridecheck reported "NO CHANGE, 310 keys" — its file list was HARDCODED, so a whole
+##   new override file was invisible and 105 routes went unchecked. It reads the DIRECTORY
+##   now, and tools/overridecheck.control.mjs (npm run overridecontrol) is a committed
+##   control set — control C is exactly this bug. ★COVERAGE MEASURED: 415/1,010 (41.1%),
+##   up from 310 (30.7%) — fauna 346 · flora 43 · fungi 16 · microbe 10. REMAINING BY
+##   MEASURED SIZE: birds 77 · arthropods 67 · worms/cnidaria 22 · mammal+reptile remainder ·
+##   procedural fungi+microbe body plans · flower-heads · 43 biome scenes. D-ART-24..26.
+##   GATES: vitest 220 · tsc · speciesaudit 1254/1254 0/0/0 · overridecheck 415/415 0 dead ·
+##   overridecontrol 5/5 fire · slicesmoke PASS · perf 1241/1925ms (improved) · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 7 — 24 UNREACHABLE PAINTERS, AND THE TWO INSTRUMENTS THAT
 ##   FOUND THEM (2026-08-01, batch 26). ★★THE FINDING: wave 7's table was written from
 ##   memory of what ANIMALS exist rather than from what the CATALOG contains — King Cobra,

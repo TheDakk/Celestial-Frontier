@@ -54,7 +54,12 @@ function topLevelKeys(body) {
   return out;
 }
 
-const FILES = ['speciesoverrides.ts', 'floraoverrides.ts', 'faunaoverrides.ts', 'faunaoverrides2.ts', 'quadrupedoverrides.ts'];
+/* EVERY override file, read from the DIRECTORY. A hardcoded list is the same
+   blindness this tool exists to catch: wave 8 added faunaoverrides3.ts and the
+   check reported "no change" — 106 new routes it could not see. */
+const FILES = fs.readdirSync(path.join(root, 'packages/art/src'))
+  .filter((n) => /overrides\d*\.ts$/.test(n)).sort();
+if (FILES.length < 5) { console.error('overridecheck: found only ' + FILES.length + ' override files — the PARSER is broken'); process.exit(2); }
 const keys = new Map();   /* name → "file:TABLE" */
 const dupes = [];
 for (const f of FILES) {

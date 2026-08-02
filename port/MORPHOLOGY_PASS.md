@@ -391,3 +391,60 @@ biome scenes (Phase 6).
 proofsheet · goldenseeds 198,000 cases · codefixtures · audioprofiles · savefixtures ·
 validate FINGERPRINT MATCH. `hdart.verbatim.js` UNTOUCHED.
 **Ledger:** D-ART-19 … D-ART-23.
+
+---
+
+# WAVE 8 — LANDED 2026-08-01 (THE FISH SYSTEM: 105 species, one traced body)
+
+## The gap was measured, not guessed
+Wave 7 ended with a ranked list written from memory. This wave started by **reading the
+catalog and diffing it against every override table**: fish were the largest uncovered group
+in the game at **106 species — more than the birds (77)**. That reordering is the wave-7
+lesson applied to planning, not just to keys.
+
+## One body, parameterised — the wave-4 quadruped pattern, at sea
+`fishBody()` traces a single outline whose **profile · length · depth · tail · snout · dorsal ·
+pattern** are the species. 105 routes, no per-species painters:
+- **profile** fusiform · deep · eel · globe · box · ribbon — the half-height curve *is* the
+  silhouette, so a tuna, a tang, a moray and a sunfish share zero code paths visually.
+- **tail** forked · lunate · round · point · **shark (heterocercal — the upper lobe is longer)** ·
+  fan · none.
+- **snout** blunt · jaw · **bill** (marlin/sailfish/swordfish/paddlefish) · shovel (catfish,
+  sturgeon) · tube · **hammer**.
+- **dorsal** one · **sail** · two · spiny · none · **sharkfin**.
+- specials: **lure** (the anglerfish esca on its illicium), **glow** (photophore rows),
+  **teeth**, **shark** (five gill slits + swept pectorals).
+- always: countershading dark-above/pale-below, the **lateral line**, the **operculum**, and
+  patterns CLIPPED to the body so marks are skin and not stickers.
+
+## What the strip caught (three sizing bugs a counting gate cannot see)
+| the strip said | the cause | the fix |
+|---|---|---|
+| the Gar wears a green dinner plate | tail height was scaled from the body's MAXIMUM depth, so an eel — whose depth value describes a thin ribbon — got a tuna's tail | the tail is sized by the body **at the peduncle** (`heightAt(0.14)`; the peduncle itself is literally zero-height on a fusiform body) |
+| the Tang's tail is taller than the Tang | 3.35× a deep-bodied fish's peduncle is enormous | **clamped** to 1.30× the body's own maximum height |
+| the tail is a dark disc parked behind the fish | `round`/`fan` was a free-standing ellipse touching nothing | a fan **grows from the peduncle** — traced from the body's own edge |
+| an eel is a stick | no fin at all on `dorsal:'none'` long bodies | the **continuous median fin** down back and belly, which is the entire read of an eel |
+| dorsals invisible | 0.86·depth is a bump the eye skips | 1.34·depth with fin rays; the oarfish's crest runs the **whole** back |
+
+## ★ THE SENTINEL WAS BLIND TO ITS OWN CLASS OF BUG
+Wave 8 added `faunaoverrides3.ts` — and `overridecheck` reported **"no change, 310 keys"**.
+Its file list was **hardcoded**, so a whole new override file was invisible: 105 unverified
+routes, reported as if nothing had happened. That is *precisely* the failure the tool exists
+to catch, living inside the tool. It now **reads the directory**, and
+`tools/overridecheck.control.mjs` (`npm run overridecontrol`) is a permanent, committed
+control set — including **control C: a new override file with a dead key must not be
+invisible**.
+
+## Coverage after wave 8 — MEASURED
+**415 of 1,010 Earth species (41.1%)** — fauna 346 · flora 43 · fungi 16 · microbe 10.
+Up from 310 (30.7%). Excluded by the override law: Seahorse, Angelfish, Lionfish, Flounder,
+Halibut, Mudskipper already have bespoke painters.
+
+Remaining, by measured size: **birds 77** · arthropods 67 · worms/cnidaria 22 · the mammal
+and reptile remainder · procedural fungi + microbe body plans (Nick's audit §12/§13) ·
+flower-head families · the 43 biome scenes (Phase 6).
+
+**Gates:** vitest 220 ✓ · tsc clean · speciesaudit 1254/1254 · 0 fails · 0 dupes · 0 clipped ·
+overridecheck 415/415 · 0 dead · **overridecontrol 5/5 fire** · slicesmoke PASS ·
+perf painted 1241ms / answerable 1925ms (improved). `hdart.verbatim.js` UNTOUCHED.
+**Ledger:** D-ART-24 … D-ART-26.
