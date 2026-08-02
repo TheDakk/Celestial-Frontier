@@ -413,7 +413,7 @@ export function faunaCetacean(c: Ctx, g: G, p: Pal, opts: { dorsal: 'tall' | 'sm
 /** BIRD with a real folded wing, species bill and leg length */
 export interface BirdSpec {
   legs: number;
-  bill: 'hook' | 'long' | 'spoon' | 'stout' | 'huge' | 'short' | 'chisel' | 'needle' | 'duck';
+  bill: 'hook' | 'long' | 'spoon' | 'stout' | 'huge' | 'short' | 'chisel' | 'needle' | 'duck' | 'cone' | 'fine';
   crest?: boolean;
   flightless?: boolean;
   /* ── wave 9 additions. All OPTIONAL and defaulted, so the wave-3 birds —
@@ -429,6 +429,21 @@ export interface BirdSpec {
   /* ── wave 21: the Platinum audit's bird findings, each "add <the one thing>" ── */
   wings?: 'soaring';                              /** wings so long they ARE the bird (albatross) */
   headMass?: number;                               /** an oversized head (kingfisher, kookaburra) */
+  /* ── ★ WAVE 8: THE FIELD MARKS. Seven songbirds — Sparrow, Finch, Robin,
+     Tanager, Weaverbird, Starling, Lark — were separated by NOTHING but a
+     size number differing by four percent, and the lock duly reported them
+     as the same picture. That is D-ART-83 living in the bird table: a band
+     instead of a species. What actually tells small birds apart in the field
+     is colour first, then bill shape, then a mark on the face or breast —
+     never body size. Each of these comes from the species reference row. ── */
+  hue?: string;                                    /** species-true plumage; the first field mark */
+  bib?: string;                                    /** a contrasting breast/throat patch (robin) */
+  cap?: string;                                    /** a contrasting crown (chickadee, jay) */
+  mask?: boolean;                                  /** the black face mask (cardinal, weaverbird) */
+  speckle?: boolean;                               /** pale flecks over dark (starling) */
+  streak?: boolean;                                /** streaky ground-bird camouflage (lark, pipit) */
+  plump?: number;                                  /** roundness: a robin is a ball, a swift is a cigar */
+  elong?: number;                                  /** body length against depth, from the reference aspect */
 }
 /** THE AVALANCHE. XOR-ing a small salt into a hash and dividing by 2^32
     perturbs only the lowest bits, so every "independent" variation axis
@@ -450,11 +465,33 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
   const r = mulberry32((((g.seed as number) ^ h) >>> 0));
   const nv = (salt: number, amt: number): number => 1 + (mixSaltB(h, salt) / 4294967296 - 0.5) * 2 * amt;
 
-  const sz = (opts.size ?? 1) * nv(0x11, 0.07);
+  /* ★ WAVE 8 — SPECIES-TRUE PLUMAGE. Colour is the FIRST field mark on a small
+     bird and the engine had no way to say it, so a cardinal, a robin and a
+     lark were the same grey shape at three sizes. Where the real bird's colour
+     IS its identity the row names it; everything else keeps its rarity roll. */
+  if (opts.hue) {
+    const n0 = parseInt(opts.hue.slice(1), 16);
+    const hr0 = (n0 >> 16) & 255, hg0 = (n0 >> 8) & 255, hb0 = n0 & 255;
+    p = { base: opts.hue, cr: hr0, cg: hg0, cb: hb0,
+      lit: `rgb(${Math.min(255, hr0 * 1.30) | 0},${Math.min(255, hg0 * 1.30) | 0},${Math.min(255, hb0 * 1.30) | 0})`,
+      dark: `rgb(${(hr0 * 0.44) | 0},${(hg0 * 0.44) | 0},${(hb0 * 0.44) | 0})` };
+  }
+  /* ★ WAVE 8 — THE SMALL BIRDS WERE DRAWN AT THEIR REAL RELATIVE SIZE, which
+     sounds right and is wrong for a PORTRAIT: a sparrow filled a seventh of
+     its 440px frame and threw away the other six-sevenths, so the field marks
+     that separate it from a finch were four pixels across. Relative scale is
+     invisible anyway when each species is framed alone. The range is
+     COMPRESSED, not flattened — an ostrich still out-sizes a hummingbird,
+     but the hummingbird is now legible. */
+  const sz = (0.55 + (opts.size ?? 1) * 0.62) * nv(0x11, 0.07);
   /* the body rides legLen ABOVE a fixed ground line, so a wader towers and a
      raptor squats — leg length is the species read (Flamingo vs Eagle) */
   const bx = S * 0.5, legLen = S * opts.legs, groundY = S * 0.80;
-  const bw = S * 0.15 * sz * (opts.upright ? 0.78 : 1), bh = S * 0.12 * sz * (opts.upright ? 1.45 : 1);
+  /* a robin is a ball on legs and a swift is a cigar; the reference row's
+     aspect says which, and nothing in this painter could express it before */
+  const plump = opts.plump ?? 1, elong = opts.elong ?? 1;
+  const bw = S * 0.15 * sz * (opts.upright ? 0.78 : 1) * elong;
+  const bh = S * 0.12 * sz * (opts.upright ? 1.45 : 1) * plump;
   const by = groundY - legLen - bh;
   ground(c, bx, groundY + 4, S * 0.16 * sz);
 
@@ -522,6 +559,44 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
 
   c.fillStyle = bodyGrad(c, p, bx, by, bw);
   c.beginPath(); c.ellipse(bx, by, bw, bh, -0.15, 0, TAU); c.fill();
+  /* ★ WAVE 8 — THE MARKS, clipped to the body so they are plumage and not
+     stickers. Between them and the bill these are what a birder actually uses
+     to tell two brown songbirds apart at twenty metres. */
+  if (opts.bib || opts.speckle || opts.streak) {
+    c.save();
+    c.beginPath(); c.ellipse(bx, by, bw, bh, -0.15, 0, TAU); c.clip();
+    if (opts.bib) {
+      /* the breast patch sits FORWARD and LOW — the bird faces left */
+      const bg2 = c.createRadialGradient(bx - bw * 0.42, by + bh * 0.18, bw * 0.05, bx - bw * 0.42, by + bh * 0.18, bw * 0.95);
+      bg2.addColorStop(0, opts.bib);
+      bg2.addColorStop(0.62, opts.bib);
+      bg2.addColorStop(1, `rgba(0,0,0,0)`);
+      c.fillStyle = bg2;
+      c.beginPath(); c.ellipse(bx - bw * 0.42, by + bh * 0.18, bw * 0.78, bh * 0.86, 0, 0, TAU); c.fill();
+    }
+    if (opts.speckle) {
+      /* a starling is black flecked with pale arrowheads, densest on the flank */
+      for (let i = 0; i < 90; i++) {
+        const ux = bx - bw + r() * bw * 2, uy = by - bh + r() * bh * 2;
+        c.fillStyle = `rgba(238,232,214,${0.30 + r() * 0.45})`;
+        c.beginPath(); c.ellipse(ux, uy, 1.4 + r() * 1.6, 0.9 + r() * 1.1, r() * 3, 0, TAU); c.fill();
+      }
+    }
+    if (opts.streak) {
+      /* a lark is streaked ALONG the body, which is what makes it vanish in grass */
+      c.lineCap = 'round';
+      for (let i = 0; i < 42; i++) {
+        const ux = bx - bw + r() * bw * 2, uy = by - bh + r() * bh * 2;
+        const L = bw * (0.10 + r() * 0.20);
+        c.strokeStyle = r() < 0.55
+          ? `rgba(58,42,26,${0.30 + r() * 0.35})`
+          : `rgba(226,214,188,${0.22 + r() * 0.28})`;
+        c.lineWidth = 1 + r() * 1.4;
+        c.beginPath(); c.moveTo(ux, uy); c.lineTo(ux + L, uy + (r() - 0.5) * 3); c.stroke();
+      }
+    }
+    c.restore();
+  }
   rim(c, () => c.ellipse(bx, by, bw, bh, -0.15, -2.8, 0.3), 2.2);
 
   /* ★ THE FOLDED WING — layered coverts + primaries, the missing feature */
@@ -609,6 +684,16 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
   c.fillStyle = bodyGrad(c, p, hx, hy, hr * 1.1);
   c.beginPath(); c.arc(hx, hy, hr, 0, TAU); c.fill();
   rim(c, () => c.arc(hx, hy, hr, -2.7, 0.3), 1.8);
+  if (opts.mask) {
+    /* the black face mask of a cardinal or a weaverbird — a small dark field
+       around the bill base, and on a brightly-coloured bird it is the mark */
+    c.fillStyle = 'rgba(16,13,15,0.86)';
+    c.beginPath(); c.ellipse(hx - hr * 0.40, hy + hr * 0.14, hr * 0.64, hr * 0.48, -0.18, 0, TAU); c.fill();
+  }
+  if (opts.cap) {
+    c.fillStyle = opts.cap;
+    c.beginPath(); c.ellipse(hx - hr * 0.10, hy - hr * 0.44, hr * 0.86, hr * 0.52, -0.12, 0, TAU); c.fill();
+  }
   if (opts.owl) {
     /* THE FACIAL DISC + forward-facing eyes — an owl's entire identity, and
        the one head in the catalog that does not read in profile */
@@ -656,6 +741,20 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       c.beginPath(); c.ellipse(hx - 74 * B, hy + 7 * B, 20 * B, 6 * B, 0.06, 0, Math.PI); c.fill();
     }
     else if (opts.bill === 'huge') { c.beginPath(); c.moveTo(hx - 14 * B, hy - 12 * B); c.quadraticCurveTo(hx - 66 * B, hy - 10 * B, hx - 72 * B, hy + 6 * B); c.quadraticCurveTo(hx - 40 * B, hy + 16 * B, hx - 12 * B, hy + 10 * B); c.closePath(); c.fill(); }
+    else if (opts.bill === 'cone') {
+      /* ★ WAVE 8 — THE SEED-CRACKER. A finch, a sparrow and a weaverbird all
+         carry a short DEEP triangle you could crack a husk with, and it is the
+         second thing after colour that separates them from the thin-billed
+         insect eaters they otherwise resemble. 'short' was doing both jobs. */
+      c.beginPath(); c.moveTo(hx - 4 * B, hy - 11 * B); c.lineTo(hx - 26 * B, hy + 2 * B);
+      c.lineTo(hx - 4 * B, hy + 12 * B); c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(30,22,14,0.45)'; c.lineWidth = 1.4;
+      c.beginPath(); c.moveTo(hx - 4 * B, hy + 1 * B); c.lineTo(hx - 25 * B, hy + 2 * B); c.stroke();
+    } else if (opts.bill === 'fine') {
+      /* the thin pointed probe of a thrush or a starling — an insect eater */
+      c.beginPath(); c.moveTo(hx - 6 * B, hy - 4 * B); c.lineTo(hx - 34 * B, hy + 3 * B);
+      c.lineTo(hx - 6 * B, hy + 6 * B); c.closePath(); c.fill();
+    }
     else if (opts.bill === 'short') {   /* the seed-cracking cone of a finch */
       c.beginPath(); c.moveTo(hx - 13 * B, hy - 6 * B); c.lineTo(hx - 30 * B, hy + 2 * B); c.lineTo(hx - 13 * B, hy + 9 * B); c.closePath(); c.fill();
     } else if (opts.bill === 'chisel') {   /* a woodpecker drives a straight spike */
@@ -761,10 +860,10 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Toucan': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge' }, n),
   'Kookaburra': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge', headMass: 1.55, neck: 'none', size: 0.92 }, n),
   'Hornbill': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'huge', crest: true }, n),
-  'Kiwi': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.01, bill: 'long', flightless: true }, n),
-  'Cassowary': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.10, bill: 'stout', crest: true, flightless: true }, n),
-  'Ostrich': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.14, bill: 'stout', flightless: true }, n),
-  'Emu': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.13, bill: 'stout', flightless: true }, n),
+  'Kiwi': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.012, bill: 'long', flightless: true, size: 0.72, neck: 'none', hue: '#7a6144', plump: 1.30 }, n),
+  'Cassowary': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.105, bill: 'stout', crest: true, flightless: true, size: 1.20, neck: 'long', hue: '#1f2733', plump: 1.22 }, n),
+  'Ostrich': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.145, bill: 'stout', flightless: true, size: 1.42, neck: 'long', hue: '#3a332e', plump: 1.10, tail: 'fan' }, n),
+  'Emu': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.125, bill: 'stout', flightless: true, size: 1.22, neck: 'long', hue: '#6d6154', plump: 1.14 }, n),
   'Kakapo': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'stout', flightless: true }, n),
   'Secretary Bird': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.24, bill: 'hook', crest: true, neck: 'long', tail: 'long', size: 0.95 }, n),
   'Hoatzin': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.04, bill: 'stout', crest: true }, n),

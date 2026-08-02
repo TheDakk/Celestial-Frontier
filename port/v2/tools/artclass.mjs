@@ -49,7 +49,12 @@ function keysIn(file) {
   if (!fs.existsSync(p)) return [];
   const s = fs.readFileSync(p, 'utf8');
   const out = new Set();
-  for (const m of s.matchAll(/^ {2}'([^']+)':/gm)) out.add(m[1]);
+  for (const m of s.matchAll(/^ {2}'([^']+)':/gm)) {
+    /* ⚠ the CANON table is keyed 'kingdom|Name', so a species routed there was
+       invisible to this map and fell through to 'verbatim-*' — which would have
+       failed the lock as UNDECLARED drift the first time anyone edited one. */
+    out.add(m[1].includes('|') ? m[1].slice(m[1].indexOf('|') + 1) : m[1]);
+  }
   /* the string-array route lists (FLORA_DUPES and friends) */
   for (const m of s.matchAll(/^ {2}'([^']+)',/gm)) out.add(m[1]);
   return [...out];

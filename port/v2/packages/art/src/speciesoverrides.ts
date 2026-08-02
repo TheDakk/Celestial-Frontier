@@ -27,7 +27,7 @@ import { faunaKiwi, faunaMudskipper, faunaPyrosome, faunaSalp, faunaTripodFish }
 import { floraCabbage, floraCarrot, floraCorn, floraHemp, floraTobacco, floraWatermelon, floraStrawberry, floraKiwiFruit } from './floraoverrides3.js';
 import { fungiFlyAgaric, fungiLionsMane, fungiMaitake, fungiStinkhorn, fungiCordyceps, lichenMat, microbeForam, tardigrade, macroAlgaeSheet, microAlgaeCell, algaeBloom } from './fungioverrides2.js';
 import { fungiEnoki, procFamilyIndex, FAMILY_COUNT, fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiClub, microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate, microbePlates, microbeMat } from './proceduralfamilies.js';
-import { faunaBear, faunaKoala, faunaSirenian, faunaHumpback, faunaBeakedWhale, faunaCuttlefish, faunaHorseshoeCrab, faunaSeaSquirt, faunaLamprey } from './faunaoverrides5.js';
+import { faunaBear, faunaKoala, faunaSirenian, faunaHumpback, faunaBeakedWhale, faunaCuttlefish, faunaHorseshoeCrab, faunaSeaSquirt, faunaLamprey, faunaBat } from './faunaoverrides5.js';
 import { fishBody } from './faunaoverrides3.js';
 import { insectBody, myriapod } from './invertoverrides.js';
 import { plantBody } from './floraoverrides2.js';
@@ -407,6 +407,14 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'fauna|Horseshoe Crab': faunaHorseshoeCrab,
   'fauna|Sea Squirt': faunaSeaSquirt,
   'fauna|Lamprey': faunaLamprey,
+  /* ★ WAVE 8 — THE BATS ARE MAMMALS. 'Insect-Eating Bat' was matched into the
+     INVERTEBRATE table on the word "Insect" and rendered as a bee; the other
+     three had no route at all and fell through to the verbatim engine. Routed
+     here, ahead of every name table, so no keyword can ever claim them again. */
+  'fauna|Bat': (c, g, pp) => faunaBat(c, g, pp, 'Bat'),
+  'fauna|Insect-Eating Bat': (c, g, pp) => faunaBat(c, g, pp, 'Insect-Eating Bat'),
+  'fauna|Fruit Bat': (c, g, pp) => faunaBat(c, g, pp, 'Fruit Bat'),
+  'fauna|Vampire Bat': (c, g, pp) => faunaBat(c, g, pp, 'Vampire Bat'),
 };
 export function resolveOverride(g: G): string | null {
   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it
