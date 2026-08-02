@@ -19,6 +19,7 @@
    by tools/overridecheck.mjs; the shadow check keeps it from re-covering
    what waves 3 and 7 already own. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { speciesHue } from './surface.js';
 import { ellipseTube } from './torso.js';
 import { coatMaterial } from './skin.js';
 
@@ -441,7 +442,9 @@ export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: 
 }
 
 /* ═══════════════ CRUSTACEANS ═══════════════ */
-export function crabBody(c: Ctx, g: G, p: Pal, opts: { wide?: boolean; hermit?: boolean; big?: boolean }, name = ''): void {
+export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?: boolean; big?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0xC2AB);
   const cx = S * 0.50, cy = S * 0.50;
   const cw = S * (opts.wide ? 0.155 : 0.125) * (opts.big ? 1.2 : 1) * nv(name, 0x41, 0.12);
@@ -628,7 +631,9 @@ export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stou
 }
 
 /* ═══════════════ SOFT BODIES ═══════════════ */
-export function wormBody(c: Ctx, g: G, p: Pal, opts: { bristles?: boolean; flat?: boolean; sucker?: boolean }, name = ''): void {
+export function wormBody(c: Ctx, g: G, pIn: Pal, opts: { bristles?: boolean; flat?: boolean; sucker?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x0202);
   const cx = S * 0.48, cy = S * 0.54;
   const N = 30, th = S * (opts.flat ? 0.040 : 0.030) * nv(name, 0x61, 0.16);
@@ -665,7 +670,9 @@ export function wormBody(c: Ctx, g: G, p: Pal, opts: { bristles?: boolean; flat?
   else { eyeDot(c, hx - th * 0.7, hy - th * 0.3, th * 0.16); }
 }
 
-export function slugBody(c: Ctx, g: G, p: Pal, opts: { cerata?: boolean; plated?: boolean }, name = ''): void {
+export function slugBody(c: Ctx, g: G, pIn: Pal, opts: { cerata?: boolean; plated?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x51A6);
   const cx = S * 0.48, cy = S * 0.56;
   const L = S * 0.185 * nv(name, 0x71, 0.14), h = S * 0.048 * nv(name, 0x72, 0.16);
@@ -706,7 +713,9 @@ export function slugBody(c: Ctx, g: G, p: Pal, opts: { cerata?: boolean; plated?
   }
 }
 
-export function jellyBody(c: Ctx, g: G, p: Pal, opts: { comb?: boolean; float?: boolean; barrel?: boolean }, name = ''): void {
+export function jellyBody(c: Ctx, g: G, pIn: Pal, opts: { comb?: boolean; float?: boolean; barrel?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-115 — the species hue axis. */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x1E11);
   const cx = S * 0.50, cy = S * 0.38;
   const bw = S * (opts.barrel ? 0.115 : 0.135) * nv(name, 0x81, 0.14);
@@ -955,12 +964,12 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Giant Centipede': M({ flat: true, scale: 1.34, segs: 22, hue: '#7d2f28' }),
   'Millipede': M({ hue: '#4a3324', coil: true }),
   /* ── CRABS ── */
-  'Crab': C({ wide: true }),
-  'Mud Crab': C({ wide: true }),
-  'Freshwater Crab': C({}),
-  'Vent Crab': C({}),
-  'Hermit Crab': C({ hermit: true }),
-  'Coconut Crab': C({ big: true, wide: true }),
+  'Crab': C({ hue: '#8f5a3b', wide: true }),
+  'Mud Crab': C({ hue: '#4e5230', wide: true }),
+  'Freshwater Crab': C({ hue: '#7d4c3d', }),
+  'Vent Crab': C({ hue: '#fbf8f2', }),
+  'Hermit Crab': C({ hue: '#cd8145', hermit: true }),
+  'Coconut Crab': C({ hue: '#3f3f6e', big: true, wide: true }),
   /* ── SHRIMP, LOBSTER AND KIN ── */
   'Shrimp': P({ hue: '#cfa091', }),
   'Prawn': P({ hue: '#8d94a6', }),
@@ -980,23 +989,23 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Crayfish': P({ hue: '#6e6135', claws: true }),
   'Barnacle': X({ kind: 'volcano', hue: '#d8d2c4' }),
   /* ── WORMS ── */
-  'Earthworm': W({}),
-  'Ice Worm': W({}),
-  'Marine Worm': W({ bristles: true }),
-  'Polychaete Worm': W({ bristles: true }),
-  'Scale Worm': W({ bristles: true, flat: true }),
-  'Flatworm': W({ flat: true }),
-  'Leech': W({ sucker: true }),
+  'Earthworm': W({ hue: '#b0796a', }),
+  'Ice Worm': W({ hue: '#232c34', }),
+  'Marine Worm': W({ hue: '#c6907c', bristles: true }),
+  'Polychaete Worm': W({ hue: '#a8481a', bristles: true }),
+  'Scale Worm': W({ hue: '#6c6355', bristles: true, flat: true }),
+  'Flatworm': W({ hue: '#3c4040', flat: true }),
+  'Leech': W({ hue: '#473d22', sucker: true }),
   /* ── SLUGS AND KIN ── */
-  'Banana Slug': G2({}),
-  'Nudibranch': G2({ cerata: true }),
-  'Chiton': G2({ plated: true }),
+  'Banana Slug': G2({ hue: '#e3c22a', }),
+  'Nudibranch': G2({ hue: '#c02f8a', cerata: true }),
+  'Chiton': G2({ hue: '#5a6a5f', plated: true }),
   /* ── JELLIES ── */
-  'Jellyfish': J({}),
-  'Comb Jelly': J({ comb: true }),
-  'Portuguese Man-of-War': J({ float: true }),
-  'Salp': J({ barrel: true }),
-  'Pyrosome': J({ barrel: true }),
+  'Jellyfish': J({ hue: '#c8e0f0', }),
+  'Comb Jelly': J({ hue: '#e8f2f6', comb: true }),
+  'Portuguese Man-of-War': J({ hue: '#5a6ed0', float: true }),
+  'Salp': J({ hue: '#d5e8e4', barrel: true }),
+  'Pyrosome': J({ hue: '#f7c8d1', barrel: true }),
   /* ── SESSILE AND SAC-BODIED ── */
   'Coral': X({ hue: '#e8735a', kind: 'branch' }),
   'Cold-Water Coral': X({ hue: '#efe4cf', kind: 'branch' }),
@@ -1004,5 +1013,5 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Sponge': X({ kind: 'tube', pores: true, hue: '#c8823f' }),
   'Sea Squirt': X({ hue: '#d97a52', kind: 'fan' }),
   'Sea Cucumber': X({ hue: '#55412f', kind: 'sac' }),
-  'Lancelet': W({}),
+  'Lancelet': W({ hue: '#ecdfb5', }),
 };
