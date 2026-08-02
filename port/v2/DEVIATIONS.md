@@ -253,6 +253,17 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   rendered as an empty box in the strip because the catalog stores a curly apostrophe and the
   lookup compared raw strings — a species we could not review was invisible to review. Both
   sides normalised.
+- ✔ **D-ART-56 — PROCEDURAL FUNGI + MICROBES REACH THEIR FAMILIES (wave 17).** Nick's audit
+  §12/§13 mono-templates were fixed for NAMED species in wave 1 but never for the procedural
+  spread: ten procedural fungi rendered as the same three mushrooms and ten microbes as the same
+  bubble cluster, differing only in colour. The families existed and were simply unreachable
+  without a name; a procedural genome now selects one from its own `form` gene, and the lumin
+  flag lights it. The win came from making an existing system reachable, not from new art.
+- ✔ **D-ART-57 — THE MOULD HAD NO SUBSTRATE (wave 17).** fungiMold was pure haze at 0.10 alpha.
+  Over a named species' vignette it read fine; on a procedural genome the fit pass scaled a cloud
+  of dust to fill the frame and the colony vanished. It now grows on a ragged spreading crust —
+  which improved the named Mold, Mildew and Yeast too, the tell that the vignette had been
+  carrying a thin painter all along.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

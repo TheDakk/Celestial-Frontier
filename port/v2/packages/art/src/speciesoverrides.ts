@@ -191,6 +191,26 @@ function fungiEarthstar(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
 function fungiMold(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   /* a fuzzy spreading surface colony — no cap, no stem (Yeast/Mold/Mildew) */
   const r = mulberry32(((g.seed as number) ^ 0x310D) >>> 0);
+  /* ★ THE SUBSTRATE. This painter was pure haze at 0.10 alpha, which on a
+     NAMED species sat over a vignette and read fine — but a procedural genome
+     has nothing behind it, so the fit pass scaled a cloud of dust to fill the
+     frame and the colony vanished. A mould grows ON something: the crust it
+     spreads across gives the spores a body to belong to. */
+  {
+    const cx = S * 0.5, cy = S * 0.54;
+    const cg = c.createRadialGradient(cx - S * 0.06, cy - S * 0.05, 4, cx, cy, S * 0.34);
+    cg.addColorStop(0, `rgba(${p.cr * 0.55 | 0},${p.cg * 0.55 | 0},${p.cb * 0.5 | 0},0.85)`);
+    cg.addColorStop(0.7, `rgba(${p.cr * 0.34 | 0},${p.cg * 0.34 | 0},${p.cb * 0.32 | 0},0.62)`);
+    cg.addColorStop(1, 'rgba(0,0,0,0)');
+    c.fillStyle = cg;
+    c.beginPath();
+    for (let i = 0; i <= 26; i++) {   /* a ragged spreading crust, not a disc */
+      const a = (i / 26) * TAU, rr = S * (0.26 + Math.sin(a * 3.1) * 0.035 + r() * 0.03);
+      const x = cx + Math.cos(a) * rr, y = cy + Math.sin(a) * rr * 0.62;
+      if (!i) c.moveTo(x, y); else c.lineTo(x, y);
+    }
+    c.closePath(); c.fill();
+  }
   c.save(); c.globalCompositeOperation = 'lighter';
   for (let i = 0; i < 240; i++) {
     const a = r() * TAU, d = Math.pow(r(), 0.5) * S * 0.34;
@@ -399,6 +419,36 @@ export const OVERRIDE_COUNT = new Set([...Object.keys(FUNGI_NAME), ...Object.key
    plans with no Earth analogue, which the verbatim engine draws better than
    a forced mapping would (D-ART-14 applied to a whole rendering path). */
 export function resolveProcedural(g: G): string | null {
+  /* ★ WAVE 17 — THE LAST MONO-TEMPLATE (Nick's audit §12/§13, for the
+     PROCEDURAL spread). Wave 1 gave the NAMED fungi and microbes structural
+     families, but every procedural genome in those two kingdoms still fell
+     through to the verbatim engine — where all 20 rendered as the SAME three
+     mushrooms and the SAME bubble cluster, differing only in colour. Heat
+     changed nothing structural. The families already exist; they just were
+     never reachable without a name. The genome's own `form` gene picks one. */
+  const kingdom = String(g.kingdom || '');
+  if (kingdom === 'fungi' || kingdom === 'microbe') {
+    const form = (((g.form as number) || 0) % 18 + 18) % 18;
+    const painter = kingdom === 'fungi'
+      ? [fungiBracket, fungiPuffball, fungiCoral, fungiMorel, fungiMold, fungiEarthstar][form % 6]!
+      : [microbeTardigrade, microbeDiatom, microbeCiliate, microbeAmoeba][form % 4]!;
+    const { cv, c } = newCanvas();
+    vignette(c, kingdom === 'fungi');
+    floorFade(c);
+    const ink = newInk();
+    painter(ink.c, g, palette(g));
+    fitInk(ink.cv, c, 'proc:' + kingdom + ':' + String(g.seed));
+    if (g.lumin) {
+      /* the genome's lumin flag, visible here too (D-ART-49) — drawn on the
+         framed canvas so the glow spills past the subject's silhouette */
+      const pl = palette(g);
+      const gg = c.createRadialGradient(S * 0.5, S * 0.46, 8, S * 0.5, S * 0.5, S * 0.42);
+      gg.addColorStop(0, `rgba(${Math.min(255, pl.cr * 0.5 + 120 | 0)},${Math.min(255, pl.cg * 0.5 + 150 | 0)},255,0.20)`);
+      gg.addColorStop(1, 'rgba(0,0,0,0)');
+      c.fillStyle = gg; c.fillRect(0, 0, S, S);
+    }
+    return cv.toDataURL();
+  }
   const plan = planFor(g as Record<string, unknown>);
   if (!plan) return null;
   const pal = palette(g) as Pal;

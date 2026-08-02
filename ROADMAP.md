@@ -686,6 +686,24 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 17 — THE LAST MONO-TEMPLATE (2026-08-02, batch 38). Nick's audit
+##   §12/§13 named two mono-templates (27 fungi = 1 mushroom, 22 microbes = 1 bubble). Wave 1
+##   fixed them for NAMED species — but NEVER for the PROCEDURAL spread, and nothing had ever
+##   rendered one to notice until wave 13 added proc: to the strip. ★WHAT IT SHOWED: ten
+##   procedural fungi = THE SAME THREE MUSHROOMS ten times in ten colours; ten microbes = THE
+##   SAME BUBBLE CLUSTER. Heat changed nothing structural. The exact defect Nick called out,
+##   still alive in the half of the game no name-based instrument could see. ★THE FIX WAS
+##   ROUTING, NOT PAINTING: the families already existed (bracket/puffball/coral/morel/mould/
+##   earthstar · tardigrade/diatom/ciliate/amoeba) and were simply UNREACHABLE WITHOUT A NAME.
+##   A procedural genome now picks one from its own `form` gene; lumin lights it (D-ART-49).
+##   TWO WAVES RUNNING, the win came from making an existing system REACHABLE rather than from
+##   new art — which is what the override-layer architecture was for. ★★AND IT EXPOSED A LATENT
+##   BUG: fungiMold was PURE HAZE at 0.10 alpha with no substrate. Over a named species'
+##   vignette it read fine; on a procedural genome the FIT PASS SCALED A CLOUD OF DUST to fill
+##   the frame and the colony VANISHED. It now grows on a ragged crust — and the NAMED Mold,
+##   Mildew and Yeast improved too, the tell that the vignette had been carrying a thin painter
+##   all along. D-ART-56/57. TASK 19 CLOSED. GATES: vitest 220 · tsc · artbattery 5/5 ·
+##   speciesaudit 1254/1254 0 dupes 0 clipped · slicesmoke PASS · perf 1347/2087ms · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 16 — THE SECOND REVIEW PASS (2026-08-01, batch 37). Nick: "make sure
 ##   we are looking at EVERYTHING not just the least look — we want to nail this execution."
 ##   Rendered review strips across EVERY category. EIGHT real defects, several in species the

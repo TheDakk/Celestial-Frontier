@@ -1013,3 +1013,40 @@ spread with its wave-14 alien traits.
 **Gates:** vitest 220 ✓ · tsc clean · artbattery **5/5** · speciesaudit 1254/1254 ·
 0 duplicate pairs · 0 clipped · slicesmoke PASS · perf 1424/2248ms.
 `hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-53 … D-ART-55. Full export re-run.
+
+---
+
+# WAVE 17 — LANDED 2026-08-02 (THE LAST MONO-TEMPLATE: procedural fungi + microbes)
+
+Nick's audit §12/§13 named the two mono-templates: *27 fungi drawn as one mushroom, 22 microbes
+drawn as one bubble.* Wave 1 fixed that for the NAMED species by writing structural families.
+**It never reached the procedural spread**, and nothing had ever rendered one to notice —
+until wave 13 added `proc:` to the strip tool.
+
+## What the strip showed
+Ten procedural fungi: **the same three mushrooms, ten times, in ten colours.**
+Ten procedural microbes: **the same bubble cluster, ten times, in ten colours.**
+Heat changed nothing structural. This was the exact defect Nick's audit called out, still alive
+in the half of the game no name-based instrument could see.
+
+## The fix was routing, not painting
+The families already existed — bracket · puffball · coral · morel · mould · earthstar for fungi,
+tardigrade · diatom · ciliate · amoeba for microbes. They were simply **unreachable without a
+name**. A procedural genome now picks one from its own `form` gene, so the spread renders
+morels, coral fungus, earthstars, puffballs and mould crusts; tardigrades, diatoms, ciliates and
+amoebas. The genome's `lumin` flag lights the subject here too (D-ART-49).
+
+> Two waves running, the win came from making an existing system REACHABLE rather than from
+> writing new art. That is what the override-layer architecture was for.
+
+## ★ AND IT EXPOSED A LATENT BUG IN THE MOULD PAINTER
+`fungiMold` was pure haze at 0.10 alpha with no substrate. On a NAMED species that sat over a
+vignette and read fine; a procedural genome has nothing behind it, so **the fit pass scaled a
+cloud of dust to fill the frame and the colony vanished**. A mould grows ON something — it now
+has a ragged spreading crust for the spores to belong to. **The named Mold, Mildew and Yeast
+improved too**, which is the tell that the original was always thin and the vignette was
+carrying it.
+
+**Gates:** vitest 220 ✓ · tsc clean · artbattery **5/5** · speciesaudit 1254/1254 ·
+0 duplicate pairs · 0 clipped · slicesmoke PASS · perf 1347/2087ms.
+`hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-56 · D-ART-57. **Task 19 CLOSED.**
