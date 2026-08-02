@@ -1368,3 +1368,65 @@ carnivores read as tubes with legs. Tiger, and other big cats, still have no ove
 ## Gates
 vitest 225 · tsc clean · overridecheck 932/932 0 dead · artaudit 0 findings · artbattery 5/5 ·
 speciesaudit 1254/1254 0 dupes 0 clipped. hdart UNTOUCHED.
+
+---
+
+# ARC STAGE 2 — LANDED 2026-08-02 (THE CONFORMANCE CHECK, AND WHAT IT FOUND)
+
+tools/conformance.mjs renders every Earth species, measures it, and diffs the measurement
+against port/v2/reference/. It is the first check on this project that knows what an animal is
+SUPPOSED to be.
+
+## ★ THE FINDING THAT JUSTIFIED THE WHOLE ARC: THE MAMMALS HAD NO WHITES IN THEIR EYES
+Nick: "make sure their heads, eyes, etc all are distinguishable."
+
+Every painter family here draws a three-layer eye — pale sclera, dark pupil, catchlight. The
+QUADRUPED system, the largest family in the catalogue, drew a single dark dot of radius
+0.16 x headR with a 0.06 x headR speck on it. Against a mid-tone flank that is a smudge, not a
+face. Wolf, Lion, Tiger, Cat, Deer, Koala, Sand Cat, Caracal and Possum all had no readable
+eye and NOTHING measured it — speciesaudit, overridecheck, artaudit and proportioncheck were
+all green on every one of them.
+
+Fixed for ~200 mammals at once: three-layer eye, a soft socket so it is SET INTO the skull, a
+lid line so it does not read as a bead, and the radius raised 0.16 -> 0.21 because an eye a
+player cannot locate at thumbnail size is not an eye.
+
+## ★★ AND THE SENSOR THAT FOUND IT WAS ITSELF WRONG FOUR TIMES
+The eye detector went through four versions and STILL is not trustworthy:
+  v1  bright-pixel next to dark, 2px stride → 7 "eyes" on an elephant (tusks and toenails)
+      and 0 on the dragonfly (a 2px stride steps straight over a 2px catchlight).
+  v2  required ENCLOSURE at a fixed 4px ring → WORSE (192 → 300 false negatives), because on
+      a small eye a 4px ring lands back outside the pupil, in the bright sclera.
+  v3  multi-radius enclosure [2,3,5,8].
+  v4  cluster floor 3 → 1, because after enclosure a mid-sized eye leaves ONE surviving pixel.
+Final score against ground truth: 8/20 species whose eyes a human has SEEN in a render.
+
+⚠ THE SELF-TEST DID NOT CATCH ANY OF THIS. It exercised the JUDGEMENT with synthetic numbers
+and never the MEASUREMENT — 7/7 controls held while the sensor feeding them was 40% accurate.
+**A control on the decision layer says nothing about the sensor layer.**
+
+So [A] IS NOT A GATE. conformance embeds a 20-species ground-truth list, scores the sensor
+against it every run, and SUPPRESSES [A] entirely below 90%, printing why and naming what it
+missed. Emitting 300 false "no eye" findings would send the next session chasing ghosts —
+the same failure as a check that passes while the thing is broken, pointed the other way.
+
+## ★ A SERPENTINE ANIMAL IS NOT MEASURABLE FROM A BOUNDING BOX
+The reference states aspect for an animal laid out STRAIGHT — an earthworm at 20, an anaconda
+at 6. No painter draws a 20:1 subject in a square frame, and ours correctly coil them. The
+first run produced ~38 findings that were entirely the instrument's fault. The check now
+DECLINES TO ANSWER for coiled/serpentine forms rather than answering wrongly.
+
+## THE REPORT, after all of that
+83 findings, from 421 of mostly noise:
+  [P] 39 — proportion genuinely disagrees with life. Real ones include Macaw and Quetzal
+      (perching birds drawn horizontally when they perch upright), Beetle and Firefly, and a
+      run of fish drawn too deep for their length.
+  [U] 44 — species with NO override route, so the verbatim engine draws them and their named
+      mustRead features cannot be expressed AT ALL. Invisible to overridecheck by construction.
+
+## Gates
+vitest 225 · tsc clean · artaudit 0 findings · overridecheck 932/932 0 dead · referencecheck
+PASS 0 warnings · artbattery 5/5 · speciesaudit 1254/1254 0 dupes 0 clipped. hdart UNTOUCHED.
+NEXT: stage 3 correction waves — start with [U] (the unrouted iconics: Tiger, the elephants,
+Zebra, Raccoon, Beaver, Red Panda, the hyenas, Kangaroo, Platypus, crocodilians, bats), then
+[P]. And the eye sensor needs a fifth attempt before [A] can ever gate.

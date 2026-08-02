@@ -686,6 +686,24 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ▶★★★ ARC STAGE 2 — THE CONFORMANCE CHECK (2026-08-02, batch 46). tools/conformance.mjs
+##   renders every species, measures it, diffs it against port/v2/reference/. ★★THE FINDING THAT
+##   JUSTIFIED THE ARC: THE MAMMALS HAD NO WHITES IN THEIR EYES. Every other painter family
+##   draws sclera+pupil+catchlight; the QUADRUPED system — the largest in the catalogue — drew a
+##   single dark dot. Wolf, Lion, Tiger, Cat, Deer, Koala, Sand Cat, Caracal, Possum had no
+##   readable face and FOUR GREEN GATES never saw it. Fixed for ~200 mammals at once (D-ART-80).
+##   ★★AND THE SENSOR WAS ITSELF WRONG FOUR TIMES: v1 counted an elephant's TUSKS as 7 eyes and
+##   missed the dragonfly; v2's fixed enclosure ring samples back into the sclera on small eyes
+##   and made it WORSE (192->300); v3 multi-radius; v4 dropped the cluster floor. Final: 8/20
+##   against human-verified ground truth. ⚠THE SELF-TEST HELD 7/7 THROUGHOUT because it drove
+##   the JUDGEMENT with synthetic numbers and never the MEASUREMENT — D-ART-81: a control on the
+##   decision layer says nothing about the sensor. So [A] IS SUPPRESSED below a 90% floor and
+##   says why. ★D-ART-82: the check DECLINES to judge coiled forms — bbox aspect carries no
+##   information about a coiled snake, and comparing to a straight-line reference produced ~38
+##   findings that were purely the tool's fault. REPORT: 83 findings (39 proportion, 44
+##   UNROUTED). GATES: vitest 225 · tsc · artaudit 0 · overridecheck 932/932 0 dead ·
+##   referencecheck PASS · artbattery 5/5 · hdart UNTOUCHED. NEXT: stage 3 correction waves,
+##   starting with the unrouted iconics; and the eye sensor needs a fifth attempt.
 ##   ▶★★★ THE PROPORTION ARC — OPENED 2026-08-02 (batch 45). Nick: "take every creature in the
 ##   earth catalogue and go through to make their entire bodies are proportionate, make sure
 ##   their heads, eyes, etc all are distinguishable. Use real life photos… go through all again.

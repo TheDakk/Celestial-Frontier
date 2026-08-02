@@ -469,8 +469,27 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       }
     }
   } else {
-    c.fillStyle = '#0d1016'; c.beginPath(); c.arc(headX + headR * 0.08, headY - headR * 0.12, headR * 0.16, 0, TAU); c.fill();
-    c.fillStyle = 'rgba(255,255,255,0.85)'; c.beginPath(); c.arc(headX + headR * 0.03, headY - headR * 0.18, headR * 0.06, 0, TAU); c.fill();
+    /* ★ ARC STAGE 2 — THE MAMMALS HAD NO WHITES IN THEIR EYES.
+       Nick: "make sure their heads, eyes, etc all are distinguishable."
+       Every other painter family here draws a three-layer eye — pale sclera,
+       dark pupil, catchlight — and this one, the LARGEST family in the
+       catalogue, drew a single dark dot with a 0.06R speck on it. Against a
+       mid-tone flank that is a smudge, and the conformance sensor could not
+       find a face on Wolf, Lion, Tiger, Cat, Deer, Koala, Sand Cat, Caracal or
+       Possum. It was not the sensor: they genuinely had no readable eye.
+       The eye is also enlarged 0.16R -> 0.21R, because an eye a player cannot
+       locate at thumbnail size is not an eye. */
+    const ex = headX + headR * 0.08, ey = headY - headR * 0.12, er = headR * 0.21;
+    /* a soft socket, so the eye is SET INTO the skull rather than stuck on */
+    softMark(c, ex, ey + er * 0.1, er * 2.1, er * 1.7, '18,14,10', 0.34);
+    c.fillStyle = '#f2efe6'; c.beginPath(); c.arc(ex, ey, er, 0, TAU); c.fill();
+    c.fillStyle = '#0d1016'; c.beginPath(); c.arc(ex, ey, er * 0.62, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(255,255,255,0.9)';
+    c.beginPath(); c.arc(ex - er * 0.30, ey - er * 0.35, er * 0.24, 0, TAU); c.fill();
+    /* the lid line — the one stroke that stops an eye reading as a bead */
+    c.strokeStyle = `rgba(${p.cr * 0.34 | 0},${p.cg * 0.34 | 0},${p.cb * 0.34 | 0},0.75)`;
+    c.lineWidth = Math.max(1.2, er * 0.28); c.lineCap = 'round';
+    c.beginPath(); c.arc(ex, ey, er * 1.06, Math.PI * 1.08, Math.PI * 1.92); c.stroke();
   }
 
   /* ---- the signature organ ---- */

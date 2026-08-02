@@ -72,7 +72,7 @@ COMMONLY DRAWN WRONG. Already in the data:
 draws the art. Where it disagrees with a render, look at BOTH before changing either — and
 where Nick disagrees with the reference, Nick wins and the row gets corrected.
 
-### Stage 2 — THE CONFORMANCE CHECK
+### Stage 2 — THE CONFORMANCE CHECK ✔ COMPLETE (batch 46, 2026-08-02)
 Extend `tools/proportioncheck.mjs` into `tools/conformance.mjs`: render every species, measure
 it, and diff against its reference row. Report per species:
 - aspect delta beyond ±35%
@@ -81,8 +81,19 @@ it, and diff against its reference row. Report per species:
 - `mustRead` features that the route table demonstrably cannot express (e.g. the species falls
   through to the verbatim engine, or its spec has no parameter for the named feature)
 
-**Negative-control it in both directions before trusting it** (PROCESS_LAWS): break a known-good
-species on purpose and confirm the check fails; fix it and confirm it passes.
+**Negative-control it in both directions before trusting it** (PROCESS_LAWS).
+
+**LANDED.** `tools/conformance.mjs`, 7/7 judgement controls via `--selftest`. Report: 83
+findings — [P] 39 proportion, [U] 44 unrouted.
+
+⚠ **[A] NO-EYE IS SUPPRESSED AND MUST STAY SUPPRESSED UNTIL THE SENSOR IS REBUILT.** The eye
+detector scored 8/20 against species whose eyes a human has seen in a render. It embeds that
+ground-truth list, scores itself every run, and refuses to emit [A] below 90%. Four rebuilds
+have not fixed it; a fifth is needed. **The self-test held 7/7 the whole time**, because it
+drove the judgement with synthetic numbers and never the sensor (D-ART-81).
+
+The check also DECLINES to judge coiled/serpentine forms: bbox aspect carries no information
+about a coiled body (D-ART-82).
 
 ### Stage 3 — THE CORRECTION WAVES
 Work the conformance report in descending severity, in batches of ~40 species, each batch:

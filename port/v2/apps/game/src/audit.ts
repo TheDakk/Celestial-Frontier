@@ -95,7 +95,7 @@ async function proportions(kingdom: string): Promise<void> {
   const NAMES = _EARTH_NAMES as unknown as Record<string, string[]>;
   const ki = Object.keys(NAMES).indexOf(kingdom);
   const pool = NAMES[kingdom] || [];
-  const rows: Array<{ name: string; w: number; h: number; aspect: number; lobe: number }> = [];
+  const rows: Array<{ name: string; w: number; h: number; aspect: number; lobe: number; eyes: number; eyeU: number }> = [];
   const cv = document.createElement('canvas'); cv.width = cv.height = 440;
   const cc = cv.getContext('2d', { willReadFrequently: true })!;
   for (const [i, name] of pool.entries()) {
@@ -151,10 +151,85 @@ async function proportions(kingdom: string): Promise<void> {
           };
           const trunk = seg(0.27, 0.73) || 1;
           const lobe = Math.max(seg(0, 0.18), seg(0.82, 1));
+
+          /* ★ STAGE 2 — IS THERE A READABLE EYE?
+             Every eye in this library is drawn the same way: a pale sclera, a
+             near-black pupil inside it, and a white catchlight. That signature
+             is measurable — a very bright pixel with a very dark pixel within a
+             few px. Nothing else in the palette does that, because the pattern
+             law forbids hard edges everywhere else. Counting those pairs tells
+             us whether the animal HAS a face, which no gate could see before. */
+          const lum = (o: number): number => 0.299 * d[o]! + 0.587 * d[o + 1]! + 0.114 * d[o + 2]!;
+          /* ⚠ THE FIRST DETECTOR WAS WRONG IN BOTH DIRECTIONS AND ITS SELF-TEST
+             DID NOT NOTICE, because the self-test exercised the JUDGEMENT with
+             synthetic numbers and never the SENSOR. It reported 7 eyes on the
+             elephant (tusks and toenails: bright beside dark) and 0 on the wolf,
+             lion, tiger, cat and dragonfly (a 2px stride steps straight over a
+             1-2px catchlight).
+
+             What actually distinguishes an eye is not "bright next to dark" —
+             a tusk edge is that. It is bright ENCLOSED BY dark: a catchlight
+             sits inside a pupil, so the dark surrounds it on most sides. A
+             tusk or a claw has dark on one side only. Sample a ring of eight
+             directions and require most of them dark. Stride 1, because the
+             feature we are hunting is two pixels wide. */
+          /* ⚠ AND THE FIRST ENCLOSURE TEST WAS ALSO WRONG — it made things WORSE
+             (192 → 300 false "no eye"). The structure of every eye here is
+             sclera → pupil → catchlight, three concentric discs. A fixed 4px
+             ring around the catchlight of a SMALL eye lands back outside the
+             pupil, in the bright sclera, so enclosure failed on exactly the
+             eyes it was written to find. The ring has to be smaller than the
+             pupil, and the pupil scales with the animal. So: try SEVERAL radii
+             and accept if any one of them shows the catchlight enclosed. */
+          const eyePx: Array<[number, number]> = [];
+          const RINGS = [2, 3, 5, 8];
+          for (let y = y0; y <= y1; y++) {
+            for (let x = x0; x <= x1; x++) {
+              if (lum((y * 440 + x) * 4) < 198) continue;
+              let enclosed = false;
+              for (const R of RINGS) {
+                const q = Math.round(R * 0.7071);
+                const dirs: Array<[number, number]> = [[R, 0], [-R, 0], [0, R], [0, -R],
+                  [q, q], [q, -q], [-q, q], [-q, -q]];
+                let dark = 0;
+                for (const [dx, dy] of dirs) {
+                  const yy = y + dy, xx = x + dx;
+                  if (yy < 0 || yy > 439 || xx < 0 || xx > 439) { dark++; continue; }
+                  if (lum((yy * 440 + xx) * 4) < 70) dark++;
+                }
+                if (dark >= 6) { enclosed = true; break; }
+              }
+              if (enclosed) eyePx.push([x, y]);
+            }
+          }
+          /* cluster them so one eye is one finding, not forty pixels */
+          const clusters: Array<{ x: number; y: number; n: number }> = [];
+          for (const [x, y] of eyePx) {
+            const c2 = clusters.find((k) => Math.abs(k.x / k.n - x) < 12 && Math.abs(k.y / k.n - y) < 12);
+            if (c2) { c2.x += x; c2.y += y; c2.n++; } else clusters.push({ x, y, n: 1 });
+          }
+          /* a real catchlight is a few pixels; one stray pixel is noise and a hundred
+             is a highlight on a flank, so the cluster must be eye-SIZED */
+          /* ⚠ n >= 3 REJECTED REAL EYES. A catchlight on a mid-sized head is about two
+             pixels across, so after the enclosure test only ONE pixel may survive.
+             Requiring three found the lion and missed the wolf. One enclosed
+             bright pixel IS the signature — nothing else in this palette makes
+             bright-surrounded-by-dark, because the pattern law forbids hard
+             edges everywhere else. The upper bound still rejects a lit flank. */
+          const real = clusters.filter((k) => k.n >= 1 && k.n <= 260);
+          /* where along the long axis do the eyes sit? 0 = left end, 1 = right.
+             This is how we find WHICH END IS THE HEAD without guessing that
+             every painter faces the same way — several do not. */
+          const eyeU = real.length
+            ? real.reduce((a, k) => a + (k.x / k.n - x0) / w, 0) / real.length
+            : -1;
+
           rows.push({
             name, w, h,
             aspect: Math.round((w / h) * 1000) / 1000,
             lobe: Math.round((lobe / trunk) * 1000) / 1000,
+            eyes: real.length,
+            eyeU: Math.round(eyeU * 1000) / 1000,
           });
         }
         res();
