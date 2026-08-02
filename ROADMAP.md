@@ -686,6 +686,18 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ▶★★★ SESSION HANDOFF 2026-08-02 (batch 49, HEAD 095e28e) — ★READ
+##   port/HANDOFF_NEXT_SESSION.md FIRST. Wave 3 fixed the last top-rear point (a TANGENT
+##   mismatch at the join, not a bad curve). Full export handed to Nick for review:
+##   port/v2/apps/game/smoke/species-fullsize/ — 1,254 portraits at native 440x440, five zips.
+##   ★WAVE 4 = (1) THE LIMB-TO-BODY BLEND — legs are bare strokes with no shoulder/haunch MASS,
+##   so they read as hooked in; (2) THE SKIN SYSTEM — patterns are soft blobs clipped to the
+##   outline and read as SPRAY PAINT; a skin follows contours, foreshortens toward the
+##   silhouette, obeys the light, and takes the right SHAPE per species. Also: recover the
+##   elephant from e66dca4 (three global passes made it worse), 26 fauna unrouted, the 17 flora
+##   NEEDS_FIX rows, and the eye sensor (8/20) needs a fifth rebuild before [A] can gate.
+##   ⚠STOP RUNNING GLOBAL PASSES — per animal, verified against a render. ⚠CLAUDE CANNOT SEE
+##   IMAGES: the reference table is TEXT, not photos; ask Nick to drop reference images in.
 ##   ▶★★★ ARC STAGE 3 WAVE 2 — THE JAGGED REAR (2026-08-02, batch 48). Nick, twice: "the rear
 ##   hump is still kind of jagged… they're not pointy polygon-looking, they're round."
 ##   ★★WAVE 1's FIX WAS NEVER CONNECTED TO THE BODY. smoothTop() BEGINS WITH moveTo, and moveTo
