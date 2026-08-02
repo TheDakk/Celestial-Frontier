@@ -233,32 +233,9 @@ export function spline(knots: Array<[number, number]>): (u: number) => number {
   };
 }
 
-/** ★ THE MAMMAL RADIUS PROFILE. Where the mass sits along a four-legged body.
-    The knots are anatomy, not decoration: a haunch over the hind leg, a
-    waist in front of it, a ribcage, a deep chest, a shoulder over the fore
-    leg, and a taper into the neck at one end and the tail at the other.
-
-    `waist`    how far the flank tucks up (a cheetah a lot, a hippo not at all)
-    `muscle`   how far the shoulder and haunch stand proud of the trunk
-    `chest`    depth at the brisket relative to the rest
-    `rump`     mass over the hind quarters (a bear and a horse are rear-heavy) */
-export function mammalProfile(o: { waist: number; muscle: number; chest: number; rump: number }): (u: number) => number {
-  /* ⚠ THE FIRST PROFILE TAPERED TO ALMOST NOTHING AT BOTH ENDS (0.26 and 0.40)
-     and every animal came out a LENS — pointed at the rump, pointed at the
-     chest, and sagging in the middle, because the belly is axis+R and the ends
-     had pulled it up. A quadruped's torso does not taper: it is deep at the
-     brisket AND deep at the pelvis and simply STOPS. The ends stay full and
-     the envelope's own cap rounds them, which is what a rump actually is. */
-  return spline([
-    [0.00, 0.76],
-    [0.08, 0.90 + o.rump * 0.14],
-    [0.18, 0.97 + o.rump * 0.14 + o.muscle * 0.10],   /* the haunch */
-    [0.30, 0.94 + o.rump * 0.06],
-    [0.44, 0.91 - o.waist * 0.19],                    /* the flank tuck */
-    [0.60, 0.96],
-    [0.74, 1.00 + o.chest * 0.15],                    /* the ribcage into the brisket */
-    [0.86, 0.98 + o.muscle * 0.13],                   /* the shoulder */
-    [0.95, 0.87],
-    [1.00, 0.66],
-  ]);
-}
+/* ⚠ mammalProfile() was REMOVED in wave 7. It hung a radius profile under a
+   FIXED BACK LINE, so every bulge of shoulder or haunch muscle pushed the BELLY
+   down by twice what it raised the back — two grey spheres hanging under the gut
+   on every slim animal, which is what Nick's audit reported. The two outlines
+   are authored directly now and the radius is derived from the gap between them
+   (see quadrupedoverrides.ts). Its history is in git at fc7b362. */

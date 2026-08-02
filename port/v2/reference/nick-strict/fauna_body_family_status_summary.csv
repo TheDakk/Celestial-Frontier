@@ -1,0 +1,123 @@
+expected_body_family,BLOCKER,FAIL,HOLD,PASS,total
+Ants,0,0,1,0,1
+Arachnids,0,0,2,0,2
+Armadillos and relatives,0,1,0,1,2
+Bats,0,0,2,0,2
+Bears,0,8,1,0,9
+Bees,0,3,0,0,3
+Beetles,0,0,5,0,5
+Big cats,0,11,2,0,13
+Birds of prey,0,3,5,0,8
+Bivalves,0,0,6,0,6
+Bottom-dwelling fish,0,0,2,0,2
+Camelids,0,1,0,0,1
+Camels,0,3,1,0,4
+Canids,0,2,2,0,4
+Carp-like fish,0,0,3,0,3
+Cats,0,1,0,0,1
+Cattle and bovids,0,2,16,0,18
+Cephalopods,0,2,6,0,8
+Cetaceans,0,1,1,0,2
+Characins,0,0,3,0,3
+Cichlids,0,0,1,0,1
+Civets and mongooses,0,1,2,0,3
+Coastal fish,0,0,3,0,3
+Cockroaches,0,1,0,0,1
+Cod-like fish,0,0,3,0,3
+Constricting snakes,0,0,4,0,4
+Corvids,0,0,5,0,5
+Cranes and rails,0,0,4,0,4
+Crocodilians,0,4,0,0,4
+Crustaceans,0,1,9,0,10
+Cuckoos and relatives,0,0,1,0,1
+Deer and relatives,0,0,5,0,5
+Dogs and dog-like mammals,0,6,2,0,8
+Dragonflies,0,0,0,2,2
+Eels,0,0,3,0,3
+Egg-laying mammals,0,0,2,0,2
+Elephants,0,0,1,0,1
+Elephants and relatives,0,0,4,0,4
+Elongate fish,0,0,1,0,1
+Equids,0,1,1,0,2
+Fish,0,0,8,0,8
+Flatfish,0,0,2,0,2
+Flightless birds,0,5,1,1,7
+Flying and climbing fish,0,0,0,2,2
+Flying mammals,1,1,1,0,3
+Frogs,0,1,3,0,4
+Frogs and toads,0,0,4,0,4
+Gamebirds,0,2,8,0,10
+Gastropods,0,0,10,1,11
+Gelatinous or colonial marine life,0,0,1,3,4
+Giraffes and relatives,0,0,2,0,2
+Grasshoppers and relatives,0,2,1,0,3
+Groupers and snappers,0,0,3,0,3
+Herons and wetland birds,0,0,6,1,7
+Hippopotamuses,0,0,1,0,1
+Horses and relatives,0,1,5,0,6
+Hummingbirds and nectar birds,0,0,1,0,1
+Hyenas and relatives,0,2,0,0,2
+Ice and cave insects,0,3,21,2,26
+Insect-eating and burrowing mammals,0,1,2,0,3
+Insects,0,2,9,4,15
+Kingfishers and relatives,0,0,1,0,1
+Lagomorphs,0,0,2,0,2
+Large lizards,0,1,4,0,5
+Lizards,0,0,4,0,4
+Marine mammals,0,6,10,2,18
+Marsupials,0,2,4,1,7
+Mayflies and stoneflies,0,0,2,0,2
+Medium and small lizards,0,0,6,0,6
+Mosquitoes and midges,0,2,0,0,2
+Newts,0,0,1,0,1
+Ocean predators,0,0,6,0,6
+Other birds,0,2,2,0,4
+Other distinctive birds,0,0,6,0,6
+Other mollusks,0,0,14,0,14
+Other or uncertain,1,4,31,2,38
+Other snakes,0,0,9,0,9
+Owls,0,0,1,0,1
+Parrots,0,2,1,0,3
+Pelicans and diving waterbirds,0,0,5,0,5
+Perch-like freshwater fish,0,0,4,0,4
+Permanently aquatic amphibians,0,0,2,0,2
+Pigeons,0,0,2,0,2
+Pigs and relatives,0,0,4,0,4
+Pike-like fish,0,0,1,0,1
+Predatory tropical freshwater fish,0,0,2,0,2
+Primates,0,0,16,0,16
+Primitive fish,0,1,4,2,7
+Puffer-like fish,0,0,2,0,2
+Rabbits and relatives,0,0,4,0,4
+Raccoon-like mammals,0,2,2,0,4
+Raptors and owls,0,1,2,0,3
+Rays,0,0,1,0,1
+Rays and skates,0,0,3,0,3
+Reef fish,0,1,13,0,14
+Rodents,0,1,20,0,21
+Salamanders,0,1,3,0,4
+Salmon-like fish,0,0,5,0,5
+Schooling ocean fish,0,0,4,0,4
+Seabirds,0,1,9,0,10
+Seahorses and relatives,0,0,2,0,2
+Sessile marine life,0,0,4,0,4
+Sharks,0,3,5,1,9
+Sheep and goats,0,3,2,0,5
+Shorebirds,0,0,7,0,7
+Small and domestic cats,0,3,0,0,3
+Snakes,0,0,3,0,3
+Songbirds,0,0,9,0,9
+Specialized lizards,0,1,4,0,5
+Stick and leaf insects,0,0,1,0,1
+Strange deep-sea fish,0,2,4,3,9
+Surface and aquarium fish,0,0,1,0,1
+Tropical display birds,0,0,2,0,2
+True bugs,0,3,1,0,4
+Turtles,0,0,1,0,1
+Turtles and tortoises,0,3,3,0,6
+Unusual African mammals,0,1,0,0,1
+Venomous snakes,0,0,5,0,5
+Waterfowl,0,0,4,0,4
+Weasels and relatives,0,0,9,0,9
+Woodpeckers,0,1,0,0,1
+Worm-like animals,0,0,5,0,5

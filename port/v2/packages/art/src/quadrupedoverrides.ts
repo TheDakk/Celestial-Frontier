@@ -18,7 +18,7 @@
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { type Form } from './surface.js';
 import { alienEyes, alienSkin, alienGlow, alienSail, alienArmor, type AlienTraits } from './alientraits.js';
-import { Tube, mammalProfile, pathThrough, spline } from './torso.js';
+import { Tube, pathThrough, spline } from './torso.js';
 import { countershade, coatSpots, coatRosettes, coatBars, coatPatches, coatBlotches, coatBrindle, coatShaggy, shaggyRim, coatBlocks } from './skin.js';
 
 type G = Record<string, unknown>;
@@ -282,13 +282,36 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   const muscleF = spec.muscle ?? famV(FAM0.muscle, c01(0.32 + legRatio * 0.28 + (1 - slim) * 0.24));
   const chestF = spec.chest ?? famV(FAM0.chest, c01(0.28 + (1 - legRatio) * 0.34 + slim * 0.22));
   const rumpF = spec.rump ?? famV(FAM0.rump, c01(0.32 + (1 - legRatio) * 0.30));
-  const prof = mammalProfile({ waist: waistF, muscle: muscleF, chest: chestF, rump: rumpF });
+  /* ★ WAVE 7 — THE MASS GOES UP, NOT DOWN. Waves 4–6 built the torso as a
+     radius profile hung under a fixed BACK LINE, so every bulge of shoulder or
+     haunch muscle pushed the BELLY down by twice as much as it raised the back.
+     On a slim pale animal that showed as two grey spheres hanging below the
+     gut — Nick's audit called them exactly that, and it cost the Gerenuk, an
+     asset his strict re-audit had approved as leave-alone.
+     It was backwards. On a standing animal the belly is the STEADY line (all
+     four feet are on the ground and the gut hangs where it hangs); the BACK is
+     what rises over the croup and the withers. So the two outlines are authored
+     directly — a near-level ventral line with a brisket and a waist tuck, and
+     the species' own back profile lifted by its muscle — and the radius is
+     derived from the gap between them instead of imposing it. */
   const rjit = nvq(0x2B, 0.03);
-  const RAD = (u: number): number => bodyH * 0.52 * prof(u) * rjit;
+  const gauss = (u: number, c0: number, w: number): number => Math.exp(-(((u - c0) / w) ** 2));
+  const ventral = (u: number): number => cy + bodyH * (
+    0.54
+    + 0.15 * chestF * gauss(u, 0.74, 0.17)      /* the brisket hangs lowest */
+    - 0.24 * waistF * gauss(u, 0.45, 0.18)      /* and the flank tucks up */
+    - 0.30 * gauss(u, 0.00, 0.16)               /* closing at the tail root */
+    - 0.34 * gauss(u, 1.00, 0.15));             /* and at the base of the neck */
+  const dorsal = (u: number): number => topY(u)
+    - bodyH * 0.22 * (rumpF * 0.66 + muscleF * 0.48) * gauss(u, 0.17, 0.14)   /* the croup */
+    - bodyH * 0.17 * muscleF * gauss(u, 0.86, 0.13)                           /* the withers */
+    + bodyH * 0.26 * gauss(u, 0.00, 0.15)
+    + bodyH * 0.30 * gauss(u, 1.00, 0.14);
+  const RAD = (u: number): number => Math.max(bodyH * 0.05, ((ventral(u) - dorsal(u)) / 2) * rjit);
   /* the axis is INSET by the end caps, so the animal's overall length is still
      the 2·bodyW its spec asked for — a dome on the rump adds body, not frame */
   const axA = cx - bodyW + RAD(0) * 0.80, axB = cx + bodyW - RAD(1) * 0.80;
-  const AX = (u: number): [number, number] => [axA + (axB - axA) * u, topY(u) + RAD(u)];
+  const AX = (u: number): [number, number] => [axA + (axB - axA) * u, (ventral(u) + dorsal(u)) / 2];
   const body = new Tube({ P: AX, R: RAD });
 
   c.fillStyle = 'rgba(0,0,0,0.5)';
@@ -1093,7 +1116,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Camel': { legs: 0.1846, depth: 0.1629, len: 0.1804, neck: 0.20, back: 'level', muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#c8a173', family: 'camelid' },
   'Bactrian Camel': { legs: 0.176, depth: 0.1667, len: 0.1914, neck: 0.19, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 2, hue: '#b08a5e', family: 'camelid' },
   'Dromedary Camel': { legs: 0.1935, depth: 0.159, len: 0.176, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777', family: 'camelid' },
-  'Giraffe': { legs: 0.2438, depth: 0.1573, len: 0.1652, neck: 0.34, back: 'sloped', muzzle: 0.40, ears: 'large', tail: 'tuft', coat: 'patches', horn: 'ossicone', hue: '#e0c07a' },
+  'Giraffe': { legs: 0.2438, depth: 0.1573, len: 0.1652, neck: 0.34, back: 'sloped', muzzle: 0.40, ears: 'large', tail: 'tuft', coat: 'patches', horn: 'ossicone', hue: '#e0c07a' , family: 'cervid' },
   'Llama': { legs: 0.1938, depth: 0.1434, len: 0.1506, neck: 0.20, muzzle: 0.35, ears: 'large', tail: 'stub', hue: '#d8cbb4', family: 'camelid' },
   'Alpaca': { legs: 0.1594, depth: 0.1448, len: 0.152, neck: 0.18, muzzle: 0.30, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#ddd2bd', family: 'camelid' },
   /* antlered + horned */
@@ -1131,5 +1154,5 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Horse': { legs: 0.1964, depth: 0.1524, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'plume', hue: '#8a5a35', family: 'equid' },
   'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e', family: 'suid' },
   'Warthog': { legs: 0.1087, depth: 0.1405, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', hue: '#6b5647', family: 'suid' },
-  'Tapir': { legs: 0.1099, depth: 0.1542, len: 0.2276, neck: 0.05, muzzle: 0.48, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#4a4348', family: 'pachyderm' },
+  'Tapir': { legs: 0.1099, depth: 0.1542, len: 0.2276, neck: 0.05, muzzle: 0.48, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#4a4348', family: 'suid' },
 };

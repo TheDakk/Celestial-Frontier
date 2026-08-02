@@ -1,0 +1,6 @@
+category,asset_id,display_name,prior_review_band,strict_status,strict_assessment,filename
+fauna,Blobfish,Blobfish,PASS,FAIL,Current red oval fish does not preserve the blobfish’s distinctive soft head/face and deep-bodied proportions. Rebuild the head and body rather than relying on color.,Blobfish.png
+fauna,Cuttlefish,Cuttlefish,PASS,FAIL,"Current bell/jelly-like body is not a cuttlefish. Use a broad oval mantle, continuous lateral fin skirt, visible cephalopod head, eight arms, and two feeding tentacles.",Cuttlefish.png
+fauna,Fennec_Fox,Fennec Fox,PASS,FAIL,"Current rabbit/deer-like quadruped is not a fox body. Use a small canine torso, canine paws/hocks, tapered muzzle, huge ears, and a full bushy tail.",Fennec_Fox.png
+fauna,Secretary_Bird,Secretary Bird,PASS,FAIL,"Current elegant wader/peacock-like bird misses the raptor body. Use a raptor head and hooked bill, long powerful legs, crest quills, compact wings, and long tail.",Secretary_Bird.png
+flora,Banana,Banana,PASS,FAIL,"Current palm-like trunk/crown does not match a banana plant. Use a giant herb with overlapping pseudostem, very broad torn leaves, and a hanging banana bunch with terminal flower.",Banana.png
