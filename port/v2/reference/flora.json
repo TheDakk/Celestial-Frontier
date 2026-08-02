@@ -1,0 +1,4429 @@
+[
+ {
+  "name": "Banana",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "huge paddle blades spiralling from a single false stem, tearing into ribs along the midrib",
+  "leafColour": "bright mid green",
+  "harvest": "a hanging hand of yellow-green fingers below a purple bud",
+  "mustRead": [
+   "smooth green false trunk of rolled leaf sheaths",
+   "torn paddle leaves",
+   "hanging bunch tipped with a purple-red bud"
+  ],
+  "note": "not a tree - no woody trunk, no branches; the bunch hangs downward from a single arching stalk"
+ },
+ {
+  "name": "Plantain",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "huge paddle blades from a false stem, wind-torn into ribs",
+  "leafColour": "mid green with reddish midrib tint",
+  "harvest": "a hanging bunch of large angular green fingers",
+  "mustRead": [
+   "green false trunk",
+   "torn paddle leaves",
+   "heavy hanging bunch of straight green fingers"
+  ],
+  "note": "same plant architecture as banana; the fruit is larger, straighter, more angular and stays green"
+ },
+ {
+  "name": "Papaya",
+  "form": "tree",
+  "aspect": 0.55,
+  "leaf": "very large deeply lobed palmate blades on long hollow stalks, all crowded at the crown",
+  "leafColour": "mid green",
+  "harvest": "clustered green-to-orange melons packed against the trunk",
+  "mustRead": [
+   "single slim unbranched grey trunk scarred with leaf rings",
+   "umbrella crown of lobed leaves",
+   "fruit clustered directly on the trunk under the crown"
+  ],
+  "note": "the fruit grows on the trunk under the leaves, never out on branches - the plant has no branches"
+ },
+ {
+  "name": "Mango",
+  "form": "tree",
+  "aspect": 1.1,
+  "leaf": "long lance-shaped leathery leaves, alternate, drooping in dense whorls",
+  "leafColour": "dark glossy green with red-bronze new growth",
+  "harvest": "kidney-shaped fruit on long thin stalks, green flushed red-yellow",
+  "mustRead": [
+   "dense dome of dark drooping lance leaves",
+   "fruit dangling on long wiry stalks"
+  ]
+ },
+ {
+  "name": "Guava",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "opposite oval leaves with strongly sunken parallel veins, slightly rough",
+  "leafColour": "dull mid green",
+  "harvest": "round pale yellow-green fruit with a dried crown at the tip",
+  "mustRead": [
+   "smooth flaking copper-and-green mottled bark",
+   "opposite ribbed oval leaves",
+   "round fruit with a papery calyx crown"
+  ]
+ },
+ {
+  "name": "Avocado",
+  "form": "tree",
+  "aspect": 0.9,
+  "leaf": "large elliptic leathery leaves, alternate, drooping",
+  "leafColour": "dark green above, paler beneath",
+  "harvest": "pear-shaped dark green pebbled fruit hanging singly or in twos",
+  "mustRead": [
+   "tall spreading crown of dark drooping leaves",
+   "heavy pear-shaped fruit on short stout stalks"
+  ]
+ },
+ {
+  "name": "Cacao",
+  "form": "tree",
+  "aspect": 0.85,
+  "leaf": "very large drooping oblong leaves, alternate, pink-bronze when young",
+  "leafColour": "dark green with bronze new flushes",
+  "harvest": "a ridged melon-sized pod, yellow to deep red, held on the trunk",
+  "mustRead": [
+   "ribbed rugby-ball pods growing straight out of the bare trunk and thick limbs",
+   "big limp drooping leaves"
+  ],
+  "note": "cauliflorous - pods and the tiny pale flowers erupt from the trunk bark, never among the leaves"
+ },
+ {
+  "name": "Coffee",
+  "form": "shrub",
+  "aspect": 0.6,
+  "leaf": "opposite glossy oval leaves with wavy margins, in flat horizontal sprays",
+  "leafColour": "dark glossy green",
+  "harvest": "tight clusters of red cherries pressed along the branch",
+  "mustRead": [
+   "tiered horizontal branch layers",
+   "opposite waxy wavy-edged leaves",
+   "red berries clustered in the leaf axils"
+  ]
+ },
+ {
+  "name": "Vanilla Orchid",
+  "form": "vine",
+  "aspect": 1.6,
+  "leaf": "thick fleshy flat oblong leaves alternating along a green succulent stem",
+  "leafColour": "mid green, fleshy and matt",
+  "harvest": "a hanging cluster of long slender green pods",
+  "mustRead": [
+   "thick green rope-like stem with aerial roots gripping bark",
+   "flat fleshy leaves alternating left and right",
+   "pale greenish-yellow orchid flower"
+  ],
+  "note": "the pod is green on the plant - the black wrinkled vanilla bean is a cured product, not a living state"
+ },
+ {
+  "name": "Black Pepper",
+  "form": "climber",
+  "aspect": 0.7,
+  "leaf": "broad heart-shaped leaves with curved parallel veins, alternate",
+  "leafColour": "dark glossy green",
+  "harvest": "a slim hanging spike strung with green-to-red round peppercorns",
+  "mustRead": [
+   "woody stem clinging to a support with root pads",
+   "heart-shaped ribbed leaves",
+   "drooping catkin-like strings of berries"
+  ]
+ },
+ {
+  "name": "Ginger",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "narrow strap leaves in two ranks up slender reed-like stems",
+  "leafColour": "mid green",
+  "harvest": "a knobbed pale yellow-buff rhizome at soil level",
+  "mustRead": [
+   "clump of reedy leafy canes",
+   "two-ranked narrow strap leaves",
+   "fat fingered rhizome exposed at the base"
+  ]
+ },
+ {
+  "name": "Turmeric",
+  "form": "herb",
+  "aspect": 0.8,
+  "leaf": "large broad lance blades on long sheathing stalks, rising in a fan from the ground",
+  "leafColour": "fresh mid green",
+  "harvest": "a knobby rhizome with vivid orange flesh",
+  "mustRead": [
+   "fountain of broad upright ribbed leaves from ground level",
+   "cone of pale green-and-pink bracts at the base",
+   "orange-fleshed rhizome"
+  ]
+ },
+ {
+  "name": "Cardamom",
+  "form": "herb",
+  "aspect": 0.8,
+  "leaf": "long lance leaves in two ranks on tall arching canes",
+  "leafColour": "mid to dark green",
+  "harvest": "small three-sided pale green pods on a creeping stalk at ground level",
+  "mustRead": [
+   "tall arching leafy canes from a clump",
+   "a separate low flowering shoot snaking along the ground",
+   "pods at the base, not in the canopy"
+  ],
+  "note": "the flower and pod spike runs along the soil away from the leafy canes, not up among the leaves"
+ },
+ {
+  "name": "Cinnamon",
+  "form": "tree",
+  "aspect": 0.9,
+  "leaf": "opposite leathery oval leaves with three strong veins running the full length",
+  "leafColour": "dark green, new leaves bright red",
+  "harvest": "curled strips of inner bark peeled from a cut stem",
+  "mustRead": [
+   "three-veined opposite leaves",
+   "flushes of scarlet young foliage",
+   "peeling pale inner bark on the stems"
+  ]
+ },
+ {
+  "name": "Clove",
+  "form": "tree",
+  "aspect": 0.6,
+  "leaf": "opposite glossy lance leaves, aromatic, bronze when young",
+  "leafColour": "dark glossy green",
+  "harvest": "clusters of nail-shaped pink-red flower buds at the branch tips",
+  "mustRead": [
+   "narrow conical evergreen crown",
+   "opposite glossy lance leaves",
+   "terminal sprays of unopened nail-shaped buds"
+  ],
+  "note": "the spice is the unopened flower bud, not a fruit or seed"
+ },
+ {
+  "name": "Nutmeg",
+  "form": "tree",
+  "aspect": 0.7,
+  "leaf": "alternate glossy elliptic leaves, dark above and greyish beneath",
+  "leafColour": "dark glossy green",
+  "harvest": "a yellow apricot-like fruit split open to show scarlet lacy mace over a brown seed",
+  "mustRead": [
+   "dense conical dark crown",
+   "pale yellow fruit splitting in half",
+   "scarlet net of mace wrapping the brown nut"
+  ]
+ },
+ {
+  "name": "Passionfruit",
+  "form": "vine",
+  "aspect": 1.8,
+  "leaf": "deeply three-lobed leaves, alternate, with coiled tendrils at the leaf base",
+  "leafColour": "dark glossy green",
+  "harvest": "round purple or yellow fruit hanging among the leaves",
+  "mustRead": [
+   "curling wire tendrils",
+   "three-lobed glossy leaves",
+   "the fringed corona flower with radiating filaments"
+  ]
+ },
+ {
+  "name": "Starfruit",
+  "form": "tree",
+  "aspect": 0.9,
+  "leaf": "pinnate leaves of 5-11 small oval leaflets that fold at night",
+  "leafColour": "mid green",
+  "harvest": "waxy yellow five-ribbed fruit hanging from trunk and branches",
+  "mustRead": [
+   "fruit with five sharp longitudinal wings",
+   "ferny pinnate foliage",
+   "small lilac-pink flower clusters on old wood"
+  ]
+ },
+ {
+  "name": "Pineapple",
+  "form": "rosette",
+  "aspect": 1,
+  "leaf": "long stiff sword leaves with spiny margins, arching out in a dense ground rosette",
+  "leafColour": "grey-green, often red-flushed at the edges",
+  "harvest": "a single scaly fruit held upright on a stout stalk in the centre",
+  "mustRead": [
+   "ground-level rosette of spiny sword leaves",
+   "one fruit rising from the middle",
+   "a leafy tuft crowning the fruit"
+  ],
+  "note": "the fruit sits low in the middle of the rosette, barely above the leaves - it does not grow on a tree or vine"
+ },
+ {
+  "name": "Brazil Nut",
+  "form": "tree",
+  "aspect": 0.7,
+  "leaf": "large oblong leathery leaves, alternate, in tufts at branch ends",
+  "leafColour": "mid to dark green",
+  "harvest": "a heavy woody cannonball capsule with a small hole at one end",
+  "mustRead": [
+   "immensely tall straight bare trunk",
+   "flat crown of branches only at the very top",
+   "round woody cannonball pods"
+  ],
+  "note": "an emergent giant - the crown sits far above surrounding canopy on a clean unbranched bole"
+ },
+ {
+  "name": "Cashew",
+  "form": "tree",
+  "aspect": 1.3,
+  "leaf": "alternate blunt-tipped oval leathery leaves with visible parallel veins",
+  "leafColour": "mid green, reddish when young",
+  "harvest": "a swollen red-yellow fleshy apple with a grey kidney-shaped nut hanging beneath it",
+  "mustRead": [
+   "low wide spreading crown",
+   "pear-shaped fleshy false fruit",
+   "the curved grey nut hanging outside and below the fruit"
+  ],
+  "note": "the nut hangs on the outside at the bottom of the fleshy apple, not inside it"
+ },
+ {
+  "name": "Coconut",
+  "form": "palm",
+  "aspect": 0.55,
+  "leaf": "huge pinnate fronds, leaflets in a single plane, arching and drooping",
+  "leafColour": "mid green with yellow-green midribs",
+  "harvest": "a cluster of large green-to-brown husked nuts at the crown base",
+  "mustRead": [
+   "leaning ringed grey trunk",
+   "crown of arching feather fronds",
+   "nut clusters wedged where the fronds meet the trunk"
+  ]
+ },
+ {
+  "name": "Acai",
+  "form": "palm",
+  "aspect": 0.4,
+  "leaf": "long finely divided feather fronds, drooping in a loose crown",
+  "leafColour": "mid green",
+  "harvest": "drooping brooms of small round near-black purple berries",
+  "mustRead": [
+   "very slender ringed grey stems in a clump",
+   "small drooping feather crown",
+   "hanging broom-like sprays of dark berries below the leaves"
+  ],
+  "note": "grows as a multi-stemmed clump of thin stilt-rooted trunks, not a single thick palm"
+ },
+ {
+  "name": "Soursop",
+  "form": "tree",
+  "aspect": 0.8,
+  "leaf": "alternate glossy oblong leathery leaves, strongly aromatic",
+  "leafColour": "dark glossy green",
+  "harvest": "a large heart-shaped green fruit covered in soft curved spines",
+  "mustRead": [
+   "heavy spiny heart-shaped green fruit hanging from trunk or thick branches",
+   "small open crown of glossy leaves"
+  ]
+ },
+ {
+  "name": "Rambutan",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "pinnate leaves with 2-4 pairs of leathery oval leaflets",
+  "leafColour": "dark green",
+  "harvest": "clusters of red oval fruit covered in soft green-tipped hairs",
+  "mustRead": [
+   "dense dark rounded crown",
+   "tight bunches of hairy red fruit"
+  ]
+ },
+ {
+  "name": "Lychee",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "pinnate leaves of 2-4 pairs of narrow pointed leaflets, drooping",
+  "leafColour": "dark glossy green above, grey-green beneath",
+  "harvest": "loose sprays of round pink-red fruit with a pebbled rind",
+  "mustRead": [
+   "dense rounded dark crown",
+   "drooping sprays of bumpy strawberry-red fruit"
+  ]
+ },
+ {
+  "name": "Durian",
+  "form": "tree",
+  "aspect": 0.6,
+  "leaf": "alternate oblong leaves, dark above and coppery-scaly beneath",
+  "leafColour": "dark green above, bronze-gold underside",
+  "harvest": "a large oval fruit armoured in hard pyramid spines, hanging on a thick stalk",
+  "mustRead": [
+   "tall straight trunk with a high open crown",
+   "heavy fruit sheathed in sharp pyramidal spikes hanging from major branches"
+  ],
+  "note": "leaf undersides flash coppery-bronze, which reads strongly when the wind lifts the canopy"
+ },
+ {
+  "name": "Jackfruit",
+  "form": "tree",
+  "aspect": 0.8,
+  "leaf": "large alternate leathery oval leaves, glossy, in a dense crown",
+  "leafColour": "dark glossy green",
+  "harvest": "an enormous knobbly green barrel-shaped fruit on the trunk",
+  "mustRead": [
+   "huge bumpy oblong fruit hanging directly off the trunk and heavy limbs",
+   "dense dark glossy crown",
+   "milky sap at cut points"
+  ],
+  "note": "cauliflorous - the fruit is far too heavy for twigs and always sits on trunk or main limbs"
+ },
+ {
+  "name": "Breadfruit",
+  "form": "tree",
+  "aspect": 0.9,
+  "leaf": "very large deeply lobed leaves, glossy and stiff, alternate",
+  "leafColour": "dark glossy green",
+  "harvest": "round green fruit with a fine pebbled skin, on short stalks at the branch ends",
+  "mustRead": [
+   "big deeply cut lobed leaves like a hand",
+   "round green pebble-skinned fruit at the twig tips"
+  ]
+ },
+ {
+  "name": "Wild Taro",
+  "form": "herb",
+  "aspect": 1,
+  "leaf": "huge arrowhead leaves held peltate on long upright stalks, water beading on them",
+  "leafColour": "mid green, often with a purple stalk",
+  "harvest": "a brown fibrous corm dug from the base",
+  "mustRead": [
+   "big downward-pointing arrowhead leaves on long erect stalks",
+   "clumping straight from the ground with no stem"
+  ]
+ },
+ {
+  "name": "Rainforest Nettle",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "very large heart-shaped leaves with toothed margins, covered in fine stinging hairs",
+  "leafColour": "pale mid green, felted underneath",
+  "harvest": "small clusters of pale fleshy fruit in the leaf axils",
+  "mustRead": [
+   "oversized heart-shaped leaves",
+   "a visible haze of stinging hairs on stems and leaf veins"
+  ],
+  "note": "interpreted as a stinging tree (Dendrocnide) - a soft-wooded understorey shrub with giant leaves, not a small herb nettle"
+ },
+ {
+  "name": "Rafflesia",
+  "form": "parasite",
+  "aspect": 1.5,
+  "leaf": "none - no leaves, stems or roots at all",
+  "leafColour": "none",
+  "harvest": "the single giant flower itself",
+  "mustRead": [
+   "one huge five-lobed russet-red flower flat on the forest floor",
+   "cream warty spots across the petals",
+   "a deep central pit ringed with spikes"
+  ],
+  "note": "has no foliage whatsoever - it must be drawn as a lone flower erupting from a host vine on the ground"
+ },
+ {
+  "name": "Tamarind",
+  "form": "tree",
+  "aspect": 1.2,
+  "leaf": "pinnate leaves of many small paired oblong leaflets, feathery",
+  "leafColour": "bright mid green",
+  "harvest": "curved brown knobbly pods hanging in clusters",
+  "mustRead": [
+   "broad billowing dome of fine feathery foliage",
+   "hanging cinnamon-brown crooked pods"
+  ]
+ },
+ {
+  "name": "Indian Gooseberry",
+  "form": "tree",
+  "aspect": 0.9,
+  "leaf": "tiny narrow leaflets set closely along slender twigs, giving a feathery look",
+  "leafColour": "light mid green",
+  "harvest": "round pale translucent green fruit with faint vertical ridges, pressed along the branch",
+  "mustRead": [
+   "fine feathery pinnate-looking sprays on drooping twigs",
+   "pale green globes sitting almost stalkless on the branches"
+  ]
+ },
+ {
+  "name": "Jujube",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "small glossy oval leaves with three strong veins, alternate in two ranks, with spines at the nodes",
+  "leafColour": "glossy mid green",
+  "harvest": "oval fruit ripening green to red-brown, like a small date",
+  "mustRead": [
+   "zigzag thorny twigs",
+   "three-veined small glossy leaves",
+   "reddish-brown wrinkling fruit"
+  ]
+ },
+ {
+  "name": "Wild Mango",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "long leathery lance leaves, alternate, drooping in whorls",
+  "leafColour": "dark green with bronze flushes",
+  "harvest": "smaller rounder green-yellow fruit with fibrous flesh",
+  "mustRead": [
+   "tall dense dark crown",
+   "fruit dangling on long stalks"
+  ],
+  "note": "interpreted as a wild forest Mangifera - taller and narrower than an orchard mango with smaller rounder fruit"
+ },
+ {
+  "name": "Bamboo Shoots",
+  "form": "grass",
+  "aspect": 0.5,
+  "leaf": "narrow lance leaves in sprays on the upper branches only",
+  "leafColour": "mid green",
+  "harvest": "a fat pointed cone-shaped shoot pushing up from the ground, sheathed in brown hairy scales",
+  "mustRead": [
+   "tall hollow jointed culms with clear ringed nodes",
+   "leafy sprays only near the top",
+   "pointed brown-sheathed shoots at the base of the clump"
+  ],
+  "note": "interpreted as a clumping bamboo drawn whole; the harvest shoot is the ground-level cone, not the tall culm"
+ },
+ {
+  "name": "Curry Leaf",
+  "form": "shrub",
+  "aspect": 0.7,
+  "leaf": "pinnate leaves of 11-21 small pointed leaflets, alternate",
+  "leafColour": "glossy mid to dark green",
+  "harvest": "clusters of small shiny black berries after white flowers",
+  "mustRead": [
+   "slender open shrub with feathery pinnate sprays",
+   "small glossy pointed leaflets",
+   "flat heads of tiny white flowers"
+  ]
+ },
+ {
+  "name": "Holy Basil",
+  "form": "herb",
+  "aspect": 0.8,
+  "leaf": "opposite oval toothed leaves, softly hairy, on square stems",
+  "leafColour": "mid green, often purple-flushed",
+  "harvest": "slender upright spikes of tiny purple-pink flowers in whorls",
+  "mustRead": [
+   "square hairy stems, often purple",
+   "opposite toothed leaves",
+   "tiered whorls of tiny flowers on an upright spike"
+  ]
+ },
+ {
+  "name": "Sesame",
+  "form": "herb",
+  "aspect": 0.4,
+  "leaf": "opposite lance leaves low down, narrower and alternate up the stem",
+  "leafColour": "mid green",
+  "harvest": "upright oblong capsules along the stem that split open to spill flat seeds",
+  "mustRead": [
+   "single upright stem",
+   "tubular white-pink foxglove-like flowers in the leaf axils",
+   "ribbed upright seed capsules held tight to the stem"
+  ]
+ },
+ {
+  "name": "Pigeon Pea",
+  "form": "shrub",
+  "aspect": 0.7,
+  "leaf": "trifoliate leaves of three narrow lance leaflets, alternate, silvery beneath",
+  "leafColour": "grey-green, paler and downy underneath",
+  "harvest": "flat hairy pods with visible bumps, held in clusters",
+  "mustRead": [
+   "upright woody stems with three-part leaves",
+   "yellow pea flowers streaked red-brown",
+   "flattened bumpy pods"
+  ]
+ },
+ {
+  "name": "Wild Yam",
+  "form": "vine",
+  "aspect": 1.4,
+  "leaf": "heart-shaped leaves with strongly curved veins, twining stems",
+  "leafColour": "mid green",
+  "harvest": "a large rough brown tuber lifted from the soil",
+  "mustRead": [
+   "thin twining stem spiralling up a support",
+   "heart-shaped leaves with arcing veins",
+   "a big knobbly brown tuber at the base"
+  ]
+ },
+ {
+  "name": "Neem",
+  "form": "tree",
+  "aspect": 1.1,
+  "leaf": "pinnate leaves of curved sickle-shaped toothed leaflets, drooping",
+  "leafColour": "mid green, glossy",
+  "harvest": "small oval olive-like fruit ripening green to yellow",
+  "mustRead": [
+   "broad rounded shady crown",
+   "sickle-curved toothed leaflets in drooping pinnate sprays",
+   "loose sprays of small white flowers"
+  ]
+ },
+ {
+  "name": "Baobab",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "palmate leaves of 5-7 leaflets, sparse, absent for much of the year",
+  "leafColour": "mid green",
+  "harvest": "a large hanging velvety grey-brown gourd on a long cord",
+  "mustRead": [
+   "enormously swollen smooth grey barrel trunk",
+   "short stubby root-like branches at the top",
+   "hard velvety pods dangling on long stalks"
+  ],
+  "note": "leafless for most of the dry season - the bare 'upside-down tree' silhouette is the recognisable state"
+ },
+ {
+  "name": "Acacia",
+  "form": "tree",
+  "aspect": 1.6,
+  "leaf": "twice-pinnate leaves of many tiny leaflets, giving a fine feathery texture",
+  "leafColour": "grey-green to mid green",
+  "harvest": "flat or curled brown seed pods, and puffball cream flowers",
+  "mustRead": [
+   "flat-topped umbrella crown on a bare trunk",
+   "paired white thorns at the nodes",
+   "very fine feathery foliage in horizontal layers"
+  ],
+  "note": "interpreted as an African savanna umbrella thorn; Australian wattles instead have flat undivided phyllodes and golden pom-pom flowers"
+ },
+ {
+  "name": "Marula",
+  "form": "tree",
+  "aspect": 1.2,
+  "leaf": "pinnate leaves clustered at the twig tips, leaflets oval and pointed",
+  "leafColour": "mid green",
+  "harvest": "round yellow plum-sized fruit, often shown fallen in heaps beneath",
+  "mustRead": [
+   "broad rounded spreading crown",
+   "mottled grey flaking bark",
+   "yellow fruit littering the ground under the tree"
+  ]
+ },
+ {
+  "name": "Wild Fig",
+  "form": "tree",
+  "aspect": 1.4,
+  "leaf": "alternate leathery oval leaves with a short drip tip",
+  "leafColour": "dark glossy green",
+  "harvest": "small round figs clustered directly on trunk and branches, green to red",
+  "mustRead": [
+   "massive spreading crown on buttressed pale trunk",
+   "hanging aerial roots",
+   "figs studding the bark of trunk and limbs"
+  ],
+  "note": "interpreted as a strangler fig; figs sit on the wood, not at twig tips, and the trunk is often a fused lattice of roots"
+ },
+ {
+  "name": "Date Plum",
+  "form": "tree",
+  "aspect": 0.8,
+  "leaf": "alternate oblong leaves, glossy above and pale beneath",
+  "leafColour": "dark green above, grey-green underneath",
+  "harvest": "small round fruit ripening yellow then blue-black, each with a four-lobed calyx",
+  "mustRead": [
+   "upright oval crown with dark blocky bark",
+   "small persimmon-like fruit with a papery star calyx"
+  ]
+ },
+ {
+  "name": "Aloe",
+  "form": "succulent",
+  "aspect": 0.9,
+  "leaf": "thick fleshy triangular leaves with toothed edges, in a tight ground rosette",
+  "leafColour": "grey-green, often flecked and red-tinged at the edges",
+  "harvest": "a tall spike of tubular orange-red flowers",
+  "mustRead": [
+   "rosette of thick spine-edged blades curving upward",
+   "tall bare flower stalk rising well above the leaves",
+   "tubular downward-hanging flowers packed on the spike"
+  ]
+ },
+ {
+  "name": "Roselle",
+  "form": "shrub",
+  "aspect": 0.6,
+  "leaf": "deeply three- to five-lobed leaves, alternate, on red stems",
+  "leafColour": "mid green with red veins and stalks",
+  "harvest": "a swollen fleshy scarlet calyx around the seed pod",
+  "mustRead": [
+   "upright red-stemmed stalks",
+   "lobed maple-like leaves",
+   "fat waxy crimson calyces hugging the stem"
+  ],
+  "note": "the harvest is the red calyx, not the pale hibiscus flower, which is short-lived and cream with a dark eye"
+ },
+ {
+  "name": "Wild Sesame",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "large opposite broad oval leaves with coarsely toothed edges, on square stems",
+  "leafColour": "mid green, often purple-backed",
+  "harvest": "slender spikes of tiny white flowers becoming small round seeds",
+  "mustRead": [
+   "square stems",
+   "big paired toothed leaves with a crinkled surface",
+   "one-sided spikes of tiny seed capsules"
+  ],
+  "note": "interpreted as perilla, an East Asian mint-family herb - unrelated to true sesame despite the name"
+ },
+ {
+  "name": "Sorghum",
+  "form": "grass",
+  "aspect": 0.35,
+  "leaf": "long broad arching blades alternating up a stout jointed cane, with a pale midrib",
+  "leafColour": "mid green with a whitish midrib",
+  "harvest": "a dense upright head of red-brown grain at the very top",
+  "mustRead": [
+   "tall thick corn-like stem",
+   "broad arching blades with a white midrib",
+   "a heavy compact seed head crowning the stem"
+  ]
+ },
+ {
+  "name": "Castor Bean",
+  "form": "shrub",
+  "aspect": 0.8,
+  "leaf": "very large palmate leaves of 7-11 pointed toothed lobes, held peltate on long stalks",
+  "leafColour": "deep green to bronze-red",
+  "harvest": "an upright cluster of soft red spiny capsules",
+  "mustRead": [
+   "huge star-shaped lobed leaves",
+   "hollow red-tinged stems",
+   "upright spikes of bristly red seed capsules above the leaves"
+  ]
+ },
+ {
+  "name": "Oleander",
+  "form": "shrub",
+  "aspect": 0.8,
+  "leaf": "narrow leathery lance leaves in whorls of three, with a pale midrib",
+  "leafColour": "dark grey-green",
+  "harvest": "clusters of pink or white five-petalled flowers at the shoot tips",
+  "mustRead": [
+   "upright wand-like stems from the base",
+   "narrow leaves in threes",
+   "dense terminal heads of pink pinwheel flowers"
+  ]
+ },
+ {
+  "name": "Tea",
+  "form": "shrub",
+  "aspect": 0.9,
+  "leaf": "alternate glossy elliptic leaves with fine serrated edges and a blunt tip",
+  "leafColour": "dark glossy green with pale bright new shoots",
+  "harvest": "the bud and top two young pale leaves of each shoot",
+  "mustRead": [
+   "dense twiggy rounded bush",
+   "serrated glossy leaves",
+   "nodding white flowers with a boss of yellow stamens"
+  ]
+ },
+ {
+  "name": "Tree Tomato",
+  "form": "tree",
+  "aspect": 0.8,
+  "leaf": "very large soft heart-shaped leaves, alternate, musky-smelling",
+  "leafColour": "mid green, felted underneath",
+  "harvest": "hanging clusters of smooth egg-shaped red-orange fruit",
+  "mustRead": [
+   "short brittle trunk branching into a few thick limbs",
+   "big soft heart-shaped leaves",
+   "long-stalked pendant egg-shaped fruit"
+  ]
+ },
+ {
+  "name": "Mountain Papaya",
+  "form": "tree",
+  "aspect": 0.6,
+  "leaf": "deeply lobed palmate leaves on long stalks crowded at the top",
+  "leafColour": "mid green",
+  "harvest": "small five-angled yellow fruit clustered on the stem",
+  "mustRead": [
+   "slim scarred trunk with a small tuft crown",
+   "small ribbed yellow fruit hugging the stem"
+  ],
+  "note": "smaller and shrubbier than common papaya, and the fruit is distinctly five-angled rather than round"
+ },
+ {
+  "name": "Wild Blueberry",
+  "form": "shrub",
+  "aspect": 1.4,
+  "leaf": "small oval alternate leaves on fine twiggy green-red stems",
+  "leafColour": "mid green turning scarlet in autumn",
+  "harvest": "small blue-black berries with a pale bloom and a five-point crown",
+  "mustRead": [
+   "low sprawling twiggy mat well under knee height",
+   "tiny leaves on wiry stems",
+   "clusters of dusty blue berries"
+  ],
+  "note": "interpreted as lowbush blueberry - a ground-hugging mat, not an upright bush"
+ },
+ {
+  "name": "Blackberry",
+  "form": "shrub",
+  "aspect": 1.6,
+  "leaf": "palmate leaves of 3-5 toothed leaflets, alternate, pale beneath",
+  "leafColour": "dark green above, greyish underneath",
+  "harvest": "clusters of glossy black knobbly berries with red unripe ones alongside",
+  "mustRead": [
+   "long arching thorny canes rooting where they touch down",
+   "hooked prickles along the stems",
+   "clustered drupelet berries at mixed ripeness"
+  ]
+ },
+ {
+  "name": "Tree Fern Shoots",
+  "form": "fern",
+  "aspect": 0.8,
+  "leaf": "enormous twice- to thrice-divided fronds arching out from the top of a fibrous trunk",
+  "leafColour": "mid green, paler beneath",
+  "harvest": "a tightly coiled unfurling fiddlehead at the crown, wrapped in brown scales",
+  "mustRead": [
+   "fibrous brown trunk of matted old frond bases",
+   "umbrella of huge lacy fronds",
+   "coiled croziers at the centre of the crown"
+  ],
+  "note": "interpreted as a tree fern drawn whole; the shoot harvest is the coiled crozier at the crown"
+ },
+ {
+  "name": "Mountain Mint",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "narrow opposite lance leaves on square stems, whitened near the flower heads",
+  "leafColour": "mid green with a whitish dusting on the upper leaves",
+  "harvest": "flat-topped clusters of small white flowers speckled purple",
+  "mustRead": [
+   "square branching stems",
+   "flat domed clusters of tiny white flowers",
+   "the pale silvery bracts under each flower head"
+  ]
+ },
+ {
+  "name": "Angel's Trumpet",
+  "form": "shrub",
+  "aspect": 0.9,
+  "leaf": "large soft oval leaves with slightly wavy edges, alternate, often uneven at the base",
+  "leafColour": "mid green, softly downy",
+  "harvest": "huge pendulous trumpet flowers in white, apricot or yellow",
+  "mustRead": [
+   "big trumpets hanging straight down with flared recurved tips",
+   "coarse soft foliage on a small multi-stemmed tree"
+  ],
+  "note": "the flowers hang downward; the related Datura is a low herb with upward-facing trumpets"
+ },
+ {
+  "name": "Wild Ginger",
+  "form": "herb",
+  "aspect": 1.6,
+  "leaf": "paired glossy kidney-shaped leaves on short hairy stalks, hugging the ground",
+  "leafColour": "dark glossy green",
+  "harvest": "a small maroon-brown three-lobed flower hidden at ground level",
+  "mustRead": [
+   "low mat of paired heart-kidney leaves",
+   "the dark cup-shaped flower sitting on the soil beneath the leaves"
+  ],
+  "note": "not related to culinary ginger; the flower is easy to miss because it sits on the ground under the foliage"
+ },
+ {
+  "name": "Wild Garlic",
+  "form": "bulb",
+  "aspect": 0.9,
+  "leaf": "broad flat pointed elliptic blades rising straight from the ground",
+  "leafColour": "fresh bright green",
+  "harvest": "a rounded umbel of white star flowers, and a small white bulb below",
+  "mustRead": [
+   "broad lily-like leaves straight from the soil",
+   "a leafless three-angled stalk carrying a starburst of white flowers"
+  ],
+  "note": "interpreted as ramsons - broad flat leaves, not the narrow tubular leaves of chives or onion"
+ },
+ {
+  "name": "Mulberry",
+  "form": "tree",
+  "aspect": 1.1,
+  "leaf": "alternate toothed leaves, some heart-shaped and some irregularly lobed on the same tree",
+  "leafColour": "mid green, matt",
+  "harvest": "elongated knobbly berries ripening white to red to near-black",
+  "mustRead": [
+   "broad low spreading crown with crooked branches",
+   "leaves of mixed lobed and unlobed shape",
+   "long clustered berries staining the branch"
+  ]
+ },
+ {
+  "name": "Persimmon",
+  "form": "tree",
+  "aspect": 0.9,
+  "leaf": "large alternate oval leathery leaves turning orange-red in autumn",
+  "leafColour": "dark glossy green, blazing orange in autumn",
+  "harvest": "round-to-acorn-shaped orange fruit with a stiff four-lobed green calyx",
+  "mustRead": [
+   "dark blocky checkered bark",
+   "bright orange fruit hanging on bare branches after leaf fall",
+   "the four-lobed calyx cap on each fruit"
+  ],
+  "note": "the classic look is fruit still hanging on a completely leafless tree"
+ },
+ {
+  "name": "Chestnut",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "long lance leaves with sharply toothed saw edges, alternate",
+  "leafColour": "dark green above, paler beneath",
+  "harvest": "a spiny green burr splitting to reveal glossy brown nuts",
+  "mustRead": [
+   "long saw-toothed leaves",
+   "dense green spine-covered burrs",
+   "creamy catkin tassels in summer"
+  ]
+ },
+ {
+  "name": "Ginseng",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "a whorl of long-stalked palmate leaves, each with five toothed leaflets",
+  "leafColour": "mid green",
+  "harvest": "a pale forked man-shaped root, and a tight head of scarlet berries",
+  "mustRead": [
+   "a single stem topped by a whorl of five-fingered leaves",
+   "a small cluster of red berries in the centre of the whorl",
+   "the pale branching root"
+  ]
+ },
+ {
+  "name": "Wood Sorrel",
+  "form": "herb",
+  "aspect": 1.2,
+  "leaf": "clover-like leaves of three heart-shaped leaflets that fold down at night",
+  "leafColour": "fresh light green",
+  "harvest": "small white or pink cup flowers with fine purple veining",
+  "mustRead": [
+   "low carpet of three heart-shaped leaflets on thin stalks",
+   "delicate nodding five-petalled flowers"
+  ],
+  "note": "the leaflets are heart-shaped with a notched tip, unlike clover's rounded oval leaflets"
+ },
+ {
+  "name": "Solomon's Seal",
+  "form": "herb",
+  "aspect": 1.3,
+  "leaf": "broad ribbed oval leaves alternating along one arching unbranched stem",
+  "leafColour": "mid green with clean parallel veins",
+  "harvest": "small green-white bell flowers hanging in pairs beneath the stem, later blue-black berries",
+  "mustRead": [
+   "a single smooth arching stem",
+   "flowers dangling in a row along the underside only",
+   "leaves held out flat on one plane"
+  ]
+ },
+ {
+  "name": "Monkshood",
+  "form": "herb",
+  "aspect": 0.35,
+  "leaf": "deeply palmately cut dark leaves with narrow toothed segments",
+  "leafColour": "dark glossy green",
+  "harvest": "a tall spike of deep blue-purple hooded flowers",
+  "mustRead": [
+   "stiff upright flower spike",
+   "each flower with a helmet-like hood over the rest",
+   "finely divided dark leaves"
+  ]
+ },
+ {
+  "name": "Apple",
+  "form": "tree",
+  "aspect": 1.2,
+  "leaf": "alternate oval leaves with softly toothed edges, downy underneath",
+  "leafColour": "dull mid green, greyish beneath",
+  "harvest": "round red-green fruit hanging in small clusters",
+  "mustRead": [
+   "low wide crooked crown with a short trunk",
+   "clusters of pink-white blossom in spring",
+   "fruit hanging on short stalks"
+  ]
+ },
+ {
+  "name": "Pear",
+  "form": "tree",
+  "aspect": 0.6,
+  "leaf": "alternate glossy oval leaves on long stalks that flutter easily",
+  "leafColour": "glossy mid green, red in autumn",
+  "harvest": "tapered green-yellow fruit hanging on long stalks",
+  "mustRead": [
+   "upright narrow oval crown, taller than an apple tree",
+   "white five-petalled blossom with dark anthers",
+   "pear-tapered fruit"
+  ]
+ },
+ {
+  "name": "Wild Cherry",
+  "form": "tree",
+  "aspect": 0.8,
+  "leaf": "alternate oval toothed leaves with two small red glands at the base of the stalk",
+  "leafColour": "mid green, orange-red in autumn",
+  "harvest": "small red-black cherries in stalked clusters",
+  "mustRead": [
+   "shiny red-brown bark with horizontal lines of pores peeling in bands",
+   "clusters of white blossom on bare wood",
+   "small dark cherries on long stalks"
+  ]
+ },
+ {
+  "name": "Plum",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "alternate oval finely toothed leaves, slightly folded along the midrib",
+  "leafColour": "mid green, sometimes purple-tinged",
+  "harvest": "oval purple-blue fruit with a waxy pale bloom",
+  "mustRead": [
+   "twiggy sometimes thorny crown",
+   "white blossom appearing before the leaves",
+   "plum fruit dusted with a pale bloom"
+  ]
+ },
+ {
+  "name": "Raspberry",
+  "form": "shrub",
+  "aspect": 0.7,
+  "leaf": "pinnate leaves of 3-5 toothed leaflets, distinctly white-felted beneath",
+  "leafColour": "mid green above, white-grey underneath",
+  "harvest": "clusters of red thimble-shaped berries that pull off hollow",
+  "mustRead": [
+   "upright biennial canes with fine bristly prickles",
+   "white undersides flashing on the leaves",
+   "hollow-cored red berries"
+  ],
+  "note": "canes are upright and bristly, unlike blackberry's long arching hook-thorned stems"
+ },
+ {
+  "name": "Blueberry",
+  "form": "shrub",
+  "aspect": 0.8,
+  "leaf": "small oval alternate leaves on fine green-red twigs",
+  "leafColour": "mid green, blue-tinged, scarlet in autumn",
+  "harvest": "clusters of powder-blue berries each with a five-point crown",
+  "mustRead": [
+   "dense upright twiggy bush",
+   "clusters of white urn-shaped bell flowers",
+   "blue berries with a star-shaped crown scar"
+  ]
+ },
+ {
+  "name": "Elderberry",
+  "form": "shrub",
+  "aspect": 1.1,
+  "leaf": "pinnate leaves of 5-7 toothed pointed leaflets, opposite",
+  "leafColour": "dull mid to dark green",
+  "harvest": "flat drooping heads of tiny purple-black berries on red stalks",
+  "mustRead": [
+   "big flat plate-like heads of creamy white flowers",
+   "opposite pinnate leaves",
+   "heavy nodding berry heads on crimson stems"
+  ]
+ },
+ {
+  "name": "Hazelnut",
+  "form": "shrub",
+  "aspect": 1.2,
+  "leaf": "rounded heart-shaped leaves with a doubly toothed edge and a soft hairy surface",
+  "leafColour": "mid green, softly matt",
+  "harvest": "clustered nuts each wrapped in a ragged frilly green husk",
+  "mustRead": [
+   "multi-stemmed upright bush from a single stool",
+   "long yellow dangling catkins in late winter",
+   "nuts in frilled leafy husks"
+  ]
+ },
+ {
+  "name": "Walnut",
+  "form": "tree",
+  "aspect": 1.1,
+  "leaf": "large pinnate leaves of 5-9 big smooth-edged leaflets, aromatic when crushed",
+  "leafColour": "mid green with a bronze flush when young",
+  "harvest": "round green husked fruit that splits to release the wrinkled brown nut",
+  "mustRead": [
+   "broad open crown with heavy grey furrowed limbs",
+   "big pinnate leaves with few large leaflets",
+   "smooth green plum-like husks"
+  ],
+  "note": "the familiar wrinkled shell is inside a smooth green husk while on the tree"
+ },
+ {
+  "name": "Wild Onion",
+  "form": "bulb",
+  "aspect": 0.6,
+  "leaf": "narrow tubular or channelled leaves rising in a small tuft from the ground",
+  "leafColour": "grey-green",
+  "harvest": "a rounded umbel of small pink-white flowers, and a small bulb below",
+  "mustRead": [
+   "a bare round stalk topped with a ball of tiny flowers",
+   "grassy tubular leaves at the base",
+   "a papery membrane bursting under the flower head"
+  ]
+ },
+ {
+  "name": "Nettle",
+  "form": "herb",
+  "aspect": 0.5,
+  "leaf": "opposite heart-shaped coarsely toothed leaves with a pointed tip, bristled all over",
+  "leafColour": "dark mid green",
+  "harvest": "drooping stringy green flower tassels in the leaf axils",
+  "mustRead": [
+   "upright square bristly stem",
+   "opposite toothed heart-shaped leaves in tiers",
+   "trailing green catkin-like flower strings"
+  ]
+ },
+ {
+  "name": "Dandelion",
+  "form": "rosette",
+  "aspect": 1.1,
+  "leaf": "deeply backward-toothed lance leaves in a flat ground rosette",
+  "leafColour": "mid green with a pale midrib",
+  "harvest": "a single yellow flower head on a hollow stalk, later a white seed clock",
+  "mustRead": [
+   "flat rosette of jagged backward-pointing leaves",
+   "one bare hollow stalk per flower",
+   "the spherical white seed clock"
+  ]
+ },
+ {
+  "name": "Yarrow",
+  "form": "herb",
+  "aspect": 0.6,
+  "leaf": "very finely divided feathery leaves clasping an upright stem",
+  "leafColour": "grey-green",
+  "harvest": "a flat-topped head of many tiny white flowers",
+  "mustRead": [
+   "ferny feather-fine foliage",
+   "a flat dense plate of tiny white daisy florets",
+   "stiff hairy upright stems"
+  ]
+ },
+ {
+  "name": "Echinacea",
+  "form": "herb",
+  "aspect": 0.5,
+  "leaf": "rough lance-shaped leaves with a bristly surface, alternate on stiff stems",
+  "leafColour": "dark green, coarse and hairy",
+  "harvest": "a large purple-pink daisy flower with a raised spiny orange cone",
+  "mustRead": [
+   "drooping backswept pink-purple ray petals",
+   "a domed bristly orange-brown central cone",
+   "stiff rough unbranched stems"
+  ]
+ },
+ {
+  "name": "Mint",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "opposite toothed oval leaves in pairs at right angles on square stems",
+  "leafColour": "mid green, sometimes purple-tinged",
+  "harvest": "whorled spikes of tiny lilac flowers at the stem tips",
+  "mustRead": [
+   "distinctly square stems",
+   "paired toothed leaves crossing at each node",
+   "terminal spikes of small pale purple flowers"
+  ]
+ },
+ {
+  "name": "Violet",
+  "form": "herb",
+  "aspect": 1.2,
+  "leaf": "heart-shaped leaves with scalloped edges on long stalks from the base",
+  "leafColour": "mid to dark green",
+  "harvest": "small five-petalled purple flowers nodding on thin stalks",
+  "mustRead": [
+   "low tuft of heart-shaped leaves",
+   "flowers held just above the leaves on curved stalks",
+   "the lower petal with a backward spur"
+  ]
+ },
+ {
+  "name": "Acorn",
+  "form": "tree",
+  "aspect": 1.2,
+  "leaf": "alternate leaves with rounded lobes and shallow bays between them",
+  "leafColour": "dark mid green, russet-brown in autumn",
+  "harvest": "acorns sitting in scaly cups, singly or in pairs on the twig",
+  "mustRead": [
+   "broad heavy crown wider than tall on massive crooked limbs",
+   "deeply ridged rugged bark",
+   "lobed leaves and cupped acorns"
+  ],
+  "note": "interpreted as the oak tree drawn whole, with the acorn as its harvest"
+ },
+ {
+  "name": "Maple Sap",
+  "form": "tree",
+  "aspect": 0.9,
+  "leaf": "opposite five-lobed palmate leaves with smooth-sided lobes and deep notches",
+  "leafColour": "mid green, turning flame orange-red in autumn",
+  "harvest": "sap running from a tap and bucket set into the trunk",
+  "mustRead": [
+   "rounded dense crown with opposite branching",
+   "the classic five-lobed palmate leaf",
+   "a spile and bucket on the trunk"
+  ],
+  "note": "interpreted as the sugar maple drawn whole; the harvest is tapped sap, not a fruit"
+ },
+ {
+  "name": "Birch Sap",
+  "form": "tree",
+  "aspect": 0.5,
+  "leaf": "small alternate triangular toothed leaves on fine drooping twigs",
+  "leafColour": "light fresh green, gold in autumn",
+  "harvest": "clear sap running from a tap in the trunk in early spring",
+  "mustRead": [
+   "slender bright white peeling bark with black diamond scars",
+   "narrow airy crown of fine drooping twigs",
+   "small triangular leaves"
+  ],
+  "note": "interpreted as the birch tree drawn whole; the harvest is tapped spring sap"
+ },
+ {
+  "name": "Foxglove",
+  "form": "herb",
+  "aspect": 0.3,
+  "leaf": "a basal rosette of large soft downy oval leaves, smaller ones up the stem",
+  "leafColour": "dull grey-green, felted",
+  "harvest": "a tall one-sided spike of hanging pink-purple bells",
+  "mustRead": [
+   "a single tall unbranched flower spike",
+   "bells hanging along one side only",
+   "dark spots inside each speckled throat"
+  ]
+ },
+ {
+  "name": "Belladonna",
+  "form": "herb",
+  "aspect": 0.8,
+  "leaf": "alternate oval pointed leaves, often paired unequally with one large and one small",
+  "leafColour": "dull dark green",
+  "harvest": "a glossy black cherry-sized berry sitting in a green five-point star calyx",
+  "mustRead": [
+   "dull purple-brown drooping bell flowers",
+   "a shiny black berry cupped in a flared green star",
+   "coarse branching herb with unequal leaf pairs"
+  ]
+ },
+ {
+  "name": "Salmonberry",
+  "form": "shrub",
+  "aspect": 0.9,
+  "leaf": "trifoliate leaves of three toothed leaflets, the end one largest",
+  "leafColour": "bright mid green",
+  "harvest": "raspberry-shaped berries in salmon-orange to deep red",
+  "mustRead": [
+   "upright canes with shreddy golden-brown bark and few prickles",
+   "bright magenta-pink five-petalled flowers",
+   "orange-pink thimble berries"
+  ]
+ },
+ {
+  "name": "Huckleberry",
+  "form": "shrub",
+  "aspect": 0.9,
+  "leaf": "small oval alternate leaves, thin, on angled green twigs",
+  "leafColour": "mid green, crimson in autumn",
+  "harvest": "single dark purple-red berries held one per leaf axil",
+  "mustRead": [
+   "open airy bush with sharply angled green stems",
+   "berries borne singly rather than in bunches",
+   "small pink urn-shaped flowers"
+  ],
+  "note": "interpreted as a western mountain huckleberry; berries hang singly, unlike blueberry's clusters"
+ },
+ {
+  "name": "Sword Fern",
+  "form": "fern",
+  "aspect": 1.1,
+  "leaf": "long once-divided fronds with many narrow pointed leaflets, each with a small forward hook at its base",
+  "leafColour": "dark glossy green",
+  "harvest": "rows of round rust-brown spore dots on the frond undersides",
+  "mustRead": [
+   "a tight upright shuttlecock crown of long stiff fronds",
+   "leaflets running the whole length of the frond in a single plane",
+   "each leaflet hooked at its base"
+  ]
+ },
+ {
+  "name": "Licorice Fern",
+  "form": "epiphyte",
+  "aspect": 1.2,
+  "leaf": "small once-divided fronds with blunt lobes joined at the base along the stalk",
+  "leafColour": "bright yellow-green",
+  "harvest": "a sweet green rhizome creeping over moss and bark",
+  "mustRead": [
+   "fronds sprouting straight out of a mossy branch or trunk",
+   "blunt-tipped lobes fused along a wing at the stalk",
+   "a green rhizome running through the moss"
+  ],
+  "note": "grows on tree bark and mossy rock, not in soil"
+ },
+ {
+  "name": "Miner's Lettuce",
+  "form": "herb",
+  "aspect": 1.1,
+  "leaf": "a round disc leaf with the stem passing through its centre, plus long-stalked spade leaves at the base",
+  "leafColour": "pale fresh green, slightly succulent",
+  "harvest": "a small spray of tiny white flowers rising from the middle of the disc leaf",
+  "mustRead": [
+   "a circular leaf pierced by the stem like a saucer",
+   "tiny white flowers standing up out of that saucer"
+  ]
+ },
+ {
+  "name": "Devil's Club",
+  "form": "shrub",
+  "aspect": 0.7,
+  "leaf": "enormous maple-like palmate lobed leaves with spiny veins, alternate",
+  "leafColour": "mid green",
+  "harvest": "an upright pyramid cluster of flattened scarlet berries",
+  "mustRead": [
+   "thick crooked canes armoured in yellow needle spines",
+   "giant lobed leaves like open hands",
+   "a cone-shaped spike of bright red berries above the leaves"
+  ]
+ },
+ {
+  "name": "Spruce Tips",
+  "form": "tree",
+  "aspect": 0.4,
+  "leaf": "short stiff four-sided needles set singly all round the twig on tiny pegs",
+  "leafColour": "blue-green to dark green",
+  "harvest": "bright pale green new shoot tips still in papery brown caps",
+  "mustRead": [
+   "narrow spire-shaped crown with tiers of stiff branches",
+   "hanging cylindrical cones",
+   "vivid light-green new tips against dark old growth"
+  ],
+  "note": "interpreted as a spruce tree drawn whole; cones hang downward, unlike a fir's upright cones"
+ },
+ {
+  "name": "Lingonberry",
+  "form": "shrub",
+  "aspect": 1.6,
+  "leaf": "small thick evergreen oval leaves with rolled edges, dark above and dotted beneath",
+  "leafColour": "dark glossy green",
+  "harvest": "tight clusters of small firm scarlet berries at the shoot tips",
+  "mustRead": [
+   "a low creeping evergreen mat barely a hand high",
+   "small leathery box-like leaves",
+   "nodding clusters of bright red berries"
+  ]
+ },
+ {
+  "name": "Cloudberry",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "one or two rounded five-lobed wrinkled leaves per upright stem",
+  "leafColour": "mid green, deeply veined",
+  "harvest": "a single amber-orange raspberry-like berry per stem",
+  "mustRead": [
+   "a short single stem with a couple of crumpled lobed leaves",
+   "one white five-petalled flower",
+   "a solitary golden-amber berry"
+  ],
+  "note": "one berry per plant, and it ripens from red to soft amber-orange rather than darkening"
+ },
+ {
+  "name": "Bilberry",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "small bright oval leaves with fine teeth, alternate on sharply angled green stems",
+  "leafColour": "bright fresh green, red in autumn",
+  "harvest": "single small blue-black berries with a dusty bloom",
+  "mustRead": [
+   "low dense mound of green angular twigs",
+   "berries borne singly in the leaf axils",
+   "small pink-green globe flowers"
+  ],
+  "note": "green ridged stems and solitary berries separate it from blueberry's brown twigs and clustered fruit"
+ },
+ {
+  "name": "Crowberry",
+  "form": "shrub",
+  "aspect": 2.2,
+  "leaf": "tiny needle-like leaves with rolled edges crowded along the stems, heather-like",
+  "leafColour": "dark evergreen green",
+  "harvest": "small round shiny black berries sitting among the needles",
+  "mustRead": [
+   "a flat creeping heather-like carpet",
+   "short needle leaves packed on wiry stems",
+   "glossy black berries nestled tight against the foliage"
+  ]
+ },
+ {
+  "name": "Cranberry",
+  "form": "shrub",
+  "aspect": 2.5,
+  "leaf": "tiny oval evergreen leaves in two ranks along thread-fine trailing stems",
+  "leafColour": "small dark green, bronze in winter",
+  "harvest": "red berries on thin upright stalks above the mat",
+  "mustRead": [
+   "a wiry creeping mat over bog moss",
+   "tiny leaves along hair-thin runners",
+   "pink flowers with backswept petals like a crane's head"
+  ]
+ },
+ {
+  "name": "Juniper",
+  "form": "shrub",
+  "aspect": 0.7,
+  "leaf": "sharp needle leaves in whorls of three, with a white band on the upper surface",
+  "leafColour": "blue-green with silvery bands",
+  "harvest": "hard round blue-black berry-like cones with a waxy bloom",
+  "mustRead": [
+   "dense prickly bushy or columnar form",
+   "needles in threes flashing a white stripe",
+   "blue-black bloomed berries mixed with green unripe ones"
+  ]
+ },
+ {
+  "name": "Pine Nuts",
+  "form": "tree",
+  "aspect": 1.3,
+  "leaf": "long needles bound in bundles of two to five at the twig",
+  "leafColour": "dark green to grey-green",
+  "harvest": "a heavy woody cone whose scales hold fat pale seeds",
+  "mustRead": [
+   "broad umbrella crown on a bare reddish trunk",
+   "needles bundled at the base in sheaths",
+   "stout rounded cones"
+  ],
+  "note": "interpreted as a stone pine drawn whole; its crown is a wide flat umbrella, not the conical shape of a young pine"
+ },
+ {
+  "name": "Fireweed",
+  "form": "herb",
+  "aspect": 0.25,
+  "leaf": "narrow willow-like leaves spiralling closely up a tall unbranched stem",
+  "leafColour": "mid green with a pale midrib, red in autumn",
+  "harvest": "a tall tapering spike of magenta-pink four-petalled flowers",
+  "mustRead": [
+   "a single tall poker-straight stem",
+   "a long pink flower spike opening from the bottom upward",
+   "narrow slim leaves all the way up the stem"
+  ]
+ },
+ {
+  "name": "Labrador Tea",
+  "form": "shrub",
+  "aspect": 0.9,
+  "leaf": "narrow leathery leaves with edges rolled under and dense rusty wool beneath",
+  "leafColour": "dark green above, rust-orange felt underneath",
+  "harvest": "a rounded terminal cluster of small white flowers, and the aromatic leaves",
+  "mustRead": [
+   "rusty orange fuzz on the leaf undersides and young stems",
+   "inrolled narrow leaves",
+   "domed white flower clusters at the shoot tips"
+  ]
+ },
+ {
+  "name": "Angelica",
+  "form": "herb",
+  "aspect": 0.6,
+  "leaf": "very large twice-divided leaves of broad toothed leaflets, on hollow inflated stalks",
+  "leafColour": "mid green with purple-tinged stems",
+  "harvest": "a huge domed umbel of small greenish-white flowers, and the thick aromatic stems",
+  "mustRead": [
+   "thick hollow ridged stems, often purple",
+   "a big globe-shaped umbrella of tiny flowers",
+   "inflated sheath where each leaf stalk meets the stem"
+  ]
+ },
+ {
+  "name": "Bearberry",
+  "form": "shrub",
+  "aspect": 2.4,
+  "leaf": "small thick spoon-shaped evergreen leaves, glossy and blunt-tipped, crowded on trailing stems",
+  "leafColour": "dark glossy green, bronze in winter",
+  "harvest": "small dull red mealy berries among the leaves",
+  "mustRead": [
+   "a flat trailing mat with reddish peeling stems",
+   "small paddle-shaped leathery leaves",
+   "white-pink urn flowers and red berries"
+  ]
+ },
+ {
+  "name": "Yew",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "flat soft needles set in two ranks along the twig, dark above and paler beneath",
+  "leafColour": "very dark blackish green",
+  "harvest": "a bright red fleshy cup with a dark seed showing at its open end",
+  "mustRead": [
+   "massive fluted trunk of fused stems with red-brown flaking bark",
+   "dense very dark heavy crown",
+   "scarlet open-ended berry-like arils"
+  ],
+  "note": "the fruit is an open-topped red cup, not a closed berry"
+ },
+ {
+  "name": "Mountain Blueberry",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "small oval finely toothed leaves on angled green twigs",
+  "leafColour": "mid green, brilliant scarlet in autumn",
+  "harvest": "single dusty blue-purple berries in the leaf axils",
+  "mustRead": [
+   "low compact bush of green angled stems",
+   "berries carried singly with a pale bloom",
+   "fiery red autumn foliage"
+  ],
+  "note": "interpreted as a high-elevation Vaccinium - shorter, wirier and later-fruiting than lowland blueberry"
+ },
+ {
+  "name": "Currant",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "palmately lobed, 3-5 lobes, toothed, alternate on arching canes",
+  "leafColour": "mid green",
+  "harvest": "a hanging string of small round berries, black or red",
+  "mustRead": [
+   "maple-like 3-5 lobed leaf",
+   "berries hang in a drooping string (raceme)",
+   "thornless arching canes"
+  ],
+  "note": "Unlike gooseberry, currant has NO thorns and the fruit hangs in strings, not singly."
+ },
+ {
+  "name": "Gooseberry",
+  "form": "shrub",
+  "aspect": 1.1,
+  "leaf": "small palmately lobed, 3-5 crinkled lobes, in tufts along thorny stems",
+  "leafColour": "mid green",
+  "harvest": "single translucent green-to-red berries with pale longitudinal veins, hanging under the branch",
+  "mustRead": [
+   "sharp spines at each leaf node",
+   "berries hang singly beneath the stem",
+   "striped translucent skin"
+  ]
+ },
+ {
+  "name": "Valerian",
+  "form": "herb",
+  "aspect": 0.6,
+  "leaf": "pinnate, many narrow toothed leaflets in opposite pairs up a grooved hollow stem",
+  "leafColour": "mid green",
+  "harvest": "a domed cluster of tiny pale pink-white flowers, or the pale fibrous root mass",
+  "mustRead": [
+   "tall unbranched stem",
+   "opposite pinnate leaves like a ladder",
+   "flat-domed pale pink flower head on top"
+  ]
+ },
+ {
+  "name": "Arnica",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "basal rosette of oval untoothed leaves, plus 1-2 opposite pairs on the stem",
+  "leafColour": "mid green, slightly hairy",
+  "harvest": "a single golden-yellow daisy flower with drooping ragged ray petals",
+  "mustRead": [
+   "one yellow daisy head per stem",
+   "basal rosette of plain oval leaves",
+   "ray petals slightly ragged and drooping"
+  ]
+ },
+ {
+  "name": "Wild Rice",
+  "form": "grass",
+  "aspect": 0.5,
+  "leaf": "long flat ribbon blades rising from water, arching outward",
+  "leafColour": "mid green",
+  "harvest": "an open airy panicle of long dark grain, held above the leaves",
+  "mustRead": [
+   "very tall emergent grass standing in water",
+   "open branching seed head at the very top",
+   "narrow purple-brown grains"
+  ]
+ },
+ {
+  "name": "Cattail",
+  "form": "aquatic",
+  "aspect": 0.35,
+  "leaf": "flat sword-like strap blades rising straight from the waterline",
+  "leafColour": "mid green to grey green",
+  "harvest": "the brown velvety sausage-shaped spike, or the white starchy rhizome",
+  "mustRead": [
+   "dense brown cigar-shaped spike on a bare round stem",
+   "thin spike of male flowers directly above the brown sausage",
+   "vertical strap leaves from the base"
+  ]
+ },
+ {
+  "name": "Watercress",
+  "form": "aquatic",
+  "aspect": 1.8,
+  "leaf": "pinnate with rounded leaflets, one larger terminal leaflet, on hollow sprawling stems",
+  "leafColour": "dark glossy green",
+  "harvest": "a bundle of leafy shoots, sometimes tipped with tiny white four-petal flowers",
+  "mustRead": [
+   "floating mat of succulent hollow stems",
+   "rounded leaflets with a bigger end leaflet",
+   "white threadlike roots at the nodes"
+  ]
+ },
+ {
+  "name": "Arrowroot",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "broad lance-oval leaves on long sheathing stalks, spreading from the base",
+  "leafColour": "mid green",
+  "harvest": "a cluster of pale fleshy scaly rhizomes, white inside",
+  "mustRead": [
+   "clump of long-stalked broad oval leaves",
+   "small white asymmetric flowers",
+   "knobbly pale scaled rhizome at the base"
+  ],
+  "note": "Interpreted as Maranta arundinacea (West Indian arrowroot), the representative source plant."
+ },
+ {
+  "name": "Swamp Mint",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "toothed oval leaves in opposite pairs, crossed at each node",
+  "leafColour": "mid green with purple-tinged stems",
+  "harvest": "whorls of small pale lilac flowers clustered at the leaf axils",
+  "mustRead": [
+   "square stem",
+   "opposite pairs of toothed leaves",
+   "ring-like whorls of lilac flowers"
+  ],
+  "note": "Generic name; interpreted as a marsh Mentha, drawn as a representative wetland mint."
+ },
+ {
+  "name": "Sweet Flag",
+  "form": "aquatic",
+  "aspect": 0.4,
+  "leaf": "iris-like sword blades with a crimped wavy edge and an off-centre midrib",
+  "leafColour": "bright yellow green",
+  "harvest": "the aromatic pale pink-cream rhizome, or the finger-like spadix",
+  "mustRead": [
+   "fan of upright sword leaves",
+   "a stubby green finger (spadix) angled out sideways from the flat stem",
+   "crimped leaf margin"
+  ],
+  "note": "The spadix juts out at an angle partway up the stem, not from the tip."
+ },
+ {
+  "name": "Pickerelweed",
+  "form": "aquatic",
+  "aspect": 0.6,
+  "leaf": "glossy heart-shaped to arrow-shaped blades on long upright stalks from the water",
+  "leafColour": "dark glossy green",
+  "harvest": "a dense spike of violet-blue tubular flowers",
+  "mustRead": [
+   "thick heart-shaped emergent leaf",
+   "dense blue-violet flower spike just above one leaf",
+   "growing straight out of shallow water"
+  ]
+ },
+ {
+  "name": "Lotus Root",
+  "form": "aquatic",
+  "aspect": 0.8,
+  "leaf": "large round peltate leaves held high above the water on prickly stalks, edges upturned like a bowl",
+  "leafColour": "blue-grey green, water-repellent",
+  "harvest": "a chain of fat sausage-linked pale rhizomes, pierced with round holes in cross-section",
+  "mustRead": [
+   "round dish-shaped leaf on a central stalk",
+   "sausage-chain rhizome",
+   "the ring of holes in the cut root"
+  ],
+  "note": "Same plant as Lotus; here the harvest is the rhizome, so show the root chain pulled from the mud."
+ },
+ {
+  "name": "Water Hemlock",
+  "form": "herb",
+  "aspect": 0.8,
+  "leaf": "twice-pinnate with narrow sharply toothed leaflets, veins ending in the notches",
+  "leafColour": "mid green",
+  "harvest": "a domed white compound umbel of tiny flowers, and a chambered fleshy root",
+  "mustRead": [
+   "hollow purple-streaked stem",
+   "flat-domed white umbel of many small flowers",
+   "chambered root with yellow sap when cut"
+  ],
+  "note": "Deadly poisonous; distinguish from parsley by the purple-blotched hollow stem and the chambered root."
+ },
+ {
+  "name": "Wild Melon",
+  "form": "vine",
+  "aspect": 2.4,
+  "leaf": "deeply lobed rough leaves on a sprawling ground-running stem with coiled tendrils",
+  "leafColour": "grey green, bristly",
+  "harvest": "a small hard round melon, green mottled with pale stripes, ripening yellow",
+  "mustRead": [
+   "ground-running vine with curled tendrils",
+   "small hard striped globe fruit",
+   "deeply cut rough leaves"
+  ],
+  "note": "Interpreted as the desert colocynth/tsamma type wild melon; fruit is small and hard, not a supermarket melon."
+ },
+ {
+  "name": "Millet",
+  "form": "grass",
+  "aspect": 0.5,
+  "leaf": "long narrow arching blades up a jointed cane-like culm",
+  "leafColour": "mid green",
+  "harvest": "a dense bottlebrush or nodding spike packed with tiny round pale grains",
+  "mustRead": [
+   "single thick seed head on a straight cane",
+   "tiny bead-like grains packed dense",
+   "arching narrow leaves"
+  ],
+  "note": "Generic; drawn as pearl millet, the representative bottlebrush-headed type."
+ },
+ {
+  "name": "Devil's Claw",
+  "form": "herb",
+  "aspect": 2,
+  "leaf": "large rounded lobed leaves, opposite, on sticky sprawling trailing stems",
+  "leafColour": "mid green, clammy-hairy",
+  "harvest": "a woody seed pod splitting into two long curved hooked claws",
+  "mustRead": [
+   "the woody pod with two long recurved grappling hooks",
+   "sprawling flat-to-the-ground habit",
+   "trumpet flower, pinkish-purple with a spotted throat"
+  ],
+  "note": "The claw is the dried seed capsule, not a root or flower."
+ },
+ {
+  "name": "African Ginger",
+  "form": "herb",
+  "aspect": 0.6,
+  "leaf": "broad lance-shaped leaves fanning from a leaf-sheath pseudostem, strongly parallel-veined",
+  "leafColour": "bright mid green",
+  "harvest": "a pale knobbly aromatic rhizome with a cone-shaped tuft of roots",
+  "mustRead": [
+   "fan of parallel-veined blades from a single sheathed stem",
+   "mauve-pink flower emerging at ground level",
+   "knobbly rhizome below"
+  ],
+  "note": "Interpreted as Siphonochilus aethiopicus; its flower appears at ground level, separate from the leaf shoot."
+ },
+ {
+  "name": "Lotus",
+  "form": "aquatic",
+  "aspect": 0.9,
+  "leaf": "huge round peltate leaves on tall stalks held well clear of the water, rims turned up",
+  "leafColour": "blue-grey green with a waxy bloom",
+  "harvest": "a pink many-petalled bowl flower, or the flat-topped green seed pod with loose seeds in wells",
+  "mustRead": [
+   "leaf held high above water on a central stalk, never floating flat",
+   "shower-head seed pod",
+   "large pink cupped bloom"
+  ],
+  "note": "Lotus leaves stand above the water; water lily leaves float on it. Do not conflate."
+ },
+ {
+  "name": "Water Lily",
+  "form": "aquatic",
+  "aspect": 2.2,
+  "leaf": "round floating pads with a V-notch cut to the centre, resting flat on the surface",
+  "leafColour": "dark glossy green above, red-purple beneath",
+  "harvest": "a white or pink star-shaped flower floating at the surface",
+  "mustRead": [
+   "floating pad with a single wedge notch",
+   "flower sitting at water level",
+   "everything flat on the surface"
+  ]
+ },
+ {
+  "name": "Taro",
+  "form": "herb",
+  "aspect": 1,
+  "leaf": "enormous heart-shaped peltate leaves on thick upright stalks, tip pointing down",
+  "leafColour": "dull mid green with a matte water-beading surface",
+  "harvest": "a large brown ringed corm with fibrous hair, purple-flecked inside",
+  "mustRead": [
+   "elephant-ear leaves pointing downward",
+   "stalk joins the leaf inside the blade, not at the notch",
+   "brown ringed corm at the base"
+  ]
+ },
+ {
+  "name": "Papyrus Shoots",
+  "form": "aquatic",
+  "aspect": 0.55,
+  "leaf": "leafless triangular green stems, each topped by a starburst of many thin drooping rays",
+  "leafColour": "bright mid green",
+  "harvest": "young pale shoots at the base, or the pithy stem",
+  "mustRead": [
+   "bare tall triangular stem",
+   "firework starburst of thin rays at the top",
+   "clump rising straight from water"
+  ]
+ },
+ {
+  "name": "Water Mint",
+  "form": "herb",
+  "aspect": 0.8,
+  "leaf": "toothed oval leaves in opposite pairs, often purple-flushed, on a square stem",
+  "leafColour": "mid green flushed purple-bronze",
+  "harvest": "a rounded lilac-pink pompom flower head at the stem tip",
+  "mustRead": [
+   "square stem",
+   "single round lilac pompom at the tip",
+   "opposite toothed leaves"
+  ]
+ },
+ {
+  "name": "Sunflower",
+  "form": "herb",
+  "aspect": 0.4,
+  "leaf": "very large heart-shaped rough-hairy leaves, alternate up a thick bristly stem",
+  "leafColour": "mid green, coarse and sandpapery",
+  "harvest": "the big flower head, ring of yellow rays around a dark disc packed with striped seeds",
+  "mustRead": [
+   "one huge head on a thick single stalk",
+   "dark seed disc with spiral packing",
+   "large coarse heart-shaped leaves"
+  ]
+ },
+ {
+  "name": "Prairie Turnip",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "palmate, 5 narrow leaflets spreading from one point, hairy",
+  "leafColour": "grey green, silvery-hairy",
+  "harvest": "a fat brown-skinned spindle-shaped tap root, white inside",
+  "mustRead": [
+   "five-fingered palmate leaf",
+   "dense hairy stems",
+   "swollen turnip-like root on a thin thread"
+  ]
+ },
+ {
+  "name": "Goldenrod",
+  "form": "herb",
+  "aspect": 0.5,
+  "leaf": "narrow lance-shaped leaves, alternate and crowded all the way up the stem",
+  "leafColour": "mid green",
+  "harvest": "a one-sided arching plume of tiny golden-yellow flowers",
+  "mustRead": [
+   "pyramid plume of tiny yellow flowers arching to one side",
+   "unbranched leafy stem below",
+   "many small heads, not one big flower"
+  ]
+ },
+ {
+  "name": "Clover",
+  "form": "herb",
+  "aspect": 1.4,
+  "leaf": "trifoliate, three rounded leaflets, each with a pale chevron watermark",
+  "leafColour": "mid green with paler crescent bands",
+  "harvest": "a round pink or white flower pompom on a bare stalk",
+  "mustRead": [
+   "three rounded leaflets",
+   "pale V mark on each leaflet",
+   "globe pompom flower head"
+  ]
+ },
+ {
+  "name": "Wild Strawberry",
+  "form": "herb",
+  "aspect": 1.6,
+  "leaf": "trifoliate, three coarsely toothed leaflets with sunken veins, from a low crown",
+  "leafColour": "mid green, slightly bluish beneath",
+  "harvest": "a tiny bright red berry with seeds sitting proud on the surface",
+  "mustRead": [
+   "three toothed leaflets",
+   "thin red runners spreading sideways",
+   "small red berry with visible surface seeds and a white five-petal flower"
+  ]
+ },
+ {
+  "name": "Black-Eyed Susan",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "lance-shaped bristly-hairy leaves, alternate on a rough stem",
+  "leafColour": "mid green, hairy",
+  "harvest": "a golden-orange daisy flower with a raised chocolate-brown dome centre",
+  "mustRead": [
+   "deep brown domed centre",
+   "golden-orange rays slightly drooping",
+   "bristly hairy stem and leaves"
+  ]
+ },
+ {
+  "name": "Bergamot",
+  "form": "herb",
+  "aspect": 0.6,
+  "leaf": "toothed lance-shaped leaves in opposite pairs on a square stem",
+  "leafColour": "grey green",
+  "harvest": "a shaggy crown of lavender tubular flowers on a domed head",
+  "mustRead": [
+   "ragged firework head of narrow tubular flowers",
+   "square stem",
+   "leafy bracts under the flower head"
+  ],
+  "note": "Wild bergamot (Monarda), a mint-family herb, not the bergamot citrus."
+ },
+ {
+  "name": "Milkweed",
+  "form": "herb",
+  "aspect": 0.6,
+  "leaf": "large oblong leaves in opposite pairs, thick with a pale midrib",
+  "leafColour": "dull mid green, slightly grey beneath",
+  "harvest": "a drooping ball-cluster of dusty pink flowers, later a warty pod full of silk-tufted seeds",
+  "mustRead": [
+   "opposite paired oblong leaves with a pale midrib",
+   "domed umbel of dusty pink flowers",
+   "warty pod bursting with white silk"
+  ]
+ },
+ {
+  "name": "Wild Rye",
+  "form": "grass",
+  "aspect": 0.5,
+  "leaf": "flat arching blades from a dense basal tuft",
+  "leafColour": "blue-grey green",
+  "harvest": "a stiff bristly seed spike with long straight awns",
+  "mustRead": [
+   "upright cylindrical bristled spike",
+   "long straight awns like whiskers",
+   "tufted clumping base"
+  ]
+ },
+ {
+  "name": "Barley",
+  "form": "grass",
+  "aspect": 0.45,
+  "leaf": "broad flat blades clasping a jointed hollow culm",
+  "leafColour": "mid green, ripening straw gold",
+  "harvest": "a nodding spike of plump grains with very long parallel awns",
+  "mustRead": [
+   "extremely long fanned awns, longer than the head itself",
+   "head nods over when ripe",
+   "grains in tight rows on the spike"
+  ]
+ },
+ {
+  "name": "Buckwheat",
+  "form": "herb",
+  "aspect": 0.8,
+  "leaf": "arrowhead / heart-shaped leaves, alternate on a reddish hollow stem",
+  "leafColour": "mid green with red-tinged stems",
+  "harvest": "loose clusters of small white-pink flowers, then hard three-sided brown seeds",
+  "mustRead": [
+   "arrowhead leaves",
+   "red-flushed jointed stem",
+   "sharply three-angled pyramid seeds"
+  ],
+  "note": "Not a grass; it is a broadleaf herb with arrowhead leaves."
+ },
+ {
+  "name": "Wormwood",
+  "form": "shrub",
+  "aspect": 0.8,
+  "leaf": "finely divided, twice-pinnate, blunt-tipped segments, densely felted with silky hairs",
+  "leafColour": "silver grey",
+  "harvest": "sprays of tiny drooping yellow-green button flowers, or the aromatic silver foliage",
+  "mustRead": [
+   "silvery silky feathery foliage",
+   "small dull yellow nodding button flowers",
+   "woody-based bushy clump"
+  ]
+ },
+ {
+  "name": "Sage",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "oblong pebbled leaves in opposite pairs, velvety and finely wrinkled",
+  "leafColour": "grey green, almost silver when young",
+  "harvest": "whorled spikes of violet-blue lipped flowers, or the grey leaves themselves",
+  "mustRead": [
+   "thick pebbled velvet-textured leaf",
+   "grey-green not bright green",
+   "square woody-based stems"
+  ]
+ },
+ {
+  "name": "Licorice Root",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "pinnate with 9-17 oval leaflets, slightly sticky",
+  "leafColour": "mid green",
+  "harvest": "long straight yellow-fleshed woody roots and runners",
+  "mustRead": [
+   "pinnate leaf like a small locust tree",
+   "pale blue-lilac pea flowers in a slim spike",
+   "long straight ropey yellow root"
+  ]
+ },
+ {
+  "name": "Sea Buckthorn",
+  "form": "shrub",
+  "aspect": 0.9,
+  "leaf": "very narrow willow-like leaves, alternate, scaly on both sides",
+  "leafColour": "silver grey green",
+  "harvest": "dense clusters of bright orange berries packed tight along the twig",
+  "mustRead": [
+   "orange berries crowded directly on the thorny branch",
+   "narrow silvery willow leaves",
+   "sharp woody thorns"
+  ]
+ },
+ {
+  "name": "Ephedra",
+  "form": "shrub",
+  "aspect": 1.1,
+  "leaf": "essentially leafless; slim jointed green stems with tiny scale sheaths at each node",
+  "leafColour": "yellow green to grey green",
+  "harvest": "small fleshy red cone-berries at the joints, or the green stems",
+  "mustRead": [
+   "broom of bare jointed green rods",
+   "no real leaves, only tiny scales at the nodes",
+   "dense tangled upright habit"
+  ]
+ },
+ {
+  "name": "Steppe Tulip",
+  "form": "bulb",
+  "aspect": 0.5,
+  "leaf": "2-4 broad channelled strap leaves, often wavy-edged, hugging the low stem",
+  "leafColour": "blue-grey green",
+  "harvest": "a single pointed cup flower, red or yellow, on a bare stem; or the papery-skinned bulb",
+  "mustRead": [
+   "one cup flower per stem with pointed petal tips",
+   "few broad grey-green basal leaves",
+   "short stature, flower close to the ground"
+  ],
+  "note": "Wild tulip: petals are narrower and more pointed than a garden tulip, and the plant is small."
+ },
+ {
+  "name": "Yerba Mate",
+  "form": "tree",
+  "aspect": 0.9,
+  "leaf": "leathery obovate leaves with shallow-toothed edges, alternate",
+  "leafColour": "dark glossy green",
+  "harvest": "clusters of small red-purple berries in the leaf axils, or the leafy twigs",
+  "mustRead": [
+   "holly-family glossy leathery leaves but with soft blunt teeth",
+   "small greenish-white flowers clustered at the leaf joints",
+   "dense evergreen small-tree crown"
+  ]
+ },
+ {
+  "name": "Passionflower",
+  "form": "climber",
+  "aspect": 1.2,
+  "leaf": "deeply palmate, 3-5 pointed lobes, alternate, with a coiled tendril at each node",
+  "leafColour": "mid to dark green",
+  "harvest": "an egg-shaped fruit ripening purple or yellow, plus the extraordinary flower",
+  "mustRead": [
+   "flat flower with a fringe of many fine radiating filaments over the petals",
+   "raised central column with 5 stamens and 3 hooked styles",
+   "wiry coiled tendrils"
+  ]
+ },
+ {
+  "name": "Amaranth",
+  "form": "herb",
+  "aspect": 0.5,
+  "leaf": "broad oval-diamond leaves, alternate, often red-veined, on a thick grooved stem",
+  "leafColour": "mid green, frequently flushed crimson",
+  "harvest": "a heavy plume-like tassel of tiny crimson or gold seed flowers",
+  "mustRead": [
+   "thick fleshy plume or drooping tassel of seed",
+   "strong crimson stem and veins",
+   "big soft broad leaves"
+  ]
+ },
+ {
+  "name": "Quinoa",
+  "form": "herb",
+  "aspect": 0.5,
+  "leaf": "goosefoot-shaped, broad and irregularly toothed, alternate, mealy-dusted",
+  "leafColour": "mid green, often turning red or gold",
+  "harvest": "a dense branched panicle of tiny seeds, in cream, magenta or orange",
+  "mustRead": [
+   "duck-foot shaped leaf",
+   "chunky terminal seed head in hot colours",
+   "grooved striped stem"
+  ]
+ },
+ {
+  "name": "Pampas Herb",
+  "form": "grass",
+  "aspect": 0.7,
+  "leaf": "very long, narrow, saw-edged arching blades from a dense fountain-shaped clump",
+  "leafColour": "blue-grey green",
+  "harvest": "a tall silvery-white feather plume held far above the leaves",
+  "mustRead": [
+   "huge silver-white feather plume on a bare tall stalk",
+   "fountain clump of arching razor-edged blades"
+  ],
+  "note": "Generic name; interpreted as pampas grass (Cortaderia), the representative pampas plant."
+ },
+ {
+  "name": "Wild Mint",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "toothed oval leaves in opposite pairs on a square hairy stem",
+  "leafColour": "mid green",
+  "harvest": "whorled rings of tiny pale lilac flowers at the leaf axils",
+  "mustRead": [
+   "square stem",
+   "opposite toothed leaves",
+   "flowers in rings around the stem, not just at the tip"
+  ]
+ },
+ {
+  "name": "Chili Pepper",
+  "form": "shrub",
+  "aspect": 0.9,
+  "leaf": "smooth pointed oval leaves, alternate, on a branching woody-based stem",
+  "leafColour": "dark green, glossy",
+  "harvest": "glossy tapering pods ripening green to red, hanging or pointing up",
+  "mustRead": [
+   "small white star flower with a purple-black anther ring",
+   "smooth glossy tapered pod with a green calyx cap",
+   "many-branched bushy habit"
+  ]
+ },
+ {
+  "name": "Peanut",
+  "form": "herb",
+  "aspect": 1.6,
+  "leaf": "pinnate with exactly four oval leaflets in two opposite pairs",
+  "leafColour": "mid green",
+  "harvest": "wrinkled tan pods pulled up from below the soil, two or three seeds each",
+  "mustRead": [
+   "four-leaflet leaf, no terminal odd leaflet",
+   "low spreading habit with small yellow pea flowers",
+   "netted pods underground on stalks driven into the soil"
+  ],
+  "note": "Pods form underground; never draw them hanging on the plant."
+ },
+ {
+  "name": "Prickly Pear",
+  "form": "cactus",
+  "aspect": 1,
+  "leaf": "no leaves; flat oval paddle segments joined end to end, studded with spine clusters",
+  "leafColour": "blue-grey green",
+  "harvest": "barrel-shaped magenta fruits sitting upright on the rim of the top pads",
+  "mustRead": [
+   "flat overlapping paddle pads",
+   "areoles with tufts of fine glochids and long spines",
+   "magenta tunas ringing the pad edge"
+  ]
+ },
+ {
+  "name": "Chamomile",
+  "form": "herb",
+  "aspect": 1,
+  "leaf": "very finely divided into thread-like segments, feathery, alternate",
+  "leafColour": "bright light green",
+  "harvest": "small daisy flowers with white rays and a raised hollow yellow cone centre",
+  "mustRead": [
+   "hollow domed yellow centre, taller than it is wide",
+   "white rays folding back and down",
+   "wispy thread-fine foliage"
+  ]
+ },
+ {
+  "name": "Plantain Herb",
+  "form": "rosette",
+  "aspect": 1.2,
+  "leaf": "broad oval leaves in a flat ground rosette, with 5-7 strong parallel ribs",
+  "leafColour": "mid green",
+  "harvest": "a slender green rat-tail seed spike on a bare stalk",
+  "mustRead": [
+   "flat rosette pressed to the ground",
+   "parallel ribs running the length of the leaf",
+   "thin upright rat-tail spike"
+  ]
+ },
+ {
+  "name": "Sorrel",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "arrow-shaped leaves with two backward-pointing basal lobes, mostly from the base",
+  "leafColour": "fresh mid green",
+  "harvest": "a slim spire of tiny rusty-red seed flowers",
+  "mustRead": [
+   "arrowhead leaf with backswept lobes",
+   "rust-red seed spire above the leaves",
+   "basal clump habit"
+  ]
+ },
+ {
+  "name": "Daisy",
+  "form": "rosette",
+  "aspect": 1.3,
+  "leaf": "small spoon-shaped leaves in a flat ground rosette",
+  "leafColour": "mid green",
+  "harvest": "a small white flower with a flat yellow disc, on a bare leafless stalk",
+  "mustRead": [
+   "ground-hugging spoon-leaf rosette",
+   "single flower on a bare stalk",
+   "white rays often pink-tipped underneath"
+  ]
+ },
+ {
+  "name": "Chicory",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "toothed dandelion-like basal leaves; upper stem leaves small and clasping",
+  "leafColour": "mid green",
+  "harvest": "sky-blue square-tipped fringed flowers set close on wiry stems, or the pale tap root",
+  "mustRead": [
+   "clear sky-blue flowers with squared, fringe-toothed ray tips",
+   "stiff wiry near-naked branching stems",
+   "flowers sitting almost directly on the stem"
+  ]
+ },
+ {
+  "name": "Buttercup",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "palmately cut into 3-5 deeply toothed segments, mostly basal, on hairy stalks",
+  "leafColour": "mid green",
+  "harvest": "a glossy five-petalled golden-yellow cup flower",
+  "mustRead": [
+   "lacquered, almost varnished yellow petals",
+   "five rounded petals",
+   "deeply cut palmate leaves"
+  ]
+ },
+ {
+  "name": "Gentian",
+  "form": "herb",
+  "aspect": 0.6,
+  "leaf": "smooth pointed leaves in opposite pairs, sometimes a basal rosette",
+  "leafColour": "dark green",
+  "harvest": "an intense deep-blue upward-facing trumpet flower",
+  "mustRead": [
+   "saturated deep blue trumpet with a flared 5-lobed mouth",
+   "flower large relative to the low plant",
+   "opposite untoothed leaves"
+  ]
+ },
+ {
+  "name": "Edelweiss",
+  "form": "herb",
+  "aspect": 1,
+  "leaf": "narrow lance leaves, densely white-woolly on both sides, in a low rosette",
+  "leafColour": "silver grey, felted",
+  "harvest": "a star of thick woolly white bracts around small yellow button flower heads",
+  "mustRead": [
+   "woolly white felted star of bracts",
+   "several small yellow buttons in the star centre",
+   "everything covered in dense white wool"
+  ],
+  "note": "The white 'petals' are furry bracts, not petals; they should look felted, not smooth."
+ },
+ {
+  "name": "Mountain Thyme",
+  "form": "shrub",
+  "aspect": 2,
+  "leaf": "tiny oval leaves in opposite pairs, crowded along creeping wiry stems",
+  "leafColour": "dark green, slightly grey",
+  "harvest": "dense rounded heads of tiny rose-purple lipped flowers",
+  "mustRead": [
+   "low creeping mat, wider than tall",
+   "very small paired leaves on thin woody stems",
+   "purple-pink flower heads at every shoot tip"
+  ]
+ },
+ {
+  "name": "Alpine Mint",
+  "form": "herb",
+  "aspect": 1.1,
+  "leaf": "small toothed oval leaves in opposite pairs on short square stems",
+  "leafColour": "mid green, purple-tinted at the stems",
+  "harvest": "small clustered lilac flower whorls at the shoot tips",
+  "mustRead": [
+   "square stem",
+   "compact low cushion habit",
+   "opposite small toothed leaves"
+  ],
+  "note": "Generic name; interpreted as a dwarf high-altitude Mentha, drawn as a compact alpine form of common mint."
+ },
+ {
+  "name": "Wild Chive",
+  "form": "bulb",
+  "aspect": 0.6,
+  "leaf": "hollow round tubular blades rising in a dense tuft from small bulbs",
+  "leafColour": "blue-grey green",
+  "harvest": "a purple-pink pompom flower head, or the small clustered white bulbs",
+  "mustRead": [
+   "hollow tube leaves, round in section",
+   "tight lilac pompom on a bare hollow stalk",
+   "clumping tuft from clustered bulbs"
+  ]
+ },
+ {
+  "name": "Mountain Sorrel",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "kidney-shaped to rounded fleshy leaves on long red stalks from the base",
+  "leafColour": "fresh green, often red-tinged",
+  "harvest": "a spire of flat papery red-tinged seed discs",
+  "mustRead": [
+   "kidney-shaped succulent basal leaves",
+   "red leaf stalks",
+   "cluster of flat winged crimson seeds"
+  ]
+ },
+ {
+  "name": "Olive",
+  "form": "tree",
+  "aspect": 1.2,
+  "leaf": "narrow lance-shaped leathery leaves in opposite pairs, silver-scaled beneath",
+  "leafColour": "grey green above, silver beneath",
+  "harvest": "small oval fruits ripening green to purple-black, hanging in loose sprays",
+  "mustRead": [
+   "gnarled twisted fissured trunk",
+   "two-tone leaf, green above and silver below",
+   "open irregular airy crown"
+  ]
+ },
+ {
+  "name": "Fig",
+  "form": "tree",
+  "aspect": 1.2,
+  "leaf": "large deeply 3-5 lobed leaves with rounded lobes, rough above, alternate",
+  "leafColour": "mid green, rough textured",
+  "harvest": "pear-shaped fruits sitting close to the branch, ripening green to purple-brown",
+  "mustRead": [
+   "big lobed hand-shaped leaf",
+   "fruit attached directly at the leaf axil with almost no stalk",
+   "smooth pale grey bark"
+  ]
+ },
+ {
+  "name": "Grape",
+  "form": "vine",
+  "aspect": 1.3,
+  "leaf": "large palmately lobed toothed leaves, alternate, with forked tendrils opposite them",
+  "leafColour": "mid green",
+  "harvest": "a tapering hanging bunch of berries, green or purple-black with a waxy bloom",
+  "mustRead": [
+   "forked coiled tendrils",
+   "large lobed vine leaf",
+   "conical hanging bunch of berries"
+  ]
+ },
+ {
+  "name": "Pomegranate",
+  "form": "shrub",
+  "aspect": 1.1,
+  "leaf": "small narrow glossy leaves in opposite pairs or clusters on spiny twigs",
+  "leafColour": "glossy mid green, bronze when young",
+  "harvest": "a hard leathery red-gold globe fruit topped with a spiky crown calyx",
+  "mustRead": [
+   "crown of stiff points at the top of the fruit",
+   "vivid orange-red trumpet flowers with crumpled petals",
+   "small glossy narrow leaves on twiggy spiny branches"
+  ]
+ },
+ {
+  "name": "Rosemary",
+  "form": "shrub",
+  "aspect": 0.8,
+  "leaf": "narrow needle-like leaves with rolled-under edges, crowded along woody stems",
+  "leafColour": "dark green above, white-felted beneath",
+  "harvest": "small pale blue two-lipped flowers along the stems, or the aromatic sprigs",
+  "mustRead": [
+   "stiff needle leaves in dense whorls up the stem",
+   "white underside to the needle",
+   "upright woody bush"
+  ]
+ },
+ {
+  "name": "Thyme",
+  "form": "shrub",
+  "aspect": 1.6,
+  "leaf": "very small grey-green oval leaves in opposite pairs on thin woody stems",
+  "leafColour": "grey green",
+  "harvest": "clusters of tiny pale lilac flowers at the shoot tips, or the leafy sprigs",
+  "mustRead": [
+   "tiny paired leaves on wiry woody stems",
+   "low spreading mounded subshrub",
+   "leaf edges rolled under"
+  ]
+ },
+ {
+  "name": "Oregano",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "small oval leaves in opposite pairs on hairy reddish square stems",
+  "leafColour": "mid green, slightly greyish",
+  "harvest": "loose flat-topped sprays of tiny white-pink flowers with dark purple bracts",
+  "mustRead": [
+   "square reddish stem",
+   "opposite oval leaves",
+   "airy branched flat-topped flower sprays"
+  ]
+ },
+ {
+  "name": "Lavender",
+  "form": "shrub",
+  "aspect": 0.9,
+  "leaf": "narrow linear leaves in opposite pairs, downy, on a woody base",
+  "leafColour": "silver grey green",
+  "harvest": "slim violet flower spikes on long bare four-sided stalks",
+  "mustRead": [
+   "long naked stalk with a short dense violet spike at the tip",
+   "silvery narrow leaves clustered low",
+   "tight rounded bush"
+  ]
+ },
+ {
+  "name": "Fennel",
+  "form": "herb",
+  "aspect": 0.5,
+  "leaf": "extremely finely divided into hair-like threads, on hollow ribbed stems",
+  "leafColour": "blue-grey green, feathery",
+  "harvest": "a flat yellow compound umbel and its ribbed aromatic seeds, or the swollen white bulb base",
+  "mustRead": [
+   "cloud of thread-fine feathery foliage",
+   "flat-topped yellow umbel with spoke-like rays",
+   "smooth blue-tinged hollow stem"
+  ]
+ },
+ {
+  "name": "Bay Laurel",
+  "form": "tree",
+  "aspect": 0.7,
+  "leaf": "stiff leathery lance-shaped leaves with a wavy edge, alternate",
+  "leafColour": "very dark glossy green",
+  "harvest": "small shiny black-purple berries in the leaf axils, or the aromatic leaves",
+  "mustRead": [
+   "thick leathery dark leaf with a rippled margin",
+   "dense conical evergreen shape",
+   "clusters of tiny cream flowers at the leaf joints"
+  ]
+ },
+ {
+  "name": "Carob",
+  "form": "tree",
+  "aspect": 1.2,
+  "leaf": "pinnate with 6-10 thick rounded glossy leaflets in pairs",
+  "leafColour": "dark glossy green above, paler beneath",
+  "harvest": "long flat leathery dark brown pods hanging in bunches",
+  "mustRead": [
+   "rounded coin-like glossy leaflets in pairs",
+   "flat leathery brown pods",
+   "broad dense dome crown on a short trunk"
+  ]
+ },
+ {
+  "name": "Heather",
+  "form": "shrub",
+  "aspect": 1.1,
+  "leaf": "minute scale-like leaves pressed against the wiry stems in four ranks",
+  "leafColour": "dark green, bronzing in winter",
+  "harvest": "dense one-sided spikes of tiny bell flowers in purple-pink",
+  "mustRead": [
+   "tiny scale leaves hugging the stem, not spreading",
+   "slim spires of small purple-pink bells",
+   "low wiry twiggy mound"
+  ]
+ },
+ {
+  "name": "Bog Myrtle",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "narrow spoon-shaped leaves broadest near the tip with a few teeth, alternate",
+  "leafColour": "grey green, resin-dotted",
+  "harvest": "short brown-orange upright catkins on bare twigs, or the aromatic leaves",
+  "mustRead": [
+   "stiff upright reddish-brown twigs",
+   "small blunt-tipped leaves toothed only near the end",
+   "stubby orange catkins on leafless stems in spring"
+  ]
+ },
+ {
+  "name": "Sagebrush",
+  "form": "shrub",
+  "aspect": 1.1,
+  "leaf": "small wedge-shaped leaves with three blunt teeth at the tip, densely hairy",
+  "leafColour": "silver grey",
+  "harvest": "slim wands of tiny dull yellow flower heads above the foliage",
+  "mustRead": [
+   "three-toothed wedge leaf tip",
+   "silver-grey felted foliage on shredding grey bark",
+   "twisted gnarled woody trunk"
+  ]
+ },
+ {
+  "name": "Bitterroot",
+  "form": "succulent",
+  "aspect": 1.5,
+  "leaf": "a ground-level rosette of short fleshy cylindrical leaves that wither as the flower opens",
+  "leafColour": "grey green, fleshy",
+  "harvest": "a thick pale forked tap root, peeled to a white core",
+  "mustRead": [
+   "large many-petalled pink flower sitting flat on bare gravelly ground",
+   "fleshy finger-like leaves already shrivelling",
+   "no visible stem"
+  ]
+ },
+ {
+  "name": "Wild Mustard",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "lower leaves lobed with a big end lobe, upper leaves narrow and toothed, bristly",
+  "leafColour": "mid green, rough-hairy",
+  "harvest": "clusters of four-petalled yellow flowers, and slim beaked seed pods",
+  "mustRead": [
+   "four petals in a cross",
+   "slender pods held out from the stem with a pointed beak",
+   "flowers at the tip with pods forming below"
+  ]
+ },
+ {
+  "name": "Rabbitbrush",
+  "form": "shrub",
+  "aspect": 1.1,
+  "leaf": "very narrow thread-like leaves, alternate, on white-felted flexible stems",
+  "leafColour": "grey green on white-woolly stems",
+  "harvest": "dense flat-topped clusters of small bright golden flower heads with no ray petals",
+  "mustRead": [
+   "rounded broom of white-felted stems",
+   "solid gold flat-topped flower masses on top",
+   "thin thread-like leaves"
+  ]
+ },
+ {
+  "name": "Serviceberry",
+  "form": "shrub",
+  "aspect": 0.9,
+  "leaf": "oval finely toothed leaves, alternate, toothed mainly toward the tip",
+  "leafColour": "mid green, bluish when young, orange-red in autumn",
+  "harvest": "small round purple-blue pomes with a five-pointed crown at the tip",
+  "mustRead": [
+   "clusters of white flowers with narrow strap-shaped petals before the leaves",
+   "blue-purple berries with a starry crown scar",
+   "slim grey multi-stemmed trunks"
+  ]
+ },
+ {
+  "name": "Chokecherry",
+  "form": "shrub",
+  "aspect": 0.9,
+  "leaf": "broad oval finely sharp-toothed leaves with an abrupt point, alternate",
+  "leafColour": "dark glossy green above, paler beneath",
+  "harvest": "a drooping cylindrical raceme of small dark red-black cherries",
+  "mustRead": [
+   "long bottlebrush raceme of white flowers, later of cherries",
+   "fruit in a hanging cylinder, not in loose bunches",
+   "glossy toothed oval leaf"
+  ]
+ },
+ {
+  "name": "Date Palm",
+  "form": "palm",
+  "aspect": 0.6,
+  "leaf": "long pinnate fronds with stiff grey-green leaflets, spines near the frond base",
+  "leafColour": "blue-grey green",
+  "harvest": "huge hanging bunches of amber-brown dates on orange stalks below the crown",
+  "mustRead": [
+   "shaggy trunk patterned with old leaf-base diamonds",
+   "stiff arching feather fronds forming an open crown",
+   "heavy date bunches hanging under the fronds"
+  ]
+ },
+ {
+  "name": "Agave",
+  "form": "succulent",
+  "aspect": 1.2,
+  "leaf": "thick rigid sword-shaped leaves in a tight ground rosette, hooked teeth on the edges and a hard black terminal spine",
+  "leafColour": "blue-grey green",
+  "harvest": "the sweet central heart, or nectar from the flower stalk",
+  "mustRead": [
+   "symmetrical rosette of rigid pointed swords",
+   "black spine at each leaf tip and teeth along the edges",
+   "faint bud-imprint lines on the leaf faces"
+  ]
+ },
+ {
+  "name": "Desert Melon",
+  "form": "vine",
+  "aspect": 2.6,
+  "leaf": "deeply lobed rough leaves along ground-trailing stems with coiled tendrils",
+  "leafColour": "grey green, bristly",
+  "harvest": "a hard smooth round melon the size of an orange, green marbled and ripening yellow",
+  "mustRead": [
+   "long trailing runners flat on sand",
+   "small hard mottled round fruit",
+   "yellow five-lobed flowers"
+  ],
+  "note": "Interpreted as the desert colocynth/tsamma type; small hard fruit, not a cultivated melon."
+ },
+ {
+  "name": "Mesquite",
+  "form": "tree",
+  "aspect": 1.4,
+  "leaf": "bipinnate with many tiny paired leaflets, giving a fine lacy texture",
+  "leafColour": "bright yellow green",
+  "harvest": "straight or curved pale straw-coloured seed pods hanging in bunches",
+  "mustRead": [
+   "fine feathery bipinnate foliage",
+   "paired straight thorns at the nodes",
+   "crooked low-branching dark trunk with a wide flat crown"
+  ]
+ },
+ {
+  "name": "Desert Sage",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "small spoon-shaped leaves clustered along woody stems, densely short-hairy",
+  "leafColour": "silver grey",
+  "harvest": "whorled spikes of vivid blue-violet lipped flowers with reddish bracts",
+  "mustRead": [
+   "silver-white foliage with intense blue flower whorls",
+   "rounded low woody bush",
+   "flowers in stacked rings up the stem tip"
+  ],
+  "note": "Interpreted as Salvia dorrii, the true desert sage, not sagebrush."
+ },
+ {
+  "name": "Wild Chili",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "small smooth pointed oval leaves on thin much-branched woody stems",
+  "leafColour": "mid green",
+  "harvest": "tiny round or bullet-shaped red fruits standing upright above the leaves",
+  "mustRead": [
+   "pea-sized round scarlet fruits pointing upward",
+   "small white star flowers",
+   "scrambling wiry many-branched bush"
+  ]
+ },
+ {
+  "name": "Saltbush",
+  "form": "shrub",
+  "aspect": 1.2,
+  "leaf": "small thick oval leaves coated in mealy salt-white bladder hairs, alternate",
+  "leafColour": "silver grey, almost white",
+  "harvest": "clusters of small papery winged seed bracts, or the salty leaves",
+  "mustRead": [
+   "chalky white-grey foliage",
+   "dense stiff rounded twiggy mound",
+   "small papery fan-shaped seed bracts"
+  ]
+ },
+ {
+  "name": "Tamarisk",
+  "form": "tree",
+  "aspect": 1.1,
+  "leaf": "minute scale leaves sheathing thin whippy twigs, like a cypress or a feather",
+  "leafColour": "blue-grey green",
+  "harvest": "plumes of tiny pink flowers massed at the branch tips",
+  "mustRead": [
+   "feathery scale-clad twigs, no broad leaves",
+   "clouds of fine pink flower plumes",
+   "slender arching wind-blown branches"
+  ]
+ },
+ {
+  "name": "Desert Rose",
+  "form": "succulent",
+  "aspect": 1,
+  "leaf": "glossy spoon-shaped leaves in tufts only at the branch tips",
+  "leafColour": "dark glossy green",
+  "harvest": "trumpet flowers in deep pink with pale throats, clustered at the tips",
+  "mustRead": [
+   "hugely swollen bulbous grey caudex base",
+   "few thick stubby branches",
+   "bare stems with leaves and flowers only at the ends"
+  ],
+  "note": "Adenium obesum; the fat bottle-shaped trunk is the whole point, not a rose bush."
+ },
+ {
+  "name": "Calotropis",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "large thick oval leaves in opposite pairs clasping the stem, waxy and downy",
+  "leafColour": "pale grey green, almost chalky",
+  "harvest": "clusters of waxy white-and-purple star flowers, or inflated grey-green pods full of silk-tufted seeds",
+  "mustRead": [
+   "huge pale opposite leaves clasped tight to a thick stem",
+   "waxy five-pointed star flowers with a purple-tipped crown",
+   "big inflated curved balloon pods"
+  ],
+  "note": "Bleeds thick white latex when broken; leaves look dusted with chalk."
+ },
+ {
+  "name": "Yucca",
+  "form": "shrub",
+  "aspect": 0.8,
+  "leaf": "stiff sword-shaped leaves in a dense rosette, often with curling white fibres peeling from the edges",
+  "leafColour": "blue-grey green",
+  "harvest": "a tall panicle of waxy creamy-white hanging bells, later fleshy pods",
+  "mustRead": [
+   "rosette of rigid pointed swords with a sharp tip",
+   "curly white threads along the leaf edges",
+   "tall central spike of cream bells"
+  ]
+ },
+ {
+  "name": "Barrel Cactus Fruit",
+  "form": "cactus",
+  "aspect": 0.9,
+  "leaf": "no leaves; a squat ribbed barrel body with rows of stout hooked spines along each rib crest",
+  "leafColour": "grey green body under red-brown spines",
+  "harvest": "a ring of scaly yellow barrel-shaped fruits crowded at the crown",
+  "mustRead": [
+   "fat ribbed barrel with accordion ribs",
+   "flat-topped crown ringed with yellow fruit",
+   "long flattened hooked central spines"
+  ]
+ },
+ {
+  "name": "Pinyon Pine",
+  "form": "tree",
+  "aspect": 1.1,
+  "leaf": "short stiff needles in bundles of two, densely packed on stubby twigs",
+  "leafColour": "dark blue-green",
+  "harvest": "small squat rounded cones opening to reveal fat brown edible nuts",
+  "mustRead": [
+   "short blunt needles in pairs",
+   "small egg-shaped cone with thick blunt scales",
+   "low rounded bushy crown on a crooked trunk"
+  ],
+  "note": "Not a tall conifer spire; pinyon is short, wide and rounded."
+ },
+ {
+  "name": "Desert Mint",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "small narrow leaves in opposite pairs on square woody-based stems",
+  "leafColour": "grey green",
+  "harvest": "whorled clusters of small lavender-pink tubular flowers at the leaf axils",
+  "mustRead": [
+   "square stem",
+   "small greyish paired leaves",
+   "rings of lavender tube flowers up the stem"
+  ],
+  "note": "Generic; interpreted as a dryland mint (Poliomintha-type), grey-leaved and shrubbier than garden mint."
+ },
+ {
+  "name": "Creosote Bush",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "tiny paired leaflets joined at the base into a V, resinous and varnished",
+  "leafColour": "dark olive green, glossy with resin",
+  "harvest": "small five-petalled yellow flowers with twisted petals, then fuzzy white seed balls",
+  "mustRead": [
+   "open airy widely spaced branches",
+   "tiny two-lobed varnished leaflets",
+   "cotton-white fuzzy round seed capsules"
+  ]
+ },
+ {
+  "name": "Mormon Tea",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "no true leaves; stiff green jointed rods with tiny brown scales at each node",
+  "leafColour": "yellow green to olive",
+  "harvest": "small papery cones at the joints, or the green stems for tea",
+  "mustRead": [
+   "upright broom of bare green jointed stems",
+   "swollen nodes with a paper collar of scales",
+   "no foliage at all"
+  ]
+ },
+ {
+  "name": "Wild Rhubarb",
+  "form": "herb",
+  "aspect": 1,
+  "leaf": "very large crinkled triangular-heart leaves with wavy margins, on thick ribbed stalks from the base",
+  "leafColour": "dark green with red-flushed stalks and veins",
+  "harvest": "thick red-green leaf stalks, or a tall foamy cream flower spire",
+  "mustRead": [
+   "huge puckered rough-textured basal leaves",
+   "stout red-tinged ribbed stalks",
+   "everything springing from a crown at ground level"
+  ]
+ },
+ {
+  "name": "Glasswort",
+  "form": "succulent",
+  "aspect": 1.2,
+  "leaf": "no visible leaves; fleshy jointed cylindrical segments stacked like tiny sausages",
+  "leafColour": "bright translucent green, reddening to crimson with age",
+  "harvest": "the tender jointed green shoot tips",
+  "mustRead": [
+   "leafless articulated fleshy stems",
+   "branching in opposite pairs like small candelabra",
+   "red flush on older segments"
+  ]
+ },
+ {
+  "name": "Sea Purslane",
+  "form": "succulent",
+  "aspect": 2.4,
+  "leaf": "thick fleshy narrow leaves in opposite pairs on sprawling reddish stems",
+  "leafColour": "mid green with red-purple stems",
+  "harvest": "small pink-purple star flowers set in the leaf axils, and the succulent shoots",
+  "mustRead": [
+   "low mat sprawling flat and rooting at the nodes",
+   "plump narrow succulent leaves",
+   "pink star flower tucked against the stem"
+  ]
+ },
+ {
+  "name": "Saltgrass",
+  "form": "grass",
+  "aspect": 1.3,
+  "leaf": "short stiff narrow blades in two ranks along the stem, sharply pointed and often inrolled",
+  "leafColour": "blue-grey green, often salt-crusted",
+  "harvest": "small pale straw-coloured seed spikelets in a compact head",
+  "mustRead": [
+   "short wiry turf spreading by runners",
+   "leaves stiffly two-ranked like little combs",
+   "compact narrow seed head"
+  ]
+ },
+ {
+  "name": "Samphire",
+  "form": "herb",
+  "aspect": 1.4,
+  "leaf": "fleshy blue-green leaves divided into thick finger-like segments",
+  "leafColour": "blue-grey green",
+  "harvest": "the succulent leafy shoots, and flat yellow-green umbels of tiny flowers",
+  "mustRead": [
+   "stout succulent finger-lobed leaves",
+   "flat-topped greenish-yellow umbel",
+   "low bushy clump on rock"
+  ],
+  "note": "Interpreted as rock samphire (Crithmum maritimum); marsh samphire is listed separately as Glasswort."
+ },
+ {
+  "name": "Sea Lavender",
+  "form": "herb",
+  "aspect": 1.1,
+  "leaf": "leathery spoon-shaped leaves in a flat basal rosette",
+  "leafColour": "dark green, slightly leathery",
+  "harvest": "a wide airy branched spray of tiny papery violet-blue flowers",
+  "mustRead": [
+   "flat-topped cloud of tiny papery blue-violet flowers",
+   "wiry branching flower stems with no leaves on them",
+   "leathery rosette pressed to the mud"
+  ],
+  "note": "Not related to lavender; the flower head is a broad flat spray, not a spike."
+ },
+ {
+  "name": "Date",
+  "form": "palm",
+  "aspect": 0.6,
+  "leaf": "long stiff pinnate fronds with grey-green leaflets in a V-section",
+  "leafColour": "blue-grey green",
+  "harvest": "a heavy hanging bunch of oval amber-to-dark-brown fruits on orange strands",
+  "mustRead": [
+   "massive fruit bunch hanging from the crown on orange stalks",
+   "arching feather fronds",
+   "rough diamond-patterned trunk"
+  ],
+  "note": "The fruit of the date palm; drawn as the fruiting palm with the bunch prominent."
+ },
+ {
+  "name": "Orange",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "glossy oval leaves with a slightly winged stalk, alternate, evergreen",
+  "leafColour": "dark glossy green",
+  "harvest": "round orange fruits with pitted rind, hanging singly among the leaves",
+  "mustRead": [
+   "dense rounded evergreen crown",
+   "glossy pointed oval leaf with a small wing on the stalk",
+   "white five-petal flowers alongside ripe fruit"
+  ]
+ },
+ {
+  "name": "Lemon",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "oval pointed leaves with finely toothed edges, alternate, on thorny twigs",
+  "leafColour": "mid to dark green, reddish when young",
+  "harvest": "oval yellow fruits with a nipple at the tip, hanging among the leaves",
+  "mustRead": [
+   "yellow fruit with a distinct pointed nipple end",
+   "sharp thorns at the leaf joints",
+   "open straggly crown with purple-flushed flower buds"
+  ]
+ },
+ {
+  "name": "Cucumber",
+  "form": "vine",
+  "aspect": 2,
+  "leaf": "large triangular-lobed rough hairy leaves, alternate, with unbranched coiled tendrils",
+  "leafColour": "mid green, bristly",
+  "harvest": "a long ridged dark green fruit with bumpy warted skin, hanging under the leaves",
+  "mustRead": [
+   "bristly heart-triangular lobed leaf",
+   "single spiral tendril at each node",
+   "warted elongated fruit and yellow star flowers"
+  ]
+ },
+ {
+  "name": "Melon",
+  "form": "vine",
+  "aspect": 2.2,
+  "leaf": "rounded shallowly lobed rough leaves on trailing hairy stems with tendrils",
+  "leafColour": "mid green, slightly grey and hairy",
+  "harvest": "a round or oval fruit with netted or ribbed tan-green skin",
+  "mustRead": [
+   "ground-trailing runner with coiled tendrils",
+   "rounded lobed hairy leaf",
+   "netted-skinned round fruit resting on the ground"
+  ]
+ },
+ {
+  "name": "Arctic Blueberry",
+  "form": "shrub",
+  "aspect": 1.6,
+  "leaf": "small oval untoothed leaves with a blue cast and net veins beneath, alternate",
+  "leafColour": "blue-grey green, turning scarlet in autumn",
+  "harvest": "round blue-black berries with a pale waxy bloom",
+  "mustRead": [
+   "low sprawling dwarf shrub, wider than tall",
+   "small blunt blue-green leaves",
+   "waxy-bloomed blue berries scattered singly"
+  ]
+ },
+ {
+  "name": "Arctic Sorrel",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "long-stalked oblong to arrow-based basal leaves rising from a stout rootstock",
+  "leafColour": "fresh mid green",
+  "harvest": "a dense spire of rose-pink papery seed discs, or the sour leaves",
+  "mustRead": [
+   "clump of long-stalked basal leaves",
+   "bright pink-red papery seed spire",
+   "reddish stems"
+  ]
+ },
+ {
+  "name": "Purple Saxifrage",
+  "form": "herb",
+  "aspect": 2.2,
+  "leaf": "tiny thick scale-like leaves in opposite pairs, packed along creeping stems into a cushion",
+  "leafColour": "dark grey green, lime-crusted at the tips",
+  "harvest": "small magenta-purple five-petalled flowers sitting directly on the cushion",
+  "mustRead": [
+   "tight low mat or cushion hugging the rock",
+   "flowers stemless, resting on the foliage",
+   "vivid magenta-purple petals against tiny dark leaves"
+  ]
+ },
+ {
+  "name": "Arctic Willow",
+  "form": "shrub",
+  "aspect": 2.8,
+  "leaf": "small rounded oval leaves, glossy above, silky-hairy beneath, alternate on creeping stems",
+  "leafColour": "dark glossy green above, silvery beneath",
+  "harvest": "upright fuzzy catkins, red or yellow, standing above the mat",
+  "mustRead": [
+   "prostrate mat creeping over the ground, only a few centimetres tall",
+   "upright red-tinged fuzzy catkins",
+   "small glossy round leaves"
+  ],
+  "note": "A true willow but ground-hugging; never draw it as an upright tree."
+ },
+ {
+  "name": "Reindeer Lichen",
+  "form": "moss",
+  "aspect": 1,
+  "leaf": "no leaves; hollow branching stalks forking again and again into a spongy antler-like tangle",
+  "leafColour": "pale grey white, faintly greenish when damp",
+  "harvest": "handfuls of the springy pale mat",
+  "mustRead": [
+   "repeatedly forking antler branching",
+   "chalky grey-white colour, not green",
+   "spongy cushion mat with no stem or leaves"
+  ],
+  "note": "A lichen, not a moss or plant; classed as moss here only because the form list has no lichen option."
+ },
+ {
+  "name": "Mountain Cranberry",
+  "form": "shrub",
+  "aspect": 1.5,
+  "leaf": "small thick glossy oval leaves with rolled-under edges, dark-dotted beneath, evergreen",
+  "leafColour": "dark glossy green",
+  "harvest": "clusters of bright scarlet round berries at the shoot tips",
+  "mustRead": [
+   "low evergreen creeping mat",
+   "small leathery glossy leaves notched at the tip",
+   "tight nodding clusters of red berries at the stem ends"
+  ]
+ },
+ {
+  "name": "Alpine Sorrel",
+  "form": "herb",
+  "aspect": 0.9,
+  "leaf": "kidney-shaped (reniform) fleshy leaves on long stalks, all in a low basal rosette",
+  "leafColour": "bright fresh green, often flushed red at the margins and stalks",
+  "harvest": "loose spike of small papery seeds that ripen crimson-pink, held above the leaves",
+  "mustRead": [
+   "kidney-shaped basal leaves",
+   "red-pink winged seed spike on bare stem",
+   "tight low alpine cushion"
+  ],
+  "note": "Not a dock; leaves are round-kidney, never long and lance-shaped."
+ },
+ {
+  "name": "Sea Kale",
+  "form": "herb",
+  "aspect": 1.3,
+  "leaf": "huge thick wavy-crinkled ovate leaves with lobed undulating edges, in a spreading basal mound",
+  "leafColour": "glaucous blue-grey green with a waxy bloom, purple-tinted when young",
+  "harvest": "dome of tiny four-petalled white flowers held in a broad froth above the leaves",
+  "mustRead": [
+   "cabbage-sized crinkled blue-grey leaves",
+   "low spreading dome shape",
+   "white flower cloud on top"
+  ]
+ },
+ {
+  "name": "Scurvy Grass",
+  "form": "herb",
+  "aspect": 1.4,
+  "leaf": "small fleshy heart-shaped to kidney-shaped stalked leaves, forming a sprawling low mat",
+  "leafColour": "glossy mid-green, slightly succulent-looking",
+  "harvest": "clusters of tiny four-petalled white flowers, followed by round swollen pods",
+  "mustRead": [
+   "fleshy heart-shaped little leaves",
+   "sprawling low cushion",
+   "small white cross-shaped flowers"
+  ],
+  "note": "Despite the name it is not a grass; it is a small cress-like herb."
+ },
+ {
+  "name": "Sea Rocket",
+  "form": "herb",
+  "aspect": 1.6,
+  "leaf": "thick succulent pinnately lobed leaves with rounded lobes, alternate on sprawling zigzag stems",
+  "leafColour": "pale fleshy blue-green",
+  "harvest": "pale lilac to white four-petalled flowers and fat two-jointed corky seed pods",
+  "mustRead": [
+   "fleshy lobed leaves",
+   "sprawling zigzag branching over sand",
+   "lilac cross-shaped flowers with jointed pods"
+  ]
+ },
+ {
+  "name": "Beach Pea",
+  "form": "vine",
+  "aspect": 1.8,
+  "leaf": "pinnate leaves of 3-5 pairs of thick oval leaflets ending in a curling tendril, with big leafy stipules at the base",
+  "leafColour": "waxy blue-green",
+  "harvest": "clusters of purple-magenta pea flowers fading to blue, and flat green pea pods",
+  "mustRead": [
+   "pea flowers in purple-blue clusters",
+   "paired oval leaflets ending in tendrils",
+   "low sprawling mat, not upright"
+  ]
+ },
+ {
+  "name": "Kelp",
+  "form": "seaweed",
+  "aspect": 0.35,
+  "leaf": "no true leaves; a broad strap-like blade, often split into finger-like segments, rising from a stiff stipe",
+  "leafColour": "olive-brown to dark chocolate, glossy and rubbery",
+  "harvest": "the blade itself; no fruit or flower",
+  "mustRead": [
+   "root-like claw holdfast gripping rock",
+   "stiff stipe stalk",
+   "wide flapping brown blade"
+  ],
+  "note": "Generic name; drawn here as a representative Laminaria oarweed. Kelp has no roots, only a gripping holdfast."
+ },
+ {
+  "name": "Sea Lettuce",
+  "form": "seaweed",
+  "aspect": 1,
+  "leaf": "no true leaves; thin translucent membranous sheets with wildly ruffled crinkled edges",
+  "leafColour": "vivid translucent grass-green, almost glowing",
+  "harvest": "the sheets themselves; no fruit or flower",
+  "mustRead": [
+   "paper-thin translucent green sheets",
+   "ruffled lettuce-like frilled margins",
+   "tiny disc holdfast at the base"
+  ]
+ },
+ {
+  "name": "Red Algae",
+  "form": "seaweed",
+  "aspect": 1,
+  "leaf": "no true leaves; finely and repeatedly branched feathery or flattened fronds from a small holdfast",
+  "leafColour": "deep crimson to purplish-red, often with iridescent sheen",
+  "harvest": "the fronds themselves; no fruit or flower",
+  "mustRead": [
+   "fine repeatedly forking branch structure",
+   "deep red-purple colour",
+   "small disc holdfast"
+  ],
+  "note": "Generic group name; drawn as a representative branching red seaweed such as Chondrus or Plocamium."
+ },
+ {
+  "name": "Green Algae",
+  "form": "seaweed",
+  "aspect": 1.1,
+  "leaf": "no true leaves; soft hair-like filaments or tubular strands in loose tufts",
+  "leafColour": "bright grass-green to yellow-green",
+  "harvest": "the filaments themselves; no fruit or flower",
+  "mustRead": [
+   "soft hair-like green filaments",
+   "loose drifting tuft with no stem",
+   "bright yellow-green colour"
+  ],
+  "note": "Generic group name; drawn as a representative filamentous green alga such as Cladophora."
+ },
+ {
+  "name": "Juniper Berries",
+  "form": "shrub",
+  "aspect": 0.8,
+  "leaf": "stiff sharp needle-like leaves in whorls of three, each with a white band on the upper surface",
+  "leafColour": "dark blue-green with pale silvery-white stripe on each needle",
+  "harvest": "round berry-like cones, green in the first year ripening to blue-black under a pale waxy bloom",
+  "mustRead": [
+   "prickly needles in threes with white stripe",
+   "round blue-black berries with dusty bloom",
+   "dense scruffy conical or sprawling bush"
+  ]
+ },
+ {
+  "name": "Wild Guava",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "opposite oblong leaves with strongly impressed parallel side veins giving a quilted look",
+  "leafColour": "matt mid-green, paler and downy beneath",
+  "harvest": "round to pear-shaped fruit ripening pale yellow-green, plus white flowers with a burst of stamens",
+  "mustRead": [
+   "smooth mottled flaking copper-and-grey bark",
+   "quilted parallel-veined opposite leaves",
+   "yellow-green fruit with dried calyx crown at the tip"
+  ]
+ },
+ {
+  "name": "Cliff Rose",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "tiny wedge-shaped leaves with 3-5 blunt lobes, thick and resinous, clustered along twiggy branches",
+  "leafColour": "dull dark green above, white-woolly beneath",
+  "harvest": "cream to pale yellow five-petalled rose-like flowers, then seeds with long feathery curling plume tails",
+  "mustRead": [
+   "tiny three-lobed wedge leaves",
+   "cream five-petal roses with yellow centre",
+   "silvery feather-plumed seed tails covering the bush"
+  ],
+  "note": "Flowers are cream-yellow, not pink; it is a desert rose relative, not a garden rose."
+ },
+ {
+  "name": "Wild Thyme",
+  "form": "herb",
+  "aspect": 2,
+  "leaf": "tiny paired oval leaves in opposite pairs along thin square woody stems, forming a flat creeping mat",
+  "leafColour": "dark grey-green, sometimes bronzed",
+  "harvest": "dense rounded heads of small two-lipped pink-purple flowers",
+  "mustRead": [
+   "ground-hugging mat much wider than tall",
+   "minute paired leaves",
+   "domed pink-purple flower heads"
+  ]
+ },
+ {
+  "name": "Cave Fern",
+  "form": "fern",
+  "aspect": 1.1,
+  "leaf": "soft thin once-pinnate fronds, arching outward and downward from a short crown wedged in rock",
+  "leafColour": "deep shade-green, thin enough to look translucent",
+  "harvest": "none visible (rows of brown spore dots on the frond undersides)",
+  "mustRead": [
+   "arching fronds spilling from a rock crevice",
+   "thin soft shade-green pinnae",
+   "no flowers, spore dots beneath"
+  ],
+  "note": "Not a real taxon; interpreted as a generic shade-dwelling crevice fern in the spleenwort mould."
+ },
+ {
+  "name": "Maidenhair Fern",
+  "form": "fern",
+  "aspect": 1.1,
+  "leaf": "fan-shaped or wedge-shaped little leaflets with scalloped outer edges, held on branching hair-fine stems",
+  "leafColour": "fresh light apple-green",
+  "harvest": "none visible (spores under the folded leaflet edges)",
+  "mustRead": [
+   "glossy wiry jet-black stems",
+   "fan-shaped scalloped leaflets",
+   "airy open lacy spray, not a dense shuttlecock"
+  ],
+  "note": "The black wire stalks are the whole identity; drawn with green stalks it is unrecognisable."
+ },
+ {
+  "name": "Hardy Fern",
+  "form": "fern",
+  "aspect": 0.9,
+  "leaf": "sturdy twice-pinnate lance-shaped fronds arranged in an upright funnel or shuttlecock from a central crown",
+  "leafColour": "deep glossy green, with brown scaly stem bases",
+  "harvest": "none visible (round brown spore dots on the undersides)",
+  "mustRead": [
+   "shuttlecock rosette of upright fronds",
+   "twice-cut lance-shaped blades",
+   "scaly brown stalk bases"
+  ],
+  "note": "Generic name; interpreted as a representative male fern / Dryopteris type."
+ },
+ {
+  "name": "Lichen",
+  "form": "moss",
+  "aspect": 1.4,
+  "leaf": "no leaves; flat overlapping leathery lobes spreading in a rosette on rock, or fine antler-like branching tufts",
+  "leafColour": "grey-green to sage, often with chalky white, sulphur-yellow or rust-orange patches",
+  "harvest": "the thallus crust itself; no fruit or flower (only small cup-shaped fruiting discs)",
+  "mustRead": [
+   "flat crusty rosette clinging to rock or bark",
+   "lobed edges with a paler chalky margin",
+   "small raised cup discs on the surface"
+  ],
+  "note": "Not a plant and has no stems or roots; drawn as a crust or antler-tuft on a substrate, never as foliage."
+ },
+ {
+  "name": "Rush Shoots",
+  "form": "grass",
+  "aspect": 0.5,
+  "leaf": "leaves reduced to nothing; the plant is a tight bundle of smooth cylindrical pointed stems",
+  "leafColour": "glossy mid to dark green, straw-brown at the base",
+  "harvest": "a tight brown flower cluster bursting sideways out of the stem near the top",
+  "mustRead": [
+   "round smooth needle-straight stems, not flat blades",
+   "flower cluster on the SIDE of the stem, tip continuing past it",
+   "dense tuft from a wet base"
+  ],
+  "note": "Rushes are round and leafless; drawing flat grass blades makes them read as sedge or grass."
+ },
+ {
+  "name": "Brooklime",
+  "form": "herb",
+  "aspect": 1.8,
+  "leaf": "opposite fleshy oval leaves with slightly toothed edges, on thick hollow reddish sprawling stems",
+  "leafColour": "glossy fresh green, slightly succulent",
+  "harvest": "loose spikes of small bright blue flowers with a white eye, rising from the leaf joints",
+  "mustRead": [
+   "fleshy paired oval leaves",
+   "sprawling in shallow water with rooting stems",
+   "sprays of small blue white-eyed flowers"
+  ]
+ },
+ {
+  "name": "Fiddlehead Fern",
+  "form": "fern",
+  "aspect": 0.9,
+  "leaf": "young fronds tightly coiled into spirals like a violin scroll, unrolling into tall feathery once-pinnate blades",
+  "leafColour": "vivid spring-green, croziers wrapped in papery brown scales",
+  "harvest": "the tight green coiled croziers at the centre of the crown",
+  "mustRead": [
+   "tight spiral crozier coils standing in the middle",
+   "vase-shaped ring of unfurling fronds around them",
+   "papery brown scale husks on the coils"
+  ]
+ },
+ {
+  "name": "Riverbank Nettle",
+  "form": "herb",
+  "aspect": 0.5,
+  "leaf": "opposite heart-shaped pointed leaves with coarse saw-toothed edges, in decussate pairs up a square stem",
+  "leafColour": "dull dark green with a slightly hairy matt surface",
+  "harvest": "drooping tassels of tiny green flowers hanging from the leaf joints, and the young top leaves",
+  "mustRead": [
+   "paired toothed heart-shaped leaves up a straight square stem",
+   "fine stinging hairs on stems and leaves",
+   "dangling green flower tassels at the leaf joints"
+  ]
+ },
+ {
+  "name": "Willow",
+  "form": "tree",
+  "aspect": 1.1,
+  "leaf": "long narrow lance-shaped leaves with fine-toothed edges, alternate on very slender flexible twigs",
+  "leafColour": "mid-green above, distinctly silvery-pale underneath so the crown flickers",
+  "harvest": "soft silvery-grey catkins that turn fluffy yellow with pollen",
+  "mustRead": [
+   "mass of long slender drooping whip-like twigs",
+   "narrow lance leaves showing pale undersides",
+   "fissured grey trunk often leaning over water"
+  ]
+ },
+ {
+  "name": "Cassava",
+  "form": "shrub",
+  "aspect": 0.8,
+  "leaf": "large palmate leaves deeply split into 5-7 long narrow finger-like lobes, on long stalks",
+  "leafColour": "mid to dark green blades with striking red or pink leaf stalks",
+  "harvest": "a cluster of long tapering brown-skinned tuberous roots at the stem base",
+  "mustRead": [
+   "hand-shaped leaf of narrow pointed fingers",
+   "red petioles on knobbly cane-like stems",
+   "fat tapering tubers radiating from the base"
+  ]
+ },
+ {
+  "name": "Water Spinach",
+  "form": "aquatic",
+  "aspect": 2.2,
+  "leaf": "arrowhead to narrow heart-shaped leaves, alternate along hollow jointed floating stems",
+  "leafColour": "bright fresh green, tender and glossy",
+  "harvest": "white to pale mauve funnel-shaped morning-glory flowers with a purple throat, plus the leafy shoot tips",
+  "mustRead": [
+   "hollow trailing stems floating on water and rooting at the joints",
+   "arrow-shaped tender leaves",
+   "white funnel flowers with darker throat"
+  ]
+ },
+ {
+  "name": "Arrowhead",
+  "form": "aquatic",
+  "aspect": 0.8,
+  "leaf": "bold arrow-shaped emergent leaves with two long backward-pointing lobes, on long spongy triangular stalks",
+  "leafColour": "clean mid-green, matt",
+  "harvest": "whorls of three-petalled white flowers with a dark purple centre, on a stalk above the leaves; starchy tubers below the mud",
+  "mustRead": [
+   "unmistakable arrowhead leaf silhouette",
+   "leaves rising straight out of shallow water",
+   "whorled three-petal white flowers up a bare stem"
+  ]
+ },
+ {
+  "name": "Papyrus",
+  "form": "grass",
+  "aspect": 0.5,
+  "leaf": "leaves reduced to brown sheaths at the base; a tall smooth triangular stem topped by a huge burst of thread-like rays",
+  "leafColour": "bright green stem and rays",
+  "harvest": "brownish grassy flower spikelets at the tips of the radiating threads",
+  "mustRead": [
+   "firework explosion of fine drooping threads at the very top",
+   "tall bare three-sided stem with no leaves along it",
+   "clumping from a thick rhizome in water"
+  ]
+ },
+ {
+  "name": "Duckweed",
+  "form": "aquatic",
+  "aspect": 2.5,
+  "leaf": "no true leaves; tiny flat oval floating fronds a few millimetres across, budding off in pairs and threes",
+  "leafColour": "bright light green above, sometimes reddish beneath",
+  "harvest": "none visible",
+  "mustRead": [
+   "carpet of tiny oval green discs floating on the surface",
+   "one fine hair root hanging from each disc",
+   "no stem, no upright structure at all"
+  ]
+ },
+ {
+  "name": "Bog Rosemary",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "narrow leathery leaves with edges rolled tightly under, alternate on thin wiry stems",
+  "leafColour": "dark blue-green above, chalky white underneath",
+  "harvest": "nodding clusters of small pink urn-shaped bell flowers at the shoot tips",
+  "mustRead": [
+   "narrow inrolled leaves flashing white undersides",
+   "drooping pink urn-shaped bells",
+   "small sparse wiry bush in moss"
+  ]
+ },
+ {
+  "name": "Sundew",
+  "form": "carnivorous",
+  "aspect": 1.2,
+  "leaf": "round or spoon-shaped paddle leaves on slender stalks, laid flat in a small rosette, each covered in glandular tentacles",
+  "leafColour": "green flushed crimson, with red tentacles tipped in clear glue drops",
+  "harvest": "a slender curved stalk of small white or pink five-petalled flowers held well above the traps",
+  "mustRead": [
+   "red tentacle hairs each holding a glistening dew droplet",
+   "flat ground-level rosette of paddle leaves",
+   "flower stalk arching up on a scorpion-tail curve"
+  ]
+ },
+ {
+  "name": "Pitcher Plant",
+  "form": "carnivorous",
+  "aspect": 0.7,
+  "leaf": "leaves rolled into upright hollow trumpets that flare at the mouth, each capped by an overhanging hood",
+  "leafColour": "yellow-green with crimson veining, the mouth and hood strongly red-netted",
+  "harvest": "a single nodding umbrella-shaped red or yellow flower on a tall bare stalk",
+  "mustRead": [
+   "upright tubular trumpets flaring at the top",
+   "hood arching over the open mouth",
+   "red vein network on the pitcher throat"
+  ],
+  "note": "Drawn here as an upright American Sarracenia; the Asian Nepenthes type instead dangles its pitchers from leaf-tip tendrils."
+ },
+ {
+  "name": "Beach Plum",
+  "form": "shrub",
+  "aspect": 1.2,
+  "leaf": "oval finely toothed leaves with a pointed tip, alternate on stiff dark twigs",
+  "leafColour": "dull dark green above, paler and downy beneath",
+  "harvest": "round purple-blue plums with a dusty bloom, in tight clusters against the twigs",
+  "mustRead": [
+   "dense low thicket wider than tall",
+   "smother of small white five-petal blossom in flower",
+   "clusters of dusty purple plums held tight to the branches"
+  ]
+ },
+ {
+  "name": "Sea Grape",
+  "form": "shrub",
+  "aspect": 1.3,
+  "leaf": "large round leathery plate-like leaves with a heart-shaped base, alternate and held almost flat",
+  "leafColour": "glossy deep green with bold red-pink veins, older leaves turning orange-red",
+  "harvest": "long hanging strings of round grape-like fruit ripening from green to purple-red",
+  "mustRead": [
+   "dinner-plate round leathery leaves with red veins",
+   "dangling grape-like fruit strings",
+   "low windswept spreading habit"
+  ],
+  "note": "Not a true grape and not a vine; it is a stout coastal shrub or small tree with rigid round leaves."
+ },
+ {
+  "name": "Beach Morning Glory",
+  "form": "vine",
+  "aspect": 2.8,
+  "leaf": "thick leathery leaves notched at the tip into two rounded lobes like a goat's hoof print",
+  "leafColour": "glossy deep green, very waxy",
+  "harvest": "large funnel-shaped pink-purple flowers with a darker star-shaped throat",
+  "mustRead": [
+   "long straight runners creeping flat across sand",
+   "two-lobed goat's-foot leaf notch",
+   "big pink-magenta funnel flowers"
+  ]
+ },
+ {
+  "name": "Rose Hip",
+  "form": "shrub",
+  "aspect": 1.1,
+  "leaf": "pinnate leaves of 5-9 oval toothed leaflets with deeply impressed veins giving a wrinkled quilted texture",
+  "leafColour": "rich dark green, glossy and rugose, yellowing in autumn",
+  "harvest": "large round to flask-shaped scarlet-orange hips crowned with dried sepals",
+  "mustRead": [
+   "densely prickly bristly stems",
+   "wrinkled quilted pinnate leaflets",
+   "fat round red hips with a dried star crown at the tip"
+  ]
+ },
+ {
+  "name": "Sea Fennel",
+  "form": "herb",
+  "aspect": 1.1,
+  "leaf": "fleshy leaves divided into a few thick blunt cylindrical finger-like segments, spreading in a low bushy clump",
+  "leafColour": "glaucous blue-green, succulent and waxy",
+  "harvest": "flat-topped umbels of tiny greenish-yellow flowers, then ribbed corky seeds",
+  "mustRead": [
+   "thick succulent finger-shaped leaf segments, not feathery threads",
+   "flat yellow-green umbrella flower heads",
+   "low clump wedged into rock"
+  ],
+  "note": "Rock samphire; its leaves are fat and fleshy, quite unlike the fine hair-like foliage of true fennel."
+ },
+ {
+  "name": "Sea Beet",
+  "form": "herb",
+  "aspect": 1.4,
+  "leaf": "thick glossy triangular to diamond-shaped leaves with wavy edges, in a sprawling basal rosette",
+  "leafColour": "very dark glossy green, often with red-purple stalks and veining",
+  "harvest": "long trailing spikes of tiny green flowers and knobbly seed clusters",
+  "mustRead": [
+   "thick shiny dark triangular leaves",
+   "sprawling flat rosette with red stems",
+   "wiry ropes of green flower spikes trailing outward"
+  ]
+ },
+ {
+  "name": "Coastal Sage",
+  "form": "shrub",
+  "aspect": 1.2,
+  "leaf": "narrow oblong leaves with a puckered pebbled surface and rolled-under edges, in opposite pairs",
+  "leafColour": "dusty grey-green, whitish and woolly beneath",
+  "harvest": "whorled ball-like clusters of pale lavender-white two-lipped flowers spaced up the stems",
+  "mustRead": [
+   "dusty grey-green mounded bush",
+   "puckered narrow opposite leaves",
+   "flowers in spaced-out ring clusters up the stem"
+  ]
+ },
+ {
+  "name": "Marsh Rosemary",
+  "form": "herb",
+  "aspect": 1,
+  "leaf": "leathery spoon-shaped basal leaves narrowing to a long stalk, lying flat in a ground rosette",
+  "leafColour": "dull dark green, often salt-crusted or bronzed",
+  "harvest": "flat-topped branching sprays of tiny papery violet-blue flowers that dry without fading",
+  "mustRead": [
+   "flat basal rosette of spoon leaves",
+   "bare branched wiry flower stems fanning out level on top",
+   "dense mist of tiny papery blue-violet florets"
+  ],
+  "note": "This name means sea lavender (Limonium), not a rosemary; the flower sprays, not the leaves, carry the identity."
+ },
+ {
+  "name": "Nipa Palm Fruit",
+  "form": "palm",
+  "aspect": 0.7,
+  "leaf": "very long stiff once-pinnate fronds with regular narrow leaflets, springing straight up from the mud with no trunk",
+  "leafColour": "glossy mid to dark green",
+  "harvest": "a large round woody head of tightly packed brown angular fruits, sitting almost at ground level",
+  "mustRead": [
+   "no visible trunk, fronds erupting directly from water and mud",
+   "huge upright feather fronds fanning out from a single point",
+   "spiky brown cannonball fruit cluster at the base"
+  ]
+ },
+ {
+  "name": "Mangrove Leaves",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "thick glossy elliptic leathery leaves in opposite pairs clustered at the branch tips",
+  "leafColour": "dark glossy green above, pale yellow-green beneath",
+  "harvest": "long pencil-shaped green propagules dangling from the branches, plus small pale yellow flowers",
+  "mustRead": [
+   "arching stilt roots lifting the trunk clear of the water",
+   "thick glossy paired leaves bunched at branch ends",
+   "long hanging cigar-shaped seedling propagules"
+  ]
+ },
+ {
+  "name": "Seagrass",
+  "form": "aquatic",
+  "aspect": 0.7,
+  "leaf": "long flat ribbon-like blades with rounded tips, in flattened fans from a creeping buried rhizome",
+  "leafColour": "mid-green, often darkened by a film of silt or epiphytes",
+  "harvest": "none visible (inconspicuous flowers hidden inside the leaf sheaths)",
+  "mustRead": [
+   "flat ribbon blades all leaning one way with the current",
+   "horizontal creeping rhizome with shoots at intervals",
+   "meadow of parallel straps rooted in sand"
+  ],
+  "note": "A true flowering plant, not an alga; it has real roots and a rhizome, unlike any seaweed."
+ },
+ {
+  "name": "Sargassum",
+  "form": "seaweed",
+  "aspect": 1,
+  "leaf": "bushy branching fronds bearing small toothed leaf-like blades and stalked round berry-like floats",
+  "leafColour": "golden olive-brown to tan",
+  "harvest": "the frond mass and its float berries; no fruit or flower",
+  "mustRead": [
+   "small round pea-like gas floats on short stalks",
+   "toothed narrow leaf-like blades along the branches",
+   "bushy tangled golden-brown mass"
+  ]
+ },
+ {
+  "name": "Sea Grapes Algae",
+  "form": "seaweed",
+  "aspect": 1.4,
+  "leaf": "no leaves; upright shoots crowded with tiny stalked spheres like miniature grapes, on creeping runners",
+  "leafColour": "translucent bright emerald green",
+  "harvest": "the bead-covered upright shoots themselves",
+  "mustRead": [
+   "clusters of tiny glassy green beads on upright stalks",
+   "horizontal creeping runner joining the shoots",
+   "no blade or frond at all"
+  ]
+ },
+ {
+  "name": "Coralline Algae",
+  "form": "seaweed",
+  "aspect": 1.3,
+  "leaf": "no leaves; stiff chalky segmented branchlets like tiny jointed beads, or a hard flat crust over rock",
+  "leafColour": "chalky pink to lilac-mauve, bleaching to white when dead",
+  "harvest": "none visible",
+  "mustRead": [
+   "stony brittle pink texture, not soft or floppy",
+   "jointed bead-like segments in the branching form",
+   "hard pink crust plating the rock"
+  ]
+ },
+ {
+  "name": "Giant Kelp",
+  "form": "seaweed",
+  "aspect": 0.3,
+  "leaf": "no leaves; one very long ropy stipe carrying dozens of long wrinkled blades, each with a pear-shaped gas bladder at its base",
+  "leafColour": "amber to olive-brown, translucent in sunlight",
+  "harvest": "the blades themselves; no fruit or flower",
+  "mustRead": [
+   "single float bladder at the base of every blade",
+   "immensely long vertical stipe rising toward the surface",
+   "branching claw holdfast anchoring the whole plant"
+  ]
+ },
+ {
+  "name": "Sugar Kelp",
+  "form": "seaweed",
+  "aspect": 0.25,
+  "leaf": "no leaves; one long undivided belt-like blade with strongly ruffled wavy edges and a dimpled central band",
+  "leafColour": "warm olive-brown, glossy",
+  "harvest": "the single blade; no fruit or flower",
+  "mustRead": [
+   "one unbranched ribbon blade, never split into fingers",
+   "crinkled frilly margins along both edges",
+   "short stipe on a small branching holdfast"
+  ]
+ },
+ {
+  "name": "Bull Kelp",
+  "form": "seaweed",
+  "aspect": 0.3,
+  "leaf": "no leaves; a long whip-like hollow stipe swelling into a single round bulb that carries a topknot of long flat blades",
+  "leafColour": "dark olive-brown, the bulb glossier and lighter",
+  "harvest": "the blades and the hollow bulb; no fruit or flower",
+  "mustRead": [
+   "one round bulb float like an onion at the top of the stalk",
+   "long straight whip stipe below it",
+   "spray of long ribbon blades fanning from the bulb"
+  ]
+ },
+ {
+  "name": "Dulse",
+  "form": "seaweed",
+  "aspect": 0.9,
+  "leaf": "no leaves; flat leathery blades splitting into broad hand-like lobes, often with small wing flaps along the edges",
+  "leafColour": "deep purplish-red to brick red",
+  "harvest": "the blade itself; no fruit or flower",
+  "mustRead": [
+   "flat hand-shaped lobed red blade",
+   "small ear-like flaps along the margins",
+   "tiny disc holdfast with a very short stalk"
+  ]
+ },
+ {
+  "name": "Wakame",
+  "form": "seaweed",
+  "aspect": 0.5,
+  "leaf": "no leaves; a blade cut into wide wing-like lobes either side of a clear flattened midrib",
+  "leafColour": "olive-brown to deep green-brown",
+  "harvest": "the frond, plus the ruffled frilly sporophyll collar bunched around the base of the stipe",
+  "mustRead": [
+   "deeply lobed wings flanking a distinct midrib",
+   "ruffled convoluted frill at the stem base",
+   "overall feather or fan-like silhouette"
+  ]
+ },
+ {
+  "name": "Bladderwrack",
+  "form": "seaweed",
+  "aspect": 0.7,
+  "leaf": "no leaves; flat leathery straps forking repeatedly in twos, each with a raised midrib and paired round air bladders",
+  "leafColour": "olive-green to yellow-brown, darkening almost black when dry",
+  "harvest": "swollen warty forked tips at the frond ends",
+  "mustRead": [
+   "pairs of round bladders sitting either side of the midrib",
+   "repeated Y-forking of flat straps",
+   "swollen bumpy fertile tips"
+  ]
+ },
+ {
+  "name": "Floating Green Algae",
+  "form": "seaweed",
+  "aspect": 2,
+  "leaf": "no leaves; masses of fine cottony filaments matted into a floating blanket with trapped gas bubbles",
+  "leafColour": "vivid yellow-green, bleaching pale where it dries at the surface",
+  "harvest": "none visible",
+  "mustRead": [
+   "formless floating blanket with no stem or holdfast",
+   "hair-fine tangled filaments",
+   "gas bubbles caught in the mat lifting it"
+  ]
+ },
+ {
+  "name": "Pandanus Fruit",
+  "form": "tree",
+  "aspect": 1.1,
+  "leaf": "very long sword-like strap leaves with saw-toothed spiny edges, set in spiral tiers around the branch tips",
+  "leafColour": "grey-green to blue-green, stiff and glossy",
+  "harvest": "a large round segmented fruit head like a knobbly pineapple, ripening orange-red",
+  "mustRead": [
+   "leaves spiralling around the stem in a screw pattern",
+   "cone of thick prop roots holding the trunk off the ground",
+   "big segmented orange fruit ball hanging below the crown"
+  ],
+  "note": "Screwpine is not a palm; the spiral leaf arrangement and prop-root cone are what identify it."
+ },
+ {
+  "name": "Tussock Grass",
+  "form": "grass",
+  "aspect": 0.8,
+  "leaf": "narrow tough inrolled blades arching outward in a dense fountain from a raised mound of old leaf bases",
+  "leafColour": "mid-green above, straw and tan in the dead thatch below",
+  "harvest": "slender feathery seed heads rising above the leaf fountain",
+  "mustRead": [
+   "dense pedestal mound of old dead thatch at the base",
+   "fountain of arching blades",
+   "thin seed panicles standing clear above"
+  ]
+ },
+ {
+  "name": "Wheat",
+  "form": "grass",
+  "aspect": 0.25,
+  "leaf": "long flat narrow blades clasping a hollow jointed culm, few and widely spaced",
+  "leafColour": "blue-green while growing, ripening to gold-straw",
+  "harvest": "the dense upright ear of tightly packed grain with long stiff bristling awns",
+  "mustRead": [
+   "stiff upright ear, not drooping",
+   "long straight awn bristles fanning out from the ear",
+   "single unbranched straw with a few flat leaves"
+  ]
+ },
+ {
+  "name": "Rice",
+  "form": "grass",
+  "aspect": 0.4,
+  "leaf": "long narrow flat blades on a clump of tillers rising from shallow water",
+  "leafColour": "bright green, ripening to golden yellow",
+  "harvest": "an arching panicle of plump grain that bends over heavily as it ripens",
+  "mustRead": [
+   "nodding arching seed head bent under its own weight",
+   "clump of several stems standing in flooded ground",
+   "loose branched panicle, not a compact ear"
+  ]
+ },
+ {
+  "name": "Corn",
+  "form": "grass",
+  "aspect": 0.45,
+  "leaf": "very long broad strap leaves with a white midrib, alternating in two ranks and arching away from a thick solid stalk",
+  "leafColour": "bright green with paler midrib",
+  "harvest": "cobs sheathed in green husks with a tuft of silk at the tip, held at the leaf joints",
+  "mustRead": [
+   "feathery tassel flower at the very top of the stalk",
+   "husked cobs with silk tufts at mid-height on the side of the stem",
+   "wide arching strap leaves in alternating ranks"
+  ]
+ },
+ {
+  "name": "Oats",
+  "form": "grass",
+  "aspect": 0.35,
+  "leaf": "flat narrow blades on a slender hollow culm",
+  "leafColour": "light green, ripening cream-gold",
+  "harvest": "an open airy panicle of dangling teardrop-shaped spikelets",
+  "mustRead": [
+   "loose spreading panicle with grains hanging on fine threads",
+   "no compact ear and no bristling awn mass",
+   "delicate open silhouette"
+  ]
+ },
+ {
+  "name": "Rye",
+  "form": "grass",
+  "aspect": 0.22,
+  "leaf": "narrow flat blades on a very tall thin culm",
+  "leafColour": "distinctly blue-green with a waxy bloom, ripening grey-straw",
+  "harvest": "a long slender slightly nodding ear with very long fine awns",
+  "mustRead": [
+   "taller and thinner than wheat",
+   "narrow flattened ear that leans over at the tip",
+   "very long hair-fine awns"
+  ]
+ },
+ {
+  "name": "Potato",
+  "form": "tuber",
+  "aspect": 1,
+  "leaf": "pinnate compound leaves with large terminal leaflets and small leaflets between them, on sprawling angular stems",
+  "leafColour": "dull mid-green, matt and slightly rough",
+  "harvest": "round to oval brown-skinned tubers with shallow eyes, clustered underground on short stolons",
+  "mustRead": [
+   "compound leaf of uneven-sized leaflets",
+   "clusters of white or purple star flowers with a yellow cone of anthers",
+   "knobbly tubers hanging on stolons at the base"
+  ]
+ },
+ {
+  "name": "Sweet Potato",
+  "form": "tuber",
+  "aspect": 2,
+  "leaf": "heart-shaped or palmately lobed leaves on long stalks, alternate along trailing runners",
+  "leafColour": "mid-green, often flushed deep purple on stems and veins",
+  "harvest": "long tapering smooth-skinned tubers, orange or purple-red outside",
+  "mustRead": [
+   "ground-hugging vine runners spreading wide",
+   "heart-shaped or three-lobed leaves",
+   "smooth spindle-shaped tubers, not round with eyes"
+  ],
+  "note": "A morning-glory relative, unrelated to the potato; its tubers are smooth and tapered, never eyed."
+ },
+ {
+  "name": "Carrot",
+  "form": "tuber",
+  "aspect": 0.7,
+  "leaf": "finely divided ferny leaves cut into thread-like segments, in an upright rosette on grooved stalks",
+  "leafColour": "bright fresh green, feathery",
+  "harvest": "a single long tapering orange taproot",
+  "mustRead": [
+   "feathery carrot-top rosette",
+   "one straight tapering root with fine side hairs and ring marks",
+   "green shoulder where the root meets the leaves"
+  ]
+ },
+ {
+  "name": "Beet",
+  "form": "tuber",
+  "aspect": 0.9,
+  "leaf": "broad glossy oval to heart-shaped leaves with wavy puckered surfaces, on long stalks in an upright rosette",
+  "leafColour": "very dark green flushed maroon, with vivid crimson stalks and veins",
+  "harvest": "a round to top-shaped deep purple-red root with a slender tail",
+  "mustRead": [
+   "crimson leaf stalks and veins",
+   "round dark red root sitting half out of the soil",
+   "puckered glossy leaf blades"
+  ]
+ },
+ {
+  "name": "Onion",
+  "form": "bulb",
+  "aspect": 0.6,
+  "leaf": "hollow tubular blue-green leaves arching outward in a fan from the bulb neck",
+  "leafColour": "waxy blue-green",
+  "harvest": "the papery-skinned swollen bulb sitting on the soil surface",
+  "mustRead": [
+   "hollow round tube leaves, not flat",
+   "swollen papery bulb with a fringe of wiry roots",
+   "leaves splaying in one flat fan plane"
+  ]
+ },
+ {
+  "name": "Garlic",
+  "form": "bulb",
+  "aspect": 0.5,
+  "leaf": "flat folded strap leaves rising in a narrow fan and arching at the tips",
+  "leafColour": "grey-green, waxy",
+  "harvest": "the white papery bulb divided into wedge-shaped cloves",
+  "mustRead": [
+   "flat folded leaves, unlike onion tubes",
+   "curling looped flower scape from the centre",
+   "papery bulb with visible clove divisions"
+  ]
+ },
+ {
+  "name": "Mustard",
+  "form": "herb",
+  "aspect": 0.6,
+  "leaf": "lower leaves large and lyre-shaped with a big end lobe, upper leaves narrow and unlobed, alternate on a branching stem",
+  "leafColour": "mid to yellow-green, slightly bristly",
+  "harvest": "bright yellow four-petalled flowers in tight-topped racemes, then slender beaked seed pods held out from the stem",
+  "mustRead": [
+   "flat-topped cluster of yellow cross-shaped flowers",
+   "slender pointed pods sticking out below the flowers",
+   "big lyre-shaped lower leaves"
+  ]
+ },
+ {
+  "name": "Alfalfa",
+  "form": "herb",
+  "aspect": 0.8,
+  "leaf": "trifoliate leaves of three narrow oval leaflets, the middle one on a short stalk, toothed at the tip",
+  "leafColour": "mid-green, slightly grey",
+  "harvest": "short dense racemes of small purple-violet pea flowers, then tightly coiled spiral seed pods",
+  "mustRead": [
+   "clover-like leaves of three narrow leaflets",
+   "small violet pea-flower spikes",
+   "tight corkscrew-coiled seed pods"
+  ]
+ },
+ {
+  "name": "Meadow Grass",
+  "form": "grass",
+  "aspect": 0.6,
+  "leaf": "soft narrow flat blades with boat-shaped tips, in a loose tuft",
+  "leafColour": "fresh green to slightly blue-green",
+  "harvest": "an open pyramidal panicle of small spikelets on fine whorled branches",
+  "mustRead": [
+   "airy open pyramid of a seed head",
+   "fine whorled panicle branches",
+   "soft loose tuft, no thatch mound"
+  ],
+  "note": "Generic name; interpreted as a representative Poa meadow-grass."
+ },
+ {
+  "name": "Peach",
+  "form": "tree",
+  "aspect": 1.1,
+  "leaf": "long narrow lance-shaped leaves with finely toothed edges and a folded midrib, drooping from the twigs",
+  "leafColour": "mid-green, glossy above",
+  "harvest": "round velvety fruit blushing red over yellow, with a deep suture groove down one side",
+  "mustRead": [
+   "long drooping willow-like narrow leaves",
+   "fuzzy red-and-gold fruit with a cleft seam",
+   "low spreading vase-shaped crown"
+  ]
+ },
+ {
+  "name": "Cherry",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "oval pointed leaves with saw-toothed edges and small red glands at the leaf-stalk top, alternate",
+  "leafColour": "mid-green, turning orange-red in autumn",
+  "harvest": "glossy round red to near-black cherries hanging in pairs and small bunches on long slender stalks",
+  "mustRead": [
+   "shiny red-brown bark with horizontal band markings",
+   "clusters of five-petalled white-pink blossom on long stalks",
+   "paired glossy cherries dangling on thin stems"
+  ]
+ },
+ {
+  "name": "Apricot",
+  "form": "tree",
+  "aspect": 1.1,
+  "leaf": "broad rounded to heart-shaped leaves with an abrupt point and fine teeth, on reddish stalks",
+  "leafColour": "glossy mid-green",
+  "harvest": "small round velvety orange fruit, often red-blushed, with a shallow groove",
+  "mustRead": [
+   "broad heart-shaped leaves on red stalks",
+   "blossom sitting tight against bare twigs before the leaves",
+   "clusters of small orange velvet fruit"
+  ],
+  "note": "Apricot leaves are broad and rounded, quite unlike the narrow leaves of peach."
+ },
+ {
+  "name": "Lime",
+  "form": "tree",
+  "aspect": 0.9,
+  "leaf": "small glossy oval leathery leaves, each stalk widened into a small extra leafy wing",
+  "leafColour": "glossy deep green",
+  "harvest": "small round green fruit with a thin smooth rind, clustered among the twigs",
+  "mustRead": [
+   "sharp spines in the leaf joints",
+   "winged leaf stalk below each blade",
+   "small round green fruit against dark glossy foliage"
+  ]
+ },
+ {
+  "name": "Red Grape",
+  "form": "climber",
+  "aspect": 1.2,
+  "leaf": "large palmate leaves with 3-5 pointed lobes and coarse teeth, on a gnarled woody stem",
+  "leafColour": "mid-green above, paler and downy beneath, reddening in autumn",
+  "harvest": "dense tapering bunches of round red-crimson berries",
+  "mustRead": [
+   "forked coiling tendrils opposite the leaves",
+   "big lobed vine leaf silhouette",
+   "conical hanging bunch of red berries"
+  ]
+ },
+ {
+  "name": "White Grape",
+  "form": "climber",
+  "aspect": 1.2,
+  "leaf": "large palmate leaves with 3-5 pointed lobes and coarse teeth, on a gnarled woody stem",
+  "leafColour": "mid-green above, paler and downy beneath",
+  "harvest": "tapering bunches of translucent green-gold berries",
+  "mustRead": [
+   "forked coiling tendrils opposite the leaves",
+   "big lobed vine leaf silhouette",
+   "bunch of pale amber-green translucent berries"
+  ],
+  "note": "So-called white grapes are green to gold, never actually white."
+ },
+ {
+  "name": "Black Grape",
+  "form": "climber",
+  "aspect": 1.2,
+  "leaf": "large palmate leaves with 3-5 pointed lobes and coarse teeth, on a gnarled woody stem",
+  "leafColour": "deep green above, paler beneath, turning red-purple in autumn",
+  "harvest": "compact bunches of round blue-black berries under a dusty pale bloom",
+  "mustRead": [
+   "forked coiling tendrils opposite the leaves",
+   "blue-black berries with a chalky bloom",
+   "tight conical bunch hanging below the leaves"
+  ]
+ },
+ {
+  "name": "Cabbage",
+  "form": "rosette",
+  "aspect": 1.1,
+  "leaf": "very large smooth waxy leaves wrapping tightly into a solid ball, the outer ones flaring open and wavy-edged",
+  "leafColour": "blue-green with a waxy bloom and bold white midribs",
+  "harvest": "the dense head itself",
+  "mustRead": [
+   "tight overlapping ball head at the centre",
+   "loose flaring outer leaves around the base",
+   "thick white midribs branching across each leaf"
+  ]
+ },
+ {
+  "name": "Crabapple",
+  "form": "tree",
+  "aspect": 1.1,
+  "leaf": "oval finely toothed leaves with a pointed tip, alternate on twiggy spurred branches",
+  "leafColour": "mid-green, downy beneath, yellowing in autumn",
+  "harvest": "masses of small round apples, red to yellow, on long slender stalks",
+  "mustRead": [
+   "small marble-sized apples on long stalks, hanging in quantity",
+   "abundant five-petalled pink-and-white blossom",
+   "twiggy irregular crown with short spur shoots"
+  ]
+ },
+ {
+  "name": "Ivy",
+  "form": "climber",
+  "aspect": 1.5,
+  "leaf": "juvenile leaves with 3-5 triangular lobes and pale veins; adult flowering shoots bear unlobed diamond-shaped leaves",
+  "leafColour": "very dark glossy green with pale grey-green vein lines",
+  "harvest": "green-black round berries in globe-shaped umbels on the adult shoots",
+  "mustRead": [
+   "dark lobed leaf with a pale vein network",
+   "stems clinging by dense mats of short brown rootlets",
+   "spherical umbels of black berries on the mature growth"
+  ]
+ },
+ {
+  "name": "Mugwort",
+  "form": "herb",
+  "aspect": 0.5,
+  "leaf": "deeply pinnately cut leaves with pointed lobes, alternate up a tall grooved stem",
+  "leafColour": "dark green above, strikingly white-felted underneath so the plant flickers silver in wind",
+  "harvest": "long slender spires of tiny dull greenish-grey flower heads at the top",
+  "mustRead": [
+   "silver-white undersides on cut leaves",
+   "tall reddish-purple grooved stem",
+   "narrow drab flower spires with no showy petals"
+  ],
+  "note": "The flowers are inconspicuous grey-green buttons; drawing showy blooms is wrong."
+ },
+ {
+  "name": "Hemlock",
+  "form": "herb",
+  "aspect": 0.6,
+  "leaf": "large triangular leaves cut three or four times into fine fern-like segments, on hollow stems",
+  "leafColour": "bright glossy green, ferny and delicate",
+  "harvest": "flat-topped umbrella-shaped clusters of tiny white flowers, then ridged green seeds",
+  "mustRead": [
+   "smooth hollow stem blotched with purple-red spots",
+   "very finely cut fern-like leaves",
+   "flat white umbrella flower heads"
+  ],
+  "note": "Read as poison hemlock (Conium maculatum), not the hemlock conifer; the purple-blotched smooth stem is the key mark."
+ },
+ {
+  "name": "Snow Algae",
+  "form": "moss",
+  "aspect": 2.2,
+  "leaf": "no leaves or structure at all; a diffuse stain spreading through the top centimetres of old snow",
+  "leafColour": "watermelon pink to blood red, greenish where thin and fresh",
+  "harvest": "none visible",
+  "mustRead": [
+   "pink-red staining lying in patches across snow",
+   "no stem, leaf or body of any kind",
+   "sharp boundary where footprints or melt channels cut the colour"
+  ],
+  "note": "A microscopic alga; drawn only as coloured snow, never as a plant with parts."
+ },
+ {
+  "name": "Ice Algae",
+  "form": "moss",
+  "aspect": 2.2,
+  "leaf": "no leaves; a slimy felted layer and hanging strands clinging to the underside and brine channels of sea ice",
+  "leafColour": "golden brown to olive-tan, sometimes deep amber",
+  "harvest": "none visible",
+  "mustRead": [
+   "brown-gold staining and drips on the underside of ice",
+   "stringy mucilage strands trailing down into the water",
+   "no plant structure at all"
+  ],
+  "note": "A diatom film, not a plant; drawn as brown discolouration and mucus strands on ice."
+ },
+ {
+  "name": "Rattan",
+  "form": "climber",
+  "aspect": 0.6,
+  "leaf": "long pinnate palm-like fronds with narrow leaflets spaced along a spiny rachis, on a slender cane stem",
+  "leafColour": "mid to dark green with straw-brown spiny sheaths",
+  "harvest": "clusters of small round fruit covered in overlapping shiny scales",
+  "mustRead": [
+   "thin flexible cane snaking upward through other trees",
+   "long whip-like hooked flagella trailing off the leaf tips",
+   "spiny sheaths ringing the cane at each joint"
+  ],
+  "note": "A climbing palm: it never forms a self-supporting trunk or a crown of fronds at the top."
+ },
+ {
+  "name": "Bromeliad",
+  "form": "epiphyte",
+  "aspect": 1,
+  "leaf": "stiff broad strap leaves with fine spiny edges, arching outward in a tight rosette that cups water at the centre",
+  "leafColour": "green with grey scurfy banding, often flushed red toward the centre",
+  "harvest": "a spike of vivid red or pink bracts with small purple-blue flowers emerging from the centre",
+  "mustRead": [
+   "vase-shaped rosette holding a pool of water in the middle",
+   "stiff arching banded strap leaves",
+   "brilliantly coloured bract spike rising from the cup"
+  ]
+ },
+ {
+  "name": "Air Plant",
+  "form": "epiphyte",
+  "aspect": 1.1,
+  "leaf": "narrow curling tapering leaves in a loose spidery rosette, covered in fine absorbent scales",
+  "leafColour": "silvery grey-green, frosted-looking",
+  "harvest": "a flattened pink or red bract paddle with tubular violet flowers emerging from it",
+  "mustRead": [
+   "no soil and no real roots, clinging to bark or wire",
+   "silvery furred narrow curling leaves",
+   "flat pink bract with a purple tubular flower"
+  ]
+ },
+ {
+  "name": "Orchid Pods",
+  "form": "epiphyte",
+  "aspect": 1.2,
+  "leaf": "thick fleshy oblong leaves alternating along a climbing green stem, with aerial roots at the joints",
+  "leafColour": "flat mid-green, thick and waxy",
+  "harvest": "long slender hanging green seed pods in a hand-like cluster, plus waxy pale yellow-green flowers",
+  "mustRead": [
+   "clusters of long bean-like green pods hanging from the stem",
+   "thick fleshy leaves on a vining stem",
+   "aerial roots gripping bark"
+  ],
+  "note": "Interpreted as vanilla, the orchid actually harvested for its pods; most orchids show no pods at all."
+ },
+ {
+  "name": "Canopy Vine",
+  "form": "vine",
+  "aspect": 1.5,
+  "leaf": "large heart-shaped to oval leaves, alternate along a woody rope-like stem",
+  "leafColour": "glossy deep green",
+  "harvest": "small clusters of pale flowers and dark berries among the upper leaves",
+  "mustRead": [
+   "thick woody rope stem looping and hanging free",
+   "leafy growth concentrated only at the top",
+   "coiling tendrils or twining grip on a host trunk"
+  ],
+  "note": "Not a real taxon; interpreted as a generic tropical liana."
+ },
+ {
+  "name": "Dragon Fruit",
+  "form": "cactus",
+  "aspect": 1,
+  "leaf": "no leaves; thick three-winged triangular green stems that scramble and hang in ropes, with small spine clusters on the ribs",
+  "leafColour": "blue-green to deep green stems",
+  "harvest": "large oval pink-red fruit covered in leafy green-tipped scales",
+  "mustRead": [
+   "three-ribbed triangular sprawling stem segments",
+   "bright pink fruit with upcurled green scale fins",
+   "huge white night-blooming flower with strap-like petals"
+  ]
+ },
+ {
+  "name": "Kiwi Fruit",
+  "form": "climber",
+  "aspect": 1.4,
+  "leaf": "large rounded heart-shaped leaves with a short point and fine hairs, alternate on twining woody canes",
+  "leafColour": "deep green above, pale and felted beneath, with red-hairy leaf stalks",
+  "harvest": "clusters of oval fruit covered in dense russet-brown fuzz",
+  "mustRead": [
+   "large round heart-shaped leaves on red hairy stalks",
+   "brown fuzzy egg-shaped fruit hanging in twos and threes",
+   "twining woody cane wrapping its support"
+  ]
+ },
+ {
+  "name": "Watermelon",
+  "form": "vine",
+  "aspect": 2.2,
+  "leaf": "deeply cut leaves with rounded lobes and wavy edges, rough and hairy, on trailing angular stems",
+  "leafColour": "dull grey-green, slightly hairy",
+  "harvest": "a large oval fruit striped light and dark green, resting on the ground",
+  "mustRead": [
+   "long ground-trailing runners with branched tendrils",
+   "deeply lobed rough grey-green leaves",
+   "big striped melon sitting flat on the soil"
+  ]
+ },
+ {
+  "name": "Mangosteen",
+  "form": "tree",
+  "aspect": 0.8,
+  "leaf": "large thick leathery elliptic leaves in opposite pairs, with a fine parallel vein pattern",
+  "leafColour": "very dark glossy green above, yellow-green beneath",
+  "harvest": "round deep purple fruit with a thick rind, topped by a four-lobed green calyx cap",
+  "mustRead": [
+   "dense narrow conical crown of heavy dark foliage",
+   "round purple fruit with a green star cap on top",
+   "thick leathery paired leaves"
+  ]
+ },
+ {
+  "name": "Rhubarb",
+  "form": "herb",
+  "aspect": 1.2,
+  "leaf": "enormous triangular heart-shaped leaves with deeply crinkled puckered blades and wavy edges, on thick stalks",
+  "leafColour": "deep green blades, stalks vivid red to pink-green",
+  "harvest": "the thick red leaf stalks; a tall plume of small creamy-white flowers if it bolts",
+  "mustRead": [
+   "huge crinkled heart-shaped leaf blades",
+   "thick fleshy red stalks fanning from a crown at ground level",
+   "leaves far larger than expected relative to the plant"
+  ]
+ },
+ {
+  "name": "Breadnut",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "very large leaves deeply cut into broad finger-like lobes, alternate and stiffly held",
+  "leafColour": "dark glossy green above with pale prominent veins",
+  "harvest": "round to oval green fruit covered in soft flexible spines, full of large chestnut-like seeds",
+  "mustRead": [
+   "huge deeply lobed hand-shaped leaves",
+   "green fruit bristling with soft spines",
+   "milky white sap where a leaf is broken"
+  ],
+  "note": "Read as seeded breadfruit (Artocarpus camansi); the soft-spined fruit and lobed leaves are the identity."
+ },
+ {
+  "name": "Cotton",
+  "form": "shrub",
+  "aspect": 1,
+  "leaf": "broad palmate leaves with 3-5 pointed lobes, alternate on a branching stem",
+  "leafColour": "mid-green, often with reddish veins and stems",
+  "harvest": "burst brown seed capsules (bolls) spilling puffs of white fibre",
+  "mustRead": [
+   "split brown boll husk with white fluff bulging out",
+   "hibiscus-like cream-yellow flower with a dark centre",
+   "three-to-five lobed leaves on a bushy plant"
+  ]
+ },
+ {
+  "name": "Flax",
+  "form": "herb",
+  "aspect": 0.35,
+  "leaf": "small narrow pointed leaves set alternately and thinly up a very slender wiry stem",
+  "leafColour": "grey-green, sparse",
+  "harvest": "sky-blue five-petalled flowers, then round dry seed capsules with a small point",
+  "mustRead": [
+   "very thin bare wiry stems in a slender clump",
+   "clear sky-blue flat five-petal flowers",
+   "round pea-sized seed capsules after flowering"
+  ]
+ },
+ {
+  "name": "Hemp",
+  "form": "herb",
+  "aspect": 0.4,
+  "leaf": "palmate leaves with 5-9 narrow saw-toothed leaflets radiating from one point, opposite low down and alternate above",
+  "leafColour": "mid to deep green",
+  "harvest": "clustered green flower or seed heads packed in the upper leaf joints",
+  "mustRead": [
+   "radiating fan of narrow serrated leaflets",
+   "tall slender ridged stem",
+   "dense green flower clusters bunched at the top"
+  ]
+ },
+ {
+  "name": "Tobacco",
+  "form": "herb",
+  "aspect": 0.5,
+  "leaf": "very large ovate leaves with a sticky hairy surface, clasping and stepping up a stout unbranched stem, getting smaller toward the top",
+  "leafColour": "pale yellow-green, matt and sticky",
+  "harvest": "a head of pink to white long trumpet flowers with flared five-lobed mouths",
+  "mustRead": [
+   "huge leaves stepping up a single thick stem",
+   "cluster of long pink trumpet flowers on top",
+   "sticky hairy surface texture on stem and leaves"
+  ]
+ },
+ {
+  "name": "Canola",
+  "form": "herb",
+  "aspect": 0.6,
+  "leaf": "lower leaves lobed and stalked, upper leaves narrow and clasping the stem with rounded ears",
+  "leafColour": "waxy blue-green",
+  "harvest": "dense heads of bright yellow four-petalled flowers, then long slender upright pods",
+  "mustRead": [
+   "clasping blue-green upper leaves wrapping the stem",
+   "flat-topped mass of vivid yellow flowers",
+   "long thin pods angled upward below the flowers"
+  ]
+ },
+ {
+  "name": "Licorice",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "pinnate leaves of 9-17 oval leaflets with a single leaflet at the tip, slightly sticky",
+  "leafColour": "mid-green, dull",
+  "harvest": "long woody yellow-fleshed roots and runners dug from below; pale violet-blue pea flower spikes above",
+  "mustRead": [
+   "pinnate leaflets in neat opposite pairs",
+   "upright spikes of small pale blue-violet pea flowers",
+   "long straight yellow woody roots and horizontal runners"
+  ]
+ },
+ {
+  "name": "Anise",
+  "form": "herb",
+  "aspect": 0.6,
+  "leaf": "lower leaves rounded and toothed on long stalks, upper leaves cut into fine feathery threads",
+  "leafColour": "bright yellow-green",
+  "harvest": "flat-topped umbels of tiny white flowers, then small ribbed grey-brown seeds",
+  "mustRead": [
+   "two clearly different leaf shapes on one plant, round below and feathery above",
+   "small loose white umbrella flower heads",
+   "slender ribbed stems"
+  ]
+ },
+ {
+  "name": "Star Anise",
+  "form": "tree",
+  "aspect": 0.8,
+  "leaf": "glossy elliptic leathery leaves with smooth edges, alternate and clustered toward branch ends",
+  "leafColour": "deep glossy green",
+  "harvest": "hard brown eight-pointed star-shaped fruits, each arm splitting to show a shiny seed",
+  "mustRead": [
+   "woody eight-armed star fruit",
+   "glossy untoothed leathery leaves",
+   "small greenish-yellow to pink many-petalled flowers"
+  ],
+  "note": "Unrelated to anise the herb; the star fruit shape is the whole identity."
+ },
+ {
+  "name": "Fenugreek",
+  "form": "herb",
+  "aspect": 0.7,
+  "leaf": "trifoliate leaves of three oval leaflets toothed toward the tip, alternate on an upright branching stem",
+  "leafColour": "light fresh green",
+  "harvest": "long slender curved beaked pods holding hard yellow-brown angular seeds",
+  "mustRead": [
+   "clover-like leaves of three toothed leaflets",
+   "small pale yellow-white pea flowers tucked at the leaf joints",
+   "long thin sickle-curved pods with a fine beak"
+  ]
+ },
+ {
+  "name": "Joshua Tree",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "stiff dagger-shaped spine-tipped leaves in dense bristling rosettes at every branch tip",
+  "leafColour": "dull blue-green, with a skirt of dead grey-brown leaves hanging below each rosette",
+  "harvest": "a dense club-shaped cluster of thick creamy-white waxy flowers at a branch tip",
+  "mustRead": [
+   "thick trunk splitting into few contorted upward-crooked arms",
+   "spiky pom-pom rosette of daggers at each arm end",
+   "shaggy grey bark of packed dead leaf bases"
+  ]
+ },
+ {
+  "name": "Tea Tree",
+  "form": "tree",
+  "aspect": 0.8,
+  "leaf": "very fine narrow needle-like linear leaves crowded along whippy twigs",
+  "leafColour": "bright fresh green, soft and feathery in mass",
+  "harvest": "fluffy white bottlebrush spikes of flowers, then woody seed capsules clustered around the twigs",
+  "mustRead": [
+   "papery white bark peeling in loose sheets",
+   "fine soft needle foliage",
+   "creamy white fluffy bottlebrush flower spikes"
+  ]
+ },
+ {
+  "name": "Camphor Tree",
+  "form": "tree",
+  "aspect": 1.2,
+  "leaf": "oval pointed leaves with three main veins fanning from near the base and small swellings in the vein angles",
+  "leafColour": "glossy deep green above, pale blue-grey beneath, new growth pink-red",
+  "harvest": "small round black berries sitting in shallow cup bases, in loose sprays",
+  "mustRead": [
+   "broad dense rounded dome crown",
+   "three-veined glossy leaf with pale underside",
+   "vertically fissured rough grey-brown bark"
+  ]
+ },
+ {
+  "name": "Venus Flytrap",
+  "form": "carnivorous",
+  "aspect": 1.3,
+  "leaf": "flat winged leaf stalks lying in a low rosette, each ending in a hinged two-lobed trap fringed with stiff teeth",
+  "leafColour": "green stalks with trap interiors flushed deep crimson-red",
+  "harvest": "a cluster of small white five-petalled flowers on a tall bare stalk well above the traps",
+  "mustRead": [
+   "hinged clamshell traps with interlocking spiky teeth",
+   "red glandular trap interiors",
+   "low ground rosette with flat leaf-like petiole wings"
+  ],
+  "note": "The trap is a leaf tip, not a flower; the actual flowers are plain and white on a long stalk."
+ },
+ {
+  "name": "Eucalyptus",
+  "form": "tree",
+  "aspect": 0.8,
+  "leaf": "adult leaves long sickle-shaped and hanging vertically edge-on; juvenile leaves rounded and clasping in pairs",
+  "leafColour": "grey-green to blue-green, matt with a waxy bloom, same colour on both sides",
+  "harvest": "woody cup-shaped gumnut capsules and fluffy stamen-burst cream flowers",
+  "mustRead": [
+   "sickle-shaped leaves dangling straight down, giving an open sparse crown",
+   "smooth bark peeling in ribbons to show cream, grey and orange patches",
+   "woody gumnut capsules in clusters"
+  ],
+  "note": "The leaves hang vertically rather than facing up, which is why the canopy casts so little shade."
+ },
+ {
+  "name": "Poppy",
+  "form": "herb",
+  "aspect": 0.6,
+  "leaf": "deeply lobed and toothed leaves, bristly-hairy, mostly toward the base of thin hairy stems",
+  "leafColour": "grey-green, hairy",
+  "harvest": "large four-petalled scarlet flowers with a black basal blotch, then a round seed capsule with a flat lid crown",
+  "mustRead": [
+   "nodding hairy bud that lifts as the crumpled petals open",
+   "four thin crinkled tissue-paper petals",
+   "round pepper-pot seed capsule with a flat ribbed cap"
+  ]
+ },
+ {
+  "name": "Oak",
+  "form": "tree",
+  "aspect": 1.1,
+  "leaf": "leaves with several rounded or pointed lobes cut deeply toward the midrib, alternate and clustered at twig ends",
+  "leafColour": "deep matt green above, paler beneath, turning russet-brown in autumn",
+  "harvest": "acorns, each a smooth brown nut seated in a scaly cup",
+  "mustRead": [
+   "broad spreading crown as wide as it is tall",
+   "deeply lobed leaf outline",
+   "acorns in scaly cups, and rugged deeply fissured bark"
+  ]
+ },
+ {
+  "name": "Redwood",
+  "form": "tree",
+  "aspect": 0.3,
+  "leaf": "short flat needles arranged in two flat rows either side of the twig, making feather-like sprays",
+  "leafColour": "dark green above with two pale bands beneath",
+  "harvest": "small egg-shaped woody cones about the size of an olive",
+  "mustRead": [
+   "extremely tall narrow column with a buttressed flaring base",
+   "thick fibrous cinnamon-red bark in deep vertical ridges",
+   "flat two-ranked needle sprays"
+  ],
+  "note": "The cones are surprisingly tiny relative to the tree; drawing large cones reads wrong."
+ },
+ {
+  "name": "Cedar",
+  "form": "tree",
+  "aspect": 1,
+  "leaf": "short stiff needles in dense rosette tufts on short spur shoots along the branches",
+  "leafColour": "dark blue-green to silvery grey-green",
+  "harvest": "upright barrel-shaped cones sitting on top of the branches like eggs on a shelf",
+  "mustRead": [
+   "broad flat-topped crown with tiered horizontal branch plates",
+   "needles in tight rosette clusters, not single rows",
+   "barrel cones standing upright on the branch tops"
+  ],
+  "note": "True cedar (Cedrus); its cones stand upright and disintegrate on the tree rather than hanging down."
+ }
+]
