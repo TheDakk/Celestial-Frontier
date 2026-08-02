@@ -119,6 +119,25 @@ Both agree on the same top defects, which is the strongest signal available here
 
 ---
 
+## ★ THE STRATEGIC QUESTION, ASKED AND ANSWERED (2026-08-02)
+
+Nick asked whether this is the Pixi engine and whether it is the best we can do. Two facts to
+carry forward, because they should shape what the next session even attempts:
+
+- **The species art is NOT Pixi.** Pixi renders the galaxy/world scene (`apps/game/src/main.ts`).
+  Every organism portrait is plain `CanvasRenderingContext2D` — procedural 2D drawing rasterised
+  to a data URL and cached. Swapping in Pixi/WebGL would change nothing about how these look;
+  the ceiling is the DRAWING APPROACH, not the renderer.
+- **The same engine scores 97.5% on procedural and 5.7% on Earth** under Nick's strict bands
+  (234/240 vs 58/1014). That gap is the whole story: a generator is good at coherent variety and
+  bad at hitting a specific named target. We are asking one system to do both.
+  **The obvious split — authored assets for the 1,014 fixed Earth species, the runtime generator
+  for the aliens — is the highest-leverage decision available and has not been made.** It also
+  maps exactly onto the protect-Earth / iterate-procedural split Nick already asked the safety
+  net to enforce.
+
+---
+
 ## OPEN, IN PRIORITY ORDER
 
 ⚠ **Read `reference/mammalaudit.json` and `reference/visualaudit.json` before starting.** Both
@@ -136,33 +155,48 @@ the severity counts.**
    **The ear and the eye are still one asset for every mammal alive.** That is wave 7: ears and
    eyes per species, then muzzle/nose detail. Skull SHAPE is no longer the bottleneck.
    Still unchecked: the 55 quadruped rows of Nick's own fix queue.
-2. **The 23 rows Nick's audit says are STILL NOT FIXED** (see `reference/nick-audit-recheck.json`):
+2. **Nick's STRICT re-audit is in `reference/nick-strict/`** (+ `nick-strict-reaudit.md`).
+   ⚠ It ran on the PRE-WAVE-4 images — all 1,010 Earth hashes match the older run — so it
+   re-scores old art under stricter bands and has NOT seen waves 4–7. Merged already: his
+   per-species `expected_body_family` (103 agree with ours, 3 disagreements resolved, 0 gaps),
+   and the check that of his 58 approved Earth assets only 4 were in the rewritten set.
+   **Still to work: `equid_family_required_rebuild.csv`, `newly_downgraded_false_passes.csv`
+   (Blobfish, Cuttlefish, Fennec Fox, Secretary Bird, Banana), and the 962-asset fix queue.**
+   ⚠ Its `technical_retest` flags essentially EVERY image as an edge-contact candidate, which
+   contradicts our own clip sentinel (0 clipped). Treat that field as a false positive.
+3. **The Walrus is bad and Nick had approved it.** It reads as a tusked dachshund: it is routed
+   through the quadruped painter and given legs, when a walrus needs flippers and a bulk that
+   sits on the ground. Either give it a pinniped body plan or route it away.
+4. **36 routed mammals are in families we do not model** (marsupials, raccoon-likes,
+   armadillo/sloth, aardvark, colugo, mole, walrus, and 20 "other or uncertain" incl. Cattle,
+   Hyena, Giant Anteater). They fall back to 'generic' and look it.
+5. **The 23 rows Nick's audit says are STILL NOT FIXED** (see `reference/nick-audit-recheck.json`):
    Sargassum · Acai · Shiitake · Yeast · Chanterelle · Death Cap · Destroying Angel · Jelly
    Fungus · Cave Cricket · Hammerhead Shark · Vampire Squid · Whale · Orca · Flying Squirrel ·
    Giant Isopod · Kakapo · Rooster · Snapping Turtle · Softshell Turtle · Alligator · Alpine
    Salamander · Ostrich · Caiman. The 54 "partly" rows are the tier below.
-3. **The 33 HARD look-alike pairs** — mostly one songbird cluster (Lark/Robin/Weaverbird/
+6. **The 33 HARD look-alike pairs** — mostly one songbird cluster (Lark/Robin/Weaverbird/
    Swift/Starling/Sparrow/Finch), which Nick's audit found independently. **Birds need exactly
    what mammals just got**: a solid body, a skin, family plans, and a skull.
-4. **The Elephant is visibly broken** (a huge grey head disc over a small body). Its good spec
+7. **The Elephant is visibly broken** (a huge grey head disc over a small body). Its good spec
    is in git: `git show e66dca4:port/v2/packages/art/src/mammaloverrides.ts`. **Recover it.**
-5. **What the mammal audit says is wrong catalogue-wide** (`reference/mammalaudit.json`; 131
+8. **What the mammal audit says is wrong catalogue-wide** (`reference/mammalaudit.json`; 131
    blocker / 9 major / 1 minor, on a deliberately harsh scale — read the rows, not the labels):
    - **the tail base is a hard-edged RECTANGLE pasted on the rump** on many species. Real bug.
-   - **the shoulder and haunch read as grey airbrushed spheres bulging BELOW the belly line**,
-     which is my pale-lens artefact and it is worse than I judged it from a strip.
+   - ~~the shoulder and haunch read as grey spheres bulging below the belly line~~ **FIXED in
+     wave 7** — the profile was hung under a fixed back line so muscle pushed the belly down.
    - shaggy coats are outward BRISTLES that add no volume — fleece should fatten the silhouette.
    - the elephant's back is convex with the skull as its highest point (that is the Asian
      profile; the reference note explicitly excludes it) and the trunk stops at knee height.
    - the bear's head merges into its shoulder mass; the camel's hump reads as a ball.
-6. **59 Earth species still unrouted** (`node tools/coveragegap.mjs`) — crocodilians, bats,
+9. **59 Earth species still unrouted** (`node tools/coveragegap.mjs`) — crocodilians, bats,
    pinnipeds, Kangaroo/Wallaby, Platypus/Echidna, Chameleon, Chicken/Rooster, Seahorse, etc.
    Several of these are also on Nick's not-fixed list, so routing them fixes both.
-7. The 17 flora NEEDS_FIX rows (Platinum task #24), never started.
-8. The `[A]` eye sensor in `conformance.mjs` is still suppressed and still untrustworthy
+10. The 17 flora NEEDS_FIX rows (Platinum task #24), never started.
+11. The `[A]` eye sensor in `conformance.mjs` is still suppressed and still untrustworthy
    (8/20). Honestly: **the visual audit has superseded it.** Consider deleting it rather than
    rebuilding it a fifth time.
-9. **Drive the skull from the reference row's measured `headFrac`** instead of a name hash —
+12. **Drive the skull from the reference row's measured `headFrac`** instead of a name hash —
    named in D-ART-96 as the next improvement.
 
 ---
