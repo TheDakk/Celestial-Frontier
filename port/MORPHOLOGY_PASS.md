@@ -1135,3 +1135,61 @@ vitest 220 · tsc clean · overridecheck 930/930 reach real species, 0 dead · 7
 artbattery 5/5 · speciesaudit 1254/1254 painted, 0 failures, 0 dupes, 0 clipped. hdart UNTOUCHED.
 NEXT: wave 20 = the 165 NEEDS_FIX polish sweep; wave 21 = procedural fungi + microbe families;
 then re-export all five zips and re-run the Platinum audit.
+
+---
+
+# WAVE 20 — LANDED 2026-08-02 (THE PROCEDURAL FAMILIES + A SIGN BUG THAT PAINTED NOTHING)
+
+The Platinum audit's verdict on procedural fungi and microbes was one sentence each: "All 60
+outputs remain variations of the same [cap-and-stem trio / bubble colony]." 120 of its 165
+NEEDS_FIX rows are these two categories. Two things were wrong; this wave fixes both.
+
+## (1) TOO FEW FAMILIES — 6 fungal and 4 microbial forms cannot carry 60 organisms each
+packages/art/src/proceduralfamilies.ts, twelve new painters. Fungi: TOOTH (a cap whose
+underside hangs in soft spines, drawn BEHIND the cap so they hang from it) · JELLY (a glossy
+folded mass welded to a branch, built from overlapping soft lobes) · TRUFFLE (a lumpy warty
+ball half out of the soil, one cut open to marbled gleba) · CUP (a stalkless bowl whose inner
+face is lit from above and darkest at its floor — that gradient IS the depth) · CLUB (unbranched
+clavarioid fingers, domed at the tip because a club is a finger not a spike). Microbes: RODS
+(capsules, some with a division septum) · SPIRALS (helices whose near half-turn is lit, with
+polar flagella) · FILAMENT (a sheathed trichome with a heterocyst) · CHAIN (cocci flattened
+where they touch) · FLAGELLATE (a teardrop with an eyespot and one undulating flagellum) ·
+PLATES (a coccolithophore: discs foreshortened and rotated onto the sphere) · MAT (a biofilm,
+three layers deep, with streamers and trapped gas). Both tables now run 13 families deep,
+including fungiCordyceps + lichenMat and microbeForam + microAlgaeCell reused from wave 18.
+
+## (2) THE SELECTOR WAS NOT UNIFORM — and then its replacement painted NOTHING
+`form % 6` is not a uniform choice: the raw gene clumps, and a twelve-cell sample came back
+half puffballs while five microbes in six were the same amoeba in different colours. A
+mono-template with extra steps. The picker now avalanches the seed (murmur3 finish) first.
+
+★★ AND THE FIRST CUT OF THAT FIX WAS BROKEN IN A WAY NO GATE COULD SEE. `h ^= h >>> 16` is
+an INT32 XOR — it returns a NEGATIVE number whenever the high bit is set. `-3 % 13` is -3 in
+JavaScript, which indexes an array to `undefined`, and `painter(...)` on undefined threw
+inside the try/catch that wraps every portrait. 22 OF 60 PROCEDURAL FUNGI PAINTED AN EMPTY
+FRAME. The contact strip caught it as blank cells; vitest, tsc, overridecheck and the art
+battery were all green. UNSIGN EVERY STEP OF A MIXING HASH.
+
+The guard: packages/art/test/familyspread.test.ts asserts every one of the audit's 60 seeds
+per kingdom picks a real family, that all 13 families are reached, and that none owns a third
+of the spread. It calls procFamilyIndex — THE FUNCTION THE RENDERER CALLS — because a test
+that re-implemented the hash would have re-implemented the sign bug and passed on the exact
+case it was written for. It carries its own control reproducing the bug, and it was verified
+to FAIL (3 tests, "expected -5 to be greater than or equal to 0") with the real selector
+broken on purpose, then to pass again restored.
+
+## Three "painted on with MS Paint" tells, fixed
+- microbeMat's substrate was a HARD-EDGED RECTANGLE. A box is the loudest painted-on tell in
+  the library; it is now a ragged organic field with a soft edge.
+- microbeFilament rendered as separate beads — indistinguishable from CHAIN, a different family
+  in the same table. A filament is now ONE continuous smooth-sided tube with cross-walls marked
+  on it. Cells are marked by walls, never by gaps.
+- fungiTooth's wood was a brown rectangle; now a rounded bough with bark grain.
+- microbeDiatom's pennate valve was full-height straight ribs — a barcode. Now a real raphe
+  slit with three nodules and striae that fan from the raphe out to the margin and stop where
+  the valve curves away.
+
+## Gates
+vitest 225 (5 new) · tsc clean · overridecheck 930/930 0 dead · 7/7 controls · artbattery 5/5 ·
+speciesaudit 1254/1254 painted 0 failures 0 dupes 0 clipped · slicesmoke PASS. hdart UNTOUCHED.
+NEXT: wave 21 = the 45 named-species NEEDS_FIX rows; then re-export the five zips and re-audit.

@@ -26,6 +26,7 @@ import { planFor } from './proceduraloverrides.js';
 import { faunaKiwi, faunaMudskipper, faunaPyrosome, faunaSalp, faunaTripodFish } from './faunaoverrides4.js';
 import { floraCabbage, floraCarrot, floraCorn, floraHemp, floraTobacco, floraWatermelon, floraStrawberry, floraKiwiFruit } from './floraoverrides3.js';
 import { fungiFlyAgaric, fungiLionsMane, fungiMaitake, fungiStinkhorn, fungiCordyceps, lichenMat, microbeForam, tardigrade, macroAlgaeSheet, microAlgaeCell, algaeBloom } from './fungioverrides2.js';
+import { procFamilyIndex, FAMILY_COUNT, fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiClub, microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate, microbePlates, microbeMat } from './proceduralfamilies.js';
 import { fishBody } from './faunaoverrides3.js';
 import { insectBody, myriapod } from './invertoverrides.js';
 import { plantBody } from './floraoverrides2.js';
@@ -264,9 +265,37 @@ function microbeDiatom(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
     for (let i = 0; i < spokes; i++) { const a = (i / spokes) * TAU; c.beginPath(); c.moveTo(cx + Math.cos(a) * S * 0.06, cy + Math.sin(a) * S * 0.06); c.lineTo(cx + Math.cos(a) * S * 0.3, cy + Math.sin(a) * S * 0.3); c.stroke(); }
     for (let ring = 1; ring < 4; ring++) { c.globalAlpha = 0.5; c.beginPath(); c.arc(cx, cy, S * 0.3 * (ring / 4), 0, TAU); c.stroke(); c.globalAlpha = 1; }
   } else {
-    c.beginPath(); c.ellipse(cx, cy, S * 0.34, S * 0.15, 0, 0, TAU); c.stroke();
-    const ribs = 16 + (r() * 8 | 0);
-    for (let i = 1; i < ribs; i++) { const x = cx - S * 0.34 + (i / ribs) * S * 0.68; const yh = S * 0.15 * Math.sqrt(Math.max(0, 1 - Math.pow((x - cx) / (S * 0.34), 2))); c.beginPath(); c.moveTo(x, cy - yh); c.lineTo(x, cy + yh); c.stroke(); }
+    /* ★ WAVE 20 — a PENNATE valve, not a striped pill. The old ribs ran the
+       full height of the ellipse as straight bars and read as a barcode. A real
+       pennate diatom has a RAPHE slit down the long axis with a nodule at each
+       pole and one at the centre, and its striae run from the raphe OUT to the
+       margin — short, angled, and stopping where the valve curves away. */
+    const RX = S * 0.34, RY = S * 0.15;
+    c.beginPath(); c.ellipse(cx, cy, RX, RY, 0, 0, TAU); c.stroke();
+    const ribs = 22 + (r() * 10 | 0);
+    for (let i = 1; i < ribs; i++) {
+      const u = (i / ribs) * 2 - 1;
+      const x = cx + u * RX;
+      const yh = RY * Math.sqrt(Math.max(0, 1 - u * u));
+      const lean = u * 0.30;                       /* striae fan away from centre */
+      for (const s of [-1, 1] as const) {
+        c.globalAlpha = 0.45 + (1 - Math.abs(u)) * 0.5;
+        c.beginPath();
+        c.moveTo(x + lean * 4, cy + s * RY * 0.13);
+        c.lineTo(x + lean * 10, cy + s * yh * 0.94);
+        c.stroke();
+      }
+    }
+    c.globalAlpha = 1;
+    /* the raphe and its three nodules */
+    c.lineWidth = 2.4;
+    c.beginPath(); c.moveTo(cx - RX * 0.90, cy); c.lineTo(cx - RX * 0.10, cy); c.stroke();
+    c.beginPath(); c.moveTo(cx + RX * 0.10, cy); c.lineTo(cx + RX * 0.90, cy); c.stroke();
+    c.fillStyle = `rgba(${Math.min(255, p.cr * 1.6 | 0)},${Math.min(255, p.cg * 1.6 | 0)},${Math.min(255, p.cb * 1.6 | 0)},0.85)`;
+    for (const nx of [cx - RX * 0.92, cx, cx + RX * 0.92]) { c.beginPath(); c.arc(nx, cy, 3.2, 0, TAU); c.fill(); }
+    /* the glass has THICKNESS — a lens highlight along the upper valve face */
+    c.strokeStyle = 'rgba(255,255,255,0.34)'; c.lineWidth = 2;
+    c.beginPath(); c.ellipse(cx, cy, RX * 0.93, RY * 0.88, 0, -2.5, -0.6); c.stroke();
   }
 }
 function microbeCiliate(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
@@ -448,10 +477,30 @@ export function resolveProcedural(g: G): string | null {
      never reachable without a name. The genome's own `form` gene picks one. */
   const kingdom = String(g.kingdom || '');
   if (kingdom === 'fungi' || kingdom === 'microbe') {
-    const form = (((g.form as number) || 0) % 18 + 18) % 18;
-    const painter = kingdom === 'fungi'
-      ? [fungiBracket, fungiPuffball, fungiCoral, fungiMorel, fungiMold, fungiEarthstar][form % 6]!
-      : [tardigrade, microbeDiatom, microbeCiliate, microbeAmoeba][form % 4]!;
+    /* ★ WAVE 20 — TWO THINGS WERE STILL WRONG HERE.
+       (1) SIX fungal and FOUR microbial forms cannot carry 60 organisms each,
+           which is exactly what the Platinum audit reported ("all 60 outputs
+           remain variations of the same cap-and-stem trio / bubble colony").
+           The families it names are now present: tooth, jelly, truffle, cup,
+           club, parasitic club and lichen on the fungal side; rods, spirals,
+           filaments, chains, flagellates, plates and mats on the microbial.
+       (2) `form % 6` IS NOT A UNIFORM CHOICE. The raw gene clumps, so a
+           twelve-cell sample came back half puffballs and five microbes in six
+           were the same amoeba in different colours — a mono-template with
+           extra steps. Avalanche the seed before choosing (the murmur3 finish
+           the degenerate-salt bug taught us to reach for), then take the
+           modulus of a genuinely mixed number. The picker itself lives in
+           proceduralfamilies.ts (procFamilyIndex) so the spread test can call
+           the real thing rather than a copy that would agree with its bugs. */
+    const FUNGI_FAM = [fungiBracket, fungiPuffball, fungiCoral, fungiMorel, fungiMold, fungiEarthstar,
+      fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiClub, fungiCordyceps, lichenMat];
+    const MICROBE_FAM = [tardigrade, microbeDiatom, microbeCiliate, microbeAmoeba, microbeForam,
+      microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate,
+      microbePlates, microbeMat, microAlgaeCell];
+    const fam = kingdom === 'fungi' ? FUNGI_FAM : MICROBE_FAM;
+    /* the table and FAMILY_COUNT must agree — if they ever drift, the spread
+       test says so by name rather than this silently painting an empty frame */
+    const painter = fam[procFamilyIndex(g, kingdom) % fam.length]!;
     const { cv, c } = newCanvas();
     vignette(c, kingdom === 'fungi');
     floorFade(c);
