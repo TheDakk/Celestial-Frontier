@@ -1,8 +1,8 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-**Written 2026-08-02 at the end of waves 4–6.**
+**Written 2026-08-02 at the end of waves 4–10.**
 The live work is **THE PROPORTION ARC** — making every organism in the Earth catalogue look
-like the real thing, on Nick's instruction. Waves 4, 5 and 6 have all landed. The next session picks up at THE TWO WORKLISTS below.
+like the real thing, on Nick's instruction. Waves 4–10 have landed. The structural queue below is four-fifths done.
 
 ---
 
@@ -26,7 +26,7 @@ Every real catch in this arc came from looking at a picture. Not one came from a
 ## READ IN THIS ORDER
 
 1. **this file**
-2. `port/v2/DEVIATIONS.md` — the laws. Start at **D-ART-89 … D-ART-97**; they are this
+2. `port/v2/DEVIATIONS.md` — the laws. Start at **D-ART-89 … D-ART-99**; they are this
    session's and they are the expensive ones.
 3. `port/PROPORTION_ARC.md` — the arc plan
 4. `ROADMAP.md` · `PROCESS_LAWS.md`
@@ -138,66 +138,63 @@ carry forward, because they should shape what the next session even attempts:
 
 ---
 
+## THE STRUCTURAL QUEUE — WHERE IT STANDS
+
+Nick set this order on 2026-08-02: fix the structural findings (the ones a
+future material/texture pass provably cannot fix), and defer the surface ones.
+
+1. ✔ **Wrong-class routing and ownership blockers** (wave 8). The bats were
+   rendering as bees; the tardigrade's eight legs read as four. Both fixed.
+   ⚠ NOT done, and deliberately: Green Algae / Snow Algae / Reindeer Lichen /
+   Tardigrade still exist as TWO CATALOG RECORDS each. The painters are right
+   per kingdom; collapsing the records is a data change touching species counts
+   and saves. **Nick's call.**
+2. ✔ **Birds** (wave 8). The songbird blob is gone — see below.
+3. ✔ **The unmodelled families** (wave 9): marsupial, procyonid, xenarthran,
+   pinniped, burrower, plus 'claw' and 'flipper' feet. 21 species off 'generic'.
+4. ✔ **The named regressions** (wave 9): the rectangular tail base, the
+   elephant's Asian topline and knee-height trunk, the walrus's legs.
+5. ▶ **The unrouted** (wave 10, PARTIAL). 951 → 968 of 1,014. Crocodilians,
+   pinnipeds, poultry and the missing cetaceans are done. **46 remain** —
+   `node tools/coveragegap.mjs`. The biggest fauna clusters left:
+   Kangaroo/Wallaby (a bipedal hopper — needs a new pose, not a new spec),
+   Platypus/Echidna, Vampire Squid/Deep-Sea Octopus, and the singletons
+   (Chameleon, Frilled Lizard, Seahorse, Poison Dart Frog, Caecilian).
+   Plus flora 13, fungi 7, microbe 12.
+
+**Then, and only then, the material pass** — see the strategic note above.
+
+---
+
 ## OPEN, IN PRIORITY ORDER
 
-⚠ **Read `reference/mammalaudit.json` and `reference/visualaudit.json` before starting.** Both
-were produced by agents that opened every portrait. They are harsh by instruction — "blocker"
-there means "fails a must-read feature", not "unshippable" — so **work the per-row text, never
-the severity counts.**
-
-
-1. **★ THE HEADS ARE STILL NOT UNIQUE — 20 of 141.** The mammal visual audit HAS now run
-   (`reference/mammalaudit.json`, all 141 judged against the post-wave-6 export) and it answers
-   Nick's complaint directly: **only 20 of 141 heads read as specific to their species.** Wave 6
-   made skulls differ BETWEEN families and that is visible; it did nothing WITHIN a family, and
-   the audit is blunt about why — *"same two-tone leaf ear pair, same big white-ringed cartoon
-   eye at the same position, same wedge muzzle, same dark nose dot, same single mouth line."*
-   **The ear and the eye are still one asset for every mammal alive.** That is wave 7: ears and
-   eyes per species, then muzzle/nose detail. Skull SHAPE is no longer the bottleneck.
-   Still unchecked: the 55 quadruped rows of Nick's own fix queue.
-2. **Nick's STRICT re-audit is in `reference/nick-strict/`** (+ `nick-strict-reaudit.md`).
-   ⚠ It ran on the PRE-WAVE-4 images — all 1,010 Earth hashes match the older run — so it
-   re-scores old art under stricter bands and has NOT seen waves 4–7. Merged already: his
-   per-species `expected_body_family` (103 agree with ours, 3 disagreements resolved, 0 gaps),
-   and the check that of his 58 approved Earth assets only 4 were in the rewritten set.
-   **Still to work: `equid_family_required_rebuild.csv`, `newly_downgraded_false_passes.csv`
-   (Blobfish, Cuttlefish, Fennec Fox, Secretary Bird, Banana), and the 962-asset fix queue.**
-   ⚠ Its `technical_retest` flags essentially EVERY image as an edge-contact candidate, which
-   contradicts our own clip sentinel (0 clipped). Treat that field as a false positive.
-3. **The Walrus is bad and Nick had approved it.** It reads as a tusked dachshund: it is routed
-   through the quadruped painter and given legs, when a walrus needs flippers and a bulk that
-   sits on the ground. Either give it a pinniped body plan or route it away.
-4. **36 routed mammals are in families we do not model** (marsupials, raccoon-likes,
-   armadillo/sloth, aardvark, colugo, mole, walrus, and 20 "other or uncertain" incl. Cattle,
-   Hyena, Giant Anteater). They fall back to 'generic' and look it.
-5. **The 23 rows Nick's audit says are STILL NOT FIXED** (see `reference/nick-audit-recheck.json`):
-   Sargassum · Acai · Shiitake · Yeast · Chanterelle · Death Cap · Destroying Angel · Jelly
-   Fungus · Cave Cricket · Hammerhead Shark · Vampire Squid · Whale · Orca · Flying Squirrel ·
-   Giant Isopod · Kakapo · Rooster · Snapping Turtle · Softshell Turtle · Alligator · Alpine
-   Salamander · Ostrich · Caiman. The 54 "partly" rows are the tier below.
-6. **The 33 HARD look-alike pairs** — mostly one songbird cluster (Lark/Robin/Weaverbird/
-   Swift/Starling/Sparrow/Finch), which Nick's audit found independently. **Birds need exactly
-   what mammals just got**: a solid body, a skin, family plans, and a skull.
-7. **The Elephant is visibly broken** (a huge grey head disc over a small body). Its good spec
-   is in git: `git show e66dca4:port/v2/packages/art/src/mammaloverrides.ts`. **Recover it.**
-8. **What the mammal audit says is wrong catalogue-wide** (`reference/mammalaudit.json`; 131
-   blocker / 9 major / 1 minor, on a deliberately harsh scale — read the rows, not the labels):
-   - **the tail base is a hard-edged RECTANGLE pasted on the rump** on many species. Real bug.
-   - ~~the shoulder and haunch read as grey spheres bulging below the belly line~~ **FIXED in
-     wave 7** — the profile was hung under a fixed back line so muscle pushed the belly down.
-   - shaggy coats are outward BRISTLES that add no volume — fleece should fatten the silhouette.
-   - the elephant's back is convex with the skull as its highest point (that is the Asian
-     profile; the reference note explicitly excludes it) and the trunk stops at knee height.
-   - the bear's head merges into its shoulder mass; the camel's hump reads as a ball.
-9. **59 Earth species still unrouted** (`node tools/coveragegap.mjs`) — crocodilians, bats,
-   pinnipeds, Kangaroo/Wallaby, Platypus/Echidna, Chameleon, Chicken/Rooster, Seahorse, etc.
-   Several of these are also on Nick's not-fixed list, so routing them fixes both.
-10. The 17 flora NEEDS_FIX rows (Platinum task #24), never started.
-11. The `[A]` eye sensor in `conformance.mjs` is still suppressed and still untrustworthy
-   (8/20). Honestly: **the visual audit has superseded it.** Consider deleting it rather than
-   rebuilding it a fifth time.
-12. **Drive the skull from the reference row's measured `headFrac`** instead of a name hash —
-   named in D-ART-96 as the next improvement.
+1. **★ THE HEADS ARE STILL NOT UNIQUE — 20 of 141** (measured before waves 7–10,
+   so re-measure). Skull SHAPE differs between families and is no longer the
+   bottleneck; every FEATURE on it — one ear asset, one white-ringed eye, one
+   nose dot — is still shared catalogue-wide (D-ART-99). Wave 11 is ears and
+   eyes per species. **This is the biggest open art item.**
+2. **The 19 remaining hard look-alike pairs.** No longer birds — now fish and
+   invertebrates: Snail ≈ Freshwater Snail, Otter ≈ River Otter, Walleye ≈
+   Mullet, Cave Fish ≈ Anchovy, Arctic Cod ≈ Cold-Water Fish, Coot ≈ Moorhen,
+   Centipede ≈ Giant Centipede. **The fix is the same one that worked for the
+   songbirds**: per-species colour, then shape, derived from each row — the
+   fish and invert tables have the same "band instead of a species" problem the
+   bird table had.
+3. **The 46 unrouted** (item 5 above).
+4. **The 23 rows Nick's audit says are STILL NOT FIXED**
+   (`reference/nick-audit-recheck.json`). Several are now done by waves 8–10
+   (Alligator, Caiman, Rooster, Ostrich, Whale, Orca) — **re-run the recheck
+   workflow against a fresh export before working the list.**
+5. **Nick's 55 quadruped fix-queue rows have still never been re-checked**, and
+   the mammal audit predates waves 7–10. Both want a fresh pass.
+6. The 17 flora NEEDS_FIX rows (Platinum task #24), never started.
+7. **Deferred to the material pass, by decision** — do NOT hand-fix these with
+   more gradient tricks, which is what waves 4–7 kept doing and paying for:
+   everything the audits describe as airbrushed, flat, plastic, sprayed-on,
+   machined-edged, or lacking fur volume. ~86% of open findings mention surface
+   quality; they cannot close until the surface changes.
+8. The `[A]` eye sensor in `conformance.mjs` is still suppressed and still
+   untrustworthy (8/20). The visual audit has superseded it — consider deleting.
 
 ---
 
