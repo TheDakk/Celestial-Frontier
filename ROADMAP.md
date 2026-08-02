@@ -686,6 +686,25 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 19 — ALL 28 PLATINUM RELEASE BLOCKERS CLEARED (2026-08-02, batch 40).
+##   Buckets C + D of port/AUDIT_PLATINUM_PLAN.md; with wave 18's A + B this closes EVERY one of
+##   the audit's 28 named blockers (fauna 6 · flora 12 · fungi 6 · microbe 4). BUCKET C, 8 iconic
+##   flora in floraoverrides3.ts: Cabbage (wrapped lobes — concentric rings read as a snail
+##   shell) · Carrot · Corn · Hemp · Tobacco · Watermelon · Wild Strawberry · Kiwi Fruit. The
+##   foliage green bias went 0.55 -> 0.82 because Hemp and Tobacco had PINK and BROWN leaves.
+##   BUCKET D, faunaoverrides4.ts: Kiwi · Mudskipper · Pyrosome · Salp · Tripod Fish + a rebuilt
+##   microbe Foraminiferan (a real trochospiral: 8 chambers, each 22.5% larger, spaced 1.52x
+##   their radius so they OVERLAP into one shell; soft sutures, perforate wall, aperture, 76
+##   pseudopodia). ★D-ART-61 THE IDENTITY ANCHOR: anchor(p,r,g,b,k) blends the genome tint toward
+##   a colour the organism IS — the kiwi rendered lime green and stopped being a kiwi (now 72%
+##   brown); foram 55% calcite. ★D-ART-62 A MARK CANNOT BE THE SURFACE: the salp was hoops over
+##   an empty fill and read as a coiled spring; fill the volume, then lay bands on it as
+##   foreshortened arcs. Same class as kiwi plumage radiating out of the outline instead of
+##   draping on the body — THE SURFACE LAWS, verbatim, twice. Tripod fin rays walked in 14
+##   segments tapering 3.2->1.2px. GATES: vitest 220 · tsc · overridecheck 930/930 0 dead · 7/7
+##   controls · artbattery 5/5 · speciesaudit 1254/1254 0 dupes 0 clipped · hdart UNTOUCHED.
+##   NEXT: wave 20 = the 165 NEEDS_FIX polish sweep · wave 21 = procedural fungi + microbe
+##   families · then re-export the five zips and re-run the Platinum audit.
 ##   ✔★★★ MORPHOLOGY WAVE 18 — THE PLATINUM AUDIT: CANONICAL + FUNGI (2026-08-02, batch 39).
 ##   The 2nd full audit came back — pipeline CLEAN (1,254 open, 440x440, no clip, no byte-dupe,
 ##   matrix complete), 28 named RELEASE_BLOCKERS. Plan in port/AUDIT_PLATINUM_PLAN.md. Wave 18

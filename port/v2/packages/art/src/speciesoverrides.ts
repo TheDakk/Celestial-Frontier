@@ -23,6 +23,8 @@ import { QUAD2_SPEC } from './mammaloverrides.js';
 import { INVERT_NAME } from './invertoverrides.js';
 import { FLORA2_SPEC } from './florarost.js';
 import { planFor } from './proceduraloverrides.js';
+import { faunaKiwi, faunaMudskipper, faunaPyrosome, faunaSalp, faunaTripodFish } from './faunaoverrides4.js';
+import { floraCabbage, floraCarrot, floraCorn, floraHemp, floraTobacco, floraWatermelon, floraStrawberry, floraKiwiFruit } from './floraoverrides3.js';
 import { fungiFlyAgaric, fungiLionsMane, fungiMaitake, fungiStinkhorn, fungiCordyceps, lichenMat, microbeForam, tardigrade, macroAlgaeSheet, microAlgaeCell, algaeBloom } from './fungioverrides2.js';
 import { fishBody } from './faunaoverrides3.js';
 import { insectBody, myriapod } from './invertoverrides.js';
@@ -342,6 +344,22 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'flora|Reindeer Lichen': lichenMat, 'fungi|Reindeer Lichen': lichenMat,
   /* Sea Lettuce: a green macroalgal sheet, not a purple strap */
   'flora|Sea Lettuce': macroAlgaeSheet,
+  /* ★ wave 19 — the iconic flora whose GROWTH FORM is the name (audit bucket C) */
+  'flora|Cabbage': floraCabbage,
+  'flora|Carrot': floraCarrot,
+  'flora|Corn': floraCorn,
+  'flora|Hemp': floraHemp,
+  'flora|Tobacco': floraTobacco,
+  'flora|Watermelon': floraWatermelon,
+  'flora|Wild Strawberry': floraStrawberry,
+  'flora|Kiwi Fruit': floraKiwiFruit,
+  /* ★ wave 19 — the fauna blockers whose SIGNATURE the shared systems cannot
+     express (audit bucket D) */
+  'fauna|Kiwi': faunaKiwi,
+  'fauna|Mudskipper': faunaMudskipper,
+  'fauna|Pyrosome': faunaPyrosome,
+  'fauna|Salp': faunaSalp,
+  'fauna|Tripod Fish': faunaTripodFish,
 };
 export function resolveOverride(g: G): string | null {
   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it
