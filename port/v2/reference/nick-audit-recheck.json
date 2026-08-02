@@ -1,0 +1,569 @@
+{
+ "ran": "2026-08-02",
+ "note": "Verdict on each row of Nick's anatomy-first audit against the CURRENT render (post wave 4-6). Non-quadruped rows only: the 55 quadruped-routed rows in his queue were excluded because waves 4-6 were rewriting those species and must be re-checked after a fresh mammal export.",
+ "counts": {
+  "partly": 54,
+  "not_fixed": 23,
+  "fixed": 16
+ },
+ "rows": [
+  {
+   "species": "Dragon Fruit",
+   "verdict": "partly",
+   "evidence": "Three separate, near-straight vertical green columns of uniform width standing side by side; each rises unbroken from the ground shadow to its tip with no forks, side arms, aerial roots, or any support/trellis to climb. Attached mid-height on the left and right columns are two magenta/pink star-shaped rosettes with pale-green pointed tips, which do read as dragon fruit borne on the stem — so 'attached dragon fruit' is now present (2 of them). The 'climbing/branching cactus stems' half is unchanged: still the same parallel vertical columns he flagged, with no branching and no climbing habit.",
+   "stillMissing": "branching cactus stems (no forks or side arms anywhere); climbing habit (no support, no aerial roots, stems free-standing and parallel)"
+  },
+  {
+   "species": "Ivy",
+   "verdict": "partly",
+   "evidence": "A single sinuous S-curving olive stem trails up the frame — a vine silhouette rather than an upright herb — and along it I can see several small dark-green coiled tendril/rootlet rings sitting on the stem between the leaf nodes, which reads as an attachment structure. But the foliage is six large WHITE many-rayed starburst rosettes (narrow radiating petal-like rays), not green palmately lobed ivy leaves; nothing on the plant is a lobed leaf, and the vine still climbs nothing — there is no wall, trunk, or surface it is attached to.",
+   "stillMissing": "lobed leaves (foliage is white radiating starbursts, not palmate green ivy lobes); climbing against a surface (tendrils are present but grip nothing)"
+  },
+  {
+   "species": "Mustard",
+   "verdict": "partly",
+   "evidence": "The tree-like form he flagged is gone: this is now a single slender green stem carrying a dense vertical column of pale white-blue pointed rosettes, rising from a ground shadow. At the very apex there is one small yellow crescent/arc — the only yellow element in the whole image. There is no branching at all (one unforked stem), no cluster of yellow flowers, and no elongated seed pods/siliques anywhere.",
+   "stillMissing": "branched habit (stem is single and unforked); yellow flowers (only one tiny yellow arc at the tip, not a flowering raceme); seed pods"
+  },
+  {
+   "species": "Peanut",
+   "verdict": "partly",
+   "evidence": "Compound leaves are now clearly there: a central stem bears about ten opposite pairs of pinnate sprays, each made of many small blue leaflets ranked along a rachis — unmistakably compound foliage. But the habit is tall and upright, a narrow vertical column roughly two-thirds the frame height on a bare stem, not a low spreading plant. The single tan/brown pod-ball sits at the TOP apex of the stem, above all the foliage; below the ground-shadow ellipse there is nothing — no soil line, no pegs, no buried pods, no roots.",
+   "stillMissing": "low growth habit (plant is a tall upright column); underground pod / harvest relationship (the one pod is at the apex above ground, nothing below the soil line)"
+  },
+  {
+   "species": "Sargassum",
+   "verdict": "not_fixed",
+   "evidence": "Still the narrow tuft he described: a single tight bundle of ~10 parallel teal blades springing from one point at the ground shadow and fanning only slightly outward to a flat cut-off top — an inverted-teardrop brush. No frond ever divides: every blade runs unbranched from base to tip, so there are no branching fronds. There are no air bladders — I see only two or three tiny dark nubs at the very top edge, no round pneumatocysts strung along the blades anywhere.",
+   "stillMissing": "branching fronds (all blades unbranched and parallel); numerous air bladders (none visible); wider/bushier form than the current narrow tuft"
+  },
+  {
+   "species": "Tea Tree",
+   "verdict": "fixed",
+   "evidence": "Now a woody multi-stemmed shrub: a short grey-blue woody trunk at the base splits into several ascending branches, and the whole crown is packed with short narrow needle/linear leaves radiating off the twigs — narrow foliage, not broad blades. Five small cream-white daisy-like flowers with visible pale centres sit at the top of the crown on their own short stalks. Woody form, narrow leaves and small flowers are all three visibly present; the generic single stem he flagged is gone.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Whale Shark",
+   "verdict": "partly",
+   "evidence": "Spots: present (scattered grey ovals over a pale body). Gill region: PRESENT — six dark vertical slit lines are drawn behind the head, so the gill cue he asked for now exists. Broad flat filter-feeding head: NOT present — the head tapers to a sharp needle-like point with the eye set right at the snout tip; the silhouette is a generic pointed-snout fish, the opposite of a wide blunt terminal-mouthed head. Large mouth: NOT visible at all — no mouth line, gape, or terminal slit is drawn. Shark tail: NOT present — the caudal is a thin, evenly forked two-lobe fin with symmetrical upper and lower lobes (tuna/generic-fish style), not a heterocercal shark tail with a dominant elongated upper lobe. Dorsal and pelvic fins are small grey blobs.",
+   "stillMissing": "broad flat filter-feeding head; large mouth; shark (heterocercal, long upper lobe) tail"
+  },
+  {
+   "species": "Woodpecker",
+   "verdict": "partly",
+   "evidence": "The bird is a teal/cyan body with a small crest. Bill: partially addressed — it is a straight orange bill running roughly a third of body length, noticeably longer than a generic songbird beak, but it is a thin tapering cone ending in a fine point, not a blunt heavy chisel. Tail: a dark swept wedge projects back and slightly down off the rear; it is pointed but reads as a wing/tail blade, not a stiff downward-braced prop against a trunk. Climbing feet: NOT present — two thin yellow legs with ordinary forward-facing perching toes, planted flat. Posture: NOT present — the bird stands horizontally on the ground with a ground shadow beneath it; there is no trunk in the image and no vertical clinging pose. Overall it still reads as a generic songbird with a long beak.",
+   "stillMissing": "chisel (blunt, heavy) bill shape; stiff propping tail; zygodactyl climbing feet; upright trunk-clinging posture"
+  },
+  {
+   "species": "Acai",
+   "verdict": "not_fixed",
+   "evidence": "The render is exactly the thin stem/leaf ladder he described: one bare brown stick rising from the ground with three small gold almond-shaped leaves attached alternately along it (one left, one right, one lower left). No palm crown, no fan or pinnate frond, no crownshaft, no clustered trunk — and no berries of any colour anywhere in the image, let alone dark drooping panicles. Nothing about the required palm-with-dark-berry-clusters read has landed.",
+   "stillMissing": "palm silhouette (tall bare trunk with crown of pinnate/fan fronds); dark berry clusters/panicles"
+  },
+  {
+   "species": "Angel's Trumpet",
+   "verdict": "partly",
+   "evidence": "Structure: partially addressed — a bundle of four or five stems converges at the ground into a narrow trunk-like base and fans upward into a broad billowing crown, so the overall massing now reads as a shrub/small tree rather than a herb. However the stems are thin pale lavender lines with no bark, taper, or branching structure, so the 'woody' quality is not really there. Flowers: NOT present — the entire canopy is one undifferentiated cloud of orange-red rounded blobs; there is not a single pendulous trumpet, no flared corolla mouth, no long tube, nothing hanging downward off a branch. Everything in the crown points up and out as foliage-like puffs.",
+   "stillMissing": "large hanging trumpet flowers (pendulous flared corollas); genuinely woody trunk/branch structure"
+  },
+  {
+   "species": "Beach Morning Glory",
+   "verdict": "partly",
+   "evidence": "Vine: partially addressed — the elements are no longer free-floating. A continuous olive-green stem now snakes in an S-curve through the image, and small coiled tendril rings are drawn along it, which reads as a vine. But the growth direction is diagonally upright, not a low creeping/trailing coastal mat, and there is no sand or ground-hugging runner cue. Flowers: NOT present — the seven white elements are smooth spheres/round berry-like balls with a highlight streak; none of them has a funnel or trumpet form, no flared face, no throat, no five-lobed rim. So the 'floating white cluster' criticism is only half answered: the cluster is now strung on a vine, but it is still a cluster of white balls.",
+   "stillMissing": "funnel/trumpet-shaped flowers; low creeping coastal (ground-running) habit"
+  },
+  {
+   "species": "Black Pepper",
+   "verdict": "partly",
+   "evidence": "Climbing vine: partially addressed — a brown woody-toned stem twines in an S through the frame with several small coiled tendril rings along it, which is a climbing-vine cue the old chain lacked. Hanging pepper spikes: essentially NOT present — the dominant elements are still seven large glossy red spheres in paired clusters, i.e. the red berry chain he called insufficient. There is exactly one small speckled bump cluster (a few tiny grey/white beads) near the middle of the stem; it is the only hint of a peppercorn spike, and it is tiny, upright, and not a pendulous catkin of many small drupes. No elongated drooping spikes, no green/dark peppercorn strings, no heart-shaped pepper leaves anywhere.",
+   "stillMissing": "hanging (pendulous) pepper spikes of many small peppercorns; removal/replacement of the dominant large red berry chain"
+  },
+  {
+   "species": "Shiitake",
+   "verdict": "not_fixed",
+   "evidence": "The PNG shows three generic toadstool mushrooms in saturated bright red/crimson. Caps are smooth domed umbrella shapes with a bright scarlet top face and a lighter red underside rim; the stems are the SAME red family (mid-red shading to darker maroon at the base), not pale. There is no brown anywhere in the caps, no shiitake-style tan/umber rounded cap with the characteristic cracked or matte-brown surface, and no cream/white stem. A few tiny grey spore dots float around the caps. This is essentially the same 'bright red generic mushroom' he described.",
+   "stillMissing": "brown rounded shiitake caps (caps are still bright red); pale/cream stems (stems are still red)"
+  },
+  {
+   "species": "Yeast",
+   "verdict": "not_fixed",
+   "evidence": "The PNG shows a single amorphous tan/olive blob — one lumpy, roughly oval mound with an irregular bumpy silhouette and soft internal gradient, filling the middle of the frame. Scattered over and around it are small white point-specks (dust/speckle particles), which are pinpricks of light, not rendered cells: they have no oval body, no membrane edge, no shading, and no smaller bud attached to a parent cell. There is no cluster of discrete round/oval cells, no budding necks, no visible cell-wall outlines. It is still the 'mound' he flagged.",
+   "stillMissing": "clusters of round/oval unicellular bodies rendered as discrete cells; visible budding (daughter cell attached to parent); cell outlines/membranes instead of a single amorphous mound"
+  },
+  {
+   "species": "Foraminiferan",
+   "verdict": "fixed",
+   "evidence": "The PNG now shows an organised chambered test, not a random bubble cluster: a series of pale mint-green spherical chambers arranged in a clear trochospiral/planispiral coil — smallest chambers at the upper-left curving around a central umbilicus and growing progressively larger clockwise to the big terminal chamber at lower-right. Each chamber is separately shaded with its own highlight and a suture/seam line where it meets its neighbour, reading as successive growth chambers. The terminal chamber carries a distinct dark elliptical aperture. Radiating out from the whole test in all directions is a dense halo of fine straight hair-like filaments (dozens of thin rays extending well past the test), reading as radiating pseudopodia/spines rather than the old decorative rays over a bubble clump.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Chanterelle",
+   "verdict": "not_fixed",
+   "evidence": "Three identical golden-yellow mushrooms with smooth CONVEX domed caps on plain tapered stems. Each cap underside is a flat darker-olive ellipse with no radial detail at all — no ridges, no wrinkles, no lines crossing onto the stem. Nothing is funnel/vase shaped: every cap bulges upward and the margin curves down, the opposite of a chanterelle's infundibuliform depression. This is the same generic yellow cap-and-stem trio his finding described.",
+   "stillMissing": "funnel/vase-shaped (infundibuliform) caps with a depressed centre and wavy upturned margin; blunt decurrent false-gill ridges running down onto the stem"
+  },
+  {
+   "species": "Death Cap",
+   "verdict": "not_fixed",
+   "evidence": "Three generic golden-yellow mushrooms, smooth domed caps, flat olive-tinted cap undersides, plain tapered cream-to-gold stems. The stems are bare from cap to ground — no skirt/ring anywhere on the upper stem, and the stem bases just meet the shadow ellipse with no cup, bulb or sheath. Cap colour is saturated yellow, not olive-green.",
+   "stillMissing": "olive-green cap colour; pendulous stem ring (annulus); sac-like basal volva at the stem base"
+  },
+  {
+   "species": "Destroying Angel",
+   "verdict": "not_fixed",
+   "evidence": "Three mushrooms rendered in bright violet/purple with lilac highlights — caps, undersides and stems are all purple. Stems are smooth and unbroken from cap to ground: no annulus band, no skirt, and no cup or bulb at the base. Exactly the purple-mushroom render his finding cites, unchanged.",
+   "stillMissing": "white/ivory colouring; stem ring (annulus); sac-like basal volva"
+  },
+  {
+   "species": "Earthstar",
+   "verdict": "partly",
+   "evidence": "A rounded spore sac IS now present as the lightest element in the frame — pale grey-lavender with a distinct dark central ostiole pore — so it is no longer a dark blob against the ground. Radiating from behind it are roughly six thin pale spikes, mostly horizontal left and right. But the whole card is rendered very dim, and those rays are narrow needle slivers rather than broad triangular petals splayed on the ground, so the star silhouette still does not read as a star; the lower arms are barely separable from the shadow ellipse.",
+   "stillMissing": "broad, clearly readable triangular star rays splayed around/under the sac (the arms are still thin, few and low-contrast)"
+  },
+  {
+   "species": "Jelly Fungus",
+   "verdict": "not_fixed",
+   "evidence": "Still three classic cap-and-stem mushrooms — smooth white/pearl domed caps, flat grey undersides, straight tapered pale stems standing on a shadow ellipse. There are no lobes, no folded brain-like convolutions, no ear-shaped brackets and nothing attached to wood; the forms are opaque and hard-edged with no translucency or wet gelatinous read.",
+   "stillMissing": "gelatinous lobed/brain-like or ear-shaped fruiting bodies replacing the cap-and-stem form; translucent jelly surface quality"
+  },
+  {
+   "species": "Morel",
+   "verdict": "partly",
+   "evidence": "The cap is now covered edge to edge with a reticulated diamond lattice — a repeating pitted honeycomb net in darker crimson over the red cap, clearly reading as pits and ridges rather than a blank cone, and it sits on a pale cream stem in correct morel proportion. However the cap silhouette is still a perfectly smooth, symmetrical regular bullet/cone outline; the lattice is a flat uniform grid with shallow shading rather than deep sunken pits, and there is no irregularity or lumpiness to the margin or the pit pattern.",
+   "stillMissing": "irregular, lumpy/asymmetric morel cap outline; deeper, unevenly sized and shaped pits (current pits are a shallow uniform diamond grid)"
+  },
+  {
+   "species": "Cave Cricket",
+   "verdict": "not_fixed",
+   "evidence": "The render is still exactly the larva-like bead chain he described: about nine overlapping cream spheres in a single row, tapering slightly, with a flat brown eye disc pasted on the right-hand end sphere. At 3.5x zoom there is not one appendage anywhere on the body — no legs of any kind, so no six long legs and certainly no enlarged jumping hind legs; no antennae, no palps, no thorax/abdomen division (every segment is the same undifferentiated ball), no cerci. The only non-sphere pixels in the whole image are the eye and the ground shadow.",
+   "stillMissing": "six long legs; enlarged jumping hind legs; antennae; distinct cricket thorax/abdomen (all four required features absent)"
+  },
+  {
+   "species": "Chicken",
+   "verdict": "partly",
+   "evidence": "Torso is now a rounded, chunky oval rather than a slim wader barrel, and there is a short triangular beak on a small head — both of those he asked for. On top of the skull there is a smooth crest bump reading as a (soft, unserrated) comb. But under the chin/beak there is nothing at all: no wattles. The feet are two thin angled bars at the ends of long stilt legs — no broad splayed toes. The tail is a flat rectangular slab projecting horizontally back and slightly DOWN from the rump, not raised. Legs remain long and wader-proportioned.",
+   "stillMissing": "wattles; broad feet; raised tail (comb is only a smooth bump, not a serrated comb)"
+  },
+  {
+   "species": "Cicada",
+   "verdict": "partly",
+   "evidence": "No longer a plain bead: it now has a three-part insect plan — head sphere with a dark eye, two thin curved antennae, a large thorax sphere, an abdomen sphere, and six thin legs braced on the ground. A grey wing blade lies folded over the back. Against his list: the thorax IS the broadest segment now (present); the wings exist but are small, opaque grey and barely longer than the abdomen — not large transparent cicada wings; the eye is a modest black dot on the head, not the large bulging cicada eye; the abdomen is a blunt round sphere with no taper to a point.",
+   "stillMissing": "large transparent wings; large eyes; tapered abdomen"
+  },
+  {
+   "species": "Cockroach",
+   "verdict": "partly",
+   "evidence": "Three of his four features are visibly there: two very long antennae sweeping forward well past the head, six thin legs (front/mid/rear pairs) planted on the ground, and a folded wing blade lying flat along the back over the abdomen. What is not there is the torso he asked for — the body is still the bead build, three bulbous teal spheres (head, thorax, abdomen) with clear waists between them, not a single flattened low oval carapace. The legs are smooth filaments with no spines/tibial spurs.",
+   "stillMissing": "flattened oval torso; spines on the legs"
+  },
+  {
+   "species": "Crocodile",
+   "verdict": "partly",
+   "evidence": "Armor is now present — a row of eight dorsal scute spikes runs along the back — and the head is a wedge with a teal eye and a short row of teeth marks along the jaw line, so the arrow shape has gained croc read-outs. But the torso is still a long thin horizontal slab, shallow top-to-bottom, nothing broad or barrel-bodied about it. Only two spindly bent leg struts are visible beneath the body (one mid, one rear), stick-thin and tucked under rather than four splayed sprawling limbs. The tail is just the slab tapering to a flat point on the left with no mass, keel or lateral thickness.",
+   "stillMissing": "broad armored torso (armor yes, broad no); four splayed legs; muscular tail"
+  },
+  {
+   "species": "Dugong",
+   "verdict": "fixed",
+   "evidence": "The sphere is gone — the body is now a long fusiform sirenian barrel, roughly 3:1 length to depth, thickest forward of mid-body and narrowing to a peduncle. The head end carries a blunt, down-angled muzzle: a lighter snout panel with a nostril mark above and a fan of dark bristles pointing down and forward from the mouth. A large rounded paddle flipper sits low on the near flank behind the head, with a second thin flipper edge behind it. The tail ends in a proper horizontal fluke — a swept crescent with two trailing points and a notched centre. All four of his required features are visible.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Bladderwrack",
+   "verdict": "partly",
+   "evidence": "Zoomed render shows a tight upright bundle of ~8 parallel strap-blades all rising from a single point at the base, plus three lighter capsule/dot nodules riding on the mid-line blade (the uppermost one at mid-height is a two-lobed capsule that does read as a paired bladder; the lower two are single). So bladders ARE now present on the fronds. But the fronds are saturated crimson/red, not brown, and there is no dichotomous branching — the straps run parallel and converge, only two short blades fork near the very top, so the silhouette is a sheaf, not a branching frond.",
+   "stillMissing": "brown frond coloration; true branching (dichotomous forking) frond structure; consistently PAIRED bladders (only the top nodule is two-lobed, the other two are single)"
+  },
+  {
+   "species": "Buckwheat",
+   "verdict": "partly",
+   "evidence": "A straight olive stem carries ~9 opposite pairs of pale blue-white rounded blades, each with a visible midrib/attachment line, and a small cream fan-shaped flower tuft sits at the apex. So rounded leaf blades and a clustered flower head are both visible. However the leaf pairs are packed edge-to-edge into a perfect vertical cylinder with a flat-sided, cob-like silhouette — the cylindrical grain-like form he flagged is still exactly what the image reads as, and the flowers amount to one tiny terminal tuft rather than clustered inflorescences.",
+   "stillMissing": "broad leaves read as leaves (they are stacked into the cylindrical grain-spike envelope he called incorrect); a non-cylindrical branching plant body; flower clusters of any real presence beyond the single small apex tuft"
+  },
+  {
+   "species": "Cardamom",
+   "verdict": "partly",
+   "evidence": "Still a low, flat, fan-shaped rosette of ~18 mint-green lanceolate spikes radiating from one basal point — the same generic low-rosette silhouette he flagged, closer to an agave/palmetto fan than to ginger's tall arching foliage. The one new cue is a small dark segmented ellipse with pale speckles sitting over the leaves right of center, which reads as a seed pod; it floats mid-canopy rather than sitting at the base, and at full size it is barely legible.",
+   "stillMissing": "ginger-family leaf character (long, arching, strap/lance leaves on upright pseudostems rather than a flat radiating rosette); BASAL flower/pod cues at ground level — the single pod cue is mid-canopy, and there is no basal flower spike"
+  },
+  {
+   "species": "Cinnamon",
+   "verdict": "partly",
+   "evidence": "Now unmistakably a tree: a thick upright trunk rising from the ground into a broad domed canopy, with dozens of narrow lanceolate leaves in green/olive scattered through a hazy olive-green crown, plus four small brown-and-tan speckled flower/berry clusters. Woody tree form and green leaves are both present. The bark/cinnamon cue is not: the trunk is a smooth flat ochre-olive slab with only a soft vertical gradient — no bark striation, no texture, no cinnamon-brown or curled-quill element; the only warm brown in the piece is the four flower clusters.",
+   "stillMissing": "bark/cinnamon cue — trunk has no bark texture, no cinnamon-brown coloration and no quill/peeling-bark motif"
+  },
+  {
+   "species": "Cotton",
+   "verdict": "fixed",
+   "evidence": "A green stem rises from the ground and forks into three distinct branches, and those branches carry six to seven white fluffy round bolls, each drawn as a lobed cotton puff with a small calyx where it meets the branch. Both features he asked for — multiple bolls and a branching plant body — are plainly visible.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Cucumber",
+   "verdict": "fixed",
+   "evidence": "A sinuous S-curved creeping vine runs diagonally across the frame with six curled spring tendrils along it, seven palmate lobed leaves attached at the nodes, and one green, dark-striped cucumber fruit attached to the vine at a node just above center. Vine habit, leaves and an attached cucumber are all present. Caveat on his 'broad' wording: the leaves are amber-gold with narrow tapering lobes (star-like) rather than wide green blades, and only a single fruit is attached.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Grasshopper",
+   "verdict": "partly",
+   "evidence": "Still the three-bead build (round head bead + oval thorax bead + oval abdomen bead) he described, but two things have been added: a folded elytron/wing plate with venation lines now lies over the thorax-abdomen join, and the rearmost leg is drawn as a bent V (femur angling up-back off the abdomen, tibia dropping to the ground) rather than a straight stick. What is NOT there: that hind leg is the same hairline stroke width as the other four legs — no thickened/enlarged jumping femur, no mass at all; the abdomen is a single smooth gradient ellipse with zero segmentation rings or tergite banding; the head is a perfectly round sphere with a bead eye and two antennae — nothing angular, no slanted face, no mandibles.",
+   "stillMissing": "enlarged (thickened-femur) jumping hind legs; segmented abdomen; angular head"
+  },
+  {
+   "species": "Hammerhead Shark",
+   "verdict": "not_fixed",
+   "evidence": "The head is a plain tapered point — the body silhouette narrows continuously from mid-body to a sharp snout tip at the right edge, exactly like a generic mackerel/tuna profile. There is no cephalofoil of any kind: no lateral lobes, no widened T-shaped or mallet head, no notch. A single small white-ringed eye sits high on the snout just behind the tip, forward-facing on the head line, not pushed out to the ends of any lateral extension. Present but irrelevant to his row: dorsal fin, pectoral fin, five gill slits, forked caudal fin.",
+   "stillMissing": "wide hammer-shaped cephalofoil; laterally placed (lobe-tip) eyes"
+  },
+  {
+   "species": "Harpy Eagle",
+   "verdict": "partly",
+   "evidence": "Two of his features have landed: a distinct spiky crest of several pale filaments now rises off the crown, and the bill is a yellow hooked raptor beak with a downcurved tip and visible cere line. The rest is unchanged generic songbird. The head is a small round ball roughly a third of the body's height — nothing massive, no heavy brow, no deep skull. The wing is the same rounded folded panel used on the other perching birds, tucked against the flank; no broad, long, plank-like raptor wing. The legs are two thin yellow twig strokes with small flat splayed toes resting on the ground — no thick feathered tarsi, no bulk, and the toes carry no talons at all, let alone oversized ones (no claw tips are drawn).",
+   "stillMissing": "massive raptor head; broad wings; thick legs; oversized talons"
+  },
+  {
+   "species": "Hoatzin",
+   "verdict": "partly",
+   "evidence": "The crest is now present and prominent — a fan of pale cyan spiky filaments off the crown. A tail is drawn: a dark wedge projecting back past the rump with fine barb strokes beneath it, though at roughly 40% of body length it reads as moderate rather than long. Not present: no heavy crop — the throat/upper breast is the same smooth ball as the rest of the body, with no swollen bulge at the base of the neck; and no clawed-young lineage cue anywhere — the folded wing is a plain rounded panel with no claw, hook, or finger at its leading edge or bend. Note the render is the same base bird as Harpy_Eagle.png (identical crest, body, legs, tail geometry, different hue only).",
+   "stillMissing": "heavy crop; clawed-young / wing-claw lineage cues (and the tail is only moderate, not long)"
+  },
+  {
+   "species": "Honeybee",
+   "verdict": "partly",
+   "evidence": "Most of his list is now visible. Wings: a translucent grey membranous wing with a vein line lies over the abdomen. Fuzzy thorax: a dense ring of short pale-yellow bristles radiates all around the middle bead — clearly a fuzzy thorax. Striped abdomen: the rear bead carries four vertical bands (light/shadow ribbing) — banding is there, though it is white-on-white and low contrast rather than dark/amber. Legs: I count six thin grey strokes — two off the head/front, one under the thorax, one under the thorax-abdomen join, and two off the rear. A brown wedge (stinger) exits the abdomen tip. What I cannot find: any pollen structure — the hind legs are bare hairline sticks with no corbicula, no basket, no pollen pellet or load mass on them.",
+   "stillMissing": "pollen structures (corbiculae / pollen loads on the hind legs)"
+  },
+  {
+   "species": "Horned Lizard",
+   "verdict": "partly",
+   "evidence": "Cranial horns are now clearly present: a crown of five-plus pale tapered spikes fans back off the rear of the skull. Lateral spines are also present: a row of triangular pale spines runs along the lower flank/ventral fringe from the shoulder to the hip, plus a couple at the shoulder. But the torso is still a tall rounded egg-dome — taller than it is long, bulging upward — not the broad, low, dorsoventrally flattened pancake he asked for. And the tail is the large pale crescent sweeping up and back off the rump, roughly as long as the body is tall and thick at the base — the opposite of a short tail.",
+   "stillMissing": "broad flattened torso; short tail"
+  },
+  {
+   "species": "Tortoise",
+   "verdict": "partly",
+   "evidence": "Zoomed crop confirms: the domed carapace IS now integrated — a high dome with concentric scute ribbing sitting flush on a grey plastron slab (domed shell integration = present). A rounded head on a short neck segment emerges from the front-right of the shell with a dark eye (head/neck posture = present). But the legs are still exactly the wheeled-shell defect he named: two detached flat grey discs floating below the plastron with a visible gap between disc and body — no columnar elephantine limbs, no ankles/feet, no attachment. The rear (left) end of the shell terminates in bare shell edge — no tail nub of any kind.",
+   "stillMissing": "visible elephantine legs (still two detached wheel-like discs); short tail"
+  },
+  {
+   "species": "Vampire Squid",
+   "verdict": "not_fixed",
+   "evidence": "3x crop shows an elongated spindle FISH body with a large two-lobed forked caudal fin at the left end, a constricted waist/segment behind a tapered head end, and two thin club-tipped appendages projecting right. No conical cephalopod mantle and no lateral mantle fins; no arm crown and no interbrachial web anywhere; no eye is drawn at all, let alone a large one; the only trailing elements are the two stiff bulb-tipped limbs, which read as legs/antennae, not a cluster of trailing filaments. The fish-like body he described is essentially unchanged.",
+   "stillMissing": "cephalopod mantle; webbed arms; large eyes; trailing filaments"
+  },
+  {
+   "species": "Viperfish",
+   "verdict": "fixed",
+   "evidence": "6x head crop shows an oversized row of pale needle teeth along a dark gape line, graduating in size toward the snout, with the anterior fang protruding far below the jawline as a long dagger — unmistakable oversized dentition. The head is enlarged and blunt-bulbous relative to the tapering body, carries a large ringed eye with specular highlight, and the flank shows a row of small blue photophores — a deep-sea predatory head read.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Vulture",
+   "verdict": "partly",
+   "evidence": "5x head crop shows the bill IS now a hooked scavenger bill — a yellow cere-like base with a distinctly downcurved raptor hook at the tip, not the straight passerine cone. The body is also heavy and bulky, a deep barrel torso. But the head and neck are the same purple feathered plumage as the body with no bare skin, no ruff and no bald tone break — the bald head/neck is absent. The wings are drawn as a compact folded lobe against the flank with a short pointed tip; there is no broad soaring wing area or long primary spread anywhere in the silhouette.",
+   "stillMissing": "bald head/neck; broad soaring wings"
+  },
+  {
+   "species": "Water Strider",
+   "verdict": "partly",
+   "evidence": "6x crop shows it is no longer a single bead: there is now a three-segment body — small head with eye, round thorax, and a distinctly elongated narrow oval abdomen — plus two forward antennae and six thin filamentous legs that splay out fore and aft. The narrow skating body is partly there. But the legs are not extremely long: measured against the full image the leg span (~x170 to x290) is about equal to body length (~110px), roughly one body-height of reach each, whereas the surface-spanning strider proportion needs 2–3x body length. They read as ordinary insect legs, and none extends far out across a water plane.",
+   "stillMissing": "extremely long surface-spanning legs"
+  },
+  {
+   "species": "Whale",
+   "verdict": "not_fixed",
+   "evidence": "3x crop shows a dark rounded ellipse body with a small dorsal fin, a single eye set at a pointed tapering snout, and a tail made of TWO lobes oriented up-left and down-left — a vertical forked fish caudal fin, not a horizontal fluke blade. There is no blowhole marking anywhere on the dorsal head, no cetacean rostrum/melon (the head narrows to a fish point), and no paired pectoral flippers at the shoulder — the one ventral fin present hangs from mid-belly, in pelvic position. The dark fish-like blob he described is still what is on screen.",
+   "stillMissing": "cetacean body; blowhole/head; pectoral flippers (shoulder-set pair); horizontal flukes"
+  },
+  {
+   "species": "Locust",
+   "verdict": "partly",
+   "evidence": "Zoomed 4x/7x. Present: a folded forewing — an elongate leaf-shaped tegmen with a single vein highlight lying over the abdomen; and a genuine jump-posed hind leg on the right, a '7'-shaped jointed limb (femur running up-back from the abdomen to a knee above the body line, long tibia angling down to the ground), drawn with a slightly heavier stroke than the two thin mid/fore legs. Absent: the femur is still a bare stroke with no swollen/enlarged mass — no jumping-thigh volume; the abdomen is one smooth untextured ellipse bead with zero segment lines or tergite banding; the head is the same plain glossy sphere with a round bead eye used on every other bead insect in this batch — no elongate slanted grasshopper face, no long face/mandible geometry.",
+   "stillMissing": "enlarged (swollen-femur) hind legs; segmented abdomen; grasshopper-like head"
+  },
+  {
+   "species": "Macaw",
+   "verdict": "partly",
+   "evidence": "Zoomed 4x/9x. Present: a large deep yellow bill with a strong downward hook curving to a point well below the jawline — unmistakably a parrot bill, not the small cone of a generic bird; and a very long tail — three tapered dark streamers extending off the rump roughly the length of the body, far past the tail coverts. Feet: yellow and visibly toed with an opposed rear-pointing toe on each foot (zygodactyl-ish), but rendered as thin spindly strokes, not strong gripping feet. Absent: the head is still a plain small round globe perched on the body — no broad flat-crowned macaw skull, no bare facial patch, no cheek mass.",
+   "stillMissing": "broad head; strong (thick, gripping) zygodactyl feet — toe arrangement reads but the foot is spindly"
+  },
+  {
+   "species": "Mantis",
+   "verdict": "partly",
+   "evidence": "Zoomed 4x. Present: a raptorial foreleg — a thick angular red limb folded in front of the head in the praying pose (rises back over the head, drops to a sharp point at the bottom, forearm bar folded forward), clearly heavier than the four thin walking legs; and a folded wing lying along the back over the abdomen with a vein highlight. Absent: the head is the same round glossy sphere with a bead eye as the Locust/Mosquito — no triangular, wide-set-eye mantid head; the prothorax is a plain round bead identical in size and shape to the abdomen bead — no elongated neck-like prothorax at all, the three body beads still read head-sphere/ball/ball.",
+   "stillMissing": "triangular head; long prothorax"
+  },
+  {
+   "species": "Mosquito",
+   "verdict": "partly",
+   "evidence": "Zoomed 4x/8x. Present: long legs — six thin legs, the hind pair notably long and sharply kinked up above the body line in the classic mosquito stance; a pair of translucent grey wings laid over the abdomen (elongate, though rounder/broader than a true mosquito wing); and a bonus feature he did not ask for, plumose feathery antennae. Absent: no proboscis whatsoever — the front of the head sphere is completely bare, nothing projects forward of the face (the only things leaving the head are the two feathered antennae going up and back); the abdomen is a fat round ellipse bead the same size as the thorax bead, not slender or tapered.",
+   "stillMissing": "proboscis; slender abdomen"
+  },
+  {
+   "species": "Narwhal",
+   "verdict": "partly",
+   "evidence": "Zoomed 5x. Present: a tusk — a slender pale-grey tapering spike projecting clear of the body forward and up past the snout, roughly a third of body length, floating free against the background so it is unmistakably a separate appendage. It is smooth, however: no spiral grooves, no twist texture, and it exits high off the head at ~35 degrees rather than horizontally from the upper jaw. Correctly no dorsal fin. Absent: the head is a straight wedge tapering to a sharp point at the snout with a flat forehead line — no bulbous melon; profile is identical to the Orca's head in the same batch.",
+   "stillMissing": "the spiral of the tusk (tusk itself is there but smooth/unspiralled); melon-shaped head"
+  },
+  {
+   "species": "Orca",
+   "verdict": "not_fixed",
+   "evidence": "Zoomed 4x. The body is a uniform teal cetacean with a lighter belly gradient — no black-and-white at all: no white eye patch, no white chin/ventral field, no grey saddle behind the fin; the only light mark is a tiny grey blowhole oval. The dorsal fin is a small rounded dome roughly a third of body depth, not tall, not a blade, not backswept — a generic cetacean bump. The pectoral is the same plain rounded oval flipper used on the Narwhal in this batch, unchanged — no long paddle. The head is a straight wedge tapering to a point at the snout, pixel-for-pixel the same profile as the Narwhal — no robust blunt killer-whale head. Apart from having a dorsal bump where the narwhal has none, this is still the generic cetacean he described.",
+   "stillMissing": "black-and-white markings; tall dorsal fin; killer-whale pectoral shape; robust blunt head"
+  },
+  {
+   "species": "Eagle",
+   "verdict": "partly",
+   "evidence": "Hooked bill IS now present — the yellow beak curves down to a distinct point with a notch under it, a real raptor hook rather than a cone. Everything else is the same small round bird: the torso is a plump egg with no deep keeled raptor chest, the wing is the generic folded oval panel on the flank (not oversized), the feet are two thin twig legs ending in three hairline toes with no claw/talon shapes at all, and the tail is a narrow pointed dart projecting back-right, not a wedge or fan. Silhouette still reads songbird/chick.",
+   "stillMissing": "heavy raptor chest; large wings; powerful talons; wedge/fan tail"
+  },
+  {
+   "species": "Emu",
+   "verdict": "partly",
+   "evidence": "The legs are now clearly elongated — long yellow stilt legs with a visible knee bend carrying the body well above the ground shadow (roughly 3x the Eagle's stub legs), so the stance is taller. But the torso is still the same compact round egg, not a tall upright flightless body; there is no neck at all — the head ball sits directly against the shoulder; and the wing is the same full folded-wing panel plus a long pointed tail streaming behind, i.e. not reduced. Legs are long but hairline-thin, not powerful.",
+   "stillMissing": "tall flightless torso; long neck; reduced wings (legs long but thin, not 'powerful')"
+  },
+  {
+   "species": "Flying Squirrel",
+   "verdict": "not_fixed",
+   "evidence": "Zoomed in, the body is a plain rodent: round torso, separate head ball, two upright ears, whiskers, white incisors, a thick curved tail, and two short dark stub limbs. There is no membrane, skin flap, or filled span of any kind between the forelimb and hindlimb — the space between the two stubby legs is empty background, and the body outline is a smooth unbroken oval with no patagium edge.",
+   "stillMissing": "the stretched patagium between fore and hind limbs"
+  },
+  {
+   "species": "Gharial",
+   "verdict": "partly",
+   "evidence": "Legs are now present: two bent limbs drop from the underside (one under the mid-body, one just behind the head), each with a thigh/shin bend and a foot resting on the shadow — so it is no longer legless. The snout is not fixed: the head is still a broad triangular arrowhead with an eye, with only a few tiny tooth notches poking past its tip; there is no long, thin, tube-like gharial rostrum. The body is still the same elongated arrow/spindle with a row of dorsal spikes.",
+   "stillMissing": "the extremely long narrow snout; only two limbs are drawn, not a clear four"
+  },
+  {
+   "species": "Giant Isopod",
+   "verdict": "not_fixed",
+   "evidence": "At 5x the form is still exactly the shrimp/krill he described: a bulbous cephalothorax ball with a second bulb behind it, a curled-under abdomen, two very long whip antennae, and a splayed multi-blade tail fan. The body is smooth and rounded with no broad flattened armored plating — only faint ridges on the underside of the curled tail. Legs are ~5-6 hairline filaments in the shrimp style, not rows of stout pereopods, and the terminal structure is a feathery uropod fan rather than a solid tail plate.",
+   "stillMissing": "broad armored segmented body; many (stout) legs; tail plate — the fan is a shrimp uropod fan, not a plate"
+  },
+  {
+   "species": "Giant Water Bug",
+   "verdict": "partly",
+   "evidence": "A grasping foreleg IS there: at the front, a thick pale jointed appendage folds at a sharp V-elbow with serration ticks along the upper segment, clearly distinct from the four thin grey walking legs — that reads as a raptorial grasping foreleg. The rest is unchanged: the body is three separate round white bulbs (head, thorax, abdomen), not one broad flattened shield, and the hind legs are plain hairline sticks with no paddle, widening, or swimming fringe. Two thin antennae above the head.",
+   "stillMissing": "broad flattened body; swimming (paddle) hind legs"
+  },
+  {
+   "species": "Humpback Whale",
+   "verdict": "fixed",
+   "evidence": "Zoomed 3x: the head/rostrum carries roughly two dozen discrete pale round tubercles laid out in three rows across the snout plus a row along the lower jaw — an unmistakable knobbly humpback head. Two long pale pectoral flippers are present and both extend well outside the body outline: one sweeps down-and-back from the near flank past the ventral line (roughly 40% of body length), the second rides up-and-back on the far side above the shoulder; a small separate dorsal hump-fin sits mid-back. The trunk is a long tapering torpedo (~2.8:1) narrowing to a thin caudal peduncle and a dark forked fluke, not a rounded fish body.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Isopod",
+   "verdict": "partly",
+   "evidence": "Zoomed 4x and 7x: under the body there are ~7 thin, near-parallel strokes of similar length and angle — repeated similar walking legs are present, if drawn as plain bristle strokes rather than jointed pereopods. The body itself is unchanged from his description: two smooth bulbous lobes (a big head/thorax dome with a shiny round eye and two long whip antennae, plus a second rounded rear dome) with a feathery multi-lobe tail fan. There are no tergite bands, no overlapping plates, and no dorsoventral flattening anywhere on the dorsum — the silhouette still reads shrimp/amphipod.",
+   "stillMissing": "flattened segmented isopod body (no tergite bands or overlapping plates; still a two-lobe bulbous humped shrimp form)"
+  },
+  {
+   "species": "Kakapo",
+   "verdict": "not_fixed",
+   "evidence": "Zoomed 5x and 8x: this is the same generic small-bird scaffold as the Kookaburra in this same batch — identical plump body oval (~1.25:1), identical folded-wing oval outlined in brown on the flank, identical pointed brown tail spike, identical pair of thin yellow stick tarsi with splayed toes. Only the colour and a smaller beak differ. The head is a small smooth sphere with a single tiny black dot eye and a short straight pointed yellow beak — no facial disc, no whisker bristles, no hooked parrot bill, no cere. Legs are spindly sticks, not heavy. Nothing in the render distinguishes it as a heavy flightless parrot.",
+   "stillMissing": "squat flightless parrot torso (still the shared flying-bird body oval), owl-like face (bare dot eye + straight pointed beak, no disc), heavy legs (thin stick tarsi), short wings (same folded-wing oval as the kingfisher, no species-specific short-wing treatment)"
+  },
+  {
+   "species": "Komodo Dragon",
+   "verdict": "partly",
+   "evidence": "Zoomed 4x: the head is now a distinct elongated snouted oval on a short neck, wider than the neck, with a long straight mouth line and a vertical slit-pupil eye — a serviceable broad monitor head. The tail is long, thick at the base (about half the torso depth) and tapers along a raised curve — reads as a substantial muscular tail. But the trunk is still a plain rounded speckled egg with no shoulder or hip mass, exactly the rounded salamander body he flagged, and the four limbs are short thin tapered brown cones with no visible feet, toes or claws and no muscle definition.",
+   "stillMissing": "heavy monitor-lizard torso (still a rounded ovoid), powerful limbs (thin tapered stubs, no feet/claws or muscle)"
+  },
+  {
+   "species": "Kookaburra",
+   "verdict": "fixed",
+   "evidence": "Zoomed 5x: the head is a large sphere roughly half the torso diameter and clearly oversized against the body — visibly bigger in proportion than the same scaffold's head on the Kakapo. The bill is a long heavy wedge-shaped yellow dagger that projects about a full head-width in front of the face, deep at the base and tapering to a point — a kingfisher bill, not the small conical beak on the generic scaffold.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Lobster",
+   "verdict": "fixed",
+   "evidence": "Zoomed 5x: two large dark chelae on extended arms at the front, each split into two visible pincer fingers, reaching well ahead of the head. The cephalothorax is a big smooth ovoid carapace, the largest single mass in the figure, with four thin walking legs beneath it and two long antennae. The abdomen behind it is banded — four to five arc segment lines curving down the rear — and it terminates in a spread tail fan of four to five distinct lobes.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Rooster",
+   "verdict": "not_fixed",
+   "evidence": "Magnified head crop shows a smooth rounded skull with a pale rim highlight and a plain pointed conical beak — there is no comb on the crown and no wattle under the chin. No hackle cape at the neck junction and no saddle feathering over the rump; the body is a single smooth oval mass with a flat two-tone shading band. The tail is a straight rectangular slab projecting horizontally back and slightly down from the hip — no arch, no sickle plumes, no fan. Legs are long bare stilts with flat pad feet, reading wader/shorebird exactly as he described. The only thing arguably chicken-ward is that the torso oval is fairly deep, but with the stilt legs and slab tail the silhouette is still the wader he flagged.",
+   "stillMissing": "comb; wattles; compact chicken torso; hackle/saddle feathers; arched tail"
+  },
+  {
+   "species": "Scorpionfly",
+   "verdict": "partly",
+   "evidence": "Two wing pairs ARE present: the rear crop clearly shows four separate translucent veined blades — an upper pair sweeping up-right and a lower pair crossing beneath it. Six insect legs are present: three jointed V-shaped legs on the near side under the thorax, with paler far-side counterparts behind them. But the head crop shows a plain round capsule with two stacked eye domes and NO elongated rostrum — nothing projects forward of the head at all. The abdomen is a straight chain of five beads ending in a plain round bead pointing straight back, with no upward curl or bulbous male tip.",
+   "stillMissing": "elongated rostrum; curled abdominal tip"
+  },
+  {
+   "species": "Shark",
+   "verdict": "fixed",
+   "evidence": "Head crop shows five distinct vertical gill slits behind the head — no operculum plate — plus a long conical pointed snout with the eye set high and well forward, which reads as a shark head rather than a generic fish face. A leaf-shaped pectoral fin springs from the lower flank just behind the gill slits and sweeps back and down. The tail crop shows a clearly heterocercal caudal: the upper lobe is roughly twice the length of the lower lobe and sweeps up and back, with the lower lobe short and downturned. A dorsal fin and a second lower fin are also visible. Caveat: the pectoral is moderate rather than dramatically large, but it is unmistakably present and shark-shaped.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Snapping Turtle",
+   "verdict": "not_fixed",
+   "evidence": "Head crop shows a smooth featureless oval blob with a single eye dot and a completely rounded front — no beak edge, no hook, no jaw line. The shell is a high smooth dome with a thin flat plastron slab; its surface carries only faint radial/concentric scute grid lines painted flat on the dome, with no keel ridges, no raised knobs and a perfectly smooth unserrated rear margin. The rear crop shows nothing behind the shell — no tail of any kind, let alone a long sawtoothed one. The two legs are plain round blobs with no toes, claws or musculature. This is the same generic wheel-like turtle he flagged, and it is geometrically identical to the Softshell render.",
+   "stillMissing": "large head; hooked beak; ridged shell; powerful legs; long rough tail"
+  },
+  {
+   "species": "Softshell Turtle",
+   "verdict": "not_fixed",
+   "evidence": "The render is the same dome-and-slab turtle as Snapping Turtle, only recolored orange. The carapace is a tall rigid dome (roughly half as high as it is long) carrying hard radial scute grid lines — the opposite of a flattened flexible leathery disc, and there is no pancake-flat pliable rim. The head is a short round ball with a blunt front and no tubular snorkel snout or proboscis extending forward. The two limbs are plain round blobs with no toes, no webbing and no paddle shape. The body is narrow and domed rather than broad and flattened for swimming.",
+   "stillMissing": "flattened flexible shell; long snorkel-like snout; webbed feet; broad swimming body"
+  },
+  {
+   "species": "Sturgeon",
+   "verdict": "partly",
+   "evidence": "The long rostrum is present: the snout tapers to a fine point that extends well ahead of the eye, giving a distinctly elongated wedge head. The shark-like tail is present: the caudal crop shows a forked heterocercal fin with a long upper lobe roughly twice the lower lobe. But bony scutes are not rendered as scutes — the flank is bare (only a lateral stripe and a fan-shaped pectoral), and the only dorsal detail is about six extremely faint hairline vertical spikes over the back hump, which read as thin spines, not the five rows of armoured bony plates. There is no ventral mouth: nothing is drawn on the underside of the snout; instead a dark ellipse floats detached in front of and below the snout tip, separated from the body by a visible gap.",
+   "stillMissing": "bony scutes; ventral mouth"
+  },
+  {
+   "species": "Tardigrade (fauna)",
+   "verdict": "partly",
+   "evidence": "The render is unmistakably one authoritative ANIMAL record, not a microbe blob: plump barrel body with five cuticle segment-fold strokes, a pale dorsal rim highlight, a blunt snout lobe carrying a dark circular terminal mouth plus an eyespot. The earth-microbe/Tardigrade.png is the SAME water-bear morphology (identical silhouette, just a dark desaturated palette), so the two libraries now render one shared animal rather than two different organisms — and packages/art/src/speciesoverrides.ts:366 keys it as 'fauna|Tardigrade': tardigrade with the comment 'Tardigrade is an ANIMAL in both kingdoms it appears in (audit canonical)'. CLAWS are unambiguously present and clearly drawn: at 14x zoom each foot terminates in three distinct splayed claw tines. LEG COUNT is the shortfall — I count exactly FOUR stubby legs along the body underside. The source (fungioverrides2.ts:236-245) does loop four pairs, but both members of each pair are stroked at the same lx with only a 0.07*bh vertical offset, so at 14x magnification a single leg is one flat unbroken mass of p.dark with one set of three claws — the far-side leg is completely absorbed into the near-side silhouette. Nothing in the pixels reads as eight legs.",
+   "stillMissing": "'eight short legs' reading as eight — only four legs are visually resolvable; the far pair is drawn exactly behind the near pair and merges into the same silhouette (no offset, no darker occluded pass, no second row of claws)."
+  },
+  {
+   "species": "Green Algae (flora)",
+   "verdict": "fixed",
+   "evidence": "The flora render is now an unambiguous MACROALGAL thallus, visibly a different record from the microbe one: a small olive holdfast disc seated on the ground shadow, a narrow tapering stipe, and three overlapping translucent green blades that flare upward into a broad sheet, each carrying a pale midline stroke. Nothing cell-like remains. Side by side, earth-microbe/Green_Algae.png is a single round cell with a cell wall and chloroplast — a completely different form. The split is explicit in packages/art/src/speciesoverrides.ts:369-371, 'flora|Green Algae': macroAlgaeSheet vs 'microbe|Green Algae': microAlgaeCell, i.e. macroalgal and microalgal records are defined separately and each kingdom resolves to one authoritative art ID.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Reindeer Lichen (flora)",
+   "verdict": "fixed",
+   "evidence": "The flora render is a pale grey-white lichen: roughly ten thick podetia rising from the ground and dividing repeatedly into a dense, finely dichotomously-forked cushion/canopy, with a scatter of faint soredia specks between the stalks. Held against earth-fungi/Reindeer_Lichen.png it is the SAME canonical form — same silhouette, same stalk count, same fork density — differing only in palette (flora slightly whiter and smaller, fungi slightly greyer and larger). It is not a bracket/shelf form and not a second, competing design. speciesoverrides.ts:375-376 confirms the single record: '/* Reindeer Lichen: one canonical pale branching mat across flora + fungi */ 'flora|Reindeer Lichen': lichenMat, 'fungi|Reindeer Lichen': lichenMat' — one authoritative lichen renderer referenced from the flora side.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Snow Algae (flora)",
+   "verdict": "fixed",
+   "evidence": "The render is exactly the surface-colony presentation he asked to be referenced: a broad pale blue-white snowbank ellipse with soft feathered edges, stippled all over with dozens of translucent red/pink rounded cell clusters of varying size, densest toward the centre — watermelon snow reading as a bloom ON a surface, not as an isolated organism. earth-microbe/Snow_Algae.png is the identical presentation (same ellipse, same red stipple, marginally brighter cells), i.e. the organism is defined ONCE and both kingdoms reference it. speciesoverrides.ts:373 makes this literal: 'flora|Snow Algae': algaeBloom, 'microbe|Snow Algae': algaeBloom — a single function, two references.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Reindeer Lichen (fungi)",
+   "verdict": "fixed",
+   "evidence": "The visual he praised is intact — a pale grey-green branching lichen, nine or ten thick podetia rising and dividing into a dense finely-forked dome, soredia specks between the stalks. On the ownership half: the flora PNG renders the SAME canonical form (same silhouette and fork density, only palette and scale differ), so the two libraries are no longer carrying divergent designs; speciesoverrides.ts:375-376 routes both keys, 'flora|Reindeer Lichen' and 'fungi|Reindeer Lichen', to the one lichenMat function, and that kingdom-qualified entry overrides the older unqualified 'Reindeer Lichen': fungiBracket at line 339 — which is why the pixels show a branching mat and not a bracket shelf.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Green Algae (microbe)",
+   "verdict": "partly",
+   "evidence": "The duplicate-flora-ownership half IS resolved and visible: the microbe render and the flora render are now plainly different organisms — flora is a bladed macroalga on a holdfast, microbe is a cell — backed by the explicit split at speciesoverrides.ts:370-371 (macroAlgaeSheet vs microAlgaeCell). But the 'generic single green cell' half is essentially unchanged. At 5x zoom the microbe render is still ONE round green cell: a thin pale circular cell wall, a yellow-green radial interior gradient with a single bright round highlight upper-left, a flat-topped dark-green half-disc chloroplast filling the lower third, and five tiny pale granules. There are no flagella, no eyespot, no pyrenoid inside the chloroplast, no colony, no cell-shape signature — nothing that names a microalgal SPECIES. A viewer could not tell this from any other generic green microbe in the library.",
+   "stillMissing": "a defined microalgal species identity — the render is still a generic single green cell (no flagella, no species-diagnostic cell form, no colonial or filamentous presentation); only the cup chloroplast and granules were added."
+  },
+  {
+   "species": "Snow Algae",
+   "verdict": "partly",
+   "evidence": "The microbe PNG shows exactly what he describes as present: a pale blue-white snow dome (soft-edged ellipse filling the frame) speckled with dozens of red/pink algal cell clusters — a surface colony, not a free cell. On the ownership half: earth-flora/Snow_Algae.png renders the SAME presentation (same pale dome, same red bloom speckle, only a slightly different spot scatter), i.e. both copies now go through one shared surface-colony painter (speciesoverrides.ts line 373 maps 'flora|Snow Algae' and 'microbe|Snow Algae' to the same algaeBloom). So the presentation is defined once — but the organism is still shipped as TWO records: a Snow_Algae.png exists in the earth-flora export and again in the earth-microbe export, so the duplicate ownership he flagged has not been collapsed to one canonical record.",
+   "stillMissing": "A single canonical record — Snow Algae still exists as two separate library entries/exports (flora + microbe); only the painter was unified, not the ownership."
+  },
+  {
+   "species": "Tardigrade",
+   "verdict": "partly",
+   "evidence": "The render is now a proper water bear: plump barrel body with four cuticle segment folds, a pale dorsal rim highlight, a blunt snout ellipse with a dark circular mouth and an eye spot, and stubby legs under the body. Zoomed 9x on the legs I can count FOUR leg positions, each a wide tapering stub ending in three distinct claw ticks on the ground. The source draws four pairs (near+far), but in the rendered profile each pair fuses into a single wide blob — you cannot see or count eight legs, only four. Duplication: an identical silhouette is exported in BOTH earth-fauna/Tardigrade.png (teal) and earth-microbe/Tardigrade.png (dark slate); same painter, different palette, still two records.",
+   "stillMissing": "Eight individually visible legs (only 4 fused leg positions read in the render); one canonical record (still exported under both fauna and microbe)."
+  },
+  {
+   "species": "Albatross",
+   "verdict": "partly",
+   "evidence": "The wingspan fix landed: two long dark-brown wings sweep almost edge to edge across the 440px frame (left tip ~x=25, right tip ~x=400) off a body only ~110px wide — an extremely long, narrow, pointed-tip wing. What is NOT there: zoomed 6x on the head, the bill is a short, deep, hooked yellow bill roughly half a head long, not the long tubular seabird bill he asked for; and the posture is still the compact grounded bird — a round plump body sitting on two yellow feet planted on a dark ground-shadow ellipse, wings held out sideways at rest rather than a flight/glide attitude (no airborne body, no shadowless sky framing).",
+   "stillMissing": "Long seabird bill (still short and hooked); flight/glide posture (still standing on feet with a ground shadow, compact round body)."
+  },
+  {
+   "species": "Alligator",
+   "verdict": "not_fixed",
+   "evidence": "Still the arrow: a flat pink wedge that starts as a needle point at the left, widens through a shallow slab of a body, and ends in a separate flat triangular arrowhead at the right with a white dot eye and four tiny tooth ticks. A row of ~9 dorsal scute spikes sits along the spine. Zoomed 8x under the body I can find only TWO limbs — one hind strut at mid-body and one fore strut at the shoulder, each a thin flat stick with a small flat foot; there is no second (far-side) pair. No belly volume or barrel chest (the torso is a thin lens in profile), no heavy broad-snouted skull (the head is a flat 2D triangle narrower than a real gator's jaw mass), and the tail is a straight taper to a spike rather than a deep muscular keel.",
+   "stillMissing": "Broad crocodilian torso; four legs (only 2 render); heavy head (still a flat triangular arrowhead); muscular tail (still a thin arrow taper)."
+  },
+  {
+   "species": "Alpine Salamander",
+   "verdict": "not_fixed",
+   "evidence": "Both halves of his defect are still on screen. Limbs: zoomed 4x I can find only TWO — one hind limb under mid-body and one fore limb behind the head, each a plain tan stick with a rounded foot; no far-side pair anywhere. Paddle-like lobes: at 6x on the tail base there are two large grey rounded lobes (one above, one below) overlapping the pale tail bar — the same paddle blobs he called out, unchanged and still reading as off-body flippers on a terrestrial salamander. The tail itself is a thick, even-width bar that curves up-left and stops in a blunt round cap, not a taper. The one required feature that is present is the elongated torso: the body is a long low cylinder with the head at the right (eye + mouth line) and yellow dorsal spots.",
+   "stillMissing": "Four short salamander limbs (only 2 present); removal of the paddle-like lobes (two grey lobes still flank the tail base); tapering tail (still a blunt-ended bar)."
+  },
+  {
+   "species": "Beaked Whale",
+   "verdict": "fixed",
+   "evidence": "Both asks are visibly present. Beak/rostrum: zoomed 7x on the head there is a distinct narrow rostrum tapering forward off a rounded melon, with a long straight gape line running its full length and TWO erupted white triangular tusks standing up from the lower jaw near the tip — unmistakably a beaked whale's snout. Body: a long fusiform grey torso, roughly 4:1 length-to-depth, with a small low dorsal fin set well back, one dark flipper below the flank, and swept tail flukes with trailing streak lines at the left. Nothing about it reads as the blunt short body he flagged.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Orchid Bee",
+   "verdict": "partly",
+   "evidence": "Wings: PRESENT — two overlapping translucent grey membranes with visible edges sit folded over the abdomen (clear at 10x on the abdomen/thorax junction). Metallic bee torso: PRESENT — three-part body now reads as head + globular thorax + shorter banded abdomen, all in glossy teal with a hard specular highlight, and the abdomen carries dark tergite bands; the thorax is ringed with a dense fringe of pale-yellow setae (pile). Legs: five distinct jointed strokes are resolvable — three descending from the head/thorax at the front-left and two hind legs at the right with a clear femur–tibia elbow; the sixth is occluded behind the body, so the six-legged arrangement is at least gestured. Antennae: two long curving antennae plus a compound eye at the head. Pollen-carrying anatomy: ABSENT — at 11x the hind tibiae are uniform hairline sticks with no widened corbicula, no pollen basket outline and no pollen mass; the only pollen-adjacent element is thoracic fuzz.",
+   "stillMissing": "pollen-carrying anatomy (corbicula / pollen basket / pollen load on the hind tibia); a clearly countable sixth leg, and legs stout enough to read as bee limbs rather than hairline strokes"
+  },
+  {
+   "species": "Ostrich",
+   "verdict": "not_fixed",
+   "evidence": "At 7x the head sits DIRECTLY on the shoulder — there is no neck column of any kind (contrast the Rhea in this same batch, which has an obvious tapering neck, so the pipeline can draw one). The body is the same generic plump ovoid bird shell used by the Parrot and Rhea: measured bbox 193x191 vs Parrot 156x111, so it is only modestly bigger, not a 'very large flightless body'. Legs: long-ish yellow with a hock bend, but at 8x they are thin uniform-width sticks with no thigh or drumstick mass, and each foot is a generic 3-prong bird foot (forward toes plus a hind toe) — not a powerful two-toed ratite foot. Wings: a full-flank glossy wing panel covering most of the torso, with a pointed dark flight-tail wedge and a few trailing filaments — a normal bird wing, not reduced.",
+   "stillMissing": "very large flightless body; long neck (completely absent); powerful two-toed legs; reduced wings"
+  },
+  {
+   "species": "Parrot",
+   "verdict": "partly",
+   "evidence": "Curved parrot bill: PRESENT — at 14x the yellow bill has a deep base, a convex curved culmen and a distinct downward hook at the tip, clearly different from the straight cone beak on the Ostrich and Rhea in the same batch. Broad head: PRESENT — the head is a large round dome, wide relative to the body. Grasping feet: NOT delivered — at 14x the feet are the same short splayed 2-3 prong bird feet as the Ostrich/Rhea, flat on the ground, no opposed/zygodactyl toe pairing and nothing being gripped. Parrot body proportions: NOT delivered — the torso is the identical generic ovoid shell with the shared wing panel, concentric dark arcs and a pointed dark tail wedge; no chunky parrot chest, no long graduated tail.",
+   "stillMissing": "grasping (zygodactyl) feet; parrot body proportions — still the shared generic bird body/wing shell"
+  },
+  {
+   "species": "Poison Dart Frog",
+   "verdict": "partly",
+   "evidence": "Warning colour: PRESENT — saturated yellow-olive body plus a dark mask patch across the face. Two big domed eyes with gold irises and specular dots at the front end. Visible forelegs: PARTLY — brightening the crop shows two short stubby limbs with small feet under the head end at the right, but they are tiny nubs. Folded hind legs: only a faint dark angular bracket drawn INSIDE the body silhouette at the rear, plus a raised rump hump — a shadow outline, not a limb with thigh and shank. Compact frog torso: NOT delivered — the body is still a long flat loaf/slab (~1.8:1, flat-topped dorsal line running the full length) exactly as he described; no head is separated from the body, so there is no broad head form, only eyes stuck on the end of the block. Toe pads: ABSENT — the foot stubs are plain dark prongs with no expanded discs.",
+   "stillMissing": "compact frog torso (still an elongated block); broad distinct head; properly formed folded hind legs (currently a shadow bracket); toe pads"
+  },
+  {
+   "species": "Rhea",
+   "verdict": "partly",
+   "evidence": "Long neck: PRESENT — at 3.2x there is a clear tapering neck column rising from the shoulder to the head, distinctly separate from the body (and notably absent on the Ostrich in this same batch). Large torso: PRESENT — largest bbox of the three birds here at 222x239, a heavy rounded body dominating the frame. Soft wing feathers: only PARTLY — fine wispy plume filaments trail off the rear of the wing, but the wing itself is still the same hard glossy shell panel with concentric dark arcs and a pointed dark tail wedge shared with the Ostrich/Parrot; it is not a broad soft plume mass. Powerful legs: ABSENT — the yellow legs are thin uniform-width sticks with a hock bend and no thigh/drumstick volume, ending in generic 3-prong feet.",
+   "stillMissing": "powerful legs (thin sticks, no muscle mass); broad soft wing feathers — the wing is still a hard shell panel with only a few trailing filaments"
+  },
+  {
+   "species": "Right Whale",
+   "verdict": "partly",
+   "evidence": "Absence of a dorsal fin: SATISFIED — the dorsal ridge runs unbroken from head to tail at 3x brightened; nothing projects from the back. Also present: a broad grey paddle pectoral flipper and a notched fluke. Enormous head: ABSENT — the front of the animal tapers to a slender point; the head reads as roughly a fifth of the body with no bulbous, deep, squared-off rostrum. Arched mouth: ABSENT — the gape is a single thin straight line running back from the snout tip, no bowed/arched jawline. Callosities: ABSENT — the only elements near the rostrum are one small grey oval (blowhole knob) and a thin grey arc that floats DETACHED above the head outline; there is no cluster of crusty callosity patches on the rostrum or above the eye. The torpedo/dolphin body he flagged is unchanged.",
+   "stillMissing": "enormous head; arched mouth; callosities (plus the head still sits on an unchanged torpedo body, and a stray grey arc floats off-body above it)"
+  },
+  {
+   "species": "Bee",
+   "verdict": "partly",
+   "evidence": "Three clearly separated tagmata are now present: a round head with a black highlighted compound eye and two long antennae, a distinct thorax sphere, and a separate banded abdomen (dark vertical stripes) — head/thorax/abdomen separation is unambiguous. Bee body hair IS there: a dense fringe of bright yellow-green bristles radiates all around the thorax, top and bottom, with a few more at the front rim of the abdomen. Six legs: scanning rows y=232-250 and the leg crop gives six distinct thin strokes — two descending from the head/front, one from the thorax underside, two from the abdomen, plus one hind leg raised up-and-right off a brown femur stub. Wings: there IS a grey membranous form over the abdomen, and at 11x zoom it splits into two overlapping lobes (a darker grey upper and a lighter lower) separated by a bright seam — so one overlapping fore/hind membrane, sitting flat as a short saddle that ends at the abdomen's rear and never extends past the body outline. No second pair is distinguishable.",
+   "stillMissing": "Two wing pairs — only a single small membrane assembly (two overlapping lobes) is drawn, hugging the top of the abdomen and not extending past the body; a second pair is not readable."
+  },
+  {
+   "species": "Black Fly",
+   "verdict": "partly",
+   "evidence": "Thorax/abdomen separation is now clear — three distinct spheres (head, thorax, smaller abdomen) with visible waists between them. Six legs is confirmed numerically: a row scan at y=225-233 returns exactly six separate thin strokes (x≈168, 175, 181, 224, 254, 285), i.e. three per side, and the rear pair is bent at a visible knee. A head is present with a dark round eye carrying a white catchlight, and two antennae. Wings: at 11x there is a grey membrane wedged between thorax and abdomen with a lighter lobe under it, but it is small (~35x14px on a ~160px body), sits below the abdomen's top curve, is largely occluded by the abdomen sphere, and nothing projects past the body silhouette — at card size it reads as a grey hump/saddle, not a wing. The head is the same generic bead head as the Bee/Bumblebee renders: a modest black dot eye rather than the oversized compound eyes of a fly, and it carries long curving bee-type antennae.",
+   "stillMissing": "Readable wings (grey membrane is small and mostly hidden behind the abdomen, no wing breaks the body outline); fly-specific head/eyes (small dot eye on a generic bead head, long bee-like antennae, no large compound eyes)."
+  },
+  {
+   "species": "Bumblebee",
+   "verdict": "partly",
+   "evidence": "Wings are present: a grey membranous form over the abdomen that resolves at 11x into two overlapping lobes with a bright seam. Fuzzy thorax is strongly present — a thick corona of pale yellow bristles radiates around the entire thorax sphere, top and bottom. Six legs: three strokes descend at the front (x≈115/185/255 in the leg crop) and three at the rear (two descending, one raised up-and-right off a brown femur), six total. What is NOT there: the abdomen is a smooth striped sphere with hair only at its leading rim — no fuzz over the abdomen itself. Proportions are wrong for a bumblebee: the thorax is the single largest mass, the abdomen is noticeably smaller than it, and the whole animal is an elongated head-thorax-abdomen chain on long spindly legs with long curving antennae — it reads ant/wasp-like, not the short, stout, round bumblebee where the abdomen dominates.",
+   "stillMissing": "Fuzzy abdomen (abdomen is smooth and striped, bristles only at its front rim); bumblebee proportions (thorax larger than abdomen, elongated ant-like chain, long thin legs and antennae)."
+  },
+  {
+   "species": "Butterflyfish",
+   "verdict": "fixed",
+   "evidence": "The body is now a deep, near-circular laterally compressed disc (roughly 194px wide x 182px tall before fins) with a pale flat-flank shading that reads as compression — not a generic fusiform fish. Butterflyfish fin/pattern identity is clearly delivered: a tall sawtooth spiny dorsal crest of six spines running the length of the back, a separate fan-rayed caudal fin with visible rays at the rear, a small rayed pectoral fan mid-flank, an anal-fin lobe on the ventral edge, plus a large white-ringed dark ocellus (false eyespot) on the rear flank, the real eye small and white-ringed at the front with a dark vertical eye-bar band through it, faint vertical body banding, a lateral line, and a short protruding tubular snout attached at the head.",
+   "stillMissing": "-"
+  },
+  {
+   "species": "Caiman",
+   "verdict": "not_fixed",
+   "evidence": "The silhouette is still literally an arrow: a dart-thin slab body roughly 350px long and only ~25px thick, ending at the front in a flat triangular arrowhead (with a barbed notch where it meets the neck) carrying a single eye and a row of tooth ticks under it — a sharp point, not a blunt crocodilian snout. The tail is a needle taper that thins to a point at the far left with no mass or keel — not muscular. The torso is narrow throughout and is not broad. Row scans at y=364-369 return exactly two runs (x 191-212 and x 319-333), i.e. two short stub limbs with feet — one fore, one hind — not four. The only element of his list that shows at all is armour: eight triangular dorsal scute spikes run along the back ridge, but they sit on a body that is still a dart.",
+   "stillMissing": "Broad armored torso (narrow slab, only dorsal scutes); four legs (only two stub limbs drawn); blunt head (still a pointed arrowhead); muscular tail (still a needle taper)."
+  },
+  {
+   "species": "Cassowary",
+   "verdict": "partly",
+   "evidence": "The torso is now heavy and round — a plump body roughly 200px across against a ~55px head, so the flightless bulk is partly there. Everything else on his list is still absent. On the crown there is a tuft of thin cyan filaments (a feather crest), not a bony casque — no solid keratin blade, and the bill is a small yellow triangle, not a cassowary's tall bill. The legs are thin yellow stick legs with a single knee bend and small three-toed feet, indistinguishable from any generic perching bird — not powerful. The wing is NOT tiny: a large pale cyan ellipse with a feather-shaft line covers most of the flank, with a fan of dark quill hatching behind it. The tail is a dark pointed wedge projecting well past the rump — not reduced.",
+   "stillMissing": "Casque (only a filament crest); powerful legs (thin sticks); tiny wings (large pale wing ellipse spanning most of the flank); reduced tail (pointed tail wedge extends past the body)."
+  }
+ ]
+}

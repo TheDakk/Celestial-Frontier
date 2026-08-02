@@ -132,8 +132,39 @@ strip-verify → full gate battery → record → commit. Prefer teaching a shar
 parameter over forking a bespoke painter (D-ART-67); fork only where no parameter reaches the
 signature.
 
+**Wave 4 (batch 50) — THE BODY IS A SOLID, THE COAT IS A SKIN.** Both of Nick's asks were one
+cause: the torso was an OUTLINE, so a limb could only be butted against it and a mark could only
+float on it. `torso.ts` makes it a generalized cylinder; `skin.ts` authors every coat in the
+body's own (u, phi) coordinates. Countershading arrived for the first time. Four of my own bugs
+were caught by looking at the pixels: D-ART-91/92/93/94.
+
+**Wave 5 (batch 50) — FAMILY BODY PLANS.** Nick's anatomy audit named the defect eight times
+(cats on ungulate bodies, canids on deer legs, bears on pig bodies). One hoofed cursorial limb
+had served the whole catalogue. Eleven families now carry mass distribution, cannon thinness,
+crouch and the foot (hoof / cloven / paw / plantigrade / pad). 116 species tagged, no numbers
+touched.
+
+**Wave 6 (batch 51) — THE SKULL.** Nick: *"the heads of the animals all look the same to me."*
+Per-family skull profiles — face length, the forehead stop, jaw depth, and eye placement
+(forward-central predator vs high-and-back grazer). The neck also moved BEHIND the torso, which
+removed the last visible seam on the animal. **The safety net failed this wave's first build**
+for making felids alike, which is D-ART-96.
+
+### ★ THE SAFETY NET — `tools/artlock.mjs` (wave 4, on Nick's instruction)
+Scoped exactly as he asked: protect the Earth catalogue absolutely, let procedural iterate, and
+scope the guard to the class being worked on so an intentional retroactive pass on one family
+cannot disturb the rest. `[DRIFT]` per painter class + `[SAME]` Earth-only ratchets. Read
+D-ART-95 and D-ART-97 before changing its thresholds.
+
 ### Stage 4 — RE-EXPORT AND RE-AUDIT
 Re-run the five zips and hand back for the external Platinum audit.
+
+**Two standing worklists now drive the arc** (both committed, both from LOOKING at the art):
+- `port/v2/reference/visualaudit.json` — 1,111 non-quadruped organisms judged one by one.
+- `port/v2/reference/nick-anatomy-audit.md` + `nick-audit-recheck.json` — Nick's own audit and
+  the per-row verdict against current art (non-mammal half: 16 fixed · 54 partly · 23 not
+  fixed). **The 55 quadruped rows in his queue are NOT re-checked yet** — they need a pass
+  against the post-wave-6 export.
 
 ---
 

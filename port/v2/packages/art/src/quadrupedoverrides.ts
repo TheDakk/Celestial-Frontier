@@ -18,7 +18,7 @@
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { type Form } from './surface.js';
 import { alienEyes, alienSkin, alienGlow, alienSail, alienArmor, type AlienTraits } from './alientraits.js';
-import { Tube, mammalProfile, pathThrough } from './torso.js';
+import { Tube, mammalProfile, pathThrough, spline } from './torso.js';
 import { countershade, coatSpots, coatRosettes, coatBars, coatPatches, coatBrindle, coatShaggy, shaggyRim, coatBlocks } from './skin.js';
 
 type G = Record<string, unknown>;
@@ -87,6 +87,55 @@ export interface QuadSpec {
      only part anyone actually reads. */
   mane?: 'lion' | 'ruff';
 }
+
+/** ★ WAVE 6 — THE SKULL. Nick, after looking at the wave-5 export: *"the heads
+    of the animals all look the same to me. They didn't look unique."* He was
+    right, and my own visual audit had landed on the same thing independently.
+    Every mammal in the catalogue wore ONE head: an ellipse, a smaller ellipse
+    stuck on the front for a muzzle, a dark dot for a nose, and one big eye in
+    the middle of the face. A cat, a horse, a bear and a pig got the same
+    drawing at four sizes.
+
+    A skull is a PROFILE, and the profile is most of what tells species apart:
+    how long the face is, how abruptly the forehead drops to the muzzle (the
+    "stop" — a dog has a sharp one, a horse has none at all), how much jaw
+    hangs beneath, and — the one nobody draws — WHERE THE EYE IS. A predator's
+    eyes face forward near the middle of the face; a grazer's sit high, wide
+    and far back, which is why a horse looks like prey and a cat does not.
+
+    So the head is built the same way the torso and the limbs are: as a solid
+    with a radius profile (torso.ts), which also means it takes the body's
+    light and its coat for free, and the eye can be placed ON the surface with
+    real foreshortening instead of floated over it.
+
+    Per-species `muzzle` and `jaw` still modulate every one of these numbers —
+    the family sets the KIND of skull, the species sets its proportions. */
+const SKULL: Record<string, {
+  len: number;       /* nose-to-occiput, x headR */
+  cranium: number;   /* braincase radius, x headR */
+  stop: number;      /* 0 = one straight wedge (horse), 1 = a sharp forehead (cat) */
+  muzzle: number;    /* radius at the nose, x headR */
+  jaw: number;       /* mandible mass hanging under the muzzle */
+  eyeU: number;      /* 0 occiput … 1 nose */
+  eyePhi: number;    /* 0 = forward-facing predator, 1 = high and lateral prey */
+  eyeR: number;      /* x headR */
+  nose: 'wet' | 'disc' | 'nostril';
+  tilt: number;      /* how far the muzzle points down off the neck */
+}> = {
+  felid: { len: 1.70, cranium: 1.00, stop: 0.62, muzzle: 0.46, jaw: 0.34, eyeU: 0.50, eyePhi: 0.22, eyeR: 0.175, nose: 'wet', tilt: 0.06 },
+  canid: { len: 2.45, cranium: 0.86, stop: 0.44, muzzle: 0.28, jaw: 0.26, eyeU: 0.40, eyePhi: 0.34, eyeR: 0.15, nose: 'wet', tilt: 0.10 },
+  ursid: { len: 2.00, cranium: 1.06, stop: 0.20, muzzle: 0.46, jaw: 0.36, eyeU: 0.36, eyePhi: 0.28, eyeR: 0.13, nose: 'wet', tilt: 0.12 },
+  bovid: { len: 2.40, cranium: 0.80, stop: 0.10, muzzle: 0.44, jaw: 0.34, eyeU: 0.32, eyePhi: 0.74, eyeR: 0.16, nose: 'nostril', tilt: 0.16 },
+  cervid: { len: 2.30, cranium: 0.78, stop: 0.16, muzzle: 0.36, jaw: 0.28, eyeU: 0.31, eyePhi: 0.72, eyeR: 0.17, nose: 'wet', tilt: 0.16 },
+  equid: { len: 2.85, cranium: 0.82, stop: 0.05, muzzle: 0.50, jaw: 0.42, eyeU: 0.28, eyePhi: 0.70, eyeR: 0.15, nose: 'nostril', tilt: 0.18 },
+  camelid: { len: 2.10, cranium: 0.72, stop: 0.26, muzzle: 0.38, jaw: 0.34, eyeU: 0.33, eyePhi: 0.62, eyeR: 0.165, nose: 'nostril', tilt: 0.10 },
+  /* a pig's snout ends in a flat cartilage DISC, and that disc is the animal */
+  suid: { len: 2.25, cranium: 0.86, stop: 0.04, muzzle: 0.52, jaw: 0.40, eyeU: 0.28, eyePhi: 0.58, eyeR: 0.11, nose: 'disc', tilt: 0.20 },
+  mustelid: { len: 1.80, cranium: 0.84, stop: 0.38, muzzle: 0.32, jaw: 0.24, eyeU: 0.46, eyePhi: 0.36, eyeR: 0.15, nose: 'wet', tilt: 0.08 },
+  rodent: { len: 1.70, cranium: 0.98, stop: 0.46, muzzle: 0.32, jaw: 0.26, eyeU: 0.46, eyePhi: 0.44, eyeR: 0.195, nose: 'wet', tilt: 0.10 },
+  pachyderm: { len: 1.95, cranium: 1.16, stop: 0.34, muzzle: 0.54, jaw: 0.40, eyeU: 0.38, eyePhi: 0.56, eyeR: 0.10, nose: 'nostril', tilt: 0.10 },
+  generic: { len: 2.00, cranium: 0.94, stop: 0.30, muzzle: 0.42, jaw: 0.34, eyeU: 0.40, eyePhi: 0.40, eyeR: 0.19, nose: 'wet', tilt: 0.10 },
+};
 
 /** ★ WAVE 5 — THE FAMILY BODY PLANS.
 
@@ -392,6 +441,69 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   for (const u of legUs) drawLeg(u, -legW * 0.66, u < 0.5, true);      /* far side, shaded */
   for (const u of legUs) drawLeg(u, legW * 0.34, u < 0.5, false);      /* near side */
 
+  const coat = spec.coat ?? 'plain';
+  /* ═══ the neck is computed AND DRAWN BEFORE THE TORSO (wave 6) ═══
+     It used to be drawn over the body, so its outline crossed the shoulder
+     and its own countershading disagreed with the body's along that line —
+     a wedge stuck onto the chest, which is exactly the defect the legs had
+     before wave 4. Same answer, and it needs no blending: on a real animal
+     the base of the neck IS inside the body, so root it in the chest and
+     let the torso's own mass cover the join (D-ART-94). */
+  /* ---- neck + head: where most species are actually recognized ---- */
+  const neckLen = S * spec.neck;
+  const shoulderX = cx + bodyW * 0.82, shoulderY = topY(1) + bodyH * 0.12;
+  const headX = shoulderX + neckLen * 0.55, headY = shoulderY - neckLen * 0.86;
+  /* ★ WAVE 22b — A HEAD BELONGS TO THE ANIMAL'S LENGTH, not only its depth.
+     Sized purely off bodyH, a sand cat got a 28px skull on a 210px body — 13%,
+     where a real carnivore's head is about a fifth of its body. Long shallow
+     animals came out as tubes with a pea on the end. Deep-bodied, heavy-jawed
+     species are unchanged, because for them the depth term still wins. */
+  const headR = Math.max(
+    bodyH * (spec.jaw === 'barrel' ? 0.62 : spec.jaw === 'broad' ? 0.52 : 0.42),
+    bodyW * 0.20,
+  );
+  /* ★ WAVE 4 — THE NECK IS A TAPERED SOLID. Nick: "thin necks at the shoulder
+     on the big cats." It was one constant-width round-capped stroke, so a
+     lion's neck was the same thickness at the skull as at the chest, and the
+     round cap left a visible bead where it entered the body — the same
+     "hooked in" line as the legs, in a second place. A real neck is a cone:
+     WIDE where it leaves the shoulders, narrowing into the skull. Built from
+     the same Tube, rooted INSIDE the chest, so there is no join at all. */
+  const nRootU = 0.86;
+  const nRoot = AX(nRootU);
+  const nq = (t: number): [number, number] => {
+    const m = 1 - t;
+    const ax = shoulderX - bodyW * 0.1, ay = shoulderY + bodyH * 0.2;
+    return [m * m * ax + 2 * m * t * (shoulderX + neckLen * 0.30) + t * t * headX,
+      m * m * ay + 2 * m * t * (shoulderY - neckLen * 0.45) + t * t * headY];
+  };
+  const neckPts: Array<[number, number]> = [[nRoot[0] - RAD(nRootU) * 0.20, nRoot[1]],
+    nq(0.25), nq(0.55), nq(0.82), [headX, headY + headR * 0.10]];
+  /* a short-necked animal has a THICK neck and a long-necked one a slender
+     one — the same ratio a real skeleton shows, driven by this species' own
+     neck length rather than a category */
+  const nThick = neckLen > S * 0.16 ? 0.62 : 0.92;
+  const neckTube = new Tube({
+    P: pathThrough(neckPts),
+    R: (t: number) => {
+      const s = t * t * (3 - 2 * t);
+      return RAD(nRootU) * 0.98 * nThick * (1 - s) + headR * 0.52 * s;
+    },
+  });
+  c.fillStyle = p.base;
+  c.beginPath(); neckTube.trace(c, 44); c.fill();
+  c.save(); c.beginPath(); neckTube.trace(c, 44); c.clip();
+  if (!spec.alien?.skin) countershade(c, neckTube, p, 0.9);
+  /* the coat CONTINUES onto the neck — a giraffe's patches run up it, a
+     tiger's bars cross it. A pattern that stops at the shoulder is a shirt. */
+  if (coat === 'patches') coatPatches(c, neckTube, r, p, { nu: 7, nphi: 4, seam: 0.78, rgb: [126, 74, 26] });
+  else if (coat === 'stripes') coatBars(c, neckTube, r, p, { count: 7, width: 0.9, phiEnd: -0.9, forkRate: 0.1 });
+  else if (coat === 'bands') coatBars(c, neckTube, r, p, { count: 9, width: 1.1, phiEnd: -1.4, lean: 0.02, forkRate: 0, hard: true, rgb: [18, 15, 16] });
+  else if (coat === 'spots') coatSpots(c, neckTube, r, p, { count: 34, size: 0.8, soft: 0.13, rgb: [24, 17, 10] });
+  else if (coat === 'rosettes') coatRosettes(c, neckTube, r, p, { count: 12, size: 0.8 });
+  else if (coat === 'shaggy') coatShaggy(c, neckTube, r, p, { count: 46 });
+  c.restore();
+  if (coat === 'shaggy') shaggyRim(c, neckTube, r, p, Math.max(5, bodyH * 0.15), 0.45);
   /* ---- the torso: a SOLID whose radius profile is the species ---- */
   c.fillStyle = p.base;
   c.beginPath(); body.trace(c); c.fill();
@@ -399,7 +511,6 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   /* ---- the skin, inside the body's own surface ---- */
   c.save();
   c.beginPath(); body.trace(c); c.clip();
-  const coat = spec.coat ?? 'plain';
   /* the torso as a FORM as well, for the alien traits that still take one */
   const torsoForm: Form = { cx, cy, rx: bodyW, ry: bodyH * 1.15 };
   /* ★ COUNTERSHADING FIRST. Dark along the spine, pale under the belly. It is
@@ -507,61 +618,6 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   }
 
 
-  /* ---- neck + head: where most species are actually recognized ---- */
-  const neckLen = S * spec.neck;
-  const shoulderX = cx + bodyW * 0.82, shoulderY = topY(1) + bodyH * 0.12;
-  const headX = shoulderX + neckLen * 0.55, headY = shoulderY - neckLen * 0.86;
-  /* ★ WAVE 22b — A HEAD BELONGS TO THE ANIMAL'S LENGTH, not only its depth.
-     Sized purely off bodyH, a sand cat got a 28px skull on a 210px body — 13%,
-     where a real carnivore's head is about a fifth of its body. Long shallow
-     animals came out as tubes with a pea on the end. Deep-bodied, heavy-jawed
-     species are unchanged, because for them the depth term still wins. */
-  const headR = Math.max(
-    bodyH * (spec.jaw === 'barrel' ? 0.62 : spec.jaw === 'broad' ? 0.52 : 0.42),
-    bodyW * 0.20,
-  );
-  /* ★ WAVE 4 — THE NECK IS A TAPERED SOLID. Nick: "thin necks at the shoulder
-     on the big cats." It was one constant-width round-capped stroke, so a
-     lion's neck was the same thickness at the skull as at the chest, and the
-     round cap left a visible bead where it entered the body — the same
-     "hooked in" line as the legs, in a second place. A real neck is a cone:
-     WIDE where it leaves the shoulders, narrowing into the skull. Built from
-     the same Tube, rooted INSIDE the chest, so there is no join at all. */
-  const nRootU = 0.86;
-  const nRoot = AX(nRootU);
-  const nq = (t: number): [number, number] => {
-    const m = 1 - t;
-    const ax = shoulderX - bodyW * 0.1, ay = shoulderY + bodyH * 0.2;
-    return [m * m * ax + 2 * m * t * (shoulderX + neckLen * 0.30) + t * t * headX,
-      m * m * ay + 2 * m * t * (shoulderY - neckLen * 0.45) + t * t * headY];
-  };
-  const neckPts: Array<[number, number]> = [[nRoot[0] - RAD(nRootU) * 0.20, nRoot[1]],
-    nq(0.25), nq(0.55), nq(0.82), [headX, headY + headR * 0.10]];
-  /* a short-necked animal has a THICK neck and a long-necked one a slender
-     one — the same ratio a real skeleton shows, driven by this species' own
-     neck length rather than a category */
-  const nThick = neckLen > S * 0.16 ? 0.62 : 0.92;
-  const neckTube = new Tube({
-    P: pathThrough(neckPts),
-    R: (t: number) => {
-      const s = t * t * (3 - 2 * t);
-      return RAD(nRootU) * 0.98 * nThick * (1 - s) + headR * 0.70 * s;
-    },
-  });
-  c.fillStyle = p.base;
-  c.beginPath(); neckTube.trace(c, 44); c.fill();
-  c.save(); c.beginPath(); neckTube.trace(c, 44); c.clip();
-  if (!spec.alien?.skin) countershade(c, neckTube, p, 0.9);
-  /* the coat CONTINUES onto the neck — a giraffe's patches run up it, a
-     tiger's bars cross it. A pattern that stops at the shoulder is a shirt. */
-  if (coat === 'patches') coatPatches(c, neckTube, r, p, { nu: 7, nphi: 4, seam: 0.78, rgb: [126, 74, 26] });
-  else if (coat === 'stripes') coatBars(c, neckTube, r, p, { count: 7, width: 0.9, phiEnd: -0.9, forkRate: 0.1 });
-  else if (coat === 'bands') coatBars(c, neckTube, r, p, { count: 9, width: 1.1, phiEnd: -1.4, lean: 0.02, forkRate: 0, hard: true, rgb: [18, 15, 16] });
-  else if (coat === 'spots') coatSpots(c, neckTube, r, p, { count: 34, size: 0.8, soft: 0.13, rgb: [24, 17, 10] });
-  else if (coat === 'rosettes') coatRosettes(c, neckTube, r, p, { count: 12, size: 0.8 });
-  else if (coat === 'shaggy') coatShaggy(c, neckTube, r, p, { count: 46 });
-  c.restore();
-  if (coat === 'shaggy') shaggyRim(c, neckTube, r, p, Math.max(5, bodyH * 0.15), 0.45);
   /* ★ WAVE 22b — THE MANE (Nick: "the lion head with mane looks awful, can't
      even tell its face"). It is drawn HERE — before the head, behind it — and
      offset BACK from the face, because a mane that is centred on the skull
@@ -601,44 +657,96 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     }
     c.globalAlpha = 1;
   }
-  const headGrad = c.createRadialGradient(headX - headR * 0.3, headY - headR * 0.35, 2, headX, headY, headR * 1.3);
-  headGrad.addColorStop(0, p.lit); headGrad.addColorStop(0.6, p.base); headGrad.addColorStop(1, p.dark);
-  c.fillStyle = headGrad;
-  c.beginPath(); c.ellipse(headX, headY, headR, headR * 0.86, 0, 0, TAU); c.fill();
-  /* the muzzle — length and heft separate deer from hippo from cat */
+  /* ═══════ WAVE 6 — THE SKULL AS A SOLID (see SKULL above) ═══════ */
   const mz = spec.muzzle ?? 0.5;
-  if (mz > 0.05) {
-    c.fillStyle = p.base;
-    const mw = headR * (0.7 + mz * 1.5), mh = headR * (spec.jaw === 'barrel' ? 0.86 : spec.jaw === 'broad' ? 0.66 : 0.46);
-    const mxc = headX + headR * 0.55 + mw * 0.35, myc = headY + headR * 0.22;
-    if (spec.jaw === 'barrel') {
-      /* a hippo's snout is a BLUNT ROUND BLOCK, not a taper (Nick: "it's not
-         round") — a rounded-rectangle muzzle with a domed end */
-      const bw = mw * 0.62, bh = mh * 0.66;
-      c.beginPath();
-      c.moveTo(mxc - bw, myc - bh * 0.72);
-      c.lineTo(mxc + bw * 0.34, myc - bh * 0.88);
-      c.quadraticCurveTo(mxc + bw * 1.06, myc - bh * 0.82, mxc + bw * 1.06, myc);
-      c.quadraticCurveTo(mxc + bw * 1.06, myc + bh * 0.86, mxc + bw * 0.34, myc + bh * 0.92);
-      c.lineTo(mxc - bw, myc + bh * 0.8);
-      c.closePath(); c.fill();
-      /* the two nostril pads on top of the blunt end */
-      c.fillStyle = 'rgba(24,16,18,0.5)';
-      for (const s2 of [-1, 1] as const) { c.beginPath(); c.ellipse(mxc + bw * 0.72, myc + s2 * bh * 0.34, bh * 0.16, bh * 0.12, 0, 0, TAU); c.fill(); }
-      c.fillStyle = p.base;
-    } else {
-      c.beginPath(); c.ellipse(mxc, myc, mw * 0.6, mh * 0.6, 0.12, 0, TAU); c.fill();
-    }
-    c.fillStyle = 'rgba(20,14,16,0.75)';   /* the nose */
-    c.beginPath(); c.ellipse(headX + headR * 0.55 + mw * 0.85, headY + headR * 0.16, mh * 0.26, mh * 0.20, 0, 0, TAU); c.fill();
-    if (spec.jaw === 'barrel') {   /* hippo: the vast mouth line */
-      c.strokeStyle = 'rgba(0,0,0,0.35)'; c.lineWidth = 3;
-      c.beginPath(); c.moveTo(headX + headR * 0.2, headY + headR * 0.5); c.quadraticCurveTo(headX + headR * 1.1, headY + headR * 0.66, headX + headR * 1.5, headY + headR * 0.35); c.stroke();
-    }
+  const SK = SKULL[spec.family ?? 'generic']!;
+  /* the species still sets the proportions of its family's skull: a warthog
+     and a boar are both suid wedges, at different lengths and heft */
+  const heft = spec.jaw === 'barrel' ? 1.42 : spec.jaw === 'broad' ? 1.16 : spec.jaw === 'fine' ? 0.86 : 1;
+  /* ★ AND THE SAFETY NET IMMEDIATELY EARNED ITS KEEP. Wave 6's first build gave
+     every felid one skull, every bovid one skull, and artlock's [SAME] ratchet
+     failed the commit: 4,322 → 4,350 look-alike pairs. It was right. A family
+     may set the KIND of skull; it must not hand out the same face, and several
+     cats share the same `muzzle` and `jaw` values so nothing else separated
+     them. The species' own name varies its real dimensions here, the same
+     device legLen and the body radius already use for exactly this reason
+     (D-ART-20) — so two specs that happen to match still cannot render the
+     same head. (Better still would be driving this from the reference row's
+     `headFrac`, which is measured per species; that is the next improvement.) */
+  const skLen = headR * SK.len * (0.84 + mz * 0.34) * nvq(0x5C, 0.085);
+  const skMuz = headR * SK.muzzle * (0.72 + mz * 0.56) * heft * nvq(0x71, 0.10);
+  const skCran = headR * SK.cranium * (spec.jaw === 'barrel' ? 1.12 : 1) * nvq(0x93, 0.06);
+  const ang = SK.tilt + (spec.neck > 0.16 ? 0.10 : 0) + (nvq(0xA7, 1) - 1) * 0.05;
+  const occ: [number, number] = [headX - Math.cos(ang) * skLen * 0.42, headY - Math.sin(ang) * skLen * 0.42 - headR * 0.06];
+  const headAxis = (t: number): [number, number] =>
+    [occ[0] + Math.cos(ang) * skLen * t, occ[1] + Math.sin(ang) * skLen * t];
+  /* the radius profile IS the profile of the face: braincase, the stop, the
+     muzzle, and the nose. A cat dips hard behind a short blunt muzzle; a horse
+     barely dips at all and runs long and even to the nostril. */
+  const headProf = spline([
+    [0.00, skCran * 0.52],
+    [0.16, skCran],
+    [0.36, skCran * (1 - SK.stop * 0.46)],
+    [0.62, skMuz * 1.18],
+    [0.86, skMuz],
+    [1.00, skMuz * 0.74],
+  ]);
+  const head = new Tube({ P: headAxis, R: headProf });
+  /* THE MANDIBLE, drawn first so the skull overlaps it and the jaw line is a
+     shadowed edge under the cheek rather than an outline drawn on it */
+  if (SK.jaw > 0.05) {
+    const jd = headR * SK.jaw * heft;
+    const jaw = new Tube({
+      P: (t: number) => {
+        const a2 = headAxis(0.26 + t * 0.72);
+        return [a2[0], a2[1] + jd * (0.62 + 0.24 * t)];
+      },
+      R: (t: number) => jd * (0.42 + Math.sin(Math.min(1, 0.2 + t) * Math.PI) * 0.52),
+    });
+    c.fillStyle = `rgb(${p.cr * 0.66 | 0},${p.cg * 0.66 | 0},${p.cb * 0.66 | 0})`;
+    c.beginPath(); jaw.trace(c, 30); c.fill();
   }
-  c.save();
-  c.strokeStyle = 'rgba(220,232,250,0.4)'; c.lineWidth = 2;
-  c.beginPath(); c.ellipse(headX, headY, headR, headR * 0.86, 0, -2.7, 0.3); c.stroke(); c.restore();
+  c.fillStyle = p.base;
+  c.beginPath(); head.trace(c, 52); c.fill();
+  c.save(); c.beginPath(); head.trace(c, 52); c.clip();
+  if (!spec.alien?.skin) countershade(c, head, p, 0.92);
+  /* the coat runs onto the face — a tiger is striped across the cheek, a
+     giraffe patched over the crown. A pattern that stops at the ears is a hood. */
+  if (coat === 'patches') coatPatches(c, head, r, p, { nu: 4, nphi: 3, seam: 0.76, rgb: [126, 74, 26] });
+  else if (coat === 'stripes') coatBars(c, head, r, p, { count: 6, width: 0.75, phiEnd: -0.8, forkRate: 0 });
+  else if (coat === 'spots') coatSpots(c, head, r, p, { count: 22, size: 0.62, soft: 0.16, rgb: [24, 17, 10] });
+  else if (coat === 'rosettes') coatRosettes(c, head, r, p, { count: 7, size: 0.6 });
+  else if (coat === 'shaggy') coatShaggy(c, head, r, p, { count: 34 });
+  c.restore();
+  /* the nose, ON the end of the muzzle rather than beside it */
+  const nosePt = head.pt(0.965, -0.10);
+  if (SK.nose === 'disc') {
+    /* a pig's rostral disc: a flat plate seen almost edge-on, with two pits */
+    c.fillStyle = `rgb(${Math.min(255, p.cr * 1.12) | 0},${p.cg * 0.86 | 0},${p.cb * 0.88 | 0})`;
+    c.save(); c.translate(nosePt[0], nosePt[1]); c.rotate(ang);
+    c.beginPath(); c.ellipse(0, 0, skMuz * 0.42, skMuz * 0.92, 0, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(28,18,20,0.62)';
+    for (const s2 of [-1, 1] as const) { c.beginPath(); c.ellipse(skMuz * 0.10, s2 * skMuz * 0.34, skMuz * 0.13, skMuz * 0.19, 0, 0, TAU); c.fill(); }
+    c.restore();
+  } else if (SK.nose === 'nostril') {
+    /* a grazer has no black button — just a soft nostril slit in coat colour */
+    c.strokeStyle = 'rgba(26,18,20,0.55)'; c.lineWidth = Math.max(1.6, skMuz * 0.16); c.lineCap = 'round';
+    c.beginPath();
+    c.moveTo(nosePt[0] - skMuz * 0.30, nosePt[1] - skMuz * 0.12);
+    c.quadraticCurveTo(nosePt[0] - skMuz * 0.02, nosePt[1] - skMuz * 0.30, nosePt[0] + skMuz * 0.14, nosePt[1] - skMuz * 0.04);
+    c.stroke();
+  } else {
+    c.fillStyle = 'rgba(20,14,16,0.82)';
+    c.beginPath(); c.ellipse(nosePt[0], nosePt[1] - skMuz * 0.12, skMuz * 0.40, skMuz * 0.32, ang, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(255,255,255,0.20)';
+    c.beginPath(); c.ellipse(nosePt[0] - skMuz * 0.12, nosePt[1] - skMuz * 0.26, skMuz * 0.15, skMuz * 0.10, ang, 0, TAU); c.fill();
+  }
+  /* the mouth line, following the jaw rather than ruled across the face */
+  c.strokeStyle = 'rgba(18,12,12,0.34)';
+  c.lineWidth = Math.max(1.4, headR * (spec.jaw === 'barrel' ? 0.13 : 0.06));
+  c.beginPath();
+  const m0 = head.pt(0.44, -0.92), m1 = head.pt(0.72, -1.0), m2 = head.pt(0.94, -0.62);
+  c.moveTo(m0[0], m0[1]); c.quadraticCurveTo(m1[0], m1[1], m2[0], m2[1]); c.stroke();
 
   /* ---- ears: family-defining (fennec vs hippo vs koala) ---- */
   const ears = spec.ears ?? 'small';
@@ -739,7 +847,15 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
        Possum. It was not the sensor: they genuinely had no readable eye.
        The eye is also enlarged 0.16R -> 0.21R, because an eye a player cannot
        locate at thumbnail size is not an eye. */
-    const ex = headX + headR * 0.08, ey = headY - headR * 0.12, er = headR * 0.21;
+    /* ★ WAVE 6 — THE EYE SITS ON THE SKULL, AT ITS FAMILY'S OWN PLACE. It used
+       to be pinned to the middle of the head ellipse for every animal alive,
+       which is most of why Nick said the heads all looked the same. A
+       predator's eyes face forward around the middle of the face; a grazer's
+       are high, wide and set well back — that placement alone is the
+       difference between something that hunts and something that is hunted.
+       Placed through the skull's own surface, so it foreshortens with it. */
+    const eyeAt = head.pt(SK.eyeU * nvq(0xC3, 0.07), -0.35 + SK.eyePhi * 1.62 * nvq(0xD1, 0.05));
+    const ex = eyeAt[0], ey = eyeAt[1], er = headR * SK.eyeR;
     /* a soft socket, so the eye is SET INTO the skull rather than stuck on */
     softMark(c, ex, ey + er * 0.1, er * 2.1, er * 1.7, '18,14,10', 0.34);
     c.fillStyle = '#f2efe6'; c.beginPath(); c.arc(ex, ey, er, 0, TAU); c.fill();

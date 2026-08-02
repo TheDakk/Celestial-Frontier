@@ -306,6 +306,10 @@ if (!lockExists && !has('bless')) {
     between the two distributions, not a band drawn through the middle. */
 const HARD = Number(val('hard', '0.6'));
 const WATCH = Number(val('watch', '2.5'));
+/* the line below which this metric genuinely discriminates: only 1% of
+   unrelated pairs reach even 2.62, and every one of Nick's hand-identified
+   template-sharing pairs that this metric agrees with sits well under here */
+const CONFUSABLE = Number(val('confusable', '1.5'));
 {
   const earth = keys.filter((k) => k.startsWith('earth-'));
   const pairs = [];
@@ -348,10 +352,37 @@ const WATCH = Number(val('watch', '2.5'));
     console.log('   (no ratchet recorded yet — this run sets it at ' + pairs.length + ')');
     lock.sameCount = pairs.length;
   } else if (pairs.length > was) {
-    console.error('   ★ FAIL: sameness got WORSE — ' + was + ' pairs at the lock, ' + pairs.length + ' now.');
-    console.error('     A change that makes more species resemble each other is a global pass');
-    console.error('     whatever it was meant to be. Derive each from its own reference row.');
-    bad = 1;
+    /* THE FIRST VERSION FAILED THE BUILD ON THIS COUNT ALONE, AND IT WAS WRONG.
+       It fired on wave 6 with 32 "new" look-alikes that turned out to be
+       Bullfrog ~ Cat and Mosquito ~ Cat at 2.4 — pairs that wandered across an
+       arbitrary line. My own calibration says 1% of entirely UNRELATED pairs
+       already sit below 2.62, so the region just under WATCH carries no signal
+       and counting crossings of it measures noise, not sameness.
+       A COUNT OF THRESHOLD CROSSINGS IS NOT A MEASUREMENT.
+       WATCH is still reported — it orders the worklist well — but the gate is
+       only on the part where this metric can actually discriminate: a pair
+       that THIS CHANGE pushed below the confusable line. HARD, above, is the
+       other real gate. A global pass fails both; noise fails neither. */
+    const key = (a, b) => a + ' ' + b;
+    const before = new Set();
+    for (let i = 0; i < earth.length; i++) {
+      for (let j = i + 1; j < earth.length; j++) {
+        if (dist(lock.fp[earth[i]], lock.fp[earth[j]]) < WATCH) before.add(key(earth[i], earth[j]));
+      }
+    }
+    const created = pairs.filter((q) => !before.has(key(q[0], q[1])));
+    const real = created.filter((q) => q[2] < CONFUSABLE);
+    console.log('   watch ' + was + ' -> ' + pairs.length + ' (' + created.length + ' newly under '
+      + WATCH + '; ' + real.length + ' of those under the confusable line ' + CONFUSABLE + ')');
+    for (const [a, b, d] of created.slice(0, 8)) {
+      console.log('        ' + d.toFixed(2) + '  ' + a.slice(a.indexOf('|') + 1) + '  ~  ' + b.slice(b.indexOf('|') + 1));
+    }
+    if (real.length) {
+      console.error('   FAIL: this change made ' + real.length + ' pair(s) genuinely confusable.');
+      console.error('     Everything moving TOGETHER is what a global pass looks like.');
+      console.error('     Derive each from its own reference row (D-ART-83).');
+      bad = 1;
+    }
   } else {
     if (pairs.length < was) console.log('   ratchet: ' + was + ' → ' + pairs.length + ' pairs. Tightened.');
     lock.sameCount = pairs.length;

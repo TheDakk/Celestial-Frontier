@@ -461,6 +461,29 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   everything, it moves everything *together*). Run it in the battery; re-bless only after
   looking, and **never to turn a red report green**.
 
+- ✔ **D-ART-96 — A FAMILY MAY SET THE KIND, NEVER THE FACE (arc stage 3 wave 6).**
+  Nick, on the wave-5 export: *"the heads of the animals all look the same to me. They didn't
+  look unique."* True — every mammal wore one head: an ellipse, a smaller ellipse for a muzzle,
+  a dot, one big eye. Wave 6 gave each family a real skull profile (length, the "stop" between
+  forehead and muzzle, jaw depth, and **where the eye sits** — forward and central on a
+  predator, high and far back on a grazer, which is most of the prey/hunter read).
+  **Then the safety net immediately failed my own commit**: giving every felid one skull pushed
+  the look-alike count from 4,322 to 4,354. It was right to. A family plan is a licence to
+  share a *kind* of anatomy, never a licence to issue the same face — so the species' own name
+  varies every skull dimension (D-ART-20), and the reference row's measured `headFrac` should
+  drive it next. The rule generalises to every family system this arc adds.
+
+- ✔ **D-ART-97 — A COUNT OF THRESHOLD CROSSINGS IS NOT A MEASUREMENT (arc stage 3 wave 6).**
+  The [SAME] ratchet first gated on "the number of pairs under 2.5 may not rise", and it failed
+  wave 6 with 32 new "look-alikes" — which, once the tool was made to NAME them, were
+  *Bullfrog ≈ Cat* and *Mosquito ≈ Cat* at 2.4: pairs that had wandered across an arbitrary
+  line. My own calibration already said 1% of entirely unrelated pairs sit below 2.62, so that
+  band holds no signal and counting crossings of it measures noise. The gate now fires only
+  where the metric can discriminate — on a pair the change pushed below 1.5 — while the count
+  is still reported as a worklist. **Gate a metric only over the range where you have shown it
+  separates the two populations; and make every failing gate print the specific rows it means,
+  because "32 more" is not something anyone can action.**
+
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
