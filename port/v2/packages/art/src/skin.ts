@@ -64,12 +64,16 @@ export function countershade(c: Ctx, t: Tube, p: Coatable, strength = 1): void {
     const L = t.light(u, phi);
     /* dark along the spine is the light's own shadow; the pale belly is real
        countershaded fur, so it survives even where the light does not reach */
+    /* ⚠ at 0.46 this pale band scaled with the local radius, so over the
+       shoulder and haunch bulges it climbed high enough up the flank to read
+       as a pale OVAL stuck on the muscle instead of as the underside of a
+       round animal. Countershading should be felt, not seen. */
     const belly = clamp01(-Math.sin(phi) * 0.95);
     const shade = (L - 0.5) * 0.62 * strength;
     const col: [number, number, number] = shade < 0
       ? mixRgb([p.cr, p.cg, p.cb], [p.cr * 0.26, p.cg * 0.26, p.cb * 0.31], -shade * 1.8)
       : mixRgb([p.cr, p.cg, p.cb], [255, 250, 238], shade * 1.1);
-    return mixRgb(col, [Math.min(255, p.cr * 1.55 + 42), Math.min(255, p.cg * 1.55 + 40), Math.min(255, p.cb * 1.46 + 34)], belly * 0.46 * strength);
+    return mixRgb(col, [Math.min(255, p.cr * 1.55 + 42), Math.min(255, p.cg * 1.55 + 40), Math.min(255, p.cb * 1.46 + 34)], belly * 0.30 * strength);
   };
   const N = 26;
   for (let i = 0; i < NB; i++) {
