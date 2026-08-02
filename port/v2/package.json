@@ -19,7 +19,9 @@
     "proofsheet": "node tools/proofsheet.mjs",
     "perf": "node tools/sliceperf.mjs",
     "speciesaudit": "node tools/speciesaudit.mjs",
-    "speciesexport": "node tools/speciesexport.mjs"
+    "speciesexport": "node tools/speciesexport.mjs",
+    "overridecheck": "node tools/overridecheck.mjs",
+    "strip": "node tools/speciesstrip.mjs"
   },
   "devDependencies": {
     "@types/node": "26.1.2",

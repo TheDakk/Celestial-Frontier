@@ -60,6 +60,31 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   exits 1 naming them. Current: 0 clipped across 1,254.
 - ✔ **D-ART-18 — the barrel snout (wave 6).** jaw:'barrel' (Hippo) draws a blunt rounded block
   with a domed end and nostril pads, not a tapered ellipse.
+- ✔ **D-ART-19 — THE DEAD-ROUTE SENTINEL (wave 7).** 24 painters across waves 3, 4 and 7 were
+  keyed to species the catalog does not contain (King Cobra, Sea Snake, Bonobo, Tarsier,
+  Chinchilla, Loris, Periwinkle, Coral Snake, Boa Constrictor, Cane Toad, Giant Tortoise,
+  Electric Ray, Ring-Tailed Lemur, Caterpillar, Grub, Maggot, Lacewing, Sole, Stag Beetle,
+  Bighorn Sheep, Dromedary, White Rhino, Bracken, Water Bear) — written, listed, unreachable,
+  and structurally invisible to a species audit that can only render names the catalog asks
+  for. `tools/overridecheck.mjs` now exits 1 on any unresolvable key (with the nearest real
+  name) and on any duplicate key. Its own first cut reported 38 phantom dead routes (painter
+  OPTIONS are strings too — the scan is brace-depth aware now) and skipped both non-exported
+  tables. Negative-controlled both directions. All 24 re-keyed to real species; 310/310 resolve.
+- ✔ **D-ART-20 — NAME-SEEDED FAUNA (wave 7).** Wave 6's duplicate sentinel caught Howler =
+  Spider Monkey and Macaque = Baboon on the first wave-7 audit: the new painters keyed on
+  OPTIONS only, and 'lesser' was an alias for 'monkey'. Same shape as the flora ladder bug
+  (D-ART-8). Every wave-7 painter is now seeded by the species NAME, which drives real
+  proportion (coil tightness, girth, dome, ear, arm reach, whorl), not just noise.
+- ✔ **D-ART-21 — THE CONTINUOUS BODY (wave 7).** A snake stamped as 46 discs along a spiral
+  read as a caterpillar; the gaps were the defect. Bodies that flow are drawn as dense
+  round-capped ribbons shaded across their girth, with the dorsal light broken into scale rows
+  so the surface is not a garden hose.
+- ✔ **D-ART-22 — LIMBS IN FRONT (wave 7).** Primate legs drawn behind the torso vanished under
+  it and every ape read as a robe with a face; frog hind legs drawn as one thin curve read as
+  a spider. A limb that defines a silhouette is drawn in FRONT and carries its real masses.
+- ✔ **D-ART-23 — THE EYEBALL INSTRUMENT (wave 7).** `tools/speciesstrip.mjs` renders any named
+  species list big and labelled through the audit's own genome. The audit proves 1,254 paint;
+  the strip is how a human judges a handful, and it is what exposed D-ART-19/21/22.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

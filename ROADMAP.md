@@ -686,6 +686,39 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 7 — 24 UNREACHABLE PAINTERS, AND THE TWO INSTRUMENTS THAT
+##   FOUND THEM (2026-08-01, batch 26). ★★THE FINDING: wave 7's table was written from
+##   memory of what ANIMALS exist rather than from what the CATALOG contains — King Cobra,
+##   Sea Snake, Bonobo, Tarsier, Chinchilla, Loris, Periwinkle, Coral Snake, Boa Constrictor,
+##   Cane Toad, Giant Tortoise, Electric Ray, Ring-Tailed Lemur are not species in this game.
+##   Auditing waves 3+4 the same way found ELEVEN MORE (Caterpillar, Grub, Maggot, Lacewing,
+##   Sole, Stag Beetle, Bighorn Sheep, Dromedary, White Rhino, Bracken, Water Bear). 24
+##   painters written, listed and unreachable — while EVERY species audit stayed green at
+##   1,254/1,254, because an audit renders the names the CATALOG asks for and cannot see a
+##   key the catalog never mentions. The project's own law in a new costume: a check only
+##   sees the axis it measures. ★tools/overridecheck.mjs (npm run overridecheck) exits 1 on
+##   any unresolvable key WITH the nearest real name, and on duplicate keys; its own first
+##   cut reported 38 phantom dead routes (painter OPTIONS are strings too) and skipped both
+##   non-exported tables — negative-controlled both directions now. ★tools/speciesstrip.mjs
+##   (npm run strip "A,B,C") = THE EYEBALL INSTRUMENT: any named list rendered big and
+##   labelled through the audit's own genome. It found the dead routes AND four bad painters
+##   in one look. FIXED FROM THE STRIP: snakes were beads (46 stamped discs) → one continuous
+##   200-segment ribbon with scale-row lighting; the cobra's hood vanished into the coil →
+##   a notched shield with its own contrast; frogs read as spiders → the hind leg's three
+##   real masses; the rabbit was a blob (the ear ellipse reached below the chin) → ears
+##   anchored by their BASE; every primate was a ball in a gown → traced shoulder-to-hip
+##   torso + legs drawn in FRONT; shells were painted roses → shaded whorl spheres; starfish
+##   plumped; anemone tentacles carry their own colour. ★NEW BODY PLANS: salamander (paddle
+##   tail + axolotl gills), starfish, urchin, anemone, and the snail as an ANIMAL (foot +
+##   eyestalks, not a shell on the ground). ★WAVE 6's DUPLICATE SENTINEL EARNED ITS KEEP:
+##   caught Howler = Spider Monkey and Macaque = Baboon on the first wave-7 audit (painters
+##   keyed on OPTIONS, ignoring the NAME — the flora ladder bug in fauna); every wave-7
+##   painter is now name-seeded. ★COVERAGE IS NOW MEASURED, NOT CLAIMED: 310 of 1,010 Earth
+##   species (30.7%) = fauna 241 · flora 43 · fungi 16 · microbe 10. (Wave 6's claimed "5
+##   fungi routes covering all 27" was wrong — it covers 16.) D-ART-19..23. GATES: vitest
+##   220 · tsc · speciesaudit 1254/1254 0 fails 0 dupes 0 clipped · overridecheck 310/310
+##   0 dead · slicesmoke PASS · perf 1400/2091ms · goldenseeds 198,000 · codefixtures ·
+##   audioprofiles · savefixtures · validate FINGERPRINT MATCH · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 6 — THE PRE-CLIP BUG + THE CLIP SENTINEL (2026-08-01, batch 25).
 ##   Nick: "the hippo's nose is STILL cut off, it's not round — check that on ALL the artwork".
 ##   ★ROOT CAUSE: wave 5's fit pass measured ink on a 440 layer, but a painter reaching past

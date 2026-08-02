@@ -404,12 +404,12 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Lynx': { legs: 0.13, depth: 0.095, len: 0.24, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' },
   /* the pixel-siblings, separated */
   'Rhinoceros': { legs: 0.075, depth: 0.155, len: 0.32, neck: 0.045, muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#8b8b8e' },
-  'White Rhino': { legs: 0.075, depth: 0.16, len: 0.33, neck: 0.045, muzzle: 0.58, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#9b9a95' },
+  'Wild Sheep': { legs: 0.115, depth: 0.115, len: 0.25, neck: 0.075, muzzle: 0.35, ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#9d8a6e' },
   'Hippopotamus': { legs: 0.048, depth: 0.175, len: 0.33, neck: 0.03, muzzle: 0.62, jaw: 'barrel', ears: 'tiny', tail: 'stub', hue: '#8a6f74' },
   /* the humped and the long-necked */
   'Camel': { legs: 0.145, depth: 0.105, len: 0.28, neck: 0.20, back: 'level', muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#c8a173' },
   'Bactrian Camel': { legs: 0.14, depth: 0.11, len: 0.29, neck: 0.19, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 2, hue: '#b08a5e' },
-  'Dromedary': { legs: 0.15, depth: 0.10, len: 0.28, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777' },
+  'Dromedary Camel': { legs: 0.15, depth: 0.10, len: 0.28, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777' },
   'Giraffe': { legs: 0.19, depth: 0.10, len: 0.26, neck: 0.34, back: 'sloped', muzzle: 0.40, ears: 'large', tail: 'tuft', coat: 'patches', horn: 'ossicone', hue: '#e0c07a' },
   'Llama': { legs: 0.15, depth: 0.09, len: 0.24, neck: 0.20, muzzle: 0.35, ears: 'large', tail: 'stub', hue: '#d8cbb4' },
   'Alpaca': { legs: 0.13, depth: 0.10, len: 0.22, neck: 0.18, muzzle: 0.30, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#ddd2bd' },
@@ -418,7 +418,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Elk': { legs: 0.17, depth: 0.115, len: 0.29, neck: 0.13, back: 'sloped', muzzle: 0.48, ears: 'large', tail: 'stub', horn: 'branched', hue: '#9c7748' },
   'Deer': { legs: 0.16, depth: 0.095, len: 0.25, neck: 0.12, muzzle: 0.42, ears: 'large', tail: 'stub', horn: 'branched', coat: 'spots', hue: '#b98a58' },
   'Reindeer': { legs: 0.15, depth: 0.11, len: 0.27, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#a8917a' },
-  'Bighorn Sheep': { legs: 0.12, depth: 0.11, len: 0.25, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', hue: '#a98f6d' },
+  'Sheep': { legs: 0.12, depth: 0.11, len: 0.25, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', hue: '#a98f6d' },
   'Bison': { legs: 0.105, depth: 0.145, len: 0.30, neck: 0.05, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', coat: 'shaggy', hue: '#5c4535' },
   'Water Buffalo': { legs: 0.11, depth: 0.14, len: 0.31, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#4f4a48' },
   /* bears, differentiated */

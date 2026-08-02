@@ -295,3 +295,99 @@ audit §12/§13) · flower-head families beyond the daisy · the 43 biome-scene 
 
 **Proof:** gates vitest 22/220 · tsc clean · slicesmoke PASS · hdart.verbatim.js UNTOUCHED.
 **Ledger:** D-ART-17 (the pre-clip fix + clip sentinel) · D-ART-18 (the barrel snout).
+
+---
+
+# WAVE 7 — LANDED 2026-08-01 (reptiles·amphibians·rodents·primates·invertebrates
+# + ★ THE DEAD-ROUTE SENTINEL + ★ THE EYEBALL INSTRUMENT)
+
+Nick: *"all right, let's continue on. This is great. Keep making progress."*
+
+## ★★ THE FINDING OF THE BATCH: 24 PAINTERS NOTHING COULD EVER CALL
+Wave 7's first table was written from memory of *what animals exist* rather than from
+**what the CATALOG contains**. It routed King Cobra, Sea Snake, Bonobo, Tarsier, Chinchilla,
+Loris, Periwinkle, Coral Snake, Boa Constrictor, Cane Toad, Giant Tortoise, Electric Ray and
+Ring-Tailed Lemur — **none of which are species in this game.** Then the same audit of waves
+3 and 4 turned up eleven more (Caterpillar, Grub, Maggot, Lacewing, Sole, Stag Beetle,
+Bighorn Sheep, Dromedary, White Rhino, Bracken, Water Bear). **24 painters, written, listed,
+and unreachable.**
+
+Every species audit through all of it was **green**: 1,254/1,254 painted, 0 failures. It had
+to be. *The audit renders the names the catalog asks for* — a table key the catalog never
+mentions is not a thing the audit can look at. This is the project's own recurring lesson in
+a new costume (PROCESS_LAWS: seven checks have passed while the thing they guarded was
+broken): **a check can only see the axis it measures.**
+
+### `tools/overridecheck.mjs` — the standing guard (`npm run overridecheck`)
+Reads the catalog straight out of `apphooks.verbatim.js`, reads every override table key,
+and **exits 1 naming any key that resolves to nothing** — with the nearest real catalog name
+attached, so the finding is actionable ("Dromedary → did you mean *Dromedary Camel*?"). It
+also reports **measured coverage**, so our percentages stop being claims. It catches
+**duplicate keys** too — legal JavaScript in which the later entry silently wins.
+**Its own first cut had two bugs before it found any of ours:** a naive string scan reported
+38 phantom dead routes (a painter's *options* — 'barrel', 'spots', 'monkey' — are strings
+too, so the scan is now brace-depth aware), and an `export const`-only scan skipped
+FUNGI_NAME and MICROBE_NAME entirely and would have reported "fungi 0" as if wave 1 never
+happened. **Negative-controlled in both directions** (a nonexistent key → exit 1; a duplicate
+key → exit 1; clean tables → exit 0).
+
+**Result: 310 keys · 310 resolve · 0 dead.** Measured coverage is **fauna 241 · flora 43 ·
+fungi 16 · microbe 10 = 310 of 1,010 Earth species (30.7%)** — up from wave 6's *claimed* 160.
+(Wave 6's "5 fungi routes covering all 27" was wrong: it covers **16**; the other 11 fungi
+fall to verbatim.)
+
+## ★ `tools/speciesstrip.mjs` — the EYEBALL INSTRUMENT (`npm run strip "A,B,C"`)
+The audit answers *"did 1,254 paint?"*. Nothing answered *"does it look right?"* without
+exporting 1,254 PNGs. The strip renders any named list BIG and labelled into one sheet,
+through **the same genome the audit uses**, so what a human judges is exactly what the audit
+measured. It paid for itself immediately — the first strip is what showed the two red boxes
+that exposed the dead routes above, plus four painters that were quietly bad.
+
+## What the strip showed, and what it cost to fix
+| the strip said | the cause | the fix |
+|---|---|---|
+| snakes are strings of BEADS | 46 stamped discs along the spiral; the gaps were the whole problem | one continuous 200-segment round-capped ribbon, shaded across its own girth, drawn back-to-front so the coil still stacks |
+| the cobra has no hood | the hood was painted in the body's own colour and vanished into the coil behind it | a notched shield with its own lighter face, dark rim, ribs and spectacle mark |
+| snakes read as garden HOSE | one flat unbroken highlight down a smooth tube | the dorsal light is broken into scale rows with a seam every fifth segment |
+| frogs read as SPIDERS | a small pad and a thin curve for a hind leg | the leg's three real masses: folded thigh, angled shin, long flat foot with splayed toes |
+| the rabbit is a green BLOB | a tall ear ellipse centred only 0.78·hr above the head, so at ears=1.6 it reached below the chin and swallowed the head | an ear is anchored by its BASE at the skull and grows upward from there |
+| every primate is the same BALL | an ellipse torso | a traced shoulder-to-hip taper (great apes widest, monkeys nearly parallel) + shoulder caps |
+| every primate wears a GOWN | the legs were drawn BEHIND the torso and disappeared under it | thigh, shin and long grasping foot, drawn in FRONT |
+| the shells are painted ROSES | a flat swirl of two alternating flat colours | each whorl turn is a shaded sphere with a depth rim — a cone seen from the side |
+| the starfish is a SPIKE | thin geometric arms | plump arms with rounded tips |
+| the anemone is a SHAVING BRUSH | tentacles washed to near-white on pale palettes | a base-to-tip gradient carrying the animal's own colour |
+
+## ★ THE SECOND DUPLICATE REGRESSION — caught by wave 6's sentinel
+The first wave-7 audit came back **Howler Monkey = Spider Monkey · Macaque = Baboon**: the
+new painters keyed only on their OPTIONS and ignored the species NAME, and 'lesser' was a
+silent alias for 'monkey'. Identical options ⇒ byte-identical animals. This is the **flora
+leaf-ladder bug (D-ART-8) reappearing in fauna**, and the duplicate sentinel caught it inside
+one run. Fixed the proven way: **every wave-7 painter is name-seeded** (`nrng`/`nvar`), so
+the species name drives coil tightness, girth, dome height, ear scale, arm reach and shell
+whorl — two labels can no longer coincide.
+
+## New body plans the catalog asked for and nothing covered
+**amphSalamander** (smooth skin, paddle tail, blunt round head, and external gill fronds for
+Axolotl and Olm — a salamander is not a lizard) · **marineStar** · **marineUrchin** ·
+**marineAnemone** · **marineShell kind:'snail'** (a snail is an ANIMAL: the muscular foot
+glides out from under the whorl and the eyestalks carry the silhouette; a shell alone is a
+fossil).
+
+## Coverage after wave 7 — MEASURED, not claimed
+| group | routes |
+|---|---:|
+| fauna (insects·fish·birds·quadrupeds·reptiles·amphibians·rodents·primates·invertebrates) | 241 |
+| flora | 43 |
+| fungi | 16 |
+| microbe | 10 |
+| **TOTAL** | **310 of 1,010 (30.7%)** |
+
+Remaining, in review-rank order: the bird long tail · the remaining fish · procedural fungi +
+microbe body plans (Nick's audit §12/§13) · flower-head families beyond the daisy · the 43
+biome scenes (Phase 6).
+
+**Gates:** vitest 220 ✓ · tsc clean · speciesaudit 1254/1254 · 0 fails · 0 dupes · 0 clipped ·
+**overridecheck 310/310 · 0 dead** · slicesmoke PASS · perf painted 1400ms / answerable 2091ms ·
+proofsheet · goldenseeds 198,000 cases · codefixtures · audioprofiles · savefixtures ·
+validate FINGERPRINT MATCH. `hdart.verbatim.js` UNTOUCHED.
+**Ledger:** D-ART-19 … D-ART-23.

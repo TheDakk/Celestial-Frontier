@@ -23,7 +23,49 @@ async function pushFull(k: string, name: string, url: string | null): Promise<vo
 }
 interface SheetSpec { key: string; cells: Array<{ name: string; url: string | null }> }
 
+/* STRIP MODE (?strip=A,B,C): render just the named species BIG and labelled,
+   into one sheet — the standing eyeball instrument for a morphology wave.
+   The audit proves 1,254 paint; the strip is how a human judges a handful. */
+async function strip(names: string[]): Promise<void> {
+  const NAMES = _EARTH_NAMES as unknown as Record<string, string[]>;
+  const want = names.map((n) => n.trim().replace(/[''’‘]/g, "'")).filter(Boolean);
+  const cells: Array<{ name: string; url: string | null }> = [];
+  for (const n of want) {
+    let url: string | null = null;
+    for (const [ki, kingdom] of Object.keys(NAMES).entries()) {
+      const i = NAMES[kingdom]!.indexOf(n);
+      if (i < 0) continue;
+      /* the SAME genome the audit uses, so the strip shows the audited pixels */
+      const g = makeGenome((hashInt(0xEA47, i, ki) >>> 0), kingdom, 1) as Record<string, unknown>;
+      g._earthName = n;
+      try { url = speciesPortrait(g); } catch { url = null; }
+      break;
+    }
+    cells.push({ name: n, url });
+  }
+  const C = 300, LAB = 30, cols = Math.min(cells.length, 5);
+  const rows = Math.ceil(cells.length / cols);
+  const cv = document.createElement('canvas');
+  cv.width = cols * C; cv.height = rows * (C + LAB);
+  const c = cv.getContext('2d')!;
+  c.fillStyle = '#07090d'; c.fillRect(0, 0, cv.width, cv.height);
+  await Promise.all(cells.map((cell, i) => new Promise<void>((res) => {
+    const x = (i % cols) * C, y = Math.floor(i / cols) * (C + LAB);
+    c.fillStyle = '#8ea6c8'; c.font = '15px system-ui, sans-serif'; c.textAlign = 'center';
+    c.fillText(cell.name, x + C / 2, y + C + 20);
+    if (!cell.url) { c.strokeStyle = '#c0392b'; c.strokeRect(x + 8, y + 8, C - 16, C - 16); return res(); }
+    const im = new Image();
+    im.onload = () => { c.drawImage(im, x + 6, y + 6, C - 12, C - 12); res(); };
+    im.onerror = () => res();
+    im.src = cell.url;
+  })));
+  say(`strip: ${cells.length} species`);
+  (window as unknown as Record<string, unknown>).__CF_STRIP__ = { done: true, url: cv.toDataURL() };
+}
+
 async function run(): Promise<void> {
+  const sp = new URLSearchParams(location.search).get('strip');
+  if (sp) { await strip(sp.split(',')); return; }
   const NAMES = _EARTH_NAMES as unknown as Record<string, string[]>;
   const kingdoms = Object.keys(NAMES);
   const sheets: SheetSpec[] = [];
