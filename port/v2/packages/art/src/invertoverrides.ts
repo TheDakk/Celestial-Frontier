@@ -608,7 +608,7 @@ export function jellyBody(c: Ctx, g: G, p: Pal, opts: { comb?: boolean; float?: 
     const len = S * (opts.float ? 0.20 + r() * 0.18 : opts.comb ? 0.20 : 0.13 + r() * 0.10) * drift;
     c.strokeStyle = `rgba(${Math.min(255, p.cr * 0.7 + 60 | 0)},${Math.min(255, p.cg * 0.7 + 60 | 0)},${Math.min(255, p.cb * 0.7 + 70 | 0)},${opts.float ? 0.7 : 0.55})`;
     c.lineWidth = opts.comb ? 3 : 2.2; c.lineCap = 'round';
-    const sway = opts.comb ? (i === 0 ? -1 : 1) * bw * 0.9 : (r() - 0.5) * 34;
+    const sway = opts.comb ? (i === 0 ? -1 : 1) * bw * 0.28 : (r() - 0.5) * 34;
     c.beginPath(); c.moveTo(x, cy + bh * (opts.float ? 0.7 : 0.28));
     c.bezierCurveTo(x + sway * 0.7, cy + bh + len * 0.35, x - sway * 0.5, cy + bh + len * 0.72,
       x + sway * 1.15, cy + bh + len);
@@ -631,15 +631,18 @@ export function sessileBody(c: Ctx, g: G, p: Pal, opts: { kind: 'branch' | 'tube
   shadow(c, cx, base + 4, S * 0.16);
   if (opts.kind === 'branch') {   /* a coral colony: recursive, thickening down */
     const draw = (x: number, y: number, a: number, len: number, w: number, d: number): void => {
-      if (d > 4 || len < 6) return;
+      if (d > 5 || len < 5) return;
       const ex = x + Math.cos(a) * len, ey = y + Math.sin(a) * len;
       c.strokeStyle = d < 2 ? p.dark : p.base; c.lineWidth = w; c.lineCap = 'round';
       c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(x + Math.cos(a - 0.2) * len * 0.6, y + Math.sin(a - 0.2) * len * 0.6, ex, ey); c.stroke();
       draw(ex, ey, a - 0.42 - r() * 0.2, len * 0.72, w * 0.68, d + 1);
       draw(ex, ey, a + 0.42 + r() * 0.2, len * 0.72, w * 0.68, d + 1);
     };
-    draw(cx, base, -Math.PI / 2, H * 0.42, 15, 0);
-    for (let i = 0; i < 30; i++) {   /* the polyps */
+    /* several trunks, not one twig — a coral head is a COLONY */
+    for (let k = -2; k <= 2; k++) {
+      draw(cx + k * S * 0.030, base, -Math.PI / 2 + k * 0.16, H * (0.40 - Math.abs(k) * 0.05), 13 - Math.abs(k) * 2, 0);
+    }
+    for (let i = 0; i < 90; i++) {   /* the polyps */
       const a = r() * TAU, d = r() * H * 0.55;
       softMark(c, cx + Math.cos(a) * d, base - H * 0.45 + Math.sin(a) * d * 0.7, 5, 5,
         `${Math.min(255, p.cr * 0.5 + 120 | 0)},${Math.min(255, p.cg * 0.6 + 60 | 0)},${Math.min(255, p.cb * 0.5 + 90 | 0)}`, 0.5);
@@ -671,12 +674,13 @@ export function sessileBody(c: Ctx, g: G, p: Pal, opts: { kind: 'branch' | 'tube
     const L = S * 0.185, h = S * 0.058;
     const cy2 = base - h * 1.2;
     c.fillStyle = shell(c, p, cx, cy2, L * 0.6);
-    c.beginPath(); c.ellipse(cx, cy2, L, h, -0.05, 0, TAU); c.fill();
+    c.beginPath(); c.ellipse(cx, cy2, L, h * 1.25, -0.03, 0, TAU); c.fill();
     rim(c, () => c.ellipse(cx, cy2, L, h, -0.05, -2.8, 0.3), 2);
     c.strokeStyle = p.dark; c.lineWidth = 3; c.lineCap = 'round';   /* the papillae */
     for (let i = 0; i < 14; i++) {
       const x = cx - L * 0.86 + (i / 13) * L * 1.72;
-      c.beginPath(); c.moveTo(x, cy2 - h * 0.7); c.lineTo(x + (r() - 0.5) * 8, cy2 - h * 1.5); c.stroke();
+      /* papillae are soft nubs ON the back, not spines sticking off it */
+      softMark(c, x, cy2 - h * 0.85, h * 0.30, h * 0.22, r() < 0.5 ? '30,22,16' : '245,235,215', 0.30);
     }
     for (let i = 0; i < 8; i++) {   /* the feeding tentacles at the mouth */
       const a = -1.2 + i * 0.30;

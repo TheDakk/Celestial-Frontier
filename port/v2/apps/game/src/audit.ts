@@ -46,7 +46,10 @@ async function strip(names: string[]): Promise<void> {
       continue;
     }
     for (const [ki, kingdom] of Object.keys(NAMES).entries()) {
-      const i = NAMES[kingdom]!.indexOf(n);
+      /* normalise BOTH sides: the catalog stores a curly apostrophe
+         (Lion's Mane) and a raw compare silently failed to find it */
+      const norm = (s: string): string => s.replace(/[’‘]/g, "'");
+      const i = NAMES[kingdom]!.findIndex((x) => norm(x) === norm(n));
       if (i < 0) continue;
       /* the SAME genome the audit uses, so the strip shows the audited pixels */
       const g = makeGenome((hashInt(0xEA47, i, ki) >>> 0), kingdom, 1) as Record<string, unknown>;

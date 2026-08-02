@@ -238,6 +238,21 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   canopies were a pale mop on light palettes (task 21) → a foliage green tinted 40% by the hue
   with real value structure. Grass/grain heads floated free → seated on a stalk joined to the
   crown. Ferns/palms were spiky/grey → the frond is now a feathered arching blade.
+- ✔ **D-ART-53 — A HAUNCH IS A MASS, NOT A DARK OVAL (wave 16).** ~30 rodents carried one flat
+  p.dark ellipse on the flank for a haunch and no hind foot: it read as a HOLE in the animal and
+  the rodent floated. Now lit like the body, proud of the flank, with a soft thigh crease, a
+  hind leg folding onto a long foot, and a forefoot tucked under the chest.
+- ✔ **D-ART-54 — LIMBS THAT TAPER AND CURL (wave 16).** Cephalopod arms were constant-width
+  bezier strokes, so an octopus read as a stool. Arms are now a walk of short segments with a
+  shrinking width, a curled tip and a sucker row. Same class as D-ART-31 (a leg has a joint):
+  a limb drawn at one width is furniture.
+- ✔ **D-ART-55 — SECOND-PASS FIXES + A REVIEW-BLIND SPOT (wave 16).** Coral → a dense colony;
+  sea cucumber → a soft sausage with blended papillae; comb jelly tentacles trail; anemone tips
+  stay tinted; aquatic+pad → floating lily PADS on a waterline (they were drawing as kelp
+  straps); herb/vine leaves enlarged to read; Aloe → a spiky lance rosette. AND: 'Lion's Mane'
+  rendered as an empty box in the strip because the catalog stores a curly apostrophe and the
+  lookup compared raw strings — a species we could not review was invisible to review. Both
+  sides normalised.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

@@ -416,7 +416,7 @@ export function plantBody(c: Ctx, g: G, p: Pal, spec: PlantSpec, name = ''): voi
     c.stroke();
     for (let i = 2; i < pts.length; i += 3) {
       const [x, y] = pts[i]!;
-      drawLeaf(c, p, x, y, (i % 2 ? 0.3 : Math.PI - 0.3), S * 0.070 * nvf(name, 0x77, 0.2), spec.leaf);
+      drawLeaf(c, p, x, y, (i % 2 ? 0.3 : Math.PI - 0.3), S * 0.105 * nvf(name, 0x77, 0.2), spec.leaf);
       c.strokeStyle = p.dark; c.lineWidth = 2;   /* the tendril */
       c.beginPath();
       for (let k = 0; k < 12; k++) {
@@ -477,6 +477,26 @@ export function plantBody(c: Ctx, g: G, p: Pal, spec: PlantSpec, name = ''): voi
     }
     c.stroke();
   } else if (spec.habit === 'aquatic') {
+    if (spec.leaf === 'pad') {
+      /* FLOATING PADS on a waterline — the lily/lotus/duckweed body */
+      const wl = base - S * 0.06;
+      c.fillStyle = 'rgba(28,52,78,0.55)';
+      c.beginPath(); c.ellipse(cx, wl + S * 0.03, S * 0.30 * spread, S * 0.035, 0, 0, TAU); c.fill();
+      for (let i = 0; i < 3; i++) {
+        const px = cx + (i - 1) * S * 0.13 * spread + (r() - 0.5) * S * 0.02;
+        const py = wl + (i % 2 ? S * 0.012 : -S * 0.008);
+        const pr = S * (0.085 + r() * 0.03) * spread;
+        c.fillStyle = leafGrad(c, p, px, py, pr);
+        c.beginPath(); c.ellipse(px, py, pr, pr * 0.42, 0, 0, TAU); c.fill();
+        c.strokeStyle = 'rgba(20,32,18,0.32)'; c.lineWidth = 2;   /* the notch */
+        c.beginPath(); c.moveTo(px, py); c.lineTo(px + pr * 0.9, py + pr * 0.16); c.stroke();
+      }
+      c.strokeStyle = 'rgba(160,205,240,0.30)'; c.lineWidth = 2;
+      c.beginPath(); c.ellipse(cx, wl + S * 0.012, S * 0.34 * spread, S * 0.030, 0, 0, TAU); c.stroke();
+      if (spec.flower && spec.flower !== 'none') {
+        drawFlower(c, p, cx + S * 0.05, wl - S * 0.045, S * 0.040, spec.flower, spec.fhue, r);
+      }
+    } else {
     /* held up by water, not by wood: straps rising from a holdfast */
     for (let i = 0; i < leafN; i++) {
       const u = (i / (leafN - 1)) - 0.5;
@@ -501,6 +521,7 @@ export function plantBody(c: Ctx, g: G, p: Pal, spec: PlantSpec, name = ''): voi
         }
       }
     }
+    }
   } else if (spec.habit === 'rosette') {
     /* leaves radiating from a crown at ground level — dandelion, aloe, cabbage */
     for (let i = 0; i < leafN + 3; i++) {
@@ -521,7 +542,7 @@ export function plantBody(c: Ctx, g: G, p: Pal, spec: PlantSpec, name = ''): voi
       const u = 0.15 + (i / leafN) * 0.78;
       const sx = cx + lean * S * 0.06 * u, sy = base - H * u;
       for (const s of [-1, 1] as const) {
-        drawLeaf(c, p, sx, sy, s < 0 ? Math.PI + 0.45 : -0.45, S * 0.062 * spread * nvf(name, 0x77, 0.2), spec.leaf);
+        drawLeaf(c, p, sx, sy, s < 0 ? Math.PI + 0.45 : -0.45, S * 0.098 * spread * nvf(name, 0x77, 0.2), spec.leaf);
       }
     }
     if (spec.flower && spec.flower !== 'none') drawFlower(c, p, cx + lean * S * 0.06, base - H * 1.02, S * 0.036, spec.flower, spec.fhue, r);
