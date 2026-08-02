@@ -2,7 +2,7 @@
 
 **Written 2026-08-02 at the end of waves 4–18.**
 The live work is **THE PROPORTION ARC** — making every organism in the Earth catalogue look
-like the real thing, on Nick's instruction. Waves 4–18 have landed. ★ EARTH COVERAGE IS 1014/1014. The structural queue below is four-fifths done.
+like the real thing, on Nick's instruction. Waves 4–18 have landed. ★ EARTH COVERAGE IS 1014/1014 — Bucket A is closed.
 
 ---
 
