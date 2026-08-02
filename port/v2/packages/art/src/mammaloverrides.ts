@@ -73,22 +73,22 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Fisher': { legs: 0.084, depth: 0.0885, len: 0.2033, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#4f3b2c', family: 'mustelid' },
   'Otter': { legs: 0.0595, depth: 0.0866, len: 0.2252, neck: 0.05, muzzle: 0.30, ears: 'tiny', tail: 'long', hue: '#6b4f38', family: 'mustelid' },
   'River Otter': { legs: 0.0595, depth: 0.0866, len: 0.2252, neck: 0.05, muzzle: 0.30, ears: 'tiny', tail: 'long', hue: '#6f5239', family: 'mustelid' },
-  'Giant Otter': { legs: 0.0651, depth: 0.1019, len: 0.2506, neck: 0.06, muzzle: 0.32, ears: 'tiny', tail: 'long', hue: '#54402e' },
+  'Giant Otter': { legs: 0.0651, depth: 0.1019, len: 0.2506, neck: 0.06, muzzle: 0.32, ears: 'tiny', tail: 'long', hue: '#54402e', family: 'mustelid' },
   'Sea Otter': { legs: 0.0538, depth: 0.1027, len: 0.219, neck: 0.05, muzzle: 0.28, ears: 'tiny', tail: 'stub', coat: 'shaggy', hue: '#6a5340', family: 'mustelid' },
   /* ★ wave 22 — proportioncheck had it at 3.06 wide-to-tall on a 0.23/0.058
      spec, i.e. four times as long as deep. A mongoose is lithe, not a ribbon. */
   'Mongoose': { legs: 0.0671, depth: 0.0856, len: 0.1685, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#9a8a6c', family: 'mustelid' },
   'Meerkat': { legs: 0.0943, depth: 0.0998, len: 0.1047, neck: 0.08, muzzle: 0.32, ears: 'round', tail: 'long', hue: '#b5a184', family: 'mustelid' },
   'Civet': { legs: 0.0994, depth: 0.1039, len: 0.1618, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'banded', coat: 'spots', face: 'mask', hue: '#a8996f', family: 'mustelid' },
-  'Coati': { legs: 0.1047, depth: 0.1053, len: 0.1641, neck: 0.06, muzzle: 0.54, ears: 'round', tail: 'banded', hue: '#8e6440' },
-  'Kinkajou': { legs: 0.096, depth: 0.1095, len: 0.1437, neck: 0.05, muzzle: 0.30, ears: 'round', tail: 'long', hue: '#a06e3c' },
-  'Mole': { legs: 0.0295, depth: 0.0682, len: 0.1454, neck: 0.02, muzzle: 0.46, ears: 'tiny', tail: 'stub', hue: '#4a423c' },
+  'Coati': { legs: 0.1047, depth: 0.1053, len: 0.1641, neck: 0.06, muzzle: 0.54, ears: 'round', tail: 'banded', hue: '#8e6440', family: 'procyonid' },
+  'Kinkajou': { legs: 0.096, depth: 0.1095, len: 0.1437, neck: 0.05, muzzle: 0.30, ears: 'round', tail: 'banded', hue: '#a06e3c', family: 'procyonid' },
+  'Mole': { legs: 0.0295, depth: 0.0682, len: 0.1454, neck: 0.02, muzzle: 0.46, ears: 'tiny', tail: 'stub', hue: '#4a423c', family: 'burrower' },
   'Hyrax': { legs: 0.0595, depth: 0.0899, len: 0.1474, neck: 0.03, back: 'arched', muzzle: 0.28, ears: 'round', tail: 'none', hue: '#8b7a63', family: 'rodent' },
-  'Aardvark': { legs: 0.1078, depth: 0.1259, len: 0.2065, neck: 0.06, back: 'arched', muzzle: 0.80, ears: 'huge', tail: 'long', hue: '#b09c85' },
+  'Aardvark': { legs: 0.1078, depth: 0.1259, len: 0.2065, neck: 0.06, back: 'arched', muzzle: 0.80, ears: 'huge', tail: 'long', hue: '#b09c85', family: 'burrower' },
   /* ── BEARS, PIGS, EQUIDS ── */
   'Bear': { legs: 0.1055, depth: 0.1512, len: 0.2232, neck: 0.05, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'shaggy', family: 'ursid' },
   'Spectacled Bear': { legs: 0.1111, depth: 0.1593, len: 0.1959, neck: 0.05, muzzle: 0.40, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'shaggy', face: 'tears', hue: '#3b332c', family: 'ursid' },
-  'Wild Pig': { legs: 0.1014, depth: 0.1365, len: 0.2015, neck: 0.04, back: 'sloped', muzzle: 0.56, jaw: 'barrel', ears: 'large', tail: 'tuft', coat: 'shaggy', hue: '#6b5a49' },
+  'Wild Pig': { legs: 0.1014, depth: 0.1365, len: 0.2015, neck: 0.04, back: 'sloped', muzzle: 0.56, jaw: 'barrel', ears: 'large', tail: 'tuft', coat: 'shaggy', hue: '#6b5a49', family: 'suid' },
   'Pig': { legs: 0.0879, depth: 0.1425, len: 0.2104, neck: 0.04, muzzle: 0.56, jaw: 'barrel', ears: 'large', tail: 'stub', hue: '#e0aca5', family: 'suid' },
   'Peccary': { legs: 0.102, depth: 0.1256, len: 0.1752, neck: 0.04, back: 'sloped', muzzle: 0.54, jaw: 'barrel', ears: 'small', tail: 'stub', coat: 'shaggy', hue: '#5f5850', family: 'suid' },
   'Wild Horse': { legs: 0.1964, depth: 0.1524, len: 0.1999, neck: 0.13, muzzle: 0.52, ears: 'large', tail: 'plume', hue: '#a98159', family: 'equid' },
@@ -101,10 +101,10 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Takin': { legs: 0.1306, depth: 0.1574, len: 0.2065, neck: 0.06, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#b59a63', family: 'bovid' },
   'Caribou': { legs: 0.1823, depth: 0.1497, len: 0.1964, neck: 0.10, muzzle: 0.44, ears: 'large', tail: 'stub', horn: 'branched', coat: 'shaggy', hue: '#a2917c', family: 'cervid' },
   'Okapi': { legs: 0.1924, depth: 0.1482, len: 0.1823, neck: 0.16, muzzle: 0.40, ears: 'large', tail: 'tuft', horn: 'ossicone', coat: 'stripes', hue: '#5d3b28' , family: 'cervid' },
-  'Mountain Tapir': { legs: 0.1186, depth: 0.1436, len: 0.2002, neck: 0.05, back: 'arched', muzzle: 0.66, jaw: 'barrel', ears: 'small', tail: 'stub', coat: 'shaggy', hue: '#3f3a36' },
-  'Sloth': { legs: 0.0968, depth: 0.1414, len: 0.1484, neck: 0.06, back: 'arched', muzzle: 0.28, ears: 'tiny', tail: 'stub', coat: 'shaggy', hue: '#8c8367' },
-  'Possum': { legs: 0.0814, depth: 0.1026, len: 0.1598, neck: 0.05, muzzle: 0.44, ears: 'large', tail: 'long', hue: '#a49b8c' },
-  'Marsh Rodent': { legs: 0.0691, depth: 0.0894, len: 0.1789, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'long', hue: '#7b6448' },
+  'Mountain Tapir': { legs: 0.1186, depth: 0.1436, len: 0.2002, neck: 0.05, back: 'arched', muzzle: 0.66, jaw: 'barrel', ears: 'small', tail: 'stub', coat: 'shaggy', hue: '#3f3a36', family: 'suid' },
+  'Sloth': { legs: 0.0968, depth: 0.1414, len: 0.1484, neck: 0.06, back: 'arched', muzzle: 0.28, ears: 'tiny', tail: 'stub', coat: 'shaggy', hue: '#8c8367', family: 'xenarthran' },
+  'Possum': { legs: 0.0814, depth: 0.1026, len: 0.1598, neck: 0.05, muzzle: 0.44, ears: 'large', tail: 'long', hue: '#a49b8c', family: 'marsupial' },
+  'Marsh Rodent': { legs: 0.0691, depth: 0.0894, len: 0.1789, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'long', hue: '#7b6448', family: 'rodent' },
   /* ═══ ★ ARC STAGE 3 WAVE 1 — THE UNROUTED ICONICS ═══
      conformance [U]: these had NO override route, so the verbatim engine drew
      them and their reference mustRead features could not be expressed at all.
@@ -116,34 +116,34 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* "bold stripes continuing onto the legs · stiff upright brush mane · tufted tail" */
   'Zebra': { legs: 0.1837, depth: 0.1567, len: 0.2056, neck: 0.120, muzzle: 0.44, ears: 'large', tail: 'tuft', coat: 'bands', hue: '#e8e4dc', family: 'equid' },
   /* "black bandit mask · ringed banded tail · hunched arched back" */
-  'Raccoon': { legs: 0.0769, depth: 0.1106, len: 0.1905, neck: 0.040, back: 'arched', muzzle: 0.30, ears: 'round', tail: 'banded', face: 'mask', hue: '#8d8a86' },
+  'Raccoon': { legs: 0.0769, depth: 0.1106, len: 0.1905, neck: 0.040, back: 'arched', muzzle: 0.30, ears: 'round', tail: 'banded', face: 'mask', hue: '#8d8a86', family: 'procyonid' },
   /* "flat scaly paddle tail · orange chisel incisors · stocky humped body" */
   'Beaver': { legs: 0.0521, depth: 0.1186, len: 0.214, neck: 0.032, back: 'humped', muzzle: 0.26, jaw: 'broad', ears: 'tiny', tail: 'paddle', hue: '#6b4a30', family: 'rodent' },
   /* "long bushy ringed tail · white face mask with rust tear-stripes · black legs" */
-  'Red Panda': { legs: 0.0741, depth: 0.1099, len: 0.1712, neck: 0.038, muzzle: 0.26, ears: 'large', tail: 'banded', face: 'tears', hue: '#b5522a' },
+  'Red Panda': { legs: 0.0741, depth: 0.1099, len: 0.1712, neck: 0.038, muzzle: 0.26, ears: 'large', tail: 'banded', face: 'tears', hue: '#b5522a', family: 'procyonid' },
   /* "back sloping sharply from high shoulders · massive neck and jaws · blotchy spots" */
   'Spotted Hyena': { legs: 0.1284, depth: 0.1442, len: 0.2128, neck: 0.080, back: 'sloped', muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'bushy', coat: 'spots', hue: '#a8916b', family: 'canid' },
   /* "sloping back · heavy jaws · vertical flank stripes and a long dorsal crest" */
   'Striped Hyena': { legs: 0.1338, depth: 0.1475, len: 0.1936, neck: 0.080, back: 'sloped', muzzle: 0.34, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'stripes', hue: '#b8ac93', family: 'canid' },
   /* "stout barrel body with NO visible tail · broad bare-nosed snout · bowed legs" */
-  'Wombat': { legs: 0.0414, depth: 0.1249, len: 0.1947, neck: 0.024, muzzle: 0.24, jaw: 'broad', ears: 'round', tail: 'none', hue: '#8a7358' },
+  'Wombat': { legs: 0.0414, depth: 0.1249, len: 0.1947, neck: 0.024, muzzle: 0.24, jaw: 'broad', ears: 'round', tail: 'none', hue: '#8a7358', family: 'marsupial' },
   /* "oversized blocky head and gaping jaws · white chest band · thick short tail" */
-  'Tasmanian Devil': { legs: 0.0515, depth: 0.1096, len: 0.1708, neck: 0.028, muzzle: 0.26, jaw: 'broad', ears: 'round', tail: 'tuft', hue: '#2e2a28' },
+  'Tasmanian Devil': { legs: 0.0515, depth: 0.1096, len: 0.1708, neck: 0.028, muzzle: 0.26, jaw: 'broad', ears: 'round', tail: 'tuft', hue: '#2e2a28', family: 'marsupial' },
   /* "white spots over the back AND the tail · pointed pink snout · low slinking body" */
-  'Quoll': { legs: 0.0602, depth: 0.0901, len: 0.1478, neck: 0.034, muzzle: 0.30, ears: 'round', tail: 'bushy', coat: 'spots', hue: '#7d5f42' },
+  'Quoll': { legs: 0.0602, depth: 0.0901, len: 0.1478, neck: 0.034, muzzle: 0.30, ears: 'round', tail: 'bushy', coat: 'spots', hue: '#7d5f42', family: 'marsupial' },
   /* "trunk to the ground · huge fan ears · pillar legs and a dipped saddle back" */
-  'Elephant': { legs: 0.1136, depth: 0.2312, len: 0.2465, neck: 0.028, muzzle: 0.30, jaw: 'barrel', ears: 'fan', tail: 'tuft', trunk: true, horn: 'tuskdown', hue: '#8b8785', family: 'pachyderm' },
-  'African Elephant': { legs: 0.1154, depth: 0.2276, len: 0.2613, neck: 0.028, muzzle: 0.30, jaw: 'barrel', ears: 'fan', earScale: 1.30, tail: 'tuft', trunk: true, horn: 'tuskdown', hue: '#8a8580', family: 'pachyderm' },
+  'Elephant': { legs: 0.1136, depth: 0.2312, len: 0.2465, neck: 0.028, muzzle: 0.30, jaw: 'barrel', ears: 'fan', tail: 'tuft', trunk: true, horn: 'tuskdown', hue: '#8b8785', family: 'pachyderm' , back: 'saddle' },
+  'African Elephant': { legs: 0.1154, depth: 0.2276, len: 0.2613, neck: 0.028, muzzle: 0.30, jaw: 'barrel', ears: 'fan', earScale: 1.30, tail: 'tuft', trunk: true, horn: 'tuskdown', hue: '#8a8580', family: 'pachyderm' , back: 'saddle' },
   'Asian Elephant': { legs: 0.1093, depth: 0.2186, len: 0.251, neck: 0.028, back: 'arched', muzzle: 0.30, jaw: 'barrel', ears: 'fan', earScale: 0.80, tail: 'tuft', trunk: true, hue: '#94908c', family: 'pachyderm' },
-  'Forest Elephant': { legs: 0.1024, depth: 0.2162, len: 0.2305, neck: 0.028, muzzle: 0.30, jaw: 'barrel', ears: 'fan', earScale: 0.92, tail: 'tuft', trunk: true, horn: 'tuskdown', hue: '#7d7873', family: 'pachyderm' },
+  'Forest Elephant': { legs: 0.1024, depth: 0.2162, len: 0.2305, neck: 0.028, muzzle: 0.30, jaw: 'barrel', ears: 'fan', earScale: 0.92, tail: 'tuft', trunk: true, horn: 'tuskdown', hue: '#7d7873', family: 'pachyderm' , back: 'saddle' },
   /* "banded bony shell over the back · long tapering tail · digging claws" */
-  'Armadillo': { legs: 0.0475, depth: 0.0983, len: 0.1934, neck: 0.030, back: 'arched', muzzle: 0.32, ears: 'large', tail: 'long', coat: 'banded', hue: '#a89880' },
+  'Armadillo': { legs: 0.0475, depth: 0.0983, len: 0.1934, neck: 0.030, back: 'arched', muzzle: 0.32, ears: 'large', tail: 'long', coat: 'banded', hue: '#a89880', family: 'xenarthran' },
   /* "enormously long tubular snout · huge plume tail · black shoulder wedge" */
-  'Giant Anteater': { legs: 0.0913, depth: 0.1049, len: 0.2237, neck: 0.048, muzzle: 0.78, jaw: 'fine', ears: 'tiny', tail: 'plume', tailScale: 1.6, hue: '#6b6259' },
+  'Giant Anteater': { legs: 0.0913, depth: 0.1049, len: 0.2237, neck: 0.048, muzzle: 0.78, jaw: 'fine', ears: 'tiny', tail: 'plume', tailScale: 1.6, hue: '#6b6259', family: 'xenarthran' },
   /* "overlapping keratin scales · long heavy tail · small conical head" */
-  'Pangolin': { legs: 0.053, depth: 0.1126, len: 0.1754, neck: 0.032, back: 'arched', muzzle: 0.34, ears: 'tiny', tail: 'long', coat: 'banded', hue: '#9a8258' },
+  'Pangolin': { legs: 0.053, depth: 0.1126, len: 0.1754, neck: 0.032, back: 'arched', muzzle: 0.34, ears: 'tiny', tail: 'long', coat: 'banded', hue: '#9a8258', family: 'xenarthran' },
   /* "gliding membrane between the limbs · black eye-stripe · long plume tail" */
-  'Sugar Glider': { legs: 0.0535, depth: 0.0779, len: 0.115, neck: 0.028, muzzle: 0.24, ears: 'large', tail: 'plume', face: 'mask', hue: '#9aa0a8' },
+  'Sugar Glider': { legs: 0.0535, depth: 0.0779, len: 0.115, neck: 0.028, muzzle: 0.24, ears: 'large', tail: 'plume', face: 'mask', hue: '#9aa0a8', family: 'marsupial' },
   /* "gliding membrane · huge forward eyes · mottled bark-coloured coat" */
   'Colugo': { legs: 0.0578, depth: 0.0937, len: 0.1229, neck: 0.030, muzzle: 0.26, ears: 'small', tail: 'long', coat: 'blotches', hue: '#8b7a63' },
 };

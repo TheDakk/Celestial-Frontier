@@ -31,7 +31,7 @@ export interface QuadSpec {
   depth: number;                /* body depth (belly) */
   len?: number;                 /* body length */
   neck: number;                 /* neck length */
-  back?: 'level' | 'humped' | 'sloped' | 'arched';
+  back?: 'level' | 'humped' | 'sloped' | 'arched' | 'saddle';
   muzzle?: number;              /* snout projection */
   jaw?: 'fine' | 'broad' | 'barrel';
   ears?: 'tiny' | 'small' | 'round' | 'large' | 'huge' | 'fan';
@@ -63,8 +63,11 @@ export interface QuadSpec {
      NUMBER still comes from the species' own row. Two cats share a foot;
      they do not share a body. */
   family?: 'felid' | 'canid' | 'ursid' | 'bovid' | 'cervid' | 'equid' | 'camelid'
-    | 'suid' | 'mustelid' | 'rodent' | 'pachyderm' | 'generic';
-  foot?: 'hoof' | 'cloven' | 'paw' | 'plantigrade' | 'pad';
+    | 'suid' | 'mustelid' | 'rodent' | 'pachyderm' | 'generic'
+    /* ★ wave 9: the families that had no plan at all and fell through to
+       'generic' — 21 routed mammals, and they looked it. */
+    | 'marsupial' | 'procyonid' | 'xenarthran' | 'pinniped' | 'burrower';
+  foot?: 'hoof' | 'cloven' | 'paw' | 'plantigrade' | 'pad' | 'claw' | 'flipper';
   horn?: 'nose' | 'twinnose' | 'ossicone' | 'palmate' | 'branched' | 'tuskup' | 'tuskdown' | 'curl'
     | 'straight' | 'spiral' | 'lyre' | 'prong' | 'shorthorn';   /* wave 10: the bovid horn is the species */
   humps?: 1 | 2;
@@ -134,6 +137,13 @@ const SKULL: Record<string, {
   mustelid: { len: 1.80, cranium: 0.84, stop: 0.38, muzzle: 0.32, jaw: 0.24, eyeU: 0.46, eyePhi: 0.36, eyeR: 0.15, nose: 'wet', tilt: 0.08 },
   rodent: { len: 1.70, cranium: 0.98, stop: 0.46, muzzle: 0.32, jaw: 0.26, eyeU: 0.46, eyePhi: 0.44, eyeR: 0.195, nose: 'wet', tilt: 0.10 },
   pachyderm: { len: 1.95, cranium: 1.16, stop: 0.34, muzzle: 0.54, jaw: 0.40, eyeU: 0.38, eyePhi: 0.56, eyeR: 0.10, nose: 'nostril', tilt: 0.10 },
+  marsupial: { len: 1.85, cranium: 0.96, stop: 0.34, muzzle: 0.40, jaw: 0.32, eyeU: 0.44, eyePhi: 0.46, eyeR: 0.20, nose: 'wet', tilt: 0.12 },
+  procyonid: { len: 1.95, cranium: 0.92, stop: 0.36, muzzle: 0.34, jaw: 0.26, eyeU: 0.44, eyePhi: 0.38, eyeR: 0.19, nose: 'wet', tilt: 0.14 },
+  /* an anteater or a pangolin is almost all snout, and the eye is tiny and far
+     back — that proportion alone is the whole group's silhouette */
+  xenarthran: { len: 3.10, cranium: 0.70, stop: 0.06, muzzle: 0.22, jaw: 0.14, eyeU: 0.24, eyePhi: 0.50, eyeR: 0.09, nose: 'wet', tilt: 0.22 },
+  pinniped: { len: 1.70, cranium: 1.05, stop: 0.30, muzzle: 0.52, jaw: 0.30, eyeU: 0.42, eyePhi: 0.30, eyeR: 0.22, nose: 'wet', tilt: 0.06 },
+  burrower: { len: 2.95, cranium: 0.74, stop: 0.08, muzzle: 0.26, jaw: 0.18, eyeU: 0.26, eyePhi: 0.52, eyeR: 0.08, nose: 'wet', tilt: 0.24 },
   generic: { len: 2.00, cranium: 0.94, stop: 0.30, muzzle: 0.42, jaw: 0.34, eyeU: 0.40, eyePhi: 0.40, eyeR: 0.19, nose: 'wet', tilt: 0.10 },
 };
 
@@ -156,7 +166,7 @@ const SKULL: Record<string, {
     D-ART-83 draws. A shared foot is anatomy; a shared body would be a band. */
 const FAMILY: Record<string, {
   waist: number; muscle: number; chest: number; rump: number;
-  foot: 'hoof' | 'cloven' | 'paw' | 'plantigrade' | 'pad';
+  foot: 'hoof' | 'cloven' | 'paw' | 'plantigrade' | 'pad' | 'claw' | 'flipper';
   cannon: number;    /* 1 = pencil cannon bone, 0 = a column with no ankle */
   crouch: number;    /* 1 = folded and low, 0 = straight-legged and tall */
 }> = {
@@ -178,6 +188,19 @@ const FAMILY: Record<string, {
   pachyderm: { waist: 0.04, muscle: 0.72, chest: 0.66, rump: 0.70, foot: 'pad', cannon: 0.10, crouch: 0.08 },
   /* unfamilied species keep exactly the wave-4 behaviour, so nothing that
      was already good moves without someone choosing to move it (D-ART-14) */
+  /* a marsupial carries its weight BEHIND — heavy haunches, a thick tail
+     base, short forelimbs, and it sits low */
+  marsupial: { waist: 0.40, muscle: 0.52, chest: 0.50, rump: 0.86, foot: 'paw', cannon: 0.26, crouch: 0.70 },
+  /* a raccoon walks on its soles with an arched back and a hunched shoulder */
+  procyonid: { waist: 0.54, muscle: 0.44, chest: 0.56, rump: 0.62, foot: 'plantigrade', cannon: 0.28, crouch: 0.66 },
+  /* sloths, armadillos, anteaters, pangolins: a low deep body on short limbs
+     ending in the enormous digging or hooking CLAWS that define the group */
+  xenarthran: { waist: 0.26, muscle: 0.54, chest: 0.62, rump: 0.60, foot: 'claw', cannon: 0.30, crouch: 0.58 },
+  /* a seal or a walrus has no standing limb at all — it is a torpedo resting
+     on the ground with flippers, and drawing it four legs is the whole error */
+  pinniped: { waist: 0.06, muscle: 0.34, chest: 0.72, rump: 0.30, foot: 'flipper', cannon: 0.04, crouch: 0.04 },
+  /* an aardvark or a mole: an arched back over powerful short digging forelimbs */
+  burrower: { waist: 0.18, muscle: 0.70, chest: 0.58, rump: 0.66, foot: 'claw', cannon: 0.22, crouch: 0.62 },
   generic: { waist: -1, muscle: -1, chest: -1, rump: -1, foot: 'paw', cannon: 0.62, crouch: 0.45 },
 };
 
@@ -262,6 +285,12 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     if (back === 'humped') return cy - bodyH * (0.55 + 0.42 * Math.pow(t, 2.2));
     if (back === 'sloped') return cy - bodyH * (0.40 + 0.55 * t);
     if (back === 'arched') return cy - bodyH * (0.52 + 0.30 * Math.sin(t * Math.PI));
+    /* ★ the AFRICAN elephant's saddle. Its reference note says it outright —
+       'the back dips in a concave curve; the head is the highest point in
+       Asian elephants but not here' — and the render had a convex topline
+       rising to the skull, i.e. it was drawing the wrong species. Two peaks
+       at the shoulder and the hip with a dip between them. */
+    if (back === 'saddle') return cy - bodyH * (0.64 - 0.16 * Math.sin(t * Math.PI));
     /* even a level back gets a gentle withers-to-rump curve — a ruler
        straight spine reads as a table edge, never as an animal */
     return cy - bodyH * (0.50 + 0.08 * t + 0.07 * Math.sin(t * Math.PI));
@@ -414,6 +443,39 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
         c.ellipse(x + legW * (0.62 + i * 0.16), gy - legW * 0.44, legW * 0.07, legW * 0.13, 0.5, 0, TAU);
         c.fill();
       }
+    } else if (foot === 'claw') {
+      /* an anteater or an armadillo walks on its KNUCKLES to keep the claws
+         off the ground, and those claws are longer than the whole foot */
+      c.fillStyle = dark(0.48);
+      c.beginPath(); c.ellipse(x, gy - legW * 0.26, legW * 0.54, legW * 0.36, 0, 0, TAU); c.fill();
+      c.fillStyle = 'rgba(232,226,208,0.9)';
+      for (let i = 0; i < 3; i++) {
+        const u2 = i / 2;
+        c.beginPath();
+        c.moveTo(x + legW * (0.10 + u2 * 0.22), gy - legW * 0.46);
+        c.quadraticCurveTo(x + legW * (0.72 + u2 * 0.26), gy - legW * 0.34, x + legW * (0.60 + u2 * 0.24), gy - legW * 0.02);
+        c.quadraticCurveTo(x + legW * (0.44 + u2 * 0.18), gy - legW * 0.24, x + legW * (0.06 + u2 * 0.20), gy - legW * 0.34);
+        c.closePath(); c.fill();
+      }
+    } else if (foot === 'flipper') {
+      /* ★ A SEAL HAS NO FOOT. Nick's strict audit had the Walrus as approved and
+         the mammal audit called the current one "a tusked dachshund" — because
+         the quadruped painter gave it four standing legs. A pinniped rests its
+         bulk on the ground and pushes with a broad flipper swept BACK. */
+      c.save(); c.translate(x, gy - legW * 0.30); c.rotate(hind ? 0.55 : 0.30);
+      const fg = c.createLinearGradient(0, -legW, 0, legW);
+      fg.addColorStop(0, dark(0.86)); fg.addColorStop(1, dark(0.40));
+      c.fillStyle = fg;
+      c.beginPath(); c.ellipse(legW * 0.55, 0, legW * 1.45, legW * 0.52, 0, 0, TAU); c.fill();
+      c.strokeStyle = `rgba(0,0,0,${0.30 * m})`; c.lineWidth = 1.2;
+      for (let i = 0; i < 4; i++) {
+        const u2 = i / 3;
+        c.beginPath();
+        c.moveTo(legW * 0.35, -legW * 0.30 + u2 * legW * 0.60);
+        c.lineTo(legW * 1.85, -legW * 0.22 + u2 * legW * 0.46);
+        c.stroke();
+      }
+      c.restore();
     } else {   /* 'pad' — camel, elephant: a broad soft disc that spreads */
       c.fillStyle = dark(0.50);
       c.beginPath(); c.ellipse(x, gy - legW * 0.16, legW * 0.92, legW * 0.36, 0, 0, TAU); c.fill();
@@ -794,8 +856,15 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
        the side of the head, its top edge folded over, its lower edge ragged,
        reaching well below the jaw. Drawn behind the head so the head overlaps
        its root and it belongs to the skull. */
-    const fw = headR * 1.55, fh = headR * 2.05;
-    const fx = headX - headR * 0.62, fy = headY + headR * 0.20;
+    /* ⚠ TWO BUGS HERE AT ONCE. (1) earScale was never applied to a fan, so the
+       African elephant's 1.30 and the Asian's 0.80 did nothing and the two
+       species wore the same ear — which is one of only two features that tell
+       them apart. (2) The fan was 1.55·headR wide centred barely behind the
+       skull, so it covered the entire face; the comment above claims the head
+       overlaps its root, and it never did. Smaller, and set BACK. */
+    const es = spec.earScale ?? 1;
+    const fw = headR * 1.16 * es, fh = headR * 1.72 * es;
+    const fx = headX - headR * 1.02, fy = headY + headR * 0.24;
     for (const s of [-1, 1] as const) {
       const off = s * headR * 0.16;
       c.fillStyle = s < 0 ? `rgb(${p.cr * 0.52 | 0},${p.cg * 0.52 | 0},${p.cb * 0.52 | 0})` : p.dark;
@@ -986,9 +1055,25 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     }
   }
   if (spec.trunk) {
-    c.strokeStyle = p.base; c.lineWidth = headR * 0.52; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(headX + headR * 0.75, headY + headR * 0.2);
-    c.quadraticCurveTo(headX + headR * 1.7, headY + headR * 1.2, headX + headR * 1.2, headY + headR * 2.1); c.stroke();
+    /* ⚠ the trunk stopped at knee height. "A long muscular trunk REACHING THE
+       GROUND" is the first mustRead on every elephant row, and a trunk that
+       stops in mid-air is the one thing everybody notices. It now runs to the
+       ground line and curls, and it tapers, because a trunk is a cone. */
+    const tRoot: [number, number] = [headX + headR * 0.70, headY + headR * 0.18];
+    const tEnd: [number, number] = [headX + headR * 0.95, groundY - headR * 0.12];
+    const trunkT = new Tube({
+      P: pathThrough([tRoot,
+        [headX + headR * 1.55, headY + (tEnd[1] - headY) * 0.34],
+        [headX + headR * 1.42, headY + (tEnd[1] - headY) * 0.70],
+        tEnd,
+        [headX + headR * 1.75, groundY - headR * 0.02]]),
+      R: (t2: number) => headR * (0.30 - t2 * 0.16),
+    });
+    c.fillStyle = p.base;
+    c.beginPath(); trunkT.trace(c, 36); c.fill();
+    c.save(); c.beginPath(); trunkT.trace(c, 36); c.clip();
+    countershade(c, trunkT, p, 0.9);
+    c.restore();
     c.strokeStyle = 'rgba(0,0,0,0.16)'; c.lineWidth = headR * 0.12;
     for (let i = 1; i <= 5; i++) {
       const t = i / 6, tx = headX + headR * (0.75 + 1.0 * t), ty = headY + headR * (0.2 + 1.7 * t);
@@ -998,7 +1083,14 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
 
   /* ---- tail ---- */
   const tail = spec.tail ?? 'stub';
-  const tx0 = cx - bodyW * 0.98, ty0 = cy - bodyH * 0.1;
+  /* ⚠ THE TAIL WAS STILL ANCHORED TO THE PRE-WAVE-7 BODY. It started at a
+     hand-written offset from cx/cy, but wave 7 moved the rear of the torso to
+     the envelope of the tube and moved the axis off cy entirely — so a thick
+     round-capped tail now began OUTSIDE the rump and its blunt start showed as
+     the hard-edged block the mammal audit reported on species after species.
+     Anchored to the solid it grows from, it starts inside the body. */
+  const tAnchor = AX(0.035);
+  const tx0 = tAnchor[0] - RAD(0.035) * 0.35, ty0 = tAnchor[1] - RAD(0.035) * 0.30;
   if (tail === 'bushy' || tail === 'plume') {
     /* ★ WAVE 21 — A BRUSH IS NOT A TUBE. One constant-width round-capped stroke
        gave every fox, snow leopard and fennec in the catalogue an orange PIPE
@@ -1144,12 +1236,12 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.85, tailScale: 1.6, family: 'canid' },
   'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid' },
   'Hyena': { legs: 0.1442, depth: 0.1492, len: 0.208, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63', family: 'canid' },
-  'Koala': { legs: 0.0551, depth: 0.1434, len: 0.1506, neck: 0.03, muzzle: 0.20, jaw: 'broad', ears: 'huge', tail: 'none', hue: '#a8adb4' },
+  'Koala': { legs: 0.0551, depth: 0.1434, len: 0.1506, neck: 0.03, muzzle: 0.20, jaw: 'broad', ears: 'huge', tail: 'none', hue: '#a8adb4', family: 'marsupial' },
   /* ⚠ the pachyderms + Zebra/Tiger/Lion/Red Panda/Raccoon are DELIBERATELY
      ABSENT: the verbatim engine already nails them (Elephant 4.5/5; Nick's
      audit lists the others among its stronger reads). Never override what
      already excels — a generic system cannot beat bespoke work. */
-  'Walrus': { legs: 0.0303, depth: 0.1631, len: 0.2943, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f', family: 'pachyderm' },
+  'Walrus': { legs: 0.0303, depth: 0.1631, len: 0.2943, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f', family: 'pinniped'  },
   /* equines + swine */
   'Horse': { legs: 0.1964, depth: 0.1524, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'plume', hue: '#8a5a35', family: 'equid' },
   'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e', family: 'suid' },
