@@ -125,7 +125,13 @@ function traceBody(c: Ctx, cx: number, cy: number, bodyW: number, bodyH: number,
   /* ONE sweep round the haunch and back up to where the spine began. Both
      control points sit outside the body, so the curve bulges — a rump is the
      roundest part of a mammal, never the sharpest. */
-  c.bezierCurveTo(cx - bodyW * 1.15, cy + bodyH * 0.42, cx - bodyW * 1.18, cy - bodyH * 0.06, cx - bodyW, topY(0));
+  /* ★ WAVE 3 — THE TANGENT AT THE JOIN, not the curve, was the point. The rear
+     arrived travelling UP-STEEP while the spine departed nearly HORIZONTAL, so
+     the two met at an angle and made a peak that then rounded away: exactly
+     Nick's "comes to a point and then kind of rounds around and has a hump".
+     The last control point now sits at the SAME HEIGHT as the join, so the rear
+     arrives horizontal and flows straight into the spine with no crease. */
+  c.bezierCurveTo(cx - bodyW * 1.16, cy + bodyH * 0.40, cx - bodyW * 1.14, topY(0), cx - bodyW, topY(0));
   c.closePath();
 }
 

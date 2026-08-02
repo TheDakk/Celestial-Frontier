@@ -111,6 +111,11 @@ make sure you're using that to update and really get that feel and look."
 so wave 1's rear bezier was never connected and canvas closed it with a straight chord across
 the haunch (D-ART-87). Also fixed a flat lineTo facet at the shoulder. Rears are round now.
 
+**Wave 3 (batch 49):** the REMAINING point at the top-rear was a TANGENT mismatch, not a bad
+curve — the rear arrived travelling up-steep while the spine departed nearly horizontal, so the
+two met at an angle and made a peak that rounded away after it. The last control point now sits
+at the same height as the join. Rears are smooth crests.
+
 **★ THE NEXT WAVE IS THE LIMB-TO-BODY JOIN.** Nick: "the legs also don't blend in properly into
 the animal… the cheetah doesn't look cat-like enough, and the hippo is just way too blobby."
 Legs are bare strokes with no shoulder or haunch MASS around them, so they read as sticks
