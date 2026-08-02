@@ -25,6 +25,24 @@ const cat = {};
 for (const m of desc.matchAll(/(fauna|flora|fungi|microbe)\s*:\s*\[([\s\S]*?)\]/g))
   cat[m[1]] = [...m[2].matchAll(/'((?:[^'\\]|\\.)*)'/g)].map((x) => dec(x[1]));
 
+/* ★ D-CAT-1 — measure the roster the GAME uses, not the one on disk.
+   The verbatim file still lists all 1,014 entries (it is byte-locked and must
+   stay that way), but four of them are the same organism filed twice and the
+   owned wrapper drops the duplicate copy. Reading the raw file here would keep
+   reporting "1014/1014 covered" forever — a coverage number four higher than
+   the catalogue actually contains, counting four organisms twice. Parse the
+   wrapper's dedupe table rather than restating it, so the two cannot drift. */
+const wrap = fs.readFileSync(path.join(root, 'packages/domain/descriptors/src/apphooks.ts'), 'utf8');
+const dedupeBlock = wrap.match(/const _DEDUPE[^=]*=\s*\{([\s\S]*?)\};/);
+if (!dedupeBlock) { console.error('coveragegap: no _DEDUPE table in apphooks.ts — the PARSER is broken'); process.exit(2); }
+let dropped = 0;
+for (const m of dedupeBlock[1].matchAll(/(fauna|flora|fungi|microbe)\s*:\s*\[([^\]]*)\]/g)) {
+  const drop = [...m[2].matchAll(/'((?:[^'\\]|\\.)*)'/g)].map((x) => dec(x[1]));
+  cat[m[1]] = (cat[m[1]] || []).filter((n) => !drop.includes(n));
+  dropped += drop.length;
+}
+if (!dropped) { console.error('coveragegap: _DEDUPE parsed but empty — the PARSER is broken'); process.exit(2); }
+
 /* EVERY art source, read from the directory — never a hardcoded list, and
    never a FILENAME PATTERN either. This file kept its `*overrides.ts` glob
    one wave too long and under-reported coverage by 302 species; artaudit's

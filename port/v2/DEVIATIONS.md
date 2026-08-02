@@ -602,6 +602,40 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   BETTER than a random roll because real species genuinely differ. ~100 have one; the rest is
   a data job, not a formula. The finding is written into the source so nobody re-derives a clamp.
 
+- ✅ **D-CAT-1 — RESOLVED (wave 21): the roster IS deduped, deliberately, in the owned
+  wrapper.** Nick, shown the real risk rather than the assumed one, chose "deliberate v2
+  roster change". So the four duplicates are collapsed and the cost is accepted on the
+  record — this is a decision, not a side effect, and it must not be quietly reverted.
+  - **Where.** `packages/domain/descriptors/src/apphooks.ts` (OWNED), never
+    `apphooks.verbatim.js`. The wrapper filters the lifted `_EARTH_NAMES` through a
+    `_DEDUPE` table and re-exports a replacement `_earthNamePass` with the *same*
+    algorithm. The verbatim body stays byte-identical, its sha256 holds, and
+    `node tools/lift-apphooks.mjs` can still be re-run without reverting the work. A test
+    asserts the verbatim pools are still `631/334/27/22` precisely so that an edit to the
+    locked file is caught rather than discovered months later.
+  - **Ownership.** Tardigrade → fauna (it is an animal), Reindeer Lichen → fungi (a lichen
+    is a fungal symbiosis), Snow Algae → microbe (the bloom *is* the microbe presentation),
+    Green Algae → flora (the macroalga a player can see and harvest; microbe already
+    carries Cyanobacteria and Diatom). **1,014 records → 1,010 organisms.**
+  - **The accepted cost.** `i = (g.seed >>> 0) % pool.length` means shortening the flora and
+    microbe pools reassigns the Earth name of every flora and microbe in every world, and
+    old share codes name different organisms. Accepted knowingly for a port that has not
+    shipped. Fauna and fungi pools are untouched, so their names did not move at all.
+  - **Parity.** `baseline.json` was NOT regenerated (hard rule 5). The one probe that cannot
+    be byte-equal — `planetDescriptor`, which renders Earth's cradle roster — is compared
+    through `maskDedupe()`, which hides *only* flora/microbe species names and *only* on
+    rows carrying an `sp:` tag. Everything else, in every kingdom, stays under full byte
+    parity. Six negative controls pin the mask in both directions (fauna names still fail,
+    descriptions still fail, static prose rows still fail, and the mask cannot leak across
+    a species boundary), plus a live control that perturbs a fauna name and confirms the
+    real 1,014-row probe still fails. Without those the mask would be the eighth check on
+    this project to pass because it stopped looking.
+  - **Counts that moved with it:** coverage 1014 → **1010**, painted assets 1254 → **1250**.
+    `tools/coveragegap.mjs` now parses the wrapper's `_DEDUPE` table instead of restating
+    it, so the tool and the game cannot drift; it hard-exits if that table stops parsing.
+
+  <details><summary>The original blocker, kept for the reasoning (wave 20)</summary>
+
 - ⛔ **D-CAT-1 — THE DUPLICATE CATALOG RECORDS CANNOT BE COLLAPSED IN DATA (wave 20).**
   Nick approved collapsing Tardigrade / Green Algae / Snow Algae / Reindeer Lichen, on the
   basis that nobody is playing so saves do not matter. **Saves are not the risk.** The roster
@@ -614,6 +648,10 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   each kingdom renders one canonical organism. If the duplication is still unwanted it is a
   PRESENTATION change (dedupe in the Compendium) or a v2 roster decision made deliberately
   with a re-baselined determinism fixture; it is not an edit to a lifted file.
+
+  *(Wave 21 took the last option — deliberately, with the mask above standing in for a
+  full re-baseline so that v1.8.9 truth is preserved instead of overwritten.)*
+  </details>
 
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
