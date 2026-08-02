@@ -52,6 +52,10 @@ export interface QuadSpec {
      for the handful of animals whose feature is outsized for their family. */
   earScale?: number;
   tailScale?: number;
+  /* ★ wave 22b — a mane is drawn BEHIND and BACK from the head, never centred
+     on it: centred, it swallows the muzzle and eyes and the animal loses the
+     only part anyone actually reads. */
+  mane?: 'lion' | 'ruff';
 }
 
 function pal(p: Pal, spec: QuadSpec): Pal {
@@ -76,17 +80,30 @@ function smoothTop(c: Ctx, cx: number, bodyW: number, topY: (t: number) => numbe
   c.lineTo(last[0], last[1]);
 }
 function traceBody(c: Ctx, cx: number, cy: number, bodyW: number, bodyH: number, topY: (t: number) => number): void {
+  /* ★ WAVE 22b — Nick: "the bodies… are not proportionate". The chest, waist
+     tuck and rump were all fractions of bodyH, so on a LONG SHALLOW animal —
+     a sand cat, a caracal, a possum — the modulation was a few pixels across
+     two hundred, and the torso came out a featureless capsule. The belly line
+     is now driven by a floor that also knows the animal's LENGTH, so a slim
+     body still gets a real brisket and a real waist. */
+  /* the belly stays anchored to bodyH — driving it off a length-aware floor
+     pushed the whole underline BELOW where the legs attach, and the animals
+     came out as planks on stilts. What a slim body actually lacked was not a
+     deeper belly but a deeper WAIST, so only the tuck's excursion grows. */
+  const slim = Math.min(1, (bodyW * 0.34) / Math.max(1, bodyH));   /* 1 when long and shallow */
+  const tuck = 0.50 - slim * 0.20;        /* the waist rises further on a lithe animal */
+  const chest = 0.70 + slim * 0.10;
   c.beginPath();
   c.moveTo(cx - bodyW, cy + bodyH * 0.1);
   c.quadraticCurveTo(cx - bodyW * 1.04, cy - bodyH * 0.22, cx - bodyW * 0.94, topY(0.04));
   smoothTop(c, cx, bodyW, topY);
   /* down the shoulder into a DEEP CHEST (the brisket hangs lowest here) */
-  c.quadraticCurveTo(cx + bodyW * 1.10, cy + bodyH * 0.26, cx + bodyW * 0.86, cy + bodyH * 0.70);
+  c.bezierCurveTo(cx + bodyW * 1.16, cy - bodyH * 0.04, cx + bodyW * 1.12, cy + bodyH * (chest * 0.62), cx + bodyW * 0.90, cy + bodyH * chest);
   /* forward of the ribs the belly TUCKS UP — the single line that stops a
      torso being a slab */
-  c.quadraticCurveTo(cx + bodyW * 0.36, cy + bodyH * 0.86, cx - bodyW * 0.02, cy + bodyH * 0.50);
+  c.quadraticCurveTo(cx + bodyW * 0.36, cy + bodyH * (chest + 0.16), cx - bodyW * 0.02, cy + bodyH * tuck);
   /* and swells again into the ROUNDED RUMP over the hind leg */
-  c.quadraticCurveTo(cx - bodyW * 0.52, cy + bodyH * 0.30, cx - bodyW * 0.86, cy + bodyH * 0.58);
+  c.quadraticCurveTo(cx - bodyW * 0.52, cy + bodyH * (tuck - 0.20), cx - bodyW * 0.86, cy + bodyH * 0.58);
   c.quadraticCurveTo(cx - bodyW * 1.08, cy + bodyH * 0.36, cx - bodyW, cy + bodyH * 0.1);
   c.closePath();
 }
@@ -306,12 +323,59 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   const neckLen = S * spec.neck;
   const shoulderX = cx + bodyW * 0.82, shoulderY = topY(1) + bodyH * 0.12;
   const headX = shoulderX + neckLen * 0.55, headY = shoulderY - neckLen * 0.86;
-  const headR = bodyH * (spec.jaw === 'barrel' ? 0.62 : spec.jaw === 'broad' ? 0.52 : 0.42);
+  /* ★ WAVE 22b — A HEAD BELONGS TO THE ANIMAL'S LENGTH, not only its depth.
+     Sized purely off bodyH, a sand cat got a 28px skull on a 210px body — 13%,
+     where a real carnivore's head is about a fifth of its body. Long shallow
+     animals came out as tubes with a pea on the end. Deep-bodied, heavy-jawed
+     species are unchanged, because for them the depth term still wins. */
+  const headR = Math.max(
+    bodyH * (spec.jaw === 'barrel' ? 0.62 : spec.jaw === 'broad' ? 0.52 : 0.42),
+    bodyW * 0.20,
+  );
   c.strokeStyle = p.base; c.lineWidth = Math.max(10, bodyH * (neckLen > S * 0.16 ? 0.36 : 0.62));
   c.lineCap = 'round';
   c.beginPath(); c.moveTo(shoulderX - bodyW * 0.1, shoulderY + bodyH * 0.2);
   c.quadraticCurveTo(shoulderX + neckLen * 0.30, shoulderY - neckLen * 0.45, headX, headY);
   c.stroke();
+  /* ★ WAVE 22b — THE MANE (Nick: "the lion head with mane looks awful, can't
+     even tell its face"). It is drawn HERE — before the head, behind it — and
+     offset BACK from the face, because a mane that is centred on the skull
+     covers the muzzle and eyes and the animal loses the only part anyone
+     reads. A real mane frames a face; it never fills it. */
+  if (spec.mane) {
+    const mr = headR * (spec.mane === 'lion' ? 2.05 : 1.45);
+    const mx = headX - headR * (spec.mane === 'lion' ? 0.62 : 0.50);
+    const my = headY + headR * 0.16;
+    /* the mass first: overlapping soft lobes, so its outline is ragged rather
+       than a disc, and DARKER than the coat so the lit face reads against it */
+    for (let i = 0; i < 26; i++) {
+      const a = (i / 26) * TAU + r() * 0.24;
+      const d = mr * (0.52 + r() * 0.42);
+      const lobe = mr * (0.30 + r() * 0.22);
+      const key = (-Math.cos(a) * 0.4 - Math.sin(a) * 0.86) * 0.5 + 0.5;
+      const m2 = 0.42 + key * 0.42;
+      c.fillStyle = `rgb(${p.cr * m2 | 0},${p.cg * m2 | 0},${p.cb * m2 | 0})`;
+      c.beginPath(); c.ellipse(mx + Math.cos(a) * d, my + Math.sin(a) * d * 0.94, lobe, lobe * 0.86, a, 0, TAU); c.fill();
+    }
+    /* the hair itself, sweeping outward and DOWN off the ruff so the mane
+       breaks its own silhouette instead of ending on a circle */
+    c.lineCap = 'round';
+    for (let i = 0; i < 240; i++) {
+      const a = r() * TAU;
+      const d0 = mr * (0.34 + r() * 0.46);
+      const x0 = mx + Math.cos(a) * d0, y0 = my + Math.sin(a) * d0 * 0.94;
+      const L = mr * (0.16 + r() * 0.30);
+      const key = (-Math.cos(a) * 0.4 - Math.sin(a) * 0.86) * 0.5 + 0.5;
+      const m2 = 0.34 + key * 0.72;
+      c.strokeStyle = `rgb(${Math.min(255, p.cr * m2 | 0)},${Math.min(255, p.cg * m2 | 0)},${Math.min(255, p.cb * m2 | 0)})`;
+      c.globalAlpha = 0.24 + r() * 0.42; c.lineWidth = 1.0 + r() * 1.4;
+      c.beginPath(); c.moveTo(x0, y0);
+      c.quadraticCurveTo(x0 + Math.cos(a) * L * 0.6, y0 + Math.sin(a) * L * 0.6 + L * 0.25,
+        x0 + Math.cos(a) * L, y0 + Math.sin(a) * L + L * 0.55);
+      c.stroke();
+    }
+    c.globalAlpha = 1;
+  }
   if ((spec.coat ?? 'plain') === 'patches') {
     /* the neck carries the same SOFT patches (was a dashed stroke — a hard
        edge, exactly what Nick flagged) */
@@ -579,6 +643,9 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
 /* ---- the species table: PROPORTION carries identity, then decoration ---- */
 export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* big cats — same family, different builds and coats */
+  /* ★ wave 22b — Lion had NO route and fell through to the verbatim engine,
+     where the mane rendered as a ring of spikes over an unreadable face. */
+  'Lion': { legs: 0.115, depth: 0.125, len: 0.28, neck: 0.06, muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'tuft', mane: 'lion', hue: '#c19a5b' },
   'Jaguar': { legs: 0.10, depth: 0.11, len: 0.29, neck: 0.07, muzzle: 0.35, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' },
   'Leopard': { legs: 0.11, depth: 0.10, len: 0.29, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' },
   'Snow Leopard': { legs: 0.11, depth: 0.11, len: 0.29, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'plume', coat: 'rosettes', hue: '#cfd4dc' },

@@ -686,6 +686,30 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 22b — INTERNAL PROPORTION (2026-08-02, batch 44). Three reports from
+##   Nick, each naming a PART: the horned lizard's head is massive · its spikes look terrible ·
+##   the lion's mane hides its face. ★★THE INSTRUMENT HAD A BLIND SPOT AND NICK FOUND IT:
+##   proportioncheck measures the ink BOUNDING BOX, and a head twice the size it should be does
+##   not move the bbox at all — so 22a reported CLEAN on the exact animal he was looking at.
+##   NEW AXIS: walk a column height profile, compare END LOBES (outer 18%) against the TRUNK
+##   (middle 46%); 164 head-dominant/upright forms named out and COUNTED. D-ART-75: when an
+##   instrument passes, ask what it is structurally incapable of seeing. ★THE MASSIVE HEAD WAS
+##   MINE — reptLizard sized the skull off BODY DEPTH, and 22a's own stout parameter scales
+##   depth. Same bug in the quadruped system: a sand cat had a 28px skull on a 210px body.
+##   D-ART-76: a head belongs to LENGTH; depth only caps it. ★THE SPIKES: the crest was NINE
+##   IDENTICAL TRIANGLES ignoring the back line, the animal's size and where along the body they
+##   sat — now a graded sawtooth ROOTED in the back curve; and a HORNED LIZARD should never have
+##   had one (new horns option: a crown off the skull + a flank fringe). It wore a mohawk because
+##   crest was the only spiky option (D-ART-78). ★THE LION HAD NO ROUTE AT ALL and fell through
+##   to the verbatim engine. New mane option drawn BEHIND and OFFSET BACK from the head —
+##   D-ART-77: a mane FRAMES a face, it never fills it. ★A regression the strip caught: the first
+##   torso fix pushed the belly BELOW the leg attachments and every mammal became a plank on
+##   stilts; only the WAIST excursion grows now. ⚠HONEST STATE: end-lobe went 19->42 BECAUSE
+##   heads got bigger (intended, but the 1.15 threshold needs recalibrating before it gates
+##   again); the quadruped torso is better but the small carnivores still read as tubes with
+##   legs; Tiger and other big cats still have no route. GATES: vitest 225 · tsc · overridecheck
+##   932/932 0 dead · artaudit 0 findings · artbattery 5/5 · speciesaudit 1254/1254 · hdart
+##   UNTOUCHED. NEXT: the 17 flora NEEDS_FIX rows, then re-export + re-audit.
 ##   ✔★★★ MORPHOLOGY WAVE 22a — THE PROPORTION PASS (2026-08-02, batch 43). Nick on the wave-21
 ##   strip: "the bodies on a lot of the creatures are not proportionate… especially on mammals.
 ##   Should we double check this all?" ★NEW INSTRUMENT tools/proportioncheck.mjs (+ ?prop= in

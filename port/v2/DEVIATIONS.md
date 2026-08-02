@@ -336,6 +336,22 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
 - ✔ **D-ART-74 — A PROP MUST NEVER OUT-MEASURE ITS SUBJECT (wave 22a).** The koala's trunk ran
   the full frame, so the fit pass measured the TREE and shrank the koala — aspect 0.44, the
   worst of 631. Substrate is context; it is never the thing being framed.
+- ✔ **D-ART-75 — A BOUNDING BOX CANNOT SEE A PART (wave 22b, Nick's catch).** proportioncheck
+  measured the ink bbox, and a head twice the size it should be does not move the bbox at all —
+  so it reported "clean" on the exact animal Nick was looking at. The tool now walks a column
+  height profile and compares END LOBES against the TRUNK. When an instrument passes, ask what
+  it is structurally incapable of seeing.
+- ✔ **D-ART-76 — A HEAD BELONGS TO LENGTH, NOT DEPTH (wave 22b).** Sizing a skull off body
+  depth meant wave-22a's own `stout` parameter doubled the horned lizard's head, and long
+  shallow mammals got a pea on a tube. headR = max(depth-term, bodyW * 0.20).
+- ✔ **D-ART-77 — A MANE FRAMES A FACE, IT NEVER FILLS IT (wave 22b).** Lion had NO route and
+  fell through to the verbatim engine. A mane is drawn BEHIND the head and OFFSET BACK from it;
+  centred on the skull it covers the muzzle and eyes and the animal loses the only part anyone
+  reads. Same law as D-ART-74: context must never out-measure its subject.
+- ✔ **D-ART-78 — ONE SPIKY OPTION IS NOT A SPINE SYSTEM (wave 22b).** The lizard crest was nine
+  identical triangles that ignored the back line, the animal's size, and where along the body
+  they sat — and a HORNED LIZARD wore it only because `crest` was the sole spiky option. Spines
+  are rooted in the surface they grow from, graded along it, and belong to the right body part.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

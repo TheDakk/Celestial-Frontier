@@ -95,7 +95,7 @@ async function proportions(kingdom: string): Promise<void> {
   const NAMES = _EARTH_NAMES as unknown as Record<string, string[]>;
   const ki = Object.keys(NAMES).indexOf(kingdom);
   const pool = NAMES[kingdom] || [];
-  const rows: Array<{ name: string; w: number; h: number; aspect: number }> = [];
+  const rows: Array<{ name: string; w: number; h: number; aspect: number; lobe: number }> = [];
   const cv = document.createElement('canvas'); cv.width = cv.height = 440;
   const cc = cv.getContext('2d', { willReadFrequently: true })!;
   for (const [i, name] of pool.entries()) {
@@ -127,7 +127,35 @@ async function proportions(kingdom: string): Promise<void> {
         }
         if (x1 >= 0) {
           const w = x1 - x0 + 1, h = y1 - y0 + 1;
-          rows.push({ name, w, h, aspect: Math.round((w / h) * 1000) / 1000 });
+          /* ★ WAVE 22b — INTERNAL PROPORTION. Nick: "the horned lizard head is
+             massive". Aspect ratio measures the WHOLE subject, so a head twice
+             the size it should be is completely invisible to it — the bbox is
+             identical either way. This walks the ink column by column and
+             builds a height profile, then compares the END LOBES (where a head
+             or a rump sits) against the TRUNK. A head bigger than the body it
+             is attached to shows up as an end lobe taller than the middle. */
+          const prof = new Array<number>(w).fill(0);
+          for (let x = x0; x <= x1; x++) {
+            let top = -1, bot = -1;
+            for (let y = y0; y <= y1; y++) {
+              const o = (y * 440 + x) * 4;
+              const dr = d[o]! - br, dg = d[o + 1]! - bg2, db = d[o + 2]! - bb;
+              if (dr * dr + dg * dg + db * db > 1500) { if (top < 0) top = y; bot = y; }
+            }
+            prof[x - x0] = top < 0 ? 0 : bot - top + 1;
+          }
+          const seg = (a: number, b: number): number => {
+            let m = 0;
+            for (let i = Math.floor(w * a); i < Math.ceil(w * b) && i < w; i++) m = Math.max(m, prof[i]!);
+            return m;
+          };
+          const trunk = seg(0.27, 0.73) || 1;
+          const lobe = Math.max(seg(0, 0.18), seg(0.82, 1));
+          rows.push({
+            name, w, h,
+            aspect: Math.round((w / h) * 1000) / 1000,
+            lobe: Math.round((lobe / trunk) * 1000) / 1000,
+          });
         }
         res();
       };

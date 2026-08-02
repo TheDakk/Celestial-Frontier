@@ -102,5 +102,26 @@ if (lo.length) {
   console.log(`\n  ★ ${lo.length} TOO TALL/NARROW (aspect < 0.75):`);
   for (const r of lo.slice(0, 20)) console.log(`      ${r.aspect.toFixed(2)}  ${r.name}  (${r.w}x${r.h})`);
 }
+/* ★ INTERNAL PROPORTION (wave 22b). Aspect ratio measures the WHOLE subject and
+   is blind to a head twice the size it should be — the bbox is identical either
+   way. `lobe` is the tallest end-of-body ink divided by the tallest trunk ink:
+   above ~1.15 an end lobe is out-massing the body it hangs off. Upright animals
+   (apes, penguins, birds on legs) and things that are ALL head (jellies, crabs,
+   pufferfish) legitimately exceed it, so they are named out — and counted. */
+const HEADY = /Ape|Gorilla|Chimp|Bonobo|Orangutan|Gibbon|Monkey|Macaque|Baboon|Lemur|Loris|Tarsier|Penguin|Auk|Puffin|Owl|Bat|Jelly|Medusa|Anemone|Coral|Sponge|Crab|Lobster|Shrimp|Krill|Prawn|Crayfish|Barnacle|Urchin|Star|Cucumber|Squirt|Pufferfish|Sunfish|Boxfish|Frogfish|Anglerfish|Batfish|Seahorse|Snail|Nautilus|Ammonite|Clam|Oyster|Scallop|Mussel|Abalone|Squid|Octopus|Cuttlefish|Man-of-War|Salp|Pyrosome|Tardigrade|Mite|Tick|Spider|Scorpion|Frog|Toad|Tadpole|Beetle|Weevil|Ant|Bee|Wasp|Fly|Moth|Butterfly|Cicada|Aphid|Hopper|Bug|Roach|Termite|Mantis|Dragonfly|Damselfly|Lacewing|Earwig|Louse|Flea/i;
+let heady = 0;
+const bigHead = [];
+for (const r of rows) {
+  if (r.lobe === undefined) continue;
+  if (HEADY.test(r.name)) { heady++; continue; }
+  if (r.lobe > 1.15) bigHead.push(r);
+}
+bigHead.sort((a, b) => b.lobe - a.lobe);
+console.log(`\n  ${heady} subjects excluded from the end-lobe check as legitimately head-dominant or upright`);
+if (bigHead.length) {
+  console.log(`  ★ ${bigHead.length} END LOBE OUT-MASSES THE TRUNK (lobe > 1.15 — a head or rump bigger than the body it hangs off):`);
+  for (const r of bigHead.slice(0, 40)) console.log(`      ${r.lobe.toFixed(2)}  ${r.name}`);
+  if (bigHead.length > 40) console.log(`      … and ${bigHead.length - 40} more`);
+} else console.log('  clean: no end lobe out-masses its trunk');
 if (!hi.length && !lo.length) console.log('  clean: every measured subject sits inside the envelope for its shape class');
 process.exit(errs.length ? 1 : 0);

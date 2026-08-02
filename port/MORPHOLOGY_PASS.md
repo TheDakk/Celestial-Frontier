@@ -1309,3 +1309,62 @@ quietly dropping them. A check that silently narrows its own scope reads as "all
 ## Gates
 vitest 225 · tsc clean · overridecheck 931/931 0 dead · artbattery 5/5 · speciesaudit
 1254/1254 0 dupes 0 clipped. hdart UNTOUCHED.
+
+---
+
+# WAVE 22b — LANDED 2026-08-02 (INTERNAL PROPORTION: THE PARTS, NOT THE WHOLE)
+
+Three reports from Nick in one sitting, each naming a different PART:
+  1. "the horned lizard head is massive… we need to review the earth catalog"
+  2. "the spikes on the horned lizard look terrible… take a look at all parts"
+  3. "the lion head with mane looks awful, can't even tell its face"
+
+## ★ THE INSTRUMENT HAD A BLIND SPOT AND NICK FOUND IT
+proportioncheck (wave 22a) measures the ink BOUNDING BOX. A head twice the size it should be
+does not move the bbox AT ALL — the aspect ratio is identical either way. So the wave-22a run
+came back "clean" on exactly the animal Nick was looking at.
+
+NEW AXIS: the tool now walks the ink column by column, builds a HEIGHT PROFILE, and compares
+the END LOBES (outer 18% each side, where a head or a rump sits) against the TRUNK (middle
+46%). `lobe > 1.15` means an end is out-massing the body it hangs off. 164 legitimately
+head-dominant or upright forms are named out — and COUNTED, not silently dropped.
+
+## The three findings, and the causes
+★ THE MASSIVE HEAD WAS MINE. reptLizard sized the skull as `bh * 1.35` — a fraction of BODY
+DEPTH. That is fine at the default depth, but wave 22a's own `stout` parameter scales bh, so
+making a horned lizard squat also made its head nearly twice the body's half-width. A head
+belongs to the animal's LENGTH; depth only caps it. Same bug in the quadruped system: a sand
+cat had a 28px skull on a 210px body (13%, where a real carnivore's is about a fifth), so long
+shallow animals came out as tubes with a pea on the end. headR now takes `max(depth-term,
+bodyW * 0.20)`; deep-bodied heavy-jawed species are unchanged because their depth term wins.
+
+★ THE SPIKES. The lizard crest was NINE IDENTICAL TRIANGLES, 5px wide, fixed height, evenly
+spaced, sitting on the back like a hair comb — it did not follow the back line, did not taper
+toward either end, and did not know how big the animal was. It is now a graded sawtooth of 11
+scutes ROOTED in the back curve, tallest over the shoulder and dying away toward the tail.
+And a HORNED LIZARD SHOULD NEVER HAVE HAD ONE: its spines are on its head and flanks. New
+`horns` option — a crown of horns off the back of the skull plus a fringe of scales along the
+body edge. It wore a mohawk only because `crest` was the one spiky option in the system.
+
+★ THE LION HAD NO ROUTE AT ALL. It fell through to the verbatim engine, where the mane rendered
+as a ring of spikes over a face you could not read. New `mane` option, drawn BEFORE the head
+(so the face sits on top) and OFFSET BACK from it: a mane centred on the skull covers the
+muzzle and the eyes and the animal loses the only part anyone actually reads. A mane FRAMES a
+face; it never fills it. Built from overlapping soft lobes so its outline is ragged, darker
+than the coat so the lit face reads against it, with 240 hairs sweeping out and down.
+
+## A regression the strip caught, again
+The first torso fix drove the belly line off a length-aware floor, which pushed the whole
+underline BELOW where the legs attach — every mammal became a plank on stilts. What a slim body
+lacked was not a deeper belly but a deeper WAIST, so only the tuck's excursion grows now, and
+the chest is a bezier rather than a quadratic wall.
+
+## HONEST STATE
+The end-lobe count went 19 → 42 BECAUSE heads got bigger — that is the intended change, not a
+regression, but it means the 1.15 threshold now needs recalibrating against the new head rule
+before it is a useful gate again. The quadruped torso is better but still not good: the small
+carnivores read as tubes with legs. Tiger, and other big cats, still have no override route.
+
+## Gates
+vitest 225 · tsc clean · overridecheck 932/932 0 dead · artaudit 0 findings · artbattery 5/5 ·
+speciesaudit 1254/1254 0 dupes 0 clipped. hdart UNTOUCHED.

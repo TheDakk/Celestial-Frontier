@@ -174,7 +174,7 @@ export function reptSnake(c: Ctx, g: G, p: Pal, opts: { hood?: boolean; rattle?:
   }
 }
 /** LIZARD/MONITOR: low sprawled body, four splayed legs, long tapering tail */
-export function reptLizard(c: Ctx, g: G, p: Pal, opts: { crest?: boolean; long?: boolean; stout?: number; tail?: number }, name = ''): void {
+export function reptLizard(c: Ctx, g: G, p: Pal, opts: { crest?: boolean; horns?: boolean; long?: boolean; stout?: number; tail?: number }, name = ''): void {
   /* ★ WAVE 22 — THE PROPORTION PASS. tools/proportioncheck.mjs measured every
      one of the 631 fauna and found ten lizards bunched at 2.9-3.7 wide-to-tall,
      all within 40px of the SAME 360x110 box: the system had exactly two body
@@ -211,16 +211,85 @@ export function reptLizard(c: Ctx, g: G, p: Pal, opts: { crest?: boolean; long?:
   rim(c, () => c.ellipse(cx, cy, bw, bh, 0, -2.8, 0.3));
   for (let i = 0; i < 26; i++) softMark(c, cx - bw + r() * bw * 2, cy - bh + r() * bh * 2, 5 + r() * 4, 4 + r() * 3, '26,20,12', 0.4);
   if (opts.crest) {
-    c.fillStyle = p.dark;
-    for (let i = 0; i < 9; i++) { const x = cx - bw * 0.7 + i * (bw * 0.18); c.beginPath(); c.moveTo(x, cy - bh * 0.9); c.lineTo(x + 5, cy - bh * 1.7); c.lineTo(x + 10, cy - bh * 0.9); c.closePath(); c.fill(); }
+    /* ★ WAVE 22b (Nick: "the spikes on the horned lizard look terrible") — the
+       crest was NINE IDENTICAL TRIANGLES of fixed 5px width and fixed height,
+       spaced evenly, sitting on the back like a hair comb. Three things were
+       wrong: they did not follow the back line, they did not taper toward
+       either end, and they were the same size regardless of the animal.
+       An iguana's dorsal crest is a graded sawtooth, tallest over the shoulder
+       and dying away down the tail, and every spine leans back. */
+    const N = 11;
+    for (let i = 0; i < N; i++) {
+      const u = i / (N - 1);
+      const x = cx - bw * 0.86 + u * bw * 1.74;
+      /* the back line at this x, so the crest is ROOTED in the body */
+      const rootY = cy - bh * Math.sqrt(Math.max(0.02, 1 - Math.pow((x - cx) / bw, 2))) * 0.97;
+      const hgt = bh * (0.22 + Math.sin(Math.pow(u, 0.80) * Math.PI) * 0.50);
+      const wid = Math.max(3.2, bh * 0.20);
+      c.fillStyle = i % 2 ? p.dark : `rgb(${p.cr * 0.62 | 0},${p.cg * 0.62 | 0},${p.cb * 0.62 | 0})`;
+      c.beginPath();
+      c.moveTo(x - wid, rootY + 2);
+      c.quadraticCurveTo(x - wid * 0.3, rootY - hgt * 0.7, x - wid * 1.5, rootY - hgt);
+      c.quadraticCurveTo(x + wid * 0.5, rootY - hgt * 0.6, x + wid, rootY + 2);
+      c.closePath(); c.fill();
+    }
   }
-  const hx = cx + bw * 1.12, hy = cy - bh * 0.15;
-  c.fillStyle = grad(c, p, hx, hy, bh * 1.3);
-  c.beginPath(); c.ellipse(hx, hy, bh * 1.35, bh * 0.78, -0.1, 0, TAU); c.fill();
-  rim(c, () => c.ellipse(hx, hy, bh * 1.35, bh * 0.78, -0.1, -2.8, 0.3));
-  eye(c, hx - bh * 0.2, hy - bh * 0.3, 5.5, true);
+  if (opts.horns) {
+    /* ★ A HORNED LIZARD'S SPINES ARE ON ITS HEAD AND FLANKS, NOT ITS SPINE.
+       It wore a mohawk because `crest` was the only spiky option in the system.
+       This is the real animal: a crown of horns at the back of the skull and a
+       fringe of scales along the body's edge. Drawn after the body so the
+       fringe breaks the outline the way real fringe scales do. */
+    const fringe = (x: number, y: number, ang: number, L: number, dark: boolean): void => {
+      c.fillStyle = dark ? p.dark : `rgb(${Math.min(255, p.cr * 1.1 | 0)},${Math.min(255, p.cg * 1.05 | 0)},${p.cb * 0.9 | 0})`;
+      c.beginPath();
+      c.moveTo(x - Math.cos(ang + 1.57) * L * 0.22, y - Math.sin(ang + 1.57) * L * 0.22);
+      c.lineTo(x + Math.cos(ang) * L, y + Math.sin(ang) * L);
+      c.lineTo(x + Math.cos(ang + 1.57) * L * 0.22, y + Math.sin(ang + 1.57) * L * 0.22);
+      c.closePath(); c.fill();
+    };
+    /* the flank fringe: two rows of small pointed scales along the lower edge */
+    for (let i = 0; i < 13; i++) {
+      const u = i / 12;
+      const a = Math.PI * (0.12 + u * 0.76);
+      const x = cx + Math.cos(a) * bw * -0.98, y = cy + Math.sin(a) * bh * 0.98;
+      fringe(x, y, a - Math.PI, bh * (0.20 + Math.sin(u * Math.PI) * 0.16), i % 2 === 0);
+    }
+  }
+  /* ★ WAVE 22b (Nick: "the horned lizard head is massive") — THE HEAD WAS SIZED
+     OFF BODY DEPTH. bh*1.35 is fine at the default depth, but  scales bh,
+     so making a horned lizard squat also made its skull nearly twice the body's
+     half-width. A head belongs to the animal's LENGTH; depth only caps it. */
+  const headW = Math.min(bh * 1.35, bw * 0.58), headH = Math.min(bh * 0.78, bw * 0.40);
+  const hx = cx + bw * 0.92 + headW * 0.52, hy = cy - bh * 0.15;
+  c.fillStyle = grad(c, p, hx, hy, headW);
+  c.beginPath(); c.ellipse(hx, hy, headW, headH, -0.1, 0, TAU); c.fill();
+  rim(c, () => c.ellipse(hx, hy, headW, headH, -0.1, -2.8, 0.3));
+  eye(c, hx - headW * 0.15, hy - headH * 0.38, Math.max(3.6, headH * 0.24), true);
   c.strokeStyle = 'rgba(0,0,0,0.3)'; c.lineWidth = 2;
-  c.beginPath(); c.moveTo(hx - bh * 0.6, hy + bh * 0.28); c.lineTo(hx + bh * 1.25, hy + bh * 0.2); c.stroke();
+  c.beginPath(); c.moveTo(hx - headW * 0.45, hy + headH * 0.36); c.lineTo(hx + headW * 0.92, hy + headH * 0.26); c.stroke();
+  if (opts.horns) {
+    /* THE CROWN — a fan of horns off the BACK of the skull, longest in the
+       middle, each rooted inside the head so it grows out rather than sits on */
+    for (let i = 0; i < 7; i++) {
+      const u = i / 6;
+      const a = -2.55 + u * 1.30;                       /* sweeping up and back */
+      const L = headH * (1.05 + Math.sin(u * Math.PI) * 0.95);
+      const rx = hx - headW * 0.30 + Math.cos(a) * headW * 0.42;
+      const ry = hy + Math.sin(a) * headH * 0.42;
+      const w = Math.max(2, headH * 0.20);
+      c.fillStyle = i % 2 ? p.dark : `rgb(${Math.min(255, p.cr * 1.15 | 0)},${Math.min(255, p.cg * 1.05 | 0)},${p.cb * 0.82 | 0})`;
+      c.beginPath();
+      c.moveTo(rx - Math.cos(a + 1.57) * w, ry - Math.sin(a + 1.57) * w);
+      c.quadraticCurveTo(rx + Math.cos(a) * L * 0.6 - Math.cos(a + 1.57) * w * 0.3,
+        ry + Math.sin(a) * L * 0.6 - Math.sin(a + 1.57) * w * 0.3,
+        rx + Math.cos(a) * L, ry + Math.sin(a) * L);
+      c.quadraticCurveTo(rx + Math.cos(a) * L * 0.6 + Math.cos(a + 1.57) * w * 0.4,
+        ry + Math.sin(a) * L * 0.6 + Math.sin(a + 1.57) * w * 0.4,
+        rx + Math.cos(a + 1.57) * w, ry + Math.sin(a + 1.57) * w);
+      c.closePath(); c.fill();
+    }
+  }
 }
 /** TURTLE/TORTOISE: domed scuted shell, stump legs, retracted neck */
 export function reptTurtle(c: Ctx, g: G, p: Pal, opts: { flippers?: boolean }, name = ''): void {
@@ -849,7 +918,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Marine Iguana': (c, g, p, n) => reptLizard(c, g, p, { crest: true, long: true }, n),
   'Land Iguana': (c, g, p, n) => reptLizard(c, g, p, { crest: true, long: true }, n),
   /* a horned lizard is nearly as wide as it is long — the squattest lizard alive */
-  'Horned Lizard': (c, g, p, n) => reptLizard(c, g, p, { crest: true, stout: 2.15, tail: 0.42 }, n),
+  'Horned Lizard': (c, g, p, n) => reptLizard(c, g, p, { horns: true, stout: 2.15, tail: 0.42 }, n),
   'Alligator Lizard': (c, g, p, n) => reptLizard(c, g, p, { long: true, tail: 1.15 }, n),
   'Mountain Lizard': (c, g, p, n) => reptLizard(c, g, p, { stout: 1.38, tail: 0.80 }, n),
   'Wall Lizard': (c, g, p, n) => reptLizard(c, g, p, { stout: 1.22, tail: 0.95 }, n),
