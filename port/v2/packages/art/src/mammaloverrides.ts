@@ -24,7 +24,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Bongo': { legs: 0.169, depth: 0.1408, len: 0.1847, neck: 0.10, muzzle: 0.38, ears: 'large', tail: 'tuft', horn: 'spiral', coat: 'stripes', hue: '#a5613a', family: 'bovid' },
   'Eland': { legs: 0.1817, depth: 0.1559, len: 0.2046, neck: 0.11, muzzle: 0.42, ears: 'large', tail: 'tuft', horn: 'spiral', hue: '#b09a76', family: 'bovid' },
   'Impala': { legs: 0.1885, depth: 0.1288, len: 0.1584, neck: 0.11, muzzle: 0.38, ears: 'large', tail: 'stub', horn: 'lyre', hue: '#c08a4e', family: 'bovid' },
-  'Gazelle': { legs: 0.1861, depth: 0.1184, len: 0.1553, neck: 0.11, muzzle: 0.36, ears: 'large', tail: 'stub', horn: 'lyre', hue: '#c9a56d', family: 'bovid' },
+  'Gazelle': { legs: 0.1861, depth: 0.1184, len: 0.1553, neck: 0.11, muzzle: 0.36, ears: 'large', tail: 'stub', horn: 'lyre', hue: '#c9a56d', family: 'bovid' , earShape: 'leaf' },
   'Springbok': { legs: 0.1869, depth: 0.1223, len: 0.1504, neck: 0.10, muzzle: 0.36, ears: 'large', tail: 'stub', horn: 'lyre', hue: '#c8a067', family: 'bovid' },
   'Gerenuk': { legs: 0.2366, depth: 0.1211, len: 0.1271, neck: 0.22, muzzle: 0.34, ears: 'large', tail: 'stub', horn: 'lyre', hue: '#bd8f5c', family: 'bovid' },
   'Hartebeest': { legs: 0.2024, depth: 0.1379, len: 0.1697, neck: 0.11, back: 'sloped', muzzle: 0.44, ears: 'large', tail: 'tuft', horn: 'lyre', hue: '#a9764a', family: 'bovid' },
