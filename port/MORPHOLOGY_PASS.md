@@ -1430,3 +1430,60 @@ PASS 0 warnings · artbattery 5/5 · speciesaudit 1254/1254 0 dupes 0 clipped. h
 NEXT: stage 3 correction waves — start with [U] (the unrouted iconics: Tiger, the elephants,
 Zebra, Raccoon, Beaver, Red Panda, the hyenas, Kangaroo, Platypus, crocodilians, bats), then
 [P]. And the eye sensor needs a fifth attempt before [A] can ever gate.
+
+---
+
+# ARC STAGE 3, WAVE 1 — LANDED 2026-08-02 (THE UNROUTED ICONICS + THE TORSO)
+
+## 19 ICONIC MAMMALS HAD NO ROUTE AT ALL
+conformance [U] named 44 species drawn by the verbatim engine, so none of their reference
+mustRead features could be expressed. 19 of them fit the existing mammal system and are now
+specced FROM their reference row, with the mustRead line quoted above each spec so a reader can
+check the spec against the claim: Tiger · Zebra · Raccoon · Beaver · Red Panda · Spotted Hyena ·
+Striped Hyena · Wombat · Tasmanian Devil · Quoll · Elephant ×4 · Armadillo · Giant Anteater ·
+Pangolin · Sugar Glider · Colugo. Coverage 932 -> 951 of 1,010 (94.2%).
+
+Two new spec values the reference DEMANDED and the system could not say:
+- `tail: 'paddle'` — the beaver's row lists "flat scaly paddle tail" as a mustRead. A broad flat
+  oar with a foreshortened scute crosshatch and a muscular root.
+- `ears: 'fan'` — routed as 'huge', an elephant got two UPRIGHT RABBIT EARS on its crown, the
+  single most wrong thing on the animal. An elephant's ear is a broad fan hanging down the side
+  of the head with a folded top margin and visible veins.
+
+## NICK'S THREE NOTES, IN ORDER, AND WHAT EACH ONE WAS
+**(1) "the bodies, especially in the rear, are a bit pointy… it shouldn't have sharp edges."**
+The torso path CLOSED at the rump and restarted toward the back line from the same point, so the
+incoming and outgoing tangents met at an angle — a CUSP, on every mammal in the catalogue. The
+rear is now ONE continuous bezier sweeping from the underside round to the spine with no closing
+seam, both control points outside the body so it bulges. A rump is the roundest part of a
+mammal, never the sharpest.
+
+**(2) "the elephant legs are way too long… like big tree trunks."**
+`legW` was a pure fraction of BODY DEPTH, so the deepest-bodied animals grew 28px columns. Leg
+thickness is proportioned against the WHOLE animal, so the depth term is now capped against body
+length — which fixes elephant, hippo and rhino together. Elephant legs also shortened 0.150 ->
+0.102 and depth raised, because an elephant is mass carried low.
+
+**(3) "every animal on four legs has kind of the same body type… the elephant has adopted the
+wolf body."**
+★★ HE IS RIGHT AND I CAUSED IT, IN THIS SAME BATCH. My first torso pass applied a BAND of
+1.5–2.0 and clamped anything outside it. Almost every spec WAS outside it, so almost every spec
+snapped to the SAME BOUNDARY: Lion, Jaguar, Leopard, Snow Leopard, Cheetah, Cougar, Lynx, Camel,
+Giraffe and 118 others all came out at exactly 2.00. I traded "too elongated" for "all
+identical", which is strictly worse — a shared wrong shape reads as one animal recoloured.
+
+**A BAND IS NOT A REFERENCE.** All 138 quadruped specs now derive their torso ratio from their
+OWN row in port/v2/reference/fauna.json. Result: 21 distinct ratios spanning 1.05 to 2.75, and
+exactly ONE spec still sitting at 2.00. A cheetah is long and a hippo is deep because the
+cheetah and the hippo are, not because they landed on opposite sides of a constant.
+
+## HONEST STATE
+Better, not finished. The giraffe's legs are spindly, the hippo is still too long, necks are
+thin where they meet the shoulder on the big cats, and the 'stripes' coat renders as blobs
+rather than vertical bars (Tiger, Zebra). 26 fauna remain unrouted: the crocodilians, bats,
+pinnipeds, Kangaroo/Wallaby, Platypus/Echidna, Chameleon, Frilled Lizard, Chicken/Rooster,
+Seahorse, Poison Dart Frog, Caecilian, Vampire Squid, Deep-Sea Octopus, Porpoise, Whale.
+
+## Gates
+vitest 225 · tsc clean · artaudit 0 findings · overridecheck 951/951 0 dead · artbattery 5/5 ·
+speciesaudit 1254/1254 0 dupes 0 clipped · slicesmoke PASS. hdart UNTOUCHED.

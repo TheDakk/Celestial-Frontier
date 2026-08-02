@@ -95,7 +95,23 @@ drove the judgement with synthetic numbers and never the sensor (D-ART-81).
 The check also DECLINES to judge coiled/serpentine forms: bbox aspect carries no information
 about a coiled body (D-ART-82).
 
-### Stage 3 — THE CORRECTION WAVES
+### Stage 3 — THE CORRECTION WAVES ▶ WAVE 1 LANDED (batch 47, 2026-08-02)
+
+**Wave 1:** 19 unrouted iconic mammals routed from their reference rows (coverage 932 -> 951);
+`tail: 'paddle'` and `ears: 'fan'` added because the reference demanded features the system
+could not say; the torso rear cusp fixed catalogue-wide; leg thickness capped against body
+length; and all 138 quadruped torsos re-derived PER SPECIES from reference (D-ART-83 — the first
+attempt used a shared band and made every four-legged animal the same shape).
+
+**★ THE RULE FOR EVERY REMAINING WAVE:** derive the spec from the species' own reference row.
+Never from a band, a family default, or a neighbour. Nick: "take every animal's unique picture…
+make sure you're using that to update and really get that feel and look."
+
+**Still open after wave 1:** giraffe legs spindly · hippo too long · thin necks at the shoulder
+on the big cats · the 'stripes' coat renders as blobs not vertical bars (Tiger, Zebra) · 26
+fauna still unrouted (crocodilians, bats, pinnipeds, Kangaroo/Wallaby, Platypus/Echidna,
+Chameleon, Frilled Lizard, Chicken/Rooster, Seahorse, Poison Dart Frog, Caecilian, Vampire
+Squid, Deep-Sea Octopus, Porpoise, Whale).
 Work the conformance report in descending severity, in batches of ~40 species, each batch:
 strip-verify → full gate battery → record → commit. Prefer teaching a shared system a new
 parameter over forking a bespoke painter (D-ART-67); fork only where no parameter reaches the

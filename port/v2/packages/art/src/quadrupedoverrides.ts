@@ -32,8 +32,8 @@ export interface QuadSpec {
   back?: 'level' | 'humped' | 'sloped' | 'arched';
   muzzle?: number;              /* snout projection */
   jaw?: 'fine' | 'broad' | 'barrel';
-  ears?: 'tiny' | 'small' | 'round' | 'large' | 'huge';
-  tail?: 'none' | 'stub' | 'tuft' | 'bushy' | 'long' | 'plume' | 'banded';
+  ears?: 'tiny' | 'small' | 'round' | 'large' | 'huge' | 'fan';
+  tail?: 'none' | 'stub' | 'tuft' | 'bushy' | 'long' | 'plume' | 'banded' | 'paddle';
   coat?: 'plain' | 'spots' | 'rosettes' | 'stripes' | 'patches' | 'panda' | 'shaggy' | 'banded';
   horn?: 'nose' | 'twinnose' | 'ossicone' | 'palmate' | 'branched' | 'tuskup' | 'tuskdown' | 'curl'
     | 'straight' | 'spiral' | 'lyre' | 'prong' | 'shorthorn';   /* wave 10: the bovid horn is the species */
@@ -93,9 +93,16 @@ function traceBody(c: Ctx, cx: number, cy: number, bodyW: number, bodyH: number,
   const slim = Math.min(1, (bodyW * 0.34) / Math.max(1, bodyH));   /* 1 when long and shallow */
   const tuck = 0.50 - slim * 0.20;        /* the waist rises further on a lithe animal */
   const chest = 0.70 + slim * 0.10;
+  /* ★ ARC STAGE 3 (Nick: "the bodies, especially in the rear, are a bit pointy
+     still… it shouldn't have sharp edges anywhere"). The old path CLOSED at
+     (cx-bodyW, cy+0.1·bodyH) and restarted toward the back line from there, so
+     the incoming and outgoing tangents met at an angle — a CUSP, right on the
+     rump, on every mammal in the catalogue. The rear is now one continuous
+     bezier that sweeps from the underside all the way round to the back line
+     with no closing seam, so there is nowhere for a corner to form. */
+  const backStart = topY(0.05);
   c.beginPath();
-  c.moveTo(cx - bodyW, cy + bodyH * 0.1);
-  c.quadraticCurveTo(cx - bodyW * 1.04, cy - bodyH * 0.22, cx - bodyW * 0.94, topY(0.04));
+  c.moveTo(cx - bodyW * 0.90, backStart);
   smoothTop(c, cx, bodyW, topY);
   /* down the shoulder into a DEEP CHEST (the brisket hangs lowest here) */
   c.bezierCurveTo(cx + bodyW * 1.16, cy - bodyH * 0.04, cx + bodyW * 1.12, cy + bodyH * (chest * 0.62), cx + bodyW * 0.90, cy + bodyH * chest);
@@ -103,8 +110,11 @@ function traceBody(c: Ctx, cx: number, cy: number, bodyW: number, bodyH: number,
      torso being a slab */
   c.quadraticCurveTo(cx + bodyW * 0.36, cy + bodyH * (chest + 0.16), cx - bodyW * 0.02, cy + bodyH * tuck);
   /* and swells again into the ROUNDED RUMP over the hind leg */
-  c.quadraticCurveTo(cx - bodyW * 0.52, cy + bodyH * (tuck - 0.20), cx - bodyW * 0.86, cy + bodyH * 0.58);
-  c.quadraticCurveTo(cx - bodyW * 1.08, cy + bodyH * 0.36, cx - bodyW, cy + bodyH * 0.1);
+  c.quadraticCurveTo(cx - bodyW * 0.52, cy + bodyH * (tuck - 0.20), cx - bodyW * 0.80, cy + bodyH * 0.56);
+  /* ONE sweep round the haunch and back up to where the spine began. Both
+     control points sit outside the body, so the curve bulges — a rump is the
+     roundest part of a mammal, never the sharpest. */
+  c.bezierCurveTo(cx - bodyW * 1.12, cy + bodyH * 0.40, cx - bodyW * 1.14, cy - bodyH * 0.10, cx - bodyW * 0.90, backStart);
   c.closePath();
 }
 
@@ -161,7 +171,13 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   c.beginPath(); c.ellipse(cx, groundY + 6, bodyW * 0.92, S * 0.032, 0, 0, TAU); c.fill();
 
   /* ---- legs: back pair first (depth), then front ---- */
-  const legW = Math.max(7, bodyH * 0.30);
+  /* ★ ARC STAGE 3 (Nick: "the elephant legs are way too long… like they are big
+     tree trunks"). Leg thickness was a pure fraction of BODY DEPTH, so the
+     deepest-bodied animals — elephant, hippo, rhino — grew columns 28px wide.
+     A limb is proportioned against the whole animal, not just how deep its
+     chest is, so the depth term is now CAPPED against body length. Slimmer
+     animals are unchanged because their depth term still wins. */
+  const legW = Math.max(7, Math.min(bodyH * 0.30, bodyW * 0.115));
   const drawLeg = (lx: number, shade: number, len: number, hind: boolean): void => {
     const col = shade < 1 ? p.dark : p.base;
     const top = cy + bodyH * 0.42, jitter = (r() - 0.5) * 3;
@@ -430,7 +446,43 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   /* ---- ears: family-defining (fennec vs hippo vs koala) ---- */
   const ears = spec.ears ?? 'small';
   const earR = headR * (ears === 'huge' ? 1.25 : ears === 'large' ? 0.75 : ears === 'round' ? 0.62 : ears === 'small' ? 0.4 : 0.22) * (spec.earScale ?? 1);
-  if (ears !== 'tiny' || true) {
+  if (ears === 'fan') {
+    /* ★ ARC STAGE 3 — AN ELEPHANT'S EAR IS NOT A RABBIT'S. Routed as 'huge' it
+       got two upright ellipses standing off the crown, which is the single most
+       wrong thing on the animal. An elephant ear is a broad FAN hanging down
+       the side of the head, its top edge folded over, its lower edge ragged,
+       reaching well below the jaw. Drawn behind the head so the head overlaps
+       its root and it belongs to the skull. */
+    const fw = headR * 1.55, fh = headR * 2.05;
+    const fx = headX - headR * 0.62, fy = headY + headR * 0.20;
+    for (const s of [-1, 1] as const) {
+      const off = s * headR * 0.16;
+      c.fillStyle = s < 0 ? `rgb(${p.cr * 0.52 | 0},${p.cg * 0.52 | 0},${p.cb * 0.52 | 0})` : p.dark;
+      c.beginPath();
+      c.moveTo(fx + off + fw * 0.42, fy - fh * 0.46);
+      c.bezierCurveTo(fx + off - fw * 0.72, fy - fh * 0.60, fx + off - fw * 0.96, fy + fh * 0.10, fx + off - fw * 0.52, fy + fh * 0.52);
+      c.bezierCurveTo(fx + off - fw * 0.20, fy + fh * 0.70, fx + off + fw * 0.20, fy + fh * 0.52, fx + off + fw * 0.40, fy + fh * 0.18);
+      c.closePath(); c.fill();
+      if (s > 0) {
+        /* the folded top margin, and the veins that make it read as skin */
+        c.strokeStyle = `rgba(${p.cr * 0.42 | 0},${p.cg * 0.42 | 0},${p.cb * 0.42 | 0},0.55)`;
+        c.lineWidth = Math.max(1.4, headR * 0.06);
+        c.beginPath();
+        c.moveTo(fx + off + fw * 0.36, fy - fh * 0.40);
+        c.bezierCurveTo(fx + off - fw * 0.52, fy - fh * 0.50, fx + off - fw * 0.74, fy - fh * 0.04, fx + off - fw * 0.44, fy + fh * 0.34);
+        c.stroke();
+        c.lineWidth = Math.max(1, headR * 0.035);
+        for (let i = 0; i < 4; i++) {
+          const u = i / 3;
+          c.beginPath();
+          c.moveTo(fx + off + fw * 0.30, fy - fh * 0.24 + u * fh * 0.44);
+          c.quadraticCurveTo(fx + off - fw * 0.20, fy - fh * 0.10 + u * fh * 0.52,
+            fx + off - fw * (0.62 - u * 0.16), fy + fh * (0.06 + u * 0.30));
+          c.stroke();
+        }
+      }
+    }
+  } else if (ears !== 'tiny' || true) {
     for (const s of [-1, 1] as const) {
       const ex = headX - headR * 0.25 + s * headR * 0.42, ey = headY - headR * (ears === 'huge' ? 0.85 : 0.72);
       c.fillStyle = p.dark;
@@ -654,6 +706,35 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       const bxp = tx0 - bodyW * (0.45 * t + 0.1 * t * t), byp = ty0 + bodyH * (0.1 + 0.7 * t * t);
       c.beginPath(); c.moveTo(bxp, byp); c.lineTo(bxp - bodyW * 0.03, byp + bodyH * 0.09); c.stroke();
     }
+  } else if (tail === 'paddle') {
+    /* ★ ARC STAGE 3 — the beaver's reference row names "flat scaly paddle tail"
+       as a mustRead, and the system had no tail that could say it. A beaver's
+       tail is a broad flat oar held low behind, crosshatched with scutes. */
+    const px = tx0 - bodyW * 0.42, py = ty0 + bodyH * 0.62;
+    c.save(); c.translate(px, py); c.rotate(0.30);
+    const pg = c.createLinearGradient(0, -bodyH * 0.5, 0, bodyH * 0.5);
+    pg.addColorStop(0, p.dark); pg.addColorStop(0.45, p.base); pg.addColorStop(1, p.dark);
+    c.fillStyle = pg;
+    c.beginPath(); c.ellipse(0, 0, bodyW * 0.52, bodyH * 0.40, 0, 0, TAU); c.fill();
+    /* the scutes — a diamond crosshatch, foreshortened toward the rim so the
+       pattern lies ON the paddle instead of floating over it */
+    c.strokeStyle = `rgba(${p.cr * 0.38 | 0},${p.cg * 0.38 | 0},${p.cb * 0.38 | 0},0.55)`;
+    c.lineWidth = 1.3;
+    for (let i = -4; i <= 4; i++) {
+      const u = i / 4;
+      const fore = Math.sqrt(Math.max(0.05, 1 - u * u));
+      c.beginPath(); c.moveTo(u * bodyW * 0.50, -bodyH * 0.38 * fore);
+      c.lineTo(u * bodyW * 0.50, bodyH * 0.38 * fore); c.stroke();
+      c.beginPath(); c.moveTo(-bodyW * 0.50 * fore, u * bodyH * 0.36);
+      c.lineTo(bodyW * 0.50 * fore, u * bodyH * 0.36); c.stroke();
+    }
+    c.strokeStyle = 'rgba(236,242,252,0.28)'; c.lineWidth = 2;
+    c.beginPath(); c.ellipse(0, 0, bodyW * 0.50, bodyH * 0.38, 0, -2.6, -0.4); c.stroke();
+    c.restore();
+    /* the thick muscular root joining it to the rump */
+    c.strokeStyle = p.base; c.lineWidth = bodyH * 0.34; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(tx0, ty0 + bodyH * 0.2);
+    c.lineTo(px + bodyW * 0.22, py - bodyH * 0.12); c.stroke();
   } else if (tail === 'stub') {
     c.fillStyle = p.dark; c.beginPath(); c.ellipse(tx0 - 4, ty0 + bodyH * 0.1, bodyH * 0.16, bodyH * 0.20, 0.3, 0, TAU); c.fill();
   }
@@ -664,58 +745,58 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* big cats — same family, different builds and coats */
   /* ★ wave 22b — Lion had NO route and fell through to the verbatim engine,
      where the mane rendered as a ring of spikes over an unreadable face. */
-  'Lion': { legs: 0.115, depth: 0.125, len: 0.28, neck: 0.06, muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'tuft', mane: 'lion', hue: '#c19a5b' },
-  'Jaguar': { legs: 0.10, depth: 0.11, len: 0.29, neck: 0.07, muzzle: 0.35, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' },
-  'Leopard': { legs: 0.11, depth: 0.10, len: 0.29, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' },
-  'Snow Leopard': { legs: 0.11, depth: 0.11, len: 0.29, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'plume', coat: 'rosettes', hue: '#cfd4dc' },
-  'Cheetah': { legs: 0.16, depth: 0.085, len: 0.28, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477' },
-  'Cougar': { legs: 0.13, depth: 0.10, len: 0.29, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' },
-  'Lynx': { legs: 0.13, depth: 0.095, len: 0.24, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' },
+  'Lion': { legs: 0.1236, depth: 0.1426, len: 0.2455, neck: 0.06, muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'tuft', mane: 'lion', hue: '#c19a5b' },
+  'Jaguar': { legs: 0.114, depth: 0.1395, len: 0.2287, neck: 0.07, muzzle: 0.35, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' },
+  'Leopard': { legs: 0.1253, depth: 0.1268, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' },
+  'Snow Leopard': { legs: 0.1221, depth: 0.133, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'plume', coat: 'rosettes', hue: '#cfd4dc' },
+  'Cheetah': { legs: 0.1938, depth: 0.1205, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477' },
+  'Cougar': { legs: 0.1482, depth: 0.1268, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' },
+  'Lynx': { legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' },
   /* the pixel-siblings, separated */
-  'Rhinoceros': { legs: 0.075, depth: 0.155, len: 0.32, neck: 0.045, muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#8b8b8e' },
-  'Wild Sheep': { legs: 0.115, depth: 0.115, len: 0.25, neck: 0.075, muzzle: 0.35, ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#9d8a6e' },
-  'Hippopotamus': { legs: 0.048, depth: 0.175, len: 0.33, neck: 0.03, muzzle: 0.62, jaw: 'barrel', ears: 'tiny', tail: 'stub', hue: '#8a6f74' },
+  'Rhinoceros': { legs: 0.0835, depth: 0.1886, len: 0.263, neck: 0.045, muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#8b8b8e' },
+  'Wild Sheep': { legs: 0.1345, depth: 0.1529, len: 0.1881, neck: 0.075, muzzle: 0.35, ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#9d8a6e' },
+  'Hippopotamus': { legs: 0.0486, depth: 0.1789, len: 0.3227, neck: 0.03, muzzle: 0.62, jaw: 'barrel', ears: 'tiny', tail: 'stub', hue: '#8a6f74' },
   /* the humped and the long-necked */
-  'Camel': { legs: 0.145, depth: 0.105, len: 0.28, neck: 0.20, back: 'level', muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#c8a173' },
-  'Bactrian Camel': { legs: 0.14, depth: 0.11, len: 0.29, neck: 0.19, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 2, hue: '#b08a5e' },
-  'Dromedary Camel': { legs: 0.15, depth: 0.10, len: 0.28, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777' },
-  'Giraffe': { legs: 0.19, depth: 0.10, len: 0.26, neck: 0.34, back: 'sloped', muzzle: 0.40, ears: 'large', tail: 'tuft', coat: 'patches', horn: 'ossicone', hue: '#e0c07a' },
-  'Llama': { legs: 0.15, depth: 0.09, len: 0.24, neck: 0.20, muzzle: 0.35, ears: 'large', tail: 'stub', hue: '#d8cbb4' },
-  'Alpaca': { legs: 0.13, depth: 0.10, len: 0.22, neck: 0.18, muzzle: 0.30, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#ddd2bd' },
+  'Camel': { legs: 0.1846, depth: 0.1629, len: 0.1804, neck: 0.20, back: 'level', muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#c8a173' },
+  'Bactrian Camel': { legs: 0.176, depth: 0.1667, len: 0.1914, neck: 0.19, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 2, hue: '#b08a5e' },
+  'Dromedary Camel': { legs: 0.1935, depth: 0.159, len: 0.176, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777' },
+  'Giraffe': { legs: 0.2438, depth: 0.1573, len: 0.1652, neck: 0.34, back: 'sloped', muzzle: 0.40, ears: 'large', tail: 'tuft', coat: 'patches', horn: 'ossicone', hue: '#e0c07a' },
+  'Llama': { legs: 0.1938, depth: 0.1434, len: 0.1506, neck: 0.20, muzzle: 0.35, ears: 'large', tail: 'stub', hue: '#d8cbb4' },
+  'Alpaca': { legs: 0.1594, depth: 0.1448, len: 0.152, neck: 0.18, muzzle: 0.30, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#ddd2bd' },
   /* antlered + horned */
-  'Moose': { legs: 0.18, depth: 0.13, len: 0.30, neck: 0.10, back: 'humped', muzzle: 0.62, jaw: 'broad', ears: 'large', tail: 'stub', horn: 'palmate', hue: '#5b4433' },
-  'Elk': { legs: 0.17, depth: 0.115, len: 0.29, neck: 0.13, back: 'sloped', muzzle: 0.48, ears: 'large', tail: 'stub', horn: 'branched', hue: '#9c7748' },
-  'Deer': { legs: 0.16, depth: 0.095, len: 0.25, neck: 0.12, muzzle: 0.42, ears: 'large', tail: 'stub', horn: 'branched', coat: 'spots', hue: '#b98a58' },
-  'Reindeer': { legs: 0.15, depth: 0.11, len: 0.27, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#a8917a' },
-  'Sheep': { legs: 0.12, depth: 0.11, len: 0.25, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', hue: '#a98f6d' },
-  'Bison': { legs: 0.105, depth: 0.145, len: 0.30, neck: 0.05, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', coat: 'shaggy', hue: '#5c4535' },
-  'Water Buffalo': { legs: 0.11, depth: 0.14, len: 0.31, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#4f4a48' },
+  'Moose': { legs: 0.2181, depth: 0.1843, len: 0.2116, neck: 0.10, back: 'humped', muzzle: 0.62, jaw: 'broad', ears: 'large', tail: 'stub', horn: 'palmate', hue: '#5b4433' },
+  'Elk': { legs: 0.2035, depth: 0.1594, len: 0.2092, neck: 0.13, back: 'sloped', muzzle: 0.48, ears: 'large', tail: 'stub', horn: 'branched', hue: '#9c7748' },
+  'Deer': { legs: 0.1973, depth: 0.139, len: 0.1709, neck: 0.12, muzzle: 0.42, ears: 'large', tail: 'stub', horn: 'branched', coat: 'spots', hue: '#b98a58' },
+  'Reindeer': { legs: 0.1782, depth: 0.1505, len: 0.1974, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#a8917a' },
+  'Sheep': { legs: 0.1448, depth: 0.1548, len: 0.1777, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', hue: '#a98f6d' },
+  'Bison': { legs: 0.1211, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', coat: 'shaggy', hue: '#5c4535' },
+  'Water Buffalo': { legs: 0.1249, depth: 0.1765, len: 0.246, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#4f4a48' },
   /* bears, differentiated */
-  'Grizzly Bear': { legs: 0.085, depth: 0.15, len: 0.29, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636' },
-  'Brown Bear': { legs: 0.085, depth: 0.15, len: 0.29, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f' },
-  'Polar Bear': { legs: 0.10, depth: 0.14, len: 0.32, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6' },
-  'Black Bear': { legs: 0.09, depth: 0.14, len: 0.28, neck: 0.05, muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#3b3a40' },
-  'Panda': { legs: 0.075, depth: 0.155, len: 0.27, neck: 0.04, back: 'arched', muzzle: 0.30, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'panda', face: 'mask', hue: '#f0f2f4' },
-  'Sun Bear': { legs: 0.085, depth: 0.12, len: 0.24, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c' },
-  'Sloth Bear': { legs: 0.09, depth: 0.14, len: 0.27, neck: 0.05, muzzle: 0.55, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#2b2726' },
+  'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636' },
+  'Brown Bear': { legs: 0.0963, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f' },
+  'Polar Bear': { legs: 0.1112, depth: 0.1696, len: 0.2642, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6' },
+  'Black Bear': { legs: 0.101, depth: 0.1729, len: 0.2268, neck: 0.05, muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#3b3a40' },
+  'Panda': { legs: 0.0825, depth: 0.1844, len: 0.2269, neck: 0.04, back: 'arched', muzzle: 0.30, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'panda', face: 'mask', hue: '#f0f2f4' },
+  'Sun Bear': { legs: 0.0939, depth: 0.1438, len: 0.2004, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c' },
+  'Sloth Bear': { legs: 0.1001, depth: 0.1697, len: 0.2227, neck: 0.05, muzzle: 0.55, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#2b2726' },
   /* canids + small mammals where ears/tails are the read */
-  'Red Fox': { legs: 0.10, depth: 0.085, len: 0.24, neck: 0.06, muzzle: 0.44, jaw: 'fine', ears: 'large', tail: 'plume', hue: '#d1651f' },
-  'Arctic Fox': { legs: 0.095, depth: 0.09, len: 0.22, neck: 0.06, muzzle: 0.36, ears: 'small', tail: 'plume', hue: '#eaf0f5' },
+  'Red Fox': { legs: 0.1118, depth: 0.104, len: 0.1962, neck: 0.06, muzzle: 0.44, jaw: 'fine', ears: 'large', tail: 'plume', hue: '#d1651f' },
+  'Arctic Fox': { legs: 0.1046, depth: 0.1072, len: 0.1847, neck: 0.06, muzzle: 0.36, ears: 'small', tail: 'plume', hue: '#eaf0f5' },
   /* ★ wave 21 — the audit: "ears should dominate the head; reduce body size and
      increase bushy tail". A fennec is a desert fox scaled DOWN around ears that
      were not scaled down with it. */
-  'Fennec Fox': { legs: 0.058, depth: 0.062, len: 0.135, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.85, tailScale: 1.6 },
-  'Wolf': { legs: 0.13, depth: 0.10, len: 0.28, neck: 0.08, muzzle: 0.46, ears: 'large', tail: 'bushy', hue: '#7d7f86' },
-  'Hyena': { legs: 0.125, depth: 0.115, len: 0.27, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63' },
-  'Koala': { legs: 0.05, depth: 0.12, len: 0.18, neck: 0.03, muzzle: 0.20, jaw: 'broad', ears: 'huge', tail: 'none', hue: '#a8adb4' },
+  'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.85, tailScale: 1.6 },
+  'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, ears: 'large', tail: 'bushy', hue: '#7d7f86' },
+  'Hyena': { legs: 0.1442, depth: 0.1492, len: 0.208, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63' },
+  'Koala': { legs: 0.0551, depth: 0.1434, len: 0.1506, neck: 0.03, muzzle: 0.20, jaw: 'broad', ears: 'huge', tail: 'none', hue: '#a8adb4' },
   /* ⚠ the pachyderms + Zebra/Tiger/Lion/Red Panda/Raccoon are DELIBERATELY
      ABSENT: the verbatim engine already nails them (Elephant 4.5/5; Nick's
      audit lists the others among its stronger reads). Never override what
      already excels — a generic system cannot beat bespoke work. */
-  'Walrus': { legs: 0.03, depth: 0.16, len: 0.30, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f' },
+  'Walrus': { legs: 0.0303, depth: 0.1631, len: 0.2943, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f' },
   /* equines + swine */
-  'Horse': { legs: 0.16, depth: 0.105, len: 0.29, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'plume', hue: '#8a5a35' },
-  'Wild Boar': { legs: 0.085, depth: 0.115, len: 0.26, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e' },
-  'Warthog': { legs: 0.095, depth: 0.11, len: 0.25, neck: 0.05, back: 'sloped', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', hue: '#6b5647' },
-  'Tapir': { legs: 0.10, depth: 0.13, len: 0.27, neck: 0.05, muzzle: 0.48, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#4a4348' },
+  'Horse': { legs: 0.1964, depth: 0.1524, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'plume', hue: '#8a5a35' },
+  'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e' },
+  'Warthog': { legs: 0.1087, depth: 0.1405, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', hue: '#6b5647' },
+  'Tapir': { legs: 0.1099, depth: 0.1542, len: 0.2276, neck: 0.05, muzzle: 0.48, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#4a4348' },
 };

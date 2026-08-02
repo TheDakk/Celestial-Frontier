@@ -686,6 +686,26 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ▶★★★ ARC STAGE 3 WAVE 1 — THE UNROUTED ICONICS + THE TORSO (2026-08-02, batch 47).
+##   19 iconic mammals had NO ROUTE AT ALL (Tiger · Zebra · Raccoon · Beaver · Red Panda · both
+##   Hyenas · Wombat · Tasmanian Devil · Quoll · Elephant x4 · Armadillo · Giant Anteater ·
+##   Pangolin · Sugar Glider · Colugo), each now specced FROM its reference row with the mustRead
+##   line quoted above it. Coverage 932 -> 951/1010 (94.2%). Two new spec values the reference
+##   DEMANDED: tail:'paddle' (the beaver's signature) and ears:'fan' — routed as 'huge' an
+##   ELEPHANT GOT UPRIGHT RABBIT EARS, the single most wrong thing on the animal (D-ART-86).
+##   ★NICK'S THREE NOTES: (1) "the rear is pointy" — the torso path CLOSED at the rump and
+##   reopened from the same point, so the tangents met at an angle: a CUSP on the roundest part
+##   of every mammal (D-ART-84). (2) "elephant legs like tree trunks" — legW was a fraction of
+##   DEPTH alone, now capped against length, which fixes elephant+hippo+rhino together
+##   (D-ART-85). (3) ★★"every four-legged animal has the same body type… the elephant has adopted
+##   the wolf body" — HE IS RIGHT AND I CAUSED IT IN THIS SAME BATCH: my torso BAND clamped 127
+##   specs and almost all of them snapped to the SAME boundary (2.00). A shared wrong shape is
+##   worse than varied wrong ones. D-ART-83: A BAND IS NOT A REFERENCE — all 138 quadruped
+##   torsos now derive from their OWN reference row: 21 distinct ratios, 1.05-2.75, one left at
+##   2.00. ⚠STILL OPEN: giraffe legs spindly · hippo too long · thin necks on the big cats ·
+##   'stripes' renders as blobs not bars · 26 fauna still unrouted. GATES: vitest 225 · tsc ·
+##   artaudit 0 · overridecheck 951/951 0 dead · artbattery 5/5 · speciesaudit 1254/1254 ·
+##   slicesmoke PASS · hdart UNTOUCHED.
 ##   ▶★★★ ARC STAGE 2 — THE CONFORMANCE CHECK (2026-08-02, batch 46). tools/conformance.mjs
 ##   renders every species, measures it, diffs it against port/v2/reference/. ★★THE FINDING THAT
 ##   JUSTIFIED THE ARC: THE MAMMALS HAD NO WHITES IN THEIR EYES. Every other painter family

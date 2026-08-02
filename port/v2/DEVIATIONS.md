@@ -379,6 +379,22 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   and worms to a straight-line reference produced ~38 findings that were purely the tool's
   fault. Below a trust floor, a finding class is SUPPRESSED and says so — false findings send
   the next session chasing ghosts, which is the same failure as a vacuous pass, reversed.
+- ✔ **D-ART-83 — A BAND IS NOT A REFERENCE (arc stage 3).** Clamping 127 quadruped torsos into a
+  1.5–2.0 ratio band snapped almost all of them to the SAME boundary value, and Nick saw it
+  instantly: "every animal on four legs has kind of the same body type… the elephant has adopted
+  the wolf body." A shared wrong shape is worse than varied wrong shapes. Every species now
+  derives its ratio from its own reference row: 21 distinct ratios, 1.05–2.75, one still at 2.00.
+- ✔ **D-ART-84 — A CLOSED PATH MAKES A CUSP WHERE IT REOPENS (arc stage 3).** The torso closed at
+  the rump and restarted toward the back line from the same point, so the tangents met at an
+  angle — a sharp corner on the roundest part of every mammal in the catalogue. The rear is one
+  continuous bezier now, with no closing seam for a corner to form in.
+- ✔ **D-ART-85 — A LIMB IS PROPORTIONED AGAINST THE WHOLE ANIMAL (arc stage 3).** Leg thickness
+  was a fraction of body DEPTH alone, so elephant, hippo and rhino grew tree trunks. Capped
+  against body length; slimmer animals are unchanged because their depth term still wins.
+- ✔ **D-ART-86 — AN EAR CATEGORY IS A SHAPE, NOT A SIZE (arc stage 3).** Routed as 'huge', an
+  elephant got two upright rabbit ears on its crown. 'fan' hangs a broad veined ear down the
+  side of the head. Same class as D-ART-78: a feature belongs to the right body part, drawn the
+  way that animal actually wears it.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
