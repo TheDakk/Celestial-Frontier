@@ -285,6 +285,21 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
 - ✔ **D-ART-63 — BUCKETS C + D: ALL 28 RELEASE BLOCKERS CLEARED (wave 19).** 8 iconic flora
   (floraoverrides3.ts) + 5 fauna signatures and the foraminiferan (faunaoverrides4.ts). With
   wave 18 that is fauna 6 / flora 12 / fungi 6 / microbe 4 = the audit's full blocker list.
+- ✔ **D-ART-64 — TWELVE PROCEDURAL FAMILIES (wave 20).** proceduralfamilies.ts: fungi tooth,
+  jelly, truffle, cup, club; microbe rods, spirals, filament, chain, flagellate, plates, mat.
+  Both kingdom tables now run 13 deep, answering the audit's "all 60 outputs are one template".
+- ✔ **D-ART-65 — UNSIGN EVERY STEP OF A MIXING HASH (wave 20).** `h ^= h >>> 16` is an int32
+  XOR and returns NEGATIVE when the high bit is set; `-3 % 13` is -3, which indexes to
+  `undefined`. 22 of 60 procedural fungi painted an EMPTY FRAME while every gate stayed green.
+  Guarded by packages/art/test/familyspread.test.ts, which calls the renderer's own selector
+  (not a copy), carries a control reproducing the bug, and was verified to fail when the real
+  selector is broken. Same family as the degenerate-salt bug: a hash you did not check is a
+  constant you did not notice.
+- ✔ **D-ART-66 — A CELL IS MARKED BY WALLS, NEVER BY GAPS (wave 20).** microbeFilament drawn as
+  separate beads was indistinguishable from microbeChain, a different family in the same table.
+  A filament is one continuous tube with cross-walls laid on it. Related: substrate rectangles
+  (microbeMat, fungiTooth) are the loudest "painted on" tell in the library — substrates are
+  ragged organic fields and rounded boughs now, never boxes.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

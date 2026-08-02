@@ -686,6 +686,29 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 20 — THE PROCEDURAL FAMILIES (2026-08-02, batch 41). 120 of the
+##   audit's 165 NEEDS_FIX rows were procedural fungi + microbes, both judged "all 60 outputs
+##   remain variations of the same template". TWO things were wrong. (1) TOO FEW FAMILIES —
+##   packages/art/src/proceduralfamilies.ts adds 12 painters: fungi TOOTH · JELLY · TRUFFLE ·
+##   CUP · CLUB; microbe RODS · SPIRALS · FILAMENT · CHAIN · FLAGELLATE · PLATES · MAT. Both
+##   kingdom tables now run 13 deep. (2) THE SELECTOR WAS NOT UNIFORM — form%6 clumps, so half
+##   a sample came back puffballs and 5 microbes in 6 were the same amoeba; the picker now
+##   avalanches the seed first. ★★AND THE FIRST CUT OF THAT FIX PAINTED NOTHING: 'h ^= h >>> 16'
+##   is an INT32 XOR that returns NEGATIVE when the high bit is set, '-3 % 13' is -3, which
+##   indexes an array to undefined — 22 OF 60 PROCEDURAL FUNGI RENDERED AN EMPTY FRAME while
+##   vitest, tsc, overridecheck and the art battery were ALL GREEN. The contact strip caught it.
+##   D-ART-65: UNSIGN EVERY STEP OF A MIXING HASH. Guarded by packages/art/test/familyspread
+##   .test.ts, which calls the renderer's OWN selector (a copy would have copied the bug),
+##   carries a control reproducing it, and was verified to FAIL with the real selector broken
+##   then pass restored. ★Three painted-on tells fixed: microbeMat's substrate RECTANGLE (a box
+##   is the loudest painted-on tell in the library) -> a ragged organic field; microbeFilament
+##   drawn as beads was indistinguishable from CHAIN, a different family in the same table ->
+##   one continuous tube with cross-walls (D-ART-66: a cell is marked by walls, never by gaps);
+##   the pennate diatom's full-height straight ribs read as a BARCODE -> a real raphe with three
+##   nodules and striae fanning to the margin. GATES: vitest 225 (5 new) · tsc · overridecheck
+##   930/930 0 dead · 7/7 controls · artbattery 5/5 · speciesaudit 1254/1254 0 dupes 0 clipped ·
+##   slicesmoke PASS · hdart UNTOUCHED. NEXT: wave 21 = the 45 named-species NEEDS_FIX rows;
+##   then re-export the five zips and re-run the Platinum audit.
 ##   ✔★★★ MORPHOLOGY WAVE 19 — ALL 28 PLATINUM RELEASE BLOCKERS CLEARED (2026-08-02, batch 40).
 ##   Buckets C + D of port/AUDIT_PLATINUM_PLAN.md; with wave 18's A + B this closes EVERY one of
 ##   the audit's 28 named blockers (fauna 6 · flora 12 · fungi 6 · microbe 4). BUCKET C, 8 iconic
