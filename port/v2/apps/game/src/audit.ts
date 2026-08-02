@@ -32,6 +32,19 @@ async function strip(names: string[]): Promise<void> {
   const cells: Array<{ name: string; url: string | null }> = [];
   for (const n of want) {
     let url: string | null = null;
+    /* PROCEDURAL FORM: "proc:<kingdom>:h<heat>:s<seed>" renders a genome with
+       NO _earthName — the path every bred creature takes. Until this existed
+       no instrument had ever shown us one, and twelve waves were judged
+       entirely on the Earth catalogue. */
+    const pm = /^proc:(\w+):h(\d+):s(\d+)$/.exec(n);
+    if (pm) {
+      const [, kingdom, heat, s] = pm;
+      const seed = (hashInt(0xF00D, Number(s), 7) >>> 0);
+      const g = makeGenome(seed, kingdom!, Number(heat)) as Record<string, unknown>;
+      try { url = speciesPortrait(g); } catch { url = null; }
+      cells.push({ name: `${kingdom}·h${heat}·s${s}`, url });
+      continue;
+    }
     for (const [ki, kingdom] of Object.keys(NAMES).entries()) {
       const i = NAMES[kingdom]!.indexOf(n);
       if (i < 0) continue;

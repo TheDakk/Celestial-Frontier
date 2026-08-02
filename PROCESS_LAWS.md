@@ -228,3 +228,13 @@ waved through `/overrides\d*\.ts$/`, the exact pattern that had been hiding 302 
 the coverage report. The check was correct; the escape hatch was not.
 > **The remedy:** write the exemption as narrowly as the rule, and negative-control the
 > exemption itself — reintroduce the thing it excuses and confirm the check fires.
+
+
+⚠⚠ **AN INSTRUMENT THAT TAKES A NAME CANNOT SEE THE UNNAMED.** Twelve waves of art work were
+reviewed entirely through tools that addressed species BY NAME — so the procedural creatures,
+and every creature a player breeds, were never once rendered for review. They were not broken;
+they were simply outside every instrument's reach, which is worse, because nothing ever
+reported their absence.
+> **The remedy:** for every code path a user can reach, ask which instrument renders it. If the
+> answer is "none", that path is unreviewed no matter how green the suite is. Adding one
+> `proc:` form to the strip tool changed the plan for a whole wave.
