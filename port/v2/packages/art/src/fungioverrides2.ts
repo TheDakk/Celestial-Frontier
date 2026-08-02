@@ -337,3 +337,259 @@ export function algaeBloom(c: Ctx, g: G, p: Pal): void {
   }
   for (let i = 0; i < 40; i++) { const a = r() * TAU, d = r() ** 0.6 * S * 0.26; c.fillStyle = `rgba(${Math.min(255, p.cr * 1.3 | 0)},${Math.min(255, p.cg * 1.3 | 0)},${Math.min(255, p.cb * 1.3 | 0)},0.6)`; c.beginPath(); c.arc(cx + Math.cos(a) * d, cy + Math.sin(a) * d * 0.66, 1.5 + r() * 1.5, 0, TAU); c.fill(); }
 }
+
+/** ★ WAVE 17 — THE CAP-AND-STEM SYSTEM.
+
+    Seven fungi were still unrouted, and FIVE of them are on Nick's own
+    still-not-fixed list: Chanterelle, Death Cap, Destroying Angel, Shiitake,
+    Jelly Fungus. His audit said the same thing about each — "current generic
+    yellow/purple/red mushrooms lack <the one structure>" — and the structures
+    he named are all things a shared cap-and-stem painter can carry:
+
+      · a FUNNEL cap with a wavy lobed margin and blunt forking RIDGES running
+        down the stem, which is a chanterelle and is not gills
+      · a RING (the skirt left by the veil) and a VOLVA (the sac cupping the
+        base) — between them the two features that identify the deadly
+        amanitas, and the reason "a yellow mushroom" is not an acceptable
+        Death Cap
+      · a PORE surface instead of gills, over a barrel stem with a raised white
+        net — a bolete is a different animal from an agaric
+      · veil FRINGE on an inrolled margin, and a CRACKED cap showing pale flesh
+
+    The colour is forced for the species whose colour IS the identification,
+    because for a Death Cap and a Destroying Angel getting that wrong is not a
+    cosmetic error. */
+export interface CapSpec {
+  cap: 'convex' | 'funnel' | 'flat' | 'domed';
+  gills: 'blade' | 'ridge' | 'pore' | 'none';
+  hue: string;
+  gillHue?: string;
+  stem?: 'slender' | 'stout' | 'bulbous';
+  ring?: boolean;
+  volva?: boolean;
+  net?: boolean;
+  veil?: boolean;
+  crack?: boolean;
+  glow?: boolean;
+  fibrils?: boolean;   /** faint radiating fibres on the cap (Death Cap) */
+  count?: number;
+  scale?: number;
+}
+export function fungiCap(c: Ctx, g: G, _p: Pal, spec: CapSpec): void {
+  const r = seeded(g, 0xC4B7);
+  const n = spec.count ?? 1;
+  const base = S * 0.78;
+  shadow(c, S * 0.5, base + 4, S * 0.20);
+
+  for (let k = 0; k < n; k++) {
+    const t = n === 1 ? 0.5 : k / (n - 1);
+    const sc = (spec.scale ?? 1) * (n === 1 ? 1 : 0.52 + r() * 0.30);
+    const cx = S * 0.5 + (n === 1 ? 0 : (t - 0.5) * S * 0.26) + (r() - 0.5) * S * 0.02;
+    const stemH = S * 0.20 * sc * (spec.stem === 'slender' ? 1.22 : spec.stem === 'bulbous' ? 0.78 : 1);
+    const capW = S * 0.105 * sc * (spec.cap === 'funnel' ? 1.05 : 1);
+    const capY = base - stemH;
+
+    /* ── the VOLVA: a sac-like cup the stem grows out of. On an amanita this
+       is the single feature that separates edible from lethal. ── */
+    if (spec.volva) {
+      c.fillStyle = '#efeadd';
+      c.beginPath();
+      c.moveTo(cx - capW * 0.44, base);
+      c.quadraticCurveTo(cx - capW * 0.50, base - stemH * 0.20, cx - capW * 0.22, base - stemH * 0.24);
+      c.lineTo(cx + capW * 0.22, base - stemH * 0.24);
+      c.quadraticCurveTo(cx + capW * 0.50, base - stemH * 0.20, cx + capW * 0.44, base);
+      c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(120,112,96,0.40)'; c.lineWidth = 1.4;
+      c.beginPath(); c.moveTo(cx - capW * 0.24, base - stemH * 0.22); c.lineTo(cx - capW * 0.02, base - stemH * 0.10); c.stroke();
+    }
+
+    /* ── the stem ── */
+    const sw = capW * (spec.stem === 'bulbous' ? 0.46 : spec.stem === 'slender' ? 0.17 : 0.24);
+    const sg = c.createLinearGradient(cx - sw, 0, cx + sw, 0);
+    const stemHue = spec.gillHue ?? '#efe9d8';
+    sg.addColorStop(0, stemHue);
+    sg.addColorStop(0.45, stemHue);
+    sg.addColorStop(1, 'rgba(0,0,0,0.22)');
+    c.fillStyle = sg;
+    c.beginPath();
+    if (spec.stem === 'bulbous') {
+      /* a porcini's stem is FATTER than its cap is tall — the whole read */
+      c.moveTo(cx - sw * 0.62, capY);
+      c.quadraticCurveTo(cx - sw * 1.30, capY + stemH * 0.55, cx - sw * 0.92, base);
+      c.lineTo(cx + sw * 0.92, base);
+      c.quadraticCurveTo(cx + sw * 1.30, capY + stemH * 0.55, cx + sw * 0.62, capY);
+    } else {
+      c.moveTo(cx - sw, capY);
+      c.quadraticCurveTo(cx - sw * 1.10, capY + stemH * 0.6, cx - sw * 0.86, base);
+      c.lineTo(cx + sw * 0.86, base);
+      c.quadraticCurveTo(cx + sw * 1.10, capY + stemH * 0.6, cx + sw, capY);
+    }
+    c.closePath(); c.fill();
+    if (spec.net) {
+      /* the raised white reticulation over a bolete's upper stem */
+      c.strokeStyle = 'rgba(255,255,255,0.55)'; c.lineWidth = 1.1;
+      for (let i = 0; i < 7; i++) {
+        const y = capY + stemH * (0.06 + i * 0.055);
+        c.beginPath(); c.moveTo(cx - sw * 0.9, y); c.lineTo(cx + sw * 0.9, y); c.stroke();
+      }
+      for (let i = -2; i <= 2; i++) {
+        c.beginPath(); c.moveTo(cx + i * sw * 0.4, capY); c.lineTo(cx + i * sw * 0.44, capY + stemH * 0.42); c.stroke();
+      }
+    }
+    if (spec.ring) {
+      /* the skirt — the torn veil left hanging on the stem */
+      c.fillStyle = '#f4efe2';
+      c.beginPath();
+      c.ellipse(cx, capY + stemH * 0.30, sw * 2.1, stemH * 0.055, 0, 0, TAU);
+      c.fill();
+      c.fillStyle = 'rgba(190,182,164,0.6)';
+      c.beginPath();
+      c.moveTo(cx - sw * 2.0, capY + stemH * 0.30);
+      c.quadraticCurveTo(cx, capY + stemH * 0.40, cx + sw * 2.0, capY + stemH * 0.30);
+      c.lineTo(cx + sw * 1.7, capY + stemH * 0.31);
+      c.quadraticCurveTo(cx, capY + stemH * 0.36, cx - sw * 1.7, capY + stemH * 0.31);
+      c.closePath(); c.fill();
+    }
+
+    /* ── the underside: BLADE gills, forking RIDGES, or a PORE sponge ── */
+    const und = spec.gillHue ?? '#efe6d0';
+    if (spec.gills !== 'none' && spec.cap !== 'funnel') {
+      c.fillStyle = und;
+      c.beginPath(); c.ellipse(cx, capY + capW * 0.10, capW * 0.94, capW * 0.20, 0, 0, Math.PI); c.fill();
+      if (spec.gills === 'pore') {
+        /* a sponge, not blades — a bolete has no gills at all */
+        c.fillStyle = 'rgba(120,110,74,0.45)';
+        for (let i = 0; i < 46; i++) {
+          const px = cx + (r() - 0.5) * capW * 1.7, py = capY + capW * (0.02 + r() * 0.16);
+          c.beginPath(); c.arc(px, py, 0.9 + r() * 0.7, 0, TAU); c.fill();
+        }
+      } else {
+        c.strokeStyle = 'rgba(120,108,86,0.42)'; c.lineWidth = 1;
+        for (let i = -9; i <= 9; i++) {
+          const px = cx + (i / 9) * capW * 0.88;
+          c.beginPath(); c.moveTo(px, capY + capW * 0.02);
+          c.lineTo(px * 0.06 + cx * 0.94, capY + capW * 0.20); c.stroke();
+        }
+      }
+    }
+
+    /* ── the cap ── */
+    c.fillStyle = lit3(c, spec.hue, cx, capY, capW);
+    c.beginPath();
+    if (spec.cap === 'funnel') {
+      /* ★ THE CHANTERELLE. Nick's note: "blunt forking ridges, not blade gills;
+         a VASE profile, not a flat cap." A funnel dips in the centre and its
+         margin is wavy and irregularly lobed — nothing like a domed agaric. */
+      c.moveTo(cx - capW, capY - capW * 0.10);
+      c.quadraticCurveTo(cx - capW * 0.55, capY + capW * 0.34, cx, capY + capW * 0.16);
+      c.quadraticCurveTo(cx + capW * 0.55, capY + capW * 0.34, cx + capW, capY - capW * 0.10);
+      c.quadraticCurveTo(cx + capW * 0.62, capY - capW * 0.46, cx, capY - capW * 0.30);
+      c.quadraticCurveTo(cx - capW * 0.62, capY - capW * 0.46, cx - capW, capY - capW * 0.10);
+      c.closePath(); c.fill();
+      /* the ridges RUN DOWN onto the stem — decurrent, blunt, forking */
+      c.strokeStyle = 'rgba(150,110,40,0.45)'; c.lineWidth = 1.6; c.lineCap = 'round';
+      for (let i = -5; i <= 5; i++) {
+        const px = cx + (i / 5) * capW * 0.78;
+        c.beginPath(); c.moveTo(px, capY + capW * 0.08);
+        c.quadraticCurveTo(cx + (px - cx) * 0.4, capY + capW * 0.34, cx + (px - cx) * 0.13, capY + stemH * 0.22);
+        c.stroke();
+      }
+    } else if (spec.cap === 'flat') {
+      c.ellipse(cx, capY, capW, capW * 0.30, 0, Math.PI, TAU); c.fill();
+    } else {
+      const dome = spec.cap === 'domed' ? 0.78 : 0.56;
+      c.ellipse(cx, capY + capW * 0.06, capW, capW * dome, 0, Math.PI, TAU); c.fill();
+      if (spec.veil) {
+        /* the inrolled margin fringed with white veil remnants (shiitake) */
+        c.fillStyle = 'rgba(244,240,228,0.85)';
+        for (let i = -6; i <= 6; i++) {
+          const px = cx + (i / 6) * capW * 0.92;
+          c.beginPath(); c.ellipse(px, capY + capW * 0.06, capW * 0.06, capW * 0.05, 0, 0, TAU); c.fill();
+        }
+      }
+      if (spec.fibrils) {
+        /* the faint radiating fibrils its row names — and the thing that
+           distinguishes a Death Cap from the plain white Destroying Angel */
+        c.strokeStyle = 'rgba(70,86,44,0.34)'; c.lineWidth = 1;
+        for (let i = 0; i < 22; i++) {
+          const a = Math.PI + (i / 21) * Math.PI;
+          c.beginPath();
+          c.moveTo(cx + Math.cos(a) * capW * 0.20, capY + capW * 0.06 + Math.sin(a) * capW * dome * 0.20);
+          c.lineTo(cx + Math.cos(a) * capW * 0.95, capY + capW * 0.06 + Math.sin(a) * capW * dome * 0.95);
+          c.stroke();
+        }
+      }
+      if (spec.crack) {
+        /* a shiitake's cap splits, showing pale flesh through the brown */
+        c.fillStyle = 'rgba(238,230,212,0.72)';
+        for (let i = 0; i < 9; i++) {
+          const a = -Math.PI * (0.15 + r() * 0.7), d = 0.25 + r() * 0.6;
+          c.save();
+          c.translate(cx + Math.cos(a) * capW * d, capY + capW * 0.06 + Math.sin(a) * capW * dome * d);
+          c.rotate(a);
+          c.beginPath(); c.ellipse(0, 0, capW * (0.09 + r() * 0.09), capW * 0.035, 0, 0, TAU); c.fill();
+          c.restore();
+        }
+      }
+    }
+    if (spec.glow) {
+      /* the light comes from the GILLS and the stem, never the cap top */
+      const gg = c.createRadialGradient(cx, capY + capW * 0.16, 1, cx, capY + capW * 0.16, capW * 2.2);
+      gg.addColorStop(0, 'rgba(150,255,190,0.55)');
+      gg.addColorStop(0.45, 'rgba(110,230,160,0.20)');
+      gg.addColorStop(1, 'rgba(110,230,160,0)');
+      c.fillStyle = gg;
+      c.beginPath(); c.arc(cx, capY + capW * 0.16, capW * 2.2, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(190,255,215,0.85)'; c.lineWidth = 1.2;
+      for (let i = -6; i <= 6; i++) {
+        const px = cx + (i / 6) * capW * 0.84;
+        c.beginPath(); c.moveTo(px, capY + capW * 0.03); c.lineTo(cx + (px - cx) * 0.2, capY + capW * 0.20); c.stroke();
+      }
+    }
+    c.strokeStyle = 'rgba(240,246,252,0.20)'; c.lineWidth = 2;
+    c.beginPath();
+    c.ellipse(cx, capY + capW * 0.06, capW * 0.96, capW * 0.52, 0, Math.PI * 1.15, Math.PI * 1.85);
+    c.stroke();
+  }
+}
+
+/** ★ THE JELLY FUNGUS — Nick's row: "current cap-and-stem mushrooms do not
+    represent gelatinous lobes or ears". It has no stem at all: it is a
+    translucent brain of convoluted folds sitting straight on the bark. */
+export function fungiJellyBrain(c: Ctx, g: G, p: Pal): void {
+  const r = seeded(g, 0x1E11);
+  const cx = S * 0.50, cy = S * 0.56, R = S * 0.155;
+  shadow(c, cx, cy + R * 0.92, R * 0.94);
+  /* the bark it sits on, because "no stem" needs something to sit ON */
+  c.fillStyle = '#4a3a2a';
+  c.beginPath(); c.ellipse(cx, cy + R * 0.86, R * 1.05, R * 0.20, 0, 0, TAU); c.fill();
+  const lobes: Array<[number, number, number]> = [];
+  for (let i = 0; i < 11; i++) {
+    const a = r() * TAU, d = r() * R * 0.52;
+    lobes.push([cx + Math.cos(a) * d, cy + Math.sin(a) * d * 0.74, R * (0.30 + r() * 0.34)]);
+  }
+  /* translucency: overlapping soft lobes at partial alpha, so light passes
+     through where they cross — which is what "gelatinous" looks like */
+  for (const [lx, ly, lr] of lobes) {
+    const gg = c.createRadialGradient(lx - lr * 0.3, ly - lr * 0.35, lr * 0.1, lx, ly, lr);
+    gg.addColorStop(0, `rgba(${Math.min(255, p.cr * 1.5) | 0},${Math.min(255, p.cg * 1.3) | 0},${Math.min(255, p.cb * 1.2) | 0},0.62)`);
+    gg.addColorStop(0.7, `rgba(${p.cr | 0},${p.cg | 0},${p.cb | 0},0.50)`);
+    gg.addColorStop(1, `rgba(${(p.cr * 0.6) | 0},${(p.cg * 0.6) | 0},${(p.cb * 0.62) | 0},0.30)`);
+    c.fillStyle = gg;
+    c.beginPath(); c.ellipse(lx, ly, lr, lr * 0.82, r() * TAU, 0, TAU); c.fill();
+  }
+  /* the brain-like convolutions */
+  c.strokeStyle = `rgba(${(p.cr * 0.55) | 0},${(p.cg * 0.55) | 0},${(p.cb * 0.58) | 0},0.5)`;
+  c.lineWidth = 2; c.lineCap = 'round';
+  for (let i = 0; i < 14; i++) {
+    const a = r() * TAU, d = r() * R * 0.62;
+    const sx = cx + Math.cos(a) * d, sy = cy + Math.sin(a) * d * 0.74;
+    c.beginPath();
+    c.moveTo(sx, sy);
+    c.quadraticCurveTo(sx + (r() - 0.5) * R * 0.5, sy + (r() - 0.5) * R * 0.4,
+      sx + (r() - 0.5) * R * 0.7, sy + (r() - 0.5) * R * 0.5);
+    c.stroke();
+  }
+  c.strokeStyle = 'rgba(255,255,255,0.30)'; c.lineWidth = 2.4;
+  c.beginPath(); c.ellipse(cx - R * 0.16, cy - R * 0.30, R * 0.34, R * 0.20, -0.4, Math.PI, TAU); c.stroke();
+}

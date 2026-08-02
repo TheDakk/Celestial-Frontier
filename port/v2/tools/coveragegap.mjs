@@ -69,7 +69,18 @@ for (const f of FILES) {
       if (ch === "'" || ch === '"') {
         let j = i + 1, s = '';
         while (j < body.length && body[j] !== ch) { if (body[j] === '\\') { s += body[j + 1]; j += 2; } else s += body[j++]; }
-        if (depth === 1) covered.add(dec(s));
+        if (depth === 1) {
+          /* ⚠ THE CANON MAP IS KEYED 'kingdom|Name' AND THIS STORED THE WHOLE KEY,
+             so every species routed through CANON — the bats, the crocodilians,
+             the hoppers, the monotremes, Whale, Porpoise — was recorded as
+             "fauna|Whale", never matched against the catalog name "Whale", and
+             counted as UNROUTED. The gap has been over-reported ever since CANON
+             was introduced. Exactly the blind spot artclass.mjs had, in a second
+             tool: when a key format gains a prefix, grep every reader of it. */
+          const k = dec(s);
+          covered.add(k);
+          if (k.includes("|")) covered.add(k.slice(k.indexOf("|") + 1));
+        }
         i = j + 1; continue;
       }
       i++;
@@ -121,5 +132,10 @@ if (arg && GROUPS[arg]) {
   }
   const other = rest.filter((n) => !Object.values(GROUPS).some((re) => re.test(n)));
   console.log(`  ${'unsorted'.padEnd(12)} ${String(other.length).padStart(3)} — ${other.slice(0, 24).join(', ')}${other.length > 24 ? '…' : ''}`);
-  console.log(`\nflora left (${uncovered.flora.length}), fungi left (${uncovered.fungi.length}), microbe left (${uncovered.microbe.length})`);
+  /* ⚠ this printed only COUNTS — "flora left (13)" is a number, not a worklist,
+     and every session since has had to go and derive the names by hand. A gap
+     report whose output you cannot act on is a status line, not a tool. */
+  for (const k of ['flora', 'fungi', 'microbe']) {
+    if (uncovered[k].length) console.log(`\n${k} left (${uncovered[k].length}): ${uncovered[k].join(', ')}`);
+  }
 }

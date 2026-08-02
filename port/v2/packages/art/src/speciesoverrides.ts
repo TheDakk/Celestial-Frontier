@@ -25,7 +25,7 @@ import { FLORA2_SPEC } from './florarost.js';
 import { planFor } from './proceduraloverrides.js';
 import { faunaKiwi, faunaMudskipper, faunaPyrosome, faunaSalp, faunaTripodFish } from './faunaoverrides4.js';
 import { floraCabbage, floraCarrot, floraCorn, floraHemp, floraTobacco, floraWatermelon, floraStrawberry, floraKiwiFruit } from './floraoverrides3.js';
-import { fungiFlyAgaric, fungiLionsMane, fungiMaitake, fungiStinkhorn, fungiCordyceps, lichenMat, microbeForam, tardigrade, macroAlgaeSheet, microAlgaeCell, algaeBloom } from './fungioverrides2.js';
+import { fungiFlyAgaric, fungiLionsMane, fungiMaitake, fungiStinkhorn, fungiCordyceps, fungiCap, fungiJellyBrain, lichenMat, microbeForam, tardigrade, macroAlgaeSheet, microAlgaeCell, algaeBloom } from './fungioverrides2.js';
 import { fungiEnoki, procFamilyIndex, FAMILY_COUNT, fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiClub, microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate, microbePlates, microbeMat } from './proceduralfamilies.js';
 import { faunaBear, faunaKoala, faunaSirenian, faunaHumpback, faunaBeakedWhale, faunaCuttlefish, faunaHorseshoeCrab, faunaSeaSquirt, faunaLamprey, faunaBat, faunaCroc, faunaHopper, faunaMonotreme } from './faunaoverrides5.js';
 import { fishBody } from './faunaoverrides3.js';
@@ -336,6 +336,16 @@ function microbeAmoeba(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
 /* ---- family routing by Earth-species NAME (audit-driven), then draw ---- */
 type Painter = (c: Ctx, g: G, p: ReturnType<typeof palette>) => void;
 const FUNGI_NAME: Record<string, Painter> = {
+  /* ★ WAVE 17 — the seven unrouted fungi, five of them on Nick's own
+     still-not-fixed list. Colour is FORCED on the amanitas: for a Death Cap
+     and a Destroying Angel, getting the colour wrong is not cosmetic. */
+  'Chanterelle': (c, g, p) => fungiCap(c, g, p, { cap: 'funnel', gills: 'ridge', hue: '#e8a33a', gillHue: '#f0c979', stem: 'stout', count: 3 }),
+  'Death Cap': (c, g, p) => fungiCap(c, g, p, { cap: 'domed', gills: 'blade', hue: '#6f8248', gillHue: '#efeadb', stem: 'stout', ring: true, volva: true, fibrils: true, scale: 0.94 }),
+  'Destroying Angel': (c, g, p) => fungiCap(c, g, p, { cap: 'convex', gills: 'blade', hue: '#fbfaf7', gillHue: '#ffffff', stem: 'slender', ring: true, volva: true, scale: 1.18 }),
+  'Shiitake': (c, g, p) => fungiCap(c, g, p, { cap: 'convex', gills: 'blade', hue: '#7d5638', gillHue: '#efe7d4', stem: 'stout', veil: true, crack: true, count: 2 }),
+  'Porcini': (c, g, p) => fungiCap(c, g, p, { cap: 'convex', gills: 'pore', hue: '#9c6b3c', gillHue: '#efe6cd', stem: 'bulbous', net: true }),
+  'Bioluminescent Mushroom': (c, g, p) => fungiCap(c, g, p, { cap: 'flat', gills: 'blade', hue: '#8ea89a', gillHue: '#d8f6e4', stem: 'slender', glow: true, count: 4, scale: 0.66 }),
+  'Jelly Fungus': fungiJellyBrain,
   'Turkey Tail': fungiBracket, 'Bracket Fungus': fungiBracket, 'Shelf Fungus': fungiBracket, 'Chicken-of-the-Woods': fungiBracket, 'Oyster Mushroom': fungiBracket, 'Reindeer Lichen': fungiBracket,
   'Giant Puffball': fungiPuffball, 'Earthstar': fungiEarthstar, 'Black Truffle': fungiTruffle,
   /* ★ wave 21 — the audit's last two named fungi */
