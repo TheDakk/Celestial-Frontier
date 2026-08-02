@@ -602,6 +602,60 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   BETTER than a random roll because real species genuinely differ. ~100 have one; the rest is
   a data job, not a formula. The finding is written into the source so nobody re-derives a clamp.
 
+- ⚠ **D-ART-109 — ARTLOCK WAS NEVER IN THE ART BATTERY (wave 21).** The safety net built to
+  stop a global pass from silently undoing signed-off work was documented as part of "the art
+  gate", the handoff called `npm run artbattery` "the 5-stage art gate", and the battery did
+  not run it. It fired only when someone typed it by hand — which is the exact failure mode
+  it existed to remove, because **the guard you have to remember is not a guard.** Found when
+  a wave that repainted 500+ organisms came back `5/5 stages passed` and artlock, run
+  manually thirty seconds later, said FAIL. Now stage 6 (last, because it renders the whole
+  catalogue twice and cheap static failures should surface first), and negative-controlled:
+  deleting one fingerprint from the lock makes the battery report `5/6` and exit non-zero, so
+  it is proven to PROPAGATE a failure rather than merely to run one.
+
+- ⚠ **D-ART-110 — THE DRIFT FINGERPRINT CANNOT SEE TEXTURE, so it cannot guard the material
+  layer (wave 21).** `[DRIFT]` compares a 16×16 RGB grid at `eps 0.9/255` mean absolute
+  channel difference. That is right for what it was built for — a global palette or
+  proportion pass moving a whole body — and structurally blind to fine surface detail: at
+  16×16 over a 440px portrait each cell averages ~27px, so a 5px feather vanishes into the
+  mean. Measured, not assumed: feathering **105 birds** and shelling every arthropod moved
+  **11 fauna assets**, most under the epsilon, while the renders are obviously different by
+  eye. artlock's own selftest already asserts this as intended behaviour ("a big change on 4
+  channels of 768 is not drift"). **Consequence: material work must be reviewed by eye
+  (`tools/speciesstrip.mjs`) — artlock's green is not evidence that a material change is
+  safe, only that the palette did not move.** Not fixed here: a texture-energy channel would
+  invalidate the entire 1,250-asset baseline, which is a decision, not a slipped-in change.
+
+- ✅ **D-ART-111 — A TILED MATERIAL PAINTED IN THE BODY'S OWN TONE IS INVISIBLE (wave 21).**
+  `feather` and the shipped `scale` both coloured each tile by `0.5x + L·0.9x` — the
+  surface's own lambert, which is precisely what the gradient underneath had already
+  painted. Every tile came out the colour of the pixel it covered. The prototype hid this
+  because fur is a mist of alpha strokes rather than tiles, so it never had to differ from
+  its background to read. **A tiled material only reads if neighbouring tiles differ from
+  each other**, so both now carry a per-element `vary` factor and that, not the lighting, is
+  what does the work. Caught by the drift guard reporting a change of under one unit across
+  the birds, then confirmed on a render.
+
+- ✅ **D-ART-112 — PUT THE MATERIAL WHERE THE VIEWER LOOKS, NOT WHERE THE BODY IS (wave 21).**
+  Feathers went onto the bird's torso ellipse first, which is the obvious place and the
+  wrong one: on a perched bird the FOLDED WING covers most of the torso, so the coat was
+  drawn and then almost entirely painted over. Same shape of error for the beetle — the
+  edit landed on `insectBody` while `Beetle`/`Ladybug` route through their own
+  `faunaBeetle`, so nothing moved at all. Both fixed by rendering the thing and looking at
+  it. Two related traps, both found the same way and both now documented in the code:
+  · **the tube's axis must match the drawing's axis** — a beetle is drawn from ABOVE, so its
+    tube needs a quarter turn or the segment seams run lengthwise and read as a crack;
+  · **ask the surface where the light is, don't assume it** — the chitin specular was pinned
+    to the dorsal flank (right for a side-on animal), so on the rotated beetle it landed on
+    the right while the engine light comes from the upper LEFT. It now searches phi for the
+    brightest station. It read as a lighting bug because it was one.
+  Also: seams are not universal arthropod kit. An ant's abdomen is a stack of rings and
+  bands beautifully; a beetle's elytra are smooth shields with head-to-tail sculpture, and
+  transverse rings turned a ladybird into a beach ball — hence `seams: false`.
+  **Cost, measured rather than guessed: a full 1,250-portrait render went 36s → 38s (~6%,
+  ~1.6ms per portrait), and portraits are cached.** Every family keeps a `*_MAT_DETAIL`
+  dial; 0 restores the old flat look exactly.
+
 - ✅ **D-CAT-1 — RESOLVED (wave 21): the roster IS deduped, deliberately, in the owned
   wrapper.** Nick, shown the real risk rather than the assumed one, chose "deliberate v2
   roster change". So the four duplicates are collapsed and the cost is accepted on the

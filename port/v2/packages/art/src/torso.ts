@@ -233,6 +233,53 @@ export function spline(knots: Array<[number, number]>): (u: number) => number {
   };
 }
 
+/** ★ WAVE 21 — THE MATERIAL LAYER REACHES THE NON-MAMMALS.
+
+    The material layer needs one thing from a body: a surface it can ask
+    "where is (u, phi), which way does it face, and how lit is it". The
+    mammals got that in wave 4 because their torso was rebuilt as a Tube. The
+    birds, fish and invertebrates never were — 500-odd organisms whose bodies
+    are an ellipse or a depth profile — and rewriting four painters to earn
+    the same coordinates would have been the expensive way to do it.
+
+    It is also the unnecessary way, because AN ELLIPSE ALREADY IS A SWEPT
+    CIRCLE: a straight axis along the major diameter with a radius of
+    ry·√(1−(2u−1)²). Handing that to Tube gives an ellipse-bodied painter the
+    full apparatus — envelope, normal, foreshortening, lambert, skin space —
+    for the cost of one constructor.
+
+    `rot` rotates the whole frame, so the bird's −0.15 rad tilt is carried and
+    the feathers lie along the body's real axis rather than the screen's.
+
+    ⚠ Tips: R → 0 at u = 0 and u = 1, so the taper rate runs away and `facing`
+    collapses to nearly zero there. That is not a defect to clamp out — the
+    ends of an ellipse genuinely do turn away from the viewer, and it is
+    exactly what stops a material from piling up in a smear on the nose. */
+export function ellipseTube(cx: number, cy: number, rx: number, ry: number, rot = 0): Tube {
+  const co = Math.cos(rot), si = Math.sin(rot);
+  return new Tube({
+    P: (u) => {
+      const a = (u * 2 - 1) * rx;
+      return [cx + a * co, cy + a * si];
+    },
+    /* the semi-minor axis at this station. Floored a hair above zero: at
+       exactly zero the frame's tangent is undefined and every derived value
+       turns into a NaN that silently paints nothing. */
+    R: (u) => Math.max(ry * 0.02, ry * Math.sqrt(Math.max(0, 1 - (u * 2 - 1) ** 2))),
+  });
+}
+
+/** the same trick for a body already described by a depth profile — a fish.
+    `h(t)` is the half-height at t along the body, which is precisely R. */
+export function profileTube(
+  x0: number, x1: number, cy: number, h: (t: number) => number,
+): Tube {
+  return new Tube({
+    P: (u) => [x0 + (x1 - x0) * u, cy],
+    R: (u) => Math.max(1e-3, h(u)),
+  });
+}
+
 /* ⚠ mammalProfile() was REMOVED in wave 7. It hung a radius profile under a
    FIXED BACK LINE, so every bulge of shoulder or haunch muscle pushed the BELLY
    down by twice what it raised the back — two grey spheres hanging under the gut

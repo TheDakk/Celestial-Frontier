@@ -462,12 +462,21 @@ export function coatBlocks(c: Ctx, t: Tube, p: Coatable, blocks: Array<{ u0: num
    down; `detail: 0` is free and reproduces the old flat look exactly.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-export type Material = 'fur' | 'pelt' | 'hide' | 'scale' | 'plate';
+/* ★ WAVE 21 — 'feather' and 'chitin' extend this past the mammals.
+
+   The prototype shipped quadruped-only, which measured +34% and was the right
+   way to test the idea. It is the WRONG way to leave it: a catalogue where
+   144 mammals have real fur and 500 birds, fish and invertebrates keep the
+   flat gradient does not read as "some species are richer" — it reads as the
+   flat ones being broken, because the eye grades every card against the best
+   one on the sheet. Partial material is worse than none at catalogue scale.
+   That is the whole reason this wave exists. */
+export type Material = 'fur' | 'pelt' | 'hide' | 'scale' | 'plate' | 'feather' | 'chitin';
 
 /** the fine structure of a surface, laid in the body's own coordinates */
 export function coatMaterial(
   c: Ctx, t: Tube, r: RNG, p: Coatable, kind: Material,
-  o: { detail?: number; rgb?: [number, number, number]; len?: number } = {},
+  o: { detail?: number; rgb?: [number, number, number]; len?: number; seams?: boolean } = {},
 ): void {
   const detail = o.detail ?? 1;
   if (detail <= 0) return;
@@ -541,6 +550,183 @@ export function coatMaterial(
     return;
   }
 
+  if (kind === 'feather') {
+    /* FEATHER. A bird is not a furry thing with a beak, and the difference is
+       not hair-vs-hair-shaped-differently: plumage is TILED. Contour feathers
+       overlap in tracts like roof shingles, each one a discrete edged object
+       with a shaft, and it is the visible EDGES that say "bird" — which is
+       precisely what a gradient cannot say and what fur, being a mist of
+       individual strokes, says wrongly.
+
+       So: rows around the girth, each feather a rounded vane laid in skin
+       space, every row overlapping the one below. Rows are offset by half a
+       feather so the tiling never lines up into a grid — the same reason the
+       scale code staggers, and the reason wallpaper reads as wallpaper. */
+    const rows = Math.round(15 * Math.min(1.5, detail));
+    const perRow = Math.round(17 * Math.min(1.5, detail));
+    /* drawn ventral → dorsal so each row overlaps the one beneath it, the way
+       real plumage lies. Reverse this and the bird looks like it was assembled
+       backwards, because the shadow edges end up on the wrong side. */
+    for (let ri = rows; ri >= 0; ri--) {
+      const phi = -1.40 + (ri / rows) * 2.85;
+      for (let k = 0; k < perRow; k++) {
+        /* the half-feather stagger, plus a little jitter so the tract is
+           organic rather than machined */
+        const u = 0.02 + ((k + (ri % 2) * 0.5 + (r() - 0.5) * 0.35) / perRow) * 0.96;
+        if (u < 0.02 || u > 0.98) continue;
+        const F = t.facing(u, phi);
+        if (F < 0.06) continue;
+        const rad = t.radius(u);
+        const L = t.light(u, phi);
+        t.withMark(c, u, phi, (cc) => {
+          /* the vane. Wider along the body than across it, and the tip points
+             BACKWARD (−x here is forward for these painters, so the feather
+             trails toward +x) — a feather always sweeps toward the tail. */
+          /* ⚠ THE TONE MUST NOT MATCH THE BODY. The first cut of this used
+             `0.52 + L*0.92` alone — the surface's own lambert — which is
+             exactly what the gradient underneath already painted, so every
+             feather came out the colour of the pixel it covered and the whole
+             tract was invisible. The drift guard measured the change at under
+             one unit across 105 birds and correctly refused to call it a
+             change at all. A tiled material only reads if neighbouring tiles
+             DIFFER; real plumage varies feather to feather, so `vary` is the
+             part doing the work here, not the lambert. */
+          const vary = 0.80 + r() * 0.44;
+          const m = (0.52 + L * 0.92) * vary;
+          const w = rad * (0.20 + r() * 0.07), hgt = rad * (0.115 + r() * 0.04);
+          cc.fillStyle = 'rgb(' + (Math.min(255, p.cr * m) | 0) + ','
+            + (Math.min(255, p.cg * m) | 0) + ',' + (Math.min(255, p.cb * m) | 0) + ')';
+          cc.beginPath();
+          cc.moveTo(-w * 0.45, 0);
+          cc.quadraticCurveTo(w * 0.1, -hgt, w * 0.86, -hgt * 0.16);
+          cc.quadraticCurveTo(w * 0.1, hgt, -w * 0.45, 0);
+          cc.fill();
+          /* the overlap shadow along the leading edge — this single line is
+             what turns a field of blobs into shingles */
+          cc.strokeStyle = 'rgba(0,0,0,' + (0.16 + (1 - L) * 0.24).toFixed(2) + ')';
+          cc.lineWidth = 1.0;
+          cc.beginPath();
+          cc.moveTo(-w * 0.45, 0);
+          cc.quadraticCurveTo(w * 0.1, -hgt, w * 0.86, -hgt * 0.16);
+          cc.stroke();
+          /* the shaft, only on the lit side where a real one catches light */
+          if (L > 0.52 && r() < 0.55) {
+            cc.strokeStyle = 'rgba(255,252,244,' + (0.10 + r() * 0.13).toFixed(2) + ')';
+            cc.lineWidth = 0.7;
+            cc.beginPath();
+            cc.moveTo(-w * 0.38, 0); cc.lineTo(w * 0.66, -hgt * 0.12);
+            cc.stroke();
+          }
+        });
+      }
+    }
+    /* the breast and throat are DOWN, not contour feathers — soft enough that
+       the tiling has to stop or a robin gets a scaly chest */
+    c.lineCap = 'round';
+    for (let i = 0; i < Math.round(260 * detail); i++) {
+      const u = 0.05 + r() * 0.9, phi = -1.45 + r() * 0.85;
+      if (t.facing(u, phi) < 0.06) continue;
+      const A = t.pt(u, phi);
+      const B = t.pt(u + (r() - 0.5) * 0.02, phi - (0.04 + r() * 0.10));
+      c.strokeStyle = tone(u, phi, 1.15);
+      c.globalAlpha = 0.10 + r() * 0.14;
+      c.lineWidth = t.radius(u) * (0.010 + r() * 0.016);
+      c.beginPath(); c.moveTo(A[0], A[1]); c.lineTo(B[0], B[1]); c.stroke();
+    }
+    c.globalAlpha = 1;
+    return;
+  }
+
+  if (kind === 'chitin') {
+    /* CHITIN — a beetle, a crab, a shrimp. The opposite problem to fur: an
+       arthropod's shell is SMOOTH, so adding texture is wrong. What it has
+       instead is a hard specular highlight that stays tight instead of
+       spreading, and segment seams. Those two things are the entire read, and
+       a soft radial gradient gives neither. */
+    /* ⚠ SEAMS ARE NOT UNIVERSAL ARTHROPOD KIT. An ant's or a grasshopper's
+       abdomen really is a stack of rings and the banding reads beautifully on
+       it. A beetle's ELYTRA are not: they are two smooth shields whose
+       sculpture runs head-to-tail, so transverse rings turned a ladybird into
+       a beach ball. Callers that own a shield rather than an abdomen pass
+       `seams: false` and keep the specular and the pitting. */
+    const bands = (o.seams ?? true) ? Math.round(9 * Math.min(1.5, detail)) : 0;
+    for (let b = 1; b < bands; b++) {
+      const u = b / bands;
+      c.strokeStyle = 'rgba(' + ((p.cr * 0.30) | 0) + ',' + ((p.cg * 0.30) | 0) + ','
+        + ((p.cb * 0.34) | 0) + ',0.30)';
+      c.lineWidth = 1.4;
+      c.beginPath();
+      /* the seam is a ring round the body, so it BENDS with the girth — drawn
+         as a strip of surface points rather than a straight line, which is
+         what stops it reading as a scratch across a decal */
+      let started = false;
+      for (let s = 0; s <= 16; s++) {
+        const phi = -1.45 + (s / 16) * 2.9;
+        if (t.facing(u, phi) < 0.05) { started = false; continue; }
+        const P = t.pt(u, phi);
+        if (!started) { c.moveTo(P[0], P[1]); started = true; } else c.lineTo(P[0], P[1]);
+      }
+      c.stroke();
+      /* the pale lip just behind each seam, where the next segment overlaps */
+      c.strokeStyle = 'rgba(255,255,250,0.13)';
+      c.lineWidth = 1.1;
+      c.beginPath();
+      started = false;
+      for (let s = 0; s <= 16; s++) {
+        const phi = -1.45 + (s / 16) * 2.9;
+        if (t.facing(u, phi) < 0.05) { started = false; continue; }
+        const P = t.pt(Math.min(0.999, u + 0.012), phi);
+        if (!started) { c.moveTo(P[0], P[1]); started = true; } else c.lineTo(P[0], P[1]);
+      }
+      c.stroke();
+    }
+    /* THE SPECULAR. Tight, following the body rather than sitting on it as an
+       oval. This is the one that sells shell.
+
+       ⚠ THE PHI IS FOUND, NOT ASSUMED. This was hard-coded to the dorsal
+       flank (phi ≈ 0.92), which is right for a side-on animal and wrong the
+       moment a painter rotates its tube — a beetle is drawn from above, so
+       its "dorsal" is screen-right and the gloss landed on the right while
+       the engine light comes from the upper LEFT. It read as a lighting bug,
+       because it was one. Ask the surface where the light actually is. */
+    let bestPhi = 0.92, bestL = -1;
+    for (let s = 0; s <= 28; s++) {
+      const phi = -1.35 + (s / 28) * 2.7;
+      const L = t.light(0.5, phi);
+      if (L > bestL && t.facing(0.5, phi) > 0.10) { bestL = L; bestPhi = phi; }
+    }
+    /* ⚠ A STROKE HAS HARD EDGES, and a hard-edged pale band down a shell does
+       not read as gloss — it reads as a paint stripe, which is exactly how the
+       first version looked on a beetle. Real specular falls off. Faked here by
+       stacking progressively wider, fainter passes of the same curve: cheap,
+       and it puts a gradient on something canvas will only ever stroke flat. */
+    for (const spec of [{ w: 0.30, a: 0.030 }, { w: 0.19, a: 0.045 },
+      { w: 0.10, a: 0.060 }, { w: 0.045, a: 0.085 }]) {
+      c.beginPath();
+      let started = false;
+      for (let s = 0; s <= 24; s++) {
+        const u = 0.16 + (s / 24) * 0.58;
+        const P = t.pt(u, bestPhi);
+        if (t.facing(u, bestPhi) < 0.05) { started = false; continue; }
+        if (!started) { c.moveTo(P[0], P[1]); started = true; } else c.lineTo(P[0], P[1]);
+      }
+      c.strokeStyle = 'rgba(255,255,248,' + spec.a + ')';
+      c.lineWidth = Math.max(1.2, t.radius(0.5) * spec.w);
+      c.lineCap = 'round';
+      c.stroke();
+    }
+    /* fine pitting, sparse — enough to keep it from looking like moulded
+       plastic without giving a beetle a texture it does not have */
+    for (let i = 0; i < Math.round(70 * detail); i++) {
+      const u = 0.06 + r() * 0.88, phi = -1.2 + r() * 2.4;
+      if (t.facing(u, phi) < 0.08) continue;
+      const A = t.pt(u, phi);
+      c.fillStyle = 'rgba(0,0,0,' + (0.05 + r() * 0.07).toFixed(2) + ')';
+      c.beginPath(); c.arc(A[0], A[1], t.radius(u) * (0.012 + r() * 0.016), 0, TAU); c.fill();
+    }
+    return;
+  }
+
   /* SCALE / PLATE — overlapping rows that follow the girth. A scale row is a
      ring, not a grid, and that is why scales painted as a texture always look
      like wallpaper: they have to curve with the animal. */
@@ -555,13 +741,18 @@ export function coatMaterial(
       const rad = t.radius(u) * (kind === 'plate' ? 0.20 : 0.115);
       const L = t.light(u, phi);
       t.withMark(c, u, phi, (cc) => {
-        const m = 0.55 + L * 0.85;
+        /* ⚠ same trap the feather code documents: `0.55 + L*0.85` reproduces
+           the body's own gradient, so each scale matched its background and
+           the whole material was very nearly a no-op. This shipped that way
+           in the prototype — the mammals never showed it because fur is a
+           mist of alpha strokes, not tiles. Neighbouring scales must differ. */
+        const m = (0.55 + L * 0.85) * (0.84 + r() * 0.34);
         cc.fillStyle = 'rgb(' + (Math.min(255, p.cr * m) | 0) + ',' + (Math.min(255, p.cg * m) | 0)
           + ',' + (Math.min(255, p.cb * m) | 0) + ')';
         cc.beginPath();
         cc.ellipse(0, 0, rad * 0.62, rad * 0.48, 0, Math.PI, TAU);
         cc.fill();
-        cc.strokeStyle = 'rgba(0,0,0,0.18)';
+        cc.strokeStyle = 'rgba(0,0,0,0.26)';
         cc.lineWidth = 0.9;
         cc.beginPath();
         cc.ellipse(0, 0, rad * 0.62, rad * 0.48, 0, Math.PI, TAU);
