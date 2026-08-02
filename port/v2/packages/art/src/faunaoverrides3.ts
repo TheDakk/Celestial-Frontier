@@ -105,7 +105,23 @@ function heightAt(profile: FishSpec['profile'], t: number, depth: number): numbe
 /** THE FISH. One traced body; the spec is the species. */
 export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): void {
   const r = nrng(g, name, 0xF15E);
-  const p: Pal = spec.hue ? { ...pIn } : pIn;
+  /* ⚠ THIS LINE USED TO READ `spec.hue ? { ...pIn } : pIn` — it COPIED the
+     palette when a hue was set and then never applied it. FishSpec has carried
+     a documented `hue` field since wave 21 and not one fish has ever used it;
+     the whole roster took its rarity roll, which is why the lock reported Cave
+     Fish ~ Anchovy and Herring ~ Bonefish as the same picture. A spec field
+     that is declared, documented and inert is worse than a missing one,
+     because every row that sets it looks correct. */
+  let p: Pal = pIn;
+  if (spec.hue) {
+    const hn = parseInt(spec.hue.slice(1), 16);
+    const hr = (hn >> 16) & 255, hg = (hn >> 8) & 255, hb = hn & 255;
+    const rgbOf = (a2: number, b2: number, c2: number): string =>
+      'rgb(' + (a2 | 0) + ',' + (b2 | 0) + ',' + (c2 | 0) + ')';
+    p = { cr: hr, cg: hg, cb: hb, base: spec.hue,
+      lit: rgbOf(Math.min(255, hr * 1.30), Math.min(255, hg * 1.30), Math.min(255, hb * 1.28)),
+      dark: rgbOf(hr * 0.42, hg * 0.44, hb * 0.48) };
+  }
   const cx = S * 0.47, cy = S * 0.50;
   const len = S * spec.len * nvar(name, 0x11, 0.10);
   const depth = S * spec.depth * nvar(name, 0x22, 0.14);
@@ -669,19 +685,19 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Tuna': F({ profile: 'fusiform', len: 0.24, depth: 0.085, tail: 'lunate', snout: 'blunt', dorsal: 'two' }),
   'Mackerel': F({ profile: 'fusiform', len: 0.24, depth: 0.062, tail: 'lunate', snout: 'blunt', dorsal: 'two', pattern: 'bands' }),
   'Wahoo': F({ profile: 'fusiform', len: 0.26, depth: 0.058, tail: 'lunate', snout: 'jaw', dorsal: 'two', pattern: 'bands' }),
-  'Bonefish': F({ profile: 'fusiform', len: 0.24, depth: 0.062, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
+  'Bonefish': F({ profile: 'fusiform', len: 0.24, depth: 0.053, tail: 'forked', snout: 'bill', dorsal: 'one', hue: '#dfe4e8' }),
   'Sardine': F({ profile: 'fusiform', len: 0.20, depth: 0.055, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
-  'Anchovy': F({ profile: 'fusiform', len: 0.20, depth: 0.048, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
-  'Herring': F({ profile: 'fusiform', len: 0.21, depth: 0.058, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
+  'Anchovy': F({ profile: 'fusiform', len: 0.21, depth: 0.038, tail: 'forked', snout: 'jaw', dorsal: 'one', hue: '#c3cfd9', pattern: 'stripes' }),
+  'Herring': F({ profile: 'deep', len: 0.205, depth: 0.062, tail: 'forked', snout: 'blunt', dorsal: 'one', hue: '#b9cede' }),
   'Mahi-Mahi': F({ profile: 'deep', len: 0.24, depth: 0.082, tail: 'lunate', snout: 'blunt', dorsal: 'sail' }),
   'Marlin': F({ profile: 'fusiform', len: 0.25, depth: 0.072, tail: 'lunate', snout: 'bill', dorsal: 'sail' }),
   'Sailfish': F({ profile: 'fusiform', len: 0.25, depth: 0.068, tail: 'lunate', snout: 'bill', dorsal: 'sail' }),
   'Swordfish': F({ profile: 'fusiform', len: 0.25, depth: 0.070, tail: 'lunate', snout: 'bill', dorsal: 'one' }),
   'Flying Fish': F({ profile: 'fusiform', len: 0.22, depth: 0.052, tail: 'forked', snout: 'blunt', dorsal: 'one', wings: 'glide' }),
-  'Remora': F({ profile: 'fusiform', len: 0.23, depth: 0.050, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
+  'Remora': F({ profile: 'fusiform', len: 0.255, depth: 0.034, tail: 'forked', snout: 'blunt', dorsal: 'two', hue: '#2f343b' }),
   /* ── cold and temperate food fish ── */
   'Cod': F({ profile: 'fusiform', len: 0.23, depth: 0.078, tail: 'round', snout: 'blunt', dorsal: 'two', pattern: 'mottle' }),
-  'Arctic Cod': F({ profile: 'fusiform', len: 0.22, depth: 0.068, tail: 'round', snout: 'blunt', dorsal: 'two' }),
+  'Arctic Cod': F({ profile: 'fusiform', len: 0.235, depth: 0.046, tail: 'forked', snout: 'blunt', dorsal: 'two', hue: '#7d8a63' }),
   'Haddock': F({ profile: 'fusiform', len: 0.22, depth: 0.076, tail: 'forked', snout: 'blunt', dorsal: 'two', pattern: 'mottle' }),
   'Pollock': F({ profile: 'fusiform', len: 0.23, depth: 0.070, tail: 'forked', snout: 'blunt', dorsal: 'two' }),
   'Salmon': F({ profile: 'fusiform', len: 0.24, depth: 0.072, tail: 'forked', snout: 'jaw', dorsal: 'one', pattern: 'spots' }),
@@ -690,7 +706,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Grayling': F({ profile: 'fusiform', len: 0.21, depth: 0.068, tail: 'forked', snout: 'blunt', dorsal: 'sail' }),
   'Whitefish': F({ profile: 'fusiform', len: 0.22, depth: 0.070, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
   'Icefish': F({ profile: 'fusiform', len: 0.21, depth: 0.055, tail: 'forked', snout: 'jaw', dorsal: 'two' }),
-  'Cold-Water Fish': F({ profile: 'fusiform', len: 0.22, depth: 0.070, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
+  'Cold-Water Fish': F({ profile: 'fusiform', len: 0.21, depth: 0.070, tail: 'forked', snout: 'blunt', dorsal: 'one', hue: '#4f6b7e' }),
   /* ── freshwater ── */
   'Carp': F({ profile: 'deep', len: 0.22, depth: 0.078, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
   'Goldfish': F({ profile: 'deep', len: 0.19, depth: 0.078, tail: 'fan', snout: 'blunt', dorsal: 'one' }),
@@ -699,7 +715,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Perch': F({ profile: 'deep', len: 0.21, depth: 0.075, tail: 'forked', snout: 'blunt', dorsal: 'spiny', pattern: 'bands' }),
   'Bass': F({ profile: 'fusiform', len: 0.22, depth: 0.080, tail: 'forked', snout: 'jaw', dorsal: 'spiny' }),
   'Sea Bass': F({ profile: 'fusiform', len: 0.23, depth: 0.082, tail: 'forked', snout: 'jaw', dorsal: 'spiny' }),
-  'Walleye': F({ profile: 'fusiform', len: 0.23, depth: 0.066, tail: 'forked', snout: 'jaw', dorsal: 'two' }),
+  'Walleye': F({ profile: 'fusiform', len: 0.23, depth: 0.058, tail: 'forked', snout: 'jaw', dorsal: 'spiny', hue: '#8d7c43', pattern: 'mottle' }),
   'Pike': F({ profile: 'fusiform', len: 0.26, depth: 0.058, tail: 'forked', snout: 'jaw', dorsal: 'one', pattern: 'mottle', teeth: true }),
   'Piranha': F({ profile: 'deep', len: 0.18, depth: 0.082, tail: 'forked', snout: 'jaw', dorsal: 'one', teeth: true }),
   'Pacu': F({ profile: 'deep', len: 0.20, depth: 0.090, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
@@ -715,9 +731,9 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Tigerfish': F({ profile: 'fusiform', len: 0.23, depth: 0.072, tail: 'forked', snout: 'jaw', dorsal: 'two', pattern: 'stripes', teeth: true }),
   'Archerfish': F({ profile: 'deep', len: 0.18, depth: 0.070, tail: 'forked', snout: 'jaw', dorsal: 'spiny', pattern: 'bands' }),
   'Knifefish': F({ profile: 'ribbon', len: 0.25, depth: 0.055, tail: 'point', snout: 'blunt', dorsal: 'none' }),
-  'Lungfish': F({ profile: 'eel', len: 0.26, depth: 0.062, tail: 'point', snout: 'blunt', dorsal: 'none', pattern: 'mottle' }),
-  'Blind Fish': F({ profile: 'fusiform', len: 0.19, depth: 0.055, tail: 'round', snout: 'blunt', dorsal: 'one' }),
-  'Cave Fish': F({ profile: 'fusiform', len: 0.19, depth: 0.055, tail: 'round', snout: 'blunt', dorsal: 'one' }),
+  'Lungfish': F({ profile: 'eel', len: 0.26, depth: 0.043, tail: 'point', snout: 'blunt', dorsal: 'none', pattern: 'mottle', hue: '#6d6a4e' }),
+  'Blind Fish': F({ profile: 'eel', len: 0.215, depth: 0.038, tail: 'round', snout: 'blunt', dorsal: 'none', hue: '#e6d2cc' }),
+  'Cave Fish': F({ profile: 'fusiform', len: 0.155, depth: 0.052, tail: 'round', snout: 'blunt', dorsal: 'one', hue: '#f0b9b0' }),
   'Small Fish': F({ profile: 'fusiform', len: 0.17, depth: 0.048, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
   /* ── ancient and armoured ── */
   'Sturgeon': F({ profile: 'fusiform', len: 0.27, depth: 0.058, tail: 'shark', snout: 'shovel', dorsal: 'one' }),
@@ -728,7 +744,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Lamprey': F({ profile: 'eel', len: 0.27, depth: 0.038, tail: 'point', snout: 'tube', dorsal: 'none' }),
   /* ── eels and ribbons ── */
   'Eel': F({ profile: 'eel', len: 0.27, depth: 0.044, tail: 'point', snout: 'jaw', dorsal: 'none' }),
-  'Moray Eel': F({ profile: 'eel', len: 0.27, depth: 0.052, tail: 'point', snout: 'jaw', dorsal: 'none', pattern: 'spots', teeth: true }),
+  'Moray Eel': F({ profile: 'eel', len: 0.28, depth: 0.031, tail: 'point', snout: 'jaw', dorsal: 'sail', pattern: 'spots', teeth: true, hue: '#68793f' }),
   'Electric Eel': F({ profile: 'eel', len: 0.28, depth: 0.048, tail: 'point', snout: 'blunt', dorsal: 'none' }),
   'Gulper Eel': F({ profile: 'eel', len: 0.27, depth: 0.050, tail: 'point', snout: 'jaw', dorsal: 'none', teeth: true, glow: true }),
   'Oarfish': F({ profile: 'ribbon', len: 0.28, depth: 0.046, tail: 'point', snout: 'blunt', dorsal: 'spiny' }),
@@ -741,13 +757,13 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Tang': F({ profile: 'deep', len: 0.16, depth: 0.090, tail: 'lunate', snout: 'blunt', dorsal: 'spiny' }),
   'Triggerfish': F({ profile: 'deep', len: 0.17, depth: 0.084, tail: 'fan', snout: 'blunt', dorsal: 'two', pattern: 'mottle' }),
   'Parrotfish': F({ profile: 'deep', len: 0.19, depth: 0.078, tail: 'fan', snout: 'blunt', dorsal: 'one', pattern: 'mottle' }),
-  'Wrasse': F({ profile: 'fusiform', len: 0.20, depth: 0.058, tail: 'fan', snout: 'jaw', dorsal: 'one', pattern: 'stripes' }),
+  'Wrasse': F({ profile: 'fusiform', len: 0.20, depth: 0.062, tail: 'fan', snout: 'jaw', dorsal: 'one', pattern: 'stripes', teeth: true, hue: '#2f8f7a' }),
   'Cardinalfish': F({ profile: 'deep', len: 0.15, depth: 0.062, tail: 'forked', snout: 'blunt', dorsal: 'two' }),
   'Rabbitfish': F({ profile: 'deep', len: 0.17, depth: 0.078, tail: 'forked', snout: 'tube', dorsal: 'spiny', pattern: 'spots' }),
   'Reef Fish': F({ profile: 'deep', len: 0.17, depth: 0.074, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'bands' }),
   'Grouper': F({ profile: 'fusiform', len: 0.22, depth: 0.092, tail: 'round', snout: 'jaw', dorsal: 'spiny', pattern: 'spots' }),
   'Snapper': F({ profile: 'deep', len: 0.21, depth: 0.080, tail: 'forked', snout: 'jaw', dorsal: 'spiny' }),
-  'Mullet': F({ profile: 'fusiform', len: 0.22, depth: 0.062, tail: 'forked', snout: 'blunt', dorsal: 'two' }),
+  'Mullet': F({ profile: 'fusiform', len: 0.205, depth: 0.066, tail: 'forked', snout: 'shovel', dorsal: 'two', hue: '#aeb6bd' }),
   'Tarpon': F({ profile: 'fusiform', len: 0.25, depth: 0.078, tail: 'forked', snout: 'jaw', dorsal: 'one' }),
   'Barracuda': F({ profile: 'fusiform', len: 0.27, depth: 0.050, tail: 'forked', snout: 'jaw', dorsal: 'two', teeth: true }),
   'Goby': F({ profile: 'fusiform', len: 0.16, depth: 0.048, tail: 'round', snout: 'blunt', dorsal: 'two' }),
@@ -770,7 +786,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Deep-Sea Fish': F({ profile: 'fusiform', len: 0.19, depth: 0.058, tail: 'forked', snout: 'jaw', dorsal: 'one', glow: true }),
   'Monkfish': F({ profile: 'globe', len: 0.19, depth: 0.062, tail: 'round', snout: 'jaw', dorsal: 'none', lure: true, teeth: true, pattern: 'mottle' }),
   /* ── SHARKS: heterocercal tail, gill slits, swept pectorals ── */
-  'Shark': F({ profile: 'fusiform', len: 0.25, depth: 0.070, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true }),
+  'Shark': F({ profile: 'fusiform', len: 0.25, depth: 0.057, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, hue: '#6e7a86' }),
   'Reef Shark': F({ profile: 'fusiform', len: 0.25, depth: 0.066, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true }),
   'Juvenile Shark': F({ profile: 'fusiform', len: 0.21, depth: 0.058, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true }),
   'Great White Shark': F({ profile: 'fusiform', len: 0.27, depth: 0.086, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, teeth: true }),

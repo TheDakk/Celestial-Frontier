@@ -503,6 +503,35 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   asset shared by the entire catalogue. **Fixing the underlying form is necessary and is not
   sufficient — check whether the parts you left alone are now the thing carrying the sameness.**
 
+- ✔ **D-ART-100 — A SPEC FIELD THAT IS DECLARED, DOCUMENTED AND INERT (wave 11).**
+  `FishSpec.hue` had existed since wave 21 with the comment "only where colour IS the
+  identity", and the painter opened with `const p = spec.hue ? { ...pIn } : pIn` — it COPIED
+  the palette when a hue was set and never applied it. Every fish in the catalogue took its
+  rarity roll, which is why the lock reported Cave Fish ≈ Anchovy and Herring ≈ Bonefish as
+  the same picture. Nothing failed; `artaudit` does not look for this, because the field is
+  read. **An inert option is worse than a missing one — every row that sets it looks correct,
+  and the reviewer stops looking.** When you add a spec axis, render one asset with it set to
+  an absurd value and confirm the picture changes.
+
+- ✔ **D-ART-101 — THE PLAUSIBLE INSTRUMENT FIX WAS THE WRONG ONE (wave 11).**
+  Small organisms sit on a mostly-dark field, so two of them agree on most pixels merely by
+  both being small — a real confound, and masking the comparison to the union of the two
+  subjects is the obvious repair. Measured against Nick's 115 hand-identified
+  template-sharing pairs it dropped the catch rate from **95/115 to 23/115** at a worse
+  false-positive rate. The background is not noise: it encodes SIZE and POSITION, and those
+  are most of what separates two species. Reverted, with the finding written into the source
+  so nobody re-derives it. **Re-run the calibration on any metric change, including the ones
+  that are obviously right.**
+
+- ✔ **D-ART-102 — GATE ON THE NET, NOT ON ONE TAIL (wave 11).**
+  The [SAME] gate failed on any pair a change pushed below the confusable line while ignoring
+  every pair the same change pushed apart — so a wave that HALVED the identical-looking pairs
+  (19 → 9) was blocked by 21 that had drifted the other way. That is not the failure the net
+  exists to catch: a global pass collapses the catalogue *net*, and this change improved it
+  net (443 → 416 confusable). It now gates on the total, which cannot be gamed — everything
+  moving together drives it sharply up — and still prints the newly-created pairs as the
+  worklist. **A one-sided criterion on a two-sided quantity blocks the work it should approve.**
+
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

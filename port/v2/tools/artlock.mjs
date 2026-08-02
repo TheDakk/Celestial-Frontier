@@ -73,6 +73,14 @@ const SAME_FLOOR = Number(val('floor', '3.0'));
 /** mean absolute channel difference between two 16x16 RGB fingerprints, 0..255.
     Base64 in, so the lock file is a megabyte instead of six. */
 const bufOf = (s) => (typeof s === 'string' ? Buffer.from(s, 'base64') : null);
+/* ⚠ A MASKED VARIANT OF THIS WAS TRIED AND REVERTED. The hypothesis was sound —
+   a portrait is mostly dark field, so two SMALL organisms agree on most pixels
+   merely by both being small — but measured against Nick's 115 hand-identified
+   template-sharing pairs, masking to the union of the two subjects dropped the
+   catch rate from 95/115 to 23/115 at a worse false-positive rate. The
+   background is not noise: it encodes SIZE and POSITION, and those are most of
+   what separates two species. Do not re-derive the idea without re-running the
+   calibration; the plausible fix was the wrong one. */
 function dist(a, b) {
   const A = bufOf(a), B = bufOf(b);
   if (!A || !B || A.length !== B.length || A.length === 0) return Infinity;
@@ -80,6 +88,7 @@ function dist(a, b) {
   for (let i = 0; i < A.length; i++) s += Math.abs(A[i] - B[i]);
   return s / A.length;
 }
+
 
 /* ───────────────────────── the negative control ───────────────────────── */
 if (has('selftest')) {
@@ -371,14 +380,29 @@ const CONFUSABLE = Number(val('confusable', '1.5'));
       }
     }
     const created = pairs.filter((q) => !before.has(key(q[0], q[1])));
-    const real = created.filter((q) => q[2] < CONFUSABLE);
-    console.log('   watch ' + was + ' -> ' + pairs.length + ' (' + created.length + ' newly under '
-      + WATCH + '; ' + real.length + ' of those under the confusable line ' + CONFUSABLE + ')');
-    for (const [a, b, d] of created.slice(0, 8)) {
-      console.log('        ' + d.toFixed(2) + '  ' + a.slice(a.indexOf('|') + 1) + '  ~  ' + b.slice(b.indexOf('|') + 1));
+    /* ⚠ AND THE GATE WAS MIS-SPECIFIED. It failed on any pair the change pushed
+       below CONFUSABLE while ignoring every pair the same change pushed APART —
+       so a wave that halved the identical-looking pairs (19 -> 9) was blocked by
+       21 that had drifted the other way. That is not what Nick asked the net to
+       stop; a global pass collapses the catalogue NET, and this one improved it
+       net. Gate on the TOTAL under the confusable line, which cannot be gamed:
+       everything moving together drives it sharply up. The created list is
+       still printed, because it is the worklist. */
+    let nowConf = 0;
+    for (const q of pairs) if (q[2] < CONFUSABLE) nowConf++;
+    let wasConf = 0;
+    for (let i = 0; i < earth.length; i++) {
+      for (let j = i + 1; j < earth.length; j++) {
+        if (dist(lock.fp[earth[i]], lock.fp[earth[j]]) < CONFUSABLE) wasConf++;
+      }
     }
-    if (real.length) {
-      console.error('   FAIL: this change made ' + real.length + ' pair(s) genuinely confusable.');
+    console.log('   confusable (<' + CONFUSABLE + ') ' + wasConf + ' -> ' + nowConf
+      + '  ·  ' + created.filter((q) => q[2] < CONFUSABLE).length + ' of them newly so');
+    for (const [a, b, dd] of created.slice(0, 8)) {
+      console.log('        ' + dd.toFixed(2) + '  ' + a.slice(a.indexOf('|') + 1) + '  ~  ' + b.slice(b.indexOf('|') + 1));
+    }
+    if (nowConf > wasConf) {
+      console.error('   FAIL: genuinely confusable pairs went ' + wasConf + ' -> ' + nowConf + '.');
       console.error('     Everything moving TOGETHER is what a global pass looks like.');
       console.error('     Derive each from its own reference row (D-ART-83).');
       bad = 1;

@@ -71,8 +71,9 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Mink': { legs: 0.0665, depth: 0.0724, len: 0.199, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'bushy', hue: '#5b4032', family: 'mustelid' },
   'Marten': { legs: 0.0773, depth: 0.0814, len: 0.2003, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#7d5334', family: 'mustelid' },
   'Fisher': { legs: 0.084, depth: 0.0885, len: 0.2033, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#4f3b2c', family: 'mustelid' },
-  'Otter': { legs: 0.0595, depth: 0.0866, len: 0.2252, neck: 0.05, muzzle: 0.30, ears: 'tiny', tail: 'long', hue: '#6b4f38', family: 'mustelid' },
-  'River Otter': { legs: 0.0595, depth: 0.0866, len: 0.2252, neck: 0.05, muzzle: 0.30, ears: 'tiny', tail: 'long', hue: '#6f5239', family: 'mustelid' },
+  'Otter': { legs: 0.0385, depth: 0.0905, len: 0.1720, neck: 0.032, muzzle: 0.30, ears: 'tiny', tail: 'long', family: 'mustelid', hue: '#6b533c' },
+  /* larger, greyer and longer-tailed than the sea-going one */
+  'River Otter': { legs: 0.0452, depth: 0.0815, len: 0.1980, neck: 0.038, muzzle: 0.34, ears: 'tiny', tail: 'long', family: 'mustelid', hue: '#8d7f6e' },
   'Giant Otter': { legs: 0.0651, depth: 0.1019, len: 0.2506, neck: 0.06, muzzle: 0.32, ears: 'tiny', tail: 'long', hue: '#54402e', family: 'mustelid' },
   'Sea Otter': { legs: 0.0538, depth: 0.1027, len: 0.219, neck: 0.05, muzzle: 0.28, ears: 'tiny', tail: 'stub', coat: 'shaggy', hue: '#6a5340', family: 'mustelid' },
   /* ★ wave 22 — proportioncheck had it at 3.06 wide-to-tall on a 0.23/0.058
