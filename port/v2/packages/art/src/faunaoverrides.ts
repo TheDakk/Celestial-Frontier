@@ -374,18 +374,43 @@ export function faunaCephalopod(c: Ctx, g: G, p: Pal, opts: { squid: boolean }):
   eye(c, cx - mw * 0.5, my + mh * 0.62, 8); eye(c, cx + mw * 0.5, my + mh * 0.62, 8);
 }
 /** CETACEAN: long body, horizontal FLUKE, blowhole, species dorsal */
-export function faunaCetacean(c: Ctx, g: G, p: Pal, opts: { dorsal: 'tall' | 'small' | 'none'; blunt: boolean }): void {
-  const cx = S * 0.5, cy = S * 0.5, L = S * 0.34, H = S * 0.10;
+export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | 'small' | 'none'; blunt: boolean; hue?: [number, number, number];
+    bulk?: number; long?: number; melon?: number }): void {
+  /* NO CETACEAN IS PURPLE. Every whale, dolphin and porpoise alive is some
+     grey, blue-grey or black, and a lavender blue whale is not rarity
+     variation — it is the animal being unrecognisable. Anchored toward slate,
+     with enough of the roll surviving to keep the family apart. */
+  const _cn = ((g.seed as number) >>> 3) & 255;
+  const _ck = 0.78;
+  const _hue = opts.hue ?? [82 + (_cn % 28), 90 + (_cn % 24), 104 + (_cn % 32)];
+  const _ar = _hue[0], _ag = _hue[1], _ab = _hue[2];
+  const _cr = pIn.cr + (_ar - pIn.cr) * _ck;
+  const _cg = pIn.cg + (_ag - pIn.cg) * _ck;
+  const _cb = pIn.cb + (_ab - pIn.cb) * _ck;
+  const rgbOf = (a: number, b: number, d: number): string =>
+    'rgb(' + (a | 0) + ',' + (b | 0) + ',' + (d | 0) + ')';
+  const p: Pal = {
+    cr: _cr, cg: _cg, cb: _cb,
+    base: rgbOf(_cr, _cg, _cb),
+    lit: rgbOf(Math.min(255, _cr * 1.32), Math.min(255, _cg * 1.30), Math.min(255, _cb * 1.26)),
+    dark: rgbOf(_cr * 0.42, _cg * 0.44, _cb * 0.48),
+  };
+  /* bulk = how deep the body is, long = how far it runs, melon = how much the
+     forehead swells over the rostrum. Between them these are the difference
+     between a right whale, a blue whale and a pilot whale. */
+  const cx = S * 0.5, cy = S * 0.5;
+  const L = S * 0.34 * (opts.long ?? 1), H = S * 0.10 * (opts.bulk ?? 1);
+  const mel = opts.melon ?? 0;
   const head = cx - L, tail = cx + L;
   c.fillStyle = bodyGrad(c, p, cx - L * 0.3, cy, L * 0.7);
   c.beginPath();
   c.moveTo(head, cy + (opts.blunt ? H * 0.3 : 0));
-  c.quadraticCurveTo(cx - L * 0.5, cy - H * (opts.blunt ? 1.5 : 1.15), cx + L * 0.2, cy - H * 0.75);
+  c.quadraticCurveTo(cx - L * (0.5 + mel * 0.28), cy - H * ((opts.blunt ? 1.5 : 1.15) + mel * 0.85), cx + L * 0.2, cy - H * 0.75);
   c.quadraticCurveTo(tail - 20, cy - H * 0.3, tail, cy);
   c.quadraticCurveTo(tail - 20, cy + H * 0.35, cx + L * 0.2, cy + H * 0.85);
   c.quadraticCurveTo(cx - L * 0.5, cy + H * 1.05, head, cy + (opts.blunt ? H * 0.3 : 0));
   c.closePath(); c.fill();
-  rim(c, () => { c.moveTo(head, cy); c.quadraticCurveTo(cx - L * 0.5, cy - H * (opts.blunt ? 1.5 : 1.15), cx + L * 0.2, cy - H * 0.75); c.quadraticCurveTo(tail - 20, cy - H * 0.3, tail, cy); }, 2.4);
+  rim(c, () => { c.moveTo(head, cy); c.quadraticCurveTo(cx - L * (0.5 + mel * 0.28), cy - H * ((opts.blunt ? 1.5 : 1.15) + mel * 0.85), cx + L * 0.2, cy - H * 0.75); c.quadraticCurveTo(tail - 20, cy - H * 0.3, tail, cy); }, 2.4);
   /* THE HORIZONTAL FLUKE — never a vertical fish tail */
   c.fillStyle = p.dark;
   c.beginPath(); c.moveTo(tail - 6, cy);
@@ -829,17 +854,19 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Cuttlefish': (c, g, p) => faunaCephalopod(c, g, p, { squid: false }),
   'Squid': (c, g, p) => faunaCephalopod(c, g, p, { squid: true }),
   'Giant Squid': (c, g, p) => faunaCephalopod(c, g, p, { squid: true }),
-  'Blue Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false }),
-  'Humpback Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false }),
-  'Sperm Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true }),
-  'Gray Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: false }),
-  'Right Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true }),
-  'Beluga': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true }),
-  'Orca': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'tall', blunt: false }),
-  'Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false }),
-  'River Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false }),
-  'Pilot Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: true }),
-  'Narwhal': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true }),
+  /* its row: a TINY nub dorsal set far back, and a broad flat U rostrum —
+     'Whale' now takes the no-dorsal blunt form so the two are not one animal */
+  'Blue Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [92, 108, 132], long: 1.30, bulk: 0.80 }),
+  'Humpback Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: true, hue: [58, 62, 70], long: 1.02, bulk: 1.15 }),
+  'Sperm Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [86, 78, 72], long: 1.10, bulk: 1.05, melon: 0.85 }),
+  'Gray Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [142, 146, 140], long: 1.06, bulk: 1.00 }),
+  'Right Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [46, 48, 52], long: 0.84, bulk: 1.42, melon: 0.30 }),
+  'Beluga': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [226, 228, 230], long: 0.88, bulk: 1.12, melon: 0.55 }),
+  'Orca': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'tall', blunt: false, hue: [26, 28, 34], long: 0.98, bulk: 1.08 }),
+  'Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [124, 134, 146], long: 0.86, bulk: 0.82 }),
+  'River Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [178, 150, 148], long: 0.80, bulk: 0.70 }),
+  'Pilot Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: true, hue: [30, 32, 38], long: 0.92, bulk: 1.20, melon: 1.00 }),
+  'Narwhal': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [168, 168, 158], long: 0.94, bulk: 0.78 }),
   /* the wing, at last — birds by bill + leg length */
   'Eagle': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'hook' }, n),
   'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.02, bill: 'hook', crest: true }, n),

@@ -14,7 +14,7 @@
 import { mulberry32, TAU } from '@cf/domain-rand';
 import { SP_COLOR, SP_HEX } from '@cf/domain-speciestraits';
 import { FLORA_ICONIC, FLORA_DUPES, floraLadder, type Pal } from './floraoverrides.js';
-import { FAUNA_NAME } from './faunaoverrides.js';
+import { FAUNA_NAME, faunaCetacean } from './faunaoverrides.js';
 import { QUAD_SPEC, faunaQuadruped } from './quadrupedoverrides.js';
 import { FAUNA2_NAME } from './faunaoverrides2.js';
 import { FAUNA3_NAME } from './faunaoverrides3.js';
@@ -27,7 +27,7 @@ import { faunaKiwi, faunaMudskipper, faunaPyrosome, faunaSalp, faunaTripodFish }
 import { floraCabbage, floraCarrot, floraCorn, floraHemp, floraTobacco, floraWatermelon, floraStrawberry, floraKiwiFruit } from './floraoverrides3.js';
 import { fungiFlyAgaric, fungiLionsMane, fungiMaitake, fungiStinkhorn, fungiCordyceps, lichenMat, microbeForam, tardigrade, macroAlgaeSheet, microAlgaeCell, algaeBloom } from './fungioverrides2.js';
 import { fungiEnoki, procFamilyIndex, FAMILY_COUNT, fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiClub, microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate, microbePlates, microbeMat } from './proceduralfamilies.js';
-import { faunaBear, faunaKoala, faunaSirenian, faunaHumpback, faunaBeakedWhale, faunaCuttlefish, faunaHorseshoeCrab, faunaSeaSquirt, faunaLamprey, faunaBat } from './faunaoverrides5.js';
+import { faunaBear, faunaKoala, faunaSirenian, faunaHumpback, faunaBeakedWhale, faunaCuttlefish, faunaHorseshoeCrab, faunaSeaSquirt, faunaLamprey, faunaBat, faunaCroc } from './faunaoverrides5.js';
 import { fishBody } from './faunaoverrides3.js';
 import { insectBody, myriapod } from './invertoverrides.js';
 import { plantBody } from './floraoverrides2.js';
@@ -401,6 +401,18 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'fauna|Koala': faunaKoala,
   'fauna|Dugong': (c, g, p) => faunaSirenian(c, g, p, 'Dugong'),
   'fauna|Manatee': (c, g, p) => faunaSirenian(c, g, p, 'Manatee'),
+  /* ★ WAVE 10 — the cetaceans that had no route and fell through to the
+     verbatim engine as spheres. faunaCetacean already draws the family well. */
+  'fauna|Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [64, 72, 84], long: 1.18, bulk: 1.26 }),
+  'fauna|Porpoise': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: true, hue: [40, 44, 50], long: 0.68, bulk: 0.92 }),
+  /* ★ WAVE 10 — THE CROCODILIANS, all four unrouted and all four drawn by the
+     verbatim engine as the SAME narrow arrow with no limbs. The snout is the
+     species: broad U (alligator, caiman), narrow V with the fourth tooth
+     showing (crocodile), a needle (gharial). */
+  'fauna|Alligator': (c, g, pp) => faunaCroc(c, g, pp, { snout: 'broad', len: 0.42, depth: 0.070, hue: [44, 52, 40], scutes: 1.15 }, 'Alligator'),
+  'fauna|Crocodile': (c, g, pp) => faunaCroc(c, g, pp, { snout: 'narrow', tooth: true, len: 0.47, depth: 0.058, hue: [118, 116, 74], scutes: 0.85 }, 'Crocodile'),
+  'fauna|Caiman': (c, g, pp) => faunaCroc(c, g, pp, { snout: 'broad', ridge: true, len: 0.29, depth: 0.082, hue: [72, 104, 62], scutes: 1.5 }, 'Caiman'),
+  'fauna|Gharial': (c, g, pp) => faunaCroc(c, g, pp, { snout: 'needle', knob: true, len: 0.49, depth: 0.052, hue: [96, 112, 96], scutes: 0.70 }, 'Gharial'),
   'fauna|Humpback Whale': faunaHumpback,
   'fauna|Beaked Whale': faunaBeakedWhale,
   'fauna|Cuttlefish': faunaCuttlefish,
