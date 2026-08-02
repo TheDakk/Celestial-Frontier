@@ -48,7 +48,7 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Lark': B({ legs: 0.020, bill: 'fine', size: 0.48, hue: '#9c8560', plump: 0.98, elong: 1.06, streak: true, crest: true }),
   'Swallow': B({ legs: 0.012, bill: 'fine', size: 0.46, hue: '#2f4a6b', plump: 0.74, elong: 1.34, tail: 'forked', bib: '#c9743e' }),
   'Swift': B({ legs: 0.008, bill: 'fine', size: 0.46, hue: '#4b4640', plump: 0.58, elong: 1.62, tail: 'forked' }),
-  'Hummingbird': B({ legs: 0.008, bill: 'needle', size: 0.34 }),
+  'Hummingbird': B({ hue: '#1e8a5a', legs: 0.008, bill: 'needle', size: 0.34 }),
   'Kingfisher': B({ legs: 0.012, bill: 'chisel', size: 0.56, crest: true, hue: '#1b6fa8' }),
   'Woodpecker': B({ legs: 0.015, bill: 'chisel', size: 0.62, crest: true, hue: '#2c2a28' }),
   'Quetzal': B({ legs: 0.015, bill: 'short', size: 0.62, tail: 'long', crest: true, hue: '#0f8a6a' }),

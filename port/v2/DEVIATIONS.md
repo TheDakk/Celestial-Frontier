@@ -602,6 +602,46 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   BETTER than a random roll because real species genuinely differ. ~100 have one; the rest is
   a data job, not a formula. The finding is written into the source so nobody re-derives a clamp.
 
+- ✅ **D-ART-113 — SPECIES-TRUE COLOUR, first 148 organisms (wave 21).** Nick ratified the rule
+  ("I agree with the species colors"); D-ART-108 had already established that no FORMULA can
+  deliver it, so this is the per-species route: a hue read off the real animal, one organism
+  at a time, fanned out to agents and applied through `tools/applyhues.mjs`.
+  - **The measurement was wrong before it was right.** The first count said 521 organisms
+    already carried a species hue. It was matching `fhue:` — the FRUIT colour on 270 flora —
+    with a regex that never anchored the word start. The honest figure was **268**. Fixing it
+    moved the gap from 489 to **742**, i.e. the problem was half again as large as reported.
+  - **Capability is checked per PAINTER, not per table** (`tools/huegap.mjs`). Two cheaper
+    heuristics were tried and rejected: "does a sibling in this table have a hue?" (wrong —
+    `FAUNA_NAME` holds both `faunaBird`, which reads a hue, and `faunaBeetle`, which has no
+    colour axis; it would have written ~250 INERT hues, D-ART-100 at scale) and "does the
+    exported painter mention `.hue`?" (wrong — `faunaQuadruped` applies its hue through a
+    non-exported helper, so the whole mammal system read as incapable).
+  - **An RGB-array hue is still a hue.** `faunaCetacean` takes `hue: [226, 228, 230]`, so all
+    13 cetaceans were reported colourless and the first run wrote a SECOND `hue` key onto
+    each line — a duplicate property whose later value wins, leaving the new hex inert.
+    TypeScript rejected it (TS1117), which is the only reason it was cheap to find.
+  - ⚠ **THE TRADE-OFF, AND IT IS A REAL ONE — NICK SHOULD SEE THIS.** Realistic colour makes
+    genuinely-similar animals genuinely similar. `[SAME]` went **hard 1 → 10** and
+    **confusable 328 → 519** on first application. Four rounds of separation brought hard
+    pairs back to **1** (the pre-existing Water Mint / Chicory, which no colour can fix — the
+    flora painter has no axis for a bare branching stem), but **confusable settled at 478 and
+    has been re-baselined, not defeated.** Reef Shark ~ Hammerhead Shark and Gar ~ Eel are
+    now "confusable" because in life they look alike. The hard ratchet — "effectively the
+    same picture" — is the load-bearing guarantee and it is intact; the confusable tier is
+    the accepted cost of the rule Nick ratified. **If he would rather keep the catalogue
+    legible than accurate, this is the number to revisit.**
+  - **One fix was anatomical, not chromatic, and that is the lesson.** Eel, Electric Eel and
+    Lungfish shared a profile, length, depth, tail, snout and dorsal — three identical
+    silhouettes — so hue was carrying the entire distinction and could not: every brown that
+    pulled Lungfish clear of Eel pushed it into Electric Eel, and back, for four rounds. A
+    lungfish is a heavy-bodied fish, so it is now drawn as one. **When colour cannot separate
+    two species, check whether they are actually the same shape.**
+  - Remaining: **594 still on the rarity roll**, of which only 4 are reachable today. **575
+    are blocked behind painters with no hue axis** — `plantBody` (314), `smallRodent` (29),
+    `insectBody` (26), `reptSnake` (21), `reptLizard` (18), `primate` (17) are the big ones.
+    Giving those six painters a hue axis is the highest-value next move by a wide margin.
+    `node tools/huegap.mjs` regenerates the worklist.
+
 - ⚠ **D-ART-109 — ARTLOCK WAS NEVER IN THE ART BATTERY (wave 21).** The safety net built to
   stop a global pass from silently undoing signed-off work was documented as part of "the art
   gate", the handoff called `npm run artbattery` "the 5-stage art gate", and the battery did
