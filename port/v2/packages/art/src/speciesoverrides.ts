@@ -16,6 +16,7 @@ import { SP_COLOR, SP_HEX } from '@cf/domain-speciestraits';
 import { FLORA_ICONIC, FLORA_DUPES, floraLadder, type Pal } from './floraoverrides.js';
 import { FAUNA_NAME } from './faunaoverrides.js';
 import { QUAD_SPEC, faunaQuadruped } from './quadrupedoverrides.js';
+import { FAUNA2_NAME } from './faunaoverrides2.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -313,13 +314,13 @@ const FUNGI_NAME: Record<string, Painter> = {
   'Giant Puffball': fungiPuffball, 'Earthstar': fungiEarthstar, 'Black Truffle': fungiPuffball,
   'Coral Fungus': fungiCoral, "Lion's Mane": fungiCoral, 'Cordyceps': fungiCoral,
   'Morel': fungiMorel,
-  'Mold': fungiMold, 'Mildew': fungiMold, 'Yeast': fungiMold, 'Bracken': fungiMold,
+  'Mold': fungiMold, 'Mildew': fungiMold, 'Yeast': fungiMold,
 };
 const MICROBE_NAME: Record<string, Painter> = {
-  'Tardigrade': microbeTardigrade, 'Water Bear': microbeTardigrade,
-  'Diatom': microbeDiatom, 'Radiolarian': microbeDiatom,
+  'Tardigrade': microbeTardigrade,
+  'Diatom': microbeDiatom, 'Radiolarian': microbeDiatom, 'Dinoflagellate': microbeDiatom,
   'Paramecium': microbeCiliate, 'Euglena': microbeCiliate,
-  'Amoeba': microbeAmoeba, 'Foraminiferan': microbeAmoeba,
+  'Amoeba': microbeAmoeba, 'Foraminiferan': microbeAmoeba, 'Green Algae': microbeAmoeba,
 };
 
 /** Return a corrected portrait data URL, or null to fall through to the
@@ -346,7 +347,7 @@ export function resolveOverride(g: G): string | null {
   }
   /* FAUNA (wave 3): species whose defining anatomy was categorically wrong */
   if (kingdom === 'fauna') {
-    const fp = FAUNA_NAME[name];
+    const fp = FAUNA_NAME[name] || FAUNA2_NAME[name];
     const quad = !fp ? QUAD_SPEC[name] : undefined;   /* wave 4: the mammal system */
     if (!fp && !quad) return null;
     const { cv, c } = newCanvas();
@@ -370,4 +371,4 @@ export function resolveOverride(g: G): string | null {
 }
 
 /** How many species wave 1 corrects (for the record + the audit sentinel). */
-export const OVERRIDE_COUNT = new Set([...Object.keys(FUNGI_NAME), ...Object.keys(MICROBE_NAME), ...Object.keys(FLORA_ICONIC), ...FLORA_DUPES, ...Object.keys(FAUNA_NAME), ...Object.keys(QUAD_SPEC)]).size;
+export const OVERRIDE_COUNT = new Set([...Object.keys(FUNGI_NAME), ...Object.keys(MICROBE_NAME), ...Object.keys(FLORA_ICONIC), ...FLORA_DUPES, ...Object.keys(FAUNA_NAME), ...Object.keys(FAUNA2_NAME), ...Object.keys(QUAD_SPEC)]).size;
