@@ -1,0 +1,367 @@
+/* artlock.mjs — ★ THE SAFETY NET (arc stage 3 wave 4).
+
+   Nick, 2026-08-02: "we want to prevent global passes from affecting this.
+   Let's put a safety net in there so that, as we're iterating, it's not
+   messing up what we did before: all this cleanup work and re-fixing
+   everything."
+
+   WHAT WENT WRONG THAT THIS CATCHES. Three times in this arc a change that
+   was meant to touch a handful of animals silently rewrote the whole
+   catalogue — a shared band clamped 127 quadruped torsos to the same value,
+   and a "small" arithmetic sweep undid a good elephant nobody had asked to
+   change. Every gate the project owned stayed green through all of it,
+   because every one of them asks a question about a SINGLE asset in
+   isolation: did it paint, is it a byte-duplicate, does it fit the frame.
+   None of them had any idea what the species was supposed to look like five
+   minutes ago, so none of them could see a catalogue-wide drift at all.
+
+   TWO GUARDS, and they fail in opposite directions:
+
+     [DRIFT]  How many species changed since the blessed baseline, and by how
+              much. The lock does NOT forbid change — art work is change. It
+              makes change COUNTABLE and forces it to be named. Edit three
+              animals, see three animals move; see four hundred move and you
+              have just run a global pass without meaning to.
+
+     [SAME]   How far apart the species look FROM EACH OTHER. A global clamp
+              does not only move everything, it moves everything TOGETHER —
+              the failure mode Nick actually saw ("every animal on four legs
+              has kind of the same body type… the elephant has adopted the
+              wolf body"). This reports the closest-looking pairs in the
+              catalogue and fails when any two get closer than the floor.
+
+   Neither guard can be satisfied by a fix that is only correct on paper: the
+   input is the rendered pixels of all 1,254 assets (D-ART-88).
+
+   Usage:
+     node tools/artlock.mjs                 both guards against the lock
+     node tools/artlock.mjs --bless         re-bless the CURRENT render as the
+                                            baseline (say why in the commit)
+     node tools/artlock.mjs --touching=quadruped   declare the class you edited
+     node tools/artlock.mjs --bless=Wolf,Lion      re-bless only these species
+     node tools/artlock.mjs --bless --class=quadruped   re-bless one class only
+     node tools/artlock.mjs --max=40        allow at most N drifted species
+     node tools/artlock.mjs --selftest      negative-control, both directions
+*/
+import fs from 'node:fs';
+import path from 'node:path';
+import http from 'node:http';
+import os from 'node:os';
+import { spawn, execSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { classMap, classOf } from './artclass.mjs';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const root = path.join(here, '..');
+const appDir = path.join(root, 'apps', 'game');
+const distDir = path.join(appDir, 'dist');
+const LOCK = path.join(root, 'reference', 'artlock.json');
+const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+const argv = process.argv.slice(2);
+const has = (k) => argv.some((a) => a === '--' + k || a.startsWith('--' + k + '='));
+const val = (k, d) => { const a = argv.find((s) => s.startsWith('--' + k + '=')); return a ? a.slice(k.length + 3) : d; };
+const MAXDRIFT = Number(val('max', '9999'));
+/* how different two 16x16 luminance grids must be before we call it a change.
+   Calibrated so re-running an unchanged build reports zero and a one-line
+   tweak to one painter reports only the species that painter draws. */
+const DRIFT_EPS = Number(val('eps', '0.9'));
+/* and how close two DIFFERENT species may look before they are siblings */
+const SAME_FLOOR = Number(val('floor', '3.0'));
+
+/** mean absolute channel difference between two 16x16 RGB fingerprints, 0..255.
+    Base64 in, so the lock file is a megabyte instead of six. */
+const bufOf = (s) => (typeof s === 'string' ? Buffer.from(s, 'base64') : null);
+function dist(a, b) {
+  const A = bufOf(a), B = bufOf(b);
+  if (!A || !B || A.length !== B.length || A.length === 0) return Infinity;
+  let s = 0;
+  for (let i = 0; i < A.length; i++) s += Math.abs(A[i] - B[i]);
+  return s / A.length;
+}
+
+/* ───────────────────────── the negative control ───────────────────────── */
+if (has('selftest')) {
+  let pass = 0, fail = 0;
+  const ck = (name, got, want) => { if (got === want) { pass++; } else { fail++; console.error('  ✗ ' + name + ': got ' + got + ' want ' + want); } };
+  const N = 16 * 16 * 3;
+  const grid = (f) => Buffer.from(Array.from({ length: N }, (_, i) => f(i) & 255)).toString('base64');
+  const flat = grid(() => 40);
+  ck('identical renders are not drift', dist(flat, flat) > DRIFT_EPS, false);
+  ck('a one-step shift on every channel IS drift', dist(flat, grid(() => 41)) > DRIFT_EPS, true);
+  ck('a big change on 4 channels of 768 is not drift', dist(flat, grid((i) => (i < 4 ? 200 : 40))) > DRIFT_EPS, false);
+  ck('a change over a third of the body IS drift', dist(flat, grid((i) => (i < N / 3 ? 90 : 40))) > DRIFT_EPS, true);
+  ck('two identical species are too close', dist(flat, flat) < SAME_FLOOR, true);
+  ck('two differently-coloured species are not', dist(flat, grid((i) => (i % 3 ? 40 : 190))) < SAME_FLOOR, false);
+  ck('a missing fingerprint is infinite drift', dist(flat, null) > DRIFT_EPS, true);
+  ck('a truncated fingerprint is infinite drift', dist(flat, Buffer.from([1, 2, 3]).toString('base64')) > DRIFT_EPS, true);
+  ck('an empty fingerprint is infinite drift', dist(flat, '') > DRIFT_EPS, true);
+  console.log('artlock --selftest: ' + pass + '/' + (pass + fail) + ' judgement controls');
+  console.log(fail ? '  ⚠ the control itself is broken — fix it before trusting a report'
+    : '  the DECISION layer holds. ⚠ D-ART-81: this says NOTHING about the fingerprint\n'
+      + '    sensor upstream of it. That one is controlled by --bless/re-run being 0.');
+  process.exit(fail ? 1 : 0);
+}
+
+/* ───────────────────────── render the catalogue ───────────────────────── */
+execSync('npx vite build', { cwd: appDir, stdio: 'ignore' });
+{
+  const newest = (dir) => fs.readdirSync(dir, { withFileTypes: true }).reduce((acc, e) => {
+    const p = path.join(dir, e.name);
+    return Math.max(acc, e.isDirectory() ? newest(p) : fs.statSync(p).mtimeMs);
+  }, 0);
+  const srcMs = Math.max(newest(path.join(root, 'packages', 'art', 'src')), newest(path.join(appDir, 'src')));
+  if (fs.statSync(path.join(distDir, 'audit.html')).mtimeMs < srcMs) {
+    console.error('artlock: THE BUNDLE IS STALE. Refusing to lock code nobody is running.');
+    process.exit(2);
+  }
+}
+const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.map': 'application/json' };
+const server = http.createServer((req, res) => {
+  const p = path.join(distDir, req.url === '/' ? 'index.html' : req.url.split('?')[0]);
+  try { const b = fs.readFileSync(p); res.writeHead(200, { 'content-type': MIME[path.extname(p)] || 'application/octet-stream' }); res.end(b); }
+  catch { res.writeHead(404); res.end(); }
+});
+await new Promise((r) => server.listen(0, '127.0.0.1', r));
+const URL0 = 'http://127.0.0.1:' + server.address().port + '/audit.html';
+
+const udd = path.join(os.tmpdir(), 'cf-artlock-' + process.pid);
+const port = 9733 + (process.pid % 100);
+const edge = spawn(EDGE, ['--headless=new', '--no-sandbox', '--no-first-run',
+  '--disable-component-extensions-with-background-pages', '--disable-component-update', '--disable-background-networking',
+  '--remote-debugging-port=' + port, '--user-data-dir=' + udd, 'about:blank'], { stdio: 'ignore' });
+let ws0 = null;
+for (let t = 0; t < 60 && !ws0; t++) { await sleep(400); try { ws0 = (await (await fetch('http://127.0.0.1:' + port + '/json/version')).json()).webSocketDebuggerUrl; } catch { /* boot */ } }
+if (!ws0) { console.error('artlock: no CDP'); edge.kill(); process.exit(2); }
+const ws = new WebSocket(ws0);
+let mid = 0; const pend = new Map();
+ws.onmessage = (ev) => { const m = JSON.parse(ev.data); if (m.id && pend.has(m.id)) { const q = pend.get(m.id); pend.delete(m.id); m.error ? q.rej(new Error(m.error.message)) : q.res(m.result); } };
+await new Promise((r) => { ws.onopen = r; });
+const send = (method, params = {}, sessionId) => new Promise((res, rej) => { const id = ++mid; pend.set(id, { res, rej }); ws.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params })); });
+const t0 = await send('Target.createTarget', { url: 'about:blank' });
+const at = await send('Target.attachToTarget', { targetId: t0.targetId, flatten: true });
+const sess = at.sessionId;
+await send('Runtime.enable', {}, sess);
+await send('Page.navigate', { url: URL0 }, sess);
+const evalIn = async (expr) => {
+  const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, sess);
+  if (r.exceptionDetails) throw new Error('eval threw: ' + String(r.exceptionDetails.exception?.description || '').slice(0, 300));
+  return r.result.value;
+};
+process.stdout.write('artlock: rendering the catalogue');
+let ready = false;
+for (let s = 0; s < 900 && !ready; s++) {
+  await sleep(400);
+  ready = await evalIn('!!(window.__CF_AUDIT__&&window.__CF_AUDIT__.done)');
+  if (s % 15 === 0) process.stdout.write('.');
+}
+process.stdout.write('\n');
+if (!ready) { console.error('artlock: the audit never finished'); ws.close(); edge.kill(); server.close(); process.exit(2); }
+/* pull the fingerprints in chunks — one 1,254-entry object exceeds the CDP
+   return-by-value budget and comes back silently truncated */
+const keys = await evalIn('Object.keys(window.__CF_FINGERPRINTS__)');
+const now = {};
+for (let i = 0; i < keys.length; i += 120) {
+  const part = await evalIn(`(()=>{const F=window.__CF_FINGERPRINTS__,K=Object.keys(F).slice(${i},${i + 120}),o={};for(const k of K)o[k]=F[k];return o;})()`);
+  Object.assign(now, part);
+}
+ws.close(); edge.kill(); server.close();
+if (Object.keys(now).length !== keys.length) {
+  console.error('artlock: fingerprint transfer lost rows (' + Object.keys(now).length + '/' + keys.length + ')');
+  process.exit(2);
+}
+console.log('artlock: fingerprinted ' + keys.length + ' assets');
+
+/* ───────────────────────────── the guards ───────────────────────────── */
+
+/* ───────────────────────────── the guards ───────────────────────────── */
+const CLS = classMap();
+const clsOf = (k) => classOf(CLS, k);
+const lockExists = fs.existsSync(LOCK);
+const lock = lockExists ? JSON.parse(fs.readFileSync(LOCK, 'utf8')) : { blessed: null, fp: {}, sameCount: null, hardCount: null };
+
+if (has('bless')) {
+  const only = val('bless', '');
+  const clsOnly = val('class', '');
+  /* ★ A PARTIAL BLESSING IS THE WHOLE POINT. Nick: "if I asked you to do a
+     global pass and do retroactive, it's not going to break everything else."
+     After an INTENDED pass over one class you re-bless that class and every
+     other class stays pinned to the fingerprint it was signed off at — so an
+     approved quadruped rework cannot quietly carry the birds along with it. */
+  const names = only ? new Set(only.split(',').map((s) => s.trim())) : null;
+  let n = 0;
+  const next = (names || clsOnly) ? { ...lock.fp } : {};
+  /* ⚠ a partial bless used to LEAVE STALE KEYS BEHIND, and the next run
+     reported 1,134 assets as having "VANISHED" — a whole-catalogue alarm
+     produced entirely by the lock's own bookkeeping. A full bless replaces
+     the map; a named bless edits it. */
+  for (const k of keys) {
+    const bare = k.slice(k.indexOf('|') + 1);
+    if (names && !names.has(bare)) continue;
+    if (clsOnly && classOf(CLS, k) !== clsOnly) continue;
+    next[k] = now[k]; n++;
+  }
+  lock.fp = next;
+  lock.blessed = new Date().toISOString().slice(0, 10);
+  lock.note = 'Re-blessed by tools/artlock.mjs. A blessing is a CLAIM THAT SOMEONE LOOKED. '
+    + 'Never bless to make a red report go green — that is the whole failure this file exists to stop.';
+}
+
+let bad = 0;
+
+/* [DRIFT] — SCOPED BY CLASS ------------------------------------------- */
+/*  Nick, 2026-08-02: "It only needs to apply to the organisms that we're
+    dealing with in that class… we just want to make it so that the global
+    passes don't retroactively affect all the earth work we put in."
+
+    That is the right shape, and it is sharper than counting. Editing the
+    quadruped painter SHOULD move quadrupeds — that is the work. The alarm is
+    when it also moves the BIRDS. So declare what you are touching:
+
+        node tools/artlock.mjs --touching=quadruped
+
+    Drift inside the declared classes is reported and allowed. Drift outside
+    them is the failure, because that is precisely the fingerprint of a global
+    pass. Nothing declared? Then nothing may move, which is the correct
+    default for a run that is only supposed to verify.
+
+    PROCEDURAL IS ADVISORY. Nick: "we obviously want to iterate on the
+    procedural stuff and fix the art, but we want the earth catalog to be
+    unique." The generated library is meant to keep changing while we work on
+    the generator, so its drift is counted and printed and never fails — while
+    'verbatim-*' is the opposite: those species are drawn by the byte-verbatim
+    engine nobody is allowed to edit, so ANY movement there is a real bug. */
+const touching = new Set((val('touching', '') || '').split(',').map((s) => s.trim()).filter(Boolean));
+if (!lockExists && !has('bless')) {
+  console.log('\n[DRIFT] no lock yet — run `node tools/artlock.mjs --bless` once the art is where you want it.');
+} else if (has('bless') && !val('bless', '') && !val('class', '')) {
+  console.log('\n[DRIFT] skipped: this run blessed the whole catalogue, so it can only agree with itself.');
+} else {
+  const byClass = new Map();
+  let missing = 0;
+  for (const k of keys) {
+    const was = lock.fp[k];
+    if (!was) { missing++; continue; }          /* a NEW asset is not drift */
+    const d = dist(was, now[k]);
+    if (d <= DRIFT_EPS) continue;
+    const c = clsOf(k);
+    if (!byClass.has(c)) byClass.set(c, []);
+    byClass.get(c).push([k, d]);
+  }
+  const gone = Object.keys(lock.fp).filter((k) => !(k in now));
+  const total = [...byClass.values()].reduce((a, v) => a + v.length, 0);
+  console.log('\n[DRIFT] ' + total + ' of ' + keys.length + ' assets changed since ' + (lock.blessed || 'the lock')
+    + (missing ? ' · ' + missing + ' new' : '') + (gone.length ? ' · ' + gone.length + ' VANISHED' : ''));
+  console.log('        declared: ' + (touching.size ? [...touching].join(', ') : '(nothing — so nothing may move)'));
+  const rows = [...byClass.entries()].sort((a, b) => b[1].length - a[1].length);
+  for (const [c, list] of rows) {
+    const declared = touching.has(c);
+    const advisory = c === 'procedural';
+    const flag = declared ? 'declared' : advisory ? 'advisory' : '★ UNDECLARED';
+    console.log('   ' + String(list.length).padStart(4) + '  ' + c.padEnd(17) + flag);
+    if (!declared && !advisory) {
+      for (const [k, d] of list.sort((a, b) => b[1] - a[1]).slice(0, 8)) {
+        console.log('          ' + d.toFixed(2).padStart(6) + '  ' + k);
+      }
+      if (list.length > 8) console.log('          … and ' + (list.length - 8) + ' more');
+      bad = 1;
+    }
+  }
+  if (gone.length) {
+    console.error('   ★ these assets no longer render at all: ' + gone.slice(0, 10).join(' · '));
+    bad = 1;
+  }
+  if (bad) {
+    console.error('   ★ FAIL: a class you did not declare moved. Either you meant to touch it —');
+    console.error('     add it to --touching and say so in the commit — or you have just run a');
+    console.error('     global pass over work that was already signed off (D-ART-83, D-ART-95).');
+  }
+  const declaredTotal = rows.filter(([c]) => touching.has(c)).reduce((a, [, v]) => a + v.length, 0);
+  if (declaredTotal > MAXDRIFT) {
+    console.error('   ★ FAIL: ' + declaredTotal + ' assets moved inside the declared classes, --max was ' + MAXDRIFT + '.');
+    bad = 1;
+  }
+}
+
+/* [SAME] — EARTH ONLY, TWO TIERS -------------------------------------- */
+/*  The Earth catalogue is the one that has to be unique: each species has a
+    real organism behind it and two of them looking alike is always a defect.
+    The procedural library is deliberately generated and is judged elsewhere.
+
+    Two thresholds doing two different jobs, because one cannot do both:
+
+      HARD  — pairs this close are the same picture with a different label.
+              Always a failure, no grace.
+      WATCH — pairs close enough to be worth fixing. There are hundreds today,
+              so gating on the absolute count would just be red forever and
+              tell us nothing. It is gated as a RATCHET instead: the count may
+              go down, never up. That is what stops a global pass quietly
+              collapsing distinctions we already paid for.
+
+    Both thresholds were calibrated against ground truth rather than picked:
+    Nick's own audit engine independently listed 22 clusters of species that
+    share a body template (115 pairs). At WATCH=2.5 this metric catches 95 of
+    those 115 while flagging 0.9% of all other pairs — a real separation
+    between the two distributions, not a band drawn through the middle. */
+const HARD = Number(val('hard', '0.6'));
+const WATCH = Number(val('watch', '2.5'));
+{
+  const earth = keys.filter((k) => k.startsWith('earth-'));
+  const pairs = [];
+  for (let i = 0; i < earth.length; i++) {
+    for (let j = i + 1; j < earth.length; j++) {
+      const d = dist(now[earth[i]], now[earth[j]]);
+      if (d < WATCH) pairs.push([earth[i], earth[j], d]);
+    }
+  }
+  pairs.sort((a, b) => a[2] - b[2]);
+  const hard = pairs.filter((p) => p[2] < HARD);
+  console.log('\n[SAME] ' + earth.length + ' Earth species · ' + pairs.length + ' pairs under WATCH ' + WATCH
+    + ' · ' + hard.length + ' under HARD ' + HARD);
+  for (const [a, b, d] of pairs.slice(0, 15)) {
+    console.log('   ' + d.toFixed(2).padStart(6) + '  ' + a.slice(a.indexOf('|') + 1) + '  ≈  ' + b.slice(b.indexOf('|') + 1));
+  }
+  if (pairs.length > 15) console.log('   … and ' + (pairs.length - 15) + ' more pairs to work through');
+  /* ⚠ HARD IS A RATCHET TOO, and it has to be. There are 33 of these today —
+     mostly the songbird cluster, which Nick's own audit found independently —
+     so gating on "must be zero" would leave this red from the day it shipped,
+     and a gate that is always red is a gate nobody reads. It is gated the same
+     way as WATCH: print them every run, never let the number grow. The list is
+     a worklist; the ratchet is the guard. */
+  const wasHard = lock.hardCount;
+  if (hard.length) {
+    console.log('   ★ ' + hard.length + ' pairs are effectively the same picture — the worklist:');
+    for (const [a, b, d] of hard.slice(0, 10)) {
+      console.log('        ' + d.toFixed(2) + '  ' + a.slice(a.indexOf('|') + 1) + '  =  ' + b.slice(b.indexOf('|') + 1));
+    }
+  }
+  if (wasHard != null && hard.length > wasHard) {
+    console.error('   ★ FAIL: identical-looking pairs went ' + wasHard + ' → ' + hard.length + '.');
+    bad = 1;
+  } else if (wasHard != null && hard.length < wasHard) {
+    console.log('   ratchet(hard): ' + wasHard + ' → ' + hard.length + '. Tightened.');
+  }
+  lock.hardCount = Math.min(hard.length, wasHard ?? hard.length);
+  const was = lock.sameCount;
+  if (was == null) {
+    console.log('   (no ratchet recorded yet — this run sets it at ' + pairs.length + ')');
+    lock.sameCount = pairs.length;
+  } else if (pairs.length > was) {
+    console.error('   ★ FAIL: sameness got WORSE — ' + was + ' pairs at the lock, ' + pairs.length + ' now.');
+    console.error('     A change that makes more species resemble each other is a global pass');
+    console.error('     whatever it was meant to be. Derive each from its own reference row.');
+    bad = 1;
+  } else {
+    if (pairs.length < was) console.log('   ratchet: ' + was + ' → ' + pairs.length + ' pairs. Tightened.');
+    lock.sameCount = pairs.length;
+  }
+}
+
+if (has('bless') || !bad) {
+  fs.mkdirSync(path.dirname(LOCK), { recursive: true });
+  fs.writeFileSync(LOCK, JSON.stringify(lock, null, 0));
+  if (has('bless')) console.log('\nartlock: BLESSED ' + Object.keys(lock.fp).length + ' assets');
+}
+console.log('\nartlock: ' + (bad ? 'FAIL' : 'ok'));
+process.exit(bad);

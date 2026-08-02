@@ -296,6 +296,46 @@ async function run(): Promise<void> {
     }
   }
   sheets.push({ key: 'procedural', cells: proc });
+
+  /* ★ THE ART LOCK FINGERPRINT (arc stage 3 wave 4, on Nick's instruction:
+     "put a safety net in there so that, as we're iterating, it's not messing
+     up what we did before").
+
+     Three global arithmetic passes in this arc turned a good elephant bad and
+     made 127 animals the same shape, and NOTHING CAUGHT IT — every gate the
+     project had asks a question about one asset in isolation ("did it paint?
+     is it a byte-duplicate? does it fit the frame?"), and all of them stay
+     green while the whole catalogue quietly drifts. What was missing is a
+     record of what each species ALREADY LOOKED LIKE when it was signed off.
+
+     So every portrait gets a 16x16 luminance fingerprint here, and
+     tools/artlock.mjs diffs the whole catalogue against a blessed baseline.
+     It does not forbid change — it makes change COUNTABLE, so a two-species
+     edit that moved four hundred animals cannot be mistaken for a two-species
+     edit. The same grid answers the other half: how far apart two species
+     actually look, which is the only way to see "they all became the wolf". */
+  const FP = 16;
+  const fcv = document.createElement('canvas');
+  fcv.width = FP; fcv.height = FP;
+  const fg = fcv.getContext('2d', { willReadFrequently: true })!;
+  const fingerprints: Record<string, string> = {};
+  /* ⚠ THE FIRST FINGERPRINT WAS LUMINANCE ONLY, and it reported 571 of 1,014
+     Earth species as look-alikes — because a grey silhouette on a dark field
+     says almost nothing about a species. Colour is most of what separates a
+     robin from a lark. The signature is the full RGB grid, base64'd so the
+     lock file stays a megabyte rather than six. */
+  const fingerprint = (im: HTMLImageElement): string => {
+    fg.clearRect(0, 0, FP, FP);
+    fg.drawImage(im, 0, 0, FP, FP);
+    const d = fg.getImageData(0, 0, FP, FP).data;
+    let bin = '';
+    for (let i = 0; i < FP * FP; i++) {
+      const a = d[i * 4 + 3]! / 255;
+      bin += String.fromCharCode(Math.round(d[i * 4]! * a), Math.round(d[i * 4 + 1]! * a), Math.round(d[i * 4 + 2]! * a));
+    }
+    return btoa(bin);
+  };
+
   /* contact sheets: a grid per set, portraits at 96px */
   const sheetUrls: Record<string, string> = {};
   for (const sh of sheets) {
@@ -312,6 +352,13 @@ async function run(): Promise<void> {
         const im = new Image();
         await new Promise<void>((res) => { im.onload = () => res(); im.onerror = () => res(); im.src = cell.url!; });
         g.drawImage(im, x + 2, y + 2, C - 4, C - 4);
+        /* keyed on sheet+name ALONE this dropped 120 of 1,254 assets on the
+           floor: two procedural kingdoms whose labels begin with the same
+           letter produce the same cell name, so half the procedural set
+           silently overwrote the other half and the lock covered neither.
+           The index disambiguates. (PROCESS_LAWS round 9: a key collision
+           is a green-but-wrong state, and it looks exactly like a pass.) */
+        fingerprints[sh.key + '|' + cell.name + (sh.key === 'procedural' ? '#' + i : '')] = fingerprint(im);
       } else { g.fillStyle = '#5a1f1f'; g.fillRect(x + 2, y + 2, C - 4, C - 4); g.fillStyle = '#070a12'; }
       g.fillStyle = '#8fa3c4'; g.font = '8px system-ui'; g.textAlign = 'center';
       g.fillText(cell.name.slice(0, 18), x + C / 2, y + C + 9);
@@ -344,5 +391,6 @@ async function run(): Promise<void> {
      edge — i.e. cut at DRAW time, which no fitting can undo. Must stay empty. */
   const clipped = [...new Set(CLIPPED)];
   (window as unknown as Record<string, unknown>).__CF_AUDIT__ = { done: true, total, ok, fails, dupes, clipped, sheetUrls };
+  (window as unknown as Record<string, unknown>).__CF_FINGERPRINTS__ = fingerprints;
 }
 void run();

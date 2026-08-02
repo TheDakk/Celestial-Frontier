@@ -403,6 +403,64 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
 - ✔ **D-ART-88 — A DRAWING FIX IS NOT DONE UNTIL YOU LOOK AT THE PIXELS (arc stage 3 wave 2).**
   Wave 1's rear fix was reported as landed because the code read correctly. It never drew.
   The strip is the instrument; the source is not. Drawing-side twin of D-ART-81.
+- ✔ **D-ART-89 — I CAN SEE THE ART. THE WHOLE ARC WAS RUN BLIND FOR NOTHING (wave 4).**
+  Four sessions of this arc were built on the belief that no instrument could look at a
+  render, so everything was inferred from measurements and from a text "reference" written
+  from the same model knowledge that drew the art. **The exported portraits are PNG files on
+  disk and the Read tool renders them.** One call to `Read` on `Cheetah.png` showed, in
+  seconds, four defects that four waves of geometry reasoning had not found. Subagents can
+  see them too, so the catalogue can be audited by looking at it.
+  **Look at the picture. It is available, it is free, and it outranks every number here.**
+
+- ✔ **D-ART-90 — A FLAT SHAPE HAS NO INSIDE, SO NOTHING CAN BELONG TO IT (wave 4).**
+  Nick: *"there's a line between their body, almost like it looks like the legs are hooked
+  in"* and *"think of it like a skin, not like you're painting on top of the animal."* Two
+  complaints, one cause: the torso was an OUTLINE — a back line, a belly line, a bezier. An
+  outline has no depth, so a limb can only ever be **butted against** it and a mark can only
+  ever **float on** it. No amount of blending fixes either; the information needed (how deep
+  is the body here, which way is the surface facing) does not exist in the drawing.
+  The torso is a **solid** now (`torso.ts`): a spine with a radius profile. Silhouette,
+  shoulder mass, haunch mass, foreshortening and per-point lighting all fall out of that one
+  structure — and three waves' worth of cusp/seam/tangent bugs (D-ART-84, 87) became
+  unreachable, because a swept circle has no seam to cusp.
+  **When a fix keeps not sticking, ask whether the representation can express it at all.**
+
+- ✔ **D-ART-91 — A TONE COMPUTED PER PATCH MUST AGREE WITH ITS NEIGHBOUR (wave 4).**
+  The first countershading painted one gradient per slice of the body and every animal came
+  out ribbed: adjacent slices computed slightly different gradients and each boundary showed
+  as a line. The patching became the texture. Bands now run along the body and are filled
+  with a gradient *across* themselves, so neighbours meet at a colour they already share.
+
+- ✔ **D-ART-92 — "WEARS THE LIGHT" DOES NOT MEAN THE LIGHT MAY DELETE THE FEATURE (wave 4).**
+  Obeying D-ART-69 too literally, marks were bleached toward white in proportion to how lit
+  they were. This engine lights from the upper LEFT and every animal faces right, so the
+  tiger's stripes were erased from its entire hindquarters. A black stripe in sunlight is a
+  black stripe with a sheen on it. Light adds a highlight; it subtracts almost nothing.
+
+- ✔ **D-ART-93 — A MARKING IS SPACED AGAINST ITS NEIGHBOURS, NOT AGAINST THE BODY (wave 4).**
+  Stripe width was a fraction of body radius, so on a deep short animal nineteen bars were
+  each as wide as the gap between them and the flank merged into one smear. Pattern pitch is
+  a property of the pattern: derive the width from the spacing. D-ART-85 for markings.
+
+- ✔ **D-ART-94 — YOU CANNOT BLEND A JOIN BY REPAINTING IT (wave 4).**
+  The first attempt at the limb join repainted each near leg's root in "roughly flank
+  colour". It could not match — the flank is countershaded and coated — so every animal got
+  a pale oval on its shoulder and haunch, a worse artefact than the seam. The join needed no
+  blending at all: on a real animal seen from the side the near thigh is INSIDE the body
+  outline. All four legs now draw behind the torso and the body's own mass covers the roots.
+  **Before inventing a blend, check whether the real thing has the join you are hiding.**
+
+- ✔ **D-ART-95 — THE ART LOCK: MAKE CATALOGUE-WIDE CHANGE COUNTABLE (wave 4).**
+  Nick: *"we want to prevent global passes from affecting this. Let's put a safety net in
+  there so that, as we're iterating, it's not messing up what we did before."* Every gate
+  this project owned asked about ONE asset in isolation, so all of them stayed green while
+  three global passes flattened 127 animals and regressed the elephant. `tools/artlock.mjs`
+  fingerprints all 1,254 rendered assets and reports **[DRIFT]** (how many moved since the
+  blessed baseline — change is allowed, being *unaware* of it is not) and **[SAME]** (the
+  nearest-neighbour separation between species — a global clamp does not merely move
+  everything, it moves everything *together*). Run it in the battery; re-bless only after
+  looking, and **never to turn a red report green**.
+
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

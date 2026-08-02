@@ -16,8 +16,10 @@
 
    Everything unlisted still falls through to the byte-verbatim engine. */
 import { mulberry32, TAU } from '@cf/domain-rand';
-import { formMark, furRim, rootedSpine, ellipsePts, type Form } from './surface.js';
+import { type Form } from './surface.js';
 import { alienEyes, alienSkin, alienGlow, alienSail, alienArmor, type AlienTraits } from './alientraits.js';
+import { Tube, mammalProfile, pathThrough } from './torso.js';
+import { countershade, coatSpots, coatRosettes, coatBars, coatPatches, coatBrindle, coatShaggy, shaggyRim, coatBlocks } from './skin.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -34,7 +36,35 @@ export interface QuadSpec {
   jaw?: 'fine' | 'broad' | 'barrel';
   ears?: 'tiny' | 'small' | 'round' | 'large' | 'huge' | 'fan';
   tail?: 'none' | 'stub' | 'tuft' | 'bushy' | 'long' | 'plume' | 'banded' | 'paddle';
-  coat?: 'plain' | 'spots' | 'rosettes' | 'stripes' | 'patches' | 'panda' | 'shaggy' | 'banded';
+  coat?: 'plain' | 'spots' | 'rosettes' | 'stripes' | 'patches' | 'panda' | 'shaggy' | 'banded'
+    | 'bands' | 'brindle' | 'fawn';
+  /* ★ ARC STAGE 3 WAVE 4 — WHERE THE MASS SITS. The torso is a solid now
+     (torso.ts), and these four numbers place its anatomy: how far the flank
+     tucks up, how far the shoulder and haunch stand proud, how deep the
+     brisket is, how heavy the hindquarters are. Each is 0..1 and each
+     DEFAULTS from the species' own legs/depth/len — so every existing spec
+     keeps a body derived from its own numbers, never from a band (D-ART-83),
+     and a species whose reference row names a build overrides it explicitly. */
+  waist?: number;
+  muscle?: number;
+  chest?: number;
+  rump?: number;
+  /* ★ ARC STAGE 3 WAVE 5 — THE FAMILY BODY PLAN. Nick's anatomy audit named
+     this as the single biggest remaining defect, and named it eight times:
+     "cats using long-legged ungulate bodies · canids using deer-like torsos
+     and legs · bears using pig/ungulate bodies · camels using deer bodies
+     with humps added". It was true. One leg painter drew a hoofed ungulate
+     limb — thin cannon bone, small oval foot — for every mammal in the
+     catalogue, so a cheetah, a wolf and a grizzly all stood on deer legs.
+
+     A family is NOT a band (D-ART-83). It carries only what is true of every
+     member by anatomy — a cat has paws and a crouched limb, a bear walks on
+     its soles, an antelope has a cannon bone and cloven hooves — and every
+     NUMBER still comes from the species' own row. Two cats share a foot;
+     they do not share a body. */
+  family?: 'felid' | 'canid' | 'ursid' | 'bovid' | 'cervid' | 'equid' | 'camelid'
+    | 'suid' | 'mustelid' | 'rodent' | 'pachyderm' | 'generic';
+  foot?: 'hoof' | 'cloven' | 'paw' | 'plantigrade' | 'pad';
   horn?: 'nose' | 'twinnose' | 'ossicone' | 'palmate' | 'branched' | 'tuskup' | 'tuskdown' | 'curl'
     | 'straight' | 'spiral' | 'lyre' | 'prong' | 'shorthorn';   /* wave 10: the bovid horn is the species */
   humps?: 1 | 2;
@@ -58,6 +88,50 @@ export interface QuadSpec {
   mane?: 'lion' | 'ruff';
 }
 
+/** ★ WAVE 5 — THE FAMILY BODY PLANS.
+
+    Nick's anatomy audit, on the previous export: *"Several global passes
+    caused unrelated species to inherit the same body scaffold… cats using
+    long-legged ungulate bodies; canids using deer-like torsos and legs;
+    bears using pig/ungulate bodies; camels using deer bodies with humps
+    added."* Every one of those was real, and all four had the same cause:
+    ONE hoofed cursorial limb and ONE mass distribution served the whole
+    catalogue, so the only thing separating a cheetah from an impala was
+    four numbers and a coat.
+
+    These entries hold only what is TRUE OF EVERY MEMBER OF THE FAMILY by
+    anatomy — where a family carries its mass, how thin its lower limb gets,
+    how folded it stands, what it puts on the ground. They are DEFAULTS: any
+    species may override any of them from its own reference row, and the
+    per-species legs/depth/len/neck numbers are untouched. That is the line
+    D-ART-83 draws. A shared foot is anatomy; a shared body would be a band. */
+const FAMILY: Record<string, {
+  waist: number; muscle: number; chest: number; rump: number;
+  foot: 'hoof' | 'cloven' | 'paw' | 'plantigrade' | 'pad';
+  cannon: number;    /* 1 = pencil cannon bone, 0 = a column with no ankle */
+  crouch: number;    /* 1 = folded and low, 0 = straight-legged and tall */
+}> = {
+  /* a cat is a deep chest and a tucked waist over a short folded limb */
+  felid: { waist: 0.74, muscle: 0.88, chest: 0.80, rump: 0.60, foot: 'paw', cannon: 0.52, crouch: 0.74 },
+  /* a dog is leggier and narrower than a cat, and it still has paws */
+  canid: { waist: 0.60, muscle: 0.58, chest: 0.84, rump: 0.46, foot: 'paw', cannon: 0.64, crouch: 0.52 },
+  /* a bear is a shoulder hump, a heavy rump, no waist at all, and soles */
+  ursid: { waist: 0.10, muscle: 0.96, chest: 0.70, rump: 0.90, foot: 'plantigrade', cannon: 0.16, crouch: 0.78 },
+  bovid: { waist: 0.30, muscle: 0.52, chest: 0.62, rump: 0.66, foot: 'cloven', cannon: 0.90, crouch: 0.26 },
+  cervid: { waist: 0.56, muscle: 0.36, chest: 0.50, rump: 0.44, foot: 'cloven', cannon: 1.00, crouch: 0.22 },
+  equid: { waist: 0.32, muscle: 0.74, chest: 0.70, rump: 0.82, foot: 'hoof', cannon: 0.98, crouch: 0.20 },
+  /* a camel carries a high chest on long soft-padded legs */
+  camelid: { waist: 0.44, muscle: 0.42, chest: 0.78, rump: 0.40, foot: 'pad', cannon: 0.82, crouch: 0.32 },
+  suid: { waist: 0.08, muscle: 0.62, chest: 0.82, rump: 0.50, foot: 'cloven', cannon: 0.70, crouch: 0.40 },
+  /* a long low tube on very short legs */
+  mustelid: { waist: 0.82, muscle: 0.38, chest: 0.46, rump: 0.38, foot: 'paw', cannon: 0.34, crouch: 0.70 },
+  rodent: { waist: 0.38, muscle: 0.34, chest: 0.42, rump: 0.74, foot: 'paw', cannon: 0.38, crouch: 0.66 },
+  pachyderm: { waist: 0.04, muscle: 0.72, chest: 0.66, rump: 0.70, foot: 'pad', cannon: 0.10, crouch: 0.08 },
+  /* unfamilied species keep exactly the wave-4 behaviour, so nothing that
+     was already good moves without someone choosing to move it (D-ART-14) */
+  generic: { waist: -1, muscle: -1, chest: -1, rump: -1, foot: 'paw', cannon: 0.62, crouch: 0.45 },
+};
+
 function pal(p: Pal, spec: QuadSpec): Pal {
   if (!spec.hue) return p;
   const n = parseInt(spec.hue.slice(1), 16), cr = (n >> 16) & 255, cg = (n >> 8) & 255, cb = n & 255;
@@ -66,74 +140,11 @@ function pal(p: Pal, spec: QuadSpec): Pal {
     dark: `rgb(${cr * 0.45 | 0},${cg * 0.45 | 0},${cb * 0.45 | 0})` };
 }
 
-/** the back line as a SMOOTH curve — sampled then joined through midpoints,
-    so a sloped or humped back never reads as a faceted table edge */
-function smoothTop(c: Ctx, cx: number, bodyW: number, topY: (t: number) => number, continuing = false): void {
-  /* ★ ARC STAGE 3 WAVE 2 (Nick: "the rear hump is still kind of jagged… they're
-     not pointy polygon-looking, they're round").
-     THIS FUNCTION BEGAN WITH moveTo, WHICH STARTS A NEW SUBPATH. Wave 1 rebuilt
-     the rear as one continuous bezier and then called this immediately after —
-     so the bezier was orphaned in its own subpath and canvas closed it with a
-     STRAIGHT LINE across the haunch. That straight chord is the jagged rear
-     hump; the curve I "fixed" it with was never even connected to the body.
-     When continuing an open path, join to the current point instead.
-     Also: the first and last spans used quadratics through midpoints but the
-     LAST point was reached with lineTo — a flat segment right at the shoulder.
-     The whole spine is now one smooth chain end to end. */
-  const N = 18, pts: Array<[number, number]> = [];
-  for (let i = 0; i <= N; i++) { const t = i / N; pts.push([cx - bodyW + bodyW * 2 * t, topY(t)]); }
-  if (continuing) c.lineTo(pts[0]![0], pts[0]![1]);
-  else c.moveTo(pts[0]![0], pts[0]![1]);
-  for (let i = 1; i < pts.length - 1; i++) {
-    const a = pts[i]!, b = pts[i + 1]!;
-    c.quadraticCurveTo(a[0], a[1], (a[0] + b[0]) / 2, (a[1] + b[1]) / 2);
-  }
-  const last = pts[pts.length - 1]!, prev = pts[pts.length - 2]!;
-  c.quadraticCurveTo(prev[0], prev[1], last[0], last[1]);
-}
-function traceBody(c: Ctx, cx: number, cy: number, bodyW: number, bodyH: number, topY: (t: number) => number): void {
-  /* ★ WAVE 22b — Nick: "the bodies… are not proportionate". The chest, waist
-     tuck and rump were all fractions of bodyH, so on a LONG SHALLOW animal —
-     a sand cat, a caracal, a possum — the modulation was a few pixels across
-     two hundred, and the torso came out a featureless capsule. The belly line
-     is now driven by a floor that also knows the animal's LENGTH, so a slim
-     body still gets a real brisket and a real waist. */
-  /* the belly stays anchored to bodyH — driving it off a length-aware floor
-     pushed the whole underline BELOW where the legs attach, and the animals
-     came out as planks on stilts. What a slim body actually lacked was not a
-     deeper belly but a deeper WAIST, so only the tuck's excursion grows. */
-  const slim = Math.min(1, (bodyW * 0.34) / Math.max(1, bodyH));   /* 1 when long and shallow */
-  const tuck = 0.50 - slim * 0.20;        /* the waist rises further on a lithe animal */
-  const chest = 0.70 + slim * 0.10;
-  /* ★ ARC STAGE 3 (Nick: "the bodies, especially in the rear, are a bit pointy
-     still… it shouldn't have sharp edges anywhere"). The old path CLOSED at
-     (cx-bodyW, cy+0.1·bodyH) and restarted toward the back line from there, so
-     the incoming and outgoing tangents met at an angle — a CUSP, right on the
-     rump, on every mammal in the catalogue. The rear is now one continuous
-     bezier that sweeps from the underside all the way round to the back line
-     with no closing seam, so there is nowhere for a corner to form. */
-  c.beginPath();
-  c.moveTo(cx - bodyW, topY(0));
-  smoothTop(c, cx, bodyW, topY, true);
-  /* down the shoulder into a DEEP CHEST (the brisket hangs lowest here) */
-  c.bezierCurveTo(cx + bodyW * 1.16, cy - bodyH * 0.04, cx + bodyW * 1.12, cy + bodyH * (chest * 0.62), cx + bodyW * 0.90, cy + bodyH * chest);
-  /* forward of the ribs the belly TUCKS UP — the single line that stops a
-     torso being a slab */
-  c.quadraticCurveTo(cx + bodyW * 0.36, cy + bodyH * (chest + 0.16), cx - bodyW * 0.02, cy + bodyH * tuck);
-  /* and swells again into the ROUNDED RUMP over the hind leg */
-  c.quadraticCurveTo(cx - bodyW * 0.52, cy + bodyH * (tuck - 0.20), cx - bodyW * 0.80, cy + bodyH * 0.56);
-  /* ONE sweep round the haunch and back up to where the spine began. Both
-     control points sit outside the body, so the curve bulges — a rump is the
-     roundest part of a mammal, never the sharpest. */
-  /* ★ WAVE 3 — THE TANGENT AT THE JOIN, not the curve, was the point. The rear
-     arrived travelling UP-STEEP while the spine departed nearly HORIZONTAL, so
-     the two met at an angle and made a peak that then rounded away: exactly
-     Nick's "comes to a point and then kind of rounds around and has a hump".
-     The last control point now sits at the SAME HEIGHT as the join, so the rear
-     arrives horizontal and flows straight into the spine with no crease. */
-  c.bezierCurveTo(cx - bodyW * 1.16, cy + bodyH * 0.40, cx - bodyW * 1.14, topY(0), cx - bodyW, topY(0));
-  c.closePath();
-}
+/* ⚠ smoothTop() and traceBody() were REMOVED in arc stage 3 wave 4. They drew
+   the torso as a FLAT OUTLINE — a sampled back line and a hand-written belly
+   bezier — and three waves of this arc were spent chasing cusps, orphaned
+   subpaths and tangent mismatches along the seam where their two halves met.
+   A solid has no seam to chase (torso.ts). History is in git at 095e28e. */
 
 /** ★ THE PATTERN LAW (Nick 2026-08-01): a coat mark must BLEND into the
     skin at its edges — never a hard-edged polygon stamped on top. Every
@@ -184,6 +195,53 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   const cx = S * 0.52;
   const back = spec.back ?? 'level';
 
+  /* ═════════ ARC STAGE 3 WAVE 4 — THE BODY IS A SOLID ═════════
+     Nick: "there's a line between their body, almost like it looks like the
+     legs are hooked in." There was, and it was structural, not cosmetic: the
+     torso was a FLAT OUTLINE, so a limb could only ever be BUTTED against it
+     and a coat mark could only ever float on it. Both of wave 4's asks come
+     off the same fix — the torso is now a generalized cylinder (torso.ts)
+     with a real radius profile, so
+       · a shoulder and a haunch are BULGES IN THE BODY and a leg leaves a
+         mass of muscle continuous with the trunk,
+       · every point of the surface has a normal, hence a foreshortening and
+         a shading value, which is what lets skin.ts lay a coat ON it.
+     D-ART-83: the shape LANGUAGE is shared because every mammal has a
+     ribcage; the VALUES all default from this species' own legs/depth/len. */
+  const topY = (t: number): number => {
+    /* t: 0 at the rump, 1 at the shoulder */
+    if (back === 'humped') return cy - bodyH * (0.55 + 0.42 * Math.pow(t, 2.2));
+    if (back === 'sloped') return cy - bodyH * (0.40 + 0.55 * t);
+    if (back === 'arched') return cy - bodyH * (0.52 + 0.30 * Math.sin(t * Math.PI));
+    /* even a level back gets a gentle withers-to-rump curve — a ruler
+       straight spine reads as a table edge, never as an animal */
+    return cy - bodyH * (0.50 + 0.08 * t + 0.07 * Math.sin(t * Math.PI));
+  };
+  const FAM0 = FAMILY[spec.family ?? 'generic']!;
+  const c01 = (v: number): number => Math.max(0, Math.min(1, v));
+  const slim = c01((bodyW * 2) / Math.max(1, bodyH * 1.2) / 1.25 - 1.16);
+  const legRatio = c01(spec.legs / Math.max(0.02, spec.depth) / 1.15 - 0.48);
+  const barrelK = spec.jaw === 'barrel' ? 0.20 : 1;
+  /* the order of preference IS the law: this species' own row first, then what
+     is anatomically true of its family, and only then a shape derived from its
+     own legs/depth/len. A family default never overrides an explicit value, and
+     'generic' (-1) declines to have an opinion at all — so every animal that
+     was already right in wave 4 is byte-unchanged until someone gives it a
+     family on purpose (D-ART-14). */
+  const famV = (v: number, derived: number): number => (v >= 0 ? v : derived);
+  const waistF = (spec.waist ?? famV(FAM0.waist, c01(0.20 + slim * 0.46 + legRatio * 0.34))) * barrelK;
+  const muscleF = spec.muscle ?? famV(FAM0.muscle, c01(0.32 + legRatio * 0.28 + (1 - slim) * 0.24));
+  const chestF = spec.chest ?? famV(FAM0.chest, c01(0.28 + (1 - legRatio) * 0.34 + slim * 0.22));
+  const rumpF = spec.rump ?? famV(FAM0.rump, c01(0.32 + (1 - legRatio) * 0.30));
+  const prof = mammalProfile({ waist: waistF, muscle: muscleF, chest: chestF, rump: rumpF });
+  const rjit = nvq(0x2B, 0.03);
+  const RAD = (u: number): number => bodyH * 0.52 * prof(u) * rjit;
+  /* the axis is INSET by the end caps, so the animal's overall length is still
+     the 2·bodyW its spec asked for — a dome on the rump adds body, not frame */
+  const axA = cx - bodyW + RAD(0) * 0.80, axB = cx + bodyW - RAD(1) * 0.80;
+  const AX = (u: number): [number, number] => [axA + (axB - axA) * u, topY(u) + RAD(u)];
+  const body = new Tube({ P: AX, R: RAD });
+
   c.fillStyle = 'rgba(0,0,0,0.5)';
   c.beginPath(); c.ellipse(cx, groundY + 6, bodyW * 0.92, S * 0.032, 0, 0, TAU); c.fill();
 
@@ -194,117 +252,214 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      A limb is proportioned against the whole animal, not just how deep its
      chest is, so the depth term is now CAPPED against body length. Slimmer
      animals are unchanged because their depth term still wins. */
+  /* ★ ARC STAGE 3 (Nick: "the elephant legs are way too long… like they are big
+     tree trunks"). Leg thickness was a pure fraction of BODY DEPTH, so the
+     deepest-bodied animals grew columns 28px wide. A limb is proportioned
+     against the whole animal, so the depth term is CAPPED against body length
+     (D-ART-85). Slimmer animals are unchanged; their depth term still wins. */
   const legW = Math.max(7, Math.min(bodyH * 0.30, bodyW * 0.115));
-  const drawLeg = (lx: number, shade: number, len: number, hind: boolean): void => {
-    const col = shade < 1 ? p.dark : p.base;
-    const top = cy + bodyH * 0.42, jitter = (r() - 0.5) * 3;
-    /* the joint sits below mid-limb; a hock kicks BACK, a knee eases forward */
-    const kneeY = top + (groundY - top) * 0.54;
-    const kneeX = lx + (hind ? -legW * 0.42 : legW * 0.26);
-    const footX = lx + jitter + (hind ? legW * 0.12 : -legW * 0.04);
-    c.strokeStyle = col; c.lineCap = 'round'; c.lineJoin = 'round';
-    c.lineWidth = legW * (shade < 1 ? 1.02 : 1.20);          /* the upper limb carries muscle */
-    c.beginPath(); c.moveTo(lx, top); c.quadraticCurveTo(lx + (kneeX - lx) * 0.6, top + (kneeY - top) * 0.55, kneeX, kneeY); c.stroke();
-    c.lineWidth = legW * (shade < 1 ? 0.56 : 0.66);          /* the cannon bone is THIN */
-    c.beginPath(); c.moveTo(kneeX, kneeY); c.quadraticCurveTo(kneeX + (footX - kneeX) * 0.5, kneeY + (groundY - kneeY) * 0.5, footX, groundY - len * 0.04); c.stroke();
-    c.fillStyle = col;   /* the foot */
-    c.beginPath(); c.ellipse(footX + 1, groundY, legW * 0.52, legW * 0.30, 0, 0, TAU); c.fill();
+
+  /* ★ WAVE 4 — A LEG IS A TAPERED SOLID, NOT TWO STROKES. Two round-capped
+     lines of constant width gave every mammal a pair of pipes with a bead
+     where they met. A real limb is one continuous form: thick with muscle at
+     the top, narrowing hard through the joint, thin at the cannon bone, and
+     flaring again at the foot. Built as a Tube, so its silhouette is the true
+     envelope of that taper and its ends are domes, not caps. */
+  /* ★ WAVE 5 — THE LIMB BELONGS TO A FAMILY. `cannon` is how thin the lower
+     limb gets (1 = an antelope's pencil cannon bone, 0 = a bear's column);
+     `crouch` is how much the limb zig-zags (a cat and a bear stand folded, a
+     horse stands nearly straight). Between them they are the difference
+     between a deer leg and a cat leg, which is what Nick's audit kept
+     naming. */
+  const cannon = FAM0.cannon, crouch = FAM0.crouch;
+  const foot = spec.foot ?? FAM0.foot;
+  const legTube = (u: number, xoff: number, hind: boolean): Tube => {
+    const a = AX(u);
+    const rootX = a[0] + xoff, rootY = a[1] - RAD(u) * 0.22;
+    /* a crouched limb folds high and hard; a columnar one drops straight */
+    const kneeY = rootY + (groundY - rootY) * (0.62 - crouch * 0.16);
+    const kneeX = rootX + (hind ? -legW * (0.30 + crouch * 0.75) : legW * (0.20 + crouch * 0.45));
+    const footX = rootX + (hind ? legW * (0.16 + crouch * 0.34) : -legW * 0.10);
+    const spine = pathThrough([
+      [rootX, rootY],
+      [rootX + (kneeX - rootX) * 0.42, rootY + (kneeY - rootY) * 0.44],
+      [kneeX, kneeY],
+      [kneeX + (footX - kneeX) * 0.58, kneeY + (groundY - kneeY) * (0.52 + crouch * 0.12)],
+      [footX, groundY - legW * 0.24],
+    ]);
+    /* the widths the family actually has, interpolated between a columnar
+       plantigrade limb and a cursorial hoofed one */
+    const lerp = (a2: number, b2: number): number => a2 + (b2 - a2) * cannon;
+    const wJoint = lerp(1.02, 0.72), wCannon = lerp(0.94, 0.44), wAnkle = lerp(0.88, 0.40);
+    const wprof = (t: number): number => legW * (
+      t < 0.32 ? 1.62 - t * (1.62 - 1.14) / 0.32                       /* the thigh */
+        : t < 0.58 ? 1.14 + ((t - 0.32) / 0.26) * (wJoint - 1.14)      /* into the joint */
+          : t < 0.86 ? wJoint + ((t - 0.58) / 0.28) * (wCannon - wJoint)
+            : wAnkle);
+    return new Tube({ P: spine, R: wprof });
+  };
+  /** ★ THE FOOT IS THE FAMILY'S SIGNATURE ON THE GROUND, and every mammal in
+      the catalogue was standing on the same small oval. A hoof is a hard
+      block, a paw is a padded fan of toes, a bear plants its whole sole, a
+      camel and an elephant spread a soft round pad. */
+  const drawFoot = (x: number, m: number, hind: boolean): void => {
+    const dark = (k: number): string => `rgb(${p.cr * k * m | 0},${p.cg * k * m | 0},${p.cb * k * m | 0})`;
+    const gy = groundY;
+    if (foot === 'hoof') {
+      c.fillStyle = `rgb(${44 * m | 0},${38 * m | 0},${34 * m | 0})`;
+      c.beginPath();
+      c.moveTo(x - legW * 0.34, gy - legW * 0.52);
+      c.lineTo(x + legW * 0.34, gy - legW * 0.52);
+      c.quadraticCurveTo(x + legW * 0.42, gy, x + legW * 0.30, gy);
+      c.lineTo(x - legW * 0.30, gy);
+      c.quadraticCurveTo(x - legW * 0.42, gy, x - legW * 0.34, gy - legW * 0.52);
+      c.closePath(); c.fill();
+    } else if (foot === 'cloven') {
+      c.fillStyle = `rgb(${40 * m | 0},${34 * m | 0},${30 * m | 0})`;
+      for (const s of [-1, 1] as const) {
+        c.beginPath();
+        c.ellipse(x + s * legW * 0.20, gy - legW * 0.16, legW * 0.22, legW * 0.34, s * 0.10, 0, TAU);
+        c.fill();
+      }
+    } else if (foot === 'paw') {
+      /* the pad, then three toes across its front — a cat and a dog both put
+         a rounded fan on the ground, never a peg */
+      c.fillStyle = dark(0.52);
+      c.beginPath(); c.ellipse(x, gy - legW * 0.20, legW * 0.66, legW * 0.40, 0, 0, TAU); c.fill();
+      c.fillStyle = dark(0.62);
+      for (let i = -1; i <= 1; i++) {
+        c.beginPath(); c.ellipse(x + i * legW * 0.34, gy - legW * 0.08, legW * 0.20, legW * 0.17, 0, 0, TAU); c.fill();
+      }
+    } else if (foot === 'plantigrade') {
+      /* a bear puts its heel down: a long sole with claws at the front */
+      c.fillStyle = dark(0.48);
+      c.beginPath();
+      c.ellipse(x + legW * 0.24, gy - legW * 0.22, legW * (hind ? 1.05 : 0.86), legW * 0.40, 0, 0, TAU);
+      c.fill();
+      c.fillStyle = `rgba(238,232,216,${0.72 * m})`;
+      for (let i = 0; i < 4; i++) {
+        c.beginPath();
+        c.ellipse(x + legW * (0.62 + i * 0.16), gy - legW * 0.44, legW * 0.07, legW * 0.13, 0.5, 0, TAU);
+        c.fill();
+      }
+    } else {   /* 'pad' — camel, elephant: a broad soft disc that spreads */
+      c.fillStyle = dark(0.50);
+      c.beginPath(); c.ellipse(x, gy - legW * 0.16, legW * 0.92, legW * 0.36, 0, 0, TAU); c.fill();
+      c.fillStyle = `rgba(226,218,200,${0.42 * m})`;
+      for (let i = -1; i <= 1; i++) {
+        c.beginPath(); c.ellipse(x + i * legW * 0.42, gy - legW * 0.26, legW * 0.14, legW * 0.10, 0, 0, TAU); c.fill();
+      }
+    }
+  };
+  const drawLeg = (u: number, xoff: number, hind: boolean, far: boolean): void => {
+    const limb = legTube(u, xoff, hind);
+    const m = far ? 0.58 : 1;
+    /* ⚠ WAVE 5 — THE ROUNDNESS GRADIENT WAS ANCHORED TO THE CANVAS, not to the
+       limb: one horizontal linear gradient spanning the foot's x. As soon as
+       families gave cats and bears a CROUCHED leg, the thigh sat well to one
+       side of the shin, so the two halves sampled different parts of that
+       gradient and every bent leg grew a hard tonal step at the knee. A limb
+       is a tube like any other — shade it with the tube's own machinery, which
+       follows wherever it bends. (Same lesson as D-ART-91: a tone has to be
+       computed in the geometry it belongs to.) */
+    const lp: typeof p = m < 1
+      ? { ...p, cr: p.cr * m, cg: p.cg * m, cb: p.cb * m }
+      : p;
+    c.fillStyle = `rgb(${lp.cr | 0},${lp.cg | 0},${lp.cb | 0})`;
+    c.beginPath(); limb.trace(c, 40); c.fill();
+    c.save(); c.beginPath(); limb.trace(c, 40); c.clip();
+    countershade(c, limb, lp, 0.85);
+    c.restore();
+    /* ⚠ AN ATTEMPT TO BLEND THE NEAR LEG BY REPAINTING ITS ROOT IN FLANK COLOUR
+       PUT A PALE OVAL ON EVERY ANIMAL'S SHOULDER AND HAUNCH. It could not
+       match: the flank it was blending into is countershaded and coated, and a
+       flat swatch of "roughly that colour" over the top of it is a patch, not a
+       blend. The join needs no blending at all once you look at a real animal
+       from the side — the near leg's thigh is INSIDE the body outline and you
+       see it from the stifle down. So all four legs are drawn BEHIND the torso
+       and the body's own mass covers every root. Nothing to seam. */
+    const ft = limb.axis(0.985);
+    drawFoot(ft[0], m, hind);
   };
   /* ★ LIMB PAIRS. The genome's locomotion genes have described many-legged
      creatures since v1.0 and the art has only ever drawn four legs. Pairs are
      spaced along the torso so a six- or eight-legged animal still reads as
-     one body, not a train of hips. */
+     one body, not a train of hips — and they sit under the HAUNCH and the
+     SHOULDER, the two places the radius profile puts the mass. */
   const pairs = spec.alien?.legPairs ?? 2;
-  for (let i = 0; i < pairs; i++) {
-    const t = i / (pairs - 1);                            /* 0 = rear, 1 = front */
-    const back = -0.62 + t * 1.18;
-    drawLeg(cx + bodyW * back, 0.8, legLen, t < 0.5);      /* far side, shaded */
-    drawLeg(cx + bodyW * (back + 0.10), 1, legLen, t < 0.5);
-  }
+  const legUs: number[] = [];
+  for (let i = 0; i < pairs; i++) legUs.push(0.175 + (i / Math.max(1, pairs - 1)) * 0.665);
+  for (const u of legUs) drawLeg(u, -legW * 0.66, u < 0.5, true);      /* far side, shaded */
+  for (const u of legUs) drawLeg(u, legW * 0.34, u < 0.5, false);      /* near side */
 
-  /* ---- the torso: a profile whose BACK LINE is the species ---- */
-  const topY = (t: number): number => {
-    /* t: 0 at the rump, 1 at the shoulder */
-    if (back === 'humped') return cy - bodyH * (0.55 + 0.42 * Math.pow(t, 2.2));
-    if (back === 'sloped') return cy - bodyH * (0.40 + 0.55 * t);
-    if (back === 'arched') return cy - bodyH * (0.52 + 0.30 * Math.sin(t * Math.PI));
-    /* even a level back gets a gentle withers-to-rump curve — a ruler
-       straight spine reads as a table edge, never as an animal */
-    return cy - bodyH * (0.50 + 0.08 * t + 0.07 * Math.sin(t * Math.PI));
-  };
-  const bodyGrad = c.createLinearGradient(cx, cy - bodyH, cx, cy + bodyH * 0.6);
-  bodyGrad.addColorStop(0, p.lit); bodyGrad.addColorStop(0.55, p.base); bodyGrad.addColorStop(1, p.dark);
-  c.fillStyle = bodyGrad;
-  c.beginPath();
-  traceBody(c, cx, cy, bodyW, bodyH, topY);
-  c.fill();
+  /* ---- the torso: a SOLID whose radius profile is the species ---- */
+  c.fillStyle = p.base;
+  c.beginPath(); body.trace(c); c.fill();
 
-  /* ---- coat pattern, CLIPPED to the torso so it reads as fur ---- */
+  /* ---- the skin, inside the body's own surface ---- */
   c.save();
-  traceBody(c, cx, cy, bodyW, bodyH, topY);
-  c.clip();
+  c.beginPath(); body.trace(c); c.clip();
   const coat = spec.coat ?? 'plain';
-  /* the torso as a FORM, so every mark below knows the shape it lies on */
+  /* the torso as a FORM as well, for the alien traits that still take one */
   const torsoForm: Form = { cx, cy, rx: bodyW, ry: bodyH * 1.15 };
+  /* ★ COUNTERSHADING FIRST. Dark along the spine, pale under the belly. It is
+     the shading a round body actually produces, every real mammal wears it,
+     and not one of ours had it — which is most of why they read as cut-outs
+     with a gradient rather than as solids. */
+  if (!spec.alien?.skin) countershade(c, body, p, 1);
   if (coat === 'spots') {
-    for (let i = 0; i < 78; i++) {
-      const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 1.0 + r() * bodyH * 1.85;
-      const rr = 5 + r() * 5;
-      formMark(c, x, y, rr, rr * (0.7 + r() * 0.4), '24,18,10', 0.55 + r() * 0.18, torsoForm);
-    }
+    coatSpots(c, body, r, p, { count: 150, size: 0.92, soft: 0.13, rgb: [24, 17, 10] });
+  } else if (coat === 'fawn') {
+    coatSpots(c, body, r, p, { count: 60, size: 0.8, soft: 0.4, rgb: [246, 242, 228], phiLo: -0.4, phiHi: 1.3 });
   } else if (coat === 'rosettes') {
-    for (let i = 0; i < 38; i++) {
-      const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 1.0 + r() * bodyH * 1.85, rad = 8 + r() * 6;
-      /* the ring as 4-6 soft marks around a circle — broken and blended,
-         the way a real rosette sits in the fur */
-      const n = 4 + (r() * 3 | 0);
-      for (let k = 0; k < n; k++) {
-        const a = (k / n) * TAU + r() * 0.5;
-        formMark(c, x + Math.cos(a) * rad * 0.78, y + Math.sin(a) * rad * 0.66, rad * 0.42, rad * 0.34, '28,20,10', 0.5 + r() * 0.16, torsoForm);
-      }
-      formMark(c, x + 1, y + 1, rad * 0.34, rad * 0.28, '46,32,14', 0.30, torsoForm);
-    }
+    coatRosettes(c, body, r, p, { count: 38, core: name === 'Jaguar' });
   } else if (coat === 'stripes') {
-    for (let i = 0; i < 15; i++) {
-      const x = cx - bodyW + (i / 14) * bodyW * 2 + (r() - 0.5) * 8;
-      const rot = (r() - 0.5) * 0.4, w = 5 + r() * 3, h = bodyH * (0.6 + r() * 0.35);
-      /* a band built from stacked soft marks — edges melt into the coat */
-      for (let k = 0; k < 5; k++) {
-        const t = (k / 4 - 0.5) * 2;
-        formMark(c, x + Math.sin(rot) * -t * h * 0.5, cy + t * h * 0.5, w, w * 1.25, '20,14,8', 0.62, torsoForm);
-      }
-    }
+    /* ★ THE TIGER. Fifteen "stripes" were fifteen COLUMNS OF FIVE SOFT DOTS,
+       and that is exactly what they looked like at full size — a polka grid.
+       A bar is now one continuous tapered band from over the spine down the
+       flank, leaning back, dying to a point above the belly, and some of them
+       fork, because real ones do. */
+    coatBars(c, body, r, p, { count: 19, width: 1, phiEnd: -0.78, forkRate: 0.3 });
+  } else if (coat === 'bands') {
+    /* the zebra: full contrast, and the bands CROSS the belly rather than
+       stopping at it, which is the difference between a zebra and a tiger */
+    coatBars(c, body, r, p, { count: 21, width: 1.25, phiTop: 1.66, phiEnd: -1.42, lean: 0.03, forkRate: 0.12, hard: true, rgb: [18, 15, 16] });
   } else if (coat === 'patches') {
-    /* Nick 2026-08-01: "the giraffe could use a LOT more spots, and they
-       read as octagons" — the old 6-gon stamp is gone. Each patch is a
-       CLUSTER of overlapping soft marks, so its outline is irregular and
-       its edge dissolves into the hide. */
-    for (let i = 0; i < 84; i++) {
-      const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 1.05 + r() * bodyH * 1.9;
-      const rad = 8 + r() * 8;
-      const lobes = 3 + (r() * 3 | 0);
-      for (let k = 0; k < lobes; k++) {
-        const a = r() * TAU, d = rad * 0.42 * r();
-        formMark(c, x + Math.cos(a) * d, y + Math.sin(a) * d * 0.8, rad * (0.62 + r() * 0.34), rad * (0.5 + r() * 0.3), '122,74,28', 0.60 + r() * 0.16, torsoForm);
-      }
-    }
+    /* ★ THE GIRAFFE. Its patches are a TILING with pale seams between them,
+       not a scatter of blobs — so they are Voronoi cells in skin space,
+       shrunk to open the seam, and filled HARD. The crisp border is the
+       animal; softening it was never blending, it was losing the feature. */
+    coatPatches(c, body, r, p, { nu: 10, nphi: 6, seam: 0.80, rgb: [126, 74, 26] });
   } else if (coat === 'panda') {
-    c.fillStyle = '#15181e';   /* the shoulder band + forelimb blocking */
-    c.beginPath(); c.ellipse(cx + bodyW * 0.30, cy, bodyW * 0.34, bodyH * 1.1, 0, 0, TAU); c.fill();
-    c.beginPath(); c.ellipse(cx - bodyW * 0.72, cy + bodyH * 0.3, bodyW * 0.3, bodyH * 0.9, 0, 0, TAU); c.fill();
+    coatBlocks(c, body, p, [
+      { u0: 0.72, u1: 1.0, phiLo: -1.5, phiHi: 1.6, rgb: '#15181e' },
+      { u0: 0.0, u1: 0.22, phiLo: -1.5, phiHi: 1.6, rgb: '#15181e' },
+    ]);
+  } else if (coat === 'brindle') {
+    coatBrindle(c, body, r, p, { count: 120 });
   } else if (coat === 'shaggy') {
-    /* the UNDERCOAT: clumps that follow the form rather than parallel scratches */
-    for (let i = 0; i < 44; i++) {
-      const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 0.9 + r() * bodyH * 1.8;
-      formMark(c, x, y, 7 + r() * 7, 4 + r() * 4, r() < 0.6 ? '28,20,12' : '236,228,208', 0.16 + r() * 0.18, torsoForm);
-    }
+    coatShaggy(c, body, r, p, { count: 170 });
   } else if (coat === 'banded' && !spec.alien?.skin) {
-    c.fillStyle = 'rgba(26,20,14,0.5)';
-    for (let i = 0; i < 5; i++) { c.beginPath(); c.ellipse(cx - bodyW * 0.6 + i * bodyW * 0.35, cy + bodyH * 0.1, bodyW * 0.10, bodyH * 0.8, 0.25, 0, TAU); c.fill(); }
+    coatBars(c, body, r, p, { count: 7, width: 2.2, phiTop: 1.6, phiEnd: -1.2, lean: 0.01, forkRate: 0, hard: true, alpha: 0.55, rgb: [26, 20, 14] });
   }
   /* an alien SKIN FINISH replaces the coat treatment, inside the same clip
      so it reads as the animal's own surface and obeys the surface laws */
   if (spec.alien?.skin) alienSkin(c, spec.alien.skin, torsoForm, p, r);
+  /* ★ THE OCCLUSION AT THE LIMB EXITS — the shadow a body casts into its own
+     armpit and groin. Drawn inside the clip so it darkens the BODY where each
+     leg passes under it, which is the other half of the join reading as one
+     piece of anatomy rather than two shapes touching. */
+  if (!spec.alien?.skin) {
+    for (const u of legUs) {
+      const a = AX(u), rr = RAD(u);
+      const og = c.createRadialGradient(a[0], a[1] + rr * 0.66, rr * 0.08, a[0], a[1] + rr * 0.66, rr * 0.95);
+      og.addColorStop(0, 'rgba(12,9,10,0.40)');
+      og.addColorStop(0.55, 'rgba(12,9,10,0.20)');
+      og.addColorStop(1, 'rgba(12,9,10,0)');
+      c.fillStyle = og;
+      c.beginPath(); c.ellipse(a[0], a[1] + rr * 0.66, rr * 0.95, rr * 0.72, 0, 0, TAU); c.fill();
+    }
+  }
   c.restore();
   if (spec.alien?.sail) {
     alienSail(c, cx + bodyW * 0.05, topY(0.5) + bodyH * 0.05, bodyW * 0.62, bodyH * 1.5, p);
@@ -315,24 +470,24 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     /* ★ THE FUR RIM — tufts pushed THROUGH the outline. Without this a
        "shaggy" coat is noise inside a machined edge, and the silhouette
        (the first thing the eye reads) still says "smooth plastic". */
-    furRim(c, ellipsePts(cx, cy, bodyW * 0.98, bodyH * 1.02, 0, 72), cx, cy,
-      p.dark, Math.max(7, bodyH * 0.22), r, 0.62);
-    furRim(c, ellipsePts(cx, cy, bodyW * 0.98, bodyH * 1.02, 0, 72), cx, cy,
-      p.lit, Math.max(5, bodyH * 0.15), r, 0.28);
+    shaggyRim(c, body, r, p, Math.max(7, bodyH * 0.20), 0.6);
   }
-  /* the belly shadow + top rim: form, not just outline */
+  /* the rim light along the true dorsal envelope, fading at both ends — a
+     flat stroke along a level back read as a hard table edge (review catch) */
   c.save();
-  /* the rim light FADES at both ends — a flat stroke along a level back
-     read as a hard table edge (review catch) */
   const rimG = c.createLinearGradient(cx - bodyW, 0, cx + bodyW, 0);
   rimG.addColorStop(0, 'rgba(220,232,250,0)');
-  rimG.addColorStop(0.25, 'rgba(220,232,250,0.34)');
-  rimG.addColorStop(0.7, 'rgba(232,242,255,0.46)');
+  rimG.addColorStop(0.25, 'rgba(220,232,250,0.30)');
+  rimG.addColorStop(0.7, 'rgba(232,242,255,0.40)');
   rimG.addColorStop(1, 'rgba(220,232,250,0)');
-  c.strokeStyle = rimG; c.lineWidth = 2.6;
+  c.strokeStyle = rimG; c.lineWidth = 2.2; c.lineCap = 'round';
   c.beginPath();
-  smoothTop(c, cx, bodyW, topY);
+  for (let i = 0; i <= 40; i++) {
+    const e = body.envelope(0.03 + (i / 40) * 0.9, 1);
+    if (i === 0) c.moveTo(e[0], e[1]); else c.lineTo(e[0], e[1]);
+  }
   c.stroke(); c.restore();
+
 
   /* ---- humps (camel) sit ON the back line ---- */
   if (spec.humps) {
@@ -365,11 +520,48 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     bodyH * (spec.jaw === 'barrel' ? 0.62 : spec.jaw === 'broad' ? 0.52 : 0.42),
     bodyW * 0.20,
   );
-  c.strokeStyle = p.base; c.lineWidth = Math.max(10, bodyH * (neckLen > S * 0.16 ? 0.36 : 0.62));
-  c.lineCap = 'round';
-  c.beginPath(); c.moveTo(shoulderX - bodyW * 0.1, shoulderY + bodyH * 0.2);
-  c.quadraticCurveTo(shoulderX + neckLen * 0.30, shoulderY - neckLen * 0.45, headX, headY);
-  c.stroke();
+  /* ★ WAVE 4 — THE NECK IS A TAPERED SOLID. Nick: "thin necks at the shoulder
+     on the big cats." It was one constant-width round-capped stroke, so a
+     lion's neck was the same thickness at the skull as at the chest, and the
+     round cap left a visible bead where it entered the body — the same
+     "hooked in" line as the legs, in a second place. A real neck is a cone:
+     WIDE where it leaves the shoulders, narrowing into the skull. Built from
+     the same Tube, rooted INSIDE the chest, so there is no join at all. */
+  const nRootU = 0.86;
+  const nRoot = AX(nRootU);
+  const nq = (t: number): [number, number] => {
+    const m = 1 - t;
+    const ax = shoulderX - bodyW * 0.1, ay = shoulderY + bodyH * 0.2;
+    return [m * m * ax + 2 * m * t * (shoulderX + neckLen * 0.30) + t * t * headX,
+      m * m * ay + 2 * m * t * (shoulderY - neckLen * 0.45) + t * t * headY];
+  };
+  const neckPts: Array<[number, number]> = [[nRoot[0] - RAD(nRootU) * 0.20, nRoot[1]],
+    nq(0.25), nq(0.55), nq(0.82), [headX, headY + headR * 0.10]];
+  /* a short-necked animal has a THICK neck and a long-necked one a slender
+     one — the same ratio a real skeleton shows, driven by this species' own
+     neck length rather than a category */
+  const nThick = neckLen > S * 0.16 ? 0.62 : 0.92;
+  const neckTube = new Tube({
+    P: pathThrough(neckPts),
+    R: (t: number) => {
+      const s = t * t * (3 - 2 * t);
+      return RAD(nRootU) * 0.98 * nThick * (1 - s) + headR * 0.70 * s;
+    },
+  });
+  c.fillStyle = p.base;
+  c.beginPath(); neckTube.trace(c, 44); c.fill();
+  c.save(); c.beginPath(); neckTube.trace(c, 44); c.clip();
+  if (!spec.alien?.skin) countershade(c, neckTube, p, 0.9);
+  /* the coat CONTINUES onto the neck — a giraffe's patches run up it, a
+     tiger's bars cross it. A pattern that stops at the shoulder is a shirt. */
+  if (coat === 'patches') coatPatches(c, neckTube, r, p, { nu: 7, nphi: 4, seam: 0.78, rgb: [126, 74, 26] });
+  else if (coat === 'stripes') coatBars(c, neckTube, r, p, { count: 7, width: 0.9, phiEnd: -0.9, forkRate: 0.1 });
+  else if (coat === 'bands') coatBars(c, neckTube, r, p, { count: 9, width: 1.1, phiEnd: -1.4, lean: 0.02, forkRate: 0, hard: true, rgb: [18, 15, 16] });
+  else if (coat === 'spots') coatSpots(c, neckTube, r, p, { count: 34, size: 0.8, soft: 0.13, rgb: [24, 17, 10] });
+  else if (coat === 'rosettes') coatRosettes(c, neckTube, r, p, { count: 12, size: 0.8 });
+  else if (coat === 'shaggy') coatShaggy(c, neckTube, r, p, { count: 46 });
+  c.restore();
+  if (coat === 'shaggy') shaggyRim(c, neckTube, r, p, Math.max(5, bodyH * 0.15), 0.45);
   /* ★ WAVE 22b — THE MANE (Nick: "the lion head with mane looks awful, can't
      even tell its face"). It is drawn HERE — before the head, behind it — and
      offset BACK from the face, because a mane that is centred on the skull
@@ -408,18 +600,6 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       c.stroke();
     }
     c.globalAlpha = 1;
-  }
-  if ((spec.coat ?? 'plain') === 'patches') {
-    /* the neck carries the same SOFT patches (was a dashed stroke — a hard
-       edge, exactly what Nick flagged) */
-    const nSteps = 12;
-    for (let i = 1; i < nSteps; i++) {
-      const t = i / nSteps, mt = 1 - t;
-      const nx = mt * mt * (shoulderX - bodyW * 0.1) + 2 * mt * t * (shoulderX + neckLen * 0.30) + t * t * headX;
-      const ny = mt * mt * (shoulderY + bodyH * 0.2) + 2 * mt * t * (shoulderY - neckLen * 0.45) + t * t * headY;
-      const rr = Math.max(6, bodyH * 0.16);
-      softMark(c, nx + (r() - 0.5) * 6, ny + (r() - 0.5) * 6, rr * (0.8 + r() * 0.5), rr * (0.7 + r() * 0.4), '122,74,28', 0.55 + r() * 0.15, r() * 3);
-    }
   }
   const headGrad = c.createRadialGradient(headX - headR * 0.3, headY - headR * 0.35, 2, headX, headY, headR * 1.3);
   headGrad.addColorStop(0, p.lit); headGrad.addColorStop(0.6, p.base); headGrad.addColorStop(1, p.dark);
@@ -462,7 +642,11 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
 
   /* ---- ears: family-defining (fennec vs hippo vs koala) ---- */
   const ears = spec.ears ?? 'small';
-  const earR = headR * (ears === 'huge' ? 1.25 : ears === 'large' ? 0.75 : ears === 'round' ? 0.62 : ears === 'small' ? 0.4 : 0.22) * (spec.earScale ?? 1);
+  /* ⚠ WAVE 4 — 'round' EARS WERE 0.62·headR AND SAT ON THE CROWN, so two dark
+     discs wider than the skull merged into a fluffy cloud on the top of every
+     cat and bear in the catalogue. A round ear is a small cup set at the
+     TOP-BACK of the head; the ear is the read on a fennec, never on a tiger. */
+  const earR = headR * (ears === 'huge' ? 1.15 : ears === 'large' ? 0.62 : ears === 'round' ? 0.38 : ears === 'small' ? 0.30 : 0.17) * (spec.earScale ?? 1);
   if (ears === 'fan') {
     /* ★ ARC STAGE 3 — AN ELEPHANT'S EAR IS NOT A RABBIT'S. Routed as 'huge' it
        got two upright ellipses standing off the crown, which is the single most
@@ -499,18 +683,25 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
         }
       }
     }
-  } else if (ears !== 'tiny' || true) {
+  } else {
+    /* the pair sits at the TOP-BACK of the skull and the far one is set
+       further back and darker, so the head reads as a solid with two ears on
+       it rather than a disc wearing a hat */
     for (const s of [-1, 1] as const) {
-      const ex = headX - headR * 0.25 + s * headR * 0.42, ey = headY - headR * (ears === 'huge' ? 0.85 : 0.72);
-      c.fillStyle = p.dark;
+      const ex = headX - headR * (s < 0 ? 0.62 : 0.40), ey = headY - headR * (0.56 + (ears === 'huge' ? 0.18 : 0));
+      const m = s < 0 ? 0.62 : 1;
+      c.fillStyle = `rgb(${p.cr * 0.52 * m | 0},${p.cg * 0.52 * m | 0},${p.cb * 0.54 * m | 0})`;
       if (ears === 'huge' || ears === 'large') {
-        c.save(); c.translate(ex, ey); c.rotate(s * 0.32);
-        c.beginPath(); c.ellipse(0, -earR * 0.5, earR * 0.52, earR, 0, 0, TAU); c.fill();
-        c.fillStyle = `rgba(${p.cr},${p.cg},${p.cb},0.55)`;
-        c.beginPath(); c.ellipse(0, -earR * 0.5, earR * 0.3, earR * 0.7, 0, 0, TAU); c.fill();
+        c.save(); c.translate(ex, ey); c.rotate(s * 0.30 - 0.12);
+        c.beginPath(); c.ellipse(0, -earR * 0.52, earR * 0.50, earR, 0, 0, TAU); c.fill();
+        c.fillStyle = `rgba(${Math.min(255, p.cr * 1.05) | 0},${Math.min(255, p.cg * 0.86) | 0},${Math.min(255, p.cb * 0.84) | 0},${0.5 * m})`;
+        c.beginPath(); c.ellipse(0, -earR * 0.5, earR * 0.28, earR * 0.68, 0, 0, TAU); c.fill();
         c.restore();
       } else {
-        c.beginPath(); c.arc(ex, ey, earR, 0, TAU); c.fill();
+        /* a cup, not a disc: the pinna with a paler inner bowl */
+        c.beginPath(); c.ellipse(ex, ey, earR * 0.92, earR, -s * 0.2, 0, TAU); c.fill();
+        c.fillStyle = `rgba(${Math.min(255, p.cr * 1.02) | 0},${Math.min(255, p.cg * 0.84) | 0},${Math.min(255, p.cb * 0.82) | 0},${0.45 * m})`;
+        c.beginPath(); c.ellipse(ex, ey + earR * 0.08, earR * 0.52, earR * 0.60, -s * 0.2, 0, TAU); c.fill();
       }
     }
   }
@@ -762,58 +953,58 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* big cats — same family, different builds and coats */
   /* ★ wave 22b — Lion had NO route and fell through to the verbatim engine,
      where the mane rendered as a ring of spikes over an unreadable face. */
-  'Lion': { legs: 0.1236, depth: 0.1426, len: 0.2455, neck: 0.06, muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'tuft', mane: 'lion', hue: '#c19a5b' },
-  'Jaguar': { legs: 0.114, depth: 0.1395, len: 0.2287, neck: 0.07, muzzle: 0.35, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' },
-  'Leopard': { legs: 0.1253, depth: 0.1268, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' },
-  'Snow Leopard': { legs: 0.1221, depth: 0.133, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'plume', coat: 'rosettes', hue: '#cfd4dc' },
-  'Cheetah': { legs: 0.1938, depth: 0.1205, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477' },
-  'Cougar': { legs: 0.1482, depth: 0.1268, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' },
-  'Lynx': { legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' },
+  'Lion': { legs: 0.1236, depth: 0.1426, len: 0.2455, neck: 0.06, muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'tuft', mane: 'lion', hue: '#c19a5b', family: 'felid' },
+  'Jaguar': { legs: 0.114, depth: 0.1395, len: 0.2287, neck: 0.07, muzzle: 0.35, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#c8983c", family: 'felid' },
+  'Leopard': { legs: 0.1253, depth: 0.1268, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#d3ab5e", family: 'felid' },
+  'Snow Leopard': { legs: 0.1221, depth: 0.133, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'plume', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' },
+  'Cheetah': { legs: 0.1938, depth: 0.1205, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid' },
+  'Cougar': { legs: 0.1482, depth: 0.1268, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid' },
+  'Lynx': { legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid' },
   /* the pixel-siblings, separated */
-  'Rhinoceros': { legs: 0.0835, depth: 0.1886, len: 0.263, neck: 0.045, muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#8b8b8e' },
-  'Wild Sheep': { legs: 0.1345, depth: 0.1529, len: 0.1881, neck: 0.075, muzzle: 0.35, ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#9d8a6e' },
-  'Hippopotamus': { legs: 0.0486, depth: 0.1789, len: 0.3227, neck: 0.03, muzzle: 0.62, jaw: 'barrel', ears: 'tiny', tail: 'stub', hue: '#8a6f74' },
+  'Rhinoceros': { legs: 0.0835, depth: 0.1886, len: 0.263, neck: 0.045, muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#8b8b8e', family: 'pachyderm' },
+  'Wild Sheep': { legs: 0.1345, depth: 0.1529, len: 0.1881, neck: 0.075, muzzle: 0.35, ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#9d8a6e', family: 'bovid' },
+  'Hippopotamus': { legs: 0.0486, depth: 0.1789, len: 0.3227, neck: 0.03, muzzle: 0.62, jaw: 'barrel', ears: 'tiny', tail: 'stub', hue: '#8a6f74', family: 'pachyderm' },
   /* the humped and the long-necked */
-  'Camel': { legs: 0.1846, depth: 0.1629, len: 0.1804, neck: 0.20, back: 'level', muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#c8a173' },
-  'Bactrian Camel': { legs: 0.176, depth: 0.1667, len: 0.1914, neck: 0.19, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 2, hue: '#b08a5e' },
-  'Dromedary Camel': { legs: 0.1935, depth: 0.159, len: 0.176, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777' },
+  'Camel': { legs: 0.1846, depth: 0.1629, len: 0.1804, neck: 0.20, back: 'level', muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#c8a173', family: 'camelid' },
+  'Bactrian Camel': { legs: 0.176, depth: 0.1667, len: 0.1914, neck: 0.19, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 2, hue: '#b08a5e', family: 'camelid' },
+  'Dromedary Camel': { legs: 0.1935, depth: 0.159, len: 0.176, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777', family: 'camelid' },
   'Giraffe': { legs: 0.2438, depth: 0.1573, len: 0.1652, neck: 0.34, back: 'sloped', muzzle: 0.40, ears: 'large', tail: 'tuft', coat: 'patches', horn: 'ossicone', hue: '#e0c07a' },
-  'Llama': { legs: 0.1938, depth: 0.1434, len: 0.1506, neck: 0.20, muzzle: 0.35, ears: 'large', tail: 'stub', hue: '#d8cbb4' },
-  'Alpaca': { legs: 0.1594, depth: 0.1448, len: 0.152, neck: 0.18, muzzle: 0.30, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#ddd2bd' },
+  'Llama': { legs: 0.1938, depth: 0.1434, len: 0.1506, neck: 0.20, muzzle: 0.35, ears: 'large', tail: 'stub', hue: '#d8cbb4', family: 'camelid' },
+  'Alpaca': { legs: 0.1594, depth: 0.1448, len: 0.152, neck: 0.18, muzzle: 0.30, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#ddd2bd', family: 'camelid' },
   /* antlered + horned */
-  'Moose': { legs: 0.2181, depth: 0.1843, len: 0.2116, neck: 0.10, back: 'humped', muzzle: 0.62, jaw: 'broad', ears: 'large', tail: 'stub', horn: 'palmate', hue: '#5b4433' },
-  'Elk': { legs: 0.2035, depth: 0.1594, len: 0.2092, neck: 0.13, back: 'sloped', muzzle: 0.48, ears: 'large', tail: 'stub', horn: 'branched', hue: '#9c7748' },
-  'Deer': { legs: 0.1973, depth: 0.139, len: 0.1709, neck: 0.12, muzzle: 0.42, ears: 'large', tail: 'stub', horn: 'branched', coat: 'spots', hue: '#b98a58' },
-  'Reindeer': { legs: 0.1782, depth: 0.1505, len: 0.1974, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#a8917a' },
-  'Sheep': { legs: 0.1448, depth: 0.1548, len: 0.1777, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', hue: '#a98f6d' },
-  'Bison': { legs: 0.1211, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', coat: 'shaggy', hue: '#5c4535' },
-  'Water Buffalo': { legs: 0.1249, depth: 0.1765, len: 0.246, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#4f4a48' },
+  'Moose': { legs: 0.2181, depth: 0.1843, len: 0.2116, neck: 0.10, back: 'humped', muzzle: 0.62, jaw: 'broad', ears: 'large', tail: 'stub', horn: 'palmate', hue: '#5b4433', family: 'cervid' },
+  'Elk': { legs: 0.2035, depth: 0.1594, len: 0.2092, neck: 0.13, back: 'sloped', muzzle: 0.48, ears: 'large', tail: 'stub', horn: 'branched', hue: '#9c7748', family: 'cervid' },
+  'Deer': { legs: 0.1973, depth: 0.139, len: 0.1709, neck: 0.12, muzzle: 0.42, ears: 'large', tail: 'stub', horn: 'branched', coat: 'spots', hue: '#b98a58', family: 'cervid' },
+  'Reindeer': { legs: 0.1782, depth: 0.1505, len: 0.1974, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#a8917a', family: 'cervid' },
+  'Sheep': { legs: 0.1448, depth: 0.1548, len: 0.1777, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', hue: '#a98f6d', family: 'bovid' },
+  'Bison': { legs: 0.1211, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', coat: 'shaggy', hue: '#5c4535', family: 'bovid' },
+  'Water Buffalo': { legs: 0.1249, depth: 0.1765, len: 0.246, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#4f4a48', family: 'bovid' },
   /* bears, differentiated */
-  'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636' },
-  'Brown Bear': { legs: 0.0963, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f' },
-  'Polar Bear': { legs: 0.1112, depth: 0.1696, len: 0.2642, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6' },
-  'Black Bear': { legs: 0.101, depth: 0.1729, len: 0.2268, neck: 0.05, muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#3b3a40' },
-  'Panda': { legs: 0.0825, depth: 0.1844, len: 0.2269, neck: 0.04, back: 'arched', muzzle: 0.30, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'panda', face: 'mask', hue: '#f0f2f4' },
-  'Sun Bear': { legs: 0.0939, depth: 0.1438, len: 0.2004, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c' },
-  'Sloth Bear': { legs: 0.1001, depth: 0.1697, len: 0.2227, neck: 0.05, muzzle: 0.55, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#2b2726' },
+  'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636', family: 'ursid' },
+  'Brown Bear': { legs: 0.0963, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f', family: 'ursid' },
+  'Polar Bear': { legs: 0.1112, depth: 0.1696, len: 0.2642, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6', family: 'ursid' },
+  'Black Bear': { legs: 0.101, depth: 0.1729, len: 0.2268, neck: 0.05, muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#3b3a40', family: 'ursid' },
+  'Panda': { legs: 0.0825, depth: 0.1844, len: 0.2269, neck: 0.04, back: 'arched', muzzle: 0.30, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'panda', face: 'mask', hue: '#f0f2f4', family: 'ursid' },
+  'Sun Bear': { legs: 0.0939, depth: 0.1438, len: 0.2004, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c', family: 'ursid' },
+  'Sloth Bear': { legs: 0.1001, depth: 0.1697, len: 0.2227, neck: 0.05, muzzle: 0.55, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#2b2726', family: 'ursid' },
   /* canids + small mammals where ears/tails are the read */
-  'Red Fox': { legs: 0.1118, depth: 0.104, len: 0.1962, neck: 0.06, muzzle: 0.44, jaw: 'fine', ears: 'large', tail: 'plume', hue: '#d1651f' },
-  'Arctic Fox': { legs: 0.1046, depth: 0.1072, len: 0.1847, neck: 0.06, muzzle: 0.36, ears: 'small', tail: 'plume', hue: '#eaf0f5' },
+  'Red Fox': { legs: 0.1118, depth: 0.104, len: 0.1962, neck: 0.06, muzzle: 0.44, jaw: 'fine', ears: 'large', tail: 'plume', hue: '#d1651f', family: 'canid' },
+  'Arctic Fox': { legs: 0.1046, depth: 0.1072, len: 0.1847, neck: 0.06, muzzle: 0.36, ears: 'small', tail: 'plume', hue: '#eaf0f5', family: 'canid' },
   /* ★ wave 21 — the audit: "ears should dominate the head; reduce body size and
      increase bushy tail". A fennec is a desert fox scaled DOWN around ears that
      were not scaled down with it. */
-  'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.85, tailScale: 1.6 },
-  'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, ears: 'large', tail: 'bushy', hue: '#7d7f86' },
-  'Hyena': { legs: 0.1442, depth: 0.1492, len: 0.208, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63' },
+  'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.85, tailScale: 1.6, family: 'canid' },
+  'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid' },
+  'Hyena': { legs: 0.1442, depth: 0.1492, len: 0.208, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63', family: 'canid' },
   'Koala': { legs: 0.0551, depth: 0.1434, len: 0.1506, neck: 0.03, muzzle: 0.20, jaw: 'broad', ears: 'huge', tail: 'none', hue: '#a8adb4' },
   /* ⚠ the pachyderms + Zebra/Tiger/Lion/Red Panda/Raccoon are DELIBERATELY
      ABSENT: the verbatim engine already nails them (Elephant 4.5/5; Nick's
      audit lists the others among its stronger reads). Never override what
      already excels — a generic system cannot beat bespoke work. */
-  'Walrus': { legs: 0.0303, depth: 0.1631, len: 0.2943, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f' },
+  'Walrus': { legs: 0.0303, depth: 0.1631, len: 0.2943, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f', family: 'pachyderm' },
   /* equines + swine */
-  'Horse': { legs: 0.1964, depth: 0.1524, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'plume', hue: '#8a5a35' },
-  'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e' },
-  'Warthog': { legs: 0.1087, depth: 0.1405, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', hue: '#6b5647' },
-  'Tapir': { legs: 0.1099, depth: 0.1542, len: 0.2276, neck: 0.05, muzzle: 0.48, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#4a4348' },
+  'Horse': { legs: 0.1964, depth: 0.1524, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'plume', hue: '#8a5a35', family: 'equid' },
+  'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e', family: 'suid' },
+  'Warthog': { legs: 0.1087, depth: 0.1405, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', hue: '#6b5647', family: 'suid' },
+  'Tapir': { legs: 0.1099, depth: 0.1542, len: 0.2276, neck: 0.05, muzzle: 0.48, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#4a4348', family: 'pachyderm' },
 };
