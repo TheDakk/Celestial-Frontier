@@ -751,3 +751,63 @@ families · the 43 biome scenes.
 
 **Gates:** vitest 220 ✓ · tsc clean · **artbattery 5/5** · slicesmoke PASS ·
 perf 1254/1874ms (honest). `hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-40 … D-ART-42.
+
+---
+
+# WAVE 12 — LANDED 2026-08-01 (THE SURFACE LAWS: markings that belong to the animal)
+
+Nick: *"make sure the textures and everything blend together well, including the fur, the
+spikes, everything just looks like it's part of the animal and not just painted on."*
+
+## Why a marking reads as PAINTED ON — three geometric causes, not taste
+Every pattern in the pass so far was an upright soft blob of fixed opacity. That is enough to
+stop it being a hard-edged sticker (D-ART-16 got us that far) but not enough to make it
+*belong*. `packages/art/src/surface.ts` names the three remaining causes and fixes each:
+
+**1 · IT IGNORED THE FORM.** A spot near the rim of a rounded flank is seen almost edge-on.
+Drawn as the same circle everywhere, it announces that the body is flat. `formMark()` takes
+the form the mark lies on, computes how much that point FACES the viewer, and foreshortens
+across the radius while turning the mark's long axis ALONG the surface. A giraffe's patches
+now compress and tilt as they wrap toward the belly and the shoulder.
+
+**2 · IT IGNORED THE LIGHT.** This engine lights from the upper left — every `bodyGrad` in the
+codebase does. A marking that keeps one opacity across a lit shoulder and a shadowed belly is
+a decal. Marks are now bleached where the light falls and drowned where it does not, with the
+sign depending on whether the mark is darker or lighter than the coat.
+
+**3 · IT STOPPED AT THE OUTLINE.** This was the big one. Fur strokes living strictly inside a
+smooth silhouette are wallpaper inside a cutout — and the SILHOUETTE is the first thing the
+eye reads. `furRim()` walks the outline and pushes tufts THROUGH it, starting each tuft
+*inside* the body so it grows out rather than sits on. A musk ox, yak, bison, takin or ibex no
+longer has the outline of a bar of soap.
+
+## `rootedSpine()` — a quill parts the coat
+Quills drawn as bare strokes read as pins in a balloon. Each now gets a dark **socket** where
+it leaves the skin, tapers in two segments to a point, and the whole set is depth-sorted so
+near quills overlap far ones. Hedgehog and porcupine were the visible win.
+
+## Applied retroactively, in the shared painters — so it lands everywhere at once
+- **~130 quadrupeds**: spots · rosettes · stripes · patches all wrap the torso form; shaggy
+  coats gained an undercoat that follows the form AND the fur rim that breaks the silhouette.
+- **rodents**: rooted quills.
+- and the wave-13 target below extends the same laws to the procedural genomes.
+
+## ★ THE LAW THAT GOVERNS THIS ONE
+Wave 12 exists because of D-ART-41 — the texture pass that broke the dragonfly. Every change
+here was rendered against a known-good species *before* being applied broadly, and
+`faunaWingedInsect` remains deliberately untouched.
+
+**Gates:** vitest 220 ✓ · tsc clean · artbattery **5/5** · speciesaudit 1254/1254 ·
+0 duplicate pairs · 0 clipped · slicesmoke PASS · perf 1357/2164ms.
+`hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-43 … D-ART-45.
+
+## ⇒ WAVE 13 (next): THE PROCEDURAL CREATURES
+Nick asked for all of this to reach the procedural generation and the breeding programme.
+Today `resolveOverride` keys on `_earthName`, so a procedural genome — which has none —
+falls through to the verbatim engine entirely: **240 of the audit's 1,254 portraits, and every
+creature a player ever breeds, are untouched by eleven waves of work.** The fix is to select a
+BODY PLAN from the genome rather than from a name (kingdom + form + heat + limb/wing/fin
+genes → the same PlantSpec / FishSpec / QuadSpec / InsectSpec structures), so a bred creature
+is drawn by the same systems and inherits the same surface laws. That is what makes the whole
+world cohere rather than splitting into "Earth species look right, everything else looks like
+the old engine".

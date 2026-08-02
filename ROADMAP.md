@@ -686,6 +686,32 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 12 — THE SURFACE LAWS (2026-08-01, batch 33). Nick: "the fur, the
+##   spikes, everything just looks like it's part of the animal and not just painted on".
+##   packages/art/src/surface.ts names the THREE GEOMETRIC causes of "painted on" and fixes
+##   each: (1) ★IT IGNORED THE FORM — a spot near the rim of a rounded flank is seen edge-on;
+##   drawn as the same circle everywhere it announces the body is FLAT. formMark() computes how
+##   much a point FACES the viewer, foreshortens across the radius and turns the mark's long
+##   axis ALONG the surface. (2) ★IT IGNORED THE LIGHT — the engine lights upper-left, but
+##   markings kept ONE opacity across a lit shoulder and a shadowed belly, which is what a
+##   DECAL does; dark marks now fade in light, light marks fade in shadow. (3) ★★IT STOPPED AT
+##   THE OUTLINE — fur strokes inside a smooth silhouette are WALLPAPER IN A CUTOUT, and the
+##   silhouette is the FIRST thing the eye reads. furRim() pushes tufts THROUGH the outline,
+##   each starting INSIDE the body so it grows out rather than sits on (musk ox/yak/bison/
+##   takin/ibex no longer have the outline of a bar of soap). ★rootedSpine(): a quill drawn as
+##   a bare stroke is a pin in a balloon — each now gets a dark SOCKET where it leaves the
+##   skin, a two-segment taper, and depth sorting (hedgehog + porcupine the visible win).
+##   Applied in the SHARED painters so ~130 quadrupeds gained it at once. ★GOVERNED BY D-ART-41:
+##   every change was rendered against a known-good species BEFORE broad application, and
+##   faunaWingedInsect (the dragonfly) stays deliberately untouched. D-ART-43..45.
+##   ⇒★★★ WAVE 13 NEXT — THE PROCEDURAL CREATURES: resolveOverride keys on _earthName, so a
+##   procedural genome falls through to the verbatim engine ENTIRELY — 240 of the audit's 1,254
+##   portraits AND EVERY CREATURE A PLAYER BREEDS are untouched by 12 waves of work. Fix =
+##   select a BODY PLAN FROM THE GENOME (kingdom + form + heat + limb/wing/fin genes → the same
+##   PlantSpec/FishSpec/QuadSpec/InsectSpec structures) so bred creatures inherit the same
+##   systems and surface laws. Without it the world splits into "Earth species look right,
+##   everything else looks like the old engine". GATES: vitest 220 · tsc · artbattery 5/5 ·
+##   speciesaudit 1254/1254 0 dupes 0 clipped · slicesmoke PASS · perf 1357/2164ms · hdart UNTOUCHED.
 ##   ✔★★★ THE RETROSPECTIVE + THE ART BATTERY (2026-08-01, batch 32). Nick: "hope we didn't
 ##   miss anything else in all the waves". Answered with an instrument, not from memory:
 ##   ★tools/artaudit.mjs encodes EVERY defect class this pass has shipped — A dead painters ·

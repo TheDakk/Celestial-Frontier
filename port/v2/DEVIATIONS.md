@@ -188,6 +188,18 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   had kept that glob one wave too long, under-reporting coverage by 302 species while the check
   reported clean. Tightened to a bare-extension exemption and negative-controlled. Corrected
   coverage: 930/1014. Also: sliceperf now always rebuilds (D-ART-36's second offender).
+- ✔ **D-ART-43 — MARKS WRAP THE FORM (wave 12).** formMark() foreshortens a mark across the
+  radius and turns its long axis along the surface, using how much the point FACES the viewer.
+  A spot near the rim is seen edge-on; drawn as the same circle everywhere it announces that
+  the body is flat. Applied to spots, rosettes, stripes and patches across ~130 quadrupeds.
+- ✔ **D-ART-44 — MARKS OBEY THE LIGHT (wave 12).** The engine lights from the upper left, but
+  markings kept one opacity across a lit shoulder and a shadowed belly, which is what a decal
+  does. Dark marks now fade in light, light marks fade in shadow.
+- ✔ **D-ART-45 — FUR BREAKS THE SILHOUETTE; SPINES ARE ROOTED (wave 12).** Fur strokes inside a
+  smooth outline are wallpaper in a cutout, and the silhouette is the first thing the eye
+  reads. furRim() pushes tufts THROUGH the outline, each starting inside the body. rootedSpine()
+  gives every quill a dark socket where it leaves the skin, a two-segment taper, and depth
+  sorting. Every change was rendered against a known-good species first (D-ART-41).
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

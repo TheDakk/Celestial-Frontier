@@ -10,6 +10,7 @@
      Frilled Lizard, Poison Dart Frog, Seahorse, Pangolin, Armadillo, Giant
      Anteater, Beaver and Fruit Bat scored well and are deliberately ABSENT. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { rootedSpine } from './surface.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -340,12 +341,17 @@ export function smallRodent(c: Ctx, g: G, p: Pal, opts: { tail: 'long' | 'bushy'
   c.beginPath(); c.ellipse(cx, cy, bw, bh, -0.12, 0, TAU); c.fill();
   rim(c, () => c.ellipse(cx, cy, bw, bh, -0.12, -2.8, 0.3));
   if (opts.quills) {
-    c.strokeStyle = '#e8dcc0'; c.lineWidth = 3;
-    for (let i = 0; i < 34; i++) {
-      const a = -Math.PI * 0.95 + r() * Math.PI * 0.9, d = bw * (0.5 + r() * 0.5);
-      const qx = cx + Math.cos(a) * d, qy = cy + Math.sin(a) * d * 0.8;
-      c.beginPath(); c.moveTo(qx, qy); c.lineTo(qx + Math.cos(a) * 26, qy + Math.sin(a) * 22); c.stroke();
+    /* ★ ROOTED SPINES. Drawn as bare strokes they read as pins stuck into a
+       balloon; a real quill parts the coat around its base, so each one gets
+       a dark socket where it leaves the skin and tapers to a point. Drawn
+       from back to front so the near ones overlap the far ones. */
+    const quills: Array<[number, number, number, number]> = [];
+    for (let i = 0; i < 46; i++) {
+      const a = -Math.PI * 0.98 + r() * Math.PI * 0.96, d = bw * (0.45 + r() * 0.55);
+      quills.push([cx + Math.cos(a) * d, cy + Math.sin(a) * d * 0.8, a, 20 + r() * 16]);
     }
+    quills.sort((q1, q2) => q1[1] - q2[1]);
+    for (const [qx, qy, a, L] of quills) rootedSpine(c, qx, qy, a, L, '#e8dcc0');
   }
   /* haunch + forefeet */
   c.fillStyle = p.dark;

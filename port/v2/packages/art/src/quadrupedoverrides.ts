@@ -16,6 +16,7 @@
 
    Everything unlisted still falls through to the byte-verbatim engine. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { formMark, furRim, rootedSpine, ellipsePts, type Form } from './surface.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -172,11 +173,13 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   traceBody(c, cx, cy, bodyW, bodyH, topY);
   c.clip();
   const coat = spec.coat ?? 'plain';
+  /* the torso as a FORM, so every mark below knows the shape it lies on */
+  const torsoForm: Form = { cx, cy, rx: bodyW, ry: bodyH * 1.15 };
   if (coat === 'spots') {
     for (let i = 0; i < 78; i++) {
       const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 1.0 + r() * bodyH * 1.85;
       const rr = 5 + r() * 5;
-      softMark(c, x, y, rr, rr * (0.7 + r() * 0.4), '24,18,10', 0.55 + r() * 0.18, r() * 3);
+      formMark(c, x, y, rr, rr * (0.7 + r() * 0.4), '24,18,10', 0.55 + r() * 0.18, torsoForm);
     }
   } else if (coat === 'rosettes') {
     for (let i = 0; i < 38; i++) {
@@ -186,9 +189,9 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       const n = 4 + (r() * 3 | 0);
       for (let k = 0; k < n; k++) {
         const a = (k / n) * TAU + r() * 0.5;
-        softMark(c, x + Math.cos(a) * rad * 0.78, y + Math.sin(a) * rad * 0.66, rad * 0.42, rad * 0.34, '28,20,10', 0.5 + r() * 0.16, a);
+        formMark(c, x + Math.cos(a) * rad * 0.78, y + Math.sin(a) * rad * 0.66, rad * 0.42, rad * 0.34, '28,20,10', 0.5 + r() * 0.16, torsoForm);
       }
-      softMark(c, x + 1, y + 1, rad * 0.34, rad * 0.28, '46,32,14', 0.30);
+      formMark(c, x + 1, y + 1, rad * 0.34, rad * 0.28, '46,32,14', 0.30, torsoForm);
     }
   } else if (coat === 'stripes') {
     for (let i = 0; i < 15; i++) {
@@ -197,7 +200,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       /* a band built from stacked soft marks — edges melt into the coat */
       for (let k = 0; k < 5; k++) {
         const t = (k / 4 - 0.5) * 2;
-        softMark(c, x + Math.sin(rot) * -t * h * 0.5, cy + t * h * 0.5, w, w * 1.25, '20,14,8', 0.62, rot);
+        formMark(c, x + Math.sin(rot) * -t * h * 0.5, cy + t * h * 0.5, w, w * 1.25, '20,14,8', 0.62, torsoForm);
       }
     }
   } else if (coat === 'patches') {
@@ -211,7 +214,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       const lobes = 3 + (r() * 3 | 0);
       for (let k = 0; k < lobes; k++) {
         const a = r() * TAU, d = rad * 0.42 * r();
-        softMark(c, x + Math.cos(a) * d, y + Math.sin(a) * d * 0.8, rad * (0.62 + r() * 0.34), rad * (0.5 + r() * 0.3), '122,74,28', 0.60 + r() * 0.16, r() * 3);
+        formMark(c, x + Math.cos(a) * d, y + Math.sin(a) * d * 0.8, rad * (0.62 + r() * 0.34), rad * (0.5 + r() * 0.3), '122,74,28', 0.60 + r() * 0.16, torsoForm);
       }
     }
   } else if (coat === 'panda') {
@@ -219,13 +222,25 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.beginPath(); c.ellipse(cx + bodyW * 0.30, cy, bodyW * 0.34, bodyH * 1.1, 0, 0, TAU); c.fill();
     c.beginPath(); c.ellipse(cx - bodyW * 0.72, cy + bodyH * 0.3, bodyW * 0.3, bodyH * 0.9, 0, 0, TAU); c.fill();
   } else if (coat === 'shaggy') {
-    c.strokeStyle = 'rgba(30,20,12,0.5)'; c.lineWidth = 3;
-    for (let i = 0; i < 60; i++) { const x = cx - bodyW + r() * bodyW * 1.1, y = cy - bodyH * 0.4 + r() * bodyH * 1.1; c.beginPath(); c.moveTo(x, y); c.lineTo(x - 6 - r() * 10, y + 8 + r() * 12); c.stroke(); }
+    /* the UNDERCOAT: clumps that follow the form rather than parallel scratches */
+    for (let i = 0; i < 44; i++) {
+      const x = cx - bodyW + r() * bodyW * 2, y = cy - bodyH * 0.9 + r() * bodyH * 1.8;
+      formMark(c, x, y, 7 + r() * 7, 4 + r() * 4, r() < 0.6 ? '28,20,12' : '236,228,208', 0.16 + r() * 0.18, torsoForm);
+    }
   } else if (coat === 'banded') {
     c.fillStyle = 'rgba(26,20,14,0.5)';
     for (let i = 0; i < 5; i++) { c.beginPath(); c.ellipse(cx - bodyW * 0.6 + i * bodyW * 0.35, cy + bodyH * 0.1, bodyW * 0.10, bodyH * 0.8, 0.25, 0, TAU); c.fill(); }
   }
   c.restore();
+  if (coat === 'shaggy') {
+    /* ★ THE FUR RIM — tufts pushed THROUGH the outline. Without this a
+       "shaggy" coat is noise inside a machined edge, and the silhouette
+       (the first thing the eye reads) still says "smooth plastic". */
+    furRim(c, ellipsePts(cx, cy, bodyW * 0.98, bodyH * 1.02, 0, 72), cx, cy,
+      p.dark, Math.max(7, bodyH * 0.22), r, 0.62);
+    furRim(c, ellipsePts(cx, cy, bodyW * 0.98, bodyH * 1.02, 0, 72), cx, cy,
+      p.lit, Math.max(5, bodyH * 0.15), r, 0.28);
+  }
   /* the belly shadow + top rim: form, not just outline */
   c.save();
   /* the rim light FADES at both ends — a flat stroke along a level back
