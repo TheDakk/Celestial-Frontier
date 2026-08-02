@@ -648,7 +648,19 @@ export function marineRay(c: Ctx, g: G, p: Pal, opts: { sting?: boolean }, name 
   }
 }
 /** BIVALVE/GASTROPOD shells: scallop ribs, spiral snail, ear-shaped abalone */
-export function marineShell(c: Ctx, g: G, p: Pal, opts: { kind: 'scallop' | 'spiral' | 'abalone' | 'razor' | 'snail' }, name = ''): void {
+export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 'spiral' | 'abalone' | 'razor' | 'snail';
+  hue?: string; scale?: number }, name = ''): void {
+  /* ★ WAVE 12 — Snail and Freshwater Snail carried LITERALLY the same spec and
+     the lock reported them at 0.06, the closest pair in the entire catalogue. */
+  let p = pIn;
+  if (opts.hue) {
+    const hn = parseInt(opts.hue.slice(1), 16);
+    const hr = (hn >> 16) & 255, hg = (hn >> 8) & 255, hb = hn & 255;
+    const mk = (x: number, y: number, z: number): string => 'rgb(' + (x | 0) + ',' + (y | 0) + ',' + (z | 0) + ')';
+    p = { cr: hr, cg: hg, cb: hb, base: opts.hue,
+      lit: mk(Math.min(255, hr * 1.32), Math.min(255, hg * 1.30), Math.min(255, hb * 1.28)),
+      dark: mk(hr * 0.42, hg * 0.44, hb * 0.48) };
+  }
   const r = nrng(g, name, 0x5E11);
   const cx = S * 0.5, cy = S * 0.52;
   const sv = nvar(name, 0xF4, 0.18), sv2 = nvar(name, 0xF5, 0.16);
@@ -1013,11 +1025,11 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Conch': (c, g, p, n) => marineShell(c, g, p, { kind: 'spiral' }, n),
   'Nautilus': (c, g, p, n) => marineShell(c, g, p, { kind: 'spiral' }, n),
   'Cowrie': (c, g, p, n) => marineShell(c, g, p, { kind: 'abalone' }, n),
-  'Snail': (c, g, p, n) => marineShell(c, g, p, { kind: 'snail' }, n),
+  'Snail': (c, g, p, n) => marineShell(c, g, p, { kind: 'snail', hue: '#8d6f43' }, n),
   'Land Snail': (c, g, p, n) => marineShell(c, g, p, { kind: 'snail' }, n),
   'Sea Snail': (c, g, p, n) => marineShell(c, g, p, { kind: 'snail' }, n),
   'Water Snail': (c, g, p, n) => marineShell(c, g, p, { kind: 'snail' }, n),
-  'Freshwater Snail': (c, g, p, n) => marineShell(c, g, p, { kind: 'snail' }, n),
+  'Freshwater Snail': (c, g, p, n) => marineShell(c, g, p, { kind: 'snail', hue: '#4a5a4e', scale: 0.86 }, n),
   /* ── RADIAL INVERTEBRATES ── body plans nothing else in the game had ── */
   'Starfish': (c, g, p, n) => marineStar(c, g, p, {}, n),
   'Brittle Star': (c, g, p, n) => marineStar(c, g, p, { brittle: true }, n),
