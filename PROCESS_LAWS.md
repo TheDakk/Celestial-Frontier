@@ -137,3 +137,39 @@ something else asserted on the same key.
 Rekeying `trueOdds` on the stat vectors moved the cache check below the `battleStats` calls that
 build the key, so a cache *hit* still paid full price per row. Correctness was untouched, which is
 why nothing caught it. Hoist the invariant to the caller.
+
+---
+
+## Added 2026-08-01 (round 10 — the morphology pass)
+
+⚠⚠ **A CHECK ONLY SEES THE AXIS IT MEASURES.** The eighth green-while-broken state on this
+project, and the first where the check was not wrong about anything it looked at. The species
+audit renders every name in the Earth catalog and reports how many painted: 1,254/1,254, zero
+failures, run after run. Meanwhile **24 art-override painters were keyed to species the catalog
+does not contain** (King Cobra, Bonobo, Dromedary, White Rhino, Lacewing, Water Bear…). Written,
+listed, unreachable. The audit could not see one of them — *it renders the names the catalog asks
+for*, so a table key the catalog never mentions is not a thing it can look at. No amount of
+running it harder would ever have found this.
+> **The remedy:** when a check is green, ask what it is *structurally incapable* of seeing, and
+> write the check for THAT axis. Here it was `tools/overridecheck.mjs`, which walks the other
+> direction — from our table keys back to the catalog — and exits 1 on any key that resolves to
+> nothing. The two checks together cover both directions; either alone is blind on one.
+
+⚠ **AN INSTRUMENT'S FIRST FINDINGS ARE USUALLY ITS OWN BUGS — STILL TRUE, TWICE MORE.**
+`overridecheck` reported 38 dead routes on its first run; 38 of them were phantoms, because a
+painter's *options* are strings too ('barrel', 'spots', 'monkey') and the scan was not brace-depth
+aware. Its second run reported "fungi 0" — wave 1 had never happened, apparently — because the
+scan matched `export const` and both fungi and microbe tables are module-private. Neither was a
+finding. **Read the first report as a bug report about the tool.**
+
+⚠ **AN AUTOMATED GATE CANNOT ANSWER "DOES IT LOOK RIGHT".** The species audit proves 1,254
+portraits paint. It cannot prove any of them resembles the animal. Four painters shipped through
+green audits looking wrong in ways one glance settles — snakes drawn as strings of beads, frogs
+with spider legs, a rabbit whose ears swallowed its head, primates in gowns. `npm run strip
+"A,B,C"` renders a named handful big and labelled *through the audit's own genome*, so the thing a
+human judges is exactly the thing the gate measured. **Pair every counting gate with a looking
+gate.** The looking gate found the dead routes too.
+
+⚠ **A ROUTING TABLE WRITTEN FROM MEMORY DRIFTS FROM THE DATA IT ROUTES.** All 24 dead routes have
+one cause: the tables were written from knowledge of *what animals exist* instead of from the
+catalog file. Read the data, then write the table — and keep a check that re-proves the join.
