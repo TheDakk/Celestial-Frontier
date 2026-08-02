@@ -965,3 +965,51 @@ and eight legs, bioluminescence, armour, translucency, all on our jointed limbs.
 **Gates:** vitest 220 ✓ · tsc clean · artbattery **5/5** · speciesaudit 1254/1254 ·
 0 duplicate pairs · 0 clipped · slicesmoke PASS. `hdart.verbatim.js` UNTOUCHED.
 **Ledger:** D-ART-50 … D-ART-52. **Task 21 (tree crown value structure) CLOSED.**
+
+---
+
+# WAVE 16 — LANDED 2026-08-01 (SECOND REVIEW PASS: every category, not a spot check)
+
+Nick: *"Make sure we are looking at everything not just the least look, we want to nail this
+execution."* Rendered review strips across EVERY category and went through them. Eight real
+defects found and fixed — several of them in species reviewed as "clean" the first time,
+which is the point of a second pass.
+
+## ★ THE RODENT HAUNCH — a flat dark hole painted on the flank
+Every one of ~30 rodents had a single `p.dark` ellipse on the side for a haunch and no hind
+foot: the oval read as a HOLE punched in the animal, and the whole rodent floated. Exactly
+Nick's "painted on" complaint. A haunch is a MASS — lit like the body it belongs to, proud of
+the flank, with a soft crease where thigh meets side, and a hind leg folding out of it onto a
+long foot on the ground. Forefoot tucked under the chest.
+
+## ★ CEPHALOPOD ARMS — an octopus that read as a STOOL
+The eight arms were single bezier strokes of constant width, so Octopus, Cuttlefish and their
+kin were a dome on eight rigid legs. An arm is thick where it leaves the mantle, TAPERS the
+whole way, and CURLS at the tip — drawn now as a walk of short segments with a shrinking width
+and a sucker row, which reads as boneless muscle instead of furniture.
+
+## The rest of the second pass
+| defect | fix |
+|---|---|
+| **Coral was a bare grey twig** | a COLONY: five trunks from the base, deeper branching, 3× the polyps |
+| **Sea cucumber read as a spiny fish** | a soft sausage; papillae are blended nubs ON the back, not spines off it |
+| **Comb jelly tentacles bowed out like table legs** | they TRAIL beneath the bell |
+| **Sea anemone bleached to a shaving brush** | tentacle tips stay TINTED instead of going white |
+| **Water Lily / Lotus / Duckweed drew as vertical kelp straps** | `aquatic` + `pad` is now floating PADS on a waterline, with the flower riding beside them |
+| **Herb and vine leaves too small to read as leaves** | 0.062S → 0.098S (herb), 0.070S → 0.105S (vine) |
+| **Aloe used water-storing pads** | a spiky lance rosette, which is what an aloe is |
+
+## ★ AND AN INSTRUMENT BUG THE REVIEW EXPOSED
+`Lion's Mane` rendered as an EMPTY RED BOX in the strip — not an art failure. The catalog
+stores a curly apostrophe (U+2019) and the strip's lookup compared raw strings, so it silently
+found nothing. **A species we could not review was invisible to review.** Both sides are
+normalised now. (The species audit was always fine: it iterates the catalog directly.)
+
+## Verified clean on the second pass
+Birds · the fish system · the textured mammals · rooted quills · turtle-shell grooves ·
+snake/myriapod/shrimp texture (post-clip) · fungi · microbes · cetaceans · the procedural
+spread with its wave-14 alien traits.
+
+**Gates:** vitest 220 ✓ · tsc clean · artbattery **5/5** · speciesaudit 1254/1254 ·
+0 duplicate pairs · 0 clipped · slicesmoke PASS · perf 1424/2248ms.
+`hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-53 … D-ART-55. Full export re-run.

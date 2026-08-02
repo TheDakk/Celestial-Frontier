@@ -313,17 +313,36 @@ export function faunaCephalopod(c: Ctx, g: G, p: Pal, opts: { squid: boolean }):
   const cx = S * 0.5, my = opts.squid ? S * 0.34 : S * 0.36;
   const mw = S * (opts.squid ? 0.11 : 0.15), mh = S * (opts.squid ? 0.20 : 0.16);
   ground(c, cx, S * 0.84, S * 0.2);
-  /* arms first (behind the head) */
+  /* ★ ARMS THAT TAPER AND CURL. They were single bezier strokes of constant
+     width, so an octopus read as a STOOL — eight rigid legs under a dome.
+     A cephalopod arm is thick where it leaves the mantle, tapers the whole
+     way, and CURLS at the tip; drawn as a walk of short segments with a
+     shrinking width, that reads as boneless muscle instead of furniture. */
   const arms = 8;
   for (let i = 0; i < arms; i++) {
-    const t = i / (arms - 1), ax = cx + (t - 0.5) * mw * 1.7;
-    const sway = (r() - 0.5) * 40, len = S * (0.24 + r() * 0.12);
-    c.strokeStyle = i % 2 ? p.base : p.dark; c.lineWidth = 9 - Math.abs(t - 0.5) * 6; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(ax, my + mh * 0.7);
-    c.bezierCurveTo(ax + sway * 0.5, my + mh + len * 0.4, ax + sway, my + mh + len * 0.7, ax + sway * 1.3, my + mh + len);
-    c.stroke();
-    c.strokeStyle = 'rgba(255,255,255,0.14)'; c.lineWidth = 2.4;
-    c.beginPath(); c.moveTo(ax, my + mh * 0.7); c.bezierCurveTo(ax + sway * 0.5, my + mh + len * 0.4, ax + sway, my + mh + len * 0.7, ax + sway * 1.3, my + mh + len); c.stroke();
+    const t2 = i / (arms - 1);
+    const ax = cx + (t2 - 0.5) * mw * 1.9;
+    const outward = (t2 - 0.5) * 2;                       /* -1 … 1 */
+    const len = S * (0.28 + r() * 0.14);   /* arms out-reach the mantle */
+    const curl = (r() < 0.5 ? -1 : 1) * (0.7 + r() * 0.9);
+    const w0 = 10 - Math.abs(outward) * 3;
+    c.lineCap = 'round';
+    let px = ax, py = my + mh * 0.62;
+    const N = 16;
+    for (let k = 1; k <= N; k++) {
+      const u = k / N;
+      /* spread out, then hook — the tip curls back on itself */
+      const nx = ax + outward * len * 0.95 * u + Math.sin(u * 2.6) * curl * len * 0.26;
+      const ny = my + mh * 0.62 + len * u * (1.05 - 0.25 * u * u);
+      c.strokeStyle = i % 2 ? p.base : p.dark;
+      c.lineWidth = Math.max(1.4, w0 * (1 - u * 0.88));   /* the taper */
+      c.beginPath(); c.moveTo(px, py); c.lineTo(nx, ny); c.stroke();
+      if (k % 3 === 0 && u < 0.8) {                        /* the sucker row */
+        c.fillStyle = 'rgba(255,250,240,0.30)';
+        c.beginPath(); c.arc(nx, ny, Math.max(1, w0 * (1 - u) * 0.20), 0, TAU); c.fill();
+      }
+      px = nx; py = ny;
+    }
   }
   if (opts.squid) {   /* the two long feeding tentacles */
     for (const s of [-1, 1] as const) {

@@ -280,7 +280,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Sea Purslane': T({ habit: 'succulent', leaf: 'pad', flower: 'star', fhue: '#d890b8' }),
   'Samphire': T({ habit: 'succulent', leaf: 'scale', fhue: '#7a9a58' }),
   /* ── SUCCULENTS ── */
-  'Aloe': T({ habit: 'rosette', leaf: 'pad', flower: 'spike', fhue: '#e05a2c' }),
+  'Aloe': T({ habit: 'rosette', leaf: 'lance', flower: 'spike', fhue: '#e05a2c' }),
   'Agave': T({ habit: 'rosette', leaf: 'lance', flower: 'spike', fhue: '#d8c840', thorns: true }),
   'Yucca': T({ habit: 'rosette', leaf: 'blade', flower: 'bell', fhue: '#f0ece0' }),
   'Prickly Pear': T({ habit: 'succulent', leaf: 'pad', flower: 'head', fhue: '#e8c430', thorns: true }),

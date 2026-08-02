@@ -238,3 +238,12 @@ reported their absence.
 > **The remedy:** for every code path a user can reach, ask which instrument renders it. If the
 > answer is "none", that path is unreviewed no matter how green the suite is. Adding one
 > `proc:` form to the strip tool changed the plan for a whole wave.
+
+
+⚠ **A THING YOU CANNOT RENDER IS A THING YOU CANNOT REVIEW.** The strip tool failed to find
+`Lion's Mane` because the catalog stores a curly apostrophe and the lookup compared raw
+strings. It drew an empty box — which looks like a rendering failure, and is actually the
+reviewer being unable to see the species at all. The same shape as the procedural creatures
+being invisible to every name-based instrument.
+> **The remedy:** when a review tool reports "nothing here", determine whether the thing is
+> broken or merely unreachable BEFORE concluding anything about the art.

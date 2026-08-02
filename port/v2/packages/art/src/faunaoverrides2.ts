@@ -369,11 +369,34 @@ export function smallRodent(c: Ctx, g: G, p: Pal, opts: { tail: 'long' | 'bushy'
     quills.sort((q1, q2) => q1[1] - q2[1]);
     for (const [qx, qy, a, L] of quills) rootedSpine(c, qx, qy, a, L, '#e8dcc0');
   }
-  /* haunch + forefeet */
+  /* ★ THE HAUNCH AND FEET. This was one FLAT p.dark ellipse on the flank and
+     a single stroke for a forefoot — the dark oval read as a HOLE painted on
+     the side of the animal (Nick's "painted on" report, found in review), and
+     with no hind foot the whole rodent floated. A haunch is a MASS: it is lit
+     like the body it belongs to, it sits slightly proud of the flank, and the
+     leg folds out of it to a foot on the ground. */
+  const hipX = cx - bw * 0.40, hipY = cy + bh * 0.34;
+  c.fillStyle = grad(c, p, hipX, hipY, bw * 0.42);
+  c.beginPath(); c.ellipse(hipX, hipY, bw * 0.40, bh * 0.46, -0.16, 0, TAU); c.fill();
+  /* the crease where the thigh meets the flank — soft, so it reads as one
+     animal rather than a disc stuck on */
+  softMark(c, hipX + bw * 0.20, hipY - bh * 0.10, bw * 0.16, bh * 0.34, '22,18,14', 0.26);
+  rim(c, () => c.ellipse(hipX, hipY, bw * 0.40, bh * 0.46, -0.16, -2.6, 0.2), 1.6);
+  /* the hind leg folds down and forward out of the haunch, onto a foot */
+  c.strokeStyle = p.dark; c.lineCap = 'round'; c.lineJoin = 'round';
+  c.lineWidth = bh * 0.26;
+  c.beginPath(); c.moveTo(hipX - bw * 0.06, hipY + bh * 0.28);
+  c.quadraticCurveTo(hipX - bw * 0.02, cy + bh * 0.86, hipX + bw * 0.16, cy + bh * 0.98); c.stroke();
+  c.fillStyle = p.dark;   /* the long rodent hind foot, flat on the ground */
+  c.save(); c.translate(hipX + bw * 0.26, cy + bh * 1.02); c.rotate(-0.10);
+  c.beginPath(); c.ellipse(0, 0, bw * 0.28, bh * 0.11, 0, 0, TAU); c.fill();
+  c.restore();
+  /* the forefoot, tucked under the chest the way a sitting rodent holds it */
+  c.strokeStyle = p.dark; c.lineWidth = bh * 0.17;
+  c.beginPath(); c.moveTo(cx + bw * 0.46, cy + bh * 0.66);
+  c.quadraticCurveTo(cx + bw * 0.58, cy + bh * 0.92, cx + bw * 0.50, cy + bh * 1.04); c.stroke();
   c.fillStyle = p.dark;
-  c.beginPath(); c.ellipse(cx - bw * 0.42, cy + bh * 0.42, bw * 0.36, bh * 0.42, 0, 0, TAU); c.fill();
-  c.strokeStyle = p.dark; c.lineWidth = bh * 0.18; c.lineCap = 'round';
-  c.beginPath(); c.moveTo(cx + bw * 0.5, cy + bh * 0.75); c.lineTo(cx + bw * 0.62, cy + bh * 1.08); c.stroke();
+  c.beginPath(); c.ellipse(cx + bw * 0.54, cy + bh * 1.06, bw * 0.13, bh * 0.08, 0, 0, TAU); c.fill();
   /* head with ears + incisors */
   const hx = cx + bw * 0.95, hy = cy - bh * 0.35, hr = bh * 0.62;
   /* THE EARS RIDE ABOVE THE HEAD. The first cut centred a tall ellipse only
@@ -747,7 +770,9 @@ export function marineAnemone(c: Ctx, g: G, p: Pal, opts: { tall?: boolean }, na
   const base = S * 0.74, top = base - colH, colW = S * 0.085 * nvar(name, 0x52, 0.18);
   ground(c, cx, base + S * 0.012, colW * 1.9);
   const tenc = `rgba(${Math.min(255, p.cr * 0.88 + 26 | 0)},${Math.min(255, p.cg * 0.88 + 20 | 0)},${Math.min(255, p.cb * 0.88 + 24 | 0)},0.92)`;
-  const tenTip = `rgba(${Math.min(255, p.cr * 0.55 + 100 | 0)},${Math.min(255, p.cg * 0.55 + 84 | 0)},${Math.min(255, p.cb * 0.55 + 92 | 0)},0.95)`;
+  /* the tip stays TINTED — bleaching it toward white made every anemone read
+     as a shaving brush regardless of its species colour (review finding) */
+  const tenTip = `rgba(${Math.min(255, p.cr * 0.72 + 46 | 0)},${Math.min(255, p.cg * 0.72 + 38 | 0)},${Math.min(255, p.cb * 0.72 + 44 | 0)},0.95)`;
   c.lineCap = 'round';
   for (let i = 0; i < 46; i++) {   /* the tentacle crown, drifting outward */
     const a = -Math.PI / 2 + (i / 46) * TAU;

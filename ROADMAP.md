@@ -686,6 +686,31 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ MORPHOLOGY WAVE 16 — THE SECOND REVIEW PASS (2026-08-01, batch 37). Nick: "make sure
+##   we are looking at EVERYTHING not just the least look — we want to nail this execution."
+##   Rendered review strips across EVERY category. EIGHT real defects, several in species the
+##   first pass called clean — which is the point of a second pass. ★THE RODENT HAUNCH: ~30
+##   rodents had ONE FLAT p.dark ellipse on the flank and NO hind foot — the oval read as a
+##   HOLE punched in the animal and the rodent FLOATED (exactly Nick's "painted on"). Now a
+##   MASS: lit like the body, proud of the flank, soft thigh crease, hind leg folding onto a
+##   long foot, forefoot tucked under the chest. ★CEPHALOPOD ARMS: eight constant-width bezier
+##   strokes = an octopus that read as a STOOL. An arm is thick at the mantle, TAPERS all the
+##   way and CURLS at the tip — now a walk of short segments with shrinking width + a sucker
+##   row (same class as D-ART-31: a limb drawn at one width is furniture). ★ALSO: coral was a
+##   bare grey twig → a COLONY (5 trunks, deeper branching, 3x polyps) · sea cucumber read as a
+##   spiny fish → a soft sausage with BLENDED papillae · comb jelly tentacles bowed out like
+##   table legs → they TRAIL · anemone bleached to a shaving brush → tips stay TINTED ·
+##   ★Water Lily/Lotus/Duckweed were drawing as vertical KELP STRAPS → aquatic+pad is now
+##   floating PADS on a waterline with the flower beside them · herb/vine leaves too small to
+##   read → enlarged · Aloe used water pads → a spiky lance rosette. ★★AN INSTRUMENT BUG THE
+##   REVIEW EXPOSED: "Lion's Mane" rendered as an EMPTY RED BOX in the strip — the catalog
+##   stores a CURLY apostrophe and the lookup compared raw strings, so A SPECIES WE COULD NOT
+##   REVIEW WAS INVISIBLE TO REVIEW. Both sides normalised. (The audit was always fine — it
+##   iterates the catalog directly.) ★CLEAN on 2nd pass: birds · fish · textured mammals ·
+##   rooted quills · turtle grooves · post-clip textures · fungi · microbes · cetaceans · the
+##   procedural spread. D-ART-53..55. GATES: vitest 220 · tsc · artbattery 5/5 · speciesaudit
+##   1254/1254 0 dupes 0 clipped · slicesmoke PASS · perf 1424/2248ms · hdart UNTOUCHED.
+##   FULL EXPORT RE-RUN.
 ##   ✔★★★ MORPHOLOGY WAVE 15 — THE SYSTEMATIC REVIEW (2026-08-01, batch 36). Nick asked for a
 ##   full render for his review AND a category-by-category artifact hunt: "the hair, the
 ##   spikes, the turtle-shell lines all blended… everything stays within the body… not painted
