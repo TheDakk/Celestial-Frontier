@@ -1,0 +1,637 @@
+[
+ {
+  "name": "Chanterelle",
+  "kingdom": "fungi",
+  "family": "cap-and-stem",
+  "aspect": 0.85,
+  "colour": "egg-yolk golden yellow throughout, cap and stem the same colour",
+  "mustRead": [
+   "a funnel-shaped cap with a wavy, irregularly lobed margin",
+   "blunt forking ridges instead of gills, running down onto the stem",
+   "cap tapering smoothly into a solid stem, no ring"
+  ],
+  "note": "Commonly drawn with true blade gills and a flat cap; it has fat blunt forking ridges and a vase profile."
+ },
+ {
+  "name": "Morel",
+  "kingdom": "fungi",
+  "family": "morel",
+  "aspect": 0.5,
+  "colour": "tan to dark grey-brown pitted head, pale cream stalk",
+  "mustRead": [
+   "a conical head of deep honeycomb pits with pale raised ridges",
+   "head fused to the stalk at its base, not sitting on it like a cap",
+   "hollow all the way through when halved"
+  ],
+  "note": "Not a wrinkled brain surface - the pits are recessed chambers with sharp ridge walls."
+ },
+ {
+  "name": "Black Truffle",
+  "kingdom": "fungi",
+  "family": "truffle",
+  "aspect": 1.1,
+  "colour": "coal-black warty rind, purple-black flesh marbled with fine white veins",
+  "mustRead": [
+   "an irregular lumpy nugget covered in small pyramidal warts",
+   "cut face marbled with a lace of white veins on dark flesh",
+   "no stem, no cap - it grows underground"
+  ]
+ },
+ {
+  "name": "Oyster Mushroom",
+  "kingdom": "fungi",
+  "family": "shelf",
+  "aspect": 1.3,
+  "colour": "pale grey to fawn-brown cap, white gills and flesh",
+  "mustRead": [
+   "fan or oyster-shell shaped caps in overlapping tiers on wood",
+   "white gills running all the way down to an off-centre stubby stem",
+   "a smooth, slightly inrolled wavy cap margin"
+  ],
+  "note": "Has real gills, unlike a true bracket - the stem is lateral or absent, never central."
+ },
+ {
+  "name": "Giant Puffball",
+  "kingdom": "fungi",
+  "family": "puffball",
+  "aspect": 1.15,
+  "colour": "smooth chalk-white to buff, ageing olive-brown and cracked",
+  "mustRead": [
+   "a huge featureless white ball sitting on the ground",
+   "leathery kid-glove skin with no cap, stem or gills",
+   "aged specimens split and puff a brown spore cloud"
+  ]
+ },
+ {
+  "name": "Bracket Fungus",
+  "kingdom": "fungi",
+  "family": "shelf",
+  "aspect": 1.6,
+  "colour": "grey-brown zoned upper crust, pale cream pore surface beneath",
+  "mustRead": [
+   "a hoof or half-disc jutting straight out of a tree trunk",
+   "concentric growth bands ridged across the top",
+   "a flat underside of fine pores, never gills"
+  ],
+  "note": "Distinguish from Shelf Fungus in this same set: a bracket reads as one thick woody hoof, the shelf as many thin tiers."
+ },
+ {
+  "name": "Stinkhorn",
+  "kingdom": "fungi",
+  "family": "stinkhorn",
+  "aspect": 0.4,
+  "colour": "white spongy stalk, dark olive-black slimy head",
+  "mustRead": [
+   "a tall white pitted phallic stalk rising from a white egg sac",
+   "a thimble-shaped head coated in glistening olive-black slime",
+   "flies crawling on the slimy head"
+  ]
+ },
+ {
+  "name": "Earthstar",
+  "kingdom": "fungi",
+  "family": "earthstar",
+  "aspect": 1.5,
+  "colour": "leathery tan to grey-brown rays, paler grey spore sac",
+  "mustRead": [
+   "a thick outer skin split into pointed rays peeled back like a star",
+   "a round papery spore sac sitting in the centre of the star",
+   "a single raised pore at the top of the sac"
+  ]
+ },
+ {
+  "name": "Fly Agaric",
+  "kingdom": "fungi",
+  "family": "cap-and-stem",
+  "aspect": 0.9,
+  "colour": "scarlet cap with white warts, white stem and gills",
+  "mustRead": [
+   "a domed scarlet cap studded with scattered white pyramid warts",
+   "a white pendulous ring skirt on the stem",
+   "a bulbous stem base ringed with scaly volval belts"
+  ],
+  "note": "The white flecks are loose veil scraps that wash off - they are not painted-on spots and should be irregularly spaced."
+ },
+ {
+  "name": "Death Cap",
+  "kingdom": "fungi",
+  "family": "cap-and-stem",
+  "aspect": 0.9,
+  "colour": "olive-green to yellowish-green smooth cap, white gills and stem",
+  "mustRead": [
+   "a smooth greenish cap with faint radiating fibrils, no warts",
+   "free white gills and a white skirt-like ring",
+   "a large sac-like white volva cupping the stem base"
+  ],
+  "note": "The bag-like volva at the base is the identifying feature and is usually omitted or buried in drawings."
+ },
+ {
+  "name": "Destroying Angel",
+  "kingdom": "fungi",
+  "family": "cap-and-stem",
+  "aspect": 0.75,
+  "colour": "pure white all over, faintly ivory at the cap centre",
+  "mustRead": [
+   "an entirely white mushroom, cap gills stem and all",
+   "a slender tall stem with a thin white ring",
+   "a sac-like white volval cup at the base"
+  ]
+ },
+ {
+  "name": "Shiitake",
+  "kingdom": "fungi",
+  "family": "cap-and-stem",
+  "aspect": 1,
+  "colour": "umber to tea-brown cap, cream-white gills, tan fibrous stem",
+  "mustRead": [
+   "a rounded brown cap with a cracked surface showing white flesh beneath",
+   "an inrolled cap margin fringed with white veil remnants",
+   "crowded white gills and a tough fibrous off-centre stem"
+  ]
+ },
+ {
+  "name": "Porcini",
+  "kingdom": "fungi",
+  "family": "cap-and-stem",
+  "aspect": 1,
+  "colour": "chestnut to bun-brown cap, white to olive pore surface, pale buff stem",
+  "mustRead": [
+   "a fat barrel or bulbous stem far thicker than the cap is tall",
+   "a spongy pore surface under the cap, absolutely no gills",
+   "a fine raised white net over the upper stem"
+  ],
+  "note": "Boletes are drawn with gills far too often - the underside must read as a sponge of tiny pores."
+ },
+ {
+  "name": "Lion’s Mane",
+  "kingdom": "fungi",
+  "family": "tooth",
+  "aspect": 1,
+  "colour": "creamy white, yellowing to tan with age",
+  "mustRead": [
+   "a rounded white pom-pom of long hanging icicle spines",
+   "spines all cascading downward from a single unbranched mass",
+   "no cap, no stem, no gills at all"
+  ]
+ },
+ {
+  "name": "Maitake",
+  "kingdom": "fungi",
+  "family": "shelf",
+  "aspect": 1.3,
+  "colour": "grey-brown to fawn caps, white branching stalks and undersides",
+  "mustRead": [
+   "a dense ruffled rosette of overlapping grey-brown spoon-shaped fronds",
+   "fronds all springing from a single branched white stalk base",
+   "the mass sitting like a hen at the foot of a tree"
+  ]
+ },
+ {
+  "name": "Enoki",
+  "kingdom": "fungi",
+  "family": "cap-and-stem",
+  "aspect": 0.6,
+  "colour": "ivory white throughout when cultivated; tawny-orange sticky caps when wild",
+  "mustRead": [
+   "a dense bundle of very long needle-thin stems fused at the base",
+   "tiny pinhead caps barely wider than the stems",
+   "the whole cluster reading as a bouquet, not a single mushroom"
+  ],
+  "note": "The supermarket white spindly form and the wild orange velvet-shanked form look nothing alike; pick one and commit."
+ },
+ {
+  "name": "Turkey Tail",
+  "kingdom": "fungi",
+  "family": "shelf",
+  "aspect": 1.5,
+  "colour": "concentric bands of rust, ochre, blue-grey, cream and near-black; white pore underside",
+  "mustRead": [
+   "thin flexible fan brackets banded in many contrasting concentric rings",
+   "a velvety surface with a pale cream wavy outer rim",
+   "dozens of small fans in overlapping rosettes along a log"
+  ],
+  "note": "The bands must vary in hue as well as tone - a single-colour ringed bracket reads as a different species."
+ },
+ {
+  "name": "Chicken-of-the-Woods",
+  "kingdom": "fungi",
+  "family": "shelf",
+  "aspect": 1.4,
+  "colour": "brilliant sulphur-yellow to salmon-orange top, bright yellow pore underside",
+  "mustRead": [
+   "thick fleshy overlapping shelves in vivid orange with yellow margins",
+   "a suede-soft wavy lobed edge",
+   "a bright yellow pore surface underneath"
+  ]
+ },
+ {
+  "name": "Cordyceps",
+  "kingdom": "fungi",
+  "family": "parasitic-club",
+  "aspect": 0.5,
+  "colour": "orange to ochre clubs, sometimes white; host insect dark brown",
+  "mustRead": [
+   "slender clubs erupting directly out of a dead insect's body",
+   "the insect host still clearly recognisable beneath",
+   "a swollen roughened fertile head at the club tip"
+  ],
+  "note": "The insect must stay legible - without a visible host it is just a club fungus."
+ },
+ {
+  "name": "Bioluminescent Mushroom",
+  "kingdom": "fungi",
+  "family": "cap-and-stem",
+  "aspect": 1,
+  "colour": "pale grey-cream by day, emitting a cold green-white glow in the dark",
+  "mustRead": [
+   "small thin translucent caps clustered on rotting wood",
+   "a soft green light emitted from the gills and stem, not from the cap top",
+   "visible radial gill lines lit from within"
+  ],
+  "note": "The glow is a faint continuous green, not a bright yellow lamp; the light source is the gills."
+ },
+ {
+  "name": "Coral Fungus",
+  "kingdom": "fungi",
+  "family": "coral",
+  "aspect": 0.9,
+  "colour": "cream, ochre-yellow or salmon-pink, often with paler tips",
+  "mustRead": [
+   "a dense upward-branching antler cluster from one thick base",
+   "branches dividing repeatedly into blunt or forked tips",
+   "no caps and no gills anywhere"
+  ]
+ },
+ {
+  "name": "Jelly Fungus",
+  "kingdom": "fungi",
+  "family": "jelly",
+  "aspect": 1.3,
+  "colour": "translucent amber-orange to golden yellow, or brown when ear-shaped",
+  "mustRead": [
+   "a wobbling gelatinous mass of convoluted brain-like folds",
+   "translucent enough that light passes through the lobes",
+   "sitting directly on bark with no stem"
+  ]
+ },
+ {
+  "name": "Shelf Fungus",
+  "kingdom": "fungi",
+  "family": "shelf",
+  "aspect": 1.5,
+  "colour": "banded ochre and umber above, pale buff pore surface below",
+  "mustRead": [
+   "several thin brackets stacked in overlapping tiers up a trunk",
+   "each shelf semicircular with a flat top and flat underside",
+   "the stack stepping outward like a staircase"
+  ],
+  "note": "Distinguish from Bracket Fungus in this same set: shelf reads as a tiered stack of thin plates, bracket as one thick solitary hoof."
+ },
+ {
+  "name": "Reindeer Lichen",
+  "kingdom": "fungi",
+  "family": "lichen",
+  "aspect": 1,
+  "colour": "pale ash grey to grey-green, bleaching almost white when dry",
+  "mustRead": [
+   "a spongy cushion of hollow tubular stalks branching in threes and fours",
+   "branch tips fine, drooping and all nodding one way",
+   "a springy mat texture with no leaves or flat lobes"
+  ]
+ },
+ {
+  "name": "Mold",
+  "kingdom": "fungi",
+  "family": "mold",
+  "aspect": 1.4,
+  "colour": "white fuzzy mat with blue-green, black or grey spore heads",
+  "mustRead": [
+   "a low fuzz of tangled white hyphal threads",
+   "upright stalks each topped by a dark round spore capsule",
+   "colonies spreading in circular patches"
+  ]
+ },
+ {
+  "name": "Mildew",
+  "kingdom": "fungi",
+  "family": "mold",
+  "aspect": 1.5,
+  "colour": "chalky white to pale grey powder, greying-brown with age",
+  "mustRead": [
+   "a flat powdery dusting sitting on a leaf or fabric surface",
+   "spreading as thin blotchy patches, not raised fuzz",
+   "the surface beneath still visible through the film"
+  ],
+  "note": "Mildew is superficial and powder-flat; drawing it as deep three-dimensional fluff makes it read as mold instead."
+ },
+ {
+  "name": "Yeast",
+  "kingdom": "fungi",
+  "family": "mold",
+  "aspect": 1,
+  "colour": "translucent pale cream to buff cells; beige paste in bulk",
+  "mustRead": [
+   "rounded oval single cells with a smaller bud swelling off one side",
+   "bud scars pocking the cell wall",
+   "loose clusters of a few cells, never true filaments"
+  ],
+  "note": "Yeast is single-celled and has no hyphae, cap or stalk - it does not fit any macro-fungal body plan, so file it with the microscopic fungi."
+ },
+ {
+  "name": "Amoeba",
+  "kingdom": "microbe",
+  "family": "amoeboid",
+  "aspect": 1.2,
+  "colour": "translucent colourless grey with a granular interior",
+  "mustRead": [
+   "a shapeless blob throwing out blunt finger-like pseudopods",
+   "a clear outer rim around a granular grainy interior",
+   "one round nucleus and a clear circular contractile vacuole"
+  ],
+  "scale": "single cell",
+  "note": "The outline should be asymmetric and mid-flow - a neat symmetric star of arms reads as a heliozoan, not an amoeba."
+ },
+ {
+  "name": "Paramecium",
+  "kingdom": "microbe",
+  "family": "ciliate",
+  "aspect": 2.2,
+  "colour": "translucent pale grey-green, faintly straw tinted",
+  "mustRead": [
+   "an asymmetric slipper or shoe outline, blunt at one end",
+   "the entire surface fringed with short beating cilia",
+   "a diagonal oral groove running into the cell side"
+  ],
+  "scale": "single cell"
+ },
+ {
+  "name": "Euglena",
+  "kingdom": "microbe",
+  "family": "flagellate",
+  "aspect": 2,
+  "colour": "grass green chloroplasts, translucent body, bright orange-red eyespot",
+  "mustRead": [
+   "a spindle body, rounded at the front and drawn to a tail point",
+   "one long whipping flagellum from the front reservoir",
+   "a small red eyespot beside the flagellar base"
+  ],
+  "scale": "single cell"
+ },
+ {
+  "name": "Diatom",
+  "kingdom": "microbe",
+  "family": "shelled",
+  "aspect": 1,
+  "colour": "glassy transparent silica shell, golden-brown chloroplasts inside",
+  "mustRead": [
+   "a rigid glass shell built as two halves fitting like a pillbox and its lid",
+   "an intricate geometric lattice of pores, radial in discs or ribbed in boat shapes",
+   "clear silica through which the golden-brown plastids show"
+  ],
+  "scale": "single cell",
+  "note": "The pore pattern is precisely ordered and repeating, not random speckle - that regularity is the whole read."
+ },
+ {
+  "name": "Dinoflagellate",
+  "kingdom": "microbe",
+  "family": "plated",
+  "aspect": 0.8,
+  "colour": "amber to olive-brown armour, translucent at the edges",
+  "mustRead": [
+   "a rigid armour of interlocking polygonal cellulose plates",
+   "a deep transverse groove belting the cell equator",
+   "two unequal flagella, one wrapped in the belt groove and one trailing behind"
+  ],
+  "scale": "single cell",
+  "note": "Many species carry long horns; the equatorial girdle groove is the non-negotiable feature."
+ },
+ {
+  "name": "Radiolarian",
+  "kingdom": "microbe",
+  "family": "shelled",
+  "aspect": 1,
+  "colour": "clear glassy silica, faintly iridescent, with a dark central capsule",
+  "mustRead": [
+   "a hollow sphere of glass built as an open geometric lattice",
+   "long fine straight spines radiating out from the shell",
+   "sometimes nested shells visible one inside another"
+  ],
+  "scale": "single cell"
+ },
+ {
+  "name": "Foraminiferan",
+  "kingdom": "microbe",
+  "family": "shelled",
+  "aspect": 1.1,
+  "colour": "chalky white to honey-tan calcite shell",
+  "mustRead": [
+   "a chambered shell coiling like a snail, each chamber larger than the last",
+   "shell walls pierced by fine pores",
+   "hair-thin branching pseudopodial threads streaming out from the aperture"
+  ],
+  "scale": "single cell",
+  "note": "The threads are fine, branching and net-forming, unlike an amoeba's fat blunt lobes."
+ },
+ {
+  "name": "Cyanobacteria",
+  "kingdom": "microbe",
+  "family": "filament",
+  "aspect": 2.4,
+  "colour": "blue-green to teal, some strains inky blue-black in mass",
+  "mustRead": [
+   "beaded chains of identical cells strung end to end like a necklace",
+   "filaments curving and tangling into loose mats",
+   "occasional larger paler cells set into the chain"
+  ],
+  "scale": "field of many"
+ },
+ {
+  "name": "Methanogen",
+  "kingdom": "microbe",
+  "family": "rod",
+  "aspect": 2,
+  "colour": "pale grey-lilac, faintly translucent",
+  "mustRead": [
+   "short blunt-ended rods clumped in irregular packets",
+   "gas bubbles rising away from the cluster",
+   "cells embedded in dark anoxic sediment or sludge"
+  ],
+  "scale": "small colony",
+  "note": "An archaean, not a bacterium - keep it plain and unflagellated, and let the escaping methane bubbles carry the identity."
+ },
+ {
+  "name": "Sulfur-Oxidizing Bacteria",
+  "kingdom": "microbe",
+  "family": "filament",
+  "aspect": 2.5,
+  "colour": "chalk-white filaments packed with bright lemon-yellow sulfur globules",
+  "mustRead": [
+   "long unbranched white filaments lying in a tangled mat",
+   "each filament stuffed with refractile yellow sulfur granules",
+   "the mat sheeting over dark sediment or a vent surface"
+  ],
+  "scale": "field of many"
+ },
+ {
+  "name": "Iron-Oxidizing Bacteria",
+  "kingdom": "microbe",
+  "family": "filament",
+  "aspect": 1.6,
+  "colour": "rust orange to ochre-brown, cells themselves near-colourless",
+  "mustRead": [
+   "a bean-shaped cell trailing a long twisted ribbon stalk behind it",
+   "the stalk crusted in rust-coloured iron oxide",
+   "stalks matting into an orange ochre sludge"
+  ],
+  "scale": "small colony",
+  "note": "The rust colour belongs to the secreted stalk, not to the cell body."
+ },
+ {
+  "name": "Nitrogen-Fixing Bacteria",
+  "kingdom": "microbe",
+  "family": "rod",
+  "aspect": 2.2,
+  "colour": "pale cream rods inside salmon-pink nodule tissue",
+  "mustRead": [
+   "short rods packed densely inside a plant root nodule",
+   "swollen irregular Y-shaped bacteroid forms among the plain rods",
+   "the surrounding nodule flushed pink"
+  ],
+  "scale": "small colony",
+  "note": "The pink of an active nodule is leghaemoglobin in the host tissue and is a genuine identifying cue."
+ },
+ {
+  "name": "Halophile",
+  "kingdom": "microbe",
+  "family": "rod",
+  "aspect": 2.2,
+  "colour": "vivid magenta to carotenoid red-orange",
+  "mustRead": [
+   "densely crowded rods staining the whole field hot pink",
+   "angular salt crystals scattered through the brine around them",
+   "some cells flattened into irregular squares or plates"
+  ],
+  "scale": "field of many",
+  "note": "The famous pink of salt ponds comes from the cells themselves - the brine should be tinted by their density, not dyed."
+ },
+ {
+  "name": "Thermophile",
+  "kingdom": "microbe",
+  "family": "rod",
+  "aspect": 2,
+  "colour": "warm yellow-orange to ochre, against pale mineral crust",
+  "mustRead": [
+   "short thick-walled rods in dense streaming bands",
+   "banded orange mats following the outflow of hot water",
+   "steam and pale sinter mineral crust framing the colony"
+  ],
+  "scale": "field of many"
+ },
+ {
+  "name": "Acidophile",
+  "kingdom": "microbe",
+  "family": "rod",
+  "aspect": 2.2,
+  "colour": "colourless small rods in orange-red iron-stained acid water",
+  "mustRead": [
+   "very small slender rods scattered in a rust-red fluid",
+   "orange iron precipitate flocking around the cells",
+   "corroded mineral grains and pyrite fragments nearby"
+  ],
+  "scale": "field of many"
+ },
+ {
+  "name": "Cryophile",
+  "kingdom": "microbe",
+  "family": "rod",
+  "aspect": 2,
+  "colour": "translucent blue-white, near colourless",
+  "mustRead": [
+   "small rods trapped in thin liquid brine veins between ice crystals",
+   "faceted ice crystal boundaries framing the cells",
+   "a cold blue-white cast over the whole field"
+  ],
+  "scale": "field of many"
+ },
+ {
+  "name": "Radiation-Resistant Microbe",
+  "kingdom": "microbe",
+  "family": "coccus",
+  "aspect": 1,
+  "colour": "salmon pink to red-orange, glossy",
+  "mustRead": [
+   "spherical cells grouped as a flat packet of exactly four",
+   "an unusually thick layered cell envelope drawn as a heavy rim",
+   "a smooth pink-red glossy sheen"
+  ],
+  "scale": "small colony",
+  "note": "The tetrad grouping of four cocci is the signature - a lone sphere or a long chain reads as something else entirely."
+ },
+ {
+  "name": "Bioluminescent Plankton",
+  "kingdom": "microbe",
+  "family": "flagellate",
+  "aspect": 1,
+  "colour": "translucent pink-grey cells emitting cold electric blue light",
+  "mustRead": [
+   "large near-spherical balloon cells, translucent and buoyant",
+   "a single stout trailing tentacle from a cleft in the cell",
+   "cold blue light sparking from the cells when the water is disturbed"
+  ],
+  "scale": "field of many",
+  "note": "The glow is blue-cyan, never green, and it flashes on agitation rather than shining continuously."
+ },
+ {
+  "name": "Red-Tide Algae",
+  "kingdom": "microbe",
+  "family": "plated",
+  "aspect": 0.9,
+  "colour": "brick red to rust brown, staining the surrounding water",
+  "mustRead": [
+   "armoured plated cells with a girdle groove, packed at huge density",
+   "the water itself discoloured rust-red by the bloom",
+   "streaks and swirls of concentrated cells at the surface"
+  ],
+  "scale": "field of many"
+ },
+ {
+  "name": "Snow Algae",
+  "kingdom": "microbe",
+  "family": "algal-cell",
+  "aspect": 1,
+  "colour": "deep crimson-red cysts, some still green-cored, on white snow",
+  "mustRead": [
+   "thick-walled round resting cysts flooded with red pigment",
+   "a faint green chloroplast still showing at some cell centres",
+   "cells scattered through granular snow crystals, staining it watermelon pink"
+  ],
+  "scale": "field of many"
+ },
+ {
+  "name": "Tardigrade",
+  "kingdom": "microbe",
+  "family": "micro-animal",
+  "aspect": 1.6,
+  "colour": "translucent amber-tan, gut contents showing darker green or brown",
+  "mustRead": [
+   "a plump segmented barrel body with four pairs of stubby legs",
+   "each leg ending in a bunch of tiny curved claws",
+   "a blunt snout with a round tubular sucking mouth at the front"
+  ],
+  "scale": "single cell",
+  "note": "Eight legs, not six - the rearmost pair points backward and is used for gripping, not walking. It is a true animal, so give it real limbs rather than pseudopods."
+ },
+ {
+  "name": "Green Algae",
+  "kingdom": "microbe",
+  "family": "algal-cell",
+  "aspect": 1,
+  "colour": "bright grass green with clear cell walls",
+  "mustRead": [
+   "a hollow green sphere studded with many identical cells over its surface",
+   "smaller daughter colonies visible inside the parent sphere",
+   "clear jelly between the cells so the sphere reads as translucent"
+  ],
+  "scale": "small colony"
+ }
+]
