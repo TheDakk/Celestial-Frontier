@@ -107,4 +107,9 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Screamer': B({ legs: 0.060, bill: 'short', size: 0.88, hue: '#6b6459' }),
   /* ── the swan's S-curve ── */
   'Swan': B({ legs: 0.012, bill: 'duck', size: 1.10, swim: true, neck: 'swan', hue: '#f4f6f8' }),
+  /* ★ WAVE 10 — Chicken and Rooster were unrouted and came out as waders.
+     A gamebird is a plump body on scaly legs with a comb, wattles and an
+     upswept tail; the rooster adds the sickle plumes and the hackle cape. */
+  'Chicken': B({ legs: 0.038, bill: 'cone', size: 0.74, hue: '#c9a05c', plump: 1.30, elong: 0.90, tail: 'fan', crest: true }),
+  'Rooster': B({ legs: 0.046, bill: 'cone', size: 0.86, hue: '#8d3a24', plump: 1.24, elong: 0.92, tail: 'long', crest: true, bib: '#d8a53a' }),
 };

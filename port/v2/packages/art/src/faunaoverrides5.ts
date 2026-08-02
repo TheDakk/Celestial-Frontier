@@ -904,3 +904,186 @@ export function faunaBat(c: Ctx, g: G, p: Pal, name: string): void {
   for (const s of [-1, 1] as const) eye(c, cx + s * hr * 0.36, hy - hr * 0.12, Math.max(3, hr * 0.15));
   memb(1, 1);              /* the near wing, over the body */
 }
+
+/** ★ WAVE 10 — THE CROCODILIANS. All four were unrouted and fell through to the
+    verbatim engine, which drew them as narrow arrows: a flat plank with a
+    needle point, a comb of identical spikes planted along the top, two bent
+    wires for legs, and — worst — the same sharp V snout on every one of them.
+    Nick's audit named it four separate times.
+
+    Everything that separates these animals is in the head and the armour:
+      · an ALLIGATOR has a broad rounded U snout and its teeth vanish when the
+        mouth shuts. The audit note calls this out explicitly, and ours was
+        drawing a crocodile.
+      · a CROCODILE has a narrow V snout and the enlarged fourth lower tooth
+        stays visible with the jaws closed.
+      · a GHARIAL is a needle: a snout longer than the rest of its skull, barely
+        wider than a wrist, studded with interlocking teeth.
+      · a CAIMAN is a blunt alligator with a bony ridge between the eyes.
+    And all four carry paired rows of keeled osteoderms that swell out of the
+    back and run onto a tail that is laterally flattened into a double crest —
+    not a row of triangles standing on a line. */
+export interface CrocSpec {
+  snout: 'broad' | 'narrow' | 'needle';
+  tooth?: boolean;      /** the fourth lower tooth showing on a closed mouth */
+  ridge?: boolean;      /** the caiman's bony interorbital bridge */
+  knob?: boolean;       /** the gharial's ghara */
+  hue?: [number, number, number];   /** species-true hide; olive is not one colour */
+  depth?: number;                   /** a caiman is stocky, a gharial is a rail */
+  scutes?: number;                  /** how heavily armoured the back reads */
+  len?: number;
+}
+export function faunaCroc(c: Ctx, g: G, pIn: Pal, spec: CrocSpec, name = ''): void {
+  const r = nrng(g, name, 0x3C11);
+  /* colour IS identity on a crocodilian — a pink alligator is not rarity
+     variation, it is the animal being unrecognisable. Anchored toward olive,
+     with the roll still moving it enough to keep the four apart. */
+  const hu = spec.hue ?? [74, 82, 54];
+  const p = anchor(pIn, hu[0], hu[1], hu[2], 0.72);
+  const gy = S * 0.66;
+  const L = S * (spec.len ?? 0.40);
+  const bodyR = S * (spec.depth ?? (spec.snout === 'needle' ? 0.048 : 0.062));
+  const headL = L * (spec.snout === 'needle' ? 0.46 : spec.snout === 'narrow' ? 0.34 : 0.30);
+  const x0 = S * 0.5 - L * 0.46;
+  shadow(c, S * 0.5, gy + bodyR * 1.75, L * 0.44, 0.38);
+
+  /* the trunk and tail as one continuous taper — a crocodilian has no waist,
+     it simply thickens from the snout to the hips and then runs out into tail */
+  const spine = (u: number): [number, number] => [x0 + L * u, gy - bodyR * (0.10 + 0.16 * Math.sin(u * 3.1))];
+  const rad = (u: number): number => {
+    if (u < 0.28) return bodyR * (0.52 + u * 0.9);              /* neck into shoulders */
+    if (u < 0.58) return bodyR * (0.69 + (u - 0.28) * 1.05);    /* the belly, widest at the hips */
+    return Math.max(bodyR * 0.06, bodyR * (1.00 - (u - 0.58) * 2.24));   /* out into the tail */
+  };
+  const near = (u: number): number => u;
+
+  /* the four SPLAYED legs, drawn before the body so the body covers the roots.
+     A crocodilian's limbs stick out sideways and its belly nearly touches the
+     ground — the sprawl IS the silhouette, and drawing them under the body
+     turns it into a lizard-shaped dog. */
+  const leg = (u: number, back: boolean, far: boolean): void => {
+    const a = spine(u);
+    const m = far ? 0.55 : 1;
+    const lw = bodyR * (back ? 0.22 : 0.19);
+    const outX = a[0] + (back ? -bodyR * 1.70 : bodyR * 1.55);
+    c.strokeStyle = `rgb(${(p.cr * 0.72 * m) | 0},${(p.cg * 0.74 * m) | 0},${(p.cb * 0.62 * m) | 0})`;
+    c.lineCap = 'round'; c.lineJoin = 'round';
+    c.lineWidth = lw * 2;
+    c.beginPath();
+    c.moveTo(a[0], a[1] + rad(u) * 0.3);
+    c.quadraticCurveTo(outX, a[1] + rad(u) * 1.15, outX + (back ? -bodyR * 0.2 : bodyR * 0.3), gy + bodyR * 1.35);
+    c.stroke();
+    /* the splayed toes */
+    c.lineWidth = Math.max(1.6, lw * 0.5);
+    for (let i = -1; i <= 1; i++) {
+      const tx = outX + (back ? -bodyR * 0.2 : bodyR * 0.3);
+      c.beginPath(); c.moveTo(tx, gy + bodyR * 1.35);
+      c.lineTo(tx + i * bodyR * 0.42 + (back ? -bodyR * 0.30 : bodyR * 0.34), gy + bodyR * 1.62);
+      c.stroke();
+    }
+  };
+  leg(0.70, true, true); leg(0.30, false, true);
+
+  /* the body */
+  const bg = c.createLinearGradient(0, gy - bodyR * 1.6, 0, gy + bodyR * 1.4);
+  bg.addColorStop(0, `rgb(${Math.min(255, p.cr * 1.16) | 0},${Math.min(255, p.cg * 1.18) | 0},${(p.cb * 0.92) | 0})`);
+  bg.addColorStop(0.42, p.base);
+  /* the pale underside every crocodilian has and ours did not */
+  bg.addColorStop(0.78, 'rgb(' + Math.min(255, p.cr * 1.30 + 46 | 0) + ',' + Math.min(255, p.cg * 1.28 + 44 | 0) + ',' + Math.min(255, p.cb * 1.22 + 34 | 0) + ')');
+  bg.addColorStop(1, shade(p, 0.62));
+  c.fillStyle = bg;
+  c.beginPath();
+  for (let i = 0; i <= 60; i++) { const u = i / 60; const a = spine(u); c.lineTo(a[0], a[1] - rad(u)); }
+  for (let i = 60; i >= 0; i--) { const u = i / 60; const a = spine(u); c.lineTo(a[0], a[1] + rad(u)); }
+  c.closePath(); c.fill();
+
+  /* THE SCUTES — two paired rows of keeled osteoderms that SWELL OUT of the
+     back, converging into a double crest along the tail and finally a single
+     one. The old comb of identical triangles was planted on the outline. */
+  const nScute = Math.round(34 * (spec.scutes ?? 1));
+  for (let i = 2; i < nScute; i++) {
+    const u = 0.20 + (i / nScute) * 0.78;
+    const a = spine(u), rr = rad(u);
+    const tailish = Math.max(0, (u - 0.62) / 0.38);
+    const rows: number[] = tailish > 0.55 ? [0] : [-1, 1];
+    for (const row of rows) {
+      const off = row * rr * 0.42 * (1 - tailish);
+      const h = rr * (0.34 + 0.20 * Math.sin(u * 9)) * (0.7 + tailish * 0.8);
+      c.fillStyle = `rgba(${(p.cr * 0.60) | 0},${(p.cg * 0.62 + 8) | 0},${(p.cb * 0.48) | 0},0.92)`;
+      c.beginPath();
+      c.moveTo(a[0] - rr * 0.20, a[1] - rr + off * 0.25);
+      c.quadraticCurveTo(a[0], a[1] - rr - h + off * 0.25, a[0] + rr * 0.22, a[1] - rr + off * 0.25);
+      c.closePath(); c.fill();
+    }
+  }
+  /* the hide: pebbled scale rows following the body, not painted across it */
+  c.strokeStyle = `rgba(${(p.cr * 0.42) | 0},${(p.cg * 0.44) | 0},${(p.cb * 0.34) | 0},0.42)`;
+  c.lineWidth = 1;
+  for (let i = 0; i < 26; i++) {
+    const u = 0.06 + (i / 26) * 0.9, a = spine(u), rr = rad(u);
+    c.beginPath(); c.moveTo(a[0], a[1] - rr * 0.86); c.lineTo(a[0] - rr * 0.12, a[1] + rr * 0.86); c.stroke();
+  }
+  c.strokeStyle = 'rgba(226,238,246,0.24)'; c.lineWidth = 2;
+  c.beginPath();
+  for (let i = 0; i <= 40; i++) { const u = 0.05 + (i / 40) * 0.55; const a = spine(u); c.lineTo(a[0], a[1] - rad(u)); }
+  c.stroke();
+  leg(0.70, true, false); leg(0.30, false, false);
+
+  /* ── THE HEAD, which is the whole species ── */
+  const hx = x0 + headL * 0.16, hy = gy - bodyR * 0.30;
+  const jawW = bodyR * (spec.snout === 'broad' ? 0.92 : spec.snout === 'narrow' ? 0.66 : 0.30);
+  const tipW = bodyR * (spec.snout === 'broad' ? 0.62 : spec.snout === 'narrow' ? 0.26 : 0.13);
+  c.fillStyle = bg;
+  c.beginPath();
+  c.moveTo(hx + headL * 0.30, hy - jawW);
+  /* the top of the snout: a U on an alligator, a V on a crocodile, a rod on a gharial */
+  c.quadraticCurveTo(hx - headL * 0.30, hy - jawW * (spec.snout === 'broad' ? 1.02 : 0.82), hx - headL * 0.72, hy - tipW);
+  c.quadraticCurveTo(hx - headL * 0.86, hy, hx - headL * 0.72, hy + tipW);
+  c.quadraticCurveTo(hx - headL * 0.30, hy + jawW * 0.94, hx + headL * 0.30, hy + jawW * 1.05);
+  c.closePath(); c.fill();
+  /* the closed mouth line, and the teeth each species actually shows */
+  c.strokeStyle = 'rgba(24,28,20,0.55)'; c.lineWidth = Math.max(1.4, bodyR * 0.09);
+  c.beginPath();
+  c.moveTo(hx + headL * 0.28, hy + jawW * 0.30);
+  c.quadraticCurveTo(hx - headL * 0.28, hy + tipW * 0.9, hx - headL * 0.74, hy + tipW * 0.2);
+  c.stroke();
+  c.fillStyle = '#efe9d8';
+  if (spec.snout === 'needle') {
+    for (let i = 0; i < 13; i++) {
+      const t = i / 12;
+      const px = hx + headL * 0.24 - t * headL * 0.96;
+      const w = tipW + (jawW - tipW) * (1 - t);
+      c.beginPath(); c.moveTo(px, hy + w * 0.25); c.lineTo(px + 1.6, hy + w * 0.25); c.lineTo(px + 0.8, hy + w * 0.72); c.closePath(); c.fill();
+      c.beginPath(); c.moveTo(px, hy + w * 0.25); c.lineTo(px + 1.6, hy + w * 0.25); c.lineTo(px + 0.8, hy - w * 0.24); c.closePath(); c.fill();
+    }
+  } else if (spec.tooth) {
+    /* the crocodile's fourth lower tooth, showing on a shut mouth */
+    c.beginPath();
+    c.moveTo(hx - headL * 0.18, hy + jawW * 0.42);
+    c.lineTo(hx - headL * 0.12, hy + jawW * 0.42);
+    c.lineTo(hx - headL * 0.15, hy - jawW * 0.05);
+    c.closePath(); c.fill();
+  }
+  if (spec.knob) {   /* the gharial's ghara */
+    c.fillStyle = shade(p, 0.9);
+    c.beginPath(); c.ellipse(hx - headL * 0.70, hy - tipW * 1.3, tipW * 1.5, tipW * 1.25, 0, 0, TAU); c.fill();
+  }
+  /* the eyes and nostrils ride HIGH on the skull — a crocodilian floats with
+     only these above water, and that is why they sit on raised turrets */
+  for (const s of [-1, 1] as const) {
+    const ex = hx + headL * 0.10, ey = hy - jawW * (0.92 + (s < 0 ? 0.14 : 0));
+    c.fillStyle = shade(p, s < 0 ? 0.68 : 1.0);
+    c.beginPath(); c.ellipse(ex + (s < 0 ? -bodyR * 0.18 : 0), ey, bodyR * 0.26, bodyR * 0.21, 0, 0, TAU); c.fill();
+  }
+  c.fillStyle = '#c9b64a';
+  c.beginPath(); c.ellipse(hx + headL * 0.10, hy - jawW * 0.96, bodyR * 0.17, bodyR * 0.14, 0, 0, TAU); c.fill();
+  c.fillStyle = '#14160f';
+  c.beginPath(); c.ellipse(hx + headL * 0.10, hy - jawW * 0.96, bodyR * 0.05, bodyR * 0.13, 0, 0, TAU); c.fill();
+  if (spec.ridge) {
+    c.strokeStyle = shade(p, 0.55); c.lineWidth = Math.max(1.4, bodyR * 0.10);
+    c.beginPath(); c.moveTo(hx + headL * 0.02, hy - jawW * 0.80); c.lineTo(hx - headL * 0.16, hy - jawW * 0.62); c.stroke();
+  }
+  c.fillStyle = shade(p, 0.5);
+  c.beginPath(); c.ellipse(hx - headL * 0.66, hy - tipW * 0.5, bodyR * 0.12, bodyR * 0.09, 0, 0, TAU); c.fill();
+  void r; void near;
+}
