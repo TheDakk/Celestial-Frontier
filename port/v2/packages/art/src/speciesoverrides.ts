@@ -27,7 +27,7 @@ import { faunaKiwi, faunaMudskipper, faunaPyrosome, faunaSalp, faunaTripodFish }
 import { floraCabbage, floraCarrot, floraCorn, floraHemp, floraTobacco, floraWatermelon, floraStrawberry, floraKiwiFruit } from './floraoverrides3.js';
 import { fungiFlyAgaric, fungiLionsMane, fungiMaitake, fungiStinkhorn, fungiCordyceps, lichenMat, microbeForam, tardigrade, macroAlgaeSheet, microAlgaeCell, algaeBloom } from './fungioverrides2.js';
 import { fungiEnoki, procFamilyIndex, FAMILY_COUNT, fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiClub, microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate, microbePlates, microbeMat } from './proceduralfamilies.js';
-import { faunaBear, faunaKoala, faunaSirenian, faunaHumpback, faunaBeakedWhale, faunaCuttlefish, faunaHorseshoeCrab, faunaSeaSquirt, faunaLamprey, faunaBat, faunaCroc } from './faunaoverrides5.js';
+import { faunaBear, faunaKoala, faunaSirenian, faunaHumpback, faunaBeakedWhale, faunaCuttlefish, faunaHorseshoeCrab, faunaSeaSquirt, faunaLamprey, faunaBat, faunaCroc, faunaHopper, faunaMonotreme } from './faunaoverrides5.js';
 import { fishBody } from './faunaoverrides3.js';
 import { insectBody, myriapod } from './invertoverrides.js';
 import { plantBody } from './floraoverrides2.js';
@@ -413,6 +413,13 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'fauna|Crocodile': (c, g, pp) => faunaCroc(c, g, pp, { snout: 'narrow', tooth: true, len: 0.47, depth: 0.058, hue: [118, 116, 74], scutes: 0.85 }, 'Crocodile'),
   'fauna|Caiman': (c, g, pp) => faunaCroc(c, g, pp, { snout: 'broad', ridge: true, len: 0.29, depth: 0.082, hue: [72, 104, 62], scutes: 1.5 }, 'Caiman'),
   'fauna|Gharial': (c, g, pp) => faunaCroc(c, g, pp, { snout: 'needle', knob: true, len: 0.49, depth: 0.052, hue: [96, 112, 96], scutes: 0.70 }, 'Gharial'),
+  /* ★ WAVE 14 — the body plans the quadruped system cannot express at any
+     setting: a macropod stands on a TRIPOD of two hind legs and a tail, and
+     the monotremes are each defined by one impossible-looking organ. */
+  'fauna|Kangaroo': (c, g, pp) => faunaHopper(c, g, pp, 'Kangaroo'),
+  'fauna|Wallaby': (c, g, pp) => faunaHopper(c, g, pp, 'Wallaby'),
+  'fauna|Platypus': (c, g, pp) => faunaMonotreme(c, g, pp, 'Platypus'),
+  'fauna|Echidna': (c, g, pp) => faunaMonotreme(c, g, pp, 'Echidna'),
   'fauna|Humpback Whale': faunaHumpback,
   'fauna|Beaked Whale': faunaBeakedWhale,
   'fauna|Cuttlefish': faunaCuttlefish,

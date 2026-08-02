@@ -5,6 +5,8 @@
    cuttlefish borrowed the octopus. Each of these is a case where the SIGNATURE
    is the whole identity and no parameter on a shared spec reaches it. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { Tube, pathThrough } from './torso.js';
+import { countershade } from './skin.js';
 
 type Ctx = CanvasRenderingContext2D;
 type G = Record<string, unknown>;
@@ -1086,4 +1088,237 @@ export function faunaCroc(c: Ctx, g: G, pIn: Pal, spec: CrocSpec, name = ''): vo
   c.fillStyle = shade(p, 0.5);
   c.beginPath(); c.ellipse(hx - headL * 0.66, hy - tipW * 0.5, bodyR * 0.12, bodyR * 0.09, 0, 0, TAU); c.fill();
   void r; void near;
+}
+
+/** ★ WAVE 14 — THE HOPPER. A kangaroo is the one large mammal in the catalogue
+    that does not stand on four legs, and the quadruped system could not say it
+    at any setting — so Kangaroo and Wallaby had no route and fell through to
+    the verbatim engine. Its reference row is a body plan, not a decoration:
+    "massive muscular hind legs and long feet · thick tapering tail used as a
+    THIRD LEG · tiny forearms held against the chest". The tail is the giveaway:
+    a kangaroo at rest is a tripod, and drawing it as a tail hanging off a
+    standing animal loses the whole silhouette. */
+export function faunaHopper(c: Ctx, g: G, pIn: Pal, name = ''): void {
+  const r = nrng(g, name, 0x4B0F);
+  const big = /kangaroo/i.test(name);
+  /* a red kangaroo is rust-brown and a wallaby is grey — colour separates the
+     two species as much as the ten percent of size between them does */
+  const p = big ? anchor(pIn, 156, 96, 62, 0.80) : anchor(pIn, 122, 116, 106, 0.80);
+  const gy = S * 0.80;
+  const sz = big ? 1 : 0.80;
+  /* the seed varies REAL proportion, so two macropods sharing this painter
+     cannot render the same animal (D-ART-20) */
+  const bodyH = S * 0.150 * sz * (0.94 + r() * 0.12), bodyW = S * 0.082 * sz * (0.94 + r() * 0.12);
+  const hipX = S * 0.46, hipY = gy - S * 0.150 * sz;
+  shadow(c, hipX + S * 0.02, gy + 4, S * 0.135 * sz, 0.40);
+
+  /* THE TAIL FIRST, and it reaches the ground behind — the third leg of the
+     tripod. Thick at the root as the animal's own thigh, tapering to a point. */
+  const tailT = new Tube({
+    P: pathThrough([
+      [hipX + bodyW * 0.30, hipY + bodyH * 0.42],
+      [hipX - bodyW * 1.30, hipY + bodyH * 0.86],
+      [hipX - bodyW * 2.70, gy - bodyH * 0.10],
+      [hipX - bodyW * 4.10, gy - 2],
+    ]),
+    R: (t) => bodyW * (0.58 - t * 0.44),
+  });
+  c.fillStyle = p.base;
+  c.beginPath(); tailT.trace(c, 34); c.fill();
+  c.save(); c.beginPath(); tailT.trace(c, 34); c.clip();
+  countershade(c, tailT, p, 0.9);
+  c.restore();
+
+  /* THE HIND LEG — the mass of the animal. A deep folded thigh, a long shin,
+     and a FOOT longer than the shin, flat on the ground: that outline is the
+     single thing that says macropod. */
+  const leg = (dx: number, m: number): void => {
+    const thigh = new Tube({
+      P: pathThrough([
+        [hipX + dx, hipY + bodyH * 0.10],
+        [hipX + dx - bodyW * 0.30, hipY + bodyH * 0.62],
+        [hipX + dx - bodyW * 0.62, hipY + bodyH * 1.02],
+      ]),
+      R: (t) => bodyW * (0.82 - t * 0.30),
+    });
+    const shin = new Tube({
+      P: pathThrough([
+        [hipX + dx - bodyW * 0.62, hipY + bodyH * 1.00],
+        [hipX + dx + bodyW * 0.18, gy - bodyH * 0.34],
+        [hipX + dx + bodyW * 0.42, gy - bodyH * 0.06],
+      ]),
+      R: (t) => bodyW * (0.40 - t * 0.16),
+    });
+    for (const tb of [thigh, shin]) {
+      c.fillStyle = `rgb(${(p.cr * m) | 0},${(p.cg * m) | 0},${(p.cb * m) | 0})`;
+      c.beginPath(); tb.trace(c, 30); c.fill();
+      c.save(); c.beginPath(); tb.trace(c, 30); c.clip();
+      countershade(c, tb, { ...p, cr: p.cr * m, cg: p.cg * m, cb: p.cb * m }, 0.85);
+      c.restore();
+    }
+    /* the long flat foot */
+    c.fillStyle = `rgb(${(p.cr * 0.62 * m) | 0},${(p.cg * 0.62 * m) | 0},${(p.cb * 0.62 * m) | 0})`;
+    c.beginPath();
+    c.moveTo(hipX + dx + bodyW * 0.10, gy - bodyW * 0.30);
+    c.lineTo(hipX + dx + bodyW * 1.85, gy - bodyW * 0.22);
+    c.quadraticCurveTo(hipX + dx + bodyW * 2.05, gy, hipX + dx + bodyW * 1.80, gy);
+    c.lineTo(hipX + dx - bodyW * 0.10, gy);
+    c.closePath(); c.fill();
+  };
+  leg(-bodyW * 0.34, 0.62);
+
+  /* the body: a pear leaning back over the hips, narrow chest, heavy rump */
+  const trunk = new Tube({
+    P: pathThrough([
+      [hipX - bodyW * 0.20, hipY + bodyH * 0.30],
+      [hipX + bodyW * 0.26, hipY - bodyH * 0.30],
+      [hipX + bodyW * 0.62, hipY - bodyH * 0.92],
+      [hipX + bodyW * 0.82, hipY - bodyH * 1.34],
+    ]),
+    R: (t) => bodyW * (1.02 - t * 0.52),
+  });
+  c.fillStyle = p.base;
+  c.beginPath(); trunk.trace(c, 40); c.fill();
+  c.save(); c.beginPath(); trunk.trace(c, 40); c.clip();
+  countershade(c, trunk, p, 1);
+  c.restore();
+  leg(bodyW * 0.30, 1);
+
+  /* the TINY forearms, held against the chest — the comic detail everyone
+     remembers, and the thing that makes the hind legs read as massive */
+  c.strokeStyle = `rgb(${(p.cr * 0.78) | 0},${(p.cg * 0.78) | 0},${(p.cb * 0.78) | 0})`;
+  c.lineCap = 'round'; c.lineWidth = bodyW * 0.26;
+  for (const d of [0, -bodyW * 0.16]) {
+    c.beginPath();
+    c.moveTo(hipX + bodyW * 0.66 + d, hipY - bodyH * 0.86);
+    c.quadraticCurveTo(hipX + bodyW * 1.10 + d, hipY - bodyH * 0.74, hipX + bodyW * 0.96 + d, hipY - bodyH * 0.52);
+    c.stroke();
+  }
+
+  /* the head: a long narrow muzzle and tall ears */
+  const hx = hipX + bodyW * 0.98, hy = hipY - bodyH * 1.52, hr = bodyW * 0.56;
+  for (const s of [-1, 1] as const) {
+    const m = s < 0 ? 0.66 : 1;
+    c.fillStyle = `rgb(${(p.cr * 0.60 * m) | 0},${(p.cg * 0.60 * m) | 0},${(p.cb * 0.62 * m) | 0})`;
+    c.save(); c.translate(hx - hr * (s < 0 ? 0.72 : 0.46), hy - hr * 0.62); c.rotate(s * 0.26 - 0.10);
+    c.beginPath(); c.ellipse(0, -hr * 0.66, hr * 0.32, hr * 0.90, 0, 0, TAU); c.fill();
+    c.fillStyle = `rgba(${Math.min(255, p.cr * 1.05) | 0},${(p.cg * 0.80) | 0},${(p.cb * 0.80) | 0},${0.45 * m})`;
+    c.beginPath(); c.ellipse(0, -hr * 0.62, hr * 0.16, hr * 0.62, 0, 0, TAU); c.fill();
+    c.restore();
+  }
+  c.fillStyle = volume(c, p, hx, hy, hr * 1.3);
+  c.beginPath(); c.ellipse(hx, hy, hr, hr * 0.90, 0, 0, TAU); c.fill();
+  c.fillStyle = p.base;
+  c.beginPath(); c.ellipse(hx + hr * 0.74, hy + hr * 0.24, hr * 0.56, hr * 0.34, 0.18, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(18,13,13,0.82)';
+  c.beginPath(); c.ellipse(hx + hr * 1.20, hy + hr * 0.20, hr * 0.15, hr * 0.12, 0, 0, TAU); c.fill();
+  eye(c, hx + hr * 0.16, hy - hr * 0.16, Math.max(3, hr * 0.20));
+}
+
+/** ★ WAVE 14 — THE MONOTREMES. A platypus and an echidna are the two mammals
+    that lay eggs, and neither has ever had a route: the platypus measured 3.35
+    aspect against a real 2.6 on the verbatim engine and the echidna was a
+    generic small mammal. Each is defined by one impossible-looking feature —
+    a rubbery duck BILL on a furred body, and a dome of two-tone SPINES over a
+    tubular beak-snout with no visible mouth. */
+export function faunaMonotreme(c: Ctx, g: G, pIn: Pal, name = ''): void {
+  const r = nrng(g, name, 0x9E33);
+  const echidna = /echidna/i.test(name);
+  /* both are dark brown animals; the platypus reads by its BILL and the
+     echidna by its spines, and a red one loses both to the colour */
+  const p = echidna ? anchor(pIn, 74, 56, 40, 0.84) : anchor(pIn, 122, 96, 78, 0.80);
+  const gy = S * 0.72;
+
+  if (echidna) {
+    const bw = S * 0.145, bh = S * 0.098;
+    const cx = S * 0.50, cy = gy - bh * 0.62;
+    shadow(c, cx, gy + 4, bw * 1.02, 0.38);
+    /* the stocky splayed digging feet, before the body */
+    c.fillStyle = shade(p, 0.46);
+    for (const d of [-0.52, 0.30]) {
+      c.beginPath(); c.ellipse(cx + bw * d, gy - bh * 0.06, bw * 0.20, bh * 0.20, 0, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(232,226,208,0.85)'; c.lineWidth = 2; c.lineCap = 'round';
+      for (let i = -1; i <= 1; i++) {
+        c.beginPath(); c.moveTo(cx + bw * d + i * bw * 0.05, gy - bh * 0.02);
+        c.lineTo(cx + bw * d + i * bw * 0.10 - bw * 0.10, gy + bh * 0.10); c.stroke();
+      }
+    }
+    /* the body: a low dome */
+    const bg = c.createLinearGradient(0, cy - bh, 0, cy + bh);
+    bg.addColorStop(0, p.lit); bg.addColorStop(0.6, p.base); bg.addColorStop(1, shade(p, 0.44));
+    c.fillStyle = bg;
+    c.beginPath(); c.ellipse(cx, cy, bw, bh, 0, 0, TAU); c.fill();
+    /* THE SPINES — long, cream with black tips, radiating from the dome. This
+       is the animal; a spineless echidna is an anteater. */
+    for (let i = 0; i < 150; i++) {
+      const a = -Math.PI * (0.06 + r() * 0.88);
+      const d0 = 0.42 + r() * 0.58;
+      const x0 = cx + Math.cos(a) * bw * d0, y0 = cy + Math.sin(a) * bh * d0;
+      const L = bh * (0.52 + r() * 0.72);
+      const ex = x0 + Math.cos(a) * L * 1.15, ey = y0 + Math.sin(a) * L;
+      c.strokeStyle = '#e6d7a8'; c.lineCap = 'round'; c.lineWidth = 2.4;
+      c.beginPath(); c.moveTo(x0, y0); c.lineTo(ex, ey); c.stroke();
+      c.strokeStyle = '#1d1a16'; c.lineWidth = 2.2;
+      c.beginPath();
+      c.moveTo(x0 + (ex - x0) * 0.62, y0 + (ey - y0) * 0.62);
+      c.lineTo(ex, ey); c.stroke();
+    }
+    /* the short tubular beak-snout with NO visible mouth */
+    c.fillStyle = shade(p, 0.72);
+    c.save(); c.translate(cx + bw * 0.94, cy + bh * 0.34); c.rotate(0.30);
+    c.beginPath(); c.ellipse(0, 0, bw * 0.30, bh * 0.14, 0, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(16,12,12,0.8)';
+    c.beginPath(); c.ellipse(bw * 0.26, 0, bh * 0.05, bh * 0.045, 0, 0, TAU); c.fill();
+    c.restore();
+    eye(c, cx + bw * 0.64, cy + bh * 0.06, 3.4);
+    return;
+  }
+
+  /* the platypus: a low sleek body, a BILL, and a broad paddle tail */
+  const bw = S * 0.175 * (0.95 + r() * 0.10), bh = S * 0.080 * (0.94 + r() * 0.13);
+  const cx = S * 0.48, cy = gy - bh * 1.0;
+  shadow(c, cx, gy + 4, bw * 1.05, 0.36);
+  /* the paddle tail — broad, flat and blunt, held out behind */
+  c.fillStyle = shade(p, 0.62);
+  c.save(); c.translate(cx - bw * 1.02, cy + bh * 0.30); c.rotate(0.16);
+  c.beginPath(); c.ellipse(0, 0, bw * 0.52, bh * 0.72, 0, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(226,236,246,0.22)'; c.lineWidth = 2;
+  c.beginPath(); c.ellipse(0, 0, bw * 0.50, bh * 0.70, 0, -2.6, -0.3); c.stroke();
+  c.restore();
+  /* the webbed clawed feet */
+  c.fillStyle = shade(p, 0.50);
+  for (const d of [-0.44, 0.34]) {
+    c.beginPath();
+    c.moveTo(cx + bw * d, cy + bh * 0.62);
+    c.lineTo(cx + bw * d - bw * 0.20, gy);
+    c.lineTo(cx + bw * d + bw * 0.16, gy);
+    c.closePath(); c.fill();
+  }
+  const bg = c.createLinearGradient(0, cy - bh, 0, cy + bh);
+  bg.addColorStop(0, p.lit); bg.addColorStop(0.55, p.base); bg.addColorStop(1, shade(p, 0.42));
+  c.fillStyle = bg;
+  c.beginPath(); c.ellipse(cx, cy, bw, bh, -0.04, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(226,236,246,0.26)'; c.lineWidth = 2;
+  c.beginPath(); c.ellipse(cx, cy, bw, bh, -0.04, -2.8, 0.2); c.stroke();
+  /* THE BILL: flat, rubbery, wider than the head and a different material from
+     the fur — that contrast is most of why the animal looks impossible */
+  c.fillStyle = '#3a2e2c';
+  c.save(); c.translate(cx + bw * 1.02, cy + bh * 0.18); c.rotate(0.10);
+  c.beginPath(); c.ellipse(0, 0, bw * 0.56, bh * 0.56, 0, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(255,255,255,0.14)';
+  c.beginPath(); c.ellipse(-bw * 0.06, -bh * 0.14, bw * 0.26, bh * 0.16, 0, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(14,10,10,0.8)';
+  for (const s of [-1, 1] as const) { c.beginPath(); c.ellipse(bw * 0.20, s * bh * 0.13, bh * 0.05, bh * 0.04, 0, 0, TAU); c.fill(); }
+  c.restore();
+  /* the dense water-repellent pelt, which is why a platypus reads as FUR
+     wearing a bill rather than as a duck */
+  c.strokeStyle = shade(p, 0.62); c.lineCap = 'round'; c.lineWidth = 1.1;
+  for (let i = 0; i < 90; i++) {
+    const a = r() * TAU, d = Math.sqrt(r());
+    const px = cx + Math.cos(a) * bw * d * 0.94, py = cy + Math.sin(a) * bh * d * 0.90;
+    c.globalAlpha = 0.18 + r() * 0.24;
+    c.beginPath(); c.moveTo(px, py); c.lineTo(px - bw * 0.035, py + bh * 0.05); c.stroke();
+  }
+  c.globalAlpha = 1;
+  eye(c, cx + bw * 0.56, cy - bh * 0.30, 3.6);
 }
