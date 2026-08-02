@@ -1,8 +1,8 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-**Written 2026-08-02 at the end of waves 4–14.**
+**Written 2026-08-02 at the end of waves 4–15.**
 The live work is **THE PROPORTION ARC** — making every organism in the Earth catalogue look
-like the real thing, on Nick's instruction. Waves 4–14 have landed. The structural queue below is four-fifths done.
+like the real thing, on Nick's instruction. Waves 4–15 have landed. The structural queue below is four-fifths done.
 
 ---
 

@@ -41,6 +41,8 @@
      node tools/artlock.mjs --bless=Wolf,Lion      re-bless only these species
      node tools/artlock.mjs --bless --class=quadruped   re-bless one class only
      node tools/artlock.mjs --max=40        allow at most N drifted species
+     node tools/artlock.mjs --expect        assert every species whose spec row
+                                            you edited ACTUALLY changed
      node tools/artlock.mjs --selftest      negative-control, both directions
 */
 import fs from 'node:fs';
@@ -50,6 +52,7 @@ import os from 'node:os';
 import { spawn, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { classMap, classOf } from './artclass.mjs';
+import { execSync as _exec } from 'node:child_process';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..');
@@ -418,5 +421,57 @@ if (has('bless') || !bad) {
   fs.writeFileSync(LOCK, JSON.stringify(lock, null, 0));
   if (has('bless')) console.log('\nartlock: BLESSED ' + Object.keys(lock.fp).length + ' assets');
 }
+/* [EXPECT] — the INVERSE guard -------------------------------------- */
+/*  Every other check here asks "did something move that should not have?".
+    This asks the opposite, and it is the question two waves needed:
+    DID THE THING I EDITED ACTUALLY MOVE? A spec row you changed that renders
+    byte-identical is a fix that did not land — wave 13's earShape was ignored
+    by every large ear, wave 11's FishSpec.hue was inert for two waves, and in
+    both cases the table looked correct so nobody read the painter. */
+if (has('expect') && lockExists) {
+  let diff = '';
+  try {
+    diff = _exec('git diff -U0 -- packages/art/src', { cwd: root, encoding: 'utf8' })
+      + _exec('git diff -U0 --cached -- packages/art/src', { cwd: root, encoding: 'utf8' });
+  } catch { diff = ''; }
+  const edited = new Set();
+  for (const line of diff.split('\n')) {
+    if (!/^[+-]/.test(line) || /^[+-][+-][+-]/.test(line)) continue;
+    const m = /^[+-]\s*'([^']+)'\s*:/.exec(line);
+    if (m) edited.add(m[1].includes('|') ? m[1].slice(m[1].indexOf('|') + 1) : m[1]);
+  }
+  if (!edited.size) {
+    console.log('\n[EXPECT] no edited spec rows in the diff — nothing to assert.');
+  } else {
+    const stuck = [], moved = [], absent = [];
+    for (const name of edited) {
+      const key = Object.keys(now).find((k) => k.slice(k.indexOf('|') + 1) === name);
+      if (!key) { absent.push(name); continue; }
+      if (!lock.fp[key]) { moved.push(name); continue; }   /* brand new asset */
+      /* ⚠ THIS USED DRIFT_EPS AND WAS WRONG. Drift and expectation are opposite
+         questions and need opposite sensitivities: DRIFT asks "did the catalogue
+         shift?" and must ignore noise, so its threshold is body-scale (D-ART-103).
+         EXPECT asks "did this one asset change AT ALL?" — and since every render
+         here is deterministic and seeded, an unchanged spec produces a
+         BYTE-IDENTICAL fingerprint. Anything else is a change. Borrowing the
+         coarse threshold made the guard fail on every legitimate ear-sized edit.
+         A threshold is part of a question, not a property of the metric. */
+      (lock.fp[key] !== now[key] ? moved : stuck).push(name);
+    }
+    console.log('\n[EXPECT] ' + edited.size + ' spec rows edited · ' + moved.length
+      + ' moved · ' + stuck.length + ' UNCHANGED'
+      + (absent.length ? ' · ' + absent.length + ' not in the catalogue' : ''));
+    if (absent.length) console.log('   (not rendered: ' + absent.slice(0, 8).join(', ') + ')');
+    if (stuck.length) {
+      console.error('   FAIL: you edited these rows and the render did not change:');
+      for (const n of stuck.slice(0, 14)) console.error('        ' + n);
+      if (stuck.length > 14) console.error('        … and ' + (stuck.length - 14) + ' more');
+      console.error('     An option the painter ignores on this code path looks exactly like a');
+      console.error('     landed fix. Read the painter, not the table (D-ART-100).');
+      bad = 1;
+    }
+  }
+}
+
 console.log('\nartlock: ' + (bad ? 'FAIL' : 'ok'));
 process.exit(bad);

@@ -542,6 +542,26 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   native-size render** (D-ART-88). Recorded rather than fixed: raising the sensitivity enough
   to see an ear would make every rng jitter register as drift and destroy the signal.
 
+- ✔ **D-ART-104 — EVERY GATE ASKED ONE HALF OF THE QUESTION (wave 15).**
+  Six instruments, all asking "did something move that should not have?" and not one asking
+  the inverse: **"did the thing I just edited actually move?"** That gap cost two waves.
+  Wave 11: `FishSpec.hue` was inert for two waves and every row that set it looked correct.
+  Wave 13: the ear-shape switch was ignored by the branch every large ear took, so setting
+  `earShape` on a wild dog, a deer or a fennec changed nothing — and it took a 21-agent visual
+  audit to notice. `artlock --expect` now reads `git diff` over the override tables, pulls out
+  every species whose spec row changed, and asserts each one actually drifted. Negative-
+  controlled by reintroducing the wave-13 half-fix: it named Gazelle in one line.
+  **A spec row you edited that renders byte-identical is a fix that did not land.**
+
+- ✔ **D-ART-105 — A THRESHOLD BELONGS TO A QUESTION, NOT TO A METRIC (wave 15).**
+  `--expect` was built reusing DRIFT_EPS and immediately failed on a legitimate ear edit.
+  The two guards ask opposite questions and need opposite sensitivities: DRIFT asks "did the
+  catalogue shift?" and must ignore noise, so its threshold is deliberately body-scale
+  (D-ART-103); EXPECT asks "did this ONE asset change at all?" and — because every render here
+  is deterministic and seeded — the honest test is byte-identity. Sharing the constant made a
+  correct guard report false failures. When you reuse a threshold, re-derive it from the new
+  question rather than inheriting it from the old one.
+
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
