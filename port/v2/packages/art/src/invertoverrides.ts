@@ -109,6 +109,8 @@ function limb(c: Ctx, x0: number, y0: number, x1: number, y1: number, kx: number
 
 /* ═══════════════ INSECTS: three tagmata, six legs, antennae ═══════════════ */
 export interface InsectSpec {
+  /** the species' own colour, where the real insect's colour is its identity */
+  hue?: string;
   wings?: 'none' | 'folded' | 'open' | 'lace';
   /* ★ wave 21 — the audit on the wasp: "lacks clearly readable wings". A folded
      wing scaled off the abdomen is invisible on a species whose wings extend
@@ -129,7 +131,10 @@ export interface InsectSpec {
   fuzzy?: boolean;            /** the bee/bumblebee pile */
   pattern?: 'bands' | 'spots';
 }
-export function insectBody(c: Ctx, g: G, p: Pal, spec: InsectSpec, name = ''): void {
+export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''): void {
+  /* ★ D-ART-114 — the species hue axis. 26 insects took the rarity roll purely
+     because this painter had no field for a colour; `hued` was already here. */
+  const p = hued(pIn, spec.hue);
   const r = nrng(g, name, 0x15EC);
   const cx = S * 0.50, cy = S * 0.52;
   const sc = (spec.stick ? 1.35 : 1) * nv(name, 0x11, 0.10);

@@ -20,6 +20,7 @@
      Pineapple, Joshua Tree, Cotton, Dragon Fruit and the anti-duplicate
      ladder species are ABSENT here, and the shadow check enforces it. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { speciesHue } from './surface.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -74,6 +75,7 @@ export interface PlantSpec {
   flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin';
   fruit?: 'none' | 'berry' | 'drupe' | 'pome' | 'citrus' | 'pod' | 'nut' | 'cone' | 'grain' | 'melon' | 'fig' | 'cluster';
   fhue?: string;      /** flower/fruit colour where colour IS the identity */
+  hue?: string;       /** FOLIAGE colour — the body of the plant, not its fruit */
   thorns?: boolean;
   tall?: boolean;
 }
@@ -261,7 +263,14 @@ function drawFlower(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNu
 }
 
 /** THE PLANT. One body; the spec is the species. */
-export function plantBody(c: Ctx, g: G, p: Pal, spec: PlantSpec, name = ''): void {
+export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): void {
+  /* ★ D-ART-114 — the species hue axis, and the biggest single unlock: 314
+     plants took the rarity roll. Note this is the FOLIAGE colour and is a
+     different axis from `fhue`, which colours the flower or fruit — a plant
+     can have scarlet berries on grey-green leaves, and conflating the two is
+     what made the colour audit read 270 flora as already done when their
+     bodies were still random. */
+  const p = speciesHue(pIn, spec.hue);
   const r = rngF(g, name, 0x9101);
   const cx = S * 0.50, base = S * 0.84;
   /* RATIOS, never scales — the fit pass erases a size-only difference */

@@ -10,6 +10,7 @@
      Frilled Lizard, Poison Dart Frog, Seahorse, Pangolin, Armadillo, Giant
      Anteater, Beaver and Fruit Bat scored well and are deliberately ABSENT. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { speciesHue } from './surface.js';
 import { rootedSpine } from './surface.js';
 
 type G = Record<string, unknown>;
@@ -79,7 +80,9 @@ function softMark(c: Ctx, x: number, y: number, rx: number, ry: number, rgb: str
 
 /* ============================ REPTILES ============================ */
 /** SNAKE: a coiled body of tapering segments, no limbs, forked tongue */
-export function reptSnake(c: Ctx, g: G, p: Pal, opts: { hood?: boolean; rattle?: boolean; banded?: boolean }, name = ''): void {
+export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle?: boolean; banded?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-114 — the species hue axis (21 snakes were on the rarity roll). */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x5AE1);
   const cx = S * 0.48, cy = S * 0.56;
   ground(c, cx, S * 0.80, S * 0.24);
@@ -174,7 +177,9 @@ export function reptSnake(c: Ctx, g: G, p: Pal, opts: { hood?: boolean; rattle?:
   }
 }
 /** LIZARD/MONITOR: low sprawled body, four splayed legs, long tapering tail */
-export function reptLizard(c: Ctx, g: G, p: Pal, opts: { crest?: boolean; horns?: boolean; long?: boolean; stout?: number; tail?: number }, name = ''): void {
+export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horns?: boolean; long?: boolean; stout?: number; tail?: number; hue?: string }, name = ''): void {
+  /* ★ D-ART-114 — the species hue axis (18 lizards were on the rarity roll). */
+  const p = speciesHue(pIn, opts.hue);
   /* ★ WAVE 22 — THE PROPORTION PASS. tools/proportioncheck.mjs measured every
      one of the 631 fauna and found ten lizards bunched at 2.9-3.7 wide-to-tall,
      all within 40px of the SAME 360x110 box: the system had exactly two body
@@ -415,7 +420,11 @@ export function amphFrog(c: Ctx, g: G, p: Pal, opts: { warty?: boolean }, name =
 
 /* ============================ RODENTS & SMALL MAMMALS ============================ */
 /** RODENT: compact haunched body, big round ears, prominent incisors */
-export function smallRodent(c: Ctx, g: G, p: Pal, opts: { tail: 'long' | 'bushy' | 'stub'; ears: number; quills?: boolean }, name = ''): void {
+export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bushy' | 'stub'; ears: number; quills?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-114 — the species hue axis. 29 rodents were on the rarity roll for
+     no reason but this painter lacking a field, so a red squirrel could come
+     out lilac. */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x0DE5);
   const cx = S * 0.5, cy = S * 0.56, bw = S * 0.145 * nvar(name, 0xAA, 0.18),
     bh = S * 0.125 * nvar(name, 0xBB, 0.20);
@@ -512,7 +521,9 @@ export function smallRodent(c: Ctx, g: G, p: Pal, opts: { tail: 'long' | 'bushy'
 
 /* ============================ PRIMATES ============================ */
 /** PRIMATE: upright-ish torso, long arms, forward face, expressive brow */
-export function primate(c: Ctx, g: G, p: Pal, opts: { build: 'great' | 'lesser' | 'monkey'; tail?: boolean; ruff?: boolean }, name = ''): void {
+export function primate(c: Ctx, g: G, pIn: Pal, opts: { build: 'great' | 'lesser' | 'monkey'; tail?: boolean; ruff?: boolean; hue?: string }, name = ''): void {
+  /* ★ D-ART-114 — the species hue axis (17 primates were on the rarity roll). */
+  const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x9A1E);
   const great = opts.build === 'great';
   const lesser = opts.build === 'lesser';
