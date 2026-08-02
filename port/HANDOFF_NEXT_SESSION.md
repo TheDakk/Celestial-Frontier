@@ -1,8 +1,30 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-**Written 2026-08-02 at the end of waves 4–18.**
+**Written 2026-08-02 at the end of waves 4–21.**
 The live work is **THE PROPORTION ARC** — making every organism in the Earth catalogue look
-like the real thing, on Nick's instruction. Waves 4–18 have landed. ★ EARTH COVERAGE IS 1014/1014 — Bucket A is closed.
+like the real thing, on Nick's instruction. Waves 4–21 have landed. ★ EARTH COVERAGE IS 1010/1010 — Bucket A is closed.
+
+### What waves 20–21 changed that the rest of this document predates
+
+- **The roster is DEDUPED: 1,014 records → 1,010 organisms** (D-CAT-1, Nick's explicit call).
+  Four organisms were filed in two kingdoms each. The fix lives in the OWNED wrapper
+  `packages/domain/descriptors/src/apphooks.ts`, never in `apphooks.verbatim.js`, which is
+  byte-locked and auto-lifted — an edit there breaks the parity contract and the next lift
+  silently reverts it. **Earth names shifted for every flora and microbe** as an accepted
+  cost; fauna and fungi did not move. `baseline.json` was NOT regenerated — the one probe
+  that cannot be byte-equal is compared through a narrow mask with six negative controls.
+  Painted assets are now **1,250**.
+- **`npm run artbattery` is now SIX stages, and artlock is one of them.** It never was
+  before, despite this document calling it the gate (D-ART-109).
+- **The material layer reaches past the mammals** — birds have feathers, fish have scales
+  that actually show, arthropods have shell. No painter was rewritten: `ellipseTube` and
+  `profileTube` in `torso.ts` give an ellipse- or profile-bodied painter the same surface
+  coordinates the mammals earned in wave 4.
+- ⚠ **artlock CANNOT see a material change** (D-ART-110). Its fingerprint is 16×16 RGB at
+  eps 0.9, which is right for catching a global palette pass and structurally blind to fine
+  texture — feathering 105 birds moved 11 assets. **Review material work by eye with
+  `node tools/speciesstrip.mjs "Crow,Beetle,Salmon" out.png` and Read the PNG.** An artlock
+  green means the palette held, not that the material is right.
 
 ---
 
@@ -37,8 +59,14 @@ Do **not** read `port/MORPHOLOGY_PASS.md` end to end. Grep it.
 
 ## THE SAFETY NET — RUN IT, AND UNDERSTAND WHY IT IS SHAPED THIS WAY
 
-`node tools/artlock.mjs --touching=<class>` fingerprints all 1,254 rendered assets and answers
-the two questions no other gate here could:
+`node tools/artlock.mjs --touching=<class>` fingerprints all 1,250 rendered assets and answers
+the two questions no other gate here could. **It is stage 6 of `npm run artbattery` as of
+wave 21** — for waves 4–20 it was documented as part of the gate and was not actually in it,
+so it only ever ran when someone remembered to type it (D-ART-109).
+
+⚠ **Its blind spot, know it before you trust it:** the fingerprint is a 16×16 RGB grid at
+eps 0.9, so it sees a palette or proportion pass and CANNOT see surface texture at all
+(D-ART-110). Material work needs an eyeball pass, not a green tick.
 
 - **[DRIFT], scoped by painter class.** Nick: *"It only needs to apply to the organisms that
   we're dealing with in that class… we just want to make it so that the global passes don't
@@ -129,7 +157,7 @@ carry forward, because they should shape what the next session even attempts:
   to a data URL and cached. Swapping in Pixi/WebGL would change nothing about how these look;
   the ceiling is the DRAWING APPROACH, not the renderer.
 - **The same engine scores 97.5% on procedural and 5.7% on Earth** under Nick's strict bands
-  (234/240 vs 58/1014). That gap is the whole story: a generator is good at coherent variety and
+  (234/240 vs 58/1010). That gap is the whole story: a generator is good at coherent variety and
   bad at hitting a specific named target. We are asking one system to do both.
   **The obvious split — authored assets for the 1,014 fixed Earth species, the runtime generator
   for the aliens — is the highest-leverage decision available and has not been made.** It also
@@ -154,7 +182,7 @@ future material/texture pass provably cannot fix), and defer the surface ones.
    pinniped, burrower, plus 'claw' and 'flipper' feet. 21 species off 'generic'.
 4. ✔ **The named regressions** (wave 9): the rectangular tail base, the
    elephant's Asian topline and knee-height trunk, the walrus's legs.
-5. ✔ **The unrouted — DONE.** 1014/1014. Every Earth organism has a real
+5. ✔ **The unrouted — DONE.** 1010/1010. Every Earth organism has a real
    painter and nothing falls to the verbatim engine. The arc opened at 930.
 
 **BUCKET A IS CLOSED.** All five structural items are done. What remains before
