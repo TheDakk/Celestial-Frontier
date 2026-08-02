@@ -264,6 +264,16 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   of dust to fill the frame and the colony vanished. It now grows on a ragged spreading crust —
   which improved the named Mold, Mildew and Yeast too, the tell that the vignette had been
   carrying a thin painter all along.
+- ✔ **D-ART-58 — THE CANONICAL MAP + COUNT DELTA (wave 18).** The Platinum audit named 4
+  organisms each in 2 kingdom lists (Tardigrade, Green Algae, Snow Algae, Reindeer Lichen):
+  1,014 rows - 4 dupes = 1,010 unique, closing the task-14 count-delta investigation. A CANON
+  map in resolveOverride, keyed by kingdom+name, renders each copy for its role.
+- ✔ **D-ART-59 — SIX BESPOKE FUNGI (wave 18).** Fly Agaric (red cap + white warts), Lion's Mane
+  (a white pom-pom of tooth-spines), Maitake (a frond rosette), Stinkhorn (upright stalk + dark
+  gleba), Cordyceps (clubs on a host), Reindeer Lichen (a branching mat).
+- ✔ **D-ART-60 — MACROALGAE ARE GREEN (wave 18).** Sea Lettuce and flora Green Algae render as
+  green sheets: the palette is blended 62% toward a sea-green anchor because green is the
+  organism's real-world identity.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
