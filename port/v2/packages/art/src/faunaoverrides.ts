@@ -14,6 +14,18 @@
    palette from the genome. Bodies, not recolors. */
 import { mulberry32, TAU } from '@cf/domain-rand';
 
+/** THE PATTERN LAW (D-ART-16): every mark falls off to zero alpha, so it
+    melts into the surface instead of sitting on it as a sticker. */
+function softMark(c: CanvasRenderingContext2D, x: number, y: number, rx: number, ry: number, rgb: string, a: number, rot = 0): void {
+  c.save(); c.translate(x, y); c.rotate(rot); c.scale(1, ry / rx);
+  const gg = c.createRadialGradient(0, 0, rx * 0.1, 0, 0, rx);
+  gg.addColorStop(0, `rgba(${rgb},${a})`);
+  gg.addColorStop(0.55, `rgba(${rgb},${a * 0.8})`);
+  gg.addColorStop(0.82, `rgba(${rgb},${a * 0.32})`);
+  gg.addColorStop(1, `rgba(${rgb},0)`);
+  c.fillStyle = gg; c.beginPath(); c.arc(0, 0, rx, 0, TAU); c.fill(); c.restore();
+}
+
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
 export interface Pal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
@@ -109,6 +121,13 @@ export function faunaWingedInsect(c: Ctx, g: G, p: Pal, opts: { open: boolean; s
     c.fillStyle = 'rgba(255,255,255,0.5)';
     c.beginPath(); c.arc(hx - 10, cy - 11 + s * 9, 2.6, 0, TAU); c.fill();
   }
+  /* ⚠ NO TEXTURE PASS HERE, DELIBERATELY. A speckle pass was added to this
+     painter and immediately degraded it: the venated wings — the reason the
+     reviews and Nick both singled this species out — turned into grey
+     smudges. THE OVERRIDE LAW APPLIES TO OUR OWN IMPROVEMENTS: never
+     override what already excels, including when the thing doing the
+     overriding is a later idea of ours.
+     @rng-unused: texturing this painter demonstrably made it worse. */
   void r;
 }
 /** a BEETLE: domed elytra shell, short legs (Ladybug/Firefly/Diving Beetle) */
@@ -585,7 +604,17 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     c.beginPath(); c.ellipse(bx, wl + bh * 0.10, bw * 1.42, bh * 0.20, 0, 0, TAU); c.stroke();
     c.beginPath(); c.ellipse(bx, wl + bh * 0.10, bw * 1.95, bh * 0.28, 0, 0, TAU); c.stroke();
   }
-  void r;
+  /* PLUMAGE TEXTURE — feather groups, not a painted egg. Soft, low-alpha
+     and clipped to the body, so the bird still reads at thumbnail size. */
+  c.save();
+  c.beginPath(); c.ellipse(bx, by, bw, bh, -0.15, 0, TAU); c.clip();
+  for (let i = 0; i < 26; i++) {
+    const a = r() * TAU, d = r() ** 0.7;
+    softMark(c, bx + Math.cos(a) * bw * d, by + Math.sin(a) * bh * d,
+      bw * (0.10 + r() * 0.10), bh * (0.05 + r() * 0.06),
+      i % 3 ? '235,236,230' : '30,26,20', 0.035 + r() * 0.045, a * 0.3);
+  }
+  c.restore();
 }
 
 /** the wave-3 roster: species whose defining anatomy was categorically wrong */

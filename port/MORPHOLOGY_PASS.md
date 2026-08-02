@@ -684,3 +684,70 @@ of the species hue. Logged rather than left to be rediscovered.
 0 clipped · overridecheck 927/927 · 0 dead · 0 shadowed · 0 unwired · overridecontrol **7/7** ·
 slicesmoke PASS · perf 1224/1842ms · goldenseeds 198,000 · validate FINGERPRINT MATCH.
 `hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-37 … D-ART-39.
+
+---
+
+# THE RETROSPECTIVE — 2026-08-01 ("hope we didn't miss anything else")
+
+Nick asked the right question after wave 11's unwired table. Rather than answer it from
+memory, every defect class this pass has actually shipped was encoded into one instrument and
+run across all eleven waves at once.
+
+## `tools/artaudit.mjs` — the defect classes, as executable checks
+| | the check | why it exists |
+|---|---|---|
+| **A** | a painter exported but reachable from no table | a dead painter |
+| **B** | an rng seeded and then discarded (`void r`) | variation computed and thrown away |
+| **C** | a painter taking `name` and never reading it | D-ART-20 — two labels, one animal |
+| **D** | a variation helper whose salts don't separate | D-ART-35 — six axes, one number |
+| **E** | name variation applied only to overall size | D-ART-34 — the fit pass erases it |
+| **F** | a table imported but never consulted | D-ART-39 (lives in overridecheck) |
+| **G** | a tool enumerating files by NAME PATTERN | the discovery rule is itself an assumption |
+| **H** | a tool reading a build artefact without rebuilding | D-ART-36 — the stale bundle |
+
+## What the retrospective found — the answer is YES, we had missed things
+**★ SEVEN PAINTERS WERE THROWING THEIR RANDOMNESS AWAY.** `faunaWingedInsect`, `faunaBird`,
+`reptSnake`, `reptTurtle`, `primate`, `myriapod` and `shrimpBody` each seeded a per-species
+random stream and discarded it with `void r`. Nothing crashed — but nothing varied either:
+every one of those bodies carried a perfectly uniform surface. Six now spend it on **surface
+texture**, which is simultaneously the bug fix and the texture work: snake scale mottle,
+turtle scute wear, primate fur breaking the torso into shoulder/flank/haunch masses, myriapod
+segment tint, crustacean carapace speckle, bird plumage groups. All obey the pattern law —
+radial falloff to zero alpha, clipped to the body, never a stamp.
+
+**★★ AND THE TEXTURE PASS IMMEDIATELY BROKE THE BEST THING WE HAVE.** Texturing
+`faunaWingedInsect` turned the dragonfly's venated wings — the species Nick and both reviews
+singled out — into grey smudges. Reverted within one strip.
+> **THE OVERRIDE LAW APPLIES TO OUR OWN IMPROVEMENTS.** "Never override what already excels"
+> was written about the verbatim engine. It governs *us* too: a later idea of ours is still an
+> override, and the dragonfly did not need our help. Its rng stays deliberately unspent,
+> tagged `@rng-unused:` so the audit accepts it *and* the decision stays visible.
+
+**★ THE PERF PROBE WAS ALSO READING A STALE BUNDLE.** Check H caught `sliceperf.mjs` doing
+exactly what `speciesaudit` had been doing — "build only if index.html is missing". Every perf
+number this session was potentially measured on whatever bundle happened to be on disk. It
+rebuilds unconditionally now; the honest numbers are **1254ms painted / 1874ms answerable**.
+
+**★★ AND THE AUDIT ITSELF HAD A HOLE — found by using it.** Check G exempted any filename
+pattern *containing* an extension test, so `/overrides\d*\.ts$/` was waved straight through —
+and `coveragegap.mjs` had kept that glob one wave too long, **under-reporting coverage by 302
+species** while the check reported clean. Tightened to exempt only a bare extension filter,
+and negative-controlled: reintroducing the glob makes it fire. Corrected coverage: **930/1014**.
+
+## `npm run artbattery` — one command, five stages
+`artaudit` (static defect classes) → `overridecheck` (routes resolve, right kingdom,
+unshadowed, unduplicated, **and wired**) → `overridecontrol` (7 controls prove overridecheck
+still fails when it should) → `coveragegap` (what remains, measured) → `speciesaudit`
+(1,254 paint, none duplicate, none clip, through a bundle proven fresh).
+**Result: 5/5.**
+
+## Coverage — MEASURED
+**930 of 1,014 (91.7%)** · fauna 583/631 · flora 321/334 · fungi 16/27 · microbe 10/22.
+Of the 48 fauna left, ~35 are the deliberately-excluded excellent species (Elephants, Tiger,
+Lion, Zebra, Chameleon, Seahorse, Pangolin, Poison Dart Frog, Frilled Lizard, Beaver…).
+Genuinely remaining: marsupials · monotremes · pinnipeds · sirenians · the cetacean and bat
+remainder · crocodilians · 11 fungi · 12 microbes · the procedural body plans · flower-head
+families · the 43 biome scenes.
+
+**Gates:** vitest 220 ✓ · tsc clean · **artbattery 5/5** · slicesmoke PASS ·
+perf 1254/1874ms (honest). `hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-40 … D-ART-42.

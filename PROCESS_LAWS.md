@@ -208,3 +208,23 @@ each time because of how it decided *what to look at*: a hardcoded file list, th
 all. Every fix widened the rule and the next fix widened it again.
 > **The remedy:** when a tool enumerates things, enumerate everything and filter late — and
 > when a check comes back clean right after you added work, suspect the enumeration first.
+
+
+⚠⚠ **THE "NEVER OVERRIDE WHAT ALREADY EXCELS" LAW GOVERNS YOUR OWN IMPROVEMENTS TOO.** A
+retrospective found seven painters discarding their random stream, and spending it on surface
+texture improved six of them. The seventh was the dragonfly — the one species the reviews and
+the user had both singled out as near-perfect — and the texture pass turned its venated wings
+into grey smudges. The rule had always been aimed outward, at the engine we were replacing.
+It applies inward: a later idea of yours is still an override, and a sweeping improvement will
+sweep over the things that were already right.
+> **The remedy:** when a systematic pass touches something already known to be good, render
+> that thing FIRST and compare before applying the pass anywhere else. And when you decide to
+> leave something alone, record the decision in a machine-checkable form (`@rng-unused: why`)
+> so the exception cannot silently become the rule.
+
+⚠ **AN AUDIT'S EXEMPTIONS ARE WHERE ITS BUGS LIVE.** `artaudit` check G flags tools that
+enumerate files by name pattern. It exempted anything "containing an extension test" — which
+waved through `/overrides\d*\.ts$/`, the exact pattern that had been hiding 302 species from
+the coverage report. The check was correct; the escape hatch was not.
+> **The remedy:** write the exemption as narrowly as the rule, and negative-control the
+> exemption itself — reintroduce the thing it excuses and confirm the check fires.

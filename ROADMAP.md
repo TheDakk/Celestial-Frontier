@@ -686,6 +686,33 @@
 ##   → Death Cap → Bioluminescent Mushroom, every one its own palette and glow).
 ##   Fails loudly (exit 1) on any unpainted species — a standing Phase 5 gate.
 ##   Gates: vitest 22/220 · tsc clean · smoke PASS · main.js untouched.
+##   ✔★★★ THE RETROSPECTIVE + THE ART BATTERY (2026-08-01, batch 32). Nick: "hope we didn't
+##   miss anything else in all the waves". Answered with an instrument, not from memory:
+##   ★tools/artaudit.mjs encodes EVERY defect class this pass has shipped — A dead painters ·
+##   B discarded rngs · C unused name params · D degenerate salts · E size-only variation ·
+##   F unwired tables · G pattern-globbed file discovery · H stale-bundle readers — and runs
+##   them across all 11 waves. ★★IT FOUND SEVEN PAINTERS THROWING THEIR RANDOMNESS AWAY
+##   (faunaWingedInsect, faunaBird, reptSnake, reptTurtle, primate, myriapod, shrimpBody):
+##   seeded a per-species stream and discarded it with 'void r', so every one of those bodies
+##   carried a perfectly UNIFORM surface. Six now spend it on SURFACE TEXTURE — snake scale
+##   mottle · turtle scute wear · primate fur breaking the torso into shoulder/flank/haunch ·
+##   myriapod segment tint · crustacean carapace speckle · bird plumage groups — all pattern-law
+##   (radial falloff, clipped to body, never a stamp). ★★★AND THE TEXTURE PASS IMMEDIATELY
+##   BROKE THE BEST THING WE HAVE: texturing faunaWingedInsect turned the DRAGONFLY's venated
+##   wings (the species Nick and both reviews singled out) into GREY SMUDGES. Reverted within
+##   one strip. ⇒ THE OVERRIDE LAW APPLIES TO OUR OWN IMPROVEMENTS — a later idea of ours is
+##   still an override. Its rng stays deliberately unspent, tagged @rng-unused: so the audit
+##   accepts it AND the decision stays visible. ★sliceperf.mjs was ALSO reading a stale bundle
+##   (D-ART-36's second offender) — every perf number was potentially measured on whatever
+##   happened to be on disk; it rebuilds unconditionally now (honest: 1254/1874ms). ★★THE
+##   AUDIT'S OWN HOLE, FOUND BY USING IT: check G exempted any pattern merely CONTAINING an
+##   extension test, so /overrides\d*\.ts$/ was waved through — and coveragegap had kept that
+##   glob one wave too long, UNDER-REPORTING COVERAGE BY 302 SPECIES while the check said
+##   clean. Tightened + negative-controlled. ★npm run artbattery = ONE COMMAND, FIVE STAGES
+##   (artaudit → overridecheck → overridecontrol → coveragegap → speciesaudit) = 5/5.
+##   ★COVERAGE MEASURED: 930/1,014 (91.7%) — fauna 583/631 · flora 321/334 · fungi 16/27 ·
+##   microbe 10/22; of 48 fauna left ~35 are deliberately-excluded excellent species.
+##   D-ART-40..42. GATES: vitest 220 · tsc · artbattery 5/5 · slicesmoke PASS · hdart UNTOUCHED.
 ##   ✔★★★ MORPHOLOGY WAVE 11 — THE PLANT SYSTEM + THE UNWIRED TABLE (2026-08-01, batch 31).
 ##   ★THE GAP REPORT WAS WRONG AND HAD BEEN STEERING THE PLAN: the scratch script picking each
 ##   wave's target carried the SAME hardcoded file list overridecheck shipped with, so after

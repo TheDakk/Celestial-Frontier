@@ -25,9 +25,14 @@ const cat = {};
 for (const m of desc.matchAll(/(fauna|flora|fungi|microbe)\s*:\s*\[([\s\S]*?)\]/g))
   cat[m[1]] = [...m[2].matchAll(/'((?:[^'\\]|\\.)*)'/g)].map((x) => dec(x[1]));
 
-/* every override file, read from the directory — never a hardcoded list */
-const FILES = fs.readdirSync(SRC).filter((n) => /overrides\d*\.ts$/.test(n)).sort();
-if (FILES.length < 5) { console.error('coveragegap: only ' + FILES.length + ' override files found — the PARSER is broken'); process.exit(2); }
+/* EVERY art source, read from the directory — never a hardcoded list, and
+   never a FILENAME PATTERN either. This file kept its `*overrides.ts` glob
+   one wave too long and under-reported coverage by 302 species; artaudit's
+   check [G] waved it through because its own exemption matched any pattern
+   merely containing an extension test. Both are fixed, and the control in
+   artaudit proves [G] fires on a reintroduced glob. */
+const FILES = fs.readdirSync(SRC).filter((n) => n.endsWith('.ts') && !n.endsWith('.d.ts')).sort();
+if (FILES.length < 6) { console.error('coveragegap: only ' + FILES.length + ' art sources found — the PARSER is broken'); process.exit(2); }
 const covered = new Set();
 for (const f of FILES) {
   const t = fs.readFileSync(path.join(SRC, f), 'utf8');

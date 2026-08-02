@@ -171,6 +171,23 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   noticed, via a 15-pair regression. overridecheck now reports unwired tables; control F proves
   it fires. Also widened file discovery from a NAME PATTERN to every art source — the third
   time the discovery rule itself was the bug.
+- ✔ **D-ART-40 — THE RETROSPECTIVE INSTRUMENT (tools/artaudit.mjs).** Every defect class this
+  pass has shipped, encoded as an executable check and run across all eleven waves: dead
+  painters · discarded rngs · unused name params · degenerate salts · size-only variation ·
+  pattern-globbed file discovery · stale-bundle readers. It found seven painters discarding
+  their rng and a second tool (sliceperf) reading a stale bundle. `npm run artbattery` runs it
+  with the four routing/coverage instruments as one five-stage command.
+- ✔ **D-ART-41 — THE OVERRIDE LAW APPLIES TO OUR OWN IMPROVEMENTS.** Spending the seven
+  discarded rngs on surface texture fixed six painters and immediately DEGRADED the seventh:
+  the dragonfly's venated wings — the species Nick and both reviews singled out — became grey
+  smudges. Reverted. A later idea of ours is still an override; "never override what already
+  excels" governs us, not just the verbatim engine. The deliberate discard is tagged
+  `@rng-unused: <reason>`, which artaudit accepts and which keeps the decision visible.
+- ✔ **D-ART-42 — THE AUDIT'S OWN HOLE, FOUND BY USING IT.** Check G exempted any filename
+  pattern merely CONTAINING an extension test, so /overrides\d*\.ts$/ passed — and coveragegap
+  had kept that glob one wave too long, under-reporting coverage by 302 species while the check
+  reported clean. Tightened to a bare-extension exemption and negative-controlled. Corrected
+  coverage: 930/1014. Also: sliceperf now always rebuilds (D-ART-36's second offender).
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic

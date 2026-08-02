@@ -157,11 +157,18 @@ export function reptSnake(c: Ctx, g: G, p: Pal, opts: { hood?: boolean; rattle?:
   c.beginPath(); c.moveTo(tx, ty); c.lineTo(tx + 22, ty + 4); c.stroke();
   c.beginPath(); c.moveTo(tx + 22, ty + 4); c.lineTo(tx + 34, ty - 2); c.stroke();
   c.beginPath(); c.moveTo(tx + 22, ty + 4); c.lineTo(tx + 34, ty + 11); c.stroke();
+  /* SCALE MOTTLE along the coil — a snake's skin is never one flat tone */
+  for (let i = 0; i < 40; i++) {
+    const k = Math.floor(r() * (pts.length - 1));
+    const q = pts[k]!;
+    softMark(c, q.x + (r() - 0.5) * q.w, q.y + (r() - 0.5) * q.w * 0.8,
+      q.w * (0.32 + r() * 0.34), q.w * (0.22 + r() * 0.24),
+      r() < 0.55 ? '24,18,12' : '250,248,236', 0.10 + r() * 0.12);
+  }
   if (opts.rattle) {
     c.fillStyle = '#d8c9a8';
     for (let i = 0; i < 4; i++) { c.beginPath(); c.ellipse(cx - S * 0.20 - i * 9, cy + S * 0.10 + i * 3, 8 - i, 6 - i * 0.6, 0.3, 0, TAU); c.fill(); }
   }
-  void r;
 }
 /** LIZARD/MONITOR: low sprawled body, four splayed legs, long tapering tail */
 export function reptLizard(c: Ctx, g: G, p: Pal, opts: { crest?: boolean; long?: boolean }, name = ''): void {
@@ -232,6 +239,17 @@ export function reptTurtle(c: Ctx, g: G, p: Pal, opts: { flippers?: boolean }, n
   for (let i = -3; i <= 3; i++) { c.beginPath(); c.moveTo(cx + i * sw * 0.26, cy); c.lineTo(cx + i * sw * 0.34, cy - sh); c.stroke(); }
   c.restore();
   rim(c, () => c.ellipse(cx, cy, sw, sh, 0, Math.PI, TAU), 2.4);
+  /* SCUTE WEAR — the plates of a shell are not uniform; the older centre
+     is darker and scuffed, which is most of what makes a shell look old */
+  c.save();
+  c.beginPath(); c.ellipse(cx, cy, sw, sh, 0, Math.PI, TAU); c.clip();
+  for (let i = 0; i < 26; i++) {
+    const a = r() * TAU, d = r() ** 0.6;
+    softMark(c, cx + Math.cos(a) * sw * d, cy - Math.abs(Math.sin(a)) * sh * d,
+      sw * (0.07 + r() * 0.09), sh * (0.09 + r() * 0.11),
+      r() < 0.6 ? '30,24,14' : '245,238,214', 0.10 + r() * 0.12);
+  }
+  c.restore();
   /* head on a short neck */
   const hx = cx + sw * 1.08, hy = cy - sh * 0.18;
   c.strokeStyle = p.base; c.lineWidth = sh * 0.42; c.lineCap = 'round';
@@ -239,7 +257,6 @@ export function reptTurtle(c: Ctx, g: G, p: Pal, opts: { flippers?: boolean }, n
   c.fillStyle = grad(c, p, hx, hy, sh * 0.5);
   c.beginPath(); c.ellipse(hx, hy, sh * 0.52, sh * 0.38, -0.1, 0, TAU); c.fill();
   eye(c, hx + sh * 0.06, hy - sh * 0.1, 4.5);
-  void r;
 }
 /** FROG: crouched haunches, long folded hind legs, wide mouth, domed eyes */
 export function amphFrog(c: Ctx, g: G, p: Pal, opts: { warty?: boolean }, name = ''): void {
@@ -462,7 +479,17 @@ export function primate(c: Ctx, g: G, p: Pal, opts: { build: 'great' | 'lesser' 
   if (!great) {   /* the round side ears of monkeys/lesser apes */
     for (const s of [-1, 1] as const) { c.fillStyle = p.base; c.beginPath(); c.arc(hx + s * hr * 0.95, hy, hr * 0.24, 0, TAU); c.fill(); }
   }
-  void r;
+  /* FUR — a primate's coat breaks the torso's silhouette into shoulder,
+     flank and haunch masses instead of one smooth shell */
+  c.save();
+  c.beginPath(); torso(); c.closePath(); c.clip();
+  for (let i = 0; i < 34; i++) {
+    const a = r() * TAU, d = r() ** 0.65;
+    softMark(c, cx + Math.cos(a) * bw * d, cy + Math.sin(a) * bh * d,
+      bw * (0.12 + r() * 0.14), bh * (0.06 + r() * 0.08),
+      i % 3 ? '20,16,12' : '242,236,222', 0.08 + r() * 0.09, 1.4 + (r() - 0.5));
+  }
+  c.restore();
 }
 
 /* ============================ MARINE REMAINDER ============================ */
