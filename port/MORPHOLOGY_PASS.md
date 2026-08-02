@@ -448,3 +448,63 @@ flower-head families · the 43 biome scenes (Phase 6).
 overridecheck 415/415 · 0 dead · **overridecontrol 5/5 fire** · slicesmoke PASS ·
 perf painted 1241ms / answerable 1925ms (improved). `hdart.verbatim.js` UNTOUCHED.
 **Ledger:** D-ART-24 … D-ART-26.
+
+---
+
+# WAVE 9 — LANDED 2026-08-01 (THE BIRDS + a THIRD kind of dead route)
+
+## Extended, not replaced
+Wave 3's `faunaBird` gave every bird THE WING and the reviews scored it well, so wave 9
+**extends its spec** (D-ART-14: never override what already excels). Every new axis is
+**optional and defaulted**, so the 28 wave-3 birds take the code paths they always took —
+verified by strip against Eagle, Flamingo, Heron and Toucan after every change.
+
+| new axis | what it fixes |
+|---|---|
+| **size** | a hummingbird is not an ostrich. Body scale said so NOWHERE — every bird was one size with different legs. |
+| **neck** short · long · **swan** · none | the S-curve *is* the swan |
+| **tail** short · fan · long · forked | + peacock **ocelli** on the fan |
+| **owl** | the facial disc and **forward-facing eyes** — the one head in the catalog that does not read in profile — plus ear tufts |
+| **swim** | THE WATERLINE. It is why a duck reads as a duck and not as a bird standing in a hole. |
+| **upright** | the penguin/auk stance: a stiff **flipper**, not a wing, over a pale front |
+| **bills** short (finch cone) · chisel (woodpecker) · needle (hummingbird) · duck (spatulate) | |
+
+**73 new routes.** Wave 3's birds are also **name-seeded** now (D-ART-20): Hawk and Falcon
+carry identical specs, and wave 7 proved two labels sharing a spec eventually collide.
+
+## ★★ A THIRD KIND OF DEAD ROUTE: SHADOWED
+Wave 9 wrote a swan-necked, water-borne `Swan`. Wave 3 already had a plain one — and
+`resolveOverride` consults FAUNA_NAME **first**, so **the new painter would never have run**.
+Both keys resolve to a real species, so the dead-route check was blind to it by construction,
+and the species audit would have reported 1,254/1,254 as always.
+`overridecheck` now reports **shadowed routes**, and the wave-3 Swan was retired in favour of
+the swan-necked one.
+
+### The instrument's own false positive — again, on its first run
+The shadow check immediately flagged **Green Algae [FLORA_DUPES shadows MICROBE_NAME]**. That
+is **not** a shadow: `Green Algae` is in *both* the flora and the microbe catalogs, and
+`resolveOverride` branches on **kingdom first**, so both routes are live and correct. The
+check is kingdom-aware now, which also made two other things more honest:
+- **dead** now includes *mis-kingdomed* keys — a flora painter for a microbe is never reached.
+- **coverage** counts per kingdom, so a name living in two kingdoms counts in each.
+
+That is now **four** self-inflicted bugs this one tool has surfaced before finding anything
+real (38 phantom routes · the skipped private tables · the hardcoded file list · this).
+**Read an instrument's first report as a bug report about the instrument.**
+
+### The controls are the deliverable
+`npm run overridecontrol` — **six** controls, all firing:
+baseline pass · A dead key · B duplicate key · C **a whole new override file** · D **a shadowed
+species** · E **a table the tool cannot classify is reported, never skipped silently** · restore.
+
+## Coverage after wave 9 — MEASURED
+**488 of 1,010 Earth species (48.3%)** — fauna 418 · flora 45 · fungi 16 · microbe 9.
+Nearly half the catalog now runs on corrected morphology.
+
+Remaining, by measured size: **arthropods 67** · worms/cnidaria 22 · the mammal + reptile
+remainder · procedural fungi + microbe body plans (Nick's audit §12/§13) · flower-head
+families · the 43 biome scenes (Phase 6).
+
+**Gates:** vitest 220 ✓ · tsc clean · speciesaudit 1254/1254 · 0/0/0 · overridecheck 488/488 ·
+0 dead · **overridecontrol 6/6 fire** · slicesmoke PASS · perf 1479/2254ms.
+`hdart.verbatim.js` UNTOUCHED. **Ledger:** D-ART-27 … D-ART-29.

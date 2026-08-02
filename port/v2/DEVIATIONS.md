@@ -100,6 +100,23 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   "no change" while 105 new routes went unchecked — the tool's own blindness, of exactly the
   class it exists to catch. It reads the directory now, and `tools/overridecheck.control.mjs`
   (`npm run overridecontrol`) is a committed control set whose control C is precisely this bug.
+- ✔ **D-ART-27 — THE BIRD SPEC EXTENDED (wave 9).** 73 new routes by adding optional axes to
+  wave 3's faunaBird rather than replacing it: size (a hummingbird is not an ostrich — body
+  scale said so nowhere), neck incl. the swan S-curve, tail incl. peacock ocelli, the OWL
+  facial disc with forward-facing eyes, the swimmer's WATERLINE, the penguin's upright flipper,
+  and four new bills. All defaulted, so the 28 wave-3 birds are byte-unchanged; wave-3 birds
+  are also name-seeded now (Hawk and Falcon shared a spec).
+- ✔ **D-ART-28 — SHADOWED ROUTES, THE THIRD KIND OF DEAD ROUTE (wave 9).** Wave 9's
+  swan-necked Swan would never have run: wave 3 already keyed 'Swan' in a table resolveOverride
+  consults first. Both keys resolve to a real species, so the dead-route check was blind by
+  construction and the audit stayed at 1,254/1,254. overridecheck reports shadowed routes now
+  (kingdom-aware — see D-ART-29), and the wave-3 Swan was retired.
+- ✔ **D-ART-29 — THE SENTINEL'S FOURTH SELF-INFLICTED BUG (wave 9).** The new shadow check's
+  first run flagged 'Green Algae [FLORA_DUPES shadows MICROBE_NAME]' — not a shadow: that name
+  is in BOTH catalogs and resolveOverride branches on kingdom first. The check is kingdom-aware
+  now, which also made 'dead' catch mis-kingdomed keys and made coverage count per kingdom.
+  Four self-inflicted bugs from one tool before it found anything real. Controls: six, all
+  firing, incl. E — a table the tool cannot classify is REPORTED, never skipped silently.
 - ☐ **D-ART-1 defining-feature guarantees · D-ART-2 pattern/color legibility · D-ART-3
   contrast floor · D-ART-4 flower-head + remaining fungi/microbe families · D-ART-5 procedural
   depth** — the remaining waves (P1 integrity/dupes/manifest → P2 fauna specialists + iconic
