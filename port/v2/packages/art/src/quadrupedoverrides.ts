@@ -909,13 +909,16 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       const ex = headX - headR * (s < 0 ? 0.62 : 0.40), ey = headY - headR * (0.56 + (ears === 'huge' ? 0.18 : 0));
       const m = s < 0 ? 0.62 : 1;
       c.fillStyle = `rgb(${p.cr * 0.52 * m | 0},${p.cg * 0.52 * m | 0},${p.cb * 0.54 * m | 0})`;
-      if (ears === 'huge' || ears === 'large') {
-        c.save(); c.translate(ex, ey); c.rotate(s * 0.30 - 0.12);
-        c.beginPath(); c.ellipse(0, -earR * 0.52, earR * 0.50, earR, 0, 0, TAU); c.fill();
-        c.fillStyle = `rgba(${Math.min(255, p.cr * 1.05) | 0},${Math.min(255, p.cg * 0.86) | 0},${Math.min(255, p.cb * 0.84) | 0},${0.5 * m})`;
-        c.beginPath(); c.ellipse(0, -earR * 0.5, earR * 0.28, earR * 0.68, 0, 0, TAU); c.fill();
-        c.restore();
-      } else {
+      /* ⚠ WAVE 13 SHIPPED HALF A FIX. The shape switch below was added, but this
+         branch — taken by every 'large' and 'huge' ear — was left drawing the old
+         two-tone ellipse, so earShape did nothing for a wild dog, an aardvark, a
+         deer, a rabbit or a fennec. The mammal re-measure caught it in one line:
+         "the same two-leaf token used on the African Wild Dog and the Armadillo".
+         SIZE and SHAPE are orthogonal — 'ears' sets how big, 'earShape' sets what
+         kind — and the size branch had quietly been deciding both. Same lesson as
+         the speccheck blind spot: a fix that covers part of its own surface reads
+         as done and is not. */
+      {
         /* ★ WAVE 13 — THE EAR SHAPE. Everything here used to be one rounded cup
            at four sizes, which is most of why a wolf, a deer and a bear read as
            the same head. Each shape below is a family signature legible at
