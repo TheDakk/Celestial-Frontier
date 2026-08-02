@@ -129,6 +129,17 @@ export interface InsectSpec {
       the whole insect, which is a different creature entirely. */
   legSpan?: number;
   fuzzy?: boolean;            /** the bee/bumblebee pile */
+  /* ★ WAVE 22 — THE THREE AXES THE INSECTS WERE MISSING.
+     Ant, Leafcutter Ant, Cockroach, Cricket, Cicada, Black Fly and
+     Cold-Adapted Insect all went HARD look-alike the moment they were given
+     honest colours, and the specs show exactly why: every one was the same
+     body plan with a different `abdomen` length. The family had a LENGTH dial
+     and nothing else — no width, no head size, no thorax shield — so seven
+     genuinely unalike animals were one silhouette at seven sizes, and colour
+     was being asked to carry a distinction it cannot carry. */
+  broad?: number;             /** body WIDTH — a cockroach is a flat oval, an ant is not */
+  eyes?: number;              /** head and eye size — a fly is mostly eye */
+  shield?: boolean;           /** the pronotal shield a cockroach pulls over its head */
   pattern?: 'bands' | 'spots';
 }
 export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''): void {
@@ -138,6 +149,7 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
   const r = nrng(g, name, 0x15EC);
   const cx = S * 0.50, cy = S * 0.52;
   const sc = (spec.stick ? 1.35 : 1) * nv(name, 0x11, 0.10);
+  const BR = spec.broad ?? 1;                 /* ★ wave 22 — body WIDTH */
   const th = S * 0.052 * sc * (spec.stick ? 0.42 : 1);          /* thorax half-height */
   /* the abdomen-to-thorax RATIO, which survives the fit pass where a shared
      overall scale would not */
@@ -226,8 +238,8 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
     c.beginPath(); c.moveTo(cx + th * 0.85, cy + th * 0.1); c.lineTo(ax - abL * 0.42, cy + th * 0.16); c.stroke();
   }
   c.fillStyle = shell(c, p, ax, cy + th * 0.1, abL * 0.5);
-  c.beginPath(); c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92), 0.06, 0, TAU); c.fill();
-  rim(c, () => c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92), 0.06, -2.8, 0.3));
+  c.beginPath(); c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92) * BR, 0.06, 0, TAU); c.fill();
+  rim(c, () => c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92) * BR, 0.06, -2.8, 0.3));
   /* ★ WAVE 21 — SHELL. The abdomen is the largest flat area on an insect and
      it carried a plain gradient. Chitin's read is segment seams plus a tight
      specular, NOT texture — an insect's cuticle is smooth, so the fur-style
@@ -235,9 +247,9 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
      fuzzy body: a bumblebee's pile is drawn just below and shell seams under
      fur is a contradiction. */
   if (!spec.fuzzy) {
-    const abTube = ellipseTube(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92), 0.06);
+    const abTube = ellipseTube(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92) * BR, 0.06);
     c.save();
-    c.beginPath(); c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92), 0.06, 0, TAU); c.clip();
+    c.beginPath(); c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92) * BR, 0.06, 0, TAU); c.clip();
     coatMaterial(c, abTube, r, p, 'chitin', { detail: CHITIN_DETAIL });
     c.restore();
   }
@@ -262,13 +274,23 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
   }
 
   /* ── thorax + head ── */
-  c.fillStyle = shell(c, p, cx, cy, th * 1.15);
-  c.beginPath(); c.ellipse(cx, cy, th * 1.15, th * 0.95, 0, 0, TAU); c.fill();
-  rim(c, () => c.ellipse(cx, cy, th * 1.15, th * 0.95, 0, -2.8, 0.3));
-  const hx = cx - th * 1.75, hy = cy - th * 0.12;
-  c.fillStyle = shell(c, p, hx, hy, th * 0.78);
-  c.beginPath(); c.ellipse(hx, hy, th * 0.78, th * 0.70, 0, 0, TAU); c.fill();
-  eyeDot(c, hx - th * 0.30, hy - th * 0.22, th * 0.24);
+  const TW = th * 1.15, TH2 = th * 0.95 * BR;
+  c.fillStyle = shell(c, p, cx, cy, TW);
+  c.beginPath(); c.ellipse(cx, cy, TW, TH2, 0, 0, TAU); c.fill();
+  rim(c, () => c.ellipse(cx, cy, TW, TH2, 0, -2.8, 0.3));
+  /* ★ WAVE 22 — the head scales with `eyes`, and a shielded species tucks it
+     UNDER the pronotum. On a cockroach the head is barely visible from above,
+     which is most of why a cockroach does not read as an ant. */
+  const EY = spec.eyes ?? 1;
+  const hx = cx - th * (spec.shield ? 1.42 : 1.75), hy = cy - th * 0.12;
+  c.fillStyle = shell(c, p, hx, hy, th * 0.78 * EY);
+  c.beginPath(); c.ellipse(hx, hy, th * 0.78 * EY, th * 0.70 * EY, 0, 0, TAU); c.fill();
+  eyeDot(c, hx - th * 0.30 * EY, hy - th * 0.22 * EY, th * 0.24 * EY);
+  if (spec.shield) {
+    c.fillStyle = shell(c, p, cx - th * 0.55, cy - th * 0.1, TW * 0.8);
+    c.beginPath(); c.ellipse(cx - th * 0.62, cy - th * 0.06, TW * 0.82, TH2 * 0.92, 0, 0, TAU); c.fill();
+    rim(c, () => c.ellipse(cx - th * 0.62, cy - th * 0.06, TW * 0.82, TH2 * 0.92, 0, -2.8, 0.3));
+  }
   const ant = spec.antennae ?? 'short';
   if (ant !== 'none') {
     c.strokeStyle = p.dark; c.lineWidth = ant === 'feather' ? 3 : 2.4; c.lineCap = 'round';
@@ -876,8 +898,12 @@ const X = (o: Parameters<typeof sessileBody>[3]): PainterI => (c, g, p, n) => se
 
 export const INVERT_NAME: Record<string, PainterI> = {
   /* ── INSECTS ── */
-  'Ant': I({ hue: '#4a2f22', abdomen: 0.8, waist: true, antennae: 'long' }),
-  'Leafcutter Ant': I({ hue: '#8a4a2a', abdomen: 0.85, waist: true, antennae: 'long' }),
+  /* ★ WAVE 22 — SHAPE, not colour, is what tells these apart. See InsectSpec.
+     An ant: tiny, narrow, a pinched waist and a small head. */
+  'Ant': I({ hue: '#4a2f22', abdomen: 0.72, broad: 0.72, eyes: 0.8, waist: true, antennae: 'long' }),
+  /* a leafcutter is a MAJOR worker — famously big-headed, with the huge
+     mandibular head that does the cutting. That is its whole read. */
+  'Leafcutter Ant': I({ hue: '#8a4a2a', abdomen: 0.80, broad: 0.78, eyes: 1.45, waist: true, antennae: 'long' }),
   'Termite': I({ hue: '#d8c9a8', abdomen: 1.15, antennae: 'short' }),
   'Bee': I({ hue: '#d4a017', abdomen: 0.95, wings: 'lace', antennae: 'short', sting: true, fuzzy: true, pattern: 'bands' }),
   'Honeybee': I({ hue: '#b06a20', abdomen: 0.95, wings: 'lace', antennae: 'short', sting: true, fuzzy: true, pattern: 'bands' }),
@@ -886,22 +912,28 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Wasp': I({ hue: '#eec015', abdomen: 1.15, waist: true, wings: 'lace', antennae: 'short', sting: true, pattern: 'bands', wingScale: 1.6 }),
   'Moth': I({ hue: '#7f7566', abdomen: 1.0, wings: 'open', antennae: 'feather', fuzzy: true }),
   'Butterfly': I({ hue: '#d97328', abdomen: 0.9, wings: 'open', antennae: 'long', pattern: 'spots' }),
-  'Cicada': I({ hue: '#48544e', abdomen: 1.1, wings: 'folded', antennae: 'short' }),
+  /* a cicada is a broad blunt wedge with a very wide head and big wings */
+  'Cicada': I({ hue: '#48544e', abdomen: 1.05, broad: 1.5, eyes: 1.5, wings: 'folded', wingScale: 1.25, antennae: 'short' }),
   'Mantis': I({ hue: '#66a03c', abdomen: 1.25, wings: 'folded', antennae: 'long', raptor: true }),
-  'Grasshopper': I({ hue: '#8f8f4a', abdomen: 1.15, wings: 'folded', antennae: 'short', jumper: true }),
-  'Locust': I({ hue: '#c2a24a', abdomen: 1.15, wings: 'folded', antennae: 'short', jumper: true }),
-  'Cricket': I({ hue: '#3f3226', abdomen: 1.0, wings: 'folded', antennae: 'long', jumper: true }),
-  'Cockroach': I({ hue: '#6b3b1e', abdomen: 1.2, wings: 'folded', antennae: 'long' }),
+  'Grasshopper': I({ hue: '#8f8f4a', abdomen: 1.20, broad: 0.92, wings: 'folded', antennae: 'short', jumper: true }),
+  'Locust': I({ hue: '#c2a24a', abdomen: 1.28, broad: 0.84, wings: 'folded', wingScale: 1.2, antennae: 'short', jumper: true }),
+  /* a cricket is humped and cylindrical, not flat, with very long antennae */
+  'Cricket': I({ hue: '#3f3226', abdomen: 1.02, broad: 1.12, eyes: 0.9, wings: 'folded', antennae: 'long', jumper: true }),
+  /* a cockroach is a FLAT BROAD OVAL whose pronotal shield hides the head —
+     the single most different silhouette in this group, and it had none of it */
+  'Cockroach': I({ hue: '#6b3b1e', abdomen: 1.18, broad: 1.85, eyes: 0.7, shield: true, wings: 'folded', antennae: 'long' }),
   'Aphid': I({ hue: '#a8cf72', abdomen: 1.05, antennae: 'short' }),
   'Thrips': I({ hue: '#cdb464', abdomen: 0.9, wings: 'lace', antennae: 'short' }),
   'Mosquito': I({ hue: '#5c565a', abdomen: 0.95, wings: 'lace', antennae: 'feather' }),
-  'Black Fly': I({ hue: '#33313a', abdomen: 0.8, wings: 'lace', antennae: 'short' }),
-  'Fly': I({ hue: '#4d5257', abdomen: 0.85, wings: 'lace', antennae: 'short' }),
+  /* a fly is mostly EYE, and a black fly is a tiny hunched one */
+  'Black Fly': I({ hue: '#33313a', abdomen: 0.68, broad: 1.15, eyes: 1.6, wings: 'lace', antennae: 'short' }),
+  'Fly': I({ hue: '#4d5257', abdomen: 0.88, broad: 1.3, eyes: 1.9, wings: 'lace', antennae: 'short' }),
   'Stick Insect': I({ hue: '#8f7d4a', abdomen: 2.4, antennae: 'long', stick: true }),
   /* a2 · extremely long splayed middle and hind legs on a narrow boat body */
   'Water Strider': I({ hue: '#3a352d', abdomen: 0.7, antennae: 'long', legSpan: 3.1 }),
   'Giant Water Bug': I({ hue: '#745e33', abdomen: 1.3, antennae: 'short', raptor: true }),
-  'Cold-Adapted Insect': I({ hue: '#3c4249', abdomen: 1.0, antennae: 'short', fuzzy: true }),
+  /* a cold-adapted insect is stout and heavily furred — a bumblebee build */
+  'Cold-Adapted Insect': I({ hue: '#3c4249', abdomen: 0.95, broad: 1.55, eyes: 0.85, antennae: 'short', fuzzy: true }),
   'Insect-Eating Bat': I({ hue: '#7a6455', abdomen: 1.0, wings: 'open', antennae: 'none' }),
   /* ── ARACHNIDS: eight legs, no antennae ── */
   'Spider': A({ hue: '#7b5a3c', }),
@@ -912,7 +944,12 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Scorpion': A({ hue: '#a3762f', big: true, sting: true, claws: true }),
   'Pseudoscorpion': A({ claws: true, scale: 0.92, hue: '#5d4630' }),
   'Deer Tick': A({ hue: '#94402c', big: true }),
-  'Mite': A({ scale: 0.62, hue: '#9a6a4a' }),
+  /* ★ WAVE 22 — a mite read as an ANT. It is not one: it is a tiny round
+     unsegmented arachnid, and the common ones are conspicuously red. Redder, and drawn
+     LARGER: shrinking it first made things worse, 0.60 to 0.51, because a
+     small subject leaves mostly empty canvas and two mostly-empty cards look
+     alike. Portrait scale is invisible when each species is framed alone. */
+  'Mite': A({ scale: 0.95, hue: '#b0442c' }),
   /* ── MYRIAPODS ── */
   'Centipede': M({ flat: true, hue: '#b06a2c' }),
   'Giant Centipede': M({ flat: true, scale: 1.34, segs: 22, hue: '#7d2f28' }),

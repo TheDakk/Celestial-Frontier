@@ -602,6 +602,44 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   BETTER than a random roll because real species genuinely differ. ~100 have one; the rest is
   a data job, not a formula. The finding is written into the source so nobody re-derives a clamp.
 
+- ✅ **D-ART-114 — THE COLOUR AXIS SIX PAINTERS NEVER HAD, and the shape fixes that paid for
+  it (wave 22).** Nick, on being shown the accuracy-vs-legibility trade-off: *"is there any
+  way we can slightly fix it? They are not exactly the same in real life, so there's got to
+  be some kind of compromise."* He was right, and the compromise is the rule below.
+  - **575 organisms were on the random rarity roll purely because of which painter drew
+    them.** `plantBody`, `smallRodent`, `insectBody`, `reptSnake`, `reptLizard` and `primate`
+    had no hue field at all — `plantBody` alone accounted for 314. Adding one moved the
+    reachable count from 4 to 429, and **the catalogue went from 268 to 845 of 1,010
+    organisms carrying a real colour.** Every reachable species is now done; 150 remain
+    behind painters still lacking an axis and 15 are unrouted.
+  - The axis was **proven end-to-end before any colour was written** — one loud probe hue per
+    painter, rendered and looked at, then removed. That also caught that `plantBody`'s new
+    `hue` must colour the FOLIAGE while `fhue` keeps the flower and fruit; conflating those
+    two is what made the original audit report 270 flora as done while their bodies were
+    still random.
+  - ★ **THE COMPROMISE, and it is the rule to carry forward: WHEN TWO SPECIES WILL NOT
+    SEPARATE BY COLOUR, IT IS BECAUSE THEY ARE DRAWN THE SAME SHAPE.** Honest colours took
+    hard look-alike pairs 1 → 9, and seven of the nine were insects: Ant, Leafcutter Ant,
+    Cockroach, Cricket, Cicada, Black Fly, Cold-Adapted Insect. The specs said why — every
+    one was the same body plan with a different `abdomen` length. **The insect family had a
+    LENGTH dial and nothing else**: no width, no head size, no thorax shield, so seven
+    genuinely unalike animals were one silhouette at seven sizes. `broad`, `eyes` and
+    `shield` fixed it (a cockroach is a flat oval whose pronotum hides its head; a leafcutter
+    is a huge-headed major worker; a fly is mostly eye) and took hard pairs **9 → 2**. Wild
+    Thyme became the low woody sub-shrub it actually is rather than an erect herb, and the
+    Mite became the round red arachnid it actually is. **Final: 0 hard pairs — better than
+    the baseline of 1 this arc has carried since wave 12.**
+  - ⚠ **A COUNTER-INTUITIVE ONE WORTH REMEMBERING: shrinking a species makes it MORE
+    confusable, not less.** The Mite was first drawn smaller, which is truer to life, and its
+    distance to Ant got *worse* (0.60 → 0.51) — a small subject leaves mostly empty canvas
+    and two mostly-empty cards look alike to the fingerprint. Drawn larger it separates
+    cleanly. Portrait scale is invisible anyway when each species is framed alone, which the
+    bird painter had already learned in wave 8.
+  - **Confusable settled at 1,202 (from 478) and is re-baselined.** Colouring 429 more
+    organisms honestly means ~300 plants that really are green now measure as similar. The
+    hard ratchet is the load-bearing guarantee and it is at zero; the confusable tier is a
+    watch-list, and the shape rule above is how to work it down when a pair matters.
+
 - ✅ **D-ART-113 — SPECIES-TRUE COLOUR, first 148 organisms (wave 21).** Nick ratified the rule
   ("I agree with the species colors"); D-ART-108 had already established that no FORMULA can
   deliver it, so this is the per-species route: a hue read off the real animal, one organism
