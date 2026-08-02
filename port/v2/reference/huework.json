@@ -1,62 +1,5 @@
 {
  "fixable": {
-  "sessileBody": [
-   "Coral",
-   "Cold-Water Coral",
-   "Deep-Water Coral",
-   "Sea Cucumber"
-  ]
- },
- "blocked": {
-  "faunaLarva": [
-   "Fly Larvae",
-   "Cave Cricket"
-  ],
-  "faunaWingedInsect": [
-   "Dragonfly",
-   "Damselfly",
-   "Mayfly",
-   "Caddisfly",
-   "Stonefly",
-   "Dobsonfly",
-   "Scorpionfly"
-  ],
-  "faunaSpringtail": [
-   "Springtail"
-  ],
-  "faunaBeetle": [
-   "Ladybug",
-   "Firefly",
-   "Diving Beetle",
-   "Dung Beetle",
-   "Carrion Beetle",
-   "Water Beetle",
-   "Beetle"
-  ],
-  "faunaFiddler": [
-   "Fiddler Crab"
-  ],
-  "faunaHorseshoe": [
-   "Horseshoe Crab"
-  ],
-  "faunaFlatfish": [
-   "Flounder",
-   "Halibut",
-   "Mudskipper"
-  ],
-  "faunaAngelfish": [
-   "Angelfish"
-  ],
-  "faunaLionfish": [
-   "Lionfish"
-  ],
-  "faunaCephalopod": [
-   "Octopus",
-   "Giant Octopus",
-   "Cuttlefish",
-   "Squid",
-   "Giant Squid"
-  ],
   "reptSnake": [
    "Cobra",
    "Mamba",
@@ -99,33 +42,6 @@
    "Wall Lizard",
    "Coastal Lizard",
    "Lizard"
-  ],
-  "reptTurtle": [
-   "Tortoise",
-   "Turtle",
-   "Pond Turtle",
-   "Box Turtle",
-   "Snapping Turtle",
-   "Softshell Turtle",
-   "Sea Turtle"
-  ],
-  "amphFrog": [
-   "Frog",
-   "Tree Frog",
-   "Glass Frog",
-   "Wood Frog",
-   "Cave Frog",
-   "Bullfrog",
-   "Toad"
-  ],
-  "amphSalamander": [
-   "Salamander",
-   "Giant Salamander",
-   "Alpine Salamander",
-   "Blind Salamander",
-   "Newt",
-   "Olm",
-   "Axolotl"
   ],
   "smallRodent": [
    "Mouse",
@@ -176,45 +92,6 @@
    "Monkey",
    "Lemur",
    "Aye-Aye"
-  ],
-  "marineRay": [
-   "Manta Ray",
-   "Eagle Ray",
-   "Stingray",
-   "Ray"
-  ],
-  "marineStar": [
-   "Starfish",
-   "Brittle Star",
-   "Sand Dollar"
-  ],
-  "marineUrchin": [
-   "Sea Urchin"
-  ],
-  "marineAnemone": [
-   "Sea Anemone",
-   "Tube Worm",
-   "Giant Tube Worm"
-  ],
-  "floraRafflesia": [
-   "Rafflesia"
-  ],
-  "floraPineapple": [
-   "Pineapple"
-  ],
-  "floraJoshua": [
-   "Joshua Tree"
-  ],
-  "floraCotton": [
-   "Cotton"
-  ],
-  "floraDragonFruit": [
-   "Dragon Fruit"
-  ],
-  "floraBroadLeaf": [
-   "Rhubarb",
-   "Tobacco",
-   "Cabbage"
   ],
   "plantBody": [
    "Apple",
@@ -559,6 +436,129 @@
    "Giant Water Bug",
    "Cold-Adapted Insect",
    "Insect-Eating Bat"
+  ],
+  "sessileBody": [
+   "Coral",
+   "Cold-Water Coral",
+   "Deep-Water Coral",
+   "Sea Cucumber"
+  ]
+ },
+ "blocked": {
+  "faunaLarva": [
+   "Fly Larvae",
+   "Cave Cricket"
+  ],
+  "faunaWingedInsect": [
+   "Dragonfly",
+   "Damselfly",
+   "Mayfly",
+   "Caddisfly",
+   "Stonefly",
+   "Dobsonfly",
+   "Scorpionfly"
+  ],
+  "faunaSpringtail": [
+   "Springtail"
+  ],
+  "faunaBeetle": [
+   "Ladybug",
+   "Firefly",
+   "Diving Beetle",
+   "Dung Beetle",
+   "Carrion Beetle",
+   "Water Beetle",
+   "Beetle"
+  ],
+  "faunaFiddler": [
+   "Fiddler Crab"
+  ],
+  "faunaHorseshoe": [
+   "Horseshoe Crab"
+  ],
+  "faunaFlatfish": [
+   "Flounder",
+   "Halibut",
+   "Mudskipper"
+  ],
+  "faunaAngelfish": [
+   "Angelfish"
+  ],
+  "faunaLionfish": [
+   "Lionfish"
+  ],
+  "faunaCephalopod": [
+   "Octopus",
+   "Giant Octopus",
+   "Cuttlefish",
+   "Squid",
+   "Giant Squid"
+  ],
+  "reptTurtle": [
+   "Tortoise",
+   "Turtle",
+   "Pond Turtle",
+   "Box Turtle",
+   "Snapping Turtle",
+   "Softshell Turtle",
+   "Sea Turtle"
+  ],
+  "amphFrog": [
+   "Frog",
+   "Tree Frog",
+   "Glass Frog",
+   "Wood Frog",
+   "Cave Frog",
+   "Bullfrog",
+   "Toad"
+  ],
+  "amphSalamander": [
+   "Salamander",
+   "Giant Salamander",
+   "Alpine Salamander",
+   "Blind Salamander",
+   "Newt",
+   "Olm",
+   "Axolotl"
+  ],
+  "marineRay": [
+   "Manta Ray",
+   "Eagle Ray",
+   "Stingray",
+   "Ray"
+  ],
+  "marineStar": [
+   "Starfish",
+   "Brittle Star",
+   "Sand Dollar"
+  ],
+  "marineUrchin": [
+   "Sea Urchin"
+  ],
+  "marineAnemone": [
+   "Sea Anemone",
+   "Tube Worm",
+   "Giant Tube Worm"
+  ],
+  "floraRafflesia": [
+   "Rafflesia"
+  ],
+  "floraPineapple": [
+   "Pineapple"
+  ],
+  "floraJoshua": [
+   "Joshua Tree"
+  ],
+  "floraCotton": [
+   "Cotton"
+  ],
+  "floraDragonFruit": [
+   "Dragon Fruit"
+  ],
+  "floraBroadLeaf": [
+   "Rhubarb",
+   "Tobacco",
+   "Cabbage"
   ],
   "crabBody": [
    "Crab",

@@ -142,3 +142,40 @@ export function ellipsePts(cx: number, cy: number, rx: number, ry: number, rot: 
   }
   return out;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ★ THE SPECIES HUE, in one place.
+
+   D-ART-108 established that no formula can naturalise the Earth palette —
+   the only thing that works is a per-species colour read off the real animal.
+   D-ART-113 then started applying those colours, and hit a wall: only the
+   painters that happened to have a `hue` field could take one, so 575
+   organisms were stuck on the random rarity roll purely because of which
+   painter drew them.
+
+   This is the axis those painters were missing. It takes the rolled palette
+   and a hex, and returns the palette that species should actually have.
+
+   ⚠ FIVE NEAR-IDENTICAL COPIES OF THIS ALREADY EXIST — `hued` in
+   invertoverrides, `pal` in quadrupedoverrides, and inline blocks in
+   faunaBird, fishBody and marineShell. They are NOT unified here, and that is
+   deliberate: their lit/dark multipliers genuinely differ (1.28 vs 1.30 vs
+   1.32, 0.42/0.44/0.48 vs a flat 0.45), so folding them together would
+   silently restyle hundreds of already-signed-off organisms to save a few
+   lines. New painters use this one; the old ones keep their own until there
+   is a reason to re-bless them.
+   ═══════════════════════════════════════════════════════════════════════════ */
+export interface HuePal { base: string; cr: number; cg: number; cb: number; lit: string; dark: string }
+
+/** the rolled palette, replaced by the species' own colour. `undefined` hue
+    means "this species has no reference colour yet" and the roll stands. */
+export function speciesHue<T extends HuePal>(rolled: T, hue?: string): T {
+  if (!hue) return rolled;
+  const n = parseInt(hue.slice(1), 16);
+  const cr = (n >> 16) & 255, cg = (n >> 8) & 255, cb = n & 255;
+  const rgb = (a: number, b: number, d: number): string =>
+    'rgb(' + (a | 0) + ',' + (b | 0) + ',' + (d | 0) + ')';
+  return { ...rolled, base: hue, cr, cg, cb,
+    lit: rgb(Math.min(255, cr * 1.30), Math.min(255, cg * 1.29), Math.min(255, cb * 1.27)),
+    dark: rgb(cr * 0.43, cg * 0.45, cb * 0.48) };
+}
