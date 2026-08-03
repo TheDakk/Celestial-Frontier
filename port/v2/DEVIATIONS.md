@@ -735,6 +735,37 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   deleting one fingerprint from the lock makes the battery report `5/6` and exit non-zero, so
   it is proven to PROPAGATE a failure rather than merely to run one.
 
+- ✅ **D-ART-120 — THE SILHOUETTE CHANNEL: the drift guard can finally see a limb (wave 27).**
+  Nick's call, on being shown that the guard was blind to exactly the work remaining.
+  - **A second channel, not a replacement.** A 64×64 one-bit coverage mask, 512 bytes —
+    smaller than the RGB grid it accompanies. Drift now takes `max(colour, shape)`. The
+    16×16 RGB grid is deliberately UNCHANGED: its thresholds are calibrated against Nick's
+    own judgement of 115 real pairs and 1,236 live pair verdicts depend on them, so raising
+    its resolution would have silently recalibrated all of that. The look-alike ratchets keep
+    reading the grid they were tuned on; only DRIFT gains the new sensitivity.
+  - **Controlled, and the first version failed the control.** It thresholded ink at
+    `r+g+b > 96`; these portraits sit on a painted VIGNETTE rather than on black, so the
+    whole frame counted as subject, every mask came out identical, and the channel reported
+    zero drift for a limb change — the precise failure it existed to fix. Now measured
+    against the frame's own corner pixel, the method the proportion pass already used.
+  - **Measured end to end:** suppressing one pair of crocodilian legs used to move **0 of
+    1,250** assets. It now moves 3 (Caiman 2.93, Alligator 1.74, Crocodile 1.18). Gharial
+    still slips under — its limbs are tiny against a very long body — so the channel is an
+    improvement, not a cure. Five new selftest controls, both directions, including "a
+    one-pixel-wide limb moving IS drift" and "a single flipped pixel is NOT".
+
+- ⚠ **D-ART-117 CORRECTION — HALF THAT DIAGNOSIS WAS WRONG (wave 27).** Wave 26 reported two
+  bugs in the crocodilian limbs. The splay sign was real and is fixed. The second claim —
+  "both calls pass `far=true`, so the near pair is never drawn" — **was false**: the near
+  pair is drawn forty lines further down, after the body, and four legs always reached the
+  canvas. What made them read as two was the splay folding each pair onto its partner.
+  - **Why it survived a look at the render:** the "fix" added a duplicate near pair, which
+    changed nothing visible, so the picture after looked exactly like the picture the real
+    fix produced. It was caught only when a negative control removed the duplicate and the
+    render stayed at four legs.
+  - **The lesson, now in the code:** read EVERY call site of a helper before claiming what it
+    never does. A grep that stops at the first hit is a diagnosis with a hole in it.
+
 - ⚠ **D-ART-110b — THE BLIND SPOT IS WIDER THAN "TEXTURE": THE FINGERPRINT IS AREA-WEIGHTED
   (wave 26).** Measured, not assumed. A single wave rebuilt the limbs of four crocodilians
   (two legs crossing in an X became four sprawled legs), put a large jumping femur onto three

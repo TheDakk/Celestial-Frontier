@@ -336,6 +336,54 @@ async function run(): Promise<void> {
     return btoa(bin);
   };
 
+  /* ═══ ★ D-ART-120 — THE SILHOUETTE CHANNEL ═══════════════════════════════
+     The 16×16 RGB grid above is a BOX FILTER, so it is area-weighted, and that
+     makes it blind to thin structures however wrong they are. Measured, not
+     assumed: a wave that rebuilt four crocodilians' legs (two crossing in an X
+     became four sprawled limbs) and put a large jumping femur on three
+     orthopterans moved EXACTLY ZERO assets. A leg is dark, narrow, and covers
+     perhaps a percent of its cell — it averages away. Limbs, tails, bills,
+     antennae and tusks are most of what an anatomy audit is about, so the
+     guard was blind to the bulk of the remaining work.
+
+     The fix is a separate, much finer channel that measures SHAPE rather than
+     mass: a 64×64 one-bit coverage mask. At one bit per pixel it is 512 bytes
+     — smaller than the RGB grid it accompanies — and a moved leg flips a
+     hundred bits where it shifted a colour average by a fraction of a unit.
+
+     ⚠ IT IS DELIBERATELY A SECOND CHANNEL, NOT A REPLACEMENT. The RGB grid's
+     thresholds (WATCH 2.5 / HARD 0.6 / CONFUSABLE 1.5) are calibrated against
+     Nick's own judgement of 115 real pairs, and 1,236 pair verdicts depend on
+     them. Raising its resolution would silently recalibrate all of that. So
+     the look-alike ratchets keep reading the grid they were tuned on, and only
+     DRIFT gains the new sensitivity. */
+  const SIL = 64;
+  const scv = document.createElement('canvas');
+  scv.width = SIL; scv.height = SIL;
+  const sg = scv.getContext('2d', { willReadFrequently: true })!;
+  const silhouettes: Record<string, string> = {};
+  const silhouette = (im: HTMLImageElement): string => {
+    sg.clearRect(0, 0, SIL, SIL);
+    sg.drawImage(im, 0, 0, SIL, SIL);
+    const d = sg.getImageData(0, 0, SIL, SIL).data;
+    /* ⚠ INK IS MEASURED AGAINST THE FRAME'S OWN CORNER, not a fixed brightness.
+       The first cut thresholded on r+g+b > 96, and the negative control caught
+       it immediately: these portraits sit on a painted VIGNETTE, not on black,
+       so a fixed cut marked the whole frame as subject and every mask came out
+       identical — the channel reported zero drift for a limb change, which is
+       the exact failure it was built to fix. The proportion pass had already
+       solved this the right way; this is the same method. */
+    const br = d[0]!, bgc = d[1]!, bb = d[2]!;
+    let bin = '', byte = 0, n = 0;
+    for (let i = 0; i < SIL * SIL; i++) {
+      const dr = d[i * 4]! - br, dg = d[i * 4 + 1]! - bgc, db = d[i * 4 + 2]! - bb;
+      byte = (byte << 1) | (dr * dr + dg * dg + db * db > 1500 ? 1 : 0);
+      if (++n === 8) { bin += String.fromCharCode(byte); byte = 0; n = 0; }
+    }
+    if (n) bin += String.fromCharCode(byte << (8 - n));
+    return btoa(bin);
+  };
+
   /* contact sheets: a grid per set, portraits at 96px */
   const sheetUrls: Record<string, string> = {};
   for (const sh of sheets) {
@@ -358,7 +406,9 @@ async function run(): Promise<void> {
            silently overwrote the other half and the lock covered neither.
            The index disambiguates. (PROCESS_LAWS round 9: a key collision
            is a green-but-wrong state, and it looks exactly like a pass.) */
-        fingerprints[sh.key + '|' + cell.name + (sh.key === 'procedural' ? '#' + i : '')] = fingerprint(im);
+        const fpKey = sh.key + '|' + cell.name + (sh.key === 'procedural' ? '#' + i : '');
+        fingerprints[fpKey] = fingerprint(im);
+        silhouettes[fpKey] = silhouette(im);
       } else { g.fillStyle = '#5a1f1f'; g.fillRect(x + 2, y + 2, C - 4, C - 4); g.fillStyle = '#070a12'; }
       g.fillStyle = '#8fa3c4'; g.font = '8px system-ui'; g.textAlign = 'center';
       g.fillText(cell.name.slice(0, 18), x + C / 2, y + C + 9);
@@ -392,5 +442,6 @@ async function run(): Promise<void> {
   const clipped = [...new Set(CLIPPED)];
   (window as unknown as Record<string, unknown>).__CF_AUDIT__ = { done: true, total, ok, fails, dupes, clipped, sheetUrls };
   (window as unknown as Record<string, unknown>).__CF_FINGERPRINTS__ = fingerprints;
+  (window as unknown as Record<string, unknown>).__CF_SILHOUETTES__ = silhouettes;
 }
 void run();
