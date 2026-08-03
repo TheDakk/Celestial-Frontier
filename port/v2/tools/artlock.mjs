@@ -410,6 +410,44 @@ const CONFUSABLE = Number(val('confusable', '1.5'));
   }
   lock.hardCount = Math.min(hard.length, wasHard ?? hard.length);
   const was = lock.sameCount;
+  /* ★ WAVE 42, CODE PASS H1 — THE CONFUSABLE RATCHET WAS UNREACHABLE UNLESS THE
+     WATCH COUNT ROSE. Everything below from `before` to the nowConf FAIL used to
+     live inside `else if (pairs.length > was)` — so a change that pushed pairs
+     from the 1.5–2.5 band DOWN under the confusable line, without adding new
+     WATCH pairs, skipped the gate entirely and could even print "Tightened".
+     The comment on the gate says the total "cannot be gamed"; it could, by any
+     change that made things worse only among pairs already being watched.
+     Hoisted to run on EVERY [SAME] pass, whatever the WATCH count did.
+     Negative-controlled both ways (the project law): a doctored lock whose
+     stored fingerprints hide a confusable pair — with the WATCH count held
+     level so the OLD code provably took the unchecked branch — now FAILs, and
+     the undoctored lock still passes. */
+  if (was != null) {
+    const key = (a, b) => a + ' ' + b;
+    const beforeConf = new Set();
+    for (let i = 0; i < earth.length; i++) {
+      for (let j = i + 1; j < earth.length; j++) {
+        if (dist(lock.fp[earth[i]], lock.fp[earth[j]]) < CONFUSABLE) beforeConf.add(key(earth[i], earth[j]));
+      }
+    }
+    const newlyConf = pairs.filter((q) => q[2] < CONFUSABLE && !beforeConf.has(key(q[0], q[1])));
+    let nowConf = 0;
+    for (const q of pairs) if (q[2] < CONFUSABLE) nowConf++;
+    /* (the old code recomputed wasConf with a second O(n^2) loop identical to
+       the one above — LOW finding, folded into beforeConf.size) */
+    const wasConf = beforeConf.size;
+    console.log('   confusable (<' + CONFUSABLE + ') ' + wasConf + ' -> ' + nowConf
+      + '  ·  ' + newlyConf.length + ' newly confusable');
+    for (const [a, b, dd] of newlyConf.slice(0, 8)) {
+      console.log('        ' + dd.toFixed(2) + '  ' + a.slice(a.indexOf('|') + 1) + '  ~  ' + b.slice(b.indexOf('|') + 1));
+    }
+    if (nowConf > wasConf) {
+      console.error('   FAIL: genuinely confusable pairs went ' + wasConf + ' -> ' + nowConf + '.');
+      console.error('     Everything moving TOGETHER is what a global pass looks like.');
+      console.error('     Derive each from its own reference row (D-ART-83).');
+      bad = 1;
+    }
+  }
   if (was == null) {
     console.log('   (no ratchet recorded yet — this run sets it at ' + pairs.length + ')');
     lock.sameCount = pairs.length;
@@ -425,54 +463,12 @@ const CONFUSABLE = Number(val('confusable', '1.5'));
        only on the part where this metric can actually discriminate: a pair
        that THIS CHANGE pushed below the confusable line. HARD, above, is the
        other real gate. A global pass fails both; noise fails neither. */
-    const key = (a, b) => a + ' ' + b;
-    const before = new Set();
-    for (let i = 0; i < earth.length; i++) {
-      for (let j = i + 1; j < earth.length; j++) {
-        if (dist(lock.fp[earth[i]], lock.fp[earth[j]]) < WATCH) before.add(key(earth[i], earth[j]));
-      }
-    }
-    /* ⚠ THIS REPORTED "0 newly so" WHILE FAILING FOR A RISE OF 2, which is a
-       self-contradicting message and therefore useless. The bug: `created` was
-       "newly under WATCH", then filtered by CONFUSABLE — so a pair already
-       under watch at 1.6 that the change pushed to 1.4 was invisible to it,
-       even though that is exactly the event being gated. Ask the question the
-       gate is actually asking: newly under CONFUSABLE. */
-    const created = pairs.filter((q) => !before.has(key(q[0], q[1])));
-    const beforeConf = new Set();
-    for (let i = 0; i < earth.length; i++) {
-      for (let j = i + 1; j < earth.length; j++) {
-        if (dist(lock.fp[earth[i]], lock.fp[earth[j]]) < CONFUSABLE) beforeConf.add(key(earth[i], earth[j]));
-      }
-    }
-    const newlyConf = pairs.filter((q) => q[2] < CONFUSABLE && !beforeConf.has(key(q[0], q[1])));
-    /* ⚠ AND THE GATE WAS MIS-SPECIFIED. It failed on any pair the change pushed
-       below CONFUSABLE while ignoring every pair the same change pushed APART —
-       so a wave that halved the identical-looking pairs (19 -> 9) was blocked by
-       21 that had drifted the other way. That is not what Nick asked the net to
-       stop; a global pass collapses the catalogue NET, and this one improved it
-       net. Gate on the TOTAL under the confusable line, which cannot be gamed:
-       everything moving together drives it sharply up. The created list is
-       still printed, because it is the worklist. */
-    let nowConf = 0;
-    for (const q of pairs) if (q[2] < CONFUSABLE) nowConf++;
-    let wasConf = 0;
-    for (let i = 0; i < earth.length; i++) {
-      for (let j = i + 1; j < earth.length; j++) {
-        if (dist(lock.fp[earth[i]], lock.fp[earth[j]]) < CONFUSABLE) wasConf++;
-      }
-    }
-    console.log('   confusable (<' + CONFUSABLE + ') ' + wasConf + ' -> ' + nowConf
-      + '  ·  ' + newlyConf.length + ' newly confusable');
-    for (const [a, b, dd] of (newlyConf.length ? newlyConf : created).slice(0, 8)) {
-      console.log('        ' + dd.toFixed(2) + '  ' + a.slice(a.indexOf('|') + 1) + '  ~  ' + b.slice(b.indexOf('|') + 1));
-    }
-    if (nowConf > wasConf) {
-      console.error('   FAIL: genuinely confusable pairs went ' + wasConf + ' -> ' + nowConf + '.');
-      console.error('     Everything moving TOGETHER is what a global pass looks like.');
-      console.error('     Derive each from its own reference row (D-ART-83).');
-      bad = 1;
-    }
+    /* ★ WAVE 42 — the WATCH-count rise is now REPORT-ONLY. The real gate (the
+       confusable total, hoisted above) already ran; this branch's remaining job
+       is the history in its comments and the worklist ordering. The 2026-08-02
+       lessons stand: a count of threshold crossings is not a measurement, and
+       the gate must be on the net confusable TOTAL, not on pairs created. */
+    console.log('   (watch count rose ' + was + ' -> ' + pairs.length + ' — reported, not gated; see D-ART-97)');
   } else {
     if (pairs.length < was) console.log('   ratchet: ' + was + ' → ' + pairs.length + ' pairs. Tightened.');
     lock.sameCount = pairs.length;

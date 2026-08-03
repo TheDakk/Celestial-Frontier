@@ -95,7 +95,7 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Gannet': B({ legs: 0.016, bill: 'long', size: 0.92, hue: '#eef0f2' }),
   'Booby': B({ legs: 0.020, bill: 'long', size: 0.84, hue: '#dfe3e8' }),
   'Tropicbird': B({ legs: 0.012, bill: 'long', size: 0.70, tail: 'long', hue: '#f0f2f5' }),
-  'Frigatebird': B({ legs: 0.012, bill: 'hook', size: 0.96, tail: 'forked', hue: '#22242a' }),
+  'Frigatebird': B({ legs: 0.012, bill: 'hook', size: 0.96, tail: 'forked', wings: 'soaring', elong: 1.25, hue: '#22242a' }),
   'Seabird': B({ legs: 0.024, bill: 'long', size: 0.76, hue: '#cfd5dc' }),
   /* ── shorebirds and marsh ── */
   'Plover': B({ legs: 0.045, bill: 'short', size: 0.50, hue: '#8d8778', plump: 1.16, elong: 0.92, bib: '#f0ece2' }),

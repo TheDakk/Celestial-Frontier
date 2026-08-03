@@ -596,8 +596,15 @@ export function coatMaterial(
     const perRow = Math.round(17 * Math.min(1.5, detail));
     /* drawn ventral → dorsal so each row overlaps the one beneath it, the way
        real plumage lies. Reverse this and the bird looks like it was assembled
-       backwards, because the shadow edges end up on the wrong side. */
-    for (let ri = rows; ri >= 0; ri--) {
+       backwards, because the shadow edges end up on the wrong side.
+       ★ WAVE 42, CODE PASS H2 — AND IT WAS REVERSED, for every feathered bird
+       since wave 21. `ri = rows … ri--` starts at phi=+1.45 (dorsal; torso.ts
+       fixes the convention) and finishes ventral, so under the painter's
+       algorithm the ventral rows landed ON TOP — the exact failure the comment
+       above warns about, shipped beside it. The comment stated the intent; the
+       loop was the bug. Ascending now: ri=0 paints ventral first, dorsal lands
+       last and shingles downward. */
+    for (let ri = 0; ri <= rows; ri++) {
       const phi = -1.40 + (ri / rows) * 2.85;
       for (let k = 0; k < perRow; k++) {
         /* the half-feather stagger, plus a little jitter so the tract is

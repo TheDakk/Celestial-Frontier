@@ -321,7 +321,14 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
   const stemCol = `rgb(${Math.max(30, p.cr * 0.5 | 0)},${Math.max(34, p.cg * 0.42 + 24 | 0)},${Math.max(24, p.cb * 0.35 | 0)})`;
   /* ★ D-ART-125 — a TREE's trunk is wood, not leaf. Herbs and vines keep the
      green stem they should have; only a woody habit takes bark. */
-  const woody = spec.habit === 'tree' || spec.habit === 'shrub';
+  /* ★ WAVE 42, CODE PASS H4 — THE D-ART-125 BARK FIX NEVER REACHED THE PALMS.
+     `woody` excluded 'palm', so barkCol resolved to stemCol — the FOLIAGE
+     green — for Papaya, Coconut, Date Palm, Banana, Plantain and four more,
+     nine species stroking a grass-green trunk under the comment that declared
+     the problem fixed. A palm's trunk is wood. (Same partial-fix shape as the
+     turtle legs and the wave-13 ear: the fix stopped at the boundary of the
+     case it was looking at.) */
+  const woody = spec.habit === 'tree' || spec.habit === 'shrub' || spec.habit === 'palm';
   const barkCol = spec.bark ?? (woody ? '#6b4a2e' : stemCol);
   const topY = base - H;
 
@@ -408,7 +415,11 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     for (let k = 0; k < stems; k++) {
       const s = (k - (stems - 1) / 2) / stems;
       const tipX = cx + s * S * 0.16 * spread * 2, tipY = base - H * (0.72 + r() * 0.28);
-      c.strokeStyle = stemCol; c.lineWidth = S * 0.010; c.lineCap = 'round';
+      /* ★ WAVE 42 — the shrub's stems stroked stemCol while `woody` computed a
+         brown barkCol for them two hundred lines up: the value was built and
+         never delivered, so any future `bark:` on a shrub row was silently
+         inert (the code pass's M-flora2-304). Delivered. */
+      c.strokeStyle = barkCol; c.lineWidth = S * 0.010; c.lineCap = 'round';
       c.beginPath(); c.moveTo(cx + s * S * 0.02, base); c.quadraticCurveTo(cx + s * S * 0.10, base - H * 0.5, tipX, tipY); c.stroke();
       for (let i = 0; i < leafN; i++) {
         const u = 0.25 + (i / leafN) * 0.75;
@@ -698,6 +709,34 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     if (spec.fruit && spec.fruit !== 'none') {
       const wd = wands[0]!;
       drawFruit(c, p, wd.tipX, base - (base - wd.tipY) * 0.92, S * 0.032, spec.fruit, spec.fhue, r);
+    }
+  }
+  /* ★ WAVE 42, CODE PASS H3 — THE THORNS WERE INERT FOR 12 OF THEIR 13 SETTERS.
+     The only `spec.thorns` read sat inside the succulent NON-pad (ribbed
+     column) branch, so Durian, Mesquite, Sea Buckthorn, Acacia, Rattan,
+     Blackberry, Raspberry, Gooseberry, Rose Hip, Castor Bean, Agave and
+     Prickly Pear all declared thorns and drew none — only Barrel Cactus Fruit
+     ever reached the reader. visualaudit.json had asked for Mesquite's spines
+     by name. A field read for one of thirteen setters is the nosePad defect at
+     larger scale (D-ART-100, read-but-not-for-its-setters).
+     This post-pass runs for the STEM architectures, where a node thorn is
+     anatomically right: paired spines along the lower trunk/stems, leaning
+     out and slightly down, in the pale keratin tone thorns actually have.
+     The succulent column keeps its own pass (guarded out here); Agave's
+     leaf-margin teeth and Prickly Pear's pad areoles are DIFFERENT anatomy
+     and are recorded open rather than faked with stem spines. */
+  if (spec.thorns && spec.habit !== 'succulent' && spec.habit !== 'rosette') {
+    const tr = rngF(g, name, 0x7409);
+    c.strokeStyle = '#ded2b2'; c.lineWidth = Math.max(1.4, S * 0.0042); c.lineCap = 'round';
+    const nT = spec.habit === 'tree' ? 14 : 20;
+    for (let i = 0; i < nT; i++) {
+      const u = 0.06 + tr() * (spec.habit === 'tree' ? 0.42 : 0.66);
+      const s = tr() < 0.5 ? -1 : 1;
+      /* follow the same central-stem drift the habits themselves use */
+      const sx = cx + lean * S * 0.05 * u + s * S * (spec.habit === 'shrub' ? 0.010 + tr() * 0.05 : 0.008);
+      const sy = base - H * u;
+      c.beginPath(); c.moveTo(sx, sy);
+      c.lineTo(sx + s * S * 0.020, sy + S * 0.006); c.stroke();
     }
   }
 }
