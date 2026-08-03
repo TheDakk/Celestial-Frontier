@@ -602,6 +602,50 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   BETTER than a random roll because real species genuinely differ. ~100 have one; the rest is
   a data job, not a formula. The finding is written into the source so nobody re-derives a clamp.
 
+- ✅ **D-ART-116 — THE MATERIAL LAYER REACHES THE PLANTS AND THE FUNGI (wave 25).** Flora were
+  the last flat gradients in the catalogue — ~330 of them — and that is the worse half of the
+  partial-material problem: a flat leaf beside a furred wolf reads as *unfinished*, not as
+  different.
+  - **A leaf's material is VENATION, not texture.** A midrib alone says "leaf-shaped"; the
+    laterals branching off it and dying before the margin are what say "leaf" (a vein drawn
+    all the way to the edge reads as a crack). `leafSurface()` adds those plus the gloss along
+    the lit side of the midrib. Blade grasses get PARALLEL veins rather than a branching net —
+    a real monocot/dicot difference that also stops a grass reading as a small broadleaf.
+  - It lives in `surface.ts`, not `skin.ts`, and deliberately takes plain local geometry
+    rather than a `Tube`: a leaf is a flat blade drawn in its own rotated frame, so the
+    swept-circle machinery the animals use does not apply.
+  - **Fungi needed far less** — gills, pores and fibrils were already modelled in waves 14–18.
+    The one thing missing was that a cap is genuinely slightly WET, which a flat radial
+    gradient cannot say. `capSheen()` is a tight off-centre highlight that falls off fast.
+  - Also fixed: **Rhubarb was rendering entirely scarlet.** `hue` is the FOLIAGE axis and
+    rhubarb leaves are green — only the stalks are red, which the row already said via
+    `petiole`.
+  - ⚠ **The drift guard reported 6 changed assets for a pass that touched ~330 plants.** That
+    is D-ART-110 behaving exactly as documented — a 16×16 fingerprint cannot resolve venation
+    — so this wave was verified BY EYE, which is the recorded procedure for material work.
+    Do not read a small drift number here as "it did not land".
+
+- ✅ **D-ART-115 — THE COLOUR TAIL, CLOSED AT THE CALL SITE (wave 24).** 992 of 1,010
+  organisms now carry a real colour (973 explicit, 19 species-true by construction).
+  - **Why not forty more painter edits.** The remainder was a long tail: ~50 painters, most
+    covering ONE species. Forty signature changes to colour forty organisms is the wrong
+    trade and forty chances to declare a field nothing reads. `speciesHue(p, '#rrggbb')` at
+    the call site does the same job in one line per species — the trick 11 microbes have used
+    since wave 18 — and `tools/applytints.mjs` either produces a call with the tint in it or
+    refuses. It refuses a painter that takes no `Pal` at all rather than guessing.
+  - Three bugs in that tooling, all found by LOOKING rather than by a gate: it matched per
+    LINE when these tables pack several species per row; it wrapped a hard-coded `p` when the
+    CANON table names its palette `pp` (that alone refused 14 tintable species, including
+    every bat); and — the real one — **the dart frog rendered RED when the row said blue.**
+    `faunaDartFrog` anchors 88% toward its own aposematic colour, so the tint was inert.
+    Eleven species sit behind painters that anchor a hardcoded colour, which IS species-true
+    work from an earlier wave; their tints are reverted rather than left looking meaningful.
+  - ★ **`huegap` has now been wrong SIX times about what counts as "already coloured"** —
+    `fhue:`, the RGB-array `hue:`, `tint()`, painters that take no palette, `speciesHue()`,
+    and anchored palettes. Every spelling is listed in the comment there with what it cost.
+    **The list is the deliverable: extend it, do not re-derive it.** Twice the error
+    overstated the work (270 flora, 11 microbes) and twice it caused a bad write.
+
 - ✅ **D-ART-114 — THE COLOUR AXIS SIX PAINTERS NEVER HAD, and the shape fixes that paid for
   it (wave 22).** Nick, on being shown the accuracy-vs-legibility trade-off: *"is there any
   way we can slightly fix it? They are not exactly the same in real life, so there's got to
