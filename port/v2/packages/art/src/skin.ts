@@ -182,6 +182,10 @@ export function coatBars(c: Ctx, t: Tube, r: RNG, p: Coatable, o: {
   count?: number; rgb?: [number, number, number]; width?: number;
   phiEnd?: number; phiTop?: number; lean?: number; forkRate?: number;
   hard?: boolean; alpha?: number;
+  /** ★ wave 39 — restrict the bars to a stretch of the body (0 rump .. 1
+      shoulder). The okapi is banded on its HINDQUARTERS only, and there was
+      no way to say that: coatBars always spanned the whole animal. */
+  u0?: number; u1?: number;
 } = {}): void {
   const count = o.count ?? 17;
   const dark = o.rgb ?? [22, 15, 9];
@@ -232,7 +236,8 @@ export function coatBars(c: Ctx, t: Tube, r: RNG, p: Coatable, o: {
   };
 
   for (let i = 0; i < count; i++) {
-    const u0 = 0.04 + (i / Math.max(1, count - 1)) * 0.9 + (r() - 0.5) * 0.022;
+    const zA = o.u0 ?? 0.04, zB = o.u1 ?? 0.94;
+    const u0 = zA + (i / Math.max(1, count - 1)) * (zB - zA) + (r() - 0.5) * 0.022;
     const wScale = 0.7 + r() * 0.7;
     const pEnd = phiEnd + (r() - 0.5) * 0.35;
     band(u0, wScale, phiTop + r() * 0.12, pEnd, (r() - 0.5) * 0.03);

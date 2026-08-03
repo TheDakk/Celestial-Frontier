@@ -120,7 +120,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      grey-brown with a pale neck ruff, the domesticated Eurasian reindeer is a
      warmer brown. Derived from the animals, not tuned to the gate. */
   'Caribou': { legs: 0.1823, depth: 0.1497, len: 0.1964, neck: 0.10, muzzle: 0.44, ears: 'large', tail: 'stub', horn: 'branched', coat: 'shaggy', hue: '#8d8b83', family: 'cervid' },
-  'Okapi': { legs: 0.1924, depth: 0.1482, len: 0.1823, neck: 0.16, muzzle: 0.40, ears: 'large', tail: 'tuft', horn: 'ossicone', coat: 'stripes', hue: '#5d3b28' , family: 'cervid' , legMarks: true },
+  'Okapi': { legs: 0.1924, depth: 0.1482, len: 0.1823, neck: 0.16, muzzle: 0.40, ears: 'large', tail: 'tuft', horn: 'ossicone', coat: 'bands', hue: '#5d3b28' , family: 'cervid' , legMarks: true , coatZone: [0.02, 0.40], coatRgb: [238, 231, 218] },
   /* ★ wave 35 — same pig-nose-disc bug as Tapir; see that row. */
   'Mountain Tapir': { legs: 0.1186, depth: 0.1436, len: 0.2002, neck: 0.05, back: 'arched', muzzle: 0.66, jaw: 'barrel', ears: 'small', tail: 'stub', coat: 'shaggy', hue: '#3f3a36', family: 'suid', skull: 'pachyderm', trunk: 0.16 },
   /* ★ wave 35 — it was wearing the ANTEATER'S 3.10-length tube snout, because
