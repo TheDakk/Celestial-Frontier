@@ -80,7 +80,11 @@ function softMark(c: Ctx, x: number, y: number, rx: number, ry: number, rgb: str
 
 /* ============================ REPTILES ============================ */
 /** SNAKE: a coiled body of tapering segments, no limbs, forked tongue */
-export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle?: boolean; banded?: boolean; hue?: string }, name = ''): void {
+export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle?: boolean; banded?: boolean; hue?: string;
+    /* ★ wave 38 G3 — the dorsal pattern IS the species for a snake. */
+    pattern?: 'plain' | 'band' | 'saddle' | 'oval' | 'reticulate' | 'zigzag' | 'stripe';
+    /* a viper's broad triangular skull, set off from a thin neck */
+    head?: 'plain' | 'arrow' }, name = ''): void {
   /* ★ D-ART-114 — the species hue axis (21 snakes were on the rarity roll). */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x5AE1);
@@ -102,6 +106,8 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
     const taper = u < 0.10 ? 0.55 + 4.5 * u : 1 - 0.62 * ((u - 0.10) / 0.90) ** 1.5;  /* blunt neck, fine tail */
     pts.push({ x: cx + Math.cos(a) * rad, y: cy + Math.sin(a) * rad * 0.52, w: W0 * taper });
   }
+  /* `banded` predates the pattern axis; keep it working as 'band' */
+  const pat = opts.pattern ?? (opts.banded ? 'band' : 'plain');
   c.lineCap = 'round'; c.lineJoin = 'round';
   for (let i = N - 1; i > 0; i--) {   /* back to front: the coil reads as stacked */
     const a0 = pts[i]!, a1 = pts[i - 1]!, w = (a0.w + a1.w) * 0.5;
@@ -110,14 +116,58 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
     c.strokeStyle = p.base; c.lineWidth = w * 1.86;                      /* the body */
     c.beginPath(); c.moveTo(a0.x, a0.y); c.lineTo(a1.x, a1.y); c.stroke();
     c.strokeStyle = p.lit; c.lineWidth = w * 0.58;                       /* dorsal light */
-    c.globalAlpha = (i % 5) < 3 ? 0.52 : 0.30;   /* broken into scale rows, not one hose stripe */
+    /* ★ WAVE 38, G3 — THE RIBBING READ AS AN EARTHWORM. Viper, Cobra and
+       Garter Snake were all independently called "a worm". Cause: a dark seam
+       stamped at 0.9 alpha across the full girth every 5th segment, plus a
+       dorsal light alternating 0.52/0.30 on the same 5-beat — two metronomic
+       rings marching down the body at even spacing, which is annulation, not
+       scales. A snake's scales are small OVERLAPPING rows; at portrait size
+       their correct contribution is a faint texture, and what should carry the
+       eye is the DORSAL PATTERN below. Both regularities damped hard so the
+       pattern can be read at all. */
+    c.globalAlpha = (i % 5) < 3 ? 0.34 : 0.24;
     c.beginPath(); c.moveTo(a0.x, a0.y - w * 0.42); c.lineTo(a1.x, a1.y - w * 0.42); c.stroke();
-    c.strokeStyle = 'rgba(20,16,12,0.16)'; c.lineWidth = w * 0.30;        /* the scale seam */
-    c.globalAlpha = (i % 5) === 4 ? 0.9 : 0;
+    c.strokeStyle = 'rgba(20,16,12,0.16)'; c.lineWidth = w * 0.26;        /* the scale seam */
+    c.globalAlpha = (i % 5) === 4 ? 0.26 : 0;
     c.beginPath(); c.moveTo(a0.x, a0.y + w * 0.30); c.lineTo(a1.x, a1.y + w * 0.30); c.stroke();
     c.globalAlpha = 1;
-    if (opts.banded && (i % 16) < 7) {                                   /* bands BLEND (the pattern law) */
-      softMark(c, (a0.x + a1.x) / 2, (a0.y + a1.y) / 2, w * 1.15, w * 1.0, '26,18,12', 0.42);
+    /* ★ WAVE 38, G3 — THE DORSAL PATTERN, WHICH FOR A SNAKE IS THE SPECIES.
+       All 22 reptSnake rows differed only by `hue` plus three booleans, so the
+       painter had exactly one mark: `banded`. The verifiers were unanimous and
+       specific — Python "the net-like geometric blotched pattern, the single
+       thing that identifies a python, is entirely absent"; Boa "no saddle-shaped
+       dorsal blotches reddening toward the tail"; Anaconda no oval blotches;
+       Viper "no zigzag or diamond dorsal chain, the dorsum is plain"; Garter no
+       longitudinal stripes. Hue cannot separate 22 snakes when the pattern is
+       the identity in every one of them.
+       Every mark is a softMark, so it BLENDS into the scale surface rather than
+       being stamped on it (the pattern law, wave 5). */
+    const mx = (a0.x + a1.x) / 2, my = (a0.y + a1.y) / 2;
+    if (pat === 'band' && (i % 16) < 7) {
+      softMark(c, mx, my, w * 1.18, w * 1.02, '26,18,12', 0.58);
+    } else if (pat === 'saddle' && (i % 21) < 10) {
+      /* a boa's saddles redden toward the tail — u is 0 at the head end */
+      const u2 = i / (N - 1);
+      const rd = Math.round(48 + u2 * 46), gn = Math.round(30 - u2 * 6);
+      softMark(c, mx, my - w * 0.12, w * 1.30, w * 1.02, `${rd},${gn},20`, 0.70);
+    } else if (pat === 'oval' && (i % 23) < 8) {
+      softMark(c, mx, my - w * 0.08, w * 1.02, w * 0.86, '28,26,14', 0.72);
+    } else if (pat === 'reticulate') {
+      /* ⚠ A PATTERN MUST SPAN THE GIRTH, NOT DOT ALONG THE LENGTH. At w*0.66
+         the cells were smaller than the body was thick, so a python's net came
+         out as speckle — present, and not a net. Transverse dark cells with a
+         pale seam between each pair is what reads as reticulation at portrait
+         size, where the real animal's fine mesh cannot resolve anyway. */
+      if ((i % 11) < 5) softMark(c, mx, my, w * 1.18, w * 1.05, '26,20,14', 0.58);
+      if ((i % 11) === 7) softMark(c, mx, my - w * 0.28, w * 0.60, w * 0.70, '240,230,200', 0.42);
+    } else if (pat === 'zigzag' && (i % 2) === 0) {
+      /* the chain runs ALONG the spine, alternating side to side, so each mark
+         has to be wide enough to touch its neighbour and close the zigzag */
+      const zz = (i % 12) < 6 ? -1 : 1;
+      softMark(c, mx, my + zz * w * 0.36, w * 0.90, w * 0.64, '20,15,11', 0.78);
+    } else if (pat === 'stripe') {
+      c.strokeStyle = 'rgba(238,226,164,0.72)'; c.lineWidth = w * 0.40;
+      c.beginPath(); c.moveTo(a0.x, a0.y - w * 0.34); c.lineTo(a1.x, a1.y - w * 0.34); c.stroke();
     }
   }
   /* the head rides the coil's outer end */
@@ -152,9 +202,31 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
     for (let i = -2; i <= 2; i++) { c.beginPath(); c.moveTo(i * hoodW * 0.24, hoodH * 0.72); c.lineTo(i * hoodW * 0.34, -hoodH * 0.80); c.stroke(); }
     c.restore();
   }
-  c.fillStyle = grad(c, p, hx, hy, S * 0.055);
-  c.beginPath(); c.ellipse(hx, hy, S * 0.058, S * 0.042, -0.3, 0, TAU); c.fill();
-  rim(c, () => c.ellipse(hx, hy, S * 0.058, S * 0.042, -0.3, 0, TAU));
+  /* ★ WAVE 38, G3 — THE HEAD WAS A PASTED OVAL WITH A HARD BRIGHT RIM. Six
+     verifiers wrote the same sentence independently — Anaconda "a small pale
+     oval with a hard light rim pasted onto the right of the ring with no neck
+     continuity, a clear composite seam"; Boa "identical pasted round head with
+     a hard grey rim"; Python, Rat Snake, Grass Snake, Sand Boa the same. Two
+     causes: a FIXED size (S*0.058 regardless of how thick the animal is) and
+     `rim()`, which strokes a light outline all the way round it.
+     A snake's head is the neck WIDENING — there is no join to hide, so there
+     must be no outline to give one away. Sized off the ribbon's own width,
+     drawn along its own tangent, rim deleted. `head:'arrow'` gives the vipers
+     the broad triangular skull set off from a thin neck that is three of their
+     mustReads and was absent from all of them. */
+  const arrow = opts.head === 'arrow';
+  const hW = head.w * (arrow ? 2.30 : 1.62);
+  const hL = head.w * (arrow ? 3.05 : 3.45);
+  c.save(); c.translate(hx, hy); c.rotate(hAng);
+  c.fillStyle = grad(c, p, 0, 0, hL * 0.85);
+  c.beginPath();
+  c.moveTo(-hL * 0.62, -hW * 0.26);
+  /* the widest point sits BEHIND the snout on an arrow head, at the jaw hinge */
+  c.quadraticCurveTo(hL * (arrow ? -0.02 : 0.14), -hW, hL * 0.70, -hW * (arrow ? 0.22 : 0.30));
+  c.quadraticCurveTo(hL * 0.92, 0, hL * 0.70, hW * (arrow ? 0.22 : 0.30));
+  c.quadraticCurveTo(hL * (arrow ? -0.02 : 0.14), hW, -hL * 0.62, hW * 0.26);
+  c.closePath(); c.fill();
+  c.restore();
   eye(c, hx + S * 0.022, hy - S * 0.012, 5.5, true);
   c.strokeStyle = '#c8384a'; c.lineWidth = 2.6; c.lineCap = 'round';   /* forked tongue */
   const tx = hx + S * 0.055, ty = hy + S * 0.006;
@@ -1007,27 +1079,27 @@ export function marineAnemone(c: Ctx, g: G, pIn: Pal, opts: { tall?: boolean; hu
 
 export const FAUNA2_NAME: Record<string, Painter2> = {
   /* ── SNAKES ── the coil, the wedge head, the forked tongue */
-  'Cobra': (c, g, p, n) => reptSnake(c, g, p, { hue: '#5e4a2e', hood: true }, n),
-  'Mamba': (c, g, p, n) => reptSnake(c, g, p, { hue: '#4c4f4d', }, n),
-  'Viper': (c, g, p, n) => reptSnake(c, g, p, { hue: '#97845e', banded: true }, n),
-  'Mountain Viper': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6f7466', banded: true }, n),
-  'Rattlesnake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#b09468', rattle: true, banded: true }, n),
-  'Boa': (c, g, p, n) => reptSnake(c, g, p, { hue: '#8e6b4a', banded: true }, n),
-  'Sand Boa': (c, g, p, n) => reptSnake(c, g, p, { hue: '#c69258', banded: true }, n),
-  'Python': (c, g, p, n) => reptSnake(c, g, p, { hue: '#9a8355', banded: true }, n),
-  'Anaconda': (c, g, p, n) => reptSnake(c, g, p, { hue: '#4f5c34', banded: true }, n),
-  'King Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#1e1c1a', banded: true }, n),
-  'Garter Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#3f5540', }, n),
-  'Rat Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#2f3234', }, n),
-  'Tree Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#38a04a', }, n),
-  'Vine Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#7fb23c', }, n),
-  'Water Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6a5341', }, n),
-  'Grass Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#5f7a45', }, n),
-  'Whip Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6b6b48', }, n),
-  'Cave Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#928a86', }, n),
-  'Cottonmouth': (c, g, p, n) => reptSnake(c, g, p, { hue: '#3d3a30', banded: true }, n),
-  'Racer': (c, g, p, n) => reptSnake(c, g, p, { hue: '#35404a', }, n),
-  'Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6f5b3e', }, n),
+  'Cobra': (c, g, p, n) => reptSnake(c, g, p, { hue: '#5e4a2e', hood: true, pattern: 'band' }, n),
+  'Mamba': (c, g, p, n) => reptSnake(c, g, p, { hue: '#4c4f4d', pattern: 'plain' }, n),
+  'Viper': (c, g, p, n) => reptSnake(c, g, p, { hue: '#97845e', pattern: 'zigzag', head: 'arrow' }, n),
+  'Mountain Viper': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6f7466', pattern: 'zigzag', head: 'arrow' }, n),
+  'Rattlesnake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#b09468', rattle: true, pattern: 'saddle', head: 'arrow' }, n),
+  'Boa': (c, g, p, n) => reptSnake(c, g, p, { hue: '#8e6b4a', pattern: 'saddle' }, n),
+  'Sand Boa': (c, g, p, n) => reptSnake(c, g, p, { hue: '#c69258', pattern: 'saddle' }, n),
+  'Python': (c, g, p, n) => reptSnake(c, g, p, { hue: '#9a8355', pattern: 'reticulate' }, n),
+  'Anaconda': (c, g, p, n) => reptSnake(c, g, p, { hue: '#4f5c34', pattern: 'oval' }, n),
+  'King Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#1e1c1a', pattern: 'band' }, n),
+  'Garter Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#3f5540', pattern: 'stripe' }, n),
+  'Rat Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#2f3234', pattern: 'saddle' }, n),
+  'Tree Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#38a04a', pattern: 'plain' }, n),
+  'Vine Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#7fb23c', pattern: 'plain' }, n),
+  'Water Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6a5341', pattern: 'band' }, n),
+  'Grass Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#5f7a45', pattern: 'stripe' }, n),
+  'Whip Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6b6b48', pattern: 'stripe' }, n),
+  'Cave Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#928a86', pattern: 'plain' }, n),
+  'Cottonmouth': (c, g, p, n) => reptSnake(c, g, p, { hue: '#3d3a30', pattern: 'saddle', head: 'arrow' }, n),
+  'Racer': (c, g, p, n) => reptSnake(c, g, p, { hue: '#35404a', pattern: 'plain' }, n),
+  'Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6f5b3e', pattern: 'saddle' }, n),
   /* ── LIZARDS ── the sprawled stance: elbows OUT, belly low, tail long */
   'Monitor Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#55503f', long: true, stout: 1.30, tail: 1.05 }, n),
   'Komodo Dragon': (c, g, p, n) => reptLizard(c, g, p, { hue: '#77706a', long: true, stout: 1.62, tail: 0.92 }, n),
