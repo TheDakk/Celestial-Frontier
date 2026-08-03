@@ -380,7 +380,10 @@ const FUNGI_NAME: Record<string, Painter> = {
   'Porcini': (c, g, p) => fungiCap(c, g, p, { cap: 'convex', gills: 'pore', hue: '#9c6b3c', gillHue: '#efe6cd', stem: 'bulbous', net: true }),
   'Bioluminescent Mushroom': (c, g, p) => fungiCap(c, g, p, { cap: 'flat', gills: 'blade', hue: '#8ea89a', gillHue: '#d8f6e4', stem: 'slender', glow: true, count: 4, scale: 0.66 }),
   'Jelly Fungus': (c, g, p) => fungiJellyBrain(c, g, speciesHue(p, '#e2822f')),
-  'Turkey Tail': (c, g, p) => fungiBracket(c, g, speciesHue(p, '#96714a')), 'Bracket Fungus': fungiBracket, 'Shelf Fungus': fungiBracket, 'Chicken-of-the-Woods': fungiBracket, 'Oyster Mushroom': fungiBracket, 'Reindeer Lichen': fungiBracket,
+  'Turkey Tail': (c, g, p) => fungiBracket(c, g, speciesHue(p, '#96714a')), 'Bracket Fungus': fungiBracket, 'Shelf Fungus': fungiBracket, 'Chicken-of-the-Woods': fungiBracket, 'Oyster Mushroom': fungiBracket,
+  /* ★ WAVE 42 — 'Reindeer Lichen': fungiBracket removed. CANON routes it to
+     lichenMat and runs first, so this never fired — and the two disagree
+     completely: a bracket SHELF versus a branching lichen mat. */
   'Giant Puffball': (c, g, p) => fungiPuffball(c, g, speciesHue(p, '#ded3bb')), 'Earthstar': fungiEarthstar, 'Black Truffle': fungiTruffle,
   /* ★ wave 21 — the audit's last two named fungi */
   'Enoki': (c, g, p) => fungiEnoki(c, g, speciesHue(p, '#f6f2e8')),
@@ -415,7 +418,12 @@ const MICROBE_NAME: Record<string, Painter> = {
   'Tardigrade': (c, g, p) => tardigrade(c, g, speciesHue(p, '#d9b98c')),   /* wave 18: the canonical 8-legged water bear */
   'Diatom': (c, g, p) => microbeDiatom(c, g, speciesHue(p, '#c9a552')), 'Radiolarian': microbeDiatom, 'Dinoflagellate': microbeDiatom,
   'Paramecium': (c, g, p) => microbeCiliate(c, g, speciesHue(p, '#b6bd82')), 'Euglena': microbeCiliate,
-  'Amoeba': (c, g, p) => microbeAmoeba(c, g, speciesHue(p, '#b9bfba')), 'Foraminiferan': (c, g, p) => microbeAmoeba(c, g, speciesHue(p, '#e4e2d6')), 'Green Algae': (c, g, p) => microbeAmoeba(c, g, speciesHue(p, '#4c9a2a')),
+  /* ★ WAVE 42 — 'Foraminiferan' and 'Green Algae' removed: both are keyed in
+     CANON, which resolveOverride consults FIRST and returns from, so these
+     rows never ran. Worse, they disagreed with the live painters — CANON gives
+     Foraminiferan a chambered test (microbeForam) and Green Algae a proper
+     algal cell (microAlgaeCell), while these drew a generic amoeba blob. */
+  'Amoeba': (c, g, p) => microbeAmoeba(c, g, speciesHue(p, '#b9bfba')),
 };
 
 /** Return a corrected portrait data URL, or null to fall through to the
@@ -431,7 +439,14 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'microbe|Green Algae': microAlgaeCell,
   /* Snow / Ice Algae: a tinted bloom field in each kingdom it appears in */
   'flora|Snow Algae': (c, g, p) => algaeBloom(c, g, speciesHue(p, '#e05263')), 'microbe|Snow Algae': algaeBloom,
-  'flora|Ice Algae': (c, g, p) => algaeBloom(c, g, speciesHue(p, '#a87c25')), 'microbe|Ice Algae': algaeBloom,
+  /* ★ WAVE 42 — 'microbe|Ice Algae' removed: it is a DEAD route. Unlike Green
+     Algae, Snow Algae, Reindeer Lichen and Tardigrade, Ice Algae exists in the
+     flora catalogue ONLY, so no genome ever arrives with kingdom 'microbe' and
+     that name. It was written by analogy with its four neighbours rather than
+     from the roster — which is also why overridecheck's suggestion reads
+     "Ice Algae → did you mean Ice Algae?": the NAME resolves, the KINGDOM does
+     not. */
+  'flora|Ice Algae': (c, g, p) => algaeBloom(c, g, speciesHue(p, '#a87c25')),
   /* Reindeer Lichen: one canonical pale branching mat across flora + fungi */
   'flora|Reindeer Lichen': lichenMat, 'fungi|Reindeer Lichen': lichenMat,
   /* Sea Lettuce: a green macroalgal sheet, not a purple strap */
