@@ -766,9 +766,28 @@ export function coatMaterial(
 
   /* SCALE / PLATE — overlapping rows that follow the girth. A scale row is a
      ring, not a grid, and that is why scales painted as a texture always look
-     like wallpaper: they have to curve with the animal. */
+     like wallpaper: they have to curve with the animal.
+     ⚠ WAVE 43 — AND THEY ARE NOT ACTUALLY OVERLAPPING. Flipping the row order
+     (below) moved exactly ONE of 1,250 assets, by 0.93 — the measurement that
+     proves it: if rows overlapped, reversing which one lands on top would
+     repaint every scaled species. Row pitch is 2.9/rows ≈ 0.145 rad of girth
+     while a scale is only 0.48·rad tall, so consecutive rows clear each other
+     and this draws the GRID the comment says it is not.
+     Left as measured rather than "fixed": closing the gap is a visible density
+     change across 105+ audited fish and belongs in an art wave with an eye on
+     it, not inside a code-defect pass. Recorded so the next reader knows the
+     comment describes an intent the numbers do not yet deliver. */
   const rows = Math.round((kind === 'plate' ? 12 : 20) * Math.min(1.4, detail));
   const perRow = Math.round((kind === 'plate' ? 14 : 26) * Math.min(1.4, detail));
+  /* ★ WAVE 43 — THE ROW ORDER HERE IS DORSAL-FIRST, like the feather branch was
+     before H2 fixed it. I flipped it to match, MEASURED IT, AND PUT IT BACK:
+     the flip moved exactly ONE of 1,250 assets (Anglerfish, by 0.93) and cost
+     +1 confusable pair at the 1.49–1.50 boundary. No visible benefit, a small
+     measurable cost — so the flip is not the fix, and the measurement above is
+     what this investigation was actually worth.
+     ⚠ It WILL matter the day the rows are made to overlap. Whoever closes that
+     gap must flip this line in the same change, or the shingling will run
+     backwards on 105+ species at once and look assembled inside out. */
   for (let ri = 0; ri < rows; ri++) {
     const phi = 1.45 - (ri / rows) * 2.9;
     for (let k = 0; k < perRow; k++) {
