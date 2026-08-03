@@ -735,6 +735,34 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   deleting one fingerprint from the lock makes the battery report `5/6` and exit non-zero, so
   it is proven to PROPAGATE a failure rather than merely to run one.
 
+- ⚠ **D-ART-137 — A GUARD CLAUSE THAT LEFT THE WHOLE PAINTER (wave 35).** D-ART-134 added
+  `earShape: 'hidden'` for the animals with no external ear — a seal, a mole, a sloth — and
+  implemented it as `if (earShape === 'hidden') return;`. That `return` exits
+  `faunaQuadruped`, not the ear block, so **everything below it was skipped: the face
+  markings, THE EYE, the horns, the trunk and the tail.** Sloth, Mole, Seal, Fur Seal, Sea
+  Lion and Walrus all rendered with a blank head and no eye at all, and the Walrus lost the
+  tusks that ARE the animal. Six species, one keyword, and every gate green — no test
+  asserts "this species has an eye", and artlock had blessed the eyeless render as the
+  baseline.
+  **The lesson sits one level below D-ART-88.** D-ART-88 says look, because reasoning about
+  geometry misses defects. This says: a fix can be *correct about the thing it names* and
+  wrong about *where it stops*. The commit that shipped it was right that a seal has no
+  pinna, described that correctly in its comment, and was never rendered. The comment and
+  the code agreed; the code and the animal did not.
+  ⚠ **Suppressing a FEATURE is never `return` in a painter that draws more features
+  afterwards.** Prefer an empty branch in the existing if/else chain — it cannot outgrow its
+  scope when the function grows below it, which is exactly what happened here.
+
+- ⚠ **D-ART-138 — THE BATTERY COULD NOT EXPRESS A DECLARATION (wave 35).** `npm run
+  artbattery` invoked `node tools/artlock.mjs` with no arguments. artlock's whole [DRIFT]
+  contract is "declare the painter classes you are touching"; with no `--touching` it reads
+  *"declared: (nothing — so nothing may move)"* and **fails on every legitimate change.**
+  So the battery's own stage 6 was red for any real work, and the only ways to get a green
+  battery were to change nothing or to stop believing the battery. That is D-ART-109's
+  failure returning through the other door: **a guard that cannot pass when the work is
+  correct decays into a guard nobody reads.** It forwards arguments now —
+  `npm run artbattery -- --touching=quadruped`.
+
 - ✅ **D-ART-120 — THE SILHOUETTE CHANNEL: the drift guard can finally see a limb (wave 27).**
   Nick's call, on being shown that the guard was blind to exactly the work remaining.
   - **A second channel, not a replacement.** A 64×64 one-bit coverage mask, 512 bytes —

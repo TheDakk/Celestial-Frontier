@@ -67,7 +67,12 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Badger': { legs: 0.0743, depth: 0.1093, len: 0.2151, neck: 0.04, muzzle: 0.38, ears: 'tiny', tail: 'stub', coat: 'stripes', face: 'mask', hue: '#8d8a84', family: 'mustelid' },
   'Wolverine': { legs: 0.0961, depth: 0.1182, len: 0.2132, neck: 0.05, back: 'arched', muzzle: 0.38, ears: 'round', tail: 'bushy', coat: 'shaggy', hue: '#5c4433', family: 'mustelid' },
   'Weasel': { legs: 0.0634, depth: 0.0674, len: 0.1853, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'stub', hue: '#b98a52', family: 'mustelid' },
-  'Stoat': { legs: 0.0634, depth: 0.0674, len: 0.1853, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'tuft', hue: '#c49258', family: 'mustelid' },
+  /* ★ wave 35 — a stoat has no TUFT; it has a BLACK TIP, and that tip is the
+     entire difference between it and a weasel or an otter at a glance. It was
+     cast as 'tuft' to borrow the old dark blob on the end, and when that blob
+     became real hair the Stoat and the River Otter collapsed into the same
+     picture — artlock caught it in the same commit that caused it. */
+  'Stoat': { legs: 0.0634, depth: 0.0674, len: 0.1853, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'long', tailTip: '#1c1614', hue: '#c49258', family: 'mustelid' },
   'Mink': { legs: 0.0665, depth: 0.0724, len: 0.199, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'bushy', hue: '#5b4032', family: 'mustelid' },
   'Marten': { legs: 0.0773, depth: 0.0814, len: 0.2003, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#7d5334', family: 'mustelid' },
   'Fisher': { legs: 0.084, depth: 0.0885, len: 0.2033, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#4f3b2c', family: 'mustelid' },
@@ -100,10 +105,23 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Banteng': { legs: 0.1597, depth: 0.1629, len: 0.2137, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#7a4f30', family: 'bovid' },
   'Buffalo': { legs: 0.142, depth: 0.1704, len: 0.2376, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#4b433c', family: 'bovid' },
   'Takin': { legs: 0.1306, depth: 0.1574, len: 0.2065, neck: 0.06, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#b59a63', family: 'bovid' },
-  'Caribou': { legs: 0.1823, depth: 0.1497, len: 0.1964, neck: 0.10, muzzle: 0.44, ears: 'large', tail: 'stub', horn: 'branched', coat: 'shaggy', hue: '#a2917c', family: 'cervid' },
+  /* ★ wave 35 — Caribou and Reindeer sat at #a2917c and #a8917a: the same
+     colour to six bits, on the same body, and the shaggy rim was doing all the
+     separating. When wave 35 shortened that rim they crossed the confusable
+     line. They are the same species, so proportion will never separate them —
+     what separates them in life is COAT: the wild North American caribou is
+     grey-brown with a pale neck ruff, the domesticated Eurasian reindeer is a
+     warmer brown. Derived from the animals, not tuned to the gate. */
+  'Caribou': { legs: 0.1823, depth: 0.1497, len: 0.1964, neck: 0.10, muzzle: 0.44, ears: 'large', tail: 'stub', horn: 'branched', coat: 'shaggy', hue: '#8d8b83', family: 'cervid' },
   'Okapi': { legs: 0.1924, depth: 0.1482, len: 0.1823, neck: 0.16, muzzle: 0.40, ears: 'large', tail: 'tuft', horn: 'ossicone', coat: 'stripes', hue: '#5d3b28' , family: 'cervid' },
-  'Mountain Tapir': { legs: 0.1186, depth: 0.1436, len: 0.2002, neck: 0.05, back: 'arched', muzzle: 0.66, jaw: 'barrel', ears: 'small', tail: 'stub', coat: 'shaggy', hue: '#3f3a36', family: 'suid' },
-  'Sloth': { legs: 0.0968, depth: 0.1414, len: 0.1484, neck: 0.06, back: 'arched', muzzle: 0.28, ears: 'tiny', tail: 'stub', coat: 'shaggy', hue: '#8c8367', family: 'xenarthran', earShape: 'hidden' },
+  /* ★ wave 35 — same pig-nose-disc bug as Tapir; see that row. */
+  'Mountain Tapir': { legs: 0.1186, depth: 0.1436, len: 0.2002, neck: 0.05, back: 'arched', muzzle: 0.66, jaw: 'barrel', ears: 'small', tail: 'stub', coat: 'shaggy', hue: '#3f3a36', family: 'suid', skull: 'pachyderm', trunk: 0.16 },
+  /* ★ wave 35 — it was wearing the ANTEATER'S 3.10-length tube snout, because
+     it shares the xenarthran family with one. A sloth's face is the opposite:
+     short, flat and round. It keeps the xenarthran BODY (the hooking claws are
+     the family's) and takes a round short-muzzled skull. The 'stub' tail was
+     the dark disc sitting on its shoulder — a sloth has no visible tail. */
+  'Sloth': { legs: 0.0968, depth: 0.1414, len: 0.1484, neck: 0.06, back: 'roached', muzzle: 0.28, ears: 'tiny', tail: 'none', coat: 'shaggy', hue: '#8c8367', family: 'xenarthran', skull: 'procyonid', earShape: 'hidden' },
   'Possum': { legs: 0.0814, depth: 0.1026, len: 0.1598, neck: 0.05, muzzle: 0.44, ears: 'large', tail: 'long', hue: '#a49b8c', family: 'marsupial' },
   'Marsh Rodent': { legs: 0.0691, depth: 0.0894, len: 0.1789, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'long', hue: '#7b6448', family: 'rodent' },
   /* ═══ ★ ARC STAGE 3 WAVE 1 — THE UNROUTED ICONICS ═══
@@ -123,13 +141,21 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* "long bushy ringed tail · white face mask with rust tear-stripes · black legs" */
   'Red Panda': { legs: 0.0741, depth: 0.1099, len: 0.1712, neck: 0.038, muzzle: 0.26, ears: 'large', tail: 'banded', face: 'tears', hue: '#b5522a', family: 'procyonid' },
   /* "back sloping sharply from high shoulders · massive neck and jaws · blotchy spots" */
-  'Spotted Hyena': { legs: 0.1284, depth: 0.1442, len: 0.2128, neck: 0.080, back: 'sloped', muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'bushy', coat: 'spots', hue: '#a8916b', family: 'canid' },
+  'Spotted Hyena': { legs: 0.1284, depth: 0.1442, len: 0.2128, neck: 0.080, back: 'sloped', muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'bushy', coat: 'spots', hue: '#a8916b', family: 'hyaenid' },
   /* "sloping back · heavy jaws · vertical flank stripes and a long dorsal crest" */
-  'Striped Hyena': { legs: 0.1338, depth: 0.1475, len: 0.1936, neck: 0.080, back: 'sloped', muzzle: 0.34, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'stripes', hue: '#b8ac93', family: 'canid' },
+  /* ★ wave 35 — `coat:'stripes'` is the TIGER's bar generator, and on a pale
+     hyena it painted a hard-edged zebra saddle blanket. A striped hyena's
+     stripes are faint vertical smudges mostly on the LEGS, which this engine
+     structurally cannot paint (no marking reaches a leg), so plain is the
+     honest read until that changes. */
+  'Striped Hyena': { legs: 0.1338, depth: 0.1475, len: 0.1936, neck: 0.080, back: 'sloped', muzzle: 0.34, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'plain', hue: '#b8ac93', family: 'hyaenid' },
   /* "stout barrel body with NO visible tail · broad bare-nosed snout · bowed legs" */
   'Wombat': { legs: 0.0414, depth: 0.1249, len: 0.1947, neck: 0.024, muzzle: 0.24, jaw: 'broad', ears: 'round', tail: 'none', hue: '#8a7358', family: 'marsupial' },
   /* "oversized blocky head and gaping jaws · white chest band · thick short tail" */
-  'Tasmanian Devil': { legs: 0.0515, depth: 0.1096, len: 0.1708, neck: 0.028, muzzle: 0.26, jaw: 'broad', ears: 'round', tail: 'tuft', hue: '#2e2a28', family: 'marsupial' },
+  /* ★ wave 35 — same miscast as Stoat: a devil's tail is a plain thick taper,
+     never tufted. Its actual mark is the white chest blaze, which no per-species
+     axis can reach yet (coatBlocks is hard-wired to the panda). */
+  'Tasmanian Devil': { legs: 0.0515, depth: 0.1096, len: 0.1708, neck: 0.028, muzzle: 0.26, jaw: 'broad', ears: 'round', tail: 'long', hue: '#2e2a28', family: 'marsupial' },
   /* "white spots over the back AND the tail · pointed pink snout · low slinking body" */
   'Quoll': { legs: 0.0602, depth: 0.0901, len: 0.1478, neck: 0.034, muzzle: 0.30, ears: 'round', tail: 'bushy', coat: 'spots', hue: '#7d5f42', family: 'marsupial' },
   /* "trunk to the ground · huge fan ears · pillar legs and a dipped saddle back" */

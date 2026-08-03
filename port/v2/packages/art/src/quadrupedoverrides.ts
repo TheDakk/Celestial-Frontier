@@ -31,12 +31,27 @@ const S = 440;
     standing phone-heat mandate, so this exists to be turned DOWN. */
 const MAT_DETAIL = 1;
 
+/** the families that have a body plan AND a skull in the tables below. Named
+    once because `family` and `skull` are now two independent choices from the
+    same set (wave 35). */
+export type MammalFamily = 'felid' | 'canid' | 'ursid' | 'bovid' | 'cervid' | 'equid' | 'camelid'
+  | 'suid' | 'mustelid' | 'rodent' | 'pachyderm' | 'generic'
+  /* ★ wave 9: the families that had no plan at all and fell through to
+     'generic' — 21 routed mammals, and they looked it. */
+  | 'marsupial' | 'procyonid' | 'xenarthran' | 'pinniped' | 'burrower'
+  /* ★ wave 35: the hyenas were canids, and three blockers said so. */
+  | 'hyaenid';
+
 export interface QuadSpec {
   legs: number;                 /* leg length as a fraction of S */
   depth: number;                /* body depth (belly) */
   len?: number;                 /* body length */
   neck: number;                 /* neck length */
-  back?: 'level' | 'humped' | 'sloped' | 'arched' | 'saddle';
+  /* ★ wave 35 — 'roached': the rump stands HIGHER than the shoulder, over an
+     arch that peaks behind the mid-back. It is the opposite of 'sloped' and
+     three rows need it (Raccoon, Aardvark, Sloth); 'arched' peaks in the
+     middle and could not say it. */
+  back?: 'level' | 'humped' | 'sloped' | 'arched' | 'saddle' | 'roached';
   muzzle?: number;              /* snout projection */
   jaw?: 'fine' | 'broad' | 'barrel';
   ears?: 'tiny' | 'small' | 'round' | 'large' | 'huge' | 'fan';
@@ -70,16 +85,26 @@ export interface QuadSpec {
      its soles, an antelope has a cannon bone and cloven hooves — and every
      NUMBER still comes from the species' own row. Two cats share a foot;
      they do not share a body. */
-  family?: 'felid' | 'canid' | 'ursid' | 'bovid' | 'cervid' | 'equid' | 'camelid'
-    | 'suid' | 'mustelid' | 'rodent' | 'pachyderm' | 'generic'
-    /* ★ wave 9: the families that had no plan at all and fell through to
-       'generic' — 21 routed mammals, and they looked it. */
-    | 'marsupial' | 'procyonid' | 'xenarthran' | 'pinniped' | 'burrower';
+  family?: MammalFamily;
+  /* ★ wave 35 — THE SKULL IS NOT ALWAYS THE FAMILY'S. A family body plan is
+     anatomy shared by every member (a xenarthran's claws, a suid's cloven
+     foot), but a HEAD can diverge inside a family while the body does not.
+     A sloth is a xenarthran with a short round face, and it was wearing the
+     anteater's 3.10-length tube snout because they share a family; a tapir
+     has a proboscis, and the suid skull hard-wires the flat cartilage DISC
+     that is a pig's whole identity — the reference row warns against it by
+     name. Neither could be reached from the table at all.
+     Defaults to `family`, so every existing row is byte-unchanged. */
+  skull?: MammalFamily;
   foot?: 'hoof' | 'cloven' | 'paw' | 'plantigrade' | 'pad' | 'claw' | 'flipper';
   horn?: 'nose' | 'twinnose' | 'ossicone' | 'palmate' | 'branched' | 'tuskup' | 'tuskdown' | 'curl'
     | 'straight' | 'spiral' | 'lyre' | 'prong' | 'shorthorn';   /* wave 10: the bovid horn is the species */
   humps?: 1 | 2;
-  trunk?: boolean;
+  /* ★ wave 35 — a trunk has a LENGTH. `true` is an elephant's, reaching the
+     ground; a fraction is a short proboscis that stops in mid-air on purpose —
+     a tapir's, which is its single identifying feature and the reason it must
+     not wear a pig's nose disc. */
+  trunk?: boolean | number;
   hue?: string;                 /* species-true color where color IS identity */
   /* ★ wave 14: strangeness INSIDE our rendering language. An alien trait is
      an ADDITION to a body this system already draws well, never a
@@ -191,6 +216,10 @@ const SKULL: Record<string, {
   xenarthran: { len: 3.10, cranium: 0.70, stop: 0.06, muzzle: 0.22, jaw: 0.14, eyeU: 0.24, eyePhi: 0.50, eyeR: 0.13, nose: 'wet', tilt: 0.22, nosePad: 0.44, lip: 'straight', cheek: 0.14 },
   pinniped: { len: 1.70, cranium: 1.05, stop: 0.30, muzzle: 0.52, jaw: 0.30, eyeU: 0.42, eyePhi: 0.30, eyeR: 0.275, nose: 'wet', tilt: 0.06, nosePad: 0.86, lip: 'curl', cheek: 0.82 },
   burrower: { len: 2.95, cranium: 0.74, stop: 0.08, muzzle: 0.26, jaw: 0.18, eyeU: 0.26, eyePhi: 0.52, eyeR: 0.12, nose: 'wet', tilt: 0.24, nosePad: 0.52, lip: 'straight', cheek: 0.16 },
+  /* ★ wave 35 — a hyena's head is the most massive thing on it: a short deep
+     muzzle under a broad crested cranium, with the jaw musculature of a
+     bone-cracker. On the canid wedge it was reading as a pony's. */
+  hyaenid: { len: 1.95, cranium: 1.10, stop: 0.34, muzzle: 0.44, jaw: 0.44, eyeU: 0.42, eyePhi: 0.26, eyeR: 0.130, nose: 'wet', tilt: 0.14, nosePad: 1.10, lip: 'straight', cheek: 0.88 },
   generic: { len: 2.00, cranium: 0.94, stop: 0.30, muzzle: 0.42, jaw: 0.34, eyeU: 0.40, eyePhi: 0.40, eyeR: 0.235, nose: 'wet', tilt: 0.10, nosePad: 0.80, lip: 'straight', cheek: 0.50 },
 };
 
@@ -276,6 +305,14 @@ const FAMILY: Record<string, {
   pinniped: { waist: 0.06, muscle: 0.34, chest: 0.72, rump: 0.30, foot: 'flipper', cannon: 0.04, crouch: 0.04, ear: 'hidden', pupil: 'round', iris: '#14120f', mat: 'fur' },
   /* an aardvark or a mole: an arched back over powerful short digging forelimbs */
   burrower: { waist: 0.18, muscle: 0.70, chest: 0.58, rump: 0.66, foot: 'claw', cannon: 0.22, crouch: 0.62, ear: 'round', pupil: 'round', iris: '#1d1610', mat: 'fur' },
+  /* ★ wave 35 — THE HYENAS WERE CANIDS AND IT SHOWED. Nick's audit has three
+     blocker rows here and all three describe the same animal: a pony. A hyaenid
+     is not a dog — it is massive through the shoulder, neck and jaw and light
+     behind, so the topline falls away from the withers instead of rising to a
+     croup; it stands on a short folded limb rather than a cursorial one; and
+     its round ear is nothing like a dog's prick ear. One table row, three
+     blockers. */
+  hyaenid: { waist: 0.52, muscle: 0.92, chest: 0.86, rump: 0.28, foot: 'paw', cannon: 0.62, crouch: 0.46, ear: 'round', pupil: 'round', iris: '#6b5230', mat: 'fur' },
   generic: { waist: -1, muscle: -1, chest: -1, rump: -1, foot: 'paw', cannon: 0.62, crouch: 0.45, ear: 'round', pupil: 'round', iris: '#3a2b1c', mat: 'fur' },
 };
 
@@ -360,6 +397,9 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     if (back === 'humped') return cy - bodyH * (0.55 + 0.42 * Math.pow(t, 2.2));
     if (back === 'sloped') return cy - bodyH * (0.40 + 0.55 * t);
     if (back === 'arched') return cy - bodyH * (0.52 + 0.30 * Math.sin(t * Math.PI));
+    /* ★ wave 35 — the roach: highest over the HIP and falling away forward to
+       the shoulder, the arch a raccoon, an aardvark and a sloth all carry */
+    if (back === 'roached') return cy - bodyH * (0.86 - 0.34 * t + 0.16 * Math.sin(t * Math.PI));
     /* ★ the AFRICAN elephant's saddle. Its reference note says it outright —
        'the back dips in a concave curve; the head is the highest point in
        Asian elephants but not here' — and the render had a convex topline
@@ -679,7 +719,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   else if (coat === 'rosettes') coatRosettes(c, neckTube, r, p, { count: 12, size: 0.8 });
   else if (coat === 'shaggy') coatShaggy(c, neckTube, r, p, { count: 46 });
   c.restore();
-  if (coat === 'shaggy') shaggyRim(c, neckTube, r, p, Math.max(5, bodyH * 0.15), 0.45);
+  if (coat === 'shaggy') shaggyRim(c, neckTube, r, p, Math.max(4, bodyH * 0.095), 0.70);
   /* ---- the torso: a SOLID whose radius profile is the species ---- */
   c.fillStyle = p.base;
   c.beginPath(); body.trace(c); c.fill();
@@ -731,9 +771,18 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
        animal; softening it was never blending, it was losing the feature. */
     coatPatches(c, body, r, p, { nu: 10, nphi: 6, seam: 0.80, rgb: [126, 74, 26] });
   } else if (coat === 'panda') {
+    /* ★ wave 35 — A PANDA'S RUMP IS WHITE. Two full-girth bands, one at each
+       end, is a BELTED COW, and Nick's row says exactly that: "the body is a
+       cow-like quadruped". The real animal has ONE black band — the shoulder
+       yoke that carries down into the forelegs — over an otherwise white body.
+       So the rear band goes, and the front one pulls back off the neck to sit
+       where a shoulder actually is. */
+    /* ⚠ and the prescribed 0.60–0.86 was checked by rendering it: it leaves a
+       WHITE CHEST in front of the black, so the band read as a saddle rather
+       than a shoulder yoke. A panda's black runs from mid-back FORWARD through
+       the shoulders and chest, stopping at the white neck. */
     coatBlocks(c, body, p, [
-      { u0: 0.72, u1: 1.0, phiLo: -1.5, phiHi: 1.6, rgb: '#15181e' },
-      { u0: 0.0, u1: 0.22, phiLo: -1.5, phiHi: 1.6, rgb: '#15181e' },
+      { u0: 0.64, u1: 1.0, phiLo: -1.5, phiHi: 1.6, rgb: '#15181e' },
     ]);
   } else if (coat === 'brindle') {
     coatBrindle(c, body, r, p, { count: 120 });
@@ -750,14 +799,28 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      leg passes under it, which is the other half of the join reading as one
      piece of anatomy rather than two shapes touching. */
   if (!spec.alien?.skin) {
+    /* ★ wave 35 — IT WAS READING AS A PASTED DISC, not as a shadow. At alpha
+       0.40 over a radius of 0.95·rr, centred only 0.66·rr below the axis, the
+       gradient reached well ABOVE the axis and covered most of the flank — so
+       on any pale deep-bodied animal it showed as a dark circle punched into
+       the side. Three independent audit rows describe the same artifact:
+       Elk's "shoulder and haunch decals", Saiga's "airbrushed disc", Polar
+       Bear's "flat-disc primitive punched into the rump".
+       An armpit shadow is small, faint, and entirely BELOW the axis — so it is
+       clipped there, which is what stops it becoming a decal no matter how deep
+       the body is. */
     for (const u of legUs) {
       const a = AX(u), rr = RAD(u);
-      const og = c.createRadialGradient(a[0], a[1] + rr * 0.66, rr * 0.08, a[0], a[1] + rr * 0.66, rr * 0.95);
-      og.addColorStop(0, 'rgba(12,9,10,0.40)');
-      og.addColorStop(0.55, 'rgba(12,9,10,0.20)');
+      const oy = a[1] + rr * 0.62, orad = rr * 0.55;
+      const og = c.createRadialGradient(a[0], oy, orad * 0.06, a[0], oy, orad);
+      og.addColorStop(0, 'rgba(12,9,10,0.18)');
+      og.addColorStop(0.55, 'rgba(12,9,10,0.09)');
       og.addColorStop(1, 'rgba(12,9,10,0)');
+      c.save();
+      c.beginPath(); c.rect(a[0] - orad * 1.3, a[1], orad * 2.6, rr * 1.8); c.clip();
       c.fillStyle = og;
-      c.beginPath(); c.ellipse(a[0], a[1] + rr * 0.66, rr * 0.95, rr * 0.72, 0, 0, TAU); c.fill();
+      c.beginPath(); c.ellipse(a[0], oy, orad, orad * 0.78, 0, 0, TAU); c.fill();
+      c.restore();
     }
   }
   c.restore();
@@ -770,7 +833,11 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     /* ★ THE FUR RIM — tufts pushed THROUGH the outline. Without this a
        "shaggy" coat is noise inside a machined edge, and the silhouette
        (the first thing the eye reads) still says "smooth plastic". */
-    shaggyRim(c, body, r, p, Math.max(7, bodyH * 0.20), 0.6);
+    /* ★ wave 35 — SHORTER AND DENSER. At 0.20·bodyH the strands were long
+       enough to read individually, so even a correctly-hanging coat came out
+       as a palisade of separate spikes. Shaggy is MASS: many short overlapping
+       tufts make a ragged edge, a few long ones make a hedgehog. */
+    shaggyRim(c, body, r, p, Math.max(6, bodyH * 0.125), 0.88);
   }
   /* the rim light along the true dorsal envelope, fading at both ends — a
      flat stroke along a level back read as a hard table edge (review catch) */
@@ -848,7 +915,9 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   }
   /* ═══════ WAVE 6 — THE SKULL AS A SOLID (see SKULL above) ═══════ */
   const mz = spec.muzzle ?? 0.5;
-  const SK = SKULL[spec.family ?? 'generic']!;
+  /* ★ wave 35 — the head's family, which is the body's family unless the row
+     says otherwise (see QuadSpec.skull) */
+  const SK = SKULL[spec.skull ?? spec.family ?? 'generic']!;
   /* the species still sets the proportions of its family's skull: a warthog
      and a boar are both suid wedges, at different lengths and heft */
   const heft = spec.jaw === 'barrel' ? 1.42 : spec.jaw === 'broad' ? 1.16 : spec.jaw === 'fine' ? 0.86 : 1;
@@ -926,27 +995,35 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
 
   /* the nose, ON the end of the muzzle rather than beside it */
   const nosePt = head.pt(0.965, -0.10);
+  /* ★ D-ART-100 AGAIN, wave 35 — `SKULL.nosePad` was read by the 'wet' branch
+     ONLY. The suid's 1.30 and the pachyderm's 0.70 were set, documented as
+     "how big the nose pad is against the muzzle end", and could not change the
+     drawing, because the two branches that need it most never looked. speccheck
+     is structurally blind to this one: the field IS read, so it is not inert —
+     it is inert ON THREE QUARTERS OF ITS USERS, which no gate here can see.
+     Grep every reader of a field, not just the first. */
+  const npad = SK.nosePad;
   if (SK.nose === 'disc') {
     /* a pig's rostral disc: a flat plate seen almost edge-on, with two pits */
     c.fillStyle = `rgb(${Math.min(255, p.cr * 1.12) | 0},${p.cg * 0.86 | 0},${p.cb * 0.88 | 0})`;
     c.save(); c.translate(nosePt[0], nosePt[1]); c.rotate(ang);
-    c.beginPath(); c.ellipse(0, 0, skMuz * 0.42, skMuz * 0.92, 0, 0, TAU); c.fill();
+    c.beginPath(); c.ellipse(0, 0, skMuz * 0.42 * npad, skMuz * 0.92 * npad, 0, 0, TAU); c.fill();
     c.fillStyle = 'rgba(28,18,20,0.62)';
-    for (const s2 of [-1, 1] as const) { c.beginPath(); c.ellipse(skMuz * 0.10, s2 * skMuz * 0.34, skMuz * 0.13, skMuz * 0.19, 0, 0, TAU); c.fill(); }
+    for (const s2 of [-1, 1] as const) { c.beginPath(); c.ellipse(skMuz * 0.10 * npad, s2 * skMuz * 0.34 * npad, skMuz * 0.13 * npad, skMuz * 0.19 * npad, 0, 0, TAU); c.fill(); }
     c.restore();
   } else if (SK.nose === 'nostril') {
     /* a grazer has no black button — just a soft nostril slit in coat colour */
-    c.strokeStyle = 'rgba(26,18,20,0.55)'; c.lineWidth = Math.max(1.6, skMuz * 0.16); c.lineCap = 'round';
+    c.strokeStyle = 'rgba(26,18,20,0.55)'; c.lineWidth = Math.max(1.6, skMuz * 0.16 * npad); c.lineCap = 'round';
     c.beginPath();
-    c.moveTo(nosePt[0] - skMuz * 0.30, nosePt[1] - skMuz * 0.12);
-    c.quadraticCurveTo(nosePt[0] - skMuz * 0.02, nosePt[1] - skMuz * 0.30, nosePt[0] + skMuz * 0.14, nosePt[1] - skMuz * 0.04);
+    c.moveTo(nosePt[0] - skMuz * 0.30 * npad, nosePt[1] - skMuz * 0.12 * npad);
+    c.quadraticCurveTo(nosePt[0] - skMuz * 0.02, nosePt[1] - skMuz * 0.30 * npad, nosePt[0] + skMuz * 0.14 * npad, nosePt[1] - skMuz * 0.04);
     c.stroke();
   } else {
     /* ⚠ EVERY MAMMAL HAD THE SAME SMALL DARK DOT. A nose pad is sized against
        the muzzle it sits on — a dog's takes a quarter of its snout end, a
        bear's is enormous, a cat's is a stud — and the audit called it "a dot
        nose" on animal after animal. */
-    const np = skMuz * 0.46 * SK.nosePad;
+    const np = skMuz * 0.46 * npad;
     c.fillStyle = 'rgba(20,14,16,0.86)';
     c.beginPath(); c.ellipse(nosePt[0], nosePt[1] - np * 0.24, np, np * 0.80, ang, 0, TAU); c.fill();
     /* the two nostril slits, which is what makes it a NOSE and not a bead */
@@ -1007,10 +1084,20 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      TOP-BACK of the head; the ear is the read on a fennec, never on a tiger. */
   const earShape = spec.earShape ?? FAM0.ear;
   /* ★ D-ART-134 — 'hidden' means NO EXTERNAL EAR: a seal, a mole, a sloth. It
-     had no branch below, so every one of them wore the default cup. */
-  if (earShape === 'hidden') return;
+     had no branch below, so every one of them wore the default cup.
+     ⚠ D-ART-137 — AND THE FIX FOR THAT WAS `return`, WHICH LEFT THE FUNCTION.
+     Everything below this point — the face markings, THE EYE, the horns, the
+     trunk and the TAIL — was skipped for every species that has no external
+     ear. Sloth, Mole, Seal, Fur Seal, Sea Lion and Walrus rendered with a
+     blank head and no eye at all, and the Walrus lost the tusks that ARE the
+     animal. `earShape:'hidden'` suppresses an EAR; it was suppressing the
+     face. Found by rendering the six, never by reading the table — the same
+     lesson as D-ART-88, one level down: a fix can be correct about the thing
+     it names and wrong about where it stops. */
   const earR = headR * (ears === 'huge' ? 1.15 : ears === 'large' ? 0.62 : ears === 'round' ? 0.38 : ears === 'small' ? 0.30 : 0.17) * (spec.earScale ?? 1);
-  if (ears === 'fan') {
+  if (earShape === 'hidden') {
+    /* no external pinna — draw nothing, and fall through to the face */
+  } else if (ears === 'fan') {
     /* ★ ARC STAGE 3 — AN ELEPHANT'S EAR IS NOT A RABBIT'S. Routed as 'huge' it
        got two upright ellipses standing off the crown, which is the single most
        wrong thing on the animal. An elephant ear is a broad FAN hanging down
@@ -1214,10 +1301,26 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   /* ---- the signature organ ---- */
   const horn = spec.horn;
   if (horn === 'nose' || horn === 'twinnose') {
+    /* ★ wave 35 — THE HORN WAS ANCHORED TO THE HEAD'S CENTRE. `headX + 0.9…1.5·
+       headR` is a fixed offset from the middle of the skull, but the muzzle end
+       is at headAxis(1.0) — 1.5–2.5·headR away on a long skull — so the horn
+       floated beside the nose instead of standing on it, and on the Rhinoceros
+       it read as a small cream nub pointing sideways off the face. The horn of a
+       rhino IS the rhino. Anchored to the skull's own DORSAL surface, it stands
+       on the nose at any skull length, and it is sized off headR so it reads. */
     c.fillStyle = '#d9cfbc';
-    const nx = headX + headR * (mz > 0.05 ? 1.5 : 0.9), ny = headY + headR * 0.05;
-    c.beginPath(); c.moveTo(nx - 10, ny + 6); c.quadraticCurveTo(nx + 2, ny - headR * 1.3, nx + 14, ny + 4); c.closePath(); c.fill();
-    if (horn === 'twinnose') { c.beginPath(); c.moveTo(nx - 26, ny + 6); c.quadraticCurveTo(nx - 20, ny - headR * 0.6, nx - 10, ny + 5); c.closePath(); c.fill(); }
+    const nasalHorn = (base: [number, number], h: number): void => {
+      const w = headR * 0.26;
+      c.beginPath();
+      c.moveTo(base[0] - w, base[1] + w * 0.24);
+      /* swept forward, the way a real nasal horn curves */
+      c.quadraticCurveTo(base[0] - w * 0.30, base[1] - h * 0.70, base[0] + w * 0.90, base[1] - h);
+      c.quadraticCurveTo(base[0] + w * 0.86, base[1] - h * 0.44, base[0] + w, base[1] + w * 0.16);
+      c.closePath(); c.fill();
+    };
+    /* the big anterior horn on the nose, then the smaller frontal one behind it */
+    nasalHorn(head.pt(0.90, 1.24), headR * 1.30);
+    if (horn === 'twinnose') nasalHorn(head.pt(0.60, 1.32), headR * 0.66);
   } else if (horn === 'ossicone') {
     c.strokeStyle = p.dark; c.lineWidth = 7; c.lineCap = 'round';
     for (const s of [-1, 1] as const) { c.beginPath(); c.moveTo(headX - headR * 0.1 + s * headR * 0.3, headY - headR * 0.6); c.lineTo(headX - headR * 0.15 + s * headR * 0.4, headY - headR * 1.25); c.stroke();
@@ -1286,13 +1389,26 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       }
     }
   } else if (horn === 'tuskup' || horn === 'tuskdown') {
+    /* ★ wave 35 — same centre-anchor bug as the nasal horn, and on the suids it
+       was the more visible of the two: a warthog's tusks left the head beside
+       the EYE and stood straight up like a second pair of horns. A tusk erupts
+       from the mouth line, so it is anchored to the jaw side of the muzzle and
+       the pair straddles it. Widths were fixed pixel counts (5, 6, 10) too, so
+       an elephant and a warthog wore the same 10px tusk; they scale now. */
     c.fillStyle = '#efe6d4';
     const dir = horn === 'tuskup' ? -1 : 1;
+    /* a boar's tusks come out at the mouth corner and sweep up and back; an
+       elephant's and a walrus's leave the front of the jaw and drop */
+    const base = head.pt(horn === 'tuskup' ? 0.80 : 0.90, -0.62);
+    const w = headR * 0.12;
+    const L = headR * (horn === 'tuskup' ? 1.05 : 1.55);
     for (const s of [-1, 1] as const) {
-      const tx = headX + headR * (mz > 0.05 ? 1.1 : 0.7) + s * headR * 0.16, ty = headY + headR * 0.3;
-      c.beginPath(); c.moveTo(tx - 5, ty);
-      c.quadraticCurveTo(tx + dir * -6, ty + dir * headR * 0.9, tx + 6, ty + dir * headR * 1.45);
-      c.quadraticCurveTo(tx + 10, ty + dir * headR * 0.8, tx + 6, ty);
+      const tx = base[0] + s * headR * 0.10, ty = base[1] + s * headR * 0.05;
+      const m2 = s < 0 ? 0.80 : 1;   /* the far tusk sits behind and duller */
+      c.fillStyle = `rgb(${239 * m2 | 0},${230 * m2 | 0},${212 * m2 | 0})`;
+      c.beginPath(); c.moveTo(tx - w, ty);
+      c.quadraticCurveTo(tx - w * 1.30, ty + dir * L * 0.62, tx + w * 1.05, ty + dir * L);
+      c.quadraticCurveTo(tx + w * 1.85, ty + dir * L * 0.56, tx + w, ty);
       c.closePath(); c.fill();
     }
   }
@@ -1301,14 +1417,20 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
        GROUND" is the first mustRead on every elephant row, and a trunk that
        stops in mid-air is the one thing everybody notices. It now runs to the
        ground line and curls, and it tapers, because a trunk is a cone. */
+    /* ★ wave 35 — how far down the trunk reaches. 1 is the elephant's, to the
+       ground; a tapir's 0.16 is a short mobile snout that hangs just past the
+       lip. Every intermediate point is placed along the SAME curve, so a short
+       trunk is a shortened elephant trunk rather than a different drawing. */
+    const tk = typeof spec.trunk === 'number' ? spec.trunk : 1;
     const tRoot: [number, number] = [headX + headR * 0.70, headY + headR * 0.18];
-    const tEnd: [number, number] = [headX + headR * 0.95, groundY - headR * 0.12];
+    const tDrop = (groundY - headR * 0.12 - headY) * tk;
+    const tEnd: [number, number] = [headX + headR * (0.70 + 0.25 * tk), headY + tDrop];
     const trunkT = new Tube({
       P: pathThrough([tRoot,
-        [headX + headR * 1.55, headY + (tEnd[1] - headY) * 0.34],
-        [headX + headR * 1.42, headY + (tEnd[1] - headY) * 0.70],
+        [headX + headR * (0.70 + 0.85 * tk), headY + tDrop * 0.34],
+        [headX + headR * (0.70 + 0.72 * tk), headY + tDrop * 0.70],
         tEnd,
-        [headX + headR * 1.75, groundY - headR * 0.02]]),
+        [headX + headR * (0.70 + 1.05 * tk), headY + tDrop + headR * 0.10 * tk]]),
       R: (t2: number) => headR * (0.30 - t2 * 0.16),
     });
     c.fillStyle = p.base;
@@ -1316,10 +1438,17 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.save(); c.beginPath(); trunkT.trace(c, 36); c.clip();
     countershade(c, trunkT, p, 0.9);
     c.restore();
+    /* ★ wave 35 — the annulation rings were laid on a HAND-WRITTEN line that
+       happened to follow the old elephant curve, so on any other trunk length
+       they marched off into empty space. They ride the tube's own axis now,
+       and their width comes from its own radius — so they stay ON the trunk
+       whatever it is attached to (the same lesson as the tail bands below). */
     c.strokeStyle = 'rgba(0,0,0,0.16)'; c.lineWidth = headR * 0.12;
     for (let i = 1; i <= 5; i++) {
-      const t = i / 6, tx = headX + headR * (0.75 + 1.0 * t), ty = headY + headR * (0.2 + 1.7 * t);
-      c.beginPath(); c.moveTo(tx - headR * 0.2, ty); c.lineTo(tx + headR * 0.2, ty); c.stroke();
+      const t = i / 6;
+      const [tx, ty] = trunkT.axis(t);
+      const rw = headR * (0.30 - t * 0.16) * 0.72;
+      c.beginPath(); c.moveTo(tx - rw, ty); c.lineTo(tx + rw, ty); c.stroke();
     }
   }
 
@@ -1399,16 +1528,101 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.strokeStyle = p.base; c.lineWidth = bodyH * 0.20; c.lineCap = 'round';
     c.beginPath(); c.moveTo(tx0, ty0);
     c.quadraticCurveTo(tx0 - bodyW * 0.55 * TS, ty0 + bodyH * 0.10, ex2, ey2); c.stroke();
-    if (tail === 'tuft') { c.fillStyle = p.dark; c.beginPath(); c.ellipse(ex2, ey2 + bodyH * 0.05, bodyH * 0.16, bodyH * 0.22, 0, 0, TAU); c.fill(); }
-  } else if (tail === 'banded') {
-    c.strokeStyle = p.base; c.lineWidth = bodyH * 0.42; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(tx0, ty0); c.quadraticCurveTo(tx0 - bodyW * 0.45, ty0 + bodyH * 0.1, tx0 - bodyW * 0.55, ty0 + bodyH * 0.8); c.stroke();
-    c.strokeStyle = 'rgba(28,22,18,0.75)'; c.lineWidth = bodyH * 0.42;
-    for (let i = 0; i < 4; i++) {
-      const t = 0.2 + i * 0.22;
-      const bxp = tx0 - bodyW * (0.45 * t + 0.1 * t * t), byp = ty0 + bodyH * (0.1 + 0.7 * t * t);
-      c.beginPath(); c.moveTo(bxp, byp); c.lineTo(bxp - bodyW * 0.03, byp + bodyH * 0.09); c.stroke();
+    /* ★ wave 35 — `tailTip` WAS READ BY THE BRUSH BRANCH ONLY, so a plain or
+       tufted tail could not have a tip at all. That is the whole signature of a
+       stoat (black-tipped in summer) and of every ermine-tailed mustelid, and
+       the table had no way to say it. Drawn BEFORE the tuft, so a species can
+       have both a dark tip and terminal hair. */
+    if (spec.tailTip) {
+      /* the tip is a THIRD of the tail on a stoat, not a dot on the end — so
+         it is the last stretch of the tail's own curve restroked, which also
+         means it cannot drift off the tail the way a pasted ellipse would */
+      const tipAt = (t: number): [number, number] => {
+        const m = 1 - t;
+        return [m * m * tx0 + 2 * m * t * (tx0 - bodyW * 0.55 * TS) + t * t * ex2,
+          m * m * ty0 + 2 * m * t * (ty0 + bodyH * 0.10) + t * t * ey2];
+      };
+      c.strokeStyle = spec.tailTip; c.lineWidth = bodyH * 0.20; c.lineCap = 'round';
+      c.beginPath();
+      for (let i = 0; i <= 12; i++) {
+        const [px, py] = tipAt(0.66 + (i / 12) * 0.34);
+        if (i === 0) c.moveTo(px, py); else c.lineTo(px, py);
+      }
+      c.stroke();
     }
+    if (tail === 'tuft') {
+      /* ★ wave 35 — A TUFT IS HAIR, NOT A BEAD. This was one dark ellipse
+         stuck on the tail end, and it read as exactly that on Warthog, Camel,
+         Bactrian, Dromedary, Zebra, Rhinoceros and every elephant — a blob.
+         A real terminal tuft is a spray of strands leaving the tip, spreading
+         as they fall and breaking the silhouette, so the tail ENDS in hair
+         instead of stopping at a dot. Same fix the brush tail got in wave 21;
+         this branch never received it. */
+      const tr = mulberry32((((g.seed as number) ^ 0x51F7) >>> 0));
+      /* the tail's own direction at the tip, so the tuft hangs off the END of
+         the tail rather than in a fixed compass direction */
+      const dx = ex2 - tx0, dy = ey2 - ty0;
+      const dl = Math.max(1, Math.hypot(dx, dy));
+      const ux = dx / dl, uy = dy / dl;
+      const L = bodyH * 0.46;
+      c.lineCap = 'round';
+      for (let i = 0; i < 34; i++) {
+        const spread = (tr() - 0.5) * 1.15;
+        const ax2 = Math.atan2(uy, ux) + spread;
+        const len = L * (0.45 + tr() * 0.75);
+        const m2 = 0.34 + tr() * 0.30;
+        c.strokeStyle = `rgb(${p.cr * m2 | 0},${p.cg * m2 | 0},${p.cb * m2 | 0})`;
+        c.globalAlpha = 0.45 + tr() * 0.45;
+        c.lineWidth = Math.max(1.2, bodyH * (0.020 + tr() * 0.022));
+        const sx = ex2 + ux * bodyH * 0.04 * tr(), sy = ey2 + uy * bodyH * 0.04 * tr();
+        c.beginPath(); c.moveTo(sx, sy);
+        c.quadraticCurveTo(sx + Math.cos(ax2) * len * 0.55, sy + Math.sin(ax2) * len * 0.55 + len * 0.16,
+          sx + Math.cos(ax2) * len, sy + Math.sin(ax2) * len + len * 0.34);
+        c.stroke();
+      }
+      c.globalAlpha = 1;
+    }
+  } else if (tail === 'banded') {
+    /* ★ wave 35 — THE RINGED TAIL DID NOT HAVE RINGS. The tail was stroked
+       along a quadratic bezier, and then the four "bands" were placed with a
+       DIFFERENT, hand-written formula (0.45·t + 0.1·t²) that is not that curve
+       — so they drifted off the tail and what remained was four 2px ticks in
+       empty space. Every banded tail in the catalogue rendered as a plain dark
+       curl: Coati, Kinkajou, Raccoon, Red Panda, Civet, Sand Cat, Wildcat.
+       A ring is a mark ON a solid, so the tail is a Tube now and the rings are
+       laid across its OWN axis, clipped to its own surface — they cannot leave
+       it, whatever the curve does or how the species scales it. */
+    const TS = spec.tailScale ?? 1;
+    const tailAt = (t: number): [number, number] => {
+      const m = 1 - t;
+      const p1x = tx0 - bodyW * 0.45 * TS, p1y = ty0 + bodyH * 0.10;
+      const p2x = tx0 - bodyW * 0.55 * TS, p2y = ty0 + bodyH * 0.80 * TS;
+      return [m * m * tx0 + 2 * m * t * p1x + t * t * p2x,
+        m * m * ty0 + 2 * m * t * p1y + t * t * p2y];
+    };
+    const tailR = (t: number): number => bodyH * 0.20 * (1 - t * 0.30);
+    const tailT = new Tube({ P: tailAt, R: tailR });
+    c.fillStyle = p.base;
+    c.beginPath(); tailT.trace(c, 36); c.fill();
+    c.save();
+    c.beginPath(); tailT.trace(c, 36); c.clip();
+    countershade(c, tailT, p, 0.85);
+    /* six dark rings, each a short segment of the axis stroked wide enough to
+       cross the whole tail and clipped back to it — so a ring is a ring at any
+       bend, and the alternation reads even at thumbnail size */
+    c.lineCap = 'butt';
+    for (let i = 0; i < 6; i++) {
+      const t0 = 0.08 + i * 0.155;
+      const a2 = tailAt(t0), b2 = tailAt(Math.min(1, t0 + 0.075));
+      c.strokeStyle = 'rgba(30,23,18,0.86)';
+      c.lineWidth = tailR(t0) * 2.6;
+      c.beginPath(); c.moveTo(a2[0], a2[1]); c.lineTo(b2[0], b2[1]); c.stroke();
+    }
+    c.restore();
+    /* the tip is dark on every ringed tail in the catalogue */
+    const tp = tailAt(1);
+    c.fillStyle = 'rgba(30,23,18,0.86)';
+    c.beginPath(); c.arc(tp[0], tp[1], tailR(1) * 0.94, 0, TAU); c.fill();
   } else if (tail === 'paddle') {
     /* ★ ARC STAGE 3 — the beaver's reference row names "flat scaly paddle tail"
        as a mustRead, and the system had no tail that could say it. A beaver's
@@ -1465,7 +1679,13 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Jaguar': { legs: 0.114, depth: 0.1395, len: 0.2287, neck: 0.07, muzzle: 0.35, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#c8983c", family: 'felid' },
   'Leopard': { legs: 0.1253, depth: 0.1268, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#d3ab5e", family: 'felid' },
   'Snow Leopard': { legs: 0.1221, depth: 0.133, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'plume', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' },
-  'Cheetah': { legs: 0.1938, depth: 0.1205, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid' },
+  /* ★ wave 35 — Nick's row: "current ungulate-like body lacks deep chest,
+     tucked waist, feline paws/head". It is the one felid NOT built like a big
+     cat — a whippet: extreme waist tuck, light hindquarters, and a tail nearly
+     as long as the body it steers. Those four numbers are the animal, and the
+     felid plan alone could never reach them because the felid plan describes a
+     leopard. */
+  'Cheetah': { legs: 0.1938, depth: 0.1205, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 0.95, rump: 0.52, tailScale: 1.9 },
   'Cougar': { legs: 0.1482, depth: 0.1268, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid' },
   'Lynx': { legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft' },
   /* the pixel-siblings, separated */
@@ -1483,7 +1703,8 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Moose': { legs: 0.2181, depth: 0.1843, len: 0.2116, neck: 0.10, back: 'humped', muzzle: 0.62, jaw: 'broad', ears: 'large', tail: 'stub', horn: 'palmate', hue: '#5b4433', family: 'cervid' },
   'Elk': { legs: 0.2035, depth: 0.1594, len: 0.2092, neck: 0.13, back: 'sloped', muzzle: 0.48, ears: 'large', tail: 'stub', horn: 'branched', hue: '#9c7748', family: 'cervid' },
   'Deer': { legs: 0.1973, depth: 0.139, len: 0.1709, neck: 0.12, muzzle: 0.42, ears: 'large', tail: 'stub', horn: 'branched', coat: 'spots', hue: '#b98a58', family: 'cervid' },
-  'Reindeer': { legs: 0.1782, depth: 0.1505, len: 0.1974, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#a8917a', family: 'cervid' },
+  /* ★ wave 35 — the warm brown half of the Caribou/Reindeer split; see Caribou */
+  'Reindeer': { legs: 0.1782, depth: 0.1505, len: 0.1974, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#9c7548', family: 'cervid' },
   'Sheep': { legs: 0.1448, depth: 0.1548, len: 0.1777, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', hue: '#a98f6d', family: 'bovid' },
   'Bison': { legs: 0.1211, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', coat: 'shaggy', hue: '#5c4535', family: 'bovid' },
   'Water Buffalo': { legs: 0.1249, depth: 0.1765, len: 0.246, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#4f4a48', family: 'bovid' },
@@ -1503,7 +1724,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
      were not scaled down with it. */
   'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.30, tailScale: 1.6, family: 'canid', earShape: 'point' },
   'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid' },
-  'Hyena': { legs: 0.1442, depth: 0.1492, len: 0.208, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63', family: 'canid' },
+  'Hyena': { legs: 0.1442, depth: 0.1492, len: 0.208, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63', family: 'hyaenid' },
   'Koala': { legs: 0.0551, depth: 0.1434, len: 0.1506, neck: 0.03, muzzle: 0.20, jaw: 'broad', ears: 'huge', tail: 'none', hue: '#a8adb4', family: 'marsupial' },
   /* ⚠ the pachyderms + Zebra/Tiger/Lion/Red Panda/Raccoon are DELIBERATELY
      ABSENT: the verbatim engine already nails them (Elephant 4.5/5; Nick's
@@ -1514,5 +1735,9 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Horse': { legs: 0.1964, depth: 0.1524, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'plume', hue: '#8a5a35', family: 'equid' },
   'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e', family: 'suid', earShape: 'point' },
   'Warthog': { legs: 0.1087, depth: 0.1405, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', hue: '#6b5647', family: 'suid', earShape: 'point' },
-  'Tapir': { legs: 0.1099, depth: 0.1542, len: 0.2276, neck: 0.05, muzzle: 0.48, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#4a4348', family: 'suid' },
+  /* ★ wave 35 — a tapir is barrel-bodied like a suid, so it keeps that BODY;
+     but the suid skull hard-wires the flat cartilage nose disc that is a pig's
+     whole identity, and the reference row warns against it by name. It gets a
+     pachyderm head and the short prehensile proboscis it is known for. */
+  'Tapir': { legs: 0.1099, depth: 0.1542, len: 0.2276, neck: 0.05, muzzle: 0.48, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#4a4348', family: 'suid', skull: 'pachyderm', trunk: 0.16 },
 };

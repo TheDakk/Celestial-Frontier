@@ -9,6 +9,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+/* ★ wave 35 — THE BATTERY COULD NOT EXPRESS A DECLARATION. artlock's whole
+   contract is "say which painter classes you are touching"; the battery invoked
+   it with no arguments, so its [DRIFT] check read "declared: (nothing — so
+   nothing may move)" and FAILED on every legitimate change. A gate that cannot
+   pass when the work is correct does not get fixed — it gets ignored, which is
+   the same failure D-ART-109 already recorded once for this exact stage.
+   Extra args now reach artlock: `npm run artbattery -- --touching=quadruped`. */
+const passthru = process.argv.slice(2).join(' ');
 const STAGES = [
   ['artaudit', 'node tools/artaudit.mjs',
     'the defect classes this pass has shipped: dead painters · discarded rngs · unused name params · degenerate salts · size-only variation · pattern-globbed file discovery · stale-bundle readers'],
@@ -32,7 +40,7 @@ const STAGES = [
 
      Last of the stages on purpose — it renders the whole catalogue twice and
      is by far the slowest, so a cheap static failure should surface first. */
-  ['artlock', 'node tools/artlock.mjs',
+  ['artlock', `node tools/artlock.mjs${passthru ? ' ' + passthru : ''}`,
     'the safety net: nothing drifted outside the classes this change declared, and no two Earth species collapsed into the same picture'],
 ];
 
