@@ -517,7 +517,8 @@ export interface BirdSpec {
   neck?: 'short' | 'long' | 'swan' | 'none';
   tail?: 'short' | 'fan' | 'long' | 'forked';
   eyespots?: boolean;                              /** the peacock train */
-  pearled?: boolean;                               /** wave 39 — the guineafowl's white pearl spotting */
+  pearled?: boolean;                               /** wave 39 — guineafowl pearl spotting */
+  cling?: boolean;                                 /** wave 40 — vertical trunk cling (woodpecker) */                               /** wave 39 — the guineafowl's white pearl spotting */
   owl?: boolean;                                   /** round head, facial disc, forward eyes */
   swim?: boolean;                                  /** rides a waterline; legs hidden */
   upright?: boolean;                               /** penguin/auk stance, flipper not wing */
@@ -600,7 +601,35 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
   const bw = S * 0.15 * sz * (opts.upright ? 0.78 : 1) * elong * (opts.flightless ? 0.86 : 1);
   const bh = S * 0.12 * sz * (opts.upright ? 1.45 : 1) * plump * (opts.flightless ? 1.30 : 1);
   const by = groundY - legLen - bh;
-  ground(c, bx, groundY + 4, S * 0.16 * sz);
+  /* ★ WAVE 40 — CLINGING. `faunaBird` draws one posture: a bird perched level
+     on a ground line. A woodpecker is never in it — the row asks for a bird
+     gripping a VERTICAL TRUNK, head up, braced back on a stiff tail — and the
+     gold pass failed it on exactly that.
+     The whole bird is rotated about its own body centre rather than each part
+     being re-authored, which is the same move the quadruped pose uses: turn the
+     frame, and every feature drawn inside it comes along. The trunk is drawn
+     first, unrotated, so the bird grips something that is genuinely upright. */
+  if (opts.cling) {
+    const tw = S * 0.115;
+    const tg = c.createLinearGradient(bx + S * 0.03 - tw, 0, bx + S * 0.03 + tw, 0);
+    tg.addColorStop(0, '#2f251a'); tg.addColorStop(0.42, '#5b4632'); tg.addColorStop(1, '#241c14');
+    c.fillStyle = tg;
+    c.fillRect(bx + S * 0.03 - tw, 0, tw * 2, S);
+    c.strokeStyle = 'rgba(20,15,10,0.34)'; c.lineWidth = 1.4;
+    for (let i = 0; i < 6; i++) {
+      const xx = bx + S * 0.03 - tw + (i + 0.5) * (tw * 2 / 6);
+      c.beginPath(); c.moveTo(xx, 0);
+      c.bezierCurveTo(xx + 5, S * 0.34, xx - 5, S * 0.66, xx + 2, S); c.stroke();
+    }
+    c.save();
+    /* ⚠ SIGN MATTERS HERE and I got it backwards first: this painter draws
+       the bird facing LEFT, so a NEGATIVE rotation swings the head DOWN the
+       trunk. Positive brings the head up and swings the tail down behind it,
+       which is also exactly where a woodpecker's stiff tail braces. */
+    c.translate(bx, by); c.rotate(1.16); c.translate(-bx, -by);
+  } else {
+    ground(c, bx, groundY + 4, S * 0.16 * sz);
+  }
 
   /* legs — hidden on a swimming bird, which rides its waterline instead */
   if (!opts.swim) {
@@ -1139,6 +1168,8 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       i % 3 ? '235,236,230' : '30,26,20', 0.035 + r() * 0.045, a * 0.3);
   }
   c.restore();
+  /* ★ WAVE 40 — close the cling transform opened before the body */
+  if (opts.cling) c.restore();
 }
 
 /** the wave-3 roster: species whose defining anatomy was categorically wrong */
