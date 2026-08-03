@@ -831,6 +831,21 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
         { detail: BIRD_MAT_DETAIL * 0.85 });
       c.restore();
     }
+    if (opts.wingClaw) {
+      /* ★ D-ART-135 — THE HOATZIN'S WING CLAW, and the reason speccheck exists.
+         Wave 28 declared this axis, set it on the row, wrote the comment, and
+         never wrote the drawing — the gate caught it before a human did. The
+         claw sits at the leading BEND of the folded wing, which on a hoatzin
+         chick is the hand it climbs with. */
+      c.fillStyle = '#efe6d4';
+      c.beginPath();
+      c.moveTo(-bw * 0.30, -bh * 0.34);
+      c.quadraticCurveTo(-bw * 0.52, -bh * 0.52, -bw * 0.58, -bh * 0.24);
+      c.quadraticCurveTo(-bw * 0.44, -bh * 0.30, -bw * 0.30, -bh * 0.20);
+      c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(60,48,34,0.5)'; c.lineWidth = 1;
+      c.stroke();
+    }
     c.strokeStyle = 'rgba(0,0,0,0.3)'; c.lineWidth = 1.4;
     for (let i = 0; opts.flightless ? false : i < 6; i++) {   /* primaries fanning to the tail */
       c.beginPath(); c.moveTo(-bw * 0.1 + i * 4, 0);
