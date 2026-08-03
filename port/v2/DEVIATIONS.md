@@ -990,3 +990,52 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   must ship one. Measured during Phase 0; do not let the port inherit the absence.
 - ☐ **D-LEGACY-VOICE / D-F0** — already decided in `port/DECISIONS.md` (fallback-only;
   soft saturation tuned after the listening test). Listed here only for completeness.
+
+- ⚠ **D-ART-139 — THE SHADOW SENTINEL COULD NOT SEE THE TABLE THAT SHADOWS EVERYTHING
+  (wave 42).** `overridecheck` has carried a SHADOWED ROUTES check since wave 9. It ran green
+  all session while **28 species** shipped keyed in both `CANON` and a lower table — every
+  lower row a dead painter, several *disagreeing* with the live one (Reindeer Lichen's dead
+  row drew a bracket shelf against CANON's lichen mat). Two independent bugs stacked:
+  its table-name filter matched `NAME|ICONIC|DUPES|SPEC` and not `CANON`; and its declaration
+  matcher used `[^=]*?` for the type annotation, which **cannot cross the `=>`** in
+  `Record<string, (c,g,p) => void>`. **Fixing either alone leaves it green.**
+  ★ **A gate that has never seen its highest-priority input has never run.** When a check
+  enumerates "all tables", verify the enumeration against the source of truth, not against
+  the check's own success.
+  Gate armed and negative-controlled: re-introducing a shadowed row exits 1, clean exits 0.
+  The proof the deletions were safe is **zero Earth drift across 1,250 assets** — a dead row
+  removed changes nothing; a live one would have swapped its species' painter.
+
+- ⚠ **D-ART-140 — SUSPECT A NEW SCAN BEFORE YOU SUSPECT THE CODE (wave 42).** Four times in
+  one day an instrument lied before the source did: a discarded-path detector reported nine
+  dead paths (it started scanning at `i+1` and missed every single-line
+  `beginPath(); …; stroke();` — true count zero); an inert-option scan reported all 32
+  declared fields unread (shell escaping had mangled its regex — true count one); and
+  widening `overridecheck` introduced two false positives of its own before it found anything
+  real. Every genuine finding in wave 42 was confirmed by reading the code.
+  ★ **A suspiciously large finding count is a bug report about the instrument.** This project
+  has now recorded that lesson six times; it keeps arriving because a new scan is always
+  written by someone who has just convinced themselves the defect is widespread.
+
+- ⚠ **D-ART-141 — ON A DARK ANIMAL, THE ONLY LIGHT ELEMENT IS STRUCTURAL (waves 38–41).**
+  Three separate fixes were right about the defect and wrong about the remedy, all in the same
+  direction, all caught by artlock: deleting the primate torso wash (a fixed cream over an
+  arbitrary hue genuinely *is* a stain) took confusable 1007 → 1018 with the Aye-Aye in seven
+  of eleven new pairs; giving the corvids their true near-black bills took 1003 → 1016 with
+  Raven in six of fifteen. **Removing a light element for accuracy costs more legibility than
+  the accuracy buys, unless the contrast is replaced.** A subtraction that improves fidelity
+  and deletes the last tonal separation is a regression, and the fingerprint says so before a
+  human notices.
+
+- ✅ **D-ART-142 — A POSE IS AN AXIS, NOT A PAINTER (wave 40).** Meerkat's sentinel stance,
+  the sloth's hang and the woodpecker's trunk cling were filed twice as needing "a different
+  body-axis construction, not a parameter" — their own arc. Correct diagnosis, wrong cost:
+  since wave 4 the body is a SOLID built from an axis path, and the Tube, silhouette, coat,
+  material, countershading and rim light **all derive from `AX(u)`**. Re-orienting the axis
+  re-poses every one of them and none needs to know a pose exists. Verified: exactly **three**
+  of 1,250 assets moved.
+  ★ **Whether a shape can be re-posed cheaply depends on whether it was built as a SOLID or
+  as an OUTLINE.** The same session's elephant ear — a hand-drawn outline — could not be moved
+  at all and cost three reverted attempts (see the G9 note in `reference/GOLD_PASS_2026-08-03.md`).
+  Wave 4's investment is what paid for wave 40. The remaining hand-drawn outlines (the
+  elephant fan, the cobra hood) are where the next posture request will hurt.
