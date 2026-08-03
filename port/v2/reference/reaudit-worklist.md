@@ -170,4 +170,5 @@ through the verbatim hdart engine and are still flat gradients with their own be
 detail. That is the same partial-material problem that justified going past mammals in the
 first place, one level up — and it will read as *the aliens being unfinished* once a player
 sees them beside the Earth catalogue. Doing it means giving the procedural body plans the
-same  surface coordinates the Earth painters have, which /already make cheap.
+same `Tube` surface coordinates the Earth painters have, which `ellipseTube` and
+`profileTube` already make cheap.
