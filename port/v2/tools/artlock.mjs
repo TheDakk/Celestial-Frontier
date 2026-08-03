@@ -93,6 +93,22 @@ function dist(a, b) {
 }
 
 
+/* ★ D-ART-120 — SHAPE DISTANCE, in percent of the coverage mask that flipped.
+   The RGB grid above is area-weighted and therefore blind to thin structures;
+   this counts differing BITS in a 64×64 silhouette, where a moved leg flips a
+   hundred of them. Reported on the same 0-255-ish scale as `dist` so the two
+   can share one epsilon: 1 unit ≈ 0.4% of the mask changed. */
+function silDist(a, b) {
+  const A = bufOf(a), B = bufOf(b);
+  if (!A || !B || A.length !== B.length || A.length === 0) return Infinity;
+  let diff = 0;
+  for (let i = 0; i < A.length; i++) {
+    let x = A[i] ^ B[i];
+    while (x) { diff += x & 1; x >>= 1; }
+  }
+  return (diff / (A.length * 8)) * 255;
+}
+
 /* ───────────────────────── the negative control ───────────────────────── */
 if (has('selftest')) {
   let pass = 0, fail = 0;
@@ -109,6 +125,18 @@ if (has('selftest')) {
   ck('a missing fingerprint is infinite drift', dist(flat, null) > DRIFT_EPS, true);
   ck('a truncated fingerprint is infinite drift', dist(flat, Buffer.from([1, 2, 3]).toString('base64')) > DRIFT_EPS, true);
   ck('an empty fingerprint is infinite drift', dist(flat, '') > DRIFT_EPS, true);
+  /* ★ D-ART-120 — the SHAPE channel, controlled in both directions. These are
+     the controls the colour grid could never pass: a thin structure. */
+  const SB = 64 * 64 / 8;
+  const mask = (f2) => Buffer.from(Array.from({ length: SB }, (_, i) => f2(i) & 255)).toString('base64');
+  const blank = mask(() => 0);
+  ck('an identical silhouette is not drift', silDist(blank, blank) > DRIFT_EPS, false);
+  ck('a ONE-PIXEL-WIDE limb moving IS drift (the whole point)',
+    silDist(blank, mask((i) => (i % 8 === 0 ? 0b00010000 : 0))) > DRIFT_EPS, true);
+  ck('a single flipped pixel is NOT drift (noise floor holds)',
+    silDist(blank, mask((i) => (i === 0 ? 1 : 0))) > DRIFT_EPS, false);
+  ck('a missing silhouette is infinite drift', silDist(blank, null) > DRIFT_EPS, true);
+  ck('a truncated silhouette is infinite drift', silDist(blank, mask(() => 0).slice(0, 8)) > DRIFT_EPS, true);
   console.log('artlock --selftest: ' + pass + '/' + (pass + fail) + ' judgement controls');
   console.log(fail ? '  ⚠ the control itself is broken — fix it before trusting a report'
     : '  the DECISION layer holds. ⚠ D-ART-81: this says NOTHING about the fingerprint\n'
@@ -178,12 +206,18 @@ for (let i = 0; i < keys.length; i += 120) {
   const part = await evalIn(`(()=>{const F=window.__CF_FINGERPRINTS__,K=Object.keys(F).slice(${i},${i + 120}),o={};for(const k of K)o[k]=F[k];return o;})()`);
   Object.assign(now, part);
 }
+/* ★ D-ART-120 — the SILHOUETTE channel, pulled the same chunked way. */
+const nowSil = {};
+for (let i = 0; i < keys.length; i += 120) {
+  const part = await evalIn(`(()=>{const F=window.__CF_SILHOUETTES__||{},K=Object.keys(F).slice(${i},${i + 120}),o={};for(const k of K)o[k]=F[k];return o;})()`);
+  Object.assign(nowSil, part);
+}
 ws.close(); edge.kill(); server.close();
 if (Object.keys(now).length !== keys.length) {
   console.error('artlock: fingerprint transfer lost rows (' + Object.keys(now).length + '/' + keys.length + ')');
   process.exit(2);
 }
-console.log('artlock: fingerprinted ' + keys.length + ' assets');
+console.log('artlock: fingerprinted ' + keys.length + ' assets (' + Object.keys(nowSil).length + ' silhouettes)');
 
 /* ───────────────────────────── the guards ───────────────────────────── */
 
@@ -204,6 +238,7 @@ if (has('bless')) {
   const names = only ? new Set(only.split(',').map((s) => s.trim())) : null;
   let n = 0;
   const next = (names || clsOnly) ? { ...lock.fp } : {};
+  const nextSil = (names || clsOnly) ? { ...(lock.sil || {}) } : {};
   /* ⚠ a partial bless used to LEAVE STALE KEYS BEHIND, and the next run
      reported 1,134 assets as having "VANISHED" — a whole-catalogue alarm
      produced entirely by the lock's own bookkeeping. A full bless replaces
@@ -212,9 +247,10 @@ if (has('bless')) {
     const bare = k.slice(k.indexOf('|') + 1);
     if (names && !names.has(bare)) continue;
     if (clsOnly && classOf(CLS, k) !== clsOnly) continue;
-    next[k] = now[k]; n++;
+    next[k] = now[k]; nextSil[k] = nowSil[k]; n++;
   }
   lock.fp = next;
+  lock.sil = nextSil;
   lock.blessed = new Date().toISOString().slice(0, 10);
   lock.note = 'Re-blessed by tools/artlock.mjs. A blessing is a CLAIM THAT SOMEONE LOOKED. '
     + 'Never bless to make a red report go green — that is the whole failure this file exists to stop.';
@@ -255,7 +291,11 @@ if (!lockExists && !has('bless')) {
   for (const k of keys) {
     const was = lock.fp[k];
     if (!was) { missing++; continue; }          /* a NEW asset is not drift */
-    const d = dist(was, now[k]);
+    /* ★ D-ART-120 — take the WORSE of colour-mass and SHAPE. The RGB grid is
+       area-weighted and cannot see a limb move; the silhouette can. A wave
+       that rebuilt four crocodilians' legs and three orthopterans' femurs
+       scored 0 on the grid and would have passed silently. */
+    const d = Math.max(dist(was, now[k]), silDist((lock.sil || {})[k], nowSil[k]));
     if (d <= DRIFT_EPS) continue;
     const c = clsOf(k);
     if (!byClass.has(c)) byClass.set(c, []);

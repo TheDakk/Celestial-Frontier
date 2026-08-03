@@ -963,18 +963,25 @@ export function faunaCroc(c: Ctx, g: G, pIn: Pal, spec: CrocSpec, name = ''): vo
      A crocodilian's limbs stick out sideways and its belly nearly touches the
      ground — the sprawl IS the silhouette, and drawing them under the body
      turns it into a lizard-shaped dog. */
-  /* ★ D-ART-117 — THE LEGS USED TO CROSS IN AN X AND THERE WERE ONLY TWO.
-     Two bugs in four lines, and they hit every crocodilian at once —
-     Crocodile, Alligator, Caiman and Gharial all reported "two thick bars
-     that cross at the exact midpoint and meet at a single shared foot".
+  /* ★ D-ART-117 — THE LEGS USED TO CROSS IN AN X. It hit every crocodilian at
+     once: Crocodile, Alligator, Caiman and Gharial all reported "two thick
+     bars that cross at the exact midpoint and meet at a single shared foot".
 
-     · The foot was thrown a fixed 1.55–1.70 body-radii along the SPINE AXIS,
-       hind one way and fore the other. Since the hind limb sits at u=0.70 and
-       the fore at u=0.30, each reached past the body's midpoint toward the
-       other and they crossed. A sprawled limb goes OUT and DOWN from its own
-       hip, not lengthwise toward the far end.
-     · Both calls passed far=true, so only the FAR pair was ever drawn. The
-       near pair did not exist, which is why the render showed two legs. */
+     THE DEFECT was the splay: the foot was thrown a fixed 1.55–1.70 body-radii
+     along the SPINE AXIS, hind one way and fore the other. The hind limb sits
+     at u≈0.72 and the fore at u≈0.28, so each reached past the body's midpoint
+     toward the other and they crossed, folding four legs into what looked like
+     two. A sprawled limb goes OUT and DOWN from its own hip, never lengthwise
+     toward the far end.
+
+     ⚠ AND A DIAGNOSIS THAT WAS WRONG, kept because it cost real time. Wave 26
+     also concluded "both calls pass far=true, so the near pair is never
+     drawn" — from reading THIS call site alone. The near pair is drawn, forty
+     lines further down, after the body. Four legs always reached the canvas.
+     Adding a second near pair here changed nothing visible, so the mistake
+     survived a look at the render; it was caught only when a negative control
+     removed the duplicate and the picture stayed at four legs.
+     READ EVERY CALL SITE OF A HELPER BEFORE CLAIMING WHAT IT NEVER DOES. */
   const leg = (u: number, back: boolean, far: boolean): void => {
     const a = spine(u);
     const m = far ? 0.55 : 1;
@@ -1004,10 +1011,13 @@ export function faunaCroc(c: Ctx, g: G, pIn: Pal, spec: CrocSpec, name = ''): vo
       c.stroke();
     }
   };
-  /* FOUR legs: the far pair first so the near pair overlaps it, and the body
-     is drawn after all of them so the limb roots disappear under the flank */
+  /* the FAR pair, before the body so their roots vanish under the flank. The
+     near pair is drawn AFTER the body, further down — do not duplicate it
+     here. (Wave 26 briefly did, having read only this call site and concluded
+     the near pair was missing entirely; the render showed four legs either
+     way, which is exactly why the claim survived a look. The actual defect was
+     the splay sign below, shared by both pairs.) */
   leg(0.72, true, true); leg(0.28, false, true);
-  leg(0.72, true, false); leg(0.28, false, false);
 
   /* the body */
   const bg = c.createLinearGradient(0, gy - bodyR * 1.6, 0, gy + bodyR * 1.4);
@@ -1052,7 +1062,7 @@ export function faunaCroc(c: Ctx, g: G, pIn: Pal, spec: CrocSpec, name = ''): vo
   c.beginPath();
   for (let i = 0; i <= 40; i++) { const u = 0.05 + (i / 40) * 0.55; const a = spine(u); c.lineTo(a[0], a[1] - rad(u)); }
   c.stroke();
-  leg(0.70, true, false); leg(0.30, false, false);
+  leg(0.72, true, false); leg(0.28, false, false);
 
   /* ── THE HEAD, which is the whole species ── */
   const hx = x0 + headL * 0.16, hy = gy - bodyR * 0.30;
