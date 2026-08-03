@@ -740,7 +740,20 @@ export function primate(c: Ctx, g: G, pIn: Pal, opts: { build: 'great' | 'lesser
     softMark(c, cx + s * shoulder * 0.78, cy - bh * 0.58, bw * (great ? 0.40 : 0.28), bh * (great ? 0.34 : 0.24),
       `${Math.min(255, p.cr * 1.18 | 0)},${Math.min(255, p.cg * 1.18 | 0)},${Math.min(255, p.cb * 1.18 | 0)}`, great ? 0.30 : 0.18);
   }
-  /* the lighter chest/belly, softly blended */
+  /* ⚠ WAVE 38, G11 — ATTEMPTED AND REVERTED. TWICE. Read before trying again.
+     The gold pass says the primate torso wash reads as "mould or a light leak"
+     across Gorilla, Chimpanzee, Orangutan and Capuchin, and prescribes deleting
+     it. It is a FIXED cream (236,226,206) over an arbitrary hue, which is a
+     stain rather than shading, so the diagnosis is right.
+     But it is also LOAD-BEARING. Deleting it: confusable 1007 -> 1018, with the
+     AYE-AYE alone in seven of the eleven new pairs — stripped of the wash a dark
+     primate becomes a uniform silhouette and matches every other small dark
+     subject in the catalogue. Re-deriving it from `p` (×1.52) instead: 1016,
+     because on a near-black ape a proportional lift is no lift at all.
+     THE WASH IS THE ONLY TONAL MODELLING ON THE TORSO, and that is the actual
+     defect. Removing it needs something to replace it — real countershading off
+     the body's own form (the mammals got this in wave 4 via `countershade`),
+     not a subtraction. Until then the ugly version is the better one. */
   softMark(c, cx, cy + bh * 0.25, bw * 0.62, bh * 0.6, '236,226,206', 0.16);
   /* head: forward-facing FACE DISC — what makes a primate read */
   const hr = bh * (great ? 0.56 : 0.48) * nvar(name, 0xF1, 0.14), hx = cx, hy = cy - bh * 1.18;
@@ -831,7 +844,14 @@ export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 's
   const r = nrng(g, name, 0x5E11);
   const cx = S * 0.5, cy = S * 0.52;
   const sv = nvar(name, 0xF4, 0.18), sv2 = nvar(name, 0xF5, 0.16);
-  ground(c, cx, S * 0.76, S * 0.20);
+  /* ★ WAVE 38, G11 — THE DETACHED SHADOW. `S*0.76` is a fixed ground line
+     shared by all five shell kinds, but a snail's foot bottoms out at
+     cy + 0.111·S ≈ 0.63·S — so its shadow floated 0.13·S clear of the animal,
+     which the audit reported on both snails as a body hovering above its own
+     shadow. A cast shadow has to come from where the subject actually MEETS the
+     ground; a constant can only be right for one of five shapes. Only the snail
+     branch is re-based here, because it is the only one measured. */
+  ground(c, cx, opts.kind === 'snail' ? cy + S * 0.128 : S * 0.76, S * 0.20);
   if (opts.kind === 'scallop') {
     const w = S * 0.20 * sv, h = S * 0.17 * sv2;
     c.fillStyle = grad(c, p, cx, cy, w);
@@ -876,7 +896,16 @@ export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 's
       c.beginPath(); c.arc(wx, wy, wr, 0, TAU); c.fill();
       if (i % 13 === 0) { c.strokeStyle = 'rgba(30,22,14,0.28)'; c.lineWidth = 1.6; c.beginPath(); c.arc(wx, wy, wr, 0, TAU); c.stroke(); }
     }
-    rim(c, () => c.arc(sx, sy, R * 0.95, -2.5, 1.4), 2);
+    /* ★ WAVE 38, G11 — THE STRAY CIRCULAR STROKE ON THE LAND SNAIL. The
+       verifier, at 8×: "a stray pale circular stroke that overshoots the shell
+       silhouette into the background at top-right and cuts across the foot at
+       bottom-left (a plain drawing artifact)".
+       It is this rim, and it was a perfect CIRCLE at R*0.95 while the whorls
+       above are laid on an ELLIPSE (·0.92 in x, ·0.80 in y). A circle around an
+       ellipse leaves the shape wherever the two disagree — top and bottom — and
+       the -2.5…1.4 sweep then carried it on down through the foot. Matched to
+       the whorls' own aspect and stopped before the aperture. */
+    rim(c, () => c.ellipse(sx, sy, R * 0.94, R * 0.82, 0, -2.4, 0.55), 2);
   } else if (opts.kind === 'spiral') {
     const turns = 3.4 * sv, R = S * 0.20 * sv2;
     for (let i = 120; i >= 0; i--) {
