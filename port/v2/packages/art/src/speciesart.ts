@@ -29,7 +29,14 @@ export function speciesPortrait(g: Record<string, unknown>): string {
 
 const speciesThumbCache = new Map<string, string>();
 export function speciesThumb(g: Record<string, unknown>): string {
-  const key = g.seed + '_' + (g.gen || 0) + '_' + g.kingdom + (g.apex ? '_A' : '') + (g.par ? '_P' : '');
+  /* ★ WAVE 42, CODE PASS A1 — this key was missing the `_earthName` fold that
+     speciesPortrait's key gained in the morphology pass, so a corrected Earth
+     species and its uncorrected fallback genome COLLIDED on one thumb slot:
+     whichever painted first, the other showed its thumbnail — Compendium and
+     planetside could disagree about the same seed. A divergent-duplicate of
+     the portrait key, drifted by one term. */
+  const nm = (g as { _earthName?: string })._earthName || '';
+  const key = g.seed + '_' + (g.gen || 0) + '_' + g.kingdom + (g.apex ? '_A' : '') + (g.par ? '_P' : '') + (nm ? '_' + nm : '');
   if (speciesThumbCache.has(key)) { const u = speciesThumbCache.get(key)!; speciesThumbCache.delete(key); speciesThumbCache.set(key, u); return u; }
   const full = speciesPortrait(g);
   try {

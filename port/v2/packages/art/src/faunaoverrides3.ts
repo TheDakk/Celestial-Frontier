@@ -108,6 +108,12 @@ function heightAt(profile: FishSpec['profile'], t: number, depth: number): numbe
   }
 }
 
+/** ★ wave 42 — the smallest honest peduncle for a profile whose heightAt(0)
+    is exactly zero (fusiform/deep/globe: sin(0)=0). See the pedH note below. */
+function tRefFloor(profile: FishSpec['profile'], depth: number): number {
+  return heightAt(profile, 0.12, depth) * 0.55;
+}
+
 /** THE FISH. One traced body; the spec is the species. */
 export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): void {
   const r = nrng(g, name, 0xF15E);
@@ -161,7 +167,15 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
   };
 
   /* ── the TAIL, behind the body ── */
-  const pedH = heightAt(spec.profile, 0, depth);
+  /* ★ WAVE 42, CODE PASS A2 — `heightAt(profile, 0, …)` is EXACTLY ZERO for
+     fusiform, deep and globe profiles (their bell term is sin(0)=0), and every
+     anchor of the point-tail path is scaled by pedH — so a 'point' tail on any
+     of those profiles collapsed to a degenerate line and painted NOTHING. The
+     Tripod Fish showed seven orphan ray strokes with no membrane, and every
+     PROCEDURAL swimmer that rolls tail%5==='point' with a non-eel body loses
+     its tail the same way, forever, invisibly. Floored to a real peduncle:
+     no fish's tail attaches through a mathematical point. */
+  const pedH = Math.max(heightAt(spec.profile, 0, depth), tRefFloor(spec.profile, depth));
   const tRef = heightAt(spec.profile, 0.14, depth);   /* the body AT the peduncle */
   c.fillStyle = p.dark;
   const tl = len * (spec.tail === 'lunate' ? 0.46 : spec.tail === 'shark' ? 0.52 : 0.36);
