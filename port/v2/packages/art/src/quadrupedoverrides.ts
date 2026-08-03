@@ -1110,12 +1110,27 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
        them apart. (2) The fan was 1.55·headR wide centred barely behind the
        skull, so it covered the entire face; the comment above claims the head
        overlaps its root, and it never did. Smaller, and set BACK. */
+    /* ★ wave 36 — IT WAS A FLAT DARK ELLIPSE, and its own comment above claims
+       it is "drawn behind the head so the head overlaps its root" — it is drawn
+       AFTER the head, so it never was. Another documented-but-false claim, the
+       same shape as D-ART-137. Two fixes: the fan is shaded across its span
+       like the piece of skin it is (an elephant's ear is thin and lit through,
+       pale at the ragged margin, dark in the folded hollow) rather than filled
+       with one p.dark; and it is set further back so the cheek and the eye stay
+       clear of it. */
     const es = spec.earScale ?? 1;
     const fw = headR * 1.16 * es, fh = headR * 1.72 * es;
-    const fx = headX - headR * 1.02, fy = headY + headR * 0.24;
+    const fx = headX - headR * 1.22, fy = headY + headR * 0.24;
     for (const s of [-1, 1] as const) {
       const off = s * headR * 0.16;
-      c.fillStyle = s < 0 ? `rgb(${p.cr * 0.52 | 0},${p.cg * 0.52 | 0},${p.cb * 0.52 | 0})` : p.dark;
+      const fg = c.createLinearGradient(fx + off + fw * 0.40, fy - fh * 0.40, fx + off - fw * 0.90, fy + fh * 0.50);
+      const k2 = s < 0 ? 0.52 : 1;
+      const tone = (v: number): string =>
+        `rgb(${Math.min(255, p.cr * v * k2) | 0},${Math.min(255, p.cg * v * k2) | 0},${Math.min(255, p.cb * v * k2) | 0})`;
+      fg.addColorStop(0, tone(0.46));      /* the hollow where it meets the skull */
+      fg.addColorStop(0.55, tone(0.78));
+      fg.addColorStop(1, tone(1.06));      /* the thin lit margin */
+      c.fillStyle = fg;
       c.beginPath();
       c.moveTo(fx + off + fw * 0.42, fy - fh * 0.46);
       c.bezierCurveTo(fx + off - fw * 0.72, fy - fh * 0.60, fx + off - fw * 0.96, fy + fh * 0.10, fx + off - fw * 0.52, fy + fh * 0.52);
@@ -1154,11 +1169,29 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
          The separation now SCALES with the ear, so a big ear pushes its pair
          apart instead of swallowing it, and the far ear sits back and smaller
          for depth. */
-      const sep = 0.30 + earR / headR * 0.55;
-      const ex = headX - headR * (s < 0 ? sep + 0.16 : Math.max(0.10, sep - 0.30));
-      const ey = headY - headR * (0.56 + (ears === 'huge' ? 0.18 : 0));
+      /* ★ wave 36 — THE ROOT SEPARATION SCALED WITH THE EAR'S SIZE, and it is
+         the skull that decides where an ear is rooted, not the ear. At
+         earR 1.96·headR (Donkey) the pair was pushed 1.38·headR apart while
+         each triangle was 1.44·headR wide, so the two ears MERGED into one
+         grey blob larger than the head — Nick saw it on the proof sheet. The
+         roots are a property of the cranium and are fixed here; a longer ear
+         SPLAYS outward instead of translating away from its own pair, which
+         is what a real long-eared animal does. */
+      const ex = headX - headR * (s < 0 ? 0.62 : 0.24);
+      /* and the ear grows UP from the crown rather than being centred on a
+         fixed point — otherwise a big ear hangs down over the face as far as
+         it rises above it */
+      const ey = headY - headR * 0.42 - earR * 0.52;
       const m = s < 0 ? 0.62 : 1;
-      c.fillStyle = `rgb(${p.cr * 0.52 * m | 0},${p.cg * 0.52 * m | 0},${p.cb * 0.54 * m | 0})`;
+      /* ★ wave 36 — AND IT WAS FILLED AT 0.52 OF THE COAT, which on any pale
+         animal is not an ear, it is a HOLE. That flat dark shape is most of why
+         the donkey's pair read as one grey mass even once the geometry was
+         right, and why 53 'large'-eared species all wear the same dark cap.
+         The BACK of a real ear is coat-coloured, a shade under the flank; the
+         dark part is the concha inside it, which the `inner` fill below already
+         draws. Contrast belongs between the two surfaces, not between the ear
+         and the animal. */
+      c.fillStyle = `rgb(${Math.min(255, p.cr * 0.86 * m) | 0},${Math.min(255, p.cg * 0.84 * m) | 0},${Math.min(255, p.cb * 0.84 * m) | 0})`;
       /* ⚠ WAVE 13 SHIPPED HALF A FIX. The shape switch below was added, but this
          branch — taken by every 'large' and 'huge' ear — was left drawing the old
          two-tone ellipse, so earShape did nothing for a wild dog, an aardvark, a
@@ -1173,8 +1206,14 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
            at four sizes, which is most of why a wolf, a deer and a bear read as
            the same head. Each shape below is a family signature legible at
            thumbnail size, and it is the FIRST thing that differs. */
-        const inner = `rgba(${Math.min(255, p.cr * 1.02) | 0},${Math.min(255, p.cg * 0.84) | 0},${Math.min(255, p.cb * 0.82) | 0},${0.45 * m})`;
-        c.save(); c.translate(ex, ey); c.rotate(-s * 0.18);
+        /* the concha: a warm SHADOWED cavity, not a pale wash. With the ear's
+           back now at coat tone (above), this is what carries the read — an ear
+           is two surfaces at different angles to the light, and the inner one
+           is always the darker in profile. */
+        const inner = `rgba(${Math.min(255, p.cr * 0.46) | 0},${Math.min(255, p.cg * 0.36) | 0},${Math.min(255, p.cb * 0.35) | 0},${0.78 * m})`;
+        /* the splay: a short ear sits nearly upright, a long one leans out, so
+           a donkey reads as two long ears in a V and never as one mass */
+        c.save(); c.translate(ex, ey); c.rotate(-s * (0.18 + (earR / headR) * 0.34));
         if (earShape === 'point' || earShape === 'tuft') {
           /* a canid/equid triangle: straight sides to a sharp tip */
           c.beginPath();
@@ -1488,23 +1527,35 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     /* THE GUARD HAIRS. Sprayed at a random angle they made a starburst — the
        kiwi's mistake, again. Every hair leaves the tail SIDEWAYS off the local
        tangent and sweeps toward the tip, so the brush lies along the tail. */
+    /* ★ wave 36 — AND THEY WERE A STRAW BROOM. Nick's proof sheet showed it on
+       Hyena, Wolf, Fox, Snow Leopard, Bison and Elk: 110 DEAD-STRAIGHT strokes
+       of one fixed 1.5px width, each reaching up to 0.90 of the tail's own
+       width out of it, at up to 0.62 alpha in p.lit/p.dark. That is not fur —
+       it is a bundle of high-contrast straws stuck in a tube.
+       Exactly the three faults the shaggy rim had (wave 35): straight, too
+       long, too few. Fur is CURVED, SHORT and DENSE, it varies in weight, and
+       it lies mostly ALONG the form with only a little of it standing out. */
     const hr = mulberry32((((g.seed as number) ^ 0x7A17) >>> 0));
-    c.lineWidth = 1.5;
-    for (let i = 0; i < 110; i++) {
-      const t = 0.12 + hr() * 0.86;
+    for (let i = 0; i < 210; i++) {
+      const t = 0.10 + hr() * 0.88;
       const [hx2, hy2] = at(t);
       const [nx2, ny2] = at(Math.min(1, t + 0.02));
       const tanA = Math.atan2(ny2 - hy2, nx2 - hx2);
       const side = hr() < 0.5 ? 1 : -1;
       const w = widthAt(t);
-      const L = w * (0.35 + hr() * 0.55);
+      const L = w * (0.16 + hr() * 0.34);
       const px = Math.cos(tanA + side * Math.PI / 2), py = Math.sin(tanA + side * Math.PI / 2);
-      const ux = px * 0.72 + Math.cos(tanA) * 0.68, uy = py * 0.72 + Math.sin(tanA) * 0.68;
-      c.strokeStyle = side > 0 ? p.lit : p.dark;
-      c.globalAlpha = 0.22 + hr() * 0.40;
-      c.beginPath();
-      c.moveTo(hx2 + px * w * 0.25, hy2 + py * w * 0.25);
-      c.lineTo(hx2 + px * w * 0.55 + ux * L, hy2 + py * w * 0.55 + uy * L);
+      /* weighted toward the tip, not out to the side: the brush LIES ALONG the
+         tail and only frays at its edge */
+      const ux = px * 0.46 + Math.cos(tanA) * 0.90, uy = py * 0.46 + Math.sin(tanA) * 0.90;
+      const m2 = side > 0 ? 1.18 : 0.66;
+      c.strokeStyle = `rgb(${Math.min(255, p.cr * m2) | 0},${Math.min(255, p.cg * m2) | 0},${Math.min(255, p.cb * m2) | 0})`;
+      c.globalAlpha = 0.14 + hr() * 0.26;
+      c.lineWidth = Math.max(1, w * (0.045 + hr() * 0.075));
+      const sx = hx2 + px * w * 0.28, sy = hy2 + py * w * 0.28;
+      c.beginPath(); c.moveTo(sx, sy);
+      c.quadraticCurveTo(sx + px * w * 0.24 + ux * L * 0.45, sy + py * w * 0.24 + uy * L * 0.45,
+        sx + px * w * 0.34 + ux * L, sy + py * w * 0.34 + uy * L);
       c.stroke();
     }
     c.globalAlpha = 1;

@@ -99,8 +99,15 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Peccary': { legs: 0.102, depth: 0.1256, len: 0.1752, neck: 0.04, back: 'sloped', muzzle: 0.54, jaw: 'barrel', ears: 'small', tail: 'stub', coat: 'shaggy', hue: '#5f5850', family: 'suid' },
   'Wild Horse': { legs: 0.1964, depth: 0.1524, len: 0.1999, neck: 0.13, muzzle: 0.52, ears: 'large', tail: 'plume', hue: '#a98159', family: 'equid' },
   'Wild Pony': { legs: 0.1542, depth: 0.1365, len: 0.1903, neck: 0.11, muzzle: 0.50, ears: 'large', tail: 'plume', coat: 'shaggy', hue: '#8a6a4a' , family: 'equid' },
-  'Wild Ass': { legs: 0.1901, depth: 0.142, len: 0.1863, neck: 0.12, muzzle: 0.50, ears: 'huge', tail: 'tuft', hue: '#b8ab93', family: 'equid', earShape: 'leaf', earScale: 1.70 },
-  'Donkey': { legs: 0.1781, depth: 0.1454, len: 0.1788, neck: 0.11, muzzle: 0.50, ears: 'huge', tail: 'tuft', hue: '#9b948c', family: 'equid', earShape: 'leaf', earScale: 1.70 },
+  /* ★ wave 36 (Nick, on the proof sheet: "the donkey ears were quite huge") —
+     these two were 'huge' (1.15·headR) TIMES earScale 1.70, i.e. an ear 1.96×
+     the radius of the skull carrying it, and therefore LARGER THAN THE FENNEC
+     FOX'S at 1.50 — the one animal in the catalogue whose whole identity is
+     outsized ears. The ladder was inverted at the top. A donkey's ear is long,
+     not enormous: 'large' × 1.55 puts it just under one head-radius, above
+     every other equid and well below the fennec. */
+  'Wild Ass': { legs: 0.1901, depth: 0.142, len: 0.1863, neck: 0.12, muzzle: 0.50, ears: 'large', tail: 'tuft', hue: '#b8ab93', family: 'equid', earShape: 'leaf', earScale: 1.62 },
+  'Donkey': { legs: 0.1781, depth: 0.1454, len: 0.1788, neck: 0.11, muzzle: 0.50, ears: 'large', tail: 'tuft', hue: '#9b948c', family: 'equid', earShape: 'leaf', earScale: 1.55 },
   'Gaur': { legs: 0.1561, depth: 0.1757, len: 0.2305, neck: 0.06, back: 'humped', muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#3f3229', family: 'bovid' },
   'Banteng': { legs: 0.1597, depth: 0.1629, len: 0.2137, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#7a4f30', family: 'bovid' },
   'Buffalo': { legs: 0.142, depth: 0.1704, len: 0.2376, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#4b433c', family: 'bovid' },
