@@ -1,6 +1,77 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-## ★★ WAVE 35 (2026-08-03) — read this block before the rest of the file
+# ★★★ START HERE — END OF 2026-08-03, HEAD `a826330`, WAVES 35–45 LANDED
+
+⚠ **Repo root is `C:\Projects\Celestial-Frontier`, not `C:\Projects`.** Every path below is
+relative to it. Everything under WAVE 35 in this file is HISTORY — accurate, but superseded.
+
+## What the day was, in one paragraph
+Two full audits were run and then worked to completion. **The gold pass** rendered and judged
+all 1,250 assets (`reference/GOLD_PASS_2026-08-03.md`, per-asset verdicts in
+`goldpass-results.json`): **473 FAIL / 590 POLISH / 187 PASS**. **The code pass** audited every
+line of owned art source (`reference/CODE_PASS_2026-08-03.md`, findings in
+`codepass-findings.json`). Waves 35–45 then closed almost all of both. **Three stale audit
+files are dead** — `visualaudit.json`, `mammalaudit.json` and the 962-row strict queue — and
+say so at the top of the gold pass.
+
+## ★ DO THIS FIRST, BEFORE ANY NEW WORK
+**Re-render all 1,250 and re-judge.** Waves 38–45 moved a large fraction of the catalogue and
+the last complete look was the gold pass that started it. Re-run the same harness (the script
+is preserved; slices are in `reference/goldpass-slices.json`). Expect the counts to have moved
+a lot — and treat the new numbers, not the old ones, as truth.
+⚠ **When you do, fix the harness bug first:** the code pass's verification never ran because
+its hunt→verdict join keyed on a free-text `claim` string that the verifier rephrased. The
+gold pass joined on `species` and worked. **Join on an identifier, never on model-authored
+prose.** Everything in `codepass-findings.json` is therefore hunt-stage only.
+
+## ★ THE FOUR THINGS THAT ARE ACTUALLY OPEN
+Each is recorded with its measurement — none is an open question.
+1. **G9, the elephant ear fan.** Six attempts across two waves, all reverted. ★ The next
+   attempt must NOT touch the outline first: **establish the head-frame model** (`headY`, the
+   `ang` tilt, where the Tube's mass sits) using the **tint trick** — paint the fan a flat
+   colour and render it (`smoke/wave44/diag*.png` show how). The last attempt's render
+   *contradicted its own arithmetic*, which means the frame is misunderstood, and parameter
+   search is proven not to converge here.
+2. **The rodent incisors.** The chisel replacement is written and measured: it costs exactly
+   ONE pair (Freshwater Crab ≈ Water Vole, 1.45) *regardless of enamel colour*, so the cause
+   is the accent's AREA. **Ship it paired with a Water Vole / Freshwater Crab separation** (the
+   crab's claws are its signature and are not prominent) and the net is negative.
+3. **G7's butterfly wings** (both sweep one side; should be two pairs off the thorax) and
+   insect legs that root on the abdomen.
+4. **`earShape:'nub'`** — the axis exists with zero writers. Roll it out **one row at a time**,
+   each derived from its own reference row. ★ Pika is the sharp case: tall ears make it a
+   rabbit, nub ears make it a prairie dog; it needs a THIRD trait (round, tailless,
+   blunt-faced), not a different ear.
+
+## ★ THE FIVE LAWS THIS DAY PAID FOR (full text in `port/v2/DEVIATIONS.md`)
+- **D-ART-139** — a gate that has never seen its highest-priority input has never run.
+  `overridecheck`'s shadow check could not parse `CANON` for TWO stacked reasons; 28 dead
+  routes had shipped, incl. the documented Insect-Eating Bat hazard.
+- **D-ART-140** — suspect a NEW SCAN before you suspect the code. Four instrument-first lies
+  in one day. A suspiciously large finding count is a bug report about the instrument.
+- **D-ART-141** — on a dark animal, **the only light element is structural**. Three fixes were
+  right about the defect and wrong about the remedy; artlock caught all three.
+- **D-ART-142** — a pose is an AXIS, not a painter. Whether a shape can be re-posed cheaply
+  depends on whether it was built as a **solid** or an **outline**. Wave 4 paid for wave 40;
+  the remaining hand-drawn outlines (elephant fan, cobra hood) are where the next posture
+  request will hurt.
+- **D-ART-83, re-learned the hard way** — I rolled one new ear token to ELEVEN species because
+  it was anatomically right for all of them, and artlock refused it four ways. **A global pass
+  wearing an anatomy argument is still a global pass.**
+
+## ★ HOW TO RUN THE GATES
+```
+npx vitest run · npx tsc --noEmit -p apps/game · node tools/speccheck.mjs
+node tools/overridecheck.mjs        # now catches CANON shadows; negative-controlled
+npm run artbattery -- --touching=<classes>      # 6 stages, artlock is stage 6
+```
+⚠ Declare the classes that **MOVED**, not the file you edited — `artclass` labels an asset by
+the painter that draws it, so one file can move several classes. artlock will tell you which.
+⚠ `--bless --class=X` re-blesses ONE class, and a bless is a claim that **a person looked**.
+
+---
+
+## ★★ WAVE 35 (2026-08-03) — history from here down
 
 **The live queue is `port/v2/reference/mammal-species-fixes.md`, then `reaudit-worklist.md`.**
 Wave 35 closed that file's entire top section — the wrong-family chassis (Cheetah, Panda, the
