@@ -41,6 +41,9 @@ export interface QuadSpec {
   jaw?: 'fine' | 'broad' | 'barrel';
   ears?: 'tiny' | 'small' | 'round' | 'large' | 'huge' | 'fan';
   tail?: 'none' | 'stub' | 'tuft' | 'bushy' | 'long' | 'plume' | 'banded' | 'paddle';
+  /** ★ D-ART-134 — a pale tail TIP is a species mark (fox, wolf, wild dog),
+      not a universal feature. It used to be stamped on every brush tail. */
+  tailTip?: string;
   coat?: 'plain' | 'spots' | 'rosettes' | 'stripes' | 'patches' | 'panda' | 'shaggy' | 'banded'
     | 'bands' | 'brindle' | 'fawn' | 'blotches';
   /* ★ ARC STAGE 3 WAVE 4 — WHERE THE MASS SITS. The torso is a solid now
@@ -91,6 +94,10 @@ export interface QuadSpec {
   earScale?: number;
   mat?: Material;
   /** ★ wave 13 — an ear has a SHAPE, not only a size. Defaults per family. */
+  /* ⚠ 'hidden' was declared here, set on the WHOLE pinniped family plus Mole
+     and Sloth, and had no branch in the shape switch — so it fell through to
+     the default cup and a true seal was drawn with an external ear.
+     D-ART-100 again, found by the wave-32 family audit. */
   earShape?: 'round' | 'point' | 'tuft' | 'leaf' | 'drop' | 'spoon' | 'hidden';
   /** ★ wave 13 — and an eye has a PUPIL, which no mammal here had. */
   pupil?: 'round' | 'slit' | 'bar';
@@ -967,7 +974,13 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   /* THE CHIN — a lower jaw that ends in something. Without it the muzzle has
      no depth and reads as a rectangle glued to the face. */
   if (SK.jaw > 0.10) {
-    const ch = head.pt(0.80, -1.30);
+    /* ★ D-ART-134 — phi −1.30 is BEYOND the ventral silhouette, so the chin
+       ellipse hung in space below and ahead of the muzzle. That is the
+       "floating lip bar" on Wild Pig and Peccary, the "hooked grey mechanical
+       lip bar" on Llama, the "hard-edged tan stick projecting past the nose"
+       on Wild Horse and the "detached lower lip" on Cattle — one artifact
+       across five families. −0.95 sits it flush on the surface it belongs to. */
+    const ch = head.pt(0.86, -0.95);
     c.fillStyle = `rgb(${(p.cr * 0.70) | 0},${(p.cg * 0.70) | 0},${(p.cb * 0.72) | 0})`;
     c.beginPath(); c.ellipse(ch[0], ch[1], headR * 0.20 * SK.jaw * 3, headR * 0.13 * SK.jaw * 3, ang, 0, TAU); c.fill();
   }
@@ -979,6 +992,9 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      cat and bear in the catalogue. A round ear is a small cup set at the
      TOP-BACK of the head; the ear is the read on a fennec, never on a tiger. */
   const earShape = spec.earShape ?? FAM0.ear;
+  /* ★ D-ART-134 — 'hidden' means NO EXTERNAL EAR: a seal, a mole, a sloth. It
+     had no branch below, so every one of them wore the default cup. */
+  if (earShape === 'hidden') return;
   const earR = headR * (ears === 'huge' ? 1.15 : ears === 'large' ? 0.62 : ears === 'round' ? 0.38 : ears === 'small' ? 0.30 : 0.17) * (spec.earScale ?? 1);
   if (ears === 'fan') {
     /* ★ ARC STAGE 3 — AN ELEPHANT'S EAR IS NOT A RABBIT'S. Routed as 'huge' it
@@ -1340,7 +1356,12 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.globalAlpha = 1;
     /* the pale tip most brush-tailed carnivores wear */
     const [tipx, tipy] = at(1);
-    c.fillStyle = 'rgba(246,244,238,0.50)';
+    /* ★ D-ART-134 — this pale ellipse was stamped on EVERY plume/bushy tail
+       unconditionally: the "glowing white ball at its tip" reported
+       independently on Horse, Wild Horse, Wild Pony, Giant Anteater, Wolf,
+       Fisher, Fennec Fox, Fox, Red Fox, Pampas Fox, Jackal, Hyena and Mink.
+       A white tail tip is a species mark, so it is opt-in now. */
+    c.fillStyle = spec.tailTip ?? 'rgba(0,0,0,0)';
     c.beginPath(); c.ellipse(tipx, tipy, widthAt(1) * 0.60, widthAt(1) * 0.50, 0.3, 0, TAU); c.fill();
   } else if (tail === 'long' || tail === 'tuft') {
     c.strokeStyle = p.base; c.lineWidth = bodyH * 0.18; c.lineCap = 'round';
@@ -1385,7 +1406,20 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.beginPath(); c.moveTo(tx0, ty0 + bodyH * 0.2);
     c.lineTo(px + bodyW * 0.22, py - bodyH * 0.12); c.stroke();
   } else if (tail === 'stub') {
-    c.fillStyle = p.dark; c.beginPath(); c.ellipse(tx0 - 4, ty0 + bodyH * 0.1, bodyH * 0.16, bodyH * 0.20, 0.3, 0, TAU); c.fill();
+    /* ★ D-ART-134 — this was a p.dark ellipse pasted on the rump, and it is
+       the "hard-edged flat maroon disc" on Pig, the DARK blob where Elk's
+       cream rump patch belongs, the "unexplained dark blotch on the near
+       haunch" on Duiker, and the dark cap on Seal, Fur Seal, Sea Lion, Sloth
+       and Wombat. A stub tail is a short cone continuous with the rump, in
+       coat colour, not a disc in shadow colour. */
+    const sg = c.createLinearGradient(tx0 - bodyH * 0.22, ty0, tx0 + bodyH * 0.06, ty0 + bodyH * 0.26);
+    sg.addColorStop(0, p.base); sg.addColorStop(1, p.dark);
+    c.fillStyle = sg;
+    c.beginPath();
+    c.moveTo(tx0 - bodyH * 0.02, ty0 - bodyH * 0.08);
+    c.quadraticCurveTo(tx0 - bodyH * 0.26, ty0 + bodyH * 0.06, tx0 - bodyH * 0.20, ty0 + bodyH * 0.30);
+    c.quadraticCurveTo(tx0 - bodyH * 0.04, ty0 + bodyH * 0.16, tx0 + bodyH * 0.04, ty0 + bodyH * 0.06);
+    c.closePath(); c.fill();
   }
 }
 
