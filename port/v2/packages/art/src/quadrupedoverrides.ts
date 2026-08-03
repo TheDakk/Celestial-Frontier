@@ -841,7 +841,15 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   } else if (coat === 'shaggy') {
     coatShaggy(c, body, r, p, { count: 170 });
   } else if (coat === 'banded' && !spec.alien?.skin) {
-    coatBars(c, body, r, p, { count: 7, width: 2.2, phiTop: 1.6, phiEnd: -1.2, lean: 0.01, forkRate: 0, hard: true, alpha: 0.55, rgb: [26, 20, 14] });
+    /* ★ WAVE 39 — THE ARMOUR BANDS WERE TRIANGULAR WEDGES. `phiEnd: -1.2`
+       against `phiTop: 1.6` tapers each bar to a point well above the belly, so
+       an armadillo's and a pangolin's hinged bands rendered as "pale triangular
+       wedges that read as tiger stripes rather than hinged bands" — the
+       verifier's words, and the reason both animals read as painted rather than
+       armoured. A carapace band is a HOOP: it runs the full girth at constant
+       width. Narrower, more of them, and carried right down to the ventral
+       line so nothing tapers. */
+    coatBars(c, body, r, p, { count: 10, width: 1.35, phiTop: 1.66, phiEnd: -1.52, lean: 0, forkRate: 0, hard: true, alpha: 0.5, rgb: [26, 20, 14] });
   }
   /* an alien SKIN FINISH replaces the coat treatment, inside the same clip
      so it reads as the animal's own surface and obeys the surface laws */

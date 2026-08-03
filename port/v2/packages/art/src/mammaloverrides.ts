@@ -171,11 +171,11 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Asian Elephant': { legs: 0.1093, depth: 0.2186, len: 0.251, neck: 0.028, back: 'arched', muzzle: 0.30, jaw: 'barrel', ears: 'fan', earScale: 0.80, tail: 'tuft', trunk: true, hue: '#94908c', family: 'pachyderm' },
   'Forest Elephant': { legs: 0.1024, depth: 0.2162, len: 0.2305, neck: 0.028, muzzle: 0.30, jaw: 'barrel', ears: 'fan', earScale: 0.92, tail: 'tuft', trunk: true, horn: 'tuskdown', hue: '#7d7873', family: 'pachyderm' , back: 'saddle' },
   /* "banded bony shell over the back · long tapering tail · digging claws" */
-  'Armadillo': { legs: 0.0475, depth: 0.0983, len: 0.1934, neck: 0.030, back: 'arched', muzzle: 0.32, ears: 'large', tail: 'long', coat: 'banded', hue: '#a89880', family: 'xenarthran', earShape: 'leaf' },
+  'Armadillo': { legs: 0.0475, depth: 0.0983, len: 0.1934, neck: 0.030, back: 'arched', muzzle: 0.32, ears: 'large', tail: 'long', coat: 'banded', hue: '#a89880', family: 'xenarthran', earShape: 'leaf' , mat: 'plate' },
   /* "enormously long tubular snout · huge plume tail · black shoulder wedge" */
   'Giant Anteater': { legs: 0.0913, depth: 0.1049, len: 0.2237, neck: 0.048, muzzle: 0.78, jaw: 'fine', ears: 'tiny', tail: 'plume', tailScale: 1.6, hue: '#6b6259', family: 'xenarthran' },
   /* "overlapping keratin scales · long heavy tail · small conical head" */
-  'Pangolin': { legs: 0.053, depth: 0.1126, len: 0.1754, neck: 0.032, back: 'arched', muzzle: 0.34, ears: 'tiny', tail: 'long', coat: 'banded', hue: '#9a8258', family: 'xenarthran' },
+  'Pangolin': { legs: 0.053, depth: 0.1126, len: 0.1754, neck: 0.032, back: 'arched', muzzle: 0.34, ears: 'tiny', tail: 'long', coat: 'banded', hue: '#9a8258', family: 'xenarthran' , mat: 'plate' },
   /* "gliding membrane between the limbs · black eye-stripe · long plume tail" */
   'Sugar Glider': { legs: 0.0535, depth: 0.0779, len: 0.115, neck: 0.028, muzzle: 0.24, ears: 'large', tail: 'plume', face: 'mask', hue: '#9aa0a8', family: 'marsupial' },
   /* "gliding membrane · huge forward eyes · mottled bark-coloured coat" */
