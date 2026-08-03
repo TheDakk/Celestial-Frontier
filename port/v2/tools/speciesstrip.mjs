@@ -6,6 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
+import net from 'node:net';
 import os from 'node:os';
 import { spawn, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -20,7 +21,39 @@ const names = process.argv[2];
 if (!names) { console.error('usage: node tools/speciesstrip.mjs "Name,Name,…" [out.png]'); process.exit(2); }
 const out = path.join(appDir, 'smoke', process.argv[3] || 'strip.png');
 
-execSync('npx vite build', { cwd: appDir, stdio: 'ignore' });
+/* ★ CONCURRENCY-SAFE BUILD. Several agents run this tool at once during a
+   review wave; a shared dist plus two simultaneous vite builds means one of
+   them reads a half-written bundle. Take an exclusive lock: whoever gets it
+   builds, everyone else waits and then uses the bundle it produced. */
+{
+  const lock = path.join(appDir, '.strip-build.lock');
+  const stale = () => {
+    try { return Date.now() - fs.statSync(lock).mtimeMs > 180000; } catch { return false; }
+  };
+  let held = false;
+  for (let i = 0; i < 600; i++) {
+    try { fs.mkdirSync(lock); held = true; break; } catch {
+      if (stale()) { try { fs.rmSync(lock, { recursive: true, force: true }); } catch { /* raced */ } continue; }
+      /* someone else is building — wait for them rather than racing */
+      execSync(process.platform === 'win32' ? 'powershell -NoProfile -Command "Start-Sleep -Milliseconds 500"' : 'sleep 0.5');
+    }
+  }
+  try {
+    const built = fs.existsSync(path.join(dist, 'audit.html'));
+    const newest = (d) => fs.readdirSync(d, { withFileTypes: true }).reduce((a, e) => {
+      const q = path.join(d, e.name);
+      return Math.max(a, e.isDirectory() ? newest(q) : fs.statSync(q).mtimeMs);
+    }, 0);
+    const srcMs = newest(path.join(here, '..', 'packages', 'art', 'src'));
+    /* rebuild only if the bundle is missing or older than the art — that also
+       stops six agents doing six identical 40s builds back to back */
+    if (!built || fs.statSync(path.join(dist, 'audit.html')).mtimeMs < srcMs) {
+      execSync('npx vite build', { cwd: appDir, stdio: 'ignore' });
+    }
+  } finally {
+    if (held) { try { fs.rmSync(lock, { recursive: true, force: true }); } catch { /* gone */ } }
+  }
+}
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.map': 'application/json' };
 const server = http.createServer((req, res) => {
   const p = path.join(dist, req.url === '/' ? 'index.html' : req.url.split('?')[0]);
@@ -31,7 +64,20 @@ await new Promise((r) => server.listen(0, '127.0.0.1', r));
 const URL0 = 'http://127.0.0.1:' + server.address().port + '/audit.html?strip=' + encodeURIComponent(names);
 
 const udd = path.join(os.tmpdir(), 'cf-strip-' + process.pid);
-const port = 9833 + (process.pid % 100);
+/* ★ A REAL FREE PORT, not a pid guess. `9833 + pid % 100` collides for any
+   two agents whose pids differ by 100, and the symptom is not an error — both
+   drive the same browser and each gets whatever the other last navigated to,
+   i.e. the wrong species' picture, silently. */
+const port = await new Promise((resolve, reject) => {
+  /* ⚠ listen() is ASYNC — address() straight after it returns null, which is
+     how the first cut of this crashed. Wait for the listening event. */
+  const probe = net.createServer();
+  probe.on('error', reject);
+  probe.listen(0, '127.0.0.1', () => {
+    const pnum = probe.address().port;
+    probe.close(() => resolve(pnum));
+  });
+});
 const edge = spawn(EDGE, ['--headless=new', '--no-sandbox', '--no-first-run',
   '--disable-component-extensions-with-background-pages', '--disable-component-update', '--disable-background-networking',
   '--remote-debugging-port=' + port, '--user-data-dir=' + udd, 'about:blank'], { stdio: 'ignore' });

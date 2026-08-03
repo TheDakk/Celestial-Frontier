@@ -735,6 +735,19 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   deleting one fingerprint from the lock makes the battery report `5/6` and exit non-zero, so
   it is proven to PROPAGATE a failure rather than merely to run one.
 
+- ⚠ **D-ART-110b — THE BLIND SPOT IS WIDER THAN "TEXTURE": THE FINGERPRINT IS AREA-WEIGHTED
+  (wave 26).** Measured, not assumed. A single wave rebuilt the limbs of four crocodilians
+  (two legs crossing in an X became four sprawled legs), put a large jumping femur onto three
+  orthopterans, and re-proportioned five ratites. `[DRIFT]` reported **6 changed assets — the
+  five ratites and one penguin, and NOT ONE crocodilian or orthopteran.** The ratites moved
+  because their whole body proportion changed; legs and femurs are THIN, dark, and cover
+  little area, so a 16×16 mean-per-cell comparison cannot see them however wrong they were.
+  **So the guard is blind to any thin structure — limbs, tails, bills, antennae, tusks —
+  not merely to surface detail.** That is most of what an anatomy audit is about, so for
+  anatomy work as for material work the render is the evidence and artlock's silence means
+  nothing. Not "fixed": raising the resolution would invalidate the 1,250-asset baseline and
+  is a decision, not a slipped-in change.
+
 - ⚠ **D-ART-110 — THE DRIFT FINGERPRINT CANNOT SEE TEXTURE, so it cannot guard the material
   layer (wave 21).** `[DRIFT]` compares a 16×16 RGB grid at `eps 0.9/255` mean absolute
   channel difference. That is right for what it was built for — a global palette or
