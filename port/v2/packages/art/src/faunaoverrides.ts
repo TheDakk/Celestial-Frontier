@@ -887,8 +887,8 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
 /** the wave-3 roster: species whose defining anatomy was categorically wrong */
 export const FAUNA_NAME: Record<string, FaunaPainter> = {
   /* Blocker 4 — life stage + arthropod body plans */
-  'Fly Larvae': (c, g, p) => faunaLarva(c, g, p),
-  'Cave Cricket': (c, g, p) => faunaLarva(c, g, p),
+  'Fly Larvae': (c, g, p) => faunaLarva(c, g, speciesHue(p, '#f0e6c8')),
+  'Cave Cricket': (c, g, p) => faunaLarva(c, g, speciesHue(p, '#9c7a54')),
   'Dragonfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#1e7fa8', open: true, slim: false }),
   'Damselfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#4aa8e0', open: false, slim: true, body: 1.05 }),
   'Mayfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#d8c48a', open: false, slim: true, body: 0.82 }),
@@ -902,7 +902,7 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
      with long soft wings held out */
   'Dobsonfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#9d968a', open: true, slim: false, body: 1.45 }),
   'Scorpionfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#e8a81c', open: false, slim: false, body: 0.95 }),
-  'Springtail': (c, g, p) => faunaSpringtail(c, g, p),
+  'Springtail': (c, g, p) => faunaSpringtail(c, g, speciesHue(p, '#5a6470')),
   'Ladybug': (c, g, p) => faunaBeetle(c, g, p, { hue: '#c62828', spots: true }),
   'Firefly': (c, g, p) => faunaBeetle(c, g, p, { hue: '#382c1f', glow: true }),
   'Diving Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#414f1e', paddle: true }),
@@ -910,14 +910,14 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Carrion Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#221f22', }),
   'Water Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#55402c', paddle: true }),
   'Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#96551f', }),
-  'Fiddler Crab': (c, g, p) => faunaFiddler(c, g, p),
+  'Fiddler Crab': (c, g, p) => faunaFiddler(c, g, speciesHue(p, '#c9a877')),
   'Horseshoe Crab': (c, g, p) => faunaHorseshoe(c, g, p),
   /* Blocker 6 — specialist fish + marine bodies */
-  'Flounder': (c, g, p) => faunaFlatfish(c, g, p),
-  'Halibut': (c, g, p) => faunaFlatfish(c, g, p),
-  'Mudskipper': (c, g, p) => faunaFlatfish(c, g, p),
-  'Angelfish': (c, g, p) => faunaAngelfish(c, g, p),
-  'Lionfish': (c, g, p) => faunaLionfish(c, g, p),
+  'Flounder': (c, g, p) => faunaFlatfish(c, g, speciesHue(p, '#a98a5f')),
+  'Halibut': (c, g, p) => faunaFlatfish(c, g, speciesHue(p, '#7d6b4e')),
+  'Mudskipper': (c, g, p) => faunaFlatfish(c, g, speciesHue(p, '#77673c')),
+  'Angelfish': (c, g, p) => faunaAngelfish(c, g, speciesHue(p, '#f7a41c')),
+  'Lionfish': (c, g, p) => faunaLionfish(c, g, speciesHue(p, '#9b3a26')),
   'Octopus': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#a65f52', squid: false }),
   'Giant Octopus': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#b03a26', squid: false }),
   'Cuttlefish': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#a89070', squid: false }),
