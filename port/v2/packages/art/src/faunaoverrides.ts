@@ -402,7 +402,7 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; 
 }
 /** CETACEAN: long body, horizontal FLUKE, blowhole, species dorsal */
 export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | 'small' | 'none'; blunt: boolean; hue?: [number, number, number];
-    bulk?: number; long?: number; melon?: number }): void {
+    bulk?: number; long?: number; melon?: number; tusk?: boolean }): void {
   /* NO CETACEAN IS PURPLE. Every whale, dolphin and porpoise alive is some
      grey, blue-grey or black, and a lavender blue whale is not rarity
      variation — it is the animal being unrecognisable. Anchored toward slate,
@@ -454,6 +454,29 @@ export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | '
   }
   c.fillStyle = p.dark;   /* pectoral flipper */
   c.beginPath(); c.ellipse(cx - L * 0.3, cy + H * 0.85, L * 0.20, H * 0.28, 0.5, 0, TAU); c.fill();
+  /* ★ D-ART-124 — THE NARWHAL'S TUSK, restored. It was lost when the species
+     was rerouted onto the shared cetacean painter, whose options carry no tusk
+     — so the animal kept its silhouette and lost the ONE feature anybody
+     identifies it by. The audit called it correctly as a regression. */
+  if (opts.tusk) {
+    const tl = L * 0.92, ty = cy - H * 0.34;
+    const tg = c.createLinearGradient(head, ty, head - tl, ty);
+    tg.addColorStop(0, '#efeadb'); tg.addColorStop(1, '#cfc6ad');
+    c.fillStyle = tg;
+    c.beginPath();
+    c.moveTo(head - 2, ty - H * 0.13);
+    c.lineTo(head - tl, ty - H * 0.012);
+    c.lineTo(head - tl, ty + H * 0.012);
+    c.lineTo(head - 2, ty + H * 0.13);
+    c.closePath(); c.fill();
+    /* the spiral: shallow diagonals down its length, the reason it reads as a
+       narwhal's tusk and not as a swordfish's bill */
+    c.strokeStyle = 'rgba(120,110,88,0.45)'; c.lineWidth = 1.4;
+    for (let i = 1; i <= 7; i++) {
+      const u = i / 8, x = head - tl * u, hh = H * (0.13 - 0.118 * u);
+      c.beginPath(); c.moveTo(x + tl * 0.05, ty - hh); c.lineTo(x - tl * 0.02, ty + hh); c.stroke();
+    }
+  }
   c.fillStyle = 'rgba(255,255,255,0.5)';   /* blowhole */
   c.beginPath(); c.ellipse(cx - L * 0.62, cy - H * 0.92, 5, 3, 0, 0, TAU); c.fill();
   eye(c, head + L * 0.22, cy + H * 0.1, 5);
@@ -481,6 +504,18 @@ export interface BirdSpec {
   /* ── wave 21: the Platinum audit's bird findings, each "add <the one thing>" ── */
   wings?: 'soaring';                              /** wings so long they ARE the bird (albatross) */
   headMass?: number;                               /** an oversized head (kingfisher, kookaburra) */
+  /* ── ★ D-ART-121 (wave 28) — THE LARGE BIRDS WERE ALL ONE BIRD.
+     Eagle, Harpy Eagle, Vulture, Hoatzin, Macaw and Kakapo came back from the
+     re-audit as the same plump ovoid with the same folded-wing panel and the
+     same pointed tail wedge, separated by bill and colour alone. Two of these
+     axes (`wings`, `headMass`) already existed and almost none of the rows set
+     them; the rest are the features that actually tell these birds apart. */
+  talons?: boolean;      /** curved claws + a heavy tarsus — a raptor grips */
+  bald?: boolean;        /** bare head/neck skin and a ruff — a vulture */
+  crop?: boolean;        /** the hoatzin's fermenting crop bulge at the neck base */
+  wingClaw?: boolean;    /** the hoatzin's wing claw, the reason it is famous */
+  parrotBill?: boolean;  /** deep, culmen curving well past the jawline, with a cere */
+  zygo?: boolean;        /** two toes forward two back — a parrot grips a perch */
   /* ── ★ WAVE 8: THE FIELD MARKS. Seven songbirds — Sparrow, Finch, Robin,
      Tanager, Weaverbird, Starling, Lark — were separated by NOTHING but a
      size number differing by four percent, and the lock duly reported them
@@ -561,16 +596,35 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       const ankX = hipX + (7 + legLen * 0.10) * sz;    /* the ankle kicks BACK */
       const toeX = hipX - 2 * sz;                       /* the foot lands under the bird */
       c.strokeStyle = '#c9a24f'; c.lineCap = 'round';
-      c.lineWidth = (legLen > S * 0.10 ? 6.5 : 8) * Math.min(1.4, sz);   /* the drumstick */
+      /* ★ D-ART-121 — a raptor's leg is HEAVY. The audit's words on the Harpy:
+         "two thin yellow twigs ending in flat splayed toes with no claw tips
+         at all" — on the bird whose grip is its defining feature. */
+      const GRIP = opts.talons ? 2.6 : 1;
+      c.lineWidth = (legLen > S * 0.10 ? 6.5 : 8) * Math.min(1.4, sz) * GRIP;   /* the drumstick */
       c.beginPath(); c.moveTo(hipX, thighY); c.quadraticCurveTo(hipX + (ankX - hipX) * 0.5, thighY + (ankleY - thighY) * 0.62, ankX, ankleY); c.stroke();
-      c.lineWidth = (legLen > S * 0.10 ? 4 : 5.5) * Math.min(1.4, sz);   /* the shank is THIN */
+      c.lineWidth = (legLen > S * 0.10 ? 4 : 5.5) * Math.min(1.4, sz) * GRIP;   /* the shank is THIN */
       c.beginPath(); c.moveTo(ankX, ankleY); c.quadraticCurveTo(ankX + (toeX - ankX) * 0.55, ankleY + (groundY - ankleY) * 0.55, toeX, groundY); c.stroke();
-      c.lineWidth = 3.4 * Math.min(1.4, sz);            /* three toes forward, one back */
-      for (const d of [-1, 0, 1]) {
+      c.lineWidth = 3.4 * Math.min(1.4, sz) * GRIP;
+      /* ZYGODACTYL: a parrot puts TWO toes back, not one, and that is most of
+         why a macaw's foot does not look like an eagle's. */
+      const fwd = opts.zygo ? [-1, 1] : [-1, 0, 1];
+      for (const d of fwd) {
         c.beginPath(); c.moveTo(toeX, groundY);
         c.lineTo(toeX - (13 + d * 3) * sz, groundY + 4 + d * 2.4); c.stroke();
       }
-      c.beginPath(); c.moveTo(toeX, groundY); c.lineTo(toeX + 8 * sz, groundY + 3); c.stroke();
+      for (const d of (opts.zygo ? [-1, 1] : [0])) {
+        c.beginPath(); c.moveTo(toeX, groundY);
+        c.lineTo(toeX + (8 + Math.abs(d) * 3) * sz, groundY + 3 + d * 3); c.stroke();
+      }
+      if (opts.talons) {   /* the hooks — a curved dark claw off every toe */
+        c.strokeStyle = '#2a2118'; c.lineWidth = 3.2 * Math.min(1.4, sz);
+        for (const d of fwd) {
+          const tipX = toeX - (13 + d * 3) * sz, tipY = groundY + 4 + d * 2.4;
+          c.beginPath(); c.moveTo(tipX, tipY);
+          c.quadraticCurveTo(tipX - 5 * sz, tipY + 2, tipX - 6 * sz, tipY + 7 * sz); c.stroke();
+        }
+        c.strokeStyle = '#c9a24f';
+      }
     }
   }
 
@@ -785,7 +839,25 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     }
     c.stroke();
   }
-  c.fillStyle = bodyGrad(c, p, hx, hy, hr * 1.1);
+  /* ★ D-ART-121 — THE CROP. A hoatzin ferments its food in an enormous crop at
+     the base of the neck; it is the reason the bird exists as an oddity, and
+     the render had a smooth breast. Drawn before the head so the neck sits on
+     top of it. */
+  if (opts.crop) {
+    c.fillStyle = bodyGrad(c, p, bx - bw * 0.55, by - bh * 0.30, bw * 0.5);
+    c.beginPath(); c.ellipse(bx - bw * 0.52, by - bh * 0.28, bw * 0.42, bh * 0.52, -0.3, 0, TAU); c.fill();
+  }
+  /* ★ D-ART-121 — BARE SKIN. A vulture's head and neck carry no feathers, and
+     that break in tone is the single strongest thing about it at a glance. */
+  if (opts.bald) {
+    c.strokeStyle = '#c99a92';
+    c.lineWidth = 15 * sz * 0.86;
+    c.beginPath(); c.moveTo(bx - bw * 0.35, by - bh * 0.35);
+    c.quadraticCurveTo(hx - 4 * sz, by - bh * 0.6, hx, hy); c.stroke();
+    c.fillStyle = 'rgba(238,232,220,0.92)';   /* the pale ruff where skin meets plumage */
+    c.beginPath(); c.ellipse(bx - bw * 0.34, by - bh * 0.30, bw * 0.40, bh * 0.30, -0.25, 0, TAU); c.fill();
+  }
+  c.fillStyle = opts.bald ? '#c99a92' : bodyGrad(c, p, hx, hy, hr * 1.1);
   c.beginPath(); c.arc(hx, hy, hr, 0, TAU); c.fill();
   rim(c, () => c.arc(hx, hy, hr, -2.7, 0.3), 1.8);
   if (opts.mask) {
@@ -831,7 +903,25 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
        wave-3 birds are untouched. */
     const B = 0.55 + 0.45 * sz;
     c.fillStyle = '#e0b13c';
-    if (opts.bill === 'hook') { c.beginPath(); c.moveTo(hx - 16 * B, hy - 6 * B); c.quadraticCurveTo(hx - 40 * B, hy - 4 * B, hx - 34 * B, hy + 12 * B); c.quadraticCurveTo(hx - 26 * B, hy + 4 * B, hx - 14 * B, hy + 6 * B); c.closePath(); c.fill(); }
+    if (opts.parrotBill) {
+      /* ★ D-ART-121 — a macaw does not wear a raptor's hook. A parrot bill is
+         DEEP: the upper mandible curves down past the lower jawline entirely,
+         and there is a bare cere at its base. The audit found this had
+         REGRESSED to the shared eagle hook. */
+      c.beginPath();
+      c.moveTo(hx - 6 * B, hy - 13 * B);
+      c.quadraticCurveTo(hx - 40 * B, hy - 12 * B, hx - 33 * B, hy + 17 * B);
+      c.quadraticCurveTo(hx - 24 * B, hy + 4 * B, hx - 6 * B, hy + 8 * B);
+      c.closePath(); c.fill();
+      c.fillStyle = 'rgba(40,34,30,0.55)';   /* the lower mandible in shadow */
+      c.beginPath();
+      c.moveTo(hx - 10 * B, hy + 6 * B);
+      c.quadraticCurveTo(hx - 26 * B, hy + 12 * B, hx - 8 * B, hy + 14 * B);
+      c.closePath(); c.fill();
+      c.fillStyle = 'rgba(238,232,220,0.85)';   /* the cere */
+      c.beginPath(); c.ellipse(hx - 6 * B, hy - 9 * B, 7 * B, 5 * B, -0.2, 0, TAU); c.fill();
+      c.fillStyle = '#e0b13c';
+    } else if (opts.bill === 'hook') { c.beginPath(); c.moveTo(hx - 16 * B, hy - 6 * B); c.quadraticCurveTo(hx - 40 * B, hy - 4 * B, hx - 34 * B, hy + 12 * B); c.quadraticCurveTo(hx - 26 * B, hy + 4 * B, hx - 14 * B, hy + 6 * B); c.closePath(); c.fill(); }
     else if (opts.bill === 'long') { c.beginPath(); c.moveTo(hx - 14 * B, hy - 4 * B); c.lineTo(hx - 78 * B, hy + 2 * B); c.lineTo(hx - 14 * B, hy + 7 * B); c.closePath(); c.fill(); }
     else if (opts.bill === 'spoon') {
       /* ★ wave 21 — the spatula has to DOMINATE the head: a long shaft that
@@ -951,13 +1041,14 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [124, 134, 146], long: 0.86, bulk: 0.82 }),
   'River Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [178, 150, 148], long: 0.80, bulk: 0.70 }),
   'Pilot Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: true, hue: [30, 32, 38], long: 0.92, bulk: 1.20, melon: 1.00 }),
-  'Narwhal': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [168, 168, 158], long: 0.94, bulk: 0.78 }),
+  'Narwhal': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, tusk: true, melon: 0.62, hue: [168, 168, 158], long: 0.94, bulk: 0.78 }),
   /* the wing, at last — birds by bill + leg length */
-  'Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#4a3a28', legs: 0.02, bill: 'hook' }, n),
-  'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6b7079', legs: 0.02, bill: 'hook', crest: true }, n),
+  /* ★ D-ART-121 — the axes existed and the rows never set them. */
+  'Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#4a3a28', legs: 0.02, bill: 'hook', wings: 'soaring', tail: 'fan', headMass: 1.5, talons: true, plump: 1.12 }, n),
+  'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6b7079', legs: 0.02, bill: 'hook', crest: true, wings: 'soaring', headMass: 1.8, talons: true, size: 1.12 }, n),
   'Hawk': (c, g, p, n) => faunaBird(c, g, p, { hue: '#96543a', legs: 0.02, bill: 'hook' }, n),
   'Falcon': (c, g, p, n) => faunaBird(c, g, p, { hue: '#55647a', legs: 0.02, bill: 'hook' }, n),
-  'Vulture': (c, g, p, n) => faunaBird(c, g, p, { hue: '#3a322c', legs: 0.03, bill: 'hook' }, n),
+  'Vulture': (c, g, p, n) => faunaBird(c, g, p, { hue: '#3a322c', legs: 0.03, bill: 'hook', wings: 'soaring', bald: true, talons: true, size: 1.10, plump: 1.14 }, n),
   'Albatross': (c, g, p, n) => faunaBird(c, g, p, { hue: '#99a0a8', legs: 0.01, bill: 'hook', wings: 'soaring', size: 1.05 }, n),
   'Flamingo': (c, g, p, n) => faunaBird(c, g, p, { hue: '#ef92a6', legs: 0.14, bill: 'stout' }, n),
   'Heron': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7b8fa3', legs: 0.13, bill: 'long' }, n),
@@ -976,8 +1067,9 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Cassowary': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.105, bill: 'stout', crest: true, flightless: true, size: 1.20, neck: 'long', hue: '#1f2733', plump: 1.22 }, n),
   'Ostrich': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.145, bill: 'stout', flightless: true, size: 1.42, neck: 'long', hue: '#3a332e', plump: 1.10, tail: 'fan' }, n),
   'Emu': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.125, bill: 'stout', flightless: true, size: 1.22, neck: 'long', hue: '#6d6154', plump: 1.14 }, n),
-  'Kakapo': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6f8a3a', legs: 0.02, bill: 'stout', flightless: true }, n),
+  /* a kakapo is a FAT flightless parrot: heavy bill, heavy feet, tiny wing */
+  'Kakapo': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6f8a3a', legs: 0.02, bill: 'stout', flightless: true, parrotBill: true, zygo: true, headMass: 1.35, plump: 1.34, size: 0.98 }, n),
   'Secretary Bird': (c, g, p, n) => faunaBird(c, g, p, { hue: '#8e8b84', legs: 0.24, bill: 'hook', crest: true, neck: 'long', tail: 'long', size: 0.95 }, n),
-  'Hoatzin': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7d4f2a', legs: 0.04, bill: 'stout', crest: true }, n),
+  'Hoatzin': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7d4f2a', legs: 0.04, bill: 'stout', crest: true, crop: true, wingClaw: true, tail: 'long', size: 0.94 }, n),
   'Puffin': (c, g, p, n) => faunaBird(c, g, p, { hue: '#23272b', legs: 0.02, bill: 'stout' }, n),
 };
