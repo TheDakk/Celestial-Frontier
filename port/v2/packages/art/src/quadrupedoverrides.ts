@@ -101,7 +101,9 @@ export interface QuadSpec {
     | 'straight' | 'spiral' | 'lyre' | 'prong' | 'shorthorn'
     /* ★ wave 38 G2 — the bovine horn: out from a fused forehead boss, then up.
        'curl' was covering caprids AND bovines and could be neither. */
-    | 'boss';   /* wave 10: the bovid horn is the species */
+    | 'boss'
+    /* wave 38 G10 — the water buffalo's backswept crescent, no boss */
+    | 'sweep';   /* wave 10: the bovid horn is the species */
   humps?: 1 | 2;
   /* ★ wave 35 — a trunk has a LENGTH. `true` is an elephant's, reaching the
      ground; a fraction is a short proboscis that stops in mid-air on purpose —
@@ -1474,7 +1476,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       c.beginPath(); c.moveTo(bx0, by0); c.quadraticCurveTo(bx0 + s * headR * 0.7, by0 - headR * 1.1, bx0 + s * headR * 0.5, by0 - headR * 1.9); c.stroke();
       for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(bx0 + s * headR * (0.25 + i * 0.16), by0 - headR * (0.6 + i * 0.45)); c.lineTo(bx0 + s * headR * (1.0 + i * 0.2), by0 - headR * (0.9 + i * 0.5)); c.stroke(); }
     }
-  } else if (horn === 'curl' || horn === 'boss') {
+  } else if (horn === 'curl' || horn === 'boss' || horn === 'sweep') {
     /* ★ WAVE 38, G2 — `curl` DREW A CLOSED RING ACROSS THE FACE. The arc ran
        −0.4 → 4.2, which is 4.6 rad ≈ 264°, at lineWidth 9 with ROUND caps: the
        two ends come within a stroke width of each other and weld shut, so the
@@ -1492,9 +1494,12 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
        heavy forehead boss and hook up. One shape could not be both, which is
        why all 13 species wore the same ring. */
     const poll = head.pt(0.28, 1.15);
-    const hw = Math.max(4, headR * (horn === 'boss' ? 0.17 : 0.20));
+    const hw = Math.max(4, headR * (horn === 'curl' ? 0.20 : 0.17));
     if (horn === 'boss') {
-      /* the fused keratin helmet — a musk ox, a buffalo, a gaur */
+      /* the fused keratin helmet — a musk ox, a buffalo, a gaur. 'sweep' is
+         the same family of horn WITHOUT it: a water buffalo carries enormous
+         backswept crescents and no boss at all, which is the one feature that
+         separates it from the buffalo/gaur/banteng cluster it was drawn into. */
       c.fillStyle = 'rgb(74,58,40)';
       c.beginPath();
       c.ellipse(poll[0] + headR * 0.06, poll[1] + headR * 0.10, headR * 0.50, headR * 0.24, -0.14, 0, TAU);
@@ -1507,11 +1512,14 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       c.lineWidth = hw * (s < 0 ? 0.88 : 1);
       const bx = poll[0] - headR * (s < 0 ? 0.16 : 0);
       const by = poll[1] - headR * (s < 0 ? 0.10 : 0);
-      if (horn === 'boss') {
-        /* out and back from the boss, then hooking UP — never a closed curve */
+      if (horn === 'boss' || horn === 'sweep') {
+        /* out and back, then hooking UP — never a closed curve. 'sweep' runs
+           half again as far and much flatter: the crescent of a water buffalo. */
+        const sw = horn === 'sweep';
         c.beginPath();
         c.moveTo(bx - headR * 0.26, by + headR * 0.06);
-        c.quadraticCurveTo(bx - headR * 1.00, by + headR * 0.22, bx - headR * 1.16, by - headR * 0.46);
+        c.quadraticCurveTo(bx - headR * (sw ? 1.50 : 1.00), by + headR * (sw ? 0.34 : 0.22),
+          bx - headR * (sw ? 1.72 : 1.16), by - headR * (sw ? 0.30 : 0.46));
         c.stroke();
       } else {
         /* the caprid scimitar: up off the poll, over, and back down the neck.
@@ -1903,7 +1911,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Reindeer': { legs: 0.1782, depth: 0.1505, len: 0.1974, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#9c7548', family: 'cervid' },
   'Sheep': { legs: 0.1448, depth: 0.1548, len: 0.1777, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', hue: '#a98f6d', family: 'bovid' },
   'Bison': { legs: 0.1211, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', coat: 'shaggy', hue: '#5c4535', family: 'bovid' },
-  'Water Buffalo': { legs: 0.1249, depth: 0.1765, len: 0.246, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#4f4a48', family: 'bovid' },
+  'Water Buffalo': { legs: 0.1249, depth: 0.1765, len: 0.246, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'sweep', hue: '#77736e', family: 'bovid' },
   /* bears, differentiated */
   'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636', family: 'ursid' },
   'Brown Bear': { legs: 0.0963, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f', family: 'ursid' },
