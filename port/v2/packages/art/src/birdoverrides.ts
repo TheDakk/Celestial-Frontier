@@ -33,18 +33,18 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Snowy Owl': B({ legs: 0.015, bill: 'hook', owl: true, neck: 'none', size: 1.10, hue: '#eef1f4' }),
   'Desert Owl': B({ legs: 0.015, bill: 'hook', owl: true, neck: 'none', size: 0.88, crest: true, hue: '#c3ab84' }),
   /* ── corvids and songbirds: small, perched, cone bills ── */
-  'Crow': B({ legs: 0.025, bill: 'stout', size: 0.80, hue: '#23252e' }),
-  'Raven': B({ legs: 0.025, bill: 'stout', size: 0.92, hue: '#191b22', plump: 1.06, elong: 1.08 }),
-  'Magpie': B({ legs: 0.025, bill: 'stout', size: 0.74, tail: 'long', hue: '#22242c' }),
+  'Crow': B({ legs: 0.025, bill: 'stout', size: 0.80, hue: '#23252e'  }),
+  'Raven': B({ legs: 0.025, bill: 'stout', size: 0.92, hue: '#191b22', plump: 1.06, elong: 1.08  }),
+  'Magpie': B({ legs: 0.025, bill: 'stout', size: 0.74, tail: 'long', hue: '#22242c'  }),
   'Jay': B({ legs: 0.02, bill: 'stout', size: 0.66, crest: true, hue: '#3f6fa8' }),
-  'Chough': B({ legs: 0.02, bill: 'long', size: 0.70, hue: '#24262c' }),
+  'Chough': B({ legs: 0.02, bill: 'long', size: 0.70, hue: '#24262c' , billHue: '#e2451c', legHue: '#d93a12' }),
   'Sparrow': B({ legs: 0.015, bill: 'cone', size: 0.46, hue: '#8a6f4c', plump: 1.10, elong: 0.96, streak: true, cap: '#6b5334' }),
   'Finch': B({ legs: 0.015, bill: 'cone', size: 0.44, hue: '#a8552f', plump: 1.18, elong: 0.92 }),
   'Robin': B({ legs: 0.018, bill: 'fine', size: 0.50, hue: '#6d6154', plump: 1.28, elong: 0.86, bib: '#d4622a' }),
   'Cardinal': B({ legs: 0.018, bill: 'cone', size: 0.54, hue: '#c0261f', plump: 1.22, elong: 0.88, crest: true, mask: true }),
   'Tanager': B({ legs: 0.015, bill: 'cone', size: 0.48, hue: '#c9342b', plump: 1.12, elong: 0.94 }),
   'Weaverbird': B({ legs: 0.015, bill: 'cone', size: 0.46, hue: '#e3c231', plump: 1.10, elong: 0.94, mask: true }),
-  'Starling': B({ legs: 0.018, bill: 'fine', size: 0.52, hue: '#2b2f3d', plump: 0.94, elong: 1.06, speckle: true }),
+  'Starling': B({ legs: 0.018, bill: 'fine', size: 0.52, hue: '#2b2f3d', plump: 0.94, elong: 1.06, speckle: true  }),
   'Lark': B({ legs: 0.020, bill: 'fine', size: 0.48, hue: '#9c8560', plump: 0.98, elong: 1.06, streak: true, crest: true }),
   'Swallow': B({ legs: 0.012, bill: 'fine', size: 0.46, hue: '#2f4a6b', plump: 0.74, elong: 1.34, tail: 'forked', bib: '#c9743e' }),
   'Swift': B({ legs: 0.008, bill: 'fine', size: 0.46, hue: '#4b4640', plump: 0.58, elong: 1.62, tail: 'forked' }),
@@ -82,11 +82,11 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Moorhen': B({ legs: 0.012, bill: 'cone', size: 0.60, swim: true, hue: '#3d4a44', plump: 1.06, cap: '#c33a26', bib: '#e8e6df' }),
   'Loon': B({ legs: 0.008, bill: 'long', size: 0.86, swim: true, neck: 'long', hue: '#23272e' }),
   'Grebe': B({ legs: 0.008, bill: 'long', size: 0.66, swim: true, neck: 'long', crest: true, hue: '#6a5340' }),
-  'Cormorant': B({ legs: 0.012, bill: 'hook', size: 0.90, swim: true, neck: 'long', hue: '#262a2e' }),
+  'Cormorant': B({ legs: 0.012, bill: 'hook', size: 0.90, swim: true, neck: 'long', hue: '#262a2e'  }),
   /* ── UPRIGHT divers: a flipper, not a wing ── */
   'Penguin': B({ legs: 0.012, bill: 'stout', size: 0.94, upright: true, neck: 'none', flightless: true, hue: '#20242c' }),
-  'Auk': B({ legs: 0.012, bill: 'stout', size: 0.68, upright: true, neck: 'none', hue: '#26292f' }),
-  'Guillemot': B({ legs: 0.012, bill: 'long', size: 0.70, upright: true, neck: 'none', hue: '#2b2f36' }),
+  'Auk': B({ legs: 0.012, bill: 'stout', size: 0.68, upright: true, neck: 'none', hue: '#26292f'  }),
+  'Guillemot': B({ legs: 0.012, bill: 'long', size: 0.70, upright: true, neck: 'none', hue: '#2b2f36'  }),
   /* ── seabirds ── */
   'Gull': B({ legs: 0.030, bill: 'stout', size: 0.82, hue: '#e6e9ee' }),
   'Tern': B({ legs: 0.022, bill: 'long', size: 0.64, tail: 'forked', hue: '#e9edf2' }),
@@ -110,7 +110,7 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Seriema': B({ legs: 0.095, bill: 'hook', size: 0.80, crest: true, hue: '#a99878' }),
   'Screamer': B({ legs: 0.060, bill: 'short', size: 0.88, hue: '#6b6459' }),
   /* ── the swan's S-curve ── */
-  'Swan': B({ legs: 0.012, bill: 'duck', size: 1.10, swim: true, neck: 'swan', hue: '#f4f6f8' }),
+  'Swan': B({ legs: 0.012, bill: 'duck', size: 1.10, swim: true, neck: 'swan', hue: '#f4f6f8' , billHue: '#e08a1c', legHue: '#2a2723' }),
   /* ★ WAVE 10 — Chicken and Rooster were unrouted and came out as waders.
      A gamebird is a plump body on scaly legs with a comb, wattles and an
      upswept tail; the rooster adds the sickle plumes and the hackle cape. */

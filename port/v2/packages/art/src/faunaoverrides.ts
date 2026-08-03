@@ -518,7 +518,16 @@ export interface BirdSpec {
   tail?: 'short' | 'fan' | 'long' | 'forked';
   eyespots?: boolean;                              /** the peacock train */
   pearled?: boolean;                               /** wave 39 — guineafowl pearl spotting */
-  cling?: boolean;                                 /** wave 40 — vertical trunk cling (woodpecker) */                               /** wave 39 — the guineafowl's white pearl spotting */
+  cling?: boolean;                                 /** wave 40 — vertical trunk cling (woodpecker) */
+  /* ★ WAVE 41, G6 — BILL AND LEG COLOUR. Both were hard-coded constants —
+     '#e0b13c' in three bill branches and '#c9a24f' in two leg strokes — so
+     EVERY bird in the catalogue wore the same yellow beak and yellow legs.
+     The gold pass caught it as a class failure, not a species one: it breaks
+     the Crow's 'all-black glossy plumage', the Chough's 'bright red legs and
+     bill', and the Guillemot's 'dark bill', which are those birds' mustReads.
+     A colour that is the identity has to come off the species row. */
+  billHue?: string;
+  legHue?: string;                               /** wave 39 — the guineafowl's white pearl spotting */
   owl?: boolean;                                   /** round head, facial disc, forward eyes */
   swim?: boolean;                                  /** rides a waterline; legs hidden */
   upright?: boolean;                               /** penguin/auk stance, flipper not wing */
@@ -644,7 +653,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       const hipX = bx + s * 8 * sz;
       const ankX = hipX + (7 + legLen * 0.10) * sz;    /* the ankle kicks BACK */
       const toeX = hipX - 2 * sz;                       /* the foot lands under the bird */
-      c.strokeStyle = '#c9a24f'; c.lineCap = 'round';
+      c.strokeStyle = opts.legHue ?? '#c9a24f'; c.lineCap = 'round';
       /* ★ D-ART-121 — a raptor's leg is HEAVY. The audit's words on the Harpy:
          "two thin yellow twigs ending in flat splayed toes with no claw tips
          at all" — on the bird whose grip is its defining feature. */
@@ -672,7 +681,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
           c.beginPath(); c.moveTo(tipX, tipY);
           c.quadraticCurveTo(tipX - 5 * sz, tipY + 2, tipX - 6 * sz, tipY + 7 * sz); c.stroke();
         }
-        c.strokeStyle = '#c9a24f';
+        c.strokeStyle = opts.legHue ?? '#c9a24f';
       }
     }
   }
@@ -1016,7 +1025,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     c.beginPath(); c.arc(hx + hr * 0.16, hy + hr * 0.02, hr * 0.40, 0, TAU); c.stroke();
     eye(c, hx - hr * 0.42, hy + hr * 0.02, hr * 0.24);
     eye(c, hx + hr * 0.16, hy + hr * 0.02, hr * 0.24);
-    c.fillStyle = '#e0b13c';
+    c.fillStyle = opts.billHue ?? '#e0b13c';
     c.beginPath(); c.moveTo(hx - hr * 0.14, hy + hr * 0.24); c.lineTo(hx - hr * 0.30, hy + hr * 0.66); c.lineTo(hx + hr * 0.02, hy + hr * 0.34); c.closePath(); c.fill();
     if (opts.crest) {   /* ear tufts */
       c.fillStyle = p.dark;
@@ -1038,7 +1047,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
        their length at small sizes; at sz = 1 this is exactly 1, so the
        wave-3 birds are untouched. */
     const B = 0.55 + 0.45 * sz;
-    c.fillStyle = '#e0b13c';
+    c.fillStyle = opts.billHue ?? '#e0b13c';
     if (opts.parrotBill) {
       /* ★ D-ART-121 — a macaw does not wear a raptor's hook. A parrot bill is
          DEEP: the upper mandible curves down past the lower jawline entirely,
@@ -1056,7 +1065,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       c.closePath(); c.fill();
       c.fillStyle = 'rgba(238,232,220,0.85)';   /* the cere */
       c.beginPath(); c.ellipse(hx - 6 * B, hy - 9 * B, 7 * B, 5 * B, -0.2, 0, TAU); c.fill();
-      c.fillStyle = '#e0b13c';
+      c.fillStyle = opts.billHue ?? '#e0b13c';
     } else if (opts.bill === 'hook') { c.beginPath(); c.moveTo(hx - 16 * B, hy - 6 * B); c.quadraticCurveTo(hx - 40 * B, hy - 4 * B, hx - 34 * B, hy + 12 * B); c.quadraticCurveTo(hx - 26 * B, hy + 4 * B, hx - 14 * B, hy + 6 * B); c.closePath(); c.fill(); }
     else if (opts.bill === 'long') { c.beginPath(); c.moveTo(hx - 14 * B, hy - 4 * B); c.lineTo(hx - 78 * B, hy + 2 * B); c.lineTo(hx - 14 * B, hy + 7 * B); c.closePath(); c.fill(); }
     else if (opts.bill === 'spoon') {
