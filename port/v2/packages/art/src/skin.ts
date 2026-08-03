@@ -777,19 +777,23 @@ export function coatMaterial(
      change across 105+ audited fish and belongs in an art wave with an eye on
      it, not inside a code-defect pass. Recorded so the next reader knows the
      comment describes an intent the numbers do not yet deliver. */
-  const rows = Math.round((kind === 'plate' ? 12 : 20) * Math.min(1.4, detail));
+  const rows = Math.round((kind === 'plate' ? 12 : 26) * Math.min(1.4, detail));
   const perRow = Math.round((kind === 'plate' ? 14 : 26) * Math.min(1.4, detail));
-  /* ★ WAVE 43 — THE ROW ORDER HERE IS DORSAL-FIRST, like the feather branch was
-     before H2 fixed it. I flipped it to match, MEASURED IT, AND PUT IT BACK:
-     the flip moved exactly ONE of 1,250 assets (Anglerfish, by 0.93) and cost
-     +1 confusable pair at the 1.49–1.50 boundary. No visible benefit, a small
-     measurable cost — so the flip is not the fix, and the measurement above is
-     what this investigation was actually worth.
-     ⚠ It WILL matter the day the rows are made to overlap. Whoever closes that
-     gap must flip this line in the same change, or the shingling will run
-     backwards on 105+ species at once and look assembled inside out. */
+  /* ★ WAVE 44 — THE ROWS NOW ACTUALLY OVERLAP, and the row order is flipped in
+     the SAME change, exactly as wave 43's note demanded.
+     Wave 43 measured the gap: at 20 rows the pitch is 2.9/20 = 0.145 rad of
+     girth while a scale stood 2·0.115·0.48 = 0.110 radius tall, so consecutive
+     rows cleared each other by ~24% of a scale and this drew the GRID its own
+     comment says it is not. (The proof was that flipping the draw order moved
+     exactly one asset of 1,250 — if rows overlapped, reversing which lands on
+     top would repaint every scaled species.)
+     Pitch closed to 2.9/26 = 0.112 and the vane deepened to 0.62, giving
+     0.143 radius of scale against 0.112 of pitch — a real 28% shingle. And
+     with a genuine overlap the order finally MATTERS, so phi ascends: ventral
+     rows go down first, each later row laps the one beneath it, and the exposed
+     edge faces down and forward the way a fish's scales do. */
   for (let ri = 0; ri < rows; ri++) {
-    const phi = 1.45 - (ri / rows) * 2.9;
+    const phi = -1.45 + (ri / rows) * 2.9;
     for (let k = 0; k < perRow; k++) {
       const u = 0.02 + ((k + (ri % 2) * 0.5) / perRow) * 0.96;
       const F = t.facing(u, phi);
@@ -806,7 +810,7 @@ export function coatMaterial(
         cc.fillStyle = 'rgb(' + (Math.min(255, p.cr * m) | 0) + ',' + (Math.min(255, p.cg * m) | 0)
           + ',' + (Math.min(255, p.cb * m) | 0) + ')';
         cc.beginPath();
-        cc.ellipse(0, 0, rad * 0.62, rad * 0.48, 0, Math.PI, TAU);
+        cc.ellipse(0, 0, rad * 0.62, rad * 0.62, 0, Math.PI, TAU);
         cc.fill();
         cc.strokeStyle = 'rgba(0,0,0,0.26)';
         cc.lineWidth = 0.9;
