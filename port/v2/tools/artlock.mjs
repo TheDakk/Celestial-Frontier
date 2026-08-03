@@ -71,7 +71,13 @@ const MAXDRIFT = Number(val('max', '9999'));
    tweak to one painter reports only the species that painter draws. */
 const DRIFT_EPS = Number(val('eps', '0.9'));
 /* and how close two DIFFERENT species may look before they are siblings */
-const SAME_FLOOR = Number(val('floor', '3.0'));
+/* ⚠ WAVE 42, CODE PASS — `--floor` is a SELFTEST-ONLY knob and its name does not
+   say so. It is read at lines 123–124 and nowhere in the production [SAME]
+   guard, which gates on HARD / WATCH / CONFUSABLE — so passing `--floor` on a
+   real run changes nothing while looking like it tightens the gate. Kept
+   (the selftest genuinely uses it) and labelled, rather than deleted: an
+   inert option is only dangerous while it looks live. */
+const SAME_FLOOR = Number(val('floor', '3.0'));   /* --floor: --selftest only */
 
 /** mean absolute channel difference between two 16x16 RGB fingerprints, 0..255.
     Base64 in, so the lock file is a megabyte instead of six. */
@@ -475,6 +481,19 @@ const CONFUSABLE = Number(val('confusable', '1.5'));
   }
 }
 
+/* ★ WAVE 42, CODE PASS — REFUSE TO WRITE AN EMPTY LOCK. On a machine with no
+   reference/artlock.json, `bad` stays 0 through a run that has nothing to
+   compare against, and this wrote a lock with an empty `fp` — after which
+   DRIFT is permanently vacuous (every asset reads as "new") and [EXPECT] is
+   disarmed, on a clone where nobody would think to check. The whole safety net
+   silently becomes a no-op, green forever. A first lock is a BLESSING and must
+   be asked for. */
+if (Object.keys(lock.fp).length === 0 && !has('bless')) {
+  console.error('\nartlock: refusing to write an EMPTY lock — that would disarm DRIFT permanently.');
+  console.error('   This looks like a first run on a fresh clone. Establish the baseline on purpose:');
+  console.error('     node tools/artlock.mjs --bless');
+  process.exit(2);
+}
 if (has('bless') || !bad) {
   fs.mkdirSync(path.dirname(LOCK), { recursive: true });
   fs.writeFileSync(LOCK, JSON.stringify(lock, null, 0));
