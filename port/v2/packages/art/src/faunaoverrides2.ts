@@ -203,14 +203,30 @@ export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horn
   c.beginPath(); c.moveTo(cx - bw * 1.6 * TL, cy + bh * 0.30);
   c.quadraticCurveTo(cx - bw * 2.2 * TL, cy + bh * 0.15, cx - bw * 2.6 * TL, tipY); c.stroke();
   /* the sprawled legs — elbows OUT, the reptile read */
-  c.strokeStyle = p.dark; c.lineWidth = bh * 0.42; c.lineCap = 'round';
-  for (const sx of [-0.55, 0.55]) for (const sy of [-1, 1] as const) {
-    const lx = cx + bw * sx, ly = cy + bh * 0.5;
-    c.beginPath(); c.moveTo(lx, ly);
-    c.quadraticCurveTo(lx + sx * 26, ly + 16 + sy * 4, lx + sx * 40, ly + 26);
-    c.stroke();
-    for (let d = -1; d <= 1; d++) { c.beginPath(); c.moveTo(lx + sx * 40, ly + 26); c.lineTo(lx + sx * 52 + d * 5, ly + 32 + d * 3); c.stroke(); }
+  /* ★ D-ART-128 — FOUR legs that read as four. The near and far limb of each
+     pair differed by 4px in one control point, so they landed on top of one
+     another and every monitor and lizard reported "only TWO limbs are drawn".
+     A far limb has to be offset along the body, shorter, and darker — the same
+     depth cue the crocodilians needed. */
+  c.lineCap = 'round';
+  for (const far of [true, false]) {
+    const m = far ? 0.58 : 1;
+    c.strokeStyle = `rgb(${(p.cr * 0.42 * m) | 0},${(p.cg * 0.44 * m) | 0},${(p.cb * 0.38 * m) | 0})`;
+    c.lineWidth = bh * (far ? 0.34 : 0.44);
+    const push = far ? -bw * 0.10 : bw * 0.05;
+    const drop = far ? 18 : 27;
+    for (const sx of [-0.55, 0.55]) {
+      const lx = cx + bw * sx + push, ly = cy + bh * 0.5;
+      c.beginPath(); c.moveTo(lx, ly);
+      c.quadraticCurveTo(lx + sx * 26, ly + 14, lx + sx * 40, ly + drop);
+      c.stroke();
+      for (let d = -1; d <= 1; d++) {
+        c.beginPath(); c.moveTo(lx + sx * 40, ly + drop);
+        c.lineTo(lx + sx * 52 + d * 5, ly + drop + 6 + d * 3); c.stroke();
+      }
+    }
   }
+  c.strokeStyle = p.dark;
   c.fillStyle = grad(c, p, cx, cy, bw);
   c.beginPath(); c.ellipse(cx, cy, bw, bh, 0, 0, TAU); c.fill();
   rim(c, () => c.ellipse(cx, cy, bw, bh, 0, -2.8, 0.3));
@@ -297,12 +313,22 @@ export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horn
   }
 }
 /** TURTLE/TORTOISE: domed scuted shell, stump legs, retracted neck */
-export function reptTurtle(c: Ctx, g: G, pIn: Pal, opts: { flippers?: boolean; hue?: string }, name = ''): void {
+export function reptTurtle(c: Ctx, g: G, pIn: Pal, opts: { flippers?: boolean; hue?: string;
+    /* ★ D-ART-127 — Snapping, Softshell and Tortoise came back from the audit
+       as ONE asset recoloured: the same domed scute shell on a plastron slab,
+       with "two floating wheel-like discs" for legs. These are the axes that
+       actually tell them apart. */
+    leathery?: boolean;   /** a softshell: flat, pliable, NO scute grid */
+    keels?: boolean;      /** the snapper's three raised longitudinal ridges */
+    serrated?: boolean;   /** and its sawtooth rear rim */
+    snorkel?: boolean;    /** the softshell's tubular proboscis */
+    bigHead?: number;     /** a snapper's head is a third of its shell */
+    tailLen?: number;     /** a snapper drags a long crested tail; a tortoise a nub */ }, name = ''): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x7011);
   const cx = S * 0.48, cy = S * 0.54, sw = S * 0.21 * nvar(name, 0x66, 0.14),
-    sh = S * 0.135 * nvar(name, 0x77, 0.20);   /* dome height per species */
+    sh = S * 0.135 * nvar(name, 0x77, 0.20) * (opts.leathery ? 0.52 : 1);   /* dome height per species */
   ground(c, cx, cy + sh + S * 0.05, S * 0.24);
   /* limbs */
   c.fillStyle = p.dark;
@@ -312,8 +338,40 @@ export function reptTurtle(c: Ctx, g: G, pIn: Pal, opts: { flippers?: boolean; h
       c.beginPath(); c.ellipse(0, 0, sw * 0.52, sh * 0.24, 0, 0, TAU); c.fill(); c.restore();
     }
   } else {
-    for (const s of [-1, 1] as const) for (const o of [0.55, -0.15]) {
-      c.beginPath(); c.ellipse(cx + s * sw * (0.72 + o * 0.1), cy + sh * 0.62, sw * 0.16, sh * 0.30, s * 0.3, 0, TAU); c.fill();
+    /* ★ D-ART-127 — COLUMNS, not discs. These were small ellipses centred well
+       BELOW the plastron with clear daylight between limb and shell, which is
+       what made every turtle read as a shell on wheels. A turtle's leg is a
+       stout column that leaves the shell and meets the ground. */
+    const gy2 = cy + sh + S * 0.05;
+    for (const far of [true, false]) {
+      for (const o of [0.62, -0.34]) {
+        const lx = cx + sw * o + (far ? -sw * 0.10 : sw * 0.06);
+        const m = far ? 0.62 : 1;
+        c.fillStyle = `rgb(${(p.cr * 0.52 * m) | 0},${(p.cg * 0.54 * m) | 0},${(p.cb * 0.46 * m) | 0})`;
+        const lw2 = sw * 0.17, top = cy + sh * 0.18;
+        c.beginPath();
+        c.moveTo(lx - lw2, top);
+        c.lineTo(lx - lw2 * 0.86, gy2);
+        c.quadraticCurveTo(lx, gy2 + sh * 0.10, lx + lw2 * 1.05, gy2);
+        c.lineTo(lx + lw2, top);
+        c.closePath(); c.fill();
+        /* claws on the front edge */
+        c.strokeStyle = 'rgba(30,26,20,0.6)'; c.lineWidth = 2;
+        for (const k of [-0.6, 0, 0.6]) {
+          c.beginPath(); c.moveTo(lx + k * lw2, gy2 + sh * 0.02);
+          c.lineTo(lx + k * lw2 - lw2 * 0.30, gy2 + sh * 0.13); c.stroke();
+        }
+      }
+    }
+    c.fillStyle = p.dark;
+    /* the TAIL — a snapper drags a long crested one, a tortoise shows a nub */
+    const tl = (opts.tailLen ?? 0.18) * sw;
+    if (tl > 0) {
+      c.beginPath();
+      c.moveTo(cx + sw * 0.92, cy + sh * 0.26);
+      c.quadraticCurveTo(cx + sw * 0.92 + tl, cy + sh * 0.46, cx + sw * 0.92 + tl * 1.5, cy + sh * 0.82);
+      c.quadraticCurveTo(cx + sw * 0.95, cy + sh * 0.72, cx + sw * 0.88, cy + sh * 0.52);
+      c.closePath(); c.fill();
     }
   }
   /* the shell — dome + scute grid + rim */
@@ -333,8 +391,28 @@ export function reptTurtle(c: Ctx, g: G, pIn: Pal, opts: { flippers?: boolean; h
     c.strokeStyle = 'rgba(240,236,220,0.10)'; c.lineWidth = 1.2;   /* the groove's lit lip */
     c.save(); c.translate(0, -1.4); c.beginPath(); draw(); c.stroke(); c.restore();
   };
+  /* ★ D-ART-127 — a SOFTSHELL has no scutes at all; the grid is the single
+     strongest thing saying "hard shell" and drawing it on a leathery turtle is
+     what made Softshell and Snapping the same picture. */
+  if (!opts.leathery) {
   for (let i = -2; i <= 2; i++) seam(() => c.ellipse(cx, cy, sw * (0.28 + Math.abs(i) * 0.26), sh * (0.30 + Math.abs(i) * 0.28), 0, Math.PI, TAU));
   for (let i = -3; i <= 3; i++) seam(() => { c.moveTo(cx + i * sw * 0.26, cy); c.quadraticCurveTo(cx + i * sw * 0.30, cy - sh * 0.55, cx + i * sw * 0.34, cy - sh); });
+  }
+  /* the snapper's THREE KEELS — raised ridges running the shell's length */
+  if (opts.keels) {
+    for (const k of [-0.42, 0, 0.42]) {
+      c.strokeStyle = 'rgba(255,250,238,0.20)'; c.lineWidth = 3.2;
+      c.beginPath(); c.moveTo(cx - sw * 0.86, cy - sh * (0.34 - Math.abs(k) * 0.22) + k * sh * 0.5);
+      c.quadraticCurveTo(cx, cy - sh * (0.92 - Math.abs(k) * 0.30) + k * sh * 0.4,
+        cx + sw * 0.86, cy - sh * (0.30 - Math.abs(k) * 0.20) + k * sh * 0.5);
+      c.stroke();
+      c.strokeStyle = 'rgba(0,0,0,0.28)'; c.lineWidth = 2;
+      c.beginPath(); c.moveTo(cx - sw * 0.86, cy - sh * (0.30 - Math.abs(k) * 0.22) + k * sh * 0.5);
+      c.quadraticCurveTo(cx, cy - sh * (0.86 - Math.abs(k) * 0.30) + k * sh * 0.4,
+        cx + sw * 0.86, cy - sh * (0.26 - Math.abs(k) * 0.20) + k * sh * 0.5);
+      c.stroke();
+    }
+  }
   /* and each scute's centre rises slightly — the shell reads as plates, not
      as a balloon with a net drawn on it */
   for (let i = -2; i <= 2; i++) for (let k = 0; k < 3; k++) {
@@ -960,12 +1038,13 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Coastal Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#b0a486', stout: 1.30, tail: 0.86 }, n),
   'Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#8a7b62', stout: 1.25, tail: 0.90 }, n),
   /* ── TURTLES ── the domed scuted shell */
-  'Tortoise': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#a58253', }, n),
+  /* ★ D-ART-127 — three turtles that were one asset recoloured. */
+  'Tortoise': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#a58253', tailLen: 0.10 }, n),
   'Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#6b7a3a', }, n),
   'Pond Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#3a4a35', }, n),
   'Box Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#7d5b1a', }, n),
-  'Snapping Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#38392d', }, n),
-  'Softshell Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#97977a', }, n),
+  'Snapping Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#38392d', keels: true, serrated: true, bigHead: 1.8, tailLen: 0.85 }, n),
+  'Softshell Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#97977a', leathery: true, snorkel: true, tailLen: 0.14 }, n),
   'Sea Turtle': (c, g, p, n) => reptTurtle(c, g, p, { hue: '#8f7331', flippers: true }, n),
   /* ── FROGS & TOADS ── folded haunches, domed eyes, wide mouth */
   'Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#4c9a3f', }, n),

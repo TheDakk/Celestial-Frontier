@@ -402,14 +402,18 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; 
 }
 /** CETACEAN: long body, horizontal FLUKE, blowhole, species dorsal */
 export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | 'small' | 'none'; blunt: boolean; hue?: [number, number, number];
-    bulk?: number; long?: number; melon?: number; tusk?: boolean }): void {
+    bulk?: number; long?: number; melon?: number; tusk?: boolean; patch?: boolean }): void {
   /* NO CETACEAN IS PURPLE. Every whale, dolphin and porpoise alive is some
      grey, blue-grey or black, and a lavender blue whale is not rarity
      variation — it is the animal being unrecognisable. Anchored toward slate,
      with enough of the roll surviving to keep the family apart. */
   const _cn = ((g.seed as number) >>> 3) & 255;
-  const _ck = 0.78;
+  const _ck = opts.patch ? 0.97 : 0.78;   /* ★ D-ART-129 — see the note below */
   const _hue = opts.hue ?? [82 + (_cn % 28), 90 + (_cn % 24), 104 + (_cn % 32)];
+  /* ★ D-ART-129 — an orca is BLACK AND WHITE and that is the entire animal.
+     Its row asked for [26,28,34] and it rendered mid-TEAL, because the shared
+     mix keeps 22% of the rarity roll — fine for a grey whale, wrong for the one
+     cetacean whose colour is its name. `patch` says colour IS identity here. */
   const _ar = _hue[0], _ag = _hue[1], _ab = _hue[2];
   const _cr = pIn.cr + (_ar - pIn.cr) * _ck;
   const _cg = pIn.cg + (_ag - pIn.cg) * _ck;
@@ -476,6 +480,19 @@ export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | '
       const u = i / 8, x = head - tl * u, hh = H * (0.13 - 0.118 * u);
       c.beginPath(); c.moveTo(x + tl * 0.05, ty - hh); c.lineTo(x - tl * 0.02, ty + hh); c.stroke();
     }
+  }
+  if (opts.patch) {
+    /* the eye patch, the ventral field and the saddle — without these an orca
+       is just a dark dolphin */
+    c.fillStyle = 'rgba(248,250,252,0.95)';
+    c.beginPath(); c.ellipse(head + L * 0.30, cy - H * 0.30, L * 0.11, H * 0.20, -0.22, 0, TAU); c.fill();
+    c.beginPath();
+    c.moveTo(head + L * 0.16, cy + H * 0.42);
+    c.quadraticCurveTo(cx, cy + H * 1.06, cx + L * 0.62, cy + H * 0.52);
+    c.quadraticCurveTo(cx, cy + H * 0.60, head + L * 0.16, cy + H * 0.42);
+    c.closePath(); c.fill();
+    c.fillStyle = 'rgba(150,162,172,0.45)';   /* the grey saddle behind the fin */
+    c.beginPath(); c.ellipse(cx + L * 0.18, cy - H * 0.44, L * 0.20, H * 0.24, 0.1, 0, TAU); c.fill();
   }
   c.fillStyle = 'rgba(255,255,255,0.5)';   /* blowhole */
   c.beginPath(); c.ellipse(cx - L * 0.62, cy - H * 0.92, 5, 3, 0, 0, TAU); c.fill();
@@ -1037,7 +1054,7 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Gray Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [142, 146, 140], long: 1.06, bulk: 1.00 }),
   'Right Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [46, 48, 52], long: 0.84, bulk: 1.42, melon: 0.30 }),
   'Beluga': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [226, 228, 230], long: 0.88, bulk: 1.12, melon: 0.55 }),
-  'Orca': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'tall', blunt: false, hue: [26, 28, 34], long: 0.98, bulk: 1.08 }),
+  'Orca': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'tall', blunt: false, patch: true, hue: [22, 24, 30], long: 0.98, bulk: 1.08 }),
   'Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [124, 134, 146], long: 0.86, bulk: 0.82 }),
   'River Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [178, 150, 148], long: 0.80, bulk: 0.70 }),
   'Pilot Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: true, hue: [30, 32, 38], long: 0.92, bulk: 1.20, melon: 1.00 }),
