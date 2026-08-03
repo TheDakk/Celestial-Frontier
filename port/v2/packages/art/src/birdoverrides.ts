@@ -66,7 +66,7 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Ptarmigan': B({ legs: 0.028, bill: 'stout', size: 0.72, hue: '#e8e6df' }),
   'Quail': B({ legs: 0.025, bill: 'short', size: 0.54, crest: true, hue: '#a08761' }),
   'Partridge': B({ legs: 0.028, bill: 'cone', size: 0.62, hue: '#a4794e', plump: 1.20, elong: 0.94, streak: true }),
-  'Guineafowl': B({ legs: 0.040, bill: 'short', size: 0.78, crest: true, hue: '#3c4250' }),
+  'Guineafowl': B({ legs: 0.040, bill: 'short', size: 0.78, pearled: true, hue: '#3c4250' }),
   'Bustard': B({ legs: 0.075, bill: 'stout', size: 0.98, hue: '#a08f70' }),
   'Sandgrouse': B({ legs: 0.028, bill: 'short', size: 0.60, hue: '#c3a878', plump: 0.96, elong: 1.14, speckle: true }),
   'Roadrunner': B({ legs: 0.060, bill: 'long', size: 0.72, tail: 'long', crest: true, hue: '#8a7554' }),

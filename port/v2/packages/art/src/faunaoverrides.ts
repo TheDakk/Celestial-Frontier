@@ -517,6 +517,7 @@ export interface BirdSpec {
   neck?: 'short' | 'long' | 'swan' | 'none';
   tail?: 'short' | 'fan' | 'long' | 'forked';
   eyespots?: boolean;                              /** the peacock train */
+  pearled?: boolean;                               /** wave 39 — the guineafowl's white pearl spotting */
   owl?: boolean;                                   /** round head, facial disc, forward eyes */
   swim?: boolean;                                  /** rides a waterline; legs hidden */
   upright?: boolean;                               /** penguin/auk stance, flipper not wing */
@@ -781,6 +782,28 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
           : `rgba(226,214,188,${0.22 + r() * 0.28})`;
         c.lineWidth = 1 + r() * 1.4;
         c.beginPath(); c.moveTo(ux, uy); c.lineTo(ux + L, uy + (r() - 0.5) * 3); c.stroke();
+      }
+    }
+    c.restore();
+  }
+  /* ★ WAVE 39 — THE PEARL SPOTTING, and it is the bird the trait is named for.
+     Guineafowl's verifier: "mustRead 2's defining half — the dense white pearl
+     spotting — is entirely absent; the body is plain slate grey with a few
+     concentric arcs, and that spotting is the trait the bird is known by."
+     An even field of small white dots over body and wing, clipped to the body
+     so none of it strays into the background, and spaced on a jittered lattice
+     rather than randomly — a real guineafowl's pearling is strikingly REGULAR,
+     and a random scatter reads as damage rather than plumage. */
+  if (opts.pearled) {
+    c.save();
+    c.beginPath(); c.ellipse(bx, by, bw, bh, -0.15, 0, TAU); c.clip();
+    for (let ry = -4; ry <= 4; ry++) {
+      for (let rx2 = -6; rx2 <= 6; rx2++) {
+        const jx = (r() - 0.5) * bw * 0.055, jy = (r() - 0.5) * bh * 0.10;
+        const px = bx + rx2 * bw * 0.165 + (ry % 2 ? bw * 0.082 : 0) + jx;
+        const py = by + ry * bh * 0.21 + jy;
+        c.fillStyle = `rgba(238,238,232,${0.62 + r() * 0.26})`;
+        c.beginPath(); c.arc(px, py, Math.max(1.1, bh * 0.030), 0, TAU); c.fill();
       }
     }
     c.restore();
