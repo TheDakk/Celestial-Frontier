@@ -122,7 +122,10 @@ export interface InsectSpec {
   wingScale?: number;
   waist?: boolean;            /** the wasp/ant petiole */
   abdomen: number;            /** abdomen length multiplier */
-  antennae?: 'short' | 'long' | 'feather' | 'none';
+  antennae?: 'short' | 'long' | 'feather' | 'none'
+    /* ★ wave 41 G7 — the ant's geniculate ELBOW (one of its three mustReads)
+       and the butterfly's CLUBBED tip, which is what tells it from a moth. */
+    | 'elbow' | 'club';
   sting?: boolean;
   raptor?: boolean;           /** mantis forelegs */
   jumper?: boolean;           /** the huge hind femur of a grasshopper */
@@ -432,7 +435,7 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
   if (ant !== 'none') {
     c.strokeStyle = p.dark; c.lineWidth = ant === 'feather' ? 3 : 2.4; c.lineCap = 'round';
     for (const s of [-1, 1] as const) {
-      const L = th * (ant === 'long' ? 3.4 : ant === 'feather' ? 2.0 : 1.5);
+      const L = th * (ant === 'long' ? 3.4 : ant === 'club' ? 3.0 : ant === 'elbow' ? 2.5 : ant === 'feather' ? 2.0 : 1.5);
       const ex = hx - L, ey = hy - th * 0.6 + s * th * 0.34 - L * 0.28;
       c.beginPath(); c.moveTo(hx - th * 0.5, hy - th * 0.35);
       c.quadraticCurveTo(hx - L * 0.6, hy - th * 0.9 + s * th * 0.2, ex, ey); c.stroke();
@@ -444,6 +447,22 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
           c.beginPath(); c.moveTo(px, py); c.lineTo(px - 3, py - 8); c.stroke();
         }
         c.lineWidth = 3;
+      }
+      /* ★ WAVE 41, G7 — TWO ANTENNAE THAT ARE NOT BARE STICKS. The gold pass:
+         the ant's are "two straight bare sticks with no ELBOW" (a hymenopteran
+         antenna is geniculate — a long first segment then a sharp bend, and it
+         is one of the ant's three mustReads), and the butterfly's want a CLUB
+         at the tip, which is what separates a butterfly from a moth at a
+         glance. Both were drawn as one plain curve for every insect. */
+      if (ant === 'elbow') {
+        /* the scape runs out straight, then the funicle bends down and forward */
+        c.beginPath();
+        c.moveTo(ex, ey);
+        c.quadraticCurveTo(ex - L * 0.30, ey + th * 0.30, ex - L * 0.16, ey + th * 0.92);
+        c.stroke();
+      } else if (ant === 'club') {
+        c.fillStyle = p.dark;
+        c.beginPath(); c.ellipse(ex, ey, th * 0.24, th * 0.17, -0.5, 0, TAU); c.fill();
       }
     }
   }
@@ -1045,10 +1064,10 @@ export const INVERT_NAME: Record<string, PainterI> = {
   /* ── INSECTS ── */
   /* ★ WAVE 22 — SHAPE, not colour, is what tells these apart. See InsectSpec.
      An ant: tiny, narrow, a pinched waist and a small head. */
-  'Ant': I({ hue: '#4a2f22', abdomen: 0.72, broad: 0.72, eyes: 0.8, waist: true, antennae: 'long' }),
+  'Ant': I({ hue: '#4a2f22', abdomen: 0.72, broad: 0.72, eyes: 0.8, waist: true, antennae: 'elbow' }),
   /* a leafcutter is a MAJOR worker — famously big-headed, with the huge
      mandibular head that does the cutting. That is its whole read. */
-  'Leafcutter Ant': I({ hue: '#8a4a2a', abdomen: 0.80, broad: 0.78, eyes: 1.45, waist: true, antennae: 'long' }),
+  'Leafcutter Ant': I({ hue: '#8a4a2a', abdomen: 0.80, broad: 0.78, eyes: 1.45, waist: true, antennae: 'elbow' }),
   'Termite': I({ hue: '#d8c9a8', abdomen: 1.15, antennae: 'short' }),
   'Bee': I({ hue: '#d4a017', abdomen: 0.95, wings: 'lace', antennae: 'short', sting: true, fuzzy: true, pattern: 'bands' }),
   'Honeybee': I({ hue: '#b06a20', abdomen: 0.95, wings: 'lace', antennae: 'short', sting: true, fuzzy: true, pattern: 'bands' }),
@@ -1056,7 +1075,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Orchid Bee': I({ hue: '#1f8f5f', abdomen: 0.9, wings: 'lace', antennae: 'short', fuzzy: true, pattern: 'bands' }),
   'Wasp': I({ hue: '#eec015', abdomen: 1.15, waist: true, wings: 'lace', antennae: 'short', sting: true, pattern: 'bands', wingScale: 1.6 }),
   'Moth': I({ hue: '#7f7566', abdomen: 1.0, wings: 'open', antennae: 'feather', fuzzy: true }),
-  'Butterfly': I({ hue: '#d97328', abdomen: 0.9, wings: 'open', antennae: 'long', pattern: 'spots' }),
+  'Butterfly': I({ hue: '#d97328', abdomen: 0.9, wings: 'open', antennae: 'club', pattern: 'spots' }),
   /* a cicada is a broad blunt wedge with a very wide head and big wings */
   'Cicada': I({ hue: '#48544e', abdomen: 1.05, broad: 1.5, eyes: 1.5, carapace: true, wings: 'tent', wingScale: 1.45, antennae: 'short' }),
   'Mantis': I({ hue: '#66a03c', abdomen: 1.25, broad: 0.72, face: 'triangle', eyes: 1.25, wings: 'folded', antennae: 'long', raptor: true }),

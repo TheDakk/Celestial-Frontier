@@ -710,7 +710,11 @@ export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bush
 
 /* ============================ PRIMATES ============================ */
 /** PRIMATE: upright-ish torso, long arms, forward face, expressive brow */
-export function primate(c: Ctx, g: G, pIn: Pal, opts: { build: 'great' | 'lesser' | 'monkey'; tail?: boolean; ruff?: boolean; hue?: string }, name = ''): void {
+export function primate(c: Ctx, g: G, pIn: Pal, opts: { build: 'great' | 'lesser' | 'monkey'; tail?: boolean; ruff?: boolean; hue?: string;
+    /* ★ wave 41 — protruding ear size as a fraction of head radius. A chimp's
+       big round ears are its single most diagnostic feature and no primate
+       here had an ear at all. */
+    ears?: number }, name = ''): void {
   /* ★ D-ART-114 — the species hue axis (17 primates were on the rarity roll). */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x9A1E);
@@ -795,6 +799,29 @@ export function primate(c: Ctx, g: G, pIn: Pal, opts: { build: 'great' | 'lesser
   if (opts.ruff) {
     c.fillStyle = p.dark;
     for (let i = 0; i < 22; i++) { const a = (i / 22) * TAU; softMark(c, hx + Math.cos(a) * hr * 1.25, hy + Math.sin(a) * hr * 1.15, hr * 0.42, hr * 0.34, `${p.cr},${p.cg},${p.cb}`, 0.7, a); }
+  }
+  /* ★ WAVE 41, G10 — THE CHIMPANZEE'S EARS. Its verifier: "it is the Gorilla
+     asset in brown. The large protruding round ears, mustRead 1 and the single
+     most diagnostic chimp feature, are completely absent: the head is a smooth
+     dome." No primate here had an ear at all, so the whole family shared one
+     skull outline and Gorilla ≈ Chimpanzee ≈ Spider Monkey followed.
+     Drawn BEFORE the head so the skull overlaps their roots (wave 4's rule; the
+     elephant's fan is still the outstanding counter-example). */
+  if (opts.ears) {
+    const er = hr * opts.ears;
+    for (const s of [-1, 1] as const) {
+      const m2 = s < 0 ? 0.66 : 1;
+      c.fillStyle = `rgb(${(p.cr * 0.80 * m2) | 0},${(p.cg * 0.74 * m2) | 0},${(p.cb * 0.70 * m2) | 0})`;
+      c.beginPath();
+      c.ellipse(hx + s * hr * 0.92, hy - hr * 0.08, er * 0.62, er * 0.78, s * 0.16, 0, TAU);
+      c.fill();
+      if (s > 0) {   /* the concha, on the near ear only — see the G1 rule */
+        c.fillStyle = `rgba(${(p.cr * 0.44) | 0},${(p.cg * 0.36) | 0},${(p.cb * 0.34) | 0},0.78)`;
+        c.beginPath();
+        c.ellipse(hx + s * hr * 0.86, hy - hr * 0.04, er * 0.34, er * 0.48, 0, 0, TAU);
+        c.fill();
+      }
+    }
   }
   c.fillStyle = grad(c, p, hx, hy, hr);
   c.beginPath(); c.ellipse(hx, hy, hr, hr * 1.05, 0, 0, TAU); c.fill();
@@ -1242,7 +1269,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Porcupine': (c, g, p, n) => smallRodent(c, g, p, { hue: '#4a3b2c', tail: 'stub', ears: 0.34, quills: true }, n),
   /* ── PRIMATES ── the shoulder-to-hip taper, the face disc, the reach */
   'Gorilla': (c, g, p, n) => primate(c, g, p, { hue: '#2b2a2c', build: 'great' }, n),
-  'Chimpanzee': (c, g, p, n) => primate(c, g, p, { hue: '#3a2f28', build: 'great' }, n),
+  'Chimpanzee': (c, g, p, n) => primate(c, g, p, { hue: '#3a2f28', build: 'great', ears: 0.62 }, n),
   'Orangutan': (c, g, p, n) => primate(c, g, p, { hue: '#a8501c', build: 'great', ruff: true }, n),
   'Gibbon': (c, g, p, n) => primate(c, g, p, { hue: '#7d6746', build: 'lesser' }, n),
   'Baboon': (c, g, p, n) => primate(c, g, p, { hue: '#8a7549', build: 'lesser', tail: true }, n),
