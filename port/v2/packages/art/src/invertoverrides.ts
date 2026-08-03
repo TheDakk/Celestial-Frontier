@@ -263,7 +263,18 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
   }
 
   /* ── abdomen ── */
-  const ax = cx + th * 1.1 + abL * 0.45;
+  /* ★ WAVE 38, G7 — THE PETIOLE WAS DRAWN AND THEN COVERED UP. `waist` is set
+     on Ant, Leafcutter Ant and Wasp, the stroke below runs, and the abdomen
+     ellipse then lands on top of it: at `th*1.1 + abL*0.45` its rear edge sits
+     within a few pixels of the thorax, so there was no daylight for a "thread
+     you can see daylight through" to show in. The Leafcutter Ant's verifier:
+     "no pinched petiole waist — the three beads abut directly".
+     A new D-ART-100 shape, and the nastiest yet: the field is set, the branch
+     IS taken, the geometry IS drawn, and it is occluded by a later shape. No
+     gate here can see that; only a render can.
+     Setting the gaster back opens the gap the petiole needs, and it is what a
+     wasp actually looks like. Only the three waisted species move. */
+  const ax = cx + th * (spec.waist ? 1.95 : 1.1) + abL * 0.45;
   if (spec.waist) {   /* the petiole: a thread you can see daylight through */
     c.strokeStyle = p.dark; c.lineWidth = th * 0.28; c.lineCap = 'round';
     c.beginPath(); c.moveTo(cx + th * 0.85, cy + th * 0.1); c.lineTo(ax - abL * 0.42, cy + th * 0.16); c.stroke();
@@ -288,7 +299,11 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
   }
   c.fillStyle = shell(c, p, ax, cy + th * 0.1, abL * 0.5);
   if (!spec.carapace) { c.beginPath(); c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92) * BR, 0.06, 0, TAU); c.fill(); }
-  rim(c, () => c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92) * BR, 0.06, -2.8, 0.3));
+  /* ⚠ and the rim arc RAN UNDER THE THORAX. -2.8 starts on the upper-left of
+     the abdomen, exactly where the thorax overlaps it, so the light outline
+     surfaced as the "pale seam arc" the audit named. Started clear of the
+     overlap it still lights the free edge and can no longer draw a seam. */
+  rim(c, () => c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92) * BR, 0.06, -1.9, 0.3));
   /* ★ WAVE 21 — SHELL. The abdomen is the largest flat area on an insect and
      it carried a plain gradient. Chitin's read is segment seams plus a tight
      specular, NOT texture — an insect's cuticle is smooth, so the fur-style

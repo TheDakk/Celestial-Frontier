@@ -812,12 +812,21 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       /* the primaries as separated fingers, splitting OFF the tapered tip */
       c.strokeStyle = `rgba(${p.cr * 0.22 | 0},${p.cg * 0.22 | 0},${p.cb * 0.24 | 0},0.9)`;
       c.lineCap = 'round';
+      /* ★ WAVE 38, G5 — THE PRIMARIES WERE DRAWN PAST THE WING'S OWN TIP. The
+         blade ends at spanW*k; these ran to 1.02·spanW*k, so five strokes
+         projected into empty space beyond it and, on a bird whose proportions
+         are not the albatross's, separated into "five separate feather lozenges
+         floating clear of the body with visible gaps, reading as pasted
+         leaves" — the Eagle, confirmed at 5× as the worst artifact in the pass.
+         A primary is a SPLIT IN the wing, not a finger beyond it: they start
+         deeper in the blade and stop inside its edge, so they can only ever
+         read as notches in one surface. */
       for (let i = 0; i < 5; i++) {
         const u = i / 4;
         c.lineWidth = 3.4 - u * 1.6;
-        c.beginPath(); c.moveTo(spanW * k * 0.72, -spanH * 0.52 + u * spanH * 0.9);
-        c.quadraticCurveTo(spanW * k * (0.90 + u * 0.03), -spanH * 0.44 + u * spanH * 0.9,
-          spanW * k * (1.02 - u * 0.06), -spanH * (0.30 - u * 0.42));
+        c.beginPath(); c.moveTo(spanW * k * 0.54, -spanH * 0.46 + u * spanH * 0.86);
+        c.quadraticCurveTo(spanW * k * (0.78 + u * 0.03), -spanH * 0.40 + u * spanH * 0.88,
+          spanW * k * (0.96 - u * 0.10), -spanH * (0.24 - u * 0.40));
         c.stroke();
       }
       /* the covert row where the wing meets the shoulder — it belongs to a body */
@@ -828,8 +837,14 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     };
     /* one wing sweeping back on each side. The far one is shorter and dimmer
        because it is going away from us — two identical wings read as a cutout. */
-    feather(bx - bw * 0.05, by - bh * 0.22, Math.PI - 0.22, 0.72, 0.55);   /* far, going away */
-    feather(bx + bw * 0.05, by + bh * 0.02, 0.14, 1, 1);                   /* near, toward us */
+    /* ★ WAVE 38, G5 — AND BOTH WINGS ROOTED NEAR THE BODY'S CENTRE, so the far
+       one read as "a straight dark wing blade crossing the left of the body
+       with no shoulder join". A wing leaves the SHOULDER — up and forward of
+       centre — and its root must sit INSIDE the body outline so the body
+       covers the join, which is the same answer wave 4 gave the mammal limbs
+       and wave 6 the neck: there is nothing to blend if the join is buried. */
+    feather(bx + bw * 0.16, by - bh * 0.40, Math.PI - 0.30, 0.72, 0.55);   /* far, going away */
+    feather(bx + bw * 0.22, by - bh * 0.16, 0.14, 1, 1);                   /* near, toward us */
   } else if (opts.upright) {   /* a penguin has a FLIPPER: one stiff blade, no primaries */
     c.fillStyle = p.dark;
     c.save(); c.translate(bx + bw * 0.30, by - bh * 0.10); c.rotate(0.30);
