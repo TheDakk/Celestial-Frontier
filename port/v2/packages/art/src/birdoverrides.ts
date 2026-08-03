@@ -53,8 +53,10 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Woodpecker': B({ legs: 0.015, bill: 'chisel', size: 0.62, crest: true, hue: '#2c2a28' }),
   'Quetzal': B({ legs: 0.015, bill: 'short', size: 0.62, tail: 'long', crest: true, hue: '#0f8a6a' }),
   /* ── parrots ── */
-  'Parrot': B({ legs: 0.018, bill: 'hook', size: 0.72, hue: '#2f9e4a' }),
-  'Macaw': B({ legs: 0.020, bill: 'hook', size: 0.92, tail: 'long', hue: '#c2331f' }),
+  'Parrot': B({ legs: 0.018, bill: 'hook', parrotBill: true, zygo: true, headMass: 1.3, size: 0.72, tail: 'long', hue: '#2f9e4a' }),
+  /* ★ D-ART-121 — a macaw's bill and feet had REGRESSED to the shared eagle
+     assets; a parrot's deep bill and two-back toes are its whole read. */
+  'Macaw': B({ legs: 0.020, bill: 'hook', parrotBill: true, zygo: true, headMass: 1.4, size: 0.92, tail: 'long', hue: '#c2331f' }),
   'Cockatoo': B({ legs: 0.020, bill: 'hook', size: 0.82, crest: true, hue: '#f0ece2' }),
   /* ── gamebirds: heavy body, short legs, fanned tails ── */
   'Peacock': B({ legs: 0.045, bill: 'stout', size: 0.96, tail: 'fan', eyespots: true, crest: true, hue: '#12656b' }),

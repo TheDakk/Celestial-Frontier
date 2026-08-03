@@ -151,6 +151,7 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
   const cx = S * 0.50, cy = S * 0.52;
   const sc = (spec.stick ? 1.35 : 1) * nv(name, 0x11, 0.10);
   const BR = spec.broad ?? 1;                 /* ★ wave 22 — body WIDTH */
+  const folded: Array<() => void> = [];       /* ★ D-ART-122 — wings drawn after the body */
   const th = S * 0.052 * sc * (spec.stick ? 0.42 : 1);          /* thorax half-height */
   /* the abdomen-to-thorax RATIO, which survives the fit pass where a shared
      overall scale would not */
@@ -204,7 +205,14 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
        and give it a real span. Sized off the abdomen it came out smaller
        than the body it hangs from. */
     const ws = spec.wingScale ?? 1;
-    const wl = (open ? th * 5.2 : abL * 1.25) * ws;
+    /* ★ D-ART-122 — A FOLDED WING THAT NEVER CLEARED THE BODY. At abL*1.25
+       anchored back near the thorax, the tip fell SHORT of the abdomen tip,
+       and the whole wing block is drawn BEFORE the abdomen — so the body then
+       painted over it. Every bee, bumblebee, orchid bee and black fly came
+       back from the audit as "a small pale membrane wrapped over the abdomen,
+       mostly occluded, nothing projecting past the body outline". A wing that
+       does not break the silhouette is not a wing. */
+    const wl = (open ? th * 5.2 : abL * 1.95) * ws;
     const wh = (open ? th * 2.9 : th * 0.85) * (ws > 1 ? 1.25 : 1);
     for (const s of [-1, 1] as const) {
       c.save(); c.translate(cx + th * (open ? -0.1 : 0.4), cy - th * (open ? 0.5 : 0.35));
@@ -231,7 +239,16 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
           for (const k of [0.42, 0.68]) softMark(c, wl * k, -wh * 0.30, wh * 0.28, wh * 0.28, '28,22,16', 0.42);
         }
       } else {
-        wing(wl, wh, 0, spec.wings === 'lace' ? 0.55 : 0.55);
+        /* deferred — a folded wing lies ON TOP of the abdomen, so it cannot be
+           painted before it. Captured here and run after the body below. */
+        const sx = s;
+        folded.push(() => {
+          c.save(); c.translate(cx + th * 0.4, cy - th * 0.35); c.rotate(sx * 0.16);
+          wing(wl, wh, 0, 0.62);
+          /* the HINDWING, shorter and offset, so a bee reads as four-winged */
+          wing(wl * 0.60, wh * 0.72, 0.26, 0.42);
+          c.restore();
+        });
       }
       c.restore();
     }
@@ -297,6 +314,8 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
     c.beginPath(); c.ellipse(cx - th * 0.62, cy - th * 0.06, TW * 0.82, TH2 * 0.92, 0, 0, TAU); c.fill();
     rim(c, () => c.ellipse(cx - th * 0.62, cy - th * 0.06, TW * 0.82, TH2 * 0.92, 0, -2.8, 0.3));
   }
+  /* ★ D-ART-122 — the folded wings, now over the abdomen and past its tip. */
+  for (const w of folded) w();
   /* ★ D-ART-119 — the jumping femur, now ON TOP of the body and big enough to
      be the silhouette it is meant to be: a pear of muscle rising ABOVE the
      back line, in a darker tone so it separates from the flank behind it. */

@@ -502,6 +502,36 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
       c.beginPath(); c.moveTo(x, cy + depth * 0.20); c.lineTo(x - depth * 0.09, cy + depth * 0.52); c.lineTo(x + depth * 0.09, cy + depth * 0.26); c.closePath(); c.fill();
     }
   }
+  /* ★ D-ART-123 — THE CEPHALOFOIL. `snout:'hammer'` has existed since wave 11
+     and all it ever did was widen the jaw start by depth*0.2 — about 1.4% of
+     body length, i.e. nothing. The audit's verdict was blunt and correct: "a
+     generic scaled mackerel; no cephalofoil of any kind". The hammer IS the
+     animal, so it is drawn here as what it is: a transverse bar across the
+     nose, squared off, with the eyes carried out to its tips. */
+  if (spec.snout === 'hammer') {
+    const hw = len * 0.42, hth = len * 0.075;      /* span across, thickness along */
+    const hx2 = nose - hth * 0.55;
+    const hg = c.createLinearGradient(hx2, cy - hw, hx2, cy + hw);
+    hg.addColorStop(0, p.dark); hg.addColorStop(0.42, p.base); hg.addColorStop(1, p.lit);
+    c.fillStyle = hg;
+    c.beginPath();
+    /* a shallow-arched bar: the leading edge bows forward a little at centre */
+    c.moveTo(hx2 - hth, cy - hw);
+    c.quadraticCurveTo(hx2 - hth * 1.5, cy, hx2 - hth, cy + hw);
+    c.lineTo(hx2 + hth * 0.9, cy + hw * 0.92);
+    c.quadraticCurveTo(hx2 + hth * 1.2, cy, hx2 + hth * 0.9, cy - hw * 0.92);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(16,22,28,0.34)'; c.lineWidth = 1.6;
+    c.beginPath(); c.moveTo(hx2 - hth, cy - hw);
+    c.quadraticCurveTo(hx2 - hth * 1.5, cy, hx2 - hth, cy + hw); c.stroke();
+    /* the eyes ride the OUTBOARD TIPS — that is the point of the shape */
+    for (const sgn of [-1, 1]) {
+      c.fillStyle = '#f4f6f4';
+      c.beginPath(); c.arc(hx2 - hth * 0.1, cy + sgn * hw * 0.90, depth * 0.20, 0, TAU); c.fill();
+      c.fillStyle = '#10161c';
+      c.beginPath(); c.arc(hx2 - hth * 0.1, cy + sgn * hw * 0.90, depth * 0.11, 0, TAU); c.fill();
+    }
+  }
   if (spec.lure) {   /* the esca on its illicium — the anglerfish's whole story */
     c.strokeStyle = p.dark; c.lineWidth = 3.4; c.lineCap = 'round';
     const lx = nose - depth * 0.30, ly = cy - depth * 1.02;
