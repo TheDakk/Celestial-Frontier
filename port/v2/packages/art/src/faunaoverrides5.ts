@@ -1652,12 +1652,23 @@ export function faunaDartFrog(c: Ctx, g: G, pIn: Pal, name = ''): void {
   c.strokeStyle = 'rgba(255,255,255,0.30)'; c.lineWidth = 2;
   c.beginPath(); c.ellipse(cx, cy, bw * 0.96, bh * 0.94, 0, -2.7, -0.2); c.stroke();
   /* the rounded blunt snout and the jet-black eyes */
+  /* ★ WAVE 39 — BOTH EYES WERE IN THE SAME CORNER. They shared one x
+     (cx + 0.52·bw) with the far one nudged back by 0.22·bw at almost the same
+     height, so the verifier saw "both eyes crammed together into the upper-right
+     of a single red blob facing the same way" and a stranger read the tile as a
+     ladybird. A frog's eyes are its most diagnostic feature: two separated domes
+     that BULGE ABOVE the body outline. Set apart along the skull and raised
+     until they break the silhouette — which is also what gives the frog a head,
+     the other half of "the head is not separable from the body". */
   for (const s of [-1, 1] as const) {
-    const ex = cx + bw * 0.52, ey = cy - bh * (0.52 + (s < 0 ? 0.08 : 0));
-    c.fillStyle = s < 0 ? shade(p, 0.7) : p.base;
-    c.beginPath(); c.arc(ex - (s < 0 ? bw * 0.22 : 0), ey, bh * 0.30, 0, TAU); c.fill();
+    const far = s < 0;
+    const ex = cx + bw * (far ? 0.14 : 0.58);
+    const ey = cy - bh * (far ? 0.88 : 0.76);
+    const er = bh * (far ? 0.25 : 0.33);
+    c.fillStyle = far ? shade(p, 0.7) : p.base;
+    c.beginPath(); c.arc(ex, ey, er, 0, TAU); c.fill();
     c.fillStyle = '#0b0a0c';
-    c.beginPath(); c.arc(ex - (s < 0 ? bw * 0.22 : 0), ey, bh * 0.21, 0, TAU); c.fill();
+    c.beginPath(); c.arc(ex, ey, er * 0.70, 0, TAU); c.fill();
     c.fillStyle = 'rgba(255,255,255,0.8)';
     c.beginPath(); c.arc(ex - (s < 0 ? bw * 0.22 : 0) - bh * 0.06, ey - bh * 0.08, bh * 0.06, 0, TAU); c.fill();
   }

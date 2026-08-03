@@ -478,7 +478,17 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
      showing (crocodile), a needle (gharial). */
   'fauna|Alligator': (c, g, pp) => faunaCroc(c, g, pp, { snout: 'broad', len: 0.42, depth: 0.070, hue: [44, 52, 40], scutes: 1.15 }, 'Alligator'),
   'fauna|Crocodile': (c, g, pp) => faunaCroc(c, g, pp, { snout: 'narrow', tooth: true, len: 0.47, depth: 0.058, hue: [118, 116, 74], scutes: 0.85 }, 'Crocodile'),
-  'fauna|Caiman': (c, g, pp) => faunaCroc(c, g, pp, { snout: 'broad', ridge: true, len: 0.29, depth: 0.082, hue: [72, 104, 62], scutes: 1.5 }, 'Caiman'),
+  /* ★ WAVE 39 — THE CAIMAN HAD NO TAIL, and it was one number. At len 0.29 /
+     depth 0.082 it was the SHORTEST and DEEPEST of the four crocodilians
+     (Alligator 0.42/0.070, Crocodile 0.47/0.058, Gharial 0.49/0.052) — an
+     aspect of 3.5 against their 6.0–9.4 — so the body ran out immediately
+     behind the hind leg and terminated in a hard pointed wedge. Its verifier:
+     "there is no tail at all… measured aspect roughly 1.5 against the
+     reference's 4.5", and a stranger reading the tile said "a green frog".
+     A caiman is a crocodilian: shorter than an alligator, not a third of one.
+     It keeps `ridge` and the heaviest `scutes` — the bony brow ridge and coarse
+     armour ARE its marks — and now has a tail to put them on. */
+  'fauna|Caiman': (c, g, pp) => faunaCroc(c, g, pp, { snout: 'broad', ridge: true, len: 0.40, depth: 0.066, hue: [72, 104, 62], scutes: 1.5 }, 'Caiman'),
   'fauna|Gharial': (c, g, pp) => faunaCroc(c, g, pp, { snout: 'needle', knob: true, len: 0.49, depth: 0.052, hue: [96, 112, 96], scutes: 0.70 }, 'Gharial'),
   /* ★ WAVE 14 — the body plans the quadruped system cannot express at any
      setting: a macropod stands on a TRIPOD of two hind legs and a tail, and
