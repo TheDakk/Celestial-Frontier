@@ -159,6 +159,13 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
 
   /* ── six legs: three a side, jointed, the middle pair splayed widest ── */
   const legCol = p.dark;
+  /* ★ D-ART-119 — THE JUMPING FEMUR WAS INVISIBLE. It was drawn here, in the
+     leg pass, in BODY COLOUR at th*0.95 x th*0.42 centred barely a third of a
+     thorax-height off the midline — and this whole pass runs BEFORE the body,
+     deliberately, so the roots hide under the flank. The torso then painted
+     straight over it. A grasshopper's hind femur IS its silhouette, and it has
+     never once been on screen. Collected here and drawn after the body. */
+  const femurs: Array<[number, number]> = [];
   for (const s of [-1, 1] as const) {
     for (let i = 0; i < 3; i++) {
       const bx = cx - th * 0.8 + i * th * 0.9;
@@ -166,9 +173,7 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
       const drop = th * (1.5 + i * 0.30) * (spec.legSpan ? 0.55 : 1);
       const jump = spec.jumper && i === 2;
       if (jump) {   /* THE JUMPING FEMUR — a grasshopper's whole silhouette */
-        c.fillStyle = shell(c, p, bx + s * th * 0.3, cy + th * 0.2, th * 0.9);
-        c.save(); c.translate(bx + s * th * 0.35, cy + th * 0.15); c.rotate(s * 0.55);
-        c.beginPath(); c.ellipse(0, 0, th * 0.95, th * 0.42, 0, 0, TAU); c.fill(); c.restore();
+        femurs.push([bx + s * th * 0.95, s]);
         limb(c, bx + s * th * 0.9, cy + th * 0.5, bx + s * spread * 0.7, cy + drop * 1.5,
           bx + s * spread * 1.25, cy + th * 0.1, 4.2, legCol);
       } else {
@@ -291,6 +296,30 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
     c.fillStyle = shell(c, p, cx - th * 0.55, cy - th * 0.1, TW * 0.8);
     c.beginPath(); c.ellipse(cx - th * 0.62, cy - th * 0.06, TW * 0.82, TH2 * 0.92, 0, 0, TAU); c.fill();
     rim(c, () => c.ellipse(cx - th * 0.62, cy - th * 0.06, TW * 0.82, TH2 * 0.92, 0, -2.8, 0.3));
+  }
+  /* ★ D-ART-119 — the jumping femur, now ON TOP of the body and big enough to
+     be the silhouette it is meant to be: a pear of muscle rising ABOVE the
+     back line, in a darker tone so it separates from the flank behind it. */
+  for (const [fx, fs2] of femurs) {
+    c.save();
+    c.translate(fx, cy - th * 0.10);
+    c.rotate(fs2 * 0.62);
+    const fg = c.createLinearGradient(0, -th * 1.1, 0, th * 0.9);
+    fg.addColorStop(0, p.base);
+    fg.addColorStop(1, p.dark);
+    c.fillStyle = fg;
+    c.beginPath(); c.ellipse(0, 0, th * 1.55, th * 0.72, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(0,0,0,0.34)'; c.lineWidth = 1.4;
+    c.beginPath(); c.ellipse(0, 0, th * 1.55, th * 0.72, 0, 0, TAU); c.stroke();
+    /* the herringbone ridging on a real orthopteran femur */
+    c.strokeStyle = 'rgba(0,0,0,0.20)'; c.lineWidth = 1;
+    for (let k = -2; k <= 2; k++) {
+      c.beginPath();
+      c.moveTo(k * th * 0.42, -th * 0.5);
+      c.lineTo(k * th * 0.42 + th * 0.22, th * 0.5);
+      c.stroke();
+    }
+    c.restore();
   }
   const ant = spec.antennae ?? 'short';
   if (ant !== 'none') {

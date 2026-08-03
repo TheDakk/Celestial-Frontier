@@ -963,28 +963,51 @@ export function faunaCroc(c: Ctx, g: G, pIn: Pal, spec: CrocSpec, name = ''): vo
      A crocodilian's limbs stick out sideways and its belly nearly touches the
      ground — the sprawl IS the silhouette, and drawing them under the body
      turns it into a lizard-shaped dog. */
+  /* ★ D-ART-117 — THE LEGS USED TO CROSS IN AN X AND THERE WERE ONLY TWO.
+     Two bugs in four lines, and they hit every crocodilian at once —
+     Crocodile, Alligator, Caiman and Gharial all reported "two thick bars
+     that cross at the exact midpoint and meet at a single shared foot".
+
+     · The foot was thrown a fixed 1.55–1.70 body-radii along the SPINE AXIS,
+       hind one way and fore the other. Since the hind limb sits at u=0.70 and
+       the fore at u=0.30, each reached past the body's midpoint toward the
+       other and they crossed. A sprawled limb goes OUT and DOWN from its own
+       hip, not lengthwise toward the far end.
+     · Both calls passed far=true, so only the FAR pair was ever drawn. The
+       near pair did not exist, which is why the render showed two legs. */
   const leg = (u: number, back: boolean, far: boolean): void => {
     const a = spine(u);
     const m = far ? 0.55 : 1;
     const lw = bodyR * (back ? 0.22 : 0.19);
-    const outX = a[0] + (back ? -bodyR * 1.70 : bodyR * 1.55);
+    /* a modest lateral splay away from the body's own centre, and the near
+       pair set slightly forward of the far pair so the two never coincide */
+    /* ⚠ SIGN. The animal faces LEFT, so the fore limb sits at the low-u (left)
+       end and the hind at the high-u (right) end. A foot must land on the
+       OUTBOARD side of its own hip — fore forward/left, hind back/right. The
+       original sent each one inboard, which is what made them meet in the
+       middle; halving that distance only made a smaller X. */
+    const lean = (back ? 1 : -1) * bodyR * 0.38 + (far ? -bodyR * 0.18 : bodyR * 0.14);
+    const outX = a[0] + lean;
     c.strokeStyle = `rgb(${(p.cr * 0.72 * m) | 0},${(p.cg * 0.74 * m) | 0},${(p.cb * 0.62 * m) | 0})`;
     c.lineCap = 'round'; c.lineJoin = 'round';
     c.lineWidth = lw * 2;
     c.beginPath();
     c.moveTo(a[0], a[1] + rad(u) * 0.3);
-    c.quadraticCurveTo(outX, a[1] + rad(u) * 1.15, outX + (back ? -bodyR * 0.2 : bodyR * 0.3), gy + bodyR * 1.35);
+    c.quadraticCurveTo(outX, a[1] + rad(u) * 1.15, outX + (back ? bodyR * 0.18 : -bodyR * 0.24), gy + bodyR * 1.35);
     c.stroke();
     /* the splayed toes */
     c.lineWidth = Math.max(1.6, lw * 0.5);
     for (let i = -1; i <= 1; i++) {
-      const tx = outX + (back ? -bodyR * 0.2 : bodyR * 0.3);
+      const tx = outX + (back ? bodyR * 0.18 : -bodyR * 0.24);
       c.beginPath(); c.moveTo(tx, gy + bodyR * 1.35);
-      c.lineTo(tx + i * bodyR * 0.42 + (back ? -bodyR * 0.30 : bodyR * 0.34), gy + bodyR * 1.62);
+      c.lineTo(tx + i * bodyR * 0.42 + (back ? bodyR * 0.26 : -bodyR * 0.30), gy + bodyR * 1.62);
       c.stroke();
     }
   };
-  leg(0.70, true, true); leg(0.30, false, true);
+  /* FOUR legs: the far pair first so the near pair overlaps it, and the body
+     is drawn after all of them so the limb roots disappear under the flank */
+  leg(0.72, true, true); leg(0.28, false, true);
+  leg(0.72, true, false); leg(0.28, false, false);
 
   /* the body */
   const bg = c.createLinearGradient(0, gy - bodyR * 1.6, 0, gy + bodyR * 1.4);

@@ -542,8 +542,8 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
   /* a robin is a ball on legs and a swift is a cigar; the reference row's
      aspect says which, and nothing in this painter could express it before */
   const plump = opts.plump ?? 1, elong = opts.elong ?? 1;
-  const bw = S * 0.15 * sz * (opts.upright ? 0.78 : 1) * elong;
-  const bh = S * 0.12 * sz * (opts.upright ? 1.45 : 1) * plump;
+  const bw = S * 0.15 * sz * (opts.upright ? 0.78 : 1) * elong * (opts.flightless ? 0.86 : 1);
+  const bh = S * 0.12 * sz * (opts.upright ? 1.45 : 1) * plump * (opts.flightless ? 1.30 : 1);
   const by = groundY - legLen - bh;
   ground(c, bx, groundY + 4, S * 0.16 * sz);
 
@@ -603,10 +603,19 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       c.lineTo(bx + bw * 1.85, by + bh * (0.40 + s * 0.42));
       c.lineTo(bx + bw * 0.74, by + bh * 0.50); c.closePath(); c.fill();
     }
-  } else {
+  } else if (!opts.flightless) {
     c.beginPath(); c.moveTo(bx + bw * 0.7, by + bh * 0.1);
-    c.lineTo(bx + bw * 1.75, by + bh * (opts.flightless ? 0.4 : 0.55));
+    c.lineTo(bx + bw * 1.75, by + bh * 0.55);
     c.lineTo(bx + bw * 0.75, by + bh * 0.62); c.closePath(); c.fill();
+  } else {
+    /* a ratite's rump is a soft drooping plume mass, not a pointed streamer */
+    for (let i = 0; i < 5; i++) {
+      c.fillStyle = i % 2 ? p.dark : p.base;
+      c.beginPath();
+      c.ellipse(bx + bw * (0.72 + i * 0.07), by + bh * (0.30 + i * 0.12),
+        bw * 0.34, bh * 0.20, 0.5 + i * 0.06, 0, TAU);
+      c.fill();
+    }
   }
 
   c.fillStyle = bodyGrad(c, p, bx, by, bw);
@@ -721,9 +730,16 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     c.fillStyle = 'rgba(244,240,228,0.90)';   /* the pale front */
     c.beginPath(); c.ellipse(bx - bw * 0.26, by + bh * 0.14, bw * 0.52, bh * 0.70, -0.12, 0, TAU); c.fill();
   } else {
-    c.save(); c.translate(bx + bw * 0.12, by + bh * 0.05); c.rotate(0.22);
+    /* ★ D-ART-118 — WHAT `flightless` ACTUALLY HAS TO MEAN.
+       It changed exactly one tail vertex, so Ostrich, Emu, Rhea and Cassowary
+       kept the full folded flight wing with its concentric covert arcs and a
+       pointed flight-tail streamer — i.e. they were songbird bodies on long
+       legs, and the audit said so four separate times. A ratite's wing is a
+       vestigial stub buried in body plumage, and it has no flight tail at all. */
+    const WING = opts.flightless ? 0.34 : 1;
+    c.save(); c.translate(bx + bw * 0.12 * WING, by + bh * 0.05); c.rotate(0.22);
     for (let layer = 0; layer < 3; layer++) {
-      const lw = bw * (0.95 - layer * 0.16), lh = bh * (0.62 - layer * 0.10);
+      const lw = bw * (0.95 - layer * 0.16) * WING, lh = bh * (0.62 - layer * 0.10) * WING;
       c.fillStyle = layer === 0 ? p.dark : (layer === 1 ? p.base : p.lit);
       c.beginPath(); c.ellipse(0, layer * 3, lw, lh, 0, 0, TAU); c.fill();
     }
@@ -737,7 +753,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     {
       /* the outermost covert layer, matching the last iteration of the loop
          above (layer 2) — clip and tube must agree or the coat fringes */
-      const wx = 0, wy = 2 * 3, wrx = bw * 0.63, wry = bh * 0.42;
+      const wx = 0, wy = 2 * 3, wrx = bw * 0.63 * WING, wry = bh * 0.42 * WING;
       c.save();
       c.beginPath(); c.ellipse(wx, wy, wrx, wry, 0, 0, TAU); c.clip();
       coatMaterial(c, ellipseTube(wx, wy, wrx, wry, 0), r, p, 'feather',
@@ -745,7 +761,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       c.restore();
     }
     c.strokeStyle = 'rgba(0,0,0,0.3)'; c.lineWidth = 1.4;
-    for (let i = 0; i < 6; i++) {   /* primaries fanning to the tail */
+    for (let i = 0; opts.flightless ? false : i < 6; i++) {   /* primaries fanning to the tail */
       c.beginPath(); c.moveTo(-bw * 0.1 + i * 4, 0);
       c.quadraticCurveTo(bw * 0.6, bh * 0.2 + i * 2, bw * 1.15 - i * 3, bh * 0.35 + i * 4); c.stroke();
     }
