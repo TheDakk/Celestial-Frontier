@@ -375,6 +375,26 @@ export interface CapSpec {
   count?: number;
   scale?: number;
 }
+/* ★ D-ART-116 — THE DAMP SHEEN. A mushroom cap is the one surface in the
+   catalogue that is genuinely slightly WET, and a flat radial gradient cannot
+   say so. The gills, pores and fibrils were already modelled (waves 14-18);
+   this is the last thing separating a cap from a painted dome: a tight
+   off-centre highlight up and left, matching the engine light, falling off
+   fast the way a moist curved surface does rather than blooming like paint. */
+function capSheen(c: Ctx, cx: number, cy: number, rx: number, ry: number): void {
+  if (rx < 6) return;
+  c.save();
+  c.beginPath(); c.ellipse(cx, cy, rx, ry, 0, Math.PI, TAU); c.clip();
+  const hx = cx - rx * 0.34, hy = cy - ry * 0.52;
+  const g = c.createRadialGradient(hx, hy, rx * 0.02, hx, hy, rx * 0.62);
+  g.addColorStop(0, 'rgba(255,253,245,0.30)');
+  g.addColorStop(0.35, 'rgba(255,253,245,0.11)');
+  g.addColorStop(1, 'rgba(255,253,245,0)');
+  c.fillStyle = g;
+  c.beginPath(); c.ellipse(cx, cy, rx, ry, 0, Math.PI, TAU); c.fill();
+  c.restore();
+}
+
 export function fungiCap(c: Ctx, g: G, _p: Pal, spec: CapSpec): void {
   const r = seeded(g, 0xC4B7);
   const n = spec.count ?? 1;
@@ -496,9 +516,11 @@ export function fungiCap(c: Ctx, g: G, _p: Pal, spec: CapSpec): void {
       }
     } else if (spec.cap === 'flat') {
       c.ellipse(cx, capY, capW, capW * 0.30, 0, Math.PI, TAU); c.fill();
+      capSheen(c, cx, capY, capW, capW * 0.30);
     } else {
       const dome = spec.cap === 'domed' ? 0.78 : 0.56;
       c.ellipse(cx, capY + capW * 0.06, capW, capW * dome, 0, Math.PI, TAU); c.fill();
+      capSheen(c, cx, capY + capW * 0.06, capW, capW * dome);
       if (spec.veil) {
         /* the inrolled margin fringed with white veil remnants (shiitake) */
         c.fillStyle = 'rgba(244,240,228,0.85)';

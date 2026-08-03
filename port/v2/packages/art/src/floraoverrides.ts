@@ -245,7 +245,10 @@ export const FLORA_ICONIC: Record<string, FloraPainter> = {
   'Joshua Tree': (c, g) => floraJoshua(c, g),
   'Cotton': (c, g) => floraCotton(c, g),
   'Dragon Fruit': (c, g) => floraDragonFruit(c, g),
-  'Rhubarb': (c, g, p) => floraBroadLeaf(c, g, speciesHue(p, '#c22e3a'), { petiole: '#c0392b' }),
+  /* ⚠ hue is the FOLIAGE axis: rhubarb leaves are green and only the stalks
+     are red, and the row already says so via `petiole`. Given the red here
+     the whole plant came out scarlet. */
+  'Rhubarb': (c, g, p) => floraBroadLeaf(c, g, speciesHue(p, '#4d7a35'), { petiole: '#c0392b' }),
   'Tobacco': (c, g, p) => floraBroadLeaf(c, g, speciesHue(p, '#5f8b3a'), { petiole: '#5c6b3a' }),
   'Cabbage': (c, g, p) => floraBroadLeaf(c, g, speciesHue(p, '#a9c3a0'), { head: true }),
 };

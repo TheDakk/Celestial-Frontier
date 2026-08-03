@@ -179,3 +179,68 @@ export function speciesHue<T extends HuePal>(rolled: T, hue?: string): T {
     lit: rgb(Math.min(255, cr * 1.30), Math.min(255, cg * 1.29), Math.min(255, cb * 1.27)),
     dark: rgb(cr * 0.43, cg * 0.45, cb * 0.48) };
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ★ THE LEAF SURFACE — the material layer reaches the plants.
+
+   Waves 21–23 gave mammals fur, birds feathers, fish scales and arthropods
+   shell, and stopped there. That left ~330 plants as the last flat gradients
+   in the catalogue, which is the worse half of the "partial material" problem:
+   the eye grades every card against the best one on the sheet, so a flat leaf
+   beside a furred wolf reads as unfinished rather than as different.
+
+   A leaf's material is not texture, it is VENATION. A midrib alone — which is
+   all these had — says "leaf-shaped"; the laterals branching off it at a
+   consistent angle and dying before the margin are what say "leaf". The
+   second cue is that a leaf is slightly glossy along the light side of the
+   midrib, and matte in the shadow of its own curl.
+
+   Deliberately NOT tube-based, unlike coatMaterial: a leaf is a flat blade
+   drawn in its own rotated frame, so it needs plain local geometry rather
+   than a swept-circle surface. Same reason it lives here and not in skin.ts.
+   ═══════════════════════════════════════════════════════════════════════════ */
+export function leafSurface(
+  c: Ctx, len: number, w: number,
+  o: { veins?: number; detail?: number; parallel?: boolean } = {},
+): void {
+  const detail = o.detail ?? 1;
+  if (detail <= 0 || len < 6) return;
+  const n = Math.max(2, Math.round((o.veins ?? 6) * detail));
+
+  c.save();
+  c.lineCap = 'round';
+  /* THE LATERALS. They leave the midrib at a swept-back angle, arc toward the
+     tip, and stop short of the edge — a vein drawn to the margin reads as a
+     crack. Both sides, mirrored but not identical, because a real leaf is not. */
+  for (let i = 1; i <= n; i++) {
+    const u = i / (n + 1);
+    const x0 = len * u * 0.96;
+    /* the blade is widest in the middle, so a lateral there is longest */
+    const half = w * Math.sin(Math.PI * Math.min(1, u * 1.05)) * 0.86;
+    for (const s of [-1, 1]) {
+      const sweep = 0.34 + u * 0.22;
+      const x1 = x0 + half * sweep * 1.9;
+      const y1 = s * half;
+      c.strokeStyle = 'rgba(22,36,20,' + (0.13 + 0.07 * (1 - u)).toFixed(2) + ')';
+      c.lineWidth = Math.max(0.6, w * 0.035 * (1 - u * 0.4));
+      c.beginPath();
+      c.moveTo(x0, 0);
+      if (o.parallel) c.lineTo(x0 + half * 1.4, y1);      /* a monocot: straight, parallel */
+      else c.quadraticCurveTo(x0 + half * 0.5, y1 * 0.55, x1, y1 * 0.92);
+      c.stroke();
+    }
+  }
+  /* the gloss, on the upper side of the midrib only — this is most of what
+     stops a leaf reading as a paper cut-out */
+  const g = c.createLinearGradient(0, -w * 0.9, 0, w * 0.5);
+  g.addColorStop(0, 'rgba(255,255,245,0.16)');
+  g.addColorStop(0.45, 'rgba(255,255,245,0.05)');
+  g.addColorStop(1, 'rgba(0,0,0,0)');
+  c.fillStyle = g;
+  c.beginPath();
+  c.moveTo(0, 0);
+  c.quadraticCurveTo(len * 0.42, -w, len, 0);
+  c.quadraticCurveTo(len * 0.42, -w * 0.12, 0, 0);
+  c.closePath(); c.fill();
+  c.restore();
+}
