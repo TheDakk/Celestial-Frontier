@@ -27,9 +27,21 @@ Crocodile · Alligator · Caiman · Gharial (limbs) · Ostrich · Emu · Rhea ·
 
 ---
 
+## ✅ Fixed in wave 28
+
+**Group A (perching birds)** — Eagle, Harpy Eagle, Vulture, Hoatzin, Macaw, Kakapo, Parrot.
+New axes: `talons`, `bald`, `crop`, `wingClaw`, `parrotBill`, `zygo`; plus the rows finally
+set the `wings`/`headMass` axes that already existed.
+**Group C (bee wings)** — the folded wing was shorter than the abdomen AND drawn before it.
+Now longer, deferred until after the body, with a hindwing.
+**The cephalofoil** — `snout:'hammer'` widened the jaw by 1.4% of body length; it now draws
+the real transverse bar with the eyes at its tips.
+**The Narwhal's tusk** — restored via a `tusk` axis on `faunaCetacean`.
+Measured: confusable pairs **1,253 → 1,119**; hard pairs still 0.
+
 ## ★ SYSTEMIC GROUPS — do these first, biggest first
 
-### A · The perching-bird torso is shared by every large bird (6+ species)
+### ✅ A · DONE (wave 28) — The perching-bird torso is shared by every large bird (6+ species)
 Eagle, Harpy Eagle, Vulture, Hoatzin, Macaw and Kakapo are one plump ovoid with one folded
 wing panel and one pointed tail wedge, differing only in bill and colour. `BirdSpec` already
 has `headMass` and `wings:'soaring'` and almost none of these rows set them.
@@ -61,7 +73,7 @@ scales segment HEIGHT, so it makes beads taller, not bodies flatter.
 - **Grasshopper/Locust/Cricket** — femur fixed in wave 26, but all three still need
   `face:'slant'` (a down-tilted wedge head, not a glossy sphere).
 
-### C · Every bee's wing is clipped to the abdomen (4 species)
+### ✅ C · DONE (wave 28) — Every bee's wing is clipped to the abdomen (4 species)
 Bee, Bumblebee, Orchid Bee, Black Fly. The wing never breaks the body silhouette. Draw the
 forewing anchored at the thorax and extending ~0.5 body lengths PAST the abdomen tip, with a
 shorter hindwing offset ~15°. Additionally: **Bumblebee** needs the abdomen to be the
@@ -141,3 +153,21 @@ scute rows and barbels) · Flying Squirrel (needs a `patagium` — also unlocks 
 and Colugo) · Scorpionfly (rostrum, upcurled tail) · Poison Dart Frog (real folded hind
 limb, toe pads) · Right Whale (bowed gape, callosities; a highlight arc floats off the head) ·
 Albatross (tubenose bill, gliding pose) · Parrot (zygodactyl feet, graduated tail).
+
+
+---
+
+## ★ THE PROCEDURAL SIDE (checked wave 28)
+
+Rendered a spread across kingdoms and heat levels and looked at it: **procedural is in good
+shape.** Coherent, varied, genuinely alien — a plated crested quadruped, a berry vine, a
+bracket fungus, a diatom-like microbe. This is the half of the engine that always scored
+well (~97% under Nick's strict bands) and nothing here regressed.
+
+⚠ **The one real gap: procedural organisms have NO MATERIAL LAYER.** Fur, feather, scale,
+chitin, venation and cap sheen all live in the Earth painters; the procedural families run
+through the verbatim hdart engine and are still flat gradients with their own bespoke
+detail. That is the same partial-material problem that justified going past mammals in the
+first place, one level up — and it will read as *the aliens being unfinished* once a player
+sees them beside the Earth catalogue. Doing it means giving the procedural body plans the
+same  surface coordinates the Earth painters have, which /already make cheap.
