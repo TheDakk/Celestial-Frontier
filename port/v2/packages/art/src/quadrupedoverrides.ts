@@ -141,16 +141,40 @@ const SKULL: Record<string, {
   cheek: number;   /** the cheek/jowl mass that stops a muzzle reading as a plank */
   tilt: number;      /* how far the muzzle points down off the neck */
 }> = {
-  felid: { len: 1.70, cranium: 1.00, stop: 0.62, muzzle: 0.46, jaw: 0.34, eyeU: 0.50, eyePhi: 0.22, eyeR: 0.235, nose: 'wet', tilt: 0.06, nosePad: 0.62, lip: 'curl', cheek: 0.95 },
-  canid: { len: 2.45, cranium: 0.86, stop: 0.44, muzzle: 0.28, jaw: 0.26, eyeU: 0.40, eyePhi: 0.34, eyeR: 0.205, nose: 'wet', tilt: 0.10, nosePad: 1.05, lip: 'straight', cheek: 0.42 },
-  ursid: { len: 2.00, cranium: 1.06, stop: 0.20, muzzle: 0.46, jaw: 0.36, eyeU: 0.36, eyePhi: 0.28, eyeR: 0.175, nose: 'wet', tilt: 0.12, nosePad: 1.15, lip: 'droop', cheek: 0.72 },
-  bovid: { len: 2.40, cranium: 0.80, stop: 0.10, muzzle: 0.44, jaw: 0.34, eyeU: 0.32, eyePhi: 0.74, eyeR: 0.215, nose: 'nostril', tilt: 0.16, nosePad: 0.80, lip: 'droop', cheek: 0.66 },
+  /* ★ D-ART-132 — THE CATS WERE RENDERING AS COWS, and it was arithmetic.
+     cranium 1.00 made the braincase DIAMETER (2·headR) 1.25× the whole skull's
+     LENGTH, so a felid head could only ever be a sphere with a nub on it —
+     which is why 10 of 17 felid heads were flagged non-unique and why a
+     Clouded Leopard's head was interchangeable with a Cougar's. No per-species
+     value could escape it. eyeR 0.235 on that braincase made the eye a third
+     of the face, the reason every cat read as a toy. */
+  felid: { len: 1.95, cranium: 0.72, stop: 0.72, muzzle: 0.46, jaw: 0.30, eyeU: 0.44, eyePhi: 0.22, eyeR: 0.185, nose: 'wet', tilt: 0.06, nosePad: 0.95, lip: 'curl', cheek: 0.78 },
+  /* ★ D-ART-133 — a canid skull LONGER than a bovid's (2.45 vs 2.40) with the
+     lowest cheek of any predator is an ungulate wedge, which is why Wolf,
+     Dingo and Dog all read as small horses. */
+  canid: { len: 2.20, cranium: 0.86, stop: 0.52, muzzle: 0.28, jaw: 0.26, eyeU: 0.40, eyePhi: 0.34, eyeR: 0.140, nose: 'wet', tilt: 0.10, nosePad: 1.45, lip: 'straight', cheek: 0.66 },
+  /* ★ D-ART-133 — a bear's eye is famously tiny against a huge skull and it is
+     most of what makes a bear head read as a bear; 0.175 gave a 7.5px eye with
+     a 16px socket wash, so Black, Sun and Spectacled Bear were one big-eyed
+     dark ball. */
+  ursid: { len: 1.90, cranium: 1.06, stop: 0.28, muzzle: 0.46, jaw: 0.36, eyeU: 0.36, eyePhi: 0.28, eyeR: 0.100, nose: 'wet', tilt: 0.18, nosePad: 1.15, lip: 'droop', cheek: 0.88 },
+  /* ★ D-ART-132 — eyePhi 0.74 put the eye 75% of the way to the dorsal
+     outline, i.e. ON the head's silhouette — literally the "eye is set on the
+     crown rather than the side of the face" complaint. The eye was too BIG,
+     not too high. jaw 0.34 sized a chin ellipse that projects past the nose as
+     a detached pale bar (the same artifact on Cattle, Wild Horse, Llama and
+     Zebra — one bug across four families). */
+  bovid: { len: 2.40, cranium: 0.80, stop: 0.10, muzzle: 0.44, jaw: 0.24, eyeU: 0.32, eyePhi: 0.68, eyeR: 0.165, nose: 'nostril', tilt: 0.16, nosePad: 0.80, lip: 'droop', cheek: 0.66 },
   cervid: { len: 2.30, cranium: 0.78, stop: 0.16, muzzle: 0.36, jaw: 0.28, eyeU: 0.31, eyePhi: 0.72, eyeR: 0.225, nose: 'wet', tilt: 0.16, nosePad: 0.72, lip: 'straight', cheek: 0.48 },
   equid: { len: 2.85, cranium: 0.82, stop: 0.05, muzzle: 0.50, jaw: 0.42, eyeU: 0.28, eyePhi: 0.70, eyeR: 0.205, nose: 'nostril', tilt: 0.18, nosePad: 0.90, lip: 'droop', cheek: 0.78 },
   camelid: { len: 2.10, cranium: 0.72, stop: 0.26, muzzle: 0.38, jaw: 0.34, eyeU: 0.33, eyePhi: 0.62, eyeR: 0.22, nose: 'nostril', tilt: 0.10, nosePad: 0.66, lip: 'cleft', cheek: 0.44 },
   /* a pig's snout ends in a flat cartilage DISC, and that disc is the animal */
   suid: { len: 2.25, cranium: 0.86, stop: 0.04, muzzle: 0.52, jaw: 0.40, eyeU: 0.28, eyePhi: 0.58, eyeR: 0.155, nose: 'disc', tilt: 0.20, nosePad: 1.30, lip: 'straight', cheek: 0.60 },
-  mustelid: { len: 1.80, cranium: 0.84, stop: 0.38, muzzle: 0.32, jaw: 0.24, eyeU: 0.46, eyePhi: 0.36, eyeR: 0.2, nose: 'wet', tilt: 0.08, nosePad: 0.78, lip: 'curl', cheek: 0.36 },
+  /* ★ D-ART-133 — THE WORST HEAD IN THE TABLE, and it explains 12 of 14
+     generic mustelid heads: cranium 0.84 against len 1.80 gave a Stoat a 27px
+     braincase over a 28px skull, i.e. a SPHERE with a 9px pimple for a muzzle,
+     at every hue. A mustelid skull is a low flat wedge. */
+  mustelid: { len: 2.10, cranium: 0.60, stop: 0.20, muzzle: 0.26, jaw: 0.16, eyeU: 0.54, eyePhi: 0.36, eyeR: 0.135, nose: 'wet', tilt: 0.02, nosePad: 1.20, lip: 'curl', cheek: 0.22 },
   rodent: { len: 1.70, cranium: 0.98, stop: 0.46, muzzle: 0.32, jaw: 0.26, eyeU: 0.46, eyePhi: 0.44, eyeR: 0.25, nose: 'wet', tilt: 0.10, nosePad: 0.58, lip: 'cleft', cheek: 0.40 },
   pachyderm: { len: 1.95, cranium: 1.16, stop: 0.34, muzzle: 0.54, jaw: 0.40, eyeU: 0.38, eyePhi: 0.56, eyeR: 0.140, nose: 'nostril', tilt: 0.10, nosePad: 0.70, lip: 'droop', cheek: 0.90 },
   marsupial: { len: 1.85, cranium: 0.96, stop: 0.34, muzzle: 0.40, jaw: 0.32, eyeU: 0.44, eyePhi: 0.46, eyeR: 0.250, nose: 'wet', tilt: 0.12, nosePad: 0.74, lip: 'straight', cheek: 0.44 },
@@ -191,19 +215,43 @@ const FAMILY: Record<string, {
   crouch: number;    /* 1 = folded and low, 0 = straight-legged and tall */
 }> = {
   /* a cat is a deep chest and a tucked waist over a short folded limb */
-  felid: { waist: 0.74, muscle: 0.88, chest: 0.80, rump: 0.60, foot: 'paw', cannon: 0.52, crouch: 0.74, ear: 'round', pupil: 'slit', iris: '#c9a233', mat: 'fur' },
+  /* ★ D-ART-132 — cannon 0.52 made the ankle half-width 0.63·legW while the
+     paw ellipse under it is 0.66·legW, so THE PAW WAS DRAWN INSIDE THE LIMB
+     and never appeared: 15 of 17 felid rows reported "hoof-like tips, no
+     paws". waist/chest/rump were all too low for the tuck, brisket and croup
+     terms to register, so every cat was a barrel with a disc on its haunch. */
+  felid: { waist: 0.95, muscle: 0.88, chest: 0.98, rump: 0.82, foot: 'paw', cannon: 0.74, crouch: 0.95, ear: 'round', pupil: 'slit', iris: '#c9a233', mat: 'pelt' },
   /* a dog is leggier and narrower than a cat, and it still has paws */
-  canid: { waist: 0.60, muscle: 0.58, chest: 0.84, rump: 0.46, foot: 'paw', cannon: 0.64, crouch: 0.52, ear: 'point', pupil: 'round', iris: '#a97a34', mat: 'fur' },
+  /* ★ D-ART-133 — the croup lift is 0.22·(rump·0.66+muscle·0.48) against a
+     withers lift of only 0.17·muscle, so at 0.46/0.58 a dog's HIP stood 30%
+     higher than its SHOULDER: a rump-high pony topline. A dog's withers must
+     be the highest point. */
+  canid: { waist: 0.86, muscle: 0.90, chest: 0.94, rump: 0.30, foot: 'paw', cannon: 0.58, crouch: 0.66, ear: 'point', pupil: 'round', iris: '#a97a34', mat: 'fur' },
   /* a bear is a shoulder hump, a heavy rump, no waist at all, and soles */
-  ursid: { waist: 0.10, muscle: 0.96, chest: 0.70, rump: 0.90, foot: 'plantigrade', cannon: 0.16, crouch: 0.78, ear: 'round', pupil: 'round', iris: '#4a3524', mat: 'pelt' },
-  bovid: { waist: 0.30, muscle: 0.52, chest: 0.62, rump: 0.66, foot: 'cloven', cannon: 0.90, crouch: 0.26, ear: 'spoon', pupil: 'bar', iris: '#5a4326', mat: 'fur' },
+  /* ★ D-ART-133 — THE WORST SINGLE NUMBER IN THE TABLE. rump 0.90 with muscle
+     0.96 lifted the croup 0.232·bodyH against a withers 0.163·bodyH, so the
+     family plan built every bear RUMP-HIGH — the exact inverse of the shoulder
+     hump that IS the ursid read, and why "no shoulder hump above the rump"
+     lands on Grizzly. cannon 0.16 also left the sole only 7% proud of the
+     ankle, so the plantigrade foot read as a hoof nub. */
+  ursid: { waist: 0.16, muscle: 1.00, chest: 0.84, rump: 0.40, foot: 'plantigrade', cannon: 0.32, crouch: 0.78, ear: 'round', pupil: 'round', iris: '#4a3524', mat: 'pelt' },
+  /* ★ D-ART-132 — muscle drives the withers gauss; at 0.52 the shoulder rose
+     0.088·bodyH, which is "no shoulder hump / level-backed" on Bison, Bull,
+     Eland, Nilgai, Hartebeest and Wildebeest at once. */
+  bovid: { waist: 0.30, muscle: 0.68, chest: 0.82, rump: 0.82, foot: 'cloven', cannon: 0.90, crouch: 0.26, ear: 'spoon', pupil: 'bar', iris: '#5a4326', mat: 'fur' },
   cervid: { waist: 0.56, muscle: 0.36, chest: 0.50, rump: 0.44, foot: 'cloven', cannon: 1.00, crouch: 0.22, ear: 'leaf', pupil: 'bar', iris: '#3f2c1a', mat: 'fur' },
   equid: { waist: 0.32, muscle: 0.74, chest: 0.70, rump: 0.82, foot: 'hoof', cannon: 0.98, crouch: 0.20, ear: 'point', pupil: 'bar', iris: '#3a2a1c', mat: 'fur' },
   /* a camel carries a high chest on long soft-padded legs */
   camelid: { waist: 0.44, muscle: 0.42, chest: 0.78, rump: 0.40, foot: 'pad', cannon: 0.82, crouch: 0.32, ear: 'leaf', pupil: 'bar', iris: '#4a3220', mat: 'pelt' },
   suid: { waist: 0.08, muscle: 0.62, chest: 0.82, rump: 0.50, foot: 'cloven', cannon: 0.70, crouch: 0.40, ear: 'drop', pupil: 'round', iris: '#4d3826', mat: 'fur' },
   /* a long low tube on very short legs */
-  mustelid: { waist: 0.82, muscle: 0.38, chest: 0.46, rump: 0.38, foot: 'paw', cannon: 0.34, crouch: 0.70, ear: 'round', pupil: 'round', iris: '#2b2118', mat: 'fur' },
+  /* ★ D-ART-133 — cannon 0.34 made the ankle 0.717·legW while the paw pad is a
+     FIXED legW·0.66, so the pad was NARROWER than the leg it caps and rendered
+     as a dark hole inside a pale tube: the "hollow cylinder with an open end
+     cap" on Weasel, Wolverine, Stoat, Mink, Fisher, Marten, Mongoose, Otter
+     and Badger — nine species, one number. waist 0.82 also pinched the MIDDLE
+     of a family that has no mid-body pinch at all. */
+  mustelid: { waist: 0.30, muscle: 0.68, chest: 0.56, rump: 0.56, foot: 'paw', cannon: 0.60, crouch: 0.80, ear: 'round', pupil: 'round', iris: '#2b2118', mat: 'fur' },
   rodent: { waist: 0.38, muscle: 0.34, chest: 0.42, rump: 0.74, foot: 'paw', cannon: 0.38, crouch: 0.66, ear: 'round', pupil: 'round', iris: '#241a12', mat: 'fur' },
   pachyderm: { waist: 0.04, muscle: 0.72, chest: 0.66, rump: 0.70, foot: 'pad', cannon: 0.10, crouch: 0.08, ear: 'round', pupil: 'round', iris: '#553f28', mat: 'hide' },
   /* unfamilied species keep exactly the wave-4 behaviour, so nothing that
