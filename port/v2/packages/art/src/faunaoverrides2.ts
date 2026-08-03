@@ -414,19 +414,35 @@ export function reptTurtle(c: Ctx, g: G, pIn: Pal, opts: { flippers?: boolean; h
        BELOW the plastron with clear daylight between limb and shell, which is
        what made every turtle read as a shell on wheels. A turtle's leg is a
        stout column that leaves the shell and meets the ground. */
-    const gy2 = cy + sh + S * 0.05;
+    /* ⚠ and the taper alone did not clear it: at gy2 = cy+sh+S*0.05 the legs
+       were LONGER than the shell is deep and thin with it, which is the other
+       half of 'a shell on table legs'. A tortoise's limbs are short, thick and
+       barely clear the ground. */
+    const gy2 = cy + sh + S * 0.018;
     for (const far of [true, false]) {
       for (const o of [0.62, -0.34]) {
         const lx = cx + sw * o + (far ? -sw * 0.10 : sw * 0.06);
         const m = far ? 0.62 : 1;
         c.fillStyle = `rgb(${(p.cr * 0.52 * m) | 0},${(p.cg * 0.54 * m) | 0},${(p.cb * 0.46 * m) | 0})`;
-        const lw2 = sw * 0.17, top = cy + sh * 0.18;
+        /* ★ WAVE 39 — D-ART-127 REPLACED THE FLOATING DISCS WITH COLUMNS, and
+           the columns were RECTANGLES: parallel sides at a constant sw*0.17 and
+           a near-flat bottom, which the gold pass reported as "literal
+           hard-edged rectangles with flat square bottoms" and `fauna.json` had
+           already named as "a shell on table legs". A limb is a TAPER — heavy
+           where it leaves the shell, narrowing to the ankle — finishing on a
+           clubbed foot that spreads on the ground. Same fix wave 4 gave the
+           mammal leg; the turtle branch never received it. */
+        const lw2 = sw * 0.225, top = cy + sh * 0.10;
         c.beginPath();
-        c.moveTo(lx - lw2, top);
-        c.lineTo(lx - lw2 * 0.86, gy2);
-        c.quadraticCurveTo(lx, gy2 + sh * 0.10, lx + lw2 * 1.05, gy2);
-        c.lineTo(lx + lw2, top);
+        c.moveTo(lx - lw2 * 1.18, top);
+        c.bezierCurveTo(lx - lw2 * 1.06, top + (gy2 - top) * 0.55, lx - lw2 * 0.80, gy2 - sh * 0.10, lx - lw2 * 0.74, gy2);
+        c.quadraticCurveTo(lx, gy2 + sh * 0.12, lx + lw2 * 0.92, gy2);
+        c.bezierCurveTo(lx + lw2 * 0.96, gy2 - sh * 0.10, lx + lw2 * 1.10, top + (gy2 - top) * 0.55, lx + lw2 * 1.18, top);
         c.closePath(); c.fill();
+        /* the clubbed foot — an elephantine tortoise foot spreads at the ground */
+        c.beginPath();
+        c.ellipse(lx + lw2 * 0.08, gy2 + sh * 0.02, lw2 * 1.02, sh * 0.11, 0, 0, TAU);
+        c.fill();
         /* claws on the front edge */
         c.strokeStyle = 'rgba(30,26,20,0.6)'; c.lineWidth = 2;
         for (const k of [-0.6, 0, 0.6]) {
