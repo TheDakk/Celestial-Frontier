@@ -164,11 +164,28 @@ shape.** Coherent, varied, genuinely alien — a plated crested quadruped, a ber
 bracket fungus, a diatom-like microbe. This is the half of the engine that always scored
 well (~97% under Nick's strict bands) and nothing here regressed.
 
-⚠ **The one real gap: procedural organisms have NO MATERIAL LAYER.** Fur, feather, scale,
-chitin, venation and cap sheen all live in the Earth painters; the procedural families run
-through the verbatim hdart engine and are still flat gradients with their own bespoke
-detail. That is the same partial-material problem that justified going past mammals in the
-first place, one level up — and it will read as *the aliens being unfinished* once a player
-sees them beside the Earth catalogue. Doing it means giving the procedural body plans the
-same `Tube` surface coordinates the Earth painters have, which `ellipseTube` and
-`profileTube` already make cheap.
+⚠ **The one real gap: procedural organisms have NO MATERIAL LAYER** — and wave 29 found out
+why it is not a routine fix.
+
+**Procedural FUNGI and MICROBES** route to owned painters (`resolveProcedural` picks from
+13 fungal and 13 microbial families), so they CAN take materials the ordinary way.
+
+**Procedural FAUNA and FLORA do not.** They fall through to `hdart.verbatim.js` — 5,236
+lines auto-lifted byte-for-byte from main.js v1.8.9, carrying a sha256 and a DO-NOT-EDIT
+banner. Adding a material there would break the parity contract and be reverted by the next
+lift. So the two halves of the catalogue cannot be brought level by editing a painter, and
+this is **not a worklist item — it is a fork in the road**:
+
+  1. **A post-pass layer.** Let the verbatim engine paint, then lay fur/scale/venation over
+     the finished portrait in an owned pass. Cheap, reversible, keeps parity intact. Weakest
+     result, because the material would have no access to the body's surface coordinates —
+     it would be decoration ON the animal rather than skin, the exact thing waves 4–7 were
+     built to stop.
+  2. **Route procedural through owned body plans.** The alien families become real
+     `Tube`-based bodies like the Earth painters, and inherit every material for free. Best
+     result, largest change, and it retires a chunk of the verbatim engine — which is a Phase
+     6 decision, not an art decision.
+  3. **Leave it.** Accept that aliens read flatter than Earth species.
+
+⚠ This is the same decision as the art upgrade, arriving from the other side: the verbatim
+engine is exactly where "generated" and "authored" meet. Worth settling together.
