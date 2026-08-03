@@ -38,12 +38,12 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Serow': { legs: 0.1446, depth: 0.1333, len: 0.1639, neck: 0.08, muzzle: 0.36, ears: 'large', tail: 'stub', horn: 'shorthorn', coat: 'shaggy', hue: '#6f6257', family: 'bovid' },
   'Mountain Goat': { legs: 0.1485, depth: 0.1367, len: 0.1682, neck: 0.08, muzzle: 0.34, ears: 'small', tail: 'stub', horn: 'shorthorn', coat: 'shaggy', hue: '#e6e3db', family: 'bovid' },
   'Goat': { legs: 0.1389, depth: 0.1269, len: 0.1561, neck: 0.08, muzzle: 0.34, ears: 'large', tail: 'stub', horn: 'curl', hue: '#b9ac95', family: 'bovid' },
-  'Musk Ox': { legs: 0.1154, depth: 0.1753, len: 0.2157, neck: 0.06, back: 'humped', muzzle: 0.38, jaw: 'broad', ears: 'tiny', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#5a4634', family: 'bovid' },
-  'Yak': { legs: 0.1203, depth: 0.1727, len: 0.2266, neck: 0.06, back: 'humped', muzzle: 0.40, jaw: 'broad', ears: 'small', tail: 'plume', horn: 'curl', coat: 'shaggy', hue: '#4c4038', family: 'bovid' },
+  'Musk Ox': { legs: 0.1154, depth: 0.1753, len: 0.2157, neck: 0.06, back: 'humped', muzzle: 0.38, jaw: 'broad', ears: 'tiny', tail: 'stub', horn: 'boss', coat: 'shaggy', hue: '#5a4634', family: 'bovid' },
+  'Yak': { legs: 0.1203, depth: 0.1727, len: 0.2266, neck: 0.06, back: 'humped', muzzle: 0.40, jaw: 'broad', ears: 'small', tail: 'plume', horn: 'boss', coat: 'shaggy', hue: '#4c4038', family: 'bovid' },
   'Cattle': { hue: '#8a3f28', legs: 0.1489, depth: 0.1717, len: 0.2112, neck: 0.07, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'shorthorn', coat: 'blotches', family: 'bovid', earShape: 'spoon' },
   'Cow': { legs: 0.1462, depth: 0.1662, len: 0.2181, neck: 0.07, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', coat: 'blotches', hue: '#e8e2d6', family: 'bovid', earShape: 'spoon' },
   'Bull': { legs: 0.1398, depth: 0.1848, len: 0.2273, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'shorthorn', hue: '#4a3b31', family: 'bovid', earShape: 'spoon' },
-  'Wildebeest': { legs: 0.1745, depth: 0.147, len: 0.1929, neck: 0.08, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'plume', horn: 'curl', coat: 'stripes', hue: '#5f5a55', family: 'bovid' },
+  'Wildebeest': { legs: 0.1745, depth: 0.147, len: 0.1929, neck: 0.08, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'plume', horn: 'boss', coat: 'stripes', hue: '#5f5a55', family: 'bovid' },
   /* ── CANIDS: the long muzzle, the pricked ear, the brush tail ── */
   'Coyote': { legs: 0.1481, depth: 0.1226, len: 0.191, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#a08a68', family: 'canid' },
   'Jackal': { legs: 0.145, depth: 0.12, len: 0.1771, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#a07a4e', family: 'canid' },
@@ -108,10 +108,10 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      every other equid and well below the fennec. */
   'Wild Ass': { legs: 0.1901, depth: 0.142, len: 0.1863, neck: 0.12, muzzle: 0.50, ears: 'large', tail: 'tuft', hue: '#b8ab93', family: 'equid', earShape: 'leaf', earScale: 1.62 },
   'Donkey': { legs: 0.1781, depth: 0.1454, len: 0.1788, neck: 0.11, muzzle: 0.50, ears: 'large', tail: 'tuft', hue: '#9b948c', family: 'equid', earShape: 'leaf', earScale: 1.55 },
-  'Gaur': { legs: 0.1561, depth: 0.1757, len: 0.2305, neck: 0.06, back: 'humped', muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#3f3229', family: 'bovid' },
-  'Banteng': { legs: 0.1597, depth: 0.1629, len: 0.2137, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#7a4f30', family: 'bovid' },
-  'Buffalo': { legs: 0.142, depth: 0.1704, len: 0.2376, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'curl', hue: '#4b433c', family: 'bovid' },
-  'Takin': { legs: 0.1306, depth: 0.1574, len: 0.2065, neck: 0.06, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#b59a63', family: 'bovid' },
+  'Gaur': { legs: 0.1561, depth: 0.1757, len: 0.2305, neck: 0.06, back: 'humped', muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#3f3229', family: 'bovid' },
+  'Banteng': { legs: 0.1597, depth: 0.1629, len: 0.2137, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#7a4f30', family: 'bovid' },
+  'Buffalo': { legs: 0.142, depth: 0.1704, len: 0.2376, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#4b433c', family: 'bovid' },
+  'Takin': { legs: 0.1306, depth: 0.1574, len: 0.2065, neck: 0.06, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'boss', coat: 'shaggy', hue: '#b59a63', family: 'bovid' },
   /* ★ wave 35 — Caribou and Reindeer sat at #a2917c and #a8917a: the same
      colour to six bits, on the same body, and the shaggy rim was doing all the
      separating. When wave 35 shortened that rim they crossed the confusable
