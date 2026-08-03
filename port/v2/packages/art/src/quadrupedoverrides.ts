@@ -452,14 +452,28 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   const legTube = (u: number, xoff: number, hind: boolean): Tube => {
     const a = AX(u);
     const rootX = a[0] + xoff, rootY = a[1] - RAD(u) * 0.22;
-    /* a crouched limb folds high and hard; a columnar one drops straight */
-    const kneeY = rootY + (groundY - rootY) * (0.62 - crouch * 0.16);
-    const kneeX = rootX + (hind ? -legW * (0.30 + crouch * 0.75) : legW * (0.20 + crouch * 0.45));
+    /* ★ D-ART-136 — `crouch` WAS ALMOST INERT. It moved the knee height by
+       0.16 of the drop and the knee x by under one legW across its whole
+       range, so felid 0.74 and bovid 0.26 produced VISUALLY IDENTICAL straight
+       columns — "four straight unjointed tubes with no hock or elbow" on
+       Wildcat, Caracal, Saiga and a dozen others. A documented field that
+       cannot change the drawing is the D-ART-100 shape wearing a number.
+       The range is now wide enough to actually fold a limb, and the hind leg
+       gets a real HOCK REVERSAL: the ankle kicks BACK the way a digitigrade
+       hind limb does, which is the single clearest "this is a mammal, not a
+       table" cue in the silhouette. */
+    const kneeY = rootY + (groundY - rootY) * (0.70 - crouch * 0.34);
+    const kneeX = rootX + (hind ? -legW * (0.30 + crouch * 2.20) : legW * (0.20 + crouch * 1.30));
+    /* the hock: on a folded hind limb the ankle sits BEHIND the knee, so the
+       shank swings forward again to plant the foot under the hip */
+    const hockY = rootY + (groundY - rootY) * (0.84 - crouch * 0.10);
+    const hockX = kneeX + (hind ? legW * (0.20 + crouch * 1.30) : -legW * (0.10 + crouch * 0.30));
     const footX = rootX + (hind ? legW * (0.16 + crouch * 0.34) : -legW * 0.10);
     const spine = pathThrough([
       [rootX, rootY],
       [rootX + (kneeX - rootX) * 0.42, rootY + (kneeY - rootY) * 0.44],
       [kneeX, kneeY],
+      [hockX, hockY],
       [kneeX + (footX - kneeX) * 0.58, kneeY + (groundY - kneeY) * (0.52 + crouch * 0.12)],
       [footX, groundY - legW * 0.24],
     ]);
@@ -1044,7 +1058,18 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
        further back and darker, so the head reads as a solid with two ears on
        it rather than a disc wearing a hat */
     for (const s of [-1, 1] as const) {
-      const ex = headX - headR * (s < 0 ? 0.62 : 0.40), ey = headY - headR * (0.56 + (ears === 'huge' ? 0.18 : 0));
+      /* ★ D-ART-136 — THE EARS WERE 0.22·headR APART. Any ear bigger than
+         ~0.25·headR therefore overlapped ITSELF into a single blob, and
+         'huge' (1.15·headR) produced one cone or disc larger than the whole
+         cranium. That one number owns the Fennec Fox, Serval, Sand Cat, Maned
+         Wolf, African Wild Dog, Polar Bear and Wild Ass blockers — seven
+         species reported as "a single giant disc-ear pasted over the skull".
+         The separation now SCALES with the ear, so a big ear pushes its pair
+         apart instead of swallowing it, and the far ear sits back and smaller
+         for depth. */
+      const sep = 0.30 + earR / headR * 0.55;
+      const ex = headX - headR * (s < 0 ? sep + 0.16 : Math.max(0.10, sep - 0.30));
+      const ey = headY - headR * (0.56 + (ears === 'huge' ? 0.18 : 0));
       const m = s < 0 ? 0.62 : 1;
       c.fillStyle = `rgb(${p.cr * 0.52 * m | 0},${p.cg * 0.52 * m | 0},${p.cb * 0.54 * m | 0})`;
       /* ⚠ WAVE 13 SHIPPED HALF A FIX. The shape switch below was added, but this
@@ -1364,9 +1389,17 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.fillStyle = spec.tailTip ?? 'rgba(0,0,0,0)';
     c.beginPath(); c.ellipse(tipx, tipy, widthAt(1) * 0.60, widthAt(1) * 0.50, 0.3, 0, TAU); c.fill();
   } else if (tail === 'long' || tail === 'tuft') {
-    c.strokeStyle = p.base; c.lineWidth = bodyH * 0.18; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(tx0, ty0); c.quadraticCurveTo(tx0 - bodyW * 0.5, ty0 + bodyH * 0.1, tx0 - bodyW * 0.42, ty0 + bodyH * 0.9); c.stroke();
-    if (tail === 'tuft') { c.fillStyle = p.dark; c.beginPath(); c.ellipse(tx0 - bodyW * 0.42, ty0 + bodyH * 0.95, bodyH * 0.16, bodyH * 0.22, 0, 0, TAU); c.fill(); }
+    /* ★ D-ART-136 — THIS BRANCH IGNORED tailScale COMPLETELY. The sweep was
+       hard-coded, so a leopard's tail was ~32% of its body and NO spec value
+       could lengthen it — tailScale was read only by 'bushy' and 'plume', and
+       there it scales WIDTH. That is why "the tail is far too short" is the
+       top-cited defect on six felid rows and unfixable from the table. */
+    const TS = spec.tailScale ?? 1;
+    const ex2 = tx0 - bodyW * 0.42 * TS, ey2 = ty0 + bodyH * 0.9 * TS;
+    c.strokeStyle = p.base; c.lineWidth = bodyH * 0.20; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(tx0, ty0);
+    c.quadraticCurveTo(tx0 - bodyW * 0.55 * TS, ty0 + bodyH * 0.10, ex2, ey2); c.stroke();
+    if (tail === 'tuft') { c.fillStyle = p.dark; c.beginPath(); c.ellipse(ex2, ey2 + bodyH * 0.05, bodyH * 0.16, bodyH * 0.22, 0, 0, TAU); c.fill(); }
   } else if (tail === 'banded') {
     c.strokeStyle = p.base; c.lineWidth = bodyH * 0.42; c.lineCap = 'round';
     c.beginPath(); c.moveTo(tx0, ty0); c.quadraticCurveTo(tx0 - bodyW * 0.45, ty0 + bodyH * 0.1, tx0 - bodyW * 0.55, ty0 + bodyH * 0.8); c.stroke();
@@ -1457,7 +1490,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* bears, differentiated */
   'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636', family: 'ursid' },
   'Brown Bear': { legs: 0.0963, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f', family: 'ursid' },
-  'Polar Bear': { legs: 0.1112, depth: 0.1696, len: 0.2642, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6', family: 'ursid' },
+  'Polar Bear': { legs: 0.1112, depth: 0.1696, len: 0.2642, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6', family: 'ursid', earScale: 0.50 },
   'Black Bear': { legs: 0.101, depth: 0.1729, len: 0.2268, neck: 0.05, muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#3b3a40', family: 'ursid' },
   'Panda': { legs: 0.0825, depth: 0.1844, len: 0.2269, neck: 0.04, back: 'arched', muzzle: 0.30, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'panda', face: 'mask', hue: '#f0f2f4', family: 'ursid' },
   'Sun Bear': { legs: 0.0939, depth: 0.1438, len: 0.2004, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c', family: 'ursid' },
@@ -1468,7 +1501,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* ★ wave 21 — the audit: "ears should dominate the head; reduce body size and
      increase bushy tail". A fennec is a desert fox scaled DOWN around ears that
      were not scaled down with it. */
-  'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.85, tailScale: 1.6, family: 'canid', earShape: 'point' },
+  'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.30, tailScale: 1.6, family: 'canid', earShape: 'point' },
   'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid' },
   'Hyena': { legs: 0.1442, depth: 0.1492, len: 0.208, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63', family: 'canid' },
   'Koala': { legs: 0.0551, depth: 0.1434, len: 0.1506, neck: 0.03, muzzle: 0.20, jaw: 'broad', ears: 'huge', tail: 'none', hue: '#a8adb4', family: 'marsupial' },
