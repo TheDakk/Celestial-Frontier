@@ -20,6 +20,7 @@
      Pineapple, Joshua Tree, Cotton, Dragon Fruit and the anti-duplicate
      ladder species are ABSENT here, and the shadow check enforces it. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { leafSurface } from './surface.js';
 import { speciesHue } from './surface.js';
 
 type G = Record<string, unknown>;
@@ -81,6 +82,9 @@ export interface PlantSpec {
 }
 
 /** one leaf, drawn along a direction — the shape IS the family */
+/** the cost dial for leaf venation — see MAT_DETAIL. 0 restores the flat leaf. */
+const LEAF_DETAIL = 1;
+
 function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number, kind: PlantSpec['leaf']): void {
   c.save(); c.translate(x, y); c.rotate(ang);
   const w = len * (kind === 'lance' ? 0.16 : kind === 'blade' ? 0.09 : kind === 'heart' ? 0.52 : 0.34);
@@ -109,7 +113,10 @@ function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number
       c.beginPath(); c.moveTo(0, 0);
       c.quadraticCurveTo(len * 0.5, -len * 0.20, len * (0.94 - Math.abs(i) * 0.10), 0);
       c.quadraticCurveTo(len * 0.5, len * 0.20, 0, 0);
-      c.closePath(); c.fill(); c.restore();
+      c.closePath(); c.fill();
+      leafSurface(c, len * (0.94 - Math.abs(i) * 0.10), len * 0.20,
+        { veins: 4, detail: LEAF_DETAIL });
+      c.restore();
     }
     c.restore(); return;
   }
@@ -141,6 +148,7 @@ function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number
     c.beginPath(); c.ellipse(len * 0.5, 0, len * 0.5, len * 0.30, 0, 0, TAU); c.fill();
     c.strokeStyle = 'rgba(240,250,240,0.30)'; c.lineWidth = 1.6;
     c.beginPath(); c.ellipse(len * 0.5, 0, len * 0.5, len * 0.30, 0, -2.6, 0.4); c.stroke();
+    leafSurface(c, len * 0.92, len * 0.26, { veins: 3, detail: LEAF_DETAIL * 0.6 });
     c.restore(); return;
   }
   /* broad · lance · blade · heart — one blade with a midrib */
@@ -156,6 +164,12 @@ function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number
   c.closePath(); c.fill();
   c.strokeStyle = 'rgba(20,32,18,0.34)'; c.lineWidth = 1.5;
   c.beginPath(); c.moveTo(0, 0); c.lineTo(len * 0.94, 0); c.stroke();
+  /* ★ D-ART-116 — VENATION. The midrib alone says "leaf-shaped"; the laterals
+     are what say "leaf". A blade grass is a monocot and gets parallel veins
+     rather than a branching net, which is a real botanical difference and
+     also what keeps a grass from reading as a small broadleaf. */
+  leafSurface(c, len, w, { veins: kind === 'heart' ? 5 : kind === 'blade' ? 7 : 6,
+    detail: LEAF_DETAIL, parallel: kind === 'blade' });
   c.restore();
 }
 
