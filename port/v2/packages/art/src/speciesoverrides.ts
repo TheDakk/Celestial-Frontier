@@ -12,6 +12,7 @@
    structural families) and take their PALETTE from the genome, so a corrected
    species still belongs to its rarity/color roll — bodies, not recolors. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { speciesHue } from './surface.js';
 import { SP_COLOR, SP_HEX } from '@cf/domain-speciestraits';
 import { FLORA_ICONIC, FLORA_DUPES, floraLadder, type Pal } from './floraoverrides.js';
 import { FAUNA_NAME, faunaCetacean } from './faunaoverrides.js';
@@ -378,21 +379,21 @@ const FUNGI_NAME: Record<string, Painter> = {
   'Shiitake': (c, g, p) => fungiCap(c, g, p, { cap: 'convex', gills: 'blade', hue: '#7d5638', gillHue: '#efe7d4', stem: 'stout', veil: true, crack: true, count: 2 }),
   'Porcini': (c, g, p) => fungiCap(c, g, p, { cap: 'convex', gills: 'pore', hue: '#9c6b3c', gillHue: '#efe6cd', stem: 'bulbous', net: true }),
   'Bioluminescent Mushroom': (c, g, p) => fungiCap(c, g, p, { cap: 'flat', gills: 'blade', hue: '#8ea89a', gillHue: '#d8f6e4', stem: 'slender', glow: true, count: 4, scale: 0.66 }),
-  'Jelly Fungus': fungiJellyBrain,
-  'Turkey Tail': fungiBracket, 'Bracket Fungus': fungiBracket, 'Shelf Fungus': fungiBracket, 'Chicken-of-the-Woods': fungiBracket, 'Oyster Mushroom': fungiBracket, 'Reindeer Lichen': fungiBracket,
-  'Giant Puffball': fungiPuffball, 'Earthstar': fungiEarthstar, 'Black Truffle': fungiTruffle,
+  'Jelly Fungus': (c, g, p) => fungiJellyBrain(c, g, speciesHue(p, '#e2822f')),
+  'Turkey Tail': (c, g, p) => fungiBracket(c, g, speciesHue(p, '#96714a')), 'Bracket Fungus': fungiBracket, 'Shelf Fungus': fungiBracket, 'Chicken-of-the-Woods': fungiBracket, 'Oyster Mushroom': fungiBracket, 'Reindeer Lichen': fungiBracket,
+  'Giant Puffball': (c, g, p) => fungiPuffball(c, g, speciesHue(p, '#ded3bb')), 'Earthstar': fungiEarthstar, 'Black Truffle': fungiTruffle,
   /* ★ wave 21 — the audit's last two named fungi */
-  'Enoki': fungiEnoki,
-  'Coral Fungus': fungiCoral,
-  'Morel': fungiMorel,
-  'Mold': fungiMold, 'Mildew': fungiMold, 'Yeast': fungiMold,
+  'Enoki': (c, g, p) => fungiEnoki(c, g, speciesHue(p, '#f6f2e8')),
+  'Coral Fungus': (c, g, p) => fungiCoral(c, g, speciesHue(p, '#f0dfa4')),
+  'Morel': (c, g, p) => fungiMorel(c, g, speciesHue(p, '#6b4a2a')),
+  'Mold': (c, g, p) => fungiMold(c, g, speciesHue(p, '#5d8a6e')), 'Mildew': fungiMold, 'Yeast': fungiMold,
   /* wave 18 — the Platinum-audit bespoke fungi, whose signature the shared
      families cannot express (a family for the many, a hand form for the few) */
   'Fly Agaric': fungiFlyAgaric,
   "Lion's Mane": fungiLionsMane,
-  'Maitake': fungiMaitake,
+  'Maitake': (c, g, p) => fungiMaitake(c, g, speciesHue(p, '#8a8175')),
   'Stinkhorn': fungiStinkhorn,
-  'Cordyceps': fungiCordyceps,
+  'Cordyceps': (c, g, p) => fungiCordyceps(c, g, speciesHue(p, '#e8541f')),
 };
 const MICROBE_NAME: Record<string, Painter> = {
   /* ★ WAVE 18 — the eleven unrouted microbes. Every one of them already had a
@@ -411,10 +412,10 @@ const MICROBE_NAME: Record<string, Painter> = {
   'Radiation-Resistant Microbe': (c, g, p) => microbeChain(c, g, tint(p, '#d8a83a')),
   'Bioluminescent Plankton': (c, g, p) => microbeFlagellate(c, g, tint(p, '#6ee0c0')),
   'Red-Tide Algae': (c, g, p) => microbePlates(c, g, tint(p, '#b03428')),
-  'Tardigrade': tardigrade,   /* wave 18: the canonical 8-legged water bear */
-  'Diatom': microbeDiatom, 'Radiolarian': microbeDiatom, 'Dinoflagellate': microbeDiatom,
-  'Paramecium': microbeCiliate, 'Euglena': microbeCiliate,
-  'Amoeba': microbeAmoeba, 'Foraminiferan': microbeAmoeba, 'Green Algae': microbeAmoeba,
+  'Tardigrade': (c, g, p) => tardigrade(c, g, speciesHue(p, '#d9b98c')),   /* wave 18: the canonical 8-legged water bear */
+  'Diatom': (c, g, p) => microbeDiatom(c, g, speciesHue(p, '#c9a552')), 'Radiolarian': microbeDiatom, 'Dinoflagellate': microbeDiatom,
+  'Paramecium': (c, g, p) => microbeCiliate(c, g, speciesHue(p, '#b6bd82')), 'Euglena': microbeCiliate,
+  'Amoeba': (c, g, p) => microbeAmoeba(c, g, speciesHue(p, '#b9bfba')), 'Foraminiferan': (c, g, p) => microbeAmoeba(c, g, speciesHue(p, '#e4e2d6')), 'Green Algae': (c, g, p) => microbeAmoeba(c, g, speciesHue(p, '#4c9a2a')),
 };
 
 /** Return a corrected portrait data URL, or null to fall through to the
@@ -429,8 +430,8 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'flora|Green Algae': macroAlgaeSheet,
   'microbe|Green Algae': microAlgaeCell,
   /* Snow / Ice Algae: a tinted bloom field in each kingdom it appears in */
-  'flora|Snow Algae': algaeBloom, 'microbe|Snow Algae': algaeBloom,
-  'flora|Ice Algae': algaeBloom, 'microbe|Ice Algae': algaeBloom,
+  'flora|Snow Algae': (c, g, p) => algaeBloom(c, g, speciesHue(p, '#e05263')), 'microbe|Snow Algae': algaeBloom,
+  'flora|Ice Algae': (c, g, p) => algaeBloom(c, g, speciesHue(p, '#a87c25')), 'microbe|Ice Algae': algaeBloom,
   /* Reindeer Lichen: one canonical pale branching mat across flora + fungi */
   'flora|Reindeer Lichen': lichenMat, 'fungi|Reindeer Lichen': lichenMat,
   /* Sea Lettuce: a green macroalgal sheet, not a purple strap */
@@ -438,10 +439,10 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   /* ★ WAVE 18 — the carnivores. A hinged clamshell trap, an upright pitcher
      with a hood, and a rosette of dew-tipped tentacles are not 'a herb with
      leaves' at any setting, which is why all three looked generic. */
-  'flora|Venus Flytrap': (c, g, p) => floraFlytrap(c, g, p, 'Venus Flytrap'),
-  'flora|Pitcher Plant': (c, g, p) => floraPitcher(c, g, p, 'Pitcher Plant'),
-  'flora|Sundew': (c, g, p) => floraSundew(c, g, p, 'Sundew'),
-  'flora|Floating Green Algae': (c, g, p) => floraFloatingAlgae(c, g, p, 'Floating Green Algae'),
+  'flora|Venus Flytrap': (c, g, p) => floraFlytrap(c, g, speciesHue(p, '#37864a'), 'Venus Flytrap'),
+  'flora|Pitcher Plant': (c, g, p) => floraPitcher(c, g, speciesHue(p, '#8e9c3f'), 'Pitcher Plant'),
+  'flora|Sundew': (c, g, p) => floraSundew(c, g, speciesHue(p, '#b0604b'), 'Sundew'),
+  'flora|Floating Green Algae': (c, g, p) => floraFloatingAlgae(c, g, speciesHue(p, '#3fbf2e'), 'Floating Green Algae'),
   /* ★ wave 19 — the iconic flora whose GROWTH FORM is the name (audit bucket C) */
   'flora|Cabbage': floraCabbage,
   'flora|Carrot': floraCarrot,
@@ -459,7 +460,7 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'fauna|Salp': faunaSalp,
   /* ★ wave 21 — Cyanobacteria: the audit wants "filamentous chains, mats, or
      bead-like trichomes", which is exactly the trichome wave 20 built */
-  'microbe|Cyanobacteria': microbeFilament,
+  'microbe|Cyanobacteria': (c, g, p) => microbeFilament(c, g, speciesHue(p, '#1f7f86')),
   'fauna|Tripod Fish': faunaTripodFish,
   /* ★ wave 21 — the named-species NEEDS_FIX fauna the shared systems route but
      cannot say (the sirenians had no route at all and fell through as spheres) */
@@ -489,15 +490,15 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   /* ★ WAVE 18 — the last seven fauna. Each is a body plan no shared system
      here can express, which is why all seven survived seventeen waves on the
      verbatim engine. */
-  'fauna|Chameleon': (c, g, pp) => faunaChameleon(c, g, pp, 'Chameleon'),
-  'fauna|Frilled Lizard': (c, g, pp) => faunaFrilled(c, g, pp, 'Frilled Lizard'),
-  'fauna|Seahorse': (c, g, pp) => faunaSeahorse(c, g, pp, 'Seahorse'),
-  'fauna|Caecilian': (c, g, pp) => faunaCaecilian(c, g, pp, 'Caecilian'),
+  'fauna|Chameleon': (c, g, pp) => faunaChameleon(c, g, speciesHue(pp, '#17a982'), 'Chameleon'),
+  'fauna|Frilled Lizard': (c, g, pp) => faunaFrilled(c, g, speciesHue(pp, '#b58a52'), 'Frilled Lizard'),
+  'fauna|Seahorse': (c, g, pp) => faunaSeahorse(c, g, speciesHue(pp, '#eeb03c'), 'Seahorse'),
+  'fauna|Caecilian': (c, g, pp) => faunaCaecilian(c, g, speciesHue(pp, '#6b5f70'), 'Caecilian'),
   'fauna|Poison Dart Frog': (c, g, pp) => faunaDartFrog(c, g, pp, 'Poison Dart Frog'),
   'fauna|Vampire Squid': (c, g, pp) => faunaCloakSquid(c, g, pp, 'Vampire Squid'),
   'fauna|Deep-Sea Octopus': (c, g, pp) => faunaCloakSquid(c, g, pp, 'Deep-Sea Octopus'),
   'fauna|Humpback Whale': faunaHumpback,
-  'fauna|Beaked Whale': faunaBeakedWhale,
+  'fauna|Beaked Whale': (c, g, p) => faunaBeakedWhale(c, g, p),
   'fauna|Cuttlefish': faunaCuttlefish,
   'fauna|Horseshoe Crab': faunaHorseshoeCrab,
   'fauna|Sea Squirt': faunaSeaSquirt,
@@ -506,10 +507,10 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
      INVERTEBRATE table on the word "Insect" and rendered as a bee; the other
      three had no route at all and fell through to the verbatim engine. Routed
      here, ahead of every name table, so no keyword can ever claim them again. */
-  'fauna|Bat': (c, g, pp) => faunaBat(c, g, pp, 'Bat'),
+  'fauna|Bat': (c, g, pp) => faunaBat(c, g, speciesHue(pp, '#4a423b'), 'Bat'),
   'fauna|Insect-Eating Bat': (c, g, pp) => faunaBat(c, g, pp, 'Insect-Eating Bat'),
-  'fauna|Fruit Bat': (c, g, pp) => faunaBat(c, g, pp, 'Fruit Bat'),
-  'fauna|Vampire Bat': (c, g, pp) => faunaBat(c, g, pp, 'Vampire Bat'),
+  'fauna|Fruit Bat': (c, g, pp) => faunaBat(c, g, speciesHue(pp, '#a1562a'), 'Fruit Bat'),
+  'fauna|Vampire Bat': (c, g, pp) => faunaBat(c, g, speciesHue(pp, '#7a5233'), 'Vampire Bat'),
 };
 export function resolveOverride(g: G): string | null {
   /* normalize the curly apostrophe (U+2019) to ASCII — the roster uses it

@@ -19,6 +19,7 @@
    Palette comes from the genome, so a corrected plant still belongs to its
    color/rarity roll — bodies, not recolors. */
 import { mulberry32, TAU } from '@cf/domain-rand';
+import { speciesHue } from './surface.js';
 
 type G = Record<string, unknown>;
 type Ctx = CanvasRenderingContext2D;
@@ -244,9 +245,9 @@ export const FLORA_ICONIC: Record<string, FloraPainter> = {
   'Joshua Tree': (c, g) => floraJoshua(c, g),
   'Cotton': (c, g) => floraCotton(c, g),
   'Dragon Fruit': (c, g) => floraDragonFruit(c, g),
-  'Rhubarb': (c, g, p) => floraBroadLeaf(c, g, p, { petiole: '#c0392b' }),
-  'Tobacco': (c, g, p) => floraBroadLeaf(c, g, p, { petiole: '#5c6b3a' }),
-  'Cabbage': (c, g, p) => floraBroadLeaf(c, g, p, { head: true }),
+  'Rhubarb': (c, g, p) => floraBroadLeaf(c, g, speciesHue(p, '#c22e3a'), { petiole: '#c0392b' }),
+  'Tobacco': (c, g, p) => floraBroadLeaf(c, g, speciesHue(p, '#5f8b3a'), { petiole: '#5c6b3a' }),
+  'Cabbage': (c, g, p) => floraBroadLeaf(c, g, speciesHue(p, '#a9c3a0'), { head: true }),
 };
 
 /** every name in the 16 byte-duplicate groups → the NAME-SEEDED ladder, so

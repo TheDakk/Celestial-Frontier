@@ -126,10 +126,14 @@ for (const f of files) {
            read as no colour — and acting on that wrote a duplicate key.
          · `tint(p, '#7f9aa6')`, the call-site recolour 11 microbes use, was
            read as no colour — filing 11 finished organisms as outstanding.
+         · `speciesHue(p, '#…')`, the shared call-site form wave 24 writes for
+           painters with no hue axis of their own — the same trick as `tint`
+           under the name the whole engine now uses. (Fifth spelling. The list
+           is the point: extend it, do not re-derive it.)
        The lesson is that "coloured" is a property of the RENDER, not of a
        syntax, so every known spelling has to be listed here. Add to this list
        rather than assuming the roster is worse than it is. */
-    if (/\bhue:/.test(line) || /\btint\(\s*\w+\s*,\s*['"]#/.test(line)) { hued.add(key); return; }
+    if (/\bhue:/.test(line) || /\b(?:tint|speciesHue)\(\s*\w+\s*,\s*['"]#/.test(line)) { hued.add(key); return; }
     const painters = [...line.matchAll(/([A-Za-z_]\w*)\s*\(/g)].map((x) => resolve(x[1]));
     /* ⚠ NOT EVERY TABLE ROW IS A CALL, and assuming so filed 28 organisms —
        Dog, Cat, Bear, Antelope, Cattle among them — as "painter has no hue
@@ -165,6 +169,33 @@ for (const r of rows) {
   const key = hit ?? (r.painters[r.painters.length - 1] ?? '?');
   (bucket[key] ||= []).push(r.name);
 }
+/* ⚠ FOURTH SPELLING (see the note on the `hued` test above): a painter that
+   never RECEIVES a palette cannot be taking the rarity roll. floraRafflesia is
+   `(c: Ctx, g: G)` and hardcodes #8e1d16 — the real rafflesia red — so it is
+   species-true by construction and was being reported as outstanding work.
+   The honest test is not "does it have a hue field" but "could its colour vary
+   with the roll at all"; if no Pal goes in, the answer is no. */
+const takesPal = {};
+for (const [name, b] of Object.entries(bodies)) {
+  const sig = b.slice(0, b.indexOf(')') + 1);
+  /* ⚠ SIXTH SPELLING. A painter that ANCHORS its palette to a hardcoded
+     colour is species-true too, even though it accepts a Pal:
+         const p = anchor(pIn, 74, 56, 40, 0.84);   // an echidna is brown
+     Twelve one-species painters do this, and it is deliberate — it is how
+     they were given their real colours in an earlier wave. Tinting them from
+     the call site is diluted to nothing and leaves a line that LOOKS like it
+     is doing work. Found by rendering the dart frog and seeing it come out
+     red when the table said blue. */
+  const anchored = /=\s*(?:\w+\s*\?\s*)?anchor\(\s*pIn\s*,/.test(b);
+  takesPal[name] = !anchored
+    && /\b(?:p|pIn|pal)\s*:\s*(?:Pal|ReturnType<typeof palette>)/.test(sig);
+}
+const hardcoded = {};
+for (const [painter, names] of Object.entries(blocked)) {
+  if (takesPal[painter] === false) { hardcoded[painter] = names; delete blocked[painter]; }
+}
+const nHard = Object.values(hardcoded).reduce((a, v) => a + v.length, 0);
+
 const count = (o) => Object.values(o).reduce((a, v) => a + v.length, 0);
 const show = (o) => Object.entries(o).sort((a, b) => b[1].length - a[1].length);
 
@@ -172,7 +203,8 @@ console.log('roster (deduped): ' + all.length + ' · carry a species hue: ' + (a
 console.log('STILL ON THE RARITY ROLL: ' + need.size);
 console.log('  painter DOES read a hue — fixable now: ' + count(fixable));
 console.log('  painter has NO hue axis — blocked:     ' + count(blocked));
-console.log('  unrouted (verbatim/procedural):        ' + (need.size - count(fixable) - count(blocked)));
+console.log('  painter takes NO palette — already species-true, not on the roll: ' + nHard);
+console.log('  unrouted (verbatim/procedural):        ' + (need.size - count(fixable) - count(blocked) - nHard));
 console.log('\nFIXABLE NOW, by painter:');
 for (const [k, v] of show(fixable)) console.log('  ' + String(v.length).padStart(4) + '  ' + k);
 console.log('\nBLOCKED — give these painters a hue axis to unlock them:');
