@@ -135,6 +135,11 @@ export interface QuadSpec {
      on it: centred, it swallows the muzzle and eyes and the animal loses the
      only part anyone actually reads. */
   mane?: 'lion' | 'ruff';
+  /** ★ wave 38 — carry this species' coat pattern down onto the four limbs.
+      Opt-in, because on most mammals the legs really are plainer than the
+      flank; on a zebra, an okapi, a panda or a leopard they are not, and the
+      reference rows say so explicitly. */
+  legMarks?: boolean;
 }
 
 /** ★ WAVE 6 — THE SKULL. Nick, after looking at the wave-5 export: *"the heads
@@ -395,7 +400,30 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
          a shading value, which is what lets skin.ts lay a coat ON it.
      D-ART-83: the shape LANGUAGE is shared because every mammal has a
      ribcage; the VALUES all default from this species' own legs/depth/len. */
-  const topY = (t: number): number => {
+  /* ★ WAVE 38 — THE CAMEL'S HUMPS ARE PART OF THE BACK. They used to be filled
+     flat in `p.base` AFTER the coat and the material layers, so they could never
+     carry either: a bald tan dome with a hard seam sitting on a shaggy animal,
+     which is exactly how the gold pass reported all three camels. Folded into
+     `topY` they become part of the body SOLID — the same fix wave 4 applied to
+     the torso and wave 35 to the tail — so they inherit the coat, the material,
+     the countershading and the rim light, and the seam is not fixed, it is
+     unreachable. */
+  const humpAt = (t: number): number => {
+    if (!spec.humps) return 0;
+    /* ⚠ SUMMING TWO GAUSSIANS MERGES THEM. At width 0.155 the bactrian's pair
+       overlapped in the middle and added to a single broad dome — one hump on
+       the animal whose TWO humps are the only thing separating it from a
+       dromedary. Take the MAX, and narrow them, so the saddle between the two
+       stays open. */
+    const two = spec.humps === 2;
+    const hxs = two ? [0.30, 0.72] : [0.5];
+    const w = two ? 0.115 : 0.155;
+    let lift = 0;
+    for (const hu of hxs) lift = Math.max(lift, Math.exp(-(((t - hu) / w) ** 2)));
+    return bodyH * (two ? 0.46 : 0.50) * lift;
+  };
+  const topY = (t: number): number => topYBase(t) - humpAt(t);
+  const topYBase = (t: number): number => {
     /* t: 0 at the rump, 1 at the shoulder */
     if (back === 'humped') return cy - bodyH * (0.55 + 0.42 * Math.pow(t, 2.2));
     if (back === 'sloped') return cy - bodyH * (0.40 + 0.55 * t);
@@ -636,6 +664,25 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.save(); c.beginPath(); limb.trace(c, 40); c.clip();
     countershade(c, limb, lp, 0.85);
     if (!spec.alien?.skin) coatMaterial(c, limb, r, lp, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL * 0.45, len: 0.6 });
+    /* ★ WAVE 38 — A MARKING CAN REACH A LEG NOW. Filed in two worklists as
+       "STRUCTURALLY UNREACHABLE — the four leg Tubes are filled before the coat
+       clip and never revisited". The second half was true and the conclusion did
+       not follow: this clip is open, `limb` is a real Tube, and every coat*
+       function in skin.ts takes a Tube — the call shape is identical to the
+       coatMaterial line directly above. ~15 lines, and it unlocks the zebra's
+       banded legs, the okapi's striped haunches, the panda's black limbs and
+       the spotting that should run down every felid's limb.
+       Opt-in per species (`legMarks`), NOT automatic: switching it on for every
+       patterned coat would repaint ~50 animals in one commit, which is exactly
+       the global pass artlock exists to stop (D-ART-83). */
+    if (spec.legMarks && !spec.alien?.skin) {
+      if (coat === 'bands') coatBars(c, limb, r, lp, { count: 7, width: 1.15, phiTop: 1.62, phiEnd: -1.45, lean: 0.02, forkRate: 0, hard: true, rgb: [18, 15, 16] });
+      else if (coat === 'stripes') coatBars(c, limb, r, lp, { count: 5, width: 0.85, phiEnd: -0.95, forkRate: 0 });
+      else if (coat === 'spots') coatSpots(c, limb, r, lp, { count: 20, size: 0.52, soft: 0.14, rgb: [24, 17, 10] });
+      else if (coat === 'rosettes') coatRosettes(c, limb, r, lp, { count: 7, size: 0.5 });
+      else if (coat === 'patches') coatPatches(c, limb, r, lp, { nu: 4, nphi: 3, seam: 0.78, rgb: [126, 74, 26] });
+      else if (coat === 'panda') coatBlocks(c, limb, lp, [{ u0: 0, u1: 1, phiLo: -1.6, phiHi: 1.7, rgb: '#15181e' }]);
+    }
     c.restore();
     /* ⚠ AN ATTEMPT TO BLEND THE NEAR LEG BY REPAINTING ITS ROOT IN FLANK COLOUR
        PUT A PALE OVAL ON EVERY ANIMAL'S SHOULDER AND HAUNCH. It could not
@@ -656,10 +703,10 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   const pairs = spec.alien?.legPairs ?? 2;
   const legUs: number[] = [];
   for (let i = 0; i < pairs; i++) legUs.push(0.175 + (i / Math.max(1, pairs - 1)) * 0.665);
+  const coat = spec.coat ?? 'plain';
   for (const u of legUs) drawLeg(u, -legW * 0.66, u < 0.5, true);      /* far side, shaded */
   for (const u of legUs) drawLeg(u, legW * 0.34, u < 0.5, false);      /* near side */
 
-  const coat = spec.coat ?? 'plain';
   /* ═══ the neck is computed AND DRAWN BEFORE THE TORSO (wave 6) ═══
      It used to be drawn over the body, so its outline crossed the shoulder
      and its own countershading disagreed with the body's along that line —
@@ -860,21 +907,13 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
 
 
   /* ---- humps (camel) sit ON the back line ---- */
-  if (spec.humps) {
-    /* A HUMP GROWS OUT OF THE BACK. Both were seated at topY(0.5) minus a
-       fixed offset, so each floated in a gap above the spine — and with two
-       humps the rear one hovered over a back line it never touched. Each
-       hump is now seated at the back line AT ITS OWN x, sunk slightly in. */
-    const hxs = spec.humps === 1 ? [0.5] : [0.32, 0.68];
-    const seat = (u: number): [number, number] => {
-      const hx = cx - bodyW + 2 * bodyW * u;
-      return [hx, topY(u) + bodyH * 0.06];
-    };
-    c.fillStyle = p.base;
-    for (const u of hxs) { const [hx, hy] = seat(u); c.beginPath(); c.ellipse(hx, hy, bodyW * 0.30, bodyH * 0.46, 0, Math.PI, TAU); c.fill(); }
-    c.strokeStyle = 'rgba(220,232,250,0.32)'; c.lineWidth = 2;
-    for (const u of hxs) { const [hx, hy] = seat(u); c.beginPath(); c.ellipse(hx, hy, bodyW * 0.30, bodyH * 0.46, 0, Math.PI, TAU); c.stroke(); }
-  }
+  /* ⚠ THE FLAT HUMP DOME IS GONE (wave 38). It was two `p.base` half-ellipses
+     drawn here — after the coat, after the material, after the rim light — so a
+     camel's hump was the one part of the animal wearing no fur, finished with a
+     hard pale outline stroke. `humpAt()` in topY now carries them, so there is
+     no second shape to seam against the first. `seat()` also still anchored to
+     the pre-wave-7 back line while the drawn silhouette had moved to the tube's
+     envelope; the tail got that correction in wave 7 and the humps never did. */
 
 
   /* ★ WAVE 22b — THE MANE (Nick: "the lion head with mane looks awful, can't
@@ -1833,16 +1872,16 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* ★ wave 22b — Lion had NO route and fell through to the verbatim engine,
      where the mane rendered as a ring of spikes over an unreadable face. */
   'Lion': { legs: 0.1236, depth: 0.1426, len: 0.2455, neck: 0.06, muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'tuft', mane: 'lion', hue: '#c19a5b', family: 'felid' },
-  'Jaguar': { legs: 0.114, depth: 0.1395, len: 0.2287, neck: 0.07, muzzle: 0.35, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#c8983c", family: 'felid' },
-  'Leopard': { legs: 0.1253, depth: 0.1268, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#d3ab5e", family: 'felid' },
-  'Snow Leopard': { legs: 0.1221, depth: 0.133, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'plume', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' },
+  'Jaguar': { legs: 0.114, depth: 0.1395, len: 0.2287, neck: 0.07, muzzle: 0.35, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#c8983c", family: 'felid' , legMarks: true },
+  'Leopard': { legs: 0.1253, depth: 0.1268, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#d3ab5e", family: 'felid' , legMarks: true },
+  'Snow Leopard': { legs: 0.1221, depth: 0.133, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'plume', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' , legMarks: true },
   /* ★ wave 35 — Nick's row: "current ungulate-like body lacks deep chest,
      tucked waist, feline paws/head". It is the one felid NOT built like a big
      cat — a whippet: extreme waist tuck, light hindquarters, and a tail nearly
      as long as the body it steers. Those four numbers are the animal, and the
      felid plan alone could never reach them because the felid plan describes a
      leopard. */
-  'Cheetah': { legs: 0.1938, depth: 0.1205, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 0.95, rump: 0.52, tailScale: 1.9 },
+  'Cheetah': { legs: 0.1938, depth: 0.1205, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 0.95, rump: 0.52, tailScale: 1.9 , legMarks: true },
   'Cougar': { legs: 0.1482, depth: 0.1268, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid' },
   'Lynx': { legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft' },
   /* the pixel-siblings, separated */
@@ -1853,7 +1892,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Camel': { legs: 0.1846, depth: 0.1629, len: 0.1804, neck: 0.20, back: 'level', muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#c8a173', family: 'camelid' },
   'Bactrian Camel': { legs: 0.176, depth: 0.1667, len: 0.1914, neck: 0.19, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 2, hue: '#b08a5e', family: 'camelid' },
   'Dromedary Camel': { legs: 0.1935, depth: 0.159, len: 0.176, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777', family: 'camelid' },
-  'Giraffe': { legs: 0.2438, depth: 0.1573, len: 0.1652, neck: 0.34, back: 'sloped', muzzle: 0.40, ears: 'large', tail: 'tuft', coat: 'patches', horn: 'ossicone', hue: '#e0c07a' , family: 'cervid' },
+  'Giraffe': { legs: 0.2438, depth: 0.1573, len: 0.1652, neck: 0.34, back: 'sloped', muzzle: 0.40, ears: 'large', tail: 'tuft', coat: 'patches', horn: 'ossicone', hue: '#e0c07a' , family: 'cervid' , legMarks: true },
   'Llama': { legs: 0.1938, depth: 0.1434, len: 0.1506, neck: 0.20, muzzle: 0.35, ears: 'large', tail: 'stub', hue: '#d8cbb4', family: 'camelid' },
   'Alpaca': { legs: 0.1594, depth: 0.1448, len: 0.152, neck: 0.18, muzzle: 0.30, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#ddd2bd', family: 'camelid' },
   /* antlered + horned */
@@ -1870,7 +1909,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Brown Bear': { legs: 0.0963, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f', family: 'ursid' },
   'Polar Bear': { legs: 0.1112, depth: 0.1696, len: 0.2642, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6', family: 'ursid', earScale: 0.50 },
   'Black Bear': { legs: 0.101, depth: 0.1729, len: 0.2268, neck: 0.05, muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#3b3a40', family: 'ursid' },
-  'Panda': { legs: 0.0825, depth: 0.1844, len: 0.2269, neck: 0.04, back: 'arched', muzzle: 0.30, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'panda', face: 'mask', hue: '#f0f2f4', family: 'ursid' },
+  'Panda': { legs: 0.0825, depth: 0.1844, len: 0.2269, neck: 0.04, back: 'arched', muzzle: 0.30, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'panda', face: 'mask', hue: '#f0f2f4', family: 'ursid' , legMarks: true },
   'Sun Bear': { legs: 0.0939, depth: 0.1438, len: 0.2004, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c', family: 'ursid' },
   'Sloth Bear': { legs: 0.1001, depth: 0.1697, len: 0.2227, neck: 0.05, muzzle: 0.55, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#2b2726', family: 'ursid' },
   /* canids + small mammals where ears/tails are the read */
