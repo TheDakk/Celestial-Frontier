@@ -137,6 +137,12 @@ export interface QuadSpec {
      on it: centred, it swallows the muzzle and eyes and the animal loses the
      only part anyone actually reads. */
   mane?: 'lion' | 'ruff';
+  /** ★ wave 40 — the body's POSTURE. 'stand' (default) is the horizontal
+      quadruped this painter has always drawn; 'sentinel' rears it onto its
+      hind legs with the forelimbs tucked (meerkat, prairie dog, ground
+      squirrel). It rotates the SPINE, so the silhouette, coat, material,
+      shading and rim all follow without knowing anything about it. */
+  pose?: 'sentinel' | 'hang';
   /* ★ WAVE 39 — THE OKAPI PROBLEM. Its coat runs on the HINDQUARTERS ONLY and
      is PALE on a dark ground — the exact inverse of what `coat:'stripes'` does,
      and its verifier called the inversion "real and damning". Two axes, both
@@ -497,11 +503,63 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   /* the axis is INSET by the end caps, so the animal's overall length is still
      the 2·bodyW its spec asked for — a dome on the rump adds body, not frame */
   const axA = cx - bodyW + RAD(0) * 0.80, axB = cx + bodyW - RAD(1) * 0.80;
-  const AX = (u: number): [number, number] => [axA + (axB - axA) * u, (ventral(u) + dorsal(u)) / 2];
+  const AX0 = (u: number): [number, number] => [axA + (axB - axA) * u, (ventral(u) + dorsal(u)) / 2];
+  /* ★ WAVE 40 — POSE. `faunaQuadruped` has always drawn exactly one posture: a
+     horizontal animal with four feet on `groundY`. Three species in the gold
+     pass fail on that alone — a meerkat's sentinel stance, a sloth hanging
+     beneath a branch — and it was filed as needing "a different body-axis
+     construction, not a parameter".
+     That turned out to be exactly right, and also cheaper than it sounds: the
+     AXIS is the only thing that decides where the body goes. The Tube, the
+     silhouette, the coat, the material, the countershading and the rim light
+     are all derived from it (wave 4), so re-orienting the axis re-poses every
+     one of them for free. This is what "re-author the shape" looks like when
+     the shape is already a solid: rotate its spine, and nothing else needs to
+     know. Contrast G9, where the elephant ear is a hand-drawn outline with no
+     such abstraction and could not be moved at all. */
+  const hanging = spec.pose === 'hang';
+  const branchY = groundY - legLen - bodyH * 2.05;
+  const poseA = spec.pose === 'sentinel' ? -1.34 : 0;
+  const pvx = (axA + axB) / 2, pvy = cy;
+  const cosA = Math.cos(poseA), sinA = Math.sin(poseA);
+  const spin = (x: number, y: number): [number, number] => {
+    if (!poseA) return [x, y];
+    const dx = x - pvx, dy = y - pvy;
+    return [pvx + dx * cosA - dy * sinA, pvy + dx * sinA + dy * cosA];
+  };
+  /* stand the rotated animal back on its feet: with the spine vertical the rump
+     end has swung down, so the whole body is lifted until it clears the hocks */
+  let poseDY = 0;
+  if (poseA) {
+    const r0 = spin(...AX0(0));
+    poseDY = (groundY - legLen * 0.86) - r0[1];
+  }
+  const AX = (u: number): [number, number] => {
+    const q = spin(...AX0(u));
+    return [q[0], q[1] + poseDY];
+  };
   const body = new Tube({ P: AX, R: RAD });
 
-  c.fillStyle = 'rgba(0,0,0,0.5)';
-  c.beginPath(); c.ellipse(cx, groundY + 6, bodyW * 0.92, S * 0.032, 0, 0, TAU); c.fill();
+  if (hanging) {
+    /* ★ WAVE 40 — THE BRANCH. A hanging animal needs something to hang FROM,
+       or it reads as falling. Drawn first so the limbs and their hooks close
+       over it, and the cast shadow goes on the BRANCH rather than the ground —
+       there is no ground contact to cast one. */
+    const bg2 = c.createLinearGradient(0, branchY - S * 0.022, 0, branchY + S * 0.022);
+    bg2.addColorStop(0, '#6a5540'); bg2.addColorStop(0.45, '#4e3d2c'); bg2.addColorStop(1, '#2e241a');
+    c.fillStyle = bg2;
+    c.beginPath(); c.rect(0, branchY - S * 0.020, S, S * 0.040); c.fill();
+    c.strokeStyle = 'rgba(24,18,12,0.30)'; c.lineWidth = 1.2;
+    for (let i = 0; i < 7; i++) {
+      const yy = branchY - S * 0.016 + i * S * 0.0055;
+      c.beginPath(); c.moveTo(0, yy); c.lineTo(S, yy + (i % 2 ? 2 : -2)); c.stroke();
+    }
+    c.fillStyle = 'rgba(0,0,0,0.30)';
+    c.beginPath(); c.ellipse(cx, branchY + S * 0.020, bodyW * 0.70, S * 0.012, 0, 0, TAU); c.fill();
+  } else {
+    c.fillStyle = 'rgba(0,0,0,0.5)';
+    c.beginPath(); c.ellipse(cx, groundY + 6, bodyW * 0.92, S * 0.032, 0, 0, TAU); c.fill();
+  }
 
   /* ---- legs: back pair first (depth), then front ---- */
   /* ★ ARC STAGE 3 (Nick: "the elephant legs are way too long… like they are big
@@ -531,9 +589,43 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      naming. */
   const cannon = FAM0.cannon, crouch = FAM0.crouch;
   const foot = spec.foot ?? FAM0.foot;
+  /* ★ WAVE 40 — in a sentinel stance only the HIND pair carries weight. The
+     forelimbs are held tucked against the chest and never reach the ground, so
+     they are drawn as a short folded arm rather than a leg stretched from the
+     shoulder down to `groundY` — which is what a pose-blind limb would do, and
+     would put two enormous forelegs down a standing meerkat's front. */
+  const tucked = (hind: boolean): boolean => spec.pose === 'sentinel' && !hind;
+  /* ★ WAVE 40 — HANGING. A sloth spends its life inverted under a branch, and
+     its reference row asks for exactly that. The body needs no rotation: what
+     inverts is the LIMBS, which reach UP to the branch instead of down to the
+     ground, and the hook claws close over it. `branchY` is where they end. */
   const legTube = (u: number, xoff: number, hind: boolean): Tube => {
     const a = AX(u);
     const rootX = a[0] + xoff, rootY = a[1] - RAD(u) * 0.22;
+    if (hanging) {
+      /* up and slightly outward, then hooking over the branch */
+      const reach = rootY - branchY;
+      return new Tube({
+        P: pathThrough([
+          [rootX, rootY],
+          [rootX + (hind ? -legW * 0.5 : legW * 0.5), rootY - reach * 0.45],
+          [rootX + (hind ? -legW * 0.8 : legW * 0.8), branchY + legW * 0.35],
+        ]),
+        R: (t: number) => legW * (1.16 - t * 0.42),
+      });
+    }
+    if (tucked(hind)) {
+      /* down and slightly forward, ending clear of the belly: a held forearm */
+      const L = legLen * 0.52;
+      return new Tube({
+        P: pathThrough([
+          [rootX, rootY],
+          [rootX + legW * 0.55, rootY + L * 0.42],
+          [rootX + legW * 0.30, rootY + L * 0.92],
+        ]),
+        R: (t: number) => legW * (1.28 - t * 0.62),
+      });
+    }
     /* ★ D-ART-136 — `crouch` WAS ALMOST INERT. It moved the knee height by
        0.16 of the drop and the knee x by under one legW across its whole
        range, so felid 0.74 and bovid 0.26 produced VISUALLY IDENTICAL straight
@@ -704,7 +796,27 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
        see it from the stifle down. So all four legs are drawn BEHIND the torso
        and the body's own mass covers every root. Nothing to seam. */
     const ft = limb.axis(0.985);
-    drawFoot(ft[0], m, hind);
+    /* a tucked forelimb ends in a small held paw, not a foot planted on the
+       ground line — drawFoot draws at `groundY` by construction */
+    if (hanging) {
+      /* THE HOOK. A sloth's claws are the whole animal — two or three scythes
+         that close OVER the branch, and they carry its entire weight. */
+      c.strokeStyle = `rgba(${226 * m | 0},${220 * m | 0},${200 * m | 0},0.95)`;
+      c.lineWidth = Math.max(2, legW * 0.30); c.lineCap = 'round';
+      for (let k = -1; k <= 1; k++) {
+        const hx2 = ft[0] + k * legW * 0.34;
+        c.beginPath();
+        c.moveTo(hx2, ft[1] + legW * 0.10);
+        c.quadraticCurveTo(hx2 + legW * 0.22, branchY - legW * 0.42, hx2 - legW * 0.30, branchY - legW * 0.52);
+        c.stroke();
+      }
+    } else if (tucked(hind)) {
+      const dk = (k: number): string => `rgb(${p.cr * k * m | 0},${p.cg * k * m | 0},${p.cb * k * m | 0})`;
+      c.fillStyle = dk(0.54);
+      c.beginPath(); c.ellipse(ft[0], ft[1], legW * 0.52, legW * 0.40, 0.3, 0, TAU); c.fill();
+    } else {
+      drawFoot(ft[0], m, hind);
+    }
   };
   /* ★ LIMB PAIRS. The genome's locomotion genes have described many-legged
      creatures since v1.0 and the art has only ever drawn four legs. Pairs are
@@ -727,7 +839,12 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      let the torso's own mass cover the join (D-ART-94). */
   /* ---- neck + head: where most species are actually recognized ---- */
   const neckLen = S * spec.neck;
-  const shoulderX = cx + bodyW * 0.82, shoulderY = topY(1) + bodyH * 0.12;
+  /* ★ WAVE 40 — the shoulder is a point ON THE BODY, and it was hand-computed
+     from cx/topY, so a re-posed animal left its neck and head behind in the
+     old horizontal frame. Derived from the axis for a posed animal, which is
+     where it should always have come from. */
+  const shoulderX = spec.pose ? AX(0.92)[0] : cx + bodyW * 0.82;
+  const shoulderY = spec.pose ? AX(0.92)[1] : topY(1) + bodyH * 0.12;
   const headX = shoulderX + neckLen * 0.55, headY = shoulderY - neckLen * 0.86;
   /* ★ WAVE 22b — A HEAD BELONGS TO THE ANIMAL'S LENGTH, not only its depth.
      Sized purely off bodyH, a sand cat got a 28px skull on a 210px body — 13%,
