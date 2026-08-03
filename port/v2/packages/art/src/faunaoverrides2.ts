@@ -895,17 +895,21 @@ export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 's
   /* ★ WAVE 12 — Snail and Freshwater Snail carried LITERALLY the same spec and
      the lock reported them at 0.06, the closest pair in the entire catalogue. */
   let p = pIn;
-  if (opts.hue) {
-    const hn = parseInt(opts.hue.slice(1), 16);
-    const hr = (hn >> 16) & 255, hg = (hn >> 8) & 255, hb = hn & 255;
-    const mk = (x: number, y: number, z: number): string => 'rgb(' + (x | 0) + ',' + (y | 0) + ',' + (z | 0) + ')';
-    p = { cr: hr, cg: hg, cb: hb, base: opts.hue,
-      lit: mk(Math.min(255, hr * 1.32), Math.min(255, hg * 1.30), Math.min(255, hb * 1.28)),
-      dark: mk(hr * 0.42, hg * 0.44, hb * 0.48) };
-  }
+  /* ★ WAVE 42, CODE PASS (bundle 3) — a THIRD hand-rolled copy of the species
+     hue transform, drifted the same way as invertoverrides' `hued`
+     (1.32/1.30/1.28 · 0.42/0.44/0.48 against speciesHue's 1.30/1.29/1.27 ·
+     0.43/0.45/0.48). Routed through the one implementation. */
+  p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x5E11);
   const cx = S * 0.5, cy = S * 0.52;
-  const sv = nvar(name, 0xF4, 0.18), sv2 = nvar(name, 0xF5, 0.16);
+  /* ★ AND `scale` WAS DECLARED, SET, AND NEVER READ. Freshwater Snail passes
+     scale: 0.86 and the comment directly above says this painter exists to
+     separate it from Snail — "LITERALLY the same spec… the closest pair in the
+     entire catalogue at 0.06". The size half of that separation never ran; only
+     the hue did. D-ART-100, sitting inside the fix written to stop duplicates.
+     Folded into the shared size variance so every kind honours it. */
+  const sc = opts.scale ?? 1;
+  const sv = nvar(name, 0xF4, 0.18) * sc, sv2 = nvar(name, 0xF5, 0.16) * sc;
   /* ★ WAVE 38, G11 — THE DETACHED SHADOW. `S*0.76` is a fixed ground line
      shared by all five shell kinds, but a snail's foot bottoms out at
      cy + 0.111·S ≈ 0.63·S — so its shadow floated 0.13·S clear of the animal,
