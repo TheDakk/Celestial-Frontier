@@ -84,6 +84,25 @@ export interface PlantSpec {
   pendulous?: boolean;  /** a vine whose fruit hangs as a spike, not a clump */
   thorns?: boolean;
   tall?: boolean;
+  /* ★ WAVE 37 — THE HERB HAD NO AXES AT ALL. `habit:'herb'` has no branch in
+     this painter; it falls through to the final `else`, which draws ONE thing:
+     an upright stem, paired leaves at every node, one terminal flower. 64
+     species carry that habit, so 64 plants are the same picture at different
+     hues — and 46 of the gold pass's 153 flora FAILs name exactly that.
+     It is the flora twin of the mammals' shared-skull problem, and it was
+     filed as "the flora painter has no axis for a bare branching stem", which
+     understates it: it had no axis for anything.
+     All three default to the previous behaviour, so the other 60 herbs are
+     byte-unchanged until someone gives them a value on purpose (D-ART-14). */
+  /** how the stem carries itself: a leafy upright, stiff near-naked branching
+      wands (chicory, most composites), or a low creeping mat (thyme) */
+  stem?: 'leafy' | 'bare' | 'mat';
+  /** leaves in opposite pairs (mint), singly up the stem (echinacea), or in a
+      basal rosette with a naked flowering stem above (chicory, dandelion) */
+  leafArr?: 'opposite' | 'alternate' | 'basal';
+  /** how many flowers, and therefore whether they are terminal or borne along
+      the stem. 1 = the old terminal single. */
+  flowerN?: number;
 }
 
 /** one leaf, drawn along a direction — the shape IS the family */
@@ -606,18 +625,80 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     }
     if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, cx + S * 0.035, base - H * 0.35, S * 0.032, spec.fruit, spec.fhue, r);
   } else {
-    /* HERB: an upright stem with paired leaves and a terminal flower */
-    c.strokeStyle = stemCol; c.lineWidth = S * 0.009; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.04, base - H * 0.5, cx + lean * S * 0.06, base - H); c.stroke();
-    for (let i = 0; i < leafN; i++) {
-      const u = 0.15 + (i / leafN) * 0.78;
-      const sx = cx + lean * S * 0.06 * u, sy = base - H * u;
-      for (const s of [-1, 1] as const) {
-        drawLeaf(c, p, sx, sy, s < 0 ? Math.PI + 0.45 : -0.45, S * 0.098 * spread * nvf(name, 0x77, 0.2), spec.leaf);
+    /* ★ WAVE 37 — THE HERB. See PlantSpec.stem/leafArr/flowerN: this branch used
+       to draw exactly one plant for all 64 herbs. It now draws the three things
+       a herb can actually be, and puts its flowers where its architecture puts
+       them. Defaults reproduce the old drawing exactly. */
+    const arch = spec.stem ?? 'leafy';
+    const arr = spec.leafArr ?? 'opposite';
+    const nF = Math.max(1, spec.flowerN ?? 1);
+    const mat = arch === 'mat';
+    /* a creeping mat is wide and low; a wand is tall and thin.
+       ⚠ WAVE 37 — the first cut made the mat 0.42·H tall over a 0.20·S spread,
+       and artlock came straight back with THIRTY newly-confusable pairs, every
+       one of them Mountain Thyme against some other small dark subject (Chiton,
+       Mudminnow, Harvestman, Leafcutter Ant…). The documented trap: a small
+       subject leaves mostly empty canvas, and two mostly-empty cards look alike
+       to the fingerprint whatever is drawn on them. A creeping mat is LOW, not
+       SMALL — it has to sprawl across the frame it is given. */
+    const HH = mat ? H * 0.58 : H;
+    const stemW = S * (arch === 'bare' ? 0.006 : 0.009);
+    /* THE STEMS. One upright for a leafy herb; several stiff diverging wands
+       for a bare-stemmed composite; a spray of low arcs for a mat. */
+    const wands: Array<{ tipX: number; tipY: number; ang: number }> = [];
+    const nW = arch === 'bare' ? 3 : mat ? 5 : 1;
+    c.strokeStyle = stemCol; c.lineWidth = stemW; c.lineCap = 'round';
+    for (let w = 0; w < nW; w++) {
+      const t = nW === 1 ? 0 : (w / (nW - 1)) - 0.5;
+      /* a bare stem leans away from its neighbours; a mat sprawls sideways */
+      const spreadX = mat ? t * S * 0.46 : t * S * 0.13 * (arch === 'bare' ? 1 : 0);
+      const topY = base - HH * (mat ? 0.55 + Math.abs(t) * -0.28 : 1 - Math.abs(t) * 0.16);
+      const tipX = cx + lean * S * 0.06 + spreadX;
+      c.beginPath(); c.moveTo(cx, base);
+      c.quadraticCurveTo(cx + lean * S * 0.04 + spreadX * 0.35, base - (base - topY) * 0.5, tipX, topY);
+      c.stroke();
+      wands.push({ tipX, tipY: topY, ang: Math.atan2(topY - base, tipX - cx) });
+    }
+    /* THE LEAVES, where this architecture actually carries them. */
+    const lw = S * (mat ? 0.068 : 0.098) * spread * nvf(name, 0x77, 0.2);
+    if (arr === 'basal') {
+      /* a naked flowering stem over a ground rosette — chicory, dandelion */
+      for (let i = 0; i < leafN + 2; i++) {
+        const a = -Math.PI / 2 + ((i / (leafN + 1)) - 0.5) * 2.9 * spread;
+        drawLeaf(c, p, cx, base - S * 0.012, a, lw * 1.15, spec.leaf);
+      }
+    } else {
+      const nL = mat ? leafN + 4 : leafN;
+      for (let i = 0; i < nL; i++) {
+        const u = 0.15 + (i / nL) * 0.78;
+        const wd = wands[i % wands.length]!;
+        const sx = cx + (wd.tipX - cx) * u, sy = base - (base - wd.tipY) * u;
+        /* opposite = a pair at every node; alternate = one side, then the other */
+        const sides: readonly number[] = arr === 'alternate' ? [i % 2 ? 1 : -1] : [-1, 1];
+        for (const s of sides) {
+          drawLeaf(c, p, sx, sy, s < 0 ? Math.PI + 0.45 : -0.45, lw, spec.leaf);
+        }
       }
     }
-    if (spec.flower && spec.flower !== 'none') drawFlower(c, p, cx + lean * S * 0.06, base - H * 1.02, S * 0.036, spec.flower, spec.fhue, r);
-    if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, cx + lean * S * 0.06, base - H * 0.92, S * 0.032, spec.fruit, spec.fhue, r);
+    /* THE FLOWERS. One is terminal; several are borne at the wand tips and
+       spaced down the upper stem, which is what makes a chicory read as a
+       chicory rather than as a daisy on a stick. */
+    if (spec.flower && spec.flower !== 'none') {
+      const fR = S * (mat ? 0.030 : nF > 1 ? 0.028 : 0.036);
+      for (let i = 0; i < nF; i++) {
+        const wd = wands[i % wands.length]!;
+        /* the first flower on each wand sits at its tip; later ones step down */
+        const step = Math.floor(i / wands.length);
+        const k = 1 - step * 0.22;
+        const fx = cx + (wd.tipX - cx) * k + (step ? lean * S * 0.02 * (i % 2 ? 1 : -1) : 0);
+        const fy = base - (base - wd.tipY) * k - (step ? 0 : S * 0.006);
+        drawFlower(c, p, fx, fy, fR, spec.flower, spec.fhue, r);
+      }
+    }
+    if (spec.fruit && spec.fruit !== 'none') {
+      const wd = wands[0]!;
+      drawFruit(c, p, wd.tipX, base - (base - wd.tipY) * 0.92, S * 0.032, spec.fruit, spec.fhue, r);
+    }
   }
 }
 
