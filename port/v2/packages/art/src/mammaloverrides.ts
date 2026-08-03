@@ -56,9 +56,9 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* ── FELIDS: short muzzle, round ear, long tail; rosettes where they belong ── */
   'Bobcat': { legs: 0.1268, depth: 0.114, len: 0.1776, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'stub', coat: 'spots', hue: '#c39a63', family: 'felid', earShape: 'tuft' },
   'Caracal': { legs: 0.1413, depth: 0.1144, len: 0.1783, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'long', hue: '#c08e58', family: 'felid', earShape: 'tuft', earScale: 1.20 },
-  'Serval': { legs: 0.1702, depth: 0.1141, len: 0.1684, neck: 0.07, muzzle: 0.28, ears: 'large', tail: 'long', coat: 'spots', hue: '#d0a45c', family: 'felid', earShape: 'leaf', earScale: 1.45 },
-  'Ocelot': { legs: 0.1202, depth: 0.1088, len: 0.1874, neck: 0.06, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#c79a5c', family: 'felid' },
-  'Clouded Leopard': { legs: 0.1118, depth: 0.1126, len: 0.2124, neck: 0.06, muzzle: 0.30, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#b8975f', family: 'felid' },
+  'Serval': { legs: 0.1702, depth: 0.1141, len: 0.1684, neck: 0.07, muzzle: 0.28, ears: 'large', tail: 'long', coat: 'spots', hue: '#d0a45c', family: 'felid', earShape: 'leaf', earScale: 1.45 , legMarks: true },
+  'Ocelot': { legs: 0.1202, depth: 0.1088, len: 0.1874, neck: 0.06, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#c79a5c', family: 'felid' , legMarks: true },
+  'Clouded Leopard': { legs: 0.1118, depth: 0.1126, len: 0.2124, neck: 0.06, muzzle: 0.30, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#b8975f', family: 'felid' , legMarks: true },
   'Wildcat': { legs: 0.1145, depth: 0.1049, len: 0.172, neck: 0.06, muzzle: 0.28, ears: 'round', tail: 'banded', coat: 'stripes', hue: '#a09077', family: 'felid' },
   'Sand Cat': { legs: 0.1046, depth: 0.1025, len: 0.1598, neck: 0.05, muzzle: 0.26, ears: 'large', tail: 'banded', hue: '#d6bd8e', family: 'felid', earShape: 'point', earScale: 1.25 },
   'Fishing Cat': { legs: 0.101, depth: 0.1265, len: 0.1905, neck: 0.055, muzzle: 0.30, ears: 'round', tail: 'stub', coat: 'spots', hue: '#6f7455', family: 'felid' },
@@ -120,7 +120,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      grey-brown with a pale neck ruff, the domesticated Eurasian reindeer is a
      warmer brown. Derived from the animals, not tuned to the gate. */
   'Caribou': { legs: 0.1823, depth: 0.1497, len: 0.1964, neck: 0.10, muzzle: 0.44, ears: 'large', tail: 'stub', horn: 'branched', coat: 'shaggy', hue: '#8d8b83', family: 'cervid' },
-  'Okapi': { legs: 0.1924, depth: 0.1482, len: 0.1823, neck: 0.16, muzzle: 0.40, ears: 'large', tail: 'tuft', horn: 'ossicone', coat: 'stripes', hue: '#5d3b28' , family: 'cervid' },
+  'Okapi': { legs: 0.1924, depth: 0.1482, len: 0.1823, neck: 0.16, muzzle: 0.40, ears: 'large', tail: 'tuft', horn: 'ossicone', coat: 'stripes', hue: '#5d3b28' , family: 'cervid' , legMarks: true },
   /* ★ wave 35 — same pig-nose-disc bug as Tapir; see that row. */
   'Mountain Tapir': { legs: 0.1186, depth: 0.1436, len: 0.2002, neck: 0.05, back: 'arched', muzzle: 0.66, jaw: 'barrel', ears: 'small', tail: 'stub', coat: 'shaggy', hue: '#3f3a36', family: 'suid', skull: 'pachyderm', trunk: 0.16 },
   /* ★ wave 35 — it was wearing the ANTEATER'S 3.10-length tube snout, because
@@ -138,9 +138,9 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      Each spec is derived from its port/v2/reference/fauna.json row. */
 
   /* "vertical black stripes over orange · white cheek ruff · long ringed tail" */
-  'Tiger': { legs: 0.1317, depth: 0.1445, len: 0.2489, neck: 0.070, muzzle: 0.32, jaw: 'broad', ears: 'round', tail: 'long', coat: 'stripes', hue: '#d98c2b', family: 'felid' },
+  'Tiger': { legs: 0.1317, depth: 0.1445, len: 0.2489, neck: 0.070, muzzle: 0.32, jaw: 'broad', ears: 'round', tail: 'long', coat: 'stripes', hue: '#d98c2b', family: 'felid' , legMarks: true },
   /* "bold stripes continuing onto the legs · stiff upright brush mane · tufted tail" */
-  'Zebra': { legs: 0.1837, depth: 0.1567, len: 0.2056, neck: 0.120, muzzle: 0.44, ears: 'large', tail: 'tuft', coat: 'bands', hue: '#e8e4dc', family: 'equid' },
+  'Zebra': { legs: 0.1837, depth: 0.1567, len: 0.2056, neck: 0.120, muzzle: 0.44, ears: 'large', tail: 'tuft', coat: 'bands', hue: '#e8e4dc', family: 'equid' , legMarks: true },
   /* "black bandit mask · ringed banded tail · hunched arched back" */
   'Raccoon': { legs: 0.0769, depth: 0.1106, len: 0.1905, neck: 0.040, back: 'arched', muzzle: 0.30, ears: 'round', tail: 'banded', face: 'mask', hue: '#8d8a86', family: 'procyonid' },
   /* "flat scaly paddle tail · orange chisel incisors · stocky humped body" */
