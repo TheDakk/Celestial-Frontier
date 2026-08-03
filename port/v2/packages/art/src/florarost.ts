@@ -60,7 +60,8 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Cashew': T({ hue: '#607335', habit: 'tree', leaf: 'broad', fruit: 'drupe', fhue: '#d9a02b' }),
   'Cacao': T({ hue: '#205b2c', habit: 'tree', leaf: 'broad', fruit: 'pod', fhue: '#8a4a24' }),
   'Coffee': T({ hue: '#145730', habit: 'shrub', leaf: 'broad', fruit: 'berry', fhue: '#a8302c' }),
-  'Cinnamon': T({ hue: '#3d6948', habit: 'tree', leaf: 'lance', fruit: 'berry', fhue: '#8a5a34' }),
+  /* the bark IS the spice — it had been rendering grass-green */
+  'Cinnamon': T({ hue: '#3d6948', habit: 'tree', leaf: 'lance', fruit: 'berry', fhue: '#8a5a34', bark: '#a1552a' }),
   'Clove': T({ hue: '#2a5e48', habit: 'tree', leaf: 'lance', flower: 'spike', fhue: '#7a4a2c' }),
   'Nutmeg': T({ hue: '#264f41', habit: 'tree', leaf: 'broad', fruit: 'drupe', fhue: '#c8a860' }),
   'Camphor Tree': T({ hue: '#568e4d', habit: 'tree', leaf: 'broad', fruit: 'berry', fhue: '#2c3a2c' }),
@@ -212,7 +213,10 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Beach Pea': T({ hue: '#7d9b8f', habit: 'vine', leaf: 'pinnate', fruit: 'pod', fhue: '#7a8a4a' }),
   'Peanut': T({ hue: '#5e9342', habit: 'herb', leaf: 'pinnate', fruit: 'nut', fhue: '#c8a870' }),
   'Castor Bean': T({ hue: '#7a4a3c', habit: 'shrub', leaf: 'palmate', fruit: 'pod', fhue: '#a83030', thorns: true }),
-  'Black Pepper': T({ hue: '#2c5f3b', habit: 'vine', leaf: 'heart', fruit: 'cluster', fhue: '#3a2c24' }),
+  /* ⚠ this was geometrically the SAME asset as Beach Morning Glory, tinted —
+     a duplicate the look-alike gate cannot see because colour separates them.
+     The pendulous peppercorn spike is the real difference. */
+  'Black Pepper': T({ hue: '#2c5f3b', habit: 'vine', leaf: 'lance', fruit: 'cluster', pendulous: true, fhue: '#2f4a30' }),
   'Chili Pepper': T({ hue: '#508235', habit: 'shrub', leaf: 'lance', fruit: 'drupe', fhue: '#c8202c' }),
   'Wild Chili': T({ hue: '#43662d', habit: 'shrub', leaf: 'lance', fruit: 'drupe', fhue: '#b81c28' }),
   'Wild Mustard': T({ hue: '#7f9b3a', habit: 'herb', leaf: 'palmate', flower: 'umbel', fhue: '#e8d030' }),

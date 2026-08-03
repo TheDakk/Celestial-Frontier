@@ -141,6 +141,14 @@ export interface InsectSpec {
   broad?: number;             /** body WIDTH — a cockroach is a flat oval, an ant is not */
   eyes?: number;              /** head and eye size — a fly is mostly eye */
   shield?: boolean;           /** the pronotal shield a cockroach pulls over its head */
+  /* ★ D-ART-126 — WHAT WAVE 23 SHOULD HAVE ADDED. `broad` scales segment
+     HEIGHT, so it made the three beads TALLER and left the family reading as
+     one plan at different lengths — the hard-pair ratchet went green while the
+     defect stood. A cockroach, a water bug and a beetle are not a chain of
+     beads at all: thorax and abdomen are ONE flattened shield. */
+  carapace?: boolean;         /** fuse thorax + abdomen into a single flat oval */
+  face?: 'slant' | 'triangle';/** an orthopteran's tilted wedge; a mantis's triangle */
+  proboscis?: boolean;        /** the mosquito's needle */
   pattern?: 'bands' | 'spots';
 }
 export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''): void {
@@ -260,8 +268,26 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
     c.strokeStyle = p.dark; c.lineWidth = th * 0.28; c.lineCap = 'round';
     c.beginPath(); c.moveTo(cx + th * 0.85, cy + th * 0.1); c.lineTo(ax - abL * 0.42, cy + th * 0.16); c.stroke();
   }
+  /* ★ D-ART-126 — ONE SHIELD, not two beads plus a waist. */
+  if (spec.carapace) {
+    const CL = (abL * 0.52 + th * 1.15) * 1.06, CH = th * 0.86 * BR;
+    const ccx = (ax + cx) / 2 + th * 0.10;
+    c.fillStyle = shell(c, p, ccx, cy + th * 0.10, CL);
+    c.beginPath(); c.ellipse(ccx, cy + th * 0.10, CL, CH, 0.02, 0, TAU); c.fill();
+    rim(c, () => c.ellipse(ccx, cy + th * 0.10, CL, CH, 0.02, -2.8, 0.3));
+    if (!spec.fuzzy) {
+      c.save();
+      c.beginPath(); c.ellipse(ccx, cy + th * 0.10, CL, CH, 0.02, 0, TAU); c.clip();
+      coatMaterial(c, ellipseTube(ccx, cy + th * 0.10, CL, CH, 0.02), r, p, 'chitin',
+        { detail: CHITIN_DETAIL, seams: false });
+      c.restore();
+    }
+    /* the wing-case seam down the midline — the elytra join */
+    c.strokeStyle = 'rgba(0,0,0,0.34)'; c.lineWidth = 1.8;
+    c.beginPath(); c.moveTo(ccx - CL * 0.55, cy + th * 0.06); c.lineTo(ccx + CL * 0.86, cy + th * 0.14); c.stroke();
+  }
   c.fillStyle = shell(c, p, ax, cy + th * 0.1, abL * 0.5);
-  c.beginPath(); c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92) * BR, 0.06, 0, TAU); c.fill();
+  if (!spec.carapace) { c.beginPath(); c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92) * BR, 0.06, 0, TAU); c.fill(); }
   rim(c, () => c.ellipse(ax, cy + th * 0.12, abL * 0.52, th * (spec.stick ? 0.6 : 0.92) * BR, 0.06, -2.8, 0.3));
   /* ★ WAVE 21 — SHELL. The abdomen is the largest flat area on an insect and
      it carried a plain gradient. Chitin's read is segment seams plus a tight
@@ -307,7 +333,27 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
   const EY = spec.eyes ?? 1;
   const hx = cx - th * (spec.shield ? 1.42 : 1.75), hy = cy - th * 0.12;
   c.fillStyle = shell(c, p, hx, hy, th * 0.78 * EY);
-  c.beginPath(); c.ellipse(hx, hy, th * 0.78 * EY, th * 0.70 * EY, 0, 0, TAU); c.fill();
+  /* ★ D-ART-126 — THE FACE. A glossy sphere is a fly's head and nothing else's.
+     A grasshopper's is a long backward-slanting wedge; a mantis's is a wide
+     triangle with the eyes at its upper corners. Both were reported as "the
+     same round glossy sphere used on the Locust and the Mosquito". */
+  if (spec.face === 'slant') {
+    const HW = th * 0.72 * EY, HH = th * 1.02 * EY;
+    c.beginPath();
+    c.moveTo(hx - HW * 0.9, hy - HH * 0.55);
+    c.quadraticCurveTo(hx + HW * 0.7, hy - HH * 0.75, hx + HW * 0.85, hy + HH * 0.25);
+    c.quadraticCurveTo(hx + HW * 0.2, hy + HH * 0.72, hx - HW * 0.75, hy + HH * 0.35);
+    c.closePath(); c.fill();
+  } else if (spec.face === 'triangle') {
+    const HW = th * 1.02 * EY, HH = th * 0.86 * EY;
+    c.beginPath();
+    c.moveTo(hx - HW * 0.85, hy - HH * 0.62);
+    c.lineTo(hx + HW * 0.85, hy - HH * 0.52);
+    c.lineTo(hx + HW * 0.05, hy + HH * 0.88);
+    c.closePath(); c.fill();
+  } else {
+    c.beginPath(); c.ellipse(hx, hy, th * 0.78 * EY, th * 0.70 * EY, 0, 0, TAU); c.fill();
+  }
   eyeDot(c, hx - th * 0.30 * EY, hy - th * 0.22 * EY, th * 0.24 * EY);
   if (spec.shield) {
     c.fillStyle = shell(c, p, cx - th * 0.55, cy - th * 0.1, TW * 0.8);
@@ -339,6 +385,12 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
       c.stroke();
     }
     c.restore();
+  }
+  if (spec.proboscis) {
+    /* ★ D-ART-126 — nothing projected forward of a mosquito's face at all. */
+    c.strokeStyle = p.dark; c.lineWidth = Math.max(2, th * 0.14); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(hx - th * 0.5, hy + th * 0.20);
+    c.lineTo(hx - th * 2.1, hy + th * 0.62); c.stroke();
   }
   const ant = spec.antennae ?? 'short';
   if (ant !== 'none') {
@@ -970,25 +1022,25 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Moth': I({ hue: '#7f7566', abdomen: 1.0, wings: 'open', antennae: 'feather', fuzzy: true }),
   'Butterfly': I({ hue: '#d97328', abdomen: 0.9, wings: 'open', antennae: 'long', pattern: 'spots' }),
   /* a cicada is a broad blunt wedge with a very wide head and big wings */
-  'Cicada': I({ hue: '#48544e', abdomen: 1.05, broad: 1.5, eyes: 1.5, wings: 'folded', wingScale: 1.25, antennae: 'short' }),
-  'Mantis': I({ hue: '#66a03c', abdomen: 1.25, wings: 'folded', antennae: 'long', raptor: true }),
-  'Grasshopper': I({ hue: '#8f8f4a', abdomen: 1.20, broad: 0.92, wings: 'folded', antennae: 'short', jumper: true }),
-  'Locust': I({ hue: '#c2a24a', abdomen: 1.28, broad: 0.84, wings: 'folded', wingScale: 1.2, antennae: 'short', jumper: true }),
+  'Cicada': I({ hue: '#48544e', abdomen: 1.05, broad: 1.5, eyes: 1.5, carapace: true, wings: 'folded', wingScale: 1.45, antennae: 'short' }),
+  'Mantis': I({ hue: '#66a03c', abdomen: 1.25, broad: 0.72, face: 'triangle', eyes: 1.25, wings: 'folded', antennae: 'long', raptor: true }),
+  'Grasshopper': I({ hue: '#8f8f4a', abdomen: 1.20, broad: 0.92, face: 'slant', wings: 'folded', antennae: 'short', jumper: true }),
+  'Locust': I({ hue: '#c2a24a', abdomen: 1.55, broad: 0.70, face: 'slant', wings: 'folded', wingScale: 1.2, antennae: 'short', jumper: true }),
   /* a cricket is humped and cylindrical, not flat, with very long antennae */
-  'Cricket': I({ hue: '#3f3226', abdomen: 1.02, broad: 1.12, eyes: 0.9, wings: 'folded', antennae: 'long', jumper: true }),
+  'Cricket': I({ hue: '#3f3226', abdomen: 1.02, broad: 1.12, eyes: 0.9, face: 'slant', wings: 'folded', antennae: 'long', jumper: true }),
   /* a cockroach is a FLAT BROAD OVAL whose pronotal shield hides the head —
      the single most different silhouette in this group, and it had none of it */
-  'Cockroach': I({ hue: '#6b3b1e', abdomen: 1.18, broad: 1.85, eyes: 0.7, shield: true, wings: 'folded', antennae: 'long' }),
+  'Cockroach': I({ hue: '#6b3b1e', abdomen: 1.18, broad: 1.85, eyes: 0.7, shield: true, carapace: true, wings: 'folded', antennae: 'long' }),
   'Aphid': I({ hue: '#a8cf72', abdomen: 1.05, antennae: 'short' }),
   'Thrips': I({ hue: '#cdb464', abdomen: 0.9, wings: 'lace', antennae: 'short' }),
-  'Mosquito': I({ hue: '#5c565a', abdomen: 0.95, wings: 'lace', antennae: 'feather' }),
+  'Mosquito': I({ hue: '#5c565a', abdomen: 1.40, broad: 0.62, proboscis: true, wings: 'lace', antennae: 'feather' }),
   /* a fly is mostly EYE, and a black fly is a tiny hunched one */
   'Black Fly': I({ hue: '#33313a', abdomen: 0.68, broad: 1.15, eyes: 1.6, wings: 'lace', antennae: 'short' }),
   'Fly': I({ hue: '#4d5257', abdomen: 0.88, broad: 1.3, eyes: 1.9, wings: 'lace', antennae: 'short' }),
   'Stick Insect': I({ hue: '#8f7d4a', abdomen: 2.4, antennae: 'long', stick: true }),
   /* a2 · extremely long splayed middle and hind legs on a narrow boat body */
   'Water Strider': I({ hue: '#3a352d', abdomen: 0.7, antennae: 'long', legSpan: 3.1 }),
-  'Giant Water Bug': I({ hue: '#745e33', abdomen: 1.3, antennae: 'short', raptor: true }),
+  'Giant Water Bug': I({ hue: '#745e33', abdomen: 1.3, broad: 2.2, carapace: true, shield: true, eyes: 0.8, antennae: 'short', raptor: true }),
   /* a cold-adapted insect is stout and heavily furred — a bumblebee build */
   'Cold-Adapted Insect': I({ hue: '#3c4249', abdomen: 0.95, broad: 1.55, eyes: 0.85, antennae: 'short', fuzzy: true }),
   'Insect-Eating Bat': I({ hue: '#7a6455', abdomen: 1.0, wings: 'open', antennae: 'none' }),

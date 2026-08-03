@@ -77,6 +77,11 @@ export interface PlantSpec {
   fruit?: 'none' | 'berry' | 'drupe' | 'pome' | 'citrus' | 'pod' | 'nut' | 'cone' | 'grain' | 'melon' | 'fig' | 'cluster';
   fhue?: string;      /** flower/fruit colour where colour IS the identity */
   hue?: string;       /** FOLIAGE colour — the body of the plant, not its fruit */
+  /* ★ D-ART-125 — BARK. `hue` colours the foliage and the trunk took it too,
+     so Cinnamon — a tree whose bark IS the spice — rendered a grass-green
+     trunk. Trees default to a woody brown; a row can override. */
+  bark?: string;
+  pendulous?: boolean;  /** a vine whose fruit hangs as a spike, not a clump */
   thorns?: boolean;
   tall?: boolean;
 }
@@ -295,13 +300,19 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
   ground(c, cx, base + 4, S * 0.17 * spread);
 
   const stemCol = `rgb(${Math.max(30, p.cr * 0.5 | 0)},${Math.max(34, p.cg * 0.42 + 24 | 0)},${Math.max(24, p.cb * 0.35 | 0)})`;
+  /* ★ D-ART-125 — a TREE's trunk is wood, not leaf. Herbs and vines keep the
+     green stem they should have; only a woody habit takes bark. */
+  const woody = spec.habit === 'tree' || spec.habit === 'shrub';
+  const barkCol = spec.bark ?? (woody ? '#6b4a2e' : stemCol);
   const topY = base - H;
 
   if (spec.habit === 'tree' || spec.habit === 'palm') {
     /* A TREE IS A TRUNK HOLDING A CANOPY — and the trunk TAPERS and forks,
        which is what stops it reading as a lollipop on a stick. */
     const tw = S * 0.030 * nvf(name, 0x55, 0.24);
-    c.strokeStyle = stemCol; c.lineCap = 'round';
+    /* ★ D-ART-125 — the trunk is WOOD. It was stroked in stemCol, which derives
+       from the FOLIAGE hue, so Cinnamon's trunk came out grass-green. */
+    c.strokeStyle = barkCol; c.lineCap = 'round';
     c.lineWidth = tw * 2;
     c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.05, base - H * 0.5, cx + lean * S * 0.10, topY + H * 0.22); c.stroke();
     c.lineWidth = tw * 1.15;
@@ -455,7 +466,38 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       c.stroke();
       c.strokeStyle = stemCol; c.lineWidth = S * 0.011;
     }
-    if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, pts[16]![0] + S * 0.03, pts[16]![1], S * 0.034, spec.fruit, spec.fhue, r);
+    /* ★ D-ART-125 — THE VINE BRANCH NEVER DREW A FLOWER. It handled leaves,
+       tendrils and fruit and silently ignored `spec.flower`, so Beach Morning
+       Glory — a plant whose entire identity is its funnel bloom — set
+       flower:'bell' and rendered a bare creeper. The audit called it a
+       regression; it was really a branch that had never supported the field. */
+    if (spec.flower && spec.flower !== 'none') {
+      for (const i of [7, 13, 19]) {
+        const [fx, fy] = pts[i]!;
+        drawFlower(c, p, fx + (i % 2 ? -1 : 1) * S * 0.045, fy - S * 0.012,
+          S * 0.040, spec.flower, spec.fhue, r);
+      }
+    }
+    if (spec.fruit && spec.fruit !== 'none') {
+      /* ★ a vine's fruit HANGS. Black Pepper's pendulous spike is what tells
+         it from every other heart-leaved climber — and it was drawing one
+         round clump at mid-stem, geometrically identical to Beach Morning
+         Glory once you ignore colour. */
+      if (spec.pendulous) {
+        for (const i of [9, 17]) {
+          const [sx, sy] = pts[i]!;
+          const L = S * 0.13;
+          c.strokeStyle = p.dark; c.lineWidth = 2.6; c.lineCap = 'round';
+          c.beginPath(); c.moveTo(sx, sy); c.quadraticCurveTo(sx + S * 0.012, sy + L * 0.5, sx + S * 0.006, sy + L); c.stroke();
+          for (let k = 1; k <= 12; k++) {
+            const u = k / 13, dy = sy + L * u, dx = sx + S * 0.012 * Math.sin(u * 3.1);
+            drawFruit(c, p, dx, dy, S * 0.011, 'berry', spec.fhue, r);
+          }
+        }
+      } else {
+        drawFruit(c, p, pts[16]![0] + S * 0.03, pts[16]![1], S * 0.034, spec.fruit, spec.fhue, r);
+      }
+    }
   } else if (spec.habit === 'succulent') {
     /* THE PLANT IS ITS OWN WATER TANK: thick pads or a ribbed column */
     if (spec.leaf === 'pad') {
