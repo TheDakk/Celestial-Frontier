@@ -1177,11 +1177,33 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
          roots are a property of the cranium and are fixed here; a longer ear
          SPLAYS outward instead of translating away from its own pair, which
          is what a real long-eared animal does. */
-      const ex = headX - headR * (s < 0 ? 0.62 : 0.24);
-      /* and the ear grows UP from the crown rather than being centred on a
-         fixed point — otherwise a big ear hangs down over the face as far as
-         it rises above it */
-      const ey = headY - headR * 0.42 - earR * 0.52;
+      /* ★ WAVE 38, G1 — THE ROUND EAR WAS RENDERING AS A COILED HORN, and it is
+         the single most-reported defect in the 1,250-asset gold pass: nine
+         verifiers independently wrote "a spiral horn-disc", "a coiled
+         horn/shell", "a concentric spiral disc where the ear should be", across
+         Jaguar, Leopard, Tiger, Clouded Leopard, Ocelot, Cougar, Panda, Red
+         Panda, Possum, Sloth Bear, Spectacled Bear, Kinkajou, Coati, Pangolin,
+         Sloth and Meerkat — ~60 mammals, every family whose default ear is
+         'round'.
+         ⚠ AND WAVE 36 MADE IT WORSE. Fixing the donkey's merged pair, I cut the
+         root separation from 0.46·headR to 0.38 and lifted both ears clear of
+         the skull. For a 'round' ear (earR = 0.38·headR, cup 0.92·earR wide)
+         that seats two two-tone ellipses CONCENTRICALLY on the crown — near
+         cup, far cup inside it, concha inside that — and concentric rings on a
+         skull read as a horn. A fix correct for the case it was looking at,
+         wrong for the sibling case in the same branch: the partial-fix defect
+         this file already records twice.
+         Three changes, and the third is the one that kills the ring:
+           1. the pair sits ON THE SIDE of the skull, not above it, so the ear
+              base is occluded by the head and cannot close into a disc;
+           2. the roots separate with the ear so near and far never nest;
+           3. the far ear is SMALLER and gets NO concha — it is a silhouette
+              behind, not a second ring inside. */
+      const sepE = 0.30 + (earR / headR) * 0.42;
+      const ex = headX - headR * (s < 0 ? sepE + 0.20 : Math.max(0.12, sepE - 0.24));
+      /* the ear grows UP from the skull, but its BASE stays buried in the head:
+         an ear that clears the crown entirely is a shape sitting on an animal */
+      const ey = headY - headR * 0.30 - earR * 0.34;
       const m = s < 0 ? 0.62 : 1;
       /* ★ wave 36 — AND IT WAS FILLED AT 0.52 OF THE COAT, which on any pale
          animal is not an ear, it is a HOLE. That flat dark shape is most of why
@@ -1211,9 +1233,17 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
            is two surfaces at different angles to the light, and the inner one
            is always the darker in profile. */
         const inner = `rgba(${Math.min(255, p.cr * 0.46) | 0},${Math.min(255, p.cg * 0.36) | 0},${Math.min(255, p.cb * 0.35) | 0},${0.78 * m})`;
+        /* ★ WAVE 38, G1 — THE FAR EAR IS A SILHOUETTE, NOT A SECOND EAR. Drawn
+           at the same size with its own concha it became a ring nested inside
+           the near ear's ring, and that pair of rings IS the reported "coiled
+           horn". A real far ear in profile is smaller (further away), flatter
+           (edge-on) and shows no cavity at all. `far` gates every concha fill
+           in the shape switch below. */
+        const far = s < 0;
         /* the splay: a short ear sits nearly upright, a long one leans out, so
            a donkey reads as two long ears in a V and never as one mass */
         c.save(); c.translate(ex, ey); c.rotate(-s * (0.18 + (earR / headR) * 0.34));
+        if (far) c.scale(0.80, 0.88);
         if (earShape === 'point' || earShape === 'tuft') {
           /* a canid/equid triangle: straight sides to a sharp tip */
           c.beginPath();
@@ -1221,12 +1251,14 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
           c.lineTo(0, -earR * 1.15);
           c.lineTo(earR * 0.72, earR * 0.46);
           c.closePath(); c.fill();
-          c.fillStyle = inner;
-          c.beginPath();
-          c.moveTo(-earR * 0.36, earR * 0.30);
-          c.lineTo(0, -earR * 0.72);
-          c.lineTo(earR * 0.36, earR * 0.26);
-          c.closePath(); c.fill();
+          if (!far) {
+            c.fillStyle = inner;
+            c.beginPath();
+            c.moveTo(-earR * 0.36, earR * 0.30);
+            c.lineTo(0, -earR * 0.72);
+            c.lineTo(earR * 0.36, earR * 0.26);
+            c.closePath(); c.fill();
+          }
           if (earShape === 'tuft') {
             /* the black brush a lynx and a caracal wear on the tip, which is
                the entire difference between them and any other cat */
@@ -1241,14 +1273,18 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
           /* a deer's long oval, held out sideways and cupped forward */
           c.rotate(-s * 0.22);
           c.beginPath(); c.ellipse(0, -earR * 0.30, earR * 0.52, earR * 1.10, 0, 0, TAU); c.fill();
-          c.fillStyle = inner;
-          c.beginPath(); c.ellipse(0, -earR * 0.28, earR * 0.28, earR * 0.78, 0, 0, TAU); c.fill();
+          if (!far) {
+            c.fillStyle = inner;
+            c.beginPath(); c.ellipse(0, -earR * 0.28, earR * 0.28, earR * 0.78, 0, 0, TAU); c.fill();
+          }
         } else if (earShape === 'spoon') {
           /* a bovid's ear points OUT to the side, not up */
           c.rotate(s * 0.95);
           c.beginPath(); c.ellipse(0, -earR * 0.42, earR * 0.44, earR * 0.94, 0, 0, TAU); c.fill();
-          c.fillStyle = inner;
-          c.beginPath(); c.ellipse(0, -earR * 0.40, earR * 0.24, earR * 0.66, 0, 0, TAU); c.fill();
+          if (!far) {
+            c.fillStyle = inner;
+            c.beginPath(); c.ellipse(0, -earR * 0.40, earR * 0.24, earR * 0.66, 0, 0, TAU); c.fill();
+          }
         } else if (earShape === 'drop') {
           /* a pig's ear flops FORWARD over the eye */
           c.rotate(s * 0.30 + 0.55);
@@ -1260,8 +1296,21 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
         } else {
           /* the rounded cup — a cat, a bear, a rodent */
           c.beginPath(); c.ellipse(0, 0, earR * 0.92, earR, 0, 0, TAU); c.fill();
-          c.fillStyle = inner;
-          c.beginPath(); c.ellipse(0, earR * 0.08, earR * 0.52, earR * 0.60, 0, 0, TAU); c.fill();
+          if (!far) {
+            /* ★ WAVE 38, G1 — A CONCENTRIC CAVITY IS A RING, AND A RING ON A
+               SKULL IS A HORN. The concha was an ellipse at (0, 0.08·earR)
+               inside an ellipse at (0,0): dead centre, leaving an even rim all
+               the way round. Stacked with the far ear's identical pair that is
+               four nested ovals, which is exactly what the gold pass's nine
+               verifiers described as a coiled horn or shell.
+               A real conchal bowl is NOT concentric — it opens FORWARD, so the
+               rim is thick at the back of the ear and thin at the front. Offset
+               it toward the muzzle and the ring cannot close. */
+            c.fillStyle = inner;
+            c.beginPath();
+            c.ellipse(earR * 0.24, earR * 0.10, earR * 0.40, earR * 0.64, -0.14, 0, TAU);
+            c.fill();
+          }
         }
         c.restore();
       }
