@@ -1098,7 +1098,6 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Giant Water Bug': I({ hue: '#745e33', abdomen: 1.3, broad: 2.2, carapace: true, shield: true, eyes: 0.8, antennae: 'short', raptor: true }),
   /* a cold-adapted insect is stout and heavily furred — a bumblebee build */
   'Cold-Adapted Insect': I({ hue: '#3c4249', abdomen: 0.95, broad: 1.55, eyes: 0.85, antennae: 'short', fuzzy: true }),
-  'Insect-Eating Bat': I({ hue: '#7a6455', abdomen: 1.0, wings: 'open', antennae: 'none' }),
   /* ── ARACHNIDS: eight legs, no antennae ── */
   'Spider': A({ hue: '#7b5a3c', }),
   'Tarantula': A({ hue: '#3b2b25', big: true, hairy: true }),
@@ -1159,14 +1158,11 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Jellyfish': J({ hue: '#c8e0f0', }),
   'Comb Jelly': J({ hue: '#e8f2f6', comb: true }),
   'Portuguese Man-of-War': J({ hue: '#5a6ed0', float: true }),
-  'Salp': J({ hue: '#d5e8e4', barrel: true }),
-  'Pyrosome': J({ hue: '#f7c8d1', barrel: true }),
   /* ── SESSILE AND SAC-BODIED ── */
   'Coral': X({ hue: '#e8735a', kind: 'branch' }),
   'Cold-Water Coral': X({ hue: '#efe4cf', kind: 'branch' }),
   'Deep-Water Coral': X({ hue: '#9b1f2a', kind: 'branch' }),
   'Sponge': X({ kind: 'tube', pores: true, hue: '#c8823f' }),
-  'Sea Squirt': X({ hue: '#d97a52', kind: 'fan' }),
   'Sea Cucumber': X({ hue: '#55412f', kind: 'sac' }),
   'Lancelet': W({ hue: '#ecdfb5', }),
 };

@@ -815,7 +815,6 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Gar': F({ hue: '#79763c', profile: 'eel', len: 0.27, depth: 0.052, tail: 'round', snout: 'jaw', dorsal: 'none', teeth: true }),
   'Bowfin': F({ hue: '#4a5c3c', profile: 'fusiform', len: 0.24, depth: 0.062, tail: 'round', snout: 'jaw', dorsal: 'sail', pattern: 'mottle' }),
   'Coelacanth': F({ hue: '#3b4a5e', profile: 'fusiform', len: 0.23, depth: 0.084, tail: 'fan', snout: 'blunt', dorsal: 'two', pattern: 'spots' }),
-  'Lamprey': F({ hue: '#745358', profile: 'eel', len: 0.27, depth: 0.038, tail: 'point', snout: 'tube', dorsal: 'none' }),
   /* ── eels and ribbons ── */
   'Eel': F({ hue: '#9a8a34', profile: 'eel', len: 0.27, depth: 0.044, tail: 'point', snout: 'jaw', dorsal: 'none' }),
   'Moray Eel': F({ profile: 'eel', len: 0.28, depth: 0.031, tail: 'point', snout: 'jaw', dorsal: 'sail', pattern: 'spots', teeth: true, hue: '#68793f' }),
@@ -856,7 +855,6 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Fangtooth': F({ hue: '#513327', profile: 'deep', len: 0.155, depth: 0.072, tail: 'forked', snout: 'jaw', dorsal: 'one', bighead: 1.35 }),
   'Dragonfish': F({ hue: '#8a2230', profile: 'eel', len: 0.24, depth: 0.044, tail: 'point', snout: 'jaw', dorsal: 'none', glow: true, teeth: true }),
   'Barreleye': F({ hue: '#3f7a72', profile: 'fusiform', len: 0.18, depth: 0.062, tail: 'fan', snout: 'blunt', dorsal: 'one', glow: true, dome: true }),
-  'Tripod Fish': F({ hue: '#6b5c50', profile: 'fusiform', len: 0.20, depth: 0.046, tail: 'point', snout: 'blunt', dorsal: 'one' }),
   'Deep-Sea Fish': F({ hue: '#6e5563', profile: 'fusiform', len: 0.19, depth: 0.058, tail: 'forked', snout: 'jaw', dorsal: 'one', glow: true }),
   'Monkfish': F({ hue: '#7d6a4e', profile: 'globe', len: 0.19, depth: 0.062, tail: 'round', snout: 'jaw', dorsal: 'none', lure: true, teeth: true, pattern: 'mottle' }),
   /* ── SHARKS: heterocercal tail, gill slits, swept pectorals ── */

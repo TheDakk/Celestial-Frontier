@@ -249,11 +249,14 @@ export const FLORA_ICONIC: Record<string, FloraPainter> = {
      are red, and the row already says so via `petiole`. Given the red here
      the whole plant came out scarlet. */
   'Rhubarb': (c, g, p) => floraBroadLeaf(c, g, speciesHue(p, '#4d7a35'), { petiole: '#c0392b' }),
-  'Tobacco': (c, g, p) => floraBroadLeaf(c, g, speciesHue(p, '#5f8b3a'), { petiole: '#5c6b3a' }),
-  'Cabbage': (c, g, p) => floraBroadLeaf(c, g, speciesHue(p, '#a9c3a0'), { head: true }),
 };
 
 /** every name in the 16 byte-duplicate groups → the NAME-SEEDED ladder, so
     two different labels can never render identically again (Blocker 3) */
 export const FLORA_DUPES: readonly string[] = [
-  'Acai', 'Salmonberry', 'Licorice', "Devil's Club", 'Green Algae', 'Ice Algae', 'Snow Algae', ];
+  /* ★ WAVE 42 — 'Green Algae', 'Ice Algae' and 'Snow Algae' removed: all three
+     are keyed in CANON (algaeBloom / microAlgaeCell), which resolveOverride
+     consults first, so the anti-duplicate ladder never saw them. Listing a
+     species here that CANON already owns does not make it less duplicated — it
+     just hides a dead row inside the mechanism built to stop duplicates. */
+  'Acai', 'Salmonberry', 'Licorice', "Devil's Club", ];

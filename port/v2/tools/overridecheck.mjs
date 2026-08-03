@@ -92,31 +92,58 @@ for (const f of FILES) {
   /* module-PRIVATE tables count too: FUNGI_NAME and MICROBE_NAME are not
      exported, and an `export const`-only scan silently skipped both — the
      tool would have reported "fungi 0" as if wave 1 had never happened. */
-  for (const m of t.matchAll(/(?:export )?const ([A-Z][A-Z0-9_]+)\s*(?::[^=]*?)?=\s*[{[]/g)) {
+  /* ⚠ the annotation matcher must admit `=>`: CANON's type is
+     Record<string, (c, g, p) => void>, and `[^=]*?` cannot cross the arrow —
+     which is the SECOND reason CANON was invisible here, sitting behind the
+     name-filter reason. Two independent bugs, one blind spot. */
+  for (const m of t.matchAll(/(?:export )?const ([A-Z][A-Z0-9_]+)\s*(?::(?:[^={]|=>)*)?=\s*[{[]/g)) {
     const table = m[1];
-    if (!/NAME|ICONIC|DUPES|SPEC/.test(table)) continue;
+    /* ★ WAVE 42, CODE PASS — CANON WAS NEVER PARSED. The filter matched
+       NAME/ICONIC/DUPES/SPEC, so the HIGHEST-priority table — the one that
+       shadows everything else — was the one this shadow check could not see.
+       Nine species shipped keyed in both CANON and a lower table (five in
+       faunaoverrides, six in florarost, two in floraoverrides, three in
+       speciesoverrides, four in invertoverrides across the audits' counts),
+       each lower row a live-looking painter that never runs and silently
+       reactivates wrong if the CANON key is ever renamed — the documented
+       Insect-Eating Bat hazard, at scale. One home per name. */
+    if (!/NAME|ICONIC|DUPES|SPEC|^CANON$/.test(table)) continue;
     const open = t.indexOf(t[m.index + m[0].length - 1], m.index + m[0].length - 1);
     /* slice the balanced literal */
     let d = 0, e = open;
     for (; e < t.length; e++) { const c = t[e]; if (c === '{' || c === '[') d++; else if (c === '}' || c === ']') { d--; if (!d) break; } }
-    const kingdom = TABLE_KINGDOM[table];
-    if (!kingdom) { unclassified.push(`${f}:${table}`); continue; }
+    /* CANON keys carry their own kingdom ('fauna|Caiman'); every other table
+       gets its kingdom from the classification map */
+    const canon = table === 'CANON';
+    const kingdom = canon ? null : TABLE_KINGDOM[table];
+    if (!canon && !kingdom) { unclassified.push(`${f}:${table}`); continue; }
     const seen = new Set();
-    for (const k of topLevelKeys(t.slice(open, e + 1))) {
-      const n = k.replace(/[''’‘]/g, "'");
+    for (const k0 of topLevelKeys(t.slice(open, e + 1))) {
+      let n = k0.replace(/[''’‘]/g, "'");
+      let kdm = kingdom;
+      if (canon) {
+        const bar = n.indexOf('|');
+        if (bar < 0) continue;      /* not a route key */
+        kdm = n.slice(0, bar); n = n.slice(bar + 1);
+      }
       if (n.length > 1 && /[A-Za-z]/.test(n)) {
         /* a repeated key is not an error in JS — the LAST one silently wins,
            so a painter can be written, listed, and never once called */
-        if (seen.has(n)) dupes.push(`${n}  [${f}:${table}]`);
-        seen.add(n);
+        /* ⚠ key `seen` by KINGDOM+name, not name. CANON deliberately carries
+           the four cross-kingdom organisms twice — 'flora|Green Algae' AND
+           'microbe|Green Algae' — which is the whole point of that table, and
+           keying on the bare name reported all four as duplicates. The
+           instrument's own false positive, on its first run. Again. */
+        if (seen.has(kdm + '|' + n)) dupes.push(`${n}  [${f}:${table}]`);
+        seen.add(kdm + '|' + n);
         /* THE THIRD KIND OF DEAD ROUTE: the same species keyed in two tables
            OF THE SAME KINGDOM. resolveOverride consults them in a fixed order,
            so the later table's painter never runs — and both keys resolve to a
            real species, which is why the dead-route check alone cannot see it.
            Wave 9 wrote a swan-necked Swan that wave 3's plain Swan shadowed. */
-        const kk = kingdom + '|' + n;
+        const kk = kdm + '|' + n;
         if (keys.has(kk) && keys.get(kk) !== f + ':' + table) {
-          shadowed.push(`${n} (${kingdom})  [${keys.get(kk)} SHADOWS ${f}:${table}]`);
+          shadowed.push(`${n} (${kdm})  [${keys.get(kk)} SHADOWS ${f}:${table}]`);
         }
         keys.set(kk, f + ':' + table);
       }
@@ -177,8 +204,20 @@ const live = keys.size - dead.length;
 const byKingdom = {};
 for (const kk of keys.keys()) { const [k, n] = kk.split('|'); if ((kingdomsOf.get(n) || new Set()).has(k)) byKingdom[k] = (byKingdom[k] || 0) + 1; }
 console.log(`OVERRIDE CHECK: ${keys.size} table keys · ${live} reach a real catalog species · ${dead.length} dead`);
+/* ★ WAVE 42 — THE COVERAGE FIGURE READ 100.4%, which is not a possible
+   percentage and is the tell. `live` counts kingdom|name ROUTES while
+   catalog.size counts unique NAMES, and the four cross-kingdom organisms
+   (Green Algae, Snow Algae, Reindeer Lichen, Tardigrade) legitimately own two
+   routes each. Comparing routes to names inflated every coverage number this
+   tool has ever printed — including the ones quoted in the handoffs. Count
+   unique species covered against unique species, and report the route total
+   separately so both numbers stay honest. */
+const covered = new Set([...keys.keys()]
+  .filter((kk) => { const [k, n] = kk.split('|'); return (kingdomsOf.get(n) || new Set()).has(k); })
+  .map((kk) => kk.split('|')[1]));
 console.log('  coverage: ' + Object.entries(byKingdom).sort().map(([k, v]) => `${k} ${v}`).join(' · ')
-  + ` = ${live}/${catalog.size} Earth species (${(live / catalog.size * 100).toFixed(1)}%)`);
+  + ` = ${covered.size}/${catalog.size} Earth species (${(covered.size / catalog.size * 100).toFixed(1)}%)`
+  + `  ·  ${live} routes (the 4 cross-kingdom organisms own two each)`);
 if (unclassified.length) {
   console.error('  ★ UNCLASSIFIED TABLE — this tool does not know which kingdom branch serves it, so its keys went UNCHECKED:');
   for (const u of unclassified) console.error('    ' + u + '   (add it to TABLE_KINGDOM)');
