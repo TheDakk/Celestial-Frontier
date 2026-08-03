@@ -107,8 +107,8 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      every other equid and well below the fennec. */
   'Wild Ass': { legs: 0.1901, depth: 0.142, len: 0.1863, neck: 0.12, muzzle: 0.50, ears: 'large', tail: 'tuft', hue: '#b8ab93', family: 'equid', earShape: 'leaf', earScale: 1.62 },
   'Donkey': { legs: 0.1781, depth: 0.1454, len: 0.1788, neck: 0.11, muzzle: 0.50, ears: 'large', tail: 'tuft', hue: '#9b948c', family: 'equid', earShape: 'leaf', earScale: 1.55 },
-  'Gaur': { legs: 0.1561, depth: 0.1757, len: 0.2305, neck: 0.06, back: 'humped', muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#241c17', family: 'bovid' },
-  'Banteng': { legs: 0.1597, depth: 0.1629, len: 0.2137, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#7a4f30', family: 'bovid' },
+  'Gaur': { legs: 0.1561, depth: 0.1757, len: 0.2305, neck: 0.06, back: 'humped', muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#241c17', family: 'bovid' , stockings: '#e8e2d4' },
+  'Banteng': { legs: 0.1597, depth: 0.1629, len: 0.2137, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#7a4f30', family: 'bovid' , stockings: '#efe9dc' },
   'Buffalo': { legs: 0.142, depth: 0.1704, len: 0.2376, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#3b302a', family: 'bovid' },
   'Takin': { legs: 0.1306, depth: 0.1574, len: 0.2065, neck: 0.06, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'boss', coat: 'shaggy', hue: '#b59a63', family: 'bovid' },
   /* ★ wave 35 — Caribou and Reindeer sat at #a2917c and #a8917a: the same

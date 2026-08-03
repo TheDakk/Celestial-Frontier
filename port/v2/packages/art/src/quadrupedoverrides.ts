@@ -157,6 +157,10 @@ export interface QuadSpec {
       flank; on a zebra, an okapi, a panda or a leopard they are not, and the
       reference rows say so explicitly. */
   legMarks?: boolean;
+  /** ★ wave 45 — a solid pale LOWER LEG (a stocking). Distinct from legMarks,
+      which carries the coat pattern: a stocking is a change of colour, not a
+      mark on a ground, and it is what separates Gaur from Buffalo. */
+  stockings?: string;
 }
 
 /** ★ WAVE 6 — THE SKULL. Nick, after looking at the wave-5 export: *"the heads
@@ -778,6 +782,32 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
        Opt-in per species (`legMarks`), NOT automatic: switching it on for every
        patterned coat would repaint ~50 animals in one commit, which is exactly
        the global pass artlock exists to stop (D-ART-83). */
+    /* ★ WAVE 45, G10 — STOCKINGS. Buffalo ≈ Gaur survived every earlier attempt
+       because the thing that actually separates them is Gaur's pale lower legs,
+       and nothing here could say it: `legMarks` carries the coat's PATTERN, and
+       a pattern is dark marks on a ground, not a solid change of colour partway
+       down a limb. This is a band of a different colour on the cannon, which is
+       what a stocking is — and it is also the okapi's, the bongo's and every
+       white-socked bovid's. Drawn inside the limb's own clip, so it follows the
+       taper and takes the countershading rather than sitting on top of it. */
+    if (spec.stockings && !spec.alien?.skin) {
+      const sockTop = 0.62;
+      c.fillStyle = spec.stockings;
+      c.globalAlpha = m < 1 ? 0.72 : 1;
+      c.beginPath();
+      for (let i = 0; i <= 18; i++) {
+        const t2 = sockTop + (i / 18) * (1 - sockTop);
+        const e = limb.envelope(t2, 1);
+        if (i === 0) c.moveTo(e[0], e[1]); else c.lineTo(e[0], e[1]);
+      }
+      for (let i = 18; i >= 0; i--) {
+        const t2 = sockTop + (i / 18) * (1 - sockTop);
+        const e = limb.envelope(t2, -1);
+        c.lineTo(e[0], e[1]);
+      }
+      c.closePath(); c.fill();
+      c.globalAlpha = 1;
+    }
     if (spec.legMarks && !spec.alien?.skin) {
       if (coat === 'bands') coatBars(c, limb, r, lp, { count: 7, width: 1.15, phiTop: 1.62, phiEnd: -1.45, lean: 0.02, forkRate: 0, hard: true, rgb: spec.coatRgb ?? [18, 15, 16] });
       else if (coat === 'stripes') coatBars(c, limb, r, lp, { count: 5, width: 0.85, phiEnd: -0.95, forkRate: 0 });

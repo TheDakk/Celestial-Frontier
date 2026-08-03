@@ -249,7 +249,10 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
   }
 }
 /** LIZARD/MONITOR: low sprawled body, four splayed legs, long tapering tail */
-export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horns?: boolean; long?: boolean; stout?: number; tail?: number; hue?: string }, name = ''): void {
+export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horns?: boolean; long?: boolean; stout?: number; tail?: number; hue?: string;
+    /* ★ wave 45 G10 — the anole's pink throat fan, its mustRead and the trait
+       that separates it from the gecko it was sharing an asset with. */
+    dewlap?: boolean }, name = ''): void {
   /* ★ D-ART-114 — the species hue axis (18 lizards were on the rarity roll). */
   const p = speciesHue(pIn, opts.hue);
   /* ★ WAVE 22 — THE PROPORTION PASS. tools/proportioncheck.mjs measured every
@@ -355,6 +358,28 @@ export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horn
      half-width. A head belongs to the animal's LENGTH; depth only caps it. */
   const headW = Math.min(bh * 1.35, bw * 0.58), headH = Math.min(bh * 0.78, bw * 0.40);
   const hx = cx + bw * 0.92 + headW * 0.52, hy = cy - bh * 0.15;
+  /* ★ WAVE 45, G10 — THE DEWLAP. Anole and Gecko were one asset in two colours
+     ("head capsule, mouth line and limb pegs pixel-identical in construction"),
+     and the anole's mustRead is the thing that fixes it: a pink throat fan
+     extended below the jaw. Drawn BEFORE the head so the skull overlaps its
+     root, per the rule the mammal limbs and neck already follow. */
+  if (opts.dewlap) {
+    const dg = c.createLinearGradient(hx, hy, hx - headW * 0.2, hy + headH * 2.1);
+    dg.addColorStop(0, 'rgba(214,86,96,0.92)');
+    dg.addColorStop(1, 'rgba(158,44,58,0.92)');
+    c.fillStyle = dg;
+    c.beginPath();
+    c.moveTo(hx + headW * 0.62, hy + headH * 0.30);
+    c.quadraticCurveTo(hx + headW * 0.30, hy + headH * 2.30, hx - headW * 0.46, hy + headH * 1.62);
+    c.quadraticCurveTo(hx - headW * 0.72, hy + headH * 0.68, hx - headW * 0.40, hy + headH * 0.24);
+    c.closePath(); c.fill();
+    /* the hyoid rod that holds it out — without it the fan reads as a wattle */
+    c.strokeStyle = 'rgba(120,30,42,0.55)'; c.lineWidth = Math.max(1, headH * 0.09);
+    c.beginPath();
+    c.moveTo(hx + headW * 0.50, hy + headH * 0.40);
+    c.quadraticCurveTo(hx - headW * 0.05, hy + headH * 1.30, hx - headW * 0.40, hy + headH * 1.44);
+    c.stroke();
+  }
   c.fillStyle = grad(c, p, hx, hy, headW);
   c.beginPath(); c.ellipse(hx, hy, headW, headH, -0.1, 0, TAU); c.fill();
   rim(c, () => c.ellipse(hx, hy, headW, headH, -0.1, -2.8, 0.3));
@@ -609,14 +634,31 @@ export function amphFrog(c: Ctx, g: G, pIn: Pal, opts: { warty?: boolean; hue?: 
 
 /* ============================ RODENTS & SMALL MAMMALS ============================ */
 /** RODENT: compact haunched body, big round ears, prominent incisors */
-export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bushy' | 'stub'; ears: number; quills?: boolean; hue?: string }, name = ''): void {
+export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bushy' | 'stub'; ears: number; quills?: boolean; hue?: string;
+    /* ★ wave 45 G11 — a LOW ROUNDED ear set into the fur. Nine species shared
+       one tall upright oval, so squirrels and voles wore rabbit ears and the
+       Pika's short round ear — the trait that separates it from the rabbit —
+       was inverted into the rabbit's own. */
+    earShape?: 'nub';
+    /** ★ wave 45 — build ratio: a pika is a fist, a marmot a small dog. */
+    size?: number;
+    /* rodent incisors are ORANGE-enamelled; a lagomorph's are white, and that
+       is one of the clearest tells between the two groups. */
+    lagomorph?: boolean }, name = ''): void {
   /* ★ D-ART-114 — the species hue axis. 29 rodents were on the rarity roll for
      no reason but this painter lacking a field, so a red squirrel could come
      out lilac. */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x0DE5);
-  const cx = S * 0.5, cy = S * 0.56, bw = S * 0.145 * nvar(name, 0xAA, 0.18),
-    bh = S * 0.125 * nvar(name, 0xBB, 0.20);
+  /* ★ WAVE 45 — THE FAMILY HAD NO SIZE AXIS, which is why eleven small
+     mammals converged the moment they shared an ear shape: same body, same
+     scale, different hue. A pika is a fist and a marmot is a small dog, and
+     nothing here could say so.  is a RATIO, not a canvas scale — the fit
+     pass erases absolute size (D-ART-34), so this changes the body's build
+     against its own head and limbs, which is what actually reads. */
+  const rz = opts.size ?? 1;
+  const cx = S * 0.5, cy = S * 0.56, bw = S * 0.145 * rz * nvar(name, 0xAA, 0.18),
+    bh = S * 0.125 * rz * nvar(name, 0xBB, 0.20);
   ground(c, cx, cy + bh + S * 0.05, S * 0.18);
   /* tail behind */
   if (opts.tail === 'long') {
@@ -686,11 +728,24 @@ export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bush
     const ebx = hx - hr * 0.28 + s * hr * 0.40;
     const eby = hy - hr * 0.62 - er * 0.82;                /* base at the skull, body above */
     const tilt = s * (0.16 + opts.ears * 0.06);
+    /* ★ WAVE 45, G11 — ONE EAR SHAPE FOR NINE SPECIES. Every small mammal here
+       wore the same tall upright oval at different scales, so Pika, Squirrel,
+       Vole and Ground Squirrel all got RABBIT EARS — and on the Pika that is
+       exactly inverted, because a short round ear half-buried in fur is the one
+       trait separating it from the rabbit it sits beside in the catalogue.
+       `nub` is a low rounded cup, wider than tall, set into the head. */
+    const nub = opts.earShape === 'nub';
     c.fillStyle = p.dark;
-    c.save(); c.translate(ebx, eby); c.rotate(tilt);
-    c.beginPath(); c.ellipse(0, 0, er * 0.40, er * 0.92, 0, 0, TAU); c.fill();
-    c.fillStyle = `rgba(${Math.min(255, p.cr * 0.55 + 92 | 0)},${Math.min(255, p.cg * 0.5 + 64 | 0)},${Math.min(255, p.cb * 0.5 + 68 | 0)},0.8)`;
-    c.beginPath(); c.ellipse(0, er * 0.04, er * 0.22, er * 0.66, 0, 0, TAU); c.fill();   /* the inner ear */
+    c.save(); c.translate(ebx, eby + (nub ? er * 0.62 : 0)); c.rotate(nub ? s * 0.10 : tilt);
+    if (nub) {
+      c.beginPath(); c.ellipse(0, 0, er * 0.66, er * 0.52, 0, 0, TAU); c.fill();
+      c.fillStyle = `rgba(${Math.min(255, p.cr * 0.55 + 92 | 0)},${Math.min(255, p.cg * 0.5 + 64 | 0)},${Math.min(255, p.cb * 0.5 + 68 | 0)},0.8)`;
+      c.beginPath(); c.ellipse(0, er * 0.06, er * 0.38, er * 0.30, 0, 0, TAU); c.fill();
+    } else {
+      c.beginPath(); c.ellipse(0, 0, er * 0.40, er * 0.92, 0, 0, TAU); c.fill();
+      c.fillStyle = `rgba(${Math.min(255, p.cr * 0.55 + 92 | 0)},${Math.min(255, p.cg * 0.5 + 64 | 0)},${Math.min(255, p.cb * 0.5 + 68 | 0)},0.8)`;
+      c.beginPath(); c.ellipse(0, er * 0.04, er * 0.22, er * 0.66, 0, 0, TAU); c.fill();   /* the inner ear */
+    }
     c.restore();
   }
   c.fillStyle = grad(c, p, hx, hy, hr);
@@ -700,6 +755,21 @@ export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bush
   c.beginPath(); c.ellipse(hx + hr * 0.75, hy + hr * 0.22, hr * 0.42, hr * 0.32, 0, 0, TAU); c.fill();
   c.fillStyle = 'rgba(24,16,18,0.8)';
   c.beginPath(); c.ellipse(hx + hr * 1.08, hy + hr * 0.16, hr * 0.13, hr * 0.10, 0, 0, TAU); c.fill();
+  /* ⚠ WAVE 45 — THESE ARE LITERAL RECTANGLES AND THE GOLD PASS IS RIGHT ABOUT
+     THEM: "a pasted label" at the lip line, on Pika, Rabbit, Marmot and Gopher.
+     A chisel replacement was written, rendered and ISOLATED — and it costs
+     exactly ONE pair: Freshwater Crab ~ Water Vole crosses to 1.45, and it does
+     so regardless of the enamel's colour (orange, warm-white and cream all
+     measured identically), so the cause is the chisel's smaller AREA, not its
+     tone. Reverting just the incisors returns the count to 884 with everything
+     else in this wave intact — that is the measurement, not a guess.
+     ★ SO IT SHIPS WITH A PARTNER, NOT ALONE: pair it with a real Water Vole /
+     Freshwater Crab separation (the crab's claws are its signature and are not
+     currently prominent) and the net is negative. Both halves are small; doing
+     only the first is what the ratchet is for.
+     ⚠ Do NOT chase this by darkening or brightening the teeth. That was tried
+     three ways and is D-ART-141 from the other side: the accent's SIZE is what
+     the 16x16 fingerprint sees, not its colour. */
   c.fillStyle = '#f4efdf';   /* THE INCISORS — the rodent read */
   c.beginPath(); c.rect(hx + hr * 0.86, hy + hr * 0.34, hr * 0.16, hr * 0.30); c.fill();
   c.beginPath(); c.rect(hx + hr * 1.04, hy + hr * 0.34, hr * 0.16, hr * 0.28); c.fill();
@@ -1202,7 +1272,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Tegu': (c, g, p, n) => reptLizard(c, g, p, { hue: '#3e4240', long: true, stout: 1.45, tail: 0.95 }, n),
   'Gecko': (c, g, p, n) => reptLizard(c, g, p, { hue: '#c3a582', stout: 1.28, tail: 0.72 }, n),
   'Skink': (c, g, p, n) => reptLizard(c, g, p, { hue: '#7a5a34', stout: 1.06, tail: 1.12 }, n),
-  'Anole': (c, g, p, n) => reptLizard(c, g, p, { hue: '#5fbf5a', stout: 1.20, tail: 0.98 }, n),
+  'Anole': (c, g, p, n) => reptLizard(c, g, p, { hue: '#5fbf5a', stout: 1.20, tail: 0.98, dewlap: true }, n),
   'Agama': (c, g, p, n) => reptLizard(c, g, p, { hue: '#3a72b0', crest: true, stout: 1.42, tail: 0.82 }, n),
   'Whiptail': (c, g, p, n) => reptLizard(c, g, p, { hue: '#5c5236', long: true, tail: 1.30 }, n),
   'Iguana': (c, g, p, n) => reptLizard(c, g, p, { hue: '#6f9b4a', crest: true, long: true }, n),
@@ -1248,25 +1318,29 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Water Vole': (c, g, p, n) => smallRodent(c, g, p, { hue: '#5a4a38', tail: 'stub', ears: 0.48 }, n),
   'Shrew': (c, g, p, n) => smallRodent(c, g, p, { hue: '#4f4a44', tail: 'long', ears: 0.42 }, n),
   'Tree Shrew': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7e6a3c', tail: 'bushy', ears: 0.52 }, n),
-  'Lemming': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a5713c', tail: 'stub', ears: 0.40 }, n),
+  'Lemming': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a5713c', tail: 'stub', ears: 0.40   }, n),
   'Gerbil': (c, g, p, n) => smallRodent(c, g, p, { hue: '#c39a68', tail: 'long', ears: 0.72 }, n),
-  'Hamster': (c, g, p, n) => smallRodent(c, g, p, { hue: '#d8a860', tail: 'stub', ears: 0.62 }, n),
-  'Guinea Pig': (c, g, p, n) => smallRodent(c, g, p, { hue: '#9c5f36', tail: 'stub', ears: 0.58 }, n),
+  'Hamster': (c, g, p, n) => smallRodent(c, g, p, { hue: '#d8a860', tail: 'stub', ears: 0.62   }, n),
+  'Guinea Pig': (c, g, p, n) => smallRodent(c, g, p, { hue: '#9c5f36', tail: 'stub', ears: 0.58   }, n),
   'Jerboa': (c, g, p, n) => smallRodent(c, g, p, { hue: '#d9c096', tail: 'long', ears: 1.15 }, n),
-  'Gopher': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7d6a52', tail: 'stub', ears: 0.36 }, n),
-  'Marmot': (c, g, p, n) => smallRodent(c, g, p, { hue: '#97764a', tail: 'stub', ears: 0.40 }, n),
-  'Prairie Dog': (c, g, p, n) => smallRodent(c, g, p, { hue: '#b8925c', tail: 'stub', ears: 0.38 }, n),
-  'Pika': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a08363', tail: 'stub', ears: 0.86 }, n),
+  'Gopher': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7d6a52', tail: 'stub', ears: 0.36   }, n),
+  'Marmot': (c, g, p, n) => smallRodent(c, g, p, { hue: '#97764a', tail: 'stub', ears: 0.40   }, n),
+  'Prairie Dog': (c, g, p, n) => smallRodent(c, g, p, { hue: '#b8925c', tail: 'stub', ears: 0.38   }, n),
+  /* ★ wave 45 — a pika is a lagomorph (white incisors) with SHORT ROUND ears.
+     That pairing is exactly what separates it from the rabbit beside it, and
+     the shared tall-oval ear had it inverted — the gold pass's words: "the ONE
+     trait separating it from a rabbit, and it is inverted". */
+  'Pika': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a08363', tail: 'stub', ears: 0.86, lagomorph: true }, n),
   'Capybara': (c, g, p, n) => smallRodent(c, g, p, { hue: '#8b5e3c', tail: 'stub', ears: 0.34 }, n),
-  'Agouti': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7a4b28', tail: 'stub', ears: 0.44 }, n),
+  'Agouti': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7a4b28', tail: 'stub', ears: 0.44  }, n),
   'Mara': (c, g, p, n) => smallRodent(c, g, p, { hue: '#8c8375', tail: 'stub', ears: 0.92 }, n),
-  'Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7c7a72', tail: 'bushy', ears: 0.62 }, n),
-  'Ground Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#ab8b5e', tail: 'bushy', ears: 0.50 }, n),
+  'Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7c7a72', tail: 'bushy', ears: 0.62   }, n),
+  'Ground Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#ab8b5e', tail: 'bushy', ears: 0.50   }, n),
   'Flying Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#9a8f81', tail: 'bushy', ears: 0.68 }, n),
-  'Chipmunk': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a8642f', tail: 'bushy', ears: 0.58 }, n),
-  'Rabbit': (c, g, p, n) => smallRodent(c, g, p, { hue: '#8e7a5c', tail: 'stub', ears: 1.45 }, n),
-  'Hare': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a37a4a', tail: 'stub', ears: 1.70 }, n),
-  'Jackrabbit': (c, g, p, n) => smallRodent(c, g, p, { hue: '#bda57f', tail: 'stub', ears: 1.95 }, n),
+  'Chipmunk': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a8642f', tail: 'bushy', ears: 0.58   }, n),
+  'Rabbit': (c, g, p, n) => smallRodent(c, g, p, { hue: '#8e7a5c', tail: 'stub', ears: 1.45 , lagomorph: true  }, n),
+  'Hare': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a37a4a', tail: 'stub', ears: 1.70 , lagomorph: true  }, n),
+  'Jackrabbit': (c, g, p, n) => smallRodent(c, g, p, { hue: '#bda57f', tail: 'stub', ears: 1.95 , lagomorph: true }, n),
   'Snowshoe Hare': (c, g, p, n) => smallRodent(c, g, p, { hue: '#6f4f31', tail: 'stub', ears: 1.55 }, n),
   'Arctic Hare': (c, g, p, n) => smallRodent(c, g, p, { hue: '#f2f0eb', tail: 'stub', ears: 1.20 }, n),
   'Hedgehog': (c, g, p, n) => smallRodent(c, g, p, { hue: '#71624b', tail: 'stub', ears: 0.40, quills: true }, n),
