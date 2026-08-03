@@ -112,7 +112,10 @@ function limb(c: Ctx, x0: number, y0: number, x1: number, y1: number, kx: number
 export interface InsectSpec {
   /** the species' own colour, where the real insect's colour is its identity */
   hue?: string;
-  wings?: 'none' | 'folded' | 'open' | 'lace';
+  wings?: 'none' | 'folded' | 'open' | 'lace'
+    /* ★ wave 39 — held TENT-LIKE over the back at rest, which is a cicada's
+       mustRead and was failing against an explicit instruction in its row. */
+    | 'tent';
   /* ★ wave 21 — the audit on the wasp: "lacks clearly readable wings". A folded
      wing scaled off the abdomen is invisible on a species whose wings extend
      well past it. */
@@ -194,6 +197,20 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
   if (spec.raptor) {   /* THE MANTIS STRIKE — folded, spined, held up front */
     for (const s of [-1, 1] as const) {
       const ox = cx - th * 1.5, oy = cy - th * 0.2;
+      /* ★ WAVE 39 — THE STRIKE ARM WAS A BARE LINE. Its verifier: "a thin bent
+         Z-shaped foreleg IS drawn, so 'no raptorial forelegs' overstates — but
+         it is a bare line with no spines and no thickness, and it does not read
+         as an arm folded in prayer." A mantis's femur is the thickest part of
+         the animal; drawn at the same 6px weight as its walking legs it cannot
+         be the feature it is. Laid down as a heavy femur first, with the thin
+         jointed limb over it. */
+      const fem = (x1: number, y1: number, x2: number, y2: number, w: number): void => {
+        c.strokeStyle = `rgb(${(p.cr * 0.86) | 0},${(p.cg * 0.90) | 0},${(p.cb * 0.72) | 0})`;
+        c.lineWidth = w; c.lineCap = 'round';
+        c.beginPath(); c.moveTo(x1, y1); c.lineTo(x2, y2); c.stroke();
+      };
+      fem(ox, oy, ox - th * 2.3, oy - th * 0.4, th * 0.62);          /* coxa -> femur */
+      fem(ox - th * 2.3, oy - th * 0.4, ox - th * 1.1, oy + th * 1.5, th * 0.44);  /* tibia, folded back */
       limb(c, ox, oy, ox - th * 2.3, oy - th * 0.4, ox - th * 1.1, oy + th * 1.5, 6, p.base);
       c.strokeStyle = 'rgba(30,24,16,0.5)'; c.lineWidth = 1.6;
       for (let k = 0; k < 5; k++) {
@@ -209,6 +226,7 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
   /* ── wings, behind the body ── */
   if (spec.wings && spec.wings !== 'none') {
     const open = spec.wings === 'open';
+    const tent = spec.wings === 'tent';
     /* an OPEN wing is a display surface, not a flap: scale it off the THORAX
        and give it a real span. Sized off the abdomen it came out smaller
        than the body it hangs from. */
@@ -223,8 +241,11 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
     const wl = (open ? th * 5.2 : abL * 1.95) * ws;
     const wh = (open ? th * 2.9 : th * 0.85) * (ws > 1 ? 1.25 : 1);
     for (const s of [-1, 1] as const) {
-      c.save(); c.translate(cx + th * (open ? -0.1 : 0.4), cy - th * (open ? 0.5 : 0.35));
-      c.rotate(open ? s * 0.30 : s * 0.16);
+      /* ★ WAVE 39 — a TENT wing pitches steeply and sits high, so the pair
+         meets over the spine and forms a roof down the abdomen; 'folded' lies
+         nearly flat (0.16 rad) and reads as wings spread out sideways. */
+      c.save(); c.translate(cx + th * (open ? -0.1 : 0.4), cy - th * (open ? 0.5 : tent ? 0.92 : 0.35));
+      c.rotate(open ? s * 0.30 : tent ? s * 0.52 : s * 0.16);
       const wing = (L: number, H: number, tilt: number, alpha: number): void => {
         c.save(); c.rotate(tilt);
         c.fillStyle = spec.wings === 'lace' ? `rgba(226,238,255,${alpha * 0.62})` : `rgba(${p.cr},${p.cg},${p.cb},${alpha})`;
@@ -1037,7 +1058,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Moth': I({ hue: '#7f7566', abdomen: 1.0, wings: 'open', antennae: 'feather', fuzzy: true }),
   'Butterfly': I({ hue: '#d97328', abdomen: 0.9, wings: 'open', antennae: 'long', pattern: 'spots' }),
   /* a cicada is a broad blunt wedge with a very wide head and big wings */
-  'Cicada': I({ hue: '#48544e', abdomen: 1.05, broad: 1.5, eyes: 1.5, carapace: true, wings: 'folded', wingScale: 1.45, antennae: 'short' }),
+  'Cicada': I({ hue: '#48544e', abdomen: 1.05, broad: 1.5, eyes: 1.5, carapace: true, wings: 'tent', wingScale: 1.45, antennae: 'short' }),
   'Mantis': I({ hue: '#66a03c', abdomen: 1.25, broad: 0.72, face: 'triangle', eyes: 1.25, wings: 'folded', antennae: 'long', raptor: true }),
   'Grasshopper': I({ hue: '#8f8f4a', abdomen: 1.20, broad: 0.92, face: 'slant', wings: 'folded', antennae: 'short', jumper: true }),
   'Locust': I({ hue: '#c2a24a', abdomen: 1.55, broad: 0.70, face: 'slant', wings: 'folded', wingScale: 1.2, antennae: 'short', jumper: true }),

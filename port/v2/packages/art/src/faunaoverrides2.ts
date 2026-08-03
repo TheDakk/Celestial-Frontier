@@ -526,6 +526,25 @@ export function reptTurtle(c: Ctx, g: G, pIn: Pal, opts: { flippers?: boolean; h
   c.beginPath(); c.moveTo(cx + sw * 0.75, cy - sh * 0.1); c.lineTo(hx, hy); c.stroke();
   c.fillStyle = grad(c, p, hx, hy, sh * 0.5);
   c.beginPath(); c.ellipse(hx, hy, sh * 0.52, sh * 0.38, -0.1, 0, TAU); c.fill();
+  /* ★ WAVE 39 — THE HORNY BEAK. A chelonian has no teeth: it bites with a
+     sheathed keratin beak, and its hooked upper edge is the one thing that
+     stops the head reading as "a smooth ball with a pasted eye dot" — the gold
+     pass's words on Tortoise. Drawn on the snout end, overhanging the lower
+     jaw, with the mouth line under it. */
+  {
+    const bx2 = hx + sh * 0.44, by2 = hy + sh * 0.04;
+    c.fillStyle = `rgb(${(p.cr * 0.58) | 0},${(p.cg * 0.54) | 0},${(p.cb * 0.44) | 0})`;
+    c.beginPath();
+    c.moveTo(bx2 - sh * 0.30, by2 - sh * 0.20);
+    c.quadraticCurveTo(bx2 + sh * 0.20, by2 - sh * 0.16, bx2 + sh * 0.16, by2 + sh * 0.14);
+    c.quadraticCurveTo(bx2 - sh * 0.06, by2 + sh * 0.06, bx2 - sh * 0.30, by2 + sh * 0.10);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(24,20,14,0.50)'; c.lineWidth = Math.max(1, sh * 0.055); c.lineCap = 'round';
+    c.beginPath();
+    c.moveTo(bx2 - sh * 0.34, by2 + sh * 0.06);
+    c.quadraticCurveTo(bx2 - sh * 0.02, by2 + sh * 0.12, bx2 + sh * 0.15, by2 + sh * 0.10);
+    c.stroke();
+  }
   eye(c, hx + sh * 0.06, hy - sh * 0.1, 4.5);
 }
 /** FROG: crouched haunches, long folded hind legs, wide mouth, domed eyes */

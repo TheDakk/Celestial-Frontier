@@ -137,6 +137,15 @@ export interface QuadSpec {
      on it: centred, it swallows the muzzle and eyes and the animal loses the
      only part anyone actually reads. */
   mane?: 'lion' | 'ruff';
+  /* ★ WAVE 39 — THE OKAPI PROBLEM. Its coat runs on the HINDQUARTERS ONLY and
+     is PALE on a dark ground — the exact inverse of what `coat:'stripes'` does,
+     and its verifier called the inversion "real and damning". Two axes, both
+     general: which stretch of the body the marks occupy, and what colour they
+     are. (`coatZone` is the axis mammal-species-fixes.md asked for and nobody
+     had built; `coatRgb` is what makes a light-on-dark coat expressible at all
+     — every mark in skin.ts defaulted to a dark tone.) */
+  coatZone?: [number, number];
+  coatRgb?: [number, number, number];
   /** ★ wave 38 — carry this species' coat pattern down onto the four limbs.
       Opt-in, because on most mammals the legs really are plainer than the
       flank; on a zebra, an okapi, a panda or a leopard they are not, and the
@@ -678,7 +687,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
        patterned coat would repaint ~50 animals in one commit, which is exactly
        the global pass artlock exists to stop (D-ART-83). */
     if (spec.legMarks && !spec.alien?.skin) {
-      if (coat === 'bands') coatBars(c, limb, r, lp, { count: 7, width: 1.15, phiTop: 1.62, phiEnd: -1.45, lean: 0.02, forkRate: 0, hard: true, rgb: [18, 15, 16] });
+      if (coat === 'bands') coatBars(c, limb, r, lp, { count: 7, width: 1.15, phiTop: 1.62, phiEnd: -1.45, lean: 0.02, forkRate: 0, hard: true, rgb: spec.coatRgb ?? [18, 15, 16] });
       else if (coat === 'stripes') coatBars(c, limb, r, lp, { count: 5, width: 0.85, phiEnd: -0.95, forkRate: 0 });
       else if (coat === 'spots') coatSpots(c, limb, r, lp, { count: 20, size: 0.52, soft: 0.14, rgb: [24, 17, 10] });
       else if (coat === 'rosettes') coatRosettes(c, limb, r, lp, { count: 7, size: 0.5 });
@@ -806,7 +815,9 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   } else if (coat === 'bands') {
     /* the zebra: full contrast, and the bands CROSS the belly rather than
        stopping at it, which is the difference between a zebra and a tiger */
-    coatBars(c, body, r, p, { count: 21, width: 1.25, phiTop: 1.66, phiEnd: -1.42, lean: 0.03, forkRate: 0.12, hard: true, rgb: [18, 15, 16] });
+    coatBars(c, body, r, p, { count: 21, width: 1.25, phiTop: 1.66, phiEnd: -1.42, lean: 0.03, forkRate: 0.12, hard: true,
+      rgb: spec.coatRgb ?? [18, 15, 16],
+      ...(spec.coatZone ? { u0: spec.coatZone[0], u1: spec.coatZone[1] } : {}) });
   } else if (coat === 'blotches') {
     /* ⚠ WAVE 6 — A COAT NAME WHOSE MEANING CHANGED UNDER ITS USERS. 'patches'
        used to mean soft irregular blotches, so a wild dog, a Friesian cow and
