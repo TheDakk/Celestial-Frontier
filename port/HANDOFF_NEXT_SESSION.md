@@ -20,11 +20,27 @@ one-line table edits.**
   **`npm run artbattery -- --touching=quadruped`**.
 - ★ **The worklist prescriptions are agent-written and are not always right.** Two of wave
   35's rendered wrong (the Panda's prescribed band leaves a white chest). Render first.
-- **Still open, all found by looking:** `tail:'bushy'` is a straw broom (Hyena, Wolf, Fox,
-  Snow Leopard, Bison, Elk); the elephant's ear fan is a flat dark ellipse whose comment
-  falsely claims it is drawn behind the head; `ears:'large'` + `earShape:'round'` gives two
-  dark discs that swallow the skull; the hyena bodies are half-fixed, because fore and hind
-  limbs are always the same length.
+## ★ WAVE 36 (2026-08-03) — the ear system, on Nick's catch
+
+He spotted the donkey's ears on the wave-35 proof sheet. The ear was broken three ways:
+the size ladder was **inverted at the top** (Donkey/Wild Ass at `'huge' × earScale 1.70` =
+1.96·headR, LARGER than the Fennec Fox at 1.50); the **root separation scaled with the
+ear's own size**, so a long pair pushed itself apart until the two merged into one mass;
+and the ear was **filled at 0.52 of the coat, which is a hole, not an ear** — the back of a
+real ear is coat-coloured and the dark part is the concha inside it. That last one is why
+53 `'large'`-eared species all wore the same dark cap.
+Also fixed: `tail:'bushy'` was a straw broom (110 straight fixed-width strokes reaching 90%
+of the tail's width out of it — the same three faults wave 35 fixed in the shaggy rim, in a
+second place), and the elephant's ear fan, whose comment claims it is drawn behind the head
+and never was.
+
+⚠ **The lesson worth carrying: `earScale` was being used to force a read that the ear's
+TONE was preventing.** The 1.70 was a workaround for a fill bug two layers down. When a
+per-species multiplier has to go far past its ladder, suspect the thing it is compensating
+for.
+
+**Still open:** the hyena bodies are half-fixed, because fore and hind limbs are always the
+same length (a listed structural limit), so a falling topline can only ever be faked.
 
 ---
 
