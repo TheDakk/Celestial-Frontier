@@ -844,7 +844,11 @@ export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 's
 
 /** SALAMANDER/NEWT: not a lizard — smooth moist skin, no claws, a blunt
     round head, a paddle tail, and (for the axolotl) external gill fronds. */
-export function amphSalamander(c: Ctx, g: G, pIn: Pal, opts: { gills?: boolean; stout?: boolean; hue?: string }, name = ''): void {
+export function amphSalamander(c: Ctx, g: G, pIn: Pal, opts: { gills?: boolean; stout?: boolean; hue?: string;
+    /* ★ D-ART-130 — a TERRESTRIAL salamander has a round tapering tail, not the
+       flattened swimming paddle. The lobe was drawn unconditionally and read as
+       an off-body flipper floating at the tail base on every land species. */
+    terrestrial?: boolean }, name = ''): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x5A1A);
@@ -855,13 +859,20 @@ export function amphSalamander(c: Ctx, g: G, pIn: Pal, opts: { gills?: boolean; 
   c.strokeStyle = p.base; c.lineWidth = bh * 1.5;   /* the PADDLE tail — flattened, finned */
   c.beginPath(); c.moveTo(cx - bw * 0.7, cy);
   c.quadraticCurveTo(cx - bw * 1.8, cy + bh * 0.5, cx - bw * 2.5, cy - bh * 0.9); c.stroke();
-  c.fillStyle = `rgba(${p.cr},${p.cg},${p.cb},0.55)`;
-  c.save(); c.translate(cx - bw * 1.9, cy - bh * 0.1); c.rotate(-0.34);
-  c.beginPath(); c.ellipse(0, 0, bw * 0.75, bh * 1.5, 0, 0, TAU); c.fill(); c.restore();
+  if (!opts.terrestrial) {
+    c.fillStyle = `rgba(${p.cr},${p.cg},${p.cb},0.55)`;
+    c.save(); c.translate(cx - bw * 1.9, cy - bh * 0.1); c.rotate(-0.34);
+    c.beginPath(); c.ellipse(0, 0, bw * 0.75, bh * 1.5, 0, 0, TAU); c.fill(); c.restore();
+  }
   c.strokeStyle = p.dark; c.lineWidth = bh * 0.36;   /* short soft limbs, toes splayed */
-  for (const sx of [-0.6, 0.62]) for (const sy of [-1, 1] as const) {
-    const lx = cx + bw * sx, ly = cy + bh * 0.55;
-    c.beginPath(); c.moveTo(lx, ly); c.quadraticCurveTo(lx + sx * 20, ly + 14 + sy * 3, lx + sx * 30, ly + 22); c.stroke();
+  /* ★ D-ART-130 — four limbs that READ as four: the far pair offset, shorter
+     and darker, the same depth cue the lizards and crocodilians needed. */
+  for (const sx of [-0.6, 0.62]) for (const far of [true, false]) {
+    const m = far ? 0.58 : 1;
+    c.strokeStyle = `rgb(${(p.cr * 0.42 * m) | 0},${(p.cg * 0.44 * m) | 0},${(p.cb * 0.38 * m) | 0})`;
+    c.lineWidth = bh * (far ? 0.28 : 0.38);
+    const lx = cx + bw * sx + (far ? -bw * 0.10 : bw * 0.05), ly = cy + bh * 0.55;
+    c.beginPath(); c.moveTo(lx, ly); c.quadraticCurveTo(lx + sx * 20, ly + 12, lx + sx * 30, ly + (far ? 16 : 24)); c.stroke();
     for (let d = -1; d <= 1; d++) { c.beginPath(); c.moveTo(lx + sx * 30, ly + 22); c.lineTo(lx + sx * 40 + d * 4, ly + 27 + d * 2); c.stroke(); }
   }
   c.fillStyle = grad(c, p, cx, cy, bw);
@@ -1055,9 +1066,10 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Bullfrog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#3f5e2e', }, n),
   'Toad': (c, g, p, n) => amphFrog(c, g, p, { hue: '#857052', warty: true }, n),
   /* ── SALAMANDERS ── smooth skin, paddle tail, NOT lizards */
-  'Salamander': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#251a12', }, n),
+  /* ★ D-ART-130 — the land species lose the swimming paddle. */
+  'Salamander': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#251a12', terrestrial: true }, n),
   'Giant Salamander': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#5e4b38', stout: true }, n),
-  'Alpine Salamander': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#08090c', }, n),
+  'Alpine Salamander': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#08090c', terrestrial: true }, n),
   'Blind Salamander': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#f3e2dc', }, n),
   'Newt': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#857c3e', }, n),
   'Olm': (c, g, p, n) => amphSalamander(c, g, p, { hue: '#ecd5cd', gills: true }, n),
