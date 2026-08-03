@@ -1,0 +1,900 @@
+{
+ "felid": [
+  {
+   "species": "Clouded Leopard",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "It is not a cat at all — a sheep/goat torso on straight hooved tube legs with a short curled stub tail, when the tail alone should equal the entire head-and-body length."
+  },
+  {
+   "species": "Cougar",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The plain tawny coat is correctly unmarked, but the tail is a short upward curl instead of a very long heavy black-tipped rope, and the body is the shared lamb template rather than a deep-chested cat."
+  },
+  {
+   "species": "Fishing Cat",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The body is a sheep, not a cat — roached arching back, deep narrow chest, four tall straight jointless legs ending in blunt caps with no paws, no tail, and the coat is a uniform dalmatian scatter of round dots rather than rows of solid spots with neck stripes."
+  },
+  {
+   "species": "Ocelot",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "It reads as a spotted sheep, not a cat — hoof-capped tube legs instead of paws, an ungulate barrel body, a thin stub tail, and blotchy scattered spots instead of chain-like rosettes streaking along the flank."
+  },
+  {
+   "species": "Caracal",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "It is not built as a cat at all — barrel torso with a sagging belly on four straight pillar legs with dark hoof-like tips, no shoulder blade, no waist tuck, no digitigrade hock, so it reads as a small cream ungulate wearing cat ears."
+  },
+  {
+   "species": "Cat",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The warm-brown striped patch across the flank reads as a saddle blanket laid on top of a cold grey body — a hard-edged rectangular mat with combed strokes that clashes in hue with the coat and overhangs the belly contour, instead of tabby markings living in the fur."
+  },
+  {
+   "species": "Cheetah",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The tail is a short thick stub curled up over the rump when a cheetah's is nearly body-length, thin and white-tipped, and the torso is a level sausage with no deep narrow chest or whippet waist."
+  },
+  {
+   "species": "Jaguar",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "It is not built as a cat at all — a barrel torso on four short straight hoof-tipped legs with a thin rat tail — and its head is indistinguishable from the Leopard's in the same batch."
+  },
+  {
+   "species": "Leopard",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "Body and head are the Jaguar render reused — a chunky short-legged hoof-tipped barrel with a short thin tail — so neither the low-slung slender cat build nor the tail nearly as long as the body exists."
+  },
+  {
+   "species": "Bobcat",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The whole animal is a spotted lamb - deep barrel torso, upright straight legs with hoof-like dark tips instead of digitigrade paws - so the leopard-spot pattern is doing all the identification work while the skeleton says ungulate."
+  },
+  {
+   "species": "Tiger",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The stripes are painted inside a hard-edged rectangular patch that stops in mid-flank and mid-shoulder instead of wrapping the body contour, and the tail is a short boneless stub with no rings."
+  },
+  {
+   "species": "Lion",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The ear is a flat circular cutout sitting beside the eye rather than a cupped round ear on top of the skull, and the mouth is a cartoon smile curve with no jawline, so the face under the mane is not built like a cat's."
+  },
+  {
+   "species": "Lynx",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "Two of the three mustReads are missing outright — no flared facial ruff and no oversized snowshoe paws (feet are the same blunt tube stubs as every other animal here) — so the render reads as a spotted goat with a tuft."
+  },
+  {
+   "species": "Wildcat",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "It stands on the horse's leg kit — four straight unjointed tubes with dark hoof-shaped tips, no paws, no hock or elbow — so a cat's head is bolted to an ungulate body."
+  },
+  {
+   "species": "Sand Cat",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "A single giant disc-ear is pasted over the skull so the head has no cranium at all, only a tiny muzzle wedge protruding from behind it."
+  },
+  {
+   "species": "Serval",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The defining tall oval ears are replaced by the same single flat disc worn by the Sand Cat, so the head is neither a serval's nor unique."
+  },
+  {
+   "species": "Snow Leopard",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The single most iconic trait is absent: instead of an enormously long thick ropy tail there is a short white club with a fan of straight black bristles radiating from it, reading as a hairbrush stuck to the rump."
+  }
+ ],
+ "procyonid": [
+  {
+   "species": "Coati",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The long upturned flexible snout — the single most identifying feature of a coati — is not rendered, and the tail hangs in a low curl instead of standing vertical like a flagpole."
+  },
+  {
+   "species": "Kinkajou",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "It is drawn as a slender long-legged hoofed quadruped with a short thick curled tail, when a kinkajou is a compact woolly arboreal carnivoran whose long prehensile tail should be roughly body length."
+  },
+  {
+   "species": "Raccoon",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The animal is a featureless near-white barrel with a dead-flat back — no hunched arch with the rump above the shoulders, no grizzled dark coat, no long-fingered plantigrade hands — so the three short tail bands are the only thing carrying the ID."
+  },
+  {
+   "species": "Red Panda",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "All three signature reads fail at once — no white face mask with tear-stripes, no jet-black legs and belly (the legs are the same salmon as the body), and no pale rings on the tail — while the silhouette is the same long-legged pony body used for the Red Fox, so it reads deer-sized rather than raccoon-sized."
+  }
+ ],
+ "(no family declared)": [
+  {
+   "species": "Colugo",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "There is no gliding membrane anywhere — the defining patagium spanning neck to fingertips to tail tip is absent, and the animal stands as an ordinary hooved quadruped instead of gliding."
+  }
+ ],
+ "bovid": [
+  {
+   "species": "Cow",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "Two of the three mustReads are simply absent — there is no udder and no hanging throat dewlap — and the barrel does not sag, so the silhouette below the neck is still the batch's generic torso."
+  },
+  {
+   "species": "Duiker",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The diagnostic posture is missing — the back is essentially level with only a faint arch, so the hunched, rump-higher crouch that defines a duiker never reads; there is also an unexplained dark round blotch on the near haunch that looks like a rendering artifact rather than markings."
+  },
+  {
+   "species": "Eland",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "Two of the three mustRead traits are absent — there is no dewlap of loose skin under the throat (the neckline is a clean smooth curve) and no shoulder hump (the topline is flat), so the body is a mid-sized generic antelope rather than the massive ox-like frame the species requires."
+  },
+  {
+   "species": "Antelope",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The torso is a uniform smooth tube with no deep chest and no tucked belly, with the shoulder and hip reading as two bolted-on ellipses, and the whole coat is turquoise rather than the tan flank and white belly."
+  },
+  {
+   "species": "Nilgai",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The body is the batch's generic pale barrel-and-tube-legs mannequin — level-backed instead of sloping down from high shoulders, no slate blue-grey coat, no throat beard — so it is identical to the Oryx below the neck."
+  },
+  {
+   "species": "Oryx",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The black leg markings are entirely absent and the body is the same slab-sided pale barrel as the Nilgai's, so nothing below the horns says oryx."
+  },
+  {
+   "species": "Hartebeest",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The two skeletal signatures are absent — the face is nowhere near long enough and the horns sit on a smudge instead of a raised bony pedestal — while the back reads level rather than sloping steeply to the hindquarters, so the whole animal falls back to generic-antelope."
+  },
+  {
+   "species": "Ibex",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The horns are a short smooth ram curl instead of massive knobbed backward-arcing ibex horns, and the shaggy coat is drawn as loose spikes protruding off the belly, back and flanks — detached strands breaking the silhouette rather than fur growing from it."
+  },
+  {
+   "species": "Gaur",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The horns form a closed ring passing in front of the face rather than two upcurving crown horns, which destroys both the head silhouette and the pale forehead patch it is supposed to frame."
+  },
+  {
+   "species": "Gazelle",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The head is interchangeable with the Gerenuk's, and the shoulder/haunch read as pasted-on soft discs rather than muscle joined to the torso."
+  },
+  {
+   "species": "Gerenuk",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The head is a copy of the Gazelle's instead of the tiny huge-eared wedge that is the whole point of a gerenuk, so only the neck length distinguishes the two animals."
+  },
+  {
+   "species": "Goat",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "All three identifying features are missing — no backward-sweeping horns, no chin beard, and the tail hangs down as a dark blob instead of flicking up — so the animal reads as a sheep, which the reference note explicitly warns against."
+  },
+  {
+   "species": "Cattle",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The mouth is broken — a pale grey wedge hangs off the end of the jaw looking like a detached lower lip, and the mouth line runs back far past where the commissure should sit."
+  },
+  {
+   "species": "Chamois",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "Zero chamois identity on the head — no facial mask and wrong-shaped horns, leaving a generic tan goat."
+  },
+  {
+   "species": "Impala",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The diagnostic long leaf ears are missing entirely and the muzzle droops into a hooked bulb, so the head is carried by horns alone, while the rump has neither the vertical black stripes nor the white patch and the hocks have no black tufts."
+  },
+  {
+   "species": "Kudu",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The flank striping renders as a dense black scribbled brush mass hanging off the shoulder and past the belly line instead of 6-10 thin clean white vertical stripes, and it reads as damage on the coat."
+  },
+  {
+   "species": "Bongo",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The horns stand almost straight up with a forward tip curl instead of sweeping heavily back over the neck, and the flank stripes render as dark brown on chestnut - the polarity is inverted from the required white stripes, and mid-back they collapse into one solid smeared slab."
+  },
+  {
+   "species": "Buffalo",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The C-shaped horn is planted over the front of the muzzle instead of beside the cheek and there is no forehead boss, so the head reads as a ram or warthog rather than a Cape buffalo."
+  },
+  {
+   "species": "Bull",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "Two of three mustRead features are missing - there is no pendulous dewlap under the throat at all, and the shoulder mass is a flat dark colour patch with a hard straight polygon edge rather than an actual humped neck silhouette."
+  },
+  {
+   "species": "Water Buffalo",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The signature swept-back crescent horns render as a closed pale ring floating in front of the face, unattached to any readable horn base on the skull."
+  },
+  {
+   "species": "Saiga",
+   "severity": "minor",
+   "headUnique": true,
+   "topDefect": "The legs are pin-straight identical cylinders front and rear with no stifle, hock, or fetlock articulation, and the torso is a single undifferentiated barrel with a soft airbrushed disc pasted on the haunch."
+  },
+  {
+   "species": "Wild Sheep",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The horn is a flat untextured crescent with no spiral, no ridging and no taper, and it is drawn on top of the face so it occludes the eye and the entire muzzle instead of curling beside the head."
+  },
+  {
+   "species": "Wildebeest",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The shaggy mane is drawn as long dark streaks across the mid-barrel and flank rather than on the neck and dewlap, so the defining wildebeest feature lands in the wrong place on the body."
+  },
+  {
+   "species": "Serow",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The head has no ears at all, and the horns curve forward off the brow instead of running back as straight spikes off the skull top."
+  },
+  {
+   "species": "Sheep",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The horn curl is drawn in the face's own colour and laid flat across the front of the head, obscuring the eye and muzzle instead of coiling behind the ear."
+  },
+  {
+   "species": "Yak",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The horn is a flat ring painted over the front of the face — it occludes the eye and crosses the muzzle instead of attaching to the skull — and the ear is fused into it."
+  },
+  {
+   "species": "Mountain Goat",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "One horn springs from in front of the eye so the pair straddles the socket, and the eye itself is set on the crown rather than on the side of the face."
+  },
+  {
+   "species": "Musk Ox",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The horns are a constant-thickness ring laid over the face with no forehead boss and no down-and-out hook beside the cheeks."
+  },
+  {
+   "species": "Pronghorn",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The horn shaft is drawn in front of the eye rather than behind it, and the rump carries a flat dark-brown disc exactly where the pronghorn's signature white rump patch belongs (the white throat bands are also missing)."
+  },
+  {
+   "species": "Banteng",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The horns are a pale pretzel-shaped loop draped down the front of the face, unattached to the poll and covering the eye."
+  },
+  {
+   "species": "Bison",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "No horns, no beard and no shoulder hump — the topline is flat and actually rises toward the hips, giving exactly the uniform cow barrel the reference note warned against."
+  },
+  {
+   "species": "Tahr",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The horns are a flat pale hook pasted across the cheek and muzzle rather than short thick horns rising from the skull and curving back and down, and they occlude a face whose eye is only an unstructured brown blob."
+  },
+  {
+   "species": "Takin",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The horns are a flat pale ring resting on the cheek instead of thick bosses sweeping outward then back from the crown, and the shaggy golden coat is rendered as a fringe of loose straw spikes poking out of a smooth barrel with no humped shoulder."
+  },
+  {
+   "species": "Springbok",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The horns are two smooth, pale, unringed rubbery prongs drawn as a symmetric U hooking forward, instead of black ringed lyre horns curving IN at the tips — and with no side stripe and no white belly the whole animal is a single flat tan."
+  }
+ ],
+ "canid": [
+  {
+   "species": "Coyote",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The tail is a grey bristled fan splayed out sideways like a feather duster — neither bushy nor hanging low — and reads as a rendering artifact rather than an anatomical part."
+  },
+  {
+   "species": "Dingo",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "It is built on an equine chassis — deep barrel torso, straight columnar legs ending in dark hoof nubs instead of paws, no digitigrade hock, and a stiff bottle-brush tail stuck on above the rump — so it reads as a sandy pony, not a lean wolfish dingo (the white feet are also absent)."
+  },
+  {
+   "species": "Dog",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "Same horse body as the Dingo — barrel ribcage, hooved stick legs, and a bristly brush tail carried low off the rump rather than a plumed tail over the back — so the silhouette is a pony, not a mid-sized dog."
+  },
+  {
+   "species": "African Wild Dog",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The muzzle is a featureless thin stick with no jaw depth, cheek or chin, so the whole head hangs on the ear disc alone; the white-tipped brush tail also renders as a fan of straight straw spikes rather than fur mass."
+  },
+  {
+   "species": "Arctic Fox",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The two defining head traits are inverted — pointed ears and a long slender muzzle where the species requires short rounded ears and a blunt short muzzle — and the tail is a thin dark-striped bottlebrush instead of a dense round white one."
+  },
+  {
+   "species": "Fennec Fox",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The tail is a radial spike-fan disc with a bright white ball at its tip mounted at the hip and pointing up and FORWARD over the back — the same generator artifact seen on Fisher and Fox — instead of a bushy black-tipped tail trailing behind."
+  },
+  {
+   "species": "Fox",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The proportions are a pony's, not a fox's — arched back, deep chest, four long straight legs, head carried high on a short neck — where the reference explicitly demands a body far lower and lighter than a dog's, and the tail is again the spike-fan with a white ball rather than a body-length white-tipped brush."
+  },
+  {
+   "species": "Pampas Fox",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The tail is a stiff radiating fan of bristles held out horizontally — it reads as a broom or a feather duster, not a long bushy dark-tipped tail carried low — and the body is an ungulate barrel on hoof-capped legs rather than a lean canid."
+  },
+  {
+   "species": "Hyena",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "This is the Horse asset recoloured and spotted — level topline instead of the skeletal steep slope from high shoulders to low hindquarters, pointed ears instead of large rounded ones, slender jaw instead of massive, and the identical bristle tail with the same pale bulb tip."
+  },
+  {
+   "species": "Jackal",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The whole animal reads as a pony — arched equine back, thick neck, four long straight legs ending in dark hooves, and a brush tail with a pale tip carried up — instead of a light, leggy, low-tailed canid."
+  },
+  {
+   "species": "Red Fox",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The body is a small horse, not a fox — deep chest, high withers, long straight pillar legs, a level back — and the brush tail is rendered as a flat splayed fan of separated bristles like a broom head rather than a thick cylindrical plume."
+  },
+  {
+   "species": "Maned Wolf",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The defining proportion is gone — the legs are ordinary quadruped length with no black stockings instead of stilts at ~60% of standing height, while an oversized squirrel-like tail plume is bolted to the hip."
+  },
+  {
+   "species": "Wolf",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "It is wearing the horse's body kit — the same bristle-fan tail with a pale club tip carried high off the rump, and four straight tube legs ending in dark hoof tips instead of paws."
+  },
+  {
+   "species": "Striped Hyena",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The heavy blunt hyena muzzle is drawn as a long needle snout and the two big pointed ears as one central cone, so the head reads as an anteater's — and the back stays level instead of sloping steeply from high shoulders to low hips."
+  },
+  {
+   "species": "Spotted Hyena",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The defining silhouette is missing — the topline is nearly level with no high shoulders sloping down to low hips, and the forelimbs are the same length as the hind ones, so the animal reads as a spotted pony."
+  }
+ ],
+ "cervid": [
+  {
+   "species": "Deer",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The large upright cupped ears are absent, and the neck is short and thick where it should be long and thin, so the head sits on the shoulders instead of rising from them."
+  },
+  {
+   "species": "Elk",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The body is a stack of separately shaded blobs with visible seams — shoulder and haunch discs sit on the barrel like decals — carried on four jointless untapered slab legs, and the required cream rump patch is rendered as a DARK blob (inverted) with no shaggy neck mane and no tail."
+  },
+  {
+   "species": "Okapi",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The defining stripe pattern is in the wrong place — bold stripes cover the neck, shoulder and whole barrel while the hindquarters and upper legs (the only parts that should be striped) are plain, inverting the animal's one diagnostic marking."
+  },
+  {
+   "species": "Giraffe",
+   "severity": "minor",
+   "headUnique": true,
+   "topDefect": "Anatomy reads correctly; what remains is surface — the coat is flat vector fill with hard-edged polygonal patches and airbrushed limb shading, with no hide grain, no soft patch borders, and a plastic sheen along the neck."
+  },
+  {
+   "species": "Caribou",
+   "severity": "minor",
+   "headUnique": true,
+   "topDefect": "The neck ruff is not a ruff — the same comb of hard straight spikes runs the entire spine, flank and belly from ears to tail, so the one feature that should localise to the throat is smeared over the whole animal."
+  },
+  {
+   "species": "Reindeer",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The antlers are generic upright branched deer forks with tines going up and back — there is no forward-sweeping palmate brow shovel projecting over the face, which is the one thing that separates reindeer antlers from every other deer's — and the neck carries no thick pale mane."
+  },
+  {
+   "species": "Moose",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The antler palms attach at eye level and cover the face - hiding the eye completely - and a stray hard silver ring is drawn on the forehead between them."
+  }
+ ],
+ "equid": [
+  {
+   "species": "Donkey",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "Two of the three mustRead traits are missing or wrong — the ears are stubby rounded pads instead of very long upright blades, and there is no short upright bristly mane at all (the neck crest is perfectly smooth); only the tip-tufted tail lands."
+  },
+  {
+   "species": "Horse",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The crest mane along the arched neck is simply absent, and the tail is a straight bristle brush ending in a pale bulb blob rather than long flowing hair off a high dock — two of the three mustReads fail as structure, not as texture."
+  },
+  {
+   "species": "Wild Ass",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The very long upright ears — the species' defining feature — are collapsed into a single dark blob on top of the head, and the erect mane along the neck is missing."
+  },
+  {
+   "species": "Wild Horse",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The muzzle 'lip' renders as a hard-edged tan stick that projects past the nose tip into empty space with a knob on the end, so the face terminates in a floating prop rather than a nose pad with nostrils."
+  },
+  {
+   "species": "Wild Pony",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "Its head is a rescaled copy of the Wild Horse's, so the one place the two species must diverge is the one place they are identical."
+  },
+  {
+   "species": "Zebra",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The ear is a flat opaque triangle sitting on top of the eye socket, and the mouth is a rectangular machined bar instead of a lip."
+  }
+ ],
+ "camelid": [
+  {
+   "species": "Dromedary Camel",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The single hump is a separate smooth dome sitting on the spine with a visible seam where it meets the back, rather than a mass of the animal's own topline — and the reference's knobbly knee pads and splayed padded feet are absent, the legs ending in small dark hoof nubs like the horses in this batch."
+  },
+  {
+   "species": "Alpaca",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The dense woolly fleece is drawn as radiating straight quills that break the silhouette into a hedgehog outline while the legs stay bare and smooth, so the animal's defining coat reads as spines rather than wool."
+  },
+  {
+   "species": "Camel",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The hump is a separate lighter dome dropped on top of the back with a visible seam where it meets the body instead of flowing out of the spine, and the legs are far too short - the leg mass is well under half the total height against a body that sits low and heavy."
+  },
+  {
+   "species": "Llama",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The muzzle terminates in a hooked grey mechanical-looking lip bar instead of a nose pad with nostrils and a split lip, and the ears are short nubs where the species' whole silhouette cue is long banana ears."
+  },
+  {
+   "species": "Bactrian Camel",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The two humps are separate stuck-on domes resting on a dead-flat slab topline with a visible seam beneath them, so they read as loaves set on a table rather than as mass rising out of the back."
+  }
+ ],
+ "pachyderm": [
+  {
+   "species": "Elephant",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The huge fan ear has detached from the head and sits as a flat dark teardrop pasted onto the shoulder, with a separate hard-edged angular plate jutting above it off the crown, so the head-to-body junction is anatomically broken; the trunk tip also has no grasping lips and the back shows no saddle dip."
+  },
+  {
+   "species": "African Elephant",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The fan ear is mounted on the torso rather than the skull, swallowing the entire head-neck-shoulder junction so the head has no silhouette of its own, and the back arches convex where the reference calls for a saddle-shaped concave dip."
+  },
+  {
+   "species": "Forest Elephant",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The trunk hangs BELOW the ground plane — it passes straight through the contact shadow and the foot line and floats off the bottom of the standing pose — while the legs are too slender and short to read as elephant columns."
+  },
+  {
+   "species": "Hippopotamus",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The body is a slim horizontal sausage on moderately long slim legs instead of an enormous barrel on stumpy pillars, so the one silhouette that makes a hippo a hippo is missing entirely."
+  },
+  {
+   "species": "Rhinoceros",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The hide is a smooth featureless grey with no plating and none of the deep shoulder and flank folds called for, so with its oversized bright eye and forward tusks the head reads as a hippo or pig rather than a rhino."
+  },
+  {
+   "species": "Asian Elephant",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The ear is an oversized hard-edged rectangular slab sitting on the shoulder instead of a small triangle behind the eye."
+  }
+ ],
+ "burrower": [
+  {
+   "species": "Aardvark",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The tall rabbit-like ears are missing entirely, replaced by a rounded dark flop cap, and the thick tapering kangaroo tail is instead a thin upward-curling hook on a flat-topped barrel with no arched back — three of the three mustReads fail."
+  },
+  {
+   "species": "Mole",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The forelimbs are ordinary tapering hoof-tipped legs set back under the chest, so the single most diagnostic mole feature - huge outward-turned spade digging hands beside the head - is absent entirely."
+  }
+ ],
+ "xenarthran": [
+  {
+   "species": "Armadillo",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The banded armour is a flat paint job — triangular chevrons airbrushed onto a smooth tube — with no raised bands, no carapace edge in the silhouette, no scute texture, and a smooth unringed tail that curls upward instead of tapering."
+  },
+  {
+   "species": "Giant Anteater",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The snout is a short flaring beak on a round skull instead of the long tapered tube that defines the animal, and the tail is a broken-looking spray of straight bristles with a pale capsule intersecting it rather than a bushy flag."
+  },
+  {
+   "species": "Pangolin",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The tail is a short, thin, unscaled, uniform-width tube curling upward off the rump instead of a thick tapering scaled tail as long as the whole body."
+  },
+  {
+   "species": "Sloth",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The animal has no claws whatsoever — the four straight tube legs end in tiny two-toe caps — and the long beaked snout makes it read as an anteater standing on a lawn rather than a flat-faced sloth."
+  }
+ ],
+ "mustelid": [
+  {
+   "species": "Fisher",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The body is a straight ribbed cylinder with no shoulder or hip mass and no taper into the neck, on four identical stubby pegs, and the tail is the shared spike-fan brush ending in a glowing white ball rather than a dark tapering mustelid brush."
+  },
+  {
+   "species": "Otter",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The tail is a thin curved string barely thicker than a leg, where the otter's single most defining feature is a thick muscular tail tapering from a base as deep as the hips."
+  },
+  {
+   "species": "Giant Otter",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The tail is a thin round tapering rope — the exact river-otter tail the reference note rules out — instead of a broad flattened paddle, and the stubby legs meet the smooth capsule body without shoulder or hip structure."
+  },
+  {
+   "species": "Civet",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The body proportions are inverted — long columnar legs holding a high, deep torso with a short upcurled tail, where a civet is low-slung on short legs with a long trailing ringed tail, so it reads as the Cheetah recoloured."
+  },
+  {
+   "species": "Weasel",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The animal has no tail at all — the long tube body simply ends at the rump — and the short legs render as hollow cylinders with visible open elliptical end caps."
+  },
+  {
+   "species": "River Otter",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The tail is a thin rope-like whip curving off the rump instead of the thick muscular base tapering to a point, and the feet are smooth rounded stubs with no toes and no webbing at all."
+  },
+  {
+   "species": "Marten",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The head is a recoloured clone of the Marsh Rodent and Meerkat heads, and the orange throat bib — the one marking that would break the tie — is not drawn."
+  },
+  {
+   "species": "Meerkat",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "It is drawn as a horizontal four-legged animal wider than it is tall, when the species is defined by the bolt-upright sentinel stance propped on hind legs and tail (row asks aspect 0.5, upright)."
+  },
+  {
+   "species": "Sea Otter",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "It is drawn standing on four legs like the Seal and Sea Lion rather than floating belly-up, so the one posture that identifies a sea otter is absent."
+  },
+  {
+   "species": "Wolverine",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "Every leg ends in an angle-cut hollow cylinder with a dark elliptical hole where the paw should be — no foot, no toes, no claws — on an animal whose mustRead is 'huge clawed paws'."
+  },
+  {
+   "species": "Mink",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The head is a hue-shifted duplicate of the Mongoose head, and the tail is a fan of straight spikes ending in a stray white dot rather than a thick tapering furred tail."
+  },
+  {
+   "species": "Mongoose",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The head is the Mink head recoloured, and the animal stands on long upright legs like a small dog instead of reading as a very long low tubular body on short legs."
+  },
+  {
+   "species": "Badger",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The flank is a full-length dark horizontal bar with dozens of dark spikes hanging off it — a comb, not a badger's pelage — while the actual white facial stripe is missing and a black void sits in the cheek."
+  },
+  {
+   "species": "Stoat",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The body proportion and black tail tip are right, but the limbs are four featureless tubes with no feet or toes and the tail is a bare curling whip rather than a furred one, so the correct anatomy is undermined by unfinished extremities."
+  }
+ ],
+ "pinniped": [
+  {
+   "species": "Fur Seal",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "It has no flippers at all — it stands on four short toed terrestrial legs, so the very long fore-flippers propping the chest up and the forward-rotated hind flippers that define a walking otariid are simply absent, leaving a plain ribbed barrel that could be any small mammal."
+  },
+  {
+   "species": "Walrus",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "The dense bristle moustache — the single most identifying feature of a walrus muzzle — is entirely absent, leaving a smooth dog snout with tusks glued to it."
+  },
+  {
+   "species": "Sea Lion",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "There are no long fore-flippers lifting the chest — the body is a smooth extruded cylinder on four stubby paddles, capped at the rear by a flat pipe-cut disc, and the head is the same part the Seal wears."
+  },
+  {
+   "species": "Seal",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "It is propped up on four limbs like a sea lion instead of lying on its belly with hind flippers trailing back, which by the row's own note makes it the wrong pinniped."
+  }
+ ],
+ "ursid": [
+  {
+   "species": "Panda",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The black markings are laid out as two vertical belted-cow bands across the barrel while all four legs stay white, destroying the panda's actual pattern of a shoulder band running down into solid black forelegs."
+  },
+  {
+   "species": "Grizzly Bear",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "All three diagnostics fail at once — the topline is flat so there is no shoulder hump above the rump, the facial profile is not dished, and the front feet end in tiny dark nubs instead of long pale claws, leaving a generic brown ursine blob."
+  },
+  {
+   "species": "Black Bear",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "It does not read as a bear at all - a light-grey sheep-barrel body on straight cylinder legs ending in dark pointed hoof-like tips, with no plantigrade paws, no claws, and a level back instead of the required rump-higher-than-shoulders line."
+  },
+  {
+   "species": "Brown Bear",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The feet are dark pointed hoof tips on tapered cylinder legs - the long straight pale digging claws that are this species' single most diagnostic feature are entirely missing, and the shoulder hump is only a faint rise rather than a muscular mass."
+  },
+  {
+   "species": "Polar Bear",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The ear is two overlapping flat grey discs stuck on the forehead instead of a small round furred ear, and the same flat-disc primitive is punched into the white rump as a conspicuous hard-edged grey circle."
+  },
+  {
+   "species": "Bear",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The legs are literal flat rectangles — parallel sides, square corners jammed into the body, no taper or joint — ending in oval shadow pads with a row of five white blocks for claws."
+  },
+  {
+   "species": "Sun Bear",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The head is the same generic dark round-eared skull the Tasmanian Devil in this batch wears, and the body carries none of the species markers — no golden-cream chest crescent, no long curved climbing claws, and hoof-like feet instead of flat plantigrade bear paws."
+  },
+  {
+   "species": "Sloth Bear",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The coat is a pale grey striped barrel with straggly straw sticking out of the silhouette, not a shaggy black coat with a shoulder mane and a pale chest blaze — the dark head sits on a light body like two different animals joined."
+  },
+  {
+   "species": "Spectacled Bear",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The body is a pale grey-brown barrel on four jointless tubes with a solid dark disc on the hip, so the blackish shaggy bear mass never arrives and the dark head looks bolted onto a different creature."
+  }
+ ],
+ "rodent": [
+  {
+   "species": "Hyrax",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The head is both too small for the body and carries none of the species-specific features — no long whiskers at all — so a genuinely correct tailless rounded body is topped by an anonymous brown knob."
+  },
+  {
+   "species": "Marsh Rodent",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "None of the three species cues exist — no large orange incisors, no long scaly rope tail (the tail is a short thin upward curl), no webbed hind feet — so this is an unnamed small carnivore, not a muskrat/coypu."
+  },
+  {
+   "species": "Beaver",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The defining orange chisel incisors are entirely missing, and the hind legs terminate in open-ended tubes whose flat elliptical cut faces are visible where feet should be."
+  }
+ ],
+ "marsupial": [
+  {
+   "species": "Koala",
+   "severity": "minor",
+   "headUnique": true,
+   "topDefect": "It does not actually grip the trunk — the body floats in front of the log with paw shapes resting on its own belly rather than forelimbs wrapping the bole with claws — and the limbs stay unresolved lumps."
+  },
+  {
+   "species": "Wombat",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The defining broad bare-nosed blunt snout is missing (the muzzle tapers to a small bean nose) and the 'short powerful bowed digging legs' are straight thin pegs ending in rounded blobs with no claws."
+  },
+  {
+   "species": "Possum",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The prehensile tail is a short, smooth, body-coloured tube instead of a long naked scaly rat tail, and the legs terminate in open hollow cylinders with visible dark interiors rather than feet."
+  },
+  {
+   "species": "Quoll",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The spotting is inverted — black blotches on a pale cream back instead of white spots on dark fur — and it stops dead at the rump instead of continuing onto the tail, which is itself a stiff radiating fan of identical bristle spikes rather than a bushy tail."
+  },
+  {
+   "species": "Sugar Glider",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "There is no patagium and no long bushy tail — the animal is rendered as a small standing hoofed quadruped on four tube legs with a short bristle fan for a tail, so the two traits that make it a glider are simply absent."
+  },
+  {
+   "species": "Tasmanian Devil",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The head is small, round and identical to the Sun Bear's instead of the oversized blocky skull with gaping jaws that defines the species — and the white chest band is missing while the tail is a thin curled hook rather than a thick tapering one."
+  }
+ ],
+ "suid": [
+  {
+   "species": "Warthog",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The head is interchangeable with the Wild Boar's, and the tusks emerge as straight spikes from the upper snout beside the eye instead of curving up out of the jaw."
+  },
+  {
+   "species": "Wild Boar",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The bristly coat is a rectangular patch of straw-like strokes that spray off the silhouette on all four sides — including below the belly and behind the rump — instead of a mane along the spine, and the back is level with no shoulder hump."
+  },
+  {
+   "species": "Wild Pig",
+   "severity": "major",
+   "headUnique": true,
+   "topDefect": "No shoulder hump and no tusks — the topline is dead level and the only thing near the mouth is the same floating lip bar the horse has, angled down and back where an upward tusk should be."
+  },
+  {
+   "species": "Mountain Tapir",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The snout terminates in a flat pig-style nose disc instead of a short flexible overhanging proboscis, and two unexplained black wedges are stamped on the cheek in front of the eye."
+  },
+  {
+   "species": "Peccary",
+   "severity": "blocker",
+   "headUnique": false,
+   "topDefect": "The tusks are two thin grey rods projecting forward along the mouthline rather than straight-down tusks rooted in the jaw, so the peccary's only identifying feature fails to read."
+  },
+  {
+   "species": "Pig",
+   "severity": "major",
+   "headUnique": false,
+   "topDefect": "The curly corkscrew tail is entirely absent — the rump instead carries a hard-edged flat maroon disc with no blend into the hide."
+  },
+  {
+   "species": "Tapir",
+   "severity": "blocker",
+   "headUnique": true,
+   "topDefect": "The snout is a flat pink pig disc with two round nostrils instead of a short mobile proboscis, so the render lands on exactly the misread the reference explicitly warns against."
+  }
+ ]
+}

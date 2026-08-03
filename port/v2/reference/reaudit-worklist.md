@@ -189,3 +189,45 @@ this is **not a worklist item — it is a fork in the road**:
 
 ⚠ This is the same decision as the art upgrade, arriving from the other side: the verbatim
 engine is exactly where "generated" and "authored" meet. Worth settling together.
+---
+
+## ★ THE 962-ASSET STRICT QUEUE — read the bands before panicking (checked wave 31)
+
+`reference/nick-strict/engine_fix_queue_962_assets.json` looks like 962 outstanding defects.
+It is not. Broken down by its own `review_band`:
+
+| band | count | what it means |
+|---|---|---|
+| BLOCKER | 9 | **effectively all closed already** |
+| FAIL | 147 | the real remaining work — 117 of them fauna |
+| PASS_WITH_POLISH | 801 | acceptable; improvable. A different tier. |
+| PASS | 5 | done |
+
+**Eight of the nine blockers are the four cross-kingdom duplicates** (Tardigrade, Green Algae,
+Reindeer Lichen, Snow Algae — each listed twice, once per kingdom), which D-CAT-1 closed by
+deduping the roster. The ninth is Insect-Eating Bat rendering as an insect, and it is routed
+correctly through CANON now.
+
+⚠ **LATENT HAZARD, not yet cleaned:** a dead `'Insect-Eating Bat'` row still sits in
+`INVERT_NAME` (invertoverrides.ts). It is shadowed by the CANON route so it is harmless
+today — but if that route were ever removed or renamed, the bat would silently go back to
+being a bee, with every gate green. Delete the dead row.
+
+**So the honest outstanding count is 147 FAIL + 801 polish**, not 962 — and the FAIL tier
+overlaps heavily with the mammal family work and the 61 never-checked quadruped rows.
+
+## ★ THE 61 NEVER-CHECKED ROWS (from nick-anatomy-fixqueue.csv)
+
+Not 55 — **61**, and they are almost entirely the same mammals the family work covers.
+⚠ Nick's own wording on them sharpens the diagnosis in a way the family plans alone do not
+reach: **several animals are on the WRONG FAMILY CHASSIS.**
+  · *Cheetah* — "current **ungulate-like body** lacks deep chest, tucked waist, feline
+    paws/head" — a cat drawn on the bovid plan.
+  · *Panda* — "the body is a **cow-like quadruped**. Use a round ursid torso, broad bear head."
+  · *Sloth* — needs hanging arboreal posture and hook claws, not a shaggy ground quadruped.
+  · *Colugo* — needs a patagium spanning neck, limbs, fingers and tail.
+  · *Meerkat* — needs the upright sentinel stance and digging forefeet.
+**Fixing the felid and ursid plans will not reach Cheetah or Panda until they are pointed at
+the right family.** Routing sits underneath proportion. And several of these are MISSING
+SIGNATURES rather than wrong proportions — a patagium, a posture — which cannot be dialled
+in and need an axis.
