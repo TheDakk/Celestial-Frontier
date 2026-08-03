@@ -45,13 +45,13 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Bull': { legs: 0.1398, depth: 0.1848, len: 0.2273, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'shorthorn', hue: '#4a3b31', family: 'bovid', earShape: 'spoon' },
   'Wildebeest': { legs: 0.1745, depth: 0.147, len: 0.1929, neck: 0.08, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'plume', horn: 'boss', coat: 'stripes', hue: '#5f5a55', family: 'bovid' },
   /* ── CANIDS: the long muzzle, the pricked ear, the brush tail ── */
-  'Coyote': { legs: 0.1481, depth: 0.1226, len: 0.191, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#a08a68', family: 'canid' },
-  'Jackal': { legs: 0.145, depth: 0.12, len: 0.1771, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#a07a4e', family: 'canid' },
+  'Coyote': { legs: 0.1481, depth: 0.1226, len: 0.191, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#a08a68', family: 'canid' , tailTip: '#26201d' },
+  'Jackal': { legs: 0.145, depth: 0.12, len: 0.1771, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#a07a4e', family: 'canid' , tailTip: '#2a231f' },
   'Fox': { legs: 0.1193, depth: 0.1009, len: 0.1903, neck: 0.06, muzzle: 0.50, ears: 'large', tail: 'bushy', hue: '#c4642a', family: 'canid' },
   'Pampas Fox': { legs: 0.1276, depth: 0.1082, len: 0.1775, neck: 0.06, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#9c8f7c' , family: 'canid' },
-  'Maned Wolf': { legs: 0.2583, depth: 0.1363, len: 0.1431, neck: 0.09, muzzle: 0.50, ears: 'large', tail: 'bushy', hue: '#c2662a', family: 'canid', earScale: 1.30 },
-  'African Wild Dog': { legs: 0.1565, depth: 0.1191, len: 0.1855, neck: 0.07, muzzle: 0.44, ears: 'large', tail: 'plume', coat: 'blotches', hue: '#9a6f3c', family: 'canid', earShape: 'round', earScale: 1.45 },
-  'Dingo': { legs: 0.1563, depth: 0.1321, len: 0.1733, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#c08b4c', family: 'canid' },
+  'Maned Wolf': { legs: 0.2583, depth: 0.1363, len: 0.1431, neck: 0.09, muzzle: 0.50, ears: 'large', tail: 'bushy', hue: '#c2662a', family: 'canid', earScale: 1.30 , tailTip: '#f0ece2' },
+  'African Wild Dog': { legs: 0.1565, depth: 0.1191, len: 0.1855, neck: 0.07, muzzle: 0.44, ears: 'large', tail: 'plume', coat: 'blotches', hue: '#9a6f3c', family: 'canid', earShape: 'round', earScale: 1.45 , tailTip: '#f4f1e8' },
+  'Dingo': { legs: 0.1563, depth: 0.1321, len: 0.1733, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#c08b4c', family: 'canid' , tailTip: '#efeae0' },
   'Dog': { hue: '#a9743f', legs: 0.1423, depth: 0.1325, len: 0.163, neck: 0.07, muzzle: 0.44, ears: 'large', tail: 'bushy', family: 'canid' },
   /* ── FELIDS: short muzzle, round ear, long tail; rosettes where they belong ── */
   'Bobcat': { legs: 0.1268, depth: 0.114, len: 0.1776, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'stub', coat: 'spots', hue: '#c39a63', family: 'felid', earShape: 'tuft' },
@@ -90,7 +90,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Kinkajou': { legs: 0.096, depth: 0.1095, len: 0.1437, neck: 0.05, muzzle: 0.30, ears: 'round', tail: 'long', hue: '#a06e3c', family: 'procyonid' },
   'Mole': { legs: 0.0295, depth: 0.0790, len: 0.1610, neck: 0.02, muzzle: 0.46, ears: 'tiny', tail: 'stub', hue: '#39322e', family: 'burrower', earShape: 'hidden', foot: 'claw' },
   'Hyrax': { legs: 0.0595, depth: 0.0899, len: 0.1474, neck: 0.03, back: 'arched', muzzle: 0.28, ears: 'round', tail: 'none', hue: '#8b7a63', family: 'rodent' },
-  'Aardvark': { legs: 0.1078, depth: 0.1259, len: 0.2065, neck: 0.06, back: 'arched', muzzle: 0.80, ears: 'huge', tail: 'long', hue: '#b09c85', family: 'burrower', earShape: 'leaf' },
+  'Aardvark': { legs: 0.1078, depth: 0.1259, len: 0.2065, neck: 0.06, back: 'roached', muzzle: 0.80, ears: 'huge', tail: 'long', hue: '#b09c85', family: 'burrower', earShape: 'leaf' },
   /* ── BEARS, PIGS, EQUIDS ── */
   'Spectacled Bear': { legs: 0.1111, depth: 0.1593, len: 0.1959, neck: 0.05, muzzle: 0.40, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'shaggy', face: 'tears', hue: '#3b332c', family: 'ursid' },
   'Wild Pig': { legs: 0.1014, depth: 0.1365, len: 0.2015, neck: 0.04, back: 'sloped', muzzle: 0.56, jaw: 'barrel', ears: 'large', tail: 'tuft', coat: 'shaggy', hue: '#6b5a49', family: 'suid' },
@@ -141,7 +141,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* "bold stripes continuing onto the legs · stiff upright brush mane · tufted tail" */
   'Zebra': { legs: 0.1837, depth: 0.1567, len: 0.2056, neck: 0.120, muzzle: 0.44, ears: 'large', tail: 'tuft', coat: 'bands', hue: '#e8e4dc', family: 'equid' , legMarks: true },
   /* "black bandit mask · ringed banded tail · hunched arched back" */
-  'Raccoon': { legs: 0.0769, depth: 0.1106, len: 0.1905, neck: 0.040, back: 'arched', muzzle: 0.30, ears: 'round', tail: 'banded', face: 'mask', hue: '#8d8a86', family: 'procyonid' },
+  'Raccoon': { legs: 0.0769, depth: 0.1106, len: 0.1905, neck: 0.040, back: 'roached', muzzle: 0.30, ears: 'round', tail: 'banded', face: 'mask', hue: '#8d8a86', family: 'procyonid' },
   /* "flat scaly paddle tail · orange chisel incisors · stocky humped body" */
   'Beaver': { legs: 0.0521, depth: 0.1186, len: 0.214, neck: 0.032, back: 'humped', muzzle: 0.26, jaw: 'broad', ears: 'tiny', tail: 'paddle', hue: '#6b4a30', family: 'rodent' },
   /* "long bushy ringed tail · white face mask with rust tear-stripes · black legs" */

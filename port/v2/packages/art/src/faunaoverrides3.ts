@@ -738,8 +738,16 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     c.restore();
   }
 
-  if (!spec.dome) {
-    eye(c, nose - depth * (spec.profile === 'eel' ? 0.9 : 0.70), cy - depth * 0.34,
+  /* ★ WAVE 42, CODE PASS — TWO SPECIES WERE GETTING AN EXTRA, WRONGLY-PLACED EYE.
+     · `snout:'hammer'`: D-ART-123 draws the hammerhead's eyes out on the tips of
+       the cephalofoil — which is the whole point of the animal — and then this
+       generic eye ran anyway, putting a THIRD eye on the body behind the bar.
+     · `gape`: the basking shark's open mouth is a dark tunnel centred here, so
+       its opaque white eye landed INSIDE its own aperture. Lifted clear of the
+       gape rather than suppressed, because a basking shark does have an eye. */
+  if (!spec.dome && spec.snout !== 'hammer') {
+    const gapeLift = spec.gape ? depth * 0.30 : 0;
+    eye(c, nose - depth * (spec.profile === 'eel' ? 0.9 : 0.70), cy - depth * 0.34 - gapeLift,
       Math.max(4, depth * (spec.profile === 'globe' ? 0.22 : spec.bighead ? 0.30 : 0.18)));
   }
 }

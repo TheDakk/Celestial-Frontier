@@ -65,14 +65,17 @@ const nv = (name: string, salt: number, amt: number): number =>
     the only thing separating two identical specs was a name hash. Colour is the
     cheapest strong separator there is, and for a krill or a water flea —
     translucent things with visible innards — it is most of the identity. */
+/* ★ WAVE 42, CODE PASS — THE SPECIES-HUE FIX EXISTED TWICE, DRIFTED. This local
+   copy used 1.32/1.30/1.28 and 0.42/0.44/0.48 while surface.ts's speciesHue —
+   the one the rest of the catalogue uses — used 1.30/1.29/1.27 and
+   0.43/0.45/0.48, and this file's ten painters were split five-and-five between
+   them. Two implementations of one idea drift silently; the v1.8.6 size clamp
+   is the incident this project already paid for that lesson with.
+   `hued` now DELEGATES rather than being deleted outright, so the five call
+   sites keep their local name and there is exactly one implementation. The
+   coefficient change is sub-1% and artlock is the check on it. */
 function hued(pIn: Pal, hue?: string): Pal {
-  if (!hue) return pIn;
-  const n = parseInt(hue.slice(1), 16);
-  const hr = (n >> 16) & 255, hg = (n >> 8) & 255, hb = n & 255;
-  const f = (a: number, b: number, d: number): string => 'rgb(' + (a | 0) + ',' + (b | 0) + ',' + (d | 0) + ')';
-  return { cr: hr, cg: hg, cb: hb, base: hue,
-    lit: f(Math.min(255, hr * 1.32), Math.min(255, hg * 1.30), Math.min(255, hb * 1.28)),
-    dark: f(hr * 0.42, hg * 0.44, hb * 0.48) };
+  return speciesHue(pIn, hue);
 }
 
 function shadow(c: Ctx, cx: number, cy: number, rx: number): void {

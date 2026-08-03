@@ -588,14 +588,16 @@ export function faunaHorseshoeCrab(c: Ctx, g: G, pIn: Pal): void {
   const cg = c.createRadialGradient(cx - w * 0.30, cy - w * 0.34, 6, cx, cy - w * 0.10, w * 1.1);
   cg.addColorStop(0, p.lit); cg.addColorStop(0.55, p.base); cg.addColorStop(1, p.dark);
   c.fillStyle = cg;
-  c.beginPath();
-  c.moveTo(cx - w * 0.42, cy + w * 0.30);
-  c.bezierCurveTo(cx - w * 1.02, cy + w * 0.22, cx - w * 1.06, cy - w * 0.66, cx, cy - w * 0.72);
-  c.bezierCurveTo(cx + w * 1.06, cy - w * 0.66, cx + w * 1.02, cy + w * 0.22, cx + w * 0.42, cy + w * 0.30);
-  c.lineTo(cx + w * 0.36, cy + w * 0.14);
-  c.bezierCurveTo(cx + w * 0.80, cy + w * 0.06, cx + w * 0.72, cy - w * 0.48, cx, cy - w * 0.54);
-  c.bezierCurveTo(cx - w * 0.72, cy - w * 0.48, cx - w * 0.80, cy + w * 0.06, cx - w * 0.36, cy + w * 0.14);
-  c.closePath();
+  /* ⚠ WAVE 42, CODE PASS — A PATH BUILT AND THROWN AWAY. Eight lines here
+     described the horseshoe crab's shield as a proper ANNULUS: an outer sweep,
+     then an inner return edge giving the carapace a rim with depth. It was
+     never filled — the next statement opened a fresh path — so what shipped was
+     the simpler near-duplicate below, a plain dome. Silent, and invisible to
+     every gate: the code runs, allocates and computes, and paints nothing.
+     Deleted rather than revived: the dome is what all the surrounding tuning
+     (ridges, spines, tail placement) has been shaped against for twenty waves,
+     and quietly swapping the silhouette now would be a change nobody asked for.
+     Recorded here so the next reader knows the annulus was tried. */
   c.beginPath();
   c.moveTo(cx - w * 0.44, cy + w * 0.34);
   c.bezierCurveTo(cx - w * 1.04, cy + w * 0.20, cx - w * 1.06, cy - w * 0.68, cx, cy - w * 0.74);

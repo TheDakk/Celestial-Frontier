@@ -2057,18 +2057,24 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Sun Bear': { legs: 0.0939, depth: 0.1438, len: 0.2004, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c', family: 'ursid' },
   'Sloth Bear': { legs: 0.1001, depth: 0.1697, len: 0.2227, neck: 0.05, muzzle: 0.55, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#2b2726', family: 'ursid' },
   /* canids + small mammals where ears/tails are the read */
-  'Red Fox': { legs: 0.1118, depth: 0.104, len: 0.1962, neck: 0.06, muzzle: 0.44, jaw: 'fine', ears: 'large', tail: 'plume', hue: '#d1651f', family: 'canid' },
-  'Arctic Fox': { legs: 0.1046, depth: 0.1072, len: 0.1847, neck: 0.06, muzzle: 0.36, ears: 'small', tail: 'plume', hue: '#eaf0f5', family: 'canid' },
+  'Red Fox': { legs: 0.1118, depth: 0.104, len: 0.1962, neck: 0.06, muzzle: 0.44, jaw: 'fine', ears: 'large', tail: 'plume', hue: '#d1651f', family: 'canid' , tailTip: '#f2efe6' },
+  'Arctic Fox': { legs: 0.1046, depth: 0.1072, len: 0.1847, neck: 0.06, muzzle: 0.36, ears: 'small', tail: 'plume', hue: '#eaf0f5', family: 'canid' , tailTip: '#f6f5f2' },
   /* ★ wave 21 — the audit: "ears should dominate the head; reduce body size and
      increase bushy tail". A fennec is a desert fox scaled DOWN around ears that
      were not scaled down with it. */
-  'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.30, tailScale: 1.6, family: 'canid', earShape: 'point' },
-  'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid' },
+  'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.30, tailScale: 1.6, family: 'canid', earShape: 'point' , tailTip: '#20191a' },
+  'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid' , tailTip: '#241f1d' },
   'Hyena': { legs: 0.1442, depth: 0.1492, len: 0.208, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63', family: 'hyaenid' },
-  /* ⚠ the pachyderms + Zebra/Tiger/Lion/Red Panda/Raccoon are DELIBERATELY
-     ABSENT: the verbatim engine already nails them (Elephant 4.5/5; Nick's
-     audit lists the others among its stronger reads). Never override what
-     already excels — a generic system cannot beat bespoke work. */
+  /* ⚠ WAVE 42, CODE PASS — THIS COMMENT WAS TRUE IN WAVE 4 AND IS FALSE NOW,
+     which is worse than no comment: it points a maintainer at the wrong engine.
+     It claimed "the pachyderms + Zebra/Tiger/Lion/Red Panda/Raccoon are
+     DELIBERATELY ABSENT — the verbatim engine already nails them". Every
+     species it names is routed through THIS painter today (Lion and Rhinoceros
+     and Hippopotamus in this table; Tiger, Zebra, Raccoon, Red Panda and all
+     four elephants in QUAD2_SPEC), and several were rebuilt here this session.
+     The principle it states is still right and still load-bearing —
+     ★ never override what already excels (D-ART-14) — so the principle stays
+     and the stale species list goes. A rule outlives its examples. */
   'Walrus': { legs: 0.0303, depth: 0.1631, len: 0.2943, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f', family: 'pinniped'  },
   /* equines + swine */
   'Horse': { legs: 0.1964, depth: 0.1524, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'plume', hue: '#8a5a35', family: 'equid' },
