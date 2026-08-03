@@ -405,15 +405,40 @@ export function shaggyRim(c: Ctx, t: Tube, r: RNG, p: Coatable, len: number, den
   const N = 96;
   for (let i = 0; i <= N; i++) {
     for (const side of [1, -1] as const) {
-      if (r() > density) continue;
       const u = i / N;
+      /* ★ wave 35 — THE RIM WAS ISOTROPIC, AND THAT IS A HEDGEHOG. Every point
+         of the envelope got the same density of tuft pushed straight OUT along
+         the surface normal — back, belly, brisket and rump alike — so a woolly
+         animal grew a uniform ring of quills. The audit named it three separate
+         times: the Alpaca's hedgehog outline, the Caribou's ears-to-tail comb,
+         the Wild Boar's below-the-belly straw.
+         A real coat is not uniform and it does not stand out. It is heaviest
+         along the spine and thins under the belly; it stops at the ends of the
+         body, because the rump and the brisket are CAPS and hair there lies
+         along the form rather than radiating off it; and it HANGS — every
+         strand is pulled down by gravity and swept back by the animal's own
+         line. All three are unconditional here, because all three are true of
+         every shaggy mammal in the catalogue. */
+      const endFade = Math.min(1, Math.sin(Math.PI * u) * 1.7);
+      const sideW = side > 0 ? 1 : 0.34;
+      if (r() > density * endFade * sideW) continue;
       const f = t.frame(u);
       const [x, y] = t.envelope(u, side);
       const nx = f.nx * side, ny = f.ny * side;
-      const L = len * (0.45 + r() * 1.0);
       const jitter = (r() - 0.5) * 0.8;
-      const ux = nx * Math.cos(jitter) - ny * Math.sin(jitter);
-      const uy = nx * Math.sin(jitter) + ny * Math.cos(jitter);
+      let ux = nx * Math.cos(jitter) - ny * Math.sin(jitter);
+      let uy = nx * Math.sin(jitter) + ny * Math.cos(jitter);
+      /* gravity, plus a sweep back along the body's own tangent */
+      ux += -f.tx * 0.26; uy += 0.52;
+      /* ⚠ and the length has to come OFF that sum, not be renormalised away.
+         Normalising to unit length and then using the full L put every dorsal
+         tuft back to its original height pointing straight up — the Yak kept a
+         palisade along its spine while the belly was correctly fixed, i.e. the
+         gravity term was steering the hair and never weighing it. What points
+         up is SHORTENED by gravity; what hangs is lengthened by it. */
+      const un = Math.hypot(ux, uy) || 1;
+      const L = len * (0.45 + r() * 1.0) * Math.min(1.15, un);
+      ux /= un; uy /= un;
       const lit = t.light(u, side > 0 ? 1.3 : -1.2);
       const m = 0.38 + lit * 0.9;
       c.strokeStyle = `rgba(${Math.min(255, p.cr * m) | 0},${Math.min(255, p.cg * m) | 0},${Math.min(255, p.cb * m) | 0},${0.3 + r() * 0.45})`;
