@@ -1083,8 +1083,8 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Copepod': P({ hue: '#d18a4e', tiny: true, stout: true }),
   'Amphipod': P({ tiny: true, stout: true, scale: 0.74, hue: '#b9a274' }),
   'Water Flea': P({ tiny: true, stout: true, scale: 0.58, hue: '#bcd6c4' }),
-  'Isopod': P({ hue: '#6e6c73', stout: true }),
-  'Giant Isopod': P({ hue: '#c3b2b8', stout: true }),
+  'Isopod': (c, g, p, n) => isopodBody(c, g, p, { hue: '#6e6c73' }, n),
+  'Giant Isopod': (c, g, p, n) => isopodBody(c, g, p, { giant: true, hue: '#c3b2b8' }, n),
   'Lobster': P({ hue: '#2f3a4e', claws: true }),
   'Crayfish': P({ hue: '#6e6135', claws: true }),
   'Barnacle': X({ kind: 'volcano', hue: '#d8d2c4' }),
@@ -1115,3 +1115,78 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Sea Cucumber': X({ hue: '#55412f', kind: 'sac' }),
   'Lancelet': W({ hue: '#ecdfb5', }),
 };
+
+/** ★ D-ART-131 — ISOPODS ARE NOT SHRIMP.
+    Both were routed to `shrimpBody` with `stout: true`, which cannot produce a
+    plated animal however it is parameterised — the audit found "a bulbous
+    cephalothorax ball, a curled-under abdomen, two whip antennae and a feathery
+    uropod fan", i.e. a krill, twice, in two colours. An isopod is the opposite
+    shape: DORSOVENTRALLY FLATTENED, a broad low oval crossed by overlapping
+    tergite bands, a semicircular head shield at the front and a solid
+    triangular pleotelson at the back, with seven stout legs a side and short
+    antennae. This is the one case in the arc where a parameter genuinely could
+    not reach and a painter was the right answer. */
+export function isopodBody(c: Ctx, g: G, pIn: Pal, opts: { giant?: boolean; hue?: string }, name = ''): void {
+  const p = speciesHue(pIn, opts.hue);
+  const r = nrng(g, name, 0x1509);
+  const cx = S * 0.50, cy = S * 0.52;
+  const bw = S * (opts.giant ? 0.225 : 0.165) * nv(name, 0x31, 0.10);
+  const bh = bw * 0.46;                       /* FLAT — this is the whole read */
+  shadow(c, cx, cy + bh * 1.5, bw * 0.92);
+
+  /* seven stout pereopods a side, the far bank first and dimmer */
+  for (const far of [true, false]) {
+    const m = far ? 0.55 : 1;
+    c.strokeStyle = `rgb(${(p.cr * 0.44 * m) | 0},${(p.cg * 0.42 * m) | 0},${(p.cb * 0.38 * m) | 0})`;
+    c.lineWidth = bh * 0.15; c.lineCap = 'round';
+    for (let i = 0; i < 7; i++) {
+      const u = -0.72 + (i / 6) * 1.44;
+      const lx = cx + bw * u, ly = cy + bh * (far ? 0.30 : 0.68);
+      const out = bw * (0.20 + Math.abs(u) * 0.06) * (far ? 0.72 : 1);
+      c.beginPath(); c.moveTo(lx, ly);
+      c.quadraticCurveTo(lx + out * 0.5, ly + bh * 0.55, lx + out, ly + bh * (far ? 0.75 : 1.05));
+      c.stroke();
+    }
+  }
+
+  /* the dorsum: one broad low oval, then the tergites laid across it */
+  const gg = c.createLinearGradient(0, cy - bh, 0, cy + bh);
+  gg.addColorStop(0, p.lit); gg.addColorStop(0.45, p.base); gg.addColorStop(1, p.dark);
+  c.fillStyle = gg;
+  c.beginPath(); c.ellipse(cx, cy, bw, bh, 0, 0, TAU); c.fill();
+  c.save();
+  c.beginPath(); c.ellipse(cx, cy, bw, bh, 0, 0, TAU); c.clip();
+  coatMaterial(c, ellipseTube(cx, cy, bw, bh, 0), r, p, 'chitin',
+    { detail: CHITIN_DETAIL, seams: false });
+  /* SEVEN TERGITES, each overlapping the one behind — the bands are the animal */
+  for (let i = 0; i < 7; i++) {
+    const u = -0.62 + (i / 6) * 1.24;
+    const x = cx + bw * u;
+    c.strokeStyle = 'rgba(0,0,0,0.30)'; c.lineWidth = 2.2;
+    c.beginPath(); c.moveTo(x, cy - bh); c.quadraticCurveTo(x + bw * 0.04, cy, x, cy + bh); c.stroke();
+    c.strokeStyle = 'rgba(255,252,242,0.16)'; c.lineWidth = 1.6;
+    c.beginPath(); c.moveTo(x + bw * 0.022, cy - bh); c.quadraticCurveTo(x + bw * 0.062, cy, x + bw * 0.022, cy + bh); c.stroke();
+  }
+  c.restore();
+  rim(c, () => c.ellipse(cx, cy, bw, bh, 0, -2.9, 0.25), 2.2);
+
+  /* the head shield in front, and the solid pleotelson plate behind */
+  c.fillStyle = shell(c, p, cx - bw * 0.92, cy, bw * 0.28);
+  c.beginPath(); c.ellipse(cx - bw * 0.94, cy, bw * 0.26, bh * 0.86, 0, 0, TAU); c.fill();
+  c.fillStyle = shell(c, p, cx + bw * 0.86, cy, bw * 0.30);
+  c.beginPath();
+  c.moveTo(cx + bw * 0.70, cy - bh * 0.86);
+  c.quadraticCurveTo(cx + bw * 1.30, cy, cx + bw * 0.70, cy + bh * 0.86);
+  c.closePath(); c.fill();
+  rim(c, () => { c.moveTo(cx + bw * 0.70, cy - bh * 0.86); c.quadraticCurveTo(cx + bw * 1.30, cy, cx + bw * 0.70, cy + bh * 0.86); }, 1.8);
+
+  /* SHORT antennae — a whip antenna is what made these read as shrimp */
+  c.strokeStyle = p.dark; c.lineWidth = bh * 0.10; c.lineCap = 'round';
+  for (const s of [-1, 1] as const) {
+    c.beginPath(); c.moveTo(cx - bw * 1.05, cy + s * bh * 0.30);
+    c.quadraticCurveTo(cx - bw * 1.36, cy + s * bh * 0.62, cx - bw * 1.48, cy + s * bh * 0.30);
+    c.stroke();
+  }
+  eyeDot(c, cx - bw * 1.02, cy - bh * 0.34, bh * 0.14);
+  eyeDot(c, cx - bw * 1.02, cy + bh * 0.34, bh * 0.14);
+}
