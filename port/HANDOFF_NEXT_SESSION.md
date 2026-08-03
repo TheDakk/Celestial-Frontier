@@ -1,5 +1,33 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
+## ★★ WAVE 35 (2026-08-03) — read this block before the rest of the file
+
+**The live queue is `port/v2/reference/mammal-species-fixes.md`, then `reaudit-worklist.md`.**
+Wave 35 closed that file's entire top section — the wrong-family chassis (Cheetah, Panda, the
+three hyenas via a new `hyaenid` family, Sloth, both tapirs) and **all six** of its listed
+cross-species painter bugs (banded tail, tuft tail, horn/tusk anchors, limb-exit occlusion,
+shaggy rim, `nosePad`). New axes: `skull?: MammalFamily`, `back:'roached'`, `trunk: number`,
+`tailTip` on plain tails — which leaves **Hippopotamus, Walrus, Raccoon and Aardvark as
+one-line table edits.**
+
+- ⚠ **D-ART-137 — `if (earShape === 'hidden') return;` returned from the WHOLE painter.** The
+  eye, face marks, horns, trunk and tail were skipped for Sloth, Mole, Seal, Fur Seal, Sea
+  Lion and Walrus. Six eyeless animals and a tuskless walrus, with every gate green — artlock
+  had blessed the broken render as its own baseline. **A fix can be right about the thing it
+  names and wrong about where it stops**, and only a render tells you which.
+- ⚠ **D-ART-138 — `npm run artbattery` invoked artlock with no arguments**, so stage 6 read
+  "declared: (nothing)" and failed on every legitimate change. It forwards args now:
+  **`npm run artbattery -- --touching=quadruped`**.
+- ★ **The worklist prescriptions are agent-written and are not always right.** Two of wave
+  35's rendered wrong (the Panda's prescribed band leaves a white chest). Render first.
+- **Still open, all found by looking:** `tail:'bushy'` is a straw broom (Hyena, Wolf, Fox,
+  Snow Leopard, Bison, Elk); the elephant's ear fan is a flat dark ellipse whose comment
+  falsely claims it is drawn behind the head; `ears:'large'` + `earShape:'round'` gives two
+  dark discs that swallow the skull; the hyena bodies are half-fixed, because fore and hind
+  limbs are always the same length.
+
+---
+
 **Written 2026-08-02 at the end of waves 4–21.**
 The live work is **THE PROPORTION ARC** — making every organism in the Earth catalogue look
 like the real thing, on Nick's instruction. Waves 4–21 have landed. ★ EARTH COVERAGE IS 1010/1010 — Bucket A is closed.
