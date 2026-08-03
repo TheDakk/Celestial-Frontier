@@ -57,7 +57,7 @@ has `headMass` and `wings:'soaring'` and almost none of these rows set them.
 - **Kakapo** — heavy hooked bill, facial disc, thick feathered tarsi, reduced wing.
 - **New axis needed for the group:** `talons` (3 curved claw hooks per foot, tarsus ~3× wider).
 
-### B · The insect body plan is still head-sphere + thorax-ball + abdomen-oval (6+ species)
+### ✅ B · DONE (wave 29) — The insect body plan
 ⚠ **Wave 23's `broad`/`eyes`/`shield` axes did NOT fix this.** They separated the species
 enough to clear the hard-pair ratchet while leaving the family reading as one plan at
 different lengths — the gate went green and the thing it guarded was still wrong. `broad`
@@ -81,14 +81,14 @@ dominant mass (~1.4× thorax) and the whole body shortened to ~1.6:1; **Orchid B
 `corbicula` (flattened hind tibia with a pollen mass); **Honeybee** needs a visible pollen
 pellet and a stinger.
 
-### D · Only two limbs are drawn (2 species + the crocs, now fixed)
+### ✅ D · DONE (wave 30) — Only two limbs are drawn
 **Komodo Dragon** and **Alpine Salamander** each show one fore and one hind limb with no
 far-side pair — the same omission wave 26 fixed in `faunaCroc`. Komodo also needs a
 shouldered monitor torso (shoulder mass ~0.25, hip ~0.75) and clawed 5-toe feet. Alpine
 Salamander additionally has an off-body paddle lobe floating at the tail base that belongs
 to the aquatic form.
 
-### E · Turtles are one asset recoloured (3 species)
+### ✅ E · DONE (wave 30) — Turtles are one asset recoloured (3 species)
 **Snapping**, **Softshell** and **Tortoise** all have a domed scute shell on a plastron slab
 with **two floating wheel-like discs** for legs. All three need four columnar limbs meeting
 the plastron with no gap. Then differentiate: Snapping wants a big hooked head, 3 carapace
@@ -103,7 +103,7 @@ antennae, no uropod fan.
 
 ---
 
-## ★ REGRESSIONS — things that were right and are now wrong
+## ★ REGRESSIONS — ✅ ALL CLEARED (waves 28-30: Narwhal tusk, Macaw bill, Beach Morning Glory flowers, Cinnamon bark, Orca markings)
 
 - **Narwhal — the tusk is GONE.** It was rerouted to `faunaCetacean`, whose options are only
   `{dorsal, blunt, hue, long, bulk}`, so the species lost its single identifying feature.
@@ -119,14 +119,14 @@ antennae, no uropod fan.
   something downstream is overriding the cetacean hue. Also needs its white eye patch,
   ventral field and saddle, and a taller dorsal.
 
-## ★ SET BUT NEVER READ — the D-ART-100 pattern, twice more
+## ★ SET BUT NEVER READ — ✅ both fixed (cephalofoil wave 28, jumper femur wave 26)
 
 - **`snout:'hammer'`** widens the jaw by `depth*0.2` — about 1.4% of body length, invisible.
   A hammerhead's cephalofoil should be a transverse bar ~0.45 of body length across, with
   the eyes at its outboard tips. **The hammerhead is the animal; right now it is a mackerel.**
 - **`jumper`** — fixed in wave 26, recorded here because it is the same shape of bug.
 
-## ★ DUPLICATE ASSETS the look-alike gate cannot catch
+## ★ DUPLICATE ASSETS — ✅ Black Pepper separated (wave 29)
 
 **Black Pepper is geometrically the same asset as Beach Morning Glory**, only tinted. The
 `[SAME]` ratchet misses this because colour separates them — a reminder that the gate
