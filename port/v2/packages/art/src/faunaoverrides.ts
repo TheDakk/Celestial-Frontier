@@ -505,7 +505,9 @@ export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | '
 /** BIRD with a real folded wing, species bill and leg length */
 export interface BirdSpec {
   legs: number;
-  bill: 'hook' | 'long' | 'spoon' | 'stout' | 'huge' | 'short' | 'chisel' | 'needle' | 'duck' | 'cone' | 'fine';
+  bill: 'hook' | 'long' | 'spoon' | 'stout' | 'huge' | 'short' | 'chisel' | 'needle' | 'duck' | 'cone' | 'fine'
+    /* wave 38 G6 — the two bills that were sharing one asset */
+    | 'toucan' | 'casque';
   crest?: boolean;
   flightless?: boolean;
   /* ── wave 9 additions. All OPTIONAL and defaulted, so the wave-3 birds —
@@ -662,11 +664,46 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       c.restore();
     }
   } else if (tail === 'long') {
-    for (let i = -1; i <= 1; i++) {
-      c.strokeStyle = i ? p.dark : p.base; c.lineWidth = bh * (i ? 0.13 : 0.19); c.lineCap = 'round';
-      c.beginPath(); c.moveTo(bx + bw * 0.66, by + bh * 0.22);
-      c.quadraticCurveTo(bx + bw * 1.9, by + bh * (0.42 + i * 0.16), bx + bw * 2.9, by + bh * (0.95 + i * 0.42));
+    /* ★ WAVE 38, G4 — THREE SEPARATE RODS WITH DAYLIGHT BETWEEN THEM. Reported
+       verbatim as "a brown round bird with three sticks behind it" (Pheasant,
+       whose verifier confirmed "three separate straight rods with visible gaps,
+       not one long barred tapering tail"), and the same token carries Macaw,
+       Parrot, Roadrunner, Magpie, Quetzal, Tropicbird and Rooster.
+       A long tail is ONE overlapping layered surface. Drawn as a solid tapering
+       blade with the feather splits and the cross-barring as INTERNAL lines, so
+       there is no background showing between the feathers. */
+    const rx = bx + bw * 0.62, ry = by + bh * 0.20;
+    const tx = bx + bw * 2.85, ty = by + bh * 1.02;
+    const blade = (spread: number, col: string, lenK: number): void => {
+      const ex = rx + (tx - rx) * lenK, ey = ry + (ty - ry) * lenK;
+      c.fillStyle = col;
+      c.beginPath();
+      c.moveTo(rx, ry - bh * 0.15);
+      c.quadraticCurveTo(bx + bw * 1.85 * lenK, by + bh * (0.34 - spread * 0.10), ex, ey - bh * spread);
+      c.quadraticCurveTo(ex + bw * 0.05, ey + bh * 0.06, ex - bw * 0.10, ey + bh * (spread * 0.55));
+      c.quadraticCurveTo(bx + bw * 1.85 * lenK, by + bh * (0.60 + spread * 0.16), rx, ry + bh * 0.20);
+      c.closePath(); c.fill();
+    };
+    /* ⚠ two blades of equal length end in one blunt cut and read as a PLANK.
+       A long tail is GRADUATED — the outer feathers are shorter — so the far
+       blade stops short and the silhouette steps at the tip. */
+    blade(0.56, p.dark, 0.74);
+    blade(0.24, p.base, 1.0);
+    /* the vanes, as splits in one surface rather than gaps between three */
+    c.strokeStyle = 'rgba(28,22,16,0.30)'; c.lineWidth = Math.max(1, bh * 0.035); c.lineCap = 'round';
+    for (let i = 0; i < 4; i++) {
+      const k = i / 3;
+      c.beginPath(); c.moveTo(rx + bw * 0.10, ry + bh * (0.02 + k * 0.06));
+      c.quadraticCurveTo(bx + bw * 1.85, by + bh * (0.40 + k * 0.10), tx - bw * (0.06 + k * 0.04), ty - bh * (0.20 - k * 0.16));
       c.stroke();
+    }
+    /* the cross-barring most long-tailed birds carry */
+    c.strokeStyle = 'rgba(24,18,14,0.26)'; c.lineWidth = Math.max(1, bh * 0.05);
+    for (let i = 1; i <= 5; i++) {
+      const k = i / 6;
+      const px = rx + (tx - rx) * k, py = ry + (ty - ry) * k;
+      c.beginPath(); c.moveTo(px - bw * 0.02, py - bh * 0.16 * (1 - k * 0.4));
+      c.lineTo(px + bw * 0.03, py + bh * 0.20 * (1 - k * 0.3)); c.stroke();
     }
   } else if (tail === 'forked') {
     for (const s of [-1, 1] as const) {
@@ -967,6 +1004,50 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       c.beginPath(); c.ellipse(hx - 74 * B, hy + 7 * B, 20 * B, 6 * B, 0.06, 0, Math.PI); c.fill();
     }
     else if (opts.bill === 'huge') { c.beginPath(); c.moveTo(hx - 14 * B, hy - 12 * B); c.quadraticCurveTo(hx - 66 * B, hy - 10 * B, hx - 72 * B, hy + 6 * B); c.quadraticCurveTo(hx - 40 * B, hy + 16 * B, hx - 12 * B, hy + 10 * B); c.closePath(); c.fill(); }
+    else if (opts.bill === 'toucan' || opts.bill === 'casque') {
+      /* ★ WAVE 38, G6 — TOUCAN AND HORNBILL SHARED ONE BILL ASSET, and they are
+         the two most distinctive bills in birds. Both were `bill:'huge'`: a
+         short straight flat cone. The verifiers measured it — Toucan's bill is
+         "roughly 40–45% of body length, not a fifth… still a straight flat
+         yellow cone with no downcurve and no colour banding, well short of
+         'nearly as long as the body'"; Hornbill "the same body and the same
+         small straight yellow bill as the Toucan tile", with both halves of its
+         mustRead — the huge downcurved bill AND its hollow casque — absent, its
+         crest reading as "a punk hair fringe".
+         Two bills now. Both are LONG and DOWNCURVED; the hornbill carries the
+         casque ridge along the culmen that is the whole point of the animal. */
+      const casque = opts.bill === 'casque';
+      const L = (casque ? 92 : 104) * B, D = (casque ? 26 : 28) * B;
+      c.beginPath();
+      c.moveTo(hx - 12 * B, hy - D * 0.66);
+      /* the culmen: deep at the face, curving DOWN to a fine tip */
+      c.quadraticCurveTo(hx - L * 0.60, hy - D * 0.56, hx - L, hy + D * 0.30);
+      c.quadraticCurveTo(hx - L * 0.52, hy + D * 0.78, hx - 12 * B, hy + D * 0.62);
+      c.closePath(); c.fill();
+      /* the cutting edge where the two mandibles meet — without it a bill of
+         this size reads as one solid horn */
+      c.strokeStyle = 'rgba(46,32,20,0.55)'; c.lineWidth = Math.max(1.2, 2.2 * B); c.lineCap = 'round';
+      c.beginPath(); c.moveTo(hx - 12 * B, hy + D * 0.06);
+      c.quadraticCurveTo(hx - L * 0.56, hy + D * 0.22, hx - L * 0.96, hy + D * 0.26);
+      c.stroke();
+      if (casque) {
+        /* the hollow helmet riding the base of the upper mandible */
+        c.beginPath();
+        c.moveTo(hx - 14 * B, hy - D * 0.62);
+        c.quadraticCurveTo(hx - L * 0.34, hy - D * 1.42, hx - L * 0.62, hy - D * 0.52);
+        c.quadraticCurveTo(hx - L * 0.34, hy - D * 0.66, hx - 14 * B, hy - D * 0.62);
+        c.closePath(); c.fill();
+      } else {
+        /* the toucan's colour banding and dark tip */
+        c.fillStyle = 'rgba(196,58,34,0.60)';
+        c.beginPath();
+        c.moveTo(hx - L * 0.46, hy - D * 0.42); c.lineTo(hx - L * 0.62, hy - D * 0.30);
+        c.lineTo(hx - L * 0.58, hy + D * 0.52); c.lineTo(hx - L * 0.42, hy + D * 0.48);
+        c.closePath(); c.fill();
+        c.fillStyle = 'rgba(28,22,18,0.78)';
+        c.beginPath(); c.ellipse(hx - L * 0.95, hy + D * 0.26, L * 0.06, D * 0.16, -0.4, 0, TAU); c.fill();
+      }
+    }
     else if (opts.bill === 'cone') {
       /* ★ WAVE 8 — THE SEED-CRACKER. A finch, a sparrow and a weaverbird all
          carry a short DEEP triangle you could crack a husk with, and it is the
@@ -1092,9 +1173,9 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Snipe': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7a6440', legs: 0.06, bill: 'long' }, n),
   'Godwit': (c, g, p, n) => faunaBird(c, g, p, { hue: '#9c6b3f', legs: 0.08, bill: 'long' }, n),
   'Pelican': (c, g, p, n) => faunaBird(c, g, p, { hue: '#a9a89b', legs: 0.03, bill: 'huge' }, n),
-  'Toucan': (c, g, p, n) => faunaBird(c, g, p, { hue: '#1b1a1c', legs: 0.02, bill: 'huge' }, n),
+  'Toucan': (c, g, p, n) => faunaBird(c, g, p, { hue: '#1b1a1c', legs: 0.02, bill: 'toucan' }, n),
   'Kookaburra': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6e5a45', legs: 0.02, bill: 'huge', headMass: 1.55, neck: 'none', size: 0.92 }, n),
-  'Hornbill': (c, g, p, n) => faunaBird(c, g, p, { hue: '#2b2b30', legs: 0.02, bill: 'huge', crest: true }, n),
+  'Hornbill': (c, g, p, n) => faunaBird(c, g, p, { hue: '#2b2b30', legs: 0.02, bill: 'casque' }, n),
   'Kiwi': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.012, bill: 'long', flightless: true, size: 0.72, neck: 'none', hue: '#7a6144', plump: 1.30 }, n),
   'Cassowary': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.105, bill: 'stout', crest: true, flightless: true, size: 1.20, neck: 'long', hue: '#1f2733', plump: 1.22 }, n),
   'Ostrich': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.145, bill: 'stout', flightless: true, size: 1.42, neck: 'long', hue: '#3a332e', plump: 1.10, tail: 'fan' }, n),
