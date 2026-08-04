@@ -1150,6 +1150,29 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
       c.quadraticCurveTo(hx - 48 * B, hy - 8 * B, hx - 54 * B, hy + 1 * B);
       c.quadraticCurveTo(hx - 48 * B, hy + 10 * B, hx - 12 * B, hy + 8 * B);
       c.closePath(); c.fill();
+    } else if (opts.bill === 'stout') {
+      /* ★ THE CORVID/GAMEBIRD BILL. `'stout'` was in the BillKind union and on
+         TWENTY-ONE rows — Crow, Raven, Magpie, Jay, Gull, Penguin, Auk, the
+         gamebirds, the ratites — and NO branch ever compared it, so all
+         twenty-one fell to the generic `else` below and wore one thin spike.
+         The type accepted it, `speccheck` was green (the FIELD is read), and
+         only the picture knew. Four of these rows name the bill as a mustRead:
+         "stout straight pointed bill" (Crow), "heavy straight crow bill"
+         (Magpie), "stout crow-like bill" (Jay), "massive curved bill" (Raven).
+         D-ART-100, one level down: a dead VALUE hides exactly as well as a
+         dead field. */
+      const L = 40 * B, D = 10 * B;
+      c.beginPath();
+      c.moveTo(hx - 10 * B, hy - D);                                  /* deep base at the forehead */
+      c.quadraticCurveTo(hx - L * 0.62, hy - D * 0.86, hx - L, hy + D * 0.16);   /* culmen, faintly convex */
+      c.quadraticCurveTo(hx - L * 0.54, hy + D * 0.72, hx - 10 * B, hy + D * 1.05);
+      c.closePath(); c.fill();
+      /* the gape line — without it a bill this deep reads as one solid horn,
+         the lesson the toucan branch above already paid for */
+      c.strokeStyle = 'rgba(46,32,20,0.50)'; c.lineWidth = Math.max(1, 1.6 * B); c.lineCap = 'round';
+      c.beginPath(); c.moveTo(hx - 10 * B, hy + D * 0.10);
+      c.quadraticCurveTo(hx - L * 0.58, hy + D * 0.20, hx - L * 0.96, hy + D * 0.14);
+      c.stroke();
     } else { c.beginPath(); c.moveTo(hx - 14 * B, hy - 5 * B); c.lineTo(hx - 36 * B, hy + 1 * B); c.lineTo(hx - 14 * B, hy + 8 * B); c.closePath(); c.fill(); }
   }
   if (opts.crest && !opts.owl) {

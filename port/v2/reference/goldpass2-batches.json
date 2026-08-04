@@ -1,0 +1,2268 @@
+[
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "001",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-001.md",
+  "names": [
+   "Aardvark",
+   "Abalone",
+   "African Elephant",
+   "African Wild Dog",
+   "Agama",
+   "Agouti",
+   "Albatross",
+   "Alligator",
+   "Alligator Lizard",
+   "Alpaca"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "002",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-002.md",
+  "names": [
+   "Alpine Salamander",
+   "Amphipod",
+   "Anaconda",
+   "Anchovy",
+   "Angelfish",
+   "Anglerfish",
+   "Anole",
+   "Ant",
+   "Antelope",
+   "Aphid"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "003",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-003.md",
+  "names": [
+   "Arapaima",
+   "Archerfish",
+   "Arctic Cod",
+   "Arctic Fox",
+   "Arctic Hare",
+   "Armadillo",
+   "Arowana",
+   "Asian Elephant",
+   "Auk",
+   "Avocet"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "004",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-004.md",
+  "names": [
+   "Axolotl",
+   "Aye-Aye",
+   "Baboon",
+   "Bactrian Camel",
+   "Badger",
+   "Banana Slug",
+   "Banteng",
+   "Barnacle",
+   "Barracuda",
+   "Barreleye"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "005",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-005.md",
+  "names": [
+   "Basking Shark",
+   "Bass",
+   "Bat",
+   "Beaked Whale",
+   "Bear",
+   "Beaver",
+   "Bee",
+   "Beetle",
+   "Beluga",
+   "Bison"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "006",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-006.md",
+  "names": [
+   "Bittern",
+   "Black Bear",
+   "Black Fly",
+   "Blenny",
+   "Blind Fish",
+   "Blind Salamander",
+   "Blobfish",
+   "Blue Whale",
+   "Boa",
+   "Bobcat"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "007",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-007.md",
+  "names": [
+   "Bonefish",
+   "Bongo",
+   "Booby",
+   "Bowfin",
+   "Box Turtle",
+   "Boxfish",
+   "Brine Shrimp",
+   "Brittle Star",
+   "Brown Bear",
+   "Buffalo"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "008",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-008.md",
+  "names": [
+   "Bull",
+   "Bullfrog",
+   "Bumblebee",
+   "Bustard",
+   "Butterfly",
+   "Butterflyfish",
+   "Caddisfly",
+   "Caecilian",
+   "Caiman",
+   "Camel"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "009",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-009.md",
+  "names": [
+   "Camel Spider",
+   "Capuchin",
+   "Capybara",
+   "Caracal",
+   "Cardinal",
+   "Cardinalfish",
+   "Caribou",
+   "Carp",
+   "Carrion Beetle",
+   "Cassowary"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "010",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-010.md",
+  "names": [
+   "Cat",
+   "Catfish",
+   "Cattle",
+   "Cave Cricket",
+   "Cave Fish",
+   "Cave Frog",
+   "Cave Shrimp",
+   "Cave Snake",
+   "Centipede",
+   "Chameleon"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "011",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-011.md",
+  "names": [
+   "Chamois",
+   "Char",
+   "Cheetah",
+   "Chicken",
+   "Chimpanzee",
+   "Chipmunk",
+   "Chiton",
+   "Chough",
+   "Cicada",
+   "Cichlid"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "012",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-012.md",
+  "names": [
+   "Civet",
+   "Clam",
+   "Clouded Leopard",
+   "Clownfish",
+   "Coastal Lizard",
+   "Coati",
+   "Cobra",
+   "Cockatoo",
+   "Cockroach",
+   "Coconut Crab"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "013",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-013.md",
+  "names": [
+   "Cod",
+   "Coelacanth",
+   "Cold-Adapted Insect",
+   "Cold-Water Coral",
+   "Cold-Water Fish",
+   "Colugo",
+   "Comb Jelly",
+   "Conch",
+   "Condor",
+   "Coot"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "014",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-014.md",
+  "names": [
+   "Copepod",
+   "Coral",
+   "Cormorant",
+   "Cottonmouth",
+   "Cougar",
+   "Cow",
+   "Cowrie",
+   "Coyote",
+   "Crab",
+   "Crane"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "015",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-015.md",
+  "names": [
+   "Crayfish",
+   "Cricket",
+   "Crocodile",
+   "Crow",
+   "Curlew",
+   "Cuttlefish",
+   "Damselfish",
+   "Damselfly",
+   "Deep-Sea Fish",
+   "Deep-Sea Octopus"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "016",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-016.md",
+  "names": [
+   "Deep-Water Coral",
+   "Deer",
+   "Deer Tick",
+   "Desert Owl",
+   "Dingo",
+   "Diving Beetle",
+   "Dobsonfly",
+   "Dog",
+   "Dolphin",
+   "Donkey"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "017",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-017.md",
+  "names": [
+   "Dove",
+   "Dragonfish",
+   "Dragonfly",
+   "Dromedary Camel",
+   "Duck",
+   "Dugong",
+   "Duiker",
+   "Dung Beetle",
+   "Eagle",
+   "Eagle Ray"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "018",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-018.md",
+  "names": [
+   "Earthworm",
+   "Echidna",
+   "Eel",
+   "Egret",
+   "Eider Duck",
+   "Eland",
+   "Electric Eel",
+   "Elephant",
+   "Elk",
+   "Emu"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "019",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-019.md",
+  "names": [
+   "Fairy Shrimp",
+   "Falcon",
+   "Fangtooth",
+   "Fennec Fox",
+   "Fiddler Crab",
+   "Finch",
+   "Firefly",
+   "Fisher",
+   "Fishing Cat",
+   "Flamingo"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "020",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-020.md",
+  "names": [
+   "Flatworm",
+   "Flounder",
+   "Fly",
+   "Fly Larvae",
+   "Flying Fish",
+   "Flying Gurnard",
+   "Flying Squirrel",
+   "Forest Elephant",
+   "Fox",
+   "Freshwater Crab"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "021",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-021.md",
+  "names": [
+   "Freshwater Shrimp",
+   "Freshwater Snail",
+   "Frigatebird",
+   "Frilled Lizard",
+   "Frog",
+   "Fruit Bat",
+   "Fur Seal",
+   "Gannet",
+   "Gar",
+   "Garter Snake"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "022",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-022.md",
+  "names": [
+   "Gaur",
+   "Gazelle",
+   "Gecko",
+   "Gerbil",
+   "Gerenuk",
+   "Gharial",
+   "Giant Anteater",
+   "Giant Centipede",
+   "Giant Clam",
+   "Giant Isopod"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "023",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-023.md",
+  "names": [
+   "Giant Octopus",
+   "Giant Otter",
+   "Giant Salamander",
+   "Giant Squid",
+   "Giant Tube Worm",
+   "Giant Water Bug",
+   "Gibbon",
+   "Gila Monster",
+   "Giraffe",
+   "Glass Frog"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "024",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-024.md",
+  "names": [
+   "Goat",
+   "Goby",
+   "Godwit",
+   "Goldfish",
+   "Goose",
+   "Gopher",
+   "Gorilla",
+   "Grass Snake",
+   "Grasshopper",
+   "Gray Whale"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "025",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-025.md",
+  "names": [
+   "Grayling",
+   "Great White Shark",
+   "Grebe",
+   "Grizzly Bear",
+   "Ground Squirrel",
+   "Grouper",
+   "Grouse",
+   "Guillemot",
+   "Guinea Pig",
+   "Guineafowl"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "026",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-026.md",
+  "names": [
+   "Gull",
+   "Gulper Eel",
+   "Haddock",
+   "Halibut",
+   "Hammerhead Shark",
+   "Hamster",
+   "Hare",
+   "Harpy Eagle",
+   "Hartebeest",
+   "Harvestman"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "027",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-027.md",
+  "names": [
+   "Hawk",
+   "Hedgehog",
+   "Hermit Crab",
+   "Heron",
+   "Herring",
+   "Hippopotamus",
+   "Hoatzin",
+   "Honeybee",
+   "Hornbill",
+   "Horned Lizard"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "028",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-028.md",
+  "names": [
+   "Horse",
+   "Horseshoe Crab",
+   "Howler Monkey",
+   "Hummingbird",
+   "Humpback Whale",
+   "Hyena",
+   "Hyrax",
+   "Ibex",
+   "Ibis",
+   "Ice Worm"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "029",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-029.md",
+  "names": [
+   "Icefish",
+   "Iguana",
+   "Impala",
+   "Insect-Eating Bat",
+   "Isopod",
+   "Jackal",
+   "Jackrabbit",
+   "Jaguar",
+   "Jay",
+   "Jellyfish"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "030",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-030.md",
+  "names": [
+   "Jerboa",
+   "Juvenile Shark",
+   "Kakapo",
+   "Kangaroo",
+   "Kestrel",
+   "Killifish",
+   "King Snake",
+   "Kingfisher",
+   "Kinkajou",
+   "Kiwi"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "031",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-031.md",
+  "names": [
+   "Knifefish",
+   "Koala",
+   "Komodo Dragon",
+   "Kookaburra",
+   "Krill",
+   "Kudu",
+   "Ladybug",
+   "Lamprey",
+   "Lancelet",
+   "Land Iguana"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "032",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-032.md",
+  "names": [
+   "Land Snail",
+   "Langur",
+   "Lanternfish",
+   "Lark",
+   "Leafcutter Ant",
+   "Leech",
+   "Lemming",
+   "Lemur",
+   "Leopard",
+   "Limpet"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "033",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-033.md",
+  "names": [
+   "Lion",
+   "Lionfish",
+   "Lizard",
+   "Llama",
+   "Lobster",
+   "Locust",
+   "Loon",
+   "Lungfish",
+   "Lynx",
+   "Macaque"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "034",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-034.md",
+  "names": [
+   "Macaw",
+   "Mackerel",
+   "Magpie",
+   "Mahi-Mahi",
+   "Mako Shark",
+   "Mamba",
+   "Manatee",
+   "Mandrill",
+   "Maned Wolf",
+   "Manta Ray"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "035",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-035.md",
+  "names": [
+   "Mantis",
+   "Mara",
+   "Marine Iguana",
+   "Marine Worm",
+   "Marlin",
+   "Marmoset",
+   "Marmot",
+   "Marsh Rodent",
+   "Marten",
+   "Mayfly"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "036",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-036.md",
+  "names": [
+   "Meerkat",
+   "Millipede",
+   "Mink",
+   "Minnow",
+   "Mite",
+   "Mole",
+   "Mongoose",
+   "Monitor Lizard",
+   "Monkey",
+   "Monkfish"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "037",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-037.md",
+  "names": [
+   "Moorhen",
+   "Moose",
+   "Moray Eel",
+   "Mosquito",
+   "Moth",
+   "Mountain Goat",
+   "Mountain Lizard",
+   "Mountain Tapir",
+   "Mountain Viper",
+   "Mouse"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "038",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-038.md",
+  "names": [
+   "Mud Crab",
+   "Mudminnow",
+   "Mudskipper",
+   "Mullet",
+   "Musk Ox",
+   "Mussel",
+   "Narwhal",
+   "Nautilus",
+   "Newt",
+   "Nilgai"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "039",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-039.md",
+  "names": [
+   "Nudibranch",
+   "Oarfish",
+   "Ocean Sunfish",
+   "Ocelot",
+   "Octopus",
+   "Okapi",
+   "Olm",
+   "Orangutan",
+   "Orca",
+   "Orchid Bee"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "040",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-040.md",
+  "names": [
+   "Oryx",
+   "Osprey",
+   "Ostrich",
+   "Otter",
+   "Owl",
+   "Oyster",
+   "Oystercatcher",
+   "Pacu",
+   "Paddlefish",
+   "Pampas Fox"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "041",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-041.md",
+  "names": [
+   "Panda",
+   "Pangolin",
+   "Parrot",
+   "Parrotfish",
+   "Partridge",
+   "Peacock",
+   "Peccary",
+   "Pelican",
+   "Penguin",
+   "Perch"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "042",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-042.md",
+  "names": [
+   "Petrel",
+   "Pheasant",
+   "Pig",
+   "Pigeon",
+   "Pika",
+   "Pike",
+   "Pilot Whale",
+   "Pipefish",
+   "Piranha",
+   "Platypus"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "043",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-043.md",
+  "names": [
+   "Plover",
+   "Poison Dart Frog",
+   "Polar Bear",
+   "Pollock",
+   "Polychaete Worm",
+   "Pond Turtle",
+   "Porcupine",
+   "Porpoise",
+   "Portuguese Man-of-War",
+   "Possum"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "044",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-044.md",
+  "names": [
+   "Prairie Dog",
+   "Prawn",
+   "Proboscis Monkey",
+   "Pronghorn",
+   "Pseudoscorpion",
+   "Ptarmigan",
+   "Pufferfish",
+   "Puffin",
+   "Pyrosome",
+   "Python"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "045",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-045.md",
+  "names": [
+   "Quail",
+   "Quetzal",
+   "Quoll",
+   "Rabbit",
+   "Rabbitfish",
+   "Raccoon",
+   "Racer",
+   "Rail",
+   "Rat",
+   "Rat Snake"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "046",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-046.md",
+  "names": [
+   "Rattlesnake",
+   "Raven",
+   "Ray",
+   "Razor Clam",
+   "Red Fox",
+   "Red Panda",
+   "Reef Fish",
+   "Reef Shark",
+   "Reindeer",
+   "Remora"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "047",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-047.md",
+  "names": [
+   "Rhea",
+   "Rhinoceros",
+   "Right Whale",
+   "River Dolphin",
+   "River Otter",
+   "Roadrunner",
+   "Robin",
+   "Rooster",
+   "Saiga",
+   "Sailfish"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "048",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-048.md",
+  "names": [
+   "Salamander",
+   "Salmon",
+   "Salp",
+   "Sand Boa",
+   "Sand Cat",
+   "Sand Dollar",
+   "Sandgrouse",
+   "Sandpiper",
+   "Sardine",
+   "Scale Worm"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "049",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-049.md",
+  "names": [
+   "Scallop",
+   "Scorpion",
+   "Scorpionfly",
+   "Screamer",
+   "Sculpin",
+   "Sea Anemone",
+   "Sea Bass",
+   "Sea Cucumber",
+   "Sea Lion",
+   "Sea Otter"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "050",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-050.md",
+  "names": [
+   "Sea Snail",
+   "Sea Spider",
+   "Sea Squirt",
+   "Sea Turtle",
+   "Sea Urchin",
+   "Seabird",
+   "Seahorse",
+   "Seal",
+   "Secretary Bird",
+   "Seriema"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "051",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-051.md",
+  "names": [
+   "Serow",
+   "Serval",
+   "Shark",
+   "Sheep",
+   "Shrew",
+   "Shrimp",
+   "Skink",
+   "Skua",
+   "Sloth",
+   "Sloth Bear"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "052",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-052.md",
+  "names": [
+   "Small Fish",
+   "Snail",
+   "Snailfish",
+   "Snake",
+   "Snapper",
+   "Snapping Turtle",
+   "Snipe",
+   "Snow Leopard",
+   "Snow Petrel",
+   "Snowshoe Hare"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "053",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-053.md",
+  "names": [
+   "Snowy Owl",
+   "Softshell Turtle",
+   "Sparrow",
+   "Spectacled Bear",
+   "Sperm Whale",
+   "Spider",
+   "Spider Monkey",
+   "Sponge",
+   "Spoonbill",
+   "Spotted Hyena"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "054",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-054.md",
+  "names": [
+   "Springbok",
+   "Springtail",
+   "Squid",
+   "Squirrel",
+   "Starfish",
+   "Starling",
+   "Stick Insect",
+   "Stingray",
+   "Stoat",
+   "Stonefly"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "055",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-055.md",
+  "names": [
+   "Stork",
+   "Striped Hyena",
+   "Sturgeon",
+   "Sugar Glider",
+   "Sun Bear",
+   "Sunfish",
+   "Surgeonfish",
+   "Swallow",
+   "Swan",
+   "Swift"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "056",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-056.md",
+  "names": [
+   "Swordfish",
+   "Tadpole Shrimp",
+   "Tahr",
+   "Takin",
+   "Tamarin",
+   "Tanager",
+   "Tang",
+   "Tapir",
+   "Tarantula",
+   "Tardigrade"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "057",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-057.md",
+  "names": [
+   "Tarpon",
+   "Tasmanian Devil",
+   "Tegu",
+   "Termite",
+   "Tern",
+   "Tetra",
+   "Thrips",
+   "Tiger",
+   "Tiger Shark",
+   "Tigerfish"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "058",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-058.md",
+  "names": [
+   "Tilapia",
+   "Toad",
+   "Tortoise",
+   "Toucan",
+   "Tree Frog",
+   "Tree Shrew",
+   "Tree Snake",
+   "Triggerfish",
+   "Tripod Fish",
+   "Tropicbird"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "059",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-059.md",
+  "names": [
+   "Trout",
+   "Tube Worm",
+   "Tuna",
+   "Turkey",
+   "Turtle",
+   "Vampire Bat",
+   "Vampire Squid",
+   "Vent Crab",
+   "Vent Shrimp",
+   "Vine Snake"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "060",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-060.md",
+  "names": [
+   "Viper",
+   "Viperfish",
+   "Vole",
+   "Vulture",
+   "Wahoo",
+   "Wall Lizard",
+   "Wallaby",
+   "Walleye",
+   "Walrus",
+   "Warthog"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "061",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-061.md",
+  "names": [
+   "Wasp",
+   "Water Beetle",
+   "Water Buffalo",
+   "Water Flea",
+   "Water Snail",
+   "Water Snake",
+   "Water Strider",
+   "Water Vole",
+   "Weasel",
+   "Weaverbird"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "062",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-062.md",
+  "names": [
+   "Whale",
+   "Whale Shark",
+   "Whip Snake",
+   "Whiptail",
+   "Whitefish",
+   "Wild Ass",
+   "Wild Boar",
+   "Wild Horse",
+   "Wild Pig",
+   "Wild Pony"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "063",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-063.md",
+  "names": [
+   "Wild Sheep",
+   "Wildcat",
+   "Wildebeest",
+   "Wolf",
+   "Wolverine",
+   "Wombat",
+   "Wood Frog",
+   "Woodpecker",
+   "Wrasse",
+   "Yak"
+  ]
+ },
+ {
+  "group": "fauna",
+  "set": "earth-fauna",
+  "id": "064",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fauna/batch-064.md",
+  "names": [
+   "Zebra"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "001",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-001.md",
+  "names": [
+   "Acacia",
+   "Acai",
+   "Acorn",
+   "African Ginger",
+   "Agave",
+   "Air Plant",
+   "Alfalfa",
+   "Aloe",
+   "Alpine Mint",
+   "Alpine Sorrel"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "002",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-002.md",
+  "names": [
+   "Amaranth",
+   "Angel's Trumpet",
+   "Angelica",
+   "Anise",
+   "Apple",
+   "Apricot",
+   "Arctic Blueberry",
+   "Arctic Sorrel",
+   "Arctic Willow",
+   "Arnica"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "003",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-003.md",
+  "names": [
+   "Arrowhead",
+   "Arrowroot",
+   "Avocado",
+   "Bamboo Shoots",
+   "Banana",
+   "Baobab",
+   "Barley",
+   "Barrel Cactus Fruit",
+   "Bay Laurel",
+   "Beach Morning Glory"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "004",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-004.md",
+  "names": [
+   "Beach Pea",
+   "Beach Plum",
+   "Bearberry",
+   "Beet",
+   "Belladonna",
+   "Bergamot",
+   "Bilberry",
+   "Birch Sap",
+   "Bitterroot",
+   "Black-Eyed Susan"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "005",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-005.md",
+  "names": [
+   "Black Grape",
+   "Black Pepper",
+   "Blackberry",
+   "Bladderwrack",
+   "Blueberry",
+   "Bog Myrtle",
+   "Bog Rosemary",
+   "Brazil Nut",
+   "Breadfruit",
+   "Breadnut"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "006",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-006.md",
+  "names": [
+   "Bromeliad",
+   "Brooklime",
+   "Buckwheat",
+   "Bull Kelp",
+   "Buttercup",
+   "Cabbage",
+   "Cacao",
+   "Calotropis",
+   "Camphor Tree",
+   "Canola"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "007",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-007.md",
+  "names": [
+   "Canopy Vine",
+   "Cardamom",
+   "Carob",
+   "Carrot",
+   "Cashew",
+   "Cassava",
+   "Castor Bean",
+   "Cattail",
+   "Cave Fern",
+   "Cedar"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "008",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-008.md",
+  "names": [
+   "Chamomile",
+   "Cherry",
+   "Chestnut",
+   "Chicory",
+   "Chili Pepper",
+   "Chokecherry",
+   "Cinnamon",
+   "Cliff Rose",
+   "Cloudberry",
+   "Clove"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "009",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-009.md",
+  "names": [
+   "Clover",
+   "Coastal Sage",
+   "Coconut",
+   "Coffee",
+   "Coralline Algae",
+   "Corn",
+   "Cotton",
+   "Crabapple",
+   "Cranberry",
+   "Creosote Bush"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "010",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-010.md",
+  "names": [
+   "Crowberry",
+   "Cucumber",
+   "Currant",
+   "Curry Leaf",
+   "Daisy",
+   "Dandelion",
+   "Date",
+   "Date Palm",
+   "Date Plum",
+   "Desert Melon"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "011",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-011.md",
+  "names": [
+   "Desert Mint",
+   "Desert Rose",
+   "Desert Sage",
+   "Devil's Claw",
+   "Devil's Club",
+   "Dragon Fruit",
+   "Duckweed",
+   "Dulse",
+   "Durian",
+   "Echinacea"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "012",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-012.md",
+  "names": [
+   "Edelweiss",
+   "Elderberry",
+   "Ephedra",
+   "Eucalyptus",
+   "Fennel",
+   "Fenugreek",
+   "Fiddlehead Fern",
+   "Fig",
+   "Fireweed",
+   "Flax"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "013",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-013.md",
+  "names": [
+   "Floating Green Algae",
+   "Foxglove",
+   "Garlic",
+   "Gentian",
+   "Giant Kelp",
+   "Ginger",
+   "Ginseng",
+   "Glasswort",
+   "Goldenrod",
+   "Gooseberry"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "014",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-014.md",
+  "names": [
+   "Grape",
+   "Green Algae",
+   "Guava",
+   "Hardy Fern",
+   "Hazelnut",
+   "Heather",
+   "Hemlock",
+   "Hemp",
+   "Holy Basil",
+   "Huckleberry"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "015",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-015.md",
+  "names": [
+   "Ice Algae",
+   "Indian Gooseberry",
+   "Ivy",
+   "Jackfruit",
+   "Joshua Tree",
+   "Jujube",
+   "Juniper",
+   "Juniper Berries",
+   "Kelp",
+   "Kiwi Fruit"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "016",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-016.md",
+  "names": [
+   "Labrador Tea",
+   "Lavender",
+   "Lemon",
+   "Lichen",
+   "Licorice",
+   "Licorice Fern",
+   "Licorice Root",
+   "Lime",
+   "Lingonberry",
+   "Lotus"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "017",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-017.md",
+  "names": [
+   "Lotus Root",
+   "Lychee",
+   "Maidenhair Fern",
+   "Mango",
+   "Mangosteen",
+   "Mangrove Leaves",
+   "Maple Sap",
+   "Marsh Rosemary",
+   "Marula",
+   "Meadow Grass"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "018",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-018.md",
+  "names": [
+   "Melon",
+   "Mesquite",
+   "Milkweed",
+   "Millet",
+   "Miner's Lettuce",
+   "Mint",
+   "Monkshood",
+   "Mormon Tea",
+   "Mountain Blueberry",
+   "Mountain Cranberry"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "019",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-019.md",
+  "names": [
+   "Mountain Mint",
+   "Mountain Papaya",
+   "Mountain Sorrel",
+   "Mountain Thyme",
+   "Mugwort",
+   "Mulberry",
+   "Mustard",
+   "Neem",
+   "Nettle",
+   "Nipa Palm Fruit"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "020",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-020.md",
+  "names": [
+   "Nutmeg",
+   "Oak",
+   "Oats",
+   "Oleander",
+   "Olive",
+   "Onion",
+   "Orange",
+   "Orchid Pods",
+   "Oregano",
+   "Pampas Herb"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "021",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-021.md",
+  "names": [
+   "Pandanus Fruit",
+   "Papaya",
+   "Papyrus",
+   "Papyrus Shoots",
+   "Passionflower",
+   "Passionfruit",
+   "Peach",
+   "Peanut",
+   "Pear",
+   "Persimmon"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "022",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-022.md",
+  "names": [
+   "Pickerelweed",
+   "Pigeon Pea",
+   "Pine Nuts",
+   "Pineapple",
+   "Pinyon Pine",
+   "Pitcher Plant",
+   "Plantain",
+   "Plantain Herb",
+   "Plum",
+   "Pomegranate"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "023",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-023.md",
+  "names": [
+   "Poppy",
+   "Potato",
+   "Prairie Turnip",
+   "Prickly Pear",
+   "Purple Saxifrage",
+   "Quinoa",
+   "Rabbitbrush",
+   "Rafflesia",
+   "Rainforest Nettle",
+   "Rambutan"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "024",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-024.md",
+  "names": [
+   "Raspberry",
+   "Rattan",
+   "Red Algae",
+   "Red Grape",
+   "Redwood",
+   "Rhubarb",
+   "Rice",
+   "Riverbank Nettle",
+   "Rose Hip",
+   "Roselle"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "025",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-025.md",
+  "names": [
+   "Rosemary",
+   "Rush Shoots",
+   "Rye",
+   "Sage",
+   "Sagebrush",
+   "Salmonberry",
+   "Saltbush",
+   "Saltgrass",
+   "Samphire",
+   "Sargassum"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "026",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-026.md",
+  "names": [
+   "Scurvy Grass",
+   "Sea Beet",
+   "Sea Buckthorn",
+   "Sea Fennel",
+   "Sea Grape",
+   "Sea Grapes Algae",
+   "Sea Kale",
+   "Sea Lavender",
+   "Sea Lettuce",
+   "Sea Purslane"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "027",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-027.md",
+  "names": [
+   "Sea Rocket",
+   "Seagrass",
+   "Serviceberry",
+   "Sesame",
+   "Solomon's Seal",
+   "Sorghum",
+   "Sorrel",
+   "Soursop",
+   "Spruce Tips",
+   "Star Anise"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "028",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-028.md",
+  "names": [
+   "Starfruit",
+   "Steppe Tulip",
+   "Sugar Kelp",
+   "Sundew",
+   "Sunflower",
+   "Swamp Mint",
+   "Sweet Flag",
+   "Sweet Potato",
+   "Sword Fern",
+   "Tamarind"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "029",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-029.md",
+  "names": [
+   "Tamarisk",
+   "Taro",
+   "Tea",
+   "Tea Tree",
+   "Thyme",
+   "Tobacco",
+   "Tree Fern Shoots",
+   "Tree Tomato",
+   "Turmeric",
+   "Tussock Grass"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "030",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-030.md",
+  "names": [
+   "Valerian",
+   "Vanilla Orchid",
+   "Venus Flytrap",
+   "Violet",
+   "Wakame",
+   "Walnut",
+   "Water Hemlock",
+   "Water Lily",
+   "Water Mint",
+   "Water Spinach"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "031",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-031.md",
+  "names": [
+   "Watercress",
+   "Watermelon",
+   "Wheat",
+   "White Grape",
+   "Wild Blueberry",
+   "Wild Cherry",
+   "Wild Chili",
+   "Wild Chive",
+   "Wild Fig",
+   "Wild Garlic"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "032",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-032.md",
+  "names": [
+   "Wild Ginger",
+   "Wild Guava",
+   "Wild Mango",
+   "Wild Melon",
+   "Wild Mint",
+   "Wild Mustard",
+   "Wild Onion",
+   "Wild Rhubarb",
+   "Wild Rice",
+   "Wild Rye"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "033",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-033.md",
+  "names": [
+   "Wild Sesame",
+   "Wild Strawberry",
+   "Wild Taro",
+   "Wild Thyme",
+   "Wild Yam",
+   "Willow",
+   "Wood Sorrel",
+   "Wormwood",
+   "Yarrow",
+   "Yerba Mate"
+  ]
+ },
+ {
+  "group": "flora",
+  "set": "earth-flora",
+  "id": "034",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/flora/batch-034.md",
+  "names": [
+   "Yew",
+   "Yucca"
+  ]
+ },
+ {
+  "group": "fungi",
+  "set": "earth-fungi",
+  "id": "001",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fungi/batch-001.md",
+  "names": [
+   "Bioluminescent Mushroom",
+   "Black Truffle",
+   "Bracket Fungus",
+   "Chanterelle",
+   "Chicken-of-the-Woods",
+   "Coral Fungus",
+   "Cordyceps",
+   "Death Cap",
+   "Destroying Angel",
+   "Earthstar"
+  ]
+ },
+ {
+  "group": "fungi",
+  "set": "earth-fungi",
+  "id": "002",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fungi/batch-002.md",
+  "names": [
+   "Enoki",
+   "Fly Agaric",
+   "Giant Puffball",
+   "Jelly Fungus",
+   "Lion’s Mane",
+   "Maitake",
+   "Mildew",
+   "Mold",
+   "Morel",
+   "Oyster Mushroom"
+  ]
+ },
+ {
+  "group": "fungi",
+  "set": "earth-fungi",
+  "id": "003",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/fungi/batch-003.md",
+  "names": [
+   "Porcini",
+   "Reindeer Lichen",
+   "Shelf Fungus",
+   "Shiitake",
+   "Stinkhorn",
+   "Turkey Tail",
+   "Yeast"
+  ]
+ },
+ {
+  "group": "microbe",
+  "set": "earth-microbe",
+  "id": "001",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/microbe/batch-001.md",
+  "names": [
+   "Acidophile",
+   "Amoeba",
+   "Bioluminescent Plankton",
+   "Cryophile",
+   "Cyanobacteria",
+   "Diatom",
+   "Dinoflagellate",
+   "Euglena",
+   "Foraminiferan",
+   "Halophile"
+  ]
+ },
+ {
+  "group": "microbe",
+  "set": "earth-microbe",
+  "id": "002",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/microbe/batch-002.md",
+  "names": [
+   "Iron-Oxidizing Bacteria",
+   "Methanogen",
+   "Nitrogen-Fixing Bacteria",
+   "Paramecium",
+   "Radiation-Resistant Microbe",
+   "Radiolarian",
+   "Red-Tide Algae",
+   "Snow Algae",
+   "Sulfur-Oxidizing Bacteria",
+   "Thermophile"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "001",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-001.md",
+  "names": [
+   "fauna-h0-s0",
+   "fauna-h0-s1",
+   "fauna-h0-s10",
+   "fauna-h0-s11",
+   "fauna-h0-s12",
+   "fauna-h0-s13",
+   "fauna-h0-s14",
+   "fauna-h0-s15",
+   "fauna-h0-s16",
+   "fauna-h0-s17"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "002",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-002.md",
+  "names": [
+   "fauna-h0-s18",
+   "fauna-h0-s19",
+   "fauna-h0-s2",
+   "fauna-h0-s3",
+   "fauna-h0-s4",
+   "fauna-h0-s5",
+   "fauna-h0-s6",
+   "fauna-h0-s7",
+   "fauna-h0-s8",
+   "fauna-h0-s9"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "003",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-003.md",
+  "names": [
+   "fauna-h1-s0",
+   "fauna-h1-s1",
+   "fauna-h1-s10",
+   "fauna-h1-s11",
+   "fauna-h1-s12",
+   "fauna-h1-s13",
+   "fauna-h1-s14",
+   "fauna-h1-s15",
+   "fauna-h1-s16",
+   "fauna-h1-s17"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "004",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-004.md",
+  "names": [
+   "fauna-h1-s18",
+   "fauna-h1-s19",
+   "fauna-h1-s2",
+   "fauna-h1-s3",
+   "fauna-h1-s4",
+   "fauna-h1-s5",
+   "fauna-h1-s6",
+   "fauna-h1-s7",
+   "fauna-h1-s8",
+   "fauna-h1-s9"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "005",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-005.md",
+  "names": [
+   "fauna-h2-s0",
+   "fauna-h2-s1",
+   "fauna-h2-s10",
+   "fauna-h2-s11",
+   "fauna-h2-s12",
+   "fauna-h2-s13",
+   "fauna-h2-s14",
+   "fauna-h2-s15",
+   "fauna-h2-s16",
+   "fauna-h2-s17"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "006",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-006.md",
+  "names": [
+   "fauna-h2-s18",
+   "fauna-h2-s19",
+   "fauna-h2-s2",
+   "fauna-h2-s3",
+   "fauna-h2-s4",
+   "fauna-h2-s5",
+   "fauna-h2-s6",
+   "fauna-h2-s7",
+   "fauna-h2-s8",
+   "fauna-h2-s9"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "007",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-007.md",
+  "names": [
+   "flora-h0-s0",
+   "flora-h0-s1",
+   "flora-h0-s10",
+   "flora-h0-s11",
+   "flora-h0-s12",
+   "flora-h0-s13",
+   "flora-h0-s14",
+   "flora-h0-s15",
+   "flora-h0-s16",
+   "flora-h0-s17"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "008",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-008.md",
+  "names": [
+   "flora-h0-s18",
+   "flora-h0-s19",
+   "flora-h0-s2",
+   "flora-h0-s3",
+   "flora-h0-s4",
+   "flora-h0-s5",
+   "flora-h0-s6",
+   "flora-h0-s7",
+   "flora-h0-s8",
+   "flora-h0-s9"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "009",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-009.md",
+  "names": [
+   "flora-h1-s0",
+   "flora-h1-s1",
+   "flora-h1-s10",
+   "flora-h1-s11",
+   "flora-h1-s12",
+   "flora-h1-s13",
+   "flora-h1-s14",
+   "flora-h1-s15",
+   "flora-h1-s16",
+   "flora-h1-s17"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "010",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-010.md",
+  "names": [
+   "flora-h1-s18",
+   "flora-h1-s19",
+   "flora-h1-s2",
+   "flora-h1-s3",
+   "flora-h1-s4",
+   "flora-h1-s5",
+   "flora-h1-s6",
+   "flora-h1-s7",
+   "flora-h1-s8",
+   "flora-h1-s9"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "011",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-011.md",
+  "names": [
+   "flora-h2-s0",
+   "flora-h2-s1",
+   "flora-h2-s10",
+   "flora-h2-s11",
+   "flora-h2-s12",
+   "flora-h2-s13",
+   "flora-h2-s14",
+   "flora-h2-s15",
+   "flora-h2-s16",
+   "flora-h2-s17"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "012",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-012.md",
+  "names": [
+   "flora-h2-s18",
+   "flora-h2-s19",
+   "flora-h2-s2",
+   "flora-h2-s3",
+   "flora-h2-s4",
+   "flora-h2-s5",
+   "flora-h2-s6",
+   "flora-h2-s7",
+   "flora-h2-s8",
+   "flora-h2-s9"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "013",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-013.md",
+  "names": [
+   "fungi-h0-s0",
+   "fungi-h0-s1",
+   "fungi-h0-s10",
+   "fungi-h0-s11",
+   "fungi-h0-s12",
+   "fungi-h0-s13",
+   "fungi-h0-s14",
+   "fungi-h0-s15",
+   "fungi-h0-s16",
+   "fungi-h0-s17"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "014",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-014.md",
+  "names": [
+   "fungi-h0-s18",
+   "fungi-h0-s19",
+   "fungi-h0-s2",
+   "fungi-h0-s3",
+   "fungi-h0-s4",
+   "fungi-h0-s5",
+   "fungi-h0-s6",
+   "fungi-h0-s7",
+   "fungi-h0-s8",
+   "fungi-h0-s9"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "015",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-015.md",
+  "names": [
+   "fungi-h1-s0",
+   "fungi-h1-s1",
+   "fungi-h1-s10",
+   "fungi-h1-s11",
+   "fungi-h1-s12",
+   "fungi-h1-s13",
+   "fungi-h1-s14",
+   "fungi-h1-s15",
+   "fungi-h1-s16",
+   "fungi-h1-s17"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "016",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-016.md",
+  "names": [
+   "fungi-h1-s18",
+   "fungi-h1-s19",
+   "fungi-h1-s2",
+   "fungi-h1-s3",
+   "fungi-h1-s4",
+   "fungi-h1-s5",
+   "fungi-h1-s6",
+   "fungi-h1-s7",
+   "fungi-h1-s8",
+   "fungi-h1-s9"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "017",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-017.md",
+  "names": [
+   "fungi-h2-s0",
+   "fungi-h2-s1",
+   "fungi-h2-s10",
+   "fungi-h2-s11",
+   "fungi-h2-s12",
+   "fungi-h2-s13",
+   "fungi-h2-s14",
+   "fungi-h2-s15",
+   "fungi-h2-s16",
+   "fungi-h2-s17"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "018",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-018.md",
+  "names": [
+   "fungi-h2-s18",
+   "fungi-h2-s19",
+   "fungi-h2-s2",
+   "fungi-h2-s3",
+   "fungi-h2-s4",
+   "fungi-h2-s5",
+   "fungi-h2-s6",
+   "fungi-h2-s7",
+   "fungi-h2-s8",
+   "fungi-h2-s9"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "019",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-019.md",
+  "names": [
+   "microbe-h0-s0",
+   "microbe-h0-s1",
+   "microbe-h0-s10",
+   "microbe-h0-s11",
+   "microbe-h0-s12",
+   "microbe-h0-s13",
+   "microbe-h0-s14",
+   "microbe-h0-s15",
+   "microbe-h0-s16",
+   "microbe-h0-s17"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "020",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-020.md",
+  "names": [
+   "microbe-h0-s18",
+   "microbe-h0-s19",
+   "microbe-h0-s2",
+   "microbe-h0-s3",
+   "microbe-h0-s4",
+   "microbe-h0-s5",
+   "microbe-h0-s6",
+   "microbe-h0-s7",
+   "microbe-h0-s8",
+   "microbe-h0-s9"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "021",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-021.md",
+  "names": [
+   "microbe-h1-s0",
+   "microbe-h1-s1",
+   "microbe-h1-s10",
+   "microbe-h1-s11",
+   "microbe-h1-s12",
+   "microbe-h1-s13",
+   "microbe-h1-s14",
+   "microbe-h1-s15",
+   "microbe-h1-s16",
+   "microbe-h1-s17"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "022",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-022.md",
+  "names": [
+   "microbe-h1-s18",
+   "microbe-h1-s19",
+   "microbe-h1-s2",
+   "microbe-h1-s3",
+   "microbe-h1-s4",
+   "microbe-h1-s5",
+   "microbe-h1-s6",
+   "microbe-h1-s7",
+   "microbe-h1-s8",
+   "microbe-h1-s9"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "023",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-023.md",
+  "names": [
+   "microbe-h2-s0",
+   "microbe-h2-s1",
+   "microbe-h2-s10",
+   "microbe-h2-s11",
+   "microbe-h2-s12",
+   "microbe-h2-s13",
+   "microbe-h2-s14",
+   "microbe-h2-s15",
+   "microbe-h2-s16",
+   "microbe-h2-s17"
+  ]
+ },
+ {
+  "group": "procedural",
+  "set": "procedural",
+  "id": "024",
+  "file": "C:/Projects/Celestial-Frontier/port/v2/apps/game/smoke/auditcards/procedural/batch-024.md",
+  "names": [
+   "microbe-h2-s18",
+   "microbe-h2-s19",
+   "microbe-h2-s2",
+   "microbe-h2-s3",
+   "microbe-h2-s4",
+   "microbe-h2-s5",
+   "microbe-h2-s6",
+   "microbe-h2-s7",
+   "microbe-h2-s8",
+   "microbe-h2-s9"
+  ]
+ }
+]

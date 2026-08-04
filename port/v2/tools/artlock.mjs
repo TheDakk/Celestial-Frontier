@@ -233,6 +233,15 @@ const clsOf = (k) => classOf(CLS, k);
 const lockExists = fs.existsSync(LOCK);
 const lock = lockExists ? JSON.parse(fs.readFileSync(LOCK, 'utf8')) : { blessed: null, fp: {}, sameCount: null, hardCount: null };
 
+/* ⚠ A BLESS REPORT MUST STATE WHAT IT BLESSED, NOT HOW BIG THE MAP IS.
+   `--bless="Crow,Raven,…"` over 22 names printed "BLESSED 1250 assets",
+   because it counted `lock.fp` after the edit rather than the entries it
+   wrote. A tightly-scoped bless and a catastrophic whole-catalogue bless
+   printed the SAME line — and this is the one file in the tree where that
+   distinction is the entire safety property. Verified against the git copy of
+   the lock: 21 fingerprints actually changed. */
+let blessedCount = 0, blessedScope = '';
+
 if (has('bless')) {
   const only = val('bless', '');
   const clsOnly = val('class', '');
@@ -260,6 +269,8 @@ if (has('bless')) {
   lock.blessed = new Date().toISOString().slice(0, 10);
   lock.note = 'Re-blessed by tools/artlock.mjs. A blessing is a CLAIM THAT SOMEONE LOOKED. '
     + 'Never bless to make a red report go green — that is the whole failure this file exists to stop.';
+  blessedCount = n;
+  blessedScope = names ? n + ' named species' : clsOnly ? 'class ' + clsOnly : 'THE WHOLE CATALOGUE';
 }
 
 let bad = 0;
@@ -497,7 +508,8 @@ if (Object.keys(lock.fp).length === 0 && !has('bless')) {
 if (has('bless') || !bad) {
   fs.mkdirSync(path.dirname(LOCK), { recursive: true });
   fs.writeFileSync(LOCK, JSON.stringify(lock, null, 0));
-  if (has('bless')) console.log('\nartlock: BLESSED ' + Object.keys(lock.fp).length + ' assets');
+  if (has('bless')) console.log('\nartlock: BLESSED ' + blessedCount + ' of ' + Object.keys(lock.fp).length
+    + ' assets — scope: ' + blessedScope);
 }
 /* [EXPECT] — the INVERSE guard -------------------------------------- */
 /*  Every other check here asks "did something move that should not have?".
