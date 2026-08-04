@@ -1,9 +1,41 @@
 # ★ COLD-START HANDOFF — read this first
 
-# ★★★ START HERE — END OF 2026-08-03 (session 2), HEAD `f8e8354`, WAVES 48–49 LANDED
+# ★★★ START HERE — END OF 2026-08-03 (session 2), HEAD `6f72c70`, WAVES 48–50 LANDED
 
 ⚠ **Repo root is `C:\Projects\Celestial-Frontier`, not `C:\Projects`.** Every path is relative
 to it. Everything below the WAVES 35–47 banner is HISTORY — accurate, but superseded.
+
+## ★★★★ DO THIS FIRST — THE FULL SWEEP, ON NICK'S INSTRUCTION
+
+The catalogue moved in waves 48–50, so **431 is already stale in exactly the way 473 was.**
+Nick asked for a fresh session and another full sweep. Run it in this order and change nothing
+about the harness until it has run once:
+
+```
+cd port/v2
+node tools/speciesexport.mjs                 # re-render all 1,250 (rebuilds the bundle first)
+node tools/familycards.mjs                   # ★ BY FAMILY, NOT ALPHABETICAL — see below
+                                             #   153 families · 197 batches of 14
+# then one agent per batch: read every PNG, judge against the reference row AND
+# against the others in the batch; adversarially verify every FAIL.
+# JOIN ON `species`, VERBATIM, AT EVERY HOP — never on model-authored prose.
+node tools/goldcompare.mjs --md=reference/GOLD_PASS_3.md
+```
+
+★★ **THE ONE THING THAT MUST BE DIFFERENT THIS TIME: BATCH BY FAMILY (D-ART-147).**
+Gold pass 2 batched alphabetically, produced 431 correct per-asset verdicts, and **missed the
+largest defect in the catalogue** — twelve canids on one pony chassis — because no family ever
+appeared side by side. `tools/familycards.mjs` is written and tested for exactly this; each
+packet leads with *"DO THESE SHARE ONE BODY?"*. **Do not fall back to `auditcards.mjs`.**
+
+⚠ Also expect the calibration problem again (**D-ART-150**): quote a delta against 431 **only
+after checking a slice nobody edited.** Waves 48–50 touched birds (21 bills, 3 raptors),
+carnivore feet, and two flatfish — so **flora, microbes and fungi are the untouched control.**
+If they move, the ruler moved.
+
+★ The wave-49 CHASSIS MODEL is already established — **start from it, do not re-derive it.**
+See the family-chassis section below; a tint render already proved the body occludes the whole
+upper limb, and a trial parameter fix already failed and was reverted.
 
 ## ★★★ THE LIVE NUMBER: 431 FAIL / 748 POLISH / 71 PASS of 1,250
 
