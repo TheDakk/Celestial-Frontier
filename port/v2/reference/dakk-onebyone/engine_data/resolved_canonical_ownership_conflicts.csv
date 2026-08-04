@@ -1,0 +1,5 @@
+previous_library,organism,current_resolution
+flora,Reindeer Lichen,Removed from flora; canonical owner is fungi.
+flora,Snow Algae,Removed from flora; canonical owner is microbe.
+microbe,Green Algae,Removed from microbe; canonical owner is flora.
+microbe,Tardigrade,Removed from microbe; canonical owner is fauna.
