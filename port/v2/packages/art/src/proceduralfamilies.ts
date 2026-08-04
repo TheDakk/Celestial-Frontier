@@ -149,12 +149,23 @@ export function fungiJelly(c: Ctx, g: G, p: Pal): void {
 /** TRUFFLE: a warty hypogeous ball, half out of the soil, one cut open. */
 export function fungiTruffle(c: Ctx, g: G, p: Pal): void {
   const r = seeded(g, 0x7014);
-  /* the soil it is buried in */
-  const sg = c.createLinearGradient(0, S * 0.56, 0, S * 0.96);
-  sg.addColorStop(0, 'rgba(48,36,26,0.0)'); sg.addColorStop(0.25, 'rgba(48,36,26,0.92)');
-  sg.addColorStop(1, 'rgba(26,19,13,0.98)');
-  c.fillStyle = sg; c.fillRect(0, S * 0.56, S, S * 0.44);
-  const balls: Array<[number, number, number]> = [[S * 0.40, S * 0.66, S * 0.145], [S * 0.66, S * 0.72, S * 0.105]];
+  /* The soil it is buried in.
+     ⚠ This was `fillRect(0, S*0.56, S, S*0.44)`. The gradient softened the TOP
+     edge and nothing softened the SIDES, so once the fit pass scales the ink
+     layer the soil ends in two hard vertical walls at the frame — the audit's
+     "hard-edged brown rectangle with sharp vertical sides". A ground plane has
+     no edges; it fades out in every direction it is not anchored in. */
+  const sg = c.createRadialGradient(S * 0.5, S * 0.78, S * 0.06, S * 0.5, S * 0.78, S * 0.46);
+  sg.addColorStop(0, 'rgba(26,19,13,0.98)'); sg.addColorStop(0.55, 'rgba(42,31,22,0.90)');
+  sg.addColorStop(0.82, 'rgba(48,36,26,0.42)'); sg.addColorStop(1, 'rgba(48,36,26,0)');
+  c.fillStyle = sg;
+  c.beginPath(); c.ellipse(S * 0.5, S * 0.78, S * 0.46, S * 0.30, 0, 0, TAU); c.fill();
+  /* ★ and the two balls were at FIXED positions and FIXED radii — part of the
+     seven constant painters D-ART-143 records. Vary them as ratios. */
+  const b0 = 0.36 + r() * 0.09, b1 = 0.62 + r() * 0.09;
+  const balls: Array<[number, number, number]> = [
+    [S * b0, S * (0.64 + r() * 0.05), S * (0.128 + r() * 0.034)],
+    [S * b1, S * (0.70 + r() * 0.05), S * (0.092 + r() * 0.030)]];
   for (const [bx, by, rad] of balls) {
     c.fillStyle = lump(c, p, bx, by, rad);
     /* a truffle is LUMPY, never a sphere — walk the rim with noise */
@@ -184,13 +195,31 @@ export function fungiTruffle(c: Ctx, g: G, p: Pal): void {
   const [gx, gy, gr] = balls[1]!;
   c.save();
   c.beginPath(); c.ellipse(gx + gr * 0.28, gy - gr * 0.1, gr * 0.72, gr * 0.86, 0.4, 0, TAU); c.clip();
-  c.fillStyle = shade(p, 1.55); c.fillRect(gx - gr, gy - gr * 1.2, gr * 2.4, gr * 2.4);
-  c.strokeStyle = shade(p, 0.42); c.lineWidth = 2.2; c.lineCap = 'round';
-  for (let i = 0; i < 16; i++) {
-    const y0 = gy - gr + (i / 15) * gr * 2;
-    c.beginPath(); c.moveTo(gx - gr, y0);
-    c.bezierCurveTo(gx - gr * 0.2, y0 + (r() - 0.5) * 14, gx + gr * 0.4, y0 + (r() - 0.5) * 14, gx + gr * 1.2, y0 + (r() - 0.5) * 8);
-    c.stroke();
+  /* ⚠ THIS WAS INVERTED. It filled the face BRIGHT (`shade(p, 1.55)`) and then
+     ruled sixteen evenly-spaced dark beziers across it — "a striped golf ball".
+     Real gleba is the other way round and is not ruled: DARK flesh laced with
+     pale veins that BRANCH. Fill dark, then grow a few trunks and hang short
+     branches off them at angles. */
+  c.fillStyle = shade(p, 0.78); c.fillRect(gx - gr, gy - gr * 1.2, gr * 2.4, gr * 2.4);
+  c.lineCap = 'round';
+  const vein = (x0: number, y0: number, ang: number, len: number, w: number, depth: number): void => {
+    const x1 = x0 + Math.cos(ang) * len, y1 = y0 + Math.sin(ang) * len;
+    const mx = (x0 + x1) / 2 + Math.cos(ang + 1.57) * len * (r() - 0.5) * 0.5;
+    const my = (y0 + y1) / 2 + Math.sin(ang + 1.57) * len * (r() - 0.5) * 0.5;
+    c.strokeStyle = `rgba(236,232,220,${0.30 + depth * 0.16})`;
+    c.lineWidth = w;
+    c.beginPath(); c.moveTo(x0, y0); c.quadraticCurveTo(mx, my, x1, y1); c.stroke();
+    if (depth > 0 && w > 0.6) {
+      const n = 1 + (r() < 0.55 ? 1 : 0);
+      for (let k = 0; k < n; k++) {
+        vein(mx, my, ang + (r() - 0.5) * 1.7, len * (0.42 + r() * 0.26), w * 0.62, depth - 1);
+      }
+    }
+  };
+  for (let i = 0; i < 6; i++) {
+    const a0 = r() * TAU;
+    vein(gx + gr * 0.28 + Math.cos(a0) * gr * 0.8, gy - gr * 0.1 + Math.sin(a0) * gr * 0.9,
+      a0 + Math.PI + (r() - 0.5) * 0.9, gr * (0.7 + r() * 0.5), 2.0, 2);
   }
   c.restore();
   c.strokeStyle = 'rgba(240,240,230,0.35)'; c.lineWidth = 2;

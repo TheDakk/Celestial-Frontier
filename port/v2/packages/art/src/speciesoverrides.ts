@@ -394,7 +394,12 @@ const FUNGI_NAME: Record<string, Painter> = {
   /* ★ WAVE 42 — 'Reindeer Lichen': fungiBracket removed. CANON routes it to
      lichenMat and runs first, so this never fired — and the two disagree
      completely: a bracket SHELF versus a branching lichen mat. */
-  'Giant Puffball': (c, g, p) => fungiPuffball(c, g, speciesHue(p, '#ded3bb')), 'Earthstar': fungiEarthstar, 'Black Truffle': fungiTruffle,
+  'Giant Puffball': (c, g, p) => fungiPuffball(c, g, speciesHue(p, '#ded3bb')), 'Earthstar': fungiEarthstar,
+  /* ⚠ 'Black Truffle' was routed bare, so it inherited the generic pale fungus
+     palette and painted CHALK-WHITE — the audit read it as "a white puffball".
+     Its own neighbour on this line already showed the fix. When a species name
+     IS a colour, force the colour (the rule fungioverrides2.ts:9 states). */
+  'Black Truffle': (c, g, p) => fungiTruffle(c, g, speciesHue(p, '#2a2028')),
   /* ★ wave 21 — the audit's last two named fungi */
   'Enoki': (c, g, p) => fungiEnoki(c, g, speciesHue(p, '#f6f2e8')),
   'Coral Fungus': (c, g, p) => fungiCoral(c, g, speciesHue(p, '#f0dfa4')),
