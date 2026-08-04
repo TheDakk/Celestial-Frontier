@@ -390,6 +390,44 @@ const CONFUSABLE = Number(val('confusable', '1.5'));
   }
   pairs.sort((a, b) => a[2] - b[2]);
   const hard = pairs.filter((p) => p[2] < HARD);
+
+  /* ★★ [SHAPE] — THE COLOUR-BLIND TIER, AND WHY IT EXISTS.
+     Everything above measures `dist`, a 16×16 RGB grid. It is area-weighted
+     and it is therefore separated by HUE — which means two species built from
+     the SAME construction in different colours score far apart and this gate
+     prints reassurance. On 2026-08-03 it printed "0 pairs under HARD 0.6"
+     while Nick's independent engine measured Flounder ≈ Halibut at silhouette
+     similarity 1.0000. Rendering them settled it: THE SAME BRISTLY TAN EGG
+     WITH A FACE. Also Diving Beetle ≈ Water Beetle (one body, green vs brown)
+     and Duck ≈ Eider Duck. GOLD_PASS_2026-08-03 had already written the reason
+     down — "the [SAME] ratchet misses this because colour separates them; the
+     gate measures pictures, not construction" — and the zero still read as
+     safety, to me included: I quoted it twice as a result.
+     `silDist` was already computed for every asset and used ONLY for drift.
+     Comparing it pairwise costs nothing and answers the question colour cannot:
+     is this the same SHAPE wearing a different palette?
+     ⚠ REPORTED, NOT GATED, on purpose. A new ratchet that fails the build on
+     its first run teaches everyone to pass --no-verify; D-ART-97 is this
+     project's own scar from gating a number before it was calibrated. It
+     prints, it ranks, and a later wave turns it into a ratchet once the
+     backlog it names is worked down. */
+  const SHAPE = Number(val('shape', '2.0'));   /* 100 pairs today; 35 under 1.0, 9 under 0.5 */
+  const shapePairs = [];
+  for (let i = 0; i < earth.length; i++) {
+    for (let j = i + 1; j < earth.length; j++) {
+      const s = silDist(nowSil[earth[i]], nowSil[earth[j]]);
+      if (s < SHAPE) shapePairs.push([earth[i], earth[j], s]);
+    }
+  }
+  shapePairs.sort((a, b) => a[2] - b[2]);
+  console.log('\n[SHAPE] colour-blind silhouette · ' + shapePairs.length + ' pairs under ' + SHAPE
+    + '  (reported, not gated — see the comment)');
+  for (const [a, b, s] of shapePairs.slice(0, 12)) {
+    console.log('   ' + s.toFixed(2).padStart(6) + '  ' + a.slice(a.indexOf('|') + 1) + '  ≈  ' + b.slice(b.indexOf('|') + 1));
+  }
+  if (shapePairs.length > 12) console.log('   … and ' + (shapePairs.length - 12) + ' more');
+  fs.writeFileSync(path.join(path.dirname(LOCK), 'shapepairs.json'), JSON.stringify(
+    shapePairs.map(([a, b, s]) => ({ a: a.slice(a.indexOf('|') + 1), b: b.slice(b.indexOf('|') + 1), shape: Number(s.toFixed(3)) })), null, 1));
   console.log('\n[SAME] ' + earth.length + ' Earth species · ' + pairs.length + ' pairs under WATCH ' + WATCH
     + ' · ' + hard.length + ' under HARD ' + HARD);
   for (const [a, b, d] of pairs.slice(0, 15)) {
