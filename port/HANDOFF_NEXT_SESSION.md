@@ -48,6 +48,11 @@ feature-scale work (D-ART-110), so this is eye-verified only.
 | invert | 25 | | proportion, occlusion, duplication | 84 / 78 / 73 |
 | bird | 21 | | | |
 
+**Waves 48–50 landed against this table** (not yet re-measured — the counts above are the
+2026-08-03 pass): `bill:'stout'` wired for 21 birds · the carnivore paw rebuilt (60+ mammals) ·
+`faunaFlatfish` given real axes (Flounder/Halibut) · Hawk/Falcon/Osprey separated. **Re-render
+and re-judge before quoting 431 again** — and **batch by FAMILY this time** (D-ART-147).
+
 ★ **Flora is now the largest bucket (170) and its FAIL rate went UP.** This has been a fauna
 arc; `PLAN_100_PERCENT.md` scoped nothing for flora. And `colour` + `flat/no material` have
 overtaken `shape` — with anatomy improving, **the SURFACE is now what fails**, which is the
@@ -80,8 +85,22 @@ FAIL sets overlap on **88 — start there, no adjudication needed.**
 1. **The family chassis** (above) — biggest single lever in the catalogue.
 2. **The 88 both-FAIL assets** — certain work.
 3. **Flora, 170 FAILs** — unscoped by any plan; needs its own arc.
-4. **The `[SHAPE]` backlog** — 35 pairs under 1.0 are near-identical constructions.
-5. **Broken procedural renders** — anterior clipping (`fauna-h1-s3`, `fauna-h1-s5`, `fauna-h0-s15`).
+4. **The `[SHAPE]` backlog** — now 96 pairs under 2.0 (wave 50 cleared 4). The remaining
+   near-identical constructions start: Ice Algae ≈ Snow Algae **0.00**, Sea Lettuce ≈ Green
+   Algae **0.12**, Eel ≈ Dragonfish 0.50, Small Fish ≈ Lanternfish 0.50, Anaconda ≈ Whip Snake
+   0.56, Arowana ≈ Knifefish 0.56. **The wave-50 recipe applies to most of them:** the pair is
+   one painter called with only a hue difference, and the axes usually already exist.
+5. **Broken procedural renders — 13 of the 37 procedural FAILs, and it is a BUG, not a
+   judgement.** `fauna-h1-s3` and `fauna-h1-s5` are headless fish torsos; `fauna-h0-s15` is a
+   body shoved into the bottom-right corner with a detached fragment stranded at the left.
+   ★ **Diagnosis so far: it is the FIT/framing pass, not the painter.** `snout:'blunt'` and
+   `profile:'fusiform'` show up in `tokencheck`'s DEAD tier and are RED HERRINGS — the else
+   branch *is* the blunt snout, correctly (Tuna, Sardine, Herring all use it and render fine).
+   The verifier's own note says "a clip, not an absent head-blob". The fit pass is **not in
+   `packages/art/src`** — find it upstream (it is referenced by comment in five painters as
+   "the shared fit pass, wave 6"; D-ART-34 says it erases absolute size). Nick's engine scored
+   all 240 procedural assets PASS and never looked for this: **a coherence check does not ask
+   whether the picture is intact.**
 6. **Chanterelle** — the funnel's dished centre reads as a black hole. (`gills:'ridge'` is a
    dead value but a latent trap only; the ridges draw off `cap:'funnel'`.)
 7. **Naming, so passes can join** — 240 procedural assets cannot join between my own two passes
