@@ -1039,3 +1039,25 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   at all and cost three reverted attempts (see the G9 note in `reference/GOLD_PASS_2026-08-03.md`).
   Wave 4's investment is what paid for wave 40. The remaining hand-drawn outlines (the
   elephant fan, the cobra hood) are where the next posture request will hurt.
+
+- ⚠ **D-ART-143 — A UNIFORM CHOOSER OVER CONSTANT PAINTERS IS STILL A MONO-TEMPLATE (wave 46).**
+  The platinum audit said every procedural fungus was "a variation of the same cap-and-stem
+  trio." Wave 20 diagnosed the SELECTOR — `form % 6` clumped, so half a sample came back
+  puffballs — avalanched the seed, proved the spread flat with a test that calls the real
+  selector, and closed it. **Nobody asked whether the families it now picks so evenly can draw
+  more than one thing.** Wave 46 counted the rng calls in all 26 family painters: **seven draw
+  a fixed or near-fixed picture.** `fungiMorel` made zero. `tardigrade` made one and carried a
+  `void r;` at its end — the generator was created, explicitly discarded, and the discard was
+  ACKNOWLEDGED in the source.
+  ★ Fixing the picker moved the failure without reducing it: the sameness was distributed
+  evenly instead of clumped, which is exactly what "fixed" looks like from the selector's side.
+  The measurement that would have caught it existed the whole time — artlock's own `dist()`
+  over the fingerprints it already stores. Run against the two sheets it gives:
+  **procedural 240 assets / 19 pairs under HARD 0.6 (seven at 0.00, byte-identical); Earth
+  1,010 assets / 0 pairs.** The gate never said so because `[SAME]` is Earth-only *by design* —
+  a deliberate scope limit that quietly became a blind spot once procedural stopped being
+  throwaway filler.
+  ★ **The general form: when a pipeline is DISTRIBUTION over GENERATORS, a fix to the
+  distribution proves nothing about the generators.** Measure the output, not the stage you
+  changed — and when a subsystem is exempt from a ratchet, re-ask periodically whether the
+  reason still holds.
