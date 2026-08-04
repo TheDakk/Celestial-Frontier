@@ -1087,3 +1087,82 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   ★★★ Only a **both-directions** negative control caught any of this — asserting not just that
   routed species stop classing verbatim, but that a name in NO table still DOES. The one-way
   check passed on the first, broken attempt.
+
+- ⚠ **D-ART-145 — A DEAD *VALUE* HIDES EXACTLY AS WELL AS A DEAD FIELD (wave 48).**
+  `speccheck` (D-ART-100) asks "is this FIELD ever read?" and the whole catalogue answers yes.
+  One level down, `bill:'stout'` was in the `BillKind` union, written by **21 bird rows**, and
+  compared by **no branch anywhere** — so Crow, Raven, Magpie, Jay, Gull, Penguin, Auk, Puffin,
+  Flamingo, the gamebirds and the ratites all fell through to a generic thin triangle. Four of
+  those rows name the bill as a *mustRead*. TypeScript accepted it, the gate was green, and only
+  the render knew. **New gate `tools/tokencheck.mjs`**: for every string token a table writes,
+  does any painter compare that value? Two tiers — DEAD (compared nowhere) and ALIAS (compared
+  only under another field, which family-default merges do legitimately).
+  ★★ **The gate was wrong three times before it was right, each time plausibly:** it pooled
+  values globally (so fixing `bill:'stout'` also declared the unrelated `stem:'stout'` alive —
+  crediting a fix to a field nobody touched, which *retires a suspect no one looked at*); then
+  scoped by the identifier left of `===`, which marked every snake pattern, material and pupil
+  dead because painters rename (`const pat = opts.pattern`; `spec.mat` arrives in `skin.ts` as
+  `kind`); then still tripped because `kind` is itself a table field elsewhere. **A name may
+  narrow a comparison only on PROVEN provenance — a `spec.`-qualified read or a recorded local
+  alias. Coincidence of naming is not provenance.**
+
+- ⚠ **D-ART-146 — A REPORT THAT CANNOT DISTINGUISH SAFETY FROM DISASTER IS NOT A REPORT (wave 48).**
+  `artlock --bless="Crow,…"` over 22 names printed **"BLESSED 1250 assets"**, because it counted
+  `lock.fp` *after* the edit instead of the entries it wrote. A tightly-scoped bless and a
+  catastrophic whole-catalogue bless printed the **same line** — in the one file in this tree
+  where that distinction *is* the safety property. It prints count + scope now, controlled in
+  both directions. ★ And the way it was caught is the lesson: the claim was checked **against
+  the git copy of the lock** (21 fingerprints actually changed), not against the tool's own
+  summary. **Never verify an instrument with the instrument.**
+
+- ⚠⚠ **D-ART-147 — A PER-ASSET HARNESS CANNOT SEE A CROSS-ASSET DEFECT, AND ALPHABETICAL
+  BATCHING GUARANTEES IT WON'T (wave 49).** Gold pass 2 judged all 1,250 in packets of 10 and
+  returned 431 FAILs — and **missed the largest defect in the catalogue**, which Nick's engine
+  found immediately: **twelve canids are one animal in twelve colours, and it is a pony**;
+  twelve felids are that chassis with spots (the Tiger is a striped pony, the Lion is that pony
+  wearing a mane). My pass graded most of them POLISH; one judge called African Wild Dog "a lean
+  blotched dog". **The cause is batching.** I ordered the packets alphabetically, so no family
+  ever appeared together, and a judge shown one Tiger against "orange with black stripes, heavy
+  build" ticks stripes, ticks orange, and lands on POLISH. `GOLD_PASS_2026-08-03` §2 already
+  said systemic clusters *"are only visible because everything was judged in one sitting"* —
+  and the re-measure destroyed exactly that signal by construction. **Batch by FAMILY.**
+  Corollary: 431 correct per-asset verdicts did not sum to the one finding that mattered most.
+
+- ⚠⚠ **D-ART-148 — A METRIC BLIND TO A DEFECT CLASS PRINTS THE SAME ZERO WHETHER THE CLASS IS
+  ABSENT OR INVISIBLE (wave 49).** artlock's `[SAME]` measures a 16×16 **RGB** grid, so hue
+  separates two species built from one construction. It printed **"0 pairs under HARD 0.6"**
+  while an independent silhouette metric measured **Flounder ≈ Halibut at 1.0000** — verified on
+  the render as *the same bristly tan egg with a face*. Also Ice Algae ≈ Snow Algae (0.00),
+  Hawk ≈ Falcon (0.06), Sea Lettuce ≈ Green Algae (0.12), Duck ≈ Eider Duck.
+  ★ The gold pass **had already written down why the zero was worthless** — *"the ratchet misses
+  this because colour separates them; the gate measures pictures, not construction"* — and I
+  still quoted the zero twice as a result. **A documented blind spot is not a mitigated one.**
+  Fixed by the new `[SHAPE]` tier: colour-blind, reported-not-gated (D-ART-97 — never gate an
+  uncalibrated threshold), 100 pairs under 2.0 in `shapepairs.json`.
+
+- ⚠ **D-ART-149 — ESTABLISH THE MODEL WITH A TINT BEFORE YOU TOUCH A PARAMETER (wave 49,
+  the method that finally worked).** Facing the pony chassis, the temptation was to adjust
+  `crouch`/`cannon`/leg numbers. Instead: **limb tube flat blue, foot flat red, rendered across
+  felid / canid / equid / ursid.** It showed in one image what the arithmetic never gave up —
+  **the body occludes the entire upper limb; only the lower ~35% of each leg is visible, and
+  that section is a straight vertical tube in every family.** Every `crouch` fold happens
+  *inside the silhouette*. Worse, it is inverted: `kneeY = 0.70 − crouch·0.34` puts a cat's knee
+  at 38% of the way down and a horse's at 63%, so the more crouched the family, the more of its
+  fold hides. A trial fix (knee lowered) changed almost nothing and was **reverted rather than
+  kept as churn** — occlusion, not joint height, is the binding constraint.
+  ★ What shipped instead was the one part the body does *not* occlude: the paw. It had three
+  faults, and the third had been inverting the read the whole time D-ART-133 recorded it as
+  merely "low contrast" — **the toes were painted LIGHTER than the pad**, so the shape that says
+  "toes, not a hoof" read as a highlight on the tip, which is what a fetlock looks like.
+  **Scope honestly: the feet are fixed, the chassis is not.** Shipping a speculative
+  multi-parameter sweep over 140 mammals is the "global pass wearing an anatomy argument"
+  D-ART-83 was paid for.
+
+- ⚠ **D-ART-150 — TWO PASSES ARE NOT COMPARABLE UNTIL AN UNTOUCHED CONTROL SAYS SO (wave 49).**
+  Gold pass 2 measured 431 FAIL against a stale 473 and the obvious headline was "−42, we
+  improved". **It is an artefact.** The control was already in the data: waves 35–47 touched no
+  flora, no microbes, no procedural, and **both untouched sets got worse** (flora +6.3 points of
+  FAIL rate, procedural +4.6) — a yardstick that did not move leaves those flat. Confirming it,
+  **only 14 of 99 old PASSes survived**: a build that only improved cannot demote 85% of its own
+  passes. **Quote a delta only after an untouched slice has certified the ruler.** What survives
+  the correction is still real: fauna 277 → 198 where the work actually happened.
