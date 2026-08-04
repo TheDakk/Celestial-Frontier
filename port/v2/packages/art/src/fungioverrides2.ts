@@ -230,7 +230,24 @@ export function microbeForam(c: Ctx, g: G, pIn: Pal): void {
 function shade2(p: Pal, m: number): string { return `rgb(${p.cr * m | 0},${p.cg * m | 0},${p.cb * m | 0})`; }
 export function tardigrade(c: Ctx, g: G, p: Pal): void {
   const r = seeded(g, 0x7A16);
-  const cx = S * 0.46, cy = S * 0.52, bw = S * 0.20, bh = S * 0.135;
+  /* ★ WAVE 46 — THIS PAINTER DREW ONE FIXED ANIMAL. `r` was created on the line
+     above and never called once: every dimension below was a constant, so every
+     genome routed here rendered the SAME tardigrade and differed only in
+     palette. The gold pass caught it as "the seed produced no variation", and
+     the fingerprints prove it — m0·5, m2·5, m2·9 and m2·17 sit at distance
+     0.00 from each other, a four-way byte-identical clique.
+     ⚠ The wave-20 fix made the family PICKER spread properly (procFamilyIndex
+     avalanches the seed). Nobody checked whether the families it picks can
+     actually draw more than one thing. A uniform chooser over constant painters
+     is still a mono-template — it just distributes the sameness evenly.
+     Every axis here is a RATIO off the seed, never a canvas scale (D-ART-34,
+     the fit pass erases absolute size). */
+  const v = (salt: number, amt: number): number => {
+    const rr = seeded(g, salt);
+    return 1 + (rr() - 0.5) * 2 * amt;
+  };
+  const cx = S * 0.46, cy = S * 0.52,
+    bw = S * 0.20 * v(0x11, 0.16), bh = S * 0.135 * v(0x22, 0.20);
   shadow(c, cx, cy + bh + S * 0.05, S * 0.20);
   /* FOUR PAIRS of stubby legs, each ending in claws — the audit's ask */
   c.lineCap = 'round';
@@ -255,7 +272,13 @@ export function tardigrade(c: Ctx, g: G, p: Pal): void {
   c.fillStyle = bg;
   c.beginPath(); c.ellipse(cx, cy, bw, bh, 0, 0, TAU); c.fill();
   c.strokeStyle = 'rgba(20,16,12,0.22)'; c.lineWidth = 2;   /* the cuticle segment folds */
-  for (let i = 1; i < 5; i++) { const x = cx - bw * 0.6 + i * bw * 0.3; c.beginPath(); c.moveTo(x, cy - bh * 0.8); c.quadraticCurveTo(x + bh * 0.1, cy, x, cy + bh * 0.7); c.stroke(); }
+  /* ★ wave 46 — the fold COUNT varies now too: four segments was a constant on
+     an animal whose whole surface read is its segmentation. */
+  const segs = 4 + Math.floor(r() * 3);
+  for (let i = 1; i < segs; i++) {
+    const x = cx - bw * 0.66 + i * (bw * 1.32 / segs);
+    c.beginPath(); c.moveTo(x, cy - bh * 0.8); c.quadraticCurveTo(x + bh * 0.1, cy, x, cy + bh * 0.7); c.stroke();
+  }
   c.strokeStyle = 'rgba(214,226,244,0.4)'; c.lineWidth = 2;
   c.beginPath(); c.ellipse(cx, cy, bw, bh, 0, -2.8, 0.3); c.stroke();
   /* the blunt snout with the circular mouth */
@@ -263,7 +286,6 @@ export function tardigrade(c: Ctx, g: G, p: Pal): void {
   c.fillStyle = bg; c.beginPath(); c.ellipse(hx, cy + bh * 0.1, bh * 0.5, bh * 0.55, 0, 0, TAU); c.fill();
   c.fillStyle = 'rgba(20,16,14,0.7)'; c.beginPath(); c.arc(hx + bh * 0.3, cy + bh * 0.1, bh * 0.14, 0, TAU); c.fill();
   c.fillStyle = '#12151b'; c.beginPath(); c.arc(hx - bh * 0.05, cy - bh * 0.15, bh * 0.10, 0, TAU); c.fill();
-  void r;
 }
 
 /* ── MACROALGAE: a green sheet/mat (Sea Lettuce, Green Algae-as-flora) ── */
@@ -306,16 +328,23 @@ export function macroAlgaeSheet(c: Ctx, g: G, pIn: Pal): void {
 export function microAlgaeCell(c: Ctx, g: G, pIn: Pal): void {
   const p = greenBias(pIn, 70, 150, 80);
   const r = seeded(g, 0x3CE1);
-  const cx = S * 0.5, cy = S * 0.5, rr = S * 0.14;
+  /* ★ WAVE 46 — a fixed-radius sphere in a fixed place: every genome routed
+     here drew the same cell, and m0·12 / m1·7 / m0·6 landed within 0.24 of one
+     another. Radius, cell shape and the chloroplast's reach now come off the
+     seed — an algal cell is round, but not all algal cells are the same round. */
+  const cz = seeded(g, 0x3CE2);
+  const rr = S * 0.14 * (0.78 + cz() * 0.46);
+  const squash = 0.88 + cz() * 0.26;
+  const cx = S * 0.5, cy = S * 0.5;
   const bg = c.createRadialGradient(cx - rr * 0.3, cy - rr * 0.35, 2, cx, cy, rr);
   bg.addColorStop(0, `rgba(${Math.min(255, p.cr + 60)},${Math.min(255, p.cg + 70)},${Math.min(255, p.cb + 40)},0.85)`);
   bg.addColorStop(0.7, `rgba(${p.cr},${p.cg},${p.cb},0.62)`);
   bg.addColorStop(1, `rgba(${p.cr * 0.6 | 0},${p.cg * 0.6 | 0},${p.cb * 0.6 | 0},0.35)`);
-  c.fillStyle = bg; c.beginPath(); c.arc(cx, cy, rr, 0, TAU); c.fill();
-  c.strokeStyle = 'rgba(240,255,230,0.35)'; c.lineWidth = 2; c.beginPath(); c.arc(cx, cy, rr, 0, TAU); c.stroke();
+  c.fillStyle = bg; c.beginPath(); c.ellipse(cx, cy, rr, rr * squash, 0, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(240,255,230,0.35)'; c.lineWidth = 2; c.beginPath(); c.ellipse(cx, cy, rr, rr * squash, 0, 0, TAU); c.stroke();
   /* the cup-shaped chloroplast — the defining organelle */
   c.fillStyle = 'rgba(30,90,40,0.6)';
-  c.beginPath(); c.arc(cx, cy + rr * 0.15, rr * 0.72, 0.3, Math.PI - 0.3); c.fill();
+  c.beginPath(); c.arc(cx, cy + rr * 0.15, rr * (0.58 + cz() * 0.30), 0.3, Math.PI - 0.3); c.fill();
   for (let i = 0; i < 5; i++) { c.fillStyle = 'rgba(200,240,180,0.5)'; c.beginPath(); c.arc(cx + (r() - 0.5) * rr, cy + (r() - 0.3) * rr * 0.8, 2, 0, TAU); c.fill(); }
   c.fillStyle = 'rgba(255,255,255,0.5)'; c.beginPath(); c.arc(cx - rr * 0.35, cy - rr * 0.4, rr * 0.12, 0, TAU); c.fill();   /* pyrenoid glint */
 }

@@ -252,7 +252,16 @@ function fungiMorel(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   /* conical honeycomb-pitted cap on a pale stalk */
   const r = mulberry32(((g.seed as number) ^ 0x503E) >>> 0);
   groundShadow(c, S * 0.5, S * 0.84, S * 0.16);
-  const cx = S * 0.5, base = S * 0.82, ch = S * 0.34, cw = S * 0.14;
+  /* ★ WAVE 46 — THE ONLY FAMILY PAINTER WITH ZERO rng CALLS. Every dimension
+     was a constant, so all ~5 procedural genomes routed to the morel family
+     rendered the identical mushroom and differed only in palette. The wave-20
+     fix made the family PICKER spread; it never asked whether the families it
+     picks can draw more than one thing. A uniform chooser over constant
+     painters is still a mono-template — it distributes the sameness evenly.
+     Cap height, width and pit pitch are ratios off the seed now (D-ART-34:
+     vary a RATIO, never a canvas scale — the fit pass erases absolute size). */
+  const cx = S * 0.5, base = S * 0.82;
+  const ch = S * 0.34 * (0.80 + r() * 0.42), cw = S * 0.14 * (0.82 + r() * 0.38);
   c.fillStyle = '#e8ddc4'; c.beginPath(); c.moveTo(cx - cw * 0.5, base); c.quadraticCurveTo(cx - cw * 0.3, base - S * 0.16, cx - cw * 0.4, base - S * 0.2); c.lineTo(cx + cw * 0.4, base - S * 0.2); c.quadraticCurveTo(cx + cw * 0.3, base - S * 0.16, cx + cw * 0.5, base); c.closePath(); c.fill();
   const top = base - S * 0.2;
   const cap = c.createLinearGradient(cx - cw, top, cx + cw, top - ch);
@@ -262,7 +271,8 @@ function fungiMorel(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   /* honeycomb pits — the one thing that makes it a morel */
   c.save(); c.beginPath(); c.moveTo(cx - cw, top); c.quadraticCurveTo(cx - cw * 0.9, top - ch, cx, top - ch); c.quadraticCurveTo(cx + cw * 0.9, top - ch, cx + cw, top); c.closePath(); c.clip();
   c.strokeStyle = 'rgba(0,0,0,0.45)'; c.lineWidth = 2;
-  for (let yy = top - ch; yy < top; yy += 12) for (let xx = cx - cw; xx < cx + cw; xx += 14) { const off = ((yy / 12) | 0) % 2 ? 7 : 0; c.beginPath(); c.moveTo(xx + off, yy); c.lineTo(xx + off + 7, yy + 6); c.lineTo(xx + off, yy + 12); c.lineTo(xx + off - 7, yy + 6); c.closePath(); c.stroke(); }
+  const pv = 10 + Math.floor(r() * 5), ph = 12 + Math.floor(r() * 5);
+  for (let yy = top - ch; yy < top; yy += pv) for (let xx = cx - cw; xx < cx + cw; xx += ph) { const off = ((yy / pv) | 0) % 2 ? ph * 0.5 : 0; c.beginPath(); c.moveTo(xx + off, yy); c.lineTo(xx + off + 7, yy + 6); c.lineTo(xx + off, yy + 12); c.lineTo(xx + off - 7, yy + 6); c.closePath(); c.stroke(); }
   c.restore();
 }
 
