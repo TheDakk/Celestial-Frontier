@@ -148,3 +148,32 @@ with the scratch walk over `lock.fp` + `dist()` recorded in the wave 46 commit.
 - **Suspect a new scan before the code (D-ART-140).** Four instrument-first lies this session.
 - **Never bless to turn red green.** A bless claims a person looked.
 - **Declare the classes that MOVED**, not the file you edited.
+
+---
+
+# ⚠⚠ SUPERSEDED 2026-08-03 (session 2) — READ THIS BEFORE ANYTHING ABOVE
+
+Everything above was written against the **473 / 590 / 187** baseline. That baseline has been
+re-measured and the plan it implies has been partly invalidated. Live state:
+`reference/GOLD_PASS_2_2026-08-03.md` and `reference/AUDIT_JOIN_2026-08-03.md`.
+
+1. **Stage 1 (RE-MEASURE) is DONE.** 431 FAIL / 748 POLISH / 71 PASS, 1,250 rows, every FAIL
+   adversarially verified, joined on `species` at every hop. The harness bug this file warned
+   about is fixed structurally (identifier join + per-batch expected-name filter + mop-up).
+2. **Do not quote 473 → 431 as progress (D-ART-150).** The untouched sets got worse and 85% of
+   old PASSes were demoted; the passes are differently calibrated. 431 is the new baseline.
+3. **§2's headline is now wrong.** This file says `earth-fauna` is the worst region and scopes
+   the route around fauna. It no longer is: **flora is the largest bucket (170 of 431) and its
+   FAIL rate ROSE.** Fauna fell 277 → 198. **The next arc is a flora arc, and nothing here is
+   scoped for it.**
+4. **§2's theme table is superseded.** `missing feature` is still the largest (411), but
+   `colour / palette` (345) and `flat / no material` (321) now outrank `shape / silhouette`
+   (238). **With anatomy improving, the surface is what fails** — the material pivot this
+   project has been waiting on is now the evidence-backed call, not a guess.
+5. **The biggest defect is not in this plan at all.** The family chassis — twelve canids as one
+   pony, twelve felids as that pony with spots. It is a *scaffold* defect, invisible to any
+   per-asset count (D-ART-147). It outranks every item above. The model for it is already
+   established with the tint trick; see the handoff.
+6. **§5 (procedural de-duplication) stands** — four constant painters remain. But add: some
+   procedural assets are **structurally broken** (anterior clipping — `fauna-h1-s3`,
+   `fauna-h1-s5`, `fauna-h0-s15`), which is a bug, not a variety problem.

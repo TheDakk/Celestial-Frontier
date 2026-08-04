@@ -1,9 +1,115 @@
-# ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
+# ★ COLD-START HANDOFF — read this first
 
-# ★★★ START HERE — END OF 2026-08-03, HEAD `0db1c8b`, WAVES 35–47 LANDED
+# ★★★ START HERE — END OF 2026-08-03 (session 2), HEAD `f8e8354`, WAVES 48–49 LANDED
 
-⚠ **Repo root is `C:\Projects\Celestial-Frontier`, not `C:\Projects`.** Every path below is
-relative to it. Everything under WAVE 35 in this file is HISTORY — accurate, but superseded.
+⚠ **Repo root is `C:\Projects\Celestial-Frontier`, not `C:\Projects`.** Every path is relative
+to it. Everything below the WAVES 35–47 banner is HISTORY — accurate, but superseded.
+
+## ★★★ THE LIVE NUMBER: 431 FAIL / 748 POLISH / 71 PASS of 1,250
+
+`reference/GOLD_PASS_2_2026-08-03.md` · per-asset rows in `goldpass2-results.json`.
+The catalogue was re-rendered and re-judged in full (248 agents, 0 errors, 1,250 unique
+species). **Do NOT quote "473 → 431" as progress — it is an artefact (D-ART-150).** The sets
+nobody touched got WORSE (flora +6.3 pts, procedural +4.6) and only 14 of 99 old PASSes
+survived, so the two passes judge to different lines. **431 is the new baseline; compare to it
+with this harness.** What survives the correction is real: **fauna 277 → 198.**
+
+## ★★★ THE TOP ITEM, AND NEITHER AUDIT'S FAIL LIST CONTAINS IT
+
+**Twelve canids are ONE ANIMAL in twelve colours, and it is a pony. Twelve felids are that
+chassis with spots.** See `reference/nick-onebyone/` (Nick's engine package, committed) and its
+`visual_evidence/focused_family_reviews/02_felids.jpg` + `03_canids.jpg`. It is a defect of the
+**scaffold**, so no per-asset count captures it — my 431-row pass graded most of them POLISH
+(**D-ART-147**: alphabetical batching meant no family ever appeared side by side; **batch by
+family next time**).
+
+★ **The model is already established — start from it, do not re-derive it** (D-ART-149).
+A tint render (limb flat blue, foot flat red, across felid/canid/equid/ursid; the method from
+wave 44) showed: **the body occludes the entire upper limb. Only the lower ~35% of each leg is
+visible, and that section is a straight vertical tube in every family.** All `crouch` folding
+happens inside the silhouette. It is also inverted — `kneeY = 0.70 − crouch·0.34` puts a cat's
+knee at 38% of the way down and a horse's at 63%. Lowering the knee was tried and **changed
+almost nothing** (occlusion, not joint height, is binding) and was reverted.
+**So the chassis fix must change what is VISIBLE**: body depth / topline / where the limb
+leaves the silhouette, and the skull. Wave 49 shipped only the paw — the one part the body does
+not occlude. **The feet are fixed; the chassis is not.**
+⚠ Do not parameter-sweep 140 mammals (D-ART-83), and note artlock reports **zero** drift for
+feature-scale work (D-ART-110), so this is eye-verified only.
+
+## THE SHAPE OF THE REMAINING 431
+
+| class | FAIL | | theme | n |
+|---|---|---|---|---|
+| **flora** | **170** | | missing feature | 411 |
+| **fauna** | **106** | | colour / palette | 345 |
+| quadruped | 46 | | flat / no material | 321 |
+| procedural | 37 | | shape / silhouette | 238 |
+| species | 26 | | pose / stance | 145 |
+| invert | 25 | | proportion, occlusion, duplication | 84 / 78 / 73 |
+| bird | 21 | | | |
+
+★ **Flora is now the largest bucket (170) and its FAIL rate went UP.** This has been a fauna
+arc; `PLAN_100_PERCENT.md` scoped nothing for flora. And `colour` + `flat/no material` have
+overtaken `shape` — with anatomy improving, **the SURFACE is now what fails**, which is the
+material-pivot condition the mammal audit was waiting for.
+
+## THE TWO AUDITS, JOINED — `reference/AUDIT_JOIN_2026-08-03.md`
+
+Nick's engine (347 PASS / 758 HOLD / 145 FAIL) vs mine (71 / 748 / 431), joined on species,
+1,233 of 1,250. **875 (71%) agree "not shippable as PASS"; only 58 assets are clean by both.**
+FAIL sets overlap on **88 — start there, no adjudication needed.**
+- **His is better at systemic defects** (family chassis, silhouette duplicates) and carries
+  `sha256`/`previous_sha256` per asset plus per-part sub-scores (torso/head/eyes/legs/tail) —
+  **adopt both**; mine emits one prose field and had to prove "did this move" by stashing a diff.
+- **Mine is better at per-asset severity.** 4 of his HOLDs adjudicated by rendering, my FAIL
+  upheld 4/4 (Agouti and Capybara are the SAME PICTURE; Bonefish reads as a swordfish; Baboon
+  has zero snout projection). He reports 0 procedural FAILs; `fauna-h1-s3` is a **headless fish
+  body** — an anterior clip. A broken render is a bug, not a stylistic call.
+
+## NEW INSTRUMENTS THIS SESSION — AND THEIR LIMITS
+
+- **`tools/tokencheck.mjs`** — dead-VALUE gate (D-ART-145). 15 DEAD, 14 alias-suspect today.
+  Suspects, not verdicts: an `else` that IS the token's drawing is legitimate. **Render first.**
+- **`artlock [SHAPE]`** — colour-blind silhouette pairs (D-ART-148). `shapepairs.json`, 100
+  pairs under 2.0. **Reported, NOT gated** — turn it into a ratchet only after the backlog is
+  worked down (D-ART-97). Top rows are verified real: Flounder ≈ Halibut **0.00**, Ice Algae ≈
+  Snow Algae 0.00, Hawk ≈ Falcon 0.06, Sea Lettuce ≈ Green Algae 0.12.
+- **`tools/goldcompare.mjs` / `tools/auditjoin.mjs`** — the two joins, both keyed on species.
+
+## OPEN, IN ORDER
+1. **The family chassis** (above) — biggest single lever in the catalogue.
+2. **The 88 both-FAIL assets** — certain work.
+3. **Flora, 170 FAILs** — unscoped by any plan; needs its own arc.
+4. **The `[SHAPE]` backlog** — 35 pairs under 1.0 are near-identical constructions.
+5. **Broken procedural renders** — anterior clipping (`fauna-h1-s3`, `fauna-h1-s5`, `fauna-h0-s15`).
+6. **Chanterelle** — the funnel's dished centre reads as a black hole. (`gills:'ridge'` is a
+   dead value but a latent trap only; the ridges draw off `cap:'funnel'`.)
+7. **Naming, so passes can join** — 240 procedural assets cannot join between my own two passes
+   (`fauna-h0-s0` vs `f0·6#126`), and 17 Earth names need normalising (`Aye Aye`/`Aye-Aye`).
+   **Adopt `filename` as the key, as Nick's package does.**
+8. Carried from waves 35–47: the elephant ear fan, rodent incisors, G7 butterfly wings,
+   `earShape:'nub'`, the mustelid trio, and the 4 remaining constant procedural painters
+   (`fungiCup`, `microbePlates`, `fungiEarthstar`, `microbeCiliate` — D-ART-143).
+
+## HOW TO RUN THE GATES
+```
+npx vitest run · npx tsc --noEmit -p apps/game · node tools/speccheck.mjs
+node tools/tokencheck.mjs · node tools/overridecheck.mjs
+npm run artbattery -- --touching=<classes>      # 6 stages, artlock is stage 6
+```
+⚠ Declare the classes that **MOVED**, not the file you edited. ⚠ A bless claims **a person
+looked** — prefer `--bless="Name,Name"` over a whole class, and **verify what it wrote against
+the git copy of the lock, not against the tool's own summary** (D-ART-146).
+
+---
+
+# ⚠⚠ EVERYTHING BELOW THIS LINE IS HISTORY (waves 35–47 and earlier)
+
+It is accurate about what those waves did and **superseded on every number**. In particular the
+**473 / 590 / 187** baseline it quotes is dead — it was re-measured (431 / 748 / 71) *and* the
+two passes were shown not to be comparable (D-ART-150). The "step 1 is a re-measure" instruction
+below **has been carried out**. Read the live section at the top of this file for current state;
+read below only for the *why* behind a past wave.
 
 ## ★★★ THE ARC IS NOW "DRIVE THE CATALOGUE TO ZERO FAIL". THE PLAN IS A FILE.
 
