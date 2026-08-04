@@ -1166,3 +1166,16 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   **only 14 of 99 old PASSes survived**: a build that only improved cannot demote 85% of its own
   passes. **Quote a delta only after an untouched slice has certified the ruler.** What survives
   the correction is still real: fauna 277 → 198 where the work actually happened.
+
+- ⚠ **D-ART-151 — A SCANNER THAT READS PROSE WILL EVENTUALLY BELIEVE IT — SECOND FILE, SAME
+  BUG (wave 50).** D-ART-144 recorded this for `artclass` (a comment claiming routes had moved
+  fooled the classifier). It recurred in `artaudit`: `faunaFlatfish` grew a doc comment **inside
+  its parameter list** containing the word *"named"*, so the matcher
+  `/export function (\w+)\s*\(([^)]*name[^)]*)\)/` saw `name` among the params and **failed the
+  build reporting a painter that ignores an argument it does not have.** The rule is now
+  comment-stripped on **both** sides — the params (does it really take `name`?) and the body
+  (does it really never use it?) — and negative-controlled in both directions: clean on the real
+  tree, still fires on a deliberately injected offender.
+  ★ Two habits, not one: **strip comments in every scanner**, and **keep painter docs above the
+  signature, never inside the parameter list.** A law recorded once for one file does not
+  protect the next file; it has to be applied.
