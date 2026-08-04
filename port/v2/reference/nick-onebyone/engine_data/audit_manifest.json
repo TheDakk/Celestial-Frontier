@@ -1,0 +1,68 @@
+{
+  "review_name": "Celestial Frontier Current Full One-by-One Species Review",
+  "unique_assets": 1250,
+  "earth_assets": 1010,
+  "procedural_assets": 240,
+  "status_totals": {
+    "PASS": 347,
+    "HOLD": 758,
+    "FAIL": 145
+  },
+  "category_status": [
+    {
+      "category": "fauna",
+      "PASS": 58,
+      "HOLD": 479,
+      "FAIL": 94,
+      "total": 631,
+      "changed_from_previous": 616
+    },
+    {
+      "category": "flora",
+      "PASS": 24,
+      "HOLD": 261,
+      "FAIL": 47,
+      "total": 332,
+      "changed_from_previous": 325
+    },
+    {
+      "category": "fungi",
+      "PASS": 20,
+      "HOLD": 3,
+      "FAIL": 4,
+      "total": 27,
+      "changed_from_previous": 15
+    },
+    {
+      "category": "microbe",
+      "PASS": 7,
+      "HOLD": 13,
+      "FAIL": 0,
+      "total": 20,
+      "changed_from_previous": 15
+    },
+    {
+      "category": "procedural",
+      "PASS": 238,
+      "HOLD": 2,
+      "FAIL": 0,
+      "total": 240,
+      "changed_from_previous": 82
+    }
+  ],
+  "exact_duplicate_groups": 0,
+  "technical_spec": {
+    "width": 440,
+    "height": 440,
+    "format": "PNG",
+    "mode": "RGBA"
+  },
+  "earth_archives_content_identical": true,
+  "canonical_conflicts_resolved": [
+    "Reindeer Lichen",
+    "Snow Algae",
+    "Green Algae",
+    "Tardigrade"
+  ],
+  "final_verdict": "Strongest version so far; hold final Platinum Earth-accuracy lock until family scaffold and species-specific correction queue is completed."
+}

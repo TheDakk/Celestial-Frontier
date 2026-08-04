@@ -1,0 +1,19 @@
+{
+  "cf-species-fullsize.zip": {
+    "sha256": "46c664ac57262d934c431a0ee870af53dfc58a67287fd42af3236900f97bd2bf",
+    "file_count": 1010,
+    "note": "Earth archive; content-identical to species-fullsize.zip after ignoring root folder name."
+  },
+  "species-fullsize.zip": {
+    "sha256": "7fa0ce02e4e2d11972d943550749d55d2df5464330be05686dc6e573035cd8c3",
+    "file_count": 1010,
+    "note": "Earth archive; content-identical to cf-species-fullsize.zip after ignoring root folder name."
+  },
+  "procedural.zip": {
+    "sha256": "16578c1e721022087f0680c074d4a3f7a22cd9479d4955788a3a1c178a9741ba",
+    "file_count": 240
+  },
+  "unique_asset_count": 1250,
+  "earth_asset_count": 1010,
+  "procedural_asset_count": 240
+}

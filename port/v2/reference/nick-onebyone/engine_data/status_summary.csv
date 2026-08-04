@@ -1,0 +1,6 @@
+category,PASS,HOLD,FAIL,total,changed_from_previous
+fauna,58,479,94,631,616
+flora,24,261,47,332,325
+fungi,20,3,4,27,15
+microbe,7,13,0,20,15
+procedural,238,2,0,240,82

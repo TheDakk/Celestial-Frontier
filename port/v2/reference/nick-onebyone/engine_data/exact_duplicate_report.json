@@ -1,0 +1,6 @@
+{
+  "current_unique_assets": 1250,
+  "exact_duplicate_groups_within_or_across_current_libraries": [],
+  "duplicate_group_count": 0,
+  "result": "PASS - no byte-for-byte duplicate PNGs in the unique current output."
+}
