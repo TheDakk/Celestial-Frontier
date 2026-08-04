@@ -1,0 +1,502 @@
+[
+ {
+  "a": "Flounder",
+  "b": "Halibut",
+  "shape": 0
+ },
+ {
+  "a": "Ice Algae",
+  "b": "Snow Algae",
+  "shape": 0
+ },
+ {
+  "a": "Hawk",
+  "b": "Falcon",
+  "shape": 0.062
+ },
+ {
+  "a": "Sea Lettuce",
+  "b": "Green Algae",
+  "shape": 0.125
+ },
+ {
+  "a": "Hawk",
+  "b": "Osprey",
+  "shape": 0.249
+ },
+ {
+  "a": "Falcon",
+  "b": "Osprey",
+  "shape": 0.311
+ },
+ {
+  "a": "Duck",
+  "b": "Eider Duck",
+  "shape": 0.436
+ },
+ {
+  "a": "Eel",
+  "b": "Dragonfish",
+  "shape": 0.498
+ },
+ {
+  "a": "Small Fish",
+  "b": "Lanternfish",
+  "shape": 0.498
+ },
+ {
+  "a": "Anaconda",
+  "b": "Whip Snake",
+  "shape": 0.56
+ },
+ {
+  "a": "Arowana",
+  "b": "Knifefish",
+  "shape": 0.56
+ },
+ {
+  "a": "Electric Eel",
+  "b": "Dragonfish",
+  "shape": 0.56
+ },
+ {
+  "a": "Dragonfish",
+  "b": "Gulper Eel",
+  "shape": 0.623
+ },
+ {
+  "a": "Char",
+  "b": "Sardine",
+  "shape": 0.685
+ },
+ {
+  "a": "Killifish",
+  "b": "Small Fish",
+  "shape": 0.685
+ },
+ {
+  "a": "Cod",
+  "b": "Coelacanth",
+  "shape": 0.685
+ },
+ {
+  "a": "Cave Fish",
+  "b": "Mudminnow",
+  "shape": 0.747
+ },
+ {
+  "a": "Vole",
+  "b": "Water Vole",
+  "shape": 0.809
+ },
+ {
+  "a": "Marmot",
+  "b": "Prairie Dog",
+  "shape": 0.809
+ },
+ {
+  "a": "Eel",
+  "b": "Electric Eel",
+  "shape": 0.809
+ },
+ {
+  "a": "Cold-Water Fish",
+  "b": "Whitefish",
+  "shape": 0.872
+ },
+ {
+  "a": "Minnow",
+  "b": "Lanternfish",
+  "shape": 0.872
+ },
+ {
+  "a": "Brine Shrimp",
+  "b": "Freshwater Shrimp",
+  "shape": 0.934
+ },
+ {
+  "a": "Killifish",
+  "b": "Lanternfish",
+  "shape": 0.934
+ },
+ {
+  "a": "Petrel",
+  "b": "Snow Petrel",
+  "shape": 0.934
+ },
+ {
+  "a": "Minnow",
+  "b": "Deep-Sea Fish",
+  "shape": 0.934
+ },
+ {
+  "a": "Electric Eel",
+  "b": "Gulper Eel",
+  "shape": 0.934
+ },
+ {
+  "a": "Lanternfish",
+  "b": "Deep-Sea Fish",
+  "shape": 0.934
+ },
+ {
+  "a": "Seabird",
+  "b": "Booby",
+  "shape": 0.934
+ },
+ {
+  "a": "Termite",
+  "b": "Aphid",
+  "shape": 0.996
+ },
+ {
+  "a": "Eel",
+  "b": "Gulper Eel",
+  "shape": 0.996
+ },
+ {
+  "a": "Cave Fish",
+  "b": "Lanternfish",
+  "shape": 0.996
+ },
+ {
+  "a": "Clam",
+  "b": "Scallop",
+  "shape": 0.996
+ },
+ {
+  "a": "Mackerel",
+  "b": "Icefish",
+  "shape": 0.996
+ },
+ {
+  "a": "Lanternfish",
+  "b": "Mudminnow",
+  "shape": 0.996
+ },
+ {
+  "a": "Killifish",
+  "b": "Minnow",
+  "shape": 1.058
+ },
+ {
+  "a": "Fly Larvae",
+  "b": "Cave Cricket",
+  "shape": 1.058
+ },
+ {
+  "a": "Deep-Sea Fish",
+  "b": "Mudminnow",
+  "shape": 1.058
+ },
+ {
+  "a": "Desert Rose",
+  "b": "Glasswort",
+  "shape": 1.058
+ },
+ {
+  "a": "Squirrel",
+  "b": "Ground Squirrel",
+  "shape": 1.121
+ },
+ {
+  "a": "Salmon",
+  "b": "Trout",
+  "shape": 1.121
+ },
+ {
+  "a": "Sparrow",
+  "b": "Weaverbird",
+  "shape": 1.121
+ },
+ {
+  "a": "Small Fish",
+  "b": "Minnow",
+  "shape": 1.121
+ },
+ {
+  "a": "Small Fish",
+  "b": "Cave Fish",
+  "shape": 1.121
+ },
+ {
+  "a": "Lotus",
+  "b": "Water Lily",
+  "shape": 1.183
+ },
+ {
+  "a": "Tanager",
+  "b": "Sparrow",
+  "shape": 1.245
+ },
+ {
+  "a": "Small Fish",
+  "b": "Mudminnow",
+  "shape": 1.245
+ },
+ {
+  "a": "Sculpin",
+  "b": "Walleye",
+  "shape": 1.245
+ },
+ {
+  "a": "Coralline Algae",
+  "b": "Wakame",
+  "shape": 1.245
+ },
+ {
+  "a": "Killifish",
+  "b": "Cave Fish",
+  "shape": 1.307
+ },
+ {
+  "a": "Killifish",
+  "b": "Mudminnow",
+  "shape": 1.307
+ },
+ {
+  "a": "Surgeonfish",
+  "b": "Tang",
+  "shape": 1.307
+ },
+ {
+  "a": "Beetle",
+  "b": "Ladybug",
+  "shape": 1.37
+ },
+ {
+  "a": "Arctic Cod",
+  "b": "Icefish",
+  "shape": 1.37
+ },
+ {
+  "a": "Minnow",
+  "b": "Mudminnow",
+  "shape": 1.37
+ },
+ {
+  "a": "Aphid",
+  "b": "Thrips",
+  "shape": 1.37
+ },
+ {
+  "a": "Sargassum",
+  "b": "Bladderwrack",
+  "shape": 1.37
+ },
+ {
+  "a": "Finch",
+  "b": "Weaverbird",
+  "shape": 1.432
+ },
+ {
+  "a": "Small Fish",
+  "b": "Deep-Sea Fish",
+  "shape": 1.432
+ },
+ {
+  "a": "Cave Fish",
+  "b": "Deep-Sea Fish",
+  "shape": 1.432
+ },
+ {
+  "a": "Arctic Cod",
+  "b": "Mackerel",
+  "shape": 1.494
+ },
+ {
+  "a": "Tigerfish",
+  "b": "Pollock",
+  "shape": 1.494
+ },
+ {
+  "a": "Land Snail",
+  "b": "Water Snail",
+  "shape": 1.556
+ },
+ {
+  "a": "Kelp",
+  "b": "Bladderwrack",
+  "shape": 1.556
+ },
+ {
+  "a": "Marmot",
+  "b": "Water Vole",
+  "shape": 1.619
+ },
+ {
+  "a": "Gull",
+  "b": "Kestrel",
+  "shape": 1.619
+ },
+ {
+  "a": "Minnow",
+  "b": "Cave Fish",
+  "shape": 1.619
+ },
+ {
+  "a": "Seagrass",
+  "b": "Sugar Kelp",
+  "shape": 1.619
+ },
+ {
+  "a": "Poison Dart Frog",
+  "b": "Barnacle",
+  "shape": 1.681
+ },
+ {
+  "a": "Tanager",
+  "b": "Finch",
+  "shape": 1.681
+ },
+ {
+  "a": "Vole",
+  "b": "Agouti",
+  "shape": 1.681
+ },
+ {
+  "a": "Whitefish",
+  "b": "Wrasse",
+  "shape": 1.681
+ },
+ {
+  "a": "Goby",
+  "b": "Mudminnow",
+  "shape": 1.681
+ },
+ {
+  "a": "Seagrass",
+  "b": "Dulse",
+  "shape": 1.681
+ },
+ {
+  "a": "Termite",
+  "b": "Thrips",
+  "shape": 1.743
+ },
+ {
+  "a": "Ptarmigan",
+  "b": "Pigeon",
+  "shape": 1.743
+ },
+ {
+  "a": "Marmot",
+  "b": "Agouti",
+  "shape": 1.743
+ },
+ {
+  "a": "Agouti",
+  "b": "Water Vole",
+  "shape": 1.743
+ },
+ {
+  "a": "Sparrow",
+  "b": "Pigeon",
+  "shape": 1.743
+ },
+ {
+  "a": "Killifish",
+  "b": "Deep-Sea Fish",
+  "shape": 1.743
+ },
+ {
+  "a": "Walleye",
+  "b": "Sardine",
+  "shape": 1.743
+ },
+ {
+  "a": "Coati",
+  "b": "Sand Cat",
+  "shape": 1.805
+ },
+ {
+  "a": "Gar",
+  "b": "Eel",
+  "shape": 1.805
+ },
+ {
+  "a": "Sparrow",
+  "b": "Finch",
+  "shape": 1.805
+ },
+ {
+  "a": "Freshwater Snail",
+  "b": "Snail",
+  "shape": 1.805
+ },
+ {
+  "a": "Cave Fish",
+  "b": "Goby",
+  "shape": 1.805
+ },
+ {
+  "a": "Orchid Bee",
+  "b": "Cold-Adapted Insect",
+  "shape": 1.868
+ },
+ {
+  "a": "Mink",
+  "b": "Marten",
+  "shape": 1.868
+ },
+ {
+  "a": "Bee",
+  "b": "Honeybee",
+  "shape": 1.868
+ },
+ {
+  "a": "Trout",
+  "b": "Char",
+  "shape": 1.868
+ },
+ {
+  "a": "Partridge",
+  "b": "Dove",
+  "shape": 1.868
+ },
+ {
+  "a": "Gull",
+  "b": "Skua",
+  "shape": 1.868
+ },
+ {
+  "a": "Char",
+  "b": "Walleye",
+  "shape": 1.93
+ },
+ {
+  "a": "Lark",
+  "b": "Quail",
+  "shape": 1.93
+ },
+ {
+  "a": "Whitefish",
+  "b": "Sardine",
+  "shape": 1.93
+ },
+ {
+  "a": "Fennel",
+  "b": "Potato",
+  "shape": 1.93
+ },
+ {
+  "a": "Coralline Algae",
+  "b": "Sugar Kelp",
+  "shape": 1.93
+ },
+ {
+  "a": "Skua",
+  "b": "Kestrel",
+  "shape": 1.992
+ },
+ {
+  "a": "Perch",
+  "b": "Archerfish",
+  "shape": 1.992
+ },
+ {
+  "a": "Reef Shark",
+  "b": "Mako Shark",
+  "shape": 1.992
+ }
+]
