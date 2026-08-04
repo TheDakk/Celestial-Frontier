@@ -1,0 +1,212 @@
+{
+ "dead": [
+  {
+   "field": "back",
+   "value": "level",
+   "files": [
+    "quadrupedoverrides.ts"
+   ]
+  },
+  {
+   "field": "build",
+   "value": "monkey",
+   "files": [
+    "faunaoverrides2.ts"
+   ]
+  },
+  {
+   "field": "cap",
+   "value": "convex",
+   "files": [
+    "fungioverrides2.ts",
+    "speciesoverrides.ts"
+   ]
+  },
+  {
+   "field": "coat",
+   "value": "plain",
+   "files": [
+    "mammaloverrides.ts"
+   ]
+  },
+  {
+   "field": "ears",
+   "value": "tiny",
+   "files": [
+    "mammaloverrides.ts",
+    "quadrupedoverrides.ts"
+   ]
+  },
+  {
+   "field": "gills",
+   "value": "ridge",
+   "files": [
+    "speciesoverrides.ts"
+   ]
+  },
+  {
+   "field": "habit",
+   "value": "herb",
+   "files": [
+    "florarost.ts"
+   ]
+  },
+  {
+   "field": "kind",
+   "value": "razor",
+   "files": [
+    "faunaoverrides2.ts"
+   ]
+  },
+  {
+   "field": "kind",
+   "value": "sac",
+   "files": [
+    "invertoverrides.ts"
+   ]
+  },
+  {
+   "field": "leafArr",
+   "value": "opposite",
+   "files": [
+    "florarost.ts"
+   ]
+  },
+  {
+   "field": "nose",
+   "value": "wet",
+   "files": [
+    "quadrupedoverrides.ts"
+   ]
+  },
+  {
+   "field": "pattern",
+   "value": "plain",
+   "files": [
+    "faunaoverrides2.ts"
+   ]
+  },
+  {
+   "field": "profile",
+   "value": "fusiform",
+   "files": [
+    "faunaoverrides3.ts"
+   ]
+  },
+  {
+   "field": "snout",
+   "value": "blunt",
+   "files": [
+    "faunaoverrides3.ts"
+   ]
+  },
+  {
+   "field": "wings",
+   "value": "folded",
+   "files": [
+    "invertoverrides.ts"
+   ]
+  }
+ ],
+ "aliased": [
+  {
+   "field": "antennae",
+   "value": "short",
+   "files": [
+    "invertoverrides.ts"
+   ]
+  },
+  {
+   "field": "dorsal",
+   "value": "small",
+   "files": [
+    "faunaoverrides.ts",
+    "speciesoverrides.ts"
+   ]
+  },
+  {
+   "field": "ear",
+   "value": "drop",
+   "files": [
+    "quadrupedoverrides.ts"
+   ]
+  },
+  {
+   "field": "ear",
+   "value": "hidden",
+   "files": [
+    "quadrupedoverrides.ts"
+   ]
+  },
+  {
+   "field": "ear",
+   "value": "leaf",
+   "files": [
+    "quadrupedoverrides.ts"
+   ]
+  },
+  {
+   "field": "ear",
+   "value": "round",
+   "files": [
+    "quadrupedoverrides.ts"
+   ]
+  },
+  {
+   "field": "ear",
+   "value": "spoon",
+   "files": [
+    "quadrupedoverrides.ts"
+   ]
+  },
+  {
+   "field": "earShape",
+   "value": "round",
+   "files": [
+    "mammaloverrides.ts"
+   ]
+  },
+  {
+   "field": "leaf",
+   "value": "broad",
+   "files": [
+    "florarost.ts"
+   ]
+  },
+  {
+   "field": "lip",
+   "value": "straight",
+   "files": [
+    "quadrupedoverrides.ts"
+   ]
+  },
+  {
+   "field": "neck",
+   "value": "short",
+   "files": [
+    "birdoverrides.ts"
+   ]
+  },
+  {
+   "field": "pupil",
+   "value": "round",
+   "files": [
+    "quadrupedoverrides.ts"
+   ]
+  },
+  {
+   "field": "stem",
+   "value": "stout",
+   "files": [
+    "speciesoverrides.ts"
+   ]
+  },
+  {
+   "field": "wings",
+   "value": "fan",
+   "files": [
+    "faunaoverrides3.ts"
+   ]
+  }
+ ]
+}
