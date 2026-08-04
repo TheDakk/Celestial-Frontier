@@ -1,9 +1,54 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-# ★★★ START HERE — END OF 2026-08-03, HEAD `a826330`, WAVES 35–45 LANDED
+# ★★★ START HERE — END OF 2026-08-03, HEAD `acd135b`, WAVES 35–46 LANDED
 
 ⚠ **Repo root is `C:\Projects\Celestial-Frontier`, not `C:\Projects`.** Every path below is
 relative to it. Everything under WAVE 35 in this file is HISTORY — accurate, but superseded.
+
+## ★ WAVE 46 — DO THIS FIRST NEXT SESSION (two findings, both measured, both open)
+
+**1 — Finish procedural de-duplication. HARD pairs 19 → 3; drive them to 0.**
+Earth has **zero** pairs under artlock's HARD 0.6 line after forty waves and a gate.
+Procedural had **nineteen**, seven of them at distance 0.00 — byte-identical pictures from
+different seeds. Nothing watches this, because `[SAME]` is Earth-only by design.
+
+★ The cause is not the family picker. Wave 20 fixed the SELECTOR and nobody asked whether the
+families it selects can draw more than one thing. **Seven of 26 family painters draw a fixed
+picture.** Three are now fixed (`tardigrade`, `microAlgaeCell`, `fungiMorel`); **four remain**:
+
+| painter | rng calls | file |
+|---|---|---|
+| `fungiCup` | 1 | `proceduralfamilies.ts` |
+| `microbePlates` | 1 | `proceduralfamilies.ts` |
+| `fungiEarthstar` | 2 | `proceduralfamilies.ts` |
+| `microbeCiliate` | 2 | `proceduralfamilies.ts` |
+
+Method that worked: vary a **RATIO** off `seeded(g, salt)` — never a canvas scale, the fit pass
+erases absolute size (D-ART-34) — then re-measure. Measurement script:
+`node tools/artlock.mjs` prints the Earth side; the procedural side needs the scratch script
+recorded in the wave 46 commit message (walk `lock.fp`, `dist()` every procedural pair).
+Each of these painters also owns an Earth species, so `--touching=…,species` and re-render it.
+
+**2 — ⚠ `tools/artclass.mjs` MISCLASSIFIES PACKED TABLE ROWS. Safety-critical; fix carefully.**
+`keysIn` anchors on `^ {2}'…':` — a LINE START — so on a row like
+`'Giant Puffball': fungiPuffball, 'Earthstar': fungiEarthstar,` it sees the FIRST key and none
+of the rest. `'Black Truffle'` is routed to an owned painter yet classes `verbatim-fungi`,
+**the class that may never move**, which blocked a legitimate fix.
+★ The direction I hit is the harmless one. **Its mirror is the dangerous one**: a genuinely
+verbatim species that a packed line makes look *owned* silently loses the lock's protection.
+I widened the regex to `(?:^ {2}|,\s*)(?:'([^']+)'|"([^"]+)")\s*:` — total specs 996 → 1007 —
+but the class tallies moved in ways I could not explain (`quadruped` 144 → 142, which
+first-wins semantics should make impossible), so I **reverted it**. Do this one with negative
+controls in both directions, not as a drive-by. This is the FOURTH surface-form assumption in
+this single scanner; its header records the first three.
+
+**Also blocked on it:** `fungiTruffle`'s soil is a full-width `fillRect` (the audit's
+"hard-edged brown rectangle with sharp vertical sides"). The fix is written and correct; it
+cannot land until artclass classes `Black Truffle` right.
+
+⚠ **On "100% pass": the gold-pass baseline is 473 FAIL / 590 POLISH / 187 PASS over 1,250
+assets.** That is a multi-session arc, not a session. The concrete finishable target is the
+one above — procedural HARD pairs to zero, matching Earth.
 
 ## What the day was, in one paragraph
 Two full audits were run and then worked to completion. **The gold pass** rendered and judged
