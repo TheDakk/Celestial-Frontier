@@ -692,11 +692,41 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     } else if (foot === 'paw') {
       /* the pad, then three toes across its front — a cat and a dog both put
          a rounded fan on the ground, never a peg */
-      c.fillStyle = dark(0.52);
-      c.beginPath(); c.ellipse(x, gy - legW * 0.20, legW * 0.66, legW * 0.40, 0, 0, TAU); c.fill();
-      c.fillStyle = dark(0.62);
+      /* ★ WAVE 49 — THE FOOT THAT MADE EVERY CARNIVORE A PONY. Three faults,
+         and the third had been inverting the read since the paw was written:
+           · the pad was 0.66·legW wide against a felid ankle of 0.525·legW —
+             barely proud of the limb, so the leg simply ended;
+           · it was a FIXED coat×0.52, which is a mid-tan on a cream leopard
+             (no value break at all) and mud on a near-black wolf;
+           · THE TOES WERE PAINTED LIGHTER THAN THE PAD (0.62 over 0.52), so
+             the one shape that says "toes, not a hoof" read as a highlight
+             sitting on the tip — which is exactly what a fetlock looks like.
+         Nick's engine independently filed all twelve canids and twelve felids
+         as one hoofed chassis; a tint-diagnostic render (limb flat blue, foot
+         flat red) showed the foot is the only part of the limb the body does
+         NOT occlude, so it carries the whole family read on its own.
+         ⚠ D-ART-141: the tone is DERIVED, not fixed — a pale coat darkens, a
+         dark coat LIFTS. Darkening a black wolf's paw deletes the only
+         structural separation it has, which is how three earlier fixes in
+         this file were right about the defect and wrong about the remedy. */
+      const lum = p.cr * 0.299 + p.cg * 0.587 + p.cb * 0.114;
+      const padK = lum > 92 ? 0.50 : 1.62;          /* darken a pale foot, lift a dark one */
+      const toeK = lum > 92 ? 0.62 : 1.94;          /* toes read AGAINST the pad, either way */
+      c.fillStyle = dark(padK);
+      c.beginPath(); c.ellipse(x, gy - legW * 0.21, legW * 0.98, legW * 0.46, 0, 0, TAU); c.fill();
+      c.fillStyle = dark(toeK);
       for (let i = -1; i <= 1; i++) {
-        c.beginPath(); c.ellipse(x + i * legW * 0.34, gy - legW * 0.08, legW * 0.20, legW * 0.17, 0, 0, TAU); c.fill();
+        c.beginPath(); c.ellipse(x + i * legW * 0.40, gy - legW * 0.10, legW * 0.27, legW * 0.22, 0, 0, TAU); c.fill();
+      }
+      /* the creases BETWEEN the toes — a fan of three lobes only reads as toes
+         if something separates them; without this it is one rounded cap */
+      c.strokeStyle = `rgba(24,18,14,${0.50 * m})`;
+      c.lineWidth = Math.max(1, legW * 0.075); c.lineCap = 'round';
+      for (const s of [-1, 1] as const) {
+        c.beginPath();
+        c.moveTo(x + s * legW * 0.20, gy - legW * 0.30);
+        c.lineTo(x + s * legW * 0.20, gy - legW * 0.02);
+        c.stroke();
       }
     } else if (foot === 'plantigrade') {
       /* a bear puts its heel down: a long sole with claws at the front */
