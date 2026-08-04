@@ -1061,3 +1061,29 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   distribution proves nothing about the generators.** Measure the output, not the stage you
   changed — and when a subsystem is exempt from a ratchet, re-ask periodically whether the
   reason still holds.
+
+- ⚠ **D-ART-144 — VERIFY THE SCANNER THAT DRAWS A CATEGORY BOUNDARY, ESPECIALLY WHEN THE
+  CATEGORY MEANS "DO NOT TOUCH" (wave 47).** Sizing the gold pass by painter class showed 15
+  assets in `verbatim-*` — the class the art lock forbids anyone to move — and 13 of them were
+  FAILs. Thirteen defects that could not legally be fixed. **All fifteen were misclassified.**
+  Every one routes to a painter we own; `artclass.mjs` simply could not see them, for THREE
+  independent reasons, each a different *surface form of the same key*: packed object rows
+  (`^ {2}'…':` anchors to a line start, so it read the first key of a multi-entry line and none
+  of the rest), a U+2019 apostrophe where the route table writes U+0027, and the array route
+  lists — which sat on the line directly below the object-key scan and carried BOTH the same
+  faults. That file's header now records **six** surface-form bugs in one scanner.
+  ★ **A category that means "exempt" is where defects go to die**, because nobody re-examines
+  the membership test — they just skip the members. Audit the boundary itself on a schedule.
+  ★★ **AND THE OBVIOUS FIX WAS WORSE THAN THE BUG.** Matching any quoted string before a comma
+  swept in 110 non-species strings — rgb triples, comment fragments, template pieces — and
+  because the map is first-wins it MOVED EIGHT REAL SPECIES into another painter's class
+  (Bear, Koala, Humpback Whale, Cuttlefish…). **A classifier that mislabels is worse than one
+  that under-reports**: an under-reporting classifier blocks a fix loudly, a mislabelling one
+  green-lights drift under the wrong heading, silently. Scoping to `SCREAMING_CASE: string[]`
+  array literals still wasn't enough — `FLORA_DUPES` opens with a comment naming three species
+  it had REMOVED, so the scan read them back in and re-routed all three to the painter the
+  comment says they left. **Strip comments before reading a block: a scanner that reads prose
+  will eventually believe it.**
+  ★★★ Only a **both-directions** negative control caught any of this — asserting not just that
+  routed species stop classing verbatim, but that a name in NO table still DOES. The one-way
+  check passed on the first, broken attempt.

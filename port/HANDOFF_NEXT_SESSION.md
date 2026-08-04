@@ -1,54 +1,75 @@
 # ★ COLD-START HANDOFF — read this first, then port/PROPORTION_ARC.md
 
-# ★★★ START HERE — END OF 2026-08-03, HEAD `acd135b`, WAVES 35–46 LANDED
+# ★★★ START HERE — END OF 2026-08-03, HEAD `0db1c8b`, WAVES 35–47 LANDED
 
 ⚠ **Repo root is `C:\Projects\Celestial-Frontier`, not `C:\Projects`.** Every path below is
 relative to it. Everything under WAVE 35 in this file is HISTORY — accurate, but superseded.
 
-## ★ WAVE 46 — DO THIS FIRST NEXT SESSION (two findings, both measured, both open)
+## ★★★ THE ARC IS NOW "DRIVE THE CATALOGUE TO ZERO FAIL". THE PLAN IS A FILE.
 
-**1 — Finish procedural de-duplication. HARD pairs 19 → 3; drive them to 0.**
-Earth has **zero** pairs under artlock's HARD 0.6 line after forty waves and a gate.
-Procedural had **nineteen**, seven of them at distance 0.00 — byte-identical pictures from
-different seeds. Nothing watches this, because `[SAME]` is Earth-only by design.
+**Read `port/v2/reference/PLAN_100_PERCENT.md` first.** It holds the measured shape of the
+work — FAILs by set, by painter class, by theme — the honest scoping of what "100%" can mean,
+and the four-stage route. Everything below is the short form.
 
-★ The cause is not the family picker. Wave 20 fixed the SELECTOR and nobody asked whether the
-families it selects can draw more than one thing. **Seven of 26 family painters draw a fixed
-picture.** Three are now fixed (`tardigrade`, `microAlgaeCell`, `fungiMorel`); **four remain**:
+### ⚠ STEP 1 IS A RE-MEASURE, NOT A FIX
+The 473 FAIL / 590 POLISH / 187 PASS baseline is **stale** — measured before waves 38–47, which
+changed the ear painter, the horn painter, the pose axis, six occluded faces, the
+snake/lizard/turtle painters, four procedural family painters and the truffle. **The catalogue
+has not been re-rendered since.** Fixing against it is fixing against a photograph of a build
+that no longer exists — exactly what killed `visualaudit.json`, `mammalaudit.json` and the
+962-row queue.
+⚠ **Fix the harness before re-running:** the code pass's verification never ran because its
+hunt→verdict join keyed on a free-text `claim` the verifier rephrased. **Join on an identifier,
+never on model-authored prose.** The gold pass joined on `species` and worked.
 
-| painter | rng calls | file |
-|---|---|---|
-| `fungiCup` | 1 | `proceduralfamilies.ts` |
-| `microbePlates` | 1 | `proceduralfamilies.ts` |
-| `fungiEarthstar` | 2 | `proceduralfamilies.ts` |
-| `microbeCiliate` | 2 | `proceduralfamilies.ts` |
+### Then, cheapest-first (full reasoning in the plan file)
+1. **`missing feature` — 309 of 473 rows, the largest bucket by far.** This is the
+   D-ART-100/D-ART-137 family: a field set, documented, and never read — or read and then
+   OCCLUDED. These clear in bulk; one painter fix clears every species that sets the field.
+2. **`duplication` — 98 rows.** The procedural half is diagnosed; see below.
+3. **`colour` — 78 rows.** Black Truffle was one and the fix was one line: **it was routed
+   bare, with no `speciesHue`, so it inherited a generic palette and painted chalk-white.**
+   Grep for other bare routes — mechanical, one line each.
+4. **`shape / silhouette` — 188 rows,** many of which resolve as a side effect of 1–2.
 
-Method that worked: vary a **RATIO** off `seeded(g, salt)` — never a canvas scale, the fit pass
-erases absolute size (D-ART-34) — then re-measure. Measurement script:
-`node tools/artlock.mjs` prints the Earth side; the procedural side needs the scratch script
-recorded in the wave 46 commit message (walk `lock.fp`, `dist()` every procedural pair).
-Each of these painters also owns an Earth species, so `--touching=…,species` and re-render it.
+## Still open, with measurements
 
-**2 — ⚠ `tools/artclass.mjs` MISCLASSIFIES PACKED TABLE ROWS. Safety-critical; fix carefully.**
-`keysIn` anchors on `^ {2}'…':` — a LINE START — so on a row like
-`'Giant Puffball': fungiPuffball, 'Earthstar': fungiEarthstar,` it sees the FIRST key and none
-of the rest. `'Black Truffle'` is routed to an owned painter yet classes `verbatim-fungi`,
-**the class that may never move**, which blocked a legitimate fix.
-★ The direction I hit is the harmless one. **Its mirror is the dangerous one**: a genuinely
-verbatim species that a packed line makes look *owned* silently loses the lock's protection.
-I widened the regex to `(?:^ {2}|,\s*)(?:'([^']+)'|"([^"]+)")\s*:` — total specs 996 → 1007 —
-but the class tallies moved in ways I could not explain (`quadruped` 144 → 142, which
-first-wins semantics should make impossible), so I **reverted it**. Do this one with negative
-controls in both directions, not as a drive-by. This is the FOURTH surface-form assumption in
-this single scanner; its header records the first three.
+**A — Procedural de-duplication: HARD pairs 19 → 3. Drive to 0.** (D-ART-143)
+Earth has **zero** pairs under artlock's 0.6 line; procedural had **nineteen**, seven at
+distance 0.00 — byte-identical pictures from different seeds. Nothing watches it because
+`[SAME]` is Earth-only *by design*.
+★ The cause was not the family picker. Wave 20 made the SELECTOR spread evenly and nobody asked
+whether the families it picks can draw more than one thing — **7 of 26 family painters draw one
+fixed picture.** Four are fixed (`tardigrade`, `microAlgaeCell`, `fungiMorel`, `fungiTruffle`);
+**four remain**, all in `proceduralfamilies.ts`:
 
-**Also blocked on it:** `fungiTruffle`'s soil is a full-width `fillRect` (the audit's
-"hard-edged brown rectangle with sharp vertical sides"). The fix is written and correct; it
-cannot land until artclass classes `Black Truffle` right.
+| painter | rng calls |
+|---|---|
+| `fungiCup` | 1 |
+| `microbePlates` | 1 |
+| `fungiEarthstar` | 2 |
+| `microbeCiliate` | 2 |
 
-⚠ **On "100% pass": the gold-pass baseline is 473 FAIL / 590 POLISH / 187 PASS over 1,250
-assets.** That is a multi-session arc, not a session. The concrete finishable target is the
-one above — procedural HARD pairs to zero, matching Earth.
+Method: vary a **RATIO** off `seeded(g, salt)` — never a canvas scale, the fit pass erases
+absolute size (D-ART-34). Each also owns an Earth species, so declare `--touching=…,species`
+and re-render that species. Measure with the `lock.fp` + `dist()` walk in the wave 46 commit.
+
+**B — The four painters above are also gold-pass FAILs.** `Earthstar` renders as a fuzzy ball
+with spikes (seen at the end of wave 47). Fix the variation and the read in the same edit.
+
+**C — Known-open from earlier waves**, all itemised further down this file: the elephant fan
+(needs the head-frame model established with the tint trick BEFORE any outline work), rodent
+incisors (ship paired with a Water Vole / Freshwater Crab separation), G7 butterfly wings +
+abdomen-rooted legs, `earShape:'nub'` rolled out one row at a time, the mustelid trio.
+
+## What wave 47 changed that you should know about
+`artclass.mjs` was classing **15 assets as `verbatim-*`** — the class the lock forbids anyone to
+move — and **13 of them were FAILs**, i.e. defects nobody could legally fix. **All 15 were
+misclassified**; every one routes to a painter we own. Three separate causes, each a different
+surface form of the same key (packed object rows, a U+2019 apostrophe, the array route lists).
+**Assets classed verbatim: 15 → 0.** All 1,250 now route to painters we own, so nothing in the
+catalogue is off-limits any more. See D-ART-144 — including the part where my first fix was
+*worse* than the bug and only a both-directions negative control caught it.
 
 ## What the day was, in one paragraph
 Two full audits were run and then worked to completion. **The gold pass** rendered and judged
