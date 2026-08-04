@@ -75,13 +75,23 @@ for (const [f, t] of Object.entries(text)) {
 
 /* ── C · a painter that takes `name` and never uses it ─────────────────── */
 for (const [f, t] of Object.entries(text)) {
+  /* ⚠ THIS RULE FAILED A BUILD ON A SENTENCE. `faunaFlatfish` grew a doc
+     comment INSIDE its parameter list containing the word "named", so the
+     matcher below saw `name` in the params and reported a painter that ignores
+     an argument it does not have. D-ART-144 wrote this down once already, for
+     `artclass`: STRIP COMMENTS BEFORE READING A BLOCK, because a scanner that
+     reads prose will eventually believe it. Same bug, second file — so the
+     stripper is applied to BOTH sides here: the params (does it really take
+     `name`?) and the body (does it really never use it?). */
+  const decomment = (s) => s.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/\/\/[^\n]*/g, ' ');
   for (const m of t.matchAll(/export function ([a-zA-Z0-9_]+)\s*\(([^)]*name[^)]*)\)[^{]*\{/g)) {
     const fn = m[1];
+    if (!/\bname\b/.test(decomment(m[2]))) continue;   /* the `name` was prose */
     const start = m.index + m[0].length;
     let d = 1, e = start;
     for (; e < t.length && d > 0; e++) { if (t[e] === '{') d++; else if (t[e] === '}') d--; }
     const body = t.slice(start, e);
-    if (!/\bname\b/.test(body)) note('C', `${f}: painter "${fn}" accepts \`name\` but never reads it — two species sharing a spec will render identically`);
+    if (!/\bname\b/.test(decomment(body))) note('C', `${f}: painter "${fn}" accepts \`name\` but never reads it — two species sharing a spec will render identically`);
   }
 }
 

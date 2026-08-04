@@ -273,17 +273,24 @@ export function faunaHorseshoe(c: Ctx, g: G, p: Pal): void {
 
 /* ---------------- Blocker 6: specialist fish + marine bodies ---------------- */
 /** FLATFISH: laterally flattened, lying flat, BOTH eyes on the upper side */
+/* ★ WAVE 50 — THIS PAINTER TOOK NO SPEC AT ALL. Flounder and Halibut were one
+   fixed picture with a palette swap, which is D-ART-143's constant-painter
+   defect on EARTH species rather than procedural ones. artlock's new [SHAPE]
+   tier scores them at 0.00 — byte-identical silhouettes — and both were FAIL in
+   gold pass 2, independently called "a speckled potato" and "a potato or a
+   cartoon spore with a face". Nick's engine measured the same pair at
+   silhouette similarity 1.0000 without seeing either verdict.
+   ⚠ The old fringe was 46 STRAIGHT RADIAL SPOKES sticking out past the outline
+   — the "bristles" both judges reported. A flatfish's dorsal and anal fins are
+   a continuous MEMBRANE running the whole rim, not a fence. It also had NO
+   TAIL, which is most of why it read as a spore rather than a fish.
+   ⚠ THIS COMMENT LIVES OUTSIDE THE PARAMETER LIST ON PURPOSE. Inside it, the
+   word "named" in the prose made `artaudit`'s /\(([^)]*name[^)]*)\)/ believe
+   the painter takes a `name` argument, and the gate failed the build on a
+   sentence. D-ART-144 already says it: strip comments before reading a block,
+   because a scanner that reads prose will eventually believe it. The scanner
+   is fixed too — but keep painter docs above the signature regardless. */
 export function faunaFlatfish(c: Ctx, g: G, p: Pal, opts: {
-  /* ★ WAVE 50 — THIS PAINTER TOOK NO SPEC AT ALL. Flounder and Halibut were
-     one fixed picture with a palette swap, which is D-ART-143's constant-painter
-     defect on EARTH species rather than procedural ones. artlock's new [SHAPE]
-     tier scores them at 0.00 — byte-identical silhouettes — and both were FAIL
-     in gold pass 2, independently described as "a speckled potato" and "a
-     potato or a cartoon spore with a face". Nick's engine measured the same
-     pair at silhouette similarity 1.0000 without seeing either verdict.
-     ⚠ The old fringe was 46 STRAIGHT RADIAL SPOKES sticking out past the
-     outline — the "bristles" both judges named. A flatfish's dorsal and anal
-     fins are a continuous MEMBRANE running the whole rim, not a fence. */
   elong?: number;    /* 1 = the flounder's rounded diamond, 1.5 = halibut */
   blotch?: number;   /* mottling density: a flounder is camouflaged, a halibut plain */
 } = {}): void {
