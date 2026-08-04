@@ -24,7 +24,10 @@ const B = (spec: BirdSpec): FaunaPainter => (c, g, p, n) => faunaBird(c, g, p, s
 
 export const BIRD_NAME: Record<string, FaunaPainter> = {
   /* ── raptors and scavengers: the hooked bill, the heavy foot ── */
-  'Osprey': B({ legs: 0.02, bill: 'hook', size: 1.02, hue: '#6c5f50' }),
+  /* wave 50 — see the Hawk/Falcon note in faunaoverrides: three raptors, one
+     bird, separated only by hue. An osprey is the biggest of the three and
+     flies on long angled wings over water. */
+  'Osprey': B({ legs: 0.02, bill: 'hook', size: 1.14, hue: '#6c5f50', wings: 'soaring', talons: true, plump: 0.96 }),
   'Kestrel': B({ legs: 0.02, bill: 'hook', size: 0.72, hue: '#a5713d' }),
   'Condor': B({ legs: 0.03, bill: 'hook', size: 1.30, hue: '#2a2723' }),
   'Skua': B({ legs: 0.02, bill: 'hook', size: 0.90, hue: '#5d5347' }),
