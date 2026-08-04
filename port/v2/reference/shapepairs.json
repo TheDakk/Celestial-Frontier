@@ -1,33 +1,13 @@
 [
  {
-  "a": "Flounder",
-  "b": "Halibut",
-  "shape": 0
- },
- {
   "a": "Ice Algae",
   "b": "Snow Algae",
   "shape": 0
  },
  {
-  "a": "Hawk",
-  "b": "Falcon",
-  "shape": 0.062
- },
- {
   "a": "Sea Lettuce",
   "b": "Green Algae",
   "shape": 0.125
- },
- {
-  "a": "Hawk",
-  "b": "Osprey",
-  "shape": 0.249
- },
- {
-  "a": "Falcon",
-  "b": "Osprey",
-  "shape": 0.311
  },
  {
   "a": "Duck",

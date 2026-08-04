@@ -273,21 +273,62 @@ export function faunaHorseshoe(c: Ctx, g: G, p: Pal): void {
 
 /* ---------------- Blocker 6: specialist fish + marine bodies ---------------- */
 /** FLATFISH: laterally flattened, lying flat, BOTH eyes on the upper side */
-export function faunaFlatfish(c: Ctx, g: G, p: Pal): void {
+export function faunaFlatfish(c: Ctx, g: G, p: Pal, opts: {
+  /* ★ WAVE 50 — THIS PAINTER TOOK NO SPEC AT ALL. Flounder and Halibut were
+     one fixed picture with a palette swap, which is D-ART-143's constant-painter
+     defect on EARTH species rather than procedural ones. artlock's new [SHAPE]
+     tier scores them at 0.00 — byte-identical silhouettes — and both were FAIL
+     in gold pass 2, independently described as "a speckled potato" and "a
+     potato or a cartoon spore with a face". Nick's engine measured the same
+     pair at silhouette similarity 1.0000 without seeing either verdict.
+     ⚠ The old fringe was 46 STRAIGHT RADIAL SPOKES sticking out past the
+     outline — the "bristles" both judges named. A flatfish's dorsal and anal
+     fins are a continuous MEMBRANE running the whole rim, not a fence. */
+  elong?: number;    /* 1 = the flounder's rounded diamond, 1.5 = halibut */
+  blotch?: number;   /* mottling density: a flounder is camouflaged, a halibut plain */
+} = {}): void {
   const r = mulberry32(((g.seed as number) ^ 0xF1A7) >>> 0);
-  const cx = S * 0.5, cy = S * 0.54, w = S * 0.28, h = S * 0.17;
+  const el = opts.elong ?? 1;
+  const cx = S * 0.5, cy = S * 0.54, w = S * 0.25 * el, h = S * 0.175 / Math.sqrt(el);
   ground(c, cx, cy + h + 10, S * 0.26);
+  /* the fin MEMBRANE first, behind the body: one soft lobe following the rim */
+  c.fillStyle = `rgba(${p.cr * 0.86 | 0},${p.cg * 0.86 | 0},${p.cb * 0.90 | 0},0.62)`;
+  c.beginPath();
+  for (let i = 0; i <= 64; i++) {
+    const a = (i / 64) * TAU;
+    /* the fin is deepest along the top and bottom and pinches at the ends,
+       which is what makes the outline read as a fish and not as a disc */
+    const swell = 1 + 0.19 * Math.abs(Math.sin(a)) - 0.06 * Math.abs(Math.cos(a));
+    const x = cx + Math.cos(a) * w * swell, y = cy + Math.sin(a) * h * swell;
+    i ? c.lineTo(x, y) : c.moveTo(x, y);
+  }
+  c.closePath(); c.fill();
+  /* the fin RAYS as internal lines on that membrane — never past its edge */
+  c.strokeStyle = 'rgba(226,236,252,0.24)'; c.lineWidth = 1.3;
+  for (let i = 0; i < 54; i++) {
+    const a = (i / 54) * TAU, s2 = Math.abs(Math.sin(a));
+    if (s2 < 0.35) continue;                       /* no rays on the head/tail ends */
+    const swell = 1 + 0.19 * s2 - 0.06 * Math.abs(Math.cos(a));
+    c.beginPath();
+    c.moveTo(cx + Math.cos(a) * w * 0.97, cy + Math.sin(a) * h * 0.97);
+    c.lineTo(cx + Math.cos(a) * w * swell * 0.97, cy + Math.sin(a) * h * swell * 0.97);
+    c.stroke();
+  }
+  /* the caudal fin — the old painter had NO TAIL, which is most of why it read
+     as a spore rather than as a fish */
+  c.fillStyle = `rgba(${p.cr * 0.80 | 0},${p.cg * 0.80 | 0},${p.cb * 0.84 | 0},0.80)`;
+  c.beginPath();
+  c.moveTo(cx + w * 0.92, cy - h * 0.16);
+  c.quadraticCurveTo(cx + w * 1.30, cy - h * 0.52, cx + w * 1.38, cy - h * 0.30);
+  c.quadraticCurveTo(cx + w * 1.30, cy, cx + w * 1.38, cy + h * 0.30);
+  c.quadraticCurveTo(cx + w * 1.30, cy + h * 0.52, cx + w * 0.92, cy + h * 0.16);
+  c.closePath(); c.fill();
   c.fillStyle = bodyGrad(c, p, cx, cy, w);
   c.beginPath(); c.ellipse(cx, cy, w, h, 0, 0, TAU); c.fill();
-  /* the continuous fin fringe all the way round — the flatfish read */
-  c.strokeStyle = 'rgba(226,236,252,0.35)'; c.lineWidth = 2;
-  for (let i = 0; i < 46; i++) {
-    const a = (i / 46) * TAU, ex = cx + Math.cos(a) * w, ey = cy + Math.sin(a) * h;
-    c.beginPath(); c.moveTo(ex, ey); c.lineTo(cx + Math.cos(a) * (w + 14), cy + Math.sin(a) * (h + 12)); c.stroke();
-  }
   rim(c, () => c.ellipse(cx, cy, w, h, 0, 0, TAU), 2);
   c.fillStyle = 'rgba(0,0,0,0.16)';
-  for (let i = 0; i < 26; i++) { const a = r() * TAU, d = Math.pow(r(), 0.5); c.beginPath(); c.arc(cx + Math.cos(a) * w * d * 0.9, cy + Math.sin(a) * h * d * 0.9, 3 + r() * 5, 0, TAU); c.fill(); }
+  const nb = Math.round(26 * (opts.blotch ?? 1));
+  for (let i = 0; i < nb; i++) { const a = r() * TAU, d = Math.pow(r(), 0.5); c.beginPath(); c.arc(cx + Math.cos(a) * w * d * 0.9, cy + Math.sin(a) * h * d * 0.9, 3 + r() * 5, 0, TAU); c.fill(); }
   /* BOTH eyes on the same (upper) side, close together — the signature */
   eye(c, cx - w * 0.46, cy - h * 0.34, 7); eye(c, cx - w * 0.20, cy - h * 0.44, 7);
   c.strokeStyle = p.dark; c.lineWidth = 2.4;
@@ -1232,8 +1273,10 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Beetle': (c, g, p) => faunaBeetle(c, g, p, { hue: '#96551f', }),
   'Fiddler Crab': (c, g, p) => faunaFiddler(c, g, speciesHue(p, '#c9a877')),
   /* Blocker 6 — specialist fish + marine bodies */
-  'Flounder': (c, g, p) => faunaFlatfish(c, g, speciesHue(p, '#a98a5f')),
-  'Halibut': (c, g, p) => faunaFlatfish(c, g, speciesHue(p, '#7d6b4e')),
+  /* a flounder is a small rounded diamond, heavily mottled for camouflage;
+     a halibut is a long narrow torpedo-diamond and nearly plain */
+  'Flounder': (c, g, p) => faunaFlatfish(c, g, speciesHue(p, '#a98a5f'), { elong: 0.94, blotch: 1.5 }),
+  'Halibut': (c, g, p) => faunaFlatfish(c, g, speciesHue(p, '#7d6b4e'), { elong: 1.52, blotch: 0.35 }),
   'Angelfish': (c, g, p) => faunaAngelfish(c, g, speciesHue(p, '#f7a41c')),
   'Lionfish': (c, g, p) => faunaLionfish(c, g, speciesHue(p, '#9b3a26')),
   'Octopus': (c, g, p) => faunaCephalopod(c, g, p, { hue: '#a65f52', squid: false }),
@@ -1256,8 +1299,17 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   /* ★ D-ART-121 — the axes existed and the rows never set them. */
   'Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#4a3a28', legs: 0.02, bill: 'hook', wings: 'soaring', tail: 'fan', headMass: 1.5, talons: true, plump: 1.12 }, n),
   'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6b7079', legs: 0.02, bill: 'hook', crest: true, wings: 'soaring', headMass: 1.8, talons: true, size: 1.12 }, n),
-  'Hawk': (c, g, p, n) => faunaBird(c, g, p, { hue: '#96543a', legs: 0.02, bill: 'hook' }, n),
-  'Falcon': (c, g, p, n) => faunaBird(c, g, p, { hue: '#55647a', legs: 0.02, bill: 'hook' }, n),
+  /* ★ WAVE 50 — HAWK, FALCON AND OSPREY WERE ONE BIRD IN THREE HUES. Their
+     rows were byte-identical apart from `hue` (Osprey added `size`), so the
+     new [SHAPE] tier scores Hawk ≈ Falcon at 0.06 and Hawk ≈ Osprey at 0.25.
+     This is D-ART-121 ("the large birds were all one bird") recurring on the
+     raptors, and the fix is the same: the axes ALREADY EXIST and the rows
+     simply never set them. Table work, not painter work.
+     A buteo is broad and heavy on a wide fanned tail; a peregrine is a compact
+     sleek dart with a long narrow tail; an osprey is bigger again with the
+     long angled wings of a fish-hunter. */
+  'Hawk': (c, g, p, n) => faunaBird(c, g, p, { hue: '#96543a', legs: 0.02, bill: 'hook', tail: 'fan', talons: true, plump: 1.16, size: 0.96 }, n),
+  'Falcon': (c, g, p, n) => faunaBird(c, g, p, { hue: '#55647a', legs: 0.02, bill: 'hook', talons: true, size: 0.76, plump: 0.88, elong: 1.16 }, n),
   'Vulture': (c, g, p, n) => faunaBird(c, g, p, { hue: '#3a322c', legs: 0.03, bill: 'hook', wings: 'soaring', bald: true, talons: true, size: 1.10, plump: 1.14 }, n),
   'Albatross': (c, g, p, n) => faunaBird(c, g, p, { hue: '#99a0a8', legs: 0.01, bill: 'hook', wings: 'soaring', size: 1.05 }, n),
   'Flamingo': (c, g, p, n) => faunaBird(c, g, p, { hue: '#ef92a6', legs: 0.14, bill: 'stout' }, n),
