@@ -161,6 +161,12 @@ export interface QuadSpec {
       which carries the coat pattern: a stocking is a change of colour, not a
       mark on a ground, and it is what separates Gaur from Buffalo. */
   stockings?: string;
+  /** ★ wave 51 — NECK CARRIAGE, overriding the family's. 1 is the browsing
+      ungulate's high head (and the angle every mammal used to get); 0 carries
+      the skull level with the withers and throws it forward. A species whose
+      reference row names the carriage — a giraffe, a gerenuk, a stalking
+      cheetah — sets it here; everyone else inherits the family plan. */
+  carry?: number;
 }
 
 /** ★ WAVE 6 — THE SKULL. Nick, after looking at the wave-5 export: *"the heads
@@ -278,6 +284,17 @@ const FAMILY: Record<string, {
   iris: string;
   cannon: number;    /* 1 = pencil cannon bone, 0 = a column with no ankle */
   crouch: number;    /* 1 = folded and low, 0 = straight-legged and tall */
+  /* ★ WAVE 51 — NECK CARRIAGE. `headY = shoulderY - neckLen * 0.86` was
+     HARD-CODED, so every mammal in the catalogue carried its head up and
+     forward at 57° off the shoulder — a browsing ungulate's carriage — and
+     that is most of why twelve canids and thirteen felids read as one pony.
+     Unlike the limb (whose upper half the body occludes entirely, D-ART-149)
+     NOTHING occludes this: the neck angle IS the silhouette, and it is the
+     first thing anyone reads. A carnivore carries its skull at or below the
+     withers with the muzzle thrown forward; a horse, a deer and a camel carry
+     it up. 1 reproduces the old angle exactly, so every family left at 1 is
+     byte-unchanged (D-ART-14). */
+  carry: number;     /* 1 = head high (ungulate), 0 = head level and forward */
 }> = {
   /* a cat is a deep chest and a tucked waist over a short folded limb */
   /* ★ D-ART-132 — cannon 0.52 made the ankle half-width 0.63·legW while the
@@ -285,13 +302,13 @@ const FAMILY: Record<string, {
      and never appeared: 15 of 17 felid rows reported "hoof-like tips, no
      paws". waist/chest/rump were all too low for the tuck, brisket and croup
      terms to register, so every cat was a barrel with a disc on its haunch. */
-  felid: { waist: 0.95, muscle: 0.88, chest: 0.98, rump: 0.82, foot: 'paw', cannon: 0.74, crouch: 0.95, ear: 'round', pupil: 'slit', iris: '#c9a233', mat: 'pelt' },
+  felid: { waist: 0.95, muscle: 0.88, chest: 0.98, rump: 0.82, foot: 'paw', cannon: 0.74, crouch: 0.95, carry: 0.28, ear: 'round', pupil: 'slit', iris: '#c9a233', mat: 'pelt' },
   /* a dog is leggier and narrower than a cat, and it still has paws */
   /* ★ D-ART-133 — the croup lift is 0.22·(rump·0.66+muscle·0.48) against a
      withers lift of only 0.17·muscle, so at 0.46/0.58 a dog's HIP stood 30%
      higher than its SHOULDER: a rump-high pony topline. A dog's withers must
      be the highest point. */
-  canid: { waist: 0.86, muscle: 0.90, chest: 0.94, rump: 0.30, foot: 'paw', cannon: 0.58, crouch: 0.66, ear: 'point', pupil: 'round', iris: '#a97a34', mat: 'fur' },
+  canid: { waist: 0.86, muscle: 0.90, chest: 0.94, rump: 0.30, foot: 'paw', cannon: 0.58, crouch: 0.66, carry: 0.32, ear: 'point', pupil: 'round', iris: '#a97a34', mat: 'fur' },
   /* a bear is a shoulder hump, a heavy rump, no waist at all, and soles */
   /* ★ D-ART-133 — THE WORST SINGLE NUMBER IN THE TABLE. rump 0.90 with muscle
      0.96 lifted the croup 0.232·bodyH against a withers 0.163·bodyH, so the
@@ -299,16 +316,16 @@ const FAMILY: Record<string, {
      hump that IS the ursid read, and why "no shoulder hump above the rump"
      lands on Grizzly. cannon 0.16 also left the sole only 7% proud of the
      ankle, so the plantigrade foot read as a hoof nub. */
-  ursid: { waist: 0.16, muscle: 1.00, chest: 0.84, rump: 0.40, foot: 'plantigrade', cannon: 0.32, crouch: 0.78, ear: 'round', pupil: 'round', iris: '#4a3524', mat: 'pelt' },
+  ursid: { waist: 0.16, muscle: 1.00, chest: 0.84, rump: 0.40, foot: 'plantigrade', cannon: 0.32, crouch: 0.78, carry: 0.22, ear: 'round', pupil: 'round', iris: '#4a3524', mat: 'pelt' },
   /* ★ D-ART-132 — muscle drives the withers gauss; at 0.52 the shoulder rose
      0.088·bodyH, which is "no shoulder hump / level-backed" on Bison, Bull,
      Eland, Nilgai, Hartebeest and Wildebeest at once. */
-  bovid: { waist: 0.30, muscle: 0.68, chest: 0.82, rump: 0.82, foot: 'cloven', cannon: 0.90, crouch: 0.26, ear: 'spoon', pupil: 'bar', iris: '#5a4326', mat: 'fur' },
-  cervid: { waist: 0.56, muscle: 0.36, chest: 0.50, rump: 0.44, foot: 'cloven', cannon: 1.00, crouch: 0.22, ear: 'leaf', pupil: 'bar', iris: '#3f2c1a', mat: 'fur' },
-  equid: { waist: 0.32, muscle: 0.74, chest: 0.70, rump: 0.82, foot: 'hoof', cannon: 0.98, crouch: 0.20, ear: 'point', pupil: 'bar', iris: '#3a2a1c', mat: 'fur' },
+  bovid: { waist: 0.30, muscle: 0.68, chest: 0.82, rump: 0.82, foot: 'cloven', cannon: 0.90, crouch: 0.26, carry: 1.00, ear: 'spoon', pupil: 'bar', iris: '#5a4326', mat: 'fur' },
+  cervid: { waist: 0.56, muscle: 0.36, chest: 0.50, rump: 0.44, foot: 'cloven', cannon: 1.00, crouch: 0.22, carry: 1.00, ear: 'leaf', pupil: 'bar', iris: '#3f2c1a', mat: 'fur' },
+  equid: { waist: 0.32, muscle: 0.74, chest: 0.70, rump: 0.82, foot: 'hoof', cannon: 0.98, crouch: 0.20, carry: 1.00, ear: 'point', pupil: 'bar', iris: '#3a2a1c', mat: 'fur' },
   /* a camel carries a high chest on long soft-padded legs */
-  camelid: { waist: 0.44, muscle: 0.42, chest: 0.78, rump: 0.40, foot: 'pad', cannon: 0.82, crouch: 0.32, ear: 'leaf', pupil: 'bar', iris: '#4a3220', mat: 'pelt' },
-  suid: { waist: 0.08, muscle: 0.62, chest: 0.82, rump: 0.50, foot: 'cloven', cannon: 0.70, crouch: 0.40, ear: 'drop', pupil: 'round', iris: '#4d3826', mat: 'fur' },
+  camelid: { waist: 0.44, muscle: 0.42, chest: 0.78, rump: 0.40, foot: 'pad', cannon: 0.82, crouch: 0.32, carry: 1.00, ear: 'leaf', pupil: 'bar', iris: '#4a3220', mat: 'pelt' },
+  suid: { waist: 0.08, muscle: 0.62, chest: 0.82, rump: 0.50, foot: 'cloven', cannon: 0.70, crouch: 0.40, carry: 0.25, ear: 'drop', pupil: 'round', iris: '#4d3826', mat: 'fur' },
   /* a long low tube on very short legs */
   /* ★ D-ART-133 — cannon 0.34 made the ankle 0.717·legW while the paw pad is a
      FIXED legW·0.66, so the pad was NARROWER than the leg it caps and rendered
@@ -316,24 +333,24 @@ const FAMILY: Record<string, {
      cap" on Weasel, Wolverine, Stoat, Mink, Fisher, Marten, Mongoose, Otter
      and Badger — nine species, one number. waist 0.82 also pinched the MIDDLE
      of a family that has no mid-body pinch at all. */
-  mustelid: { waist: 0.30, muscle: 0.68, chest: 0.56, rump: 0.56, foot: 'paw', cannon: 0.60, crouch: 0.80, ear: 'round', pupil: 'round', iris: '#2b2118', mat: 'fur' },
-  rodent: { waist: 0.38, muscle: 0.34, chest: 0.42, rump: 0.74, foot: 'paw', cannon: 0.38, crouch: 0.66, ear: 'round', pupil: 'round', iris: '#241a12', mat: 'fur' },
-  pachyderm: { waist: 0.04, muscle: 0.72, chest: 0.66, rump: 0.70, foot: 'pad', cannon: 0.10, crouch: 0.08, ear: 'round', pupil: 'round', iris: '#553f28', mat: 'hide' },
+  mustelid: { waist: 0.30, muscle: 0.68, chest: 0.56, rump: 0.56, foot: 'paw', cannon: 0.60, crouch: 0.80, carry: 0.75, ear: 'round', pupil: 'round', iris: '#2b2118', mat: 'fur' },
+  rodent: { waist: 0.38, muscle: 0.34, chest: 0.42, rump: 0.74, foot: 'paw', cannon: 0.38, crouch: 0.66, carry: 0.50, ear: 'round', pupil: 'round', iris: '#241a12', mat: 'fur' },
+  pachyderm: { waist: 0.04, muscle: 0.72, chest: 0.66, rump: 0.70, foot: 'pad', cannon: 0.10, crouch: 0.08, carry: 1.00, ear: 'round', pupil: 'round', iris: '#553f28', mat: 'hide' },
   /* unfamilied species keep exactly the wave-4 behaviour, so nothing that
      was already good moves without someone choosing to move it (D-ART-14) */
   /* a marsupial carries its weight BEHIND — heavy haunches, a thick tail
      base, short forelimbs, and it sits low */
-  marsupial: { waist: 0.40, muscle: 0.52, chest: 0.50, rump: 0.86, foot: 'paw', cannon: 0.26, crouch: 0.70, ear: 'round', pupil: 'round', iris: '#2a1f16', mat: 'fur' },
+  marsupial: { waist: 0.40, muscle: 0.52, chest: 0.50, rump: 0.86, foot: 'paw', cannon: 0.26, crouch: 0.70, carry: 1.00, ear: 'round', pupil: 'round', iris: '#2a1f16', mat: 'fur' },
   /* a raccoon walks on its soles with an arched back and a hunched shoulder */
-  procyonid: { waist: 0.54, muscle: 0.44, chest: 0.56, rump: 0.62, foot: 'plantigrade', cannon: 0.28, crouch: 0.66, ear: 'round', pupil: 'round', iris: '#2f2418', mat: 'pelt' },
+  procyonid: { waist: 0.54, muscle: 0.44, chest: 0.56, rump: 0.62, foot: 'plantigrade', cannon: 0.28, crouch: 0.66, carry: 1.00, ear: 'round', pupil: 'round', iris: '#2f2418', mat: 'pelt' },
   /* sloths, armadillos, anteaters, pangolins: a low deep body on short limbs
      ending in the enormous digging or hooking CLAWS that define the group */
-  xenarthran: { waist: 0.26, muscle: 0.54, chest: 0.62, rump: 0.60, foot: 'claw', cannon: 0.30, crouch: 0.58, ear: 'round', pupil: 'round', iris: '#221a14', mat: 'hide' },
+  xenarthran: { waist: 0.26, muscle: 0.54, chest: 0.62, rump: 0.60, foot: 'claw', cannon: 0.30, crouch: 0.58, carry: 0.30, ear: 'round', pupil: 'round', iris: '#221a14', mat: 'hide' },
   /* a seal or a walrus has no standing limb at all — it is a torpedo resting
      on the ground with flippers, and drawing it four legs is the whole error */
-  pinniped: { waist: 0.06, muscle: 0.34, chest: 0.72, rump: 0.30, foot: 'flipper', cannon: 0.04, crouch: 0.04, ear: 'hidden', pupil: 'round', iris: '#14120f', mat: 'fur' },
+  pinniped: { waist: 0.06, muscle: 0.34, chest: 0.72, rump: 0.30, foot: 'flipper', cannon: 0.04, crouch: 0.04, carry: 1.00, ear: 'hidden', pupil: 'round', iris: '#14120f', mat: 'fur' },
   /* an aardvark or a mole: an arched back over powerful short digging forelimbs */
-  burrower: { waist: 0.18, muscle: 0.70, chest: 0.58, rump: 0.66, foot: 'claw', cannon: 0.22, crouch: 0.62, ear: 'round', pupil: 'round', iris: '#1d1610', mat: 'fur' },
+  burrower: { waist: 0.18, muscle: 0.70, chest: 0.58, rump: 0.66, foot: 'claw', cannon: 0.22, crouch: 0.62, carry: 1.00, ear: 'round', pupil: 'round', iris: '#1d1610', mat: 'fur' },
   /* ★ wave 35 — THE HYENAS WERE CANIDS AND IT SHOWED. Nick's audit has three
      blocker rows here and all three describe the same animal: a pony. A hyaenid
      is not a dog — it is massive through the shoulder, neck and jaw and light
@@ -341,8 +358,8 @@ const FAMILY: Record<string, {
      croup; it stands on a short folded limb rather than a cursorial one; and
      its round ear is nothing like a dog's prick ear. One table row, three
      blockers. */
-  hyaenid: { waist: 0.52, muscle: 0.92, chest: 0.86, rump: 0.28, foot: 'paw', cannon: 0.62, crouch: 0.46, ear: 'round', pupil: 'round', iris: '#6b5230', mat: 'fur' },
-  generic: { waist: -1, muscle: -1, chest: -1, rump: -1, foot: 'paw', cannon: 0.62, crouch: 0.45, ear: 'round', pupil: 'round', iris: '#3a2b1c', mat: 'fur' },
+  hyaenid: { waist: 0.52, muscle: 0.92, chest: 0.86, rump: 0.28, foot: 'paw', cannon: 0.62, crouch: 0.46, carry: 0.26, ear: 'round', pupil: 'round', iris: '#6b5230', mat: 'fur' },
+  generic: { waist: -1, muscle: -1, chest: -1, rump: -1, foot: 'paw', cannon: 0.62, crouch: 0.45, carry: 1.00, ear: 'round', pupil: 'round', iris: '#3a2b1c', mat: 'fur' },
 };
 
 function pal(p: Pal, spec: QuadSpec): Pal {
@@ -492,6 +509,21 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      derived from the gap between them instead of imposing it. */
   const rjit = nvq(0x2B, 0.03);
   const gauss = (u: number, c0: number, w: number): number => Math.exp(-(((u - c0) / w) ** 2));
+  /* ⚠ WAVE 51 — A HAUNCH CANNOT BE AUTHORED HERE, AND THIS IS WHY (D-ART-152).
+     A thigh and a shoulder lobe were added to this function — `+0.20·rumpF`
+     at u 0.19 and `+0.11·muscleF` at u 0.83 — typechecked, rendered, and
+     changed almost NOTHING. The reason is structural, not a matter of
+     coefficients: `ventral` and `dorsal` do not describe an outline. They
+     feed `RAD = (ventral - dorsal)/2` and an AXIS at their midpoint, and
+     `Tube` sweeps ONE SCALAR RADIUS — a circular cross-section (torso.ts).
+     So every unit the belly is pushed DOWN raises the back by half a unit and
+     grows the radius by half: an asymmetric mass is not expressible, and the
+     rear simply got rounder. It is the same shape of finding as D-ART-149 —
+     the knee was lowered, rendered, and reverted because occlusion was
+     binding rather than joint height.
+     ★ So the haunch is a TORSO-ENGINE item, not a table item: it needs
+     `Tube` to accept a radius that varies with phi as well as u. Do not
+     retry it by tuning numbers in this function. */
   const ventral = (u: number): number => cy + bodyH * (
     0.54
     + 0.15 * chestF * gauss(u, 0.74, 0.17)      /* the brisket hangs lowest */
@@ -905,7 +937,17 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      where it should always have come from. */
   const shoulderX = spec.pose ? AX(0.92)[0] : cx + bodyW * 0.82;
   const shoulderY = spec.pose ? AX(0.92)[1] : topY(1) + bodyH * 0.12;
-  const headX = shoulderX + neckLen * 0.55, headY = shoulderY - neckLen * 0.86;
+  /* ★ WAVE 51 — the neck's ELEVATION is the family's, not a constant. The old
+     pair (0.55, 0.86) is one vector of length 1.0208 at 1.0026 rad off
+     horizontal; keeping that length and swinging only the ANGLE means a
+     family at carry = 1 lands on the identical point (byte-unchanged), while
+     a carnivore's skull comes down to the withers and is thrown FORWARD by
+     the same neck. See the `carry` note in FAMILY. */
+  const carryF = spec.carry ?? FAM0.carry;
+  const neckAng = 1.0026 * (0.10 + 0.90 * carryF);
+  const neckReach = neckLen * 1.0208;
+  const headX = shoulderX + neckReach * Math.cos(neckAng);
+  const headY = shoulderY - neckReach * Math.sin(neckAng);
   /* ★ WAVE 22b — A HEAD BELONGS TO THE ANIMAL'S LENGTH, not only its depth.
      Sized purely off bodyH, a sand cat got a 28px skull on a 210px body — 13%,
      where a real carnivore's head is about a fifth of its body. Long shallow
@@ -927,8 +969,13 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   const nq = (t: number): [number, number] => {
     const m = 1 - t;
     const ax = shoulderX - bodyW * 0.1, ay = shoulderY + bodyH * 0.2;
-    return [m * m * ax + 2 * m * t * (shoulderX + neckLen * 0.30) + t * t * headX,
-      m * m * ay + 2 * m * t * (shoulderY - neckLen * 0.45) + t * t * headY];
+    /* ★ WAVE 51 — the mid control swings WITH the head, or a lowered head just
+       bends the neck into an arch that rises and falls again. The old pair
+       (0.30, -0.45)·neckLen is 0.5408·neckLen at 0.0198 rad under the head
+       vector, so expressing it that way is exact at carry = 1. */
+    const cA = neckAng - 0.0198, cR = neckLen * 0.5408;
+    return [m * m * ax + 2 * m * t * (shoulderX + cR * Math.cos(cA)) + t * t * headX,
+      m * m * ay + 2 * m * t * (shoulderY - cR * Math.sin(cA)) + t * t * headY];
   };
   const neckPts: Array<[number, number]> = [[nRoot[0] - RAD(nRootU) * 0.20, nRoot[1]],
     nq(0.25), nq(0.55), nq(0.82), [headX, headY + headR * 0.10]];

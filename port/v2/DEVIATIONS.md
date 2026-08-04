@@ -1179,3 +1179,35 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   ★ Two habits, not one: **strip comments in every scanner**, and **keep painter docs above the
   signature, never inside the parameter list.** A law recorded once for one file does not
   protect the next file; it has to be applied.
+
+- ★ **D-ART-152 — AN ASYMMETRIC MASS CANNOT BE AUTHORED THROUGH A SYMMETRIC PROFILE (wave 51).**
+  The chassis brief said the fix must change what is VISIBLE: body depth, topline, where the
+  limb leaves the silhouette, and the skull. A haunch and an upper-arm lobe were added to
+  `ventral()` in `quadrupedoverrides.ts` — `+0.20·rumpF` at u 0.19, `+0.11·muscleF` at u 0.83 —
+  they typechecked, they rendered, they changed the bytes, and **they changed almost nothing you
+  could see.** The reason is structural and worth more than the attempt: `ventral`/`dorsal` are
+  not an outline. They feed `RAD = (ventral − dorsal)/2` and an AXIS at their midpoint, and
+  `Tube` sweeps **one scalar radius** — a circular cross-section (torso.ts). So every unit the
+  belly is pushed down raises the back by half and grows the radius by half; the rear simply got
+  rounder. **A thigh is asymmetric and is therefore inexpressible in this parameterisation.**
+  ★ So the haunch is a **torso-engine** item, not a table item — `Tube` needs a radius varying
+  with phi as well as u. Do not retry it by tuning coefficients. Same shape as D-ART-149: the
+  knee was lowered, rendered, reverted, because occlusion and not joint height was binding. The
+  revert here was confirmed **byte-identical** to the pre-attempt render, which is what makes it
+  a measurement rather than a guess.
+
+- ★ **D-ART-153 — THE PONY WAS A HARD-CODED NECK ANGLE, AND NOTHING OCCLUDED IT (wave 51).**
+  Twelve canids and thirteen felids read as one pony. Two audits, 431 per-asset verdicts and a
+  tint render had all gone looking for it in the LIMB — the part the body occludes, where every
+  fix so far has been invisible. It was one line:
+  `headX = shoulderX + neckLen*0.55, headY = shoulderY − neckLen*0.86` — **a fixed 57° up-and-
+  forward neck for every mammal in the catalogue**, i.e. a browsing ungulate's carriage worn by
+  every cat, dog and bear. It is the first thing anyone reads and nothing covers it.
+  Now `carry` on the family plan, expressed as a swing of the same-length vector so `carry: 1`
+  reproduces the old point exactly and every family left at 1 is byte-unchanged (D-ART-14).
+  ⚠ **And the first values were too aggressive, exactly the D-ART-141 shape:** right about the
+  defect, wrong about the remedy. At carry ≈ 0.02–0.05 the neck leaves the silhouette entirely
+  and a long-bodied mammal becomes a featureless tube — artlock returned **7 newly confusable
+  pairs (Mole ≈ Mudminnow, Stoat ≈ River Otter, Coati ≈ Civet)**. Raising the floor to 0.22–0.32
+  and returning `procyonid`/`burrower` (never part of the pony complaint) to 1 gave **0 newly
+  confusable and a net 884 → 882.** The gate found this; no amount of looking at cats would have.
