@@ -686,8 +686,33 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
         const sx = cx + (wd.tipX - cx) * u, sy = base - (base - wd.tipY) * u;
         /* opposite = a pair at every node; alternate = one side, then the other */
         const sides: readonly number[] = arr === 'alternate' ? [i % 2 ? 1 : -1] : [-1, 1];
+        /* ★ WAVE 54 — THE LADDER. Every leaf on every plant was drawn at a
+           CONSTANT ±0.45 rad and a CONSTANT length, at every node, on every
+           species — so the foliage came out as a rung ladder bolted to a stem,
+           and the family sweep named exactly that ("a rigid pinnate fern ladder
+           on one dead-straight central stem") on four separate flora batches.
+           It is the flora twin of the hard-coded neck angle (D-ART-153): one
+           number standing in for an axis nobody had built.
+           On a real plant the lower leaves are the OLDEST — biggest, and
+           drooping at or below the horizontal — while the young ones near the
+           growing tip are smaller and swept up toward the light. That gradient
+           is most of what makes a stem read as grown rather than assembled.
+           Jittered per NODE off the species name (D-ART-20), so two plants that
+           share a habit still cannot draw the same ladder. */
+        const lift = -0.10 + u * 0.78;
+        const taper = 1.22 - u * 0.46;
         for (const s of sides) {
-          drawLeaf(c, p, sx, sy, s < 0 ? Math.PI + 0.45 : -0.45, lw, spec.leaf);
+          /* ⚠ the salt carries the SIDE. Without it both leaves of a pair got
+             the identical jitter, so the plant stayed perfectly bilaterally
+             symmetric and merely changed from a rung ladder into a Christmas
+             tree — regular in a different way. No real stem is a mirror down
+             its own axis, and the asymmetry is what stops the taper reading as
+             a cone. */
+          const salt = i * 7 + (s < 0 ? 0x40 : 0);
+          const jA = (nvf(name, 0x90 + salt, 0.34) - 1);
+          const jL = nvf(name, 0xB0 + salt, 0.20);
+          const a = lift + jA;
+          drawLeaf(c, p, sx, sy, s < 0 ? Math.PI + a : -a, lw * taper * jL, spec.leaf);
         }
       }
     }
