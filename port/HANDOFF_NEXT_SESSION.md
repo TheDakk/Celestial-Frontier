@@ -45,26 +45,37 @@ with phi as well as u. Do NOT retry it by tuning coefficients in `quadrupedoverr
 Same shape as D-ART-149, where the knee was lowered, rendered and reverted because occlusion
 and not joint height was binding.
 
-## ★★★ THE SWEEP (gold pass 3) — IN FLIGHT, AND THE RULER MOVED AGAIN
+## ★★★ HOW TO RE-CHECK CHEAPLY — DO NOT RE-RUN THE FULL SWEEP (D-ART-157)
 
-The chain: `tools/familycards.mjs` → 197 batches **BY FAMILY** → one agent per batch (reads
-every PNG and looks) → adversarial verify of every FAIL → `tools/goldassemble.mjs` →
-`tools/goldcompare.mjs`. **`goldassemble.mjs` is new this session.** It reports its own join
-failures, missing batches and duplicate species rather than defaulting them to a band — a
-missing judgement is not a PASS, and that is exactly the state that looked like success when
-the code pass's join silently dropped everything.
-
-⚠ **The run died twice.** First on session/weekly limits (521 of 809 agents errored). Then on
-resume, because a resume must re-send `args` verbatim and a 5KB array truncated mid-paste took
-the whole run down with an unterminated-string parse error. **The batch list is now EMBEDDED in
-the workflow script, so a resume needs no args at all:**
+⚠ **The full family sweep is a DISCOVERY tool, and it is done.** It cost ~15M tokens / 867
+agents and hit the session limit on every run. It was worth it once — to find the shared-chassis
+defect (D-ART-147) — but re-running it to MEASURE PROGRESS is what kept blowing the budget.
+**For a progress delta, use the drift-scoped re-check instead:**
 
 ```
-Workflow({scriptPath: <the goldpass3 script>, resumeFromRunId: 'wf_0e82f26d-092'})
+node tools/rejudgecards.mjs        # 1 contact strip per family, ONLY drifted assets (~148, not 1250)
+# then the goldpass4-rejudge-cheap workflow: one agent per strip (~32), no verify pass
+node tools/rejudgemerge.mjs        # folds fresh verdicts into the carried baseline, prints the delta
 ```
 
-Completed judges replay from cache for free. Partial results survive on disk in
-`apps/game/smoke/goldpass3/{judge,verify}/`; re-run `node tools/goldassemble.mjs` at any time.
+Why it is cheap, and why it is correct: artlock's fingerprint already names what changed since
+the baseline (`reference/drift-since-baseline.json`, from a lock diff, no model), and **an asset
+whose pixels are byte-identical cannot have a different verdict** — so the unchanged ~1,100 keep
+their band for free and only the ~148 that moved are sent to a model. ~15M tokens → a few
+hundred K. The one-time authoritative sweep (`goldpass3`, with its adversarial verify pass) is
+kept ONLY for a final certification.
+
+⚠ **FREEZE THE ART DURING A JUDGE RUN.** The gold-pass-3 baseline is smeared because judging and
+editing overlapped for hours — early batches saw pre-wave-51 art, late batches saw post-wave-56.
+Export once, judge once, touch no painter until it finishes. The cheap re-check makes this easy
+(a run is minutes). Baseline archived at `reference/goldpass3-prechassis.json`.
+
+### the old full-sweep chain (certification only, not for deltas)
+`tools/familycards.mjs` → 197 batches BY FAMILY → judge each → adversarial verify →
+`tools/goldassemble.mjs` → `tools/goldcompare.mjs`. `goldassemble` reports its own join
+failures/missing/duplicates rather than defaulting them to a band. The batch list is EMBEDDED in
+the workflow script (a resume must NOT re-send `args` — a truncated 5KB array killed a run once).
+⚠ Launch it FRESH for a re-judge, never `resumeFromRunId` — cached agents replay the OLD art.
 
 ★★ **DO NOT QUOTE A DELTA AGAINST 431 — D-ART-150 FIRED AGAIN, HARDER.** At 1,182 of 1,250
 judged the raw count is **616 FAIL / 505 POLISH / 61 PASS**, and it is **not comparable**.
