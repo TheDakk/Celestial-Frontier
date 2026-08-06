@@ -1648,14 +1648,23 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     const ex = eyeAt[0], ey = eyeAt[1], er = headR * SK.eyeR;
     /* a soft socket, so the eye is SET INTO the skull rather than stuck on */
     softMark(c, ex, ey + er * 0.1, er * 2.1, er * 1.7, '18,14,10', 0.34);
-    c.fillStyle = '#f2efe6'; c.beginPath(); c.arc(ex, ey, er, 0, TAU); c.fill();
+    /* ★ WAVE 51 — NO VISIBLE SCLERA. This was a near-white `#f2efe6` disc at the
+       FULL eye radius with the iris drawn at 0.80 of it, so every mammal in the
+       catalogue wore a pale ring all the way round its eye. A visible white
+       sclera is a HUMAN trait: on a wolf, a cat, a bear or a horse seen in
+       profile the aperture is essentially all iris, and the pale ring is most of
+       why these faces read as toys. Nine family batches independently reported
+       it as "a big circular eye with a pale sclera ring".
+       It is also D-ART-141 exactly — on a dark animal the only light element
+       should be STRUCTURAL, and this one is not. The specular glint below is
+       the light the eye is actually entitled to. */
     /* ★ WAVE 13 — THE IRIS AND THE PUPIL. Every mammal in the catalogue had the
        same round black dot on the same white disc. A pupil is one of the
        strongest tells in nature — a cat's vertical slit, a goat's or a horse's
        HORIZONTAL BAR, which is the most recognisable eye any grazing animal has
        and was simply not drawn. */
     c.fillStyle = spec.iris ?? FAM0.iris;
-    c.beginPath(); c.arc(ex, ey, er * 0.80, 0, TAU); c.fill();
+    c.beginPath(); c.arc(ex, ey, er, 0, TAU); c.fill();
     const pup = spec.pupil ?? FAM0.pupil;
     c.fillStyle = '#0b0d12';
     if (pup === 'slit') {
