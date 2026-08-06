@@ -1,5 +1,147 @@
 # ★ COLD-START HANDOFF — read this first
 
+# ★★★ START HERE — END OF 2026-08-04, HEAD `6190bb6`, WAVE 51 LANDED
+
+⚠ **Repo root is `C:\Projects\Celestial-Frontier`, not `C:\Projects`.** Tools run from `port/v2`.
+Everything below the 2026-08-03 banner is HISTORY — accurate, superseded on every number.
+
+## ★★★★ THE HEADLINE: THE PONY WAS ONE HARD-CODED LINE, AND IT IS FIXED
+
+Twelve canids and thirteen felids read as one pony. Two audits, 431 per-asset verdicts and a
+tint render had all hunted it in the **limb** — the part the body occludes, where every fix is
+invisible (D-ART-149). It was never there. It was:
+
+```
+headX = shoulderX + neckLen*0.55, headY = shoulderY - neckLen*0.86
+```
+
+**a fixed 57° up-and-forward neck for every mammal in the catalogue** — a browsing ungulate's
+carriage worn by every cat, dog and bear. Nothing occludes it; it is the first thing anyone
+reads. It is now `carry` on the family body plan (plus a per-species override), expressed as a
+swing of the same-length vector so `carry: 1` lands on the identical point and **every family
+left at 1 is byte-unchanged** (D-ART-14). **68 species moved; all 68 were rendered and looked
+at; the bless was verified against the git copy of the lock** — exactly 68 changed in `fp` and
+`sil`, none outside, none missed. See **D-ART-153**.
+
+⚠ The first values were too aggressive — the D-ART-141 shape again, right about the defect and
+wrong about the remedy. At carry ≈ 0.02 the neck leaves the silhouette entirely and a
+long-bodied mammal becomes a featureless tube: artlock returned **7 newly confusable pairs**
+(Mole ≈ Mudminnow, Stoat ≈ River Otter, Coati ≈ Civet). Floor raised to 0.22–0.32, and
+`procyonid`/`burrower` — never part of the pony complaint — returned to 1. Result: **0 newly
+confusable, net 884 → 882.** The gate found this; no amount of looking at cats would have.
+
+## ★★★ WHAT IS STILL BROKEN, AND THE ONE THING THAT BLOCKS IT — D-ART-152
+
+**The bodies are still one barrel.** A haunch and a shoulder lobe were added to `ventral()`,
+rendered, and changed almost nothing — then reverted **byte-identically**, which is what makes
+this a measurement and not a guess. The reason is structural and is the most useful thing this
+wave produced: `ventral`/`dorsal` are **not an outline**. They feed `RAD = (ventral−dorsal)/2`
+and an AXIS at their midpoint, and `Tube` sweeps **one scalar radius** — a circular
+cross-section. Every unit the belly is pushed down raises the back by half and grows the radius
+by half. **An asymmetric mass is inexpressible in this parameterisation.**
+
+★ **So the haunch is a TORSO-ENGINE item, not a table item: `Tube` needs a radius that varies
+with phi as well as u. Do NOT retry it by tuning coefficients in `quadrupedoverrides.ts`.**
+Same shape as D-ART-149, where the knee was lowered, rendered and reverted because occlusion
+and not joint height was binding.
+
+## ★★★ THE SWEEP (gold pass 3) — IN FLIGHT, AND THE RULER MOVED AGAIN
+
+The chain: `tools/familycards.mjs` → 197 batches **BY FAMILY** → one agent per batch (reads
+every PNG and looks) → adversarial verify of every FAIL → `tools/goldassemble.mjs` →
+`tools/goldcompare.mjs`. **`goldassemble.mjs` is new this session.** It reports its own join
+failures, missing batches and duplicate species rather than defaulting them to a band — a
+missing judgement is not a PASS, and that is exactly the state that looked like success when
+the code pass's join silently dropped everything.
+
+⚠ **The run died twice.** First on session/weekly limits (521 of 809 agents errored). Then on
+resume, because a resume must re-send `args` verbatim and a 5KB array truncated mid-paste took
+the whole run down with an unterminated-string parse error. **The batch list is now EMBEDDED in
+the workflow script, so a resume needs no args at all:**
+
+```
+Workflow({scriptPath: <the goldpass3 script>, resumeFromRunId: 'wf_0e82f26d-092'})
+```
+
+Completed judges replay from cache for free. Partial results survive on disk in
+`apps/game/smoke/goldpass3/{judge,verify}/`; re-run `node tools/goldassemble.mjs` at any time.
+
+★★ **DO NOT QUOTE A DELTA AGAINST 431 — D-ART-150 FIRED AGAIN, HARDER.** At 1,182 of 1,250
+judged the raw count is **616 FAIL / 505 POLISH / 61 PASS**, and it is **not comparable**.
+Restricted to the same species judged in both passes, the sets nobody touched all got worse by
+about the same amount:
+
+| set | gp2 FAIL% | gp3 FAIL% | delta |
+|---|---|---|---|
+| flora | 52.2 | 61.1 | **+8.8** |
+| fungi | 38.5 | 50.0 | **+11.5** |
+| microbe | 55.0 | 65.0 | **+10.0** |
+| procedural | 15.4 | 28.9 | **+13.5** |
+| fauna | 32.1 | 55.6 | +23.4 |
+
+**The ruler moved ~+10 points.** And fauna's extra ~+13 is *also* not a regression: this pass
+batched BY FAMILY precisely to make chassis defects visible, and that effect lands almost
+entirely on fauna. **The two passes differ in TWO ways at once — harshness AND batching — so
+neither direction can be read as progress or regression.** What IS trustworthy: the per-asset
+prose, the chassis verdicts, and the verification.
+
+## ★★★ THE FINDING THE FAMILY BATCHING BOUGHT — IT IS CATALOGUE-WIDE
+
+**137 of 150 judged families reported ONE SHARED CHASSIS**, and most of the 13 that escaped say
+the same thing at smaller scale — "five chassis each stamped twice with only the hue changed".
+**This is not a mammal problem.** Flora is about *four templates* (a stalkless cabbage
+disc-pile, a rigid pinnate ladder on one dead-straight stem, a vase of splayed twigs, a skewer
+stack); procedural fungi read as "a shaded ball with things stuck on it"; procedural microbes
+as "a placeholder icon sheet of sphere, chain, rod and outline oval". **D-ART-147 was right and
+the payoff is much bigger than the canids** — alphabetical batching could not see any of it.
+
+★ **The verification stage is sound, and was itself checked.** 146 verified, only 2 overturned
+(Fennec Fox, Rhinoceros — both refuters decoded pixels and measured crops). A 1.4% overturn
+rate looked like deference, so per D-ART-140 one upheld FAIL was opened and looked at by hand:
+Cattail's brown spike really is a thread, not the fat velvet sausage that IS the species. The
+FAILs are real.
+
+## HOW TO RUN THE GATES
+
+```
+npx vitest run · npx tsc --noEmit -p apps/game · node tools/speccheck.mjs
+node tools/tokencheck.mjs · node tools/overridecheck.mjs
+npm run artbattery -- --touching=<classes>      # 6 stages, artlock is stage 6
+```
+
+⚠ Declare the classes that **MOVED**, not the file you edited. ⚠ A bless claims **a person
+looked** — prefer `--bless="Name,Name"` and **verify what it wrote against the git copy of the
+lock, not the tool's own summary** (D-ART-146).
+⚠ `speciesstrip.mjs` writes **relative to `apps/game/smoke/`** — pass `chassis/x.png`, never an
+absolute path. Naming a species that does not exist draws an empty red box and looks exactly
+like a broken render: **"Red Deer" and "Dhole" are NOT catalogue species** (it is "Deer", and
+there is no dhole). Check the export directory before reporting a blank tile as a bug.
+
+## OPEN, IN ORDER
+
+1. **The torso engine — a phi-varying radius in `Tube`** (D-ART-152). This is the gate on the
+   haunch, the shoulder, and "where the limb leaves the silhouette" for ~140 mammals at once.
+   It is the biggest remaining lever in the catalogue and it is now diagnosed, not guessed.
+2. **Finish the sweep**, then `goldassemble` → `goldcompare --md=reference/GOLD_PASS_3.md`.
+   Report the control table above alongside any headline number, always.
+3. **The shared growth-form templates in FLORA.** The family sweep says four templates cover
+   most of it — which makes flora's 170+ FAILs **one painter job, not 170 table rows.** Flora
+   is the largest bucket and no plan has ever scoped it.
+4. **The 88 both-FAIL assets** (`reference/AUDIT_JOIN_2026-08-03.md`) — certain work, no
+   adjudication needed.
+5. **Broken procedural renders** — `fauna-h1-s3` / `h1-s5` are headless fish torsos,
+   `fauna-h0-s15` is cornered with a stranded fragment. **A bug, not a judgement.** Diagnosed
+   as the FIT/framing pass, not the painter; it is *not* in `packages/art/src`.
+6. **The `[SHAPE]` backlog — 97 pairs under 2.0.** Ice Algae ≈ Snow Algae **0.00**, Sea Lettuce
+   ≈ Green Algae **0.12**, Duck ≈ Eider Duck 0.44, Eel ≈ Dragonfish 0.50.
+7. `familycards.mjs` leaked one verdict as a family key — its `NOT_A_FAMILY` regex misses
+   `POLISH`, so Lion's Mane got its own one-asset "POLISH" family. One word in a regex.
+
+---
+
+# ⚠⚠ EVERYTHING BELOW THIS LINE IS HISTORY (2026-08-03 and earlier)
+
+
 # ★★★ START HERE — END OF 2026-08-03 (session 2), HEAD `6f72c70`, WAVES 48–50 LANDED
 
 ⚠ **Repo root is `C:\Projects\Celestial-Frontier`, not `C:\Projects`.** Every path is relative
