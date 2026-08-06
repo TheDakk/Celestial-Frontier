@@ -536,6 +536,25 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     + bodyH * 0.26 * gauss(u, 0.00, 0.15)
     + bodyH * 0.30 * gauss(u, 1.00, 0.14);
   const RAD = (u: number): number => Math.max(bodyH * 0.05, ((ventral(u) - dorsal(u)) / 2) * rjit);
+  /* ★ WAVE 52 — THE THIGH AND THE UPPER ARM, AT LAST ON THE VENTRAL SIDE ONLY.
+     D-ART-152 recorded why this could not be done before: these terms were
+     tried in `ventral()`, where they feed RAD and the axis midpoint, so half
+     of every downward push came straight back up as a raised topline and the
+     rear just got rounder. `Tube` now carries a separate ventral profile
+     (torso.ts, wave 52), so mass added here goes DOWN and nowhere else — the
+     back stays exactly where the species' own back profile put it.
+     This is what "where does the limb leave the silhouette" was waiting for:
+     the leg no longer drops out of a flat line, it emerges from the bottom of
+     a mass that is part of the torso outline, which is what a shoulder and a
+     haunch actually are. Centred on `legUs` — 0.175 and 0.84 — so the bulges
+     sit exactly over the limbs they belong to rather than near them.
+     Both are driven by numbers the species already has (`rumpF`, `muscleF`),
+     so no row gains a per-species value and nothing is rolled to 140 animals
+     as a band (D-ART-83). */
+  const RADV = (u: number): number => RAD(u) + bodyH * (
+    0.20 * rumpF * gauss(u, 0.175, 0.115)      /* the thigh, standing proud of the flank */
+    + 0.12 * muscleF * gauss(u, 0.840, 0.095)  /* the upper arm, behind the elbow */
+  );
   /* the axis is INSET by the end caps, so the animal's overall length is still
      the 2·bodyW its spec asked for — a dome on the rump adds body, not frame */
   const axA = cx - bodyW + RAD(0) * 0.80, axB = cx + bodyW - RAD(1) * 0.80;
@@ -574,7 +593,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     const q = spin(...AX0(u));
     return [q[0], q[1] + poseDY];
   };
-  const body = new Tube({ P: AX, R: RAD });
+  const body = new Tube({ P: AX, R: RAD, Rv: RADV });
 
   if (hanging) {
     /* ★ WAVE 40 — THE BRANCH. A hanging animal needs something to hang FROM,

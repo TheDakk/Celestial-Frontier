@@ -1211,3 +1211,30 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   pairs (Mole ≈ Mudminnow, Stoat ≈ River Otter, Coati ≈ Civet)**. Raising the floor to 0.22–0.32
   and returning `procyonid`/`burrower` (never part of the pony complaint) to 1 gave **0 newly
   confusable and a net 884 → 882.** The gate found this; no amount of looking at cats would have.
+
+- ★ **D-ART-154 — THE FIX FOR D-ART-152 WAS AN ENGINE CHANGE, AND IT COST NOTHING TO PROVE
+  (wave 52).** D-ART-152 recorded that a haunch is inexpressible in `ventral()` because `Tube`
+  sweeps ONE SCALAR RADIUS — a circular cross-section — so every unit the belly is pushed down
+  raises the back by half. The fix is `TubeSpec.Rv`, an optional **ventral** half-thickness;
+  the cross-section becomes two profiles blended around the girth, and `envelope` rides the
+  profile *and taper* belonging to its own side.
+  ★ **What makes this safe is the reduction.** Every generalised expression collapses to the
+  old one when `Rv` is omitted: `r = (rd+rv)/2` is `(x+x)/2`, which IEEE754 returns as exactly
+  `x`; the blend weight `w` multiplies `(rd−rv) = 0`; `kd = kv = k`. The taper expression was
+  deliberately left un-simplified so the float rounds identically, and `kk*kk` replaced `kk**2`
+  because exponentiation is not guaranteed to round like a multiply. **So the refactor was
+  landed and rendered with nothing supplying `Rv`, and artlock reported ZERO drift on all
+  1,245 stable assets.** A geometry change to the solid every organism is built from, proven
+  inert before it was given a single thing to do. That is the negative control this project
+  keeps paying for the absence of — build the capability, prove it changes nothing, *then*
+  use it.
+  ⚠ And the payoff immediately tripped the other gate honestly: the haunch put **Wildcat ≈ Cat
+  at 1.41**. The answer was NOT a smaller haunch. Their reference rows already said how they
+  differ — "sturdy build heavier than a house cat", "broad head", "thick blunt-ended tail with
+  dark rings and **a black tip**" — and the spec row carried no `tailTip`, no `jaw`, and a
+  leg/depth ratio (1.09) barely distinct from Cat's (1.07). Deriving each from its own row
+  (D-ART-83) put it back to **0 newly confusable**. A gate that fires on a good change is
+  usually naming the NEXT piece of work, not rejecting the change.
+  ★ `artlock --which` now names the drifted assets inside a DECLARED class too. It only ever
+  printed them for undeclared ones, so the only way to know what to look at before blessing was
+  to guess from the spec tables — and a bless is a claim that a person looked (D-ART-146).
