@@ -300,6 +300,11 @@
   "shape": 1.556
  },
  {
+  "a": "Mink",
+  "b": "Marten",
+  "shape": 1.619
+ },
+ {
   "a": "Marmot",
   "b": "Water Vole",
   "shape": 1.619
@@ -385,11 +390,6 @@
   "shape": 1.743
  },
  {
-  "a": "Coati",
-  "b": "Sand Cat",
-  "shape": 1.805
- },
- {
   "a": "Gar",
   "b": "Eel",
   "shape": 1.805
@@ -415,11 +415,6 @@
   "shape": 1.868
  },
  {
-  "a": "Mink",
-  "b": "Marten",
-  "shape": 1.868
- },
- {
   "a": "Bee",
   "b": "Honeybee",
   "shape": 1.868
@@ -438,6 +433,11 @@
   "a": "Gull",
   "b": "Skua",
   "shape": 1.868
+ },
+ {
+  "a": "Civet",
+  "b": "Sand Cat",
+  "shape": 1.93
  },
  {
   "a": "Char",
@@ -463,6 +463,11 @@
   "a": "Coralline Algae",
   "b": "Sugar Kelp",
   "shape": 1.93
+ },
+ {
+  "a": "Fox",
+  "b": "Red Fox",
+  "shape": 1.992
  },
  {
   "a": "Skua",
