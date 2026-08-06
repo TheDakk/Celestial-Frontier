@@ -1268,3 +1268,31 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   too, and nobody had read it that way. Now a ratio of `len`.
   ★ The blast radius proves the diagnosis: **zero Earth fish moved** and only 16 procedural
   assets did, because the floor only ever bound on the shallow procedural bodies.
+
+- ★ **D-ART-157 — A DISCOVERY INSTRUMENT IS NOT A MEASUREMENT INSTRUMENT; SCOPE A RE-CHECK TO
+  DRIFT (wave 57).** The full family sweep — 197 family batches judged, then a ~670-agent
+  adversarial verify pass — cost **~15M subagent tokens and 867 agents**, and it hit the session
+  or weekly limit on EVERY run (three deaths this session, one that errored all 196 launched
+  agents at once). It was the right instrument exactly ONCE: to find the shared-chassis defect
+  that alphabetical batching hid (D-ART-147). Re-running it to answer "did the last edits move
+  the needle" is paying a discovery price for a measurement, and it is why we kept running out
+  of budget.
+  ★ **The measurement is cheap because most of the catalogue did not move.** artlock's
+  fingerprint already says exactly which assets changed since the last judged baseline — for
+  free, no model — and **an asset whose pixels are byte-identical cannot have a different
+  verdict.** After waves 51–56, only **148 of 1,250** had moved, so 1,102 verdicts carry
+  forward untouched. Three levers, none of which spend a model token to decide scope:
+    1. **Scope to drift** (`reference/drift-since-baseline.json`, computed by diffing the lock).
+    2. **One contact sheet per family, not 14 image reads** (`tools/rejudgecards.mjs` → 32
+       strips). Images dominate the bill; a judge now reads 32 images, not ~2,758.
+    3. **Drop the standalone adversarial verify pass** for a progress delta — it doubled the
+       cost to overturn ~1.5% of verdicts. The judge self-checks in one pass. Keep the full
+       adversarial pass ONLY for a final certification.
+  `tools/rejudgemerge.mjs` folds the ~148 fresh verdicts into the carried baseline and prints
+  the delta. Net: **~15M tokens → a few hundred K, ~30–50x**, inside the limits.
+  ⚠ **And a process rule the expensive runs paid for: FREEZE THE ART DURING A JUDGE RUN.** The
+  gold-pass-3 baseline was smeared because judging and editing overlapped for hours — early
+  batches judged pre-wave-51 art, late batches judged post-wave-56 art, so no single asset's
+  verdict could be trusted as "before" or "after". A judge run must see one frozen render:
+  export once, judge once, do not touch a painter until it finishes. The cheap re-check makes
+  this trivial because a run is minutes, not hours.
