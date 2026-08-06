@@ -450,7 +450,9 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   /* Foraminiferan gets its chambered test */
   'microbe|Foraminiferan': microbeForam,
   /* Green Algae: MACRO in flora (a green sheet), MICRO in microbe (a cell) */
-  'flora|Green Algae': macroAlgaeSheet,
+  /* ★ wave 56 — a drifting HAIR TUFT, not a sheet: its row says 'soft hair-like
+     filaments in loose tufts, no stem'. Same painter, different form. */
+  'flora|Green Algae': (c, g, p) => macroAlgaeSheet(c, g, p, 'filament'),
   'microbe|Green Algae': microAlgaeCell,
   /* Snow / Ice Algae: a tinted bloom field in each kingdom it appears in */
   'flora|Snow Algae': (c, g, p) => algaeBloom(c, g, speciesHue(p, '#e05263')), 'microbe|Snow Algae': algaeBloom,
@@ -461,7 +463,10 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
      from the roster — which is also why overridecheck's suggestion reads
      "Ice Algae → did you mean Ice Algae?": the NAME resolves, the KINGDOM does
      not. */
-  'flora|Ice Algae': (c, g, p) => algaeBloom(c, g, speciesHue(p, '#a87c25')),
+  /* ★ wave 56 — 'ice': it grows on the UNDERSIDE of sea ice and trails
+     mucilage strands down into the water. Same painter, different substrate —
+     which is what took this pair off [SHAPE] 0.00. */
+  'flora|Ice Algae': (c, g, p) => algaeBloom(c, g, speciesHue(p, '#a87c25'), 'ice'),
   /* Reindeer Lichen: one canonical pale branching mat across flora + fungi */
   'flora|Reindeer Lichen': lichenMat, 'fungi|Reindeer Lichen': lichenMat,
   /* Sea Lettuce: a green macroalgal sheet, not a purple strap */
