@@ -64,7 +64,13 @@ if (fs.existsSync(CSV)) {
      through with the family "PASS". A grouping key that silently absorbs a
      verdict makes a batch of unrelated organisms that all happen to have passed,
      which is the exact opposite of what family batching is for. */
-  const NOT_A_FAMILY = /^(PASS|HOLD|FAIL|TRUE|FALSE|HIGH|LOW|MEDIUM|\d+|)$/i;
+  /* ⚠ POLISH was missing from this list, so one row's VERDICT became a family
+     and Lion's Mane got its own one-asset "POLISH" batch (2026-08-04). The
+     fallback chain is walking a union of five per-kingdom schemas, so any
+     status word that can appear in any of those columns has to be named here
+     — a grouping key that silently absorbs a verdict makes a batch of
+     unrelated organisms that merely share a grade. */
+  const NOT_A_FAMILY = /^(PASS|POLISH|HOLD|FAIL|TRUE|FALSE|HIGH|LOW|MEDIUM|N\/?A|NONE|UNKNOWN|\d+|)$/i;
   let dropped = 0;
   for (const r of raw.slice(1)) {
     if (r.length < 5) continue;
