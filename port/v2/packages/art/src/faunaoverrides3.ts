@@ -747,8 +747,16 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
        gape rather than suppressed, because a basking shark does have an eye. */
   if (!spec.dome && spec.snout !== 'hammer') {
     const gapeLift = spec.gape ? depth * 0.30 : 0;
+    /* ⚠ WAVE 55 — THE FLOOR WAS 4 ABSOLUTE PIXELS, AND THE FIT PASS ERASES
+       ABSOLUTE SIZE (D-ART-34). Everything here is drawn on the oversized INK
+       layer and then scaled down by `fitInk`, so a floor expressed in raw px is
+       a floor on the wrong canvas: a long shallow fish gets `depth*0.18` under
+       four px, is clamped to exactly 4, and then shrinks with everything else
+       until the eye is a pixel or two and the head reads as blank. A minimum
+       has to be a RATIO of the subject to survive the fit, which is the same
+       law the painters already follow for every other dimension. */
     eye(c, nose - depth * (spec.profile === 'eel' ? 0.9 : 0.70), cy - depth * 0.34 - gapeLift,
-      Math.max(4, depth * (spec.profile === 'globe' ? 0.22 : spec.bighead ? 0.30 : 0.18)));
+      Math.max(len * 0.050, depth * (spec.profile === 'globe' ? 0.22 : spec.bighead ? 0.30 : 0.18)));
   }
 }
 

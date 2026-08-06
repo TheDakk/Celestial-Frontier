@@ -39,7 +39,19 @@ async function strip(names: string[]): Promise<void> {
     const pm = /^proc:(\w+):h(\d+):s(\d+)$/.exec(n);
     if (pm) {
       const [, kingdom, heat, s] = pm;
-      const seed = (hashInt(0xF00D, Number(s), 7) >>> 0);
+      /* ⚠ D-ART-155 — THIS DERIVED A DIFFERENT SEED THAN THE EXPORT, so the
+         only instrument a human can point at a procedural asset rendered a
+         DIFFERENT CREATURE than the file that was judged. The export uses
+         `hashInt(0xF00D, ki*100 + heat*25 + s, 7)`; this used `hashInt(0xF00D,
+         s, 7)`, dropping kingdom and heat from the hash entirely — so the two
+         agree only when ki = 0 AND heat = 0, i.e. fauna/h0, and disagree for
+         every one of the other ~230 procedural assets.
+         It is the D-ART-147/join family again: two places computing the same
+         identifier by different rules, silently, with both looking correct.
+         Derived from the SAME expression as the export now, keyed off the same
+         kingdom ordering. */
+      const ki = Object.keys(_EARTH_NAMES as Record<string, unknown>).indexOf(kingdom!);
+      const seed = (hashInt(0xF00D, ki * 100 + Number(heat) * 25 + Number(s), 7) >>> 0);
       const g = makeGenome(seed, kingdom!, Number(heat)) as Record<string, unknown>;
       try { url = speciesPortrait(g); } catch { url = null; }
       cells.push({ name: `${kingdom}·h${heat}·s${s}`, url });
