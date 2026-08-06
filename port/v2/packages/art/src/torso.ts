@@ -50,16 +50,35 @@ const LX = -0.42, LY = -0.52, LZ = 0.745;
 export interface TubeSpec {
   /** axis point at u */
   P: (u: number) => [number, number];
-  /** cross-section radius at u */
+  /** cross-section radius at u — DORSAL half-thickness, and ventral too
+      unless `Rv` is given */
   R: (u: number) => number;
+  /** ★ WAVE 52 — THE VENTRAL HALF-THICKNESS, AND WHY IT HAD TO EXIST.
+      Until now a Tube swept ONE SCALAR RADIUS, so every cross-section was a
+      CIRCLE and the solid was necessarily symmetric about its own axis. That
+      is why no amount of authoring in `ventral()` could put a haunch on a
+      mammal (D-ART-152): the quadruped painter derives `RAD` from the gap
+      between its two outlines and the AXIS from their midpoint, so pushing
+      the belly down by one unit raised the back by half a unit and merely
+      made the rear rounder. A thigh, a shoulder, a brisket, a keeled fish
+      belly and a hanging udder are all ASYMMETRIC MASSES, and not one of them
+      was expressible.
+      Give a Tube a second profile and the cross-section becomes two half
+      thicknesses blended around the girth, so the belly can carry mass the
+      back does not. ⚠ Omit it and every value below reduces to the old
+      arithmetic EXACTLY — that is deliberate, and it is what makes "no Rv
+      anywhere ⇒ zero drift on 1,250 assets" a real negative control. */
+  Rv?: (u: number) => number;
 }
 
 export interface Frame {
   x: number; y: number;          /** axis point */
   tx: number; ty: number;        /** unit tangent, pointing forward */
   nx: number; ny: number;        /** unit normal, pointing dorsal (up) */
-  r: number;                     /** radius here */
-  k: number;                     /** dR/ds — how fast the body is tapering */
+  r: number;                     /** MEAN radius — what mark sizing and depth use */
+  k: number;                     /** mean dR/ds — how fast the body is tapering */
+  rd: number; rv: number;        /** dorsal / ventral half-thickness */
+  kd: number; kv: number;        /** their taper rates, which differ */
 }
 
 export class Tube {
@@ -71,13 +90,39 @@ export class Tube {
     let dx = b[0] - a[0], dy = b[1] - a[1];
     const sp = Math.hypot(dx, dy) || 1e-6;
     dx /= sp; dy /= sp;
+    const Rv = this.spec.Rv ?? this.spec.R;
     const ra = this.spec.R(Math.max(0, u - h)), rb = this.spec.R(Math.min(1, u + h));
+    const va = Rv(Math.max(0, u - h)), vb = Rv(Math.min(1, u + h));
     const du = Math.min(1, u + h) - Math.max(0, u - h);
-    /* dR/ds — the taper rate in ARC LENGTH, which is what the envelope needs */
+    /* dR/ds — the taper rate in ARC LENGTH, which is what the envelope needs.
+       ⚠ The expression is left in this exact shape, rather than simplified to
+       (rb-ra)/sp, so that a symmetric tube reproduces the old float bit for
+       bit. The negative control depends on it. */
     const dRds = ((rb - ra) / Math.max(1e-6, du)) / (sp / Math.max(1e-6, du));
+    const dVds = ((vb - va) / Math.max(1e-6, du)) / (sp / Math.max(1e-6, du));
+    const cl = (v: number): number => Math.max(-0.985, Math.min(0.985, v));
+    const kd = cl(dRds), kv = cl(dVds);
+    const rd = this.spec.R(u), rvv = Rv(u);
     const p = this.spec.P(u);
-    return { x: p[0], y: p[1], tx: dx, ty: dy, nx: dy, ny: -dx, r: this.spec.R(u),
-      k: Math.max(-0.985, Math.min(0.985, dRds)) };
+    /* mean radius and mean taper. With no Rv these are (x+x)/2, which IEEE754
+       returns as exactly x — so `r` and `k` are unchanged for every existing
+       caller, including all of skin.ts. */
+    return { x: p[0], y: p[1], tx: dx, ty: dy, nx: dy, ny: -dx,
+      r: (rd + rvv) / 2, k: (kd + kv) / 2, rd, rv: rvv, kd, kv };
+  }
+
+  /** the half-thickness at phi. `w` swings 0 at the belly → 1 at the spine,
+      smoothly, so there is no crease along the flank where the two profiles
+      meet — a hard switch at phi = 0 would put a lighting seam down the
+      middle of every animal. */
+  private rAt(f: Frame, phi: number): number {
+    const w = (Math.sin(phi) + 1) / 2;
+    return f.rv + (f.rd - f.rv) * w;
+  }
+
+  private kAt(f: Frame, phi: number): number {
+    const w = (Math.sin(phi) + 1) / 2;
+    return f.kv + (f.kd - f.kv) * w;
   }
 
   /** THE ENVELOPE. Where the swept circle actually touches the silhouette.
@@ -86,33 +131,41 @@ export class Tube {
       as a solid instead of a ribbon. side +1 dorsal, -1 ventral. */
   envelope(u: number, side: 1 | -1): [number, number] {
     const f = this.frame(u);
-    const s = Math.sqrt(Math.max(0, 1 - f.k * f.k));
-    const ux = -f.k * f.tx + side * s * f.nx;
-    const uy = -f.k * f.ty + side * s * f.ny;
-    return [f.x + ux * f.r, f.y + uy * f.r];
+    /* ★ each side rides its OWN profile and its own taper — that is the whole
+       point of the second radius. The dorsal silhouette can be flat while the
+       ventral one bulges into a thigh. */
+    const r = side > 0 ? f.rd : f.rv;
+    const k = side > 0 ? f.kd : f.kv;
+    const s = Math.sqrt(Math.max(0, 1 - k * k));
+    const ux = -k * f.tx + side * s * f.nx;
+    const uy = -k * f.ty + side * s * f.ny;
+    return [f.x + ux * r, f.y + uy * r];
   }
 
   /** a point on the visible surface */
   pt(u: number, phi: number): [number, number] {
     const f = this.frame(u);
-    return [f.x + f.nx * f.r * Math.sin(phi), f.y + f.ny * f.r * Math.sin(phi)];
+    const rr = this.rAt(f, phi);
+    return [f.x + f.nx * rr * Math.sin(phi), f.y + f.ny * rr * Math.sin(phi)];
   }
 
   /** how much the surface at (u,phi) faces the viewer: 1 dead-on, 0 at the rim.
       This one number drives BOTH foreshortening and how much a mark shows. */
   facing(u: number, phi: number): number {
     const f = this.frame(u);
-    return Math.sqrt(Math.max(0, 1 - f.k * f.k)) * Math.max(0, Math.cos(phi));
+    const k = this.kAt(f, phi);
+    return Math.sqrt(Math.max(0, 1 - k * k)) * Math.max(0, Math.cos(phi));
   }
 
   /** lambert at (u,phi) against the engine light — 0 full shadow, 1 full light */
   light(u: number, phi: number): number {
     const f = this.frame(u);
-    const s = Math.sqrt(Math.max(0, 1 - f.k * f.k));
+    const k = this.kAt(f, phi);
+    const s = Math.sqrt(Math.max(0, 1 - k * k));
     /* the surface normal in 3D: an axial part from the taper, and the
        cross-section part swinging from ventral through the viewer to dorsal */
-    const nx = -f.k * f.tx + s * f.nx * Math.sin(phi);
-    const ny = -f.k * f.ty + s * f.ny * Math.sin(phi);
+    const nx = -k * f.tx + s * f.nx * Math.sin(phi);
+    const ny = -k * f.ty + s * f.ny * Math.sin(phi);
     const nz = s * Math.cos(phi);
     return Math.max(0, Math.min(1, (nx * LX + ny * LY + nz * LZ) * 0.5 + 0.5));
   }
@@ -134,8 +187,19 @@ export class Tube {
   private cap(u: number, from: 1 | -1, to: 1 | -1): Array<[number, number]> {
     const f = this.frame(u);
     const ang = (side: 1 | -1): number => {
-      const s = Math.sqrt(Math.max(0, 1 - f.k * f.k));
-      return Math.atan2(-f.k * f.ty + side * s * f.ny, -f.k * f.tx + side * s * f.nx);
+      const k = side > 0 ? f.kd : f.kv;
+      const s = Math.sqrt(Math.max(0, 1 - k * k));
+      return Math.atan2(-k * f.ty + side * s * f.ny, -k * f.tx + side * s * f.nx);
+    };
+    /* ★ the cap is no longer an arc of one circle. Walking from the dorsal
+       contact round to the ventral one, the radius has to slide between the
+       two profiles — otherwise an asymmetric body's rump would be a dome of
+       the wrong size joined to the flanks with a step. The blend is keyed on
+       how far the outgoing direction points dorsal, which is the same `w` the
+       surface uses, so the cap and the flank agree. */
+    const rAtAngle = (a: number): number => {
+      const dn = Math.cos(a) * f.nx + Math.sin(a) * f.ny;
+      return f.rv + (f.rd - f.rv) * ((dn + 1) / 2);
     };
     let a0 = ang(from), a1 = ang(to);
     /* walk the short way that goes AROUND the end (away from the body) */
@@ -152,7 +216,8 @@ export class Tube {
     const N = 14;
     for (let i = 1; i < N; i++) {
       const a = a0 + (d * i) / N;
-      out.push([f.x + Math.cos(a) * f.r, f.y + Math.sin(a) * f.r]);
+      const rr = rAtAngle(a);
+      out.push([f.x + Math.cos(a) * rr, f.y + Math.sin(a) * rr]);
     }
     return out;
   }
@@ -179,7 +244,10 @@ export class Tube {
   withMark(c: Ctx, u: number, phi: number, cb: (c: Ctx) => void): void {
     const f = this.frame(u);
     const [x, y] = this.pt(u, phi);
-    const axial = Math.sqrt(Math.max(0, 1 - f.k * f.k));
+    /* kk*kk, not kk**2 — exponentiation is not guaranteed to round identically
+       to a multiply, and the symmetric case has to stay bit-exact */
+    const kk = this.kAt(f, phi);
+    const axial = Math.sqrt(Math.max(0, 1 - kk * kk));
     const girth = Math.abs(Math.cos(phi));
     c.save();
     c.translate(x, y);
@@ -197,7 +265,10 @@ export class Tube {
     return Math.hypot(b[0] - a[0], b[1] - a[1]) / (Math.min(1, u + h) - Math.max(0, u - h));
   }
 
-  radius(u: number): number { return this.spec.R(u); }
+  /** the MEAN half-thickness — what skin.ts sizes marks against. Deliberately
+      the mean and not the dorsal value: a mark on a bulging haunch should
+      scale with the mass that is actually there. */
+  radius(u: number): number { return (this.spec.R(u) + (this.spec.Rv ?? this.spec.R)(u)) / 2; }
   axis(u: number): [number, number] { return this.spec.P(u); }
 }
 

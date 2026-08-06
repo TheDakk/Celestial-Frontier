@@ -329,6 +329,15 @@ if (!lockExists && !has('bless')) {
     const advisory = c === 'procedural';
     const flag = declared ? 'declared' : advisory ? 'advisory' : '★ UNDECLARED';
     console.log('   ' + String(list.length).padStart(4) + '  ' + c.padEnd(17) + flag);
+    /* ★ --which: name the drifted assets even in a DECLARED class. Without it
+       the only way to find out what actually moved was to guess from the spec
+       tables, and a bless is a claim that a person looked at each one — you
+       cannot look at a list you were never shown (D-ART-146). */
+    if (has('which') && (declared || advisory)) {
+      for (const [k, d] of list.sort((a, b) => b[1] - a[1])) {
+        console.log('          ' + d.toFixed(2).padStart(6) + '  ' + k);
+      }
+    }
     if (!declared && !advisory) {
       for (const [k, d] of list.sort((a, b) => b[1] - a[1]).slice(0, 8)) {
         console.log('          ' + d.toFixed(2).padStart(6) + '  ' + k);
