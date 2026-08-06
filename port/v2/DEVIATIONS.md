@@ -1238,3 +1238,33 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   ★ `artlock --which` now names the drifted assets inside a DECLARED class too. It only ever
   printed them for undeclared ones, so the only way to know what to look at before blessing was
   to guess from the spec tables — and a bless is a claim that a person looked (D-ART-146).
+
+- ★ **D-ART-155 — TWO PLACES BUILT THE SAME NAME FROM DIFFERENT RULES, SO EVERY HUMAN-FACING
+  LOOK AT A PROCEDURAL ASSET SHOWED THE WRONG CREATURE (wave 55).** `audit.ts` derives the
+  procedural genome twice. The EXPORT that writes `procedural/fauna-h1-s3.png` uses
+  `hashInt(0xF00D, ki*100 + heat*25 + s, 7)`. The `proc:<kingdom>:h<heat>:s<seed>` form — the
+  one `speciesstrip` accepts, i.e. **the only way a person can point an eyeball at a procedural
+  asset** — used `hashInt(0xF00D, s, 7)`, dropping kingdom and heat from the hash entirely.
+  The two agree **only when ki = 0 AND heat = 0** (fauna/h0) and disagree for the other ~230.
+  So `proc:fauna:h1:s3` rendered a red many-legged creature while the file everyone was judging
+  was a headless fish. Every procedural diagnosis made by looking is suspect, including this
+  handoff's own "it is the FIT/framing pass, not the painter".
+  ★ It is the join family again (D-ART-147): **two sites computing one identifier by different
+  rules, silently, both looking correct.** The rule generalises — *if a name is built in more
+  than one place, one of them is wrong; derive it once.*
+  ⚠ And the fix appeared to do nothing, twice, because **`speciesstrip` reused a stale `dist`**:
+  its build lock let a cached bundle serve a changed source. `rm -rf apps/game/dist` before
+  believing a render that contradicts a source change.
+  ★ What the corrected render actually shows: `fauna-h1-s3` is **centred and fills the frame**,
+  so it is NOT a clip and NOT a framing failure. The fit pass did its job. The head is simply
+  absent from the drawing. The remaining defect is in the painter and is still open.
+
+- ★ **D-ART-156 — A MINIMUM EXPRESSED IN PIXELS IS ERASED BY THE FIT PASS (wave 55).**
+  `fishBody`'s eye radius was `Math.max(4, depth * 0.18)`. Everything is drawn on the oversized
+  INK layer and then scaled down by `fitInk`, so a floor in raw px is a floor **on the wrong
+  canvas**: a long shallow fish clamps to exactly 4, then shrinks with everything else until the
+  eye is a pixel and the head reads blank. D-ART-34 already said the fit pass erases absolute
+  size and every painter follows it for dimensions — but a `Math.max` FLOOR is an absolute size
+  too, and nobody had read it that way. Now a ratio of `len`.
+  ★ The blast radius proves the diagnosis: **zero Earth fish moved** and only 16 procedural
+  assets did, because the floor only ever bound on the shallow procedural bodies.
