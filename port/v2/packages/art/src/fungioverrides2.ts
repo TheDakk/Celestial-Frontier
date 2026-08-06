@@ -298,10 +298,39 @@ function greenBias(p: Pal, gr: number, gg: number, gb: number, k = 0.62): Pal {
     dark: `rgb(${cr * 0.42 | 0},${cg * 0.42 | 0},${cb * 0.42 | 0})`,
   };
 }
-export function macroAlgaeSheet(c: Ctx, g: G, pIn: Pal): void {
+/** ★ WAVE 56 — 'filament', because Sea Lettuce and Green Algae were the SAME
+    CALL. Both routed to this painter with no argument at all — same function,
+    same seed — so [SHAPE] had them at 0.12, second on the backlog behind the
+    ice/snow pair. Their reference rows are not close: sea lettuce is
+    "paper-thin translucent membranous sheets with wildly ruffled crinkled
+    edges", which is what this painter draws and draws well; green algae is
+    "soft hair-like filaments or tubular strands in loose tufts" with "no
+    stem" — a drifting hair tuft, which this painter had no way to say. */
+export function macroAlgaeSheet(c: Ctx, g: G, pIn: Pal, form: 'sheet' | 'filament' = 'sheet'): void {
   const p = greenBias(pIn, 58, 132, 66);
-  const r = seeded(g, 0x5EA1);
+  const r = seeded(g, form === 'filament' ? 0xF11A : 0x5EA1);
   const cx = S * 0.5, base = S * 0.82;
+  if (form === 'filament') {
+    /* a loose tuft: many fine strands from a small holdfast, splaying and
+       curling as they rise. No sheet, no midrib, no stem. */
+    shadow(c, cx, base + 4, S * 0.08);
+    c.fillStyle = '#4a6a3a';
+    c.beginPath(); c.ellipse(cx, base, S * 0.022, S * 0.011, 0, 0, TAU); c.fill();
+    c.lineCap = 'round';
+    for (let i = 0; i < 130; i++) {
+      const lean = (r() - 0.5) * 2;
+      const L = S * (0.20 + r() ** 0.7 * 0.42);
+      const tipX = cx + lean * S * 0.26 * (0.4 + r() * 0.6);
+      const tipY = base - L;
+      const lit = 0.55 + r() * 0.45;
+      c.strokeStyle = `rgba(${Math.min(255, p.cr * lit + 30 | 0)},${Math.min(255, p.cg * lit + 46 | 0)},${Math.min(255, p.cb * lit + 24 | 0)},${0.38 + r() * 0.5})`;
+      c.lineWidth = 1 + r() * 2.1;
+      c.beginPath(); c.moveTo(cx + (r() - 0.5) * S * 0.03, base);
+      c.quadraticCurveTo(cx + lean * S * 0.10, base - L * 0.58, tipX, tipY);
+      c.stroke();
+    }
+    return;
+  }
   shadow(c, cx, base + 4, S * 0.14);
   c.fillStyle = '#4a6a3a';   /* the holdfast */
   c.beginPath(); c.ellipse(cx, base, S * 0.03, S * 0.015, 0, 0, TAU); c.fill();
@@ -350,10 +379,60 @@ export function microAlgaeCell(c: Ctx, g: G, pIn: Pal): void {
 }
 
 /* ── SNOW/ICE ALGAE bloom: a tinted field speckled with cells on a pale ground ── */
-export function algaeBloom(c: Ctx, g: G, p: Pal): void {
-  const r = seeded(g, 0x5A0E);
-  const cx = S * 0.5, cy = S * 0.54;
-  /* the snow/ice ground */
+/** ★ WAVE 56 — THE SUBSTRATE, because Ice Algae and Snow Algae were ONE
+    PICTURE. Both routed here and the only thing that differed was the hue, so
+    artlock's colour-blind [SHAPE] check put them at distance **0.00** — the
+    top row of the backlog and the most literal duplicate in the catalogue.
+    They are not the same organism and their reference rows never said they
+    were. Snow algae is "pink-red staining lying in patches across snow" with
+    "a sharp boundary where footprints or melt channels cut the colour". Ice
+    algae is "brown-gold staining and drips on the UNDERSIDE of ice" with
+    "stringy mucilage strands trailing down into the water" — it hangs from a
+    ceiling, and nothing in this painter could hang.
+    The rng salt differs too: with one seed the 220 bloom specks landed in
+    identical positions, so even a real structural change would have left the
+    stain itself a perfect match. */
+export function algaeBloom(c: Ctx, g: G, p: Pal, mode: 'snow' | 'ice' = 'snow'): void {
+  const r = seeded(g, mode === 'ice' ? 0x1CE0 : 0x5A0E);
+  const cx = S * 0.5, cy = mode === 'ice' ? S * 0.40 : S * 0.54;
+  if (mode === 'ice') {
+    /* THE ICE IS A CEILING. A slab across the top, its underside stained, with
+       mucilage strands hanging into open water below — the whole read is
+       "this is clinging beneath something", which no amount of recolouring a
+       snow field could say. */
+    const ig = c.createLinearGradient(0, S * 0.06, 0, cy);
+    ig.addColorStop(0, 'rgba(226,238,250,0.95)'); ig.addColorStop(0.72, 'rgba(188,208,228,0.80)');
+    ig.addColorStop(1, 'rgba(150,176,200,0.55)');
+    c.fillStyle = ig; c.beginPath(); c.rect(0, S * 0.04, S, cy - S * 0.04); c.fill();
+    /* the brine channels cutting up into the slab */
+    c.strokeStyle = 'rgba(120,150,178,0.45)'; c.lineWidth = 2;
+    for (let i = 0; i < 7; i++) {
+      const x = S * (0.08 + r() * 0.84);
+      c.beginPath(); c.moveTo(x, cy); c.lineTo(x + (r() - 0.5) * S * 0.05, cy - S * (0.10 + r() * 0.18)); c.stroke();
+    }
+    /* the stained underside, then the strands trailing DOWN out of it */
+    for (let i = 0; i < 200; i++) {
+      const x = cx + (r() - 0.5) * S * 0.84, y = cy - r() ** 1.6 * S * 0.11;
+      c.fillStyle = `rgba(${p.cr},${p.cg},${p.cb},${0.12 + r() * 0.28})`;
+      c.beginPath(); c.arc(x, y, 2 + r() * 5, 0, TAU); c.fill();
+    }
+    c.lineCap = 'round';
+    for (let i = 0; i < 26; i++) {
+      const x = S * (0.07 + r() * 0.86), L = S * (0.06 + r() ** 1.5 * 0.34);
+      c.strokeStyle = `rgba(${p.cr},${p.cg},${p.cb},${0.30 + r() * 0.40})`;
+      c.lineWidth = 1.2 + r() * 2.6;
+      c.beginPath(); c.moveTo(x, cy - S * 0.01);
+      c.quadraticCurveTo(x + (r() - 0.5) * S * 0.06, cy + L * 0.55, x + (r() - 0.5) * S * 0.09, cy + L);
+      c.stroke();
+      /* the drip at the tip — the reference row asks for drips by name */
+      if (r() > 0.55) {
+        c.fillStyle = `rgba(${p.cr},${p.cg},${p.cb},0.55)`;
+        c.beginPath(); c.arc(x + (r() - 0.5) * S * 0.09, cy + L, 1.6 + r() * 2.4, 0, TAU); c.fill();
+      }
+    }
+    return;
+  }
+  /* the snow ground */
   const gg = c.createRadialGradient(cx, cy - S * 0.05, 8, cx, cy, S * 0.32);
   gg.addColorStop(0, 'rgba(230,238,248,0.9)'); gg.addColorStop(0.7, 'rgba(200,214,232,0.6)'); gg.addColorStop(1, 'rgba(0,0,0,0)');
   c.fillStyle = gg; c.beginPath(); c.ellipse(cx, cy, S * 0.30, S * 0.20, 0, 0, TAU); c.fill();
@@ -365,6 +444,23 @@ export function algaeBloom(c: Ctx, g: G, p: Pal): void {
     c.beginPath(); c.arc(x, y, 2 + r() * 4, 0, TAU); c.fill();
   }
   for (let i = 0; i < 40; i++) { const a = r() * TAU, d = r() ** 0.6 * S * 0.26; c.fillStyle = `rgba(${Math.min(255, p.cr * 1.3 | 0)},${Math.min(255, p.cg * 1.3 | 0)},${Math.min(255, p.cb * 1.3 | 0)},0.6)`; c.beginPath(); c.arc(cx + Math.cos(a) * d, cy + Math.sin(a) * d * 0.66, 1.5 + r() * 1.5, 0, TAU); c.fill(); }
+  /* ★ the SHARP BOUNDARY the reference row names — a melt channel or a
+     footprint cutting clean through the stain. It is the one hard edge on an
+     organism that otherwise has no edges at all, so it is the read. */
+  /* ⚠ at lineWidth S*0.02–0.05 and full alpha these read as two black BARS
+     painted across the bloom, not as channels cut through it. A melt channel
+     is a narrow parting that clears most but not all of the stain. */
+  c.save();
+  c.globalCompositeOperation = 'destination-out';
+  c.globalAlpha = 0.72;
+  for (let i = 0; i < 2; i++) {
+    const y0 = cy + (r() - 0.5) * S * 0.26;
+    c.strokeStyle = 'rgba(0,0,0,1)'; c.lineWidth = S * (0.006 + r() * 0.008); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx - S * (0.16 + r() * 0.14), y0);
+    c.quadraticCurveTo(cx, y0 + (r() - 0.5) * S * 0.10, cx + S * (0.16 + r() * 0.14), y0 + (r() - 0.5) * S * 0.10);
+    c.stroke();
+  }
+  c.restore();
 }
 
 /** ★ WAVE 17 — THE CAP-AND-STEM SYSTEM.
