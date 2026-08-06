@@ -56,7 +56,13 @@ for (const f of judgeFiles) {
     if (seen.has(r.species)) { badJudge.push(f + ' — DUPLICATE species ' + r.species); continue; }
     const row = {
       species: r.species, band: r.band, readsAs: r.readsAs || '', defect: r.defect || '',
-      fix: r.fix || '', verified: false, verifyWhy: '', set: r.set || '', batch: j.batch || '',
+      /* ⚠ the packet prints the set as "[earth-fauna]" and some judges copied
+         the brackets. Left alone that silently SPLITS every per-set total —
+         `earth-fauna` and `[earth-fauna]` are different keys — so the control
+         table that decides whether the ruler moved would be computed over a
+         fraction of each set. Normalise here, not in the report. */
+      fix: r.fix || '', verified: false, verifyWhy: '', batch: j.batch || '',
+      set: String(r.set || '').replace(/^\[|\]$/g, '').trim(),
       family: j.family || '',
     };
     seen.set(r.species, row); rows.push(row);
