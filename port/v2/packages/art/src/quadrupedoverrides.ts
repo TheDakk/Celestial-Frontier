@@ -715,7 +715,24 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
         : t < 0.58 ? 1.14 + ((t - 0.32) / 0.26) * (wJoint - 1.14)      /* into the joint */
           : t < 0.86 ? wJoint + ((t - 0.58) / 0.28) * (wCannon - wJoint)
             : wAnkle);
-    return new Tube({ P: spine, R: wprof });
+    /* ★ WAVE 53 — THE CAUDAL PROFILE, i.e. why the leg was "a straight tube in
+       every family". `wprof` is symmetric, so the limb was a cone of circles:
+       there is no gaskin, no flexor mass behind the forearm, and above all no
+       POINT OF HOCK — the calcaneus that sticks out backwards and is the single
+       clearest "this is a leg and not a dowel" cue in a side view.
+       The normal here points CRANIALLY (the axis runs down the leg), so `Rv` is
+       the caudal side and mass added to it goes backwards only — the front of
+       the cannon stays the straight line it should be.
+       ⚠ Placed LOW on purpose. The body occludes the upper limb (D-ART-149) and
+       wave 52's haunch occludes a little more of it, so a bulge at mid-thigh
+       would be invisible; the hock at t≈0.74 is in the part that actually
+       shows. Scaled by `crouch`, so a folded carnivore limb gets the fuller
+       flexor mass and a cursorial hoofed one stays lean — family-derived, no
+       new per-species number (D-ART-83). */
+    const wprofV = (t: number): number => wprof(t) * (1
+      + 0.40 * Math.exp(-(((t - 0.74) / 0.115) ** 2)) * (0.34 + crouch * 0.66)
+      + 0.16 * Math.exp(-(((t - 0.46) / 0.140) ** 2)) * crouch);
+    return new Tube({ P: spine, R: wprof, Rv: wprofV });
   };
   /** ★ THE FOOT IS THE FAMILY'S SIGNATURE ON THE GROUND, and every mammal in
       the catalogue was standing on the same small oval. A hoof is a hard
@@ -1255,7 +1272,24 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     [0.86, skMuz],
     [1.00, skMuz * 0.74],
   ]);
-  const head = new Tube({ P: headAxis, R: headProf });
+  /* ★ WAVE 53 — A SKULL IS NOT SYMMETRIC ABOUT ITS OWN AXIS, and drawing it
+     that way is most of why every head read as a faceted wedge. `headProf` is
+     described in its own comment as "the profile of the face: braincase, the
+     stop, the muzzle" — and all three of those are DORSAL features. Mirroring
+     them underneath put a braincase-sized bulge below the axis where a throat
+     should be, and dug the stop's dip into the underside of the muzzle, so the
+     head came out as a spindle with a pinch in the middle instead of a skull.
+     The ventral line of a real head is much shallower and has no stop at all:
+     it runs from the angle of the jaw forward to the chin in one easy taper.
+     Now that `Tube` carries a second profile (wave 52) that is simply sayable. */
+  const headProfV = spline([
+    [0.00, skCran * 0.50],
+    [0.18, skCran * 0.82],   /* the cheek and the angle of the jaw */
+    [0.42, skMuz * 1.22],    /* no stop underneath — the line runs on through */
+    [0.70, skMuz * 0.90],
+    [1.00, skMuz * 0.58],    /* the chin sits well above the nose */
+  ]);
+  const head = new Tube({ P: headAxis, R: headProf, Rv: headProfV });
   /* THE MANDIBLE, drawn first so the skull overlaps it and the jaw line is a
      shadowed edge under the cheek rather than an outline drawn on it */
   if (SK.jaw > 0.05) {
