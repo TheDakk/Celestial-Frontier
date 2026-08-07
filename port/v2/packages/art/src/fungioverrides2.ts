@@ -152,10 +152,26 @@ export function fungiCordyceps(c: Ctx, g: G, p: Pal): void {
   const r = seeded(g, 0xC0DA);
   const cx = S * 0.5, base = S * 0.80;
   shadow(c, cx, base + 6, S * 0.16);
-  /* the host (a buried insect/caterpillar hint) */
+  /* ★ WAVE 64 — THE HOST IS AN INSECT, not "an anonymous smooth ellipse"
+     (gp3). A curled segmented caterpillar with a dark head capsule and stubby
+     legs — the horror of a cordyceps needs a recognisable victim. */
   c.fillStyle = '#5a4632';
-  c.beginPath(); c.ellipse(cx, base, S * 0.13, S * 0.045, -0.1, 0, TAU); c.fill();
-  for (let i = 0; i < 6; i++) { c.strokeStyle = 'rgba(30,22,14,0.5)'; c.lineWidth = 2; const x = cx - S * 0.1 + i * S * 0.04; c.beginPath(); c.moveTo(x, base - S * 0.02); c.lineTo(x, base + S * 0.02); c.stroke(); }
+  const segN = 7;
+  for (let i = 0; i < segN; i++) {   /* overlapping segments in a curl */
+    const u = i / (segN - 1);
+    const sx = cx - S * 0.12 + u * S * 0.24, sy = base - Math.sin(u * Math.PI) * S * 0.028;
+    const sr = S * (0.030 - Math.abs(u - 0.4) * 0.012);
+    const gg = c.createRadialGradient(sx - sr * 0.3, sy - sr * 0.4, 1, sx, sy, sr * 1.1);
+    gg.addColorStop(0, '#7a6248'); gg.addColorStop(1, '#42321f');
+    c.fillStyle = gg; c.beginPath(); c.arc(sx, sy, sr, 0, TAU); c.fill();
+  }
+  c.fillStyle = '#2c2014';   /* the head capsule, tucked down */
+  c.beginPath(); c.arc(cx + S * 0.125, base + S * 0.008, S * 0.024, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(30,22,14,0.8)'; c.lineWidth = 2; c.lineCap = 'round';
+  for (let i = 0; i < 5; i++) {   /* stubby legs beneath */
+    const x = cx - S * 0.08 + i * S * 0.045;
+    c.beginPath(); c.moveTo(x, base + S * 0.02); c.lineTo(x + S * 0.008, base + S * 0.042); c.stroke();
+  }
   const club = p.cr > p.cb ? p.base : '#d97a28';
   const n = 5 + (r() * 3 | 0);
   for (let i = 0; i < n; i++) {   /* the clubs — thin stalks with a knobbed, granular head */
