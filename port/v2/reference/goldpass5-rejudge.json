@@ -1,0 +1,1300 @@
+{
+ "generated": "gp5 drift re-judge (waves 58-60)",
+ "rows": [
+  {
+   "species": "African Ginger",
+   "band": "POLISH",
+   "why": "Bright-green fan of lance blades from a central sheath reads well, with a small yellow tuft-spike, but no mauve-pink ground-level flower and no knobbly rhizome below."
+  },
+  {
+   "species": "Alfalfa",
+   "band": "FAIL",
+   "why": "Upright stem carries plain oval leaf-pairs, not clover-like trifoliate leaflets, and the signature corkscrew-coiled seed pods are entirely absent; only the violet spike lands."
+  },
+  {
+   "species": "Alpine Mint",
+   "band": "FAIL",
+   "why": "A messy low mat of foliage topped with white frothy blobs; no square stem, no opposite toothed leaves, no lilac whorls a stranger could name as mint."
+  },
+  {
+   "species": "Alpine Sorrel",
+   "band": "FAIL",
+   "why": "Big rounded pale-teal leaf fan with a central pink spike is the identical construction to Arctic Sorrel with only the hue shifted; not a low kidney-leaf cushion."
+  },
+  {
+   "species": "Angel's Trumpet",
+   "band": "FAIL",
+   "why": "A brown twiggy bush hung with tiny white bells; the huge pendulous flared trumpets that define the plant are missing and the foliage is dead-brown."
+  },
+  {
+   "species": "Angelica",
+   "band": "POLISH",
+   "why": "Feathery divided foliage under a domed arc of tiny white flowers reads as an umbellifer, but the umbel is a flat arch not a globe and stems aren't shown hollow/purple."
+  },
+  {
+   "species": "Anise",
+   "band": "FAIL",
+   "why": "Indistinguishable from the Angelica beside it - same feathery foliage and white flower-arc; the required two different leaf shapes (round below, feathery above) never appear."
+  },
+  {
+   "species": "Arctic Sorrel",
+   "band": "FAIL",
+   "why": "Big rounded olive leaf fan with a central pink spike is the same construction as Alpine Sorrel; leaves are rounded, not the long-stalked arrow-based basal blades called for."
+  },
+  {
+   "species": "Arctic Willow",
+   "band": "FAIL",
+   "why": "Drawn as an upright bushy clump of catkin stems, directly violating the core must-read of a prostrate ground-hugging mat; catkins are pale, not red-tinged."
+  },
+  {
+   "species": "Arnica",
+   "band": "POLISH",
+   "why": "Single golden daisy head on a bare stem lands the key signature, but the leaves below are pale lotus-like blades, not a basal rosette of plain green oval leaves."
+  },
+  {
+   "species": "Arrowhead",
+   "band": "POLISH",
+   "why": "Bold arrow-shaped leaves with backward lobes give an unmistakable silhouette and a white star flower, but the flower is single (not whorled up a bare stalk) and no water is indicated."
+  },
+  {
+   "species": "Banana",
+   "band": "POLISH",
+   "why": "Smooth green false trunk with torn paddle leaves fanning from the top reads as banana, but the yellow fingers sit upright at the crown with no hanging bunch and no purple-red bud."
+  },
+  {
+   "species": "Bay Laurel",
+   "band": "FAIL",
+   "why": "Just a fuzzy rounded green cloud speckled with dots; no leathery rippled-edge leaves, no dense conical evergreen shape - unnamable as bay."
+  },
+  {
+   "species": "Bearberry",
+   "band": "POLISH",
+   "why": "A low trailing curved branch carries small leaves, red berries and pink urn flowers as required, but the mat is thin and sparse with stems barely reading as reddish and peeling."
+  },
+  {
+   "species": "Bergamot",
+   "band": "FAIL",
+   "why": "A single round pink daisy with a button centre sits atop a ferny stem — this is a composite flower head, not the ragged firework crown of narrow tubular flowers a Monarda must show; no square stem or leafy bracts read."
+  },
+  {
+   "species": "Bilberry",
+   "band": "FAIL",
+   "why": "Shown as a bizarre flat horizontal dish of leaves floating on the ground — no low mound of angular twigs, no solitary blue-black berries, no globe flowers; a stranger could not name it."
+  },
+  {
+   "species": "Bitterroot",
+   "band": "FAIL",
+   "why": "A pink flower rides a tall vertical stem high above a spiky grey agave-like rosette; must-read demands NO visible stem with the flower sitting flat on bare ground and fleshy finger leaves shrivelling — the opposite of what is drawn."
+  },
+  {
+   "species": "Bladderwrack",
+   "band": "POLISH",
+   "why": "Olive-yellow upright straps carry paired round bladders along the midrib and fork upward — the bladders and forking read, though it clumps into a bundle rather than sprawling flat Y-straps."
+  },
+  {
+   "species": "Bog Myrtle",
+   "band": "POLISH",
+   "why": "Stiff upright reddish-brown twigs bear stubby pale catkins on largely bare stems; the catkins read a bit washed-out rather than orange but the leafless-twig-with-catkins signature is present."
+  },
+  {
+   "species": "Bog Rosemary",
+   "band": "POLISH",
+   "why": "A sparse wiry bush with pink clusters nodding at the shoot tips; the pink reads but the blocky square shapes don't clearly resolve into urn-shaped bells and white leaf undersides aren't flashing."
+  },
+  {
+   "species": "Brooklime",
+   "band": "POLISH",
+   "why": "Paired glossy oval fleshy leaves climb the stem with a blue flower at the crown, but it stands stiffly upright with a single bloom rather than sprawling with sprays of blue white-eyed flowers."
+  },
+  {
+   "species": "Bull Kelp",
+   "band": "FAIL",
+   "why": "Just a bundle of vertical tubes topped by brown blades — the defining single round onion-like bulb float at the top of a whip stipe is entirely absent."
+  },
+  {
+   "species": "Calotropis",
+   "band": "POLISH",
+   "why": "Pale chalky grey-green leaves and lilac-purple five-pointed star flowers at the top read the species, though no inflated balloon pod appears and leaves aren't hugely clasping a thick stem."
+  },
+  {
+   "species": "Canola",
+   "band": "POLISH",
+   "why": "Waxy blue-green foliage with clasping leaves up the stem and a mass of vivid yellow flowers at the top; the yellow head is a little clumpy and upright pods below are faint but the read is right."
+  },
+  {
+   "species": "Chicory",
+   "band": "POLISH",
+   "why": "Sky-blue flowers cluster on wiry near-naked stems above a grassy base, but they carry brown button centres and rounded petals rather than the all-blue squared fringe-toothed ray tips chicory needs."
+  },
+  {
+   "species": "Cliff Rose",
+   "band": "POLISH",
+   "why": "Twiggy branches carry cream five-petalled roses with yellow centres and fuzzy plume-like bits; cream colour and rose form read, feathery seed plumes are only lightly suggested."
+  },
+  {
+   "species": "Coastal Sage",
+   "band": "POLISH",
+   "why": "Dusty grey-green mounded bush with pale lavender flower spikes rising up the stems; reads as a sage/lavender though the blooms form continuous spikes rather than distinctly spaced whorled ball clusters."
+  },
+  {
+   "species": "Coralline Algae",
+   "band": "POLISH",
+   "why": "Upright chalky-pink stalks strung with jointed bead-like pink segments give the coralline read; colour and bead-jointing are right though it forms a stalk bundle rather than a hard crust plating rock."
+  },
+  {
+   "species": "Creosote Bush",
+   "band": "FAIL",
+   "why": "Dense upright clump topped with big yellow daisy-like flowers and feathery foliage; the iconic cotton-white fuzzy round seed capsules are entirely absent and the branches read as a tight bunch, not open airy widely spaced twigs."
+  },
+  {
+   "species": "Crowberry",
+   "band": "POLISH",
+   "why": "Now reads as a low flat creeping heather-like carpet with short needle foliage packed on wiry stems; berries are present but faint rather than clearly glossy black nestled in the needles."
+  },
+  {
+   "species": "Date",
+   "band": "FAIL",
+   "why": "Well-formed feather fronds and a diamond-patterned trunk, but the defining massive hanging fruit bunch on orange strands is missing — only a tiny brown clump at the crown, so it reads as a generic palm, not a date."
+  },
+  {
+   "species": "Desert Mint",
+   "band": "POLISH",
+   "why": "Strong stacked rings of whorled flower clusters up the stem, but the blooms render near-white instead of the required lavender-pink."
+  },
+  {
+   "species": "Desert Sage",
+   "band": "POLISH",
+   "why": "Silvery foliage with pale blue-violet flower spikes stacked at the stem tips; colour is more washed-out than the intense blue-violet and the habit is upright rather than a rounded low woody bush."
+  },
+  {
+   "species": "Dulse",
+   "band": "FAIL",
+   "why": "Two narrow wavy red ribbon-blades on a small holdfast; the flat hand-shaped lobed blade with ear-like marginal flaps is missing, so it reads as generic red seaweed straps."
+  },
+  {
+   "species": "Edelweiss",
+   "band": "FAIL",
+   "why": "White star of pointed bracts is there but rendered smooth and glossy rather than felted/woolly, and the several small yellow button flower heads in the star centre are absent."
+  },
+  {
+   "species": "Fenugreek",
+   "band": "FAIL",
+   "why": "Upright leafy stem with simple paired oval leaves; the clover-like trifoliate toothed leaflets, pale pea flowers, and long sickle-curved beaked pods are all missing."
+  },
+  {
+   "species": "Fireweed",
+   "band": "PASS",
+   "why": "Single poker-straight stem with narrow leaves running up it and a tapering magenta-pink flower spike at the top — reads unmistakably as fireweed."
+  },
+  {
+   "species": "Flax",
+   "band": "POLISH",
+   "why": "Clear sky-blue five-petal flower crowns the stem, but the plant is a single leafy fern-like stem rather than very thin bare wiry stems in a slender clump, and no round seed capsules show."
+  },
+  {
+   "species": "Gentian",
+   "band": "FAIL",
+   "why": "Tall leafy stem carrying several small scattered blue flowers rather than one large deep-blue flared trumpet dominating a low plant — the signature big upward trumpet is absent."
+  },
+  {
+   "species": "Giant Kelp",
+   "band": "FAIL",
+   "why": "Bundle of long amber-brown blades bunching at the top over a narrow base; the required single pear-shaped float bladder at the base of every blade is not shown."
+  },
+  {
+   "species": "Holy Basil",
+   "band": "POLISH",
+   "why": "Purple-flushed stem with tiered whorls of leaves and a spike of tiny clustered flowers up top; reads as holy basil though it shares the stacked-whorl construction with Desert Mint."
+  },
+  {
+   "species": "Huckleberry",
+   "band": "FAIL",
+   "why": "Drawn as a low creeping mat identical in construction to Crowberry with only the hue changed; should be an open airy upright bush with sharply angled green stems and berries borne singly."
+  },
+  {
+   "species": "Labrador Tea",
+   "band": "POLISH",
+   "why": "Rusty-brown stems and narrow dark leaves present, with white flower sprays at the shoot tips, but the tip clusters read as arching fireworks fans rather than the rounded domed white clusters the must-read calls for; identity reads."
+  },
+  {
+   "species": "Lichen",
+   "band": "FAIL",
+   "why": "Rendered as a symmetrical radiating fan of flat pale-grey straps on empty background — no crusty rosette clinging to rock, no chalky lobed margin, no raised cup discs, no substrate. A stranger reads a folded fan or palm frond, not a lichen."
+  },
+  {
+   "species": "Licorice Root",
+   "band": "PASS",
+   "why": "All three must-reads clearly present: pinnate locust-like leaf of many oval leaflets, a slim pale blue-lilac flower spike at the top, and a long straight tapering yellow root at the base."
+  },
+  {
+   "species": "Lingonberry",
+   "band": "POLISH",
+   "why": "Low boat-shaped creeping mat with small dark leaves and clusters of bright red berries reads correctly, but it is a near-identical construction to Mountain Cranberry two cells over — indistinguishable side by side."
+  },
+  {
+   "species": "Marsh Rosemary",
+   "band": "POLISH",
+   "why": "Wiry branched stems carry a mist of tiny papery pink-violet florets (the sea-lavender signature), but the spray fans upward in a V vase rather than the required flat-topped level array, and the flat basal rosette of spoon leaves is absent."
+  },
+  {
+   "species": "Milkweed",
+   "band": "POLISH",
+   "why": "Opposite paired oblong leaves up the stem and a domed umbel of small dusty-pink flowers at the top both read, but the umbel is sparse and the warty silk-bursting pod is not shown."
+  },
+  {
+   "species": "Miner's Lettuce",
+   "band": "POLISH",
+   "why": "The perfoliate saucer reads at the crown — a round disc leaf with a white yellow-centred flower rising through its middle — though the lower paired round leaves are generic foliage rather than the distinctive spade basal leaves."
+  },
+  {
+   "species": "Monkshood",
+   "band": "POLISH",
+   "why": "Stiff upright spike topped with deep blue-purple flowers over finely divided dark leaves; the spike and colour read, but the individual blooms are rounded blobs without the distinct helmet-hood shape."
+  },
+  {
+   "species": "Mountain Cranberry",
+   "band": "POLISH",
+   "why": "Low creeping boat-mat with small glossy leaves and tight clusters of red berries reads correctly, but it is built identically to Lingonberry in this same strip — same construction, same hue, no differentiation."
+  },
+  {
+   "species": "Mountain Mint",
+   "band": "POLISH",
+   "why": "Pale silvery bracts dust the whole plant and small white flowers cap the top, matching the silvery-bract and white-flower must-reads, but the square stems are not evident and the head reads as stacked whorls rather than one flat dome."
+  },
+  {
+   "species": "Mountain Papaya",
+   "band": "POLISH",
+   "why": "Slim trunk with a feathery tuft crown and yellow fruit clustered against the stem read clearly as a papaya, but the fruit is rounded/oval rather than the distinctly five-angled ribbed form the note requires."
+  },
+  {
+   "species": "Mountain Sorrel",
+   "band": "POLISH",
+   "why": "Large rounded kidney-shaped fleshy basal leaves over reddish leaf stalks read well; the winged crimson seed cluster is only faintly hinted among the leaves rather than a clear spire."
+  },
+  {
+   "species": "Mountain Thyme",
+   "band": "POLISH",
+   "why": "Low spreading mat wider than tall with purple-pink flower heads at each shoot tip, but the blooms render as large flat pink daisies rather than thyme's dense rounded heads of tiny lipped flowers."
+  },
+  {
+   "species": "Mugwort",
+   "band": "POLISH",
+   "why": "Deeply cut silver-white leaves up a spike topped with drab grey-white non-showy button clusters correctly avoids showy blooms, but the plant is uniformly white with no dark-green upper surface and the reddish-purple grooved stem is not visible."
+  },
+  {
+   "species": "Nettle",
+   "band": "POLISH",
+   "why": "Upright green leafy column with pale trailing catkin strings reads as its harvest, but the square bristly stem and opposite toothed heart-shaped leaves in tiers are not distinguishable in the fuzzy mass."
+  },
+  {
+   "species": "Nipa Palm Fruit",
+   "band": "FAIL",
+   "why": "Drawn as an ordinary palm with a tall bare brown TRUNK and fronds on top, directly contradicting the must-read 'no visible trunk, fronds erupting from water and mud'; the fruit sits at the crown, not a cannonball cluster at the base."
+  },
+  {
+   "species": "Pampas Herb",
+   "band": "PASS",
+   "why": "Tall silvery-white feather plume on a bare stalk held above a fountain clump of arching blades; silhouette reads unmistakably as pampas grass despite the blades being bleached tan rather than blue-grey green."
+  },
+  {
+   "species": "Pandanus Fruit",
+   "band": "FAIL",
+   "why": "Rendered as a generic palm identical in construction to Nipa; no cone of prop roots, no spiral screw-pattern strap leaves. Only the orange fruit ball reads, and two of three must-reads are absent."
+  },
+  {
+   "species": "Pickerelweed",
+   "band": "POLISH",
+   "why": "Emergent clump of upright arrow-shaped green blades with a small violet flower spike in the middle; the spike and emergent form read, but the leaves are thin sharp shards rather than thick heart-shaped blades and no water is shown."
+  },
+  {
+   "species": "Pine Nuts",
+   "band": "FAIL",
+   "why": "Drawn as a classic tapered tiered fir/Christmas-tree cone on a brown trunk; the required broad flat umbrella crown of a stone pine is missing, and it is the same construction as Pinyon Pine beside it."
+  },
+  {
+   "species": "Pinyon Pine",
+   "band": "FAIL",
+   "why": "A tall tapered conifer spire, the exact opposite of the 'low, wide, rounded bushy crown' the note demands; plainly the same fir construction as Pine Nuts with only a slight size change."
+  },
+  {
+   "species": "Plantain Herb",
+   "band": "POLISH",
+   "why": "Rosette of broad ribbed green leaves with a thin upright rat-tail spike present, but the leaves spread upward like an agave rather than the required flat rosette pressed to the ground."
+  },
+  {
+   "species": "Prairie Turnip",
+   "band": "FAIL",
+   "why": "Shows a symmetrical fan of pale cream leaves with a tiny purple flower on top; the five-fingered palmate leaf is absent and the swollen turnip tap-root, the whole point of the harvest, is nowhere in the picture."
+  },
+  {
+   "species": "Purple Saxifrage",
+   "band": "FAIL",
+   "why": "Sparse splayed grey blades with a single magenta star flower held up on a stalk; the tight low cushion mat hugging rock and stemless flowers resting on the foliage are both absent."
+  },
+  {
+   "species": "Rabbitbrush",
+   "band": "PASS",
+   "why": "Rounded broom of pale whitish stems topped by clusters of bright golden flower heads with thin thread-like leaves; the gold-on-top-of-felted-stems reading comes through clearly."
+  },
+  {
+   "species": "Rainforest Nettle",
+   "band": "FAIL",
+   "why": "Just another green nettle column identical in construction to Nettle and Riverbank Nettle; the oversized heart-shaped leaves and the haze of stinging hairs that would identify a stinging tree are not distinguishable."
+  },
+  {
+   "species": "Riverbank Nettle",
+   "band": "FAIL",
+   "why": "A fuller green leafy column that is plainly the same construction as the other two nettles with only minor variation; the square stem, stinging hairs, and dangling green flower tassels at the leaf joints do not read distinctly."
+  },
+  {
+   "species": "Roselle",
+   "band": "PASS",
+   "why": "Upright reddish stems carrying lobed reddish leaves and round fat crimson calyces clustered at the top; the scarlet calyx harvest and red stems read clearly as roselle."
+  },
+  {
+   "species": "Scurvy Grass",
+   "band": "POLISH",
+   "why": "Rounded glossy green leaf mound with a tiny pale flower cluster at the center reads as a fleshy leafy cushion, but the leaves are drawn large rather than the little heart/kidney shapes and the white cross flowers are barely legible."
+  },
+  {
+   "species": "Sea Beet",
+   "band": "FAIL",
+   "why": "Only a flat rosette of dark triangular wavy leaves is drawn; the red-purple stalks and the wiry ropes of trailing green flower spikes — two of three must-reads — are entirely absent."
+  },
+  {
+   "species": "Sea Fennel",
+   "band": "FAIL",
+   "why": "Foliage is rendered as thin feathery threads up the stalk, exactly the form the must-read forbids ('not feathery threads'); no thick succulent finger-shaped segments, and the habit is a tall upright stem not a low rock clump."
+  },
+  {
+   "species": "Sea Grapes Algae",
+   "band": "POLISH",
+   "why": "Bundle of bright emerald upright shoots capped with bumpy bead clusters reads as grape-like beads with no blade, but there is no horizontal creeping runner joining the shoots."
+  },
+  {
+   "species": "Sea Kale",
+   "band": "POLISH",
+   "why": "Crinkled glaucous blue-grey cabbage leaves in a spreading dome read strongly, but the white flower froth is a small tuft buried in the leaves rather than a broad cloud held on top."
+  },
+  {
+   "species": "Sea Lavender",
+   "band": "POLISH",
+   "why": "Leafless wiry stalk rising from a small basal rosette with an airy flower spray is present, but the head is drawn as a narrow pale radial fan, not the broad flat-topped cloud of blue-violet flowers the must-read calls for."
+  },
+  {
+   "species": "Sea Rocket",
+   "band": "POLISH",
+   "why": "Fleshy scalloped-lobed leaves up the stem topped by a pale lilac flower cluster read, but the plant is a single upright stem, not the sprawling zigzag over sand, and no jointed corky pods show."
+  },
+  {
+   "species": "Sesame",
+   "band": "POLISH",
+   "why": "Single upright leafy stem with pale oblong capsules held tight against it reads, but the tubular foxglove flowers in the axils are not distinct, and it is nearly the same leafy-stem-with-pale-oblongs construction as its Solomon's Seal neighbour."
+  },
+  {
+   "species": "Solomon's Seal",
+   "band": "FAIL",
+   "why": "Drawn as an upright stem with leaves spiraling around it and pale blobs near the top; the required smooth arching stem, the row of flowers dangling from the underside only, and one-plane leaves are all missing — and it duplicates the Sesame construction beside it."
+  },
+  {
+   "species": "Sorrel",
+   "band": "POLISH",
+   "why": "Basal clump of pointed radiating leaves under a slim rust-red seed spire reads as the sorrel gestalt, but the leaves are simple pointed blades with no visible arrowhead backswept basal lobes."
+  },
+  {
+   "species": "Spruce Tips",
+   "band": "POLISH",
+   "why": "Unmistakable tiered spire-crown conifer with brown trunk, but the defining vivid light-green new tips are only faint lighter edges and the hanging cylindrical cones are absent."
+  },
+  {
+   "species": "Steppe Tulip",
+   "band": "FAIL",
+   "why": "Multiple red cup shapes are stacked up a tall stem, violating the 'one cup flower per stem' and 'short, flower close to the ground' must-reads; it reads as a red flower spike, not a low wild tulip, and lacks the broad grey-green basal leaves."
+  },
+  {
+   "species": "Sugar Kelp",
+   "band": "FAIL",
+   "why": "Rendered as a bundle of several splayed golden-brown straps, reading as a blade split into fingers, whereas the must-read demands one unbranched ribbon; the frilly crinkled margins are also not present."
+  },
+  {
+   "species": "Swamp Mint",
+   "band": "POLISH",
+   "why": "Upright stem with toothed leaves and lilac flower clusters up its length reads as a flowering mint, but the leaves spiral rather than sit in crossed opposite pairs and the square stem is not conveyed."
+  },
+  {
+   "species": "Sweet Flag",
+   "band": "FAIL",
+   "why": "The spadix is an upright cream spike sitting at the tip of the leaf fan, not a stubby green finger angled out sideways partway up the flat stem as the must-read (and note) demand; crimped margin not readable."
+  },
+  {
+   "species": "Tamarisk",
+   "band": "POLISH",
+   "why": "Feathery blue-green cloud with vertical pink flower plumes reads, but the branches are stiff straight radiating spikes (firework-like) rather than slender arching wind-blown twigs."
+  },
+  {
+   "species": "Tea",
+   "band": "PASS",
+   "why": "Dense rounded twiggy bush with glossy leaves and two nodding white flowers each showing a boss of yellow stamens — all three must-reads present."
+  },
+  {
+   "species": "Tea Tree",
+   "band": "FAIL",
+   "why": "Essentially the same exploding feathery-cloud construction as Tamarisk with only the flower hue changed to white round puffs; no papery peeling white bark and the white blobs are not fluffy bottlebrush spikes."
+  },
+  {
+   "species": "Wakame",
+   "band": "POLISH",
+   "why": "Olive-brown blade with deeply lobed wings flanking a midrib and a fan silhouette reads, but the ruffled convoluted sporophyll frill at the stem base is not rendered."
+  },
+  {
+   "species": "Water Hemlock",
+   "band": "POLISH",
+   "why": "Twice-pinnate ferny foliage under a flat-domed arch of tiny white umbel flowers reads as an umbellifer, but the hollow purple-streaked stem (the key poison-ID must-read) is absent."
+  },
+  {
+   "species": "Water Mint",
+   "band": "POLISH",
+   "why": "Opposite toothed leaves and a round lilac pompom at the tip are present, but extra flower clusters appear down the stem, muddying the 'single round pompom at the tip' read."
+  },
+  {
+   "species": "Water Spinach",
+   "band": "PASS",
+   "why": "Trailing S-curved vine with arrow/heart-shaped leaves and small white funnel flowers showing a dark throat — all three must-reads present."
+  },
+  {
+   "species": "Wild Chive",
+   "band": "PASS",
+   "why": "Clumping blue-grey grassy tuft topped by a tight lilac pompom on a bare stalk — clean chive read, correct colour."
+  },
+  {
+   "species": "Wild Garlic",
+   "band": "POLISH",
+   "why": "Broad flat pointed lily-like leaves rising straight from the ground read correctly (ramsons not chives), but the white star-flower starburst on the three-angled stalk is tiny and faint, barely white."
+  },
+  {
+   "species": "Wild Ginger",
+   "band": "POLISH",
+   "why": "Low mat of paired glossy kidney-heart leaves reads well, but the ground-level flower is a scatter of small pink dots rather than a dark maroon cup-shaped bloom."
+  },
+  {
+   "species": "Wild Mint",
+   "band": "PASS",
+   "why": "Opposite toothed leaves with lilac flowers whorled in rings along the stem, not just at the tip, distinguishing it from Water Mint's single tip pompom."
+  },
+  {
+   "species": "Wild Mustard",
+   "band": "POLISH",
+   "why": "Bright yellow four-petal flower cluster at the tip over lobed leaves reads as a mustard/crucifer, but the slender beaked seed pods held out below the flowers are not shown."
+  },
+  {
+   "species": "Wild Onion",
+   "band": "POLISH",
+   "why": "Grey-green grassy tuft with a bare stalk carrying a ball of tiny white flowers reads as an allium, but the flower head is only a partial arch of dots and the bursting papery spathe is not visible."
+  },
+  {
+   "species": "Wild Rhubarb",
+   "band": "POLISH",
+   "why": "Huge crinkled dark-green basal leaves with visible ribbing spring from a crown at ground level and a red flower spike rises at center, but the thick stalks read plain green, not the must-read red-tinged ribbed stalks."
+  },
+  {
+   "species": "Wild Rye",
+   "band": "PASS",
+   "why": "Blue-grey arching blades from a tufted clumping base with a golden seed spike up top whose bristly awns fan out like whiskers — reads as a bristly grass seedhead."
+  },
+  {
+   "species": "Wild Sesame",
+   "band": "FAIL",
+   "why": "Stacked opposite ruffled leaf pairs on a central stem, but the whole plant is a uniform mauve-pink (not green paired leaves) and the required one-sided spikes of tiny seed capsules are entirely absent."
+  },
+  {
+   "species": "Wild Taro",
+   "band": "FAIL",
+   "why": "The foliage is a cluster of narrow sharp upward-pointing triangular blades, not the big downward-pointing broad arrowhead leaves a stranger needs to name taro."
+  },
+  {
+   "species": "Wild Thyme",
+   "band": "FAIL",
+   "why": "Rendered as a tall upright bouquet of bare brown stems with pink-purple pom-pom heads, the opposite of the must-read ground-hugging mat much wider than tall; minute paired leaves are nowhere visible."
+  },
+  {
+   "species": "Wild Yam",
+   "band": "POLISH",
+   "why": "A twining stem spirals with a knobbly brown tuber sitting at the base, but the leaves read as rounded coins rather than clearly heart-shaped with arcing veins, and there is no support to climb."
+  },
+  {
+   "species": "Wood Sorrel",
+   "band": "FAIL",
+   "why": "Shows one large jagged serrated bright-green leaf (maple-like) with a white star flower above, not the low carpet of three notched heart-shaped clover leaflets that identifies wood sorrel."
+  },
+  {
+   "species": "Wormwood",
+   "band": "POLISH",
+   "why": "Silvery silky finely-divided feathery foliage is convincingly done, but it presents as a single fern-like frond rather than a woody-based bushy clump, and the yellow nodding button flowers are only a faint pale spike."
+  },
+  {
+   "species": "Cardamom",
+   "band": "FAIL",
+   "why": "Only a fan of long lance leaves in a rosette; no tall arching canes, no separate low ground-running flowering shoot, and no pale three-sided pods at the base. Two of three must-reads absent."
+  },
+  {
+   "species": "Chamomile",
+   "band": "PASS",
+   "why": "Single white-rayed daisy with a raised domed yellow centre atop a tall stem clothed in wispy thread-fine feathery foliage; all three must-reads present."
+  },
+  {
+   "species": "Echinacea",
+   "band": "POLISH",
+   "why": "Reads as a purple-pink coneflower with a raised central cone on a stiff unbranched stem, but the rays sit fairly flat rather than drooping backswept and the cone isn't the spiny orange-brown dome."
+  },
+  {
+   "species": "Ginger",
+   "band": "POLISH",
+   "why": "Knobbed pale buff rhizome exposed at the base reads correctly, but the leaves fan out as a broad palmate rosette rather than narrow strap leaves two-ranked up reedy canes."
+  },
+  {
+   "species": "Ginseng",
+   "band": "FAIL",
+   "why": "A bristly upright column with a red berry cluster crowning the top and a forked pale root below — the defining whorl of five-fingered palmate leaves is entirely missing, so a stranger couldn't name it."
+  },
+  {
+   "species": "Lavender",
+   "band": "POLISH",
+   "why": "Slim violet flower spikes at the tips of long bare stalks over a low woody clump read as lavender, though the silvery narrow foliage is sparse."
+  },
+  {
+   "species": "Mint",
+   "band": "POLISH",
+   "why": "Paired toothed oval leaves crossing at each node up the stem with a terminal cluster of pale lilac flowers reads as mint; square stems not obvious but form is right."
+  },
+  {
+   "species": "Mustard",
+   "band": "POLISH",
+   "why": "Flat-topped cluster of bright yellow cross-shaped flowers over big lyre-shaped lower leaves reads clearly as mustard; the slender beaked pods below the flowers are faint/absent."
+  },
+  {
+   "species": "Oregano",
+   "band": "POLISH",
+   "why": "Reddish stem with opposite oval leaves and a small white-pink flower head with purple tint reads as oregano, but the top is a compact cluster rather than airy branched flat-topped sprays."
+  },
+  {
+   "species": "Rosemary",
+   "band": "FAIL",
+   "why": "A bundle of woody stalks topped with pale-blue spikes — the same construction as Lavender next door with only the flower hue changed; no stiff needle leaves in whorls and no white underside, its whole signature."
+  },
+  {
+   "species": "Sage",
+   "band": "FAIL",
+   "why": "Another recolored bundle of woody stems with pale-blue/lavender spikes, indistinguishable in build from Lavender and Rosemary; the thick pebbled velvet grey-green leaf that defines sage is absent."
+  },
+  {
+   "species": "Thyme",
+   "band": "FAIL",
+   "why": "A sparse skeletal fishbone stem topped by a single large pink daisy — not a low spreading mounded subshrub of tiny paired leaves, and the flower is wrong for thyme's tiny lilac clusters."
+  },
+  {
+   "species": "Turmeric",
+   "band": "FAIL",
+   "why": "Fountain of broad ribbed leaves reads, but the base rhizome is pale buff (indistinguishable from Ginger's) rather than vivid orange-fleshed, and the pale green-and-pink bract cone is absent — the two harvest must-reads fail."
+  },
+  {
+   "species": "Valerian",
+   "band": "PASS",
+   "why": "Tall unbranched stem with opposite pinnate leaves stepping up like a ladder and a flat domed cluster of tiny pale flowers arched across the top; all three must-reads present."
+  },
+  {
+   "species": "Yarrow",
+   "band": "POLISH",
+   "why": "Ferny feather-fine foliage is excellent and unmistakable along the stiff upright stem; the flat-topped head of tiny white florets is present but reads as a thin open fan-arc rather than a dense flat plate, so the flower head is the weak spot."
+  },
+  {
+   "species": "Amaranth",
+   "band": "POLISH",
+   "why": "Strong crimson stem and a beaded crimson seed plume at the top read as amaranth, but the foliage is narrow herringbone red fronds, not the big soft broad leaves the must-read demands."
+  },
+  {
+   "species": "Arrowroot",
+   "band": "FAIL",
+   "why": "Just three lobed maple-like green leaves floating with no stalks; the knobbly pale rhizome at the base and the small white flowers are both entirely absent."
+  },
+  {
+   "species": "Barley",
+   "band": "FAIL",
+   "why": "An upright grass tuft with only a short fanned awn crown; the head does not nod and the awns are not longer than the head, and it is the same tuft-plus-awned-head build as Millet/Oats/Rye/Wheat with only hue changed."
+  },
+  {
+   "species": "Buckwheat",
+   "band": "FAIL",
+   "why": "A symmetric stack of rounded green lobes capped by an arc of white dots; no arrowhead leaves, no red jointed stem, no three-sided pyramid seeds."
+  },
+  {
+   "species": "Cassava",
+   "band": "POLISH",
+   "why": "Palmate hand-shaped leaves of narrow finger lobes on cane stems with roots radiating at the base read as cassava, but the base roots are thin and fibrous rather than fat tapering tubers and the petioles are not clearly red."
+  },
+  {
+   "species": "Millet",
+   "band": "FAIL",
+   "why": "A cream-gold grass tuft with a fanned awned head essentially identical to Oats and Barley; the awn fan is un-millet-like (no long awns on millet) and there is no distinct dense bottlebrush — same construction, different hue."
+  },
+  {
+   "species": "Oats",
+   "band": "FAIL",
+   "why": "Shows a compact awned ear with a bristling awn fan, the exact opposite of the required loose open panicle with dangling spikelets and no awn mass; indistinguishable from Millet."
+  },
+  {
+   "species": "Potato",
+   "band": "POLISH",
+   "why": "A pinnate compound leaf with a single white star flower on top reads as a nightshade/potato, but the knobbly tubers on stolons at the base are missing and the flower lacks the yellow anther cone."
+  },
+  {
+   "species": "Quinoa",
+   "band": "POLISH",
+   "why": "A chunky red-magenta terminal seed head in hot colour crowns stacked toothed goosefoot leaves, a fair quinoa read, though the leaves are more herringbone than clean duck-foot and the stem striping is not evident."
+  },
+  {
+   "species": "Rice",
+   "band": "FAIL",
+   "why": "An upright green grass tuft with a compact fanned awned head; nothing nods or arches under its weight, it is not a loose branched panicle, and only the green hue separates it from the other grass tufts."
+  },
+  {
+   "species": "Rye",
+   "band": "FAIL",
+   "why": "A cream grass tuft with a short awned head that stands upright rather than leaning at the tip, no very long hair-fine awns, and no taller-thinner silhouette than wheat — same shared grass build."
+  },
+  {
+   "species": "Sorghum",
+   "band": "FAIL",
+   "why": "A low grass tuft with an orange awned head; the defining tall thick corn-like stem crowned by a heavy compact head is absent, so it is just the shared tuft template with an orange top."
+  },
+  {
+   "species": "Taro",
+   "band": "FAIL",
+   "why": "Jagged teal triangular leaves pointing upward with no corm at the base; these are not downward-pointing peltate elephant-ear leaves and nothing reads as taro."
+  },
+  {
+   "species": "Wheat",
+   "band": "FAIL",
+   "why": "A gold grass tuft with an upright awned head that is a fountain of many blades rather than a single unbranched straw, and it is visually identical to Barley and Rye — the same construction with only the hue changed."
+  },
+  {
+   "species": "Bobcat",
+   "band": "FAIL",
+   "why": "Generic black-spotted cat on the shared chassis; the bobbed short tail roughly reads, but no cheek ruff and no black ear tufts are visible — 2 of 3 must-reads missing."
+  },
+  {
+   "species": "Caracal",
+   "band": "FAIL",
+   "why": "Plain reddish-tan coat is right, but the signature long black ear tufts trailing from the tips are absent, so it is indistinguishable from the plain Cougar two cells over."
+  },
+  {
+   "species": "Cheetah",
+   "band": "FAIL",
+   "why": "Has spots and a long thin tail, but the body is the same stocky chassis (not greyhound/whippet-thin) and the black tear stripes from eye to mouth are missing."
+  },
+  {
+   "species": "Clouded Leopard",
+   "band": "FAIL",
+   "why": "Tail is a short curved stub, not as long as head-and-body combined — the exact error the note warns of; markings are generic spots, not large cloud blotches."
+  },
+  {
+   "species": "Cougar",
+   "band": "POLISH",
+   "why": "Completely plain unmarked tawny coat reads as its identity, but the tail is only medium length and shows no clear heavy black tip, and no muzzle bars are visible."
+  },
+  {
+   "species": "Jaguar",
+   "band": "FAIL",
+   "why": "Rosette clusters read as filled dark blobs and the build/jaw is not notably heavier than its Leopard neighbour — the two are the same construction with only a slight hue shift."
+  },
+  {
+   "species": "Leopard",
+   "band": "FAIL",
+   "why": "Rosettes are filled dark florets rather than hollow open rings, and the drawing is essentially identical to the Jaguar beside it, so a stranger cannot separate them."
+  },
+  {
+   "species": "Lynx",
+   "band": "FAIL",
+   "why": "Just a greyish spotted cat; the long black ear tufts, flared facial ruff, and oversized snowshoe paws are all missing — looks like a recoloured Bobcat."
+  },
+  {
+   "species": "Ocelot",
+   "band": "FAIL",
+   "why": "Coat is scattered spots, not the chain-like rosettes running in streaks along the flank, and the two black cheek stripes are absent."
+  },
+  {
+   "species": "Serval",
+   "band": "FAIL",
+   "why": "Legs sit on the standard chunky chassis, not extraordinarily long, and the ears are not the huge upright ovals on a small head — both defining features missing."
+  },
+  {
+   "species": "Snow Leopard",
+   "band": "POLISH",
+   "why": "Pale smoky coat with dark open rosettes and a long trailing tail read clearly as snow leopard; tail is thinner than the enormously thick ropy ideal but present."
+  },
+  {
+   "species": "Tiger",
+   "band": "POLISH",
+   "why": "Bold vertical black stripes over orange read unmistakably as tiger; but the white cheek ruff and white eyebrow spots are not visible and the tail is short rather than long and ringed."
+  },
+  {
+   "species": "Bromeliad",
+   "band": "POLISH",
+   "why": "Stiff pale banded strap leaves arch outward and a thin red bract spike rises from the centre, but the leaves splay flat like a yucca spray rather than forming an upright vase, so the 'pool of water in the cup' must-read is not readable."
+  },
+  {
+   "species": "Buttercup",
+   "band": "FAIL",
+   "why": "The flower is a pointed yellow STAR, not the five rounded lacquered cup petals, and the plant is a dense fuzzy green leaf-column with no deeply-cut palmate leaves anywhere."
+  },
+  {
+   "species": "Clover",
+   "band": "FAIL",
+   "why": "Shows a rosette of many broad pointed leaves like an aloe, not three rounded trifoliate leaflets, and there is no pale V watermark; only the small pink pompom on top hints at clover."
+  },
+  {
+   "species": "Daisy",
+   "band": "FAIL",
+   "why": "The white-ray yellow-disc flower is correct, but it sits atop an upright leafy stem with paired lance leaves — the ground-hugging spoon-leaf rosette and the bare leafless stalk (two must-reads) are both absent."
+  },
+  {
+   "species": "Dandelion",
+   "band": "POLISH",
+   "why": "Jagged backward-toothed lance leaves radiate from the base and a single yellow head sits on a bare stalk, reading as dandelion, but the rosette fans upright rather than flat and no seed clock is shown."
+  },
+  {
+   "species": "Foxglove",
+   "band": "POLISH",
+   "why": "A tall unbranched stem carries a spike of pink-purple tubular bells over a leafy stem, clearly a foxglove, but the bells read as blocky clustered squares with no visible dark speckled throats and little one-sided hang."
+  },
+  {
+   "species": "Goldenrod",
+   "band": "POLISH",
+   "why": "A tapering pyramid plume of many tiny golden-yellow flowers tops an unbranched leafy lance-leaf stem, unmistakably goldenrod, but the plume stands upright and symmetric rather than arching to one side."
+  },
+  {
+   "species": "Poppy",
+   "band": "FAIL",
+   "why": "Leaves are a pinnate fern-frond of many small leaflets, not deeply lobed bristly poppy leaves, and the red bloom on top reads as a round button with no four crinkled tissue petals or pepper-pot seed capsule."
+  },
+  {
+   "species": "Sunflower",
+   "band": "POLISH",
+   "why": "The head reads as a sunflower — yellow ray ring around a dark seed disc — but the head is small rather than huge, and the leaves are a stacked green column, not large coarse heart-shaped leaves."
+  },
+  {
+   "species": "Violet",
+   "band": "POLISH",
+   "why": "A low tuft of large overlapping heart-shaped leaves strongly signals violet, but the single purple flower is buried tiny among the leaves rather than held above on a curved stalk, and no backward spur is visible."
+  },
+  {
+   "species": "Cashew",
+   "band": "FAIL",
+   "why": "Rounded green crown with two orange-yellow fruit blobs, but the defining must-read is absent: no grey kidney-shaped nut hanging outside and below the fleshy apple. Reads as a generic orange-fruit tree, indistinct from the Mango cell beside it."
+  },
+  {
+   "species": "Coconut",
+   "band": "POLISH",
+   "why": "Arching feather fronds and a grey-brown nut cluster wedged at the crown base read clearly as a coconut palm, but the trunk is a plain straight brown pole with no rings and no lean, so that must-read is missing."
+  },
+  {
+   "species": "Durian",
+   "band": "POLISH",
+   "why": "The round fruits carry visible spiky halos that read as durian's pyramidal-spined armour, but the trunk is short and stubby rather than the tall straight trunk with a high open crown the must-read calls for."
+  },
+  {
+   "species": "Hazelnut",
+   "band": "FAIL",
+   "why": "Reads as a vertical stack of green balls topped with stiff brown upward-pointing spikes. No multi-stemmed bush, and the catkins point up and are brown instead of long yellow dangling ones. A stranger would not name it hazelnut."
+  },
+  {
+   "species": "Lychee",
+   "band": "FAIL",
+   "why": "Red fruits are surrounded by radiating green-tipped hairs, identical construction to the Rambutan cell. Should be pebbled bumpy rind, not soft hairs; it is the same build as its neighbour with the texture copied, so it does not read as lychee."
+  },
+  {
+   "species": "Mango",
+   "band": "POLISH",
+   "why": "Orange kidney-shaped fruit sit in a dark drooping-leaf crown and read as mango, but the fruit rests in the canopy rather than dangling on the long wiry stalks the must-read specifies."
+  },
+  {
+   "species": "Papaya",
+   "band": "POLISH",
+   "why": "Single slim ringed trunk with an umbrella crown and an orange fruit cluster packed against the trunk under the leaves reads as papaya, but the crown leaves are feathery pinnate fronds rather than the deeply lobed palmate blades required."
+  },
+  {
+   "species": "Pear",
+   "band": "FAIL",
+   "why": "Rounded green crown with small yellow fruit blobs, the same construction as the Cashew and Mango cells. No upright narrow oval crown and no white five-petalled blossom with dark anthers, so two must-reads are absent and it does not distinguish as pear."
+  },
+  {
+   "species": "Plantain",
+   "band": "FAIL",
+   "why": "Green ribbed false trunk and broad paddle leaves read as banana architecture, but the harvest must-read is missing: no heavy hanging bunch of straight green fingers, only a small pale flower-like cluster at the crown centre, and the leaves are smooth rather than wind-torn."
+  },
+  {
+   "species": "Rambutan",
+   "band": "PASS",
+   "why": "Dark rounded crown carrying tight bunches of red oval fruit covered in soft green-tipped hairs reads unmistakably as rambutan; both must-reads are present."
+  },
+  {
+   "species": "Basking Shark",
+   "band": "POLISH",
+   "why": "The huge round dark disc at the front reads as the cavernous gaping filter-feeding mouth and vertical gill-slit lines wrap the head, so it is nameable; but the mouth disc looks oddly detached/hoop-like, the snout is not pointed-conical, and the dorsal fin is upright rather than the large drooping one called for."
+  },
+  {
+   "species": "Great White Shark",
+   "band": "PASS",
+   "why": "Clear grey-back-over-white-belly countershading with a sharp dividing line, a row of little white triangular serrated teeth at the mouth, an upright triangular dorsal and crescent tail — reads unmistakably as a great white."
+  },
+  {
+   "species": "Hammerhead Shark",
+   "band": "PASS",
+   "why": "The head is a distinct T-shaped vertical hammer bar with an eye at each outer tip, plus a tall sickle dorsal over a slender grey body — instantly nameable and unique in the strip."
+  },
+  {
+   "species": "Juvenile Shark",
+   "band": "POLISH",
+   "why": "Small pale slim body with visible gill slits behind the head and a dorsal fin reads as a young shark, but the juvenile cues from the note are weak — eyes look small rather than proportionally large and the tail is small/near-symmetric instead of showing a clear long upper lobe."
+  },
+  {
+   "species": "Mako Shark",
+   "band": "PASS",
+   "why": "Metallic indigo-blue back over white belly is the standout ID and it is boldly present, plus a large dark eye and a sharply pointed conical snout — clearly distinct from every grey neighbour."
+  },
+  {
+   "species": "Reef Shark",
+   "band": "FAIL",
+   "why": "The defining black/white-marked fin tips are absent — the dorsal and other fins are uniform grey — so it is plainly the same generic torpedo construction as 'Shark' with only a greenish hue shift; a stranger could not name it as a reef shark."
+  },
+  {
+   "species": "Shark",
+   "band": "PASS",
+   "why": "Reads as a representative requiem shark: tall triangular first dorsal, gill slits behind the head, and a crescent mouth slung under the snout over a grey torpedo body — appropriate for the generic name."
+  },
+  {
+   "species": "Tiger Shark",
+   "band": "PASS",
+   "why": "Dark vertical tiger stripes are visible banding the upper flank, with a bluntish snout, teeth at the mouth and a long trailing upper tail lobe — the stripes carry the ID clearly."
+  },
+  {
+   "species": "Whale Shark",
+   "band": "POLISH",
+   "why": "A checkerboard grid of pale spots and lines across a broad body reads as a whale shark and sets it apart from neighbours, but the key terminal feature is wrong — the mouth is slung under a normal pointed shark snout rather than being a huge flat terminal mouth on a boxy flattened head with corner eyes."
+  },
+  {
+   "species": "Black Bear",
+   "band": "FAIL",
+   "why": "Grey (not black) fuzzy body with a down-curved ram-like Roman muzzle instead of a straight profile with tan muzzle; no rump-higher silhouette, no distinct tall ears or claws — reads as a grey sheep, not a black bear."
+  },
+  {
+   "species": "Brown Bear",
+   "band": "FAIL",
+   "why": "Brown coat over the same flat oval body with a convex Roman-nosed head — the diagnostic muscular shoulder hump and dished concave face are both absent, and no long pale digging claws show."
+  },
+  {
+   "species": "Grizzly Bear",
+   "band": "FAIL",
+   "why": "Identical construction to the Brown Bear beside it with only a slightly redder hue; no shoulder hump, no dished face, no pale front claws or grizzled tips — same body, changed color."
+  },
+  {
+   "species": "Panda",
+   "band": "POLISH",
+   "why": "The white body with a black shoulder band joining black forelegs and dark eye/ear patches reads as a panda, but the head carries the same ram muzzle rather than a round head and the teardrop eye patches are only faintly resolved."
+  },
+  {
+   "species": "Polar Bear",
+   "band": "FAIL",
+   "why": "Just an all-white copy of the shared body — the required long neck and small narrow head are missing (it has the same oversized ram head), so it is the base construction recolored white."
+  },
+  {
+   "species": "Sloth Bear",
+   "band": "FAIL",
+   "why": "Dark shaggy coat but no pale U/Y chest blaze and no long pale mobile snout — the muzzle is the same short dark ram shape as the others; the defining chest mark and snout are absent."
+  },
+  {
+   "species": "Spectacled Bear",
+   "band": "FAIL",
+   "why": "Dark coat matching the Sloth Bear's construction with no legible pale cream spectacle rings around the eyes — the eye area is a plain dark patch, so the one diagnostic marking is missing."
+  },
+  {
+   "species": "Sun Bear",
+   "band": "FAIL",
+   "why": "Grey (not jet-black sleek) coat with no golden-cream crescent on the chest and no long climbing claws; it is the same recolored ram body and reads as nothing bear-specific."
+  },
+  {
+   "species": "Brittle Star",
+   "band": "POLISH",
+   "why": "Small distinct central disc with five arms set off from it reads brittle star, but the arms are fairly straight and taper thickly rather than being the snaky whip arms many-times-longer-than-disc the row wants."
+  },
+  {
+   "species": "Flatworm",
+   "band": "FAIL",
+   "why": "Rendered as a heavily ring-segmented tubular grey worm with a single eye spot and rounded head - no arrowhead triangular head, no cross-eyed pair, no ear-like auricle lobes and not ribbon-flat/unsegmented; a stranger would call it a worm, not a planarian."
+  },
+  {
+   "species": "Giant Tube Worm",
+   "band": "PASS",
+   "why": "Cluster of tall white chitin tubes standing upright with blood-red feathery plumes protruding from the tops and no mouth/gut/eyes; all must-reads present."
+  },
+  {
+   "species": "Leech",
+   "band": "POLISH",
+   "why": "Brown fine-ringed body held in a looping inchworm arch reads as a leech, but the end suckers are not distinct - the tips just taper - so that must-read is weak."
+  },
+  {
+   "species": "Sand Dollar",
+   "band": "POLISH",
+   "why": "Pale disc with the incised five-petal flower pattern on the face reads sand dollar, but the heavy round shading inflates it into a sphere/pearl rather than the flat coin-like wafer."
+  },
+  {
+   "species": "Tube Worm",
+   "band": "FAIL",
+   "why": "Plainly the same white-tube-cluster-with-red-plume construction as its Giant Tube Worm neighbour with no distinguishing change - an indistinguishable clone side-by-side."
+  },
+  {
+   "species": "Avocet",
+   "band": "POLISH",
+   "why": "Thin needle bill sweeps strongly upward (correct, opposite of curlew) on a whitish pied body, but legs render yellow instead of the required blue-grey and the pied black-and-white patterning is only loosely suggested."
+  },
+  {
+   "species": "Curlew",
+   "band": "POLISH",
+   "why": "Bill clearly curves smoothly downward over a streaked brown round-headed body, reading as curlew, but the legs are short and stubby rather than the long bare wading legs the must-read demands."
+  },
+  {
+   "species": "Godwit",
+   "band": "POLISH",
+   "why": "Long straight bill with a faint upward tilt sits on a cinnamon-orange breast, but the dark chevron barring is absent and the legs are yellow, not dark."
+  },
+  {
+   "species": "Oystercatcher",
+   "band": "FAIL",
+   "why": "Orange-red chisel bill is right, but the plumage is a uniform black/grey blob with no white at all, so the must-read bold black-and-white blocked plumage is missing, and legs are yellow not pink."
+  },
+  {
+   "species": "Snipe",
+   "band": "FAIL",
+   "why": "It is the same brown body and plain straight bill as Godwit with a duller hue; the bill is not extremely long, the eye is not set high and far back, and there are no bold cream back stripes."
+  },
+  {
+   "species": "Flamingo",
+   "band": "FAIL",
+   "why": "Neck is a short near-vertical stalk with no long S; bill is a small yellow-and-black beak only slightly downturned, not the thick sharply-kinked flamingo bill; legs are short and yellow, not extremely long and pink, no backward ankle."
+  },
+  {
+   "species": "Heron",
+   "band": "FAIL",
+   "why": "Yellow dagger bill and grey-blue colour read, but the neck is held straight identical to the stork's — the required S-kink is absent, and legs are stubby not stilt-like."
+  },
+  {
+   "species": "Ibis",
+   "band": "POLISH",
+   "why": "The long thin smoothly downcurved red bill is unmistakable and distinct from every neighbour; only the tucked short neck and stubby legs (should be held out and long) are secondary gaps."
+  },
+  {
+   "species": "Spoonbill",
+   "band": "POLISH",
+   "why": "Flat bill clearly flares into a rounded spatula at the tip and the pink bare face reads; neck and legs are short rather than long, a secondary gap."
+  },
+  {
+   "species": "Stork",
+   "band": "FAIL",
+   "why": "Straight heavy bill and straight neck are right, but the 'very long red legs' must-read is wrong — legs are short and yellow — and the body is the identical chassis as the heron with only the hue changed to white."
+  },
+  {
+   "species": "Bracket Fungus",
+   "band": "FAIL",
+   "why": "Same concentric-arc half-disc clone as every neighbour; reads as thin tiered rings, not the one thick solitary woody hoof it must be, and indistinguishable from Shelf Fungus beside it."
+  },
+  {
+   "species": "Chicken-of-the-Woods",
+   "band": "FAIL",
+   "why": "Rendered in pale blue-grey concentric arcs instead of the mandated brilliant sulphur-yellow to salmon-orange; the vivid orange shelves with yellow margins must-read is entirely absent, and it is the same clone construction."
+  },
+  {
+   "species": "Oyster Mushroom",
+   "band": "FAIL",
+   "why": "Amber tree-ring half-disc with no white radial gills and no off-centre stubby stem; the gills must-read is missing, colour is gold not grey-fawn, and it is the identical concentric clone."
+  },
+  {
+   "species": "Shelf Fungus",
+   "band": "FAIL",
+   "why": "Bright crimson-red concentric disc instead of banded ochre and umber; colour must-read wrong, and it is the exact same construction as Bracket Fungus which it is supposed to be distinguished from."
+  },
+  {
+   "species": "Turkey Tail",
+   "band": "FAIL",
+   "why": "Concentric bands are all one brown hue with only tonal shifts; the note-required hue-varying rings (rust, blue-grey, cream, near-black) are missing, so it reads as a plain single-colour clone of the others."
+  },
+  {
+   "species": "Clam",
+   "band": "FAIL",
+   "why": "Rounded twin-valve shell with a central hinge seam reads generically, but the must-read pale muscular foot / paired siphons is entirely absent, and the shell is the identical construction to Giant Clam and Oyster in the same strip with only the cream hue changed."
+  },
+  {
+   "species": "Giant Clam",
+   "band": "FAIL",
+   "why": "Plainly the same rounded shell mesh as Clam and Oyster with only a teal hue swap — no heavy fluted shell, no wavy zigzag meeting lips (the seam is a plain straight vertical line), and no iridescent fleshy mantle bulging between the valves."
+  },
+  {
+   "species": "Mussel",
+   "band": "POLISH",
+   "why": "The only distinct build in the strip: a dark blue-black glossy elongated wedge shell that a stranger would name as a mussel, but the byssal beard threads anchoring it are missing and the growth lines are barely visible."
+  },
+  {
+   "species": "Oyster",
+   "band": "FAIL",
+   "why": "Same symmetric smooth rounded shell construction as Clam with concentric rings and a straight hinge line, only greyer and smaller — none of the must-reads present: no irregular ruffled rough-layered shell, no unequal cupped-vs-flat valves, no pearly interior."
+  },
+  {
+   "species": "Ground Squirrel",
+   "band": "POLISH",
+   "why": "The thin, sparsely-furred tail arching up-left (not a bushy plume) plus tiny ears do distinguish it and give a squirrel read, but the body is a plump hunched ovoid, not the low tubular form the must-read calls for."
+  },
+  {
+   "species": "Prairie Dog",
+   "band": "FAIL",
+   "why": "It is the identical plump ovoid body/head/ear as the Vole and Water Vole beside it with only the tan hue changed; nothing about it reads as a prairie dog to a stranger."
+  },
+  {
+   "species": "Vole",
+   "band": "FAIL",
+   "why": "Plainly the same construction as the Water Vole next to it — same body, head, ear and rear — only recolored grey; no distinct vole read, just a hue swap."
+  },
+  {
+   "species": "Water Vole",
+   "band": "FAIL",
+   "why": "A dark-brown recolor of the exact same mesh as the Vole, not the chunkier chubby-faced form its must-read demands; identical construction, hue only."
+  },
+  {
+   "species": "Racer",
+   "band": "FAIL",
+   "why": "The body is a thick rope-like coil, not a very slender whip-thin S-curve, and it is covered in heavy segment banding rather than smooth glossy uniform scales — plus it is the identical coil construction as its three neighbours, only the hue (grey-blue) changed."
+  },
+  {
+   "species": "Tree Snake",
+   "band": "FAIL",
+   "why": "No branches anywhere and no loose draped loops; the body is a chunky coil, not extremely slender/whip-thin, and the head is a blunt rounded knob with no long pointed snout — same construction as the others with just green hue swapped."
+  },
+  {
+   "species": "Vine Snake",
+   "band": "FAIL",
+   "why": "Despite aspect 12 the rendered body is the same thick banded coil, not a needle-thin pencil-width whip; the head is a rounded knob with no long dart-shaped snout and no visible horizontal keyhole pupil — identical build to its neighbours, only the yellow-green hue differs."
+  },
+  {
+   "species": "Whip Snake",
+   "band": "FAIL",
+   "why": "Body is a thick coil with no extremely thin whip-like form and no visible very-long tapering tail; the head is the same blunt knob with one round eye and red tongue as the other three — plainly the same construction with only the olive hue changed."
+  },
+  {
+   "species": "Agave",
+   "band": "POLISH",
+   "why": "Broad blue-grey sword rosette with a yellow-bud stalk reads, and faint face-vein lines show, but the black terminal spine at each leaf tip and the hooked edge-teeth are not visible — the very features that separate it from Yucca."
+  },
+  {
+   "species": "Aloe",
+   "band": "PASS",
+   "why": "Greener upward-curving fleshy blades, a tall bare stalk rising well above the rosette, and an orange-red flower cluster at the top — all three must-reads present and unmistakably aloe."
+  },
+  {
+   "species": "Prickly Pear",
+   "band": "FAIL",
+   "why": "Pale overlapping paddle pads are present but carry no areoles, glochids or spines (a spineless cactus), and the harvest is wrong — a lone yellow flower floats detached above the pads instead of magenta tunas ringing the pad rim."
+  },
+  {
+   "species": "Yucca",
+   "band": "POLISH",
+   "why": "Narrow rigid blue-grey swords with sharp tips plus a tall central spike of cream bells read as yucca, but the signature curly white fibres peeling from the leaf edges are absent."
+  },
+  {
+   "species": "Cranberry",
+   "band": "POLISH",
+   "why": "Now a distinctly low wiry creeping mat with tiny leaves and red berries dotted along it — clearly differentiated from the three upright neighbours and reads as cranberry. But the pink backswept crane's-head flowers are barely present; the mat is carried almost entirely by berries, so the flower must-read is weak."
+  },
+  {
+   "species": "Heather",
+   "band": "POLISH",
+   "why": "Slim upright wiry stems topped with dense purple-pink spikes of tiny bell flowers read clearly as heather. Gap: the stems appear bare brown rather than clothed in tiny scale leaves hugging the stem, so that must-read is not visible, and the form reads as tall spires rather than a low wiry mound."
+  },
+  {
+   "species": "Oleander",
+   "band": "PASS",
+   "why": "Upright wand-like stems rising from the base, narrow lance leaves ranged along them, and dense terminal heads of pink five-petalled pinwheel flowers with dark eyes at the shoot tips — all three must-reads present and a stranger would name oleander."
+  },
+  {
+   "species": "Sagebrush",
+   "band": "FAIL",
+   "why": "Silver-grey foliage is present, but the trunk is straight brown wiry stems with no twisted gnarled woody trunk and no shredding grey bark — that must-read is missing. Structurally it is the same upright multi-stem spike construction as Heather with only the hue swapped to silver, and the dull-yellow flower wands are absent (foliage reads white)."
+  },
+  {
+   "species": "Crow",
+   "band": "FAIL",
+   "why": "Bill is a tiny nub not a stout straight pointed bill, tail tapers to a point rather than square-tipped, and the body is the same construction as the Raven beside it with only a hue change."
+  },
+  {
+   "species": "Magpie",
+   "band": "POLISH",
+   "why": "Reads as magpie via the white pied block on the breast and a long dark tail past the body, but the bill is too small for a heavy straight crow bill and the tail is a uniform taper rather than a clear graduated wedge."
+  },
+  {
+   "species": "Raven",
+   "band": "FAIL",
+   "why": "No massive curved bill (bill is a tiny straight nub), no shaggy throat hackles, and the short pointed tail shows no wedge; it is the same body as the Crow recoloured."
+  },
+  {
+   "species": "Fishing Cat",
+   "band": "POLISH",
+   "why": "Stocky olive-green body with solid dark spots and a short thick stub tail all read, but the spots are blotchy clumps not clear rows and the neck stripes are not visible."
+  },
+  {
+   "species": "Sand Cat",
+   "band": "FAIL",
+   "why": "Pale coat and banded black-tipped tail read, but the signature broad flattened head with low wide-set ears is absent — the head is small with ordinary upright pointed ears, so a stranger sees a generic pale cat; furred feet also not readable."
+  },
+  {
+   "species": "Wildcat",
+   "band": "PASS",
+   "why": "Bold striped tabby coat over a sturdy body with a thick ringed, black-tipped tail — all three must-reads present and clearly distinct from the spotted Fishing Cat and plain Sand Cat beside it."
+  },
+  {
+   "species": "Cattail",
+   "band": "POLISH",
+   "why": "Dense brown cigar-shaped spike on a bare central stem reads unmistakably, with a faint thin male tip above it; but the base leaves splay outward like a fountain rather than the required vertical strap blades."
+  },
+  {
+   "species": "Seagrass",
+   "band": "FAIL",
+   "why": "The blades cluster into an upright vase and curl into odd blobby shapes at the top; none of the must-reads are present — no blades leaning one way with a current, no horizontal creeping rhizome with shoots, no meadow of parallel straps rooted in sand."
+  },
+  {
+   "species": "Wild Rice",
+   "band": "FAIL",
+   "why": "The top is a stiff symmetric radiating fan on a golden beaded rod, not an open airy branching panicle, and the grains read gold rather than narrow purple-brown — a stranger would call this an ornamental reed, not wild rice."
+  },
+  {
+   "species": "Cedar",
+   "band": "FAIL",
+   "why": "A pointed stacked-triangle Christmas-tree, not the broad FLAT-TOPPED crown with tiered horizontal branch plates the must-read demands; no upright barrel cones stand on the branch tops (just two tiny tan blobs tucked inside the foliage). Same construction as its neighbours, hue only."
+  },
+  {
+   "species": "Hemlock",
+   "band": "FAIL",
+   "why": "Drawn as a conifer TREE, but this is poison hemlock — an herb. Zero must-reads present: no smooth hollow purple-blotched stem, no finely cut fern-like leaves, no flat white umbrella flower heads. It is literally the identical triangle-tree as Cedar and Redwood beside it."
+  },
+  {
+   "species": "Redwood",
+   "band": "FAIL",
+   "why": "A short stubby stacked-triangle conifer, not the extremely tall narrow column with a buttressed flaring base; trunk is a plain brown cylinder, not thick fibrous cinnamon-red bark in deep vertical ridges. Same copy-paste construction as the other two, only marginally taller."
+  },
+  {
+   "species": "Fennel",
+   "band": "FAIL",
+   "why": "Foliage is drawn as coarse toothed pinnate leaflets (fern-like) instead of the required cloud of thread-fine feathery foliage; the smooth blue-tinged hollow stem is not visible. Only the yellow spoke-rayed umbel reads."
+  },
+  {
+   "species": "Garlic",
+   "band": "FAIL",
+   "why": "The scape rises as a straight stem to a white umbel — no curling looped flower scape — and the base shows no papery bulb with clove divisions. Same fan-of-leaves plus straight-umbel construction as the Onion beside it."
+  },
+  {
+   "species": "Onion",
+   "band": "FAIL",
+   "why": "Leaves read as flat straps, not hollow round tubes, and there is no swollen papery bulb with a fringe of wiry roots at the base. Plainly the same construction as Garlic with nothing distinguishing the two."
+  },
+  {
+   "species": "Arctic Fox",
+   "band": "POLISH",
+   "why": "All-white fluffy coat, short rounded ears and low bushy tail all read as arctic fox, but the muzzle is still pointed and elongated rather than the blunt short one the must-read requires."
+  },
+  {
+   "species": "Wolf",
+   "band": "POLISH",
+   "why": "Broad blocky head with erect triangular ears, grey coat, yellow eye and straight low uncurled tail all read as wolf, but the legs are short and stocky rather than the long legs and narrow deep chest called for."
+  },
+  {
+   "species": "Cowrie",
+   "band": "POLISH",
+   "why": "Glossy egg-smooth ovoid with no spire and a clear row of tooth-notches along the underside slit both read; the patterned mantle flaps folding up over the shell are only faint speckling, not visible flap edges."
+  },
+  {
+   "species": "Limpet",
+   "band": "POLISH",
+   "why": "Ribbed radiating ridges converge on a clean cone-hat silhouette that names the limpet, but the apex reads dead-centre rather than off-centre and it floats over a shadow with no rock to clamp flush against."
+  },
+  {
+   "species": "Acacia",
+   "band": "FAIL",
+   "why": "Crown is a rounded puffy green cloud-blob, not the must-read flat-topped umbrella; no paired white thorns anywhere on the trunk/nodes; the flowers are bright yellow sunflower discs, not cream puffballs. The feathery sprigs radiate outward rather than sitting in horizontal layers. A stranger would not name this an acacia."
+  },
+  {
+   "species": "Baobab",
+   "band": "FAIL",
+   "why": "Trunk is a thin ordinary brown trunk, not the enormously swollen smooth grey barrel that defines a baobab; the top is a normal round bushy green canopy with no short stubby root-like branches and no bare upside-down silhouette. The three gourds sit inside the foliage rather than dangling on long stalks. Nobody would name this a baobab."
+  },
+  {
+   "species": "Red Algae",
+   "band": "FAIL",
+   "why": "Rendered as three broad smooth flame/blade fronds; the must-read fine repeatedly forking feathery branch structure is entirely absent (solid unbranched blades), though the deep crimson-purple colour and small holdfast are present."
+  },
+  {
+   "species": "Sargassum",
+   "band": "FAIL",
+   "why": "Just a neat golden vertical sheaf of thin smooth strands; no round pea-like gas floats, no toothed leaf-like blades, and not a bushy tangled mass. Two of three must-reads missing; reads as a wheat sheaf, not Sargassum."
+  },
+  {
+   "species": "Clownfish",
+   "band": "POLISH",
+   "why": "Unmistakable orange clownfish — blunt rounded snout, prominent eye, rounded paddle tail, black-edged white bands. But the top dorsal renders as a jagged dark-brown crown, not a rounded paddle fin, and the white bands read as roughly two prominent stripes plus a head band rather than a crisp three."
+  },
+  {
+   "species": "Crane",
+   "band": "FAIL",
+   "why": "Head carries a white spiky crest, not the required bare red crown patch; body is a plain grey ovoid with no drooping bustle of tail plumes over the rump; neck reads short and curved rather than long and straight. Two of three must-reads missing/wrong."
+  },
+  {
+   "species": "Red Fox",
+   "band": "FAIL",
+   "why": "White-tipped bushy tail reads on the left, but two must-reads fail: the legs are solid orange with no black stockings visible, and the head is a blocky snout, not the sharp pointed ears and narrow muzzle a fox needs — a stranger would read a generic orange dog."
+  },
+  {
+   "species": "Scale Worm",
+   "band": "FAIL",
+   "why": "Back shows a single run of transverse accordion-ribs like a grub/maggot, not the required two rows of overlapping scale plates; the bristles are stiff uniform straight red skewers stabbed top and bottom rather than tufts between scales. A stranger reads it as a grub."
+  },
+  {
+   "species": "Air Plant",
+   "band": "FAIL",
+   "why": "Rosette of silvery narrow leaves reads, but the must-read flat pink bract paddle is entirely absent — only a bare green stalk with a tiny violet flower tip; leaves also splay straight rather than curling."
+  },
+  {
+   "species": "Beet",
+   "band": "FAIL",
+   "why": "Plain medium-green rosette with pale-green veins and no crimson anywhere; the round dark red root is entirely absent (only a faint shadow under the leaves), and the blades are flat and matte, not puckered — all three must-reads missing."
+  },
+  {
+   "species": "Black-Eyed Susan",
+   "band": "POLISH",
+   "why": "Golden-yellow rays (sampled ~230,180,30) ring a darker centre disc (~130,90,35 down to ~100,70,25) atop a tall alternate lance-leaved herb, so a dark-eyed daisy reads; but the centre is amber, not a deep chocolate-brown dome, the rays radiate straight and spiky rather than slightly drooping, and the smooth stem and leaves show no bristly hair."
+  },
+  {
+   "species": "Date Palm",
+   "band": "POLISH",
+   "why": "Pale blue-grey-green feather fronds form a convincing open crown and an amber-brown date cluster sits at the crown, so the species is nameable, but the trunk is a plain horizontally-banded pole with no diamond leaf-base pattern, and the dates read as a compact knob rather than heavy bunches hanging below the fronds."
+  },
+  {
+   "species": "Eucalyptus",
+   "band": "FAIL",
+   "why": "Crown is a dense rounded green blob with leaves radiating outward, not sickle-shaped leaves dangling straight down into an open sparse crown; trunk is a plain flat brown pole with no ribbon-peeling cream/grey/orange bark patches; the cream rings with dark holes read as googly eyes, not woody gumnut cup capsules. Two of three must-reads missing, one unreadable."
+  },
+  {
+   "species": "Meadow Grass",
+   "band": "FAIL",
+   "why": "The tuft is right — fresh green loose blades with boat tips, no thatch mound — but the seed head renders as a dense pale lumpy club, a solid closed mass. The two seed-head must-reads (airy open pyramid, fine whorled panicle branches) are absent; no branching or spikelet openness shows, so a stranger sees a grape-hyacinth-like spike, not a Poa panicle."
+  },
+  {
+   "species": "Watercress",
+   "band": "FAIL",
+   "why": "White threadlike roots at nodes are entirely absent (all-green, no white anywhere), the rounded leaflets are near-uniform with no distinct bigger terminal leaflet, and the central spiky flower head reads like a dandelion seed-head, not watercress on a floating mat."
+  }
+ ]
+}

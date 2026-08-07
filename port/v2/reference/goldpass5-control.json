@@ -1,0 +1,260 @@
+{
+ "generated": "gp5 control (unchanged, waves 58-60)",
+ "rows": [
+  {
+   "species": "Acai",
+   "band": "FAIL",
+   "why": "A single thin bare stick with three small orange leaves — no clump of slender ringed grey stems, no drooping feather crown, and no hanging broom-sprays of dark berries. Nothing of an acai palm reads."
+  },
+  {
+   "species": "Beach Morning Glory",
+   "band": "FAIL",
+   "why": "An S-curving vertical vine with plain rounded oval leaves and tiny purple dots — the same construction as Canopy Vine beside it. No goat's-foot two-lobed leaf notch, no big pink-magenta funnel flowers, no flat creeping runners."
+  },
+  {
+   "species": "Canopy Vine",
+   "band": "POLISH",
+   "why": "Reads as a leafy liana with small coiling tendrils at the top, but the stem is thin green rather than a thick woody rope, and leaves run the whole length instead of concentrating only at the crown."
+  },
+  {
+   "species": "Castor Bean",
+   "band": "POLISH",
+   "why": "Bronze-red star-shaped palmate lobed leaves and red-tinged stems read clearly, but the seed capsules are faint whitish bristles rather than upright spikes of bristly red capsules above the foliage."
+  },
+  {
+   "species": "Cloudberry",
+   "band": "FAIL",
+   "why": "A tall spiky green column tipped with orange — looks like a cactus or agave. No short stem with crumpled five-lobed leaves, no white five-petalled flower, no solitary golden-amber berry."
+  },
+  {
+   "species": "Coffee",
+   "band": "POLISH",
+   "why": "An upright leafy clump with a cluster of red berries at the top reads as a berry shrub, but there are no tiered horizontal branch layers and the leaves aren't glossy oval wavy-edged — the signature coffee form is absent."
+  },
+  {
+   "species": "Crabapple",
+   "band": "POLISH",
+   "why": "A small tree with a green crown and several round red apples reads as a fruit tree, but there is no five-petalled blossom and the apples don't hang on long slender stalks in quantity."
+  },
+  {
+   "species": "Date Plum",
+   "band": "POLISH",
+   "why": "A small upright tree with a few round orange persimmon-like fruits reads as a fruit tree, but there is no papery star calyx on the fruit and no dark blocky bark."
+  },
+  {
+   "species": "Ephedra",
+   "band": "POLISH",
+   "why": "An upright broom of bare yellow-green rods with small red cone-berries at the tips reads well as a leafless jointed shrub, but the rods look like straight sticks with no visible joint segmentation."
+  },
+  {
+   "species": "Glasswort",
+   "band": "FAIL",
+   "why": "A single smooth sword-shaped green blade — like one agave leaf. No articulated fleshy sausage-jointed segments, no opposite candelabra branching, no red flush on older segments."
+  },
+  {
+   "species": "Indian Gooseberry",
+   "band": "POLISH",
+   "why": "Fine feathery green sprays with pale whitish globes nestled among them read as a feathery-leaved tree with pale fruit; the drooping-twig habit and near-stalkless fruit come across, with only minor fruit definition lacking."
+  },
+  {
+   "species": "Joshua Tree",
+   "band": "POLISH",
+   "why": "A trunk forking into crooked upward arms each ending in a spiky pom-pom rosette of daggers reads clearly as a Joshua tree, but the trunk is smooth brown rather than shaggy grey packed dead-leaf bark, and there are only two arms."
+  },
+  {
+   "species": "Lotus Root",
+   "band": "FAIL",
+   "why": "Just flat round lily pads on water with a pink flower — this is the whole lotus plant, not the root harvest. No sausage-chain rhizome pulled from mud and no ring of holes in a cut root, which are the entire point."
+  },
+  {
+   "species": "Maple Sap",
+   "band": "FAIL",
+   "why": "A generic green-crowned tree on a brown trunk. The defining harvest — a spile and bucket tapped into the trunk — is entirely absent, and the foliage shows no clear five-lobed palmate maple leaf."
+  },
+  {
+   "species": "Neem",
+   "band": "POLISH",
+   "why": "Feathery pinnate sprays radiating from a brown-trunk tree with small yellow-green oval fruit reads plausibly, but the crown is spiky rather than the broad rounded shady dome, and there are no loose sprays of small white flowers."
+  },
+  {
+   "species": "Papyrus Shoots",
+   "band": "FAIL",
+   "why": "Renders as a fountain of arching grassy blades from a ground clump; none of the bare triangular stems topped with a firework starburst of thin rays are present, so a stranger would not name papyrus."
+  },
+  {
+   "species": "Rhubarb",
+   "band": "FAIL",
+   "why": "The thick red stalks fanning from a ground crown are strong, but the leaf must-read is wrong: the blades are small smooth round lollipop blobs, not huge crinkled heart-shaped puckered leaves far larger than the plant."
+  },
+  {
+   "species": "Salmonberry",
+   "band": "FAIL",
+   "why": "A single vertical stalk with symmetric orange-tan oval leaflets in a ladder frond; no upright golden-brown canes, no magenta five-petalled flowers, and no orange-pink thimble berries anywhere."
+  },
+  {
+   "species": "Sea Purslane",
+   "band": "FAIL",
+   "why": "Depicted as an upright pale blue-green rounded rosette of broad overlapping fleshy leaves with one pink star flower; missing the defining low mat sprawling flat and rooting at the nodes, and leaves are broad not narrow."
+  },
+  {
+   "species": "Serviceberry",
+   "band": "POLISH",
+   "why": "Slim multi-stemmed shrub with small purple-pink berry clusters among green oval leaves reads as a berry shrub, but the white strap-petalled flowers and the starry crown scar on the berries are not clearly rendered."
+  },
+  {
+   "species": "Tobacco",
+   "band": "PASS",
+   "why": "Large ovate leaves step up a single thick stem getting smaller toward the top, crowned by a cluster of long pink trumpet flowers; unmistakably tobacco."
+  },
+  {
+   "species": "Tussock Grass",
+   "band": "POLISH",
+   "why": "A fountain of arching straw-tan blades from a base reads as a grass tuft, but there is no distinct pedestal mound of dead thatch and no thin seed panicles standing clear above the fountain."
+  },
+  {
+   "species": "Watermelon",
+   "band": "PASS",
+   "why": "A ground-trailing runner with a curled tendril bears a big light-and-dark striped melon sitting flat on the soil; reads clearly as watermelon despite the leaves being small bright-green tufts rather than lobed grey-green."
+  },
+  {
+   "species": "Wild Cherry",
+   "band": "FAIL",
+   "why": "Same spiky feathery green-crown tree chassis as Neem with only red berries swapped in; no shiny red-brown lenticel bark peeling in bands and no white blossom on bare wood."
+  },
+  {
+   "species": "Wild Guava",
+   "band": "FAIL",
+   "why": "Rendered as the same multi-stem shrub as Serviceberry/Yerba Mate with yellow-green round fruit swapped in; should be a tree, and missing the mottled flaking copper bark and quilted parallel-veined leaves."
+  },
+  {
+   "species": "Yerba Mate",
+   "band": "FAIL",
+   "why": "A sparse twiggy multi-stem shrub with red berries, sharing the same chassis as its shrub neighbours; missing the dense evergreen small-tree crown and the glossy leathery holly-like leaves."
+  },
+  {
+   "species": "Avocado",
+   "band": "POLISH",
+   "why": "Dark-green rounded crown carries genuinely pear-shaped fruit — the two grey-green teardrop fruits hanging mid-left read as heavy pear-shaped avocados on short stalks, satisfying the harvest must-read. But the crown is a compact ball, not the 'tall spreading' drooping canopy, and it shares the generic trunk+blob construction of its neighbours."
+  },
+  {
+   "species": "Fig",
+   "band": "FAIL",
+   "why": "The #1 must-read — big lobed hand-shaped fig leaf — is entirely absent; the foliage is the same small spiky simple leaves as every other tree in the strip. Only the purple-brown fruit dots hint at fig, and a stranger seeing that generic crown would not name it fig without the signature lobed leaf."
+  },
+  {
+   "species": "Lime",
+   "band": "POLISH",
+   "why": "Round green fruit sits against glossy green foliage, giving a readable citrus/lime harvest cue, and the crown is the brightest green in the strip. But the fruit is oversized and yellow-green rather than 'small round green', and neither the winged leaf stalk nor the sharp joint spines are visible."
+  },
+  {
+   "species": "Peach",
+   "band": "POLISH",
+   "why": "Distinctly narrow lance-shaped willow-like leaves radiate from the crown (unlike its rounder-leaved neighbours) and the fruit are red-blushed-over-gold, matching the peach harvest colour. Missing the cleft suture seam on the fruit and the low vase-shaped crown, but the species reads."
+  },
+  {
+   "species": "Plover",
+   "band": "PASS",
+   "why": "Large round head with a very short stubby pigeon-like bill, big dark eye, and a compact upright grey body on medium yellow legs — the big-headed short-billed look reads plover cleanly against the sandpiper beside it."
+  },
+  {
+   "species": "Sandpiper",
+   "band": "POLISH",
+   "why": "Long slim straight probing bill and a horizontal crouched body clearly read sandpiper, but the yellow legs sit fairly short rather than the long thin wading legs the must-read calls for."
+  },
+  {
+   "species": "Bear",
+   "band": "POLISH",
+   "why": "Clearly a bear: broad dished head with small rounded ears, a raised muscular shoulder hump behind the head over the forelegs, and white claw marks on the paws. But the four legs render as flat geometric plank-like rectangles with no plantigrade paw volume, and a fringe of spiky quill-like bristles runs the belly and back reading more porcupine than bear fur; no stub tail is visible."
+  },
+  {
+   "species": "Bittern",
+   "band": "FAIL",
+   "why": "The signature must-read is absent: the dagger bill points forward and slightly DOWN, not straight up in the reed-mimic freeze pose. The body is a flat solid buff/tan with no brown-and-buff streaked camouflage, and the neck is thin rather than thick and hunched. A stranger sees a generic plump duck-like bird, not a bittern."
+  },
+  {
+   "species": "Black Pepper",
+   "band": "FAIL",
+   "why": "Leaves are narrow willow-like lances, not the broad heart-shaped ribbed leaves the row demands; the sinuous stem clings to no support and shows no root pads. Only faint beaded strings hint at peppercorns — a stranger reads a generic vine, not pepper."
+  },
+  {
+   "species": "Cabbage",
+   "band": "POLISH",
+   "why": "Overlapping green leaf-lobe ball with pointed leaves flaring open at the base reads as a cabbage head, but the white midribs are only faint pale outlines rather than thick bold ribs, and the tight inner heart is an over-smooth featureless pale dome that reads like a separate bulb on top; colour is muted olive not blue-green with waxy bloom."
+  },
+  {
+   "species": "Chough",
+   "band": "FAIL",
+   "why": "Body plumage reads gray/slate with silvery highlights, not the must-read glossy all-black crow plumage; bill is orange and straight, not the slender curved red bill. Only the red legs land."
+  },
+  {
+   "species": "Coral Fungus",
+   "band": "FAIL",
+   "why": "Thin wiry twigs fork into blunt tips in cream/ochre with no caps or gills, but they rise as two-to-three separate spindly trunks with airy widely-spaced crowns — no single thick base and none of the required density, so it reads as a copse of bare winter saplings, not a coral-fungus clump."
+  },
+  {
+   "species": "Desert Rose",
+   "band": "FAIL",
+   "why": "A tall narrow green spike that tapers to a POINT at the bottom with a single pink flower at the tip — the opposite of the must-read hugely swollen bulbous grey caudex base, which is entirely absent; no thick stubby branches either. Reads as an agave blade, not Adenium's fat bottle trunk."
+  },
+  {
+   "species": "Dog",
+   "band": "FAIL",
+   "why": "Pointed muzzle with a dark nose tip and one erect triangular ear both read, but the bushy plumed tail droops straight DOWN below the hindquarters instead of being carried above the back — that must-read is wrong. Body/hindleg construction also reads faintly equine rather than canine."
+  },
+  {
+   "species": "Fox",
+   "band": "FAIL",
+   "why": "Tail is plain orange fluff with NO white tip (top must-read missing); body is a deep-chested bulky quadruped, not low/slender, plainly the same chassis as the dog/pony builds with only an orange hue; ears indistinct and no black stockings. A stranger reads orange dog, not fox."
+  },
+  {
+   "species": "Grass Snake",
+   "band": "PASS",
+   "why": "Bright pale-yellow collar wraps the neck behind a rounded non-triangular head with a round eye and red forked tongue; olive-green ringed body. All three must-reads legible; body is coiled rather than a loose S-curve but that is cosmetic."
+  },
+  {
+   "species": "Kelp",
+   "band": "FAIL",
+   "why": "Bright yellow-gold bundle of thin spaghetti-like strands with rounded blobs at the top — not the olive-brown/chocolate colour, and no wide flapping strap-like blade (threads instead of a broad blade). Reads as a sheaf of noodles or wheat, not kelp; blade and colour must-reads wrong."
+  },
+  {
+   "species": "Land Snail",
+   "band": "POLISH",
+   "why": "Coiled spiral shell and rippling gliding foot both read clearly, but the front tentacles are only a short forked stub with no eyes visible at the tips and no clear second pair, so the eye-tipped upper-tentacle must-read is missing."
+  },
+  {
+   "species": "Lionfish",
+   "band": "FAIL",
+   "why": "Plain straight white needles radiate in ALL directions (top, bottom, sides) like a sea-urchin or pincushion beetle, not a lionfish. The must-read feathery separated pectoral fin rays spread like wings are absent — every spine is a bare needle. There is no dorsal FAN either; the spines are radial, not a fan. Only the red-brown/white zebra banding on the oval body reads. A stranger sees an urchin-bug, not a lionfish."
+  },
+  {
+   "species": "Marmot",
+   "band": "PASS",
+   "why": "Fat barrel body sits low and squat on near-invisible very short legs, a short stubby furry tail curls at the rear, and the blunt rounded head carries two small ears plus prominent incisors — all three must-reads present in a correct groundhog-like profile."
+  },
+  {
+   "species": "Moorhen",
+   "band": "FAIL",
+   "why": "Red bill with yellow tip and red forehead shield read well and a white flank streak is present, but the rear is a featureless dark-grey blob with no cocked tail and no white undertail flashes — that must-read is missing/invisible."
+  },
+  {
+   "species": "Raspberry",
+   "band": "POLISH",
+   "why": "Upright tan canes fan from one base with red-pink thimble berry clusters at the tips and pale undersides flashing on the leaflets — all three must-reads present, but the berries read as pink floral pom-poms rather than clearly red hollow-cored thimbles and the leaves are sparse spiky blades, not obvious pinnate toothed leaflets."
+  },
+  {
+   "species": "Razor Clam",
+   "band": "FAIL",
+   "why": "Lens/almond shape tapering to points at both ends, not the parallel-edged straight razor silhouette; no digging foot protrudes from either end (two must-reads missing)."
+  },
+  {
+   "species": "Sea Anemone",
+   "band": "PASS",
+   "why": "Squat red column trunk sits on a basal disc against the ground shadow, a dark central mouth is clearly visible in the middle of the tentacle ring, and a crown of tentacles radiates from the top; a stranger would name it a sea anemone. Tentacles read slightly spiky rather than densely soft-waving, but all three must-reads are present."
+  },
+  {
+   "species": "Sweet Potato",
+   "band": "FAIL",
+   "why": "No tubers drawn at all — the smooth spindle-shaped tuber must-read is absent; leaves are plain round blobs, not heart-shaped or three-lobed; vine climbs vertically instead of ground-hugging and spreading wide. A stranger could not name it."
+  }
+ ]
+}

@@ -1,1 +1,1142 @@
-[{"set":"earth-fauna","name":"Jaguar"},{"set":"earth-fauna","name":"Leopard"},{"set":"earth-fauna","name":"Tiger"},{"set":"earth-fauna","name":"Clouded Leopard"},{"set":"earth-fauna","name":"Ocelot"},{"set":"earth-fauna","name":"Forest Elephant"},{"set":"earth-fauna","name":"Peccary"},{"set":"earth-fauna","name":"Okapi"},{"set":"earth-fauna","name":"Sloth"},{"set":"earth-fauna","name":"Elephant"},{"set":"earth-fauna","name":"Rhinoceros"},{"set":"earth-fauna","name":"Gaur"},{"set":"earth-fauna","name":"Banteng"},{"set":"earth-fauna","name":"Water Buffalo"},{"set":"earth-fauna","name":"Antelope"},{"set":"earth-fauna","name":"Sloth Bear"},{"set":"earth-fauna","name":"Lion"},{"set":"earth-fauna","name":"Giraffe"},{"set":"earth-fauna","name":"Zebra"},{"set":"earth-fauna","name":"Kudu"},{"set":"earth-fauna","name":"Impala"},{"set":"earth-fauna","name":"Buffalo"},{"set":"earth-fauna","name":"Hyena"},{"set":"earth-fauna","name":"Caracal"},{"set":"earth-fauna","name":"Spectacled Bear"},{"set":"earth-fauna","name":"Mountain Tapir"},{"set":"earth-fauna","name":"Cougar"},{"set":"earth-fauna","name":"Panda"},{"set":"earth-fauna","name":"Asian Elephant"},{"set":"earth-fauna","name":"Takin"},{"set":"earth-fauna","name":"Black Bear"},{"set":"earth-fauna","name":"Brown Bear"},{"set":"earth-fauna","name":"Wolf"},{"set":"earth-fauna","name":"Bobcat"},{"set":"earth-fauna","name":"Lynx"},{"set":"earth-fauna","name":"Elk"},{"set":"earth-fauna","name":"Badger"},{"set":"earth-fauna","name":"Moose"},{"set":"earth-fauna","name":"Caribou"},{"set":"earth-fauna","name":"Snow Leopard"},{"set":"earth-fauna","name":"Mountain Goat"},{"set":"earth-fauna","name":"Ibex"},{"set":"earth-fauna","name":"Chamois"},{"set":"earth-fauna","name":"Fishing Cat"},{"set":"earth-fauna","name":"Spotted Hyena"},{"set":"earth-fauna","name":"African Elephant"},{"set":"earth-fauna","name":"Wildebeest"},{"set":"earth-fauna","name":"Hippopotamus"},{"set":"earth-fauna","name":"Eland"},{"set":"earth-fauna","name":"Hartebeest"},{"set":"earth-fauna","name":"Oryx"},{"set":"earth-fauna","name":"Bison"},{"set":"earth-fauna","name":"Saiga"},{"set":"earth-fauna","name":"Wild Horse"},{"set":"earth-fauna","name":"Wild Ass"},{"set":"earth-fauna","name":"Camel"},{"set":"earth-fauna","name":"Yak"},{"set":"earth-fauna","name":"Cattle"},{"set":"earth-fauna","name":"Sheep"},{"set":"earth-fauna","name":"Goat"},{"set":"earth-fauna","name":"Wild Pony"},{"set":"earth-fauna","name":"Wild Sheep"},{"set":"earth-fauna","name":"Bactrian Camel"},{"set":"earth-fauna","name":"Wildcat"},{"set":"earth-fauna","name":"Polar Bear"},{"set":"earth-fauna","name":"Musk Ox"},{"set":"earth-fauna","name":"Walrus"},{"set":"earth-fauna","name":"Cow"},{"set":"earth-fauna","name":"Bull"},{"set":"earth-fauna","name":"Horse"},{"set":"earth-fauna","name":"Donkey"},{"set":"earth-fauna","name":"Llama"},{"set":"earth-fauna","name":"Alpaca"},{"set":"earth-fauna","name":"Tasmanian Devil"},{"set":"earth-fauna","name":"Sun Bear"},{"set":"earth-fauna","name":"Grizzly Bear"},{"set":"earth-fauna","name":"Pronghorn"},{"set":"earth-fauna","name":"Springbok"},{"set":"earth-fauna","name":"Bongo"},{"set":"earth-fauna","name":"Duiker"},{"set":"earth-fauna","name":"Gerenuk"},{"set":"earth-fauna","name":"Nilgai"},{"set":"earth-fauna","name":"Tahr"},{"set":"earth-fauna","name":"Serow"},{"set":"earth-flora","name":"Rainforest Nettle"},{"set":"earth-flora","name":"Holy Basil"},{"set":"earth-flora","name":"Sesame"},{"set":"earth-flora","name":"Wild Sesame"},{"set":"earth-flora","name":"Mountain Mint"},{"set":"earth-flora","name":"Ginseng"},{"set":"earth-flora","name":"Solomon's Seal"},{"set":"earth-flora","name":"Monkshood"},{"set":"earth-flora","name":"Nettle"},{"set":"earth-flora","name":"Yarrow"},{"set":"earth-flora","name":"Echinacea"},{"set":"earth-flora","name":"Mint"},{"set":"earth-flora","name":"Foxglove"},{"set":"earth-flora","name":"Belladonna"},{"set":"earth-flora","name":"Miner's Lettuce"},{"set":"earth-flora","name":"Cloudberry"},{"set":"earth-flora","name":"Fireweed"},{"set":"earth-flora","name":"Angelica"},{"set":"earth-flora","name":"Valerian"},{"set":"earth-flora","name":"Swamp Mint"},{"set":"earth-flora","name":"Water Hemlock"},{"set":"earth-flora","name":"Devil's Claw"},{"set":"earth-flora","name":"Water Mint"},{"set":"earth-flora","name":"Sunflower"},{"set":"earth-flora","name":"Goldenrod"},{"set":"earth-flora","name":"Black-Eyed Susan"},{"set":"earth-flora","name":"Bergamot"},{"set":"earth-flora","name":"Milkweed"},{"set":"earth-flora","name":"Buckwheat"},{"set":"earth-flora","name":"Wormwood"},{"set":"earth-flora","name":"Licorice Root"},{"set":"earth-flora","name":"Steppe Tulip"},{"set":"earth-flora","name":"Amaranth"},{"set":"earth-flora","name":"Quinoa"},{"set":"earth-flora","name":"Wild Mint"},{"set":"earth-flora","name":"Peanut"},{"set":"earth-flora","name":"Chamomile"},{"set":"earth-flora","name":"Daisy"},{"set":"earth-flora","name":"Buttercup"},{"set":"earth-flora","name":"Gentian"},{"set":"earth-flora","name":"Mountain Thyme"},{"set":"earth-flora","name":"Alpine Mint"},{"set":"earth-flora","name":"Thyme"},{"set":"earth-flora","name":"Oregano"},{"set":"earth-flora","name":"Fennel"},{"set":"earth-flora","name":"Wild Mustard"},{"set":"earth-flora","name":"Desert Mint"},{"set":"earth-flora","name":"Sea Lavender"},{"set":"earth-flora","name":"Sea Rocket"},{"set":"earth-flora","name":"Green Algae"},{"set":"earth-flora","name":"Brooklime"},{"set":"earth-flora","name":"Riverbank Nettle"},{"set":"earth-flora","name":"Sea Fennel"},{"set":"earth-flora","name":"Potato"},{"set":"earth-flora","name":"Mustard"},{"set":"earth-flora","name":"Alfalfa"},{"set":"earth-flora","name":"Mugwort"},{"set":"earth-flora","name":"Ice Algae"},{"set":"earth-flora","name":"Orchid Pods"},{"set":"earth-flora","name":"Flax"},{"set":"earth-flora","name":"Canola"},{"set":"earth-flora","name":"Anise"},{"set":"earth-flora","name":"Fenugreek"},{"set":"earth-flora","name":"Poppy"}]
+[
+ {
+  "set": "earth-fauna",
+  "name": "Arctic Fox"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Avocet"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Basking Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Black Bear"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Bobcat"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Brittle Star"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Brown Bear"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Caracal"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Cheetah"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Clam"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Clouded Leopard"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Clownfish"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Cougar"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Cowrie"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Crane"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Crow"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Curlew"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Fishing Cat"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Flamingo"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Flatworm"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Giant Clam"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Giant Tube Worm"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Godwit"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Great White Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Grizzly Bear"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Ground Squirrel"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Hammerhead Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Heron"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Ibis"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Jaguar"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Juvenile Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Leech"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Leopard"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Limpet"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Lynx"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Magpie"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Mako Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Mussel"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Ocelot"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Oyster"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Oystercatcher"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Panda"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Polar Bear"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Prairie Dog"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Racer"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Raven"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Red Fox"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Reef Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Sand Cat"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Sand Dollar"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Scale Worm"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Serval"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Sloth Bear"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Snipe"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Snow Leopard"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Spectacled Bear"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Spoonbill"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Stork"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Sun Bear"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Tiger"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Tiger Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Tree Snake"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Tube Worm"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Vine Snake"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Vole"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Water Vole"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Whale Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Whip Snake"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Wildcat"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Wolf"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Acacia"
+ },
+ {
+  "set": "earth-flora",
+  "name": "African Ginger"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Agave"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Air Plant"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Alfalfa"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Aloe"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Alpine Mint"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Alpine Sorrel"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Amaranth"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Angel's Trumpet"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Angelica"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Anise"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Arctic Sorrel"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Arctic Willow"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Arnica"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Arrowhead"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Arrowroot"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Banana"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Baobab"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Barley"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Bay Laurel"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Bearberry"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Beet"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Bergamot"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Bilberry"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Bitterroot"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Black-Eyed Susan"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Bladderwrack"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Bog Myrtle"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Bog Rosemary"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Bromeliad"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Brooklime"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Buckwheat"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Bull Kelp"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Buttercup"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Calotropis"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Canola"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Cardamom"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Cashew"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Cassava"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Cattail"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Cedar"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Chamomile"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Chicory"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Cliff Rose"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Clover"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Coastal Sage"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Coconut"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Coralline Algae"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Cranberry"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Creosote Bush"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Crowberry"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Daisy"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Dandelion"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Date"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Date Palm"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Desert Mint"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Desert Sage"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Dulse"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Durian"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Echinacea"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Edelweiss"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Eucalyptus"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Fennel"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Fenugreek"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Fireweed"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Flax"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Foxglove"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Garlic"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Gentian"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Giant Kelp"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Ginger"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Ginseng"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Goldenrod"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Hazelnut"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Heather"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Hemlock"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Holy Basil"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Huckleberry"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Labrador Tea"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Lavender"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Lichen"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Licorice Root"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Lingonberry"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Lychee"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Mango"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Marsh Rosemary"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Meadow Grass"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Milkweed"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Millet"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Miner's Lettuce"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Mint"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Monkshood"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Mountain Cranberry"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Mountain Mint"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Mountain Papaya"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Mountain Sorrel"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Mountain Thyme"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Mugwort"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Mustard"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Nettle"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Nipa Palm Fruit"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Oats"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Oleander"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Onion"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Oregano"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Pampas Herb"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Pandanus Fruit"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Papaya"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Pear"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Pickerelweed"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Pine Nuts"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Pinyon Pine"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Plantain"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Plantain Herb"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Poppy"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Potato"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Prairie Turnip"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Prickly Pear"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Purple Saxifrage"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Quinoa"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Rabbitbrush"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Rainforest Nettle"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Rambutan"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Red Algae"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Redwood"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Rice"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Riverbank Nettle"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Roselle"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Rosemary"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Rye"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sage"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sagebrush"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sargassum"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Scurvy Grass"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sea Beet"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sea Fennel"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sea Grapes Algae"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sea Kale"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sea Lavender"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sea Rocket"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Seagrass"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sesame"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Solomon's Seal"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sorghum"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sorrel"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Spruce Tips"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Steppe Tulip"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sugar Kelp"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sunflower"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Swamp Mint"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sweet Flag"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Tamarisk"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Taro"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Tea"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Tea Tree"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Thyme"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Turmeric"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Valerian"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Violet"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wakame"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Water Hemlock"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Water Mint"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Water Spinach"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Watercress"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wheat"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Chive"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Garlic"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Ginger"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Mint"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Mustard"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Onion"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Rhubarb"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Rice"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Rye"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Sesame"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Taro"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Thyme"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Yam"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wood Sorrel"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wormwood"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Yarrow"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Yucca"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Bracket Fungus"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Chicken-of-the-Woods"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Oyster Mushroom"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Shelf Fungus"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Turkey Tail"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·1#121"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·10#10"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·14#14"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·15#135"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·19#79"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·3#3"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·4#4"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·1#21"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·11#31"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·11#91"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·12#152"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·14#34"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·16#36"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·6#26"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·6#86"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·7#87"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·10#110"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·12#52"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·16#56"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·2#102"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·2#42"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·3#43"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·4#164"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·5#105"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·7#167"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·9#169"
+ }
+]
