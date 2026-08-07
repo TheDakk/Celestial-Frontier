@@ -91,16 +91,31 @@ export function fungiMaitake(c: Ctx, g: G, p: Pal): void {
   c.fillStyle = '#d8cdb4';   /* the fused pale stem base */
   c.beginPath(); c.moveTo(cx - S * 0.05, base); c.quadraticCurveTo(cx, base - S * 0.14, cx + S * 0.05, base); c.closePath(); c.fill();
   const brown = p.cr + p.cg + p.cb < 300 ? p.base : '#a07a4c';
-  for (let i = 0; i < 40; i++) {   /* many overlapping ruffled fronds */
-    const t = i / 39;
+  /* ★ WAVE 63 — RUFFLED SPOON FRONDS. gp3: "smooth chocolate lobes with no
+     ruffled spoon-shaped fronds". Each frond is now a small FAN with a wavy
+     outer margin and a pale growing edge, pointing outward from the rosette. */
+  for (let i = 0; i < 60; i++) {
+    const ring = i % 3;                              /* three concentric rows fill the rosette */
+    const t = (i / 59);
     const a = -Math.PI * 0.9 + t * Math.PI * 0.8;
-    const rad = S * (0.13 + (i % 4) * 0.05);
-    const fx = cx + Math.cos(a) * rad, fy = base - S * 0.12 - Math.abs(Math.sin(a)) * S * 0.24 - (i % 4) * 7;
-    c.fillStyle = lit3(c, brown, fx, fy, S * 0.05);
-    c.save(); c.translate(fx, fy); c.rotate((r() - 0.5) * 0.5);
-    c.beginPath(); c.ellipse(0, 0, S * (0.058 + r() * 0.026), S * 0.030, 0, 0, TAU); c.fill();
-    c.strokeStyle = 'rgba(255,255,255,0.14)'; c.lineWidth = 1.4;
-    c.beginPath(); c.ellipse(0, 0, S * 0.045, S * 0.024, 0, -2.6, 0.3); c.stroke();
+    const rad = S * (0.05 + ring * 0.065);
+    const fx = cx + Math.cos(a) * rad, fy = base - S * 0.10 - Math.abs(Math.sin(a)) * S * (0.10 + ring * 0.07) - ring * 5;
+    const out = Math.atan2(fy - (base - S * 0.22), fx - cx);   /* frond points outward */
+    const fl = S * (0.065 + r() * 0.03), fw = fl * 0.62;
+    c.fillStyle = lit3(c, brown, fx, fy, fl);
+    c.save(); c.translate(fx, fy); c.rotate(out + (r() - 0.5) * 0.4);
+    c.beginPath(); c.moveTo(0, 0);
+    /* the fan: out to a WAVY margin traced in three scallops */
+    c.quadraticCurveTo(fl * 0.5, -fw * 0.7, fl * 0.9, -fw * 0.5);
+    c.quadraticCurveTo(fl * 1.02, -fw * 0.2, fl * 0.94, 0);
+    c.quadraticCurveTo(fl * 1.06, fw * 0.25, fl * 0.9, fw * 0.5);
+    c.quadraticCurveTo(fl * 0.5, fw * 0.7, 0, 0);
+    c.closePath(); c.fill();
+    /* the pale wavy growing edge */
+    c.strokeStyle = 'rgba(238,228,204,0.55)'; c.lineWidth = 2;
+    c.beginPath(); c.moveTo(fl * 0.9, -fw * 0.5);
+    c.quadraticCurveTo(fl * 1.02, -fw * 0.2, fl * 0.94, 0);
+    c.quadraticCurveTo(fl * 1.06, fw * 0.25, fl * 0.9, fw * 0.5); c.stroke();
     c.restore();
   }
 }
@@ -733,17 +748,22 @@ export function fungiJellyBrain(c: Ctx, g: G, p: Pal): void {
     c.fillStyle = gg;
     c.beginPath(); c.ellipse(lx, ly, lr, lr * 0.82, r() * TAU, 0, TAU); c.fill();
   }
-  /* the brain-like convolutions */
-  c.strokeStyle = `rgba(${(p.cr * 0.55) | 0},${(p.cg * 0.55) | 0},${(p.cb * 0.58) | 0},0.5)`;
-  c.lineWidth = 2; c.lineCap = 'round';
-  for (let i = 0; i < 14; i++) {
-    const a = r() * TAU, d = r() * R * 0.62;
+  /* ★ WAVE 63 — DEEP BRAIN FOLDS. gp3: "the convoluted brain-like folding that
+     IS this organism is absent". Each fold is a dark VALLEY stroke with a lit
+     ridge highlight hugging its edge — twice as many, wider, wandering in arcs
+     so the surface reads as folded flesh, not a smooth blob with pencil lines. */
+  c.lineCap = 'round';
+  for (let i = 0; i < 24; i++) {
+    const a = r() * TAU, d = r() * R * 0.66;
     const sx = cx + Math.cos(a) * d, sy = cy + Math.sin(a) * d * 0.74;
-    c.beginPath();
-    c.moveTo(sx, sy);
-    c.quadraticCurveTo(sx + (r() - 0.5) * R * 0.5, sy + (r() - 0.5) * R * 0.4,
-      sx + (r() - 0.5) * R * 0.7, sy + (r() - 0.5) * R * 0.5);
-    c.stroke();
+    const ex = sx + (r() - 0.5) * R * 0.9, ey = sy + (r() - 0.5) * R * 0.6;
+    const mx = (sx + ex) / 2 + (r() - 0.5) * R * 0.5, my = (sy + ey) / 2 + (r() - 0.5) * R * 0.4;
+    c.strokeStyle = `rgba(${(p.cr * 0.42) | 0},${(p.cg * 0.42) | 0},${(p.cb * 0.45) | 0},0.65)`;
+    c.lineWidth = 4.5;
+    c.beginPath(); c.moveTo(sx, sy); c.quadraticCurveTo(mx, my, ex, ey); c.stroke();
+    c.strokeStyle = `rgba(${Math.min(255, p.cr * 1.6) | 0},${Math.min(255, p.cg * 1.4) | 0},${Math.min(255, p.cb * 1.3) | 0},0.45)`;
+    c.lineWidth = 2;
+    c.beginPath(); c.moveTo(sx, sy - 3); c.quadraticCurveTo(mx, my - 3, ex, ey - 3); c.stroke();
   }
   c.strokeStyle = 'rgba(255,255,255,0.30)'; c.lineWidth = 2.4;
   c.beginPath(); c.ellipse(cx - R * 0.16, cy - R * 0.30, R * 0.34, R * 0.20, -0.4, Math.PI, TAU); c.stroke();
