@@ -133,7 +133,18 @@ Arrowroot, aromatics-dense) · cereal head sub-types (panicle/club) · round clo
 lose the standing legs** (flipper family skips the leg loop; trailing hind fans + fore-paddle) ·
 **primate species features** (muzzle/mask/nose/throat/earTufts/armLen/tailLen/tailRinged — all 9)
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
-signatures · tarantula fur + lobster chelae. ~55 more assets touched since gp5.
+signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
++ tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★ REMAINING fauna clusters from the gp3/gp5 prose, in rough order: the deep felid/canid BARREL
+BODY (the last chassis lever — Tube cross-section per D-ART-152); Insects (Wasp waist renders OK
+now — check Caddisfly antennae, Dobsonfly mandibles, Thrips, Water Beetle); Ice/cave inverts
+(Fiddler Crab has no crab, Cave Cricket is faunaLarva with no legs, Copepod=Amphipod recolour,
+Krill face-on-tail, Mite, Water Flea); remaining birds (Bittern freeze pose, Albatross flying,
+Skua flash, Snow Petrel, Weaverbird mask+nest); Cichlid dorsal, Reef Fish bands; procedural (60,
+untouched); fungi bespoke (Lion's Mane icicles, Chanterelle, Coral Fungus, Earthstar rays,
+jelly/maitake/mildew/mold/yeast blob-chassis, Porcini stem, Shiitake cracks, Cordyceps,
+Reindeer Lichen trunks); microbes (13, all bespoke cells/habitats: eyespots/pseudopods/girdle
+groove/brine channels/nodule/tetrad packet etc.).
 
 ## ★★★ THE HARD CORE THAT REMAINS: THE MAMMAL QUADRUPED CHASSIS (~70 FAIL)
 Big cats (bodies ~11), Bears (8), Dogs (8), Rodents-mammal (Agouti/Capybara/Mara), Primates (9),
