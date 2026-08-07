@@ -91,6 +91,7 @@ export interface FishSpec {
   droop?: boolean;           /** loose gelatinous face — the blobfish read */
   gape?: boolean;            /** an enormous open filter-feeding mouth + broad gills */
   eyeless?: boolean;         /** cave/blind fish — the missing eye IS the species */
+  barbels?: boolean;         /** ★ WAVE 66 — the catfish's whiskers, rooted ON the snout */
   /* ★ WAVE 62 — reef-fish signatures gp5 failed the family for */
   scalpel?: string;          /** the surgeonfish's bright caudal-peduncle spine, colour given */
   beak?: boolean;            /** the parrotfish's fused white tooth plate */
@@ -553,6 +554,19 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
       c.beginPath(); c.moveTo(x, cy + depth * 0.20); c.lineTo(x - depth * 0.09, cy + depth * 0.52); c.lineTo(x + depth * 0.09, cy + depth * 0.26); c.closePath(); c.fill();
     }
   }
+  if (spec.barbels) {
+    /* ★ WAVE 66 — the catfish's whiskers: three pairs rooted ON the snout tip
+       and jaw, drooping down and back. gp3: "NO barbels — the single most
+       identifying feature — in its place a detached blob". */
+    c.strokeStyle = 'rgba(30,24,18,0.85)'; c.lineCap = 'round';
+    for (const [ry, len2, w2] of [[0.06, 0.9, 2.6], [0.24, 0.62, 2.0], [0.38, 0.42, 1.6]] as const) {
+      c.lineWidth = w2;
+      c.beginPath(); c.moveTo(nose - depth * 0.1, cy + depth * ry);
+      c.quadraticCurveTo(nose + depth * len2 * 0.7, cy + depth * (ry + 0.3), nose + depth * len2, cy + depth * (ry + 0.85)); c.stroke();
+      c.beginPath(); c.moveTo(nose - depth * 0.3, cy + depth * ry);
+      c.quadraticCurveTo(nose - depth * 0.5 - depth * len2 * 0.3, cy + depth * (ry + 0.5), nose - depth * 0.45 - depth * len2 * 0.4, cy + depth * (ry + 0.95)); c.stroke();
+    }
+  }
   if (spec.beak) {
     /* ★ WAVE 62 — the parrotfish's fused white tooth PLATE: a solid pale beak
        capping the snout, proud of the profile, with the fused seam. */
@@ -876,7 +890,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Killifish': F({ hue: '#5f9d72', profile: 'fusiform', len: 0.17, depth: 0.050, tail: 'round', snout: 'blunt', dorsal: 'one', pattern: 'spots' }),
   'Sculpin': F({ hue: '#675340', profile: 'fusiform', len: 0.19, depth: 0.062, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'mottle' }),
   'Sunfish': F({ hue: '#6f8f6a', profile: 'deep', len: 0.18, depth: 0.092, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'spots' }),
-  'Catfish': F({ hue: '#4f4438', profile: 'fusiform', len: 0.24, depth: 0.070, tail: 'forked', snout: 'shovel', dorsal: 'one', pattern: 'mottle' }),
+  'Catfish': F({ hue: '#4f4438', profile: 'fusiform', len: 0.24, depth: 0.070, tail: 'forked', snout: 'blunt', dorsal: 'one', pattern: 'mottle', barbels: true }),
   'Arapaima': F({ hue: '#56755f', profile: 'fusiform', len: 0.27, depth: 0.075, tail: 'round', snout: 'blunt', dorsal: 'one' }),
   'Arowana': F({ hue: '#b0a67e', profile: 'ribbon', len: 0.26, depth: 0.060, tail: 'point', snout: 'jaw', dorsal: 'none' }),
   'Tigerfish': F({ hue: '#b4ab9c', profile: 'fusiform', len: 0.23, depth: 0.072, tail: 'forked', snout: 'jaw', dorsal: 'two', pattern: 'stripes', teeth: true }),
