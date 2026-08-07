@@ -1151,6 +1151,25 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
         c.strokeStyle = 'rgba(255,255,255,0.10)'; c.lineWidth = S * 0.006;
         c.beginPath(); c.moveTo(bx, base); c.lineTo(bx + t * S * 0.14, topY); c.stroke();
       }
+    } else if (spec.flowerN === 1) {
+      /* ★ WAVE 67 — BULL KELP: one long whip STIPE to a single round BULB
+         float, with a streamer of blades pouring off the bulb. The defining
+         onion-bulb was absent from the strap bundle. */
+      holdfast(c, cx, base, barkCol);
+      const topX = cx + S * 0.06, topY2 = base - H * 0.98;
+      c.strokeStyle = p.dark; c.lineWidth = S * 0.014; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(cx, base);
+      c.quadraticCurveTo(cx - S * 0.05, base - H * 0.5, topX, topY2); c.stroke();
+      const bg2 = c.createRadialGradient(topX - 5, topY2 - 5, 2, topX, topY2, S * 0.045);
+      bg2.addColorStop(0, p.lit); bg2.addColorStop(1, p.dark);
+      c.fillStyle = bg2; c.beginPath(); c.arc(topX, topY2, S * 0.042, 0, TAU); c.fill();
+      for (let i = 0; i < 5; i++) {   /* the blade streamers off the bulb */
+        const t2 = (i / 4) - 0.5;
+        c.strokeStyle = i % 2 ? p.base : p.dark; c.lineWidth = S * 0.016; c.lineCap = 'round';
+        c.beginPath(); c.moveTo(topX + t2 * S * 0.02, topY2 - S * 0.02);
+        c.quadraticCurveTo(topX + t2 * S * 0.16, topY2 - S * 0.10, topX + t2 * S * 0.28 + S * 0.05, topY2 - S * 0.03 + Math.abs(t2) * S * 0.05);
+        c.stroke();
+      }
     } else {
     /* held up by water, not by wood: straps rising from a holdfast (kelp/wrack) */
     holdfast(c, cx, base, barkCol);

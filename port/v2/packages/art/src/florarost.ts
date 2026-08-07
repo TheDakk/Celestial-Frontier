@@ -308,7 +308,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Kelp': T({ hue: '#6b5a2c', habit: 'aquatic', leaf: 'blade', tall: true }),
   'Giant Kelp': T({ hue: '#7a5620', habit: 'aquatic', leaf: 'blade', tall: true }),
   'Sugar Kelp': T({ hue: '#8a6a2a', habit: 'aquatic', leaf: 'broad', flowerN: 1 }),
-  'Bull Kelp': T({ hue: '#5a4620', habit: 'aquatic', leaf: 'blade', tall: true }),
+  'Bull Kelp': T({ hue: '#5a4620', habit: 'aquatic', leaf: 'blade', tall: true, flowerN: 1 }),
   'Sargassum': T({ hue: '#9c8949', habit: 'aquatic', leaf: 'lance' }),
   'Bladderwrack': T({ hue: '#87763a', habit: 'aquatic', leaf: 'scale' }),
   'Dulse': T({ hue: '#8c2f33', habit: 'aquatic', leaf: 'broad', flowerN: 4 }),
