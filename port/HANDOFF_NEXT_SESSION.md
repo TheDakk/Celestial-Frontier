@@ -126,6 +126,15 @@ Same method, in the fauna painters. Landed & committed:
 
 ★★ **~14 fauna clusters landed, all eye-verified, tsc+vitest green, ~32 commits this session.**
 
+## ★★ GOLD PASS 5 MEASURED IT (2026-08-07): FAIL 660 → 589, REAL (control-stable). `reference/GOLD_PASS_5.md`.
+Then waves 61–62 (committed): gp5's 14 regressions fixed (conifer-tall gate, Lychee, Bilberry,
+Arrowroot, aromatics-dense) · cereal head sub-types (panicle/club) · round clover trefoil ·
+**cetacean rebuild** (peduncle + scaled flukes + orca blade — was a broken render) · **pinnipeds
+lose the standing legs** (flipper family skips the leg loop; trailing hind fans + fore-paddle) ·
+**primate species features** (muzzle/mask/nose/throat/earTufts/armLen/tailLen/tailRinged — all 9)
+· **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
+signatures · tarantula fur + lobster chelae. ~55 more assets touched since gp5.
+
 ## ★★★ THE HARD CORE THAT REMAINS: THE MAMMAL QUADRUPED CHASSIS (~70 FAIL)
 Big cats (bodies ~11), Bears (8), Dogs (8), Rodents-mammal (Agouti/Capybara/Mara), Primates (9),
 Marine mammals (10: pinnipeds need FLIPPERS not dog legs, whales need real cetacean bodies —
