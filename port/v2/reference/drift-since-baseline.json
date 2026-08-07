@@ -1,6 +1,18 @@
 [
  {
   "set": "earth-fauna",
+  "name": "African Wild Dog"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Agouti"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Albatross"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Arctic Fox"
  },
  {
@@ -9,11 +21,23 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Barnacle"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Basking Shark"
  },
  {
   "set": "earth-fauna",
+  "name": "Beluga"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Black Bear"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Blue Whale"
  },
  {
   "set": "earth-fauna",
@@ -29,11 +53,35 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Caddisfly"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Camel Spider"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Capybara"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Caracal"
  },
  {
   "set": "earth-fauna",
+  "name": "Catfish"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Cave Cricket"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Cheetah"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Cichlid"
  },
  {
   "set": "earth-fauna",
@@ -49,6 +97,14 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Conch"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Copepod"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Cougar"
  },
  {
@@ -57,7 +113,15 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Coyote"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Crane"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Crayfish"
  },
  {
   "set": "earth-fauna",
@@ -66,6 +130,22 @@
  {
   "set": "earth-fauna",
   "name": "Curlew"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Dingo"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Dobsonfly"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Dolphin"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Eagle"
  },
  {
   "set": "earth-fauna",
@@ -81,6 +161,14 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Frigatebird"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Fur Seal"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Giant Clam"
  },
  {
@@ -89,7 +177,15 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Gibbon"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Godwit"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Gray Whale"
  },
  {
   "set": "earth-fauna",
@@ -105,7 +201,19 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Gull"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Hammerhead Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Harpy Eagle"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Harvestman"
  },
  {
   "set": "earth-fauna",
@@ -113,7 +221,15 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Horned Lizard"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Ibis"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Jackal"
  },
  {
   "set": "earth-fauna",
@@ -125,7 +241,19 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Komodo Dragon"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Langur"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Leech"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Lemur"
  },
  {
   "set": "earth-fauna",
@@ -134,6 +262,14 @@
  {
   "set": "earth-fauna",
   "name": "Limpet"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Lionfish"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Lobster"
  },
  {
   "set": "earth-fauna",
@@ -149,11 +285,35 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Mara"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Mite"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Monitor Lizard"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Mussel"
  },
  {
   "set": "earth-fauna",
+  "name": "Narwhal"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Ocelot"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Orca"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Osprey"
  },
  {
   "set": "earth-fauna",
@@ -169,11 +329,39 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Pangolin"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Parrotfish"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Peacock"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Petrel"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Pilot Whale"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Polar Bear"
  },
  {
   "set": "earth-fauna",
+  "name": "Porpoise"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Prairie Dog"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Puffin"
  },
  {
   "set": "earth-fauna",
@@ -193,6 +381,14 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Right Whale"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "River Dolphin"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Sand Cat"
  },
  {
@@ -205,11 +401,23 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Sea Lion"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Seal"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Serval"
  },
  {
   "set": "earth-fauna",
   "name": "Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Skua"
  },
  {
   "set": "earth-fauna",
@@ -225,7 +433,19 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Snow Petrel"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Spectacled Bear"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Sperm Whale"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Spider Monkey"
  },
  {
   "set": "earth-fauna",
@@ -238,6 +458,14 @@
  {
   "set": "earth-fauna",
   "name": "Sun Bear"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Tarantula"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Thrips"
  },
  {
   "set": "earth-fauna",
@@ -265,7 +493,27 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Vulture"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Walrus"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Water Flea"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Water Vole"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Weaverbird"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Whale"
  },
  {
   "set": "earth-fauna",
@@ -365,7 +613,15 @@
  },
  {
   "set": "earth-flora",
+  "name": "Barrel Cactus Fruit"
+ },
+ {
+  "set": "earth-flora",
   "name": "Bay Laurel"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Beach Morning Glory"
  },
  {
   "set": "earth-flora",
@@ -378,10 +634,6 @@
  {
   "set": "earth-flora",
   "name": "Bergamot"
- },
- {
-  "set": "earth-flora",
-  "name": "Bilberry"
  },
  {
   "set": "earth-flora",
@@ -513,6 +765,10 @@
  },
  {
   "set": "earth-flora",
+  "name": "Desert Rose"
+ },
+ {
+  "set": "earth-flora",
   "name": "Desert Sage"
  },
  {
@@ -577,6 +833,10 @@
  },
  {
   "set": "earth-flora",
+  "name": "Glasswort"
+ },
+ {
+  "set": "earth-flora",
   "name": "Goldenrod"
  },
  {
@@ -618,10 +878,6 @@
  {
   "set": "earth-flora",
   "name": "Lingonberry"
- },
- {
-  "set": "earth-flora",
-  "name": "Lychee"
  },
  {
   "set": "earth-flora",
@@ -729,14 +985,6 @@
  },
  {
   "set": "earth-flora",
-  "name": "Pine Nuts"
- },
- {
-  "set": "earth-flora",
-  "name": "Pinyon Pine"
- },
- {
-  "set": "earth-flora",
   "name": "Plantain"
  },
  {
@@ -814,6 +1062,10 @@
  {
   "set": "earth-flora",
   "name": "Sagebrush"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Samphire"
  },
  {
   "set": "earth-flora",
@@ -921,6 +1173,10 @@
  },
  {
   "set": "earth-flora",
+  "name": "Vanilla Orchid"
+ },
+ {
+  "set": "earth-flora",
   "name": "Violet"
  },
  {
@@ -1025,7 +1281,35 @@
  },
  {
   "set": "earth-fungi",
+  "name": "Coral Fungus"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Cordyceps"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Earthstar"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Lion’s Mane"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Maitake"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Mildew"
+ },
+ {
+  "set": "earth-fungi",
   "name": "Oyster Mushroom"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Reindeer Lichen"
  },
  {
   "set": "earth-fungi",
@@ -1034,6 +1318,62 @@
  {
   "set": "earth-fungi",
   "name": "Turkey Tail"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Yeast"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Acidophile"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Amoeba"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Bioluminescent Plankton"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Cryophile"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Dinoflagellate"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Euglena"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Halophile"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Iron-Oxidizing Bacteria"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Methanogen"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Nitrogen-Fixing Bacteria"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Radiation-Resistant Microbe"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Radiolarian"
+ },
+ {
+  "set": "earth-microbe",
+  "name": "Red-Tide Algae"
  },
  {
   "set": "procedural",
@@ -1053,7 +1393,19 @@
  },
  {
   "set": "procedural",
+  "name": "f0·17#137"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·19#139"
+ },
+ {
+  "set": "procedural",
   "name": "f0·19#79"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·2#122"
  },
  {
   "set": "procedural",
@@ -1065,7 +1417,23 @@
  },
  {
   "set": "procedural",
+  "name": "f0·6#126"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·8#128"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·1#141"
+ },
+ {
+  "set": "procedural",
   "name": "f1·1#21"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·11#151"
  },
  {
   "set": "procedural",
@@ -1089,6 +1457,26 @@
  },
  {
   "set": "procedural",
+  "name": "f1·18#158"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·2#142"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·3#143"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·5#145"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·6#146"
+ },
+ {
+  "set": "procedural",
   "name": "f1·6#26"
  },
  {
@@ -1101,7 +1489,15 @@
  },
  {
   "set": "procedural",
+  "name": "f2·0#160"
+ },
+ {
+  "set": "procedural",
   "name": "f2·10#110"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·10#170"
  },
  {
   "set": "procedural",
@@ -1109,7 +1505,15 @@
  },
  {
   "set": "procedural",
+  "name": "f2·13#173"
+ },
+ {
+  "set": "procedural",
   "name": "f2·16#56"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·18#178"
  },
  {
   "set": "procedural",
@@ -1117,7 +1521,15 @@
  },
  {
   "set": "procedural",
+  "name": "f2·2#162"
+ },
+ {
+  "set": "procedural",
   "name": "f2·2#42"
+ },
+ {
+  "set": "procedural",
+  "name": "f2·3#163"
  },
  {
   "set": "procedural",
@@ -1137,6 +1549,22 @@
  },
  {
   "set": "procedural",
+  "name": "f2·8#168"
+ },
+ {
+  "set": "procedural",
   "name": "f2·9#169"
+ },
+ {
+  "set": "procedural",
+  "name": "m0·1#181"
+ },
+ {
+  "set": "procedural",
+  "name": "m0·10#190"
+ },
+ {
+  "set": "procedural",
+  "name": "m0·17#197"
  }
 ]
