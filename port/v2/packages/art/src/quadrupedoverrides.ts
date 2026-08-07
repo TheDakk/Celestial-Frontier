@@ -295,6 +295,11 @@ const FAMILY: Record<string, {
      it up. 1 reproduces the old angle exactly, so every family left at 1 is
      byte-unchanged (D-ART-14). */
   carry: number;     /* 1 = head high (ungulate), 0 = head level and forward */
+  /* ★ WAVE 60 — HEAD MASS relative to the body. A bear's head is enormous and a
+     deer's is small on a long neck; sizing every skull off one bodyH ratio is
+     part of why the ursids read as a "sheep chassis" (small head on a woolly
+     barrel). Optional, defaults to 1 = the wave-22 sizing, byte-unchanged. */
+  headScale?: number;
 }> = {
   /* a cat is a deep chest and a tucked waist over a short folded limb */
   /* ★ D-ART-132 — cannon 0.52 made the ankle half-width 0.63·legW while the
@@ -316,7 +321,7 @@ const FAMILY: Record<string, {
      hump that IS the ursid read, and why "no shoulder hump above the rump"
      lands on Grizzly. cannon 0.16 also left the sole only 7% proud of the
      ankle, so the plantigrade foot read as a hoof nub. */
-  ursid: { waist: 0.16, muscle: 1.00, chest: 0.84, rump: 0.40, foot: 'plantigrade', cannon: 0.32, crouch: 0.78, carry: 0.22, ear: 'round', pupil: 'round', iris: '#4a3524', mat: 'pelt' },
+  ursid: { waist: 0.16, muscle: 1.00, chest: 0.84, rump: 0.40, foot: 'plantigrade', cannon: 0.32, crouch: 0.78, carry: 0.22, ear: 'round', pupil: 'round', iris: '#4a3524', mat: 'pelt', headScale: 1.3 },
   /* ★ D-ART-132 — muscle drives the withers gauss; at 0.52 the shoulder rose
      0.088·bodyH, which is "no shoulder hump / level-backed" on Bison, Bull,
      Eland, Nilgai, Hartebeest and Wildebeest at once. */
@@ -992,7 +997,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   const headR = Math.max(
     bodyH * (spec.jaw === 'barrel' ? 0.62 : spec.jaw === 'broad' ? 0.52 : 0.42),
     bodyW * 0.20,
-  );
+  ) * (FAM0.headScale ?? 1);
   /* ★ WAVE 4 — THE NECK IS A TAPERED SOLID. Nick: "thin necks at the shoulder
      on the big cats." It was one constant-width round-capped stroke, so a
      lion's neck was the same thickness at the skull as at the chest, and the
