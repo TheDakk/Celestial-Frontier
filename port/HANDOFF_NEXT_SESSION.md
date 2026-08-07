@@ -79,24 +79,30 @@ tsc + vitest green on every commit. **~55 flora species converted.** The reusabl
 | `fruit:'grain'` rebuilt | bristling awned cereal ear | Wheat, Barley, Rye, Oats, Millet, Sorghum, Rice |
 | `creep` | low creeping groundcover mat (shrub) | Bearberry, Crowberry, Cranberry, Lingonberry, Bilberry, Huckleberry |
 | `leaf:'arrow'` + rosette jitter | sagittate blade on erect stalks; de-mirrored fan | Arrowhead, Taro, Wild Taro, Pickerelweed |
+| `leaf:'crinkle'` | huge puckered cabbage/rhubarb blade | Sea Kale, Wild Rhubarb |
+| `dense` (shrub) | filled rounded twiggy bush | Tea, Tea Tree, Tamarisk, Bay Laurel |
+| `root` applied | taproot/tuber at base | Prairie Turnip, Wild Yam, Cassava |
+| seaweed `holdfast` + forms | grip + kelp float / wrack bladders / flat blade | Kelp, Bull/Giant Kelp, Bladderwrack, Dulse, Wakame |
+| palm rebuild + `pseudostem` | single trunk + fronds; banana false-trunk | Coconut, Date, Papaya, Pandanus, Banana, Plantain |
+| conifer spire | conical tiered evergreen | Spruce Tips, Cedar, Redwood, Hemlock, Pine Nuts, Pinyon Pine |
 
-★★ **THE REMAINING FLORA IS MOSTLY 4 MORE SHARED CHASSIS + a bespoke tail** (from the gp3 prose,
-`$TMP/remaining-flora.json` this session or re-pull from `goldpass3-prechassis.json`):
-1. **The rosette disc-pile / radial sword-fan** — still wrong for the BROAD-CRINKLED-leaf crops
-   (Rhubarb, Wild Rhubarb, Sea Kale: huge puckered cabbage leaves + red stalks) and the LOW
-   CUSHION alpines (Purple Saxifrage, Bitterroot). Needs a crinkled-broadleaf treatment + a
-   cushion habit. ~10 species.
-2. **The bare-stem "cane-vase" for DENSE shrubs** (Tea, Tea Tree, Tamarisk, Bay Laurel, Wild
-   Guava) — should be a dense twiggy rounded bush, not 5 open stalks. ~6.
-3. **The seaweed/algae bundle** (`habit:'aquatic'` non-pad): all one pinched sheaf. Kelp needs a
-   holdfast + float, Bladderwrack paired bladders + Y-fork, Dulse/Sea Lettuce a flat ruffled
-   blade. ~8.
-4. **Palms with forked woody trunks** (Acai, Banana, Plantain, Nipa, Pandanus, Tree Fern) — need
-   a smooth false-trunk / prop-root / no-trunk erupting crown. ~6.
-   Plus **missing harvest organs** (apply existing `root`/`pods`/fruit-shape): Prairie Turnip &
-   Wild Yam (tuber), Pigeon Pea & Beach Pea & Orchid Pods (pods), Roselle (calyces), Star Anise
-   (star fruit), Sesame (capsules); the **allium ball** (Wild Onion/Garlic/Chive); and true
-   bespoke (Solomon's Seal arch, Bergamot firework, Vanilla Orchid, Miner's Lettuce perfoliate).
+★★ **FLORA SHARED-CHASSIS PHASE IS ESSENTIALLY DONE — 18 cue-clusters, ~90 species.** What REMAINS
+in flora is a **bespoke tail** (~15–20 species, each its own fix, no cluster): Solomon's Seal
+(arching stem + hanging bells), Bergamot (monarda firework tubes), Vanilla Orchid & Water Spinach
+(trailing succulent vine), Miner's Lettuce (perfoliate saucer), Angel's Trumpet (huge pendulous
+trumpet), Fiddlehead Fern & Tree Fern (crozier / fibrous trunk), Wild Chive tubular leaf, the
+LOW-CUSHION alpines (Purple Saxifrage, Bitterroot), Coralline Algae (crusty pink), Roselle
+(calyces), Dragon Fruit / Barrel Cactus (ribbed succulent). Re-pull prose from
+`goldpass3-prechassis.json` (`defect`/`readsAs`).
+
+## ★★★ NEXT MAJOR PHASE: FAUNA (~360 FAIL, the bigger half) — NOT YET STARTED
+The mammal chassis is the hardest known defect (all the history above). Fauna painters live in
+`faunaoverrides*.ts`, `quadrupedoverrides.ts`, `mammaloverrides.ts`, `birdoverrides.ts`,
+`invertoverrides.ts` — a different, harder system than flora. The tail families (birds, fish,
+insects, snakes, mollusks) each need their own pass; `reference/LONGTAIL_WORKLIST.md` orders them.
+Then fungi (18 FAIL) + microbe (13). ⚠ Still **eye-verified only** — run the full measurement
+pass (cheap re-check + control, D-ART-158) after the fixing is broadly done to get the real
+PASS-rate.
 
 ★ **Remaining flora FAILs, roughly in yield order** — these are increasingly BESPOKE, not cluster
 wins: Bergamot (monarda firework tubes), Brooklime (aquatic sprawl), Cloudberry (low + lobed leaf
