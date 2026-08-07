@@ -481,28 +481,45 @@ export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | '
   const L = S * 0.34 * (opts.long ?? 1), H = S * 0.10 * (opts.bulk ?? 1);
   const mel = opts.melon ?? 0;
   const head = cx - L, tail = cx + L;
+  /* ★ WAVE 62 — THE BODY ENDS IN A PEDUNCLE, NOT A POINT. The old path ran to
+     (tail, cy) — a zero-height vertex — so the rear half tapered to a hairline
+     and "simply stopped" (gp5 called the Orca a broken render). The body now
+     narrows to a REAL caudal peduncle at ~22% of body depth, and the flukes
+     grow from it, scaled to the animal instead of fixed pixels. */
+  const ped = H * 0.22;
   c.fillStyle = bodyGrad(c, p, cx - L * 0.3, cy, L * 0.7);
   c.beginPath();
   c.moveTo(head, cy + (opts.blunt ? H * 0.3 : 0));
   c.quadraticCurveTo(cx - L * (0.5 + mel * 0.28), cy - H * ((opts.blunt ? 1.5 : 1.15) + mel * 0.85), cx + L * 0.2, cy - H * 0.75);
-  c.quadraticCurveTo(tail - 20, cy - H * 0.3, tail, cy);
-  c.quadraticCurveTo(tail - 20, cy + H * 0.35, cx + L * 0.2, cy + H * 0.85);
+  c.quadraticCurveTo(tail - L * 0.16, cy - H * 0.42, tail, cy - ped);
+  c.lineTo(tail, cy + ped);
+  c.quadraticCurveTo(tail - L * 0.16, cy + H * 0.48, cx + L * 0.2, cy + H * 0.85);
   c.quadraticCurveTo(cx - L * 0.5, cy + H * 1.05, head, cy + (opts.blunt ? H * 0.3 : 0));
   c.closePath(); c.fill();
-  rim(c, () => { c.moveTo(head, cy); c.quadraticCurveTo(cx - L * (0.5 + mel * 0.28), cy - H * ((opts.blunt ? 1.5 : 1.15) + mel * 0.85), cx + L * 0.2, cy - H * 0.75); c.quadraticCurveTo(tail - 20, cy - H * 0.3, tail, cy); }, 2.4);
-  /* THE HORIZONTAL FLUKE — never a vertical fish tail */
+  rim(c, () => { c.moveTo(head, cy); c.quadraticCurveTo(cx - L * (0.5 + mel * 0.28), cy - H * ((opts.blunt ? 1.5 : 1.15) + mel * 0.85), cx + L * 0.2, cy - H * 0.75); c.quadraticCurveTo(tail - L * 0.16, cy - H * 0.42, tail, cy - ped); }, 2.4);
+  /* THE HORIZONTAL FLUKE — never a vertical fish tail. Scaled to the body. */
+  const fw = Math.max(L * 0.22, H * 1.2), fh = Math.max(H * 0.9, L * 0.12);
   c.fillStyle = p.dark;
-  c.beginPath(); c.moveTo(tail - 6, cy);
-  c.quadraticCurveTo(tail + 30, cy - 26, tail + 62, cy - 16);
-  c.quadraticCurveTo(tail + 34, cy, tail + 62, cy + 16);
-  c.quadraticCurveTo(tail + 30, cy + 26, tail - 6, cy);
+  c.beginPath(); c.moveTo(tail - 2, cy - ped);
+  c.quadraticCurveTo(tail + fw * 0.5, cy - fh, tail + fw, cy - fh * 0.62);
+  c.quadraticCurveTo(tail + fw * 0.55, cy, tail + fw, cy + fh * 0.62);
+  c.quadraticCurveTo(tail + fw * 0.5, cy + fh, tail - 2, cy + ped);
   c.closePath(); c.fill();
   if (opts.dorsal !== 'none') {
-    const dh = opts.dorsal === 'tall' ? H * 1.5 : H * 0.55;
     c.fillStyle = p.dark;
-    c.beginPath(); c.moveTo(cx + L * 0.05, cy - H * 0.8);
-    c.quadraticCurveTo(cx + L * 0.18, cy - H * 0.8 - dh, cx + L * 0.34, cy - H * 0.72);
-    c.closePath(); c.fill();
+    if (opts.dorsal === 'tall') {
+      /* ★ the orca's TALL TRIANGULAR blade — nearly erect, its own height class */
+      c.beginPath(); c.moveTo(cx + L * 0.02, cy - H * 0.78);
+      c.lineTo(cx + L * 0.14, cy - H * 0.8 - H * 2.3);
+      c.quadraticCurveTo(cx + L * 0.2, cy - H * 1.4, cx + L * 0.34, cy - H * 0.70);
+      c.closePath(); c.fill();
+    } else {
+      /* the sickle: swept back with a concave trailing edge (dolphin/pilot) */
+      c.beginPath(); c.moveTo(cx + L * 0.04, cy - H * 0.78);
+      c.quadraticCurveTo(cx + L * 0.12, cy - H * 0.8 - H * 1.15, cx + L * 0.30, cy - H * 0.9);
+      c.quadraticCurveTo(cx + L * 0.2, cy - H * 0.95, cx + L * 0.34, cy - H * 0.70);
+      c.closePath(); c.fill();
+    }
   }
   c.fillStyle = p.dark;   /* pectoral flipper */
   c.beginPath(); c.ellipse(cx - L * 0.3, cy + H * 0.85, L * 0.20, H * 0.28, 0.5, 0, TAU); c.fill();
