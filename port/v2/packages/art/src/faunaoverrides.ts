@@ -1434,5 +1434,5 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Kakapo': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6f8a3a', legs: 0.02, bill: 'stout', flightless: true, parrotBill: true, zygo: true, headMass: 1.35, plump: 1.34, size: 0.98 }, n),
   'Secretary Bird': (c, g, p, n) => faunaBird(c, g, p, { hue: '#8e8b84', legs: 0.24, bill: 'hook', crest: true, neck: 'long', tail: 'long', size: 0.95 }, n),
   'Hoatzin': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7d4f2a', legs: 0.04, bill: 'stout', crest: true, crop: true, wingClaw: true, tail: 'long', size: 0.94 }, n),
-  'Puffin': (c, g, p, n) => faunaBird(c, g, p, { hue: '#23272b', legs: 0.02, bill: 'toucan', billHue: '#e8622c', bib: '#f0f2f4', plump: 1.3, size: 0.72, legHue: '#e8622c' }, n),
+  'Puffin': (c, g, p, n) => faunaBird(c, g, p, { hue: '#23272b', legs: 0.02, bill: 'huge', billHue: '#e8622c', bib: '#f0f2f4', plump: 1.3, size: 0.72, legHue: '#e8622c' }, n),
 };
