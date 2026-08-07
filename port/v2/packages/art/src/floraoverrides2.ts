@@ -204,18 +204,22 @@ function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number
     c.beginPath(); c.moveTo(0, 0); c.lineTo(-len * 0.08, -wl * 0.5); c.moveTo(0, 0); c.lineTo(-len * 0.08, wl * 0.5); c.stroke();
     c.restore(); return;
   }
-  if (kind === 'trefoil') {   /* THREE leaflets from one point — clover, alfalfa, medic */
-    for (let i = -1; i <= 1; i++) {
-      c.save(); c.rotate(i * 0.62);
-      const ll = len * (i === 0 ? 0.82 : 0.68);
-      c.fillStyle = leafGrad(c, p, ll * 0.5, 0, ll * 0.5);
-      /* an obovate leaflet — widest past the middle, notched-round tip */
+  if (kind === 'trefoil') {   /* ★ WAVE 61 — THREE ROUND CLOVER LEAFLETS from one
+       point. The old obovate leaflets were too narrow and read as plain ovals
+       (gp5). Now wide obcordate (heart) leaflets with a notched tip, splayed
+       wider, so even small it reads as a shamrock. */
+    for (const i of [-1, 0, 1]) {
+      c.save(); c.rotate(i * 0.85);
+      const ll = len * (i === 0 ? 0.92 : 0.80), lw = ll * 0.62;
+      c.fillStyle = leafGrad(c, p, ll * 0.55, 0, ll * 0.55);
       c.beginPath(); c.moveTo(0, 0);
-      c.quadraticCurveTo(ll * 0.5, -ll * 0.34, ll, -ll * 0.04);
-      c.quadraticCurveTo(ll * 1.04, 0, ll, ll * 0.04);
-      c.quadraticCurveTo(ll * 0.5, ll * 0.34, 0, 0);
+      c.quadraticCurveTo(ll * 0.30, -lw, ll * 0.82, -lw * 0.9);   /* out to the wide shoulder */
+      c.quadraticCurveTo(ll * 1.12, -lw * 0.5, ll * 0.9, 0);      /* round over toward the notch */
+      c.quadraticCurveTo(ll * 1.12, lw * 0.5, ll * 0.82, lw * 0.9);
+      c.quadraticCurveTo(ll * 0.30, lw, 0, 0);
       c.closePath(); c.fill();
-      leafSurface(c, ll, ll * 0.30, { veins: 3, detail: LEAF_DETAIL });
+      c.strokeStyle = 'rgba(20,40,20,0.28)'; c.lineWidth = 1.4;
+      c.beginPath(); c.moveTo(0, 0); c.lineTo(ll * 0.85, 0); c.stroke();   /* midrib */
       c.restore();
     }
     c.restore(); return;
