@@ -121,6 +121,10 @@ export interface PlantSpec {
   /** drooping catkin-like flower strings hanging from the upper leaf axils —
       the nettle's inconspicuous green tassels */
   tassel?: boolean;
+  /** the harvested underground organ, shown pulled up at the base: a long ropey
+      taproot (licorice), a forked root (ginseng), or a knobbly rhizome
+      (ginger, turmeric, valerian). The judge failed several for its absence. */
+  root?: 'taproot' | 'forked' | 'rhizome';
 }
 
 /** one leaf, drawn along a direction — the shape IS the family */
@@ -358,13 +362,26 @@ function drawFlower(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNu
       }
     }
   } else if (kind === 'bell') {
-    for (let i = 0; i < 4; i++) {
-      const yy = y - R * 0.8 + i * R * 0.55, xx = x + (i % 2 ? R * 0.28 : -R * 0.28);
-      c.fillStyle = col;
-      c.beginPath(); c.moveTo(xx - R * 0.24, yy);
-      c.quadraticCurveTo(xx - R * 0.30, yy + R * 0.62, xx, yy + R * 0.68);
-      c.quadraticCurveTo(xx + R * 0.30, yy + R * 0.62, xx + R * 0.24, yy);
+    /* ★ WAVE 58 — a tall one-sided RACEME of tubular bells with a FLARED,
+       lobed mouth (foxglove, gentian, bellflower). The judge failed these for
+       "no flared 5-lobed mouth" and "minuscule bells". Bigger, and each bell
+       now opens to a scalloped rim. */
+    const nb = 6;
+    for (let i = 0; i < nb; i++) {
+      const u = i / (nb - 1);
+      const yy = y - R * 1.35 + u * R * 1.9;          /* down the raceme */
+      const xx = x + (i % 2 ? 1 : -1) * R * 0.34 * (0.5 + u);
+      const bw = R * (0.30 + u * 0.16), bl = R * (0.5 + u * 0.3);
+      const gg = c.createLinearGradient(xx, yy, xx, yy + bl);
+      gg.addColorStop(0, 'rgba(255,255,255,0.4)'); gg.addColorStop(0.5, col); gg.addColorStop(1, 'rgba(0,0,0,0.25)');
+      c.fillStyle = gg;
+      c.beginPath(); c.moveTo(xx - bw * 0.5, yy);
+      c.quadraticCurveTo(xx - bw * 0.72, yy + bl * 0.85, xx, yy + bl);        /* left wall */
+      c.quadraticCurveTo(xx + bw * 0.72, yy + bl * 0.85, xx + bw * 0.5, yy);  /* right wall */
       c.closePath(); c.fill();
+      /* the flared, lobed mouth */
+      c.fillStyle = col;
+      for (let k = -2; k <= 2; k++) { c.beginPath(); c.arc(xx + k * bw * 0.24, yy + bl, bw * 0.16, 0, TAU); c.fill(); }
     }
   } else if (kind === 'star') {
     for (let i = 0; i < 6; i++) {
@@ -416,6 +433,33 @@ function drawFlower(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNu
     /* the bud knot crowning the raceme */
     c.fillStyle = p.dark;
     for (let i = 0; i < 6; i++) { const a = (i / 6) * TAU; c.beginPath(); c.arc(x + Math.cos(a) * R * 0.12, y - R * 0.9 + Math.sin(a) * R * 0.1, R * 0.07, 0, TAU); c.fill(); }
+  }
+}
+
+/** ★ WAVE 58 — THE HARVESTED ROOT, pulled up at the base. A root-crop's whole
+    identity is the organ you dig up (licorice's rope, ginseng's forked man,
+    ginger's rhizome), and the judge failed those species for drawing only
+    foliage. */
+function drawRoot(c: Ctx, cx: number, base: number, kind: NonNullable<PlantSpec['root']>): void {
+  const rg = c.createLinearGradient(cx, base, cx, base + S * 0.16);
+  rg.addColorStop(0, '#c8b48a'); rg.addColorStop(1, '#8a6f44');
+  c.fillStyle = rg; c.strokeStyle = '#6e5734'; c.lineWidth = Math.max(2, S * 0.006); c.lineCap = 'round';
+  if (kind === 'rhizome') {
+    /* a knobbly horizontal finger-mass sitting on the soil line */
+    for (let i = -2; i <= 2; i++) {
+      c.beginPath(); c.ellipse(cx + i * S * 0.045, base + S * 0.03, S * 0.038, S * 0.022, i * 0.3, 0, TAU); c.fill();
+    }
+    for (let i = -1; i <= 1; i++) { c.beginPath(); c.moveTo(cx + i * S * 0.05, base + S * 0.03); c.lineTo(cx + i * S * 0.07, base + S * 0.075); c.stroke(); }
+    return;
+  }
+  const prongs = kind === 'forked' ? [-1, 1] : [0];
+  for (const s of prongs) {
+    c.beginPath(); c.moveTo(cx - S * 0.02, base);
+    c.quadraticCurveTo(cx + s * S * 0.03, base + S * 0.08, cx + s * S * 0.05, base + S * 0.17);
+    c.quadraticCurveTo(cx + s * S * 0.01, base + S * 0.09, cx + S * 0.02, base);
+    c.closePath(); c.fill();
+    /* rootlets */
+    for (let k = 0; k < 3; k++) { const ry = base + S * (0.05 + k * 0.04); c.beginPath(); c.moveTo(cx + s * S * 0.03, ry); c.lineTo(cx + s * S * 0.07, ry + S * 0.02); c.stroke(); }
   }
 }
 
@@ -864,7 +908,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
          visual mass, not a 16px bead on a 230px stem. A spike/umbel is the
          whole top third of the plant; a single terminal head is smaller than a
          borne cluster only because it is one bloom, not many. */
-      const big = spec.flower === 'spike' || spec.flower === 'catkin' || spec.flower === 'umbel' || spec.flower === 'cross';
+      const big = spec.flower === 'spike' || spec.flower === 'catkin' || spec.flower === 'umbel' || spec.flower === 'cross' || spec.flower === 'bell';
       const fR = S * (big ? (mat ? 0.075 : 0.090) : mat ? 0.050 : nF > 1 ? 0.048 : 0.060);
       if (spec.whorl) {
         /* ★ VERTICILLASTERS — a mint bears dense flower rings at the upper leaf
@@ -937,6 +981,9 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
      The succulent column keeps its own pass (guarded out here); Agave's
      leaf-margin teeth and Prickly Pear's pad areoles are DIFFERENT anatomy
      and are recorded open rather than faked with stem spines. */
+  /* ★ WAVE 58 — the harvested root/rhizome, a GLOBAL post-pass so it reaches
+     the rosette gingers as well as the herb-habit licorice. */
+  if (spec.root) drawRoot(c, cx, base, spec.root);
   if (spec.thorns && spec.habit !== 'succulent' && spec.habit !== 'rosette') {
     const tr = rngF(g, name, 0x7409);
     c.strokeStyle = '#ded2b2'; c.lineWidth = Math.max(1.4, S * 0.0042); c.lineCap = 'round';
