@@ -135,6 +135,13 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★ WAVE 66b (committed): Krill stalk-eyes FLIPPED to the head (were on the tail — a sign-bug) ·
+Barnacle cirri fan · Sugar Kelp ONE ribbon / Dulse red hand (flowerN = blade count in the
+flat-seaweed branch). REMAINING FAILs now: bird pose axis (Bittern/Albatross/Skua/Petrel),
+Weaverbird nest, Snow Petrel, Water Flea shell, Bull Kelp single stipe+bulb, cushion alpines,
+sorrel de-dupe, Wild Thyme mat, Sea Fennel fingers, Vanilla Orchid/Water Spinach trail,
+Chanterelle dish, Shiitake cracks, Reindeer Lichen trunks, procedural bridge + 60 → then gp6
+re-measure + control → then the POLISH→PASS sweep.
 ★ WAVE 66 (committed): Bergamot firework head · Angel's Trumpet pendulous horns · Solomon's Seal
 stem:'arch' (bells dangle BENEATH the arching cane) · Miner's Lettuce leaf:'perfoliate' saucers ·
 Catfish barbels (attached, snout-rooted) · Mite/Harvestman `fused` one-piece bodies · Copepod
