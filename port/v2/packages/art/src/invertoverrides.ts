@@ -488,12 +488,19 @@ export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: 
       const ox = cx - b * 0.4 + i * b * 0.34;
       const kx = ox + s * Math.cos(a) * reach * 0.62, ky = cy - b * 0.55 - Math.sin(a) * reach * 0.30;
       const ex = ox + s * Math.cos(a) * reach, ey = cy + b * 1.4 + i * b * 0.18;
-      limb(c, ox, cy, ex, ey, kx, ky, opts.hairy ? 6 : (opts.longleg ? 2.6 : 4), p.dark);
+      /* ★ WAVE 62 — a tarantula's legs are THICK AND FURRED; lineWidth 6 with
+         five hair ticks read as "identical thin bare spider legs" (gp5). */
+      limb(c, ox, cy, ex, ey, kx, ky, opts.hairy ? 11 : (opts.longleg ? 2.6 : 4), p.dark);
       if (opts.hairy) {
-        c.strokeStyle = `rgba(${p.cr},${p.cg},${p.cb},0.8)`; c.lineWidth = 1.4;
-        for (let k = 0; k < 5; k++) {
-          const u = k / 5, px = ox + (kx - ox) * u, py = cy + (ky - cy) * u;
+        c.strokeStyle = `rgba(${p.cr},${p.cg},${p.cb},0.85)`; c.lineWidth = 1.6;
+        for (let k = 0; k < 14; k++) {   /* fur on BOTH leg segments, both sides */
+          const u = k / 14;
+          const seg1 = u < 0.5;
+          const t = seg1 ? u * 2 : (u - 0.5) * 2;
+          const px = seg1 ? ox + (kx - ox) * t : kx + (ex - kx) * t;
+          const py = seg1 ? cy + (ky - cy) * t : ky + (ey - ky) * t;
           c.beginPath(); c.moveTo(px, py); c.lineTo(px + s * 7, py - 6); c.stroke();
+          c.beginPath(); c.moveTo(px, py); c.lineTo(px - s * 5, py + 6); c.stroke();
         }
       }
     }
@@ -755,16 +762,29 @@ export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stou
     c.beginPath(); c.moveTo(cx - L * 0.55, cy - h * 0.3 + s * h * 0.2);
     c.quadraticCurveTo(cx - L * 1.5, cy + s * h * 1.4, cx - L * 2.0, cy + s * h * (2.4 + s * 0.6)); c.stroke();
   }
-  if (opts.claws) {   /* the lobster/crayfish chelae */
+  if (opts.claws) {   /* ★ WAVE 62 — the lobster's chelae are its identity, and
+       gp5 called the old ones "flat unshaded paddles floating in front of the
+       head". Each is now a fat shaded PALM continuing into two filled tapering
+       PINCER fingers with a visible gape between them, joined by a real arm. */
     for (const s of [-1, 1] as const) {
       const px = cx - L * 0.95, py = cy + h * (0.3 + s * 0.75);
-      limb(c, cx - L * 0.45, cy + h * 0.3, px, py, cx - L * 0.75, cy + h * (0.2 + s * 0.5), 6, p.dark);
-      c.fillStyle = shell(c, p, px, py, h * 0.8);
+      limb(c, cx - L * 0.45, cy + h * 0.3, px, py, cx - L * 0.75, cy + h * (0.2 + s * 0.5), 8, p.dark);
       c.save(); c.translate(px, py); c.rotate(s * 0.35);
-      c.beginPath(); c.ellipse(-h * 0.3, 0, h * 0.85, h * 0.42, 0, 0, TAU); c.fill();
-      c.strokeStyle = p.dark; c.lineWidth = 4;
-      c.beginPath(); c.moveTo(-h * 0.9, -h * 0.16); c.lineTo(-h * 1.9, -h * 0.34); c.stroke();
-      c.beginPath(); c.moveTo(-h * 0.9, h * 0.12); c.lineTo(-h * 1.8, h * 0.06); c.stroke();
+      c.fillStyle = shell(c, p, 0, 0, h * 0.9);
+      c.beginPath(); c.ellipse(-h * 0.3, 0, h * 0.95, h * 0.52, 0, 0, TAU); c.fill();   /* the palm */
+      /* the fixed finger and the movable dactyl — filled wedges with a gape */
+      c.beginPath();
+      c.moveTo(-h * 1.0, -h * 0.30);
+      c.quadraticCurveTo(-h * 1.9, -h * 0.55, -h * 2.25, -h * 0.30);   /* upper finger out */
+      c.quadraticCurveTo(-h * 1.8, -h * 0.28, -h * 1.05, -h * 0.02);   /* back along its underside */
+      c.closePath(); c.fill();
+      c.beginPath();
+      c.moveTo(-h * 1.0, h * 0.28);
+      c.quadraticCurveTo(-h * 1.8, h * 0.42, -h * 2.1, h * 0.16);      /* lower finger */
+      c.quadraticCurveTo(-h * 1.7, h * 0.12, -h * 1.02, h * 0.02);
+      c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(0,0,0,0.30)'; c.lineWidth = 1.6;           /* the knuckle seam */
+      c.beginPath(); c.moveTo(-h * 1.05, -h * 0.2); c.quadraticCurveTo(-h * 1.2, 0, -h * 1.05, h * 0.18); c.stroke();
       c.restore();
     }
   }
