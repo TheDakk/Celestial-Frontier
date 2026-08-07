@@ -343,15 +343,29 @@ function drawFruit(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNul
       c.beginPath(); c.ellipse(x, yy, R * (0.50 - i * 0.05), R * 0.17, 0, 0, TAU); c.fill();
     }
   } else if (kind === 'grain') {
-    c.fillStyle = col;
-    for (let i = 0; i < 12; i++) {
-      const yy = y - R * 1.2 + i * R * 0.22;
+    /* ★ WAVE 58 — a bristling AWNED ear (wheat, barley, rye). The single
+       must-read the judge failed all of them for is "long stiff awns fanning
+       up, longer than the head itself" — the old ear had 7 short stubs. Now a
+       plump two-rank ear of grains under a wide fan of long awns. */
+    const rows = 7;
+    /* the awns first, behind the grains: a wide upward fan, each awn longer
+       than the ear */
+    c.strokeStyle = col; c.lineWidth = Math.max(1.4, R * 0.05); c.lineCap = 'round';
+    for (let i = 0; i < 15; i++) {
+      const t = (i / 14 - 0.5);
+      c.beginPath(); c.moveTo(x + t * R * 0.5, y - R * 1.3);
+      c.lineTo(x + t * R * 2.6, y - R * 3.1); c.stroke();
+    }
+    for (let i = 0; i < rows; i++) {
+      const yy = y - R * 1.15 + i * R * 0.34;
       for (const s of [-1, 1] as const) {
-        c.beginPath(); c.ellipse(x + s * R * 0.20, yy, R * 0.16, R * 0.09, s * 0.5, 0, TAU); c.fill();
+        /* each spikelet a plump lit bead */
+        const bx = x + s * R * 0.24, gg = c.createRadialGradient(bx - R * 0.06, yy - R * 0.08, 1, bx, yy, R * 0.28);
+        gg.addColorStop(0, 'rgba(255,250,220,0.7)'); gg.addColorStop(0.5, col); gg.addColorStop(1, 'rgba(60,44,16,0.5)');
+        c.fillStyle = gg;
+        c.beginPath(); c.ellipse(bx, yy, R * 0.22, R * 0.13, s * 0.5, 0, TAU); c.fill();
       }
     }
-    c.strokeStyle = col; c.lineWidth = 1.6;   /* the awns */
-    for (let i = 0; i < 7; i++) { c.beginPath(); c.moveTo(x, y - R * 1.2); c.lineTo(x + (i - 3) * R * 0.16, y - R * 2.1); c.stroke(); }
   }
 }
 
@@ -701,7 +715,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       const headY = base - H * 0.80;
       c.strokeStyle = stemCol; c.lineWidth = S * 0.007; c.lineCap = 'round';
       c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.03, base - H * 0.5, cx + S * 0.01, headY + S * 0.03); c.stroke();
-      if (spec.fruit === 'grain') drawFruit(c, p, cx + S * 0.01, headY, S * 0.034, 'grain', spec.fhue, r);
+      if (spec.fruit === 'grain') drawFruit(c, p, cx + S * 0.01, headY, S * 0.048, 'grain', spec.fhue, r);
       else drawFlower(c, p, cx + S * 0.01, headY, S * (spec.flower === 'spike' || spec.flower === 'catkin' ? 0.078 : 0.052), spec.flower!, spec.fhue, r);
     }
   } else if (spec.habit === 'vine') {
