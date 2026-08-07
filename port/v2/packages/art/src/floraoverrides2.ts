@@ -142,6 +142,10 @@ export interface PlantSpec {
   /** ★ WAVE 67 — a TIGHT LOW CUSHION: a dome mound of dense tiny foliage with
       STEMLESS flowers sitting directly on it (purple saxifrage, bitterroot) */
   cushion?: boolean;
+  /** a vine that TRAILS horizontally along the ground/water (water spinach) */
+  trail?: boolean;
+  /** a vine whose stem is a thick succulent ROPE with aerial roots (vanilla) */
+  rope?: boolean;
   /** a woody shrub that trails as a LOW CREEPING MAT, wider than tall — the
       groundcover berries (bearberry, crowberry, cranberry, lingonberry) that
       the judge failed for being drawn as tall upright cane-vases */
@@ -962,12 +966,23 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       else drawFlower(c, p, cx + S * 0.01, headY, S * (spec.flower === 'spike' || spec.flower === 'catkin' ? 0.078 : 0.052), spec.flower!, spec.fhue, r);
     }
   } else if (spec.habit === 'vine') {
-    /* A VINE HANGS AND CLINGS — a sinuous stem with tendrils, not a stalk */
-    c.strokeStyle = stemCol; c.lineWidth = S * 0.011; c.lineCap = 'round';
+    /* A VINE HANGS AND CLINGS — a sinuous stem with tendrils, not a stalk.
+       ★ WAVE 67 — `trail` lays the runner HORIZONTALLY along the ground/water
+       (water spinach, beach morning glory's read); `rope` thickens the stem to
+       a succulent cord with short aerial roots at the nodes (vanilla orchid). */
+    const rope = spec.rope ?? false;
+    c.strokeStyle = stemCol; c.lineWidth = S * (rope ? 0.022 : 0.011); c.lineCap = 'round';
     const pts: Array<[number, number]> = [];
     for (let i = 0; i <= 24; i++) {
       const u = i / 24;
-      pts.push([cx + Math.sin(u * 6.0 + lean) * S * 0.11 * spread, base - u * H]);
+      if (spec.trail) pts.push([cx - S * 0.34 + u * S * 0.68, base - S * 0.03 - Math.sin(u * 5.2 + lean) * S * 0.035]);
+      else pts.push([cx + Math.sin(u * 6.0 + lean) * S * 0.11 * spread, base - u * H]);
+    }
+    if (rope) {   /* aerial roots hanging at every few nodes */
+      c.strokeStyle = 'rgba(150,140,110,0.8)'; c.lineWidth = 2;
+      for (let i = 4; i < 24; i += 5) { const [ax2, ay2] = pts[i]!;
+        c.beginPath(); c.moveTo(ax2, ay2); c.quadraticCurveTo(ax2 + S * 0.012, ay2 + S * 0.04, ax2 + S * 0.005, ay2 + S * 0.07); c.stroke(); }
+      c.strokeStyle = stemCol; c.lineWidth = S * 0.022;
     }
     c.beginPath(); c.moveTo(pts[0]![0], pts[0]![1]);
     for (let i = 1; i < pts.length; i++) c.lineTo(pts[i]![0], pts[i]![1]);
