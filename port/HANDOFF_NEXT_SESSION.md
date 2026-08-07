@@ -95,11 +95,35 @@ LOW-CUSHION alpines (Purple Saxifrage, Bitterroot), Coralline Algae (crusty pink
 (calyces), Dragon Fruit / Barrel Cactus (ribbed succulent). Re-pull prose from
 `goldpass3-prechassis.json` (`defect`/`readsAs`).
 
-## ★★★ NEXT MAJOR PHASE: FAUNA (~360 FAIL, the bigger half) — NOT YET STARTED
-The mammal chassis is the hardest known defect (all the history above). Fauna painters live in
-`faunaoverrides*.ts`, `quadrupedoverrides.ts`, `mammaloverrides.ts`, `birdoverrides.ts`,
-`invertoverrides.ts` — a different, harder system than flora. The tail families (birds, fish,
-insects, snakes, mollusks) each need their own pass; `reference/LONGTAIL_WORKLIST.md` orders them.
+## ★★★ FAUNA PHASE — UNDERWAY (wave 59, 8 clusters committed)
+Same method, in the fauna painters. Landed & committed:
+- **Sharks** (`faunaoverrides3.ts` fishBody): big opaque first+second dorsal, SHARP grey/white
+  countershade (shark-only), hammerhead cephalofoil seated into the head (was a stranded bar).
+- **Snakes** (`faunaoverrides2.ts` reptSnake): new `gauge` (Vine/Whip/Racer/Tree now whip-thin,
+  not "the same fat doughnut"); new `collar` (grass snake's neck band).
+- **Corvids** (`birdoverrides.ts`): black bills for Crow/Raven (were the default yellow → jackdaw
+  read), Magpie's white pied bib.
+- **Wetland birds** (`faunaoverrides.ts` inline): Heron/Flamingo/Stork/Ibis/Crane/Spoonbill were
+  defined with NO `neck` — added neck:'swan'/'long' (the S-kink was simply absent).
+- **Wader bills** (`faunaoverrides.ts` faunaBird): new bill shapes `probe`/`downcurve`/`upcurve`
+  → Snipe, Godwit, Curlew, Avocet, Oystercatcher, Ibis.
+- **Bivalves** (`faunaoverrides2.ts` marineShell): new `clam`/`mussel` kinds — two valves + hinge
+  seam, not the one scallop bowl.
+- **Small rodents** (smallRodent): `earShape:'nub'` (existed, zero writers) for Vole/Water Vole/
+  Prairie Dog/Ground Squirrel — buried ears not rabbit ears.
+
+## ★★★ THE HARD CORE THAT REMAINS: THE MAMMAL QUADRUPED CHASSIS (~70 FAIL)
+Big cats (11), Bears (8), Dogs (8), Rodents-mammal (Agouti/Capybara/Mara chassis), Primates (9),
+Marine mammals (10) — these share the quadruped/mammal chassis in `quadrupedoverrides.ts` +
+`mammaloverrides.ts`, the defect the ENTIRE project history is about (the pony; gp4 still says
+"Leopard = the Jaguar cell in a paler tan"). ⚠ DO NOT parameter-sweep it (D-ART-83); use the
+tint-render method (memory: "tint it flat and render") and the established model. The three gp4
+one-lever felid sub-defects: tail = body-length rope not short hook; muzzle shorter; paw not hoof.
+Remaining tractable non-chassis fauna clusters (do these the flora way): Reef fish (clownfish
+bands, lionfish quills, parrotfish beak, surgeonfish scalpel), Seabirds (FLYING posture + gull
+hook + puffin bill), Gamebirds (bare facial skin, peacock train, rooster comb), Gastropods
+(abalone ear-shell, conch spiral, limpet cone), the Starfish/Earthworm/Anemone recolour trios,
+Ice-and-cave insects (12), Primates faces. `reference/LONGTAIL_WORKLIST.md` orders them.
 Then fungi (18 FAIL) + microbe (13). ⚠ Still **eye-verified only** — run the full measurement
 pass (cheap re-check + control, D-ART-158) after the fixing is broadly done to get the real
 PASS-rate.
