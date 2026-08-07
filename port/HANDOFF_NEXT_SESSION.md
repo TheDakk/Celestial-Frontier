@@ -60,7 +60,7 @@ Nick's goal: **100% PASS — zero POLISH, zero FAIL — at the SHIPPABLE bar** (
 art-director bar that whipsawed the ruler). Method proven: **cluster by botanical family, add the
 missing read-cues, one edit clears the cluster.** All in `floraoverrides2.ts` (painter) +
 `florarost.ts` (specs); every new axis defaults OFF so unset plants are byte-unchanged (D-ART-14).
-tsc + vitest green on every commit. **~35 flora species converted.** The reusable vocabulary now:
+tsc + vitest green on every commit. **~55 flora species converted.** The reusable vocabulary now:
 
 | axis | what it draws | used by |
 |---|---|---|
@@ -75,6 +75,8 @@ tsc + vitest green on every commit. **~35 flora species converted.** The reusabl
 | `tassel` | drooping green axil strings | nettles |
 | `root` (taproot/forked/rhizome) | the harvested organ at the base | Licorice, Ginseng, Ginger, Turmeric |
 | `leafArr:'basal'` | rosette + bare flowering stem | Sea Lavender |
+| fruit **shapes** (pear/spiky/star/crown/hairy) | species fruit, not one sphere | 12 fruit trees (Pear≠Apple) |
+| `fruit:'grain'` rebuilt | bristling awned cereal ear | Wheat, Barley, Rye, Oats, Millet, Sorghum, Rice |
 
 ★ **Remaining flora FAILs, roughly in yield order** — these are increasingly BESPOKE, not cluster
 wins: Bergamot (monarda firework tubes), Brooklime (aquatic sprawl), Cloudberry (low + lobed leaf
