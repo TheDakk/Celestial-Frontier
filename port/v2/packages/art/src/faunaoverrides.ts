@@ -757,17 +757,32 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
   /* ── the TAIL, behind the body ── */
   c.fillStyle = p.dark;
   const tail = opts.tail ?? 'short';
-  if (tail === 'fan') {
+  if (tail === 'fan' && opts.eyespots) {
+    /* ★ WAVE 62 — THE PEACOCK'S TRAIN. The old fan was a handful of body-length
+       feathers pointing back-down; gp5's verdict was "the train — the entire
+       identity of a peacock — is not there". It is now what it is in life: a
+       huge ERECT semicircular fan behind the whole bird, each feather ~2.6×
+       the body, tipped with a blue-and-gold ocellus. */
+    const rootX = bx + bw * 0.30, rootY = by + bh * 0.10;
+    const R = bw * 2.6;
+    for (let i = -6; i <= 6; i++) {
+      const a = -Math.PI / 2 + i * 0.145;   /* an erect fan, -125°..-55° spread */
+      c.save(); c.translate(rootX, rootY); c.rotate(a);
+      const fg2 = c.createLinearGradient(0, 0, R, 0);
+      fg2.addColorStop(0, 'rgba(20,70,60,0.9)'); fg2.addColorStop(1, 'rgba(40,120,90,0.85)');
+      c.fillStyle = fg2;
+      c.beginPath(); c.ellipse(R * 0.52, 0, R * 0.52, bh * 0.16, 0, 0, TAU); c.fill();
+      /* the ocellus at the tip */
+      c.fillStyle = '#123a4a'; c.beginPath(); c.arc(R * 0.88, 0, bh * 0.16, 0, TAU); c.fill();
+      c.fillStyle = '#2b7f96'; c.beginPath(); c.arc(R * 0.88, 0, bh * 0.11, 0, TAU); c.fill();
+      c.fillStyle = '#d8b43c'; c.beginPath(); c.arc(R * 0.88, 0, bh * 0.055, 0, TAU); c.fill();
+      c.restore();
+    }
+  } else if (tail === 'fan') {
     for (let i = -4; i <= 4; i++) {
       c.save(); c.translate(bx + bw * 0.66, by + bh * 0.24); c.rotate(i * 0.13 + 0.30);
       c.fillStyle = i % 2 ? p.dark : p.base;
       c.beginPath(); c.ellipse(bw * 0.85, 0, bw * 0.85, bh * 0.17, 0, 0, TAU); c.fill();
-      if (opts.eyespots) {   /* the peacock's ocelli */
-        c.fillStyle = 'rgba(30,90,120,0.85)';
-        c.beginPath(); c.arc(bw * 1.45, 0, bh * 0.13, 0, TAU); c.fill();
-        c.fillStyle = 'rgba(210,180,60,0.9)';
-        c.beginPath(); c.arc(bw * 1.45, 0, bh * 0.07, 0, TAU); c.fill();
-      }
       c.restore();
     }
   } else if (tail === 'long') {
