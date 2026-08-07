@@ -670,6 +670,15 @@ export function fungiCap(c: Ctx, g: G, _p: Pal, spec: CapSpec): void {
       c.quadraticCurveTo(cx + capW * 0.62, capY - capW * 0.46, cx, capY - capW * 0.30);
       c.quadraticCurveTo(cx - capW * 0.62, capY - capW * 0.46, cx - capW, capY - capW * 0.10);
       c.closePath(); c.fill();
+      /* ★ WAVE 67 — the dished centre is WARM GOLD, not a black hole. gp3:
+         "the cap upper surface renders as a hard-edged near-black ellipse".
+         The vase interior is the same egg-yolk flesh, just a shade deeper. */
+      {
+        const ig = c.createRadialGradient(cx, capY - capW * 0.20, 1, cx, capY - capW * 0.20, capW * 0.6);
+        ig.addColorStop(0, 'rgba(178,118,30,0.95)'); ig.addColorStop(0.7, 'rgba(214,148,44,0.9)'); ig.addColorStop(1, 'rgba(232,163,58,0.0)');
+        c.fillStyle = ig;
+        c.beginPath(); c.ellipse(cx, capY - capW * 0.22, capW * 0.62, capW * 0.15, 0, 0, TAU); c.fill();
+      }
       /* the ridges RUN DOWN onto the stem — decurrent, blunt, forking */
       c.strokeStyle = 'rgba(150,110,40,0.45)'; c.lineWidth = 1.6; c.lineCap = 'round';
       for (let i = -5; i <= 5; i++) {
