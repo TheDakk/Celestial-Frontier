@@ -78,7 +78,12 @@ export interface PlantSpec {
     /* ★ WAVE 58 — species fruit SHAPES. The tree body was fine; every fruit was
        the same small round sphere, so Pear read as Apple and Mango as Orange
        (the judge's words). These are the shapes that name the species. */
-    | 'pear' | 'spiky' | 'star' | 'crown' | 'hairy';
+    | 'pear' | 'spiky' | 'star' | 'crown' | 'hairy'
+    /* ★ WAVE 61 — cereal head TYPES. One awned ear made every grain look alike
+       (gp5). 'grain' = the dense awned ear (wheat/barley/rye); 'panicle' = a
+       loose nodding open spray (oats/rice); 'club' = a dense bristly cylinder
+       (millet/sorghum). */
+    | 'panicle' | 'club';
   fhue?: string;      /** flower/fruit colour where colour IS the identity */
   hue?: string;       /** FOLIAGE colour — the body of the plant, not its fruit */
   /* ★ D-ART-125 — BARK. `hue` colours the foliage and the trunk took it too,
@@ -385,6 +390,35 @@ function drawFruit(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNul
       const yy = y - R * 0.7 + i * R * 0.28;
       c.beginPath(); c.ellipse(x, yy, R * (0.50 - i * 0.05), R * 0.17, 0, 0, TAU); c.fill();
     }
+  } else if (kind === 'panicle') {
+    /* ★ WAVE 61 — a LOOSE NODDING PANICLE (oats, rice): open branches arching
+       out and down, each hung with a few teardrop spikelets. The opposite of a
+       compact ear. */
+    c.strokeStyle = p.dark; c.lineWidth = Math.max(1.4, R * 0.05); c.lineCap = 'round';
+    for (let i = 0; i < 9; i++) {
+      const u = i / 8, sy = y - R * 1.5 + u * R * 1.9, s = i % 2 ? 1 : -1;
+      const ex = x + s * R * (0.3 + u * 0.7), ey = sy + R * 0.5;
+      c.beginPath(); c.moveTo(x + (u - 0.5) * R * 0.2, sy); c.quadraticCurveTo(x + s * R * 0.4, sy + R * 0.1, ex, ey); c.stroke();
+      const gg = c.createLinearGradient(ex, ey, ex, ey + R * 0.3);
+      gg.addColorStop(0, col); gg.addColorStop(1, 'rgba(80,60,20,0.5)');
+      c.fillStyle = gg; c.beginPath(); c.ellipse(ex, ey + R * 0.14, R * 0.09, R * 0.18, s * 0.3, 0, TAU); c.fill();
+    }
+  } else if (kind === 'club') {
+    /* ★ WAVE 61 — a dense bristly CYLINDER/CLUB (millet, sorghum, foxtail): a
+       fat packed spike with a fuzz of short bristles, not a fanned awn crown. */
+    const top = y - R * 1.6, bot = y + R * 0.3;
+    for (let i = 0; i < 60; i++) {
+      const u = i / 59, yy = bot + (top - bot) * u;
+      const halfW = R * 0.34 * Math.sin(Math.min(1, u * 1.1) * Math.PI * 0.92) + R * 0.05;
+      const fx = x + (r() - 0.5) * halfW * 1.9;
+      const gg = c.createRadialGradient(fx - R * 0.04, yy - R * 0.04, 1, fx, yy, R * 0.16);
+      gg.addColorStop(0, 'rgba(255,250,220,0.7)'); gg.addColorStop(0.5, col); gg.addColorStop(1, 'rgba(70,50,16,0.5)');
+      c.fillStyle = gg; c.beginPath(); c.arc(fx, yy, R * 0.10, 0, TAU); c.fill();
+    }
+    c.strokeStyle = col; c.lineWidth = 1; c.globalAlpha = 0.5;   /* the bristle fuzz */
+    for (let i = 0; i < 30; i++) { const u = r(), yy = bot + (top - bot) * u, s = r() < 0.5 ? -1 : 1;
+      c.beginPath(); c.moveTo(x + s * R * 0.3, yy); c.lineTo(x + s * R * 0.55, yy - R * 0.1); c.stroke(); }
+    c.globalAlpha = 1;
   } else if (kind === 'grain') {
     /* ★ WAVE 58 — a bristling AWNED ear (wheat, barley, rye). The single
        must-read the judge failed all of them for is "long stiff awns fanning
@@ -858,11 +892,12 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     }
     /* the head rides the tallest blade, JOINED to the crown by its own stalk
        — it used to float disconnected above the grass (Nick's review) */
-    if ((spec.fruit === 'grain') || (spec.flower && spec.flower !== 'none')) {
+    const cereal = spec.fruit === 'grain' || spec.fruit === 'panicle' || spec.fruit === 'club';
+    if (cereal || (spec.flower && spec.flower !== 'none')) {
       const headY = base - H * 0.80;
       c.strokeStyle = stemCol; c.lineWidth = S * 0.007; c.lineCap = 'round';
       c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.03, base - H * 0.5, cx + S * 0.01, headY + S * 0.03); c.stroke();
-      if (spec.fruit === 'grain') drawFruit(c, p, cx + S * 0.01, headY, S * 0.048, 'grain', spec.fhue, r);
+      if (cereal) drawFruit(c, p, cx + S * 0.01, headY, S * 0.048, spec.fruit!, spec.fhue, r);
       else drawFlower(c, p, cx + S * 0.01, headY, S * (spec.flower === 'spike' || spec.flower === 'catkin' ? 0.078 : 0.052), spec.flower!, spec.fhue, r);
     }
   } else if (spec.habit === 'vine') {
