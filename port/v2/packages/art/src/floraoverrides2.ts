@@ -72,7 +72,7 @@ function nrng(g: G, name: string, salt: number): () => number {
 
 export interface PlantSpec {
   habit: 'tree' | 'shrub' | 'herb' | 'grass' | 'vine' | 'succulent' | 'fern' | 'aquatic' | 'rosette' | 'palm' | 'cane';
-  leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad' | 'trefoil' | 'arrow';
+  leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad' | 'trefoil' | 'arrow' | 'crinkle';
   flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin' | 'cross' | 'cone';
   fruit?: 'none' | 'berry' | 'drupe' | 'pome' | 'citrus' | 'pod' | 'nut' | 'cone' | 'grain' | 'melon' | 'fig' | 'cluster'
     /* ★ WAVE 58 — species fruit SHAPES. The tree body was fine; every fruit was
@@ -158,6 +158,22 @@ function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number
         c.beginPath(); c.ellipse(lx + ll * 0.25, s * ll * 0.55, ll * 0.42, ll * 0.20, s * 0.5, 0, TAU); c.fill();
       }
     }
+    c.restore(); return;
+  }
+  if (kind === 'crinkle') {   /* a huge PUCKERED cabbage/rhubarb blade — a broad
+       rounded leaf with a wavy scalloped margin and a heavy branching midrib. */
+    const wl = len * 0.82, lobes = 9;
+    c.fillStyle = leafGrad(c, p, len * 0.55, 0, len * 0.6);
+    c.beginPath(); c.moveTo(0, 0);
+    for (let i = 0; i <= lobes; i++) { const u = i / lobes; const env = Math.sin(u * Math.PI);
+      c.lineTo(len * u, -wl * env * (0.82 + (i % 2) * 0.28)); }
+    for (let i = lobes; i >= 0; i--) { const u = i / lobes; const env = Math.sin(u * Math.PI);
+      c.lineTo(len * u, wl * env * (0.82 + (i % 2) * 0.28)); }
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(20,40,20,0.30)'; c.lineWidth = Math.max(1.6, len * 0.02);
+    c.beginPath(); c.moveTo(0, 0); c.lineTo(len * 0.9, 0);
+    for (let k = 1; k <= 4; k++) { const lx = len * k / 5; c.moveTo(lx, 0); c.lineTo(lx + len * 0.14, -wl * 0.5 * Math.sin(Math.PI * k / 5)); c.moveTo(lx, 0); c.lineTo(lx + len * 0.14, wl * 0.5 * Math.sin(Math.PI * k / 5)); }
+    c.stroke();
     c.restore(); return;
   }
   if (kind === 'arrow') {   /* a SAGITTATE blade — arrowhead, taro, wild yam: a
@@ -918,7 +934,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
        "stiff symmetric radial fan of sword blades"). Jittered per node off the
        name, and an arrow/heart rosette is held on erect STALKS (taro), not
        splayed flat. */
-    const erect = spec.leaf === 'arrow' || spec.leaf === 'heart';
+    const erect = spec.leaf === 'arrow' || spec.leaf === 'heart' || spec.leaf === 'crinkle';
     const nL = leafN + 3;
     for (let i = 0; i < nL; i++) {
       const t = (i / (nL - 1)) - 0.5;
