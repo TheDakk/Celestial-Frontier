@@ -55,27 +55,40 @@ largest bucket and this matches the family sweep's independent "four growth-form
 **3.** The one genuine rescue in 148: **Ice Algae FAIL → PASS**, wave 56, visible *through* the
 ruler shift.
 
-## ★★ WAVE 58 — FLORA GROWTH-FORM ARC OPENED (in progress, uncommitted)
-Nick's call: drive the catalogue to **ZERO FAIL at the shippable bar** (not the strict
-art-director bar that whipsawed the ruler). Method proven: **cluster by botanical family, add
-the 2–3 missing read-cues, one edit clears the cluster.** All in `floraoverrides2.ts` +
-`florarost.ts`, tests green, tsc clean. Landed so far:
-- **Inflorescence is a structure with size** (all flowering herbs). `drawFlower` head/spike/umbel
-  rebuilt (were a "thin white crescent"/"5px stub"); fR bumped ~2× at the herb/grass/shrub call
-  sites. Umbel is now a two-rank domed compound head, spike a dense tapering raceme.
-- **Mint family** (Mint, Wild/Swamp/Desert/Alpine/Mountain/Water Mint, Oregano, Holy Basil):
-  new `toothed` (fine serrated margin), `square` (reddish squared stem), `whorl` (verticillasters
-  — flower rings up the stem). Nine "one spike in nine tints" → real mints.
-- **Brassicas** (Mustard, Wild Mustard, Canola, Sea Rocket): new `flower:'cross'` (4-petal
-  corymb + bud knot) and `pods` (siliques). 
-★ **Remaining flora clusters, in yield order:** nettles (toothed HEART leaves — note `drawLeaf`
-currently can't tooth a heart, the heart branch precedes the toothed branch; combine them — plus
-drooping axil tassels), composites-with-cone (Chamomile/Echinacea raised bristly disc + backswept
-rays), legumes (trifoliate leaf + pod/root), the "harvest organ absent" set (~15: the named
-pod/berry/root/capsule simply missing), aquatic/coastal habit (Brooklime sprawl, Sea Lavender
-basal rosette, Sea Fennel succulent fingers). THEN mammal chassis, THEN the 144-bucket tail
-(`reference/LONGTAIL_WORKLIST.md`). ⚠ Not yet re-judged — measure with the cheap re-check +
-control (D-ART-158) after a batch of clusters, not per-edit.
+## ★★ WAVE 58 — FLORA GROWTH-FORM ARC (COMMITTED: `071cfa7`, `6dfc468`, `c469c08`)
+Nick's goal: **100% PASS — zero POLISH, zero FAIL — at the SHIPPABLE bar** (not the strict
+art-director bar that whipsawed the ruler). Method proven: **cluster by botanical family, add the
+missing read-cues, one edit clears the cluster.** All in `floraoverrides2.ts` (painter) +
+`florarost.ts` (specs); every new axis defaults OFF so unset plants are byte-unchanged (D-ART-14).
+tsc + vitest green on every commit. **~35 flora species converted.** The reusable vocabulary now:
+
+| axis | what it draws | used by |
+|---|---|---|
+| drawFlower head/spike/umbel/**cross**/**cone**/**bell** rebuilt | inflorescence with real SIZE (was a speck/crescent) | all flowering herbs |
+| `toothed` | serrated leaf margin (incl. a toothed heart) | mints, nettles, brassicas |
+| `square` | squared reddish mint stem | mints |
+| `whorl` | flower rings up the stem (verticillaster) | mints |
+| `flower:'cross'` + `pods` | 4-petal corymb + siliques | brassicas |
+| `flower:'cone'` | raised bristly disc + backswept rays | Chamomile, Echinacea, Black-Eyed Susan |
+| `flower:'bell'` | tall raceme of flared tubular bells | Foxglove, Gentian, Monkshood |
+| `leaf:'trefoil'` | three leaflets from one point | Alfalfa, Clover, Fenugreek |
+| `tassel` | drooping green axil strings | nettles |
+| `root` (taproot/forked/rhizome) | the harvested organ at the base | Licorice, Ginseng, Ginger, Turmeric |
+| `leafArr:'basal'` | rosette + bare flowering stem | Sea Lavender |
+
+★ **Remaining flora FAILs, roughly in yield order** — these are increasingly BESPOKE, not cluster
+wins: Bergamot (monarda firework tubes), Brooklime (aquatic sprawl), Cloudberry (low + lobed leaf
++ amber berry), Devil's Claw (grappling-hook pod), Miner's Lettuce (perfoliate saucer), Solomon's
+Seal (arching stem + hanging bells), Mugwort (silver leaf underside + purple stem), Sesame/Flax
+(upright ribbed capsules), Milkweed (warty follicle pod), Steppe Tulip (single upright cup +
+basal straps), Water Hemlock (purple-streaked stem). PLUS **~149 flora FAILs OUTSIDE the drift
+set** whose fresh prose I have not pulled (they didn't move since the gp3 baseline) — get them
+from `goldpass3-prechassis.json` (`readsAs`/`defect`/`fix`).
+⚠ **NOT yet re-judged — all eye-verified only.** Measure with the cheap re-check + **control**
+(D-ART-158) once the flora arc is broadly done, NOT per-edit (~1.9M tokens/run).
+★ Then **mammal chassis**, then the **144-bucket tail** (`reference/LONGTAIL_WORKLIST.md`).
+⚠ **Honest scale:** 100% PASS across 1,250 is a MULTI-SESSION arc — ~660 FAIL + every POLISH that
+must also climb. The levers are few (~15 cues); the tail under them is real per-family table work.
 
 ## OPEN, IN ORDER (revised by the above)
 
