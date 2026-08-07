@@ -621,7 +621,7 @@ function drawFlower(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNu
     /* the raised cone: a domed disc with a bristly stipple, lit from upper-left */
     const cg = c.createRadialGradient(x - R * 0.14, y - R * 0.16, 1, x, y, R * 0.46);
     cg.addColorStop(0, '#b07a2e'); cg.addColorStop(1, '#5c3d12');
-    c.fillStyle = cg; c.beginPath(); c.ellipse(x, y, R * 0.42, R * 0.40, 0, 0, TAU); c.fill();
+    c.fillStyle = cg; c.beginPath(); c.ellipse(x, y - R * 0.06, R * 0.50, R * 0.48, 0, 0, TAU); c.fill();
     for (let i = 0; i < 40; i++) { const a = r() * TAU, d = r() ** 0.5 * R * 0.36; softMark(c, x + Math.cos(a) * d, y + Math.sin(a) * d * 0.9, R * 0.05, R * 0.05, '90,58,20', 0.6); }
   } else if (kind === 'cross') {
     /* ★ WAVE 58 — THE BRASSICA HEAD: a corymb of tiny FOUR-petal cross flowers
@@ -681,7 +681,7 @@ function drawRoot(c: Ctx, cx: number, base: number, kind: NonNullable<PlantSpec[
 /** ★ WAVE 58 — SILIQUES. Slender beaked seed pods held up-and-out along the
     upper stem, the other half of a brassica's read (mustard, canola, rocket). */
 function drawSiliques(c: Ctx, p: Pal, cx: number, tipX: number, base: number, tipY: number, hue: string | undefined): void {
-  c.strokeStyle = hue ?? p.base; c.lineWidth = Math.max(2, S * 0.006); c.lineCap = 'round';
+  c.strokeStyle = hue ?? p.base; c.lineWidth = Math.max(3, S * 0.009); c.lineCap = 'round';
   for (let i = 0; i < 7; i++) {
     const u = 0.45 + (i / 7) * 0.42, s = i % 2 ? 1 : -1;
     const sx = cx + (tipX - cx) * u, sy = base - (base - tipY) * u;

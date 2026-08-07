@@ -567,7 +567,7 @@ export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | '
     c.closePath(); c.fill();
     /* the spiral: shallow diagonals down its length, the reason it reads as a
        narwhal's tusk and not as a swordfish's bill */
-    c.strokeStyle = 'rgba(120,110,88,0.45)'; c.lineWidth = 1.4;
+    c.strokeStyle = 'rgba(96,84,58,0.75)'; c.lineWidth = 2.2;
     for (let i = 1; i <= 7; i++) {
       const u = i / 8, x = head - tl * u, hh = H * (0.13 - 0.118 * u);
       c.beginPath(); c.moveTo(x + tl * 0.05, ty - hh); c.lineTo(x - tl * 0.02, ty + hh); c.stroke();
