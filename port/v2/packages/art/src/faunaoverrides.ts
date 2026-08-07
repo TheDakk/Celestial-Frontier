@@ -731,12 +731,15 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
        trunk. Positive brings the head up and swings the tail down behind it,
        which is also exactly where a woodpecker's stiff tail braces. */
     c.translate(bx, by); c.rotate(1.16); c.translate(-bx, -by);
-  } else {
+  } else if (opts.wings !== 'soaring') {
+    /* ★ WAVE 67 — a SOARING bird is AIRBORNE: no ground shadow, no legs. gp3/5
+       failed Albatross, Skua, Petrel and Snow Petrel for standing on yellow
+       legs over a cast shadow while their rows specify the flying posture. */
     ground(c, bx, groundY + 4, S * 0.16 * sz);
   }
 
-  /* legs — hidden on a swimming bird, which rides its waterline instead */
-  if (!opts.swim) {
+  /* legs — hidden on a swimming bird (waterline) and an airborne one */
+  if (!opts.swim && opts.wings !== 'soaring') {
     /* THE BACKWARD ANKLE. A bird's visible joint is the ankle, not a knee,
        and it folds the opposite way to ours — on a flamingo, a heron or an
        ostrich that reversed bend IS the silhouette. Two straight strokes

@@ -30,7 +30,7 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Osprey': B({ legs: 0.02, bill: 'hook', size: 1.14, hue: '#6c5f50', wings: 'soaring', talons: true, plump: 0.96 }),
   'Kestrel': B({ legs: 0.02, bill: 'hook', size: 0.72, hue: '#a5713d' }),
   'Condor': B({ legs: 0.03, bill: 'hook', size: 1.30, hue: '#2a2723' }),
-  'Skua': B({ legs: 0.02, bill: 'hook', size: 0.90, hue: '#5d5347' }),
+  'Skua': B({ legs: 0.02, bill: 'hook', size: 0.90, hue: '#5d5347', wings: 'soaring' }),
   /* ── OWLS: the facial disc, forward eyes, ear tufts ── */
   'Owl': B({ legs: 0.015, bill: 'hook', owl: true, neck: 'none', size: 1.0, crest: true, hue: '#7d6a4f' }),
   'Snowy Owl': B({ legs: 0.015, bill: 'hook', owl: true, neck: 'none', size: 1.10, hue: '#eef1f4' }),
@@ -93,8 +93,8 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   /* ── seabirds ── */
   'Gull': B({ legs: 0.030, bill: 'hook', size: 0.82, hue: '#e6e9ee', billHue: '#e0b13c' }),
   'Tern': B({ legs: 0.022, bill: 'long', size: 0.64, tail: 'forked', hue: '#e9edf2' }),
-  'Petrel': B({ legs: 0.014, bill: 'long', size: 0.62, hue: '#4d4741' }),
-  'Snow Petrel': B({ legs: 0.014, bill: 'long', size: 0.60, hue: '#f1f4f7' }),
+  'Petrel': B({ legs: 0.014, bill: 'long', size: 0.62, hue: '#4d4741', wings: 'soaring' }),
+  'Snow Petrel': B({ legs: 0.014, bill: 'long', size: 0.60, hue: '#f1f4f7', wings: 'soaring', billHue: '#1a1c20' }),
   'Gannet': B({ legs: 0.016, bill: 'long', size: 0.92, hue: '#eef0f2' }),
   'Booby': B({ legs: 0.020, bill: 'long', size: 0.84, hue: '#dfe3e8' }),
   'Tropicbird': B({ legs: 0.012, bill: 'long', size: 0.70, tail: 'long', hue: '#f0f2f5' }),
