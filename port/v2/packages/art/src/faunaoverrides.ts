@@ -16,6 +16,7 @@ import { mulberry32, TAU } from '@cf/domain-rand';
 import { speciesHue } from './surface.js';
 import { ellipseTube } from './torso.js';
 import { coatMaterial } from './skin.js';
+import { insectBody } from './invertoverrides.js';
 
 /* the cost dial for bird plumage, matching MAT_DETAIL in quadrupedoverrides.
    Portraits are generated at runtime under an art-hold law and a standing
@@ -1304,7 +1305,7 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
 export const FAUNA_NAME: Record<string, FaunaPainter> = {
   /* Blocker 4 — life stage + arthropod body plans */
   'Fly Larvae': (c, g, p) => faunaLarva(c, g, speciesHue(p, '#f0e6c8')),
-  'Cave Cricket': (c, g, p) => faunaLarva(c, g, speciesHue(p, '#9c7a54')),
+  'Cave Cricket': (c, g, p, n) => insectBody(c, g, speciesHue(p, '#9c7a54'), { abdomen: 1.1, broad: 1.05, eyes: 0.8, face: 'slant', antennae: 'long', jumper: true }, n),
   'Dragonfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#1e7fa8', open: true, slim: false }),
   'Damselfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#4aa8e0', open: false, slim: true, body: 1.05 }),
   'Mayfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#d8c48a', open: false, slim: true, body: 0.82 }),
