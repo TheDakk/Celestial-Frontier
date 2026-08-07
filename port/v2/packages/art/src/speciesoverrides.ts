@@ -437,6 +437,25 @@ function microbeAmoeba(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   for (let i = 0; i < n; i++) { const a = pts[i]!, b = pts[(i + 1) % n]!; c.quadraticCurveTo(a[0], a[1], (a[0] + b[0]) / 2, (a[1] + b[1]) / 2); }
   c.closePath(); c.fill();
   rimStroke(c, () => { c.moveTo(pts[0]![0], pts[0]![1]); for (let i = 0; i < n; i++) { const a = pts[i]!, b = pts[(i + 1) % n]!; c.quadraticCurveTo(a[0], a[1], (a[0] + b[0]) / 2, (a[1] + b[1]) / 2); } }, `rgba(${p.cr * 1.5 | 0},${p.cg * 1.5 | 0},${p.cb * 1.5 | 0},0.5)`, 1.6);
+  /* ★ WAVE 63 — PSEUDOPODS. gp5: "no pseudopods at all — a clean convex egg".
+     Three or four blunt finger lobes reaching out of the membrane, in the same
+     translucent body fill, so the outline reads as flowing, not drawn. */
+  for (let k = 0; k < 3 + (r() < 0.5 ? 1 : 0); k++) {
+    const a = r() * TAU, rootR = S * 0.20;
+    const rx = cx + Math.cos(a) * rootR * 0.8, ry = cy + Math.sin(a) * rootR * 0.72;
+    const len = S * (0.14 + r() * 0.10), wid = S * (0.045 + r() * 0.02);
+    c.fillStyle = body;
+    c.save(); c.translate(rx, ry); c.rotate(a);
+    c.beginPath(); c.moveTo(-wid * 0.2, -wid);
+    c.quadraticCurveTo(len * 0.6, -wid * 0.9, len, -wid * 0.25);
+    c.quadraticCurveTo(len * 1.14, 0, len, wid * 0.25);
+    c.quadraticCurveTo(len * 0.6, wid * 0.9, -wid * 0.2, wid);
+    c.closePath(); c.fill();
+    c.strokeStyle = `rgba(${p.cr * 1.5 | 0},${p.cg * 1.5 | 0},${p.cb * 1.5 | 0},0.4)`; c.lineWidth = 1.4;
+    c.beginPath(); c.moveTo(-wid * 0.2, -wid); c.quadraticCurveTo(len * 0.6, -wid * 0.9, len, -wid * 0.25);
+    c.quadraticCurveTo(len * 1.14, 0, len, wid * 0.25); c.quadraticCurveTo(len * 0.6, wid * 0.9, -wid * 0.2, wid); c.stroke();
+    c.restore();
+  }
   c.fillStyle = 'rgba(20,26,34,0.75)'; c.beginPath(); c.arc(cx + S * 0.03, cy - S * 0.02, S * 0.05, 0, TAU); c.fill();   /* nucleus */
   c.fillStyle = 'rgba(255,255,255,0.14)';
   for (let i = 0; i < 5; i++) { c.beginPath(); c.arc(cx + (r() - 0.5) * S * 0.24, cy + (r() - 0.5) * S * 0.2, S * (0.02 + r() * 0.03), 0, TAU); c.fill(); }
