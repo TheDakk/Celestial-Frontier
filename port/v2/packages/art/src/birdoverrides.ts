@@ -103,8 +103,8 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   /* ── shorebirds and marsh ── */
   'Plover': B({ legs: 0.045, bill: 'short', size: 0.50, hue: '#8d8778', plump: 1.16, elong: 0.92, bib: '#f0ece2' }),
   'Sandpiper': B({ legs: 0.050, bill: 'long', size: 0.50, hue: '#a2926f', plump: 0.94, elong: 1.10, streak: true }),
-  'Curlew': B({ legs: 0.070, bill: 'long', size: 0.72, hue: '#a2916f' }),
-  'Oystercatcher': B({ legs: 0.055, bill: 'long', size: 0.66, hue: '#23262b' }),
+  'Curlew': B({ legs: 0.070, bill: 'downcurve', size: 0.72, hue: '#a2916f', billHue: '#2b2118' }),
+  'Oystercatcher': B({ legs: 0.055, bill: 'chisel', size: 0.66, hue: '#23262b', billHue: '#e0561c' }),
   'Egret': B({ legs: 0.120, bill: 'long', size: 0.84, neck: 'long', hue: '#f2f4f6' }),
   'Bittern': B({ legs: 0.080, bill: 'long', size: 0.74, neck: 'long', hue: '#9b8256' }),
   'Rail': B({ legs: 0.055, bill: 'long', size: 0.56, hue: '#7b6a52' }),
