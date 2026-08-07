@@ -135,6 +135,11 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★ WAVE 63 (committed): fungi identities — Lion's Mane full icicle cascade · Coral Fungus one
+dense clump · Earthstar thick tan opened rays (was routed with NO species hue) · Mildew = powder
+ON A LEAF · Yeast = budding cells · Jelly Fungus deep brain folds · Maitake ruffled 3-ring
+rosette. STILL OPEN in fungi: Chanterelle funnel+dished centre, Shiitake crack visibility,
+Porcini stem girth, Cordyceps insect host, Reindeer Lichen trunks, bracket-check.
 ★ REMAINING fauna clusters from the gp3/gp5 prose, in rough order: the deep felid/canid BARREL
 BODY (the last chassis lever — Tube cross-section per D-ART-152); Insects (Wasp waist renders OK
 now — check Caddisfly antennae, Dobsonfly mandibles, Thrips, Water Beetle); Ice/cave inverts
