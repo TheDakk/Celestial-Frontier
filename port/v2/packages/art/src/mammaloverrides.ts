@@ -184,7 +184,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* "enormously long tubular snout · huge plume tail · black shoulder wedge" */
   'Giant Anteater': { legs: 0.0913, depth: 0.1049, len: 0.2237, neck: 0.048, muzzle: 0.78, jaw: 'fine', ears: 'tiny', tail: 'plume', tailScale: 1.6, hue: '#6b6259', family: 'xenarthran' },
   /* "overlapping keratin scales · long heavy tail · small conical head" */
-  'Pangolin': { legs: 0.053, depth: 0.1126, len: 0.1754, neck: 0.032, back: 'arched', muzzle: 0.34, ears: 'tiny', tail: 'long', coat: 'banded', hue: '#9a8258', family: 'xenarthran' , mat: 'plate' },
+  'Pangolin': { legs: 0.053, depth: 0.1126, len: 0.1754, neck: 0.032, back: 'arched', muzzle: 0.34, ears: 'tiny', tail: 'long', tailScale: 1.5, coat: 'plain', hue: '#9a8258', family: 'xenarthran' , mat: 'scale' },
   /* "gliding membrane between the limbs · black eye-stripe · long plume tail" */
   'Sugar Glider': { legs: 0.0535, depth: 0.0779, len: 0.115, neck: 0.028, muzzle: 0.24, ears: 'large', tail: 'plume', face: 'mask', hue: '#9aa0a8', family: 'marsupial' },
   /* "gliding membrane · huge forward eyes · mottled bark-coloured coat" */
