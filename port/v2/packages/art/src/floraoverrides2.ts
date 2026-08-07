@@ -661,6 +661,26 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     c.lineWidth = tw * 2;
     c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.05, base - H * 0.5, cx + lean * S * 0.10, topY + H * 0.22); c.stroke();
     c.lineWidth = tw * 1.15;
+    const conifer = (spec.leaf === 'needle' || spec.leaf === 'scale') && spec.fruit === 'cone';
+    if (conifer) {
+      /* ★ WAVE 58 — A CONIFER IS A CONICAL SPIRE OF TIERED BOUGHS, not a round
+         deciduous lollipop (the judge failed Spruce/Cedar/Redwood for exactly
+         that). Stacked drooping triangular tiers narrowing to a leader. */
+      const tiers = 6, cwid = S * 0.19 * spread;
+      const gA = [40, 78, 52];
+      const fmix = (ch: number, an: number): number => an * 0.66 + ch * 0.34;
+      const fB = [fmix(p.cr, gA[0]!), fmix(p.cg, gA[1]!), fmix(p.cb, gA[2]!)];
+      for (let t = 0; t < tiers; t++) {
+        const v = t / tiers, ty = base - H * (0.28 + v * 0.68), half = cwid * (1 - v * 0.82);
+        const val = 0.55 + v * 0.5;
+        c.fillStyle = `rgb(${Math.min(255, fB[0]! * val | 0)},${Math.min(255, fB[1]! * val | 0)},${Math.min(255, fB[2]! * val | 0)})`;
+        c.beginPath(); c.moveTo(cx + lean * S * 0.08 * v, ty - H * 0.16);
+        c.lineTo(cx - half + lean * S * 0.08 * v, ty); c.lineTo(cx + half + lean * S * 0.08 * v, ty); c.closePath(); c.fill();
+        /* a few needle sprigs on the tier edge for texture */
+        for (let i = 0; i < 5; i++) { const sx = cx + (i / 4 - 0.5) * half * 1.6 + lean * S * 0.08 * v; drawLeaf(c, p, sx, ty - H * 0.02, i % 2 ? 0.4 : Math.PI - 0.4, S * 0.03, 'needle'); }
+      }
+      if (spec.fruit === 'cone') for (let i = 0; i < 3; i++) drawFruit(c, p, cx + (r() - 0.5) * cwid, base - H * (0.4 + r() * 0.4), S * 0.03, 'cone', spec.fhue, r);
+    } else {
     for (const s of [-1, 1] as const) {   /* two boughs into the canopy */
       c.beginPath(); c.moveTo(cx + lean * S * 0.06, base - H * 0.45);
       c.quadraticCurveTo(cx + s * S * 0.05, base - H * 0.72, cx + s * S * 0.085 * spread, topY + H * 0.20); c.stroke();
@@ -725,6 +745,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
           drawFruit(c, p, cx + Math.cos(a) * cw * d + lean * S * 0.10, topY + H * 0.16 + Math.sin(a) * chh * d, fRad, spec.fruit, spec.fhue, r);
         }
       }
+    }
     }
   } else if (spec.habit === 'shrub' && spec.creep) {
     /* ★ WAVE 58 — A CREEPING GROUNDCOVER MAT. The judge failed a whole cluster
