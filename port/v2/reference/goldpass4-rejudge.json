@@ -1,0 +1,745 @@
+{
+ "generated": "cheap drift-scoped re-judge (goldpass4-rejudge-cheap, 32 strips, no verify pass)",
+ "rows": [
+  {
+   "species": "Alfalfa",
+   "band": "FAIL",
+   "why": "Leaves are fine pinnate fern fronds, not trifoliate three-leaflet clover leaves, and the coiled corkscrew seed pods are entirely absent — only a 6px lilac speck sits at the stem tip."
+  },
+  {
+   "species": "Alpine Mint",
+   "band": "FAIL",
+   "why": "A tall single upright stem with lance leaves, the opposite of the compact low cushion habit; the stem is a plain round green line with no square edge and no purple tint."
+  },
+  {
+   "species": "Angelica",
+   "band": "FAIL",
+   "why": "The huge domed umbel is a thin white crescent 20px wide floating above the tip, and the thick hollow purple ridged stem and inflated leaf sheaths are nowhere on the drawing."
+  },
+  {
+   "species": "Anise",
+   "band": "FAIL",
+   "why": "Pixel-for-pixel the same yellow-green feathery frond and tiny white arc as Angelica beside it; there is only one leaf shape, so the round-below/feathery-above contrast never appears."
+  },
+  {
+   "species": "Belladonna",
+   "band": "FAIL",
+   "why": "No glossy black berry and no green five-point star calyx anywhere — just dull oval leaves on a stem with a 4px purple dot at the top standing in for the drooping bells."
+  },
+  {
+   "species": "Bergamot",
+   "band": "FAIL",
+   "why": "The flower head is a flat round red-pink daisy disc, not a ragged firework crown of narrow lavender tubes, and there are no leafy bracts beneath it."
+  },
+  {
+   "species": "Brooklime",
+   "band": "FAIL",
+   "why": "Drawn as a rigid upright stem instead of sprawling with rooting stems in water, and the sprays of blue flowers are reduced to one six-point blue star at the apex."
+  },
+  {
+   "species": "Canola",
+   "band": "FAIL",
+   "why": "The flat-topped mass of yellow four-petal flowers is a single thin yellow arc; the upper leaves are narrow spikes that do not clasp the stem, and no upward pods exist."
+  },
+  {
+   "species": "Cloudberry",
+   "band": "FAIL",
+   "why": "A dense fluffy column of dozens of leaves instead of a short stem with one or two crumpled lobed leaves — and the solitary amber berry is an orange rosette, not a berry."
+  },
+  {
+   "species": "Desert Mint",
+   "band": "FAIL",
+   "why": "Identical body to Alpine Mint two cells earlier with the green washed paler; no square stem and no rings of lavender tube flowers up the stem, only one pale spike at the tip."
+  },
+  {
+   "species": "Devil's Claw",
+   "band": "FAIL",
+   "why": "The defining woody pod with two recurved grappling hooks is completely missing, as is the spotted trumpet flower; it is the sparsest copy of the shared upright stem with plain oval leaves."
+  },
+  {
+   "species": "Fenugreek",
+   "band": "FAIL",
+   "why": "Same dense leaf-column construction as Cloudberry in yellow-green; leaves are single spikes not three-leaflet clover, and no sickle-curved beaked pods appear."
+  },
+  {
+   "species": "Fireweed",
+   "band": "FAIL",
+   "why": "Same stem-and-leaf-ladder as Alfalfa and Desert Mint with the tip recoloured pink; the flower spike is a 5px-wide stub at the very top, not a long tapering spike opening upward."
+  },
+  {
+   "species": "Flax",
+   "band": "FAIL",
+   "why": "The stem is thick and fully leafed rather than thin bare wiry stems in a clump, and there is one blue star at the apex instead of flat five-petal flowers plus round seed capsules."
+  },
+  {
+   "species": "Gentian",
+   "band": "FAIL",
+   "why": "The harvest is four tiny blue specks floating at the stem tip — no trumpet, no flared 5-lobed mouth, and the flower is minuscule against a tall plant instead of large on a low one."
+  },
+  {
+   "species": "Holy Basil",
+   "band": "POLISH",
+   "why": "The tiered lilac bead spike and purple-flushed opposite ovals read as tulsi, but every leaf margin is perfectly smooth (no toothing) and the leaves are wholly dusty-mauve rather than green with a purple flush."
+  },
+  {
+   "species": "Ice Algae",
+   "band": "PASS",
+   "why": "Pale ice slab with grey brine channels, golden-brown blotchy staining crusted on its underside and amber mucilage strands trailing down into black water — no plant structure anywhere, exactly as specified."
+  },
+  {
+   "species": "Licorice Root",
+   "band": "FAIL",
+   "why": "The long straight ropey yellow root — the harvest and a named must-read — is entirely absent; the foliage is also a fine fern-like frond rather than 9-17 locust-like oval leaflets."
+  },
+  {
+   "species": "Milkweed",
+   "band": "FAIL",
+   "why": "The warty silk-bursting pod is missing entirely, and the flowers are a flat pink crescent cap perched on the stem tip like a lollipop, not a drooping domed umbel."
+  },
+  {
+   "species": "Miner's Lettuce",
+   "band": "FAIL",
+   "why": "No perfoliate saucer anywhere — the pale leaves are ordinary paired ovals attached at the stem side, and the flower is one large daisy on top instead of a tiny white spray rising from a pierced disc."
+  },
+  {
+   "species": "Monkshood",
+   "band": "FAIL",
+   "why": "Four tiny purple wedges hover above the foliage with no upright spike and no helmet-hood on any of them; the body is the same crowded fringe-leaf column as Mugwort, just dark green instead of white."
+  },
+  {
+   "species": "Mountain Mint",
+   "band": "FAIL",
+   "why": "A single unbranched stem with a narrow vertical white bead-column at the tip — no flat-topped domed clusters, no silvery bracts; it is Gentian's exact stem-and-lance-leaf body with a white tip instead of blue."
+  },
+  {
+   "species": "Mountain Thyme",
+   "band": "FAIL",
+   "why": "The low mat habit and five pink flower tips are right, but the creeping stems are completely bare green sticks — not one of the tiny paired leaves is drawn — and the flowers are radiating daisies, not dense lipped heads."
+  },
+  {
+   "species": "Mugwort",
+   "band": "FAIL",
+   "why": "The whole plant is uniform bone-white with a plain green stem, so the dark-green-above/silver-beneath flicker and the reddish-purple grooved stem are both absent; the silhouette is Monkshood recoloured."
+  },
+  {
+   "species": "Nettle",
+   "band": "FAIL",
+   "why": "Leaves are smooth rounded blobs with no teeth, no heart shape and no bristle haze, and the flowers are a stiff cream bead spike at the very top rather than green tassels trailing from the leaf axils."
+  },
+  {
+   "species": "Orchid Pods",
+   "band": "FAIL",
+   "why": "A plain thin-stemmed pinnate frond — not a single hanging bean-like pod, no thick fleshy vining leaves, no aerial roots and no bark to grip."
+  },
+  {
+   "species": "Rainforest Nettle",
+   "band": "FAIL",
+   "why": "Identical construction to Nettle and Riverbank Nettle — a column of small round paired leaves with a cream top spike — with no oversized heart-shaped leaves and no stinging-hair haze."
+  },
+  {
+   "species": "Riverbank Nettle",
+   "band": "FAIL",
+   "why": "Rounded leaves with completely smooth margins (no saw teeth), no hair haze on stem or veins, and the flower is a white bead spike at the apex instead of tassels dangling at the leaf joints; it is the Nettle body slightly bulked out."
+  },
+  {
+   "species": "Sea Fennel",
+   "band": "FAIL",
+   "why": "The foliage is fine feathery threads — exactly what the reference forbids — instead of thick blunt succulent fingers, and it stands as a tall upright cone, not a low clump wedged in rock; the yellow top is a solid half-disc cap, not a flat umbrella of florets."
+  },
+  {
+   "species": "Sea Lavender",
+   "band": "FAIL",
+   "why": "Grey pinnate leaves run the whole length of the flowering stem instead of a basal rosette with bare wiry stems above, and the flowers are one tiny mauve cap at the tip rather than a wide airy branched cloud."
+  },
+  {
+   "species": "Sea Rocket",
+   "band": "FAIL",
+   "why": "Dead-straight upright stem with plain smooth oval leaves — no fleshy pinnate lobes, no sprawling zigzag — and the flower is a many-rayed lilac daisy with a brown disc (the same asset as Water Mint), not a four-petalled cross; no jointed pods anywhere."
+  },
+  {
+   "species": "Sesame",
+   "band": "FAIL",
+   "why": "A bare green pinnate stem with nothing on it: no tubular pink-white axillary flowers and no ribbed upright capsules at all, so both harvest must-reads are simply absent."
+  },
+  {
+   "species": "Solomon's Seal",
+   "band": "FAIL",
+   "why": "The stem is rigidly vertical rather than arching, leaves are a dense all-round herringbone rather than one flat alternating plane, and the four white bells sit above the foliage at the very tip instead of dangling in a row beneath the stem."
+  },
+  {
+   "species": "Steppe Tulip",
+   "band": "FAIL",
+   "why": "Fourteen thin needle-like leaves climb the whole stem instead of 2-4 broad grey-green basal straps, the plant is tall not low, and the top carries a cluster of five small red blobs rather than one pointed cup flower."
+  },
+  {
+   "species": "Swamp Mint",
+   "band": "FAIL",
+   "why": "Leaves are smooth-edged narrow lances offset along the stem, not toothed ovals crossed in opposite pairs, and the lilac flowers form a single terminal spike with no ring-like whorls at the leaf axils; no square-stem or purple-stem cue."
+  },
+  {
+   "species": "Water Hemlock",
+   "band": "FAIL",
+   "why": "The stem is plain green with no purple streaking, and the white 'umbel' is a solid opaque half-disc cap with no individual florets or rays; the feathery foliage is the identical construction used for Sea Fennel."
+  },
+  {
+   "species": "Water Mint",
+   "band": "FAIL",
+   "why": "Three flat lilac daisies with brown disc centres are strung up the stem instead of one rounded pompom at the tip, and the leaves are smooth untoothed lances — it is the Sea Rocket flower on the Swamp Mint body."
+  },
+  {
+   "species": "Wild Mint",
+   "band": "FAIL",
+   "why": "The lilac flowers are one narrow spike at the very tip, which is precisely what the must-read excludes ('rings around the stem, not just at the tip'), and the leaves show no teeth; body is identical to Swamp Mint."
+  },
+  {
+   "species": "Wild Mustard",
+   "band": "FAIL",
+   "why": "Reads as a spiky yellow-green bottlebrush or caterpillar column — no four-petalled cross flowers, no slender beaked pods held out from the stem, no big-end-lobed lower leaves; only a small yellow cap sits on top."
+  },
+  {
+   "species": "Wild Sesame",
+   "band": "FAIL",
+   "why": "Thin mauve-brown narrow lance leaflets on a wispy pinnate stem instead of big paired crinkled coarsely-toothed ovals, and the white one-sided seed spike is invisible — just a dark smudge at the tip."
+  },
+  {
+   "species": "Wormwood",
+   "band": "POLISH",
+   "why": "The silvery silky twice-pinnate foliage reads clearly and is the one genuinely distinct silhouette in the strip, but the top is a thin cream spike rather than dull yellow nodding buttons and the base is a single bare stem with no woody bushy clump."
+  },
+  {
+   "species": "Antelope",
+   "band": "POLISH",
+   "why": "Reads as a tan gazelle with fine legs and a short tail, but the horns are smooth swept curves with no visible ringing and the white belly is only a faint pale wash on the lower flank."
+  },
+  {
+   "species": "Banteng",
+   "band": "POLISH",
+   "why": "White stockings on the lower legs and the pale crescent horns over a dark forehead cap both read, but the white rump patch is absent — the hindquarters are the same red-brown as the barrel."
+  },
+  {
+   "species": "Bison",
+   "band": "FAIL",
+   "why": "The topline is a near-level barrel: the shoulder rise is slight and the hindquarters are as deep and rounded as the front, so the front-heavy silhouette is missing, and there is no chin beard — only a chest fringe shared with the Musk Ox card."
+  },
+  {
+   "species": "Buffalo",
+   "band": "FAIL",
+   "why": "No fused helmet boss (just the same thin pale crescent horns used on Banteng and Bull) and no large drooping fringed ears; the grey shaggy body is the Bull card in a slightly different grey."
+  },
+  {
+   "species": "Bull",
+   "band": "FAIL",
+   "why": "Visually the same construction as the Buffalo cell beside it — same grey shaggy barrel, same head cap, same crescent horns — with no forward-curving horn shape and no pendulous throat dewlap."
+  },
+  {
+   "species": "Cow",
+   "band": "POLISH",
+   "why": "The Holstein brown-on-white patching, sagging barrel and black tufted tail name it instantly, but there is no udder under the belly and no hanging throat dewlap."
+  },
+  {
+   "species": "Eland",
+   "band": "FAIL",
+   "why": "It is the slim antelope chassis in cream, not a massive ox — torso depth matches Hartebeest rather than Gaur, there is no shoulder hump of any size and no throat dewlap; only the twin spiral horns are right."
+  },
+  {
+   "species": "Gaur",
+   "band": "POLISH",
+   "why": "Dark coat with clear white stockings and a raised dorsal ridge along the shoulders read well; the pale grey forehead patch between the horns is not visible against the dark head cap."
+  },
+  {
+   "species": "Hartebeest",
+   "band": "POLISH",
+   "why": "Big improvement — the topline now drops steeply from a high shoulder to low hips and the face is an elongated wedge, but the horns are soft generic curves off the pedestal rather than the sharp double-bend bracket."
+  },
+  {
+   "species": "Impala",
+   "band": "FAIL",
+   "why": "It is the Antelope card in a slightly warmer tan — same body, same horn curve — and both of its distinguishing marks are absent: no vertical black stripes on the rump and no black tuft above the hind hoof."
+  },
+  {
+   "species": "Kudu",
+   "band": "POLISH",
+   "why": "The horns now genuinely corkscrew, but the flank striping is a rectangular patch of dark hatching (not thin white stripes) that bands oddly across the neck and face, and there are no large rounded ears."
+  },
+  {
+   "species": "Musk Ox",
+   "band": "POLISH",
+   "why": "The curtain of hair hanging nearly to the hooves and the low-carried head are unmistakable; the horns are the same upward pale crescent used on Buffalo/Banteng instead of a forehead boss hooking down and out."
+  },
+  {
+   "species": "Oryx",
+   "band": "POLISH",
+   "why": "The long straight rapier horns swept back over a white body carry it, but the face has only cartoonish dark eye rings instead of a bold black mask, the legs are plain white with no black markings, and the body is slim rather than blocky."
+  },
+  {
+   "species": "Saiga",
+   "band": "POLISH",
+   "why": "Pale ringed horns rise straight up and the muzzle is an enlarged drooping blob, but it reads as a fat nose rather than a trunk, and the body is the Oryx card's build and colour."
+  },
+  {
+   "species": "Water Buffalo",
+   "band": "FAIL",
+   "why": "Horns are two thin pale tusk-like spikes pointing FORWARD over the face, not enormous swept-back crescents; the head is carried high and level with a small pointed muzzle instead of a broad flat muzzle held low, and the pale woolly fleece over a barrel body reads as a sheep or goat, not a slate-grey buffalo."
+  },
+  {
+   "species": "Wildebeest",
+   "band": "FAIL",
+   "why": "The head is a flat oval slab tilted up and wrapped in dark bandage-like stripes with no visible eye, muzzle or boxy cow profile; no chin beard and no neck mane exist, the horns are the same single pale forward hook the Buffalo and Yak wear, and the shoulders are not higher than the rump."
+  },
+  {
+   "species": "Yak",
+   "band": "FAIL",
+   "why": "The shaggy coat stops around mid-leg with only short wisps at the belly, so the defining curtain of hair to the ground is absent and all four bare legs show; the tail is the same flat pale disc with fanned bristles used on the Wildebeest rather than a bushy plume, the head is held high not low, and the head, horn hook and leg set are identical to its two neighbours with only a tan tint added."
+  },
+  {
+   "species": "Bongo",
+   "band": "FAIL",
+   "why": "The ten-plus stripes are painted dark brown/black on the chestnut coat instead of white, a long horizontal dark smear crosses the flank, there is no white chevron between the eyes, and the horns are thin wavy squiggles rather than heavy backswept spirals."
+  },
+  {
+   "species": "Cattle",
+   "band": "POLISH",
+   "why": "Deep barrel, level back, cow patches and a dark tufted rope tail all read, but the muzzle tapers to a narrow moose-like wedge instead of a broad blunt cow muzzle and the horns rise upward like a goat's rather than sitting sideways."
+  },
+  {
+   "species": "Duiker",
+   "band": "FAIL",
+   "why": "The topline peaks mid-back and drops to a LOWER rump, so the diagnostic hunched rump-high crouch is absent, and the pale spike horns angle forward-up rather than backswept; what is left is the same generic tan antelope body as Pronghorn and Springbok at smaller scale."
+  },
+  {
+   "species": "Gerenuk",
+   "band": "POLISH",
+   "why": "The giraffe-long neck, tiny wedge head and stilt-thin legs are unmistakable, but the ears are a small tan flap tucked at the horn base rather than the huge ears the reference calls for."
+  },
+  {
+   "species": "Hyena",
+   "band": "POLISH",
+   "why": "Steep shoulder-to-rump slope, heavy blunt jaw and dense black spotting all land, but the ear is a flat brown disc lying on the cheek rather than a standing rounded ear, and the feet end in cloven hoof-like toes carried over from the ungulate chassis."
+  },
+  {
+   "species": "Mountain Goat",
+   "band": "FAIL",
+   "why": "The horns are cream-tan, not the black daggers the reference requires, so they vanish against the white coat, and the legs are smooth bare white with no pantaloon shag while the shoulder shows no hump."
+  },
+  {
+   "species": "Mountain Tapir",
+   "band": "FAIL",
+   "why": "The coat is mid-grey with faint scratchy strokes rather than thick woolly black, the snout is a small lumpy pig-like bump instead of a flexible proboscis, and the oversized head shows flat grey polygon facets on the cheek where the geometry breaks."
+  },
+  {
+   "species": "Nilgai",
+   "band": "FAIL",
+   "why": "The coat is near-white silver, nowhere near the slate blue-grey of a bull, there is no throat beard tuft on the plain white neck, and the horns curve up and back instead of being short, straight and forward."
+  },
+  {
+   "species": "Pronghorn",
+   "band": "FAIL",
+   "why": "The forked horn with its forward prong is there, but the throat is uniform tan with no white bands and the rump is uniform tan with no white patch, leaving the same plain golden body as Springbok and Duiker with only the hue changed."
+  },
+  {
+   "species": "Serow",
+   "band": "FAIL",
+   "why": "The grizzled shaggy coat reads well, but the ears are tiny dark triangles at the horn base rather than large donkey-like ears, the head is a slim pointed wedge instead of heavy and blunt, and the horns arc forward at the tips rather than backswept."
+  },
+  {
+   "species": "Springbok",
+   "band": "FAIL",
+   "why": "The body is uniform cream-tan with no dark chocolate side stripe and no white flank division, and the face is plain with no white mask or dark eye stripe; only the inward-hooking horns survive, on the identical frame used for Pronghorn."
+  },
+  {
+   "species": "Tahr",
+   "band": "POLISH",
+   "why": "The rufous shaggy fringe over neck and shoulders and the back-and-down curving horn both read, but the horn is a thin hoop rather than short and thick, and the legs are long and slender instead of short and stocky — the silhouette is the Wild Sheep tile in a warmer hue."
+  },
+  {
+   "species": "Wild Sheep",
+   "band": "FAIL",
+   "why": "The coat is long straggly hanging fringe that reads as domestic fleece, the exact opposite of the required short coarse hair, the horn is a slender thin ring beside the head rather than massive spiralling horns, and the body is slim-legged rather than muscular and blocky."
+  },
+  {
+   "species": "Bobcat",
+   "band": "FAIL",
+   "why": "No tail of any kind on the rump, no cheek ruff, and the ear tuft is a single dark wisp — a barrel-bodied hoof-footed animal with blotchy black spots that reads as a spotted calf, identical chassis to the Lynx cell."
+  },
+  {
+   "species": "Caracal",
+   "band": "FAIL",
+   "why": "The signature long black ear tufts are two nearly invisible hairs above a tiny triangular ear, the hind legs are the same short stumpy posts as the front, and the tail is a mid-length hook rather than short."
+  },
+  {
+   "species": "Clouded Leopard",
+   "band": "FAIL",
+   "why": "Markings are small scattered petal-clusters, not large cloud-shaped dark-edged blotches, and the tail is a short curled hook instead of equalling the head-and-body length."
+  },
+  {
+   "species": "Cougar",
+   "band": "FAIL",
+   "why": "The coat is correctly plain tawny but the tail is a stubby hook with no black tip and there are no black muzzle bars — the long blunt snout and barrel body make it indistinguishable from the Caracal cell in a different tint."
+  },
+  {
+   "species": "Jaguar",
+   "band": "FAIL",
+   "why": "Rosettes with centre dots are there, but the head is a long tapir-like snout with no massive blocky jaw, and the body is the same barrel-and-short-posts construction as Leopard and Ocelot with only a warmer yellow hue."
+  },
+  {
+   "species": "Leopard",
+   "band": "FAIL",
+   "why": "Rosettes are filled clusters rather than open rings, the tail is a short hook nowhere near body length, and the torso is a heavy barrel instead of a low-slung slender body — pixel-for-pixel the Jaguar cell in a paler tan."
+  },
+  {
+   "species": "Lion",
+   "band": "POLISH",
+   "why": "Mane, dark tail tuft and plain tawny coat all read, but the mane is a scalloped cloud of lobes that swallows the head and the muzzle is a long blunt snout rather than a cat's short face."
+  },
+  {
+   "species": "Lynx",
+   "band": "FAIL",
+   "why": "No flared facial ruff, the ear tuft is a faint dark smudge, and the feet are small dark hoof-like tips instead of oversized snowshoe paws — the same body and spotting as the Bobcat cell."
+  },
+  {
+   "species": "Ocelot",
+   "band": "FAIL",
+   "why": "Spots are scattered floret clusters with no chain-like streaks running along the flank, and the cheeks carry no black stripes at all."
+  },
+  {
+   "species": "Snow Leopard",
+   "band": "FAIL",
+   "why": "Pale coat and open rosettes are right, but the tail is a short white feather-duster brush instead of an enormously long ropy tail, and the muzzle is long and snouty rather than short and domed."
+  },
+  {
+   "species": "Tiger",
+   "band": "FAIL",
+   "why": "Vertical orange-and-black striping reads well, but a thick horizontal black band runs the length of the flank, the tail is a plain unringed orange hook, and there is no white cheek ruff or eyebrow spot."
+  },
+  {
+   "species": "Chamomile",
+   "band": "FAIL",
+   "why": "The single top flower is a flat white daisy with a small flat brown disc centre — the defining hollow yellow cone taller than it is wide is absent, and the rays are flat radial spokes rather than folding back and down."
+  },
+  {
+   "species": "Echinacea",
+   "band": "FAIL",
+   "why": "The pink flower is a flat radial daisy with a tiny brown flat button; no raised bristly orange-brown cone and no backswept drooping rays, and the leaves are smooth narrow lances with no bristly roughness."
+  },
+  {
+   "species": "Ginseng",
+   "band": "FAIL",
+   "why": "Red berry cluster is present at the tip, but there is no whorl of five-fingered palmate leaves at the top and no pale forked root — the leaflets are stacked spiky stars running the whole stem, the identical column body used for Mustard."
+  },
+  {
+   "species": "Mint",
+   "band": "FAIL",
+   "why": "The lilac terminal spike reads, but the stem is a plain round hairline with no square profile and the leaves are long untoothed willow-lances instead of paired toothed ovals crossing at each node."
+  },
+  {
+   "species": "Mustard",
+   "band": "FAIL",
+   "why": "No seed pods at all and no lyre-shaped lower leaves; the flower head is a featureless yellow smear with no four-petalled crosses, on the same spiky column body as Ginseng recoloured yellow-green."
+  },
+  {
+   "species": "Oregano",
+   "band": "FAIL",
+   "why": "Opposite oval leaves are there but far too large, the stem is plain green and round rather than square and reddish, and the flower is a single tiny white crescent instead of an airy branched flat-topped spray with purple bracts."
+  },
+  {
+   "species": "Thyme",
+   "band": "FAIL",
+   "why": "The plant is completely leafless — bare green sticks radiating off an upright stem — so the tiny paired rolled leaves are missing entirely, the form is tall not a low mound, and the topper is the same pink daisy as Echinacea."
+  },
+  {
+   "species": "Valerian",
+   "band": "FAIL",
+   "why": "Pixel-for-pixel the same ferny bipinnate body as Yarrow beside it; the ladder of opposite pinnate leaflets is replaced by thread-fine yarrow foliage and the head is a white cap, not a pale pink dome."
+  },
+  {
+   "species": "Yarrow",
+   "band": "POLISH",
+   "why": "Ferny feather-fine foliage and a flat white top on a stiff upright stem all read, but the head is a smooth solid mushroom cap with no tiny-floret texture and is undersized against the plant."
+  },
+  {
+   "species": "Black Bear",
+   "band": "FAIL",
+   "why": "A grey fleecy sheep with black cloven hooves and a swept-back ear flap — coat is pale grey not black, there is no tan muzzle, and the topline is level rather than rump-high."
+  },
+  {
+   "species": "Brown Bear",
+   "band": "FAIL",
+   "why": "Woolly ram body with a convex Roman muzzle and a curled horn-disc at the ear; the withers actually dip so there is no shoulder hump, no dished face, and the feet end in dark hooves instead of long pale digging claws."
+  },
+  {
+   "species": "Grizzly Bear",
+   "band": "FAIL",
+   "why": "Pixel-for-pixel the same fleece-textured ram as Brown Bear with a slightly more orange tint — same hoofed feet, same horn-disc ear, no shoulder hump above the rump and no pale front claws."
+  },
+  {
+   "species": "Panda",
+   "band": "FAIL",
+   "why": "Sheep body with a hard-edged black rectangular slab across the mid-torso instead of a shoulder band, two big round black holes floating on a long tapering muzzle instead of teardrop eye patches, and cloven hooves."
+  },
+  {
+   "species": "Polar Bear",
+   "band": "FAIL",
+   "why": "A plain white lamb — short thick neck rather than the long one, blunt sheep muzzle instead of a small Roman-nosed head, and tiny hooved feet where the huge furred paws should be."
+  },
+  {
+   "species": "Sloth Bear",
+   "band": "FAIL",
+   "why": "Grey-brown fleece with no pale U/Y chest blaze, no shoulder mane, and a short sheep face instead of the long grey protrusible snout; identical construction to Spectacled and Sun Bear."
+  },
+  {
+   "species": "Spectacled Bear",
+   "band": "FAIL",
+   "why": "No cream rings or patches anywhere around the eyes — the face is uniform dark grey-brown — and the body is the same tan fleece ram as Sloth Bear with only the hue shifted."
+  },
+  {
+   "species": "Sun Bear",
+   "band": "FAIL",
+   "why": "Coat is dusty grey-brown rather than sleek jet-black, the golden chest crescent is entirely absent, and the feet are small dark hooves instead of very long curved climbing claws."
+  },
+  {
+   "species": "Buttercup",
+   "band": "FAIL",
+   "why": "The top flower is a tiny spiky yellow star of ~7 narrow rays, not five rounded lacquered cups, and the leaves are the same narrow serrated lance leaves as Daisy/Foxglove rather than deeply cut palmate basal leaves."
+  },
+  {
+   "species": "Daisy",
+   "band": "FAIL",
+   "why": "No ground-hugging spoon-leaf rosette and no bare leafless stalk — it is a tall leafy stem with lance leaves running all the way up, identical in build to Foxglove and Goldenrod, with only a white disc-flower swapped in at the tip."
+  },
+  {
+   "species": "Foxglove",
+   "band": "FAIL",
+   "why": "The pink-purple bells are a few flat blobs stacked symmetrically in a 12px column at the apex — no one-sided hanging arrangement, no speckled throats, and no basal rosette of large downy grey-green leaves; the body is the shared lance-leaf stem."
+  },
+  {
+   "species": "Goldenrod",
+   "band": "FAIL",
+   "why": "The yellow florets form a thin straight vertical ladder of dots, not a pyramid plume arching to one side, and the stem and leaves are pixel-for-pixel the same construction as Daisy and Foxglove in a different hue."
+  },
+  {
+   "species": "Poppy",
+   "band": "FAIL",
+   "why": "The bloom is a red many-rayed spiky rosette with no four crinkled tissue petals, no black basal blotch and no round ribbed seed capsule anywhere on the plant; only the paler grey-green feathery foliage differs from its neighbours."
+  },
+  {
+   "species": "Sunflower",
+   "band": "FAIL",
+   "why": "The head is a tiny yellow daisy no bigger than one leaf instead of one huge head, and its dark centre is a flat brown dot with no spiral seed packing — the large rounded leaves are the only correct must-read."
+  },
+  {
+   "species": "Donkey",
+   "band": "FAIL",
+   "why": "No long upright ears — just a flat dark oval earflap smeared over the eye with two grey nubs behind it — and the neck crest is completely bare, so the short bristly mane is absent; only the tufted tail reads."
+  },
+  {
+   "species": "Horse",
+   "band": "FAIL",
+   "why": "The neck topline is bare with no crest mane at all, and the tail is a flat brown scallop-shell disc pinned low on the rump instead of long flowing hair from a high dock; legs are thick stumps, not long and slim."
+  },
+  {
+   "species": "Rhinoceros",
+   "band": "FAIL",
+   "why": "Both pale horns rise from the crown/forehead well behind the muzzle (and the larger one is the rear horn, reversed), the hide is only speckled mottling with no plated folds, and the eye is large and forward instead of small and set back."
+  },
+  {
+   "species": "Wild Ass",
+   "band": "FAIL",
+   "why": "Pixel-for-pixel the same body, head, ear-blob and tail as the Donkey with only a warmer cream hue; the very long upright ears and erect mane are both missing."
+  },
+  {
+   "species": "Zebra",
+   "band": "FAIL",
+   "why": "Stripes are bold on the barrel and legs but the entire haunch, rump and chest are blank white, and there is no stiff upright brush mane — the neck crest is a bare white line."
+  },
+  {
+   "species": "Chamois",
+   "band": "FAIL",
+   "why": "Face is a flat uniform tan-brown with a soft dark eye patch — none of the black-and-white mask stripes — and the two pale horns are blunt vertical prongs with no sharp backward hook; body is the same rounded fleecy barrel as the Sheep panel in a browner hue."
+  },
+  {
+   "species": "Goat",
+   "band": "FAIL",
+   "why": "No chin beard at all under the muzzle, the tail is a small pale flap hanging down the rump rather than flicked up, and the coat is the same woolly stroke texture as Sheep — it is the Sheep body whitened, with a ram's tight backward curl instead of goat horns."
+  },
+  {
+   "species": "Ibex",
+   "band": "FAIL",
+   "why": "Horns are only about head-length arcs (ridges are visible, but nowhere near massive), there is no distinct beard under the chin — just body-wide shag — and the torso is the identical slim sheep chassis rather than a stocky muscular one."
+  },
+  {
+   "species": "Sheep",
+   "band": "POLISH",
+   "why": "Reads clearly as a ram — bare narrow face, bare legs, curled horn — but the fleece is painted strokes on a crisp hard-edged silhouette so the outline is not blurred, and the tail is an odd flat pale polygon on the rump."
+  },
+  {
+   "species": "Takin",
+   "band": "POLISH",
+   "why": "Genuinely distinct construction — shoulder hump above a down-sloping back, short thick legs, long shaggy golden fringe breaking the silhouette, arched bulbous muzzle — but the eye is swallowed by the dark brown crown blob and only one horn resolves in profile."
+  },
+  {
+   "species": "Alpaca",
+   "band": "FAIL",
+   "why": "The fleece is a fringed blanket draped only over the barrel — the neck is a bare smooth white tube and the head is bare, so 'dense woolly fleece covering the whole body' is missing, and there is no topknot fringe over a blunt face (the muzzle is long and llama-like, the same head mesh as the Llama cell)."
+  },
+  {
+   "species": "Bactrian Camel",
+   "band": "FAIL",
+   "why": "The back is one broad straw-textured mass with only a shallow notch, so two separate humps do not read; the neck is a short smooth thick stub with no shaggy mane and the chest has no hanging bib, and the legs are stumpy columns about a third of total height."
+  },
+  {
+   "species": "Camel",
+   "band": "FAIL",
+   "why": "Legs are short smooth stumps roughly 30% of total height with no knee articulation, under a barrel that hangs almost to them, so the 'very long knobbly-kneed legs' must-read is wrong — and apart from a shallower notch in the back it is the identical body, tail tuft, head and straw texture as the Bactrian Camel beside it."
+  },
+  {
+   "species": "Llama",
+   "band": "FAIL",
+   "why": "The ear is a short rounded triangle, not a long banana curve — it is the exact same head, torso, leg placement and off-white palette as the Alpaca in the neighbouring cell, differing only by the Alpaca's hanging fringe strands; the neck is also straight-and-forward rather than S-curved."
+  },
+  {
+   "species": "Amaranth",
+   "band": "FAIL",
+   "why": "The seed head is a thin pencil-thin magenta rod, not the thick fleshy drooping tassel the must-read demands; leaves are narrow pointed lances rather than big soft broad ovals, and the stem is plain brown with no crimson flush — it is the same ladder-of-paired-leaves silhouette as Quinoa, only pinker."
+  },
+  {
+   "species": "Buckwheat",
+   "band": "FAIL",
+   "why": "Leaves are fat rounded pale-green blobs stacked in symmetric pairs — no arrowhead/heart shape anywhere; the stem is uniform green with no red flush or joints, and there are no three-angled pyramid seeds, just a small white crescent smudge at the tip."
+  },
+  {
+   "species": "Potato",
+   "band": "FAIL",
+   "why": "The must-read knobbly tubers on stolons are entirely absent — the base is a bare stem over an empty shadow ellipse; the single white star flower has no yellow anther cone and the fronds read as uniform fern pinnae, not compound leaves of uneven-sized leaflets."
+  },
+  {
+   "species": "Quinoa",
+   "band": "FAIL",
+   "why": "Leaves are smooth pointed lances, not the toothed duck-foot goosefoot shape, and the terminal seed head is a skinny red stick instead of a chunky branched panicle — it is Amaranth's exact construction recoloured yellow-green."
+  },
+  {
+   "species": "African Elephant",
+   "band": "FAIL",
+   "why": "The must-read pillar legs are absent — the limbs are thin, hocked and taper into small banded hooves like a deer's — and the \"enormous fan-shaped ear\" is a hard-edged dark oval plate with radial ribs pasted across the mid-flank well behind and below the skull, reading as a saddle or beetle elytron rather than a fan hanging off the head."
+  },
+  {
+   "species": "Asian Elephant",
+   "band": "FAIL",
+   "why": "No twin-domed forehead — the skull is a single smooth rounded blob with no dip between domes — the ear is the same grey oval bowl as its neighbours (just shrunk) instead of a small triangle, the trunk tip is a blunt banded tube with no single lip, and the body is the identical bone-white mesh as the African and Forest panels."
+  },
+  {
+   "species": "Forest Elephant",
+   "band": "FAIL",
+   "why": "It is the African panel with a slightly smaller ear plate and nothing else changed — same bone-white speckled hide, same hocked hooved legs, same body outline — so the \"smaller and darker than the savanna elephant\" read is entirely missing; side by side the three are one construction in one colour."
+  },
+  {
+   "species": "Caribou",
+   "band": "FAIL",
+   "why": "Antlers are two plain symmetric upright forks with no forward brow shovel at all, the hooves are narrow dark tips rather than wide splayed snowshoes, and the all-white coat leaves the white neck ruff with nothing to read against — it is the Elk's torso, legs and shoulder facet in a different hue."
+  },
+  {
+   "species": "Elk",
+   "band": "FAIL",
+   "why": "The neck is the same pale gold as the body so there is no dark shaggy mane, the rump is uniform cream with no distinct pale patch, and the antlers point straight up and forward instead of sweeping back — the barrel, leg geometry and hard-edged shoulder quad are the Caribou's construction re-tinted."
+  },
+  {
+   "species": "Moose",
+   "band": "FAIL",
+   "why": "Palmate antlers read well but they cross in front of the skull and occlude the eye, there is no dewlap bell under the throat (the jaw line runs smooth into the neck), and the withers actually DIP into a concave saddle instead of humping, on the same short-legged Elk chassis rather than the near-square tall-legged silhouette."
+  },
+  {
+   "species": "Giraffe",
+   "band": "POLISH",
+   "why": "Reads as a giraffe instantly — very long neck, twin dark ossicones on the crown, sloping topline from high withers down to the hips — but the reticulated patch field is applied as a hard-edged rectangular blanket on the barrel only, leaving the shoulder, chest, rump and most of the legs bare cream with a few stray blotches."
+  },
+  {
+   "species": "Okapi",
+   "band": "FAIL",
+   "why": "The striping is in the wrong place: four thick dark bands ring the NECK (the zebra error the note warns against) while the hindquarters carry a solid white smear with vertical streaks instead of horizontal white stripes, and the body is mid-brown rather than deep chocolate."
+  },
+  {
+   "species": "Fishing Cat",
+   "band": "FAIL",
+   "why": "Pea-green torso wears large irregular ink-blot splotches instead of rows of solid dark spots, has no neck stripes, and the hindquarters end bare with no short thick tail visible at all — plus no ears and a long blunt snout, so it reads as a green boar."
+  },
+  {
+   "species": "Wildcat",
+   "band": "FAIL",
+   "why": "Same torso, hunched spine, stubby legs and headless-of-ears head as the Fishing Cat beside it with only bold black vertical bars and a cream hue swapped in; the bars read tiger/zebra not mackerel tabby, the head is narrow rather than broad, and the ringed tail ends on a pale ring instead of a black tip."
+  },
+  {
+   "species": "Wild Horse",
+   "band": "FAIL",
+   "why": "The crest of the neck is completely bare — there is no stiff upright brush mane at all — the coat is pale cream with no dun tone or dorsal stripe, the legs are long and thin rather than short and stocky, and the head is a small round blob with a hooked llama-like muzzle and a dark pyramid facet where the ear should be, not a large heavy Przewalski head."
+  },
+  {
+   "species": "Wild Pony",
+   "band": "FAIL",
+   "why": "Identical construction to the Wild Horse beside it — same blob head with the same dark pyramid ear facet, same cheek strap, same flat peach paddle tail — differing only in a straw-fringe fur texture; there is no thick mane crest and no forelock, the forehead and eye are fully exposed, and the barrel is slab-sided rather than deep and round."
+  },
+  {
+   "species": "Peccary",
+   "band": "FAIL",
+   "why": "The must-read tusks are absent — the muzzle ends in a flat dark mouth line with nothing protruding below the jaw (a brightness scan of the head finds only the eye catchlight), and the long draping wool coat plus thick cloven-hoofed legs read as a sheep rather than a pig on slim delicate legs."
+  },
+  {
+   "species": "Sloth",
+   "band": "FAIL",
+   "why": "The two arms are blunt flat rectangular posts that butt against the branch's underside with no hooked scythe claws and no curl gripping the limb (hind limbs absent entirely); the fur is pale bone-cream rather than shaggy greenish; and the head is a pointed protruding snout with a big glossy eye that reads mouse/opossum, not a small round flat face with a faint smile."
+  },
+  {
+   "species": "Elephant",
+   "band": "POLISH",
+   "why": "Unmistakably an elephant — big ribbed fan ear, white curved tusks, grey pillar legs, trunk dropping to ground level — but the trunk tip is a plain flat curl with no split grasping lips, the ear is ringed by a hard dark outline that makes it read as an applied shell rather than skin, and the tail ends in five splayed finger-like digits instead of a hair tassel."
+  },
+  {
+   "species": "Wolf",
+   "band": "FAIL",
+   "why": "The tail must-read is broken outright: it is a stubby banded club barely a hock long, sticking off the croup and ending in a flat brown open cylinder cross-section (a cut-pipe end), not a straight bushy brush; and the head is snipey rather than broad blocky — a thin needle muzzle with almost no lower jaw or cheek mass juts past the skull, over the unchanged pony barrel/croup body (the erect triangular ear, amber eye and toed paws are real gains, but not enough)."
+  },
+  {
+   "species": "Badger",
+   "band": "FAIL",
+   "why": "Body is cream with ~25 vertical dark bars hanging off a spine line, reading as a zebra/tiger-striped animal rather than a broad flattened badger; the face has a raccoon-like dark ring around the eye instead of the white stripe running nose-to-crown, and the front feet are rounded grey blobs with no long straight digging claws."
+  },
+  {
+   "species": "Spotted Hyena",
+   "band": "FAIL",
+   "why": "The blotchy spots and the shoulder-to-hip slope are real, but the head fails two must-reads: no ear breaks the domed skull silhouette (just two flat brown ovals painted on the cheek beside the tiny bead eye), and the muzzle is a long narrow taper to a glossy nose with a thin underslung jaw line — a marten/bear head with no heavy jaw mass, joined to the shoulder by a hard unblended polygon seam."
+  },
+  {
+   "species": "Hippopotamus",
+   "band": "FAIL",
+   "why": "The body is a uniform pink sausage tube on four tiny caster-like nubs, not a barrel on stumpy pillar legs, and the head ends in a narrow tapering snout that is clearly narrower than the skull instead of the huge squared muzzle — it reads as a hairless dachshund-pig, not a hippo."
+  },
+  {
+   "species": "Walrus",
+   "band": "FAIL",
+   "why": "Tusks are there, but two of three must-reads are not: the muzzle is a smooth rounded dog-like snout with a dark nose blob and zero bristle moustache, and the body is a straight-sided furry loaf with vertical hair striations (no wrinkles, no blubber rolls) standing on four clawed three-toed paws rather than flippers — plus a large glossy cartoon eye where the row calls for small."
+  },
+  {
+   "species": "Tasmanian Devil",
+   "band": "FAIL",
+   "why": "Colour is inverted and the silhouette is wrong: the body is pale grey/white with only the head and tail dark, instead of black fur with a white chest band; the head is small and rounded with a closed muzzle rather than an oversized blocky skull with gaping jaws, and the long slim legs raise the torso into a lamb/deer stance with a thin drooping tail rather than a low stocky body with a thick tapering tail."
+  },
+  {
+   "species": "Black-Eyed Susan",
+   "band": "FAIL",
+   "why": "Two must-reads are missing and one is wrong: the centre is a flat dull khaki-olive disc with no shading or dome relief (not a deep chocolate-brown raised dome), the rays are short blunt lemon-yellow cog teeth radiating flat and perfectly symmetric (not golden-orange or drooping), and there is no bristle anywhere — the leaves are clean-edged glossy lance blades ladder-paired opposite up a perfectly straight smooth stem, i.e. a generic fern-frond herb chassis rather than the alternate rough-hairy stem the row calls for."
+  },
+  {
+   "species": "Peanut",
+   "band": "FAIL",
+   "why": "Tall single upright stem with ~8 fern-like fronds of many tiny narrow leaflets instead of four oval leaflets in two pairs; no yellow flowers, no spreading habit, and the only tan pod sits at the top of the stem rather than underground."
+  },
+  {
+   "species": "Fennel",
+   "band": "FAIL",
+   "why": "Reads as a fern/mimosa frond — a rigid vertical stem with paired flat side-branches of discrete chevron tick-marks rather than a cloud of hair-fine threads; the yellow apex is one solid mushroom-cap blob with no spoke-like umbel rays, and the stem and foliage are bright yellow-olive with no blue-grey tint."
+  },
+  {
+   "species": "Green Algae",
+   "band": "FAIL",
+   "why": "The render is a fan of thin grass-like blades splaying from a small base — not a sphere at all; there is no hollow green ball studded with identical surface cells, no daughter colonies inside, and no translucent jelly, so all three must-reads are absent and a stranger would call this a tuft of grass."
+  }
+ ]
+}

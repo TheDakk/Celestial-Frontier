@@ -1296,3 +1296,40 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   verdict could be trusted as "before" or "after". A judge run must see one frozen render:
   export once, judge once, do not touch a painter until it finishes. The cheap re-check makes
   this trivial because a run is minutes, not hours.
+
+- ★★ **D-ART-158 — SCOPING A RE-CHECK TO DRIFT DELETES THE CONTROL GROUP. THE SAVING IS REAL;
+  THE NUMBER IS NOT, UNTIL A SLICE NOBODY EDITED HAS BEEN JUDGED BY THE SAME JUDGE.**
+  The wave-57 cheap re-check ran exactly as designed — 148 drifted assets, 32 strips, 1.17M
+  tokens against the full sweep's ~15M — and reported **FAIL 660 → 694**, with **40 of its 44
+  band crossings running one way** (POLISH → FAIL) on assets six waves had just been spent
+  improving. That one-directional shape is the D-ART-150 signature, and D-ART-150 had already
+  fired twice. The trap is structural and it is *caused by the optimisation*: **drift-scoping
+  means every asset judged is one we edited, so a harsher judge and a real regression produce
+  the identical number, and nothing inside the run can tell them apart.** D-ART-150 was caught
+  both previous times by looking at a set nobody had touched — precisely the set a drift scope
+  removes.
+  ★ **The control, and it cost 0.72M:** `tools/rejudgecontrol.mjs` samples assets whose pixels
+  did NOT change, **family-matched to the drift set** (same families, so family difficulty and
+  strip composition cannot explain a difference), deterministically (evenly spaced over a sorted
+  pool — no rng, so the sample is re-derivable), and puts them through the identical judge.
+  Result: **drift +23.0 points of FAIL, control +23.2.** Corrected for the ceiling (an asset
+  already at FAIL cannot fall further, so rate only the ones with somewhere to go): **demoted
+  70% of the edited versus 78% of the untouched.** Net **−8 points, i.e. zero.**
+  **Waves 51–56 moved no band. The entire +34 was the ruler.**
+  ★ Three harness changes all push the same way and together are worth ~23 points: one pass
+  instead of two, a side-by-side contact strip instead of 14 isolated PNGs, and an explicit
+  "be your own skeptic, there is no verify pass" instruction. None was wrong; measuring across
+  them was.
+  ⚠ **And the merged file is a MIXED RULER** — 148 rows on the new harness, 1,102 carried from
+  the old. Its total is a chimera, so `rejudgemerge` now writes that warning into the JSON
+  itself, prints the control-corrected demotion rates instead of a headline, and **refuses to
+  present a delta at all when no `--control` is supplied.** A tool that can print an
+  uninterpretable number will eventually have it quoted (this is the D-ART-139 shape: a check
+  nobody can act on is not a check).
+  ★ The payoff: with the offset now *measured*, gold pass 4 is a legitimate baseline for the
+  NEXT delta — same harness, apples to apples — **provided the control is re-run every time.**
+  ★ What survives a moved ruler is what has always survived one: **the per-asset prose.** It
+  named two catalogue-wide defects this run, both then confirmed by opening the strip and
+  looking (D-ART-88): the felid chassis is *not* fixed ("pixel-for-pixel the Jaguar cell in a
+  paler tan"), and every flora inflorescence is an ornament stuck on the stem apex rather than a
+  structure with size. See `reference/GOLD_PASS_4.md`.

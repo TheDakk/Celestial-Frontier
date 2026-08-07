@@ -23,10 +23,18 @@
       the judge is told to be its own skeptic in one pass. (Keep the full
       adversarial pass only for a final certification.)
 
-   Usage: node tools/rejudgecards.mjs
+   ⚠ AND THE THING THIS TOOL CANNOT DO ALONE (D-ART-150, which has fired twice):
+   scoping to drift removes the CONTROL GROUP. Every asset it judges is one we
+   edited, so a harsher judge and a real regression produce the same number and
+   nothing in the run can tell them apart. Pair it with a family-matched control
+   of UNCHANGED assets — `tools/rejudgecontrol.mjs` builds one, and this tool
+   renders it via --drift/--out. Quote no delta until the control has run.
+
+   Usage: node tools/rejudgecards.mjs [--drift=reference/drift-since-baseline.json]
+                                      [--out=rejudge] [--control]
    Reads : reference/drift-since-baseline.json  (set|name rows)
            reference/goldpass3-prechassis.json        (baseline verdicts)
-   Writes: apps/game/smoke/rejudge/<family>/strip.png + packet.md + index.json
+   Writes: apps/game/smoke/<out>/<family>/strip.png + packet.md + index.json
 */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -35,13 +43,17 @@ import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..');
-const OUT = path.join(root, 'apps', 'game', 'smoke', 'rejudge');
+const arg = (k, d) => { const a = process.argv.find((s) => s.startsWith('--' + k + '=')); return a ? a.slice(k.length + 3) : d; };
+const CONTROL = process.argv.includes('--control');
+const OUTDIR = arg('out', CONTROL ? 'rejudge-control' : 'rejudge');
+const OUT = path.join(root, 'apps', 'game', 'smoke', OUTDIR);
 const CSV = path.join(root, 'reference', 'nick-onebyone', 'engine_data', 'all_1250_current_one_by_one_audit.csv');
 const PER = 14;   /* a strip stays legible up to ~14 wide */
 
-/* ── the drift set: what actually changed since the baseline ── */
-const drift = JSON.parse(fs.readFileSync(path.join(root, 'reference/drift-since-baseline.json'), 'utf8'));
-console.log('drift set: ' + drift.length + ' assets changed since the baseline');
+/* ── the set to judge: drifted assets, or a control of unchanged ones ── */
+const DRIFT = arg('drift', CONTROL ? 'reference/control-sample.json' : 'reference/drift-since-baseline.json');
+const drift = JSON.parse(fs.readFileSync(path.join(root, DRIFT), 'utf8'));
+console.log((CONTROL ? 'control set: ' : 'drift set: ') + drift.length + ' assets from ' + DRIFT);
 
 /* ── baseline verdicts, so the packet can show what each WAS ── */
 const base = JSON.parse(fs.readFileSync(path.join(root, 'reference/goldpass3-prechassis.json'), 'utf8'));
@@ -104,13 +116,15 @@ for (const [family, members] of [...byFamily].sort((a, b) => b[1].length - a[1].
        browser render, no model tokens */
     execSync('node ' + JSON.stringify(path.join(here, 'speciesstrip.mjs')) + ' '
       + JSON.stringify(slice.map((a) => a.name).join(',')) + ' '
-      + JSON.stringify('rejudge/' + slug(family) + '/strip-' + id + '.png'),
+      + JSON.stringify(OUTDIR + '/' + slug(family) + '/strip-' + id + '.png'),
       { cwd: root, stdio: 'ignore' });
     const body = [
-      '# RE-CHECK — ' + family + '  (' + slice.length + ' changed asset' + (slice.length > 1 ? 's' : '') + ')',
+      '# RE-CHECK — ' + family + '  (' + slice.length + ' asset' + (slice.length > 1 ? 's' : '') + ')',
       '',
-      'These are the ONLY assets in this family whose art changed since the last',
-      'judgement. Read the ONE strip below and look at each. For each asset give a',
+      CONTROL
+        ? 'These are assets from this family, drawn for re-check against their reference\nrows.'
+        : 'These are the ONLY assets in this family whose art changed since the last\njudgement.',
+      'Read the ONE strip below and look at each. For each asset give a',
       'band (PASS / POLISH / FAIL) and one short reason. Be your own skeptic — if a',
       'must-read is missing say FAIL; do not grade up out of politeness. You do NOT',
       'need to open anything else; the strip is the whole task.',
