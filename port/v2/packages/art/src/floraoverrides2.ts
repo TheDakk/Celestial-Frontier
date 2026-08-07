@@ -73,7 +73,7 @@ function nrng(g: G, name: string, salt: number): () => number {
 export interface PlantSpec {
   habit: 'tree' | 'shrub' | 'herb' | 'grass' | 'vine' | 'succulent' | 'fern' | 'aquatic' | 'rosette' | 'palm' | 'cane';
   leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad';
-  flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin';
+  flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin' | 'cross';
   fruit?: 'none' | 'berry' | 'drupe' | 'pome' | 'citrus' | 'pod' | 'nut' | 'cone' | 'grain' | 'melon' | 'fig' | 'cluster';
   fhue?: string;      /** flower/fruit colour where colour IS the identity */
   hue?: string;       /** FOLIAGE colour — the body of the plant, not its fruit */
@@ -103,13 +103,28 @@ export interface PlantSpec {
   /** how many flowers, and therefore whether they are terminal or borne along
       the stem. 1 = the old terminal single. */
   flowerN?: number;
+  /* ★ WAVE 58 — BOTANICAL-FAMILY CUES. Gold pass 4 failed nine mints as one
+     body because none of the Lamiaceae read-cues existed: toothed opposite
+     leaves, a square reddish stem, and flowers borne in WHORLS up the stem
+     (verticillasters) rather than one terminal spike. All three default off, so
+     every plant that does not set them is byte-unchanged (D-ART-14). */
+  /** serrated leaf margin — mints, nettles, brassicas (the judge failed "smooth
+      rounded blobs with no teeth" across a dozen species) */
+  toothed?: boolean;
+  /** a squared, faintly reddish/ridged stem — the mint-family giveaway */
+  square?: boolean;
+  /** flowers borne in rings at the upper leaf axils, not just at the tip */
+  whorl?: boolean;
+  /** slender beaked seed pods (siliques) up-and-out along the upper stem — the
+      other half of a brassica's read alongside the four-petal cross flower */
+  pods?: boolean;
 }
 
 /** one leaf, drawn along a direction — the shape IS the family */
 /** the cost dial for leaf venation — see MAT_DETAIL. 0 restores the flat leaf. */
 const LEAF_DETAIL = 1;
 
-function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number, kind: PlantSpec['leaf']): void {
+function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number, kind: PlantSpec['leaf'], toothed = false): void {
   c.save(); c.translate(x, y); c.rotate(ang);
   const w = len * (kind === 'lance' ? 0.16 : kind === 'blade' ? 0.09 : kind === 'heart' ? 0.52 : 0.34);
   c.fillStyle = leafGrad(c, p, len * 0.45, 0, len * 0.5);
@@ -181,6 +196,17 @@ function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number
   if (kind === 'heart') {
     c.bezierCurveTo(len * 0.30, -w * 1.5, len * 1.12, -w * 0.9, len, 0);
     c.bezierCurveTo(len * 1.12, w * 0.9, len * 0.30, w * 1.5, 0, 0);
+  } else if (toothed) {
+    /* ★ WAVE 58 — a FINELY SERRATED margin. A smooth oval reads as "a leaf-
+       shaped blob"; small teeth are what say mint / nettle / brassica. The
+       outline follows the blade envelope (so the leaf still tapers to a point)
+       with a shallow ±sawtooth on top — a serration, not the holly spikes the
+       first cut drew. */
+    const teeth = 11;
+    for (let i = 0; i <= teeth; i++) { const u = i / teeth; const env = Math.sin(u * Math.PI) ** 0.7;
+      c.lineTo(len * u, -w * env * (1 - (i % 2) * 0.32)); }
+    for (let i = teeth; i >= 0; i--) { const u = i / teeth; const env = Math.sin(u * Math.PI) ** 0.7;
+      c.lineTo(len * u, w * env * (1 - (i % 2) * 0.32)); }
   } else {
     c.quadraticCurveTo(len * 0.42, -w, len, 0);
     c.quadraticCurveTo(len * 0.42, w, 0, 0);
@@ -253,29 +279,61 @@ function drawFruit(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNul
 
 function drawFlower(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNullable<PlantSpec['flower']>, hue: string | undefined, r: () => number): void {
   const col = hue ?? '#e6d98f';
-  if (kind === 'head') {          /* a composite: ray florets round a disc */
-    const n = 12;
-    for (let i = 0; i < n; i++) {
-      const a = (i / n) * TAU;
-      c.fillStyle = col;
-      c.save(); c.translate(x, y); c.rotate(a);
-      c.beginPath(); c.ellipse(R * 0.62, 0, R * 0.46, R * 0.17, 0, 0, TAU); c.fill();
-      c.restore();
+  /* ★ WAVE 58 — THE INFLORESCENCE IS A STRUCTURE WITH SIZE, NOT AN ORNAMENT.
+     Gold pass 4's flora prose named this on 39% of all flora: "a thin white
+     crescent 20px wide", "a single thin yellow arc", "a 5px-wide stub". The
+     defect was two things at once — the R passed in was a speck (fixed at the
+     call sites), and these shapes DEGRADED at small R into a crescent (umbel)
+     and a dotted stub (spike). Rebuilt so each reads as a bloom head even
+     before the size bump: a domed compound umbel, a dense tapering spike, a
+     fuller composite. Colour-only difference across neighbours is what the
+     judge failed them for, so the FORM now carries identity too. */
+  const litFloret = (fx: number, fy: number, rr: number): void => {
+    const gg = c.createRadialGradient(fx - rr * 0.3, fy - rr * 0.35, 1, fx, fy, rr * 1.1);
+    gg.addColorStop(0, 'rgba(255,255,255,0.55)'); gg.addColorStop(0.5, col); gg.addColorStop(1, 'rgba(0,0,0,0.22)');
+    c.fillStyle = gg; c.beginPath(); c.arc(fx, fy, rr, 0, TAU); c.fill();
+  };
+  if (kind === 'head') {          /* a composite: two ranks of ray florets round a domed disc */
+    for (const [rank, rad, wide] of [[16, 0.92, 0.24], [13, 0.66, 0.20]] as const) {
+      for (let i = 0; i < rank; i++) {
+        const a = (i / rank) * TAU + rank * 0.11;
+        c.fillStyle = col;
+        c.save(); c.translate(x, y); c.rotate(a);
+        c.beginPath(); c.ellipse(R * rad * 0.5, 0, R * rad * 0.42, R * wide, 0, 0, TAU); c.fill();
+        c.restore();
+      }
     }
-    c.fillStyle = '#6b5320'; c.beginPath(); c.arc(x, y, R * 0.34, 0, TAU); c.fill();
-    softMark(c, x, y, R * 0.30, R * 0.30, '40,30,10', 0.4);
+    const dg = c.createRadialGradient(x - R * 0.12, y - R * 0.12, 1, x, y, R * 0.42);
+    dg.addColorStop(0, '#8a6d28'); dg.addColorStop(1, '#5a4318');
+    c.fillStyle = dg; c.beginPath(); c.arc(x, y, R * 0.40, 0, TAU); c.fill();
+    for (let i = 0; i < 20; i++) { const a = r() * TAU, d = r() ** 0.5 * R * 0.34; softMark(c, x + Math.cos(a) * d, y + Math.sin(a) * d, R * 0.06, R * 0.06, '30,22,8', 0.5); }
   } else if (kind === 'spike' || kind === 'catkin') {
-    for (let i = 0; i < 9; i++) {
-      const yy = y - R * 1.4 + i * R * 0.32;
-      c.fillStyle = col;
-      c.beginPath(); c.ellipse(x + (r() - 0.5) * R * 0.2, yy, R * (kind === 'catkin' ? 0.22 : 0.26), R * 0.17, 0, 0, TAU); c.fill();
+    /* a DENSE column of florets, widest below the middle and tapering to a
+       point — a real raceme/spike, not a line of beads. Built bottom-up over
+       ~1.9R of height so it is unmistakably a structure. */
+    const nf = kind === 'catkin' ? 34 : 46, top = y - R * 1.55, bot = y + R * 0.42;
+    for (let i = 0; i < nf; i++) {
+      const u = i / (nf - 1);                     /* 0 = bottom (oldest/open) → 1 = tip */
+      const yy = bot + (top - bot) * u;
+      const halfW = R * (kind === 'catkin' ? 0.30 : 0.42) * Math.sin(Math.min(1, u * 1.15) * Math.PI * 0.9) * (1 - u * 0.25);
+      const fx = x + (r() - 0.5) * Math.max(2, halfW * 1.5);
+      litFloret(fx, yy, R * (0.13 + (1 - u) * 0.06));
     }
   } else if (kind === 'umbel') {
-    c.strokeStyle = p.dark; c.lineWidth = 1.6;
-    for (let i = 0; i < 11; i++) {
-      const a = -2.6 + (i / 10) * 2.0, ex = x + Math.cos(a) * R * 0.95, ey = y + Math.sin(a) * R * 0.72;
-      c.beginPath(); c.moveTo(x, y); c.lineTo(ex, ey); c.stroke();
-      c.fillStyle = col; c.beginPath(); c.arc(ex, ey, R * 0.18, 0, TAU); c.fill();
+    /* a DOMED compound umbel: pedicels radiating up-and-out to a rounded head,
+       each carrying a little cluster. The old crescent only swept the top-left
+       2 radians and vanished into an arc at small R. */
+    c.strokeStyle = p.dark; c.lineWidth = Math.max(1.4, R * 0.03);
+    const hub = y + R * 0.16;
+    /* two ranks of pedicels — an outer rim AND a shorter inner ring — so the
+       head reads as a domed mass with body, not an empty arc of dots on a rim */
+    for (const [rays, reach, rise] of [[13, 0.98, 0.86], [9, 0.58, 0.60]] as const) {
+      for (let i = 0; i < rays; i++) {
+        const a = -Math.PI + (i / (rays - 1)) * Math.PI;   /* full 180° dome, left to right */
+        const ex = x + Math.cos(a) * R * reach, ey = hub - Math.abs(Math.sin(a)) * R * rise - R * 0.12;
+        c.beginPath(); c.moveTo(x, hub); c.quadraticCurveTo(x + Math.cos(a) * R * reach * 0.4, hub - R * 0.3, ex, ey); c.stroke();
+        for (let k = 0; k < 4; k++) { const aa = a + (k - 1.5) * 0.16; litFloret(ex + Math.cos(aa) * R * 0.13, ey + Math.sin(aa) * R * 0.11, R * 0.085); }
+      }
     }
   } else if (kind === 'bell') {
     for (let i = 0; i < 4; i++) {
@@ -297,6 +355,36 @@ function drawFlower(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNu
       c.closePath(); c.fill(); c.restore();
     }
     c.fillStyle = '#f3e6a8'; c.beginPath(); c.arc(x, y, R * 0.20, 0, TAU); c.fill();
+  } else if (kind === 'cross') {
+    /* ★ WAVE 58 — THE BRASSICA HEAD: a corymb of tiny FOUR-petal cross flowers
+       (the Brassicaceae signature) with a knot of unopened buds at the very top.
+       Gold pass 4 failed mustard/canola/rocket for "no four-petalled crosses,
+       just a yellow smear". Each floret is a true cruciform. */
+    const florets = 9;
+    for (let i = 0; i < florets; i++) {
+      const a = (i / florets) * TAU + i * 0.7, d = R * (0.28 + (i % 3) * 0.26);
+      const fx = x + Math.cos(a) * d, fy = y + Math.sin(a) * d * 0.85 - R * 0.15;
+      for (let pmt = 0; pmt < 4; pmt++) {
+        c.fillStyle = col; c.save(); c.translate(fx, fy); c.rotate(pmt * Math.PI / 2 + 0.4);
+        c.beginPath(); c.ellipse(R * 0.16, 0, R * 0.15, R * 0.11, 0, 0, TAU); c.fill(); c.restore();
+      }
+      c.fillStyle = '#e8c848'; c.beginPath(); c.arc(fx, fy, R * 0.055, 0, TAU); c.fill();
+    }
+    /* the bud knot crowning the raceme */
+    c.fillStyle = p.dark;
+    for (let i = 0; i < 6; i++) { const a = (i / 6) * TAU; c.beginPath(); c.arc(x + Math.cos(a) * R * 0.12, y - R * 0.9 + Math.sin(a) * R * 0.1, R * 0.07, 0, TAU); c.fill(); }
+  }
+}
+
+/** ★ WAVE 58 — SILIQUES. Slender beaked seed pods held up-and-out along the
+    upper stem, the other half of a brassica's read (mustard, canola, rocket). */
+function drawSiliques(c: Ctx, p: Pal, cx: number, tipX: number, base: number, tipY: number, hue: string | undefined): void {
+  c.strokeStyle = hue ?? p.base; c.lineWidth = Math.max(2, S * 0.006); c.lineCap = 'round';
+  for (let i = 0; i < 7; i++) {
+    const u = 0.45 + (i / 7) * 0.42, s = i % 2 ? 1 : -1;
+    const sx = cx + (tipX - cx) * u, sy = base - (base - tipY) * u;
+    const ang = -0.5 * s - 0.7, L = S * 0.055;
+    c.beginPath(); c.moveTo(sx, sy); c.lineTo(sx + Math.cos(ang) * L, sy + Math.sin(ang) * L); c.stroke();
   }
 }
 
@@ -428,7 +516,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
         drawLeaf(c, p, lx, ly, (i % 2 ? -0.7 : -2.4) + s, S * 0.062 * nvf(name, 0x77, 0.2), spec.leaf);
       }
       if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, tipX, tipY + S * 0.012, S * 0.030, spec.fruit, spec.fhue, r);
-      if (spec.flower && spec.flower !== 'none') drawFlower(c, p, tipX, tipY - S * 0.010, S * 0.028, spec.flower, spec.fhue, r);
+      if (spec.flower && spec.flower !== 'none') drawFlower(c, p, tipX, tipY - S * 0.014, S * (spec.flower === 'spike' || spec.flower === 'catkin' || spec.flower === 'umbel' ? 0.060 : 0.046), spec.flower, spec.fhue, r);
     }
   } else if (spec.habit === 'grass' || spec.habit === 'cane') {
     /* BLADES FROM A CROWN, arcing outward and drooping at the tip */
@@ -471,7 +559,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       c.strokeStyle = stemCol; c.lineWidth = S * 0.007; c.lineCap = 'round';
       c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.03, base - H * 0.5, cx + S * 0.01, headY + S * 0.03); c.stroke();
       if (spec.fruit === 'grain') drawFruit(c, p, cx + S * 0.01, headY, S * 0.034, 'grain', spec.fhue, r);
-      else drawFlower(c, p, cx + S * 0.01, headY, S * 0.030, spec.flower!, spec.fhue, r);
+      else drawFlower(c, p, cx + S * 0.01, headY, S * (spec.flower === 'spike' || spec.flower === 'catkin' ? 0.078 : 0.052), spec.flower!, spec.fhue, r);
     }
   } else if (spec.habit === 'vine') {
     /* A VINE HANGS AND CLINGS — a sinuous stem with tendrils, not a stalk */
@@ -644,6 +732,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     const arr = spec.leafArr ?? 'opposite';
     const nF = Math.max(1, spec.flowerN ?? 1);
     const mat = arch === 'mat';
+    const toothed = spec.toothed ?? false;
     /* a creeping mat is wide and low; a wand is tall and thin.
        ⚠ WAVE 37 — the first cut made the mat 0.42·H tall over a 0.20·S spread,
        and artlock came straight back with THIRTY newly-confusable pairs, every
@@ -658,16 +747,24 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
        for a bare-stemmed composite; a spray of low arcs for a mat. */
     const wands: Array<{ tipX: number; tipY: number; ang: number }> = [];
     const nW = arch === 'bare' ? 3 : mat ? 5 : 1;
-    c.strokeStyle = stemCol; c.lineWidth = stemW; c.lineCap = 'round';
+    /* ★ WAVE 58 — a square mint stem: faintly reddish and drawn as two parallel
+       ridges so it reads angular, not a round green hairline (the judge named
+       "no square edge and no purple tint" on six mints). */
+    const mintStem = `rgb(${Math.min(150, (p.cr * 0.5 + 40) | 0)},${Math.max(40, p.cg * 0.4 | 0)},${Math.max(38, p.cb * 0.4 + 20 | 0)})`;
+    c.strokeStyle = spec.square ? mintStem : stemCol; c.lineWidth = spec.square ? stemW * 1.5 : stemW; c.lineCap = 'round';
     for (let w = 0; w < nW; w++) {
       const t = nW === 1 ? 0 : (w / (nW - 1)) - 0.5;
       /* a bare stem leans away from its neighbours; a mat sprawls sideways */
       const spreadX = mat ? t * S * 0.46 : t * S * 0.13 * (arch === 'bare' ? 1 : 0);
       const topY = base - HH * (mat ? 0.55 + Math.abs(t) * -0.28 : 1 - Math.abs(t) * 0.16);
       const tipX = cx + lean * S * 0.06 + spreadX;
-      c.beginPath(); c.moveTo(cx, base);
-      c.quadraticCurveTo(cx + lean * S * 0.04 + spreadX * 0.35, base - (base - topY) * 0.5, tipX, topY);
-      c.stroke();
+      const midX = cx + lean * S * 0.04 + spreadX * 0.35, midY = base - (base - topY) * 0.5;
+      const ridge = spec.square ? [-stemW * 0.5, stemW * 0.5] : [0];
+      for (const dx of ridge) {
+        c.beginPath(); c.moveTo(cx + dx, base);
+        c.quadraticCurveTo(midX + dx, midY, tipX + dx, topY);
+        c.stroke();
+      }
       wands.push({ tipX, tipY: topY, ang: Math.atan2(topY - base, tipX - cx) });
     }
     /* THE LEAVES, where this architecture actually carries them. */
@@ -676,7 +773,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       /* a naked flowering stem over a ground rosette — chicory, dandelion */
       for (let i = 0; i < leafN + 2; i++) {
         const a = -Math.PI / 2 + ((i / (leafN + 1)) - 0.5) * 2.9 * spread;
-        drawLeaf(c, p, cx, base - S * 0.012, a, lw * 1.15, spec.leaf);
+        drawLeaf(c, p, cx, base - S * 0.012, a, lw * 1.15, spec.leaf, toothed);
       }
     } else {
       const nL = mat ? leafN + 4 : leafN;
@@ -712,7 +809,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
           const jA = (nvf(name, 0x90 + salt, 0.34) - 1);
           const jL = nvf(name, 0xB0 + salt, 0.20);
           const a = lift + jA;
-          drawLeaf(c, p, sx, sy, s < 0 ? Math.PI + a : -a, lw * taper * jL, spec.leaf);
+          drawLeaf(c, p, sx, sy, s < 0 ? Math.PI + a : -a, lw * taper * jL, spec.leaf, toothed);
         }
       }
     }
@@ -720,8 +817,35 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
        spaced down the upper stem, which is what makes a chicory read as a
        chicory rather than as a daisy on a stick. */
     if (spec.flower && spec.flower !== 'none') {
-      const fR = S * (mat ? 0.030 : nF > 1 ? 0.028 : 0.036);
-      for (let i = 0; i < nF; i++) {
+      /* ★ WAVE 58 — the inflorescence is a major fraction of a flowering herb's
+         visual mass, not a 16px bead on a 230px stem. A spike/umbel is the
+         whole top third of the plant; a single terminal head is smaller than a
+         borne cluster only because it is one bloom, not many. */
+      const big = spec.flower === 'spike' || spec.flower === 'catkin' || spec.flower === 'umbel' || spec.flower === 'cross';
+      const fR = S * (big ? (mat ? 0.075 : 0.090) : mat ? 0.050 : nF > 1 ? 0.048 : 0.060);
+      if (spec.whorl) {
+        /* ★ VERTICILLASTERS — a mint bears dense flower rings at the upper leaf
+           axils AND a terminal cluster. This is the single strongest mint cue
+           and the judge failed nine species for its absence ("rings around the
+           stem, not just at the tip"). Rings ride the main wand. */
+        const wd = wands[0]!;
+        const rings = 4;
+        for (let ri = 0; ri < rings; ri++) {
+          const k = 0.52 + (ri / (rings - 1)) * 0.46;              /* up the top half of the stem */
+          const rx = cx + (wd.tipX - cx) * k, ry = base - (base - wd.tipY) * k;
+          const rr = fR * 0.6 * (0.7 + ri / rings);                /* rings swell toward the tip */
+          for (const s of [-1, 1] as const) {                      /* a cluster either side of the stem */
+            const cxx = rx + s * lw * 0.34;
+            for (let d = 0; d < 5; d++) { const a = (d / 5) * TAU;
+              const gx = cxx + Math.cos(a) * rr * 0.5, gy = ry + Math.sin(a) * rr * 0.4;
+              const gg = c.createRadialGradient(gx - rr * 0.1, gy - rr * 0.12, 1, gx, gy, rr * 0.45);
+              gg.addColorStop(0, 'rgba(255,255,255,0.5)'); gg.addColorStop(0.5, spec.fhue ?? '#c0a8e0'); gg.addColorStop(1, 'rgba(0,0,0,0.2)');
+              c.fillStyle = gg; c.beginPath(); c.arc(gx, gy, rr * 0.30, 0, TAU); c.fill();
+            }
+          }
+        }
+        drawFlower(c, p, wd.tipX, wd.tipY - S * 0.008, fR * 0.8, spec.flower, spec.fhue, r);
+      } else for (let i = 0; i < nF; i++) {
         const wd = wands[i % wands.length]!;
         /* the first flower on each wand sits at its tip; later ones step down */
         const step = Math.floor(i / wands.length);
@@ -735,6 +859,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       const wd = wands[0]!;
       drawFruit(c, p, wd.tipX, base - (base - wd.tipY) * 0.92, S * 0.032, spec.fruit, spec.fhue, r);
     }
+    if (spec.pods) drawSiliques(c, p, cx, wands[0]!.tipX, base, wands[0]!.tipY, spec.fhue);
   }
   /* ★ WAVE 42, CODE PASS H3 — THE THORNS WERE INERT FOR 12 OF THEIR 13 SETTERS.
      The only `spec.thorns` read sat inside the succulent NON-pad (ribbed
