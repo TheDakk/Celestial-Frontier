@@ -862,7 +862,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Carp': F({ hue: '#96702a', profile: 'deep', len: 0.22, depth: 0.078, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
   'Goldfish': F({ hue: '#ee7b18', profile: 'deep', len: 0.19, depth: 0.078, tail: 'fan', snout: 'blunt', dorsal: 'one' }),
   'Tilapia': F({ hue: '#94907a', profile: 'deep', len: 0.20, depth: 0.082, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'bands' }),
-  'Cichlid': F({ hue: '#2f7fbf', profile: 'deep', len: 0.19, depth: 0.082, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'bands' }),
+  'Cichlid': F({ hue: '#2f7fbf', profile: 'deep', len: 0.19, depth: 0.082, tail: 'fan', snout: 'blunt', dorsal: 'sail', pattern: 'bands' }),
   'Perch': F({ hue: '#9fa32f', profile: 'deep', len: 0.21, depth: 0.075, tail: 'forked', snout: 'blunt', dorsal: 'spiny', pattern: 'bands' }),
   'Bass': F({ hue: '#5d7538', profile: 'fusiform', len: 0.22, depth: 0.080, tail: 'forked', snout: 'jaw', dorsal: 'spiny' }),
   'Sea Bass': F({ hue: '#7d8a94', profile: 'fusiform', len: 0.23, depth: 0.082, tail: 'forked', snout: 'jaw', dorsal: 'spiny' }),
