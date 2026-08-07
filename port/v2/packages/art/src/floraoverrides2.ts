@@ -72,8 +72,8 @@ function nrng(g: G, name: string, salt: number): () => number {
 
 export interface PlantSpec {
   habit: 'tree' | 'shrub' | 'herb' | 'grass' | 'vine' | 'succulent' | 'fern' | 'aquatic' | 'rosette' | 'palm' | 'cane';
-  leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad';
-  flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin' | 'cross';
+  leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad' | 'trefoil';
+  flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin' | 'cross' | 'cone';
   fruit?: 'none' | 'berry' | 'drupe' | 'pome' | 'citrus' | 'pod' | 'nut' | 'cone' | 'grain' | 'melon' | 'fig' | 'cluster';
   fhue?: string;      /** flower/fruit colour where colour IS the identity */
   hue?: string;       /** FOLIAGE colour — the body of the plant, not its fruit */
@@ -118,6 +118,9 @@ export interface PlantSpec {
   /** slender beaked seed pods (siliques) up-and-out along the upper stem — the
       other half of a brassica's read alongside the four-petal cross flower */
   pods?: boolean;
+  /** drooping catkin-like flower strings hanging from the upper leaf axils —
+      the nettle's inconspicuous green tassels */
+  tassel?: boolean;
 }
 
 /** one leaf, drawn along a direction — the shape IS the family */
@@ -142,6 +145,22 @@ function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number
         c.fillStyle = leafGrad(c, p, lx, s * ll * 0.5, ll);
         c.beginPath(); c.ellipse(lx + ll * 0.25, s * ll * 0.55, ll * 0.42, ll * 0.20, s * 0.5, 0, TAU); c.fill();
       }
+    }
+    c.restore(); return;
+  }
+  if (kind === 'trefoil') {   /* THREE leaflets from one point — clover, alfalfa, medic */
+    for (let i = -1; i <= 1; i++) {
+      c.save(); c.rotate(i * 0.62);
+      const ll = len * (i === 0 ? 0.82 : 0.68);
+      c.fillStyle = leafGrad(c, p, ll * 0.5, 0, ll * 0.5);
+      /* an obovate leaflet — widest past the middle, notched-round tip */
+      c.beginPath(); c.moveTo(0, 0);
+      c.quadraticCurveTo(ll * 0.5, -ll * 0.34, ll, -ll * 0.04);
+      c.quadraticCurveTo(ll * 1.04, 0, ll, ll * 0.04);
+      c.quadraticCurveTo(ll * 0.5, ll * 0.34, 0, 0);
+      c.closePath(); c.fill();
+      leafSurface(c, ll, ll * 0.30, { veins: 3, detail: LEAF_DETAIL });
+      c.restore();
     }
     c.restore(); return;
   }
@@ -193,20 +212,23 @@ function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number
   /* broad · lance · blade · heart — one blade with a midrib */
   c.beginPath();
   c.moveTo(0, 0);
-  if (kind === 'heart') {
-    c.bezierCurveTo(len * 0.30, -w * 1.5, len * 1.12, -w * 0.9, len, 0);
-    c.bezierCurveTo(len * 1.12, w * 0.9, len * 0.30, w * 1.5, 0, 0);
-  } else if (toothed) {
+  if (toothed) {
     /* ★ WAVE 58 — a FINELY SERRATED margin. A smooth oval reads as "a leaf-
        shaped blob"; small teeth are what say mint / nettle / brassica. The
        outline follows the blade envelope (so the leaf still tapers to a point)
        with a shallow ±sawtooth on top — a serration, not the holly spikes the
-       first cut drew. */
+       first cut drew. A heart leaf keeps its base-heavy, wide-shouldered
+       envelope (nettle) while gaining the teeth. */
+    const heart = kind === 'heart';
+    const env = (u: number): number => heart
+      ? Math.sin(Math.min(1, u * 1.35) * Math.PI * 0.92) ** 0.5 * 1.5   /* wide, shouldered near the base */
+      : Math.sin(u * Math.PI) ** 0.7;
     const teeth = 11;
-    for (let i = 0; i <= teeth; i++) { const u = i / teeth; const env = Math.sin(u * Math.PI) ** 0.7;
-      c.lineTo(len * u, -w * env * (1 - (i % 2) * 0.32)); }
-    for (let i = teeth; i >= 0; i--) { const u = i / teeth; const env = Math.sin(u * Math.PI) ** 0.7;
-      c.lineTo(len * u, w * env * (1 - (i % 2) * 0.32)); }
+    for (let i = 0; i <= teeth; i++) { const u = i / teeth; c.lineTo(len * u, -w * env(u) * (1 - (i % 2) * 0.32)); }
+    for (let i = teeth; i >= 0; i--) { const u = i / teeth; c.lineTo(len * u, w * env(u) * (1 - (i % 2) * 0.32)); }
+  } else if (kind === 'heart') {
+    c.bezierCurveTo(len * 0.30, -w * 1.5, len * 1.12, -w * 0.9, len, 0);
+    c.bezierCurveTo(len * 1.12, w * 0.9, len * 0.30, w * 1.5, 0, 0);
   } else {
     c.quadraticCurveTo(len * 0.42, -w, len, 0);
     c.quadraticCurveTo(len * 0.42, w, 0, 0);
@@ -355,6 +377,27 @@ function drawFlower(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNu
       c.closePath(); c.fill(); c.restore();
     }
     c.fillStyle = '#f3e6a8'; c.beginPath(); c.arc(x, y, R * 0.20, 0, TAU); c.fill();
+  } else if (kind === 'cone') {
+    /* ★ WAVE 58 — A CONEFLOWER: backswept drooping rays under a RAISED bristly
+       central cone. Echinacea, Rudbeckia, Chamomile. The plain 'head' drew a
+       flat disc with flat spokes; the judge failed those species for exactly
+       the missing raised cone and the folded-back rays. */
+    const n = 14;
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * TAU;
+      c.fillStyle = col;
+      c.save(); c.translate(x, y); c.rotate(a);
+      /* a ray that sweeps out then droops down at the tip */
+      c.beginPath(); c.moveTo(R * 0.34, 0);
+      c.quadraticCurveTo(R * 0.8, -R * 0.12, R * 1.02, R * 0.16);
+      c.quadraticCurveTo(R * 0.8, R * 0.14, R * 0.34, 0);
+      c.closePath(); c.fill(); c.restore();
+    }
+    /* the raised cone: a domed disc with a bristly stipple, lit from upper-left */
+    const cg = c.createRadialGradient(x - R * 0.14, y - R * 0.16, 1, x, y, R * 0.46);
+    cg.addColorStop(0, '#b07a2e'); cg.addColorStop(1, '#5c3d12');
+    c.fillStyle = cg; c.beginPath(); c.ellipse(x, y, R * 0.42, R * 0.40, 0, 0, TAU); c.fill();
+    for (let i = 0; i < 40; i++) { const a = r() * TAU, d = r() ** 0.5 * R * 0.36; softMark(c, x + Math.cos(a) * d, y + Math.sin(a) * d * 0.9, R * 0.05, R * 0.05, '90,58,20', 0.6); }
   } else if (kind === 'cross') {
     /* ★ WAVE 58 — THE BRASSICA HEAD: a corymb of tiny FOUR-petal cross flowers
        (the Brassicaceae signature) with a knot of unopened buds at the very top.
@@ -860,6 +903,25 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       drawFruit(c, p, wd.tipX, base - (base - wd.tipY) * 0.92, S * 0.032, spec.fruit, spec.fhue, r);
     }
     if (spec.pods) drawSiliques(c, p, cx, wands[0]!.tipX, base, wands[0]!.tipY, spec.fhue);
+    if (spec.tassel) {
+      /* ★ WAVE 58 — NETTLE TASSELS: soft green flower strings hanging from the
+         upper leaf axils. The judge failed the nettles for "a stiff cream bead
+         spike at the tip" where the species has "tassels trailing from the leaf
+         axils". Drawn AFTER the leaves so they drape over the joints. */
+      const wd = wands[0]!;
+      c.strokeStyle = spec.fhue ?? '#9aa870'; c.lineCap = 'round';
+      for (let i = 0; i < 5; i++) {
+        const u = 0.5 + (i / 5) * 0.42, s = i % 2 ? 1 : -1;
+        const nx = cx + (wd.tipX - cx) * u + s * lw * 0.3, ny = base - (base - wd.tipY) * u;
+        c.lineWidth = Math.max(2, S * 0.007);
+        c.beginPath(); c.moveTo(nx, ny);
+        c.quadraticCurveTo(nx + s * S * 0.02, ny + S * 0.03, nx + s * S * 0.012, ny + S * 0.07);
+        c.stroke();
+        /* beads along the string */
+        c.fillStyle = spec.fhue ?? '#9aa870';
+        for (let k = 1; k <= 4; k++) { const t = k / 4; c.beginPath(); c.arc(nx + s * S * 0.015 * t, ny + S * 0.07 * t, S * 0.006, 0, TAU); c.fill(); }
+      }
+    }
   }
   /* ★ WAVE 42, CODE PASS H3 — THE THORNS WERE INERT FOR 12 OF THEIR 13 SETTERS.
      The only `spec.thorns` read sat inside the succulent NON-pad (ribbed
