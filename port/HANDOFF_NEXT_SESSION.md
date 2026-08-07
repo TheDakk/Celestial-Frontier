@@ -133,8 +133,24 @@ Orca renders BROKEN). These share the quadruped/mammal chassis in `quadrupedover
 `mammaloverrides.ts`, the defect the ENTIRE project history is about (the pony; gp4 still says
 "Leopard = the Jaguar cell in a paler tan"). ⚠ Bears ALREADY have back:'humped' but read as a
 "sheep chassis" — it is a GESTALT problem (small head, stilt legs, short muzzle, hoof-not-paw
-feet), NOT one table value. This is the ~50-FAIL hard core; do it with tint-renders, family by
-family, NOT a sweep (D-ART-83). felid tail is improved; muzzle-shorter + paw-not-hoof remain. ⚠ DO NOT parameter-sweep it (D-ART-83); use the
+feet), NOT one table value. This is the ~50-FAIL hard core; do it with tint-renders, family by family, NOT a sweep (D-ART-83).
+
+★★ **WAVE 60 — the careful mammal-chassis levers (all rendered + kept, byte-safe):**
+- **`FAMILY.headScale`** (NEW, optional, default 1 = byte-unchanged): ursid 1.3 — bears got their
+  big head and stopped reading as sheep. This axis is the template for any family whose head is
+  mis-proportioned (primates, pachyderm if needed).
+- **Felid skull shortened**: len 1.95→1.68, muzzle 0.46→0.40, cranium 0.72→0.80 — cats now read
+  with a short round face, not a long snout (gp4 sub-defect #2). Closes 2 of 3 felid sub-defects
+  with the wave-59 tail. **The deep third — the "one barrel body" — is NOT done** and is the
+  single biggest remaining chassis lever (felid waist/chest/rump vs the Tube cross-section).
+- **Fox tails** tailScale 1.7 (Red/Arctic Fox) — full brush not a thin pipe.
+★ STILL OPEN in the chassis: the "pony/barrel body" shared by canids+felids (the deepest, needs
+the Tube cross-section per D-ART-152); **pinnipeds** (Seal/Sea Lion/Fur Seal render as 4-legged
+loaves — the flipper foot is fine but the 4-corner LEG LAYOUT must be restructured so the body
+rests and the hind flippers trail); **whales** (Orca renders BROKEN, need real cetacean bodies —
+a separate painter, not the quadruped); **canid paws** (check D-ART-132 — do dogs still draw
+hoof-blocks?); primate features (separate painter: Baboon muzzle, Gibbon/Spider arms, Lemur
+ringed tail, Proboscis nose, Howler pouch). Dog/wolf head should be broad+blocky. ⚠ DO NOT parameter-sweep it (D-ART-83); use the
 tint-render method (memory: "tint it flat and render") and the established model. The three gp4
 one-lever felid sub-defects: tail = body-length rope not short hook; muzzle shorter; paw not hoof.
 Remaining tractable non-chassis fauna clusters (do these the flora way): Reef fish (clownfish
