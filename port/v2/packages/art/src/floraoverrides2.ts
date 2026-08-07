@@ -139,6 +139,9 @@ export interface PlantSpec {
   /** drooping catkin-like flower strings hanging from the upper leaf axils —
       the nettle's inconspicuous green tassels */
   tassel?: boolean;
+  /** ★ WAVE 67 — a TIGHT LOW CUSHION: a dome mound of dense tiny foliage with
+      STEMLESS flowers sitting directly on it (purple saxifrage, bitterroot) */
+  cushion?: boolean;
   /** a woody shrub that trails as a LOW CREEPING MAT, wider than tall — the
       groundcover berries (bearberry, crowberry, cranberry, lingonberry) that
       the judge failed for being drawn as tall upright cane-vases */
@@ -1130,6 +1133,33 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
         c.fillStyle = p.lit; c.beginPath(); c.ellipse(tip[0], tip[1] + S * 0.02, S * 0.02, S * 0.028, 0, 0, TAU); c.fill();
       }
     }
+    }
+  } else if (spec.habit === 'rosette' && spec.cushion) {
+    /* ★ WAVE 67 — THE CUSHION ALPINES. gp3/5 failed both for the inverted
+       habit: "a tight low cushion… with stemless flowers", "the flower sits
+       flat on bare ground with NO visible stem". A low dome of dense tiny
+       foliage, wider than tall, flowers sitting directly ON the mound. */
+    const mw = S * 0.30 * spread, mh = S * 0.10;
+    const my = base - mh * 0.4;
+    /* the mound body */
+    const mg = c.createRadialGradient(cx - mw * 0.2, my - mh * 0.5, 3, cx, my, mw);
+    mg.addColorStop(0, p.lit); mg.addColorStop(0.6, p.base); mg.addColorStop(1, p.dark);
+    c.fillStyle = mg;
+    c.beginPath(); c.ellipse(cx, my, mw, mh, 0, Math.PI, TAU); c.lineTo(cx + mw, base); c.lineTo(cx - mw, base); c.closePath(); c.fill();
+    /* dense tiny foliage packing the dome */
+    for (let i = 0; i < 90; i++) {
+      const a = Math.PI + r() * Math.PI, d = Math.sqrt(r());
+      const lx = cx + Math.cos(a) * mw * d * 0.96, ly = my + Math.sin(a) * mh * d * 0.9;
+      drawLeaf(c, p, lx, ly, r() * TAU, S * 0.016 + r() * S * 0.008, spec.leaf === 'lance' ? 'needle' : 'scale');
+    }
+    /* STEMLESS flowers sitting directly on the cushion */
+    if (spec.flower && spec.flower !== 'none') {
+      const nFl = 5 + (r() * 3 | 0);
+      for (let i = 0; i < nFl; i++) {
+        const a = Math.PI + (0.15 + (i / nFl) * 0.7) * Math.PI + (r() - 0.5) * 0.2;
+        const fx = cx + Math.cos(a) * mw * (0.3 + r() * 0.6), fy = my + Math.sin(a) * mh * 0.8;
+        drawFlower(c, p, fx, fy, S * 0.026, spec.flower, spec.fhue, r);
+      }
     }
   } else if (spec.habit === 'rosette') {
     /* leaves radiating from a crown at ground level — dandelion, aloe, cabbage.
