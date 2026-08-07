@@ -135,7 +135,18 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
-★★★ GP6 IS MID-FLIGHT (2026-08-07). State if this session dies:
+★★★ GP6 IS COMPLETE + COMMITTED (`reference/GOLD_PASS_6.md`): 347 verdicts + 72 control.
+Ruler ran +22 harsh (control caught it); net: rescue 29% vs 20% (+9 real), 82 raw rescues, 19
+straight PASSes (the bespoke rebuilds convert). GP6 FIX WAVES (committed): Angelica de-twinned
+from Anise (palmate toothed + reddish stem) · trumpet size · banana hanging bunch + purple bud ·
+barrel cactus truly squat · bladderwrack Y-forks · erect arrow blades spaced + pointing up
+(Arrowhead/Taro read) · Daisy basal+bare · Vulture back on the ground hunched · dense-shrub
+SPIKES rise above the mound (Lavender/Sagebrush read) · Chicory sessile stars along the stem ·
+Creosote plain yellow stars · Milkweed warty pod. NEXT: the POLISH→PASS sweep (563 rows with
+fresh prose in goldpass6-results.json — work by set, largest first), remaining spot-checks
+(Brooklime, Edelweiss, Crowberry berry visibility, Scurvy Grass, Sea Beet, Wormwood, Hazelnut,
+Heather, Oleander, Horned Lizard), procedural bridge.
+(superseded) GP6 mid-flight state:
 - Drift = 392 assets (waves 58–68) → 64 strips; **56 judged, 8 died on the session limit**
   (resets 5:40pm ET). 337 joinable verdicts SAVED at `reference/goldpass6-rejudge-partial.json`
   (FAIL 226 / POLISH 93 / PASS 18). Only **10 species missing**: Caddisfly, Cichlid, Dobsonfly,
