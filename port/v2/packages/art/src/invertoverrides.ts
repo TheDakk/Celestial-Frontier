@@ -694,7 +694,10 @@ export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?
 }
 
 export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stout?: boolean; tiny?: boolean;
-  hue?: string; shield?: boolean; stalks?: boolean; gills?: boolean; scale?: number }, name = ''): void {
+  hue?: string; shield?: boolean; stalks?: boolean; gills?: boolean; scale?: number;
+  /* ★ WAVE 65 — the copepod's identity kit: one long pair of antennae held
+     out sideways + the two egg sacs trailing behind the tail */
+  eggSacs?: boolean }, name = ''): void {
   const p = hued(pIn, opts.hue);
   const r = nrng(g, name, 0x5E1D);
   const cx = S * 0.50, cy = S * 0.50;
@@ -775,6 +778,18 @@ export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stou
     c.lineWidth = 2;
     c.beginPath(); c.moveTo(cx - L * 0.55, cy - h * 0.3 + s * h * 0.2);
     c.quadraticCurveTo(cx - L * 1.5, cy + s * h * 1.4, cx - L * 2.0, cy + s * h * (2.4 + s * 0.6)); c.stroke();
+  }
+  if (opts.eggSacs) {
+    /* ★ WAVE 65 — the copepod's paired egg sacs, trailing behind like twin
+       grape clusters; with the antennae they are the whole diagnostic. */
+    c.fillStyle = 'rgba(220,150,80,0.9)';
+    for (const s of [-1, 1] as const) {
+      const ex = cx + L * 0.85, ey = cy + h * 0.4 + s * h * 0.55;
+      c.beginPath(); c.ellipse(ex, ey, L * 0.32, h * 0.38, s * 0.25, 0, TAU); c.fill();
+      c.fillStyle = 'rgba(180,110,50,0.6)';
+      for (let k = 0; k < 6; k++) { c.beginPath(); c.arc(ex - L * 0.2 + (k % 3) * L * 0.18, ey - h * 0.15 + Math.floor(k / 3) * h * 0.3, h * 0.11, 0, TAU); c.fill(); }
+      c.fillStyle = 'rgba(220,150,80,0.9)';
+    }
   }
   if (opts.claws) {   /* ★ WAVE 62 — the lobster's chelae are its identity, and
        gp5 called the old ones "flat unshaded paddles floating in front of the
@@ -1177,7 +1192,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Cave Shrimp': P({ hue: '#f0dfd8', }),
   'Vent Shrimp': P({ hue: '#e8bcae', }),
   'Krill': P({ tiny: true, gills: true, stalks: true, scale: 1.00, hue: '#e2705a' }),
-  'Copepod': P({ hue: '#d18a4e', tiny: true, stout: true }),
+  'Copepod': P({ hue: '#d18a4e', tiny: true, stout: true, eggSacs: true }),
   'Amphipod': P({ tiny: true, stout: true, scale: 0.74, hue: '#b9a274' }),
   'Water Flea': P({ tiny: true, stout: true, scale: 0.58, hue: '#bcd6c4' }),
   'Isopod': (c, g, p, n) => isopodBody(c, g, p, { hue: '#6e6c73' }, n),
