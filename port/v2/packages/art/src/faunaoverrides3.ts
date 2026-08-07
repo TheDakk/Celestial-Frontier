@@ -90,6 +90,7 @@ export interface FishSpec {
   dome?: boolean;            /** a transparent cranial dome over upward tubular eyes */
   droop?: boolean;           /** loose gelatinous face — the blobfish read */
   gape?: boolean;            /** an enormous open filter-feeding mouth + broad gills */
+  eyeless?: boolean;         /** cave/blind fish — the missing eye IS the species */
   /* ★ WAVE 62 — reef-fish signatures gp5 failed the family for */
   scalpel?: string;          /** the surgeonfish's bright caudal-peduncle spine, colour given */
   beak?: boolean;            /** the parrotfish's fused white tooth plate */
@@ -810,7 +811,9 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
      · `gape`: the basking shark's open mouth is a dark tunnel centred here, so
        its opaque white eye landed INSIDE its own aperture. Lifted clear of the
        gape rather than suppressed, because a basking shark does have an eye. */
-  if (!spec.dome && spec.snout !== 'hammer') {
+  /* ★ WAVE 62 — `eyeless`: a cave fish's whole identity is NO EYE, and it was
+     drawn one anyway ("It HAS AN EYE", gp5, twice). */
+  if (!spec.dome && spec.snout !== 'hammer' && !spec.eyeless) {
     const gapeLift = spec.gape ? depth * 0.30 : 0;
     /* ⚠ WAVE 55 — THE FLOOR WAS 4 ABSOLUTE PIXELS, AND THE FIT PASS ERASES
        ABSOLUTE SIZE (D-ART-34). Everything here is drawn on the oversized INK
@@ -887,8 +890,8 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
      back again, for four rounds. A lungfish is genuinely a heavy-bodied fish,
      far stockier than any eel, so the fix is to draw it as one. */
   'Lungfish': F({ profile: 'eel', len: 0.235, depth: 0.068, tail: 'point', snout: 'blunt', dorsal: 'none', pattern: 'mottle', hue: '#6a5b56' }),
-  'Blind Fish': F({ profile: 'eel', len: 0.215, depth: 0.038, tail: 'round', snout: 'blunt', dorsal: 'none', hue: '#e6d2cc' }),
-  'Cave Fish': F({ profile: 'fusiform', len: 0.155, depth: 0.052, tail: 'round', snout: 'blunt', dorsal: 'one', hue: '#f0b9b0' }),
+  'Blind Fish': F({ profile: 'eel', len: 0.215, depth: 0.038, tail: 'round', snout: 'blunt', dorsal: 'none', hue: '#e6d2cc', eyeless: true }),
+  'Cave Fish': F({ profile: 'fusiform', len: 0.155, depth: 0.052, tail: 'round', snout: 'blunt', dorsal: 'one', hue: '#f0b9b0', eyeless: true }),
   'Small Fish': F({ hue: '#a8b7c2', profile: 'fusiform', len: 0.17, depth: 0.048, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
   /* ── ancient and armoured ── */
   'Sturgeon': F({ hue: '#6f6b5c', profile: 'fusiform', len: 0.27, depth: 0.058, tail: 'shark', snout: 'shovel', dorsal: 'one' }),
