@@ -972,7 +972,7 @@ export function marineRay(c: Ctx, g: G, pIn: Pal, opts: { sting?: boolean; hue?:
   }
 }
 /** BIVALVE/GASTROPOD shells: scallop ribs, spiral snail, ear-shaped abalone */
-export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 'spiral' | 'abalone' | 'razor' | 'snail';
+export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 'spiral' | 'abalone' | 'razor' | 'snail' | 'clam' | 'mussel';
   hue?: string; scale?: number }, name = ''): void {
   /* ★ WAVE 12 — Snail and Freshwater Snail carried LITERALLY the same spec and
      the lock reported them at 0.06, the closest pair in the entire catalogue. */
@@ -1000,7 +1000,42 @@ export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 's
      ground; a constant can only be right for one of five shapes. Only the snail
      branch is re-based here, because it is the only one measured. */
   ground(c, cx, opts.kind === 'snail' ? cy + S * 0.128 : S * 0.76, S * 0.20);
-  if (opts.kind === 'scallop') {
+  if (opts.kind === 'clam' || opts.kind === 'mussel') {
+    /* ★ WAVE 59 — TWO VALVES WITH A HINGE, not one unbroken bowl. The judge
+       failed every bivalve as "one solid form, no hinge, no valve seam". A clam
+       is two rounded valves meeting at a gaping seam; a mussel is an asymmetric
+       teardrop wedge. */
+    const mussel = opts.kind === 'mussel';
+    const w = S * (mussel ? 0.14 : 0.19) * sv, h = S * (mussel ? 0.24 : 0.17) * sv2;
+    const valve = (sgn: 1 | -1): void => {
+      c.fillStyle = grad(c, p, cx, cy + sgn * h * 0.1, w);
+      c.beginPath();
+      if (mussel) {   /* an asymmetric wedge: pointed umbo at top, broad round base */
+        c.moveTo(cx, cy - h * 0.9);
+        c.quadraticCurveTo(cx + sgn * w * 1.3, cy - h * 0.1, cx + sgn * w * 0.55, cy + h * 0.85);
+        c.quadraticCurveTo(cx + sgn * w * 0.1, cy + h * 0.95, cx, cy + h * 0.8);
+        c.closePath();
+      } else {   /* a rounded valve, hinged at the top centre */
+        c.moveTo(cx, cy - h * 0.72);
+        c.quadraticCurveTo(cx + sgn * w * 1.15, cy - h * 0.5, cx + sgn * w * 1.05, cy + h * 0.15);
+        c.quadraticCurveTo(cx + sgn * w * 0.7, cy + h * 0.9, cx, cy + h * 0.78);
+        c.closePath();
+      }
+      c.fill();
+      /* concentric growth lines */
+      c.strokeStyle = 'rgba(40,32,22,0.28)'; c.lineWidth = 1.6;
+      for (let k = 1; k <= 4; k++) { const t = k / 5; c.beginPath();
+        c.moveTo(cx, cy - h * 0.72 * (1 - t) + h * 0.7 * t);
+        c.quadraticCurveTo(cx + sgn * w * (mussel ? 0.9 : 1.05) * (0.3 + t * 0.7), cy + h * 0.2 * t, cx, cy + h * 0.78 * t); c.stroke(); }
+    };
+    valve(-1); valve(1);
+    c.strokeStyle = 'rgba(30,24,16,0.5)'; c.lineWidth = 2.2;   /* the hinge/gape seam */
+    c.beginPath(); c.moveTo(cx, cy - h * (mussel ? 0.9 : 0.72)); c.lineTo(cx, cy + h * (mussel ? 0.8 : 0.78)); c.stroke();
+    if (opts.kind === 'clam' && sv > 1.05) {   /* a giant clam's wavy fluted meeting lips */
+      c.strokeStyle = p.lit; c.lineWidth = 3;
+      c.beginPath(); for (let k = 0; k <= 8; k++) { const y = cy - h * 0.6 + k / 8 * h * 1.3; const x = cx + Math.sin(k * 1.4) * w * 0.16; k ? c.lineTo(x, y) : c.moveTo(x, y); } c.stroke();
+    }
+  } else if (opts.kind === 'scallop') {
     const w = S * 0.20 * sv, h = S * 0.17 * sv2;
     c.fillStyle = grad(c, p, cx, cy, w);
     c.beginPath(); c.moveTo(cx - w * 0.22, cy + h * 0.75);
@@ -1382,10 +1417,10 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Ray': (c, g, p, n) => marineRay(c, g, p, { hue: '#6d7377', sting: true }, n),
   /* ── SHELLS & THE ANIMALS INSIDE THEM ── */
   'Scallop': (c, g, p, n) => marineShell(c, g, p, { hue: '#c98a6b', kind: 'scallop' }, n),
-  'Oyster': (c, g, p, n) => marineShell(c, g, p, { hue: '#8e8d84', kind: 'scallop' }, n),
-  'Clam': (c, g, p, n) => marineShell(c, g, p, { hue: '#cfc3ae', kind: 'scallop' }, n),
-  'Giant Clam': (c, g, p, n) => marineShell(c, g, p, { hue: '#17a2a0', kind: 'scallop' }, n),
-  'Mussel': (c, g, p, n) => marineShell(c, g, p, { hue: '#23283a', kind: 'scallop' }, n),
+  'Oyster': (c, g, p, n) => marineShell(c, g, p, { hue: '#8e8d84', kind: 'clam', scale: 1.02 }, n),
+  'Clam': (c, g, p, n) => marineShell(c, g, p, { hue: '#cfc3ae', kind: 'clam' }, n),
+  'Giant Clam': (c, g, p, n) => marineShell(c, g, p, { hue: '#17a2a0', kind: 'clam', scale: 1.2 }, n),
+  'Mussel': (c, g, p, n) => marineShell(c, g, p, { hue: '#23283a', kind: 'mussel' }, n),
   'Razor Clam': (c, g, p, n) => marineShell(c, g, p, { hue: '#b6a86a', kind: 'razor' }, n),
   'Abalone': (c, g, p, n) => marineShell(c, g, p, { hue: '#6b8f80', kind: 'abalone' }, n),
   'Limpet': (c, g, p, n) => marineShell(c, g, p, { hue: '#8a7a5f', kind: 'abalone' }, n),
