@@ -135,6 +135,16 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★ WAVE 67 (committed): Water Flea → bespoke DAPHNIA (translucent shell, gut, brood eggs, one eye,
+oar antennae, tail spine) · cushion alpines (spec.cushion — Purple Saxifrage/Bitterroot low
+stemless mounds) · Wild Thyme creep mat · Sea Fennel pad rosette · Glasswort/Samphire jointed
+sausage columns w/ candelabra + red tips · Barrel Cactus squat accordion barrel (non-tall column;
+topAnchor fix) · Chanterelle warm-gold dish (black hole gone) · vine trail/rope (Water Spinach
+horizontal + arrow leaves, Vanilla Orchid thick rope + aerial roots + pendulous pods, Beach
+Morning Glory creeps flat). FAIL list now down to: bird pose axis (Bittern/Albatross/Skua/
+Petrel/Snow Petrel), Weaverbird nest, Bull Kelp stipe+bulb, sorrel trio de-dupe, Shiitake crack
+strength, Reindeer Lichen trunks, Arctic Willow prostrate, procedural bridge + 60 → gp6 measure
++ control → POLISH sweep.
 ★ WAVE 66b (committed): Krill stalk-eyes FLIPPED to the head (were on the tail — a sign-bug) ·
 Barnacle cirri fan · Sugar Kelp ONE ribbon / Dulse red hand (flowerN = blade count in the
 flat-seaweed branch). REMAINING FAILs now: bird pose axis (Bittern/Albatross/Skua/Petrel),
