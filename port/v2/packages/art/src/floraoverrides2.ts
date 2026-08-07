@@ -132,6 +132,9 @@ export interface PlantSpec {
   /** a woody shrub as a DENSE ROUNDED twiggy bush with a filled leafy crown —
       tea, tea tree, tamarisk, bay laurel (failed as "five open bare stalks") */
   dense?: boolean;
+  /** a palm-habit plant with a smooth GREEN false trunk and huge paddle leaves
+      instead of a woody trunk and fronds — banana, plantain */
+  pseudostem?: boolean;
   /** the harvested underground organ, shown pulled up at the base: a long ropey
       taproot (licorice), a forked root (ginseng), or a knobbly rhizome
       (ginger, turmeric, valerian). The judge failed several for its absence. */
@@ -621,7 +624,34 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
   const barkCol = spec.bark ?? (woody ? '#6b4a2e' : stemCol);
   const topY = base - H;
 
-  if (spec.habit === 'tree' || spec.habit === 'palm') {
+  if (spec.habit === 'palm') {
+    /* ★ WAVE 58 — A PALM IS ONE UNBRANCHED STEM, NOT A FORKING TREE. The judge
+       failed the palms for a "forked woody trunk"; they share the tree code
+       whose two boughs are exactly that fork. A palm trunk rises single and
+       clean to a crown of fronds; a banana/plantain has a smooth GREEN false
+       trunk (pseudostem) and huge paddle leaves, not wood and fronds. */
+    const tw = S * 0.030 * nvf(name, 0x55, 0.22);
+    const px = cx + lean * S * 0.10, py = topY + H * 0.16;
+    if (spec.pseudostem) {
+      /* banana: a fat smooth green sheathed false-trunk */
+      const pg = c.createLinearGradient(cx - tw * 2, 0, cx + tw * 2, 0);
+      pg.addColorStop(0, p.dark); pg.addColorStop(0.5, p.base); pg.addColorStop(1, p.dark);
+      c.fillStyle = pg;
+      c.beginPath(); c.moveTo(cx - tw * 1.7, base); c.lineTo(cx - tw * 1.1, py); c.lineTo(cx + tw * 1.1, py); c.lineTo(cx + tw * 1.7, base); c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(20,40,20,0.25)'; c.lineWidth = 1.5;
+      for (let k = 1; k <= 3; k++) { c.beginPath(); c.moveTo(cx - tw * (1.7 - k * 0.15), base - H * 0.05 * k); c.lineTo(cx + tw * (1.7 - k * 0.15), base - H * 0.05 * k); c.stroke(); }
+      /* huge arching paddle leaves */
+      for (let i = 0; i < 7; i++) { const a = -Math.PI / 2 + (i - 3) * 0.5; drawLeaf(c, p, px, py, a, H * 0.5 * spread, 'broad'); }
+    } else {
+      c.strokeStyle = barkCol; c.lineCap = 'round'; c.lineWidth = tw * 1.5;
+      c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.04, base - H * 0.5, px, py); c.stroke();
+      c.strokeStyle = 'rgba(255,255,255,0.10)'; c.lineWidth = 1.5;   /* trunk rings */
+      for (let k = 1; k <= 7; k++) { const ty = base - (base - py) * (k / 8); c.beginPath(); c.moveTo(cx + (px - cx) * (k / 8) - tw, ty); c.lineTo(cx + (px - cx) * (k / 8) + tw, ty); c.stroke(); }
+      for (let i = 0; i < 9; i++) { const a = -Math.PI / 2 + (i - 4) * 0.42; drawLeaf(c, p, px, py, a, H * 0.5 * spread, 'frond'); }
+    }
+    if (spec.fruit && spec.fruit !== 'none') { const shaped = ['pear', 'spiky', 'star', 'crown', 'hairy', 'melon', 'cluster'].includes(spec.fruit);
+      for (let i = 0; i < (shaped ? 3 : 4); i++) drawFruit(c, p, px + (r() - 0.5) * S * 0.1, py + S * 0.03 + (r() - 0.5) * S * 0.05, S * 0.04, spec.fruit, spec.fhue, r); }
+  } else if (spec.habit === 'tree') {
     /* A TREE IS A TRUNK HOLDING A CANOPY — and the trunk TAPERS and forks,
        which is what stops it reading as a lollipop on a stick. */
     const tw = S * 0.030 * nvf(name, 0x55, 0.24);
@@ -635,13 +665,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       c.beginPath(); c.moveTo(cx + lean * S * 0.06, base - H * 0.45);
       c.quadraticCurveTo(cx + s * S * 0.05, base - H * 0.72, cx + s * S * 0.085 * spread, topY + H * 0.20); c.stroke();
     }
-    if (spec.habit === 'palm') {   /* a palm has NO canopy: a crown of fronds */
-      for (let i = 0; i < 8; i++) {
-        const a = -Math.PI / 2 + (i - 3.5) * 0.42;
-        drawLeaf(c, p, cx + lean * S * 0.10, topY + H * 0.18, a, H * 0.46 * spread, 'frond');
-      }
-      if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, cx + lean * S * 0.10, topY + H * 0.24, S * 0.032, spec.fruit, spec.fhue, r);
-    } else {
+    {
       /* the canopy: overlapping soft masses, then leaves on the rim, so the
          crown has depth instead of being one flat blob */
       const cw = S * 0.21 * spread, chh = S * 0.16 * nvf(name, 0x66, 0.22);
