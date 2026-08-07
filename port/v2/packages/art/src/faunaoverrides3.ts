@@ -90,6 +90,9 @@ export interface FishSpec {
   dome?: boolean;            /** a transparent cranial dome over upward tubular eyes */
   droop?: boolean;           /** loose gelatinous face — the blobfish read */
   gape?: boolean;            /** an enormous open filter-feeding mouth + broad gills */
+  /* ★ WAVE 62 — reef-fish signatures gp5 failed the family for */
+  scalpel?: string;          /** the surgeonfish's bright caudal-peduncle spine, colour given */
+  beak?: boolean;            /** the parrotfish's fused white tooth plate */
   bighead?: number;          /** head mass multiplier for the deep-sea predators */
   paddle?: boolean;          /** a broad flat rostrum, not a spike */
   eyespot?: boolean;         /** the false eye near the tail + a true-eye mask */
@@ -549,6 +552,28 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
       c.beginPath(); c.moveTo(x, cy + depth * 0.20); c.lineTo(x - depth * 0.09, cy + depth * 0.52); c.lineTo(x + depth * 0.09, cy + depth * 0.26); c.closePath(); c.fill();
     }
   }
+  if (spec.beak) {
+    /* ★ WAVE 62 — the parrotfish's fused white tooth PLATE: a solid pale beak
+       capping the snout, proud of the profile, with the fused seam. */
+    c.fillStyle = '#f0ece0';
+    c.beginPath();
+    c.moveTo(nose - depth * 0.28, cy - depth * 0.10);
+    c.quadraticCurveTo(nose + depth * 0.34, cy - depth * 0.02, nose - depth * 0.10, cy + depth * 0.40);
+    c.quadraticCurveTo(nose - depth * 0.36, cy + depth * 0.34, nose - depth * 0.28, cy - depth * 0.10);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(120,110,90,0.6)'; c.lineWidth = 1.6;
+    c.beginPath(); c.moveTo(nose - depth * 0.30, cy + depth * 0.14); c.lineTo(nose + depth * 0.16, cy + depth * 0.16); c.stroke();
+  }
+  if (spec.scalpel) {
+    /* ★ WAVE 62 — the surgeonfish's scalpel: a bright contrasting blade at the
+       caudal peduncle, the feature the family is NAMED for. */
+    c.fillStyle = spec.scalpel;
+    c.save(); c.translate(ped + (nose - ped) * 0.045, cy); c.rotate(-0.45);
+    c.beginPath(); c.ellipse(0, 0, depth * 0.34, depth * 0.11, 0, 0, TAU); c.fill();
+    c.restore();
+    c.strokeStyle = 'rgba(0,0,0,0.35)'; c.lineWidth = 1.2;
+    c.beginPath(); c.ellipse(ped + (nose - ped) * 0.045, cy, depth * 0.30, depth * 0.10, -0.45, 0, TAU); c.stroke();
+  }
   /* ★ D-ART-123 — THE CEPHALOFOIL. `snout:'hammer'` has existed since wave 11
      and all it ever did was widen the jaw start by depth*0.2 — about 1.4% of
      body length, i.e. nothing. The audit's verdict was blunt and correct: "a
@@ -882,10 +907,10 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Clownfish': F({ hue: '#f25a13', profile: 'deep', len: 0.16, depth: 0.070, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'clown' }),
   'Damselfish': F({ hue: '#1d5fd6', profile: 'deep', len: 0.15, depth: 0.066, tail: 'forked', snout: 'blunt', dorsal: 'spiny' }),
   'Butterflyfish': F({ hue: '#f5c519', profile: 'deep', len: 0.145, depth: 0.100, tail: 'fan', snout: 'tube', dorsal: 'spiny', pattern: 'bands', eyespot: true }),
-  'Surgeonfish': F({ hue: '#6aa6d6', profile: 'deep', len: 0.17, depth: 0.086, tail: 'lunate', snout: 'blunt', dorsal: 'spiny' }),
+  'Surgeonfish': F({ hue: '#6aa6d6', profile: 'deep', len: 0.17, depth: 0.086, tail: 'lunate', snout: 'blunt', dorsal: 'spiny', scalpel: '#f2c018' }),
   'Tang': F({ hue: '#1a44c4', profile: 'deep', len: 0.16, depth: 0.090, tail: 'lunate', snout: 'blunt', dorsal: 'spiny' }),
   'Triggerfish': F({ hue: '#2f8f7a', profile: 'deep', len: 0.17, depth: 0.084, tail: 'fan', snout: 'blunt', dorsal: 'two', pattern: 'mottle' }),
-  'Parrotfish': F({ hue: '#0f9fb5', profile: 'deep', len: 0.19, depth: 0.078, tail: 'fan', snout: 'blunt', dorsal: 'one', pattern: 'mottle' }),
+  'Parrotfish': F({ hue: '#0f9fb5', profile: 'deep', len: 0.19, depth: 0.078, tail: 'fan', snout: 'blunt', dorsal: 'one', pattern: 'mottle', beak: true }),
   'Wrasse': F({ profile: 'fusiform', len: 0.20, depth: 0.062, tail: 'fan', snout: 'jaw', dorsal: 'one', pattern: 'stripes', teeth: true, hue: '#2f8f7a' }),
   'Cardinalfish': F({ hue: '#c72c26', profile: 'deep', len: 0.15, depth: 0.062, tail: 'forked', snout: 'blunt', dorsal: 'two' }),
   'Rabbitfish': F({ hue: '#c9a936', profile: 'deep', len: 0.17, depth: 0.078, tail: 'forked', snout: 'tube', dorsal: 'spiny', pattern: 'spots' }),
