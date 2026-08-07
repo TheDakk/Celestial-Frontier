@@ -341,7 +341,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   "Miner's Lettuce": T({ hue: '#8fc07e', habit: 'herb', leaf: 'perfoliate', flower: 'star', fhue: '#f4f6ef', leafArr: 'alternate', flowerN: 3 }),
   "Devil's Claw": T({ hue: '#848c70', habit: 'herb', leaf: 'broad', fruit: 'pod', fhue: '#4a3a26' }),
   'Licorice Root': T({ hue: '#6b873f', habit: 'herb', leaf: 'pinnate', flower: 'spike', fhue: '#a9a6d8', root: 'taproot' }),
-  'Pampas Herb': T({ hue: '#c2b48a', habit: 'grass', leaf: 'blade', flower: 'catkin', fhue: '#efeade', tall: true }),
+  'Pampas Herb': T({ hue: '#c2b48a', habit: 'grass', leaf: 'blade', fruit: 'club', fhue: '#f0ecdc', tall: true }),
   'Plantain Herb': T({ hue: '#698154', habit: 'rosette', leaf: 'lance', flower: 'spike', fhue: '#8f9a6a' }),
   'Sea Rocket': T({ hue: '#9ab39a', habit: 'herb', leaf: 'broad', flower: 'cross', fhue: '#c9b6d8', leafArr: 'alternate', toothed: true, pods: true }),
 };

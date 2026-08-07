@@ -769,7 +769,13 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       c.beginPath(); c.moveTo(sx2 + S * 0.012 - S * 0.018, sy2 + drop);
       c.quadraticCurveTo(sx2 + S * 0.012, sy2 + drop + S * 0.06, sx2 + S * 0.012 + S * 0.018, sy2 + drop);
       c.closePath(); c.fill();
-    } else if (spec.fruit && spec.fruit !== 'none') { const shaped = ['pear', 'spiky', 'star', 'crown', 'hairy', 'melon', 'cluster'].includes(spec.fruit);
+    } else if (spec.fruit === 'cluster') {
+      /* ★ POLISH — a date palm's bunch HANGS below the crown on orange strands */
+      const hx2 = px + S * 0.045, hy2 = py + S * 0.075;
+      c.strokeStyle = '#d08a2c'; c.lineWidth = S * 0.006; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(px + S * 0.01, py + S * 0.01); c.quadraticCurveTo(hx2, py + S * 0.03, hx2, hy2); c.stroke();
+      drawFruit(c, p, hx2, hy2 + S * 0.015, S * 0.05, 'cluster', spec.fhue, r);
+    } else if (spec.fruit && spec.fruit !== 'none') { const shaped = ['pear', 'spiky', 'star', 'crown', 'hairy', 'melon'].includes(spec.fruit);
       for (let i = 0; i < (shaped ? 3 : 4); i++) drawFruit(c, p, px + (r() - 0.5) * S * 0.1, py + S * 0.03 + (r() - 0.5) * S * 0.05, S * 0.04, spec.fruit, spec.fhue, r); }
   } else if (spec.habit === 'tree') {
     /* A TREE IS A TRUNK HOLDING A CANOPY — and the trunk TAPERS and forks,
@@ -952,8 +958,10 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
   } else if (spec.habit === 'grass' || spec.habit === 'cane') {
     /* BLADES FROM A CROWN, arcing outward and drooping at the tip */
     const cane = spec.habit === 'cane';
-    for (let i = 0; i < leafN + 4; i++) {
-      const u = (i / (leafN + 3)) - 0.5;
+    const cereal0 = spec.fruit === 'grain' || spec.fruit === 'panicle' || spec.fruit === 'club';
+    const nBl = cereal0 ? 7 : leafN + 4;   /* ★ POLISH — a cereal is a tight tuft, not a fountain */
+    for (let i = 0; i < nBl; i++) {
+      const u = (i / (nBl - 1)) - 0.5;
       const a = -Math.PI / 2 + u * 1.5 * spread;
       const L = H * (0.72 + r() * 0.4);
       const tipX = cx + Math.cos(a) * L * 1.1, tipY = base - L * (0.72 - Math.abs(u) * 0.5);
