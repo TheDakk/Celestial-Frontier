@@ -1018,37 +1018,67 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     }
   } else if (spec.habit === 'succulent') {
     /* THE PLANT IS ITS OWN WATER TANK: thick pads or a ribbed column */
-    if (spec.leaf === 'pad') {
+    let topAnchor = H;   /* ★ WAVE 67 — where the flower/fruit sit; a squat barrel lowers it */
+    if (spec.leaf === 'scale') {
+      /* ★ WAVE 67 — GLASSWORT/SAMPHIRE: articulated columns of tiny fleshy
+         SAUSAGE JOINTS with opposite candelabra branching, red-flushed at the
+         older tips — not one sealed spindle (gp3/5, both species). */
+      const branch = (bx: number, ang: number, segs: number, sw: number, depth2: number): void => {
+        let px2 = bx, py2 = base, a2 = ang;
+        for (let k2 = 0; k2 < segs; k2++) {
+          const u2 = k2 / segs;
+          const sl = H * 0.085 * (1 - u2 * 0.3);
+          const nx2 = px2 + Math.cos(a2) * sl, ny2 = py2 + Math.sin(a2) * sl;
+          const old = u2 > 0.62;
+          const gg2 = c.createLinearGradient(px2 - sw, py2, px2 + sw, py2);
+          gg2.addColorStop(0, old ? '#a05a48' : p.dark); gg2.addColorStop(0.5, old ? '#c07858' : p.base); gg2.addColorStop(1, old ? '#8a4a3c' : p.dark);
+          c.fillStyle = gg2;
+          /* one sausage joint: a rounded capsule with a visible waist between joints */
+          c.beginPath(); c.ellipse((px2 + nx2) / 2, (py2 + ny2) / 2, sw, sl * 0.62, a2 + Math.PI / 2, 0, TAU); c.fill();
+          /* candelabra: a side pair at 1/3 and 2/3 up the main stems */
+          if (depth2 === 0 && (k2 === Math.floor(segs / 3) || k2 === Math.floor(segs * 2 / 3))) {
+            for (const s2 of [-1, 1] as const) branch(nx2, a2 + s2 * 0.55, Math.max(3, segs - k2 - 2), sw * 0.8, 1);
+          }
+          px2 = nx2; py2 = ny2; a2 += (nvf(name, 0x30 + k2 + depth2 * 16, 0.16) - 1) * 0.5;
+        }
+      };
+      for (const t2 of [-1, 0, 1]) branch(cx + t2 * S * 0.055, -Math.PI / 2 + t2 * 0.22, 8, S * 0.020, t2 === 0 ? 0 : 1);
+    } else if (spec.leaf === 'pad') {
       for (let i = 0; i < 4; i++) {
         const a = -Math.PI / 2 + (i - 1.5) * 0.55;
         drawLeaf(c, p, cx, base - H * 0.12, a, H * 0.55 * spread, 'pad');
       }
     } else {
-      const w = S * 0.055 * spread;
+      /* ★ WAVE 67 — a non-tall column is a squat accordion BARREL (barrel
+         cactus): far wider, shorter, more ribs. */
+      const barrel = !spec.tall;
+      const w = S * (barrel ? 0.13 : 0.055) * spread;
+      const HB = barrel ? H * 0.62 : H;
+      topAnchor = HB;
       const gg = c.createLinearGradient(cx - w, 0, cx + w, 0);
       gg.addColorStop(0, p.dark); gg.addColorStop(0.42, p.base); gg.addColorStop(1, p.dark);
       c.fillStyle = gg;
       c.beginPath();
       c.moveTo(cx - w, base);
-      c.quadraticCurveTo(cx - w * 1.1, base - H * 0.6, cx, base - H);
-      c.quadraticCurveTo(cx + w * 1.1, base - H * 0.6, cx + w, base);
+      c.quadraticCurveTo(cx - w * 1.15, base - HB * 0.6, cx, base - HB);
+      c.quadraticCurveTo(cx + w * 1.15, base - HB * 0.6, cx + w, base);
       c.closePath(); c.fill();
       c.strokeStyle = 'rgba(20,40,20,0.30)'; c.lineWidth = 2;
-      for (let i = -2; i <= 2; i++) {
-        c.beginPath(); c.moveTo(cx + i * w * 0.36, base);
-        c.quadraticCurveTo(cx + i * w * 0.30, base - H * 0.6, cx + i * w * 0.10, base - H * 0.95); c.stroke();
+      for (let i = -3; i <= 3; i++) {
+        c.beginPath(); c.moveTo(cx + i * w * 0.28, base);
+        c.quadraticCurveTo(cx + i * w * 0.24, base - HB * 0.6, cx + i * w * 0.08, base - HB * 0.95); c.stroke();
       }
       if (spec.thorns) {
         c.strokeStyle = '#e8dcbe'; c.lineWidth = 1.8;
         for (let i = 0; i < 26; i++) {
-          const u = r(), yy = base - u * H, s = r() < 0.5 ? -1 : 1;
+          const u = r(), yy = base - u * HB, s = r() < 0.5 ? -1 : 1;
           const xx = cx + s * w * (1 - u * 0.35);
           c.beginPath(); c.moveTo(xx, yy); c.lineTo(xx + s * 9, yy - 4); c.stroke();
         }
       }
     }
-    if (spec.flower && spec.flower !== 'none') drawFlower(c, p, cx, base - H * 1.02, S * 0.032, spec.flower, spec.fhue, r);
-    if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, cx + S * 0.03, base - H * 0.9, S * 0.030, spec.fruit, spec.fhue, r);
+    if (spec.flower && spec.flower !== 'none') drawFlower(c, p, cx, base - topAnchor * 1.02, S * 0.032, spec.flower, spec.fhue, r);
+    if (spec.fruit && spec.fruit !== 'none') drawFruit(c, p, cx + S * 0.03, base - topAnchor * 0.9, S * 0.030, spec.fruit, spec.fhue, r);
   } else if (spec.habit === 'fern') {
     /* a rosette of clearly ARCHING fronds — spread wide and drawn from a
        low crown so they read as a fern, not a spiny ball (Nick's review) */
