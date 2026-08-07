@@ -125,6 +125,10 @@ export interface PlantSpec {
   /** drooping catkin-like flower strings hanging from the upper leaf axils —
       the nettle's inconspicuous green tassels */
   tassel?: boolean;
+  /** a woody shrub that trails as a LOW CREEPING MAT, wider than tall — the
+      groundcover berries (bearberry, crowberry, cranberry, lingonberry) that
+      the judge failed for being drawn as tall upright cane-vases */
+  creep?: boolean;
   /** the harvested underground organ, shown pulled up at the base: a long ropey
       taproot (licorice), a forked root (ginseng), or a knobbly rhizome
       (ginger, turmeric, valerian). The judge failed several for its absence. */
@@ -551,6 +555,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
      bodies were still random. */
   const p = speciesHue(pIn, spec.hue);
   const r = rngF(g, name, 0x9101);
+  const toothed = spec.toothed ?? false;
   const cx = S * 0.50, base = S * 0.84;
   /* RATIOS, never scales — the fit pass erases a size-only difference */
   const H = S * (spec.tall ? 0.62 : 0.52) * nvf(name, 0x11, 0.14);
@@ -653,6 +658,28 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
           drawFruit(c, p, cx + Math.cos(a) * cw * d + lean * S * 0.10, topY + H * 0.16 + Math.sin(a) * chh * d, fRad, spec.fruit, spec.fhue, r);
         }
       }
+    }
+  } else if (spec.habit === 'shrub' && spec.creep) {
+    /* ★ WAVE 58 — A CREEPING GROUNDCOVER MAT. The judge failed a whole cluster
+       of trailing berries (bearberry, crowberry, cranberry, lingonberry) for
+       being drawn as tall upright cane-vases when their headline must-read is
+       "a flat mat, wider than tall". Woody runners spread sideways low to the
+       ground, small leaves crowded along them, berries sitting in the mat. */
+    const runners = 6;
+    for (let k = 0; k < runners; k++) {
+      const s = (k - (runners - 1) / 2) / runners;                 /* -0.5..0.5 */
+      const dir = Math.sign(s || 1);
+      const ex = cx + s * S * 0.44, ey = base - S * (0.02 + Math.abs(s) * 0.16);
+      c.strokeStyle = barkCol; c.lineWidth = S * 0.008; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + s * S * 0.2, base + S * 0.02, ex, ey); c.stroke();
+      const nlv = leafN + 2;
+      for (let i = 0; i < nlv; i++) {
+        const u = 0.12 + (i / nlv) * 0.88;
+        const lx = cx + (ex - cx) * u, ly = base + (ey - base) * u;
+        drawLeaf(c, p, lx, ly, (i % 2 ? -0.5 : -2.6) + dir * 0.3, S * 0.05 * nvf(name, 0x77, 0.2), spec.leaf, toothed);
+        if (spec.fruit && spec.fruit !== 'none' && i > 1 && i % 3 === 0) drawFruit(c, p, lx, ly - S * 0.006, S * 0.022, spec.fruit, spec.fhue, r);
+      }
+      if (spec.flower && spec.flower !== 'none' && k % 2 === 0) drawFlower(c, p, ex, ey - S * 0.01, S * 0.03, spec.flower, spec.fhue, r);
     }
   } else if (spec.habit === 'shrub') {
     /* MANY STEMS FROM THE GROUND — that is the whole difference from a tree */
@@ -889,7 +916,6 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     const arr = spec.leafArr ?? 'opposite';
     const nF = Math.max(1, spec.flowerN ?? 1);
     const mat = arch === 'mat';
-    const toothed = spec.toothed ?? false;
     /* a creeping mat is wide and low; a wand is tall and thin.
        ⚠ WAVE 37 — the first cut made the mat 0.42·H tall over a 0.20·S spread,
        and artlock came straight back with THIRTY newly-confusable pairs, every
