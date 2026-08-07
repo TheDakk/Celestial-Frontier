@@ -473,7 +473,11 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
 
 /* ═══════════════ ARACHNIDS: two tagmata, eight legs, NO antennae ═══════════════ */
 export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: boolean; sting?: boolean;
-  longleg?: boolean; claws?: boolean; hue?: string; scale?: number }, name = ''): void {
+  longleg?: boolean; claws?: boolean; hue?: string; scale?: number;
+  /* ★ WAVE 65 — ONE FUSED BODY. A mite and a harvestman are a single rounded
+     blob (no two spheres, no pinched waist); both were failing as "the spider
+     chassis recoloured". */
+  fused?: boolean }, name = ''): void {
   const p = hued(pIn, opts.hue);
   const r = nrng(g, name, 0xA8AC);
   const cx = S * 0.50, cy = S * 0.52;
@@ -530,6 +534,14 @@ export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: 
     c.beginPath(); c.moveTo(tx + b * 0.2, ty - b * 0.1);
     c.quadraticCurveTo(tx + b * 0.9, ty - b * 0.5, tx + b * 0.35, ty - b * 1.05);
     c.quadraticCurveTo(tx + b * 0.2, ty - b * 0.4, tx - b * 0.1, ty - b * 0.2); c.closePath(); c.fill();
+  } else if (opts.fused) {
+    /* ★ WAVE 65 — one single rounded body, no waist: the mite/harvestman read */
+    c.fillStyle = shell(c, p, cx, cy, b * 1.4);
+    c.beginPath(); c.ellipse(cx + b * 0.2, cy, b * 1.55 * squat, b * 1.25 / squat, 0.05, 0, TAU); c.fill();
+    rim(c, () => c.ellipse(cx + b * 0.2, cy, b * 1.55 * squat, b * 1.25 / squat, 0.05, -2.8, 0.3));
+    for (let i = 0; i < 8; i++) softMark(c, cx - b + r() * b * 2.4, cy + (r() - 0.5) * b * 1.8, 5 + r() * 4, 4 + r() * 3, '24,18,12', 0.3);
+    eyeDot(c, cx - b * 0.9, cy - b * 0.4, b * 0.12);
+    eyeDot(c, cx - b * 0.9, cy - b * 0.12, b * 0.12);
   } else {
     const ax = cx + b * 1.15;
     c.fillStyle = shell(c, p, ax, cy + b * 0.12, b * 1.1);
@@ -537,12 +549,14 @@ export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: 
     rim(c, () => c.ellipse(ax, cy + b * 0.12, b * 1.15 * squat, b * 0.98 / squat, 0.05, -2.8, 0.3));
     for (let i = 0; i < 10; i++) softMark(c, ax - b + r() * b * 2, cy + b * 0.12 + (r() - 0.5) * b * 1.6, 6 + r() * 5, 5 + r() * 4, '24,18,12', 0.36);
   }
+  if (!opts.fused) {
   /* the cephalothorax and the EIGHT eyes */
   c.fillStyle = shell(c, p, cx - b * 0.5, cy - b * 0.1, b);
   c.beginPath(); c.ellipse(cx - b * 0.45, cy, b * 1.0, b * 0.86, 0, 0, TAU); c.fill();
   rim(c, () => c.ellipse(cx - b * 0.45, cy, b * 1.0, b * 0.86, 0, -2.9, 0.25));
   for (let i = 0; i < 4; i++) {
     eyeDot(c, cx - b * 1.15 + (i % 2) * b * 0.26, cy - b * 0.34 + Math.floor(i / 2) * b * 0.26, b * 0.11);
+  }
   }
 }
 
@@ -1132,7 +1146,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Tarantula': A({ hue: '#3b2b25', big: true, hairy: true }),
   'Camel Spider': A({ hue: '#c9a468', big: true, hairy: true, longleg: true }),
   'Sea Spider': A({ hue: '#b39a86', longleg: true }),
-  'Harvestman': A({ hue: '#5d4b40', longleg: true }),
+  'Harvestman': A({ hue: '#5d4b40', longleg: true, fused: true, scale: 0.55 }),
   'Scorpion': A({ hue: '#a3762f', big: true, sting: true, claws: true }),
   'Pseudoscorpion': A({ claws: true, scale: 0.92, hue: '#5d4630' }),
   'Deer Tick': A({ hue: '#94402c', big: true }),
@@ -1141,7 +1155,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
      LARGER: shrinking it first made things worse, 0.60 to 0.51, because a
      small subject leaves mostly empty canvas and two mostly-empty cards look
      alike. Portrait scale is invisible when each species is framed alone. */
-  'Mite': A({ scale: 0.95, hue: '#b0442c' }),
+  'Mite': A({ scale: 0.95, hue: '#b0442c', fused: true }),
   /* ── MYRIAPODS ── */
   'Centipede': M({ flat: true, hue: '#b06a2c' }),
   'Giant Centipede': M({ flat: true, scale: 1.34, segs: 22, hue: '#7d2f28' }),
