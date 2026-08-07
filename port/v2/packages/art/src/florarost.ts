@@ -175,8 +175,9 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Cattail': T({ hue: '#74805a', habit: 'cane', leaf: 'blade', flower: 'spike', fhue: '#5a4028', tall: true }),
   'Sweet Flag': T({ hue: '#8aa84a', habit: 'cane', leaf: 'blade', flower: 'spike', fhue: '#9a9a50' }),
   'Rush Shoots': T({ hue: '#4f7a61', habit: 'grass', leaf: 'blade' }),
-  'Alfalfa': T({ hue: '#558953', habit: 'herb', leaf: 'pinnate', flower: 'spike', fhue: '#8a6ac0' }),
-  'Clover': T({ hue: '#4e9a4b', habit: 'rosette', leaf: 'palmate', flower: 'head', fhue: '#e0b0c8' }),
+  /* ★ WAVE 58 — LEGUMES get the trifoliate (three-leaflet) leaf. */
+  'Alfalfa': T({ hue: '#558953', habit: 'herb', leaf: 'trefoil', flower: 'spike', fhue: '#8a6ac0', leafArr: 'alternate' }),
+  'Clover': T({ hue: '#4e9a4b', habit: 'rosette', leaf: 'trefoil', flower: 'head', fhue: '#e0b0c8' }),
   /* ── CROPS AND ROOTS ── */
   'Potato': T({ hue: '#56743b', habit: 'herb', leaf: 'pinnate', flower: 'star', fhue: '#e8e0f0' }),
   'Sweet Potato': T({ hue: '#3e6738', habit: 'vine', leaf: 'heart', flower: 'bell', fhue: '#c890d8' }),
@@ -221,7 +222,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Sesame': T({ hue: '#638d64', habit: 'herb', leaf: 'lance', fruit: 'pod', fhue: '#c8b890' }),
   'Wild Sesame': T({ hue: '#6b5a63', habit: 'herb', leaf: 'lance', fruit: 'pod', fhue: '#b8a880' }),
   'Flax': T({ hue: '#86a4b0', habit: 'herb', leaf: 'lance', flower: 'star', fhue: '#7a9ad8' }),
-  'Fenugreek': T({ hue: '#89a85e', habit: 'herb', leaf: 'palmate', fruit: 'pod', fhue: '#c8b870' }),
+  'Fenugreek': T({ hue: '#89a85e', habit: 'herb', leaf: 'trefoil', fruit: 'pod', fhue: '#c8b870', leafArr: 'alternate' }),
   'Anise': T({ hue: '#8fb84a', habit: 'herb', leaf: 'pinnate', flower: 'umbel', fhue: '#f0f0e0' }),
   'Star Anise': T({ hue: '#2d5443', habit: 'tree', leaf: 'broad', fruit: 'pod', fhue: '#8a5a34' }),
   /* ── HERBS ── */
@@ -248,16 +249,19 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Lavender': T({ hue: '#a8af9a', habit: 'shrub', leaf: 'needle', flower: 'spike', fhue: '#9878c8' }),
   'Fennel': T({ hue: '#a3bc4f', habit: 'herb', leaf: 'pinnate', flower: 'umbel', fhue: '#e0d840' }),
   'Sea Fennel': T({ hue: '#8fb188', habit: 'herb', leaf: 'pinnate', flower: 'umbel', fhue: '#d0d048' }),
-  'Nettle': T({ hue: '#3a6d2e', habit: 'herb', leaf: 'heart', flower: 'catkin', fhue: '#a8b070' }),
-  'Rainforest Nettle': T({ hue: '#2d5f2f', habit: 'herb', leaf: 'heart', flower: 'catkin', fhue: '#98a068' }),
-  'Riverbank Nettle': T({ hue: '#4d7634', habit: 'herb', leaf: 'heart', flower: 'catkin', fhue: '#90a070' }),
+  /* ★ WAVE 58 — NETTLES: toothed heart leaves in opposite pairs + drooping
+     green axil tassels (PlantSpec.tassel), replacing the terminal bead spike. */
+  'Nettle': T({ hue: '#3a6d2e', habit: 'herb', leaf: 'heart', flower: 'none', fhue: '#a8b070', leafArr: 'opposite', toothed: true, tassel: true }),
+  'Rainforest Nettle': T({ hue: '#2d5f2f', habit: 'herb', leaf: 'heart', flower: 'none', fhue: '#98a068', leafArr: 'opposite', toothed: true, tassel: true }),
+  'Riverbank Nettle': T({ hue: '#4d7634', habit: 'herb', leaf: 'heart', flower: 'none', fhue: '#90a070', leafArr: 'opposite', toothed: true, tassel: true }),
   'Dandelion': T({ hue: '#6e8d35', habit: 'rosette', leaf: 'lance', flower: 'head', fhue: '#e8c828' }),
   'Chicory': T({ hue: '#9dac8b', habit: 'herb', leaf: 'lance', flower: 'head', fhue: '#7a90d8', stem: 'bare', leafArr: 'basal', flowerN: 6 }),
   'Yarrow': T({ hue: '#899f7c', habit: 'herb', leaf: 'pinnate', flower: 'umbel', fhue: '#f0efe4' }),
-  'Chamomile': T({ hue: '#7da85e', habit: 'herb', leaf: 'pinnate', flower: 'head', fhue: '#f4f0dc' }),
-  'Echinacea': T({ hue: '#52693f', habit: 'herb', leaf: 'lance', flower: 'head', fhue: '#c87ab0', leafArr: 'alternate' }),
+  /* ★ WAVE 58 — CONEFLOWERS: raised bristly disc-cone + backswept rays (flower:'cone'). */
+  'Chamomile': T({ hue: '#7da85e', habit: 'herb', leaf: 'pinnate', flower: 'cone', fhue: '#f4f0dc', leafArr: 'alternate' }),
+  'Echinacea': T({ hue: '#52693f', habit: 'herb', leaf: 'lance', flower: 'cone', fhue: '#c87ab0', leafArr: 'alternate' }),
   'Goldenrod': T({ hue: '#627d3d', habit: 'herb', leaf: 'lance', flower: 'spike', fhue: '#e0c430' }),
-  'Black-Eyed Susan': T({ hue: '#5b6a37', habit: 'herb', leaf: 'lance', flower: 'head', fhue: '#e8b820' }),
+  'Black-Eyed Susan': T({ hue: '#5b6a37', habit: 'herb', leaf: 'lance', flower: 'cone', fhue: '#e8b820', leafArr: 'alternate' }),
   'Bergamot': T({ hue: '#5d7451', habit: 'herb', leaf: 'lance', flower: 'head', fhue: '#c85a6a' }),
   'Milkweed': T({ hue: '#7b8c78', habit: 'herb', leaf: 'broad', flower: 'umbel', fhue: '#d8a0b0' }),
   'Wormwood': T({ hue: '#b8baa8', habit: 'herb', leaf: 'pinnate', flower: 'spike', fhue: '#c0c090' }),
