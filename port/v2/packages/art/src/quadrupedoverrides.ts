@@ -215,7 +215,7 @@ const SKULL: Record<string, {
      Clouded Leopard's head was interchangeable with a Cougar's. No per-species
      value could escape it. eyeR 0.235 on that braincase made the eye a third
      of the face, the reason every cat read as a toy. */
-  felid: { len: 1.95, cranium: 0.72, stop: 0.72, muzzle: 0.46, jaw: 0.30, eyeU: 0.44, eyePhi: 0.22, eyeR: 0.185, nose: 'wet', tilt: 0.06, nosePad: 0.95, lip: 'curl', cheek: 0.78 },
+  felid: { len: 1.68, cranium: 0.80, stop: 0.72, muzzle: 0.40, jaw: 0.30, eyeU: 0.44, eyePhi: 0.22, eyeR: 0.185, nose: 'wet', tilt: 0.06, nosePad: 0.95, lip: 'curl', cheek: 0.78 },
   /* ★ D-ART-133 — a canid skull LONGER than a bovid's (2.45 vs 2.40) with the
      lowest cheek of any predator is an ungulate wedge, which is why Wolf,
      Dingo and Dog all read as small horses. */
