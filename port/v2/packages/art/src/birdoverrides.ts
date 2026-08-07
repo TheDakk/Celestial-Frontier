@@ -91,7 +91,7 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Auk': B({ legs: 0.012, bill: 'stout', size: 0.68, upright: true, neck: 'none', hue: '#26292f'  }),
   'Guillemot': B({ legs: 0.012, bill: 'long', size: 0.70, upright: true, neck: 'none', hue: '#2b2f36'  }),
   /* ── seabirds ── */
-  'Gull': B({ legs: 0.030, bill: 'stout', size: 0.82, hue: '#e6e9ee' }),
+  'Gull': B({ legs: 0.030, bill: 'hook', size: 0.82, hue: '#e6e9ee', billHue: '#e0b13c' }),
   'Tern': B({ legs: 0.022, bill: 'long', size: 0.64, tail: 'forked', hue: '#e9edf2' }),
   'Petrel': B({ legs: 0.014, bill: 'long', size: 0.62, hue: '#4d4741' }),
   'Snow Petrel': B({ legs: 0.014, bill: 'long', size: 0.60, hue: '#f1f4f7' }),
