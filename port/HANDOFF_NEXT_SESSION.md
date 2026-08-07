@@ -135,6 +135,17 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★ WAVE 66 (committed): Bergamot firework head · Angel's Trumpet pendulous horns · Solomon's Seal
+stem:'arch' (bells dangle BENEATH the arching cane) · Miner's Lettuce leaf:'perfoliate' saucers ·
+Catfish barbels (attached, snout-rooted) · Mite/Harvestman `fused` one-piece bodies · Copepod
+eggSacs. STILL OPEN on the FAIL list: Bittern/Albatross/Skua/Petrel FLYING-vs-freeze poses (needs
+a bird pose axis — the painter only stands), Weaverbird nest, Snow Petrel, Krill abdomen-eye bug,
+Water Flea translucent shell, Barnacle cirri, remaining flora singles (Vanilla Orchid, Water
+Spinach trail, cushion alpines Purple Saxifrage/Bitterroot, sorrel trio de-dupe, Wild Thyme mat,
+Sea Fennel succulent fingers, kelp singles: Bull Kelp bulb float, Sugar Kelp one-ribbon, Dulse
+hand-blade), Chanterelle funnel dish, Shiitake crack visibility, Reindeer Lichen bare trunks,
+procedural naming bridge + 60, THEN re-measure (artlock --driftdump → gp6 + control), THEN the
+POLISH→PASS sweep from goldpass5-results.json prose.
 ★★★ THE ROAD FROM HERE (Nick's standing orders: 100% PASS — clear FAILs, then sweep POLISH/PASS):
 1. ✔ **THE BARREL BODY — DONE IN WAVE 65** (committed): the RADV machinery was already there;
    the residue was per-species DEPTH. Slender cats slimmed (Leopard .1268→.1080, Cougar .1120,
