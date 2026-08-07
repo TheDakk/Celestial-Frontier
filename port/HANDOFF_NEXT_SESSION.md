@@ -135,6 +135,16 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★★ THE POLISH→PASS SWEEP IS UNDERWAY (committed: batches 1–2, 12 one-cue fixes: Cougar tail
+tip, Narwhal spiral, Sand Dollar petals, Brittle Star reach, Mustard pods, Echinacea cone, Mint
+stem, Bergamot/mint lavender, Flax wiry, Puffin bill). METHOD: work the 95 fresh-prose POLISH
+rows in goldpass6-results.json first (each names its one soft cue — mostly fhue/spec one-liners),
+then the ~470 carried rows by set. ⚠ BUDGET DISCIPLINE (Nick): NO intermediate measurements —
+fix everything, then ONE measure (~3–3.5M) + ONE strip-based final certification (~5–6M).
+Remaining fresh-prose asks logged in gp6 results: Oregano spray, Wheat fountain, walrus bristles,
+parrotfish forehead, Date hanging stalks, Pampas plume, Coralline chalk, Glasswort red flush,
+Lion's Mane top lobes, hammer bar seat, tiger shark snout, Avocet pied, Wildcat coat, Sand Cat
+ear, Reindeer Lichen fringe, microbes minor.
 ★★★ GP6 IS COMPLETE + COMMITTED (`reference/GOLD_PASS_6.md`): 347 verdicts + 72 control.
 Ruler ran +22 harsh (control caught it); net: rescue 29% vs 20% (+9 real), 82 raw rescues, 19
 straight PASSes (the bespoke rebuilds convert). GP6 FIX WAVES (committed): Angelica de-twinned
