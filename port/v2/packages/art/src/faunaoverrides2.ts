@@ -1290,10 +1290,33 @@ export function marineUrchin(c: Ctx, g: G, p: Pal, opts: { long?: boolean }, nam
 }
 
 /** SEA ANEMONE: a column crowned with a ring of drifting tentacles */
-export function marineAnemone(c: Ctx, g: G, pIn: Pal, opts: { tall?: boolean; hue?: string }, name = ''): void {
+export function marineAnemone(c: Ctx, g: G, pIn: Pal, opts: { tall?: boolean; worm?: boolean; hue?: string }, name = ''): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0xA11E);
+  if (opts.worm) {
+    /* ★ WAVE 59 — A TUBE-WORM COLONY: a bundle of pale leathery tubes, each
+       crowned by a scarlet feathery plume that retracts into the tube. The
+       judge failed both tube worms as the anemone's truncated cone recoloured. */
+    const base = S * 0.78, n = 5;
+    ground(c, S * 0.5, base + S * 0.012, S * 0.16);
+    for (let i = 0; i < n; i++) {
+      const t = (i / (n - 1)) - 0.5;
+      const tx = S * 0.5 + t * S * 0.13, h = S * (0.30 + Math.cos(t * 2) * 0.06) * nvar(name, 0x51 + i, 0.12), tw = S * 0.022;
+      const top = base - h;
+      const tg = c.createLinearGradient(tx - tw, 0, tx + tw, 0);
+      tg.addColorStop(0, '#8a8072'); tg.addColorStop(0.5, '#e6ddca'); tg.addColorStop(1, '#8a8072');
+      c.fillStyle = tg; c.beginPath();
+      c.moveTo(tx - tw, base); c.lineTo(tx - tw * 0.8, top); c.quadraticCurveTo(tx, top - tw * 0.5, tx + tw * 0.8, top); c.lineTo(tx + tw, base); c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(120,110,95,0.5)'; c.lineWidth = 1.4;   /* tube growth rings */
+      for (let k = 1; k <= 5; k++) { const y = base - h * k / 6; c.beginPath(); c.moveTo(tx - tw * 0.9, y); c.lineTo(tx + tw * 0.9, y); c.stroke(); }
+      /* the scarlet plume */
+      c.strokeStyle = opts.hue && i % 2 ? '#c62828' : '#e03a2a'; c.lineWidth = 3.2; c.lineCap = 'round';
+      for (let k = 0; k < 9; k++) { const a = -Math.PI / 2 + (k / 8 - 0.5) * 1.7;
+        c.beginPath(); c.moveTo(tx, top); c.lineTo(tx + Math.cos(a) * tw * 2.6, top + Math.sin(a) * tw * 2.6); c.stroke(); }
+    }
+    return;
+  }
   const cx = S * 0.5, colH = S * (opts.tall ? 0.20 : 0.145) * nvar(name, 0x51, 0.16);
   const base = S * 0.74, top = base - colH, colW = S * 0.085 * nvar(name, 0x52, 0.18);
   ground(c, cx, base + S * 0.012, colW * 1.9);
@@ -1478,6 +1501,6 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Sand Dollar': (c, g, p, n) => marineStar(c, g, p, { hue: '#dcd0b4', disc: true }, n),
   'Sea Urchin': (c, g, p, n) => marineUrchin(c, g, speciesHue(p, '#2e2436'), { long: true }, n),
   'Sea Anemone': (c, g, p, n) => marineAnemone(c, g, p, { hue: '#dc5f57', }, n),
-  'Tube Worm': (c, g, p, n) => marineAnemone(c, g, p, { hue: '#ccbfa0', tall: true }, n),
-  'Giant Tube Worm': (c, g, p, n) => marineAnemone(c, g, p, { hue: '#e6e8da', tall: true }, n),
+  'Tube Worm': (c, g, p, n) => marineAnemone(c, g, p, { hue: '#ccbfa0', worm: true }, n),
+  'Giant Tube Worm': (c, g, p, n) => marineAnemone(c, g, p, { hue: '#e6e8da', worm: true }, n),
 };
