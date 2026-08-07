@@ -136,8 +136,14 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
 ★★★ THE ROAD FROM HERE (Nick's standing orders: 100% PASS — clear FAILs, then sweep POLISH/PASS):
-1. **The felid/canid BARREL BODY** — the one deep chassis lever left (Tube phi-cross-section,
-   D-ART-152 machinery exists since wave 52; the neck/skull/tail/paw are all done).
+1. ✔ **THE BARREL BODY — DONE IN WAVE 65** (committed): the RADV machinery was already there;
+   the residue was per-species DEPTH. Slender cats slimmed (Leopard .1268→.1080, Cougar .1120,
+   Snow Leopard .1140, Cheetah .1050 — Jaguar/Lion keep their mass); lean canids slimmed
+   (Coyote .1040, Jackal .1010, AWD .1030, Dingo .1090 — Wolf keeps his); **Capybara/Agouti/Mara
+   moved from the smallRodent ball to the QUADRUPED table** with real plans (blunt brick barrel /
+   roached slender / long deer legs) — "same picture" dead; Pangolin mat:'scale' not banding.
+   All rendered + kept. What remains of the old chassis story is only eye-verification at the
+   next measure.
 2. **Remaining fauna singles**: Bittern freeze-pose, Albatross/Skua/Petrel flying posture,
    Weaverbird mask+nest, Snow Petrel; Catfish/Pangolin/Giant Anteater/River Otter ("Other or
    uncertain"); Agouti/Capybara/Mara rodent chassis; Conch flared lip; Water Flea/Copepod/Krill/
