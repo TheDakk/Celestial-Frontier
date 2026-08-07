@@ -238,9 +238,49 @@ export function floraDragonFruit(c: Ctx, g: G): void {
   }
 }
 
+/* ★ WAVE 68 — CRUSTOSE LICHEN. gp3: "wrong organism entirely — a symmetrical
+   spray of rays floating on empty background; no rock substrate, no crusty
+   lobed rosette, no cup discs". A lichen IS its rock. */
+export function floraLichen(c: Ctx, g: G): void {
+  const r = mulberry32(((g.seed as number) ^ 0x11C4E) >>> 0);
+  const cx = S * 0.5, cy = S * 0.60;
+  /* the boulder */
+  const rg = c.createRadialGradient(cx - S * 0.08, cy - S * 0.10, 4, cx, cy, S * 0.30);
+  rg.addColorStop(0, '#8a8a86'); rg.addColorStop(0.7, '#6a6a66'); rg.addColorStop(1, '#4a4a48');
+  c.fillStyle = 'rgba(0,0,0,0.42)'; c.beginPath(); c.ellipse(cx, cy + S * 0.20, S * 0.28, S * 0.03, 0, 0, TAU); c.fill();
+  c.fillStyle = rg;
+  c.beginPath(); c.moveTo(cx - S * 0.28, cy + S * 0.18);
+  c.quadraticCurveTo(cx - S * 0.30, cy - S * 0.10, cx - S * 0.10, cy - S * 0.16);
+  c.quadraticCurveTo(cx + S * 0.12, cy - S * 0.22, cx + S * 0.26, cy - S * 0.06);
+  c.quadraticCurveTo(cx + S * 0.32, cy + S * 0.10, cx + S * 0.24, cy + S * 0.18);
+  c.closePath(); c.fill();
+  /* flat crusty rosettes hugging the rock face, dark-rimmed, overlapping */
+  for (let i = 0; i < 7; i++) {
+    const px = cx + (r() - 0.5) * S * 0.38, py = cy - S * 0.04 + (r() - 0.5) * S * 0.18;
+    const pr = S * (0.045 + r() * 0.045);
+    c.fillStyle = 'rgba(60,70,50,0.75)';                       /* the dark rim */
+    lobedDisc(c, px, py, pr * 1.08, r);
+    c.fillStyle = i % 2 ? 'rgba(174,191,175,0.92)' : 'rgba(196,204,166,0.92)';   /* the thallus */
+    lobedDisc(c, px, py, pr, r);
+    c.fillStyle = 'rgba(120,130,100,0.8)';                     /* the apothecia cups */
+    for (let k = 0; k < 3; k++) { c.beginPath(); c.arc(px + (r() - 0.5) * pr, py + (r() - 0.5) * pr * 0.7, pr * 0.12, 0, TAU); c.fill(); }
+  }
+}
+function lobedDisc(c: Ctx, x: number, y: number, R: number, r: () => number): void {
+  c.beginPath();
+  for (let i = 0; i <= 16; i++) {
+    const a = (i / 16) * TAU;
+    const rr = R * (0.82 + Math.sin(a * 5 + r() * 0.5) * 0.16);
+    const px = x + Math.cos(a) * rr, py = y + Math.sin(a) * rr * 0.72;
+    i ? c.lineTo(px, py) : c.moveTo(px, py);
+  }
+  c.closePath(); c.fill();
+}
+
 /** iconic plants with bespoke bodies (Blocker 5) */
 export const FLORA_ICONIC: Record<string, FloraPainter> = {
   'Rafflesia': (c, g) => floraRafflesia(c, g),
+  'Lichen': (c, g) => floraLichen(c, g),
   'Pineapple': (c, g) => floraPineapple(c, g),
   'Joshua Tree': (c, g) => floraJoshua(c, g),
   'Cotton': (c, g) => floraCotton(c, g),

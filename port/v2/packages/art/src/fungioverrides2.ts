@@ -204,7 +204,10 @@ export function lichenMat(c: Ctx, g: G, _p: Pal): void {
     draw(ex, ey, a + 0.05, len * 0.72, w * 0.72, d + 1);
     draw(ex, ey, a + 0.5 + r() * 0.2, len * 0.72, w * 0.72, d + 1);
   };
-  for (let k = -3; k <= 3; k++) draw(cx + k * S * 0.035, base, -Math.PI / 2 + k * 0.12, S * 0.13, 6, 0);
+  /* ★ WAVE 68 — the branching starts AT THE GROUND. gp3 failed it for 'eight
+     thick bare vertical trunks' under the fine crown: short thin first
+     segments, more of them, so the cushion sits on fuzz, not on stilts. */
+  for (let k = -4; k <= 4; k++) draw(cx + k * S * 0.030, base, -Math.PI / 2 + k * 0.11, S * 0.062, 3.6, 0);
   for (let i = 0; i < 40; i++) { const a = r() * TAU, dd = r() * S * 0.16; c.fillStyle = 'rgba(230,236,224,0.4)'; c.beginPath(); c.arc(cx + Math.cos(a) * dd, base - S * 0.14 + Math.sin(a) * dd * 0.7, 2, 0, TAU); c.fill(); }
 }
 
