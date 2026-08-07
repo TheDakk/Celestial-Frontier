@@ -77,6 +77,26 @@ tsc + vitest green on every commit. **~55 flora species converted.** The reusabl
 | `leafArr:'basal'` | rosette + bare flowering stem | Sea Lavender |
 | fruit **shapes** (pear/spiky/star/crown/hairy) | species fruit, not one sphere | 12 fruit trees (Pear≠Apple) |
 | `fruit:'grain'` rebuilt | bristling awned cereal ear | Wheat, Barley, Rye, Oats, Millet, Sorghum, Rice |
+| `creep` | low creeping groundcover mat (shrub) | Bearberry, Crowberry, Cranberry, Lingonberry, Bilberry, Huckleberry |
+| `leaf:'arrow'` + rosette jitter | sagittate blade on erect stalks; de-mirrored fan | Arrowhead, Taro, Wild Taro, Pickerelweed |
+
+★★ **THE REMAINING FLORA IS MOSTLY 4 MORE SHARED CHASSIS + a bespoke tail** (from the gp3 prose,
+`$TMP/remaining-flora.json` this session or re-pull from `goldpass3-prechassis.json`):
+1. **The rosette disc-pile / radial sword-fan** — still wrong for the BROAD-CRINKLED-leaf crops
+   (Rhubarb, Wild Rhubarb, Sea Kale: huge puckered cabbage leaves + red stalks) and the LOW
+   CUSHION alpines (Purple Saxifrage, Bitterroot). Needs a crinkled-broadleaf treatment + a
+   cushion habit. ~10 species.
+2. **The bare-stem "cane-vase" for DENSE shrubs** (Tea, Tea Tree, Tamarisk, Bay Laurel, Wild
+   Guava) — should be a dense twiggy rounded bush, not 5 open stalks. ~6.
+3. **The seaweed/algae bundle** (`habit:'aquatic'` non-pad): all one pinched sheaf. Kelp needs a
+   holdfast + float, Bladderwrack paired bladders + Y-fork, Dulse/Sea Lettuce a flat ruffled
+   blade. ~8.
+4. **Palms with forked woody trunks** (Acai, Banana, Plantain, Nipa, Pandanus, Tree Fern) — need
+   a smooth false-trunk / prop-root / no-trunk erupting crown. ~6.
+   Plus **missing harvest organs** (apply existing `root`/`pods`/fruit-shape): Prairie Turnip &
+   Wild Yam (tuber), Pigeon Pea & Beach Pea & Orchid Pods (pods), Roselle (calyces), Star Anise
+   (star fruit), Sesame (capsules); the **allium ball** (Wild Onion/Garlic/Chive); and true
+   bespoke (Solomon's Seal arch, Bergamot firework, Vanilla Orchid, Miner's Lettuce perfoliate).
 
 ★ **Remaining flora FAILs, roughly in yield order** — these are increasingly BESPOKE, not cluster
 wins: Bergamot (monarda firework tubes), Brooklime (aquatic sprawl), Cloudberry (low + lobed leaf
