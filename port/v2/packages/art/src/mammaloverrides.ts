@@ -45,13 +45,13 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Bull': { legs: 0.1398, depth: 0.1848, len: 0.2273, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'shorthorn', hue: '#4a3b31', family: 'bovid', earShape: 'spoon' },
   'Wildebeest': { legs: 0.1745, depth: 0.147, len: 0.1929, neck: 0.08, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'plume', horn: 'boss', coat: 'stripes', hue: '#5f5a55', family: 'bovid' },
   /* ── CANIDS: the long muzzle, the pricked ear, the brush tail ── */
-  'Coyote': { legs: 0.1481, depth: 0.1226, len: 0.191, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#a08a68', family: 'canid' , tailTip: '#26201d' },
-  'Jackal': { legs: 0.145, depth: 0.12, len: 0.1771, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#a07a4e', family: 'canid' , tailTip: '#2a231f' },
+  'Coyote': { legs: 0.1481, depth: 0.1040, len: 0.191, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#a08a68', family: 'canid' , tailTip: '#26201d' },
+  'Jackal': { legs: 0.145, depth: 0.1010, len: 0.1771, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#a07a4e', family: 'canid' , tailTip: '#2a231f' },
   'Fox': { legs: 0.1193, depth: 0.1009, len: 0.1903, neck: 0.06, muzzle: 0.50, ears: 'large', tail: 'bushy', hue: '#c4642a', family: 'canid' },
   'Pampas Fox': { legs: 0.1276, depth: 0.1082, len: 0.1775, neck: 0.06, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#9c8f7c' , family: 'canid' },
   'Maned Wolf': { legs: 0.2583, depth: 0.1363, len: 0.1431, neck: 0.09, muzzle: 0.50, ears: 'large', tail: 'bushy', hue: '#c2662a', family: 'canid', earScale: 1.30 , tailTip: '#f0ece2' },
-  'African Wild Dog': { legs: 0.1565, depth: 0.1191, len: 0.1855, neck: 0.07, muzzle: 0.44, ears: 'large', tail: 'plume', coat: 'blotches', hue: '#9a6f3c', family: 'canid', earShape: 'round', earScale: 1.45 , tailTip: '#f4f1e8' },
-  'Dingo': { legs: 0.1563, depth: 0.1321, len: 0.1733, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#c08b4c', family: 'canid' , tailTip: '#efeae0' },
+  'African Wild Dog': { legs: 0.1565, depth: 0.1030, len: 0.1855, neck: 0.07, muzzle: 0.44, ears: 'large', tail: 'plume', coat: 'blotches', hue: '#9a6f3c', family: 'canid', earShape: 'round', earScale: 1.45 , tailTip: '#f4f1e8' },
+  'Dingo': { legs: 0.1563, depth: 0.1090, len: 0.1733, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#c08b4c', family: 'canid' , tailTip: '#efeae0' },
   'Dog': { hue: '#a9743f', legs: 0.1423, depth: 0.1325, len: 0.163, neck: 0.07, muzzle: 0.44, ears: 'large', tail: 'bushy', family: 'canid' },
   /* ── FELIDS: short muzzle, round ear, long tail; rosettes where they belong ── */
   'Bobcat': { legs: 0.1268, depth: 0.114, len: 0.1776, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'stub', coat: 'spots', hue: '#c39a63', family: 'felid', earShape: 'tuft' },
