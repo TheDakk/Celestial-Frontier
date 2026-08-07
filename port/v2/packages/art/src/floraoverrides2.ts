@@ -1133,10 +1133,11 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
   } else if (spec.habit === 'fern') {
     /* a rosette of clearly ARCHING fronds — spread wide and drawn from a
        low crown so they read as a fern, not a spiny ball (Nick's review) */
-    const nf = 6;
+    const shuttle = !!spec.tall;   /* ★ POLISH — sword fern: an upright shuttlecock crown */
+    const nf = shuttle ? 9 : 6;
     for (let i = 0; i < nf; i++) {
-      const a = -Math.PI / 2 + ((i / (nf - 1)) - 0.5) * 2.1 * spread;
-      drawLeaf(c, p, cx, base - S * 0.01, a, H * 0.86, 'frond');
+      const a = -Math.PI / 2 + ((i / (nf - 1)) - 0.5) * (shuttle ? 1.0 : 2.1) * spread;
+      drawLeaf(c, p, cx, base - S * 0.01, a, H * (shuttle ? 1.0 : 0.86), 'frond');
     }
     /* one small fiddlehead tucked low at the crown, not floating over them */
     c.strokeStyle = p.lit; c.lineWidth = S * 0.008; c.lineCap = 'round';
