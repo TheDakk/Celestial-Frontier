@@ -72,7 +72,10 @@ function nrng(g: G, name: string, salt: number): () => number {
 
 export interface PlantSpec {
   habit: 'tree' | 'shrub' | 'herb' | 'grass' | 'vine' | 'succulent' | 'fern' | 'aquatic' | 'rosette' | 'palm' | 'cane';
-  leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad' | 'trefoil' | 'arrow' | 'crinkle';
+  leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad' | 'trefoil' | 'arrow' | 'crinkle'
+    /* ★ WAVE 66 — the miner's-lettuce PERFOLIATE saucer: a round disc the stem
+       pierces through the middle */
+    | 'perfoliate';
   flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin' | 'cross' | 'cone'
     /* ★ WAVE 66 — the monarda FIREWORK (ragged crown of narrow tubes) and the
        brugmansia TRUMPET (huge pendulous flared horns) */
@@ -175,6 +178,17 @@ function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number
         c.beginPath(); c.ellipse(lx + ll * 0.25, s * ll * 0.55, ll * 0.42, ll * 0.20, s * 0.5, 0, TAU); c.fill();
       }
     }
+    c.restore(); return;
+  }
+  if (kind === 'perfoliate') {   /* ★ WAVE 66 — a round saucer the stem passes
+       THROUGH: drawn as a disc centred on the leaf point, slightly cupped. */
+    const R2 = len * 0.62;
+    c.fillStyle = leafGrad(c, p, 0, 0, R2);
+    c.beginPath(); c.ellipse(0, 0, R2, R2 * 0.7, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(255,255,255,0.20)'; c.lineWidth = 1.6;   /* the cupped rim */
+    c.beginPath(); c.ellipse(0, 0, R2 * 0.94, R2 * 0.64, 0, -2.8, 0.3); c.stroke();
+    c.strokeStyle = 'rgba(20,36,18,0.35)'; c.lineWidth = 1.3;      /* radial veins from the pierce */
+    for (let k = 0; k < 7; k++) { const a2 = (k / 7) * TAU; c.beginPath(); c.moveTo(0, 0); c.lineTo(Math.cos(a2) * R2 * 0.9, Math.sin(a2) * R2 * 0.62); c.stroke(); }
     c.restore(); return;
   }
   if (kind === 'crinkle') {   /* a huge PUCKERED cabbage/rhubarb blade — a broad

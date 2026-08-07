@@ -338,7 +338,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   "Angel's Trumpet": T({ hue: '#4a6a3c', habit: 'shrub', leaf: 'broad', flower: 'trumpet', fhue: '#f0d8a8', dense: true }),
   'Tree Tomato': T({ hue: '#5e5940', habit: 'tree', leaf: 'heart', fruit: 'berry', fhue: '#c8402a' }),
   "Solomon's Seal": T({ hue: '#6b936b', habit: 'herb', leaf: 'lance', flower: 'bell', fhue: '#f2f4ea', stem: 'arch' }),
-  "Miner's Lettuce": T({ hue: '#8fc07e', habit: 'herb', leaf: 'pad', flower: 'head', fhue: '#f4f6ef' }),
+  "Miner's Lettuce": T({ hue: '#8fc07e', habit: 'herb', leaf: 'perfoliate', flower: 'star', fhue: '#f4f6ef', leafArr: 'alternate', flowerN: 3 }),
   "Devil's Claw": T({ hue: '#848c70', habit: 'herb', leaf: 'broad', fruit: 'pod', fhue: '#4a3a26' }),
   'Licorice Root': T({ hue: '#6b873f', habit: 'herb', leaf: 'pinnate', flower: 'spike', fhue: '#a9a6d8', root: 'taproot' }),
   'Pampas Herb': T({ hue: '#c2b48a', habit: 'grass', leaf: 'blade', flower: 'catkin', fhue: '#efeade', tall: true }),
