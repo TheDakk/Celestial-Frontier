@@ -652,6 +652,7 @@ export interface BirdSpec {
   bib?: string;                                    /** a contrasting breast/throat patch (robin) */
   cap?: string;                                    /** a contrasting crown (chickadee, jay) */
   mask?: boolean;                                  /** the black face mask (cardinal, weaverbird) */
+  nest?: boolean;                                  /** ★ WAVE 68 — the weaverbird's woven ball nest */
   speckle?: boolean;                               /** pale flecks over dark (starling) */
   streak?: boolean;                                /** streaky ground-bird camouflage (lark, pipit) */
   plump?: number;                                  /** roundness: a robin is a ball, a swift is a cigar */
@@ -1123,6 +1124,26 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
        around the bill base, and on a brightly-coloured bird it is the mark */
     c.fillStyle = 'rgba(16,13,15,0.86)';
     c.beginPath(); c.ellipse(hx - hr * 0.40, hy + hr * 0.14, hr * 0.64, hr * 0.48, -0.18, 0, TAU); c.fill();
+  }
+  if (opts.nest) {
+    /* ★ WAVE 68 — the WOVEN BALL NEST hanging from a branch beside the bird:
+       the thing a weaverbird is named for and the strongest possible field
+       mark. A straw sphere with a woven texture and the entry hole low. */
+    const nx = bx + bw * 2.0, ny = by - bh * 1.1, nr = bh * 1.35;
+    c.strokeStyle = '#6a4e2c'; c.lineWidth = 4; c.lineCap = 'round';   /* the branch */
+    c.beginPath(); c.moveTo(nx - nr * 1.4, ny - nr * 1.5); c.lineTo(nx + nr * 1.2, ny - nr * 1.1); c.stroke();
+    c.strokeStyle = '#8a6a34'; c.lineWidth = 3;                        /* the hanging strap */
+    c.beginPath(); c.moveTo(nx, ny - nr * 1.3); c.lineTo(nx, ny - nr * 0.8); c.stroke();
+    const ng2 = c.createRadialGradient(nx - nr * 0.3, ny - nr * 0.35, 2, nx, ny, nr * 1.1);
+    ng2.addColorStop(0, '#d8bc72'); ng2.addColorStop(0.6, '#b0904a'); ng2.addColorStop(1, '#7a6030');
+    c.fillStyle = ng2;
+    c.beginPath(); c.ellipse(nx, ny, nr * 0.92, nr, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(90,66,30,0.55)'; c.lineWidth = 1.6;          /* the weave */
+    for (let i = -3; i <= 3; i++) {
+      c.beginPath(); c.ellipse(nx, ny, nr * 0.9, nr * 0.95, i * 0.42, -1.2, 1.6); c.stroke();
+    }
+    c.fillStyle = 'rgba(26,20,12,0.9)';                                /* the low entry hole */
+    c.beginPath(); c.ellipse(nx - nr * 0.25, ny + nr * 0.62, nr * 0.30, nr * 0.24, 0, 0, TAU); c.fill();
   }
   if (opts.cap) {
     c.fillStyle = opts.cap;
