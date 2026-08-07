@@ -242,13 +242,13 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   /* ★ WAVE 22 — thyme is a low WOODY sub-shrub that mats over rock, not an
      erect herb like the mints it kept colliding with. Drawing it as a shrub is
      both the truer plant and what pulls it clear of Water Mint. */
-  'Wild Thyme': T({ hue: '#6e8860', habit: 'shrub', leaf: 'needle', flower: 'head', fhue: '#b888c0' }),
+  'Wild Thyme': T({ hue: '#6e8860', habit: 'shrub', leaf: 'needle', flower: 'head', fhue: '#b888c0', creep: true }),
   'Mountain Thyme': T({ hue: '#97a383', habit: 'herb', leaf: 'needle', flower: 'head', fhue: '#c8a0d0', stem: 'mat', flowerN: 5 }),
   'Oregano': T({ hue: '#758750', habit: 'herb', leaf: 'broad', flower: 'head', fhue: '#e0d0e8', leafArr: 'opposite', toothed: true, square: true, whorl: true, flowerN: 3 }),
   'Rosemary': T({ hue: '#556d4c', habit: 'shrub', leaf: 'needle', flower: 'spike', fhue: '#90a8d8', dense: true }),
   'Lavender': T({ hue: '#a8af9a', habit: 'shrub', leaf: 'needle', flower: 'spike', fhue: '#9878c8', dense: true }),
   'Fennel': T({ hue: '#a3bc4f', habit: 'herb', leaf: 'pinnate', flower: 'umbel', fhue: '#e0d840' }),
-  'Sea Fennel': T({ hue: '#8fb188', habit: 'herb', leaf: 'pinnate', flower: 'umbel', fhue: '#d0d048' }),
+  'Sea Fennel': T({ hue: '#8fb188', habit: 'rosette', leaf: 'pad', flower: 'umbel', fhue: '#d0d048' }),
   /* ★ WAVE 58 — NETTLES: toothed heart leaves in opposite pairs + drooping
      green axil tassels (PlantSpec.tassel), replacing the terminal bead spike. */
   'Nettle': T({ hue: '#3a6d2e', habit: 'herb', leaf: 'heart', flower: 'none', fhue: '#a8b070', leafArr: 'opposite', toothed: true, tassel: true }),
@@ -294,7 +294,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Agave': T({ hue: '#96b2a5', habit: 'rosette', leaf: 'lance', flower: 'spike', fhue: '#d8c840', thorns: true }),
   'Yucca': T({ hue: '#799e84', habit: 'rosette', leaf: 'blade', flower: 'bell', fhue: '#f0ece0' }),
   'Prickly Pear': T({ hue: '#8eaa7e', habit: 'succulent', leaf: 'pad', flower: 'head', fhue: '#e8c430', thorns: true }),
-  'Barrel Cactus Fruit': T({ hue: '#729650', habit: 'succulent', leaf: 'scale', flower: 'head', fruit: 'berry', fhue: '#e0b028', thorns: true }),
+  'Barrel Cactus Fruit': T({ hue: '#729650', habit: 'succulent', leaf: 'needle', flower: 'head', fruit: 'berry', fhue: '#e0b028', thorns: true }),
   /* ── FERNS AND NON-VASCULAR ── */
   'Sword Fern': T({ hue: '#316a3b', habit: 'fern', leaf: 'frond' }),
   'Licorice Fern': T({ hue: '#5a9d4b', habit: 'fern', leaf: 'frond' }),
