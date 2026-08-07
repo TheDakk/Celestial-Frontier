@@ -1116,7 +1116,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
      the single most different silhouette in this group, and it had none of it */
   'Cockroach': I({ hue: '#6b3b1e', abdomen: 1.18, broad: 1.85, eyes: 0.7, shield: true, carapace: true, wings: 'folded', antennae: 'long' }),
   'Aphid': I({ hue: '#a8cf72', abdomen: 1.05, antennae: 'short' }),
-  'Thrips': I({ hue: '#cdb464', abdomen: 0.9, wings: 'lace', antennae: 'short' }),
+  'Thrips': I({ hue: '#cdb464', abdomen: 2.3, broad: 0.38, wings: 'lace', wingScale: 0.7, antennae: 'short' }),
   'Mosquito': I({ hue: '#5c565a', abdomen: 1.40, broad: 0.62, proboscis: true, wings: 'lace', antennae: 'feather' }),
   /* a fly is mostly EYE, and a black fly is a tiny hunched one */
   'Black Fly': I({ hue: '#33313a', abdomen: 0.68, broad: 1.15, eyes: 1.6, wings: 'lace', antennae: 'short' }),
