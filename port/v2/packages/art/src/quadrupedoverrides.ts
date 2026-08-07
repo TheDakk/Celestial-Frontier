@@ -1943,6 +1943,17 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       c.quadraticCurveTo(tx + w * 1.85, ty + dir * L * 0.56, tx + w, ty);
       c.closePath(); c.fill();
     }
+    if (horn === 'tuskdown' && FAM0.foot === 'flipper') {
+      /* ★ POLISH — THE WALRUS MOUSTACHE: the dense bristle pad either side of
+         the tusk roots, "the bristle moustache pad" gp6 asked for. */
+      c.strokeStyle = 'rgba(226,210,180,0.85)'; c.lineWidth = 1.6; c.lineCap = 'round';
+      for (let k = 0; k < 26; k++) {
+        const s2 = k % 2 ? 1 : -1;
+        const bx2 = base[0] + s2 * headR * (0.12 + (k % 5) * 0.05), by2 = base[1] - headR * 0.04 + (k % 3) * headR * 0.045;
+        c.beginPath(); c.moveTo(bx2, by2);
+        c.lineTo(bx2 + s2 * headR * (0.16 + (k % 4) * 0.04), by2 + headR * 0.10); c.stroke();
+      }
+    }
   }
   if (spec.trunk) {
     /* ⚠ the trunk stopped at knee height. "A long muscular trunk REACHING THE
