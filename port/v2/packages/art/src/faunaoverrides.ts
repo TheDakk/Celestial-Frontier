@@ -81,7 +81,11 @@ export function faunaLarva(c: Ctx, g: G, p: Pal): void {
 }
 /** an ADULT WINGED INSECT: two wing pairs, long abdomen, compound eyes.
     open = wings held out (dragonfly); folded = along the body (damselfly) */
-export function faunaWingedInsect(c: Ctx, g: G, pIn: Pal, opts: { open: boolean; slim: boolean; body?: number; hue?: string }): void {
+export function faunaWingedInsect(c: Ctx, g: G, pIn: Pal, opts: { open: boolean; slim: boolean; body?: number; hue?: string;
+    /* ★ WAVE 64 — the two identity features gp3 failed this painter's species
+       for: the caddisfly's thread antennae (longer than its own body, held
+       FORWARD) and the male dobsonfly's huge crossed sickle mandibles. */
+    threadAntennae?: boolean; sickleJaws?: boolean }): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const r = mulberry32(((g.seed as number) ^ 0x2C4E) >>> 0);
@@ -138,6 +142,24 @@ export function faunaWingedInsect(c: Ctx, g: G, pIn: Pal, opts: { open: boolean;
     c.beginPath(); c.ellipse(hx - 6, cy - 8 + s * 9, S * 0.026, S * 0.021, 0, 0, TAU); c.fill();
     c.fillStyle = 'rgba(255,255,255,0.5)';
     c.beginPath(); c.arc(hx - 10, cy - 11 + s * 9, 2.6, 0, TAU); c.fill();
+  }
+  if (opts.threadAntennae) {
+    /* the caddisfly's thread antennae: longer than the body, swept FORWARD */
+    c.strokeStyle = p.dark; c.lineWidth = 1.6; c.lineCap = 'round';
+    for (const s of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(hx - 8, cy - 6 + s * 5);
+      c.quadraticCurveTo(hx - S * 0.16, cy - S * 0.05 + s * S * 0.03, hx - S * 0.30, cy - S * 0.10 + s * S * 0.055);
+      c.stroke();
+    }
+  }
+  if (opts.sickleJaws) {
+    /* the male dobsonfly's huge CROSSED sickle mandibles */
+    c.strokeStyle = '#4a3520'; c.lineWidth = 4.5; c.lineCap = 'round';
+    for (const s of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(hx - 10, cy - 2 + s * 6);
+      c.quadraticCurveTo(hx - S * 0.10, cy + s * S * 0.015, hx - S * 0.135, cy - s * S * 0.028);
+      c.stroke();
+    }
   }
   /* ⚠ NO TEXTURE PASS HERE, DELIBERATELY. A speckle pass was added to this
      painter and immediately degraded it: the venated wings — the reason the
@@ -1312,12 +1334,12 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   /* ★ WAVE 23 — Caddisfly, Stonefly and Dobsonfly went HARD look-alike: three
      drab browns on a length dial, the same defect the ants had. They are not
      alike. A caddisfly is MOTH-like with hairy wings tented over the body. */
-  'Caddisfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#7d4f22', open: false, slim: true, body: 0.55 }),
+  'Caddisfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#7d4f22', open: false, slim: true, body: 0.55, threadAntennae: true }),
   /* a stonefly holds its wings FLAT along a dark slender body */
   'Stonefly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#38423f', open: false, slim: true, body: 0.86 }),
   /* a dobsonfly is BIG — the largest of these by a wide margin, pale grey,
      with long soft wings held out */
-  'Dobsonfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#9d968a', open: true, slim: false, body: 1.45 }),
+  'Dobsonfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#9d968a', open: true, slim: false, body: 1.45, sickleJaws: true }),
   'Scorpionfly': (c, g, p) => faunaWingedInsect(c, g, p, { hue: '#e8a81c', open: false, slim: false, body: 0.95 }),
   'Springtail': (c, g, p) => faunaSpringtail(c, g, speciesHue(p, '#5a6470')),
   'Ladybug': (c, g, p) => faunaBeetle(c, g, p, { hue: '#c62828', spots: true }),
