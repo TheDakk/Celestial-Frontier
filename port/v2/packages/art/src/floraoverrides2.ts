@@ -72,7 +72,7 @@ function nrng(g: G, name: string, salt: number): () => number {
 
 export interface PlantSpec {
   habit: 'tree' | 'shrub' | 'herb' | 'grass' | 'vine' | 'succulent' | 'fern' | 'aquatic' | 'rosette' | 'palm' | 'cane';
-  leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad' | 'trefoil';
+  leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad' | 'trefoil' | 'arrow';
   flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin' | 'cross' | 'cone';
   fruit?: 'none' | 'berry' | 'drupe' | 'pome' | 'citrus' | 'pod' | 'nut' | 'cone' | 'grain' | 'melon' | 'fig' | 'cluster'
     /* ★ WAVE 58 — species fruit SHAPES. The tree body was fine; every fruit was
@@ -158,6 +158,23 @@ function drawLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number
         c.beginPath(); c.ellipse(lx + ll * 0.25, s * ll * 0.55, ll * 0.42, ll * 0.20, s * 0.5, 0, TAU); c.fill();
       }
     }
+    c.restore(); return;
+  }
+  if (kind === 'arrow') {   /* a SAGITTATE blade — arrowhead, taro, wild yam: a
+       broad heart-to-arrow leaf with two backward-pointing basal lobes. */
+    const wl = len * 0.62;
+    c.fillStyle = leafGrad(c, p, len * 0.5, 0, len * 0.5);
+    c.beginPath();
+    c.moveTo(0, 0);                                   /* petiole join */
+    c.lineTo(-len * 0.10, -wl * 0.62);                /* left rear barb */
+    c.quadraticCurveTo(len * 0.16, -wl * 0.5, len * 0.34, -wl * 0.42);
+    c.quadraticCurveTo(len * 0.82, -wl * 0.2, len, 0);   /* tip */
+    c.quadraticCurveTo(len * 0.82, wl * 0.2, len * 0.34, wl * 0.42);
+    c.quadraticCurveTo(len * 0.16, wl * 0.5, -len * 0.10, wl * 0.62);   /* right rear barb */
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(20,32,18,0.34)'; c.lineWidth = 1.6;
+    c.beginPath(); c.moveTo(0, 0); c.lineTo(len * 0.92, 0); c.stroke();   /* midrib */
+    c.beginPath(); c.moveTo(0, 0); c.lineTo(-len * 0.08, -wl * 0.5); c.moveTo(0, 0); c.lineTo(-len * 0.08, wl * 0.5); c.stroke();
     c.restore(); return;
   }
   if (kind === 'trefoil') {   /* THREE leaflets from one point — clover, alfalfa, medic */
@@ -896,10 +913,27 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     }
     }
   } else if (spec.habit === 'rosette') {
-    /* leaves radiating from a crown at ground level — dandelion, aloe, cabbage */
-    for (let i = 0; i < leafN + 3; i++) {
-      const a = -Math.PI / 2 + ((i / (leafN + 2)) - 0.5) * 2.6 * spread;
-      drawLeaf(c, p, cx, base - S * 0.015, a, H * (0.52 + r() * 0.22), spec.leaf);
+    /* leaves radiating from a crown at ground level — dandelion, aloe, cabbage.
+       ★ WAVE 58 — the old fan was a HARD MIRROR at even angles (the judge's
+       "stiff symmetric radial fan of sword blades"). Jittered per node off the
+       name, and an arrow/heart rosette is held on erect STALKS (taro), not
+       splayed flat. */
+    const erect = spec.leaf === 'arrow' || spec.leaf === 'heart';
+    const nL = leafN + 3;
+    for (let i = 0; i < nL; i++) {
+      const t = (i / (nL - 1)) - 0.5;
+      const jit = (nvf(name, 0x90 + i * 7, 0.5) - 1);
+      /* erect species stand their blades UP in a tight arc; flat rosettes splay wide */
+      const a = -Math.PI / 2 + t * (erect ? 1.4 : 2.7) * spread + jit;
+      const L = H * ((erect ? 0.7 : 0.52) + r() * 0.24);
+      if (erect) {   /* a visible leaf-stalk carrying the blade up and out */
+        const sx = cx + t * S * 0.05, tipX = cx + Math.sin(t * 1.2) * S * 0.18 * spread, tipY = base - L;
+        c.strokeStyle = stemCol; c.lineWidth = S * 0.009; c.lineCap = 'round';
+        c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(sx, base - L * 0.5, tipX, tipY); c.stroke();
+        drawLeaf(c, p, tipX, tipY, Math.atan2(tipY - base, tipX - cx) + (t < 0 ? 0.2 : -0.2), L * 0.62, spec.leaf, toothed);
+      } else {
+        drawLeaf(c, p, cx, base - S * 0.015, a, L, spec.leaf, toothed);
+      }
     }
     if (spec.flower && spec.flower !== 'none') {
       c.strokeStyle = stemCol; c.lineWidth = S * 0.008;
