@@ -84,7 +84,13 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
     /* ★ wave 38 G3 — the dorsal pattern IS the species for a snake. */
     pattern?: 'plain' | 'band' | 'saddle' | 'oval' | 'reticulate' | 'zigzag' | 'stripe';
     /* a viper's broad triangular skull, set off from a thin neck */
-    head?: 'plain' | 'arrow' }, name = ''): void {
+    head?: 'plain' | 'arrow';
+    /* ★ WAVE 59 — BODY GAUGE. Every snake was drawn at one fixed tube width, so
+       the judge failed the whip-thin species (vine, whip, tree, racer) as "the
+       same fat doughnut as the king snake". <1 is pencil-thin, >1 is stout. */
+    gauge?: number;
+    /* a pale collar behind the head — the grass snake's whole diagnostic */
+    collar?: string }, name = ''): void {
   /* ★ D-ART-114 — the species hue axis (21 snakes were on the rarity roll). */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x5AE1);
@@ -97,7 +103,7 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
      girth — so the surface is unbroken and the coil still overlaps itself
      back-to-front. */
   const N = 200, turns = 1.62 * nvar(name, 0x11, 0.16);
-  const R0 = S * 0.255 * nvar(name, 0x22, 0.10), W0 = S * 0.050 * nvar(name, 0x33, 0.22);
+  const R0 = S * 0.255 * nvar(name, 0x22, 0.10), W0 = S * 0.050 * (opts.gauge ?? 1) * nvar(name, 0x33, 0.22);
   const pts: Array<{ x: number; y: number; w: number }> = [];
   for (let i = 0; i < N; i++) {
     const u = i / (N - 1);
@@ -201,6 +207,12 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
     c.strokeStyle = 'rgba(24,16,10,0.32)'; c.lineWidth = 2;   /* the rib lines */
     for (let i = -2; i <= 2; i++) { c.beginPath(); c.moveTo(i * hoodW * 0.24, hoodH * 0.72); c.lineTo(i * hoodW * 0.34, -hoodH * 0.80); c.stroke(); }
     c.restore();
+  }
+  if (opts.collar) {   /* ★ WAVE 59 — a pale collar band just behind the head,
+       the grass snake's single diagnostic. Two short marks across the neck. */
+    const nk = pts[7]!, nk2 = pts[10]!, w = (nk.w + nk2.w) * 0.5;
+    c.strokeStyle = opts.collar; c.lineWidth = w * 1.7; c.lineCap = 'butt';
+    c.beginPath(); c.moveTo(nk.x, nk.y); c.lineTo(nk2.x, nk2.y); c.stroke();
   }
   /* ★ WAVE 38, G3 — THE HEAD WAS A PASTED OVAL WITH A HARD BRIGHT RIM. Six
      verifiers wrote the same sentence independently — Anaconda "a small pale
@@ -1256,14 +1268,14 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'King Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#1e1c1a', pattern: 'band' }, n),
   'Garter Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#3f5540', pattern: 'stripe' }, n),
   'Rat Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#2f3234', pattern: 'saddle' }, n),
-  'Tree Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#38a04a', pattern: 'plain' }, n),
-  'Vine Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#7fb23c', pattern: 'plain' }, n),
+  'Tree Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#38a04a', pattern: 'plain', gauge: 0.6 }, n),
+  'Vine Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#7fb23c', pattern: 'plain', gauge: 0.42 }, n),
   'Water Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6a5341', pattern: 'band' }, n),
-  'Grass Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#5f7a45', pattern: 'stripe' }, n),
-  'Whip Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6b6b48', pattern: 'stripe' }, n),
+  'Grass Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#5f7a45', pattern: 'plain', collar: '#e6d86a' }, n),
+  'Whip Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6b6b48', pattern: 'stripe', gauge: 0.48 }, n),
   'Cave Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#928a86', pattern: 'plain' }, n),
   'Cottonmouth': (c, g, p, n) => reptSnake(c, g, p, { hue: '#3d3a30', pattern: 'saddle', head: 'arrow' }, n),
-  'Racer': (c, g, p, n) => reptSnake(c, g, p, { hue: '#35404a', pattern: 'plain' }, n),
+  'Racer': (c, g, p, n) => reptSnake(c, g, p, { hue: '#35404a', pattern: 'plain', gauge: 0.62 }, n),
   'Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6f5b3e', pattern: 'saddle' }, n),
   /* ── LIZARDS ── the sprawled stance: elbows OUT, belly low, tail long */
   'Monitor Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#55503f', long: true, stout: 1.30, tail: 1.05 }, n),
