@@ -1025,6 +1025,26 @@ export function sessileBody(c: Ctx, g: G, pIn: Pal, opts: { kind: 'branch' | 'tu
       c.lineTo(cx + sgn * w * 0.05, base - h + h * 0.07);
       c.closePath(); c.fill();
     }
+    /* ★ WAVE 66 — THE CIRRI: the feathery feeding fan sweeping out of the open
+       trapdoor — the one live thing about a barnacle, and what says "animal,
+       not rock". A curled comb of fine feathered rays. */
+    c.strokeStyle = 'rgba(200,180,140,0.85)'; c.lineCap = 'round';
+    for (let i = 0; i < 7; i++) {
+      const t = i / 6 - 0.5;
+      const a = -Math.PI / 2 + t * 1.1 + 0.35;
+      const len2 = h * (0.42 + Math.sin((i / 6) * Math.PI) * 0.22);
+      const sx2 = cx + t * w * 0.2, sy2 = base - h - h * 0.02;
+      const ex2 = sx2 + Math.cos(a) * len2, ey2 = sy2 + Math.sin(a) * len2;
+      c.lineWidth = 1.8;
+      c.beginPath(); c.moveTo(sx2, sy2);
+      c.quadraticCurveTo(sx2 + Math.cos(a) * len2 * 0.5 - len2 * 0.14, sy2 + Math.sin(a) * len2 * 0.6, ex2, ey2);
+      c.stroke();
+      c.lineWidth = 1;   /* the feather barbs down each ray */
+      for (let k = 1; k <= 4; k++) { const u = k / 5;
+        const px2 = sx2 + (ex2 - sx2) * u - len2 * 0.14 * Math.sin(u * Math.PI), py2 = sy2 + (ey2 - sy2) * u;
+        c.beginPath(); c.moveTo(px2, py2); c.lineTo(px2 - len2 * 0.12, py2 - len2 * 0.05); c.stroke();
+      }
+    }
     c.strokeStyle = 'rgba(236,242,250,0.26)'; c.lineWidth = 2;
     c.beginPath();
     c.moveTo(cx - w, base);
