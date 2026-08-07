@@ -794,12 +794,18 @@ export function wormBody(c: Ctx, g: G, pIn: Pal, opts: { bristles?: boolean; fla
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x0202);
   const cx = S * 0.48, cy = S * 0.54;
-  const N = 30, th = S * (opts.flat ? 0.040 : 0.030) * nv(name, 0x61, 0.16);
-  const wave = nv(name, 0x62, 0.30);   /* how hard the body undulates — a RATIO */
+  const N = 30, th = S * (opts.flat ? 0.078 : 0.030) * nv(name, 0x61, 0.16);
+  /* ★ WAVE 59 — a flatworm is a BROAD FLAT LEAF-RIBBON, not the earthworm tube
+     recoloured; a leech ARCHES like an inchworm. Both were failing as identical
+     to Earthworm. flat = much wider + straight (a ribbon lies flat); sucker
+     (leech) = a tall humped arch. */
+  const wave = opts.flat ? nv(name, 0x62, 0.10) * 0.4 : nv(name, 0x62, 0.30);
   shadow(c, cx, cy + th * 2.4, S * 0.20);
+  const arch = opts.sucker ? 1 : 0;   /* the leech's inchworm hump */
   const at = (i: number): [number, number] => {
     const u = i / (N - 1);
-    return [cx - S * 0.21 + u * S * 0.42, cy + Math.sin(u * Math.PI * 2.1 * wave) * S * 0.052 * wave];
+    return [cx - S * 0.21 + u * S * 0.42,
+      cy + Math.sin(u * Math.PI * 2.1 * wave) * S * 0.052 * wave - arch * Math.sin(u * Math.PI) * S * 0.10];
   };
   c.lineCap = 'round'; c.lineJoin = 'round';
   for (let i = N - 1; i > 0; i--) {
