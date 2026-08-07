@@ -477,7 +477,8 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; 
 }
 /** CETACEAN: long body, horizontal FLUKE, blowhole, species dorsal */
 export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | 'small' | 'none'; blunt: boolean; hue?: [number, number, number];
-    bulk?: number; long?: number; melon?: number; tusk?: boolean; patch?: boolean }): void {
+    bulk?: number; long?: number; melon?: number; tusk?: boolean; patch?: boolean;
+    pale?: boolean /* ★ POLISH — beluga: the body stays WHITE to the tail */ }): void {
   /* NO CETACEAN IS PURPLE. Every whale, dolphin and porpoise alive is some
      grey, blue-grey or black, and a lavender blue whale is not rarity
      variation — it is the animal being unrecognisable. Anchored toward slate,
@@ -499,7 +500,7 @@ export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | '
     cr: _cr, cg: _cg, cb: _cb,
     base: rgbOf(_cr, _cg, _cb),
     lit: rgbOf(Math.min(255, _cr * 1.32), Math.min(255, _cg * 1.30), Math.min(255, _cb * 1.26)),
-    dark: rgbOf(_cr * 0.42, _cg * 0.44, _cb * 0.48),
+    dark: opts.pale ? rgbOf(_cr * 0.82, _cg * 0.83, _cb * 0.85) : rgbOf(_cr * 0.42, _cg * 0.44, _cb * 0.48),
   };
   /* bulk = how deep the body is, long = how far it runs, melon = how much the
      forehead swells over the rostrum. Between them these are the difference
@@ -1391,7 +1392,7 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Sperm Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [86, 78, 72], long: 1.10, bulk: 1.05, melon: 0.85 }),
   'Gray Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [142, 146, 140], long: 1.06, bulk: 1.00 }),
   'Right Whale': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [46, 48, 52], long: 0.84, bulk: 1.42, melon: 0.30 }),
-  'Beluga': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [226, 228, 230], long: 0.88, bulk: 1.12, melon: 0.55 }),
+  'Beluga': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, hue: [226, 228, 230], long: 0.88, bulk: 1.12, melon: 0.55, pale: true }),
   'Orca': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'tall', blunt: false, patch: true, hue: [22, 24, 30], long: 0.98, bulk: 1.08 }),
   'Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [124, 134, 146], long: 0.86, bulk: 0.82 }),
   'River Dolphin': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'small', blunt: false, hue: [178, 150, 148], long: 0.80, bulk: 0.70 }),

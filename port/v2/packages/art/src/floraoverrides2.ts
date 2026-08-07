@@ -1082,7 +1082,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
           const nx2 = px2 + Math.cos(a2) * sl, ny2 = py2 + Math.sin(a2) * sl;
           const old = u2 > 0.62;
           const gg2 = c.createLinearGradient(px2 - sw, py2, px2 + sw, py2);
-          gg2.addColorStop(0, old ? '#a05a48' : p.dark); gg2.addColorStop(0.5, old ? '#c07858' : p.base); gg2.addColorStop(1, old ? '#8a4a3c' : p.dark);
+          gg2.addColorStop(0, old ? '#b04a30' : p.dark); gg2.addColorStop(0.5, old ? '#d86844' : p.base); gg2.addColorStop(1, old ? '#8a3424' : p.dark);
           c.fillStyle = gg2;
           /* one sausage joint: a rounded capsule with a visible waist between joints */
           c.beginPath(); c.ellipse((px2 + nx2) / 2, (py2 + ny2) / 2, sw, sl * 0.62, a2 + Math.PI / 2, 0, TAU); c.fill();
