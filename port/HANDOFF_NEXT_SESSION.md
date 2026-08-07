@@ -135,6 +135,12 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★ WAVE 64 (committed): **ALL 13 MICROBE FAILS ADDRESSED** — extremophile habitat wrappers
+(acid-red water+crust, ice facets+brine, hot-pink crowded brine, methane bubbles, root nodule
+with bacteroids, exactly-four tetrad, red-tide bloom field, iron-oxidizer bean+twisted ribbon,
+bioluminescent glowing cells in dark water) + bespoke Dinoflagellate (girdle groove + 2 flagella),
+Euglena (teardrop + 1 flagellum + eyespot), Radiolarian (glassy 3-D spined sphere). Plus
+Cordyceps insect host (curled caterpillar). Shared procedural painters untouched.
 ★ WAVE 63 (committed): fungi identities — Lion's Mane full icicle cascade · Coral Fungus one
 dense clump · Earthstar thick tan opened rays (was routed with NO species hue) · Mildew = powder
 ON A LEAF · Yeast = budding cells · Jelly Fungus deep brain folds · Maitake ruffled 3-ring
