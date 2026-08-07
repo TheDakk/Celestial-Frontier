@@ -135,6 +135,26 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★★★ GP6 IS MID-FLIGHT (2026-08-07). State if this session dies:
+- Drift = 392 assets (waves 58–68) → 64 strips; **56 judged, 8 died on the session limit**
+  (resets 5:40pm ET). 337 joinable verdicts SAVED at `reference/goldpass6-rejudge-partial.json`
+  (FAIL 226 / POLISH 93 / PASS 18). Only **10 species missing**: Caddisfly, Cichlid, Dobsonfly,
+  Thrips, Beet, Black-Eyed Susan, Date Palm, Eucalyptus, Meadow Grass, Watercress
+  (`reference/gp6-missing.json`). A workflow RESUME for run wf_db627270-9b9 was launched
+  (script `gp6-drift.js` in the session scratchpad) — 56 cached agents replay free, 8 re-run.
+  If it also died on the limit, re-launch the resume after 5:40pm, or judge the 8 packets by
+  hand (they are in `apps/game/smoke/rejudge/*/packet-*.md`).
+- CONTROL is COMPLETE: `reference/goldpass6-control.json` (72 unchanged: FAIL 41/POLISH 29/
+  PASS 2 vs gp3 FAIL 25 — **the ruler ran ~+22 points HARSH this round; read the drift net of
+  the control** (D-ART-158)).
+- PRELIMINARY ruler-corrected (337/347): rescued 79/273 = 29% vs control 20% → **net +9 points
+  real rescue**; demotion 48% vs 45% → net +3 (noise). Honest read: the identity features
+  landed (79 raw rescues) but this judge is markedly harsher; the catalogue-level number needs
+  the merge: `node tools/rejudgemerge.mjs --fresh=reference/goldpass6-rejudge-partial.json
+  --control=reference/goldpass6-control.json --out=reference/goldpass6-results.json` (swap in
+  the completed rejudge file once the resume lands, then commit everything).
+- ⚠ ART IS FROZEN until the 8 strips are judged. Then: POLISH→PASS sweep + procedural bridge.
+
 ★★★ WAVE 68 (committed) — **THE TRACTABLE FAIL SWEEP IS COMPLETE.** Lichen → bespoke crustose
 rosettes ON A BOULDER · Reindeer Lichen branching starts at the ground (stilts gone) ·
 Weaverbird woven ball nest (BirdSpec.nest). Every FAIL with a clear prescription has now been
