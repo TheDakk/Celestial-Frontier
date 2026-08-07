@@ -73,7 +73,10 @@ function nrng(g: G, name: string, salt: number): () => number {
 export interface PlantSpec {
   habit: 'tree' | 'shrub' | 'herb' | 'grass' | 'vine' | 'succulent' | 'fern' | 'aquatic' | 'rosette' | 'palm' | 'cane';
   leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad' | 'trefoil' | 'arrow' | 'crinkle';
-  flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin' | 'cross' | 'cone';
+  flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin' | 'cross' | 'cone'
+    /* ★ WAVE 66 — the monarda FIREWORK (ragged crown of narrow tubes) and the
+       brugmansia TRUMPET (huge pendulous flared horns) */
+    | 'firework' | 'trumpet';
   fruit?: 'none' | 'berry' | 'drupe' | 'pome' | 'citrus' | 'pod' | 'nut' | 'cone' | 'grain' | 'melon' | 'fig' | 'cluster'
     /* ★ WAVE 58 — species fruit SHAPES. The tree body was fine; every fruit was
        the same small round sphere, so Pear read as Apple and Mango as Orange
@@ -541,6 +544,40 @@ function drawFlower(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNu
       c.closePath(); c.fill(); c.restore();
     }
     c.fillStyle = '#f3e6a8'; c.beginPath(); c.arc(x, y, R * 0.20, 0, TAU); c.fill();
+  } else if (kind === 'firework') {
+    /* ★ WAVE 66 — the monarda head: a ragged crown of narrow TUBULAR florets
+       shooting up and out at every angle from a central boss, over leafy bracts. */
+    c.fillStyle = `rgba(${p.cr * 0.55 | 0},${p.cg * 0.6 | 0},${p.cb * 0.5 | 0},0.9)`;   /* bracts */
+    for (let i = 0; i < 6; i++) { const a = (i / 6) * TAU; c.save(); c.translate(x, y + R * 0.28); c.rotate(a);
+      c.beginPath(); c.ellipse(R * 0.32, 0, R * 0.34, R * 0.12, 0, 0, TAU); c.fill(); c.restore(); }
+    c.strokeStyle = col; c.lineWidth = Math.max(2, R * 0.075); c.lineCap = 'round';
+    for (let i = 0; i < 17; i++) {
+      const a = -Math.PI * 0.92 + (i / 16) * Math.PI * 0.84 + (r() - 0.5) * 0.24;   /* up + out, ragged */
+      const len = R * (0.75 + r() * 0.55);
+      const ex = x + Math.cos(a) * len, ey = y + Math.sin(a) * len;
+      c.beginPath(); c.moveTo(x, y);
+      c.quadraticCurveTo(x + Math.cos(a) * len * 0.5, y + Math.sin(a) * len * 0.55 - R * 0.08, ex, ey); c.stroke();
+      /* each tube ends in a tiny flared lip */
+      c.beginPath(); c.moveTo(ex, ey); c.lineTo(ex + Math.cos(a - 0.5) * R * 0.1, ey + Math.sin(a - 0.5) * R * 0.1); c.stroke();
+    }
+    c.fillStyle = `rgba(90,50,40,0.9)`; c.beginPath(); c.arc(x, y, R * 0.16, 0, TAU); c.fill();   /* the boss */
+  } else if (kind === 'trumpet') {
+    /* ★ WAVE 66 — brugmansia: huge pendulous flared trumpets HANGING DOWN */
+    for (const [dx, k] of [[-0.7, 0.85], [0.15, 1], [0.85, 0.8]] as const) {
+      const tx = x + dx * R * 1.1, ty = y + R * 0.1, tl = R * 1.5 * k, tw = R * 0.42 * k;
+      const gg = c.createLinearGradient(tx, ty, tx, ty + tl);
+      gg.addColorStop(0, col); gg.addColorStop(1, 'rgba(255,250,235,0.95)');
+      c.fillStyle = gg;
+      c.beginPath(); c.moveTo(tx - tw * 0.28, ty);
+      c.quadraticCurveTo(tx - tw * 0.5, ty + tl * 0.62, tx - tw, ty + tl);        /* flaring left wall */
+      c.lineTo(tx - tw * 0.3, ty + tl * 0.92);                                    /* the recurved lip points */
+      c.lineTo(tx, ty + tl * 1.04); c.lineTo(tx + tw * 0.3, ty + tl * 0.92);
+      c.lineTo(tx + tw, ty + tl);
+      c.quadraticCurveTo(tx + tw * 0.5, ty + tl * 0.62, tx + tw * 0.28, ty);
+      c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(120,90,50,0.35)'; c.lineWidth = 1.4;
+      c.beginPath(); c.moveTo(tx - tw * 0.1, ty + tl * 0.1); c.lineTo(tx - tw * 0.5, ty + tl * 0.9); c.stroke();
+    }
   } else if (kind === 'cone') {
     /* ★ WAVE 58 — A CONEFLOWER: backswept drooping rays under a RAISED bristly
        central cone. Echinacea, Rudbeckia, Chamomile. The plain 'head' drew a

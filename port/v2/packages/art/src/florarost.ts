@@ -262,7 +262,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Echinacea': T({ hue: '#52693f', habit: 'herb', leaf: 'lance', flower: 'cone', fhue: '#c87ab0', leafArr: 'alternate' }),
   'Goldenrod': T({ hue: '#627d3d', habit: 'herb', leaf: 'lance', flower: 'spike', fhue: '#e0c430' }),
   'Black-Eyed Susan': T({ hue: '#5b6a37', habit: 'herb', leaf: 'lance', flower: 'cone', fhue: '#e8b820', leafArr: 'alternate' }),
-  'Bergamot': T({ hue: '#5d7451', habit: 'herb', leaf: 'lance', flower: 'head', fhue: '#c85a6a' }),
+  'Bergamot': T({ hue: '#5d7451', habit: 'herb', leaf: 'broad', flower: 'firework', fhue: '#c85a6a', toothed: true, square: true, leafArr: 'opposite' }),
   'Milkweed': T({ hue: '#7b8c78', habit: 'herb', leaf: 'broad', flower: 'umbel', fhue: '#d8a0b0' }),
   'Wormwood': T({ hue: '#b8baa8', habit: 'herb', leaf: 'pinnate', flower: 'spike', fhue: '#c0c090' }),
   'Mugwort': T({ hue: '#8f8f83', habit: 'herb', leaf: 'palmate', flower: 'spike', fhue: '#b8b898' }),
@@ -335,7 +335,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Roselle': T({ hue: '#8a4438', habit: 'shrub', leaf: 'palmate', flower: 'head', fhue: '#c02c4a' }),
   'Daisy': T({ hue: '#639654', habit: 'herb', leaf: 'lance', flower: 'head', fhue: '#f4f2e8' }),
   /* ★ WAVE 18 — the last of the unrouted flora, each read off its own row */
-  "Angel's Trumpet": T({ hue: '#6b5a44', habit: 'shrub', leaf: 'broad', flower: 'bell', fhue: '#f6e6cf' }),
+  "Angel's Trumpet": T({ hue: '#4a6a3c', habit: 'shrub', leaf: 'broad', flower: 'trumpet', fhue: '#f0d8a8', dense: true }),
   'Tree Tomato': T({ hue: '#5e5940', habit: 'tree', leaf: 'heart', fruit: 'berry', fhue: '#c8402a' }),
   "Solomon's Seal": T({ hue: '#6b936b', habit: 'herb', leaf: 'broad', flower: 'bell', fhue: '#f2f4ea' }),
   "Miner's Lettuce": T({ hue: '#8fc07e', habit: 'herb', leaf: 'pad', flower: 'head', fhue: '#f4f6ef' }),
