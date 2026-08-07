@@ -333,7 +333,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Vanilla Orchid': T({ hue: '#498a52', habit: 'vine', leaf: 'broad', flower: 'star', fhue: '#e8e0b8', rope: true, fruit: 'pod', pendulous: true }),
   'Orchid Pods': T({ hue: '#598861', habit: 'herb', leaf: 'lance', fruit: 'pod', fhue: '#5a4a2c' }),
   'Roselle': T({ hue: '#8a4438', habit: 'shrub', leaf: 'palmate', flower: 'head', fhue: '#c02c4a' }),
-  'Daisy': T({ hue: '#639654', habit: 'herb', leaf: 'lance', flower: 'head', fhue: '#f4f2e8' }),
+  'Daisy': T({ hue: '#639654', habit: 'herb', leaf: 'lance', flower: 'head', fhue: '#f4f2e8', leafArr: 'basal', stem: 'bare' }),
   /* ★ WAVE 18 — the last of the unrouted flora, each read off its own row */
   "Angel's Trumpet": T({ hue: '#4a6a3c', habit: 'shrub', leaf: 'broad', flower: 'trumpet', fhue: '#f0d8a8', dense: true }),
   'Tree Tomato': T({ hue: '#5e5940', habit: 'tree', leaf: 'heart', fruit: 'berry', fhue: '#c8402a' }),

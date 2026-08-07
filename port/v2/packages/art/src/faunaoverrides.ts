@@ -1412,7 +1412,7 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
      long angled wings of a fish-hunter. */
   'Hawk': (c, g, p, n) => faunaBird(c, g, p, { hue: '#96543a', legs: 0.02, bill: 'hook', tail: 'fan', talons: true, plump: 1.16, size: 0.96 }, n),
   'Falcon': (c, g, p, n) => faunaBird(c, g, p, { hue: '#55647a', legs: 0.02, bill: 'hook', talons: true, size: 0.76, plump: 0.88, elong: 1.16 }, n),
-  'Vulture': (c, g, p, n) => faunaBird(c, g, p, { hue: '#3a322c', legs: 0.03, bill: 'hook', wings: 'soaring', bald: true, talons: true, size: 1.10, plump: 1.14 }, n),
+  'Vulture': (c, g, p, n) => faunaBird(c, g, p, { hue: '#3a322c', legs: 0.03, bill: 'hook', bald: true, talons: true, size: 1.10, plump: 1.14 }, n),
   'Albatross': (c, g, p, n) => faunaBird(c, g, p, { hue: '#99a0a8', legs: 0.01, bill: 'hook', wings: 'soaring', size: 1.05 }, n),
   'Flamingo': (c, g, p, n) => faunaBird(c, g, p, { hue: '#ef92a6', legs: 0.14, bill: 'stout', neck: 'swan', size: 1.05 }, n),
   'Heron': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7b8fa3', legs: 0.13, bill: 'long', neck: 'swan', size: 0.98 }, n),
