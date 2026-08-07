@@ -1210,12 +1210,28 @@ export function amphSalamander(c: Ctx, g: G, pIn: Pal, opts: { gills?: boolean; 
 }
 
 /** STARFISH / BRITTLE STAR: five radial arms from a low central disc */
-export function marineStar(c: Ctx, g: G, pIn: Pal, opts: { brittle?: boolean; hue?: string }, name = ''): void {
+export function marineStar(c: Ctx, g: G, pIn: Pal, opts: { brittle?: boolean; disc?: boolean; hue?: string }, name = ''): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x57A1);
   const cx = S * 0.5, cy = S * 0.52, R = S * 0.215 * nvar(name, 0x31, 0.14);
-  const arms = 5, aw = opts.brittle ? 0.22 : 0.68;   /* plump, not spiky */
+  if (opts.disc) {
+    /* ★ WAVE 59 — a SAND DOLLAR is a flat round test with a five-petal
+       (petaloid) flower on top, NOT five arms (it shared the starfish body). */
+    ground(c, cx, cy + S * 0.13, S * 0.20);
+    c.fillStyle = grad(c, p, cx, cy, R * 0.9);
+    c.beginPath(); c.ellipse(cx, cy, R * 0.9, R * 0.82, 0, 0, TAU); c.fill();
+    rim(c, () => c.ellipse(cx, cy, R * 0.9, R * 0.82, 0, 0, TAU));
+    c.strokeStyle = 'rgba(120,100,70,0.5)'; c.lineWidth = 2.2;   /* the five petals */
+    for (let i = 0; i < 5; i++) { const a = -Math.PI / 2 + (i / 5) * TAU;
+      c.beginPath();
+      c.moveTo(cx, cy);
+      c.quadraticCurveTo(cx + Math.cos(a - 0.16) * R * 0.5, cy + Math.sin(a - 0.16) * R * 0.46, cx + Math.cos(a) * R * 0.62, cy + Math.sin(a) * R * 0.58);
+      c.quadraticCurveTo(cx + Math.cos(a + 0.16) * R * 0.5, cy + Math.sin(a + 0.16) * R * 0.46, cx, cy); c.stroke(); }
+    for (let i = 0; i < 50; i++) { const a = r() * TAU, d = r() * R * 0.85; softMark(c, cx + Math.cos(a) * d, cy + Math.sin(a) * d * 0.9, 3, 3, '120,100,70', 0.18); }
+    return;
+  }
+  const arms = 5, aw = opts.brittle ? 0.14 : 0.68;   /* plump, not spiky */
   ground(c, cx, cy + S * 0.13, S * 0.20);
   const body = (): void => {
     for (let i = 0; i < arms; i++) {
@@ -1459,7 +1475,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   /* ── RADIAL INVERTEBRATES ── body plans nothing else in the game had ── */
   'Starfish': (c, g, p, n) => marineStar(c, g, p, { hue: '#d96a2b', }, n),
   'Brittle Star': (c, g, p, n) => marineStar(c, g, p, { hue: '#96604f', brittle: true }, n),
-  'Sand Dollar': (c, g, p, n) => marineStar(c, g, p, { hue: '#dcd0b4', brittle: false }, n),
+  'Sand Dollar': (c, g, p, n) => marineStar(c, g, p, { hue: '#dcd0b4', disc: true }, n),
   'Sea Urchin': (c, g, p, n) => marineUrchin(c, g, speciesHue(p, '#2e2436'), { long: true }, n),
   'Sea Anemone': (c, g, p, n) => marineAnemone(c, g, p, { hue: '#dc5f57', }, n),
   'Tube Worm': (c, g, p, n) => marineAnemone(c, g, p, { hue: '#ccbfa0', tall: true }, n),
