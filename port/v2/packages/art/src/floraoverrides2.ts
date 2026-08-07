@@ -661,7 +661,10 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     c.lineWidth = tw * 2;
     c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.05, base - H * 0.5, cx + lean * S * 0.10, topY + H * 0.22); c.stroke();
     c.lineWidth = tw * 1.15;
-    const conifer = (spec.leaf === 'needle' || spec.leaf === 'scale') && spec.fruit === 'cone';
+    /* ★ WAVE 61 — only a TALL conifer is a spire. A pinyon pine is a low rounded
+       bushy tree, and gp5 rightly failed it as a Christmas-tree cone; those
+       (not tall) fall through to the normal rounded crown they read as before. */
+    const conifer = (spec.leaf === 'needle' || spec.leaf === 'scale') && spec.fruit === 'cone' && spec.tall;
     if (conifer) {
       /* ★ WAVE 58 — A CONIFER IS A CONICAL SPIRE OF TIERED BOUGHS, not a round
          deciduous lollipop (the judge failed Spruce/Cedar/Redwood for exactly
