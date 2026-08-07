@@ -135,6 +135,11 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★ WAVE 67c (committed): **soaring birds AIRBORNE** (ground+legs suppressed for wings:'soaring';
+Skua/Petrel/Snow Petrel gain the wings — closes the flying-posture FAIL set) · sorrel quintet
+de-duped (fan/stalked-hearts/cushion/arrow/trefoil) · Arctic Willow creeps. FAILs left: Bittern
+freeze-pose (upright bill-up — needs its own pose), Weaverbird nest, Bull Kelp stipe+bulb,
+Shiitake crack strength, Reindeer Lichen trunks, procedural bridge + 60 → gp6 + control → POLISH.
 ★ WAVE 67 (committed): Water Flea → bespoke DAPHNIA (translucent shell, gut, brood eggs, one eye,
 oar antennae, tail spine) · cushion alpines (spec.cushion — Purple Saxifrage/Bitterroot low
 stemless mounds) · Wild Thyme creep mat · Sea Fennel pad rosette · Glasswort/Samphire jointed
