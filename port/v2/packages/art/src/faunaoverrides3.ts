@@ -960,7 +960,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Reef Shark': F({ hue: '#838d7e', profile: 'fusiform', len: 0.25, depth: 0.066, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true }),
   'Juvenile Shark': F({ hue: '#a6b0b4', profile: 'fusiform', len: 0.21, depth: 0.058, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true }),
   'Great White Shark': F({ hue: '#6f7a80', profile: 'fusiform', len: 0.27, depth: 0.086, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, teeth: true }),
-  'Tiger Shark': F({ hue: '#62707a', profile: 'fusiform', len: 0.26, depth: 0.080, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, pattern: 'bands', teeth: true }),
+  'Tiger Shark': F({ hue: '#62707a', profile: 'fusiform', len: 0.26, depth: 0.080, tail: 'shark', snout: 'blunt', dorsal: 'sharkfin', shark: true, pattern: 'bands', teeth: true }),
   'Mako Shark': F({ hue: '#2f5f8f', profile: 'fusiform', len: 0.26, depth: 0.070, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, teeth: true }),
   'Whale Shark': F({ hue: '#47555f', profile: 'fusiform', len: 0.28, depth: 0.092, tail: 'shark', snout: 'blunt', dorsal: 'sharkfin', shark: true, pattern: 'spots' }),
   'Basking Shark': F({ hue: '#5f6560', profile: 'fusiform', len: 0.28, depth: 0.092, tail: 'shark', snout: 'blunt', dorsal: 'sharkfin', shark: true, gape: true }),

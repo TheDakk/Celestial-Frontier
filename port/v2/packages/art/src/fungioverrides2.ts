@@ -74,7 +74,7 @@ export function fungiLionsMane(c: Ctx, g: G, _p: Pal): void {
     const a = r() * TAU, d = r() ** 0.5 * R * 1.0;
     const x = cx + Math.cos(a) * d, y = cy + Math.sin(a) * d * 1.05;
     /* longer the lower the root sits — the cascade grows down the face */
-    const droop = 0.35 + ((y - (cy - R)) / (2 * R)) * 0.55;
+    const droop = 0.52 + ((y - (cy - R)) / (2 * R)) * 0.48;
     const len = R * droop * (0.7 + r() * 0.6);
     c.strokeStyle = i % 3 ? '#efe7d2' : '#d8cdb0'; c.lineWidth = 3.4 - (i % 2);
     c.beginPath(); c.moveTo(x, y);
