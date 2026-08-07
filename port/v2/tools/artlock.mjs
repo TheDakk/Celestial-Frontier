@@ -320,6 +320,19 @@ if (!lockExists && !has('bless')) {
   }
   const gone = Object.keys(lock.fp).filter((k) => !(k in now));
   const total = [...byClass.values()].reduce((a, v) => a + v.length, 0);
+  /* ★ WAVE 60 — --driftdump writes the changed-since-baseline set as {set,name}
+     rows for the cheap re-check (rejudgecards). The lock keys are already
+     `set|name`, so a drifted key IS the drift row. This makes the re-check
+     measure the ACTUAL current drift, not a stale hand-built list. */
+  if (has('driftdump')) {
+    const rows = [];
+    for (const list of byClass.values()) for (const [k] of list) {
+      const i = k.indexOf('|'); rows.push({ set: k.slice(0, i), name: k.slice(i + 1) });
+    }
+    rows.sort((a, b) => (a.set + a.name).localeCompare(b.set + b.name));
+    fs.writeFileSync(path.join(root, 'reference/drift-since-baseline.json'), JSON.stringify(rows, null, 1));
+    console.log('\n[DRIFT] wrote reference/drift-since-baseline.json — ' + rows.length + ' changed assets');
+  }
   console.log('\n[DRIFT] ' + total + ' of ' + keys.length + ' assets changed since ' + (lock.blessed || 'the lock')
     + (missing ? ' · ' + missing + ' new' : '') + (gone.length ? ' · ' + gone.length + ' VANISHED' : ''));
   console.log('        declared: ' + (touching.size ? [...touching].join(', ') : '(nothing — so nothing may move)'));
