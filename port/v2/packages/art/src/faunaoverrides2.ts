@@ -796,7 +796,17 @@ export function primate(c: Ctx, g: G, pIn: Pal, opts: { build: 'great' | 'lesser
     /* ★ wave 41 — protruding ear size as a fraction of head radius. A chimp's
        big round ears are its single most diagnostic feature and no primate
        here had an ear at all. */
-    ears?: number }, name = ''): void {
+    ears?: number;
+    /* ★ WAVE 62 — the per-species features gp5 failed the whole family for.
+       All optional/off, so unset species are byte-unchanged. */
+    muzzle?: number;          /** a projecting dog-like snout (baboon/mandrill), x headR */
+    nose?: 'pendulous';       /** the proboscis monkey's hanging nose */
+    throat?: boolean;         /** the howler's swollen beard/throat pouch */
+    mask?: 'mandrill';        /** scarlet nose stripe + ridged blue cheeks */
+    earTufts?: string;        /** marmoset's white fan tufts, colour given */
+    armLen?: number;          /** arm reach multiplier — gibbon ~1.6, spider ~1.5 */
+    tailLen?: number;         /** tail reach multiplier — langur/spider > 1 */
+    tailRinged?: boolean }, name = ''): void {
   /* ★ D-ART-114 — the species hue axis (17 primates were on the rarity roll). */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x9A1E);
@@ -809,19 +819,45 @@ export function primate(c: Ctx, g: G, pIn: Pal, opts: { build: 'great' | 'lesser
   const bw = S * 0.155 * scale * nvar(name, 0xCC, 0.14), bh = S * 0.165 * scale * nvar(name, 0xDD, 0.16);
   const armReach = nvar(name, 0xEE, 0.22);   /* a gibbon out-reaches a macaque */
   ground(c, cx, cy + bh + S * 0.06, S * 0.20);
+  const TL = opts.tailLen ?? 1;
   if (opts.tail) {   /* monkey tail, curling behind */
-    c.strokeStyle = p.dark; c.lineWidth = bh * 0.14; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(cx - bw * 0.8, cy + bh * 0.3);
-    c.bezierCurveTo(cx - bw * 2.4, cy + bh * 0.4, cx - bw * 2.6, cy - bh * 0.9, cx - bw * 1.5, cy - bh * 1.25); c.stroke();
+    const tw = bh * 0.14;
+    const T = (t: number): [number, number] => {   /* the tail bezier, parametric */
+      const m = 1 - t;
+      const p0: [number, number] = [cx - bw * 0.8, cy + bh * 0.3];
+      const p1: [number, number] = [cx - bw * 2.4 * TL, cy + bh * 0.4];
+      const p2: [number, number] = [cx - bw * 2.6 * TL, cy - bh * (0.9 + (TL - 1) * 0.8)];
+      const p3: [number, number] = [cx - bw * 1.5 * TL, cy - bh * (1.25 + (TL - 1) * 0.9)];
+      return [m * m * m * p0[0] + 3 * m * m * t * p1[0] + 3 * m * t * t * p2[0] + t * t * t * p3[0],
+        m * m * m * p0[1] + 3 * m * m * t * p1[1] + 3 * m * t * t * p2[1] + t * t * t * p3[1]];
+    };
+    if (opts.tailRinged) {
+      /* ★ WAVE 62 — the ring-tailed lemur IS its tail: alternating black/white
+         bands stroked segment by segment down the same curve. */
+      for (let i = 0; i < 14; i++) {
+        const [ax, ay] = T(i / 14), [bx2, by2] = T((i + 1) / 14);
+        c.strokeStyle = i % 2 ? '#1a1a1c' : '#e8e6e0'; c.lineWidth = tw * 1.3; c.lineCap = 'butt';
+        c.beginPath(); c.moveTo(ax, ay); c.lineTo(bx2, by2); c.stroke();
+      }
+      c.lineCap = 'round';
+    } else {
+      c.strokeStyle = p.dark; c.lineWidth = tw; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(...T(0));
+      for (let i = 1; i <= 14; i++) c.lineTo(...T(i / 14));
+      c.stroke();
+    }
   }
-  /* the long arms — a primate's signature reach, drawn behind the torso */
-  c.strokeStyle = p.dark; c.lineWidth = bh * (great ? 0.34 : 0.24); c.lineCap = 'round';
+  /* the long arms — a primate's signature reach, drawn behind the torso.
+     ★ WAVE 62 — armLen: a gibbon's arms are LONGER than its body (its whole
+     identity) and a spider monkey's limbs are thin ropes. */
+  const AL = opts.armLen ?? 1;
+  c.strokeStyle = p.dark; c.lineWidth = bh * (great ? 0.34 : 0.24) / Math.sqrt(AL); c.lineCap = 'round';
   for (const s of [-1, 1] as const) {
     c.beginPath(); c.moveTo(cx + s * bw * 0.66, cy - bh * 0.42);
-    c.quadraticCurveTo(cx + s * bw * (great ? 1.5 : 1.3) * armReach, cy + bh * 0.3, cx + s * bw * (great ? 1.15 : 1.0) * armReach, cy + bh * (great ? 1.05 : 0.95) * armReach);
+    c.quadraticCurveTo(cx + s * bw * (great ? 1.5 : 1.3) * armReach * AL, cy + bh * 0.3, cx + s * bw * (great ? 1.15 : 1.0) * armReach * AL, cy + bh * (great ? 1.05 : 0.95) * armReach * AL);
     c.stroke();
     c.fillStyle = p.dark;   /* the hand */
-    c.beginPath(); c.ellipse(cx + s * bw * (great ? 1.15 : 1.0) * armReach, cy + bh * (great ? 1.12 : 1.02) * armReach, bh * 0.16, bh * 0.20, s * 0.3, 0, TAU); c.fill();
+    c.beginPath(); c.ellipse(cx + s * bw * (great ? 1.15 : 1.0) * armReach * AL, cy + bh * (great ? 1.12 : 1.02) * armReach * AL, bh * 0.16, bh * 0.20, s * 0.3, 0, TAU); c.fill();
   }
   /* THE TORSO — broad at the shoulders, narrower at the hips. An ellipse
      made every primate the same ball; the shoulder-to-hip taper is what
@@ -918,6 +954,59 @@ export function primate(c: Ctx, g: G, pIn: Pal, opts: { build: 'great' | 'lesser
   c.beginPath(); c.ellipse(hx, hy - hr * 0.34, hr * 0.74, hr * 0.20, 0, 0, TAU); c.fill();   /* brow ridge */
   eye(c, hx - hr * 0.28, hy - hr * 0.05, hr * 0.14);
   eye(c, hx + hr * 0.28, hy - hr * 0.05, hr * 0.14);
+  /* ★ WAVE 62 — the per-species face features (all optional, see the opts). */
+  if (opts.muzzle) {
+    /* the baboon/mandrill DOG-LIKE projecting snout, dropped from the lower
+       face — the single feature gp5 said "IS the baboon". */
+    const mz = hr * opts.muzzle;
+    const mg = c.createLinearGradient(hx, hy + hr * 0.1, hx, hy + hr * 0.1 + mz * 1.3);
+    mg.addColorStop(0, `rgb(${p.cr * 0.72 + 40 | 0},${p.cg * 0.66 + 30 | 0},${p.cb * 0.62 + 26 | 0})`);
+    mg.addColorStop(1, `rgb(${p.cr * 0.4 | 0},${p.cg * 0.36 | 0},${p.cb * 0.34 | 0})`);
+    c.fillStyle = mg;
+    c.beginPath(); c.ellipse(hx, hy + hr * 0.55, mz * 0.62, mz * 0.78, 0, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(24,16,16,0.8)';   /* the nose pad at its end */
+    c.beginPath(); c.ellipse(hx, hy + hr * 0.55 + mz * 0.5, mz * 0.30, mz * 0.20, 0, 0, TAU); c.fill();
+  }
+  if (opts.mask === 'mandrill') {
+    /* scarlet nose stripe + ridged blue cheek flanges */
+    for (const s of [-1, 1] as const) {
+      c.fillStyle = '#4a6fc0';
+      c.beginPath(); c.ellipse(hx + s * hr * 0.5, hy + hr * 0.3, hr * 0.28, hr * 0.42, s * 0.25, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(30,50,110,0.6)'; c.lineWidth = 1.6;
+      for (let k = 1; k <= 3; k++) { c.beginPath(); c.moveTo(hx + s * hr * (0.3 + k * 0.1), hy + hr * 0.02); c.lineTo(hx + s * hr * (0.36 + k * 0.1), hy + hr * 0.62); c.stroke(); }
+    }
+    c.fillStyle = '#d8302a';
+    c.beginPath(); c.ellipse(hx, hy + hr * 0.4, hr * 0.14, hr * 0.55, 0, 0, TAU); c.fill();
+  }
+  if (opts.nose === 'pendulous') {
+    /* the proboscis monkey's hanging nose — drops PAST the mouth */
+    const ng = c.createLinearGradient(hx, hy + hr * 0.05, hx, hy + hr * 0.95);
+    ng.addColorStop(0, `rgb(${Math.min(255, p.cr * 1.05 | 0)},${p.cg * 0.8 | 0},${p.cb * 0.72 | 0})`);
+    ng.addColorStop(1, `rgb(${p.cr * 0.72 | 0},${p.cg * 0.5 | 0},${p.cb * 0.45 | 0})`);
+    c.fillStyle = ng;
+    c.beginPath();
+    c.moveTo(hx - hr * 0.20, hy + hr * 0.05);
+    c.quadraticCurveTo(hx - hr * 0.30, hy + hr * 0.6, hx - hr * 0.14, hy + hr * 0.92);
+    c.quadraticCurveTo(hx, hy + hr * 1.02, hx + hr * 0.14, hy + hr * 0.92);
+    c.quadraticCurveTo(hx + hr * 0.30, hy + hr * 0.6, hx + hr * 0.20, hy + hr * 0.05);
+    c.closePath(); c.fill();
+  }
+  if (opts.throat) {
+    /* the howler's swollen bearded throat pouch under the jaw */
+    c.fillStyle = `rgb(${p.cr * 0.55 | 0},${p.cg * 0.5 | 0},${p.cb * 0.48 | 0})`;
+    c.beginPath(); c.ellipse(hx, hy + hr * 1.05, hr * 0.55, hr * 0.45, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(0,0,0,0.3)'; c.lineWidth = 1.4;   /* beard strands */
+    for (let k = -2; k <= 2; k++) { c.beginPath(); c.moveTo(hx + k * hr * 0.16, hy + hr * 0.85); c.lineTo(hx + k * hr * 0.20, hy + hr * 1.4); c.stroke(); }
+  }
+  if (opts.earTufts) {
+    /* the marmoset's white fan tufts bursting from each ear */
+    c.strokeStyle = opts.earTufts; c.lineWidth = 2; c.lineCap = 'round';
+    for (const s of [-1, 1] as const) for (let k = 0; k < 7; k++) {
+      const a = s * (0.5 + k * 0.16);
+      c.beginPath(); c.moveTo(hx + s * hr * 0.8, hy);
+      c.lineTo(hx + s * hr * 0.8 + Math.sin(a) * hr * 0.75, hy - Math.cos(a) * hr * 0.45 + hr * 0.2); c.stroke();
+    }
+  }
   c.fillStyle = 'rgba(30,20,20,0.6)';   /* nostrils + mouth */
   c.beginPath(); c.ellipse(hx - hr * 0.09, hy + hr * 0.34, hr * 0.06, hr * 0.05, 0, 0, TAU); c.fill();
   c.beginPath(); c.ellipse(hx + hr * 0.09, hy + hr * 0.34, hr * 0.06, hr * 0.05, 0, 0, TAU); c.fill();
@@ -1459,19 +1548,19 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Gorilla': (c, g, p, n) => primate(c, g, p, { hue: '#2b2a2c', build: 'great' }, n),
   'Chimpanzee': (c, g, p, n) => primate(c, g, p, { hue: '#3a2f28', build: 'great', ears: 0.62 }, n),
   'Orangutan': (c, g, p, n) => primate(c, g, p, { hue: '#a8501c', build: 'great', ruff: true }, n),
-  'Gibbon': (c, g, p, n) => primate(c, g, p, { hue: '#7d6746', build: 'lesser' }, n),
-  'Baboon': (c, g, p, n) => primate(c, g, p, { hue: '#8a7549', build: 'lesser', tail: true }, n),
-  'Mandrill': (c, g, p, n) => primate(c, g, p, { hue: '#5c5136', build: 'lesser', tail: true, ruff: true }, n),
+  'Gibbon': (c, g, p, n) => primate(c, g, p, { hue: '#7d6746', build: 'lesser', armLen: 1.65 }, n),
+  'Baboon': (c, g, p, n) => primate(c, g, p, { hue: '#8a7549', build: 'lesser', tail: true, muzzle: 0.85 }, n),
+  'Mandrill': (c, g, p, n) => primate(c, g, p, { hue: '#5c5136', build: 'lesser', tail: true, ruff: true, muzzle: 0.8, mask: 'mandrill' }, n),
   'Macaque': (c, g, p, n) => primate(c, g, p, { hue: '#948872', build: 'lesser', tail: true }, n),
-  'Langur': (c, g, p, n) => primate(c, g, p, { hue: '#9a9689', build: 'lesser', tail: true }, n),
-  'Proboscis Monkey': (c, g, p, n) => primate(c, g, p, { hue: '#c07b45', build: 'lesser', tail: true }, n),
-  'Howler Monkey': (c, g, p, n) => primate(c, g, p, { hue: '#3b2b22', build: 'monkey', tail: true }, n),
-  'Spider Monkey': (c, g, p, n) => primate(c, g, p, { hue: '#4a3527', build: 'monkey', tail: true }, n),
+  'Langur': (c, g, p, n) => primate(c, g, p, { hue: '#9a9689', build: 'lesser', tail: true, tailLen: 1.5 }, n),
+  'Proboscis Monkey': (c, g, p, n) => primate(c, g, p, { hue: '#c07b45', build: 'lesser', tail: true, nose: 'pendulous' }, n),
+  'Howler Monkey': (c, g, p, n) => primate(c, g, p, { hue: '#3b2b22', build: 'monkey', tail: true, throat: true }, n),
+  'Spider Monkey': (c, g, p, n) => primate(c, g, p, { hue: '#4a3527', build: 'monkey', tail: true, armLen: 1.5, tailLen: 1.5 }, n),
   'Capuchin': (c, g, p, n) => primate(c, g, p, { hue: '#6b4a30', build: 'monkey', tail: true }, n),
-  'Marmoset': (c, g, p, n) => primate(c, g, p, { hue: '#a4917c', build: 'monkey', tail: true, ruff: true }, n),
+  'Marmoset': (c, g, p, n) => primate(c, g, p, { hue: '#a4917c', build: 'monkey', tail: true, ruff: true, earTufts: '#f0eee8' }, n),
   'Tamarin': (c, g, p, n) => primate(c, g, p, { hue: '#e08214', build: 'monkey', tail: true, ruff: true }, n),
   'Monkey': (c, g, p, n) => primate(c, g, p, { hue: '#86643f', build: 'monkey', tail: true }, n),
-  'Lemur': (c, g, p, n) => primate(c, g, p, { hue: '#a9a49b', build: 'monkey', tail: true, ruff: true }, n),
+  'Lemur': (c, g, p, n) => primate(c, g, p, { hue: '#a9a49b', build: 'monkey', tail: true, ruff: true, tailRinged: true, tailLen: 1.3 }, n),
   'Aye-Aye': (c, g, p, n) => primate(c, g, p, { hue: '#241f1d', build: 'monkey', tail: true, ruff: true }, n),
   /* ── RAYS ── the flat disc and the whip tail */
   'Manta Ray': (c, g, p, n) => marineRay(c, g, p, { hue: '#2b3a4a', }, n),
