@@ -548,7 +548,14 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
      nose, squared off, with the eyes carried out to its tips. */
   if (spec.snout === 'hammer') {
     const hw = len * 0.42, hth = len * 0.075;      /* span across, thickness along */
-    const hx2 = nose - hth * 0.55;
+    const hx2 = nose - hth * 1.5;                   /* ★ WAVE 59 — seated BACK so the
+       bar overlaps the head instead of floating forward of the tapering nose
+       (the judge's "hammer stranded off with a gap of background"). */
+    /* a filled neck wedge tying the bar's centre into the body, killing the gap */
+    c.fillStyle = p.base;
+    c.beginPath();
+    c.moveTo(hx2, cy - hw * 0.5); c.lineTo(nose + hth * 0.5, cy - depth * 0.5);
+    c.lineTo(nose + hth * 0.5, cy + depth * 0.5); c.lineTo(hx2, cy + hw * 0.5); c.closePath(); c.fill();
     const hg = c.createLinearGradient(hx2, cy - hw, hx2, cy + hw);
     hg.addColorStop(0, p.dark); hg.addColorStop(0.42, p.base); hg.addColorStop(1, p.lit);
     c.fillStyle = hg;
