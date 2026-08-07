@@ -1087,9 +1087,12 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
          The judge failed these as a "bundle of straight strands / wheat sheaf";
          they are a broad ruffled frond rising from a holdfast. */
       holdfast(c, cx, base, barkCol);
-      const blades = spec.leaf === 'frond' ? 3 : 2;
+      /* ★ WAVE 66 — flowerN doubles as BLADE COUNT here: Sugar Kelp's must-read
+         is ONE unbranched ribbon "never split into fingers" (flowerN 1), while
+         Dulse's hand reads as several lobes. */
+      const blades = Math.max(1, spec.flowerN ?? (spec.leaf === 'frond' ? 3 : 2));
       for (let b = 0; b < blades; b++) {
-        const t = (b / (blades - 1)) - 0.5;
+        const t = blades === 1 ? 0 : (b / (blades - 1)) - 0.5;
         const bx = cx + t * S * 0.12, topY = base - H * (0.9 + r() * 0.1);
         const wob = (yy: number): number => Math.sin(yy * 0.09 + b) * S * 0.02;   /* the ruffle */
         c.fillStyle = leafGrad(c, p, cx, base - H * 0.5, H * 0.5);
