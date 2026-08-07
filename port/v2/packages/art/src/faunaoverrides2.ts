@@ -264,7 +264,11 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
 export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horns?: boolean; long?: boolean; stout?: number; tail?: number; hue?: string;
     /* ★ wave 45 G10 — the anole's pink throat fan, its mustRead and the trait
        that separates it from the gecko it was sharing an asset with. */
-    dewlap?: boolean }, name = ''): void {
+    dewlap?: boolean;
+    /* ★ WAVE 62 — the monitor/komodo forked tongue, flicking forward */
+    tongue?: boolean;
+    /* ★ WAVE 62 — a blocky, massive skull (tegu) instead of the shared ellipse */
+    blocky?: boolean }, name = ''): void {
   /* ★ D-ART-114 — the species hue axis (18 lizards were on the rarity roll). */
   const p = speciesHue(pIn, opts.hue);
   /* ★ WAVE 22 — THE PROPORTION PASS. tools/proportioncheck.mjs measured every
@@ -299,7 +303,7 @@ export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horn
   for (const far of [true, false]) {
     const m = far ? 0.58 : 1;
     c.strokeStyle = `rgb(${(p.cr * 0.42 * m) | 0},${(p.cg * 0.44 * m) | 0},${(p.cb * 0.38 * m) | 0})`;
-    c.lineWidth = bh * (far ? 0.34 : 0.44);
+    c.lineWidth = bh * (far ? 0.34 : 0.44) * Math.sqrt(stout);
     const push = far ? -bw * 0.10 : bw * 0.05;
     const drop = far ? 18 : 27;
     for (const sx of [-0.55, 0.55]) {
@@ -393,11 +397,33 @@ export function reptLizard(c: Ctx, g: G, pIn: Pal, opts: { crest?: boolean; horn
     c.stroke();
   }
   c.fillStyle = grad(c, p, hx, hy, headW);
-  c.beginPath(); c.ellipse(hx, hy, headW, headH, -0.1, 0, TAU); c.fill();
-  rim(c, () => c.ellipse(hx, hy, headW, headH, -0.1, -2.8, 0.3));
+  if (opts.blocky) {
+    /* ★ WAVE 62 — the tegu's massive squared skull: a deep rounded RECT with
+       heavy jowls, not the family ellipse. */
+    const bwd = headW * 1.1, bht = headH * 1.3;
+    c.beginPath();
+    c.moveTo(hx - bwd, hy - bht * 0.6);
+    c.quadraticCurveTo(hx - bwd * 0.4, hy - bht, hx + bwd * 0.7, hy - bht * 0.72);
+    c.quadraticCurveTo(hx + bwd * 1.05, hy - bht * 0.1, hx + bwd * 0.85, hy + bht * 0.5);
+    c.quadraticCurveTo(hx, hy + bht * 0.95, hx - bwd * 0.8, hy + bht * 0.6);
+    c.closePath(); c.fill();
+    rim(c, () => { c.moveTo(hx - bwd, hy - bht * 0.6); c.quadraticCurveTo(hx - bwd * 0.4, hy - bht, hx + bwd * 0.7, hy - bht * 0.72); });
+  } else {
+    c.beginPath(); c.ellipse(hx, hy, headW, headH, -0.1, 0, TAU); c.fill();
+    rim(c, () => c.ellipse(hx, hy, headW, headH, -0.1, -2.8, 0.3));
+  }
   eye(c, hx - headW * 0.15, hy - headH * 0.38, Math.max(3.6, headH * 0.24), true);
   c.strokeStyle = 'rgba(0,0,0,0.3)'; c.lineWidth = 2;
   c.beginPath(); c.moveTo(hx - headW * 0.45, hy + headH * 0.36); c.lineTo(hx + headW * 0.92, hy + headH * 0.26); c.stroke();
+  if (opts.tongue) {
+    /* ★ WAVE 62 — the forked tongue mid-flick, the monitor's defining read */
+    c.strokeStyle = '#c8384a'; c.lineWidth = Math.max(2, headH * 0.10); c.lineCap = 'round';
+    const tx0 = hx + headW * 0.95, ty0 = hy + headH * 0.10;
+    const tx1 = tx0 + headW * 0.85, ty1 = ty0 - headH * 0.16;
+    c.beginPath(); c.moveTo(tx0, ty0); c.quadraticCurveTo(tx0 + headW * 0.4, ty0 - headH * 0.02, tx1, ty1); c.stroke();
+    c.beginPath(); c.moveTo(tx1, ty1); c.lineTo(tx1 + headW * 0.30, ty1 - headH * 0.24); c.stroke();
+    c.beginPath(); c.moveTo(tx1, ty1); c.lineTo(tx1 + headW * 0.32, ty1 + headH * 0.10); c.stroke();
+  }
   if (opts.horns) {
     /* THE CROWN — a fan of horns off the BACK of the skull, longest in the
        middle, each rooted inside the head so it grows out rather than sits on */
@@ -1465,10 +1491,10 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Racer': (c, g, p, n) => reptSnake(c, g, p, { hue: '#35404a', pattern: 'plain', gauge: 0.62 }, n),
   'Snake': (c, g, p, n) => reptSnake(c, g, p, { hue: '#6f5b3e', pattern: 'saddle' }, n),
   /* ── LIZARDS ── the sprawled stance: elbows OUT, belly low, tail long */
-  'Monitor Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#55503f', long: true, stout: 1.30, tail: 1.05 }, n),
-  'Komodo Dragon': (c, g, p, n) => reptLizard(c, g, p, { hue: '#77706a', long: true, stout: 1.62, tail: 0.92 }, n),
+  'Monitor Lizard': (c, g, p, n) => reptLizard(c, g, p, { hue: '#55503f', long: true, stout: 1.30, tail: 1.05, tongue: true }, n),
+  'Komodo Dragon': (c, g, p, n) => reptLizard(c, g, p, { hue: '#77706a', long: true, stout: 1.62, tail: 0.92, tongue: true }, n),
   'Gila Monster': (c, g, p, n) => reptLizard(c, g, p, { hue: '#cf5f22', stout: 1.72, tail: 0.62 }, n),
-  'Tegu': (c, g, p, n) => reptLizard(c, g, p, { hue: '#3e4240', long: true, stout: 1.45, tail: 0.95 }, n),
+  'Tegu': (c, g, p, n) => reptLizard(c, g, p, { hue: '#3e4240', long: true, stout: 1.45, tail: 0.95, blocky: true }, n),
   'Gecko': (c, g, p, n) => reptLizard(c, g, p, { hue: '#c3a582', stout: 1.28, tail: 0.72 }, n),
   'Skink': (c, g, p, n) => reptLizard(c, g, p, { hue: '#7a5a34', stout: 1.06, tail: 1.12 }, n),
   'Anole': (c, g, p, n) => reptLizard(c, g, p, { hue: '#5fbf5a', stout: 1.20, tail: 0.98, dewlap: true }, n),
