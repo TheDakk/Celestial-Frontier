@@ -46,7 +46,7 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Robin': B({ legs: 0.018, bill: 'fine', size: 0.50, hue: '#6d6154', plump: 1.28, elong: 0.86, bib: '#d4622a' }),
   'Cardinal': B({ legs: 0.018, bill: 'cone', size: 0.54, hue: '#c0261f', plump: 1.22, elong: 0.88, crest: true, mask: true }),
   'Tanager': B({ legs: 0.015, bill: 'cone', size: 0.48, hue: '#c9342b', plump: 1.12, elong: 0.94 }),
-  'Weaverbird': B({ legs: 0.015, bill: 'cone', size: 0.46, hue: '#e3c231', plump: 1.10, elong: 0.94, mask: true }),
+  'Weaverbird': B({ legs: 0.015, bill: 'cone', size: 0.46, hue: '#e3c231', plump: 1.10, elong: 0.94, mask: true, nest: true }),
   'Starling': B({ legs: 0.018, bill: 'fine', size: 0.52, hue: '#2b2f3d', plump: 0.94, elong: 1.06, speckle: true  }),
   'Lark': B({ legs: 0.020, bill: 'fine', size: 0.48, hue: '#9c8560', plump: 0.98, elong: 1.06, streak: true, crest: true }),
   'Swallow': B({ legs: 0.012, bill: 'fine', size: 0.46, hue: '#2f4a6b', plump: 0.74, elong: 1.34, tail: 'forked', bib: '#c9743e' }),
