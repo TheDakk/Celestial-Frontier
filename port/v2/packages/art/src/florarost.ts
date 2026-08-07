@@ -51,7 +51,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   /* ── CITRUS ── */
   'Orange': T({ hue: '#26692f', habit: 'tree', leaf: 'broad', fruit: 'citrus', fhue: '#e0821f' }),
   'Lemon': T({ hue: '#448438', habit: 'tree', leaf: 'broad', fruit: 'citrus', fhue: '#ddc72c' }),
-  'Lime': T({ hue: '#4e9b45', habit: 'tree', leaf: 'broad', fruit: 'citrus', fhue: '#8fb52c' }),
+  'Lime': T({ hue: '#4e9b45', habit: 'tree', leaf: 'broad', fruit: 'citrus', fhue: '#4a9a34' }),
   /* ── NUT AND SPICE TREES ── */
   'Chestnut': T({ hue: '#557c30', habit: 'tree', leaf: 'lance', fruit: 'spiky', fhue: '#7a8a3a' }),
   'Walnut': T({ hue: '#466d2d', habit: 'tree', leaf: 'pinnate', fruit: 'nut', fhue: '#5c4028' }),
@@ -121,7 +121,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Blueberry': T({ hue: '#507855', habit: 'shrub', leaf: 'broad', fruit: 'berry', fhue: '#3a4a80' }),
   'Wild Blueberry': T({ hue: '#5b804e', habit: 'shrub', leaf: 'broad', fruit: 'berry', fhue: '#34446e' }),
   'Mountain Blueberry': T({ hue: '#5a7566', habit: 'shrub', leaf: 'broad', fruit: 'berry', fhue: '#3e5090' }),
-  'Arctic Blueberry': T({ hue: '#717851', habit: 'shrub', leaf: 'broad', fruit: 'berry', fhue: '#44548a' }),
+  'Arctic Blueberry': T({ hue: '#717851', habit: 'shrub', leaf: 'broad', fruit: 'berry', fhue: '#44548a', creep: true }),
   'Bilberry': T({ hue: '#608743', habit: 'shrub', leaf: 'broad', fruit: 'berry', fhue: '#38406e' }),
   'Huckleberry': T({ hue: '#48613c', habit: 'shrub', leaf: 'broad', fruit: 'berry', fhue: '#3a2c48', creep: true }),
   'Lingonberry': T({ hue: '#2c5433', habit: 'shrub', leaf: 'broad', fruit: 'berry', fhue: '#b02c30', creep: true }),
@@ -296,7 +296,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Prickly Pear': T({ hue: '#8eaa7e', habit: 'succulent', leaf: 'pad', flower: 'head', fhue: '#e8c430', thorns: true }),
   'Barrel Cactus Fruit': T({ hue: '#729650', habit: 'succulent', leaf: 'needle', flower: 'head', fruit: 'berry', fhue: '#e0b028', thorns: true }),
   /* ── FERNS AND NON-VASCULAR ── */
-  'Sword Fern': T({ hue: '#316a3b', habit: 'fern', leaf: 'frond' }),
+  'Sword Fern': T({ hue: '#316a3b', habit: 'fern', leaf: 'frond', tall: true }),
   'Licorice Fern': T({ hue: '#5a9d4b', habit: 'fern', leaf: 'frond' }),
   'Cave Fern': T({ hue: '#244f3b', habit: 'fern', leaf: 'frond' }),
   'Maidenhair Fern': T({ hue: '#9cc784', habit: 'fern', leaf: 'frond' }),
