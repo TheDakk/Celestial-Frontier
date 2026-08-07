@@ -75,7 +75,7 @@ export interface FishSpec {
   tail: 'forked' | 'lunate' | 'round' | 'point' | 'shark' | 'fan' | 'none';
   snout: 'blunt' | 'jaw' | 'bill' | 'shovel' | 'tube' | 'hammer';
   dorsal: 'one' | 'sail' | 'two' | 'spiny' | 'none' | 'sharkfin';
-  pattern?: 'bands' | 'stripes' | 'spots' | 'mottle';
+  pattern?: 'bands' | 'stripes' | 'spots' | 'mottle' | 'clown';
   shark?: boolean;    /** gill slits, swept pectorals, heterocercal tail */
   lure?: boolean;     /** the anglerfish esca */
   glow?: boolean;     /** photophore rows */
@@ -462,6 +462,15 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
   } else if (spec.pattern === 'mottle') {
     for (let i = 0; i < 20; i++) {
       softMark(c, ped + r() * (nose - ped), cy - depth + r() * depth * 2, 12 + r() * 12, 9 + r() * 9, '26,30,24', 0.24);
+    }
+  } else if (spec.pattern === 'clown') {
+    /* ★ WAVE 59 — three WHITE vertical bands edged in black: the clownfish. */
+    for (const t of [0.28, 0.55, 0.80]) {
+      const x = ped + (nose - ped) * t;
+      c.strokeStyle = 'rgba(12,14,18,0.9)'; c.lineWidth = depth * 0.5;
+      c.beginPath(); c.moveTo(x, cy - depth * 1.4); c.lineTo(x - depth * 0.12, cy + depth * 1.4); c.stroke();
+      c.strokeStyle = 'rgba(248,250,252,0.96)'; c.lineWidth = depth * 0.32;
+      c.beginPath(); c.moveTo(x, cy - depth * 1.4); c.lineTo(x - depth * 0.12, cy + depth * 1.4); c.stroke();
     }
   }
   /* the lateral line — on nearly every bony fish, and it reads */
@@ -870,7 +879,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Oarfish': F({ hue: '#b6bcc6', profile: 'ribbon', len: 0.28, depth: 0.046, tail: 'point', snout: 'blunt', dorsal: 'spiny' }),
   'Pipefish': F({ hue: '#7f8a5a', profile: 'ribbon', len: 0.26, depth: 0.030, tail: 'point', snout: 'tube', dorsal: 'none' }),
   /* ── reef ── */
-  'Clownfish': F({ hue: '#f25a13', profile: 'deep', len: 0.16, depth: 0.070, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'bands' }),
+  'Clownfish': F({ hue: '#f25a13', profile: 'deep', len: 0.16, depth: 0.070, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'clown' }),
   'Damselfish': F({ hue: '#1d5fd6', profile: 'deep', len: 0.15, depth: 0.066, tail: 'forked', snout: 'blunt', dorsal: 'spiny' }),
   'Butterflyfish': F({ hue: '#f5c519', profile: 'deep', len: 0.145, depth: 0.100, tail: 'fan', snout: 'tube', dorsal: 'spiny', pattern: 'bands', eyespot: true }),
   'Surgeonfish': F({ hue: '#6aa6d6', profile: 'deep', len: 0.17, depth: 0.086, tail: 'lunate', snout: 'blunt', dorsal: 'spiny' }),
