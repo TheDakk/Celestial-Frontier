@@ -108,7 +108,10 @@ export interface PlantSpec {
      byte-unchanged until someone gives them a value on purpose (D-ART-14). */
   /** how the stem carries itself: a leafy upright, stiff near-naked branching
       wands (chicory, most composites), or a low creeping mat (thyme) */
-  stem?: 'leafy' | 'bare' | 'mat';
+  stem?: 'leafy' | 'bare' | 'mat'
+    /* ★ WAVE 66 — ONE ARCHING CANE (Solomon's Seal): leaves in a flat row along
+       the top, flowers dangling in a row BENEATH the curve */
+    | 'arch';
   /** leaves in opposite pairs (mint), singly up the stem (echinacea), or in a
       basal rosette with a naked flowering stem above (chicory, dandelion) */
   leafArr?: 'opposite' | 'alternate' | 'basal';
@@ -1146,6 +1149,41 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
        a herb can actually be, and puts its flowers where its architecture puts
        them. Defaults reproduce the old drawing exactly. */
     const arch = spec.stem ?? 'leafy';
+    if (arch === 'arch') {
+      /* ★ WAVE 66 — SOLOMON'S SEAL: one cane rising then ARCHING over to the
+         side; alternate leaves in one flat plane along its top; the bells
+         dangle in a row UNDERNEATH the curve. gp3/5 failed it for being bolt
+         upright with the flowers above the foliage. */
+      const A = (t: number): [number, number] => [    /* the cane, 0 root → 1 tip */
+        cx - S * 0.18 + t * S * 0.46,
+        base - Math.sin(Math.min(1, t * 1.25) * Math.PI * 0.52) * H * 0.95 + t * t * H * 0.28];
+      c.strokeStyle = stemCol; c.lineWidth = S * 0.009; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(...A(0));
+      for (let i = 1; i <= 20; i++) c.lineTo(...A(i / 20));
+      c.stroke();
+      for (let i = 0; i < 8; i++) {                    /* leaves along the TOP */
+        const t = 0.22 + (i / 8) * 0.72;
+        const [lx2, ly2] = A(t);
+        const [nx2, ny2] = A(Math.min(1, t + 0.05));
+        const ang2 = Math.atan2(ny2 - ly2, nx2 - lx2);
+        drawLeaf(c, p, lx2, ly2, ang2 - 0.55, S * 0.085 * nvf(name, 0x77 + i, 0.15), spec.leaf);
+      }
+      if (spec.flower && spec.flower !== 'none') {     /* bells dangle BENEATH */
+        for (let i = 0; i < 5; i++) {
+          const t = 0.34 + (i / 5) * 0.58;
+          const [fx2, fy2] = A(t);
+          c.strokeStyle = 'rgba(120,140,110,0.8)'; c.lineWidth = 1.6;
+          c.beginPath(); c.moveTo(fx2, fy2); c.lineTo(fx2, fy2 + S * 0.035); c.stroke();
+          const bw2 = S * 0.014;
+          c.fillStyle = spec.fhue ?? '#f2f4ea';
+          c.beginPath(); c.moveTo(fx2 - bw2, fy2 + S * 0.035);
+          c.quadraticCurveTo(fx2 - bw2 * 1.2, fy2 + S * 0.062, fx2, fy2 + S * 0.068);
+          c.quadraticCurveTo(fx2 + bw2 * 1.2, fy2 + S * 0.062, fx2 + bw2, fy2 + S * 0.035);
+          c.closePath(); c.fill();
+        }
+      }
+      return;
+    }
     const arr = spec.leafArr ?? 'opposite';
     const nF = Math.max(1, spec.flowerN ?? 1);
     const mat = arch === 'mat';
