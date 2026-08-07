@@ -555,7 +555,10 @@ export interface BirdSpec {
   legs: number;
   bill: 'hook' | 'long' | 'spoon' | 'stout' | 'huge' | 'short' | 'chisel' | 'needle' | 'duck' | 'cone' | 'fine'
     /* wave 38 G6 — the two bills that were sharing one asset */
-    | 'toucan' | 'casque';
+    | 'toucan' | 'casque'
+    /* ★ WAVE 59 — the WADER bills: a very long straight probe (snipe, godwit,
+       stork), a long downcurve (curlew, ibis) and a long upcurve (avocet). */
+    | 'probe' | 'downcurve' | 'upcurve';
   crest?: boolean;
   flightless?: boolean;
   /* ── wave 9 additions. All OPTIONAL and defaulted, so the wave-3 birds —
@@ -1193,6 +1196,15 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     } else if (opts.bill === 'needle') {   /* a hummingbird's whole face */
       c.strokeStyle = '#2b2118'; c.lineWidth = 3.4 * B; c.lineCap = 'round';
       c.beginPath(); c.moveTo(hx - 12 * B, hy + 1 * B); c.lineTo(hx - 96 * B, hy + 5 * B); c.stroke();
+    } else if (opts.bill === 'probe') {   /* ★ a wader's long straight dagger (snipe, godwit) */
+      c.strokeStyle = opts.billHue ?? '#3a2f22'; c.lineWidth = 5 * B; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(hx - 10 * B, hy); c.lineTo(hx - 104 * B, hy + 3 * B); c.stroke();
+    } else if (opts.bill === 'downcurve') {   /* ★ a curlew/ibis long smooth downcurve */
+      c.strokeStyle = opts.billHue ?? '#2b2118'; c.lineWidth = 5 * B; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(hx - 10 * B, hy - 1 * B); c.quadraticCurveTo(hx - 66 * B, hy + 2 * B, hx - 92 * B, hy + 34 * B); c.stroke();
+    } else if (opts.bill === 'upcurve') {   /* ★ an avocet's fine upward sweep */
+      c.strokeStyle = opts.billHue ?? '#2b2118'; c.lineWidth = 3.4 * B; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(hx - 10 * B, hy + 1 * B); c.quadraticCurveTo(hx - 60 * B, hy - 6 * B, hx - 88 * B, hy - 30 * B); c.stroke();
     } else if (opts.bill === 'duck') {   /* spatulate: broad, flat, rounded off */
       c.beginPath(); c.moveTo(hx - 12 * B, hy - 6 * B);
       c.quadraticCurveTo(hx - 48 * B, hy - 8 * B, hx - 54 * B, hy + 1 * B);
@@ -1324,10 +1336,10 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Crane': (c, g, p, n) => faunaBird(c, g, p, { hue: '#a3a39b', legs: 0.13, bill: 'long', crest: true, neck: 'long' }, n),
   'Stork': (c, g, p, n) => faunaBird(c, g, p, { hue: '#e6e2d8', legs: 0.12, bill: 'huge', neck: 'long' }, n),
   'Spoonbill': (c, g, p, n) => faunaBird(c, g, p, { hue: '#e2607f', legs: 0.11, bill: 'spoon', neck: 'long' }, n),
-  'Avocet': (c, g, p, n) => faunaBird(c, g, p, { hue: '#cfd2d4', legs: 0.11, bill: 'long' }, n),
-  'Ibis': (c, g, p, n) => faunaBird(c, g, p, { hue: '#b8352f', legs: 0.10, bill: 'long', neck: 'long' }, n),
-  'Snipe': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7a6440', legs: 0.06, bill: 'long' }, n),
-  'Godwit': (c, g, p, n) => faunaBird(c, g, p, { hue: '#9c6b3f', legs: 0.08, bill: 'long' }, n),
+  'Avocet': (c, g, p, n) => faunaBird(c, g, p, { hue: '#cfd2d4', legs: 0.11, bill: 'upcurve', neck: 'long' }, n),
+  'Ibis': (c, g, p, n) => faunaBird(c, g, p, { hue: '#b8352f', legs: 0.10, bill: 'downcurve', neck: 'long', billHue: '#b8352f' }, n),
+  'Snipe': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7a6440', legs: 0.06, bill: 'probe' }, n),
+  'Godwit': (c, g, p, n) => faunaBird(c, g, p, { hue: '#9c6b3f', legs: 0.08, bill: 'probe', neck: 'long' }, n),
   'Pelican': (c, g, p, n) => faunaBird(c, g, p, { hue: '#a9a89b', legs: 0.03, bill: 'huge' }, n),
   'Toucan': (c, g, p, n) => faunaBird(c, g, p, { hue: '#1b1a1c', legs: 0.02, bill: 'toucan' }, n),
   'Kookaburra': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6e5a45', legs: 0.02, bill: 'huge', headMass: 1.55, neck: 'none', size: 0.92 }, n),
