@@ -135,6 +135,21 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★★★ THE ROAD FROM HERE (Nick's standing orders: 100% PASS — clear FAILs, then sweep POLISH/PASS):
+1. **The felid/canid BARREL BODY** — the one deep chassis lever left (Tube phi-cross-section,
+   D-ART-152 machinery exists since wave 52; the neck/skull/tail/paw are all done).
+2. **Remaining fauna singles**: Bittern freeze-pose, Albatross/Skua/Petrel flying posture,
+   Weaverbird mask+nest, Snow Petrel; Catfish/Pangolin/Giant Anteater/River Otter ("Other or
+   uncertain"); Agouti/Capybara/Mara rodent chassis; Conch flared lip; Water Flea/Copepod/Krill/
+   Mite/Barnacle/Harvestman singles.
+3. **Flora bespoke tail** (~15: Solomon's Seal arch, Bergamot firework, Angel's Trumpet,
+   Miner's Lettuce perfoliate, Vanilla Orchid, cushion alpines, sorrel de-dupe, kelp singles).
+4. **Procedural 60** — ⚠ BLOCKED on the naming bridge (procedural gp names `fauna-h1-s3` vs
+   render names `f0·6#126` — adopt `filename` as the key, old open item #7). The fish fixes
+   (peduncle, eyeless, dorsal) already flow to procedural swimmers via the shared fishBody.
+5. **RE-MEASURE** with the calibrated harness (artlock --driftdump → rejudge + control), THEN
+6. **The POLISH→PASS sweep** (579 POLISH rows carry per-asset prose in goldpass5-results.json).
+
 ★ WAVE 64 (committed): **ALL 13 MICROBE FAILS ADDRESSED** — extremophile habitat wrappers
 (acid-red water+crust, ice facets+brine, hot-pink crowded brine, methane bubbles, root nodule
 with bacteroids, exactly-four tetrad, red-tide bloom field, iron-oxidizer bean+twisted ribbon,
