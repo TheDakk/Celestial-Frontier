@@ -135,6 +135,18 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★★★ WAVE 68 (committed) — **THE TRACTABLE FAIL SWEEP IS COMPLETE.** Lichen → bespoke crustose
+rosettes ON A BOULDER · Reindeer Lichen branching starts at the ground (stilts gone) ·
+Weaverbird woven ball nest (BirdSpec.nest). Every FAIL with a clear prescription has now been
+addressed across ALL SETS. The only unfixed FAILs remaining: Bittern's bill-up freeze pose (a
+full pose, deliberately deferred), Shiitake crack strength (minor), and the PROCEDURAL 60
+(blocked on the naming bridge — `fauna-h1-s3` ↔ `f0·6#126`; adopt filename as key). ★ NEXT
+SESSION: (1) run **gp6** — `node tools/artlock.mjs --driftdump` (regenerates vs the wave-56
+lock; expect ~500+ drifted), `node tools/rejudgecontrol.mjs`, `node tools/rejudgecards.mjs` +
+`--control`, judge both with the gp5 prompt (one agent per strip, schema rows, VERBATIM species),
+`node tools/rejudgemerge.mjs --fresh=... --control=...` — the ruler is calibrated, the delta will
+be real. (2) Then the **POLISH→PASS sweep** from goldpass5-results.json prose (579 rows, each
+carries its fix). (3) The procedural bridge. ⚠ Art is UNFROZEN now; freeze during the judge run.
 ★ WAVE 67c (committed): **soaring birds AIRBORNE** (ground+legs suppressed for wings:'soaring';
 Skua/Petrel/Snow Petrel gain the wings — closes the flying-posture FAIL set) · sorrel quintet
 de-duped (fan/stalked-hearts/cushion/arrow/trefoil) · Arctic Willow creeps. FAILs left: Bittern
