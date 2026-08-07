@@ -268,7 +268,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Mugwort': T({ hue: '#8f8f83', habit: 'herb', leaf: 'palmate', flower: 'spike', fhue: '#b8b898' }),
   'Valerian': T({ hue: '#587746', habit: 'herb', leaf: 'pinnate', flower: 'umbel', fhue: '#f0e0e8', root: 'rhizome' }),
   'Arnica': T({ hue: '#9c9f8d', habit: 'rosette', leaf: 'broad', flower: 'head', fhue: '#e8b830' }),
-  'Angelica': T({ hue: '#5d8e4d', habit: 'herb', leaf: 'pinnate', flower: 'umbel', fhue: '#e8ecd8' }),
+  'Angelica': T({ hue: '#5d8e4d', habit: 'herb', leaf: 'palmate', flower: 'umbel', fhue: '#e8ecd8', toothed: true, square: true, leafArr: 'alternate' }),
   'Fireweed': T({ hue: '#5b7c59', habit: 'herb', leaf: 'lance', flower: 'spike', fhue: '#d0509a' }),
   'Ginseng': T({ hue: '#4d7447', habit: 'herb', leaf: 'palmate', fruit: 'cluster', fhue: '#c02c2c', root: 'forked' }),
   'Ginger': T({ hue: '#4e9441', habit: 'rosette', leaf: 'lance', flower: 'spike', fhue: '#e0c060', root: 'rhizome' }),
