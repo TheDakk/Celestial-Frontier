@@ -143,20 +143,28 @@ function fungiBracket(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   const r = mulberry32(((g.seed as number) ^ 0xB47) >>> 0);
   c.fillStyle = '#231812'; c.fillRect(S * 0.16, S * 0.10, S * 0.14, S * 0.78);   /* the log */
   c.fillStyle = 'rgba(0,0,0,0.3)'; c.fillRect(S * 0.26, S * 0.10, S * 0.04, S * 0.78);
-  const shelves = 4 + (r() * 3 | 0);
+  /* ★ WAVE 59 — ROUNDED FAN BRACKETS with strong concentric banding, not the
+     pointed lozenges all five shelf species shared. Each shelf is a semicircle
+     bulging out from the log, banded in alternating tones (the turkey-tail read)
+     and overlapping the one below. */
+  const x0 = S * 0.30, shelves = 5 + (r() * 3 | 0);
   for (let i = 0; i < shelves; i++) {
-    const y = S * (0.20 + i * (0.62 / shelves)) + (r() - 0.5) * 10;
-    const w = S * (0.30 + r() * 0.22), h = S * (0.055 + r() * 0.03);
-    const gg = c.createLinearGradient(S * 0.30, y - h, S * 0.30 + w, y + h);
-    gg.addColorStop(0, p.lit); gg.addColorStop(0.6, p.base); gg.addColorStop(1, p.dark);
+    const y = S * (0.18 + i * (0.66 / shelves)) + (r() - 0.5) * 8;
+    const w = S * (0.24 + r() * 0.20), h = w * (0.62 + r() * 0.14);
+    /* the fan body */
+    const gg = c.createRadialGradient(x0, y, 2, x0, y, w);
+    gg.addColorStop(0, p.dark); gg.addColorStop(0.7, p.base); gg.addColorStop(1, p.lit);
     c.fillStyle = gg;
-    c.beginPath(); c.moveTo(S * 0.30, y);
-    c.quadraticCurveTo(S * 0.30 + w * 0.6, y - h, S * 0.30 + w, y - h * 0.2);
-    c.quadraticCurveTo(S * 0.30 + w * 0.6, y + h, S * 0.30, y + h);
-    c.closePath(); c.fill();
-    /* concentric growth bands (Turkey Tail signature) */
-    c.strokeStyle = 'rgba(255,255,255,0.14)'; c.lineWidth = 1.4;
-    for (let b = 1; b <= 3; b++) { c.beginPath(); c.ellipse(S * 0.30, y, w * (b / 3.4), h * (b / 3.4), 0, -1.0, 1.0); c.stroke(); }
+    c.beginPath(); c.ellipse(x0, y, w, h, 0, -Math.PI / 2.1, Math.PI / 2.1); c.closePath(); c.fill();
+    /* concentric growth bands, alternating tone — the species IS its banding */
+    for (let b = 1; b <= 6; b++) {
+      const rr = b / 6.5;
+      c.strokeStyle = b % 2 ? 'rgba(255,255,255,0.22)' : 'rgba(40,26,16,0.30)'; c.lineWidth = Math.max(1.4, h * 0.06);
+      c.beginPath(); c.ellipse(x0, y, w * rr, h * rr, 0, -Math.PI / 2.2, Math.PI / 2.2); c.stroke();
+    }
+    /* the pale fresh growing rim */
+    c.strokeStyle = 'rgba(245,240,225,0.5)'; c.lineWidth = 2;
+    c.beginPath(); c.ellipse(x0, y, w * 0.97, h * 0.97, 0, -Math.PI / 2.3, Math.PI / 2.3); c.stroke();
   }
 }
 function fungiPuffball(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
