@@ -1556,9 +1556,6 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
      the shared tall-oval ear had it inverted — the gold pass's words: "the ONE
      trait separating it from a rabbit, and it is inverted". */
   'Pika': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a08363', tail: 'stub', ears: 0.86, lagomorph: true }, n),
-  'Capybara': (c, g, p, n) => smallRodent(c, g, p, { hue: '#8b5e3c', tail: 'stub', ears: 0.34 }, n),
-  'Agouti': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7a4b28', tail: 'stub', ears: 0.44  }, n),
-  'Mara': (c, g, p, n) => smallRodent(c, g, p, { hue: '#8c8375', tail: 'stub', ears: 0.92 }, n),
   'Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7c7a72', tail: 'bushy', ears: 0.62   }, n),
   'Ground Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#ab8b5e', tail: 'long', ears: 0.34, earShape: 'nub' }, n),
   'Flying Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#9a8f81', tail: 'bushy', ears: 0.68 }, n),

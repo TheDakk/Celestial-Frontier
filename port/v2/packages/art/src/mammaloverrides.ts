@@ -150,6 +150,9 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* "black bandit mask · ringed banded tail · hunched arched back" */
   'Raccoon': { legs: 0.0769, depth: 0.1106, len: 0.1905, neck: 0.040, back: 'roached', muzzle: 0.30, ears: 'round', tail: 'banded', face: 'mask', hue: '#8d8a86', family: 'procyonid' },
   /* "flat scaly paddle tail · orange chisel incisors · stocky humped body" */
+  'Capybara': { legs: 0.062, depth: 0.158, len: 0.198, neck: 0.03, muzzle: 0.50, jaw: 'broad', ears: 'tiny', tail: 'none', hue: '#8b5e3c', family: 'rodent' },
+  'Agouti': { legs: 0.105, depth: 0.102, len: 0.152, neck: 0.04, back: 'roached', muzzle: 0.34, ears: 'small', tail: 'none', hue: '#7a4b28', family: 'rodent' },
+  'Mara': { legs: 0.138, depth: 0.098, len: 0.158, neck: 0.05, muzzle: 0.36, ears: 'large', tail: 'none', hue: '#8c8375', family: 'rodent' },
   'Beaver': { legs: 0.0521, depth: 0.1186, len: 0.214, neck: 0.032, back: 'humped', muzzle: 0.26, jaw: 'broad', ears: 'tiny', tail: 'paddle', hue: '#6b4a30', family: 'rodent' },
   /* "long bushy ringed tail · white face mask with rust tear-stripes · black legs" */
   'Red Panda': { legs: 0.0741, depth: 0.1099, len: 0.1712, neck: 0.038, muzzle: 0.26, ears: 'large', tail: 'banded', face: 'tears', hue: '#b5522a', family: 'procyonid' },
