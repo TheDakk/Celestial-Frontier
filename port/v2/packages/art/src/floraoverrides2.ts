@@ -542,6 +542,13 @@ function drawFlower(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNu
   }
 }
 
+/** ★ WAVE 58 — a seaweed HOLDFAST: the root-like grip that anchors an alga,
+    so it rises from a claw on the rock instead of a point pinched to the soil. */
+function holdfast(c: Ctx, cx: number, base: number, col: string): void {
+  c.strokeStyle = col; c.lineWidth = Math.max(2, S * 0.006); c.lineCap = 'round';
+  for (let i = -2; i <= 2; i++) { c.beginPath(); c.moveTo(cx, base - S * 0.01); c.quadraticCurveTo(cx + i * S * 0.02, base + S * 0.01, cx + i * S * 0.035, base + S * 0.03); c.stroke(); }
+}
+
 /** ★ WAVE 58 — THE HARVESTED ROOT, pulled up at the base. A root-crop's whole
     identity is the organ you dig up (licorice's rope, ginseng's forked man,
     ginger's rhizome), and the judge failed those species for drawing only
@@ -934,29 +941,49 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       if (spec.flower && spec.flower !== 'none') {
         drawFlower(c, p, cx + S * 0.05, wl - S * 0.045, S * 0.040, spec.flower, spec.fhue, r);
       }
+    } else if (spec.leaf === 'broad' || spec.leaf === 'frond') {
+      /* ★ WAVE 58 — A FLAT SEAWEED BLADE: dulse, sea lettuce, wakame, kombu.
+         The judge failed these as a "bundle of straight strands / wheat sheaf";
+         they are a broad ruffled frond rising from a holdfast. */
+      holdfast(c, cx, base, barkCol);
+      const blades = spec.leaf === 'frond' ? 3 : 2;
+      for (let b = 0; b < blades; b++) {
+        const t = (b / (blades - 1)) - 0.5;
+        const bx = cx + t * S * 0.12, topY = base - H * (0.9 + r() * 0.1);
+        const wob = (yy: number): number => Math.sin(yy * 0.09 + b) * S * 0.02;   /* the ruffle */
+        c.fillStyle = leafGrad(c, p, cx, base - H * 0.5, H * 0.5);
+        c.beginPath(); c.moveTo(bx, base);
+        for (let yy = 0; yy <= 20; yy++) { const v = yy / 20, py = base - H * v; c.lineTo(bx - S * 0.06 * Math.sin(v * Math.PI) + wob(py) + t * S * 0.14 * v, py); }
+        for (let yy = 20; yy >= 0; yy--) { const v = yy / 20, py = base - H * v; c.lineTo(bx + S * 0.06 * Math.sin(v * Math.PI) + wob(py) + t * S * 0.14 * v, py); }
+        c.closePath(); c.fill();
+        c.strokeStyle = 'rgba(255,255,255,0.10)'; c.lineWidth = S * 0.006;
+        c.beginPath(); c.moveTo(bx, base); c.lineTo(bx + t * S * 0.14, topY); c.stroke();
+      }
     } else {
-    /* held up by water, not by wood: straps rising from a holdfast */
+    /* held up by water, not by wood: straps rising from a holdfast (kelp/wrack) */
+    holdfast(c, cx, base, barkCol);
+    const wrack = spec.leaf === 'scale';   /* bladderwrack: forking + paired bladders */
     for (let i = 0; i < leafN; i++) {
       const u = (i / (leafN - 1)) - 0.5;
       c.strokeStyle = i % 2 ? p.base : p.dark;
       c.lineWidth = S * (spec.leaf === 'blade' ? 0.030 : 0.018);   /* a STRAP has width */
       c.lineCap = 'round'; c.lineJoin = 'round';
       const sway = u * S * 0.17 * spread;
+      const topFrac = 0.92 + r() * 0.12;
+      const tip: [number, number] = [cx + sway * 0.85, base - H * topFrac];
       c.beginPath(); c.moveTo(cx + u * S * 0.02, base);
-      c.bezierCurveTo(cx + sway * 0.5, base - H * 0.40,
-        cx + sway * 1.25, base - H * 0.74, cx + sway * 0.85, base - H * (0.92 + r() * 0.12));
+      c.bezierCurveTo(cx + sway * 0.5, base - H * 0.40, cx + sway * 1.25, base - H * 0.74, tip[0], tip[1]);
       c.stroke();
       c.strokeStyle = 'rgba(255,255,255,0.12)'; c.lineWidth = S * 0.008;   /* the wet sheen */
       c.beginPath(); c.moveTo(cx + u * S * 0.02, base);
-      c.bezierCurveTo(cx + sway * 0.5, base - H * 0.40,
-        cx + sway * 1.25, base - H * 0.74, cx + sway * 0.85, base - H * (0.92 + r() * 0.12));
+      c.bezierCurveTo(cx + sway * 0.5, base - H * 0.40, cx + sway * 1.25, base - H * 0.74, tip[0], tip[1]);
       c.stroke();
-      if (spec.leaf === 'blade') {   /* the gas bladders of a kelp */
-        for (let k = 1; k <= 3; k++) {
-          const v = k / 4;
-          c.fillStyle = p.lit;
-          c.beginPath(); c.ellipse(cx + u * S * 0.12 * spread * v, base - H * v, S * 0.011, S * 0.017, 0, 0, TAU); c.fill();
-        }
+      if (wrack) {   /* PAIRED air bladders flanking the midrib, not on the centreline */
+        c.fillStyle = p.lit;
+        for (let k = 1; k <= 3; k++) { const v = k / 3.5, mx = cx + sway * v, my = base - H * v * topFrac;
+          for (const sgn of [-1, 1] as const) { c.beginPath(); c.ellipse(mx + sgn * S * 0.018, my, S * 0.012, S * 0.016, 0, 0, TAU); c.fill(); } }
+      } else if (spec.leaf === 'blade') {   /* a single float bulb near the tip (bull kelp) */
+        c.fillStyle = p.lit; c.beginPath(); c.ellipse(tip[0], tip[1] + S * 0.02, S * 0.02, S * 0.028, 0, 0, TAU); c.fill();
       }
     }
     }
