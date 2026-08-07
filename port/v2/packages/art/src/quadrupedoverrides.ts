@@ -960,8 +960,38 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   const legUs: number[] = [];
   for (let i = 0; i < pairs; i++) legUs.push(0.175 + (i / Math.max(1, pairs - 1)) * 0.665);
   const coat = spec.coat ?? 'plain';
+  /* ★ WAVE 62 — A PINNIPED HAS NO STANDING LEGS. The quadruped leg loop gave
+     Seal/Sea Lion/Fur Seal four dog legs with paw pads ("the terrestrial
+     quadruped loaf", gp3/5). A pinniped rests its bulk on the ground: one broad
+     FORE-flipper sweeps down-and-back from the chest, and the HIND flippers
+     trail straight back from the rump as a fan. Walrus keeps this too. */
+  if (FAM0.foot === 'flipper') {
+    const dk = (k: number): string => `rgb(${p.cr * k | 0},${p.cg * k | 0},${p.cb * k | 0})`;
+    /* hind flippers: two stacked fans trailing back past the rump */
+    const rump = AX(0.02);
+    for (const [dy, m] of [[-bodyH * 0.10, 0.55], [bodyH * 0.06, 1]] as const) {
+      const fy = rump[1] + bodyH * 0.22 + dy, fx = rump[0] - bodyW * 0.06;
+      c.fillStyle = dk(0.62 * m);
+      c.beginPath(); c.moveTo(fx, fy);
+      c.quadraticCurveTo(fx - bodyW * 0.34, fy - bodyH * 0.24, fx - bodyW * 0.52, fy - bodyH * 0.10);
+      c.quadraticCurveTo(fx - bodyW * 0.40, fy + bodyH * 0.06, fx - bodyW * 0.52, fy + bodyH * 0.22);
+      c.quadraticCurveTo(fx - bodyW * 0.30, fy + bodyH * 0.24, fx, fy + bodyH * 0.10);
+      c.closePath(); c.fill();
+      c.strokeStyle = `rgba(0,0,0,0.25)`; c.lineWidth = 1.4;   /* the digit rays */
+      for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(fx - bodyW * 0.08, fy + bodyH * 0.02); c.lineTo(fx - bodyW * 0.48, fy - bodyH * 0.08 + i * bodyH * 0.14); c.stroke(); }
+    }
+    /* the fore-flipper: a broad paddle from the chest, angled down-back */
+    const chest = AX(0.78);
+    c.fillStyle = dk(0.58);
+    c.save(); c.translate(chest[0] - bodyW * 0.05, chest[1] + bodyH * 0.30); c.rotate(0.9);
+    c.beginPath(); c.ellipse(0, bodyH * 0.22, bodyW * 0.11, bodyH * 0.34, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(0,0,0,0.25)'; c.lineWidth = 1.4;
+    for (let i = -1; i <= 1; i++) { c.beginPath(); c.moveTo(i * bodyW * 0.035, bodyH * 0.04); c.lineTo(i * bodyW * 0.05, bodyH * 0.5); c.stroke(); }
+    c.restore();
+  } else {
   for (const u of legUs) drawLeg(u, -legW * 0.66, u < 0.5, true);      /* far side, shaded */
   for (const u of legUs) drawLeg(u, legW * 0.34, u < 0.5, false);      /* near side */
+  }
 
   /* ═══ the neck is computed AND DRAWN BEFORE THE TORSO (wave 6) ═══
      It used to be drawn over the body, so its outline crossed the shoulder
