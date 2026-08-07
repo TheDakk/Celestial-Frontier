@@ -111,12 +111,30 @@ Same method, in the fauna painters. Landed & committed:
   seam, not the one scallop bowl.
 - **Small rodents** (smallRodent): `earShape:'nub'` (existed, zero writers) for Vole/Water Vole/
   Prairie Dog/Ground Squirrel — buried ears not rabbit ears.
+- **Clownfish** (fishBody): new pattern:'clown' — three white black-edged bands.
+- **Gastropods** (marineShell): new `limpet` (ribbed cone) + `cowrie` (glossy toothed egg) kinds,
+  off the shared abalone dome.
+- **Echinoderm trio** (marineStar): Sand Dollar → `disc` (flat 5-petal test); Brittle Star arms
+  thinned — both off the starfish 5-arm body.
+- **Worm trio** (wormBody): Flatworm → broad flat ribbon; Leech → inchworm arch + sucker — off
+  the earthworm S-curve.
+- **Tube worms** (marineAnemone `worm`): a bundle of ringed tubes with scarlet plumes, off the
+  anemone cone.
+- **Felid tails** (quadrupedoverrides): Jaguar/Leopard/Cougar `tailScale` 1.7–1.8, Snow Leopard
+  plume→long 2.1 — the "short hook" was the top felid defect (tail branch respects tailScale
+  since D-ART-136; the specs just never set it).
+
+★★ **~14 fauna clusters landed, all eye-verified, tsc+vitest green, ~32 commits this session.**
 
 ## ★★★ THE HARD CORE THAT REMAINS: THE MAMMAL QUADRUPED CHASSIS (~70 FAIL)
-Big cats (11), Bears (8), Dogs (8), Rodents-mammal (Agouti/Capybara/Mara chassis), Primates (9),
-Marine mammals (10) — these share the quadruped/mammal chassis in `quadrupedoverrides.ts` +
+Big cats (bodies ~11), Bears (8), Dogs (8), Rodents-mammal (Agouti/Capybara/Mara), Primates (9),
+Marine mammals (10: pinnipeds need FLIPPERS not dog legs, whales need real cetacean bodies —
+Orca renders BROKEN). These share the quadruped/mammal chassis in `quadrupedoverrides.ts` +
 `mammaloverrides.ts`, the defect the ENTIRE project history is about (the pony; gp4 still says
-"Leopard = the Jaguar cell in a paler tan"). ⚠ DO NOT parameter-sweep it (D-ART-83); use the
+"Leopard = the Jaguar cell in a paler tan"). ⚠ Bears ALREADY have back:'humped' but read as a
+"sheep chassis" — it is a GESTALT problem (small head, stilt legs, short muzzle, hoof-not-paw
+feet), NOT one table value. This is the ~50-FAIL hard core; do it with tint-renders, family by
+family, NOT a sweep (D-ART-83). felid tail is improved; muzzle-shorter + paw-not-hoof remain. ⚠ DO NOT parameter-sweep it (D-ART-83); use the
 tint-render method (memory: "tint it flat and render") and the established model. The three gp4
 one-lever felid sub-defects: tail = body-length rope not short hook; muzzle shorter; paw not hoof.
 Remaining tractable non-chassis fauna clusters (do these the flora way): Reef fish (clownfish
