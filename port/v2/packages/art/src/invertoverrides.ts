@@ -1131,6 +1131,45 @@ export function sessileBody(c: Ctx, g: G, pIn: Pal, opts: { kind: 'branch' | 'tu
 }
 
 /* ── the roster: every key read out of the catalog ── */
+/* ★ WAVE 67 — DAPHNIA. The shrimp chassis could not say any of the three
+   must-reads: a TRANSLUCENT rounded carapace with the gut showing through, one
+   large dark compound eye, and the pointed tail spine. A bespoke water flea. */
+function waterFlea(c: Ctx, g: G, pIn: Pal, name = ''): void {
+  const p = hued(pIn, '#bcd6c4');
+  const r = nrng(g, name, 0xDAF1);
+  const cx = S * 0.5, cy = S * 0.5, R = S * 0.17;
+  shadow(c, cx, cy + R * 1.5, R * 1.1);
+  /* the translucent carapace: an egg tilted forward, low alpha with a rim */
+  const gg = c.createRadialGradient(cx - R * 0.3, cy - R * 0.3, 2, cx, cy, R * 1.2);
+  gg.addColorStop(0, 'rgba(230,245,235,0.5)'); gg.addColorStop(0.7, 'rgba(180,210,195,0.35)'); gg.addColorStop(1, 'rgba(120,160,145,0.3)');
+  c.fillStyle = gg;
+  c.save(); c.translate(cx, cy); c.rotate(0.35);
+  c.beginPath(); c.ellipse(0, 0, R * 0.85, R * 1.1, 0, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(190,220,205,0.8)'; c.lineWidth = 2; c.stroke();
+  /* the gut visible THROUGH the shell — a dark curved band */
+  c.strokeStyle = 'rgba(90,110,80,0.55)'; c.lineWidth = R * 0.16; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(-R * 0.1, -R * 0.75); c.quadraticCurveTo(R * 0.25, 0, -R * 0.05, R * 0.8); c.stroke();
+  /* eggs in the brood chamber (dorsal side) */
+  c.fillStyle = 'rgba(150,170,110,0.7)';
+  for (let i = 0; i < 4; i++) { c.beginPath(); c.arc(-R * 0.42 + (r() - 0.5) * R * 0.15, -R * 0.25 + i * R * 0.24, R * 0.10, 0, TAU); c.fill(); }
+  /* the pointed TAIL SPINE off the rear of the shell */
+  c.strokeStyle = 'rgba(150,180,165,0.9)'; c.lineWidth = 2.4;
+  c.beginPath(); c.moveTo(0, R * 1.05); c.lineTo(R * 0.3, R * 1.65); c.stroke();
+  c.restore();
+  /* the head beak + ONE large dark compound eye */
+  const hx = cx - R * 0.55, hy = cy - R * 0.75;
+  c.fillStyle = 'rgba(190,215,200,0.6)';
+  c.beginPath(); c.ellipse(hx, hy, R * 0.42, R * 0.38, -0.5, 0, TAU); c.fill();
+  c.fillStyle = '#181c1a'; c.beginPath(); c.arc(hx - R * 0.1, hy - R * 0.05, R * 0.16, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(255,255,255,0.6)'; c.beginPath(); c.arc(hx - R * 0.15, hy - R * 0.11, R * 0.05, 0, TAU); c.fill();
+  /* the branched swimming antennae — the oars */
+  c.strokeStyle = 'rgba(140,170,155,0.9)'; c.lineWidth = 2.2; c.lineCap = 'round';
+  for (const s of [-1, 1] as const) {
+    const ex = hx - R * 0.55 + s * R * 0.1, ey = hy - R * 0.7 - s * R * 0.25;
+    c.beginPath(); c.moveTo(hx, hy - R * 0.1); c.quadraticCurveTo(hx - R * 0.35, hy - R * 0.45, ex, ey); c.stroke();
+    for (const k of [0.3, 0.6, 1]) { c.beginPath(); c.moveTo(ex, ey); c.lineTo(ex - R * 0.28 * k, ey - s * R * 0.12 + R * 0.18 * k); c.stroke(); }
+  }
+}
 const I = (spec: InsectSpec): PainterI => (c, g, p, n) => insectBody(c, g, p, spec, n);
 const A = (o: Parameters<typeof arachnid>[3]): PainterI => (c, g, p, n) => arachnid(c, g, p, o, n);
 const M = (o: Parameters<typeof myriapod>[3]): PainterI => (c, g, p, n) => myriapod(c, g, p, o, n);
@@ -1217,7 +1256,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Krill': P({ tiny: true, gills: true, stalks: true, scale: 1.00, hue: '#e2705a' }),
   'Copepod': P({ hue: '#d18a4e', tiny: true, stout: true, eggSacs: true }),
   'Amphipod': P({ tiny: true, stout: true, scale: 0.74, hue: '#b9a274' }),
-  'Water Flea': P({ tiny: true, stout: true, scale: 0.58, hue: '#bcd6c4' }),
+  'Water Flea': (c, g, p, n) => waterFlea(c, g, p, n),
   'Isopod': (c, g, p, n) => isopodBody(c, g, p, { hue: '#6e6c73' }, n),
   'Giant Isopod': (c, g, p, n) => isopodBody(c, g, p, { giant: true, hue: '#c3b2b8' }, n),
   'Lobster': P({ hue: '#2f3a4e', claws: true }),
