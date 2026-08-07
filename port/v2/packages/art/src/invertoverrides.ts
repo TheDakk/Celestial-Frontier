@@ -731,11 +731,14 @@ export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stou
       }
     }
     if (opts.stalks) {
-      /* eyes on STALKS, held clear of the head */
+      /* ★ WAVE 66 — eyes on STALKS, held clear of the HEAD. They were drawn at
+         +0.78·L, which is the TAIL end — gp3's krill verdict was "a second pair
+         of stalked eyes sits on the ABDOMEN, so the tail end has a face". The
+         head (antennae, rostrum) is the NEGATIVE end of this body. */
       for (const sgn of [-1, 1]) {
-        const ex = cx + L * 0.78, ey = cy - L * 0.10 + sgn * L * 0.12;
+        const ex = cx - L * 0.78, ey = cy - L * 0.10 + sgn * L * 0.12;
         c.strokeStyle = p.dark; c.lineWidth = Math.max(1.4, L * 0.045); c.lineCap = 'round';
-        c.beginPath(); c.moveTo(cx + L * 0.58, cy - L * 0.02); c.lineTo(ex, ey); c.stroke();
+        c.beginPath(); c.moveTo(cx - L * 0.58, cy - L * 0.02); c.lineTo(ex, ey); c.stroke();
         c.fillStyle = '#14161c';
         c.beginPath(); c.arc(ex, ey, Math.max(2, L * 0.075), 0, TAU); c.fill();
         c.fillStyle = 'rgba(255,255,255,0.72)';
