@@ -511,23 +511,146 @@ const FUNGI_NAME: Record<string, Painter> = {
   'Stinkhorn': fungiStinkhorn,
   'Cordyceps': (c, g, p) => fungiCordyceps(c, g, speciesHue(p, '#e8541f')),
 };
+/* ★ WAVE 64 — THE HABITAT IS THE OBSERVATION. gp3/5 failed every extremophile
+   for the missing FIELD: acid-mine water is rust-red, ice has facets and brine
+   veins, a salt pond is hot pink and CROWDED, a methanogen mat bubbles. Each
+   wrapper paints the habitat, calls the untouched shared painter, then adds
+   the species' identity organ on top. */
+function habitatWash(c: Ctx, col: string, edge: string): void {
+  const gg = c.createRadialGradient(S * 0.5, S * 0.5, S * 0.05, S * 0.5, S * 0.5, S * 0.52);
+  gg.addColorStop(0, col); gg.addColorStop(1, edge);
+  c.fillStyle = gg; c.fillRect(S * 0.04, S * 0.04, S * 0.92, S * 0.92);
+}
+function microbeAcidophile(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
+  habitatWash(c, 'rgba(140,50,20,0.85)', 'rgba(70,22,8,0.9)');   /* iron-stained water */
+  const r = mulberry32(((g.seed as number) ^ 0xAC1D) >>> 0);
+  c.fillStyle = 'rgba(214,120,40,0.55)';   /* orange iron crust */
+  for (let i = 0; i < 14; i++) { c.beginPath(); c.ellipse(S * (0.1 + r() * 0.8), S * (0.72 + r() * 0.2), S * (0.03 + r() * 0.05), S * 0.015, 0, 0, TAU); c.fill(); }
+  microbeRods(c, g, tint(p, '#e8c890'));
+}
+function microbeCryophile(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
+  const r = mulberry32(((g.seed as number) ^ 0xC0D) >>> 0);
+  habitatWash(c, 'rgba(190,220,240,0.5)', 'rgba(120,160,200,0.55)');
+  c.strokeStyle = 'rgba(240,250,255,0.6)'; c.lineWidth = 2.4;   /* ice facet boundaries */
+  for (let i = 0; i < 7; i++) { const x = S * r(), y = S * r();
+    c.beginPath(); c.moveTo(x, y); c.lineTo(x + (r() - 0.5) * S * 0.5, y + (r() - 0.5) * S * 0.5); c.stroke(); }
+  c.strokeStyle = 'rgba(60,110,160,0.5)'; c.lineWidth = 6;   /* the brine vein holding the cells */
+  c.beginPath(); c.moveTo(S * 0.2, S * 0.6); c.quadraticCurveTo(S * 0.5, S * 0.4, S * 0.8, S * 0.55); c.stroke();
+  microbeRods(c, g, tint(p, '#9fd4e8'));
+}
+function microbeHalophile(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
+  habitatWash(c, 'rgba(232,80,150,0.75)', 'rgba(160,30,90,0.85)');   /* the pink brine pond */
+  const r = mulberry32(((g.seed as number) ^ 0x5A17) >>> 0);
+  microbeRods(c, g, tint(p, '#ffb0d8'));
+  c.fillStyle = 'rgba(255,190,220,0.8)';   /* CROWDED — pack the field with more cells */
+  for (let i = 0; i < 90; i++) { const x = S * (0.08 + r() * 0.84), y = S * (0.1 + r() * 0.8);
+    c.save(); c.translate(x, y); c.rotate(r() * TAU);
+    c.beginPath(); c.ellipse(0, 0, S * 0.022, S * 0.008, 0, 0, TAU); c.fill(); c.restore(); }
+}
+function microbeMethanogen(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
+  habitatWash(c, 'rgba(40,60,55,0.8)', 'rgba(16,28,26,0.9)');
+  microbeRods(c, g, tint(p, '#7f9aa6'));
+  const r = mulberry32(((g.seed as number) ^ 0xB0B) >>> 0);
+  for (let i = 0; i < 16; i++) {   /* the METHANE BUBBLES rising — the identity */
+    const x = S * (0.15 + r() * 0.7), y = S * (0.1 + r() * 0.7), rad = S * (0.012 + r() * 0.03);
+    c.strokeStyle = 'rgba(220,240,235,0.7)'; c.lineWidth = 1.8;
+    c.beginPath(); c.arc(x, y, rad, 0, TAU); c.stroke();
+    c.fillStyle = 'rgba(240,255,250,0.25)'; c.beginPath(); c.arc(x - rad * 0.3, y - rad * 0.3, rad * 0.4, 0, TAU); c.fill();
+  }
+}
+function microbeNitrogenFixer(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
+  const r = mulberry32(((g.seed as number) ^ 0xF1C5) >>> 0);
+  /* the ROOT with a pink-flushed nodule — the host tissue IS the identity */
+  c.strokeStyle = '#c8b890'; c.lineWidth = S * 0.05; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(S * 0.1, S * 0.3); c.quadraticCurveTo(S * 0.5, S * 0.42, S * 0.92, S * 0.34); c.stroke();
+  c.lineWidth = S * 0.016;
+  c.beginPath(); c.moveTo(S * 0.5, S * 0.42); c.quadraticCurveTo(S * 0.48, S * 0.6, S * 0.4, S * 0.8); c.stroke();
+  const ng = c.createRadialGradient(S * 0.52, S * 0.52, 4, S * 0.55, S * 0.56, S * 0.22);
+  ng.addColorStop(0, '#e8a0a8'); ng.addColorStop(0.7, '#c46f7a'); ng.addColorStop(1, '#8a4a52');   /* leghaemoglobin pink */
+  c.fillStyle = ng;
+  for (const [dx, dy, rr] of [[0, 0, 0.13], [0.1, 0.06, 0.09], [-0.08, 0.08, 0.08]] as const) {
+    c.beginPath(); c.arc(S * (0.55 + dx), S * (0.56 + dy), S * rr, 0, TAU); c.fill();
+  }
+  /* the bacteroids inside, clipped to the nodule */
+  c.save(); c.beginPath(); c.arc(S * 0.55, S * 0.56, S * 0.12, 0, TAU); c.clip();
+  c.fillStyle = 'rgba(90,30,40,0.7)';
+  for (let i = 0; i < 30; i++) { c.save(); c.translate(S * (0.45 + r() * 0.2), S * (0.46 + r() * 0.2)); c.rotate(r() * TAU);
+    c.beginPath(); c.ellipse(0, 0, S * 0.014, S * 0.006, 0, 0, TAU); c.fill(); c.restore(); }
+  c.restore();
+}
+function microbeTetrad(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
+  /* Deinococcus: a flat packet of EXACTLY FOUR cocci — the tetrad IS the read */
+  habitatWash(c, 'rgba(60,50,30,0.6)', 'rgba(30,24,12,0.8)');
+  const cx = S * 0.5, cy = S * 0.5, R = S * 0.13;
+  for (const [dx, dy] of [[-1, -1], [1, -1], [-1, 1], [1, 1]] as const) {
+    const x = cx + dx * R * 0.94, y = cy + dy * R * 0.94;
+    const gg = c.createRadialGradient(x - R * 0.3, y - R * 0.3, 2, x, y, R * 1.05);
+    gg.addColorStop(0, '#f0d890'); gg.addColorStop(0.6, '#d8a83a'); gg.addColorStop(1, '#8a621c');
+    c.fillStyle = gg; c.beginPath(); c.arc(x, y, R, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(90,60,10,0.6)'; c.lineWidth = 2; c.stroke();
+  }
+  c.strokeStyle = 'rgba(90,60,10,0.5)'; c.lineWidth = 3;   /* the division septa */
+  c.beginPath(); c.moveTo(cx, cy - R * 2); c.lineTo(cx, cy + R * 2); c.moveTo(cx - R * 2, cy); c.lineTo(cx + R * 2, cy); c.stroke();
+}
+function microbeRedTide(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
+  /* a BLOOM: the water itself discoloured, a field of many cells */
+  habitatWash(c, 'rgba(160,40,30,0.8)', 'rgba(90,18,14,0.9)');
+  const r = mulberry32(((g.seed as number) ^ 0x8ED) >>> 0);
+  for (let i = 0; i < 70; i++) {
+    const x = S * (0.08 + r() * 0.84), y = S * (0.08 + r() * 0.84), rad = S * (0.012 + r() * 0.022);
+    const gg = c.createRadialGradient(x - rad * 0.3, y - rad * 0.3, 1, x, y, rad);
+    gg.addColorStop(0, '#e88a70'); gg.addColorStop(1, '#a02818');
+    c.fillStyle = gg; c.beginPath(); c.arc(x, y, rad, 0, TAU); c.fill();
+  }
+  microbePlates(c, g, tint(p, '#d84838'));
+}
+function microbeIronOxidizer(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
+  /* Gallionella: a bean cell trailing a LONG TWISTED RIBBON STALK */
+  habitatWash(c, 'rgba(120,60,24,0.6)', 'rgba(60,28,10,0.85)');
+  const bx = S * 0.68, by = S * 0.32;
+  /* the twisted stalk: two interleaved sine ribbons */
+  for (const ph of [0, Math.PI]) {
+    c.strokeStyle = ph ? 'rgba(200,120,50,0.8)' : 'rgba(150,84,34,0.8)'; c.lineWidth = 5; c.lineCap = 'round';
+    c.beginPath();
+    for (let i = 0; i <= 40; i++) { const u = i / 40;
+      const x = bx - u * S * 0.5, y = by + u * S * 0.42 + Math.sin(u * TAU * 2.4 + ph) * S * 0.028 * (0.4 + u);
+      i ? c.lineTo(x, y) : c.moveTo(x, y); }
+    c.stroke();
+  }
+  const gg = c.createRadialGradient(bx - 6, by - 6, 2, bx, by, S * 0.075);
+  gg.addColorStop(0, '#e8b088'); gg.addColorStop(1, '#a05a2c');
+  c.fillStyle = gg;
+  c.save(); c.translate(bx, by); c.rotate(0.5);
+  c.beginPath(); c.moveTo(-S * 0.055, 0);   /* the bean: two arcs with a waist */
+  c.quadraticCurveTo(0, -S * 0.055, S * 0.055, 0);
+  c.quadraticCurveTo(0, S * 0.02, -S * 0.055, 0);
+  c.closePath(); c.fill(); c.restore();
+}
+function microbeBioluminescent(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
+  /* glowing dinoflagellate cells scattered in dark water, each with its glow */
+  habitatWash(c, 'rgba(8,20,34,0.9)', 'rgba(2,8,16,0.95)');
+  const r = mulberry32(((g.seed as number) ^ 0xB10 ) >>> 0);
+  for (let i = 0; i < 9; i++) {
+    const x = S * (0.15 + r() * 0.7), y = S * (0.15 + r() * 0.7), rad = S * (0.028 + r() * 0.02);
+    const halo = c.createRadialGradient(x, y, 1, x, y, rad * 4);
+    halo.addColorStop(0, 'rgba(120,240,220,0.8)'); halo.addColorStop(0.4, 'rgba(60,180,200,0.3)'); halo.addColorStop(1, 'rgba(0,0,0,0)');
+    c.fillStyle = halo; c.beginPath(); c.arc(x, y, rad * 4, 0, TAU); c.fill();
+    c.fillStyle = '#bffff0'; c.beginPath(); c.ellipse(x, y, rad, rad * 0.8, r() * TAU, 0, TAU); c.fill();
+  }
+}
 const MICROBE_NAME: Record<string, Painter> = {
-  /* ★ WAVE 18 — the eleven unrouted microbes. Every one of them already had a
-     structural FAMILY in its reference row (rod · filament · coccus ·
-     flagellate · plated) and the painters for all five already existed — they
-     were simply never wired. What separates extremophiles from one another is
-     colour, and colour is what their rows are mostly about. */
-  'Methanogen': (c, g, p) => microbeRods(c, g, tint(p, '#7f9aa6')),
+  /* ★ WAVE 18 → 64 — the extremophiles now carry their HABITAT (above). */
+  'Methanogen': microbeMethanogen,
   'Sulfur-Oxidizing Bacteria': (c, g, p) => microbeFilament(c, g, tint(p, '#e8dc86')),
-  'Iron-Oxidizing Bacteria': (c, g, p) => microbeFilament(c, g, tint(p, '#b4642a')),
-  'Nitrogen-Fixing Bacteria': (c, g, p) => microbeRods(c, g, tint(p, '#c46f7a')),
-  'Halophile': (c, g, p) => microbeRods(c, g, tint(p, '#e0409a')),
+  'Iron-Oxidizing Bacteria': microbeIronOxidizer,
+  'Nitrogen-Fixing Bacteria': microbeNitrogenFixer,
+  'Halophile': microbeHalophile,
   'Thermophile': (c, g, p) => microbeRods(c, g, tint(p, '#e07a26')),
-  'Acidophile': (c, g, p) => microbeRods(c, g, tint(p, '#a83a22')),
-  'Cryophile': (c, g, p) => microbeRods(c, g, tint(p, '#9fd4e8')),
-  'Radiation-Resistant Microbe': (c, g, p) => microbeChain(c, g, tint(p, '#d8a83a')),
-  'Bioluminescent Plankton': (c, g, p) => microbeFlagellate(c, g, tint(p, '#6ee0c0')),
-  'Red-Tide Algae': (c, g, p) => microbePlates(c, g, tint(p, '#b03428')),
+  'Acidophile': microbeAcidophile,
+  'Cryophile': microbeCryophile,
+  'Radiation-Resistant Microbe': microbeTetrad,
+  'Bioluminescent Plankton': microbeBioluminescent,
+  'Red-Tide Algae': microbeRedTide,
   'Tardigrade': (c, g, p) => tardigrade(c, g, speciesHue(p, '#d9b98c')),   /* wave 18: the canonical 8-legged water bear */
   'Diatom': (c, g, p) => microbeDiatom(c, g, speciesHue(p, '#c9a552')), 'Radiolarian': microbeDiatom, 'Dinoflagellate': microbeDiatom,
   'Paramecium': (c, g, p) => microbeCiliate(c, g, speciesHue(p, '#b6bd82')), 'Euglena': microbeCiliate,
