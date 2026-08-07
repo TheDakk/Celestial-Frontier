@@ -638,6 +638,96 @@ function microbeBioluminescent(c: Ctx, g: G, p: ReturnType<typeof palette>): voi
     c.fillStyle = '#bffff0'; c.beginPath(); c.ellipse(x, y, rad, rad * 0.8, r() * TAU, 0, TAU); c.fill();
   }
 }
+function microbeDinoflagellate(c: Ctx, g: G, _p: ReturnType<typeof palette>): void {
+  /* ★ WAVE 64 — the armoured cell with the EQUATORIAL GIRDLE GROOVE (called
+     non-negotiable) and its two flagella: one wrapped in the girdle, one
+     trailing. */
+  habitatWash(c, 'rgba(30,44,50,0.7)', 'rgba(10,20,24,0.9)');
+  const cx = S * 0.5, cy = S * 0.48, R = S * 0.17;
+  const gg = c.createRadialGradient(cx - R * 0.3, cy - R * 0.35, 3, cx, cy, R * 1.15);
+  gg.addColorStop(0, '#d8c890'); gg.addColorStop(0.6, '#a89050'); gg.addColorStop(1, '#5c4c24');
+  c.fillStyle = gg;
+  c.beginPath(); c.moveTo(cx - R, cy);   /* two half-cells meeting at the girdle */
+  c.quadraticCurveTo(cx - R * 0.9, cy - R * 1.15, cx, cy - R * 1.05);   /* pointed epitheca */
+  c.quadraticCurveTo(cx + R * 0.9, cy - R * 1.15, cx + R, cy);
+  c.quadraticCurveTo(cx + R * 0.85, cy + R * 0.95, cx, cy + R * 0.9);   /* rounded hypotheca */
+  c.quadraticCurveTo(cx - R * 0.85, cy + R * 0.95, cx - R, cy);
+  c.closePath(); c.fill();
+  /* the GIRDLE: a deep transverse groove right around the equator */
+  c.strokeStyle = 'rgba(40,30,10,0.85)'; c.lineWidth = R * 0.18;
+  c.beginPath(); c.moveTo(cx - R, cy); c.quadraticCurveTo(cx, cy + R * 0.12, cx + R, cy); c.stroke();
+  c.strokeStyle = 'rgba(230,215,160,0.5)'; c.lineWidth = 1.6;   /* armour plate seams */
+  for (let k = -2; k <= 2; k++) { c.beginPath(); c.moveTo(cx + k * R * 0.4, cy - R); c.quadraticCurveTo(cx + k * R * 0.5, cy - R * 0.4, cx + k * R * 0.36, cy - R * 0.08); c.stroke(); }
+  /* flagellum 1 wraps the girdle; flagellum 2 trails long behind */
+  c.strokeStyle = 'rgba(220,235,230,0.8)'; c.lineWidth = 2.2; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(cx - R * 0.95, cy + R * 0.05);
+  for (let i = 1; i <= 14; i++) { const u = i / 14; c.lineTo(cx - R * 0.95 + u * R * 1.9, cy + R * 0.06 + Math.sin(u * TAU * 1.6) * R * 0.07); }
+  c.stroke();
+  c.beginPath(); c.moveTo(cx + R * 0.2, cy + R * 0.88);
+  for (let i = 1; i <= 16; i++) { const u = i / 16; c.lineTo(cx + R * 0.2 + Math.sin(u * TAU * 1.2) * R * 0.16, cy + R * 0.88 + u * R * 1.1); }
+  c.stroke();
+}
+function microbeEuglena(c: Ctx, g: G, _p: ReturnType<typeof palette>): void {
+  /* ★ WAVE 64 — a green TEARDROP with ONE anterior flagellum and the red
+     eyespot; was routed to the ciliate (fringed all round = wrong organism). */
+  habitatWash(c, 'rgba(24,40,30,0.7)', 'rgba(8,18,12,0.9)');
+  const cx = S * 0.5, cy = S * 0.52, L = S * 0.20, W = S * 0.10;
+  const gg = c.createLinearGradient(cx - L, cy, cx + L, cy);
+  gg.addColorStop(0, '#4a8a3c'); gg.addColorStop(0.5, '#6aa850'); gg.addColorStop(1, '#2e6428');
+  c.fillStyle = gg;
+  c.save(); c.translate(cx, cy); c.rotate(-0.5);
+  c.beginPath(); c.moveTo(-L, 0);   /* blunt rear tapering to the anterior */
+  c.quadraticCurveTo(-L * 0.3, -W, L * 0.6, -W * 0.55);
+  c.quadraticCurveTo(L * 1.05, -W * 0.1, L, 0);
+  c.quadraticCurveTo(L * 0.9, W * 0.3, L * 0.5, W * 0.5);
+  c.quadraticCurveTo(-L * 0.4, W, -L, 0);
+  c.closePath(); c.fill();
+  /* chloroplast discs + the pale paramylon grain */
+  c.fillStyle = 'rgba(30,80,26,0.7)';
+  const rr2 = mulberry32(((g.seed as number) ^ 0xE6E) >>> 0);
+  for (let i = 0; i < 9; i++) { c.beginPath(); c.arc((rr2() - 0.5) * L * 1.4, (rr2() - 0.5) * W * 1.2, W * 0.16, 0, TAU); c.fill(); }
+  c.fillStyle = 'rgba(235,240,225,0.5)'; c.beginPath(); c.ellipse(-L * 0.4, W * 0.1, W * 0.3, W * 0.2, 0, 0, TAU); c.fill();
+  c.fillStyle = '#d83828';   /* the EYESPOT at the anterior */
+  c.beginPath(); c.arc(L * 0.82, -W * 0.22, W * 0.15, 0, TAU); c.fill();
+  /* ONE long anterior flagellum */
+  c.strokeStyle = 'rgba(220,235,220,0.85)'; c.lineWidth = 2.4; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(L, 0);
+  for (let i = 1; i <= 16; i++) { const u = i / 16; c.lineTo(L + u * L * 1.1, -u * W * 1.6 + Math.sin(u * TAU * 1.4) * W * 0.35); }
+  c.stroke();
+  c.restore();
+}
+function microbeRadiolarian(c: Ctx, g: G, _p: ReturnType<typeof palette>): void {
+  /* ★ WAVE 64 — a GLASSY 3-D silica sphere: a shaded lattice ball with long
+     radial spines, not a flat wireframe. */
+  habitatWash(c, 'rgba(16,26,40,0.8)', 'rgba(4,10,18,0.92)');
+  const cx = S * 0.5, cy = S * 0.5, R = S * 0.15;
+  const r = mulberry32(((g.seed as number) ^ 0x8AD1) >>> 0);
+  /* the long radial spines first, behind the shell */
+  c.strokeStyle = 'rgba(210,225,240,0.7)'; c.lineCap = 'round';
+  for (let i = 0; i < 14; i++) {
+    const a = (i / 14) * TAU + r() * 0.2, len = R * (1.5 + r() * 0.8);
+    c.lineWidth = 2.6 - (i % 2);
+    c.beginPath(); c.moveTo(cx + Math.cos(a) * R * 0.7, cy + Math.sin(a) * R * 0.7);
+    c.lineTo(cx + Math.cos(a) * (R + len), cy + Math.sin(a) * (R + len)); c.stroke();
+  }
+  /* the glassy shell: translucent sphere with a specular light */
+  const gg = c.createRadialGradient(cx - R * 0.35, cy - R * 0.4, 2, cx, cy, R * 1.1);
+  gg.addColorStop(0, 'rgba(240,248,255,0.65)'); gg.addColorStop(0.5, 'rgba(160,190,220,0.35)'); gg.addColorStop(1, 'rgba(80,110,150,0.25)');
+  c.fillStyle = gg; c.beginPath(); c.arc(cx, cy, R, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(220,235,250,0.6)'; c.lineWidth = 1.6; c.stroke();
+  /* the lattice: pores shaded smaller toward the rim so the ball reads ROUND */
+  c.strokeStyle = 'rgba(200,220,240,0.5)'; c.lineWidth = 1.2;
+  for (let i = 0; i < 60; i++) {
+    const a = r() * TAU, d = Math.sqrt(r()) * R * 0.92;
+    const px = cx + Math.cos(a) * d, py = cy + Math.sin(a) * d;
+    const pore = (1 - d / R * 0.7) * R * 0.10;
+    c.beginPath(); c.arc(px, py, Math.max(1.5, pore), 0, TAU); c.stroke();
+  }
+  /* the central capsule glowing faintly inside */
+  const cg2 = c.createRadialGradient(cx, cy, 1, cx, cy, R * 0.4);
+  cg2.addColorStop(0, 'rgba(255,220,160,0.5)'); cg2.addColorStop(1, 'rgba(255,220,160,0)');
+  c.fillStyle = cg2; c.beginPath(); c.arc(cx, cy, R * 0.4, 0, TAU); c.fill();
+}
 const MICROBE_NAME: Record<string, Painter> = {
   /* ★ WAVE 18 → 64 — the extremophiles now carry their HABITAT (above). */
   'Methanogen': microbeMethanogen,
@@ -652,8 +742,8 @@ const MICROBE_NAME: Record<string, Painter> = {
   'Bioluminescent Plankton': microbeBioluminescent,
   'Red-Tide Algae': microbeRedTide,
   'Tardigrade': (c, g, p) => tardigrade(c, g, speciesHue(p, '#d9b98c')),   /* wave 18: the canonical 8-legged water bear */
-  'Diatom': (c, g, p) => microbeDiatom(c, g, speciesHue(p, '#c9a552')), 'Radiolarian': microbeDiatom, 'Dinoflagellate': microbeDiatom,
-  'Paramecium': (c, g, p) => microbeCiliate(c, g, speciesHue(p, '#b6bd82')), 'Euglena': microbeCiliate,
+  'Diatom': (c, g, p) => microbeDiatom(c, g, speciesHue(p, '#c9a552')), 'Radiolarian': microbeRadiolarian, 'Dinoflagellate': microbeDinoflagellate,
+  'Paramecium': (c, g, p) => microbeCiliate(c, g, speciesHue(p, '#b6bd82')), 'Euglena': microbeEuglena,
   /* ★ WAVE 42 — 'Foraminiferan' and 'Green Algae' removed: both are keyed in
      CANON, which resolveOverride consults FIRST and returns from, so these
      rows never ran. Worse, they disagreed with the live painters — CANON gives
