@@ -1361,8 +1361,8 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   /* ── RODENTS & SMALL MAMMALS ── incisors, haunch, ear, whisker */
   'Mouse': (c, g, p, n) => smallRodent(c, g, p, { hue: '#8a7d6b', tail: 'long', ears: 0.85 }, n),
   'Rat': (c, g, p, n) => smallRodent(c, g, p, { hue: '#6b6157', tail: 'long', ears: 0.70 }, n),
-  'Vole': (c, g, p, n) => smallRodent(c, g, p, { hue: '#77705f', tail: 'stub', ears: 0.50 }, n),
-  'Water Vole': (c, g, p, n) => smallRodent(c, g, p, { hue: '#5a4a38', tail: 'stub', ears: 0.48 }, n),
+  'Vole': (c, g, p, n) => smallRodent(c, g, p, { hue: '#77705f', tail: 'stub', ears: 0.30, earShape: 'nub' }, n),
+  'Water Vole': (c, g, p, n) => smallRodent(c, g, p, { hue: '#5a4a38', tail: 'stub', ears: 0.30, earShape: 'nub' }, n),
   'Shrew': (c, g, p, n) => smallRodent(c, g, p, { hue: '#4f4a44', tail: 'long', ears: 0.42 }, n),
   'Tree Shrew': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7e6a3c', tail: 'bushy', ears: 0.52 }, n),
   'Lemming': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a5713c', tail: 'stub', ears: 0.40   }, n),
@@ -1372,7 +1372,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Jerboa': (c, g, p, n) => smallRodent(c, g, p, { hue: '#d9c096', tail: 'long', ears: 1.15 }, n),
   'Gopher': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7d6a52', tail: 'stub', ears: 0.36   }, n),
   'Marmot': (c, g, p, n) => smallRodent(c, g, p, { hue: '#97764a', tail: 'stub', ears: 0.40   }, n),
-  'Prairie Dog': (c, g, p, n) => smallRodent(c, g, p, { hue: '#b8925c', tail: 'stub', ears: 0.38   }, n),
+  'Prairie Dog': (c, g, p, n) => smallRodent(c, g, p, { hue: '#b8925c', tail: 'stub', ears: 0.26, earShape: 'nub' }, n),
   /* ★ wave 45 — a pika is a lagomorph (white incisors) with SHORT ROUND ears.
      That pairing is exactly what separates it from the rabbit beside it, and
      the shared tall-oval ear had it inverted — the gold pass's words: "the ONE
@@ -1382,7 +1382,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Agouti': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7a4b28', tail: 'stub', ears: 0.44  }, n),
   'Mara': (c, g, p, n) => smallRodent(c, g, p, { hue: '#8c8375', tail: 'stub', ears: 0.92 }, n),
   'Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7c7a72', tail: 'bushy', ears: 0.62   }, n),
-  'Ground Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#ab8b5e', tail: 'bushy', ears: 0.50   }, n),
+  'Ground Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#ab8b5e', tail: 'long', ears: 0.34, earShape: 'nub' }, n),
   'Flying Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#9a8f81', tail: 'bushy', ears: 0.68 }, n),
   'Chipmunk': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a8642f', tail: 'bushy', ears: 0.58   }, n),
   'Rabbit': (c, g, p, n) => smallRodent(c, g, p, { hue: '#8e7a5c', tail: 'stub', ears: 1.45 , lagomorph: true  }, n),
