@@ -213,9 +213,11 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Black Pepper': T({ hue: '#2c5f3b', habit: 'vine', leaf: 'lance', fruit: 'cluster', pendulous: true, fhue: '#2f4a30' }),
   'Chili Pepper': T({ hue: '#508235', habit: 'shrub', leaf: 'lance', fruit: 'drupe', fhue: '#c8202c' }),
   'Wild Chili': T({ hue: '#43662d', habit: 'shrub', leaf: 'lance', fruit: 'drupe', fhue: '#b81c28' }),
-  'Wild Mustard': T({ hue: '#7f9b3a', habit: 'herb', leaf: 'palmate', flower: 'umbel', fhue: '#e8d030' }),
-  'Mustard': T({ hue: '#92a642', habit: 'herb', leaf: 'palmate', flower: 'umbel', fhue: '#e0c828' }),
-  'Canola': T({ hue: '#7b996f', habit: 'herb', leaf: 'lance', flower: 'umbel', fhue: '#e8d83a' }),
+  /* ★ WAVE 58 — BRASSICAS. Four-petal cross flowers in a corymb + slender
+     siliques held out from the stem (see PlantSpec.flower:'cross' / pods). */
+  'Wild Mustard': T({ hue: '#7f9b3a', habit: 'herb', leaf: 'broad', flower: 'cross', fhue: '#e8d030', leafArr: 'alternate', toothed: true, pods: true }),
+  'Mustard': T({ hue: '#92a642', habit: 'herb', leaf: 'broad', flower: 'cross', fhue: '#e0c828', leafArr: 'alternate', toothed: true, pods: true }),
+  'Canola': T({ hue: '#7b996f', habit: 'herb', leaf: 'broad', flower: 'cross', fhue: '#e8d83a', leafArr: 'alternate', toothed: true, pods: true }),
   'Sesame': T({ hue: '#638d64', habit: 'herb', leaf: 'lance', fruit: 'pod', fhue: '#c8b890' }),
   'Wild Sesame': T({ hue: '#6b5a63', habit: 'herb', leaf: 'lance', fruit: 'pod', fhue: '#b8a880' }),
   'Flax': T({ hue: '#86a4b0', habit: 'herb', leaf: 'lance', flower: 'star', fhue: '#7a9ad8' }),
@@ -223,21 +225,25 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Anise': T({ hue: '#8fb84a', habit: 'herb', leaf: 'pinnate', flower: 'umbel', fhue: '#f0f0e0' }),
   'Star Anise': T({ hue: '#2d5443', habit: 'tree', leaf: 'broad', fruit: 'pod', fhue: '#8a5a34' }),
   /* ── HERBS ── */
-  'Mint': T({ hue: '#4fa05a', habit: 'herb', leaf: 'lance', flower: 'spike', fhue: '#c0a8e0' }),
-  'Wild Mint': T({ hue: '#579554', habit: 'herb', leaf: 'lance', flower: 'spike', fhue: '#b8a0d8' }),
-  'Mountain Mint': T({ hue: '#7f987a', habit: 'herb', leaf: 'lance', flower: 'spike', fhue: '#e0e0f0' }),
-  'Alpine Mint': T({ hue: '#92a68e', habit: 'herb', leaf: 'lance', flower: 'spike', fhue: '#d0d0e8' }),
-  'Swamp Mint': T({ hue: '#387f49', habit: 'herb', leaf: 'lance', flower: 'spike', fhue: '#a8a0d0' }),
-  'Water Mint': T({ hue: '#3d6a55', habit: 'herb', leaf: 'lance', flower: 'head', fhue: '#b0a8d8', leafArr: 'opposite', flowerN: 3 }),
-  'Desert Mint': T({ hue: '#b0b899', habit: 'herb', leaf: 'lance', flower: 'spike', fhue: '#c8c0e0' }),
-  'Holy Basil': T({ hue: '#6a4b52', habit: 'herb', leaf: 'broad', flower: 'spike', fhue: '#a890c8' }),
+  /* ★ WAVE 58 — THE MINTS ARE A FAMILY, NOT NINE TINTS OF ONE SPIKE. Gold pass
+     4 failed every one of them for the same three absent Lamiaceae cues; they
+     now carry toothed opposite leaves, a square reddish stem, and flowers in
+     whorls up the stem (see PlantSpec.toothed/square/whorl). */
+  'Mint': T({ hue: '#4fa05a', habit: 'herb', leaf: 'broad', flower: 'spike', fhue: '#c0a8e0', leafArr: 'opposite', toothed: true, square: true, whorl: true }),
+  'Wild Mint': T({ hue: '#579554', habit: 'herb', leaf: 'broad', flower: 'spike', fhue: '#b8a0d8', leafArr: 'opposite', toothed: true, square: true, whorl: true }),
+  'Mountain Mint': T({ hue: '#7f987a', habit: 'herb', leaf: 'broad', flower: 'head', fhue: '#e0e0f0', leafArr: 'opposite', toothed: true, square: true, whorl: true, flowerN: 3 }),
+  'Alpine Mint': T({ hue: '#92a68e', habit: 'herb', leaf: 'broad', flower: 'spike', fhue: '#d0d0e8', leafArr: 'opposite', toothed: true, square: true, whorl: true, stem: 'mat' }),
+  'Swamp Mint': T({ hue: '#387f49', habit: 'herb', leaf: 'broad', flower: 'spike', fhue: '#a8a0d0', leafArr: 'opposite', toothed: true, square: true, whorl: true }),
+  'Water Mint': T({ hue: '#3d6a55', habit: 'herb', leaf: 'broad', flower: 'head', fhue: '#b0a8d8', leafArr: 'opposite', toothed: true, square: true, whorl: true, flowerN: 1 }),
+  'Desert Mint': T({ hue: '#b0b899', habit: 'herb', leaf: 'broad', flower: 'spike', fhue: '#c8c0e0', leafArr: 'opposite', toothed: true, square: true, whorl: true }),
+  'Holy Basil': T({ hue: '#6a4b52', habit: 'herb', leaf: 'broad', flower: 'spike', fhue: '#a890c8', leafArr: 'opposite', toothed: true, square: true, whorl: true }),
   'Thyme': T({ hue: '#7f9167', habit: 'herb', leaf: 'needle', flower: 'head', fhue: '#c090c8' }),
   /* ★ WAVE 22 — thyme is a low WOODY sub-shrub that mats over rock, not an
      erect herb like the mints it kept colliding with. Drawing it as a shrub is
      both the truer plant and what pulls it clear of Water Mint. */
   'Wild Thyme': T({ hue: '#6e8860', habit: 'shrub', leaf: 'needle', flower: 'head', fhue: '#b888c0' }),
   'Mountain Thyme': T({ hue: '#97a383', habit: 'herb', leaf: 'needle', flower: 'head', fhue: '#c8a0d0', stem: 'mat', flowerN: 5 }),
-  'Oregano': T({ hue: '#758750', habit: 'herb', leaf: 'broad', flower: 'umbel', fhue: '#e0d0e8' }),
+  'Oregano': T({ hue: '#758750', habit: 'herb', leaf: 'broad', flower: 'head', fhue: '#e0d0e8', leafArr: 'opposite', toothed: true, square: true, whorl: true, flowerN: 3 }),
   'Rosemary': T({ hue: '#556d4c', habit: 'shrub', leaf: 'needle', flower: 'spike', fhue: '#90a8d8' }),
   'Lavender': T({ hue: '#a8af9a', habit: 'shrub', leaf: 'needle', flower: 'spike', fhue: '#9878c8' }),
   'Fennel': T({ hue: '#a3bc4f', habit: 'herb', leaf: 'pinnate', flower: 'umbel', fhue: '#e0d840' }),
@@ -333,5 +339,5 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Licorice Root': T({ hue: '#6b873f', habit: 'herb', leaf: 'pinnate', flower: 'spike', fhue: '#a9a6d8' }),
   'Pampas Herb': T({ hue: '#c2b48a', habit: 'grass', leaf: 'blade', flower: 'catkin', fhue: '#efeade', tall: true }),
   'Plantain Herb': T({ hue: '#698154', habit: 'rosette', leaf: 'lance', flower: 'spike', fhue: '#8f9a6a' }),
-  'Sea Rocket': T({ hue: '#9ab39a', habit: 'herb', leaf: 'broad', flower: 'head', fhue: '#c9b6d8' }),
+  'Sea Rocket': T({ hue: '#9ab39a', habit: 'herb', leaf: 'broad', flower: 'cross', fhue: '#c9b6d8', leafArr: 'alternate', toothed: true, pods: true }),
 };

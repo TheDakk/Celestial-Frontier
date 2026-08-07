@@ -1,6 +1,101 @@
 # ★ COLD-START HANDOFF — read this first
 
-# ★★★ START HERE — END OF 2026-08-04, HEAD `6190bb6`, WAVE 51 LANDED
+# ★★★ START HERE — 2026-08-06, HEAD `d8e76aa` + uncommitted, GOLD PASS 4 RUN
+
+⚠ **Repo root is `C:\Projects\Celestial-Frontier`, not `C:\Projects`.** Tools run from `port/v2`.
+Everything below the 2026-08-04 banner is HISTORY — accurate about its waves, superseded on
+every number. **No painter was touched this session; the art is exactly as waves 51–57 left it.**
+
+## ★★★★ THE CHEAP RE-CHECK WORKS. ITS HEADLINE WAS THE RULER, AND THE CONTROL PROVED IT.
+
+`reference/GOLD_PASS_4.md` is the full write-up. In one paragraph: the drift-scoped re-check ran
+as designed — **148 drifted assets, 32 strips, 1.17M tokens, 6m26s, zero errors** against the
+full sweep's ~15M-and-a-dead-session — and reported **FAIL 660 → 694**, with **40 of 44 band
+crossings running one way.** That is the D-ART-150 shape, on assets six waves had just improved.
+So a control was built and run (`tools/rejudgecontrol.mjs`, 56 untouched family-matched assets,
+same judge, 0.72M):
+
+| set | n | FAIL% before | after | shift | demoted, of those with room to fall |
+|---|---|---|---|---|---|
+| drift (edited) | 148 | 62.2 | 85.1 | **+23.0** | **70%** (39/56) |
+| control (untouched) | 56 | 67.9 | 91.1 | **+23.2** | **78%** (14/18) |
+
+★ **Waves 51–56 moved no band. The whole +34 was the ruler** — this harness grades ~23 points
+harder than gold pass 3 (one pass not two, side-by-side strip not isolated PNGs, an explicit
+"be your own skeptic"). **`694` is not a catalogue score**; `goldpass4-results.json` mixes 148
+new-ruler rows with 1,102 old-ruler ones and now says so in its own header. **D-ART-158.**
+★ The payoff: the offset is now *measured*, so **gold pass 4 IS a valid baseline for the next
+delta** — same harness, apples to apples — **as long as the control is re-run every time.**
+`rejudgemerge.mjs` now refuses to present a delta at all without `--control`.
+
+## ★★★ WHAT THE PROSE SAYS — IT SURVIVES A MOVED RULER, AND IT CONTRADICTS US TWICE
+
+**1. THE FELID CHASSIS IS NOT FIXED.** The wave-51 handoff and the live-state memory both record
+the chassis as "largely fixed" after D-ART-153/152/154. With all eleven big cats side by side the
+judge writes *"Leopard: pixel-for-pixel the Jaguar cell in a paler tan"*, *"Bobcat: identical
+chassis to the Lynx cell"*, *"Cougar: indistinguishable from the Caracal cell in a different
+tint"*. **30 of 84 re-judged fauna (36%) carry shared-chassis language.** The neck fix landed and
+is visible; the body is still one barrel. Three recurring sub-defects, each ONE painter lever:
+**the tail is a short hook on every felid** (a cat's tail is a body-length rope), **the muzzle is
+a long blunt snout** ("tapir-like", 44% of fauna verdicts name the skull), and **Bobcat/Lynx feet
+still read as hooves** despite wave 49. Corroborated from outside the drift set: untouched
+Anteater/Pangolin/Otter are "the same barrel-plus-peg-legs chassis".
+
+**2. ★ FLORA IS ONE GROWTH FORM WITH AN ORNAMENT ON TOP — AND IT IS THE BIGGER LEVER.** I opened
+`smoke/rejudge/9-herbs-and-spices/strip-01.png` and looked: all nine herbs are one dead-straight
+stem, a symmetric leaf ladder, and a tiny flower perched exactly on the apex — on three of them a
+literal thin white crescent. Across 64 flora verdicts: **leaf shape wrong 78% · habit wrong
+(upright where the species is a mat/sprawl/arch) 50% · the inflorescence is a speck-or-arc at the
+tip 39% · same ladder body as its neighbours 34% · the named harvest item absent 19%.**
+★ **"The flower is an ornament stuck on the apex, not a structure with size" is one painter
+change touching hundreds of assets** (Angelica's umbel = "a thin white crescent 20px wide";
+Canola's flower mass = "a single thin yellow arc"; Fireweed's spike = "a 5px stub"). Flora is the
+largest bucket and this matches the family sweep's independent "four growth-form templates".
+
+**3.** The one genuine rescue in 148: **Ice Algae FAIL → PASS**, wave 56, visible *through* the
+ruler shift.
+
+## ★★ WAVE 58 — FLORA GROWTH-FORM ARC OPENED (in progress, uncommitted)
+Nick's call: drive the catalogue to **ZERO FAIL at the shippable bar** (not the strict
+art-director bar that whipsawed the ruler). Method proven: **cluster by botanical family, add
+the 2–3 missing read-cues, one edit clears the cluster.** All in `floraoverrides2.ts` +
+`florarost.ts`, tests green, tsc clean. Landed so far:
+- **Inflorescence is a structure with size** (all flowering herbs). `drawFlower` head/spike/umbel
+  rebuilt (were a "thin white crescent"/"5px stub"); fR bumped ~2× at the herb/grass/shrub call
+  sites. Umbel is now a two-rank domed compound head, spike a dense tapering raceme.
+- **Mint family** (Mint, Wild/Swamp/Desert/Alpine/Mountain/Water Mint, Oregano, Holy Basil):
+  new `toothed` (fine serrated margin), `square` (reddish squared stem), `whorl` (verticillasters
+  — flower rings up the stem). Nine "one spike in nine tints" → real mints.
+- **Brassicas** (Mustard, Wild Mustard, Canola, Sea Rocket): new `flower:'cross'` (4-petal
+  corymb + bud knot) and `pods` (siliques). 
+★ **Remaining flora clusters, in yield order:** nettles (toothed HEART leaves — note `drawLeaf`
+currently can't tooth a heart, the heart branch precedes the toothed branch; combine them — plus
+drooping axil tassels), composites-with-cone (Chamomile/Echinacea raised bristly disc + backswept
+rays), legumes (trifoliate leaf + pod/root), the "harvest organ absent" set (~15: the named
+pod/berry/root/capsule simply missing), aquatic/coastal habit (Brooklime sprawl, Sea Lavender
+basal rosette, Sea Fennel succulent fingers). THEN mammal chassis, THEN the 144-bucket tail
+(`reference/LONGTAIL_WORKLIST.md`). ⚠ Not yet re-judged — measure with the cheap re-check +
+control (D-ART-158) after a batch of clusters, not per-edit.
+
+## OPEN, IN ORDER (revised by the above)
+
+1. **The flora inflorescence + growth form.** Biggest measured lever in the catalogue, now
+   diagnosed rather than guessed. Start with "a flower head is a structure with size", then the
+   habit axis (mat / sprawl / arch / basal rosette vs the one upright stem).
+2. **The felid/mammal body**, which D-ART-152's asymmetric `Tube` was supposed to unlock but has
+   not yet delivered — plus the three one-lever sub-defects above (tail, muzzle, paw).
+3. The rest of the 2026-08-04 list below (88 both-FAIL assets, broken procedural renders — but
+   note **D-ART-155 corrected the "fit-pass clip" diagnosis: it is a painter defect**, the
+   `[SHAPE]` backlog, the `familycards` regex).
+
+⚠ **Uncommitted at hand-off:** `tools/rejudgecontrol.mjs` (new), `tools/rejudgecards.mjs`
+(--control/--drift/--out), `tools/rejudgemerge.mjs` (control-aware, refuses a bare delta),
+`reference/GOLD_PASS_4.md`, `goldpass4-*.json`, `control-sample.json`, `DEVIATIONS.md`
+(D-ART-158). Nick had not said ship.
+
+---
+
+# ⚠ HISTORY FROM HERE — END OF 2026-08-04, HEAD `6190bb6`, WAVE 51 LANDED
 
 ⚠ **Repo root is `C:\Projects\Celestial-Frontier`, not `C:\Projects`.** Tools run from `port/v2`.
 Everything below the 2026-08-03 banner is HISTORY — accurate, superseded on every number.
