@@ -917,7 +917,14 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       const lx = ccx + Math.cos(a) * cw * d, ly = ccy + Math.sin(a) * chh * d;
       drawLeaf(c, p, lx, ly, a + (r() - 0.5), S * 0.05 * nvf(name, 0x77, 0.2), spec.leaf, toothed);
     }
-    if (spec.flower && spec.flower !== 'none') for (let i = 0; i < 4; i++) { const a = r() * TAU, d = 0.4 + r() * 0.6;
+    if (spec.flower === 'spike' || spec.flower === 'catkin') {
+      /* ★ GP6 — lavender/sage spikes RISE ABOVE the mound on stalks */
+      for (let i = 0; i < 5; i++) { const t2 = (i / 4 - 0.5);
+        const fx2 = ccx + t2 * cw * 1.1, fy2 = ccy - chh * (0.8 + Math.cos(t2 * 2) * 0.3);
+        c.strokeStyle = stemCol; c.lineWidth = S * 0.005;
+        c.beginPath(); c.moveTo(fx2, fy2 + chh * 0.5); c.lineTo(fx2, fy2 - S * 0.04); c.stroke();
+        drawFlower(c, p, fx2, fy2 - S * 0.055, S * 0.042, spec.flower, spec.fhue, r); }
+    } else if (spec.flower && spec.flower !== 'none') for (let i = 0; i < 4; i++) { const a = r() * TAU, d = 0.4 + r() * 0.6;
       drawFlower(c, p, ccx + Math.cos(a) * cw * d, ccy + Math.sin(a) * chh * d, S * (spec.flower === 'trumpet' ? 0.062 : 0.036), spec.flower, spec.fhue, r); }
     if (spec.fruit && spec.fruit !== 'none') for (let i = 0; i < 4; i++) { const a = r() * TAU, d = 0.4 + r() * 0.6;
       drawFruit(c, p, ccx + Math.cos(a) * cw * d, ccy + Math.sin(a) * chh * d, S * 0.03, spec.fruit, spec.fhue, r); }
@@ -1261,18 +1268,18 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
        name, and an arrow/heart rosette is held on erect STALKS (taro), not
        splayed flat. */
     const erect = spec.leaf === 'arrow' || spec.leaf === 'heart' || spec.leaf === 'crinkle';
-    const nL = leafN + 3;
+    const nL = erect ? 5 : leafN + 3;   /* ★ GP6 — five spaced blades, not a bunched mass */
     for (let i = 0; i < nL; i++) {
       const t = (i / (nL - 1)) - 0.5;
       const jit = (nvf(name, 0x90 + i * 7, 0.5) - 1);
       /* erect species stand their blades UP in a tight arc; flat rosettes splay wide */
-      const a = -Math.PI / 2 + t * (erect ? 1.4 : 2.7) * spread + jit;
+      const a = -Math.PI / 2 + t * (erect ? 2.0 : 2.7) * spread + jit * (erect ? 0.3 : 1);
       const L = H * ((erect ? 0.7 : 0.52) + r() * 0.24);
       if (erect) {   /* a visible leaf-stalk carrying the blade up and out */
-        const sx = cx + t * S * 0.05, tipX = cx + Math.sin(t * 1.2) * S * 0.18 * spread, tipY = base - L;
+        const sx = cx + t * S * 0.07, tipX = cx + Math.sin(t * 1.6) * S * 0.26 * spread, tipY = base - L * (1 - Math.abs(t) * 0.25);
         c.strokeStyle = stemCol; c.lineWidth = S * 0.009; c.lineCap = 'round';
         c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(sx, base - L * 0.5, tipX, tipY); c.stroke();
-        drawLeaf(c, p, tipX, tipY, Math.atan2(tipY - base, tipX - cx) + (t < 0 ? 0.2 : -0.2), L * 0.62, spec.leaf, toothed);
+        drawLeaf(c, p, tipX, tipY, -Math.PI / 2 + t * 0.55 + jit * 0.25, L * 0.62, spec.leaf, toothed);
       } else {
         drawLeaf(c, p, cx, base - S * 0.015, a, L, spec.leaf, toothed);
       }
