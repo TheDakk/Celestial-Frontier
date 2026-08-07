@@ -74,7 +74,11 @@ export interface PlantSpec {
   habit: 'tree' | 'shrub' | 'herb' | 'grass' | 'vine' | 'succulent' | 'fern' | 'aquatic' | 'rosette' | 'palm' | 'cane';
   leaf: 'broad' | 'lance' | 'needle' | 'pinnate' | 'palmate' | 'blade' | 'frond' | 'scale' | 'heart' | 'pad' | 'trefoil';
   flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin' | 'cross' | 'cone';
-  fruit?: 'none' | 'berry' | 'drupe' | 'pome' | 'citrus' | 'pod' | 'nut' | 'cone' | 'grain' | 'melon' | 'fig' | 'cluster';
+  fruit?: 'none' | 'berry' | 'drupe' | 'pome' | 'citrus' | 'pod' | 'nut' | 'cone' | 'grain' | 'melon' | 'fig' | 'cluster'
+    /* ★ WAVE 58 — species fruit SHAPES. The tree body was fine; every fruit was
+       the same small round sphere, so Pear read as Apple and Mango as Orange
+       (the judge's words). These are the shapes that name the species. */
+    | 'pear' | 'spiky' | 'star' | 'crown' | 'hairy';
   fhue?: string;      /** flower/fruit colour where colour IS the identity */
   hue?: string;       /** FOLIAGE colour — the body of the plant, not its fruit */
   /* ★ D-ART-125 — BARK. `hue` colours the foliage and the trunk took it too,
@@ -272,6 +276,54 @@ function drawFruit(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNul
     if (kind === 'citrus') softMark(c, x - rr * 0.3, y - rr * 0.35, rr * 0.4, rr * 0.3, '255,255,220', 0.35);
     c.strokeStyle = '#4a3a22'; c.lineWidth = 2.4; c.lineCap = 'round';
     c.beginPath(); c.moveTo(x, y - rr * 0.95); c.lineTo(x + rr * 0.16, y - rr * 1.45); c.stroke();
+  } else if (kind === 'pear') {
+    /* a teardrop: narrow neck at the stem, swelling to a round base. Pear,
+       avocado, mango, cashew apple — the shape the judge said was "absent, so
+       this is an apple". */
+    const rr = R * 1.15;
+    c.fillStyle = shade(x, y + rr * 0.2, rr);
+    c.beginPath();
+    c.moveTo(x, y - rr * 0.95);
+    c.bezierCurveTo(x - rr * 0.42, y - rr * 0.7, x - rr * 0.78, y + rr * 0.2, x - rr * 0.5, y + rr * 0.72);
+    c.bezierCurveTo(x - rr * 0.2, y + rr * 1.08, x + rr * 0.2, y + rr * 1.08, x + rr * 0.5, y + rr * 0.72);
+    c.bezierCurveTo(x + rr * 0.78, y + rr * 0.2, x + rr * 0.42, y - rr * 0.7, x, y - rr * 0.95);
+    c.closePath(); c.fill();
+    c.strokeStyle = '#4a3a22'; c.lineWidth = 2.4; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(x, y - rr * 0.9); c.lineTo(x + rr * 0.12, y - rr * 1.3); c.stroke();
+  } else if (kind === 'spiky') {
+    /* a spined burr — chestnut husk, durian. The spikes ARE the identity. */
+    const rr = R * 1.05;
+    c.fillStyle = shade(x, y, rr);
+    c.beginPath(); c.arc(x, y, rr * 0.8, 0, TAU); c.fill();
+    c.strokeStyle = col; c.fillStyle = col; c.lineWidth = Math.max(1.4, rr * 0.05);
+    for (let i = 0; i < 22; i++) { const a = (i / 22) * TAU, r0 = rr * 0.72, r1 = rr * (1.05 + (i % 2) * 0.12);
+      c.beginPath();
+      c.moveTo(x + Math.cos(a - 0.09) * r0, y + Math.sin(a - 0.09) * r0);
+      c.lineTo(x + Math.cos(a) * r1, y + Math.sin(a) * r1);
+      c.lineTo(x + Math.cos(a + 0.09) * r0, y + Math.sin(a + 0.09) * r0);
+      c.closePath(); c.fill(); }
+  } else if (kind === 'star') {
+    /* carambola — five sharp longitudinal wings, seen end-on as a star. */
+    const rr = R * 1.15; c.fillStyle = shade(x, y, rr);
+    c.beginPath();
+    for (let i = 0; i < 10; i++) { const a = (i / 10) * TAU - Math.PI / 2, rad = i % 2 ? rr * 0.32 : rr * 1.1;
+      const px = x + Math.cos(a) * rad, py = y + Math.sin(a) * rad; i === 0 ? c.moveTo(px, py) : c.lineTo(px, py); }
+    c.closePath(); c.fill();
+  } else if (kind === 'crown') {
+    /* pomegranate/persimmon — a round fruit topped by a calyx crown of points. */
+    const rr = R * 1.05; c.fillStyle = shade(x, y, rr);
+    c.beginPath(); c.ellipse(x, y, rr, rr * 1.02, 0, 0, TAU); c.fill();
+    c.fillStyle = col;
+    for (let i = -2; i <= 2; i++) { c.save(); c.translate(x, y - rr * 0.9); c.rotate(i * 0.4);
+      c.beginPath(); c.moveTo(-rr * 0.1, 0); c.lineTo(0, -rr * 0.42); c.lineTo(rr * 0.1, 0); c.closePath(); c.fill(); c.restore(); }
+  } else if (kind === 'hairy') {
+    /* rambutan/lychee — a round fruit under a coat of soft spines. */
+    const rr = R * 0.95; c.fillStyle = shade(x, y, rr);
+    c.beginPath(); c.arc(x, y, rr, 0, TAU); c.fill();
+    c.strokeStyle = col; c.lineWidth = Math.max(1.2, rr * 0.06); c.lineCap = 'round';
+    for (let i = 0; i < 26; i++) { const a = (i / 26) * TAU;
+      c.beginPath(); c.moveTo(x + Math.cos(a) * rr * 0.9, y + Math.sin(a) * rr * 0.9);
+      c.lineTo(x + Math.cos(a + 0.3) * rr * 1.35, y + Math.sin(a + 0.3) * rr * 1.35); c.stroke(); }
   } else if (kind === 'pod') {
     c.fillStyle = shade(x, y, R * 0.8);
     c.save(); c.translate(x, y); c.rotate(0.5);
@@ -578,9 +630,13 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
         }
       }
       if (spec.fruit && spec.fruit !== 'none') {
-        for (let i = 0; i < 4; i++) {
+        /* ★ WAVE 58 — fewer, BIGGER fruit so a species shape (pear taper, star,
+           spiny burr) actually reads instead of dissolving into the canopy. */
+        const shaped = ['pear', 'spiky', 'star', 'crown', 'hairy', 'citrus', 'melon'].includes(spec.fruit);
+        const nFr = shaped ? 3 : 4, fRad = shaped ? S * 0.050 : S * 0.034;
+        for (let i = 0; i < nFr; i++) {
           const a = r() * TAU, d = 0.45 + r() * 0.55;
-          drawFruit(c, p, cx + Math.cos(a) * cw * d + lean * S * 0.10, topY + H * 0.16 + Math.sin(a) * chh * d, S * 0.034, spec.fruit, spec.fhue, r);
+          drawFruit(c, p, cx + Math.cos(a) * cw * d + lean * S * 0.10, topY + H * 0.16 + Math.sin(a) * chh * d, fRad, spec.fruit, spec.fhue, r);
         }
       }
     }
