@@ -1087,7 +1087,7 @@ export function marineRay(c: Ctx, g: G, pIn: Pal, opts: { sting?: boolean; hue?:
   }
 }
 /** BIVALVE/GASTROPOD shells: scallop ribs, spiral snail, ear-shaped abalone */
-export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 'spiral' | 'abalone' | 'razor' | 'snail' | 'clam' | 'mussel' | 'limpet' | 'cowrie';
+export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 'spiral' | 'abalone' | 'razor' | 'snail' | 'clam' | 'mussel' | 'limpet' | 'cowrie' | 'conch';
   hue?: string; scale?: number }, name = ''): void {
   /* ★ WAVE 12 — Snail and Freshwater Snail carried LITERALLY the same spec and
      the lock reported them at 0.06, the closest pair in the entire catalogue. */
@@ -1115,7 +1115,34 @@ export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 's
      ground; a constant can only be right for one of five shapes. Only the snail
      branch is re-based here, because it is the only one measured. */
   ground(c, cx, opts.kind === 'snail' ? cy + S * 0.128 : S * 0.76, S * 0.20);
-  if (opts.kind === 'limpet') {
+  if (opts.kind === 'conch') {
+    /* ★ WAVE 65 — a CONCH: a pointed spire of whorls on one side, opening into
+       a great FLARED LIP with a pink interior. gp3: "a flat planispiral ridged
+       disc — no flared lip". */
+    const cx2 = S * 0.5, cy2 = S * 0.52, W = S * 0.20 * sv;
+    /* the flared lip first: a broad wing sweeping down-right, pink inside */
+    const lipG = c.createLinearGradient(cx2, cy2 - W * 0.4, cx2 + W * 1.1, cy2 + W * 0.5);
+    lipG.addColorStop(0, '#e8b8a8'); lipG.addColorStop(0.5, '#e0a090'); lipG.addColorStop(1, '#b8746a');
+    c.fillStyle = lipG;
+    c.beginPath();
+    c.moveTo(cx2 - W * 0.1, cy2 - W * 0.55);
+    c.quadraticCurveTo(cx2 + W * 1.2, cy2 - W * 0.5, cx2 + W * 1.05, cy2 + W * 0.35);
+    c.quadraticCurveTo(cx2 + W * 0.7, cy2 + W * 0.72, cx2 + W * 0.1, cy2 + W * 0.6);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(120,60,50,0.4)'; c.lineWidth = 2;   /* lip inner shading */
+    c.beginPath(); c.moveTo(cx2 + W * 0.25, cy2 - W * 0.3); c.quadraticCurveTo(cx2 + W * 0.8, cy2 - W * 0.2, cx2 + W * 0.75, cy2 + W * 0.3); c.stroke();
+    /* the spire: stacked whorls tapering up-left, knobbed shoulders */
+    for (let i = 0; i < 5; i++) {
+      const u = i / 4;
+      const wx = cx2 - W * (0.15 + u * 0.55), wy = cy2 - W * (0.15 + u * 0.42);
+      const wr = W * (0.42 - u * 0.075);
+      c.fillStyle = grad(c, p, wx, wy, wr);
+      c.beginPath(); c.ellipse(wx, wy, wr, wr * 0.72, -0.5, 0, TAU); c.fill();
+      c.fillStyle = p.dark;   /* the knobs on each shoulder */
+      for (let k = -1; k <= 1; k++) { c.beginPath(); c.arc(wx + k * wr * 0.5, wy - wr * 0.55, wr * 0.13, 0, TAU); c.fill(); }
+    }
+    ground(c, cx2, cy2 + W * 0.8, W * 1.4);
+  } else if (opts.kind === 'limpet') {
     /* ★ WAVE 59 — a simple UNCOILED CONE with radiating ribs, sitting on the
        rock. The judge failed the limpet for reusing the abalone dome. */
     const w = S * 0.19 * sv, h = S * 0.15 * sv2;
@@ -1599,7 +1626,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Razor Clam': (c, g, p, n) => marineShell(c, g, p, { hue: '#b6a86a', kind: 'razor' }, n),
   'Abalone': (c, g, p, n) => marineShell(c, g, p, { hue: '#6b8f80', kind: 'abalone' }, n),
   'Limpet': (c, g, p, n) => marineShell(c, g, p, { hue: '#8a7a5f', kind: 'limpet' }, n),
-  'Conch': (c, g, p, n) => marineShell(c, g, p, { hue: '#d99b7d', kind: 'spiral' }, n),
+  'Conch': (c, g, p, n) => marineShell(c, g, p, { hue: '#d99b7d', kind: 'conch' }, n),
   'Nautilus': (c, g, p, n) => marineShell(c, g, p, { hue: '#e8dcc6', kind: 'spiral' }, n),
   'Cowrie': (c, g, p, n) => marineShell(c, g, p, { hue: '#8b5a2b', kind: 'cowrie' }, n),
   'Snail': (c, g, p, n) => marineShell(c, g, p, { kind: 'snail', hue: '#8d6f43' }, n),
