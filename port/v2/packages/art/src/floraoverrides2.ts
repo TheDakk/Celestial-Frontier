@@ -129,6 +129,9 @@ export interface PlantSpec {
       groundcover berries (bearberry, crowberry, cranberry, lingonberry) that
       the judge failed for being drawn as tall upright cane-vases */
   creep?: boolean;
+  /** a woody shrub as a DENSE ROUNDED twiggy bush with a filled leafy crown —
+      tea, tea tree, tamarisk, bay laurel (failed as "five open bare stalks") */
+  dense?: boolean;
   /** the harvested underground organ, shown pulled up at the base: a long ropey
       taproot (licorice), a forked root (ginseng), or a knobbly rhizome
       (ginger, turmeric, valerian). The judge failed several for its absence. */
@@ -714,6 +717,35 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       }
       if (spec.flower && spec.flower !== 'none' && k % 2 === 0) drawFlower(c, p, ex, ey - S * 0.01, S * 0.03, spec.flower, spec.fhue, r);
     }
+  } else if (spec.habit === 'shrub' && spec.dense) {
+    /* ★ WAVE 58 — A DENSE TWIGGY BUSH. The judge failed Tea, Tea Tree, Tamarisk,
+       Bay Laurel for reading as "five open bare stalks, see-through" when the
+       must-read is a dense rounded evergreen. A short trunk, a mass of twigs,
+       then a FILLED rounded crown of leaves — the shrub form of the tree canopy. */
+    const cw = S * 0.22 * (0.85 + spread * 0.35), chh = S * 0.21 * nvf(name, 0x66, 0.16);
+    const ccx = cx + lean * S * 0.06, ccy = base - H * 0.58;
+    /* short twigs only — they are buried under the crown, not the whole plant */
+    c.strokeStyle = barkCol; c.lineWidth = S * 0.009; c.lineCap = 'round';
+    for (let k = 0; k < 5; k++) { const s = (k - 2) / 2.4;
+      c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + s * cw * 0.4, base - H * 0.3, ccx + s * cw * 0.55, ccy + chh * 0.55); c.stroke(); }
+    /* a FILLED foliage mass first (the fix for the see-through crown): a deep
+       green body in soft masks, then leaves on top so it reads dense */
+    const gA = [46, 92, 44];
+    const fmix = (ch: number, an: number): number => an * 0.62 + ch * 0.38;
+    const fB = [fmix(p.cr, gA[0]!), fmix(p.cg, gA[1]!), fmix(p.cb, gA[2]!)];
+    const fol = (v: number): string => `${Math.min(255, fB[0]! * v | 0)},${Math.min(255, fB[1]! * v | 0)},${Math.min(255, fB[2]! * v | 0)}`;
+    for (let i = 0; i < 30; i++) { const a = r() * TAU, d = r() ** 0.6; softMark(c, ccx + Math.cos(a) * cw * d, ccy + Math.sin(a) * chh * d, cw * 0.5, chh * 0.5, fol(0.55), 0.7); }
+    for (let i = 0; i < 18; i++) { const a = r() * TAU, d = r() ** 0.7; softMark(c, ccx + Math.cos(a) * cw * 0.75 * d - cw * 0.1, ccy + Math.sin(a) * chh * 0.7 * d - chh * 0.2, cw * 0.34, chh * 0.34, fol(1.0), 0.5); }
+    /* a filled leafy crown on top */
+    for (let i = 0; i < leafN * 5 + 40; i++) {
+      const a = r() * TAU, d = 0.2 + r() ** 0.5 * 0.85;
+      const lx = ccx + Math.cos(a) * cw * d, ly = ccy + Math.sin(a) * chh * d;
+      drawLeaf(c, p, lx, ly, a + (r() - 0.5), S * 0.05 * nvf(name, 0x77, 0.2), spec.leaf, toothed);
+    }
+    if (spec.flower && spec.flower !== 'none') for (let i = 0; i < 4; i++) { const a = r() * TAU, d = 0.4 + r() * 0.6;
+      drawFlower(c, p, ccx + Math.cos(a) * cw * d, ccy + Math.sin(a) * chh * d, S * 0.036, spec.flower, spec.fhue, r); }
+    if (spec.fruit && spec.fruit !== 'none') for (let i = 0; i < 4; i++) { const a = r() * TAU, d = 0.4 + r() * 0.6;
+      drawFruit(c, p, ccx + Math.cos(a) * cw * d, ccy + Math.sin(a) * chh * d, S * 0.03, spec.fruit, spec.fhue, r); }
   } else if (spec.habit === 'shrub') {
     /* MANY STEMS FROM THE GROUND — that is the whole difference from a tree */
     const stems = 5;
