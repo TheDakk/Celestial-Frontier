@@ -371,14 +371,18 @@ export function faunaAngelfish(c: Ctx, g: G, p: Pal): void {
 export function faunaLionfish(c: Ctx, g: G, p: Pal): void {
   const r = mulberry32(((g.seed as number) ^ 0x110F) >>> 0);
   const cx = S * 0.5, cy = S * 0.52, w = S * 0.17, h = S * 0.10;
-  for (let i = 0; i < 16; i++) {
-    const a = -Math.PI * 0.95 + (i / 15) * Math.PI * 1.9, len = S * (0.17 + r() * 0.10);
+  /* ★ WAVE 62 — the rays fan where a lionfish's fins ARE: a dorsal crown over
+     the back and a pectoral fan sweeping down-and-back. gp5 failed it for
+     quills "radiating in every direction — forward, back" over the face. */
+  const ray = (a: number, len: number, i: number): void => {
     c.strokeStyle = i % 2 ? 'rgba(240,226,214,0.75)' : `rgba(${p.cr},${p.cg},${p.cb},0.8)`;
     c.lineWidth = 3.6; c.lineCap = 'round';
     c.beginPath(); c.moveTo(cx, cy); c.quadraticCurveTo(cx + Math.cos(a) * len * 0.6, cy + Math.sin(a) * len * 0.6 - 6, cx + Math.cos(a) * len, cy + Math.sin(a) * len); c.stroke();
     c.strokeStyle = 'rgba(255,255,255,0.18)'; c.lineWidth = 8;
     c.beginPath(); c.moveTo(cx + Math.cos(a) * len * 0.35, cy + Math.sin(a) * len * 0.35); c.lineTo(cx + Math.cos(a) * len * 0.85, cy + Math.sin(a) * len * 0.85); c.stroke();
-  }
+  };
+  for (let i = 0; i < 11; i++) ray(-2.45 + (i / 10) * 1.9, S * (0.17 + r() * 0.10), i);   /* the dorsal crown */
+  for (let i = 0; i < 6; i++) ray(0.55 + (i / 5) * 1.45, S * (0.15 + r() * 0.08), i);     /* the pectoral fan */
   c.fillStyle = bodyGrad(c, p, cx, cy, w);
   c.beginPath(); c.ellipse(cx, cy, w, h, 0, 0, TAU); c.fill();
   rim(c, () => c.ellipse(cx, cy, w, h, 0, -2.8, 0.4), 2);
