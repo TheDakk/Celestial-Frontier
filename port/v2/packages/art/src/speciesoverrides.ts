@@ -197,27 +197,44 @@ function fungiCoral(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
     const forks = 2 + (r() < 0.4 ? 1 : 0);
     for (let f = 0; f < forks; f++) grow(x2, y2, ang - 0.5 + f * (1.0 / (forks - 1 || 1)) + (r() - 0.5) * 0.3, len * (0.7 + r() * 0.15), Math.max(1.5, w * 0.66), depth + 1);
   };
-  const trunks = 3 + (r() * 2 | 0);
-  for (let t = 0; t < trunks; t++) grow(S * (0.34 + t * (0.32 / trunks)), S * 0.82, -Math.PI / 2 + (r() - 0.5) * 0.4, S * 0.16, 12, 0);
+  /* ★ WAVE 63 — ONE DENSE CLUMP. gp3: "reads as leafless trees — three separate
+     stems rising from three separate points". A coral fungus is a single tight
+     cluster: many trunks from one base, splayed outward like antlers. */
+  const trunks = 6;
+  for (let t = 0; t < trunks; t++) {
+    const lean = (t / (trunks - 1) - 0.5) * 1.1;   /* splay out from the centre */
+    grow(S * 0.5 + lean * S * 0.02, S * 0.82, -Math.PI / 2 + lean * 0.55 + (r() - 0.5) * 0.15, S * 0.13, 11, 0);
+  }
 }
 function fungiEarthstar(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   /* splayed star rays around a central spore sac */
   const r = mulberry32(((g.seed as number) ^ 0xEA57) >>> 0);
   groundShadow(c, S * 0.5, S * 0.72, S * 0.22);
-  const cx = S * 0.5, cy = S * 0.6, rays = 6 + (r() * 3 | 0);
+  const cx = S * 0.5, cy = S * 0.6, rays = 7 + (r() * 2 | 0);
+  /* ★ WAVE 63 — THICK OPENED RAYS. gp3: "thin needle spikes stabbing outward;
+     the must-read is a THICK opened star". Each ray is now a broad fleshy
+     petal — wide at mid-length, blunt-tipped, edges rounded — peeled back
+     around the sac like a split-open skin, with a pale upper face. */
   for (let i = 0; i < rays; i++) {
-    const a = (i / rays) * TAU, inner = S * 0.09, outer = S * (0.20 + r() * 0.05);
+    const a = (i / rays) * TAU, inner = S * 0.05, outer = S * (0.27 + r() * 0.05);
+    const midA1 = a - 0.34, midA2 = a + 0.34;
     const gg = c.createLinearGradient(cx, cy, cx + Math.cos(a) * outer, cy + Math.sin(a) * outer * 0.5);
-    gg.addColorStop(0, p.base); gg.addColorStop(1, p.dark);
+    gg.addColorStop(0, p.lit); gg.addColorStop(0.6, p.base); gg.addColorStop(1, p.dark);
     c.fillStyle = gg;
     c.beginPath();
-    c.moveTo(cx + Math.cos(a - 0.28) * inner, cy + Math.sin(a - 0.28) * inner * 0.5);
-    c.lineTo(cx + Math.cos(a) * outer, cy + Math.sin(a) * outer * 0.5);
-    c.lineTo(cx + Math.cos(a + 0.28) * inner, cy + Math.sin(a + 0.28) * inner * 0.5);
+    c.moveTo(cx + Math.cos(midA1) * inner, cy + Math.sin(midA1) * inner * 0.5);
+    /* swell WIDE at mid-length, then round over to a blunt tip */
+    c.quadraticCurveTo(cx + Math.cos(midA1) * outer * 0.72, cy + Math.sin(midA1) * outer * 0.40,
+      cx + Math.cos(a) * outer, cy + Math.sin(a) * outer * 0.5);
+    c.quadraticCurveTo(cx + Math.cos(midA2) * outer * 0.72, cy + Math.sin(midA2) * outer * 0.40,
+      cx + Math.cos(midA2) * inner, cy + Math.sin(midA2) * inner * 0.5);
     c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(60,44,28,0.4)'; c.lineWidth = 1.4;   /* the crease down each ray */
+    c.beginPath(); c.moveTo(cx + Math.cos(a) * inner, cy + Math.sin(a) * inner * 0.5);
+    c.lineTo(cx + Math.cos(a) * outer * 0.94, cy + Math.sin(a) * outer * 0.47); c.stroke();
   }
   const sac = c.createRadialGradient(cx - 4, cy - 5, 2, cx, cy, S * 0.1);
-  sac.addColorStop(0, p.lit); sac.addColorStop(0.7, p.base); sac.addColorStop(1, p.dark);
+  sac.addColorStop(0, '#d8cdb4'); sac.addColorStop(0.7, '#a89878'); sac.addColorStop(1, '#6e6250');
   c.fillStyle = sac; c.beginPath(); c.arc(cx, cy, S * 0.1, 0, TAU); c.fill();
   c.fillStyle = 'rgba(0,0,0,0.5)'; c.beginPath(); c.arc(cx, cy - S * 0.02, S * 0.012, 0, TAU); c.fill();   /* apical pore */
 }
@@ -255,6 +272,60 @@ function fungiMold(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   c.restore();
   /* sporangia dots peppering the fuzz */
   for (let i = 0; i < 60; i++) { const a = r() * TAU, d = Math.pow(r(), 0.6) * S * 0.3; c.fillStyle = `rgba(${p.cr * 1.3 | 0},${p.cg * 1.3 | 0},${p.cb * 1.3 | 0},0.5)`; c.beginPath(); c.arc(S * 0.5 + Math.cos(a) * d, S * 0.52 + Math.sin(a) * d * 0.82, 1 + r() * 1.8, 0, TAU); c.fill(); }
+}
+/* ★ WAVE 63 — MILDEW GROWS ON A LEAF. gp3: "no leaf or fabric substrate at all;
+   the blob is the whole subject". A green leaf with white powdery patches. */
+function fungiMildew(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
+  const r = mulberry32(((g.seed as number) ^ 0x311E) >>> 0);
+  const cx = S * 0.5, cy = S * 0.52, L = S * 0.30, W = S * 0.185;
+  groundShadow(c, cx, cy + W + S * 0.08, S * 0.24);
+  /* the host leaf, slightly sickly */
+  const lg = c.createLinearGradient(cx - L, cy, cx + L, cy);
+  lg.addColorStop(0, '#4a6b34'); lg.addColorStop(0.5, '#5d7c3e'); lg.addColorStop(1, '#3e5c2c');
+  c.fillStyle = lg;
+  c.beginPath(); c.moveTo(cx - L, cy);
+  c.quadraticCurveTo(cx - L * 0.3, cy - W, cx + L * 0.85, cy - W * 0.24);
+  c.quadraticCurveTo(cx + L * 1.05, cy, cx + L * 0.85, cy + W * 0.24);
+  c.quadraticCurveTo(cx - L * 0.3, cy + W, cx - L, cy); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(26,40,20,0.5)'; c.lineWidth = 2;
+  c.beginPath(); c.moveTo(cx - L, cy); c.lineTo(cx + L * 0.95, cy); c.stroke();   /* midrib */
+  for (let k = 1; k <= 4; k++) { const lx = cx - L + (k / 5) * L * 1.9; c.beginPath(); c.moveTo(lx, cy); c.lineTo(lx + L * 0.16, cy - W * 0.55 * (1 - Math.abs(k - 2.5) * 0.2)); c.moveTo(lx, cy); c.lineTo(lx + L * 0.16, cy + W * 0.55 * (1 - Math.abs(k - 2.5) * 0.2)); c.stroke(); }
+  /* the powdery white bloom, in patches that follow the surface */
+  for (let i = 0; i < 90; i++) {
+    const u = r(), a = r() * TAU;
+    const px = cx - L * 0.7 + u * L * 1.5, py = cy + Math.sin(a) * W * 0.6 * (1 - Math.abs(u - 0.4));
+    const rad = 4 + r() * 9;
+    const gg = c.createRadialGradient(px, py, 0, px, py, rad);
+    gg.addColorStop(0, 'rgba(244,244,238,0.55)'); gg.addColorStop(1, 'rgba(244,244,238,0)');
+    c.fillStyle = gg; c.beginPath(); c.arc(px, py, rad, 0, TAU); c.fill();
+  }
+}
+/* ★ WAVE 63 — YEAST IS ITS CELLS. gp3: "defined by its cells" — a cluster of
+   plump translucent ovals, several mid-BUD (a small daughter cell pinching off),
+   the microscope-view read. */
+function fungiYeast(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
+  const r = mulberry32(((g.seed as number) ^ 0x9EA5) >>> 0);
+  const cx = S * 0.5, cy = S * 0.52;
+  groundShadow(c, cx, cy + S * 0.26, S * 0.2);
+  const cell = (x: number, y: number, rad: number, budAng: number | null): void => {
+    const gg = c.createRadialGradient(x - rad * 0.3, y - rad * 0.35, 1, x, y, rad * 1.1);
+    gg.addColorStop(0, 'rgba(240,234,214,0.95)'); gg.addColorStop(0.6, `rgba(${p.cr * 1.1 | 0},${p.cg * 1.05 | 0},${p.cb * 0.9 | 0},0.9)`); gg.addColorStop(1, 'rgba(120,108,80,0.85)');
+    c.fillStyle = gg; c.beginPath(); c.ellipse(x, y, rad, rad * 0.82, 0.2, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(90,80,58,0.5)'; c.lineWidth = 1.6; c.stroke();
+    /* the vacuole — the pale internal disc that says "cell" */
+    c.fillStyle = 'rgba(255,252,240,0.4)'; c.beginPath(); c.arc(x - rad * 0.18, y - rad * 0.1, rad * 0.34, 0, TAU); c.fill();
+    if (budAng !== null) {   /* a daughter cell pinching off */
+      const bx = x + Math.cos(budAng) * rad * 1.12, by = y + Math.sin(budAng) * rad * 0.95, br = rad * 0.45;
+      const bg = c.createRadialGradient(bx - br * 0.3, by - br * 0.3, 1, bx, by, br);
+      bg.addColorStop(0, 'rgba(244,238,220,0.95)'); bg.addColorStop(1, 'rgba(140,126,94,0.85)');
+      c.fillStyle = bg; c.beginPath(); c.arc(bx, by, br, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(90,80,58,0.5)'; c.lineWidth = 1.4; c.stroke();
+    }
+  };
+  for (let i = 0; i < 9; i++) {
+    const a = (i / 9) * TAU + r() * 0.5, d = (i ? 0.45 + r() * 0.55 : 0) * S * 0.16;
+    cell(cx + Math.cos(a) * d * 1.3, cy + Math.sin(a) * d, S * (0.055 + r() * 0.03), r() < 0.5 ? r() * TAU : null);
+  }
 }
 function fungiMorel(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   /* conical honeycomb-pitted cap on a pale stalk */
@@ -402,7 +473,7 @@ const FUNGI_NAME: Record<string, Painter> = {
   /* ★ WAVE 42 — 'Reindeer Lichen': fungiBracket removed. CANON routes it to
      lichenMat and runs first, so this never fired — and the two disagree
      completely: a bracket SHELF versus a branching lichen mat. */
-  'Giant Puffball': (c, g, p) => fungiPuffball(c, g, speciesHue(p, '#ded3bb')), 'Earthstar': fungiEarthstar,
+  'Giant Puffball': (c, g, p) => fungiPuffball(c, g, speciesHue(p, '#ded3bb')), 'Earthstar': (c, g, p) => fungiEarthstar(c, g, speciesHue(p, '#c8a878')),
   /* ⚠ 'Black Truffle' was routed bare, so it inherited the generic pale fungus
      palette and painted CHALK-WHITE — the audit read it as "a white puffball".
      Its own neighbour on this line already showed the fix. When a species name
@@ -412,7 +483,7 @@ const FUNGI_NAME: Record<string, Painter> = {
   'Enoki': (c, g, p) => fungiEnoki(c, g, speciesHue(p, '#f6f2e8')),
   'Coral Fungus': (c, g, p) => fungiCoral(c, g, speciesHue(p, '#f0dfa4')),
   'Morel': (c, g, p) => fungiMorel(c, g, speciesHue(p, '#6b4a2a')),
-  'Mold': (c, g, p) => fungiMold(c, g, speciesHue(p, '#5d8a6e')), 'Mildew': fungiMold, 'Yeast': fungiMold,
+  'Mold': (c, g, p) => fungiMold(c, g, speciesHue(p, '#5d8a6e')), 'Mildew': (c, g, p) => fungiMildew(c, g, speciesHue(p, '#c8c4b0')), 'Yeast': (c, g, p) => fungiYeast(c, g, speciesHue(p, '#d8c89a')),
   /* wave 18 — the Platinum-audit bespoke fungi, whose signature the shared
      families cannot express (a family for the many, a hand form for the few) */
   'Fly Agaric': fungiFlyAgaric,

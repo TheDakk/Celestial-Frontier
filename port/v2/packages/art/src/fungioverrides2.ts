@@ -64,14 +64,22 @@ export function fungiLionsMane(c: Ctx, g: G, _p: Pal): void {
     gg.addColorStop(0, '#f6f1e2'); gg.addColorStop(0.6, '#e6dcc2'); gg.addColorStop(1, '#b8ac8e');
     c.fillStyle = gg; c.beginPath(); c.arc(x, y, rr, 0, TAU); c.fill();
   }
-  /* the tooth spines hang DOWN off the underside — the signature */
+  /* ★ WAVE 63 — THE CASCADE IS THE SPECIES. gp3: "a pom-pom of LONG icicle
+     spines cascading downward over the whole mass". The old spines were short
+     stubs on the underside; they now drape the ENTIRE ball — long tapering
+     icicles from every part of the surface, longest at the bottom, so the
+     silhouette itself is a shaggy waterfall of teeth. */
   c.lineCap = 'round';
-  for (let i = 0; i < 80; i++) {
-    const a = r() * TAU, d = r() ** 0.5 * R * 0.95;
-    const x = cx + Math.cos(a) * d, y = cy + Math.abs(Math.sin(a)) * d * 0.5 + R * 0.2;
-    const len = R * (0.14 + r() * 0.22);
-    c.strokeStyle = i % 3 ? '#efe7d2' : '#d8cdb0'; c.lineWidth = 3 - (i % 2);
-    c.beginPath(); c.moveTo(x, y); c.lineTo(x + (r() - 0.5) * 6, y + len); c.stroke();
+  for (let i = 0; i < 160; i++) {
+    const a = r() * TAU, d = r() ** 0.5 * R * 1.0;
+    const x = cx + Math.cos(a) * d, y = cy + Math.sin(a) * d * 1.05;
+    /* longer the lower the root sits — the cascade grows down the face */
+    const droop = 0.35 + ((y - (cy - R)) / (2 * R)) * 0.55;
+    const len = R * droop * (0.7 + r() * 0.6);
+    c.strokeStyle = i % 3 ? '#efe7d2' : '#d8cdb0'; c.lineWidth = 3.4 - (i % 2);
+    c.beginPath(); c.moveTo(x, y);
+    c.quadraticCurveTo(x + (r() - 0.5) * 5, y + len * 0.6, x + (r() - 0.5) * 9, y + len);
+    c.stroke();
   }
 }
 
