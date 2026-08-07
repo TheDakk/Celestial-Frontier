@@ -135,6 +135,14 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★★ POLISH batches 3–4 also committed: Date bunch hangs on orange strand · cereal 7-blade tuft
+(ear dominates) · Lion's Mane full drape · Tiger Shark blunt snout · Avocet pied cap · Sand Cat
+ears 1.55 · Pampas pale club · walrus bristle moustache (Oregano flowerN experiment reverted —
+keep the whorl). REMAINING fresh-prose asks: Wheat contradicts? (done), Oregano airy spray (open,
+bespoke), parrotfish forehead bulge, hammer bar seat, Wildcat coat tone, Coralline chalk matte,
+Glasswort red strength, Beluga stay-white gradient, porpoise fin contrast, Reindeer-Lichen fringe
+→ then the ~470 CARRIED POLISH rows by set (flora 117 → fauna 290 → procedural 133 via the
+bridge). Then ONE measure + final certification (budget-gated, Nick approves each).
 ★★ THE POLISH→PASS SWEEP IS UNDERWAY (committed: batches 1–2, 12 one-cue fixes: Cougar tail
 tip, Narwhal spiral, Sand Dollar petals, Brittle Star reach, Mustard pods, Echinacea cone, Mint
 stem, Bergamot/mint lavender, Flax wiry, Puffin bill). METHOD: work the 95 fresh-prose POLISH
