@@ -748,7 +748,28 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       for (let k = 1; k <= 7; k++) { const ty = base - (base - py) * (k / 8); c.beginPath(); c.moveTo(cx + (px - cx) * (k / 8) - tw, ty); c.lineTo(cx + (px - cx) * (k / 8) + tw, ty); c.stroke(); }
       for (let i = 0; i < 9; i++) { const a = -Math.PI / 2 + (i - 4) * 0.42; drawLeaf(c, p, px, py, a, H * 0.5 * spread, 'frond'); }
     }
-    if (spec.fruit && spec.fruit !== 'none') { const shaped = ['pear', 'spiky', 'star', 'crown', 'hairy', 'melon', 'cluster'].includes(spec.fruit);
+    if (spec.pseudostem && spec.fruit && spec.fruit !== 'none') {
+      /* ★ GP6 — THE HANGING BUNCH + PURPLE BUD. The banana's fruit sat as balls
+         tucked in the crown; it is a stalk DROPPING from the crown carrying
+         tiered rows of upcurved fingers, ending in the purple-red teardrop bud. */
+      const sx2 = px + S * 0.03, sy2 = py + S * 0.02, drop = S * 0.16;
+      c.strokeStyle = '#6a7a3a'; c.lineWidth = S * 0.010; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(sx2, sy2); c.quadraticCurveTo(sx2 + S * 0.02, sy2 + drop * 0.5, sx2 + S * 0.012, sy2 + drop); c.stroke();
+      c.fillStyle = spec.fhue ?? '#d8c440';
+      for (let tier = 0; tier < 3; tier++) {   /* tiered rows of fingers, curving UP */
+        const ty2 = sy2 + drop * (0.25 + tier * 0.24);
+        for (let k = -2; k <= 2; k++) {
+          c.save(); c.translate(sx2 + S * 0.012 + k * S * 0.014, ty2); c.rotate(0.5 - Math.abs(k) * 0.12);
+          c.beginPath(); c.ellipse(0, 0, S * 0.008, S * 0.022, 0, 0, TAU); c.fill(); c.restore();
+        }
+      }
+      const bg3 = c.createRadialGradient(sx2 + S * 0.012, sy2 + drop + S * 0.02, 1, sx2 + S * 0.012, sy2 + drop + S * 0.03, S * 0.026);
+      bg3.addColorStop(0, '#8a3050'); bg3.addColorStop(1, '#4a1830');
+      c.fillStyle = bg3;   /* the purple-red terminal bud */
+      c.beginPath(); c.moveTo(sx2 + S * 0.012 - S * 0.018, sy2 + drop);
+      c.quadraticCurveTo(sx2 + S * 0.012, sy2 + drop + S * 0.06, sx2 + S * 0.012 + S * 0.018, sy2 + drop);
+      c.closePath(); c.fill();
+    } else if (spec.fruit && spec.fruit !== 'none') { const shaped = ['pear', 'spiky', 'star', 'crown', 'hairy', 'melon', 'cluster'].includes(spec.fruit);
       for (let i = 0; i < (shaped ? 3 : 4); i++) drawFruit(c, p, px + (r() - 0.5) * S * 0.1, py + S * 0.03 + (r() - 0.5) * S * 0.05, S * 0.04, spec.fruit, spec.fhue, r); }
   } else if (spec.habit === 'tree') {
     /* A TREE IS A TRUNK HOLDING A CANOPY — and the trunk TAPERS and forks,
@@ -897,7 +918,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       drawLeaf(c, p, lx, ly, a + (r() - 0.5), S * 0.05 * nvf(name, 0x77, 0.2), spec.leaf, toothed);
     }
     if (spec.flower && spec.flower !== 'none') for (let i = 0; i < 4; i++) { const a = r() * TAU, d = 0.4 + r() * 0.6;
-      drawFlower(c, p, ccx + Math.cos(a) * cw * d, ccy + Math.sin(a) * chh * d, S * 0.036, spec.flower, spec.fhue, r); }
+      drawFlower(c, p, ccx + Math.cos(a) * cw * d, ccy + Math.sin(a) * chh * d, S * (spec.flower === 'trumpet' ? 0.062 : 0.036), spec.flower, spec.fhue, r); }
     if (spec.fruit && spec.fruit !== 'none') for (let i = 0; i < 4; i++) { const a = r() * TAU, d = 0.4 + r() * 0.6;
       drawFruit(c, p, ccx + Math.cos(a) * cw * d, ccy + Math.sin(a) * chh * d, S * 0.03, spec.fruit, spec.fhue, r); }
   } else if (spec.habit === 'shrub') {
@@ -1067,8 +1088,8 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       /* ★ WAVE 67 — a non-tall column is a squat accordion BARREL (barrel
          cactus): far wider, shorter, more ribs. */
       const barrel = !spec.tall;
-      const w = S * (barrel ? 0.13 : 0.055) * spread;
-      const HB = barrel ? H * 0.62 : H;
+      const w = S * (barrel ? 0.175 : 0.055) * spread;
+      const HB = barrel ? H * 0.48 : H;
       topAnchor = HB;
       const gg = c.createLinearGradient(cx - w, 0, cx + w, 0);
       gg.addColorStop(0, p.dark); gg.addColorStop(0.42, p.base); gg.addColorStop(1, p.dark);
@@ -1189,6 +1210,14 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       c.beginPath(); c.moveTo(cx + u * S * 0.02, base);
       c.bezierCurveTo(cx + sway * 0.5, base - H * 0.40, cx + sway * 1.25, base - H * 0.74, tip[0], tip[1]);
       c.stroke();
+      if (wrack) {   /* the Y-FORK at 60%: two short diverging tips (gp6) */
+        const fy2 = base - H * topFrac * 0.6, fx2 = cx + sway * 0.6;
+        c.strokeStyle = i % 2 ? p.base : p.dark; c.lineWidth = S * 0.014; c.lineCap = 'round';
+        for (const sgn2 of [-1, 1] as const) {
+          c.beginPath(); c.moveTo(fx2, fy2);
+          c.quadraticCurveTo(fx2 + sgn2 * S * 0.02, fy2 - H * 0.14, fx2 + sgn2 * S * 0.035 + sway * 0.3, fy2 - H * 0.26); c.stroke();
+        }
+      }
       if (wrack) {   /* PAIRED air bladders flanking the midrib, not on the centreline */
         c.fillStyle = p.lit;
         for (let k = 1; k <= 3; k++) { const v = k / 3.5, mx = cx + sway * v, my = base - H * v * topFrac;
