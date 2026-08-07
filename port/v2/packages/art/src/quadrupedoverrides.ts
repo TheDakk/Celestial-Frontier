@@ -2185,9 +2185,9 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* ★ wave 22b — Lion had NO route and fell through to the verbatim engine,
      where the mane rendered as a ring of spikes over an unreadable face. */
   'Lion': { legs: 0.1236, depth: 0.1426, len: 0.2455, neck: 0.06, muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'tuft', mane: 'lion', hue: '#c19a5b', family: 'felid' },
-  'Jaguar': { legs: 0.114, depth: 0.1395, len: 0.2287, neck: 0.07, muzzle: 0.35, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#c8983c", family: 'felid' , legMarks: true },
-  'Leopard': { legs: 0.1253, depth: 0.1268, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#d3ab5e", family: 'felid' , legMarks: true },
-  'Snow Leopard': { legs: 0.1221, depth: 0.133, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'plume', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' , legMarks: true },
+  'Jaguar': { legs: 0.114, depth: 0.1395, len: 0.2287, neck: 0.07, muzzle: 0.35, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#c8983c", family: 'felid' , legMarks: true, tailScale: 1.8 },
+  'Leopard': { legs: 0.1253, depth: 0.1268, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#d3ab5e", family: 'felid' , legMarks: true, tailScale: 1.8 },
+  'Snow Leopard': { legs: 0.1221, depth: 0.133, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' , legMarks: true, tailScale: 2.1 },
   /* ★ wave 35 — Nick's row: "current ungulate-like body lacks deep chest,
      tucked waist, feline paws/head". It is the one felid NOT built like a big
      cat — a whippet: extreme waist tuck, light hindquarters, and a tail nearly
@@ -2195,7 +2195,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
      felid plan alone could never reach them because the felid plan describes a
      leopard. */
   'Cheetah': { legs: 0.1938, depth: 0.1205, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 0.95, rump: 0.52, tailScale: 1.9 , legMarks: true },
-  'Cougar': { legs: 0.1482, depth: 0.1268, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid' },
+  'Cougar': { legs: 0.1482, depth: 0.1268, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid', tailScale: 1.7 },
   'Lynx': { legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft' },
   /* the pixel-siblings, separated */
   'Rhinoceros': { legs: 0.0835, depth: 0.1886, len: 0.263, neck: 0.045, muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#8b8b8e', family: 'pachyderm' },
