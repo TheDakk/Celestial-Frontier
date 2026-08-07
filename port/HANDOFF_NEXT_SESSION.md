@@ -135,6 +135,14 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★★ POLISH batches 5–6 committed: cetacean `pale` (Beluga white to the tail) · Glasswort red
+flush · fern `tall` = upright SHUTTLECOCK (Sword Fern) · Lime true green · Arctic Blueberry mat.
+(Parrotfish bighead + Oregano flowerN experiments reverted — render-verify keeps only wins.)
+CARRIED-FLORA polish remaining (~64): work from goldpass6-results.json `defect` prose — notable
+asks: Pitcher Plant red veins, Sundew placement, Water Lily detail, Apple low crooked crown,
+Lemon nipple tip, Lychee pebbled rosettes→hanging clusters, Mulberry longer berries, Olive
+gnarled trunk, Plum matte bloom, Peach drooping willow leaves, Acorn oak lobes, cane-vase
+residue (Beach Plum). Then fauna 290 carried, then procedural bridge.
 ★★ POLISH batches 3–4 also committed: Date bunch hangs on orange strand · cereal 7-blade tuft
 (ear dominates) · Lion's Mane full drape · Tiger Shark blunt snout · Avocet pied cap · Sand Cat
 ears 1.55 · Pampas pale club · walrus bristle moustache (Oregano flowerN experiment reverted —
