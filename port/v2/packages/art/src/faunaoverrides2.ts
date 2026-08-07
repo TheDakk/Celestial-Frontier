@@ -1364,7 +1364,7 @@ export function marineStar(c: Ctx, g: G, pIn: Pal, opts: { brittle?: boolean; di
     c.fillStyle = grad(c, p, cx, cy, R * 0.9);
     c.beginPath(); c.ellipse(cx, cy, R * 0.9, R * 0.82, 0, 0, TAU); c.fill();
     rim(c, () => c.ellipse(cx, cy, R * 0.9, R * 0.82, 0, 0, TAU));
-    c.strokeStyle = 'rgba(120,100,70,0.5)'; c.lineWidth = 2.2;   /* the five petals */
+    c.strokeStyle = 'rgba(96,78,50,0.85)'; c.lineWidth = 3.4;   /* the five petals */
     for (let i = 0; i < 5; i++) { const a = -Math.PI / 2 + (i / 5) * TAU;
       c.beginPath();
       c.moveTo(cx, cy);
@@ -1374,11 +1374,12 @@ export function marineStar(c: Ctx, g: G, pIn: Pal, opts: { brittle?: boolean; di
     return;
   }
   const arms = 5, aw = opts.brittle ? 0.14 : 0.68;   /* plump, not spiky */
+  const armR = opts.brittle ? 1.45 : 1;   /* ★ GP6 POLISH — brittle arms reach ~3.5x disc */
   ground(c, cx, cy + S * 0.13, S * 0.20);
   const body = (): void => {
     for (let i = 0; i < arms; i++) {
       const a = -Math.PI / 2 + (i / arms) * TAU;
-      const tipx = cx + Math.cos(a) * R, tipy = cy + Math.sin(a) * R * 0.86;
+      const tipx = cx + Math.cos(a) * R * armR, tipy = cy + Math.sin(a) * R * armR * 0.86;
       const l = a - Math.PI / arms, rr = a + Math.PI / arms;
       const inx = cx + Math.cos(l) * R * 0.30, iny = cy + Math.sin(l) * R * 0.30 * 0.86;
       const outx = cx + Math.cos(rr) * R * 0.30, outy = cy + Math.sin(rr) * R * 0.30 * 0.86;
