@@ -2237,7 +2237,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
      increase bushy tail". A fennec is a desert fox scaled DOWN around ears that
      were not scaled down with it. */
   'Fennec Fox': { legs: 0.0667, depth: 0.0799, len: 0.1048, neck: 0.03, muzzle: 0.30, ears: 'huge', tail: 'plume', hue: '#e6cfa4', earScale: 1.30, tailScale: 1.6, family: 'canid', earShape: 'point' , tailTip: '#20191a' },
-  'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid' , tailTip: '#241f1d' },
+  'Wolf': { legs: 0.155, depth: 0.1377, len: 0.2033, neck: 0.08, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'bushy', hue: '#7d7f86', family: 'canid' , tailTip: '#241f1d' },
   'Hyena': { legs: 0.1442, depth: 0.1492, len: 0.208, neck: 0.08, back: 'sloped', muzzle: 0.42, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'spots', hue: '#a08a63', family: 'hyaenid' },
   /* ⚠ WAVE 42, CODE PASS — THIS COMMENT WAS TRUE IN WAVE 4 AND IS FALSE NOW,
      which is worse than no comment: it points a maintainer at the wrong engine.
