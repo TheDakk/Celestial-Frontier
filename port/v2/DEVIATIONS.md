@@ -1333,3 +1333,32 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   looking (D-ART-88): the felid chassis is *not* fixed ("pixel-for-pixel the Jaguar cell in a
   paler tan"), and every flora inflorescence is an ornament stuck on the stem apex rather than a
   structure with size. See `reference/GOLD_PASS_4.md`.
+
+- ★★ **D-ART-159 — A MARK DRAWN INSIDE A SURFACE-CONSTRUCTION LOOP IS ERASED BY THE SURFACE
+  ITSELF when the surface's stroke width exceeds the loop's sample spacing.** (2026-08-08,
+  the snake pattern post-pass.) Every reptSnake dorsal mark was stamped per-segment inside
+  the coil loop; the NEXT segment's body stroke (w·1.86, far wider than the spacing) painted
+  over it immediately. The Garter Snake's stripe — recorded as FIXED in wave 38 — had shipped
+  invisible for thirty waves; the Anaconda's ovals likewise. Nothing in review catches this:
+  the code that draws the mark is present, correct, and runs. **Only a render is a witness.**
+  Fix shape: draw identity marks in a POST-PASS after the surface completes (back-to-front so
+  near geometry wins the overlap). Corollary for every painter with a densely-stroked body:
+  if a mark matters, it goes after the body, not inside it.
+- ★★ **D-ART-160 — AT CATALOGUE SCALE A VALUE-BASED SIGNATURE COLLAPSES INTO THE NEIGHBOURING
+  FAMILY'S READ; ONLY SHAPE SURVIVES THE SHRINK.** (2026-08-08, the feline base.) Wave 49's
+  paw was correct in close-up — dark pad, darker toes, creases — but at card size the values
+  fuse into one dark cap, and a dark cap on the end of a pale leg IS a hoof. Nick's gold audit
+  filed nine small cats as "hoof-like feet" with that paw live. Second half, same law: limb
+  countershading pales the BOTTOM of a vertical leg, which is the ungulate pale-cannon cue
+  painted onto every paw family. The fix reads by SHAPE (a fan WIDER than the ankle, toe lobes
+  breaking the front silhouette, claw ticks) with value shifts kept mild, and paw families keep
+  coat tone down the limb. **Design a signature at the size it ships, not the size you draw it.**
+- ★★ **D-ART-161 — AN AXIS CAN BE TRUE IN THE TABLE AND NEVER DRAW, GATED OFF BY A SIBLING
+  AXIS.** (2026-08-08, the eagles.) `talons: true` sat on Eagle and Harpy Eagle for waves —
+  and `wings: 'soaring'` skips the entire leg loop, so not one talon was ever painted. This is
+  the D-ART-100/145 family's third shape: not a field never read, not a value no branch
+  compares — a feature whose draw site is UNREACHABLE for exactly the rows that set it,
+  because a pose gate runs first. speccheck/tokencheck are structurally blind to it (the field
+  IS read, on other rows). When an axis gates a whole draw path, list what it suppresses in
+  the axis's own doc comment, and when a judge says a set feature is absent, CHECK THE GATE
+  before checking the drawing.
