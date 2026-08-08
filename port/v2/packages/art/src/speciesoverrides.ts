@@ -412,17 +412,21 @@ function microbeCiliate(c: Ctx, g: G, p: ReturnType<typeof palette>): void {
   /* Paramecium — elongated slipper fringed with cilia, internal vacuoles */
   const r = mulberry32(((g.seed as number) ^ 0xC117) >>> 0);
   const cx = S * 0.5, cy = S * 0.5;
-  c.save(); c.translate(cx, cy); c.rotate(-0.35);
+  /* ★ D-ART-143 — aspect + tilt vary per seed so two genomes cannot draw the
+     same slipper (this painter had 2 rng calls and one fixed shape). */
+  const asp = 0.36 + r() * 0.20;                 /* half-height as fraction of half-length */
+  const tilt2 = -0.55 + r() * 0.45;
+  c.save(); c.translate(cx, cy); c.rotate(tilt2);
   /* cilia fringe */
   c.strokeStyle = `rgba(${p.cr * 1.3 | 0},${p.cg * 1.3 | 0},${p.cb * 1.3 | 0},0.5)`; c.lineWidth = 1.4;
-  for (let i = 0; i < 60; i++) { const t = i / 60, x = -S * 0.28 + t * S * 0.56, yh = S * 0.13 * Math.sqrt(Math.max(0, 1 - Math.pow(x / (S * 0.28), 2))); for (const s of [-1, 1]) { const bx = x, by = s * yh; c.beginPath(); c.moveTo(bx, by); c.lineTo(bx + (r() - 0.5) * 6, by + s * (8 + r() * 6)); c.stroke(); } }
+  for (let i = 0; i < 60; i++) { const t = i / 60, x = -S * 0.28 + t * S * 0.56, yh = S * 0.28 * asp * Math.sqrt(Math.max(0, 1 - Math.pow(x / (S * 0.28), 2))); for (const s of [-1, 1]) { const bx = x, by = s * yh; c.beginPath(); c.moveTo(bx, by); c.lineTo(bx + (r() - 0.5) * 6, by + s * (8 + r() * 6)); c.stroke(); } }
   const body = c.createRadialGradient(-S * 0.08, -S * 0.04, 6, 0, 0, S * 0.3);
   body.addColorStop(0, `rgba(${p.cr * 1.4 | 0},${p.cg * 1.4 | 0},${p.cb * 1.4 | 0},0.6)`); body.addColorStop(0.7, `rgba(${p.cr},${p.cg},${p.cb},0.34)`); body.addColorStop(1, `rgba(${p.cr},${p.cg},${p.cb},0.1)`);
-  c.fillStyle = body; c.beginPath(); c.ellipse(0, 0, S * 0.28, S * 0.13, 0, 0, TAU); c.fill();
-  rimStroke(c, () => c.ellipse(0, 0, S * 0.28, S * 0.13, 0, 0, TAU), `rgba(${p.cr * 1.5 | 0},${p.cg * 1.5 | 0},${p.cb * 1.5 | 0},0.55)`, 1.6);
+  c.fillStyle = body; c.beginPath(); c.ellipse(0, 0, S * 0.28, S * 0.28 * asp, 0, 0, TAU); c.fill();
+  rimStroke(c, () => c.ellipse(0, 0, S * 0.28, S * 0.28 * asp, 0, 0, TAU), `rgba(${p.cr * 1.5 | 0},${p.cg * 1.5 | 0},${p.cb * 1.5 | 0},0.55)`, 1.6);
   /* the diagonal oral groove + a contractile vacuole or two */
   c.strokeStyle = 'rgba(255,255,255,0.28)'; c.lineWidth = 2; c.beginPath(); c.moveTo(-S * 0.14, -S * 0.05); c.quadraticCurveTo(0, 0, S * 0.06, S * 0.03); c.stroke();
-  for (let i = 0; i < 2; i++) { c.strokeStyle = 'rgba(255,255,255,0.4)'; c.lineWidth = 1.4; c.beginPath(); c.arc(S * (0.06 - i * 0.16), 0, S * 0.035, 0, TAU); c.stroke(); }
+  for (let i = 0; i < 2 + (r() < 0.5 ? 1 : 0); i++) { c.strokeStyle = 'rgba(255,255,255,0.4)'; c.lineWidth = 1.4; c.beginPath(); c.arc(S * (0.06 - i * 0.16), 0, S * 0.035, 0, TAU); c.stroke(); }
   c.fillStyle = 'rgba(0,0,0,0.3)'; c.beginPath(); c.ellipse(-S * 0.02, S * 0.01, S * 0.04, S * 0.028, 0, 0, TAU); c.fill();   /* macronucleus */
   c.restore();
 }
