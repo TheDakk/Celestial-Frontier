@@ -50,6 +50,11 @@
   "shape": 0.623
  },
  {
+  "a": "Arctic Blueberry",
+  "b": "Mountain Cranberry",
+  "shape": 0.623
+ },
+ {
   "a": "Char",
   "b": "Sardine",
   "shape": 0.685
@@ -245,11 +250,6 @@
   "shape": 1.37
  },
  {
-  "a": "Arctic Cod",
-  "b": "Icefish",
-  "shape": 1.37
- },
- {
   "a": "Minnow",
   "b": "Mudminnow",
   "shape": 1.37
@@ -265,19 +265,9 @@
   "shape": 1.432
  },
  {
-  "a": "Arctic Cod",
-  "b": "Mackerel",
-  "shape": 1.494
- },
- {
   "a": "Tigerfish",
   "b": "Pollock",
   "shape": 1.494
- },
- {
-  "a": "Land Snail",
-  "b": "Water Snail",
-  "shape": 1.556
  },
  {
   "a": "Marmot",
@@ -292,6 +282,11 @@
  {
   "a": "Minnow",
   "b": "Cave Fish",
+  "shape": 1.619
+ },
+ {
+  "a": "Lingonberry",
+  "b": "Arctic Blueberry",
   "shape": 1.619
  },
  {
@@ -320,11 +315,6 @@
   "shape": 1.681
  },
  {
-  "a": "Ptarmigan",
-  "b": "Pigeon",
-  "shape": 1.743
- },
- {
   "a": "Sparrow",
   "b": "Pigeon",
   "shape": 1.743
@@ -345,9 +335,9 @@
   "shape": 1.743
  },
  {
-  "a": "Sargassum",
-  "b": "Bladderwrack",
-  "shape": 1.743
+  "a": "Ptarmigan",
+  "b": "Pigeon",
+  "shape": 1.805
  },
  {
   "a": "Gar",
@@ -357,11 +347,6 @@
  {
   "a": "Sparrow",
   "b": "Finch",
-  "shape": 1.805
- },
- {
-  "a": "Freshwater Snail",
-  "b": "Snail",
   "shape": 1.805
  },
  {
@@ -377,6 +362,11 @@
  {
   "a": "Lingonberry",
   "b": "Cranberry",
+  "shape": 1.805
+ },
+ {
+  "a": "Cranberry",
+  "b": "Arctic Blueberry",
   "shape": 1.805
  },
  {
@@ -400,8 +390,18 @@
   "shape": 1.868
  },
  {
-  "a": "Partridge",
-  "b": "Dove",
+  "a": "Freshwater Snail",
+  "b": "Snail",
+  "shape": 1.868
+ },
+ {
+  "a": "Huckleberry",
+  "b": "Arctic Blueberry",
+  "shape": 1.868
+ },
+ {
+  "a": "Crowberry",
+  "b": "Arctic Blueberry",
   "shape": 1.868
  },
  {

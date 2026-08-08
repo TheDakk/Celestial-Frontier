@@ -1,15 +1,15 @@
 [
  {
-  "set": "earth-flora",
-  "name": "Acai"
+  "set": "earth-fauna",
+  "name": "Abalone"
  },
  {
   "set": "earth-fauna",
-  "name": "Auk"
+  "name": "Anaconda"
  },
  {
-  "set": "earth-flora",
-  "name": "Bamboo Shoots"
+  "set": "earth-fauna",
+  "name": "Banana Slug"
  },
  {
   "set": "earth-fauna",
@@ -24,36 +24,24 @@
   "name": "Bittern"
  },
  {
-  "set": "earth-fungi",
-  "name": "Black Truffle"
- },
- {
   "set": "earth-flora",
   "name": "Breadnut"
  },
  {
-  "set": "earth-fauna",
-  "name": "Butterflyfish"
+  "set": "earth-flora",
+  "name": "Cabbage"
  },
  {
   "set": "earth-flora",
-  "name": "Camphor Tree"
- },
- {
-  "set": "earth-flora",
-  "name": "Carrot"
- },
- {
-  "set": "earth-flora",
-  "name": "Cave Fern"
+  "name": "Carob"
  },
  {
   "set": "earth-fauna",
-  "name": "Centipede"
+  "name": "Cave Snake"
  },
  {
-  "set": "earth-fauna",
-  "name": "Chough"
+  "set": "earth-flora",
+  "name": "Chokecherry"
  },
  {
   "set": "earth-flora",
@@ -65,19 +53,11 @@
  },
  {
   "set": "earth-flora",
-  "name": "Cotton"
- },
- {
-  "set": "earth-flora",
   "name": "Currant"
  },
  {
-  "set": "earth-flora",
-  "name": "Date Plum"
- },
- {
-  "set": "earth-flora",
-  "name": "Desert Melon"
+  "set": "earth-fauna",
+  "name": "Deer"
  },
  {
   "set": "earth-microbe",
@@ -85,27 +65,15 @@
  },
  {
   "set": "earth-fauna",
-  "name": "Dugong"
- },
- {
-  "set": "earth-fungi",
-  "name": "Enoki"
- },
- {
-  "set": "earth-fauna",
-  "name": "Fennec Fox"
- },
- {
-  "set": "earth-fauna",
-  "name": "Fiddler Crab"
+  "name": "Egret"
  },
  {
   "set": "earth-flora",
-  "name": "Floating Green Algae"
+  "name": "Ephedra"
  },
  {
-  "set": "earth-fauna",
-  "name": "Fox"
+  "set": "earth-flora",
+  "name": "Fiddlehead Fern"
  },
  {
   "set": "earth-fauna",
@@ -113,23 +81,23 @@
  },
  {
   "set": "earth-fauna",
-  "name": "Giant Otter"
- },
- {
-  "set": "earth-fauna",
-  "name": "Grass Snake"
+  "name": "Giant Centipede"
  },
  {
   "set": "earth-flora",
-  "name": "Hardy Fern"
+  "name": "Guava"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Gulper Eel"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Hemp"
  },
  {
   "set": "earth-flora",
   "name": "Ice Algae"
- },
- {
-  "set": "earth-fauna",
-  "name": "Isopod"
  },
  {
   "set": "earth-fungi",
@@ -137,91 +105,75 @@
  },
  {
   "set": "earth-flora",
-  "name": "Juniper Berries"
+  "name": "Kelp"
  },
  {
   "set": "earth-fauna",
-  "name": "Kestrel"
- },
- {
-  "set": "earth-fauna",
-  "name": "Lemming"
+  "name": "Kiwi"
  },
  {
   "set": "earth-flora",
-  "name": "Lime"
+  "name": "Licorice"
  },
  {
   "set": "earth-flora",
   "name": "Lotus"
  },
  {
-  "set": "earth-fauna",
-  "name": "Manatee"
+  "set": "earth-flora",
+  "name": "Maidenhair Fern"
  },
  {
-  "set": "earth-flora",
-  "name": "Mangrove Leaves"
+  "set": "earth-fauna",
+  "name": "Maned Wolf"
  },
  {
   "set": "earth-fauna",
   "name": "Marine Iguana"
  },
  {
-  "set": "earth-flora",
-  "name": "Melon"
+  "set": "earth-fauna",
+  "name": "Millipede"
  },
  {
   "set": "earth-fungi",
   "name": "Morel"
  },
  {
+  "set": "earth-fauna",
+  "name": "Musk Ox"
+ },
+ {
   "set": "earth-flora",
-  "name": "Neem"
+  "name": "Nutmeg"
  },
  {
   "set": "earth-fauna",
-  "name": "Orangutan"
+  "name": "Owl"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Passionfruit"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Pineapple"
  },
  {
   "set": "earth-fauna",
-  "name": "Pampas Fox"
- },
- {
-  "set": "earth-microbe",
-  "name": "Paramecium"
+  "name": "Pseudoscorpion"
  },
  {
   "set": "earth-flora",
-  "name": "Peach"
- },
- {
-  "set": "earth-flora",
-  "name": "Pine Nuts"
+  "name": "Raspberry"
  },
  {
   "set": "earth-fauna",
-  "name": "Plover"
+  "name": "Reef Fish"
  },
  {
   "set": "earth-flora",
-  "name": "Rafflesia"
- },
- {
-  "set": "earth-fauna",
-  "name": "Rat"
- },
- {
-  "set": "earth-fauna",
-  "name": "Razor Clam"
- },
- {
-  "set": "earth-flora",
-  "name": "Rhubarb"
- },
- {
-  "set": "earth-flora",
-  "name": "Saltgrass"
+  "name": "Rush Shoots"
  },
  {
   "set": "earth-fauna",
@@ -229,35 +181,23 @@
  },
  {
   "set": "earth-flora",
-  "name": "Sea Buckthorn"
+  "name": "Sea Lettuce"
  },
  {
   "set": "earth-fauna",
-  "name": "Sea Urchin"
- },
- {
-  "set": "earth-flora",
-  "name": "Serviceberry"
+  "name": "Seabird"
  },
  {
   "set": "earth-fauna",
   "name": "Shrimp"
  },
  {
-  "set": "earth-fauna",
-  "name": "Snailfish"
+  "set": "earth-flora",
+  "name": "Star Anise"
  },
  {
   "set": "earth-flora",
-  "name": "Soursop"
- },
- {
-  "set": "earth-flora",
-  "name": "Sweet Potato"
- },
- {
-  "set": "earth-fauna",
-  "name": "Tang"
+  "name": "Tamarind"
  },
  {
   "set": "earth-fauna",
@@ -265,23 +205,19 @@
  },
  {
   "set": "earth-flora",
-  "name": "Tobacco"
+  "name": "Tree Tomato"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Water Buffalo"
  },
  {
   "set": "earth-flora",
-  "name": "Tussock Grass"
+  "name": "Wild Cherry"
  },
  {
   "set": "earth-flora",
-  "name": "Watermelon"
- },
- {
-  "set": "earth-flora",
-  "name": "Wild Chili"
- },
- {
-  "set": "earth-flora",
-  "name": "Wild Mango"
+  "name": "Wild Guava"
  },
  {
   "set": "earth-flora",

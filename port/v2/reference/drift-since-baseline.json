@@ -13,11 +13,19 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Arctic Cod"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Arctic Fox"
  },
  {
   "set": "earth-fauna",
   "name": "Avocet"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Banteng"
  },
  {
   "set": "earth-fauna",
@@ -41,6 +49,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Boa"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Bobcat"
  },
  {
@@ -53,7 +65,15 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Buffalo"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Caddisfly"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Camel"
  },
  {
   "set": "earth-fauna",
@@ -69,6 +89,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Caribou"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Catfish"
  },
  {
@@ -78,6 +102,10 @@
  {
   "set": "earth-fauna",
   "name": "Cheetah"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Chicken"
  },
  {
   "set": "earth-fauna",
@@ -97,6 +125,14 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Cobra"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Coconut Crab"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Conch"
  },
  {
@@ -105,7 +141,15 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Cottonmouth"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Cougar"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Cow"
  },
  {
   "set": "earth-fauna",
@@ -114,6 +158,10 @@
  {
   "set": "earth-fauna",
   "name": "Coyote"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Crab"
  },
  {
   "set": "earth-fauna",
@@ -145,7 +193,15 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Dromedary Camel"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Eagle"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Eland"
  },
  {
   "set": "earth-fauna",
@@ -161,6 +217,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Freshwater Snail"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Frigatebird"
  },
  {
@@ -169,7 +229,23 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Garter Snake"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Gaur"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Gazelle"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Giant Clam"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Giant Squid"
  },
  {
   "set": "earth-fauna",
@@ -182,6 +258,10 @@
  {
   "set": "earth-fauna",
   "name": "Godwit"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Goldfish"
  },
  {
   "set": "earth-fauna",
@@ -198,6 +278,10 @@
  {
   "set": "earth-fauna",
   "name": "Ground Squirrel"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Grouse"
  },
  {
   "set": "earth-fauna",
@@ -245,6 +329,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Land Snail"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Langur"
  },
  {
@@ -266,6 +354,10 @@
  {
   "set": "earth-fauna",
   "name": "Lionfish"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Llama"
  },
  {
   "set": "earth-fauna",
@@ -294,6 +386,18 @@
  {
   "set": "earth-fauna",
   "name": "Monitor Lizard"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Moose"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Moray Eel"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Mountain Viper"
  },
  {
   "set": "earth-fauna",
@@ -337,7 +441,15 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Partridge"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Peacock"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Penguin"
  },
  {
   "set": "earth-fauna",
@@ -365,7 +477,19 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Python"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Racer"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Rat Snake"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Rattlesnake"
  },
  {
   "set": "earth-fauna",
@@ -381,11 +505,27 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Reindeer"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Right Whale"
  },
  {
   "set": "earth-fauna",
   "name": "River Dolphin"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Rooster"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Saiga"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Sand Boa"
  },
  {
   "set": "earth-fauna",
@@ -402,6 +542,10 @@
  {
   "set": "earth-fauna",
   "name": "Sea Lion"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Sea Snail"
  },
  {
   "set": "earth-fauna",
@@ -422,6 +566,14 @@
  {
   "set": "earth-fauna",
   "name": "Sloth Bear"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Snail"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Snake"
  },
  {
   "set": "earth-fauna",
@@ -450,6 +602,14 @@
  {
   "set": "earth-fauna",
   "name": "Spoonbill"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Springbok"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Squid"
  },
  {
   "set": "earth-fauna",
@@ -489,6 +649,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Viper"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Vole"
  },
  {
@@ -502,6 +666,14 @@
  {
   "set": "earth-fauna",
   "name": "Water Flea"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Water Snail"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Water Snake"
  },
  {
   "set": "earth-fauna",
@@ -530,6 +702,10 @@
  {
   "set": "earth-fauna",
   "name": "Wolf"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Yak"
  },
  {
   "set": "earth-flora",
@@ -578,6 +754,14 @@
  {
   "set": "earth-flora",
   "name": "Anise"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Apple"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Arctic Blueberry"
  },
  {
   "set": "earth-flora",
@@ -641,6 +825,14 @@
  },
  {
   "set": "earth-flora",
+  "name": "Black Grape"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Black Pepper"
+ },
+ {
+  "set": "earth-flora",
   "name": "Black-Eyed Susan"
  },
  {
@@ -682,6 +874,10 @@
  {
   "set": "earth-flora",
   "name": "Canola"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Canopy Vine"
  },
  {
   "set": "earth-flora",
@@ -733,6 +929,10 @@
  },
  {
   "set": "earth-flora",
+  "name": "Crabapple"
+ },
+ {
+  "set": "earth-flora",
   "name": "Cranberry"
  },
  {
@@ -758,6 +958,14 @@
  {
   "set": "earth-flora",
   "name": "Date Palm"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Date Plum"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Desert Melon"
  },
  {
   "set": "earth-flora",
@@ -841,6 +1049,10 @@
  },
  {
   "set": "earth-flora",
+  "name": "Grape"
+ },
+ {
+  "set": "earth-flora",
   "name": "Hazelnut"
  },
  {
@@ -890,6 +1102,10 @@
  {
   "set": "earth-flora",
   "name": "Meadow Grass"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Melon"
  },
  {
   "set": "earth-flora",
@@ -1033,6 +1249,10 @@
  },
  {
   "set": "earth-flora",
+  "name": "Red Grape"
+ },
+ {
+  "set": "earth-flora",
   "name": "Redwood"
  },
  {
@@ -1145,6 +1365,10 @@
  },
  {
   "set": "earth-flora",
+  "name": "Sword Fern"
+ },
+ {
+  "set": "earth-flora",
   "name": "Tamarisk"
  },
  {
@@ -1162,6 +1386,10 @@
  {
   "set": "earth-flora",
   "name": "Thyme"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Tree Fern Shoots"
  },
  {
   "set": "earth-flora",
@@ -1202,6 +1430,10 @@
  {
   "set": "earth-flora",
   "name": "Wheat"
+ },
+ {
+  "set": "earth-flora",
+  "name": "White Grape"
  },
  {
   "set": "earth-flora",
@@ -1365,6 +1597,10 @@
  },
  {
   "set": "earth-microbe",
+  "name": "Paramecium"
+ },
+ {
+  "set": "earth-microbe",
   "name": "Radiation-Resistant Microbe"
  },
  {
@@ -1394,6 +1630,10 @@
  {
   "set": "procedural",
   "name": "f0·17#137"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·18#138"
  },
  {
   "set": "procedural",
@@ -1433,6 +1673,10 @@
  },
  {
   "set": "procedural",
+  "name": "f1·10#150"
+ },
+ {
+  "set": "procedural",
   "name": "f1·11#151"
  },
  {
@@ -1450,6 +1694,10 @@
  {
   "set": "procedural",
   "name": "f1·14#34"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·16#156"
  },
  {
   "set": "procedural",
@@ -1565,6 +1813,18 @@
  },
  {
   "set": "procedural",
+  "name": "m0·15#195"
+ },
+ {
+  "set": "procedural",
   "name": "m0·17#197"
+ },
+ {
+  "set": "procedural",
+  "name": "m0·2#182"
+ },
+ {
+  "set": "procedural",
+  "name": "m2·18#238"
  }
 ]

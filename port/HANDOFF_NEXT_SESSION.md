@@ -151,6 +151,20 @@ verified: Anaconda halo'd ovals, Boa red saddles, Python net, Garter full-length
 all actually visible for the first time. Bucket (a) = no-edit rows, converts at measure.
 Elephant ear fan deliberately SKIPPED (documented 6-revert trap — needs a tint-trick session).
 ★★★ NEXT SESSION = GP7 MEASURE ONLY, NOTHING BEFORE IT (Nick's directive).
+★★★ GP7 IS PRE-STAGED (this session, zero judge tokens — all local node): art is FROZEN,
+tree clean, gates green. `artlock --driftdump` run → **457 drifted assets** (fauna 177 ·
+flora 199 · fungi 13 · microbe 14 · **procedural 54 — the bridge join works**, names are
+lock cells like `f0·1#121`, map via reference/procedural-name-map.json). `rejudgecontrol`
+run → **56 family-matched control** (baseline 28 FAIL / 26 POLISH / 2 PASS; baseline FAIL%
+differs from drift set by −14.8pts — compare SHIFTS, not levels). Card strips PRE-RENDERED:
+**77 drift strips (65 families) at apps/game/smoke/rejudge/ + 30 control strips (29
+families) at apps/game/smoke/rejudge-control/** — ~107 images total ≈ ~3M tokens, vs ~2758
+images in a full sweep. ⚠ Strips are gitignored: if the working tree is fresh, re-render
+with `node tools/rejudgecards.mjs` and `--control` (deterministic, zero LLM tokens, ~2 min).
+NEXT SESSION STARTS AT: spawn judge agents on the strips (gp5 prompt, one agent per strip,
+schema rows, VERBATIM species join), then `rejudgemerge --fresh=... --control=...`.
+DO NOT touch art before the judge run (freeze law). Full-size catalog zips were also
+exported + delivered to Nick this session (speciesexport, 1250 portraits, 11 part-zips).
 ★★ POLISH 16 (committed): neon tetra lateral stripe (new fish pattern) · chicken/rooster fleshy serrated COMB + wattle (new bird axis). Croc double tail-crest + snail eyestalks verified ALREADY PRESENT in code — expect them to convert at measure without edits. ★★★ NEXT SESSION = THE MEASURE ONLY (Nick): gp7 via artlock --driftdump → rejudgecards + control → judge (gp5 prompt) → rejudgemerge; INCLUDES procedural via reference/procedural-name-map.json. Then certification if budget allows.
 ★★ POLISH 15 (earlier batch): Coot white bill · Arctic Cod chin barbel · Moray gape.
 ★★★ THE CARRIED-ROW TRIAGE (read before resuming the sweep): the remaining ~280 carried rows
