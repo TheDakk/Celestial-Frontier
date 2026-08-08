@@ -158,6 +158,8 @@ export interface PlantSpec {
   pseudostem?: boolean;
   /** ★ POLISH — an orchard tree: LOW wide crooked crown on a SHORT trunk */
   squat?: boolean;
+  /** ★ POLISH — a maple tapped for sap: spile + hanging bucket on the trunk */
+  tap?: boolean;
   /** the harvested underground organ, shown pulled up at the base: a long ropey
       taproot (licorice), a forked root (ginseng), or a knobbly rhizome
       (ginger, turmeric, valerian). The judge failed several for its absence. */
@@ -788,6 +790,26 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     c.strokeStyle = barkCol; c.lineCap = 'round';
     c.lineWidth = tw * 2;
     c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.05, base - H * 0.5, cx + lean * S * 0.10, topY + H * 0.22); c.stroke();
+    if (spec.tap) {
+      /* ★ POLISH — THE HARVEST: a metal spile driven into the trunk at chest
+         height with a bucket hanging from it (the thing 'Maple Sap' is named
+         for, absent entirely). */
+      const tx2 = cx + lean * S * 0.02 + tw * 1.1, ty2 = base - H * 0.34;
+      c.strokeStyle = '#b8b8c0'; c.lineWidth = 4; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(tx2 - tw * 0.4, ty2); c.lineTo(tx2 + S * 0.028, ty2 + S * 0.008); c.stroke();
+      const bw2 = S * 0.032, bh2 = S * 0.040, bx2 = tx2 + S * 0.028, by2 = ty2 + S * 0.012;
+      c.strokeStyle = '#888890'; c.lineWidth = 2;
+      c.beginPath(); c.moveTo(bx2, by2); c.lineTo(bx2, by2 + S * 0.012); c.stroke();   /* the hook */
+      const bg4 = c.createLinearGradient(bx2 - bw2 / 2, 0, bx2 + bw2 / 2, 0);
+      bg4.addColorStop(0, '#9a9aa4'); bg4.addColorStop(0.5, '#d0d0d8'); bg4.addColorStop(1, '#787882');
+      c.fillStyle = bg4;
+      c.beginPath(); c.moveTo(bx2 - bw2 * 0.5, by2 + S * 0.012);
+      c.lineTo(bx2 + bw2 * 0.5, by2 + S * 0.012);
+      c.lineTo(bx2 + bw2 * 0.38, by2 + S * 0.012 + bh2);
+      c.lineTo(bx2 - bw2 * 0.38, by2 + S * 0.012 + bh2); c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(40,40,48,0.5)'; c.lineWidth = 1.4;
+      c.beginPath(); c.ellipse(bx2, by2 + S * 0.012, bw2 * 0.5, S * 0.006, 0, 0, TAU); c.stroke();
+    }
     c.lineWidth = tw * 1.15;
     /* ★ WAVE 61 — only a TALL conifer is a spire. A pinyon pine is a low rounded
        bushy tree, and gp5 rightly failed it as a Christmas-tree cone; those
@@ -1049,7 +1071,23 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
           S * 0.040, spec.flower, spec.fhue, r);
       }
     }
-    if (spec.fruit && spec.fruit !== 'none') {
+    if (spec.fruit === 'cluster') {
+      /* ★ POLISH — a GRAPE BUNCH: a big conical cascade of berries hanging on
+         its own stalk from mid-vine, wider than a leaf (was a small blob). */
+      const [gx, gy] = pts[13]!;
+      c.strokeStyle = p.dark; c.lineWidth = 2.4; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(gx, gy); c.lineTo(gx + S * 0.03, gy + S * 0.03); c.stroke();
+      const col2 = spec.fhue ?? '#5a3a7a';
+      for (let row = 0; row < 6; row++) {
+        const nb = 6 - row, by2 = gy + S * 0.035 + row * S * 0.026;
+        for (let k2 = 0; k2 < nb; k2++) {
+          const bx2 = gx + S * 0.03 + (k2 - (nb - 1) / 2) * S * 0.024;
+          const gg2 = c.createRadialGradient(bx2 - 3, by2 - 3, 1, bx2, by2, S * 0.015);
+          gg2.addColorStop(0, 'rgba(255,255,255,0.45)'); gg2.addColorStop(0.5, col2); gg2.addColorStop(1, 'rgba(0,0,0,0.35)');
+          c.fillStyle = gg2; c.beginPath(); c.arc(bx2, by2, S * 0.013, 0, TAU); c.fill();
+        }
+      }
+    } else if (spec.fruit && spec.fruit !== 'none') {
       /* ★ a vine's fruit HANGS. Black Pepper's pendulous spike is what tells
          it from every other heart-leaved climber — and it was drawing one
          round clump at mid-stem, geometrically identical to Beach Morning
