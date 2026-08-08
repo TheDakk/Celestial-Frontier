@@ -135,7 +135,22 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
-★★ POLISH 17-18 (committed): bullfrog TYMPANUM discs · grouse/partridge short gamebird bills · platypus WEBBED CLAWED FEET. Bucket (b) survivors for after the measure: penguin stiff flippers, emu shag plumage, cervid antler differentiation (Caribou/Deer/Moose mounts), crab carapace squaring, elephant ear/forehead detail, anaconda blotch check, ptarmigan, land-snail stalk size. ★ NEXT SESSION = GP7 MEASURE FIRST (all 1250 incl. procedural via the bridge), then only what it says still blocks PASS.
+★★★ BUCKETS (a) AND (b) ARE COMPLETE (batches 19–20, committed). Batch 19: penguin STIFF FLIPPER
+blade (upright branch — no more soft oval) · moose palms mount HIGH and tilt UP · Caribou/Reindeer
+get their own SWEPT-C beams + forward brow shovel inside 'branched' (finally distinct from
+Deer/Elk's three-tine fork). Batch 20: crab carapace = flat-topped SHIELD (widest at shoulders,
+no more balloon; all crabBody users) · emu `shaggy` axis (drooping hair-strands off the
+silhouette, D-ART-14 default-off) · ptarmigan `browComb` (red eye wattle) + `featherFeet`
+(snowshoe fluff burying the bare yellow rods) — two new faunaBird axes · land snail LONG upper
+eyestalks w/ eye bulbs + short lower feelers + rippling sole scallops ·
+**★ THE SNAKE PATTERN POST-PASS (structural)**: every reptSnake dorsal mark was drawn in the coil
+loop where the next segment's body stroke (w*1.86 » segment spacing) immediately OVERPAINTED it —
+the Garter's stripe and Anaconda's ovals were erased as fast as they were laid. All six pattern
+kinds now stamp AFTER the coil finishes (back-to-front so front coils win the overlap). Render-
+verified: Anaconda halo'd ovals, Boa red saddles, Python net, Garter full-length yellow stripe
+all actually visible for the first time. Bucket (a) = no-edit rows, converts at measure.
+Elephant ear fan deliberately SKIPPED (documented 6-revert trap — needs a tint-trick session).
+★★★ NEXT SESSION = GP7 MEASURE ONLY, NOTHING BEFORE IT (Nick's directive).
 ★★ POLISH 16 (committed): neon tetra lateral stripe (new fish pattern) · chicken/rooster fleshy serrated COMB + wattle (new bird axis). Croc double tail-crest + snail eyestalks verified ALREADY PRESENT in code — expect them to convert at measure without edits. ★★★ NEXT SESSION = THE MEASURE ONLY (Nick): gp7 via artlock --driftdump → rejudgecards + control → judge (gp5 prompt) → rejudgemerge; INCLUDES procedural via reference/procedural-name-map.json. Then certification if budget allows.
 ★★ POLISH 15 (earlier batch): Coot white bill · Arctic Cod chin barbel · Moray gape.
 ★★★ THE CARRIED-ROW TRIAGE (read before resuming the sweep): the remaining ~280 carried rows
