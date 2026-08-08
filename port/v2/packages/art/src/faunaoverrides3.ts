@@ -875,7 +875,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Remora': F({ profile: 'fusiform', len: 0.255, depth: 0.034, tail: 'forked', snout: 'blunt', dorsal: 'two', hue: '#2f343b' }),
   /* ── cold and temperate food fish ── */
   'Cod': F({ hue: '#8a7a4e', profile: 'fusiform', len: 0.23, depth: 0.078, tail: 'round', snout: 'blunt', dorsal: 'two', pattern: 'mottle' }),
-  'Arctic Cod': F({ profile: 'fusiform', len: 0.235, depth: 0.046, tail: 'forked', snout: 'blunt', dorsal: 'two', hue: '#7d8a63' }),
+  'Arctic Cod': F({ profile: 'fusiform', len: 0.235, depth: 0.046, tail: 'forked', snout: 'blunt', dorsal: 'two', hue: '#7d8a63', barbels: true }),
   'Haddock': F({ hue: '#736c78', profile: 'fusiform', len: 0.22, depth: 0.076, tail: 'forked', snout: 'blunt', dorsal: 'two', pattern: 'mottle' }),
   'Pollock': F({ hue: '#5d6b4a', profile: 'fusiform', len: 0.23, depth: 0.070, tail: 'forked', snout: 'blunt', dorsal: 'two' }),
   'Salmon': F({ hue: '#c4705a', profile: 'fusiform', len: 0.24, depth: 0.072, tail: 'forked', snout: 'jaw', dorsal: 'one', pattern: 'spots' }),
@@ -928,7 +928,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Coelacanth': F({ hue: '#3b4a5e', profile: 'fusiform', len: 0.23, depth: 0.084, tail: 'fan', snout: 'blunt', dorsal: 'two', pattern: 'spots' }),
   /* ── eels and ribbons ── */
   'Eel': F({ hue: '#9a8a34', profile: 'eel', len: 0.27, depth: 0.044, tail: 'point', snout: 'jaw', dorsal: 'none' }),
-  'Moray Eel': F({ profile: 'eel', len: 0.28, depth: 0.031, tail: 'point', snout: 'jaw', dorsal: 'sail', pattern: 'spots', teeth: true, hue: '#68793f' }),
+  'Moray Eel': F({ profile: 'eel', len: 0.28, depth: 0.031, tail: 'point', snout: 'jaw', dorsal: 'sail', pattern: 'spots', teeth: true, gape: true, hue: '#68793f' }),
   'Electric Eel': F({ hue: '#4e5f52', profile: 'eel', len: 0.28, depth: 0.048, tail: 'point', snout: 'blunt', dorsal: 'none' }),
   'Gulper Eel': F({ hue: '#131520', profile: 'eel', len: 0.27, depth: 0.050, tail: 'point', snout: 'jaw', dorsal: 'none', teeth: true, glow: true }),
   'Oarfish': F({ hue: '#b6bcc6', profile: 'ribbon', len: 0.28, depth: 0.046, tail: 'point', snout: 'blunt', dorsal: 'spiny' }),

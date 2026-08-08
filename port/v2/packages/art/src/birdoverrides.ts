@@ -80,7 +80,7 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Eider Duck': B({ legs: 0.010, bill: 'duck', size: 0.82, swim: true, neck: 'short', hue: '#e4e2dc' }),
   'Goose': B({ legs: 0.012, bill: 'duck', size: 0.98, swim: true, neck: 'long', hue: '#7d7468' }),
   /* sooty black with a WHITE bill running up into a white forehead shield */
-  'Coot': B({ legs: 0.012, bill: 'cone', size: 0.62, swim: true, hue: '#26292f', plump: 1.16, cap: '#eef0f2' }),
+  'Coot': B({ legs: 0.012, bill: 'cone', size: 0.62, swim: true, hue: '#26292f', plump: 1.16, cap: '#eef0f2', billHue: '#f0f2f4' }),
   /* red bill and shield, and a WHITE STREAK along the flank */
   'Moorhen': B({ legs: 0.012, bill: 'cone', size: 0.60, swim: true, hue: '#3d4a44', plump: 1.06, cap: '#c33a26', bib: '#e8e6df' }),
   'Loon': B({ legs: 0.008, bill: 'long', size: 0.86, swim: true, neck: 'long', hue: '#23272e' }),
