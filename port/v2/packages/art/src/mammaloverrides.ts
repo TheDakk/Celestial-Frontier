@@ -103,8 +103,8 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Wild Pig': { legs: 0.1014, depth: 0.1365, len: 0.2015, neck: 0.04, back: 'sloped', muzzle: 0.56, jaw: 'barrel', ears: 'large', tail: 'tuft', coat: 'shaggy', hue: '#6b5a49', family: 'suid' },
   'Pig': { legs: 0.0879, depth: 0.1425, len: 0.2104, neck: 0.04, muzzle: 0.56, jaw: 'barrel', ears: 'large', tail: 'stub', hue: '#e0aca5', family: 'suid', earShape: 'drop' },
   'Peccary': { legs: 0.102, depth: 0.1256, len: 0.1752, neck: 0.04, back: 'sloped', muzzle: 0.54, jaw: 'barrel', ears: 'small', tail: 'stub', coat: 'shaggy', hue: '#5f5850', family: 'suid' },
-  'Wild Horse': { legs: 0.1964, depth: 0.1524, len: 0.1999, neck: 0.13, muzzle: 0.52, ears: 'large', tail: 'plume', hue: '#a98159', family: 'equid' },
-  'Wild Pony': { legs: 0.1542, depth: 0.1365, len: 0.1903, neck: 0.11, muzzle: 0.50, ears: 'large', tail: 'plume', coat: 'shaggy', hue: '#8a6a4a' , family: 'equid' },
+  'Wild Horse': { legs: 0.1964, depth: 0.164, len: 0.1999, neck: 0.13, muzzle: 0.52, ears: 'small', tail: 'flow', mane: 'crestUp', hue: '#a98159', family: 'equid' },
+  'Wild Pony': { legs: 0.1542, depth: 0.148, len: 0.1903, neck: 0.11, muzzle: 0.50, ears: 'small', tail: 'flow', mane: 'crest', tailScale: 0.85, coat: 'shaggy', hue: '#8a6a4a' , family: 'equid' },
   /* ★ wave 36 (Nick, on the proof sheet: "the donkey ears were quite huge") —
      these two were 'huge' (1.15·headR) TIMES earScale 1.70, i.e. an ear 1.96×
      the radius of the skull carrying it, and therefore LARGER THAN THE FENNEC
@@ -112,8 +112,8 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      outsized ears. The ladder was inverted at the top. A donkey's ear is long,
      not enormous: 'large' × 1.55 puts it just under one head-radius, above
      every other equid and well below the fennec. */
-  'Wild Ass': { legs: 0.1901, depth: 0.142, len: 0.1863, neck: 0.12, muzzle: 0.50, ears: 'large', tail: 'tuft', hue: '#b8ab93', family: 'equid', earShape: 'leaf', earScale: 1.62 },
-  'Donkey': { legs: 0.1781, depth: 0.1454, len: 0.1788, neck: 0.11, muzzle: 0.50, ears: 'large', tail: 'tuft', hue: '#9b948c', family: 'equid', earShape: 'leaf', earScale: 1.55 },
+  'Wild Ass': { legs: 0.1901, depth: 0.148, len: 0.1863, neck: 0.12, muzzle: 0.50, ears: 'large', tail: 'tuft', mane: 'crestUp', hue: '#b8ab93', family: 'equid', earShape: 'leaf', earScale: 1.62 },
+  'Donkey': { legs: 0.1781, depth: 0.152, len: 0.1788, neck: 0.11, muzzle: 0.50, ears: 'large', tail: 'tuft', mane: 'crestUp', hue: '#9b948c', family: 'equid', earShape: 'leaf', earScale: 1.55 },
   'Gaur': { legs: 0.1561, depth: 0.1898, len: 0.2305, neck: 0.06, back: 'humped', muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#241c17', family: 'bovid' , stockings: '#e8e2d4' },
   'Banteng': { legs: 0.1597, depth: 0.1629, len: 0.2137, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#7a4f30', family: 'bovid' , stockings: '#efe9dc' , accent: 'rumpPatch' },
   'Buffalo': { legs: 0.142, depth: 0.1704, len: 0.2376, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#3b302a', family: 'bovid' },
@@ -146,7 +146,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* "vertical black stripes over orange · white cheek ruff · long ringed tail" */
   'Tiger': { legs: 0.1317, depth: 0.1445, len: 0.2489, neck: 0.070, muzzle: 0.32, jaw: 'broad', ears: 'round', tail: 'long', coat: 'stripes', hue: '#d98c2b', family: 'felid' , legMarks: true },
   /* "bold stripes continuing onto the legs · stiff upright brush mane · tufted tail" */
-  'Zebra': { legs: 0.1837, depth: 0.1567, len: 0.2056, neck: 0.120, muzzle: 0.44, ears: 'large', tail: 'tuft', coat: 'bands', hue: '#e8e4dc', family: 'equid' , legMarks: true },
+  'Zebra': { legs: 0.1837, depth: 0.1567, len: 0.2056, neck: 0.120, muzzle: 0.44, ears: 'large', tail: 'tuft', mane: 'crestUp', coat: 'bands', hue: '#e8e4dc', family: 'equid' , legMarks: true },
   /* "black bandit mask · ringed banded tail · hunched arched back" */
   'Raccoon': { legs: 0.0769, depth: 0.1106, len: 0.1905, neck: 0.040, back: 'roached', muzzle: 0.30, ears: 'round', tail: 'banded', face: 'mask', hue: '#8d8a86', family: 'procyonid' },
   /* "flat scaly paddle tail · orange chisel incisors · stocky humped body" */
