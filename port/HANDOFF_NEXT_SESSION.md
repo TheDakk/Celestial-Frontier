@@ -135,6 +135,15 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★★★ POLISH 13–14 + PROCEDURAL UNBLOCKED (committed): helmet boss plate+parting (Buffalo/Musk Ox/
+Yak) · camel hump 0.62 · goldfish `veil` double tail · Gaur+Eland ox builds · straight-horn
+ANNULATIONS (Oryx etc.) · squid torpedo mantle · **tools/procbridge.mjs — the 240-name bijection
+VERIFIED both directions (open item #7 CLOSED)**, map at reference/procedural-name-map.json ·
+**D-ART-143 CLOSED** — fungiCup/microbePlates/microbeCiliate now vary by seeded ratios (the last
+constant family painters). Remaining: ~220 carried-fauna one-cue rows (Bull hump+dewlap, Yak
+curtain, Honeybee band contrast, Secretary Bird, cephalopod Cuttlefish fin, and the long tail),
+~50 carried flora, fungi/microbe texture polish (~23), procedural per-asset verdicts NOW
+JOINABLE via the bridge for the next measure. Then gp7 + certification (budget-gated).
 ★★ POLISH batches 11–12 committed: **the coat-accent axis** (`accent`: rumpPatch/flankBand/
 rumpStripes — Banteng, Impala, Gazelle, Springbok in one lever) · **the bat faces** (Fruit Bat
 fox muzzle + forward eyes; Vampire pig-nose pad + M-leaf ridge). Remaining carried-fauna notables:
