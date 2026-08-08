@@ -230,7 +230,14 @@ export function fungiTruffle(c: Ctx, g: G, p: Pal): void {
 export function fungiCup(c: Ctx, g: G, p: Pal): void {
   const r = seeded(g, 0xC0FE);
   ground(c, S * 0.5, S * 0.82, S * 0.20);
-  const cups: Array<[number, number, number]> = [[S * 0.46, S * 0.56, S * 0.175], [S * 0.70, S * 0.70, S * 0.10]];
+  /* ★ D-ART-143 — the cup ARRANGEMENT varies: 1-3 cups, positions and sizes
+     as seeded RATIOS (never canvas scale, D-ART-34), so two genomes cannot
+     draw the same picture. */
+  const nC = 1 + (r() < 0.7 ? 1 : 0) + (r() < 0.35 ? 1 : 0);
+  const cups: Array<[number, number, number]> = [];
+  for (let ci = 0; ci < nC; ci++) {
+    cups.push([S * (0.32 + r() * 0.36), S * (0.50 + r() * 0.22), S * (0.085 + r() * 0.10)]);
+  }
   for (const [cx, cy, rad] of cups) {
     /* the outer wall, seen below the rim */
     c.fillStyle = shade(p, 0.62);
@@ -477,14 +484,14 @@ export function microbeFlagellate(c: Ctx, g: G, p: Pal): void {
 /** PLATES (coccolithophore): a sphere armoured in overlapping calcite discs. */
 export function microbePlates(c: Ctx, g: G, p: Pal): void {
   const r = seeded(g, 0xB1A7);
-  const cx = S * 0.5, cy = S * 0.5, rad = S * 0.20;
+  const cx = S * 0.5, cy = S * 0.5, rad = S * (0.16 + r() * 0.08);   /* ★ D-ART-143 — seeded */
   /* the cell beneath the armour */
   c.fillStyle = lump(c, p, cx, cy, rad * 0.92);
   c.beginPath(); c.arc(cx, cy, rad * 0.92, 0, TAU); c.fill();
   /* THE COCCOLITHS: discs pinned to the sphere. Each is foreshortened by how
      far off centre it sits and rotated to lie flat on the surface — that is
      what stops them looking like stickers (THE SURFACE LAWS). */
-  const N = 30;
+  const N = 22 + (r() * 16 | 0);   /* ★ D-ART-143 — coccolith count varies */
   for (let i = 0; i < N; i++) {
     const a = (i / N) * TAU * 3.6 + r() * 0.3;
     const d = Math.sqrt((i + 0.5) / N) * rad * 0.98;
@@ -492,7 +499,7 @@ export function microbePlates(c: Ctx, g: G, p: Pal): void {
     const off = d / rad;
     const fore = Math.sqrt(Math.max(0.06, 1 - off * off));
     const tilt = Math.atan2(y - cy, x - cx) + Math.PI / 2;
-    const pr = rad * 0.235;
+    const pr = rad * (0.19 + r() * 0.09);
     const key = ((x - cx) / rad * -0.5 + (y - cy) / rad * -0.86) * 0.5 + 0.5;
     c.save(); c.translate(x, y); c.rotate(tilt);
     c.fillStyle = `rgba(${Math.min(255, 214 * 0.5 + p.cr * 0.5 | 0)},${Math.min(255, 220 * 0.5 + p.cg * 0.5 | 0)},${Math.min(255, 226 * 0.5 + p.cb * 0.5 | 0)},${0.55 + key * 0.35})`;
