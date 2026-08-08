@@ -611,7 +611,9 @@ export function reptTurtle(c: Ctx, g: G, pIn: Pal, opts: { flippers?: boolean; h
   eye(c, hx + sh * 0.06, hy - sh * 0.1, 4.5);
 }
 /** FROG: crouched haunches, long folded hind legs, wide mouth, domed eyes */
-export function amphFrog(c: Ctx, g: G, pIn: Pal, opts: { warty?: boolean; hue?: string }, name = ''): void {
+export function amphFrog(c: Ctx, g: G, pIn: Pal, opts: { warty?: boolean; hue?: string;
+  /* ★ POLISH — the bullfrog's large circular TYMPANUM disc behind each eye */
+  eardrum?: boolean }, name = ''): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0xF209);
@@ -656,6 +658,18 @@ export function amphFrog(c: Ctx, g: G, pIn: Pal, opts: { warty?: boolean; hue?: 
     c.strokeStyle = p.dark; c.lineWidth = bh * 0.09;
     for (let d = -1; d <= 1; d++) { c.beginPath(); c.moveTo(cx + s * bw * 0.46, cy + bh * 1.14); c.lineTo(cx + s * bw * (0.46 + 0.22) + d * 3, cy + bh * (1.14 + d * 0.10)); c.stroke(); }
     c.strokeStyle = p.base; c.lineWidth = bh * 0.17;
+  }
+  if (opts.eardrum) {
+    /* ★ POLISH — the big round tympanum behind the eye, ringed, nearly the
+       size of the eye itself: the bullfrog's first must-read. */
+    for (const s of [-1, 1] as const) {
+      const ex2 = cx + s * bw * 0.52, ey2 = cy - bh * 0.30;
+      c.fillStyle = `rgba(${p.cr * 0.88 | 0},${p.cg * 0.82 | 0},${p.cb * 0.6 | 0},0.95)`;
+      c.beginPath(); c.arc(ex2, ey2, bh * 0.20, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(20,28,12,0.6)'; c.lineWidth = 2;
+      c.beginPath(); c.arc(ex2, ey2, bh * 0.20, 0, TAU); c.stroke();
+      c.beginPath(); c.arc(ex2, ey2, bh * 0.08, 0, TAU); c.stroke();   /* the centre ring */
+    }
   }
   /* the wide mouth line and the domed eyes on top */
   c.strokeStyle = 'rgba(0,0,0,0.35)'; c.lineWidth = 2.6;
@@ -1553,7 +1567,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Glass Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#a9d9a0', }, n),
   'Wood Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#a4642f', }, n),
   'Cave Frog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#ded8c6', }, n),
-  'Bullfrog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#3f5e2e', }, n),
+  'Bullfrog': (c, g, p, n) => amphFrog(c, g, p, { hue: '#3f5e2e', eardrum: true }, n),
   'Toad': (c, g, p, n) => amphFrog(c, g, p, { hue: '#857052', warty: true }, n),
   /* ── SALAMANDERS ── smooth skin, paddle tail, NOT lizards */
   /* ★ D-ART-130 — the land species lose the swimming paddle. */
