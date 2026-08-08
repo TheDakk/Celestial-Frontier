@@ -58,6 +58,10 @@ export interface QuadSpec {
   tail?: 'none' | 'stub' | 'tuft' | 'bushy' | 'long' | 'plume' | 'banded' | 'paddle';
   /** ★ POLISH — the dairy udder: a pink rounded bag between the hind legs (Cow) */
   udder?: boolean;
+  /** ★ POLISH WAVE — small COAT ACCENTS that are whole identities: a pale rump
+      patch (banteng), a dark lower-flank band (gazelle/springbok), vertical
+      rump stripes (impala). One axis, several species. */
+  accent?: 'rumpPatch' | 'flankBand' | 'rumpStripes';
   /** ★ D-ART-134 — a pale tail TIP is a species mark (fox, wolf, wild dog),
       not a universal feature. It used to be stamped on every brush tail. */
   tailTip?: string;
@@ -2005,6 +2009,31 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      round-capped tail now began OUTSIDE the rump and its blunt start showed as
      the hard-edged block the mammal audit reported on species after species.
      Anchored to the solid it grows from, it starts inside the body. */
+  if (spec.accent) {
+    /* clipped to the torso so the accent is SKIN, not a sticker */
+    c.save(); c.beginPath(); body.trace(c, 64); c.clip();
+    if (spec.accent === 'rumpPatch') {
+      const [ax2, ay2] = AX(0.09);
+      const pg2 = c.createRadialGradient(ax2, ay2, 2, ax2, ay2, bodyH * 0.62);
+      pg2.addColorStop(0, 'rgba(244,242,232,0.85)'); pg2.addColorStop(0.7, 'rgba(244,242,232,0.55)'); pg2.addColorStop(1, 'rgba(244,242,232,0)');
+      c.fillStyle = pg2; c.beginPath(); c.arc(ax2, ay2, bodyH * 0.62, 0, TAU); c.fill();
+    } else if (spec.accent === 'flankBand') {
+      for (let i = 0; i <= 18; i++) {
+        const u = 0.12 + (i / 18) * 0.74;
+        const [ax2, ay2] = AX(u);
+        const gg2 = c.createRadialGradient(ax2, ay2 + RAD(u) * 0.52, 1, ax2, ay2 + RAD(u) * 0.52, bodyH * 0.16);
+        gg2.addColorStop(0, 'rgba(38,30,22,0.6)'); gg2.addColorStop(1, 'rgba(38,30,22,0)');
+        c.fillStyle = gg2; c.beginPath(); c.arc(ax2, ay2 + RAD(u) * 0.52, bodyH * 0.16, 0, TAU); c.fill();
+      }
+    } else if (spec.accent === 'rumpStripes') {
+      c.strokeStyle = 'rgba(24,18,12,0.75)'; c.lineWidth = bodyH * 0.07; c.lineCap = 'round';
+      for (const u of [0.05, 0.11, 0.17]) {
+        const [ax2, ay2] = AX(u);
+        c.beginPath(); c.moveTo(ax2, ay2 - RAD(u) * 0.9); c.lineTo(ax2 - bodyW * 0.02, ay2 + RAD(u) * 0.5); c.stroke();
+      }
+    }
+    c.restore();
+  }
   if (spec.udder) {
     /* ★ POLISH — the udder hangs from the belly ahead of the hind legs, with
        two visible teats; pink against any coat. */
