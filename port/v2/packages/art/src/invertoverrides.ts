@@ -651,11 +651,14 @@ export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?
   }
   /* the carapace */
   const carap = (): void => {
-    c.moveTo(cx - cw, cy);
-    c.quadraticCurveTo(cx - cw * 0.86, cy - ch * 1.15, cx, cy - ch * 1.05);
-    c.quadraticCurveTo(cx + cw * 0.86, cy - ch * 1.15, cx + cw, cy);
-    c.quadraticCurveTo(cx + cw * 0.72, cy + ch * 1.02, cx, cy + ch * 0.98);
-    c.quadraticCurveTo(cx - cw * 0.72, cy + ch * 1.02, cx - cw, cy);
+    /* ★ POLISH — a crab carapace is a SHIELD, not a balloon: widest at the
+       shoulders, FLAT across the front edge, tucking in below. */
+    c.moveTo(cx - cw, cy + ch * 0.10);
+    c.quadraticCurveTo(cx - cw * 0.98, cy - ch * 0.70, cx - cw * 0.55, cy - ch * 0.90);
+    c.quadraticCurveTo(cx, cy - ch * 1.02, cx + cw * 0.55, cy - ch * 0.90);
+    c.quadraticCurveTo(cx + cw * 0.98, cy - ch * 0.70, cx + cw, cy + ch * 0.10);
+    c.quadraticCurveTo(cx + cw * 0.60, cy + ch * 0.96, cx, cy + ch * 0.92);
+    c.quadraticCurveTo(cx - cw * 0.60, cy + ch * 0.96, cx - cw, cy + ch * 0.10);
   };
   c.fillStyle = shell(c, p, cx, cy, cw);
   c.beginPath(); carap(); c.closePath(); c.fill();
