@@ -201,6 +201,23 @@ every cluster render-verified). What landed beyond the first 22:
 STILL OPEN from the audit (minor, post-gp7): Monkfish/Mahi head SHAPES (bighead landed,
 flatten/steep-forehead geometry still generic) · Devil's Club spines · fetlock articulation
 on equids · the source-organism/harvest-organ metadata split (design decision for Nick).
+★★★★★ NICK'S PATCH REVIEW (2026-08-08, `reference/NICK_PATCH_REVIEW_2026-08-08.md`): of the
+60-species fix zip — **15 PASS · 25 PASS-WITH-POLISH · 19 STILL-FIX · 1 REGRESSION** (Mahi
+fangs). His verdict: "substantial success… Horse no longer the alarming example"; merge plan
+= keep the 40, rework the 20, NO global pass. ★★ ROUND 3 SHIPPED SAME-DAY (all 20 worked,
+render-verified, committed): **Mahi regression root-caused** — the bighead FANGS drew
+UNCONDITIONALLY (D-ART-161's inverse: an UN-gated feature); now gated on `teeth`, and
+Viperfish/Fangtooth explicitly keep theirs. Monkfish bighead 2.1 + `wings:'fan'` pectorals ·
+Bison front-heavy (carry 0.15, rump 0.32, shorthorn, tail 0.7) · Aardvark hide + paddle tail
+· Warthog warts + tusks 0.16/1.35 + deeper · Eagle/Harpy raptor build (`brow` ridge axis,
+plump 1.32/1.38, size up) · Spider alternating leg reach + width 5 · **THE 8 CATS**:
+`back:'arched'` + high-crouch paw ×1.24 + heavy doubled tear marks + Clouded Leopard
+`blotches` (Wolf/Lion/Leopard regression-checked clean) · **Kelp/Giant Kelp = sinuous filled
+RIBBON fronds** with pneumatocysts (gated `blade && tall`; Seagrass keeps straps) · Sargassum
+6 arching fronds, bladder every node · bespoke floraDevilsClub (spined canes, huge palmate
+hand-leaves, red berry cone). Re-worked-20 zip delivered to Nick for re-review.
+★★★ GP7 RE-STAGED (round 3): driftdump → **503 drifted**, 62-asset control, **95 drift + 39
+control = 134 strips**. Superseded staging below kept for context:
 ★★★ GP7 RE-STAGED FINAL (all local, zero judge tokens): driftdump → **498 drifted**
 (fauna 202 · flora 213 · fungi 13 · microbe 14 · procedural 56; bridge map at
 reference/procedural-name-map.json) · fresh 61-asset control · strips re-rendered:

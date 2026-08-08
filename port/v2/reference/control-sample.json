@@ -120,24 +120,24 @@
   "name": "Koala"
  },
  {
-  "set": "earth-flora",
-  "name": "Licorice"
- },
- {
-  "set": "earth-flora",
-  "name": "Lotus"
- },
- {
-  "set": "earth-flora",
-  "name": "Maidenhair Fern"
- },
- {
-  "set": "earth-flora",
-  "name": "Mangrove Leaves"
+  "set": "earth-fauna",
+  "name": "Lemming"
  },
  {
   "set": "earth-fauna",
-  "name": "Marine Worm"
+  "name": "Lion"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Lychee"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Manatee"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Marine Iguana"
  },
  {
   "set": "earth-fauna",
@@ -201,46 +201,50 @@
  },
  {
   "set": "earth-fauna",
-  "name": "Serow"
+  "name": "Seabird"
+ },
+ {
+  "set": "earth-fungi",
+  "name": "Shiitake"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Soursop"
  },
  {
   "set": "earth-microbe",
-  "name": "Snow Algae"
+  "name": "Sulfur-Oxidizing Bacteria"
  },
  {
   "set": "earth-fauna",
-  "name": "Spotted Hyena"
+  "name": "Tang"
  },
  {
   "set": "earth-fauna",
-  "name": "Swordfish"
- },
- {
-  "set": "earth-fauna",
-  "name": "Tapir"
- },
- {
-  "set": "earth-microbe",
-  "name": "Thermophile"
- },
- {
-  "set": "earth-fauna",
-  "name": "Turkey"
+  "name": "Tern"
  },
  {
   "set": "earth-flora",
-  "name": "Watermelon"
+  "name": "Tree Tomato"
  },
  {
   "set": "earth-flora",
-  "name": "Wild Chili"
+  "name": "Water Lily"
  },
  {
   "set": "earth-flora",
-  "name": "Wild Mango"
+  "name": "Wild Cherry"
  },
  {
-  "set": "earth-fauna",
-  "name": "Wildebeest"
+  "set": "earth-flora",
+  "name": "Wild Guava"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Wild Strawberry"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Yerba Mate"
  }
 ]
