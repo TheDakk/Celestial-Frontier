@@ -1,4 +1,4 @@
-# CLAUDE.md — Celestial Frontier
+# AGENTS.md — Celestial Frontier
 
 Single-file HTML/Canvas game. **Read `ROADMAP.md` first** (current state,
 what's awaiting feedback, what's next — and update it at the end of every
