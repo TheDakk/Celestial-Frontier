@@ -473,7 +473,13 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; 
     else { c.moveTo(cx + s * mw * 0.85, my - mh * 0.55); c.quadraticCurveTo(cx + s * mw * 1.7, my, cx + s * mw * 0.85, my + mh * 0.62); }
     c.closePath(); c.fill();
   }
-  eye(c, cx - mw * 0.5, my + mh * 0.62, 8); eye(c, cx + mw * 0.5, my + mh * 0.62, 8);
+  /* ★ POLISH — the eyes sit in raised BUMPS on the mantle's lower sides (an
+     octopus's eyes protrude; drawn floating inside the bulb they read as spots) */
+  for (const s of [-1, 1] as const) {
+    c.fillStyle = bodyGrad(c, p, cx + s * mw * 0.55, my + mh * 0.55, 12);
+    c.beginPath(); c.arc(cx + s * mw * 0.55, my + mh * 0.58, 11, 0, TAU); c.fill();
+  }
+  eye(c, cx - mw * 0.55, my + mh * 0.58, 8); eye(c, cx + mw * 0.55, my + mh * 0.58, 8);
 }
 /** CETACEAN: long body, horizontal FLUKE, blowhole, species dorsal */
 export function faunaCetacean(c: Ctx, g: G, pIn: Pal, opts: { dorsal: 'tall' | 'small' | 'none'; blunt: boolean; hue?: [number, number, number];

@@ -56,6 +56,8 @@ export interface QuadSpec {
   jaw?: 'fine' | 'broad' | 'barrel';
   ears?: 'tiny' | 'small' | 'round' | 'large' | 'huge' | 'fan';
   tail?: 'none' | 'stub' | 'tuft' | 'bushy' | 'long' | 'plume' | 'banded' | 'paddle';
+  /** ★ POLISH — the dairy udder: a pink rounded bag between the hind legs (Cow) */
+  udder?: boolean;
   /** ★ D-ART-134 — a pale tail TIP is a species mark (fox, wolf, wild dog),
       not a universal feature. It used to be stamped on every brush tail. */
   tailTip?: string;
@@ -2003,6 +2005,18 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      round-capped tail now began OUTSIDE the rump and its blunt start showed as
      the hard-edged block the mammal audit reported on species after species.
      Anchored to the solid it grows from, it starts inside the body. */
+  if (spec.udder) {
+    /* ★ POLISH — the udder hangs from the belly ahead of the hind legs, with
+       two visible teats; pink against any coat. */
+    const [ux, uy0] = AX(0.28);
+    const uy = uy0 + RAD(0.28) * 0.94;
+    const ug = c.createRadialGradient(ux - 6, uy - 4, 2, ux, uy, bodyH * 0.24);
+    ug.addColorStop(0, '#f0c8c8'); ug.addColorStop(0.7, '#dea8ac'); ug.addColorStop(1, '#b87a84');
+    c.fillStyle = ug;
+    c.beginPath(); c.ellipse(ux, uy, bodyW * 0.16, bodyH * 0.20, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(140,80,90,0.6)'; c.lineWidth = 2; c.lineCap = 'round';
+    for (const dx of [-0.5, 0.4]) { c.beginPath(); c.moveTo(ux + dx * bodyW * 0.09, uy + bodyH * 0.16); c.lineTo(ux + dx * bodyW * 0.09, uy + bodyH * 0.26); c.stroke(); }
+  }
   const tAnchor = AX(0.035);
   const tx0 = tAnchor[0] - RAD(0.035) * 0.35, ty0 = tAnchor[1] - RAD(0.035) * 0.30;
   if (tail === 'bushy' || tail === 'plume') {
@@ -2252,7 +2266,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Bactrian Camel': { legs: 0.176, depth: 0.1667, len: 0.1914, neck: 0.19, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 2, hue: '#b08a5e', family: 'camelid' },
   'Dromedary Camel': { legs: 0.1935, depth: 0.159, len: 0.176, neck: 0.20, muzzle: 0.45, ears: 'small', tail: 'tuft', humps: 1, hue: '#cba777', family: 'camelid' },
   'Giraffe': { legs: 0.2438, depth: 0.1573, len: 0.1652, neck: 0.34, back: 'sloped', muzzle: 0.40, ears: 'large', tail: 'tuft', coat: 'patches', horn: 'ossicone', hue: '#e0c07a' , family: 'cervid' , legMarks: true },
-  'Llama': { legs: 0.1938, depth: 0.1434, len: 0.1506, neck: 0.20, muzzle: 0.35, ears: 'large', tail: 'stub', hue: '#d8cbb4', family: 'camelid' },
+  'Llama': { legs: 0.1938, depth: 0.1434, len: 0.1506, neck: 0.20, muzzle: 0.35, ears: 'large', tail: 'stub', hue: '#d8cbb4', family: 'camelid', earScale: 1.5 },
   'Alpaca': { legs: 0.1594, depth: 0.1448, len: 0.152, neck: 0.18, muzzle: 0.30, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#ddd2bd', family: 'camelid' },
   /* antlered + horned */
   'Moose': { legs: 0.2181, depth: 0.1843, len: 0.2116, neck: 0.10, back: 'humped', muzzle: 0.62, jaw: 'broad', ears: 'large', tail: 'stub', horn: 'palmate', hue: '#5b4433', family: 'cervid' },
