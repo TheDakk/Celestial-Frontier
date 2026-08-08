@@ -135,6 +135,7 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★★ POLISH 17-18 (committed): bullfrog TYMPANUM discs · grouse/partridge short gamebird bills · platypus WEBBED CLAWED FEET. Bucket (b) survivors for after the measure: penguin stiff flippers, emu shag plumage, cervid antler differentiation (Caribou/Deer/Moose mounts), crab carapace squaring, elephant ear/forehead detail, anaconda blotch check, ptarmigan, land-snail stalk size. ★ NEXT SESSION = GP7 MEASURE FIRST (all 1250 incl. procedural via the bridge), then only what it says still blocks PASS.
 ★★ POLISH 16 (committed): neon tetra lateral stripe (new fish pattern) · chicken/rooster fleshy serrated COMB + wattle (new bird axis). Croc double tail-crest + snail eyestalks verified ALREADY PRESENT in code — expect them to convert at measure without edits. ★★★ NEXT SESSION = THE MEASURE ONLY (Nick): gp7 via artlock --driftdump → rejudgecards + control → judge (gp5 prompt) → rejudgemerge; INCLUDES procedural via reference/procedural-name-map.json. Then certification if budget allows.
 ★★ POLISH 15 (earlier batch): Coot white bill · Arctic Cod chin barbel · Moray gape.
 ★★★ THE CARRIED-ROW TRIAGE (read before resuming the sweep): the remaining ~280 carried rows
