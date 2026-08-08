@@ -891,11 +891,29 @@ export function faunaBat(c: Ctx, g: G, p: Pal, name: string): void {
   }
   c.fillStyle = volume(c, p, cx, hy, hr * 1.3);
   c.beginPath(); c.ellipse(cx, hy, hr, hr * 0.92, 0, 0, TAU); c.fill();
-  if (fruit) {   /* a flying fox has a dog's muzzle, not a nose leaf */
+  if (fruit) {   /* ★ POLISH — the flying fox's FOX FACE: a long tapering
+       projecting muzzle with a dark nose tip and bright forward eyes. */
     c.fillStyle = p.base;
-    c.beginPath(); c.ellipse(cx, hy + hr * 0.66, hr * 0.44, hr * 0.52, 0, 0, TAU); c.fill();
-    c.fillStyle = 'rgba(18,12,12,0.8)';
-    c.beginPath(); c.ellipse(cx, hy + hr * 1.02, hr * 0.20, hr * 0.14, 0, 0, TAU); c.fill();
+    c.beginPath();
+    c.moveTo(cx - hr * 0.40, hy + hr * 0.42);
+    c.quadraticCurveTo(cx - hr * 0.22, hy + hr * 1.28, cx, hy + hr * 1.42);   /* tapering snout */
+    c.quadraticCurveTo(cx + hr * 0.22, hy + hr * 1.28, cx + hr * 0.40, hy + hr * 0.42);
+    c.closePath(); c.fill();
+    c.fillStyle = 'rgba(18,12,12,0.9)';
+    c.beginPath(); c.ellipse(cx, hy + hr * 1.36, hr * 0.14, hr * 0.10, 0, 0, TAU); c.fill();
+    c.fillStyle = '#2c1a10';   /* big round fruit-bat eyes, forward on the face */
+    for (const s2 of [-1, 1] as const) { c.beginPath(); c.arc(cx + s2 * hr * 0.30, hy + hr * 0.18, hr * 0.15, 0, TAU); c.fill();
+      c.fillStyle = 'rgba(255,240,220,0.8)'; c.beginPath(); c.arc(cx + s2 * hr * 0.26, hy + hr * 0.12, hr * 0.05, 0, TAU); c.fill(); c.fillStyle = '#2c1a10'; }
+  } else if (vamp) {
+    /* ★ POLISH — the vampire's flat PIG-LIKE nose pad with the M-leaf ridge */
+    c.fillStyle = `rgba(${Math.min(255, p.cr * 1.15) | 0},${(p.cg * 0.68) | 0},${(p.cb * 0.70) | 0},0.95)`;
+    c.beginPath(); c.ellipse(cx, hy + hr * 0.58, hr * 0.34, hr * 0.22, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(60,24,24,0.8)'; c.lineWidth = 2; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx - hr * 0.26, hy + hr * 0.46);   /* the M-shaped leaf ridge */
+    c.quadraticCurveTo(cx - hr * 0.10, hy + hr * 0.34, cx, hy + hr * 0.46);
+    c.quadraticCurveTo(cx + hr * 0.10, hy + hr * 0.34, cx + hr * 0.26, hy + hr * 0.46); c.stroke();
+    c.fillStyle = 'rgba(18,12,12,0.85)';
+    for (const s2 of [-1, 1] as const) { c.beginPath(); c.ellipse(cx + s2 * hr * 0.12, hy + hr * 0.60, hr * 0.07, hr * 0.05, 0, 0, TAU); c.fill(); }
   } else {
     c.fillStyle = `rgba(${Math.min(255, p.cr * 1.12) | 0},${(p.cg * 0.70) | 0},${(p.cb * 0.72) | 0},0.95)`;
     c.beginPath();
