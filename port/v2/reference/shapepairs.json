@@ -210,6 +210,11 @@
   "shape": 1.245
  },
  {
+  "a": "Lingonberry",
+  "b": "Cloudberry",
+  "shape": 1.245
+ },
+ {
   "a": "Purple Saxifrage",
   "b": "Alpine Sorrel",
   "shape": 1.245
@@ -270,6 +275,11 @@
   "shape": 1.494
  },
  {
+  "a": "Cloudberry",
+  "b": "Mountain Cranberry",
+  "shape": 1.494
+ },
+ {
   "a": "Marmot",
   "b": "Prairie Dog",
   "shape": 1.556
@@ -292,6 +302,11 @@
  {
   "a": "Lingonberry",
   "b": "Mountain Cranberry",
+  "shape": 1.619
+ },
+ {
+  "a": "Cloudberry",
+  "b": "Arctic Blueberry",
   "shape": 1.619
  },
  {
@@ -370,11 +385,6 @@
   "shape": 1.805
  },
  {
-  "a": "Tarantula",
-  "b": "Deer Tick",
-  "shape": 1.868
- },
- {
   "a": "Orchid Bee",
   "b": "Cold-Adapted Insect",
   "shape": 1.868
@@ -432,11 +442,6 @@
  {
   "a": "Cranberry",
   "b": "Mountain Cranberry",
-  "shape": 1.93
- },
- {
-  "a": "Kelp",
-  "b": "Sargassum",
   "shape": 1.93
  },
  {
