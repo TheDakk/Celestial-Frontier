@@ -1038,9 +1038,16 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     feather(bx + bw * 0.16, by - bh * 0.40, Math.PI - 0.30, 0.72, 0.55);   /* far, going away */
     feather(bx + bw * 0.22, by - bh * 0.16, 0.14, 1, 1);                   /* near, toward us */
   } else if (opts.upright) {   /* a penguin has a FLIPPER: one stiff blade, no primaries */
+    /* ★ POLISH — the flipper is a STIFF NARROW BLADE held out from the body,
+       tapering to a rounded tip, not a soft oval wing lying on the flank. */
     c.fillStyle = p.dark;
-    c.save(); c.translate(bx + bw * 0.30, by - bh * 0.10); c.rotate(0.30);
-    c.beginPath(); c.ellipse(0, bh * 0.30, bw * 0.30, bh * 0.62, 0, 0, TAU); c.fill();
+    c.save(); c.translate(bx + bw * 0.42, by - bh * 0.28); c.rotate(0.62);
+    c.beginPath();
+    c.moveTo(0, -bh * 0.06);
+    c.quadraticCurveTo(bw * 0.24, bh * 0.10, bw * 0.16, bh * 0.72);   /* the blade, tapering */
+    c.quadraticCurveTo(bw * 0.06, bh * 0.86, -bw * 0.04, bh * 0.72);
+    c.quadraticCurveTo(-bw * 0.10, bh * 0.20, 0, -bh * 0.06);
+    c.closePath(); c.fill();
     c.restore();
     c.fillStyle = 'rgba(244,240,228,0.90)';   /* the pale front */
     c.beginPath(); c.ellipse(bx - bw * 0.26, by + bh * 0.14, bw * 0.52, bh * 0.70, -0.12, 0, TAU); c.fill();

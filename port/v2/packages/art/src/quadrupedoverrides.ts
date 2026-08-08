@@ -1806,17 +1806,41 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   } else if (horn === 'palmate') {   /* moose */
     c.fillStyle = '#c9b596';
     for (const s of [-1, 1] as const) {
-      c.save(); c.translate(headX - headR * 0.1, headY - headR * 0.7); c.scale(s, 1);
+      /* ★ POLISH — the palms mount HIGH and tilt UP, not low-horizontal */
+      c.save(); c.translate(headX - headR * 0.1, headY - headR * 0.95); c.scale(s, 1);
       c.beginPath(); c.moveTo(0, 0);
-      c.quadraticCurveTo(headR * 1.2, -headR * 0.7, headR * 2.2, -headR * 0.5);
-      c.quadraticCurveTo(headR * 2.0, headR * 0.1, headR * 0.9, headR * 0.25);
+      c.quadraticCurveTo(headR * 1.0, -headR * 1.05, headR * 2.0, -headR * 1.30);
+      c.quadraticCurveTo(headR * 2.1, -headR * 0.45, headR * 0.9, headR * 0.10);
       c.closePath(); c.fill();
       c.strokeStyle = '#c9b596'; c.lineWidth = 5; c.lineCap = 'round';
-      for (let i = 0; i < 4; i++) { c.beginPath(); c.moveTo(headR * (1.4 + i * 0.22), -headR * 0.5); c.lineTo(headR * (1.5 + i * 0.26), -headR * 1.05); c.stroke(); }
+      for (let i = 0; i < 4; i++) { c.beginPath(); c.moveTo(headR * (1.2 + i * 0.24), -headR * (0.95 + i * 0.10)); c.lineTo(headR * (1.3 + i * 0.28), -headR * (1.55 + i * 0.10)); c.stroke(); }
       c.restore();
     }
-  } else if (horn === 'branched') {   /* deer/elk */
+  } else if (horn === 'branched') {   /* deer/elk — caribou gets its own sweep */
     c.strokeStyle = '#b8a184'; c.lineWidth = 6; c.lineCap = 'round';
+    const caribou = name === 'Caribou' || name === 'Reindeer';
+    if (caribou) {
+      /* ★ POLISH — long C-SWEPT beams arcing back then FORWARD over the head,
+         plus the flat brow shovel over the nose: the caribou signature the
+         generic three-tine fork could not say. */
+      for (const s2 of [-1, 1] as const) {
+        const bx0 = headX - headR * 0.15 + s2 * headR * 0.26, by0 = headY - headR * 0.6;
+        c.lineWidth = s2 < 0 ? 5 : 6;
+        c.beginPath(); c.moveTo(bx0, by0);
+        c.bezierCurveTo(bx0 - headR * 1.3, by0 - headR * 1.2, bx0 - headR * 0.4, by0 - headR * 2.6, bx0 + headR * 0.9, by0 - headR * 2.35);
+        c.stroke();
+        for (let i = 0; i < 3; i++) {   /* tines off the top of the C */
+          c.beginPath(); c.moveTo(bx0 - headR * (0.1 - i * 0.35), by0 - headR * (2.1 + i * 0.12));
+          c.lineTo(bx0 + headR * (0.15 + i * 0.4), by0 - headR * (2.6 + i * 0.05)); c.stroke();
+        }
+      }
+      /* the brow shovel: a flat palm jutting forward over the muzzle */
+      c.fillStyle = '#b8a184';
+      c.beginPath(); c.moveTo(headX - headR * 0.05, headY - headR * 0.55);
+      c.quadraticCurveTo(headX - headR * 1.0, headY - headR * 0.85, headX - headR * 1.25, headY - headR * 0.35);
+      c.quadraticCurveTo(headX - headR * 0.7, headY - headR * 0.25, headX - headR * 0.05, headY - headR * 0.35);
+      c.closePath(); c.fill();
+    } else
     for (const s of [-1, 1] as const) {
       const bx0 = headX - headR * 0.15 + s * headR * 0.28, by0 = headY - headR * 0.65;
       c.beginPath(); c.moveTo(bx0, by0); c.quadraticCurveTo(bx0 + s * headR * 0.7, by0 - headR * 1.1, bx0 + s * headR * 0.5, by0 - headR * 1.9); c.stroke();
