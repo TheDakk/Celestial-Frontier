@@ -220,11 +220,6 @@
   "shape": 1.245
  },
  {
-  "a": "Civet",
-  "b": "Sand Cat",
-  "shape": 1.307
- },
- {
   "a": "Gull",
   "b": "Kestrel",
   "shape": 1.307
@@ -285,11 +280,6 @@
   "shape": 1.556
  },
  {
-  "a": "Mink",
-  "b": "Marten",
-  "shape": 1.619
- },
- {
   "a": "Minnow",
   "b": "Cave Fish",
   "shape": 1.619
@@ -312,6 +302,11 @@
  {
   "a": "Tanager",
   "b": "Finch",
+  "shape": 1.681
+ },
+ {
+  "a": "Mink",
+  "b": "Marten",
   "shape": 1.681
  },
  {

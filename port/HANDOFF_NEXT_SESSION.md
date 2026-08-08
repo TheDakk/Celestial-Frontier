@@ -169,36 +169,47 @@ Kelp stipes carry BLADES with gas bladders · Bull Kelp bulb 0.06S + broad strea
 Sargassum branching fronds + floats · Papyrus per-cane firework umbels · Steppe Tulip 'cup'
 flower kind (new) · Cloudberry creep+berry · Sweet Potato trail+trumpet · Duckweed tiny-frond
 mat (`mat` axis) · Prickly Pear JOINTED PAD STACK.
-★★★ THE REMAINING 37 FIX = THE NEXT ARC, IN PRIORITY ORDER (post-gp7; each needs real
-chassis/bespoke work — do NOT rush them as table edits):
-1. **THE EQUID SCAFFOLD** (Horse, Donkey, Wild Horse, Wild Ass, Wild Pony — one scaffold,
-   five species): deep barrel + withers, sloped shoulder, muscular croup, wedge skull,
-   articulated knees/hocks/fetlocks, hooves, MANE, species tails. Zebra moves onto it last.
-2. **FELINE FEET+SPINE PASS** (Cat, Bobcat, Caracal, Cheetah, Clouded Leopard, Fishing Cat,
-   Lynx, Ocelot, Serval): paws not hooves, digitigrade legs, flexible topline; keep every
-   pelt recipe. (Lion/Tiger are fine — do not touch them.)
-3. **LOW-BODY MAMMAL DOZEN** (Aardvark, Agouti, Badger, Capybara, Civet, Coati, Kinkajou,
-   Possum, Raccoon, Tasmanian Devil, Warthog): each reads ungulate; needs low/long/heavy
-   builds, paws, species heads (warthog tusks+warts, devil's big jaws + white chest).
-4. **GLIDERS** (Colugo, Flying Squirrel, Sugar Glider): one `patagium` membrane axis serves
-   all three. Plus **Jerboa** (bipedal: huge hind legs, tiny arms, tufted tail).
-5. **Fish residue**: Monkfish flattened head+mouth, Mahi steep forehead (bigheads landed,
-   shapes still generic).
-6. **Flora mediums** (Acai palm+fruit clusters, Baobab bottle trunk, Desert Rose caudex,
-   Devil's Claw hooked pods, Devil's Club spiny+palmate, Miner's Lettuce stalked-disc tuft,
-   Peanut ground pods, Orchid Pods on-stalk pods + the source-organism/harvest-organ
-   metadata split the audit recommends).
-Plus his one procedural note: a single very dark fauna phenotype is hard to read (find it by
-darkness-scan, lift its value floor).
-★★★ GP7 RE-STAGED AFTER THE FIXES (all local, zero judge tokens): driftdump → **471 drifted**
-(fauna 181 · flora 208 · fungi 13 · microbe 14 · procedural 55; bridge map at
-reference/procedural-name-map.json) · fresh 57-asset control (baseline FAIL% −21.3pts vs
-drift — compare SHIFTS) · strips re-rendered: **80 drift + 27 control = 107 images ≈ ~3M
-tokens**. ⚠ Strips gitignored — re-render via `node tools/rejudgecards.mjs` [+ `--control`]
-(~2 min) if the tree is fresh. NEXT SESSION STARTS AT: spawn judges on the strips (gp5
-prompt, one agent per strip, schema rows, VERBATIM species join) → `rejudgemerge --fresh
---control`. DO NOT touch art before the judge run. Full-size catalog (1250 portraits,
-11 part-zips + cf-species-ALL.zip) was exported + delivered to Nick 2026-08-07/08.
+★★★★★ ALL 59 FIX ITEMS ARE NOW ADDRESSED (2026-08-08, second arc, ~8 commits,
+every cluster render-verified). What landed beyond the first 22:
+· **THE EQUID SCAFFOLD** — new `mane: 'crest'|'crestUp'` axes (hair rooted along the neck's
+  top edge, poll→withers, + forelock; crestUp = erect donkey/zebra brush), new `tail: 'flow'`
+  (hanging hair sheet to the hocks), equid skull rebuilt as a WEDGE (len 2.95, cranium 0.74,
+  muzzle 0.44, cheek 0.58, tilt 0.26, headScale 0.92), deeper barrels. All six equids moved.
+· **THE FELINE BASE** — two root causes found by rendering: (1) wave-49's pale-coat paw was
+  a SOLID DARK CAP = a hoof at catalogue scale; the paw now reads by SHAPE (coat-toned fan
+  wider than the ankle, protruding toe lobes, creases, claw ticks); (2) limb countershade
+  pales the BOTTOM of a vertical leg = the ungulate pale-cannon; paw-footed families now
+  keep coat tone down the limb (0.45). Wolf/Leopard/Lion regression-checked clean.
+  Caracal tufts 1.5 · Ocelot tail 1.4 · Clouded Leopard tail 1.75.
+· **THE LOW-BODY DOZEN** — per-species `carry` overrides (the marsupial/procyonid/burrower
+  families carry 1.00 = ungulate-high heads; these now sit level), legs shortened / bodies
+  lowered+lengthened, Raccoon/Coati/Kinkajou tail scale, Tasmanian Devil `chestBlaze`
+  accent (new) + bigger jaws, Warthog crestUp mane.
+· **GLIDERS + JERBOA** — quadruped `patagium` axis (Sugar Glider, Colugo) and smallRodent
+  `glide` membrane (Flying Squirrel), pale free edge sagging below the belly (⚠ quadratic
+  midpoint: a control at 1.75bh only reaches ~1.06bh — it needed 2.6); smallRodent `biped`
+  (Jerboa: giant haunch+tarsus, tiny forearms, banner tail).
+· **FLORA MEDIUMS** — bespoke floraBaobab (bottle trunk) + floraDesertRose (caudex);
+  Acai palm row + Devil's Club row (the FLORA2_SPEC table outranks the dupe ladder, so a
+  row is all a dupe needs); Miner's Lettuce stalked-saucer tuft (perfoliate bespoke);
+  Peanut `groundFruit` soil pods; Devil's Claw `clawpod` fruit kind (grapnel hooks laid on
+  the ground); Orchid Pods hanging pod clusters at vine nodes.
+· **THE DARK PHENOTYPE** — found by luminance scan (fauna-h1-s12, near-black purple
+  hexapod): procedural palettes now get a VALUE FLOOR (base lum < 56 lifted, hue kept),
+  scoped inside resolveProcedural ONLY so Earth's black animals keep their darkness
+  (D-ART-141).
+STILL OPEN from the audit (minor, post-gp7): Monkfish/Mahi head SHAPES (bighead landed,
+flatten/steep-forehead geometry still generic) · Devil's Club spines · fetlock articulation
+on equids · the source-organism/harvest-organ metadata split (design decision for Nick).
+★★★ GP7 RE-STAGED FINAL (all local, zero judge tokens): driftdump → **498 drifted**
+(fauna 202 · flora 213 · fungi 13 · microbe 14 · procedural 56; bridge map at
+reference/procedural-name-map.json) · fresh 61-asset control · strips re-rendered:
+**92 drift + 38 control = 130 images ≈ ~3.5M tokens**. ⚠ Strips gitignored — re-render via
+`node tools/rejudgecards.mjs` [+ `--control`] (~2 min) if the tree is fresh. NEXT SESSION
+STARTS AT: spawn judges on the strips (gp5 prompt, one agent per strip, schema rows,
+VERBATIM species join) → `rejudgemerge --fresh --control`. DO NOT touch art before the
+judge run. Full catalog exported + delivered to Nick twice (2026-08-07 all 1250; 2026-08-08
+the fixed-species zip for his re-audit).
 ★★ POLISH 16 (committed): neon tetra lateral stripe (new fish pattern) · chicken/rooster fleshy serrated COMB + wattle (new bird axis). Croc double tail-crest + snail eyestalks verified ALREADY PRESENT in code — expect them to convert at measure without edits. ★★★ NEXT SESSION = THE MEASURE ONLY (Nick): gp7 via artlock --driftdump → rejudgecards + control → judge (gp5 prompt) → rejudgemerge; INCLUDES procedural via reference/procedural-name-map.json. Then certification if budget allows.
 ★★ POLISH 15 (earlier batch): Coot white bill · Arctic Cod chin barbel · Moray gape.
 ★★★ THE CARRIED-ROW TRIAGE (read before resuming the sweep): the remaining ~280 carried rows
