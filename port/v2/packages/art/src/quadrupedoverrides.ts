@@ -469,7 +469,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     const w = two ? 0.115 : 0.155;
     let lift = 0;
     for (const hu of hxs) lift = Math.max(lift, Math.exp(-(((t - hu) / w) ** 2)));
-    return bodyH * (two ? 0.46 : 0.50) * lift;
+    return bodyH * (two ? 0.46 : 0.62) * lift;   /* ★ POLISH — the dromedary hump reads taller */
   };
   const topY = (t: number): number => topYBase(t) - humpAt(t);
   const topYBase = (t: number): number => {
@@ -1846,10 +1846,12 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
          the same family of horn WITHOUT it: a water buffalo carries enormous
          backswept crescents and no boss at all, which is the one feature that
          separates it from the buffalo/gaur/banteng cluster it was drawn into. */
-      c.fillStyle = 'rgb(74,58,40)';
+      c.fillStyle = 'rgb(88,70,48)';
       c.beginPath();
-      c.ellipse(poll[0] + headR * 0.06, poll[1] + headR * 0.10, headR * 0.50, headR * 0.24, -0.14, 0, TAU);
+      c.ellipse(poll[0] + headR * 0.06, poll[1] + headR * 0.08, headR * 0.74, headR * 0.36, -0.14, 0, TAU);
       c.fill();
+      c.strokeStyle = 'rgba(40,30,18,0.7)'; c.lineWidth = 2.4;   /* the centre parting of the fused helmet */
+      c.beginPath(); c.moveTo(poll[0] + headR * 0.06, poll[1] - headR * 0.24); c.lineTo(poll[0] + headR * 0.06, poll[1] + headR * 0.36); c.stroke();
     }
     c.lineCap = 'round';
     for (const s of [-1, 1] as const) {
