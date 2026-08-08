@@ -105,6 +105,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Cat"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Catfish"
  },
  {
@@ -202,6 +206,10 @@
  {
   "set": "earth-fauna",
   "name": "Curlew"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Deer Tick"
  },
  {
   "set": "earth-fauna",
@@ -665,6 +673,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Spider"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Spider Monkey"
  },
  {
@@ -782,6 +794,10 @@
  {
   "set": "earth-fauna",
   "name": "Wild Ass"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Wild Boar"
  },
  {
   "set": "earth-fauna",
@@ -1778,6 +1794,10 @@
  {
   "set": "procedural",
   "name": "f0·11#71"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·12#12"
  },
  {
   "set": "procedural",
