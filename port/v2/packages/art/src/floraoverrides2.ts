@@ -156,6 +156,8 @@ export interface PlantSpec {
   /** a palm-habit plant with a smooth GREEN false trunk and huge paddle leaves
       instead of a woody trunk and fronds — banana, plantain */
   pseudostem?: boolean;
+  /** ★ POLISH — an orchard tree: LOW wide crooked crown on a SHORT trunk */
+  squat?: boolean;
   /** the harvested underground organ, shown pulled up at the base: a long ropey
       taproot (licorice), a forked root (ginseng), or a knobbly rhizome
       (ginger, turmeric, valerian). The judge failed several for its absence. */
@@ -703,7 +705,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
   const toothed = spec.toothed ?? false;
   const cx = S * 0.50, base = S * 0.84;
   /* RATIOS, never scales — the fit pass erases a size-only difference */
-  const H = S * (spec.tall ? 0.62 : 0.52) * nvf(name, 0x11, 0.14);
+  const H = S * (spec.tall ? 0.62 : spec.squat ? 0.40 : 0.52) * nvf(name, 0x11, 0.14);
   const spread = nvf(name, 0x22, 0.20);
   const leafN = Math.max(5, Math.round((spec.habit === 'grass' ? 13 : 9) * nvf(name, 0x33, 0.30)));
   const lean = (nvf(name, 0x44, 1) - 1) * 0.20;
@@ -817,7 +819,7 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     {
       /* the canopy: overlapping soft masses, then leaves on the rim, so the
          crown has depth instead of being one flat blob */
-      const cw = S * 0.21 * spread, chh = S * 0.16 * nvf(name, 0x66, 0.22);
+      const cw = S * (spec.squat ? 0.27 : 0.21) * spread, chh = S * (spec.squat ? 0.14 : 0.16) * nvf(name, 0x66, 0.22);
       const ccx = cx + lean * S * 0.10, ccy = topY + H * 0.14;
       /* foliage TONES with their own value structure, independent of how pale
          the species hue is — the fix for pale-palette "mop" crowns (task 21).
@@ -1588,13 +1590,18 @@ export function floraPitcher(c: Ctx, g: G, p: Pal, name = ''): void {
     c.lineTo(px + w * 1.55, base - H);
     c.quadraticCurveTo(px + w * 0.90, base - H * 0.55, px + w * 0.52, base);
     c.closePath(); c.fill();
-    /* the red veining that walks an insect down the tube */
-    c.strokeStyle = 'rgba(150,40,44,0.42)'; c.lineWidth = 1.2;
+    /* ★ POLISH — the red vein NETWORK, dense and branching at the THROAT */
+    c.strokeStyle = 'rgba(168,36,42,0.78)'; c.lineWidth = 1.8;
     for (let k = -2; k <= 2; k++) {
       c.beginPath();
       c.moveTo(px + k * w * 0.30, base - H * 0.08);
       c.lineTo(px + k * w * 0.66, base - H * 0.94);
       c.stroke();
+      /* throat branches forking off each vein in the upper third */
+      for (const bf of [0.72, 0.84]) {
+        c.beginPath(); c.moveTo(px + k * w * (0.30 + 0.36 * bf), base - H * bf);
+        c.lineTo(px + k * w * 0.66 + (k >= 0 ? 1 : -1) * w * 0.34, base - H * (bf + 0.09)); c.stroke();
+      }
     }
     c.fillStyle = '#3c2a22';
     c.beginPath(); c.ellipse(px, base - H, w * 1.55, w * 0.50, 0, 0, TAU); c.fill();

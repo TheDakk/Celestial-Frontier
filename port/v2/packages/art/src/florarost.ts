@@ -8,8 +8,8 @@ const T = (spec: PlantSpec): PainterF => (c, g, p, n) => plantBody(c, g, p, spec
 
 export const FLORA2_SPEC: Record<string, PainterF> = {
   /* ── FRUIT TREES: a canopy carrying its fruit ── */
-  'Apple': T({ hue: '#4e7c3b', habit: 'tree', leaf: 'broad', fruit: 'pome', fhue: '#c8342e' }),
-  'Crabapple': T({ hue: '#6e7a3e', habit: 'tree', leaf: 'broad', fruit: 'pome', fhue: '#b03a34' }),
+  'Apple': T({ hue: '#4e7c3b', habit: 'tree', leaf: 'broad', fruit: 'pome', fhue: '#c8342e', squat: true }),
+  'Crabapple': T({ hue: '#6e7a3e', habit: 'tree', leaf: 'broad', fruit: 'pome', fhue: '#b03a34', squat: true }),
   'Pear': T({ hue: '#38703e', habit: 'tree', leaf: 'broad', fruit: 'pear', fhue: '#c9c05a' }),
   'Peach': T({ hue: '#62893a', habit: 'tree', leaf: 'lance', fruit: 'drupe', fhue: '#e0975a' }),
   'Apricot': T({ hue: '#6c8f40', habit: 'tree', leaf: 'heart', fruit: 'drupe', fhue: '#e0a047' }),
