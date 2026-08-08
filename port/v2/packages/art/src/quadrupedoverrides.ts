@@ -55,7 +55,7 @@ export interface QuadSpec {
   muzzle?: number;              /* snout projection */
   jaw?: 'fine' | 'broad' | 'barrel';
   ears?: 'tiny' | 'small' | 'round' | 'large' | 'huge' | 'fan';
-  tail?: 'none' | 'stub' | 'tuft' | 'bushy' | 'long' | 'plume' | 'banded' | 'paddle';
+  tail?: 'none' | 'stub' | 'tuft' | 'bushy' | 'long' | 'plume' | 'banded' | 'paddle' | 'flow';
   /** ★ POLISH — the dairy udder: a pink rounded bag between the hind legs (Cow) */
   udder?: boolean;
   /** ★ POLISH WAVE — small COAT ACCENTS that are whole identities: a pale rump
@@ -142,7 +142,7 @@ export interface QuadSpec {
   /* ★ wave 22b — a mane is drawn BEHIND and BACK from the head, never centred
      on it: centred, it swallows the muzzle and eyes and the animal loses the
      only part anyone actually reads. */
-  mane?: 'lion' | 'ruff';
+  mane?: 'lion' | 'ruff' | 'crest' | 'crestUp';
   /** ★ wave 40 — the body's POSTURE. 'stand' (default) is the horizontal
       quadruped this painter has always drawn; 'sentinel' rears it onto its
       hind legs with the forelimbs tucked (meerkat, prairie dog, ground
@@ -239,7 +239,10 @@ const SKULL: Record<string, {
      Zebra — one bug across four families). */
   bovid: { len: 2.40, cranium: 0.80, stop: 0.10, muzzle: 0.44, jaw: 0.24, eyeU: 0.32, eyePhi: 0.68, eyeR: 0.165, nose: 'nostril', tilt: 0.16, nosePad: 0.80, lip: 'droop', cheek: 0.66 },
   cervid: { len: 2.30, cranium: 0.78, stop: 0.16, muzzle: 0.36, jaw: 0.28, eyeU: 0.31, eyePhi: 0.72, eyeR: 0.225, nose: 'wet', tilt: 0.16, nosePad: 0.72, lip: 'straight', cheek: 0.48 },
-  equid: { len: 2.85, cranium: 0.82, stop: 0.05, muzzle: 0.50, jaw: 0.42, eyeU: 0.28, eyePhi: 0.70, eyeR: 0.205, nose: 'nostril', tilt: 0.18, nosePad: 0.90, lip: 'droop', cheek: 0.78 },
+  /* ★ GOLD AUDIT — the equid head read as "a fat oval slab": the wedge comes
+     from a longer, slimmer skull — smaller braincase, narrower muzzle and
+     jaw, less jowl, head angled further down off the poll. */
+  equid: { len: 2.95, cranium: 0.74, stop: 0.05, muzzle: 0.44, jaw: 0.36, eyeU: 0.28, eyePhi: 0.70, eyeR: 0.205, nose: 'nostril', tilt: 0.26, nosePad: 0.90, lip: 'droop', cheek: 0.58 },
   camelid: { len: 2.10, cranium: 0.72, stop: 0.26, muzzle: 0.38, jaw: 0.34, eyeU: 0.33, eyePhi: 0.62, eyeR: 0.22, nose: 'nostril', tilt: 0.10, nosePad: 0.66, lip: 'cleft', cheek: 0.44 },
   /* a pig's snout ends in a flat cartilage DISC, and that disc is the animal */
   suid: { len: 2.25, cranium: 0.86, stop: 0.04, muzzle: 0.52, jaw: 0.40, eyeU: 0.28, eyePhi: 0.58, eyeR: 0.155, nose: 'disc', tilt: 0.20, nosePad: 1.30, lip: 'straight', cheek: 0.60 },
@@ -333,7 +336,7 @@ const FAMILY: Record<string, {
      Eland, Nilgai, Hartebeest and Wildebeest at once. */
   bovid: { waist: 0.30, muscle: 0.68, chest: 0.82, rump: 0.82, foot: 'cloven', cannon: 0.90, crouch: 0.26, carry: 1.00, ear: 'spoon', pupil: 'bar', iris: '#5a4326', mat: 'fur' },
   cervid: { waist: 0.56, muscle: 0.36, chest: 0.50, rump: 0.44, foot: 'cloven', cannon: 1.00, crouch: 0.22, carry: 1.00, ear: 'leaf', pupil: 'bar', iris: '#3f2c1a', mat: 'fur' },
-  equid: { waist: 0.32, muscle: 0.74, chest: 0.70, rump: 0.82, foot: 'hoof', cannon: 0.98, crouch: 0.20, carry: 1.00, ear: 'point', pupil: 'bar', iris: '#3a2a1c', mat: 'fur' },
+  equid: { waist: 0.32, muscle: 0.74, chest: 0.70, rump: 0.82, foot: 'hoof', cannon: 0.98, crouch: 0.20, carry: 1.00, ear: 'point', pupil: 'bar', iris: '#3a2a1c', mat: 'fur', headScale: 0.92 },
   /* a camel carries a high chest on long soft-padded legs */
   camelid: { waist: 0.44, muscle: 0.42, chest: 0.78, rump: 0.40, foot: 'pad', cannon: 0.82, crouch: 0.32, carry: 1.00, ear: 'leaf', pupil: 'bar', iris: '#4a3220', mat: 'pelt' },
   suid: { waist: 0.08, muscle: 0.62, chest: 0.82, rump: 0.50, foot: 'cloven', cannon: 0.70, crouch: 0.40, carry: 0.25, ear: 'drop', pupil: 'round', iris: '#4d3826', mat: 'fur' },
@@ -1243,7 +1246,49 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      offset BACK from the face, because a mane that is centred on the skull
      covers the muzzle and eyes and the animal loses the only part anyone
      reads. A real mane frames a face; it never fills it. */
-  if (spec.mane) {
+  if (spec.mane === 'crest' || spec.mane === 'crestUp') {
+    /* ★ GOLD AUDIT — THE EQUID MANE: hair rooted along the TOP EDGE of the
+       neck from poll to withers. 'crest' hangs (horse); 'crestUp' stands
+       erect (donkey/zebra/wild ass). Its absence was the audit's #1 equid
+       complaint after the body itself. */
+    const dxn = headX - nRoot[0], dyn = headY - nRoot[1];
+    const L3 = Math.hypot(dxn, dyn) || 1;
+    let nxv = dyn / L3, nyv = -dxn / L3;
+    if (nyv > 0) { nxv = -nxv; nyv = -nyv; }            /* the crest is the UPPER edge */
+    const bakX = -dxn / L3, bakY = -dyn / L3;           /* back toward the withers */
+    const up = spec.mane === 'crestUp';
+    const mr2 = mulberry32((((g.seed as number) ^ 0x4A9E) >>> 0));
+    c.lineCap = 'round';
+    for (let i = 0; i < (up ? 34 : 44); i++) {
+      const t = 0.04 + (i / (up ? 33 : 43)) * 0.94;
+      const s3 = t * t * (3 - 2 * t);
+      const nr3 = RAD(nRootU) * 0.98 * nThick * (1 - s3) + headR * 0.52 * s3;
+      const [qx, qy] = nq(t);
+      const bx3 = qx + nxv * nr3 * 0.92, by3 = qy + nyv * nr3 * 0.92;
+      const shade3 = 0.30 + mr2() * 0.22;
+      c.strokeStyle = `rgb(${p.cr * shade3 | 0},${p.cg * shade3 | 0},${p.cb * shade3 | 0})`;
+      c.lineWidth = up ? 2.6 + mr2() * 1.6 : 2.0 + mr2() * 2.0;
+      const hl = up ? nr3 * (0.42 + mr2() * 0.22) : nr3 * (1.05 + mr2() * 0.55);
+      c.beginPath(); c.moveTo(bx3, by3);
+      if (up) {   /* erect brush: short strokes standing off the crest */
+        c.lineTo(bx3 + nxv * hl + bakX * hl * 0.25, by3 + nyv * hl + bakY * hl * 0.25);
+      } else {    /* hanging sheet: hair falls back-and-down over the neck side */
+        c.quadraticCurveTo(bx3 + bakX * hl * 0.35 + nxv * hl * 0.35, by3 + nyv * hl * 0.35 + hl * 0.30,
+          bx3 + bakX * hl * 0.55, by3 + hl * 0.95);
+      }
+      c.stroke();
+    }
+    /* the forelock, falling between the ears onto the forehead */
+    if (!up) {
+      const fs = 0.32;
+      c.strokeStyle = `rgb(${p.cr * fs | 0},${p.cg * fs | 0},${p.cb * fs | 0})`;
+      for (let i = 0; i < 5; i++) {
+        c.lineWidth = 1.8 + mr2() * 1.4;
+        c.beginPath(); c.moveTo(headX + (i - 2) * 2, headY - headR * 0.85);
+        c.quadraticCurveTo(headX - headR * 0.35, headY - headR * 0.55 + i, headX - headR * (0.45 + mr2() * 0.2), headY - headR * 0.15); c.stroke();
+      }
+    }
+  } else if (spec.mane) {
     const mr = headR * (spec.mane === 'lion' ? 2.05 : 1.45);
     const mx = headX - headR * (spec.mane === 'lion' ? 0.62 : 0.50);
     const my = headY + headR * 0.16;
@@ -2176,6 +2221,27 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
        A white tail tip is a species mark, so it is opt-in now. */
     c.fillStyle = spec.tailTip ?? 'rgba(0,0,0,0)';
     c.beginPath(); c.ellipse(tipx, tipy, widthAt(1) * 0.60, widthAt(1) * 0.50, 0.3, 0, TAU); c.fill();
+  } else if (tail === 'flow') {
+    /* ★ GOLD AUDIT — THE EQUID TAIL: a full hanging SHEET of hair from a
+       high dock, falling nearly to the hocks and swaying slightly back —
+       not a brush, not a plume, not a tuft. */
+    const TL = bodyH * 1.9 * (spec.tailScale ?? 1);
+    const hr4 = mulberry32((((g.seed as number) ^ 0x51AE) >>> 0));
+    c.lineCap = 'round';
+    for (let i = 0; i < 26; i++) {
+      const u = i / 25;
+      const sway = (u - 0.5) * bodyW * 0.14 + (hr4() - 0.5) * bodyW * 0.04;
+      const len4 = TL * (0.72 + hr4() * 0.30);
+      const shade4 = 0.26 + hr4() * 0.24;
+      c.strokeStyle = i % 4 === 3 ? p.base : `rgb(${p.cr * shade4 | 0},${p.cg * shade4 | 0},${p.cb * shade4 | 0})`;
+      c.lineWidth = 2.0 + hr4() * 2.4;
+      c.beginPath(); c.moveTo(tx0 + (u - 0.5) * bodyW * 0.05, ty0 + hr4() * bodyH * 0.04);
+      c.bezierCurveTo(
+        tx0 - bodyW * 0.10 + sway * 0.4, ty0 + len4 * 0.35,
+        tx0 - bodyW * 0.17 + sway, ty0 + len4 * 0.72,
+        tx0 - bodyW * 0.15 + sway * 1.3, ty0 + len4);
+      c.stroke();
+    }
   } else if (tail === 'long' || tail === 'tuft') {
     /* ★ D-ART-136 — THIS BRANCH IGNORED tailScale COMPLETELY. The sweep was
        hard-coded, so a leopard's tail was ~32% of its body and NO spec value
@@ -2396,7 +2462,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
      and the stale species list goes. A rule outlives its examples. */
   'Walrus': { legs: 0.0303, depth: 0.1631, len: 0.2943, neck: 0.04, muzzle: 0.50, jaw: 'barrel', ears: 'tiny', tail: 'none', horn: 'tuskdown', hue: '#a3705f', family: 'pinniped'  },
   /* equines + swine */
-  'Horse': { legs: 0.1964, depth: 0.1524, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'plume', hue: '#8a5a35', family: 'equid' },
+  'Horse': { legs: 0.1964, depth: 0.166, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'flow', mane: 'crest', hue: '#8a5a35', family: 'equid' },
   'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e', family: 'suid', earShape: 'point' },
   'Warthog': { legs: 0.1087, depth: 0.1405, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', hue: '#6b5647', family: 'suid', earShape: 'point' },
   /* ★ wave 35 — a tapir is barrel-bodied like a suid, so it keeps that BODY;
