@@ -37,6 +37,14 @@
 ## ▶▶▶ STARTING v1.9 / THE PORT? THE PLAN IS IN `port/`. READ IT FIRST. ◀◀◀
 ## The v1.8 arc is CLOSED and shipped. v1.9 = PORT PHASE 0.
 ##
+## ★ THE SPECIES-ART ARC (v2 port, live 2026-08) — cold start: port/HANDOFF_NEXT_SESSION.md.
+##   Goal: 100% PASS at the shippable bar across all 1,250 assets. As of 2026-08-08: Nick's
+##   independent gold audit scored 381 GOLD / 810 POLISH / 59 FIX ("Gold Candidate") and ALL
+##   59 FIX items are addressed (equid scaffold, feline base, low-body dozen, gliders, flora
+##   mediums — reference/NICK_GOLD_AUDIT_2026-08-08.md). GP7 measure is pre-staged (498 drift
+##   + 61 control, 130 strips ≈ ~3.5M tokens); NEXT SESSION = spawn judges only, on Nick's go.
+##   Laws learned live in port/v2/DEVIATIONS.md (now → D-ART-161).
+##
 ## ★ THE DOCUMENTS (committed 2026-07-31, ca2e9d1 — they were LOST once; never rely on an upload):
 ##   port/PORT_MASTER_PLAN_v4.0.md   3,164 lines. v4.0 SUPERSEDES v3.1 and is audited against
 ##                                   v1.8.9, not the v1.6.4 the old review used. §20 = phases,
