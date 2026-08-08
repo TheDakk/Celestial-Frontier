@@ -6,10 +6,12 @@ prepare and publish their own work, but never merge or deploy automatically.
 
 ## Ownership
 
-| Agent | Allowed branch | Allowed Windows folder |
+| Agent environment | Allowed branch | Allowed folder |
 | --- | --- | --- |
-| OpenAI/Codex | `openai/*` | `C:\Projects\celestial-frontier-openai-windows` |
-| Anthropic/Claude Code | `anthropic/*` | `C:\Projects\celestial-frontier-anthropic-windows` |
+| OpenAI/Codex on Windows | `openai/windows` | `C:\Projects\celestial-frontier-openai-windows` |
+| Anthropic/Claude Code on Windows | `anthropic/windows` | `C:\Projects\celestial-frontier-anthropic-windows` |
+| OpenAI/Codex on macOS | `openai/mac` | local path ending in `/celestial-frontier-openai-mac` |
+| Anthropic/Claude Code on macOS | `anthropic/mac` | local path ending in `/celestial-frontier-anthropic-mac` |
 
 `develop` is the integration branch. `main` is the production branch.
 Neither agent may commit directly to either one.
