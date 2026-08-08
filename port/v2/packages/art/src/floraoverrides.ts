@@ -277,8 +277,106 @@ function lobedDisc(c: Ctx, x: number, y: number, R: number, r: () => number): vo
   c.closePath(); c.fill();
 }
 
+/* ★ GOLD AUDIT — BAOBAB. "Needs the iconic massively swollen bottle-like
+   trunk, sparse high branching crown"; the ordinary tapering trunk missed the
+   one thing the tree is. */
+export function floraBaobab(c: Ctx, g: G): void {
+  const r = mulberry32(((g.seed as number) ^ 0xBA0BAB) >>> 0);
+  const cx = S * 0.5, base = S * 0.80, H = S * 0.52;
+  c.fillStyle = 'rgba(0,0,0,0.40)'; c.beginPath(); c.ellipse(cx, base + S * 0.012, S * 0.20, S * 0.028, 0, 0, TAU); c.fill();
+  const tg = c.createLinearGradient(cx - S * 0.16, 0, cx + S * 0.16, 0);
+  tg.addColorStop(0, '#9a8a76'); tg.addColorStop(0.45, '#b5a48c'); tg.addColorStop(1, '#6e6050');
+  c.fillStyle = tg;
+  c.beginPath();                                   /* the swollen barrel */
+  c.moveTo(cx - S * 0.155, base);
+  c.bezierCurveTo(cx - S * 0.195, base - H * 0.42, cx - S * 0.115, base - H * 0.72, cx - S * 0.048, base - H * 0.88);
+  c.lineTo(cx + S * 0.048, base - H * 0.88);
+  c.bezierCurveTo(cx + S * 0.115, base - H * 0.72, cx + S * 0.195, base - H * 0.42, cx + S * 0.155, base);
+  c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(74,62,50,0.35)'; c.lineWidth = 2;   /* bark seams */
+  for (let i = -2; i <= 2; i++) {
+    c.beginPath(); c.moveTo(cx + i * S * 0.05, base);
+    c.quadraticCurveTo(cx + i * S * 0.045, base - H * 0.5, cx + i * S * 0.02, base - H * 0.85); c.stroke();
+  }
+  c.strokeStyle = '#8a7a66'; c.lineCap = 'round';           /* stubby root-like branches */
+  const tips: Array<[number, number]> = [];
+  for (let i = 0; i < 7; i++) {
+    const a = -Math.PI * 0.82 + (i / 6) * Math.PI * 0.64;
+    const x0 = cx + (i / 6 - 0.5) * S * 0.075, y0 = base - H * 0.87;
+    const x1 = x0 + Math.cos(a) * S * 0.10, y1 = y0 + Math.sin(a) * S * 0.10;
+    c.lineWidth = S * 0.016;
+    c.beginPath(); c.moveTo(x0, y0); c.lineTo(x1, y1); c.stroke();
+    c.lineWidth = S * 0.008;                                 /* twiglets */
+    for (const d of [-0.4, 0.35]) {
+      c.beginPath(); c.moveTo(x1, y1); c.lineTo(x1 + Math.cos(a + d) * S * 0.05, y1 + Math.sin(a + d) * S * 0.05); c.stroke();
+    }
+    tips.push([x1, y1]);
+  }
+  for (const [tx2, ty2] of tips) {                           /* sparse leaf tufts */
+    for (let k = 0; k < 5; k++) {
+      c.fillStyle = k % 2 ? 'rgba(104,140,78,0.85)' : 'rgba(78,110,58,0.85)';
+      c.beginPath(); c.ellipse(tx2 + (r() - 0.5) * S * 0.05, ty2 - S * 0.015 + (r() - 0.5) * S * 0.03, S * 0.022, S * 0.012, r() * 3, 0, TAU); c.fill();
+    }
+  }
+  for (let i = 0; i < 3; i++) {                              /* pods dangling on long stalks */
+    const [tx2, ty2] = tips[1 + i * 2]!;
+    c.strokeStyle = '#7a6a56'; c.lineWidth = 1.6;
+    c.beginPath(); c.moveTo(tx2, ty2); c.lineTo(tx2 + S * 0.008, ty2 + S * 0.075); c.stroke();
+    c.fillStyle = '#9a8a5a';
+    c.beginPath(); c.ellipse(tx2 + S * 0.008, ty2 + S * 0.09, S * 0.014, S * 0.022, 0.1, 0, TAU); c.fill();
+  }
+}
+
+/* ★ GOLD AUDIT — DESERT ROSE (Adenium): "hugely swollen bulbous grey caudex
+   base, few thick stubby branches, leaves and showy flowers only at the ends".
+   The old cactus-ish blob was the wrong growth form entirely. */
+export function floraDesertRose(c: Ctx, g: G): void {
+  const r = mulberry32(((g.seed as number) ^ 0xDE5E27) >>> 0);
+  const cx = S * 0.5, base = S * 0.80;
+  c.fillStyle = 'rgba(0,0,0,0.40)'; c.beginPath(); c.ellipse(cx, base + S * 0.012, S * 0.17, S * 0.026, 0, 0, TAU); c.fill();
+  const cg2 = c.createRadialGradient(cx - S * 0.05, base - S * 0.10, 4, cx, base - S * 0.08, S * 0.22);
+  cg2.addColorStop(0, '#b8b0a2'); cg2.addColorStop(0.6, '#948c7e'); cg2.addColorStop(1, '#6a6458');
+  c.fillStyle = cg2;
+  c.beginPath();                                   /* the bulbous caudex */
+  c.moveTo(cx - S * 0.135, base);
+  c.bezierCurveTo(cx - S * 0.185, base - S * 0.14, cx - S * 0.10, base - S * 0.235, cx - S * 0.035, base - S * 0.26);
+  c.bezierCurveTo(cx + S * 0.02, base - S * 0.275, cx + S * 0.14, base - S * 0.20, cx + S * 0.135, base - S * 0.09);
+  c.quadraticCurveTo(cx + S * 0.145, base - S * 0.03, cx + S * 0.125, base);
+  c.closePath(); c.fill();
+  const arms: Array<[number, number, number]> = [];
+  c.strokeStyle = '#8a8274'; c.lineCap = 'round';           /* stubby tapering branches */
+  for (let i = 0; i < 4; i++) {
+    const t = (i / 3) - 0.5;
+    const x0 = cx + t * S * 0.10, y0 = base - S * 0.24;
+    const x1 = x0 + t * S * 0.14, y1 = y0 - S * (0.13 + r() * 0.05);
+    c.lineWidth = S * 0.024;
+    c.beginPath(); c.moveTo(x0, y0); c.quadraticCurveTo(x0 + t * S * 0.04, y0 - S * 0.09, x1, y1); c.stroke();
+    arms.push([x1, y1, t]);
+  }
+  for (const [ax2, ay2] of arms) {                          /* leaves ONLY at the tips */
+    for (let k = 0; k < 4; k++) {
+      c.fillStyle = 'rgba(74,120,62,0.9)';
+      c.save(); c.translate(ax2 + (r() - 0.5) * S * 0.03, ay2 - S * 0.008 + (r() - 0.5) * S * 0.02);
+      c.rotate(r() * 3); c.beginPath(); c.ellipse(0, 0, S * 0.022, S * 0.009, 0, 0, TAU); c.fill(); c.restore();
+    }
+    for (let k = 0; k < 2; k++) {                           /* the showy pink flowers */
+      const fx2 = ax2 + (r() - 0.5) * S * 0.045, fy2 = ay2 - S * 0.03 - r() * S * 0.02;
+      for (let pt = 0; pt < 5; pt++) {
+        const a = (pt / 5) * TAU + r() * 0.2;
+        const pg2 = c.createRadialGradient(fx2, fy2, 1, fx2 + Math.cos(a) * S * 0.016, fy2 + Math.sin(a) * S * 0.016, S * 0.018);
+        pg2.addColorStop(0, '#f4e6ea'); pg2.addColorStop(1, '#d8506a');
+        c.fillStyle = pg2;
+        c.beginPath(); c.ellipse(fx2 + Math.cos(a) * S * 0.014, fy2 + Math.sin(a) * S * 0.014, S * 0.013, S * 0.008, a, 0, TAU); c.fill();
+      }
+      c.fillStyle = '#f0e0d0'; c.beginPath(); c.arc(fx2, fy2, S * 0.005, 0, TAU); c.fill();
+    }
+  }
+}
+
 /** iconic plants with bespoke bodies (Blocker 5) */
 export const FLORA_ICONIC: Record<string, FloraPainter> = {
+  'Baobab': (c, g) => floraBaobab(c, g),
+  'Desert Rose': (c, g) => floraDesertRose(c, g),
   'Rafflesia': (c, g) => floraRafflesia(c, g),
   'Lichen': (c, g) => floraLichen(c, g),
   'Pineapple': (c, g) => floraPineapple(c, g),

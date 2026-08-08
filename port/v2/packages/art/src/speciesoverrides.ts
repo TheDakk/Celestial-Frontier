@@ -949,6 +949,22 @@ export const OVERRIDE_COUNT = new Set([...Object.keys(FUNGI_NAME), ...Object.key
    Returns null — i.e. falls through to the verbatim engine — for the body
    plans with no Earth analogue, which the verbatim engine draws better than
    a forced mapping would (D-ART-14 applied to a whole rendering path). */
+/* value-lift a palette by k, hue preserved — see the GOLD AUDIT floor below */
+function liftPal(p: Pal, k: number): Pal {
+  const sc = (s: string): string => {
+    const m = s.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+    if (m) return `rgb(${Math.min(255, +m[1]! * k | 0)},${Math.min(255, +m[2]! * k | 0)},${Math.min(255, +m[3]! * k | 0)})`;
+    const h = s.match(/^#([0-9a-fA-F]{6})$/);
+    if (h) {
+      const v = parseInt(h[1]!, 16);
+      return `rgb(${Math.min(255, ((v >> 16) & 255) * k | 0)},${Math.min(255, ((v >> 8) & 255) * k | 0)},${Math.min(255, (v & 255) * k | 0)})`;
+    }
+    return s;
+  };
+  return { ...p, base: sc(p.base), lit: sc(p.lit), dark: sc(p.dark),
+    cr: Math.min(255, p.cr * k), cg: Math.min(255, p.cg * k), cb: Math.min(255, p.cb * k) };
+}
+
 export function resolveProcedural(g: G): string | null {
   /* ★ WAVE 17 — THE LAST MONO-TEMPLATE (Nick's audit §12/§13, for the
      PROCEDURAL spread). Wave 1 gave the NAMED fungi and microbes structural
@@ -1002,7 +1018,14 @@ export function resolveProcedural(g: G): string | null {
   }
   const plan = planFor(g as Record<string, unknown>);
   if (!plan) return null;
-  const pal = palette(g) as Pal;
+  /* ★ GOLD AUDIT — "one very dark fauna phenotype where the head/appendage
+     attachments become hard to read" (found: a near-black purple hexapod).
+     Procedural subjects get a VALUE FLOOR: a palette whose base luminance
+     falls below ~56 is lifted proportionally, hue preserved. Scoped HERE on
+     purpose — an Earth black wolf keeps its darkness (D-ART-141). */
+  const pal0 = palette(g) as Pal;
+  const lum0 = pal0.cr * 0.299 + pal0.cg * 0.587 + pal0.cb * 0.114;
+  const pal = lum0 < 56 ? liftPal(pal0, 56 / Math.max(18, lum0)) : pal0;
   const isFlora = plan.kind === 'plant';
   const { cv, c } = newCanvas();
   vignette(c, false);
