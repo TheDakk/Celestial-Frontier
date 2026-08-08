@@ -89,7 +89,10 @@ export interface PlantSpec {
        (gp5). 'grain' = the dense awned ear (wheat/barley/rye); 'panicle' = a
        loose nodding open spray (oats/rice); 'club' = a dense bristly cylinder
        (millet/sorghum). */
-    | 'panicle' | 'club';
+    | 'panicle' | 'club'
+    /* ★ GOLD AUDIT — the devil's claw pod: a woody capsule with two long
+       recurved grappling hooks, the single thing that names the plant */
+    | 'clawpod';
   fhue?: string;      /** flower/fruit colour where colour IS the identity */
   hue?: string;       /** FOLIAGE colour — the body of the plant, not its fruit */
   /* ★ D-ART-125 — BARK. `hue` colours the foliage and the trunk took it too,
@@ -136,6 +139,8 @@ export interface PlantSpec {
   /** slender beaked seed pods (siliques) up-and-out along the upper stem — the
       other half of a brassica's read alongside the four-petal cross flower */
   pods?: boolean;
+  /** ★ GOLD AUDIT — the peanut: pods half-buried at the soil line */
+  groundFruit?: boolean;
   /** drooping catkin-like flower strings hanging from the upper leaf axils —
       the nettle's inconspicuous green tassels */
   tassel?: boolean;
@@ -417,6 +422,19 @@ function drawFruit(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNul
     c.strokeStyle = 'rgba(30,26,12,0.35)'; c.lineWidth = 1.6;
     for (let i = -2; i <= 2; i++) { c.beginPath(); c.arc(i * R * 0.4, 0, R * 0.16, 0, TAU); c.stroke(); }
     c.restore();
+  } else if (kind === 'clawpod') {
+    /* the woody body, then TWO long recurved hooks arcing up and back */
+    c.fillStyle = shade(x, y, R * 0.7);
+    c.save(); c.translate(x, y); c.rotate(0.25);
+    c.beginPath(); c.ellipse(0, 0, R * 0.85, R * 0.34, 0, 0, TAU); c.fill();
+    c.restore();
+    c.strokeStyle = '#4a3a26'; c.lineWidth = Math.max(1.6, R * 0.14); c.lineCap = 'round';
+    for (const s of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(x + R * 0.7, y - R * 0.1);
+      c.bezierCurveTo(x + R * (1.6 + s * 0.15), y - R * (0.9 + s * 0.25),
+        x + R * (1.2 + s * 0.5), y - R * (1.9 + s * 0.2), x + R * (0.3 + s * 0.55), y - R * (1.55 + s * 0.30));
+      c.stroke();
+    }
   } else if (kind === 'nut') {
     c.fillStyle = shade(x, y, R * 0.7);
     c.beginPath(); c.ellipse(x, y, R * 0.62, R * 0.72, 0, 0, TAU); c.fill();
@@ -1127,6 +1145,20 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
           c.fillStyle = gg2; c.beginPath(); c.arc(bx2, by2, S * 0.013, 0, TAU); c.fill();
         }
       }
+    } else if (spec.fruit === 'pod') {
+      /* ★ GOLD AUDIT — ORCHID PODS: clusters of LONG bean-like green pods
+         hanging together from the vine nodes, not one hidden blob */
+      for (const i of [10, 17]) {
+        const [sx, sy] = pts[i]!;
+        c.lineCap = 'round';
+        for (let k = -1; k <= 1; k++) {
+          c.strokeStyle = k ? (spec.fhue ?? '#5a7a3c') : '#4a6a30';
+          c.lineWidth = S * 0.011;
+          c.beginPath(); c.moveTo(sx, sy);
+          c.quadraticCurveTo(sx + k * S * 0.013, sy + S * 0.05, sx + k * S * 0.020, sy + S * 0.088 - Math.abs(k) * S * 0.012);
+          c.stroke();
+        }
+      }
     } else if (spec.fruit && spec.fruit !== 'none') {
       /* ★ a vine's fruit HANGS. Black Pepper's pendulous spike is what tells
          it from every other heart-leaved climber — and it was drawing one
@@ -1473,6 +1505,44 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
        a herb can actually be, and puts its flowers where its architecture puts
        them. Defaults reproduce the old drawing exactly. */
     const arch = spec.stem ?? 'leafy';
+    if (spec.groundFruit && spec.fruit) {
+      /* ★ GOLD AUDIT — PEANUT: the pods sit half-buried AT THE SOIL LINE,
+         drawn first so the stems overlay them */
+      for (let i = 0; i < 4; i++) {
+        const px = cx + (i - 1.5) * S * 0.055 + (nvf(name, 0x71 + i, 0.5) - 1) * S * 0.02;
+        c.fillStyle = i % 2 ? (spec.fhue ?? '#c8a870') : '#b8975c';
+        c.beginPath(); c.ellipse(px, base + S * 0.010, S * 0.018, S * 0.010, 0.2, 0, TAU); c.fill();
+        c.strokeStyle = 'rgba(120,90,50,0.55)'; c.lineWidth = 1.2;
+        c.beginPath(); c.ellipse(px, base + S * 0.010, S * 0.018, S * 0.010, 0.2, 0, TAU); c.stroke();
+        c.beginPath(); c.moveTo(px, base + S * 0.002); c.lineTo(px, base + S * 0.018); c.stroke();   /* the waist */
+      }
+    }
+    if (spec.leaf === 'perfoliate') {
+      /* ★ GOLD AUDIT — MINER'S LETTUCE: each slender stem ends in ONE round
+         saucer pierced by the stem, tiny white flowers standing up out of it.
+         The generic ladder stacked the saucers up a single stem — "vertical
+         stacked-disc form is wrong". */
+      for (let w = 0; w < 6; w++) {
+        const t = (w / 5) - 0.5;
+        const tipX = cx + t * S * 0.26 + lean * S * 0.03;
+        const tipY = base - H * (0.50 + (0.5 - Math.abs(t)) * 0.45);
+        c.strokeStyle = stemCol; c.lineWidth = S * 0.007; c.lineCap = 'round';
+        c.beginPath(); c.moveTo(cx + t * S * 0.03, base);
+        c.quadraticCurveTo(cx + t * S * 0.14, base - (base - tipY) * 0.5, tipX, tipY); c.stroke();
+        const pr = S * (0.040 + (nvf(name, 0x91 + w, 0.3) - 1) * 0.010);
+        c.fillStyle = leafGrad(c, p, tipX, tipY, pr);
+        c.beginPath(); c.ellipse(tipX, tipY, pr, pr * 0.55, t * 0.3, 0, TAU); c.fill();
+        c.strokeStyle = 'rgba(20,40,20,0.35)'; c.lineWidth = 1.4;
+        c.beginPath(); c.ellipse(tipX, tipY, pr, pr * 0.55, t * 0.3, 0, TAU); c.stroke();
+        c.strokeStyle = stemCol; c.lineWidth = S * 0.005;   /* the stem pierces on through */
+        c.beginPath(); c.moveTo(tipX, tipY); c.lineTo(tipX + S * 0.004, tipY - S * 0.034); c.stroke();
+        c.fillStyle = spec.fhue ?? '#f4f6ef';
+        for (let k = 0; k < 3; k++) {
+          c.beginPath(); c.arc(tipX + (k - 1) * S * 0.009, tipY - S * 0.036 - (k === 1 ? S * 0.006 : 0), S * 0.006, 0, TAU); c.fill();
+        }
+      }
+      return;
+    }
     if (arch === 'arch') {
       /* ★ WAVE 66 — SOLOMON'S SEAL: one cane rising then ARCHING over to the
          side; alternate leaves in one flat plane along its top; the bells
@@ -1635,7 +1705,12 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     }
     if (spec.fruit && spec.fruit !== 'none') {
       const wd = wands[0]!;
-      drawFruit(c, p, wd.tipX, base - (base - wd.tipY) * 0.92, S * 0.032, spec.fruit, spec.fhue, r);
+      if (spec.fruit === 'clawpod') {
+        /* ★ GOLD AUDIT — the grapnel pods lie ON THE GROUND beside the mat,
+           drawn BIG: the hooks are the whole reason the plant has its name */
+        drawFruit(c, p, cx + S * 0.20, base - S * 0.020, S * 0.052, 'clawpod', spec.fhue, r);
+        drawFruit(c, p, cx - S * 0.25, base - S * 0.016, S * 0.044, 'clawpod', spec.fhue, r);
+      } else drawFruit(c, p, wd.tipX, base - (base - wd.tipY) * 0.92, S * 0.032, spec.fruit, spec.fhue, r);
     }
     if (spec.pods) drawSiliques(c, p, cx, wands[0]!.tipX, base, wands[0]!.tipY, spec.fhue);
     if (spec.tassel) {

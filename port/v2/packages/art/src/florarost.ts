@@ -166,6 +166,8 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Amaranth': T({ hue: '#8c3f4a', habit: 'herb', leaf: 'broad', flower: 'spike', fhue: '#a82c50' }),
   'Quinoa': T({ hue: '#8e9251', habit: 'herb', leaf: 'palmate', flower: 'spike', fhue: '#c04a3a' }),
   'Bamboo Shoots': T({ hue: '#c2c07a', habit: 'cane', leaf: 'lance', tall: true }),
+  'Acai': T({ hue: '#6a8a52', habit: 'palm', leaf: 'frond', fruit: 'cluster', fhue: '#2c1c34', tall: true }),
+  "Devil's Club": T({ hue: '#4c7040', habit: 'shrub', leaf: 'palmate', flower: 'spike', fhue: '#c02420' }),
   'Papyrus': T({ hue: '#9c9053', habit: 'cane', leaf: 'frond', tall: true, flower: 'firework', fhue: '#a8b45e' }),
   'Papyrus Shoots': T({ hue: '#819746', habit: 'cane', leaf: 'frond' }),
   'Tussock Grass': T({ hue: '#a58a5a', habit: 'grass', leaf: 'blade' }),
@@ -206,7 +208,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Desert Melon': T({ hue: '#9ea67a', habit: 'vine', leaf: 'palmate', fruit: 'melon', fhue: '#a8b050', trail: true }),
   'Pigeon Pea': T({ hue: '#667e48', habit: 'shrub', leaf: 'pinnate', fruit: 'pod', fhue: '#8a9a3a' }),
   'Beach Pea': T({ hue: '#7d9b8f', habit: 'vine', leaf: 'pinnate', fruit: 'pod', fhue: '#7a8a4a' }),
-  'Peanut': T({ hue: '#5e9342', habit: 'herb', leaf: 'pinnate', fruit: 'nut', fhue: '#c8a870' }),
+  'Peanut': T({ hue: '#5e9342', habit: 'herb', stem: 'mat', leaf: 'pinnate', fruit: 'nut', groundFruit: true, flower: 'star', fhue: '#c8a870' }),
   'Castor Bean': T({ hue: '#7a4a3c', habit: 'shrub', leaf: 'palmate', fruit: 'pod', fhue: '#a83030', thorns: true }),
   /* ⚠ this was geometrically the SAME asset as Beach Morning Glory, tinted —
      a duplicate the look-alike gate cannot see because colour separates them.
@@ -331,7 +333,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Purple Saxifrage': T({ hue: '#4f6153', habit: 'rosette', leaf: 'scale', flower: 'star', fhue: '#a850c0', cushion: true }),
   'Steppe Tulip': T({ hue: '#889790', habit: 'herb', leaf: 'blade', flower: 'cup', fhue: '#d83a4a', flowerN: 1 }),
   'Vanilla Orchid': T({ hue: '#498a52', habit: 'vine', leaf: 'broad', flower: 'star', fhue: '#e8e0b8', rope: true, fruit: 'pod', pendulous: true }),
-  'Orchid Pods': T({ hue: '#598861', habit: 'herb', leaf: 'lance', fruit: 'pod', fhue: '#5a4a2c' }),
+  'Orchid Pods': T({ hue: '#598861', habit: 'vine', rope: true, leaf: 'lance', fruit: 'pod', fhue: '#5a7a3c' }),
   'Roselle': T({ hue: '#8a4438', habit: 'shrub', leaf: 'palmate', flower: 'head', fhue: '#c02c4a' }),
   'Daisy': T({ hue: '#639654', habit: 'herb', leaf: 'lance', flower: 'head', fhue: '#f4f2e8', leafArr: 'basal', stem: 'bare' }),
   /* ★ WAVE 18 — the last of the unrouted flora, each read off its own row */
@@ -339,7 +341,7 @@ export const FLORA2_SPEC: Record<string, PainterF> = {
   'Tree Tomato': T({ hue: '#5e5940', habit: 'tree', leaf: 'heart', fruit: 'berry', fhue: '#c8402a' }),
   "Solomon's Seal": T({ hue: '#6b936b', habit: 'herb', leaf: 'lance', flower: 'bell', fhue: '#f2f4ea', stem: 'arch' }),
   "Miner's Lettuce": T({ hue: '#8fc07e', habit: 'herb', leaf: 'perfoliate', flower: 'star', fhue: '#f4f6ef', leafArr: 'alternate', flowerN: 3 }),
-  "Devil's Claw": T({ hue: '#848c70', habit: 'herb', leaf: 'broad', fruit: 'pod', fhue: '#4a3a26' }),
+  "Devil's Claw": T({ hue: '#848c70', habit: 'herb', stem: 'mat', leaf: 'broad', fruit: 'clawpod', flower: 'trumpet', fhue: '#c06aa8' }),
   'Licorice Root': T({ hue: '#6b873f', habit: 'herb', leaf: 'pinnate', flower: 'spike', fhue: '#a9a6d8', root: 'taproot' }),
   'Pampas Herb': T({ hue: '#c2b48a', habit: 'grass', leaf: 'blade', fruit: 'club', fhue: '#f0ecdc', tall: true }),
   'Plantain Herb': T({ hue: '#698154', habit: 'rosette', leaf: 'lance', flower: 'spike', fhue: '#8f9a6a' }),
