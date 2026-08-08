@@ -72,7 +72,7 @@ export interface FishSpec {
   profile: 'fusiform' | 'deep' | 'eel' | 'globe' | 'box' | 'ribbon';
   len: number;        /** half-length as a fraction of S */
   depth: number;      /** half-height at the deepest point */
-  tail: 'forked' | 'lunate' | 'round' | 'point' | 'shark' | 'fan' | 'none';
+  tail: 'forked' | 'lunate' | 'round' | 'point' | 'shark' | 'fan' | 'none' | 'veil';
   snout: 'blunt' | 'jaw' | 'bill' | 'shovel' | 'tube' | 'hammer';
   dorsal: 'one' | 'sail' | 'two' | 'spiny' | 'none' | 'sharkfin';
   pattern?: 'bands' | 'stripes' | 'spots' | 'mottle' | 'clown';
@@ -188,7 +188,7 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
   /* and CLAMPED to the body it hangs off: a deep-bodied tang measured 3.35x
      its peduncle and grew a tail taller than the fish. A tail is never much
      bigger than the body that swings it. */
-  const th = Math.min(tRef * (spec.tail === 'lunate' ? 3.35 : spec.tail === 'fan' ? 2.55 : 2.15), maxH * 1.30);
+  const th = Math.min(tRef * (spec.tail === 'lunate' ? 3.35 : spec.tail === 'fan' ? 2.55 : spec.tail === 'veil' ? 2.4 : 2.15), maxH * 1.30);
   if (spec.tail === 'forked' || spec.tail === 'lunate') {
     c.beginPath();
     c.moveTo(ped + pedH * 0.4, cy);
@@ -211,6 +211,19 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     c.quadraticCurveTo(ped - tl * 1.20, cy - th * 0.92, ped - tl * 1.02, cy);
     c.quadraticCurveTo(ped - tl * 1.20, cy + th * 0.92, ped + pedH * 0.3, cy + tRef * 0.85);
     c.closePath(); c.fill();
+  } else if (spec.tail === 'veil') {
+    /* ★ POLISH — the GOLDFISH's flowing double tail: two overlapping soft
+       lobes trailing back and down like silk, each with its own droop. */
+    for (const [dy, k, alpha] of [[-0.15, 0.85, 0.75], [0.25, 1.0, 0.95]] as const) {
+      c.globalAlpha = alpha;
+      c.beginPath();
+      c.moveTo(ped + pedH * 0.3, cy + dy * th * 0.4);
+      c.quadraticCurveTo(ped - tl * 1.15 * k, cy + dy * th - th * 0.85 * k, ped - tl * 1.5 * k, cy + dy * th - th * 0.25 * k);
+      c.quadraticCurveTo(ped - tl * 1.05 * k, cy + dy * th + th * 0.15, ped - tl * 1.45 * k, cy + dy * th + th * 0.85 * k);
+      c.quadraticCurveTo(ped - tl * 0.5 * k, cy + dy * th + th * 0.45 * k, ped + pedH * 0.3, cy + dy * th * 0.6);
+      c.closePath(); c.fill();
+    }
+    c.globalAlpha = 1;
   } else if (spec.tail === 'point') {
     c.beginPath();
     c.moveTo(ped + pedH * 0.4, cy - pedH * 0.8);
@@ -874,7 +887,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Cold-Water Fish': F({ profile: 'fusiform', len: 0.21, depth: 0.070, tail: 'forked', snout: 'blunt', dorsal: 'one', hue: '#4f6b7e' }),
   /* ── freshwater ── */
   'Carp': F({ hue: '#96702a', profile: 'deep', len: 0.22, depth: 0.078, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
-  'Goldfish': F({ hue: '#ee7b18', profile: 'deep', len: 0.19, depth: 0.078, tail: 'fan', snout: 'blunt', dorsal: 'one' }),
+  'Goldfish': F({ hue: '#ee7b18', profile: 'deep', len: 0.19, depth: 0.078, tail: 'veil', snout: 'blunt', dorsal: 'one' }),
   'Tilapia': F({ hue: '#94907a', profile: 'deep', len: 0.20, depth: 0.082, tail: 'fan', snout: 'blunt', dorsal: 'spiny', pattern: 'bands' }),
   'Cichlid': F({ hue: '#2f7fbf', profile: 'deep', len: 0.19, depth: 0.082, tail: 'fan', snout: 'blunt', dorsal: 'sail', pattern: 'bands' }),
   'Perch': F({ hue: '#9fa32f', profile: 'deep', len: 0.21, depth: 0.075, tail: 'forked', snout: 'blunt', dorsal: 'spiny', pattern: 'bands' }),
