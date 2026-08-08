@@ -786,7 +786,12 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     c.beginPath(); c.moveTo(nose + depth * 0.10, cy + depth * 0.04);
     c.quadraticCurveTo(hxx - depth * k * 0.2, cy + depth * k * 0.55, hxx - depth * k * 1.05, cy + depth * k * 0.20);
     c.stroke();
-    /* THE FANGS — upper and lower, interlocking, past the lip line */
+    /* THE FANGS — upper and lower, interlocking, past the lip line.
+       ★ GOLD AUDIT round 3 — GATED ON `teeth` NOW: they drew for EVERY
+       bighead fish, which put sabre fangs on the Mahi-Mahi the moment it
+       took the axis for its forehead (his one REGRESSION; the D-ART-161
+       shape inverted — a feature UN-gated instead of gated off). */
+    if (spec.teeth) {
     c.fillStyle = '#f4f1e4';
     for (let i = 0; i < 6; i++) {
       const u = i / 5;
@@ -797,6 +802,7 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
       const L2 = L * 0.78;
       c.beginPath(); c.moveTo(x - depth * 0.10, cy + depth * k * 0.28);
       c.lineTo(x + depth * 0.02, cy + depth * k * 0.28 - L2); c.lineTo(x + depth * 0.14, cy + depth * k * 0.30); c.closePath(); c.fill();
+    }
     }
   }
 
@@ -886,7 +892,10 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Sardine': F({ hue: '#8a99a3', profile: 'fusiform', len: 0.20, depth: 0.055, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
   'Anchovy': F({ profile: 'fusiform', len: 0.21, depth: 0.038, tail: 'forked', snout: 'jaw', dorsal: 'one', hue: '#c3cfd9', pattern: 'stripes' }),
   'Herring': F({ profile: 'deep', len: 0.205, depth: 0.062, tail: 'forked', snout: 'blunt', dorsal: 'one', hue: '#b9cede' }),
-  'Mahi-Mahi': F({ hue: '#6cbf3f', profile: 'deep', len: 0.24, depth: 0.082, tail: 'lunate', snout: 'blunt', dorsal: 'sail', bighead: 1.35 }),
+  /* ★ GOLD AUDIT round 3 — bighead put FANGS on it (his one regression);
+     the steep forehead now comes from a deeper laterally-compressed body +
+     the blunt snout, fangless. */
+  'Mahi-Mahi': F({ hue: '#6cbf3f', profile: 'deep', len: 0.23, depth: 0.096, tail: 'lunate', snout: 'blunt', dorsal: 'sail' }),
   'Marlin': F({ hue: '#1f3b7a', profile: 'fusiform', len: 0.25, depth: 0.072, tail: 'lunate', snout: 'bill', dorsal: 'sail' }),
   'Sailfish': F({ hue: '#3a4c94', profile: 'fusiform', len: 0.25, depth: 0.068, tail: 'lunate', snout: 'bill', dorsal: 'sail', sailScale: 2.3 }),
   'Swordfish': F({ hue: '#57405a', profile: 'fusiform', len: 0.25, depth: 0.070, tail: 'lunate', snout: 'bill', dorsal: 'one' }),
@@ -983,12 +992,12 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   /* ── the deep: lures, photophores, teeth ── */
   'Anglerfish': F({ hue: '#201d1b', profile: 'globe', len: 0.16, depth: 0.078, tail: 'round', snout: 'jaw', dorsal: 'none', lure: true, teeth: true }),
   'Lanternfish': F({ hue: '#5f7590', profile: 'fusiform', len: 0.18, depth: 0.052, tail: 'forked', snout: 'blunt', dorsal: 'one', glow: true }),
-  'Viperfish': F({ hue: '#3d5566', profile: 'eel', len: 0.24, depth: 0.052, tail: 'forked', snout: 'jaw', dorsal: 'one', glow: true, bighead: 1.15 }),
-  'Fangtooth': F({ hue: '#513327', profile: 'deep', len: 0.155, depth: 0.072, tail: 'forked', snout: 'jaw', dorsal: 'one', bighead: 1.35 }),
+  'Viperfish': F({ hue: '#3d5566', profile: 'eel', len: 0.24, depth: 0.052, tail: 'forked', snout: 'jaw', dorsal: 'one', glow: true, bighead: 1.15, teeth: true }),
+  'Fangtooth': F({ hue: '#513327', profile: 'deep', len: 0.155, depth: 0.072, tail: 'forked', snout: 'jaw', dorsal: 'one', bighead: 1.35, teeth: true }),
   'Dragonfish': F({ hue: '#8a2230', profile: 'eel', len: 0.24, depth: 0.044, tail: 'point', snout: 'jaw', dorsal: 'none', glow: true, teeth: true }),
   'Barreleye': F({ hue: '#3f7a72', profile: 'fusiform', len: 0.18, depth: 0.062, tail: 'fan', snout: 'blunt', dorsal: 'one', glow: true, dome: true }),
   'Deep-Sea Fish': F({ hue: '#6e5563', profile: 'fusiform', len: 0.19, depth: 0.058, tail: 'forked', snout: 'jaw', dorsal: 'one', glow: true }),
-  'Monkfish': F({ hue: '#7d6a4e', profile: 'globe', len: 0.19, depth: 0.062, tail: 'round', snout: 'jaw', dorsal: 'none', lure: true, teeth: true, pattern: 'mottle', bighead: 1.7 }),
+  'Monkfish': F({ hue: '#7d6a4e', profile: 'globe', len: 0.21, depth: 0.075, tail: 'round', snout: 'jaw', dorsal: 'none', lure: true, teeth: true, pattern: 'mottle', bighead: 2.1, wings: 'fan' }),
   /* ── SHARKS: heterocercal tail, gill slits, swept pectorals ── */
   'Shark': F({ profile: 'fusiform', len: 0.25, depth: 0.057, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, hue: '#6e7a86' }),
   'Reef Shark': F({ hue: '#838d7e', profile: 'fusiform', len: 0.25, depth: 0.066, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true }),

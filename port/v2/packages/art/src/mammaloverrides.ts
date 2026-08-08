@@ -97,7 +97,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Kinkajou': { legs: 0.075, depth: 0.1095, len: 0.1437, neck: 0.05, carry: 0.35, tailScale: 1.5, muzzle: 0.30, ears: 'round', tail: 'long', hue: '#a06e3c', family: 'procyonid' },
   'Mole': { legs: 0.0295, depth: 0.0790, len: 0.1610, neck: 0.02, muzzle: 0.46, ears: 'tiny', tail: 'stub', hue: '#39322e', family: 'burrower', earShape: 'hidden', foot: 'claw' },
   'Hyrax': { legs: 0.0595, depth: 0.0899, len: 0.1474, neck: 0.03, back: 'arched', muzzle: 0.28, ears: 'round', tail: 'none', hue: '#8b7a63', family: 'rodent' },
-  'Aardvark': { legs: 0.088, depth: 0.1259, len: 0.222, neck: 0.06, carry: 0.35, back: 'roached', muzzle: 0.80, ears: 'huge', tail: 'long', hue: '#b09c85', family: 'burrower', earShape: 'leaf' },
+  'Aardvark': { legs: 0.088, depth: 0.1259, len: 0.222, neck: 0.06, carry: 0.35, back: 'roached', muzzle: 0.80, ears: 'huge', tail: 'paddle', tailScale: 1.25, mat: 'hide', hue: '#b09c85', family: 'burrower', earShape: 'leaf' },
   /* ── BEARS, PIGS, EQUIDS ── */
   'Spectacled Bear': { legs: 0.1111, depth: 0.1593, len: 0.1959, neck: 0.05, muzzle: 0.40, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'shaggy', face: 'tears', hue: '#3b332c', family: 'ursid' },
   'Wild Pig': { legs: 0.1014, depth: 0.1365, len: 0.2015, neck: 0.04, back: 'sloped', muzzle: 0.56, jaw: 'barrel', ears: 'large', tail: 'tuft', coat: 'shaggy', hue: '#6b5a49', family: 'suid' },

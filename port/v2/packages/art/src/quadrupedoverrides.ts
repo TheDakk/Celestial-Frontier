@@ -2063,8 +2063,18 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     /* a boar's tusks come out at the mouth corner and sweep up and back; an
        elephant's and a walrus's leave the front of the jaw and drop */
     const base = head.pt(horn === 'tuskup' ? 0.80 : 0.90, -0.62);
-    const w = headR * 0.12;
-    const L = headR * (horn === 'tuskup' ? 1.05 : 1.55);
+    /* ★ GOLD AUDIT round 3 — "tusks and warts too weak" on the warthog:
+       the boar tusk is now thicker and longer, and the warthog gets its
+       facial wart bumps beside the eye line. */
+    const w = headR * (horn === 'tuskup' ? 0.16 : 0.12);
+    const L = headR * (horn === 'tuskup' ? 1.35 : 1.55);
+    if (horn === 'tuskup' && name === 'Warthog') {
+      c.fillStyle = `rgb(${p.cr * 0.62 | 0},${p.cg * 0.62 | 0},${p.cb * 0.62 | 0})`;
+      for (const [u2, phi2, wr] of [[0.62, -0.30, 0.14], [0.50, -0.52, 0.11]] as const) {
+        const wp = head.pt(u2, phi2);
+        c.beginPath(); c.ellipse(wp[0], wp[1], headR * wr, headR * wr * 0.72, 0, 0, TAU); c.fill();
+      }
+    }
     for (const s of [-1, 1] as const) {
       const tx = base[0] + s * headR * 0.10, ty = base[1] + s * headR * 0.05;
       const m2 = s < 0 ? 0.80 : 1;   /* the far tusk sits behind and duller */
@@ -2475,7 +2485,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* ★ wave 35 — the warm brown half of the Caribou/Reindeer split; see Caribou */
   'Reindeer': { legs: 0.1782, depth: 0.1505, len: 0.1974, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#9c7548', family: 'cervid' },
   'Sheep': { legs: 0.1448, depth: 0.1548, len: 0.1777, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', hue: '#a98f6d', family: 'bovid' },
-  'Bison': { legs: 0.1211, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', coat: 'shaggy', horn: 'sweep', hue: '#5c4535', family: 'bovid' },
+  'Bison': { legs: 0.1211, depth: 0.1881, len: 0.2313, neck: 0.045, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', tailScale: 0.7, coat: 'shaggy', horn: 'shorthorn', hue: '#5c4535', family: 'bovid', carry: 0.15, chest: 1.0, rump: 0.32 },
   'Water Buffalo': { legs: 0.1249, depth: 0.1765, len: 0.246, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'sweep', hue: '#77736e', family: 'bovid' },
   /* bears, differentiated */
   'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636', family: 'ursid' },
@@ -2508,7 +2518,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* equines + swine */
   'Horse': { legs: 0.1964, depth: 0.166, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'flow', mane: 'crest', hue: '#8a5a35', family: 'equid' },
   'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e', family: 'suid', earShape: 'point' },
-  'Warthog': { legs: 0.1087, depth: 0.1405, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', mane: 'crestUp', hue: '#6b5647', family: 'suid', earShape: 'point' },
+  'Warthog': { legs: 0.1087, depth: 0.155, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.62, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', mane: 'crestUp', hue: '#6b5647', family: 'suid', earShape: 'point', carry: 0.20 },
   /* ★ wave 35 — a tapir is barrel-bodied like a suid, so it keeps that BODY;
      but the suid skull hard-wires the flat cartilage nose disc that is a pig's
      whole identity, and the reference row warns against it by name. It gets a

@@ -496,11 +496,14 @@ export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: 
          feet now fan RADIALLY (front pair up-forward, rear pair down-back);
          hairy/longleg/fused keep their judged-good geometry (D-ART-14). */
       const fan = !opts.hairy && !opts.longleg && !opts.fused;
-      const ex = ox + s * Math.cos(a) * reach;
-      const ey = fan ? cy + b * 1.0 + Math.sin(a) * reach * 0.55 : cy + b * 1.4 + i * b * 0.18;
+      /* round 3 — "make all eight countable": wider fan, alternating reach so
+         no two feet land together, thicker strokes */
+      const rch = fan ? reach * (1.0 + (i % 2) * 0.22) : reach;
+      const ex = ox + s * Math.cos(a) * rch;
+      const ey = fan ? cy + b * 1.0 + Math.sin(a) * rch * 0.72 : cy + b * 1.4 + i * b * 0.18;
       /* ★ WAVE 62 — a tarantula's legs are THICK AND FURRED; lineWidth 6 with
          five hair ticks read as "identical thin bare spider legs" (gp5). */
-      limb(c, ox, cy, ex, ey, kx, ky, opts.hairy ? 11 : (opts.longleg ? 2.6 : 4), p.dark);
+      limb(c, ox, cy, ex, ey, kx, ky, opts.hairy ? 11 : (opts.longleg ? 2.6 : 5), p.dark);
       if (opts.hairy) {
         c.strokeStyle = `rgba(${p.cr},${p.cg},${p.cb},0.85)`; c.lineWidth = 1.6;
         for (let k = 0; k < 14; k++) {   /* fur on BOTH leg segments, both sides */
