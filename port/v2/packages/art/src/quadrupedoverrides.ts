@@ -804,27 +804,32 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       const lum = p.cr * 0.299 + p.cg * 0.587 + p.cb * 0.114;
       const padK = lum > 92 ? 0.82 : 1.28;
       const toeK = lum > 92 ? 0.70 : 1.48;
+      /* round 3 — a high-crouch (felid) paw is proportionally BIGGER than a
+         canid's against its slim ankle; the extra width is what finally
+         separates "paw" from "hoof" on the small cats */
+      const legW0 = legW;
+      const legW2 = legW0 * (crouch > 0.9 ? 1.24 : 1);
       c.fillStyle = dark(padK);
-      c.beginPath(); c.ellipse(x, gy - legW * 0.22, legW * 1.06, legW * 0.44, 0, 0, TAU); c.fill();
+      c.beginPath(); c.ellipse(x, gy - legW2 * 0.22, legW2 * 1.06, legW2 * 0.44, 0, 0, TAU); c.fill();
       c.fillStyle = dark(toeK);
       for (let i = -1; i <= 1; i++) {
-        c.beginPath(); c.ellipse(x + i * legW * 0.44, gy - legW * 0.06, legW * 0.30, legW * 0.26, 0, 0, TAU); c.fill();
+        c.beginPath(); c.ellipse(x + i * legW2 * 0.44, gy - legW2 * 0.06, legW2 * 0.30, legW2 * 0.26, 0, 0, TAU); c.fill();
       }
       /* the creases BETWEEN the toes — a fan of three lobes only reads as toes
          if something separates them; without this it is one rounded cap */
       c.strokeStyle = `rgba(24,18,14,${0.55 * m})`;
-      c.lineWidth = Math.max(1, legW * 0.085); c.lineCap = 'round';
+      c.lineWidth = Math.max(1, legW2 * 0.085); c.lineCap = 'round';
       for (const s of [-1, 1] as const) {
         c.beginPath();
-        c.moveTo(x + s * legW * 0.22, gy - legW * 0.34);
-        c.lineTo(x + s * legW * 0.22, gy + legW * 0.02);
+        c.moveTo(x + s * legW2 * 0.22, gy - legW2 * 0.34);
+        c.lineTo(x + s * legW2 * 0.22, gy + legW2 * 0.02);
         c.stroke();
       }
       /* the claw ticks off each toe front */
-      c.strokeStyle = `rgba(30,24,18,${0.65 * m})`; c.lineWidth = Math.max(1, legW * 0.07);
+      c.strokeStyle = `rgba(30,24,18,${0.65 * m})`; c.lineWidth = Math.max(1, legW2 * 0.07);
       for (let i = -1; i <= 1; i++) {
-        c.beginPath(); c.moveTo(x + i * legW * 0.44 - legW * 0.24, gy - legW * 0.02);
-        c.lineTo(x + i * legW * 0.44 - legW * 0.34, gy + legW * 0.06); c.stroke();
+        c.beginPath(); c.moveTo(x + i * legW2 * 0.44 - legW2 * 0.24, gy - legW2 * 0.02);
+        c.lineTo(x + i * legW2 * 0.44 - legW2 * 0.34, gy + legW2 * 0.06); c.stroke();
       }
     } else if (foot === 'plantigrade') {
       /* a bear puts its heel down: a long sole with claws at the front */
@@ -1786,8 +1791,15 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.fillStyle = '#15181e';
     for (const s of [-1, 1] as const) { c.beginPath(); c.ellipse(headX - headR * 0.2 + s * headR * 0.42, headY - headR * 0.12, headR * 0.30, headR * 0.24, s * 0.4, 0, TAU); c.fill(); }
   } else if (spec.face === 'tears') {   /* cheetah tear lines */
-    c.strokeStyle = 'rgba(22,16,10,0.8)'; c.lineWidth = 3;
-    c.beginPath(); c.moveTo(headX + headR * 0.05, headY - headR * 0.05); c.quadraticCurveTo(headX + headR * 0.5, headY + headR * 0.3, headX + headR * 0.85, headY + headR * 0.35); c.stroke();
+    /* ★ GOLD AUDIT round 3 — one 3px stroke vanished at card scale; the tear
+       mark is now a HEAVY black line from the eye's inner corner down the
+       muzzle to the lip, doubled with a fainter outer track. */
+    c.strokeStyle = 'rgba(18,13,9,0.92)'; c.lineWidth = Math.max(3, headR * 0.11); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(headX + headR * 0.02, headY - headR * 0.08);
+    c.quadraticCurveTo(headX + headR * 0.38, headY + headR * 0.28, headX + headR * 0.80, headY + headR * 0.38); c.stroke();
+    c.strokeStyle = 'rgba(22,16,10,0.55)'; c.lineWidth = Math.max(2, headR * 0.06);
+    c.beginPath(); c.moveTo(headX - headR * 0.10, headY - headR * 0.02);
+    c.quadraticCurveTo(headX + headR * 0.24, headY + headR * 0.36, headX + headR * 0.62, headY + headR * 0.48); c.stroke();
   }
   /* the eye, last so it always reads — and an alien eye is the single most
      alien thing a face can do, so it routes here rather than replacing the head */
@@ -2464,9 +2476,9 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
      as long as the body it steers. Those four numbers are the animal, and the
      felid plan alone could never reach them because the felid plan describes a
      leopard. */
-  'Cheetah': { legs: 0.1938, depth: 0.1050, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 0.95, rump: 0.52, tailScale: 1.9 , legMarks: true },
+  'Cheetah': { back: 'arched', legs: 0.1938, depth: 0.1050, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 0.95, rump: 0.52, tailScale: 1.9 , legMarks: true },
   'Cougar': { legs: 0.1482, depth: 0.1120, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid', tailScale: 1.7, tailTip: '#241f1d' },
-  'Lynx': { legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft' },
+  'Lynx': { back: 'arched', legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft' },
   /* the pixel-siblings, separated */
   'Rhinoceros': { legs: 0.0835, depth: 0.1886, len: 0.263, neck: 0.045, muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#8b8b8e', family: 'pachyderm' },
   'Wild Sheep': { legs: 0.1345, depth: 0.1529, len: 0.1881, neck: 0.075, muzzle: 0.35, ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#9d8a6e', family: 'bovid' },

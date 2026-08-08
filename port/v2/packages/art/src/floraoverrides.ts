@@ -373,10 +373,74 @@ export function floraDesertRose(c: Ctx, g: G): void {
   }
 }
 
+/* ★ GOLD AUDIT round 3 — DEVIL'S CLUB: "should be dominated by very large
+   palmate maple-like leaves on spiny stems" — the shrub row read as a narrow
+   leafy bush. Bespoke: thick spined canes under HUGE lobed hand-leaves, the
+   red berry cone standing above them. */
+export function floraDevilsClub(c: Ctx, g: G): void {
+  const r = mulberry32(((g.seed as number) ^ 0xDEC1B) >>> 0);
+  const cx = S * 0.5, base = S * 0.80, H = S * 0.46;
+  c.fillStyle = 'rgba(0,0,0,0.40)'; c.beginPath(); c.ellipse(cx, base + S * 0.012, S * 0.19, S * 0.026, 0, 0, TAU); c.fill();
+  const canes: Array<[number, number]> = [];
+  for (const t of [-1, 0, 1]) {                       /* thick crooked canes */
+    const x1 = cx + t * S * 0.10, y1 = base - H * (0.62 + r() * 0.12);
+    c.strokeStyle = '#8a7a5a'; c.lineWidth = S * 0.020; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx + t * S * 0.035, base);
+    c.quadraticCurveTo(cx + t * S * 0.09, base - H * 0.35, x1, y1); c.stroke();
+    c.strokeStyle = '#e8d89a'; c.lineWidth = 1.5;     /* the yellow needle spines */
+    for (let k = 0; k < 12; k++) {
+      const v = 0.12 + (k / 12) * 0.8;
+      const sx2 = cx + t * S * 0.035 + (x1 - cx - t * S * 0.035) * v, sy2 = base - (base - y1) * v;
+      const sgn = k % 2 ? 1 : -1;
+      c.beginPath(); c.moveTo(sx2, sy2); c.lineTo(sx2 + sgn * S * 0.014, sy2 - S * 0.004); c.stroke();
+    }
+    canes.push([x1, y1]);
+  }
+  for (const [lx, ly] of canes) {                     /* HUGE palmate hand-leaves */
+    for (let k = 0; k < 2; k++) {
+      const ang = -Math.PI / 2 + (k - 0.5) * 1.1 + (r() - 0.5) * 0.3;
+      const LR = S * (0.115 + r() * 0.03);
+      const gx = lx + Math.cos(ang) * LR * 0.5, gy2 = ly + Math.sin(ang) * LR * 0.5 - S * 0.01;
+      const lg2 = c.createRadialGradient(gx, gy2, 2, gx, gy2, LR);
+      lg2.addColorStop(0, '#5f8a48'); lg2.addColorStop(1, '#38542c');
+      c.fillStyle = lg2;
+      c.beginPath();                                  /* 7 pointed lobes around a fan */
+      c.moveTo(lx, ly);
+      for (let lo = 0; lo <= 7; lo++) {
+        const la = ang - 1.15 + (lo / 7) * 2.3;
+        const tipR = LR * (lo % 2 ? 0.60 : 1.0);      /* alternate notch/point */
+        c.lineTo(lx + Math.cos(la) * tipR, ly + Math.sin(la) * tipR);
+      }
+      c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(28,44,24,0.45)'; c.lineWidth = 1.4;   /* the veins */
+      for (let lo = 0; lo <= 3; lo++) {
+        const la = ang - 0.9 + (lo / 3) * 1.8;
+        c.beginPath(); c.moveTo(lx, ly); c.lineTo(lx + Math.cos(la) * LR * 0.9, ly + Math.sin(la) * LR * 0.9); c.stroke();
+      }
+    }
+  }
+  {                                                    /* the red berry CONE above */
+    const [tx2, ty2] = canes[1]!;
+    const coneY = ty2 - S * 0.115;
+    c.strokeStyle = '#7a8a5a'; c.lineWidth = S * 0.008;
+    c.beginPath(); c.moveTo(tx2, ty2); c.lineTo(tx2, coneY + S * 0.02); c.stroke();
+    for (let row = 0; row < 5; row++) {
+      const nb = 5 - row, by2 = coneY + S * 0.012 + row * -S * 0.016;
+      for (let k2 = 0; k2 < nb; k2++) {
+        const bx2 = tx2 + (k2 - (nb - 1) / 2) * S * 0.014;
+        const bg3 = c.createRadialGradient(bx2 - 1.5, by2 - 1.5, 0.5, bx2, by2, S * 0.008);
+        bg3.addColorStop(0, '#f06a50'); bg3.addColorStop(1, '#9a1c14');
+        c.fillStyle = bg3; c.beginPath(); c.arc(bx2, by2, S * 0.0075, 0, TAU); c.fill();
+      }
+    }
+  }
+}
+
 /** iconic plants with bespoke bodies (Blocker 5) */
 export const FLORA_ICONIC: Record<string, FloraPainter> = {
   'Baobab': (c, g) => floraBaobab(c, g),
   'Desert Rose': (c, g) => floraDesertRose(c, g),
+  "Devil's Club": (c, g) => floraDevilsClub(c, g),
   'Rafflesia': (c, g) => floraRafflesia(c, g),
   'Lichen': (c, g) => floraLichen(c, g),
   'Pineapple': (c, g) => floraPineapple(c, g),

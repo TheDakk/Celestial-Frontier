@@ -1364,28 +1364,57 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
         c.stroke();
       }
     } else if (spec.leaf === 'lance') {
-      /* ★ GOLD AUDIT — SARGASSUM: branching fronds carrying many small
-         leaf-blades and round GAS BLADDERS, not a bundle of rods. */
+      /* ★ GOLD AUDIT round 3 — SARGASSUM densified: "still reads as sparse
+         upright twigs". Six ARCHING fronds, a leaflet + bladder at EVERY
+         node, so the mass reads as a bushy weed, not twigs. */
       holdfast(c, cx, base, barkCol);
-      for (let f = 0; f < 4; f++) {
-        const u = (f / 3) - 0.5;
-        const sway = u * S * 0.20 * spread;
-        const topF = 0.68 + r() * 0.28;
+      for (let f = 0; f < 6; f++) {
+        const u = (f / 5) - 0.5;
+        const sway = u * S * 0.26 * spread;
+        const topF = 0.55 + r() * 0.30;
         c.strokeStyle = f % 2 ? p.base : p.dark; c.lineWidth = S * 0.009; c.lineCap = 'round';
         c.beginPath(); c.moveTo(cx + u * S * 0.03, base);
-        c.bezierCurveTo(cx + sway * 0.4, base - H * 0.35, cx + sway * 1.1, base - H * 0.65, cx + sway, base - H * topF);
+        c.bezierCurveTo(cx + sway * 0.4, base - H * 0.35, cx + sway * 1.3, base - H * 0.60, cx + sway * 1.5, base - H * topF);
         c.stroke();
-        for (let k2 = 1; k2 <= 6; k2++) {   /* leaflets + bladders up the frond */
-          const v = k2 / 7, mx = cx + u * S * 0.03 + sway * v * 0.95, my = base - H * topF * v;
+        for (let k2 = 1; k2 <= 9; k2++) {   /* a leaflet AND a bladder at every node */
+          const v = k2 / 10, mx = cx + u * S * 0.03 + sway * 1.35 * v, my = base - H * topF * v * (1.02 - v * 0.10);
           const la = (k2 % 2 ? 1 : -1) * 0.9 - Math.PI / 2;
-          drawLeaf(c, p, mx + Math.cos(la) * S * 0.016, my + Math.sin(la) * S * 0.012, la, S * 0.035, 'lance');
-          if (k2 % 2 === 0) {   /* the round float */
-            c.fillStyle = p.lit;
-            c.beginPath(); c.arc(mx - Math.cos(la) * S * 0.014, my, S * 0.011, 0, TAU); c.fill();
-            c.strokeStyle = 'rgba(60,48,20,0.5)'; c.lineWidth = 1;
-            c.beginPath(); c.arc(mx - Math.cos(la) * S * 0.014, my, S * 0.011, 0, TAU); c.stroke();
-            c.strokeStyle = f % 2 ? p.base : p.dark; c.lineWidth = S * 0.009;
-          }
+          drawLeaf(c, p, mx + Math.cos(la) * S * 0.016, my + Math.sin(la) * S * 0.012, la, S * 0.038, 'lance');
+          c.fillStyle = p.lit;
+          c.beginPath(); c.arc(mx - Math.cos(la) * S * 0.012, my, S * 0.010, 0, TAU); c.fill();
+          c.strokeStyle = 'rgba(60,48,20,0.5)'; c.lineWidth = 1;
+          c.beginPath(); c.arc(mx - Math.cos(la) * S * 0.012, my, S * 0.010, 0, TAU); c.stroke();
+          c.strokeStyle = f % 2 ? p.base : p.dark; c.lineWidth = S * 0.009;
+        }
+      }
+    } else if (spec.leaf === 'blade' && spec.tall) {
+      /* ★ GOLD AUDIT round 3 — KELP/GIANT KELP: "still a vertical bundle of
+         narrow rods". Each frond is now ONE sinuous filled RIBBON tapering
+         off a thin stipe, with pneumatocysts at the thirds. Gated on `tall`
+         so Seagrass keeps its thin straps. */
+      holdfast(c, cx, base, barkCol);
+      for (let f = 0; f < 5; f++) {
+        const t = (f / 4) - 0.5;
+        const topF = 0.76 + r() * 0.22;
+        const sway = t * S * 0.22 * spread;
+        const P = (v: number): [number, number] => [
+          cx + t * S * 0.02 + sway * v + Math.sin(v * 5.5 + f * 1.7) * S * 0.038 * v,
+          base - H * topF * v];
+        const W = (v: number): number => S * (0.005 + 0.028 * Math.sin(Math.min(1, v * 1.15) * Math.PI));
+        c.fillStyle = f % 2 ? p.base : p.dark;
+        c.beginPath();
+        for (let k2 = 0; k2 <= 16; k2++) { const v = k2 / 16; const [px2, py2] = P(v); if (k2) c.lineTo(px2 - W(v), py2); else c.moveTo(px2 - W(v), py2); }
+        for (let k2 = 16; k2 >= 0; k2--) { const v = k2 / 16; const [px2, py2] = P(v); c.lineTo(px2 + W(v), py2); }
+        c.closePath(); c.fill();
+        c.strokeStyle = 'rgba(255,255,255,0.14)'; c.lineWidth = S * 0.006;   /* wet sheen */
+        c.beginPath();
+        for (let k2 = 0; k2 <= 16; k2++) { const v = k2 / 16; const [px2, py2] = P(v); if (k2) c.lineTo(px2, py2); else c.moveTo(px2, py2); }
+        c.stroke();
+        for (const v of [0.34, 0.62, 0.88]) {   /* the gas bladders */
+          const [px2, py2] = P(v);
+          c.fillStyle = p.lit; c.beginPath(); c.arc(px2, py2, S * 0.012, 0, TAU); c.fill();
+          c.strokeStyle = 'rgba(60,48,20,0.5)'; c.lineWidth = 1;
+          c.beginPath(); c.arc(px2, py2, S * 0.012, 0, TAU); c.stroke();
         }
       }
     } else {

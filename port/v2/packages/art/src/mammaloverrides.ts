@@ -54,11 +54,11 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Dingo': { legs: 0.1563, depth: 0.1090, len: 0.1733, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#c08b4c', family: 'canid' , tailTip: '#efeae0' },
   'Dog': { hue: '#a9743f', legs: 0.1423, depth: 0.1325, len: 0.163, neck: 0.07, muzzle: 0.44, ears: 'large', tail: 'bushy', family: 'canid' },
   /* ── FELIDS: short muzzle, round ear, long tail; rosettes where they belong ── */
-  'Bobcat': { legs: 0.1268, depth: 0.114, len: 0.1776, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'stub', coat: 'spots', hue: '#c39a63', family: 'felid', earShape: 'tuft' },
-  'Caracal': { legs: 0.1413, depth: 0.1144, len: 0.1783, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'long', hue: '#c08e58', family: 'felid', earShape: 'tuft', earScale: 1.50 },
+  'Bobcat': { back: 'arched', legs: 0.1268, depth: 0.114, len: 0.1776, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'stub', coat: 'spots', hue: '#c39a63', family: 'felid', earShape: 'tuft' },
+  'Caracal': { back: 'arched', legs: 0.1413, depth: 0.1144, len: 0.1783, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'long', hue: '#c08e58', family: 'felid', earShape: 'tuft', earScale: 1.50 },
   'Serval': { legs: 0.1702, depth: 0.1141, len: 0.1684, neck: 0.07, muzzle: 0.28, ears: 'large', tail: 'long', coat: 'spots', hue: '#d0a45c', family: 'felid', earShape: 'leaf', earScale: 1.45 , legMarks: true },
-  'Ocelot': { legs: 0.1202, depth: 0.1088, len: 0.1874, neck: 0.06, muzzle: 0.28, ears: 'round', tail: 'long', tailScale: 1.4, coat: 'rosettes', hue: '#c79a5c', family: 'felid' , legMarks: true },
-  'Clouded Leopard': { legs: 0.1118, depth: 0.1126, len: 0.2124, neck: 0.06, muzzle: 0.30, ears: 'round', tail: 'long', tailScale: 1.75, coat: 'rosettes', hue: '#b8975f', family: 'felid' , legMarks: true },
+  'Ocelot': { back: 'arched', legs: 0.1202, depth: 0.1088, len: 0.1874, neck: 0.06, muzzle: 0.28, ears: 'round', tail: 'long', tailScale: 1.4, coat: 'rosettes', hue: '#c79a5c', family: 'felid' , legMarks: true },
+  'Clouded Leopard': { back: 'arched', legs: 0.1118, depth: 0.1126, len: 0.2124, neck: 0.06, muzzle: 0.30, ears: 'round', tail: 'long', tailScale: 1.75, coat: 'blotches', hue: '#b8975f', family: 'felid' , legMarks: true },
   /* ★ wave 52 — separated from 'Cat', which artlock put at 1.41 once both got
      a haunch. They were near-identical on the axes that matter and the fix is
      its own reference row, not a smaller haunch (D-ART-83). The row asks for
@@ -68,8 +68,8 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      blunt tail with "a black tip" that had no `tailTip` at all. */
   'Wildcat': { legs: 0.1060, depth: 0.1120, len: 0.172, neck: 0.06, muzzle: 0.28, jaw: 'broad', ears: 'round', tail: 'banded', tailTip: '#1d1916', coat: 'stripes', hue: '#a09077', family: 'felid' },
   'Sand Cat': { legs: 0.1046, depth: 0.1025, len: 0.1598, neck: 0.05, muzzle: 0.26, ears: 'large', tail: 'banded', hue: '#d6bd8e', family: 'felid', earShape: 'point', earScale: 1.25 },
-  'Fishing Cat': { legs: 0.101, depth: 0.1265, len: 0.1905, neck: 0.055, muzzle: 0.30, ears: 'round', tail: 'stub', coat: 'spots', hue: '#6f7455', family: 'felid' },
-  'Cat': { hue: '#7f8288', legs: 0.0992, depth: 0.093, len: 0.1677, neck: 0.05, muzzle: 0.24, ears: 'large', tail: 'long', coat: 'stripes', family: 'felid' },
+  'Fishing Cat': { back: 'arched', legs: 0.101, depth: 0.1265, len: 0.1905, neck: 0.055, muzzle: 0.30, ears: 'round', tail: 'stub', coat: 'spots', hue: '#6f7455', family: 'felid' },
+  'Cat': { back: 'arched', hue: '#7f8288', legs: 0.0992, depth: 0.093, len: 0.1677, neck: 0.05, muzzle: 0.24, ears: 'large', tail: 'long', coat: 'stripes', family: 'felid' },
   /* ── MUSTELIDS & small carnivores: long body, short legs ── */
   'Badger': { legs: 0.058, depth: 0.124, len: 0.2151, neck: 0.04, carry: 0.30, muzzle: 0.38, ears: 'tiny', tail: 'stub', coat: 'stripes', face: 'mask', hue: '#8d8a84', family: 'mustelid' },
   'Wolverine': { legs: 0.0961, depth: 0.1182, len: 0.2132, neck: 0.05, back: 'arched', muzzle: 0.38, ears: 'round', tail: 'bushy', coat: 'shaggy', hue: '#5c4433', family: 'mustelid' },
