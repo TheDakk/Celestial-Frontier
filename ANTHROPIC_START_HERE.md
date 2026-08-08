@@ -1,0 +1,110 @@
+# Anthropic / Claude Code — Start Here
+
+This is the **only folder Anthropic/Claude Code should edit on this Windows PC**:
+
+```text
+C:\Projects\celestial-frontier-anthropic-windows
+```
+
+Its branch is:
+
+```text
+anthropic/windows
+```
+
+The other folders are deliberately separate:
+
+| Folder | Purpose | Do not edit from Anthropic/Claude Code |
+| --- | --- | --- |
+| `C:\Projects\celestial-frontier-anthropic-windows` | Anthropic/Claude Code development | No — this is the correct folder |
+| `C:\Projects\celestial-frontier-openai-windows` | OpenAI/Codex development | Yes |
+| `C:\Projects\Celestial-Frontier` | `develop` integration branch | Yes |
+| `C:\Projects\celestialfrontier.github.io` | Published live-site repository | Yes — deploy only when Nick approves |
+
+## Every time you start Claude Code
+
+1. Open Windows Terminal in this folder.
+2. Start Claude Code with `claude`.
+3. Verify the folder and branch before allowing any edits.
+4. Ask Claude to read `CLAUDE.md`, `ROADMAP.md`, and `PROCESS_LAWS.md` before work begins.
+
+First-time Terminal commands:
+
+```powershell
+cd C:\Projects\celestial-frontier-anthropic-windows
+git branch --show-current
+claude
+```
+
+The expected branch is:
+
+```text
+anthropic/windows
+```
+
+Paste this at the beginning of a coding task:
+
+```text
+Before editing, verify that the repository root is
+C:/Projects/celestial-frontier-anthropic-windows
+and that the current branch is anthropic/windows.
+
+If either is different, stop and report it; do not edit anything.
+
+Then read CLAUDE.md, ROADMAP.md, and PROCESS_LAWS.md. Work only in this
+Anthropic worktree. Never edit the OpenAI worktree, develop, main, or the
+celestialfrontier.github.io repository.
+```
+
+The expected verification result is:
+
+```powershell
+git rev-parse --show-toplevel   # C:/Projects/celestial-frontier-anthropic-windows
+git branch --show-current       # anthropic/windows
+git status --short --branch     # ## anthropic/windows...origin/anthropic/windows
+```
+
+If the last command lists changed files, they are unfinished work. Ask Claude
+to explain them; do not discard them.
+
+## When a task is complete
+
+Paste this:
+
+```text
+Run the required checks for this change. Review the diff, then commit only
+the completed task's changes with a descriptive message and push to
+origin/anthropic/windows. Verify that the local branch and GitHub are in sync.
+Report the commit hash, tests run, and push result. Do not merge into develop
+or main, and do not deploy the live site.
+```
+
+Success means `git status --short --branch` shows only:
+
+```text
+## anthropic/windows...origin/anthropic/windows
+```
+
+with no changed-file lines below it. The work is then safely stored both on
+this computer and on GitHub.
+
+## How work reaches the game
+
+```text
+Anthropic/Claude Code: anthropic/windows
+        ↓ pull request + review
+develop: integration and shared testing
+        ↓ approved release only
+main: production source
+        ↓ approved deployment only
+celestialfrontier.github.io: live game
+```
+
+Do not merge or deploy casually. A completed Anthropic task is normally ready
+for a pull request from `anthropic/windows` into `develop`.
+
+## Important safety rule
+
+Never use `git reset --hard`, `git clean -fd`, force-push, or delete a branch
+or worktree unless Nick explicitly approves it.
+
