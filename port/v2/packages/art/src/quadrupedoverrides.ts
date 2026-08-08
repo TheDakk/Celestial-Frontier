@@ -61,7 +61,7 @@ export interface QuadSpec {
   /** ★ POLISH WAVE — small COAT ACCENTS that are whole identities: a pale rump
       patch (banteng), a dark lower-flank band (gazelle/springbok), vertical
       rump stripes (impala). One axis, several species. */
-  accent?: 'rumpPatch' | 'flankBand' | 'rumpStripes';
+  accent?: 'rumpPatch' | 'flankBand' | 'rumpStripes' | 'chestBlaze';
   /** ★ D-ART-134 — a pale tail TIP is a species mark (fox, wolf, wild dog),
       not a universal feature. It used to be stamped on every brush tail. */
   tailTip?: string;
@@ -2153,6 +2153,15 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
         const [ax2, ay2] = AX(u);
         c.beginPath(); c.moveTo(ax2, ay2 - RAD(u) * 0.9); c.lineTo(ax2 - bodyW * 0.02, ay2 + RAD(u) * 0.5); c.stroke();
       }
+    } else if (spec.accent === 'chestBlaze') {
+      /* ★ GOLD AUDIT — the Tasmanian Devil's white chest crescent: a pale
+         band low across the chest, ahead of the forelegs. */
+      const [ax2, ay2] = AX(0.86);
+      c.strokeStyle = 'rgba(244,242,234,0.90)'; c.lineWidth = bodyH * 0.15; c.lineCap = 'round';
+      c.beginPath();
+      c.moveTo(ax2 - bodyW * 0.02, ay2 + RAD(0.86) * 0.30);
+      c.quadraticCurveTo(ax2 - bodyW * 0.10, ay2 + RAD(0.86) * 0.85, ax2 + bodyW * 0.08, ay2 + RAD(0.86) * 0.92);
+      c.stroke();
     }
     c.restore();
   }
@@ -2480,7 +2489,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* equines + swine */
   'Horse': { legs: 0.1964, depth: 0.166, len: 0.1999, neck: 0.14, muzzle: 0.50, ears: 'small', tail: 'flow', mane: 'crest', hue: '#8a5a35', family: 'equid' },
   'Wild Boar': { legs: 0.0955, depth: 0.1423, len: 0.2101, neck: 0.05, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'tuskup', coat: 'shaggy', hue: '#5a4a3e', family: 'suid', earShape: 'point' },
-  'Warthog': { legs: 0.1087, depth: 0.1405, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', hue: '#6b5647', family: 'suid', earShape: 'point' },
+  'Warthog': { legs: 0.1087, depth: 0.1405, len: 0.1958, neck: 0.05, back: 'sloped', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'tuskup', mane: 'crestUp', hue: '#6b5647', family: 'suid', earShape: 'point' },
   /* ★ wave 35 — a tapir is barrel-bodied like a suid, so it keeps that BODY;
      but the suid skull hard-wires the flat cartilage nose disc that is a pig's
      whole identity, and the reference row warns against it by name. It gets a

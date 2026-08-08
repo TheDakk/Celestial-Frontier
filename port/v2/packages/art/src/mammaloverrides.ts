@@ -71,7 +71,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Fishing Cat': { legs: 0.101, depth: 0.1265, len: 0.1905, neck: 0.055, muzzle: 0.30, ears: 'round', tail: 'stub', coat: 'spots', hue: '#6f7455', family: 'felid' },
   'Cat': { hue: '#7f8288', legs: 0.0992, depth: 0.093, len: 0.1677, neck: 0.05, muzzle: 0.24, ears: 'large', tail: 'long', coat: 'stripes', family: 'felid' },
   /* ── MUSTELIDS & small carnivores: long body, short legs ── */
-  'Badger': { legs: 0.0743, depth: 0.1093, len: 0.2151, neck: 0.04, muzzle: 0.38, ears: 'tiny', tail: 'stub', coat: 'stripes', face: 'mask', hue: '#8d8a84', family: 'mustelid' },
+  'Badger': { legs: 0.058, depth: 0.124, len: 0.2151, neck: 0.04, carry: 0.30, muzzle: 0.38, ears: 'tiny', tail: 'stub', coat: 'stripes', face: 'mask', hue: '#8d8a84', family: 'mustelid' },
   'Wolverine': { legs: 0.0961, depth: 0.1182, len: 0.2132, neck: 0.05, back: 'arched', muzzle: 0.38, ears: 'round', tail: 'bushy', coat: 'shaggy', hue: '#5c4433', family: 'mustelid' },
   'Weasel': { legs: 0.0634, depth: 0.0674, len: 0.1853, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'stub', hue: '#b98a52', family: 'mustelid' },
   /* ★ wave 35 — a stoat has no TUFT; it has a BLACK TIP, and that tip is the
@@ -92,12 +92,12 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      spec, i.e. four times as long as deep. A mongoose is lithe, not a ribbon. */
   'Mongoose': { legs: 0.0671, depth: 0.0856, len: 0.1685, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#9a8a6c', family: 'mustelid' },
   'Meerkat': { legs: 0.0943, depth: 0.0998, len: 0.1047, neck: 0.08, muzzle: 0.32, ears: 'round', tail: 'long', hue: '#b5a184', family: 'mustelid' , pose: 'sentinel' },
-  'Civet': { legs: 0.0994, depth: 0.1039, len: 0.1618, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'banded', coat: 'spots', face: 'mask', hue: '#a8996f', family: 'mustelid' },
-  'Coati': { legs: 0.1047, depth: 0.1053, len: 0.1641, neck: 0.06, muzzle: 0.54, ears: 'round', tail: 'banded', hue: '#8e6440', family: 'procyonid' },
-  'Kinkajou': { legs: 0.096, depth: 0.1095, len: 0.1437, neck: 0.05, muzzle: 0.30, ears: 'round', tail: 'long', hue: '#a06e3c', family: 'procyonid' },
+  'Civet': { legs: 0.078, depth: 0.1039, len: 0.188, neck: 0.05, carry: 0.40, muzzle: 0.38, ears: 'round', tail: 'banded', coat: 'spots', face: 'mask', hue: '#a8996f', family: 'mustelid' },
+  'Coati': { legs: 0.084, depth: 0.1053, len: 0.182, neck: 0.06, carry: 0.35, tailScale: 1.3, muzzle: 0.54, ears: 'round', tail: 'banded', hue: '#8e6440', family: 'procyonid' },
+  'Kinkajou': { legs: 0.075, depth: 0.1095, len: 0.1437, neck: 0.05, carry: 0.35, tailScale: 1.5, muzzle: 0.30, ears: 'round', tail: 'long', hue: '#a06e3c', family: 'procyonid' },
   'Mole': { legs: 0.0295, depth: 0.0790, len: 0.1610, neck: 0.02, muzzle: 0.46, ears: 'tiny', tail: 'stub', hue: '#39322e', family: 'burrower', earShape: 'hidden', foot: 'claw' },
   'Hyrax': { legs: 0.0595, depth: 0.0899, len: 0.1474, neck: 0.03, back: 'arched', muzzle: 0.28, ears: 'round', tail: 'none', hue: '#8b7a63', family: 'rodent' },
-  'Aardvark': { legs: 0.1078, depth: 0.1259, len: 0.2065, neck: 0.06, back: 'roached', muzzle: 0.80, ears: 'huge', tail: 'long', hue: '#b09c85', family: 'burrower', earShape: 'leaf' },
+  'Aardvark': { legs: 0.088, depth: 0.1259, len: 0.222, neck: 0.06, carry: 0.35, back: 'roached', muzzle: 0.80, ears: 'huge', tail: 'long', hue: '#b09c85', family: 'burrower', earShape: 'leaf' },
   /* ── BEARS, PIGS, EQUIDS ── */
   'Spectacled Bear': { legs: 0.1111, depth: 0.1593, len: 0.1959, neck: 0.05, muzzle: 0.40, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'shaggy', face: 'tears', hue: '#3b332c', family: 'ursid' },
   'Wild Pig': { legs: 0.1014, depth: 0.1365, len: 0.2015, neck: 0.04, back: 'sloped', muzzle: 0.56, jaw: 'barrel', ears: 'large', tail: 'tuft', coat: 'shaggy', hue: '#6b5a49', family: 'suid' },
@@ -135,7 +135,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      the family's) and takes a round short-muzzled skull. The 'stub' tail was
      the dark disc sitting on its shoulder — a sloth has no visible tail. */
   'Sloth': { legs: 0.0968, depth: 0.1414, len: 0.1484, neck: 0.06, back: 'roached', muzzle: 0.28, ears: 'tiny', tail: 'none', coat: 'shaggy', hue: '#8c8367', family: 'xenarthran', skull: 'procyonid', earShape: 'hidden' , pose: 'hang' },
-  'Possum': { legs: 0.0814, depth: 0.1026, len: 0.1598, neck: 0.05, muzzle: 0.44, ears: 'large', tail: 'long', hue: '#a49b8c', family: 'marsupial' },
+  'Possum': { legs: 0.065, depth: 0.1026, len: 0.1598, neck: 0.05, carry: 0.35, muzzle: 0.44, ears: 'large', tail: 'long', hue: '#a49b8c', family: 'marsupial' },
   'Marsh Rodent': { legs: 0.0691, depth: 0.0894, len: 0.1789, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'long', hue: '#7b6448', family: 'rodent' },
   /* ═══ ★ ARC STAGE 3 WAVE 1 — THE UNROUTED ICONICS ═══
      conformance [U]: these had NO override route, so the verbatim engine drew
@@ -148,10 +148,10 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* "bold stripes continuing onto the legs · stiff upright brush mane · tufted tail" */
   'Zebra': { legs: 0.1837, depth: 0.1567, len: 0.2056, neck: 0.120, muzzle: 0.44, ears: 'large', tail: 'tuft', mane: 'crestUp', coat: 'bands', hue: '#e8e4dc', family: 'equid' , legMarks: true },
   /* "black bandit mask · ringed banded tail · hunched arched back" */
-  'Raccoon': { legs: 0.0769, depth: 0.1106, len: 0.1905, neck: 0.040, back: 'roached', muzzle: 0.30, ears: 'round', tail: 'banded', face: 'mask', hue: '#8d8a86', family: 'procyonid' },
+  'Raccoon': { legs: 0.0769, depth: 0.121, len: 0.1905, neck: 0.040, carry: 0.45, tailScale: 1.35, back: 'roached', muzzle: 0.30, ears: 'round', tail: 'banded', face: 'mask', hue: '#8d8a86', family: 'procyonid' },
   /* "flat scaly paddle tail · orange chisel incisors · stocky humped body" */
   'Capybara': { legs: 0.062, depth: 0.158, len: 0.198, neck: 0.03, muzzle: 0.50, jaw: 'broad', ears: 'tiny', tail: 'none', hue: '#8b5e3c', family: 'rodent' },
-  'Agouti': { legs: 0.105, depth: 0.102, len: 0.152, neck: 0.04, back: 'roached', muzzle: 0.34, ears: 'small', tail: 'none', hue: '#7a4b28', family: 'rodent' },
+  'Agouti': { legs: 0.088, depth: 0.112, len: 0.152, neck: 0.04, back: 'roached', muzzle: 0.34, ears: 'small', tail: 'none', hue: '#7a4b28', family: 'rodent' },
   'Mara': { legs: 0.138, depth: 0.098, len: 0.158, neck: 0.05, muzzle: 0.36, ears: 'large', tail: 'none', hue: '#8c8375', family: 'rodent' },
   'Beaver': { legs: 0.0521, depth: 0.1186, len: 0.214, neck: 0.032, back: 'humped', muzzle: 0.26, jaw: 'broad', ears: 'tiny', tail: 'paddle', hue: '#6b4a30', family: 'rodent' },
   /* "long bushy ringed tail · white face mask with rust tear-stripes · black legs" */
@@ -171,7 +171,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* ★ wave 35 — same miscast as Stoat: a devil's tail is a plain thick taper,
      never tufted. Its actual mark is the white chest blaze, which no per-species
      axis can reach yet (coatBlocks is hard-wired to the panda). */
-  'Tasmanian Devil': { legs: 0.0515, depth: 0.1096, len: 0.1708, neck: 0.028, muzzle: 0.26, jaw: 'broad', ears: 'round', tail: 'long', hue: '#2e2a28', family: 'marsupial' },
+  'Tasmanian Devil': { legs: 0.0515, depth: 0.1096, len: 0.1708, neck: 0.028, muzzle: 0.36, jaw: 'broad', carry: 0.45, accent: 'chestBlaze', ears: 'round', tail: 'long', hue: '#2e2a28', family: 'marsupial' },
   /* "white spots over the back AND the tail · pointed pink snout · low slinking body" */
   'Quoll': { legs: 0.0602, depth: 0.0901, len: 0.1478, neck: 0.034, muzzle: 0.30, ears: 'round', tail: 'bushy', coat: 'spots', hue: '#7d5f42', family: 'marsupial' },
   /* "trunk to the ground · huge fan ears · pillar legs and a dipped saddle back" */
