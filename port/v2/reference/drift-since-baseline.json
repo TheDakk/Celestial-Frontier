@@ -41,6 +41,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Bison"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Black Bear"
  },
  {
@@ -373,6 +377,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Mahi-Mahi"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Mako Shark"
  },
  {
@@ -389,11 +397,11 @@
  },
  {
   "set": "earth-fauna",
-  "name": "Moose"
+  "name": "Monkfish"
  },
  {
   "set": "earth-fauna",
-  "name": "Moray Eel"
+  "name": "Moose"
  },
  {
   "set": "earth-fauna",
@@ -525,6 +533,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Sailfish"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Sand Boa"
  },
  {
@@ -538,6 +550,10 @@
  {
   "set": "earth-fauna",
   "name": "Scale Worm"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Scorpion"
  },
  {
   "set": "earth-fauna",
@@ -913,6 +929,10 @@
  },
  {
   "set": "earth-flora",
+  "name": "Cloudberry"
+ },
+ {
+  "set": "earth-flora",
   "name": "Clover"
  },
  {
@@ -978,6 +998,10 @@
  {
   "set": "earth-flora",
   "name": "Desert Sage"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Duckweed"
  },
  {
   "set": "earth-flora",
@@ -1070,6 +1094,10 @@
  {
   "set": "earth-flora",
   "name": "Huckleberry"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Kelp"
  },
  {
   "set": "earth-flora",
@@ -1193,11 +1221,23 @@
  },
  {
   "set": "earth-flora",
+  "name": "Papyrus"
+ },
+ {
+  "set": "earth-flora",
   "name": "Pear"
  },
  {
   "set": "earth-flora",
   "name": "Pickerelweed"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Pine Nuts"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Pinyon Pine"
  },
  {
   "set": "earth-flora",
@@ -1317,6 +1357,10 @@
  },
  {
   "set": "earth-flora",
+  "name": "Sea Purslane"
+ },
+ {
+  "set": "earth-flora",
   "name": "Sea Rocket"
  },
  {
@@ -1362,6 +1406,10 @@
  {
   "set": "earth-flora",
   "name": "Sweet Flag"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Sweet Potato"
  },
  {
   "set": "earth-flora",
@@ -1498,6 +1546,10 @@
  {
   "set": "earth-flora",
   "name": "Yarrow"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Yew"
  },
  {
   "set": "earth-flora",
@@ -1734,6 +1786,10 @@
  {
   "set": "procedural",
   "name": "f1·7#87"
+ },
+ {
+  "set": "procedural",
+  "name": "f1·9#89"
  },
  {
   "set": "procedural",

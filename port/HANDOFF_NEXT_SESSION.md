@@ -150,21 +150,55 @@ kinds now stamp AFTER the coil finishes (back-to-front so front coils win the ov
 verified: Anaconda halo'd ovals, Boa red saddles, Python net, Garter full-length yellow stripe
 all actually visible for the first time. Bucket (a) = no-edit rows, converts at measure.
 Elephant ear fan deliberately SKIPPED (documented 6-revert trap — needs a tint-trick session).
-★★★ NEXT SESSION = GP7 MEASURE ONLY, NOTHING BEFORE IT (Nick's directive).
-★★★ GP7 IS PRE-STAGED (this session, zero judge tokens — all local node): art is FROZEN,
-tree clean, gates green. `artlock --driftdump` run → **457 drifted assets** (fauna 177 ·
-flora 199 · fungi 13 · microbe 14 · **procedural 54 — the bridge join works**, names are
-lock cells like `f0·1#121`, map via reference/procedural-name-map.json). `rejudgecontrol`
-run → **56 family-matched control** (baseline 28 FAIL / 26 POLISH / 2 PASS; baseline FAIL%
-differs from drift set by −14.8pts — compare SHIFTS, not levels). Card strips PRE-RENDERED:
-**77 drift strips (65 families) at apps/game/smoke/rejudge/ + 30 control strips (29
-families) at apps/game/smoke/rejudge-control/** — ~107 images total ≈ ~3M tokens, vs ~2758
-images in a full sweep. ⚠ Strips are gitignored: if the working tree is fresh, re-render
-with `node tools/rejudgecards.mjs` and `--control` (deterministic, zero LLM tokens, ~2 min).
-NEXT SESSION STARTS AT: spawn judge agents on the strips (gp5 prompt, one agent per strip,
-schema rows, VERBATIM species join), then `rejudgemerge --fresh=... --control=...`.
-DO NOT touch art before the judge run (freeze law). Full-size catalog zips were also
-exported + delivered to Nick this session (speciesexport, 1250 portraits, 11 part-zips).
+★★★★★ NICK'S FINAL GOLD AUDIT LANDED 2026-08-08 (`port/v2/reference/NICK_GOLD_AUDIT_2026-08-08.md`
+— his independent engine, reviewing the exact cf-species-ALL.zip we exported): **381 GOLD /
+810 POLISH / 59 FIX** over all 1250. Headline: "strongest complete species build reviewed so
+far… Gold Candidate"; fungi/microbes/procedural have ZERO FIX. His explicit instruction:
+**"Do not run another global body pass — preserve the build, regenerate only the FIX list."**
+★★ 22 OF THE 59 FIX ITEMS WERE CLOSED SAME-DAY (cheap table/axis work, all render-verified,
+committed): Deep-Sea Octopus TWO eyes (was cyclopean — one shared cloak-squid eye) · Eagle +
+Harpy PERCHED (**'soaring' skips the leg loop, so `talons:true` never drew a talon — found by
+reading the table against the audit prose**) · Bison horns (spec had NONE) · Saiga bulbous
+drooping proboscis (bespoke, scale 1.45) · Sailfish sail 2.3× bright-cobalt (`sailScale` axis)
+· Moray drops the `gape` tunnel (it read "sucker-mouth" — the polish-15 gape experiment
+backfired) · Mahi/Monkfish bighead (partial: full steep-forehead/flat-head still open) ·
+Spider RADIAL legs (cos() symmetry made 8 legs land as 4 — plain spider only, tarantula
+geometry untouched) · conifer gate reworked (**needle leaf ⇒ conifer**: tall = spire, low =
+broad 5-tier pyramid; Yew gets red arils — Pinyon/Yew were broadleaf lollipops) · Kelp/Giant
+Kelp stipes carry BLADES with gas bladders · Bull Kelp bulb 0.06S + broad streamers ·
+Sargassum branching fronds + floats · Papyrus per-cane firework umbels · Steppe Tulip 'cup'
+flower kind (new) · Cloudberry creep+berry · Sweet Potato trail+trumpet · Duckweed tiny-frond
+mat (`mat` axis) · Prickly Pear JOINTED PAD STACK.
+★★★ THE REMAINING 37 FIX = THE NEXT ARC, IN PRIORITY ORDER (post-gp7; each needs real
+chassis/bespoke work — do NOT rush them as table edits):
+1. **THE EQUID SCAFFOLD** (Horse, Donkey, Wild Horse, Wild Ass, Wild Pony — one scaffold,
+   five species): deep barrel + withers, sloped shoulder, muscular croup, wedge skull,
+   articulated knees/hocks/fetlocks, hooves, MANE, species tails. Zebra moves onto it last.
+2. **FELINE FEET+SPINE PASS** (Cat, Bobcat, Caracal, Cheetah, Clouded Leopard, Fishing Cat,
+   Lynx, Ocelot, Serval): paws not hooves, digitigrade legs, flexible topline; keep every
+   pelt recipe. (Lion/Tiger are fine — do not touch them.)
+3. **LOW-BODY MAMMAL DOZEN** (Aardvark, Agouti, Badger, Capybara, Civet, Coati, Kinkajou,
+   Possum, Raccoon, Tasmanian Devil, Warthog): each reads ungulate; needs low/long/heavy
+   builds, paws, species heads (warthog tusks+warts, devil's big jaws + white chest).
+4. **GLIDERS** (Colugo, Flying Squirrel, Sugar Glider): one `patagium` membrane axis serves
+   all three. Plus **Jerboa** (bipedal: huge hind legs, tiny arms, tufted tail).
+5. **Fish residue**: Monkfish flattened head+mouth, Mahi steep forehead (bigheads landed,
+   shapes still generic).
+6. **Flora mediums** (Acai palm+fruit clusters, Baobab bottle trunk, Desert Rose caudex,
+   Devil's Claw hooked pods, Devil's Club spiny+palmate, Miner's Lettuce stalked-disc tuft,
+   Peanut ground pods, Orchid Pods on-stalk pods + the source-organism/harvest-organ
+   metadata split the audit recommends).
+Plus his one procedural note: a single very dark fauna phenotype is hard to read (find it by
+darkness-scan, lift its value floor).
+★★★ GP7 RE-STAGED AFTER THE FIXES (all local, zero judge tokens): driftdump → **471 drifted**
+(fauna 181 · flora 208 · fungi 13 · microbe 14 · procedural 55; bridge map at
+reference/procedural-name-map.json) · fresh 57-asset control (baseline FAIL% −21.3pts vs
+drift — compare SHIFTS) · strips re-rendered: **80 drift + 27 control = 107 images ≈ ~3M
+tokens**. ⚠ Strips gitignored — re-render via `node tools/rejudgecards.mjs` [+ `--control`]
+(~2 min) if the tree is fresh. NEXT SESSION STARTS AT: spawn judges on the strips (gp5
+prompt, one agent per strip, schema rows, VERBATIM species join) → `rejudgemerge --fresh
+--control`. DO NOT touch art before the judge run. Full-size catalog (1250 portraits,
+11 part-zips + cf-species-ALL.zip) was exported + delivered to Nick 2026-08-07/08.
 ★★ POLISH 16 (committed): neon tetra lateral stripe (new fish pattern) · chicken/rooster fleshy serrated COMB + wattle (new bird axis). Croc double tail-crest + snail eyestalks verified ALREADY PRESENT in code — expect them to convert at measure without edits. ★★★ NEXT SESSION = THE MEASURE ONLY (Nick): gp7 via artlock --driftdump → rejudgecards + control → judge (gp5 prompt) → rejudgemerge; INCLUDES procedural via reference/procedural-name-map.json. Then certification if budget allows.
 ★★ POLISH 15 (earlier batch): Coot white bill · Arctic Cod chin barbel · Moray gape.
 ★★★ THE CARRIED-ROW TRIAGE (read before resuming the sweep): the remaining ~280 carried rows
