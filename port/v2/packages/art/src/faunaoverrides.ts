@@ -669,6 +669,7 @@ export interface BirdSpec {
   cap?: string;                                    /** a contrasting crown (chickadee, jay) */
   mask?: boolean;                                  /** the black face mask (cardinal, weaverbird) */
   nest?: boolean;                                  /** ★ WAVE 68 — the weaverbird's woven ball nest */
+  comb?: boolean;                                  /** ★ POLISH — the fleshy red serrated chicken comb */
   speckle?: boolean;                               /** pale flecks over dark (starling) */
   streak?: boolean;                                /** streaky ground-bird camouflage (lark, pipit) */
   plump?: number;                                  /** roundness: a robin is a ball, a swift is a cigar */
@@ -1160,6 +1161,19 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     }
     c.fillStyle = 'rgba(26,20,12,0.9)';                                /* the low entry hole */
     c.beginPath(); c.ellipse(nx - nr * 0.25, ny + nr * 0.62, nr * 0.30, nr * 0.24, 0, 0, TAU); c.fill();
+  }
+  if (opts.comb) {
+    /* the fleshy serrated red comb standing on the crown + the throat wattle */
+    c.fillStyle = '#d8302a';
+    c.beginPath(); c.moveTo(hx - hr * 0.75, hy - hr * 0.55);
+    for (let k = 0; k < 4; k++) {
+      const u = k / 3;
+      c.quadraticCurveTo(hx - hr * (0.65 - u * 0.85), hy - hr * (1.4 + Math.sin(u * Math.PI) * 0.35),
+        hx - hr * (0.45 - u * 0.85), hy - hr * (0.75 + Math.sin((u + 0.12) * Math.PI) * 0.16));
+    }
+    c.quadraticCurveTo(hx + hr * 0.6, hy - hr * 0.6, hx + hr * 0.3, hy - hr * 0.4);
+    c.closePath(); c.fill();
+    c.beginPath(); c.ellipse(hx - hr * 0.35, hy + hr * 0.85, hr * 0.22, hr * 0.34, 0.1, 0, TAU); c.fill();   /* the wattle */
   }
   if (opts.cap) {
     c.fillStyle = opts.cap;
