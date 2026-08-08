@@ -62,6 +62,9 @@ export interface QuadSpec {
       patch (banteng), a dark lower-flank band (gazelle/springbok), vertical
       rump stripes (impala). One axis, several species. */
   accent?: 'rumpPatch' | 'flankBand' | 'rumpStripes' | 'chestBlaze';
+  /** ★ GOLD AUDIT — the glider membrane: a loose furred sheet slung from
+      foreleg to hindleg, sagging below the belly line (Sugar Glider, Colugo) */
+  patagium?: boolean;
   /** ★ D-ART-134 — a pale tail TIP is a species mark (fox, wolf, wild dog),
       not a universal feature. It used to be stamped on every brush tail. */
   tailTip?: string;
@@ -2164,6 +2167,22 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       c.stroke();
     }
     c.restore();
+  }
+  if (spec.patagium) {
+    /* ★ GOLD AUDIT — THE PATAGIUM: drawn over the torso, sagging below the
+       belly between the two leg roots, with a pale free edge. On a standing
+       side view this loose flank sheet IS how a glider reads. */
+    const [fx2, fy2] = AX(0.80), [hx2, hy2] = AX(0.20);
+    const belly = Math.max(fy2 + RAD(0.80) * 0.7, hy2 + RAD(0.20) * 0.7);
+    c.fillStyle = `rgba(${p.cr * 0.52 | 0},${p.cg * 0.52 | 0},${p.cb * 0.50 | 0},0.95)`;
+    c.beginPath();
+    c.moveTo(fx2, fy2 + RAD(0.80) * 0.45);
+    c.quadraticCurveTo((fx2 + hx2) / 2, belly + bodyH * 0.85, hx2, hy2 + RAD(0.20) * 0.45);
+    c.quadraticCurveTo((fx2 + hx2) / 2, belly + bodyH * 0.10, fx2, fy2 + RAD(0.80) * 0.45);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(242,236,224,0.80)'; c.lineWidth = 3;
+    c.beginPath(); c.moveTo(fx2, fy2 + RAD(0.80) * 0.45);
+    c.quadraticCurveTo((fx2 + hx2) / 2, belly + bodyH * 0.85, hx2, hy2 + RAD(0.20) * 0.45); c.stroke();
   }
   if (spec.udder) {
     /* ★ POLISH — the udder hangs from the belly ahead of the hind legs, with
