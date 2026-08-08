@@ -75,7 +75,7 @@ export interface FishSpec {
   tail: 'forked' | 'lunate' | 'round' | 'point' | 'shark' | 'fan' | 'none' | 'veil';
   snout: 'blunt' | 'jaw' | 'bill' | 'shovel' | 'tube' | 'hammer';
   dorsal: 'one' | 'sail' | 'two' | 'spiny' | 'none' | 'sharkfin';
-  pattern?: 'bands' | 'stripes' | 'spots' | 'mottle' | 'clown';
+  pattern?: 'bands' | 'stripes' | 'spots' | 'mottle' | 'clown' | 'lateral';
   shark?: boolean;    /** gill slits, swept pectorals, heterocercal tail */
   lure?: boolean;     /** the anglerfish esca */
   glow?: boolean;     /** photophore rows */
@@ -481,6 +481,14 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     for (let i = 0; i < 20; i++) {
       softMark(c, ped + r() * (nose - ped), cy - depth + r() * depth * 2, 12 + r() * 12, 9 + r() * 9, '26,30,24', 0.24);
     }
+  } else if (spec.pattern === 'lateral') {
+    /* ★ POLISH — the tetra's single BRIGHT neon stripe, eye to tail */
+    c.strokeStyle = 'rgba(120,240,255,0.95)'; c.lineWidth = depth * 0.28; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(ped + (nose - ped) * 0.04, cy - depth * 0.06);
+    c.quadraticCurveTo(cx, cy - depth * 0.18, nose - depth * 0.5, cy - depth * 0.10); c.stroke();
+    c.strokeStyle = 'rgba(255,80,80,0.65)'; c.lineWidth = depth * 0.18;   /* the red under-flash */
+    c.beginPath(); c.moveTo(ped + (nose - ped) * 0.04, cy + depth * 0.16);
+    c.quadraticCurveTo(cx, cy + depth * 0.10, ped + (nose - ped) * 0.5, cy + depth * 0.14); c.stroke();
   } else if (spec.pattern === 'clown') {
     /* ★ WAVE 59 — three WHITE vertical bands edged in black: the clownfish. */
     for (const t of [0.28, 0.55, 0.80]) {
@@ -897,7 +905,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Pike': F({ hue: '#3c5730', profile: 'fusiform', len: 0.26, depth: 0.058, tail: 'forked', snout: 'jaw', dorsal: 'one', pattern: 'mottle', teeth: true }),
   'Piranha': F({ hue: '#877a86', profile: 'deep', len: 0.18, depth: 0.082, tail: 'forked', snout: 'jaw', dorsal: 'one', teeth: true }),
   'Pacu': F({ hue: '#4f4d47', profile: 'deep', len: 0.20, depth: 0.090, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
-  'Tetra': F({ hue: '#1fb6c9', profile: 'deep', len: 0.16, depth: 0.058, tail: 'forked', snout: 'blunt', dorsal: 'one', pattern: 'stripes' }),
+  'Tetra': F({ hue: '#1fb6c9', profile: 'deep', len: 0.16, depth: 0.058, tail: 'forked', snout: 'blunt', dorsal: 'one', pattern: 'lateral' }),
   'Minnow': F({ hue: '#a29c86', profile: 'fusiform', len: 0.17, depth: 0.045, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
   'Mudminnow': F({ hue: '#63482e', profile: 'fusiform', len: 0.17, depth: 0.050, tail: 'round', snout: 'blunt', dorsal: 'one' }),
   'Killifish': F({ hue: '#5f9d72', profile: 'fusiform', len: 0.17, depth: 0.050, tail: 'round', snout: 'blunt', dorsal: 'one', pattern: 'spots' }),
