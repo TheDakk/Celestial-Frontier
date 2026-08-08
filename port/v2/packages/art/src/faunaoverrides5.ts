@@ -1348,7 +1348,9 @@ export function faunaMonotreme(c: Ctx, g: G, pIn: Pal, name = ''): void {
   c.strokeStyle = 'rgba(226,236,246,0.22)'; c.lineWidth = 2;
   c.beginPath(); c.ellipse(0, 0, bw * 0.50, bh * 0.70, 0, -2.6, -0.3); c.stroke();
   c.restore();
-  /* the webbed clawed feet */
+  /* the webbed clawed feet — ★ POLISH: a broad WEB FAN splayed on the ground
+     with claw ticks past its edge, not a bare leg triangle (the must-read
+     gp3 called absent entirely). */
   c.fillStyle = shade(p, 0.50);
   for (const d of [-0.44, 0.34]) {
     c.beginPath();
@@ -1356,6 +1358,19 @@ export function faunaMonotreme(c: Ctx, g: G, pIn: Pal, name = ''): void {
     c.lineTo(cx + bw * d - bw * 0.20, gy);
     c.lineTo(cx + bw * d + bw * 0.16, gy);
     c.closePath(); c.fill();
+    /* the splayed web */
+    c.fillStyle = 'rgba(58,46,44,0.95)';
+    c.beginPath();
+    c.moveTo(cx + bw * d - bw * 0.22, gy);
+    c.quadraticCurveTo(cx + bw * d - bw * 0.02, gy - bh * 0.10, cx + bw * d + bw * 0.26, gy);
+    c.quadraticCurveTo(cx + bw * d + bw * 0.10, gy + bh * 0.085, cx + bw * d - bw * 0.10, gy + bh * 0.075);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(230,224,210,0.85)'; c.lineWidth = 1.8; c.lineCap = 'round';
+    for (let k = -1; k <= 1; k++) {   /* the claws past the web's edge */
+      c.beginPath(); c.moveTo(cx + bw * d + k * bw * 0.12, gy + bh * 0.05);
+      c.lineTo(cx + bw * d + k * bw * 0.15, gy + bh * 0.14); c.stroke();
+    }
+    c.fillStyle = shade(p, 0.50);
   }
   const bg = c.createLinearGradient(0, cy - bh, 0, cy + bh);
   bg.addColorStop(0, p.lit); bg.addColorStop(0.55, p.base); bg.addColorStop(1, shade(p, 0.42));
