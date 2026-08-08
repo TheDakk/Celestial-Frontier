@@ -135,6 +135,14 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★★ POLISH batches 7–8 committed: Pitcher Plant red vein network + throat branches · tree `squat`
+axis (Apple/Crabapple low wide orchard crowns) · vine `cluster` = big conical GRAPE bunch ·
+Maple Sap spile + hanging bucket (new tree `tap`) · Melon/Desert Melon trail flat. Carried-flora
+rows remaining ~55; next notable asks: Coffee tiered branches, Hemp bud cluster (bespoke painter
+floraHemp), Kiwi fuzz, Mangosteen calyx, Breadfruit lobed leaves, Joshua rosette density,
+Hardy/Cave Fern twice-cut fronds, Date Plum oval crown, Ephedra green rods, Floating Algae
+hair-fine filaments, berry-presentation trio (Blueberry/Currant/Mulberry), Canopy Vine woody
+stem. Then fauna 290 carried.
 ★★ POLISH batches 5–6 committed: cetacean `pale` (Beluga white to the tail) · Glasswort red
 flush · fern `tall` = upright SHUTTLECOCK (Sword Fern) · Lime true green · Arctic Blueberry mat.
 (Parrotfish bighead + Oregano flowerN experiments reverted — render-verify keeps only wins.)
