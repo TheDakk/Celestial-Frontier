@@ -135,6 +135,13 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★★ POLISH batches 9–10 committed: Ephedra green rods (bark override) · Date Plum oval crown +
+calyx fruit · Canopy Vine rope · **Cow udder axis** (was absent) · octopus eye BUMPS on the
+mantle · Llama ears 1.5 · Saiga muzzle 0.66. CARRIED-FAUNA next asks (251 rows): bat faces
+(Fruit=fox face, Vampire=nose-leaf pad), bovid accents (Banteng rump patch, Impala rump stripes,
+Gazelle flank band, Buffalo helmet boss, Gaur ridge, Bull neck hump, Eland ox build), squid
+mantle, Camel hump strength, Goldfish tail, Antelope ringed horns, Secretary Bird refine, Yak
+curtain. Most need small new accent axes (rump patch / flank band) — one axis clears several.
 ★★ POLISH batches 7–8 committed: Pitcher Plant red vein network + throat branches · tree `squat`
 axis (Apple/Crabapple low wide orchard crowns) · vine `cluster` = big conical GRAPE bunch ·
 Maple Sap spile + hanging bucket (new tree `tap`) · Melon/Desert Melon trail flat. Carried-flora
