@@ -717,7 +717,13 @@ export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bush
     size?: number;
     /* rodent incisors are ORANGE-enamelled; a lagomorph's are white, and that
        is one of the clearest tells between the two groups. */
-    lagomorph?: boolean }, name = ''): void {
+    lagomorph?: boolean;
+    /** ★ GOLD AUDIT — the flying squirrel's patagium: a loose gliding
+        membrane slung between fore- and hindlimb along the flank */
+    glide?: boolean;
+    /** ★ GOLD AUDIT — the jerboa build: enormous hind legs, tiny forearms,
+        a very long tufted balancing tail */
+    biped?: boolean }, name = ''): void {
   /* ★ D-ART-114 — the species hue axis. 29 rodents were on the rarity roll for
      no reason but this painter lacking a field, so a red squirrel could come
      out lilac. */
@@ -734,7 +740,17 @@ export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bush
     bh = S * 0.125 * rz * nvar(name, 0xBB, 0.20);
   ground(c, cx, cy + bh + S * 0.05, S * 0.18);
   /* tail behind */
-  if (opts.tail === 'long') {
+  if (opts.biped) {
+    /* the jerboa's tail is LONGER THAN THE ANIMAL, nearly straight, with a
+       black-and-white banner tuft at the tip */
+    c.strokeStyle = p.dark; c.lineWidth = bh * 0.13; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx - bw * 0.75, cy + bh * 0.3);
+    c.quadraticCurveTo(cx - bw * 2.4, cy + bh * 0.9, cx - bw * 3.1, cy - bh * 0.4); c.stroke();
+    c.strokeStyle = '#1e1a16'; c.lineWidth = bh * 0.30;
+    c.beginPath(); c.moveTo(cx - bw * 3.02, cy - bh * 0.22); c.lineTo(cx - bw * 3.14, cy - bh * 0.52); c.stroke();
+    c.strokeStyle = '#efe9dc'; c.lineWidth = bh * 0.26;
+    c.beginPath(); c.moveTo(cx - bw * 3.12, cy - bh * 0.48); c.lineTo(cx - bw * 3.22, cy - bh * 0.76); c.stroke();
+  } else if (opts.tail === 'long') {
     c.strokeStyle = p.dark; c.lineWidth = bh * 0.16; c.lineCap = 'round';
     c.beginPath(); c.moveTo(cx - bw * 0.85, cy + bh * 0.2);
     c.quadraticCurveTo(cx - bw * 2.0, cy + bh * 0.1, cx - bw * 1.8, cy - bh * 1.0); c.stroke();
@@ -769,6 +785,39 @@ export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bush
      like the body it belongs to, it sits slightly proud of the flank, and the
      leg folds out of it to a foot on the ground. */
   const hipX = cx - bw * 0.40, hipY = cy + bh * 0.34;
+  if (opts.glide) {
+    /* ★ GOLD AUDIT — THE PATAGIUM, before the haunch so the leg overlaps it:
+       a loose furred membrane slung from the wrist line back to the ankle,
+       sagging below the belly — the one thing that says "glider". */
+    c.fillStyle = `rgba(${p.cr * 0.55 | 0},${p.cg * 0.55 | 0},${p.cb * 0.52 | 0},0.95)`;
+    c.beginPath();
+    c.moveTo(cx + bw * 0.70, cy + bh * 0.20);
+    c.quadraticCurveTo(cx + bw * 0.15, cy + bh * 2.60, hipX - bw * 0.16, cy + bh * 0.55);
+    c.quadraticCurveTo(cx + bw * 0.18, cy + bh * 0.42, cx + bw * 0.70, cy + bh * 0.20);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(240,234,222,0.75)'; c.lineWidth = 2.6;   /* the pale free edge */
+    c.beginPath(); c.moveTo(cx + bw * 0.70, cy + bh * 0.20);
+    c.quadraticCurveTo(cx + bw * 0.15, cy + bh * 2.60, hipX - bw * 0.16, cy + bh * 0.55); c.stroke();
+  }
+  if (opts.biped) {
+    /* ★ GOLD AUDIT — THE JERBOA: a big haunch, one ENORMOUS hind leg (long
+       thin tarsus to a long foot), and tiny forearms held at the chest. */
+    c.fillStyle = grad(c, p, hipX, hipY, bw * 0.5);
+    c.beginPath(); c.ellipse(hipX, hipY, bw * 0.48, bh * 0.56, -0.16, 0, TAU); c.fill();
+    rim(c, () => c.ellipse(hipX, hipY, bw * 0.48, bh * 0.56, -0.16, -2.6, 0.2), 1.6);
+    c.strokeStyle = p.dark; c.lineCap = 'round'; c.lineJoin = 'round';
+    c.lineWidth = bh * 0.20;   /* thigh down to the LONG tarsus */
+    c.beginPath(); c.moveTo(hipX - bw * 0.04, hipY + bh * 0.30);
+    c.lineTo(hipX - bw * 0.18, cy + bh * 1.05);
+    c.lineTo(hipX + bw * 0.02, cy + bh * 1.55); c.stroke();
+    c.fillStyle = p.dark;      /* the long kangaroo-rat foot */
+    c.save(); c.translate(hipX + bw * 0.22, cy + bh * 1.58); c.rotate(-0.06);
+    c.beginPath(); c.ellipse(0, 0, bw * 0.40, bh * 0.10, 0, 0, TAU); c.fill();
+    c.restore();
+    c.strokeStyle = p.dark; c.lineWidth = bh * 0.10;   /* the tiny forearms */
+    c.beginPath(); c.moveTo(cx + bw * 0.62, cy + bh * 0.30);
+    c.lineTo(cx + bw * 0.76, cy + bh * 0.48); c.stroke();
+  } else {
   c.fillStyle = grad(c, p, hipX, hipY, bw * 0.42);
   c.beginPath(); c.ellipse(hipX, hipY, bw * 0.40, bh * 0.46, -0.16, 0, TAU); c.fill();
   /* the crease where the thigh meets the flank — soft, so it reads as one
@@ -790,6 +839,7 @@ export function smallRodent(c: Ctx, g: G, pIn: Pal, opts: { tail: 'long' | 'bush
   c.quadraticCurveTo(cx + bw * 0.58, cy + bh * 0.92, cx + bw * 0.50, cy + bh * 1.04); c.stroke();
   c.fillStyle = p.dark;
   c.beginPath(); c.ellipse(cx + bw * 0.54, cy + bh * 1.06, bw * 0.13, bh * 0.08, 0, 0, TAU); c.fill();
+  }
   /* head with ears + incisors */
   const hx = cx + bw * 0.95, hy = cy - bh * 0.35, hr = bh * 0.62;
   /* THE EARS RIDE ABOVE THE HEAD. The first cut centred a tall ellipse only
@@ -1625,7 +1675,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Gerbil': (c, g, p, n) => smallRodent(c, g, p, { hue: '#c39a68', tail: 'long', ears: 0.72 }, n),
   'Hamster': (c, g, p, n) => smallRodent(c, g, p, { hue: '#d8a860', tail: 'stub', ears: 0.62   }, n),
   'Guinea Pig': (c, g, p, n) => smallRodent(c, g, p, { hue: '#9c5f36', tail: 'stub', ears: 0.58   }, n),
-  'Jerboa': (c, g, p, n) => smallRodent(c, g, p, { hue: '#d9c096', tail: 'long', ears: 1.15 }, n),
+  'Jerboa': (c, g, p, n) => smallRodent(c, g, p, { hue: '#d9c096', tail: 'long', ears: 1.15, biped: true, size: 0.85 }, n),
   'Gopher': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7d6a52', tail: 'stub', ears: 0.36   }, n),
   'Marmot': (c, g, p, n) => smallRodent(c, g, p, { hue: '#97764a', tail: 'stub', ears: 0.40   }, n),
   'Prairie Dog': (c, g, p, n) => smallRodent(c, g, p, { hue: '#b8925c', tail: 'stub', ears: 0.26, earShape: 'nub' }, n),
@@ -1636,7 +1686,7 @@ export const FAUNA2_NAME: Record<string, Painter2> = {
   'Pika': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a08363', tail: 'stub', ears: 0.86, lagomorph: true }, n),
   'Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#7c7a72', tail: 'bushy', ears: 0.62   }, n),
   'Ground Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#ab8b5e', tail: 'long', ears: 0.34, earShape: 'nub' }, n),
-  'Flying Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#9a8f81', tail: 'bushy', ears: 0.68 }, n),
+  'Flying Squirrel': (c, g, p, n) => smallRodent(c, g, p, { hue: '#9a8f81', tail: 'bushy', ears: 0.68, glide: true }, n),
   'Chipmunk': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a8642f', tail: 'bushy', ears: 0.58   }, n),
   'Rabbit': (c, g, p, n) => smallRodent(c, g, p, { hue: '#8e7a5c', tail: 'stub', ears: 1.45 , lagomorph: true  }, n),
   'Hare': (c, g, p, n) => smallRodent(c, g, p, { hue: '#a37a4a', tail: 'stub', ears: 1.70 , lagomorph: true  }, n),
