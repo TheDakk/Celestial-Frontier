@@ -30,7 +30,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Hartebeest': { legs: 0.2024, depth: 0.1379, len: 0.1697, neck: 0.11, back: 'sloped', muzzle: 0.44, ears: 'large', tail: 'tuft', horn: 'lyre', hue: '#a9764a', family: 'bovid' },
   'Antelope': { hue: '#c39a5e', legs: 0.1889, depth: 0.1338, len: 0.1645, neck: 0.11, muzzle: 0.38, ears: 'large', tail: 'stub', horn: 'lyre', family: 'bovid' },
   'Duiker': { legs: 0.1423, depth: 0.1104, len: 0.1358, neck: 0.07, back: 'arched', muzzle: 0.34, ears: 'large', tail: 'stub', horn: 'shorthorn', hue: '#8f6a48', family: 'bovid' },
-  'Saiga': { legs: 0.167, depth: 0.1325, len: 0.163, neck: 0.09, muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'straight', hue: '#c6bda6', family: 'bovid' },
+  'Saiga': { legs: 0.167, depth: 0.1325, len: 0.163, neck: 0.09, muzzle: 0.66, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'straight', hue: '#c6bda6', family: 'bovid' },
   'Pronghorn': { legs: 0.1885, depth: 0.1288, len: 0.1584, neck: 0.10, muzzle: 0.38, ears: 'large', tail: 'stub', horn: 'prong', hue: '#bd8c55', family: 'bovid' },
   'Ibex': { legs: 0.1496, depth: 0.1318, len: 0.173, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#9b8563', family: 'bovid' },
   'Chamois': { legs: 0.1534, depth: 0.1233, len: 0.1517, neck: 0.08, muzzle: 0.34, ears: 'large', tail: 'stub', horn: 'shorthorn', hue: '#7d5f42', family: 'bovid' },
@@ -41,7 +41,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Musk Ox': { legs: 0.1154, depth: 0.1753, len: 0.2157, neck: 0.06, back: 'humped', muzzle: 0.38, jaw: 'broad', ears: 'tiny', tail: 'stub', horn: 'boss', coat: 'shaggy', hue: '#5a4634', family: 'bovid' },
   'Yak': { legs: 0.1203, depth: 0.1727, len: 0.2266, neck: 0.06, back: 'humped', muzzle: 0.40, jaw: 'broad', ears: 'small', tail: 'plume', horn: 'boss', coat: 'shaggy', hue: '#4c4038', family: 'bovid' },
   'Cattle': { hue: '#8a3f28', legs: 0.1489, depth: 0.1717, len: 0.2112, neck: 0.07, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'shorthorn', coat: 'blotches', family: 'bovid', earShape: 'spoon' },
-  'Cow': { legs: 0.1462, depth: 0.1662, len: 0.2181, neck: 0.07, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', coat: 'blotches', hue: '#e8e2d6', family: 'bovid', earShape: 'spoon' },
+  'Cow': { legs: 0.1462, depth: 0.1662, len: 0.2181, neck: 0.07, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', coat: 'blotches', hue: '#e8e2d6', family: 'bovid', earShape: 'spoon', udder: true },
   'Bull': { legs: 0.1398, depth: 0.1848, len: 0.2273, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'shorthorn', hue: '#4a3b31', family: 'bovid', earShape: 'spoon' },
   'Wildebeest': { legs: 0.1745, depth: 0.147, len: 0.1929, neck: 0.08, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'plume', horn: 'boss', coat: 'stripes', hue: '#5f5a55', family: 'bovid' },
   /* ── CANIDS: the long muzzle, the pricked ear, the brush tail ── */
