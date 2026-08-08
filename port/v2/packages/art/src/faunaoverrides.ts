@@ -621,6 +621,10 @@ export interface BirdSpec {
     | 'probe' | 'downcurve' | 'upcurve';
   crest?: boolean;
   flightless?: boolean;
+  /* ★ POLISH — the emu's double-shafted HAIR-LIKE coat: loose strands that
+     droop off the body and hang past the belly line, so the bird reads
+     shaggy rather than sleek. Off by default (D-ART-14). */
+  shaggy?: boolean;
   /* ── wave 9 additions. All OPTIONAL and defaulted, so the wave-3 birds —
      which the reviews scored well — take exactly the code paths they took
      before (D-ART-14: never override what already excels). ── */
@@ -670,6 +674,8 @@ export interface BirdSpec {
   mask?: boolean;                                  /** the black face mask (cardinal, weaverbird) */
   nest?: boolean;                                  /** ★ WAVE 68 — the weaverbird's woven ball nest */
   comb?: boolean;                                  /** ★ POLISH — the fleshy red serrated chicken comb */
+  browComb?: boolean;                              /** ★ POLISH — the grouse/ptarmigan red wattle ABOVE the eye */
+  featherFeet?: boolean;                           /** ★ POLISH — snowshoe-feathered toes: white fluff to the ground */
   speckle?: boolean;                               /** pale flecks over dark (starling) */
   streak?: boolean;                                /** streaky ground-bird camouflage (lark, pipit) */
   plump?: number;                                  /** roundness: a robin is a ball, a swift is a cigar */
@@ -799,6 +805,25 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
         }
         c.strokeStyle = opts.legHue ?? '#c9a24f';
       }
+      if (opts.featherFeet) {
+        /* ★ POLISH — the ptarmigan's snowshoe feet: the bare rod is buried
+           under white fluff from thigh to toe-tip, drawn OVER the leg. */
+        c.strokeStyle = 'rgba(240,238,230,0.92)'; c.lineCap = 'round';
+        c.lineWidth = 9 * Math.min(1.4, sz);
+        c.beginPath(); c.moveTo(hipX, thighY); c.quadraticCurveTo(hipX + (ankX - hipX) * 0.5, thighY + (ankleY - thighY) * 0.62, ankX, ankleY); c.stroke();
+        c.lineWidth = 7 * Math.min(1.4, sz);
+        c.beginPath(); c.moveTo(ankX, ankleY); c.quadraticCurveTo(ankX + (toeX - ankX) * 0.55, ankleY + (groundY - ankleY) * 0.55, toeX, groundY); c.stroke();
+        c.lineWidth = 5.5 * Math.min(1.4, sz);
+        for (const d of [-1, 0, 1]) {   /* the broad feathered toes */
+          c.beginPath(); c.moveTo(toeX, groundY);
+          c.lineTo(toeX - (14 + d * 3) * sz, groundY + 4 + d * 2.4); c.stroke();
+        }
+        c.strokeStyle = 'rgba(214,210,198,0.7)'; c.lineWidth = 1.3;   /* fluff wisps */
+        for (let w = 0; w < 8; w++) {
+          const u = w / 7, wx = hipX + (toeX - hipX) * u, wy = thighY + (groundY - thighY) * u;
+          c.beginPath(); c.moveTo(wx, wy); c.lineTo(wx + 4 + (w % 3) * 2, wy + 5); c.stroke();
+        }
+      }
     }
   }
 
@@ -916,6 +941,23 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     c.beginPath(); c.ellipse(bx, by, bw, bh, -0.15, 0, TAU); c.clip();
     coatMaterial(c, bodyTube, r, p, 'feather', { detail: BIRD_MAT_DETAIL });
     c.restore();
+  }
+  if (opts.shaggy) {
+    /* drooping strands NOT clipped to the body — the shag is the part that
+       hangs off the silhouette */
+    c.lineCap = 'round';
+    for (let i = 0; i < 46; i++) {
+      const t = r();
+      const sx = bx - bw * 0.85 + t * bw * 1.7;                 /* root along the back/flank */
+      const sy = by - bh * (0.55 - t * 0.2) + r() * bh * 0.9;
+      const len = bh * (0.55 + r() * 0.55);
+      const drift = (r() - 0.35) * bw * 0.30;
+      c.strokeStyle = i % 3 ? `rgba(52,44,36,${0.30 + r() * 0.30})` : `rgba(126,112,94,${0.28 + r() * 0.25})`;
+      c.lineWidth = 1.1 + r() * 1.2;
+      c.beginPath(); c.moveTo(sx, sy);
+      c.quadraticCurveTo(sx + drift * 0.4, sy + len * 0.55, sx + drift, sy + len);
+      c.stroke();
+    }
   }
   /* ★ WAVE 8 — THE MARKS, clipped to the body so they are plumage and not
      stickers. Between them and the bill these are what a birder actually uses
@@ -1181,6 +1223,14 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     c.quadraticCurveTo(hx + hr * 0.6, hy - hr * 0.6, hx + hr * 0.3, hy - hr * 0.4);
     c.closePath(); c.fill();
     c.beginPath(); c.ellipse(hx - hr * 0.35, hy + hr * 0.85, hr * 0.22, hr * 0.34, 0.1, 0, TAU); c.fill();   /* the wattle */
+  }
+  if (opts.browComb) {
+    /* the red eyebrow wattle of the grouse family — a bright crescent riding
+       just above the eye, the only red pigment on a winter ptarmigan */
+    c.fillStyle = '#d8302a';
+    c.beginPath(); c.ellipse(hx - hr * 0.34, hy - hr * 0.42, hr * 0.42, hr * 0.16, -0.18, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(255,120,104,0.55)';
+    c.beginPath(); c.ellipse(hx - hr * 0.40, hy - hr * 0.46, hr * 0.20, hr * 0.07, -0.18, 0, TAU); c.fill();
   }
   if (opts.cap) {
     c.fillStyle = opts.cap;
@@ -1466,7 +1516,7 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Hornbill': (c, g, p, n) => faunaBird(c, g, p, { hue: '#2b2b30', legs: 0.02, bill: 'casque' }, n),
   'Cassowary': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.105, bill: 'stout', crest: true, flightless: true, size: 1.20, neck: 'long', hue: '#1f2733', plump: 1.22 }, n),
   'Ostrich': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.145, bill: 'stout', flightless: true, size: 1.42, neck: 'long', hue: '#3a332e', plump: 1.10, tail: 'fan' }, n),
-  'Emu': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.125, bill: 'stout', flightless: true, size: 1.22, neck: 'long', hue: '#6d6154', plump: 1.14 }, n),
+  'Emu': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.125, bill: 'stout', flightless: true, size: 1.22, neck: 'long', hue: '#6d6154', plump: 1.14, shaggy: true }, n),
   /* a kakapo is a FAT flightless parrot: heavy bill, heavy feet, tiny wing */
   'Kakapo': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6f8a3a', legs: 0.02, bill: 'stout', flightless: true, parrotBill: true, zygo: true, headMass: 1.35, plump: 1.34, size: 0.98 }, n),
   'Secretary Bird': (c, g, p, n) => faunaBird(c, g, p, { hue: '#8e8b84', legs: 0.24, bill: 'hook', crest: true, neck: 'long', tail: 'long', size: 0.95 }, n),

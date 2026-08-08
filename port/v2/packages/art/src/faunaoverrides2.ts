@@ -148,6 +148,16 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
        the identity in every one of them.
        Every mark is a softMark, so it BLENDS into the scale surface rather than
        being stamped on it (the pattern law, wave 5). */
+  }
+  /* ★ POLISH — THE PATTERN POST-PASS. Every dorsal mark used to be drawn
+     inside the coil loop, where the NEXT segment's own body stroke (w*1.86
+     wide, far wider than the segment spacing) immediately overpainted it —
+     the Garter's stripe and the Anaconda's ovals were being erased as fast
+     as they were laid down. The whole pattern axis now runs AFTER the coil
+     is finished. Back-to-front order kept so front-coil marks win in the
+     overlap zone. */
+  for (let i = N - 1; i > 0; i--) {
+    const a0 = pts[i]!, a1 = pts[i - 1]!, w = (a0.w + a1.w) * 0.5;
     const mx = (a0.x + a1.x) / 2, my = (a0.y + a1.y) / 2;
     if (pat === 'band' && (i % 16) < 7) {
       softMark(c, mx, my, w * 1.18, w * 1.02, '26,18,12', 0.58);
@@ -156,8 +166,6 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
       const u2 = i / (N - 1);
       const rd = Math.round(48 + u2 * 46), gn = Math.round(30 - u2 * 6);
       softMark(c, mx, my - w * 0.12, w * 1.30, w * 1.02, `${rd},${gn},20`, 0.70);
-    } else if (pat === 'oval' && (i % 23) < 8) {
-      softMark(c, mx, my - w * 0.08, w * 1.02, w * 0.86, '28,26,14', 0.72);
     } else if (pat === 'reticulate') {
       /* ⚠ A PATTERN MUST SPAN THE GIRTH, NOT DOT ALONG THE LENGTH. At w*0.66
          the cells were smaller than the body was thick, so a python's net came
@@ -173,7 +181,20 @@ export function reptSnake(c: Ctx, g: G, pIn: Pal, opts: { hood?: boolean; rattle
       softMark(c, mx, my + zz * w * 0.36, w * 0.90, w * 0.64, '20,15,11', 0.78);
     } else if (pat === 'stripe') {
       c.strokeStyle = 'rgba(238,226,164,0.72)'; c.lineWidth = w * 0.40;
+      c.lineCap = 'round';
       c.beginPath(); c.moveTo(a0.x, a0.y - w * 0.34); c.lineTo(a1.x, a1.y - w * 0.34); c.stroke();
+    }
+  }
+  if (pat === 'oval') {
+    /* ★ POLISH — the anaconda's ovals were invisible: each in-loop mark was
+       overpainted by the NEXT segment's own body stroke (the coil strokes are
+       far wider than the segment spacing). The blotches are stamped here in a
+       post-pass along the finished coil — a pale halo under a near-black core
+       — so they actually survive to the final surface. */
+    for (let i = N - 10; i > 8; i -= 23) {
+      const a0 = pts[i]!, w = a0.w;
+      softMark(c, a0.x, a0.y - w * 0.10, w * 1.05, w * 0.88, '198,188,120', 0.30);
+      softMark(c, a0.x, a0.y - w * 0.10, w * 0.80, w * 0.66, '14,12,8', 0.80);
     }
   }
   /* the head rides the coil's outer end */
@@ -1243,10 +1264,25 @@ export function marineShell(c: Ctx, g: G, pIn: Pal, opts: { kind: 'scallop' | 's
     c.closePath(); c.fill();
     rim(c, () => { c.moveTo(fx - S * 0.20, fy + S * 0.020); c.quadraticCurveTo(fx - S * 0.20, fy - S * 0.035, fx - S * 0.05, fy - S * 0.032); c.quadraticCurveTo(fx + S * 0.16, fy - S * 0.034, fx + S * 0.215, fy - S * 0.010); }, 2);
     const nx = fx + S * 0.185, ny = fy - S * 0.018;   /* the head end + eyestalks */
+    /* ★ POLISH — gp6 on the Land Snail: "no eyes at the tips of long upper
+       tentacles, and there is no second pair". The upper pair is now LONG —
+       it clears the shell line — with a fat eye bulb at each tip, and a short
+       lower feeler pair probes forward at the mouth. */
     c.strokeStyle = p.base; c.lineWidth = S * 0.017; c.lineCap = 'round';
-    for (const [dx, dy] of [[0.030, -0.070], [0.052, -0.048]] as const) {
-      c.beginPath(); c.moveTo(nx, ny); c.quadraticCurveTo(nx + S * dx * 0.4, ny + S * dy * 0.7, nx + S * dx, ny + S * dy); c.stroke();
-      c.fillStyle = '#12161c'; c.beginPath(); c.arc(nx + S * dx, ny + S * dy, S * 0.011, 0, TAU); c.fill();
+    for (const [dx, dy] of [[0.048, -0.125], [0.082, -0.100]] as const) {
+      c.beginPath(); c.moveTo(nx, ny); c.quadraticCurveTo(nx + S * dx * 0.35, ny + S * dy * 0.75, nx + S * dx, ny + S * dy); c.stroke();
+      c.fillStyle = '#12161c'; c.beginPath(); c.arc(nx + S * dx, ny + S * dy, S * 0.015, 0, TAU); c.fill();
+      c.fillStyle = 'rgba(230,236,240,0.8)'; c.beginPath(); c.arc(nx + S * dx - S * 0.005, ny + S * dy - S * 0.005, S * 0.005, 0, TAU); c.fill();
+    }
+    c.lineWidth = S * 0.011;   /* the short lower feelers */
+    for (const [dx, dy] of [[0.045, -0.006], [0.052, 0.012]] as const) {
+      c.beginPath(); c.moveTo(nx + S * 0.01, ny + S * 0.012); c.lineTo(nx + S * dx, ny + S * dy); c.stroke();
+    }
+    /* the rippling sole: scalloped muscle waves along the foot's bottom edge */
+    c.strokeStyle = 'rgba(30,22,14,0.30)'; c.lineWidth = 1.8;
+    for (let w = 0; w < 6; w++) {
+      const wx = fx - S * 0.17 + w * S * 0.062;
+      c.beginPath(); c.arc(wx, fy + S * 0.020, S * 0.030, Math.PI * 1.15, Math.PI * 1.85); c.stroke();
     }
     const sx = cx + S * 0.010, sy = cy - S * 0.030;   /* the whorl, riding the back */
     for (let i = 110; i >= 0; i--) {
