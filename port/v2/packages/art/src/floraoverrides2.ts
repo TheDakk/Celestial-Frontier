@@ -79,7 +79,7 @@ export interface PlantSpec {
   flower?: 'none' | 'head' | 'spike' | 'umbel' | 'bell' | 'star' | 'catkin' | 'cross' | 'cone'
     /* ★ WAVE 66 — the monarda FIREWORK (ragged crown of narrow tubes) and the
        brugmansia TRUMPET (huge pendulous flared horns) */
-    | 'firework' | 'trumpet';
+    | 'firework' | 'trumpet' | 'cup';
   fruit?: 'none' | 'berry' | 'drupe' | 'pome' | 'citrus' | 'pod' | 'nut' | 'cone' | 'grain' | 'melon' | 'fig' | 'cluster'
     /* ★ WAVE 58 — species fruit SHAPES. The tree body was fine; every fruit was
        the same small round sphere, so Pear read as Apple and Mango as Orange
@@ -144,6 +144,9 @@ export interface PlantSpec {
   cushion?: boolean;
   /** a vine that TRAILS horizontally along the ground/water (water spinach) */
   trail?: boolean;
+  /** ★ GOLD AUDIT — aquatic pad plant renders as a MAT of tiny floating
+      fronds (duckweed) instead of three lily pads */
+  mat?: boolean;
   /** a vine whose stem is a thick succulent ROPE with aerial roots (vanilla) */
   rope?: boolean;
   /** a woody shrub that trails as a LOW CREEPING MAT, wider than tall — the
@@ -572,6 +575,26 @@ function drawFlower(c: Ctx, p: Pal, x: number, y: number, R: number, kind: NonNu
       c.closePath(); c.fill(); c.restore();
     }
     c.fillStyle = '#f3e6a8'; c.beginPath(); c.arc(x, y, R * 0.20, 0, TAU); c.fill();
+  } else if (kind === 'cup') {
+    /* ★ GOLD AUDIT — the tulip: ONE upright cup of overlapping petals with a
+       rounded base and slightly flared rim, nothing else. */
+    const gg = c.createLinearGradient(x, y - R * 1.1, x, y + R * 0.6);
+    gg.addColorStop(0, col); gg.addColorStop(1, 'rgba(70,22,30,0.92)');
+    c.fillStyle = gg;
+    c.beginPath();
+    c.moveTo(x - R * 0.74, y - R * 0.95);
+    c.quadraticCurveTo(x - R * 0.92, y + R * 0.28, x, y + R * 0.52);
+    c.quadraticCurveTo(x + R * 0.92, y + R * 0.28, x + R * 0.74, y - R * 0.95);
+    c.quadraticCurveTo(x + R * 0.28, y - R * 0.55, x, y - R * 0.88);
+    c.quadraticCurveTo(x - R * 0.28, y - R * 0.55, x - R * 0.74, y - R * 0.95);
+    c.closePath(); c.fill();
+    c.fillStyle = col;   /* the front petal */
+    c.beginPath();
+    c.moveTo(x - R * 0.46, y - R * 0.75);
+    c.quadraticCurveTo(x - R * 0.58, y + R * 0.22, x, y + R * 0.48);
+    c.quadraticCurveTo(x + R * 0.58, y + R * 0.22, x + R * 0.46, y - R * 0.75);
+    c.quadraticCurveTo(x, y - R * 0.38, x - R * 0.46, y - R * 0.75);
+    c.closePath(); c.fill();
   } else if (kind === 'firework') {
     /* ★ WAVE 66 — the monarda head: a ragged crown of narrow TUBULAR florets
        shooting up and out at every angle from a central boss, over leafy bracts. */
@@ -811,28 +834,42 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       c.beginPath(); c.ellipse(bx2, by2 + S * 0.012, bw2 * 0.5, S * 0.006, 0, 0, TAU); c.stroke();
     }
     c.lineWidth = tw * 1.15;
-    /* ★ WAVE 61 — only a TALL conifer is a spire. A pinyon pine is a low rounded
-       bushy tree, and gp5 rightly failed it as a Christmas-tree cone; those
-       (not tall) fall through to the normal rounded crown they read as before. */
-    const conifer = (spec.leaf === 'needle' || spec.leaf === 'scale') && spec.fruit === 'cone' && spec.tall;
+    /* ★ WAVE 61 → GOLD AUDIT — a needle-leaf tree is ALWAYS a conifer; the
+       old gate sent non-tall pines (Pinyon) and the Yew to the broadleaf
+       lollipop, which the gold audit failed as "round broadleaf-tree
+       silhouette is wrong". Tall = the spire; not tall = a LOW BROAD bushy
+       pyramid (wider tiers, less taper) — not a Christmas cone (gp5), not a
+       lollipop (gold audit). */
+    const conifer = spec.leaf === 'needle' || spec.leaf === 'scale';
     if (conifer) {
       /* ★ WAVE 58 — A CONIFER IS A CONICAL SPIRE OF TIERED BOUGHS, not a round
          deciduous lollipop (the judge failed Spruce/Cedar/Redwood for exactly
          that). Stacked drooping triangular tiers narrowing to a leader. */
-      const tiers = 6, cwid = S * 0.19 * spread;
+      const tallC = !!spec.tall;
+      const tiers = tallC ? 6 : 5;
+      const cwid = S * (tallC ? 0.19 : 0.27) * spread;
+      /* non-tall climbs to ~0.86H so the trunk never pokes out as a stub */
+      const climb = tallC ? 0.68 : 0.58, taper = tallC ? 0.82 : 0.74;
       const gA = [40, 78, 52];
       const fmix = (ch: number, an: number): number => an * 0.66 + ch * 0.34;
       const fB = [fmix(p.cr, gA[0]!), fmix(p.cg, gA[1]!), fmix(p.cb, gA[2]!)];
       for (let t = 0; t < tiers; t++) {
-        const v = t / tiers, ty = base - H * (0.28 + v * 0.68), half = cwid * (1 - v * 0.82);
+        const v = t / tiers, ty = base - H * (0.28 + v * climb), half = cwid * (1 - v * taper);
         const val = 0.55 + v * 0.5;
         c.fillStyle = `rgb(${Math.min(255, fB[0]! * val | 0)},${Math.min(255, fB[1]! * val | 0)},${Math.min(255, fB[2]! * val | 0)})`;
-        c.beginPath(); c.moveTo(cx + lean * S * 0.08 * v, ty - H * 0.16);
+        c.beginPath(); c.moveTo(cx + lean * S * 0.08 * v, ty - H * (tallC ? 0.16 : 0.12));
         c.lineTo(cx - half + lean * S * 0.08 * v, ty); c.lineTo(cx + half + lean * S * 0.08 * v, ty); c.closePath(); c.fill();
         /* a few needle sprigs on the tier edge for texture */
         for (let i = 0; i < 5; i++) { const sx = cx + (i / 4 - 0.5) * half * 1.6 + lean * S * 0.08 * v; drawLeaf(c, p, sx, ty - H * 0.02, i % 2 ? 0.4 : Math.PI - 0.4, S * 0.03, 'needle'); }
       }
       if (spec.fruit === 'cone') for (let i = 0; i < 3; i++) drawFruit(c, p, cx + (r() - 0.5) * cwid, base - H * (0.4 + r() * 0.4), S * 0.03, 'cone', spec.fhue, r);
+      else if (spec.fruit === 'berry') {
+        /* the yew's red arils, scattered through the dark boughs */
+        c.fillStyle = spec.fhue ?? '#c02c2c';
+        for (let i = 0; i < 9; i++) {
+          c.beginPath(); c.arc(cx + (r() - 0.5) * cwid * 1.5, base - H * (0.30 + r() * (climb * 0.9)), S * 0.011, 0, TAU); c.fill();
+        }
+      }
     } else {
     for (const s of [-1, 1] as const) {   /* two boughs into the canopy */
       c.beginPath(); c.moveTo(cx + lean * S * 0.06, base - H * 0.45);
@@ -1013,12 +1050,15 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
           c.moveTo(cx + Math.cos(a) * L * 0.55 * v - 5, base - L * 0.72 * v);
           c.lineTo(cx + Math.cos(a) * L * 0.55 * v + 5, base - L * 0.72 * v); c.stroke();
         }
+        /* ★ GOLD AUDIT — PAPYRUS: every cane is topped by its own radiating
+           umbel (the firework head), not one head on the tallest stem. */
+        if (spec.flower === 'firework') drawFlower(c, p, tipX, tipY, S * 0.042, 'firework', spec.fhue, r);
       }
     }
     /* the head rides the tallest blade, JOINED to the crown by its own stalk
        — it used to float disconnected above the grass (Nick's review) */
     const cereal = spec.fruit === 'grain' || spec.fruit === 'panicle' || spec.fruit === 'club';
-    if (cereal || (spec.flower && spec.flower !== 'none')) {
+    if (cereal || (spec.flower && spec.flower !== 'none' && !(cane && spec.flower === 'firework'))) {
       const headY = base - H * 0.80;
       c.strokeStyle = stemCol; c.lineWidth = S * 0.007; c.lineCap = 'round';
       c.beginPath(); c.moveTo(cx, base); c.quadraticCurveTo(cx + lean * S * 0.03, base - H * 0.5, cx + S * 0.01, headY + S * 0.03); c.stroke();
@@ -1135,10 +1175,35 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
       };
       for (const t2 of [-1, 0, 1]) branch(cx + t2 * S * 0.055, -Math.PI / 2 + t2 * 0.22, 8, S * 0.020, t2 === 0 ? 0 : 1);
     } else if (spec.leaf === 'pad') {
-      for (let i = 0; i < 4; i++) {
-        const a = -Math.PI / 2 + (i - 1.5) * 0.55;
-        drawLeaf(c, p, cx, base - H * 0.12, a, H * 0.55 * spread, 'pad');
+      /* ★ GOLD AUDIT — PRICKLY PEAR is a STACK OF JOINTED PADS growing off
+         each other's rims, not four pad leaves fanned from the soil. */
+      const pr0 = S * 0.105 * spread;
+      const pads: Array<[number, number, number, number]> = [
+        [cx, base - pr0 * 0.9, pr0, 0],
+        [cx - pr0 * 0.95, base - pr0 * 2.15, pr0 * 0.82, -0.38],
+        [cx + pr0 * 0.88, base - pr0 * 2.05, pr0 * 0.78, 0.42],
+        [cx - pr0 * 0.25, base - pr0 * 3.15, pr0 * 0.62, -0.08],
+      ];
+      for (const [px2, py2, pr2, pa] of pads) {
+        const gg2 = c.createRadialGradient(px2 - pr2 * 0.3, py2 - pr2 * 0.35, pr2 * 0.2, px2, py2, pr2 * 1.3);
+        gg2.addColorStop(0, p.lit); gg2.addColorStop(0.6, p.base); gg2.addColorStop(1, p.dark);
+        c.fillStyle = gg2;
+        c.beginPath(); c.ellipse(px2, py2, pr2 * 0.70, pr2, pa, 0, TAU); c.fill();
+        c.fillStyle = 'rgba(238,226,180,0.85)';   /* the glochid dots */
+        for (let k2 = 0; k2 < 8; k2++) {
+          const aa = (k2 / 8) * TAU + pa + 0.3;
+          c.beginPath(); c.arc(px2 + Math.cos(aa) * pr2 * 0.44, py2 + Math.sin(aa) * pr2 * 0.66, 1.7, 0, TAU); c.fill();
+        }
+        if (spec.thorns) {
+          c.strokeStyle = '#e8dcbe'; c.lineWidth = 1.6;
+          for (let k2 = 0; k2 < 7; k2++) {
+            const aa = -Math.PI * 0.85 + (k2 / 6) * Math.PI * 0.7 + pa;
+            const sx2 = px2 + Math.cos(aa) * pr2 * 0.66, sy2 = py2 + Math.sin(aa) * pr2 * 0.94;
+            c.beginPath(); c.moveTo(sx2, sy2); c.lineTo(sx2 + Math.cos(aa) * 8, sy2 + Math.sin(aa) * 8); c.stroke();
+          }
+        }
       }
+      topAnchor = pr0 * 3.6;
     } else {
       /* ★ WAVE 67 — a non-tall column is a squat accordion BARREL (barrel
          cactus): far wider, shorter, more ribs. */
@@ -1188,7 +1253,24 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     }
     c.stroke();
   } else if (spec.habit === 'aquatic') {
-    if (spec.leaf === 'pad') {
+    if (spec.leaf === 'pad' && spec.mat) {
+      /* ★ GOLD AUDIT — DUCKWEED is a dense mat of TINY floating fronds, not
+         three lily pads. Dozens of paired dots scattered on the waterline. */
+      const wl = base - S * 0.06;
+      c.fillStyle = 'rgba(28,52,78,0.55)';
+      c.beginPath(); c.ellipse(cx, wl + S * 0.03, S * 0.32 * spread, S * 0.035, 0, 0, TAU); c.fill();
+      for (let i = 0; i < 34; i++) {
+        const px = cx + (r() - 0.5) * S * 0.56 * spread, py = wl + (r() - 0.5) * S * 0.030;
+        const pr = S * (0.010 + r() * 0.008);
+        c.fillStyle = i % 3 ? p.base : p.lit;
+        /* each frond is a 2-3 lobed cluster of tiny discs */
+        for (let k2 = 0; k2 < 2 + (i % 2); k2++) {
+          c.beginPath(); c.ellipse(px + k2 * pr * 1.4, py + (k2 % 2) * pr * 0.5, pr, pr * 0.72, 0, 0, TAU); c.fill();
+        }
+      }
+      c.strokeStyle = 'rgba(160,205,240,0.30)'; c.lineWidth = 2;
+      c.beginPath(); c.ellipse(cx, wl + S * 0.012, S * 0.34 * spread, S * 0.030, 0, 0, TAU); c.stroke();
+    } else if (spec.leaf === 'pad') {
       /* FLOATING PADS on a waterline — the lily/lotus/duckweed body */
       const wl = base - S * 0.06;
       c.fillStyle = 'rgba(28,52,78,0.55)';
@@ -1231,21 +1313,48 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
     } else if (spec.flowerN === 1) {
       /* ★ WAVE 67 — BULL KELP: one long whip STIPE to a single round BULB
          float, with a streamer of blades pouring off the bulb. The defining
-         onion-bulb was absent from the strap bundle. */
+         onion-bulb was absent from the strap bundle.
+         ★ GOLD AUDIT — beefed: the bulb is now LARGE and the streamers are
+         broad trailing ribbons, so "stipe → float → blades" reads at a glance. */
       holdfast(c, cx, base, barkCol);
-      const topX = cx + S * 0.06, topY2 = base - H * 0.98;
-      c.strokeStyle = p.dark; c.lineWidth = S * 0.014; c.lineCap = 'round';
+      const topX = cx + S * 0.06, topY2 = base - H * 0.94;
+      c.strokeStyle = p.dark; c.lineWidth = S * 0.016; c.lineCap = 'round';
       c.beginPath(); c.moveTo(cx, base);
       c.quadraticCurveTo(cx - S * 0.05, base - H * 0.5, topX, topY2); c.stroke();
-      const bg2 = c.createRadialGradient(topX - 5, topY2 - 5, 2, topX, topY2, S * 0.045);
+      const bg2 = c.createRadialGradient(topX - 7, topY2 - 7, 3, topX, topY2, S * 0.065);
       bg2.addColorStop(0, p.lit); bg2.addColorStop(1, p.dark);
-      c.fillStyle = bg2; c.beginPath(); c.arc(topX, topY2, S * 0.042, 0, TAU); c.fill();
-      for (let i = 0; i < 5; i++) {   /* the blade streamers off the bulb */
-        const t2 = (i / 4) - 0.5;
-        c.strokeStyle = i % 2 ? p.base : p.dark; c.lineWidth = S * 0.016; c.lineCap = 'round';
-        c.beginPath(); c.moveTo(topX + t2 * S * 0.02, topY2 - S * 0.02);
-        c.quadraticCurveTo(topX + t2 * S * 0.16, topY2 - S * 0.10, topX + t2 * S * 0.28 + S * 0.05, topY2 - S * 0.03 + Math.abs(t2) * S * 0.05);
+      c.fillStyle = bg2; c.beginPath(); c.arc(topX, topY2, S * 0.060, 0, TAU); c.fill();
+      for (let i = 0; i < 6; i++) {   /* the blade streamers off the bulb */
+        const t2 = (i / 5) - 0.5;
+        c.strokeStyle = i % 2 ? p.base : p.dark; c.lineWidth = S * 0.026; c.lineCap = 'round';
+        c.beginPath(); c.moveTo(topX + t2 * S * 0.03, topY2 - S * 0.04);
+        c.quadraticCurveTo(topX + t2 * S * 0.22, topY2 - S * 0.13, topX + t2 * S * 0.36 + S * 0.06, topY2 + S * 0.01 + Math.abs(t2) * S * 0.06);
         c.stroke();
+      }
+    } else if (spec.leaf === 'lance') {
+      /* ★ GOLD AUDIT — SARGASSUM: branching fronds carrying many small
+         leaf-blades and round GAS BLADDERS, not a bundle of rods. */
+      holdfast(c, cx, base, barkCol);
+      for (let f = 0; f < 4; f++) {
+        const u = (f / 3) - 0.5;
+        const sway = u * S * 0.20 * spread;
+        const topF = 0.68 + r() * 0.28;
+        c.strokeStyle = f % 2 ? p.base : p.dark; c.lineWidth = S * 0.009; c.lineCap = 'round';
+        c.beginPath(); c.moveTo(cx + u * S * 0.03, base);
+        c.bezierCurveTo(cx + sway * 0.4, base - H * 0.35, cx + sway * 1.1, base - H * 0.65, cx + sway, base - H * topF);
+        c.stroke();
+        for (let k2 = 1; k2 <= 6; k2++) {   /* leaflets + bladders up the frond */
+          const v = k2 / 7, mx = cx + u * S * 0.03 + sway * v * 0.95, my = base - H * topF * v;
+          const la = (k2 % 2 ? 1 : -1) * 0.9 - Math.PI / 2;
+          drawLeaf(c, p, mx + Math.cos(la) * S * 0.016, my + Math.sin(la) * S * 0.012, la, S * 0.035, 'lance');
+          if (k2 % 2 === 0) {   /* the round float */
+            c.fillStyle = p.lit;
+            c.beginPath(); c.arc(mx - Math.cos(la) * S * 0.014, my, S * 0.011, 0, TAU); c.fill();
+            c.strokeStyle = 'rgba(60,48,20,0.5)'; c.lineWidth = 1;
+            c.beginPath(); c.arc(mx - Math.cos(la) * S * 0.014, my, S * 0.011, 0, TAU); c.stroke();
+            c.strokeStyle = f % 2 ? p.base : p.dark; c.lineWidth = S * 0.009;
+          }
+        }
       }
     } else {
     /* held up by water, not by wood: straps rising from a holdfast (kelp/wrack) */
@@ -1278,8 +1387,27 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
         c.fillStyle = p.lit;
         for (let k = 1; k <= 3; k++) { const v = k / 3.5, mx = cx + sway * v, my = base - H * v * topFrac;
           for (const sgn of [-1, 1] as const) { c.beginPath(); c.ellipse(mx + sgn * S * 0.018, my, S * 0.012, S * 0.016, 0, 0, TAU); c.fill(); } }
-      } else if (spec.leaf === 'blade') {   /* a single float bulb near the tip (bull kelp) */
-        c.fillStyle = p.lit; c.beginPath(); c.ellipse(tip[0], tip[1] + S * 0.02, S * 0.02, S * 0.028, 0, 0, TAU); c.fill();
+      } else if (spec.leaf === 'blade') {
+        /* ★ GOLD AUDIT — GIANT KELP/KELP: each strap is a STIPE carrying
+           broad blades, each blade with a gas bladder at its base — "a
+           bundle of narrow rods" was the failed read. */
+        for (let k2 = 1; k2 <= 3; k2++) {
+          const v = 0.30 + (k2 / 3) * 0.62;
+          const mx = cx + sway * v * 1.05, my = base - H * topFrac * v;
+          const bside = (k2 % 2 ? 1 : -1);
+          c.fillStyle = p.lit;   /* the bladder at the blade's base */
+          c.beginPath(); c.arc(mx, my, S * 0.013, 0, TAU); c.fill();
+          /* the blade: a broad tapering ribbon angling up-and-out */
+          const ba = -Math.PI / 2 + bside * (0.55 + v * 0.3);
+          const bl = H * 0.16, bw2 = S * 0.020;
+          const ex2 = mx + Math.cos(ba) * bl, ey2 = my + Math.sin(ba) * bl;
+          c.fillStyle = i % 2 ? p.base : p.dark;
+          c.beginPath();
+          c.moveTo(mx, my - bw2 * 0.4);
+          c.quadraticCurveTo((mx + ex2) / 2 + bside * bw2 * 1.6, (my + ey2) / 2, ex2, ey2);
+          c.quadraticCurveTo((mx + ex2) / 2 - bside * bw2 * 0.4, (my + ey2) / 2 + bw2, mx, my + bw2 * 0.6);
+          c.closePath(); c.fill();
+        }
       }
     }
     }

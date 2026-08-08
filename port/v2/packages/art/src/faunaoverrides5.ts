@@ -1775,14 +1775,22 @@ export function faunaCloakSquid(c: Ctx, g: G, pIn: Pal, name = ''): void {
     c.quadraticCurveTo((cx + ax) / 2, (my + ay) / 2 + S * 0.02, ax, ay);
     c.stroke();
   }
-  /* the HUGE eye — a vampire squid has the largest eye for its size of any animal */
-  const er = mw * (vamp ? 0.52 : 0.40);
-  c.fillStyle = vamp ? '#e04a3c' : '#d8d2c4';
-  c.beginPath(); c.arc(cx + mw * 0.34, my + mh * 0.10, er, 0, TAU); c.fill();
-  c.fillStyle = '#100c10';
-  c.beginPath(); c.arc(cx + mw * 0.34, my + mh * 0.10, er * 0.52, 0, TAU); c.fill();
-  c.fillStyle = 'rgba(255,255,255,0.8)';
-  c.beginPath(); c.arc(cx + mw * 0.22, my + mh * 0.02, er * 0.20, 0, TAU); c.fill();
+  /* the eyes. A vampire squid reads in profile — one HUGE red eye (largest
+     for its size of any animal). ★ POLISH — the dumbo octopus was wearing
+     that same single central eye and Nick's gold audit called it "cyclopean
+     …skirt/dress-like"; an octopus faces you with TWO eyes, one each side
+     of the mantle base. */
+  const er = mw * (vamp ? 0.52 : 0.34);
+  for (const s of vamp ? [1] : [-1, 1]) {
+    const ex = vamp ? cx + mw * 0.34 : cx + s * mw * 0.46;
+    const ey = my + mh * (vamp ? 0.10 : 0.34);
+    c.fillStyle = vamp ? '#e04a3c' : '#d8d2c4';
+    c.beginPath(); c.arc(ex, ey, er, 0, TAU); c.fill();
+    c.fillStyle = '#100c10';
+    c.beginPath(); c.arc(ex, ey, er * 0.52, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(255,255,255,0.8)';
+    c.beginPath(); c.arc(ex - er * 0.30, ey - er * 0.24, er * 0.20, 0, TAU); c.fill();
+  }
   if (vamp) {
     /* the photophore sparks a vampire squid fires instead of ink */
     for (let i = 0; i < 16; i++) {

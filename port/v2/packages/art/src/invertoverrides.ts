@@ -491,7 +491,13 @@ export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: 
       const a = -0.75 + i * 0.52;
       const ox = cx - b * 0.4 + i * b * 0.34;
       const kx = ox + s * Math.cos(a) * reach * 0.62, ky = cy - b * 0.55 - Math.sin(a) * reach * 0.30;
-      const ex = ox + s * Math.cos(a) * reach, ey = cy + b * 1.4 + i * b * 0.18;
+      /* ★ GOLD AUDIT — cos() is symmetric, so legs 1&4 and 2&3 landed at the
+         SAME horizontal reach and eight legs read as four. The plain spider's
+         feet now fan RADIALLY (front pair up-forward, rear pair down-back);
+         hairy/longleg/fused keep their judged-good geometry (D-ART-14). */
+      const fan = !opts.hairy && !opts.longleg && !opts.fused;
+      const ex = ox + s * Math.cos(a) * reach;
+      const ey = fan ? cy + b * 1.0 + Math.sin(a) * reach * 0.55 : cy + b * 1.4 + i * b * 0.18;
       /* ★ WAVE 62 — a tarantula's legs are THICK AND FURRED; lineWidth 6 with
          five hair ticks read as "identical thin bare spider legs" (gp5). */
       limb(c, ox, cy, ex, ey, kx, ky, opts.hairy ? 11 : (opts.longleg ? 2.6 : 4), p.dark);

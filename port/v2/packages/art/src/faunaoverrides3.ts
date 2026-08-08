@@ -75,6 +75,9 @@ export interface FishSpec {
   tail: 'forked' | 'lunate' | 'round' | 'point' | 'shark' | 'fan' | 'none' | 'veil';
   snout: 'blunt' | 'jaw' | 'bill' | 'shovel' | 'tube' | 'hammer';
   dorsal: 'one' | 'sail' | 'two' | 'spiny' | 'none' | 'sharkfin';
+  /** ★ GOLD AUDIT — sail height multiplier + bright membrane: a sailfish's
+      sail must DOMINATE the silhouette, not sit as a dark sliver */
+  sailScale?: number;
   pattern?: 'bands' | 'stripes' | 'spots' | 'mottle' | 'clown' | 'lateral';
   shark?: boolean;    /** gill slits, swept pectorals, heterocercal tail */
   lure?: boolean;     /** the anglerfish esca */
@@ -244,15 +247,23 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
   };
   c.fillStyle = p.dark;
   if (spec.dorsal === 'sail') {
+    const SC = spec.sailScale ?? 1;
     const [x0, y0] = dorsalAt(0.28), [x1, y1] = dorsalAt(0.86);
+    if (SC > 1) {
+      /* the billfish sail: a bright cobalt membrane taller than the body */
+      const sg = c.createLinearGradient(0, y1 - depth * 2.5 * SC, 0, y0);
+      sg.addColorStop(0, 'rgba(58,92,180,0.92)'); sg.addColorStop(1, 'rgba(30,44,96,0.95)');
+      c.fillStyle = sg;
+    }
     c.beginPath(); c.moveTo(x0, y0);
-    c.quadraticCurveTo((x0 + x1) / 2, y1 - depth * 2.5, x1, y1);
+    c.quadraticCurveTo((x0 + x1) / 2, y1 - depth * 2.5 * SC, x1, y1);
     c.lineTo(x1, y1); c.closePath(); c.fill();
     c.strokeStyle = 'rgba(20,26,34,0.30)'; c.lineWidth = 1.8;
     for (let i = 1; i < 9; i++) {
       const t = 0.28 + (0.58 * i) / 9, [dx, dy] = dorsalAt(t);
-      c.beginPath(); c.moveTo(dx, dy); c.lineTo(dx + depth * 0.20, dy - depth * (1.35 - Math.abs(i - 4.5) * 0.20)); c.stroke();
+      c.beginPath(); c.moveTo(dx, dy); c.lineTo(dx + depth * 0.20 * SC, dy - depth * (1.35 - Math.abs(i - 4.5) * 0.20) * SC); c.stroke();
     }
+    if (SC > 1) c.fillStyle = p.dark;
   } else if (spec.dorsal === 'sharkfin') {
     /* ★ WAVE 59 — the iconic tall first dorsal. The judge failed sharks for a
        fin that read as a small pale ghost; it is now a big OPAQUE dark triangle
@@ -875,9 +886,9 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Sardine': F({ hue: '#8a99a3', profile: 'fusiform', len: 0.20, depth: 0.055, tail: 'forked', snout: 'blunt', dorsal: 'one' }),
   'Anchovy': F({ profile: 'fusiform', len: 0.21, depth: 0.038, tail: 'forked', snout: 'jaw', dorsal: 'one', hue: '#c3cfd9', pattern: 'stripes' }),
   'Herring': F({ profile: 'deep', len: 0.205, depth: 0.062, tail: 'forked', snout: 'blunt', dorsal: 'one', hue: '#b9cede' }),
-  'Mahi-Mahi': F({ hue: '#6cbf3f', profile: 'deep', len: 0.24, depth: 0.082, tail: 'lunate', snout: 'blunt', dorsal: 'sail' }),
+  'Mahi-Mahi': F({ hue: '#6cbf3f', profile: 'deep', len: 0.24, depth: 0.082, tail: 'lunate', snout: 'blunt', dorsal: 'sail', bighead: 1.35 }),
   'Marlin': F({ hue: '#1f3b7a', profile: 'fusiform', len: 0.25, depth: 0.072, tail: 'lunate', snout: 'bill', dorsal: 'sail' }),
-  'Sailfish': F({ hue: '#3a4c94', profile: 'fusiform', len: 0.25, depth: 0.068, tail: 'lunate', snout: 'bill', dorsal: 'sail' }),
+  'Sailfish': F({ hue: '#3a4c94', profile: 'fusiform', len: 0.25, depth: 0.068, tail: 'lunate', snout: 'bill', dorsal: 'sail', sailScale: 2.3 }),
   'Swordfish': F({ hue: '#57405a', profile: 'fusiform', len: 0.25, depth: 0.070, tail: 'lunate', snout: 'bill', dorsal: 'one' }),
   'Flying Fish': F({ hue: '#4a6f8c', profile: 'fusiform', len: 0.22, depth: 0.052, tail: 'forked', snout: 'blunt', dorsal: 'one', wings: 'glide' }),
   'Remora': F({ profile: 'fusiform', len: 0.255, depth: 0.034, tail: 'forked', snout: 'blunt', dorsal: 'two', hue: '#2f343b' }),
@@ -936,7 +947,9 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Coelacanth': F({ hue: '#3b4a5e', profile: 'fusiform', len: 0.23, depth: 0.084, tail: 'fan', snout: 'blunt', dorsal: 'two', pattern: 'spots' }),
   /* ── eels and ribbons ── */
   'Eel': F({ hue: '#9a8a34', profile: 'eel', len: 0.27, depth: 0.044, tail: 'point', snout: 'jaw', dorsal: 'none' }),
-  'Moray Eel': F({ profile: 'eel', len: 0.28, depth: 0.031, tail: 'point', snout: 'jaw', dorsal: 'sail', pattern: 'spots', teeth: true, gape: true, hue: '#68793f' }),
+  /* ★ GOLD AUDIT — the `gape` tunnel read as "a sucker/circular mouth" on an
+     eel; a moray's read is the JAW. Reverted to snout jaw + teeth. */
+  'Moray Eel': F({ profile: 'eel', len: 0.28, depth: 0.031, tail: 'point', snout: 'jaw', dorsal: 'sail', pattern: 'spots', teeth: true, hue: '#68793f' }),
   'Electric Eel': F({ hue: '#4e5f52', profile: 'eel', len: 0.28, depth: 0.048, tail: 'point', snout: 'blunt', dorsal: 'none' }),
   'Gulper Eel': F({ hue: '#131520', profile: 'eel', len: 0.27, depth: 0.050, tail: 'point', snout: 'jaw', dorsal: 'none', teeth: true, glow: true }),
   'Oarfish': F({ hue: '#b6bcc6', profile: 'ribbon', len: 0.28, depth: 0.046, tail: 'point', snout: 'blunt', dorsal: 'spiny' }),
@@ -975,7 +988,7 @@ export const FAUNA3_NAME: Record<string, Painter3> = {
   'Dragonfish': F({ hue: '#8a2230', profile: 'eel', len: 0.24, depth: 0.044, tail: 'point', snout: 'jaw', dorsal: 'none', glow: true, teeth: true }),
   'Barreleye': F({ hue: '#3f7a72', profile: 'fusiform', len: 0.18, depth: 0.062, tail: 'fan', snout: 'blunt', dorsal: 'one', glow: true, dome: true }),
   'Deep-Sea Fish': F({ hue: '#6e5563', profile: 'fusiform', len: 0.19, depth: 0.058, tail: 'forked', snout: 'jaw', dorsal: 'one', glow: true }),
-  'Monkfish': F({ hue: '#7d6a4e', profile: 'globe', len: 0.19, depth: 0.062, tail: 'round', snout: 'jaw', dorsal: 'none', lure: true, teeth: true, pattern: 'mottle' }),
+  'Monkfish': F({ hue: '#7d6a4e', profile: 'globe', len: 0.19, depth: 0.062, tail: 'round', snout: 'jaw', dorsal: 'none', lure: true, teeth: true, pattern: 'mottle', bighead: 1.7 }),
   /* ── SHARKS: heterocercal tail, gill slits, swept pectorals ── */
   'Shark': F({ profile: 'fusiform', len: 0.25, depth: 0.057, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true, hue: '#6e7a86' }),
   'Reef Shark': F({ hue: '#838d7e', profile: 'fusiform', len: 0.25, depth: 0.066, tail: 'shark', snout: 'jaw', dorsal: 'sharkfin', shark: true }),
