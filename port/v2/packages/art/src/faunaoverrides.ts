@@ -675,6 +675,7 @@ export interface BirdSpec {
   nest?: boolean;                                  /** ★ WAVE 68 — the weaverbird's woven ball nest */
   comb?: boolean;                                  /** ★ POLISH — the fleshy red serrated chicken comb */
   browComb?: boolean;                              /** ★ POLISH — the grouse/ptarmigan red wattle ABOVE the eye */
+  brow?: boolean;                                  /** ★ GOLD AUDIT — the raptor's supraorbital ridge: the fierce hooded glare */
   featherFeet?: boolean;                           /** ★ POLISH — snowshoe-feathered toes: white fluff to the ground */
   speckle?: boolean;                               /** pale flecks over dark (starling) */
   streak?: boolean;                                /** streaky ground-bird camouflage (lark, pipit) */
@@ -1224,6 +1225,14 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     c.closePath(); c.fill();
     c.beginPath(); c.ellipse(hx - hr * 0.35, hy + hr * 0.85, hr * 0.22, hr * 0.34, 0.1, 0, TAU); c.fill();   /* the wattle */
   }
+  if (opts.brow) {
+    /* the supraorbital ridge: a heavy dark shelf jutting over the eye, which
+       is most of why an eagle's face looks fierce and a pigeon's does not */
+    c.strokeStyle = `rgba(${p.cr * 0.34 | 0},${p.cg * 0.34 | 0},${p.cb * 0.32 | 0},0.95)`;
+    c.lineWidth = hr * 0.20; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(hx - hr * 0.78, hy - hr * 0.28);
+    c.quadraticCurveTo(hx - hr * 0.30, hy - hr * 0.52, hx + hr * 0.22, hy - hr * 0.38); c.stroke();
+  }
   if (opts.browComb) {
     /* the red eyebrow wattle of the grouse family — a bright crescent riding
        just above the eye, the only red pigment on a winter ptarmigan */
@@ -1489,8 +1498,8 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   /* ★ GOLD AUDIT — 'soaring' skips the leg loop entirely, so `talons: true`
      never drew a single talon on either eagle. Perch them: the heavy GRIP
      legs + hooks are the raptor read. */
-  'Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#4a3a28', legs: 0.035, bill: 'hook', tail: 'fan', headMass: 1.5, talons: true, plump: 1.12 }, n),
-  'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6b7079', legs: 0.035, bill: 'hook', crest: true, headMass: 1.8, talons: true, size: 1.12 }, n),
+  'Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#4a3a28', legs: 0.040, bill: 'hook', tail: 'fan', headMass: 1.6, talons: true, plump: 1.32, elong: 1.12, size: 1.15, brow: true }, n),
+  'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6b7079', legs: 0.040, bill: 'hook', crest: true, headMass: 1.9, talons: true, plump: 1.38, elong: 1.10, size: 1.25, brow: true }, n),
   /* ★ WAVE 50 — HAWK, FALCON AND OSPREY WERE ONE BIRD IN THREE HUES. Their
      rows were byte-identical apart from `hue` (Osprey added `size`), so the
      new [SHAPE] tier scores Hawk ≈ Falcon at 0.06 and Hawk ≈ Osprey at 0.25.
