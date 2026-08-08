@@ -1918,6 +1918,21 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
         c.beginPath(); c.moveTo(bx2, by2);
         c.quadraticCurveTo(bx2 + s * headR * 0.10, by2 - HL * 0.6, bx2 - headR * 0.30 + s * headR * 0.34, by2 - HL);
         c.stroke();
+        if (horn === 'straight') {
+          /* ★ POLISH — the ANNULATIONS: ring ridges up the lower two-thirds,
+             "smooth putty" was the verdict without them. Ticks across the
+             horn's own quadratic path so they follow its sweep. */
+          c.lineWidth = 2.2; c.strokeStyle = 'rgba(90,74,46,0.75)';
+          const cx3 = bx2 + s * headR * 0.10, cy3 = by2 - HL * 0.6;
+          const ex3 = bx2 - headR * 0.30 + s * headR * 0.34, ey3 = by2 - HL;
+          for (let k = 1; k <= 6; k++) {
+            const t = k / 10;   /* lower 60% of the horn */
+            const mx3 = (1 - t) * (1 - t) * bx2 + 2 * (1 - t) * t * cx3 + t * t * ex3;
+            const my3 = (1 - t) * (1 - t) * by2 + 2 * (1 - t) * t * cy3 + t * t * ey3;
+            c.beginPath(); c.moveTo(mx3 - 4, my3 + 1.5); c.lineTo(mx3 + 4, my3 - 1.5); c.stroke();
+          }
+          c.lineWidth = 8; c.strokeStyle = '#cbb894';
+        }
       }
       if (horn === 'straight' || horn === 'spiral') {   /* the annulations */
         c.strokeStyle = 'rgba(60,48,30,0.30)'; c.lineWidth = 2;

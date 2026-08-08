@@ -461,9 +461,18 @@ export function faunaCephalopod(c: Ctx, g: G, pIn: Pal, opts: { squid: boolean; 
       c.beginPath(); c.ellipse(cx + s * mw * 1.8, my + mh + 192, 11, 7, s * 0.4, 0, TAU); c.fill();
     }
   }
-  /* mantle */
+  /* mantle — ★ POLISH: a squid's is a TORPEDO tapering to a point, not an egg */
   c.fillStyle = bodyGrad(c, p, cx, my, mw * 1.4);
-  c.beginPath(); c.ellipse(cx, my, mw, mh, 0, 0, TAU); c.fill();
+  if (opts.squid) {
+    c.beginPath();
+    c.moveTo(cx - mw, my + mh * 0.55);
+    c.quadraticCurveTo(cx - mw * 0.9, my - mh * 0.5, cx, my - mh * 1.25);   /* the pointed tip */
+    c.quadraticCurveTo(cx + mw * 0.9, my - mh * 0.5, cx + mw, my + mh * 0.55);
+    c.quadraticCurveTo(cx, my + mh * 1.02, cx - mw, my + mh * 0.55);
+    c.closePath(); c.fill();
+  } else {
+    c.beginPath(); c.ellipse(cx, my, mw, mh, 0, 0, TAU); c.fill();
+  }
   rim(c, () => c.ellipse(cx, my, mw, mh, 0, -2.8, 0.35), 2.2);
   /* the lateral fin skirt */
   c.fillStyle = `rgba(${p.cr},${p.cg},${p.cb},0.45)`;
