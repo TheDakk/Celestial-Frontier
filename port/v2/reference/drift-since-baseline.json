@@ -1,6 +1,10 @@
 [
  {
   "set": "earth-fauna",
+  "name": "Aardvark"
+ },
+ {
+  "set": "earth-fauna",
   "name": "African Wild Dog"
  },
  {
@@ -22,6 +26,10 @@
  {
   "set": "earth-fauna",
   "name": "Avocet"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Badger"
  },
  {
   "set": "earth-fauna",
@@ -117,6 +125,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Civet"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Clam"
  },
  {
@@ -129,11 +141,19 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Coati"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Cobra"
  },
  {
   "set": "earth-fauna",
   "name": "Coconut Crab"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Colugo"
  },
  {
   "set": "earth-fauna",
@@ -197,6 +217,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Donkey"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Dromedary Camel"
  },
  {
@@ -218,6 +242,10 @@
  {
   "set": "earth-fauna",
   "name": "Flatworm"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Flying Squirrel"
  },
  {
   "set": "earth-fauna",
@@ -313,6 +341,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Horse"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Ibis"
  },
  {
@@ -325,7 +357,15 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Jerboa"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Juvenile Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Kinkajou"
  },
  {
   "set": "earth-fauna",
@@ -382,6 +422,10 @@
  {
   "set": "earth-fauna",
   "name": "Mako Shark"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Maned Wolf"
  },
  {
   "set": "earth-fauna",
@@ -477,6 +521,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Possum"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Prairie Dog"
  },
  {
@@ -486,6 +534,10 @@
  {
   "set": "earth-fauna",
   "name": "Python"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Raccoon"
  },
  {
   "set": "earth-fauna",
@@ -633,11 +685,23 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Striped Hyena"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Sugar Glider"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Sun Bear"
  },
  {
   "set": "earth-fauna",
   "name": "Tarantula"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Tasmanian Devil"
  },
  {
   "set": "earth-fauna",
@@ -681,6 +745,10 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Warthog"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Water Flea"
  },
  {
@@ -713,6 +781,18 @@
  },
  {
   "set": "earth-fauna",
+  "name": "Wild Ass"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Wild Horse"
+ },
+ {
+  "set": "earth-fauna",
+  "name": "Wild Pony"
+ },
+ {
+  "set": "earth-fauna",
   "name": "Wildcat"
  },
  {
@@ -724,8 +804,16 @@
   "name": "Yak"
  },
  {
+  "set": "earth-fauna",
+  "name": "Zebra"
+ },
+ {
   "set": "earth-flora",
   "name": "Acacia"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Acai"
  },
  {
   "set": "earth-flora",
@@ -1001,6 +1089,14 @@
  },
  {
   "set": "earth-flora",
+  "name": "Devil's Claw"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Devil's Club"
+ },
+ {
+  "set": "earth-flora",
   "name": "Duckweed"
  },
  {
@@ -1205,6 +1301,10 @@
  },
  {
   "set": "earth-flora",
+  "name": "Orchid Pods"
+ },
+ {
+  "set": "earth-flora",
   "name": "Oregano"
  },
  {
@@ -1222,6 +1322,10 @@
  {
   "set": "earth-flora",
   "name": "Papyrus"
+ },
+ {
+  "set": "earth-flora",
+  "name": "Peanut"
  },
  {
   "set": "earth-flora",
@@ -1670,6 +1774,10 @@
  {
   "set": "procedural",
   "name": "f0·10#10"
+ },
+ {
+  "set": "procedural",
+  "name": "f0·11#71"
  },
  {
   "set": "procedural",
