@@ -135,6 +135,13 @@ lose the standing legs** (flipper family skips the leg loop; trailing hind fans 
 · **peacock train** (erect ocelli fan) · gull hook + puffin kit · lionfish/surgeonfish/parrotfish
 signatures · tarantula fur + lobster chelae · blind/cave fish eyeless · monitor/komodo tongue + heavy limbs
 + tegu blocky skull. ~60 more assets touched since gp5, all committed.
+★★ POLISH batches 11–12 committed: **the coat-accent axis** (`accent`: rumpPatch/flankBand/
+rumpStripes — Banteng, Impala, Gazelle, Springbok in one lever) · **the bat faces** (Fruit Bat
+fox muzzle + forward eyes; Vampire pig-nose pad + M-leaf ridge). Remaining carried-fauna notables:
+Buffalo helmet boss, Gaur ridge, Bull neck hump, Eland ox build, Camel hump strength, squid
+mantle shape, Goldfish double tail, Antelope ringed horns, Yak curtain length, Secretary Bird,
+Honeybee pollen baskets, cephalopod Cuttlefish; then procedural bridge; then the gp7 measure +
+final certification (BUDGET-GATED — Nick approves each).
 ★★ POLISH batches 9–10 committed: Ephedra green rods (bark override) · Date Plum oval crown +
 calyx fruit · Canopy Vine rope · **Cow udder axis** (was absent) · octopus eye BUMPS on the
 mantle · Llama ears 1.5 · Saiga muzzle 0.66. CARRIED-FAUNA next asks (251 rows): bat faces
