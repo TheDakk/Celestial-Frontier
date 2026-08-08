@@ -1384,7 +1384,27 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
      it is inert ON THREE QUARTERS OF ITS USERS, which no gate here can see.
      Grep every reader of a field, not just the first. */
   const npad = SK.nosePad;
-  if (SK.nose === 'disc') {
+  if (name === 'Saiga') {
+    /* ★ GOLD AUDIT — "the defining enlarged inflatable-looking nasal structure
+       is missing/too subtle. Make the bulbous hanging nose the dominant facial
+       trait." A saiga's proboscis is a swollen trunk that overhangs the mouth
+       and points DOWN. Drawn over the muzzle end, in coat colour. */
+    c.save(); c.translate(nosePt[0], nosePt[1]); c.rotate(ang); c.scale(1.45, 1.45);
+    const bg2 = c.createRadialGradient(-skMuz * 0.2, -skMuz * 0.3, skMuz * 0.1, 0, 0, skMuz * 1.3);
+    bg2.addColorStop(0, p.lit); bg2.addColorStop(0.55, p.base); bg2.addColorStop(1, p.dark);
+    c.fillStyle = bg2;
+    c.beginPath();
+    c.moveTo(-skMuz * 0.9, -skMuz * 0.55);
+    c.quadraticCurveTo(skMuz * 0.75, -skMuz * 0.70, skMuz * 0.72, skMuz * 0.25);   /* swollen bridge */
+    c.quadraticCurveTo(skMuz * 0.66, skMuz * 0.95, skMuz * 0.10, skMuz * 1.02);   /* the drooping tip */
+    c.quadraticCurveTo(-skMuz * 0.55, skMuz * 0.90, -skMuz * 0.9, skMuz * 0.30);
+    c.closePath(); c.fill();
+    c.fillStyle = 'rgba(24,16,18,0.72)';   /* downward nostrils at the tip */
+    for (const s2 of [-1, 1] as const) {
+      c.beginPath(); c.ellipse(skMuz * (0.30 + s2 * 0.14), skMuz * 0.88, skMuz * 0.11, skMuz * 0.16, 0.2, 0, TAU); c.fill();
+    }
+    c.restore();
+  } else if (SK.nose === 'disc') {
     /* a pig's rostral disc: a flat plate seen almost edge-on, with two pits */
     c.fillStyle = `rgb(${Math.min(255, p.cr * 1.12) | 0},${p.cg * 0.86 | 0},${p.cb * 0.88 | 0})`;
     c.save(); c.translate(nosePt[0], nosePt[1]); c.rotate(ang);
@@ -2345,7 +2365,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* ★ wave 35 — the warm brown half of the Caribou/Reindeer split; see Caribou */
   'Reindeer': { legs: 0.1782, depth: 0.1505, len: 0.1974, neck: 0.11, muzzle: 0.44, ears: 'small', tail: 'stub', horn: 'branched', hue: '#9c7548', family: 'cervid' },
   'Sheep': { legs: 0.1448, depth: 0.1548, len: 0.1777, neck: 0.08, muzzle: 0.36, ears: 'small', tail: 'stub', horn: 'curl', hue: '#a98f6d', family: 'bovid' },
-  'Bison': { legs: 0.1211, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', coat: 'shaggy', hue: '#5c4535', family: 'bovid' },
+  'Bison': { legs: 0.1211, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', coat: 'shaggy', horn: 'sweep', hue: '#5c4535', family: 'bovid' },
   'Water Buffalo': { legs: 0.1249, depth: 0.1765, len: 0.246, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'sweep', hue: '#77736e', family: 'bovid' },
   /* bears, differentiated */
   'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636', family: 'ursid' },

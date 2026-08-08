@@ -1486,8 +1486,11 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Narwhal': (c, g, p) => faunaCetacean(c, g, p, { dorsal: 'none', blunt: true, tusk: true, melon: 0.62, hue: [168, 168, 158], long: 0.94, bulk: 0.78 }),
   /* the wing, at last — birds by bill + leg length */
   /* ★ D-ART-121 — the axes existed and the rows never set them. */
-  'Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#4a3a28', legs: 0.02, bill: 'hook', wings: 'soaring', tail: 'fan', headMass: 1.5, talons: true, plump: 1.12 }, n),
-  'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6b7079', legs: 0.02, bill: 'hook', crest: true, wings: 'soaring', headMass: 1.8, talons: true, size: 1.12 }, n),
+  /* ★ GOLD AUDIT — 'soaring' skips the leg loop entirely, so `talons: true`
+     never drew a single talon on either eagle. Perch them: the heavy GRIP
+     legs + hooks are the raptor read. */
+  'Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#4a3a28', legs: 0.035, bill: 'hook', tail: 'fan', headMass: 1.5, talons: true, plump: 1.12 }, n),
+  'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6b7079', legs: 0.035, bill: 'hook', crest: true, headMass: 1.8, talons: true, size: 1.12 }, n),
   /* ★ WAVE 50 — HAWK, FALCON AND OSPREY WERE ONE BIRD IN THREE HUES. Their
      rows were byte-identical apart from `hue` (Osprey added `size`), so the
      new [SHAPE] tier scores Hawk ≈ Falcon at 0.06 and Hawk ≈ Osprey at 0.25.
