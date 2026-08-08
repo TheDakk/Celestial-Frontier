@@ -791,24 +791,37 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
          dark coat LIFTS. Darkening a black wolf's paw deletes the only
          structural separation it has, which is how three earlier fixes in
          this file were right about the defect and wrong about the remedy. */
+      /* ★ GOLD AUDIT ROUND 2 — wave 49 made the pale-coat paw a SOLID DARK
+         CAP (pad 0.50 + toes 0.62), and at catalogue scale a dark block on
+         the end of a pale leg is a HOOF whatever its interior detail — Nick's
+         gold audit filed nine small cats as "hoof-like feet" with that paw
+         live. The paw now reads by SHAPE: a coat-toned fan WIDER than the
+         ankle, three toe lobes protruding from the front silhouette, dark
+         creases between them and claw ticks — value shift kept mild. */
       const lum = p.cr * 0.299 + p.cg * 0.587 + p.cb * 0.114;
-      const padK = lum > 92 ? 0.50 : 1.62;          /* darken a pale foot, lift a dark one */
-      const toeK = lum > 92 ? 0.62 : 1.94;          /* toes read AGAINST the pad, either way */
+      const padK = lum > 92 ? 0.82 : 1.28;
+      const toeK = lum > 92 ? 0.70 : 1.48;
       c.fillStyle = dark(padK);
-      c.beginPath(); c.ellipse(x, gy - legW * 0.21, legW * 0.98, legW * 0.46, 0, 0, TAU); c.fill();
+      c.beginPath(); c.ellipse(x, gy - legW * 0.22, legW * 1.06, legW * 0.44, 0, 0, TAU); c.fill();
       c.fillStyle = dark(toeK);
       for (let i = -1; i <= 1; i++) {
-        c.beginPath(); c.ellipse(x + i * legW * 0.40, gy - legW * 0.10, legW * 0.27, legW * 0.22, 0, 0, TAU); c.fill();
+        c.beginPath(); c.ellipse(x + i * legW * 0.44, gy - legW * 0.06, legW * 0.30, legW * 0.26, 0, 0, TAU); c.fill();
       }
       /* the creases BETWEEN the toes — a fan of three lobes only reads as toes
          if something separates them; without this it is one rounded cap */
-      c.strokeStyle = `rgba(24,18,14,${0.50 * m})`;
-      c.lineWidth = Math.max(1, legW * 0.075); c.lineCap = 'round';
+      c.strokeStyle = `rgba(24,18,14,${0.55 * m})`;
+      c.lineWidth = Math.max(1, legW * 0.085); c.lineCap = 'round';
       for (const s of [-1, 1] as const) {
         c.beginPath();
-        c.moveTo(x + s * legW * 0.20, gy - legW * 0.30);
-        c.lineTo(x + s * legW * 0.20, gy - legW * 0.02);
+        c.moveTo(x + s * legW * 0.22, gy - legW * 0.34);
+        c.lineTo(x + s * legW * 0.22, gy + legW * 0.02);
         c.stroke();
+      }
+      /* the claw ticks off each toe front */
+      c.strokeStyle = `rgba(30,24,18,${0.65 * m})`; c.lineWidth = Math.max(1, legW * 0.07);
+      for (let i = -1; i <= 1; i++) {
+        c.beginPath(); c.moveTo(x + i * legW * 0.44 - legW * 0.24, gy - legW * 0.02);
+        c.lineTo(x + i * legW * 0.44 - legW * 0.34, gy + legW * 0.06); c.stroke();
       }
     } else if (foot === 'plantigrade') {
       /* a bear puts its heel down: a long sole with claws at the front */
@@ -881,7 +894,10 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.fillStyle = `rgb(${lp.cr | 0},${lp.cg | 0},${lp.cb | 0})`;
     c.beginPath(); limb.trace(c, 40); c.fill();
     c.save(); c.beginPath(); limb.trace(c, 40); c.clip();
-    countershade(c, limb, lp, 0.85);
+    /* ★ GOLD AUDIT ROUND 2 — on a vertical limb the countershade pales the
+       BOTTOM, which paints the pale-cannon-and-dark-hoof read of an ungulate
+       onto every cat. Paw-footed families keep the coat tone down the leg. */
+    countershade(c, limb, lp, FAM0.foot === 'paw' ? 0.45 : 0.85);
     if (!spec.alien?.skin) coatMaterial(c, limb, r, lp, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL * 0.45, len: 0.6 });
     /* ★ WAVE 38 — A MARKING CAN REACH A LEG NOW. Filed in two worklists as
        "STRUCTURALLY UNREACHABLE — the four leg Tubes are filled before the coat

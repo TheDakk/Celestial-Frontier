@@ -55,10 +55,10 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Dog': { hue: '#a9743f', legs: 0.1423, depth: 0.1325, len: 0.163, neck: 0.07, muzzle: 0.44, ears: 'large', tail: 'bushy', family: 'canid' },
   /* ── FELIDS: short muzzle, round ear, long tail; rosettes where they belong ── */
   'Bobcat': { legs: 0.1268, depth: 0.114, len: 0.1776, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'stub', coat: 'spots', hue: '#c39a63', family: 'felid', earShape: 'tuft' },
-  'Caracal': { legs: 0.1413, depth: 0.1144, len: 0.1783, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'long', hue: '#c08e58', family: 'felid', earShape: 'tuft', earScale: 1.20 },
+  'Caracal': { legs: 0.1413, depth: 0.1144, len: 0.1783, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'long', hue: '#c08e58', family: 'felid', earShape: 'tuft', earScale: 1.50 },
   'Serval': { legs: 0.1702, depth: 0.1141, len: 0.1684, neck: 0.07, muzzle: 0.28, ears: 'large', tail: 'long', coat: 'spots', hue: '#d0a45c', family: 'felid', earShape: 'leaf', earScale: 1.45 , legMarks: true },
-  'Ocelot': { legs: 0.1202, depth: 0.1088, len: 0.1874, neck: 0.06, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#c79a5c', family: 'felid' , legMarks: true },
-  'Clouded Leopard': { legs: 0.1118, depth: 0.1126, len: 0.2124, neck: 0.06, muzzle: 0.30, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#b8975f', family: 'felid' , legMarks: true },
+  'Ocelot': { legs: 0.1202, depth: 0.1088, len: 0.1874, neck: 0.06, muzzle: 0.28, ears: 'round', tail: 'long', tailScale: 1.4, coat: 'rosettes', hue: '#c79a5c', family: 'felid' , legMarks: true },
+  'Clouded Leopard': { legs: 0.1118, depth: 0.1126, len: 0.2124, neck: 0.06, muzzle: 0.30, ears: 'round', tail: 'long', tailScale: 1.75, coat: 'rosettes', hue: '#b8975f', family: 'felid' , legMarks: true },
   /* ★ wave 52 — separated from 'Cat', which artlock put at 1.41 once both got
      a haunch. They were near-identical on the axes that matter and the fix is
      its own reference row, not a smaller haunch (D-ART-83). The row asks for
