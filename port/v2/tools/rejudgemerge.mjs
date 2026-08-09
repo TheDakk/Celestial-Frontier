@@ -24,6 +24,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { loadProceduralNameBridge } from './proceduralnames.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..');
@@ -31,16 +32,24 @@ const arg = (k, d) => { const a = process.argv.find((s) => s.startsWith('--' + k
 const FRESH = path.join(root, arg('fresh', 'reference/goldpass4-rejudge.json'));
 const BASE = path.join(root, arg('base', 'reference/goldpass3-prechassis.json'));
 const OUT = path.join(root, arg('out', 'reference/goldpass4-results.json'));
+const proceduralNames = loadProceduralNameBridge(root);
 
 const base = JSON.parse(fs.readFileSync(BASE, 'utf8'));
 const baseRows = base.rows || base;
 const fresh = JSON.parse(fs.readFileSync(FRESH, 'utf8'));
 const freshRows = fresh.rows || fresh;
-const freshBy = new Map(freshRows.map((r) => [r.species, r]));
+const freshBy = new Map(freshRows.map((r) => {
+  const species = proceduralNames.canonicalAny(r.species);
+  return [species, { ...r, species }];
+}));
+if (freshBy.size !== freshRows.length) {
+  throw new Error(`fresh re-judge contains duplicate canonical species (${freshRows.length} rows, ${freshBy.size} identities)`);
+}
 
 /* the drift set is the authority on WHAT was re-judged; anything in it that the
    re-judge did not return is a hole we must report, never silently keep-stale */
-const drift = new Set(JSON.parse(fs.readFileSync(path.join(root, 'reference/drift-since-baseline.json'), 'utf8')).map((d) => d.name));
+const drift = new Set(JSON.parse(fs.readFileSync(path.join(root, 'reference/drift-since-baseline.json'), 'utf8'))
+  .map((d) => proceduralNames.canonicalName(d.set, d.name)));
 
 const out = [];
 const changed = [];
@@ -54,6 +63,14 @@ for (const b of baseRows) {
     if (drift.has(b.species)) stale.push(b.species);   /* drifted but no fresh verdict */
     out.push({ ...b, rejudged: false });
   }
+}
+const baseNames = new Set(baseRows.map((row) => row.species));
+const unknownFresh = [...freshBy.keys()].filter((species) => !baseNames.has(species));
+if (unknownFresh.length) {
+  throw new Error(`fresh re-judge has ${unknownFresh.length} species absent from the baseline: ${unknownFresh.slice(0, 12).join(', ')}`);
+}
+if (stale.length) {
+  throw new Error(`${stale.length} drifted assets have no fresh verdict: ${stale.slice(0, 12).join(', ')}`);
 }
 
 const tally = (rows) => { const t = { FAIL: 0, POLISH: 0, PASS: 0 }; for (const r of rows) t[r.band] = (t[r.band] || 0) + 1; return t; };
@@ -82,7 +99,7 @@ fs.writeFileSync(OUT, JSON.stringify({
   control: control ? path.relative(root, ctlPath) : null }, null, 1));
 
 const line = (l, t) => l.padEnd(14) + ' FAIL ' + String(t.FAIL).padStart(4) + ' · POLISH ' + String(t.POLISH).padStart(4) + ' · PASS ' + String(t.PASS).padStart(4);
-console.log('GOLD PASS 4 — cheap drift re-judge merged into the carried baseline\n');
+console.log('DRIFT RE-JUDGE — fresh verdicts merged into the carried baseline\n');
 console.log('  ' + freshRows.length + ' assets re-judged · ' + (baseRows.length - freshRows.length) + ' carried forward (pixels unchanged)\n');
 console.log(line('  baseline', tb));
 console.log(line('  now', to));
@@ -106,12 +123,11 @@ if (!control) {
   const net = (100 * d.dem / d.demN) - (100 * c.dem / c.demN);
   console.log('\n    net of the ruler: ' + (net >= 0 ? '+' : '') + net.toFixed(0) + ' points of demotion'
     + (Math.abs(net) < 15 ? '  — INDISTINGUISHABLE FROM ZERO at this n.' : ''));
-  console.log('    ⚠ The band totals above are a MIXED RULER (148 rows new harness, '
+  console.log('    ⚠ The band totals above are a MIXED RULER (' + freshRows.length + ' rows new harness, '
     + (baseRows.length - freshRows.length) + ' rows old).');
   console.log('      Do not quote them as a catalogue score. Quote the demotion rates.');
 }
 
 console.log('\n  band crossings among the re-judged: ' + changed.length);
 for (const s of changed.slice(0, 60)) console.log('      ' + s);
-if (stale.length) console.log('\n  ⚠ ' + stale.length + ' drifted assets got NO fresh verdict (re-run those strips): ' + stale.slice(0, 12).join(', '));
 console.log('\nwrote ' + path.relative(root, OUT));

@@ -1362,3 +1362,56 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   IS read, on other rows). When an axis gates a whole draw path, list what it suppresses in
   the axis's own doc comment, and when a judge says a set feature is absent, CHECK THE GATE
   before checking the drawing.
+
+- ★★★ **D-ART-162 — ONE PROCEDURAL CREATURE HAD THREE VALID NAMES, AND PASSING THE WRONG ONE
+  PRODUCED A SUCCESSFUL SCREENSHOT OF NO ART.** (2026-08-09, GP7.) The baseline called one
+  creature `fauna-h0-s1`, artlock called it `f0·1#1`, and the renderer accepted only
+  `proc:fauna:h0:s1`. `rejudgecards` passed the drift spelling directly to the renderer; strips
+  11–15 completed with labels and red frames but **57 cells never painted**, yielding a bogus
+  57/57 FAIL. This is D-ART-155 one layer later: even after the genome formula is unified, the
+  systems around it can still disagree on identity. `proceduralnames.mjs` is now the single
+  checked 240-row bridge among full, drift and render namespaces, proves the mapping is a
+  bijection, and rejects an unmapped identity. The strip instrument proves both directions: a
+  known Earth/procedural pair MUST paint and an intentional unknown MUST fail. Re-rendered current
+  pixels were **57/57 PASS**. **A process exit and a labelled frame do not prove the requested
+  subject rendered; the instrument must assert the painted result.**
+
+- ★★★ **D-ART-163 — A PARTIAL MERGE CAN SILENTLY DROP EVERY FRESH ROW AND STILL RETURN THE
+  EXPECTED TOTAL.** (2026-08-09, the same procedural incident.) The old merger iterated the
+  1,250-row baseline and used the old row whenever no fresh `species` string joined. Because the
+  57 procedural verdicts arrived in another namespace, they disappeared into carry; the output
+  still contained exactly 1,250 rows and therefore looked complete. Row count checked the OUTPUT,
+  not the promised INPUT. The drift manifest is now the authority: canonicalize first, require one
+  fresh verdict for every drift identity, reject unknown/duplicate fresh identities, and fail if
+  even one changed asset would remain stale. **In an incremental merge, “not supplied” and
+  “unchanged” are different states; only the producer of the scope may authorize carry.**
+
+- ★★ **D-ART-164 — BUILD FRESHNESS MUST INCLUDE THE APP CONSUMER, NOT JUST THE PACKAGE THAT
+  DRAWS.** (2026-08-09, strip negative control.) `speciesstrip` watched `packages/` while the
+  query parser and result contract it exercised lived in `apps/game/src/audit.ts`. An `audit.ts`
+  change could therefore run against a fresh-looking but stale `dist/audit.html`; the new invalid-
+  identity negative control then passed for exactly the wrong reason, testing yesterday's bundle
+  rather than today's rejection path. Freshness now takes the newest timestamp across both the app
+  source and packages under the existing build lock. **The dependency boundary belongs to the
+  built artifact, not to the file the caller happened to edit.** A negative control is not evidence
+  until the harness also proves it loaded the intended build.
+
+- ★★ **D-ART-165 — CALIBRATED CONTROLS SAY WHETHER THE RULER MOVED; MUST-READ MORPHOLOGY SAYS
+  WHAT TO DRAW.** (2026-08-09, GP7 final measure.) The strict judge demoted **39%** of edited
+  rows that had room to fall, but **66%** of family-matched byte-unchanged controls: **−27 points
+  net of the ruler**. Therefore GP7's 301/37/165 fresh tally is a demanding defect inventory, and
+  the mixed 618/415/217 ledger is explicitly NOT a catalogue score (D-ART-158). What remains
+  actionable after calibration is the row's visible must-read: broad ribbon blades/stipes/holdfast
+  moved Kelp to PASS; the four final felids gained their requested tails, ruffs, paws, stripes and
+  rosettes but correctly remain POLISH for named finish defects. **Do not chase a band total. Use
+  matched controls to interpret the judge, then change only the morphology described by evidence.**
+
+- ★★ **D-ART-166 — A TARGETED MORPHOLOGY FIX ON A SHADOWED ROUTE IS NO FIX AT ALL.**
+  (2026-08-09, GP7 flora cleanup.) Six late flora routes were dead or shadowed by an earlier
+  winning table. Leaving them in place made the source appear to contain species-specific work
+  that dispatch could never reach—the exact D-ART-28/139 failure shape. They were removed;
+  `overridecheck` now reports **1,014/1,014 live routes and 0 dead**, with its shadow controls
+  green. Before accepting a named fix, prove which route wins, render that exact target, and inspect
+  its artlock blast radius. Before deleting a suspected dead route, use the same render/lock proof
+  to show that it owns no pixels. **Dead corrective code is worse than absent code because it can
+  close a review item without changing the image.**

@@ -620,6 +620,8 @@ export interface BirdSpec {
        stork), a long downcurve (curlew, ibis) and a long upcurve (avocet). */
     | 'probe' | 'downcurve' | 'upcurve';
   crest?: boolean;
+  /** split crown fans, rather than the single narrow crest used by cranes and hoatzin */
+  doubleCrest?: boolean;
   flightless?: boolean;
   /* ★ POLISH — the emu's double-shafted HAIR-LIKE coat: loose strands that
      droop off the body and hang past the belly line, so the bird reads
@@ -670,6 +672,8 @@ export interface BirdSpec {
      never body size. Each of these comes from the species reference row. ── */
   hue?: string;                                    /** species-true plumage; the first field mark */
   bib?: string;                                    /** a contrasting breast/throat patch (robin) */
+  belly?: string;                                  /** a broad lower-body plumage field */
+  breastBand?: string;                             /** a hard contrasting band above the belly */
   cap?: string;                                    /** a contrasting crown (chickadee, jay) */
   mask?: boolean;                                  /** the black face mask (cardinal, weaverbird) */
   nest?: boolean;                                  /** ★ WAVE 68 — the weaverbird's woven ball nest */
@@ -963,9 +967,22 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
   /* ★ WAVE 8 — THE MARKS, clipped to the body so they are plumage and not
      stickers. Between them and the bill these are what a birder actually uses
      to tell two brown songbirds apart at twenty metres. */
-  if (opts.bib || opts.speckle || opts.streak) {
+  if (opts.bib || opts.belly || opts.breastBand || opts.speckle || opts.streak) {
     c.save();
     c.beginPath(); c.ellipse(bx, by, bw, bh, -0.15, 0, TAU); c.clip();
+    if (opts.belly) {
+      c.fillStyle = opts.belly;
+      c.beginPath();
+      c.ellipse(bx - bw * 0.08, by + bh * 0.48, bw * 0.94, bh * 0.72, -0.10, 0, TAU);
+      c.fill();
+    }
+    if (opts.breastBand) {
+      c.strokeStyle = opts.breastBand; c.lineWidth = bh * 0.30; c.lineCap = 'round';
+      c.beginPath();
+      c.moveTo(bx - bw * 0.92, by - bh * 0.02);
+      c.quadraticCurveTo(bx - bw * 0.42, by + bh * 0.18, bx + bw * 0.16, by + bh * 0.26);
+      c.stroke();
+    }
     if (opts.bib) {
       /* the breast patch sits FORWARD and LOW — the bird faces left */
       const bg2 = c.createRadialGradient(bx - bw * 0.42, by + bh * 0.18, bw * 0.05, bx - bw * 0.42, by + bh * 0.18, bw * 0.95);
@@ -1415,8 +1432,30 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
     } else { c.beginPath(); c.moveTo(hx - 14 * B, hy - 5 * B); c.lineTo(hx - 36 * B, hy + 1 * B); c.lineTo(hx - 14 * B, hy + 8 * B); c.closePath(); c.fill(); }
   }
   if (opts.crest && !opts.owl) {
-    c.strokeStyle = p.lit; c.lineWidth = 3.4 * sz; c.lineCap = 'round';
-    for (let i = 0; i < 5; i++) { const a = -1.9 + i * 0.22; c.beginPath(); c.moveTo(hx + 2 * sz, hy - 16 * sz); c.quadraticCurveTo(hx + (10 + Math.cos(a) * 18) * sz, hy - 34 * sz, hx + (6 + Math.cos(a) * 30) * sz, hy - (40 - i * 3) * sz); c.stroke(); }
+    if (opts.doubleCrest) {
+      /* Harpy eagles carry two broad, separated fans. A single five-stroke
+         fringe reads as a generic punk crest, even when the row says harpy. */
+      for (const layer of [-1, 1] as const) {
+        for (let i = 0; i < 4; i++) {
+          const rootX = hx + layer * hr * 0.06, rootY = hy - hr * (0.58 + layer * 0.04);
+          const angle = (layer < 0 ? -2.15 : -1.05) + i * 0.16;
+          const length = hr * (1.26 + i * 0.08 + layer * 0.05);
+          const dx = Math.cos(angle) * length, dy = Math.sin(angle) * length;
+          const nx = -Math.sin(angle), ny = Math.cos(angle);
+          const width = hr * (0.19 - i * 0.018);
+          c.fillStyle = layer < 0 ? p.dark : p.lit;
+          c.beginPath(); c.moveTo(rootX, rootY);
+          c.quadraticCurveTo(rootX + dx * 0.54 + nx * width, rootY + dy * 0.54 + ny * width,
+            rootX + dx, rootY + dy);
+          c.quadraticCurveTo(rootX + dx * 0.48 - nx * width, rootY + dy * 0.48 - ny * width,
+            rootX, rootY);
+          c.closePath(); c.fill();
+        }
+      }
+    } else {
+      c.strokeStyle = p.lit; c.lineWidth = 3.4 * sz; c.lineCap = 'round';
+      for (let i = 0; i < 5; i++) { const a = -1.9 + i * 0.22; c.beginPath(); c.moveTo(hx + 2 * sz, hy - 16 * sz); c.quadraticCurveTo(hx + (10 + Math.cos(a) * 18) * sz, hy - 34 * sz, hx + (6 + Math.cos(a) * 30) * sz, hy - (40 - i * 3) * sz); c.stroke(); }
+    }
   }
   /* THE WATERLINE — a swimming bird is cut by the surface, which is why a
      duck reads as a duck and not as a bird standing in a hole */
@@ -1499,7 +1538,7 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
      never drew a single talon on either eagle. Perch them: the heavy GRIP
      legs + hooks are the raptor read. */
   'Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#4a3a28', legs: 0.040, bill: 'hook', tail: 'fan', headMass: 1.6, talons: true, plump: 1.32, elong: 1.12, size: 1.15, brow: true }, n),
-  'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6b7079', legs: 0.040, bill: 'hook', crest: true, headMass: 1.9, talons: true, plump: 1.38, elong: 1.10, size: 1.25, brow: true }, n),
+  'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6b7079', legs: 0.040, bill: 'hook', crest: true, doubleCrest: true, headMass: 1.48, talons: true, plump: 1.38, elong: 1.10, size: 1.25, brow: true, belly: '#eee9dd', breastBand: '#252a31' }, n),
   /* ★ WAVE 50 — HAWK, FALCON AND OSPREY WERE ONE BIRD IN THREE HUES. Their
      rows were byte-identical apart from `hue` (Osprey added `size`), so the
      new [SHAPE] tier scores Hawk ≈ Falcon at 0.06 and Hawk ≈ Osprey at 0.25.
