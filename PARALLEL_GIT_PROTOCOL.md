@@ -66,9 +66,54 @@ When a coding batch is complete:
 6. Report the commit hash, files changed, checks run, and push result.
 7. Remind the user that the next integration step is a reviewed pull request
    from the current agent branch into `develop`, never directly into `main`.
+8. End with the paired OpenAI/Anthropic handoff reminder defined below. Do
+   this even when the user does not ask for Git instructions.
 
 The agent may create or update a **draft** pull request from its own branch
 to `develop` when instructed, but it must never merge that pull request.
+
+## Required paired handoff reminder
+
+After every completed batch, push, pull-request update, merge check, or
+conflict report, both OpenAI/Codex and Anthropic/Claude Code must tell Nick
+what happens on **both** sides. Use this short format in plain language:
+
+```text
+Current side: <OpenAI/Codex or Anthropic/Claude Code> — <what was committed,
+pushed, or is still pending>.
+GitHub step: <the exact action Nick must take now, or "none">.
+PR details: <base branch, source branch, exact copy-ready title, and exact
+copy-ready description; or "not needed">.
+Other side: <the exact safe synchronization step and when to do it>.
+Release status: <develop/main/live-site status; normally "no release or
+deployment performed">.
+```
+
+The reminder must apply these rules:
+
+1. Name both environments explicitly; never say only "the other branch."
+2. If the current change has not been merged into `develop`, say that the
+   other environment does not have it yet. It may continue unrelated work,
+   but must not expect the new change or copy files manually.
+3. If a pull request is ready, tell Nick to review and merge that pull request
+   into `develop`. Always provide all four copy-ready PR fields: base branch,
+   source branch, title, and description. The description must summarize the
+   change, list verification performed, state the cross-agent synchronization
+   effect, and state that no release or deployment is included. Do not imply
+   that saving, committing, or pushing merged it.
+4. Only after the pull request is merged may the other agent bring in the
+   change. At its next coding batch, that agent must fetch and merge the latest
+   `origin/develop` into its own clean agent branch under the startup procedure.
+5. If the other worktree has uncommitted changes, tell Nick not to pull,
+   switch, or merge there. The other agent must inspect and safely finish or
+   commit its own work first.
+6. State clearly whether Nick needs to open the other application now. In the
+   normal case, synchronization can wait until that agent's next coding batch.
+7. Never describe `develop`, `main`, or the live site as updated unless that
+   specific merge or deployment has been verified.
+8. Provide the PR fields every time a new PR is needed, including in follow-up
+   status messages. If a PR already exists, provide its number or link and say
+   whether its existing title or description needs to change.
 
 ## How changes move between agents
 

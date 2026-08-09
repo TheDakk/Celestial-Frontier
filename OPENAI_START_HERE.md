@@ -62,7 +62,11 @@ Run the required checks for this change. Review the diff, then commit only
 the completed task's changes with a descriptive message and push to
 origin/openai/windows. Verify that the local branch and GitHub are in sync.
 Report the commit hash, tests run, and push result. Do not merge into develop
-or main, and do not deploy the live site.
+or main, and do not deploy the live site. End with the required paired handoff
+reminder from PARALLEL_GIT_PROTOCOL.md: tell me the exact next steps for this
+OpenAI/Codex side, GitHub, and the Anthropic/Claude Code side, including
+whether I need to open Claude now. If a pull request is needed, include the
+exact base branch, source branch, and copy-ready PR title and description.
 ```
 
 Success means `git status --short --branch` shows only:
@@ -93,4 +97,3 @@ for a pull request from `openai/windows` into `develop`.
 
 Never use `git reset --hard`, `git clean -fd`, force-push, or delete a branch
 or worktree unless Nick explicitly approves it.
-
