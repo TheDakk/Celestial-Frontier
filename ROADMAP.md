@@ -38,6 +38,9 @@
 ## The v1.8 arc is CLOSED and shipped. v1.9 = PORT PHASE 0.
 ##
 ## ★ THE SPECIES-ART ARC (v2 port, live 2026-08) — cold start: port/HANDOFF_NEXT_SESSION.md.
+##   Workflow note (2026-08-08): both OpenAI/Codex and Anthropic/Claude Code now end every
+##   completed batch and Git handoff with explicit next steps for BOTH environments, the
+##   required GitHub action, and whether the other application must be opened immediately.
 ##   Goal: 100% PASS at the shippable bar across all 1,250 assets. As of 2026-08-08: Nick's
 ##   independent gold audit scored 381 GOLD / 810 POLISH / 59 FIX ("Gold Candidate") and ALL
 ##   59 FIX items are addressed (equid scaffold, feline base, low-body dozen, gliders, flora

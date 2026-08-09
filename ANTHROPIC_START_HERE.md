@@ -76,7 +76,10 @@ Run the required checks for this change. Review the diff, then commit only
 the completed task's changes with a descriptive message and push to
 origin/anthropic/windows. Verify that the local branch and GitHub are in sync.
 Report the commit hash, tests run, and push result. Do not merge into develop
-or main, and do not deploy the live site.
+or main, and do not deploy the live site. End with the required paired handoff
+reminder from PARALLEL_GIT_PROTOCOL.md: tell me the exact next steps for this
+Anthropic/Claude Code side, GitHub, and the OpenAI/Codex side, including
+whether I need to open Codex now.
 ```
 
 Success means `git status --short --branch` shows only:
@@ -107,4 +110,3 @@ for a pull request from `anthropic/windows` into `develop`.
 
 Never use `git reset --hard`, `git clean -fd`, force-push, or delete a branch
 or worktree unless Nick explicitly approves it.
-
