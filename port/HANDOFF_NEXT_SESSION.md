@@ -1,10 +1,43 @@
 # ★ COLD-START HANDOFF — read this first
 
-# ★★★ START HERE — 2026-08-06, HEAD `d8e76aa` + uncommitted, GOLD PASS 4 RUN
+# ★★★★★ LIVE — 2026-08-09 · GP7 FINISHED · PACKAGE READY · COMMIT/NICK REVIEW PENDING
 
-⚠ **Repo root is `C:\Projects\Celestial-Frontier`, not `C:\Projects`.** Tools run from `port/v2`.
-Everything below the 2026-08-04 banner is HISTORY — accurate about its waves, superseded on
-every number. **No painter was touched this session; the art is exactly as waves 51–57 left it.**
+⚠ **This worktree is `C:\Projects\celestial-frontier-openai-windows`; run the art tools from
+`port/v2`. Art is frozen. Do not start another global body pass.**
+
+## Current measured state
+
+All **1,250** current organisms are covered: 631 fauna, 332 flora, 27 fungi, 20 microbes,
+and 240 procedural. GP7 judged the regenerated current strips completely:
+
+| scope | rows / strips | PASS | POLISH | FAIL |
+|---|---:|---:|---:|---:|
+| changed drift | 503 / 95 | 165 | 37 | 301 |
+| unchanged control | 62 / 39 | 11 | 4 | 47 |
+| carried full catalogue | 1,250 / — | 217 | 415 | 618 |
+
+The full-catalogue row is a **mixed-ruler inventory, not a catalogue score**. On rows eligible
+to fall, drift demotions were **62/160 (38.8%)** versus control **21/32 (65.6%)**, a
+**−26.8-point** gap; rescues were **104/343 (30.3%)** versus **4/30 (13.3%)**. The unchanged
+control therefore calibrates the stricter GP7 judge and supports targeted progress, not a
+sweeping repaint. Procedural corrections finished **57/57 PASS**. Targeted morphology reduced
+the hard look-alike count to **0**; the broader confusable watch-list remains intentionally open.
+
+Nick's full-catalogue audit was **381 GOLD / 810 POLISH / 59 FIX**. All 59 FIX rows were
+addressed. His patch review was **15 PASS / 25 PASS-WITH-POLISH / 19 STILL-FIX / 1 REGRESSION**;
+the remaining 20 rows were then reworked and rejudged. His standing instruction still controls:
+preserve the build and regenerate only named targets.
+
+## Next human actions — in order
+
+1. Commit and push the finished GP7 records/package batch through `PARALLEL_GIT_PROTOCOL.md`.
+2. Open the draft `openai/windows` → `develop` PR; do not merge it into `main`.
+3. Give Nick `port/v2/apps/game/smoke/Celestial_Frontier_GP7_Complete_Catalogue_Review_2026-08-09.zip`
+   (305,291,135 bytes; SHA-256 `47B730C0323241F8E171DC3A96D4EFD5C67FA0C3CA12333CA17EBE10540D398F`)
+   for final review. Make only named corrections he requests; do not
+   release or deploy without his explicit approval.
+
+# Historical GP4–GP7 staging record — retained for provenance, numbers below are superseded
 
 ## ★★★★ THE CHEAP RE-CHECK WORKS. ITS HEADLINE WAS THE RULER, AND THE CONTROL PROVED IT.
 

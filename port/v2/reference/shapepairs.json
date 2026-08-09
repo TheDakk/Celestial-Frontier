@@ -50,11 +50,6 @@
   "shape": 0.623
  },
  {
-  "a": "Arctic Blueberry",
-  "b": "Mountain Cranberry",
-  "shape": 0.623
- },
- {
   "a": "Char",
   "b": "Sardine",
   "shape": 0.685
@@ -92,11 +87,6 @@
  {
   "a": "Minnow",
   "b": "Lanternfish",
-  "shape": 0.872
- },
- {
-  "a": "Huckleberry",
-  "b": "Bearberry",
   "shape": 0.872
  },
  {
@@ -185,11 +175,6 @@
   "shape": 1.121
  },
  {
-  "a": "Cranberry",
-  "b": "Bearberry",
-  "shape": 1.183
- },
- {
   "a": "Lotus",
   "b": "Water Lily",
   "shape": 1.183
@@ -207,11 +192,6 @@
  {
   "a": "Sculpin",
   "b": "Walleye",
-  "shape": 1.245
- },
- {
-  "a": "Lingonberry",
-  "b": "Cloudberry",
   "shape": 1.245
  },
  {
@@ -240,11 +220,6 @@
   "shape": 1.307
  },
  {
-  "a": "Huckleberry",
-  "b": "Cranberry",
-  "shape": 1.307
- },
- {
   "a": "Beetle",
   "b": "Ladybug",
   "shape": 1.37
@@ -270,11 +245,6 @@
   "shape": 1.494
  },
  {
-  "a": "Cloudberry",
-  "b": "Mountain Cranberry",
-  "shape": 1.494
- },
- {
   "a": "Marmot",
   "b": "Prairie Dog",
   "shape": 1.556
@@ -282,21 +252,6 @@
  {
   "a": "Minnow",
   "b": "Cave Fish",
-  "shape": 1.619
- },
- {
-  "a": "Lingonberry",
-  "b": "Arctic Blueberry",
-  "shape": 1.619
- },
- {
-  "a": "Lingonberry",
-  "b": "Mountain Cranberry",
-  "shape": 1.619
- },
- {
-  "a": "Cloudberry",
-  "b": "Arctic Blueberry",
   "shape": 1.619
  },
  {
@@ -317,11 +272,6 @@
  {
   "a": "Goby",
   "b": "Mudminnow",
-  "shape": 1.681
- },
- {
-  "a": "Lingonberry",
-  "b": "Wild Thyme",
   "shape": 1.681
  },
  {
@@ -370,16 +320,6 @@
   "shape": 1.805
  },
  {
-  "a": "Lingonberry",
-  "b": "Cranberry",
-  "shape": 1.805
- },
- {
-  "a": "Cranberry",
-  "b": "Arctic Blueberry",
-  "shape": 1.805
- },
- {
   "a": "Orchid Bee",
   "b": "Cold-Adapted Insect",
   "shape": 1.868
@@ -397,21 +337,6 @@
  {
   "a": "Freshwater Snail",
   "b": "Snail",
-  "shape": 1.868
- },
- {
-  "a": "Huckleberry",
-  "b": "Arctic Blueberry",
-  "shape": 1.868
- },
- {
-  "a": "Crowberry",
-  "b": "Arctic Blueberry",
-  "shape": 1.868
- },
- {
-  "a": "Crowberry",
-  "b": "Mountain Cranberry",
   "shape": 1.868
  },
  {
@@ -435,28 +360,8 @@
   "shape": 1.93
  },
  {
-  "a": "Cranberry",
-  "b": "Mountain Cranberry",
-  "shape": 1.93
- },
- {
   "a": "Perch",
   "b": "Archerfish",
-  "shape": 1.992
- },
- {
-  "a": "Huckleberry",
-  "b": "Lingonberry",
-  "shape": 1.992
- },
- {
-  "a": "Huckleberry",
-  "b": "Mountain Cranberry",
-  "shape": 1.992
- },
- {
-  "a": "Lingonberry",
-  "b": "Bearberry",
   "shape": 1.992
  }
 ]

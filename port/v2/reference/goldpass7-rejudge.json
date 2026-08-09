@@ -1,0 +1,2695 @@
+{
+ "generated": "gp7 drift re-judge COMPLETE (95 validated verdict files, 503 exact-joined rows). Independent verdicts were selected for drift indices 4, 5, 6, 8, 9.",
+ "provenance": {
+  "index": "apps/game/smoke/rejudge/index.json",
+  "verdictDirectory": "apps/game/smoke/gp7-verdicts",
+  "selectedVerdictFiles": [
+   "drift-001.json",
+   "drift-002.json",
+   "drift-003.json",
+   "drift-004-independent.json",
+   "drift-005-independent.json",
+   "drift-006-independent.json",
+   "drift-007.json",
+   "drift-008-independent.json",
+   "drift-009-independent.json",
+   "drift-010.json",
+   "drift-011.json",
+   "drift-012.json",
+   "drift-013.json",
+   "drift-014.json",
+   "drift-015.json",
+   "drift-016.json",
+   "drift-017.json",
+   "drift-018.json",
+   "drift-019.json",
+   "drift-020.json",
+   "drift-021.json",
+   "drift-022.json",
+   "drift-023.json",
+   "drift-024.json",
+   "drift-025.json",
+   "drift-026.json",
+   "drift-027.json",
+   "drift-028.json",
+   "drift-029.json",
+   "drift-030.json",
+   "drift-031.json",
+   "drift-032.json",
+   "drift-033.json",
+   "drift-034.json",
+   "drift-035.json",
+   "drift-036.json",
+   "drift-037.json",
+   "drift-038.json",
+   "drift-039.json",
+   "drift-040.json",
+   "drift-041.json",
+   "drift-042.json",
+   "drift-043.json",
+   "drift-044.json",
+   "drift-045.json",
+   "drift-046.json",
+   "drift-047.json",
+   "drift-048.json",
+   "drift-049.json",
+   "drift-050.json",
+   "drift-051.json",
+   "drift-052.json",
+   "drift-053.json",
+   "drift-054.json",
+   "drift-055.json",
+   "drift-056.json",
+   "drift-057.json",
+   "drift-058.json",
+   "drift-059.json",
+   "drift-060.json",
+   "drift-061.json",
+   "drift-062.json",
+   "drift-063.json",
+   "drift-064.json",
+   "drift-065.json",
+   "drift-066.json",
+   "drift-067.json",
+   "drift-068.json",
+   "drift-069.json",
+   "drift-070.json",
+   "drift-071.json",
+   "drift-072.json",
+   "drift-073.json",
+   "drift-074.json",
+   "drift-075.json",
+   "drift-076.json",
+   "drift-077.json",
+   "drift-078.json",
+   "drift-079.json",
+   "drift-080.json",
+   "drift-081.json",
+   "drift-082.json",
+   "drift-083.json",
+   "drift-084.json",
+   "drift-085.json",
+   "drift-086.json",
+   "drift-087.json",
+   "drift-088.json",
+   "drift-089.json",
+   "drift-090.json",
+   "drift-091.json",
+   "drift-092.json",
+   "drift-093.json",
+   "drift-094.json",
+   "drift-095.json"
+  ],
+  "independentVerdictPreference": {
+   "indices": [
+    4,
+    5,
+    6,
+    8,
+    9
+   ],
+   "selectedFiles": [
+    "drift-004-independent.json",
+    "drift-005-independent.json",
+    "drift-006-independent.json",
+    "drift-008-independent.json",
+    "drift-009-independent.json"
+   ],
+   "note": "These independent verdicts supersede the same-index non-independent files."
+  }
+ },
+ "rows": [
+  {
+   "species": "Acai",
+   "band": "FAIL",
+   "why": "A single thick brown trunk replaces the required clump of slender ringed grey stems."
+  },
+  {
+   "species": "African Ginger",
+   "band": "FAIL",
+   "why": "The tall terminal spike replaces the required ground-level mauve flower, and no knobbly rhizome is visible."
+  },
+  {
+   "species": "Alfalfa",
+   "band": "FAIL",
+   "why": "The column of broad overlapping leaves lacks clear trifoliate foliage and corkscrew seed pods."
+  },
+  {
+   "species": "Alpine Mint",
+   "band": "FAIL",
+   "why": "The low toothed sprig never shows the required square-stem construction clearly."
+  },
+  {
+   "species": "Alpine Sorrel",
+   "band": "FAIL",
+   "why": "Kidney-shaped basal leaves are not legible; the asset reads as a smooth turf mound with red spikes."
+  },
+  {
+   "species": "Angel's Trumpet",
+   "band": "PASS",
+   "why": "Pendulous flared trumpets, coarse foliage, and a small multi-stemmed tree form all read clearly."
+  },
+  {
+   "species": "Angelica",
+   "band": "FAIL",
+   "why": "The umbel and divided foliage read, but the stem is not visibly hollow or ridged and its leaf joints lack inflated sheaths."
+  },
+  {
+   "species": "Anise",
+   "band": "FAIL",
+   "why": "Only feathery foliage is shown; the contrasting rounded lower leaves are absent."
+  },
+  {
+   "species": "Arctic Blueberry",
+   "band": "PASS",
+   "why": "The low spreading branch, blunt blue-green leaves, and singly scattered bloom-coated blue berries satisfy all three must-reads."
+  },
+  {
+   "species": "Arctic Sorrel",
+   "band": "FAIL",
+   "why": "The basal leaves and pink spire are present, but the supporting stems lack the required reddish coloration."
+  },
+  {
+   "species": "Arctic Willow",
+   "band": "FAIL",
+   "why": "The low branch is present, but its leaves read narrow and silvery rather than small glossy rounds, and the catkins lack a red tinge."
+  },
+  {
+   "species": "Arnica",
+   "band": "FAIL",
+   "why": "Oversized pale pointed leaves replace the required plain oval basal rosette."
+  },
+  {
+   "species": "Arrowhead",
+   "band": "FAIL",
+   "why": "The arrow foliage reads, but a lone star-like bloom replaces the required whorls of three-petal flowers on a bare stalk."
+  },
+  {
+   "species": "Banana",
+   "band": "FAIL",
+   "why": "The fruit and bud read, but the crown lacks the required huge torn paddle leaves and arching bunch stalk."
+  },
+  {
+   "species": "Barrel Cactus Fruit",
+   "band": "FAIL",
+   "why": "The ribbed barrel reads, but the crown lacks the required crowded ring of yellow fruits and the visible spines are straight rather than hooked."
+  },
+  {
+   "species": "Bay Laurel",
+   "band": "FAIL",
+   "why": "It reads as a diffuse generic tree, without a conical evergreen silhouette, leathery rippled leaves, or clear cream axillary flower clusters."
+  },
+  {
+   "species": "Beach Morning Glory",
+   "band": "FAIL",
+   "why": "The creeping runner is present, but the round leaves lack the goat-foot notch and the blocky purple blooms do not read as large funnels."
+  },
+  {
+   "species": "Bearberry",
+   "band": "PASS",
+   "why": "Reddish trailing runners form a flat leafy mat with paddle leaves, red berries, and pale pink urn flowers."
+  },
+  {
+   "species": "Bergamot",
+   "band": "PASS",
+   "why": "The opposite toothed foliage and ragged lavender firework head clearly read as wild bergamot on an upright herb stem."
+  },
+  {
+   "species": "Bitterroot",
+   "band": "FAIL",
+   "why": "The bare gravel setting reads, but the tiny ring marks do not supply the required large many-petalled flower or fleshy shrivelling rosette."
+  },
+  {
+   "species": "Black Grape",
+   "band": "PASS",
+   "why": "Lobed vine leaves, curling tendrils, and a tight hanging bunch of bloom-dusted dark grapes make the species immediately clear."
+  },
+  {
+   "species": "Bladderwrack",
+   "band": "POLISH",
+   "why": "The olive forked strap bundle, round air bladders, and swollen tips read correctly, though clearer paired bladders would improve specificity."
+  },
+  {
+   "species": "Bog Myrtle",
+   "band": "POLISH",
+   "why": "Reddish upright twigs, narrow tip-broad leaves, and terminal catkins give the right shrub; warmer orange catkins would refine it."
+  },
+  {
+   "species": "Bog Rosemary",
+   "band": "POLISH",
+   "why": "The sparse wiry shrub, pale-backed narrow leaves, and clustered pink bells are correct, with only the blocky bell shapes needing refinement."
+  },
+  {
+   "species": "Brooklime",
+   "band": "FAIL",
+   "why": "It is rendered as a single upright flowering stalk rather than the required fleshy, rooting plant sprawling through shallow water."
+  },
+  {
+   "species": "Bull Kelp",
+   "band": "POLISH",
+   "why": "The long whip stipe and blade topknot read as bull kelp, but the signature single round bulb is too dark and merged into the blades."
+  },
+  {
+   "species": "Calotropis",
+   "band": "FAIL",
+   "why": "The pale opposite leaves and star flowers read, but the required large inflated curved balloon pods are absent."
+  },
+  {
+   "species": "Canola",
+   "band": "PASS",
+   "why": "Clasping blue-green leaves, a vivid yellow flower crown, and upright slender pods clearly establish canola."
+  },
+  {
+   "species": "Canopy Vine",
+   "band": "FAIL",
+   "why": "Generic leafy strand lacks the thick looping woody rope, top-concentrated crown, and visible twining grip."
+  },
+  {
+   "species": "Chicory",
+   "band": "FAIL",
+   "why": "The wiry rosette is right, but five-pointed star blooms replace chicory's squared fringe-ray flower heads."
+  },
+  {
+   "species": "Cliff Rose",
+   "band": "POLISH",
+   "why": "Cream five-petal blooms and abundant silvery plume forms read correctly; the tiny lobed leaves could be clearer."
+  },
+  {
+   "species": "Cloudberry",
+   "band": "FAIL",
+   "why": "The low runner bears several red fruits and no white flower, missing the single upright stem and solitary amber berry."
+  },
+  {
+   "species": "Coastal Sage",
+   "band": "FAIL",
+   "why": "The mound and grey foliage read as sage, but terminal spikes replace the required spaced flower rings."
+  },
+  {
+   "species": "Coralline Algae",
+   "band": "FAIL",
+   "why": "This reads as soft pink tube coral; it lacks jointed chalky branches and a hard crust on rock."
+  },
+  {
+   "species": "Crabapple",
+   "band": "FAIL",
+   "why": "A generic round apple tree omits the abundant pink-white blossom and twiggy spur-shoot crown."
+  },
+  {
+   "species": "Creosote Bush",
+   "band": "FAIL",
+   "why": "Yellow flowers are present, but the dense blob canopy lacks open airy branching and white fuzzy seed capsules."
+  },
+  {
+   "species": "Crowberry",
+   "band": "PASS",
+   "why": "A packed creeping needle-leaf carpet carries glossy black berries nestled directly in the foliage."
+  },
+  {
+   "species": "Date",
+   "band": "FAIL",
+   "why": "The fruiting palm uses fan-shaped fronds instead of a date palm's arching pinnate feathers."
+  },
+  {
+   "species": "Date Plum",
+   "band": "FAIL",
+   "why": "The smooth-trunked orange-fruit tree lacks dark blocky bark and visible papery star calyces."
+  },
+  {
+   "species": "Desert Melon",
+   "band": "PASS",
+   "why": "The flat lobed runner, small mottled fruit, and tiny yellow bloom clearly read as a desert melon."
+  },
+  {
+   "species": "Desert Mint",
+   "band": "POLISH",
+   "why": "Paired grey leaves and stacked lavender whorls read as mint; the blooms could look more tubular."
+  },
+  {
+   "species": "Desert Sage",
+   "band": "POLISH",
+   "why": "The low silver mound and tiered blue-lavender flower spikes read correctly; stronger blue contrast would refine it."
+  },
+  {
+   "species": "Devil's Claw",
+   "band": "FAIL",
+   "why": "The sprawling habit and trumpets read, but the seed pod shows only one looped curl, not two long recurved grappling hooks."
+  },
+  {
+   "species": "Devil's Club",
+   "band": "PASS",
+   "why": "Spiny crooked canes, hand-sized palmate leaves, and the scarlet berry cone all read immediately."
+  },
+  {
+   "species": "Dulse",
+   "band": "FAIL",
+   "why": "The red hand-like blade reads, but the marginal ear flaps and tiny disc holdfast are not legible."
+  },
+  {
+   "species": "Edelweiss",
+   "band": "FAIL",
+   "why": "It reads as a pale leaf rosette with a lone stalked star, missing the felted bract star and clustered yellow buttons."
+  },
+  {
+   "species": "Fenugreek",
+   "band": "FAIL",
+   "why": "The dense green column lacks legible trifoliate leaves, pale pea flowers, and slender beaked sickle pods."
+  },
+  {
+   "species": "Fireweed",
+   "band": "PASS",
+   "why": "The straight stem, slim leaves, and bottom-up tapered magenta spike are all clear."
+  },
+  {
+   "species": "Flax",
+   "band": "FAIL",
+   "why": "Blue five-petal flowers and wiry stems read, but the required round seed capsules are absent."
+  },
+  {
+   "species": "Gentian",
+   "band": "FAIL",
+   "why": "Opposite leaves read, but the stacked blue blocks do not form a large flared five-lobed trumpet."
+  },
+  {
+   "species": "Giant Kelp",
+   "band": "PASS",
+   "why": "Tall amber stipes rise from a branching claw holdfast, with a distinct bulb at the base of every ribbon blade."
+  },
+  {
+   "species": "Glasswort",
+   "band": "PASS",
+   "why": "The fleshy jointed candelabra branching and red-aged tips are unmistakable."
+  },
+  {
+   "species": "Grape",
+   "band": "PASS",
+   "why": "Lobed leaves, a curled tendril, and a hanging conical purple bunch make the grapevine immediately clear."
+  },
+  {
+   "species": "Holy Basil",
+   "band": "POLISH",
+   "why": "The purple stem, opposite toothed leaves, and upright flower spike read; smaller, more distinctly tiered whorls would sharpen it."
+  },
+  {
+   "species": "Huckleberry",
+   "band": "PASS",
+   "why": "The open bush has sharply zig-zagged green stems, solitary dark berries, and small hanging pink urn flowers."
+  },
+  {
+   "species": "Labrador Tea",
+   "band": "PASS",
+   "why": "Narrow rolled leaves, rusty young stems, and domed white terminal clusters all read clearly."
+  },
+  {
+   "species": "Lichen",
+   "band": "PASS",
+   "why": "Rock-clinging lobed crusts, pale margins, and raised cup discs all read cleanly."
+  },
+  {
+   "species": "Licorice Root",
+   "band": "POLISH",
+   "why": "The pinnate foliage, lilac spike, and yellow root read, though the leaf is overly fern-like."
+  },
+  {
+   "species": "Lingonberry",
+   "band": "POLISH",
+   "why": "The low evergreen mat and red berries read, but the berries could cluster more clearly at shoot tips."
+  },
+  {
+   "species": "Marsh Rosemary",
+   "band": "FAIL",
+   "why": "The wiry violet flower spray reads, but the required flat basal rosette of spoon leaves is missing."
+  },
+  {
+   "species": "Melon",
+   "band": "PASS",
+   "why": "A ground runner, coiled tendril, lobed leaves, and ribbed fruit all read clearly."
+  },
+  {
+   "species": "Milkweed",
+   "band": "FAIL",
+   "why": "The paired leaves and pink umbel read, but the required warty pod bursting with white silk is absent."
+  },
+  {
+   "species": "Miner's Lettuce",
+   "band": "PASS",
+   "why": "Round saucer leaves pierced by stems and topped with tiny white flowers are unmistakable."
+  },
+  {
+   "species": "Monkshood",
+   "band": "PASS",
+   "why": "The stiff spike, blue-purple hooded blooms, and finely divided dark foliage all read."
+  },
+  {
+   "species": "Mountain Cranberry",
+   "band": "POLISH",
+   "why": "The creeping evergreen berry mat reads, but leaf-tip notches and terminal berry clusters are weak."
+  },
+  {
+   "species": "Mountain Mint",
+   "band": "FAIL",
+   "why": "Silvery bracts are present, but square branching stems and flat domed flower clusters do not read."
+  },
+  {
+   "species": "Mountain Papaya",
+   "band": "FAIL",
+   "why": "The crown is built from palm-like pinnate fronds, making the plant read as the wrong family."
+  },
+  {
+   "species": "Mountain Sorrel",
+   "band": "FAIL",
+   "why": "Kidney leaves and a red seed spike read, but the required red leaf stalks are missing."
+  },
+  {
+   "species": "Mountain Thyme",
+   "band": "PASS",
+   "why": "The low woody mat, tiny paired leaves, and purple-pink heads at each shoot tip all read."
+  },
+  {
+   "species": "Mugwort",
+   "band": "FAIL",
+   "why": "Silvery cut leaves and a drab spire read, but the required reddish-purple grooved stem does not."
+  },
+  {
+   "species": "Nettle",
+   "band": "FAIL",
+   "why": "Tiered toothed foliage and tassels read, but the stem is hidden; the square, visibly bristly stem must-read is missing."
+  },
+  {
+   "species": "Nipa Palm Fruit",
+   "band": "FAIL",
+   "why": "A tall bare trunk and crown-level fruit make this a generic palm; nipa needs trunkless mud-level fronds and a basal cannonball cluster."
+  },
+  {
+   "species": "Orchid Pods",
+   "band": "FAIL",
+   "why": "Pods and vine are present, but there is no bark support or aerial roots gripping it, so the epiphytic orchid must-read is incomplete."
+  },
+  {
+   "species": "Pampas Herb",
+   "band": "FAIL",
+   "why": "The fountain blades read, but the tiny white tip is not the huge silvery feather plume that defines pampas grass."
+  },
+  {
+   "species": "Pandanus Fruit",
+   "band": "FAIL",
+   "why": "This is a generic tall palm: no screw-arranged strap leaves, prop-root cone, or fruit hanging below the crown."
+  },
+  {
+   "species": "Pickerelweed",
+   "band": "FAIL",
+   "why": "Heart-shaped leaves and a violet spike read, but there is no shallow-water setting, an explicit must-read for this emergent aquatic."
+  },
+  {
+   "species": "Pine Nuts",
+   "band": "FAIL",
+   "why": "The tiered conical tree contradicts the broad umbrella crown, and needle bundles are not readable; this does not identify stone pine."
+  },
+  {
+   "species": "Pinyon Pine",
+   "band": "FAIL",
+   "why": "The straight conical tree misses pinyon's low rounded crown, crooked trunk, paired short needles, and readable squat cones."
+  },
+  {
+   "species": "Plantain Herb",
+   "band": "PASS",
+   "why": "The flat ribbed rosette and thin bare rat-tail spike make the plantain silhouette clear."
+  },
+  {
+   "species": "Prairie Turnip",
+   "band": "FAIL",
+   "why": "The small pointed root is not a swollen turnip-like taproot, and the five-fingered hairy foliage is not clearly resolved."
+  },
+  {
+   "species": "Purple Saxifrage",
+   "band": "PASS",
+   "why": "The low rock-hugging cushion, tiny dark leaves, and stemless magenta flowers clearly match purple saxifrage."
+  },
+  {
+   "species": "Rabbitbrush",
+   "band": "FAIL",
+   "why": "Large ray-petaled daisies replace the required dense, flat-topped rayless gold flower masses, so it reads as the wrong shrub."
+  },
+  {
+   "species": "Rainforest Nettle",
+   "band": "FAIL",
+   "why": "This repeats the narrow columnar nettle form; it lacks the oversized heart leaves and visible stinging-hair haze of a stinging-tree shrub."
+  },
+  {
+   "species": "Red Grape",
+   "band": "PASS",
+   "why": "Lobed vine leaves, forked tendrils, and a tapered hanging bunch of red grapes all read clearly."
+  },
+  {
+   "species": "Riverbank Nettle",
+   "band": "POLISH",
+   "why": "The upright nettle habit and serrated leafy tiers read, though overlap makes the paired leaves and dangling green tassels less distinct."
+  },
+  {
+   "species": "Roselle",
+   "band": "FAIL",
+   "why": "The red-stemmed lobed foliage reads, but the top organs look like open target-shaped flowers rather than fleshy crimson calyces clasping the stems."
+  },
+  {
+   "species": "Samphire",
+   "band": "FAIL",
+   "why": "The three jointed club shoots read as glasswort; rock samphire needs a low bushy mass of finger-lobed foliage and a flat yellow-green umbel."
+  },
+  {
+   "species": "Scurvy Grass",
+   "band": "FAIL",
+   "why": "Oversized round leaves on tall petioles replace the low cress-like cushion, and the required white cross-shaped flowers are absent."
+  },
+  {
+   "species": "Sea Beet",
+   "band": "FAIL",
+   "why": "The dark basal rosette is plausible, but the defining red-stemmed, wiry trailing green flower spikes are absent."
+  },
+  {
+   "species": "Sea Fennel",
+   "band": "FAIL",
+   "why": "Broad round leaves and one tall stalk are the wrong body; there is no low clump of thick finger segments with flat umbels."
+  },
+  {
+   "species": "Sea Grapes Algae",
+   "band": "FAIL",
+   "why": "Dominant blade-like vertical straps contradict the required bead-covered shoots, and the horizontal creeping runner is not legible."
+  },
+  {
+   "species": "Sea Kale",
+   "band": "FAIL",
+   "why": "The waxy blue-grey leaf mound reads, but the defining broad white flower cloud is replaced by one tiny dark head."
+  },
+  {
+   "species": "Sea Lavender",
+   "band": "FAIL",
+   "why": "One straight stem with a small umbrella does not read as the wide airy branched violet spray over a pressed basal rosette."
+  },
+  {
+   "species": "Sea Purslane",
+   "band": "FAIL",
+   "why": "It reads unmistakably as upright prickly-pear cactus pads, not a low rooting mat of paired narrow succulent leaves."
+  },
+  {
+   "species": "Sea Rocket",
+   "band": "FAIL",
+   "why": "The crucifer flowers and lobed leaves help, but the rigid single stalk lacks the required sprawling zigzag habit and jointed seed pods."
+  },
+  {
+   "species": "Sesame",
+   "band": "POLISH",
+   "why": "The single upright stalk, pale axillary blooms, and tight vertical capsules make sesame clear; the flower and capsule forms are merely blocky."
+  },
+  {
+   "species": "Solomon's Seal",
+   "band": "PASS",
+   "why": "The single arching stem, one-plane leaves, and evenly dangling white bells deliver the species cleanly."
+  },
+  {
+   "species": "Sorrel",
+   "band": "FAIL",
+   "why": "The basal clump and rust-red spire read, but the leaves are plain lance blades rather than arrowheads with backswept lobes."
+  },
+  {
+   "species": "Spruce Tips",
+   "band": "POLISH",
+   "why": "The tiered spruce, hanging cones, and pale new tips read correctly; brighter green shoot tips would strengthen the harvest cue."
+  },
+  {
+   "species": "Steppe Tulip",
+   "band": "FAIL",
+   "why": "The tall stem carries many narrow leaves, missing the few broad basal straps and low, ground-hugging habit of a steppe tulip."
+  },
+  {
+   "species": "Sugar Kelp",
+   "band": "PASS",
+   "why": "A single warm-brown unsplit ribbon has wavy margins, a short stipe, and a small branching holdfast."
+  },
+  {
+   "species": "Swamp Mint",
+   "band": "PASS",
+   "why": "Opposite toothed leaves and lilac whorls ring the purple-tinged upright stem, giving a clear marsh-mint read."
+  },
+  {
+   "species": "Sweet Flag",
+   "band": "FAIL",
+   "why": "The flower spike rises vertically like a cattail; the diagnostic sideways spadix partway up a flat stem is missing."
+  },
+  {
+   "species": "Tamarisk",
+   "band": "FAIL",
+   "why": "The foggy canopy obscures branch anatomy, and the few upright blooms do not form fine pink plumes on slender arching scale-clad twigs."
+  },
+  {
+   "species": "Tea",
+   "band": "PASS",
+   "why": "Dense rounded branching, glossy toothed leaves, pale tips, and white yellow-centred flowers make the tea shrub clear."
+  },
+  {
+   "species": "Tea Tree",
+   "band": "FAIL",
+   "why": "Generic round foliage and daisy-like flowers replace the papery peeling bark and fluffy bottlebrush spikes, losing the tea-tree identity."
+  },
+  {
+   "species": "Tree Fern Shoots",
+   "band": "FAIL",
+   "why": "The flat basal fan has no fibrous brown trunk and does not form an umbrella crown, despite the small crozier curls."
+  },
+  {
+   "species": "Vanilla Orchid",
+   "band": "FAIL",
+   "why": "The flowering vine has alternate fleshy leaves, but no bark-gripping aerial roots or support, leaving the diagnostic vanilla habit incomplete."
+  },
+  {
+   "species": "Wakame",
+   "band": "FAIL",
+   "why": "The broad blades lack a clear midrib with lobed wings and the ruffled basal sporophyll collar."
+  },
+  {
+   "species": "Water Hemlock",
+   "band": "FAIL",
+   "why": "The umbel and divided leaf read, but the purple-streaked hollow stem and diagnostic chambered root are absent."
+  },
+  {
+   "species": "Water Mint",
+   "band": "FAIL",
+   "why": "Multiple axillary flower tiers and a daisy-like crown replace the single terminal lilac pompom, repeating the swamp-mint pattern."
+  },
+  {
+   "species": "Water Spinach",
+   "band": "FAIL",
+   "why": "The tiny node clusters look disconnected; no continuous hollow floating stem or clear funnel flowers read at this scale."
+  },
+  {
+   "species": "White Grape",
+   "band": "PASS",
+   "why": "Forked tendrils, large lobed vine leaves, and a tapered bunch of translucent green-gold berries all read clearly."
+  },
+  {
+   "species": "Wild Chive",
+   "band": "PASS",
+   "why": "A dense tuft of tubular blue-green leaves supports a bare stalk and tight lilac pompom."
+  },
+  {
+   "species": "Wild Garlic",
+   "band": "FAIL",
+   "why": "Broad soil-level leaves read, but the tiny dark head omits the required starburst of white flowers on a bare angled stalk."
+  },
+  {
+   "species": "Wild Ginger",
+   "band": "FAIL",
+   "why": "The paired kidney leaves are convincing, but the flower is raised centrally instead of forming a dark three-lobed cup on the soil."
+  },
+  {
+   "species": "Wild Mint",
+   "band": "PASS",
+   "why": "Opposite toothed leaves and repeated lilac flower rings climb a visibly squared purple stem."
+  },
+  {
+   "species": "Wild Mustard",
+   "band": "PASS",
+   "why": "Cross-shaped yellow flowers crown the stem while slender pointed pods and changing leaf shapes read below."
+  },
+  {
+   "species": "Wild Onion",
+   "band": "PASS",
+   "why": "Tubular basal leaves, a bare round stalk, and a compact pale spherical umbel make the wild onion unmistakable."
+  },
+  {
+   "species": "Wild Rhubarb",
+   "band": "FAIL",
+   "why": "Huge puckered basal leaves read, but thin smooth green stalks omit the stout red-tinged ribbed harvest must-read."
+  },
+  {
+   "species": "Wild Rye",
+   "band": "PASS",
+   "why": "A tufted arching grass base supports an upright cylindrical spike with long straight whisker-like awns."
+  },
+  {
+   "species": "Wild Sesame",
+   "band": "FAIL",
+   "why": "The square stem and paired crinkled leaves read as perilla, but the defining one-sided spikes of seed capsules are absent."
+  },
+  {
+   "species": "Wild Taro",
+   "band": "PASS",
+   "why": "Large downward-pointing arrow leaves rise peltate on long stalks from a clearly stemless basal clump."
+  },
+  {
+   "species": "Wild Thyme",
+   "band": "PASS",
+   "why": "A low wide woody mat carries minute paired leaves and several domed pink-purple flower heads."
+  },
+  {
+   "species": "Wild Yam",
+   "band": "PASS",
+   "why": "A thin twining vine, heart-shaped leaves, and a large knobbly brown tuber clearly establish wild yam."
+  },
+  {
+   "species": "Wood Sorrel",
+   "band": "FAIL",
+   "why": "The foliage collapses into a cabbage-like ball instead of a low carpet of separate stalked trios of notched heart leaflets."
+  },
+  {
+   "species": "Wormwood",
+   "band": "FAIL",
+   "why": "Silvery divided foliage reads, but the single flat stem and upright pale spike miss the woody bushy clump and sprays of dull-yellow nodding buttons."
+  },
+  {
+   "species": "fungi-h0-s1",
+   "sourceSpecies": "f0·1#121",
+   "band": "PASS",
+   "why": "Twin spore bodies and the webbed cut face form a clear, coherent fungal phenotype."
+  },
+  {
+   "species": "fauna-h0-s10",
+   "sourceSpecies": "f0·10#10",
+   "band": "PASS",
+   "why": "The mint quadruped has a readable head, limbs, tail, and unified fur-like material treatment."
+  },
+  {
+   "species": "flora-h0-s11",
+   "sourceSpecies": "f0·11#71",
+   "band": "PASS",
+   "why": "A rooted trunk, layered frond canopy, and misty crown read together as one alien tree form."
+  },
+  {
+   "species": "fauna-h0-s12",
+   "sourceSpecies": "f0·12#12",
+   "band": "PASS",
+   "why": "The horned red grazer keeps a clear face and four-limbed silhouette despite its luminous surface traits."
+  },
+  {
+   "species": "fauna-h0-s14",
+   "sourceSpecies": "f0·14#14",
+   "band": "PASS",
+   "why": "The long armored body, repeated limb pairs, tail, and alert head make a coherent alien crawler."
+  },
+  {
+   "species": "fungi-h0-s15",
+   "sourceSpecies": "f0·15#135",
+   "band": "PASS",
+   "why": "The blue paired spore bodies and visible filament network present a consistent fungal body plan."
+  },
+  {
+   "species": "fungi-h0-s17",
+   "sourceSpecies": "f0·17#137",
+   "band": "PASS",
+   "why": "A central fruiting sphere with evenly integrated radial lobes reads as a complete fungal organism."
+  },
+  {
+   "species": "fungi-h0-s18",
+   "sourceSpecies": "f0·18#138",
+   "band": "PASS",
+   "why": "The cyan cup, shaded cavity, textured rim, and basal fringe form a clean cup-fungus phenotype."
+  },
+  {
+   "species": "fungi-h0-s19",
+   "sourceSpecies": "f0·19#139",
+   "band": "PASS",
+   "why": "The dense white canopy and hanging filament field create a readable colony-like fungal silhouette."
+  },
+  {
+   "species": "flora-h0-s19",
+   "sourceSpecies": "f0·19#79",
+   "band": "PASS",
+   "why": "The gold spear-leaf fan has a strong radial growth plan and a crisp, unified plant silhouette."
+  },
+  {
+   "species": "fungi-h0-s2",
+   "sourceSpecies": "f0·2#122",
+   "band": "PASS",
+   "why": "The suspended white mat and evenly rooted tendrils read as a coherent filamentous fungal colony."
+  },
+  {
+   "species": "fauna-h0-s3",
+   "sourceSpecies": "f0·3#3",
+   "band": "PASS",
+   "why": "The striped red animal has an unambiguous face, trunk, legs, tail, and integrated luminous markings."
+  },
+  {
+   "species": "fauna-h0-s4",
+   "sourceSpecies": "f0·4#4",
+   "band": "PASS",
+   "why": "The domed head, plated torso, compact limbs, and banded tail combine into one readable armored grazer."
+  },
+  {
+   "species": "fungi-h0-s6",
+   "sourceSpecies": "f0·6#126",
+   "band": "PASS",
+   "why": "Five grounded stalks with distinct capsule heads form a clear and internally consistent fungus."
+  },
+  {
+   "species": "fungi-h0-s8",
+   "sourceSpecies": "f0·8#128",
+   "band": "PASS",
+   "why": "The low white fruiting mat and repeated hanging tendrils read as one coherent fungal colony."
+  },
+  {
+   "species": "fungi-h1-s1",
+   "sourceSpecies": "f1·1#141",
+   "band": "PASS",
+   "why": "The pale central body and balanced radial gill-lobes create a complete, readable fungus form."
+  },
+  {
+   "species": "fauna-h1-s1",
+   "sourceSpecies": "f1·1#21",
+   "band": "PASS",
+   "why": "The dark long-necked quadruped retains a clear eye, muzzle, limbs, tail, and readable luminous pattern."
+  },
+  {
+   "species": "fungi-h1-s10",
+   "sourceSpecies": "f1·10#150",
+   "band": "PASS",
+   "why": "The pale bowl, modeled cavity, defined rim, and basal fringe make a crisp cup-fungus phenotype."
+  },
+  {
+   "species": "fungi-h1-s11",
+   "sourceSpecies": "f1·11#151",
+   "band": "PASS",
+   "why": "Green radial lobes integrate cleanly with the central fruiting body into one fungal organism."
+  },
+  {
+   "species": "fauna-h1-s11",
+   "sourceSpecies": "f1·11#31",
+   "band": "PASS",
+   "why": "The antlered gold quadruped has a legible face, stance, tail, and coherent bioluminescent markings."
+  },
+  {
+   "species": "flora-h1-s11",
+   "sourceSpecies": "f1·11#91",
+   "band": "PASS",
+   "why": "Clustered purple blades, side shoots, and shared basal anchoring establish a coherent reed-like flora plan."
+  },
+  {
+   "species": "fungi-h1-s12",
+   "sourceSpecies": "f1·12#152",
+   "band": "PASS",
+   "why": "Paired blue spore bodies and the filamented cut surface form a consistent fungal phenotype."
+  },
+  {
+   "species": "fauna-h1-s14",
+   "sourceSpecies": "f1·14#34",
+   "band": "PASS",
+   "why": "The magenta striped crawler has a clear head, tail, repeated legs, and unified armored body treatment."
+  },
+  {
+   "species": "fungi-h1-s16",
+   "sourceSpecies": "f1·16#156",
+   "band": "PASS",
+   "why": "The two golden cups share convincing cavities, rims, fringes, and a coherent colony presentation."
+  },
+  {
+   "species": "fauna-h1-s16",
+   "sourceSpecies": "f1·16#36",
+   "band": "PASS",
+   "why": "The gold plated animal keeps a readable head, four-limbed stance, tail, and integrated dorsal armor."
+  },
+  {
+   "species": "fungi-h1-s18",
+   "sourceSpecies": "f1·18#158",
+   "band": "PASS",
+   "why": "Warm radial lobes and a modeled central body combine into a distinct, complete fungal organism."
+  },
+  {
+   "species": "fungi-h1-s2",
+   "sourceSpecies": "f1·2#142",
+   "band": "PASS",
+   "why": "The broad white mat and rooted filament curtain read cleanly as a single colony-like fungus."
+  },
+  {
+   "species": "fungi-h1-s3",
+   "sourceSpecies": "f1·3#143",
+   "band": "PASS",
+   "why": "The coral-red trunk and dense branching crown create a strong, coherent alien tree silhouette."
+  },
+  {
+   "species": "fungi-h1-s5",
+   "sourceSpecies": "f1·5#145",
+   "band": "PASS",
+   "why": "The radial fruiting body has a clear core and evenly attached petal-like organs."
+  },
+  {
+   "species": "fungi-h1-s6",
+   "sourceSpecies": "f1·6#146",
+   "band": "PASS",
+   "why": "The pale radial phenotype keeps its central body and appendages distinct and coherent."
+  },
+  {
+   "species": "fauna-h1-s6",
+   "sourceSpecies": "f1·6#26",
+   "band": "PASS",
+   "why": "The long-necked quadruped has connected limbs, a readable sensory head, and integrated luminous traits."
+  },
+  {
+   "species": "flora-h1-s6",
+   "sourceSpecies": "f1·6#86",
+   "band": "PASS",
+   "why": "The upright growth form has a grounded base and coherent clustered terminal organs."
+  },
+  {
+   "species": "flora-h1-s7",
+   "sourceSpecies": "f1·7#87",
+   "band": "PASS",
+   "why": "Layered fan blades share a clear basal attachment and form a readable alien plant."
+  },
+  {
+   "species": "flora-h1-s9",
+   "sourceSpecies": "f1·9#89",
+   "band": "PASS",
+   "why": "The trunk, tiered crown, and ground attachment read cleanly as one coherent growth plan."
+  },
+  {
+   "species": "fungi-h2-s0",
+   "sourceSpecies": "f2·0#160",
+   "band": "PASS",
+   "why": "The fungal mat has a defined canopy edge, hanging hyphae, and a clear substrate relationship."
+  },
+  {
+   "species": "flora-h2-s10",
+   "sourceSpecies": "f2·10#110",
+   "band": "PASS",
+   "why": "Radiating red stems converge at one rooted center, producing a clear intentional silhouette."
+  },
+  {
+   "species": "fungi-h2-s10",
+   "sourceSpecies": "f2·10#170",
+   "band": "PASS",
+   "why": "The low fungal canopy and suspended rootlike strands remain legible as a unified phenotype."
+  },
+  {
+   "species": "fauna-h2-s12",
+   "sourceSpecies": "f2·12#52",
+   "band": "PASS",
+   "why": "The spotted quadruped has a readable head, body, legs, and tail with no attachment break."
+  },
+  {
+   "species": "fungi-h2-s13",
+   "sourceSpecies": "f2·13#173",
+   "band": "PASS",
+   "why": "The broad fungal mat retains a crisp edge and connected hanging structures above its substrate."
+  },
+  {
+   "species": "fauna-h2-s16",
+   "sourceSpecies": "f2·16#56",
+   "band": "PASS",
+   "why": "The striped quadruped combines feelers, limbs, tail, and luminous nodes without losing anatomy."
+  },
+  {
+   "species": "fungi-h2-s18",
+   "sourceSpecies": "f2·18#178",
+   "band": "PASS",
+   "why": "The branching coral form is visibly rooted and its dense crown remains structurally coherent."
+  },
+  {
+   "species": "flora-h2-s2",
+   "sourceSpecies": "f2·2#102",
+   "band": "PASS",
+   "why": "The tall yellow stalk cluster has a clear root base and readable terminal structures."
+  },
+  {
+   "species": "fungi-h2-s2",
+   "sourceSpecies": "f2·2#162",
+   "band": "PASS",
+   "why": "The tall podded stalks share a stable basal attachment and read as one growth form."
+  },
+  {
+   "species": "fauna-h2-s2",
+   "sourceSpecies": "f2·2#42",
+   "band": "PASS",
+   "why": "The blue quadruped has connected limbs, tail, head, and dorsal plates with a clean silhouette."
+  },
+  {
+   "species": "fungi-h2-s3",
+   "sourceSpecies": "f2·3#163",
+   "band": "PASS",
+   "why": "The golden radial fungus keeps its central body and petal-like structures visually integrated."
+  },
+  {
+   "species": "fauna-h2-s3",
+   "sourceSpecies": "f2·3#43",
+   "band": "PASS",
+   "why": "The pale quadruped's head, limbs, striped body, and luminous nodes form a coherent phenotype."
+  },
+  {
+   "species": "fungi-h2-s4",
+   "sourceSpecies": "f2·4#164",
+   "band": "PASS",
+   "why": "Layered cyan shelves visibly attach to one substrate and retain a strong fungal silhouette."
+  },
+  {
+   "species": "flora-h2-s5",
+   "sourceSpecies": "f2·5#105",
+   "band": "PASS",
+   "why": "The luminous green stalk cluster has a clear rooted base and unified terminal growth."
+  },
+  {
+   "species": "fungi-h2-s7",
+   "sourceSpecies": "f2·7#167",
+   "band": "PASS",
+   "why": "The pink shelf layers remain clearly attached to their substrate with readable depth."
+  },
+  {
+   "species": "fungi-h2-s8",
+   "sourceSpecies": "f2·8#168",
+   "band": "PASS",
+   "why": "The orange coral fungus has a grounded base and coherent repeated branching throughout."
+  },
+  {
+   "species": "fungi-h2-s9",
+   "sourceSpecies": "f2·9#169",
+   "band": "PASS",
+   "why": "The orange shelf phenotype has clear substrate attachment and consistently layered growth."
+  },
+  {
+   "species": "microbe-h0-s1",
+   "sourceSpecies": "m0·1#181",
+   "band": "PASS",
+   "why": "The translucent cell boundary, internal bodies, and external filaments remain distinguishable."
+  },
+  {
+   "species": "microbe-h0-s10",
+   "sourceSpecies": "m0·10#190",
+   "band": "PASS",
+   "why": "Membrane, organelles, and fine locomotion filaments read as one coherent dark-cell phenotype."
+  },
+  {
+   "species": "microbe-h0-s15",
+   "sourceSpecies": "m0·15#195",
+   "band": "PASS",
+   "why": "The pale spherical colony has a crisp boundary and consistently integrated surface units."
+  },
+  {
+   "species": "microbe-h0-s17",
+   "sourceSpecies": "m0·17#197",
+   "band": "PASS",
+   "why": "The rust-colored cell clearly combines membrane, organelles, and trailing filaments."
+  },
+  {
+   "species": "microbe-h0-s2",
+   "sourceSpecies": "m0·2#182",
+   "band": "PASS",
+   "why": "The turquoise spherical colony remains legible, cohesive, and richly differentiated at the surface."
+  },
+  {
+   "species": "microbe-h2-s18",
+   "sourceSpecies": "m2·18#238",
+   "band": "PASS",
+   "why": "The translucent ciliate body, continuous fringe, curved groove, and staggered vacuoles form a clear, coherent microbe phenotype."
+  },
+  {
+   "species": "Black Pepper",
+   "band": "FAIL",
+   "why": "Berry strings read, but the unsupported vine lacks heart-shaped ribbed leaves and visible clinging root pads."
+  },
+  {
+   "species": "Cardamom",
+   "band": "FAIL",
+   "why": "The ground rosette omits the tall arching canes and separate soil-level pod shoot."
+  },
+  {
+   "species": "Chamomile",
+   "band": "PASS",
+   "why": "The domed yellow centre, pale rays, and thread-fine foliage make a clear chamomile."
+  },
+  {
+   "species": "Echinacea",
+   "band": "POLISH",
+   "why": "The stiff stem and raised orange cone read clearly; stronger downward-swept rays would sharpen the signature."
+  },
+  {
+   "species": "Ginger",
+   "band": "FAIL",
+   "why": "The rhizome reads, but the broad basal fan replaces the required two-ranked leaves on reedy canes."
+  },
+  {
+   "species": "Ginseng",
+   "band": "FAIL",
+   "why": "Root and berries are present, but the foliage is a full stem ladder rather than one palmate leaf whorl."
+  },
+  {
+   "species": "Lavender",
+   "band": "POLISH",
+   "why": "The bare violet spikes over a compact silvery mound read clearly, though the foliage is overly diffuse."
+  },
+  {
+   "species": "Mint",
+   "band": "PASS",
+   "why": "Paired toothed leaves, a dark square-looking stem, and terminal lilac whorls form a clear mint."
+  },
+  {
+   "species": "Mustard",
+   "band": "FAIL",
+   "why": "The yellow cross flowers read, but the beaked pods and large lyre-shaped lower leaves are missing."
+  },
+  {
+   "species": "Oregano",
+   "band": "FAIL",
+   "why": "The dense terminal pompom omits oregano's airy, branched, flat-topped flower sprays."
+  },
+  {
+   "species": "Rosemary",
+   "band": "FAIL",
+   "why": "A diffuse round mass with lavender-like spikes does not read as an upright woody, needle-leaved rosemary bush."
+  },
+  {
+   "species": "Sage",
+   "band": "FAIL",
+   "why": "The tiny floating marks omit sage's large pebbled velvet leaves and readable square woody stems."
+  },
+  {
+   "species": "Thyme",
+   "band": "FAIL",
+   "why": "The tall bare ladder and single daisy head replace the required low spreading, tiny-leaved woody mound."
+  },
+  {
+   "species": "Turmeric",
+   "band": "FAIL",
+   "why": "Broad ribbed leaves read, but the basal pink-green bract cone and vivid orange rhizome flesh are absent."
+  },
+  {
+   "species": "Valerian",
+   "band": "POLISH",
+   "why": "Tall stem and opposite pinnate ladder read correctly; the pale domed flower head could be denser and pinker."
+  },
+  {
+   "species": "Yarrow",
+   "band": "FAIL",
+   "why": "The ferny foliage reads, but a sparse semicircle of dots replaces the required flat dense plate of florets."
+  },
+  {
+   "species": "Amaranth",
+   "band": "FAIL",
+   "why": "Broad crimson foliage reads, but the tiny bead spike is not the required heavy fleshy seed plume."
+  },
+  {
+   "species": "Arrowroot",
+   "band": "FAIL",
+   "why": "The broad basal leaves and pale rhizome read, but the required asymmetric white flowers are absent."
+  },
+  {
+   "species": "Barley",
+   "band": "FAIL",
+   "why": "The rigid upright ear and broom-like terminal fan omit barley's nodding head and long awns along the grain rows."
+  },
+  {
+   "species": "Buckwheat",
+   "band": "FAIL",
+   "why": "The stacked leaf column hides the red jointed stem, and no sharply three-angled seeds are visible."
+  },
+  {
+   "species": "Cassava",
+   "band": "FAIL",
+   "why": "Palmate foliage reads, but generic thin roots replace the fat tapering tubers radiating from the base."
+  },
+  {
+   "species": "Millet",
+   "band": "POLISH",
+   "why": "The straight cane, arched blades, and dense beaded head read as millet; the head could carry more mass."
+  },
+  {
+   "species": "Oats",
+   "band": "POLISH",
+   "why": "The open hanging spikelets avoid a compact ear and read as oats, though the panicle could spread more broadly."
+  },
+  {
+   "species": "Potato",
+   "band": "FAIL",
+   "why": "Compound foliage and a star flower are present, but the required eyed tubers on basal stolons are missing."
+  },
+  {
+   "species": "Quinoa",
+   "band": "FAIL",
+   "why": "The hot-coloured seed head reads, but duck-foot leaves and the exposed grooved striped stem are absent."
+  },
+  {
+   "species": "Rice",
+   "band": "FAIL",
+   "why": "A single sparse stalk replaces the flooded multi-tiller clump and heavy nodding branched panicle."
+  },
+  {
+   "species": "Rye",
+   "band": "FAIL",
+   "why": "The ear stays rigid and broom-topped instead of forming a narrow leaning head lined with hair-fine awns."
+  },
+  {
+   "species": "Sorghum",
+   "band": "FAIL",
+   "why": "The thin culm and tiny crown omit the thick corn-like cane and heavy compact seed head."
+  },
+  {
+   "species": "Sweet Potato",
+   "band": "FAIL",
+   "why": "The trailing morning-glory vine reads, but no smooth spindle-shaped tubers are shown."
+  },
+  {
+   "species": "Taro",
+   "band": "FAIL",
+   "why": "The leaves point upward and join at their notches, while the peltate elephant-ear read and brown ringed corm are missing."
+  },
+  {
+   "species": "Wheat",
+   "band": "POLISH",
+   "why": "The dense upright grain ear and stiff awns read clearly; distributing the awns down the ear would improve fidelity."
+  },
+  {
+   "species": "Barnacle",
+   "band": "PASS",
+   "why": "Fused chalky cone plates, summit opening, and emerging feathery cirri make a complete barnacle read."
+  },
+  {
+   "species": "Camel Spider",
+   "band": "FAIL",
+   "why": "The portrait reads as a generic long-legged spider; enormous forward pincers and distinct leg-like pedipalps are missing."
+  },
+  {
+   "species": "Cave Cricket",
+   "band": "FAIL",
+   "why": "The humped wingless body reads, but its antennae are short rather than whip-like and far longer than the body."
+  },
+  {
+   "species": "Coconut Crab",
+   "band": "FAIL",
+   "why": "The flat swimmer-crab chassis lacks the massive unequal crusher claws and long heavy armoured walking legs."
+  },
+  {
+   "species": "Copepod",
+   "band": "POLISH",
+   "why": "The median eye, long antennae, and tapered swimming body read clearly; the forked tail could be less cluttered."
+  },
+  {
+   "species": "Crab",
+   "band": "PASS",
+   "why": "Broad tailless carapace, forward pincers, and short-stalked eyes form a clear crab silhouette."
+  },
+  {
+   "species": "Crayfish",
+   "band": "PASS",
+   "why": "Forward claws, long antennae, segmented abdomen, and tail fan are all clearly readable."
+  },
+  {
+   "species": "Harvestman",
+   "band": "PASS",
+   "why": "The single pea-like body, tiny dorsal eye turret, and eight extremely long thread-thin legs now deliver the harvestman signature."
+  },
+  {
+   "species": "Lobster",
+   "band": "PASS",
+   "why": "Unequal forward claws, sweeping antennae, segmented body, and tail fan make a clear lobster."
+  },
+  {
+   "species": "Mite",
+   "band": "FAIL",
+   "why": "The spotted round body reads as a small spider or beetle, without the front-bunched eight legs and mouth cone."
+  },
+  {
+   "species": "Scorpion",
+   "band": "PASS",
+   "why": "Forward pincers, flat eight-legged body, and a segmented arched stinger tail are immediately clear."
+  },
+  {
+   "species": "Spider",
+   "band": "PASS",
+   "why": "The small cephalothorax, round abdomen, and jointed leg layout give a clear two-part spider read."
+  },
+  {
+   "species": "Tarantula",
+   "band": "FAIL",
+   "why": "The hairy two-part body reads, but the required downward fangs and distinct leg-like pedipalps are not visible."
+  },
+  {
+   "species": "Water Flea",
+   "band": "PASS",
+   "why": "Transparent teardrop shell, single large eye, visible brood and gut, and rowing antennae clearly read as Daphnia."
+  },
+  {
+   "species": "Beluga",
+   "band": "FAIL",
+   "why": "The white melon-headed silhouette reads as a beluga, but the required visible neck crease is absent."
+  },
+  {
+   "species": "Blue Whale",
+   "band": "FAIL",
+   "why": "The head is sharply pointed, the dorsal fin is not a far-back nub, and the throat pleats are missing."
+  },
+  {
+   "species": "Dolphin",
+   "band": "FAIL",
+   "why": "The long pointed snout lacks the short beak and smiling jawline, and the tail reads as a vertical fish tail."
+  },
+  {
+   "species": "Fur Seal",
+   "band": "FAIL",
+   "why": "The dog-like head reads, but there are no long fore-flippers propping up the chest or forward-rotated hind flippers."
+  },
+  {
+   "species": "Gray Whale",
+   "band": "FAIL",
+   "why": "The smooth, clean body lacks the dorsal knuckle row, mottled barnacle-crusted skin, and arched rostrum."
+  },
+  {
+   "species": "Narwhal",
+   "band": "FAIL",
+   "why": "The spiral tusk reads, but the body is unmottled and the head is a pointed wedge rather than blunt and rounded."
+  },
+  {
+   "species": "Orca",
+   "band": "POLISH",
+   "why": "The tall fin and crisp black-white pattern make it unmistakable; the pectoral paddle is undersized and the dark tail loses definition."
+  },
+  {
+   "species": "Pilot Whale",
+   "band": "FAIL",
+   "why": "The bulbous melon reads, but the forward swept dorsal fin and pale throat-anchor patch are absent."
+  },
+  {
+   "species": "Porpoise",
+   "band": "FAIL",
+   "why": "The compact body and small triangular fin read, but the pointed beaked head contradicts the defining blunt, beakless profile."
+  },
+  {
+   "species": "Right Whale",
+   "band": "FAIL",
+   "why": "The broad smooth back has no dorsal fin, but the enormous arched jawline and crusty white head callosities are missing."
+  },
+  {
+   "species": "Sea Lion",
+   "band": "FAIL",
+   "why": "The dog-like head reads, but no long fore-flippers lift the chest and the hind flippers trail backward like a true seal's."
+  },
+  {
+   "species": "Seal",
+   "band": "PASS",
+   "why": "The earless torpedo body, trailing hind flippers, round dark-eyed head, and whiskered muzzle all read clearly as a true seal."
+  },
+  {
+   "species": "Sperm Whale",
+   "band": "FAIL",
+   "why": "The head is rounded rather than square, while the underslung toothed jaw and knuckled dorsal hump are absent."
+  },
+  {
+   "species": "Walrus",
+   "band": "POLISH",
+   "why": "Tusks, bristled square muzzle, wrinkled bulk, and short flippers read clearly; the far tusk could separate more distinctly."
+  },
+  {
+   "species": "Acidophile",
+   "band": "FAIL",
+   "why": "Rust water and scattered rods read, but the cells are oversized and the required corroded mineral grains and pyrite fragments are absent."
+  },
+  {
+   "species": "Amoeba",
+   "band": "FAIL",
+   "why": "The rim and organelles are visible, but the nearly round body with thin looped filaments lacks blunt flowing pseudopods and reads as a flagellate."
+  },
+  {
+   "species": "Bioluminescent Plankton",
+   "band": "FAIL",
+   "why": "The cold-blue glowing cell field reads, but every balloon cell lacks the defining cleft and stout trailing tentacle."
+  },
+  {
+   "species": "Cryophile",
+   "band": "POLISH",
+   "why": "Blue-white rods in a cold ice field read correctly; stronger connected crystal facets would make the brine-vein setting clearer."
+  },
+  {
+   "species": "Dinoflagellate",
+   "band": "POLISH",
+   "why": "The plated amber cell, deep equatorial belt, and trailing flagellum read clearly; the second flagellum within the groove is not distinct."
+  },
+  {
+   "species": "Euglena",
+   "band": "PASS",
+   "why": "The green tapered spindle, red eyespot, and long anterior flagellum are all clear and species-correct."
+  },
+  {
+   "species": "Halophile",
+   "band": "FAIL",
+   "why": "The dense hot-pink rod field reads, but angular salt crystals and flattened plate-like cells are missing."
+  },
+  {
+   "species": "Iron-Oxidizing Bacteria",
+   "band": "FAIL",
+   "why": "A twisted orange stalk is present, but the cell is not colourless and there is no colony of rust-crusted stalks matting into ochre sludge."
+  },
+  {
+   "species": "Methanogen",
+   "band": "PASS",
+   "why": "Plain blunt rods, numerous escaping gas bubbles, and a dark anoxic field communicate the methanogen colony cleanly."
+  },
+  {
+   "species": "Nitrogen-Fixing Bacteria",
+   "band": "PASS",
+   "why": "The pink root nodule visibly contains dense rods and irregular bacteroid forms, delivering the defining host-tissue context."
+  },
+  {
+   "species": "Paramecium",
+   "band": "PASS",
+   "why": "The asymmetric slipper outline, complete cilia fringe, and curved diagonal oral groove are all clearly rendered."
+  },
+  {
+   "species": "Radiation-Resistant Microbe",
+   "band": "FAIL",
+   "why": "The exact four-cell tetrad reads, but the cells are yellow rather than pink-red and lack the required heavy layered envelopes."
+  },
+  {
+   "species": "Radiolarian",
+   "band": "FAIL",
+   "why": "Long radial spines read, but the shell is a dotted bubble rather than an open geometric lattice and the central capsule is not dark."
+  },
+  {
+   "species": "Red-Tide Algae",
+   "band": "FAIL",
+   "why": "The water is rust-red and crowded, but the cells lack clear girdle grooves and the bloom has no concentrated surface streaks or swirls."
+  },
+  {
+   "species": "Bracket Fungus",
+   "band": "FAIL",
+   "why": "It is rendered as several thin tiered half-discs rather than the defining single thick woody hoof."
+  },
+  {
+   "species": "Chicken-of-the-Woods",
+   "band": "FAIL",
+   "why": "The stack is pale blue-grey, with rigid concentric plates instead of vivid orange-yellow fleshy lobed shelves."
+  },
+  {
+   "species": "Coral Fungus",
+   "band": "PASS",
+   "why": "A dense capless cluster repeatedly forks upward from one thick base, giving a clear coral-fungus silhouette."
+  },
+  {
+   "species": "Cordyceps",
+   "band": "FAIL",
+   "why": "The orange fertile clubs read, but they rise from an unrecognisable row of blobs rather than a clearly legible dead insect host."
+  },
+  {
+   "species": "Earthstar",
+   "band": "PASS",
+   "why": "Pointed peeled-back rays surround a central papery round sac with a visible raised top pore."
+  },
+  {
+   "species": "Lion’s Mane",
+   "band": "PASS",
+   "why": "The creamy unbranched pom-pom and dense cascade of long downward icicle spines are unmistakable."
+  },
+  {
+   "species": "Maitake",
+   "band": "PASS",
+   "why": "The dense hen-like rosette of overlapping grey-brown fronds and pale common base reads correctly."
+  },
+  {
+   "species": "Mildew",
+   "band": "FAIL",
+   "why": "The white growth appears as raised fuzzy clumps on the leaf rather than a thin flat powdery film."
+  },
+  {
+   "species": "Oyster Mushroom",
+   "band": "FAIL",
+   "why": "It uses the concentric tiered shelf chassis and shows neither distinct oyster caps nor white decurrent gills and lateral stems."
+  },
+  {
+   "species": "Reindeer Lichen",
+   "band": "FAIL",
+   "why": "The broad fuzzy canopy on long straight supports lacks the branching hollow stalk cushion and one-way nodding tips."
+  },
+  {
+   "species": "Shelf Fungus",
+   "band": "POLISH",
+   "why": "The thin stepped shelf stack reads correctly, but its saturated red rings should be restrained toward banded ochre and umber."
+  },
+  {
+   "species": "Turkey Tail",
+   "band": "FAIL",
+   "why": "Three oversized brown shelves lack the dozens of small overlapping fans and strongly multihued concentric bands."
+  },
+  {
+   "species": "Yeast",
+   "band": "FAIL",
+   "why": "Budding cream cells read as yeast, but the required bud-scar pocks are absent from the smooth cell walls."
+  },
+  {
+   "species": "Bobcat",
+   "band": "POLISH",
+   "why": "The bobbed tail, cheek-whisker ruff, and black ear tuft now read, but the ruff and tuft remain oversized and angular."
+  },
+  {
+   "species": "Caracal",
+   "band": "POLISH",
+   "why": "The plain reddish coat, short tail, and long hind limbs read, but the solid ear plume needs refinement into slender black tassels."
+  },
+  {
+   "species": "Cheetah",
+   "band": "PASS",
+   "why": "Solid spots, dark tear marks, a small head, long legs, tucked waist, and long thin tail give a clear cheetah read."
+  },
+  {
+   "species": "Clouded Leopard",
+   "band": "PASS",
+   "why": "Cloud-edged blotches, low stout legs, and a tail matching the head-body length all read clearly."
+  },
+  {
+   "species": "Cougar",
+   "band": "FAIL",
+   "why": "The plain tawny coat and black-tipped tail read, but the long pointed head lacks the round skull and black muzzle bars."
+  },
+  {
+   "species": "Jaguar",
+   "band": "FAIL",
+   "why": "The stocky spotted body reads as a big cat, but the head has a narrow projecting muzzle instead of a massive broad blocky jaw."
+  },
+  {
+   "species": "Leopard",
+   "band": "PASS",
+   "why": "A low slender body, long thick tail, and dense hollow-centred rosettes distinguish it clearly as a leopard."
+  },
+  {
+   "species": "Lynx",
+   "band": "POLISH",
+   "why": "The ear tuft, flared cheek ruff, long hind leg, and snowshoe paws now read, but the ruff remains rigid black linework."
+  },
+  {
+   "species": "Ocelot",
+   "band": "POLISH",
+   "why": "The short tail, paired cheek stripes, and horizontal rosette chains now read, but the rosettes remain overly regular capsule outlines."
+  },
+  {
+   "species": "Serval",
+   "band": "PASS",
+   "why": "Extraordinarily long legs, an oversized upright ear, small head, short tail, and bold spots deliver the serval silhouette."
+  },
+  {
+   "species": "Snow Leopard",
+   "band": "POLISH",
+   "why": "The pale rosetted low body and long tail read correctly; the tail could be substantially thicker and more ropy."
+  },
+  {
+   "species": "Tiger",
+   "band": "FAIL",
+   "why": "The orange coat and vertical stripes read, but the white cheek ruff and eyebrow spots are absent and the tail is too short."
+  },
+  {
+   "species": "Apple",
+   "band": "FAIL",
+   "why": "The low broad apple tree and red fruit read, but the required pink-white blossom clusters are absent."
+  },
+  {
+   "species": "Cashew",
+   "band": "FAIL",
+   "why": "The yellow-orange fruit is visible, but no curved grey cashew nut clearly hangs outside and below it."
+  },
+  {
+   "species": "Coconut",
+   "band": "FAIL",
+   "why": "The feather-frond crown reads as a palm, but the trunk is rigidly upright and only one nut appears where a wedged cluster is required."
+  },
+  {
+   "species": "Durian",
+   "band": "PASS",
+   "why": "A tall straight trunk, high open crown, and conspicuous large spiny fruits make the durian immediately legible."
+  },
+  {
+   "species": "Hazelnut",
+   "band": "FAIL",
+   "why": "It lacks a visible multi-stem stool and frilled nut husks, while the supposed catkins stand upright instead of dangling."
+  },
+  {
+   "species": "Mango",
+   "band": "FAIL",
+   "why": "The mango-shaped fruit reads, but the sparse fuzzy crown lacks dense drooping lance leaves and long wiry fruit stalks."
+  },
+  {
+   "species": "Papaya",
+   "band": "FAIL",
+   "why": "The crown is made of feather-like palm fronds rather than huge lobed papaya leaves, so it reads as a coconut palm with trunk fruit."
+  },
+  {
+   "species": "Pear",
+   "band": "FAIL",
+   "why": "Pear-shaped fruit reads, but the crown repeats the low broad apple form and the white dark-anthered blossom is absent."
+  },
+  {
+   "species": "Plantain",
+   "band": "FAIL",
+   "why": "The false trunk and broad leaves read, but the leaves are untorn and the bunch is yellow rather than large straight angular green fingers."
+  },
+  {
+   "species": "Rambutan",
+   "band": "FAIL",
+   "why": "Hairy red fruit are recognisable, but they are isolated on a sparse flat canopy rather than in tight bunches within a dense rounded crown."
+  },
+  {
+   "species": "Bromeliad",
+   "band": "FAIL",
+   "why": "The sparse flat leaf star has no visible water-holding vase cup, banded straps, or substantial coloured bract spike."
+  },
+  {
+   "species": "Buttercup",
+   "band": "FAIL",
+   "why": "The pointed star flower and tall ladder of narrow leaves miss both rounded lacquered petals and deeply cut palmate foliage."
+  },
+  {
+   "species": "Clover",
+   "band": "FAIL",
+   "why": "A round pink flower head reads, but the oversized foliage lacks distinct three-leaflet sets and pale V markings."
+  },
+  {
+   "species": "Daisy",
+   "band": "FAIL",
+   "why": "The white flower on a bare stalk reads, but the base is a spiky grass star rather than a spoon-leaf ground rosette."
+  },
+  {
+   "species": "Dandelion",
+   "band": "FAIL",
+   "why": "The jagged basal rosette and bare flower stalk read, but the required spherical white seed clock is absent."
+  },
+  {
+   "species": "Foxglove",
+   "band": "FAIL",
+   "why": "The tall spike is present, but the blocky blooms face both sides and have no hanging bell mouths or spotted throats."
+  },
+  {
+   "species": "Goldenrod",
+   "band": "FAIL",
+   "why": "The flower mass is a straight compact club rather than a many-headed pyramidal plume arching to one side."
+  },
+  {
+   "species": "Poppy",
+   "band": "FAIL",
+   "why": "The flat red disc lacks four crinkled tissue petals, and neither the nodding hairy bud nor pepper-pot capsule is shown."
+  },
+  {
+   "species": "Sunflower",
+   "band": "FAIL",
+   "why": "The small head is dwarfed by a column of generic leaves and lacks a clearly spiral-packed dark seed disc."
+  },
+  {
+   "species": "Violet",
+   "band": "FAIL",
+   "why": "The tiny flower is buried among giant round leaves rather than held above a low heart-leaf tuft, and no backward spur reads."
+  },
+  {
+   "species": "Agouti",
+   "band": "FAIL",
+   "why": "The arched tailless body reads, but the legs are short heavy columns rather than slender delicate limbs with hoof-like claws."
+  },
+  {
+   "species": "Capybara",
+   "band": "FAIL",
+   "why": "The tailless barrel and short legs read, but the small projecting rodent muzzle misses the defining blunt brick-shaped head."
+  },
+  {
+   "species": "Flying Squirrel",
+   "band": "FAIL",
+   "why": "A loose belly membrane is suggested, but the rabbit-like animal has a thick upright plume tail and lacks enormous black eyes."
+  },
+  {
+   "species": "Ground Squirrel",
+   "band": "FAIL",
+   "why": "The thin tail and tiny ears read, but the body is a compact round pair of lobes rather than long, low, and tubular."
+  },
+  {
+   "species": "Jerboa",
+   "band": "FAIL",
+   "why": "The long tufted tail and large ears read, but the hind legs are not several times the forelegs and the eye is not enormous and black."
+  },
+  {
+   "species": "Mara",
+   "band": "FAIL",
+   "why": "The slim deer-like legs and absent tail read, but the defining tall rabbit ears are reduced to tiny rounded nubs."
+  },
+  {
+   "species": "Prairie Dog",
+   "band": "PASS",
+   "why": "The plump cylindrical body, tiny flat ears, and very short tail give a clear prairie-dog read."
+  },
+  {
+   "species": "Vole",
+   "band": "PASS",
+   "why": "The fat compact body, blunt rounded face, buried ears, and effectively stubby tail distinguish it from a mouse."
+  },
+  {
+   "species": "Water Vole",
+   "band": "FAIL",
+   "why": "The chubby blunt face and buried ears read, but the required short furred tail of roughly half the body is absent."
+  },
+  {
+   "species": "Banteng",
+   "band": "FAIL",
+   "why": "The white rump and stockings read, but the white muzzle band is absent and the horns do not form a clean joined crescent over a bald plate."
+  },
+  {
+   "species": "Bison",
+   "band": "FAIL",
+   "why": "The shaggy coat reads, but the silhouette remains a uniform barrel without a huge shoulder hump, low massive head, or tapering hips."
+  },
+  {
+   "species": "Buffalo",
+   "band": "FAIL",
+   "why": "A forehead boss and heavy body are suggested, but the large fringed drooping ears below the horns are absent."
+  },
+  {
+   "species": "Cow",
+   "band": "FAIL",
+   "why": "The sagging spotted barrel, udder, ears, and tufted tail read, but the required hanging throat dewlap is missing."
+  },
+  {
+   "species": "Eland",
+   "band": "FAIL",
+   "why": "The ox-like body and dewlap read, but the horns loop and curl instead of rising straight with tight spiral ridges."
+  },
+  {
+   "species": "Gaur",
+   "band": "FAIL",
+   "why": "The shoulder ridge and four white stockings read, but the pale grey forehead patch between the horns is absent."
+  },
+  {
+   "species": "Gazelle",
+   "band": "PASS",
+   "why": "Fine legs, long neck, ringed lyre horns, and the dark flank band cleanly distinguish the gazelle."
+  },
+  {
+   "species": "Saiga",
+   "band": "PASS",
+   "why": "The bulbous drooping proboscis, tall ringed horns, and slim antelope legs make the saiga unmistakable."
+  },
+  {
+   "species": "Yak",
+   "band": "POLISH",
+   "why": "The ground-length hair curtain, shoulder hump, and broad tail plume read clearly; lowering the head would strengthen the yak posture."
+  },
+  {
+   "species": "Basking Shark",
+   "band": "POLISH",
+   "why": "The cavernous round mouth and near-encircling gill slits make it unmistakable; the first dorsal is too rigid and upright rather than drooping."
+  },
+  {
+   "species": "Great White Shark",
+   "band": "PASS",
+   "why": "The conical toothed snout, crisp countershading, tall triangular dorsal, and broad crescent tail all read cleanly."
+  },
+  {
+   "species": "Hammerhead Shark",
+   "band": "POLISH",
+   "why": "The tip-eyed hammer and slender shark body read immediately; the first dorsal could curve into a stronger sickle."
+  },
+  {
+   "species": "Juvenile Shark",
+   "band": "PASS",
+   "why": "Large eye and fins, slim body, five gill slits, stiff pectorals, triangular dorsal, and uneven tail are all present."
+  },
+  {
+   "species": "Mako Shark",
+   "band": "PASS",
+   "why": "The sharply pointed snout, large black eye, indigo back, narrow keel, and near-symmetric crescent tail clearly read as mako."
+  },
+  {
+   "species": "Reef Shark",
+   "band": "FAIL",
+   "why": "The slim shark body reads, but the snout is sharply pointed and the fin tips lack clear contrasting black or white marks."
+  },
+  {
+   "species": "Shark",
+   "band": "FAIL",
+   "why": "The dorsal and general silhouette read, but the defining underslung crescent mouth and a clear row of gill slits are absent."
+  },
+  {
+   "species": "Tiger Shark",
+   "band": "FAIL",
+   "why": "The vertical flank bands read, but the snout is pointed rather than square and the upper tail lobe is not long and trailing."
+  },
+  {
+   "species": "Whale Shark",
+   "band": "FAIL",
+   "why": "The spotted back reads, but the head remains pointed with no huge terminal mouth and lacks prominent longitudinal flank ridges."
+  },
+  {
+   "species": "Black Bear",
+   "band": "FAIL",
+   "why": "The grey animal has a shoulder-heavy silhouette, tiny ears, and no tan muzzle, reversing the black bear's defining higher rump."
+  },
+  {
+   "species": "Brown Bear",
+   "band": "FAIL",
+   "why": "A shoulder rise is suggested, but the face is long and convex and the feet have no long pale digging claws."
+  },
+  {
+   "species": "Grizzly Bear",
+   "band": "FAIL",
+   "why": "Grizzled fur and a high shoulder read, but the face is not dished and the long pale front claws are absent."
+  },
+  {
+   "species": "Panda",
+   "band": "PASS",
+   "why": "Teardrop eye patches, black ears and shoulder band, black forelegs, and a round bulky white body make the panda clear."
+  },
+  {
+   "species": "Polar Bear",
+   "band": "FAIL",
+   "why": "The long white body and narrow head read, but the neck is not notably long and the feet are tiny rather than huge furred paws."
+  },
+  {
+   "species": "Sloth Bear",
+   "band": "FAIL",
+   "why": "The shaggy dark coat reads, but the chest blaze, long pale mobile snout, and huge curved claws are all absent."
+  },
+  {
+   "species": "Spectacled Bear",
+   "band": "FAIL",
+   "why": "The dark shaggy coat reads, but there are no pale eye spectacles and the projecting face is neither short nor heavy-muzzled."
+  },
+  {
+   "species": "Sun Bear",
+   "band": "FAIL",
+   "why": "The coat is grey rather than sleek black, and the golden chest crescent and long curved climbing claws are missing."
+  },
+  {
+   "species": "Conch",
+   "band": "FAIL",
+   "why": "No long eye stalks emerge beneath the lip, so the shell-only form misses a required conch read."
+  },
+  {
+   "species": "Cowrie",
+   "band": "FAIL",
+   "why": "The glossy shell and toothed slit show, but the required patterned mantle flaps are absent."
+  },
+  {
+   "species": "Freshwater Snail",
+   "band": "PASS",
+   "why": "Coiled dorsal shell, projecting gliding foot, and paired slim head tentacles all read clearly."
+  },
+  {
+   "species": "Land Snail",
+   "band": "PASS",
+   "why": "The coiled dorsal shell, four tentacles with eyes on the long pair, and broad textured foot all read clearly."
+  },
+  {
+   "species": "Limpet",
+   "band": "FAIL",
+   "why": "The ribbed cone reads, but it floats above a shadow rather than clamping flush to rock."
+  },
+  {
+   "species": "Sea Snail",
+   "band": "FAIL",
+   "why": "The coil and foot read, but neither a clear shell aperture nor siphon tube is visible."
+  },
+  {
+   "species": "Snail",
+   "band": "PASS",
+   "why": "Coiled shell, two eye stalks, two short feelers, and a flat creeping foot are all legible."
+  },
+  {
+   "species": "Water Snail",
+   "band": "PASS",
+   "why": "The coiled shell, broad creeping foot, and paired slender tentacles make a clear water-snail silhouette."
+  },
+  {
+   "species": "Garter Snake",
+   "band": "PASS",
+   "why": "Long pale body stripes, a slender limbless coil, and a small minimally widened head all read clearly."
+  },
+  {
+   "species": "Racer",
+   "band": "FAIL",
+   "why": "It is a closed heavy coil rather than the required whip-thin body in a fast S-curve."
+  },
+  {
+   "species": "Rat Snake",
+   "band": "FAIL",
+   "why": "The thick doughnut-like body and sharply widened head contradict the slender loaf section and blunt colubrid head."
+  },
+  {
+   "species": "Tree Snake",
+   "band": "FAIL",
+   "why": "The generic closed coil has neither an extremely thin body nor loose loops draped across branches."
+  },
+  {
+   "species": "Vine Snake",
+   "band": "FAIL",
+   "why": "The standard coiled snake lacks the needle-thin body, dart-shaped snout, and keyhole pupil."
+  },
+  {
+   "species": "Water Snake",
+   "band": "FAIL",
+   "why": "The body is bulky and mottled rather than slender, keeled, and banded, and the eye is not set high."
+  },
+  {
+   "species": "Whip Snake",
+   "band": "FAIL",
+   "why": "The tight coil does not show an extremely thin body or the defining tail that tapers across half the total length."
+  },
+  {
+   "species": "African Wild Dog",
+   "band": "PASS",
+   "why": "Huge rounded ear, irregular black-tan-white patchwork, lean legs, and a white brush-tail tip make the species clear."
+  },
+  {
+   "species": "Arctic Fox",
+   "band": "FAIL",
+   "why": "The white coat and dense tail read, but the head retains a long pointed muzzle and triangular ear instead of shortened rounded features."
+  },
+  {
+   "species": "Coyote",
+   "band": "PASS",
+   "why": "The narrow pointed muzzle, erect triangular ear, lean frame, and low bushy tail form a clear coyote."
+  },
+  {
+   "species": "Jackal",
+   "band": "PASS",
+   "why": "Large pointed ear, slim fox-like muzzle, light leggy build, and low dark-tipped tail all read."
+  },
+  {
+   "species": "Maned Wolf",
+   "band": "FAIL",
+   "why": "The stilt legs and large ears read, but the required black stockings are absent and the shoulder mane is weak."
+  },
+  {
+   "species": "Wolf",
+   "band": "FAIL",
+   "why": "The head is narrow and pointed and the legs and chest are squat, missing the broad blocky head and long-legged deep-chested build."
+  },
+  {
+   "species": "Albatross",
+   "band": "FAIL",
+   "why": "The outstretched wings read, but the small straight bill lacks both the heavy hook and visible tube nostrils."
+  },
+  {
+   "species": "Gull",
+   "band": "FAIL",
+   "why": "The bill is a small straight nub and the grey wings lack clear black tips extending beyond the tail."
+  },
+  {
+   "species": "Petrel",
+   "band": "FAIL",
+   "why": "The long needle bill has no top-mounted tube nostrils, and the wings are straight rather than angled and swept back."
+  },
+  {
+   "species": "Puffin",
+   "band": "FAIL",
+   "why": "The black-white body reads, but the defining bill is an unstriped orange wedge with no blue-grey bands."
+  },
+  {
+   "species": "Skua",
+   "band": "FAIL",
+   "why": "The bulky body reads, but the bill is too small and the required white flashes at the primary bases are absent."
+  },
+  {
+   "species": "Snow Petrel",
+   "band": "FAIL",
+   "why": "Pure-white plumage reads, but the long needle bill is neither short and hooked nor visibly tube-nostrilled."
+  },
+  {
+   "species": "Brittle Star",
+   "band": "FAIL",
+   "why": "The thick rigid tapering arms merge into the disc like a starfish instead of reading as long separate whips."
+  },
+  {
+   "species": "Flatworm",
+   "band": "FAIL",
+   "why": "It is a rounded segmented grub with one eye, not a flat unsegmented ribbon with arrowhead and auricles."
+  },
+  {
+   "species": "Giant Tube Worm",
+   "band": "PASS",
+   "why": "A cluster of tall white tubes topped by blood-red feathery plumes reads clearly with no stray facial anatomy."
+  },
+  {
+   "species": "Leech",
+   "band": "FAIL",
+   "why": "The arched ringed body reads worm-like, but it is cylindrical and does not show distinct suckers at both ends."
+  },
+  {
+   "species": "Sand Dollar",
+   "band": "PASS",
+   "why": "The face-on coin-like disc, five-petal pattern, and fine stippled surface make a clear living sand dollar."
+  },
+  {
+   "species": "Tube Worm",
+   "band": "PASS",
+   "why": "Stiff upright tubes with red feathery fans emerging from their mouths provide the required tube-worm read."
+  },
+  {
+   "species": "Avocet",
+   "band": "FAIL",
+   "why": "The upcurved bill and pied body read, but the legs are short yellow legs rather than long blue-grey wader legs."
+  },
+  {
+   "species": "Curlew",
+   "band": "FAIL",
+   "why": "The downcurved bill and brown body read, but the required long bare wading legs are replaced by short yellow legs."
+  },
+  {
+   "species": "Godwit",
+   "band": "FAIL",
+   "why": "The bill lacks its pale base and upward tilt, while the short yellow standing legs and plain breast miss both flight and barred-breast reads."
+  },
+  {
+   "species": "Oystercatcher",
+   "band": "FAIL",
+   "why": "The orange bill is a short nub, with no bold white plumage block, stout pink legs, or red eye ring."
+  },
+  {
+   "species": "Snipe",
+   "band": "FAIL",
+   "why": "The long dagger bill reads, but the eye is not set far back and the back lacks bold longitudinal cream stripes."
+  },
+  {
+   "species": "Chicken",
+   "band": "FAIL",
+   "why": "Comb, wattle, and plump body read, but the tail is an oversized long fan rather than a short upswept fan."
+  },
+  {
+   "species": "Grouse",
+   "band": "FAIL",
+   "why": "The broad tail is unbarred and the yellow legs are bare, missing two defining grouse reads."
+  },
+  {
+   "species": "Partridge",
+   "band": "PASS",
+   "why": "Dumpy round body, small short-billed head, and stubby low tail make a clear partridge silhouette."
+  },
+  {
+   "species": "Peacock",
+   "band": "FAIL",
+   "why": "The blue bird and eyespots read, but the train is a short upright fan rather than an extremely long train trailing behind."
+  },
+  {
+   "species": "Rooster",
+   "band": "FAIL",
+   "why": "The comb and chest read, but the tail is a rigid straight slab rather than arching sickle plumes, and the wattles are not long."
+  },
+  {
+   "species": "Flamingo",
+   "band": "FAIL",
+   "why": "The neck is nearly straight, the bill is a short straight wedge, and the short yellow legs omit all three defining reads."
+  },
+  {
+   "species": "Heron",
+   "band": "FAIL",
+   "why": "The neck is held upright rather than folded into an S, and the legs and toes are too short for a heron."
+  },
+  {
+   "species": "Ibis",
+   "band": "FAIL",
+   "why": "The downcurved bill reads, but there is no distinct bare face and the neck and legs are too short."
+  },
+  {
+   "species": "Spoonbill",
+   "band": "FAIL",
+   "why": "The spatulate bill reads, but bare face skin and the required long neck and legs are absent."
+  },
+  {
+   "species": "Stork",
+   "band": "FAIL",
+   "why": "The straight neck and heavy bill read, but the defining very long red legs are replaced by short yellow legs."
+  },
+  {
+   "species": "Agave",
+   "band": "FAIL",
+   "why": "The blue-grey sword rosette reads, but black terminal spines and hooked marginal teeth are absent."
+  },
+  {
+   "species": "Aloe",
+   "band": "FAIL",
+   "why": "The flower spike ends in a tiny upright cluster rather than packed hanging tubular flowers, and the leaf edges lack spines."
+  },
+  {
+   "species": "Desert Rose",
+   "band": "PASS",
+   "why": "The huge grey caudex, few bare stubby branches, and tip-only leaves and pink flowers make the species clear."
+  },
+  {
+   "species": "Prickly Pear",
+   "band": "FAIL",
+   "why": "Paddles and spines read, but the harvest is a single yellow flower rather than magenta tunas ringing the pad edges."
+  },
+  {
+   "species": "Yucca",
+   "band": "FAIL",
+   "why": "The sword rosette and central stalk read, but curly edge threads and a panicle of hanging cream bells are absent."
+  },
+  {
+   "species": "Cattail",
+   "band": "FAIL",
+   "why": "The seed head is a loose knobbly spike rather than a dense brown cigar with a separate thin male spike, and the leaves arch outward."
+  },
+  {
+   "species": "Duckweed",
+   "band": "FAIL",
+   "why": "The floating green discs read, but none shows the required single fine root hanging beneath it."
+  },
+  {
+   "species": "Papyrus",
+   "band": "FAIL",
+   "why": "Many branched flower stems replace the tall bare stalks topped by fine drooping firework threads."
+  },
+  {
+   "species": "Seagrass",
+   "band": "FAIL",
+   "why": "It is an upright tubular clump with no horizontal rhizome, rooted sand, or parallel ribbons leaning with a current."
+  },
+  {
+   "species": "Wild Rice",
+   "band": "FAIL",
+   "why": "The plant lacks a water-emergent setting and the top is a closed geometric fan rather than an open panicle of narrow dark grains."
+  },
+  {
+   "species": "Catfish",
+   "band": "FAIL",
+   "why": "Barbels are present, but the head is narrow rather than broad and flattened, and stiff leading dorsal and pectoral spines do not read."
+  },
+  {
+   "species": "Pangolin",
+   "band": "FAIL",
+   "why": "The scaled body reads, but the tail is a short thin hook rather than a thick body-length taper, materially breaking the pangolin silhouette."
+  },
+  {
+   "species": "Springbok",
+   "band": "FAIL",
+   "why": "The lyre horns and dark flank stripe read, but the required white face with a distinct dark eye stripe is missing."
+  },
+  {
+   "species": "Weaverbird",
+   "band": "FAIL",
+   "why": "Yellow plumage, mask, bill, and woven nest read, but the bird stands upright beside it instead of clinging upside down to it."
+  },
+  {
+   "species": "Clam",
+   "band": "FAIL",
+   "why": "The smooth oval suggests paired valves, but the markings are not shell-wide growth rings and neither a foot nor siphons protrudes."
+  },
+  {
+   "species": "Giant Clam",
+   "band": "FAIL",
+   "why": "This is a smooth turquoise oval without a heavy fluted shell, wavy meeting lips, or a patterned fleshy mantle."
+  },
+  {
+   "species": "Mussel",
+   "band": "FAIL",
+   "why": "The dark tapered shell broadly reads as a mussel, but growth lines and the required anchoring byssal beard are absent."
+  },
+  {
+   "species": "Oyster",
+   "band": "FAIL",
+   "why": "The shell is smooth, regular, and symmetric rather than rough-layered with unequal valves, and no pearly open interior reads."
+  },
+  {
+   "species": "Cobra",
+   "band": "FAIL",
+   "why": "The hood reads as a round collar on a horizontal donut coil; the tall reared front third and fixed cobra stance are absent."
+  },
+  {
+   "species": "Cottonmouth",
+   "band": "FAIL",
+   "why": "The body is heavy, but the head is a small oval rather than a neck-wide triangle and the defining white open gape is absent."
+  },
+  {
+   "species": "Rattlesnake",
+   "band": "FAIL",
+   "why": "A segmented rattle is visible, but the head is round and the neck lies flat rather than forming the required reared S."
+  },
+  {
+   "species": "Viper",
+   "band": "FAIL",
+   "why": "The low patterned coil reads, but the small oval head lacks the broad triangular shape and sharp thin-neck transition."
+  },
+  {
+   "species": "Donkey",
+   "band": "PASS",
+   "why": "Long upright ears, a short bristled mane, compact straight-backed build, and a bare-shafted tuft tail all read clearly."
+  },
+  {
+   "species": "Horse",
+   "band": "PASS",
+   "why": "The long neck and crest mane, four slim single-hoofed legs, and high-set flowing tail give an unambiguous horse silhouette."
+  },
+  {
+   "species": "Wild Ass",
+   "band": "PASS",
+   "why": "Very long ears, erect cropped mane, sturdy equid body, and a bare upper tail ending in a tuft satisfy the defining read."
+  },
+  {
+   "species": "Zebra",
+   "band": "PASS",
+   "why": "Bold contrasting stripes carry across the body and legs, while the upright brush mane and bare-shafted tuft tail distinguish it from a horse."
+  },
+  {
+   "species": "Gibbon",
+   "band": "FAIL",
+   "why": "The tailless ape and ground-reaching arms read, but the hands end in rounded mitts rather than the defining long hooks."
+  },
+  {
+   "species": "Langur",
+   "band": "FAIL",
+   "why": "The long tail and pale coat read, but the animal is squat and short-limbed with no crown crest instead of slender and long-limbed."
+  },
+  {
+   "species": "Lemur",
+   "band": "FAIL",
+   "why": "The ringed tail reads, but the face is flat and grey with neither a fox-like masked muzzle nor bright orange-gold staring eyes."
+  },
+  {
+   "species": "Spider Monkey",
+   "band": "PASS",
+   "why": "Extremely long thin arms and tail frame a small round head and pot belly, producing a clear spider-monkey silhouette."
+  },
+  {
+   "species": "Cedar",
+   "band": "FAIL",
+   "why": "It is a generic triangular conifer with hanging cones, not a broad flat-topped cedar with rosette needles and upright barrel cones."
+  },
+  {
+   "species": "Hemlock",
+   "band": "FAIL",
+   "why": "This depicts a conifer, the wrong growth family; poison hemlock requires a purple-blotched hollow herb stem, ferny leaves, and white umbels."
+  },
+  {
+   "species": "Redwood",
+   "band": "FAIL",
+   "why": "The generic short conifer lacks an extreme columnar scale, buttressed base, deeply ridged red bark, and flat two-ranked sprays."
+  },
+  {
+   "species": "Yew",
+   "band": "FAIL",
+   "why": "The red dots help, but the tree lacks the massive fused fluted trunk and heavy crown, and the fruit reads as closed berries rather than open arils."
+  },
+  {
+   "species": "Cranberry",
+   "band": "PASS",
+   "why": "Hair-thin runners creep over bog-moss hummocks, with tiny leaves and unmistakable pink backswept crane-head flowers."
+  },
+  {
+   "species": "Heather",
+   "band": "FAIL",
+   "why": "Purple flower spires read, but the plant is a tall bundle of bare rods rather than a low twiggy mound with scale leaves hugging the stems."
+  },
+  {
+   "species": "Oleander",
+   "band": "FAIL",
+   "why": "Upright stems and pink flowers are present, but the leaves do not read in whorls of three and the blooms are isolated discs rather than dense terminal pinwheels."
+  },
+  {
+   "species": "Sagebrush",
+   "band": "FAIL",
+   "why": "The silver mound and flower wands read, but neither three-toothed wedge leaves nor a visible twisted, shredding-barked trunk is present."
+  },
+  {
+   "species": "Boa",
+   "band": "FAIL",
+   "why": "The body is thick, but the markings are spots rather than tail-reddening saddles and the small oval head lacks an arrow shape and eye stripe."
+  },
+  {
+   "species": "Python",
+   "band": "FAIL",
+   "why": "The single donut coil lacks a net-like geometric pattern, visible lip pits, and the heavy overlapping-coil anatomy."
+  },
+  {
+   "species": "Sand Boa",
+   "band": "FAIL",
+   "why": "It is rendered as the same long circular coil as the others, not a crawling short cylinder with a blunt wedge snout and abrupt stub tail."
+  },
+  {
+   "species": "Caddisfly",
+   "band": "FAIL",
+   "why": "The long antennae and drab body read, but the clear flat wings are neither hairy nor folded tent-like over the back."
+  },
+  {
+   "species": "Dobsonfly",
+   "band": "FAIL",
+   "why": "The crossed sickle mandibles read, but the short plain wings neither show net venation nor extend beyond the long abdomen."
+  },
+  {
+   "species": "Thrips",
+   "band": "FAIL",
+   "why": "The body is slender, but the wings are broad unfringed fly wings and the asymmetrical cone-shaped rasping mouth is not visible."
+  },
+  {
+   "species": "Caribou",
+   "band": "FAIL",
+   "why": "The pale ruff reads, but the antlers lack a forward brow shovel and the feet end in tiny narrow hooves rather than broad snowshoes."
+  },
+  {
+   "species": "Moose",
+   "band": "FAIL",
+   "why": "Palmate antlers, long muzzle, and shoulder height read, but the defining dewlap bell under the throat is absent."
+  },
+  {
+   "species": "Reindeer",
+   "band": "FAIL",
+   "why": "The generic antlers lack the forward facial brow shovel, while neither a thick pale neck mane nor broad splayed hooves reads."
+  },
+  {
+   "species": "Clownfish",
+   "band": "PASS",
+   "why": "Three black-edged white bands, orange body, blunt snout, and rounded fins make this immediately and cleanly recognizable."
+  },
+  {
+   "species": "Lionfish",
+   "band": "FAIL",
+   "why": "The striped body and long spines suggest lionfish, but the required wing-like feathery pectoral rays are absent, leaving an urchin-like radial silhouette."
+  },
+  {
+   "species": "Parrotfish",
+   "band": "FAIL",
+   "why": "The beak and bulging forehead read well, but the required large paddle pectoral fins are not visibly articulated."
+  },
+  {
+   "species": "Coati",
+   "band": "FAIL",
+   "why": "The long low body, narrow snout, and faint tail bands read as coati, but the tail hangs behind instead of standing upright like the required flagpole."
+  },
+  {
+   "species": "Kinkajou",
+   "band": "FAIL",
+   "why": "Golden fur is present, but the reused long-snouted face is not round or teddy-bear-like and the hanging tail does not read as prehensile."
+  },
+  {
+   "species": "Raccoon",
+   "band": "PASS",
+   "why": "The black eye mask, strongly ringed tail, gray coat, and rounded high-rumped posture give a clear raccoon read."
+  },
+  {
+   "species": "Crow",
+   "band": "FAIL",
+   "why": "The glossy black plumage and pointed bill read as crow, but the tail is a narrow dark taper rather than the required visible square tip."
+  },
+  {
+   "species": "Magpie",
+   "band": "PASS",
+   "why": "Bold black-and-white blocks, a heavy straight bill, and a graduated tail extending beyond the body give a clear magpie silhouette."
+  },
+  {
+   "species": "Raven",
+   "band": "FAIL",
+   "why": "This remains nearly the crow body: the bill is neither massive nor curved, the throat lacks shaggy hackles, and a wedge tail is not visible."
+  },
+  {
+   "species": "Eagle",
+   "band": "PASS",
+   "why": "The hooked yellow-cere beak, stern brow, broad folded wing, sturdy feathered legs, and large talons make a clear booted eagle."
+  },
+  {
+   "species": "Osprey",
+   "band": "FAIL",
+   "why": "The flying silhouette is present, but the underside is gray rather than white, the dark eye mask is absent, and no outsized talons are visible."
+  },
+  {
+   "species": "Vulture",
+   "band": "PASS",
+   "why": "A bare pink head and neck, pale feather ruff, hunched dark shoulders, and hooked beak make the griffon-type vulture unmistakable."
+  },
+  {
+   "species": "Fishing Cat",
+   "band": "POLISH",
+   "why": "The stocky olive spotted body, neck stripes, and short thick tail now read, but the long narrow muzzle still weakens the feline silhouette."
+  },
+  {
+   "species": "Sand Cat",
+   "band": "FAIL",
+   "why": "The banded black-tipped tail is clear, but the head is narrow rather than broad and flat, the ears are not low and wide-set, and the legs are too long."
+  },
+  {
+   "species": "Wildcat",
+   "band": "FAIL",
+   "why": "Tabby striping and a ringed tail are present, but the long muzzle, tiny head, and hoof-like feet materially miss a sturdy wildcat silhouette."
+  },
+  {
+   "species": "Possum",
+   "band": "FAIL",
+   "why": "The pointed pale face and grizzled coat help, but the bare tail is too short and smooth to read as the required long scaly prehensile opossum tail."
+  },
+  {
+   "species": "Sugar Glider",
+   "band": "FAIL",
+   "why": "The dark facial stripe is present, but the animal is grounded with no wrist-to-ankle flight membrane and its tail is a short tuft rather than body-length and bushy."
+  },
+  {
+   "species": "Tasmanian Devil",
+   "band": "FAIL",
+   "why": "The low black body, chest mark, and short tail fit, but the head is not oversized and blocky and the required gaping jaws are absent."
+  },
+  {
+   "species": "Fennel",
+   "band": "POLISH",
+   "why": "The fine feathery foliage and radiating yellow umbel clearly read as fennel; flattening the domed flower head and cooling the stem color would refine it."
+  },
+  {
+   "species": "Garlic",
+   "band": "FAIL",
+   "why": "Flat strap leaves are present, but the central scape does not curl and the required papery, visibly divided garlic bulb is entirely absent."
+  },
+  {
+   "species": "Onion",
+   "band": "FAIL",
+   "why": "The plant is only a fan of ribbon-like leaves and a flower stem; hollow tube leaves, a swollen papery bulb, and wiry roots are not shown."
+  },
+  {
+   "species": "Kelp",
+   "band": "PASS",
+   "why": "Broad wavy olive-brown ribbon blades now flow from distinct stiff stipes above a splayed claw holdfast, resolving the prior rigid-rod read."
+  },
+  {
+   "species": "Red Algae",
+   "band": "FAIL",
+   "why": "The color is suitable, but three broad flame-shaped sheets replace the required fine repeatedly forking fronds, and no small disc holdfast reads."
+  },
+  {
+   "species": "Sargassum",
+   "band": "PASS",
+   "why": "The tangled golden branching mass, many stalked pea-like floats, and scattered narrow blades give a clear sargassum read."
+  },
+  {
+   "species": "Arctic Cod",
+   "band": "PASS",
+   "why": "The slim body, deep forked tail, projecting upper jaw, large eye, and visible chin barbel give a complete Arctic cod read."
+  },
+  {
+   "species": "Cichlid",
+   "band": "FAIL",
+   "why": "The deep oval body and long dorsal fin are present, but the face lacks the required thick lips and the fins do not show pointed trailing tips."
+  },
+  {
+   "species": "Camel",
+   "band": "PASS",
+   "why": "The prominent single hump, high curving neck, and very long jointed legs make a clear dromedary camel."
+  },
+  {
+   "species": "Llama",
+   "band": "PASS",
+   "why": "Long curved ears, an upright S-shaped neck, tall legs, and a flat hump-free back clearly distinguish the llama."
+  },
+  {
+   "species": "Dingo",
+   "band": "FAIL",
+   "why": "The sandy coat, pointed ears, and lean frame read, but the feet are dark rather than white and the tail hangs in a hook instead of forming a bushy straight brush."
+  },
+  {
+   "species": "Red Fox",
+   "band": "PASS",
+   "why": "The red coat, pointed face and ears, dark lower legs, and enormous bushy white-tipped tail give a clear red fox read."
+  },
+  {
+   "species": "Giant Squid",
+   "band": "FAIL",
+   "why": "The long pair of clubbed tentacles and finned mantle read, but the eyes are small beads rather than dinner-plate eyes and the clubs show no toothed tips."
+  },
+  {
+   "species": "Squid",
+   "band": "PASS",
+   "why": "The pointed torpedo mantle, triangular rear fins, large basal eyes, arm cluster, and two longer clubbed tentacles give a complete squid read."
+  },
+  {
+   "species": "Komodo Dragon",
+   "band": "FAIL",
+   "why": "The stocky spotted body and thick tail read as a lizard, but the tiny red tongue is not the long yellow forked tongue and loose scaly neck skin is absent."
+  },
+  {
+   "species": "Monitor Lizard",
+   "band": "FAIL",
+   "why": "The long tail and forked tongue read, but the animal has no long snake-like neck and its stub legs lack the large hooked claws required for a monitor."
+  },
+  {
+   "species": "Mountain Viper",
+   "band": "FAIL",
+   "why": "The body is thick and coiled, but the head is a narrow oval rather than a broad triangle and no zigzag dorsal band reads."
+  },
+  {
+   "species": "Snake",
+   "band": "FAIL",
+   "why": "The wedge head and forked tongue read, but the body is a uniform closed ring rather than a visibly tapering sequence of S-curves."
+  },
+  {
+   "species": "River Dolphin",
+   "band": "FAIL",
+   "why": "The streamlined body and low dorsal bump read, but the snout lacks the very long tooth-crowded tweezer beak and neither a bulging melon nor mobile neck is visible."
+  },
+  {
+   "species": "Whale",
+   "band": "FAIL",
+   "why": "The smooth body reads as cetacean, but the tail presents as a vertical fish fin, the blowhole is only a detached dot, and the flipper is short rather than a long paddle."
+  },
+  {
+   "species": "Warthog",
+   "band": "FAIL",
+   "why": "The large head, tusks, facial bumps, and neck crest read, but the defining thin tufted tail hangs down instead of being carried straight up."
+  },
+  {
+   "species": "Wild Boar",
+   "band": "PASS",
+   "why": "The high front-heavy shoulder line, low rump, up-curving tusks, and bristly dorsal ridge give a clear wild-boar silhouette."
+  },
+  {
+   "species": "Wild Horse",
+   "band": "PASS",
+   "why": "The dun coat, stiff upright brush mane without a forelock, deep stocky barrel, short sturdy legs, and heavy head give a clear wild-horse read."
+  },
+  {
+   "species": "Wild Pony",
+   "band": "FAIL",
+   "why": "The deep barrel and short legs read as pony proportions, but the mane does not form a shaggy forelock over the eyes and the head remains long and narrow rather than small and broad."
+  },
+  {
+   "species": "Acacia",
+   "band": "FAIL",
+   "why": "The bare trunk and fine edge sprays read, but the crown is a rounded cloud rather than a flat layered umbrella and paired white node thorns are not visible."
+  },
+  {
+   "species": "Baobab",
+   "band": "PASS",
+   "why": "The enormous smooth barrel trunk, short root-like crown branches, sparse foliage, and pods hanging on long stalks make the baobab unmistakable."
+  },
+  {
+   "species": "Aardvark",
+   "band": "PASS",
+   "why": "The tubular snout, tall ears, arched back, and newly thick tapering tail make the aardvark immediately legible."
+  },
+  {
+   "species": "Badger",
+   "band": "FAIL",
+   "why": "The low broad body and white facial stripe read, but the rounded feet show none of the long straight digging foreclaws."
+  },
+  {
+   "species": "Cat",
+   "band": "PASS",
+   "why": "Triangular ears, a round short-muzzled face with slit pupil and whiskers, and the long curling tail all read clearly."
+  },
+  {
+   "species": "Civet",
+   "band": "FAIL",
+   "why": "The pointed muzzle, eye mask, spots, and low body read as a civet, but the must-read ringed tail is conspicuously short rather than long."
+  },
+  {
+   "species": "Colugo",
+   "band": "FAIL",
+   "why": "It is posed as a standing quadruped, and the defining neck-to-limbs-to-tail gliding membrane is not visibly present despite the mottled coat and large eye."
+  },
+  {
+   "species": "Crane",
+   "band": "FAIL",
+   "why": "The long neck and stilt legs establish a wader, but the required red crown patch is replaced by a white crest and the rump lacks drooping tail plumes."
+  },
+  {
+   "species": "Deer Tick",
+   "band": "FAIL",
+   "why": "The render reads as a round two-part spider or ant, not the required flat unsegmented teardrop tick with front-bunched legs and projecting barbed mouthparts."
+  },
+  {
+   "species": "Dromedary Camel",
+   "band": "FAIL",
+   "why": "The single hump and raised long neck make the dromedary clear, but the straight peg legs omit the must-read knobbly knee pads and splayed padded feet."
+  },
+  {
+   "species": "Frigatebird",
+   "band": "FAIL",
+   "why": "It reads as a compact resting black bird: the defining long crooked wings are folded away and the trailing tail is not visibly deep-forked."
+  },
+  {
+   "species": "Goldfish",
+   "band": "PASS",
+   "why": "The deep bright-orange body, arched back with dorsal fin, prominent eye, and flowing split fan tail give an immediate goldfish read."
+  },
+  {
+   "species": "Harpy Eagle",
+   "band": "POLISH",
+   "why": "The split double crest and black chest band over a white belly now read clearly, but the oversized talons remain ochre rather than grey."
+  },
+  {
+   "species": "Horned Lizard",
+   "band": "FAIL",
+   "why": "The huge upright round torso and paddle-like limbs do not read as a flat sprawling horned lizard; the rear-skull horn crown and flank-scale fringe are also missing or misplaced."
+  },
+  {
+   "species": "Mahi-Mahi",
+   "band": "PASS",
+   "why": "The blunt vertical forehead, continuous eye-to-tail dorsal, hard rear taper, and deeply forked tail all read clearly."
+  },
+  {
+   "species": "Monkfish",
+   "band": "PASS",
+   "why": "The enormous flattened head, tapering body, toothed upturned mouth, glowing snout lure, and jaw flaps now form a clear monkfish."
+  },
+  {
+   "species": "Penguin",
+   "band": "PASS",
+   "why": "The upright black-and-white body, short rear-set feet, and flat side flippers make the penguin unmistakable."
+  },
+  {
+   "species": "Sailfish",
+   "band": "FAIL",
+   "why": "The sail and bill read, but the sail starts halfway down the back and the required thread-like pelvic fins are absent."
+  },
+  {
+   "species": "Scale Worm",
+   "band": "FAIL",
+   "why": "The caterpillar-like ringed body has no two roofing rows of overlapping scales; its bristles form straight fences rather than tufts between plates."
+  },
+  {
+   "species": "Striped Hyena",
+   "band": "FAIL",
+   "why": "The level topline, equal-length legs, rounded ears, and smooth spine omit every defining striped-hyena cue."
+  },
+  {
+   "species": "Air Plant",
+   "band": "FAIL",
+   "why": "The silver leaves and purple tip read broadly, but there is no flat pink bract and the rigid leaves do not form the required curling rosette."
+  },
+  {
+   "species": "Beet",
+   "band": "FAIL",
+   "why": "Only a generic green leaf sprig is visible; the round dark-red root, crimson stalks and veins, and puckered glossy leaves are all absent."
+  },
+  {
+   "species": "Black-Eyed Susan",
+   "band": "FAIL",
+   "why": "The brown center and golden rays read, but the smooth stem and leaves omit the required bristly-hairy texture."
+  },
+  {
+   "species": "Date Palm",
+   "band": "FAIL",
+   "why": "The fronds and dates identify a palm, but the plain pole trunk lacks shaggy diamond scars and the tiny bunch is not a heavy hanging date cluster."
+  },
+  {
+   "species": "Eucalyptus",
+   "band": "FAIL",
+   "why": "Sparse narrow leaves suggest eucalyptus, but the trunk is a plain brown pole with no peeling cream/grey/orange bark, and the pale rings do not clearly read as woody gumnut clusters."
+  },
+  {
+   "species": "Meadow Grass",
+   "band": "FAIL",
+   "why": "The loose green tuft reads as grass, but its lone dense unbranched seed spike is the opposite of the required airy pyramidal panicle with fine whorled branches."
+  },
+  {
+   "species": "Peanut",
+   "band": "FAIL",
+   "why": "The low spread and yellow flower help, but the tan ovals look like exposed loose kernels: no netted pods underground or peg-like stalks entering soil are shown."
+  },
+  {
+   "species": "Sword Fern",
+   "band": "FAIL",
+   "why": "The upright crown reads as fern, but the fronds render as solid serrated blades; distinct single-plane leaflets and their hooked bases are not legible."
+  },
+  {
+   "species": "Watercress",
+   "band": "FAIL",
+   "why": "Rounded leaflets are present, but the plant forms a dry radial rosette with a tall central stalk, not a floating mat of succulent stems, and no white nodal roots are visible."
+  }
+ ]
+}

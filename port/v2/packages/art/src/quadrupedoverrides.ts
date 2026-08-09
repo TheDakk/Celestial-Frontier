@@ -55,7 +55,7 @@ export interface QuadSpec {
   muzzle?: number;              /* snout projection */
   jaw?: 'fine' | 'broad' | 'barrel';
   ears?: 'tiny' | 'small' | 'round' | 'large' | 'huge' | 'fan';
-  tail?: 'none' | 'stub' | 'tuft' | 'bushy' | 'long' | 'plume' | 'banded' | 'paddle' | 'flow';
+  tail?: 'none' | 'stub' | 'thick' | 'tuft' | 'bushy' | 'long' | 'plume' | 'banded' | 'paddle' | 'muscular' | 'flow';
   /** ★ POLISH — the dairy udder: a pink rounded bag between the hind legs (Cow) */
   udder?: boolean;
   /** ★ POLISH WAVE — small COAT ACCENTS that are whole identities: a pale rump
@@ -131,6 +131,22 @@ export interface QuadSpec {
      head". An ear category is a SHAPE; this is the multiplier on its scale,
      for the handful of animals whose feature is outsized for their family. */
   earScale?: number;
+  /** Opt-in black brush length/weight for tuft-eared cats. */
+  earTuftScale?: number;
+  /** Opt-in fan of silhouette-breaking cheek fur (bobcat/lynx). */
+  cheekRuff?: number;
+  /** Opt-in paw enlargement for snow-footed or wetland cats. */
+  pawScale?: number;
+  /** Per-species skull scale; family default remains the fallback. */
+  headScale?: number;
+  /** Ocelot's elongated chain rosettes, distinct from leopard rings. */
+  rosetteChain?: boolean;
+  /** Paired dark cheek bars used by the ocelot. */
+  cheekBars?: boolean;
+  /** A carried, upward-curled tail rather than the default hanging sweep. */
+  tailPose?: 'raised';
+  /** Catalogue-scale domestic-cat face accents; deliberately opt-in. */
+  domesticCatFace?: boolean;
   mat?: Material;
   /** ★ wave 13 — an ear has a SHAPE, not only a size. Defaults per family. */
   /* ⚠ 'hidden' was declared here, set on the WHOLE pinniped family plus Mole
@@ -633,6 +649,69 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.beginPath(); c.ellipse(cx, groundY + 6, bodyW * 0.92, S * 0.032, 0, 0, TAU); c.fill();
   }
 
+  if (spec.tail === 'muscular') {
+    /* Draw a muscular tail behind the animal so the rump's own surface covers
+       the root. Drawing it with the other foreground tails left a visible cap
+       over the flank even though both solids were individually correct. */
+    const TS = spec.tailScale ?? 1;
+    const musAnchor = AX(0.035);
+    const musTx0 = musAnchor[0] - RAD(0.035) * 0.35 - bodyH * 0.40;
+    const musTy0 = musAnchor[1] - RAD(0.035) * 0.30;
+    const tailAt = (t: number): [number, number] => {
+      const m = 1 - t;
+      const p1x = musTx0 - bodyW * 0.40 * TS, p1y = musTy0 + bodyH * 0.10;
+      const p2x = musTx0 - bodyW * 0.76 * TS, p2y = musTy0 + bodyH * 0.64 * TS;
+      return [m * m * musTx0 + 2 * m * t * p1x + t * t * p2x,
+        m * m * musTy0 + 2 * m * t * p1y + t * t * p2y];
+    };
+    const tailR = (t: number): number => bodyH * (0.34 * Math.pow(1 - t, 0.72) + 0.025);
+    const tailT = new Tube({ P: tailAt, R: tailR });
+    c.fillStyle = p.base; c.beginPath(); tailT.trace(c, 48); c.fill();
+    c.save(); c.beginPath(); tailT.trace(c, 48); c.clip();
+    countershade(c, tailT, p, 0.82);
+    coatMaterial(c, tailT, r, p, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL * 0.44, len: 0.76 });
+    c.restore();
+    c.strokeStyle = 'rgba(236,242,252,0.24)'; c.lineWidth = 1.8; c.lineCap = 'round';
+    c.beginPath();
+    for (let i = 0; i <= 24; i++) {
+      const e = tailT.envelope(i / 24, 1);
+      if (i === 0) c.moveTo(e[0], e[1]); else c.lineTo(e[0], e[1]);
+    }
+    c.stroke();
+  } else if (spec.tail === 'thick') {
+    /* Fishing Cat: a short, heavy tail is a silhouette cue, not the generic
+       rump-cone used by every stub-tailed mammal. Paint it behind the torso so
+       the root is anatomical, keep the end blunt, and carry the dark rings to
+       the edge where they survive catalogue scale. This branch is opt-in. */
+    const TS = spec.tailScale ?? 1;
+    const thickAnchor = AX(0.035);
+    const thickTx0 = thickAnchor[0] - RAD(0.035) * 0.18;
+    const thickTy0 = thickAnchor[1] + bodyH * 0.02;
+    const tailAt = (t: number): [number, number] => {
+      const m = 1 - t;
+      const p1x = thickTx0 - bodyW * 0.27 * TS, p1y = thickTy0 + bodyH * 0.04;
+      const p2x = thickTx0 - bodyW * 0.48 * TS, p2y = thickTy0 + bodyH * 0.25;
+      return [m * m * thickTx0 + 2 * m * t * p1x + t * t * p2x,
+        m * m * thickTy0 + 2 * m * t * p1y + t * t * p2y];
+    };
+    const tailR = (t: number): number => bodyH * (0.22 - t * 0.075);
+    const tailT = new Tube({ P: tailAt, R: tailR });
+    c.fillStyle = p.base; c.beginPath(); tailT.trace(c, 40); c.fill();
+    c.save(); c.beginPath(); tailT.trace(c, 40); c.clip();
+    countershade(c, tailT, p, 0.82);
+    coatMaterial(c, tailT, r, p, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL * 0.40, len: 0.72 });
+    c.strokeStyle = 'rgba(25,20,17,0.72)'; c.lineCap = 'butt';
+    for (const t0 of [0.46, 0.68]) {
+      const a2 = tailAt(t0), b2 = tailAt(Math.min(1, t0 + 0.09));
+      c.lineWidth = tailR(t0) * 2.15;
+      c.beginPath(); c.moveTo(a2[0], a2[1]); c.lineTo(b2[0], b2[1]); c.stroke();
+    }
+    c.restore();
+    const tip = tailAt(1);
+    c.fillStyle = spec.tailTip ?? 'rgba(24,20,18,0.90)';
+    c.beginPath(); c.ellipse(tip[0], tip[1], tailR(1) * 0.96, tailR(1) * 0.86, 0.18, 0, TAU); c.fill();
+  }
+
   /* ---- legs: back pair first (depth), then front ---- */
   /* ★ ARC STAGE 3 (Nick: "the elephant legs are way too long… like they are big
      tree trunks"). Leg thickness was a pure fraction of BODY DEPTH, so the
@@ -808,7 +887,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
          canid's against its slim ankle; the extra width is what finally
          separates "paw" from "hoof" on the small cats */
       const legW0 = legW;
-      const legW2 = legW0 * (crouch > 0.9 ? 1.24 : 1);
+      const legW2 = legW0 * (crouch > 0.9 ? 1.24 : 1) * (spec.pawScale ?? 1);
       c.fillStyle = dark(padK);
       c.beginPath(); c.ellipse(x, gy - legW2 * 0.22, legW2 * 1.06, legW2 * 0.44, 0, 0, TAU); c.fill();
       c.fillStyle = dark(toeK);
@@ -1060,7 +1139,7 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   const headR = Math.max(
     bodyH * (spec.jaw === 'barrel' ? 0.62 : spec.jaw === 'broad' ? 0.52 : 0.42),
     bodyW * 0.20,
-  ) * (FAM0.headScale ?? 1);
+  ) * (spec.headScale ?? FAM0.headScale ?? 1);
   /* ★ WAVE 4 — THE NECK IS A TAPERED SOLID. Nick: "thin necks at the shoulder
      on the big cats." It was one constant-width round-capped stroke, so a
      lion's neck was the same thickness at the skull as at the chest, and the
@@ -1105,7 +1184,8 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   else if (coat === 'stripes') coatBars(c, neckTube, r, p, { count: 7, width: 0.9, phiEnd: -0.9, forkRate: 0.1 });
   else if (coat === 'bands') coatBars(c, neckTube, r, p, { count: 9, width: 1.1, phiEnd: -1.4, lean: 0.02, forkRate: 0, hard: true, rgb: [18, 15, 16] });
   else if (coat === 'spots') coatSpots(c, neckTube, r, p, { count: 34, size: 0.8, soft: 0.13, rgb: [24, 17, 10] });
-  else if (coat === 'rosettes') coatRosettes(c, neckTube, r, p, { count: 12, size: 0.8 });
+  else if (coat === 'rosettes') coatRosettes(c, neckTube, r, p, { count: 12, size: 0.8,
+    ...(spec.rosetteChain ? { chain: true } : {}) });
   else if (coat === 'shaggy') coatShaggy(c, neckTube, r, p, { count: 46 });
   c.restore();
   if (coat === 'shaggy') shaggyRim(c, neckTube, r, p, Math.max(4, bodyH * 0.095), 0.70);
@@ -1132,7 +1212,8 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   } else if (coat === 'fawn') {
     coatSpots(c, body, r, p, { count: 60, size: 0.8, soft: 0.4, rgb: [246, 242, 228], phiLo: -0.4, phiHi: 1.3 });
   } else if (coat === 'rosettes') {
-    coatRosettes(c, body, r, p, { count: 38, core: name === 'Jaguar' });
+    coatRosettes(c, body, r, p, { count: spec.rosetteChain ? 22 : 38, core: name === 'Jaguar',
+      ...(spec.rosetteChain ? { chain: true } : {}) });
   } else if (coat === 'stripes') {
     /* ★ THE TIGER. Fifteen "stripes" were fifteen COLUMNS OF FIVE SOFT DOTS,
        and that is exactly what they looked like at full size — a polka grid.
@@ -1424,7 +1505,8 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
   if (coat === 'patches') coatPatches(c, head, r, p, { nu: 4, nphi: 3, seam: 0.76, rgb: [126, 74, 26] });
   else if (coat === 'stripes') coatBars(c, head, r, p, { count: 6, width: 0.75, phiEnd: -0.8, forkRate: 0 });
   else if (coat === 'spots') coatSpots(c, head, r, p, { count: 22, size: 0.62, soft: 0.16, rgb: [24, 17, 10] });
-  else if (coat === 'rosettes') coatRosettes(c, head, r, p, { count: 7, size: 0.6 });
+  else if (coat === 'rosettes') coatRosettes(c, head, r, p, { count: 7, size: 0.6,
+    ...(spec.rosetteChain ? { chain: true } : {}) });
   else if (coat === 'shaggy') coatShaggy(c, head, r, p, { count: 34 });
   c.restore();
   /* ★ WAVE 16 — THE CHEEK. Without a jowl the muzzle leaves the skull as a
@@ -1441,6 +1523,37 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     cg2.addColorStop(1, `rgba(${Math.min(255, p.cr * cm) | 0},${Math.min(255, p.cg * cm) | 0},${Math.min(255, p.cb * cm) | 0},0)`);
     c.fillStyle = cg2;
     c.beginPath(); c.ellipse(ck[0], ck[1], cr2 * 1.15, cr2 * 0.92, -0.12, 0, TAU); c.fill();
+  }
+  if (spec.cheekRuff) {
+    /* Bobcat and lynx carry a pointed fan of fur behind the jaw. The first
+       cut used five tiny triangles rooted on the face; the skull covered most
+       of their shared base and the remainder read as one pale cheek. Build a
+       single serrated silhouette in skull coordinates, then lay individual
+       hair vanes across it. No unset species enters this branch. */
+    const rs = spec.cheekRuff;
+    const ux = Math.cos(ang), uy = Math.sin(ang), vx = -uy, vy = ux;
+    const rb = headAxis(0.27);
+    const rp = (back: number, down: number): [number, number] =>
+      [rb[0] - ux * headR * back * rs + vx * headR * down,
+        rb[1] - uy * headR * back * rs + vy * headR * down];
+    const ruff: Array<[number, number]> = [
+      rp(0.02, -0.34), rp(0.72, -0.24), rp(0.26, 0.06),
+      rp(1.00, 0.34), rp(0.25, 0.60), rp(0.72, 1.08),
+      rp(0.04, 0.80),
+    ];
+    c.fillStyle = `rgba(${Math.min(255, p.cr * 1.24) | 0},${Math.min(255, p.cg * 1.24) | 0},${Math.min(255, p.cb * 1.24) | 0},0.99)`;
+    c.strokeStyle = `rgba(${Math.max(0, p.cr * 0.34) | 0},${Math.max(0, p.cg * 0.34) | 0},${Math.max(0, p.cb * 0.34) | 0},0.92)`;
+    c.lineWidth = Math.max(2.4, headR * 0.11); c.lineJoin = 'round';
+    c.beginPath(); c.moveTo(ruff[0]![0], ruff[0]![1]);
+    for (let i = 1; i < ruff.length; i++) c.lineTo(ruff[i]![0], ruff[i]![1]);
+    c.closePath(); c.fill(); c.stroke();
+    c.strokeStyle = `rgba(${Math.max(0, p.cr * 0.36) | 0},${Math.max(0, p.cg * 0.36) | 0},${Math.max(0, p.cb * 0.36) | 0},0.84)`;
+    c.lineWidth = Math.max(1.8, headR * 0.075); c.lineCap = 'round';
+    for (const [back, down] of [[0.64, -0.20], [0.88, 0.34], [0.62, 0.96]] as const) {
+      const root = rp(0.08, down * 0.36);
+      const tip = rp(back, down);
+      c.beginPath(); c.moveTo(root[0], root[1]); c.lineTo(tip[0], tip[1]); c.stroke();
+    }
   }
 
   /* the nose, ON the end of the muzzle rather than beside it */
@@ -1544,6 +1657,32 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     const ch = head.pt(0.86, -0.95);
     c.fillStyle = `rgb(${(p.cr * 0.70) | 0},${(p.cg * 0.70) | 0},${(p.cb * 0.72) | 0})`;
     c.beginPath(); c.ellipse(ch[0], ch[1], headR * 0.20 * SK.jaw * 3, headR * 0.13 * SK.jaw * 3, ang, 0, TAU); c.fill();
+  }
+
+  if (spec.domesticCatFace) {
+    /* A domestic cat's whiskers are one of its three catalogue must-reads.
+       The family painter had none at all, so the correct slit pupil and short
+       muzzle still collapsed into a generic small-mammal face at card scale.
+       This fan is opt-in: accepted wild felids retain their exact pixels. */
+    const ux = Math.cos(ang), uy = Math.sin(ang), vx = -uy, vy = ux;
+    const wr = head.pt(0.68, -0.42);
+    for (let i = 0; i < 5; i++) {
+      const spread = (i - 2) * 0.22;
+      const sx = wr[0] + vx * headR * spread * 0.20;
+      const sy = wr[1] + vy * headR * spread * 0.20;
+      const len = headR * (1.08 + (2 - Math.abs(i - 2)) * 0.10);
+      const ex = sx + ux * len + vx * headR * spread;
+      const ey = sy + uy * len + vy * headR * spread;
+      c.strokeStyle = 'rgba(10,12,16,0.72)'; c.lineWidth = 2.4; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(sx, sy); c.quadraticCurveTo(sx + ux * len * 0.55, sy + uy * len * 0.55, ex, ey); c.stroke();
+      c.strokeStyle = 'rgba(236,241,248,0.88)'; c.lineWidth = 1.1;
+      c.beginPath(); c.moveTo(sx, sy); c.quadraticCurveTo(sx + ux * len * 0.55, sy + uy * len * 0.55, ex, ey); c.stroke();
+    }
+    c.fillStyle = 'rgba(24,20,22,0.70)';
+    for (let i = 0; i < 3; i++) {
+      c.beginPath(); c.arc(wr[0] - ux * headR * (0.08 + i * 0.10),
+        wr[1] + vy * headR * (i - 1) * 0.11, Math.max(1.1, headR * 0.035), 0, TAU); c.fill();
+    }
   }
 
   /* ---- ears: family-defining (fennec vs hippo vs koala) ---- */
@@ -1732,11 +1871,20 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
           if (earShape === 'tuft') {
             /* the black brush a lynx and a caracal wear on the tip, which is
                the entire difference between them and any other cat */
-            c.strokeStyle = `rgba(18,15,12,${0.9 * m})`; c.lineCap = 'round';
-            for (let i = -1; i <= 1; i++) {
-              c.lineWidth = Math.max(1.4, earR * 0.13);
-              c.beginPath(); c.moveTo(i * earR * 0.14, -earR * 1.05);
-              c.lineTo(i * earR * 0.30, -earR * 1.85); c.stroke();
+            const tuftScale = spec.earTuftScale;
+            c.strokeStyle = `rgba(12,10,9,${0.94 * m})`; c.lineCap = 'round';
+            if (tuftScale) {
+              for (let i = -2; i <= 2; i++) {
+                c.lineWidth = Math.max(1.6, earR * 0.15 * (0.90 + tuftScale * 0.18));
+                c.beginPath(); c.moveTo(i * earR * 0.085, -earR * 1.05);
+                c.lineTo(i * earR * 0.19, -earR * (1.18 + 0.78 * tuftScale)); c.stroke();
+              }
+            } else {
+              for (let i = -1; i <= 1; i++) {
+                c.lineWidth = Math.max(1.4, earR * 0.13);
+                c.beginPath(); c.moveTo(i * earR * 0.14, -earR * 1.05);
+                c.lineTo(i * earR * 0.30, -earR * 1.85); c.stroke();
+              }
             }
           }
         } else if (earShape === 'leaf') {
@@ -1800,6 +1948,31 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     c.strokeStyle = 'rgba(22,16,10,0.55)'; c.lineWidth = Math.max(2, headR * 0.06);
     c.beginPath(); c.moveTo(headX - headR * 0.10, headY - headR * 0.02);
     c.quadraticCurveTo(headX + headR * 0.24, headY + headR * 0.36, headX + headR * 0.62, headY + headR * 0.48); c.stroke();
+  }
+  if (spec.cheekBars) {
+    /* Ocelot: two oblique black cheek stripes running forward-and-down from
+       the eye. The first cut ran backward under the neck and vanished. A thin
+       pale keyline now separates the paired strokes from a dark phenotype,
+       while the dark pass remains the dominant read at catalogue scale. */
+    const ux = Math.cos(ang), uy = Math.sin(ang), dx = -Math.sin(ang), dy = Math.cos(ang);
+    c.lineCap = 'round';
+    for (let i = 0; i < 2; i++) {
+      const q = head.pt(0.38 + i * 0.11, -0.30);
+      const len = headR * (0.92 - i * 0.08);
+      const mx = q[0] + ux * len * 0.26 + dx * len * (0.28 + i * 0.08);
+      const my = q[1] + uy * len * 0.26 + dy * len * (0.28 + i * 0.08);
+      const ex = q[0] + ux * len * 0.52 + dx * len * (0.62 + i * 0.08);
+      const ey = q[1] + uy * len * 0.52 + dy * len * (0.62 + i * 0.08);
+      c.strokeStyle = 'rgba(238,224,188,0.72)';
+      c.lineWidth = Math.max(4.2, headR * (0.17 - i * 0.01));
+      c.beginPath(); c.moveTo(q[0], q[1]);
+      c.quadraticCurveTo(mx, my, ex, ey); c.stroke();
+      c.strokeStyle = 'rgba(15,11,9,0.96)';
+      c.lineWidth = Math.max(2.5, headR * (0.105 - i * 0.008));
+      c.beginPath(); c.moveTo(q[0], q[1]);
+      c.quadraticCurveTo(mx, my, ex, ey);
+      c.stroke();
+    }
   }
   /* the eye, last so it always reads — and an alien eye is the single most
      alien thing a face can do, so it routes here rather than replacing the head */
@@ -2308,6 +2481,26 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
         tx0 - bodyW * 0.15 + sway * 1.3, ty0 + len4);
       c.stroke();
     }
+  } else if (tail === 'long' && spec.tailPose === 'raised') {
+    /* A domestic cat carries its tail as a long expressive question-mark,
+       not the default low hanging sweep. This separate opt-in branch keeps
+       every accepted long-tailed felid on the exact existing path. */
+    const TS = spec.tailScale ?? 1;
+    const p1: [number, number] = [tx0 - bodyW * 0.54 * TS, ty0 + bodyH * 0.18];
+    const p2: [number, number] = [tx0 - bodyW * 0.46 * TS, ty0 - bodyH * 0.96 * TS];
+    const p3: [number, number] = [tx0 - bodyW * 0.14 * TS, ty0 - bodyH * 1.16 * TS];
+    const tailAt = (t: number): [number, number] => {
+      const m = 1 - t;
+      return [m * m * m * tx0 + 3 * m * m * t * p1[0] + 3 * m * t * t * p2[0] + t * t * t * p3[0],
+        m * m * m * ty0 + 3 * m * m * t * p1[1] + 3 * m * t * t * p2[1] + t * t * t * p3[1]];
+    };
+    const tailR = (t: number): number => bodyH * (0.15 - t * 0.045);
+    const tailT = new Tube({ P: tailAt, R: tailR });
+    c.fillStyle = p.base; c.beginPath(); tailT.trace(c, 44); c.fill();
+    c.save(); c.beginPath(); tailT.trace(c, 44); c.clip();
+    countershade(c, tailT, p, 0.78);
+    coatMaterial(c, tailT, r, p, spec.mat ?? FAM0.mat, { detail: MAT_DETAIL * 0.42, len: 0.72 });
+    c.restore();
   } else if (tail === 'long' || tail === 'tuft') {
     /* ★ D-ART-136 — THIS BRANCH IGNORED tailScale COMPLETELY. The sweep was
        hard-coded, so a leopard's tail was ~32% of its body and NO spec value
@@ -2414,6 +2607,8 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
     const tp = tailAt(1);
     c.fillStyle = 'rgba(30,23,18,0.86)';
     c.beginPath(); c.arc(tp[0], tp[1], tailR(1) * 0.94, 0, TAU); c.fill();
+  } else if (tail === 'muscular') {
+    /* rendered behind the torso above, so the root joins without a cap seam */
   } else if (tail === 'paddle') {
     /* ★ ARC STAGE 3 — the beaver's reference row names "flat scaly paddle tail"
        as a mustRead, and the system had no tail that could say it. A beaver's
@@ -2478,7 +2673,7 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
      leopard. */
   'Cheetah': { back: 'arched', legs: 0.1938, depth: 0.1050, len: 0.1976, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 0.95, rump: 0.52, tailScale: 1.9 , legMarks: true },
   'Cougar': { legs: 0.1482, depth: 0.1120, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid', tailScale: 1.7, tailTip: '#241f1d' },
-  'Lynx': { back: 'arched', legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft' },
+  'Lynx': { back: 'arched', legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft', earTuftScale: 1.22, cheekRuff: 1.64, pawScale: 1.26 },
   /* the pixel-siblings, separated */
   'Rhinoceros': { legs: 0.0835, depth: 0.1886, len: 0.263, neck: 0.045, muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#8b8b8e', family: 'pachyderm' },
   'Wild Sheep': { legs: 0.1345, depth: 0.1529, len: 0.1881, neck: 0.075, muzzle: 0.35, ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#9d8a6e', family: 'bovid' },
