@@ -22,12 +22,13 @@
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
 ## ▶▶▶ SESSION HANDOFF — as of 2026-08-09. ★ GOLD PASS 7 + FINAL PACKAGE COMPLETE
-## ON THE 1,250-ASSET CATALOGUE; GIT HANDOFF IS THE REMAINING STEP. ◀◀◀
+## AND PUSHED; DRAFT PR + NICK REVIEW ARE THE REMAINING STEPS. ◀◀◀
 
 ## ★ COLD START — READ THIS BLOCK, THEN THE LINKED REFERENCES
 ## Current workspace: C:\Projects\celestial-frontier-openai-windows
 ## Current owner/branch: OpenAI/Codex on openai/windows. HEAD and origin/develop were both
-## e16da09 when this batch began; the worktree now contains the uncommitted GP7 batch.
+## e16da09 when this batch began. The complete GP7 implementation is commit a9345c1 and is pushed
+## to origin/openai/windows; this live handoff records that published branch state.
 ## Integration path: openai/windows → reviewed draft PR → develop. Never commit directly to
 ## develop or main; no release, main merge, live-site deploy or version bump is authorized here.
 ## The v1 single-file game remains the production reference. This batch changes the deterministic
@@ -106,13 +107,12 @@
 ## Final master artifact (305,291,135 bytes; SHA-256
 ## 47B730C0323241F8E171DC3A96D4EFD5C67FA0C3CA12333CA17EBE10540D398F):
 ## port/v2/apps/game/smoke/Celestial_Frontier_GP7_Complete_Catalogue_Review_2026-08-09.zip.
-## Documentation and packaging are complete. Commit, push and draft PR are still pending.
+## Documentation, packaging, commit and branch push are complete. The draft PR is still pending.
 
 ## ★ NEXT — COMPLETE IN THIS ORDER
-## 1. Review the complete diff and confirm no files outside the GP7 batch are staged.
-## 2. Commit only the finished GP7 batch, push openai/windows and open
-##    the draft PR described below. Do not deploy.
-## 3. Nick reviews the finished ZIP and records only named PASS / POLISH / FIX follow-ups.
+## 1. Nick opens the draft PR described below from the pushed branch. Do not deploy.
+## 2. Nick reviews the finished ZIP and records only named PASS / POLISH / FIX follow-ups.
+## 3. Merge the reviewed PR to develop only after approval; never merge it directly to main.
 ## 4. Re-run proportional gates only if source changes after the frozen certification above.
 
 ## ★ NEXT HUMAN REVIEW — PACKAGE READY
@@ -124,10 +124,12 @@
 ## sweep: any follow-up is a named, bounded target list protected by artlock and matched controls.
 
 ## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
-## Current side: OpenAI/Codex — GP7 is certified and packaged; commit/push are still pending on
-## openai/windows. Push here before asking either application to consume the work.
-## GitHub step now: none until the commit is pushed. Then Nick reviews and merges one draft PR;
-## saving, committing or pushing alone does not update develop.
+## Current side: OpenAI/Codex — GP7 commit a9345c1 is certified, packaged and pushed on
+## origin/openai/windows. GitHub PR creation is the only blocked automation step: the connector
+## cannot see the private repo, local gh auth is stale, and the in-app browser is signed out.
+## GitHub step now: Nick opens
+## https://github.com/TheDakk/Celestial-Frontier/compare/develop...openai/windows?expand=1,
+## marks the PR draft, then reviews and merges it to develop. Pushing alone did not update develop.
 ## PR base: develop
 ## PR source: openai/windows
 ## Copy-ready title: GP7: complete Earth catalogue art pass and review package

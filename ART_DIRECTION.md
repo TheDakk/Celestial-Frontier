@@ -638,5 +638,5 @@ the legacy `main.js` status above.
   pair-specific: honest colour exposed 9 hard look-alike pairs, shape axes reduced that to 2,
   and the Wild Thyme/Mite corrections brought the final **hard-pair count to 0**. The broader
   confusable list remains a watch-list; zero hard pairs does not mean zero visual similarity.
-- GP7 measurement and the complete-catalogue package are complete. The batch commit, draft
-  `openai/windows` → `develop` PR, and Nick's final package review are the remaining steps.
+- GP7 measurement and the complete-catalogue package are complete; commit `a9345c1` is pushed.
+  The draft `openai/windows` → `develop` PR and Nick's final package review remain.

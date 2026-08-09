@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (Phase 1+)
 
-**Status: ★★★ GP7 ART MEASUREMENT COMPLETE · PACKAGE READY · COMMIT/NICK REVIEW PENDING** (2026-08-09).
+**Status: ★★★ GP7 ART + PACKAGE COMPLETE · BRANCH PUSHED · DRAFT PR/NICK REVIEW PENDING** (2026-08-09).
 **Port milestone record (2026-08-01):** ★★★ PHASES 1–3 COMPLETE (automatable) · PHASE 4 SHELL RUNNING.
 **Phase 4 so far — the slice wears the game's face at the GOLDEN SCREENS' exact geometry**
 (floating-pill topbar: player chip + HP bar + Prime pill + trail · objective chip fed by the
