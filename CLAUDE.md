@@ -71,6 +71,8 @@ Home galaxy seed `999` @ `{x:90,y:-60}` · Sol seed `424242` · Earth seed `133`
 - **Required paired reminder:** at every batch completion and Git handoff,
   give Nick the protocol's explicit next steps for both OpenAI/Codex and
   Anthropic/Claude Code, including whether he needs to open the other app now.
+  Whenever a PR is needed, include its exact base/source branches and a
+  copy-ready title and description.
 - `develop` is the integration branch. `main` is the production release branch.
 - Anthropic/Claude Code works only from branches under `anthropic/*`.
 - OpenAI/Codex works only from branches under `openai/*`.

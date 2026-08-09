@@ -82,6 +82,8 @@ what happens on **both** sides. Use this short format in plain language:
 Current side: <OpenAI/Codex or Anthropic/Claude Code> — <what was committed,
 pushed, or is still pending>.
 GitHub step: <the exact action Nick must take now, or "none">.
+PR details: <base branch, source branch, exact copy-ready title, and exact
+copy-ready description; or "not needed">.
 Other side: <the exact safe synchronization step and when to do it>.
 Release status: <develop/main/live-site status; normally "no release or
 deployment performed">.
@@ -94,7 +96,11 @@ The reminder must apply these rules:
    other environment does not have it yet. It may continue unrelated work,
    but must not expect the new change or copy files manually.
 3. If a pull request is ready, tell Nick to review and merge that pull request
-   into `develop`. Do not imply that saving, committing, or pushing merged it.
+   into `develop`. Always provide all four copy-ready PR fields: base branch,
+   source branch, title, and description. The description must summarize the
+   change, list verification performed, state the cross-agent synchronization
+   effect, and state that no release or deployment is included. Do not imply
+   that saving, committing, or pushing merged it.
 4. Only after the pull request is merged may the other agent bring in the
    change. At its next coding batch, that agent must fetch and merge the latest
    `origin/develop` into its own clean agent branch under the startup procedure.
@@ -105,6 +111,9 @@ The reminder must apply these rules:
    normal case, synchronization can wait until that agent's next coding batch.
 7. Never describe `develop`, `main`, or the live site as updated unless that
    specific merge or deployment has been verified.
+8. Provide the PR fields every time a new PR is needed, including in follow-up
+   status messages. If a PR already exists, provide its number or link and say
+   whether its existing title or description needs to change.
 
 ## How changes move between agents
 

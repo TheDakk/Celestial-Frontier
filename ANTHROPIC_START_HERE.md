@@ -79,7 +79,8 @@ Report the commit hash, tests run, and push result. Do not merge into develop
 or main, and do not deploy the live site. End with the required paired handoff
 reminder from PARALLEL_GIT_PROTOCOL.md: tell me the exact next steps for this
 Anthropic/Claude Code side, GitHub, and the OpenAI/Codex side, including
-whether I need to open Codex now.
+whether I need to open Codex now. If a pull request is needed, include the
+exact base branch, source branch, and copy-ready PR title and description.
 ```
 
 Success means `git status --short --branch` shows only:
