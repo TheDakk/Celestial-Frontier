@@ -77,18 +77,24 @@ async function strip(names: string[]): Promise<void> {
   cv.width = cols * C; cv.height = rows * (C + LAB);
   const c = cv.getContext('2d')!;
   c.fillStyle = '#07090d'; c.fillRect(0, 0, cv.width, cv.height);
+  const failed: string[] = [];
   await Promise.all(cells.map((cell, i) => new Promise<void>((res) => {
     const x = (i % cols) * C, y = Math.floor(i / cols) * (C + LAB);
     c.fillStyle = '#8ea6c8'; c.font = '15px system-ui, sans-serif'; c.textAlign = 'center';
     c.fillText(cell.name, x + C / 2, y + C + 20);
-    if (!cell.url) { c.strokeStyle = '#c0392b'; c.strokeRect(x + 8, y + 8, C - 16, C - 16); return res(); }
+    if (!cell.url) {
+      failed.push(cell.name);
+      c.strokeStyle = '#c0392b'; c.strokeRect(x + 8, y + 8, C - 16, C - 16); return res();
+    }
     const im = new Image();
     im.onload = () => { c.drawImage(im, x + 6, y + 6, C - 12, C - 12); res(); };
-    im.onerror = () => res();
+    im.onerror = () => { failed.push(cell.name); res(); };
     im.src = cell.url;
   })));
   say(`strip: ${cells.length} species`);
-  (window as unknown as Record<string, unknown>).__CF_STRIP__ = { done: true, url: cv.toDataURL() };
+  (window as unknown as Record<string, unknown>).__CF_STRIP__ = {
+    done: true, url: cv.toDataURL(), failed,
+  };
 }
 
 /* ★ PROPORTION MODE (?prop=<kingdom>) — WAVE 22. Nick: "the bodies on a lot of

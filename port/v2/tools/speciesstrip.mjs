@@ -8,7 +8,7 @@ import path from 'node:path';
 import http from 'node:http';
 import net from 'node:net';
 import os from 'node:os';
-import { spawn, execSync } from 'node:child_process';
+import { spawn, execSync, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -16,6 +16,32 @@ const appDir = path.join(here, '..', 'apps', 'game');
 const dist = path.join(appDir, 'dist');
 const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/* Bidirectional instrument control: a known Earth + procedural pair must
+   paint, while an intentionally unknown identity must be rejected. The old
+   strip tool returned success for the latter and left only a red rectangle in
+   the image, which made 57 procedural assets look like art failures. */
+if (process.argv.includes('--selftest')) {
+  const invoke = (input, output) => spawnSync(process.execPath,
+    [fileURLToPath(import.meta.url), input, output], { cwd: path.join(here, '..'), encoding: 'utf8' });
+  const good = invoke('Cobra,proc:fauna:h0:s0', 'speciesstrip-selftest/valid.png');
+  if (good.status !== 0) {
+    console.error('SPECIES STRIP SELFTEST FAILED: valid Earth/procedural control did not render');
+    console.error((good.stderr || good.stdout || '').trim());
+    process.exit(1);
+  }
+  const bad = invoke('__CF_INTENTIONAL_UNKNOWN_SPECIES__',
+    'speciesstrip-selftest/intentional-invalid.png');
+  if (bad.status === 0 || !/unrendered species/i.test(bad.stderr || '')) {
+    console.error('SPECIES STRIP SELFTEST FAILED: invalid-name control was not rejected');
+    console.error((bad.stderr || bad.stdout || '').trim());
+    process.exit(1);
+  }
+  console.log('SPECIES STRIP SELFTEST PASS');
+  console.log('  valid Earth + procedural render: PASS');
+  console.log('  intentional unknown species: rejected');
+  process.exit(0);
+}
 
 const names = process.argv[2];
 if (!names) { console.error('usage: node tools/speciesstrip.mjs "Name,Name,…" [out.png]'); process.exit(2); }
@@ -44,9 +70,14 @@ const out = path.join(appDir, 'smoke', process.argv[3] || 'strip.png');
       const q = path.join(d, e.name);
       return Math.max(a, e.isDirectory() ? newest(q) : fs.statSync(q).mtimeMs);
     }, 0);
-    const srcMs = newest(path.join(here, '..', 'packages', 'art', 'src'));
-    /* rebuild only if the bundle is missing or older than the art — that also
-       stops six agents doing six identical 40s builds back to back */
+    const srcMs = Math.max(
+      newest(path.join(appDir, 'src')),
+      newest(path.join(here, '..', 'packages')),
+    );
+    /* Rebuild if any bundled source is newer. Looking only at packages/art
+       left audit.ts changes behind a fresh-looking but stale audit.html — the
+       invalid-strip negative control then passed for exactly the wrong reason.
+       The lock still stops concurrent judges doing identical builds. */
     if (!built || fs.statSync(path.join(dist, 'audit.html')).mtimeMs < srcMs) {
       execSync('npx vite build', { cwd: appDir, stdio: 'ignore' });
     }
@@ -101,11 +132,18 @@ const evalIn = async (expr) => {
   if (r.exceptionDetails) throw new Error('eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || '').slice(0, 200));
   return r.result.value;
 };
-let url = null;
-for (let s = 0; s < 300 && !url; s++) { await sleep(200); url = await evalIn('(window.__CF_STRIP__&&window.__CF_STRIP__.url)||null'); }
-if (!url) { console.error('strip never rendered'); ws.close(); edge.kill(); server.close(); process.exit(1); }
+let rendered = null;
+for (let s = 0; s < 300 && !rendered; s++) {
+  await sleep(200);
+  rendered = await evalIn('(window.__CF_STRIP__&&window.__CF_STRIP__.done&&window.__CF_STRIP__)||null');
+}
+if (!rendered?.url) { console.error('strip never rendered'); ws.close(); edge.kill(); server.close(); process.exit(1); }
 fs.mkdirSync(path.dirname(out), { recursive: true });
-fs.writeFileSync(out, Buffer.from(url.split(',')[1], 'base64'));
+fs.writeFileSync(out, Buffer.from(rendered.url.split(',')[1], 'base64'));
 console.log('strip: ' + out + ' (' + names.split(',').length + ' species)' + (errs.length ? ' ⚠ ' + errs.length + ' console errors' : ''));
+if (rendered.failed?.length) {
+  console.error('unrendered species: ' + rendered.failed.join(', '));
+  ws.close(); edge.kill(); server.close(); process.exit(1);
+}
 ws.close(); edge.kill(); server.close();
 process.exit(errs.length ? 1 : 0);

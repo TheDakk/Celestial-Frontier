@@ -31,7 +31,7 @@
    renders it via --drift/--out. Quote no delta until the control has run.
 
    Usage: node tools/rejudgecards.mjs [--drift=reference/drift-since-baseline.json]
-                                      [--out=rejudge] [--control]
+                                      [--out=rejudge] [--control] [--full]
    Reads : reference/drift-since-baseline.json  (set|name rows)
            reference/goldpass3-prechassis.json        (baseline verdicts)
    Writes: apps/game/smoke/<out>/<family>/strip.png + packet.md + index.json
@@ -40,19 +40,35 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { loadProceduralNameBridge } from './proceduralnames.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..');
 const arg = (k, d) => { const a = process.argv.find((s) => s.startsWith('--' + k + '=')); return a ? a.slice(k.length + 3) : d; };
 const CONTROL = process.argv.includes('--control');
+const FULL = process.argv.includes('--full');
 const OUTDIR = arg('out', CONTROL ? 'rejudge-control' : 'rejudge');
 const OUT = path.join(root, 'apps', 'game', 'smoke', OUTDIR);
 const CSV = path.join(root, 'reference', 'nick-onebyone', 'engine_data', 'all_1250_current_one_by_one_audit.csv');
 const PER = 14;   /* a strip stays legible up to ~14 wide */
+const proceduralNames = loadProceduralNameBridge(root);
 
 /* ── the set to judge: drifted assets, or a control of unchanged ones ── */
 const DRIFT = arg('drift', CONTROL ? 'reference/control-sample.json' : 'reference/drift-since-baseline.json');
-const drift = JSON.parse(fs.readFileSync(path.join(root, DRIFT), 'utf8'));
+const driftData = JSON.parse(fs.readFileSync(path.join(root, DRIFT), 'utf8'));
+const driftRows = Array.isArray(driftData) ? driftData : driftData.rows;
+if (!Array.isArray(driftRows)) throw new Error(`${DRIFT}: expected an array or an object with rows[]`);
+const drift = driftRows.map((asset, index) => {
+  const name = asset.name ?? asset.species;
+  if (typeof name !== 'string' || !name || typeof asset.set !== 'string' || !asset.set) {
+    throw new Error(`${DRIFT}: invalid asset at row ${index + 1}`);
+  }
+  return { ...asset, name };
+});
+/* Fail before rendering if any art-lock procedural identity cannot reach the
+   audit's proc:<kingdom>:h<heat>:s<seed> input. Passing the lock suffix here
+   used to produce a plausible labelled strip made entirely of red boxes. */
+for (const asset of drift) proceduralNames.renderName(asset.set, asset.name);
 console.log((CONTROL ? 'control set: ' : 'drift set: ') + drift.length + ' assets from ' + DRIFT);
 
 /* ── baseline verdicts, so the packet can show what each WAS ── */
@@ -115,13 +131,15 @@ for (const [family, members] of [...byFamily].sort((a, b) => b[1].length - a[1].
     /* render ONE labelled strip for the whole group — the only cost is a local
        browser render, no model tokens */
     execSync('node ' + JSON.stringify(path.join(here, 'speciesstrip.mjs')) + ' '
-      + JSON.stringify(slice.map((a) => a.name).join(',')) + ' '
+      + JSON.stringify(slice.map((a) => proceduralNames.renderName(a.set, a.name)).join(',')) + ' '
       + JSON.stringify(OUTDIR + '/' + slug(family) + '/strip-' + id + '.png'),
       { cwd: root, stdio: 'ignore' });
     const body = [
       '# RE-CHECK — ' + family + '  (' + slice.length + ' asset' + (slice.length > 1 ? 's' : '') + ')',
       '',
-      CONTROL
+      FULL
+        ? 'These are ALL current assets from this family, grouped for a final catalogue review.'
+        : CONTROL
         ? 'These are assets from this family, drawn for re-check against their reference\nrows.'
         : 'These are the ONLY assets in this family whose art changed since the last\njudgement.',
       'Read the ONE strip below and look at each. For each asset give a',

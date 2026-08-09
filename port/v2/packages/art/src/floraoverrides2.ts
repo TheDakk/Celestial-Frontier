@@ -158,6 +158,11 @@ export interface PlantSpec {
       groundcover berries (bearberry, crowberry, cranberry, lingonberry) that
       the judge failed for being drawn as tall upright cane-vases */
   creep?: boolean;
+  /** GP7: the seven boreal berry plants were still one shared crescent of
+      runners with a leaf/fruit recolour. This opt-in selects each named
+      architecture and has no shared fallback. */
+  berryHabit?: 'huckleberry' | 'lingonberry' | 'crowberry' | 'cranberry'
+    | 'bearberry' | 'arctic-blueberry' | 'mountain-cranberry';
   /** a woody shrub as a DENSE ROUNDED twiggy bush with a filled leafy crown —
       tea, tea tree, tamarisk, bay laurel (failed as "five open bare stalks") */
   dense?: boolean;
@@ -736,6 +741,251 @@ function drawSiliques(c: Ctx, p: Pal, cx: number, tipX: number, base: number, ti
 }
 
 /** THE PLANT. One body; the spec is the species. */
+type BerryLeaf = 'oval' | 'spoon' | 'notched' | 'tiny' | 'needle';
+
+function berryLeaf(c: Ctx, p: Pal, x: number, y: number, ang: number, len: number, kind: BerryLeaf): void {
+  c.save(); c.translate(x, y); c.rotate(ang);
+  if (kind === 'needle') {
+    c.strokeStyle = p.base; c.lineWidth = Math.max(2.2, len * 0.17); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(-len * 0.12, 0); c.lineTo(len, 0); c.stroke();
+    c.strokeStyle = 'rgba(205,225,198,0.22)'; c.lineWidth = Math.max(1, len * 0.045);
+    c.beginPath(); c.moveTo(len * 0.15, -0.5); c.lineTo(len * 0.82, -0.5); c.stroke();
+    c.restore(); return;
+  }
+  const w = len * (kind === 'tiny' ? 0.24 : kind === 'oval' ? 0.31 : 0.38);
+  c.fillStyle = leafGrad(c, p, len * 0.55, 0, len * 0.58);
+  c.beginPath(); c.moveTo(0, 0);
+  if (kind === 'spoon') {
+    c.bezierCurveTo(len * 0.16, -w * 0.32, len * 0.48, -w, len * 0.82, -w * 0.82);
+    c.quadraticCurveTo(len * 1.10, 0, len * 0.82, w * 0.82);
+    c.bezierCurveTo(len * 0.48, w, len * 0.16, w * 0.32, 0, 0);
+  } else if (kind === 'notched') {
+    c.bezierCurveTo(len * 0.26, -w * 0.72, len * 0.70, -w, len, -w * 0.22);
+    c.lineTo(len * 0.82, 0); c.lineTo(len, w * 0.22);
+    c.bezierCurveTo(len * 0.70, w, len * 0.26, w * 0.72, 0, 0);
+  } else {
+    c.bezierCurveTo(len * 0.28, -w, len * 0.78, -w * 0.96, len, 0);
+    c.bezierCurveTo(len * 0.78, w * 0.96, len * 0.28, w, 0, 0);
+  }
+  c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(18,38,22,0.38)'; c.lineWidth = Math.max(1.1, len * 0.055);
+  c.beginPath(); c.moveTo(0, 0); c.lineTo(len * (kind === 'notched' ? 0.76 : 0.90), 0); c.stroke();
+  if (kind === 'notched') {
+    c.strokeStyle = 'rgba(8,18,12,0.78)'; c.lineWidth = Math.max(1.5, len * 0.075);
+    c.beginPath(); c.moveTo(len * 0.80, 0); c.lineTo(len * 0.96, -w * 0.18);
+    c.moveTo(len * 0.80, 0); c.lineTo(len * 0.96, w * 0.18); c.stroke();
+  }
+  if (kind === 'spoon') {
+    c.strokeStyle = 'rgba(238,248,230,0.22)'; c.lineWidth = Math.max(1, len * 0.035);
+    c.beginPath(); c.arc(len * 0.67, 0, w * 0.62, -2.4, -0.65); c.stroke();
+  }
+  c.restore();
+}
+
+type BerryFinish = 'bloom' | 'gloss' | 'dull' | 'plain';
+
+function groundBerry(c: Ctx, x: number, y: number, rad: number, hue: string, finish: BerryFinish): void {
+  const gg = c.createRadialGradient(x - rad * 0.28, y - rad * 0.32, 0.5, x, y, rad * 1.12);
+  gg.addColorStop(0, finish === 'dull' ? hue : 'rgba(245,248,240,0.45)');
+  gg.addColorStop(finish === 'dull' ? 0.20 : 0.28, hue);
+  gg.addColorStop(1, finish === 'gloss' ? '#050709' : 'rgba(18,12,18,0.62)');
+  c.fillStyle = gg; c.beginPath(); c.arc(x, y, rad, 0, TAU); c.fill();
+  if (finish === 'bloom') {
+    c.strokeStyle = 'rgba(205,218,232,0.62)'; c.lineWidth = Math.max(1.5, rad * 0.25);
+    c.beginPath(); c.arc(x, y, rad * 0.70, 0, TAU); c.stroke();
+  } else if (finish === 'gloss') {
+    c.fillStyle = 'rgba(255,255,248,0.72)'; c.beginPath(); c.arc(x - rad * 0.32, y - rad * 0.34, rad * 0.18, 0, TAU); c.fill();
+  }
+  c.fillStyle = finish === 'bloom' ? '#8393a5' : '#26311f';
+  c.beginPath(); c.arc(x, y - rad * 0.58, Math.max(1.1, rad * 0.14), 0, TAU); c.fill();
+}
+
+function berryUrn(c: Ctx, x: number, y: number, scale: number, pink = '#efb8c5'): void {
+  c.strokeStyle = '#52663f'; c.lineWidth = Math.max(1.2, scale * 0.12); c.lineCap = 'round';
+  c.beginPath(); c.moveTo(x, y - scale * 0.65); c.quadraticCurveTo(x + scale * 0.38, y - scale * 0.42, x + scale * 0.16, y); c.stroke();
+  const fx = x + scale * 0.16;
+  c.fillStyle = pink; c.beginPath(); c.moveTo(fx, y - scale * 0.12);
+  c.bezierCurveTo(fx - scale * 0.48, y + scale * 0.02, fx - scale * 0.42, y + scale * 0.58, fx, y + scale * 0.70);
+  c.bezierCurveTo(fx + scale * 0.42, y + scale * 0.58, fx + scale * 0.48, y + scale * 0.02, fx, y - scale * 0.12);
+  c.fill();
+  c.strokeStyle = '#fff0ed'; c.lineWidth = Math.max(1.1, scale * 0.11);
+  c.beginPath(); c.moveTo(fx - scale * 0.28, y + scale * 0.62); c.lineTo(fx, y + scale * 0.76); c.lineTo(fx + scale * 0.28, y + scale * 0.62); c.stroke();
+}
+
+function craneFlower(c: Ctx, x: number, y: number, scale: number): void {
+  c.strokeStyle = '#5e7943'; c.lineWidth = Math.max(1.2, scale * 0.09); c.lineCap = 'round';
+  c.beginPath(); c.moveTo(x, y + scale * 0.75); c.lineTo(x, y); c.stroke();
+  c.strokeStyle = '#efa4bd'; c.lineWidth = Math.max(2, scale * 0.20);
+  for (const a of [-2.75, -2.25, 2.25, 2.75]) {
+    c.beginPath(); c.moveTo(x, y);
+    c.quadraticCurveTo(x + Math.cos(a) * scale * 0.52, y + Math.sin(a) * scale * 0.52,
+      x + Math.cos(a) * scale, y + Math.sin(a) * scale); c.stroke();
+  }
+  c.strokeStyle = '#f1d68b'; c.lineWidth = Math.max(1.8, scale * 0.16);
+  c.beginPath(); c.moveTo(x, y); c.lineTo(x + scale * 0.95, y + scale * 0.12); c.stroke();
+  c.fillStyle = '#f5d979'; c.beginPath(); c.arc(x + scale * 0.98, y + scale * 0.12, scale * 0.12, 0, TAU); c.fill();
+}
+
+/* Seven explicit silhouettes. Artlock showed that the former common curve plus
+   recoloured tokens still produced fourteen HARD pairs, so these intentionally
+   do not share a runner loop or a default route. */
+function berryBody(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string,
+  cx: number, base: number, barkCol: string): void {
+  const r = rngF(g, name, 0xB377);
+  const fruit = spec.fhue ?? '#a52c32';
+  const poly = (pts: [number, number][], col: string, width: number): void => {
+    c.strokeStyle = col; c.lineWidth = width; c.lineCap = 'round'; c.lineJoin = 'round';
+    c.beginPath(); c.moveTo(pts[0]![0], pts[0]![1]);
+    for (let i = 1; i < pts.length; i++) c.lineTo(pts[i]![0], pts[i]![1]);
+    c.stroke();
+  };
+
+  if (spec.berryHabit === 'huckleberry') {
+    const nodes: [number, number][][] = [];
+    for (let k = 0; k < 5; k++) {
+      const side = k - 2, pts: [number, number][] = [[cx + side * S * 0.021, base]];
+      for (let j = 1; j <= 4; j++) pts.push([
+        cx + side * S * (0.035 + j * 0.018) + (j % 2 ? -1 : 1) * S * (0.020 + Math.abs(side) * 0.004),
+        base - j * S * 0.091 - r() * S * 0.015,
+      ]);
+      nodes.push(pts); poly(pts, '#477048', S * 0.009);
+    }
+    for (let k = 0; k < nodes.length; k++) for (let j = 1; j < nodes[k]!.length; j++) {
+      const [x, y] = nodes[k]![j]!; const side = (j + k) % 2 ? -1 : 1;
+      berryLeaf(c, p, x, y, side < 0 ? -2.65 : -0.48, S * 0.053, 'oval');
+      if ((j + k) % 3 === 0) {
+        const bx = x + side * S * 0.022, by = y + S * 0.011;
+        c.strokeStyle = '#557047'; c.lineWidth = S * 0.004; c.beginPath(); c.moveTo(x, y); c.lineTo(bx, by); c.stroke();
+        groundBerry(c, bx, by, S * 0.014, fruit, 'gloss');
+      } else if ((j * 2 + k) % 5 === 0) berryUrn(c, x + side * S * 0.018, y + S * 0.004, S * 0.025);
+    }
+    return;
+  }
+
+  if (spec.berryHabit === 'arctic-blueberry') {
+    const boughs: [number, number][][] = [
+      [[cx - S * 0.025, base], [cx - S * 0.12, base - S * 0.075], [cx - S * 0.27, base - S * 0.12]],
+      [[cx, base], [cx + S * 0.025, base - S * 0.12], [cx + S * 0.13, base - S * 0.20]],
+      [[cx + S * 0.025, base], [cx + S * 0.14, base - S * 0.070], [cx + S * 0.29, base - S * 0.11]],
+    ];
+    for (const pts of boughs) {
+      poly(pts, '#52654d', S * 0.010);
+      for (let seg = 0; seg < 2; seg++) for (let i = 1; i <= 4; i++) {
+        const u = i / 5, x = pts[seg]![0] + (pts[seg + 1]![0] - pts[seg]![0]) * u;
+        const y = pts[seg]![1] + (pts[seg + 1]![1] - pts[seg]![1]) * u;
+        const a = Math.atan2(pts[seg + 1]![1] - pts[seg]![1], pts[seg + 1]![0] - pts[seg]![0]);
+        berryLeaf(c, p, x, y, a + (i % 2 ? -0.92 : 0.92), S * 0.050, 'oval');
+        if ((i + seg) % 3 === 0) groundBerry(c, x, y - S * 0.018, S * 0.016, fruit, 'bloom');
+      }
+    }
+    return;
+  }
+
+  if (spec.berryHabit === 'bearberry') {
+    const runners = [-1, -0.58, 0, 0.58, 1];
+    for (let k = 0; k < runners.length; k++) {
+      const side = runners[k]!, ex = cx + side * S * 0.32;
+      c.strokeStyle = '#8a4a3b'; c.lineWidth = S * 0.012; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(cx + side * S * 0.025, base);
+      c.quadraticCurveTo(cx + side * S * 0.18, base - S * (0.015 + k % 2 * 0.025), ex, base - S * (0.055 + (k % 3) * 0.025)); c.stroke();
+      c.strokeStyle = 'rgba(223,154,120,0.50)'; c.lineWidth = S * 0.003;
+      c.beginPath(); c.moveTo(cx + side * S * 0.10, base - S * 0.010); c.lineTo(cx + side * S * 0.22, base - S * 0.038); c.stroke();
+      for (let i = 1; i <= 9; i++) {
+        const u = i / 10, x = cx + (ex - cx) * u, y = base - S * (0.012 + u * (0.045 + (k % 3) * 0.022));
+        const a = side < 0 ? Math.PI : 0;
+        berryLeaf(c, p, x, y, a + (i % 2 ? -0.82 : 0.82), S * 0.047, 'spoon');
+        if ((i + k * 2) % 7 === 0) groundBerry(c, x, y - S * 0.010, S * 0.015, fruit, 'dull');
+      }
+      if (k === 0 || k === 2 || k === 4) berryUrn(c, ex, base - S * (0.09 + (k % 2) * 0.02), S * 0.030, '#f3d6dc');
+    }
+    return;
+  }
+
+  if (spec.berryHabit === 'crowberry') {
+    softMark(c, cx, base - S * 0.060, S * 0.31, S * 0.095, '31,69,42', 0.72);
+    for (let k = 0; k < 11; k++) {
+      const s = (k - 5) / 5, ex = cx + s * S * 0.31, ey = base - S * (0.035 + (1 - Math.abs(s)) * 0.070);
+      c.strokeStyle = '#354f37'; c.lineWidth = S * 0.006; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(cx + s * S * 0.03, base - S * 0.015); c.quadraticCurveTo(cx + s * S * 0.17, base - S * 0.09, ex, ey); c.stroke();
+      for (let i = 1; i <= 13; i++) {
+        const u = i / 14, x = cx + (ex - cx) * u, y = base - S * 0.015 + (ey - base + S * 0.015) * u;
+        const a = Math.atan2(ey - base, ex - cx || 1);
+        berryLeaf(c, p, x, y, a + (i % 2 ? -1.12 : 1.12), S * 0.026, 'needle');
+      }
+    }
+    for (let i = 0; i < 10; i++) {
+      const x = cx + (i / 9 - 0.5) * S * 0.48 + (r() - 0.5) * S * 0.035;
+      const y = base - S * (0.050 + r() * 0.075);
+      groundBerry(c, x, y, S * 0.015, '#10131a', 'gloss');
+    }
+    return;
+  }
+
+  if (spec.berryHabit === 'cranberry') {
+    for (let i = 0; i < 34; i++) {
+      const x = cx + (r() - 0.5) * S * 0.64, y = base - S * (0.006 + r() * 0.050);
+      softMark(c, x, y, S * (0.025 + r() * 0.015), S * 0.018, i % 2 ? '77,99,43' : '105,111,54', 0.62);
+    }
+    for (let k = 0; k < 5; k++) {
+      const s = (k - 2) / 2, ex = cx + s * S * 0.34, ey = base - S * (0.035 + (k % 2) * 0.035);
+      c.strokeStyle = '#6f483c'; c.lineWidth = S * 0.004; c.lineCap = 'round';
+      c.beginPath(); c.moveTo(cx, base - S * 0.012); c.quadraticCurveTo(cx + s * S * 0.18, base - S * 0.08, ex, ey); c.stroke();
+      for (let i = 1; i <= 11; i++) {
+        const u = i / 12, x = cx + (ex - cx) * u, y = base - S * 0.012 + (ey - base + S * 0.012) * u;
+        berryLeaf(c, p, x, y, i % 2 ? -2.6 : -0.55, S * 0.027, 'tiny');
+      }
+    }
+    for (let i = 0; i < 6; i++) {
+      const x = cx + [-0.29, -0.18, -0.06, 0.09, 0.20, 0.31][i]! * S;
+      const y0 = base - S * (0.035 + (i % 3) * 0.012), y = y0 - S * (0.050 + (i % 2) * 0.018);
+      c.strokeStyle = '#5d7643'; c.lineWidth = S * 0.0035; c.beginPath(); c.moveTo(x, y0); c.lineTo(x, y); c.stroke();
+      groundBerry(c, x, y, S * 0.016, fruit, 'plain');
+    }
+    craneFlower(c, cx - S * 0.23, base - S * 0.12, S * 0.030);
+    craneFlower(c, cx + S * 0.02, base - S * 0.15, S * 0.032);
+    craneFlower(c, cx + S * 0.25, base - S * 0.11, S * 0.030);
+    return;
+  }
+
+  if (spec.berryHabit === 'lingonberry') {
+    c.strokeStyle = '#765044'; c.lineWidth = S * 0.009; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx - S * 0.30, base - S * 0.018); c.quadraticCurveTo(cx, base + S * 0.015, cx + S * 0.30, base - S * 0.020); c.stroke();
+    const anchors = [-0.49, -0.31, -0.11, 0.09, 0.30, 0.48];
+    for (let k = 0; k < anchors.length; k++) {
+      const t = anchors[k]! + (r() - 0.5) * 0.035, sx = cx + t * S * 0.52, sy = base - S * (0.018 + r() * 0.010);
+      const tx = sx + t * S * 0.070 + (r() - 0.5) * S * 0.025, ty = base - S * (0.12 + r() * 0.085);
+      c.strokeStyle = '#815342'; c.lineWidth = S * 0.007;
+      c.beginPath(); c.moveTo(sx, sy); c.quadraticCurveTo(sx - t * S * 0.035 + (r() - 0.5) * S * 0.018, base - S * 0.08, tx, ty); c.stroke();
+      for (let i = 1; i <= 4; i++) {
+        const u = i / 5, x = sx + (tx - sx) * u, y = sy + (ty - sy) * u;
+        berryLeaf(c, p, x, y, (i % 2 ? -2.75 : -0.38) + (r() - 0.5) * 0.25, S * (0.042 + r() * 0.008), 'oval');
+      }
+      c.strokeStyle = '#536a3d'; c.lineWidth = S * 0.0035; c.beginPath(); c.moveTo(tx, ty); c.lineTo(tx, ty + S * 0.034); c.stroke();
+      for (const q of [-1, 0, 1]) groundBerry(c, tx + q * S * 0.013, ty + S * (0.040 + Math.abs(q) * 0.008), S * 0.013, fruit, 'gloss');
+    }
+    return;
+  }
+
+  const paths: [number, number][][] = [
+    [[cx, base], [cx - S * 0.11, base - S * 0.055], [cx - S * 0.27, base - S * 0.035]],
+    [[cx - S * 0.03, base], [cx + S * 0.08, base - S * 0.095], [cx + S * 0.28, base - S * 0.055]],
+    [[cx + S * 0.02, base], [cx + S * 0.02, base - S * 0.14], [cx - S * 0.10, base - S * 0.19]],
+  ];
+  for (const pts of paths) {
+    poly(pts, barkCol, S * 0.008);
+    for (let seg = 0; seg < 2; seg++) for (let i = 1; i <= 4; i++) {
+      const u = i / 5, x = pts[seg]![0] + (pts[seg + 1]![0] - pts[seg]![0]) * u;
+      const y = pts[seg]![1] + (pts[seg + 1]![1] - pts[seg]![1]) * u;
+      const a = Math.atan2(pts[seg + 1]![1] - pts[seg]![1], pts[seg + 1]![0] - pts[seg]![0]);
+      berryLeaf(c, p, x, y, a + (i % 2 ? -1.0 : 1.0), S * 0.052, 'notched');
+    }
+    const [tx, ty] = pts[2]!;
+    c.strokeStyle = '#586d43'; c.lineWidth = S * 0.0035; c.beginPath(); c.moveTo(tx, ty); c.quadraticCurveTo(tx + S * 0.008, ty + S * 0.022, tx, ty + S * 0.038); c.stroke();
+    groundBerry(c, tx - S * 0.011, ty + S * 0.043, S * 0.014, fruit, 'gloss');
+    groundBerry(c, tx + S * 0.011, ty + S * 0.048, S * 0.014, fruit, 'gloss');
+  }
+}
+
 export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): void {
   /* ★ D-ART-114 — the species hue axis, and the biggest single unlock: 314
      plants took the rarity roll. Note this is the FOLIAGE colour and is a
@@ -768,7 +1018,9 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
   const barkCol = spec.bark ?? (woody ? '#6b4a2e' : stemCol);
   const topY = base - H;
 
-  if (spec.habit === 'palm') {
+  if (spec.habit === 'shrub' && spec.berryHabit) {
+    berryBody(c, g, p, spec, name, cx, base, barkCol);
+  } else if (spec.habit === 'palm') {
     /* ★ WAVE 58 — A PALM IS ONE UNBRANCHED STEM, NOT A FORKING TREE. The judge
        failed the palms for a "forked woody trunk"; they share the tree code
        whose two boughs are exactly that fork. A palm trunk rises single and
@@ -1387,34 +1639,125 @@ export function plantBody(c: Ctx, g: G, pIn: Pal, spec: PlantSpec, name = ''): v
           c.strokeStyle = f % 2 ? p.base : p.dark; c.lineWidth = S * 0.009;
         }
       }
-    } else if (spec.leaf === 'blade' && spec.tall) {
-      /* ★ GOLD AUDIT round 3 — KELP/GIANT KELP: "still a vertical bundle of
-         narrow rods". Each frond is now ONE sinuous filled RIBBON tapering
-         off a thin stipe, with pneumatocysts at the thirds. Gated on `tall`
-         so Seagrass keeps its thin straps. */
+    } else if ((name === 'Kelp' || name === 'Giant Kelp') && spec.leaf === 'blade' && spec.tall) {
+      /* ★ GP7 — KELP/GIANT KELP are not upright spear-leaves. A long,
+         flexible STIPE carries many broad LATERAL blades, each lifted by a
+         pneumatocyst at its base. Giant Kelp is deliberately taller, wider,
+         and more highly branched than Kelp. This name gate keeps Bull Kelp's
+         single terminal float and Seagrass's narrow straps on their own axes. */
+      const giant = name === 'Giant Kelp';
+      const stipes = giant ? 4 : 3;
+      const nodes = giant ? 5 : 4;
+      const height0 = H * (giant ? 1.03 : 0.84);
+      const spread0 = S * (giant ? 0.25 : 0.18) * spread;
+
+      /* A dark, readable crown and seven gripping haptera make the holdfast
+         survive the thumbnail fit instead of collapsing to one pinched point. */
       holdfast(c, cx, base, barkCol);
-      for (let f = 0; f < 5; f++) {
-        const t = (f / 4) - 0.5;
-        const topF = 0.76 + r() * 0.22;
-        const sway = t * S * 0.22 * spread;
-        const P = (v: number): [number, number] => [
-          cx + t * S * 0.02 + sway * v + Math.sin(v * 5.5 + f * 1.7) * S * 0.038 * v,
-          base - H * topF * v];
-        const W = (v: number): number => S * (0.005 + 0.028 * Math.sin(Math.min(1, v * 1.15) * Math.PI));
-        c.fillStyle = f % 2 ? p.base : p.dark;
-        c.beginPath();
-        for (let k2 = 0; k2 <= 16; k2++) { const v = k2 / 16; const [px2, py2] = P(v); if (k2) c.lineTo(px2 - W(v), py2); else c.moveTo(px2 - W(v), py2); }
-        for (let k2 = 16; k2 >= 0; k2--) { const v = k2 / 16; const [px2, py2] = P(v); c.lineTo(px2 + W(v), py2); }
-        c.closePath(); c.fill();
-        c.strokeStyle = 'rgba(255,255,255,0.14)'; c.lineWidth = S * 0.006;   /* wet sheen */
-        c.beginPath();
-        for (let k2 = 0; k2 <= 16; k2++) { const v = k2 / 16; const [px2, py2] = P(v); if (k2) c.lineTo(px2, py2); else c.moveTo(px2, py2); }
+      c.fillStyle = p.dark;
+      c.beginPath(); c.ellipse(cx, base - S * 0.006, S * 0.035, S * 0.020, 0, 0, TAU); c.fill();
+      c.strokeStyle = p.dark; c.lineWidth = S * 0.010; c.lineCap = 'round';
+      for (let h = -3; h <= 3; h++) {
+        c.beginPath(); c.moveTo(cx + h * S * 0.004, base);
+        c.quadraticCurveTo(cx + h * S * 0.020, base + S * 0.016, cx + h * S * 0.034, base + S * 0.036);
         c.stroke();
-        for (const v of [0.34, 0.62, 0.88]) {   /* the gas bladders */
-          const [px2, py2] = P(v);
-          c.fillStyle = p.lit; c.beginPath(); c.arc(px2, py2, S * 0.012, 0, TAU); c.fill();
-          c.strokeStyle = 'rgba(60,48,20,0.5)'; c.lineWidth = 1;
-          c.beginPath(); c.arc(px2, py2, S * 0.012, 0, TAU); c.stroke();
+      }
+
+      for (let f = 0; f < stipes; f++) {
+        const t = (f / (stipes - 1)) - 0.5;
+        const h = height0 * (0.88 + (1 - Math.abs(t)) * 0.12 + r() * 0.04);
+        const drift = t * spread0;
+        const phase = f * 1.65 + (giant ? 0.35 : 0.8);
+        const P = (v: number): [number, number] => [
+          cx + t * S * 0.022 + drift * v + Math.sin(v * 4.2 + phase) * S * (giant ? 0.040 : 0.032) * v,
+          base - h * v,
+        ];
+
+        /* The stipe remains visible between blade nodes: a cord, not a leaf. */
+        c.strokeStyle = f % 2 ? p.base : p.dark;
+        c.lineWidth = S * (giant ? 0.012 : 0.010); c.lineCap = 'round'; c.lineJoin = 'round';
+        c.beginPath();
+        for (let k2 = 0; k2 <= 24; k2++) {
+          const [px2, py2] = P(k2 / 24);
+          if (k2) c.lineTo(px2, py2); else c.moveTo(px2, py2);
+        }
+        c.stroke();
+
+        for (let k2 = 0; k2 < nodes; k2++) {
+          const v = 0.24 + k2 * ((giant ? 0.70 : 0.64) / (nodes - 1));
+          const [sx2, sy2] = P(v);
+          const side = (k2 + f) % 2 ? 1 : -1;
+          const branchL = S * (giant ? 0.050 : 0.042);
+          const bx2 = sx2 + side * branchL;
+          const by2 = sy2 - S * (0.006 + 0.008 * (1 - v));
+
+          /* A short side branch ends in the bladder; the blade starts there,
+             making the anatomical relationship legible at catalogue scale. */
+          c.strokeStyle = f % 2 ? p.base : p.dark;
+          c.lineWidth = S * 0.009;
+          c.beginPath(); c.moveTo(sx2, sy2);
+          c.quadraticCurveTo(sx2 + side * branchL * 0.55, sy2 - S * 0.014, bx2, by2);
+          c.stroke();
+
+          const br = S * (giant ? 0.015 : 0.013);
+          const bg = c.createRadialGradient(bx2 - br * 0.35, by2 - br * 0.35, 1, bx2, by2, br);
+          bg.addColorStop(0, p.lit); bg.addColorStop(1, p.dark);
+          c.fillStyle = bg; c.beginPath(); c.arc(bx2, by2, br, 0, TAU); c.fill();
+          c.strokeStyle = 'rgba(45,34,12,0.70)'; c.lineWidth = 1;
+          c.beginPath(); c.arc(bx2, by2, br, 0, TAU); c.stroke();
+
+          if (giant) {
+            /* Frozen GP7 PASS path: keep Giant Kelp pixel-identical while the
+               ordinary Kelp blade below gets its own stricter silhouette. */
+            const bladeL = S * 0.165 * (0.92 + r() * 0.12);
+            const bladeW = S * 0.040;
+            const angle = side > 0
+              ? -0.52 + (v - 0.5) * 0.18
+              : Math.PI + 0.52 + (v - 0.5) * 0.18;
+            c.save(); c.translate(bx2, by2); c.rotate(angle);
+            c.fillStyle = (k2 + f) % 3 ? p.base : p.lit;
+            c.beginPath(); c.moveTo(0, -bladeW * 0.16);
+            c.bezierCurveTo(bladeL * 0.28, -bladeW * 0.82, bladeL * 0.70, -bladeW * 0.95, bladeL, 0);
+            c.bezierCurveTo(bladeL * 0.72, bladeW * 0.86, bladeL * 0.28, bladeW * 0.66, 0, bladeW * 0.16);
+            c.closePath(); c.fill();
+            c.strokeStyle = 'rgba(255,255,255,0.15)'; c.lineWidth = S * 0.005;
+            c.beginPath(); c.moveTo(br * 0.5, 0); c.quadraticCurveTo(bladeL * 0.52, -bladeW * 0.08, bladeL * 0.90, 0); c.stroke();
+            c.restore();
+          } else {
+            /* GP7 final Kelp refinement: these are broad, flexible STRAPS,
+               not tidy alternating lance leaves. Each ribbon first kicks
+               away from its bladder, then the same rightward current bends
+               every distal half into an asymmetric two-wave flutter. */
+            const bladeL = S * 0.190 * (0.94 + r() * 0.10);
+            const bladeW = S * (0.052 + ((k2 + f) % 2) * 0.005);
+            const flutter = (((k2 * 2 + f) % 3) - 1) * bladeW * 0.34;
+            const neck = side * S * 0.032;
+            const tipY = flutter - S * (0.006 + k2 * 0.002);
+            c.save(); c.translate(bx2, by2);
+            c.rotate(-0.16 + (k2 - 1.5) * 0.045 + (f - 1) * 0.025);
+            c.fillStyle = (k2 + f) % 3 ? p.base : p.lit;
+            c.beginPath(); c.moveTo(0, -bladeW * 0.18);
+            c.bezierCurveTo(neck, -bladeW * 0.64,
+              bladeL * 0.27, -bladeW * 1.08,
+              bladeL * 0.46, -bladeW * 0.52 + flutter * 0.22);
+            c.bezierCurveTo(bladeL * 0.64, -bladeW * 0.06 + flutter,
+              bladeL * 0.84, -bladeW * 0.90 + flutter,
+              bladeL, tipY);
+            c.bezierCurveTo(bladeL * 0.83, bladeW * 0.70 + flutter,
+              bladeL * 0.62, bladeW * 0.16 + flutter,
+              bladeL * 0.43, bladeW * 0.70 + flutter * 0.22);
+            c.bezierCurveTo(bladeL * 0.25, bladeW * 1.04,
+              neck * 0.30, bladeW * 0.60,
+              0, bladeW * 0.18);
+            c.closePath(); c.fill();
+            c.strokeStyle = 'rgba(255,255,255,0.16)'; c.lineWidth = S * 0.005;
+            c.beginPath(); c.moveTo(br * 0.50, 0);
+            c.bezierCurveTo(bladeL * 0.29, -bladeW * 0.18,
+              bladeL * 0.55, bladeW * 0.11 + flutter * 0.42,
+              bladeL * 0.91, tipY * 0.82);
+            c.stroke();
+            c.restore();
+          }
         }
       }
     } else {

@@ -142,9 +142,42 @@ export function coatSpots(c: Ctx, t: Tube, r: RNG, p: Coatable, o: {
 /** ROSETTES. A broken ring of marks with a warmer centre — a jaguar's have a
     spot inside, a leopard's do not. */
 export function coatRosettes(c: Ctx, t: Tube, r: RNG, p: Coatable, o: {
-  count?: number; core?: boolean; size?: number;
+  count?: number; core?: boolean; size?: number; chain?: boolean;
 } = {}): void {
   const count = o.count ?? 34, size = o.size ?? 1;
+  if (o.chain) {
+    /* Ocelot: linked, elongated open loops rather than a leopard's round
+       broken flower. The earlier chain mode only squashed the same soft
+       petals; at card scale those still collapsed to solid polka dots. Two
+       overlapping, hard-edged broken rings keep a light centre and visibly
+       link along the spine. No non-chain caller enters this branch. */
+    for (let i = 0; i < count; i++) {
+      const u = 0.06 + r() * 0.88;
+      const phi = -0.92 + r() * 2.14;
+      if (t.facing(u, phi) < 0.10) continue;
+      const rad = t.radius(u) * 0.22 * size * (0.84 + r() * 0.34);
+      const { col, a } = markTone(t, u, phi, [20, 14, 9], p);
+      const tilt = (r() - 0.5) * 0.24;
+      t.withMark(c, u, phi, (cc) => {
+        cc.strokeStyle = `rgba(${col.slice(4, -1)},${Math.min(1, a + 0.08)})`;
+        cc.lineWidth = Math.max(1.7, rad * 0.26);
+        cc.lineCap = 'round';
+        for (const side of [-1, 1] as const) {
+          const x = side * rad * 0.43;
+          cc.beginPath();
+          cc.ellipse(x, 0, rad * 0.88, rad * 0.48, tilt,
+            side < 0 ? Math.PI * 0.20 : Math.PI * 1.18,
+            side < 0 ? Math.PI * 1.78 : Math.PI * 2.80);
+          cc.stroke();
+        }
+        /* A warm open centre is what prevents the linked pair reading as two
+           ordinary spots after downsampling. */
+        cc.fillStyle = `rgba(${Math.min(255, p.cr * 1.08) | 0},${Math.min(255, p.cg * 0.88) | 0},${Math.min(255, p.cb * 0.62) | 0},0.48)`;
+        cc.beginPath(); cc.ellipse(0, 0, rad * 0.52, rad * 0.20, tilt, 0, TAU); cc.fill();
+      });
+    }
+    return;
+  }
   for (let i = 0; i < count; i++) {
     const u = 0.05 + r() * 0.9;
     const phi = -1.0 + r() * 2.4;
@@ -156,7 +189,8 @@ export function coatRosettes(c: Ctx, t: Tube, r: RNG, p: Coatable, o: {
       /* the ring: separate petals with gaps, the way a real rosette breaks */
       for (let k = 0; k < n; k++) {
         const ang = (k / n) * TAU + r() * 0.4;
-        const px = Math.cos(ang) * rad * 0.72, py = Math.sin(ang) * rad * 0.66;
+        const px = Math.cos(ang) * rad * 0.72;
+        const py = Math.sin(ang) * rad * 0.66;
         const pr = rad * (0.26 + r() * 0.16);
         const g = cc.createRadialGradient(px, py, pr * 0.4, px, py, pr);
         g.addColorStop(0, `rgba(${col.slice(4, -1)},${a})`);

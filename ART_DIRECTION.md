@@ -1,11 +1,11 @@
 # Celestial Frontier — Master Art Direction
 
-**STATUS:** matches code as of 2026-07-24 (art rules verified against main.js; NOT re-verified since — the v1.8.x releases changed no art code). ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
+**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The active `port/v2` implementation has advanced beyond that status; its current executed art state is recorded in that addendum below. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the
-decisions we actually made). Content catalogs (the biome catalog — NOT YET WRITTEN, see §6.1 — the fauna/flora
-data-pack CSVs) remain the *content* source of truth; this is the *direction* source
+decisions we actually made). Content catalogs (`BIOME_ATLAS.md` at the repo root, plus the
+fauna/flora data-pack CSVs) remain the *content* source of truth; this is the *direction* source
 of truth.
 
 ---
@@ -19,7 +19,7 @@ of truth.
 3. **Head & Face Supplement** (`06`) — heads as a first-class identity system.
 4. **Complete Art-Source Review & Fix Plan** — card-by-card review; the P0 wrong-class
    bindings + validation-gate idea.
-5. **Deterministic Cosmic Color Atlas** — the "Color DNA" upgrade to the biome catalog (§6.1; the catalog itself is unwritten).
+5. **Deterministic Cosmic Color Atlas** — the "Color DNA" upgrade recorded in the existing biome catalog (§6.1).
 6. **Procedural Organism Integration & Flora Addendum** — curated-ecosystem procedural.
 7. **Flora Review & Recommendations** — botanical specificity second pass.
 8. **Biome Vista Integration & Color Application** — vistas as living ecosystems.
@@ -465,7 +465,7 @@ procedural flora = one canopy-tree, palette-swapped. The fix:
 ## 10. BUILD ORDER & STATUS
 
 **DONE this session (all fingerprint-safe, 50/50 held):** 15 fauna rigs + family-distinct
-heads · flora growth-form rebuild + plant-stat · the biome catalog (§6.1, unwritten) · full proof-sheet set
+heads · flora growth-form rebuild + plant-stat · the biome catalog (§6.1; now at the repo root) · full proof-sheet set
 (fauna per-type, flora Earth+procedural, all vistas) · classifier collision hardening.
 
 **PENDING, in order:**
@@ -615,3 +615,28 @@ it can cost the player the only control on screen:
 generation against *time-to-answerable*, not against frame rate alone. A texture the player is
 waiting behind is worse than a texture that arrives a frame late. `tools/bootperf.js` is the
 instrument, and its `--assert` mode should survive the port.
+
+---
+
+## 2026-08-09 GP7 execution addendum — current `port/v2` state
+
+This addendum is the current execution record for the port; it does not retroactively rewrite
+the legacy `main.js` status above.
+
+- **Current coverage is exactly 1,250 organisms:** 631 Earth fauna, 332 Earth flora,
+  27 fungi, 20 microbes, and 240 procedural identities, all exportable as native 440×440 art.
+- **Nick's independent full-catalogue audit** found **381 GOLD / 810 POLISH / 59 FIX** and
+  called the build a Gold Candidate. All 59 FIX rows were addressed. His patch review then
+  returned **15 PASS / 25 PASS-WITH-POLISH / 19 STILL-FIX / 1 REGRESSION**; the 20 remaining
+  rows were reworked with targeted, render-verified changes.
+- **The art is frozen: no global body pass.** GP7 judged 503 changed rows and 62 unchanged
+  controls with the same strict ruler. Eligible-row demotions were **62/160 (38.8%)** for the
+  edited drift set versus **21/32 (65.6%)** for control, a **−26.8-point** net demotion gap;
+  rescues were **104/343 (30.3%)** versus **4/30 (13.3%)**. This calibration is the evidence
+  for targeted progress. The carried 1,250-row band merge mixes rulers and is not a catalogue score.
+- **Procedural correction closed at 57/57 PASS** in the GP7 drift set. Morphology work stayed
+  pair-specific: honest colour exposed 9 hard look-alike pairs, shape axes reduced that to 2,
+  and the Wild Thyme/Mite corrections brought the final **hard-pair count to 0**. The broader
+  confusable list remains a watch-list; zero hard pairs does not mean zero visual similarity.
+- GP7 measurement and the complete-catalogue package are complete; commit `a9345c1` is pushed.
+  Draft `openai/windows` → `develop` PR #7 is open for Nick's final package review.
