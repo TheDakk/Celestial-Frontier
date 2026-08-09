@@ -474,10 +474,14 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
 /* ═══════════════ ARACHNIDS: two tagmata, eight legs, NO antennae ═══════════════ */
 export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: boolean; sting?: boolean;
   longleg?: boolean; claws?: boolean; hue?: string; scale?: number;
+  /** species-gated reach multiplier for animals whose leg span is the identity */
+  legReach?: number;
   /* ★ WAVE 65 — ONE FUSED BODY. A mite and a harvestman are a single rounded
      blob (no two spheres, no pinched waist); both were failing as "the spider
      chassis recoloured". */
-  fused?: boolean }, name = ''): void {
+  fused?: boolean;
+  /** two lateral eyes raised on the dorsal ocular tubercle of a harvestman */
+  ocularTurret?: boolean }, name = ''): void {
   const p = hued(pIn, opts.hue);
   const r = nrng(g, name, 0xA8AC);
   const cx = S * 0.50, cy = S * 0.52;
@@ -485,7 +489,7 @@ export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: 
   const squat = nv(name, 0x22, 0.22);         /* abdomen aspect — a RATIO, so the fit pass keeps it */
   const splay = nv(name, 0x23, 0.20);         /* how far the legs reach relative to the body */
   shadow(c, cx, cy + b * 2.4, S * 0.16);
-  const reach = b * (opts.longleg ? 8.2 : 2.9) * splay;   /* the span IS the animal */
+  const reach = b * (opts.legReach ?? (opts.longleg ? 8.2 : 2.9)) * splay;   /* the span IS the animal */
   for (const s of [-1, 1] as const) {
     for (let i = 0; i < 4; i++) {                 /* EIGHT legs — the count is the read */
       const a = -0.75 + i * 0.52;
@@ -545,12 +549,30 @@ export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: 
     c.quadraticCurveTo(tx + b * 0.2, ty - b * 0.4, tx - b * 0.1, ty - b * 0.2); c.closePath(); c.fill();
   } else if (opts.fused) {
     /* ★ WAVE 65 — one single rounded body, no waist: the mite/harvestman read */
+    const bodyRy = b * 1.25 / squat;
     c.fillStyle = shell(c, p, cx, cy, b * 1.4);
-    c.beginPath(); c.ellipse(cx + b * 0.2, cy, b * 1.55 * squat, b * 1.25 / squat, 0.05, 0, TAU); c.fill();
-    rim(c, () => c.ellipse(cx + b * 0.2, cy, b * 1.55 * squat, b * 1.25 / squat, 0.05, -2.8, 0.3));
+    c.beginPath(); c.ellipse(cx + b * 0.2, cy, b * 1.55 * squat, bodyRy, 0.05, 0, TAU); c.fill();
+    rim(c, () => c.ellipse(cx + b * 0.2, cy, b * 1.55 * squat, bodyRy, 0.05, -2.8, 0.3));
     for (let i = 0; i < 8; i++) softMark(c, cx - b + r() * b * 2.4, cy + (r() - 0.5) * b * 1.8, 5 + r() * 4, 4 + r() * 3, '24,18,12', 0.3);
-    eyeDot(c, cx - b * 0.9, cy - b * 0.4, b * 0.12);
-    eyeDot(c, cx - b * 0.9, cy - b * 0.12, b * 0.12);
+    if (opts.ocularTurret) {
+      /* A harvestman's two eyes do not make a face: they sit on one raised
+         dorsal mound. Keep this opt-in so the mite's judged-good fused body is
+         byte-identical. */
+      const tx = cx - b * 0.05, ty = cy - bodyRy * 0.86;
+      c.fillStyle = shell(c, p, tx, ty, b * 0.34);
+      c.beginPath(); c.ellipse(tx, ty, b * 0.36, b * 0.29, 0, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(244,246,242,0.28)'; c.lineWidth = Math.max(1, b * 0.07);
+      c.beginPath(); c.ellipse(tx, ty, b * 0.36, b * 0.29, 0, -2.75, -0.38); c.stroke();
+      for (const side of [-1, 1] as const) {
+        const ex = tx + side * b * 0.27, ey = ty - b * 0.015;
+        c.fillStyle = '#141619'; c.beginPath(); c.arc(ex, ey, b * 0.105, 0, TAU); c.fill();
+        c.fillStyle = 'rgba(255,255,255,0.82)';
+        c.beginPath(); c.arc(ex - b * 0.032, ey - b * 0.036, b * 0.031, 0, TAU); c.fill();
+      }
+    } else {
+      eyeDot(c, cx - b * 0.9, cy - b * 0.4, b * 0.12);
+      eyeDot(c, cx - b * 0.9, cy - b * 0.12, b * 0.12);
+    }
   } else {
     const ax = cx + b * 1.15;
     c.fillStyle = shell(c, p, ax, cy + b * 0.12, b * 1.1);
@@ -1235,7 +1257,7 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Tarantula': A({ hue: '#3b2b25', big: true, hairy: true }),
   'Camel Spider': A({ hue: '#c9a468', big: true, hairy: true, longleg: true }),
   'Sea Spider': A({ hue: '#b39a86', longleg: true }),
-  'Harvestman': A({ hue: '#5d4b40', longleg: true, fused: true, scale: 0.55 }),
+  'Harvestman': A({ hue: '#5d4b40', longleg: true, legReach: 13.2, fused: true, ocularTurret: true, scale: 0.55 }),
   'Scorpion': A({ hue: '#a3762f', big: true, sting: true, claws: true }),
   'Pseudoscorpion': A({ claws: true, scale: 0.92, hue: '#5d4630' }),
   'Deer Tick': A({ hue: '#94402c', big: true }),

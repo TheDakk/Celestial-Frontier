@@ -461,4 +461,4 @@ export const FLORA_DUPES: readonly string[] = [
      consults first, so the anti-duplicate ladder never saw them. Listing a
      species here that CANON already owns does not make it less duplicated — it
      just hides a dead row inside the mechanism built to stop duplicates. */
-  'Acai', 'Salmonberry', 'Licorice', "Devil's Club", ];
+  'Salmonberry', 'Licorice', ];
