@@ -1,6 +1,6 @@
 # ★ COLD-START HANDOFF — read this first
 
-# ★★★★★ LIVE — 2026-08-09 · GP7 FINISHED · PACKAGE + BRANCH PUSHED · DRAFT PR/NICK REVIEW PENDING
+# ★★★★★ LIVE — 2026-08-09 · GP7 FINISHED · PACKAGE + BRANCH PUSHED · DRAFT PR #7 OPEN
 
 ⚠ **This worktree is `C:\Projects\celestial-frontier-openai-windows`; run the art tools from
 `port/v2`. Art is frozen. Do not start another global body pass.**
@@ -30,9 +30,8 @@ preserve the build and regenerate only named targets.
 
 ## Next human actions — in order
 
-1. Commit `a9345c1` is pushed on `origin/openai/windows`. Open
-   `https://github.com/TheDakk/Celestial-Frontier/compare/develop...openai/windows?expand=1`
-   and create the draft `openai/windows` → `develop` PR; do not merge it into `main`.
+1. Review draft PR #7 at `https://github.com/TheDakk/Celestial-Frontier/pull/7` and merge it
+   from `openai/windows` to `develop` only when approved; do not merge it into `main`.
 2. Give Nick `port/v2/apps/game/smoke/Celestial_Frontier_GP7_Complete_Catalogue_Review_2026-08-09.zip`
    (305,291,135 bytes; SHA-256 `47B730C0323241F8E171DC3A96D4EFD5C67FA0C3CA12333CA17EBE10540D398F`)
    for final review. Make only named corrections he requests; do not

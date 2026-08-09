@@ -22,7 +22,7 @@
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
 ## ▶▶▶ SESSION HANDOFF — as of 2026-08-09. ★ GOLD PASS 7 + FINAL PACKAGE COMPLETE
-## AND PUSHED; DRAFT PR + NICK REVIEW ARE THE REMAINING STEPS. ◀◀◀
+## AND PUSHED; DRAFT PR #7 IS OPEN FOR NICK REVIEW. ◀◀◀
 
 ## ★ COLD START — READ THIS BLOCK, THEN THE LINKED REFERENCES
 ## Current workspace: C:\Projects\celestial-frontier-openai-windows
@@ -107,10 +107,10 @@
 ## Final master artifact (305,291,135 bytes; SHA-256
 ## 47B730C0323241F8E171DC3A96D4EFD5C67FA0C3CA12333CA17EBE10540D398F):
 ## port/v2/apps/game/smoke/Celestial_Frontier_GP7_Complete_Catalogue_Review_2026-08-09.zip.
-## Documentation, packaging, commit and branch push are complete. The draft PR is still pending.
+## Documentation, packaging, commit and branch push are complete. Draft PR #7 is open.
 
 ## ★ NEXT — COMPLETE IN THIS ORDER
-## 1. Nick opens the draft PR described below from the pushed branch. Do not deploy.
+## 1. Nick reviews draft PR #7 described below. Do not deploy.
 ## 2. Nick reviews the finished ZIP and records only named PASS / POLISH / FIX follow-ups.
 ## 3. Merge the reviewed PR to develop only after approval; never merge it directly to main.
 ## 4. Re-run proportional gates only if source changes after the frozen certification above.
@@ -124,12 +124,10 @@
 ## sweep: any follow-up is a named, bounded target list protected by artlock and matched controls.
 
 ## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
-## Current side: OpenAI/Codex — GP7 commit a9345c1 is certified, packaged and pushed on
-## origin/openai/windows. GitHub PR creation is the only blocked automation step: the connector
-## cannot see the private repo, local gh auth is stale, and the in-app browser is signed out.
-## GitHub step now: Nick opens
-## https://github.com/TheDakk/Celestial-Frontier/compare/develop...openai/windows?expand=1,
-## marks the PR draft, then reviews and merges it to develop. Pushing alone did not update develop.
+## Current side: OpenAI/Codex — GP7 is certified, packaged and pushed on origin/openai/windows.
+## Draft PR #7 is open: https://github.com/TheDakk/Celestial-Frontier/pull/7.
+## GitHub step now: Nick reviews PR #7 and merges it to develop only when approved. Pushing and
+## opening the PR did not update develop.
 ## PR base: develop
 ## PR source: openai/windows
 ## Copy-ready title: GP7: complete Earth catalogue art pass and review package

@@ -639,4 +639,4 @@ the legacy `main.js` status above.
   and the Wild Thyme/Mite corrections brought the final **hard-pair count to 0**. The broader
   confusable list remains a watch-list; zero hard pairs does not mean zero visual similarity.
 - GP7 measurement and the complete-catalogue package are complete; commit `a9345c1` is pushed.
-  The draft `openai/windows` → `develop` PR and Nick's final package review remain.
+  Draft `openai/windows` → `develop` PR #7 is open for Nick's final package review.
