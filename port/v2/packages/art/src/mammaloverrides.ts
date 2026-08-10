@@ -18,16 +18,16 @@ import type { QuadSpec } from './quadrupedoverrides.js';
 
 export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* ── BOVIDS: the horn is the species ── */
-  'Oryx': { legs: 0.1774, depth: 0.1372, len: 0.18, neck: 0.10, muzzle: 0.40, ears: 'small', tail: 'tuft', horn: 'straight', face: 'mask', faceMark: 'darkMask', legMarks: true, hue: '#cdc3b0', family: 'bovid' },
-  'Kudu': { legs: 0.2021, depth: 0.1587, len: 0.1667, neck: 0.12, muzzle: 0.40, ears: 'large', tail: 'tuft', horn: 'spiral', coat: 'stripes', hue: '#9a8468', family: 'bovid' },
+  'Oryx': { legs: 0.1774, depth: 0.1372, len: 0.18, neck: 0.10, muzzle: 0.40, ears: 'small', tail: 'tuft', horn: 'straight', face: 'mask', faceMark: 'darkMask', legMarks: true, hue: '#cdc3b0', family: 'bovid', mammalEPlan: 'Oryx' },
+  'Kudu': { legs: 0.2021, depth: 0.1587, len: 0.1667, neck: 0.12, muzzle: 0.40, ears: 'large', tail: 'tuft', horn: 'spiral', coat: 'stripes', hue: '#9a8468', family: 'bovid', mammalEPlan: 'Kudu' },
   'Nilgai': { legs: 0.1855, depth: 0.1546, len: 0.1901, neck: 0.11, muzzle: 0.40, ears: 'large', tail: 'tuft', horn: 'shorthorn', hue: '#8a8b90', family: 'bovid' },
   'Bongo': { legs: 0.169, depth: 0.1408, len: 0.1847, neck: 0.10, muzzle: 0.38, ears: 'large', tail: 'tuft', horn: 'spiral', coat: 'stripes', hue: '#a5613a', family: 'bovid' },
-  'Eland': { back: 'humped', legs: 0.1817, depth: 0.1840, len: 0.2046, neck: 0.11, muzzle: 0.42, ears: 'large', tail: 'tuft', horn: 'spiral', hue: '#b09a76', family: 'bovid', shoulderHump: 0.22, dewlap: 0.68 },
-  'Impala': { legs: 0.1885, depth: 0.1288, len: 0.1584, neck: 0.11, muzzle: 0.38, ears: 'large', tail: 'stub', horn: 'lyre', hue: '#c08a4e', family: 'bovid' , accent: 'rumpStripes' },
-  'Gazelle': { legs: 0.1861, depth: 0.1184, len: 0.1553, neck: 0.11, muzzle: 0.36, ears: 'large', tail: 'stub', horn: 'lyre', hue: '#c9a56d', family: 'bovid' , earShape: 'leaf' , accent: 'flankBand' },
+  'Eland': { back: 'humped', legs: 0.1817, depth: 0.1840, len: 0.2046, neck: 0.11, muzzle: 0.42, ears: 'large', tail: 'tuft', horn: 'spiral', hue: '#b09a76', family: 'bovid', shoulderHump: 0.22, dewlap: 0.68, mammalEPlan: 'Eland' },
+  'Impala': { legs: 0.1885, depth: 0.1288, len: 0.1584, neck: 0.11, muzzle: 0.38, ears: 'large', tail: 'stub', horn: 'lyre', hue: '#c08a4e', family: 'bovid' , accent: 'rumpStripes', mammalEPlan: 'Impala' },
+  'Gazelle': { legs: 0.1861, depth: 0.1184, len: 0.1553, neck: 0.11, muzzle: 0.36, ears: 'large', tail: 'stub', horn: 'lyre', hue: '#c9a56d', family: 'bovid' , earShape: 'leaf' , accent: 'flankBand', mammalEPlan: 'Gazelle' },
   'Springbok': { legs: 0.1869, depth: 0.1223, len: 0.1504, neck: 0.10, muzzle: 0.36, ears: 'large', tail: 'stub', horn: 'lyre', hue: '#c8a067', family: 'bovid' , accent: 'flankBand', faceMark: 'whiteBlaze' },
   'Gerenuk': { legs: 0.2366, depth: 0.1211, len: 0.1271, neck: 0.22, muzzle: 0.34, ears: 'large', tail: 'stub', horn: 'lyre', hue: '#bd8f5c', family: 'bovid' },
-  'Hartebeest': { legs: 0.2024, depth: 0.1379, len: 0.1697, neck: 0.11, back: 'sloped', muzzle: 0.62, ears: 'large', tail: 'tuft', horn: 'lyre', hue: '#a9764a', family: 'bovid', headScale: 1.20, carry: 0.88 },
+  'Hartebeest': { legs: 0.2024, depth: 0.1379, len: 0.1697, neck: 0.11, back: 'sloped', muzzle: 0.62, ears: 'large', tail: 'tuft', horn: 'lyre', hue: '#a9764a', family: 'bovid', headScale: 1.20, carry: 0.88, mammalEPlan: 'Hartebeest' },
   'Antelope': { hue: '#c39a5e', legs: 0.1889, depth: 0.1338, len: 0.1645, neck: 0.11, muzzle: 0.38, ears: 'large', tail: 'stub', horn: 'lyre', family: 'bovid' },
   'Duiker': { legs: 0.1423, depth: 0.1104, len: 0.1358, neck: 0.07, back: 'arched', muzzle: 0.34, ears: 'large', tail: 'stub', horn: 'shorthorn', hue: '#8f6a48', family: 'bovid' },
   'Saiga': { legs: 0.167, depth: 0.1325, len: 0.163, neck: 0.09, muzzle: 0.66, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'straight', hue: '#c6bda6', family: 'bovid' },
@@ -38,12 +38,12 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Serow': { legs: 0.1446, depth: 0.1333, len: 0.1639, neck: 0.08, muzzle: 0.36, ears: 'large', tail: 'stub', horn: 'shorthorn', coat: 'shaggy', hue: '#6f6257', family: 'bovid' },
   'Mountain Goat': { legs: 0.1485, depth: 0.1367, len: 0.1682, neck: 0.08, muzzle: 0.34, ears: 'small', tail: 'stub', horn: 'shorthorn', coat: 'shaggy', hue: '#e6e3db', family: 'bovid' },
   'Goat': { legs: 0.1389, depth: 0.1269, len: 0.1561, neck: 0.08, muzzle: 0.34, ears: 'large', tail: 'stub', horn: 'curl', hue: '#b9ac95', family: 'bovid' },
-  'Musk Ox': { legs: 0.1154, depth: 0.1753, len: 0.2157, neck: 0.06, back: 'humped', muzzle: 0.38, jaw: 'broad', ears: 'tiny', tail: 'stub', horn: 'boss', coat: 'shaggy', hue: '#5a4634', family: 'bovid' },
-  'Yak': { legs: 0.1203, depth: 0.1727, len: 0.2266, neck: 0.06, back: 'humped', muzzle: 0.40, jaw: 'broad', ears: 'small', tail: 'plume', tailScale: 1.28, horn: 'boss', coat: 'shaggy', hue: '#4c4038', family: 'bovid', shoulderHump: 0.30, dewlap: 0.42, carry: 0.24, headDrop: 0.06 },
+  'Musk Ox': { legs: 0.1154, depth: 0.1753, len: 0.2157, neck: 0.06, back: 'humped', muzzle: 0.38, jaw: 'broad', ears: 'tiny', tail: 'stub', horn: 'boss', coat: 'shaggy', hue: '#5a4634', family: 'bovid', mammalEPlan: 'Musk Ox' },
+  'Yak': { legs: 0.1203, depth: 0.1727, len: 0.2266, neck: 0.06, back: 'humped', muzzle: 0.40, jaw: 'broad', ears: 'small', tail: 'plume', tailScale: 1.28, horn: 'boss', coat: 'shaggy', hue: '#4c4038', family: 'bovid', shoulderHump: 0.30, dewlap: 0.42, carry: 0.24, headDrop: 0.06, mammalEPlan: 'Yak' },
   'Cattle': { hue: '#8a3f28', legs: 0.1489, depth: 0.1717, len: 0.2112, neck: 0.07, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'shorthorn', coat: 'blotches', family: 'bovid', earShape: 'spoon' },
-  'Cow': { legs: 0.1462, depth: 0.1662, len: 0.2181, neck: 0.07, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', coat: 'blotches', hue: '#e8e2d6', family: 'bovid', earShape: 'spoon', udder: true, dewlap: 0.38 },
+  'Cow': { legs: 0.1462, depth: 0.1662, len: 0.2181, neck: 0.07, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', coat: 'blotches', hue: '#e8e2d6', family: 'bovid', earShape: 'spoon', udder: true, dewlap: 0.38, mammalEPlan: 'Cow' },
   'Bull': { legs: 0.1398, depth: 0.1848, len: 0.2273, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'shorthorn', hue: '#4a3b31', family: 'bovid', earShape: 'spoon', shoulderHump: 0.36, dewlap: 0.78 },
-  'Wildebeest': { legs: 0.1745, depth: 0.147, len: 0.1929, neck: 0.08, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'plume', horn: 'boss', coat: 'stripes', hue: '#5f5a55', family: 'bovid' },
+  'Wildebeest': { legs: 0.1745, depth: 0.147, len: 0.1929, neck: 0.08, back: 'sloped', muzzle: 0.52, jaw: 'broad', ears: 'small', tail: 'plume', horn: 'boss', coat: 'stripes', hue: '#5f5a55', family: 'bovid', mammalEPlan: 'Wildebeest' },
   /* ── CANIDS: the long muzzle, the pricked ear, the brush tail ── */
   'Coyote': { legs: 0.1481, depth: 0.1040, len: 0.191, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#a08a68', family: 'canid' , tailTip: '#26201d' },
   'Jackal': { legs: 0.145, depth: 0.1010, len: 0.1771, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#a07a4e', family: 'canid' , tailTip: '#2a231f' },
@@ -114,9 +114,9 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      every other equid and well below the fennec. */
   'Wild Ass': { legs: 0.1901, depth: 0.148, len: 0.1863, neck: 0.12, muzzle: 0.50, ears: 'large', tail: 'tuft', mane: 'crestUp', hue: '#b8ab93', family: 'equid', earShape: 'leaf', earScale: 1.62 },
   'Donkey': { legs: 0.1781, depth: 0.152, len: 0.1788, neck: 0.11, muzzle: 0.50, ears: 'large', tail: 'tuft', mane: 'crestUp', hue: '#9b948c', family: 'equid', earShape: 'leaf', earScale: 1.55 },
-  'Gaur': { legs: 0.1561, depth: 0.1898, len: 0.2305, neck: 0.06, back: 'humped', muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#241c17', family: 'bovid' , stockings: '#e8e2d4', shoulderHump: 0.20, dewlap: 0.56 },
+  'Gaur': { legs: 0.1561, depth: 0.1898, len: 0.2305, neck: 0.06, back: 'humped', muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#241c17', family: 'bovid' , stockings: '#e8e2d4', shoulderHump: 0.20, dewlap: 0.56, mammalEPlan: 'Gaur' },
   'Banteng': { legs: 0.1597, depth: 0.1629, len: 0.2137, neck: 0.06, muzzle: 0.46, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#7a4f30', family: 'bovid' , stockings: '#efe9dc' , accent: 'rumpPatch', faceMark: 'whiteBlaze', dewlap: 0.40 },
-  'Buffalo': { legs: 0.142, depth: 0.1704, len: 0.2376, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#3b302a', family: 'bovid', earShape: 'drop', earScale: 1.22, shoulderHump: 0.28, dewlap: 0.70, headScale: 1.12 },
+  'Buffalo': { legs: 0.142, depth: 0.1704, len: 0.2376, neck: 0.06, back: 'humped', muzzle: 0.48, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'boss', hue: '#3b302a', family: 'bovid', earShape: 'drop', earScale: 1.22, shoulderHump: 0.28, dewlap: 0.70, headScale: 1.12, mammalEPlan: 'Buffalo' },
   'Takin': { legs: 0.1306, depth: 0.1574, len: 0.2065, neck: 0.06, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'stub', horn: 'boss', coat: 'shaggy', hue: '#b59a63', family: 'bovid' },
   /* ★ wave 35 — Caribou and Reindeer sat at #a2917c and #a8917a: the same
      colour to six bits, on the same body, and the shaggy rim was doing all the
