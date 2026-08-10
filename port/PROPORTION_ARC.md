@@ -9,6 +9,23 @@
 
 This is a multi-batch arc. It is written down in full so a cold session can pick it up.
 
+> **Reopened from the beginning, 2026-08-09:** Fruit Bat demonstrated that
+> green structural gates and prior labels could coexist with a biologically
+> wrong silhouette. Every prior band is now evidence only. The renewed arc adds
+> exact old/current family sheets, set-aware reference joins, seamless-attachment
+> review, authoritative source recording, and Earth-lineage hybrid outcomes.
+> Live procedure: `v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+
+> **Current 2026-08-10:** the four-bat negative-control family is independently
+> PASS on frozen refine3 pixels at 440/300/132px after refine2d failed the
+> small-scale joint/thumb/foot/rear-membrane bands. This is a family result only;
+> see `v2/reference/BAT_FAMILY_RESET_REVIEW_2026-08-10.md`. The official reset
+> layout derives 181 families / 233 packets at a maximum of 10, including 46
+> production-derived procedural plan families. Its review binds clean-commit
+> source, native 440px, unlabeled 300px, actual unlabeled 132px, labelled
+> old/current and exact `mustRead`/procedural-plan hashes. The fresh 1,250-row
+> review has not begun, and no full PASS or package exists.
+
 ---
 
 ## WHY THE EXISTING INSTRUMENTS CANNOT DO THIS

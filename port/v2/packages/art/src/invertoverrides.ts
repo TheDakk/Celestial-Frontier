@@ -780,7 +780,6 @@ export function crabBody(c: Ctx, g: G, pIn: Pal, opts: { wide?: boolean; hermit?
   c.strokeStyle = p.dark; c.lineCap = 'round';
   for (const s of [-1, 1] as const) {
     for (let i = 0; i < 4; i++) {                /* four walking legs a side */
-      const a = -0.30 + i * 0.42;
       const ox = cx + s * cw * 0.62, oy = cy + ch * (-0.1 + i * 0.16);
       const span = opts.terrestrial ? 1.62 : 1;
       const kx = ox + s * cw * (0.62 + i * 0.10) * span, ky = oy - ch * (0.42 - i * 0.22);
@@ -1378,8 +1377,7 @@ export function sessileBody(c: Ctx, g: G, pIn: Pal, opts: { kind: 'branch' | 'tu
 /* ★ WAVE 67 — DAPHNIA. The shrimp chassis could not say any of the three
    must-reads: a TRANSLUCENT rounded carapace with the gut showing through, one
    large dark compound eye, and the pointed tail spine. A bespoke water flea. */
-function waterFlea(c: Ctx, g: G, pIn: Pal, name = ''): void {
-  const p = hued(pIn, '#bcd6c4');
+function waterFlea(c: Ctx, g: G, _pIn: Pal, name = ''): void {
   const r = nrng(g, name, 0xDAF1);
   const cx = S * 0.5, cy = S * 0.5, R = S * 0.17;
   shadow(c, cx, cy + R * 1.5, R * 1.1);

@@ -565,14 +565,9 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
 
   /* ── THE BODY ── */
   const bg = c.createLinearGradient(0, cy - depth * 1.6, 0, cy + depth * 1.4);
-  bg.addColorStop(0, p.lit);
-  bg.addColorStop(0.42, p.base);
-  bg.addColorStop(1, p.dark);   /* countershading: dark back is wrong — fish are dark ABOVE */
-  const bg2 = c.createLinearGradient(0, cy - depth * 1.6, 0, cy + depth * 1.4);
-  bg2.addColorStop(0, p.dark); bg2.addColorStop(0.46, p.base); bg2.addColorStop(1, p.lit);
-  c.fillStyle = bg2;   /* dark above, pale below — the real countershading */
+  bg.addColorStop(0, p.dark); bg.addColorStop(0.46, p.base); bg.addColorStop(1, p.lit);
+  c.fillStyle = bg;   /* dark above, pale below — the real countershading */
   c.beginPath(); trace(); c.fill();
-  void bg;
 
   /* ★ WAVE 21 — THE SCALES. A fish needed no new geometry to earn the
      material layer: `heightAt(profile, t, depth)` already IS a radius profile
@@ -825,7 +820,7 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     c.beginPath();
     c.moveTo(ped + len * 0.02, cy + depth * 0.12); c.lineTo(ped + len * 0.22, cy + depth * 0.45); c.lineTo(ped + len * 0.13, cy + depth * 0.58); c.closePath(); c.fill();
   }
-  const hx = nose - depth * 0.55, hy = cy;
+  const hx = nose - depth * 0.55;
   if (spec.headPlan === 'flat-wide') {
     /* MONKFISH / GOOSEFISH: the mouth occupies nearly half the animal. Its
        cavity begins behind the eye, opens upward at the front, and carries
@@ -1106,7 +1101,7 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
        skull is enlarged over the traced body and the fangs are long enough to
        close OUTSIDE it — that overbite is the recognition. */
     const k = spec.bighead;
-    const hxx = nose - depth * 0.9, hyy = cy;
+    const hxx = nose - depth * 0.9;
     /* THE HEAD MUST WEAR THE BODY'S LIGHT. Shaded on its own radial ramp it
        read as a grey box bolted to an orange fish; it now carries the same
        dark-above/pale-below countershading the traced body does, so the two
@@ -1114,7 +1109,6 @@ export function fishBody(c: Ctx, g: G, pIn: Pal, spec: FishSpec, name = ''): voi
     const hg = c.createLinearGradient(0, cy - depth * k * 1.4, 0, cy + depth * k * 1.4);
     hg.addColorStop(0, p.dark); hg.addColorStop(0.46, p.base); hg.addColorStop(1, p.lit);
     c.fillStyle = hg;
-    void hxx; void hyy;
     /* the head TAPERS BACK INTO THE BODY. Ending it on a curve left a rounded
        box parked on a thin fish; the rear now runs back to where the traced
        body is as deep as the skull, so the two meet without a seam. */

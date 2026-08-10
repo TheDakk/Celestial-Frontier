@@ -117,4 +117,16 @@ describe('code-fixtures — the buckets awaiting these strays (now closed)', () 
       expect(sizePreserved, `sanitize.${gk}.sizePreserved — a clamp here repeats the v1.8.6 save corruption`).toBe(want.sizePreserved);
     }
   });
+  it('_sanitizeSavedGenome preserves set-qualified Earth lineage provenance', () => {
+    const input = {
+      ...clone(GENOMES.fauna_basic),
+      _earthBlend: 'Green Algae',
+      _earthBlendKingdom: 'flora',
+      _anchorVal: 0.73,
+    };
+    const sanitized = call(_sanitizeSavedGenome, input) as Record<string, unknown> | null;
+    expect(sanitized?._earthBlend).toBe('Green Algae');
+    expect(sanitized?._earthBlendKingdom).toBe('flora');
+    expect(sanitized?._anchorVal).toBe(0.73);
+  });
 });

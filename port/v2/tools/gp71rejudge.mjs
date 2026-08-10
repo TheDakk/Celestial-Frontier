@@ -24,19 +24,23 @@ import http from 'node:http';
 import net from 'node:net';
 import os from 'node:os';
 import path from 'node:path';
-import { execSync, spawn } from 'node:child_process';
+import { execFileSync, execSync, spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { loadProceduralNameBridge } from './proceduralnames.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(here, '..');
+const repositoryRoot = path.resolve(root, '..', '..');
 const appDir = path.join(root, 'apps', 'game');
 const smokeDir = path.join(appDir, 'smoke');
 const distDir = path.join(appDir, 'dist');
 const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const FRESH_RULER = 'GP7 fresh strict rejudge';
 const SCHEMA = 'cf.gp71.strict-verdict.v1';
-const PREPARATION_SCHEMA = 'cf.gp71.rejudge-preparation.v1';
+const PREPARATION_SCHEMA = 'cf.gp71.rejudge-preparation.v2';
+const IDENTITY_SCHEMA = 'cf.gp71.identity-manifest.v2';
+const PORTRAIT_SCHEMA = 'cf.gp71.portrait-manifest.v2';
+const CAPTURE_PROVENANCE_SCHEMA = 'cf.capture-provenance.v1';
 const EXPECTED_SETS = Object.freeze({
   'earth-fauna': 631,
   'earth-flora': 332,
@@ -87,6 +91,76 @@ function writeJson(file, value) {
   fs.writeFileSync(file, JSON.stringify(value, null, 2) + '\n');
 }
 function hashFile(file) { return sha256(fs.readFileSync(file)); }
+function canonical(value) {
+  if (Array.isArray(value)) return value.map(canonical);
+  if (!isObject(value)) return value;
+  return Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonical(value[key])]));
+}
+function canonicalJson(value) { return JSON.stringify(canonical(value)); }
+
+function gitOutput(args, label) {
+  try {
+    return execFileSync('git', args, {
+      cwd: repositoryRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'],
+    }).trim();
+  } catch (error) {
+    const detail = String(error.stderr || error.message || '').trim();
+    fail(`${label}: git command failed${detail ? ` (${detail.slice(0, 300)})` : ''}`);
+  }
+}
+function validateRepositorySnapshot(raw, where = 'capture source') {
+  assert(isObject(raw), `${where}: expected a repository snapshot`);
+  const repository = path.resolve(string(raw.repository_root, `${where}.repository_root`));
+  assert(process.platform === 'win32'
+    ? repository.toLowerCase() === repositoryRoot.toLowerCase()
+    : repository === repositoryRoot,
+  `${where}: unexpected repository root ${repository}`);
+  const commit = string(raw.commit, `${where}.commit`).toLowerCase();
+  assert(/^[0-9a-f]{40}$/.test(commit), `${where}: expected an exact 40-hex HEAD`);
+  const status = typeof raw.status === 'string' ? raw.status : '';
+  assert(status === '', `${where}: entire repository must be clean (tracked and untracked); got ${status || 'unknown changes'}`);
+  return { repository_root: repository, commit, status };
+}
+function inspectCleanRepository() {
+  const repository = path.resolve(gitOutput(['rev-parse', '--show-toplevel'], 'capture source root'));
+  const commit = gitOutput(['rev-parse', 'HEAD'], 'capture source HEAD').toLowerCase();
+  const status = gitOutput(['status', '--porcelain=v1', '--untracked-files=all'], 'capture source status');
+  return validateRepositorySnapshot({ repository_root: repository, commit, status });
+}
+function captureProvenance(before, after) {
+  const first = validateRepositorySnapshot(before, 'capture source before render');
+  const last = validateRepositorySnapshot(after, 'capture source after render');
+  assert(first.commit === last.commit,
+    `capture source changed commits during render (${first.commit} -> ${last.commit})`);
+  return {
+    schema: CAPTURE_PROVENANCE_SCHEMA,
+    repository_root: '.',
+    source_commit: first.commit,
+    capture_scope: 'entire_repository_including_untracked',
+    worktree_clean_before: true,
+    worktree_clean_after: true,
+    status_porcelain_sha256: sha256(''),
+  };
+}
+function validateCaptureProvenance(raw, where, expectedCommit = null) {
+  assert(isObject(raw), `${where}: missing capture provenance`);
+  const expectedKeys = [
+    'schema', 'repository_root', 'source_commit', 'capture_scope',
+    'worktree_clean_before', 'worktree_clean_after', 'status_porcelain_sha256',
+  ].sort();
+  assert(JSON.stringify(Object.keys(raw).sort()) === JSON.stringify(expectedKeys),
+    `${where}: capture provenance keys are incomplete or unexpected`);
+  assert(raw.schema === CAPTURE_PROVENANCE_SCHEMA, `${where}: wrong capture provenance schema`);
+  assert(raw.repository_root === '.', `${where}: repository_root must be portable '.'`);
+  const commit = string(raw.source_commit, `${where}.source_commit`).toLowerCase();
+  assert(/^[0-9a-f]{40}$/.test(commit), `${where}: source_commit must be exact 40-hex`);
+  if (expectedCommit !== null) assert(commit === expectedCommit, `${where}: source commit mismatch`);
+  assert(raw.capture_scope === 'entire_repository_including_untracked', `${where}: capture scope is not the entire repository`);
+  assert(raw.worktree_clean_before === true && raw.worktree_clean_after === true,
+    `${where}: capture was not clean before and after rendering`);
+  assert(raw.status_porcelain_sha256 === sha256(''), `${where}: clean-status digest is invalid`);
+  return { ...raw, source_commit: commit };
+}
 function pngDimensions(buffer, where) {
   assert(Buffer.isBuffer(buffer) && buffer.length >= 24, `${where}: not a complete PNG`);
   assert(buffer.toString('hex', 0, 8) === '89504e470d0a1a0a', `${where}: not a PNG`);
@@ -209,7 +283,8 @@ function verifyPartition(layout, sourceRows) {
   }
 }
 
-function manifestFromSource(sourceRows) {
+function manifestFromSource(sourceRows, provenance) {
+  const capture = validateCaptureProvenance(provenance, 'portrait manifest capture provenance');
   const files = sourceRows.map((row) => ({
     set: row.set,
     file: row.file,
@@ -229,8 +304,9 @@ function manifestFromSource(sourceRows) {
       `manifest row ${offset + 1}: expected native 440x440, got ${file.width}x${file.height}`);
   }
   return {
-    schema: 'cf.gp71.portrait-manifest.v1',
+    schema: PORTRAIT_SCHEMA,
     generated_for: 'GP7.1 fresh strict rejudge',
+    capture_provenance: capture,
     portraits: files.length,
     dimensions: '440x440 native PNG',
     sets: EXPECTED_SETS,
@@ -302,13 +378,21 @@ function verdictSchema() {
 
 function references() {
   const out = new Map();
-  for (const name of ['fauna', 'flora', 'other']) {
-    const file = path.join(root, 'reference', `${name}.json`);
+  for (const source of ['fauna', 'flora', 'other']) {
+    const file = path.join(root, 'reference', `${source}.json`);
     if (!fs.existsSync(file)) continue;
-    const raw = readJson(file, `reference/${name}.json`);
-    assert(Array.isArray(raw), `reference/${name}.json: expected an array`);
+    const raw = readJson(file, `reference/${source}.json`);
+    assert(Array.isArray(raw), `reference/${source}.json: expected an array`);
     for (const row of raw) {
-      if (isObject(row) && typeof row.name === 'string' && row.name) out.set(row.name, row);
+      if (!isObject(row) || typeof row.name !== 'string' || !row.name) continue;
+      const set = source === 'fauna' ? 'earth-fauna'
+        : source === 'flora' ? 'earth-flora'
+          : row.kingdom === 'fungi' ? 'earth-fungi'
+            : row.kingdom === 'microbe' ? 'earth-microbe' : '';
+      assert(set, `reference/${source}.json: ${row.name} has no valid set identity`);
+      const key = rowKey(set, row.name);
+      assert(!out.has(key), `reference/${source}.json: duplicate set/species identity ${JSON.stringify(key)}`);
+      out.set(key, row);
     }
   }
   return out;
@@ -335,8 +419,9 @@ function manifestByIdentity(manifest) {
   return map;
 }
 
-function buildPreparation({ date, layout, sourceRows, outputName, outputDir, stripRows }) {
-  const manifest = manifestFromSource(sourceRows);
+function buildPreparation({ date, layout, sourceRows, outputName, outputDir, stripRows, provenance }) {
+  const capture = validateCaptureProvenance(provenance, 'preparation capture provenance');
+  const manifest = manifestFromSource(sourceRows, capture);
   const identityRows = sourceRows.map((row) => ({
     set: row.set,
     species: row.species,
@@ -376,9 +461,10 @@ function buildPreparation({ date, layout, sourceRows, outputName, outputDir, str
       packets: index.length,
       portraits: identityRows.length,
       note: 'Prepared from one current audit render. No verdicts, results, or ledger are generated by --prepare.',
+      capture_provenance: capture,
     },
     manifest,
-    identities: { schema: 'cf.gp71.identity-manifest.v1', rows: identityRows },
+    identities: { schema: IDENTITY_SCHEMA, capture_provenance: capture, rows: identityRows },
     index,
   };
 }
@@ -399,9 +485,24 @@ function loadPrepared(outputDir) {
     'preparation.json: wrong or missing GP7.1 preparation schema');
   const reviewDate = dateString(preparation.review_date, 'preparation.json.review_date');
   assert(preparation.source_ruler === FRESH_RULER, 'preparation.json.source_ruler: unexpected source ruler');
+  const preparationCapture = validateCaptureProvenance(
+    preparation.capture_provenance, 'preparation.json.capture_provenance',
+  );
   const manifest = readJson(requireOutputFile(outputDir, 'review-info/manifest.json', 'manifest'), 'manifest');
   const identitiesRaw = readJson(requireOutputFile(outputDir, 'identity-manifest.json', 'identity manifest'), 'identity manifest');
-  assert(isObject(identitiesRaw) && Array.isArray(identitiesRaw.rows), 'identity-manifest.json: expected rows[]');
+  assert(isObject(manifest) && manifest.schema === PORTRAIT_SCHEMA,
+    `manifest: expected provenance-bound schema ${PORTRAIT_SCHEMA}`);
+  assert(isObject(identitiesRaw) && identitiesRaw.schema === IDENTITY_SCHEMA && Array.isArray(identitiesRaw.rows),
+    `identity-manifest.json: expected provenance-bound schema ${IDENTITY_SCHEMA} with rows[]`);
+  const manifestCapture = validateCaptureProvenance(
+    manifest.capture_provenance, 'manifest.capture_provenance', preparationCapture.source_commit,
+  );
+  const identityCapture = validateCaptureProvenance(
+    identitiesRaw.capture_provenance, 'identity-manifest.json.capture_provenance', preparationCapture.source_commit,
+  );
+  assert(canonicalJson(manifestCapture) === canonicalJson(preparationCapture)
+      && canonicalJson(identityCapture) === canonicalJson(preparationCapture),
+  'prepared evidence: preparation, identity, and portrait manifests do not bind the same capture provenance');
   const identities = identitiesRaw.rows.map((raw, offset) => {
     const where = `identity row ${offset + 1}`;
     assert(isObject(raw), `${where}: must be an object`);
@@ -457,7 +558,10 @@ function loadPrepared(outputDir) {
     assert(manifestRow.sha256 === row.sha256,
       `identity manifest ${row.set}/${row.species}: SHA differs from portrait manifest`);
   }
-  return { preparation, reviewDate, manifest, identities, identityMap, packets };
+  return {
+    preparation, reviewDate, manifest, identities, identityMap, packets,
+    captureProvenance: preparationCapture,
+  };
 }
 
 function validateEvidenceFiles(outputDir, prepared) {
@@ -707,6 +811,10 @@ async function composeContact(browser, packet, packetRows) {
 }
 
 async function prepare({ out, date, layoutFile }) {
+  /* A current portrait root is certifiable only when every tracked and
+     untracked repository path is clean before capture. Ignored build/evidence
+     outputs remain outside Git's porcelain contract. */
+  const sourceBefore = inspectCleanRepository();
   const target = outputDirectory(out);
   assert(!fs.existsSync(target.dir),
     `GP7.1 output ${target.dir} ${nearestExisting(target.dir)}; choose a new --out rather than overwriting evidence`);
@@ -723,7 +831,7 @@ async function prepare({ out, date, layoutFile }) {
     const sourceRows = await drainCurrentAudit(browser, stage);
     verifyPartition(layout, sourceRows);
     const identityByKey = new Map(sourceRows.map((row) => [rowKey(row.set, row.species), row]));
-    const referenceByName = references();
+    const referenceByIdentity = references();
     const stripRows = new Map();
     console.log(`  composing ${layout.length} labelled GP7.1 contact sheets from current captured pixels…`);
     for (const [offset, packet] of layout.entries()) {
@@ -734,7 +842,7 @@ async function prepare({ out, date, layoutFile }) {
           ...source,
           name: item.name,
           disk: path.join(stage, 'portraits', ...source.file.split('/')),
-          reference: referenceByName.get(item.name) || null,
+          reference: referenceByIdentity.get(rowKey(item.set, item.name)) || null,
         };
       });
       const strip = await composeContact(browser, packet, packetRows);
@@ -766,8 +874,10 @@ async function prepare({ out, date, layoutFile }) {
         console.log(`  … ${offset + 1}/${layout.length} contact sheets prepared`);
       }
     }
+    const sourceAfterCapture = inspectCleanRepository();
+    const provenance = captureProvenance(sourceBefore, sourceAfterCapture);
     const prepared = buildPreparation({
-      date, layout, sourceRows, outputName: target.name, outputDir: target.dir, stripRows,
+      date, layout, sourceRows, outputName: target.name, outputDir: target.dir, stripRows, provenance,
     });
     writeJson(path.join(stage, 'preparation.json'), prepared.preparation);
     writeJson(path.join(stage, 'review-info', 'manifest.json'), prepared.manifest);
@@ -781,17 +891,23 @@ async function prepare({ out, date, layoutFile }) {
       `- Fresh review packets: ${EXPECTED_PACKETS} labelled sheets under packets/.`,
       `- Required ruler: ${FRESH_RULER}.`,
       `- Required per-row review date: ${date}.`,
+      `- Exact clean source commit: ${provenance.source_commit}.`,
+      '- Capture scope: the entire Git repository, including untracked files.',
       '- `--prepare` generated no verdicts, results, bands, or ledger.',
       '- Judges must add one `verdicts/packet-XXX.json` file per packet following strict-verdict-schema.json.',
       '- Run `node tools/gp71rejudge.mjs --collect --out=' + target.name + '` only after all 196 complete verdicts exist.',
       '- The collector verifies image/strip hashes before writing a results file or ledger for gp7conformity.',
       '',
     ].join('\n'));
+    const sourceBeforeCommit = inspectCleanRepository();
+    assert(canonicalJson(captureProvenance(sourceBefore, sourceBeforeCommit)) === canonicalJson(provenance),
+      'capture source provenance changed while evidence manifests were being prepared');
     fs.renameSync(stage, target.dir);
     console.log('GP7.1 REJUDGE PREPARATION PASS');
     console.log(`  current portraits: ${EXPECTED_TOTAL} native 440x440 PNGs`);
     console.log(`  contact packets:   ${EXPECTED_PACKETS} labelled sheets`);
     console.log(`  output: ${target.dir}`);
+    console.log(`  source commit: ${provenance.source_commit} (entire repository clean before/after)`);
     console.log('  verdicts/results/ledger: intentionally not written');
   } finally {
     if (browser) browser.close();
@@ -841,6 +957,23 @@ function validateFixtureVerdict(raw, packet) {
   return validatePacketVerdict(raw, packet, '2026-08-09', 'memory/packet-001.json');
 }
 function runSelftest() {
+  const fixtureCommit = 'a'.repeat(40);
+  const cleanSnapshot = { repository_root: repositoryRoot, commit: fixtureCommit, status: '' };
+  const provenance = captureProvenance(cleanSnapshot, structuredClone(cleanSnapshot));
+  assert(validateCaptureProvenance(provenance, 'SELFTEST provenance', fixtureCommit).source_commit === fixtureCommit,
+    'SELFTEST clean exact-commit provenance did not validate');
+  expectRejected('dirty capture source', () => captureProvenance(
+    { ...cleanSnapshot, status: ' M port/v2/packages/art/src/speciesart.ts' }, cleanSnapshot,
+  ), /entire repository must be clean/i);
+  expectRejected('source commit changed during capture', () => captureProvenance(
+    cleanSnapshot, { ...cleanSnapshot, commit: 'b'.repeat(40) },
+  ), /changed commits/i);
+  expectRejected('wrong requested capture commit', () => validateCaptureProvenance(
+    provenance, 'SELFTEST wrong commit', 'b'.repeat(40),
+  ), /commit mismatch/i);
+  expectRejected('partial capture scope', () => validateCaptureProvenance(
+    { ...provenance, capture_scope: 'port/v2/packages/art' }, 'SELFTEST partial scope', fixtureCommit,
+  ), /entire repository/i);
   const packet = {
     packetId: '001', family: 'Fixture family', stripSha: sha256('fixture-strip'),
     species: [
@@ -876,6 +1009,28 @@ function runSelftest() {
   const schema = verdictSchema();
   assert(schema.required_row_fields.ruler === FRESH_RULER && schema.no_verdicts_are_generated_by_prepare,
     'SELFTEST schema contract was not fresh-only');
+  const referenceByIdentity = references();
+  assert(referenceByIdentity.size === 1014,
+    `SELFTEST expected 1014 set-specific Earth references, got ${referenceByIdentity.size}`);
+  const collisions = [
+    ['Green Algae', 'earth-flora', 'earth-microbe'],
+    ['Reindeer Lichen', 'earth-flora', 'earth-fungi'],
+    ['Snow Algae', 'earth-flora', 'earth-microbe'],
+    ['Tardigrade', 'earth-fauna', 'earth-microbe'],
+  ];
+  for (const [species, firstSet, secondSet] of collisions) {
+    const first = referenceByIdentity.get(rowKey(firstSet, species));
+    const second = referenceByIdentity.get(rowKey(secondSet, species));
+    assert(first && second && first !== second,
+      `SELFTEST duplicate-name references collapsed ${firstSet}/${secondSet} ${species}`);
+  }
+  const bareNameControl = new Map();
+  for (const row of referenceByIdentity.values()) bareNameControl.set(row.name, row);
+  assert(bareNameControl.size === 1010,
+    'SELFTEST negative control no longer reproduces four bare-name collisions');
+  assert(bareNameControl.get('Snow Algae')
+      !== referenceByIdentity.get(rowKey('earth-flora', 'Snow Algae')),
+    'SELFTEST negative control no longer overwrites Earth-flora Snow Algae');
   console.log('GP7.1 REJUDGE SELFTEST PASS');
   console.log('  fresh strict dated packet verdict: PASS');
   console.log('  swapped identity: rejected');
@@ -884,6 +1039,9 @@ function runSelftest() {
   console.log('  wrong review date: rejected');
   console.log('  short reason: rejected');
   console.log('  unsafe output directory: rejected');
+  console.log('  four duplicate names remain set-specific: PASS');
+  console.log('  intentional bare-name join collapses four identities: rejected');
+  console.log('  dirty/changed/wrong-commit/partial-scope capture provenance: rejected');
 }
 
 function parseArgs(args) {

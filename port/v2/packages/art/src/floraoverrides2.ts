@@ -1163,7 +1163,7 @@ function recheckWildflower(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string):
 }
 
 function recheckSucculent(c: Ctx, g: G, p: Pal, _spec: PlantSpec, name: string): void {
-  const cx = S * 0.50, base = S * 0.83, r = rngF(g, name, 0x7f32);
+  const cx = S * 0.50, base = S * 0.83;
   ground(c, cx, base + 4, S * 0.22);
   if (name === 'Prickly Pear') {
     const pads = [[0, 0.20, 0.13], [-0.13, 0.37, 0.10], [0.15, 0.42, 0.09]] as const;
@@ -2402,7 +2402,7 @@ function recheckAlgae(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string): void
 }
 
 function recheckFern(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string): void {
-  const cx = S * 0.50, base = S * 0.84, r = rngF(g, name, 0x7f3c);
+  const cx = S * 0.50, base = S * 0.84;
   ground(c, cx, base + 4, S * 0.24);
   if (spec.strictSignature && name === 'Cave Fern') {
     c.fillStyle = '#4b4c4a'; c.beginPath(); c.moveTo(cx - S * 0.22, base + 4); c.lineTo(cx - S * 0.11, base - S * 0.40); c.lineTo(cx + S * 0.13, base - S * 0.37); c.lineTo(cx + S * 0.24, base + 4); c.closePath(); c.fill();
