@@ -21,17 +21,17 @@
 ## roadmap stays a one-screen read. History is one file away, git-diffable. (Split first done 2026-07-21
 ## when this crossed ~285KB / 4,272 lines and stopped reading in one pass.)
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-10 · WAVE 2A 32/32 PASS; READY TO COMMIT/PUSH ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-10 · WAVE 2B 51/51 PASS; READY TO COMMIT/PUSH ◀◀◀
 
 ## ★ COLD START — READ THIS BLOCK, THEN THE LINKED REFERENCES
 ## Workspace: C:\Projects\celestial-frontier-openai-windows
 ## Owner/branch: OpenAI/Codex on openai/windows. Clean reset-baseline HEAD is
-## bc26e800c7adca72805a832e753ace1a8f9837ba; accepted Wave 1 is committed and pushed as d005090f.
-## Wave 2a is a bounded, uncommitted working batch on top. Mammal A, worms+sessile, S1–S3 and
-## Vanilla r6 all have independent PASS. The 32 catalogue targets and focused continuity repair are
-## closed; this checkpoint is READY TO COMMIT/PUSH on openai/windows. PR #7 is historical/merged;
-## no reset PR, 1,250 PASS certification, final image-inclusive ZIP, release, deployment or version
-## bump exists. Read next: PROCESS_LAWS.md · PARALLEL_GIT_PROTOCOL.md ·
+## bc26e800c7adca72805a832e753ace1a8f9837ba; Wave 1 is d005090f and Wave 2a is committed/pushed as
+## 00e499cb130e906b5475d2d466c07e2d7a6d1282. Wave 2b is local/uncommitted, all 51 assigned rows
+## have author-separated PASS, and the final integrated gates are green with frozen source SHAs unchanged.
+## This checkpoint is READY TO COMMIT/PUSH. PR #7 is historical/merged; no reset PR, new 1,250-row tally,
+## final certification, image-inclusive ZIP, release, deployment or version bump exists. Read next:
+## PROCESS_LAWS.md · PARALLEL_GIT_PROTOCOL.md ·
 ## port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md · ART_DIRECTION.md ·
 ## PROCEDURAL_CHARACTERISTICS.md · LINEAGE_AND_BREEDING.md · port/PROPORTION_ARC.md ·
 ## port/HANDOFF_NEXT_SESSION.md · port/v2/DEVIATIONS.md · port/v2/README.md.
@@ -42,53 +42,64 @@
 ## is 516 PASS · 14 POLISH · 720 FAIL; literal certification eligibility is false. Per-set truth:
 ## fauna 151/6/474 · flora 125/0/207 · fungi 16/0/11 · microbes 12/2/6 · procedural 212/6/22
 ## (PASS/POLISH/FAIL). Authority: port/v2/apps/game/smoke/full-reset-results-2026-08-10-r1/results.json.
-## Never add scoped repair results to 516 or fabricate a post-wave catalogue tally.
+## Never add Wave 1, Wave 2a or Wave 2b scoped results to 516 or fabricate a catalogue tally.
 
-## ★ WAVE 1 — COMMITTED/PUSHED d005090f; EXACTLY 177/177 SCOPED PASS
-## Root 38 (2 fungi + 8 microbes + 28 procedural) · fish 59 · tree 48 · fauna2 32 all closed PASS
-## under independent 440/300/132 review with protected controls and repeat evidence. These 177 scoped
-## results remain distinct from a new full 1,250-row collector result.
+## ★ ACCEPTED CHECKPOINTS BELOW THE FROZEN LEDGER
+## Wave 1: committed/pushed d005090f; root 38 + fish 59 + tree 48 + fauna2 32 = 177/177 scoped PASS.
+## Wave 2a: committed/pushed 00e499c; Mammal A 4 + worms/sessile 13 + S1–S3 15 = 32/32 scoped PASS.
+## Vanilla Orchid r6 is separately continuity-PASS: 234/234 assets, exact pure portrait, five unique
+## integrated stages, both browser orders and eleven negative controls. None is a new full-catalogue score.
 
-## ★ WAVE 2A — EXACTLY 32/32 CATALOGUE TARGETS PASS; CHECKPOINT CLOSED
-## Mammal A is 4/4 PASS: Colugo · Sugar Glider · Fur Seal · Sea Lion. Worms+sessile is 13/13 PASS:
-## Earthworm · Flatworm · Ice Worm · Lancelet · Marine Worm · Polychaete Worm · Scale Worm ·
-## Barnacle · Coral · Cold-Water Coral · Deep-Water Coral · Sea Cucumber · Sponge. S1–S3 is 15/15
-## PASS: its bounded R2 independently closed Caddisfly · Diving Beetle · Firefly · Water Beetle at
-## 440/300/132. Frozen `faunaoverrides.ts` SHA-256 is
-## EE6CC43E6A326942C3508878470F9490EE1CF21C50DC5C9BE35229AA130EF3F5; the immutable recapture binds
-## that hash before A, between A/B and after B with zero drift across 139 build inputs. All 156
-## current/repeat PNGs are hash/dimension/repeat exact, and all 22 protected rows are byte-identical
-## at every scale. Across the three catalogue batches, Wave 2a is 32/32 independently PASS. This is scoped
-## wave status only, never a new catalogue total.
+## ★ WAVE 2B — EXACTLY 51/51 AUTHOR-SEPARATED PASS
+## Mammal B: 25/25 PASS at 440/300/132. R2 failed closed at 19 PASS / 6 FAIL; bounded R3 repaired
+## Brown Bear · Grizzly Bear · Bobcat · Lynx · Serval · Sand Cat, and the independent judge returned
+## 6/6 PASS. Final sources: quadrupedoverrides.ts
+## 288E54795D4EBD52EE131E4691AFED98AA7409BC033228FE0274B099B6FE7DAE and mammaloverrides.ts
+## 2BB3541963F610B3D4504BEC423C982E1F11E902BD6200AD64E332B8F853CEAA. Sealed evidence:
+## port/v2/apps/game/smoke/wave2-mammal-b-r3-sealed-evidence-2026-08-10. Manifest SHA-256
+## B31B8BD7D84DDA513AF7714E1C0CBEDB6AB056D9FF99965193129160968C1C92; 600 PNG checks,
+## 300/300 current/repeat surfaces exact, exact six changed and all 94 retained rows exact.
+##
+## Bird B1: 21/21 PASS. Initial independent review failed closed at 17 PASS / 4 FAIL; bounded R2
+## repaired Secretary Bird · Rhea · Seriema · Hummingbird, and the independent judge returned 4/4 PASS.
+## Final sources: faunaoverrides.ts 783DCCE7641E9EA826296922E9787CEE33857A6853CD96563E88F374F1C9BF10 and
+## birdoverrides.ts B5DEBDCA726F48E8405F1D9F47D019E8472A2786825F35DCCFF1E147936494DF. Evidence:
+## port/v2/apps/game/smoke/wave2b-bird-b1-r2-evidence-2026-08-10. Its 432 PNGs have zero
+## hash/dimension/repeat errors; all 51 protected rows are exact and exactly four targets changed.
+##
+## Invert I: 5/5 PASS — Banana Slug · Chiton · Comb Jelly · Portuguese Man-of-War · Isopod.
+## The first candidate failed closed on Banana Slug's four-tentacle/eye read at 132; a Banana-only
+## refinement changed 3/3 target surfaces while the other four targets +20 controls stayed 72/72 exact.
+## Final invertoverrides.ts SHA-256 is
+## 9173B81703BE955B857ED5D3A39B09DD196967C63DE40E764D8F79EDB1832B1D. Evidence:
+## C:\Users\Nick\.codex\visualizations\2026\08\09\019fe72d-20c7-73a0-bac7-d2c64d10673d\
+## invert-wave2-isolated-topology-i\{final-current,final-repeat}; 150/150 PNGs are complete and exact,
+## with matching aggregate SHA-256
+## 0BDE0E3C01EF7E5FBEACFCA885D544BB02F73470B7E9B9A8854D9FBAA953671F.
 
-## ★ VANILLA ORCHID r6 — INDEPENDENT CONTINUITY PASS
-## Frozen `floraoverrides2.ts` SHA-256 is
-## 5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E. Evidence at
-## port/v2/apps/game/smoke/hybrid-continuity-wave2-vanilla-2026-08-10-r6 validates 234/234 assets,
-## exact source snapshots/dimensions/hashes and both browser orders. Vanilla's pure portrait remains
-## exact to 3f6834b7f984b35186fa1c441eeb4537d3e5793d446e447b021a1e3687939a25; all five stages are unique,
-## integrated and progressively farther from pure as the anchor falls. `hybridcheck` now requires five
-## focused lineages covering all four kingdoms and rejects eleven injected negative controls, including
-## focused-species substitution and Vanilla stage collapse. The prior Vanilla byte-identical blocker is closed. This does not certify
-## every possible bloodline or the full catalogue; final hybrid/certification scope remains OPEN.
-
-## ★ WHOLE-FORM / ROUTING LAW STILL GOVERNS WAVE 2
+## ★ WHOLE-FORM / FAIL-CLOSED LAW
 ## One named whole form owns silhouette, anatomy, attachments and material on one winning route. Code
-## behind an early return is absent anatomy; painting another same-target body afterward creates seams.
-## Prove dispatch ownership, freeze same-painter controls, and accept cleanup only with pixel evidence.
+## behind an early return is absent anatomy; another same-target body creates seams. Source completion,
+## changed hashes and green author gates never replace an author-separated 440/300/132 verdict. A failed
+## delivery-size cue reopens only that bounded target and freezes every accepted target/control.
+
+## ★ FINAL INTEGRATED WAVE-2B GATES — GREEN; FIVE SOURCE SHAS UNCHANGED
+## typecheck and artunused PASS; speccheck reports 417 declared / 0 unread / 0 unobservable;
+## overridecheck reports 1,014/1,014 catalogue routes and 1,010/1,010 Earth routes;
+## speciesaudit reports 1,250/1,250 portraits with 0 failures, duplicates or clipping; targeted/full
+## diff checks PASS. This closes checkpoint readiness only, not the reset PR or full certification.
 
 ## ★ NEXT — COMPLETE IN THIS ORDER
-## 1. Commit only the accepted Wave 2a source/tool/doc scope on openai/windows, then push that branch.
-##    Do not include unrelated files and do not commit directly to develop/main.
-## 2. Continue remaining r1 non-PASS rows in owner/family waves with source frozen during judgement.
-##    No reset PR/merge is due until the reset reaches its next integration boundary.
+## 1. Commit/push only the reviewed Wave-2b source/doc scope on openai/windows. No reset PR/merge is due.
+## 2. Continue remaining frozen-r1 non-PASS rows in bounded owner/family waves with source frozen during
+##    independent review; never carry a verdict across changed pixels.
 ## 3. Only after every row closes, run a new clean 1,250 collector, final hybrid evidence, literal
-##    certification and the dated image-inclusive ZIP. Until then, the reset PR/release stay OPEN.
+##    1,250/1,250 certification and dated image-inclusive ZIP. Until then, reset PR/release stay OPEN.
 
 ## ★ PARALLEL GIT HANDOFF — EXACT SAFE SYNCHRONIZATION
-## Current side: OpenAI/Codex — d005090f is pushed; Wave 2a is independently closed and READY TO
-## COMMIT/PUSH locally on openai/windows. No reset PR exists. Other side: Anthropic/Claude Code does not have this batch,
-## Nick does not need to open it now, and files must never be copied manually. After a future reviewed
-## Codex PR merges into develop, Claude starts clean, fetches, and merges origin/develop into
-## anthropic/windows under PARALLEL_GIT_PROTOCOL.md; Codex follows the same rule after develop moves.
-## develop, main and the live site are unchanged; no release or deployment occurred.
+## Current side: OpenAI/Codex — 00e499c is pushed/synchronized; Wave 2b is local/uncommitted and READY
+## TO COMMIT/PUSH. No reset PR exists. Other side: Anthropic/Claude Code
+## does not have Wave 2a/2b through develop, Nick does not need to open it now, and files must never be
+## copied manually. After a future reviewed Codex PR merges into develop, Claude starts clean, fetches,
+## and merges origin/develop into anthropic/windows under PARALLEL_GIT_PROTOCOL.md; Codex follows the
+## same rule after develop moves. develop, main and the live site are unchanged; no release occurred.

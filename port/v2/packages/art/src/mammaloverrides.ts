@@ -54,11 +54,11 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Dingo': { legs: 0.1563, depth: 0.1090, len: 0.1733, neck: 0.07, muzzle: 0.48, ears: 'large', tail: 'bushy', hue: '#c08b4c', family: 'canid' , tailTip: '#efeae0', stockings: '#efe7d4' },
   'Dog': { hue: '#a9743f', legs: 0.1423, depth: 0.1325, len: 0.163, neck: 0.07, muzzle: 0.44, ears: 'large', tail: 'bushy', family: 'canid' },
   /* ── FELIDS: short muzzle, round ear, long tail; rosettes where they belong ── */
-  'Bobcat': { back: 'arched', legs: 0.1268, depth: 0.114, len: 0.1776, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'stub', coat: 'spots', hue: '#c39a63', family: 'felid', earShape: 'tuft', earTuftScale: 1.82, cheekRuff: 2.00, spotScale: 0.58, headScale: 1.10 },
-  'Caracal': { back: 'arched', legs: 0.1413, depth: 0.108, len: 0.1783, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'long', hue: '#c08e58', family: 'felid', earShape: 'tuft', earScale: 1.72, earTuftScale: 2.18, headScale: 1.08 },
-  'Serval': { legs: 0.205, depth: 0.098, len: 0.1684, neck: 0.07, muzzle: 0.28, ears: 'large', tail: 'long', tailScale: 1.36, coat: 'spots', hue: '#d0a45c', family: 'felid', earShape: 'leaf', earScale: 1.76, legMarks: true, spotScale: 0.70 },
-  'Ocelot': { back: 'arched', legs: 0.112, depth: 0.119, len: 0.1874, neck: 0.06, muzzle: 0.28, ears: 'round', tail: 'long', tailScale: 1.20, coat: 'rosettes', rosetteChain: true, rosetteScale: 1.20, cheekBars: true, hue: '#c79a5c', family: 'felid', legMarks: true, headScale: 1.12 },
-  'Clouded Leopard': { back: 'arched', legs: 0.096, depth: 0.126, len: 0.2124, neck: 0.06, muzzle: 0.30, ears: 'round', tail: 'long', tailScale: 2.90, coat: 'blotches', hue: '#b8975f', family: 'felid', legMarks: true, headScale: 1.10 },
+  'Bobcat': { back: 'arched', legs: 0.1268, depth: 0.114, len: 0.1776, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'stub', coat: 'spots', hue: '#c39a63', family: 'felid', earShape: 'tuft', earTuftScale: 1.82, cheekRuff: 2.00, spotScale: 0.58, headScale: 1.10, mammalBPlan: 'felid-r1' },
+  'Caracal': { back: 'arched', legs: 0.1413, depth: 0.108, len: 0.1783, neck: 0.06, muzzle: 0.28, ears: 'large', tail: 'long', hue: '#c08e58', family: 'felid', earShape: 'tuft', earScale: 1.72, earTuftScale: 2.18, headScale: 1.08, mammalBPlan: 'felid-r1' },
+  'Serval': { legs: 0.205, depth: 0.098, len: 0.1684, neck: 0.07, muzzle: 0.28, ears: 'large', tail: 'long', tailScale: 1.36, coat: 'spots', hue: '#d0a45c', family: 'felid', earShape: 'leaf', earScale: 1.76, legMarks: true, spotScale: 0.70, mammalBPlan: 'felid-r1' },
+  'Ocelot': { back: 'arched', legs: 0.112, depth: 0.119, len: 0.1874, neck: 0.06, muzzle: 0.28, ears: 'round', tail: 'long', tailScale: 1.20, coat: 'rosettes', rosetteChain: true, rosetteScale: 1.20, cheekBars: true, hue: '#c79a5c', family: 'felid', legMarks: true, headScale: 1.12, mammalBPlan: 'felid-r1' },
+  'Clouded Leopard': { back: 'arched', legs: 0.096, depth: 0.126, len: 0.2124, neck: 0.06, muzzle: 0.30, ears: 'round', tail: 'long', tailScale: 2.90, coat: 'blotches', hue: '#b8975f', family: 'felid', legMarks: true, headScale: 1.10, mammalBPlan: 'felid-r1' },
   /* ★ wave 52 — separated from 'Cat', which artlock put at 1.41 once both got
      a haunch. They were near-identical on the axes that matter and the fix is
      its own reference row, not a smaller haunch (D-ART-83). The row asks for
@@ -67,9 +67,9 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      the fit pass erases absolute size, D-ART-34), a "broad head", and a thick
      blunt tail with "a black tip" that had no `tailTip` at all. */
   'Wildcat': { legs: 0.1060, depth: 0.1120, len: 0.172, neck: 0.06, muzzle: 0.28, jaw: 'broad', ears: 'round', tail: 'banded', tailTip: '#1d1916', coat: 'stripes', hue: '#a09077', family: 'felid' },
-  'Sand Cat': { legs: 0.1046, depth: 0.1025, len: 0.1598, neck: 0.05, muzzle: 0.26, ears: 'large', tail: 'banded', hue: '#d6bd8e', family: 'felid', earShape: 'point', earScale: 1.25 },
+  'Sand Cat': { legs: 0.1046, depth: 0.1025, len: 0.1598, neck: 0.05, muzzle: 0.26, ears: 'large', tail: 'banded', hue: '#d6bd8e', family: 'felid', earShape: 'point', earScale: 1.25, mammalBPlan: 'felid-r1' },
   'Fishing Cat': { back: 'arched', legs: 0.101, depth: 0.1265, len: 0.1905, neck: 0.055, muzzle: 0.30, jaw: 'broad', headScale: 1.10, pawScale: 1.24, ears: 'round', earScale: 0.78, tail: 'thick', tailScale: 0.90, tailTip: '#181714', coat: 'spots', hue: '#6f7455', family: 'felid', spotScale: 0.56 },
-  'Cat': { back: 'arched', hue: '#7f8288', legs: 0.0992, depth: 0.093, len: 0.1677, neck: 0.05, muzzle: 0.24, headScale: 1.12, ears: 'large', earShape: 'point', pupil: 'slit', domesticCatFace: true, tail: 'long', tailScale: 1.75, tailPose: 'raised', coat: 'stripes', family: 'felid' },
+  'Cat': { back: 'arched', hue: '#7f8288', legs: 0.0992, depth: 0.093, len: 0.1677, neck: 0.05, muzzle: 0.24, headScale: 1.12, ears: 'large', earShape: 'point', pupil: 'slit', domesticCatFace: true, tail: 'long', tailScale: 1.75, tailPose: 'raised', coat: 'stripes', family: 'felid', mammalBPlan: 'felid-r1' },
   /* ── MUSTELIDS & small carnivores: long body, short legs ── */
   'Badger': { legs: 0.058, depth: 0.124, len: 0.2151, neck: 0.04, carry: 0.30, muzzle: 0.38, ears: 'tiny', tail: 'stub', coat: 'plain', face: 'mask', hue: '#8d8a84', family: 'mustelid', faceMark: 'whiteBlaze', clawScale: 1.35 },
   'Wolverine': { legs: 0.0961, depth: 0.1182, len: 0.2132, neck: 0.05, back: 'arched', muzzle: 0.38, ears: 'round', tail: 'bushy', coat: 'shaggy', hue: '#5c4433', family: 'mustelid' },
@@ -99,7 +99,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Hyrax': { legs: 0.0595, depth: 0.0899, len: 0.1474, neck: 0.03, back: 'arched', muzzle: 0.28, ears: 'round', tail: 'none', hue: '#8b7a63', family: 'rodent' },
   'Aardvark': { legs: 0.088, depth: 0.1259, len: 0.222, neck: 0.06, carry: 0.35, back: 'roached', muzzle: 0.80, ears: 'huge', tail: 'muscular', tailScale: 1.25, mat: 'hide', hue: '#b09c85', family: 'burrower', earShape: 'leaf' },
   /* ── BEARS, PIGS, EQUIDS ── */
-  'Spectacled Bear': { legs: 0.1111, depth: 0.1593, len: 0.1959, neck: 0.05, muzzle: 0.40, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'shaggy', hue: '#3b332c', family: 'ursid', faceMark: 'spectacles', muzzleHue: '#d7c5a4', clawScale: 1.22 },
+  'Spectacled Bear': { legs: 0.1111, depth: 0.1593, len: 0.1959, neck: 0.05, muzzle: 0.40, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'shaggy', hue: '#3b332c', family: 'ursid', faceMark: 'spectacles', muzzleHue: '#d7c5a4', clawScale: 1.22, mammalBPlan: 'ursid-r1' },
   'Wild Pig': { legs: 0.1014, depth: 0.1365, len: 0.2015, neck: 0.04, back: 'sloped', muzzle: 0.56, jaw: 'barrel', ears: 'large', tail: 'tuft', coat: 'shaggy', hue: '#6b5a49', family: 'suid' },
   'Pig': { legs: 0.0879, depth: 0.1425, len: 0.2104, neck: 0.04, muzzle: 0.56, jaw: 'barrel', ears: 'large', tail: 'stub', hue: '#e0aca5', family: 'suid', earShape: 'drop' },
   'Peccary': { legs: 0.102, depth: 0.1256, len: 0.1752, neck: 0.04, back: 'sloped', muzzle: 0.54, jaw: 'barrel', ears: 'small', tail: 'stub', coat: 'shaggy', hue: '#5f5850', family: 'suid' },
@@ -144,7 +144,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      Each spec is derived from its port/v2/reference/fauna.json row. */
 
   /* "vertical black stripes over orange · white cheek ruff · long ringed tail" */
-  'Tiger': { legs: 0.1317, depth: 0.1445, len: 0.2489, neck: 0.070, muzzle: 0.32, jaw: 'broad', ears: 'round', tail: 'banded', tailScale: 1.55, coat: 'stripes', hue: '#d98c2b', family: 'felid' , legMarks: true },
+  'Tiger': { legs: 0.1317, depth: 0.1445, len: 0.2489, neck: 0.070, muzzle: 0.32, jaw: 'broad', ears: 'round', tail: 'banded', tailScale: 1.55, coat: 'stripes', hue: '#d98c2b', family: 'felid' , legMarks: true, mammalBPlan: 'felid-r1' },
   /* "bold stripes continuing onto the legs · stiff upright brush mane · tufted tail" */
   'Zebra': { legs: 0.1837, depth: 0.1567, len: 0.2056, neck: 0.120, muzzle: 0.44, ears: 'large', tail: 'tuft', mane: 'crestUp', coat: 'bands', hue: '#e8e4dc', family: 'equid' , legMarks: true },
   /* "black bandit mask · ringed banded tail · hunched arched back" */
@@ -157,14 +157,14 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* "long bushy ringed tail · white face mask with rust tear-stripes · black legs" */
   'Red Panda': { legs: 0.0741, depth: 0.1099, len: 0.1712, neck: 0.038, muzzle: 0.26, ears: 'large', tail: 'banded', face: 'tears', hue: '#b5522a', family: 'procyonid' },
   /* "back sloping sharply from high shoulders · massive neck and jaws · blotchy spots" */
-  'Spotted Hyena': { legs: 0.1284, depth: 0.1442, len: 0.2128, neck: 0.080, back: 'sloped', muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'bushy', coat: 'spots', hue: '#a8916b', family: 'hyaenid' },
+  'Spotted Hyena': { legs: 0.1284, depth: 0.1442, len: 0.2128, neck: 0.080, back: 'sloped', muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'bushy', coat: 'spots', hue: '#a8916b', family: 'hyaenid', mammalBPlan: 'hyaenid-r1' },
   /* "sloping back · heavy jaws · vertical flank stripes and a long dorsal crest" */
   /* ★ wave 35 — `coat:'stripes'` is the TIGER's bar generator, and on a pale
      hyena it painted a hard-edged zebra saddle blanket. A striped hyena's
      stripes are faint vertical smudges mostly on the LEGS, which this engine
      structurally cannot paint (no marking reaches a leg), so plain is the
      honest read until that changes. */
-  'Striped Hyena': { legs: 0.1338, depth: 0.1475, len: 0.1936, neck: 0.080, back: 'sloped', muzzle: 0.34, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'plain', hue: '#b8ac93', family: 'hyaenid', mane: 'hyena' },
+  'Striped Hyena': { legs: 0.1338, depth: 0.1475, len: 0.1936, neck: 0.080, back: 'sloped', muzzle: 0.34, jaw: 'broad', ears: 'large', tail: 'bushy', coat: 'plain', hue: '#b8ac93', family: 'hyaenid', mane: 'hyena', mammalBPlan: 'hyaenid-r1' },
   /* "stout barrel body with NO visible tail · broad bare-nosed snout · bowed legs" */
   'Wombat': { legs: 0.0414, depth: 0.1249, len: 0.1947, neck: 0.024, muzzle: 0.24, jaw: 'broad', ears: 'round', tail: 'none', hue: '#8a7358', family: 'marsupial' },
   /* "oversized blocky head and gaping jaws · white chest band · thick short tail" */

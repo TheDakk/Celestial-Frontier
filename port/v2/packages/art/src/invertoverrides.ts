@@ -1360,9 +1360,143 @@ export function wormBody(c: Ctx, g: G, pIn: Pal, opts: { bristles?: boolean; fla
   }
 }
 
+function resetBananaSlug(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0xBA6A);
+  const cy = S * 0.615;
+  shadow(c, S * 0.49, cy + S * 0.075, S * 0.285);
+
+  const feeler = (near: boolean, upper: boolean): void => {
+    const x0 = S * (near ? 0.716 : 0.690);
+    const y0 = S * (upper ? (near ? 0.570 : 0.582) : (near ? 0.610 : 0.616));
+    const x1 = S * (upper ? (near ? 0.875 : 0.785) : (near ? 0.858 : 0.820));
+    const y1 = S * (upper ? (near ? 0.320 : 0.420) : (near ? 0.515 : 0.625));
+    const kx = S * (upper ? (near ? 0.815 : 0.752) : (near ? 0.814 : 0.770));
+    const ky = S * (upper ? (near ? 0.405 : 0.485) : (near ? 0.545 : 0.620));
+    c.save();
+    c.globalAlpha = near ? 1 : 0.88;
+    c.strokeStyle = p.dark; c.lineWidth = upper ? 9 : 7; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(x0, y0);
+    c.quadraticCurveTo(kx, ky, x1, y1); c.stroke();
+    c.strokeStyle = p.lit; c.globalAlpha *= 0.42; c.lineWidth = upper ? 3.2 : 2.4;
+    c.beginPath(); c.moveTo(x0, y0);
+    c.quadraticCurveTo(kx, ky, x1, y1); c.stroke();
+    c.restore();
+    if (upper) {
+      c.save(); c.globalAlpha = near ? 1 : 0.95;
+      eyeDot(c, x1, y1, near ? 6.4 : 5.8); c.restore();
+    } else {
+      c.fillStyle = near ? p.dark : 'rgba(68,58,20,0.62)';
+      c.beginPath(); c.arc(x1, y1, near ? 4.0 : 3.6, 0, TAU); c.fill();
+    }
+  };
+
+  /* Far tentacles first; the single continuous body hides their roots. */
+  feeler(false, true);
+  feeler(false, false);
+
+  const body = (): void => {
+    c.moveTo(S * 0.205, cy + S * 0.030);
+    c.bezierCurveTo(S * 0.220, cy - S * 0.045, S * 0.310, cy - S * 0.090, S * 0.405, cy - S * 0.083);
+    c.bezierCurveTo(S * 0.510, cy - S * 0.080, S * 0.603, cy - S * 0.097, S * 0.675, cy - S * 0.063);
+    c.bezierCurveTo(S * 0.736, cy - S * 0.035, S * 0.758, cy + S * 0.018, S * 0.730, cy + S * 0.052);
+    c.bezierCurveTo(S * 0.678, cy + S * 0.085, S * 0.550, cy + S * 0.090, S * 0.390, cy + S * 0.088);
+    c.lineTo(S * 0.258, cy + S * 0.085);
+    c.bezierCurveTo(S * 0.218, cy + S * 0.083, S * 0.198, cy + S * 0.062, S * 0.205, cy + S * 0.030);
+    c.closePath();
+  };
+  const bg = c.createLinearGradient(0, cy - S * 0.095, 0, cy + S * 0.095);
+  bg.addColorStop(0, p.lit); bg.addColorStop(0.48, p.base); bg.addColorStop(1, p.dark);
+  c.fillStyle = bg; c.beginPath(); body(); c.fill();
+  rim(c, body, 2.4);
+
+  /* Mantle saddle is part of the body surface; the pneumostome opens through it. */
+  c.fillStyle = 'rgba(86,69,18,0.20)';
+  c.beginPath();
+  c.moveTo(S * 0.500, cy - S * 0.078);
+  c.bezierCurveTo(S * 0.548, cy - S * 0.102, S * 0.625, cy - S * 0.092, S * 0.668, cy - S * 0.055);
+  c.bezierCurveTo(S * 0.640, cy - S * 0.015, S * 0.555, cy - S * 0.012, S * 0.500, cy - S * 0.034);
+  c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(255,244,148,0.32)'; c.lineWidth = 2;
+  c.beginPath(); c.moveTo(S * 0.500, cy - S * 0.077);
+  c.bezierCurveTo(S * 0.555, cy - S * 0.100, S * 0.626, cy - S * 0.086, S * 0.668, cy - S * 0.055); c.stroke();
+  c.fillStyle = 'rgba(42,33,13,0.88)';
+  c.beginPath(); c.ellipse(S * 0.615, cy - S * 0.041, 8.5, 5.8, -0.18, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(255,238,124,0.55)'; c.lineWidth = 1.4;
+  c.beginPath(); c.ellipse(S * 0.615, cy - S * 0.041, 10.3, 7.3, -0.18, 0, TAU); c.stroke();
+
+  /* The muscular foot is a continuous lower margin, not a separate pasted sole. */
+  c.strokeStyle = 'rgba(64,48,12,0.52)'; c.lineWidth = 7; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(S * 0.245, cy + S * 0.074);
+  c.bezierCurveTo(S * 0.390, cy + S * 0.085, S * 0.595, cy + S * 0.085, S * 0.706, cy + S * 0.050); c.stroke();
+  c.strokeStyle = 'rgba(255,249,174,0.48)'; c.lineWidth = 2.2;
+  c.beginPath(); c.moveTo(S * 0.275, cy - S * 0.054);
+  c.bezierCurveTo(S * 0.405, cy - S * 0.083, S * 0.540, cy - S * 0.075, S * 0.640, cy - S * 0.063); c.stroke();
+  for (let i = 0; i < 10; i++) {
+    softMark(c, S * (0.275 + r() * 0.39), cy - S * (0.005 + r() * 0.045), 7 + r() * 5, 3 + r() * 3,
+      '72,58,14', 0.20);
+  }
+
+  feeler(true, false);
+  feeler(true, true);
+}
+
+function resetChiton(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0xC417);
+  const cx = S * 0.50, cy = S * 0.56;
+  const rx = S * 0.295, ry = S * 0.145;
+  shadow(c, cx, cy + ry * 0.72, rx * 0.90);
+  const girdle = (): void => {
+    c.moveTo(cx - rx, cy);
+    c.bezierCurveTo(cx - rx * 0.95, cy - ry * 0.70, cx - rx * 0.58, cy - ry, cx, cy - ry);
+    c.bezierCurveTo(cx + rx * 0.58, cy - ry, cx + rx * 0.96, cy - ry * 0.70, cx + rx, cy);
+    c.bezierCurveTo(cx + rx * 0.95, cy + ry * 0.72, cx + rx * 0.56, cy + ry, cx, cy + ry);
+    c.bezierCurveTo(cx - rx * 0.58, cy + ry, cx - rx * 0.95, cy + ry * 0.70, cx - rx, cy);
+    c.closePath();
+  };
+  c.fillStyle = shell(c, p, cx, cy, rx * 0.88);
+  c.beginPath(); girdle(); c.fill();
+  rim(c, girdle, 2.5);
+
+  /* Thick leathery girdle remains visibly continuous around all eight plates. */
+  c.fillStyle = 'rgba(28,34,28,0.34)';
+  c.beginPath(); c.ellipse(cx, cy, rx * 0.78, ry * 0.70, 0, 0, TAU); c.fill();
+  for (let i = 0; i < 26; i++) {
+    const a = r() * TAU;
+    const rr = 0.80 + r() * 0.13;
+    softMark(c, cx + Math.cos(a) * rx * rr, cy + Math.sin(a) * ry * rr,
+      5 + r() * 4, 3 + r() * 3, '210,205,176', 0.16, a);
+  }
+
+  const plateXs = Array.from({ length: 8 }, (_, i) => cx - rx * 0.57 + i * rx * 0.163);
+  for (let i = 7; i >= 0; i--) {
+    const x = plateXs[i]!;
+    const arch = Math.sin(((i + 0.5) / 8) * Math.PI);
+    const ph = ry * (0.48 + arch * 0.14);
+    const pw = rx * 0.112;
+    const pg = c.createLinearGradient(x - pw, cy - ph, x + pw, cy + ph);
+    pg.addColorStop(0, p.lit); pg.addColorStop(0.50, p.base); pg.addColorStop(1, p.dark);
+    c.fillStyle = pg;
+    c.beginPath();
+    c.moveTo(x - pw, cy - ph * 0.82);
+    c.quadraticCurveTo(x, cy - ph * 1.08, x + pw, cy - ph * 0.78);
+    c.quadraticCurveTo(x + pw * 1.18, cy, x + pw, cy + ph * 0.78);
+    c.quadraticCurveTo(x, cy + ph * 1.08, x - pw, cy + ph * 0.82);
+    c.quadraticCurveTo(x - pw * 0.55, cy, x - pw, cy - ph * 0.82);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(19,25,22,0.70)'; c.lineWidth = 2.4; c.stroke();
+    c.strokeStyle = 'rgba(238,238,214,0.30)'; c.lineWidth = 1.5;
+    c.beginPath(); c.moveTo(x - pw * 0.74, cy - ph * 0.63);
+    c.quadraticCurveTo(x, cy - ph * 0.86, x + pw * 0.72, cy - ph * 0.58); c.stroke();
+  }
+  c.strokeStyle = 'rgba(240,232,198,0.30)'; c.lineWidth = 2;
+  c.beginPath(); c.ellipse(cx, cy, rx * 0.79, ry * 0.72, 0, 0, TAU); c.stroke();
+}
+
 export function slugBody(c: Ctx, g: G, pIn: Pal, opts: { cerata?: boolean; plated?: boolean; hue?: string }, name = ''): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
+  if (name === 'Banana Slug') { resetBananaSlug(c, g, p, name); return; }
+  if (name === 'Chiton') { resetChiton(c, g, p, name); return; }
   const r = nrng(g, name, 0x51A6);
   const cx = S * 0.48, cy = S * 0.56;
   const L = S * 0.185 * nv(name, 0x71, 0.14), h = S * 0.048 * nv(name, 0x72, 0.16);
@@ -1403,9 +1537,121 @@ export function slugBody(c: Ctx, g: G, pIn: Pal, opts: { cerata?: boolean; plate
   }
 }
 
+function resetCombJelly(c: Ctx, p: Pal): void {
+  const cx = S * 0.50, cy = S * 0.495;
+  const rx = S * 0.180, ry = S * 0.285;
+  const membrane = c.createRadialGradient(cx - rx * 0.34, cy - ry * 0.38, 4, cx, cy, ry * 1.05);
+  membrane.addColorStop(0, 'rgba(255,255,255,0.66)');
+  membrane.addColorStop(0.42, `rgba(${p.cr},${p.cg},${p.cb},0.32)`);
+  membrane.addColorStop(0.78, `rgba(${p.cr},${p.cg},${p.cb},0.18)`);
+  membrane.addColorStop(1, `rgba(${p.cr},${p.cg},${p.cb},0.07)`);
+  c.fillStyle = membrane;
+  c.beginPath(); c.ellipse(cx, cy, rx, ry, 0, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(226,246,255,0.54)'; c.lineWidth = 3;
+  c.beginPath(); c.ellipse(cx, cy, rx, ry, 0, 0, TAU); c.stroke();
+
+  c.save();
+  c.beginPath(); c.ellipse(cx, cy, rx * 0.965, ry * 0.965, 0, 0, TAU); c.clip();
+  const rows = [-0.79, -0.57, -0.34, -0.11, 0.11, 0.34, 0.57, 0.79];
+  for (let i = 0; i < rows.length; i++) {
+    const off = rows[i]!;
+    const span = ry * Math.sqrt(1 - off * off) * 0.88;
+    c.strokeStyle = `hsla(${i * 43 + 8},92%,72%,0.18)`; c.lineWidth = 7; c.lineCap = 'round';
+    c.beginPath();
+    c.moveTo(cx + off * rx * 0.92, cy - span);
+    c.quadraticCurveTo(cx + off * rx * 1.08, cy, cx + off * rx * 0.92, cy + span); c.stroke();
+    for (let k = 0; k < 9; k++) {
+      const u = k / 8;
+      const y = cy - span + u * span * 2;
+      const bulge = 1 + Math.sin(u * Math.PI) * 0.13;
+      const x = cx + off * rx * 0.92 * bulge;
+      c.save(); c.translate(x, y); c.rotate(off * 0.22);
+      c.fillStyle = `hsla(${(i * 43 + k * 9) % 360},96%,76%,0.92)`;
+      c.beginPath(); c.ellipse(0, 0, 5.8, 2.5, 0, 0, TAU); c.fill();
+      c.restore();
+    }
+  }
+  c.strokeStyle = 'rgba(210,236,244,0.26)'; c.lineWidth = 3;
+  c.beginPath(); c.moveTo(cx, cy - ry * 0.82);
+  c.bezierCurveTo(cx - rx * 0.16, cy - ry * 0.22, cx + rx * 0.16, cy + ry * 0.22, cx, cy + ry * 0.78); c.stroke();
+  c.restore();
+  c.fillStyle = 'rgba(230,249,255,0.42)';
+  c.beginPath(); c.ellipse(cx, cy + ry * 0.68, rx * 0.10, ry * 0.055, 0, 0, TAU); c.fill();
+}
+
+function resetManOfWar(c: Ctx, g: G, p: Pal, name: string): void {
+  const r = nrng(g, name, 0xF10A7);
+  const floatY = S * 0.390;
+  /* The feeding colony hangs from a compact patch beneath the pneumatophore,
+     not evenly around the rim of a jellyfish bell. */
+  for (let i = 0; i < 12; i++) {
+    const u = i / 11;
+    const x = S * (0.405 + u * 0.205);
+    const len = S * (0.32 + r() * 0.25);
+    const sway = S * ((r() - 0.5) * 0.16);
+    c.strokeStyle = `rgba(${Math.min(255, p.cr + 35)},${Math.min(255, p.cg + 22)},${Math.min(255, p.cb + 48)},${0.44 + (i % 3) * 0.10})`;
+    c.lineWidth = i % 3 === 0 ? 5.4 : 2.8; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(x, floatY + S * 0.012);
+    c.bezierCurveTo(x + sway, floatY + len * 0.30, x - sway * 0.72, floatY + len * 0.68,
+      x + sway * 1.12, floatY + len); c.stroke();
+    if (i % 3 === 0) {
+      for (let k = 1; k <= 3; k++) {
+        const y = floatY + len * (0.15 + k * 0.14);
+        c.fillStyle = `rgba(${p.cr},${p.cg},${p.cb},0.58)`;
+        c.beginPath(); c.ellipse(x + sway * (k % 2 ? 0.24 : -0.18), y, 5.2, 9, 0.25, 0, TAU); c.fill();
+      }
+    }
+  }
+
+  const floatPath = (): void => {
+    c.moveTo(S * 0.180, floatY);
+    c.bezierCurveTo(S * 0.220, floatY - S * 0.046, S * 0.355, floatY - S * 0.066, S * 0.500, floatY - S * 0.055);
+    c.bezierCurveTo(S * 0.650, floatY - S * 0.070, S * 0.790, floatY - S * 0.036, S * 0.820, floatY);
+    c.bezierCurveTo(S * 0.775, floatY + S * 0.034, S * 0.635, floatY + S * 0.043, S * 0.505, floatY + S * 0.034);
+    c.bezierCurveTo(S * 0.350, floatY + S * 0.046, S * 0.215, floatY + S * 0.030, S * 0.180, floatY);
+    c.closePath();
+  };
+  const fg = c.createLinearGradient(0, floatY - S * 0.075, 0, floatY + S * 0.048);
+  fg.addColorStop(0, 'rgba(224,198,255,0.92)');
+  fg.addColorStop(0.42, `rgba(${p.cr},${p.cg},${p.cb},0.90)`);
+  fg.addColorStop(1, 'rgba(42,43,132,0.88)');
+  c.fillStyle = fg; c.beginPath(); floatPath(); c.fill();
+  c.strokeStyle = 'rgba(222,230,255,0.64)'; c.lineWidth = 2.6; c.beginPath(); floatPath(); c.stroke();
+
+  /* The crimped sail rises from, and shares its base with, the gas float. */
+  const sail = (): void => {
+    c.moveTo(S * 0.285, floatY - S * 0.018);
+    c.bezierCurveTo(S * 0.315, floatY - S * 0.105, S * 0.355, floatY - S * 0.158, S * 0.395, floatY - S * 0.132);
+    c.bezierCurveTo(S * 0.430, floatY - S * 0.194, S * 0.475, floatY - S * 0.226, S * 0.510, floatY - S * 0.165);
+    c.bezierCurveTo(S * 0.548, floatY - S * 0.232, S * 0.598, floatY - S * 0.188, S * 0.620, floatY - S * 0.132);
+    c.bezierCurveTo(S * 0.655, floatY - S * 0.172, S * 0.698, floatY - S * 0.095, S * 0.720, floatY - S * 0.020);
+    c.bezierCurveTo(S * 0.605, floatY - S * 0.052, S * 0.405, floatY - S * 0.055, S * 0.285, floatY - S * 0.018);
+    c.closePath();
+  };
+  const sg = c.createLinearGradient(0, floatY - S * 0.235, 0, floatY - S * 0.018);
+  sg.addColorStop(0, 'rgba(222,190,255,0.78)');
+  sg.addColorStop(0.55, `rgba(${Math.min(255, p.cr + 45)},${Math.min(255, p.cg + 32)},255,0.60)`);
+  sg.addColorStop(1, `rgba(${p.cr},${p.cg},${p.cb},0.82)`);
+  c.fillStyle = sg; c.beginPath(); sail(); c.fill();
+  c.strokeStyle = 'rgba(232,221,255,0.72)'; c.lineWidth = 2.8; c.beginPath(); sail(); c.stroke();
+  c.strokeStyle = 'rgba(77,69,180,0.34)'; c.lineWidth = 2;
+  for (let i = 0; i < 5; i++) {
+    const u = i / 4;
+    const x = S * (0.345 + u * 0.310);
+    c.beginPath(); c.moveTo(x, floatY - S * 0.038);
+    c.quadraticCurveTo(x - S * 0.015, floatY - S * (0.115 + Math.sin(u * Math.PI) * 0.058),
+      x, floatY - S * (0.105 + Math.sin(u * Math.PI) * 0.082)); c.stroke();
+  }
+  c.strokeStyle = 'rgba(235,224,255,0.42)'; c.lineWidth = 1.8;
+  c.beginPath(); c.moveTo(S * 0.245, floatY - S * 0.020);
+  c.bezierCurveTo(S * 0.410, floatY - S * 0.052, S * 0.650, floatY - S * 0.060, S * 0.770, floatY - S * 0.018); c.stroke();
+}
+
 export function jellyBody(c: Ctx, g: G, pIn: Pal, opts: { comb?: boolean; float?: boolean; barrel?: boolean; hue?: string }, name = ''): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
+  if (name === 'Comb Jelly') { resetCombJelly(c, p); return; }
+  if (name === 'Portuguese Man-of-War') { resetManOfWar(c, g, p, name); return; }
   const r = nrng(g, name, 0x1E11);
   const cx = S * 0.50, cy = S * 0.38;
   const bw = S * (opts.barrel ? 0.115 : 0.135) * nv(name, 0x81, 0.14);
@@ -1993,6 +2239,27 @@ export function isopodBody(c: Ctx, g: G, pIn: Pal, opts: { giant?: boolean; hue?
       c.beginPath(); c.moveTo(lx, ly);
       c.quadraticCurveTo(lx + out * 0.5, ly + bh * 0.55, lx + out, ly + bh * (far ? 0.75 : 1.05));
       c.stroke();
+    }
+  }
+
+  if (name === 'Isopod') {
+    /* Paired uropod paddles flank the pleotelson. Drawing them before the
+       dorsum and terminal plate buries their roots in the continuous shell. */
+    for (const side of [-1, 1] as const) {
+      const ug = c.createLinearGradient(cx + bw * 0.78, cy, cx + bw * 1.48, cy + side * bh);
+      ug.addColorStop(0, p.base); ug.addColorStop(1, p.dark);
+      c.fillStyle = ug;
+      c.beginPath();
+      c.moveTo(cx + bw * 0.76, cy + side * bh * 0.42);
+      c.bezierCurveTo(cx + bw * 1.02, cy + side * bh * 0.54, cx + bw * 1.35, cy + side * bh * 0.88,
+        cx + bw * 1.53, cy + side * bh * 0.98);
+      c.bezierCurveTo(cx + bw * 1.47, cy + side * bh * 0.57, cx + bw * 1.12, cy + side * bh * 0.27,
+        cx + bw * 0.76, cy + side * bh * 0.42);
+      c.closePath(); c.fill();
+      c.strokeStyle = 'rgba(218,224,222,0.42)'; c.lineWidth = 2;
+      c.beginPath();
+      c.moveTo(cx + bw * 0.84, cy + side * bh * 0.44);
+      c.quadraticCurveTo(cx + bw * 1.22, cy + side * bh * 0.58, cx + bw * 1.48, cy + side * bh * 0.92); c.stroke();
     }
   }
 

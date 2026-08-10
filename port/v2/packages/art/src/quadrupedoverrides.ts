@@ -62,9 +62,6 @@ export interface QuadSpec {
       patch (banteng), a dark lower-flank band (gazelle/springbok), vertical
       rump stripes (impala). One axis, several species. */
   accent?: 'rumpPatch' | 'flankBand' | 'rumpStripes' | 'chestBlaze' | 'chestCrescent' | 'chestU';
-  /** ★ GOLD AUDIT — the glider membrane: a loose furred sheet slung from
-      foreleg to hindleg, sagging below the belly line (Sugar Glider, Colugo) */
-  patagium?: boolean;
   /** ★ D-ART-134 — a pale tail TIP is a species mark (fox, wolf, wild dog),
       not a universal feature. It used to be stamped on every brush tail. */
   tailTip?: string;
@@ -216,6 +213,10 @@ export interface QuadSpec {
   pinnipedPose?: 'fur-seal' | 'sea-lion';
   /** Named glider whole-form: colugo encloses the tail; sugar glider does not. */
   gliderPlan?: 'colugo' | 'sugar-glider';
+  /** Legacy generic membrane switch, retained until a separately proven pixel-neutral cleanup. */
+  patagium?: boolean;
+  /** Full-reset Wave 2b: exact named bear/cat/hyaena whole-form owner. */
+  mammalBPlan?: 'ursid-r1' | 'felid-r1' | 'hyaenid-r1';
 }
 
 /** ★ WAVE 6 — THE SKULL. Nick, after looking at the wave-5 export: *"the heads
@@ -726,7 +727,630 @@ function faunaEaredPinniped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNull
   for (let i = -2; i <= 2; i++) { c.beginPath(); c.moveTo(hx + headR * 0.82, hy + headR * 0.24); c.lineTo(hx + headR * (1.34 + i * 0.05), hy + headR * (0.34 + i * 0.15)); c.stroke(); }
 }
 
+/** Reset Wave 2b's bear, cat, and hyaena rows need a different skeleton, not
+    more dials on the old shared barrel. These helpers own one continuous named
+    silhouette each: attachments overlap beneath one coat/light field, while
+    diagnostic marks are clipped into that same form. No unlisted mammal can
+    reach this route. */
+function mammalBTone(p: Pal, k: number, alpha = 1): string {
+  const rr = Math.max(0, Math.min(255, p.cr * k)) | 0;
+  const gg = Math.max(0, Math.min(255, p.cg * k)) | 0;
+  const bb = Math.max(0, Math.min(255, p.cb * k)) | 0;
+  return alpha === 1 ? `rgb(${rr},${gg},${bb})` : `rgba(${rr},${gg},${bb},${alpha})`;
+}
+
+function mammalBFill(c: Ctx, paths: readonly Path2D[], p: Pal, x0: number, y0: number, x1: number, y1: number): void {
+  const fill = c.createLinearGradient(x0, y0, x1, y1);
+  fill.addColorStop(0, p.lit);
+  fill.addColorStop(0.42, mammalBTone(p, 1.04));
+  fill.addColorStop(0.76, p.base);
+  fill.addColorStop(1, p.dark);
+  c.fillStyle = fill;
+  /* Fill ordered, overlapping components one at a time. Adding oppositely wound
+     limb/body subpaths to one Path2D cancels their overlap under the nonzero
+     rule and opens black paper-cut voids at shoulders, hips, and knees. Shared
+     gradient coordinates keep these solid overlaps visually continuous. */
+  for (const path of paths) c.fill(path);
+}
+
+function mammalBGround(c: Ctx, x: number, y: number, rx: number): void {
+  const sh = c.createRadialGradient(x, y, 2, x, y, rx);
+  sh.addColorStop(0, 'rgba(0,0,0,0.40)');
+  sh.addColorStop(1, 'rgba(0,0,0,0)');
+  c.fillStyle = sh;
+  c.beginPath(); c.ellipse(x, y, rx, S * 0.035, 0, 0, TAU); c.fill();
+}
+
+function faunaResetUrsid(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+  const p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0xB3A2 ^ nameSeedQ(name)) >>> 0));
+  const brown = name === 'Brown Bear' || name === 'Grizzly Bear';
+  const black = name === 'Black Bear';
+  const panda = name === 'Panda';
+  const polar = name === 'Polar Bear';
+  const sloth = name === 'Sloth Bear';
+  const spectacled = name === 'Spectacled Bear';
+  const sun = name === 'Sun Bear';
+  const groundY = S * 0.785;
+  const left = polar ? S * 0.145 : S * (sun ? 0.205 : 0.175);
+  const right = polar ? S * 0.655 : S * (sun ? 0.630 : 0.650);
+  const rumpTop = S * (black ? 0.350 : polar ? 0.365 : panda ? 0.365 : sun ? 0.425 : 0.405);
+  const shoulderTop = S * (brown ? (name === 'Grizzly Bear' ? 0.275 : 0.292)
+    : black ? 0.410 : polar ? 0.430 : panda ? 0.365 : sloth ? 0.350 : sun ? 0.405 : 0.380);
+  const bodyBottom = S * (sun ? 0.665 : panda ? 0.700 : 0.690);
+  const hx = S * (polar ? 0.785 : 0.765);
+  const hy = S * (polar ? 0.455 : sloth ? 0.440 : sun ? 0.455 : 0.420);
+  const headRx = S * (panda ? 0.102 : polar ? 0.076 : sloth ? 0.083 : sun ? 0.080 : 0.090);
+  const headRy = headRx * (panda ? 1.02 : 0.90);
+  const legW = S * (panda ? 0.052 : polar ? 0.047 : sun ? 0.043 : 0.050);
+
+  mammalBGround(c, S * 0.48, groundY + S * 0.020, S * (polar ? 0.33 : 0.29));
+
+  const total = new Path2D();
+  const tail = new Path2D();
+  tail.ellipse(left + S * 0.006, bodyBottom - S * 0.105, S * (panda ? 0.038 : 0.027), S * (panda ? 0.034 : 0.025), -0.2, 0, TAU);
+  total.addPath(tail);
+
+  const body = new Path2D();
+  body.moveTo(left, bodyBottom - S * 0.045);
+  body.bezierCurveTo(left - S * 0.030, bodyBottom - S * 0.145, left + S * 0.005, rumpTop + S * 0.018, left + S * 0.075, rumpTop);
+  if (brown) {
+    /* One broad muscular withers mass, not a row of small dorsal bumps. The
+       second curve crests well behind the neck so the hump remains distinct
+       from the single visible ear at card scale. */
+    body.bezierCurveTo(left + S * 0.180, rumpTop - S * 0.004, right - S * 0.245, rumpTop - S * 0.008,
+      right - S * 0.165, shoulderTop + S * 0.045);
+    body.bezierCurveTo(right - S * 0.135, shoulderTop - S * 0.035, right - S * 0.060, shoulderTop - S * 0.032,
+      right, shoulderTop + S * 0.035);
+  } else {
+    body.bezierCurveTo(left + S * 0.155, rumpTop - S * (black ? 0.020 : 0.002), right - S * 0.105, shoulderTop - S * 0.010, right, shoulderTop + S * 0.035);
+  }
+  body.bezierCurveTo(right + S * 0.035, shoulderTop + S * 0.095, right + S * 0.025, bodyBottom - S * 0.020, right - S * 0.030, bodyBottom + S * 0.015);
+  body.bezierCurveTo(right - S * 0.145, bodyBottom + S * 0.050, left + S * 0.090, bodyBottom + S * 0.045, left, bodyBottom - S * 0.045);
+  body.closePath(); total.addPath(body);
+
+  const bearLeg = (x: number, far: boolean, fore: boolean): Path2D => {
+    const q = new Path2D();
+    const rootY = bodyBottom - S * (fore ? 0.060 : 0.045);
+    const lean = fore ? S * 0.010 : -S * 0.006;
+    const w = legW * (far ? 0.82 : 1);
+    const ankleX = x + lean + (far ? -S * 0.010 : 0);
+    q.moveTo(x - w, rootY);
+    q.bezierCurveTo(x - w * 1.18, rootY + S * 0.065, ankleX - w * 0.78, groundY - S * 0.060, ankleX - w * 0.56, groundY - S * 0.026);
+    q.quadraticCurveTo(ankleX + w * 0.20, groundY + S * 0.008, ankleX + w * 1.42, groundY - S * 0.006);
+    q.quadraticCurveTo(ankleX + w * 1.54, groundY - S * 0.030, ankleX + w * 0.72, groundY - S * 0.054);
+    q.bezierCurveTo(ankleX + w * 0.70, groundY - S * 0.110, x + w * 1.18, rootY + S * 0.055, x + w, rootY);
+    q.closePath(); return q;
+  };
+  const legPositions = [left + S * 0.105, left + S * 0.155, right - S * 0.115, right - S * 0.065];
+  const legs = legPositions.map((x, i) => bearLeg(x, i === 0 || i === 2, i > 1));
+  for (const leg of legs) total.addPath(leg);
+
+  const neck = new Path2D();
+  neck.moveTo(right - S * 0.055, shoulderTop + S * 0.020);
+  neck.bezierCurveTo(right + S * 0.020, shoulderTop - S * (polar ? 0.010 : 0.035), hx - headRx * 0.95, hy - headRy * 0.74, hx - headRx * 0.56, hy - headRy * 0.52);
+  neck.lineTo(hx - headRx * 0.50, hy + headRy * 0.70);
+  neck.bezierCurveTo(hx - headRx * 0.92, hy + headRy * 0.88, right + S * 0.010, bodyBottom - S * 0.020, right - S * 0.040, bodyBottom - S * 0.010);
+  neck.closePath(); total.addPath(neck);
+  const head = new Path2D();
+  if (brown) {
+    /* Brown/grizzly profile: high forehead folds inward before the short
+       muzzle, producing the diagnostic concave/dished face in silhouette. */
+    head.moveTo(hx - headRx * 0.84, hy + headRy * 0.48);
+    head.bezierCurveTo(hx - headRx * 1.02, hy - headRy * 0.10, hx - headRx * 0.62, hy - headRy * 0.82,
+      hx + headRx * 0.05, hy - headRy * 0.88);
+    head.bezierCurveTo(hx + headRx * 0.30, hy - headRy * 0.84, hx + headRx * 0.46, hy - headRy * 0.48,
+      hx + headRx * 0.28, hy - headRy * 0.06);
+    head.bezierCurveTo(hx + headRx * 0.38, hy + headRy * 0.34, hx + headRx * 0.02, hy + headRy * 0.90,
+      hx - headRx * 0.58, hy + headRy * 0.78);
+    head.quadraticCurveTo(hx - headRx * 0.82, hy + headRy * 0.70, hx - headRx * 0.84, hy + headRy * 0.48);
+    head.closePath();
+  } else {
+    head.ellipse(hx, hy, headRx, headRy, -0.06, 0, TAU);
+  }
+  total.addPath(head);
+
+  const muzzle = new Path2D();
+  const muzzleLen = headRx * (sloth ? 1.22 : polar ? 1.02 : brown ? 0.85 : sun ? 0.66 : 0.78);
+  muzzle.moveTo(hx + headRx * (brown ? 0.18 : 0.30), hy - headRy * (brown ? -0.02 : polar ? 0.25 : 0.20));
+  if (brown) muzzle.quadraticCurveTo(hx + headRx * 0.40, hy + headRy * 0.05, hx + muzzleLen, hy + headRy * 0.04);
+  else if (polar) muzzle.quadraticCurveTo(hx + headRx * 0.68, hy - headRy * 0.34, hx + muzzleLen, hy + headRy * 0.02);
+  else muzzle.quadraticCurveTo(hx + headRx * 0.60, hy - headRy * 0.14, hx + muzzleLen, hy + headRy * 0.02);
+  muzzle.quadraticCurveTo(hx + muzzleLen * 1.08, hy + headRy * 0.26, hx + muzzleLen * 0.80, hy + headRy * 0.43);
+  muzzle.quadraticCurveTo(hx + headRx * 0.44, hy + headRy * 0.48, hx + headRx * 0.20, hy + headRy * 0.30);
+  muzzle.closePath(); total.addPath(muzzle);
+
+  const ears: Path2D[] = [];
+  const earTall = headRy * (black ? 0.54 : panda ? 0.38 : polar ? 0.30 : 0.40);
+  for (const side of brown ? [-1] : [-1, 1]) {
+    const ear = new Path2D();
+    ear.ellipse(hx - headRx * 0.36 + side * headRx * 0.36, hy - headRy * 0.78,
+      headRx * (black ? 0.23 : 0.20), earTall, side * 0.18, 0, TAU);
+    ears.push(ear); total.addPath(ear);
+  }
+
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck, head, muzzle, ...ears],
+    p, left, rumpTop, right + S * 0.16, bodyBottom);
+  c.save(); c.clip(total);
+  const furCount = sun || polar ? 34 : sloth ? 96 : 66;
+  c.strokeStyle = sloth ? 'rgba(220,210,190,0.26)' : mammalBTone(p, 1.34, 0.25);
+  c.lineCap = 'round';
+  for (let i = 0; i < furCount; i++) {
+    const x = left - S * 0.010 + r() * (right - left + S * 0.19);
+    const y = rumpTop + r() * (bodyBottom - rumpTop + S * 0.09);
+    c.lineWidth = 0.8 + r() * 1.2; c.beginPath(); c.moveTo(x, y);
+    c.lineTo(x - S * (0.010 + r() * 0.022), y + S * (0.008 + r() * 0.014)); c.stroke();
+  }
+  if (name === 'Grizzly Bear') {
+    c.strokeStyle = 'rgba(234,218,186,0.48)'; c.lineCap = 'round';
+    for (let i = 0; i < 48; i++) {
+      const x = left + S * 0.015 + r() * (right - left + S * 0.050);
+      const y = rumpTop + S * 0.015 + r() * (bodyBottom - rumpTop + S * 0.025);
+      c.lineWidth = 1.1 + r() * 1.1; c.beginPath(); c.moveTo(x, y);
+      c.lineTo(x - S * (0.009 + r() * 0.017), y + S * (0.006 + r() * 0.010)); c.stroke();
+    }
+  }
+  c.restore();
+
+  if (panda) {
+    /* The shoulder saddle and black legs are anatomy layers, not rectangles
+       stamped over the animal. Fill the actual limb paths so the band joins
+       the forelegs without reopening the composite-path void. */
+    c.fillStyle = '#15171c'; c.save(); c.clip(body);
+    c.beginPath(); c.ellipse(right - S * 0.045, shoulderTop + S * 0.105, S * 0.095, S * 0.175, -0.10, 0, TAU); c.fill(); c.restore();
+    for (const leg of legs) c.fill(leg);
+  }
+
+  const muzzleColour = spec.muzzleHue ?? mammalBTone(p, 1.24);
+  const mg = c.createLinearGradient(hx, hy, hx + muzzleLen, hy + headRy * 0.35);
+  mg.addColorStop(0, mammalBTone(p, 1.08)); mg.addColorStop(0.34, muzzleColour); mg.addColorStop(1, mammalBTone(p, 0.62));
+  c.fillStyle = mg; c.fill(muzzle);
+  if (panda) {
+    c.fillStyle = '#11141a';
+    for (const side of [-1, 1]) { c.beginPath(); c.ellipse(hx + side * headRx * 0.39, hy - headRy * 0.08, headRx * 0.25, headRy * 0.34, side * 0.34, 0, TAU); c.fill(); }
+    c.fillStyle = '#15171c'; for (const ear of ears) c.fill(ear);
+  }
+  if (spectacled) {
+    c.strokeStyle = '#e6d6a8'; c.lineWidth = S * 0.016;
+    c.beginPath(); c.ellipse(hx + headRx * 0.30, hy - headRy * 0.10, headRx * 0.30, headRy * 0.38, -0.18, 0, TAU); c.stroke();
+    c.beginPath(); c.moveTo(hx + headRx * 0.08, hy + headRy * 0.08); c.lineTo(hx - headRx * 0.20, hy + headRy * 0.70); c.stroke();
+  }
+  if (sloth || sun) {
+    c.save(); c.clip(body); c.strokeStyle = sloth ? '#e2d4a6' : '#e4bd62';
+    c.lineWidth = S * (sloth ? 0.026 : 0.023); c.lineCap = 'round';
+    c.beginPath(); c.arc(right - S * 0.105, bodyBottom - S * 0.105, S * 0.054, sloth ? 0.12 : 0.02, sloth ? Math.PI - 0.10 : Math.PI - 0.24); c.stroke();
+    if (sloth) { c.beginPath(); c.moveTo(right - S * 0.105, bodyBottom - S * 0.050); c.lineTo(right - S * 0.105, bodyBottom - S * 0.010); c.stroke(); }
+    c.restore();
+  }
+
+  c.fillStyle = '#101319'; c.beginPath();
+  c.ellipse(hx + headRx * 0.32, hy - headRy * 0.15, headRx * 0.105, headRy * 0.115, 0, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(240,244,245,0.90)'; c.beginPath(); c.arc(hx + headRx * 0.29, hy - headRy * 0.19, headRx * 0.030, 0, TAU); c.fill();
+  c.fillStyle = '#171518'; c.beginPath(); c.ellipse(hx + muzzleLen * 1.02, hy + headRy * 0.08, headRx * 0.17, headRy * 0.14, 0.10, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(31,24,23,0.72)'; c.lineWidth = 2.2; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(hx + headRx * 0.50, hy + headRy * 0.34); c.quadraticCurveTo(hx + muzzleLen * 0.78, hy + headRy * 0.48, hx + muzzleLen * 0.92, hy + headRy * 0.30); c.stroke();
+
+  const clawLen = S * (black ? 0.014 : brown ? 0.030 : sloth ? 0.035 : sun ? 0.033 : polar ? 0.023 : 0.020);
+  c.strokeStyle = brown || sloth || sun ? '#ead9ad' : '#c9bea6';
+  c.lineWidth = 2.4; c.lineCap = 'round';
+  for (const x of [legPositions[1]!, legPositions[3]!]) {
+    for (let i = 0; i < 3; i++) {
+      const sx = x + legW * (0.35 + i * 0.34);
+      c.beginPath(); c.moveTo(sx, groundY - S * 0.012); c.quadraticCurveTo(sx + clawLen * 0.72, groundY - S * 0.002, sx + clawLen, groundY + S * 0.006); c.stroke();
+    }
+  }
+}
+
+interface MammalBFelidShape {
+  body: number; depth: number; leg: number; head: number; tail: number; tailW: number;
+  ear: number; paw: number; rump: number; shoulder: number; tuck: number;
+}
+
+const MAMMAL_B_FELID: Record<string, MammalBFelidShape> = {
+  'Bobcat': { body: 158, depth: 65, leg: 74, head: 35, tail: 22, tailW: 13, ear: 24, paw: 16, rump: 7, shoulder: 3, tuck: 13 },
+  'Caracal': { body: 162, depth: 57, leg: 94, head: 31, tail: 66, tailW: 8, ear: 31, paw: 13, rump: 8, shoulder: 1, tuck: 15 },
+  'Cat': { body: 150, depth: 55, leg: 65, head: 34, tail: 120, tailW: 8, ear: 23, paw: 12, rump: 8, shoulder: 3, tuck: 16 },
+  'Cheetah': { body: 184, depth: 57, leg: 104, head: 29, tail: 142, tailW: 8, ear: 16, paw: 11, rump: 2, shoulder: 8, tuck: 25 },
+  'Clouded Leopard': { body: 180, depth: 70, leg: 57, head: 35, tail: 185, tailW: 14, ear: 17, paw: 16, rump: 8, shoulder: 5, tuck: 12 },
+  'Cougar': { body: 188, depth: 65, leg: 83, head: 34, tail: 150, tailW: 13, ear: 17, paw: 15, rump: 17, shoulder: 2, tuck: 18 },
+  'Jaguar': { body: 190, depth: 82, leg: 62, head: 43, tail: 102, tailW: 14, ear: 17, paw: 18, rump: 5, shoulder: 6, tuck: 9 },
+  'Leopard': { body: 192, depth: 65, leg: 76, head: 35, tail: 155, tailW: 11, ear: 17, paw: 15, rump: 6, shoulder: 6, tuck: 20 },
+  'Lion': { body: 198, depth: 78, leg: 76, head: 39, tail: 150, tailW: 9, ear: 16, paw: 17, rump: 3, shoulder: 3, tuck: 12 },
+  'Lynx': { body: 158, depth: 66, leg: 91, head: 35, tail: 20, tailW: 13, ear: 25, paw: 21, rump: 12, shoulder: 1, tuck: 12 },
+  'Ocelot': { body: 158, depth: 62, leg: 67, head: 34, tail: 78, tailW: 9, ear: 17, paw: 14, rump: 6, shoulder: 4, tuck: 13 },
+  'Sand Cat': { body: 145, depth: 58, leg: 55, head: 38, tail: 94, tailW: 11, ear: 24, paw: 17, rump: 5, shoulder: 4, tuck: 10 },
+  'Serval': { body: 150, depth: 50, leg: 127, head: 27, tail: 44, tailW: 8, ear: 43, paw: 11, rump: 5, shoulder: 2, tuck: 17 },
+  'Snow Leopard': { body: 184, depth: 72, leg: 58, head: 38, tail: 190, tailW: 18, ear: 15, paw: 22, rump: 8, shoulder: 6, tuck: 10 },
+  'Tiger': { body: 198, depth: 78, leg: 77, head: 39, tail: 146, tailW: 13, ear: 16, paw: 18, rump: 5, shoulder: 5, tuck: 12 },
+};
+
+function faunaResetFelid(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+  const p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0xF311 ^ nameSeedQ(name)) >>> 0));
+  const d = MAMMAL_B_FELID[name] ?? MAMMAL_B_FELID.Cat!;
+  const bobbed = name === 'Bobcat' || name === 'Lynx';
+  const serval = name === 'Serval';
+  const sand = name === 'Sand Cat';
+  const framedLongTail = ['Cheetah', 'Clouded Leopard', 'Cougar', 'Leopard', 'Lion', 'Snow Leopard', 'Tiger'].includes(name);
+  const groundY = S * 0.790, left = S * (framedLongTail ? (name === 'Clouded Leopard' || name === 'Snow Leopard' ? 0.340 : 0.300) : 0.265), right = left + d.body;
+  const bodyBottom = groundY - d.leg + 10, baseTop = bodyBottom - d.depth;
+  const rumpTop = baseTop - d.rump, shoulderTop = baseTop - d.shoulder;
+  const tailBaseY = rumpTop + d.depth * 0.58;
+  const raisedTail = name === 'Cat';
+  const tipX = Math.max(S * 0.035, left - d.tail);
+  const tipY = raisedTail ? S * 0.255 : bobbed ? tailBaseY + 8 : serval ? tailBaseY + 48
+    : groundY - (name === 'Clouded Leopard' || name === 'Snow Leopard' ? 31 : 42);
+  const hx = right + d.head * 0.72, hy = shoulderTop + d.head * (sand ? 0.48 : 0.66);
+  const headRy = d.head * (sand ? 0.74 : name === 'Jaguar' ? 0.90 : 0.82);
+  const bigJaw = name === 'Jaguar' || name === 'Lion' || name === 'Tiger';
+
+  mammalBGround(c, S * 0.49, groundY + S * 0.016, S * 0.33);
+
+  let lionMane: Path2D | undefined;
+  if (name === 'Lion') {
+    const mane = new Path2D();
+    mane.moveTo(hx - d.head * 1.08, hy - headRy * 0.96);
+    for (let i = 0; i <= 14; i++) {
+      const a = -Math.PI * 0.78 + i * (Math.PI * 1.62 / 14);
+      const rr = d.head * (i % 2 ? 1.36 : 1.18);
+      const x = hx - d.head * 0.28 + Math.cos(a) * rr;
+      const y = hy + headRy * 0.12 + Math.sin(a) * rr;
+      if (i === 0) mane.moveTo(x, y); else mane.lineTo(x, y);
+    }
+    mane.closePath();
+    lionMane = mane;
+  }
+
+  const total = new Path2D();
+  const tail = new Path2D();
+  tail.moveTo(left + 8, tailBaseY - d.tailW);
+  if (bobbed) {
+    /* A bobcat/lynx tail is a thick rounded stump carried off the rump, not a
+       shortened version of the generic diagonal tail curve. */
+    tail.bezierCurveTo(left - d.tail * 0.30, tailBaseY - d.tailW * 0.82,
+      tipX - d.tailW * 0.35, tipY - d.tailW * 0.58, tipX, tipY);
+    tail.quadraticCurveTo(tipX - d.tailW * 0.18, tipY + d.tailW * 0.74,
+      tipX + d.tailW * 0.64, tipY + d.tailW * 0.82);
+    tail.bezierCurveTo(left - d.tail * 0.34, tailBaseY + d.tailW * 1.10,
+      left - 2, tailBaseY + d.tailW * 1.08, left + 8, tailBaseY + d.tailW);
+  } else if (raisedTail) {
+    tail.bezierCurveTo(left - 45, tailBaseY - 20, tipX - 18, S * 0.335, tipX, tipY);
+    tail.quadraticCurveTo(tipX + 8, tipY - 7, tipX + d.tailW * 1.15, tipY + 2);
+    tail.bezierCurveTo(tipX + 9, S * 0.360, left - 25, tailBaseY + 18, left + 8, tailBaseY + d.tailW);
+  } else {
+    const outwardControl = Math.max(S * 0.028, left - d.tail * 0.72);
+    const returnControl = Math.max(S * 0.040, left - d.tail * 0.58);
+    tail.bezierCurveTo(left - d.tail * 0.22, tailBaseY + 8, outwardControl, tipY - 22, tipX, tipY);
+    tail.quadraticCurveTo(tipX - 3, tipY + d.tailW * 0.55, tipX + d.tailW * 0.72, tipY + d.tailW * 0.72);
+    tail.bezierCurveTo(returnControl, tipY + d.tailW * 0.82, left - d.tail * 0.12, tailBaseY + d.tailW * 1.25, left + 8, tailBaseY + d.tailW);
+  }
+  tail.closePath(); total.addPath(tail);
+
+  const body = new Path2D();
+  body.moveTo(left, rumpTop + 10);
+  body.bezierCurveTo(left + d.body * 0.13, rumpTop - 7, left + d.body * 0.37, baseTop + 4, left + d.body * 0.56, baseTop + 5);
+  body.bezierCurveTo(left + d.body * 0.74, baseTop + 4, right - 24, shoulderTop - 6, right, shoulderTop + 7);
+  body.bezierCurveTo(right + 8, shoulderTop + d.depth * 0.42, right - 1, bodyBottom - 7, right - 28, bodyBottom + 3);
+  body.quadraticCurveTo(left + d.body * 0.60, bodyBottom - d.tuck, left + d.body * 0.43, bodyBottom - d.tuck * 1.10);
+  body.quadraticCurveTo(left + d.body * 0.26, bodyBottom + 9, left + 18, bodyBottom - 2);
+  body.bezierCurveTo(left - 8, bodyBottom - 17, left - 12, rumpTop + 31, left, rumpTop + 10);
+  body.closePath(); total.addPath(body);
+
+  const catLeg = (x: number, hind: boolean, far: boolean): Path2D => {
+    const q = new Path2D(), y0 = bodyBottom - (hind ? 22 : 26), w = (hind ? 15 : 11) * (far ? 0.82 : 1);
+    const gY = groundY - (far ? 4 : 0), paw = d.paw * (far ? 0.82 : 1);
+    q.moveTo(x - w, y0);
+    if (hind) {
+      q.bezierCurveTo(x - w * 1.15, y0 + d.leg * 0.22, x + 18, y0 + d.leg * 0.36, x + 20, y0 + d.leg * 0.47);
+      q.bezierCurveTo(x + 18, y0 + d.leg * 0.61, x - 6, gY - 32, x - 6, gY - 18);
+    } else {
+      q.bezierCurveTo(x - w * 0.92, y0 + d.leg * 0.32, x - 9, y0 + d.leg * 0.48, x - 6, y0 + d.leg * 0.58);
+      q.bezierCurveTo(x - 2, y0 + d.leg * 0.73, x + 1, gY - 29, x + 2, gY - 17);
+    }
+    q.quadraticCurveTo(x + paw * 0.52, gY - 5, x + paw, gY - 7);
+    q.quadraticCurveTo(x + paw * 1.20, gY - 15, x + paw * 0.72, gY - 23);
+    if (hind) q.bezierCurveTo(x + 8, gY - 36, x + w * 1.05, y0 + d.leg * 0.22, x + w, y0);
+    else q.bezierCurveTo(x + 11, gY - 42, x + w * 1.08, y0 + d.leg * 0.18, x + w, y0);
+    q.closePath(); return q;
+  };
+  const legs = [catLeg(left + 35, true, true), catLeg(left + 61, true, false), catLeg(right - 48, false, true), catLeg(right - 24, false, false)];
+  for (const leg of legs) total.addPath(leg);
+
+  const neck = new Path2D();
+  neck.moveTo(right - 37, shoulderTop + 2);
+  neck.quadraticCurveTo(right + 12, shoulderTop - 3, hx - d.head * 0.58, hy - headRy * 0.68);
+  neck.lineTo(hx - d.head * 0.45, hy + headRy * 0.70);
+  neck.quadraticCurveTo(right + 10, bodyBottom - 6, right - 24, bodyBottom - 3);
+  neck.closePath(); total.addPath(neck);
+
+  const ruffs: Path2D[] = [];
+  if (name === 'Tiger') {
+    const ruff = new Path2D();
+    ruff.moveTo(hx - d.head * 0.72, hy - headRy * 0.26);
+    ruff.lineTo(hx - d.head * 1.14, hy + headRy * 0.05);
+    ruff.lineTo(hx - d.head * 0.88, hy + headRy * 0.24);
+    ruff.lineTo(hx - d.head * 1.02, hy + headRy * 0.52);
+    ruff.lineTo(hx - d.head * 0.46, hy + headRy * 0.62);
+    ruff.closePath(); ruffs.push(ruff); total.addPath(ruff);
+  }
+  const head = new Path2D();
+  if (bobbed) {
+    /* The bobcat/lynx cheek fan is the skull's own lower outline: two deep
+       pointed lobes and a rear flare, rather than a hidden same-colour patch
+       under the neck. This keeps the ruff seamless and legible at 132 px. */
+    head.moveTo(hx - d.head * 0.76, hy - headRy * 0.58);
+    head.bezierCurveTo(hx - d.head * 0.24, hy - headRy * 0.92, hx + d.head * 0.58, hy - headRy * 0.72,
+      hx + d.head * 0.84, hy - headRy * 0.18);
+    head.quadraticCurveTo(hx + d.head * 0.96, hy + headRy * 0.30, hx + d.head * 0.52, hy + headRy * 0.54);
+    head.lineTo(hx + d.head * 0.28, hy + headRy * 1.08);
+    head.lineTo(hx - d.head * 0.02, hy + headRy * 0.68);
+    head.lineTo(hx - d.head * 0.56, hy + headRy * 1.22);
+    head.lineTo(hx - d.head * 0.50, hy + headRy * 0.52);
+    head.lineTo(hx - d.head * 1.16, hy + headRy * 0.34);
+    head.lineTo(hx - d.head * 0.78, hy + headRy * 0.02);
+    head.quadraticCurveTo(hx - d.head * 1.02, hy - headRy * 0.32, hx - d.head * 0.76, hy - headRy * 0.58);
+    head.closePath();
+  } else {
+    head.ellipse(hx, hy, sand ? d.head * 1.12 : d.head, headRy, -0.06, 0, TAU);
+  }
+  total.addPath(head);
+  const muzzle = new Path2D();
+  const muzzleLen = d.head * (bigJaw ? 0.86 : name === 'Cheetah' ? 0.63 : sand ? 0.90 : 0.70);
+  muzzle.moveTo(hx + d.head * 0.28, hy - headRy * 0.08);
+  muzzle.quadraticCurveTo(hx + d.head * 0.58, hy - headRy * 0.12, hx + muzzleLen, hy + headRy * 0.04);
+  muzzle.quadraticCurveTo(hx + muzzleLen * 1.10, hy + headRy * (bigJaw ? 0.34 : 0.28), hx + d.head * 0.58, hy + headRy * (bigJaw ? 0.52 : 0.40));
+  muzzle.quadraticCurveTo(hx + d.head * 0.28, hy + headRy * 0.40, hx + d.head * 0.20, hy + headRy * 0.18);
+  muzzle.closePath(); total.addPath(muzzle);
+
+  const pointEars = ['Bobcat', 'Caracal', 'Cat', 'Lynx', 'Sand Cat', 'Serval'].includes(name);
+  const earPaths: Path2D[] = [];
+  for (const side of [-1, 1]) {
+    const ex = hx - d.head * (sand ? 0.05 : 0.36) + side * d.head * (sand ? 0.46 : serval ? 0.48 : 0.30);
+    const baseY = hy - headRy * (sand ? 0.38 : serval ? 0.58 : 0.68);
+    const ear = new Path2D();
+    if (serval) {
+      /* The serval's ears are extraordinarily large rounded upright ovals;
+         sharp generic cat triangles lose that identity at thumbnail scale. */
+      ear.ellipse(ex, baseY - d.ear * 0.43, d.ear * 0.36, d.ear * 0.60, side * 0.08, 0, TAU);
+    } else if (sand) {
+      /* Sand-cat ears sit low and far apart on a broad, flattened skull. */
+      ear.moveTo(ex - d.ear * 0.66, baseY + d.ear * 0.12);
+      ear.quadraticCurveTo(ex - d.ear * 0.44, baseY - d.ear * 0.60, ex, baseY - d.ear * 1.15);
+      ear.quadraticCurveTo(ex + d.ear * 0.44, baseY - d.ear * 0.60, ex + d.ear * 0.66, baseY + d.ear * 0.12);
+    } else if (pointEars) {
+      ear.moveTo(ex - d.ear * 0.46, baseY + d.ear * 0.18);
+      ear.quadraticCurveTo(ex - d.ear * 0.10, baseY - d.ear * 0.34, ex + side * d.ear * 0.18, baseY - d.ear);
+      ear.quadraticCurveTo(ex + d.ear * 0.50, baseY - d.ear * 0.22, ex + d.ear * 0.44, baseY + d.ear * 0.20);
+    } else {
+      ear.ellipse(ex, baseY - d.ear * 0.24, d.ear * 0.50, d.ear * 0.58, side * 0.22, 0, TAU);
+    }
+    ear.closePath(); earPaths.push(ear); total.addPath(ear);
+  }
+
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck, ...ruffs],
+    p, left, baseTop, right + d.head * 1.5, bodyBottom);
+  if (lionMane) {
+    const mg = c.createRadialGradient(hx - d.head * 0.44, hy - d.head * 0.45, 3, hx - d.head * 0.25, hy, d.head * 1.45);
+    mg.addColorStop(0, '#8a673d'); mg.addColorStop(0.68, '#5b412b'); mg.addColorStop(1, '#2e261e');
+    c.fillStyle = mg; c.fill(lionMane);
+  }
+  mammalBFill(c, [head, muzzle, ...earPaths], p, left, baseTop, right + d.head * 1.5, bodyBottom);
+
+  c.save(); c.clip(total);
+  if (name === 'Cheetah' || name === 'Bobcat' || name === 'Serval') {
+    const count = name === 'Serval' ? 30 : name === 'Cheetah' ? 46 : 28;
+    const size = name === 'Serval' ? 4.2 : name === 'Cheetah' ? 3.2 : 2.8;
+    for (let i = 0; i < count; i++) {
+      const x = left + 13 + r() * (d.body - 22), y = baseTop + 12 + r() * (d.depth + 16);
+      c.fillStyle = `rgba(30,24,19,${0.72 + r() * 0.20})`; c.beginPath(); c.arc(x, y, size * (0.72 + r() * 0.55), 0, TAU); c.fill();
+    }
+    if (name === 'Serval') {
+      c.strokeStyle = 'rgba(30,24,19,0.86)'; c.lineWidth = 6;
+      for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(right - 32 + i * 9, shoulderTop); c.lineTo(right - 45 + i * 9, shoulderTop + 42); c.stroke(); }
+    }
+  } else if (name === 'Jaguar' || name === 'Leopard' || name === 'Snow Leopard' || name === 'Ocelot') {
+    const count = name === 'Ocelot' ? 15 : 24;
+    for (let i = 0; i < count; i++) {
+      const chainRow = name === 'Ocelot' ? Math.floor(i / 5) : 0;
+      const chainCol = name === 'Ocelot' ? i % 5 : 0;
+      const x = name === 'Ocelot'
+        ? left + 24 + chainCol * ((d.body - 52) / 4) + (chainRow % 2) * 5
+        : left + 16 + r() * (d.body - 28);
+      const y = name === 'Ocelot' ? baseTop + 16 + chainRow * 15 : baseTop + 14 + r() * (d.depth + 11);
+      const rx = (name === 'Ocelot' ? 9.5 : name === 'Snow Leopard' ? 8 : 6) * (name === 'Ocelot' ? 1 : 0.78 + r() * 0.52);
+      const ry = (name === 'Ocelot' ? 4.3 : name === 'Snow Leopard' ? 6.5 : 5.2) * (name === 'Ocelot' ? 1 : 0.78 + r() * 0.50);
+      c.strokeStyle = name === 'Snow Leopard' ? 'rgba(52,57,67,0.78)' : 'rgba(38,28,18,0.88)';
+      c.lineWidth = name === 'Snow Leopard' ? 3.0 : 2.7; c.beginPath(); c.ellipse(x, y, rx, ry, name === 'Ocelot' ? (chainRow - 1) * 0.08 : r() * 0.7 - 0.35, 0, TAU); c.stroke();
+      if (name === 'Jaguar') { c.fillStyle = 'rgba(34,24,17,0.88)'; c.beginPath(); c.arc(x, y, 1.7, 0, TAU); c.fill(); }
+    }
+    if (name === 'Ocelot') {
+      c.strokeStyle = 'rgba(38,28,18,0.86)'; c.lineWidth = 3.4; c.lineCap = 'round';
+      for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(right - 55, baseTop + 15 + i * 12); c.quadraticCurveTo(right - 31, baseTop + 19 + i * 12, right - 14, baseTop + 25 + i * 12); c.stroke(); }
+    }
+  } else if (name === 'Clouded Leopard') {
+    for (let i = 0; i < 13; i++) {
+      const x = left + 18 + r() * (d.body - 34), y = baseTop + 18 + r() * (d.depth + 4);
+      c.strokeStyle = 'rgba(45,33,25,0.88)'; c.lineWidth = 4.4; c.beginPath();
+      c.ellipse(x, y, 12 + r() * 8, 7 + r() * 5, r() * 0.8 - 0.4, 0, TAU); c.stroke();
+      softMark(c, x, y, 10 + r() * 5, 5 + r() * 3, '208,184,132', 0.28, r() * TAU);
+    }
+  } else if (name === 'Tiger' || name === 'Cat') {
+    const stripes = name === 'Tiger' ? 13 : 7;
+    c.fillStyle = name === 'Tiger' ? 'rgba(31,25,21,0.92)' : 'rgba(34,39,45,0.72)';
+    for (let i = 0; i < stripes; i++) {
+      const x = left + 12 + i * ((d.body - 26) / stripes);
+      const q = new Path2D(); q.moveTo(x - 3, baseTop - 3); q.lineTo(x + 5, baseTop - 1);
+      q.quadraticCurveTo(x + 2, baseTop + d.depth * 0.36, x - 1 + (i % 2 ? 7 : -5), bodyBottom - 12 - (i % 3) * 7);
+      q.lineTo(x - 7 + (i % 2 ? 7 : -5), bodyBottom - 10 - (i % 3) * 7);
+      q.quadraticCurveTo(x - 3, baseTop + d.depth * 0.34, x - 3, baseTop - 3); q.closePath(); c.fill(q);
+    }
+  }
+  c.restore();
+
+  if (name === 'Tiger' || name === 'Sand Cat') {
+    c.save(); c.clip(total); c.strokeStyle = name === 'Tiger' ? 'rgba(31,25,21,0.94)' : 'rgba(72,63,52,0.78)';
+    c.lineWidth = name === 'Tiger' ? 8 : 6;
+    for (let i = 1; i <= (name === 'Tiger' ? 7 : 5); i++) {
+      const t = i / (name === 'Tiger' ? 8 : 6), x = left - d.tail * t;
+      const y = tailBaseY * (1 - t) + tipY * t;
+      c.beginPath(); c.moveTo(x, y - d.tailW * 1.4); c.lineTo(x + 3, y + d.tailW * 1.4); c.stroke();
+    }
+    if (name === 'Sand Cat') {
+      for (const x of [left + 55, right - 28]) {
+        for (let j = 0; j < 2; j++) { c.beginPath(); c.moveTo(x - 15, groundY - 27 - j * 15); c.lineTo(x + 18, groundY - 25 - j * 15); c.stroke(); }
+      }
+    }
+    c.restore();
+  }
+
+  const muzzleG = c.createLinearGradient(hx, hy, hx + muzzleLen, hy + headRy * 0.35);
+  muzzleG.addColorStop(0, mammalBTone(p, 1.22)); muzzleG.addColorStop(1, mammalBTone(p, 0.70)); c.fillStyle = muzzleG; c.fill(muzzle);
+  c.fillStyle = mammalBTone(p, 0.50, 0.74);
+  for (const ear of earPaths) { c.save(); c.clip(ear); c.fillRect(hx - d.head * 1.2, hy - d.ear * 1.8, d.head * 2.4, d.ear * 1.55); c.restore(); }
+
+  const eyeX = hx + d.head * 0.26, eyeY = hy - headRy * 0.18;
+  c.fillStyle = '#d7aa54'; c.beginPath(); c.ellipse(eyeX, eyeY, d.head * 0.125, d.head * 0.105, 0, 0, TAU); c.fill();
+  c.strokeStyle = '#121318'; c.lineWidth = Math.max(1.8, d.head * 0.055); c.beginPath(); c.moveTo(eyeX, eyeY - d.head * 0.085); c.lineTo(eyeX, eyeY + d.head * 0.085); c.stroke();
+  c.fillStyle = '#16151a'; c.beginPath(); c.ellipse(hx + muzzleLen * 1.04, hy + headRy * 0.08, d.head * 0.13, d.head * 0.105, 0.08, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(32,25,23,0.76)'; c.lineWidth = 1.8; c.beginPath(); c.moveTo(hx + d.head * 0.48, hy + headRy * 0.35); c.quadraticCurveTo(hx + muzzleLen * 0.82, hy + headRy * 0.48, hx + muzzleLen * 0.95, hy + headRy * 0.29); c.stroke();
+
+  if (name === 'Cheetah') {
+    c.strokeStyle = '#25201c'; c.lineWidth = 4.8; c.lineCap = 'round'; c.beginPath(); c.moveTo(eyeX + 1, eyeY + 3); c.quadraticCurveTo(hx + d.head * 0.42, hy + headRy * 0.16, hx + d.head * 0.60, hy + headRy * 0.33); c.stroke();
+  }
+  if (name === 'Tiger') {
+    c.fillStyle = '#f2e8d5'; c.beginPath(); c.ellipse(hx + d.head * 0.05, hy + headRy * 0.19, d.head * 0.36, headRy * 0.30, -0.10, 0, TAU); c.fill();
+    c.fillStyle = '#f5eee1'; c.beginPath(); c.ellipse(eyeX - d.head * 0.03, eyeY - d.head * 0.16, d.head * 0.23, d.head * 0.095, -0.16, 0, TAU); c.fill();
+  }
+  if (name === 'Ocelot' || name === 'Cougar') {
+    c.strokeStyle = 'rgba(28,24,22,0.90)'; c.lineWidth = 3.2; c.lineCap = 'round';
+    for (const off of [-0.06, 0.10]) { c.beginPath(); c.moveTo(hx + d.head * 0.30, hy + headRy * off); c.lineTo(hx + d.head * 0.76, hy + headRy * (off + 0.18)); c.stroke(); }
+  }
+  if (name === 'Bobcat' || name === 'Lynx' || name === 'Caracal') {
+    const tuft = name === 'Caracal' ? d.ear * 0.76 : d.ear * 0.46;
+    c.strokeStyle = '#18171a'; c.lineWidth = name === 'Caracal' ? 4.3 : 3.3; c.lineCap = 'round';
+    for (const side of [-1, 1]) {
+      const ex = hx - d.head * 0.36 + side * d.head * 0.30, ey = hy - headRy * 0.68 - d.ear;
+      c.beginPath(); c.moveTo(ex + side * d.ear * 0.18, ey + 3); c.quadraticCurveTo(ex + side * tuft * 0.32, ey - tuft * 0.55, ex + side * tuft * 0.12, ey - tuft); c.stroke();
+    }
+  }
+  if (name === 'Serval' || name === 'Caracal') {
+    c.strokeStyle = '#201b19'; c.lineWidth = name === 'Serval' ? 5.4 : 4.6;
+    for (const side of [-1, 1]) {
+      const ex = hx - d.head * 0.36 + side * d.head * 0.30;
+      c.beginPath(); c.moveTo(ex - d.ear * 0.26, hy - headRy * 0.74); c.lineTo(ex + d.ear * 0.16, hy - headRy * 0.74 - d.ear * 0.62); c.stroke();
+    }
+  }
+  if (name === 'Cougar') {
+    c.fillStyle = '#211d1c'; c.beginPath(); c.arc(tipX + d.tailW * 0.28, tipY + d.tailW * 0.22, d.tailW * 0.86, 0, TAU); c.fill();
+  }
+  if (name === 'Lion') {
+    c.fillStyle = '#30251d'; c.beginPath(); c.ellipse(tipX + 3, tipY + 2, d.tailW * 1.45, d.tailW * 1.85, -0.35, 0, TAU); c.fill();
+  }
+  if (name === 'Sand Cat') {
+    c.fillStyle = '#2c2925'; c.beginPath(); c.arc(tipX + d.tailW * 0.30, tipY + d.tailW * 0.18, d.tailW * 0.78, 0, TAU); c.fill();
+  }
+
+  c.strokeStyle = 'rgba(24,22,22,0.55)'; c.lineWidth = 1.5; c.lineCap = 'round';
+  for (const x of [left + 61, right - 24]) {
+    for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(x + 3 + i * d.paw * 0.24, groundY - 8); c.lineTo(x + 5 + i * d.paw * 0.28, groundY - 3); c.stroke(); }
+  }
+  if (name === 'Cat' || name === 'Sand Cat' || name === 'Tiger' || name === 'Ocelot') {
+    c.strokeStyle = 'rgba(235,235,226,0.72)'; c.lineWidth = 1.2;
+    for (let i = -2; i <= 2; i++) { c.beginPath(); c.moveTo(hx + d.head * 0.54, hy + headRy * 0.26); c.lineTo(hx + d.head * (1.14 + i * 0.04), hy + headRy * (0.30 + i * 0.13)); c.stroke(); }
+  }
+}
+
+function faunaResetHyaenid(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: string): void {
+  const p = pal(p0, spec), striped = name === 'Striped Hyena';
+  const r = mulberry32((((g.seed as number) ^ 0x48A3 ^ nameSeedQ(name)) >>> 0));
+  const groundY = S * 0.790, left = S * 0.225, right = S * 0.665;
+  const shoulderTop = S * 0.325, rumpTop = S * (striped ? 0.475 : 0.455), bodyBottom = S * 0.655;
+  const hx = S * 0.775, hy = S * 0.420, headRx = S * 0.090, headRy = S * 0.078;
+  mammalBGround(c, S * 0.49, groundY + S * 0.018, S * 0.30);
+
+  if (striped) {
+    const mane = new Path2D(); mane.moveTo(left + S * 0.020, rumpTop + S * 0.012);
+    for (let i = 0; i <= 12; i++) {
+      const t = i / 12, x = left + S * 0.025 + (right - left - S * 0.035) * t;
+      const y = rumpTop * (1 - t) + shoulderTop * t - S * (i % 2 ? 0.055 : 0.080);
+      mane.lineTo(x, y);
+    }
+    mane.lineTo(right - S * 0.010, shoulderTop + S * 0.035); mane.closePath();
+    const mg = c.createLinearGradient(left, rumpTop, right, shoulderTop); mg.addColorStop(0, '#4b4136'); mg.addColorStop(1, '#262420');
+    c.fillStyle = mg; c.fill(mane);
+  }
+
+  const total = new Path2D();
+  const tail = new Path2D();
+  tail.moveTo(left + S * 0.020, rumpTop + S * 0.085);
+  tail.bezierCurveTo(left - S * 0.075, rumpTop + S * 0.105, left - S * 0.110, groundY - S * 0.105, left - S * 0.075, groundY - S * 0.065);
+  tail.quadraticCurveTo(left - S * 0.035, groundY - S * 0.040, left - S * 0.002, groundY - S * 0.090);
+  tail.bezierCurveTo(left - S * 0.020, groundY - S * 0.145, left - S * 0.020, rumpTop + S * 0.100, left + S * 0.020, rumpTop + S * 0.085); tail.closePath(); total.addPath(tail);
+  const body = new Path2D(); body.moveTo(left, rumpTop + S * 0.025);
+  body.bezierCurveTo(left + S * 0.075, rumpTop - S * 0.010, right - S * 0.115, shoulderTop - S * 0.015, right, shoulderTop + S * 0.025);
+  body.bezierCurveTo(right + S * 0.018, shoulderTop + S * 0.115, right - S * 0.020, bodyBottom, right - S * 0.055, bodyBottom + S * 0.012);
+  body.bezierCurveTo(right - S * 0.155, bodyBottom + S * 0.028, left + S * 0.075, bodyBottom + S * 0.020, left, rumpTop + S * 0.025); body.closePath(); total.addPath(body);
+
+  const hyenaLeg = (x: number, fore: boolean, far: boolean): Path2D => {
+    const q = new Path2D(), y0 = bodyBottom - S * 0.035;
+    const len = S * (fore ? 0.185 : 0.135), w = S * (fore ? 0.026 : 0.023) * (far ? 0.82 : 1);
+    q.moveTo(x - w, y0); q.bezierCurveTo(x - w, y0 + len * 0.38, x - w * 0.30, groundY - S * 0.060, x, groundY - S * 0.025);
+    q.quadraticCurveTo(x + S * 0.025, groundY - S * 0.005, x + S * 0.050, groundY - S * 0.014);
+    q.quadraticCurveTo(x + S * 0.055, groundY - S * 0.034, x + w * 0.62, groundY - S * 0.050);
+    q.bezierCurveTo(x + w * 0.72, groundY - S * 0.090, x + w * 1.12, y0 + len * 0.20, x + w, y0); q.closePath(); return q;
+  };
+  const legs = [hyenaLeg(left + S * 0.070, false, true), hyenaLeg(left + S * 0.120, false, false), hyenaLeg(right - S * 0.090, true, true), hyenaLeg(right - S * 0.040, true, false)];
+  for (const leg of legs) total.addPath(leg);
+  const neck = new Path2D(); neck.moveTo(right - S * 0.080, shoulderTop + S * 0.018);
+  neck.bezierCurveTo(right + S * 0.010, shoulderTop - S * 0.020, hx - headRx * 0.76, hy - headRy * 0.76, hx - headRx * 0.40, hy - headRy * 0.50);
+  neck.lineTo(hx - headRx * 0.36, hy + headRy * 0.72);
+  neck.bezierCurveTo(right + S * 0.010, bodyBottom - S * 0.035, right - S * 0.050, bodyBottom - S * 0.005, right - S * 0.080, shoulderTop + S * 0.018); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(hx, hy, headRx, headRy, -0.04, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D(); muzzle.moveTo(hx + headRx * 0.20, hy - headRy * 0.08);
+  muzzle.quadraticCurveTo(hx + headRx * 0.72, hy - headRy * 0.16, hx + headRx * 1.18, hy + headRy * 0.05);
+  muzzle.quadraticCurveTo(hx + headRx * 1.30, hy + headRy * 0.42, hx + headRx * 0.56, hy + headRy * 0.62);
+  muzzle.quadraticCurveTo(hx + headRx * 0.22, hy + headRy * 0.50, hx + headRx * 0.10, hy + headRy * 0.18); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) {
+    const ex = hx - headRx * 0.35 + side * headRx * 0.30, by = hy - headRy * 0.64;
+    const ear = new Path2D();
+    if (striped) { ear.moveTo(ex - headRx * 0.22, by); ear.lineTo(ex + side * headRx * 0.08, by - headRy * 0.98); ear.lineTo(ex + headRx * 0.27, by + headRy * 0.06); ear.closePath(); }
+    else ear.ellipse(ex, by - headRy * 0.20, headRx * 0.28, headRy * 0.42, side * 0.20, 0, TAU);
+    ears.push(ear); total.addPath(ear);
+  }
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck, head, muzzle, ...ears],
+    p, left, shoulderTop, hx + headRx * 1.3, bodyBottom);
+  c.save(); c.clip(total);
+  if (striped) {
+    for (let i = 0; i < 8; i++) {
+      const t = (i + 0.5) / 8, x = left + S * (0.030 + i * 0.049);
+      const top = rumpTop * (1 - t) + shoulderTop * t;
+      softMark(c, x, (top + bodyBottom) * 0.5, S * 0.015, (bodyBottom - top) * 0.52,
+        '53,47,42', 0.90, -0.10 + i * 0.018);
+    }
+  } else {
+    for (let i = 0; i < 42; i++) {
+      const x = left + r() * (right - left), y = shoulderTop + S * 0.030 + r() * (bodyBottom - shoulderTop);
+      softMark(c, x, y, S * (0.008 + r() * 0.010), S * (0.006 + r() * 0.008), '52,43,34', 0.75, r() * TAU);
+    }
+  }
+  c.restore();
+  const mg = c.createLinearGradient(hx, hy, hx + headRx * 1.25, hy + headRy * 0.40); mg.addColorStop(0, mammalBTone(p, 1.10)); mg.addColorStop(1, mammalBTone(p, 0.54)); c.fillStyle = mg; c.fill(muzzle);
+  c.fillStyle = '#151419'; c.beginPath(); c.ellipse(hx + headRx * 1.19, hy + headRy * 0.08, headRx * 0.15, headRy * 0.14, 0, 0, TAU); c.fill();
+  c.fillStyle = '#c99a50'; c.beginPath(); c.arc(hx + headRx * 0.28, hy - headRy * 0.16, headRx * 0.11, 0, TAU); c.fill();
+  c.fillStyle = '#111318'; c.beginPath(); c.arc(hx + headRx * 0.30, hy - headRy * 0.16, headRx * 0.055, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(27,23,22,0.76)'; c.lineWidth = 2.4; c.beginPath(); c.moveTo(hx + headRx * 0.42, hy + headRy * 0.38); c.lineTo(hx + headRx * 1.08, hy + headRy * 0.34); c.stroke();
+  c.fillStyle = striped ? 'rgba(38,33,29,0.72)' : 'rgba(66,48,39,0.66)'; for (const ear of ears) c.fill(ear);
+}
+
+function faunaMammalB(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<QuadSpec['mammalBPlan']>, name: string): void {
+  if (plan === 'ursid-r1') { faunaResetUrsid(c, g, p0, spec, name); return; }
+  if (plan === 'felid-r1') { faunaResetFelid(c, g, p0, spec, name); return; }
+  faunaResetHyaenid(c, g, p0, spec, name);
+}
+
 export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = ''): void {
+  if (spec.mammalBPlan) { faunaMammalB(c, g, p0, spec, spec.mammalBPlan, name); return; }
   if (spec.pinnipedPose) { faunaEaredPinniped(c, g, p0, spec, spec.pinnipedPose); return; }
   if (spec.gliderPlan) { faunaGlider(c, g, p0, spec, spec.gliderPlan); return; }
   const r = mulberry32((((g.seed as number) ^ 0x9AD4 ^ nameSeedQ(name)) >>> 0));
@@ -3137,19 +3761,19 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   /* big cats — same family, different builds and coats */
   /* ★ wave 22b — Lion had NO route and fell through to the verbatim engine,
      where the mane rendered as a ring of spikes over an unreadable face. */
-  'Lion': { legs: 0.1236, depth: 0.1426, len: 0.2455, neck: 0.06, muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'tuft', mane: 'lion', hue: '#c19a5b', family: 'felid' },
-  'Jaguar': { legs: 0.108, depth: 0.151, len: 0.2287, neck: 0.07, muzzle: 0.38, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#c8983c", family: 'felid' , legMarks: true, tailScale: 1.52, headScale: 1.30, pawScale: 1.20, rosetteScale: 1.18 },
-  'Leopard': { legs: 0.1253, depth: 0.1080, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#d3ab5e", family: 'felid' , legMarks: true, tailScale: 1.8 },
-  'Snow Leopard': { legs: 0.114, depth: 0.123, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' , legMarks: true, tailScale: 3.25, pawScale: 1.34, rosetteScale: 1.52, headScale: 1.10 },
+  'Lion': { legs: 0.1236, depth: 0.1426, len: 0.2455, neck: 0.06, muzzle: 0.34, jaw: 'broad', ears: 'round', tail: 'tuft', mane: 'lion', hue: '#c19a5b', family: 'felid', mammalBPlan: 'felid-r1' },
+  'Jaguar': { legs: 0.108, depth: 0.151, len: 0.2287, neck: 0.07, muzzle: 0.38, jaw: 'broad', ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#c8983c", family: 'felid' , legMarks: true, tailScale: 1.52, headScale: 1.30, pawScale: 1.20, rosetteScale: 1.18, mammalBPlan: 'felid-r1' },
+  'Leopard': { legs: 0.1253, depth: 0.1080, len: 0.2287, neck: 0.07, muzzle: 0.32, ears: 'round', tail: 'long', coat: 'rosettes' , hue: "#d3ab5e", family: 'felid' , legMarks: true, tailScale: 1.8, mammalBPlan: 'felid-r1' },
+  'Snow Leopard': { legs: 0.114, depth: 0.123, len: 0.2399, neck: 0.07, muzzle: 0.30, ears: 'round', tail: 'long', coat: 'rosettes', hue: '#cfd4dc', family: 'felid' , legMarks: true, tailScale: 3.25, pawScale: 1.34, rosetteScale: 1.52, headScale: 1.10, mammalBPlan: 'felid-r1' },
   /* ★ wave 35 — Nick's row: "current ungulate-like body lacks deep chest,
      tucked waist, feline paws/head". It is the one felid NOT built like a big
      cat — a whippet: extreme waist tuck, light hindquarters, and a tail nearly
      as long as the body it steers. Those four numbers are the animal, and the
      felid plan alone could never reach them because the felid plan describes a
      leopard. */
-  'Cheetah': { back: 'arched', legs: 0.202, depth: 0.096, len: 0.215, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 1.06, rump: 0.46, tailScale: 2.48, legMarks: true, headScale: 1.28, spotScale: 0.78, carry: 0.56 },
-  'Cougar': { legs: 0.1482, depth: 0.1120, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid', tailScale: 1.7, tailTip: '#241f1d', faceMark: 'muzzleBars' },
-  'Lynx': { back: 'arched', legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft', earTuftScale: 1.38, cheekRuff: 1.76, pawScale: 1.34, spotScale: 0.56 },
+  'Cheetah': { back: 'arched', legs: 0.202, depth: 0.096, len: 0.215, neck: 0.09, muzzle: 0.28, ears: 'round', tail: 'long', coat: 'spots', face: 'tears', hue: '#d8b477', family: 'felid', waist: 1.0, chest: 1.06, rump: 0.46, tailScale: 2.48, legMarks: true, headScale: 1.28, spotScale: 0.78, carry: 0.56, mammalBPlan: 'felid-r1' },
+  'Cougar': { legs: 0.1482, depth: 0.1120, len: 0.2287, neck: 0.08, muzzle: 0.30, ears: 'round', tail: 'long' , hue: "#b08655", family: 'felid', tailScale: 1.7, tailTip: '#241f1d', faceMark: 'muzzleBars', mammalBPlan: 'felid-r1' },
+  'Lynx': { back: 'arched', legs: 0.1495, depth: 0.1226, len: 0.186, neck: 0.06, muzzle: 0.26, ears: 'large', tail: 'stub', coat: 'spots' , hue: "#b9a184", family: 'felid', earShape: 'tuft', earTuftScale: 1.38, cheekRuff: 1.76, pawScale: 1.34, spotScale: 0.56, mammalBPlan: 'felid-r1' },
   /* the pixel-siblings, separated */
   'Rhinoceros': { legs: 0.0835, depth: 0.1886, len: 0.263, neck: 0.045, muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'tuft', horn: 'twinnose', hue: '#8b8b8e', family: 'pachyderm' },
   'Wild Sheep': { legs: 0.1345, depth: 0.1529, len: 0.1881, neck: 0.075, muzzle: 0.35, ears: 'small', tail: 'stub', horn: 'curl', coat: 'shaggy', hue: '#9d8a6e', family: 'bovid' },
@@ -3171,13 +3795,13 @@ export const QUAD_SPEC: Record<string, QuadSpec> = {
   'Bison': { legs: 0.104, depth: 0.1881, len: 0.2313, neck: 0.030, back: 'humped', muzzle: 0.42, jaw: 'broad', ears: 'small', tail: 'tuft', tailScale: 0.58, coat: 'shaggy', horn: 'shorthorn', hue: '#5c4535', family: 'bovid', carry: 0, chest: 1.28, rump: 0.18, shoulderHump: 0.52, mane: 'bison', muzzleHue: '#3b2b24', headScale: 1.18, headDrop: 0.10 },
   'Water Buffalo': { legs: 0.118, depth: 0.184, len: 0.246, neck: 0.06, muzzle: 0.50, jaw: 'broad', ears: 'large', tail: 'tuft', horn: 'sweep', hue: '#77736e', family: 'bovid', earShape: 'drop', earScale: 1.18, headScale: 1.16, shoulderHump: 0.18, dewlap: 0.42, muzzleHue: '#4d4d48' },
   /* bears, differentiated */
-  'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636', family: 'ursid', shoulderHump: 0.24, clawScale: 1.45, muzzleHue: '#b49670' },
-  'Brown Bear': { legs: 0.0963, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f', family: 'ursid', shoulderHump: 0.18, clawScale: 1.30, muzzleHue: '#b18a62' },
-  'Polar Bear': { legs: 0.1112, depth: 0.1696, len: 0.2642, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6', family: 'ursid', earScale: 0.50, clawScale: 1.28, muzzleHue: '#d8d5c7' },
-  'Black Bear': { legs: 0.101, depth: 0.1729, len: 0.2268, neck: 0.05, muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#3b3a40', family: 'ursid', shoulderHump: 0.12, clawScale: 1.25, muzzleHue: '#b99a78' },
-  'Panda': { legs: 0.0825, depth: 0.1844, len: 0.2269, neck: 0.04, back: 'arched', muzzle: 0.30, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'panda', face: 'mask', hue: '#f0f2f4', family: 'ursid' , legMarks: true },
-  'Sun Bear': { legs: 0.0939, depth: 0.1438, len: 0.2004, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c', family: 'ursid', accent: 'chestCrescent', clawScale: 1.34, muzzleHue: '#c7ac84' },
-  'Sloth Bear': { legs: 0.1001, depth: 0.1697, len: 0.2227, neck: 0.05, muzzle: 0.55, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#2b2726', family: 'ursid', accent: 'chestU', clawScale: 1.52, muzzleHue: '#d4c19c' },
+  'Grizzly Bear': { legs: 0.0916, depth: 0.1717, len: 0.2534, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#7a5636', family: 'ursid', shoulderHump: 0.24, clawScale: 1.45, muzzleHue: '#b49670', mammalBPlan: 'ursid-r1' },
+  'Brown Bear': { legs: 0.0963, depth: 0.1881, len: 0.2313, neck: 0.05, back: 'humped', muzzle: 0.44, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#70502f', family: 'ursid', shoulderHump: 0.18, clawScale: 1.30, muzzleHue: '#b18a62', mammalBPlan: 'ursid-r1' },
+  'Polar Bear': { legs: 0.1112, depth: 0.1696, len: 0.2642, neck: 0.10, back: 'level', muzzle: 0.55, jaw: 'broad', ears: 'small', tail: 'stub', hue: '#eef2f6', family: 'ursid', earScale: 0.50, clawScale: 1.28, muzzleHue: '#d8d5c7', mammalBPlan: 'ursid-r1' },
+  'Black Bear': { legs: 0.101, depth: 0.1729, len: 0.2268, neck: 0.05, muzzle: 0.42, jaw: 'broad', ears: 'round', tail: 'stub', hue: '#3b3a40', family: 'ursid', shoulderHump: 0.12, clawScale: 1.25, muzzleHue: '#b99a78', mammalBPlan: 'ursid-r1' },
+  'Panda': { legs: 0.0825, depth: 0.1844, len: 0.2269, neck: 0.04, back: 'arched', muzzle: 0.30, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'panda', face: 'mask', hue: '#f0f2f4', family: 'ursid' , legMarks: true, mammalBPlan: 'ursid-r1' },
+  'Sun Bear': { legs: 0.0939, depth: 0.1438, len: 0.2004, neck: 0.05, muzzle: 0.38, ears: 'round', tail: 'stub', hue: '#2f2b2c', family: 'ursid', accent: 'chestCrescent', clawScale: 1.34, muzzleHue: '#c7ac84', mammalBPlan: 'ursid-r1' },
+  'Sloth Bear': { legs: 0.1001, depth: 0.1697, len: 0.2227, neck: 0.05, muzzle: 0.55, ears: 'large', tail: 'stub', coat: 'shaggy', hue: '#2b2726', family: 'ursid', accent: 'chestU', clawScale: 1.52, muzzleHue: '#d4c19c', mammalBPlan: 'ursid-r1' },
   /* canids + small mammals where ears/tails are the read */
   'Red Fox': { legs: 0.1118, depth: 0.104, len: 0.1962, neck: 0.06, muzzle: 0.44, jaw: 'fine', ears: 'large', tail: 'plume', hue: '#d1651f', family: 'canid', tailScale: 1.7 , tailTip: '#f2efe6' },
   'Arctic Fox': { legs: 0.1046, depth: 0.1072, len: 0.1847, neck: 0.06, muzzle: 0.36, ears: 'small', tail: 'plume', hue: '#eaf0f5', family: 'canid', tailScale: 1.7 , tailTip: '#f6f5f2', muzzleHue: '#d9d3c7' },

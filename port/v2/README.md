@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (Phase 1+)
 
-**Status: ★★★ RESET R1 FROZEN · WAVE 1 PUSHED · WAVE 2A 32/32 PASS / READY TO COMMIT** (2026-08-10).
+**Status: ★★★ RESET R1 FROZEN · WAVE 2A PUSHED · WAVE 2B 51/51 PASS · READY TO COMMIT/PUSH** (2026-08-10).
 **Port milestone record (2026-08-01):** ★★★ PHASES 1–3 COMPLETE (automatable) · PHASE 4 SHELL RUNNING.
 **Phase 4 so far — the slice wears the game's face at the GOLDEN SCREENS' exact geometry**
 (floating-pill topbar: player chip + HP bar + Prime pill + trail · objective chip fed by the
@@ -38,15 +38,15 @@ source owners are `alientraits.ts`, `invertoverrides.ts`,
 `faunaoverrides2.ts`. These scoped results are not a replacement 1,250-row
 collector tally; do not add them to 516 and claim a catalogue score.
 
-Wave 1 is committed and pushed as `d005090f`. Wave 2a is a separate bounded,
-uncommitted checkpoint. Mammal A is **4/4 PASS** (Colugo, Sugar Glider, Fur Seal,
+Wave 1 is `d005090f`; accepted Wave 2a is committed and pushed as `00e499c`.
+Mammal A is **4/4 PASS** (Colugo, Sugar Glider, Fur Seal,
 Sea Lion); the INVERT worms+sessile batch is **13/13 PASS**; and S1–S3 is
 **15/15 PASS** after bounded R2 independently closed Caddisfly, Diving Beetle,
 Firefly, and Water Beetle. Its immutable R2 recapture binds the same source hash
 before A, between A/B and after B, with zero drift across 139 build inputs; all
 26 rows / 156 current+repeat PNGs are hash/dimension/repeat exact. Exactly four targets changed and all
 22 protected rows remain byte-identical at all three scales. Across those three
-catalogue batches Wave 2a is **32/32 scoped PASS** and ready to commit/push—not a
+catalogue batches Wave 2a is **32/32 scoped PASS**—not a
 new full-catalogue tally.
 
 Vanilla Orchid r6 is independently judged continuity PASS at
@@ -62,6 +62,29 @@ anchor floor. `hybridcheck` now requires five exact ID+kingdom+name focused line
 kingdoms and rejects eleven injected negative controls, including focused-species
 substitution and Vanilla stage collapse. The prior `FAIL_BYTE_IDENTICAL_STAGES` blocker is closed. Broader
 all-bloodline and full-catalogue certification remains OPEN.
+
+Wave 2b is now **51/51 independently PASS** across three non-overlapping source
+lanes: Mammal B 25/25, Bird B1 21/21, and Invert I 5/5 (Banana Slug, Chiton,
+Comb Jelly, Portuguese Man-of-War, Isopod). The first independent rounds failed
+closed on six mammals and four birds; bounded Mammal R3 and Bird R2 closed those
+exact rows. Invert's first candidate separately failed Banana Slug at 132px, and
+a Banana-only refinement closed the four-tentacle/tip-eye read. Final sources are
+`quadrupedoverrides.ts`
+`288E54795D4EBD52EE131E4691AFED98AA7409BC033228FE0274B099B6FE7DAE`,
+`mammaloverrides.ts`
+`2BB3541963F610B3D4504BEC423C982E1F11E902BD6200AD64E332B8F853CEAA`,
+`faunaoverrides.ts`
+`783DCCE7641E9EA826296922E9787CEE33857A6853CD96563E88F374F1C9BF10`,
+`birdoverrides.ts`
+`B5DEBDCA726F48E8405F1D9F47D019E8472A2786825F35DCCFF1E147936494DF`,
+and `invertoverrides.ts`
+`9173B81703BE955B857ED5D3A39B09DD196967C63DE40E764D8F79EDB1832B1D`.
+Current/repeat evidence and protected controls are exact. The final integrated
+gates are green with all five source SHAs unchanged: typecheck/artunused pass,
+speccheck is 417/0/0, overridecheck is 1,014/1,014 catalogue and 1,010/1,010
+Earth routes, speciesaudit is 1,250/1,250 with zero failure/duplicate/clipping,
+and targeted/full diff checks pass. The checkpoint is ready to commit/push.
+This scoped closure does not replace the frozen 516/14/720 ledger.
 
 The first live hybrid-matrix attempt exposed a real schema-v2 harness contract
 bug, not transient provenance or an art verdict: it required both Green Algae

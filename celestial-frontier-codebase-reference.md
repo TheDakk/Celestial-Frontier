@@ -59,12 +59,29 @@
 > names and removed dead orchard/citrus alternatives with 0/174 tree-surface and
 > 0/332 Earth-flora native drift.
 >
-> Wave 2a is an uncommitted bounded checkpoint now ready to commit/push. Mammal A
+> Wave 2a is committed/pushed as `00e499c`. Mammal A
 > is 4/4 independently PASS (Colugo, Sugar Glider, Fur Seal, Sea Lion); INVERT
 > worms+sessile is 13/13 PASS; and S1–S3 is 15/15 PASS after bounded R2 closed
 > Caddisfly, Diving Beetle, Firefly and Water Beetle at 440/300/132. Its 156
 > current/repeat PNGs are exact and all 22 protected rows remain byte-identical.
 > The combined 32-target scope is 32/32 PASS. This is not a new catalogue tally.
+> Wave 2b is independently **51/51 scoped PASS**: Mammal B 25/25, Bird B1
+> 21/21 and Invert I 5/5. Each lane failed closed and reran only its bounded
+> blockers: six Mammal R3 rows (Brown Bear, Grizzly Bear, Bobcat, Lynx, Serval,
+> Sand Cat), four Bird R2 rows (Secretary Bird, Rhea, Seriema, Hummingbird), and
+> Banana Slug's 132px tentacle/eye read. Final source SHA-256 values are
+> `quadrupedoverrides.ts` `288E54795D4EBD52EE131E4691AFED98AA7409BC033228FE0274B099B6FE7DAE`,
+> `mammaloverrides.ts` `2BB3541963F610B3D4504BEC423C982E1F11E902BD6200AD64E332B8F853CEAA`,
+> `faunaoverrides.ts` `783DCCE7641E9EA826296922E9787CEE33857A6853CD96563E88F374F1C9BF10`,
+> `birdoverrides.ts` `B5DEBDCA726F48E8405F1D9F47D019E8472A2786825F35DCCFF1E147936494DF`,
+> and `invertoverrides.ts` `9173B81703BE955B857ED5D3A39B09DD196967C63DE40E764D8F79EDB1832B1D`.
+> Their current/repeat and protected-control evidence is sealed. The final
+> integrated gates are green with all five source SHAs unchanged: typecheck and
+> artunused pass; speccheck is 417/0/0; overridecheck is 1,014/1,014 catalogue
+> and 1,010/1,010 Earth routes; speciesaudit is 1,250/1,250 with zero failures,
+> duplicates or clipping; targeted/full diff checks pass. Wave 2b is ready to
+> commit/push, but this scoped closure does not change r1's 516/14/720 or close
+> full recertification, ZIP, reset PR or release.
 >
 > The v2 renderer caps DPR at 2 for touch/coarse pointers and 3 for desktop. An
 > accidental unreferenced 26,400×19,800 PNG at `packages/art/src/5` (2,029,643

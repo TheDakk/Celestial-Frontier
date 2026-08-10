@@ -5,12 +5,15 @@ OpenAI/Codex worktree as of 2026-08-10; update this file in the same batch as
 the audit source, renderer, or acceptance ruler changes._
 
 The clean full-reset baseline is commit
-`bc26e800c7adca72805a832e753ace1a8f9837ba` on `openai/windows`. The current
-accepted Wave 1 is committed and pushed as `d005090f`; the current worktree is
-an uncommitted bounded Wave-2a family/continuity batch on top. PR #7 is
+`bc26e800c7adca72805a832e753ace1a8f9837ba` on `openai/windows`. Wave 1 is
+`d005090f`; accepted Wave 2a is committed/pushed as
+`00e499cb130e906b5475d2d466c07e2d7a6d1282`; the current worktree is an
+uncommitted bounded Wave-2b batch whose 51 assigned rows are independently PASS.
+The final integrated gates are green with all five source SHAs unchanged, so the
+checkpoint is ready to commit/push. PR #7 is
 historical/already merged; no reset PR exists.
 
-## Status: r1 frozen; Wave 1 pushed; Wave 2a 32/32 PASS and ready to commit
+## Status: r1 frozen; Wave 2a pushed; Wave 2b 51/51 PASS and ready to commit/push
 
 Nick stopped the GP7.1 remediation and explicitly reopened the entire catalogue
 after Fruit Bat exposed a false acceptance: the current animal does not read as
@@ -80,9 +83,9 @@ and the batch is committed/pushed as `d005090f`. Apple's independently accepted
 continuity evidence and the pixel-neutral flora cleanup remain part of that
 frozen checkpoint. These scoped results do not mutate the r1 ledger.
 
-## Wave 2a: bounded family and Vanilla-continuity work
+## Wave 2a: committed/pushed bounded family and Vanilla-continuity work
 
-Wave 2a currently contains three catalogue batches totaling 32 r1 non-PASS
+Wave 2a commit `00e499c` contains three catalogue batches totaling 32 r1 non-PASS
 targets, plus the separate Vanilla hybrid-continuity repair:
 
 | bounded batch | targets | independent status |
@@ -129,6 +132,64 @@ joins, and drift progressively farther from pure as the anchor falls.
 rejects eleven injected negative controls, including focused-species substitution and simulated
 Vanilla stage collapse. This closes the prior focused Vanilla blocker, not every possible
 bloodline or the final 1,250-row certification.
+
+## Wave 2b: exact 51-target scope independently PASS
+
+Wave 2b began from pushed `00e499c` with three non-overlapping source owners and
+closed exactly **51/51 scoped PASS** under author-separated 440/300/132 review:
+
+| bounded lane | targets | first independent result | bounded close | final result |
+|---|---:|---|---|---|
+| Mammal B | 25 | 19 PASS / 6 FAIL | R3 six-row repair | 25 PASS |
+| Bird B1 | 21 | 17 PASS / 4 FAIL | R2 four-row repair | 21 PASS |
+| Invert I | 5 | Banana Slug internal fail-closed stop | Banana-only 132px repair | 5 PASS |
+| **total** | **51** |  |  | **51 PASS** |
+
+Mammal B's bounded R3 changed only **Brown Bear, Grizzly Bear, Bobcat, Lynx,
+Serval and Sand Cat** after the first judge rejected their delivery-size
+silhouette/head/attachment cues. The final frozen sources are
+`quadrupedoverrides.ts`
+`288E54795D4EBD52EE131E4691AFED98AA7409BC033228FE0274B099B6FE7DAE`
+and `mammaloverrides.ts`
+`2BB3541963F610B3D4504BEC423C982E1F11E902BD6200AD64E332B8F853CEAA`.
+The sealed root
+`apps/game/smoke/wave2-mammal-b-r3-sealed-evidence-2026-08-10` has manifest
+SHA-256 `B31B8BD7D84DDA513AF7714E1C0CBEDB6AB056D9FF99965193129160968C1C92`:
+600 PNG hash/dimension checks, 300/300 current/repeat surfaces, exactly 18/18
+assigned changed surfaces and 282/282 retained-target/control surfaces are exact.
+The second judge returned 6/6 PASS, making the lane 25/25.
+
+Bird B1's bounded R2 changed only **Secretary Bird, Rhea, Seriema and
+Hummingbird** after the first judge returned 17 PASS / 4 FAIL. Frozen sources
+are `faunaoverrides.ts`
+`783DCCE7641E9EA826296922E9787CEE33857A6853CD96563E88F374F1C9BF10`
+and `birdoverrides.ts`
+`B5DEBDCA726F48E8405F1D9F47D019E8472A2786825F35DCCFF1E147936494DF`.
+The root `apps/game/smoke/wave2b-bird-b1-r2-evidence-2026-08-10` contains
+432 current/repeat PNGs with zero hash, dimension or repeat mismatch; exactly
+the four assigned targets changed and all 51 protected rows stayed byte-exact.
+The second judge returned 4/4 PASS, making the lane 21/21.
+
+Invert I is **Banana Slug, Chiton, Comb Jelly, Portuguese Man-of-War and
+Isopod**. The first candidate was deliberately rejected when Banana Slug's four
+tentacles and upper-tip eyes did not survive 132px. A Banana-only refinement
+changed its 3/3 surfaces while the other four targets plus 20 controls stayed
+exact on 72/72 surfaces; independent review then returned 5/5 PASS. Frozen
+`invertoverrides.ts` SHA-256 is
+`9173B81703BE955B857ED5D3A39B09DD196967C63DE40E764D8F79EDB1832B1D`.
+The final evidence roots are
+`C:\Users\Nick\.codex\visualizations\2026\08\09\019fe72d-20c7-73a0-bac7-d2c64d10673d\invert-wave2-isolated-topology-i\{final-current,final-repeat}`;
+all 150 PNGs are complete/exact and both aggregates are
+`0BDE0E3C01EF7E5FBEACFCA885D544BB02F73470B7E9B9A8854D9FBAA953671F`.
+
+This 51/51 result is scoped wave truth and does not mutate the frozen
+516/14/720 ledger. The final integrated gate set is green with all five frozen
+Wave-2b art-source SHAs unchanged: typecheck and artunused pass; speccheck
+reports 417 declared / 0 unread / 0 unobservable; overridecheck reports
+1,014/1,014 catalogue routes and 1,010/1,010 Earth routes; speciesaudit reports
+1,250/1,250 portraits with zero failure, duplicate or clipping; targeted/full
+diff checks pass. The bounded checkpoint is ready to commit/push, not to open or
+merge the reset PR.
 
 ## Trigger and first closed family: bats
 
@@ -404,9 +465,9 @@ into `develop`. No `main` merge, release or deployment is authorized here.
 
 ## Immediate order
 
-1. Commit only the accepted Wave-2a source/tool/doc scope on `openai/windows`,
-   then push that branch; do not include unrelated files.
-2. Continue the remaining r1 non-PASS rows in bounded owner/family waves. Preserve
+1. Commit/push the reviewed Wave-2b scope on `openai/windows`; do not include
+   unrelated files or open the reset PR.
+2. Continue remaining r1 non-PASS rows in bounded owner/family waves. Preserve
    author separation and never edit a painter while its judge holds source frozen.
 3. After all rows close, repeat the complete clean 1,250 capture/layout/compare/
    collect sequence, rerun the clean hybrid matrix, and certify only a literal
