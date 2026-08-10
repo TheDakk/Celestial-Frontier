@@ -15,12 +15,16 @@ Companion to `ART_DIRECTION.md` and `PROCEDURAL_CHARACTERISTICS.md`._
 > browser pixels across all four kingdoms, duplicate names, both parent orders,
 > multi-generation/cache/repeat cases and injected failures.
 >
-> **Visual continuity remains OPEN.** The provisional 12-lineage × 5-stage matrix
-> exposes a Fruit Bat pure-vs-legacy-child renderer discontinuity and five
-> byte-identical Vanilla Orchid stages; Apple and Oyster Mushroom have not received
-> independent continuity verdicts. The current matrix roots are dirty-worktree
-> diagnostics and must be regenerated from the clean committed foundation. Routing
-> correctness is necessary and is not proof that every graft is seamless.
+> **Overall visual continuity remains OPEN solely for Vanilla Orchid.** Apple's
+> continuity repair is independently judged PASS at source SHA-256
+> `D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
+> 58/58 tree rows remain exact at 440/300/132 (174/174 hashes), five stages are
+> unique with strictly increasing pure-distance, and schema v3 validates 234/234
+> assets with both browser orders stable. Vanilla Orchid alone remains
+> `FAIL_BYTE_IDENTICAL_STAGES`. Schema v2's Green Algae stop was a real harness
+> contract bug, not transient provenance; schema v3 repairs current-catalogue vs
+> retained-legacy-route ownership and its sentinels are green. Routing correctness
+> and distinct hashes are necessary and are not proof that every graft is seamless.
 
 The central rule (Nick): **never make the player choose between keeping a beloved
 Earth creature and participating in the alien progression system — the game lets

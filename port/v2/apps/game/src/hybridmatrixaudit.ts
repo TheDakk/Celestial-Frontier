@@ -85,7 +85,10 @@ interface MixedRequest {
 
 /* These are deliberately the same real-cross coverage cells as hybridBlendAudit:
    unique flora/fauna owners in both parent orders and both possible child sets,
-   then Green Algae's two catalogue owners in both orders and both child sets. */
+   then Green Algae's current flora catalogue owner and retained legacy microbe
+   route owner in both orders and both child sets. D-CAT-1 removed the microbe
+   row from the live roster, but old saves can still carry that set-qualified
+   Earth identity, so the route remains an intentional compatibility surface. */
 const MIXED_REQUESTS: MixedRequest[] = [
   { ordinal: 1, id: 'apple-earth-first-child-flora', kind: 'single-lineage-owner', name: 'Apple', owner: 'flora', other: 'fauna', order: 'earth-first', childKingdom: 'flora', salt: 1 },
   { ordinal: 2, id: 'apple-earth-first-child-fauna', kind: 'single-lineage-owner', name: 'Apple', owner: 'flora', other: 'fauna', order: 'earth-first', childKingdom: 'fauna', salt: 2 },
@@ -485,13 +488,20 @@ function exactCatalogueMatches(kingdom: EarthKingdom, name: string): number {
   assert(Array.isArray(names), `mixed sentinel: missing Earth catalogue ${kingdom}`);
   return names.filter((candidate) => candidate === name).length;
 }
-function namedMixedGenome(seed: number, kingdom: EarthKingdom, name: string): Genome {
-  assert(exactCatalogueMatches(kingdom, name) === 1,
-    `mixed sentinel: expected one exact ${kingdom}/${name} catalogue identity`);
+function namedMixedGenome(seed: number, kingdom: EarthKingdom, name: string,
+  ownerSource: 'current-catalogue' | 'deduped-legacy-route' = 'current-catalogue'): Genome {
+  const matches = exactCatalogueMatches(kingdom, name);
+  assert(matches === (ownerSource === 'current-catalogue' ? 1 : 0),
+    `mixed sentinel: wrong ${ownerSource} membership for ${kingdom}/${name}`);
   const genome = makeGenome(seed >>> 0, kingdom, 1) as unknown as Genome;
   genome._earthName = name;
   assert(genome._earthBlend === undefined && genome._earthBlendKingdom === undefined
     && genome._anchorVal === undefined, `mixed sentinel: named ${kingdom}/${name} carried hybrid fields`);
+  if (ownerSource === 'deduped-legacy-route') {
+    const route = freshRender(genome);
+    assert(route.owned && route.route === 'named-owned',
+      `mixed sentinel: retained legacy owner ${kingdom}/${name} has no named route`);
+  }
   return genome;
 }
 function bareMixedGenome(seed: number, kingdom: EarthKingdom, heat: number): Genome {
@@ -538,6 +548,7 @@ async function findMixedSentinel(request: MixedRequest): Promise<Record<string, 
       const earthDerivation = {
         kind: 'named-earth-seed-search', formula: 'hashInt(0xC2055,salt,attempt)',
         salt: request.salt, attempt, seed: earthSeed, heat: 1, exact_name_matches: 1,
+        owner_source: 'current-catalogue', route_owner: `${request.owner}|${request.name}`,
       };
       const wildDerivation = {
         kind: 'alien-seed-search', formula: 'hashInt(0xA11E7,salt,attempt)',
@@ -553,15 +564,18 @@ async function findMixedSentinel(request: MixedRequest): Promise<Record<string, 
     } else {
       const floraSeed = hashInt(0x6A1A, request.salt, attempt) >>> 0;
       const microbeSeed = hashInt(0x6A1B, request.salt, attempt) >>> 0;
-      const flora = namedMixedGenome(floraSeed, 'flora', 'Green Algae');
-      const microbe = namedMixedGenome(microbeSeed, 'microbe', 'Green Algae');
+      const flora = namedMixedGenome(floraSeed, 'flora', 'Green Algae', 'current-catalogue');
+      const microbe = namedMixedGenome(microbeSeed, 'microbe', 'Green Algae', 'deduped-legacy-route');
       const floraDerivation = {
         kind: 'named-earth-seed-search', formula: 'hashInt(0x6A1A,salt,attempt)',
         salt: request.salt, attempt, seed: floraSeed, heat: 1, exact_name_matches: 1,
+        owner_source: 'current-catalogue', route_owner: 'flora|Green Algae',
       };
       const microbeDerivation = {
-        kind: 'named-earth-seed-search', formula: 'hashInt(0x6A1B,salt,attempt)',
-        salt: request.salt, attempt, seed: microbeSeed, heat: 1, exact_name_matches: 1,
+        kind: 'legacy-named-route-seed-search', formula: 'hashInt(0x6A1B,salt,attempt)',
+        salt: request.salt, attempt, seed: microbeSeed, heat: 1, exact_name_matches: 0,
+        owner_source: 'deduped-legacy-route', route_owner: 'microbe|Green Algae',
+        route_owner_verified: true,
       };
       if (request.order === 'flora-first') {
         parents = [flora, microbe]; parentIds = ['flora-earth', 'microbe-earth'];
@@ -1056,7 +1070,7 @@ async function run(): Promise<void> {
     .filter((row) => (row.pixel_identity_groups as unknown[]).length > 0)
     .map((row) => String(row.lineage_id));
   state.report = {
-    schema: 'cf.hybrid-continuity.browser-report.v2',
+    schema: 'cf.hybrid-continuity.browser-report.v3',
     done: true,
     review_status: 'UNREVIEWED',
     visual_continuity_status: 'OPEN',
@@ -1076,7 +1090,7 @@ async function run(): Promise<void> {
       pixel_identical_lineage_ids: pixelIdenticalLineages,
     },
     checks: {
-      exact_catalogue_matches: true,
+      earth_owner_sources_verified: true,
       no_handwritten_lineage_fields: true,
       cross_genome_provenance: true,
       anchor_values_exact: true,
@@ -1106,6 +1120,6 @@ async function run(): Promise<void> {
 run().catch((error: unknown) => {
   state.error = error instanceof Error ? `${error.message}\n${error.stack || ''}` : String(error);
   state.done = true;
-  state.report = { schema: 'cf.hybrid-continuity.browser-report.v2', done: true, error: state.error };
+  state.report = { schema: 'cf.hybrid-continuity.browser-report.v3', done: true, error: state.error };
   say(`hybrid continuity evidence FAILED: ${state.error}`);
 });

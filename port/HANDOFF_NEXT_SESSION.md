@@ -1,3 +1,140 @@
+# ★ LIVE — Wave 1 177/177 PASS and ready to commit; Vanilla deferred open (2026-08-10)
+
+**Current worktree:** `C:\Projects\celestial-frontier-openai-windows` on
+`openai/windows`. Clean full-reset baseline HEAD is
+`bc26e800c7adca72805a832e753ace1a8f9837ba`; Wave 1 is an uncommitted
+nine-art-file batch plus `hybridmatrixaudit.ts` / `hybridmatrix.mjs` audit
+updates on top. Independent review and the complete Wave-1 gate set are finished;
+this bounded checkpoint is ready to commit. PR #7 is historical/already merged. No
+reset PR, 1,250-row certification, final image-inclusive ZIP, release,
+deployment, or version bump exists.
+
+Read first: `ROADMAP.md`, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`,
+`port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`,
+`ART_DIRECTION.md`, `PROCEDURAL_CHARACTERISTICS.md`,
+`LINEAGE_AND_BREEDING.md`, `port/PROPORTION_ARC.md`, `port/v2/README.md`, and
+`port/v2/DEVIATIONS.md`.
+
+## Frozen r1 truth
+
+All 1,250 rows were freshly reviewed from clean commit `bc26e8` in the official
+181-family / 233-packet layout. The hash-bound collector accepted every required
+440px, unlabeled 300px, actual unlabeled 132px, labelled old/current, and exact
+set+species contract surface as **516 PASS / 14 POLISH / 720 FAIL**. Per set:
+
+| set | PASS | POLISH | FAIL |
+|---|---:|---:|---:|
+| Earth fauna | 151 | 6 | 474 |
+| Earth flora | 125 | 0 | 207 |
+| Earth fungi | 16 | 0 | 11 |
+| Earth microbes | 12 | 2 | 6 |
+| Procedural | 212 | 6 | 22 |
+| **total** | **516** | **14** | **720** |
+
+This is the frozen reset baseline, not a certificate:
+`port/v2/apps/game/smoke/full-reset-results-2026-08-10-r1/results.json` records
+`all_rows_literal_pass: false` and `literal_certification_eligible: false`.
+GP7/GP7.1 and their r1/r2/r3 rounds remain quarantined history and cannot
+replace it.
+
+## Wave 1 exact scope and closure
+
+Wave 1 contains exactly **177 reset non-PASS targets**:
+
+| owner wave | targets | current independent result |
+|---|---:|---|
+| root-owned fungi/microbes/procedural | 38 | 38 PASS |
+| fish (`faunaoverrides3.ts`) | 59 | 59 PASS |
+| trees (`florarost.ts` + `floraoverrides2.ts`) | 48 | 48 PASS |
+| fauna2 (`faunaoverrides2.ts`) | 32 | 32 PASS |
+| **total** | **177** | **177 PASS** |
+
+The root 38 are exactly 2 fungi + 8 microbes + 28 procedural identities. The
+root ownership files are `alientraits.ts`, `invertoverrides.ts`,
+`proceduralfamilies.ts`, `proceduraloverrides.ts`, and `speciesoverrides.ts`.
+Every owner wave was independently judged on fresh 440/300/132 evidence with
+its protected controls and deterministic repeats. Do not add 177 to 516 and
+claim a new catalogue score: changed scoped pixels need a later complete
+post-Wave-1 collector run, and the rest of the catalogue has not been rejudged.
+
+## Hybrid closure: Apple independently PASS; Vanilla continuity failing
+
+Apple's continuity repair is independently judged PASS at `floraoverrides2.ts` SHA-256
+`D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`.
+All 58/58 tree target/control rows are exact at 440/300/132 (174/174 hashes).
+All five Apple stages are unique, with pixel distance from pure strictly
+increasing as the Earth anchor falls. Schema v3 validates 234/234 assets and both
+browser orders are stable. Judge evidence is at
+`C:\Users\Nick\.codex\visualizations\2026\08\09\019fe72d-20c7-73a0-bac7-d2c64d10673d\flora-tree-focus\evidence-apple-continuity-judge`.
+
+The matrix still reports `FAIL_BYTE_IDENTICAL_STAGES` solely because the
+pre-existing Vanilla Orchid owner renders all five stages identically. Broader
+hybrid visual continuity therefore remains OPEN. The earlier Green Algae stop
+was a real schema-v2 harness contract bug, not transient provenance: schema v3
+separates the current flora catalogue identity from the retained legacy microbe
+compatibility route, and its sentinels are green. These hybrid conditions are
+separate from the closed 177 catalogue target verdicts. Vanilla Orchid belongs
+to a later bounded continuity wave and does not block this checkpoint commit.
+
+## Whole-form and stale-route rule learned in Wave 1
+
+A whole-form named painter owns one winning route and returns before legacy
+generic bodies. Features placed behind that return are inert; painting a second
+same-target overlay after it creates seams. Prove route ownership before fixing
+or deleting code. Narrow dead branches only with target/control pixel proof.
+The flora cleanup made `strictSignature` and `resetTreeSignature` mutually
+exclusive for 39 overlapping names and constant-folded unreachable orchard and
+citrus alternatives. It preserved all 58 tree target/control rows at all three
+sizes (0/174 drift) and all 332 Earth-flora native hashes (0 drift).
+
+## Exact next sequence
+
+1. Commit only the completed Wave-1 source, hybrid audit repair, and living docs
+   on `openai/windows`; then push that branch.
+2. Open a reviewed **draft** PR with base `develop` and source `openai/windows`.
+3. Continue later repair waves from the frozen r1 reasons with author-separated
+   judgement. Handle Vanilla Orchid in a later bounded continuity wave; do not
+   promote the current matrix while `FAIL_BYTE_IDENTICAL_STAGES` remains.
+4. A fresh full 1,250 capture/collection, literal certification, and dated
+   image-inclusive ZIP happen only after every remaining row closes.
+
+Copy-ready PR title:
+
+`art: complete full-reset Wave 1`
+
+Copy-ready PR description:
+
+```markdown
+## Summary
+- Repair exactly 177 reset-r1 non-PASS targets across bounded art owners.
+- Record independent 177/177 scoped PASS and Apple continuity PASS.
+- Repair hybrid-matrix Green Algae current-catalogue vs legacy-route provenance.
+
+## Verification
+- Complete Wave-1 gate set is green.
+- Apple preserves 58/58 tree rows at 440/300/132 and has five strictly progressive stages.
+- Schema v3 validates 234/234 assets with both browser orders stable.
+
+## Boundaries
+- Vanilla Orchid continuity remains OPEN for a later bounded wave.
+- This is not full 1,250 certification; no final ZIP, release, or deployment.
+```
+
+## Parallel Git handoff
+
+Current side: OpenAI/Codex — the Wave-1 worktree is gate-complete and ready to
+commit/push on `openai/windows`, then open the reviewed draft PR above to
+`develop`. Other side: Anthropic/Claude Code does not have this batch and Nick does not need to
+open it now; do not copy files manually. After a future Codex PR is reviewed and
+merged into `develop`, Claude starts from a clean `anthropic/windows`, fetches,
+and merges `origin/develop` under `PARALLEL_GIT_PROTOCOL.md`. No release or
+deployment has occurred.
+
+# Historical reset-foundation handoff — superseded by frozen r1 / Wave 1 state
+
+> The former live block below is preserved for provenance. Its clean-foundation
+> capture sequence has completed and is superseded by the r1/Wave-1 record above.
+
 # ★ LIVE — reset foundation ready to commit; fresh 1,250-row judging next (2026-08-10)
 
 **Current worktree:** `C:\Projects\celestial-frontier-openai-windows` on

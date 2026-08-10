@@ -101,6 +101,21 @@ const STRICT_CLUSTER_NAMES = new Set<string>([
   'Dragon Fruit', 'Joshua Tree', 'Lichen', 'Licorice', 'Rhubarb', 'Salmonberry', 'Sea Lettuce',
 ]);
 
+/* Fresh packet 138-196 tree-focus failures.  This is intentionally separate
+   from STRICT_CLUSTER_NAMES: these 48 rows need a replacement whole-form tree,
+   while accepted strict controls must remain on their current byte-identical
+   painter. */
+const RESET_TREE_NAMES = new Set<string>([
+  'Cedar', 'Redwood', 'Yew',
+  'Apple', 'Apricot', 'Avocado', 'Brazil Nut', 'Cashew', 'Cherry', 'Chestnut',
+  'Durian', 'Fig', 'Guava', 'Hazelnut', 'Jackfruit', 'Jujube', 'Lemon', 'Lime',
+  'Lychee', 'Mango', 'Mulberry', 'Olive', 'Orange', 'Peach', 'Pear', 'Persimmon',
+  'Plum', 'Pomegranate', 'Soursop', 'Walnut',
+  'Mesquite', 'Cinnamon', 'Clove', 'Nutmeg', 'Eucalyptus', 'Acorn', 'Bay Laurel',
+  'Breadnut', 'Camphor Tree', 'Carob', 'Date Plum', 'Maple Sap', 'Marula', 'Neem',
+  'Pine Nuts', 'Pinyon Pine', 'Wild Mango', 'Acacia',
+]);
+
 const STRICT_HABIT_FOCUS: Record<PlantSpec['habit'], RecheckFocus> = {
   tree: 'tree', shrub: 'shrub', herb: 'herb', grass: 'crop', vine: 'vine',
   succulent: 'shrub', fern: 'fern', aquatic: 'algae', rosette: 'root', palm: 'palm', cane: 'crop',
@@ -127,7 +142,12 @@ const strictFocusFor = (name: string, spec: PlantSpec): RecheckFocus | undefined
 
 const T = (spec: PlantSpec): PainterF => (c, g, p, n) => {
   const focus = strictFocusFor(n, spec);
-  plantBody(c, g, p, focus ? { ...spec, recheck: focus, strictSignature: STRICT_CLUSTER_NAMES.has(n) } : spec, n);
+  plantBody(c, g, p, focus ? {
+    ...spec,
+    recheck: focus,
+    strictSignature: STRICT_CLUSTER_NAMES.has(n) && !RESET_TREE_NAMES.has(n),
+    resetTreeSignature: RESET_TREE_NAMES.has(n),
+  } : spec, n);
 };
 
 export const FLORA2_SPEC: Record<string, PainterF> = {

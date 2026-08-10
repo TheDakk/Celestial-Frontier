@@ -13,9 +13,11 @@ as any change that touches an entry.
 
 The species-art surface is the one place the verbatim-parity boundary is OPEN, under Nick's
 approval after the full-catalog review (`port/ART_REVIEW_SPECIES_2026-08-01.md` +
-`audits/species-audit-2026-08-01/`). Corrections live in `packages/art/src/speciesoverrides.ts`
-ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
-`port/MORPHOLOGY_PASS.md`. Gate: `npm run speciesaudit` (1,254/1,254 every batch).
+`audits/species-audit-2026-08-01/`). Named and procedural corrections now live across the bounded
+owners under `packages/art/src/` atop the verbatim engine; unmatched species stay parity-exact.
+Plan + historical waves: `port/MORPHOLOGY_PASS.md`. Current reset gates are `npm run speciesaudit`
+(1,250/1,250) plus `npm run overridecheck` (1,014/1,014 Earth routes, including four cross-set
+duplicates).
 
 - ✔ **D-ART-6 — fungi structural families (wave 1).** The 27 Earth fungi were one mushroom
   recolored (release blocker). Now: bracket/shelf · puffball · coral · morel · mold · earthstar
@@ -1515,3 +1517,51 @@ ATOP the verbatim engine (unmatched species stay parity-exact). Plan + waves:
   mismatched inputs, and certification writes only for 1,250 fresh PASS.
   **If resolution, comparison, contract, ruler or source is not bound, the verdict is a comment,
   not certification evidence.**
+
+- ★★★ **D-ART-176 — A COMPLETE FRESH BASELINE IS A REPAIR AUTHORITY, NOT AN AUTOMATIC
+  CERTIFICATE.** (2026-08-10, full-reset r1.) The clean `bc26e8` capture bound all 1,250 exact
+  identities to the full ruler and collected every row as **516 PASS / 14 POLISH / 720 FAIL**.
+  `all_rows_fresh` and `all_required_evidence_reviewed` are true while
+  `all_rows_literal_pass` and `literal_certification_eligible` are false. That distinction is
+  intentional: a complete honest failure inventory is progress and cannot be relabelled as 100%.
+  The result is frozen at `apps/game/smoke/full-reset-results-2026-08-10-r1/results.json`; later
+  scoped PASS rows do not mutate it. **Freshness proves the baseline is usable; only every row
+  passing authorizes certification.**
+
+- ★★★ **D-ART-177 — A WHOLE-FORM EARLY RETURN DEFINES OWNERSHIP; DETAILS BEHIND IT ARE DEAD,
+  AND A SECOND BODY AFTER IT IS A SEAM.** (2026-08-10, Wave-1 trees.) The first tree repair put
+  later orchard, citrus, blossom and bark cues behind a broader whole-form branch that already
+  returned. The source contained the requested code and the winning pixels could never reach it.
+  Adding still more overlays would have produced double-painted attachments rather than one tree.
+  The corrected shape gives each exact named reset tree one winning whole-form painter, returns
+  before legacy bodies, and keeps accepted rows on their frozen route. Before fixing a named row,
+  prove which branch wins; before removing an apparent duplicate, prove it owns no target/control
+  pixels. **Route ownership is part of morphology: unreachable anatomy is absent anatomy.**
+
+- ★★★ **D-ART-178 — PIXEL-NEUTRAL CLEANUP NEEDS CATALOGUE-SCALE PROOF, AND A SCOPED PASS IS
+  NOT A NEW CATALOGUE TALLY.** (2026-08-10, Wave 1.) The cleanup made `strictSignature` and
+  `resetTreeSignature` mutually exclusive for 39 overlapping names and removed impossible
+  Apricot/Plum and post-return citrus alternatives. It was accepted only after **0/174 drift**
+  across 58 tree target/control surfaces at 440/300/132 and **0/332 drift** across Earth-flora
+  native portraits, with no unread/inert spec fields. Independently, the exact Wave-1 scope—root
+  38 + fish 59 + trees 48 + fauna2 32—closed **177/177 scoped PASS**. Those changed rows cannot
+  simply be added to r1's 516 because no post-wave 1,250-row collector exists. The integrated
+  guard also found Apple's distinct lineage inputs rendered byte-identical stages. The bounded
+  repair at source SHA-256
+  `D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624` is independently
+  judged PASS: 58/58 tree rows remain exact at 440/300/132 (174/174 hashes), all five stages are unique,
+  and pure-distance strictly increases as the anchor falls. **Freeze and report the scope you
+  actually judged; rerun the whole collector before making a whole-catalogue claim.**
+
+- ★★★ **D-ART-179 — A RETAINED COMPATIBILITY ROUTE IS NOT A CURRENT CATALOGUE MEMBER.**
+  (2026-08-10, hybrid-matrix schema v3.) D-CAT-1 makes flora Green Algae the one current roster
+  identity while intentionally retaining the set-qualified microbe painter for old saves. The
+  first live schema-v2 matrix had a real harness contract bug—not transient provenance: it falsely
+  required both route owners to be current members and stopped before evidence capture. Schema v3
+  repairs the provenance model by distinguishing current catalogue ownership from retained
+  legacy-route ownership, exercises both production routes, and negative-controls relabelling the
+  legacy microbe route as current membership. Its sentinels, selftest and TypeScript check are
+  green; both stable browser orders validated 234/234 assets. Overall status remains
+  `FAIL_BYTE_IDENTICAL_STAGES` solely for pre-existing Vanilla Orchid, so visual continuity is
+  still OPEN. **An audit must test compatibility surfaces without silently rewriting the roster it
+  claims to measure.**

@@ -27,7 +27,7 @@ import { planFor } from './proceduraloverrides.js';
 import { faunaKiwi, faunaMudskipper, faunaPyrosome, faunaSalp, faunaTripodFish } from './faunaoverrides4.js';
 import { floraCabbage, floraCarrot, floraCorn, floraHemp, floraTobacco, floraWatermelon, floraStrawberry, floraKiwiFruit } from './floraoverrides3.js';
 import { fungiFlyAgaric, fungiLionsMane, fungiMaitake, fungiStinkhorn, fungiCordyceps, fungiCap, fungiJellyBrain, lichenMat, microbeForam, tardigrade, macroAlgaeSheet, microAlgaeCell, algaeBloom } from './fungioverrides2.js';
-import { fungiEnoki, procFamilyIndex, fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiCupAnchored, fungiClub, microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate, microbePlates, microbeMat, microbeStructuredColony } from './proceduralfamilies.js';
+import { fungiEnoki, procFamilyIndex, fungiTooth, fungiJelly, fungiTruffle, fungiCup, fungiCupAnchored, fungiClub, microbeRods, microbeSpiral, microbeFilament, microbeChain, microbeFlagellate, microbePlates, microbeMat, microbeStructuredColony, proceduralAlienFlora, proceduralRadialFauna } from './proceduralfamilies.js';
 import { faunaBear, faunaKoala, faunaSirenian, faunaHumpback, faunaBeakedWhale, faunaCuttlefish, faunaHorseshoeCrab, faunaSeaSquirt, faunaLamprey, faunaBat, faunaCroc, faunaHopper, faunaMonotreme, faunaChameleon, faunaFrilled, faunaSeahorse, faunaCaecilian, faunaDartFrog, faunaCloakSquid } from './faunaoverrides5.js';
 import { fishBody } from './faunaoverrides3.js';
 import { insectBody, myriapod } from './invertoverrides.js';
@@ -414,6 +414,22 @@ function fungiBracketCanon(c: Ctx, g: G, _p: Pal): void {
   c.quadraticCurveTo(x0 + w * 0.48, cy + h * 0.29, x0, cy + h * 0.06);
   c.closePath(); c.fill();
   c.strokeStyle = 'rgba(91,74,48,0.55)'; c.lineWidth = 2.4; c.stroke();
+  /* The fertile underside is a pore surface, not a blank cream plate. Keep the
+     pores inside that exposed face and large enough to survive the 132px card. */
+  c.save();
+  c.beginPath();
+  c.moveTo(x0, cy + h * 0.30);
+  c.quadraticCurveTo(x0 + w * 0.34, cy + h * 0.74, x0 + w * 0.82, cy + h * 0.38);
+  c.quadraticCurveTo(x0 + w * 1.04, cy + h * 0.17, x0 + w * 0.98, cy + h * 0.02);
+  c.quadraticCurveTo(x0 + w * 0.48, cy + h * 0.29, x0, cy + h * 0.06);
+  c.closePath(); c.clip();
+  c.fillStyle = 'rgba(82,64,38,0.72)';
+  for (let row = 0; row < 4; row++) for (let col = 0; col < 15; col++) {
+    const px = x0 + w * (0.08 + col * 0.061 + (row % 2) * 0.026);
+    const py = cy + h * (0.13 + row * 0.105 + Math.sin(col * 1.7) * 0.012);
+    c.beginPath(); c.ellipse(px, py, 2.25, 1.35, -0.18, 0, TAU); c.fill();
+  }
+  c.restore();
   /* upper woody hoof */
   const crust = c.createRadialGradient(x0 + w * 0.24, cy - h * 0.38, 3, x0 + w * 0.20, cy, w * 1.05);
   crust.addColorStop(0, '#b3a68c'); crust.addColorStop(0.42, '#7a705c'); crust.addColorStop(0.78, '#4d463a'); crust.addColorStop(1, '#29251e');
@@ -450,24 +466,30 @@ function fungiChickenCanon(c: Ctx, g: G, _p: Pal): void {
   canonBarkedLog(c, S * 0.28, S * 0.53, S * 0.15, S * 0.66);
   const shelf = (x: number, y: number, w: number, h: number): void => {
     c.fillStyle = '#f1cb2f';
-    c.beginPath(); c.moveTo(x, y - h * 0.22);
-    c.quadraticCurveTo(x + w * 0.34, y + h * 0.62, x + w * 0.76, y + h * 0.48);
-    c.quadraticCurveTo(x + w * 1.02, y + h * 0.32, x + w * 0.98, y + h * 0.08);
-    c.quadraticCurveTo(x + w * 0.54, y + h * 0.22, x, y + h * 0.08);
+    c.beginPath(); c.moveTo(x, y - h * 0.18);
+    c.quadraticCurveTo(x + w * 0.20, y + h * 0.43, x + w * 0.47, y + h * 0.36);
+    c.quadraticCurveTo(x + w * 0.68, y + h * 0.58, x + w * 0.82, y + h * 0.31);
+    c.quadraticCurveTo(x + w * 1.09, y + h * 0.43, x + w * 1.03, y + h * 0.06);
+    c.quadraticCurveTo(x + w * 0.57, y + h * 0.22, x, y + h * 0.08);
     c.closePath(); c.fill();
     const top = c.createLinearGradient(x, y - h, x + w, y + h);
     top.addColorStop(0, '#c85225'); top.addColorStop(0.50, '#ef7928'); top.addColorStop(0.84, '#f5bf31'); top.addColorStop(1, '#f6db42');
     c.fillStyle = top;
-    c.beginPath(); c.moveTo(x, y - h * 0.34);
-    c.quadraticCurveTo(x + w * 0.30, y - h * 0.78, x + w * 0.67, y - h * 0.43);
-    c.quadraticCurveTo(x + w * 0.98, y - h * 0.60, x + w * 1.04, y - h * 0.16);
-    c.quadraticCurveTo(x + w * 1.16, y + h * 0.08, x + w * 0.92, y + h * 0.19);
-    c.quadraticCurveTo(x + w * 0.80, y + h * 0.52, x + w * 0.59, y + h * 0.24);
-    c.quadraticCurveTo(x + w * 0.42, y + h * 0.58, x + w * 0.28, y + h * 0.18);
-    c.quadraticCurveTo(x + w * 0.12, y + h * 0.36, x, y + h * 0.05);
+    c.beginPath(); c.moveTo(x, y - h * 0.30);
+    c.quadraticCurveTo(x + w * 0.18, y - h * 0.82, x + w * 0.39, y - h * 0.49);
+    c.quadraticCurveTo(x + w * 0.53, y - h * 0.82, x + w * 0.68, y - h * 0.45);
+    c.quadraticCurveTo(x + w * 0.87, y - h * 0.72, x + w * 1.04, y - h * 0.25);
+    c.quadraticCurveTo(x + w * 1.18, y + h * 0.02, x + w * 0.96, y + h * 0.18);
+    c.quadraticCurveTo(x + w * 0.89, y + h * 0.52, x + w * 0.72, y + h * 0.23);
+    c.quadraticCurveTo(x + w * 0.61, y + h * 0.61, x + w * 0.45, y + h * 0.25);
+    c.quadraticCurveTo(x + w * 0.31, y + h * 0.55, x + w * 0.20, y + h * 0.17);
+    c.quadraticCurveTo(x + w * 0.08, y + h * 0.34, x, y + h * 0.05);
     c.closePath(); c.fill();
-    c.strokeStyle = 'rgba(255,224,74,0.9)'; c.lineWidth = 2.5;
-    c.beginPath(); c.moveTo(x + w * 0.18, y + h * 0.12); c.quadraticCurveTo(x + w * 0.62, y + h * 0.50, x + w * 1.00, y + h * 0.02); c.stroke();
+    c.strokeStyle = 'rgba(255,224,74,0.9)'; c.lineWidth = 3.2;
+    c.beginPath(); c.moveTo(x + w * 0.13, y + h * 0.10);
+    c.quadraticCurveTo(x + w * 0.28, y + h * 0.41, x + w * 0.45, y + h * 0.21);
+    c.quadraticCurveTo(x + w * 0.61, y + h * 0.49, x + w * 0.72, y + h * 0.19);
+    c.quadraticCurveTo(x + w * 0.88, y + h * 0.40, x + w * 1.03, y); c.stroke();
     c.strokeStyle = 'rgba(133,48,22,0.35)'; c.lineWidth = 1.4;
     for (let k = 1; k <= 3; k++) { c.beginPath(); c.moveTo(x + w * (0.12 + k * 0.10), y - h * 0.18); c.quadraticCurveTo(x + w * 0.53, y - h * (0.48 - k * 0.04), x + w * (0.80 + k * 0.04), y - h * 0.04); c.stroke(); }
   };
@@ -644,15 +666,22 @@ function microbeAmoebaCanon(c: Ctx, g: G, _p: Pal): void {
   const body = c.createRadialGradient(cx - S * 0.10, cy - S * 0.10, 3, cx, cy, S * 0.35);
   body.addColorStop(0, 'rgba(214,226,211,0.76)'); body.addColorStop(0.62, 'rgba(145,168,154,0.62)'); body.addColorStop(1, 'rgba(82,111,103,0.48)');
   c.fillStyle = body; c.beginPath();
-  c.moveTo(cx - S * 0.26, cy - S * 0.08);
-  c.quadraticCurveTo(cx - S * 0.24, cy - S * 0.28, cx - S * 0.06, cy - S * 0.25);
-  c.quadraticCurveTo(cx + S * 0.08, cy - S * 0.36, cx + S * 0.19, cy - S * 0.23);
-  c.quadraticCurveTo(cx + S * 0.37, cy - S * 0.31, cx + S * 0.35, cy - S * 0.12);
-  c.quadraticCurveTo(cx + S * 0.46, cy - S * 0.02, cx + S * 0.34, cy + S * 0.10);
-  c.quadraticCurveTo(cx + S * 0.41, cy + S * 0.27, cx + S * 0.20, cy + S * 0.24);
-  c.quadraticCurveTo(cx + S * 0.08, cy + S * 0.38, cx - S * 0.07, cy + S * 0.25);
-  c.quadraticCurveTo(cx - S * 0.29, cy + S * 0.31, cx - S * 0.27, cy + S * 0.09);
-  c.quadraticCurveTo(cx - S * 0.36, cy, cx - S * 0.26, cy - S * 0.08);
+  /* Deliberately unbalanced mid-flow outline: one long leading pseudopod,
+     several blunt lateral lobes, and no radial flower symmetry. */
+  c.moveTo(cx - S * 0.40, cy + S * 0.02);
+  c.quadraticCurveTo(cx - S * 0.35, cy - S * 0.06, cx - S * 0.27, cy - S * 0.13);
+  c.quadraticCurveTo(cx - S * 0.26, cy - S * 0.29, cx - S * 0.10, cy - S * 0.22);
+  c.quadraticCurveTo(cx - S * 0.01, cy - S * 0.17, cx + S * 0.03, cy - S * 0.28);
+  c.quadraticCurveTo(cx + S * 0.09, cy - S * 0.36, cx + S * 0.16, cy - S * 0.20);
+  c.quadraticCurveTo(cx + S * 0.23, cy - S * 0.13, cx + S * 0.36, cy - S * 0.12);
+  c.quadraticCurveTo(cx + S * 0.53, cy - S * 0.12, cx + S * 0.42, cy - S * 0.01);
+  c.quadraticCurveTo(cx + S * 0.34, cy + S * 0.07, cx + S * 0.34, cy + S * 0.17);
+  c.quadraticCurveTo(cx + S * 0.31, cy + S * 0.31, cx + S * 0.17, cy + S * 0.21);
+  c.quadraticCurveTo(cx + S * 0.09, cy + S * 0.16, cx + S * 0.03, cy + S * 0.31);
+  c.quadraticCurveTo(cx - S * 0.02, cy + S * 0.39, cx - S * 0.10, cy + S * 0.23);
+  c.quadraticCurveTo(cx - S * 0.16, cy + S * 0.15, cx - S * 0.27, cy + S * 0.20);
+  c.quadraticCurveTo(cx - S * 0.42, cy + S * 0.24, cx - S * 0.34, cy + S * 0.09);
+  c.quadraticCurveTo(cx - S * 0.35, cy + S * 0.05, cx - S * 0.40, cy + S * 0.02);
   c.closePath(); c.fill();
   c.strokeStyle = 'rgba(235,247,234,0.78)'; c.lineWidth = 3.1; c.stroke();
   c.fillStyle = 'rgba(45,57,52,0.82)'; c.beginPath(); c.arc(cx - S * 0.015, cy - S * 0.015, S * 0.055, 0, TAU); c.fill();
@@ -660,6 +689,178 @@ function microbeAmoebaCanon(c: Ctx, g: G, _p: Pal): void {
   for (let i = 0; i < 58; i++) { const a = r() * TAU, d = Math.sqrt(r()) * S * 0.19; c.beginPath(); c.arc(cx + Math.cos(a) * d, cy + Math.sin(a) * d * 0.72, S * (0.004 + r() * 0.010), 0, TAU); c.fill(); }
   c.strokeStyle = 'rgba(240,255,250,0.52)'; c.lineWidth = 1.6;
   for (let i = 0; i < 4; i++) { const x = cx + (r() - 0.5) * S * 0.29, y = cy + (r() - 0.5) * S * 0.22, rr = S * (0.022 + r() * 0.014); c.beginPath(); c.arc(x, y, rr, 0, TAU); c.stroke(); }
+}
+
+function microbeSnowAlgaeCanon(c: Ctx, g: G, _p: Pal): void {
+  const r = mulberry32(((g.seed as number) ^ 0x5A0A) >>> 0);
+  habitatWash(c, 'rgba(176,211,232,0.90)', 'rgba(47,84,112,0.96)');
+  /* Watermelon snow is a field stain produced by many cysts, not merely red
+     cells placed on untouched blue ice. Keep blue-white snow visible through
+     two irregular translucent bloom fronts. */
+  for (const [x, y, q] of [[0.30, 0.40, 0.36], [0.70, 0.66, 0.42]] as const) {
+    const stain = c.createRadialGradient(S * x, S * y, 2, S * x, S * y, S * q);
+    stain.addColorStop(0, 'rgba(232,79,104,0.48)'); stain.addColorStop(0.55, 'rgba(210,73,96,0.26)'); stain.addColorStop(1, 'rgba(210,73,96,0)');
+    c.fillStyle = stain; c.beginPath(); c.ellipse(S * x, S * y, S * q, S * q * 0.58, -0.22, 0, TAU); c.fill();
+  }
+  /* Granular snow remains visible between cells; this is a bloom IN snow, not
+     one giant algal cell sitting on a blank field. */
+  for (let i = 0; i < 150; i++) {
+    const x = S * (0.025 + r() * 0.95), y = S * (0.025 + r() * 0.95), q = S * (0.006 + r() * 0.018);
+    c.fillStyle = i % 3 ? 'rgba(236,249,255,0.72)' : 'rgba(153,199,225,0.62)';
+    c.beginPath(); c.moveTo(x, y - q); c.lineTo(x + q * 0.75, y - q * 0.12);
+    c.lineTo(x + q * 0.42, y + q * 0.78); c.lineTo(x - q * 0.62, y + q * 0.52);
+    c.lineTo(x - q * 0.80, y - q * 0.28); c.closePath(); c.fill();
+  }
+  for (let i = 0; i < 27; i++) {
+    const x = S * (0.09 + r() * 0.82), y = S * (0.10 + r() * 0.80), q = S * (0.018 + r() * 0.012);
+    const wall = c.createRadialGradient(x - q * 0.30, y - q * 0.34, 1, x, y, q * 1.05);
+    wall.addColorStop(0, '#ffb5a3'); wall.addColorStop(0.48, '#cf3e4e'); wall.addColorStop(1, '#721c32');
+    c.fillStyle = wall; c.beginPath(); c.arc(x, y, q, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(92,19,45,0.92)'; c.lineWidth = Math.max(2.4, q * 0.17); c.stroke();
+    c.fillStyle = 'rgba(116,151,88,0.78)'; c.beginPath(); c.arc(x + q * 0.08, y + q * 0.04, q * 0.26, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(241,255,213,0.38)'; c.beginPath(); c.arc(x - q * 0.28, y - q * 0.30, q * 0.18, 0, TAU); c.fill();
+  }
+}
+
+function microbeParameciumCanon(c: Ctx, g: G, _p: Pal): void {
+  const r = mulberry32(((g.seed as number) ^ 0xC111A) >>> 0);
+  habitatWash(c, 'rgba(49,58,40,0.55)', 'rgba(9,14,11,0.96)');
+  const cx = S * 0.50, cy = S * 0.51, L = S * 0.29, W = S * 0.095, turn = -0.32;
+  c.save(); c.translate(cx, cy); c.rotate(turn);
+  c.strokeStyle = 'rgba(224,234,164,0.76)'; c.lineWidth = 1.45; c.lineCap = 'round';
+  for (let i = 0; i < 58; i++) {
+    const a = (i / 58) * TAU, ex = Math.cos(a) * L, ey = Math.sin(a) * W;
+    const nx = Math.cos(a) * (8 + (i % 3)), ny = Math.sin(a) * (8 + (i % 3));
+    c.beginPath(); c.moveTo(ex, ey); c.lineTo(ex + nx, ey + ny); c.stroke();
+  }
+  const body = c.createLinearGradient(-L, -W, L, W);
+  body.addColorStop(0, 'rgba(116,126,76,0.72)'); body.addColorStop(0.48, 'rgba(190,198,126,0.62)'); body.addColorStop(1, 'rgba(79,89,51,0.72)');
+  c.fillStyle = body; c.beginPath();
+  c.moveTo(-L, 0); c.bezierCurveTo(-L * 0.90, -W * 0.95, -L * 0.22, -W * 1.10, L * 0.70, -W * 0.76);
+  c.quadraticCurveTo(L * 1.08, -W * 0.34, L, 0);
+  c.quadraticCurveTo(L * 0.93, W * 0.58, L * 0.58, W * 0.72);
+  c.bezierCurveTo(-L * 0.24, W * 1.10, -L * 0.96, W * 0.82, -L, 0); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(231,236,174,0.82)'; c.lineWidth = 2.4; c.stroke();
+  /* A recessed, diagonal oral groove: dark valley plus a lit inner lip. */
+  c.strokeStyle = 'rgba(42,48,26,0.88)'; c.lineWidth = 8; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(-L * 0.48, -W * 0.54); c.bezierCurveTo(-L * 0.20, -W * 0.10, L * 0.02, W * 0.34, L * 0.34, W * 0.48); c.stroke();
+  c.strokeStyle = 'rgba(235,244,178,0.70)'; c.lineWidth = 2.4;
+  c.beginPath(); c.moveTo(-L * 0.45, -W * 0.50); c.bezierCurveTo(-L * 0.18, -W * 0.08, L * 0.04, W * 0.29, L * 0.31, W * 0.42); c.stroke();
+  c.fillStyle = 'rgba(39,43,22,0.62)'; c.beginPath(); c.ellipse(-L * 0.04, -W * 0.02, L * 0.13, W * 0.28, -0.18, 0, TAU); c.fill();
+  for (const [x, y, q] of [[-0.55, 0.23, 0.20], [0.50, -0.22, 0.17]] as const) {
+    c.strokeStyle = 'rgba(250,251,207,0.68)'; c.lineWidth = 2;
+    c.beginPath(); c.arc(L * x, W * y, W * q, 0, TAU); c.stroke();
+  }
+  c.fillStyle = 'rgba(250,255,216,0.22)';
+  for (let i = 0; i < 38; i++) { c.beginPath(); c.arc((r() - 0.5) * L * 1.45, (r() - 0.5) * W * 1.25, 1.2 + r() * 1.8, 0, TAU); c.fill(); }
+  c.restore();
+}
+
+function microbeCyanobacteriaCanon(c: Ctx, g: G, _p: Pal): void {
+  const r = mulberry32(((g.seed as number) ^ 0xC7A0) >>> 0);
+  habitatWash(c, 'rgba(12,47,52,0.70)', 'rgba(3,16,20,0.97)');
+  const filament = (index: number): void => {
+    const y0 = S * (0.22 + index * 0.105), phase = r() * TAU, amp = S * (0.055 + r() * 0.035);
+    const pts: Array<[number, number]> = [];
+    for (let k = 0; k <= 28; k++) {
+      const t = k / 28, x = S * (0.05 + t * 0.90), y = y0 + Math.sin(t * TAU * (1.15 + index * 0.13) + phase) * amp + Math.sin(t * TAU * 2.7 + index) * S * 0.018;
+      pts.push([x, y]);
+    }
+    c.strokeStyle = 'rgba(5,37,42,0.95)'; c.lineWidth = 13; c.lineCap = 'round'; c.lineJoin = 'round';
+    c.beginPath(); pts.forEach(([x, y], k) => k ? c.lineTo(x, y) : c.moveTo(x, y)); c.stroke();
+    c.strokeStyle = index % 2 ? '#2a9aa1' : '#42b9b3'; c.lineWidth = 8;
+    c.beginPath(); pts.forEach(([x, y], k) => k ? c.lineTo(x, y) : c.moveTo(x, y)); c.stroke();
+    c.strokeStyle = 'rgba(182,244,229,0.48)'; c.lineWidth = 1.25;
+    for (let k = 2; k < pts.length - 2; k += 2) {
+      const [x, y] = pts[k]!, [px, py] = pts[k - 1]!, a = Math.atan2(y - py, x - px) + Math.PI / 2;
+      c.beginPath(); c.moveTo(x + Math.cos(a) * 4, y + Math.sin(a) * 4); c.lineTo(x - Math.cos(a) * 4, y - Math.sin(a) * 4); c.stroke();
+    }
+    const [hx, hy] = pts[7 + (index * 3) % 15]!;
+    c.fillStyle = '#86d4bd'; c.beginPath(); c.arc(hx, hy, 7.2, 0, TAU); c.fill();
+    c.strokeStyle = '#164f55'; c.lineWidth = 2.2; c.stroke();
+  };
+  for (let i = 0; i < 6; i++) filament(i);
+}
+
+function microbeSulfurOxidizerCanon(c: Ctx, g: G, _p: Pal): void {
+  const r = mulberry32(((g.seed as number) ^ 0x5A1F) >>> 0);
+  habitatWash(c, 'rgba(69,58,21,0.72)', 'rgba(12,15,9,0.98)');
+  const sediment = c.createLinearGradient(0, S * 0.58, 0, S);
+  sediment.addColorStop(0, 'rgba(118,91,24,0.15)'); sediment.addColorStop(1, 'rgba(196,146,35,0.78)');
+  c.fillStyle = sediment; c.beginPath(); c.moveTo(0, S * 0.63);
+  c.bezierCurveTo(S * 0.24, S * 0.54, S * 0.42, S * 0.72, S * 0.63, S * 0.61);
+  c.bezierCurveTo(S * 0.79, S * 0.54, S * 0.92, S * 0.66, S, S * 0.59); c.lineTo(S, S); c.lineTo(0, S); c.closePath(); c.fill();
+  c.fillStyle = 'rgba(245,214,72,0.46)';
+  for (let i = 0; i < 72; i++) { const x = S * r(), y = S * (0.62 + r() * 0.34), q = 1.5 + r() * 4.5; c.beginPath(); c.arc(x, y, q, 0, TAU); c.fill(); }
+  for (let n = 0; n < 10; n++) {
+    const x0 = S * (0.06 + r() * 0.88), y0 = S * (0.62 + r() * 0.17);
+    const x3 = S * (0.06 + r() * 0.88), y3 = S * (0.17 + r() * 0.31);
+    const x1 = S * (0.04 + r() * 0.92), y1 = S * (0.46 + r() * 0.24);
+    const x2 = S * (0.04 + r() * 0.92), y2 = S * (0.23 + r() * 0.28);
+    const pts: Array<[number, number]> = [];
+    for (let k = 0; k <= 26; k++) {
+      const t = k / 26, u = 1 - t;
+      pts.push([
+        u * u * u * x0 + 3 * u * u * t * x1 + 3 * u * t * t * x2 + t * t * t * x3,
+        u * u * u * y0 + 3 * u * u * t * y1 + 3 * u * t * t * y2 + t * t * t * y3,
+      ]);
+    }
+    c.strokeStyle = 'rgba(75,61,16,0.96)'; c.lineWidth = 17; c.lineCap = 'round'; c.lineJoin = 'round';
+    c.beginPath(); pts.forEach(([x, y], k) => k ? c.lineTo(x, y) : c.moveTo(x, y)); c.stroke();
+    c.strokeStyle = n % 2 ? '#e7e3a1' : '#f1e9b3'; c.lineWidth = 12;
+    c.beginPath(); pts.forEach(([x, y], k) => k ? c.lineTo(x, y) : c.moveTo(x, y)); c.stroke();
+    c.fillStyle = '#f3c62f';
+    for (let k = 2; k < 25; k += 3) { const [x, y] = pts[k]!; c.beginPath(); c.ellipse(x, y, 4.1, 2.8, k * 0.43, 0, TAU); c.fill(); }
+  }
+  c.strokeStyle = 'rgba(224,236,217,0.30)'; c.lineWidth = 5; c.lineCap = 'round';
+  for (let i = 0; i < 4; i++) { c.beginPath(); c.moveTo(S * (0.25 + i * 0.16), S * 0.28); c.bezierCurveTo(S * (0.17 + i * 0.18), S * 0.18, S * (0.34 + i * 0.12), S * 0.10, S * (0.27 + i * 0.17), S * 0.02); c.stroke(); }
+}
+
+function microbeThermophileCanon(c: Ctx, g: G, _p: Pal): void {
+  const r = mulberry32(((g.seed as number) ^ 0x7A3A) >>> 0);
+  habitatWash(c, 'rgba(119,36,10,0.90)', 'rgba(38,11,5,0.98)');
+  const mat = c.createLinearGradient(0, S * 0.50, 0, S);
+  mat.addColorStop(0, 'rgba(245,92,19,0.18)'); mat.addColorStop(0.62, 'rgba(226,77,10,0.78)'); mat.addColorStop(1, 'rgba(116,37,8,0.96)');
+  c.fillStyle = mat; c.beginPath(); c.moveTo(0, S * 0.57); c.bezierCurveTo(S * 0.24, S * 0.50, S * 0.42, S * 0.66, S * 0.61, S * 0.55); c.bezierCurveTo(S * 0.78, S * 0.46, S * 0.90, S * 0.64, S, S * 0.53); c.lineTo(S, S); c.lineTo(0, S); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(255,210,121,0.60)'; c.lineWidth = 7; c.lineCap = 'round';
+  for (let i = 0; i < 4; i++) { c.beginPath(); c.moveTo(S * (0.08 + i * 0.25), S * 0.55); c.bezierCurveTo(S * (0.22 + i * 0.18), S * 0.43, S * (0.17 + i * 0.25), S * 0.30, S * (0.31 + i * 0.20), S * 0.20); c.stroke(); }
+  for (let i = 0; i < 92; i++) {
+    const stream = i % 4, t = r(), x = S * (0.08 + stream * 0.25 + t * 0.22 + (r() - 0.5) * 0.06), y = S * (0.55 - t * 0.34 + (r() - 0.5) * 0.06);
+    c.save(); c.translate(x, y); c.rotate(-0.70 + (r() - 0.5) * 0.62);
+    const rod = c.createLinearGradient(-7, 0, 7, 0); rod.addColorStop(0, '#a73d0d'); rod.addColorStop(0.45, '#ffb23b'); rod.addColorStop(1, '#d95b12');
+    c.fillStyle = rod; c.beginPath(); c.roundRect(-7, -2.8, 14, 5.6, 2.8); c.fill();
+    c.strokeStyle = 'rgba(255,215,128,0.62)'; c.lineWidth = 0.9; c.stroke(); c.restore();
+  }
+  c.strokeStyle = 'rgba(242,246,232,0.36)'; c.lineWidth = 5; c.lineCap = 'round';
+  for (let i = 0; i < 5; i++) { const x = S * (0.16 + i * 0.17); c.beginPath(); c.moveTo(x, S * 0.20); c.bezierCurveTo(x - S * 0.08, S * 0.13, x + S * 0.08, S * 0.08, x, -S * 0.02); c.stroke(); }
+  c.strokeStyle = 'rgba(255,227,167,0.62)'; c.lineWidth = 2;
+  for (let i = 0; i < 18; i++) { const x = S * (0.03 + r() * 0.94), y = S * (0.77 + r() * 0.18), q = 5 + r() * 12; c.beginPath(); c.moveTo(x - q, y); c.lineTo(x, y - q * 0.55); c.lineTo(x + q, y); c.stroke(); }
+}
+
+function microbeForamReticulateCanon(c: Ctx, g: G, p: Pal): void {
+  microbeForam(c, g, p);
+  const r = mulberry32(((g.seed as number) ^ 0xF04B) >>> 0), cx = S * 0.47, cy = S * 0.52;
+  const tips: Array<[number, number]> = [];
+  c.lineCap = 'round';
+  for (let i = 0; i < 18; i++) {
+    const a = (i / 18) * TAU + (r() - 0.5) * 0.12, split = a + (r() - 0.5) * 0.22;
+    const r0 = S * (0.095 + r() * 0.025), r1 = S * (0.18 + r() * 0.035), r2 = S * (0.28 + r() * 0.055);
+    const sx = cx + Math.cos(a) * r0, sy = cy + Math.sin(a) * r0;
+    const mx = cx + Math.cos(split) * r1, my = cy + Math.sin(split) * r1;
+    c.strokeStyle = 'rgba(226,239,205,0.78)'; c.lineWidth = 4.0;
+    c.beginPath(); c.moveTo(sx, sy); c.quadraticCurveTo((sx + mx) * 0.5 + Math.sin(a) * 5, (sy + my) * 0.5 - Math.cos(a) * 5, mx, my); c.stroke();
+    for (const d of [-0.13, 0.13] as const) {
+      const ex = cx + Math.cos(split + d) * r2, ey = cy + Math.sin(split + d) * r2;
+      c.strokeStyle = 'rgba(226,239,205,0.68)'; c.lineWidth = 2.8;
+      c.beginPath(); c.moveTo(mx, my); c.quadraticCurveTo((mx + ex) * 0.5 + Math.sin(split + d) * 4, (my + ey) * 0.5 - Math.cos(split + d) * 4, ex, ey); c.stroke();
+      tips.push([ex, ey]);
+    }
+  }
+  c.strokeStyle = 'rgba(226,239,205,0.52)'; c.lineWidth = 2.2;
+  for (let i = 0; i < tips.length; i += 2) {
+    const [ax, ay] = tips[i]!, [bx, by] = tips[(i + 3) % tips.length]!;
+    c.beginPath(); c.moveTo(ax, ay); c.quadraticCurveTo((ax + bx) * 0.5 + (r() - 0.5) * S * 0.055, (ay + by) * 0.5 + (r() - 0.5) * S * 0.055, bx, by); c.stroke();
+  }
 }
 
 function microbeBioluminescentCanon(c: Ctx, g: G, _p: Pal): void {
@@ -764,12 +965,21 @@ function microbeIronOxidizerCanon(c: Ctx, g: G, _p: Pal): void {
   for (let i = 0; i < 85; i++) { const x = S * (0.08 + r() * 0.84), y = S * (0.56 + r() * 0.31), rr = S * (0.008 + r() * 0.024); c.beginPath(); c.arc(x, y, rr, 0, TAU); c.fill(); }
   for (let n = 0; n < 8; n++) {
     const sx = S * (0.24 + r() * 0.58), sy = S * (0.15 + r() * 0.28), ex = S * (0.16 + r() * 0.55), ey = S * (0.61 + r() * 0.23);
-    c.strokeStyle = 'rgba(106,49,17,0.95)'; c.lineWidth = S * 0.020; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(sx, sy); c.bezierCurveTo(sx - S * 0.12, sy + S * 0.12, ex + S * 0.18, ey - S * 0.18, ex, ey); c.stroke();
-    c.strokeStyle = 'rgba(226,132,43,0.94)'; c.lineWidth = S * 0.010;
-    c.beginPath(); c.moveTo(sx, sy); c.bezierCurveTo(sx - S * 0.12, sy + S * 0.12, ex + S * 0.18, ey - S * 0.18, ex, ey); c.stroke();
-    c.strokeStyle = 'rgba(248,186,83,0.60)'; c.lineWidth = 1.6;
-    for (let k = 1; k < 8; k++) { const t = k / 8, x = sx * (1 - t) + ex * t + Math.sin(t * TAU * 2.2) * S * 0.05, y = sy * (1 - t) + ey * t; c.beginPath(); c.moveTo(x - S * 0.010, y - S * 0.010); c.lineTo(x + S * 0.010, y + S * 0.010); c.stroke(); }
+    const left: Array<[number, number]> = [], right: Array<[number, number]> = [];
+    for (let k = 0; k <= 24; k++) {
+      const t = k / 24, baseX = sx * (1 - t) + ex * t + Math.sin(t * Math.PI) * (n % 2 ? S * 0.035 : -S * 0.035);
+      const baseY = sy * (1 - t) + ey * t, wave = Math.sin(t * TAU * 3.0 + n * 0.7) * S * 0.018;
+      left.push([baseX + wave, baseY]); right.push([baseX - wave, baseY]);
+    }
+    c.lineCap = 'round'; c.lineJoin = 'round';
+    for (const pts of [left, right]) {
+      c.strokeStyle = 'rgba(91,39,12,0.96)'; c.lineWidth = 6.5;
+      c.beginPath(); pts.forEach(([x, y], k) => k ? c.lineTo(x, y) : c.moveTo(x, y)); c.stroke();
+      c.strokeStyle = 'rgba(233,137,47,0.96)'; c.lineWidth = 3.2;
+      c.beginPath(); pts.forEach(([x, y], k) => k ? c.lineTo(x, y) : c.moveTo(x, y)); c.stroke();
+    }
+    c.strokeStyle = 'rgba(255,208,111,0.76)'; c.lineWidth = 1.6;
+    for (let k = 2; k < 24; k += 4) { const [ax, ay] = left[k]!, [bx, by] = right[k]!; c.beginPath(); c.moveTo(ax, ay); c.lineTo(bx, by); c.stroke(); }
     const bean = c.createRadialGradient(sx - S * 0.015, sy - S * 0.015, 1, sx, sy, S * 0.045);
     bean.addColorStop(0, '#fff7dc'); bean.addColorStop(0.68, '#ded9c5'); bean.addColorStop(1, '#8d8a7a');
     c.fillStyle = bean; c.save(); c.translate(sx, sy); c.rotate(-0.45); c.beginPath(); c.ellipse(0, 0, S * 0.042, S * 0.026, 0, 0, TAU); c.fill(); c.restore();
@@ -958,12 +1168,12 @@ function microbeEuglena(c: Ctx, g: G, _p: ReturnType<typeof palette>): void {
 const MICROBE_NAME: Record<string, Painter> = {
   /* ★ WAVE 18 → 64 — the extremophiles now carry their HABITAT (above). */
   'Methanogen': microbeMethanogen,
-  'Sulfur-Oxidizing Bacteria': (c, g, p) => microbeFilament(c, g, tint(p, '#e8dc86')),
+  'Sulfur-Oxidizing Bacteria': microbeSulfurOxidizerCanon,
   'Nitrogen-Fixing Bacteria': microbeNitrogenFixer,
-  'Thermophile': (c, g, p) => microbeRods(c, g, tint(p, '#e07a26')),
+  'Thermophile': microbeThermophileCanon,
   'Tardigrade': (c, g, p) => tardigrade(c, g, speciesHue(p, '#d9b98c')),   /* wave 18: the canonical 8-legged water bear */
   'Diatom': (c, g, p) => microbeDiatom(c, g, speciesHue(p, '#c9a552')),
-  'Paramecium': (c, g, p) => microbeCiliate(c, g, speciesHue(p, '#b6bd82')), 'Euglena': microbeEuglena,
+  'Paramecium': microbeParameciumCanon, 'Euglena': microbeEuglena,
   /* ★ WAVE 42 — 'Foraminiferan' and 'Green Algae' removed: both are keyed in
      CANON, which resolveOverride consults FIRST and returns from, so these
      rows never ran. Worse, they disagreed with the live painters — CANON gives
@@ -978,7 +1188,7 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   /* Tardigrade is an ANIMAL in both kingdoms it appears in (audit canonical) */
   'fauna|Tardigrade': tardigrade,
   /* Foraminiferan gets its chambered test */
-  'microbe|Foraminiferan': microbeForam,
+  'microbe|Foraminiferan': microbeForamReticulateCanon,
   /* GP7 conformity recheck: each of these names has an identity geometry the
      procedural family deliberately cannot promise. One home per kingdom+name. */
   'fungi|Bracket Fungus': fungiBracketCanon,
@@ -1004,7 +1214,7 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'flora|Green Algae': (c, g, p) => macroAlgaeSheet(c, g, p, 'filament'),
   'microbe|Green Algae': microAlgaeCell,
   /* Snow / Ice Algae: a tinted bloom field in each kingdom it appears in */
-  'flora|Snow Algae': (c, g, p) => algaeBloom(c, g, speciesHue(p, '#e05263')), 'microbe|Snow Algae': algaeBloom,
+  'flora|Snow Algae': (c, g, p) => algaeBloom(c, g, speciesHue(p, '#e05263')), 'microbe|Snow Algae': microbeSnowAlgaeCanon,
   /* ★ WAVE 42 — 'microbe|Ice Algae' removed: it is a DEAD route. Unlike Green
      Algae, Snow Algae, Reindeer Lichen and Tardigrade, Ice Algae exists in the
      flora catalogue ONLY, so no genome ever arrives with kingdom 'microbe' and
@@ -1044,7 +1254,7 @@ const CANON: Record<string, (c: Ctx, g: G, p: Pal) => void> = {
   'fauna|Salp': faunaSalp,
   /* ★ wave 21 — Cyanobacteria: the audit wants "filamentous chains, mats, or
      bead-like trichomes", which is exactly the trichome wave 20 built */
-  'microbe|Cyanobacteria': (c, g, p) => microbeFilament(c, g, speciesHue(p, '#1f7f86')),
+  'microbe|Cyanobacteria': microbeCyanobacteriaCanon,
   'fauna|Tripod Fish': faunaTripodFish,
   /* ★ wave 21 — the named-species NEEDS_FIX fauna the shared systems route but
      cannot say (the sirenians had no route at all and fell through as spheres) */
@@ -1356,9 +1566,15 @@ export function resolveProcedural(g: G): string | null {
     case 'insect': insectBody(ink.c, g, pal, plan.spec, who); break;
     case 'bird': faunaBird(ink.c, g, pal, plan.spec, who); break;
     case 'snake': reptSnake(ink.c, g, pal, { banded: plan.banded }, who); break;
-    case 'myriapod': myriapod(ink.c, g, pal, { flat: plan.flat }, who); break;
+    case 'myriapod': myriapod(ink.c, g, pal, {
+      flat: plan.flat,
+      ...(plan.legScale !== undefined ? { legScale: plan.legScale } : {}),
+      ...(plan.legContrast ? { legContrast: true } : {}),
+    }, who); break;
     case 'turtle': reptTurtle(ink.c, g, pal, {}, who); break;
     case 'plant': plantBody(ink.c, g, pal, plan.spec, who); break;
+    case 'alienPlant': proceduralAlienFlora(ink.c, g, pal, plan.architecture); break;
+    case 'radial': proceduralRadialFauna(ink.c, g, pal); break;
   }
   fitInk(ink.cv, c, who);
   return cv.toDataURL();

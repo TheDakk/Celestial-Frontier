@@ -4,11 +4,13 @@ _Live authority for the restarted species-art review. Matches the current
 OpenAI/Codex worktree as of 2026-08-10; update this file in the same batch as
 the audit source, renderer, or acceptance ruler changes._
 
-Repository state at reset start: `openai/windows`, local HEAD `3528bfb`, with
-the reset-foundation implementation and documentation still uncommitted. PR #7
-is historical/already merged; no PR number exists for this reset batch.
+The clean full-reset baseline is commit
+`bc26e800c7adca72805a832e753ace1a8f9837ba` on `openai/windows`. The current
+worktree is an uncommitted nine-art-file Wave-1 batch plus
+`hybridmatrixaudit.ts` / `hybridmatrix.mjs` audit updates on top. PR #7 is
+historical/already merged; no reset PR exists yet.
 
-## Status: reset foundation accepted; clean commit and full review open
+## Status: r1 baseline frozen; Wave 1 ready to commit; Vanilla deferred open
 
 Nick stopped the GP7.1 remediation and explicitly reopened the entire catalogue
 after Fruit Bat exposed a false acceptance: the current animal does not read as
@@ -31,19 +33,59 @@ The reference tables contain 1,014 Earth route rows because four names have
 separate identities in two kingdoms. Review joins therefore use **set + species
 name**, never a bare name.
 
-The four-bat negative-control family now has a frozen independent refine3 PASS
-at 440px, 300px and 132px. That result applies only to Bat, Fruit Bat,
-Insect-Eating Bat and Vampire Bat; the other 1,246 identities have not yet
-received the new reset verdict. There is no full-catalogue PASS, final ZIP,
-certification, pull request, release, or deployment.
+The clean r1 capture and complete fresh review are now frozen. The official
+collector accepted all 1,250 rows and every required evidence surface as **516
+PASS / 14 POLISH / 720 FAIL**:
 
-The independent bounded diff review of `gp71rejudge`, `fullresetlayout` and
-`fullresetreview` found no blockers. Their syntax/selftests and the negative
-controls for provenance, exact layout/contracts and every required resolution
-passed. The integrated post-review pass also cleared syntax, TypeScript,
-unused-code, 238-pass/1-skipped Vitest, reset-tool, hybrid-matrix and diff checks.
-This accepts the reset foundation only; the clean commit, fresh capture and
-1,250-row visual review remain separate requirements.
+| set | PASS | POLISH | FAIL |
+|---|---:|---:|---:|
+| Earth fauna | 151 | 6 | 474 |
+| Earth flora | 125 | 0 | 207 |
+| Earth fungi | 16 | 0 | 11 |
+| Earth microbes | 12 | 2 | 6 |
+| Procedural | 212 | 6 | 22 |
+| **total** | **516** | **14** | **720** |
+
+The frozen result is
+`apps/game/smoke/full-reset-results-2026-08-10-r1/results.json`, sourced from
+clean commit `bc26e8`. It records all rows fresh and all required evidence
+reviewed, but `all_rows_literal_pass: false` and
+`literal_certification_eligible: false`. This is the repair baseline, not a
+certificate. There is no final all-PASS collection, image-inclusive ZIP, reset
+pull request, release, or deployment.
+
+## Wave 1: exact 177-target scope
+
+Wave 1 selected exactly 177 r1 non-PASS identities and no catalogue-wide body
+pass:
+
+| bounded owner | targets | independent result |
+|---|---:|---|
+| root: 2 fungi + 8 microbes + 28 procedural | 38 | 38 PASS |
+| fish (`faunaoverrides3.ts`) | 59 | 59 PASS |
+| trees (`florarost.ts`, `floraoverrides2.ts`) | 48 | 48 PASS |
+| fauna2 (`faunaoverrides2.ts`) | 32 | 32 PASS |
+| **total** | **177** | **177 PASS** |
+
+The five root-owner sources are `alientraits.ts`, `invertoverrides.ts`,
+`proceduralfamilies.ts`, `proceduraloverrides.ts`, and `speciesoverrides.ts`.
+Each owner wave was source-frozen and independently rejudged at 440/300/132
+with named controls and repeat evidence. These 177 scoped PASS results must not
+be added arithmetically to the frozen 516 and described as a new catalogue
+score: changed hashes need a later full collector run, and the other 1,073 rows
+have not received a post-Wave-1 verdict.
+
+The 177 catalogue verdicts are closed. Apple's continuity repair is independently
+judged PASS at `floraoverrides2.ts` SHA-256
+`D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
+58/58 tree target/control rows are exact at 440/300/132 (174/174 hashes), all
+five stages are unique, and their pixel distance from pure strictly increases as
+the anchor falls. Schema v3 validates 234/234 assets with both browser orders
+stable. The matrix retains `FAIL_BYTE_IDENTICAL_STAGES` solely for pre-existing
+Vanilla Orchid, whose five stages are identical; broader hybrid visual
+continuity remains OPEN for a later bounded wave. Independent review and the
+complete Wave-1 gate set are finished; Vanilla does not block this checkpoint
+commit.
 
 ## Trigger and first closed family: bats
 
@@ -141,6 +183,25 @@ to the isolated baseline. The v2 app restores the standing mobile heat rule:
 touch/coarse-pointer renderer DPR caps at 2, desktop at 3. These are valid
 cleanup/cap corrections, not organism PASS evidence.
 
+### Wave-1 whole-form ownership and stale cleanup
+
+A whole-form named painter must own one winning route and return before the
+older generic body. A required feature placed after that early return is inert;
+adding another same-target overlay after the whole form risks double-painted
+seams. The repair procedure is therefore route proof → winning whole-form edit →
+target/control render → only then removal or narrowing of source-proven dead
+same-target alternatives. Code presence is not evidence that pixels changed.
+
+The bounded flora cleanup applied that rule without changing pixels. It made
+`strictSignature` and `resetTreeSignature` mutually exclusive for their 39
+overlapping reset names, removed impossible Apricot/Plum alternatives from the
+Cherry/Peach/Pear-only arm, and constant-folded unreachable Lime/Orange
+alternatives after their dedicated returns. The exact proof was **0/174 drift**
+across the 58 tree target/control surfaces at 440/300/132 and **0/332 drift**
+across every Earth-flora native portrait. `speccheck` also remained at zero
+unread or inert fields. Pixel-neutral cleanup is accepted only with this form of
+winning-route and hash evidence.
+
 ## What PixiJS can and cannot improve
 
 The v2 game runs PixiJS 8.19, but species anatomy is still drawn by deterministic
@@ -166,23 +227,31 @@ rewrite is not part of the current reset-foundation batch.
 `crossGenome` stages: pure Earth, Earth×Earth (0.90), Earth×alien (0.73), a
 next alien generation (0.46), and the 0.22 anchor floor. It also writes
 unlabeled detail cards, silhouettes, attachment crops, repeat/reload proof and
-reversed-parent cache controls. The current provisional roots contain 217
-manifest-bound assets, 60 principal portraits and six cache pairs.
+reversed-parent cache controls. The earlier r1/r2 roots contain 217
+manifest-bound assets, 60 principal portraits and six cache pairs, but remain
+dirty-worktree diagnostic history rather than current certification evidence.
 
-The machine route/cache controls pass, but **visual continuity remains OPEN**:
+The current production route/cache controls pass. Independent judgment accepts
+the repaired Apple whole-form owner: it expresses all five focused genomes as
+distinct integrated trees without a decorative pasted overlay, 58/58 tree rows
+remain exact at all three delivery sizes, and pure-distance increases strictly
+through the five-stage progression. The exact judge root is
+`C:\Users\Nick\.codex\visualizations\2026\08\09\019fe72d-20c7-73a0-bac7-d2c64d10673d\flora-tree-focus\evidence-apple-continuity-judge`.
+The current matrix-level failure is solely pre-existing Vanilla Orchid: its five
+production stages remain byte-identical. **Visual continuity remains OPEN** and
+no catalogue-wide seamlessness or hybrid art-PASS claim is permitted.
 
-- Fruit Bat's pure stage uses the new owned family while its bred fauna stages
-  still enter the older lineage renderer generation, producing a visible
-  pure-to-child discontinuity.
-- Vanilla Orchid's five production genomes are byte-identical in final pixels;
-  anchor values exist but the owner does not express them.
-- Apple and Oyster Mushroom remain unreviewed continuity cases; their named
-  owners may preserve too much fixed Earth form or ignore reversed-parent traits.
-
-The matrix therefore reports `FAIL_BYTE_IDENTICAL_STAGES` and makes no
-seamlessness or art-PASS claim. The provisional r1/r2 roots were captured from
-the same dirty source snapshot and are diagnostic only; rerun from the clean
-commit before promoting evidence.
+The first attempted live matrix after Wave 1 did not complete because of a real
+schema-v2 harness contract bug: it incorrectly required Green Algae's retained
+`microbe` compatibility route to be a current catalogue member. This was not
+transient provenance. D-CAT-1 intentionally leaves only the `flora` owner in the
+live roster while keeping the set-qualified microbe route for old saves. Schema
+v3 in `hybridmatrixaudit.ts` and `hybridmatrix.mjs` repairs the provenance model:
+it distinguishes current catalogue ownership from retained legacy-route
+ownership, exercises both production routes, and negative-controls relabelling
+the legacy route as current membership. Its sentinels, selftest, and TypeScript
+check are green; the live run validated 234/234 assets in both stable browser
+orders. The harness bug was not an organism verdict.
 
 ## Reset acceptance ruler
 
@@ -224,9 +293,11 @@ POLISH, zero FAIL.
 
 ## Evidence and procedure
 
-Commit the independently reviewed and gate-green foundation on `openai/windows`,
-and require a clean worktree at the complete 40-hex HEAD. Then capture into new,
-never-overwritten directories. Commands below run from `port/v2` on Windows:
+The clean baseline sequence completed once at `bc26e8`; its 516/14/720 result is
+frozen. The command shape below remains mandatory for each future complete
+post-repair capture: first commit the independently reviewed and gate-green
+source on `openai/windows`, require a clean complete 40-hex HEAD, and write only
+to new never-overwritten directories. Commands run from `port/v2` on Windows:
 
 ```powershell
 node tools/gp71rejudge.mjs --prepare --out=<NEW_CURRENT_EVIDENCE> --date=2026-08-10
@@ -277,15 +348,16 @@ into `develop`. No `main` merge, release or deployment is authorized here.
 
 ## Immediate order
 
-1. Commit the accepted bounded foundation; that result does not certify any
-   organism pixels.
-2. Make the clean 1,250-current capture and
-   official 181-family / 233-packet layout.
-3. Generate the bound old/current comparison and fresh empty verdict templates.
-4. Review Earth fauna family by family, then flora, fungi, microbes, and all 240
-   procedural identities; repair only evidence-confirmed rows and repeat cleanly.
-5. Resolve the open hybrid visual-continuity findings and rerun the matrix from a
-   clean commit. Prototype the staged Pixi presentation seam only after anatomy
-   and lineage continuity are sound.
-6. Package and certify only after a fresh 1,250/1,250 PASS result. Until then,
-   keep GP7/GP7.1 quarantined and the bat result explicitly family-scoped.
+1. Commit and push the gate-complete Wave-1 source, hybrid audit repair and living
+   docs on `openai/windows`; do not add unrelated files.
+2. Open a reviewed draft PR with base `develop` and source `openai/windows`, using
+   the copy-ready title/description in `port/HANDOFF_NEXT_SESSION.md`.
+3. Continue the remaining r1 non-PASS rows in bounded owner/family waves. Preserve
+   author separation and never edit a painter while its judge holds source frozen.
+4. Handle Vanilla Orchid in a later bounded continuity wave; do not promote the
+   current matrix while `FAIL_BYTE_IDENTICAL_STAGES` remains.
+5. After all rows close, repeat the complete clean 1,250 capture/layout/compare/
+   collect sequence, rerun the clean hybrid matrix, and certify only a literal
+   1,250/1,250 PASS result.
+6. Build the image-inclusive ZIP only after certification. Until then, keep
+   GP7/GP7.1 quarantined and the full certification, ZIP, reset PR and release open.

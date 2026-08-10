@@ -687,17 +687,49 @@ Fruit Bat, Insect-Eating Bat and Vampire Bat at native 440px, unlabeled gameplay
 controls. This is a four-row family result only; the durable record is
 `port/v2/reference/BAT_FAMILY_RESET_REVIEW_2026-08-10.md`.
 
-The full reset does not carry those four verdicts into a global claim. Official
-review derives 181 families / 233 packets at a maximum of 10 and binds each of
-the 1,250 exact identities to clean-commit provenance, 440px, unlabeled 300px,
-actual unlabeled 132px, labelled old/current, and set-specific `mustRead` or
-procedural-plan hashes. No final all-catalogue review or ZIP exists yet.
+The clean reset r1 review is now frozen at commit `bc26e8`. Its official 181
+families / 233 packets bind all 1,250 exact identities to 440px, unlabeled 300px,
+actual unlabeled 132px, labelled old/current, and exact set-specific `mustRead`
+or procedural-plan hashes. The complete fresh result is **516 PASS / 14 POLISH /
+720 FAIL** and is not certification-eligible. No final all-PASS collection or
+image-inclusive ZIP exists.
 
-Hybrid routing is technically correct while visual continuity remains OPEN.
-The provisional 12-lineage × 5-stage matrix shows a Fruit Bat renderer-generation
-break between pure and bred stages and five byte-identical Vanilla Orchid anchors;
-Apple and Oyster Mushroom remain unreviewed. The current matrix is dirty-worktree
-diagnostic evidence and must be regenerated from the clean commit. The graphics
-upgrade remains staged: correct anatomy and lineage continuity, then a
-resolution-aware portrait seam, then a bounded Pixi living preview, then any
-later mesh/skeletal production pipeline.
+Hybrid route/cache ownership is technically correct while overall visual
+continuity remains OPEN solely for Vanilla Orchid. Apple's continuity repair is
+independently judged PASS at source SHA-256
+`D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
+58/58 tree rows are exact at 440/300/132 (174/174 hashes), five stages are unique,
+and pixel distance from pure strictly increases as the anchor falls. Schema v3
+validates 234/234 assets with both browser orders stable. Vanilla Orchid alone
+remains `FAIL_BYTE_IDENTICAL_STAGES`. The earlier dirty 12-lineage × 5-stage
+matrix is diagnostic history. The graphics upgrade remains staged: correct
+anatomy and lineage continuity, then a resolution-aware portrait seam, then a
+bounded Pixi living preview, then any later mesh/skeletal production pipeline.
+
+## 2026-08-10 reset Wave 1 — 177 scoped targets independently PASS
+
+Wave 1 is bounded to **177 r1 non-PASS identities**: root 38 (2 fungi + 8
+microbes + 28 procedural), fish 59, trees 48, and fauna2 32. Independent
+source-frozen review closed all four groups at 440/300/132: **177/177 scoped
+PASS**, with named protected controls and deterministic repeats. This is not a
+new catalogue score; the changed rows and remaining 1,073 rows require a later
+complete clean collector run.
+
+The art-direction law earned by the tree work is strict: **one whole form, one
+winning route**. A named replacement painter must own silhouette, attachments,
+material and identity cues together, then return before an older generic body.
+A cue placed after that early return is dead; a second same-target overlay after
+the whole form creates pasted seams even when both fragments are individually
+correct. Prove dispatch ownership before drawing. Delete or narrow a shadowed
+same-target branch only after target/control hashes prove it owns no pixels.
+
+The flora stale cleanup was deliberately pixel-neutral: `strictSignature` and
+`resetTreeSignature` are mutually exclusive for their 39 overlapping names;
+impossible Apricot/Plum arms inside the Cherry/Peach/Pear-only branch and
+unreachable Lime/Orange alternatives after dedicated citrus returns were
+removed. All 58 tree target/control rows stayed byte-identical at 440/300/132
+(0/174 drift), and all 332 Earth-flora native portraits stayed byte-identical.
+Apple's integrated hybrid variation is independently PASS: all five stages are
+distinct with strictly increasing pure-distance, while all 58 tree rows remain
+exact across the three delivery sizes. The judge evidence is
+`C:\Users\Nick\.codex\visualizations\2026\08\09\019fe72d-20c7-73a0-bac7-d2c64d10673d\flora-tree-focus\evidence-apple-continuity-judge`.

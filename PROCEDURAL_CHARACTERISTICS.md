@@ -6,22 +6,39 @@ the procedural source as of 2026-08-10; dated B15 sections below remain legacy
 `ART_DIRECTION.md` and `LINEAGE_AND_BREEDING.md`._
 
 > **2026-08-10 full-catalogue reset:** prior GP7/GP7.1 bands are historical,
-> not current certification. The reset keeps all 240 deterministic procedural
-> identities in scope, derives 46 production plan families for official review,
-> and adds a separate multi-generation Earth-lineage hybrid matrix. Set-qualified
-> `_earthBlend` ownership and cache identity are guarded by final browser pixels
-> across all four kingdoms (`npm run hybridcheck` from `port/v2`). The provisional
-> 12-lineage × 5-stage matrix has 217 manifest-bound assets but reports visual
-> continuity OPEN: Fruit Bat changes renderer generation between pure and bred
-> stages, Vanilla Orchid's five anchors are byte-identical, and Apple/Oyster
-> Mushroom remain unreviewed. Its dirty-worktree roots are diagnosis only and
-> must be regenerated from the clean commit. Full visual rejudging remains open;
-> see `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
+> not current certification. Clean reset r1 reviewed all 1,250 rows as **516 PASS
+> / 14 POLISH / 720 FAIL**; the procedural subset is **212 / 6 / 22**. Wave 1
+> then selected exactly 177 reset non-PASS targets, including **28 procedural
+> identities**, and independent 440/300/132 review closed the root-owned group
+> (2 fungi + 8 microbes + 28 procedural) **38/38 PASS**. This scoped result is
+> not a new 1,250-row tally. All 240 deterministic procedural identities and 46
+> plan families remain in the final certification scope.
+>
+> Set-qualified `_earthBlend` ownership and cache identity are guarded by final
+> browser pixels across all four kingdoms (`npm run hybridcheck` from `port/v2`).
+> Apple's continuity repair is independently judged PASS at source SHA-256
+> `D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
+> 58/58 tree rows are exact at 440/300/132 (174/174 hashes), five stages are
+> unique with strictly increasing pure-distance, and schema v3 validates 234/234
+> assets with both browser orders stable. The matrix remains
+> `FAIL_BYTE_IDENTICAL_STAGES` solely because pre-existing Vanilla Orchid paints
+> all five stages identically, so overall visual continuity remains OPEN. Earlier
+> dirty-worktree matrices are diagnostic history. See
+> `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
 > **Reading boundary:** the “TEXT-ONLY TODAY” and “STRONG” assessments below are
 > preserved pre-Pass-7/v1 observations, not claims about current v2 pixels. The
-> v2 reset re-measures all 240 procedural identities and the hybrid matrix before
-> this reference can receive a complete current-state rewrite.
+> Reset r1 has now measured all 240 procedural identities. The legacy sections
+> remain design history until the bounded repair waves and clean post-wave
+> collector/hybrid matrix support a complete current-state rewrite.
+
+> **Whole-form ownership law:** a repaired procedural body or growth plan owns one
+> winning route. Required anatomy or traits behind an earlier return are inert;
+> painting a second body/overlay afterward produces pasted seams. Prove the route,
+> repair the owning whole form, and freeze sibling/control hashes before narrowing
+> dead alternatives. Wave 1 used that rule for connected myriapod appendages,
+> coherent procedural plant plans, and the tree reset; code presence alone never
+> counts as visible morphology.
 
 > **B15 release-polish (render-only, fp 50/50):** FA_SKIN now renders as STRUCTURAL material
 > (scale rows / fur fringe / chitin bands / wet sheen / armour plates / warts / feathers /

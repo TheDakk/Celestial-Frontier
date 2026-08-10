@@ -706,7 +706,7 @@ export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: 
 
 /* ═══════════════ MYRIAPODS: many segments, a leg pair on each ═══════════════ */
 export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: boolean;
-  hue?: string; segs?: number; scale?: number }, name = ''): void {
+  hue?: string; segs?: number; scale?: number; legScale?: number; legContrast?: boolean }, name = ''): void {
   const p = hued(pIn, opts.hue);
   const r = nrng(g, name, 0x33DD);
   const cx = S * 0.48, cy = S * 0.52;
@@ -727,12 +727,13 @@ export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: 
   };
   for (let i = N - 1; i >= 0; i--) {
     const [x, y] = path(i);
-    const legLen = segR * (opts.flat ? 2.6 : 1.5);
-    c.strokeStyle = p.dark; c.lineWidth = opts.flat ? 3 : 2.2; c.lineCap = 'round';
+    const legLen = segR * (opts.flat ? 2.6 : 1.5) * Math.min(1.35, opts.legScale ?? 1);
+    c.strokeStyle = p.dark; c.lineWidth = (opts.flat ? 3 : 2.2) * (opts.legScale ?? 1); c.lineCap = 'round';
     for (const s of [-1, 1] as const) {
       c.beginPath(); c.moveTo(x, y);
       c.quadraticCurveTo(x + s * legLen * 0.5, y + legLen * 0.7, x + s * legLen * (opts.flat ? 1.0 : 0.72), y + legLen * (opts.flat ? 0.7 : 1.0));
       c.stroke();
+      if (opts.legContrast) { c.strokeStyle = p.lit; c.lineWidth = (opts.flat ? 3 : 2.2) * (opts.legScale ?? 1) * 0.54; c.stroke(); c.strokeStyle = p.dark; c.lineWidth = (opts.flat ? 3 : 2.2) * (opts.legScale ?? 1); }
     }
     c.fillStyle = shell(c, p, x, y, segR);
     c.beginPath(); c.ellipse(x, y, segR * 1.05, segR * (opts.flat ? 0.78 : 0.95), 0, 0, TAU); c.fill();

@@ -30,14 +30,39 @@
 > old/current 1,250-image roots; `fullresetlayout.mjs` derives the official 181
 > families / 233 packets; and `fullresetreview.mjs` binds each verdict to clean
 > 40-hex provenance, native 440px, unlabeled 300px, actual unlabeled 132px,
-> labelled old/current and exact `mustRead`/procedural-plan hashes. The bat
-> refine3 family is independently PASS for four frozen rows only; no global review
-> or ZIP exists. The v2 renderer caps DPR at 2 for touch/coarse pointers and 3 for
-> desktop. An accidental unreferenced 26,400×19,800 PNG at `packages/art/src/5`
-> (2,029,643 bytes), twelve superseded local painters and definite no-op locals
-> were removed with consumer/pixel proof. The live acceptance contract is
+> labelled old/current and exact `mustRead`/procedural-plan hashes. Clean reset
+> commit `bc26e8` produced the first complete official baseline: **516 PASS / 14
+> POLISH / 720 FAIL** across all 1,250 rows. It is fully fresh but not
+> certification-eligible.
+>
+> Wave 1 owns exactly **177 r1 non-PASS targets**: root 38 (2 fungi + 8 microbes +
+> 28 procedural), fish 59, trees 48, and fauna2 32. Independent 440/300/132
+> rejudging closed all four groups **177/177 scoped PASS**. Source ownership is
+> bounded to `alientraits.ts`, `invertoverrides.ts`, `proceduralfamilies.ts`,
+> `proceduraloverrides.ts`, `speciesoverrides.ts`, `faunaoverrides3.ts`,
+> `florarost.ts`, `floraoverrides2.ts`, and `faunaoverrides2.ts`. These scoped
+> verdicts are not a replacement full-catalogue score.
+>
+> Apple's continuity repair is independently judged PASS at `floraoverrides2.ts` SHA-256
+> `D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
+> 58/58 tree rows remain exact at 440/300/132 (174/174 hashes), five stages are
+> unique with strictly increasing pure-distance, and schema v3 validates 234/234
+> assets with both browser orders stable. The matrix still reports
+> `FAIL_BYTE_IDENTICAL_STAGES` solely for pre-existing Vanilla Orchid, whose five
+> stages are identical, so overall visual continuity remains OPEN.
+> Whole-form routes return
+> before legacy generic painters; features behind that return are inert, while a
+> second same-target overlay risks double-painted seams. The pixel-neutral flora
+> cleanup made the strict/reset tree flags mutually exclusive for 39 overlapping
+> names and removed dead orchard/citrus alternatives with 0/174 tree-surface and
+> 0/332 Earth-flora native drift.
+>
+> The v2 renderer caps DPR at 2 for touch/coarse pointers and 3 for desktop. An
+> accidental unreferenced 26,400×19,800 PNG at `packages/art/src/5` (2,029,643
+> bytes), twelve superseded local painters and definite no-op locals were removed
+> with consumer/pixel proof. The live acceptance contract is
 > `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`; no GP7/GP7.1 band is
-> a current PASS.
+> a current PASS, and no final all-PASS ZIP or reset PR exists.
 
 ---
 

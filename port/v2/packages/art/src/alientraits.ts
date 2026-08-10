@@ -88,8 +88,8 @@ export function alienSkin(
     for (let i = 0; i < n; i++) {
       const t = (i / (n - 1) - 0.5) * 1.7;
       const x = cx + t * rx;
-      formMark(c, x, cy - ry * 0.15, rx * 0.10, ry * 0.82, '235,238,244', 0.10, form);
-      formMark(c, x + rx * 0.055, cy - ry * 0.10, rx * 0.035, ry * 0.78, '14,12,16', 0.24, form);
+      formMark(c, x, cy - ry * 0.15, rx * 0.10, ry * 0.82, '235,238,244', kind === 'plated' ? 0.22 : 0.15, form);
+      formMark(c, x + rx * 0.055, cy - ry * 0.10, rx * 0.035, ry * 0.78, '14,12,16', kind === 'plated' ? 0.38 : 0.31, form);
     }
   } else if (kind === 'crystalline') {
     for (let i = 0; i < 16; i++) {
@@ -111,9 +111,9 @@ export function alienSkin(
   } else if (kind === 'translucent') {
     /* you can see the shadow of what is inside — the clearest single cue
        that a body is not made of flesh */
-    formMark(c, cx + rx * 0.12, cy + ry * 0.08, rx * 0.34, ry * 0.42, '18,26,34', 0.34, form);
+    formMark(c, cx + rx * 0.10, cy + ry * 0.08, rx * 0.22, ry * 0.30, '18,26,34', 0.16, form);
     for (let i = 0; i < 5; i++) {
-      formMark(c, cx - rx * 0.5 + i * rx * 0.26, cy + ry * 0.18, rx * 0.06, ry * 0.30, '22,30,40', 0.26, form);
+      formMark(c, cx - rx * 0.42 + i * rx * 0.22, cy + ry * 0.16, rx * 0.035, ry * 0.22, '225,235,242', 0.15, form);
     }
     formMark(c, cx - rx * 0.30, cy - ry * 0.34, rx * 0.36, ry * 0.26, '245,250,255', 0.16, form);
   } else if (kind === 'warty') {
@@ -127,25 +127,28 @@ export function alienSkin(
   }
 }
 
-/** BIOLUMINESCENCE. The genome has carried a `lumin` flag since v1.0 and the
-    art has never once shown it. Drawn OUTSIDE the body clip so the glow
-    spills past the silhouette, which is the whole point of a glow. */
+/** BIOLUMINESCENCE. The luminous tissue belongs to the body's surface; only a
+    restrained halo may spill beyond it. Earlier large free-floating bulbs hid
+    the torso and read as pasted lamps rather than living photophores. */
 export function alienGlow(
   c: Ctx, form: Form, p: Pal, r: () => number, n = 9,
 ): void {
   const { cx, cy, rx, ry } = form;
   const hue = `${Math.min(255, p.cr * 0.4 + 130 | 0)},${Math.min(255, p.cg * 0.5 + 170 | 0)},255`;
+  const nodes: Array<[number, number, number]> = [];
   for (let i = 0; i < n; i++) {
-    const a = r() * TAU, d = 0.35 + r() * 0.6;
+    const a = r() * TAU, d = 0.18 + r() * 0.48;
     const x = cx + Math.cos(a) * rx * d, y = cy + Math.sin(a) * ry * d;
-    const s = rx * (0.05 + r() * 0.05);
-    const gg = c.createRadialGradient(x, y, 0, x, y, s * 3.2);
-    gg.addColorStop(0, `rgba(${hue},0.75)`);
-    gg.addColorStop(0.35, `rgba(${hue},0.28)`);
+    const s = rx * (0.035 + r() * 0.035);
+    nodes.push([x, y, s]);
+  }
+  for (const [x, y, s] of nodes) {
+    const gg = c.createRadialGradient(x, y, 0, x, y, s * 2.2);
+    gg.addColorStop(0, `rgba(${hue},0.30)`);
+    gg.addColorStop(0.40, `rgba(${hue},0.10)`);
     gg.addColorStop(1, `rgba(${hue},0)`);
-    c.fillStyle = gg; c.beginPath(); c.arc(x, y, s * 3.2, 0, TAU); c.fill();
-    c.fillStyle = `rgba(238,252,255,0.9)`;
-    c.beginPath(); c.arc(x, y, s * 0.5, 0, TAU); c.fill();
+    c.fillStyle = gg; c.beginPath(); c.arc(x, y, s * 2.2, 0, TAU); c.fill();
+    formMark(c, x, y, s * 0.95, s * 1.05, hue, 0.54, form, false);
   }
 }
 

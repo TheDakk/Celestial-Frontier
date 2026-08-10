@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (Phase 1+)
 
-**Status: ★★★ PR #7 MERGED · FULL 1,250-ASSET ART RESET IN PROGRESS** (2026-08-10).
+**Status: ★★★ RESET R1 FROZEN · WAVE 1 READY TO COMMIT · VANILLA DEFERRED OPEN** (2026-08-10).
 **Port milestone record (2026-08-01):** ★★★ PHASES 1–3 COMPLETE (automatable) · PHASE 4 SHELL RUNNING.
 **Phase 4 so far — the slice wears the game's face at the GOLDEN SCREENS' exact geometry**
 (floating-pill topbar: player chip + HP bar + Prime pill + trail · objective chip fed by the
@@ -21,35 +21,57 @@ false visual acceptance. No GP7/GP7.1 band is current certification. The live
 authority and fail-closed ruler are in
 `reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
-Reset-start repairs preserve the selected Earth parent's set-qualified lineage
-owner (`_earthBlendKingdom`), route fauna through the lineage-aware HD scaffold,
-route flora/fungi/microbe through the exact named owner, key portrait and
-thumbnail caches by the complete deterministic genome, and key review references
-by catalogue set plus species. `npm run hybridcheck` proves those production
-browser route/cache outcomes across every kingdom and injected regressions.
+Reset r1 is now a complete fresh, hash-bound baseline from clean commit
+`bc26e800c7adca72805a832e753ace1a8f9837ba`. The official 181-family / 233-packet
+collector accepted every required native 440px, unlabeled 300px, actual unlabeled
+132px, labelled old/current and exact set+species contract surface as **516 PASS /
+14 POLISH / 720 FAIL**. The result lives at
+`apps/game/smoke/full-reset-results-2026-08-10-r1/results.json` and is explicitly
+not certification-eligible.
 
-The first negative-control family is frozen: independent refine3 review returned
-PASS for Bat, Fruit Bat, Insect-Eating Bat and Vampire Bat at 440/300/132px, with
-exact repeat hashes and unchanged nearby controls. This is a four-row family
-result only; see `reference/BAT_FAMILY_RESET_REVIEW_2026-08-10.md`.
+Wave 1 is exactly **177 reset non-PASS targets**: root 38 (2 fungi + 8 microbes +
+28 procedural), fish 59, trees 48, and fauna2 32. Author-separated current review
+closed every owner group PASS at 440/300/132: **177/177 scoped PASS**. The nine
+source owners are `alientraits.ts`, `invertoverrides.ts`,
+`proceduralfamilies.ts`, `proceduraloverrides.ts`, `speciesoverrides.ts`,
+`faunaoverrides3.ts`, `florarost.ts`, `floraoverrides2.ts`, and
+`faunaoverrides2.ts`. These scoped results are not a replacement 1,250-row
+collector tally; do not add them to 516 and claim a catalogue score.
 
-The official reset layout is derived as 181 families and 233 packets at a maximum of
-10 rows, with all 1,250 identities, 46 production-derived procedural plan
-families, clean-commit provenance and per-row 440px / unlabeled 300px / actual
-unlabeled 132px / labelled comparison / `mustRead` or procedural-plan hashes.
-The bounded certification-tool diff review found no blockers, and its syntax,
-selftests and negative controls pass. The integrated post-review pass also
-cleared syntax, TypeScript, unused-code, 238-pass/1-skipped Vitest, reset-tool,
-hybrid-matrix and diff checks. A clean commit still precedes official capture;
-the fresh visual review has not begun.
-Literal completion still means 1,250 freshly rendered PASS rows with zero carried
-verdicts, POLISH, or FAIL.
+Wave 1 remains uncommitted, but independent review and the complete checkpoint
+gate set are finished: it is ready to commit. Apple's continuity repair is
+independently judged PASS at `floraoverrides2.ts` SHA-256
+`D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
+58/58 tree rows remain exact at 440/300/132 (174/174 hashes), all five stages are
+unique, and pixel distance from pure strictly increases as the anchor falls.
+Schema v3 validates 234/234 assets with both browser orders stable. The matrix
+still reports `FAIL_BYTE_IDENTICAL_STAGES` solely because pre-existing Vanilla
+Orchid renders all five stages identically. Route/cache ownership is otherwise
+guarded across every kingdom. Broader hybrid visual continuity remains OPEN for
+a later bounded Vanilla wave and does not block this Wave-1 checkpoint commit.
+Judge evidence is at
+`C:\Users\Nick\.codex\visualizations\2026\08\09\019fe72d-20c7-73a0-bac7-d2c64d10673d\flora-tree-focus\evidence-apple-continuity-judge`.
 
-Hybrid routing is correct while visual continuity remains OPEN. The provisional
-12-lineage × 5-stage matrix exposes a Fruit Bat pure-vs-legacy-child renderer
-discontinuity and byte-identical Vanilla Orchid anchor stages; Apple and Oyster
-Mushroom remain unreviewed. Its current r1/r2 roots are dirty-worktree diagnostics,
-not certification evidence.
+The first live hybrid-matrix attempt exposed a real schema-v2 harness contract
+bug, not transient provenance or an art verdict: it required both Green Algae
+route owners to be current catalogue members even though D-CAT-1 keeps only the
+flora identity in the live roster and retains `microbe|Green Algae` solely for
+old-save compatibility. Schema v3 repairs that provenance model, records current
+catalogue ownership separately from the retained legacy route, and
+negative-controls relabelling. Its sentinels are green; both stable browser
+orders validated all 234/234 assets.
+
+The Wave-1 stale cleanup also established a routing rule: a whole-form named
+painter owns one early-return path; required details behind that return are inert,
+and a second same-target overlay risks seams. Prove the winning route before
+editing or deleting. The flora cleanup made `strictSignature` and
+`resetTreeSignature` mutually exclusive for 39 overlapping names and removed
+unreachable orchard/citrus alternatives with **0/174** tree-surface drift at
+440/300/132 and **0/332** Earth-flora native drift.
+
+Literal completion still means a new clean 1,250-row collection containing only
+fresh PASS, with zero carried verdicts, POLISH, or FAIL. No final certification,
+image-inclusive ZIP, reset PR, release, or deployment exists.
 
 ## Historical GP7/GP7.1 evidence (not the reset score)
 
@@ -102,8 +124,8 @@ The GP7/GP7.1 review/export workflow is fail-closed and runs from this directory
 | `npm run cataloguecards` | Alias for `rejudgecards --full`; generates the family-grouped complete-catalogue contact sheets and packets. |
 | `npm run gp7package` | Verifies portrait/contact coverage, records SHA-256 hashes, and assembles the dated complete-review ZIP. |
 
-The live reset sequence, after the foundation is committed and the worktree is
-clean, is:
+The complete reset recapture sequence, after a bounded repair wave is committed
+and the worktree is clean at a full 40-hex HEAD, is:
 
 ```powershell
 node tools/gp71rejudge.mjs --prepare --out=<NEW_CURRENT_EVIDENCE> --date=2026-08-10
