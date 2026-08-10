@@ -18,23 +18,31 @@
      · upright   — the penguin/auk stance: a stiff FLIPPER, not a wing
      · bills     — short (finch cone) · chisel (woodpecker) · needle
                    (hummingbird) · duck (spatulate) */
-import { faunaBird, type BirdSpec, type FaunaPainter } from './faunaoverrides.js';
+import { faunaBird, faunaBirdB1, type BirdB1Kind, type BirdSpec, type FaunaPainter } from './faunaoverrides.js';
 
 const B = (spec: BirdSpec): FaunaPainter => (c, g, p, n) => faunaBird(c, g, p, spec, n);
+const B1 = (kind: BirdB1Kind): FaunaPainter => (c, g, p) => faunaBirdB1(c, g, p, kind);
+
+/* Named B1 routes live outside the table so the override audit sees a strict
+   species-to-painter mapping rather than treating anatomy labels as routes. */
+const ospreyB1 = B1('Osprey'), kestrelB1 = B1('Kestrel'), condorB1 = B1('Condor');
+const owlB1 = B1('Owl'), snowyOwlB1 = B1('Snowy Owl'), desertOwlB1 = B1('Desert Owl');
+const hummingbirdB1 = B1('Hummingbird'), woodpeckerB1 = B1('Woodpecker');
+const bustardB1 = B1('Bustard'), rheaB1 = B1('Rhea'), seriemaB1 = B1('Seriema'), screamerB1 = B1('Screamer');
 
 export const BIRD_NAME: Record<string, FaunaPainter> = {
   /* ── raptors and scavengers: the hooked bill, the heavy foot ── */
   /* wave 50 — see the Hawk/Falcon note in faunaoverrides: three raptors, one
      bird, separated only by hue. An osprey is the biggest of the three and
      flies on long angled wings over water. */
-  'Osprey': B({ legs: 0.02, bill: 'hook', size: 1.14, hue: '#6c5f50', wings: 'soaring', talons: true, plump: 0.96, belly: '#edf0e8', mask: true }),
-  'Kestrel': B({ legs: 0.02, bill: 'hook', size: 0.72, hue: '#a5713d' }),
-  'Condor': B({ legs: 0.03, bill: 'hook', size: 1.30, hue: '#2a2723' }),
+  'Osprey': ospreyB1,
+  'Kestrel': kestrelB1,
+  'Condor': condorB1,
   'Skua': B({ legs: 0.02, bill: 'hook', size: 0.90, hue: '#5d5347', wings: 'soaring', tail: 'forked' }),
   /* ── OWLS: the facial disc, forward eyes, ear tufts ── */
-  'Owl': B({ legs: 0.015, bill: 'hook', owl: true, neck: 'none', size: 1.0, crest: true, hue: '#7d6a4f' }),
-  'Snowy Owl': B({ legs: 0.022, bill: 'hook', owl: true, neck: 'none', size: 1.10, headMass: 1.28, featherFeet: true, hue: '#eef1f4', billHue: '#25272c' }),
-  'Desert Owl': B({ legs: 0.015, bill: 'hook', owl: true, neck: 'none', size: 0.88, crest: true, hue: '#c3ab84' }),
+  'Owl': owlB1,
+  'Snowy Owl': snowyOwlB1,
+  'Desert Owl': desertOwlB1,
   /* ── corvids and songbirds: small, perched, cone bills ── */
   'Crow': B({ legs: 0.025, bill: 'stout', size: 0.80, hue: '#23252e', billHue: '#16171c', legHue: '#16171c', tail: 'square' }),
   'Raven': B({ legs: 0.025, bill: 'hook', size: 0.92, hue: '#191b22', plump: 1.06, elong: 1.08, billHue: '#141519', legHue: '#141519', tail: 'wedge', shaggy: true }),
@@ -51,9 +59,9 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Lark': B({ legs: 0.020, bill: 'fine', size: 0.48, hue: '#9c8560', plump: 0.98, elong: 1.06, streak: true, crest: true }),
   'Swallow': B({ legs: 0.012, bill: 'fine', size: 0.46, hue: '#2f4a6b', plump: 0.74, elong: 1.34, tail: 'forked', bib: '#c9743e' }),
   'Swift': B({ legs: 0.008, bill: 'fine', size: 0.46, hue: '#4b4640', plump: 0.58, elong: 1.62, tail: 'forked' }),
-  'Hummingbird': B({ hue: '#1e8a5a', legs: 0.008, bill: 'needle', size: 0.34, upright: true, hover: true, neck: 'none', tail: 'short' }),
+  'Hummingbird': hummingbirdB1,
   'Kingfisher': B({ legs: 0.012, bill: 'long', size: 0.62, crest: true, headMass: 1.52, neck: 'none', tail: 'short', hue: '#1b6fa8' }),
-  'Woodpecker': B({ legs: 0.015, bill: 'chisel', size: 0.62, crest: true, hue: '#2c2a28' , cling: true }),
+  'Woodpecker': woodpeckerB1,
   'Quetzal': B({ legs: 0.015, bill: 'short', size: 0.62, tail: 'long', crest: true, hue: '#0f8a6a' }),
   /* ── parrots ── */
   'Parrot': B({ legs: 0.018, bill: 'hook', parrotBill: true, zygo: true, headMass: 1.3, size: 0.72, tail: 'long', hue: '#2f9e4a' }),
@@ -70,7 +78,7 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Quail': B({ legs: 0.025, bill: 'short', size: 0.54, crest: true, hue: '#a08761' }),
   'Partridge': B({ legs: 0.028, bill: 'short', size: 0.62, hue: '#a4794e', plump: 1.20, elong: 0.94, streak: true }),
   'Guineafowl': B({ legs: 0.040, bill: 'short', size: 0.78, pearled: true, hue: '#3c4250' }),
-  'Bustard': B({ legs: 0.075, bill: 'stout', size: 0.98, hue: '#a08f70' }),
+  'Bustard': bustardB1,
   'Sandgrouse': B({ legs: 0.028, bill: 'short', size: 0.60, hue: '#c3a878', plump: 0.96, elong: 1.14, speckle: true }),
   'Roadrunner': B({ legs: 0.060, bill: 'long', size: 0.72, tail: 'long', crest: true, hue: '#8a7554' }),
   'Dove': B({ legs: 0.018, bill: 'fine', size: 0.58, hue: '#b9aa9c', plump: 1.14, elong: 1.00 }),
@@ -109,9 +117,9 @@ export const BIRD_NAME: Record<string, FaunaPainter> = {
   'Bittern': B({ legs: 0.080, bill: 'long', size: 0.74, neck: 'long', hue: '#9b8256' }),
   'Rail': B({ legs: 0.055, bill: 'long', size: 0.56, hue: '#7b6a52' }),
   /* ── the big flightless ratites ── */
-  'Rhea': B({ legs: 0.125, bill: 'stout', size: 1.12, flightless: true, neck: 'long', hue: '#8b8172' }),
-  'Seriema': B({ legs: 0.095, bill: 'hook', size: 0.80, crest: true, hue: '#a99878' }),
-  'Screamer': B({ legs: 0.060, bill: 'short', size: 0.88, hue: '#6b6459' }),
+  'Rhea': rheaB1,
+  'Seriema': seriemaB1,
+  'Screamer': screamerB1,
   /* ── the swan's S-curve ── */
   'Swan': B({ legs: 0.012, bill: 'duck', size: 1.10, swim: true, neck: 'swan', hue: '#f4f6f8' , billHue: '#e08a1c', legHue: '#2a2723' }),
   /* ★ WAVE 10 — Chicken and Rooster were unrouted and came out as waders.

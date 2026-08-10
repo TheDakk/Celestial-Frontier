@@ -756,6 +756,44 @@ S1–S3 is independently **15/15 PASS**. Its first result was 11 PASS / 4 FAIL;
 bounded R2 changed exactly Caddisfly, Diving Beetle, Firefly and Water Beetle and
 closed all four at 440/300/132. All 22 protected rows remain byte-identical at
 every scale, and the 156 current/repeat PNGs are complete and deterministic.
-Wave 2a is therefore 32/32 scoped PASS and ready to commit/push. That scoped
+Wave 2a is therefore 32/32 scoped PASS and is committed/pushed as `00e499c`. That scoped
 closure still cannot be converted into a new catalogue score without the full
 1,250 collector.
+
+## 2026-08-10 reset Wave 2b — 51 scoped whole forms independently PASS
+
+Wave 2b closed exactly **51/51 scoped PASS** under the same 440/300/132,
+protected-control, deterministic-repeat and author-separated ruler. This remains
+scoped repair evidence, not a new 1,250-row tally:
+
+- **Mammal B — 25/25 PASS.** The first independent round failed closed at
+  19 PASS / 6 FAIL. Bounded R3 repaired Brown Bear, Grizzly Bear, Bobcat, Lynx,
+  Serval and Sand Cat; the second judge returned 6/6 PASS. Frozen sources are
+  `quadrupedoverrides.ts`
+  `288E54795D4EBD52EE131E4691AFED98AA7409BC033228FE0274B099B6FE7DAE`
+  and `mammaloverrides.ts`
+  `2BB3541963F610B3D4504BEC423C982E1F11E902BD6200AD64E332B8F853CEAA`.
+  The sealed r3 evidence has exact current/repeat surfaces and keeps the retained
+  19 PASS targets plus 75 controls byte-identical.
+- **Bird B1 — 21/21 PASS.** The first judge returned 17 PASS / 4 FAIL; bounded
+  R2 repaired Secretary Bird, Rhea, Seriema and Hummingbird, and the second judge
+  returned 4/4 PASS. Frozen sources are `faunaoverrides.ts`
+  `783DCCE7641E9EA826296922E9787CEE33857A6853CD96563E88F374F1C9BF10`
+  and `birdoverrides.ts`
+  `B5DEBDCA726F48E8405F1D9F47D019E8472A2786825F35DCCFF1E147936494DF`;
+  432 evidence PNGs are exact and all 51 protected rows stay byte-identical.
+- **Invert I — 5/5 PASS.** Banana Slug, Chiton, Comb Jelly, Portuguese
+  Man-of-War and Isopod all pass. The first candidate correctly failed because
+  Banana Slug's four tentacles and tip eyes did not survive 132px; a Banana-only
+  refinement closed it while the other four targets plus 20 controls remained
+  exact. Frozen `invertoverrides.ts` SHA-256 is
+  `9173B81703BE955B857ED5D3A39B09DD196967C63DE40E764D8F79EDB1832B1D`.
+
+The earned direction is broader than adding detail: distinctive anatomy must
+survive the actual card size. If a required shoulder hump, bobtail, facial ruff,
+ear/head proportion, foot/tentacle or organ topology disappears at 132px, the
+row remains FAIL even when native pixels changed. Reopen only that named row,
+freeze every accepted neighbour, then require a second independent verdict.
+Final integrated Wave-2b gates are green with all five source SHAs unchanged,
+so this bounded checkpoint is ready to commit/push. Full recertification, the
+image-inclusive ZIP, reset PR and release remain OPEN.

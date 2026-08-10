@@ -1589,3 +1589,20 @@ duplicates).
   its component counts may be added to the frozen 516/14/720 ledger; only a new complete collector
   can make a catalogue claim. **Source completion and green author gates are evidence inputs; the
   last changed pixel still requires author-separated review before a checkpoint can close.**
+
+- ★★★ **D-ART-182 — NATIVE DETAIL DOES NOT RESCUE A REQUIRED CUE THAT DISAPPEARS AT CARD SIZE;
+  FAIL CLOSED, REOPEN ONLY THE NAMED BLOCKER, AND FREEZE EVERYTHING ALREADY ACCEPTED.** (2026-08-10,
+  Wave 2b.) The first independent Mammal B round returned 19 PASS / 6 FAIL, and the first Bird B1
+  round returned 17 PASS / 4 FAIL, even though all assigned source branches and changed pixels were
+  present. Bounded follow-ups repaired only Brown Bear, Grizzly Bear, Bobcat, Lynx, Serval and Sand
+  Cat in Mammal R3, and only Secretary Bird, Rhea, Seriema and Hummingbird in Bird R2; second judges
+  closed both groups 25/25 and 21/21 while retained targets and controls stayed exact. Invert I's own
+  first candidate likewise stopped on Banana Slug because four tentacles and their tip eyes did not
+  survive 132px; a Banana-only refinement changed 3/3 surfaces while the other four targets plus 20
+  controls remained 72/72 exact, then an independent judge closed the lane 5/5. Wave 2b therefore
+  reaches **51/51 scoped PASS**, with final source SHA-256 values `288E5479…E7DAE` (quadruped),
+  `2BB35419…CEAA` (mammal), `783DCCE7…BF10` (fauna), `B5DEBDCA…94DF` (bird), and
+  `9173B817…B1D` (invert). The final integrated gates passed with those sources unchanged, making the
+  bounded checkpoint ready to commit/push. This does not update the frozen 516/14/720 ledger or close
+  the reset PR, full recertification, ZIP, or release. **Judge the real delivery surface;
+  a cue that exists only at 440px is absent from the game surface that needed it.**

@@ -2216,6 +2216,599 @@ export function faunaBird(c: Ctx, g: G, p: Pal, opts: BirdSpec, name = ''): void
   if (opts.cling) c.restore();
 }
 
+/* ---------------- Wave 2b B1: anatomy-first named bird portraits ----------------
+   These whole forms are deliberately opt-in. The shared bird painter above has many
+   accepted catalog users, so changing its silhouette would trade one set of birds
+   for another. Each route below closes a frozen literal contract while leaving every
+   generic and procedural caller on the byte-identical legacy path. */
+export type BirdB1Kind =
+  | 'Eagle' | 'Falcon' | 'Hawk' | 'Harpy Eagle' | 'Secretary Bird' | 'Vulture'
+  | 'Osprey' | 'Kestrel' | 'Condor'
+  | 'Owl' | 'Desert Owl' | 'Snowy Owl'
+  | 'Cassowary' | 'Kakapo' | 'Rhea' | 'Bustard' | 'Seriema' | 'Screamer'
+  | 'Woodpecker' | 'Hoatzin' | 'Hummingbird';
+
+function birdB1Gradient(c: Ctx, x: number, y: number, r: number, light: string, base: string, dark: string): CanvasGradient {
+  const gg = c.createRadialGradient(x - r * 0.38, y - r * 0.42, 2, x, y, r * 1.25);
+  gg.addColorStop(0, light); gg.addColorStop(0.58, base); gg.addColorStop(1, dark);
+  return gg;
+}
+
+function birdB1Eye(c: Ctx, x: number, y: number, r: number, iris = '#d3a325'): void {
+  c.fillStyle = iris; c.beginPath(); c.arc(x, y, r, 0, TAU); c.fill();
+  c.fillStyle = '#111318'; c.beginPath(); c.arc(x, y, r * 0.53, 0, TAU); c.fill();
+  c.fillStyle = 'rgba(255,255,255,0.88)'; c.beginPath(); c.arc(x - r * 0.24, y - r * 0.28, Math.max(1.2, r * 0.18), 0, TAU); c.fill();
+}
+
+function birdB1HookBill(c: Ctx, x: number, y: number, scale: number, hue = '#d6a42e', faceLeft = true): void {
+  const d = faceLeft ? -1 : 1;
+  c.save(); c.translate(x, y); c.scale(d, 1);
+  c.fillStyle = hue;
+  c.beginPath(); c.moveTo(0, -8 * scale);
+  c.quadraticCurveTo(22 * scale, -10 * scale, 29 * scale, 2 * scale);
+  c.quadraticCurveTo(30 * scale, 15 * scale, 17 * scale, 22 * scale);
+  c.quadraticCurveTo(21 * scale, 12 * scale, 10 * scale, 10 * scale);
+  c.lineTo(0, 8 * scale); c.closePath(); c.fill();
+  c.fillStyle = 'rgba(255,220,86,0.62)';
+  c.beginPath(); c.ellipse(5 * scale, -2 * scale, 7 * scale, 6 * scale, 0, 0, TAU); c.fill();
+  c.fillStyle = '#2b241b'; c.beginPath(); c.arc(7 * scale, -4 * scale, Math.max(1.2, 1.5 * scale), 0, TAU); c.fill();
+  c.restore();
+}
+
+function birdB1TalonedFoot(c: Ctx, x: number, y: number, scale: number, hue: string, huge = false): void {
+  const k = scale * (huge ? 1.35 : 1);
+  c.fillStyle = hue;
+  c.beginPath(); c.moveTo(x - 6 * k, y - 29 * k); c.quadraticCurveTo(x - 10 * k, y - 8 * k, x - 5 * k, y);
+  c.lineTo(x + 7 * k, y); c.quadraticCurveTo(x + 11 * k, y - 12 * k, x + 7 * k, y - 29 * k); c.closePath(); c.fill();
+  c.strokeStyle = hue; c.lineWidth = 5.4 * k; c.lineCap = 'round';
+  for (const [dx, len, bend] of [[-9, 23, -9], [0, 28, 0], [9, 23, 9]] as const) {
+    c.beginPath(); c.moveTo(x + dx * k * 0.45, y - 1);
+    c.quadraticCurveTo(x + dx * k, y + 4 * k, x + (dx + bend) * k, y + len * k * 0.42); c.stroke();
+  }
+  c.strokeStyle = '#28231d'; c.lineWidth = 3.2 * k;
+  for (const [dx, len] of [[-18, 14], [0, 17], [18, 14]] as const) {
+    c.beginPath(); c.arc(x + dx * k * 0.72, y + len * k * 0.40, 7 * k, 0.05, 1.6); c.stroke();
+  }
+}
+
+function birdB1FlyingTalons(c: Ctx, x: number, y: number, scale: number): void {
+  /* In flight the short tarsus is tucked and curved; only the spread toes and
+     barbed hooks hang below the belly. A filled standing-leg block is wrong. */
+  c.strokeStyle = '#665c48'; c.lineWidth = 6 * scale; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(x + 3 * scale, y - 19 * scale); c.quadraticCurveTo(x - 5 * scale, y - 8 * scale, x, y); c.stroke();
+  for (const [dx, dy] of [[-18, 8], [-8, 15], [5, 16], [17, 9]] as const) {
+    c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(x + dx * scale * 0.52, y + dy * scale * 0.20, x + dx * scale, y + dy * scale); c.stroke();
+  }
+  c.strokeStyle = '#24231f'; c.lineWidth = 2.8 * scale;
+  for (const [dx, dy, start] of [[-18,8,0.1],[-8,15,0.15],[5,16,0.1],[17,9,-0.2]] as const) {
+    c.beginPath(); c.arc(x + dx * scale, y + dy * scale, 6.5 * scale, start, start + 1.55); c.stroke();
+  }
+}
+
+function birdB1FoldedWing(c: Ctx, x: number, y: number, w: number, h: number, base: string, dark: string, pointed = false): void {
+  c.fillStyle = birdB1Gradient(c, x - w * 0.18, y - h * 0.28, w * 0.72, '#c9c8bd', base, dark);
+  c.beginPath(); c.moveTo(x - w * 0.48, y - h * 0.42);
+  c.quadraticCurveTo(x + w * 0.16, y - h * 0.62, x + w * 0.48, y - h * 0.05);
+  c.quadraticCurveTo(x + w * (pointed ? 0.74 : 0.42), y + h * (pointed ? 0.62 : 0.45), x - w * 0.28, y + h * 0.35);
+  c.quadraticCurveTo(x - w * 0.58, y + h * 0.06, x - w * 0.48, y - h * 0.42); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(25,24,24,0.42)'; c.lineWidth = 3; c.lineCap = 'round';
+  for (let i = 0; i < 4; i++) {
+    const t = i / 3;
+    c.beginPath(); c.moveTo(x - w * (0.30 - t * 0.08), y - h * (0.24 - t * 0.10));
+    c.quadraticCurveTo(x + w * (0.05 + t * 0.08), y + h * (0.02 + t * 0.10), x + w * (0.30 + t * (pointed ? 0.35 : 0.10)), y + h * (0.22 + t * 0.15)); c.stroke();
+  }
+  rim(c, () => {
+    c.moveTo(x - w * 0.48, y - h * 0.42);
+    c.quadraticCurveTo(x + w * 0.16, y - h * 0.62, x + w * 0.48, y - h * 0.05);
+    c.quadraticCurveTo(x + w * (pointed ? 0.74 : 0.42), y + h * (pointed ? 0.62 : 0.45), x - w * 0.28, y + h * 0.35);
+  }, 2.2);
+}
+
+/** Raptor-only wing topology. The accepted non-B1 birds retain the older folded
+    wing above; these layered coverts and tapered flight feathers remove the
+    shield outline from the eight named B1 repairs. */
+function birdB1RaptorWing(c: Ctx, x: number, y: number, w: number, h: number, base: string, dark: string, pointed = false): void {
+  c.fillStyle = birdB1Gradient(c, x - w * 0.18, y - h * 0.27, w * 0.72, '#c8c1b4', base, dark);
+  c.beginPath(); c.moveTo(x - w * 0.48, y - h * 0.40);
+  c.bezierCurveTo(x - w * 0.12, y - h * 0.64, x + w * 0.27, y - h * 0.46, x + w * 0.48, y - h * 0.08);
+  c.quadraticCurveTo(x + w * (pointed ? 0.78 : 0.53), y + h * (pointed ? 0.60 : 0.31), x + w * 0.22, y + h * 0.43);
+  c.quadraticCurveTo(x - w * 0.18, y + h * 0.47, x - w * 0.42, y + h * 0.18);
+  c.quadraticCurveTo(x - w * 0.57, y - h * 0.08, x - w * 0.48, y - h * 0.40); c.closePath(); c.fill();
+  /* Broad shoulder coverts bury the wing root into the torso. */
+  c.fillStyle = base;
+  for (let i = 0; i < 4; i++) {
+    const yy = y - h * 0.25 + i * h * 0.13;
+    c.beginPath(); c.ellipse(x - w * 0.28 + i * w * 0.06, yy, w * 0.24, h * 0.12, -0.28, 0, TAU); c.fill();
+  }
+  /* Individual primaries overlap one another; no bright perimeter line. */
+  for (let i = 0; i < 5; i++) {
+    const t = i / 4, rootX = x - w * 0.14 + t * w * 0.16, rootY = y - h * 0.02 + t * h * 0.10;
+    const tipX = x + w * (0.27 + t * (pointed ? 0.49 : 0.24));
+    const tipY = y + h * (0.19 + t * (pointed ? 0.42 : 0.20));
+    c.fillStyle = i % 2 ? dark : base;
+    c.beginPath(); c.moveTo(rootX, rootY - h * 0.045);
+    c.quadraticCurveTo((rootX + tipX) * 0.52, (rootY + tipY) * 0.46 - h * 0.04, tipX, tipY);
+    c.quadraticCurveTo((rootX + tipX) * 0.50, (rootY + tipY) * 0.56 + h * 0.04, rootX, rootY + h * 0.045); c.closePath(); c.fill();
+  }
+  c.strokeStyle = 'rgba(225,222,210,0.30)'; c.lineWidth = 2.2; c.lineCap = 'round';
+  for (let i = 0; i < 3; i++) {
+    c.beginPath(); c.moveTo(x - w * 0.36, y - h * (0.22 - i * 0.13));
+    c.quadraticCurveTo(x - w * 0.02, y - h * (0.18 - i * 0.04), x + w * (0.24 + i * 0.10), y + h * (0.05 + i * 0.12)); c.stroke();
+  }
+}
+
+function birdB1PerchedRaptor(c: Ctx, kind: 'Eagle' | 'Falcon' | 'Hawk' | 'Harpy Eagle' | 'Kestrel'): void {
+  const harpy = kind === 'Harpy Eagle', falcon = kind === 'Falcon' || kind === 'Kestrel';
+  const eagle = kind === 'Eagle', kestrel = kind === 'Kestrel';
+  const bodyBase = harpy ? '#4e535b' : eagle ? '#5b422b' : kind === 'Hawk' ? '#8e5535' : kestrel ? '#a96734' : '#48586b';
+  const bodyDark = harpy ? '#252a31' : eagle ? '#2c241d' : kind === 'Hawk' ? '#4a2c23' : kestrel ? '#4f3427' : '#26313e';
+  const bodyLight = harpy ? '#c6c8c9' : eagle ? '#a58a66' : kind === 'Hawk' ? '#c69a74' : kestrel ? '#d6a06e' : '#a6b1bd';
+  ground(c, 220, 370, falcon ? 105 : 118);
+
+  /* The tail is rooted under the rump, not pasted behind the finished body. */
+  c.fillStyle = bodyDark;
+  if (falcon) {
+    c.beginPath(); c.moveTo(224, 285); c.quadraticCurveTo(274, 307, kestrel ? 345 : 322, 346);
+    c.lineTo(kestrel ? 322 : 300, 366); c.quadraticCurveTo(267, 340, 215, 304); c.closePath(); c.fill();
+    if (kestrel) {
+      /* Four bars cross the full long tail, perpendicular to its shaft. */
+      c.strokeStyle = '#d9b36f'; c.lineWidth = 7; c.lineCap = 'round';
+      for (const t of [0.28, 0.46, 0.64, 0.82]) {
+        const cx = 239 + 96 * t, cy = 300 + 56 * t;
+        c.beginPath(); c.moveTo(cx - 7, cy + 11); c.lineTo(cx + 7, cy - 11); c.stroke();
+      }
+    }
+  } else {
+    c.beginPath(); c.moveTo(219, 286); c.quadraticCurveTo(258, 312, 309, 340);
+    c.lineTo(277, 357); c.lineTo(244, 345); c.lineTo(213, 302); c.closePath(); c.fill();
+  }
+
+  /* Filled tarsi merge into the belly. Feather cuffs make an eagle look booted. */
+  for (const x of [190, 238]) {
+    c.fillStyle = eagle || harpy ? bodyLight : '#c8a44f';
+    c.beginPath(); c.moveTo(x - 13, 289); c.quadraticCurveTo(x - 15, 320, x - 9, 342);
+    c.lineTo(x + 9, 342); c.quadraticCurveTo(x + 15, 319, x + 13, 289); c.closePath(); c.fill();
+    if (eagle || harpy) {
+      c.fillStyle = bodyLight;
+      for (const dx of [-10, 0, 10]) { c.beginPath(); c.ellipse(x + dx, 306, 12, 22, dx * 0.01, 0, TAU); c.fill(); }
+    }
+    const footScale = harpy ? 1.08 : eagle ? 1.02 : falcon ? 0.79 : 0.92;
+    birdB1TalonedFoot(c, x, 345, footScale, harpy ? '#7e7569' : '#d0a832', harpy || eagle);
+  }
+
+  c.fillStyle = birdB1Gradient(c, 185, 185, 125, bodyLight, bodyBase, bodyDark);
+  c.beginPath(); c.moveTo(153, 143); c.quadraticCurveTo(121, 164, 128, 232);
+  c.quadraticCurveTo(133, 289, 176, 321); c.quadraticCurveTo(230, 337, 270, 304);
+  c.quadraticCurveTo(295, 265, 286, 208); c.quadraticCurveTo(275, 157, 223, 137);
+  c.quadraticCurveTo(181, 120, 153, 143); c.closePath(); c.fill();
+  if (harpy) {
+    c.fillStyle = '#ece8df'; c.beginPath(); c.ellipse(196, 266, 56, 54, -0.08, 0, TAU); c.fill();
+    c.fillStyle = '#242931'; c.beginPath(); c.moveTo(139, 205); c.quadraticCurveTo(204, 186, 268, 211); c.lineTo(263, 235); c.quadraticCurveTo(204, 214, 146, 231); c.closePath(); c.fill();
+  }
+  birdB1RaptorWing(c, 218, 226, falcon ? 128 : 123, falcon ? 150 : 132, bodyBase, bodyDark, falcon);
+  if (kestrel) {
+    c.fillStyle = '#33291f';
+    for (const [x, y] of [[185,190],[211,202],[235,221],[205,235],[244,250]] as const) { c.beginPath(); c.ellipse(x, y, 6, 4, -0.2, 0, TAU); c.fill(); }
+  }
+
+  /* Head and throat overlap the shoulder deeply to keep one continuous bird. */
+  const hx = 145, hy = falcon ? 139 : 132, hr = harpy ? 52 : eagle ? 49 : 44;
+  c.fillStyle = bodyBase; c.beginPath(); c.ellipse(155, 165, 44, 58, -0.15, 0, TAU); c.fill();
+  c.fillStyle = harpy ? birdB1Gradient(c, hx, hy, hr, '#f1f0eb', '#c5c6c4', '#777b80') : birdB1Gradient(c, hx, hy, hr, bodyLight, bodyBase, bodyDark);
+  c.beginPath(); c.moveTo(hx - hr * 0.82, hy - hr * 0.12);
+  c.quadraticCurveTo(hx - hr * 0.57, hy - hr * 0.92, hx + hr * 0.18, hy - hr * 0.94);
+  c.quadraticCurveTo(hx + hr * 0.92, hy - hr * 0.66, hx + hr * 0.90, hy + hr * 0.08);
+  c.quadraticCurveTo(hx + hr * 0.65, hy + hr * 0.86, hx - hr * 0.08, hy + hr * 0.88);
+  c.quadraticCurveTo(hx - hr * 0.76, hy + hr * 0.62, hx - hr * 0.82, hy - hr * 0.12); c.closePath(); c.fill();
+  if (harpy) {
+    c.fillStyle = '#6e737a';
+    for (const s of [-1, 1] as const) {
+      for (let i = 0; i < 3; i++) {
+        c.beginPath(); c.moveTo(hx + s * (7 + i * 5), hy - 35 + i * 2);
+        c.quadraticCurveTo(hx + s * (24 + i * 10), hy - 68 - i * 5, hx + s * (39 + i * 9), hy - 53 + i * 3);
+        c.quadraticCurveTo(hx + s * (25 + i * 6), hy - 34, hx + s * (12 + i * 4), hy - 20); c.closePath(); c.fill();
+      }
+    }
+  }
+  if (falcon) {
+    c.fillStyle = '#202833';
+    c.beginPath(); c.moveTo(117, 136); c.quadraticCurveTo(132, 141, 139, 157);
+    c.quadraticCurveTo(145, 171, 139, 186); c.quadraticCurveTo(126, 172, 124, 153);
+    c.quadraticCurveTo(122, 145, 117, 136); c.closePath(); c.fill();
+  }
+  birdB1HookBill(c, 112, 140, falcon ? 0.78 : 0.94, harpy ? '#77726b' : '#d3a52d');
+  birdB1Eye(c, 127, 126, falcon ? 6.5 : 7.5, '#d9ae35');
+  c.strokeStyle = '#27231f'; c.lineWidth = falcon ? 5 : 7; c.lineCap = 'round';
+  c.beginPath(); c.moveTo(117, 113); c.quadraticCurveTo(129, 107, 143, 116); c.stroke();
+}
+
+function birdB1AirRaptor(c: Ctx, kind: 'Osprey' | 'Condor'): void {
+  const condor = kind === 'Condor';
+  ground(c, 220, 358, condor ? 150 : 125);
+  const base = condor ? '#292728' : '#f0eee6', dark = condor ? '#151519' : '#3e352d';
+  /* Both wing surfaces are one path through the shoulders. Osprey bends at the
+     wrist into its crooked M; condor stays plank-broad and ends in fingers. */
+  c.fillStyle = birdB1Gradient(c, 220, 185, 190, condor ? '#6f6b69' : '#f5f3ed', base, dark);
+  c.beginPath();
+  c.moveTo(208, 222);
+  if (condor) {
+    c.lineTo(150, 176); c.lineTo(51, 140); c.lineTo(26, 150); c.lineTo(70, 168);
+    c.lineTo(25, 169); c.lineTo(76, 187); c.lineTo(36, 194); c.lineTo(101, 210);
+    c.quadraticCurveTo(155, 230, 205, 246);
+  } else {
+    c.quadraticCurveTo(169, 189, 129, 175); c.quadraticCurveTo(88, 158, 47, 190);
+    c.quadraticCurveTo(98, 180, 144, 214); c.quadraticCurveTo(177, 238, 208, 247);
+  }
+  c.quadraticCurveTo(220, 254, 232, 247);
+  if (condor) {
+    c.quadraticCurveTo(285, 230, 339, 210); c.lineTo(404, 194); c.lineTo(364, 187);
+    c.lineTo(415, 169); c.lineTo(370, 168); c.lineTo(414, 150); c.lineTo(389, 140);
+    c.lineTo(290, 176); c.lineTo(232, 222);
+  } else {
+    c.quadraticCurveTo(263, 238, 296, 214); c.quadraticCurveTo(342, 180, 393, 190);
+    c.quadraticCurveTo(352, 158, 311, 175); c.quadraticCurveTo(271, 189, 232, 222);
+  }
+  c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(20,22,28,0.42)'; c.lineWidth = 3;
+  for (const s of [-1, 1] as const) for (let i = 0; i < 4; i++) {
+    c.beginPath(); c.moveTo(220 + s * 14, 226); c.quadraticCurveTo(220 + s * (70 + i * 18), 198 + i * 4, 220 + s * (132 + i * 14), 176 + i * 7); c.stroke();
+  }
+  if (!condor) {
+    c.fillStyle = '#4a4038';
+    for (const s of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(220 + s * 76, 205); c.quadraticCurveTo(220 + s * 128, 174, 220 + s * 170, 185); c.lineTo(220 + s * 145, 201); c.quadraticCurveTo(220 + s * 108, 199, 220 + s * 76, 225); c.closePath(); c.fill();
+    }
+  }
+  /* Torso bridges the wing roots; tail is rooted under it. */
+  c.fillStyle = base; c.beginPath(); c.ellipse(226, 235, 67, 35, 0.08, 0, TAU); c.fill();
+  c.fillStyle = dark; c.beginPath(); c.moveTo(176, 249); c.lineTo(129, 278); c.lineTo(193, 269); c.closePath(); c.fill();
+  const hx = 292, hy = 224;
+  if (condor) {
+    c.fillStyle = '#eee7d9'; c.beginPath(); c.ellipse(273, 228, 24, 31, 0.2, 0, TAU); c.fill();
+    c.fillStyle = '#a56e60'; c.beginPath(); c.arc(hx, hy, 23, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(76,40,36,0.48)'; c.lineWidth = 2;
+    for (let i = 0; i < 4; i++) { c.beginPath(); c.moveTo(280, 213 + i * 7); c.quadraticCurveTo(294, 208 + i * 7, 306, 216 + i * 7); c.stroke(); }
+    birdB1HookBill(c, 313, 226, 0.65, '#77716a', false);
+  } else {
+    c.fillStyle = '#f5f3ec'; c.beginPath(); c.arc(hx, hy, 28, 0, TAU); c.fill();
+    c.fillStyle = '#433a34'; c.beginPath(); c.moveTo(276, 211); c.quadraticCurveTo(296, 207, 313, 220); c.lineTo(304, 228); c.quadraticCurveTo(291, 217, 275, 222); c.closePath(); c.fill();
+    birdB1HookBill(c, 314, 225, 0.72, '#2b2a28', false);
+    for (const x of [203, 244]) birdB1FlyingTalons(c, x, 279, 1.0);
+  }
+  birdB1Eye(c, condor ? 303 : 300, hy - 7, 5.2, condor ? '#3c211d' : '#d5a934');
+}
+
+function birdB1Vulture(c: Ctx): void {
+  ground(c, 221, 370, 122);
+  for (const x of [194, 244]) birdB1TalonedFoot(c, x, 344, 0.82, '#8b7a58');
+  c.fillStyle = birdB1Gradient(c, 210, 220, 136, '#776c5d', '#3e3832', '#201f20');
+  c.beginPath(); c.moveTo(128, 182); c.quadraticCurveTo(126, 103, 201, 101); c.quadraticCurveTo(287, 94, 306, 185);
+  c.quadraticCurveTo(326, 269, 267, 324); c.quadraticCurveTo(176, 342, 124, 275); c.quadraticCurveTo(98, 222, 128, 182); c.closePath(); c.fill();
+  birdB1RaptorWing(c, 225, 237, 132, 132, '#4a4239', '#201f20');
+  /* Thick pale ruff grows from the hunched shoulders; bare neck emerges from it. */
+  c.fillStyle = '#d8cfbc'; c.beginPath(); c.ellipse(150, 164, 48, 43, -0.25, 0, TAU); c.fill();
+  c.fillStyle = '#9d6a5a'; c.beginPath(); c.moveTo(135, 162); c.quadraticCurveTo(116, 130, 127, 91); c.quadraticCurveTo(147, 70, 169, 91); c.quadraticCurveTo(169, 129, 157, 165); c.closePath(); c.fill();
+  c.fillStyle = '#a87563'; c.beginPath(); c.ellipse(140, 84, 31, 28, -0.2, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(85,43,38,0.55)'; c.lineWidth = 2;
+  for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(122, 76 + i * 7); c.quadraticCurveTo(141, 68 + i * 8, 158, 78 + i * 7); c.stroke(); }
+  birdB1HookBill(c, 112, 88, 1.10, '#605448'); birdB1Eye(c, 129, 76, 5.5, '#2b211d');
+}
+
+function birdB1Secretary(c: Ctx): void {
+  ground(c, 222, 386, 102);
+  for (const x of [201, 250]) {
+    c.fillStyle = '#d98346'; c.beginPath(); c.moveTo(x - 7, 231); c.lineTo(x - 5, 367); c.lineTo(x + 8, 367); c.lineTo(x + 9, 231); c.closePath(); c.fill();
+    c.strokeStyle = '#2d2c30'; c.lineWidth = 6; c.lineCap = 'round';
+    for (const s of [-1, 0, 1]) { c.beginPath(); c.moveTo(x + 2, 367); c.quadraticCurveTo(x + s * 13, 374, x + s * 28, 376); c.stroke(); }
+  }
+  c.fillStyle = birdB1Gradient(c, 213, 210, 104, '#d8d7d2', '#8a8a87', '#45474c');
+  c.beginPath(); c.moveTo(147, 158); c.quadraticCurveTo(190, 130, 258, 150); c.quadraticCurveTo(300, 182, 279, 248);
+  c.quadraticCurveTo(225, 283, 158, 246); c.quadraticCurveTo(128, 209, 147, 158); c.closePath(); c.fill();
+  birdB1FoldedWing(c, 223, 211, 113, 91, '#76787c', '#35373c', true);
+  c.fillStyle = '#d1d0cb'; c.beginPath(); c.moveTo(153, 184); c.quadraticCurveTo(130, 136, 141, 92); c.lineTo(177, 92); c.quadraticCurveTo(188, 144, 180, 185); c.closePath(); c.fill();
+  /* Long crown quills leave one buried root but separate into a loose spray.
+     Filled, tapered feathers keep the crest from collapsing into one rigid
+     ribbon at actual-thumb scale. */
+  c.fillStyle = '#22252a';
+  for (const [rx, ry, cx, cy, tx, ty, half] of [
+    [163, 88, 183, 57, 214, 43, 3.8], [165, 89, 193, 52, 232, 36, 4.1],
+    [166, 91, 203, 56, 251, 43, 4.3], [167, 94, 209, 65, 267, 59, 4.5],
+    [168, 97, 211, 76, 273, 78, 4.2], [168, 100, 207, 88, 263, 96, 3.9],
+    [167, 103, 199, 99, 246, 111, 3.5]
+  ] as const) {
+    c.beginPath(); c.moveTo(rx, ry - half);
+    c.quadraticCurveTo(cx, cy - half * 0.45, tx, ty);
+    c.quadraticCurveTo(cx, cy + half * 0.70, rx, ry + half); c.closePath(); c.fill();
+  }
+  c.fillStyle = '#e07e42'; c.beginPath(); c.ellipse(143, 84, 31, 28, -0.15, 0, TAU); c.fill();
+  c.fillStyle = '#d1d0cb'; c.beginPath(); c.arc(157, 72, 23, 0, TAU); c.fill();
+  birdB1HookBill(c, 120, 82, 0.72, '#45413c'); birdB1Eye(c, 142, 69, 5.5, '#d5ad37');
+}
+
+function birdB1Owl(c: Ctx, kind: 'Owl' | 'Desert Owl' | 'Snowy Owl'): void {
+  const snowy = kind === 'Snowy Owl', desert = kind === 'Desert Owl';
+  const base = snowy ? '#f0f1ef' : desert ? '#c6a777' : '#76634b';
+  const dark = snowy ? '#90979e' : desert ? '#6d5237' : '#3c332b';
+  const light = snowy ? '#ffffff' : desert ? '#ead4a7' : '#bca681';
+  ground(c, 220, 373, 111);
+  /* Barrel and head share the same outline; the face is plumage, not a mask. */
+  c.fillStyle = birdB1Gradient(c, 184, 174, 143, light, base, dark);
+  c.beginPath(); c.moveTo(145, 105);
+  if (!snowy) { c.lineTo(161, 66); c.lineTo(184, 101); }
+  c.quadraticCurveTo(220, 73, 256, 101);
+  if (!snowy) { c.lineTo(279, 66); c.lineTo(295, 105); }
+  c.quadraticCurveTo(323, 172, 303, 282); c.quadraticCurveTo(289, 345, 247, 357);
+  c.quadraticCurveTo(220, 369, 193, 357); c.quadraticCurveTo(151, 345, 137, 282);
+  c.quadraticCurveTo(117, 172, 145, 105); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(42,34,27,0.36)'; c.lineWidth = 3;
+  for (const s of [-1, 1] as const) for (let i = 0; i < 5; i++) {
+    c.beginPath(); c.moveTo(220 + s * 18, 205 + i * 17); c.quadraticCurveTo(220 + s * 61, 190 + i * 19, 220 + s * 78, 242 + i * 14); c.stroke();
+  }
+  c.fillStyle = snowy ? '#fbfcfb' : desert ? '#ecd5aa' : '#c2a986';
+  c.beginPath(); c.moveTo(220, 111); c.bezierCurveTo(178, 73, 131, 112, 148, 174);
+  c.bezierCurveTo(164, 223, 204, 217, 220, 188); c.bezierCurveTo(236, 217, 276, 223, 292, 174);
+  c.bezierCurveTo(309, 112, 262, 73, 220, 111); c.closePath(); c.fill();
+  /* Visible concentric feather fans make a flat facial disc at thumbnail size. */
+  c.strokeStyle = snowy ? 'rgba(113,122,132,0.38)' : 'rgba(65,47,34,0.48)'; c.lineWidth = 3;
+  c.beginPath(); c.ellipse(220, 148, 74, 62, 0, 0, TAU); c.stroke();
+  for (const x of [188, 252]) birdB1Eye(c, x, 144, 13, snowy ? '#f1c72d' : '#d4a730');
+  c.fillStyle = '#34302a'; c.beginPath(); c.moveTo(212, 166); c.quadraticCurveTo(220, 179, 228, 166); c.lineTo(220, 185); c.closePath(); c.fill();
+  /* Snowshoe-like feather masses hide nearly all of the feet. */
+  for (const x of [188, 252]) {
+    c.fillStyle = light; c.beginPath(); c.ellipse(x, 344, 31, 26, 0, 0, TAU); c.fill();
+    c.fillStyle = base; for (const dx of [-13, 0, 13]) { c.beginPath(); c.ellipse(x + dx, 359, 12, 7, 0, 0, TAU); c.fill(); }
+  }
+  if (snowy) {
+    c.fillStyle = 'rgba(72,78,86,0.48)';
+    for (const [x,y] of [[170,229],[205,244],[251,232],[282,261],[183,291],[239,307],[270,325]] as const) { c.beginPath(); c.ellipse(x,y,8,4,0.2,0,TAU); c.fill(); }
+  }
+}
+
+function birdB1Cassowary(c: Ctx): void {
+  ground(c, 221, 388, 112);
+  for (const x of [194, 250]) {
+    c.fillStyle = '#77716a'; c.beginPath(); c.moveTo(x - 9, 286); c.lineTo(x - 7, 370); c.lineTo(x + 10, 370); c.lineTo(x + 12, 286); c.closePath(); c.fill();
+    c.strokeStyle = '#3c3733'; c.lineWidth = 6; c.lineCap = 'round';
+    for (const s of [-1, 0, 1]) { c.beginPath(); c.moveTo(x + 2, 370); c.lineTo(x + s * 26, 380); c.stroke(); }
+  }
+  c.fillStyle = birdB1Gradient(c, 188, 228, 142, '#52575d', '#20252a', '#0d1014');
+  c.beginPath(); c.moveTo(126, 193); c.quadraticCurveTo(171, 138, 266, 165); c.quadraticCurveTo(325, 193, 307, 275);
+  c.quadraticCurveTo(283, 337, 194, 330); c.quadraticCurveTo(116, 323, 111, 252); c.quadraticCurveTo(108, 216, 126, 193); c.closePath(); c.fill();
+  /* Hair-like plumage breaks the outline continuously instead of dot texture. */
+  c.strokeStyle = '#15191e'; c.lineWidth = 6; c.lineCap = 'round';
+  for (let i = 0; i < 16; i++) { const a = -0.1 + i * 0.19; c.beginPath(); c.moveTo(205 + Math.cos(a) * 91, 240 + Math.sin(a) * 75); c.lineTo(205 + Math.cos(a) * 111, 248 + Math.sin(a) * 93); c.stroke(); }
+  c.fillStyle = '#2773a4'; c.beginPath(); c.moveTo(247, 202); c.quadraticCurveTo(263, 141, 265, 98); c.lineTo(300, 98); c.quadraticCurveTo(302, 153, 284, 209); c.closePath(); c.fill();
+  c.fillStyle = '#257db3'; c.beginPath(); c.ellipse(282, 89, 29, 25, -0.1, 0, TAU); c.fill();
+  c.fillStyle = '#c99c47'; c.beginPath(); c.moveTo(259, 72); c.quadraticCurveTo(258, 30, 283, 18); c.quadraticCurveTo(314, 35, 310, 78); c.quadraticCurveTo(284, 66, 259, 72); c.closePath(); c.fill();
+  c.fillStyle = '#c43d33';
+  for (const x of [270, 289]) { c.beginPath(); c.moveTo(x, 111); c.quadraticCurveTo(x - 9, 151, x + 3, 180); c.quadraticCurveTo(x + 17, 145, x + 11, 112); c.closePath(); c.fill(); }
+  c.fillStyle = '#423c34'; c.beginPath(); c.moveTo(304, 87); c.lineTo(337, 98); c.lineTo(304, 103); c.closePath(); c.fill();
+  birdB1Eye(c, 291, 80, 4.8, '#51321e');
+}
+
+function birdB1Kakapo(c: Ctx): void {
+  ground(c, 220, 371, 114);
+  c.fillStyle = birdB1Gradient(c, 180, 205, 141, '#b8c77d', '#66823c', '#2f4827');
+  c.beginPath(); c.moveTo(154, 111); c.quadraticCurveTo(220, 69, 286, 117); c.quadraticCurveTo(332, 173, 308, 279);
+  c.quadraticCurveTo(293, 350, 220, 358); c.quadraticCurveTo(147, 350, 132, 279); c.quadraticCurveTo(108, 175, 154, 111); c.closePath(); c.fill();
+  birdB1FoldedWing(c, 239, 237, 116, 105, '#718a43', '#304827');
+  c.fillStyle = '#9eaa67';
+  c.beginPath(); c.moveTo(220, 104); c.bezierCurveTo(172, 65, 130, 108, 153, 168); c.bezierCurveTo(176, 202, 205, 188, 220, 167);
+  c.bezierCurveTo(235, 188, 264, 202, 287, 168); c.bezierCurveTo(310, 108, 268, 65, 220, 104); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(232,224,172,0.72)'; c.lineWidth = 2.4;
+  for (const s of [-1, 1] as const) for (let i = 0; i < 7; i++) {
+    const y = 125 + i * 7; c.beginPath(); c.moveTo(220 + s * 18, 145); c.quadraticCurveTo(220 + s * (42 + i * 3), y, 220 + s * (49 + i * 2), y + 14); c.stroke();
+  }
+  birdB1Eye(c, 188, 132, 9, '#72511f'); birdB1Eye(c, 252, 132, 9, '#72511f');
+  /* Frontal parrot bill: broad cere, deep hooked culmen and centered tip. */
+  c.fillStyle = '#c4b59c'; c.beginPath(); c.ellipse(220, 157, 25, 15, 0, 0, TAU); c.fill();
+  c.fillStyle = '#82745f';
+  c.beginPath(); c.moveTo(199, 158); c.quadraticCurveTo(220, 145, 241, 158);
+  c.quadraticCurveTo(241, 185, 220, 199); c.quadraticCurveTo(226, 178, 199, 172); c.closePath(); c.fill();
+  c.fillStyle = '#3c352d'; for (const x of [211, 229]) { c.beginPath(); c.arc(x, 155, 2.2, 0, TAU); c.fill(); }
+  c.fillStyle = 'rgba(32,49,27,0.74)';
+  for (const [x,y] of [[166,213],[196,235],[245,211],[276,251],[181,286],[232,305],[274,318],[145,262]] as const) { c.beginPath(); c.ellipse(x,y,10,6,-0.3,0,TAU); c.fill(); }
+  for (const x of [185, 251]) birdB1TalonedFoot(c, x, 347, 0.62, '#82755e');
+}
+
+function birdB1TallGround(c: Ctx, kind: 'Rhea' | 'Bustard' | 'Seriema' | 'Screamer'): void {
+  const rhea = kind === 'Rhea', bustard = kind === 'Bustard', seriema = kind === 'Seriema', screamer = kind === 'Screamer';
+  const base = rhea ? '#8c8172' : bustard ? '#a58d67' : seriema ? '#aa9878' : '#6e675d';
+  const dark = rhea ? '#4e4944' : bustard ? '#5a4735' : seriema ? '#5d503c' : '#343432';
+  const leg = seriema ? '#c85f4e' : screamer ? '#9b7163' : '#b69b76';
+  ground(c, 220, 385, 111);
+  const bodyY = screamer ? 246 : 230, legTop = screamer ? 280 : 258;
+  for (const x of [202, 250]) {
+    c.fillStyle = leg; c.beginPath(); c.moveTo(x - 7, legTop); c.lineTo(x - 6, 369); c.lineTo(x + 7, 369); c.lineTo(x + 9, legTop); c.closePath(); c.fill();
+    c.strokeStyle = dark; c.lineWidth = 5; c.lineCap = 'round';
+    for (const s of [-1, 0, 1]) { c.beginPath(); c.moveTo(x, 369); c.lineTo(x + s * 22, 378); c.stroke(); }
+  }
+  if (seriema) {
+    c.fillStyle = dark; c.beginPath(); c.moveTo(283, 222); c.quadraticCurveTo(345, 237, 397, 291); c.lineTo(377, 309); c.quadraticCurveTo(326, 274, 272, 256); c.closePath(); c.fill();
+  }
+  c.fillStyle = birdB1Gradient(c, 184, bodyY - 34, 125, '#d2c3a8', base, dark);
+  c.beginPath(); c.moveTo(124, bodyY - 43); c.quadraticCurveTo(174, bodyY - 91, 270, bodyY - 60);
+  c.quadraticCurveTo(328, bodyY - 28, 310, bodyY + 40); c.quadraticCurveTo(271, bodyY + 87, 182, bodyY + 66);
+  c.quadraticCurveTo(117, bodyY + 49, 110, bodyY - 2); c.quadraticCurveTo(108, bodyY - 24, 124, bodyY - 43); c.closePath(); c.fill();
+  if (rhea) {
+    /* A rhea's vestigial wing is a shaggy curtain of soft, drooping feathers.
+       One curved shoulder mass buries every feather root in the torso; the
+       alternating tapered lobes replace the former rectangular comb. */
+    c.fillStyle = birdB1Gradient(c, 177, 221, 92, '#777067', dark, '#33312f');
+    c.beginPath(); c.moveTo(145, 216); c.bezierCurveTo(176, 187, 240, 190, 282, 221);
+    c.quadraticCurveTo(281, 247, 266, 267);
+    /* The lower edge is one continuous feathered silhouette: alternating
+       buried valleys and softly splayed tips, never a separate skirt. */
+    c.quadraticCurveTo(280, 278, 275, 292); c.quadraticCurveTo(264, 283, 256, 272);
+    c.quadraticCurveTo(265, 298, 251, 307); c.quadraticCurveTo(240, 289, 233, 276);
+    c.quadraticCurveTo(239, 310, 225, 319); c.quadraticCurveTo(213, 294, 207, 279);
+    c.quadraticCurveTo(206, 307, 192, 315); c.quadraticCurveTo(182, 292, 179, 274);
+    c.quadraticCurveTo(172, 299, 158, 304); c.quadraticCurveTo(154, 280, 157, 263);
+    c.quadraticCurveTo(144, 281, 139, 286); c.quadraticCurveTo(137, 251, 145, 216);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(207,198,184,0.38)'; c.lineWidth = 3; c.lineCap = 'round';
+    for (const [x1, y1, cx, cy, x2, y2] of [
+      [157,221,145,258,140,279], [178,216,164,266,158,296],
+      [199,214,190,269,192,306], [220,216,215,274,225,310],
+      [241,219,244,266,251,298], [260,225,270,255,275,283]
+    ] as const) {
+      c.beginPath(); c.moveTo(x1, y1); c.quadraticCurveTo(cx, cy, x2, y2); c.stroke();
+    }
+  } else {
+    birdB1FoldedWing(c, 220, bodyY, screamer ? 119 : 105, screamer ? 86 : 92, base, dark);
+  }
+  const neckX = bustard ? 281 : rhea ? 147 : seriema ? 150 : 292;
+  const neckTop = rhea ? 78 : bustard ? 84 : seriema ? 125 : 130;
+  c.fillStyle = base;
+  c.beginPath(); c.moveTo(neckX - 17, bodyY - 28); c.quadraticCurveTo(neckX - 22, 166, neckX - 14, neckTop);
+  c.lineTo(neckX + 18, neckTop); c.quadraticCurveTo(neckX + 27, 168, neckX + 20, bodyY - 20); c.closePath(); c.fill();
+  c.fillStyle = base; c.beginPath();
+  if (bustard) { c.moveTo(neckX - 25, neckTop); c.lineTo(neckX + 22, neckTop - 3); c.lineTo(neckX + 29, neckTop + 20); c.quadraticCurveTo(neckX, neckTop + 35, neckX - 26, neckTop + 20); c.closePath(); }
+  else c.ellipse(neckX, neckTop, screamer ? 30 : 25, screamer ? 25 : 21, -0.05, 0, TAU);
+  c.fill();
+  c.fillStyle = dark;
+  if (rhea) { c.beginPath(); c.moveTo(neckX - 22, neckTop - 2); c.lineTo(neckX - 58, neckTop + 8); c.lineTo(neckX - 22, neckTop + 14); c.closePath(); c.fill(); }
+  else if (seriema) {
+    c.beginPath(); c.moveTo(neckX - 20, neckTop - 3); c.lineTo(neckX - 61, neckTop + 4); c.quadraticCurveTo(neckX - 72, neckTop + 11, neckX - 58, neckTop + 17); c.lineTo(neckX - 18, neckTop + 13); c.closePath(); c.fill();
+    /* The crest rises from the bill base as irregular bristles. Its upright
+       fan stays on a different axis from the bill, so it cannot read as a
+       second rigid beak. */
+    c.strokeStyle = '#514431'; c.lineWidth = 4.5; c.lineCap = 'round';
+    for (const [rx, ry, cx, cy, tx, ty] of [
+      [130,119,122,91,118,71], [133,117,130,83,131,58], [136,116,139,82,145,54],
+      [139,116,148,84,158,62], [142,117,157,91,174,74], [145,119,164,99,183,90],
+      [147,121,166,108,187,105]
+    ] as const) {
+      c.beginPath(); c.moveTo(rx, ry); c.quadraticCurveTo(cx, cy, tx, ty); c.stroke();
+    }
+  } else {
+    c.beginPath(); c.moveTo(neckX - 22, neckTop); c.lineTo(neckX - 48, neckTop + 7); c.lineTo(neckX - 20, neckTop + 16); c.closePath(); c.fill();
+  }
+  if (screamer) {
+    /* Horn and wing spurs break the outer silhouette at different axes. */
+    c.strokeStyle = '#d8c59e'; c.lineWidth = 6; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(neckX - 2, neckTop - 17); c.quadraticCurveTo(neckX + 8, neckTop - 55, neckX - 8, neckTop - 70); c.stroke();
+    c.fillStyle = '#d7c5a0';
+    for (const s of [-1, 1] as const) { c.beginPath(); c.moveTo(220 + s * 47, bodyY - 8); c.lineTo(220 + s * 78, bodyY - 35); c.lineTo(220 + s * 55, bodyY + 1); c.closePath(); c.fill(); }
+  }
+  birdB1Eye(c, neckX - 8, neckTop - 4, 4.8, '#c7a12b');
+}
+
+function birdB1Woodpecker(c: Ctx): void {
+  ground(c, 207, 382, 98);
+  /* The trunk sits behind every contact point. */
+  c.fillStyle = '#60412d'; c.beginPath(); c.moveTo(74, 35); c.lineTo(131, 35); c.lineTo(145, 394); c.lineTo(66, 394); c.closePath(); c.fill();
+  c.strokeStyle = '#9a7651'; c.lineWidth = 5;
+  for (let y = 56; y < 370; y += 34) { c.beginPath(); c.moveTo(82, y); c.quadraticCurveTo(103, y + 10, 128, y - 3); c.stroke(); }
+  /* Stiff tail is rooted in the rump and visibly braces against the trunk. */
+  c.fillStyle = '#8a8177';
+  for (let i = 0; i < 3; i++) {
+    c.beginPath(); c.moveTo(176 + i * 8, 272 + i * 6); c.quadraticCurveTo(151 + i * 2, 314, 113, 350 - i * 9);
+    c.lineTo(126, 360 - i * 9); c.quadraticCurveTo(160 + i * 3, 326, 195 + i * 4, 314 + i * 4); c.closePath(); c.fill();
+  }
+  c.strokeStyle = 'rgba(236,230,216,0.58)'; c.lineWidth = 2.4;
+  c.beginPath(); c.moveTo(183, 282); c.lineTo(120, 352); c.stroke();
+  c.fillStyle = birdB1Gradient(c, 201, 214, 105, '#8b8276', '#302f32', '#17181d');
+  c.beginPath(); c.moveTo(158, 142); c.quadraticCurveTo(219, 115, 263, 168); c.quadraticCurveTo(287, 230, 246, 310);
+  c.quadraticCurveTo(195, 334, 153, 282); c.quadraticCurveTo(130, 213, 158, 142); c.closePath(); c.fill();
+  birdB1FoldedWing(c, 215, 226, 84, 104, '#4a4849', '#1b1c20');
+  c.fillStyle = '#c9342f'; c.beginPath(); c.moveTo(146, 138); c.quadraticCurveTo(147, 91, 187, 82); c.lineTo(200, 130); c.closePath(); c.fill();
+  c.fillStyle = '#3a3734'; c.beginPath(); c.arc(167, 137, 40, 0, TAU); c.fill();
+  /* Straight chisel meets the bark; it does not point into open air. */
+  c.fillStyle = '#d0bea0'; c.beginPath(); c.moveTo(139, 126); c.lineTo(104, 132); c.lineTo(139, 145); c.closePath(); c.fill();
+  birdB1Eye(c, 154, 126, 6, '#cab044');
+  c.strokeStyle = '#8a7355'; c.lineWidth = 8; c.lineCap = 'round';
+  for (const y of [212, 270]) {
+    c.beginPath(); c.moveTo(159, y); c.lineTo(126, y - 11); c.stroke();
+    c.beginPath(); c.moveTo(159, y); c.lineTo(125, y + 16); c.stroke();
+    c.beginPath(); c.moveTo(126, y - 11); c.lineTo(111, y - 22); c.stroke();
+    c.beginPath(); c.moveTo(125, y + 16); c.lineTo(109, y + 28); c.stroke();
+  }
+}
+
+function birdB1Hoatzin(c: Ctx): void {
+  ground(c, 225, 372, 120);
+  c.fillStyle = '#3d3027'; c.beginPath(); c.moveTo(272, 273); c.quadraticCurveTo(344, 274, 407, 330); c.lineTo(365, 351); c.quadraticCurveTo(316, 324, 257, 313); c.closePath(); c.fill();
+  c.fillStyle = birdB1Gradient(c, 195, 225, 130, '#b48655', '#744727', '#342a25');
+  c.beginPath(); c.moveTo(135, 180); c.quadraticCurveTo(183, 133, 274, 170); c.quadraticCurveTo(328, 209, 299, 292);
+  c.quadraticCurveTo(248, 340, 159, 307); c.quadraticCurveTo(105, 276, 112, 221); c.quadraticCurveTo(116, 198, 135, 180); c.closePath(); c.fill();
+  c.fillStyle = '#a75b31'; c.beginPath(); c.moveTo(151, 196); c.quadraticCurveTo(222, 167, 281, 211); c.quadraticCurveTo(267, 279, 190, 292); c.quadraticCurveTo(145, 260, 151, 196); c.closePath(); c.fill();
+  c.strokeStyle = '#e0ad6e'; c.lineWidth = 4;
+  for (let i = 0; i < 5; i++) { c.beginPath(); c.moveTo(174, 207 + i * 12); c.quadraticCurveTo(220, 194 + i * 13, 264, 221 + i * 10); c.stroke(); }
+  c.fillStyle = '#8b5a37'; c.beginPath(); c.moveTo(142, 201); c.quadraticCurveTo(125, 155, 128, 121); c.lineTo(164, 119); c.quadraticCurveTo(173, 160, 169, 207); c.closePath(); c.fill();
+  c.fillStyle = '#3c8ab0'; c.beginPath(); c.ellipse(132, 105, 34, 30, -0.15, 0, TAU); c.fill();
+  c.fillStyle = '#9d4828';
+  for (let i = 0; i < 8; i++) { c.beginPath(); c.moveTo(135, 86); c.lineTo(120 + i * 7, 39 - (i % 2) * 12); c.lineTo(145, 89); c.closePath(); c.fill(); }
+  c.fillStyle = '#3a2d24'; c.beginPath(); c.moveTo(106, 104); c.lineTo(72, 113); c.lineTo(108, 122); c.closePath(); c.fill();
+  birdB1Eye(c, 124, 98, 7, '#d22f25');
+}
+
+function birdB1Hummingbird(c: Ctx): void {
+  ground(c, 220, 379, 77);
+  /* Several translucent curved sweeps occupy successive wing-beat positions.
+     Their broad, overlapping shoulder roots disappear beneath the torso while
+     their separated ghost tips make hovering motion survive actual-thumb scale. */
+  for (const s of [-1, 1] as const) {
+    c.save(); c.filter = 'blur(3px)';
+    for (const [tipOut, tipY, bellyOut, bellyY, alpha] of [
+      [139, 70, 55, 229, 0.17], [151, 103, 67, 238, 0.15],
+      [154, 139, 78, 247, 0.14], [143, 176, 84, 254, 0.13],
+      [119, 213, 76, 260, 0.11]
+    ] as const) {
+      c.fillStyle = `rgba(156,210,225,${alpha})`;
+      c.beginPath(); c.moveTo(220 + s * 15, 198);
+      c.bezierCurveTo(220 + s * 49, 158, 220 + s * (tipOut - 22), tipY - 16, 220 + s * tipOut, tipY - 8);
+      c.quadraticCurveTo(220 + s * (tipOut + 8), tipY, 220 + s * tipOut, tipY + 9);
+      c.bezierCurveTo(220 + s * (tipOut - 20), tipY + 24, 220 + s * bellyOut, bellyY, 220 + s * 22, 218);
+      c.quadraticCurveTo(220 + s * 11, 210, 220 + s * 15, 198); c.closePath(); c.fill();
+    }
+    c.strokeStyle = 'rgba(215,243,248,0.16)'; c.lineWidth = 12; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(220 + s * 32, 207); c.bezierCurveTo(220 + s * 92, 170, 220 + s * 146, 111, 220 + s * 138, 76); c.stroke();
+    c.restore();
+  }
+  c.fillStyle = birdB1Gradient(c, 205, 218, 84, '#61c293', '#187d59', '#114238');
+  c.beginPath(); c.moveTo(197, 151); c.quadraticCurveTo(241, 137, 262, 193); c.quadraticCurveTo(271, 261, 231, 310);
+  c.quadraticCurveTo(187, 283, 178, 217); c.quadraticCurveTo(174, 175, 197, 151); c.closePath(); c.fill();
+  c.fillStyle = '#164a3a'; c.beginPath(); c.moveTo(204, 286); c.lineTo(171, 348); c.lineTo(216, 315); c.lineTo(243, 353); c.lineTo(235, 289); c.closePath(); c.fill();
+  c.fillStyle = '#248b65'; c.beginPath(); c.arc(192, 145, 38, 0, TAU); c.fill();
+  /* Needle bill is comfortably longer than the head and part of its silhouette. */
+  c.fillStyle = '#27272a'; c.beginPath(); c.moveTo(161, 139); c.lineTo(45, 150); c.lineTo(161, 151); c.closePath(); c.fill();
+  birdB1Eye(c, 180, 135, 6.5, '#29211b');
+  c.fillStyle = birdB1Gradient(c, 194, 176, 40, '#e2518a', '#9b1e66', '#35123c');
+  c.beginPath(); c.moveTo(166, 161); c.quadraticCurveTo(194, 150, 225, 168); c.quadraticCurveTo(215, 211, 184, 219); c.quadraticCurveTo(163, 194, 166, 161); c.closePath(); c.fill();
+  c.strokeStyle = '#5c4430'; c.lineWidth = 3.5; c.lineCap = 'round';
+  for (const s of [-1, 1] as const) { c.beginPath(); c.moveTo(208 + s * 7, 295); c.quadraticCurveTo(208 + s * 11, 314, 208 + s * 19, 323); c.stroke(); }
+}
+
+/** Named whole-form B1 dispatcher. The species name is the opt-in key; no
+    generic or procedural label can enter this path accidentally. */
+export function faunaBirdB1(c: Ctx, g: G, p: Pal, kind: BirdB1Kind): void {
+  void g; void p;
+  switch (kind) {
+    case 'Eagle': case 'Falcon': case 'Hawk': case 'Harpy Eagle': case 'Kestrel': birdB1PerchedRaptor(c, kind); return;
+    case 'Osprey': case 'Condor': birdB1AirRaptor(c, kind); return;
+    case 'Vulture': birdB1Vulture(c); return;
+    case 'Secretary Bird': birdB1Secretary(c); return;
+    case 'Owl': case 'Desert Owl': case 'Snowy Owl': birdB1Owl(c, kind); return;
+    case 'Cassowary': birdB1Cassowary(c); return;
+    case 'Kakapo': birdB1Kakapo(c); return;
+    case 'Rhea': case 'Bustard': case 'Seriema': case 'Screamer': birdB1TallGround(c, kind); return;
+    case 'Woodpecker': birdB1Woodpecker(c); return;
+    case 'Hoatzin': birdB1Hoatzin(c); return;
+    case 'Hummingbird': birdB1Hummingbird(c); return;
+  }
+}
+
+const birdB1Eagle: FaunaPainter = (c, g, p) => faunaBirdB1(c, g, p, 'Eagle');
+const birdB1Falcon: FaunaPainter = (c, g, p) => faunaBirdB1(c, g, p, 'Falcon');
+const birdB1Hawk: FaunaPainter = (c, g, p) => faunaBirdB1(c, g, p, 'Hawk');
+const birdB1HarpyEagle: FaunaPainter = (c, g, p) => faunaBirdB1(c, g, p, 'Harpy Eagle');
+const birdB1SecretaryBird: FaunaPainter = (c, g, p) => faunaBirdB1(c, g, p, 'Secretary Bird');
+const birdB1VulturePainter: FaunaPainter = (c, g, p) => faunaBirdB1(c, g, p, 'Vulture');
+const birdB1CassowaryPainter: FaunaPainter = (c, g, p) => faunaBirdB1(c, g, p, 'Cassowary');
+const birdB1KakapoPainter: FaunaPainter = (c, g, p) => faunaBirdB1(c, g, p, 'Kakapo');
+const birdB1HoatzinPainter: FaunaPainter = (c, g, p) => faunaBirdB1(c, g, p, 'Hoatzin');
+
 /** the wave-3 roster: species whose defining anatomy was categorically wrong */
 export const FAUNA_NAME: Record<string, FaunaPainter> = {
   /* Blocker 4 — life stage + arthropod body plans */
@@ -2271,8 +2864,8 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   /* ★ GOLD AUDIT — 'soaring' skips the leg loop entirely, so `talons: true`
      never drew a single talon on either eagle. Perch them: the heavy GRIP
      legs + hooks are the raptor read. */
-  'Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#4a3a28', legs: 0.040, bill: 'hook', tail: 'fan', headMass: 1.6, talons: true, plump: 1.32, elong: 1.12, size: 1.15, brow: true }, n),
-  'Harpy Eagle': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6b7079', legs: 0.040, bill: 'hook', crest: true, doubleCrest: true, headMass: 1.48, talons: true, plump: 1.38, elong: 1.10, size: 1.25, brow: true, belly: '#eee9dd', breastBand: '#252a31', legHue: '#92742b' }, n),
+  'Eagle': birdB1Eagle,
+  'Harpy Eagle': birdB1HarpyEagle,
   /* ★ WAVE 50 — HAWK, FALCON AND OSPREY WERE ONE BIRD IN THREE HUES. Their
      rows were byte-identical apart from `hue` (Osprey added `size`), so the
      new [SHAPE] tier scores Hawk ≈ Falcon at 0.06 and Hawk ≈ Osprey at 0.25.
@@ -2282,9 +2875,9 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
      A buteo is broad and heavy on a wide fanned tail; a peregrine is a compact
      sleek dart with a long narrow tail; an osprey is bigger again with the
      long angled wings of a fish-hunter. */
-  'Hawk': (c, g, p, n) => faunaBird(c, g, p, { hue: '#96543a', legs: 0.02, bill: 'hook', tail: 'fan', talons: true, plump: 1.16, size: 0.96 }, n),
-  'Falcon': (c, g, p, n) => faunaBird(c, g, p, { hue: '#55647a', legs: 0.02, bill: 'hook', talons: true, size: 0.76, plump: 0.88, elong: 1.16 }, n),
-  'Vulture': (c, g, p, n) => faunaBird(c, g, p, { hue: '#3a322c', legs: 0.03, bill: 'hook', bald: true, talons: true, size: 1.10, plump: 1.14 }, n),
+  'Hawk': birdB1Hawk,
+  'Falcon': birdB1Falcon,
+  'Vulture': birdB1VulturePainter,
   'Albatross': (c, g, p, n) => faunaBird(c, g, p, { hue: '#99a0a8', legs: 0.01, bill: 'hook', wings: 'soaring', size: 1.05, tubeNostrils: true }, n),
   'Flamingo': (c, g, p, n) => faunaBird(c, g, p, { hue: '#ef92a6', legs: 0.18, bill: 'downcurve', neck: 'swan', size: 1.05, billHue: '#1a1c20', legHue: '#e47b98' }, n),
   'Heron': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7b8fa3', legs: 0.13, bill: 'long', neck: 'swan', size: 0.98 }, n),
@@ -2299,12 +2892,12 @@ export const FAUNA_NAME: Record<string, FaunaPainter> = {
   'Toucan': (c, g, p, n) => faunaBird(c, g, p, { hue: '#1b1a1c', legs: 0.02, bill: 'toucan' }, n),
   'Kookaburra': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6e5a45', legs: 0.02, bill: 'huge', headMass: 1.55, neck: 'none', size: 0.92 }, n),
   'Hornbill': (c, g, p, n) => faunaBird(c, g, p, { hue: '#2b2b30', legs: 0.02, bill: 'casque' }, n),
-  'Cassowary': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.105, bill: 'stout', crest: true, flightless: true, size: 1.20, neck: 'long', hue: '#1f2733', plump: 1.22 }, n),
+  'Cassowary': birdB1CassowaryPainter,
   'Ostrich': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.145, bill: 'stout', flightless: true, size: 1.42, neck: 'long', hue: '#3a332e', plump: 1.10, tail: 'fan' }, n),
   'Emu': (c, g, p, n) => faunaBird(c, g, p, { legs: 0.125, bill: 'stout', flightless: true, size: 1.22, neck: 'long', hue: '#6d6154', plump: 1.14, shaggy: true }, n),
   /* a kakapo is a FAT flightless parrot: heavy bill, heavy feet, tiny wing */
-  'Kakapo': (c, g, p, n) => faunaBird(c, g, p, { hue: '#6f8a3a', legs: 0.02, bill: 'stout', flightless: true, parrotBill: true, zygo: true, headMass: 1.35, plump: 1.34, size: 0.98 }, n),
-  'Secretary Bird': (c, g, p, n) => faunaBird(c, g, p, { hue: '#8e8b84', legs: 0.24, bill: 'hook', crest: true, neck: 'long', tail: 'long', size: 0.95 }, n),
-  'Hoatzin': (c, g, p, n) => faunaBird(c, g, p, { hue: '#7d4f2a', legs: 0.04, bill: 'stout', crest: true, crop: true, wingClaw: true, tail: 'long', size: 0.94 }, n),
+  'Kakapo': birdB1KakapoPainter,
+  'Secretary Bird': birdB1SecretaryBird,
+  'Hoatzin': birdB1HoatzinPainter,
   'Puffin': (c, g, p, n) => faunaBird(c, g, p, { hue: '#23272b', legs: 0.02, bill: 'huge', billHue: '#e8622c', bib: '#f0f2f4', plump: 1.3, size: 0.72, legHue: '#e8622c' }, n),
 };

@@ -25,9 +25,15 @@ This is a multi-batch arc. It is written down in full so a cold session can pick
 > Beetle at 440/300/132 while all 22 protected rows stayed byte-identical. Vanilla
 > Orchid r6 separately closes the prior focused byte-identical-lineage defect:
 > 234/234 assets are valid, the pure portrait is exact, and five stages are unique
-> and integrated. Wave 2a is ready to commit/push, but none of these scoped results
-> creates a new 1,250-row tally. Remaining waves, full certification, the final
-> image-inclusive ZIP, reset PR, release and deployment are still OPEN. See
+> and integrated. Wave 2a is committed/pushed as `00e499c`, but none of these scoped results
+> creates a new 1,250-row tally. Wave 2b is now independently **51/51 scoped
+> PASS**: Mammal B 25/25, Bird B1 21/21 and Invert I 5/5. It failed closed before
+> that result—six mammals needed bounded R3, four birds needed bounded R2, and
+> Banana Slug needed a final 132px tentacle/eye refinement—while every retained
+> target/control stayed frozen. The final integrated gates are green with all
+> five source SHAs unchanged, so Wave 2b is ready to commit/push. Remaining
+> waves, full certification, the final image-inclusive ZIP,
+> reset PR, release and deployment are still OPEN. See
 > `v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
 ---
