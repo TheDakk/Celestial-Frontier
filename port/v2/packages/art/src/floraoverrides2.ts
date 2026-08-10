@@ -3442,6 +3442,92 @@ function recheckRoot(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string): void 
 function recheckVine(c: Ctx, g: G, p: Pal, spec: PlantSpec, name: string): void {
   const cx = S * 0.50, base = S * 0.84, r = rngF(g, name, 0x7f3a);
   ground(c, cx, base + 4, S * 0.25);
+  const vanillaLineage = name === 'Vanilla Orchid' && g._earthBlend === 'Vanilla Orchid'
+    && Number.isFinite(Number(g._anchorVal));
+  if (vanillaLineage) {
+    /* Pure/named Vanilla continues through the frozen branch below. A bred
+       descendant is rebuilt from its CHILD genome as one climbing plant, so
+       its bark support, succulent stem, nodes, attached roots, leaves, flower
+       and green pods move together instead of receiving an alien decal. */
+    const anchor = Math.max(0.22, Math.min(0.90, Number(g._anchorVal)));
+    const drift = 1 - anchor;
+    const childSeed = ((Number(g.seed) || 0) ^ Math.imul((Number(g.body) || 0) + 1, 0x45d9f3b)
+      ^ Math.imul((Number(g.form) || 0) + 1, 0x119de1f3) ^ Math.imul((Number(g.color) || 0) + 1, 0x27d4eb2d)) >>> 0;
+    const gene = (salt: number): number => mixF(childSeed, salt) / 4294967296 * 2 - 1;
+    const rgb = (red: number, green: number, blue: number): string =>
+      `rgb(${Math.max(0, Math.min(255, Math.round(red)))},${Math.max(0, Math.min(255, Math.round(green)))},${Math.max(0, Math.min(255, Math.round(blue)))})`;
+
+    const supportX = cx + S * (0.13 + drift * (0.030 + gene(0x31) * 0.006));
+    const supportW = S * 0.08 * (1 + drift * (0.10 + gene(0x32) * 0.025));
+    const supportTop = base - S * (0.64 + drift * (0.025 + gene(0x33) * 0.006));
+    c.fillStyle = rgb(76 + drift * (12 + gene(0x34) * 5), 56 + drift * (9 + gene(0x35) * 4), 40 + drift * (12 + gene(0x36) * 4));
+    c.beginPath(); c.moveTo(supportX, base + S * 0.02); c.lineTo(supportX + supportW, base + S * 0.02);
+    c.lineTo(supportX + supportW * (0.92 + drift * 0.05), supportTop); c.lineTo(supportX - supportW * drift * 0.05, supportTop); c.closePath(); c.fill();
+    c.strokeStyle = `rgba(180,147,105,${(0.34 * drift).toFixed(3)})`; c.lineWidth = Math.max(2, S * 0.006);
+    for (let i = 0; i < 5; i++) { const y = base - S * (0.10 + i * 0.115); c.beginPath(); c.moveTo(supportX + supportW * 0.14, y); c.lineTo(supportX + supportW * 0.84, y - S * 0.028); c.stroke(); }
+
+    type VinePoint = readonly [number, number];
+    const p0: VinePoint = [-0.18 - drift * (0.015 + gene(0x41) * 0.004), 0];
+    const p1: VinePoint = [0.06 + drift * (0.045 + gene(0x42) * 0.009), 0.14 + drift * (0.018 + gene(0x43) * 0.005)];
+    const p2: VinePoint = [-0.08 - drift * (0.050 + gene(0x44) * 0.010), 0.52 + drift * (0.030 + gene(0x45) * 0.007)];
+    const p3: VinePoint = [0.18 - drift * (0.025 + gene(0x46) * 0.006), 0.62 + drift * (0.045 + gene(0x47) * 0.008)];
+    const pointAt = (t: number): VinePoint => {
+      const u = 1 - t, a = u * u * u, b = 3 * u * u * t, d = 3 * u * t * t, e = t * t * t;
+      return [p0[0] * a + p1[0] * b + p2[0] * d + p3[0] * e,
+        p0[1] * a + p1[1] * b + p2[1] * d + p3[1] * e];
+    };
+    const stemCol = rgb(121 + drift * (-15 + gene(0x51) * 6), 99 + drift * (24 + gene(0x52) * 7), 74 + drift * (3 + gene(0x53) * 5));
+    c.strokeStyle = stemCol; c.lineWidth = S * 0.027 * (1 + drift * (0.22 + gene(0x54) * 0.035)); c.lineCap = 'round';
+    c.beginPath(); c.moveTo(cx + S * p0[0], base - S * p0[1]);
+    c.bezierCurveTo(cx + S * p1[0], base - S * p1[1], cx + S * p2[0], base - S * p2[1], cx + S * p3[0], base - S * p3[1]); c.stroke();
+    c.strokeStyle = `rgba(205,224,151,${(0.24 * drift).toFixed(3)})`; c.lineWidth = S * 0.006; c.beginPath();
+    c.moveTo(cx + S * p0[0], base - S * p0[1]);
+    c.bezierCurveTo(cx + S * p1[0], base - S * p1[1], cx + S * p2[0], base - S * p2[1], cx + S * p3[0], base - S * p3[1]); c.stroke();
+
+    const leafPal: Pal = {
+      ...p,
+      base: rgb(p.cr + drift * (gene(0x61) * 14), p.cg + drift * (-6 + gene(0x62) * 12), p.cb + drift * (10 + gene(0x63) * 10)),
+      lit: rgb(Math.min(255, p.cr * 1.30) + drift * (gene(0x64) * 10), Math.min(255, p.cg * 1.29) + drift * (-4 + gene(0x65) * 9), Math.min(255, p.cb * 1.27) + drift * (10 + gene(0x66) * 8)),
+      dark: rgb(p.cr * 0.43 + drift * (gene(0x67) * 7), p.cg * 0.45 + drift * (-3 + gene(0x68) * 7), p.cb * 0.48 + drift * (8 + gene(0x69) * 7)),
+    };
+    for (let i = 0; i < 8; i++) {
+      const t = 0.16 + i * 0.095, [curveOx, curveOy] = pointAt(t), side = i & 1 ? -1 : 1;
+      const pureOx = -0.08 + i * 0.035, pureOy = 0.13 + i * 0.065;
+      const ox = pureOx + (curveOx - pureOx) * drift, oy = pureOy + (curveOy - pureOy) * drift;
+      const x = cx + S * ox, y = base - S * oy;
+      const angle = side < 0 ? -2.50 - drift * (0.12 + gene(0x70 + i) * 0.04) : -0.60 + drift * (0.11 + gene(0x80 + i) * 0.04);
+      recheckLeaf(c, leafPal, x, y, angle, S * 0.15 * (1 + drift * (0.10 + gene(0x90 + i) * 0.025)), 'lance');
+      const rootAlpha = i < 4 ? 0.84 * (1 - drift * 0.90) : 0.84;
+      c.strokeStyle = `rgba(224,216,176,${rootAlpha.toFixed(3)})`; c.lineWidth = Math.max(1.7, S * 0.0045);
+      const pureRootX = x + S * 0.08, pureRootY = y + S * 0.07;
+      const gripBlend = i < 4 ? drift * 0.12 : drift;
+      const gripX = pureRootX + (supportX + supportW * 0.12 - pureRootX) * gripBlend;
+      const gripY = pureRootY + (y + S * (0.055 + drift * 0.018) - pureRootY) * gripBlend;
+      c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo((x + gripX) * 0.5, y + S * (0.025 + drift * 0.012), gripX, gripY); c.stroke();
+    }
+
+    const [podOx, podOy] = pointAt(0.58), podRootX = cx + S * podOx, podRootY = base - S * podOy;
+    c.strokeStyle = stemCol; c.lineWidth = Math.max(2.4, S * 0.007); c.beginPath(); c.moveTo(podRootX, podRootY);
+    c.quadraticCurveTo(podRootX + S * (0.055 + drift * 0.025), podRootY + S * 0.018, podRootX + S * (0.075 + drift * 0.035), podRootY + S * 0.075); c.stroke();
+    const podCol = rgb(120 + drift * (-12 + gene(0xa1) * 6), 148 + drift * (12 + gene(0xa2) * 7), 78 + drift * (12 + gene(0xa3) * 6));
+    for (let i = 0; i < 4; i++) {
+      const purePodOx = 0.02 + i * 0.042, purePodOy = 0.24 + (i & 1 ? 0.05 : 0);
+      const variedPodOx = podOx + 0.02 + i * (0.042 + drift * 0.004);
+      const variedPodOy = podOy - (0.050 + (i & 1 ? -0.018 : 0.018)) - drift * gene(0xb0 + i) * 0.008;
+      const x = cx + S * (purePodOx + (variedPodOx - purePodOx) * drift);
+      const y = base - S * (purePodOy + (variedPodOy - purePodOy) * drift);
+      c.strokeStyle = stemCol; c.lineWidth = Math.max(1.8, S * 0.0045); c.beginPath(); c.moveTo(podRootX + S * 0.065, podRootY + S * 0.060); c.lineTo(x, y - S * 0.045); c.stroke();
+      recheckCone(c, x, y, S * 0.025 * (1 + drift * 0.08), S * 0.105 * (1 + drift * (0.10 + gene(0xc0 + i) * 0.025)), podCol);
+    }
+    const [flowerCurveOx, flowerCurveOy] = pointAt(0.76);
+    const flowerOx = -0.03 + (flowerCurveOx + 0.03) * drift, flowerOy = 0.49 + (flowerCurveOy - 0.49) * drift;
+    const flowerX = cx + S * flowerOx, flowerY = base - S * flowerOy;
+    c.strokeStyle = stemCol; c.lineWidth = Math.max(2, S * 0.005); c.beginPath(); c.moveTo(flowerX, flowerY); c.lineTo(flowerX - S * (0.04 + drift * 0.018), flowerY - S * (0.02 + drift * 0.012)); c.stroke();
+    recheckFlower(c, flowerX - S * (0.05 + drift * 0.020), flowerY - S * (0.03 + drift * 0.012), 6,
+      S * 0.052 * (1 + drift * (0.09 + gene(0xd1) * 0.025)),
+      rgb(242 + drift * (-12 + gene(0xd2) * 4), 238 + drift * (-6 + gene(0xd3) * 4), 224 + drift * (-25 + gene(0xd4) * 5)), '#d7b84c');
+    return;
+  }
   const woody = hasName(name, 'Canopy Vine', 'Black Pepper', 'Vanilla Orchid', 'Orchid Pods');
   if (woody) {
     c.fillStyle = '#4c3828'; c.fillRect(cx + S * 0.13, base - S * 0.64, S * 0.08, S * 0.66);

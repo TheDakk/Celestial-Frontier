@@ -86,6 +86,7 @@ async function hybridBlendAudit(): Promise<void> {
     { id: 'flora-apple', kingdom: 'flora', name: 'Apple', seed: 0xEA7201 },
     { id: 'fungi-oyster-mushroom', kingdom: 'fungi', name: 'Oyster Mushroom', seed: 0xEA7301 },
     { id: 'microbe-amoeba', kingdom: 'microbe', name: 'Amoeba', seed: 0xEA7401 },
+    { id: 'flora-vanilla-orchid', kingdom: 'flora', name: 'Vanilla Orchid', seed: 0xEA7501 },
   ];
   const stageIds = ['pure-earth', 'earth-earth-0.90', 'earth-alien-0.73', 'next-alien-0.46', 'floor-0.22'];
   const anchorTargets = [1, 0.9, 0.73, 0.46, 0.22];

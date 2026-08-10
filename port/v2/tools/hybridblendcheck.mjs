@@ -67,12 +67,29 @@ function validate(report) {
   for (const name of required) assert(report.checks[name] === true, `hybrid outcome failed: ${name}`);
   const stageIds = ['pure-earth', 'earth-earth-0.90', 'earth-alien-0.73', 'next-alien-0.46', 'floor-0.22'];
   const anchors = [1, 0.9, 0.73, 0.46, 0.22];
-  assert(Array.isArray(report.focusLineages) && report.focusLineages.length === 4,
-    'hybrid report must contain four focused kingdom lineages');
+  const expectedFocusLineages = [
+    { id: 'fauna-wolf', kingdom: 'fauna', name: 'Wolf' },
+    { id: 'flora-apple', kingdom: 'flora', name: 'Apple' },
+    { id: 'fungi-oyster-mushroom', kingdom: 'fungi', name: 'Oyster Mushroom' },
+    { id: 'microbe-amoeba', kingdom: 'microbe', name: 'Amoeba' },
+    { id: 'flora-vanilla-orchid', kingdom: 'flora', name: 'Vanilla Orchid' },
+  ];
+  assert(Array.isArray(report.focusLineages)
+    && report.focusLineages.length === expectedFocusLineages.length,
+    'hybrid report must contain five focused lineages');
   const kingdoms = new Set();
-  for (const lineage of report.focusLineages) {
-    assert(lineage && typeof lineage === 'object' && typeof lineage.kingdom === 'string',
+  for (let focusIndex = 0; focusIndex < expectedFocusLineages.length; focusIndex++) {
+    const lineage = report.focusLineages[focusIndex];
+    const expectedLineage = expectedFocusLineages[focusIndex];
+    assert(lineage && typeof lineage === 'object'
+      && typeof lineage.id === 'string'
+      && typeof lineage.kingdom === 'string'
+      && typeof lineage.name === 'string',
       'focused lineage is malformed');
+    assert(lineage.id === expectedLineage.id
+      && lineage.kingdom === expectedLineage.kingdom
+      && lineage.name === expectedLineage.name,
+    `focused lineage ${focusIndex} must be exact ${expectedLineage.kingdom}|${expectedLineage.name}`);
     kingdoms.add(lineage.kingdom);
     assert(Array.isArray(lineage.stages) && lineage.stages.length === stageIds.length,
       `${lineage.id}: focused lineage omitted a stage`);
@@ -161,6 +178,8 @@ function injectedFailureControl(report) {
     ['duplicate-name owner loss', (broken) => { broken.duplicateMixedResults[0].lineageKingdom = 'microbe'; }],
     ['catalogue non-fauna route bypass', (broken) => { broken.nonFaunaRouteCoverage[1].unowned = ['Injected bypass']; }],
     ['swapped-parent cache collapse', (broken) => { broken.checks.swappedParentPixelsStayDistinct = false; }],
+    ['Vanilla stage collapse', (broken) => { broken.focusLineages[4].stagePixelsDistinct = false; }],
+    ['focused species substitution', (broken) => { broken.focusLineages[4].name = 'Apple'; }],
   ];
   for (const [label, mutate] of mutations) {
     const broken = structuredClone(report);
@@ -268,7 +287,7 @@ try {
   console.log(`  non-fauna catalogue owned coverage: ${report.nonFaunaRouteCoverage
     .map((row) => `${row.kingdom}=${row.catalogueCount}`).join(', ')}`);
   console.log('  five-stage, stripped-lineage, duplicate-name, cache outcomes: verified');
-  console.log('  nine injected route/cache/lineage regressions: rejected');
+  console.log('  eleven injected route/cache/lineage/identity regressions: rejected');
 } finally {
   if (socket) socket.close();
   if (edge) edge.kill();

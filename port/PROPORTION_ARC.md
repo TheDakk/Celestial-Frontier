@@ -16,15 +16,19 @@ This is a multi-batch arc. It is written down in full so a cold session can pick
 > review, authoritative source recording, and Earth-lineage hybrid outcomes.
 > Live procedure: `v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
-> **Current 2026-08-10:** the four-bat negative-control family is independently
-> PASS on frozen refine3 pixels at 440/300/132px after refine2d failed the
-> small-scale joint/thumb/foot/rear-membrane bands. This is a family result only;
-> see `v2/reference/BAT_FAMILY_RESET_REVIEW_2026-08-10.md`. The official reset
-> layout derives 181 families / 233 packets at a maximum of 10, including 46
-> production-derived procedural plan families. Its review binds clean-commit
-> source, native 440px, unlabeled 300px, actual unlabeled 132px, labelled
-> old/current and exact `mustRead`/procedural-plan hashes. The fresh 1,250-row
-> review has not begun, and no full PASS or package exists.
+> **Current 2026-08-10:** the official 181-family / 233-packet reset review is
+> complete and frozen at clean commit `bc26e8` as **516 PASS / 14 POLISH / 720
+> FAIL**. It is the repair baseline, not certification. Wave 1 is committed and
+> pushed as `d005090f` with exactly 177/177 scoped PASS. Wave 2a is independently
+> closed at **32/32 scoped PASS**: Mammal A 4/4, INVERT worms+sessile 13/13, and
+> S1–S3 15/15 after bounded R2 closed Caddisfly, Diving Beetle, Firefly and Water
+> Beetle at 440/300/132 while all 22 protected rows stayed byte-identical. Vanilla
+> Orchid r6 separately closes the prior focused byte-identical-lineage defect:
+> 234/234 assets are valid, the pure portrait is exact, and five stages are unique
+> and integrated. Wave 2a is ready to commit/push, but none of these scoped results
+> creates a new 1,250-row tally. Remaining waves, full certification, the final
+> image-inclusive ZIP, reset PR, release and deployment are still OPEN. See
+> `v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
 ---
 

@@ -21,16 +21,18 @@ a child of an Earth parent keeps that parent's Earth RIG + wears the child's ali
 > canonicalize the complete genome so different inherited traits, owners, Earth
 > scaffolds and anchors cannot share a texture. `npm run hybridcheck` drives
 > production browser pixels across every kingdom, parent orders, multi-generation,
-> duplicate-name and injected-failure cases. This proves routing/cache outcomes,
-> not seamless visual quality. Apple's continuity repair is independently judged PASS at source
-> SHA-256 `D3801E5A234D0D58DF6BAD1515D7583D53ED96C1939EABBE8B02376204503624`:
-> 58/58 tree rows remain exact at 440/300/132 (174/174 hashes), five stages are
-> unique with strictly increasing pure-distance, and schema v3 validates 234/234
-> assets with both browser orders stable. Vanilla Orchid alone remains
-> `FAIL_BYTE_IDENTICAL_STAGES`, so overall hybrid continuity stays OPEN. Green
-> Algae's earlier stop was a real schema-v2 harness contract bug, not transient
-> provenance; schema v3 repairs current-catalogue vs retained-legacy-route
-> ownership without undoing D-CAT-1, and its sentinels are green. Review remains open under
+> duplicate-name and injected-failure cases. The guard now requires five exact ID+kingdom+name focused
+> lineages across all four kingdoms and rejects eleven injected negative controls.
+> The focused Apple and Vanilla continuity blockers are independently closed:
+> Vanilla r6 passes at source SHA-256
+> `5BB258D5CD808C63EE2FA2625D100ABA2E0FC6BA31EF62B60661D8114E00135E`,
+> preserves its byte-exact pure portrait, and produces five unique, integrated,
+> progressively drifting stages in a 234/234-asset matrix stable in both browser
+> orders. Green Algae's earlier stop was a real schema-v2 harness contract bug,
+> not transient provenance; schema v3 repairs current-catalogue vs retained-
+> legacy-route ownership without undoing D-CAT-1, and its sentinels are green.
+> This proves the focused production outcomes, not seamless quality for every
+> possible bloodline. Full review remains open under
 > `port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`.
 
 ## 1. Overview

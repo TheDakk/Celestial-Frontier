@@ -1035,17 +1035,247 @@ export function shrimpBody(c: Ctx, g: G, pIn: Pal, opts: { claws?: boolean; stou
 }
 
 /* ═══════════════ SOFT BODIES ═══════════════ */
+type ResetWormSignature = 'earthworm' | 'flatworm' | 'iceWorm' | 'lancelet'
+  | 'marineWorm' | 'polychaete' | 'scaleWorm';
+
+type WormAxis = (u: number) => [number, number];
+
+function wormFrame(at: WormAxis, u: number): { x: number; y: number; nx: number; ny: number; angle: number } {
+  const q = Math.max(0, Math.min(1, u));
+  const [x, y] = at(q);
+  const [ax, ay] = at(Math.max(0, q - 0.004));
+  const [bx, by] = at(Math.min(1, q + 0.004));
+  const dx = bx - ax, dy = by - ay;
+  const d = Math.max(0.001, Math.hypot(dx, dy));
+  return { x, y, nx: -dy / d, ny: dx / d, angle: Math.atan2(dy, dx) };
+}
+
+/** One closed skin around a centreline. Limbs, scales and rings key off the
+    same frames, so every cue grows from the body instead of floating beside it. */
+function wormRibbonPath(c: Ctx, at: WormAxis, half: (u: number) => number, steps = 52): void {
+  for (let i = 0; i <= steps; i++) {
+    const u = i / steps, f = wormFrame(at, u), w = half(u);
+    const x = f.x + f.nx * w, y = f.y + f.ny * w;
+    if (i === 0) c.moveTo(x, y); else c.lineTo(x, y);
+  }
+  for (let i = steps; i >= 0; i--) {
+    const u = i / steps, f = wormFrame(at, u), w = half(u);
+    c.lineTo(f.x - f.nx * w, f.y - f.ny * w);
+  }
+  c.closePath();
+}
+
+function fillWormRibbon(c: Ctx, at: WormAxis, half: (u: number) => number,
+  fill: string | CanvasGradient, edge: string, edgeWidth = 2): void {
+  c.beginPath(); wormRibbonPath(c, at, half); c.fillStyle = fill; c.fill();
+  c.strokeStyle = edge; c.lineWidth = edgeWidth; c.lineJoin = 'round'; c.stroke();
+}
+
+function wormCrossline(c: Ctx, at: WormAxis, half: (u: number) => number, u: number, inset = 0.88): void {
+  const f = wormFrame(at, u), w = half(u) * inset;
+  c.beginPath();
+  c.moveTo(f.x + f.nx * w, f.y + f.ny * w);
+  c.quadraticCurveTo(f.x + Math.cos(f.angle) * 1.5, f.y + Math.sin(f.angle) * 1.5,
+    f.x - f.nx * w, f.y - f.ny * w);
+  c.stroke();
+}
+
+function resetWormBody(c: Ctx, p: Pal, signature: ResetWormSignature): void {
+  const cx = S * 0.50, cy = S * 0.545;
+  const wet = c.createLinearGradient(0, cy - S * 0.11, 0, cy + S * 0.10);
+  wet.addColorStop(0, p.lit); wet.addColorStop(0.44, p.base); wet.addColorStop(1, p.dark);
+
+  if (signature === 'flatworm') {
+    /* A planarian is a paper-flat gliding ribbon. The two lateral head lobes
+       are part of the silhouette, not ears pasted onto an earthworm tube. */
+    shadow(c, cx + S * 0.01, cy + S * 0.115, S * 0.255);
+    const flat = c.createLinearGradient(0, cy - 54, 0, cy + 54);
+    flat.addColorStop(0, p.lit); flat.addColorStop(0.36, p.base); flat.addColorStop(1, p.dark);
+    c.fillStyle = flat; c.beginPath();
+    c.moveTo(S * 0.835, cy);
+    c.quadraticCurveTo(S * 0.67, cy - 27, S * 0.30, cy - 31);
+    c.quadraticCurveTo(S * 0.245, cy - 32, S * 0.205, cy - 51);
+    c.quadraticCurveTo(S * 0.158, cy - 61, S * 0.138, cy - 42);
+    c.lineTo(S * 0.185, cy - 17);
+    c.lineTo(S * 0.112, cy);
+    c.lineTo(S * 0.185, cy + 17);
+    c.lineTo(S * 0.138, cy + 42);
+    c.quadraticCurveTo(S * 0.158, cy + 61, S * 0.205, cy + 51);
+    c.quadraticCurveTo(S * 0.245, cy + 32, S * 0.30, cy + 31);
+    c.quadraticCurveTo(S * 0.67, cy + 27, S * 0.835, cy);
+    c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(208,222,228,0.48)'; c.lineWidth = 2.4; c.stroke();
+    for (const sy of [-1, 1] as const) {
+      c.fillStyle = '#0b1014'; c.beginPath(); c.arc(S * 0.215, cy + sy * 13, 7.2, 0, TAU); c.fill();
+      c.fillStyle = 'rgba(236,244,245,0.88)'; c.beginPath(); c.arc(S * 0.218, cy + sy * 11.5, 2.4, 0, TAU); c.fill();
+    }
+    c.strokeStyle = 'rgba(220,232,234,0.16)'; c.lineWidth = 2;
+    c.beginPath(); c.moveTo(S * 0.28, cy); c.quadraticCurveTo(S * 0.55, cy - 6, S * 0.78, cy); c.stroke();
+    return;
+  }
+
+  if (signature === 'lancelet') {
+    /* A translucent blade, pointed at both ends: its visible V-myomeres and
+       oral cirri are chordate anatomy, not annelid rings and a cartoon eye. */
+    const at: WormAxis = (u) => [S * (0.18 + u * 0.65), cy + Math.sin(u * Math.PI) * 2];
+    const half = (u: number): number => S * 0.088 * Math.sin(Math.PI * u) ** 0.62;
+    shadow(c, cx, cy + S * 0.105, S * 0.275);
+    const translucent = c.createLinearGradient(0, cy - 42, 0, cy + 42);
+    translucent.addColorStop(0, 'rgba(248,239,199,0.82)');
+    translucent.addColorStop(0.52, 'rgba(226,210,161,0.62)');
+    translucent.addColorStop(1, 'rgba(126,111,78,0.72)');
+    fillWormRibbon(c, at, half, translucent, 'rgba(238,230,190,0.66)', 2.2);
+    c.strokeStyle = 'rgba(94,80,52,0.62)'; c.lineWidth = 2.2; c.lineJoin = 'round';
+    for (let i = 0; i < 15; i++) {
+      const u = 0.11 + i * 0.052, f = wormFrame(at, u), w = half(u) * 0.72;
+      const tx = Math.cos(f.angle), ty = Math.sin(f.angle);
+      c.beginPath();
+      c.moveTo(f.x + f.nx * w - tx * 8, f.y + f.ny * w - ty * 8);
+      c.lineTo(f.x + tx * 5, f.y + ty * 5);
+      c.lineTo(f.x - f.nx * w - tx * 8, f.y - f.ny * w - ty * 8);
+      c.stroke();
+    }
+    c.strokeStyle = 'rgba(114,94,55,0.55)'; c.lineWidth = 3;
+    c.beginPath(); c.moveTo(S * 0.19, cy); c.lineTo(S * 0.82, cy + 1); c.stroke();
+    const mouth = wormFrame(at, 0.055);
+    c.strokeStyle = 'rgba(225,209,163,0.90)'; c.lineWidth = 2.4; c.lineCap = 'round';
+    for (let i = 0; i < 9; i++) {
+      const t = i / 8 - 0.5, ex = mouth.x - S * (0.040 + Math.abs(t) * 0.018);
+      const ey = mouth.y + t * S * 0.115;
+      c.beginPath(); c.moveTo(mouth.x + 3, mouth.y + t * 15);
+      c.quadraticCurveTo(mouth.x - 5, mouth.y + t * 26, ex, ey); c.stroke();
+    }
+    return;
+  }
+
+  if (signature === 'scaleWorm') {
+    const at: WormAxis = (u) => [S * (0.18 + u * 0.64), cy + Math.sin((u - 0.08) * Math.PI * 1.35) * 8];
+    const half = (u: number): number => S * (0.045 + 0.055 * Math.sin(Math.PI * u) ** 0.45);
+    shadow(c, cx, cy + S * 0.135, S * 0.275);
+    c.strokeStyle = 'rgba(185,126,88,0.90)'; c.lineCap = 'round';
+    for (let i = 1; i <= 11; i++) {
+      const u = 0.07 + i * 0.072, f = wormFrame(at, u), w = half(u);
+      for (const side of [-1, 1] as const) for (let k = -1; k <= 1; k++) {
+        c.lineWidth = 1.8;
+        c.beginPath(); c.moveTo(f.x + f.nx * side * w * 0.72, f.y + f.ny * side * w * 0.72);
+        c.lineTo(f.x + f.nx * side * (w + 12) + Math.cos(f.angle) * k * 5,
+          f.y + f.ny * side * (w + 12) + Math.sin(f.angle) * k * 5); c.stroke();
+      }
+    }
+    fillWormRibbon(c, at, half, wet, p.dark, 2.5);
+    for (let i = 10; i >= 0; i--) {
+      const u = 0.10 + i * 0.073, f = wormFrame(at, u);
+      for (const side of [-1, 1] as const) {
+        c.save(); c.translate(f.x, f.y); c.rotate(f.angle);
+        c.fillStyle = side < 0 ? 'rgba(151,142,121,0.98)' : 'rgba(111,105,91,0.98)';
+        c.strokeStyle = 'rgba(224,216,192,0.48)'; c.lineWidth = 1.8;
+        c.beginPath();
+        c.moveTo(-20, side * 2); c.quadraticCurveTo(-5, side * 28, 22, side * 18);
+        c.quadraticCurveTo(26, side * 6, 12, side * 1); c.closePath(); c.fill(); c.stroke();
+        c.restore();
+      }
+    }
+    return;
+  }
+
+  const ice = signature === 'iceWorm';
+  const marine = signature === 'marineWorm' || signature === 'polychaete';
+  const poly = signature === 'polychaete';
+  const at: WormAxis = ice
+    ? (u) => [S * (0.16 + u * 0.69), cy + Math.sin(u * Math.PI * 3.1) * 8]
+    : marine
+      ? (u) => [S * (0.18 + u * 0.64), cy + Math.sin((u + 0.08) * Math.PI * 2.2) * (poly ? 10 : 17)]
+      : (u) => [S * (0.17 + u * 0.67), cy + Math.sin((u + 0.10) * Math.PI * 2.1) * 28];
+  const half = (u: number): number => {
+    const middle = Math.sin(Math.PI * u) ** 0.48;
+    if (ice) return 5.5 + middle * 2.6;
+    if (marine) return 10 + middle * (poly ? 13 : 10);
+    return 9 + middle * 15;
+  };
+  shadow(c, cx, cy + S * 0.12, S * (ice ? 0.27 : 0.285));
+
+  if (marine) {
+    for (let i = 1; i <= 16; i++) {
+      const u = 0.055 + i * 0.0525, f = wormFrame(at, u), w = half(u);
+      for (const side of [-1, 1] as const) {
+        c.strokeStyle = p.dark; c.lineWidth = poly ? 8 : 6; c.lineCap = 'round';
+        c.beginPath(); c.moveTo(f.x + f.nx * side * w * 0.68, f.y + f.ny * side * w * 0.68);
+        c.lineTo(f.x + f.nx * side * (w + (poly ? 11 : 8)), f.y + f.ny * side * (w + (poly ? 11 : 8))); c.stroke();
+        c.strokeStyle = poly ? 'rgba(238,185,104,0.95)' : 'rgba(210,176,147,0.88)'; c.lineWidth = 1.5;
+        for (let k = -1; k <= 1; k++) {
+          c.beginPath();
+          c.moveTo(f.x + f.nx * side * (w + 5), f.y + f.ny * side * (w + 5));
+          c.lineTo(f.x + f.nx * side * (w + (poly ? 23 : 17)) + Math.cos(f.angle) * k * 4,
+            f.y + f.ny * side * (w + (poly ? 23 : 17)) + Math.sin(f.angle) * k * 4); c.stroke();
+        }
+      }
+    }
+  }
+
+  fillWormRibbon(c, at, half, wet, p.dark, ice ? 1.8 : 2.4);
+  c.strokeStyle = ice ? 'rgba(142,170,190,0.52)' : 'rgba(48,30,24,0.48)';
+  c.lineWidth = ice ? 1 : 1.5;
+  const rings = ice ? 33 : marine ? 22 : 26;
+  for (let i = 1; i < rings; i++) wormCrossline(c, at, half, i / rings, ice ? 0.78 : 0.86);
+
+  if (signature === 'earthworm') {
+    const u0 = 0.15, span = 0.21;
+    const saddleAt: WormAxis = (v) => at(u0 + v * span);
+    const saddleHalf = (v: number): number => half(u0 + v * span) + 7 * Math.sin(Math.PI * v) ** 0.35;
+    const saddle = c.createLinearGradient(0, cy - 35, 0, cy + 35);
+    saddle.addColorStop(0, '#e2ad9a'); saddle.addColorStop(0.55, '#c98a78'); saddle.addColorStop(1, '#7c4d43');
+    fillWormRibbon(c, saddleAt, saddleHalf, saddle, 'rgba(89,54,46,0.58)', 1.8);
+    c.strokeStyle = 'rgba(94,57,48,0.44)'; c.lineWidth = 1.4;
+    for (const v of [0.08, 0.50, 0.92]) wormCrossline(c, saddleAt, saddleHalf, v, 0.84);
+    return;
+  }
+
+  if (ice) return;
+
+  const head = wormFrame(at, 0.015), hw = half(0.015);
+  c.strokeStyle = poly ? 'rgba(227,126,54,0.96)' : 'rgba(222,180,156,0.92)';
+  c.lineCap = 'round'; c.lineWidth = poly ? 3.2 : 2.7;
+  for (let i = 0; i < 4; i++) {
+    const side = i < 2 ? -1 : 1, spread = i % 2 ? 1.0 : 0.55;
+    c.beginPath(); c.moveTo(head.x + head.nx * side * hw * 0.35, head.y + head.ny * side * hw * 0.35);
+    c.quadraticCurveTo(head.x - 16, head.y + side * (12 + spread * 8),
+      head.x - (poly ? 42 : 34), head.y + side * (15 + spread * 15)); c.stroke();
+  }
+  if (poly) {
+    c.strokeStyle = p.dark; c.lineWidth = 24; c.beginPath(); c.moveTo(head.x + 5, head.y); c.lineTo(head.x - 28, head.y); c.stroke();
+    c.strokeStyle = p.base; c.lineWidth = 19; c.beginPath(); c.moveTo(head.x + 5, head.y); c.lineTo(head.x - 30, head.y); c.stroke();
+    c.fillStyle = '#d9a147';
+    for (const side of [-1, 1] as const) {
+      c.beginPath(); c.moveTo(head.x - 31, head.y + side * 2);
+      c.lineTo(head.x - 45, head.y + side * 9); c.lineTo(head.x - 38, head.y); c.closePath(); c.fill();
+    }
+  } else {
+    c.save(); c.beginPath(); wormRibbonPath(c, at, half); c.clip();
+    c.strokeStyle = 'rgba(88,228,214,0.32)'; c.lineWidth = 7;
+    c.beginPath(); for (let i = 0; i <= 30; i++) { const q = i / 30, f = wormFrame(at, q); if (i) c.lineTo(f.x, f.y - 5); else c.moveTo(f.x, f.y - 5); } c.stroke();
+    c.strokeStyle = 'rgba(184,112,234,0.24)'; c.lineWidth = 4;
+    c.beginPath(); for (let i = 0; i <= 30; i++) { const q = i / 30, f = wormFrame(at, q); if (i) c.lineTo(f.x, f.y + 6); else c.moveTo(f.x, f.y + 6); } c.stroke();
+    c.restore();
+  }
+}
+
 export function wormBody(c: Ctx, g: G, pIn: Pal, opts: { bristles?: boolean; flat?: boolean; sucker?: boolean; hue?: string;
   /** Planarian head with auricles + cross-eyed ocelli; suppresses worm rings. */
   flatworm?: boolean;
   /** Two overlapping roof rows on a flattened scale worm. */
   scalePlates?: boolean;
   /** A leech has a sucker at both the leading and trailing end. */
-  dualSuckers?: boolean }, name = ''): void {
+  dualSuckers?: boolean;
+  /** Exact reset-owned whole form; absent preserves the accepted Leech path. */
+  resetSignature?: ResetWormSignature }, name = ''): void {
   /* ★ D-ART-115 — the species hue axis. */
   const p = speciesHue(pIn, opts.hue);
   const r = nrng(g, name, 0x0202);
   const cx = S * 0.48, cy = S * 0.54;
+  if (opts.resetSignature) {
+    resetWormBody(c, p, opts.resetSignature);
+    return;
+  }
   if (opts.flatworm) {
     /* The planarian must be one smooth ribbon, not thirty visible earthworm
        rings. Its arrowhead and auricles carry the whole species read. */
@@ -1227,12 +1457,215 @@ export function jellyBody(c: Ctx, g: G, pIn: Pal, opts: { comb?: boolean; float?
   }
 }
 
+type ResetSessileSignature = 'barnacle' | 'coral' | 'coldCoral' | 'deepCoral' | 'sponge' | 'seaCucumber';
+
+function resetCoralBody(c: Ctx, g: G, p: Pal,
+  signature: 'coral' | 'coldCoral' | 'deepCoral', name: string): void {
+  const r = nrng(g, name, 0xC0A1);
+  const cx = S * 0.50, base = S * 0.775;
+  const cold = signature !== 'coral', deep = signature === 'deepCoral';
+  const branch = deep ? '#d9c7b5' : cold ? '#eee5d4' : p.base;
+  const branchDark = deep ? '#78645b' : cold ? '#8f887d' : p.dark;
+  const branchLight = deep ? '#f0dfca' : cold ? '#fff8e9' : p.lit;
+  const cup = deep ? '#c85a3e' : cold ? '#d9b8ac' : '#f4a184';
+  const tips: Array<[number, number, number]> = [];
+  shadow(c, cx, base + 5, S * 0.245);
+
+  const grow = (x: number, y: number, angle: number, len: number, width: number, depth: number): void => {
+    const bend = (r() - 0.5) * 0.16;
+    const ex = x + Math.cos(angle + bend) * len;
+    const ey = y + Math.sin(angle + bend) * len;
+    const mx = x + Math.cos(angle - bend) * len * 0.52;
+    const my = y + Math.sin(angle - bend) * len * 0.52;
+    c.lineCap = 'round'; c.lineJoin = 'round';
+    c.strokeStyle = branchDark; c.lineWidth = width + 4;
+    c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(mx, my, ex, ey); c.stroke();
+    c.strokeStyle = branch; c.lineWidth = width;
+    c.beginPath(); c.moveTo(x, y); c.quadraticCurveTo(mx, my, ex, ey); c.stroke();
+    /* Calcified pitting follows the branch centre and therefore cannot float. */
+    c.fillStyle = depth % 2 ? 'rgba(80,58,48,0.34)' : 'rgba(255,248,228,0.34)';
+    c.beginPath(); c.arc((x + ex) * 0.5, (y + ey) * 0.5, Math.max(1.5, width * 0.12), 0, TAU); c.fill();
+    if (depth >= 3 || len < 18) {
+      tips.push([ex, ey, Math.max(5.5, width * 0.64)]);
+      return;
+    }
+    const spread = (deep ? 0.54 : cold ? 0.48 : 0.60) + r() * 0.13;
+    grow(ex, ey, angle - spread, len * (0.65 + r() * 0.04), width * 0.70, depth + 1);
+    grow(ex, ey, angle + spread, len * (0.65 + r() * 0.04), width * 0.70, depth + 1);
+  };
+
+  const trunks = deep ? 5 : cold ? 4 : 5;
+  for (let i = 0; i < trunks; i++) {
+    const t = i / (trunks - 1) - 0.5;
+    const x = cx + t * S * (deep ? 0.20 : 0.17);
+    const angle = -Math.PI / 2 + t * (deep ? 0.48 : 0.36);
+    const len = S * (cold ? 0.205 : deep ? 0.175 : 0.19) * (0.94 + r() * 0.12);
+    grow(x, base, angle, len, cold ? 15 : 17, 0);
+  }
+
+  /* Every terminal branch owns a cup-shaped corallite/polyp. The dark well,
+     raised rim and tentacles survive as one attached unit at actual-thumb. */
+  for (let i = 0; i < tips.length; i++) {
+    const [x, y, rad] = tips[i]!;
+    c.fillStyle = branchLight; c.beginPath(); c.arc(x, y, rad + 2.5, 0, TAU); c.fill();
+    c.fillStyle = 'rgba(26,18,20,0.86)'; c.beginPath(); c.ellipse(x, y, rad, rad * 0.62, 0, 0, TAU); c.fill();
+    c.strokeStyle = cup; c.lineWidth = 2.6;
+    c.beginPath(); c.ellipse(x, y, rad, rad * 0.62, 0, 0, TAU); c.stroke();
+    if (i % 2 === 0) {
+      c.strokeStyle = cup; c.lineWidth = 1.3; c.lineCap = 'round';
+      for (let k = 0; k < 6; k++) {
+        const a = k / 6 * TAU;
+        c.beginPath(); c.moveTo(x + Math.cos(a) * rad * 0.5, y + Math.sin(a) * rad * 0.32);
+        c.lineTo(x + Math.cos(a) * rad * 1.35, y + Math.sin(a) * rad * 0.86); c.stroke();
+      }
+    }
+  }
+}
+
+function resetSessileBody(c: Ctx, g: G, p: Pal, signature: ResetSessileSignature, name: string): void {
+  const r = nrng(g, name, 0x5E52);
+  const cx = S * 0.50, base = S * 0.775;
+  const seaCucumber = signature === 'seaCucumber';
+  if (signature === 'coral' || signature === 'coldCoral' || signature === 'deepCoral') {
+    resetCoralBody(c, g, p, signature, name);
+    return;
+  }
+
+  if (signature === 'barnacle') {
+    const w = S * 0.205, top = S * 0.405;
+    shadow(c, cx, base + 4, w * 1.02);
+    const chalk = c.createLinearGradient(cx - w, 0, cx + w, 0);
+    chalk.addColorStop(0, '#9d978d'); chalk.addColorStop(0.32, '#eee9dc');
+    chalk.addColorStop(0.70, '#c8c2b7'); chalk.addColorStop(1, '#77736d');
+    c.fillStyle = chalk; c.beginPath();
+    c.moveTo(cx - w, base); c.quadraticCurveTo(cx - w * 0.72, S * 0.53, cx - w * 0.38, top);
+    c.quadraticCurveTo(cx, top - 8, cx + w * 0.38, top);
+    c.quadraticCurveTo(cx + w * 0.72, S * 0.53, cx + w, base); c.closePath(); c.fill();
+    c.strokeStyle = 'rgba(55,49,43,0.55)'; c.lineWidth = 2;
+    for (let i = -3; i <= 3; i++) {
+      c.beginPath(); c.moveTo(cx + i * w * 0.105, top + Math.abs(i) * 1.5);
+      c.quadraticCurveTo(cx + i * w * 0.20, S * 0.58, cx + i * w * 0.31, base); c.stroke();
+    }
+    /* Dark summit opening first; cirri rise from it and the opercular pair
+       overlaps their roots, making the trapdoor anatomy explicit. */
+    c.fillStyle = 'rgba(25,22,20,0.92)'; c.beginPath(); c.ellipse(cx, top, w * 0.39, w * 0.13, 0, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(222,194,139,0.95)'; c.lineCap = 'round';
+    for (let i = 0; i < 8; i++) {
+      const t = i / 7 - 0.5, ex = cx + t * 92 + 22, ey = top - 72 - Math.cos(t * Math.PI) * 24;
+      c.lineWidth = 2.1; c.beginPath(); c.moveTo(cx + t * 24, top); c.quadraticCurveTo(cx + t * 55, top - 40, ex, ey); c.stroke();
+      c.lineWidth = 1;
+      for (let k = 1; k <= 5; k++) {
+        const u = k / 6, px = cx + t * 24 + (ex - (cx + t * 24)) * u, py = top + (ey - top) * u;
+        c.beginPath(); c.moveTo(px, py); c.lineTo(px - 8, py - 2 - k); c.stroke();
+      }
+    }
+    for (const side of [-1, 1] as const) {
+      c.fillStyle = '#d8d1c4'; c.strokeStyle = 'rgba(45,40,36,0.85)'; c.lineWidth = 2.2;
+      c.beginPath(); c.moveTo(cx + side * 2, top - 4);
+      c.lineTo(cx + side * w * 0.37, top - 1); c.lineTo(cx + side * w * 0.25, top + 14);
+      c.lineTo(cx + side * 4, top + 7); c.closePath(); c.fill(); c.stroke();
+    }
+    return;
+  }
+
+  if (signature === 'sponge') {
+    shadow(c, cx, base + 5, S * 0.255);
+    const porous = c.createLinearGradient(S * 0.25, 0, S * 0.76, 0);
+    porous.addColorStop(0, p.dark); porous.addColorStop(0.40, p.base);
+    porous.addColorStop(0.68, p.lit); porous.addColorStop(1, p.dark);
+    const spongePath = (): void => {
+      c.moveTo(S * 0.245, base);
+      c.quadraticCurveTo(S * 0.235, S * 0.66, S * 0.31, S * 0.59);
+      c.quadraticCurveTo(S * 0.33, S * 0.48, S * 0.40, S * 0.47);
+      c.quadraticCurveTo(S * 0.47, S * 0.49, S * 0.48, S * 0.40);
+      c.quadraticCurveTo(S * 0.50, S * 0.31, S * 0.58, S * 0.34);
+      c.quadraticCurveTo(S * 0.65, S * 0.37, S * 0.64, S * 0.49);
+      c.quadraticCurveTo(S * 0.70, S * 0.47, S * 0.73, S * 0.55);
+      c.quadraticCurveTo(S * 0.79, S * 0.61, S * 0.76, base);
+      c.quadraticCurveTo(cx, base + 10, S * 0.245, base); c.closePath();
+    };
+    c.beginPath(); spongePath(); c.fillStyle = porous; c.fill();
+    c.strokeStyle = 'rgba(250,214,155,0.42)'; c.lineWidth = 2.5; c.stroke();
+    /* Pores are drawn after the opaque body and clipped into its irregular
+       mass; the old order painted them first and hid them under the chimney. */
+    c.save(); c.beginPath(); spongePath(); c.clip();
+    for (let i = 0; i < 54; i++) {
+      const x = S * (0.27 + r() * 0.47), y = S * (0.37 + r() * 0.36);
+      const pr = 2.5 + r() * 5.5;
+      c.fillStyle = `rgba(43,25,20,${(0.45 + r() * 0.33).toFixed(2)})`;
+      c.beginPath(); c.ellipse(x, y, pr, pr * (0.62 + r() * 0.24), r() * 0.8, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(255,225,174,0.26)'; c.lineWidth = 1;
+      c.beginPath(); c.ellipse(x - 1, y - 1, pr, pr * 0.67, 0, Math.PI, TAU); c.stroke();
+    }
+    c.restore();
+    for (const hole of [[S * 0.365, S * 0.472, 21, 8], [S * 0.555, S * 0.345, 28, 10], [S * 0.695, S * 0.535, 19, 7]] as const) {
+      c.fillStyle = 'rgba(23,17,18,0.92)'; c.beginPath(); c.ellipse(hole[0], hole[1], hole[2], hole[3], 0, 0, TAU); c.fill();
+      c.strokeStyle = 'rgba(255,219,160,0.48)'; c.lineWidth = 2.2; c.stroke();
+    }
+    return;
+  }
+
+  /* Sea cucumber: soft sagging body above two attached ventral foot rows. */
+  if (!seaCucumber) return;
+  const top = S * 0.50, bottom = S * 0.68;
+  shadow(c, cx, base + 4, S * 0.285);
+  c.lineCap = 'round';
+  for (let row = 0; row < 2; row++) {
+    for (let i = 0; i < 12; i++) {
+      const x = S * (0.30 + i * 0.035 + row * 0.016), y0 = bottom - row * 7;
+      const reach = row ? 22 : 25;
+      c.strokeStyle = p.dark; c.lineWidth = row ? 6 : 9;
+      c.beginPath(); c.moveTo(x, y0 - 9); c.quadraticCurveTo(x + 2, y0 + 8, x + (i % 2 ? 3 : -3), y0 + reach); c.stroke();
+      c.strokeStyle = p.lit; c.lineWidth = row ? 2.4 : 3.5;
+      c.beginPath(); c.moveTo(x, y0 - 6); c.lineTo(x + (i % 2 ? 3 : -3), y0 + reach - 2); c.stroke();
+    }
+  }
+  const skin = c.createLinearGradient(0, top - 30, 0, bottom + 20);
+  skin.addColorStop(0, p.lit); skin.addColorStop(0.42, p.base); skin.addColorStop(1, p.dark);
+  c.fillStyle = skin; c.beginPath();
+  c.moveTo(S * 0.19, S * 0.58);
+  c.quadraticCurveTo(S * 0.24, top, S * 0.39, top - 15);
+  c.quadraticCurveTo(S * 0.64, top - 18, S * 0.80, S * 0.55);
+  c.quadraticCurveTo(S * 0.84, S * 0.62, S * 0.75, bottom);
+  c.quadraticCurveTo(S * 0.48, bottom + 18, S * 0.25, bottom - 2);
+  c.quadraticCurveTo(S * 0.17, S * 0.65, S * 0.19, S * 0.58); c.closePath(); c.fill();
+  c.strokeStyle = 'rgba(224,205,174,0.32)'; c.lineWidth = 2.5; c.stroke();
+  for (let i = 0; i < 18; i++) {
+    const x = S * (0.25 + r() * 0.53), y = S * (0.53 + r() * 0.10);
+    softMark(c, x, y, 4 + r() * 4, 3 + r() * 3, i % 2 ? '24,17,14' : '236,216,180', 0.28);
+  }
+  const mouthX = S * 0.195, mouthY = S * 0.58;
+  c.fillStyle = 'rgba(35,20,18,0.70)'; c.beginPath(); c.ellipse(mouthX, mouthY, 12, 20, 0, 0, TAU); c.fill();
+  c.strokeStyle = p.lit; c.lineWidth = 4.2; c.lineCap = 'round';
+  for (let i = 0; i < 7; i++) {
+    const a = -1.28 + i * 0.425, rootY = mouthY + Math.sin(a) * 12;
+    const ex = mouthX - 52 - Math.cos(a) * 13, ey = mouthY + Math.sin(a) * 68;
+    const mx = mouthX - 28, my = (rootY + ey) * 0.5;
+    c.beginPath(); c.moveTo(mouthX + 2, rootY); c.quadraticCurveTo(mx, my, ex, ey); c.stroke();
+    const dx = ex - mx, dy = ey - my, d = Math.max(1, Math.hypot(dx, dy));
+    const tx = dx / d, ty = dy / d, nx = -ty, ny = tx;
+    for (const q of [0.58, 0.80]) for (const side of [-1, 1] as const) {
+      const bx = mx + dx * q, by = my + dy * q;
+      const spread = q < 0.7 ? 7 : 9;
+      c.lineWidth = 2.7; c.beginPath(); c.moveTo(bx, by);
+      c.quadraticCurveTo(bx + tx * 5 + nx * side * 3, by + ty * 5 + ny * side * 3,
+        bx + tx * 11 + nx * side * spread, by + ty * 11 + ny * side * spread); c.stroke();
+    }
+  }
+}
+
 export function sessileBody(c: Ctx, g: G, pIn: Pal, opts: { kind: 'branch' | 'tube' | 'fan' | 'sac' | 'volcano';
-  hue?: string; pores?: boolean }, name = ''): void {
+  hue?: string; pores?: boolean;
+  /** Exact reset-owned whole form; generic kinds remain available to callers. */
+  resetSignature?: ResetSessileSignature }, name = ''): void {
   const p = hued(pIn, opts.hue);
   const r = nrng(g, name, 0x5E55);
   const cx = S * 0.50, base = S * 0.76;
   const H = S * 0.30 * nv(name, 0x91, 0.16);
+  if (opts.resetSignature) {
+    resetSessileBody(c, g, p, opts.resetSignature, name);
+    return;
+  }
   if (opts.kind === 'volcano') {
     /* ★ A BARNACLE IS NOT A TUBE. Its reference row calls it a "volcano-shaped
        chalky cone of fused plates with trapdoor plates at the summit", and it
@@ -1353,7 +1786,7 @@ export function sessileBody(c: Ctx, g: G, pIn: Pal, opts: { kind: 'branch' | 'tu
       c.quadraticCurveTo(cx + Math.cos(a) * H * 0.35, base - H * 0.55, cx + Math.cos(a) * H * 0.62, base - H * (0.85 + Math.sin(u * Math.PI) * 0.25));
       c.stroke();
     }
-  } else {   /* a sac: sea cucumber / salp / pyrosome, lying along the floor */
+  } else if (opts.kind === 'sac') {   /* a sac: sea cucumber / salp / pyrosome, lying along the floor */
     const L = S * 0.185, h = S * 0.058;
     const cy2 = base - h * 1.2;
     c.fillStyle = shell(c, p, cx, cy2, L * 0.6);
@@ -1504,14 +1937,14 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Giant Isopod': (c, g, p, n) => isopodBody(c, g, p, { giant: true, hue: '#c3b2b8' }, n),
   'Lobster': P({ hue: '#2f3a4e', claws: true, stout: true, unequalClaws: true }),
   'Crayfish': P({ hue: '#6e6135', claws: true, stout: true, crayfish: true }),
-  'Barnacle': X({ kind: 'volcano', hue: '#d8d2c4' }),
+  'Barnacle': X({ kind: 'volcano', hue: '#d8d2c4', resetSignature: 'barnacle' }),
   /* ── WORMS ── */
-  'Earthworm': W({ hue: '#b0796a', }),
-  'Ice Worm': W({ hue: '#232c34', }),
-  'Marine Worm': W({ hue: '#c6907c', bristles: true }),
-  'Polychaete Worm': W({ hue: '#a8481a', bristles: true }),
-  'Scale Worm': W({ hue: '#6c6355', bristles: true, flat: true, scalePlates: true }),
-  'Flatworm': W({ hue: '#3c4040', flatworm: true }),
+  'Earthworm': W({ hue: '#b0796a', resetSignature: 'earthworm' }),
+  'Ice Worm': W({ hue: '#232c34', resetSignature: 'iceWorm' }),
+  'Marine Worm': W({ hue: '#c6907c', resetSignature: 'marineWorm' }),
+  'Polychaete Worm': W({ hue: '#a8481a', resetSignature: 'polychaete' }),
+  'Scale Worm': W({ hue: '#6c6355', resetSignature: 'scaleWorm' }),
+  'Flatworm': W({ hue: '#3c4040', resetSignature: 'flatworm' }),
   'Leech': W({ hue: '#473d22', sucker: true, flat: true, dualSuckers: true }),
   /* ── SLUGS AND KIN ── */
   'Banana Slug': G2({ hue: '#e3c22a', }),
@@ -1522,12 +1955,12 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Comb Jelly': J({ hue: '#e8f2f6', comb: true }),
   'Portuguese Man-of-War': J({ hue: '#5a6ed0', float: true }),
   /* ── SESSILE AND SAC-BODIED ── */
-  'Coral': X({ hue: '#e8735a', kind: 'branch' }),
-  'Cold-Water Coral': X({ hue: '#efe4cf', kind: 'branch' }),
-  'Deep-Water Coral': X({ hue: '#9b1f2a', kind: 'branch' }),
-  'Sponge': X({ kind: 'tube', pores: true, hue: '#c8823f' }),
-  'Sea Cucumber': X({ hue: '#55412f', kind: 'sac' }),
-  'Lancelet': W({ hue: '#ecdfb5', }),
+  'Coral': X({ hue: '#e8735a', kind: 'branch', resetSignature: 'coral' }),
+  'Cold-Water Coral': X({ hue: '#efe4cf', kind: 'branch', resetSignature: 'coldCoral' }),
+  'Deep-Water Coral': X({ hue: '#9b1f2a', kind: 'branch', resetSignature: 'deepCoral' }),
+  'Sponge': X({ kind: 'tube', pores: true, hue: '#c8823f', resetSignature: 'sponge' }),
+  'Sea Cucumber': X({ hue: '#55412f', kind: 'sac', resetSignature: 'seaCucumber' }),
+  'Lancelet': W({ hue: '#ecdfb5', resetSignature: 'lancelet' }),
 };
 
 /** ★ D-ART-131 — ISOPODS ARE NOT SHRIMP.

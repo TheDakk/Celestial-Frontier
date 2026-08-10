@@ -186,14 +186,14 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* "overlapping keratin scales · long heavy tail · small conical head" */
   'Pangolin': { legs: 0.053, depth: 0.1126, len: 0.1754, neck: 0.032, back: 'arched', muzzle: 0.34, ears: 'tiny', tail: 'long', tailScale: 1.5, coat: 'plain', hue: '#9a8258', family: 'xenarthran' , mat: 'plate' },
   /* "gliding membrane between the limbs · black eye-stripe · long plume tail" */
-  'Sugar Glider': { legs: 0.0535, depth: 0.0779, len: 0.115, neck: 0.028, muzzle: 0.24, ears: 'large', tail: 'plume', face: 'mask', hue: '#9aa0a8', family: 'marsupial', patagium: true, carry: 0.40, pose: 'glide' },
+  'Sugar Glider': { legs: 0.0535, depth: 0.0779, len: 0.115, neck: 0.028, muzzle: 0.24, ears: 'large', tail: 'plume', face: 'mask', hue: '#9aa0a8', family: 'marsupial', patagium: true, carry: 0.40, pose: 'glide', gliderPlan: 'sugar-glider' },
   /* "gliding membrane · huge forward eyes · mottled bark-coloured coat" */
-  'Colugo': { legs: 0.0578, depth: 0.0937, len: 0.1229, neck: 0.030, muzzle: 0.26, ears: 'small', tail: 'long', coat: 'blotches', hue: '#8b7a63', patagium: true, carry: 0.40, pose: 'glide' },
+  'Colugo': { legs: 0.0578, depth: 0.0937, len: 0.1229, neck: 0.030, muzzle: 0.26, ears: 'small', tail: 'long', coat: 'blotches', hue: '#8b7a63', patagium: true, carry: 0.40, pose: 'glide', gliderPlan: 'colugo' },
   /* ★ WAVE 10 — the pinnipeds had no route at all. They are the family plan
      wave 9 built: bulk resting on the ground, flippers instead of legs. The
      eared seals prop their chest UP on long fore-flippers; a true seal cannot,
      and that is the one thing that separates them. */
   'Seal': { legs: 0.024, depth: 0.1420, len: 0.3050, neck: 0.020, muzzle: 0.34, jaw: 'broad', ears: 'tiny', tail: 'stub', family: 'pinniped', hue: '#6f7683' },
-  'Fur Seal': { legs: 0.052, depth: 0.1290, len: 0.2560, neck: 0.045, muzzle: 0.32, ears: 'large', tail: 'stub', family: 'pinniped', hue: '#5a4a3d', earShape: 'round', earScale: 0.70, headScale: 1.08, pinnipedPose: 'eared' },
-  'Sea Lion': { legs: 0.058, depth: 0.1360, len: 0.2740, neck: 0.052, muzzle: 0.34, jaw: 'broad', ears: 'large', tail: 'stub', family: 'pinniped', hue: '#6b5340', earShape: 'round', earScale: 0.78, headScale: 1.12, pinnipedPose: 'eared' },
+  'Fur Seal': { legs: 0.052, depth: 0.1290, len: 0.2560, neck: 0.045, muzzle: 0.32, ears: 'large', tail: 'stub', family: 'pinniped', hue: '#5a4a3d', earShape: 'round', earScale: 0.70, headScale: 1.08, pinnipedPose: 'fur-seal' },
+  'Sea Lion': { legs: 0.058, depth: 0.1360, len: 0.2740, neck: 0.052, muzzle: 0.34, jaw: 'broad', ears: 'large', tail: 'stub', family: 'pinniped', hue: '#6b5340', earShape: 'round', earScale: 0.78, headScale: 1.12, pinnipedPose: 'sea-lion' },
 };
