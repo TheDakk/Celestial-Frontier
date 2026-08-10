@@ -71,8 +71,8 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   'Fishing Cat': { back: 'arched', legs: 0.101, depth: 0.1265, len: 0.1905, neck: 0.055, muzzle: 0.30, jaw: 'broad', headScale: 1.10, pawScale: 1.24, ears: 'round', earScale: 0.78, tail: 'thick', tailScale: 0.90, tailTip: '#181714', coat: 'spots', hue: '#6f7455', family: 'felid', spotScale: 0.56 },
   'Cat': { back: 'arched', hue: '#7f8288', legs: 0.0992, depth: 0.093, len: 0.1677, neck: 0.05, muzzle: 0.24, headScale: 1.12, ears: 'large', earShape: 'point', pupil: 'slit', domesticCatFace: true, tail: 'long', tailScale: 1.75, tailPose: 'raised', coat: 'stripes', family: 'felid', mammalBPlan: 'felid-r1' },
   /* ── MUSTELIDS & small carnivores: long body, short legs ── */
-  'Badger': { legs: 0.058, depth: 0.124, len: 0.2151, neck: 0.04, carry: 0.30, muzzle: 0.38, ears: 'tiny', tail: 'stub', coat: 'plain', face: 'mask', hue: '#8d8a84', family: 'mustelid', faceMark: 'whiteBlaze', clawScale: 1.35 },
-  'Wolverine': { legs: 0.0961, depth: 0.1182, len: 0.2132, neck: 0.05, back: 'arched', muzzle: 0.38, ears: 'round', tail: 'bushy', coat: 'shaggy', hue: '#5c4433', family: 'mustelid' },
+  'Badger': { legs: 0.058, depth: 0.124, len: 0.2151, neck: 0.04, carry: 0.30, muzzle: 0.38, ears: 'tiny', tail: 'stub', coat: 'plain', face: 'mask', hue: '#8d8a84', family: 'mustelid', faceMark: 'whiteBlaze', clawScale: 1.35, mammalDPlan: 'Badger' },
+  'Wolverine': { legs: 0.0961, depth: 0.1182, len: 0.2132, neck: 0.05, back: 'arched', muzzle: 0.38, ears: 'round', tail: 'bushy', coat: 'shaggy', hue: '#5c4433', family: 'mustelid', mammalDPlan: 'Wolverine' },
   'Weasel': { legs: 0.0634, depth: 0.0674, len: 0.1853, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'stub', hue: '#b98a52', family: 'mustelid' },
   /* ★ wave 35 — a stoat has no TUFT; it has a BLACK TIP, and that tip is the
      entire difference between it and a weasel or an otter at a glance. It was
@@ -80,23 +80,23 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      became real hair the Stoat and the River Otter collapsed into the same
      picture — artlock caught it in the same commit that caused it. */
   'Stoat': { legs: 0.0634, depth: 0.0674, len: 0.1853, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'long', tailTip: '#1c1614', hue: '#c49258', family: 'mustelid' },
-  'Mink': { legs: 0.0665, depth: 0.0724, len: 0.199, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'bushy', hue: '#5b4032', family: 'mustelid' },
-  'Marten': { legs: 0.0773, depth: 0.0814, len: 0.2003, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#7d5334', family: 'mustelid' },
-  'Fisher': { legs: 0.084, depth: 0.0885, len: 0.2033, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#4f3b2c', family: 'mustelid' },
-  'Otter': { legs: 0.0385, depth: 0.0905, len: 0.1720, neck: 0.032, muzzle: 0.30, ears: 'tiny', tail: 'long', family: 'mustelid', hue: '#6b533c' },
+  'Mink': { legs: 0.0665, depth: 0.0724, len: 0.199, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'bushy', hue: '#5b4032', family: 'mustelid', mammalDPlan: 'Mink' },
+  'Marten': { legs: 0.0773, depth: 0.0814, len: 0.2003, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#7d5334', family: 'mustelid', mammalDPlan: 'Marten' },
+  'Fisher': { legs: 0.084, depth: 0.0885, len: 0.2033, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#4f3b2c', family: 'mustelid', mammalDPlan: 'Fisher' },
+  'Otter': { legs: 0.0385, depth: 0.0905, len: 0.1720, neck: 0.032, muzzle: 0.30, ears: 'tiny', tail: 'long', family: 'mustelid', hue: '#6b533c', mammalDPlan: 'Otter' },
   /* larger, greyer and longer-tailed than the sea-going one */
-  'River Otter': { legs: 0.0452, depth: 0.0815, len: 0.1980, neck: 0.038, muzzle: 0.34, ears: 'tiny', tail: 'long', family: 'mustelid', hue: '#8d7f6e' },
-  'Giant Otter': { legs: 0.0651, depth: 0.1019, len: 0.2506, neck: 0.06, muzzle: 0.32, ears: 'tiny', tail: 'long', hue: '#54402e', family: 'mustelid' },
-  'Sea Otter': { legs: 0.0538, depth: 0.1027, len: 0.219, neck: 0.05, muzzle: 0.28, ears: 'tiny', tail: 'stub', coat: 'shaggy', hue: '#6a5340', family: 'mustelid' },
+  'River Otter': { legs: 0.0452, depth: 0.0815, len: 0.1980, neck: 0.038, muzzle: 0.34, ears: 'tiny', tail: 'long', family: 'mustelid', hue: '#8d7f6e', mammalDPlan: 'River Otter' },
+  'Giant Otter': { legs: 0.0651, depth: 0.1019, len: 0.2506, neck: 0.06, muzzle: 0.32, ears: 'tiny', tail: 'long', hue: '#54402e', family: 'mustelid', mammalDPlan: 'Giant Otter' },
+  'Sea Otter': { legs: 0.0538, depth: 0.1027, len: 0.219, neck: 0.05, muzzle: 0.28, ears: 'tiny', tail: 'stub', coat: 'shaggy', hue: '#6a5340', family: 'mustelid', mammalDPlan: 'Sea Otter' },
   /* ★ wave 22 — proportioncheck had it at 3.06 wide-to-tall on a 0.23/0.058
      spec, i.e. four times as long as deep. A mongoose is lithe, not a ribbon. */
-  'Mongoose': { legs: 0.0671, depth: 0.0856, len: 0.1685, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#9a8a6c', family: 'mustelid' },
+  'Mongoose': { legs: 0.0671, depth: 0.0856, len: 0.1685, neck: 0.05, muzzle: 0.36, ears: 'round', tail: 'bushy', hue: '#9a8a6c', family: 'mustelid', mammalDPlan: 'Mongoose' },
   'Meerkat': { legs: 0.0943, depth: 0.0998, len: 0.1047, neck: 0.08, muzzle: 0.32, ears: 'round', tail: 'long', hue: '#b5a184', family: 'mustelid' , pose: 'sentinel' },
-  'Civet': { legs: 0.078, depth: 0.1039, len: 0.188, neck: 0.05, carry: 0.40, muzzle: 0.38, ears: 'round', tail: 'banded', coat: 'spots', face: 'mask', hue: '#a8996f', family: 'mustelid', faceMark: 'darkMask' },
+  'Civet': { legs: 0.078, depth: 0.1039, len: 0.188, neck: 0.05, carry: 0.40, muzzle: 0.38, ears: 'round', tail: 'banded', coat: 'spots', face: 'mask', hue: '#a8996f', family: 'mustelid', faceMark: 'darkMask', mammalDPlan: 'Civet' },
   'Coati': { legs: 0.084, depth: 0.1053, len: 0.182, neck: 0.06, carry: 0.35, tailScale: 1.3, muzzle: 0.54, ears: 'round', tail: 'banded', hue: '#8e6440', family: 'procyonid', tailPose: 'upright', faceMark: 'darkMask' },
   'Kinkajou': { legs: 0.075, depth: 0.1095, len: 0.1437, neck: 0.05, carry: 0.35, tailScale: 1.95, muzzle: 0.30, ears: 'round', tail: 'long', hue: '#a06e3c', family: 'procyonid', headScale: 1.28, iris: '#24170f', mammalCPlan: 'procyonid-c1' },
-  'Mole': { legs: 0.0295, depth: 0.0790, len: 0.1610, neck: 0.02, muzzle: 0.46, ears: 'tiny', tail: 'stub', hue: '#39322e', family: 'burrower', earShape: 'hidden', foot: 'claw' },
-  'Hyrax': { legs: 0.0595, depth: 0.0899, len: 0.1474, neck: 0.03, back: 'arched', muzzle: 0.28, ears: 'round', tail: 'none', hue: '#8b7a63', family: 'rodent' },
+  'Mole': { legs: 0.0295, depth: 0.0790, len: 0.1610, neck: 0.02, muzzle: 0.46, ears: 'tiny', tail: 'stub', hue: '#39322e', family: 'burrower', earShape: 'hidden', foot: 'claw', mammalDPlan: 'Mole' },
+  'Hyrax': { legs: 0.0595, depth: 0.0899, len: 0.1474, neck: 0.03, back: 'arched', muzzle: 0.28, ears: 'round', tail: 'none', hue: '#8b7a63', family: 'rodent', mammalDPlan: 'Hyrax' },
   'Aardvark': { legs: 0.088, depth: 0.1259, len: 0.222, neck: 0.06, carry: 0.35, back: 'roached', muzzle: 0.80, ears: 'huge', tail: 'muscular', tailScale: 1.25, mat: 'hide', hue: '#b09c85', family: 'burrower', earShape: 'leaf' },
   /* ── BEARS, PIGS, EQUIDS ── */
   'Spectacled Bear': { legs: 0.1111, depth: 0.1593, len: 0.1959, neck: 0.05, muzzle: 0.40, jaw: 'broad', ears: 'round', tail: 'stub', coat: 'shaggy', hue: '#3b332c', family: 'ursid', faceMark: 'spectacles', muzzleHue: '#d7c5a4', clawScale: 1.22, mammalBPlan: 'ursid-r1' },
@@ -136,7 +136,7 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
      the dark disc sitting on its shoulder — a sloth has no visible tail. */
   'Sloth': { legs: 0.0968, depth: 0.1414, len: 0.1484, neck: 0.06, back: 'roached', muzzle: 0.28, ears: 'tiny', tail: 'none', coat: 'shaggy', hue: '#8c8367', family: 'xenarthran', skull: 'procyonid', earShape: 'hidden' , pose: 'hang' },
   'Possum': { legs: 0.065, depth: 0.1026, len: 0.1598, neck: 0.05, carry: 0.35, muzzle: 0.58, ears: 'large', earShape: 'round', tail: 'long', coat: 'shaggy', hue: '#77736e', family: 'marsupial', muzzleHue: '#eee7da', mammalCPlan: 'marsupial-c1' },
-  'Marsh Rodent': { legs: 0.0691, depth: 0.0894, len: 0.1789, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'long', hue: '#7b6448', family: 'rodent' },
+  'Marsh Rodent': { legs: 0.0691, depth: 0.0894, len: 0.1789, neck: 0.05, muzzle: 0.34, ears: 'round', tail: 'long', hue: '#7b6448', family: 'rodent', mammalDPlan: 'Marsh Rodent' },
   /* ═══ ★ ARC STAGE 3 WAVE 1 — THE UNROUTED ICONICS ═══
      conformance [U]: these had NO override route, so the verbatim engine drew
      them and their reference mustRead features could not be expressed at all.
@@ -150,9 +150,9 @@ export const QUAD2_SPEC: Record<string, QuadSpec> = {
   /* "black bandit mask · ringed banded tail · hunched arched back" */
   'Raccoon': { legs: 0.0769, depth: 0.121, len: 0.1905, neck: 0.040, carry: 0.45, tailScale: 1.35, back: 'roached', muzzle: 0.30, ears: 'round', tail: 'banded', face: 'mask', hue: '#777674', family: 'procyonid', mammalCPlan: 'procyonid-c1' },
   /* "flat scaly paddle tail · orange chisel incisors · stocky humped body" */
-  'Capybara': { legs: 0.048, depth: 0.196, len: 0.238, neck: 0.022, muzzle: 0.62, jaw: 'barrel', ears: 'tiny', tail: 'none', hue: '#8b5e3c', family: 'rodent', headScale: 1.22, foot: 'paw', pawScale: 1.24, webbedFeet: true, incisors: 'orange', carry: 0.24 },
+  'Capybara': { legs: 0.048, depth: 0.196, len: 0.238, neck: 0.022, muzzle: 0.62, jaw: 'barrel', ears: 'tiny', tail: 'none', hue: '#8b5e3c', family: 'rodent', headScale: 1.22, foot: 'paw', pawScale: 1.24, webbedFeet: true, incisors: 'orange', carry: 0.24, mammalDPlan: 'Capybara' },
   'Agouti': { legs: 0.088, depth: 0.112, len: 0.152, neck: 0.04, back: 'roached', muzzle: 0.34, ears: 'small', tail: 'none', hue: '#7a4b28', family: 'rodent', foot: 'cloven' },
-  'Mara': { legs: 0.138, depth: 0.098, len: 0.158, neck: 0.05, muzzle: 0.36, ears: 'large', tail: 'none', hue: '#8c8375', family: 'rodent' },
+  'Mara': { legs: 0.138, depth: 0.098, len: 0.158, neck: 0.05, muzzle: 0.36, ears: 'large', tail: 'none', hue: '#8c8375', family: 'rodent', mammalDPlan: 'Mara' },
   'Beaver': { legs: 0.0521, depth: 0.1186, len: 0.214, neck: 0.032, back: 'humped', muzzle: 0.26, jaw: 'broad', ears: 'tiny', tail: 'paddle', hue: '#6b4a30', family: 'rodent', incisors: 'orange', headScale: 1.12 },
   /* "long bushy ringed tail · white face mask with rust tear-stripes · black legs" */
   'Red Panda': { legs: 0.0741, depth: 0.1099, len: 0.1712, neck: 0.038, muzzle: 0.26, ears: 'large', tail: 'banded', tailScale: 1.80, face: 'tears', stockings: '#211d1c', hue: '#b5522a', family: 'procyonid', headScale: 1.18, mammalCPlan: 'procyonid-c1' },

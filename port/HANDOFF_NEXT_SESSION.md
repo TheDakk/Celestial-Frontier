@@ -1,13 +1,202 @@
-# ★ LIVE — Wave 2c 56/56 PASS; ready to commit/push (2026-08-10)
+# ★ LIVE — Wave 2d 50/50 PASS; ready to commit/push (2026-08-10)
 
 **Current worktree:** `C:\Projects\celestial-frontier-openai-windows` on
 `openai/windows`. Clean full-reset baseline HEAD is
 `bc26e800c7adca72805a832e753ace1a8f9837ba`; Wave 1 is `d005090f`, Wave 2a is
-`00e499c`, and Wave 2b is committed/pushed as
-`9c148f071bb8e4ad8d3e92358c6408fc234f22bd`. Wave 2c is uncommitted; its
-exact 56 targets are independently PASS, and integrated gates are green with all
-five source hashes unchanged. The bounded checkpoint is **READY TO COMMIT/PUSH**
-on `openai/windows`. PR #7 is historical/already merged. No reset PR, new
+`00e499c`, Wave 2b is `9c148f0`, and Wave 2c is committed/pushed as
+`dc015cfde4385530686cf8fff7e36e13ce67769c`. Wave 2d is the current uncommitted
+bounded checkpoint. Its 50 changed targets are independently PASS and the
+integrated gates are green, so it is **ready to commit/push**. PR #7 is
+historical/already merged. No reset PR, new
+full-catalogue tally, 1,250-row certification, image-inclusive ZIP, merge,
+release, deployment, or version bump exists.
+
+Read first: `ROADMAP.md`, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`,
+`port/v2/reference/FULL_CATALOG_RESET_AUDIT_2026-08-09.md`,
+`ART_DIRECTION.md`, `PROCEDURAL_CHARACTERISTICS.md`,
+`LINEAGE_AND_BREEDING.md`, `port/PROPORTION_ARC.md`, `port/v2/README.md`, and
+`port/v2/DEVIATIONS.md`.
+
+## Frozen ledger and scoped checkpoints
+
+The immutable clean `bc26e8` result remains **516 PASS / 14 POLISH / 720 FAIL**
+across all 1,250 fresh rows. It is a repair baseline, not a certificate. Never
+add scoped PASS results to that ledger:
+
+| checkpoint | exact scope | independent status | repository state |
+|---|---:|---|---|
+| Wave 1 | 177 | 177 PASS | committed/pushed `d005090f` |
+| Wave 2a catalogue | 32 | 32 PASS | committed/pushed `00e499c` |
+| Wave 2b catalogue | 51 | 51 PASS | committed/pushed `9c148f0` |
+| Wave 2c catalogue | 56 | 56 PASS | committed/pushed `dc015cf` |
+| Wave 2d catalogue | 50 | 50 PASS | uncommitted; ready to commit/push |
+
+Wave 2d is Mammal D 16 + Bird B3 27 + Invert III 7. Vanilla Orchid r6 remains
+a separate focused continuity PASS with 234/234 assets. None of these scoped
+closures replaces the 1,250-row ledger.
+
+## Wave 2d exact closure
+
+### Mammal D — 16/16 PASS
+
+Targets: Badger, Civet, Fisher, Giant Otter, Marten, Mink, Mongoose, Otter,
+River Otter, Sea Otter, Wolverine, Capybara, Hyrax, Mara, Marsh Rodent, Mole.
+The first shared preview failed closed on six exact blockers: Fisher's tail
+silhouette, Marten's ear morphology, Wolverine's claw read, Sea Otter's body
+rotation/pose, Hyrax's ear scale, and Mole's snout-versus-forepaw separation.
+Bounded R2 changed only those six while the other ten targets were retained.
+
+The first independent final judgment then returned **15 PASS / 1 FAIL** because
+Civet still read with a round head/circular muzzle instead of the frozen long,
+pointed muzzle contract. Bounded R4 changed Civet alone. Its 3/3 surfaces drift
+from the earlier final while the other 303 rows /909 surfaces remain exact. The
+independent Civet rejudge returned PASS, closing Mammal D at 16/16.
+
+Final mammal sources:
+
+- `quadrupedoverrides.ts`
+  `544F5A6582F467E744C5F2A3ABF0EDF61DE5A5180CF5658155594E5FF86316C1`
+- `mammaloverrides.ts`
+  `776FB86FF9A42E348A9278F98F7DC03584568C65A09C637CB1D7BFA38BB7A46E`
+
+### Bird B3 — 27/27 PASS
+
+Targets: Chough, Crow, Jay, Raven, Guineafowl, Peacock, Pheasant, Rooster,
+Turkey, Quetzal, Kookaburra, Sandgrouse, Tropicbird, Weaverbird, Cockatoo,
+Macaw, Parrot, Dove, Pigeon, Finch, Lark, Sparrow, Starling, Swift, Tanager,
+Hornbill, Toucan.
+
+The initial author screen was **11 candidate-ready / 16 blocked**: Chough,
+Crow, Raven, Peacock, Pheasant, Rooster, Quetzal, Sandgrouse, Cockatoo, Macaw,
+Parrot, Dove, Pigeon, Finch, Swift, and Hornbill. R2 changed exactly those 16;
+13 closed, while Pheasant's tail remained shorter than its body, Quetzal's
+streamers remained only about body length, and Macaw's tail remained shorter
+than its body. R3 changed exactly those three. The author screen found all 27
+candidate-ready, and the independent final judge returned **27 PASS / 0 FAIL**
+at 440/300/132 with 100 lane controls exact. Civet-only R4 carried every Bird
+surface byte-exact.
+
+Final bird sources:
+
+- `faunaoverrides.ts`
+  `63D7A9B1E3AE8E2FE359137A030E1AE8AEFC3328ACB5C88FB6E59E7F014A2DA2`
+- `birdoverrides.ts`
+  `48FFA589F2273F0F29FD85DF1F05FD070477ADE70F1CDEB7698F5321E5702DC7`
+
+### Invert III — 7/7 PASS
+
+Targets: Sea Spider, Camel Spider, Pseudoscorpion, Scorpion, Spider, Tarantula,
+Millipede. The first strict screen kept Camel Spider open because its paired
+chelicerae/open gape vanished at 132px and kept Tarantula open because its
+contrasting cheliceral bases, down-folding hooked fangs, and short palps were
+weak or hidden. Bounded R2 changed exactly those two and retained the other five
+targets byte-exact. The independent final judge returned **7 PASS / 0 FAIL** at
+all three scales.
+
+Final `invertoverrides.ts` SHA-256:
+`2BB40BD1838D6B6B01F09B01D3BC4CBE7B00D0F0C219FEA5926BF076A4F39677`.
+
+## Final shared-R4 evidence
+
+The pre-edit baseline seal is
+`7C68250E3BED9AE64FD5066A4D5389C45056600F09E48B1287253AB20E6B877F`.
+The final admissible root is
+`port/v2/apps/game/smoke/wave2d-shared-final-r4-evidence-2026-08-10`.
+Manifest SHA-256:
+`DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE`.
+
+- 304 rows =50 targets +254 protected controls.
+- 912 surfaces/run; 1,824 physical PNG hashes and dimensions verified.
+- Current/repeat exact on 304/304 rows and 912/912 surfaces.
+- Pre-edit protected exact on 254/254 rows and 762/762 surfaces.
+- All 50 targets changed on 150/150 surfaces.
+- Civet-only R4 changed 3/3 surfaces; the other 303 rows /909 surfaces stayed
+  exact to the preceding final.
+- Three 139-file source/input snapshots have zero drift; aggregate SHA-256 is
+  `58553184F25A8E2D4EDBA4811BEE8087BCAA7E48AC2AD978D96D264FEC793CBC`.
+- Current index SHA-256:
+  `92CFC48A4DBC401FC69F4C6F824D50834B7451D89E575711CD416981D06CA9EA`.
+- Repeat index SHA-256:
+  `D62A661FA5396D7B0396B1A13F7211CCA924D3C6126768370FBC40D6812D80B7`.
+- Four negative controls were rejected. Source/input/status/manifest records are
+  exact, and the evidence remains author-neutral.
+
+## Pixel-neutral P2 cleanup — closed with proof
+
+The three Wave-2c deferred cleanups landed inside their Wave-2d owner lanes:
+
+- the Mammal C `marsupial-c1` dispatcher is explicit and exhaustive;
+- Skua's unreachable Snow-Petrel colour alternative is removed;
+- exact Invert-II legacy non-hue options shadowed by named early returns are
+  removed.
+
+These are route-proven cleanup changes, not visual retcons. The shared
+pre-edit/final comparison keeps all 254 protected rows /762 surfaces exact at
+440/300/132, including the accepted prior-wave identities.
+
+## Integrated gate status — green
+
+All five final source hashes and the 139-input aggregate
+`58553184F25A8E2D4EDBA4811BEE8087BCAA7E48AC2AD978D96D264FEC793CBC`
+remained exact. The authoritative integrated report is green:
+
+- `git diff --check`, typecheck, and artunused PASS.
+- Vitest: 23 files, 238 pass, 1 skip.
+- speccheck: 419 declared /0 unread /0 inert; selftest 5/5.
+- coveragegap: 1,010/1,010; artaudit: 23 sources /0.
+- tokencheck selftest: 16/16. Its ordinary 445 values /23 dead /14 aliases
+  output is diagnostic, not a verdict.
+- overridecheck: 1,014/1,014 routes and 1,010/1,010 species.
+- speciesaudit: 1,250/1,250, 0 failure, 0 duplicate, 0 clipped.
+- hybridcheck PASS with all 11 negative controls rejected.
+- hybridmatrix and speciesstrip selftests PASS.
+- fullresetlayout PASS; fullresetreview PASS with 10/10 joins, 6 packets, and
+  9 changed-fixture checks.
+- No nonignored generated output leaked; the renderer drained.
+
+Wave 2d is ready to commit/push. This closes only the bounded checkpoint; it
+does not authorize the reset PR, merge, full 1,250 recertification,
+image-inclusive ZIP, release, or deployment.
+The full 1,250 recertification, image-inclusive ZIP, reset PR, merge, release,
+and deployment all remain **OPEN**.
+
+## Exact next actions
+
+1. Create one intentional Wave-2d checkpoint commit and push `openai/windows`;
+   do not include unrelated files or open the reset PR.
+2. Continue remaining frozen-r1 non-PASS identities in bounded named owner
+   lanes with 440/300/132 A/B, protected controls, deterministic repeat, and an
+   author-separated judge.
+3. Run a new clean 1,250-row collector and fresh literal review only after all
+   remaining rows close. Certification and the dated image-inclusive ZIP come
+   after—not before—that all-fresh collector.
+
+## Parallel Git handoff
+
+Current side: OpenAI/Codex — Wave 2c commit `dc015cf` is pushed/synchronized;
+Wave 2d is uncommitted and ready to commit/push. GitHub step: create the bounded
+checkpoint commit and push `openai/windows`; no PR is due yet. PR details: not
+needed.
+
+Other side: Anthropic/Claude Code does not have these bounded checkpoints
+through `develop`; Nick does not need to open it now, and files must never be
+copied manually. After a future reviewed Codex PR merges `openai/windows` into
+`develop`, Claude starts from a clean `anthropic/windows`, fetches, and merges
+`origin/develop` under `PARALLEL_GIT_PROTOCOL.md`. `develop`, `main`, and the
+live site remain unchanged; no release or deployment occurred.
+
+# Historical Wave-2c/Wave-2d-opening handoff — superseded by Wave 2d closure
+
+_Retained verbatim below for history._
+
+# ★ LIVE — Wave 2c pushed; Wave 2d active (2026-08-10)
+
+**Current worktree:** `C:\Projects\celestial-frontier-openai-windows` on
+`openai/windows`. Clean full-reset baseline HEAD is
+`bc26e800c7adca72805a832e753ace1a8f9837ba`; Wave 1 is `d005090f`, Wave 2a is
+`00e499c`, Wave 2b is `9c148f0`, and Wave 2c is committed/pushed as
+`dc015cfde4385530686cf8fff7e36e13ce67769c`. Wave 2d is the active bounded
+repair batch on `openai/windows`. PR #7 is historical/already merged. No reset PR, new
 full-catalogue tally, 1,250-row certification, image-inclusive ZIP, release,
 deployment, or version bump exists.
 
@@ -28,7 +217,7 @@ add scoped PASS results to that ledger:
 | Wave 1 | 177 | 177 PASS | committed/pushed `d005090f` |
 | Wave 2a catalogue | 32 | 32 PASS | committed/pushed `00e499c` |
 | Wave 2b catalogue | 51 | 51 PASS | committed/pushed `9c148f0` |
-| Wave 2c catalogue | 56 | 56 PASS | uncommitted; ready to commit/push |
+| Wave 2c catalogue | 56 | 56 PASS | committed/pushed `dc015cf` |
 
 Wave 2c is Mammal C 13 + Bird B2 28 + Invert II 15. Vanilla Orchid r6 remains
 a separate focused continuity PASS with 234/234 assets. None of these scoped
@@ -148,20 +337,28 @@ deliberately deferred because the accepted evidence binds the current sources:
 Do not include these in Wave 2c. A later bounded pixel-neutral cleanup must
 produce fresh target/control evidence before accepting them.
 
-## Exact next sequence
+## Wave 2d exact active lanes
 
-1. Commit and push the exact reviewed Wave-2c source/document scope on
-   `openai/windows`; do not include unrelated files.
-2. Do not open or merge the reset PR at this checkpoint. Continue remaining r1
-   non-PASS rows in bounded owner/family waves with author separation.
-3. A clean full 1,250 collector, final hybrid evidence, literal certification
+1. **Mammal D (16):** Badger, Civet, Fisher, Giant Otter, Marten, Mink,
+   Mongoose, Otter, River Otter, Sea Otter, Wolverine, Capybara, Hyrax, Mara,
+   Marsh Rodent, Mole.
+2. **Bird B3 (27):** Chough, Crow, Jay, Raven, Guineafowl, Peacock, Pheasant,
+   Rooster, Turkey, Quetzal, Kookaburra, Sandgrouse, Tropicbird, Weaverbird,
+   Cockatoo, Macaw, Parrot, Dove, Pigeon, Finch, Lark, Sparrow, Starling, Swift,
+   Tanager, Hornbill, Toucan.
+3. **Invert III (7):** Sea Spider, Camel Spider, Pseudoscorpion, Scorpion,
+   Spider, Tarantula, Millipede.
+4. The same owner lanes must recapture pixel-neutral proof for the deferred P2
+   cleanup: explicit `marsupial-c1` dispatch, dead Skua snow arm removal, and
+   shadowed Invert-II legacy options.
+5. A clean full 1,250 collector, final hybrid evidence, literal certification
    and dated image-inclusive ZIP begin only after every remaining row closes.
 
 ## Parallel Git handoff
 
-Current side: OpenAI/Codex — Wave 2b commit `9c148f0` is pushed/synchronized;
-Wave 2c is uncommitted, 56/56 independently PASS, integrated-green and ready to
-commit/push. GitHub step: none at this bounded checkpoint. PR details: not needed.
+Current side: OpenAI/Codex — Wave 2c commit `dc015cf` is pushed/synchronized;
+Wave 2d is active and uncommitted. GitHub step: none at this bounded checkpoint.
+PR details: not needed.
 Other side: Anthropic/Claude Code does not have Wave 2a, Wave 2b or Wave 2c
 through `develop`; Nick does not need to open it now, and files must never be
 copied manually. After a future reviewed Codex PR merges into `develop`, Claude

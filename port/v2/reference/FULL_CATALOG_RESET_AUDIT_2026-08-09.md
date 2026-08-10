@@ -8,12 +8,13 @@ The clean full-reset baseline is commit
 `bc26e800c7adca72805a832e753ace1a8f9837ba` on `openai/windows`. Wave 1 is
 `d005090f`; accepted Wave 2a is committed/pushed as
 `00e499cb130e906b5475d2d466c07e2d7a6d1282`; Wave 2b is committed/pushed as
-`9c148f071bb8e4ad8d3e92358c6408fc234f22bd`. The current worktree is an
-uncommitted bounded Wave-2c batch whose 56 assigned rows are independently PASS.
+`9c148f071bb8e4ad8d3e92358c6408fc234f22bd`; Wave 2c is committed/pushed as
+`dc015cfde4385530686cf8fff7e36e13ce67769c`. The current worktree is an
+uncommitted bounded Wave-2d batch whose 50 assigned rows are independently PASS.
 The final integrated gates are green with all five source SHAs unchanged, so
-Wave 2c is ready to commit/push. PR #7 is historical/already merged; no reset PR exists.
+Wave 2d is ready to commit/push. PR #7 is historical/already merged; no reset PR exists.
 
-## Status: r1 frozen; Wave 2b pushed; Wave 2c 56/56 PASS and ready to commit/push
+## Status: r1 frozen; Wave 2c pushed; Wave 2d 50/50 PASS and ready to commit/push
 
 Nick stopped the GP7.1 remediation and explicitly reopened the entire catalogue
 after Fruit Bat exposed a false acceptance: the current animal does not read as
@@ -256,16 +257,97 @@ and 1,010/1,010 Earth; speciesaudit reports 1,250/1,250 with zero failure,
 duplicate pair or clipping; hybridcheck passes and rejects 11 injected failures;
 hybridmatrix, speciesstrip, fullresetlayout and fullresetreview selftests pass;
 coveragegap reports 1,010/1,010 with zero remaining; `git diff --check` passes.
-This makes the bounded Wave-2c checkpoint ready to commit/push, not to open or
-merge the reset PR. The frozen 516/14/720 ledger remains unchanged.
+This made the bounded Wave-2c checkpoint ready; it was then committed/pushed as
+`dc015cf` without opening or merging the reset PR. The frozen 516/14/720 ledger
+remains unchanged.
 
-The final code-quality reread found no P0/P1 source blocker. Deferred P2 cleanup
-must not disturb this frozen evidence: make Mammal C's implicit `marsupial-c1`
-dispatcher arm explicit (`quadrupedoverrides.ts:1864-1867`); remove Skua's
-unreachable Snow-Petrel colour alternative (`faunaoverrides.ts:3171-3172`); and
-simplify legacy exact-Invert-II options shadowed by named early returns
-(`invertoverrides.ts:1005-1006`, `1632-1633`, `2937-2957`). Each requires a
-later bounded pixel-neutral proof and fresh target/control hashes.
+The final Wave-2c code-quality reread found no P0/P1 source blocker and deferred
+three P2 cleanups: explicit Mammal C `marsupial-c1` dispatch, removal of Skua's
+unreachable Snow-Petrel colour alternative, and removal of legacy exact-Invert-II
+non-hue options shadowed by named early returns. Wave 2d later closed all three
+with fresh pixel-neutral target/control proof; see the next section.
+
+## Wave 2d: exact 50-target scope independently PASS
+
+Wave 2d began from pushed `dc015cf` with three non-overlapping source lanes and
+closed exactly **50/50 scoped PASS** under author-separated 440/300/132 A/B
+review:
+
+| bounded lane | targets | fail-closed path | final result |
+|---|---:|---|---|
+| Mammal D | 16 | preview exact-six R2 → independent 15/16 → Civet-only R4 | 16 PASS |
+| Bird B3 | 27 | author 11/27 → exact-16 R2 → exact-three R3 | 27 PASS |
+| Invert III | 7 | author 5/7 → exact-two R2 | 7 PASS |
+| **total** | **50** |  | **50 PASS** |
+
+Mammal D is Badger, Civet, Fisher, Giant Otter, Marten, Mink, Mongoose, Otter,
+River Otter, Sea Otter, Wolverine, Capybara, Hyrax, Mara, Marsh Rodent, and Mole.
+The first shared preview retained Fisher's tail silhouette, Marten's ears,
+Wolverine's claws, Sea Otter's body rotation, Hyrax's ear scale, and Mole's
+snout/forepaw separation. Bounded R2 changed those six. The first independent
+final judgment returned 15 PASS /1 FAIL because Civet still lacked its long
+pointed muzzle. Civet-only R4 changed 3/3 surfaces, preserved the other 303 rows /
+909 surfaces, and the independent rejudge closed the lane at 16/16.
+
+Bird B3 is Chough, Crow, Jay, Raven, Guineafowl, Peacock, Pheasant, Rooster,
+Turkey, Quetzal, Kookaburra, Sandgrouse, Tropicbird, Weaverbird, Cockatoo, Macaw,
+Parrot, Dove, Pigeon, Finch, Lark, Sparrow, Starling, Swift, Tanager, Hornbill,
+and Toucan. Its first author screen was 11 candidate-ready /16 blocked: Chough,
+Crow, Raven, Peacock, Pheasant, Rooster, Quetzal, Sandgrouse, Cockatoo, Macaw,
+Parrot, Dove, Pigeon, Finch, Swift, and Hornbill. R2 changed exactly those 16 and
+left only Pheasant's tail, Quetzal's streamers, and Macaw's tail too short. R3
+changed exactly those three. Final independent judgment returned 27 PASS /0 FAIL
+with 100 lane controls exact.
+
+Invert III is Sea Spider, Camel Spider, Pseudoscorpion, Scorpion, Spider,
+Tarantula, and Millipede. The first author screen retained Camel Spider because
+its paired chelicerae/open gape vanished at 132px and Tarantula because its
+cheliceral bases, down-folding fangs, and short palps were weak. Bounded R2
+changed exactly those two while the other five targets remained exact; final
+independent judgment returned 7 PASS /0 FAIL.
+
+The pre-edit baseline seal is
+`7C68250E3BED9AE64FD5066A4D5389C45056600F09E48B1287253AB20E6B877F`.
+The final admissible root is
+`apps/game/smoke/wave2d-shared-final-r4-evidence-2026-08-10`; manifest SHA-256
+is `DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE`.
+Its 304 rows comprise 50 targets and 254 protected controls. Both runs contain
+912 surfaces; all 1,824 physical PNG hashes/dimensions and all 912 A/B surfaces
+are exact. All 762 protected surfaces match the pre-edit baseline and all 150
+target surfaces changed. Civet-only R4 changed 3/3 surfaces; the other 303 rows /
+909 surfaces stayed exact. Three 139-file input snapshots share aggregate
+SHA-256 `58553184F25A8E2D4EDBA4811BEE8087BCAA7E48AC2AD978D96D264FEC793CBC`
+with zero drift, and all four negative controls were rejected.
+
+Final source SHA-256 values are `faunaoverrides.ts`
+`63D7A9B1E3AE8E2FE359137A030E1AE8AEFC3328ACB5C88FB6E59E7F014A2DA2`,
+`birdoverrides.ts`
+`48FFA589F2273F0F29FD85DF1F05FD070477ADE70F1CDEB7698F5321E5702DC7`,
+`quadrupedoverrides.ts`
+`544F5A6582F467E744C5F2A3ABF0EDF61DE5A5180CF5658155594E5FF86316C1`,
+`mammaloverrides.ts`
+`776FB86FF9A42E348A9278F98F7DC03584568C65A09C637CB1D7BFA38BB7A46E`,
+and `invertoverrides.ts`
+`2BB40BD1838D6B6B01F09B01D3BC4CBE7B00D0F0C219FEA5926BF076A4F39677`.
+
+The three deferred P2 cleanups are now proven pixel-neutral: the
+`marsupial-c1` dispatcher is explicit, Skua's impossible Snow-Petrel colour arm
+is removed, and exact Invert-II non-hue options shadowed by named early returns
+are removed. The 254 protected rows /762 surfaces remain byte-exact to the
+shared pre-edit baseline.
+
+The integrated report is green with all five source hashes and the 139-input
+aggregate unchanged: `git diff --check`; typecheck; artunused; 23-file Vitest
+(238 pass /1 skip); speccheck 419/0/0 plus 5/5 selftest; coveragegap
+1,010/1,010; artaudit 23 sources/0; tokencheck selftest 16/16 (its ordinary
+445-value /23-dead /14-alias diagnostic is non-verdict); overridecheck
+1,014/1,014 routes and 1,010/1,010 species; speciesaudit 1,250/1,250 with zero
+failure, duplicate, or clipping; hybridcheck with 11 negative controls;
+hybridmatrix and speciesstrip selftests; fullresetlayout; and fullresetreview
+10/10 join, 6 packets, 9 changed fixture. No nonignored generated output leaked
+and the renderer drained. Wave 2d is ready to commit/push. This does not change
+the frozen 516/14/720 ledger or authorize the reset PR, merge, certification,
+ZIP, release, or deployment.
 
 ## Trigger and first closed family: bats
 
@@ -541,7 +623,7 @@ into `develop`. No `main` merge, release or deployment is authorized here.
 
 ## Immediate order
 
-1. Commit/push the reviewed Wave-2c scope on `openai/windows`; do not include
+1. Commit/push the reviewed Wave-2d scope on `openai/windows`; do not include
    unrelated files or open the reset PR.
 2. Continue remaining r1 non-PASS rows in bounded owner/family waves. Preserve
    author separation and never edit a painter while its judge holds source frozen.

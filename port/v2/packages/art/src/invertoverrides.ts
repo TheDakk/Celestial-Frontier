@@ -504,6 +504,315 @@ export function insectBody(c: Ctx, g: G, pIn: Pal, spec: InsectSpec, name = ''):
 }
 
 /* ═══════════════ ARACHNIDS: two tagmata, eight legs, NO antennae ═══════════════ */
+type ResetArachnidIIISignature = 'seaSpider' | 'camelSpider' | 'pseudoscorpion'
+  | 'scorpion' | 'spider' | 'tarantula';
+
+const RESET_ARACHNID_III: Readonly<Record<string, ResetArachnidIIISignature>> = Object.freeze({
+  'Sea Spider': 'seaSpider',
+  'Camel Spider': 'camelSpider',
+  'Pseudoscorpion': 'pseudoscorpion',
+  'Scorpion': 'scorpion',
+  'Spider': 'spider',
+  'Tarantula': 'tarantula',
+});
+
+function resetInvertTone(p: Pal, k: number, alpha = 1): string {
+  const ch = (v: number): number => Math.max(0, Math.min(255, Math.round(v * k)));
+  return `rgba(${ch(p.cr)},${ch(p.cg)},${ch(p.cb)},${alpha})`;
+}
+
+function resetInvertGradient(c: Ctx, p: Pal, x: number, y: number, radius: number): CanvasGradient {
+  const gg = c.createRadialGradient(x - radius * 0.32, y - radius * 0.38, 2, x, y, radius * 1.24);
+  gg.addColorStop(0, resetInvertTone(p, 1.38));
+  gg.addColorStop(0.52, resetInvertTone(p, 0.94));
+  gg.addColorStop(1, resetInvertTone(p, 0.40));
+  return gg;
+}
+
+/** A filled, jointed arachnid limb. Painting the body afterward hides the root,
+    so each appendage grows through the body wall instead of touching its edge. */
+function resetArachnidLeg(c: Ctx, p: Pal, root: readonly [number, number], knee: readonly [number, number],
+  tip: readonly [number, number], width: number, hairy = false): void {
+  const path = (): void => {
+    c.moveTo(root[0], root[1]); c.lineTo(knee[0], knee[1]); c.lineTo(tip[0], tip[1]);
+  };
+  c.lineCap = 'round'; c.lineJoin = 'round';
+  c.strokeStyle = resetInvertTone(p, 0.34); c.lineWidth = width;
+  c.beginPath(); path(); c.stroke();
+  c.strokeStyle = resetInvertTone(p, 0.92); c.lineWidth = Math.max(1.8, width * 0.43);
+  c.beginPath(); path(); c.stroke();
+  c.fillStyle = resetInvertTone(p, 0.58);
+  c.beginPath(); c.arc(knee[0], knee[1], Math.max(2.5, width * 0.54), 0, TAU); c.fill();
+  if (!hairy) return;
+  c.strokeStyle = resetInvertTone(p, 1.28, 0.74); c.lineWidth = 1.35;
+  for (let i = 1; i < 8; i++) {
+    const u = i / 8;
+    for (const seg of [[root, knee], [knee, tip]] as const) {
+      const x = seg[0][0] + (seg[1][0] - seg[0][0]) * u;
+      const y = seg[0][1] + (seg[1][1] - seg[0][1]) * u;
+      const dx = seg[1][0] - seg[0][0], dy = seg[1][1] - seg[0][1];
+      const m = Math.hypot(dx, dy) || 1, nx = -dy / m, ny = dx / m;
+      c.beginPath(); c.moveTo(x - nx * 4.5, y - ny * 4.5); c.lineTo(x + nx * 4.5, y + ny * 4.5); c.stroke();
+    }
+  }
+}
+
+function resetArachnidChela(c: Ctx, p: Pal, root: readonly [number, number], elbow: readonly [number, number],
+  palm: readonly [number, number], size: number, angle: number): void {
+  resetArachnidLeg(c, p, root, elbow, palm, Math.max(7, size * 0.22));
+  c.save(); c.translate(palm[0], palm[1]); c.rotate(angle);
+  c.fillStyle = resetInvertGradient(c, p, -size * 0.12, 0, size);
+  c.beginPath(); c.ellipse(-size * 0.12, 0, size * 0.65, size * 0.44, 0, 0, TAU); c.fill();
+  c.strokeStyle = resetInvertTone(p, 0.34, 0.88); c.lineWidth = Math.max(2, size * 0.06);
+  c.beginPath(); c.ellipse(-size * 0.12, 0, size * 0.65, size * 0.44, 0, 0, TAU); c.stroke();
+  c.fillStyle = resetInvertTone(p, 0.82);
+  c.beginPath(); c.moveTo(size * 0.24, -size * 0.32);
+  c.quadraticCurveTo(size * 1.00, -size * 0.58, size * 1.34, -size * 0.20);
+  c.quadraticCurveTo(size * 0.92, -size * 0.22, size * 0.24, -size * 0.05); c.closePath(); c.fill();
+  c.beginPath(); c.moveTo(size * 0.24, size * 0.30);
+  c.quadraticCurveTo(size * 0.98, size * 0.50, size * 1.30, size * 0.11);
+  c.quadraticCurveTo(size * 0.88, size * 0.10, size * 0.24, size * 0.04); c.closePath(); c.fill();
+  c.restore();
+}
+
+function resetSeaSpiderIII(c: Ctx, p: Pal): void {
+  const cy = S * 0.515;
+  shadow(c, S * 0.50, S * 0.82, S * 0.34);
+  const roots = [S * 0.405, S * 0.465, S * 0.535, S * 0.595] as const;
+  const knees = [S * 0.245, S * 0.345, S * 0.655, S * 0.755] as const;
+  const feet = [S * 0.075, S * 0.245, S * 0.755, S * 0.925] as const;
+  for (const side of [-1, 1] as const) {
+    for (let i = 0; i < 4; i++) {
+      const root: readonly [number, number] = [roots[i]!, cy + side * S * (0.018 + i * 0.004)];
+      const knee: readonly [number, number] = [knees[i]!, cy + side * S * (0.205 + (i % 2) * 0.045)];
+      const tip: readonly [number, number] = [feet[i]!, cy + side * S * (0.390 - (i === 0 || i === 3 ? 0.055 : 0))];
+      resetArachnidLeg(c, p, root, knee, tip, S * 0.014);
+      const mx = root[0] + (knee[0] - root[0]) * 0.42, my = root[1] + (knee[1] - root[1]) * 0.42;
+      const a = Math.atan2(knee[1] - root[1], knee[0] - root[0]);
+      c.save(); c.translate(mx, my); c.rotate(a); c.fillStyle = resetInvertTone(p, 0.78, 0.94);
+      c.beginPath(); c.ellipse(0, 0, S * 0.040, S * 0.012, 0, 0, TAU); c.fill(); c.restore();
+    }
+  }
+  /* The trunk is painted over this broad socket, yielding one continuous
+     proboscis/body join while leaving the long tubular mouth fully visible. */
+  c.fillStyle = resetInvertTone(p, 0.62);
+  c.beginPath(); c.moveTo(S * 0.385, cy - S * 0.020); c.lineTo(S * 0.105, cy - S * 0.014);
+  c.quadraticCurveTo(S * 0.060, cy, S * 0.105, cy + S * 0.014);
+  c.lineTo(S * 0.385, cy + S * 0.020); c.closePath(); c.fill();
+  c.strokeStyle = resetInvertTone(p, 0.30); c.lineWidth = 2.2; c.stroke();
+  c.fillStyle = resetInvertGradient(c, p, S * 0.50, cy, S * 0.15);
+  c.beginPath(); c.moveTo(S * 0.365, cy - S * 0.024);
+  c.quadraticCurveTo(S * 0.50, cy - S * 0.038, S * 0.635, cy - S * 0.022);
+  c.quadraticCurveTo(S * 0.65, cy, S * 0.635, cy + S * 0.022);
+  c.quadraticCurveTo(S * 0.50, cy + S * 0.038, S * 0.365, cy + S * 0.024);
+  c.quadraticCurveTo(S * 0.345, cy, S * 0.365, cy - S * 0.024); c.closePath(); c.fill();
+  c.strokeStyle = resetInvertTone(p, 0.34, 0.80); c.lineWidth = 2.5; c.stroke();
+  for (const x of roots) {
+    c.strokeStyle = 'rgba(245,242,232,0.28)'; c.lineWidth = 1.8;
+    c.beginPath(); c.moveTo(x, cy - S * 0.022); c.lineTo(x, cy + S * 0.022); c.stroke();
+  }
+  const tx = S * 0.475, ty = cy - S * 0.030;
+  c.fillStyle = resetInvertGradient(c, p, tx, ty, S * 0.030);
+  c.beginPath(); c.ellipse(tx, ty, S * 0.034, S * 0.027, 0, 0, TAU); c.fill();
+  for (const dx of [-1, 1] as const) for (const dy of [-1, 1] as const) eyeDot(c, tx + dx * S * 0.014, ty + dy * S * 0.009, S * 0.0065);
+}
+
+function resetCamelSpiderIII(c: Ctx, p: Pal): void {
+  const cx = S * 0.545, cy = S * 0.515;
+  shadow(c, cx, S * 0.82, S * 0.35);
+  const rootsX = [S * 0.405, S * 0.475, S * 0.555, S * 0.635] as const;
+  const kneesX = [S * 0.235, S * 0.330, S * 0.665, S * 0.770] as const;
+  const feetX = [S * 0.075, S * 0.245, S * 0.755, S * 0.930] as const;
+  for (const side of [-1, 1] as const) for (let i = 0; i < 4; i++) {
+    resetArachnidLeg(c, p, [rootsX[i]!, cy + side * S * 0.025],
+      [kneesX[i]!, cy + side * S * (0.165 + (i % 2) * 0.050)],
+      [feetX[i]!, cy + side * S * (0.335 - (i === 0 || i === 3 ? 0.045 : 0))], S * 0.021, true);
+  }
+  for (const side of [-1, 1] as const) resetArachnidLeg(c, p, [S * 0.410, cy + side * S * 0.035],
+    [S * 0.245, cy + side * S * 0.105], [S * 0.080, cy + side * S * 0.185], S * 0.018, true);
+  /* Huge paired chelicerae are laid under the head plate so their sockets
+     disappear into it. Broad light palms and a deep dark gape survive 132px;
+     the earlier narrow, dark wedges vanished into the card background. */
+  for (const side of [-1, 1] as const) {
+    c.fillStyle = resetInvertGradient(c, p, S * 0.245, cy + side * S * 0.050, S * 0.165);
+    c.beginPath(); c.moveTo(S * 0.365, cy + side * S * 0.014);
+    c.quadraticCurveTo(S * 0.245, cy + side * S * 0.020, S * 0.095, cy + side * S * 0.105);
+    c.quadraticCurveTo(S * 0.155, cy + side * S * 0.045, S * 0.370, cy + side * S * 0.072); c.closePath(); c.fill();
+    c.strokeStyle = resetInvertTone(p, 0.30); c.lineWidth = 3.6; c.stroke();
+    c.strokeStyle = resetInvertTone(p, 1.40, 0.72); c.lineWidth = 2.4;
+    c.beginPath(); c.moveTo(S * 0.335, cy + side * S * 0.033);
+    c.quadraticCurveTo(S * 0.225, cy + side * S * 0.040, S * 0.125, cy + side * S * 0.087); c.stroke();
+  }
+  c.fillStyle = '#20150e';
+  for (const side of [-1, 1] as const) for (let i = 0; i < 3; i++) {
+    const x = S * (0.155 + i * 0.050);
+    c.beginPath(); c.moveTo(x, cy + side * S * 0.044); c.lineTo(x + S * 0.020, cy + side * S * 0.008);
+    c.lineTo(x + S * 0.034, cy + side * S * 0.047); c.closePath(); c.fill();
+  }
+  c.fillStyle = resetInvertGradient(c, p, cx, cy, S * 0.20);
+  c.beginPath(); c.ellipse(S * 0.615, cy, S * 0.205, S * 0.105, 0.02, 0, TAU); c.fill();
+  c.strokeStyle = resetInvertTone(p, 0.35, 0.84); c.lineWidth = 3; c.stroke();
+  for (let i = 1; i <= 5; i++) {
+    const x = S * (0.505 + i * 0.050);
+    c.strokeStyle = resetInvertTone(p, 0.42, 0.58); c.lineWidth = 2.2;
+    c.beginPath(); c.ellipse(x, cy, S * 0.012, S * (0.096 - i * 0.004), 0, -Math.PI / 2, Math.PI / 2); c.stroke();
+  }
+  c.fillStyle = resetInvertGradient(c, p, S * 0.405, cy, S * 0.105);
+  c.beginPath(); c.ellipse(S * 0.405, cy, S * 0.105, S * 0.088, 0, 0, TAU); c.fill();
+  c.strokeStyle = resetInvertTone(p, 0.34, 0.85); c.lineWidth = 3; c.stroke();
+  eyeDot(c, S * 0.355, cy - S * 0.025, S * 0.011);
+  eyeDot(c, S * 0.355, cy + S * 0.025, S * 0.011);
+  c.strokeStyle = resetInvertTone(p, 1.25, 0.70); c.lineWidth = 1.3;
+  for (let i = 0; i < 20; i++) {
+    const u = i / 19, x = S * (0.47 + u * 0.31), side = i % 2 ? 1 : -1;
+    const y = cy + side * S * (0.070 + 0.018 * Math.sin(u * Math.PI));
+    c.beginPath(); c.moveTo(x, y); c.lineTo(x + S * 0.008, y + side * S * 0.018); c.stroke();
+  }
+}
+
+function resetPseudoscorpionIII(c: Ctx, p: Pal): void {
+  const cx = S * 0.535, cy = S * 0.515;
+  shadow(c, cx, S * 0.78, S * 0.30);
+  const rootsX = [S * 0.425, S * 0.465, S * 0.510, S * 0.555] as const;
+  for (const side of [-1, 1] as const) for (let i = 0; i < 4; i++) {
+    const fan = (i - 1.5) * S * 0.047;
+    resetArachnidLeg(c, p, [rootsX[i]!, cy + side * S * 0.025],
+      [S * (0.34 + i * 0.055), cy + side * S * (0.115 + i * 0.025)],
+      [S * (0.23 + i * 0.12), cy + side * S * 0.245 + fan], S * 0.015);
+  }
+  resetArachnidChela(c, p, [S * 0.430, cy - S * 0.025], [S * 0.285, cy - S * 0.145], [S * 0.145, cy - S * 0.155], S * 0.075, Math.PI - 0.28);
+  resetArachnidChela(c, p, [S * 0.430, cy + S * 0.025], [S * 0.285, cy + S * 0.145], [S * 0.145, cy + S * 0.155], S * 0.075, Math.PI + 0.28);
+  /* Flat, segmented teardrop abdomen. It deliberately ends here: no tail or sting. */
+  c.fillStyle = resetInvertGradient(c, p, cx, cy, S * 0.19);
+  c.beginPath(); c.moveTo(S * 0.375, cy);
+  c.quadraticCurveTo(S * 0.445, cy - S * 0.115, S * 0.715, cy - S * 0.090);
+  c.quadraticCurveTo(S * 0.790, cy, S * 0.715, cy + S * 0.090);
+  c.quadraticCurveTo(S * 0.445, cy + S * 0.115, S * 0.375, cy); c.closePath(); c.fill();
+  c.strokeStyle = resetInvertTone(p, 0.32, 0.90); c.lineWidth = 3; c.stroke();
+  for (let i = 1; i < 6; i++) {
+    const x = S * (0.43 + i * 0.052);
+    c.strokeStyle = resetInvertTone(p, 0.40, 0.55); c.lineWidth = 2;
+    c.beginPath(); c.moveTo(x, cy - S * 0.088); c.quadraticCurveTo(x + S * 0.012, cy, x, cy + S * 0.088); c.stroke();
+  }
+  c.fillStyle = resetInvertGradient(c, p, S * 0.390, cy, S * 0.075);
+  c.beginPath(); c.ellipse(S * 0.390, cy, S * 0.080, S * 0.064, 0, 0, TAU); c.fill();
+  eyeDot(c, S * 0.345, cy - S * 0.022, S * 0.009); eyeDot(c, S * 0.345, cy + S * 0.022, S * 0.009);
+}
+
+function resetScorpionIII(c: Ctx, p: Pal): void {
+  const cy = S * 0.545;
+  shadow(c, S * 0.52, S * 0.82, S * 0.36);
+  const rootsX = [S * 0.405, S * 0.465, S * 0.525, S * 0.585] as const;
+  for (const side of [-1, 1] as const) for (let i = 0; i < 4; i++) {
+    resetArachnidLeg(c, p, [rootsX[i]!, cy + side * S * 0.020],
+      [S * (0.29 + i * 0.105), cy + side * S * (0.115 + (i % 2) * 0.035)],
+      [S * (0.18 + i * 0.175), cy + side * S * (0.245 + (i % 2) * 0.030)], S * 0.017);
+  }
+  resetArachnidChela(c, p, [S * 0.405, cy - S * 0.030], [S * 0.270, cy - S * 0.145], [S * 0.125, cy - S * 0.155], S * 0.082, Math.PI - 0.24);
+  resetArachnidChela(c, p, [S * 0.405, cy + S * 0.030], [S * 0.270, cy + S * 0.145], [S * 0.125, cy + S * 0.155], S * 0.082, Math.PI + 0.24);
+  /* An overlapping metasoma arches over the body; the chain has no air gaps. */
+  const tail: ReadonlyArray<readonly [number, number, number, number, number]> = [
+    [0.675, 0.535, 0.070, 0.050, -0.10], [0.735, 0.495, 0.066, 0.047, -0.45],
+    [0.765, 0.425, 0.060, 0.043, -0.90], [0.750, 0.350, 0.054, 0.040, -1.35],
+    [0.695, 0.295, 0.048, 0.037, -1.85], [0.625, 0.275, 0.043, 0.034, -2.40],
+  ];
+  for (const [x, y, rx, ry, rot] of tail) {
+    c.fillStyle = resetInvertGradient(c, p, S * x, S * y, S * rx);
+    c.beginPath(); c.ellipse(S * x, S * y, S * rx, S * ry, rot, 0, TAU); c.fill();
+    c.strokeStyle = resetInvertTone(p, 0.32, 0.82); c.lineWidth = 2.5; c.stroke();
+  }
+  c.fillStyle = resetInvertTone(p, 0.58);
+  c.beginPath(); c.ellipse(S * 0.565, S * 0.275, S * 0.052, S * 0.042, -0.10, 0, TAU); c.fill();
+  c.beginPath(); c.moveTo(S * 0.530, S * 0.260); c.quadraticCurveTo(S * 0.430, S * 0.205, S * 0.455, S * 0.305);
+  c.quadraticCurveTo(S * 0.475, S * 0.270, S * 0.530, S * 0.285); c.closePath(); c.fill();
+  /* One continuous, low broad body over all leg and tail roots. */
+  c.fillStyle = resetInvertGradient(c, p, S * 0.525, cy, S * 0.20);
+  c.beginPath(); c.moveTo(S * 0.355, cy);
+  c.quadraticCurveTo(S * 0.405, cy - S * 0.095, S * 0.690, cy - S * 0.075);
+  c.quadraticCurveTo(S * 0.735, cy, S * 0.690, cy + S * 0.075);
+  c.quadraticCurveTo(S * 0.405, cy + S * 0.095, S * 0.355, cy); c.closePath(); c.fill();
+  c.strokeStyle = resetInvertTone(p, 0.30, 0.90); c.lineWidth = 3.2; c.stroke();
+  for (let i = 1; i <= 5; i++) {
+    const x = S * (0.405 + i * 0.050);
+    c.strokeStyle = resetInvertTone(p, 0.42, 0.58); c.lineWidth = 2.2;
+    c.beginPath(); c.moveTo(x, cy - S * 0.076); c.quadraticCurveTo(x + S * 0.010, cy, x, cy + S * 0.076); c.stroke();
+  }
+  c.fillStyle = resetInvertGradient(c, p, S * 0.370, cy, S * 0.080);
+  c.beginPath(); c.ellipse(S * 0.370, cy, S * 0.085, S * 0.070, 0, 0, TAU); c.fill();
+  eyeDot(c, S * 0.335, cy - S * 0.024, S * 0.009); eyeDot(c, S * 0.335, cy + S * 0.024, S * 0.009);
+}
+
+function resetTrueSpiderIII(c: Ctx, p: Pal, tarantula: boolean): void {
+  const cy = S * 0.515, headX = S * 0.440, abdomenX = S * 0.615;
+  shadow(c, S * 0.52, S * 0.83, S * 0.37);
+  const rootsX = [S * 0.405, S * 0.430, S * 0.455, S * 0.480] as const;
+  const kneesX = [S * 0.225, S * 0.315, S * 0.625, S * 0.735] as const;
+  const feetX = [S * 0.055, S * 0.215, S * 0.765, S * 0.945] as const;
+  for (const side of [-1, 1] as const) for (let i = 0; i < 4; i++) {
+    const long = tarantula ? 0.34 : 0.38;
+    resetArachnidLeg(c, p, [rootsX[i]!, cy + side * S * 0.026],
+      [kneesX[i]!, cy + side * S * (0.175 + (i % 2) * 0.060)],
+      [feetX[i]!, cy + side * S * (long - (i === 0 || i === 3 ? 0.050 : 0))],
+      S * (tarantula ? 0.030 : 0.017), tarantula);
+  }
+  if (tarantula) {
+    /* Palps and fangs are rooted first; the cephalothorax later hides their
+       sockets, leaving continuous appendages rather than strokes on a shell. */
+    for (const side of [-1, 1] as const) resetArachnidLeg(c, p, [headX - S * 0.072, cy + side * S * 0.040],
+      [S * 0.295, cy + side * S * 0.102], [S * 0.190, cy + side * S * 0.155], S * 0.027, true);
+  }
+  /* Both tagmata overlap at the pedicel, preserving a continuous animal while
+     keeping the diagnostic small-front/large-round-abdomen silhouette. */
+  c.fillStyle = resetInvertGradient(c, p, abdomenX, cy, S * 0.18);
+  c.beginPath(); c.ellipse(abdomenX, cy, S * (tarantula ? 0.175 : 0.160), S * (tarantula ? 0.140 : 0.155), 0.03, 0, TAU); c.fill();
+  c.strokeStyle = resetInvertTone(p, 0.30, 0.88); c.lineWidth = tarantula ? 5 : 3; c.stroke();
+  c.fillStyle = resetInvertGradient(c, p, headX, cy, S * 0.12);
+  c.beginPath(); c.ellipse(headX, cy, S * (tarantula ? 0.115 : 0.100), S * (tarantula ? 0.105 : 0.092), 0, 0, TAU); c.fill();
+  c.strokeStyle = resetInvertTone(p, 0.30, 0.90); c.lineWidth = tarantula ? 4.5 : 3; c.stroke();
+  const ex = headX - S * 0.065;
+  for (const side of [-1, 1] as const) {
+    eyeDot(c, ex, cy + side * S * 0.028, S * (tarantula ? 0.011 : 0.010));
+    eyeDot(c, ex + S * 0.028, cy + side * S * 0.016, S * (tarantula ? 0.009 : 0.008));
+  }
+  if (tarantula) {
+    /* The paired cheliceral bases overlap the front plate without a rear seam.
+       Pale inward-hooking fangs then remain distinct from the dark pile at 132. */
+    for (const side of [-1, 1] as const) {
+      const bx = S * 0.355, by = cy + side * S * 0.052;
+      c.fillStyle = resetInvertGradient(c, p, bx, by, S * 0.050);
+      c.beginPath(); c.ellipse(bx, by, S * 0.046, S * 0.034, 0, 0, TAU); c.fill();
+      c.strokeStyle = resetInvertTone(p, 1.36, 0.64); c.lineWidth = 2.2;
+      c.beginPath(); c.ellipse(bx, by, S * 0.046, S * 0.034, 0, Math.PI * 0.55, Math.PI * 1.45); c.stroke();
+      c.fillStyle = '#d8b07b';
+      c.beginPath(); c.moveTo(bx - S * 0.022, by - side * S * 0.010);
+      c.quadraticCurveTo(S * 0.300, cy + side * S * 0.050, S * 0.282, cy + side * S * 0.006);
+      c.quadraticCurveTo(S * 0.310, cy + side * S * 0.020, bx - S * 0.004, by + side * S * 0.016); c.closePath(); c.fill();
+      c.strokeStyle = '#5c3825'; c.lineWidth = 1.8; c.stroke();
+    }
+    /* Warm highlights keep dense pile from collapsing into a black card-scale blob. */
+    c.strokeStyle = resetInvertTone(p, 1.40, 0.72); c.lineWidth = 1.6;
+    for (let i = 0; i < 18; i++) {
+      const a = i / 18 * TAU, x = abdomenX + Math.cos(a) * S * 0.145, y = cy + Math.sin(a) * S * 0.112;
+      c.beginPath(); c.moveTo(x, y); c.lineTo(x + Math.cos(a) * S * 0.018, y + Math.sin(a) * S * 0.018); c.stroke();
+    }
+  } else {
+    c.strokeStyle = resetInvertTone(p, 1.32, 0.55); c.lineWidth = 3.2;
+    c.beginPath(); c.moveTo(abdomenX - S * 0.055, cy); c.quadraticCurveTo(abdomenX, cy - S * 0.065, abdomenX + S * 0.060, cy); c.stroke();
+    c.beginPath(); c.moveTo(abdomenX - S * 0.055, cy); c.quadraticCurveTo(abdomenX, cy + S * 0.065, abdomenX + S * 0.060, cy); c.stroke();
+  }
+}
+
+function resetArachnidIII(c: Ctx, p: Pal, sig: ResetArachnidIIISignature): void {
+  switch (sig) {
+    case 'seaSpider': resetSeaSpiderIII(c, p); return;
+    case 'camelSpider': resetCamelSpiderIII(c, p); return;
+    case 'pseudoscorpion': resetPseudoscorpionIII(c, p); return;
+    case 'scorpion': resetScorpionIII(c, p); return;
+    case 'spider': resetTrueSpiderIII(c, p, false); return;
+    case 'tarantula': resetTrueSpiderIII(c, p, true); return;
+  }
+}
+
 export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: boolean; sting?: boolean;
   longleg?: boolean; claws?: boolean; hue?: string; scale?: number;
   /** species-gated reach multiplier for animals whose leg span is the identity */
@@ -521,6 +830,8 @@ export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: 
   /** Down-facing cheliceral fangs rather than a visible spider eye cluster. */
   fangs?: boolean }, name = ''): void {
   const p = hued(pIn, opts.hue);
+  const resetSignature = RESET_ARACHNID_III[name];
+  if (resetSignature) { resetArachnidIII(c, p, resetSignature); return; }
   const r = nrng(g, name, 0xA8AC);
   const cx = S * 0.50, cy = S * 0.52;
   const b = S * 0.050 * (opts.big ? 1.25 : 1) * 1.30 * (opts.scale ?? 1) * nv(name, 0x21, 0.12);
@@ -705,9 +1016,72 @@ export function arachnid(c: Ctx, g: G, pIn: Pal, opts: { big?: boolean; hairy?: 
 }
 
 /* ═══════════════ MYRIAPODS: many segments, a leg pair on each ═══════════════ */
+function resetMillipedeIII(c: Ctx, p: Pal): void {
+  const point = (u: number): readonly [number, number] => [
+    S * (0.105 + u * 0.790),
+    S * (0.505 + Math.sin(u * Math.PI * 1.36 - 0.58) * 0.135),
+  ];
+  const frame = (u: number): readonly [number, number, number, number] => {
+    const du = 0.001, a = point(Math.max(0, u - du)), b = point(Math.min(1, u + du));
+    const dx = b[0] - a[0], dy = b[1] - a[1], m = Math.hypot(dx, dy) || 1;
+    return [dx / m, dy / m, -dy / m, dx / m];
+  };
+  shadow(c, S * 0.50, S * 0.82, S * 0.39);
+  /* Two short leg pairs per diplosegment, painted first so every root vanishes
+     beneath the continuous cylindrical body while the feet form a dense ripple. */
+  const segments = 17;
+  for (let i = 1; i < segments - 1; i++) {
+    const u = i / (segments - 1);
+    for (const offset of [-0.010, 0.010] as const) {
+      const uu = Math.max(0.025, Math.min(0.975, u + offset));
+      const [x, y] = point(uu), [tx, ty, nx, ny] = frame(uu);
+      for (const side of [-1, 1] as const) {
+        const root: readonly [number, number] = [x + nx * side * S * 0.040, y + ny * side * S * 0.040];
+        const knee: readonly [number, number] = [x + nx * side * S * 0.073 - tx * S * 0.010, y + ny * side * S * 0.073 - ty * S * 0.010];
+        const tip: readonly [number, number] = [x + nx * side * S * 0.103 - tx * S * 0.028, y + ny * side * S * 0.103 - ty * S * 0.028];
+        resetArachnidLeg(c, p, root, knee, tip, S * 0.0105);
+      }
+    }
+  }
+  const bodyPath = (): void => {
+    const [x0, y0] = point(0); c.moveTo(x0, y0);
+    for (let i = 1; i <= 80; i++) { const [x, y] = point(i / 80); c.lineTo(x, y); }
+  };
+  c.lineCap = 'round'; c.lineJoin = 'round';
+  c.strokeStyle = resetInvertTone(p, 0.30); c.lineWidth = S * 0.122;
+  c.beginPath(); bodyPath(); c.stroke();
+  c.strokeStyle = resetInvertTone(p, 0.88); c.lineWidth = S * 0.104;
+  c.beginPath(); bodyPath(); c.stroke();
+  c.strokeStyle = resetInvertTone(p, 1.30, 0.48); c.lineWidth = S * 0.025;
+  c.beginPath(); bodyPath(); c.stroke();
+  /* Ring seams cross the tube rather than separating it into a bead chain. */
+  for (let i = 1; i < segments; i++) {
+    const u = i / segments, [x, y] = point(u), [, , nx, ny] = frame(u);
+    c.strokeStyle = resetInvertTone(p, 0.32, 0.74); c.lineWidth = 2.5;
+    c.beginPath(); c.moveTo(x - nx * S * 0.052, y - ny * S * 0.052); c.lineTo(x + nx * S * 0.052, y + ny * S * 0.052); c.stroke();
+    c.strokeStyle = 'rgba(255,255,255,0.18)'; c.lineWidth = 1.2;
+    c.beginPath(); c.moveTo(x - nx * S * 0.045, y - ny * S * 0.045); c.lineTo(x + nx * S * 0.045, y + ny * S * 0.045); c.stroke();
+  }
+  const [hx, hy] = point(0), [tx, ty, nx, ny] = frame(0);
+  c.fillStyle = resetInvertGradient(c, p, hx, hy, S * 0.070);
+  c.beginPath(); c.ellipse(hx, hy, S * 0.070, S * 0.062, Math.atan2(ty, tx), 0, TAU); c.fill();
+  c.strokeStyle = resetInvertTone(p, 0.32, 0.90); c.lineWidth = 2.8; c.stroke();
+  for (const side of [-1, 1] as const) {
+    const sx = hx - tx * S * 0.045 + nx * side * S * 0.026, sy = hy - ty * S * 0.045 + ny * side * S * 0.026;
+    const ex = hx - tx * S * 0.135 + nx * side * S * 0.070, ey = hy - ty * S * 0.135 + ny * side * S * 0.070;
+    c.strokeStyle = resetInvertTone(p, 0.42); c.lineWidth = 4; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(sx, sy); c.quadraticCurveTo(hx - tx * S * 0.095 + nx * side * S * 0.050,
+      hy - ty * S * 0.095 + ny * side * S * 0.050, ex, ey); c.stroke();
+    c.fillStyle = resetInvertTone(p, 0.72); c.beginPath(); c.arc(ex, ey, S * 0.011, 0, TAU); c.fill();
+  }
+  eyeDot(c, hx - tx * S * 0.035 + nx * S * 0.026, hy - ty * S * 0.035 + ny * S * 0.026, S * 0.009);
+  eyeDot(c, hx - tx * S * 0.035 - nx * S * 0.026, hy - ty * S * 0.035 - ny * S * 0.026, S * 0.009);
+}
+
 export function myriapod(c: Ctx, g: G, pIn: Pal, opts: { flat?: boolean; coil?: boolean;
   hue?: string; segs?: number; scale?: number; legScale?: number; legContrast?: boolean }, name = ''): void {
   const p = hued(pIn, opts.hue);
+  if (name === 'Millipede') { resetMillipedeIII(c, p); return; }
   const r = nrng(g, name, 0x33DD);
   const cx = S * 0.48, cy = S * 0.52;
   /* the SEGMENT COUNT is a ratio the fit pass cannot flatten */
@@ -2934,27 +3308,27 @@ export const INVERT_NAME: Record<string, PainterI> = {
   'Millipede': M({ hue: '#4a3324', coil: true }),
   /* ── CRABS ── */
   'Crab': C({ hue: '#8f5a3b', wide: true }),
-  'Mud Crab': C({ hue: '#4e5230', wide: true }),
+  'Mud Crab': C({ hue: '#4e5230' }),
   'Freshwater Crab': C({ hue: '#7d4c3d', }),
   'Vent Crab': C({ hue: '#fbf8f2', }),
-  'Hermit Crab': C({ hue: '#cd8145', hermit: true }),
+  'Hermit Crab': C({ hue: '#cd8145' }),
   'Coconut Crab': C({ hue: '#3f3f6e', big: true, wide: true, terrestrial: true, crusher: true }),
   /* ── SHRIMP, LOBSTER AND KIN ── */
   'Shrimp': P({ hue: '#cfa091', }),
   'Prawn': P({ hue: '#8d94a6', }),
   'Freshwater Shrimp': P({ hue: '#c6b78d', }),
-  'Brine Shrimp': P({ tiny: true, stalks: true, scale: 0.90, hue: '#d98a5c' }),
-  'Fairy Shrimp': P({ tiny: true, scale: 1.20, hue: '#e8c9a0' }),
-  'Tadpole Shrimp': P({ tiny: true, stout: true, shield: true, scale: 1.05, hue: '#8a6f45' }),
+  'Brine Shrimp': P({ hue: '#d98a5c' }),
+  'Fairy Shrimp': P({ hue: '#e8c9a0' }),
+  'Tadpole Shrimp': P({ hue: '#8a6f45' }),
   'Cave Shrimp': P({ hue: '#f0dfd8', }),
   'Vent Shrimp': P({ hue: '#e8bcae', }),
-  'Krill': P({ tiny: true, gills: true, stalks: true, scale: 1.00, hue: '#e2705a' }),
-  'Copepod': P({ hue: '#d18a4e', tiny: true, stout: true, eggSacs: true, forkedTail: true }),
-  'Amphipod': P({ tiny: true, stout: true, scale: 0.74, hue: '#b9a274' }),
+  'Krill': P({ hue: '#e2705a' }),
+  'Copepod': P({ hue: '#d18a4e' }),
+  'Amphipod': P({ hue: '#b9a274' }),
   'Water Flea': (c, g, p, n) => waterFlea(c, g, p, n),
   'Isopod': (c, g, p, n) => isopodBody(c, g, p, { hue: '#6e6c73' }, n),
   'Giant Isopod': (c, g, p, n) => isopodBody(c, g, p, { giant: true, hue: '#c3b2b8' }, n),
-  'Lobster': P({ hue: '#2f3a4e', claws: true, stout: true, unequalClaws: true }),
+  'Lobster': P({ hue: '#2f3a4e' }),
   'Crayfish': P({ hue: '#6e6135', claws: true, stout: true, crayfish: true }),
   'Barnacle': X({ kind: 'volcano', hue: '#d8d2c4', resetSignature: 'barnacle' }),
   /* ── WORMS ── */

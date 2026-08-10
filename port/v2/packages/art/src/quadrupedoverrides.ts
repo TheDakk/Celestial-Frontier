@@ -42,6 +42,12 @@ export type MammalFamily = 'felid' | 'canid' | 'ursid' | 'bovid' | 'cervid' | 'e
   /* ★ wave 35: the hyenas were canids, and three blockers said so. */
   | 'hyaenid';
 
+/** Full-reset Wave 2d routes are deliberately exact-name values.  The plan is
+    not a family bucket: every value below owns one catalogue identity. */
+export type MammalDPlan = 'Badger' | 'Civet' | 'Fisher' | 'Giant Otter' | 'Marten' | 'Mink'
+  | 'Mongoose' | 'Otter' | 'River Otter' | 'Sea Otter' | 'Wolverine' | 'Capybara'
+  | 'Hyrax' | 'Mara' | 'Marsh Rodent' | 'Mole';
+
 export interface QuadSpec {
   legs: number;                 /* leg length as a fraction of S */
   depth: number;                /* body depth (belly) */
@@ -219,6 +225,8 @@ export interface QuadSpec {
   mammalBPlan?: 'ursid-r1' | 'felid-r1' | 'hyaenid-r1';
   /** Full-reset Wave 2c: exact named canid/procyonid/marsupial whole-form owner. */
   mammalCPlan?: 'canid-c1' | 'procyonid-c1' | 'marsupial-c1';
+  /** Full-reset Wave 2d: one exact named whole-form owner per catalogue identity. */
+  mammalDPlan?: MammalDPlan;
 }
 
 /** ★ WAVE 6 — THE SKULL. Nick, after looking at the wave-5 export: *"the heads
@@ -1861,13 +1869,602 @@ function faunaResetMarsupialC(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name: strin
   }
 }
 
+/** Wave 2d exact-name forms keep the catalogue contract in the silhouette.
+    Shared helpers below provide paint, grain and small facial anatomy only;
+    every route still supplies its own complete body, limb, skull and tail. */
+function mammalDWhiskers(
+  c: Ctx, x: number, y: number, length: number, spread: number,
+  count = 5, colour = 'rgba(238,232,218,0.70)',
+): void {
+  c.strokeStyle = colour; c.lineWidth = 1.25; c.lineCap = 'round';
+  for (let i = 0; i < count; i++) {
+    const t = count === 1 ? 0.5 : i / (count - 1);
+    c.beginPath(); c.moveTo(x, y + (t - 0.5) * spread * 0.28);
+    c.quadraticCurveTo(x + length * 0.52, y + (t - 0.5) * spread * 0.58,
+      x + length, y + (t - 0.5) * spread); c.stroke();
+  }
+}
+
+function mammalDInnerEar(c: Ctx, ear: Path2D, fill = 'rgba(45,31,30,0.56)'): void {
+  c.save(); c.clip(ear); c.fillStyle = fill; c.fillRect(0, 0, S, S); c.restore();
+}
+
+type MammalDMustelid = Extract<MammalDPlan, 'Badger' | 'Fisher' | 'Marten' | 'Mink' | 'Wolverine'>;
+
+function faunaResetMustelidD(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: MammalDMustelid): void {
+  const p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0xD41D ^ nameSeedQ(plan)) >>> 0));
+  const badger = plan === 'Badger', fisher = plan === 'Fisher', marten = plan === 'Marten';
+  const mink = plan === 'Mink', wolverine = plan === 'Wolverine';
+  const groundY = S * 0.795;
+  const left = S * (wolverine ? 0.195 : badger ? 0.205 : 0.265);
+  const right = S * (wolverine ? 0.655 : badger ? 0.665 : fisher ? 0.655 : 0.640);
+  const bodyBottom = S * (wolverine ? 0.660 : badger ? 0.685 : mink ? 0.665 : 0.655);
+  const rumpTop = S * (wolverine ? 0.365 : badger ? 0.435 : mink ? 0.475 : 0.445);
+  const shoulderTop = S * (wolverine ? 0.315 : badger ? 0.420 : marten ? 0.405 : fisher ? 0.425 : 0.455);
+  const hx = S * (wolverine ? 0.760 : badger ? 0.775 : 0.755);
+  const hy = S * (wolverine ? 0.425 : badger ? 0.505 : marten ? 0.455 : fisher ? 0.475 : 0.495);
+  const headRx = S * (wolverine ? 0.088 : badger ? 0.076 : fisher ? 0.068 : marten ? 0.064 : 0.058);
+  const headRy = headRx * (badger ? 0.72 : wolverine ? 0.86 : 0.80);
+  const muzzleLen = headRx * (badger ? 1.18 : wolverine ? 0.90 : fisher ? 0.98 : marten ? 1.02 : 1.06);
+  const legW = S * (wolverine ? 0.042 : badger ? 0.032 : fisher ? 0.025 : 0.022);
+
+  mammalBGround(c, S * 0.49, groundY + S * 0.014, S * (wolverine ? 0.31 : 0.28));
+  const total = new Path2D();
+  const tail = new Path2D();
+  const tailBaseY = rumpTop + (bodyBottom - rumpTop) * 0.50;
+  if (badger) {
+    tail.moveTo(left + S * 0.012, tailBaseY - S * 0.025);
+    tail.quadraticCurveTo(left - S * 0.070, tailBaseY - S * 0.012, left - S * 0.075, tailBaseY + S * 0.030);
+    tail.quadraticCurveTo(left - S * 0.035, tailBaseY + S * 0.055, left + S * 0.018, tailBaseY + S * 0.024); tail.closePath();
+  } else {
+    const bush = wolverine ? S * 0.060 : fisher ? S * 0.050 : marten ? S * 0.058 : S * 0.021;
+    const tipX = left - S * (wolverine ? 0.135 : fisher ? 0.235 : marten ? 0.245 : 0.230);
+    const tipY = groundY - S * (wolverine ? 0.070 : fisher ? 0.095 : marten ? 0.115 : 0.075);
+    tail.moveTo(left + S * 0.018, tailBaseY - bush);
+    tail.bezierCurveTo(left - S * 0.055, tailBaseY - bush * 1.15, tipX + S * 0.045, tipY - bush * 0.58, tipX, tipY);
+    tail.quadraticCurveTo(tipX - bush * 0.28, tipY + bush * 0.54, tipX + bush * 0.40, tipY + bush * 0.72);
+    tail.bezierCurveTo(tipX + S * 0.080, tipY + bush * 0.72, left - S * 0.030, tailBaseY + bush * 0.82, left + S * 0.018, tailBaseY + bush * 0.52); tail.closePath();
+  }
+  total.addPath(tail);
+
+  const body = new Path2D();
+  body.moveTo(left, bodyBottom - S * 0.035);
+  body.bezierCurveTo(left - S * 0.020, rumpTop + S * 0.055, left + S * 0.045, rumpTop, left + S * 0.105, rumpTop);
+  if (wolverine) {
+    body.bezierCurveTo(left + S * 0.185, rumpTop - S * 0.008, right - S * 0.135, shoulderTop - S * 0.025, right, shoulderTop + S * 0.048);
+  } else {
+    body.bezierCurveTo(left + S * 0.155, rumpTop - S * (marten ? 0.018 : 0.004), right - S * 0.100, shoulderTop - S * 0.010, right, shoulderTop + S * 0.025);
+  }
+  body.bezierCurveTo(right + S * 0.025, shoulderTop + S * 0.090, right + S * 0.010, bodyBottom - S * 0.010, right - S * 0.035, bodyBottom + S * 0.012);
+  body.bezierCurveTo(right - S * 0.150, bodyBottom + S * (wolverine ? 0.040 : 0.020), left + S * 0.080, bodyBottom + S * 0.022, left, bodyBottom - S * 0.035); body.closePath();
+  total.addPath(body);
+
+  const leg = (x: number, fore: boolean, far: boolean): Path2D => {
+    const q = new Path2D();
+    const rootY = bodyBottom - S * (fore ? 0.052 : 0.040);
+    const w = legW * (far ? 0.82 : 1);
+    const ankleX = x + (fore ? S * 0.010 : -S * 0.008);
+    q.moveTo(x - w, rootY);
+    q.bezierCurveTo(x - w * 1.08, rootY + S * 0.050, ankleX - w * 0.72, groundY - S * 0.056, ankleX - w * 0.42, groundY - S * 0.027);
+    q.quadraticCurveTo(ankleX + w * 0.50, groundY + S * 0.005, ankleX + w * (badger && fore ? 2.10 : 1.45), groundY - S * 0.012);
+    q.quadraticCurveTo(ankleX + w * (badger && fore ? 2.20 : 1.55), groundY - S * 0.034, ankleX + w * 0.66, groundY - S * 0.052);
+    q.bezierCurveTo(ankleX + w * 0.72, groundY - S * 0.085, x + w * 1.15, rootY + S * 0.030, x + w, rootY); q.closePath(); return q;
+  };
+  const legX = [left + S * 0.075, left + S * 0.130, right - S * 0.105, right - S * 0.050];
+  const legs = legX.map((x, i) => leg(x, i > 1, i === 0 || i === 2));
+  for (const q of legs) total.addPath(q);
+
+  const neck = new Path2D();
+  neck.moveTo(right - S * 0.070, shoulderTop + S * 0.015);
+  neck.bezierCurveTo(right + S * 0.010, shoulderTop - S * 0.015, hx - headRx * 0.85, hy - headRy * 0.66, hx - headRx * 0.48, hy - headRy * 0.45);
+  neck.lineTo(hx - headRx * 0.38, hy + headRy * 0.74);
+  neck.bezierCurveTo(right + S * 0.010, bodyBottom - S * 0.015, right - S * 0.045, bodyBottom, right - S * 0.070, shoulderTop + S * 0.015); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(hx, hy, headRx, headRy, -0.05, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D();
+  muzzle.moveTo(hx + headRx * 0.18, hy - headRy * 0.15);
+  muzzle.quadraticCurveTo(hx + headRx * 0.72, hy - headRy * 0.15, hx + muzzleLen, hy + headRy * 0.05);
+  muzzle.quadraticCurveTo(hx + muzzleLen * 1.08, hy + headRy * 0.34, hx + headRx * 0.50, hy + headRy * 0.48);
+  muzzle.quadraticCurveTo(hx + headRx * 0.20, hy + headRy * 0.40, hx + headRx * 0.10, hy + headRy * 0.16); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) {
+    const ear = new Path2D();
+    const ex = hx - headRx * 0.42 + side * headRx * 0.34, ey = hy - headRy * 0.72;
+    ear.ellipse(ex, ey, headRx * (badger ? 0.16 : marten ? 0.35 : fisher ? 0.32 : 0.23),
+      headRy * (badger ? 0.22 : marten ? 0.56 : fisher ? 0.46 : 0.32), side * 0.18, 0, TAU);
+    ears.push(ear); total.addPath(ear);
+  }
+
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck, head, muzzle, ...ears],
+    p, left - S * 0.20, Math.min(rumpTop, shoulderTop), hx + muzzleLen, bodyBottom);
+  mammalCFurGrain(c, total, r, left - S * 0.20, Math.min(rumpTop, shoulderTop), hx + muzzleLen, bodyBottom,
+    wolverine ? 95 : fisher ? 78 : marten ? 68 : mink ? 42 : 60,
+    mink ? 'rgba(255,231,205,0.18)' : 'rgba(255,239,210,0.22)', 'rgba(40,28,25,0.22)');
+
+  if (fisher || marten || wolverine) {
+    /* Break the tail outline with short overlapping guard hairs. Width alone
+       still read as an otter's smooth muscular taper at thumbnail scale. */
+    const tipX = left - S * (wolverine ? 0.135 : fisher ? 0.235 : 0.245);
+    const tipY = groundY - S * (wolverine ? 0.070 : fisher ? 0.095 : 0.115);
+    const bush = S * (wolverine ? 0.060 : fisher ? 0.050 : 0.058);
+    c.strokeStyle = mammalBTone(p, 0.88); c.lineWidth = 2.3; c.lineCap = 'round';
+    for (let i = 1; i < 12; i++) {
+      const t = i / 12, x = left * (1 - t) + tipX * t;
+      const y = tailBaseY * (1 - t) + tipY * t, rad = bush * (1 - t * 0.62);
+      const tooth = S * (0.008 + (i % 3) * 0.003);
+      c.beginPath(); c.moveTo(x + S * 0.006, y - rad * 0.72); c.lineTo(x - tooth, y - rad * (1.00 + (i % 2) * 0.10)); c.stroke();
+      c.beginPath(); c.moveTo(x + S * 0.006, y + rad * 0.68); c.lineTo(x - tooth, y + rad * (0.96 + ((i + 1) % 2) * 0.10)); c.stroke();
+    }
+  }
+
+  if (badger) {
+    c.save(); c.clip(body);
+    c.strokeStyle = '#252426'; c.lineWidth = S * 0.118; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(left + S * 0.045, rumpTop + S * 0.060);
+    c.bezierCurveTo(left + S * 0.175, rumpTop + S * 0.010, right - S * 0.120, shoulderTop + S * 0.015, right + S * 0.008, shoulderTop + S * 0.080); c.stroke();
+    c.strokeStyle = '#e7e2d7'; c.lineWidth = S * 0.030;
+    c.beginPath(); c.moveTo(left + S * 0.020, rumpTop + S * 0.008);
+    c.bezierCurveTo(left + S * 0.180, rumpTop - S * 0.012, right - S * 0.080, shoulderTop - S * 0.006, right + S * 0.010, shoulderTop + S * 0.020); c.stroke(); c.restore();
+    c.fillStyle = '#eee9df'; c.fill(head); c.fill(muzzle);
+    c.strokeStyle = '#242326'; c.lineWidth = S * 0.027; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(hx - headRx * 0.62, hy - headRy * 0.38); c.lineTo(hx + muzzleLen * 0.84, hy + headRy * 0.04); c.stroke();
+    c.beginPath(); c.moveTo(hx - headRx * 0.48, hy + headRy * 0.24); c.lineTo(hx + muzzleLen * 0.74, hy + headRy * 0.28); c.stroke();
+    c.strokeStyle = '#e7e2d7'; c.lineWidth = S * 0.014;
+    c.beginPath(); c.moveTo(hx - headRx * 0.62, hy - headRy * 0.68); c.lineTo(hx + muzzleLen * 0.90, hy - headRy * 0.06); c.stroke();
+  } else if (wolverine) {
+    c.save(); c.clip(body); c.strokeStyle = '#c59b64'; c.lineWidth = S * 0.040; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(right - S * 0.010, shoulderTop + S * 0.105);
+    c.bezierCurveTo(right - S * 0.130, bodyBottom - S * 0.040, left + S * 0.120, bodyBottom - S * 0.025, left + S * 0.020, tailBaseY + S * 0.030); c.stroke(); c.restore();
+  } else if (marten) {
+    const bib = new Path2D(); bib.moveTo(hx - headRx * 0.62, hy + headRy * 0.34);
+    bib.bezierCurveTo(right + S * 0.025, hy + S * 0.055, right - S * 0.010, bodyBottom - S * 0.025, right - S * 0.075, bodyBottom - S * 0.020);
+    bib.quadraticCurveTo(right - S * 0.085, hy + S * 0.025, hx - headRx * 0.42, hy + headRy * 0.18); bib.closePath();
+    c.fillStyle = '#e6a85e'; c.fill(bib);
+  } else if (mink) {
+    c.fillStyle = '#f0e9dc'; c.beginPath(); c.ellipse(hx + headRx * 0.47, hy + headRy * 0.34, headRx * 0.34, headRy * 0.18, 0.02, 0, TAU); c.fill();
+    c.strokeStyle = 'rgba(255,242,221,0.34)'; c.lineWidth = S * 0.010; c.lineCap = 'round';
+    c.beginPath(); c.moveTo(left + S * 0.060, rumpTop + S * 0.048); c.quadraticCurveTo((left + right) * 0.5, rumpTop - S * 0.015, right - S * 0.020, shoulderTop + S * 0.050); c.stroke();
+  }
+
+  for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCProfileEye(c, hx + headRx * 0.28, hy - headRy * 0.18, S * (wolverine ? 0.010 : 0.0085), '#8f5f2f');
+  mammalCNose(c, hx + muzzleLen, hy + headRy * 0.06, S * (wolverine ? 0.016 : 0.013), S * 0.0095);
+  if (badger) {
+    c.strokeStyle = '#d8c7a5'; c.lineWidth = 2.3; c.lineCap = 'round';
+    for (const x of [legX[2]!, legX[3]!]) for (let i = 0; i < 4; i++) {
+      const sx = x + legW * (0.55 + i * 0.48); c.beginPath(); c.moveTo(sx, groundY - S * 0.011);
+      c.quadraticCurveTo(sx + S * 0.027, groundY + S * 0.001, sx + S * 0.052, groundY + S * 0.006); c.stroke();
+    }
+  } else if (wolverine) {
+    c.strokeStyle = '#dec89f'; c.lineWidth = 2.6; c.lineCap = 'round';
+    for (const x of [legX[1]!, legX[3]!]) for (let i = 0; i < 4; i++) {
+      const sx = x + legW * (0.45 + i * 0.38); c.beginPath(); c.moveTo(sx, groundY - S * 0.013);
+      c.quadraticCurveTo(sx + S * 0.017, groundY - S * 0.001, sx + S * 0.031, groundY + S * 0.005); c.stroke();
+    }
+  }
+}
+
+type MammalDViverrid = Extract<MammalDPlan, 'Civet' | 'Mongoose'>;
+
+function faunaResetViverridD(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: MammalDViverrid): void {
+  const p = pal(p0, spec), civet = plan === 'Civet';
+  const r = mulberry32((((g.seed as number) ^ 0xD71D ^ nameSeedQ(plan)) >>> 0));
+  const groundY = S * 0.795, left = S * 0.300, right = S * (civet ? 0.650 : 0.635);
+  const rumpTop = S * (civet ? 0.420 : 0.455), shoulderTop = S * (civet ? 0.405 : 0.440);
+  const bodyBottom = S * (civet ? 0.650 : 0.665);
+  const hx = S * 0.755, hy = S * (civet ? 0.470 : 0.500);
+  const headRx = S * (civet ? 0.070 : 0.060), headRy = S * (civet ? 0.058 : 0.050);
+  const muzzleLen = S * (civet ? 0.125 : 0.095), legW = S * (civet ? 0.022 : 0.020);
+  mammalBGround(c, S * 0.48, groundY + S * 0.014, S * 0.30);
+
+  const total = new Path2D();
+  const tail = new Path2D();
+  const tailBaseY = rumpTop + S * 0.100, tipX = S * (civet ? 0.055 : 0.035), tipY = groundY - S * (civet ? 0.080 : 0.060);
+  tail.moveTo(left + S * 0.012, tailBaseY - S * (civet ? 0.032 : 0.040));
+  tail.bezierCurveTo(left - S * 0.060, tailBaseY - S * 0.045, tipX + S * 0.060, tipY - S * 0.022, tipX, tipY);
+  tail.quadraticCurveTo(tipX - S * 0.012, tipY + S * 0.018, tipX + S * 0.030, tipY + S * (civet ? 0.030 : 0.012));
+  tail.bezierCurveTo(tipX + S * 0.085, tipY + S * 0.035, left - S * 0.035, tailBaseY + S * (civet ? 0.044 : 0.052), left + S * 0.018, tailBaseY + S * 0.026); tail.closePath();
+  total.addPath(tail);
+  const body = new Path2D(); body.moveTo(left, bodyBottom - S * 0.035);
+  body.bezierCurveTo(left - S * 0.020, rumpTop + S * 0.055, left + S * 0.040, rumpTop, left + S * 0.090, rumpTop);
+  body.bezierCurveTo(left + S * 0.165, rumpTop - S * 0.008, right - S * 0.080, shoulderTop - S * 0.010, right, shoulderTop + S * 0.025);
+  body.bezierCurveTo(right + S * 0.022, shoulderTop + S * 0.090, right + S * 0.008, bodyBottom - S * 0.008, right - S * 0.035, bodyBottom + S * 0.012);
+  body.bezierCurveTo(right - S * 0.130, bodyBottom + S * 0.026, left + S * 0.070, bodyBottom + S * 0.024, left, bodyBottom - S * 0.035); body.closePath(); total.addPath(body);
+  const leg = (x: number, far: boolean): Path2D => {
+    const q = new Path2D(), w = legW * (far ? 0.82 : 1), y0 = bodyBottom - S * 0.035;
+    q.moveTo(x - w, y0); q.bezierCurveTo(x - w, y0 + S * 0.045, x - w * 0.55, groundY - S * 0.052, x, groundY - S * 0.025);
+    q.quadraticCurveTo(x + S * 0.020, groundY - S * 0.002, x + S * 0.045, groundY - S * 0.012);
+    q.quadraticCurveTo(x + S * 0.048, groundY - S * 0.032, x + w * 0.55, groundY - S * 0.050);
+    q.bezierCurveTo(x + w * 0.75, groundY - S * 0.090, x + w * 1.12, y0 + S * 0.028, x + w, y0); q.closePath(); return q;
+  };
+  const legX = [left + S * 0.070, left + S * 0.120, right - S * 0.095, right - S * 0.045];
+  const legs = legX.map((x, i) => leg(x, i === 0 || i === 2)); for (const q of legs) total.addPath(q);
+  const neck = new Path2D(); neck.moveTo(right - S * 0.070, shoulderTop + S * 0.012);
+  neck.bezierCurveTo(right + S * 0.012, shoulderTop - S * 0.010, hx - headRx * 0.82, hy - headRy * 0.68, hx - headRx * 0.45, hy - headRy * 0.42);
+  neck.lineTo(hx - headRx * 0.38, hy + headRy * 0.72); neck.bezierCurveTo(right + S * 0.004, bodyBottom - S * 0.018, right - S * 0.045, bodyBottom, right - S * 0.070, shoulderTop + S * 0.012); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(hx, hy, headRx, headRy, -0.07, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D();
+  if (civet) {
+    muzzle.moveTo(hx + headRx * 0.02, hy - headRy * 0.16);
+    muzzle.bezierCurveTo(hx + headRx * 0.55, hy - headRy * 0.19,
+      hx + muzzleLen * 0.82, hy - headRy * 0.08, hx + muzzleLen, hy + headRy * 0.02);
+    muzzle.quadraticCurveTo(hx + muzzleLen * 0.96, hy + headRy * 0.17,
+      hx + headRx * 0.37, hy + headRy * 0.36);
+    muzzle.quadraticCurveTo(hx + headRx * 0.12, hy + headRy * 0.34,
+      hx + headRx * 0.01, hy + headRy * 0.10);
+  } else {
+    muzzle.moveTo(hx + headRx * 0.15, hy - headRy * 0.13);
+    muzzle.quadraticCurveTo(hx + headRx * 0.70, hy - headRy * 0.18, hx + muzzleLen, hy + headRy * 0.03);
+    muzzle.quadraticCurveTo(hx + muzzleLen * 1.06, hy + headRy * 0.26, hx + headRx * 0.44, hy + headRy * 0.43);
+    muzzle.quadraticCurveTo(hx + headRx * 0.18, hy + headRy * 0.38, hx + headRx * 0.08, hy + headRy * 0.12);
+  }
+  muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) { const ear = new Path2D(); ear.ellipse(hx - headRx * 0.43 + side * headRx * 0.34, hy - headRy * 0.73, headRx * 0.24, headRy * 0.34, side * 0.18, 0, TAU); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck, head, muzzle, ...ears],
+    p, tipX, rumpTop, hx + muzzleLen, bodyBottom);
+  mammalCFurGrain(c, total, r, tipX, rumpTop, hx + muzzleLen, bodyBottom, civet ? 64 : 72,
+    'rgba(255,242,212,0.22)', 'rgba(42,34,28,0.20)');
+
+  if (civet) {
+    c.save(); c.clip(body); c.fillStyle = 'rgba(47,42,35,0.72)';
+    for (let i = 0; i < 26; i++) {
+      const x = left + S * 0.025 + r() * (right - left - S * 0.045), y = rumpTop + S * 0.025 + r() * (bodyBottom - rumpTop - S * 0.045);
+      c.beginPath(); c.ellipse(x, y, S * (0.006 + r() * 0.005), S * (0.0045 + r() * 0.004), r() * 0.8 - 0.4, 0, TAU); c.fill();
+    }
+    c.restore();
+    c.save(); c.clip(tail); c.strokeStyle = 'rgba(40,36,34,0.92)'; c.lineWidth = S * 0.022;
+    for (let i = 0; i < 8; i++) { const x = tipX + S * (0.037 + i * 0.026); c.beginPath(); c.moveTo(x, tipY - S * 0.060); c.lineTo(x + S * 0.010, tipY + S * 0.080); c.stroke(); }
+    c.restore();
+    c.save(); c.clip(head); c.fillStyle = 'rgba(34,31,29,0.94)';
+    c.beginPath(); c.ellipse(hx + headRx * 0.12, hy - headRy * 0.10, headRx * 0.86, headRy * 0.34, -0.07, 0, TAU); c.fill(); c.restore();
+    const muzzlePatch = new Path2D(); muzzlePatch.moveTo(hx + headRx * 0.10, hy);
+    muzzlePatch.quadraticCurveTo(hx + muzzleLen * 0.60, hy - headRy * 0.02,
+      hx + muzzleLen * 0.89, hy + headRy * 0.06);
+    muzzlePatch.quadraticCurveTo(hx + muzzleLen * 0.69, hy + headRy * 0.26,
+      hx + headRx * 0.22, hy + headRy * 0.31);
+    muzzlePatch.quadraticCurveTo(hx + headRx * 0.08, hy + headRy * 0.24,
+      hx + headRx * 0.10, hy); muzzlePatch.closePath();
+    c.fillStyle = '#e9dfc8'; c.fill(muzzlePatch);
+  }
+  for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCProfileEye(c, hx + headRx * 0.30, hy - headRy * 0.17, S * 0.0085, civet ? '#c79a4a' : '#8d6434');
+  mammalCNose(c, hx + muzzleLen, hy + headRy * 0.05, S * 0.0125, S * 0.009);
+  mammalDWhiskers(c, hx + muzzleLen * 0.78, hy + headRy * 0.24, S * 0.075, S * 0.065, 4);
+}
+
+type MammalDOtter = Extract<MammalDPlan, 'Otter' | 'River Otter' | 'Giant Otter'>;
+
+function faunaResetOtterD(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: MammalDOtter): void {
+  const p = pal(p0, spec), river = plan === 'River Otter', giant = plan === 'Giant Otter';
+  const r = mulberry32((((g.seed as number) ^ 0x0D72 ^ nameSeedQ(plan)) >>> 0));
+  const groundY = S * 0.795, left = S * (giant ? 0.285 : 0.315), right = S * (giant ? 0.665 : river ? 0.655 : 0.640);
+  const top = S * (giant ? 0.410 : 0.455), bottom = S * (giant ? 0.665 : 0.675);
+  const hx = S * 0.755, hy = S * (giant ? 0.485 : 0.520), headRx = S * (giant ? 0.078 : 0.068), headRy = S * (giant ? 0.060 : 0.054);
+  mammalBGround(c, S * 0.47, groundY + S * 0.014, S * 0.32);
+  const total = new Path2D();
+  const tail = new Path2D();
+  const baseY = top + (bottom - top) * 0.55, tipX = S * 0.045, tipY = groundY - S * 0.080;
+  tail.moveTo(left + S * 0.015, baseY - S * (giant ? 0.048 : 0.036));
+  if (giant) {
+    tail.bezierCurveTo(left - S * 0.065, baseY - S * 0.065, tipX + S * 0.080, tipY - S * 0.060, tipX, tipY);
+    tail.quadraticCurveTo(tipX - S * 0.012, tipY + S * 0.035, tipX + S * 0.055, tipY + S * 0.070);
+    tail.bezierCurveTo(tipX + S * 0.135, tipY + S * 0.075, left - S * 0.030, baseY + S * 0.060, left + S * 0.020, baseY + S * 0.038);
+  } else {
+    tail.bezierCurveTo(left - S * 0.080, baseY - S * 0.040, tipX + S * 0.075, tipY - S * 0.018, tipX, tipY);
+    tail.quadraticCurveTo(tipX - S * 0.010, tipY + S * 0.014, tipX + S * 0.035, tipY + S * 0.025);
+    tail.bezierCurveTo(tipX + S * 0.105, tipY + S * 0.035, left - S * 0.028, baseY + S * 0.047, left + S * 0.020, baseY + S * 0.030);
+  }
+  tail.closePath(); total.addPath(tail);
+  const body = new Path2D(); body.moveTo(left, bottom - S * 0.035);
+  body.bezierCurveTo(left - S * 0.020, top + S * 0.055, left + S * 0.045, top, left + S * 0.110, top);
+  body.bezierCurveTo(left + S * 0.200, top - S * 0.012, right - S * 0.080, top - S * 0.005, right, top + S * 0.030);
+  body.bezierCurveTo(right + S * 0.025, top + S * 0.105, right + S * 0.010, bottom - S * 0.010, right - S * 0.040, bottom + S * 0.012);
+  body.bezierCurveTo(right - S * 0.150, bottom + S * 0.025, left + S * 0.080, bottom + S * 0.022, left, bottom - S * 0.035); body.closePath(); total.addPath(body);
+  const paw = (x: number, far: boolean): Path2D => { const q = new Path2D(), w = S * (giant ? 0.026 : 0.023) * (far ? 0.82 : 1), y0 = bottom - S * 0.035;
+    q.moveTo(x - w, y0); q.bezierCurveTo(x - w, y0 + S * 0.040, x - w * 0.4, groundY - S * 0.055, x, groundY - S * 0.030);
+    q.quadraticCurveTo(x + S * (river ? 0.038 : 0.030), groundY, x + S * (river ? 0.070 : 0.052), groundY - S * 0.012);
+    q.quadraticCurveTo(x + S * (river ? 0.070 : 0.053), groundY - S * 0.035, x + w * 0.55, groundY - S * 0.052);
+    q.bezierCurveTo(x + w * 0.72, groundY - S * 0.088, x + w, y0 + S * 0.025, x + w, y0); q.closePath(); return q; };
+  const pawX = [left + S * 0.080, left + S * 0.135, right - S * 0.100, right - S * 0.045];
+  const paws = pawX.map((x, i) => paw(x, i === 0 || i === 2)); for (const q of paws) total.addPath(q);
+  const neck = new Path2D(); neck.moveTo(right - S * 0.075, top + S * 0.010);
+  neck.bezierCurveTo(right + S * 0.015, top, hx - headRx * 0.85, hy - headRy * 0.75, hx - headRx * 0.42, hy - headRy * 0.48);
+  neck.lineTo(hx - headRx * 0.35, hy + headRy * 0.78); neck.bezierCurveTo(right + S * 0.005, bottom - S * 0.020, right - S * 0.040, bottom, right - S * 0.075, top + S * 0.010); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(hx, hy, headRx, headRy, -0.03, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D(); muzzle.moveTo(hx + headRx * 0.10, hy - headRy * 0.12);
+  muzzle.quadraticCurveTo(hx + headRx * 0.65, hy - headRy * 0.18, hx + headRx * 1.05, hy + headRy * 0.02);
+  muzzle.quadraticCurveTo(hx + headRx * 1.16, hy + headRy * 0.32, hx + headRx * 0.42, hy + headRy * 0.50);
+  muzzle.quadraticCurveTo(hx + headRx * 0.08, hy + headRy * 0.46, hx, hy + headRy * 0.14); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) { const ear = new Path2D(); ear.ellipse(hx - headRx * 0.48 + side * headRx * 0.28, hy - headRy * 0.69, headRx * 0.15, headRy * 0.18, side * 0.15, 0, TAU); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [tail, paws[0]!, paws[2]!, body, paws[1]!, paws[3]!, neck, head, muzzle, ...ears], p, tipX, top, hx + headRx * 1.15, bottom);
+  mammalCFurGrain(c, total, r, tipX, top, hx + headRx * 1.15, bottom, giant ? 80 : 58, 'rgba(238,224,198,0.20)', 'rgba(35,30,27,0.18)');
+  if (giant) {
+    c.strokeStyle = 'rgba(35,29,25,0.40)'; c.lineWidth = 2.2; c.beginPath(); c.moveTo(tipX + S * 0.030, tipY + S * 0.020); c.quadraticCurveTo(left - S * 0.090, baseY + S * 0.010, left + S * 0.005, baseY); c.stroke();
+    const bib = new Path2D(); bib.moveTo(hx - headRx * 0.62, hy + headRy * 0.18);
+    bib.bezierCurveTo(right + S * 0.020, hy + S * 0.030, right - S * 0.005, bottom - S * 0.020, right - S * 0.070, bottom - S * 0.012);
+    bib.quadraticCurveTo(right - S * 0.090, hy + S * 0.018, hx - headRx * 0.42, hy + headRy * 0.02); bib.closePath(); c.fillStyle = '#e6d8b8'; c.fill(bib);
+  }
+  c.fillStyle = giant ? '#d9caa9' : '#d8c6a8';
+  c.beginPath(); c.ellipse(hx + headRx * 0.45, hy + headRy * 0.20, headRx * 0.48, headRy * 0.29, 0, 0, TAU); c.fill();
+  for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCProfileEye(c, hx + headRx * 0.24, hy - headRy * 0.18, S * 0.0085, '#76532d');
+  mammalCNose(c, hx + headRx * 1.05, hy + headRy * 0.04, S * 0.014, S * 0.010);
+  mammalDWhiskers(c, hx + headRx * 0.72, hy + headRy * 0.25, S * 0.090, S * 0.078, 5);
+  if (river) {
+    c.strokeStyle = 'rgba(31,28,27,0.66)'; c.lineWidth = 1.6; c.lineCap = 'round';
+    for (const x of [pawX[1]!, pawX[3]!]) for (let i = 0; i < 4; i++) {
+      c.beginPath(); c.moveTo(x + S * (0.012 + i * 0.010), groundY - S * 0.037);
+      c.lineTo(x + S * (0.018 + i * 0.014), groundY - S * 0.010); c.stroke();
+    }
+  }
+}
+
+function faunaResetSeaOtterD(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec);
+  const r = mulberry32((((g.seed as number) ^ 0x5EA0 ^ nameSeedQ('Sea Otter')) >>> 0));
+  /* A sea otter's entire read is its supine water posture. Keep the water
+     horizontal so the diagonal belly, raised hind flippers and chest rock
+     cannot be mistaken for another short-legged side-view mustelid. */
+  c.strokeStyle = 'rgba(111,190,207,0.30)'; c.lineWidth = 3; c.lineCap = 'round';
+  for (const [x0, y, x1] of [[S * 0.10, S * 0.795, S * 0.54], [S * 0.47, S * 0.740, S * 0.90], [S * 0.08, S * 0.690, S * 0.30]] as const) {
+    c.beginPath(); c.moveTo(x0, y); c.quadraticCurveTo((x0 + x1) * 0.5, y - S * 0.012, x1, y); c.stroke();
+  }
+  const total = new Path2D();
+  const tail = new Path2D(); tail.moveTo(S * 0.225, S * 0.675);
+  tail.bezierCurveTo(S * 0.160, S * 0.710, S * 0.105, S * 0.790, S * 0.080, S * 0.825);
+  tail.quadraticCurveTo(S * 0.095, S * 0.850, S * 0.145, S * 0.815);
+  tail.bezierCurveTo(S * 0.205, S * 0.780, S * 0.260, S * 0.735, S * 0.265, S * 0.700); tail.closePath(); total.addPath(tail);
+  const hindFlippers: Path2D[] = [];
+  const flipper1 = new Path2D(); flipper1.moveTo(S * 0.230, S * 0.675);
+  flipper1.bezierCurveTo(S * 0.160, S * 0.690, S * 0.095, S * 0.720, S * 0.075, S * 0.755);
+  flipper1.quadraticCurveTo(S * 0.130, S * 0.790, S * 0.225, S * 0.742);
+  flipper1.quadraticCurveTo(S * 0.270, S * 0.710, S * 0.230, S * 0.675); flipper1.closePath(); hindFlippers.push(flipper1); total.addPath(flipper1);
+  const flipper2 = new Path2D(); flipper2.moveTo(S * 0.275, S * 0.690);
+  flipper2.bezierCurveTo(S * 0.225, S * 0.735, S * 0.190, S * 0.820, S * 0.215, S * 0.850);
+  flipper2.quadraticCurveTo(S * 0.285, S * 0.842, S * 0.335, S * 0.742);
+  flipper2.quadraticCurveTo(S * 0.345, S * 0.704, S * 0.275, S * 0.690); flipper2.closePath(); hindFlippers.push(flipper2); total.addPath(flipper2);
+  const body = new Path2D(); body.ellipse(S * 0.475, S * 0.515, S * 0.145, S * 0.265, 0.58, 0, TAU); total.addPath(body);
+  const neck = new Path2D(); neck.moveTo(S * 0.590, S * 0.350);
+  neck.bezierCurveTo(S * 0.625, S * 0.280, S * 0.685, S * 0.245, S * 0.725, S * 0.255);
+  neck.lineTo(S * 0.765, S * 0.355); neck.bezierCurveTo(S * 0.705, S * 0.405, S * 0.650, S * 0.435, S * 0.600, S * 0.430); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(S * 0.730, S * 0.280, S * 0.102, S * 0.087, -0.18, 0, TAU); total.addPath(head);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) { const ear = new Path2D(); ear.ellipse(S * (0.685 + side * 0.052), S * 0.220, S * 0.018, S * 0.020, side * 0.15, 0, TAU); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [tail, flipper1, flipper2, body, neck, head, ...ears], p, S * 0.07, S * 0.18, S * 0.84, S * 0.85);
+  mammalCFurGrain(c, total, r, S * 0.10, S * 0.20, S * 0.82, S * 0.82, 104,
+    'rgba(239,224,196,0.25)', 'rgba(42,31,27,0.20)');
+
+  c.save(); c.clip(body); const belly = c.createRadialGradient(S * 0.510, S * 0.455, S * 0.010, S * 0.470, S * 0.520, S * 0.170);
+  belly.addColorStop(0, '#d8c6a7'); belly.addColorStop(0.70, '#aa8d69'); belly.addColorStop(1, 'rgba(92,68,50,0.20)'); c.fillStyle = belly;
+  c.beginPath(); c.ellipse(S * 0.500, S * 0.500, S * 0.103, S * 0.218, 0.58, 0, TAU); c.fill(); c.restore();
+
+  /* Both forepaws meet around a rock on the chest; the object is intentionally
+     stone-grey and occluded by digits so it reads as carried, not a coat spot. */
+  const arms: Path2D[] = [];
+  for (const side of [-1, 1]) {
+    const arm = new Path2D(); arm.moveTo(S * (0.535 + side * 0.015), S * 0.405);
+    arm.bezierCurveTo(S * (0.550 + side * 0.060), S * 0.450, S * (0.555 + side * 0.045), S * 0.530, S * (0.535 + side * 0.018), S * 0.550);
+    arm.quadraticCurveTo(S * (0.495 + side * 0.020), S * 0.545, S * (0.485 + side * 0.010), S * 0.500);
+    arm.bezierCurveTo(S * (0.485 + side * 0.005), S * 0.455, S * (0.500 + side * 0.005), S * 0.420, S * (0.535 + side * 0.015), S * 0.405); arm.closePath(); arms.push(arm);
+  }
+  mammalBFill(c, arms, p, S * 0.45, S * 0.39, S * 0.61, S * 0.56);
+  c.fillStyle = '#777b80'; c.beginPath(); c.ellipse(S * 0.535, S * 0.495, S * 0.055, S * 0.046, -0.22, 0, TAU); c.fill();
+  c.strokeStyle = 'rgba(44,46,49,0.66)'; c.lineWidth = 1.6; c.beginPath(); c.moveTo(S * 0.505, S * 0.480); c.quadraticCurveTo(S * 0.530, S * 0.462, S * 0.560, S * 0.482); c.stroke();
+  c.fillStyle = mammalBTone(p, 1.18); for (const arm of arms) { c.save(); c.clip(arm); c.fillRect(S * 0.47, S * 0.50, S * 0.15, S * 0.08); c.restore(); }
+  c.strokeStyle = 'rgba(37,31,28,0.64)'; c.lineWidth = 1.5;
+  for (const x of [S * 0.510, S * 0.555]) for (let i = 0; i < 3; i++) { c.beginPath(); c.moveTo(x + i * S * 0.007, S * 0.515); c.lineTo(x + i * S * 0.008, S * 0.540); c.stroke(); }
+
+  c.fillStyle = '#d9c6a7'; c.beginPath(); c.ellipse(S * 0.770, S * 0.300, S * 0.050, S * 0.034, -0.10, 0, TAU); c.fill();
+  for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCEye(c, S * 0.745, S * 0.258, S * 0.011, '#76512b');
+  mammalCNose(c, S * 0.818, S * 0.292, S * 0.015, S * 0.011);
+  mammalDWhiskers(c, S * 0.786, S * 0.316, S * 0.095, S * 0.090, 6);
+  c.strokeStyle = 'rgba(43,37,34,0.58)'; c.lineWidth = 1.5;
+  for (const flipper of hindFlippers) { c.save(); c.clip(flipper); for (let i = 1; i < 5; i++) { c.beginPath(); c.moveTo(S * (0.075 + i * 0.025), S * 0.725); c.lineTo(S * (0.120 + i * 0.028), S * 0.810); c.stroke(); } c.restore(); }
+}
+
+function faunaResetCapybaraD(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec), r = mulberry32((((g.seed as number) ^ 0xCA9B ^ nameSeedQ('Capybara')) >>> 0));
+  const groundY = S * 0.800, left = S * 0.205, right = S * 0.625, top = S * 0.350, bottom = S * 0.690;
+  mammalBGround(c, S * 0.49, groundY + S * 0.016, S * 0.31);
+  const total = new Path2D();
+  const body = new Path2D(); body.moveTo(left, bottom - S * 0.050);
+  body.bezierCurveTo(left - S * 0.018, top + S * 0.095, left + S * 0.060, top, left + S * 0.145, top);
+  body.bezierCurveTo(left + S * 0.270, top - S * 0.005, right - S * 0.030, top + S * 0.010, right + S * 0.015, top + S * 0.085);
+  body.lineTo(right + S * 0.010, bottom - S * 0.020);
+  body.bezierCurveTo(right - S * 0.100, bottom + S * 0.040, left + S * 0.075, bottom + S * 0.040, left, bottom - S * 0.050); body.closePath(); total.addPath(body);
+  const leg = (x: number, far: boolean): Path2D => { const q = new Path2D(), w = S * 0.033 * (far ? 0.82 : 1), y0 = bottom - S * 0.040;
+    q.moveTo(x - w, y0); q.bezierCurveTo(x - w * 1.10, y0 + S * 0.035, x - w * 0.70, groundY - S * 0.055, x - w * 0.30, groundY - S * 0.030);
+    q.quadraticCurveTo(x + S * 0.030, groundY + S * 0.004, x + S * 0.068, groundY - S * 0.012);
+    q.quadraticCurveTo(x + S * 0.070, groundY - S * 0.035, x + w * 0.60, groundY - S * 0.053);
+    q.bezierCurveTo(x + w * 0.78, groundY - S * 0.085, x + w * 1.14, y0 + S * 0.020, x + w, y0); q.closePath(); return q; };
+  const legX = [left + S * 0.080, left + S * 0.145, right - S * 0.105, right - S * 0.040];
+  const legs = legX.map((x, i) => leg(x, i === 0 || i === 2)); for (const q of legs) total.addPath(q);
+  /* Rectangular skull, with its sensory points all on the roof. */
+  const head = new Path2D(); head.moveTo(S * 0.600, S * 0.385); head.lineTo(S * 0.785, S * 0.390);
+  head.quadraticCurveTo(S * 0.835, S * 0.405, S * 0.840, S * 0.470); head.lineTo(S * 0.825, S * 0.620);
+  head.quadraticCurveTo(S * 0.790, S * 0.675, S * 0.675, S * 0.650); head.lineTo(S * 0.610, S * 0.580);
+  head.quadraticCurveTo(S * 0.585, S * 0.480, S * 0.600, S * 0.385); head.closePath(); total.addPath(head);
+  const ears: Path2D[] = [];
+  for (const x of [S * 0.650, S * 0.735]) { const ear = new Path2D(); ear.ellipse(x, S * 0.373, S * 0.023, S * 0.030, 0, 0, TAU); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, head, ...ears], p, left, top, S * 0.84, bottom);
+  mammalCFurGrain(c, total, r, left, top, S * 0.84, bottom, 82, 'rgba(247,220,180,0.20)', 'rgba(64,42,29,0.20)');
+  c.fillStyle = mammalBTone(p, 0.72); c.beginPath(); c.ellipse(S * 0.802, S * 0.540, S * 0.052, S * 0.060, 0.05, 0, TAU); c.fill();
+  for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCProfileEye(c, S * 0.753, S * 0.420, S * 0.0105, '#8a5b2d');
+  mammalCNose(c, S * 0.824, S * 0.445, S * 0.010, S * 0.007, '#2b2928');
+  c.fillStyle = '#dd7b2e'; c.beginPath(); c.roundRect(S * 0.818, S * 0.560, S * 0.020, S * 0.036, S * 0.005); c.fill();
+  c.strokeStyle = 'rgba(45,34,29,0.70)'; c.lineWidth = 1.6; c.lineCap = 'round';
+  for (const x of [legX[1]!, legX[3]!]) for (let i = 0; i < 4; i++) { c.beginPath(); c.moveTo(x + S * (0.014 + i * 0.010), groundY - S * 0.038); c.lineTo(x + S * (0.018 + i * 0.014), groundY - S * 0.010); c.stroke(); }
+}
+
+function faunaResetHyraxD(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec), r = mulberry32((((g.seed as number) ^ 0x48A9 ^ nameSeedQ('Hyrax')) >>> 0));
+  const groundY = S * 0.800, left = S * 0.275, right = S * 0.655, top = S * 0.390, bottom = S * 0.690;
+  mammalBGround(c, S * 0.50, groundY + S * 0.015, S * 0.25);
+  const total = new Path2D();
+  const body = new Path2D(); body.moveTo(left, bottom - S * 0.030);
+  body.bezierCurveTo(left - S * 0.040, top + S * 0.080, left + S * 0.065, top - S * 0.010, left + S * 0.180, top);
+  body.bezierCurveTo(left + S * 0.290, top - S * 0.002, right + S * 0.020, top + S * 0.070, right + S * 0.010, bottom - S * 0.015);
+  body.bezierCurveTo(right - S * 0.100, bottom + S * 0.035, left + S * 0.075, bottom + S * 0.035, left, bottom - S * 0.030); body.closePath(); total.addPath(body);
+  const leg = (x: number, far: boolean): Path2D => { const q = new Path2D(), w = S * 0.026 * (far ? 0.82 : 1), y0 = bottom - S * 0.035;
+    q.moveTo(x - w, y0); q.lineTo(x - w * 0.55, groundY - S * 0.035); q.quadraticCurveTo(x + S * 0.025, groundY + S * 0.002, x + S * 0.055, groundY - S * 0.014);
+    q.lineTo(x + w * 0.65, groundY - S * 0.050); q.lineTo(x + w, y0); q.closePath(); return q; };
+  const legX = [left + S * 0.080, left + S * 0.125, right - S * 0.090, right - S * 0.040];
+  const legs = legX.map((x, i) => leg(x, i === 0 || i === 2)); for (const q of legs) total.addPath(q);
+  const head = new Path2D(); head.ellipse(S * 0.700, S * 0.505, S * 0.105, S * 0.100, -0.02, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D(); muzzle.moveTo(S * 0.730, S * 0.480); muzzle.quadraticCurveTo(S * 0.790, S * 0.475, S * 0.825, S * 0.510);
+  muzzle.quadraticCurveTo(S * 0.822, S * 0.555, S * 0.750, S * 0.565); muzzle.quadraticCurveTo(S * 0.718, S * 0.545, S * 0.730, S * 0.480); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) { const ear = new Path2D(); ear.ellipse(S * (0.660 + side * 0.040), S * 0.428, S * 0.016, S * 0.020, side * 0.15, 0, TAU); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, head, muzzle, ...ears], p, left, top, S * 0.83, bottom);
+  mammalCFurGrain(c, total, r, left, top, S * 0.82, bottom, 74, 'rgba(247,228,196,0.22)', 'rgba(52,40,34,0.20)');
+  c.fillStyle = mammalBTone(p, 1.16); c.fill(muzzle); for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCProfileEye(c, S * 0.735, S * 0.475, S * 0.010, '#80552b'); mammalCNose(c, S * 0.823, S * 0.514, S * 0.012, S * 0.009);
+  mammalDWhiskers(c, S * 0.795, S * 0.540, S * 0.082, S * 0.075, 5);
+}
+
+function faunaResetMaraD(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec), r = mulberry32((((g.seed as number) ^ 0x6A2A ^ nameSeedQ('Mara')) >>> 0));
+  const groundY = S * 0.820, left = S * 0.285, right = S * 0.625, top = S * 0.405, bottom = S * 0.590;
+  mammalBGround(c, S * 0.50, groundY + S * 0.014, S * 0.27);
+  const total = new Path2D();
+  const nub = new Path2D(); nub.ellipse(left - S * 0.008, top + S * 0.095, S * 0.016, S * 0.013, 0, 0, TAU); total.addPath(nub);
+  const body = new Path2D(); body.moveTo(left, bottom - S * 0.025); body.bezierCurveTo(left - S * 0.020, top + S * 0.055, left + S * 0.050, top, left + S * 0.105, top);
+  body.bezierCurveTo(left + S * 0.190, top - S * 0.012, right - S * 0.055, top + S * 0.005, right, top + S * 0.035);
+  body.bezierCurveTo(right + S * 0.020, top + S * 0.090, right, bottom - S * 0.005, right - S * 0.035, bottom + S * 0.010);
+  body.bezierCurveTo(right - S * 0.120, bottom + S * 0.020, left + S * 0.070, bottom + S * 0.022, left, bottom - S * 0.025); body.closePath(); total.addPath(body);
+  const leg = (x: number, hind: boolean, far: boolean): Path2D => { const q = new Path2D(), w = S * 0.018 * (far ? 0.82 : 1), y0 = bottom - S * 0.025;
+    const kneeX = x + S * (hind ? 0.032 : -0.012), kneeY = S * (hind ? 0.665 : 0.690), ankleX = x + S * (hind ? 0.010 : 0.018);
+    q.moveTo(x - w, y0); q.bezierCurveTo(x - w, S * 0.625, kneeX - w, kneeY, ankleX - w * 0.45, groundY - S * 0.040);
+    q.quadraticCurveTo(ankleX + S * 0.020, groundY, ankleX + S * 0.055, groundY - S * 0.010);
+    q.quadraticCurveTo(ankleX + S * 0.057, groundY - S * 0.030, ankleX + w * 0.50, groundY - S * 0.046);
+    q.bezierCurveTo(kneeX + w * 0.55, kneeY, x + w, S * 0.625, x + w, y0); q.closePath(); return q; };
+  const legs = [leg(left + S * 0.070, true, true), leg(left + S * 0.125, true, false), leg(right - S * 0.090, false, true), leg(right - S * 0.040, false, false)]; for (const q of legs) total.addPath(q);
+  const neck = new Path2D(); neck.moveTo(right - S * 0.065, top + S * 0.020); neck.bezierCurveTo(S * 0.670, S * 0.350, S * 0.700, S * 0.305, S * 0.720, S * 0.300);
+  neck.lineTo(S * 0.765, S * 0.410); neck.bezierCurveTo(S * 0.715, S * 0.475, S * 0.665, S * 0.520, right - S * 0.025, bottom); neck.closePath(); total.addPath(neck);
+  const head = new Path2D(); head.ellipse(S * 0.735, S * 0.315, S * 0.067, S * 0.060, -0.04, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D(); muzzle.moveTo(S * 0.752, S * 0.300); muzzle.quadraticCurveTo(S * 0.805, S * 0.295, S * 0.840, S * 0.320);
+  muzzle.quadraticCurveTo(S * 0.842, S * 0.350, S * 0.770, S * 0.357); muzzle.quadraticCurveTo(S * 0.745, S * 0.340, S * 0.752, S * 0.300); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) { const ear = new Path2D(), ex = S * (0.700 + side * 0.045), by = S * 0.275;
+    ear.moveTo(ex - S * 0.022, by); ear.quadraticCurveTo(ex - S * 0.018, S * (side < 0 ? 0.105 : 0.125), ex + S * 0.005, S * (side < 0 ? 0.085 : 0.105));
+    ear.quadraticCurveTo(ex + S * 0.035, S * (side < 0 ? 0.150 : 0.165), ex + S * 0.026, by + S * 0.012); ear.closePath(); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [nub, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, neck, head, muzzle, ...ears], p, left, S * 0.08, S * 0.85, groundY);
+  mammalCFurGrain(c, total, r, left, S * 0.10, S * 0.84, bottom, 62, 'rgba(245,235,215,0.22)', 'rgba(48,43,39,0.18)');
+  c.fillStyle = '#ded6c7'; c.beginPath(); c.ellipse(S * 0.770, S * 0.340, S * 0.040, S * 0.023, 0, 0, TAU); c.fill(); for (const ear of ears) mammalDInnerEar(c, ear, 'rgba(117,74,73,0.58)');
+  mammalCProfileEye(c, S * 0.756, S * 0.296, S * 0.0095, '#81582d'); mammalCNose(c, S * 0.840, S * 0.321, S * 0.010, S * 0.007);
+}
+
+function faunaResetMarshRodentD(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec), r = mulberry32((((g.seed as number) ^ 0xAA51 ^ nameSeedQ('Marsh Rodent')) >>> 0));
+  const groundY = S * 0.800, left = S * 0.290, right = S * 0.635, top = S * 0.430, bottom = S * 0.685;
+  mammalBGround(c, S * 0.46, groundY + S * 0.014, S * 0.30);
+  const total = new Path2D();
+  const tail = new Path2D(); tail.moveTo(left + S * 0.005, top + S * 0.125); tail.bezierCurveTo(S * 0.190, S * 0.565, S * 0.115, S * 0.675, S * 0.050, S * 0.745);
+  tail.quadraticCurveTo(S * 0.045, S * 0.760, S * 0.060, S * 0.764); tail.bezierCurveTo(S * 0.145, S * 0.700, S * 0.230, S * 0.605, left + S * 0.012, top + S * 0.145); tail.closePath(); total.addPath(tail);
+  const body = new Path2D(); body.moveTo(left, bottom - S * 0.035); body.bezierCurveTo(left - S * 0.030, top + S * 0.070, left + S * 0.055, top, left + S * 0.130, top);
+  body.bezierCurveTo(left + S * 0.230, top - S * 0.005, right - S * 0.040, top + S * 0.015, right + S * 0.010, top + S * 0.075);
+  body.lineTo(right, bottom - S * 0.010); body.bezierCurveTo(right - S * 0.100, bottom + S * 0.030, left + S * 0.070, bottom + S * 0.032, left, bottom - S * 0.035); body.closePath(); total.addPath(body);
+  const leg = (x: number, hind: boolean, far: boolean): Path2D => { const q = new Path2D(), w = S * 0.025 * (far ? 0.82 : 1), y0 = bottom - S * 0.035;
+    q.moveTo(x - w, y0); q.bezierCurveTo(x - w, y0 + S * 0.045, x - w * 0.45, groundY - S * 0.052, x, groundY - S * 0.028);
+    q.quadraticCurveTo(x + S * (hind ? 0.045 : 0.028), groundY + S * 0.002, x + S * (hind ? 0.090 : 0.055), groundY - S * 0.012);
+    q.quadraticCurveTo(x + S * (hind ? 0.092 : 0.056), groundY - S * 0.035, x + w * 0.55, groundY - S * 0.050);
+    q.bezierCurveTo(x + w * 0.72, groundY - S * 0.086, x + w, y0 + S * 0.025, x + w, y0); q.closePath(); return q; };
+  const legX = [left + S * 0.075, left + S * 0.130, right - S * 0.090, right - S * 0.035];
+  const legs = legX.map((x, i) => leg(x, i < 2, i === 0 || i === 2)); for (const q of legs) total.addPath(q);
+  const head = new Path2D(); head.ellipse(S * 0.705, S * 0.520, S * 0.100, S * 0.090, 0, 0, TAU); total.addPath(head);
+  const muzzle = new Path2D(); muzzle.moveTo(S * 0.740, S * 0.490); muzzle.lineTo(S * 0.830, S * 0.495); muzzle.quadraticCurveTo(S * 0.855, S * 0.530, S * 0.825, S * 0.575);
+  muzzle.lineTo(S * 0.750, S * 0.580); muzzle.quadraticCurveTo(S * 0.720, S * 0.545, S * 0.740, S * 0.490); muzzle.closePath(); total.addPath(muzzle);
+  const ears: Path2D[] = [];
+  for (const side of [-1, 1]) { const ear = new Path2D(); ear.ellipse(S * (0.665 + side * 0.050), S * 0.438, S * 0.028, S * 0.035, side * 0.15, 0, TAU); ears.push(ear); total.addPath(ear); }
+  mammalBFill(c, [tail, legs[0]!, legs[2]!, body, legs[1]!, legs[3]!, head, muzzle, ...ears], p, S * 0.04, top, S * 0.86, bottom);
+  mammalCFurGrain(c, total, r, left, top, S * 0.84, bottom, 72, 'rgba(241,219,183,0.20)', 'rgba(55,41,31,0.20)');
+  c.save(); c.clip(tail); c.strokeStyle = 'rgba(64,48,42,0.56)'; c.lineWidth = 1.4;
+  for (let i = 1; i < 12; i++) { const t = i / 12, x = left * (1 - t) + S * 0.050 * t, y = (top + S * 0.135) * (1 - t) + S * 0.745 * t; c.beginPath(); c.moveTo(x - S * 0.010, y - S * 0.009); c.lineTo(x + S * 0.010, y + S * 0.009); c.stroke(); } c.restore();
+  c.fillStyle = '#e1812f'; c.beginPath(); c.roundRect(S * 0.818, S * 0.535, S * 0.026, S * 0.044, S * 0.004); c.fill(); for (const ear of ears) mammalDInnerEar(c, ear);
+  mammalCProfileEye(c, S * 0.745, S * 0.495, S * 0.010, '#85592e'); mammalCNose(c, S * 0.835, S * 0.510, S * 0.010, S * 0.007);
+  c.strokeStyle = 'rgba(47,38,33,0.68)'; c.lineWidth = 1.5;
+  for (const x of [legX[1]!, legX[0]!]) for (let i = 0; i < 4; i++) { c.beginPath(); c.moveTo(x + S * (0.018 + i * 0.013), groundY - S * 0.040); c.lineTo(x + S * (0.025 + i * 0.018), groundY - S * 0.010); c.stroke(); }
+  mammalDWhiskers(c, S * 0.805, S * 0.560, S * 0.075, S * 0.070, 4);
+}
+
+function faunaResetMoleD(c: Ctx, g: G, p0: Pal, spec: QuadSpec): void {
+  const p = pal(p0, spec), r = mulberry32((((g.seed as number) ^ 0x601E ^ nameSeedQ('Mole')) >>> 0));
+  const groundY = S * 0.790;
+  const soil = c.createRadialGradient(S * 0.47, groundY, 2, S * 0.47, groundY, S * 0.33);
+  soil.addColorStop(0, 'rgba(67,45,31,0.48)'); soil.addColorStop(0.65, 'rgba(58,39,28,0.22)'); soil.addColorStop(1, 'rgba(40,27,21,0)');
+  c.fillStyle = soil; c.beginPath(); c.ellipse(S * 0.47, groundY, S * 0.33, S * 0.055, 0, 0, TAU); c.fill();
+
+  const total = new Path2D();
+  const tail = new Path2D(); tail.moveTo(S * 0.280, S * 0.585); tail.bezierCurveTo(S * 0.215, S * 0.570, S * 0.155, S * 0.610, S * 0.125, S * 0.655);
+  tail.quadraticCurveTo(S * 0.122, S * 0.670, S * 0.140, S * 0.669); tail.bezierCurveTo(S * 0.190, S * 0.635, S * 0.245, S * 0.625, S * 0.292, S * 0.615); tail.closePath(); total.addPath(tail);
+  /* One neckless velvet cylinder: the head is the narrowing front of the body,
+     not a separate generic mammal skull. */
+  const body = new Path2D(); body.moveTo(S * 0.250, S * 0.610);
+  body.bezierCurveTo(S * 0.230, S * 0.475, S * 0.335, S * 0.385, S * 0.500, S * 0.390);
+  body.bezierCurveTo(S * 0.650, S * 0.390, S * 0.740, S * 0.455, S * 0.755, S * 0.550);
+  body.bezierCurveTo(S * 0.770, S * 0.660, S * 0.660, S * 0.720, S * 0.500, S * 0.715);
+  body.bezierCurveTo(S * 0.340, S * 0.715, S * 0.260, S * 0.680, S * 0.250, S * 0.610); body.closePath(); total.addPath(body);
+  const hindPaws: Path2D[] = [];
+  for (const x of [S * 0.330, S * 0.430]) { const paw = new Path2D(); paw.ellipse(x, S * 0.705, S * 0.060, S * 0.032, -0.10, 0, TAU); hindPaws.push(paw); total.addPath(paw); }
+  /* Forepaws sit beside the snout and point out of the silhouette. Their broad
+     fans and long straight digits are the mole's diagnostic anatomy. */
+  const forePaws: Path2D[] = [];
+  const upper = new Path2D(); upper.moveTo(S * 0.665, S * 0.500); upper.bezierCurveTo(S * 0.720, S * 0.435, S * 0.820, S * 0.405, S * 0.880, S * 0.430);
+  upper.lineTo(S * 0.845, S * 0.515); upper.quadraticCurveTo(S * 0.755, S * 0.545, S * 0.675, S * 0.555); upper.closePath(); forePaws.push(upper); total.addPath(upper);
+  const lower = new Path2D(); lower.moveTo(S * 0.665, S * 0.605); lower.bezierCurveTo(S * 0.735, S * 0.620, S * 0.825, S * 0.670, S * 0.875, S * 0.735);
+  lower.lineTo(S * 0.795, S * 0.760); lower.quadraticCurveTo(S * 0.720, S * 0.705, S * 0.650, S * 0.665); lower.closePath(); forePaws.push(lower); total.addPath(lower);
+  const snout = new Path2D(); snout.moveTo(S * 0.705, S * 0.525); snout.quadraticCurveTo(S * 0.820, S * 0.515, S * 0.925, S * 0.555);
+  snout.quadraticCurveTo(S * 0.835, S * 0.595, S * 0.705, S * 0.592); snout.quadraticCurveTo(S * 0.675, S * 0.558, S * 0.705, S * 0.525); snout.closePath(); total.addPath(snout);
+  mammalBFill(c, [tail, hindPaws[0]!, body, hindPaws[1]!, upper, lower], p, S * 0.12, S * 0.38, S * 0.89, S * 0.76);
+  mammalCFurGrain(c, total, r, S * 0.22, S * 0.39, S * 0.76, S * 0.72, 110,
+    'rgba(214,203,194,0.16)', 'rgba(16,15,17,0.28)');
+  const pawFill = c.createLinearGradient(S * 0.68, S * 0.48, S * 0.86, S * 0.70);
+  pawFill.addColorStop(0, '#b98a86'); pawFill.addColorStop(0.55, '#9f6f70'); pawFill.addColorStop(1, '#6c4b52'); c.fillStyle = pawFill;
+  for (const paw of forePaws) c.fill(paw);
+  const snoutFill = c.createLinearGradient(S * 0.700, S * 0.520, S * 0.855, S * 0.565);
+  snoutFill.addColorStop(0, '#b98482'); snoutFill.addColorStop(0.70, '#e4a6a0'); snoutFill.addColorStop(1, '#f0b4ad'); c.fillStyle = snoutFill; c.fill(snout);
+  mammalCNose(c, S * 0.925, S * 0.557, S * 0.012, S * 0.009, '#7d4c54');
+  c.strokeStyle = '#e4c8ad'; c.lineWidth = 2.2; c.lineCap = 'round';
+  for (let i = 0; i < 5; i++) {
+    c.beginPath(); c.moveTo(S * (0.800 + i * 0.012), S * (0.446 + i * 0.010)); c.lineTo(S * (0.905 + i * 0.010), S * (0.413 + i * 0.008)); c.stroke();
+    c.beginPath(); c.moveTo(S * (0.790 + i * 0.012), S * (0.693 + i * 0.010)); c.lineTo(S * (0.892 + i * 0.010), S * (0.756 + i * 0.007)); c.stroke();
+  }
+  mammalDWhiskers(c, S * 0.855, S * 0.578, S * 0.070, S * 0.055, 4, 'rgba(225,209,194,0.58)');
+}
+
+function faunaMammalD(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: MammalDPlan): void {
+  switch (plan) {
+    case 'Badger': case 'Fisher': case 'Marten': case 'Mink': case 'Wolverine':
+      faunaResetMustelidD(c, g, p0, spec, plan); return;
+    case 'Civet': case 'Mongoose':
+      faunaResetViverridD(c, g, p0, spec, plan); return;
+    case 'Otter': case 'River Otter': case 'Giant Otter':
+      faunaResetOtterD(c, g, p0, spec, plan); return;
+    case 'Sea Otter': faunaResetSeaOtterD(c, g, p0, spec); return;
+    case 'Capybara': faunaResetCapybaraD(c, g, p0, spec); return;
+    case 'Hyrax': faunaResetHyraxD(c, g, p0, spec); return;
+    case 'Mara': faunaResetMaraD(c, g, p0, spec); return;
+    case 'Marsh Rodent': faunaResetMarshRodentD(c, g, p0, spec); return;
+    case 'Mole': faunaResetMoleD(c, g, p0, spec); return;
+    default: { const exhaustive: never = plan; return exhaustive; }
+  }
+}
+
 function faunaMammalC(c: Ctx, g: G, p0: Pal, spec: QuadSpec, plan: NonNullable<QuadSpec['mammalCPlan']>, name: string): void {
-  if (plan === 'canid-c1') { faunaResetCanidC(c, g, p0, spec, name); return; }
-  if (plan === 'procyonid-c1') { faunaResetProcyonidC(c, g, p0, spec, name); return; }
-  faunaResetMarsupialC(c, g, p0, spec, name);
+  switch (plan) {
+    case 'canid-c1': faunaResetCanidC(c, g, p0, spec, name); return;
+    case 'procyonid-c1': faunaResetProcyonidC(c, g, p0, spec, name); return;
+    case 'marsupial-c1': faunaResetMarsupialC(c, g, p0, spec, name); return;
+    default: { const exhaustive: never = plan; return exhaustive; }
+  }
 }
 
 export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = ''): void {
+  if (spec.mammalDPlan) { faunaMammalD(c, g, p0, spec, spec.mammalDPlan); return; }
   if (spec.mammalCPlan) { faunaMammalC(c, g, p0, spec, spec.mammalCPlan, name); return; }
   if (spec.mammalBPlan) { faunaMammalB(c, g, p0, spec, spec.mammalBPlan, name); return; }
   if (spec.pinnipedPose) { faunaEaredPinniped(c, g, p0, spec, spec.pinnipedPose); return; }
@@ -2757,17 +3354,6 @@ export function faunaQuadruped(c: Ctx, g: G, p0: Pal, spec: QuadSpec, name = '')
       c.quadraticCurveTo(a2[0] - rr * 0.12, a2[1], a2[0] - rr * 0.02, a2[1] + rr * 0.54);
       c.stroke();
     }
-    c.restore();
-  }
-  if (name === 'Badger') {
-    /* Badger is a low pale mustelid with one broad black mantle, not a tiny
-       tiger. The mantle follows the dorsal profile and fades into the flanks. */
-    c.save(); c.beginPath(); body.trace(c, 56); c.clip();
-    const a0 = AX(0.10), a1 = AX(0.92);
-    c.strokeStyle = 'rgba(34,30,28,0.86)'; c.lineWidth = bodyH * 0.56; c.lineCap = 'round';
-    c.beginPath(); c.moveTo(a0[0], a0[1] - RAD(0.10) * 0.26);
-    c.bezierCurveTo(cx - bodyW * 0.25, cy - bodyH * 0.74, cx + bodyW * 0.22, cy - bodyH * 0.72,
-      a1[0], a1[1] - RAD(0.92) * 0.34); c.stroke();
     c.restore();
   }
   if (spec.alien?.sail) {
