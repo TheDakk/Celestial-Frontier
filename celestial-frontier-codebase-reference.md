@@ -110,7 +110,45 @@
 > with zero failure/duplicate/clipping, hybridcheck with 11/11 injected failures
 > rejected, hybridmatrix/speciesstrip/fullresetlayout/fullresetreview selftests,
 > coveragegap 1,010/1,010 with zero remaining and `git diff --check`. Wave 2c is
-> ready to commit/push, but full recertification, ZIP, reset PR, merge and release
+> committed/pushed as `dc015cf`, but full recertification, ZIP, reset PR, merge
+> and release remain OPEN.
+>
+> Wave 2d is independently **50/50
+> scoped PASS**: Mammal D 16/16, Bird B3 27/27, and Invert III 7/7. Mammal D
+> failed closed on six preview blockers, then on Civet's still-round muzzle;
+> Civet-only R4 supplied the continuous pointed muzzle. Bird B3 progressed from
+> 11/27 candidate-ready through an exact-16 R2 and exact-three tail/streamer R3.
+> Invert III progressed from 5/7 through an exact-two Camel Spider/Tarantula R2.
+> Every final verdict is author-separated at 440/300/132.
+>
+> The final root is
+> `port/v2/apps/game/smoke/wave2d-shared-final-r4-evidence-2026-08-10`; manifest
+> SHA-256 is `DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE`
+> and pre-edit seal is
+> `7C68250E3BED9AE64FD5066A4D5389C45056600F09E48B1287253AB20E6B877F`.
+> It binds 304 rows =50 targets +254 protected controls and exact 912/912 A/B
+> surfaces; all 762 protected surfaces match baseline, all 150 target surfaces
+> changed, Civet-only R4 changed 3/3, and the other 909 surfaces stayed exact.
+> Three 139-file input snapshots have zero drift and four negative controls were
+> rejected.
+>
+> Final Wave-2d source SHA-256 values are `faunaoverrides.ts`
+> `63D7A9B1E3AE8E2FE359137A030E1AE8AEFC3328ACB5C88FB6E59E7F014A2DA2`,
+> `birdoverrides.ts` `48FFA589F2273F0F29FD85DF1F05FD070477ADE70F1CDEB7698F5321E5702DC7`,
+> `quadrupedoverrides.ts` `544F5A6582F467E744C5F2A3ABF0EDF61DE5A5180CF5658155594E5FF86316C1`,
+> `mammaloverrides.ts` `776FB86FF9A42E348A9278F98F7DC03584568C65A09C637CB1D7BFA38BB7A46E`,
+> and `invertoverrides.ts` `2BB40BD1838D6B6B01F09B01D3BC4CBE7B00D0F0C219FEA5926BF076A4F39677`.
+> The prior `marsupial-c1`, Skua-colour, and shadowed Invert-II-option P2 items
+> are now proven pixel-neutral against all 254 protected rows.
+>
+> Integrated Wave-2d gates are green with those five hashes and the 139-input
+> aggregate unchanged: typecheck/artunused, 238-pass/1-skip Vitest, speccheck
+> 419/0/0, coveragegap 1,010/1,010, artaudit 23/0, tokencheck selftest 16/16,
+> overridecheck 1,014/1,014 routes +1,010/1,010 species, speciesaudit 1,250/1,250
+> with zero failure/duplicate/clipping, hybridcheck and its 11 negatives,
+> hybridmatrix/speciesstrip/fullresetlayout/fullresetreview selftests, and
+> `git diff --check`. Wave 2d is ready to commit/push. The frozen r1 ledger stays
+> 516/14/720; full recertification, ZIP, reset PR, merge, release, and deployment
 > remain OPEN.
 >
 > The v2 renderer caps DPR at 2 for touch/coarse pointers and 3 for desktop. An

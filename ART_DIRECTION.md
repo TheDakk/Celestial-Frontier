@@ -851,5 +851,67 @@ artunused pass; Vitest is 238 passed /1 skipped across 23 files; speccheck is
 or clipping; hybridcheck passes and rejects 11 injected failures; hybridmatrix,
 speciesstrip, fullresetlayout and fullresetreview selftests pass; coveragegap is
 1,010/1,010 with zero remaining; `git diff --check` passes. The scoped Wave-2c
-checkpoint is ready to commit/push. Full recertification, ZIP, reset PR, merge,
-release and deployment remain OPEN.
+checkpoint is committed/pushed as `dc015cf`. Full recertification, ZIP, reset
+PR, merge, release and deployment remain OPEN.
+
+## 2026-08-10 reset Wave 2d — 50 scoped whole forms independently PASS
+
+Wave 2d is exactly **50/50 scoped PASS** under the same author-separated,
+source-frozen 440/300/132 A/B ruler: Mammal D 16/16, Bird B3 27/27, and Invert
+III 7/7. This remains bounded repair evidence; the frozen full-reset r1 ledger
+is still **516 PASS /14 POLISH /720 FAIL** and no post-wave 1,250-row tally
+exists.
+
+- **Mammal D — 16/16 PASS.** The first shared preview failed closed on Fisher's
+  tail, Marten's ears, Wolverine's claws, Sea Otter's body rotation, Hyrax's ear
+  scale, and Mole's snout/forepaw separation. R2 changed those six. The first
+  independent final judgment still rejected Civet's round muzzle; Civet-only R4
+  supplied the continuous long pointed muzzle and closed the lane while the
+  other 303 shared rows /909 surfaces stayed exact.
+- **Bird B3 — 27/27 PASS.** The first author screen was 11 ready /16 blocked.
+  R2 changed exactly those 16 and retained only Pheasant, Quetzal, and Macaw for
+  tails/streamers that remained too short. R3 changed exactly those three; the
+  independent final judge accepted all 27 with 100 lane controls exact.
+- **Invert III — 7/7 PASS.** The first screen retained only Camel Spider's paired
+  chelicerae/open gape and Tarantula's cheliceral bases, down-folding fangs, and
+  short palps. R2 changed exactly those two; the final independent judge accepted
+  all seven.
+
+The final evidence root is
+`port/v2/apps/game/smoke/wave2d-shared-final-r4-evidence-2026-08-10`; manifest
+SHA-256 is
+`DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE`.
+It binds 304 rows =50 targets +254 protected controls, 912 surfaces per run,
+exact A/B, 762/762 baseline-exact protected surfaces, 150/150 changed target
+surfaces, Civet-only 3/3 final drift, and 909/909 other retained surfaces. Four
+negative controls were rejected. The pre-edit seal is
+`7C68250E3BED9AE64FD5066A4D5389C45056600F09E48B1287253AB20E6B877F`.
+
+Final sources are `faunaoverrides.ts`
+`63D7A9B1E3AE8E2FE359137A030E1AE8AEFC3328ACB5C88FB6E59E7F014A2DA2`,
+`birdoverrides.ts`
+`48FFA589F2273F0F29FD85DF1F05FD070477ADE70F1CDEB7698F5321E5702DC7`,
+`quadrupedoverrides.ts`
+`544F5A6582F467E744C5F2A3ABF0EDF61DE5A5180CF5658155594E5FF86316C1`,
+`mammaloverrides.ts`
+`776FB86FF9A42E348A9278F98F7DC03584568C65A09C637CB1D7BFA38BB7A46E`,
+and `invertoverrides.ts`
+`2BB40BD1838D6B6B01F09B01D3BC4CBE7B00D0F0C219FEA5926BF076A4F39677`.
+
+The deferred routing cleanup is now closed with fresh pixel-neutral proof:
+Mammal C's `marsupial-c1` dispatch is explicit, Skua's impossible Snow-Petrel
+colour arm is removed, and exact Invert-II non-hue options shadowed by named
+early returns are removed. All 254 protected rows remain exact. This reinforces
+the direction rather than changing it: remove unreachable configuration only
+after the winning route and before/after pixels prove that it owns no visible
+result.
+
+The final integrated Wave-2d gates are **green** with all five source hashes and
+the 139-input aggregate unchanged: typecheck/artunused; 238-pass/1-skip Vitest;
+speccheck 419/0/0; coveragegap 1,010/1,010; artaudit 23/0; tokencheck selftest
+16/16; overridecheck 1,014/1,014 routes +1,010/1,010 species; speciesaudit
+1,250/1,250 with zero failure/duplicate/clipping; hybridcheck and its 11
+negatives; hybridmatrix/speciesstrip/fullresetlayout/fullresetreview selftests;
+and `git diff --check`. The checkpoint is ready to commit/push. Full
+recertification, the image-inclusive ZIP, reset PR, merge, release, and
+deployment remain OPEN.

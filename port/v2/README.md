@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (Phase 1+)
 
-**Status: ★★★ RESET R1 FROZEN · WAVE 2B PUSHED · WAVE 2C 56/56 PASS · READY TO COMMIT/PUSH** (2026-08-10).
+**Status: ★★★ RESET R1 FROZEN · WAVE 2C PUSHED · WAVE 2D 50/50 PASS · READY TO COMMIT/PUSH** (2026-08-10).
 **Port milestone record (2026-08-01):** ★★★ PHASES 1–3 COMPLETE (automatable) · PHASE 4 SHELL RUNNING.
 **Phase 4 so far — the slice wears the game's face at the GOLDEN SCREENS' exact geometry**
 (floating-pill topbar: player chip + HP bar + Prime pill + trail · objective chip fed by the
@@ -123,8 +123,51 @@ artunused pass; Vitest is 238 passed /1 skipped across 23 files; speccheck is
 speciesaudit is 1,250/1,250 with zero failure, duplicate pair or clipping;
 hybridcheck passes and rejects all 11 injected failures; hybridmatrix,
 speciesstrip, fullresetlayout and fullresetreview selftests pass; coveragegap is
-1,010/1,010 with zero remaining; `git diff --check` passes. Wave 2c is ready to
-commit/push, not to open or merge the reset PR.
+1,010/1,010 with zero remaining; `git diff --check` passes. Wave 2c was then
+committed/pushed as `dc015cf`, without opening or merging the reset PR.
+
+Wave 2d is now **50/50 independently
+PASS** across Mammal D 16/16, Bird B3 27/27, and Invert III 7/7. It failed
+closed at every unresolved delivery-size cue: Mammal preview R2 reopened Fisher,
+Marten, Wolverine, Sea Otter, Hyrax, and Mole; the first independent final then
+reopened Civet alone for its missing pointed muzzle, and Civet-only R4 closed it.
+Bird B3 progressed from 11/27 candidate-ready through an exact-16 R2 and an
+exact-three Pheasant/Quetzal/Macaw R3. Invert III progressed from 5/7 through an
+exact-two Camel Spider/Tarantula R2. Final judges returned 16/16, 27/27, and 7/7.
+
+The final admissible root is
+`apps/game/smoke/wave2d-shared-final-r4-evidence-2026-08-10`; manifest SHA-256
+is `DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE`.
+Its pre-edit seal is
+`7C68250E3BED9AE64FD5066A4D5389C45056600F09E48B1287253AB20E6B877F`.
+It binds 304 rows =50 targets +254 protected controls, 912 surfaces/run,
+1,824 PNG hash/dimension checks, exact 912/912 current/repeat surfaces,
+762/762 baseline-exact protected surfaces, and 150/150 changed target surfaces.
+Civet-only R4 changed 3/3 surfaces; the other 303 rows /909 surfaces remained
+exact. Three 139-file input snapshots have zero drift and four negative controls
+were rejected.
+
+Final Wave-2d sources are `faunaoverrides.ts`
+`63D7A9B1E3AE8E2FE359137A030E1AE8AEFC3328ACB5C88FB6E59E7F014A2DA2`,
+`birdoverrides.ts`
+`48FFA589F2273F0F29FD85DF1F05FD070477ADE70F1CDEB7698F5321E5702DC7`,
+`quadrupedoverrides.ts`
+`544F5A6582F467E744C5F2A3ABF0EDF61DE5A5180CF5658155594E5FF86316C1`,
+`mammaloverrides.ts`
+`776FB86FF9A42E348A9278F98F7DC03584568C65A09C637CB1D7BFA38BB7A46E`,
+and `invertoverrides.ts`
+`2BB40BD1838D6B6B01F09B01D3BC4CBE7B00D0F0C219FEA5926BF076A4F39677`.
+The previously deferred `marsupial-c1`, Skua colour-arm, and shadowed Invert-II
+option cleanups are now proven pixel-neutral by the same protected baseline.
+
+The integrated Wave-2d report is green with those five hashes and the 139-input
+aggregate unchanged: typecheck/artunused; 23-file Vitest (238 pass /1 skip);
+speccheck 419/0/0 plus 5/5 selftest; coveragegap 1,010/1,010; artaudit 23
+sources/0; tokencheck selftest 16/16; overridecheck 1,014/1,014 routes and
+1,010/1,010 species; speciesaudit 1,250/1,250 with zero failure/duplicate/
+clipping; hybridcheck with 11 negatives; hybridmatrix/speciesstrip/
+fullresetlayout/fullresetreview selftests; and `git diff --check`. Wave 2d is
+ready to commit/push, not to open the reset PR or recertify the catalogue.
 
 The first live hybrid-matrix attempt exposed a real schema-v2 harness contract
 bug, not transient provenance or an art verdict: it required both Green Algae

@@ -1629,3 +1629,28 @@ duplicates).
   preview answers “is this worth sealing?”; only the final frozen A/B plus independent judgment
   answers “did this row pass?”** This does not alter the frozen 516/14/720 catalogue ledger or close
   recertification, ZIP, reset PR, merge, release or deployment.
+
+- ★★★ **D-ART-184 — A PIXEL-NEUTRAL ROUTE CLEANUP AND A VISUAL REPAIR CAN SHARE A BATCH ONLY
+  WHEN THE SAME PRE-EDIT UNION PROVES WHICH ROWS DID NOT MOVE.** (2026-08-10, Wave 2d, begun from
+  committed/pushed Wave-2c checkpoint `dc015cf`.) Three
+  code-quality items had been correctly deferred at the Wave-2c evidence boundary: Mammal C's
+  implicit `marsupial-c1` dispatcher arm, Skua's unreachable Snow-Petrel colour alternative, and
+  exact Invert-II legacy non-hue options shadowed by named early returns. Wave 2d made the dispatch
+  explicit and removed the dead alternatives only after one shared pre-edit baseline bound every
+  new target and every prior accepted route. The final R4 manifest proves all 254 protected rows /
+  762 surfaces are byte-identical while all 50 intended targets /150 surfaces changed. “The branch
+  is unreachable by inspection” was not accepted as pixel proof.
+
+  The same union preserved fail-closed visual review. Mammal D reopened six author-screen rows,
+  then independently reopened Civet alone for a still-round muzzle; Civet-only R4 changed 3/3
+  surfaces and retained the other 303 rows /909 surfaces. Bird B3 moved 11/27 →24/27 →27/27 by
+  changing exact blocker sets, and Invert III moved 5/7 →7/7 by changing only Camel Spider and
+  Tarantula. Final author-separated verdicts are **50/50 PASS**. The admissible manifest is
+  `apps/game/smoke/wave2d-shared-final-r4-evidence-2026-08-10/evidence-manifest.json`, SHA-256
+  `DC21922F21E881348263C1B7CE6E8E68C6686752CE782FAA607B3AE6E7398BCE`: 304 rows =50 targets
+  +254 protected controls, exact 912/912 A/B surfaces, 150/150 changed target surfaces, four
+  rejected negative controls, and three drift-free 139-file input snapshots. Integrated gates
+  passed with all five source hashes unchanged, making the bounded checkpoint ready to commit/push.
+  **A dead-source proof is necessary to propose cleanup; a frozen before/after pixel union is what
+  permits it to ship beside morphology work.** This does not update r1's 516/14/720 ledger; full
+  certification, the image-inclusive ZIP, reset PR, merge, release, and deployment remain OPEN.
